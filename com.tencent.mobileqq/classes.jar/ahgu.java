@@ -1,17 +1,76 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
+import java.util.HashMap;
 
 class ahgu
-  extends ahkx
+  implements View.OnClickListener
 {
-  ahgu(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahgu(ahgc paramahgc) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ahlr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (this.a.jdField_a_of_type_Bhar == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = this.a.jdField_a_of_type_Bhar.a();
+      if (localObject != null)
+      {
+        HashMap localHashMap = ((bhaq)localObject).b();
+        localObject = ((bhaq)localObject).a();
+        if (paramView == this.a.jdField_a_of_type_AndroidWidgetImageView)
+        {
+          if (this.a.input.getVisibility() != 0)
+          {
+            if (localHashMap != null) {
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+            }
+            this.a.input.setVisibility(0);
+            this.a.mFunBtn.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+            ahgc.a(this.a).a(25);
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) && (localObject != null)) {
+              this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
+            }
+          }
+          else
+          {
+            if (localHashMap != null) {
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("textIcon"));
+            }
+            this.a.input.setVisibility(4);
+            this.a.mFunBtn.setVisibility(4);
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+            this.a.hideAllPanels();
+          }
+        }
+        else if (paramView == this.a.b) {
+          if (ahgc.b(this.a).a() != 3)
+          {
+            this.a.onPanelIconClick(Integer.valueOf(3));
+            if (localHashMap != null) {
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+            }
+            this.a.input.setVisibility(0);
+            this.a.mFunBtn.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          }
+          else
+          {
+            this.a.hideAllPanels();
+          }
+        }
+      }
+    }
   }
 }
 

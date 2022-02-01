@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aies
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aies(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  public aies(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

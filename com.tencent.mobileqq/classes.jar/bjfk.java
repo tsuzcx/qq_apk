@@ -1,8 +1,23 @@
-public abstract interface bjfk
+import android.app.Activity;
+import android.os.Bundle;
+import mqq.util.WeakReference;
+
+class bjfk
+  extends apkq
 {
-  public abstract void a();
+  bjfk(bjfh parambjfh) {}
   
-  public abstract void b();
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  {
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (bjfh.a(this.a) == null) {}
+    do
+    {
+      return;
+      paramBundle = (Activity)bjfh.a(this.a).get();
+    } while (paramBundle == null);
+    paramBundle.moveTaskToBack(false);
+  }
 }
 
 

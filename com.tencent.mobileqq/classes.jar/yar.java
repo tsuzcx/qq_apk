@@ -1,32 +1,36 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.qphone.base.util.QLog;
 
 public class yar
+  extends bafm
 {
-  @NonNull
-  private final Bitmap a;
+  public yar(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public yar(Bitmap paramBitmap)
+  public void a()
   {
-    if (paramBitmap == null) {
-      throw new NullPointerException("bitmap should not be null");
+    super.a();
+    this.a.a.n();
+    this.a.l();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
     }
-    this.a = paramBitmap;
-  }
-  
-  public int a()
-  {
-    return this.a.getWidth();
-  }
-  
-  public Bitmap a()
-  {
-    return Bitmap.createBitmap(this.a);
-  }
-  
-  public int b()
-  {
-    return this.a.getHeight();
+    super.a(paramLong);
+    try
+    {
+      this.a.a(1000L * paramLong);
+      return;
+    }
+    catch (InterruptedException localInterruptedException) {}
   }
 }
 

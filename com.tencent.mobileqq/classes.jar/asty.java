@@ -1,15 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 class asty
-  implements axfu<Emoticon>
+  implements asrl
 {
-  asty(astx paramastx, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
+  asty(astk paramastk) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void a()
   {
-    ahlt.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Astx.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Astx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Asqs.a();
+    becp localbecp = this.a.a(localFileManagerEntity);
+    if ((TextUtils.isEmpty(astk.a(this.a))) && (localbecp.a != null)) {
+      astk.a(this.a, localbecp.a.toString());
+    }
+    bebp localbebp = new bebp(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if (((localbecp.b == 3) || (localbecp.b == 2)) && (localbecp.a != null)) {
+      localbebp.a(localbecp.a);
+    }
+    localFileManagerEntity.status = 2;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a.jdField_a_of_type_Asqs.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.a((FileManagerEntity)localObject);
+    if (!TextUtils.isEmpty(astk.a(this.a)))
+    {
+      localTroopFileTransferManager.a(UUID.fromString(astk.a(this.a)));
+      astk.a(this.a, (becp)localObject);
+    }
   }
 }
 

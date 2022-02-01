@@ -1,19 +1,15 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xbf
-  implements woy<xbg, xbh>
+class xbf
+  implements wkl
 {
-  public void a(String paramString)
-  {
-    paramString = new xbg(this, paramString);
-    wow.a().a(paramString, this);
-  }
+  xbf(xbe paramxbe) {}
   
-  public void a(@NonNull xbg paramxbg, @Nullable xbh paramxbh, @NonNull ErrorMessage paramErrorMessage)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    new xbi(paramErrorMessage, paramxbg.b);
+    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

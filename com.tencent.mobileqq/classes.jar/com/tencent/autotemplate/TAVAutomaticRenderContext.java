@@ -168,17 +168,17 @@ public class TAVAutomaticRenderContext
     }
   }
   
-  private void updateIndexForImages(long paramLong, List<TAVSourceImage> paramList, TAVSticker paramTAVSticker)
+  private boolean updateIndexForImages(long paramLong, List<TAVSourceImage> paramList, TAVSticker paramTAVSticker)
   {
     Object localObject1;
     if ((!CollectionUtil.isEmptyList(paramList)) && (paramTAVSticker != null))
     {
       localObject1 = (List)this.mapVideoTrack.get(paramTAVSticker.getUniqueId());
       if (CollectionUtil.isEmptyList((List)localObject1)) {
-        break label434;
+        break label535;
       }
     }
-    label434:
+    label535:
     for (int i = ((List)localObject1).size();; i = 0)
     {
       int k = paramList.size();
@@ -200,17 +200,20 @@ public class TAVAutomaticRenderContext
           ((List)localObject1).add(localTAVStickerLayerInfo);
         }
       }
-      if (CollectionUtil.isEmptyList((List)localObject1)) {}
-      float f;
+      boolean bool = "sticker_video_transition".equals(paramTAVSticker.getExtraBundle().getString("key_extra_sticker_type"));
+      if ((CollectionUtil.isEmptyList((List)localObject1)) && (bool)) {}
       do
       {
-        return;
+        return false;
         Collections.sort((List)localObject1, new TAVAutomaticRenderContext.1(this));
-        bool = "sticker_video_transition".equals(paramTAVSticker.getExtraBundle().getString("key_extra_sticker_type"));
-        f = paramTAVSticker.getExtraBundle().getFloat("key_extra_sticker_speed", 1.0F);
-      } while ((!bool) || (k != 1) || (((List)localObject1).size() != 2));
-      if (new CMTime(paramLong, 1000).sub(paramTAVSticker.getTimeRange().getStart()).multi(f).sub(((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd()).getTimeUs() >= 0L) {}
-      for (boolean bool = true;; bool = false)
+        float f = paramTAVSticker.getExtraBundle().getFloat("key_extra_sticker_speed", 1.0F);
+        if ((!bool) || (k != 1) || (((List)localObject1).size() != 2)) {
+          break;
+        }
+        localObject2 = new CMTime(paramLong, 1000).sub(paramTAVSticker.getTimeRange().getStart()).multi(f);
+      } while ((((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd().bigThan(((TAVStickerLayerInfo)((List)localObject1).get(1)).getTimeRange().getStart())) && (((CMTime)localObject2).bigThan(((TAVStickerLayerInfo)((List)localObject1).get(1)).getTimeRange().getStart())) && (((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd().bigThan((CMTime)localObject2)));
+      if (((CMTime)localObject2).sub(((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd()).getTimeUs() >= 0L) {}
+      for (bool = true;; bool = false)
       {
         if (bool) {
           ((TAVSourceImage)paramList.get(0)).setIndex(1);
@@ -218,7 +221,7 @@ public class TAVAutomaticRenderContext
         for (;;)
         {
           Log.i(this.TAG, "updateIndexForImages: presentationTimeMs = " + paramLong + ", sticker start = " + paramTAVSticker.getTimeRange().getStart().getTimeUs() / 1000L + ",isNextLayer = " + bool);
-          return;
+          return true;
           ((TAVSourceImage)paramList.get(0)).setIndex(0);
         }
       }
@@ -306,8 +309,8 @@ public class TAVAutomaticRenderContext
     //   13: aload_0
     //   14: getfield 86	com/tencent/autotemplate/TAVAutomaticRenderContext:renderThreadId	J
     //   17: lstore_1
-    //   18: invokestatic 440	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   21: invokevirtual 443	java/lang/Thread:getId	()J
+    //   18: invokestatic 444	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   21: invokevirtual 447	java/lang/Thread:getId	()J
     //   24: lstore_3
     //   25: lload_1
     //   26: lload_3
@@ -317,16 +320,16 @@ public class TAVAutomaticRenderContext
     //   32: monitorexit
     //   33: return
     //   34: aload_0
-    //   35: invokespecial 445	com/tencent/tavsticker/core/TAVStickerRenderContext:release	()V
+    //   35: invokespecial 449	com/tencent/tavsticker/core/TAVStickerRenderContext:release	()V
     //   38: aload_0
-    //   39: getfield 380	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   39: getfield 384	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
     //   42: ifnull -11 -> 31
     //   45: aload_0
-    //   46: getfield 380	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
-    //   49: invokevirtual 446	com/tencent/tav/coremedia/TextureInfo:release	()V
+    //   46: getfield 384	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   49: invokevirtual 450	com/tencent/tav/coremedia/TextureInfo:release	()V
     //   52: aload_0
     //   53: aconst_null
-    //   54: putfield 380	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   54: putfield 384	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
     //   57: goto -26 -> 31
     //   60: astore 5
     //   62: aload_0
@@ -427,7 +430,7 @@ public class TAVAutomaticRenderContext
           paramSurface = paramEGLContext;
         } while (!this.pagSurface.present());
         if (paramList != null) {
-          break label396;
+          break label397;
         }
       }
       for (paramSurface = new ArrayList();; paramSurface = paramList)
@@ -441,7 +444,7 @@ public class TAVAutomaticRenderContext
         break label182;
         this.cacheImagesForRelease = new ArrayList();
         break;
-        label396:
+        label397:
         paramList.clear();
       }
       boolean bool = this.pagSurface.present();
@@ -522,21 +525,25 @@ public class TAVAutomaticRenderContext
                 if (paramList == null) {
                   localObject = new CMSampleBuffer(new CMTime(TAVStickerUtil.millisecond2Seconds(paramLong)), this.stickerTexture.getTextureInfo(), false);
                 }
-                updateIndexForImages(paramLong, localArrayList, localTAVStickerProvider.getSticker());
-                localTAVStickerProvider.setRenderSize(this.renderSize);
-                localTAVStickerProvider.setPagSurface(this.pagSurface);
-                localTAVStickerProvider.replaceSourceImages(localArrayList);
-                localTAVStickerProvider.updateRender(paramLong);
                 paramList = (List<TAVSourceImage>)localObject;
                 i = j;
-                if (this.pagSurface.present())
+                if (updateIndexForImages(paramLong, localArrayList, localTAVStickerProvider.getSticker()))
                 {
-                  localArrayList.clear();
-                  paramList = new TAVSourceImage(getCopyTextureInfo(), true, 0);
-                  localArrayList.add(paramList);
-                  this.cacheImagesForRelease.add(paramList);
+                  localTAVStickerProvider.setRenderSize(this.renderSize);
+                  localTAVStickerProvider.setPagSurface(this.pagSurface);
+                  localTAVStickerProvider.replaceSourceImages(localArrayList);
+                  localTAVStickerProvider.updateRender(paramLong);
                   paramList = (List<TAVSourceImage>)localObject;
                   i = j;
+                  if (this.pagSurface.present())
+                  {
+                    localArrayList.clear();
+                    paramList = new TAVSourceImage(getCopyTextureInfo(), true, 0);
+                    localArrayList.add(paramList);
+                    this.cacheImagesForRelease.add(paramList);
+                    paramList = (List<TAVSourceImage>)localObject;
+                    i = j;
+                  }
                 }
               }
             }
@@ -605,7 +612,7 @@ public class TAVAutomaticRenderContext
       {
         return true;
         CMTime localCMTime = new CMTime(paramLong, 1000);
-        if (((localCMTimeRange.getStart().smallThan(localCMTime)) || (localCMTimeRange.getStart().equals(localCMTime))) && ((localCMTimeRange.getEnd().bigThan(localCMTime)) || (localCMTimeRange.getEnd().equals(localCMTime)))) {
+        if (((localCMTimeRange.getStart().smallThan(localCMTime)) || (localCMTimeRange.getStart().equalsTo(localCMTime))) && ((localCMTimeRange.getEnd().bigThan(localCMTime)) || (localCMTimeRange.getEnd().equalsTo(localCMTime)))) {
           i = 1;
         } else {
           i = 0;

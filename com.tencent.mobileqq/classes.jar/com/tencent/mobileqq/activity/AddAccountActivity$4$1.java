@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adsa;
+import acot;
 import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class AddAccountActivity$4$1
   implements Runnable
 {
-  public AddAccountActivity$4$1(adsa paramadsa) {}
+  public AddAccountActivity$4$1(acot paramacot) {}
   
   public void run()
   {

@@ -1,23 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-class bnyo
-  implements BusinessObserver
+public abstract interface bnyo
 {
-  bnyo(bnyn parambnyn, String paramString) {}
+  public abstract void A();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    paramInt = paramBundle.getInt("extra_result_code");
-    String str = paramBundle.getString("extra_result_err_msg");
-    paramBundle = paramBundle.getString("extra_cmd");
-    if (!paramBoolean)
-    {
-      bkad.a(bnyn.a(), "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
-      return;
-    }
-    bkad.c(bnyn.a(), "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
-  }
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import ahcb;
-import ahxe;
+import afyn;
+import agts;
+import amtj;
 import android.graphics.drawable.Drawable.ConstantState;
-import anzj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONException;
@@ -32,8 +32,8 @@ public class MessageForPoke
   public int interactType = 0;
   public boolean isPlayed;
   public Drawable.ConstantState mBubbleBgState;
-  public ahcb mFrameState = new ahcb();
-  public ahxe mUnlimitedState = new ahxe();
+  public afyn mFrameState = new afyn();
+  public agts mUnlimitedState = new agts();
   public String minVersion;
   public String name;
   public int state;
@@ -68,25 +68,25 @@ public class MessageForPoke
     switch (this.interactType)
     {
     default: 
-      this.msg = anzj.a(2131705512);
+      this.msg = amtj.a(2131705742);
       return;
     case 1: 
-      this.msg = anzj.a(2131705507);
+      this.msg = amtj.a(2131705737);
       return;
     case 2: 
-      this.msg = anzj.a(2131705486);
+      this.msg = amtj.a(2131705716);
       return;
     case 3: 
-      this.msg = anzj.a(2131705487);
+      this.msg = amtj.a(2131705717);
       return;
     case 4: 
-      this.msg = anzj.a(2131705474);
+      this.msg = amtj.a(2131705704);
       return;
     case 5: 
       this.msg = "[666]";
       return;
     case 6: 
-      this.msg = anzj.a(2131705489);
+      this.msg = amtj.a(2131705719);
       return;
     }
     this.msg = ("[" + this.name + "]");
@@ -136,13 +136,13 @@ public class MessageForPoke
     {
       this.isPlayed = true;
       prewrite();
-      paramQQAppInterface.a().a(this.frienduin, this.istroop, this.uniseq, this.msgData);
+      paramQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.frienduin, this.istroop, this.uniseq, this.msgData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPoke
  * JD-Core Version:    0.7.0.1
  */

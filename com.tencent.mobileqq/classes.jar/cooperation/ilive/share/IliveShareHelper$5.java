@@ -3,10 +3,10 @@ package cooperation.ilive.share;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
-import nnr;
 
 class IliveShareHelper$5
   implements Runnable
@@ -18,7 +18,7 @@ class IliveShareHelper$5
     label153:
     try
     {
-      localObject = nnr.a(BaseApplicationImpl.getContext(), IliveShareHelper.access$700(this.this$0), "GET", null, null);
+      localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), IliveShareHelper.access$700(this.this$0), "GET", null, null);
       if (localObject == null) {
         break label118;
       }

@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import qgu;
-import qhy;
+import qmv;
+import qob;
 
 public class PTSEngineLoader$5
   implements Runnable
 {
-  public PTSEngineLoader$5(qgu paramqgu) {}
+  public PTSEngineLoader$5(qmv paramqmv) {}
   
   public void run()
   {
@@ -17,23 +17,23 @@ public class PTSEngineLoader$5
       QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], has loaded, do not load again.");
       return;
     }
-    String str = qgu.b(this.this$0) + "/" + "libpts.so";
+    String str = qmv.b(this.this$0) + "/" + "libpts.so";
     QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], soFullPath = " + str);
     try
     {
-      if (bhmi.a(str))
+      if (FileUtils.fileExists(str))
       {
         System.load(str);
-        qgu.a(this.this$0, true);
+        qmv.a(this.this$0, true);
         QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], load so success.");
-        qhy.b("[loadPTSEngineImpl] pts succeed.", "2");
+        qob.b("[loadPTSEngineImpl] pts succeed.", "2");
         return;
       }
     }
     catch (Throwable localThrowable)
     {
       QLog.e("PTSEngineLoader", 1, "[loadPTSEngineImpl] error, t = " + localThrowable);
-      qhy.a(localThrowable.toString(), "2");
+      qob.a(localThrowable.toString(), "2");
       return;
     }
     QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts so does not exists.");

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bgec;
-import bger;
-import bges;
-import bgfe;
-import bgfm;
-import bgfw;
-import bgfz;
+import benk;
+import benz;
+import beoa;
+import beom;
+import beou;
+import bepe;
+import beph;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
@@ -14,22 +14,22 @@ import com.tencent.qphone.base.util.QLog;
 public class VideoInfo$CompressVideoSegment$1
   implements Runnable
 {
-  public VideoInfo$CompressVideoSegment$1(bges parambges, bger parambger, XMediaEditor paramXMediaEditor) {}
+  public VideoInfo$CompressVideoSegment$1(beoa parambeoa, benz parambenz, XMediaEditor paramXMediaEditor) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bger.e = 10;
-    this.jdField_a_of_type_Bger.g = -2147483647;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bger.c);
-    if ((localObject instanceof bgfz))
+    this.jdField_a_of_type_Benz.e = 10;
+    this.jdField_a_of_type_Benz.g = -2147483647;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Benz.c);
+    if ((localObject instanceof beph))
     {
-      localObject = (bgfz)localObject;
-      if (this.jdField_a_of_type_Bger.d.equals(((bgfz)localObject).a.getTag()))
+      localObject = (beph)localObject;
+      if (this.jdField_a_of_type_Benz.d.equals(((beph)localObject).a.getTag()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo before notify. vh hash=", Integer.valueOf(localObject.hashCode()) });
         }
-        ((bgfw)((bgec)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((bgfm)localObject, this.jdField_a_of_type_Bger, 0);
+        ((bepe)((benk)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((beou)localObject, this.jdField_a_of_type_Benz, 0);
       }
     }
   }

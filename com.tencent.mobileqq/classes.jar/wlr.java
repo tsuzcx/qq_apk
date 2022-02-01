@@ -1,65 +1,17 @@
-import android.annotation.TargetApi;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
-@TargetApi(14)
 public class wlr
-  extends wlj
+  implements View.OnTouchListener
 {
-  public wlr(@NonNull String[] paramArrayOfString)
-  {
-    super(paramArrayOfString);
-  }
+  public wlr(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  protected void a(String[] paramArrayOfString, wlk paramwlk)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int n = paramArrayOfString.length;
-    int i = 0;
-    if (i < n)
-    {
-      File localFile1 = new File(paramArrayOfString[i]);
-      double d = a(localFile1);
-      File[] arrayOfFile = localFile1.listFiles();
-      if (arrayOfFile == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = System.currentTimeMillis();
-        int i1 = arrayOfFile.length;
-        int k = 0;
-        int j = 0;
-        for (;;)
-        {
-          if (j < i1)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile2 = arrayOfFile[j];
-              int m = k;
-              if (l - localFile2.lastModified() > 86400000L)
-              {
-                a(localFile2);
-                m = k + 1;
-              }
-              j += 1;
-              k = m;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                yuk.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
-        paramwlk.jdField_b_of_type_Double = (d - a(localFile1) + paramwlk.jdField_b_of_type_Double);
-        paramwlk.jdField_b_of_type_Int = (k + paramwlk.jdField_b_of_type_Int);
-      }
-    }
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

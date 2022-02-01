@@ -1,9 +1,18 @@
-import android.widget.CompoundButton;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aggq
+class aggq
+  extends aghj
 {
-  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
+  aggq(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afwh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

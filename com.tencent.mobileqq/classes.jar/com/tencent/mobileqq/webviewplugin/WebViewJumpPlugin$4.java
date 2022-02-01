@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import bitv;
-import bmzn;
+import bgzx;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
 public class WebViewJumpPlugin$4
   implements Runnable
 {
-  public WebViewJumpPlugin$4(bitv parambitv, String paramString1, String paramString2) {}
+  public WebViewJumpPlugin$4(bgzx parambgzx, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bmzn.a().a(this.a, this.b);
+    MobileReportManager.getInstance().reportH5DomainClick(this.a, this.b);
   }
 }
 

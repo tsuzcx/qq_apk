@@ -1,86 +1,169 @@
-import android.graphics.Bitmap;
-import android.view.SurfaceHolder;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnPreAdListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ukw
-  implements TVK_IMediaPlayer.OnCaptureImageListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnPreAdListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  public void OnDownloadCallback(String paramString) {}
-  
-  public void a(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  private static WSRedDotPushMsg a()
   {
-    paramTVK_IMediaPlayer.setOnVideoPreparedListener(this);
-    paramTVK_IMediaPlayer.setOnCompletionListener(this);
-    paramTVK_IMediaPlayer.setOnPreAdListener(this);
-    paramTVK_IMediaPlayer.setOnErrorListener(this);
-    paramTVK_IMediaPlayer.setOnInfoListener(this);
-    paramTVK_IMediaPlayer.setOnCaptureImageListener(this);
-    paramTVK_IMediaPlayer.setOnSeekCompleteListener(this);
-    paramTVK_IMediaPlayer.setOnDownloadCallback(this);
-    paramTVK_IMediaPlayer.setOnNetVideoInfoListener(this);
+    Object localObject = umy.a();
+    if (localObject != null)
+    {
+      localObject = ((umy)localObject).a;
+      if (localObject != null)
+      {
+        uya.b("WeishiActivityHelper", "transformTrendsTabConfigToPushMsg mStrategyConfig=" + ((una)localObject).a);
+        if (!TextUtils.isEmpty(((una)localObject).a)) {
+          return WSRedDotPushMsg.getInstance(((una)localObject).a);
+        }
+      }
+    }
+    return null;
   }
   
-  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
+  private static WSRedDotPushMsg a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCaptureImageFailed] id:" + paramInt1 + ", errCode:" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder().append("TrendsTab RedDot Msg : ");
+    if (paramAppInfo != null) {}
+    for (Object localObject = paramAppInfo.buffer.get();; localObject = "appInfo is null.")
+    {
+      uya.b("WeishiActivityHelper", (String)localObject);
+      if ((paramAppInfo == null) || (TextUtils.isEmpty(paramAppInfo.buffer.get()))) {
+        break label154;
+      }
+      try
+      {
+        localObject = new JSONObject(paramAppInfo.buffer.get());
+        paramAppInfo = ((JSONObject)localObject).optString("_show_mission");
+        localObject = ((JSONObject)localObject).optJSONObject("msg");
+        if ((localObject == null) || (TextUtils.isEmpty(paramAppInfo))) {
+          break label154;
+        }
+        paramAppInfo = ((JSONObject)localObject).optJSONObject(paramAppInfo);
+        if (paramAppInfo == null) {
+          break label154;
+        }
+        paramAppInfo = paramAppInfo.optString("extinfo");
+        uya.b("WeishiActivityHelper", "TrendsTab RedDot extInfoStr : " + paramAppInfo);
+        paramAppInfo = WSRedDotPushMsg.getInstance(paramAppInfo);
+        return paramAppInfo;
+      }
+      catch (JSONException paramAppInfo)
+      {
+        paramAppInfo.printStackTrace();
+      }
+    }
+    label154:
+    return null;
   }
   
-  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  public static void a(Activity paramActivity, Intent paramIntent, WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCaptureImageSucceed] id:" + paramInt1 + ", width:" + paramInt2 + ", height:" + paramInt3);
+    if (paramIntent == null)
+    {
+      uya.d("WeishiActivityHelper", "gotoVideoLayerFromTrendsTab intent is null.");
+      return;
+    }
+    if (paramWSRedDotPushMsg != null) {
+      paramIntent.putExtra("key_weishi_push_msg_data", paramWSRedDotPushMsg);
+    }
+    QZoneHelper.forwardToQzoneTransluentActivity(paramActivity, QZoneHelper.UserInfo.getInstance(), paramIntent);
   }
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public static void a(Context paramContext, String paramString)
   {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCompletion]");
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    if (!(paramContext instanceof Activity)) {
+      localIntent.addFlags(268435456);
+    }
+    localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weishi");
+    localIntent.putExtra("url", paramString);
+    paramContext.startActivity(localIntent);
   }
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onError] model:" + paramInt1 + ", what:" + paramInt2 + ", position:" + paramInt3 + ", detailInfo:" + paramString);
+    paramInt = 1;
+    uya.d("WeishiActivityHelper", "外部跳转微视公众号 from=" + paramString);
+    if (paramContext == null)
+    {
+      uya.d("WSPushLog", "WeishiActivityHelper handleJumpTargetVideoFeed, context is null.");
+      return;
+    }
+    if (TextUtils.equals(paramString, "from_home_page"))
+    {
+      paramString = uyo.a();
+      uvr.a(paramString);
+      uvi.a(paramString);
+      if (a(paramContext, paramString, 2, null))
+      {
+        paramContext = WSPublicAccReport.getInstance();
+        if (paramString == null) {}
+        for (;;)
+        {
+          paramContext.enterPublicAccReport(paramString, paramInt);
+          ulc.a().b();
+          return;
+          paramInt = paramString.mStrategyInfo.getType();
+        }
+      }
+    }
+    WSPublicAccReport.getInstance().enterPublicAccReport(null, 1);
+    WSHomeFragment.a(paramContext, 1, paramBoolean);
+  }
+  
+  public static void a(Context paramContext, String paramString, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
+  {
+    MiniAppLauncher.startMiniApp(paramContext, uqs.a(paramString), 4006, paramMiniAppLaunchListener);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo, Intent paramIntent)
+  {
+    uya.b("WeishiActivityHelper", "handleTrendsTabClick hasRedDot = " + paramBoolean);
+    if (paramBoolean)
+    {
+      paramAppInfo = a(paramAppInfo);
+      uvr.b();
+    }
+    for (;;)
+    {
+      uvr.a(paramAppInfo, paramBoolean);
+      WSPublicAccReport.getInstance().enterTrendsTabReport(paramAppInfo, paramBoolean);
+      if (!a(paramContext, paramAppInfo, 6, paramIntent)) {
+        break;
+      }
+      return;
+      paramAppInfo = a();
+    }
+    a((Activity)paramContext, paramIntent, paramAppInfo);
+  }
+  
+  private static boolean a(Context paramContext, WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  {
+    uya.a("WeishiActivityHelper", "handleRedDotClick scene=" + paramInt + ", pushMsgData=" + paramWSRedDotPushMsg);
+    if ((paramWSRedDotPushMsg != null) && (paramWSRedDotPushMsg.mStrategyInfo != null))
+    {
+      uui localuui = (uui)paramWSRedDotPushMsg.mStrategyInfo;
+      paramWSRedDotPushMsg = uut.a(paramWSRedDotPushMsg, paramInt, paramIntent);
+      if (paramWSRedDotPushMsg != null) {
+        return paramWSRedDotPushMsg.a(paramContext, localuui);
+      }
+    }
     return false;
-  }
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onInfo] what:" + paramInt + ", extra:" + paramObject);
-    return false;
-  }
-  
-  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
-  {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onNetVideoInfo] player:" + paramTVK_IMediaPlayer + ", videoInfo:" + paramTVK_NetVideoInfo);
-  }
-  
-  public void onPreAdPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer, long paramLong) {}
-  
-  public void onPreAdPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
-  
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onSeekComplete] mediaPlayer:" + paramTVK_IMediaPlayer);
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onVideoPrepared] mediaPlayer:" + paramTVK_IMediaPlayer);
   }
 }
 

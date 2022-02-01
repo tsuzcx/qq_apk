@@ -1,12 +1,30 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class alfy
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  public alfy(SessionClearFragment paramSessionClearFragment) {}
   
-  public alfy(String paramString, float paramFloat)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    if (SessionClearFragment.a(this.a) == 0)
+    {
+      SessionClearFragment.a(this.a).setText(amtj.a(2131712948));
+      SessionClearFragment.a(this.a, 1);
+      SessionClearFragment.a(this.a).b();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      SessionClearFragment.a(this.a).setText(amtj.a(2131712946));
+      SessionClearFragment.a(this.a, 0);
+      SessionClearFragment.a(this.a).c();
+    }
   }
 }
 

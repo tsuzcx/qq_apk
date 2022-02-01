@@ -5,12 +5,12 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import apcq;
-import bnrf;
+import bkwm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -27,13 +27,13 @@ import java.util.concurrent.ExecutorService;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pfd;
-import pqj;
-import pqq;
-import pqr;
-import psl;
-import qfo;
-import qfq;
+import pkp;
+import pwd;
+import pwk;
+import pwl;
+import pyf;
+import qli;
+import qlk;
 import tencent.im.oidb.cmd0xdc0.oidb_0xdc0.GroupInfo;
 import tencent.im.oidb.cmd0xdc0.oidb_0xdc0.LocationInfo;
 import tencent.im.oidb.cmd0xdc0.oidb_0xdc0.LocationList;
@@ -41,23 +41,23 @@ import tencent.im.oidb.cmd0xdc0.oidb_0xdc0.ReqBody;
 import tencent.im.oidb.cmd0xdc0.oidb_0xdc0.RspBody;
 
 public class SelectPositionModule
-  extends pqj
+  extends pwd
 {
   private volatile long jdField_a_of_type_Long;
-  private apcq jdField_a_of_type_Apcq;
   private volatile SelectPositionModule.PositionData jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData;
-  private volatile List<psl> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private pqr jdField_a_of_type_Pqr;
+  private SosoInterface.OnLocationListener jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener;
+  private volatile List<pyf> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private pwl jdField_a_of_type_Pwl;
   private volatile SelectPositionModule.PositionData b;
   
-  public SelectPositionModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qfo paramqfo, Handler paramHandler)
+  public SelectPositionModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qli paramqli, Handler paramHandler)
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqfo, paramHandler);
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqli, paramHandler);
   }
   
   private SelectPositionModule.PositionData a(String paramString)
   {
-    Object localObject = bnrf.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
+    Object localObject = bkwm.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).getString(paramString, "");
@@ -93,7 +93,7 @@ public class SelectPositionModule
       localJSONObject.put("key_province", paramPositionData.province);
       localJSONObject.put("key_city", paramPositionData.city);
       localJSONObject.put("key_citycode", paramPositionData.cityCode);
-      Object localObject = bnrf.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
+      Object localObject = bkwm.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
       if (localObject != null)
       {
         localObject = ((SharedPreferences)localObject).edit();
@@ -113,7 +113,7 @@ public class SelectPositionModule
   
   private void a(String paramString)
   {
-    Object localObject = bnrf.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
+    Object localObject = bkwm.a(BaseApplicationImpl.getApplication().getRuntime(), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -129,7 +129,7 @@ public class SelectPositionModule
   {
     Object localObject = new oidb_0xdc0.ReqBody();
     ((oidb_0xdc0.ReqBody)localObject).uint32_req_type.set(1);
-    localObject = qfq.a("OidbSvc.0xdc0", 3520, 0, ((oidb_0xdc0.ReqBody)localObject).toByteArray());
+    localObject = qlk.a("OidbSvc.0xdc0", 3520, 0, ((oidb_0xdc0.ReqBody)localObject).toByteArray());
     ((ToServiceMsg)localObject).extraData.putBoolean("need_check_local_city_changed", paramBoolean);
     a((ToServiceMsg)localObject);
     if (QLog.isColorLevel()) {
@@ -140,7 +140,7 @@ public class SelectPositionModule
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     Object localObject = new oidb_0xdc0.RspBody();
-    int i = qfq.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    int i = qlk.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
     QLog.d("SelectPositionModule", 2, new Object[] { "handle0xdc0WhiteList result = ", Integer.valueOf(i) });
     if (i == 0)
     {
@@ -156,7 +156,7 @@ public class SelectPositionModule
           {
             localObject = (oidb_0xdc0.GroupInfo)paramObject.rpt_group_list.get(i);
             if (((oidb_0xdc0.GroupInfo)localObject).bytes_name.has()) {
-              paramFromServiceMsg.add(new psl(((oidb_0xdc0.GroupInfo)localObject).bytes_name.get().toStringUtf8()));
+              paramFromServiceMsg.add(new pyf(((oidb_0xdc0.GroupInfo)localObject).bytes_name.get().toStringUtf8()));
             }
             if ((((oidb_0xdc0.GroupInfo)localObject).rpt_location_list.has()) && (((oidb_0xdc0.GroupInfo)localObject).rpt_location_list.size() > 0))
             {
@@ -169,14 +169,14 @@ public class SelectPositionModule
                   if ((!localLocationInfo.bytes_province.has()) || (!localLocationInfo.bytes_country.has())) {
                     break label329;
                   }
-                  paramFromServiceMsg.add(new psl(localLocationInfo.bytes_country.get().toStringUtf8(), localLocationInfo.bytes_province.get().toStringUtf8(), localLocationInfo.bytes_city.get().toStringUtf8(), localLocationInfo.bytes_city_code.get().toStringUtf8()));
+                  paramFromServiceMsg.add(new pyf(localLocationInfo.bytes_country.get().toStringUtf8(), localLocationInfo.bytes_province.get().toStringUtf8(), localLocationInfo.bytes_city.get().toStringUtf8(), localLocationInfo.bytes_city_code.get().toStringUtf8()));
                 }
                 for (;;)
                 {
                   j += 1;
                   break;
                   label329:
-                  paramFromServiceMsg.add(new psl("", "", localLocationInfo.bytes_city.get().toStringUtf8(), localLocationInfo.bytes_city_code.get().toStringUtf8()));
+                  paramFromServiceMsg.add(new pyf("", "", localLocationInfo.bytes_city.get().toStringUtf8(), localLocationInfo.bytes_city_code.get().toStringUtf8()));
                 }
               }
             }
@@ -199,8 +199,8 @@ public class SelectPositionModule
         }
         QLog.i("SelectPositionModule", 2, "handle0xdc0WhiteList result, mCityWhiteList is empty");
       }
-      if (this.jdField_a_of_type_Pqr != null) {
-        this.jdField_a_of_type_Pqr.a(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Pwl != null) {
+        this.jdField_a_of_type_Pwl.a(this.jdField_a_of_type_JavaUtilList);
       }
       if (paramToServiceMsg.extraData.getBoolean("need_check_local_city_changed", true)) {
         d();
@@ -258,7 +258,7 @@ public class SelectPositionModule
       if ((!a(localPositionData)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.equals(localPositionData))) {
         break label137;
       }
-      pfd.a().a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+      pkp.a().a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
       if (QLog.isColorLevel()) {
         QLog.i("SelectPositionModule", 2, "checkNeedChangeLocalCity changeCity lastPositionData = " + localPositionData);
       }
@@ -279,7 +279,7 @@ public class SelectPositionModule
         QLog.i("SelectPositionModule", 2, "checkNeedChangeLocalCity clearSelectedPositionData mSelectedPositionData = " + localPositionData);
         return;
       } while (!a(localPositionData));
-      pfd.a().a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+      pkp.a().a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
     } while (!QLog.isColorLevel());
     QLog.i("SelectPositionModule", 2, "checkNeedChangeLocalCity reserveCity mSelectedPositionData = " + localPositionData);
   }
@@ -313,7 +313,7 @@ public class SelectPositionModule
     return b();
   }
   
-  public List<psl> a()
+  public List<pyf> a()
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
@@ -332,10 +332,10 @@ public class SelectPositionModule
   public void a()
   {
     QLog.d("SelectPositionModule", 2, "requestCurrentLoction");
-    if (this.jdField_a_of_type_Apcq == null) {
-      this.jdField_a_of_type_Apcq = new pqq(this, 3, true, true, 0L, false, false, "readinjoy_position");
+    if (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener == null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new pwk(this, 3, true, true, 0L, false, false, "readinjoy_position");
     }
-    SosoInterface.a(this.jdField_a_of_type_Apcq);
+    SosoInterface.startLocation(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
   }
   
   public void a(SelectPositionModule.PositionData paramPositionData)
@@ -354,9 +354,9 @@ public class SelectPositionModule
     }
   }
   
-  public void a(pqr parampqr)
+  public void a(pwl parampwl)
   {
-    this.jdField_a_of_type_Pqr = parampqr;
+    this.jdField_a_of_type_Pwl = parampwl;
   }
   
   public boolean a(SelectPositionModule.PositionData paramPositionData)
@@ -373,8 +373,8 @@ public class SelectPositionModule
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        psl localpsl = (psl)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (paramPositionData.cityCode.equals(localpsl.e))
+        pyf localpyf = (pyf)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (paramPositionData.cityCode.equals(localpyf.e))
         {
           if (QLog.isColorLevel()) {
             QLog.d("SelectPositionModule", 2, "checkPositionInCityWhiteList true currentPosition = " + paramPositionData);
@@ -411,9 +411,9 @@ public class SelectPositionModule
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      psl localpsl = (psl)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (paramPositionData.cityCode.equals(localpsl.e)) {
-        paramPositionData.city = localpsl.b;
+      pyf localpyf = (pyf)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (paramPositionData.cityCode.equals(localpyf.e)) {
+        paramPositionData.city = localpyf.b;
       }
       i += 1;
     }

@@ -1,56 +1,28 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class oyv
-  extends RecyclerView.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private sxn jdField_a_of_type_Sxn;
-  private List<String> b = new ArrayList();
-  
-  public oyv(Context paramContext, List<String> paramList1, List<String> paramList2, sxn paramsxn)
+  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
   {
-    this.b = paramList1;
-    this.jdField_a_of_type_JavaUtilList = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sxn = paramsxn;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof oyx))
-    {
-      oyx localoyx = (oyx)paramViewHolder;
-      if ((paramInt >= 0) && (paramInt < this.b.size()))
-      {
-        String str1 = (String)this.b.get(paramInt);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localoyx.a.setText(str1);
-        localoyx.a.setOnClickListener(new oyw(this, str2, str1));
-      }
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new oyx(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560143, null));
+    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
+    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
+    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
+    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
+    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
+    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
+    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
+    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
+    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
+    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
+    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
+    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
+    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
+    return localBundle;
   }
 }
 

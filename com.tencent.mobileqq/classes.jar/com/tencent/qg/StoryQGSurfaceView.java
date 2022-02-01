@@ -1,17 +1,15 @@
 package com.tencent.qg;
 
 import android.content.Context;
-import bkfm;
-import bkfo;
-import bkfp;
-import bkfx;
+import bikw;
+import biky;
+import bikz;
+import bilh;
 import com.tencent.qg.sdk.QGBitmapLoader;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.QGReporter;
 import com.tencent.qg.sdk.invoke.ModuleEngine;
 import com.tencent.qg.sdk.log.GLog;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
 
 public class StoryQGSurfaceView
   extends QGGLSurfaceView
@@ -25,19 +23,13 @@ public class StoryQGSurfaceView
     a();
   }
   
-  public StoryQGSurfaceView(Context paramContext, int paramInt1, int paramInt2, EGLContext paramEGLContext, EGLConfig paramEGLConfig, String paramString)
-  {
-    super(paramContext, paramInt1, paramInt2, paramEGLContext, paramEGLConfig, paramString);
-    a();
-  }
-  
   public void a()
   {
-    GLog.init(new bkfo());
-    QGBitmapLoader.setBitmapLoader(new bkfm());
-    QGReporter.setReporter(new bkfp());
+    GLog.init(new biky());
+    QGBitmapLoader.setBitmapLoader(new bikw());
+    QGReporter.setReporter(new bikz());
     this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine = new ModuleEngine();
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new bkfx());
+    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new bilh());
     setModuleEngin(this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine);
   }
 }

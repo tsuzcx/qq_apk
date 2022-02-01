@@ -1,30 +1,21 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import com.tencent.avgame.gameroom.gamelist.GameGridItemView;
 
-public abstract interface ndb
+class ndb
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a();
+  GameGridItemView a;
   
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(View paramView);
-  
-  public abstract void c();
-  
-  public abstract void c(View paramView);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public ndb(View paramView, GameGridItemView paramGameGridItemView)
+  {
+    super(paramView);
+    this.a = paramGameGridItemView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndb
  * JD-Core Version:    0.7.0.1
  */

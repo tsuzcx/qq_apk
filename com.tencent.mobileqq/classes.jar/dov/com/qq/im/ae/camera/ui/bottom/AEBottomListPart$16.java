@@ -1,27 +1,27 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bolg;
-import boll;
-import boqr;
-import boqu;
+import blpm;
+import blpr;
+import bluy;
+import blvb;
 import java.util.List;
 
 public class AEBottomListPart$16
   implements Runnable
 {
-  public AEBottomListPart$16(boll paramboll) {}
+  public AEBottomListPart$16(blpr paramblpr) {}
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_Boqr.b(this.this$0.a());
-    this.this$0.jdField_a_of_type_Bolg.a((List)localObject);
-    localObject = boqr.a();
-    if ((localObject == null) || (((boqu)localObject).equals(boqu.a)))
+    Object localObject = this.this$0.jdField_a_of_type_Bluy.b(this.this$0.a());
+    this.this$0.jdField_a_of_type_Blpm.a((List)localObject);
+    localObject = bluy.a();
+    if ((localObject == null) || (((blvb)localObject).equals(blvb.a)))
     {
-      boll.a(this.this$0, 0);
+      this.this$0.b(0);
       return;
     }
-    boll.a(this.this$0, (boqu)localObject);
+    blpr.a(this.this$0, (blvb)localObject);
   }
 }
 

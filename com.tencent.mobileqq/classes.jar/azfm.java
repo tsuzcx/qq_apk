@@ -1,17 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-
 public class azfm
-  implements DialogInterface.OnClickListener
 {
-  public azfm(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public float b;
+  public int b;
+  public String b;
+  public float c;
+  public String c;
+  public float d;
+  public float e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(int paramInt)
   {
-    azir.a("0X800AF9C", 1);
-    paramDialogInterface.dismiss();
-    AccountOnlineStateActivity.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "\"第一个\"";
+    case 2: 
+      return "\"第二个\"";
+    case 3: 
+      return "\"第三个\"";
+    case 4: 
+      return "\"第四个\"";
+    }
+    return "\"第五个\"";
   }
 }
 

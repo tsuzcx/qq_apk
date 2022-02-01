@@ -2,27 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import java.util.Map;
-import java.util.Timer;
+import mqq.app.AppRuntime;
+import pay;
 
 class TaskManager$9
   implements JSContext.Callback
 {
-  TaskManager$9(TaskManager paramTaskManager, Task paramTask) {}
+  TaskManager$9(TaskManager paramTaskManager) {}
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    String str = (String)paramArrayOfObject[0];
-    double d = ((Double)paramArrayOfObject[1]).doubleValue();
-    paramArrayOfObject = new Timer();
-    paramArrayOfObject.schedule(new TaskManager.9.1(this, paramJSContext, str), d);
-    try
-    {
-      paramInt = paramJSContext.timerTasks.size();
-      paramJSContext.timerTasks.put(Integer.valueOf(paramInt), paramArrayOfObject);
-      return Integer.valueOf(paramInt);
-    }
-    finally {}
+    return pay.a().getAccount();
   }
 }
 

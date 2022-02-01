@@ -1,20 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
 class urm
-  implements View.OnClickListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
   urm(url paramurl) {}
   
-  public void onClick(View paramView)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (url.a(this.a).getActivity() != null) {
-      url.a(this.a).getActivity().doOnBackPressed();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    uya.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestAudioFocus] onAudioFocusChange focusChange:" + paramInt);
   }
 }
 

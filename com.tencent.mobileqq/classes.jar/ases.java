@@ -1,266 +1,353 @@
-import android.os.Looper;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.1;
-import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.2;
-import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.3;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.1;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.2;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.manager.Manager;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
-public abstract class ases<T extends CustomEmotionBase>
-  implements Manager
+public class ases
 {
-  public QQAppInterface a;
-  protected List<T> a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, asfp> jdField_a_of_type_JavaUtilHashMap;
   
   public ases(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public abstract asmu a(T paramT);
-  
-  public T a(String paramString)
+  private asfm a(String paramString1, int paramInt, String paramString2, MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    do
+    if (TextUtils.isEmpty(paramString2))
     {
-      EntityManager localEntityManager;
-      do
-      {
-        return null;
-        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      } while (localEntityManager == null);
-      paramString = localEntityManager.query(a(), false, "url=?", new String[] { paramString }, null, null, null, null);
-      localEntityManager.close();
-    } while ((paramString == null) || (paramString.size() != 1));
-    return (CustomEmotionBase)paramString.get(0);
-  }
-  
-  public abstract Class a();
-  
-  public abstract List<T> a();
-  
-  public List<String> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from getCustomEmoticonResIdsByType.");
-    }
-    Object localObject = a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)((Iterator)localObject).next();
-        String str = localCustomEmotionBase.resid;
-        if ((localCustomEmotionBase.RomaingType.equals(paramString)) && (str != null) && (!"".equals(str))) {
-          localArrayList.add(str);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
-      if (localCustomEmotionBase.RomaingType.equals("failed")) {
-        localArrayList.add(localCustomEmotionBase);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
-    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-  }
-  
-  public void a(aset paramaset)
-  {
-    if (paramaset == null) {
-      return;
-    }
-    ThreadManager.post(new CustomEmotionRoamingDBManagerBase.3(this, paramaset), 5, null, true);
-  }
-  
-  public void a(T paramT)
-  {
-    if (paramT != null)
-    {
-      b(paramT, 4);
-      a(paramT, 4);
-    }
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    if (paramT == null) {
-      return;
-    }
-    a(new CustomEmotionRoamingDBManagerBase.2(this, paramInt, paramT), 8);
-  }
-  
-  public void a(Runnable paramRunnable, int paramInt)
-  {
-    if (paramRunnable != null)
-    {
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        paramRunnable.run();
-      }
-    }
-    else {
-      return;
-    }
-    ThreadManager.post(paramRunnable, paramInt, null, true);
-  }
-  
-  public void a(List<T> paramList)
-  {
-    if ((paramList == null) || (paramList.size() < 1)) {
-      return;
-    }
-    int i = 0;
-    while (i < paramList.size())
-    {
-      b((CustomEmotionBase)paramList.get(i), 4);
-      i += 1;
-    }
-    a(paramList, 4);
-  }
-  
-  protected void a(List<T> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.size() < 1)) {
-      return;
-    }
-    a(new CustomEmotionRoamingDBManagerBase.1(this, paramList, paramInt), 8);
-  }
-  
-  public abstract List<asmu> b();
-  
-  public List<T> b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    List localList;
-    do
-    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: forwardRequestSeq is null");
       return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from getEmoticonDatasByType.");
-      }
-      localList = a();
-    } while ((localList == null) || (localList.size() <= 0));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < localList.size())
-    {
-      CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localList.get(i);
-      if (localCustomEmotionBase.RomaingType.equals(paramString)) {
-        localArrayList.add(localCustomEmotionBase);
-      }
-      i += 1;
     }
-    return localArrayList;
-  }
-  
-  public void b(T paramT)
-  {
-    if (paramT != null)
+    if (paramMessageRecord == null)
     {
-      b(paramT, 2);
-      a(paramT, 2);
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: file message record is null");
+      return null;
     }
-  }
-  
-  protected void b(T paramT, int paramInt)
-  {
-    if (paramT == null) {}
-    CustomEmotionBase localCustomEmotionBase;
-    do
+    paramString2 = new asfm(this, paramString2, paramString1, paramInt, paramMessageRecord);
+    paramString1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    if (a(paramString1)) {
+      if (paramInt == 0) {
+        paramString1 = new asfa(this, paramMessageRecord);
+      }
+    }
+    for (;;)
     {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext())
+      label76:
+      paramString2.a = paramString1;
+      return paramString2;
+      if (paramInt == 3000)
+      {
+        paramString1 = new asfj(this, paramMessageRecord);
+      }
+      else if (paramInt == 1)
+      {
+        paramString1 = new asft(this, paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"), paramString1, null);
+      }
+      else
       {
         do
         {
-          switch (paramInt)
+          do
           {
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("CustomEmotionRoamingDBManagerBase", 2, "can not update fav emoticon cache data, type:" + paramInt);
-        return;
-        this.jdField_a_of_type_JavaUtilList.add(paramT);
-        return;
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
+            try
+            {
+              int i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
+              switch (i)
+              {
+              default: 
+                paramString1 = null;
+              }
+            }
+            catch (NumberFormatException paramString1)
+            {
+              QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString1.toString());
+              return null;
+            }
+            if (paramInt == 0)
+            {
+              paramString1 = new aseu(this, paramMessageRecord);
+              break;
+            }
+            if (paramInt == 3000)
+            {
+              paramString1 = new asew(this, paramMessageRecord);
+              break;
+            }
+          } while (paramInt != 1);
+          paramString1 = new asey(this, paramMessageRecord);
+          break;
+          if (paramInt == 0)
+          {
+            paramString1 = new asfd(this, paramMessageRecord);
             break;
           }
-          localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
-        } while (localCustomEmotionBase.emoId != paramT.emoId);
-        localCustomEmotionBase.replace(paramT);
-        return;
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+          if (paramInt == 3000)
+          {
+            paramString1 = new asff(this, paramMessageRecord);
+            break;
+          }
+        } while (paramInt != 1);
+        paramString1 = new asfh(this, paramMessageRecord);
       }
-      localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
-    } while (localCustomEmotionBase.emoId != paramT.emoId);
-    this.jdField_a_of_type_JavaUtilList.remove(localCustomEmotionBase);
-  }
-  
-  public abstract List<asmu> c();
-  
-  public List<T> c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from findMagicEmosById.");
     }
-    List localList = a();
-    ArrayList localArrayList = new ArrayList();
-    if ((localList != null) && (localList.size() > 0))
+    if (paramInt == 0) {
+      paramInt = 3;
+    }
+    for (;;)
     {
-      int i = 0;
-      while (i < localList.size())
+      paramString1 = new asfr(this, paramMessageRecord, paramInt, null);
+      break label76;
+      if (paramInt == 3000)
       {
-        CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localList.get(i);
-        if ((localCustomEmotionBase != null) && (localCustomEmotionBase.emoPath.equals(paramString))) {
-          localArrayList.add(localCustomEmotionBase);
+        paramInt = 106;
+      }
+      else
+      {
+        if (paramInt != 1) {
+          break;
         }
-        i += 1;
+        paramInt = 102;
       }
     }
-    return localArrayList;
   }
   
-  public void c(T paramT)
+  private static void a(MessageRecord paramMessageRecord, Bundle paramBundle)
   {
-    if (paramT != null)
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      b(paramT, 1);
-      a(paramT, 1);
+      String str = (String)localIterator.next();
+      paramMessageRecord.saveExtInfoToExtStr(str, paramBundle.getString(str));
     }
   }
   
-  public void onDestroy()
+  private void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidOsHandler.post(new QFileMsgForwardManager.2(this, paramString));
+  }
+  
+  private boolean a(MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardLasSuccess");
+    if (!TextUtils.isEmpty(paramMessageRecord))
+    {
+      long l = Long.parseLong(paramMessageRecord);
+      if (bbko.a() - l < 86400L) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (!FileUtils.fileExistsAndNotEmpty(paramString))
+    {
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, "filePath[" + paramString + "] file is not existed");
+        bool2 = bool1;
+      }
+    }
+    do
+    {
+      return bool2;
+      bool1 = bool2;
+      if (aszt.a(paramString) <= 10485760L) {
+        bool1 = true;
+      }
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "file is isSmall:" + bool1);
+    return bool1;
+  }
+  
+  private static String b(long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692255);
+    }
+    if (paramLong > 10485760L) {
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692257);
+    }
+    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692294);
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, asfo paramasfo)
+  {
+    if (paramasfo == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds but callback is null fileid " + paramString);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds will call reqFeeds fileid " + paramString);
+    zrj.a(paramQQAppInterface, paramLong1, paramInt1, paramString, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean, paramBundle, new aset(paramString, paramasfo, paramLong2));
+  }
+  
+  private void b(MessageRecord paramMessageRecord, Bundle paramBundle)
+  {
+    if (paramMessageRecord == null)
+    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "updateFileMessageRecordWithUuid: MessageRecord is null.");
+      return;
+    }
+    paramMessageRecord.removeExtInfoToExtStr("_m_ForwardFileIdCrc");
+    a(paramMessageRecord, paramBundle);
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "1");
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardLasSuccess", String.valueOf(bbko.a()));
+  }
+  
+  private void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new QFileMsgForwardManager.3(this, paramString));
+  }
+  
+  public void a(aslx paramaslx, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    if ((paramHashMap == null) || (paramHashMap.size() <= 0)) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "addMultiFileUploadRequest: file message record list is null");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new QFileMsgForwardManager.1(this, paramaslx));
+  }
+  
+  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    if (ataw.a(paramMessageRecord1)) {
+      paramMessageRecord2.extStr = paramMessageRecord1.extStr;
+    }
+    for (;;)
+    {
+      try
+      {
+        i = Integer.parseInt(paramMessageRecord1.getExtInfoFromExtStr("_m_ForwardFileType"));
+        switch (i)
+        {
+        default: 
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSenderUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileStatus", "4");
+          paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardFaildReason");
+          paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardLasSuccess");
+          return;
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, localNumberFormatException.toString());
+        int i = -1;
+        continue;
+        paramMessageRecord1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
+        if (paramMessageRecord1 == null) {
+          continue;
+        }
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", paramMessageRecord1.getFilePath());
+        continue;
+        paramMessageRecord1 = (MessageForTroopFile)aszt.a((ChatMessage)paramMessageRecord1);
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", bfby.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord1).a);
+        continue;
+      }
+      Object localObject;
+      if ((paramMessageRecord1 instanceof MessageForFile))
+      {
+        long l = paramMessageRecord1.uniseq;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
+        if (localObject != null)
+        {
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileName", ((FileManagerEntity)localObject).fileName);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSize", String.valueOf(((FileManagerEntity)localObject).fileSize));
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardUuid", ((FileManagerEntity)localObject).Uuid);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileIdCrc", ((FileManagerEntity)localObject).fileIdCrc);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardMd5", ((FileManagerEntity)localObject).strFileMd5);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", ((FileManagerEntity)localObject).getFilePath());
+          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_750_", ((FileManagerEntity)localObject).strLargeThumPath);
+          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_384_", ((FileManagerEntity)localObject).strMiddleThumPath);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(((FileManagerEntity)localObject).imgWidth));
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(((FileManagerEntity)localObject).imgHeight));
+          if (((FileManagerEntity)localObject).peerType == 0)
+          {
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardReceiverUin", ((FileManagerEntity)localObject).peerUin);
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "1");
+          }
+          for (;;)
+          {
+            if (((FileManagerEntity)localObject).status != 3) {
+              break label451;
+            }
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardStatusPaused", "1");
+            break;
+            if (((FileManagerEntity)localObject).peerType == 3000)
+            {
+              paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardReceiverUin", ((FileManagerEntity)localObject).peerUin);
+              paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "2");
+            }
+            else if (((FileManagerEntity)localObject).peerType == 1)
+            {
+              paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "3");
+            }
+          }
+        }
+        else
+        {
+          label451:
+          QLog.e("FileMultiMsgManager<FileAssistant>", 1, "cann't find Entity by msg:" + paramMessageRecord1.uniseq);
+        }
+      }
+      else if ((paramMessageRecord1 instanceof MessageForTroopFile))
+      {
+        paramMessageRecord1 = (MessageForTroopFile)paramMessageRecord1;
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileType", "3");
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardReceiverUin", paramMessageRecord1.frienduin);
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSha", paramMessageRecord1.sha1);
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardMd5", paramMessageRecord1.md5);
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSize", String.valueOf(paramMessageRecord1.fileSize));
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(paramMessageRecord1.width));
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(paramMessageRecord1.height));
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardDuration", String.valueOf(paramMessageRecord1.duration));
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardBusType", String.valueOf(paramMessageRecord1.bisID));
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardUuid", paramMessageRecord1.url);
+        paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileName", paramMessageRecord1.fileName);
+        localObject = bfby.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord1);
+        if (localObject != null)
+        {
+          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_750_", ((becp)localObject).c);
+          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_384_", ((becp)localObject).d);
+          if (((paramMessageRecord1.width == 0) || (paramMessageRecord1.height == 0)) && (((becp)localObject).e > 0) && (((becp)localObject).f > 0))
+          {
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(paramMessageRecord1.width));
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(paramMessageRecord1.height));
+          }
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", ((becp)localObject).a);
+          if ((((becp)localObject).b == 2) || (((becp)localObject).b == 3)) {
+            paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardStatusPaused", "1");
+          }
+        }
+      }
+    }
   }
 }
 

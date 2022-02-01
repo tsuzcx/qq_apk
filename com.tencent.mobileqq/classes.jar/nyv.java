@@ -1,13 +1,30 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class nyv
-  implements bljb
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public nyv(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nyv(VideoCoverView paramVideoCoverView) {}
   
-  public void onDismiss()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    ReadInJoyNativeAdFragment.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "is prepare");
+    }
+    if (VideoCoverView.a(this.a) == 1) {
+      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    bcef.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
+    nya.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
+    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
+    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    {
+      VideoCoverView.a(this.a).start();
+      this.a.jdField_a_of_type_Int = 4;
+      this.a.g();
+    }
   }
 }
 

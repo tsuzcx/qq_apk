@@ -1,16 +1,28 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class anbq
-  implements MediaPlayer.OnCompletionListener
+public class anbq
+  implements BusinessObserver
 {
-  anbq(anbl paramanbl, ancl paramancl, JSONObject paramJSONObject) {}
+  protected void a(boolean paramBoolean, bcqu parambcqu) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  protected void b(boolean paramBoolean, bcqu parambcqu) {}
+  
+  protected void c(boolean paramBoolean, bcqu parambcqu) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Ancl.a(this.jdField_a_of_type_OrgJsonJSONObject);
-    this.jdField_a_of_type_Anbl.a(10);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      b(paramBoolean, (bcqu)paramObject);
+      return;
+    case 1: 
+      c(paramBoolean, (bcqu)paramObject);
+      return;
+    }
+    a(paramBoolean, (bcqu)paramObject);
   }
 }
 

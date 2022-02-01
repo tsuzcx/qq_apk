@@ -1,42 +1,42 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 
 public class aify
-  extends aifp
+  implements tdu
 {
-  public aify(QQAppInterface paramQQAppInterface, aigj paramaigj, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, aghj paramaghj)
-  {
-    super(paramQQAppInterface, paramaigj, paramQQWalletBaseMsgElem, paramInt, paramaghj);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
-      this.i = 0;
-    }
-    this.j = 2130847237;
-  }
+  public aify(SystemMsgListView paramSystemMsgListView) {}
   
-  public boolean b()
+  public void a(tdz paramtdz)
   {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Aigj.b.setVisibility(0);
-    this.jdField_a_of_type_Aigj.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Aigj.b.setText(aifu.b);
-    return false;
-  }
-  
-  public void i()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
+    int j;
+    if (paramtdz != null)
     {
-      this.jdField_a_of_type_Aigj.d.setVisibility(0);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramtdz.a() + " tabid = " + (Integer)paramtdz.a());
+      }
+      SystemMsgListView.a(this.a).a(((Integer)paramtdz.a()).intValue(), paramtdz.a());
+      i = SystemMsgListView.a(this.a).b();
+      paramtdz = (aidk)SystemMsgListView.a(this.a).get(i);
+      if (paramtdz == null) {
+        break label141;
+      }
+      j = paramtdz.b;
     }
-    super.i();
+    for (int i = paramtdz.c;; i = SystemMsgListView.a(this.a).c)
+    {
+      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
+      SystemMsgListView.a(this.a).a(0L);
+      return;
+      label141:
+      j = SystemMsgListView.a(this.a).b;
+    }
   }
+  
+  public void b(tdz paramtdz) {}
+  
+  public void c(tdz paramtdz) {}
 }
 
 

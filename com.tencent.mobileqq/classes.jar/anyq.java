@@ -1,8 +1,19 @@
-public class anyq
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
+
+class anyq
+  implements MediaPlayer.OnErrorListener
 {
-  public long a;
-  public long b;
-  public long c;
+  anyq(anyn paramanyn) {}
+  
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    }
+    return false;
+  }
 }
 
 

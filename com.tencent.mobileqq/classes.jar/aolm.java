@@ -1,23 +1,23 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
 
-public class aolm
-  implements ThreadFactory
+public final class aolm
+  implements Parcelable.Creator<ArWebInfo>
 {
-  private final AtomicInteger a = new AtomicInteger(1);
-  
-  public Thread newThread(Runnable paramRunnable)
+  public ArWebInfo a(Parcel paramParcel)
   {
-    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
-    if (paramRunnable.getPriority() != 10) {
-      paramRunnable.setPriority(10);
-    }
-    return paramRunnable;
+    return new ArWebInfo(paramParcel);
+  }
+  
+  public ArWebInfo[] a(int paramInt)
+  {
+    return new ArWebInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,148 +1,156 @@
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.transfile.HttpDownloaderParams;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ayek
 {
   public static int a;
-  public static long a;
   public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  boolean a;
-  protected int b;
-  boolean b;
-  protected int c;
-  protected int d;
-  protected String e = "";
-  protected String f = "";
-  protected String g = "";
-  protected String h = "";
-  protected String i = "";
-  protected String j = "";
-  protected String k = "";
-  protected String l = "";
-  protected String m = "";
-  protected String n = "";
-  protected String o = "";
-  protected String p = "";
+  public static boolean a;
+  public static boolean b;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    jdField_c_of_type_JavaLangString = "";
-    jdField_d_of_type_JavaLangString = "";
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = "struct_msg_pic_pre";
   }
   
-  public ayek()
+  public static int a()
   {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public ayek a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public ayek a(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      this.m = ("" + axws.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-    }
-    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
-    if (l1 % 1000L > 500L) {}
-    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      this.e = (l1 + "");
-      this.f = jdField_c_of_type_JavaLangString;
-      this.g = jdField_b_of_type_JavaLangString;
-      this.h = jdField_a_of_type_JavaLangString;
-      this.i = (nnr.a() + "");
-      bdll.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      return BaseApplicationImpl.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).getInt("mStructMsgPicSwitch", 0);
+    }
+    return 0;
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      jdField_a_of_type_Int = paramInt;
+      b = true;
+      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences(((QQAppInterface)localObject).getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).edit();
+      ((SharedPreferences.Editor)localObject).putInt("mStructMsgPicSwitch", paramInt);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+  }
+  
+  public static void a(bcgw parambcgw, List<String> paramList)
+  {
+    if ((parambcgw != null) && ((parambcgw instanceof bcgx)))
+    {
+      parambcgw = ((bcgx)parambcgw).a;
+      if ((parambcgw != null) && (parambcgw.size() > 0)) {
+        parambcgw = parambcgw.iterator();
+      }
+    }
+    else
+    {
+      while (parambcgw.hasNext())
+      {
+        a((bcgw)parambcgw.next(), paramList);
+        continue;
+        if ((parambcgw != null) && ((parambcgw instanceof bciz)))
+        {
+          parambcgw = ((bciz)parambcgw).ac;
+          if ((TextUtils.isEmpty(parambcgw)) || (!parambcgw.startsWith("http"))) {
+            break;
+          }
+        }
+      }
+    }
+    try
+    {
+      if (a(new URL(parambcgw).getHost())) {
+        paramList.add(parambcgw);
+      }
       return;
     }
-  }
-  
-  public ayek b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    return this;
-  }
-  
-  public ayek b(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
-    }
-    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
+    catch (MalformedURLException parambcgw)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
+      parambcgw.printStackTrace();
     }
-    this.i = (nnr.a() + "");
-    bdll.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
   }
   
-  public ayek c(String paramString)
+  public static void a(MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
   {
-    this.g = paramString;
-    return this;
+    int i = aydq.a();
+    if (!b)
+    {
+      jdField_a_of_type_Int = a();
+      b = true;
+    }
+    if ((i != 0) && (jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("StructMsgPicPreDelegate", 2, "not wifi not pre download");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (paramMessageForStructing != null)
+      {
+        paramQQAppInterface = paramMessageForStructing.structingMsg;
+        ArrayList localArrayList = new ArrayList();
+        if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof AbsShareMsg)))
+        {
+          localObject = ((AbsShareMsg)paramQQAppInterface).getStructMsgItemLists();
+          if ((localObject != null) && (((List)localObject).size() > 0))
+          {
+            localObject = ((List)localObject).iterator();
+            while (((Iterator)localObject).hasNext()) {
+              a((bcgw)((Iterator)localObject).next(), localArrayList);
+            }
+          }
+        }
+        if (localArrayList.size() <= 0) {
+          break;
+        }
+        Object localObject = new HttpDownloaderParams();
+        ((HttpDownloaderParams)localObject).param1 = paramQQAppInterface.mMsgServiceID;
+        ((HttpDownloaderParams)localObject).param2 = paramQQAppInterface.mMsgTemplateID;
+        ((HttpDownloaderParams)localObject).param3 = String.valueOf(paramMessageForStructing.istroop);
+        ((HttpDownloaderParams)localObject).isPreDownload = true;
+        paramMessageForStructing = localArrayList.iterator();
+        while (paramMessageForStructing.hasNext()) {
+          a((String)paramMessageForStructing.next(), (HttpDownloaderParams)localObject);
+        }
+      }
+    }
   }
   
-  public ayek d(String paramString)
+  public static void a(String paramString, HttpDownloaderParams paramHttpDownloaderParams)
   {
-    this.h = paramString;
-    return this;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http"))) {
+      HttpDownloader.downloadImageByHttpEngine(paramString, paramHttpDownloaderParams, null, 1);
+    }
   }
   
-  public ayek e(String paramString)
+  public static boolean a(String paramString)
   {
-    this.m = paramString;
-    return this;
-  }
-  
-  public ayek f(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public ayek g(String paramString)
-  {
-    this.p = paramString;
-    return this;
-  }
-  
-  public ayek h(String paramString)
-  {
-    this.j = paramString;
-    return this;
-  }
-  
-  public ayek i(String paramString)
-  {
-    this.k = paramString;
-    return this;
+    boolean bool = Pattern.compile("((\\.|^)(qq\\.com|soso\\.com|gtimg\\.cn|url\\.cn|qpic\\.cn|qlogo\\.cn|idqqimg\\.com)$)").matcher(paramString).find();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("StructMsgPicPreDelegate", 4, " host = " + paramString + " ,isTencentDomain = " + bool);
+    }
+    return bool;
   }
 }
 

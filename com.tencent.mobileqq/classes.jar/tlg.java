@@ -1,32 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.2;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-class tlg
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/MediaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tlg
+  extends tks
 {
-  tlg(tlf paramtlf) {}
+  public static final tlh a = new tlh(null);
   
-  public void onClick(View paramView)
+  public tlg(@NotNull BridgeModule paramBridgeModule)
   {
-    long l = 3010204L;
-    if (tpp.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)) {}
-    for (;;)
-    {
-      if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null))
-      {
-        tkq.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Activity)this.a.jdField_a_of_type_AndroidContentContext);
-        tkt.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, nzq.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData), tkt.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData, l, 9L, null, "1"));
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (tpp.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)) {
-        l = 3010304L;
-      } else if (tpp.f(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)) {
-        l = 3010404L;
-      }
-    }
+    super(paramBridgeModule);
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "media";
+  }
+  
+  public void a()
+  {
+    a("showPicture", (Function2)new MediaBridgeInvokeHandler.register.1(this));
+    a("saveImage", (Function2)new MediaBridgeInvokeHandler.register.2(this));
   }
 }
 

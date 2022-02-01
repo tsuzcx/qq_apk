@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aomt;
+import angf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -12,7 +12,7 @@ public class QQComicStep
 {
   public int a()
   {
-    this.a.mApp.addObserver(new aomt(this), true);
+    this.a.mApp.addObserver(new angf(this), true);
     ThreadManager.getUIHandler().postDelayed(new QQComicStep.2(this), 3000L);
     return 7;
   }

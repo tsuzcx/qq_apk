@@ -1,27 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
 
 public class zaa
-  implements Animation.AnimationListener
+  extends RecyclerView.ViewHolder
 {
-  public zaa(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public zaa(RefreshHeaderView paramRefreshHeaderView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
-    }
+    super(paramRefreshHeaderView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

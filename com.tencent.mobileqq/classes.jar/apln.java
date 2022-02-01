@@ -1,56 +1,20 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public abstract interface apln
-  extends IInterface
+final class apln
+  implements DialogInterface.OnClickListener
 {
-  public abstract ARCommonConfigInfo a();
+  apln(QQCustomDialog paramQQCustomDialog, Context paramContext) {}
   
-  public abstract ArConfigInfo a();
-  
-  public abstract ArEffectConfig a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(aplq paramaplq);
-  
-  public abstract void a(aplw paramaplw);
-  
-  public abstract void a(aplz paramaplz);
-  
-  public abstract void a(apmc paramapmc);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(aplq paramaplq);
-  
-  public abstract void b(aplw paramaplw);
-  
-  public abstract void b(aplz paramaplz);
-  
-  public abstract void b(apmc paramapmc);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    apoh.a(this.jdField_a_of_type_AndroidContentContext, true);
+  }
 }
 
 

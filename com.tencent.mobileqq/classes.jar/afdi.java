@@ -1,58 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class afdi
-  extends aohf
+  extends aezz
 {
-  public afdi(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
-  
-  public void a(int paramInt, String paramString)
+  public afdi(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    if (paramInt == 39)
-    {
-      bdll.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-      bhlq.a(this.a, 230, this.a.getString(2131694234), this.a.getString(2131694233), null, this.a.getString(2131691833), new afdj(this), null).show();
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = this.a.getString(2131694232);
-    }
-    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
   }
   
-  public void b(int paramInt, String paramString)
-  {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    String str;
-    if (paramInt == 36) {
-      str = this.a.getString(2131694238);
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-      return;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131694237);
-      }
-    }
-  }
+  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
+  
+  public void b(View paramView) {}
 }
 
 

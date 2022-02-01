@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="32.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/dot" android:layout_width="wrap_content" android:layout_height="24.0dip">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/eee" />
-        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/ne2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:layout_marginRight="8.0dip" android:maxWidth="72.0dip" android:text="动漫情怀" android:singleLine="true" />
-    </LinearLayout>
-</LinearLayout>
+    <View android:id="@id/mo6" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bcq" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nix" android:layout_width="@dimen/bcr" android:layout_height="@dimen/bcr" android:layout_marginLeft="@dimen/bcs" android:scaleType="fitCenter" android:layout_toRightOf="@id/mo6" android:layout_alignTop="@id/mo6" />
+    <ImageView android:id="@id/mhl" android:background="@drawable/gra" android:visibility="invisible" android:layout_width="@dimen/bcz" android:layout_height="@dimen/bcx" android:layout_marginLeft="@dimen/bcy" android:layout_alignLeft="@id/nix" android:layout_alignTop="@id/mo6" />
+    <ImageView android:id="@id/nj0" android:layout_width="@dimen/bcw" android:layout_height="@dimen/bcw" android:layout_marginTop="@dimen/bct" android:layout_marginRight="@dimen/bcv" android:layout_alignRight="@id/mhl" />
+    <View android:id="@id/mo5" android:background="@drawable/gra" android:visibility="invisible" android:layout_width="@dimen/bcz" android:layout_height="@dimen/bcx" android:layout_marginTop="@dimen/bcu" android:layout_alignTop="@id/nj0" android:layout_alignRight="@id/mhl" />
+</RelativeLayout>

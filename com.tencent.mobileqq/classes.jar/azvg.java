@@ -1,22 +1,17 @@
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class azvg
-  implements URLDrawable.URLDrawableListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public azvg(CoverDetailFragment paramCoverDetailFragment) {}
+  public azvg(RedTouch paramRedTouch, String paramString) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onGlobalLayout()
   {
-    CoverDetailFragment.b(this.a).setImageDrawable(this.a.a(paramURLDrawable));
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    RedTouch.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_JavaLangString);
   }
 }
 

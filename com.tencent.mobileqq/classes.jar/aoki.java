@@ -1,180 +1,268 @@
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.mobileqq.search.model.BusinessGroupWord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.codeEngine.MiniResDownloadManager.1;
+import com.tencent.mobileqq.ar.codeEngine.MiniResDownloadManager.2;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
-import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
-import pb.unite.search.DynamicTabSearch.SubHotWord;
+import java.util.ArrayList;
 
 public class aoki
-  implements anui
 {
-  private static final String TAG = "Q.uniteSearch.UniteSearchObserver";
+  public static Handler a;
+  private static ArrayList<aokj> a;
   
-  public void handleAssociateResult(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem) {}
-  
-  public void handleAssociateResultError(String paramString1, Integer paramInteger, String paramString2) {}
-  
-  public void handleAssociateWordResult(String paramString, List<String> paramList1, List<String> paramList2, int paramInt) {}
-  
-  public void handleBusiHotWordError(int paramInt, String paramString) {}
-  
-  public void handleBusiHotWordResult(int paramInt, List<BusinessGroupWord> paramList) {}
-  
-  public void handleCompletedUrlError(String paramString1, Integer paramInteger, String paramString2) {}
-  
-  public void handleCompletedUrlResult(String paramString, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem, int paramInt) {}
-  
-  public void handleSearchDiscoveryError(int paramInt1, String paramString, int paramInt2) {}
-  
-  public void handleSearchDiscoveryResult(List<bcgy> paramList, int paramInt) {}
-  
-  public void handleSearchHippyDiscoveryResult(ToServiceMsg paramToServiceMsg, Integer paramInteger, Object paramObject) {}
-  
-  public void handleTabSearchError(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong) {}
-  
-  public void handleTabSearchResult(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<bcfq> paramList, long[] paramArrayOfLong, String paramString3, List<DynamicTabSearch.SubHotWord> paramList1, boolean paramBoolean3, String paramString4, int paramInt) {}
-  
-  public void handleUniteSearchError(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3) {}
-  
-  public void handleUniteSearchResult(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<bcfl> paramList, List<bcfq> paramList1, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  static
   {
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_JavaUtilArrayList != null) {
+      jdField_a_of_type_JavaUtilArrayList.clear();
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchObserver", 2, "UniteSearchObserver onUpdate type" + paramInt + " isSuccess=" + paramBoolean + " data=" + paramObject);
+      QLog.d("MiniRecog.ResDownloadManager", 2, "clearCallback");
     }
-    switch (paramInt)
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    for (;;)
     {
+      try
+      {
+        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
+          return;
+        }
+      }
+      finally {}
+      int i = 0;
+      while (i < localObject.length)
+      {
+        aokj localaokj = (aokj)localObject[i];
+        jdField_a_of_type_AndroidOsHandler.post(new MiniResDownloadManager.1(localaokj, paramInt1, paramInt2));
+        i += 1;
+      }
     }
-    label962:
+  }
+  
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.ResDownloadManager", 2, "downloadFaceRes app is null");
+      }
+    }
     do
     {
-      Object localObject1;
-      Object localObject2;
-      Object localObject4;
+      return;
+      paramQQAppInterface = (aqxc)paramQQAppInterface.getManager(77);
+    } while (paramQQAppInterface == null);
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+      paramQQAppInterface = null;
+    }
+    while (paramQQAppInterface != null)
+    {
+      paramInt = paramQQAppInterface.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.ResDownloadManager", 2, "initAr version=" + paramQQAppInterface.b());
+      }
+      if ((bool) && (paramQQAppInterface.g()) && (paramInt > 1)) {
+        break;
+      }
+      paramQQAppInterface.a(true);
+      return;
+      paramQQAppInterface = paramQQAppInterface.a("qq.android.minidecode.so_v8.2.0");
+      bool = aokk.a();
+      continue;
+      paramQQAppInterface = paramQQAppInterface.a("qq.android.minidetect.so_v8.2.0");
+      bool = aokm.a();
+      continue;
+      paramQQAppInterface = paramQQAppInterface.a("qq.android.minidetect.model_v8.2.0");
+      bool = aokl.a();
+    }
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
+          return;
+        }
+      }
+      finally {}
+      int i = 0;
+      while (i < localObject.length)
+      {
+        aokj localaokj = (aokj)localObject[i];
+        jdField_a_of_type_AndroidOsHandler.post(new MiniResDownloadManager.2(localaokj, paramInt, paramBoolean));
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(aokj paramaokj)
+  {
+    if (paramaokj != null) {}
+    try
+    {
+      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramaokj))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MiniRecog.ResDownloadManager", 2, "addDownloadCallback");
+        }
+        jdField_a_of_type_JavaUtilArrayList.add(paramaokj);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
       do
       {
-        boolean bool;
-        long[] arrayOfLong;
         do
         {
-          return;
-          if (paramBoolean)
+          do
           {
-            paramObject = (Object[])paramObject;
-            handleCompletedUrlResult((String)paramObject[0], (DynamicAssociationWord.SuggestUrlItem)paramObject[1], ((Integer)paramObject[2]).intValue());
-            return;
-          }
-          paramObject = (Object[])paramObject;
-          handleCompletedUrlError((String)paramObject[0], (Integer)paramObject[1], (String)paramObject[2]);
-          return;
-          if (paramBoolean)
-          {
-            paramObject = (Object[])paramObject;
-            handleAssociateResult((String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2], (List)paramObject[3], (DynamicAssociationWord.SuggestUrlItem)paramObject[4]);
-            return;
-          }
-          paramObject = (Object[])paramObject;
-          handleAssociateResultError((String)paramObject[0], (Integer)paramObject[1], (String)paramObject[2]);
-          return;
-          if (paramBoolean)
-          {
-            paramObject = (Object[])paramObject;
-            handleUniteSearchResult((String)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2], (byte[])paramObject[3], ((Boolean)paramObject[4]).booleanValue(), (List)paramObject[5], (List)paramObject[6], ((Integer)paramObject[7]).intValue());
-            return;
-          }
-          localObject3 = (Object[])paramObject;
-          paramObject = (String)localObject3[0];
-          paramBoolean = ((Boolean)localObject3[1]).booleanValue();
-          localObject1 = (String)localObject3[2];
-          localObject2 = (Integer)localObject3[3];
-          localObject3 = (String)localObject3[4];
-          handleUniteSearchError(paramObject, paramBoolean, (String)localObject1, ((Integer)localObject2).intValue(), (String)localObject3);
-          return;
-          if (!paramBoolean) {
-            break;
-          }
-          paramObject = (Object[])paramObject;
-          localObject1 = (String)paramObject[0];
-          paramBoolean = ((Boolean)paramObject[1]).booleanValue();
-          localObject2 = (String)paramObject[2];
-          localObject3 = (byte[])paramObject[3];
-          bool = ((Boolean)paramObject[4]).booleanValue();
-          localObject4 = (List)paramObject[5];
-          arrayOfLong = (long[])paramObject[6];
-          handleTabSearchResult((String)localObject1, paramBoolean, (String)localObject2, (byte[])localObject3, bool, (List)localObject4, arrayOfLong, (String)paramObject[7], (List)paramObject[8], ((Boolean)paramObject[9]).booleanValue(), (String)paramObject[10], ((Integer)paramObject[11]).intValue());
+            do
+            {
+              return;
+              paramQQAppInterface = (aqxc)paramQQAppInterface.getManager(77);
+            } while (paramQQAppInterface == null);
+            if (!paramBoolean) {
+              break;
+            }
+            paramQQAppInterface = (aqxq)paramQQAppInterface.a("qq.android.minidecode.so_v8.2.0");
+          } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (aokk.a()));
+          paramQQAppInterface.g();
         } while (!QLog.isColorLevel());
-        QLog.i("Q.uniteSearch.UniteSearchObserver", 2, "handleTabSearchResult_NOTIFY_TYPE_TAB_SEARCH isEnd = " + bool + " mask;" + Arrays.toString(arrayOfLong) + " key=" + (String)localObject1 + " time=" + (String)localObject2);
+        QLog.d("MiniRecog.ResDownloadManager", 2, "reset decode so download state");
         return;
-        localObject4 = (Object[])paramObject;
-        paramObject = (String)localObject4[0];
-        paramBoolean = ((Boolean)localObject4[1]).booleanValue();
-        localObject1 = (String)localObject4[2];
-        localObject2 = (Integer)localObject4[3];
-        Object localObject3 = (String)localObject4[4];
-        localObject4 = (long[])localObject4[5];
-        handleTabSearchError(paramObject, paramBoolean, (String)localObject1, ((Integer)localObject2).intValue(), (String)localObject3, (long[])localObject4);
-      } while (!QLog.isColorLevel());
-      QLog.w("Q.uniteSearch.UniteSearchObserver", 2, "handleTabSearchResult_NOTIFY_TYPE_TAB_SEARCH error!  mask;" + Arrays.toString((long[])localObject4) + " key=" + paramObject + " time=" + (String)localObject1);
-      return;
-      if (paramObject != null)
-      {
-        if (paramBoolean)
+        aqxs localaqxs = (aqxs)paramQQAppInterface.a("qq.android.minidetect.so_v8.2.0");
+        if ((localaqxs != null) && (localaqxs.g()) && (!aokm.a()))
         {
-          localObject1 = (Object[])paramObject;
-          paramObject = (Integer)localObject1[0];
-          localObject1 = (List)localObject1[1];
-          handleBusiHotWordResult(paramObject.intValue(), (List)localObject1);
-          return;
+          localaqxs.g();
+          if (QLog.isColorLevel()) {
+            QLog.d("MiniRecog.ResDownloadManager", 2, "reset detect so download state");
+          }
         }
-        localObject1 = (Object[])paramObject;
-        paramObject = (Integer)localObject1[0];
-        localObject1 = (String)localObject1[1];
-        handleBusiHotWordError(paramObject.intValue(), (String)localObject1);
-        return;
-      }
-      handleBusiHotWordError(-1, "");
-      return;
-      if (paramObject != null)
+        paramQQAppInterface = (aqxr)paramQQAppInterface.a("qq.android.minidetect.model_v8.2.0");
+      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (aokl.a()));
+      paramQQAppInterface.f();
+    } while (!QLog.isColorLevel());
+    QLog.d("MiniRecog.ResDownloadManager", 2, "reset model so download state");
+  }
+  
+  private static boolean a(aqxl paramaqxl)
+  {
+    if (paramaqxl == null) {}
+    do
+    {
+      do
       {
-        if (paramBoolean)
+        return false;
+        paramaqxl = paramaqxl.a();
+      } while (paramaqxl == null);
+      if ((!TextUtils.isEmpty(paramaqxl.strPkgName)) && (!TextUtils.isEmpty(paramaqxl.strResURL_big))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("MiniRecog.ResDownloadManager", 2, "strPkgName is empty:" + TextUtils.isEmpty(paramaqxl.strPkgName) + " strResURL_big is empty:" + TextUtils.isEmpty(paramaqxl.strResURL_big) + " loadState :" + paramaqxl.loadState);
+    return false;
+    return true;
+  }
+  
+  public static boolean a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = true;
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = (aqxc)paramQQAppInterface.getManager(77);
+    } while (paramQQAppInterface == null);
+    if (paramBoolean)
+    {
+      paramQQAppInterface = (aqxq)paramQQAppInterface.a("qq.android.minidecode.so_v8.2.0");
+      bool1 = a(paramQQAppInterface);
+      paramBoolean = bool1;
+      if (!bool1)
+      {
+        paramBoolean = bool1;
+        if (paramQQAppInterface != null)
         {
-          localObject1 = (Object[])paramObject;
-          paramObject = (List)localObject1[0];
-          localObject1 = (Integer)localObject1[1];
-          if (localObject1 != null) {}
-          for (paramInt = ((Integer)localObject1).intValue();; paramInt = -1)
+          paramBoolean = bool1;
+          if (paramQQAppInterface.g())
           {
-            handleSearchDiscoveryResult(paramObject, paramInt);
-            return;
+            paramBoolean = bool1;
+            if (aokk.a()) {
+              paramBoolean = true;
+            }
           }
-        }
-        localObject2 = (Object[])paramObject;
-        paramObject = (Integer)localObject2[0];
-        localObject1 = (String)localObject2[1];
-        localObject2 = (Integer)localObject2[2];
-        if (paramObject != null)
-        {
-          paramInt = paramObject.intValue();
-          if (localObject2 == null) {
-            break label962;
-          }
-        }
-        for (int i = ((Integer)localObject2).intValue();; i = -1)
-        {
-          handleSearchDiscoveryError(paramInt, (String)localObject1, i);
-          return;
-          paramInt = -1;
-          break;
         }
       }
-      handleSearchDiscoveryError(-1, null, -1);
-      return;
-    } while (paramObject == null);
-    paramObject = (Object[])paramObject;
-    handleSearchHippyDiscoveryResult((ToServiceMsg)paramObject[0], (Integer)paramObject[1], paramObject[2]);
+      if (paramBoolean) {
+        paramQQAppInterface.f();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.ResDownloadManager", 2, String.format("isMiniResConfigReady config exist [decode]=[%b]", new Object[] { Boolean.valueOf(paramBoolean) }));
+      }
+      return paramBoolean;
+    }
+    aqxs localaqxs = (aqxs)paramQQAppInterface.a("qq.android.minidetect.so_v8.2.0");
+    boolean bool1 = a(localaqxs);
+    paramBoolean = bool1;
+    if (!bool1)
+    {
+      paramBoolean = bool1;
+      if (localaqxs != null)
+      {
+        paramBoolean = bool1;
+        if (localaqxs.g())
+        {
+          paramBoolean = bool1;
+          if (aokm.a()) {
+            paramBoolean = true;
+          }
+        }
+      }
+    }
+    if (paramBoolean) {
+      localaqxs.f();
+    }
+    paramQQAppInterface = (aqxr)paramQQAppInterface.a("qq.android.minidetect.model_v8.2.0");
+    bool1 = a(paramQQAppInterface);
+    if ((!bool1) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (aokl.a())) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.ResDownloadManager", 2, String.format("isMiniResConfigReady config exist [detect,model]=[%b,%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1) }));
+      }
+      if ((paramBoolean) && (bool1)) {}
+      for (paramBoolean = bool2;; paramBoolean = false) {
+        return paramBoolean;
+      }
+    }
   }
 }
 

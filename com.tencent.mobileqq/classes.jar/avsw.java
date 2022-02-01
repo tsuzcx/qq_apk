@@ -1,13 +1,15 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import android.util.Pair;
+import com.tencent.mobileqq.data.Emoticon;
 
-public abstract interface avsw
+class avsw
+  implements avtc<Pair<String, String>, Emoticon>
 {
-  public abstract void a(Animation paramAnimation);
+  avsw(avsq paramavsq) {}
   
-  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(Animation paramAnimation);
+  public Emoticon a(Pair<String, String> paramPair)
+  {
+    return this.a.a((String)paramPair.first, (String)paramPair.second);
+  }
 }
 
 

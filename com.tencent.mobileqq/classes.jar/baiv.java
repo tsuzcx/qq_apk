@@ -1,45 +1,118 @@
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View;
+import android.os.IBinder;
+import com.tencent.richmediabrowser.presenter.IProvider;
 
 public class baiv
-  extends baik
+  implements IProvider
 {
-  private boolean a;
+  public ahap a;
   
-  public baiv(baei parambaei, azxr paramazxr)
+  public void a(ahap paramahap)
   {
-    super(parambaei, paramazxr);
+    this.a = paramahap;
   }
   
-  public String a()
+  public void cancelDownloadMedia(long paramLong, int paramInt1, int paramInt2)
   {
-    return "VasProfileHeaderV5Component";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileQVipV5View localVasProfileQVipV5View = new VasProfileQVipV5View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azxr)this.b);
-      localVasProfileQVipV5View.setProfileArgs(this.jdField_a_of_type_Boolean);
-      localVasProfileQVipV5View.setClickListener(this);
-      localVasProfileQVipV5View.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipV5View;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    if (this.a != null) {
+      this.a.b(paramLong, paramInt1, paramInt2);
     }
   }
   
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void downloadMedia(long paramLong, int paramInt1, int paramInt2)
   {
-    Intent localIntent = paramBaseActivity.getIntent();
-    if (localIntent != null) {
-      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
+    if (this.a != null) {
+      this.a.a(paramLong, paramInt1, paramInt2);
     }
-    super.a(paramBaseActivity, paramBundle);
+  }
+  
+  public void favorite(long paramLong)
+  {
+    if (this.a != null) {
+      this.a.e(paramLong);
+    }
+  }
+  
+  public Intent getFavorateParams(long paramLong, int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.a(paramLong, paramInt);
+    }
+    return null;
+  }
+  
+  public Intent getForwardData(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      return this.a.a(paramLong, paramInt1, paramInt2);
+    }
+    return null;
+  }
+  
+  public int getSaveFileProgress(long paramLong, int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.a(paramLong, paramInt);
+    }
+    return 0;
+  }
+  
+  public boolean isPingBinder()
+  {
+    if (this.a != null) {
+      return this.a.asBinder().pingBinder();
+    }
+    return false;
+  }
+  
+  public void loadMedias(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+  }
+  
+  public void onFileVideoStatusChange(long paramLong, int paramInt, Bundle paramBundle)
+  {
+    if (this.a != null) {
+      this.a.a(paramLong, paramInt, paramBundle);
+    }
+  }
+  
+  public void payFlow(long paramLong, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramLong, paramInt);
+    }
+  }
+  
+  public void reportData(String paramString, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramString, paramInt);
+    }
+  }
+  
+  public void safetyReport(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt, paramBoolean, paramString1, paramString2, paramString3, paramString4);
+    }
+  }
+  
+  public void saveToWeiyun(long paramLong)
+  {
+    if (this.a != null) {
+      this.a.c(paramLong);
+    }
+  }
+  
+  public void sendFileToPC(long paramLong)
+  {
+    if (this.a != null) {
+      this.a.d(paramLong);
+    }
   }
 }
 

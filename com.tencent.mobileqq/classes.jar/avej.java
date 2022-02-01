@@ -1,23 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.location.ui.LocationMapWidget;
 
 public class avej
-  implements TextWatcher
+  implements axyp
 {
-  public avej(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
+  public avej(LocationMapWidget paramLocationMapWidget) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt)
   {
-    paramEditable = paramEditable.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
-    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    LocationMapWidget.a(this.a).finish();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(axyl paramaxyl, Double paramDouble, boolean paramBoolean)
+  {
+    LocationMapWidget localLocationMapWidget = this.a;
+    if (paramaxyl == null) {}
+    for (paramaxyl = null;; paramaxyl = paramaxyl.a)
+    {
+      localLocationMapWidget.a(paramaxyl, paramDouble, paramBoolean);
+      return;
+    }
+  }
 }
 
 

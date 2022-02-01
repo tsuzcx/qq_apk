@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.avgame.ui.AVGameOverlayFragment;
 
-final class nhw
+public class nhw
   implements DialogInterface.OnClickListener
 {
+  public nhw(AVGameOverlayFragment paramAVGameOverlayFragment) {}
+  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.cancel();
+    AVGameOverlayFragment.a(this.a).finish();
   }
 }
 

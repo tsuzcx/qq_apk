@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aoip;
+import anca;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
@@ -18,7 +18,7 @@ class TroopAddFriendTipsHelper$NewMsgRunnable
   
   public void run()
   {
-    ((aoip)TroopAddFriendTipsHelper.a(this.this$0).a(20)).a().a(this.a, 2);
+    ((anca)TroopAddFriendTipsHelper.a(this.this$0).getBusinessHandler(20)).a().a(this.a, 2);
   }
 }
 

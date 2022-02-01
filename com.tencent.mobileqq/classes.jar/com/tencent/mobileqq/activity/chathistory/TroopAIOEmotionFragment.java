@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aedq;
-import aedr;
-import aibo;
-import aibq;
-import ajby;
-import ajcb;
+import acyr;
+import acys;
+import agye;
+import agyg;
+import ahwi;
+import ahwl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,16 +20,16 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import asuo;
-import auna;
-import bhnv;
-import blir;
-import blji;
+import argo;
+import aszk;
+import bjnw;
+import bjon;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -40,14 +40,14 @@ import java.util.List;
 
 public class TroopAIOEmotionFragment
   extends IphoneTitleBarFragment
-  implements aedr, aibq, View.OnClickListener
+  implements acys, agyg, View.OnClickListener
 {
-  private aedq jdField_a_of_type_Aedq;
-  private ajby jdField_a_of_type_Ajby;
+  private acyr jdField_a_of_type_Acyr;
+  private ahwi jdField_a_of_type_Ahwi;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private List<asuo> jdField_a_of_type_JavaUtilList;
+  private List<argo> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private ImageView b;
   
@@ -55,13 +55,13 @@ public class TroopAIOEmotionFragment
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    setRightButton(2131689937, this);
-    this.jdField_a_of_type_Aedq.f();
+    setRightButton(2131689951, this);
+    this.jdField_a_of_type_Acyr.f();
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((asuo)localIterator.next()).jdField_a_of_type_Boolean = false;
+        ((argo)localIterator.next()).jdField_a_of_type_Boolean = false;
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
@@ -71,17 +71,17 @@ public class TroopAIOEmotionFragment
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Aedq != null) {
-      this.jdField_a_of_type_Aedq.a(paramLong);
+    if (this.jdField_a_of_type_Acyr != null) {
+      this.jdField_a_of_type_Acyr.a(paramLong);
     }
   }
   
-  public void a(asuo paramasuo)
+  public void a(argo paramargo)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramasuo);
+    this.jdField_a_of_type_JavaUtilList.add(paramargo);
     if (this.jdField_a_of_type_JavaUtilList.size() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
@@ -103,7 +103,7 @@ public class TroopAIOEmotionFragment
         if (QLog.isColorLevel()) {
           QLog.d("IphoneTitleBarFragment", 2, "isOverLimit");
         }
-        auna.a(2131692232);
+        aszk.a(2131692280);
       }
       return bool;
     }
@@ -114,38 +114,38 @@ public class TroopAIOEmotionFragment
     ThreadManager.excute(new TroopAIOEmotionFragment.2(this), 32, null, true);
   }
   
-  public void b(asuo paramasuo)
+  public void b(argo paramargo)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {}
     do
     {
       return;
-      this.jdField_a_of_type_JavaUtilList.remove(paramasuo);
+      this.jdField_a_of_type_JavaUtilList.remove(paramargo);
     } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839375);
-    this.b.setImageResource(2130839348);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839410);
+    this.b.setImageResource(2130839383);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(this.mContentView.getContext().getResources().getString(2131691766));
-    setRightButton(2131689937, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131370561));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131367081));
-    this.b = ((ImageView)this.mContentView.findViewById(2131365346));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368060);
+    setTitle(this.mContentView.getContext().getResources().getString(2131691812));
+    setRightButton(2131689951, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131370529));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131367097));
+    this.b = ((ImageView)this.mContentView.findViewById(2131365376));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368091);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     paramLayoutInflater = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Aedq = new aedq();
-    this.jdField_a_of_type_Aedq.a(getActivity().getIntent(), paramLayoutInflater, getActivity());
-    this.jdField_a_of_type_Aedq.a = this;
+    this.jdField_a_of_type_Acyr = new acyr();
+    this.jdField_a_of_type_Acyr.a(getActivity().getIntent(), paramLayoutInflater, getActivity());
+    this.jdField_a_of_type_Acyr.a = this;
     paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aedq.a(), 0, paramLayoutInflater);
-    this.jdField_a_of_type_Ajby = new ajby(getActivity(), 1);
-    this.jdField_a_of_type_Ajby.a();
-    aibo.a().a(this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Acyr.a(), 0, paramLayoutInflater);
+    this.jdField_a_of_type_Ahwi = new ahwi(getActivity(), 1);
+    this.jdField_a_of_type_Ahwi.a();
+    agye.a().a(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -160,7 +160,7 @@ public class TroopAIOEmotionFragment
   
   public int getContentLayoutId()
   {
-    return 2131558819;
+    return 2131558827;
   }
   
   public boolean isWrapContent()
@@ -172,7 +172,7 @@ public class TroopAIOEmotionFragment
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1)) {
-      this.jdField_a_of_type_Ajby.a(paramIntent);
+      this.jdField_a_of_type_Ahwi.a(paramIntent);
     }
   }
   
@@ -191,8 +191,8 @@ public class TroopAIOEmotionFragment
         this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
         this.b.setEnabled(false);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        setRightButton(2131690580, this);
-        this.jdField_a_of_type_Aedq.e();
+        setRightButton(2131690620, this);
+        this.jdField_a_of_type_Acyr.e();
       }
       else
       {
@@ -200,34 +200,34 @@ public class TroopAIOEmotionFragment
         continue;
         if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
         {
-          auna.c(2131692229);
+          aszk.c(2131692277);
         }
-        else if (!bhnv.d(BaseApplication.getContext()))
+        else if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          QQToast.a(getActivity(), 2131694008, 1).b(getResources().getDimensionPixelSize(2131299011));
+          QQToast.a(getActivity(), 2131694108, 1).b(getResources().getDimensionPixelSize(2131299076));
         }
         else
         {
           Object localObject = new ArrayList();
           Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
           while (localIterator.hasNext()) {
-            ((List)localObject).add((ChatMessage)((asuo)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+            ((List)localObject).add((ChatMessage)((argo)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
           }
-          this.jdField_a_of_type_Ajby.a((List)localObject);
+          this.jdField_a_of_type_Ahwi.a((List)localObject);
           c();
           continue;
           if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
           {
-            auna.c(2131692229);
+            aszk.c(2131692277);
           }
           else
           {
-            localObject = (blir)blji.a(getActivity(), null);
-            ((blir)localObject).a(2131695439);
-            ((blir)localObject).a(getActivity().getString(2131692075), 3);
-            ((blir)localObject).c(2131690580);
-            ((blir)localObject).a(new ajcb(this, (blir)localObject));
-            ((blir)localObject).show();
+            localObject = (bjnw)bjon.a(getActivity(), null);
+            ((bjnw)localObject).a(2131695578);
+            ((bjnw)localObject).a(getActivity().getString(2131692123), 3);
+            ((bjnw)localObject).c(2131690620);
+            ((bjnw)localObject).a(new ahwl(this, (bjnw)localObject));
+            ((bjnw)localObject).show();
           }
         }
       }
@@ -237,21 +237,21 @@ public class TroopAIOEmotionFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Aedq.d();
-    this.jdField_a_of_type_Ajby.b();
-    aibo.a().b(this);
+    this.jdField_a_of_type_Acyr.d();
+    this.jdField_a_of_type_Ahwi.b();
+    agye.a().b(this);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Aedq.c();
+    this.jdField_a_of_type_Acyr.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Aedq.b();
+    this.jdField_a_of_type_Acyr.b();
   }
 }
 

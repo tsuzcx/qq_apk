@@ -1,15 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.6.1;
-import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
 public class tav
-  implements ApngDrawable.OnPlayRepeatListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public tav(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  private tav(GestureCropImageView paramGestureCropImageView) {}
   
-  public void onPlayRepeat(int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.a.post(new ColorBandVideoEntranceButton.6.1(this));
+    if (GestureCropImageView.a(this.a)) {
+      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
+    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.a.a(-paramFloat1, -paramFloat2);
+    return true;
   }
 }
 

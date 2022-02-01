@@ -1,22 +1,26 @@
-import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "jsonData", "", "kotlin.jvm.PlatformType", "onDataUpdated"}, k=3, mv={1, 1, 16})
-final class oop
-  implements PTSComposer.IPTSUpdateDataListener
+public class oop
+  implements View.OnClickListener
 {
-  oop(oom paramoom) {}
+  public oop(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public final void onDataUpdated(String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("RIJChannelBannerController", 1, "[onDataUpdated] jsonData = " + paramString);
-    oor localoor = oom.a(this.a);
-    if (localoor != null)
+    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
+      this.a.e(ReadInJoyDeliverBiuActivity.l(this.a));
+    }
+    for (;;)
     {
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "jsonData");
-      localoor.c(paramString);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      odq.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+      this.a.finish();
+      ReadInJoyDeliverBiuActivity.a(this.a, false);
     }
   }
 }

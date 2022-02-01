@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -12,15 +11,16 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import ozc;
-import ozs;
-import ppu;
-import qno;
-import qyl;
-import qyn;
+import pai;
+import pay;
+import pvc;
+import qtr;
+import rfj;
+import rfl;
 
 public class ComponentContentUgcVideo
   extends ComponentContentBigImageVideo
@@ -42,17 +42,17 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560118, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560125, this, true);
   }
   
-  public URL a(ppu paramppu)
+  public URL a(pvc parampvc)
   {
-    ArticleInfo localArticleInfo = paramppu.a();
+    ArticleInfo localArticleInfo = parampvc.a();
     if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
     {
-      Object localObject = (qyn)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-      int i = ((qyn)localObject).c;
-      int j = ((qyn)localObject).d;
+      Object localObject = (rfl)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+      int i = ((rfl)localObject).c;
+      int j = ((rfl)localObject).d;
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
       {
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
@@ -70,8 +70,8 @@ public class ComponentContentUgcVideo
           }
           while (localObject != null)
           {
-            paramppu = (ppu)localObject;
-            return paramppu;
+            parampvc = (pvc)localObject;
+            return parampvc;
             label204:
             QLog.d("ComponentContentUgcVideo", 2, "ivWidth: " + k + ", ivHeight: " + m);
           }
@@ -92,7 +92,7 @@ public class ComponentContentUgcVideo
         if (localObject == null) {
           break label327;
         }
-        paramppu = (ppu)localObject;
+        parampvc = (pvc)localObject;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -103,7 +103,7 @@ public class ComponentContentUgcVideo
       }
     }
     label327:
-    return super.a(paramppu);
+    return super.a(parampvc);
   }
   
   public void a(View paramView)
@@ -125,18 +125,18 @@ public class ComponentContentUgcVideo
     int k;
     boolean bool;
     int j;
-    if ((this.jdField_a_of_type_Qno.a != null) && (this.jdField_a_of_type_Qno.a.a() != null))
+    if ((this.jdField_a_of_type_Qtr.a != null) && (this.jdField_a_of_type_Qtr.a.a() != null))
     {
-      localArticleInfo = this.jdField_a_of_type_Qno.a.a();
+      localArticleInfo = this.jdField_a_of_type_Qtr.a.a();
       if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
       {
         localLayoutParams = getLayoutParams();
         localObject = getResources().getDisplayMetrics();
         i = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
-        k = agej.a(12.0F, getResources());
+        k = AIOUtils.dp2px(12.0F, getResources());
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-        qyn localqyn = (qyn)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-        if (ozs.a(localqyn.c, localqyn.d)) {
+        rfl localrfl = (rfl)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+        if (pay.a(localrfl.c, localrfl.d)) {
           break label299;
         }
         bool = true;
@@ -165,7 +165,7 @@ public class ComponentContentUgcVideo
       label305:
       if (localArticleInfo.mChannelID == 0L)
       {
-        i = ozc.a(i, getResources());
+        i = pai.a(i, getResources());
         QLog.d("ComponentContentUgcVideo", 2, "main feeds | ivWidth is " + i + "; ivHeight is " + i);
         j = i;
       }

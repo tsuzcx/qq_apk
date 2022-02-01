@@ -1,48 +1,72 @@
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bedc
-  implements bede
 {
-  public bedc(AIOMessageSpreadManager.1 param1, String paramString) {}
+  public bede a;
+  private Comparator<bedg> a;
+  public Vector<bedg> a;
+  public AtomicBoolean a;
+  public boolean a;
   
-  public void a(List<String> paramList)
+  public bedc()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isDebugVersion())
-      {
-        if (paramList != null) {
-          break label34;
-        }
-        paramList = "lst is null";
-        QLog.i("AIOMessageSpreadManager", 1, paramList);
-      }
-    }
-    label34:
-    float f1;
-    float f2;
-    do
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_JavaUtilComparator = new bedd(this);
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    for (;;)
     {
-      return;
-      while (!paramList.hasNext())
+      try
       {
-        paramList = "lst.size() = 0";
-        break;
-        f1 = (float)arrg.a().a();
-        paramList = paramList.iterator();
+        paramString = new JSONObject(paramString);
+        Object localObject = paramString.optJSONArray("effectSwitch");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
+          {
+            bool = true;
+            this.jdField_a_of_type_Boolean = bool;
+          }
+        }
+        else
+        {
+          paramString = paramString.optJSONArray("grayMsgList");
+          if ((paramString != null) && (paramString.length() > 0))
+          {
+            if (i < paramString.length())
+            {
+              localObject = paramString.getJSONObject(i);
+              bedg localbedg = new bedg();
+              localbedg.a((JSONObject)localObject);
+              this.jdField_a_of_type_JavaUtilVector.add(localbedg);
+              i += 1;
+              continue;
+            }
+            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
+          }
+          return;
+        }
       }
-      str = (String)paramList.next();
-      f2 = bedb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
+      catch (Exception paramString)
+      {
+        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
+        return;
       }
-    } while (f2 - f1 <= 0.0F);
-    String str = arrg.a().a();
-    paramList = arrg.a().b();
-    str = str + "。" + paramList;
-    bedb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
+      boolean bool = false;
+    }
   }
 }
 

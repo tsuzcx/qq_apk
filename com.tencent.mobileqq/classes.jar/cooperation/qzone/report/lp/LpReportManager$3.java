@@ -7,7 +7,7 @@ class LpReportManager$3
   
   public void run()
   {
-    LpReportManager.access$200(this.this$0, this.a);
+    LpReportManager.access$200(this.this$0, this.val$reportScene);
   }
 }
 

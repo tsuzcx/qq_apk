@@ -1,119 +1,104 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.BottomDialog.4;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.jetbrains.annotations.NotNull;
 
-public class uhp
-  extends ReportDialog
+class uhp
+  extends uha
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
-  private View c;
+  uhp(uhk paramuhk) {}
   
-  public uhp(@NonNull Context paramContext)
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    super(paramContext, 2131755076);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
+    ude localude = uhk.a(this.a).a(uhk.a(this.a), uhk.b(this.a), paramInt);
+    if (localude == null) {
+      return false;
     }
-    Object localObject = new TranslateAnimation(0.0F, 0.0F, this.b.getHeight(), 0.0F);
-    ((Animation)localObject).setFillAfter(true);
-    ((Animation)localObject).setDuration(200L);
-    ((Animation)localObject).setInterpolator(new DecelerateInterpolator());
-    this.b.startAnimation((Animation)localObject);
-    localObject = new AlphaAnimation(0.0F, 1.0F);
-    ((AlphaAnimation)localObject).setFillAfter(true);
-    ((AlphaAnimation)localObject).setDuration(200L);
-    this.c.startAnimation((Animation)localObject);
-  }
-  
-  private void a(View paramView)
-  {
-    this.b = paramView.findViewById(2131365008);
-    this.c = paramView.findViewById(2131363243);
-    this.c.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165347));
-    this.c.setOnClickListener(new uhq(this));
-    paramView.findViewById(2131364584).setOnClickListener(new uhr(this));
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
+    if (localude.jdField_a_of_type_Boolean)
+    {
+      this.a.b(localude.jdField_a_of_type_JavaLangString);
+      return true;
     }
-    Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.b.getHeight());
-    ((Animation)localObject).setFillAfter(true);
-    ((Animation)localObject).setInterpolator(new DecelerateInterpolator());
-    ((Animation)localObject).setDuration(200L);
-    ((Animation)localObject).setAnimationListener(new uhs(this));
-    this.b.startAnimation((Animation)localObject);
-    localObject = new AlphaAnimation(1.0F, 0.0F);
-    ((AlphaAnimation)localObject).setFillAfter(true);
-    ((AlphaAnimation)localObject).setDuration(200L);
-    this.c.startAnimation((Animation)localObject);
-  }
-  
-  public void dismiss()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    switch (paramInt)
+    {
+    default: 
+      this.a.b(localude.jdField_a_of_type_JavaLangString);
     }
-    b();
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setCanceledOnTouchOutside(true);
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(paramInt, null);
-    a(this.jdField_a_of_type_AndroidViewView);
-    super.setContentView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void setContentView(@NonNull View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a(this.jdField_a_of_type_AndroidViewView);
-    super.setContentView(paramView);
-  }
-  
-  public void setContentView(@NonNull View paramView, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a(this.jdField_a_of_type_AndroidViewView);
-    super.setContentView(paramView, paramLayoutParams);
-  }
-  
-  public void show()
-  {
-    super.show();
-    this.b.setVisibility(4);
-    this.c.setVisibility(4);
-    this.jdField_a_of_type_AndroidOsHandler.post(new BottomDialog.4(this));
+    for (;;)
+    {
+      return super.a(paramInt, paramActionSheetItem);
+      this.a.b(localude.jdField_a_of_type_JavaLangString);
+      continue;
+      uhk.a(this.a, paramActionSheetItem);
+      continue;
+      uhk.a(this.a).a(uhk.a(this.a).c);
+      uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uhk.a(this.a).b(uhk.a(this.a).c);
+      uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uhk.a(this.a).c();
+      uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uhk.a(this.a).a(this.a);
+      uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uhk.a(this.a);
+      uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+      continue;
+      if (!TextUtils.isEmpty(uhk.a(this.a).c))
+      {
+        bcua.a(1, 3);
+        bcua.a(uhk.a(this.a).c, uhk.a(this.a).jdField_a_of_type_JavaLangString);
+        uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+        continue;
+        if (!TextUtils.isEmpty(uhk.a(this.a).c))
+        {
+          this.a.a.d(uhk.a(this.a).c, new uhq(this, localude));
+          continue;
+          uhk.a(this.a).c(uhk.a(this.a).c);
+          uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+          continue;
+          uhk.b(this.a);
+          uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+          continue;
+          this.a.b("not_care");
+          continue;
+          Intent localIntent;
+          if (!TextUtils.isEmpty(uhk.a(this.a).e))
+          {
+            localIntent = AddFriendLogicActivity.a(this.a.a(), 1, uhk.a(this.a).e + "", null, 3096, 1, uhk.a(this.a).f, null, null, null, null);
+            this.a.a().startActivity(localIntent);
+          }
+          uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+          continue;
+          if (!TextUtils.isEmpty(uhk.a(this.a).e))
+          {
+            localIntent = AIOUtils.setOpenAIOIntent(new Intent(this.a.a(), SplashActivity.class), null);
+            localIntent.putExtra("uin", uhk.a(this.a).e);
+            localIntent.putExtra("uintype", 0);
+            this.a.a().startActivity(localIntent);
+            uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+            continue;
+            if (!TextUtils.isEmpty(uhk.a(this.a).e))
+            {
+              localIntent = new Intent(this.a.a(), AccountDetailActivity.class);
+              localIntent.putExtra("uin", uhk.a(this.a).e);
+              localIntent.putExtra("from_js", true);
+              this.a.a().startActivity(localIntent);
+              uhk.a(this.a, localude.jdField_a_of_type_JavaLangString, true);
+              continue;
+              this.a.b("unfollow");
+            }
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,8 +1,19 @@
-public abstract interface nqk
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+
+public class nqk
+  implements zop
 {
-  public abstract void a(int paramInt);
+  public nqk(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public abstract void b(int paramInt);
+  public void callback(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
+  }
 }
 
 

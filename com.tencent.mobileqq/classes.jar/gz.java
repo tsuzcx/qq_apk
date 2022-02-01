@@ -1,20 +1,20 @@
-public final class gz
+final class gz
 {
-  private final int a;
-  private final int b;
+  private final byte[] a;
+  private final byte[] b;
   
-  gz(int paramInt1, int paramInt2)
+  gz(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a = paramArrayOfByte1;
+    this.b = paramArrayOfByte2;
   }
   
-  public int a()
+  public byte[] a()
   {
     return this.a;
   }
   
-  public int b()
+  public byte[] b()
   {
     return this.b;
   }

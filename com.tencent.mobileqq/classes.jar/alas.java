@@ -1,6 +1,16 @@
-public abstract interface alas
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Groups;
+
+class alas
 {
-  public abstract void a(String paramString1, String paramString2, alam paramalam);
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
+  TextView b;
+  
+  alas(alaq paramalaq) {}
 }
 
 

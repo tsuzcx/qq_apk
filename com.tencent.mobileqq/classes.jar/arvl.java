@@ -1,85 +1,19 @@
-import android.graphics.Canvas;
-import android.graphics.SurfaceTexture;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
-import android.view.View.OnTouchListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arvl
-  implements TextureView.SurfaceTextureListener, arvi
+  implements View.OnClickListener
 {
-  private TextureView jdField_a_of_type_AndroidViewTextureView;
-  private arvj jdField_a_of_type_Arvj;
+  public arvl(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public arvl(TextureView paramTextureView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewTextureView = paramTextureView;
-    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(this);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_AndroidViewTextureView.getY();
-  }
-  
-  public Canvas a()
-  {
-    return this.jdField_a_of_type_AndroidViewTextureView.lockCanvas();
-  }
-  
-  public void a() {}
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.unlockCanvasAndPost(paramCanvas);
-  }
-  
-  public void a(View.OnTouchListener paramOnTouchListener)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(paramOnTouchListener);
-  }
-  
-  public void a(arvj paramarvj)
-  {
-    this.jdField_a_of_type_Arvj = paramarvj;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Arvj = null;
-    if (this.jdField_a_of_type_AndroidViewTextureView != null)
-    {
-      this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(null);
-      this.jdField_a_of_type_AndroidViewTextureView = null;
-    }
-  }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    if (this.jdField_a_of_type_Arvj != null)
-    {
-      this.jdField_a_of_type_Arvj.i();
-      this.jdField_a_of_type_Arvj.j();
-    }
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.jdField_a_of_type_Arvj != null) {
-      this.jdField_a_of_type_Arvj.k();
-    }
-    return false;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Arvj != null) {
-      this.jdField_a_of_type_Arvj.j();
-    }
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

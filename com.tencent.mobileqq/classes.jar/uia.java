@@ -1,25 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-class uia
-  extends GestureDetector.SimpleOnGestureListener
+public class uia
 {
-  uia(uhz paramuhz) {}
+  public final int a;
+  public long a;
+  public BaseArticleInfo a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public uia(int paramInt)
   {
-    uqf.b("WSFollowFeedHolder", "VideoLayout onDoubleTap");
-    uhz.a(this.a, paramMotionEvent);
-    uhz.a(this.a, true);
-    return super.onDoubleTap(paramMotionEvent);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public String toString()
   {
-    uqf.b("WSFollowFeedHolder", "VideoLayout onSingleTapConfirmed");
-    uhz.a(this.a);
-    uhz.a(this.a, false);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
   }
 }
 

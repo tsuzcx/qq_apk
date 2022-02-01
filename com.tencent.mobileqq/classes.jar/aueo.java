@@ -1,72 +1,54 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.net.URLEncoder;
+import tencent.hiboom.hiboomauth.hiboom_auth.TTipsInfo;
 
-public class aueo
+final class aueo
+  implements DialogInterface.OnClickListener
 {
-  protected int a;
-  protected QQAppInterface a;
-  protected FileManagerEntity a;
-  protected List<auei> a;
-  private int b;
+  aueo(int paramInt1, String paramString, Context paramContext, hiboom_auth.TTipsInfo paramTTipsInfo, int paramInt2) {}
   
-  public aueo(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aucq a(BaseActivity paramBaseActivity)
-  {
-    return new auep(this, paramBaseActivity);
-  }
-  
-  public List<auei> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a(Intent paramIntent, Activity paramActivity)
-  {
-    Object localObject = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-    if (localObject == null) {
-      return false;
-    }
-    if (paramIntent.getBooleanExtra("from_webview", false))
+    switch (this.jdField_a_of_type_Int)
     {
-      bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
-      l1 = ((ForwardFileInfo)localObject).a();
-      localObject = paramIntent.getStringExtra("sender_uin");
-      long l2 = paramIntent.getLongExtra("last_time", 0L);
-      auoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localbftf, (String)localObject, l2, -1, 0, null, false, false);
-      paramActivity.finish();
-      return false;
+    default: 
+    case 1: 
+      for (;;)
+      {
+        paramDialogInterface.dismiss();
+        return;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, -1L, null, false, -1);
+        }
+      }
     }
-    long l1 = ((ForwardFileInfo)localObject).b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
-    this.jdField_a_of_type_JavaUtilList.add(aueb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+    boolean bool1 = false;
+    boolean bool2 = false;
+    String str3 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_vip_type.get();
+    String str2 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_month.get();
+    String str4 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_aid.get();
+    String str1 = str3;
+    if (str3.startsWith("!"))
     {
-      this.jdField_a_of_type_Int = 1;
-      return true;
+      bool1 = true;
+      str1 = str3.substring(1, str3.length());
     }
-    this.jdField_a_of_type_Int = 3;
-    return true;
+    if (str2.startsWith("!"))
+    {
+      str2 = str2.substring(1, str2.length());
+      bool2 = true;
+    }
+    for (;;)
+    {
+      str3 = URLEncoder.encode("jsbridge://font/paySuccess?p={\"id\":" + this.b + "}");
+      bgge.a(this.jdField_a_of_type_AndroidContentContext, str4, str1, Integer.parseInt(str2), bool2, bool1, null, str3, false, false);
+      break;
+    }
   }
 }
 

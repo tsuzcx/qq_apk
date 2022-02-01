@@ -1,14 +1,15 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xeq
-  extends wov
+  implements ysz
 {
-  public qqstory_service.RspGetMusicListConfig a;
+  public xeq(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public xeq(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
+  public void a()
   {
-    super(paramRspGetMusicListConfig.result);
-    this.a = paramRspGetMusicListConfig;
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 

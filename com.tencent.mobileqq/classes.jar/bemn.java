@@ -1,6 +1,23 @@
-public abstract interface bemn
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bemn
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  protected bemn(beml parambeml) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Beml.a != null) {
+      this.jdField_a_of_type_Beml.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

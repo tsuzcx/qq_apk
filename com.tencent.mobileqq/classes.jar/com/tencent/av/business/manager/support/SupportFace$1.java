@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager.support;
 
-import lik;
+import lie;
 
 public class SupportFace$1
   implements Runnable
 {
-  public SupportFace$1(lik paramlik) {}
+  public SupportFace$1(lie paramlie) {}
   
   public void run()
   {
-    if (!lik.a(this.this$0))
+    if (!lie.a(this.this$0))
     {
       this.this$0.b();
-      lik.a(this.this$0, true);
+      lie.a(this.this$0, true);
     }
   }
 }

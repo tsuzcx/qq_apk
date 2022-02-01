@@ -1,22 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoUrl;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public final class bnas
-  implements Parcelable.Creator<VideoUrl>
+class bnas
+  implements EIPClientConnectListener
 {
-  public VideoUrl a(Parcel paramParcel)
+  bnas(bnar parambnar) {}
+  
+  public void connectFailed()
   {
-    VideoUrl localVideoUrl = new VideoUrl();
-    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoUrl.b = paramParcel.readInt();
-    return localVideoUrl;
+    bnar.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
+    }
   }
   
-  public VideoUrl[] a(int paramInt)
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    return new VideoUrl[paramInt];
+    if (paramEIPCConnection != null) {
+      bnar.a(this.a, paramEIPCConnection.procName);
+    }
+    bnar.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + bnar.a(this.a));
+    }
   }
 }
 

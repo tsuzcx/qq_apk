@@ -11,22 +11,22 @@ import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
-import ocd;
+import odq;
 import org.jetbrains.annotations.NotNull;
-import ozs;
-import paa;
-import rab;
-import rfc;
-import rff;
-import rir;
-import riw;
+import pay;
+import pbg;
+import rha;
+import rmc;
+import rmf;
+import rpr;
+import rpw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "topicInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "invoke", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$1"}, k=3, mv={1, 1, 16})
 public final class SelectTopicFragment$onCreate$$inlined$let$lambda$1
   extends Lambda
   implements Function1<ColumnInfo, Unit>
 {
-  SelectTopicFragment$onCreate$$inlined$let$lambda$1(riw paramriw, FragmentActivity paramFragmentActivity, SelectTopicFragment paramSelectTopicFragment, int paramInt, String paramString)
+  SelectTopicFragment$onCreate$$inlined$let$lambda$1(rpw paramrpw, FragmentActivity paramFragmentActivity, SelectTopicFragment paramSelectTopicFragment, int paramInt, String paramString)
   {
     super(1);
   }
@@ -36,26 +36,26 @@ public final class SelectTopicFragment$onCreate$$inlined$let$lambda$1
     Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
     QLog.i("SelectTopicFragment", 1, "select topic, topic=" + paramColumnInfo);
     this.$dialog.dismiss();
-    Object localObject = ozs.a();
+    Object localObject = pay.a();
     int i;
     if (localObject != null)
     {
-      localObject = new paa().a("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
-      if (rab.m())
+      localObject = new pbg().a("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
+      if (rha.m())
       {
         i = 1;
-        localObject = ((paa)localObject).a("ugc_video_flag", Integer.valueOf(i));
-        if (!rab.h()) {
+        localObject = ((pbg)localObject).a("ugc_video_flag", Integer.valueOf(i));
+        if (!rha.h()) {
           break label162;
         }
         i = 1;
         label90:
-        ocd.a("0X800ADD0", ((paa)localObject).a("ugc_column_flag", Integer.valueOf(i)).a("from_page", Integer.valueOf(this.$from$inlined)).a());
+        odq.a("0X800ADD0", ((pbg)localObject).a("ugc_column_flag", Integer.valueOf(i)).a("from_page", Integer.valueOf(this.$from$inlined)).a());
       }
     }
     for (;;)
     {
-      rfc.a((List)CollectionsKt.arrayListOf(new String[] { this.$rowKey$inlined }), paramColumnInfo.columnID, (rff)new rir(this, paramColumnInfo));
+      rmc.a((List)CollectionsKt.arrayListOf(new String[] { this.$rowKey$inlined }), paramColumnInfo.columnID, (rmf)new rpr(this, paramColumnInfo));
       return;
       i = 0;
       break;

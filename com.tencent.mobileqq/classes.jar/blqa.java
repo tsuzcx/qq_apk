@@ -1,12 +1,18 @@
-import com.tencent.widget.SwitchExtend;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public abstract interface blqa
+class blqa
+  implements zwa
 {
-  public abstract boolean a(SwitchExtend paramSwitchExtend);
+  blqa(blpr paramblpr) {}
+  
+  public void a()
+  {
+    this.a.a.setVisibility(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blqa
  * JD-Core Version:    0.7.0.1
  */

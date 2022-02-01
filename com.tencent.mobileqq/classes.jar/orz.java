@@ -1,18 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class orz
-  extends pfh
+final class orz
+  implements DialogInterface.OnClickListener
 {
-  public orz(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  orz(ouc paramouc, ouo paramouo) {}
   
-  public void b(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.b(paramString);
-    paramString = ReadInJoyCommentListFragment.a(this.a).a(paramString, ReadInJoyCommentListFragment.a(this.a));
-    if (paramString != null) {
-      ReadInJoyCommentListFragment.a(this.a).a(paramString, oqy.a(paramString, 0), 2);
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Ouc != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Ouc.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Ouo);
+          this.jdField_a_of_type_Ouc.notifyDataSetChanged();
+        }
+      }
+      bkwm.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
     }
-    ReadInJoyCommentListFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

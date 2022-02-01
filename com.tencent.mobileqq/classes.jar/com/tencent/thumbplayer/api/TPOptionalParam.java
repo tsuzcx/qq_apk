@@ -3,6 +3,7 @@ package com.tencent.thumbplayer.api;
 public class TPOptionalParam
 {
   public static final int TP_OPTIONAL_RARAM_TYPE_BOOLEAN = 1;
+  public static final int TP_OPTIONAL_RARAM_TYPE_FLOAT = 6;
   public static final int TP_OPTIONAL_RARAM_TYPE_LONG = 2;
   public static final int TP_OPTIONAL_RARAM_TYPE_QUEUE_INT = 4;
   public static final int TP_OPTIONAL_RARAM_TYPE_QUEUE_STRING = 5;
@@ -10,6 +11,7 @@ public class TPOptionalParam
   public static final int TP_OPTIONAL_RARAM_TYPE_UNKNOW = -1;
   private int key;
   private TPOptionalParam.OptionalParamBoolean paramBoolean;
+  private TPOptionalParam.OptionalParamFloat paramFloat;
   private TPOptionalParam.OptionalParamLong paramLong;
   private TPOptionalParam.OptionalParamQueueInt paramQueueInt;
   private TPOptionalParam.OptionalParamQueueString paramQueueString;
@@ -22,6 +24,26 @@ public class TPOptionalParam
     this.key = paramInt;
     this.paramBoolean = new TPOptionalParam.OptionalParamBoolean();
     this.paramBoolean.value = paramBoolean1;
+    return this;
+  }
+  
+  public TPOptionalParam buildFloat(int paramInt, float paramFloat1)
+  {
+    this.paramType = 6;
+    this.key = paramInt;
+    this.paramFloat = new TPOptionalParam.OptionalParamFloat();
+    this.paramFloat.value = paramFloat1;
+    return this;
+  }
+  
+  public TPOptionalParam buildFloat(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    this.paramType = 6;
+    this.key = paramInt;
+    this.paramFloat = new TPOptionalParam.OptionalParamFloat();
+    this.paramFloat.value = paramFloat1;
+    this.paramFloat.param1 = paramFloat2;
+    this.paramFloat.param2 = paramFloat3;
     return this;
   }
   
@@ -93,6 +115,11 @@ public class TPOptionalParam
     return this.paramBoolean;
   }
   
+  public TPOptionalParam.OptionalParamFloat getParamFloat()
+  {
+    return this.paramFloat;
+  }
+  
   public TPOptionalParam.OptionalParamLong getParamLong()
   {
     return this.paramLong;
@@ -134,6 +161,8 @@ public class TPOptionalParam
       localStringBuilder.append("type:long, , key:" + this.key + ", value:" + this.paramBoolean.value);
       continue;
       localStringBuilder.append("type:long, , key:" + this.key + ", value:" + this.paramLong.value + "param1, :" + this.paramLong.param1 + ", param2:" + this.paramLong.param2);
+      continue;
+      localStringBuilder.append("type:float, , key:" + this.key + ", value:" + this.paramFloat.value + "param1, :" + this.paramFloat.param1 + ", param2:" + this.paramFloat.param2);
       continue;
       localStringBuilder.append("type:string, , key:" + this.key + ", value:" + this.paramString.value + "param1, :" + this.paramString.param1 + ", param2:" + this.paramString.param2);
       continue;

@@ -1,16 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import com.tencent.map.geolocation.TencentLocation;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class wbc
-  implements View.OnClickListener
+public abstract class wbc
 {
-  wbc(waz paramwaz) {}
+  public long a;
+  protected AtomicBoolean a;
+  public boolean a;
+  public long b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public wbc()
   {
-    waz.a(this.a, paramView.getContext());
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    long l2 = System.currentTimeMillis();
+    long l1 = this.b - this.jdField_a_of_type_Long;
+    l2 -= this.b;
+    xvv.c(paramString, "page network respond times " + l1);
+    xvv.c(paramString, "page db times " + l2);
+  }
+  
+  public void b()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

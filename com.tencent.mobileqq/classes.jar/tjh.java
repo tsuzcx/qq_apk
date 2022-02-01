@@ -1,21 +1,19 @@
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.20.1;
-import com.tencent.nativevue.NativeVueEngine.DomResult;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-public class tjh
-  implements NativeVueEngine.DomResult
+final class tjh
+  implements bcan
 {
-  public tjh(ViolaBaseView paramViolaBaseView) {}
+  tjh(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void onResult(String paramString)
+  public void a()
   {
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      ViolaBaseView.b(this.a, paramString);
-      return;
-    }
-    this.a.post(new ViolaBaseView.20.1(this, paramString));
+    tjg.z(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
   }
 }
 

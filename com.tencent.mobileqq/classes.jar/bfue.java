@@ -1,20 +1,91 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.4.1;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bfue
-  implements bdyi
 {
-  public bfue(TroopEnterEffectController.3 param3) {}
+  public static boolean a;
   
-  public void a()
+  public static QQCustomMenuNoIconLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bgaz parambgaz, View.OnClickListener paramOnClickListener)
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
-    {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
-      this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.4.1(this));
-    }
+    bgbc.a(parambgaz);
+    paramContext = new QQCustomMenuNoIconLayout(paramContext);
+    paramContext.setGravity(17);
+    paramContext.setPadding(0, 0, 0, 0);
+    paramContext.setPopupWindow(paramBubblePopupWindow);
+    paramContext.setMenu(parambgaz);
+    paramContext.setMenuIconClickListener(paramOnClickListener);
+    paramContext.a();
+    return paramContext;
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, bgaz parambgaz, View.OnClickListener paramOnClickListener)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambgaz, paramOnClickListener));
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(false);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.c(1);
+    localBubblePopupWindow.b(2);
+    localBubblePopupWindow.e(false);
+    localBubblePopupWindow.f(paramInt3);
+    localBubblePopupWindow.a(0);
+    localBubblePopupWindow.b(paramView, paramInt1, paramInt2);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bgaz parambgaz, View.OnClickListener paramOnClickListener, Integer paramInteger)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    parambgaz = a(localBubblePopupWindow, paramView.getContext(), parambgaz, paramOnClickListener);
+    parambgaz.setIgnoreTouchLocation(true);
+    parambgaz.setContainerBottom(paramInteger);
+    localBubblePopupWindow.a(parambgaz);
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.c(1);
+    localBubblePopupWindow.b(2);
+    localBubblePopupWindow.a(paramView, paramInt1, paramInt2, true);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, bgaz parambgaz, View.OnClickListener paramOnClickListener)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambgaz, paramOnClickListener));
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.b(paramView);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, bgaz parambgaz, View.OnClickListener paramOnClickListener, bjoy parambjoy)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambgaz, paramOnClickListener));
+    localBubblePopupWindow.a(parambjoy);
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.b(paramView);
+    return localBubblePopupWindow;
+  }
+  
+  public static void a(View paramView, int paramInt1, int paramInt2, bgaz parambgaz)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambgaz, null));
+    localBubblePopupWindow.a(null);
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(false);
+    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
   }
 }
 

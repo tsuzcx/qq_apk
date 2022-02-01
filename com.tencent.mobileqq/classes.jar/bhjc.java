@@ -1,37 +1,18 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
 public class bhjc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a(Context paramContext, String paramString)
-  {
-    if (paramContext != null) {
-      return paramContext.getSharedPreferences("c_profile_sharepreference", 4).getString(paramString, "");
-    }
-    return "";
-  }
+  public bhjc(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
-  public static void a(Context paramContext, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramContext != null)
-    {
-      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 4).edit();
-      paramContext.remove(paramString);
-      paramContext.commit();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    b(paramContext, paramString1, paramString2);
-  }
-  
-  private static void b(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 4).edit();
-    paramContext.putString(paramString1, paramString2);
-    paramContext.commit();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 

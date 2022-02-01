@@ -1,45 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Map;
-import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
-class aczs
-  extends nkq
+public class aczs
+  implements DialogInterface.OnClickListener
 {
-  aczs(aczr paramaczr, boolean paramBoolean, bfoy parambfoy, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
-  {
-    super(paramBoolean);
-  }
+  public aczs(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
+    if (this.a.a != null)
     {
-      return;
-      try
-      {
-        paramBundle = new oidb_cmd0x6ef.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
-        {
-          this.jdField_a_of_type_Bfoy.a.a(21, this.jdField_a_of_type_Long, this.b);
-          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
-            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = bgiv.a(this.jdField_a_of_type_Aczr.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfoy, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
-            this.jdField_a_of_type_JavaUtilMap.put(adak.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      this.a.a.b = false;
+      this.a.a.a(false);
     }
   }
 }

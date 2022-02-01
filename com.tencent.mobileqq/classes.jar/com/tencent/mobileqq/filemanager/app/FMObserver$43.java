@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atpa;
-import atzl;
+import asbj;
+import aslv;
 
 public class FMObserver$43
   implements Runnable
 {
-  public FMObserver$43(atpa paramatpa, atzl paramatzl) {}
+  public FMObserver$43(asbj paramasbj, aslv paramaslv) {}
   
   public void run()
   {
-    this.this$0.a(this.a);
+    this.this$0.onThumbDownLoadSuccess(this.a);
   }
 }
 

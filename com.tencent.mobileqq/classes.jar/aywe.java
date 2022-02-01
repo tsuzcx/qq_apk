@@ -1,50 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aywe
-  implements agjk
+class aywe
+  extends arht
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  aywe(aywc paramaywc) {}
   
-  public boolean onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    return false;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileExtendFriendComponent", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
-    while ((paramView instanceof ArkAppView))
-    {
-      return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      this.c = 0.0F;
-      this.d = 0.0F;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      continue;
-      this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
-      this.d += Math.abs(paramMotionEvent.getY() - this.b);
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      continue;
-      if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
-        return true;
-      }
+    if ((paramBoolean) && (paramInt == 2) && (aywc.a(this.a) != null)) {
+      aywc.b(this.a).a();
     }
-    return false;
   }
 }
 

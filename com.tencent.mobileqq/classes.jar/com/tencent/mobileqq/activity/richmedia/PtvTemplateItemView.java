@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import agej;
-import alwm;
-import alwp;
+import akud;
+import akug;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -17,10 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhez;
+import bfol;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.widget.CircleProgress;
@@ -32,8 +32,8 @@ public class PtvTemplateItemView
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int;
-  alwm jdField_a_of_type_Alwm;
-  alwp jdField_a_of_type_Alwp;
+  akud jdField_a_of_type_Akud;
+  akug jdField_a_of_type_Akug;
   Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -64,13 +64,13 @@ public class PtvTemplateItemView
   {
     setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
     setOrientation(0);
-    int k = agej.a(64.0F, getResources());
-    int m = agej.a(60.0F, getResources());
-    int j = agej.a(70.0F, getResources());
-    int n = agej.a(20.0F, getResources());
-    int i1 = getResources().getColor(2131166990);
-    int i2 = getResources().getColor(2131165367);
-    int i3 = agej.a(18.0F, getResources());
+    int k = AIOUtils.dp2px(64.0F, getResources());
+    int m = AIOUtils.dp2px(60.0F, getResources());
+    int j = AIOUtils.dp2px(70.0F, getResources());
+    int n = AIOUtils.dp2px(20.0F, getResources());
+    int i1 = getResources().getColor(2131167012);
+    int i2 = getResources().getColor(2131165375);
+    int i3 = AIOUtils.dp2px(18.0F, getResources());
     int i = paramInt2;
     if (paramInt2 <= 0) {
       i = j;
@@ -93,12 +93,12 @@ public class PtvTemplateItemView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i3, i3);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846014);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845914);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = agej.a(5.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin = agej.a(2.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.dp2px(5.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.dp2px(2.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress = new CircleProgress(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(3.0F);
@@ -127,7 +127,7 @@ public class PtvTemplateItemView
     }
   }
   
-  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, alwm paramalwm)
+  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, akud paramakud)
   {
     if (paramPtvTemplateInfo == null) {}
     do
@@ -135,7 +135,7 @@ public class PtvTemplateItemView
       return;
       setTag(paramPtvTemplateInfo);
       this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Alwm = paramalwm;
+      this.jdField_a_of_type_Akud = paramakud;
       if (!TextUtils.isEmpty(paramPtvTemplateInfo.id)) {
         break;
       }
@@ -147,20 +147,20 @@ public class PtvTemplateItemView
     }
     if (!TextUtils.isEmpty(paramPtvTemplateInfo.iconurl))
     {
-      paramalwm = URLDrawable.URLDrawableOptions.obtain();
-      paramInt = agej.a(60.0F, getResources());
+      paramakud = URLDrawable.URLDrawableOptions.obtain();
+      paramInt = AIOUtils.dp2px(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131165854));
+      localGradientDrawable.setColor(getResources().getColor(2131165872));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
-      paramalwm.mRequestWidth = paramInt;
-      paramalwm.mRequestHeight = paramInt;
-      paramalwm.mFailedDrawable = localGradientDrawable;
-      paramalwm.mLoadingDrawable = localGradientDrawable;
-      paramalwm = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramalwm);
-      paramalwm.setTag(bhez.a(paramInt, paramInt));
-      paramalwm.setDecodeHandler(bhez.a);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramalwm);
+      paramakud.mRequestWidth = paramInt;
+      paramakud.mRequestHeight = paramInt;
+      paramakud.mFailedDrawable = localGradientDrawable;
+      paramakud.mLoadingDrawable = localGradientDrawable;
+      paramakud = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramakud);
+      paramakud.setTag(bfol.a(paramInt, paramInt));
+      paramakud.setDecodeHandler(bfol.a);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramakud);
       if ((!paramPtvTemplateInfo.usable) && (!paramPtvTemplateInfo.id.equals("0"))) {
         break label256;
       }
@@ -174,7 +174,7 @@ public class PtvTemplateItemView
       if (!"0".equals(paramPtvTemplateInfo.id)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130850680);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130850605);
       break;
       label256:
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -208,11 +208,11 @@ public class PtvTemplateItemView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Alwm != null) {
-      this.jdField_a_of_type_Alwm.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Akud != null) {
+      this.jdField_a_of_type_Akud.a(this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_Alwp != null) {
-      this.jdField_a_of_type_Alwp.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Akug != null) {
+      this.jdField_a_of_type_Akug.a(this.jdField_a_of_type_Int);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

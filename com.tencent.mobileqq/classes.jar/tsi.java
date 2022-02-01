@@ -1,13 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class tsi
-  implements ViewBase.IBuilder
+class tsi
+  implements DialogInterface.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  tsi(tsf paramtsf, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new tse(paramVafContext);
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!tsf.a(this.jdField_a_of_type_Tsf)) {}
+    }
+    while (!(tsf.a(this.jdField_a_of_type_Tsf) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Tsf.b();
+      return;
+    }
+    twr.b(tsf.a(this.jdField_a_of_type_Tsf));
+    twh.a(tsf.a(this.jdField_a_of_type_Tsf), tsf.a(this.jdField_a_of_type_Tsf).p, tsf.a(this.jdField_a_of_type_Tsf).q, "");
   }
 }
 

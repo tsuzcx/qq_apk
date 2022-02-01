@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.medalwall.MedalID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class axbk
-  implements Parcelable.Creator<MedalID>
+class axbk
+  implements DialogInterface.OnClickListener
 {
-  public MedalID a(Parcel paramParcel)
-  {
-    return new MedalID(paramParcel);
-  }
+  axbk(axbj paramaxbj, QQCustomDialog paramQQCustomDialog) {}
   
-  public MedalID[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MedalID[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Axbj.a.f();
   }
 }
 

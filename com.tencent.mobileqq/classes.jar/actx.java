@@ -1,30 +1,44 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class actx
-  implements View.OnClickListener
+public class actx
+  implements bjoe
 {
-  actx(actv paramactv) {}
+  public actx(AuthDevActivity paramAuthDevActivity, String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a() == null) {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
+      {
+        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
+        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
+        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
+      }
       return;
-      if (!this.a.a().isLoaded()) {
-        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-      } else if (this.a.a().isInvalidated()) {
-        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
-      } else {
-        this.a.a();
+      if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131692035), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.begin to delAuthDev");
+        }
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_delete", 0, 0, "", "", "", "");
+        if (arhf.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long)) {
+          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+        } else if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.delAuthDev fail");
+        }
       }
     }
   }

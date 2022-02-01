@@ -1,21 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bffi
-  implements Animation.AnimationListener
+class bffi
+  implements View.OnClickListener
 {
-  public bffi(AbsPublishActivity paramAbsPublishActivity) {}
+  bffi(bffh parambffh, bffj parambffj, MediaPreviewInfo paramMediaPreviewInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.clearAnimation();
+    this.jdField_a_of_type_Bffj.a.setVisibility(8);
+    this.jdField_a_of_type_Bffh.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_Bffj);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

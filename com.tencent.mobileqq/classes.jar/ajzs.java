@@ -1,80 +1,51 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import Wallet.GetRandomHbIdiomRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.IdiomHbBundleInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.observer.BusinessObserver;
 
 public class ajzs
-  extends RecyclerView.Adapter
+  implements BusinessObserver
 {
-  public List<String> a = new ArrayList();
+  public ajzs(WordChainHbFragment paramWordChainHbFragment, int paramInt, ajzt paramajzt) {}
   
-  public ajzs(List<String> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramList != null)
+    WordChainHbFragment.a().remove(Integer.valueOf(WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment).currSelectedSubChannel));
+    if (paramInt == 27)
     {
-      this.a.clear();
-      this.a.addAll(paramList);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.a != null) {
-      return this.a.size();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    ImageView localImageView = ((ajzt)paramViewHolder).a;
-    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
-    {
-      if (paramInt != 0) {
-        break label108;
+      paramBundle = (GetRandomHbIdiomRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel()) {
+        QLog.d("WordChainHbFragment", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
       }
-      String str = (String)this.a.get(paramInt);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mFailedDrawable = beyq.a;
-      localURLDrawableOptions.mLoadingDrawable = beyq.a;
-      localURLDrawableOptions.mPlayGifImage = azru.a(str);
-      localURLDrawableOptions.mUseAutoScaleParams = true;
-      localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
+      if ((!paramBoolean) || (paramBundle == null) || (paramBundle.suggestIdioms == null) || (paramBundle.suggestIdioms.size() <= 0)) {
+        break label217;
+      }
+      localajzu = new ajzu();
+      localajzu.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList(paramBundle.suggestIdioms);
+      localajzu.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+      WordChainHbFragment.a().put(Integer.valueOf(this.jdField_a_of_type_Int), localajzu);
+      if (QLog.isColorLevel()) {
+        QLog.d("WordChainHbFragment", 2, "getIdiomListFromSSO idiomListSize:" + localajzu.jdField_a_of_type_JavaUtilList.size());
+      }
+      if (this.jdField_a_of_type_Ajzt != null) {
+        this.jdField_a_of_type_Ajzt.a(true, localajzu.jdField_a_of_type_JavaUtilList);
+      }
     }
-    for (;;)
+    label217:
+    while (this.jdField_a_of_type_Ajzt == null)
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      ajzu localajzu;
       return;
-      label108:
-      if (paramInt == 1)
-      {
-        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localImageView.setPadding(0, 0, 0, 0);
-        localImageView.setImageDrawable(null);
-        localImageView.setBackgroundColor(Color.parseColor("#9A989EB4"));
-      }
-      else if (paramInt == 2)
-      {
-        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localImageView.setPadding(0, 0, 0, 0);
-        localImageView.setImageDrawable(null);
-        localImageView.setBackgroundColor(Color.parseColor("#48989EB4"));
-      }
     }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new ajzt(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559126, paramViewGroup, false));
+    this.jdField_a_of_type_Ajzt.a(false, null);
   }
 }
 

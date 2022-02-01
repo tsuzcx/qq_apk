@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.mini.reuse;
 
+import amov;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anum;
-import anuw;
-import arfc;
-import arfd;
-import bguq;
-import bkyr;
+import apys;
+import apyt;
+import bjeo;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
@@ -25,13 +25,13 @@ import com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp;
 import com.tencent.mobileqq.mini.utils.ReportLogUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nnr;
 import org.json.JSONObject;
 
 public class MiniAppTransferModule
@@ -60,7 +60,7 @@ public class MiniAppTransferModule
   public static final int RESULT_CODE_SUCCESS = 0;
   private static final String TAG = "MiniAppTransferModule";
   private static MiniAppTransferModule sInstance;
-  private anuw cardObserver = new MiniAppTransferModule.3(this);
+  private CardObserver cardObserver = new MiniAppTransferModule.3(this);
   private AtomicBoolean mSendingRequest = new AtomicBoolean(false);
   private int noDisturbModeCallbackId = -1;
   
@@ -98,7 +98,7 @@ public class MiniAppTransferModule
       return;
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     } while (localObject == null);
-    int j = nnr.a();
+    int j = HttpUtil.getNetWorkType();
     int i = j;
     if (j == -1) {
       i = 2;
@@ -125,10 +125,10 @@ public class MiniAppTransferModule
     if (paramBoolean)
     {
       long l = NetConnInfoCenter.getServerTime();
-      ((anum)((QQAppInterface)localObject).a(2)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
+      ((amov)((QQAppInterface)localObject).getBusinessHandler(2)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
       return;
     }
-    ((anum)((QQAppInterface)localObject).a(2)).a(0, "", "not_disturb_from_miniapp");
+    ((amov)((QQAppInterface)localObject).getBusinessHandler(2)).a(0, "", "not_disturb_from_miniapp");
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -152,7 +152,7 @@ public class MiniAppTransferModule
           {
             paramString = new JSONObject(paramString);
             paramBundle = paramString.optString("command");
-            if (arfd.c())
+            if (apyt.c())
             {
               ((DesktopDataManager)((AppRuntime)localObject).getManager(336)).updateEntryList(paramString);
               return null;
@@ -177,7 +177,7 @@ public class MiniAppTransferModule
             paramString = paramBundle.getString("appid");
             i = paramBundle.getInt("topType");
             int j = paramBundle.getInt("verType");
-            if (arfd.c())
+            if (apyt.c())
             {
               ThreadManager.getUIHandler().post(new MiniAppTransferModule.1(this, (AppRuntime)localObject, paramString, i, paramInt, j));
               return null;
@@ -208,7 +208,7 @@ public class MiniAppTransferModule
           {
             paramString = paramBundle.getString("appid");
             i = paramBundle.getInt("verType");
-            if (arfd.c())
+            if (apyt.c())
             {
               paramBundle = (DesktopDataManager)((AppRuntime)localObject).getManager(336);
               if ((paramBundle != null) && (!TextUtils.isEmpty(paramString))) {
@@ -223,7 +223,7 @@ public class MiniAppTransferModule
                     {
                       paramString.putParcelable("miniappinfo", paramBundle);
                       paramString.putInt("topType", 1);
-                      paramBundle = arfd.a().a();
+                      paramBundle = apyt.a().a();
                       if (paramBundle != null) {
                         paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                       }
@@ -255,7 +255,7 @@ public class MiniAppTransferModule
                     {
                       paramString.putParcelable("miniappinfo", paramBundle);
                       paramString.putInt("topType", 1);
-                      paramBundle = arfd.a().a();
+                      paramBundle = apyt.a().a();
                       if (paramBundle != null) {
                         paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                       }
@@ -339,7 +339,7 @@ public class MiniAppTransferModule
                 str1 = paramBundle.getString("reserves");
                 String str2 = paramBundle.getString("app_type");
                 boolean bool = paramBundle.getBoolean("x5_enable");
-                paramBundle = bkyr.a(localMiniAppInfo);
+                paramBundle = bjeo.a(localMiniAppInfo);
                 if (paramBundle == null) {
                   continue;
                 }
@@ -356,7 +356,7 @@ public class MiniAppTransferModule
                 paramBundle.setClassLoader(SDKMiniProgramLpReportDC04239.class.getClassLoader());
                 paramString = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
                 long l = paramBundle.getLong("add_duration_ms");
-                paramString = bkyr.a(paramString);
+                paramString = bjeo.a(paramString);
                 if (paramString != null)
                 {
                   MiniAppReportManager.recordDuration(paramString, l);
@@ -375,7 +375,7 @@ public class MiniAppTransferModule
         try
         {
           paramString = new Bundle();
-          paramString.putBoolean("hasCreateOrManageTroop", bguq.a());
+          paramString.putBoolean("hasCreateOrManageTroop", TroopUtils.hasCreateOrManageTroop());
           callbackResult(paramInt, EIPCResult.createResult(0, paramString));
           return null;
         }

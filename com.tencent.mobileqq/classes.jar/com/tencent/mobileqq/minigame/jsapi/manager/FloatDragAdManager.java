@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bjjo;
-import bnwr;
+import bhpc;
+import blbx;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
@@ -60,20 +60,20 @@ public class FloatDragAdManager
     performReport(paramFloatDragAdInfo.getAdItem(), paramFloatDragAdInfo.getType(), 101);
   }
   
-  private static bnwr newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  private static blbx newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    bnwr localbnwr = new bnwr();
-    localbnwr.b = (String.valueOf(bjjo.a().a()) + '_' + i);
-    localbnwr.d = paramInt;
-    localbnwr.jdField_e_of_type_Int = 1;
-    localbnwr.g = String.valueOf(paramAdItem.iAdId.get());
-    localbnwr.n = paramString;
-    localbnwr.jdField_a_of_type_Long = i;
-    localbnwr.jdField_a_of_type_Int = 1;
-    localbnwr.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localbnwr.i = "";
-    return localbnwr;
+    blbx localblbx = new blbx();
+    localblbx.b = (String.valueOf(bhpc.a().a()) + '_' + i);
+    localblbx.d = paramInt;
+    localblbx.jdField_e_of_type_Int = 1;
+    localblbx.g = String.valueOf(paramAdItem.iAdId.get());
+    localblbx.n = paramString;
+    localblbx.jdField_a_of_type_Long = i;
+    localblbx.jdField_a_of_type_Int = 1;
+    localblbx.jdField_e_of_type_JavaLangString = "tianshu.81";
+    localblbx.i = "";
+    return localblbx;
   }
   
   private void onAdClick(FloatDragAdInfo paramFloatDragAdInfo)

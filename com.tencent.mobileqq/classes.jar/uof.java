@@ -1,23 +1,62 @@
+import UserGrowth.stSimpleMetaFeed;
 import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class uof
+  extends uoe<ArrayList<stSimpleMetaFeed>>
 {
-  private static int a(String paramString)
+  protected int a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public uof()
   {
-    int i = 2;
-    if (TextUtils.equals(paramString, "trends")) {
-      i = 6;
-    }
-    return i;
+    this.jdField_a_of_type_JavaLangObject = new ArrayList();
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
   }
   
-  public static uod a(String paramString)
+  private boolean b(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    int i = a(paramString);
-    if (!TextUtils.equals(paramString, "trends")) {
-      return new uoe(i);
+    return ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (a() == 0)) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramstSimpleMetaFeed.poster_id));
+  }
+  
+  public int a()
+  {
+    return ((ArrayList)this.jdField_a_of_type_JavaLangObject).size();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      ulf.a().a(a());
     }
-    return new uog(i);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramstSimpleMetaFeed == null) || (!b(paramstSimpleMetaFeed))) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
+    ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

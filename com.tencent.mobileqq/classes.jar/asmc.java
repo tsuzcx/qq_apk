@@ -1,54 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.RejectedExecutionException;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-class asmc
-  implements URLDrawable.URLDrawableListener
+public class asmc
+  extends asmj
 {
-  asmc(aslv paramaslv) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public asmc(ViewGroup paramViewGroup)
   {
-    if ((paramThrowable instanceof RejectedExecutionException)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
-      }
-    }
-    label41:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label41;
-          do
-          {
-            return;
-          } while (paramURLDrawable == null);
-          paramThrowable = paramURLDrawable.getFileInLocal();
-          if ((paramThrowable != null) && (paramThrowable.exists())) {
-            paramThrowable.delete();
-          }
-          paramThrowable = paramURLDrawable.getTag();
-        } while (!(paramThrowable instanceof Integer));
-        i = ((Integer)paramThrowable).intValue();
-      } while (i >= 3);
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-    } while (!QLog.isColorLevel());
-    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
+    this.jdField_a_of_type_Int = 2131560782;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

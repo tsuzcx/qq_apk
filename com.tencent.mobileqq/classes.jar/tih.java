@@ -1,60 +1,16 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class tih
+class tih
+  implements rnw
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  tih(tig paramtig, String paramString) {}
   
-  public tih() {}
-  
-  public tih(JSONObject paramJSONObject)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    if (paramJSONObject == null) {}
-    do
-    {
-      return;
-      if (paramJSONObject.has("busiType")) {
-        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
-      }
-      if (paramJSONObject.has("vid")) {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
-      }
-      if (paramJSONObject.has("width")) {
-        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
-      }
-      if (paramJSONObject.has("height")) {
-        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
-      }
-      if (paramJSONObject.has("duration")) {
-        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
-      }
-      if (paramJSONObject.has("poster")) {
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
-      }
-      if (paramJSONObject.has("title")) {
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
-      }
-      if (paramJSONObject.has("xgFileSize")) {
-        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
-      }
-      if (paramJSONObject.has("videoUrl")) {
-        this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
-      }
-    } while (!paramJSONObject.has("fromType"));
-    this.e = paramJSONObject.getInt("fromType");
-  }
-  
-  public String toString()
-  {
-    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", xgFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
+    BridgeModule.access$1600(this.jdField_a_of_type_Tig.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
   }
 }
 

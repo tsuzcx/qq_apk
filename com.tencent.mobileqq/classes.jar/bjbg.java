@@ -1,57 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 
-public class bjbg
-  implements View.OnClickListener
+class bjbg
+  implements ISuperPlayer.OnCompletionListener
 {
-  private final WeakReference<ProfileCardMoreInfoView> a;
+  bjbg(bjbd parambjbd, AbsVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
   
-  public bjbg(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    this.a = new WeakReference(paramProfileCardMoreInfoView);
-  }
-  
-  public void onClick(View paramView)
-  {
-    int j = 2;
-    Object localObject1 = (ProfileCardMoreInfoView)this.a.get();
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      BaseActivity localBaseActivity = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      QQAppInterface localQQAppInterface = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject1 = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_Azxr;
-      if ((localBaseActivity == null) || (localQQAppInterface == null) || (localObject1 != null))
-      {
-        Object localObject2 = paramView.getTag();
-        if ((localObject2 instanceof azvr)) {
-          switch (((azvr)localObject2).a)
-          {
-          default: 
-            break;
-          case 66: 
-            bhhz.a((azxr)localObject1, localQQAppInterface, localBaseActivity);
-            int i = j;
-            if (((azxr)localObject1).a != null)
-            {
-              i = j;
-              if (((azxr)localObject1).a.a == 0) {
-                i = 1;
-              }
-            }
-            bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009999", "0X8009999", i, 0, "", "", "", "");
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bjbd);
   }
 }
 

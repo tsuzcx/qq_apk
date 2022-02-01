@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bfox;
+import bdyh;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import ywa;
+import xxl;
 
 public class EditTakeVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new ywa();
+  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new xxl();
   @NonNull
   public final LocalMediaInfo a;
   @NonNull
@@ -24,7 +24,7 @@ public class EditTakeVideoSource
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bfox.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bdyh.class.getClassLoader()));
   }
   
   public EditTakeVideoSource(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo)
@@ -32,29 +32,13 @@ public class EditTakeVideoSource
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    paramString1 = b();
+    paramString1 = checkParam();
     if (paramString1 != null) {
       throw new IllegalArgumentException(paramString1);
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-  }
-  
-  public String b()
+  public String checkParam()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -77,6 +61,22 @@ public class EditTakeVideoSource
   public int describeContents()
   {
     return 0;
+  }
+  
+  public int getHeight()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+  }
+  
+  @NonNull
+  public String getSourcePath()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int getWidth()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
   }
   
   public String toString()

@@ -1,23 +1,19 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atmn
-  extends ayxl
+class atmn
+  implements DialogInterface.OnClickListener
 {
-  public atmn(FileAssistantActivity paramFileAssistantActivity) {}
+  atmn(atmm paramatmm) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
-    paramBundle = this.a.a.obtainMessage(1);
-    this.a.a.sendMessage(paramBundle);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmn
  * JD-Core Version:    0.7.0.1
  */

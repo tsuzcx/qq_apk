@@ -1,69 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-public class akuu
-  extends aktf
+class akuu
+  implements INetEngine.INetEngineListener
 {
-  akuu(NewPhotoListActivity paramNewPhotoListActivity)
+  public void onResp(NetResp paramNetResp)
   {
-    super(paramNewPhotoListActivity);
-  }
-  
-  private boolean a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if ((paramLocalMediaInfo.mediaWidth < 320) || (paramLocalMediaInfo.mediaHeight < 320))
+    Object localObject = (akux)paramNetResp.mReq.getUserData();
+    lba.f("VideoFilterTools", "download file call back. file = " + ((akux)localObject).a);
+    if (paramNetResp.mResult != 0)
     {
-      paramLocalMediaInfo = bhlq.a(this.mActivity, 230, null, anzj.a(2131706968), anzj.a(2131706952), null, null, new akuv(this));
-      try
-      {
-        paramLocalMediaInfo.show();
-        return false;
-      }
-      catch (Exception paramLocalMediaInfo)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PhotoListLogicNearby", 2, "showLocationFailDialog fail!", paramLocalMediaInfo);
-          }
-        }
-      }
+      lba.f("VideoFilterTools", "download file faild. errcode = " + paramNetResp.mErrCode);
+      return;
     }
-    return true;
-  }
-  
-  public Intent caseNoSingModeImage(View paramView, int paramInt)
-  {
-    LocalMediaInfo localLocalMediaInfo = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
-    if ((((NewPhotoListActivity)this.mActivity).photoListAdapter.getItemViewType(paramInt) == 0) && (!a(localLocalMediaInfo))) {
-      return null;
+    if (!((akux)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
+    {
+      lba.f("VideoFilterTools", "download file faild : md5 is not match.");
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      return;
     }
-    return super.caseNoSingModeImage(paramView, paramInt);
-  }
-  
-  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
-  {
-    return anzj.a(2131693930);
-  }
-  
-  public void onCheckBoxClick(View paramView, int paramInt, CheckBox paramCheckBox)
-  {
-    if (a(((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt))) {
-      super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
+    lba.f("VideoFilterTools", "download file successed.");
+    try
+    {
+      localObject = akus.a();
+      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      paramNetResp.printStackTrace();
+      lba.f("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
     }
   }
   
-  public void startPhotoPreviewActivity(Intent paramIntent)
-  {
-    if (paramIntent != null) {
-      super.startPhotoPreviewActivity(paramIntent);
-    }
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

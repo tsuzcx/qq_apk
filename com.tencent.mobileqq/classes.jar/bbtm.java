@@ -1,54 +1,64 @@
-import android.content.SharedPreferences;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbtm
-  implements Observer
 {
-  public bbtm(SignTextEditFragment paramSignTextEditFragment) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b;
   
-  public void update(Observable paramObservable, Object paramObject)
+  static
   {
-    if (!SignTextEditFragment.a(this.a).get()) {}
+    jdField_a_of_type_Int = 1500;
+  }
+  
+  public static boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    boolean bool = bbub.a(bbub.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    if (Build.VERSION.SDK_INT < 18) {}
     do
     {
-      return;
-      SignTextEditFragment.a(this.a).set(false);
-    } while (!(paramObject instanceof Integer));
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    case 3: 
-      paramObservable = bbux.a().a(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-      if ((paramObservable != null) && (!TextUtils.isEmpty(paramObservable.a)) && (Integer.parseInt(paramObservable.a) > 0) && (paramObservable.f < 2)) {
-        if (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true)) {
-          bhto.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
-        }
-      }
-      for (;;)
+      boolean bool;
+      do
       {
-        bbux.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
-        return;
-        this.a.a(100, SignTextEditFragment.a(this.a));
-      }
-    }
-    if (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true)) {
-      bhto.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
-    }
-    for (;;)
-    {
-      bbux.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
-      return;
-      this.a.a(100, SignTextEditFragment.a(this.a));
-    }
+        do
+        {
+          return false;
+          bool = bbub.e(bbub.o);
+          if (!bool) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
+        return false;
+        bool = bbub.a(bbub.r);
+        if (!bool) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
+      return false;
+    } while ((!b) || (!jdField_a_of_type_Boolean));
+    return true;
   }
 }
 

@@ -1,20 +1,26 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 public class bbhq
+  extends bbhi
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public int c;
+  private LinearLayout a;
   
-  public bbhq(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
+  public bbhq(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.c = paramInt3;
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.a = ((LinearLayout)a(this.c).findViewById(2131370109));
+  }
+  
+  public View b()
+  {
+    return this.a;
   }
 }
 

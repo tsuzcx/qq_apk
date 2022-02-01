@@ -1,22 +1,17 @@
-import android.os.Bundle;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class aulw
-  implements aulo
+  implements Callable<File>
 {
   aulw(aulv paramaulv) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  public File a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
+    if (aulv.a(this.a).exists()) {
+      return aulv.a(this.a);
     }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
-    }
+    return null;
   }
 }
 

@@ -1,44 +1,19 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.aio.PanelAdapter;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.widget.QQViewPager;
+import java.util.List;
+import kotlin.jvm.functions.Function0;
 
-public class afci
-  implements URLDrawable.URLDrawableListener
+class afci
+  implements Function0<Pair<List<ayfo>, Integer>>
 {
-  public afci(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  afci(afch paramafch) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public Pair<List<ayfo>, Integer> a()
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, zps.a(this.a.app.getApp(), 47.0F), zps.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
+    int i = PlusPanel.a(this.a.a).getCurrentItem();
+    return new Pair(this.a.a.a.a(i), Integer.valueOf(i));
   }
 }
 

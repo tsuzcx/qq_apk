@@ -1,10 +1,9 @@
+import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public abstract interface tqf
 {
-  public abstract void a(rwc paramrwc, AdvertisementInfo paramAdvertisementInfo);
-  
-  public abstract void b(rwc paramrwc, AdvertisementInfo paramAdvertisementInfo);
+  public abstract void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity);
 }
 
 

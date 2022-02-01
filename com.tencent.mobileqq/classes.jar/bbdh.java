@@ -1,8 +1,30 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public abstract interface bbdh
+final class bbdh
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
+  protected WeakReference<bbdg> a;
+  
+  public bbdh(bbdg parambbdg)
+  {
+    this.a = new WeakReference(parambbdg);
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    bbdg localbbdg = (bbdg)this.a.get();
+    if (localbbdg == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
+    }
+    localbbdg.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
+  }
 }
 
 

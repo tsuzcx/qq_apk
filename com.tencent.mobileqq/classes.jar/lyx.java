@@ -1,32 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class lyx
-  implements bliz
+public class lyx
+  extends BroadcastReceiver
 {
-  lyx(lyw paramlyw, long paramLong, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, blir paramblir) {}
+  public lyx(SmallScreenService paramSmallScreenService) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    long l = AudioHelper.b();
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lyw.a + "]");
+      QLog.w("SmallScreenService", 1, "onReceive, action[" + paramContext + "], seq[" + l + "]");
     }
-    if (this.jdField_a_of_type_Lyw.a == null) {
+    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
+    {
+      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
+      }
+    }
+    while ((!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) || (this.a.a == null)) {
       return;
     }
-    paramView = paramView.getContext();
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      this.jdField_a_of_type_Lyw.b(this.jdField_a_of_type_Long, paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
-      continue;
-      this.jdField_a_of_type_Lyw.a(this.jdField_a_of_type_Long, paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
-    }
+    this.a.a().removeCallbacks(this.a.a);
+    this.a.a.a = l;
+    this.a.a().postDelayed(this.a.a, 200L);
   }
 }
 

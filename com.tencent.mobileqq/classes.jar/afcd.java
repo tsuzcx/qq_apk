@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.content.Context;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class afcd
-  extends avyo
+  extends aezz
 {
-  public afcd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public afcd(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131717966, 1);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
-    }
-    bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
-  }
+  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
 }
 
 

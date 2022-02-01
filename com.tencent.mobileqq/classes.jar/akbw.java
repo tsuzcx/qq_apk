@@ -1,36 +1,41 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class akbw
-  extends atpa
+class akbw
+  implements EIPClientConnectListener
 {
-  public akbw(ChatHistoryC2CMediaFragment paramChatHistoryC2CMediaFragment) {}
+  akbw(akbu paramakbu, long paramLong) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void connectFailed()
   {
-    if ((bnyz.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    akbu.a(this.jdField_a_of_type_Akbu, false);
+    akbu.b(this.jdField_a_of_type_Akbu, false);
+    synchronized (akbu.a(this.jdField_a_of_type_Akbu))
+    {
+      akbu.a(this.jdField_a_of_type_Akbu).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + akbu.a(this.jdField_a_of_type_Akbu));
+      }
+      return;
     }
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  public void connectSuccess(EIPCConnection arg1)
   {
-    if ((bnyz.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      akbu.a(this.jdField_a_of_type_Akbu, ???.procName);
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bnyz.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    akbu.a(this.jdField_a_of_type_Akbu, true);
+    akbu.b(this.jdField_a_of_type_Akbu, false);
+    synchronized (akbu.a(this.jdField_a_of_type_Akbu))
+    {
+      akbu.a(this.jdField_a_of_type_Akbu).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + akbu.a(this.jdField_a_of_type_Akbu) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
     }
   }
 }

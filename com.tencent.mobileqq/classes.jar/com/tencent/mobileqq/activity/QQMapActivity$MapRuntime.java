@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import afhk;
+import aeac;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import bdjy;
+import bccs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.startup.step.Step;
@@ -20,7 +20,7 @@ public class QQMapActivity$MapRuntime
   
   public QQMapActivity$MapRuntime()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afhk(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aeac(this);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -34,7 +34,7 @@ public class QQMapActivity$MapRuntime
     paramBundle.addAction("mqq.intent.action.LOGOUT");
     paramBundle.addAction("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName());
     MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    bdjy.b(12, BaseApplicationImpl.sDirector, null).step();
+    bccs.b(12, BaseApplicationImpl.sDirector, null).step();
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
@@ -47,7 +47,7 @@ public class QQMapActivity$MapRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.MapRuntime
  * JD-Core Version:    0.7.0.1
  */

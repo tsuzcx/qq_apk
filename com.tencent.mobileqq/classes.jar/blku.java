@@ -1,21 +1,21 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
 
 public class blku
-  implements blld
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public blku(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
   
-  public blku(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new blkv(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
+    if ((paramValueAnimator.getAnimatedValue() instanceof Integer))
+    {
+      if (AEAlbumLinearLayout.a(this.a) != null) {
+        AEAlbumLinearLayout.a(this.a).a(((Integer)paramValueAnimator.getAnimatedValue()).intValue() / (AEAlbumLinearLayout.a(this.a) * 1.0F));
+      }
+      this.a.scrollTo(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    }
   }
 }
 

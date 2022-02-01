@@ -1,13 +1,25 @@
-import java.io.File;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface xti
+public class xti
+  extends QQUIEventReceiver<xss, vub>
 {
-  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
+  public xti(@NonNull xss paramxss)
+  {
+    super(paramxss);
+  }
   
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public void a(@NonNull xss paramxss, @NonNull vub paramvub)
+  {
+    if (paramvub.a) {
+      xss.d(paramxss);
+    }
+  }
   
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public Class acceptEventClass()
+  {
+    return vub.class;
+  }
 }
 
 

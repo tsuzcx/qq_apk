@@ -1,8 +1,16 @@
-import android.graphics.Canvas;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
 
-public abstract interface arvg
+public class arvg
+  extends asbj
 {
-  public abstract void a(Canvas paramCanvas, arul paramarul, long paramLong);
+  public arvg(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  
+  protected void onZipImageThumbDownloadCompleted(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  {
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

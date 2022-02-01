@@ -9,33 +9,36 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
+import com.tencent.secprotocol.t.ReportLogHelper;
 import com.tencent.secprotocol.t.s;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ByteData
 {
+  public static String BMP_ARRIVE_TIME = "bmp_arrive_time_stamp";
   public static final int MSG_DATA_BMP = 164;
   public static final int MSG_DATA_ORDER = 165;
   public static final int MSG_DATA_UPING = 163;
   public static final int MSG_DATA_WRITE_SP = 162;
   public static final int MSG_INTERNAL_DATA_UPING = 161;
-  public static final String MY_VERSION = "0.2.8";
+  public static final String MY_VERSION = "0.3.1";
+  public static long REQUEST_TIME_BUFF = 43200L;
   public static final int RH_SCV = 1;
   public static String SP_MARK_TIME = "mark_time_";
+  public static String TIME_STAMP_NAME = "byte_data_time_stamp";
+  public static String VAL_ARRIVE_TIME = "val_arrive_time";
+  public static boolean isMsf = false;
   public static boolean isPrint = false;
   public static Handler mDataHandler;
   public static String processName = "";
   public static String sSessionID = "";
-  public String TIME_STAMP_NAME = "byte_data_time_stamp";
   public a.a.a.b.b cData = null;
   public HandlerThread handlerThread = null;
   public a mBmpMgr = null;
   public Context mContext = null;
-  public SharedPreferences mCrashNumSp;
   public boolean mPoxyInit = false;
   public boolean mPoxyNativeLoaded = false;
-  public SharedPreferences mSp;
   public String mThradName = "ByteThread";
   public long mUin = 0L;
   public byte[] status = { 0, 0, 0, 0 };
@@ -46,7 +49,7 @@ public class ByteData
     {
       this.handlerThread = new HandlerThread(this.mThradName);
       this.handlerThread.start();
-      mDataHandler = new ByteData.d(this, this.handlerThread.getLooper());
+      mDataHandler = new ByteData.e(this, this.handlerThread.getLooper());
       return;
     }
     catch (Exception localException)
@@ -54,6 +57,46 @@ public class ByteData
       this.status[3] = 11;
       localException.printStackTrace();
     }
+  }
+  
+  private boolean checkProgressName()
+  {
+    if (!processName.isEmpty())
+    {
+      String[] arrayOfString = processName.split(":");
+      logCat("poxy_java", "temp[temp.length-1]: " + arrayOfString[(arrayOfString.length - 1)]);
+      if (arrayOfString[(arrayOfString.length - 1)].equalsIgnoreCase("msf"))
+      {
+        isMsf = true;
+        return isMsf;
+      }
+    }
+    return isMsf;
+  }
+  
+  private boolean checkToa()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!isMsf)
+    {
+      Object localObject = this.mContext.getSharedPreferences(BMP_ARRIVE_TIME + "_" + processName, 0);
+      long l1 = System.currentTimeMillis();
+      long l2 = l1 - ((SharedPreferences)localObject).getLong(VAL_ARRIVE_TIME, 0L);
+      bool1 = bool2;
+      if (l2 > REQUEST_TIME_BUFF)
+      {
+        bool1 = bool2;
+        if (l2 > 0L)
+        {
+          localObject = ((SharedPreferences)localObject).edit();
+          ((SharedPreferences.Editor)localObject).putLong(VAL_ARRIVE_TIME, l1);
+          ((SharedPreferences.Editor)localObject).commit();
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private native byte[] getByte(Context paramContext, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4);
@@ -65,7 +108,7 @@ public class ByteData
   
   public static ByteData getInstance()
   {
-    return ByteData.c.a;
+    return ByteData.d.a;
   }
   
   private void initLoadlibrary()
@@ -129,7 +172,7 @@ public class ByteData
         }
         Object localObject = s.md5sum(String.valueOf(this.mUin));
         localObject = this.mContext.getSharedPreferences(SP_MARK_TIME + processName + "_" + (String)localObject, 4).edit();
-        ((SharedPreferences.Editor)localObject).putLong(this.TIME_STAMP_NAME, paramLong);
+        ((SharedPreferences.Editor)localObject).putLong(TIME_STAMP_NAME, paramLong);
         ((SharedPreferences.Editor)localObject).commit();
         sSessionID = String.valueOf(paramLong);
         this.cData.f = sSessionID;
@@ -176,7 +219,8 @@ public class ByteData
     localArrayList.add((String)paramObject1);
     localArrayList.add(String.valueOf(paramLong4));
     localArrayList.add(processName);
-    this.mUin = paramLong2;
+    this.mUin = paramLong3;
+    ReportLogHelper.report(5, 0);
     return getByte(this.mContext, paramLong1, paramLong2, paramLong3, paramLong4, (String[])localArrayList.toArray(new String[localArrayList.size()]), paramObject2, paramObject3, paramObject4);
   }
   
@@ -191,9 +235,12 @@ public class ByteData
     {
       processName = s.getProcessName(paramContext);
       this.mBmpMgr = new a(paramContext, processName);
-      this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.2.8");
+      this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.3.1");
       setContext(paramContext);
       initLoadlibrary();
+      checkProgressName();
+      logCat("poxy_java", "isMsf: " + isMsf);
+      ReportLogHelper.report(4, 0);
       return;
     }
     catch (Exception paramContext)
@@ -216,6 +263,22 @@ public class ByteData
     catch (Exception paramObject)
     {
       paramObject.printStackTrace();
+    }
+  }
+  
+  public void runTime(int paramInt1, String paramString, int paramInt2)
+  {
+    if ((!this.mPoxyNativeLoaded) || (!this.mPoxyInit)) {
+      return;
+    }
+    try
+    {
+      mDataHandler.post(new ByteData.c(this, paramInt1, paramInt2, paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   

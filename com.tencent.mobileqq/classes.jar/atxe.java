@@ -1,30 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-class atxe
+public class atxe
   extends atxd
 {
-  public atxe(atwy paramatwy)
+  private ImageView a;
+  
+  public atxe(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    super(paramatwy);
+    super(paramContext, paramView, paramViewGroup);
+    this.a = ((ImageView)paramView.findViewById(2131363316));
   }
   
-  protected String a()
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    return "StateCancelUploadWhenChangeToOff";
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    atwy.b(this.jdField_a_of_type_Atwy, 11, 9);
-    atwy.c(this.jdField_a_of_type_Atwy, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Atxd = new atxg(this.jdField_a_of_type_Atwy);
-    return true;
+    this.itemView.setBackgroundDrawable(atzc.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846989);
+    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846989);
+    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
+    this.a.setOnClickListener(new atxf(this, paramFeedsItemData));
   }
 }
 

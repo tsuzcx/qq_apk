@@ -1,35 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity.9.1;
-import com.tencent.mobileqq.app.FrameHelperActivity.9.2;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
-public class anyg
-  implements azhu
+class anyg
+  implements ServiceConnection
 {
-  public anyg(FrameHelperActivity paramFrameHelperActivity) {}
+  anyg(anyf paramanyf) {}
   
-  public TextView a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    Conversation localConversation = (Conversation)this.a.a(Conversation.class);
-    if (localConversation != null) {
-      return localConversation.a;
+    anyf.a(this.a, aofh.a(paramIBinder));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + anyf.a(this.a));
     }
-    return null;
   }
   
-  public void a(Drawable paramDrawable, String paramString)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new FrameHelperActivity.9.2(this, paramDrawable, paramString));
-  }
-  
-  public void a(String paramString, Drawable paramDrawable)
-  {
-    Conversation localConversation = (Conversation)this.a.a(Conversation.class);
-    ThreadManagerV2.getUIHandlerV2().post(new FrameHelperActivity.9.1(this, localConversation, paramDrawable, paramString));
+    anyf.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + anyf.a(this.a));
+    }
   }
 }
 

@@ -1,40 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
-public class rrv
-  extends uch
+class rrv
+  implements bbrg
 {
-  private rrv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  rrv(rrr paramrrr) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    int i;
-    do
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
     {
-      String str;
-      do
-      {
-        return;
-        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
-        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
-      } while (str == null);
-      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
-    } while (paramBundle == null);
-    if (i == 1) {
-      paramBundle.o = true;
+      if (paramInt == 0) {
+        break label95;
+      }
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706718) + paramInt + "]", null);
+      bbqi.a(2, paramInt);
     }
     for (;;)
     {
-      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "onDownloadFinish name=" + paramString1 + ", result=" + paramInt + ", filePath=" + paramString2, null);
       return;
-      if (i == 0) {
-        paramBundle.o = false;
-      }
+      label95:
+      rrr.a(this.a, true);
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706717) + paramInt + "]", null);
     }
   }
+  
+  public void onNetWorkNone()
+  {
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706715), null);
+    bbqi.a(3, -1500);
+  }
+  
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

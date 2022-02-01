@@ -1,19 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
 
-public abstract interface xsn
+public class xsn
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
-  
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg);
-  
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, int paramInt, Object paramObject);
-  
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, boolean paramBoolean);
-  
-  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg);
-  
-  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a) {
+      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
+    }
+  }
 }
 
 

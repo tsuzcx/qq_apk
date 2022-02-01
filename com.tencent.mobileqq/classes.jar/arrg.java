@@ -1,69 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
 
-public class arrg
-  extends arac<arrd>
+class arrg
+  implements Animator.AnimatorListener
 {
-  public static arrd a()
+  arrg(arrf paramarrf) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (arrd)aran.a().a(346);
+    SignalBombAnimationView.b(this.a.a.a).setTranslationY(0.0F);
+    SignalBombAnimationView.a(this.a.a.a, false);
   }
   
-  @NonNull
-  public arrd a(int paramInt)
-  {
-    return new arrd();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  @Nullable
-  public arrd a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arrd.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arrd paramarrd)
-  {
-    if ((paramarrd != null) && (!TextUtils.isEmpty(paramarrd.d()))) {
-      ((bedb)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramarrd);
-    }
-  }
-  
-  public Class<arrd> clazz()
-  {
-    return arrd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 346;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrg
  * JD-Core Version:    0.7.0.1
  */

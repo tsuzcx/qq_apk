@@ -1,39 +1,13 @@
-import android.text.TextUtils;
-import android.view.View;
-
 class agjb
-  implements bliz
+  implements ge
 {
-  agjb(agiq paramagiq, String paramString) {}
+  agjb(agiy paramagiy, gb paramgb, agjd paramagjd) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    agiq.a(this.jdField_a_of_type_Agiq).dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        agiq.a(this.jdField_a_of_type_Agiq, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (agiq.a(this.jdField_a_of_type_Agiq))
-      {
-        agiq.b(this.jdField_a_of_type_Agiq);
-        return;
-      }
-      agiq.c(this.jdField_a_of_type_Agiq);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (agiq.a(this.jdField_a_of_type_Agiq))
-    {
-      agiq.b(this.jdField_a_of_type_Agiq);
-      return;
-    }
-    agiq.c(this.jdField_a_of_type_Agiq);
+    agiy.a(this.jdField_a_of_type_Agiy, this.jdField_a_of_type_Gb, agjd.a(this.jdField_a_of_type_Agjd));
+    this.jdField_a_of_type_Gb.b(agiy.a(this.jdField_a_of_type_Agiy));
+    agiy.a(this.jdField_a_of_type_Agiy, null);
   }
 }
 

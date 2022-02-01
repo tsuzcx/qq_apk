@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="21.0dip" android:textColor="@color/al3" android:id="@id/bs3" android:background="@color/ajr" android:layout_width="322.0dip" android:layout_height="wrap_content" android:hint="@string/r5a" android:singleLine="false" android:shadowColor="#33000000" android:shadowDy="2.0" android:shadowRadius="2.0" android:inputType="textMultiLine" android:textCursorDrawable="@drawable/a9p" />
-    <View android:id="@id/ea2" android:background="@color/al3" android:layout_width="322.0dip" android:layout_height="0.5dip" android:layout_marginTop="5.0dip" />
-</LinearLayout>

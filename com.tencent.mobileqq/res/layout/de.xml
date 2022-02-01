@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/d6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/o0y" android:visibility="gone" android:layout_width="@dimen/mr" android:layout_height="fill_parent" />
+    <View android:id="@id/nvg" android:visibility="gone" android:layout_width="@dimen/mr" android:layout_height="fill_parent" />
     <RelativeLayout android:layout_gravity="center" android:layout_width="@dimen/d8" android:layout_height="fill_parent">
         <com.tencent.image.URLImageView android:id="@id/tabView" android:background="@null" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:scaleType="centerCrop" android:adjustViewBounds="false" android:layout_centerInParent="true" />
         <ImageView android:id="@id/j_3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_tips_dot" android:layout_toRightOf="@id/tabView" android:layout_alignParentTop="true" />

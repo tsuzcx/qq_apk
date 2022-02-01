@@ -1,9 +1,23 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
 class yrp
-  implements bljb
+  implements View.OnTouchListener
 {
-  yrp(yrh paramyrh) {}
+  yrp(yro paramyro) {}
   
-  public void onDismiss() {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
+    }
+  }
 }
 
 

@@ -1,40 +1,39 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-class ryw
-  extends View
+public class ryw
+  extends uix
 {
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private int b;
-  private int c;
+  private ryw(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public ryw(ryv paramryv, Context paramContext)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramContext);
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    localPath.reset();
-    localPath.moveTo(this.c, 0.0F);
-    localPath.lineTo(0.0F, getHeight());
-    localPath.lineTo(getWidth(), getHeight());
-    localPath.close();
-    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    setMeasuredDimension(this.jdField_a_of_type_Int, this.b);
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
+    {
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.r = true;
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
+      return;
+      if (i == 0) {
+        paramBundle.r = false;
+      }
+    }
   }
 }
 

@@ -1,131 +1,21 @@
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfzr
-  extends BaseAdapter
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private String jdField_a_of_type_JavaLangString;
-  List<bfzv<TroopInfo, Boolean>> jdField_a_of_type_JavaUtilList;
-  
-  public bfzr(Activity paramActivity, List<TroopInfo> paramList, TroopInfo paramTroopInfo, List<String> paramList1)
+  public static void a(Activity paramActivity, long paramLong)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramTroopInfo != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new bfzv(paramTroopInfo, Boolean.valueOf(true)));
-      this.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_JavaLangString = "";
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
     }
-    if (paramList != null)
-    {
-      paramActivity = paramList.iterator();
-      while (paramActivity.hasNext())
-      {
-        paramList = (TroopInfo)paramActivity.next();
-        if (paramList != null)
-        {
-          if ((paramList1 != null) && (paramList1.contains(paramList.troopuin))) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.jdField_a_of_type_JavaUtilList.add(new bfzv(paramList, Boolean.valueOf(bool)));
-            break;
-          }
-        }
-      }
-    }
+    ForwardSdkShareOption.a(paramActivity, false, "shareToTroopBar", paramLong);
   }
   
-  public int getCount()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bfzv localbfzv = (bfzv)getItem(paramInt);
-    bfzu localbfzu;
-    Object localObject1;
-    if (paramView != null)
-    {
-      localbfzu = (bfzu)paramView.getTag();
-      paramView.setOnClickListener(null);
-      localbfzu.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-      localbfzu.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)localbfzv.b).booleanValue());
-      localObject1 = localbfzu.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (((TroopInfo)localbfzv.a).troopuin.equals(this.jdField_a_of_type_JavaLangString)) {
-        break label485;
-      }
-    }
-    label485:
-    for (boolean bool = true;; bool = false)
-    {
-      ((CheckBox)localObject1).setEnabled(bool);
-      localbfzu.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bfzs(this, localbfzv));
-      paramView.setOnClickListener(new bfzt(this, localbfzu.jdField_a_of_type_AndroidWidgetCheckBox));
-      localbfzu.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localbfzv.a).troopname);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localbfzu = new bfzu();
-      paramView = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-      paramView.setMinimumHeight(bdep.a(48.0F));
-      paramView.setOrientation(0);
-      paramView.setGravity(16);
-      localbfzu.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(this.jdField_a_of_type_AndroidAppActivity);
-      localbfzu.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839096);
-      localObject1 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject1).setMargins(bdep.a(12.0F), 0, 0, 0);
-      localbfzu.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-      Object localObject2 = new LinearLayout.LayoutParams(-1, -1);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(bdep.a(12.0F), 0, bdep.a(12.0F), 0);
-      ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((LinearLayout)localObject1).setOrientation(1);
-      localbfzu.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-      localbfzu.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localbfzu.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
-      localbfzu.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-      localObject2 = new LinearLayout.LayoutParams(-1, 0);
-      ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-      localbfzu.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = new View(this.jdField_a_of_type_AndroidAppActivity);
-      ((View)localObject2).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#dedfe0")));
-      ((View)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-1, 2));
-      ((LinearLayout)localObject1).addView(localbfzu.jdField_a_of_type_AndroidWidgetTextView);
-      ((LinearLayout)localObject1).addView((View)localObject2);
-      paramView.addView(localbfzu.jdField_a_of_type_AndroidWidgetCheckBox);
-      paramView.addView((View)localObject1);
-      paramView.setClickable(true);
-      paramView.setTag(localbfzu);
-      break;
-    }
+    bcef.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
   }
 }
 

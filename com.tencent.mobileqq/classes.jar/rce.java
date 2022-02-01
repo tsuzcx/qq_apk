@@ -1,27 +1,62 @@
-import android.database.DataSetObserver;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class rce
-  extends DataSetObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoSmallPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rce
+  extends rby
 {
-  public rce(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
-  
-  public void onChanged()
+  protected void a()
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
-      String str = this.a.getString(2131717303, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
-      ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);
-      return;
+    rex localrex1 = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      ((SocializeFeedsInfo)localObject1).a = 1;
     }
-    ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(8);
+    Object localObject2 = a();
+    localObject1 = a();
+    if (localObject1 != null)
+    {
+      localObject1 = ((rex)localObject1).a;
+      if (localObject1 == null) {}
+    }
+    for (localObject1 = ((rfg)localObject1).g;; localObject1 = null)
+    {
+      ((BaseArticleInfo)localObject2).mTitle = ((String)localObject1);
+      localObject2 = a();
+      if (localObject2 != null)
+      {
+        ((rfe)localObject2).a = true;
+        rex localrex2 = a();
+        localObject1 = localrex1;
+        if (localrex2 != null) {
+          localObject1 = localrex2.a;
+        }
+        ((rfe)localObject2).b = new ArrayList();
+        ((rfe)localObject2).b.add(localObject1);
+      }
+      try
+      {
+        localObject1 = a();
+        localrex1 = a();
+        if (localrex1 == null) {
+          Intrinsics.throwNpe();
+        }
+        ((BaseArticleInfo)localObject1).mSinglePicture = new URL(localrex1.a.d);
+        return;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          localMalformedURLException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

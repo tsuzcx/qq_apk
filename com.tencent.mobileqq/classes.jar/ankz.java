@@ -1,27 +1,39 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-class ankz
+public class ankz
+  extends anla
 {
-  public int a;
-  public String a;
-  public List<ankx> a;
-  public List<ankw> b = new ArrayList();
-  
-  public ankz()
+  public ankz(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
+    this.jdField_a_of_type_Int = 6003;
   }
   
-  public String toString()
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
   {
-    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
-    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", mCGIConfigs=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (paramDataLineMsgRecord != null)
+    {
+      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
+      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
+      paramDataLineMsgRecord.dataline_type = 1;
+    }
+    return super.a(paramDataLineMsgRecord, paramBoolean);
+  }
+  
+  protected anuv a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1);
+  }
+  
+  protected void a()
+  {
+    ((amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).b(false);
   }
 }
 

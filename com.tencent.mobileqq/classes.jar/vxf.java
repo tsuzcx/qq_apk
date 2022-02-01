@@ -1,18 +1,17 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.util.Comparator;
 
-class vxf
-  implements aaav<FeedCloudRead.StGetMainPageRsp>
+public class vxf
+  implements Comparator<vxd>
 {
-  vxf(vxe paramvxe, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public int a(vxd paramvxd1, vxd paramvxd2)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
-    this.jdField_a_of_type_Vxe.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    if (paramvxd1.c < paramvxd2.c) {
+      return 1;
+    }
+    if (paramvxd1.c > paramvxd2.c) {
+      return -1;
+    }
+    return 0;
   }
 }
 

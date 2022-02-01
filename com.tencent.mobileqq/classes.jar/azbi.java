@@ -1,81 +1,61 @@
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.view.CommonMenuPopupView.1;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
 
 public class azbi
+  extends Animation
 {
-  public static int a;
-  public static int b = 2;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  bhuk jdField_a_of_type_Bhuk;
-  private blkc jdField_a_of_type_Blkc;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  private azbk jdField_a_of_type_Azbk;
+  private int b;
   
-  static
+  public azbi(View paramView, int paramInt1, int paramInt2, azbk paramazbk)
   {
-    jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Azbk = paramazbk;
   }
   
-  public void a()
+  public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+    super.applyTransformation(paramFloat, paramTransformation);
+    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) && ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener instanceof azbj))) {
+      ((azbj)this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener).a(this, paramFloat);
     }
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Bhuk == null) {
-      this.jdField_a_of_type_Bhuk = new bhuk();
-    }
-    this.jdField_a_of_type_Bhuk.a(paramInt1, paramString, paramInt2);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView, paramInt1, paramInt2, b, true);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bhkx.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), this.jdField_a_of_type_Bhuk, this.jdField_a_of_type_AndroidViewView$OnClickListener, true));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(false);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == jdField_a_of_type_Int) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localBubblePopupWindow.d(paramBoolean);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Blkc);
-      paramView.post(new CommonMenuPopupView.1(this, paramView, paramInt1, paramInt2));
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
+    int i = this.b;
+    if (paramFloat < 1.0F)
+    {
+      i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.b) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.b) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.b) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.b) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Azbk != null) {
+        this.jdField_a_of_type_Azbk.jdField_a_of_type_Int = i;
+      }
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " CLR: " + i);
+      return;
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+      this.jdField_a_of_type_AndroidViewView = null;
+    }
   }
   
-  public boolean a()
+  public void setAnimationListener(Animation.AnimationListener paramAnimationListener)
   {
-    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
+    super.setAnimationListener(paramAnimationListener);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
   }
 }
 

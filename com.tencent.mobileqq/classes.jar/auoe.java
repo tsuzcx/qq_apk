@@ -1,98 +1,76 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class auoe
-  implements Animation.AnimationListener
+class auoe
+  implements Handler.Callback
 {
-  public static int a;
-  public static int b;
-  View jdField_a_of_type_AndroidViewView;
-  auof jdField_a_of_type_Auof;
-  List<auof> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  auoe(auod paramauod) {}
   
-  public auoe(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  private void b(auof paramauof)
-  {
-    this.jdField_a_of_type_Auof = paramauof;
-    Animation localAnimation = (Animation)paramauof.jdField_a_of_type_JavaLangObject;
-    localAnimation.setDuration(paramauof.b);
-    localAnimation.setAnimationListener(this);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-        continue;
+    }
+    do
+    {
+      return false;
+      Object localObject = auod.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((auof)((Iterator)localObject).next()).a(paramMessage.arg1);
       }
-      synchronized (this.jdField_a_of_type_ArrayOfInt)
+      localObject = auod.a(this.a).iterator();
+      if (((Iterator)localObject).hasNext())
       {
-        auof localauof = (auof)this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        if ((localauof == null) || ((localauof.jdField_a_of_type_Boolean == true) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) || ((!localauof.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4)))) {
-          continue;
+        auof localauof = (auof)((Iterator)localObject).next();
+        if (paramMessage.arg1 == 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localauof.a(bool, (Throwable)paramMessage.obj);
+          break;
         }
-        this.jdField_a_of_type_AndroidViewView.setAnimation((Animation)localauof.jdField_a_of_type_JavaLangObject);
-        this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localauof.jdField_a_of_type_JavaLangObject);
-        return;
       }
-    }
-  }
-  
-  public void a(auof paramauof)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfInt)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramauof);
-      b(paramauof);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_ArrayOfInt)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
-    }
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_Auof.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      a();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Boolean = true;
+      localObject = new Intent(aunx.a(auod.a(this.a).c));
+      if (paramMessage.arg1 == 0)
+      {
+        if (aunx.a(auod.a(this.a).c)) {}
+        for (int i = 9;; i = 8)
+        {
+          ((Intent)localObject).putExtra("key_state", i);
+          auod.a(this.a).sendBroadcast((Intent)localObject);
+          if (auok.a.get(auod.a(this.a)) == null) {
+            break;
+          }
+          auoj.b(String.valueOf(((auok)auok.a.get(auod.a(this.a))).f));
+          return false;
+        }
+      }
+      if (aunx.a(auod.a(this.a).c)) {
+        auoj.a("2691708");
+      }
+      for (;;)
+      {
+        auns.a((Throwable)paramMessage.obj);
+        ((Intent)localObject).putExtra("key_state", 7);
+        auod.a(this.a).sendBroadcast((Intent)localObject);
+        return false;
+        if (aunx.b(auod.a(this.a).c)) {
+          auoj.a("2597726");
+        } else if (auok.a.get(auod.a(this.a)) != null) {
+          auoj.b(String.valueOf(((auok)auok.a.get(auod.a(this.a))).e));
+        }
+      }
+      paramMessage = new Intent(aunx.a(auod.a(this.a).c));
+      paramMessage.putExtra("key_state", 6);
+      auod.a(this.a).sendBroadcast(paramMessage);
+    } while (auok.a.get(auod.a(this.a)) == null);
+    auoj.b(String.valueOf(((auok)auok.a.get(auod.a(this.a))).d));
+    return false;
   }
 }
 

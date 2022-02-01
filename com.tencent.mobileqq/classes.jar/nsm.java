@@ -1,55 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class nsm
+  implements DialogInterface.OnDismissListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
-    }
-    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
-    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
-      if (!localEntityManager.update(paramAccountDetail)) {
-        localEntityManager.drop(AccountDetail.class);
-      }
-    }
-    for (;;)
-    {
-      localEntityManager.close();
-      paramQQAppInterface = (aody)paramQQAppInterface.getManager(56);
-      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
-      {
-        paramQQAppInterface.a(paramAccountDetail);
-        if (paramAccountDetail.followType == 1) {
-          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
-        }
-      }
-      return;
-      localEntityManager.persist(paramAccountDetail);
-    }
-  }
+  public nsm(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, oag paramoag, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), ocj.class);
-    localNewIntent.putExtra("cmd", "set_function_flag");
-    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
-    localSetFunctionFlagRequset.version.set(1);
-    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
-    localSetFunctionFlagRequset.type.set(paramoag.e);
-    localSetFunctionFlagRequset.value.set(paramInt);
-    localSetFunctionFlagRequset.account_type.set(1);
-    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-    localNewIntent.setObserver(new nsn(paramQQAppInterface, paramoag, paramInt, paramString));
-    paramQQAppInterface.startServlet(localNewIntent);
+    this.a.b = false;
   }
 }
 

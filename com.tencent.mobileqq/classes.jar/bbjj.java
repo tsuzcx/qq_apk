@@ -1,11 +1,4 @@
-public abstract interface bbjj
-{
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void g();
-}
+class bbjj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

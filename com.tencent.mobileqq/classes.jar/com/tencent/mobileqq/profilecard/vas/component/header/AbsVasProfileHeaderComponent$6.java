@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
-import anyw;
-import azxy;
-import baik;
+import amsw;
+import aymn;
+import ayyb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -12,23 +12,23 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class AbsVasProfileHeaderComponent$6
   implements Runnable
 {
-  public AbsVasProfileHeaderComponent$6(baik parambaik) {}
+  public AbsVasProfileHeaderComponent$6(ayyb paramayyb) {}
   
   public void run()
   {
-    Object localObject = ((anyw)baik.q(this.this$0).getManager(51)).b(baik.r(this.this$0).getCurrentAccountUin());
+    Object localObject = ((amsw)ayyb.q(this.this$0).getManager(51)).b(ayyb.r(this.this$0).getCurrentAccountUin());
     if (localObject == null) {
-      baik.a(this.this$0, "-1");
+      ayyb.a(this.this$0, "-1");
     }
     for (;;)
     {
-      baik.a(this.this$0, "-1");
+      ayyb.a(this.this$0, "-1");
       return;
-      if (((Card)localObject).lCurrentStyleId == azxy.a)
+      if (((Card)localObject).lCurrentStyleId == aymn.a)
       {
-        localObject = (QZoneCover)baik.s(this.this$0).a().createEntityManager().find(QZoneCover.class, baik.t(this.this$0).getCurrentAccountUin());
+        localObject = (QZoneCover)ayyb.s(this.this$0).getEntityManagerFactory().createEntityManager().find(QZoneCover.class, ayyb.t(this.this$0).getCurrentAccountUin());
         if (localObject != null) {
-          baik.a(this.this$0, ((QZoneCover)localObject).type);
+          ayyb.a(this.this$0, ((QZoneCover)localObject).type);
         }
       }
     }

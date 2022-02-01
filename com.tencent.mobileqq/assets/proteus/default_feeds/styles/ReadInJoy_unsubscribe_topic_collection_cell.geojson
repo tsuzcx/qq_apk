@@ -43,7 +43,8 @@
                             "type": "match_parent"
                         },
                         "attributes": {
-                            "loadImageWithPath:":"$video_cover_url"
+                            "loadImageWithPath:":"$video_cover_url",
+                            "setCornerRadiusString:":"8"
                         },
                         "subviews": [
                             {

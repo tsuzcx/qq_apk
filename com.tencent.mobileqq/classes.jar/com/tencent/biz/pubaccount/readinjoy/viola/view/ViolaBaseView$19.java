@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bnrf;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.viola.utils.ViolaUtils;
-import ozs;
+import pay;
 
 class ViolaBaseView$19
   implements Runnable
@@ -11,21 +11,23 @@ class ViolaBaseView$19
   
   public void run()
   {
-    if (System.currentTimeMillis() - ((Long)bnrf.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + ozs.a(), Long.valueOf(0L))).longValue() > 18000000L)
-    {
-      ViolaBaseView.d(this.this$0, false);
-      bnrf.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + ozs.a(), Long.valueOf(System.currentTimeMillis()));
+    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pay.a());
+    if (localObject == null) {
+      FileUtils.writeObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pay.a(), ViolaBaseView.b(this.this$0));
     }
-    if ((System.currentTimeMillis() - ((Long)bnrf.a(ViolaUtils.getPageName(this.this$0.a) + ozs.a(), Long.valueOf(0L))).longValue() > 7200000L) && (!ViolaBaseView.b(this.this$0)))
+    for (;;)
     {
-      ViolaBaseView.e(this.this$0, false);
-      bnrf.a(ViolaUtils.getPageName(this.this$0.a) + ozs.a(), Long.valueOf(System.currentTimeMillis()));
+      ViolaBaseView.c(this.this$0, null);
+      return;
+      if (((localObject instanceof String)) && (!ViolaBaseView.b(this.this$0).equals(localObject))) {
+        FileUtils.writeObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pay.a(), ViolaBaseView.b(this.this$0));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.19
  * JD-Core Version:    0.7.0.1
  */

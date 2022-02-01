@@ -1,6 +1,18 @@
-public abstract interface bjfj
+import android.app.Activity;
+import android.os.Bundle;
+
+class bjfj
+  extends apkq
 {
-  public abstract void b();
+  bjfj(bjfh parambjfh, Activity paramActivity) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  {
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+    }
+  }
 }
 
 

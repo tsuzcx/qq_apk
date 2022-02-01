@@ -6,15 +6,17 @@ import common.config.service.QzoneConfig;
 class QzoneReportManager$2
   implements Runnable
 {
+  QzoneReportManager$2(QzoneReportManager paramQzoneReportManager, int paramInt) {}
+  
   public void run()
   {
-    if (!QzoneReportManager.a())
+    if (!QzoneReportManager.isConfigInitialize())
     {
-      QzoneReportManager.jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("ClientReport", "report_plog", "");
-      QzoneReportManager.jdField_a_of_type_Boolean = true;
+      QzoneReportManager.config = QzoneConfig.getInstance().getConfig("ClientReport", "report_plog", "");
+      QzoneReportManager.isConfigInitialize = true;
     }
-    if (TextUtils.isEmpty(QzoneReportManager.jdField_a_of_type_JavaLangString)) {}
-    while ((QzoneReportManager.a(this.a)) && (!QzoneReportManager.b(this.a))) {
+    if (TextUtils.isEmpty(QzoneReportManager.config)) {}
+    while ((QzoneReportManager.isNeedPLog(this.val$type)) && (!QzoneReportManager.isNeedSaveData(this.val$type))) {
       return;
     }
   }

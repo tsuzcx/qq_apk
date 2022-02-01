@@ -1,44 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.1;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.2;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import mqq.os.MqqHandler;
 
-public final class bmqw
+public class bmqw
+  implements boay
 {
-  public static void a(String paramString1, String paramString2)
+  bmqw(bmqu parambmqu) {}
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    QLog.e("ReadingCenter-" + paramString1, 1, paramString2);
+    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.3(this, paramPtvTemplateInfo, paramInt));
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    QLog.e("ReadingCenter-" + paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QLog.w("ReadingCenter-" + paramString1, 1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i("ReadingCenter-" + paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QLog.i("ReadingCenter-" + paramString1, 1, paramString2);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadingCenter-" + paramString1, 2, paramString2);
+    if (paramPtvTemplateInfo.usable)
+    {
+      bmzd.a(paramPtvTemplateInfo).b();
+      if ((!(bmqu.a(this.a) instanceof bmqk)) || (((bmqk)bmqu.a(this.a)).c())) {
+        break label54;
+      }
     }
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadingCenter-" + paramString1, 2, paramString2);
-    }
+    label54:
+    do
+    {
+      return;
+      bmzd.a(paramPtvTemplateInfo).c();
+      break;
+      ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    } while (paramBoolean);
+    bnsi.a("", "0X80075BB", "", "", "", "");
+    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.2(this));
   }
 }
 

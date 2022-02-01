@@ -1,125 +1,76 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Calendar;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class bgaq
-  extends Handler
+  implements View.OnTouchListener
 {
-  WeakReference<PublishHomeWorkFragment> a;
+  private int jdField_a_of_type_Int;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public bgaq(PublishHomeWorkFragment paramPublishHomeWorkFragment, Looper paramLooper)
+  public bgaq(QQAppInterface paramQQAppInterface, boolean paramBoolean1, ImageView paramImageView, String paramString, int paramInt, boolean paramBoolean2)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramPublishHomeWorkFragment);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
   }
   
-  void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PublishHomeWorkFragment localPublishHomeWorkFragment = (PublishHomeWorkFragment)this.a.get();
-    if ((localPublishHomeWorkFragment == null) || ((!localPublishHomeWorkFragment.isAdded()) && (localPublishHomeWorkFragment.jdField_a_of_type_AndroidWidgetEditText == null))) {}
-    do
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    switch (paramMotionEvent.getAction())
     {
-      return;
-      if (localPublishHomeWorkFragment.jdField_a_of_type_JavaLangString == null) {
-        localPublishHomeWorkFragment.jdField_a_of_type_JavaLangString = "";
-      }
-    } while (localPublishHomeWorkFragment.jdField_a_of_type_Int != 1);
-    Object localObject = Calendar.getInstance();
-    int i = ((Calendar)localObject).get(2) + 1;
-    int j = ((Calendar)localObject).get(5);
-    localObject = localPublishHomeWorkFragment.getString(2131696769, new Object[] { Integer.valueOf(i), Integer.valueOf(j), localPublishHomeWorkFragment.jdField_a_of_type_JavaLangString }).trim();
-    String str1 = localPublishHomeWorkFragment.getString(2131696769, new Object[] { Integer.valueOf(i), Integer.valueOf(j), "" }).trim();
-    String str2 = localPublishHomeWorkFragment.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    if ((TextUtils.isEmpty(str2)) || (str1.equals(str2))) {
-      localPublishHomeWorkFragment.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
     }
-    localPublishHomeWorkFragment.h();
-    localPublishHomeWorkFragment.g();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "handle msg " + paramMessage.what);
-    }
-    PublishHomeWorkFragment localPublishHomeWorkFragment = (PublishHomeWorkFragment)this.a.get();
-    if ((localPublishHomeWorkFragment == null) || (!localPublishHomeWorkFragment.isAdded())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PublishHomeWorkFragment", 2, "reference null");
-      }
-    }
-    do
+    for (;;)
     {
-      return;
-      switch (paramMessage.what)
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
       {
-      default: 
-        return;
-      case 3: 
-        localPublishHomeWorkFragment.f = true;
-        localPublishHomeWorkFragment.jdField_a_of_type_Blir.d(false);
-        return;
-      case 515: 
-        QLog.d("PublishHomeWorkFragment", 1, "init data time out");
-        localPublishHomeWorkFragment.j = true;
-        a();
-        return;
-      case 513: 
-        a();
-        return;
-      case 514: 
-        localPublishHomeWorkFragment.g();
-        return;
-      case 101: 
-        localPublishHomeWorkFragment.f = false;
-        localPublishHomeWorkFragment.m();
-        return;
-      case 102: 
-        int i = (int)localPublishHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
-        if (i < 1000)
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
         {
-          QQToast.a(localPublishHomeWorkFragment.getActivity(), anzj.a(2131707713), 0).a();
-          localPublishHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d();
-          return;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
         }
-        if (!bhnv.d(localPublishHomeWorkFragment.getActivity()))
+        else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("PublishHomeWorkFragment", 2, "no network toast");
+          this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          continue;
+          if (Build.VERSION.SDK_INT >= 16) {
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
           }
-          QQToast.a(localPublishHomeWorkFragment.getActivity(), 2131696546, 0).a();
-          localPublishHomeWorkFragment.f = false;
-          localPublishHomeWorkFragment.m();
-          return;
-        }
-        paramMessage = paramMessage.obj.toString();
-        File localFile = new File(paramMessage);
-        if (localFile.exists()) {}
-        for (long l = localFile.length();; l = 0L)
-        {
-          paramMessage = new bgef(paramMessage, null, i / 1000, (int)l, localPublishHomeWorkFragment.b);
-          localPublishHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(paramMessage);
-          localPublishHomeWorkFragment.f = false;
-          localPublishHomeWorkFragment.m();
-          return;
+          for (;;)
+          {
+            if (!this.b) {
+              break label192;
+            }
+            VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+            bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
+            break;
+            this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          }
+          label192:
+          VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublishHomeWorkFragment", 2, "parse config from network success");
-      }
-    } while ((localPublishHomeWorkFragment.j) || (paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
-    localPublishHomeWorkFragment.a((String)paramMessage.obj, paramMessage.arg1);
+    }
   }
 }
 

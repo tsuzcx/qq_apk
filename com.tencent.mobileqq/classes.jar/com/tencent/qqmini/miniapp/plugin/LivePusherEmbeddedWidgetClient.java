@@ -427,6 +427,7 @@ public class LivePusherEmbeddedWidgetClient
   public void onDestroy()
   {
     QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.onDestroy");
+    release();
   }
   
   public void onRectChanged(Rect paramRect)

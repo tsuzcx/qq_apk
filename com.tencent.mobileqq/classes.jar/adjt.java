@@ -1,23 +1,291 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
+import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar.1;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar.3;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar.4;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import mqq.os.MqqHandler;
 
-public final class adjt
-  implements Parcelable.Creator<FromService>
+public class adjt
+  extends adjv
+  implements Handler.Callback, bfvm
 {
-  public FromService a(Parcel paramParcel)
+  int jdField_a_of_type_Int;
+  private amsu jdField_a_of_type_Amsu = new adju(this);
+  String jdField_a_of_type_JavaLangString;
+  public URL a;
+  public MqqHandler a;
+  public boolean a;
+  public boolean b;
+  public boolean c = false;
+  
+  public adjt(QQAppInterface paramQQAppInterface)
   {
-    FromService localFromService = new FromService();
-    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
-    localFromService.b = paramParcel.readInt();
-    localFromService.c = paramParcel.readInt();
-    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localFromService;
+    super(paramQQAppInterface);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaNetURL = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bfum(Looper.getMainLooper(), this);
   }
   
-  public FromService[] a(int paramInt)
+  public int a()
   {
-    return new FromService[paramInt];
+    return 1;
+  }
+  
+  public adjx a(int paramInt)
+  {
+    return this.jdField_a_of_type_Adjx;
+  }
+  
+  public Drawable a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_Adjx != null)
+      {
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Adjx.d)) {
+          localObject1 = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_Adjx.d);
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt > 0) {
+      i = 0;
+    }
+    this.jdField_b_of_type_Int = i;
+    this.jdField_a_of_type_Adjx = a(i);
+    if (this.jdField_a_of_type_Adjx != null)
+    {
+      a(this.jdField_a_of_type_Adjx, true);
+      c(this.jdField_a_of_type_Adjx);
+    }
+  }
+  
+  public void a(adjx paramadjx)
+  {
+    this.jdField_a_of_type_Adjx = paramadjx;
+  }
+  
+  void a(adjx paramadjx, boolean paramBoolean)
+  {
+    int i = paramadjx.jdField_a_of_type_Int;
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && ((paramadjx.jdField_a_of_type_Int == 0) || (paramadjx.jdField_a_of_type_Int == 3)))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      ThreadManager.postImmediately(new FriendProfileImageAvatar.1(this, paramadjx), null, false);
+    }
+    if (paramadjx.jdField_a_of_type_Int == 0) {
+      paramadjx.jdField_a_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.Avatar", 2, "load: uin=" + paramadjx.d + ",state=" + paramadjx.jdField_a_of_type_Int + ", bState=" + i + ", bGetHeadInfo=" + this.jdField_a_of_type_Boolean + ", isFromClickEvent=" + paramBoolean);
+      }
+      return;
+      if ((!paramBoolean) && (paramadjx.jdField_a_of_type_Int == 3))
+      {
+        paramadjx.jdField_a_of_type_Int = 4;
+        if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(4, 400L);
+        }
+      }
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    paramBaseActivity.removeObserver(this.jdField_a_of_type_Amsu);
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler = null;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, adjx paramadjx)
+  {
+    paramadjx.jdField_a_of_type_JavaLangString = null;
+    paramadjx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCustomFaceFilePath(false, this.jdField_b_of_type_JavaLangString);
+    paramadjx.c = bfrj.b(this.jdField_b_of_type_JavaLangString);
+    b(paramadjx);
+    this.jdField_a_of_type_Adjx = paramadjx;
+  }
+  
+  void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      awkj.a("Q.profilecard.Avatar", "downloadHDAvatar", new Object[] { paramString });
+    }
+    if (this.c)
+    {
+      if (awkj.a()) {
+        awkj.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 1", new Object[0]);
+      }
+      return;
+    }
+    ThreadManager.post(new FriendProfileImageAvatar.3(this, paramString), 5, null, true);
+  }
+  
+  void a(String paramString1, byte paramByte, String paramString2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Adjx.jdField_a_of_type_Boolean = true;
+    c(this.jdField_a_of_type_Adjx);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (awkj.a()) {
+        awkj.a("Q.profilecard.Avatar", "downloadHDAvatar is downloading and return 1", new Object[0]);
+      }
+      return;
+    }
+    ThreadManager.post(new FriendProfileImageAvatar.4(this, paramString1, paramByte, paramString2), 5, null, true);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.Avatar", 2, "onHttpStart() url = " + paramString);
+    }
+    if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.toString().equals(paramString)))
+    {
+      paramString = Message.obtain();
+      paramString.what = 2;
+      paramString.arg1 = paramInt;
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramString);
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.toString().equals(paramString)))
+    {
+      if ((this.jdField_a_of_type_MqqOsMqqHandler != null) && (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1))) {
+        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+      }
+      paramString = Message.obtain();
+      paramString.what = 1;
+      paramString.arg1 = ((int)((float)paramLong2 / (float)paramLong1 * 100.0F));
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramString);
+      }
+    }
+  }
+  
+  void b(adjx paramadjx)
+  {
+    for (;;)
+    {
+      try
+      {
+        int i = paramadjx.jdField_a_of_type_Int;
+        if (FileUtil.isFileExists(paramadjx.c))
+        {
+          paramadjx.jdField_a_of_type_Int = 6;
+          paramadjx.jdField_a_of_type_Boolean = false;
+          if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+            this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(4);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.profilecard.Avatar", 2, "updateState: uin=" + paramadjx.d + ",state=" + paramadjx.jdField_a_of_type_Int + ", beforeState=" + i);
+          }
+          return;
+        }
+        if (FileUtil.isFileExists(paramadjx.jdField_b_of_type_JavaLangString)) {
+          paramadjx.jdField_a_of_type_Int = 3;
+        } else {
+          paramadjx.jdField_a_of_type_Int = 0;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void b(BaseActivity paramBaseActivity)
+  {
+    paramBaseActivity.addObserver(this.jdField_a_of_type_Amsu);
+  }
+  
+  public void b(String paramString, int paramInt) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Setting localSetting = null;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "refresh progress : " + paramMessage.arg1);
+        }
+        this.jdField_a_of_type_Adjx.jdField_b_of_type_Int = paramMessage.arg1;
+        c(this.jdField_a_of_type_Adjx);
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "start progress : " + paramMessage.arg1);
+        }
+        this.jdField_a_of_type_Adjx.jdField_b_of_type_Int = 0;
+        c(this.jdField_a_of_type_Adjx);
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "end result : " + paramMessage.arg1);
+        }
+        this.jdField_a_of_type_Adjx.jdField_b_of_type_Int = 100;
+        this.jdField_a_of_type_Adjx.jdField_a_of_type_Boolean = false;
+        b(this.jdField_a_of_type_Adjx);
+        if (paramMessage.arg1 == 1)
+        {
+          c(this.jdField_a_of_type_Adjx);
+          return true;
+        }
+        this.jdField_a_of_type_Adjx.jdField_a_of_type_Int = 5;
+        c(this.jdField_a_of_type_Adjx);
+      } while (this.jdField_a_of_type_Int >= 3);
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_JavaLangString = null;
+      return true;
+      a(this.jdField_b_of_type_JavaLangString);
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.Avatar", 2, "MSG_DOWNLOAD_HD_AVATAR " + paramMessage.obj);
+      }
+      if ((paramMessage.obj instanceof Setting)) {
+        localSetting = (Setting)paramMessage.obj;
+      }
+      if ((localSetting != null) && (!localSetting.url.equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        this.jdField_a_of_type_JavaLangString = localSetting.url;
+        a(localSetting.uin, localSetting.bFaceFlags, localSetting.url);
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.profilecard.Avatar", 2, "MSG_DOWNLOAD_HD_AVATAR | has download path = " + this.jdField_a_of_type_JavaLangString);
+    return true;
   }
 }
 

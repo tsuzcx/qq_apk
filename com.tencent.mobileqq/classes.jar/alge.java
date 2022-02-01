@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class alge
-  implements aldq
+  extends RecyclerView.ViewHolder
 {
-  public alge(DrawClassifier.1 param1) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+  TextView b;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public alge(SessionClearFragment paramSessionClearFragment, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawClassifier", 2, "tryPreDownLoadModel finished:" + paramInt);
-    }
-    if (paramInt == 0) {
-      algd.a(true);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364530));
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
+    this.b = ((TextView)paramView.findViewById(2131377541));
   }
 }
 

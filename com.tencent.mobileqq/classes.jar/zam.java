@@ -1,23 +1,33 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.qphone.base.util.QLog;
-
 public class zam
-  implements bjig
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public static <T> String a(String paramString, zal<T> paramzal)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
-      this.jdField_a_of_type_Zal.a.runOnUiThread(new PKVideoSharer.2.1(this));
-    }
+    return zan.a().a(paramString, paramzal);
+  }
+  
+  public static void a(String paramString)
+  {
+    zan.a().a(paramString);
+  }
+  
+  public static <T> void a(String paramString, zas<T> paramzas)
+  {
+    zan.a().a(paramString, paramzas);
+  }
+  
+  public static void a(Throwable paramThrowable)
+  {
+    xvv.a("PreLoader", "", paramThrowable);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return zan.a().a(paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    xvv.b("PreLoader", paramString);
   }
 }
 

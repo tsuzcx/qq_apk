@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameroom.video;
 
-import neg;
+import nfn;
 
 class AVGameNetWorkQualityManager$1
   implements Runnable
@@ -8,7 +8,7 @@ class AVGameNetWorkQualityManager$1
   public void run()
   {
     AVGameNetWorkQualityManager.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Neg.a();
+    this.jdField_a_of_type_Nfn.a();
   }
 }
 

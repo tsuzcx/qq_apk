@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 
-class afdf
-  implements DialogInterface.OnClickListener
+public abstract interface afdf
 {
-  afdf(afde paramafde) {}
+  public abstract int a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract boolean onTouchEvent(MotionEvent paramMotionEvent);
 }
 
 

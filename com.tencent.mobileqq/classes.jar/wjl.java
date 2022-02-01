@@ -1,31 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class wjl
-  extends anyu
+public class wjl
+  extends wjk
 {
-  wjl(wjk paramwjk) {}
-  
-  protected void onAddFriend(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
-    }
-    try
-    {
-      paramString = Long.valueOf(paramString);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramString);
-      this.a.a(3, localArrayList);
-      this.a.a();
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
-    }
-  }
+  public String a;
+  public int b = 0;
+  public int c = 16296448;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 1;
+  public String e;
+  public String f = vkm.a;
+  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
+  public String h;
+  public String i = "";
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n = "";
+  public String o;
+  public String p;
 }
 
 

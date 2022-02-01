@@ -1,18 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qqp
-  implements View.OnClickListener
+class qqp
+  implements View.OnTouchListener
 {
-  public qqp(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  qqp(qqm paramqqm, LinearLayout paramLinearLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    psx.a(2, this.jdField_a_of_type_JavaLangString);
-    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

@@ -23,6 +23,20 @@
                     "type":"match_parent"
                 },
                 "attributes":{
+                    "setDTElementID:withParams:": [
+                        "card",
+                        {
+                            "parent_rowkey": "$dt_parent_rowkey",
+                            "parent_content_type": "5",
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_card",
+                            "area": "relevant_contentid",
+                            "actionid": "click_card",
+                            "click_type": "single"
+                        }
+                    ],
                     "setAttatchInfo:":"-1"
                 },
                 "subviews":[
@@ -183,7 +197,6 @@
                             "type":"wrap_content"
                         },
                         "attributes":{
-                            "setFrameString:":"-1",
                             "setText:":"-1",
                             "setTextColorString:":"#FF110D",
                             "setFontSizeString:":"11",

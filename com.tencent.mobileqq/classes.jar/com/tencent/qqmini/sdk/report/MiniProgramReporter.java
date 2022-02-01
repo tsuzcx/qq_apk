@@ -7,6 +7,7 @@ import NS_MINI_REPORT.REPORT.StDcReportReq;
 import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.qqmini.sdk.core.manager.RequestServer;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
@@ -76,7 +77,7 @@ public class MiniProgramReporter
   private void performDataReportViaSSO(byte[] paramArrayOfByte, List<APP_REPORT_TRANSFER.SingleDcData> paramList)
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).dataReport(paramArrayOfByte, new MiniProgramReporter.2(this, paramList));
+      RequestServer.getInstance().dataReport(paramArrayOfByte, new MiniProgramReporter.2(this, paramList));
     }
   }
   

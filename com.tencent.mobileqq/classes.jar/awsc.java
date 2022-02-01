@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class awsc
-  implements View.OnClickListener
+public abstract interface awsc
 {
-  public awsc(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
 }
 
 

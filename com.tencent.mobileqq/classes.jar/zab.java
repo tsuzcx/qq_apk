@@ -1,62 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
 
 public class zab
-  implements Cloneable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public String c;
+  public zab(RefreshHeaderView paramRefreshHeaderView, int paramInt) {}
   
-  static
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
-  }
-  
-  public static zab a(JSONObject paramJSONObject)
-  {
-    zab localzab = new zab();
-    localzab.jdField_b_of_type_Int = paramJSONObject.getInt("version");
-    localzab.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
-    localzab.c = paramJSONObject.getString("url");
-    localzab.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
-    return localzab;
-  }
-  
-  public String a()
-  {
-    Object localObject = new File(c());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
-        return c();
-      }
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setState(0);
     }
-    return null;
-  }
-  
-  public String b()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
-  }
-  
-  public String c()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
-  }
-  
-  public Object clone()
-  {
-    return super.clone();
-  }
-  
-  public String d()
-  {
-    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 

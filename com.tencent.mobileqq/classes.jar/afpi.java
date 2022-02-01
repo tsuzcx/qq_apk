@@ -1,59 +1,27 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 
-public class afpi
-  extends aoib
+class afpi
+  implements bjoe
 {
-  public afpi(SubAccountUgActivity paramSubAccountUgActivity) {}
+  afpi(afpd paramafpd, ChatMessage paramChatMessage, bjnw parambjnw) {}
   
-  protected void a(boolean paramBoolean, bdxd parambdxd)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBoolean) && (parambdxd != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    switch (paramInt)
     {
-      parambdxd = parambdxd.c();
-      if ((parambdxd != null) && (!parambdxd.contains(this.a.jdField_a_of_type_JavaLangString))) {}
     }
-    else
+    for (;;)
     {
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
+      afpd.a(this.jdField_a_of_type_Afpd, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      bcef.b(afpd.a(this.jdField_a_of_type_Afpd), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, afpd.a(this.jdField_a_of_type_Afpd).curFriendUin, "", "", "");
+      continue;
+      bcef.b(afpd.a(this.jdField_a_of_type_Afpd), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, afpd.a(this.jdField_a_of_type_Afpd).curFriendUin, "", "", "");
     }
-    parambdxd = (bdwt)this.a.app.getManager(62);
-    SubAccountUgActivity.a(this.a, parambdxd, this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void c(boolean paramBoolean, bdxd parambdxd)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
-      if (parambdxd != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((parambdxd == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(parambdxd.c)))) {}
-    do
-    {
-      return;
-      this.a.e();
-      if (this.a.b)
-      {
-        this.a.b = false;
-        if (paramBoolean)
-        {
-          this.a.a();
-          this.a.c(this.a.getString(2131718454));
-          return;
-        }
-        this.a.b(this.a.getString(2131718453));
-        return;
-      }
-    } while (!paramBoolean);
-    parambdxd = (bdwt)this.a.app.getManager(62);
-    Pair localPair = parambdxd.a(this.a.jdField_a_of_type_JavaLangString, 1);
-    parambdxd.a(this.a.app, this.a, localPair, new afpj(this, parambdxd, localPair));
   }
 }
 

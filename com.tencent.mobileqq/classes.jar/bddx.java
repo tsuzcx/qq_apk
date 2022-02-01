@@ -1,21 +1,14 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
-
-class bddx
+public class bddx
 {
+  public float a;
   public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  public float b;
   
-  private bddx()
+  public bddx(bddv parambddv, float paramFloat1, float paramFloat2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

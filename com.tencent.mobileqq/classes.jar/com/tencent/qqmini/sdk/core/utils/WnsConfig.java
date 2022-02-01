@@ -9,12 +9,17 @@ public class WnsConfig
   public static final String DEFAULT_DOMAIN_WHITE_LIST = ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.gtimg.cn";
   public static final String DEFAULT_ENABLE_UPDATE_EMBEDDED_APP_LIST = "1108711239";
   public static final int DEFAULT_ENABLE_UPDATE_FOR_EMBEDDED_WIDGET = 1;
+  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_CHECK_X5 = 1;
+  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_DELAY_TIME = 5000;
+  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_DETECT_WHITESCREEN = 1;
+  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_MAX_COUNT = 3;
+  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_ROUTEDONE = 1;
   public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE = 0;
-  public static final int DEFAULT_MINI_APP_REPORT_WHITE_SCREEN_ENABLE_CLEAR_APKG_CACHE = 1;
-  public static final String DEFAULT_MINI_APP_V8RT_URL = "https://d3g.qq.com/sngapp/app/update/20200714173502_6904/libtv8rt.so";
+  public static final int DEFAULT_MINI_APP_REPORT_WHITE_SCREEN_ENABLE_CLEAR_APKG_CACHE = 0;
+  public static final String DEFAULT_MINI_APP_V8RT_URL = "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136 }";
   public static final int DEFAULT_MINI_APP_XPROF_API_REPORT = 0;
   public static final String DEFAULT_MINI_GAME_BASELIB = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200323171054_1567/lib_1.13.0.00014.zip\",\"key2\":\"\",\"key3\":\"1.4.8\",\"key4\": {\"file_length\": 5591276},\"key5\":2}";
-  public static final String DEFAULT_OPENDATA_DOMAIN_WHITE_LIST = ".qlogo.com;.qlogo.cn;.qq.com";
+  public static final String DEFAULT_OPENDATA_DOMAIN_WHITE_LIST = ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la";
   public static final String DEFAULT_OPENURL_DOMAIN_WHITELIST = "tucao.qq.com,mobile.qzone.qq.com";
   public static final String DEFAULT_OPENURL_FILTER = "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb|http://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb";
   public static final String DEFAULT_SET_COOKIIE_HOST = "https://open.mp.qq.com";
@@ -25,9 +30,11 @@ public class WnsConfig
   public static final String MAIN_KEY_QZONE_TEXT_SETTING = "QZoneTextSetting";
   public static final String MINI_APP_CAPSULE_CLOSE_DARK_URL = "closebuttondark";
   public static final String MINI_APP_CAPSULE_CLOSE_URL = "closebutton";
+  public static final String MINI_APP_CHOOSE_ADDRESS_DEFAULT_URL = "https://i.qianbao.qq.com/profile/address/choose.html";
   public static final String MINI_APP_DOWNLOAD_HTTP_CONNECT_LIVE_TIME = "mini_app_download_http_connect_live_time";
   public static final String MINI_APP_DOWNLOAD_HTTP_THREADPOOL_SIZE = "mini_app_download_http_tp_size";
   public static final String MINI_APP_ENABLE_DB_CACHE = "mini_app_enable_db_cache";
+  public static final String MINI_APP_ENABLE_JSERROR_TIP = "mini_app_jserror_tip_enable";
   public static final String MINI_APP_ENABLE_WHITE_SCREEN_CHECK_AFTER_DOMREADY = "mini_app_enable_white_screen_check_after_domready";
   public static final String MINI_APP_GOOGLE_PLAY_AD_SWITCH = "mini_app_google_play_ad_switch";
   public static final String MINI_APP_GOOGLE_PLAY_DOWNLOAD_SWITCH = "mini_app_google_play_download_switch";
@@ -65,7 +72,7 @@ public class WnsConfig
   public static final String MINI_GAME_JANK_TRACE_SAMPLING_RATE = "mini_game_jank_trace_sampling_rate";
   public static final int MINI_GAME_JANK_TRACE_SAMPLING_RATE_DEFAULT = 100;
   public static final String MINI_GAME_MULTI_INSTANCE = "mini_game_multi_instance";
-  public static final int MINI_GAME_MULTI_INSTANCE_DEFAULT = 5;
+  public static final int MINI_GAME_MULTI_INSTANCE_DEFAULT = 1;
   public static final String MINI_GAME_PROCESS_REUSE = "mini_game_process_reuse";
   public static final String MINI_GAME_PROCESS_REUSE_BLACKLIST = "mini_game_process_reuse_blacklist";
   public static final int MINI_GAME_PROCESS_REUSE_DEFAULT = 1;
@@ -77,8 +84,14 @@ public class WnsConfig
   public static final String SECONDARY_KEY_MINIGAME_SHARE_RATE = "MiniGameShareRate";
   public static final String SECONDARY_KEY_MINIPROGRAM_VIDEO_CONTENTTYPE = "MiniProgramVideoContentType";
   public static final String SECONDARY_KEY_MINI_APP_AD_USE_TRANSCODING = "miniappadusetranscoding";
+  public static final String SECONDARY_KEY_MINI_APP_CHOOSE_ADDRESS_URL = "miniappChooseAddressUrl";
+  public static final String SECONDARY_KEY_MINI_APP_ENABLE_SHOW_CLEAN_ROUTEDONE = "mini_app_enable_show_clean_routedone";
   public static final String SECONDARY_KEY_MINI_APP_ENABLE_V8_SERVICE = "mini_app_enable_v8_service";
   public static final String SECONDARY_KEY_MINI_APP_SEARCH_APPID = "miniappsearchappid";
+  public static final String SECONDARY_KEY_MINI_APP_SHOW_CLEAN_CHECK_X5 = "mini_app_enable_show_clean_check_x5";
+  public static final String SECONDARY_KEY_MINI_APP_SHOW_CLEAN_DELAY_TIME = "mini_app_enable_show_clean_time_limit";
+  public static final String SECONDARY_KEY_MINI_APP_SHOW_CLEAN_DETECT_WHITESCREEN = "mini_app_enable_show_clean_detect_whitescreen";
+  public static final String SECONDARY_KEY_MINI_APP_SHOW_CLEAN_MAX_COUNT = "mini_app_enable_show_clean_max_count";
   public static final String SECONDARY_KEY_MINI_APP_SHOW_FULL_SCREEN = "miniappshowfullscreen";
   public static final String SECONDARY_KEY_MINI_APP_TOP_MAX_NUM = "miniappfullscreenminedatamaxnum";
   public static final String SECONDARY_KEY_MINI_APP_V8RT_URL = "mini_app_v8_rt_url";
@@ -283,7 +296,7 @@ public class WnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.WnsConfig
  * JD-Core Version:    0.7.0.1
  */

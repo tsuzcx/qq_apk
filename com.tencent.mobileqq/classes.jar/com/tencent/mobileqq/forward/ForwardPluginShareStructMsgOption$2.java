@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.forward;
 
-import askd;
-import asks;
-import asos;
-import bhmi;
-import bihu;
-import bihw;
+import areb;
+import areq;
+import bgoe;
+import bgog;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -17,24 +17,24 @@ class ForwardPluginShareStructMsgOption$2
   
   public void run()
   {
-    Object localObject1 = asos.r.replace("[epId]", this.a);
-    boolean bool = bhmi.a((String)localObject1);
-    Object localObject2 = asos.c.replace("[epId]", this.a);
+    Object localObject1 = EmoticonUtils.emoticonJsonFilePath.replace("[epId]", this.a);
+    boolean bool = FileUtils.fileExists((String)localObject1);
+    Object localObject2 = EmoticonUtils.smallEmoticonJsonUrl.replace("[epId]", this.a);
     localObject1 = new File((String)localObject1);
     if (!bool)
     {
-      localObject2 = new bihu((String)localObject2, (File)localObject1);
-      ((bihu)localObject2).j = true;
-      if (bihw.a((bihu)localObject2, this.this$0.a) != 0) {
+      localObject2 = new bgoe((String)localObject2, (File)localObject1);
+      ((bgoe)localObject2).j = true;
+      if (bgog.a((bgoe)localObject2, this.this$0.a) != 0) {
         return;
       }
     }
     localObject2 = new EmoticonPackage();
     ((EmoticonPackage)localObject2).epId = this.a;
     ((EmoticonPackage)localObject2).jobType = 4;
-    localObject1 = bhmi.a((File)localObject1);
+    localObject1 = FileUtils.fileToBytes((File)localObject1);
     ArrayList localArrayList = new ArrayList();
-    asks.a(this.this$0.a, (EmoticonPackage)localObject2, askd.c, (byte[])localObject1, localArrayList);
+    areq.a(this.this$0.a, (EmoticonPackage)localObject2, areb.c, (byte[])localObject1, localArrayList);
   }
 }
 

@@ -1,23 +1,19 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-
 public class vwj
 {
-  public static void a(vau paramvau)
+  @ypm(a="oa_task_id")
+  public int a;
+  @ypm(a="bg_url")
+  public String a;
+  @ypm(a="is_comp_able")
+  public boolean a;
+  @ypm(a="comp_vid")
+  public String b;
+  @ypm(a="icon_url")
+  public String c;
+  
+  public String toString()
   {
-    aamq localaamq = new aamq();
-    localaamq.a = paramvau.a;
-    localaamq.b = paramvau.b;
-    localaamq.c = paramvau.c;
-    localaamq.e = paramvau.d;
-    localaamq.f = paramvau.e;
-    localaamq.g = paramvau.f;
-    localaamq.h = paramvau.g;
-    localaamq.d = paramvau.h;
-    localaamq.j = paramvau.i;
-    localaamq.i = paramvau.j;
-    aamo.a(BaseApplicationImpl.getContext(), localaamq);
-    QLog.d("QCircleInformUtils", 1, "report  success");
+    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

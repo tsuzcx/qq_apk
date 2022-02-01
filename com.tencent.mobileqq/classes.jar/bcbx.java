@@ -1,21 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.io.File;
+import java.util.Comparator;
 
-class bcbx
-  implements View.OnClickListener
+public class bcbx
+  implements Comparator<File>
 {
-  bcbx(bcbw parambcbw, String paramString) {}
+  public bcbx(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Bcbw.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bcbw.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l = paramFile2.lastModified() - paramFile1.lastModified();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 

@@ -1,16 +1,53 @@
-import java.util.ArrayList;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.os.MqqHandler;
 
-public abstract interface wvz
+public class wvz
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public abstract void a();
+  wvz(wvv paramwvv) {}
   
-  public abstract void a(ArrayList<wvn> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
-  
-  public abstract void a(wvn paramwvn, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      xvv.d(this.a.a, "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), wvf.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, "UNKNOWN"), paramObject });
+    }
+    for (;;)
+    {
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this, paramInt, paramObject));
+      return false;
+      int i = ((Integer)paramObject).intValue();
+      if ((i >= 0) && (i <= wvf.b.length))
+      {
+        xvv.d(this.a.a, "onInfo. playerType %s", new Object[] { wvf.b[i] });
+      }
+      else
+      {
+        xvv.d(this.a.a, "onInfo. playerType %d", new Object[] { Integer.valueOf(i) });
+        continue;
+        xvv.d(this.a.a, "onInfo. start buffering");
+        continue;
+        xvv.d(this.a.a, "onInfo. end buffering");
+        continue;
+        i = ((Integer)paramObject).intValue();
+        if ((i >= 0) && (i < wvf.jdField_a_of_type_ArrayOfJavaLangString.length))
+        {
+          xvv.d(this.a.a, "onInfo. set decoder. %s", new Object[] { wvf.jdField_a_of_type_ArrayOfJavaLangString[i] });
+          wvv.a(this.a).d = wvf.jdField_a_of_type_ArrayOfJavaLangString[i];
+        }
+        else
+        {
+          xvv.d(this.a.a, "onInfo. set decoder. %d", new Object[] { Integer.valueOf(i) });
+          wvv.a(this.a).d = ("Unknown " + i);
+        }
+      }
+    }
+  }
 }
 
 

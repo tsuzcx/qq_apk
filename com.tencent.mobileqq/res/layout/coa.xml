@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:background="@drawable/e_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip">
-        <RelativeLayout android:id="@id/n10" android:layout_width="fill_parent" android:layout_height="45.0dip">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/nto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/wvi" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/mxq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/grb" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="12.0dip" android:textColor="#66ffffff" android:id="@id/ntn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mxq" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView android:id="@id/ngl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/n10" app:rankNo="1" />
-        <com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView android:id="@id/ngn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ngl" app:rankNo="2" />
-        <com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView android:id="@id/ngm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ngn" app:rankNo="3" />
-    </RelativeLayout>
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="45.0dip" android:src="@drawable/gpg" />
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="121.0dip" android:src="@drawable/gpy" />
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="197.0dip" android:src="@drawable/gq0" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@drawable/e1j" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nm_" android:background="@drawable/e1h" android:paddingLeft="@dimen/mv" android:paddingRight="@dimen/mv" android:layout_width="wrap_content" android:layout_height="44.0dip" android:minWidth="84.0dip" />
+</LinearLayout>

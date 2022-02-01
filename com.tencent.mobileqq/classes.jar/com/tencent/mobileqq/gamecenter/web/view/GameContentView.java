@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import avoe;
+import aube;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
 public class GameContentView
   extends LinearLayout
 {
-  private avoe jdField_a_of_type_Avoe;
+  private aube jdField_a_of_type_Aube;
   GameSessionView jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView;
   
   public GameContentView(Context paramContext)
@@ -33,16 +33,16 @@ public class GameContentView
   
   private void d()
   {
-    LayoutInflater.from(getContext()).inflate(2131559190, this);
+    LayoutInflater.from(getContext()).inflate(2131559197, this);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView = ((GameSessionView)findViewById(2131370174));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView = ((GameSessionView)findViewById(2131370162));
     if (this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_Avoe);
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_Aube);
     }
   }
   
@@ -53,7 +53,7 @@ public class GameContentView
   
   public void a()
   {
-    this.jdField_a_of_type_Avoe = null;
+    this.jdField_a_of_type_Aube = null;
   }
   
   public void b()
@@ -68,9 +68,9 @@ public class GameContentView
     }
   }
   
-  public void setUiRefresh(avoe paramavoe)
+  public void setUiRefresh(aube paramaube)
   {
-    this.jdField_a_of_type_Avoe = paramavoe;
+    this.jdField_a_of_type_Aube = paramaube;
   }
 }
 

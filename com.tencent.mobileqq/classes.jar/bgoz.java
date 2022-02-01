@@ -1,44 +1,69 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.AppRuntime;
 
-class bgoz
-  implements Comparator<bgph>
+public class bgoz
 {
-  bgoz(bgot parambgot) {}
-  
-  public int a(bgph parambgph1, bgph parambgph2)
+  public String a(Context paramContext)
   {
-    int j = -1;
-    if (((parambgph1 instanceof MessageForDeliverGiftTips)) && ((parambgph2 instanceof MessageForDeliverGiftTips)))
-    {
-      parambgph1 = (MessageForDeliverGiftTips)parambgph1;
-      parambgph2 = (MessageForDeliverGiftTips)parambgph2;
-      int i;
-      if ((parambgph1.isToAll()) && (parambgph2.isToAll())) {
-        i = (int)(parambgph1.time - parambgph2.time);
-      }
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (parambgph1.isToAll());
-        if (parambgph2.isToAll()) {
-          return 1;
-        }
-        if ((parambgph1.receiverUin == this.a.a.getLongAccountUin()) && (parambgph2.receiverUin == this.a.a.getLongAccountUin())) {
-          return (int)(parambgph1.time - parambgph2.time);
-        }
-        i = j;
-      } while (parambgph1.receiverUin == this.a.a.getLongAccountUin());
-      if (parambgph2.receiverUin == this.a.a.getLongAccountUin()) {
-        return 1;
-      }
-      return (int)(parambgph1.time - parambgph2.time);
+    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "kcsdk_4.4.7.3661.jar";
     }
-    return (int)(parambgph1.getShmsgseq() - parambgph2.getShmsgseq());
+    return paramContext + File.separator + "kcsdk_4.4.7.3661.jar";
+  }
+  
+  public void a()
+  {
+    try
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      try
+      {
+        String str = paramContext.getDir("lib", 0).getAbsolutePath();
+        paramContext = bgox.a().b(paramContext);
+        if (bgae.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
+        {
+          QLog.d("KC.TMSManager", 1, "unzip succ");
+          bgox.a(bgox.a());
+          return;
+        }
+        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
+        continue;
+        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
+      }
+      finally {}
+    }
+  }
+  
+  public String b(Context paramContext)
+  {
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "libtmsdualcore.zip";
+    }
+    return paramContext + File.separator + "libtmsdualcore.zip";
   }
 }
 

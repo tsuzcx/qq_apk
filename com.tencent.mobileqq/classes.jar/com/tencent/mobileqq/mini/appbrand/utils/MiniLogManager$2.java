@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import bhsr;
+import com.tencent.mobileqq.utils.StringUtil;
 
 final class MiniLogManager$2
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ final class MiniLogManager$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (bhsr.a(paramContext)) {}
+    if (StringUtil.isEmpty(paramContext)) {}
     do
     {
       return;

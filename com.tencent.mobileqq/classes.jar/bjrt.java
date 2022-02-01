@@ -1,73 +1,45 @@
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.smtt.sdk.WebView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Scroller;
+import com.tencent.widget.MovingView;
 
 public class bjrt
+  extends Handler
 {
-  protected static Map<Integer, List<BaseInterface>> a = new HashMap();
-  
-  public static void a(WebView paramWebView)
+  public bjrt(MovingView paramMovingView, Looper paramLooper)
   {
-    int i;
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.jdField_b_of_type_Boolean)) {}
+    }
+    while (paramMessage.what != 2)
     {
-      i = paramWebView.hashCode();
-      paramWebView = (List)a.get(Integer.valueOf(i));
-      if (paramWebView == null) {
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.c;
+        int m = this.a.d;
+        this.a.c = i;
+        this.a.d = j;
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += i - k;
+        paramMessage = this.a;
+        paramMessage.jdField_b_of_type_Int += j - m;
+        this.a.invalidate();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
         return;
       }
-      Iterator localIterator = paramWebView.iterator();
-      while (localIterator.hasNext()) {
-        ((BaseInterface)localIterator.next()).destroy();
-      }
-      paramWebView.clear();
-    }
-    catch (Exception paramWebView)
-    {
-      paramWebView.printStackTrace();
+      this.a.a();
       return;
     }
-    a.remove(Integer.valueOf(i));
-  }
-  
-  public static void a(WebView paramWebView, String paramString)
-  {
-    try
-    {
-      int i = paramWebView.hashCode();
-      paramWebView = ((List)a.get(Integer.valueOf(i))).iterator();
-      while (paramWebView.hasNext())
-      {
-        BaseInterface localBaseInterface = (BaseInterface)paramWebView.next();
-        if (localBaseInterface != null) {
-          localBaseInterface.setCurrentUrl(paramString);
-        }
-      }
-      return;
-    }
-    catch (Exception paramWebView)
-    {
-      paramWebView.printStackTrace();
-    }
-  }
-  
-  public static void a(List<BaseInterface> paramList, WebView paramWebView, String paramString, awfu paramawfu)
-  {
-    if (!bjud.a(paramString))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        BaseInterface localBaseInterface = (BaseInterface)localIterator.next();
-        paramawfu.a(localBaseInterface, localBaseInterface.getInterfaceName());
-        bjrk.a.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
-        localBaseInterface.setCurrentUrl(paramString);
-      }
-    }
-    a.put(Integer.valueOf(paramWebView.hashCode()), paramList);
+    this.a.a();
   }
 }
 

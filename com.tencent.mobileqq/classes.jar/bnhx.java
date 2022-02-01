@@ -1,20 +1,19 @@
-public abstract class bnhx<T, P>
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bnhx
+  implements View.OnClickListener
 {
-  private volatile T a;
+  bnhx(bnhv parambnhv) {}
   
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
+  public void onClick(View paramView)
   {
-    if (this.a == null) {}
-    try
-    {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
-    }
-    finally {}
+    this.a.a.setSelectAllOnFocus(false);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a.setOnClickListener(null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

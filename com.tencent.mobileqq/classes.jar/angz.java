@@ -1,6 +1,16 @@
-public abstract interface angz
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+
+class angz
+  implements ShareActionSheet.OnItemClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  angz(angy paramangy) {}
+  
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    this.a.a(paramActionSheetItem);
+  }
 }
 
 

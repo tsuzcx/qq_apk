@@ -1,56 +1,31 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.LinkedList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class srl
+  implements DialogInterface.OnDismissListener
 {
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private LinkedList<srn> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  public srl(FastWebActivity paramFastWebActivity) {}
   
-  public srl(BaseActivity paramBaseActivity)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilLinkedList.size();
-  }
-  
-  public srn a()
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      return null;
-    }
-    return (srn)this.jdField_a_of_type_JavaUtilLinkedList.pop();
-  }
-  
-  public void a(srm paramsrm)
-  {
-    if (paramsrm == null) {}
-    for (;;)
+    Context localContext;
+    if (!FastWebActivity.a(this.a))
     {
-      return;
-      while (!a())
-      {
-        srn localsrn = a();
-        if (localsrn != null) {
-          paramsrm.a(localsrn);
-        }
+      localContext = this.a.getApplicationContext();
+      if (!FastWebActivity.b(this.a)) {
+        break label80;
       }
     }
-  }
-  
-  public void a(srn paramsrn)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedList.push(paramsrn);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilLinkedList.isEmpty();
+    label80:
+    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
+    {
+      swi.a(localContext, paramDialogInterface, 11, this.a.a);
+      swy.a(this.a, this.a.getAppInterface(), this.a.a, -1, -1, true, false);
+      FastWebActivity.c(this.a, false);
+      return;
+    }
   }
 }
 

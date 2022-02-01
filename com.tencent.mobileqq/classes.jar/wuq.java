@@ -1,99 +1,33 @@
-import android.support.annotation.Nullable;
-import java.util.Arrays;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class wuq
+  implements Animation.AnimationListener
 {
-  public int a;
-  private final String a;
-  public final String[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public final int h;
+  public wuq(ExploreAnimalView paramExploreAnimalView) {}
   
-  private wuq(JSONObject paramJSONObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j;
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
-      this.h = paramJSONObject.getJSONObject("a").getInt("r");
-      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      this.b = localJSONArray.getInt(0);
-      this.c = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
-      this.d = localJSONArray.getInt(0);
-      this.e = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
-      this.f = localJSONArray.getInt(0);
-      this.g = localJSONArray.getInt(1);
-      paramJSONObject = paramJSONObject.getJSONArray("c");
-      j = paramJSONObject.length();
-      if (j < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-    while (i < j)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
-      i += 1;
-    }
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    paramAnimation = (ImageView)this.a.findViewById(2131365715);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365716);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362968);
+    this.a.a(paramAnimation, 100L);
+    this.a.a(localImageView1, 240L);
+    this.a.a(localImageView2, 360L);
   }
   
-  public static wuq a(@Nullable String paramString)
-  {
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-      return null;
-    }
-    catch (NullPointerException paramString)
-    {
-      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static wuq a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject = new wuq(paramJSONObject);
-      return paramJSONObject;
-    }
-    catch (IllegalArgumentException paramJSONObject)
-    {
-      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

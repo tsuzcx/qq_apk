@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-
-public class bbtw
-  implements DialogInterface.OnClickListener
+public abstract interface bbtw
 {
-  public bbtw(SignatureEditFragment paramSignatureEditFragment) {}
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    SignatureEditFragment.a(this.a, 8589934618L, null);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c();
 }
 
 

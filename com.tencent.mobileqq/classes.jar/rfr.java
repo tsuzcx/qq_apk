@@ -1,24 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-public class rfr
-  implements DialogInterface.OnClickListener
+public final class rfr
+  implements Parcelable.Creator<TagInfo>
 {
-  public rfr(EditColumnFragment paramEditColumnFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public TagInfo a(Parcel paramParcel)
   {
-    this.a.a(true);
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.b() > 0)
-    {
-      this.a.jdField_a_of_type_Rfw.a(EditColumnFragment.a(this.a).columnID, this.a.a());
-      return;
-    }
-    QQToast.a(this.a.getActivity(), 0, 2131717031, 0).a();
+    return new TagInfo(paramParcel);
+  }
+  
+  public TagInfo[] a(int paramInt)
+  {
+    return new TagInfo[paramInt];
   }
 }
 

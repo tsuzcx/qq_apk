@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import bjbs;
+import bhht;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$21
@@ -10,10 +10,10 @@ class QZoneShareActivity$21
   
   public void run()
   {
-    if ((QZoneShareActivity.a(this.this$0) != null) && (QZoneShareActivity.a(this.this$0).isShowing())) {}
+    if ((QZoneShareActivity.access$1800(this.this$0) != null) && (QZoneShareActivity.access$1800(this.this$0).isShowing())) {}
     try
     {
-      QZoneShareActivity.a(this.this$0).dismiss();
+      QZoneShareActivity.access$1800(this.this$0).dismiss();
       return;
     }
     catch (Exception localException)

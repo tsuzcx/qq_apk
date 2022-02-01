@@ -1,22 +1,42 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
 class vov
-  implements wak
+  implements ayeo
 {
   vov(vou paramvou) {}
   
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    vud localvud = vud.a();
-    vuf localvuf = new vuf().a("followbutton");
-    if (paramBoolean) {}
-    for (String str = "follow";; str = "unfollow")
+    return null;
+  }
+  
+  public void onSend(ayep paramayep)
+  {
+    if (paramayep.jdField_b_of_type_Int == 0)
     {
-      localvud.a(localvuf.b(str).a(this.a.a()).c(paramStUser.id.get()));
+      this.a.jdField_a_of_type_Voi.c = paramayep.jdField_b_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Voi.a = paramayep.c;
+      this.a.b();
+      vou.a(this.a, new ErrorMessage());
       return;
     }
+    if ((paramayep.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    {
+      vou.a(this.a);
+      xvv.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      return;
+    }
+    this.a.b();
+    paramayep = new ErrorMessage(paramayep.jdField_b_of_type_Int, paramayep.a);
+    paramayep.extraMsg = "upload";
+    vou.a(this.a, paramayep);
   }
+  
+  public void updateMsg(ayep paramayep) {}
 }
 
 

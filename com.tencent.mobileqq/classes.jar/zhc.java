@@ -1,35 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
-class zhc
-  extends wvh
+public class zhc
+  extends zes
 {
-  zhc(zhb paramzhb, wke paramwke, long paramLong)
+  protected WeakReference<Context> a;
+  
+  public zhc(Context paramContext, int paramInt)
   {
-    super(paramwke);
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
   }
   
-  protected void a(wvk paramwvk)
+  public boolean a()
   {
-    if (paramwvk.jdField_a_of_type_Int == 0)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      zhb.a().sendMessage(Message.obtain(zhb.a(), 1, null));
-    }
-    for (;;)
-    {
-      zhb.a(this.jdField_a_of_type_Zhb);
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (a()) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramwvk.jdField_a_of_type_Int + ", errMsg:" + paramwvk.jdField_a_of_type_JavaLangString);
-      }
     }
+    super.show();
   }
 }
 

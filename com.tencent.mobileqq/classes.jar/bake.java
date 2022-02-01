@@ -1,34 +1,45 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bake
-  implements bajv
 {
-  public bake(InterestSwitchEditActivity paramInterestSwitchEditActivity, bakz parambakz, blir paramblir) {}
+  private static int a;
+  public ConcurrentHashMap<Long, bakh> a;
   
-  public void a(@NotNull View paramView, @Nullable bajt parambajt)
+  static
   {
-    if (bpak.a(paramView)) {
-      return;
+    jdField_a_of_type_Int = 900000;
+  }
+  
+  private bake()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static final bake a()
+  {
+    return bakg.a();
+  }
+  
+  public bakh a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (bakh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     }
-    if ((parambajt == null) || (this.jdField_a_of_type_Bakz.g() == parambajt.a())) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, parambajt.a(), this.jdField_a_of_type_Bakz);
-      if (!bhnv.d(BaseApplication.getContext()))
-      {
-        QQToast.a(BaseApplicationImpl.sApplication, 2131693963, 0).b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity.getTitleBarHeight());
-        return;
-      }
-      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, this.jdField_a_of_type_Bakz, parambajt.a());
-    }
+    return null;
+  }
+  
+  public void a()
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new bakh(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 

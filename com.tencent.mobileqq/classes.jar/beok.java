@@ -1,18 +1,62 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class beok
-  extends beou
+public abstract class beok<VH extends RecyclerView.ViewHolder, D extends beno>
+  implements View.OnClickListener
 {
-  beok(beoh parambeoh, EditorState paramEditorState, List paramList)
+  public beol a;
+  public XMediaEditor a;
+  
+  public beok(XMediaEditor paramXMediaEditor)
   {
-    super(parambeoh, paramEditorState, paramList);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
   }
   
-  public void a(EditorState paramEditorState)
+  public abstract VH a(ViewGroup paramViewGroup);
+  
+  public beok a(beol parambeol)
   {
-    beoh.a(this.a).c();
-    beoh.a(this.a).b(true);
+    this.jdField_a_of_type_Beol = parambeol;
+    return this;
+  }
+  
+  public beol a()
+  {
+    return this.jdField_a_of_type_Beol;
+  }
+  
+  public void a() {}
+  
+  public void a(VH paramVH) {}
+  
+  public abstract void a(VH paramVH, D paramD, int paramInt);
+  
+  public abstract void a(View paramView, VH paramVH);
+  
+  public void b(VH paramVH) {}
+  
+  public void b(View paramView, VH paramVH)
+  {
+    paramView.setTag(paramVH);
+    paramView.setOnClickListener(this);
+  }
+  
+  public void b(D paramD) {}
+  
+  public void c(VH paramVH) {}
+  
+  public void c(D paramD) {}
+  
+  public void d(D paramD) {}
+  
+  public void onClick(View paramView)
+  {
+    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
 
-class anvv
-  extends BroadcastReceiver
+public class anvv
+  implements ArkViewImplement.LoadCallback
 {
-  anvv(anvu paramanvu) {}
+  public anvv(QQDailyArkView paramQQDailyArkView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      this.a.d(8);
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt != 1) {
+      QQDailyArkView.a(this.a);
     }
   }
 }

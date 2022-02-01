@@ -1,21 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-
-public class yxj
-  implements Animation.AnimationListener
+final class yxj
+  extends yxh
 {
-  public yxj(EditVideoGuide paramEditVideoGuide) {}
+  yxj(yxq paramyxq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.g();
-    this.a.a.a(0);
+    this.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

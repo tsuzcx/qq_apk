@@ -1,24 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ayge
-  implements aygn
+public final class ayge
+  implements DialogInterface.OnClickListener
 {
-  ayge(aygb paramaygb) {}
-  
-  public void a(aygm paramaygm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Aygk != null) {
-      this.a.jdField_a_of_type_Aygk.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramaygm = aygb.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
-    {
-      ayel.a(paramaygm, i);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

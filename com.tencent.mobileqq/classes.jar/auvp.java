@@ -1,17 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvp
-  extends auvj
+  implements View.OnClickListener
 {
-  public auvp(FlashChatTextEffectView paramFlashChatTextEffectView) {}
+  public auvp(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.b();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,340 +1,85 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.ViewFlipper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.onlinestatus.music.OnlineStatusLyricView;
-import com.tencent.mobileqq.richstatus.AioFriendTitleHelper.1;
-import com.tencent.mobileqq.richstatus.AioFriendTitleHelper.2;
-import com.tencent.mobileqq.richstatus.AioFriendTitleHelper.4;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureRequest.Builder;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
 public class bbsi
-  implements agvc, azln
+  extends CameraCaptureSession.CaptureCallback
 {
-  public static int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bbsj(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ViewFlipper jdField_a_of_type_AndroidWidgetViewFlipper;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  public bbsi(Camera2Control paramCamera2Control) {}
   
-  static
+  private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
   {
-    jdField_a_of_type_Int = 259200;
-  }
-  
-  public bbsi(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private Friends a()
-  {
-    return ((anyw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-  }
-  
-  private void a(RichStatus paramRichStatus)
-  {
-    String str;
-    if (paramRichStatus != null)
+    paramCaptureRequest = paramCaptureRequest.getTag();
+    if ((!(paramCaptureRequest instanceof bbus)) || (((bbus)paramCaptureRequest).jdField_a_of_type_Boolean))
     {
-      str = paramRichStatus.getPlainText();
-      long l1 = paramRichStatus.time;
-      long l2 = NetConnInfoCenter.getServerTime();
-      paramRichStatus = aris.a();
-      if (paramRichStatus != null)
-      {
-        jdField_a_of_type_Int = (int)(paramRichStatus.a * 60.0D * 60.0D);
-        if (QLog.isColorLevel()) {
-          QLog.d("AioFriendTitleHelper", 2, "needShowRichSubTitle-> richTitleConfBean.c2c_time_interval = " + paramRichStatus.a);
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        paramRichStatus = new StringBuilder().append("needShowRichSubTitle-> c = ").append(l2).append(" time = ").append(l1).append(" needShow =");
-        if (l2 - l1 >= jdField_a_of_type_Int) {
-          break label196;
-        }
-        bool = true;
-        QLog.d("AioFriendTitleHelper", 2, bool);
-      }
-      if (l2 - l1 < jdField_a_of_type_Int) {
-        if (TextUtils.isEmpty(str)) {
-          break label202;
-        }
-      }
-    }
-    label196:
-    label202:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      a(str);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X800A66A");
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean1) {
-      if ((this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() == this.jdField_a_of_type_AndroidWidgetTextView) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetViewFlipper.isFlipping()) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
-      }
-      if (paramBoolean2) {
-        azhq.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), this.jdField_a_of_type_AndroidWidgetTextView, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AioFriendTitleHelper", 2, new Object[] { "resetSubTitleText, ", paramString });
-      }
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() != this.jdField_a_of_type_AndroidWidgetTextView) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) && (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())))
-    {
-      if ((this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AioFriendTitleHelper", 2, "needShowRichSubTitle, updateSubTitleStatusAndText() -> type 1 startFlipping all Visibility");
-        }
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
-      }
-      if (!this.jdField_a_of_type_AndroidWidgetViewFlipper.isFlipping()) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.startFlipping();
-      }
+      bbsr.a(1, "[Camera2] mAfCaptureCallback handled!");
+      Camera2Control.d(this.a, false);
     }
     do
     {
       return;
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) && (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() == this.jdField_a_of_type_AndroidWidgetTextView))
+      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+      bbsr.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
+    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
+    a(true, (bbus)paramCaptureRequest);
+  }
+  
+  private void a(boolean paramBoolean, bbus parambbus)
+  {
+    Camera2Control.d(this.a, false);
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
+    try
+    {
+      bbsr.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
+      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {}
+      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
       {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
+        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
+        if ((parambbus.jdField_a_of_type_Bbsp.a == null) || (parambbus.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        parambbus.jdField_a_of_type_Boolean = true;
+        parambbus.jdField_a_of_type_Bbsp.a.a(1, paramBoolean);
         return;
       }
-    } while ((!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) || (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() != this.jdField_b_of_type_AndroidWidgetTextView));
-    this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
-  }
-  
-  public void a()
-  {
-    b(null);
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 3: 
-    case 5: 
-    case 9: 
-      do
-      {
-        return;
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetQqViewFlipper, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.g);
-        return;
-        b("");
-        return;
-      } while ((this.jdField_a_of_type_AndroidWidgetViewFlipper == null) || (!this.jdField_a_of_type_AndroidWidgetViewFlipper.isFlipping()));
-      this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
       return;
     }
-    b();
-  }
-  
-  public void a(ViewFlipper paramViewFlipper, TextView paramTextView1, TextView paramTextView2)
-  {
-    this.jdField_a_of_type_AndroidWidgetViewFlipper = paramViewFlipper;
-    this.jdField_a_of_type_AndroidWidgetViewFlipper.setOutAnimation(null);
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
-    this.jdField_b_of_type_AndroidWidgetTextView = paramTextView2;
-    d();
-    c();
-    if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof OnlineStatusLyricView)) {
-      ((OnlineStatusLyricView)this.jdField_a_of_type_AndroidWidgetTextView).setLyricStateListener(this);
+    catch (Exception parambbus)
+    {
+      bbsr.a(2, "[Camera2] mAfCaptureCallback e:" + parambbus);
     }
   }
   
-  protected void a(String paramString)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetViewFlipper == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
-    while (TextUtils.isEmpty(paramString)) {
+    a(paramTotalCaptureResult, paramCaptureRequest);
+  }
+  
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
+  {
+    bbsr.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
+    paramCameraCaptureSession = paramCaptureRequest.getTag();
+    if ((!(paramCameraCaptureSession instanceof bbus)) || (((bbus)paramCameraCaptureSession).jdField_a_of_type_Boolean))
+    {
+      bbsr.a(1, "[Camera2] mAfCaptureCallback handled!");
+      Camera2Control.d(this.a, false);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(new begp(paramString, 3, 12));
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    b("");
+    a(false, (bbus)paramCameraCaptureSession);
   }
   
-  public boolean a()
+  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof OnlineStatusLyricView)) {
-      return ((OnlineStatusLyricView)this.jdField_a_of_type_AndroidWidgetTextView).a();
-    }
-    return false;
-  }
-  
-  public boolean a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioFriendTitleHelper", 2, "needShowRichSubTitle, onShowSubTitleText() isShowInputStatus =  " + paramBoolean + " statusText = " + paramString);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new AioFriendTitleHelper.2(this, paramBoolean, paramString));
-    return true;
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 5, 9, 13 };
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetViewFlipper != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() != this.jdField_a_of_type_AndroidWidgetTextView) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
-      }
-      this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      if (QLog.isColorLevel()) {
-        QLog.d("AioFriendTitleHelper", 2, "needShowRichSubTitle-> destroy()");
-      }
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof OnlineStatusLyricView)) {
-      ((OnlineStatusLyricView)this.jdField_a_of_type_AndroidWidgetTextView).d();
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.P) && (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (c())
-    {
-      a(false, false, "isListenTogetherTime");
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      a(false, true, "isInputting");
-      return;
-    }
-    if (b())
-    {
-      a(true, true, "isStatusOffline");
-      return;
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.P)
-    {
-      a(true, true, "mChatPie.setSubTitleVisible");
-      return;
-    }
-    if (a())
-    {
-      a(false, false, "isPlayLyric");
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AioFriendTitleHelper", 2, "needShowRichSubTitle");
-      }
-      e();
-    }
-    azhq.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), this.jdField_a_of_type_AndroidWidgetTextView, true);
-  }
-  
-  public boolean b()
-  {
-    Friends localFriends = ((anyw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).c(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localFriends == null)
-    {
-      ThreadManager.post(new AioFriendTitleHelper.4(this), 8, null, true);
-      return false;
-    }
-    int i = bhlg.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    if (QLog.isColorLevel()) {
-      QLog.i("AioFriendTitleHelper", 2, "needShowRichSubTitle, isStatusOffline() -> status = " + i);
-    }
-    return i == 0;
-  }
-  
-  protected void c()
-  {
-    RichStatus localRichStatus = ((bbvd)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15)).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
-    if ((localRichStatus == null) || (localRichStatus.isEmpty()))
-    {
-      ThreadManager.getFileThreadHandler().post(new AioFriendTitleHelper.1(this));
-      return;
-    }
-    a(localRichStatus);
-  }
-  
-  public boolean c()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
-      return false;
-    }
-    awpd localawpd = (awpd)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(32);
-    int i = j;
-    if (localawpd != null)
-    {
-      i = j;
-      if (localawpd.c()) {
-        i = 1;
-      }
-    }
-    if (i != 0) {
-      return true;
-    }
-    return ((agwp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(43)).c();
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetViewFlipper == null)) {
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
+    a(paramCaptureResult, paramCaptureRequest);
   }
 }
 

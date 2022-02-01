@@ -1,22 +1,179 @@
+import AvatarInfo.QQHeadInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xedb.oidb_0xedb.ReqBody;
+import tencent.im.oidb.cmd0xedb.oidb_0xedb.ReqUsrInfo;
+import tencent.im.oidb.cmd0xedb.oidb_0xedb.RspBody;
+import tencent.im.oidb.cmd0xedb.oidb_0xedb.RspHeadInfo;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class anin
-  implements anje
+public class anin
+  extends anio
 {
-  anin(anil paramanil) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public anin(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    if (paramBoolean)
+    super(paramQQAppInterface, paramFriendListHandler);
+  }
+  
+  public static oidb_0xedb.ReqBody a(ArrayList<FriendListHandler.QQHeadDetails> paramArrayList)
+  {
+    if (paramArrayList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        Object localObject = (FriendListHandler.QQHeadDetails)paramArrayList.next();
+        long l = Long.parseLong(((FriendListHandler.QQHeadDetails)localObject).uinOrMobile);
+        int i = (int)((FriendListHandler.QQHeadDetails)localObject).headImgTimestamp;
+        localObject = new oidb_0xedb.ReqUsrInfo();
+        ((oidb_0xedb.ReqUsrInfo)localObject).dstUin.set(l);
+        ((oidb_0xedb.ReqUsrInfo)localObject).timestamp.set(i);
+        localArrayList.add(localObject);
       }
-      if (anil.a(this.a) != null) {
-        anil.a(this.a).e();
+      if (!localArrayList.isEmpty())
+      {
+        paramArrayList = new oidb_0xedb.ReqBody();
+        paramArrayList.dstUsrType.set(3);
+        paramArrayList.dstUsrInfos.addAll(localArrayList);
+        return paramArrayList;
       }
-      this.a.c();
     }
+    return null;
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject2 = paramToServiceMsg.extraData.getParcelableArrayList("key_request_list");
+    paramToServiceMsg = localArrayList2;
+    Object localObject1 = localArrayList1;
+    boolean bool1 = bool2;
+    if (paramFromServiceMsg != null)
+    {
+      paramToServiceMsg = localArrayList2;
+      localObject1 = localArrayList1;
+      bool1 = bool2;
+      if (paramFromServiceMsg.isSuccess())
+      {
+        paramToServiceMsg = localArrayList2;
+        localObject1 = localArrayList1;
+        bool1 = bool2;
+        if (localObject2 == null) {}
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg.uint32_result.get() != 0) {
+          break label388;
+        }
+        i = 1;
+        if (i == 0) {
+          break label524;
+        }
+        paramFromServiceMsg = new oidb_0xedb.RspBody();
+        paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+        paramObject = new HashMap();
+        if (!paramFromServiceMsg.dstHeadInfos.has()) {
+          break;
+        }
+        paramToServiceMsg = paramFromServiceMsg.dstHeadInfos.get().iterator();
+        if (!paramToServiceMsg.hasNext()) {
+          break;
+        }
+        paramFromServiceMsg = (oidb_0xedb.RspHeadInfo)paramToServiceMsg.next();
+        byte b1 = (byte)paramFromServiceMsg.faceType.get();
+        byte b2 = (byte)paramFromServiceMsg.faceFlag.get();
+        localObject1 = new QQHeadInfo();
+        ((QQHeadInfo)localObject1).uin = paramFromServiceMsg.dstUin.get();
+        ((QQHeadInfo)localObject1).dwTimestamp = paramFromServiceMsg.timestamp.get();
+        ((QQHeadInfo)localObject1).cHeadType = b1;
+        ((QQHeadInfo)localObject1).dstUsrType = 116;
+        ((QQHeadInfo)localObject1).dwFaceFlgas = b2;
+        ((QQHeadInfo)localObject1).downLoadUrl = paramFromServiceMsg.url.get();
+        paramObject.put(String.valueOf(((QQHeadInfo)localObject1).uin), localObject1);
+        continue;
+        if (!QLog.isColorLevel()) {
+          break label368;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("ApolloHeadReceiver", 1, "handleGetApolloHead fail.", paramToServiceMsg);
+        bool1 = bool2;
+        localObject1 = localArrayList1;
+        paramToServiceMsg = localArrayList2;
+      }
+      QLog.d("ApolloHeadReceiver", 2, String.format("handleGetApolloHead success=%s noChangeSize=%s changeSize=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(((ArrayList)localObject1).size()), Integer.valueOf(paramToServiceMsg.size()) }));
+      label368:
+      if (this.a != null) {
+        this.a.handleGetQQHead_Apollo(bool1, (ArrayList)localObject1, paramToServiceMsg);
+      }
+      return;
+      label388:
+      int i = 0;
+    }
+    paramToServiceMsg = new ArrayList();
+    paramFromServiceMsg = new ArrayList();
+    localObject1 = ((ArrayList)localObject2).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (FriendListHandler.QQHeadDetails)((Iterator)localObject1).next();
+      if (!paramObject.containsKey(((FriendListHandler.QQHeadDetails)localObject2).uinOrMobile))
+      {
+        paramToServiceMsg.add(localObject2);
+      }
+      else
+      {
+        QQHeadInfo localQQHeadInfo = (QQHeadInfo)paramObject.get(((FriendListHandler.QQHeadDetails)localObject2).uinOrMobile);
+        localQQHeadInfo.headLevel = ((FriendListHandler.QQHeadDetails)localObject2).level;
+        localQQHeadInfo.sizeType = ((FriendListHandler.QQHeadDetails)localObject2).sizeType;
+        localQQHeadInfo.idType = 200;
+        paramFromServiceMsg.add(localQQHeadInfo);
+      }
+    }
+    for (bool1 = true;; bool1 = false)
+    {
+      localObject1 = paramToServiceMsg;
+      paramToServiceMsg = paramFromServiceMsg;
+      break;
+      label524:
+      paramFromServiceMsg = localArrayList2;
+      paramToServiceMsg = localArrayList1;
+    }
+  }
+  
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("OidbSvc.0xedb".equals(paramFromServiceMsg.getServiceCmd())) {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return "OidbSvc.0xedb".equals(paramString);
   }
 }
 

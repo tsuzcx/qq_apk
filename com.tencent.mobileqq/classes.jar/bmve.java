@@ -1,41 +1,58 @@
-import android.os.Bundle;
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.Typeface;
 import java.util.ArrayList;
 import java.util.List;
 
 public class bmve
-  implements EIPCResultCallback
 {
-  public bmve(QzoneIPCModule paramQzoneIPCModule) {}
+  float jdField_a_of_type_Float = 0.0F;
+  int jdField_a_of_type_Int;
+  Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
+  ArrayList<bmva> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  float jdField_b_of_type_Float = 0.0F;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  float jdField_c_of_type_Float = 0.0F;
+  int jdField_c_of_type_Int = 0;
+  float d = 0.0F;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bmve()
   {
-    ArrayList localArrayList;
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      paramEIPCResult.setClassLoader(QCircleFakeFeed.class.getClassLoader());
-      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
-      if (localArrayList != null) {
-        aaak.a().a(new QCircleFeedEvent(localArrayList));
-      }
-      aaak.a().a(new QCirclePublishBoxStatusEvent(paramEIPCResult));
-      if (localArrayList != null) {
-        break label93;
-      }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public bmvc a(int paramInt, List<String> paramList)
+  {
+    bmvc localbmvc = new bmvc(paramInt, paramList);
+    localbmvc.jdField_a_of_type_JavaUtilArrayList.clear();
+    localbmvc.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
+      localbmvc.a(this.jdField_a_of_type_AndroidGraphicsTypeface);
     }
-    label93:
-    for (int i = 0;; i = localArrayList.size())
-    {
-      QLog.d("QzoneIPCModule", 4, String.format("Get QCircleFakeFeed task list %b", new Object[] { Integer.valueOf(i) }));
-      return;
+    localbmvc.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Boolean) {
+      bmvc.a(localbmvc, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Int);
     }
+    bmvc.a(localbmvc, this.jdField_b_of_type_Boolean, this.d, this.jdField_c_of_type_Int);
+    if (!paramList.isEmpty()) {
+      localbmvc.a(0, (String)paramList.get(0));
+    }
+    return localbmvc;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Typeface paramTypeface)
+  {
+    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+  }
+  
+  public void a(bmva parambmva)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambmva);
   }
 }
 

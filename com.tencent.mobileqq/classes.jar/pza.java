@@ -1,29 +1,21 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pza
-  implements ViewBase.OnClickListener
+class pza
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  pza(pyz parampyz, pvc parampvc, soh paramsoh) {}
   
-  public pza(ArticleInfo paramArticleInfo, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      return;
+    if (pyz.a(this.jdField_a_of_type_Pyz) == null) {
+      pyz.a(this.jdField_a_of_type_Pyz, new bjrb(pyz.a(this.jdField_a_of_type_Pyz)));
     }
-    if (ozs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
-    oxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A73", null);
+    pyz.a(this.jdField_a_of_type_Pyz).a((pwe)this.jdField_a_of_type_Pvc, this.jdField_a_of_type_Pvc.a().mDislikeInfos);
+    pyz.a(this.jdField_a_of_type_Pyz).a(paramView, new pzb(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

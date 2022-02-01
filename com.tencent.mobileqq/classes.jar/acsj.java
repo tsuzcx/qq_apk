@@ -1,14 +1,14 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.4.1.1;
 
 public class acsj
-  extends acsl
+  extends azhn
 {
-  public int a;
-  public View a;
+  acsj(acsi paramacsi) {}
   
-  public String toString()
+  public void a(boolean paramBoolean)
   {
-    return " \nlpcYby " + this.jdField_a_of_type_Int + " videoViewScaleXby " + this.jdField_a_of_type_Float + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
+    this.a.a.runOnUiThread(new AssistantSettingActivity.4.1.1(this, paramBoolean));
   }
 }
 

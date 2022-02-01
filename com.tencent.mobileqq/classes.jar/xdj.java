@@ -1,57 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdj
-  extends wpa<xex>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, voc>
 {
-  public final List<String> a;
-  
-  public xdj(List<String> paramList)
+  public xdj(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.a = paramList;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String a()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull voc paramvoc)
   {
-    return "StorySvc.get_video_tag_778";
+    paramvoc = paramvoc.a;
+    if (paramvoc == null) {}
+    while (xqc.a(paramvoc.mUploadStatus) != 3) {
+      return;
+    }
+    paramQQStoryShareGroupProfileActivity.b = true;
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
-    try
-    {
-      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new xex(localRspStoryPlayerTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        yuk.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
-    return localReqStoryPlayerTagInfo.toByteArray();
+    return voc.class;
   }
 }
 

@@ -1,26 +1,13 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class aekx
-  implements bjig
+  implements DialogInterface.OnClickListener
 {
-  public aekx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aekx(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
-      return;
-    }
-    zyx.a(2, 2131718157);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

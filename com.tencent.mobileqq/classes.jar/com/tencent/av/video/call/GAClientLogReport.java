@@ -1,46 +1,13 @@
 package com.tencent.av.video.call;
 
-import bkdp;
+import com.tencent.avcore.jni.log.GAClientLogReportJni;
+import com.tencent.avcore.jni.log.IClientLogReport;
 
 public class GAClientLogReport
+  implements IClientLogReport
 {
-  private static final String TAG = "GAClientLogReport";
   private static GAClientLogReport instance;
-  
-  static
-  {
-    try
-    {
-      cacheMethodIds();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bkdp.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
-    }
-  }
-  
-  private GAClientLogReport()
-  {
-    try
-    {
-      init();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bkdp.a("GAClientLogReport", "inti fail.", localThrowable);
-    }
-  }
-  
-  private static native void cacheMethodIds();
-  
-  private int callbackSendLog(long paramLong, int paramInt, byte[] paramArrayOfByte)
-  {
-    return ClientLogReport.instance().callbackSendLog(paramLong, paramInt, paramArrayOfByte);
-  }
-  
-  private native void init();
+  private final GAClientLogReportJni mJni = new GAClientLogReportJni(this);
   
   public static GAClientLogReport instance()
   {
@@ -48,6 +15,11 @@ public class GAClientLogReport
       instance = new GAClientLogReport();
     }
     return instance;
+  }
+  
+  public int sendLog(long paramLong, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    return ClientLogReport.instance().sendLog(paramLong, paramInt, paramArrayOfByte, paramBoolean);
   }
 }
 

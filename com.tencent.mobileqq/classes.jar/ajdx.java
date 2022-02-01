@@ -1,122 +1,72 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
+import com.tencent.mobileqq.widget.QQTabHost;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ajdx
+  implements bhho
 {
-  public static final String a;
-  public static int[] a;
-  private static int[] jdField_b_of_type_ArrayOfInt;
-  private static int[] jdField_c_of_type_ArrayOfInt = { 80000002 };
-  private static int[] d = { 80000003 };
-  private static int[] e = { 80000000, 80000001, 80000002, 80000004, 80000003 };
-  private static int[] f = { 80000002, 80000003 };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ajdz jdField_a_of_type_Ajdz;
-  anyu jdField_a_of_type_Anyu = new ajdy(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = null;
-  private String jdField_c_of_type_JavaLangString;
+  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajdx.class.getName();
-    jdField_b_of_type_ArrayOfInt = new int[] { 80000000 };
-    jdField_a_of_type_ArrayOfInt = new int[] { 80000001 };
-  }
+  public ajdx(MainFragment paramMainFragment) {}
   
-  public ajdx(QQAppInterface paramQQAppInterface)
+  private void a(View paramView, ArrayList<View> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_c_of_type_JavaLangString = bhoe.a(paramQQAppInterface.getApplication());
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  final void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anyu, true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(ajdz paramajdz)
-  {
-    this.jdField_a_of_type_Ajdz = paramajdz;
-  }
-  
-  public void a(String paramString, int[] paramArrayOfInt, double paramDouble1, double paramDouble2, boolean paramBoolean, int paramInt)
-  {
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, paramArrayOfInt, paramDouble1, paramDouble2, paramBoolean, paramInt, this.jdField_a_of_type_Long);
-  }
-  
-  public boolean a(String paramString, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2)
-  {
-    a();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt1;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    switch (paramInt1)
+    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
+    for (;;)
     {
-    default: 
-      localObject1 = localObject2;
-    }
-    while (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "warning! wrong request type = " + paramInt1);
+      return;
+      paramView = (ViewGroup)paramView;
+      if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
+        paramArrayList.add(paramView);
       }
-      return false;
-      localObject1 = jdField_b_of_type_ArrayOfInt;
-      continue;
-      localObject1 = jdField_a_of_type_ArrayOfInt;
-      continue;
-      localObject1 = jdField_c_of_type_ArrayOfInt;
-      continue;
-      localObject1 = d;
-      continue;
-      localObject1 = e;
-      continue;
-      localObject1 = f;
-    }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, (int[])localObject1, paramDouble1, paramDouble2, true, paramInt2, this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "searchFriend nextPage = " + this.jdField_a_of_type_Int);
-    }
-    return true;
-  }
-  
-  final void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyu);
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        a(paramView.getChildAt(i), paramArrayList);
+        i += 1;
+      }
     }
   }
   
-  public void c()
+  private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    View localView = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment).getCurrentView();
+    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new ArrayList();
+      a(localView, (ArrayList)localObject1);
+      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
+    }
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (View)((Iterator)localObject1).next();
+      if ((localObject2 instanceof FPSXListView)) {
+        ((FPSXListView)localObject2).b(paramBoolean);
+      } else if ((localObject2 instanceof FPSSwipListView)) {
+        ((FPSSwipListView)localObject2).a(paramBoolean);
+      }
+    }
   }
   
-  public void d()
+  public void afterDraw(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Ajdz = null;
-    this.jdField_a_of_type_Int = 0;
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    a(true);
+  }
+  
+  public void beforeDraw(Bundle paramBundle)
+  {
+    a(false);
   }
 }
 

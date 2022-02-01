@@ -1,34 +1,29 @@
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akif
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+class akif
+  implements View.OnClickListener
 {
-  protected akif(akie paramakie) {}
+  akif(akho paramakho) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 3)
+    this.a.a(-1, null);
+    if (bfng.a().a() == 4)
     {
-      this.a.a();
-      return true;
+      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bfnf.b(), bfng.b(), bfng.a(), "1");
+      bfng.a().a(akho.a(this.a));
     }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    for (;;)
     {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
-      }
-      return true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bfnf.b(), bfng.b(), bfng.a(), "1");
+      UpgradeDetailActivity.a(akho.a(this.a), bfng.a().a(), true, true, true);
     }
-    return false;
   }
 }
 

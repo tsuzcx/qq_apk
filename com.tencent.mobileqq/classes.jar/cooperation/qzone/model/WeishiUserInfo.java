@@ -3,12 +3,11 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnbb;
 
 public class WeishiUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiUserInfo> CREATOR = new bnbb();
+  public static final Parcelable.Creator<WeishiUserInfo> CREATOR = new WeishiUserInfo.1();
   public String logo;
   public String nickName;
   public long uin;

@@ -1,18 +1,28 @@
+import android.graphics.Rect;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+
 public class osg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public boolean a = true;
-  public int b;
-  public boolean b = true;
-  public int c;
-  public boolean c = true;
-  public int d;
-  public boolean d;
+  public osg(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public osg()
+  public void onGlobalLayout()
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 1;
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
+    int j = localRect.bottom;
+    int i = j;
+    if (!this.a.e) {
+      i = j - this.a.g;
+    }
+    if (i != this.a.f)
+    {
+      this.a.f = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+    }
   }
 }
 

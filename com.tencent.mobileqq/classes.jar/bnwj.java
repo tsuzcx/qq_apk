@@ -1,143 +1,60 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import cooperation.vip.qqbanner.QbossADBannerCountDownManager.1;
-import cooperation.vip.qqbanner.QbossADBannerCountDownManager.2;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import mqq.os.MqqHandler;
 
 public class bnwj
-  extends almq
+  extends MqqHandler
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bnwi jdField_a_of_type_Bnwi;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private TextView b;
-  private TextView c;
+  public bnwj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  private Drawable a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(bhtq.b(20.0F));
-    localGradientDrawable.setColor(a(paramString));
-    return localGradientDrawable;
-  }
-  
-  private String a()
-  {
-    if (this.jdField_a_of_type_Bnwi == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_Bnwi.d != 1) {
-      return this.jdField_a_of_type_Bnwi.j;
-    }
-    return a(this.jdField_a_of_type_Bnwi.e, this.jdField_a_of_type_Bnwi.f);
-  }
-  
-  private String a(int paramInt1, int paramInt2)
-  {
-    String str1;
-    String str2;
-    if (paramInt1 > 99)
+    switch (paramMessage.what)
     {
-      str1 = "99";
-      if (paramInt2 <= 59) {
-        break label106;
-      }
-      str2 = "59";
     }
-    for (;;)
+    do
     {
-      return str1 + ":" + str2;
-      if ((paramInt1 >= 10) && (paramInt1 <= 99))
+      do
       {
-        str1 = String.valueOf(paramInt1);
-        break;
-      }
-      if ((paramInt1 >= 0) && (paramInt1 < 10))
-      {
-        str1 = "0" + String.valueOf(paramInt1);
-        break;
-      }
-      str1 = "00";
-      break;
-      label106:
-      if ((paramInt2 >= 10) && (paramInt2 <= 59)) {
-        str2 = String.valueOf(paramInt2);
-      } else if ((paramInt2 >= 0) && (paramInt2 < 10)) {
-        str2 = "0" + String.valueOf(paramInt2);
-      } else {
-        str2 = "00";
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.c.setVisibility(8);
+        do
+        {
+          return;
+          QQToast.a(this.a, 2131718446, 0).a();
+          return;
+          String str = this.a.getString(2131718447);
+          paramMessage = (String)paramMessage.obj;
+          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
+          bfvo.a(this.a, paramMessage);
+          return;
+          paramMessage = bfur.a(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718478), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718477), 2131718461, 2131717677, new bnwk(this), new bnwl(this));
+          ShortVideoPlayActivity.a(this.a, paramMessage);
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
+          }
+        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
+        }
+        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
+        }
+        if ((this.a.b != 1) && (this.a.b != 2)) {
+          break;
+        }
+      } while (!this.a.b());
+      this.a.j();
+      this.a.r();
       return;
-    }
-    this.c.setVisibility(0);
-    this.c.setText(paramString);
-  }
-  
-  private void i()
-  {
-    j();
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new QbossADBannerCountDownManager.2(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 1000L);
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    this.jdField_a_of_type_JavaUtilTimer = null;
-    this.jdField_a_of_type_JavaUtilTimerTask = null;
-  }
-  
-  protected int a()
-  {
-    return 2131562014;
-  }
-  
-  public View a()
-  {
-    View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379939));
-    this.b = ((TextView)localView.findViewById(2131380071));
-    this.c = ((TextView)localView.findViewById(2131379706));
-    return localView;
-  }
-  
-  protected void a(almm paramalmm)
-  {
-    super.a(paramalmm);
-    ThreadManagerV2.getUIHandlerV2().post(new QbossADBannerCountDownManager.1(this, paramalmm));
-  }
-  
-  public void e()
-  {
-    super.e();
-    j();
-  }
-  
-  public void f()
-  {
-    super.f();
-    j();
+    } while (this.a.b != 0);
+    ShortVideoPlayActivity.a(this.a);
   }
 }
 

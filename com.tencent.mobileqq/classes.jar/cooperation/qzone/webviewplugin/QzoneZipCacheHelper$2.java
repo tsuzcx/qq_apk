@@ -1,10 +1,10 @@
 package cooperation.qzone.webviewplugin;
 
-import auog;
-import bmxj;
-import bnkn;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.cache.FileCacheService;
+import cooperation.qzone.util.QZoneHttpDownloadUtil;
 import java.io.File;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,13 +19,13 @@ final class QzoneZipCacheHelper$2
   {
     boolean bool5 = false;
     if (QLog.isColorLevel()) {
-      QLog.i("QzoneZipCacheHelper", 2, String.format("delay 10s,url:%s,path:%s ,  zipUrl = %s ", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, this.c }));
+      QLog.i("QzoneZipCacheHelper", 2, String.format("delay 10s,url:%s,path:%s ,  zipUrl = %s ", new Object[] { this.val$business, this.val$zipFolderPath, this.val$zipUrl }));
     }
-    ??? = new File(this.b);
+    ??? = new File(this.val$zipFolderPath);
     if ((((File)???).exists()) && (((File)???).isDirectory()))
     {
       ??? = ((File)???).listFiles();
-      if ((??? == null) || ((this.jdField_a_of_type_Int != -1) && (???.length != this.jdField_a_of_type_Int)) || (???.length <= 0)) {}
+      if ((??? == null) || ((this.val$count != -1) && (???.length != this.val$count)) || (???.length <= 0)) {}
     }
     boolean bool2;
     for (boolean bool3 = true;; bool3 = false)
@@ -35,7 +35,7 @@ final class QzoneZipCacheHelper$2
       {
         try
         {
-          ??? = new File(this.b + System.currentTimeMillis() + ".zip");
+          ??? = new File(this.val$zipFolderPath + System.currentTimeMillis() + ".zip");
           bool2 = bool3;
           if (QLog.isColorLevel())
           {
@@ -46,14 +46,14 @@ final class QzoneZipCacheHelper$2
           if (!bool3)
           {
             bool2 = bool3;
-            localObject2 = bnkn.b(this.c);
+            localObject2 = QZoneHttpDownloadUtil.getFilterUrl(this.val$zipUrl);
             bool2 = bool3;
-            bool3 = bnkn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
+            bool3 = QZoneHttpDownloadUtil.download(this.val$appInterface, (String)localObject2, (File)???);
             if (!bool3) {
               continue;
             }
             bool2 = bool3;
-            localObject2 = new File(this.b);
+            localObject2 = new File(this.val$zipFolderPath);
             boolean bool4 = bool5;
             bool2 = bool3;
             if (((File)localObject2).exists())
@@ -68,11 +68,11 @@ final class QzoneZipCacheHelper$2
                 if (localObject2 != null)
                 {
                   bool2 = bool3;
-                  if (this.jdField_a_of_type_Int != -1)
+                  if (this.val$count != -1)
                   {
                     bool4 = bool5;
                     bool2 = bool3;
-                    if (localObject2.length != this.jdField_a_of_type_Int) {}
+                    if (localObject2.length != this.val$count) {}
                   }
                   else
                   {
@@ -88,16 +88,16 @@ final class QzoneZipCacheHelper$2
             if (!bool4)
             {
               bool2 = bool3;
-              QzoneZipCacheHelper.unzipFile(((File)???).getAbsolutePath(), this.b);
+              QzoneZipCacheHelper.unzipFile(((File)???).getAbsolutePath(), this.val$zipFolderPath);
             }
             bool2 = bool3;
-            QzoneZipCacheHelper.access$100().a(this.b, true);
+            QzoneZipCacheHelper.access$100().updateLruFile(this.val$zipFolderPath, true);
             bool1 = bool3;
             bool2 = bool3;
             if (QLog.isColorLevel())
             {
               bool2 = bool3;
-              QLog.i("QzoneZipCacheHelper", 2, String.format("download succ,path:%s ， fileExist: %s ", new Object[] { this.b, Boolean.valueOf(bool4) }));
+              QLog.i("QzoneZipCacheHelper", 2, String.format("download succ,path:%s ， fileExist: %s ", new Object[] { this.val$zipFolderPath, Boolean.valueOf(bool4) }));
               bool1 = bool3;
             }
           }
@@ -105,7 +105,7 @@ final class QzoneZipCacheHelper$2
           if (((File)???).exists())
           {
             bool2 = bool1;
-            auog.a((File)???);
+            FileUtil.deleteFile((File)???);
           }
         }
         catch (Throwable localThrowable)
@@ -114,7 +114,7 @@ final class QzoneZipCacheHelper$2
           Object localObject4;
           boolean bool1 = bool2;
           continue;
-          QzoneZipCacheHelper.access$300().remove(this.c);
+          QzoneZipCacheHelper.access$300().remove(this.val$zipUrl);
           return;
         }
         synchronized (QzoneZipCacheHelper.access$200())
@@ -122,7 +122,7 @@ final class QzoneZipCacheHelper$2
           if (QzoneZipCacheHelper.access$300() == null) {
             continue;
           }
-          localObject2 = (CopyOnWriteArrayList)QzoneZipCacheHelper.access$300().get(this.c);
+          localObject2 = (CopyOnWriteArrayList)QzoneZipCacheHelper.access$300().get(this.val$zipUrl);
           if (localObject2 == null) {
             continue;
           }
@@ -135,14 +135,14 @@ final class QzoneZipCacheHelper$2
             continue;
           }
           ((QzoneZipCacheHelperCallBack)localObject4).onResult(bool1);
-          ((QzoneZipCacheHelperCallBack)localObject4).onResultOfNativeRequest(true, this.b, this.c);
+          ((QzoneZipCacheHelperCallBack)localObject4).onResultOfNativeRequest(true, this.val$zipFolderPath, this.val$zipUrl);
         }
         bool1 = bool3;
         bool2 = bool3;
         if (QLog.isColorLevel())
         {
           bool2 = bool3;
-          QLog.i("QzoneZipCacheHelper", 2, String.format("download fail,url:%s,path:%s", new Object[] { localObject3, this.b }));
+          QLog.i("QzoneZipCacheHelper", 2, String.format("download fail,url:%s,path:%s", new Object[] { localObject3, this.val$zipFolderPath }));
           bool1 = bool3;
         }
       }

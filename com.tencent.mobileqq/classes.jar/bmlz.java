@@ -1,14 +1,24 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.music.AEEditorMusicPanelDialog.3.1;
 
 public class bmlz
+  implements Animation.AnimationListener
 {
-  public int a;
-  public Bundle a;
+  bmlz(bmlw parambmlw) {}
   
-  bmlz(bmlx parambmlx, int paramInt, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    bmlw.b(this.a, false);
+    bmlw.a(this.a).post(new AEEditorMusicPanelDialog.3.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    bmlw.b(this.a, true);
   }
 }
 

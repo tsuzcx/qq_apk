@@ -1,70 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import kotlin.Metadata;
 
-public class arpv
-  extends arac<arpu>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class arpv
+  implements DialogInterface.OnCancelListener
 {
-  @NonNull
-  public arpu a(int paramInt)
-  {
-    return new arpu();
-  }
+  public static final arpv a = new arpv();
   
-  @Nullable
-  public arpu a(araj[] paramArrayOfaraj)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arpu.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arpu paramarpu)
-  {
-    if (paramarpu == null) {}
-    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return;
-    }
-    becb.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramarpu.a());
-    becb.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramarpu.b());
-  }
-  
-  public Class<arpu> clazz()
-  {
-    return arpu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 294;
+    bcef.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpv
  * JD-Core Version:    0.7.0.1
  */

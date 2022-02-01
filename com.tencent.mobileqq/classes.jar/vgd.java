@@ -1,44 +1,12 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import java.net.URL;
 
-class vgd
-  extends var
+public abstract interface vgd
 {
-  vgd(vfx paramvfx) {}
+  public abstract void a(URL paramURL, int paramInt);
   
-  public int a()
-  {
-    return 0;
-  }
+  public abstract void a(URL paramURL, Throwable paramThrowable);
   
-  public QCircleInitBean a()
-  {
-    return vfx.a(this.a);
-  }
-  
-  public QCirclePolyLikeAniView a()
-  {
-    if (vfx.a(this.a) != null) {
-      return (QCirclePolyLikeAniView)vfx.a(this.a).findViewById(2131374004);
-    }
-    return null;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.a.b("share_action_show_share_sheet", paramObject);
-  }
-  
-  public void a(String paramString, vas paramvas)
-  {
-    this.a.a().a(paramString, paramvas);
-  }
-  
-  public void a(vdq paramvdq)
-  {
-    this.a.a().a("light_interact_list_show", paramvdq);
-  }
+  public abstract void a(URL paramURL, syk paramsyk);
 }
 
 

@@ -1,326 +1,178 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.widgets.TriangleView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imaxad.ImaxAdDeleteManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auku
-  extends auke
 {
-  private int jdField_a_of_type_Int;
-  private aauz jdField_a_of_type_Aauz;
-  private TriangleView jdField_a_of_type_ComTencentBizWidgetsTriangleView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private View c;
-  private View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private View jdField_e_of_type_AndroidViewView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private View jdField_f_of_type_AndroidViewView;
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private View jdField_g_of_type_AndroidViewView;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
-  private View jdField_h_of_type_AndroidViewView;
-  private TextView jdField_h_of_type_AndroidWidgetTextView;
-  private TextView i;
-  private TextView j;
-  private TextView k;
-  private TextView l;
+  private static auku jdField_a_of_type_Auku;
+  private ConcurrentLinkedQueue<String> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public auku(Activity paramActivity)
+  public static auku a()
   {
-    super(paramActivity);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    QLog.i("ZipFileViewer<QFile>", 4, "FileBrowserViewBase: ZipFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    try
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560937, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366642));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371999));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380480));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380494));
-      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381599);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381604);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372957);
-      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366736);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379798));
-      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380205));
-      this.j.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView = ((TriangleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379305));
-      this.jdField_a_of_type_Aauz = new aauz(null, this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372954);
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381602));
-      this.i = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381600));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372080));
-      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361938));
+      if (jdField_a_of_type_Auku == null) {
+        jdField_a_of_type_Auku = new auku();
+      }
+      auku localauku = jdField_a_of_type_Auku;
+      return localauku;
+    }
+    finally {}
+  }
+  
+  public static void a(String paramString1, nxq paramnxq, String paramString2)
+  {
+    aukz.b(paramString1, paramString2);
+    if (paramnxq != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImaxAdvertisement", 2, "doDeleteItem bingo clearDistInfo  uin:" + paramString2);
+      }
+      paramString1 = paramnxq.a.iterator();
+      while (paramString1.hasNext()) {
+        aula.b(((nxr)paramString1.next()).b);
+      }
     }
   }
   
-  public void a(int paramInt)
+  private boolean b(String paramString)
   {
-    if (this.jdField_b_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    if (!TextUtils.isEmpty(paramString)) {
+      return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramString);
     }
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    return false;
+  }
+  
+  public String a()
+  {
+    localJSONArray = new JSONArray();
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("senderUin", str);
+        if (localJSONObject != null) {
+          localJSONArray.put(localJSONObject);
+        }
+      }
+      return localJSONArray.toString();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super.a(paramOnClickListener);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379288));
-    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379254));
-    this.l = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379264));
-    this.jdField_h_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379252);
-    this.jdField_h_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("ImaxAdvertisement", 2, "doDeleteItem  uin:" + paramString);
+    }
+    Object localObject = (ProxyManager)paramQQAppInterface.getManager(18);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((ProxyManager)localObject).a())
+    {
+      if (localObject != null)
+      {
+        RecentUser localRecentUser = (RecentUser)((anuz)localObject).findRecentUserByUin(paramString, 10005);
+        if (localRecentUser != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ImaxAdvertisement", 2, "doDeleteItem bingo Recent  uin:" + paramString);
+          }
+          akla.a().a(localRecentUser.uin + "-" + localRecentUser.getType());
+          ((anuz)localObject).delRecentUser(localRecentUser);
+          akms.b(paramQQAppInterface, paramString, 10005);
+          paramQQAppInterface.getMessageFacade().setReaded(paramString, 10005);
+        }
+      }
+      localObject = aukx.a().a(paramString);
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        break;
+      }
+      ThreadManager.executeOnFileThread(new ImaxAdDeleteManager.1(this, (nxq)localObject, paramQQAppInterface, paramString));
+      return;
+    }
+    a(paramQQAppInterface.getCurrentUin(), (nxq)localObject, paramString);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
-      this.l.setText(paramString);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (!b(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramString);
     }
   }
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  public boolean a(String paramString)
   {
-    super.a(paramString, paramOnClickListener);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a(String paramString1, String paramString2)
   {
-    this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_g_of_type_AndroidWidgetTextView.setText(paramString2);
+    if (b(paramString2)) {}
+    while (!TextUtils.isEmpty(aukz.a(paramString1, "delete_st_" + paramString2))) {
+      return true;
+    }
+    return false;
   }
   
-  public void a(List<aujx> paramList, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, String paramString6, short paramShort)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Aauz.a(paramList);
-    this.jdField_a_of_type_Aauz.e = "/";
-    this.jdField_a_of_type_Aauz.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Aauz.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Aauz.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Aauz.c = paramString3;
-    this.jdField_a_of_type_Aauz.d = paramString4;
-    this.jdField_a_of_type_Aauz.jdField_a_of_type_JavaLangString = paramString5;
-    this.jdField_a_of_type_Aauz.a(paramBoolean, paramString6, paramShort);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aauz);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_g_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, View.OnClickListener paramOnClickListener)
-  {
-    View localView = this.jdField_e_of_type_AndroidViewView;
-    if (paramBoolean) {}
-    for (int m = 0;; m = 8)
+    if (QLog.isColorLevel()) {
+      QLog.d("ImaxAdvertisement", 2, "convertStringToList  str:" + paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    try
     {
-      localView.setVisibility(m);
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-      if (this.jdField_a_of_type_Int != 2) {
-        this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      while (i < paramString.length())
+      {
+        a(paramString.getJSONObject(i).getString("senderUin"));
+        i += 1;
       }
       return;
     }
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (this.k != null)
+    catch (JSONException paramString)
     {
-      this.k.setText(paramString);
-      this.k.setOnClickListener(paramOnClickListener);
-      e(true);
+      paramString.printStackTrace();
     }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Aauz != null) {
-      this.jdField_a_of_type_Aauz.notifyDataSetChanged();
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    if (this.jdField_a_of_type_Int == 2) {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    }
-    for (;;)
-    {
-      if (localRelativeLayout != null) {
-        if (!paramBoolean) {
-          break label43;
-        }
-      }
-      label43:
-      for (int m = 0;; m = 8)
-      {
-        localRelativeLayout.setVisibility(m);
-        if (paramBoolean) {
-          e(false);
-        }
-        return;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_c_of_type_AndroidViewView.setPadding(0, this.jdField_c_of_type_AndroidViewView.getPaddingTop(), 0, 0);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
   }
   
   public void c(String paramString)
   {
-    this.jdField_h_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    View localView = this.jdField_e_of_type_AndroidViewView;
-    if (paramBoolean) {}
-    for (int m = 0;; m = 8)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (localIterator.hasNext())
     {
-      localView.setVisibility(m);
-      return;
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.i.setText(paramString);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      this.jdField_g_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    this.jdField_g_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.i.setVisibility(0);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void e(String paramString)
-  {
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    int m = 0;
-    if (this.k != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-        break label49;
-      }
-      if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)) {
-        this.k.setVisibility(0);
+      String str = (String)localIterator.next();
+      long l = Long.valueOf(aukz.a(paramString, "delete_st_" + str)).longValue();
+      if (NetConnInfoCenter.getServerTimeMillis() - l > 86400000L)
+      {
+        a(str);
+        aukz.a(paramString, "delete_st_" + str);
       }
     }
-    else
-    {
-      return;
-    }
-    this.k.setVisibility(8);
-    return;
-    label49:
-    TextView localTextView = this.k;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localTextView.setVisibility(m);
-      return;
-      m = 8;
-    }
-  }
-  
-  public void f(String paramString)
-  {
-    this.j.setText(paramString);
-    g(true);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    View localView;
-    if (this.jdField_d_of_type_AndroidViewView != null)
-    {
-      localView = this.jdField_d_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label33;
-      }
-    }
-    label33:
-    for (int m = 0;; m = 8)
-    {
-      localView.setVisibility(m);
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int = 1;
-      }
-      return;
-    }
-  }
-  
-  public void g(boolean paramBoolean)
-  {
-    TextView localTextView = this.j;
-    if (paramBoolean) {}
-    for (int m = 0;; m = 8)
-    {
-      localTextView.setVisibility(m);
-      return;
-    }
-  }
-  
-  public void h(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838778);
-      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167247));
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166348));
-      this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167076));
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#ffffffff"));
-    this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(Color.parseColor("#ffffffff"));
-    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#fff7f7f8"));
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166347));
-    this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165343));
+    aukz.a(paramString, "delete_uin_list", a());
   }
 }
 

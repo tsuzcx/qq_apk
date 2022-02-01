@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class bhej
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bhej(UpgradeActivity paramUpgradeActivity) {}
+  public bhej(GridListView paramGridListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bjtx.b("qqBaseActivity", bjqy.a(10010, 1, 2, 200));
-    bjqw.a().a(17, bjqy.a(10010, 1, 2, 200));
-    this.a.finish();
+    int i = ((Integer)paramView.getTag(2131361809)).intValue();
+    this.a.a.onItemClick(this.a, paramView, i, 0L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

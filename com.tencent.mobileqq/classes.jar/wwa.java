@@ -1,49 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
 public class wwa
-  extends JobSegment<List<xiw>, List<xiw>>
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private final xiv a;
+  wwa(wvv paramwvv) {}
   
-  public wwa()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this(new wwb());
-  }
-  
-  public wwa(xiv paramxiv)
-  {
-    this.a = paramxiv;
-  }
-  
-  protected void a(JobContext paramJobContext, List<xiw> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
-      }
-      notifyResult(paramList);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
-    }
-    paramJobContext = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      paramJobContext.add(((xiw)localIterator.next()).b);
-    }
-    paramJobContext = new xiq(paramJobContext);
-    if (this.a != null) {
-      paramJobContext.a = this.a;
-    }
-    paramJobContext.a(new wwc(this, paramList));
-    paramJobContext.b();
+    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
   }
 }
 

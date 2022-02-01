@@ -1,27 +1,12 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class yaf
-  extends nkq
+  implements View.OnClickListener
 {
-  yaf(yab paramyab, boolean paramBoolean) {}
+  yaf(yae paramyae) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(5, bool);
-        this.a.a(0, this.a.a.getString(2131718978));
-        return;
-      }
-    }
-    ((wjb)this.a.a.app.getManager(181)).c(this.b);
-  }
+  public void onClick(View paramView) {}
 }
 
 

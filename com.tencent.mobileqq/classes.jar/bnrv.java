@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-class bnrv
-  implements DialogInterface.OnShowListener
+public class bnrv
+  implements AdapterView.OnItemClickListener
 {
-  bnrv(bnrt parambnrt, bjbs parambjbs) {}
+  public bnrv(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Bjbs.hide();
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

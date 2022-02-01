@@ -1,19 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class qkm
-  implements View.OnTouchListener
+  implements pqz
 {
-  qkm(qkj paramqkj, LinearLayout paramLinearLayout) {}
+  qkm(qkl paramqkl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
+    qki.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
+    if (qki.a(this.a.a) != null) {
+      qki.a(this.a.a, qki.a(this.a.a).a());
     }
-    return false;
+  }
+  
+  public void c()
+  {
+    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer complete");
+    qki.a(this.a.a, 1000L);
   }
 }
 

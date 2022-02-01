@@ -1,14 +1,25 @@
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
+
 public class lnd
+  implements mho
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c = 2;
+  public lnd(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public String toString()
+  public void a()
   {
-    return "AVUserInfo{account=" + this.jdField_a_of_type_Long + ", openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountType=" + this.jdField_a_of_type_Int + ", pstnStatus=" + this.b + ", micAuthByAdmin=" + this.c + '}';
+    if (this.a.a != null)
+    {
+      this.a.a.setViewEnable(2131373412, false);
+      this.a.a.setViewEnable(2131373411, false);
+      this.a.a.setViewEnable(2131363109, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772177);
   }
 }
 

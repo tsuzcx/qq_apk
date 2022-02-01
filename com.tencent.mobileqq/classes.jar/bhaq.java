@@ -1,466 +1,475 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.ArrayList<Lbhap;>;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.zip.ZipException;
 
 public class bhaq
 {
-  protected static bhaq a;
-  protected static Object a;
-  protected bhap a;
-  protected File a;
-  protected ArrayList<bhap> a;
-  protected File b;
+  Context jdField_a_of_type_AndroidContentContext;
+  WerewolvesHostInterface jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface;
+  Class jdField_a_of_type_JavaLangClass;
+  ClassLoader jdField_a_of_type_JavaLangClassLoader;
+  Object jdField_a_of_type_JavaLangObject;
+  Method jdField_a_of_type_JavaLangReflectMethod = null;
+  boolean jdField_a_of_type_Boolean = false;
+  Class jdField_b_of_type_JavaLangClass;
+  Object jdField_b_of_type_JavaLangObject;
+  Method jdField_b_of_type_JavaLangReflectMethod;
+  Method c = null;
+  Method d = null;
+  Method e = null;
+  Method f = null;
+  Method g = null;
+  Method h = null;
+  Method i = null;
+  Method j = null;
+  Method k = null;
+  Method l;
+  Method m = null;
+  Method n = null;
+  Method o;
+  Method p;
+  Method q;
+  Method r;
+  Method s = null;
+  Method t = null;
+  Method u;
+  Method v;
+  Method w;
+  Method x;
+  Method y;
   
-  static
+  public bhaq(bhar parambhar, ClassLoader paramClassLoader)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangClassLoader = paramClassLoader;
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface = new WerewolvesHostInterface(parambhar);
+    a(parambhar.a.a);
   }
   
-  private bhaq(Context paramContext)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-    this.jdField_a_of_type_JavaIoFile = new File(a(paramContext) + "group_catalog_new.xml");
-  }
-  
-  private bhap a(bhap parambhap, String paramString)
-  {
-    Object localObject2 = null;
-    Iterator localIterator = null;
-    if (parambhap.b.equals(paramString)) {}
-    do
+    try
     {
-      for (Object localObject1 = parambhap; !localIterator.hasNext(); localObject1 = localObject2)
-      {
-        do
-        {
-          do
-          {
-            return localObject1;
-            localObject1 = localIterator;
-          } while (parambhap.jdField_a_of_type_JavaUtilArrayList == null);
-          localObject1 = localIterator;
-        } while (parambhap.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-        localIterator = parambhap.jdField_a_of_type_JavaUtilArrayList.iterator();
-      }
-      parambhap = a((bhap)localIterator.next(), paramString);
-      localObject1 = parambhap;
-    } while (parambhap == null);
-    return parambhap;
-  }
-  
-  private bhap a(String paramString)
-  {
-    Object localObject1 = null;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return null;
+      int i1 = ((Integer)this.w.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0])).intValue();
+      return i1;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    catch (Exception localException)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bhap localbhap = a((bhap)localIterator.next(), paramString);
-        localObject1 = localbhap;
-        if (localbhap != null) {
-          localObject1 = localbhap;
-        }
-      }
-      return localObject1;
+      QLog.e("WereWolfPluginInterface", 2, "getCurRoomNumber Failed:", localException);
     }
+    return 10;
   }
   
-  public static bhaq a(Context paramContext)
+  public String a(String paramString)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    try
     {
-      if (jdField_a_of_type_Bhaq == null) {
-        jdField_a_of_type_Bhaq = new bhaq(paramContext);
-      }
-      return jdField_a_of_type_Bhaq;
-    }
-  }
-  
-  private String a(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "group_catalog" + File.separator;
-    if ((this.b != null) && (this.b.exists()) && (paramContext.equals(this.b.getPath() + File.separator))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupCatalogTool", 2, "mCatalogXmlDirFile != null && path.equals(mCatalogXmlDirFile.getPath()");
-      }
-    }
-    do
-    {
-      return paramContext;
-      this.b = new File(paramContext);
-    } while (this.b.exists());
-    this.b.mkdirs();
-    return paramContext;
-  }
-  
-  private ArrayList<bhap> a(ArrayList<bhap> paramArrayList, String paramString)
-  {
-    Object localObject = null;
-    bhap localbhap = null;
-    Iterator localIterator;
-    if (paramArrayList != null)
-    {
-      localIterator = paramArrayList.iterator();
-      paramArrayList = localbhap;
-    }
-    for (;;)
-    {
-      localObject = paramArrayList;
-      if (localIterator.hasNext())
-      {
-        localbhap = (bhap)localIterator.next();
-        if ((localbhap.jdField_a_of_type_JavaUtilArrayList == null) || (localbhap.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label100;
-        }
-        if (!localbhap.b.equals(paramString)) {
-          break label81;
-        }
-        localObject = localbhap.jdField_a_of_type_JavaUtilArrayList;
-      }
-      label81:
-      label100:
-      do
-      {
-        return localObject;
-        localObject = a(localbhap.jdField_a_of_type_JavaUtilArrayList, paramString);
-        paramArrayList = (ArrayList<bhap>)localObject;
-        if (localObject == null) {
-          break;
-        }
-        return localObject;
-        localObject = paramArrayList;
-      } while (localbhap.jdField_a_of_type_Int == 4);
-    }
-  }
-  
-  /* Error */
-  private bhap b(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: invokevirtual 148	bhaq:a	()Z
-    //   7: ifne +14 -> 21
-    //   10: aload_1
-    //   11: ldc 150
-    //   13: aload_0
-    //   14: aload_1
-    //   15: invokespecial 36	bhaq:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   18: invokestatic 155	blhr:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-    //   21: new 157	bhat
-    //   24: dup
-    //   25: aload_2
-    //   26: invokespecial 158	bhat:<init>	(Ljava/lang/String;)V
-    //   29: astore_3
-    //   30: invokestatic 164	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
-    //   33: invokevirtual 168	javax/xml/parsers/SAXParserFactory:newSAXParser	()Ljavax/xml/parsers/SAXParser;
-    //   36: astore 5
-    //   38: new 170	java/io/BufferedInputStream
-    //   41: dup
-    //   42: new 172	java/io/FileInputStream
-    //   45: dup
-    //   46: aload_0
-    //   47: getfield 51	bhaq:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   50: invokespecial 175	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   53: invokespecial 178	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   56: astore_2
-    //   57: aload_2
-    //   58: astore_1
-    //   59: aload 5
-    //   61: new 180	org/xml/sax/InputSource
-    //   64: dup
-    //   65: new 182	java/io/InputStreamReader
-    //   68: dup
-    //   69: aload_2
-    //   70: ldc 184
-    //   72: invokespecial 187	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   75: invokespecial 190	org/xml/sax/InputSource:<init>	(Ljava/io/Reader;)V
-    //   78: aload_3
-    //   79: invokevirtual 196	javax/xml/parsers/SAXParser:parse	(Lorg/xml/sax/InputSource;Lorg/xml/sax/helpers/DefaultHandler;)V
-    //   82: aload_2
-    //   83: astore_1
-    //   84: aload_0
-    //   85: aload_3
-    //   86: invokevirtual 199	bhat:a	()Ljava/util/ArrayList;
-    //   89: putfield 28	bhaq:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   92: aload_2
-    //   93: astore_1
-    //   94: aload_3
-    //   95: invokevirtual 202	bhat:a	()Lbhap;
-    //   98: astore_3
-    //   99: aload_3
-    //   100: astore_1
-    //   101: aload_2
-    //   102: ifnull +9 -> 111
-    //   105: aload_2
-    //   106: invokevirtual 207	java/io/InputStream:close	()V
-    //   109: aload_3
-    //   110: astore_1
-    //   111: aload_1
-    //   112: areturn
-    //   113: astore_1
-    //   114: aload_1
-    //   115: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   118: aload_3
-    //   119: areturn
-    //   120: astore_3
-    //   121: aconst_null
-    //   122: astore_2
-    //   123: aload_2
-    //   124: astore_1
-    //   125: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq +14 -> 142
-    //   131: aload_2
-    //   132: astore_1
-    //   133: ldc 118
-    //   135: iconst_2
-    //   136: ldc 212
-    //   138: aload_3
-    //   139: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   142: aload 4
-    //   144: astore_1
-    //   145: aload_2
-    //   146: ifnull -35 -> 111
-    //   149: aload_2
-    //   150: invokevirtual 207	java/io/InputStream:close	()V
-    //   153: aconst_null
-    //   154: areturn
-    //   155: astore_1
-    //   156: aload_1
-    //   157: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   160: aconst_null
-    //   161: areturn
-    //   162: astore_3
-    //   163: aconst_null
-    //   164: astore_2
-    //   165: aload_2
-    //   166: astore_1
-    //   167: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   170: ifeq +14 -> 184
-    //   173: aload_2
-    //   174: astore_1
-    //   175: ldc 118
-    //   177: iconst_2
-    //   178: ldc 218
-    //   180: aload_3
-    //   181: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   184: aload 4
-    //   186: astore_1
-    //   187: aload_2
-    //   188: ifnull -77 -> 111
-    //   191: aload_2
-    //   192: invokevirtual 207	java/io/InputStream:close	()V
-    //   195: aconst_null
-    //   196: areturn
-    //   197: astore_1
-    //   198: aload_1
-    //   199: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   202: aconst_null
-    //   203: areturn
-    //   204: astore_2
-    //   205: aconst_null
-    //   206: astore_1
-    //   207: aload_1
-    //   208: ifnull +7 -> 215
-    //   211: aload_1
-    //   212: invokevirtual 207	java/io/InputStream:close	()V
-    //   215: aload_2
-    //   216: athrow
-    //   217: astore_1
-    //   218: aload_1
-    //   219: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   222: goto -7 -> 215
-    //   225: astore_2
-    //   226: goto -19 -> 207
-    //   229: astore_3
-    //   230: goto -65 -> 165
-    //   233: astore_3
-    //   234: goto -111 -> 123
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	237	0	this	bhaq
-    //   0	237	1	paramContext	Context
-    //   0	237	2	paramString	String
-    //   29	90	3	localObject1	Object
-    //   120	19	3	localException1	java.lang.Exception
-    //   162	19	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   229	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   233	1	3	localException2	java.lang.Exception
-    //   1	184	4	localObject2	Object
-    //   36	24	5	localSAXParser	javax.xml.parsers.SAXParser
-    // Exception table:
-    //   from	to	target	type
-    //   105	109	113	java/io/IOException
-    //   30	57	120	java/lang/Exception
-    //   149	153	155	java/io/IOException
-    //   30	57	162	java/lang/OutOfMemoryError
-    //   191	195	197	java/io/IOException
-    //   30	57	204	finally
-    //   211	215	217	java/io/IOException
-    //   59	82	225	finally
-    //   84	92	225	finally
-    //   94	99	225	finally
-    //   125	131	225	finally
-    //   133	142	225	finally
-    //   167	173	225	finally
-    //   175	184	225	finally
-    //   59	82	229	java/lang/OutOfMemoryError
-    //   84	92	229	java/lang/OutOfMemoryError
-    //   94	99	229	java/lang/OutOfMemoryError
-    //   59	82	233	java/lang/Exception
-    //   84	92	233	java/lang/Exception
-    //   94	99	233	java/lang/Exception
-  }
-  
-  private String b(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "group_catalog_temp" + File.separator;
-    File localFile = new File(paramContext);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return paramContext;
-  }
-  
-  protected long a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("LAST_GET_CLASS_CHOICE_URL_TIME", 0).getLong("GroupCatalogTool", 0L);
-  }
-  
-  public bhap a()
-  {
-    return this.jdField_a_of_type_Bhap;
-  }
-  
-  public bhap a(Context paramContext, String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      paramContext = a(paramString);
-      this.jdField_a_of_type_Bhap = paramContext;
-      return paramContext;
-    }
-    paramContext = b(paramContext, paramString);
-    this.jdField_a_of_type_Bhap = paramContext;
-    return paramContext;
-  }
-  
-  public ArrayList<bhap> a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      ArrayList localArrayList = new ArrayList(Arrays.asList(new bhap[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-      Collections.copy(localArrayList, this.jdField_a_of_type_JavaUtilArrayList);
-      return localArrayList;
-    }
-  }
-  
-  public ArrayList<bhap> a(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      paramString = a(this.jdField_a_of_type_JavaUtilArrayList, paramString);
+      paramString = (String)this.n.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { paramString });
       return paramString;
     }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "getRoomIndex called failed");
+        QLog.e("WereWolfPluginInterface", 2, paramString, new Object[0]);
+      }
+    }
+    return null;
+  }
+  
+  public ArrayList<String> a()
+  {
+    try
+    {
+      ArrayList localArrayList = (ArrayList)this.o.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0]);
+      return localArrayList;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "getQuickWords called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+    }
+    return null;
+  }
+  
+  public HashMap<String, Integer> a()
+  {
+    try
+    {
+      HashMap localHashMap = (HashMap)this.q.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0]);
+      return localHashMap;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WereWolfPluginInterface", 2, "getAIOColors called failed", localException);
+      }
+    }
+    return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Bhap = null;
+      this.d.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0]);
       return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "onDestroy called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_AndroidContentContext = null;
     }
   }
   
-  public void a(Context paramContext, long paramLong)
+  public void a(int paramInt)
   {
-    paramContext = paramContext.getSharedPreferences("LAST_GET_CLASS_CHOICE_URL_TIME", 0).edit();
-    paramContext.putLong("GroupCatalogTool", paramLong);
-    paramContext.commit();
-  }
-  
-  public void a(bhap parambhap)
-  {
-    this.jdField_a_of_type_Bhap = parambhap;
-  }
-  
-  public void a(String paramString, bhas parambhas)
-  {
-    long l = a(BaseApplicationImpl.getContext());
-    boolean bool = this.jdField_a_of_type_JavaIoFile.exists();
-    if ((System.currentTimeMillis() - l > 86400000L) || (!bool))
+    try
     {
-      paramString = new bihw(BaseApplicationImpl.getApplication().getRuntime()).a(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add("https://pub.idqqimg.com/pc/group/layer_new.zip");
-      HashMap localHashMap = new HashMap();
-      File localFile = new File(b(BaseApplicationImpl.getContext()) + "layer_new.zip");
-      localHashMap.put("https://pub.idqqimg.com/pc/group/layer_new.zip", localFile);
-      paramString.a(new bihu(localArrayList, localHashMap, "https://pub.idqqimg.com/pc/group/layer_new.zip"), new bhar(this, localFile, parambhas), new Bundle());
+      if (this.y != null) {
+        this.y.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("WereWolfPluginInterface", 2, "onPhoneStateChange called failed");
+      QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaLangReflectMethod.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt), paramObject });
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WereWolfPluginInterface", 2, "notify failed", paramObject);
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangClass = bgzz.a(this.jdField_a_of_type_JavaLangClassLoader, "com.tencent.mobileqq.werewolves.PluginRuntime");
+    this.jdField_b_of_type_JavaLangClass = bgzz.a(this.jdField_a_of_type_JavaLangClassLoader, "com.tencent.mobileqq.werewolves.PluginInterface");
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        this.jdField_a_of_type_JavaLangObject = bgzz.a(this.jdField_a_of_type_JavaLangClass, "getRuntime", null).invoke(null, null);
+      }
+      bgzz.a(this.jdField_a_of_type_JavaLangClass, "initFromHost", new Class[] { Object.class, Context.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface, paramContext });
+      this.jdField_b_of_type_JavaLangObject = bgzz.a(this.jdField_a_of_type_JavaLangClass, "getPlulginInterface", null).invoke(this.jdField_a_of_type_JavaLangObject, null);
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("WereWolfPluginInterface", 2, "init failed");
+          QLog.e("WereWolfPluginInterface", 2, paramContext, new Object[0]);
+        }
+      }
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaLangClass != null))
+    {
+      this.jdField_a_of_type_JavaLangReflectMethod = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onReceive", new Class[] { Integer.TYPE, String.class, [B.class });
+      this.c = bgzz.a(this.jdField_b_of_type_JavaLangClass, "attachGameUI", new Class[] { ViewGroup.class, Context.class });
+      this.d = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onDestroy", new Class[0]);
+      this.f = bgzz.a(this.jdField_b_of_type_JavaLangClass, "isReady", new Class[0]);
+      this.g = bgzz.a(this.jdField_b_of_type_JavaLangClass, "isPlaying", new Class[0]);
+      this.h = bgzz.a(this.jdField_b_of_type_JavaLangClass, "isDead", new Class[0]);
+      this.i = bgzz.a(this.jdField_b_of_type_JavaLangClass, "canSpeak", new Class[0]);
+      this.j = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onFaceDownloaded", new Class[] { String.class, Bitmap.class });
+      this.o = bgzz.a(this.jdField_b_of_type_JavaLangClass, "getQuickWords", new Class[0]);
+      this.m = bgzz.a(this.jdField_b_of_type_JavaLangClass, "stopGame", new Class[0]);
+      this.k = bgzz.a(this.jdField_b_of_type_JavaLangClass, "startGame", new Class[] { Integer.TYPE });
+      this.l = bgzz.a(this.jdField_b_of_type_JavaLangClass, "startGameWithType", new Class[] { Integer.TYPE });
+      this.n = bgzz.a(this.jdField_b_of_type_JavaLangClass, "getRoomNick", new Class[] { String.class });
+      this.p = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onUserSpeakingStateChanged", new Class[] { String.class, Boolean.TYPE });
+      this.q = bgzz.a(this.jdField_b_of_type_JavaLangClass, "getAIOColors", new Class[0]);
+      this.r = bgzz.a(this.jdField_b_of_type_JavaLangClass, "getAIODrawables", new Class[] { Context.class });
+      this.e = bgzz.a(this.jdField_b_of_type_JavaLangClass, "dettachGameUI", new Class[0]);
+      this.s = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onUserLeftAIO", new Class[0]);
+      this.t = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onUserEnterAIO", new Class[0]);
+      this.u = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onSpeakBtnPressed", new Class[] { Boolean.TYPE });
+      this.v = bgzz.a(this.jdField_b_of_type_JavaLangClass, "startGameForGold", new Class[0]);
+      this.x = bgzz.a(this.jdField_b_of_type_JavaLangClass, "getCurZoneId", new Class[0]);
+      this.w = bgzz.a(this.jdField_b_of_type_JavaLangClass, "getCurRoomNumber", new Class[0]);
+      this.jdField_b_of_type_JavaLangReflectMethod = bgzz.a(this.jdField_b_of_type_JavaLangClass, "notify", new Class[] { Integer.TYPE, Object.class });
+      this.y = bgzz.a(this.jdField_b_of_type_JavaLangClass, "onPhoneStateChange", new Class[] { Integer.TYPE });
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(ViewGroup paramViewGroup, zzt paramzzt)
+  {
+    try
+    {
+      this.c.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { paramViewGroup, paramzzt });
+      return;
+    }
+    catch (Exception paramViewGroup)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("WereWolfPluginInterface", 2, "attachGameUI called failed");
+      QLog.e("WereWolfPluginInterface", 2, paramViewGroup, new Object[0]);
+    }
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    try
+    {
+      this.j.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { paramString, paramBitmap });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("WereWolfPluginInterface", 2, "onFaceDownloaded called failed");
+      QLog.e("WereWolfPluginInterface", 2, paramString, new Object[0]);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      this.p.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "onUserSpeakingStateChanged called failed");
+        QLog.e("WereWolfPluginInterface", 2, paramString, new Object[0]);
+      }
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { Integer.valueOf(1), paramString, paramArrayOfByte });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("WereWolfPluginInterface", 2, "onReceive called failed");
+      QLog.e("WereWolfPluginInterface", 2, paramString, new Object[0]);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    try
+    {
+      this.u.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("WereWolfPluginInterface", 2, "onSpeakBtnPressed called failed");
+      QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
     }
   }
   
   public boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaIoFile.exists())
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaIoFile.length() > 0L) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    boolean bool = false;
     try
     {
-      nof.a(new File(b(paramContext) + "layer_new.zip"), b(paramContext));
-      bool = true;
+      boolean bool = ((Boolean)this.f.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0])).booleanValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("WereWolfPluginInterface", 2, "isReady = " + bool);
+      }
+      return bool;
     }
-    catch (ZipException paramContext)
+    catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GroupCatalogTool", 2, paramContext.getMessage());
-      return false;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "isReady called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
     }
-    catch (IOException paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GroupCatalogTool", 2, paramContext.getMessage());
-    }
-    return bool;
     return false;
   }
   
-  public boolean b(Context paramContext)
+  public int b()
   {
-    return bhmi.b(b(paramContext) + "group_catalog_new.xml", a(paramContext) + "group_catalog_new.xml");
+    try
+    {
+      int i1 = ((Integer)this.x.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0])).intValue();
+      return i1;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("WereWolfPluginInterface", 2, "getCurZoneId Failed:", localException);
+    }
+    return 0;
+  }
+  
+  public HashMap<String, Drawable> b()
+  {
+    try
+    {
+      HashMap localHashMap = (HashMap)this.r.invoke(this.jdField_b_of_type_JavaLangObject, new Object[] { this.jdField_a_of_type_AndroidContentContext });
+      return localHashMap;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WereWolfPluginInterface", 2, "getAIODrawables called failed", localException);
+      }
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.e.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "dettachUI called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_AndroidContentContext = null;
+    }
+  }
+  
+  public boolean b()
+  {
+    try
+    {
+      boolean bool = ((Boolean)this.g.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0])).booleanValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("WereWolfPluginInterface", 2, "isPlaying = " + bool);
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "isPlaying called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    try
+    {
+      this.s.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "onUserLeftAIO called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+      localException.printStackTrace();
+    }
+  }
+  
+  public boolean c()
+  {
+    try
+    {
+      boolean bool = ((Boolean)this.h.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0])).booleanValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("WereWolfPluginInterface", 2, "isDead = " + bool);
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "isDead called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+    }
+    return false;
+  }
+  
+  public void d()
+  {
+    try
+    {
+      this.t.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("WereWolfPluginInterface", 2, "onUserEnterAIO called failed");
+      QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+    }
+  }
+  
+  public boolean d()
+  {
+    try
+    {
+      boolean bool = ((Boolean)this.i.invoke(this.jdField_b_of_type_JavaLangObject, new Object[0])).booleanValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("WereWolfPluginInterface", 2, "canSpeak = " + bool);
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("WereWolfPluginInterface", 2, "canSpeak called failed");
+        QLog.e("WereWolfPluginInterface", 2, localException, new Object[0]);
+      }
+    }
+    return false;
   }
 }
 

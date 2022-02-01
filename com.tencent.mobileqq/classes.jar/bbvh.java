@@ -1,18 +1,62 @@
-class bbvh
-  extends aoho
+public class bbvh
 {
-  bbvh(bbvd parambbvd) {}
+  double a;
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  bbvh(double paramDouble)
   {
-    int j = ((Integer)paramObject).intValue();
-    paramObject = gm.a();
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    this.a = paramDouble;
+  }
+  
+  public boolean a(int[][] paramArrayOfInt)
+  {
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    int m = paramArrayOfInt[0].length;
+    double[] arrayOfDouble1 = new double[k];
+    double[] arrayOfDouble2 = new double[m];
+    double d1 = 0.0D;
+    int i = 0;
+    int j;
+    while (i < k)
     {
-      paramObject.b(i, j);
-      return;
+      j = 0;
+      while (j < m)
+      {
+        arrayOfDouble1[i] += paramArrayOfInt[i][j];
+        d1 += paramArrayOfInt[i][j];
+        j += 1;
+      }
+      i += 1;
     }
+    i = 0;
+    while (i < m)
+    {
+      j = 0;
+      while (j < k)
+      {
+        arrayOfDouble2[i] += paramArrayOfInt[j][i];
+        j += 1;
+      }
+      i += 1;
+    }
+    i = 0;
+    while (i < k)
+    {
+      j = 0;
+      while (j < m)
+      {
+        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
+        double d5 = paramArrayOfInt[i][j];
+        double d3 = d2;
+        if (d4 > 0.0D) {
+          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
+        }
+        j += 1;
+        d2 = d3;
+      }
+      i += 1;
+    }
+    return d2 > this.a + 1.0E-008D;
   }
 }
 

@@ -1,109 +1,57 @@
-import android.media.MediaFormat;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class bdap
+public abstract class bdap
+  extends Binder
+  implements bdao
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public boolean a;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  public boolean b;
-  public boolean c;
-  boolean d;
-  boolean e;
-  boolean f;
-  boolean g;
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.IDownloadListener";
+  static final int TRANSACTION_onComplete = 2;
+  static final int TRANSACTION_onProgress = 1;
   
-  public bdap(SVHwEncoder.HwEncode paramHwEncode) {}
-  
-  public void a()
+  public bdap()
   {
-    a("releaseMuxer[resetValidData]");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.d = false;
-    this.e = false;
-    this.f = false;
-    this.g = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
+    attachInterface(this, "com.tencent.mobileqq.theme.IDownloadListener");
   }
   
-  public void a(MediaFormat paramMediaFormat)
+  public static bdao asInterface(IBinder paramIBinder)
   {
-    if ((paramMediaFormat.containsKey("csd-0")) && (paramMediaFormat.containsKey("csd-1"))) {
-      this.d = true;
+    if (paramIBinder == null) {
+      return null;
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.IDownloadListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bdao))) {
+      return (bdao)localIInterface;
+    }
+    return new bdaq(paramIBinder);
   }
   
-  public void a(String paramString)
+  public IBinder asBinder()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SVHwEncoder", 2, paramString + ": mHasKeyFrame=" + this.jdField_a_of_type_Boolean + " mVideoFirst=" + this.jdField_b_of_type_Boolean + " mFirstIsKey=" + this.c + " mVideoConfigOK=" + this.d + " mAudioConfigOK=" + this.e + " mVideoMuxeredframeCount=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioMuxeredframeCount=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoOrderError=" + this.f + " mAudioOrderError=" + this.g + " mVideoOrderErrorCnt=" + this.jdField_a_of_type_Int + " mAudioOrderErrorCnt=" + this.jdField_b_of_type_Int);
-    }
+    return this;
   }
   
-  boolean a()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[audioSpecOK]", "mNeedEncodeAudio=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioConfigOK=" + this.e);
-    if (SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) {
-      return this.e;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.theme.IDownloadListener");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
+      onProgress(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
     }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
+    onComplete(paramParcel1.readString(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
     return true;
-  }
-  
-  public boolean a(long paramLong, boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_Long <= paramLong) {
-        break label83;
-      }
-      this.f = true;
-      this.jdField_a_of_type_Int += 1;
-    }
-    label83:
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      return paramBoolean;
-      if (this.jdField_b_of_type_Long > paramLong)
-      {
-        this.g = true;
-        this.jdField_b_of_type_Int += 1;
-      }
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        this.jdField_b_of_type_Long = paramLong;
-        return paramBoolean;
-      }
-    }
-  }
-  
-  public void b(MediaFormat paramMediaFormat)
-  {
-    if (paramMediaFormat.containsKey("csd-0")) {
-      this.e = true;
-    }
-  }
-  
-  boolean b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[videoSpecOK]", "mNeedEncodeVideo=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoConfigOK=" + this.d);
-    return (!SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) || ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c) && (this.d) && (!this.f));
-  }
-  
-  public boolean c()
-  {
-    return (a()) && (b());
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.imaxad;
 
-import avya;
+import aula;
 
 public class ImaxAdVideoPreloadManager$3
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$3(avya paramavya) {}
+  public ImaxAdVideoPreloadManager$3(aula paramaula) {}
   
   public void run()
   {
-    avya.a(this.this$0, 2);
+    aula.a(this.this$0, 2);
   }
 }
 

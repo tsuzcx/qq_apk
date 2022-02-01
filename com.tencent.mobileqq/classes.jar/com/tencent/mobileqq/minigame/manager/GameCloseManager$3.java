@@ -13,7 +13,7 @@ final class GameCloseManager$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameCloseManager.access$000(this.val$finalMoreAppInfo, paramDialogInterface, paramInt, this.val$closeListener, this.val$gameActivity, false);
+    GameCloseManager.access$000(this.val$finalMoreAppInfo, null, paramDialogInterface, paramInt, this.val$closeListener, this.val$gameActivity, false);
     MiniProgramLpReportDC04239.reportAsync("minigame_popup", "cancel", "click", "");
   }
 }

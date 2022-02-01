@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie.26.1;
+import mqq.os.MqqHandler;
 
 public class afkc
-  implements aexy
+  implements nnc
 {
-  public afkc(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public afkc(TroopChatPie paramTroopChatPie) {}
   
-  public void a()
+  public void a(String paramString1, String paramString2)
   {
-    RegisterPhoneNumActivity.a(this.a).b();
-  }
-  
-  public void b()
-  {
-    RegisterPhoneNumActivity.a(this.a).b();
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.sessionInfo.curFriendUin))) {
+      this.a.uiHandler.post(new TroopChatPie.26.1(this, paramString2));
+    }
   }
 }
 

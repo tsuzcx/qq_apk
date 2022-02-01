@@ -1,22 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class tex
-  extends apck
+  implements Animator.AnimatorListener
 {
-  public tex(BridgeModule paramBridgeModule, String paramString1, String paramString2)
+  public tex(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramString1);
+    ColorBandVideoEntranceButton.a(this.a).start();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      BridgeModule.access$1800(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramSosoLbsInfo, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    BridgeModule.access$1900(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_JavaLangString, "errorCode: " + paramInt);
+    ColorBandVideoEntranceButton.a(this.a).setText(ColorBandVideoEntranceButton.a(this.a));
+    ColorBandVideoEntranceButton.a(this.a).setVisibility(0);
   }
 }
 

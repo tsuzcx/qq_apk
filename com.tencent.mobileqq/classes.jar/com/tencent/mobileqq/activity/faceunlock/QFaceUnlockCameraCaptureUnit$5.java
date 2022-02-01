@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ajzw;
+import aiuw;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -9,20 +9,20 @@ import mqq.app.MobileQQ;
 public class QFaceUnlockCameraCaptureUnit$5
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$5(ajzw paramajzw) {}
+  public QFaceUnlockCameraCaptureUnit$5(aiuw paramaiuw) {}
   
   public void run()
   {
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mobileqq.FaceUnblockCameraJsApiPlugin");
-    if (ajzw.c(this.this$0) > 10) {
+    if (aiuw.c(this.this$0) > 10) {
       localIntent.putExtra("recording_time_out", true);
     }
-    localIntent.putExtra("target_media_url", ajzw.a(this.this$0));
+    localIntent.putExtra("target_media_url", aiuw.a(this.this$0));
     localIntent.setPackage(MobileQQ.getContext().getPackageName());
     this.this$0.a().sendBroadcast(localIntent);
     this.this$0.a().finish();
-    this.this$0.a().overridePendingTransition(2130772037, 2130772243);
+    this.this$0.a().overridePendingTransition(2130772039, 2130772241);
   }
 }
 

@@ -1,33 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class bmmi
-  implements aqrn
+class bmmi
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Long jdField_a_of_type_JavaLangLong;
+  bmmi(bmmh parambmmh, int paramInt, bmmj parambmmj) {}
   
-  public bmmi(Context paramContext, Long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public ColorNote getColorNote()
-  {
-    aqrv localaqrv = new aqrv();
-    if (QLog.isColorLevel()) {
-      QLog.i("FavColorNoteServiceInfo", 2, "getColorNote: colorNote key [" + "qfav" + "]");
+    if (this.jdField_a_of_type_Int == bmmh.a(this.jdField_a_of_type_Bmmh))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689565);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131691990);
-    localaqrv.a(17104896);
-    localaqrv.a("" + this.jdField_a_of_type_JavaLangLong + "-4");
-    localaqrv.b(str1);
-    localaqrv.c(str2);
-    localaqrv.d("resdrawable://2130844192");
-    return localaqrv.a();
+    bmmh.a(this.jdField_a_of_type_Bmmh, this.jdField_a_of_type_Int);
+    bmmh.a(this.jdField_a_of_type_Bmmh).a(bmmh.a(this.jdField_a_of_type_Bmmh), ((Integer)bmmh.a(this.jdField_a_of_type_Bmmh).get(this.jdField_a_of_type_Int)).intValue(), this.jdField_a_of_type_Int, bmmh.b(this.jdField_a_of_type_Bmmh));
+    bmmh.a(this.jdField_a_of_type_Bmmh, this.jdField_a_of_type_Bmmj, this.jdField_a_of_type_Int);
+    if ("adapter_extract".equals(bmmh.a(this.jdField_a_of_type_Bmmh)))
+    {
+      bmbg.a().a().f = "ai_color";
+      bmbg.a().a().h = -1;
+    }
+    for (;;)
+    {
+      bmbg.a().a().g = bmmh.b(this.jdField_a_of_type_Bmmh);
+      bmbc.a().s();
+      break;
+      if ("adapter_fix".equals(bmmh.a(this.jdField_a_of_type_Bmmh)))
+      {
+        bmbg.a().a().f = "common_color";
+        bmbg.a().a().h = (this.jdField_a_of_type_Int + 1);
+      }
+    }
   }
 }
 

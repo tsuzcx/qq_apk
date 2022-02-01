@@ -2,10 +2,11 @@ package com.tencent.avgame.gamelogic.data;
 
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
-import bhlg;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ContactUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +23,8 @@ public class RoomInfo
 {
   public String gameName;
   public long id;
+  public int matchShareId;
+  public int matchStatus;
   public long owner;
   @NotNull
   public List<Player> players = new ArrayList();
@@ -41,15 +44,19 @@ public class RoomInfo
   
   public void copyFrom(RoomInfo paramRoomInfo)
   {
-    if (paramRoomInfo == null) {
+    if (paramRoomInfo == null) {}
+    do
+    {
       return;
-    }
-    this.seq = paramRoomInfo.seq;
-    this.id = paramRoomInfo.id;
-    this.owner = paramRoomInfo.owner;
-    this.gameName = paramRoomInfo.gameName;
-    this.players.clear();
-    this.players.addAll(paramRoomInfo.players);
+      this.seq = paramRoomInfo.seq;
+      this.id = paramRoomInfo.id;
+      this.owner = paramRoomInfo.owner;
+      this.gameName = paramRoomInfo.gameName;
+      this.players.clear();
+      this.players.addAll(paramRoomInfo.players);
+      this.matchStatus = paramRoomInfo.matchStatus;
+    } while (paramRoomInfo.matchShareId <= 0);
+    this.matchShareId = paramRoomInfo.matchShareId;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -86,7 +93,7 @@ public class RoomInfo
   
   public String getNick(String paramString, int paramInt)
   {
-    return bhlg.a(getNick(paramString), paramInt);
+    return ContactUtils.getFitString(getNick(paramString), paramInt);
   }
   
   public Player getPlayer(String paramString)
@@ -123,6 +130,11 @@ public class RoomInfo
   public int hashCode()
   {
     return (int)(this.id ^ this.id >>> 32);
+  }
+  
+  public boolean isRoomMatching()
+  {
+    return this.matchStatus == 1;
   }
   
   public boolean isUserInRoom(String paramString)
@@ -184,10 +196,10 @@ public class RoomInfo
       if ((!paramRoomInfo.users.has()) || (paramRoomInfo.users.get() == null)) {
         break;
       }
-      paramRoomInfo = paramRoomInfo.users.get().iterator();
-      while (paramRoomInfo.hasNext())
+      Iterator localIterator = paramRoomInfo.users.get().iterator();
+      while (localIterator.hasNext())
       {
-        AvGameCommon.RoomUserInfo localRoomUserInfo = (AvGameCommon.RoomUserInfo)paramRoomInfo.next();
+        AvGameCommon.RoomUserInfo localRoomUserInfo = (AvGameCommon.RoomUserInfo)localIterator.next();
         Player localPlayer = new Player();
         localPlayer.parseFrom(localRoomUserInfo);
         ((List)localObject).add(localPlayer);
@@ -195,6 +207,7 @@ public class RoomInfo
     }
     this.players.clear();
     this.players.addAll((Collection)localObject);
+    this.matchStatus = paramRoomInfo.match_status.get();
   }
   
   public void reset()
@@ -215,6 +228,8 @@ public class RoomInfo
     localStringBuilder.append("gameName").append("=").append(this.gameName).append("|");
     localStringBuilder.append("count").append("=").append(this.players.size()).append("|");
     localStringBuilder.append("players:").append("=").append(Arrays.toString(this.players.toArray())).append("|");
+    localStringBuilder.append("matchStatus:").append(this.matchStatus).append("|");
+    localStringBuilder.append("matchShareId:").append(this.matchShareId);
     return localStringBuilder.toString();
   }
   

@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awij
-  implements aayx
+class awij
+  implements View.OnClickListener
 {
-  public awij(UiApiPlugin paramUiApiPlugin) {}
+  awij(awih paramawih) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
-    this.a.h = true;
+    awim localawim = (awim)paramView.getTag();
+    if (this.a.a != null) {
+      this.a.a.a(paramView, localawim.a, localawim.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

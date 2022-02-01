@@ -178,17 +178,13 @@ public class LivePlayerEmbeddedWidgetClient
       if ("snapshot".equalsIgnoreCase(str1))
       {
         boolean bool2 = false;
+        String str2 = paramJSONObject.optString("quality");
         boolean bool1 = bool2;
-        if (paramJSONObject != null)
+        if (str2 != null)
         {
-          String str2 = paramJSONObject.optString("quality");
           bool1 = bool2;
-          if (str2 != null)
-          {
-            bool1 = bool2;
-            if (str2.equalsIgnoreCase("compressed")) {
-              bool1 = true;
-            }
+          if (str2.equalsIgnoreCase("compressed")) {
+            bool1 = true;
           }
         }
         takePhoto(paramJsRuntime, "operateXWebLivePlayer", bool1, paramInt);
@@ -267,6 +263,7 @@ public class LivePlayerEmbeddedWidgetClient
   public void onDestroy()
   {
     QLog.i("miniapp-embedded-live-player", 2, "LivePlayerEmbeddedWidgetClient.onDestroy");
+    release();
   }
   
   public void onRectChanged(Rect paramRect)

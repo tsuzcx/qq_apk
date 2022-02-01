@@ -1,29 +1,30 @@
-class xuw
-  implements xvs
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xuw
+  extends QQUIEventReceiver<xuh, vuc>
 {
-  xuw(xut paramxut, xtk paramxtk) {}
-  
-  public boolean a_(xvo paramxvo, int paramInt1, int paramInt2)
+  public xuw(@NonNull xuh paramxuh)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
+    super(paramxuh);
+  }
+  
+  public void a(@NonNull xuh paramxuh, @NonNull vuc paramvuc)
+  {
+    if (paramvuc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      return this.jdField_a_of_type_Xtk.a(this.jdField_a_of_type_Xut, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
+      xvv.d(this.TAG, "deleted story failed");
+      paramxuh.a(5, paramvuc.jdField_a_of_type_JavaLangString);
+      return;
     }
+    paramxuh.a(paramvuc.jdField_a_of_type_JavaLangString);
+    paramxuh.a(new xrq[] { new xrl(xqt.a(xuh.a(paramxuh).a.jdField_a_of_type_JavaLangString)), (xrq)paramxuh.c.a() });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vuc.class;
   }
 }
 

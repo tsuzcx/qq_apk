@@ -1,20 +1,9 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-
 public class zso
-  implements blpp
 {
-  public zso(SegmentList paramSegmentList) {}
-  
-  public void a(View paramView)
-  {
-    this.a.a.b(paramView);
-  }
-  
-  public void b(View paramView)
-  {
-    this.a.a.c(paramView);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

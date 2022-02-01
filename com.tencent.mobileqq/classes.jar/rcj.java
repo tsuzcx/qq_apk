@@ -1,39 +1,28 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.persistence.notColumn;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class rcj
-  extends rck
 {
-  public rcj(@NonNull Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  @notColumn
+  public AtomicBoolean a;
+  @notColumn
+  public AtomicInteger a;
+  @notColumn
+  public AtomicBoolean b;
+  @notColumn
+  public AtomicInteger b;
+  @notColumn
+  public AtomicBoolean c = new AtomicBoolean(false);
+  @notColumn
+  public AtomicBoolean d = new AtomicBoolean(false);
   
-  public boolean a()
+  public rcj()
   {
-    return getCount() == 5;
-  }
-  
-  public boolean a(@NonNull TagInfo paramTagInfo)
-  {
-    int i = getCount();
-    super.a(paramTagInfo);
-    return i != getCount();
-  }
-  
-  @NonNull
-  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
-  {
-    View localView = super.getView(paramInt, paramView, paramViewGroup);
-    localView.setSelected(true);
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

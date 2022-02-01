@@ -1,18 +1,6 @@
-import com.tencent.av.service.AVRedPacketConfig;
-
-public class mpu
+public abstract interface mpu
 {
-  public AVRedPacketConfig a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public boolean c;
-  
-  public String toString()
-  {
-    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,28 +1,26 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-public abstract class bflz
-  implements BusinessObserver
+public class bflz
+  extends BroadcastReceiver
 {
-  protected abstract void a(long paramLong);
+  public bflz(SnapshotService paramSnapshotService) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel())
+    long l = paramIntent.getLongExtra("id", -1L);
+    int i = paramIntent.getIntExtra("action", -1);
+    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
     {
-      String str = "success = [" + paramBoolean + "], [" + paramBundle + "]";
-      QLog.i("GroupAppsObserver", 2, " onReceive: invoked. " + str);
+      if (QLog.isColorLevel()) {
+        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
+      }
+      SnapshotService.a(false);
+      this.a.finish();
     }
-    if (!paramBoolean) {
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBundle.getLong("KEY_GROUP_UIN"));
   }
 }
 

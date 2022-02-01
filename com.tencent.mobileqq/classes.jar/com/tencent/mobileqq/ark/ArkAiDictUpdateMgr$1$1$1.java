@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import aqai;
-import aqaj;
+import aotv;
+import aotw;
 
 public class ArkAiDictUpdateMgr$1$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1$1$1(aqaj paramaqaj) {}
+  public ArkAiDictUpdateMgr$1$1$1(aotw paramaotw) {}
   
   public void run()
   {

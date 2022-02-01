@@ -1,14 +1,44 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "enableNewWebWeatherPage", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ammf
+public class ammf
+  implements alol
 {
-  public final boolean a()
+  public ammf(ApolloPanel paramApolloPanel) {}
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = aran.a().a(624);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
-    return ((ammg)localObject).a();
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
+    if (this.a.c.getVisibility() == 0)
+    {
+      if ((!paramBoolean2) || (paramInt >= 5)) {
+        break label110;
+      }
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (!paramBoolean1) {
+        break label94;
+      }
+      this.a.a.setVisibility(0);
+      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
+    }
+    label94:
+    label110:
+    do
+    {
+      ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
+      do
+      {
+        return;
+      } while (paramInt <= 0);
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      return;
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    } while ((paramInt != 0) || (!paramBoolean1));
+    this.a.a.setVisibility(8);
   }
 }
 

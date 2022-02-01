@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.text;
 
-import anzj;
-import bplg;
-import bpse;
+import amtj;
+import bmqh;
+import bmvk;
 import com.tencent.common.app.AppInterface;
 import java.util.Arrays;
 import java.util.Map;
@@ -12,9 +12,9 @@ public final class DynamicTextBuilder$1
 {
   public void run()
   {
-    String str = bplg.a().getCurrentNickname();
-    bpse.a().put(Integer.valueOf(5), Arrays.asList(new String[] { anzj.a(2131702491), "MY JOURNEY \n" + str }));
-    bpse.a().put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", str }));
+    String str = bmqh.a().getCurrentNickname();
+    bmvk.a().put(Integer.valueOf(5), Arrays.asList(new String[] { amtj.a(2131702726), "MY JOURNEY \n" + str }));
+    bmvk.a().put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", str }));
   }
 }
 

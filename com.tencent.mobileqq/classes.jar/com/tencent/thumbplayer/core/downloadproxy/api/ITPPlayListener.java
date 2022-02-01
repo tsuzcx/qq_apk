@@ -4,6 +4,8 @@ import java.util.Map;
 
 public abstract interface ITPPlayListener
 {
+  public static final int MESSAGE_HTTP_HEADER = 3;
+  public static final int MESSAGE_NOTIFY_M3U8_CONTENT = 4;
   public static final int MESSAGE_NOTIFY_PLAYER_SWITCH_DEFINITION = 2;
   public static final int MESSAGE_PLAY_VIDEO_NO_MORE_CACHE = 1;
   

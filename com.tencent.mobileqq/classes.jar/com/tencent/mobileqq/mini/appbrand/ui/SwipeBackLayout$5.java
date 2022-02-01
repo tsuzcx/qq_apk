@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import aquy;
-import bhpc;
+import apoh;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class SwipeBackLayout$5
   implements DialogInterface.OnClickListener
@@ -16,7 +16,7 @@ class SwipeBackLayout$5
     if (SwipeBackLayout.access$1900(this.this$0).isShowing()) {
       SwipeBackLayout.access$1900(this.this$0).dismiss();
     }
-    aquy.a(this.val$activity, true);
+    apoh.a(this.val$activity, true);
   }
 }
 

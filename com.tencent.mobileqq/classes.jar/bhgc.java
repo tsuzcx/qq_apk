@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-
-final class bhgc
-  extends View.AccessibilityDelegate
+public abstract interface bhgc
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setVisibleToUser(false);
-  }
+  public abstract void a();
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atsi;
-import attf;
+import ases;
+import asfp;
 import java.util.HashMap;
 
 public class QFileMsgForwardManager$4
@@ -9,20 +9,20 @@ public class QFileMsgForwardManager$4
 {
   public void run()
   {
-    attf localattf = null;
-    if (atsi.a(this.this$0).containsKey(Long.valueOf(this.a))) {
-      localattf = (attf)atsi.a(this.this$0).get(Long.valueOf(this.a));
+    asfp localasfp = null;
+    if (ases.a(this.this$0).containsKey(Long.valueOf(this.a))) {
+      localasfp = (asfp)ases.a(this.this$0).get(Long.valueOf(this.a));
     }
-    if (localattf != null)
+    if (localasfp != null)
     {
-      localattf.b();
-      localattf.d();
+      localasfp.b();
+      localasfp.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.4
  * JD-Core Version:    0.7.0.1
  */

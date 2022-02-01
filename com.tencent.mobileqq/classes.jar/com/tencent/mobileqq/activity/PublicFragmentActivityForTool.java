@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afez;
+import adxr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,19 +15,20 @@ public class PublicFragmentActivityForTool
 {
   public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    afez.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+    adxr.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
   }
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    afez.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+    adxr.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -50,7 +51,7 @@ public class PublicFragmentActivityForTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForTool
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,14 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-
 public class vma
-  implements wex
 {
-  public vma(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c;
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (!QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage))
-    {
-      QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage, true);
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
-      {
-        vtr.a(67, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, QCircleContentImage.d(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.e(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
-        QLog.d("QCircleContentImage", 4, "onScaleChange report success. pos: " + QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
-      }
-    }
-  }
+  public void a() {}
 }
 
 

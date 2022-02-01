@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.text.TextUtils;
-import bhlg;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +24,14 @@ class TroopAdminList$2
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("uin", str);
-        localHashMap.put("nick", bhlg.j(this.this$0.app, str));
+        localHashMap.put("nick", ContactUtils.getFriendDisplayName(this.this$0.app, str));
         this.this$0.jdField_a_of_type_JavaUtilList.add(localHashMap);
       }
       i += 1;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.a(1));
-    this.this$0.addObserver(this.this$0.jdField_a_of_type_Anyu);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.c(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.getBusinessHandler(1));
+    this.this$0.addObserver(this.this$0.jdField_a_of_type_Amsu);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendsInfo(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
     this.this$0.runOnUiThread(new TroopAdminList.2.1(this));
   }
 }

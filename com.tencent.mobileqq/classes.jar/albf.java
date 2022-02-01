@@ -1,27 +1,80 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class albf
-  implements View.OnFocusChangeListener
+  extends andd
 {
-  public albf(LingHbFragment paramLingHbFragment) {}
+  public albf(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  protected void onGenNewTroopName(String paramString1, String paramString2)
+  {
+    if (TroopDiscussionTroop.a(this.a) != null) {
+      TroopDiscussionTroop.a(this.a).a();
+    }
+  }
+  
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+      this.a.c();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+  }
+  
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void onModifyTroopInfo(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.c();
       }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.c();
       return;
-      LingHbFragment.a(this.a).a();
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopList(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void onUpdateTroopNickname(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

@@ -1,19 +1,45 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class yyj
-  implements bbgo
+final class yyj
+  implements BusinessObserver
 {
-  yyj(yyg paramyyg, boolean paramBoolean) {}
+  yyj(yva paramyva) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Yyg.a = new yyk(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Yyg.a);
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     yyj
  * JD-Core Version:    0.7.0.1
  */

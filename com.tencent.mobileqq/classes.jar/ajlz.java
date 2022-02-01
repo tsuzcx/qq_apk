@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.data.ContactMatch;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class ajlz
-  extends ajmf
+  implements ajms
 {
-  public ContactMatch a;
+  public ajlz(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public ajlz(ContactMatch paramContactMatch)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
-    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
+    if (paramBoolean) {}
+    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", this.a.a());
+      localIntent.putExtra("check_permission_result", paramContext);
+      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      return;
+    }
   }
 }
 

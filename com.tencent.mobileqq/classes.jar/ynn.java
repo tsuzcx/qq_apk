@@ -1,25 +1,14 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
 
-public class ynn
-  extends wjm<ymx, wsm>
+class ynn
+  extends bfvf
 {
-  public ynn(ymx paramymx)
-  {
-    super(paramymx);
-  }
+  ynn(ynm paramynm) {}
   
-  public void a(@NonNull ymx paramymx, @NonNull wsm paramwsm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramwsm);
-    ymx.a(paramymx, paramwsm.a);
+    paramDialogInterface.dismiss();
   }
-  
-  public Class acceptEventClass()
-  {
-    return wsm.class;
-  }
-  
-  public void b(@NonNull ymx paramymx, @NonNull wsm paramwsm) {}
 }
 
 

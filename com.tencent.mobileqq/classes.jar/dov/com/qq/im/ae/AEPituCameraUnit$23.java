@@ -1,33 +1,27 @@
 package dov.com.qq.im.ae;
 
-import bofh;
-import bojx;
-import boqr;
-import bplq;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import bljy;
+import bluy;
+import blvb;
+import bmas;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.util.List;
 
 public class AEPituCameraUnit$23
   implements Runnable
 {
-  public AEPituCameraUnit$23(bofh parambofh) {}
+  public AEPituCameraUnit$23(bljy parambljy, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager begin");
+    if ((this.this$0.a != null) && (this.this$0.a.a(131072) != null)) {
+      this.this$0.a.a(131072).a(114, this.a);
     }
-    bojx localbojx = bofh.a(this.this$0);
-    if (bofh.b(this.this$0) == AECaptureMode.NORMAL) {}
-    for (boolean bool = true;; bool = false)
+    if ((bluy.a().c) && (LogicDataManager.getInstance().getEditableWMElement().size() > 0))
     {
-      localbojx.c(bool);
-      ((boqr)bplq.a(18)).b(false);
-      bplz.c = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager end");
-      }
-      return;
+      bluy.a().c = false;
+      this.this$0.a.a(589825, new Object[0]);
     }
   }
 }

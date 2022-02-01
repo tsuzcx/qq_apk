@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.capture.view.StoryImageToastView android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/glc" android:background="@drawable/a9h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <dov.com.qq.im.capture.view.StoryTextToastView android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/gl4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</FrameLayout>

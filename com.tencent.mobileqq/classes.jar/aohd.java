@@ -1,6 +1,11 @@
-public abstract interface aohd
+public class aohd
 {
-  public abstract void onHistoryChanged();
+  public int a = 3000;
+  
+  public String toString()
+  {
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
+  }
 }
 
 

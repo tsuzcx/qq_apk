@@ -1,21 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import java.util.List;
 
 public class ylz
-  extends wzi
+  extends ylw
 {
-  public List<String> a = new ArrayList();
-  
-  public ylz(ErrorMessage paramErrorMessage)
-  {
-    super(paramErrorMessage);
-  }
-  
-  public String toString()
-  {
-    return "FeedData{" + super.toString() + '}';
-  }
+  public int a;
+  public Activity a;
+  public Handler a;
+  public String a;
+  public List<SlideItemInfo> a;
+  public yma a;
+  public int b;
 }
 
 

@@ -1,75 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.TypeEvaluator;
 
-public class ayvz
+class ayvz
+  implements TypeEvaluator
 {
-  public static String a(ChatMessage paramChatMessage)
-  {
-    if (!(paramChatMessage instanceof MessageForStructing)) {
-      return "";
-    }
-    paramChatMessage = (MessageForStructing)paramChatMessage;
-    if (!(paramChatMessage.structingMsg instanceof StructMsgForGeneralShare)) {
-      return "";
-    }
-    return ((StructMsgForGeneralShare)paramChatMessage.structingMsg).mContentCover;
-  }
+  ayvz(ayvw paramayvw) {}
   
-  public static String a(MessageForArkApp paramMessageForArkApp)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null) || (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.metaList))) {}
-    for (;;)
-    {
-      return "";
-      try
-      {
-        paramMessageForArkApp = new JSONObject(paramMessageForArkApp.ark_app_message.metaList);
-        if (!TextUtils.isEmpty(paramMessageForArkApp.optString("msgInfo")))
-        {
-          paramMessageForArkApp = new JSONObject(paramMessageForArkApp.optString("msgInfo")).optString("jump_url");
-          return paramMessageForArkApp;
-        }
-      }
-      catch (JSONException paramMessageForArkApp)
-      {
-        paramMessageForArkApp.printStackTrace();
-        QLog.e("ChatMessageHelper", 4, paramMessageForArkApp, new Object[0]);
-      }
+    paramFloat = 3.0F * paramFloat;
+    if (paramFloat <= 0.45F) {
+      return Float.valueOf(1.0F - paramFloat / 0.45F * 0.6F);
     }
-    return "";
-  }
-  
-  public static String b(ChatMessage paramChatMessage)
-  {
-    paramChatMessage = paramChatMessage.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend");
-    if (TextUtils.isEmpty(paramChatMessage)) {
-      return "";
+    if (paramFloat <= 1.3F) {
+      return Double.valueOf((paramFloat - 0.45F) / 0.85F * 0.6F + 0.4D);
     }
-    try
-    {
-      paramChatMessage = new JSONObject(paramChatMessage).optString("oac_triggle");
-      if (TextUtils.isEmpty(paramChatMessage)) {
-        return "";
-      }
-      int i = paramChatMessage.indexOf("ad_id=");
-      if (paramChatMessage.length() < i + 12) {
-        return paramChatMessage.substring(i + 6);
-      }
-      paramChatMessage = paramChatMessage.substring(i + 6, i + 12);
-      return paramChatMessage;
+    if (paramFloat <= 2.45F) {
+      return Float.valueOf(1.0F - (paramFloat - 1.3F) / 1.15F * 0.6F);
     }
-    catch (JSONException paramChatMessage)
-    {
-      paramChatMessage.printStackTrace();
-    }
-    return "";
+    return Double.valueOf((paramFloat - 2.45F) / 0.55F * 0.6F + 0.4D);
   }
 }
 

@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aiiw
-  implements DialogInterface.OnClickListener
+public abstract interface aiiw
 {
-  aiiw(aiit paramaiit) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bhmi.d(this.a.g);
-    this.a.g = "";
-  }
+  public abstract void a();
 }
 
 

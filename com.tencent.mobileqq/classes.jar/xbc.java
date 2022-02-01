@@ -1,23 +1,27 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xbc
-  extends wip
+  extends QQUIEventReceiver<xba, wci>
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  
-  public xbc(xbb paramxbb, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
+  public xbc(@NonNull xba paramxba)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramxba);
   }
   
-  public String toString()
+  public void a(@NonNull xba paramxba, @NonNull wci paramwci)
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
+    if (paramwci.a.isSuccess())
+    {
+      xvv.a(this.TAG, "receive user info event. %s.", paramwci.toString());
+      paramxba.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wci.class;
   }
 }
 

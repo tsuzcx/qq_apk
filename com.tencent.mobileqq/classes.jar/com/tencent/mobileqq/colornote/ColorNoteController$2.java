@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.colornote;
 
-import aqre;
-import aqvm;
+import apkn;
+import apov;
 
 public class ColorNoteController$2
   implements Runnable
 {
-  public ColorNoteController$2(aqre paramaqre) {}
+  public ColorNoteController$2(apkn paramapkn) {}
   
   public void run()
   {
-    aqre.a(this.this$0).a();
+    apkn.a(this.this$0).a();
   }
 }
 

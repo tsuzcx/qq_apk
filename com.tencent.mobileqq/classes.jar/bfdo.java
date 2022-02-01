@@ -1,39 +1,24 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class bfdo
-  extends bfdp
-  implements View.OnClickListener
+final class bfdo
+  extends ClickableSpan
 {
-  public View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bfef a;
-  
-  bfdo(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
-  {
-    super(paramView);
-  }
+  bfdo(String paramString, MessageRecord paramMessageRecord) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_Bfef);
-    }
+    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+    avxi.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,24 +1,11 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
+import android.os.IInterface;
 
-public class qyt
+public abstract interface qyt
+  extends IInterface
 {
-  public String a;
+  public abstract void a();
   
-  public static qyt a(oidb_cmd0xbc9.AdReport paramAdReport)
-  {
-    qyt localqyt = new qyt();
-    localqyt.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localqyt;
-  }
-  
-  public oidb_cmd0xbc9.AdReport a()
-  {
-    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
-    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localAdReport;
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

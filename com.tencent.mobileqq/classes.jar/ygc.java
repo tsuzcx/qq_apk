@@ -1,48 +1,62 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ygc
-  extends wov
 {
-  public List<LikeEntry> a;
-  public int b;
-  public int c;
+  public Drawable a;
+  public String a;
+  public ygd a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public ygc(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
+  public ygc()
   {
-    super(paramRspFeedLikeList.result);
-    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
-    this.a = a(paramRspFeedLikeList);
-    this.b = paramRspFeedLikeList.like_total_count.get();
-    this.c = paramRspFeedLikeList.has_like.get();
+    this.jdField_a_of_type_Ygd = new ygd();
   }
   
-  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  public boolean a()
   {
-    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
-    ArrayList localArrayList1 = new ArrayList();
-    wtt localwtt = (wtt)wth.a(2);
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < paramFeedLikeInfo.size())
+    if (this.jdField_a_of_type_Ygd == null) {
+      this.jdField_a_of_type_Ygd = new ygd();
+    }
+    try
     {
-      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
-      if (localwtt.b(localLikeEntry.unionId) == null) {
-        localArrayList2.add(new wuo("", localLikeEntry.unionId));
-      }
-      localArrayList1.add(localLikeEntry);
-      i += 1;
+      JSONObject localJSONObject = new JSONObject(this.e);
+      int i = localJSONObject.getInt("align");
+      Object localObject = localJSONObject.getJSONArray("picture_margin");
+      int j = ((JSONArray)localObject).getInt(0);
+      int k = ((JSONArray)localObject).getInt(1);
+      int m = ((JSONArray)localObject).getInt(2);
+      int n = ((JSONArray)localObject).getInt(3);
+      localObject = localJSONObject.getString("text_color");
+      int i1 = localJSONObject.getInt("text_size");
+      int i2 = localJSONObject.getInt("picture_width");
+      int i3 = localJSONObject.getInt("picture_height");
+      int i4 = localJSONObject.getInt("standard_width");
+      int i5 = localJSONObject.getInt("standard_height");
+      this.jdField_a_of_type_Ygd.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Ygd.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
+      this.jdField_a_of_type_Ygd.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.jdField_a_of_type_Ygd.b = i1;
+      this.jdField_a_of_type_Ygd.c = i2;
+      this.jdField_a_of_type_Ygd.d = i3;
+      this.jdField_a_of_type_Ygd.e = i4;
+      this.jdField_a_of_type_Ygd.f = i5;
+      return true;
     }
-    if (!localArrayList2.isEmpty()) {
-      new xaq().a(1, localArrayList2);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    return localArrayList1;
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Ygd + '}';
   }
 }
 

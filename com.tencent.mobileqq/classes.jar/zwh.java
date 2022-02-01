@@ -1,26 +1,43 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.manager.Manager;
 
 public class zwh
-  implements AdapterView.OnItemClickListener
+  implements Manager
 {
-  public zwh(QRDisplayActivity paramQRDisplayActivity) {}
+  protected static BaseApplicationImpl a;
+  public static boolean a;
+  private AppInterface a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  static
   {
-    QRDisplayActivity.a(this.a).dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-    }
-    this.a.i = ((int)paramLong);
-    QRDisplayActivity.a(this.a);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    jdField_a_of_type_Boolean = true;
   }
+  
+  public zwh(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    a();
+  }
+  
+  public void a()
+  {
+    try
+    {
+      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (jdField_a_of_type_Boolean) {
+        jdField_a_of_type_Boolean = false;
+      }
+      VSConfigManager.getInstance();
+      QLog.i("Q.videostory.VSManager", 1, "init");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy() {}
 }
 
 

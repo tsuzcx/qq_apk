@@ -1,23 +1,21 @@
-import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ahrk
-  implements VideoDrawable.OnAudioPlayOnceListener
+  extends apkq
 {
-  ahrk(ahri paramahri) {}
+  ahrk(ahrg paramahrg) {}
   
-  public void onFinish()
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
-    }
-    if ((ahri.a() != null) && (ahri.a().get() != null))
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (paramBoolean)
     {
-      ahri.a(ahri.a(this.a), (ChatMessage)ahri.a().get());
-      ahri.a(null);
+      QQToast.a(ahrg.a(this.a).getActivity(), 2, 2131719396, 0).a();
+      return;
     }
+    QQToast.a(ahrg.a(this.a).getActivity(), 0, 2131719395, 0).a();
   }
 }
 

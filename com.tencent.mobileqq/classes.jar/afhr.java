@@ -1,49 +1,136 @@
-import MQQ.PayRuleCfg;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
 
 public class afhr
-  extends Handler
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public afhr(QQSettingMe paramQQSettingMe, Looper paramLooper)
+  private afhq a;
+  
+  private void a(VasAvatar paramVasAvatar, ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    int i = 1;
+    new afht(paramVasAvatar).a();
+    ((ayap)paramQQAppInterface.getBusinessHandler(193)).a(paramChatMessage.senderuin, paramChatMessage.frienduin, paramChatMessage.istroop);
+    if (paramChatMessage.istroop == 0) {}
+    for (;;)
+    {
+      bcef.b(null, "dc00898", "", "", "0X800B3A1", "0X800B3A1", i, 0, "", "", "", "");
+      return;
+      if (paramChatMessage.istroop == 1) {
+        i = 2;
+      } else {
+        i = 10;
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(afhq paramafhq)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.j();
-      return;
-    case 1: 
-      QQSettingMe.a(this.a);
-      return;
-    case 2: 
-      this.a.u();
-      return;
+    this.a = paramafhq;
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
     }
-    int i = ((Bundle)paramMessage.obj).getInt("type");
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
+    this.a.setIsLongpressEnabled(false);
+    Object localObject = this.a.a();
+    ChatMessage localChatMessage = (ChatMessage)((VasAvatar)localObject).getTag();
+    QQAppInterface localQQAppInterface = BaseActivity.sTopActivity.app;
+    if ((((VasAvatar)localObject).getContext() instanceof MultiForwardActivity))
     {
-      QQSettingMe.a(this.a).enable = 0;
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
-      aokv.a(this.a.a.c(), QQSettingMe.a(this.a));
-      sendEmptyMessage(2);
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() MultiForwardActivity");
+      }
+      return super.onDoubleTap(paramMotionEvent);
     }
-    biik.a(this.a.a, "last_pull_pay_rule", 0L);
-    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
-    ((aokv)this.a.a.a(27)).a(paramMessage, this.a.a.c());
+    if (!NetworkUtil.isNetSupport(((VasAvatar)localObject).getContext()))
+    {
+      QQToast.a(((VasAvatar)localObject).getContext(), amtj.a(2131713911), 0).a();
+      return super.onDoubleTap(paramMotionEvent);
+    }
+    if (localChatMessage.istroop == 0) {
+      a((VasAvatar)localObject, localChatMessage, localQQAppInterface);
+    }
+    TroopManager localTroopManager;
+    TroopInfo localTroopInfo;
+    do
+    {
+      do
+      {
+        return super.onDoubleTap(paramMotionEvent);
+      } while (localChatMessage.istroop != 1);
+      if (((bfbz)localQQAppInterface.getManager(48)).a(localChatMessage.frienduin, true).a)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() DisableSendMsg");
+        }
+        return super.onDoubleTap(paramMotionEvent);
+      }
+      if (nmy.a().a(localChatMessage.frienduin))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() AioAnonymous");
+        }
+        return super.onDoubleTap(paramMotionEvent);
+      }
+      if (localQQAppInterface.getTroopMask(localChatMessage.frienduin) == 3)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() MSG_FILTER_CLOSE");
+        }
+        return super.onDoubleTap(paramMotionEvent);
+      }
+      localTroopManager = (TroopManager)localQQAppInterface.getManager(52);
+      localTroopInfo = localTroopManager.a(localChatMessage.frienduin, true);
+    } while (localTroopInfo == null);
+    if (localTroopInfo.isDisband())
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694296, 0).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isDisband");
+      }
+      return super.onDoubleTap(paramMotionEvent);
+    }
+    localObject = new afhs((VasAvatar)localObject, localChatMessage, localQQAppInterface, this);
+    localTroopManager.a(localChatMessage.frienduin, localChatMessage.senderuin, (ancx)localObject);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    super.onLongPress(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarOnGestureListener", 2, "onLongPress() called with: e = [" + paramMotionEvent + "]");
+    }
+    paramMotionEvent = this.a.a();
+    if (paramMotionEvent.a()) {
+      paramMotionEvent.performLongClick();
+    }
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarOnGestureListener", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    }
+    VasAvatar localVasAvatar = this.a.a();
+    if (localVasAvatar.hasOnClickListeners()) {
+      localVasAvatar.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

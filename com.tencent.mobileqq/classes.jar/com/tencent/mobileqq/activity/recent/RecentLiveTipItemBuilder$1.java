@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.recent;
 
-import alnx;
-import antf;
-import axup;
-import bdlq;
+import aklp;
+import awhw;
+import bcek;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 
 public class RecentLiveTipItemBuilder$1
   implements Runnable
 {
-  public RecentLiveTipItemBuilder$1(alnx paramalnx, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, axup paramaxup) {}
+  public RecentLiveTipItemBuilder$1(aklp paramaklp, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, awhw paramawhw) {}
   
   public void run()
   {
-    bdlq localbdlq = new bdlq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
+    bcek localbcek = new bcek(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving)
     {
       str = "exp_livepush";
-      localbdlq = localbdlq.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - antf.g));
+      localbcek = localbcek.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - AppConstants.NOW_LIVE_TIP_UIN_BASE));
       if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
         break label125;
       }
@@ -26,7 +26,7 @@ public class RecentLiveTipItemBuilder$1
     label125:
     for (String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType);; str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType))
     {
-      localbdlq.a(new String[] { str, String.valueOf(this.jdField_a_of_type_Axup.b()) }).a();
+      localbcek.a(new String[] { str, String.valueOf(this.jdField_a_of_type_Awhw.b()) }).a();
       return;
       str = "exp_relivepush";
       break;

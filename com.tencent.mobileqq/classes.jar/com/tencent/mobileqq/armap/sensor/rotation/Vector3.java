@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.sensor.rotation;
 
-import aqhm;
+import apax;
 import java.io.Serializable;
 
 public class Vector3
@@ -103,19 +103,19 @@ public class Vector3
         return false;
       }
       paramObject = (Vector3)paramObject;
-      if (aqhm.a(this.x) != aqhm.a(paramObject.x)) {
+      if (apax.a(this.x) != apax.a(paramObject.x)) {
         return false;
       }
-      if (aqhm.a(this.y) != aqhm.a(paramObject.y)) {
+      if (apax.a(this.y) != apax.a(paramObject.y)) {
         return false;
       }
-    } while (aqhm.a(this.z) == aqhm.a(paramObject.z));
+    } while (apax.a(this.z) == apax.a(paramObject.z));
     return false;
   }
   
   public int hashCode()
   {
-    return ((aqhm.a(this.x) + 31) * 31 + aqhm.a(this.y)) * 31 + aqhm.a(this.z);
+    return ((apax.a(this.x) + 31) * 31 + apax.a(this.y)) * 31 + apax.a(this.z);
   }
   
   public boolean isUnit()

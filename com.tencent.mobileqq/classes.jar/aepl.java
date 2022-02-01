@@ -1,80 +1,56 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aepl
-  extends aojs
+  extends amwl
 {
-  public aepl(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aepl(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a();
-      }
-    }
-    do
+    this.a.a(2130839630, this.a.getString(2131718430));
+  }
+  
+  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839630, this.a.getString(2131718416));
+  }
+  
+  protected void onSendSystemMsgActionError(String paramString)
+  {
+    this.a.h();
+    paramString = this.a.getString(2131718765);
+    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = bcsz.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
     {
-      do
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
       {
-        return;
-        if (paramInt1 != 2) {
-          break;
+        this.a.h();
+        if (bcta.a(bcsz.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
         }
-      } while (paramInt2 != 0);
-      this.a.a();
+        return;
+      }
+      this.a.h();
+      this.a.finish();
+      bcta.a(bcsz.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
       return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.a();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.a();
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        l1 = l2;
+      }
     }
   }
 }

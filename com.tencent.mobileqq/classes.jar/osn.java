@@ -1,18 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import android.text.Editable;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import java.util.Comparator;
 
 public class osn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparator<BiuNicknameSpan>
 {
-  public osn(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams, View paramView) {}
+  private Editable jdField_a_of_type_AndroidTextEditable;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public osn(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+  }
+  
+  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
+  {
+    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    if (i > j) {
+      return 1;
+    }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,212 +1,172 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import com.tencent.common.config.AppSetting;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.SingleLineTextView;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class atjm
-  extends bloj
+public class atjm
+  extends aqxl
 {
-  protected atjq a;
-  private ExpandableListView jdField_a_of_type_ComTencentWidgetExpandableListView;
-  Object jdField_a_of_type_JavaLangObject;
-  LinkedHashMap<String, List<Object>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  protected Context b;
+  private boolean d;
   
-  public atjm(Context paramContext, Object paramObject)
+  public atjm(QQAppInterface paramQQAppInterface)
   {
-    if (paramObject != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
-    }
-    this.b = paramContext;
+    super("qq.android.flutter.engine.v8.4.8", paramQQAppInterface);
   }
   
-  String a(int paramInt)
+  public static String e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      str = (String)localIterator.next();
-      if (i == paramInt) {
-        return str;
+      if (QLog.isColorLevel()) {
+        QLog.i("QFlutter.QFlutterEngineDownloader", 2, "getFilesDir is null");
       }
-      i += 1;
+      localObject = "";
     }
-    String str = null;
+    String str;
+    do
+    {
+      return localObject;
+      str = localObject + "/pddata/prd/" + "qq.android.flutter.engine.v8.4.8";
+      localObject = str;
+    } while (!QLog.isColorLevel());
+    QLog.i("QFlutter.QFlutterEngineDownloader", 2, "getLibDir ,path = " + str);
     return str;
   }
   
-  protected List<Object> a(int paramInt)
+  public int a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (i != paramInt) {
-        i += 1;
-      } else {
-        return (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-      }
-    }
-    return null;
+    return 10092;
   }
   
-  public void a(View paramView, int paramInt)
+  public Class<? extends XmlData> a()
   {
-    atjr localatjr = (atjr)paramView.getTag();
-    if (localatjr == null)
-    {
-      localatjr = new atjr();
-      localatjr.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367726));
-      paramView.findViewById(2131364983).setVisibility(8);
-      paramView.findViewById(2131369324).setVisibility(8);
-      localatjr.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369210));
-      paramView.setTag(localatjr);
+    return QFlutterEngineData.class;
+  }
+  
+  public String a()
+  {
+    return QFlutterEngineData.class.getSimpleName();
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    int i = (int)(100L * paramLong1 / paramLong2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download progress: " + i);
+    }
+    atjn.a(0, paramLong1, paramLong2);
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  {
+    super.a(paramXmlData, paramBoolean, paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("onDownloadFinish, result: %s, errCode: %s, filepath: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    }
+    if (!paramBoolean) {
+      atjn.a(0, false);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download success: " + paramString);
+    }
+    if (atjn.a(paramString, (QFlutterEngineData)a())) {
+      atjn.a(0, true);
     }
     for (;;)
     {
-      paramView.setOnClickListener(new atjp(this, paramInt));
-      localatjr.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramInt));
-      paramView = (String)getGroup(paramInt);
-      localatjr.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramView);
-      localatjr.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      super.a(paramString);
       return;
+      f();
+      atjn.a(0, false);
     }
   }
   
-  public void a(atjq paramatjq)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Atjq = paramatjq;
-  }
-  
-  public void a(ExpandableListView paramExpandableListView)
-  {
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public int c_()
-  {
-    return 2131558948;
-  }
-  
-  public Object getChild(int paramInt1, int paramInt2)
-  {
-    List localList = a(paramInt1);
-    if ((localList != null) && (localList.size() > 0) && (paramInt2 < localList.size())) {
-      return localList.get(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    return null;
-  }
-  
-  public long getChildId(int paramInt1, int paramInt2)
-  {
-    return paramInt2;
-  }
-  
-  public int getChildrenCount(int paramInt)
-  {
-    List localList = a(paramInt);
-    if (localList != null) {
-      return localList.size();
-    }
-    return 0;
-  }
-  
-  public Object getGroup(int paramInt)
-  {
-    return a(paramInt);
-  }
-  
-  public int getGroupCount()
-  {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size();
-  }
-  
-  public long getGroupId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView != null)
-    {
-      localObject = (atjr)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    for (;;)
-    {
-      paramViewGroup.setOnClickListener(new atjn(this, paramInt));
-      if (AppSetting.c) {
-        paramViewGroup.setAccessibilityDelegate(new zvk(paramViewGroup, new atjo(this, paramInt)));
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
-      localObject = (String)getGroup(paramInt);
-      paramView.jdField_a_of_type_Int = paramInt;
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject);
-      return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.b).inflate(2131558948, paramViewGroup, false);
-      paramView = new atjr();
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131367726));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131369210));
-      paramViewGroup.findViewById(2131364983).setVisibility(8);
-      paramViewGroup.findViewById(2131369324).setVisibility(8);
-      paramViewGroup.setTag(paramView);
+    super.a(paramBoolean);
+    if (!this.d) {
+      this.d = paramBoolean;
     }
   }
   
-  public boolean hasStableIds()
-  {
-    return false;
-  }
-  
-  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  public boolean a()
   {
     return true;
   }
   
-  public void onGroupCollapsed(int paramInt)
+  public String b()
   {
-    super.onGroupCollapsed(paramInt);
-    if (AppSetting.c)
-    {
-      String str = (String)getGroup(paramInt);
-      QQAppInterface.f(str + anzj.a(2131708485));
+    return "prd";
+  }
+  
+  public void b()
+  {
+    String str = e();
+    boolean bool = FileUtil.deleteFile(new File(str));
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
     }
   }
   
-  public void onGroupExpanded(int paramInt)
+  public void b(XmlData paramXmlData)
   {
-    super.onGroupExpanded(paramInt);
-    if (AppSetting.c)
+    super.b(paramXmlData);
+    if (paramXmlData != null) {}
+    for (long l = paramXmlData.totalSize;; l = 0L)
     {
-      String str = (String)getGroup(paramInt);
-      QQAppInterface.f(str + anzj.a(2131708505));
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.QFlutterEngineDownloader", 2, "download begin, totalLen: " + l);
+      }
+      return;
     }
+  }
+  
+  public boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
+    }
+    if (this.d) {
+      return true;
+    }
+    return super.b();
+  }
+  
+  public boolean e()
+  {
+    QLog.d("QFlutter.QFlutterEngineDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.d) }));
+    if (!this.d) {
+      return false;
+    }
+    return super.e();
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterEngineDownloader", 2, "restoreState");
+    }
+    a().loadState = 0;
+    a().Version = 0;
+    aqxb.a(a(), new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjm
  * JD-Core Version:    0.7.0.1
  */

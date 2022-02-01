@@ -1,17 +1,8 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.8;
+import android.os.Bundle;
 
-public class awrb
-  implements DialogInterface.OnClickListener
+public abstract interface awrb
 {
-  public awrb(LocationDialogUtil.8 param8) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.finish();
-  }
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

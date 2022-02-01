@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import ocd;
+import odq;
 import org.json.JSONObject;
 
 class ReadInJoyBaseFragment$1
@@ -40,7 +40,7 @@ class ReadInJoyBaseFragment$1
             localObject = ((MessageForStructing)this.a).structingMsg.reportEventFolderStatusValue;
             localJSONObject.put("inside_kd_tab_red_pnt_push_articleId", l1);
             localJSONObject.put("folder_status", localObject);
-            ocd.a(null, "", "0X800952D", "0X800952D", 0, 0, localJSONObject.toString(), "", "", "", false);
+            odq.a(null, "", "0X800952D", "0X800952D", 0, 0, localJSONObject.toString(), "", "", "", false);
             return;
           }
         }

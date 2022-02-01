@@ -1,14 +1,20 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
 
-class bhpp
+public class bhpp
+  implements DialogInterface.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bhpp(AuthorityActivity paramAuthorityActivity) {}
   
-  private bhpp(bhpc parambhpc) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpp
  * JD-Core Version:    0.7.0.1
  */

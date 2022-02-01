@@ -1,18 +1,43 @@
-import android.view.View;
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.flutter.channel.qqcircle.QCircleSearchHistoryWords;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
 
-class atim
-  implements blkc
+public class atim
+  extends EntityManagerFactory
 {
-  atim(atik paramatik, View paramView) {}
-  
-  public void a()
+  public atim(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    super(paramString);
   }
+  
+  public SQLiteOpenHelper build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "qcircle_flutter_db_" + paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new QCircleSearchHistoryWords()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atim
  * JD-Core Version:    0.7.0.1
  */

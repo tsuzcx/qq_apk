@@ -1,14 +1,19 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajbr
-  implements akgj
+  implements View.OnClickListener
 {
-  public ajbr(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  public ajbr(Conversation paramConversation) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.a.a.a(paramMotionEvent);
+    this.a.a.b.performClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

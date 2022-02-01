@@ -1,34 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.2;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-
 public class ohi
-  implements svx
 {
-  public ohi(ohf paramohf) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g;
   
-  public void a(boolean paramBoolean)
+  public ohi()
   {
-    AppInterface localAppInterface;
-    if ((ohf.a(this.a) instanceof BaseActivity))
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      localAppInterface = ((BaseActivity)ohf.a(this.a)).getAppInterface();
-      if ((localAppInterface != null) && (ohf.a(this.a) != null) && (!paramBoolean))
-      {
-        qtq localqtq = (qtq)localAppInterface.getManager(270);
-        if ((localqtq.a() != 1) || (!localqtq.b())) {
-          break label87;
-        }
-        ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
-    label87:
-    while (((qtw)localAppInterface.getManager(261)).a() != 1) {
-      return;
-    }
-    ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
+      paramObject = (ohi)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

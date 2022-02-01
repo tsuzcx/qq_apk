@@ -1,36 +1,46 @@
-import android.support.annotation.ColorInt;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.annotation.NonNull;
-
 public class swh
-  extends ClickableSpan
 {
-  private final int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public swh(@ColorInt int paramInt)
+  public String a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void onClick(@NonNull View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if (paramInt == 72) {
+      return this.d;
     }
+    if (paramInt == 73) {
+      return this.d;
+    }
+    if (paramInt == 2) {
+      return this.d;
+    }
+    if (paramInt == 3) {
+      return this.e;
+    }
+    if (paramInt == 12) {
+      return this.a;
+    }
+    if (paramInt == 9) {
+      return this.c;
+    }
+    if (paramInt == 10) {
+      return this.b;
+    }
+    return null;
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public String toString()
   {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("weibo : ").append(this.a).append("\n");
+    localStringBuilder.append("qq : ").append(this.d).append("\n");
+    localStringBuilder.append("wx : ").append(this.c).append("\n");
+    localStringBuilder.append("pyq : ").append(this.b).append("\n");
+    localStringBuilder.append("qzone : ").append(this.e).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

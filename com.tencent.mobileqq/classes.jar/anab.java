@@ -1,30 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonManager.RelatedEmotionSearchResult;
 
 public class anab
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public anab(CmGameLoadingView.2 param2) {}
+  public static final String TAG = "FavEmoRoamingObserver";
   
-  public void onClick(View paramView)
+  protected void onSearchRelatedEmoError(int paramInt) {}
+  
+  protected void onSearchRelatedEmoResponse(RelatedEmoticonManager.RelatedEmotionSearchResult paramRelatedEmotionSearchResult) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    if (this.a.jdField_a_of_type_Amxj != null) {
-      this.a.jdField_a_of_type_Amxj.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    switch (paramInt)
+    {
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
-      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      return;
+      if ((paramBoolean) && (paramObject != null))
+      {
+        onSearchRelatedEmoResponse((RelatedEmoticonManager.RelatedEmotionSearchResult)paramObject);
+        return;
+      }
+    } while (!(paramObject instanceof Integer));
+    onSearchRelatedEmoError(((Integer)paramObject).intValue());
   }
 }
 

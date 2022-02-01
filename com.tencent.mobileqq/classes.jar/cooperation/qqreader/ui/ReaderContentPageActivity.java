@@ -7,8 +7,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
-import bmqw;
-import bmrh;
+import bkvd;
+import bkvo;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -29,8 +29,9 @@ public class ReaderContentPageActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -47,10 +48,10 @@ public class ReaderContentPageActivity
         return;
         localObject = (ReaderBaseFragment)a();
       } while ((localObject == null) || (!((ReaderBaseFragment)localObject).b));
-      localObject = (bmrh)((ReaderBaseFragment)localObject).mSwiftTitleUI;
+      localObject = (bkvo)((ReaderBaseFragment)localObject).mSwiftTitleUI;
       localWindow = getWindow();
     } while ((localObject == null) || (localWindow == null));
-    ((bmrh)localObject).a(false, localWindow);
+    ((bkvo)localObject).a(false, localWindow);
   }
   
   @Override
@@ -70,7 +71,7 @@ public class ReaderContentPageActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bmqw.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
+    bkvd.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
   }
 }
 

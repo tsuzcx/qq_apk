@@ -1,23 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.Comparator;
 
-public class awgv
-  extends WebViewPlugin
+final class awgv
+  implements Comparator<String>
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public int a(String paramString1, String paramString2)
   {
-    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
-    {
-      paramJsBridgeListener = this.mRuntime.a();
-      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
-      paramString1.setFlags(67108864);
-      paramJsBridgeListener.startActivity(paramString1);
-      return false;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

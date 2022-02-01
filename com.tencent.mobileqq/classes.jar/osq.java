@@ -1,6 +1,6 @@
 public abstract interface osq
 {
-  public abstract void a();
+  public abstract void onViewState(boolean paramBoolean, String paramString);
 }
 
 

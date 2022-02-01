@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.manager;
 
 import android.os.Bundle;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import nnr;
 import org.json.JSONObject;
-import tns;
+import ttp;
 
 public final class GiftPackageManager$1
   implements Runnable
@@ -16,10 +16,10 @@ public final class GiftPackageManager$1
     try
     {
       Object localObject = new Bundle();
-      JSONObject localJSONObject = tns.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d);
-      nnr.a(new Bundle());
+      JSONObject localJSONObject = ttp.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d);
+      HttpUtil.addCookie(new Bundle());
       ((Bundle)localObject).putString("data", localJSONObject.toString());
-      localObject = nnr.a(BaseApplicationImpl.getContext(), "https://ag.qq.com/api/actionReport", "GET", (Bundle)localObject, null);
+      localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), "https://ag.qq.com/api/actionReport", "GET", (Bundle)localObject, null);
       if (localObject != null) {
         new JSONObject(new String((byte[])localObject));
       }
@@ -33,7 +33,7 @@ public final class GiftPackageManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.GiftPackageManager.1
  * JD-Core Version:    0.7.0.1
  */

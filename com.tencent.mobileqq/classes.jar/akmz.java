@@ -1,37 +1,68 @@
-import QC.CommonRsp;
-import QC.FaceRsp;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class akmz
-  extends aogx
+  extends akll
 {
-  public akmz(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
+  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
   {
-    if (paramFaceRsp != null)
+    int i;
+    if (paramView == null)
     {
-      int i = paramFaceRsp.authRet;
-      localObject = "null";
-      if (paramFaceRsp.stRet != null) {
-        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      paramaklg = null;
+      if (!"TroopAssistantEmptyItemBuilder".equals(paramaklg))
+      {
+        paramView = View.inflate(paramContext, 2131562900, null);
+        paramView.setTag("TroopAssistantEmptyItemBuilder");
+        paramaklg = paramContext.getResources();
+        this.b = paramaklg.getDimensionPixelSize(2131298793);
+        this.a = paramaklg.getDimensionPixelSize(2131298798);
+        this.c = paramaklg.getDimensionPixelSize(2131298800);
+        i = paramaklg.getDimensionPixelSize(2131299104);
+        this.d = (paramaklg.getDimensionPixelSize(2131299105) + i);
       }
-      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
-      if (i == 0) {
-        this.a.r = 0;
+      i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.d;
+      if (i <= this.c) {
+        break label210;
+      }
+      label124:
+      paramaklg = new AbsListView.LayoutParams(-1, -1);
+      paramaklg.width = -1;
+      paramaklg.height = i;
+      paramView.setLayoutParams(paramaklg);
+      if ((paramObject instanceof Integer))
+      {
+        paramObject = (Integer)paramObject;
+        paramaklg = (TextView)paramView.findViewById(2131379128);
+        if (paramObject.intValue() != 4) {
+          break label219;
+        }
+        paramaklg.setText(2131719091);
       }
     }
-    else
+    for (;;)
     {
-      return;
+      paramView.setTag(-1, Integer.valueOf(paramInt));
+      return paramView;
+      paramaklg = paramView.getTag();
+      break;
+      label210:
+      i = this.c;
+      break label124;
+      label219:
+      paramaklg.setText(2131694452);
     }
-    this.a.r = 1;
-    Object localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
-    this.a.startActivity((Intent)localObject);
   }
 }
 

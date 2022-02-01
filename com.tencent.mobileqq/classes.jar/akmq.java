@@ -1,59 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.util.SparseIntArray;
 
-public class akmq
-  extends biht
+final class akmq
+  extends SparseIntArray
 {
-  public akmq(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onDone(bihu parambihu)
+  akmq()
   {
-    super.onDone(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + parambihu.a() + ",errCode=" + parambihu.jdField_a_of_type_Int);
-    }
-    int i = parambihu.jdField_a_of_type_JavaLangString.indexOf("?");
-    String str;
-    if (i == -1)
-    {
-      str = parambihu.jdField_a_of_type_JavaLangString;
-      if (!bhkt.jdField_a_of_type_JavaLangString.equals(str)) {
-        break label290;
-      }
-      if ((parambihu.jdField_a_of_type_Int != 0) || (parambihu.f != 200)) {
-        break label237;
-      }
-      str = bhkt.b + "/icon.zip";
-      localFile = new File(bhkt.c);
-      if (bihw.a(new File(str), localFile, false)) {
-        break label215;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + parambihu.f + ", url: " + parambihu.jdField_a_of_type_JavaLangString);
-      }
-      bhmi.a(bhkt.b);
-    }
-    label215:
-    label237:
-    while (!QLog.isColorLevel())
-    {
-      File localFile;
-      return;
-      str = parambihu.jdField_a_of_type_JavaLangString.substring(0, i);
-      break;
-      AvatarPendantActivity.c(this.a);
-      this.a.a.sendEmptyMessage(1000);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + parambihu.f + ", url: " + parambihu.jdField_a_of_type_JavaLangString);
-      }
-      bhmi.a(bhkt.b);
-      return;
-    }
-    label290:
-    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + parambihu.jdField_a_of_type_JavaLangString + ",errCode:" + parambihu.jdField_a_of_type_Int + ",httpCode:" + parambihu.f);
+    put(0, 1);
+    put(1, 2);
+    put(3000, 3);
+    put(1004, 4);
+    put(1006, 5);
+    put(1000, 6);
+    put(1022, 8);
+    put(1001, 10);
+    put(10004, 10);
+    put(10002, 10);
+    put(5000, 11);
+    put(9000, 12);
+    put(1002, 13);
+    put(9002, 14);
+    put(7230, 17);
+    put(7120, 18);
+    put(9501, 19);
+    put(6000, 20);
+    put(7000, 21);
+    put(9999, 22);
+    put(1023, 23);
+    put(1005, 24);
+    put(1024, 25);
+    put(1025, 26);
+    put(7220, 29);
+    put(10008, 31);
+    put(10009, 32);
   }
 }
 

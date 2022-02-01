@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui;
 
-import aixt;
-import aiyb;
-import aiyc;
-import aiyu;
+import ahse;
+import ahsm;
+import ahsn;
+import ahtf;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -18,7 +18,7 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-import bdep;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.widget.XPanelContainer;
 
 public class VoiceTextEditScrollerView
@@ -26,7 +26,7 @@ public class VoiceTextEditScrollerView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private aixt jdField_a_of_type_Aixt;
+  private ahse jdField_a_of_type_Ahse;
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private boolean jdField_a_of_type_Boolean;
@@ -84,8 +84,8 @@ public class VoiceTextEditScrollerView
     int i = XPanelContainer.jdField_a_of_type_Int;
     int j = getHeight();
     int k = getHeight();
-    if (this.jdField_a_of_type_Aixt != null) {
-      this.jdField_a_of_type_Aixt.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
+    if (this.jdField_a_of_type_Ahse != null) {
+      this.jdField_a_of_type_Ahse.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
     }
     b();
   }
@@ -108,15 +108,15 @@ public class VoiceTextEditScrollerView
     this.f = -1.0F;
     this.jdField_b_of_type_Boolean = false;
     d(paramMotionEvent);
-    if (this.jdField_a_of_type_Aixt != null) {
-      this.jdField_a_of_type_Aixt.a(this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Ahse != null) {
+      this.jdField_a_of_type_Ahse.a(this.jdField_b_of_type_Int);
     }
   }
   
   private boolean a(float paramFloat)
   {
     paramFloat = a(paramFloat);
-    return (this.f > 2000.0F) || (paramFloat > bdep.a(150.0F)) || (!this.jdField_b_of_type_Boolean);
+    return (this.f > 2000.0F) || (paramFloat > ScreenUtil.dip2px(150.0F)) || (!this.jdField_b_of_type_Boolean);
   }
   
   private void b()
@@ -126,13 +126,13 @@ public class VoiceTextEditScrollerView
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
-        aiyu.a("0X800A8A0", 3, 0);
+        ahtf.a("0X800A8A0", 3, 0);
         return;
       }
-      aiyu.a("0X800A8A0", 2, 0);
+      ahtf.a("0X800A8A0", 2, 0);
       return;
     }
-    aiyu.a("0X800A8A0", 1, 0);
+    ahtf.a("0X800A8A0", 1, 0);
   }
   
   private void b(MotionEvent paramMotionEvent)
@@ -169,8 +169,8 @@ public class VoiceTextEditScrollerView
   {
     if (this.jdField_c_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Aixt != null) {
-        this.jdField_a_of_type_Aixt.a();
+      if (this.jdField_a_of_type_Ahse != null) {
+        this.jdField_a_of_type_Ahse.a();
       }
       this.jdField_c_of_type_Boolean = false;
     }
@@ -178,7 +178,7 @@ public class VoiceTextEditScrollerView
   
   private void c(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Aixt != null)
+    if (this.jdField_a_of_type_Ahse != null)
     {
       c();
       if (a(paramMotionEvent.getRawY())) {
@@ -191,7 +191,7 @@ public class VoiceTextEditScrollerView
     }
     int i = this.jdField_d_of_type_Int;
     int j = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Aixt.a(i - j, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Ahse.a(i - j, this.jdField_c_of_type_Int);
   }
   
   private void d(MotionEvent paramMotionEvent)
@@ -203,9 +203,9 @@ public class VoiceTextEditScrollerView
   {
     ValueAnimator localValueAnimator = ObjectAnimator.ofFloat(new float[] { paramInt1, paramInt2 }).setDuration(paramInt6);
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new aiyb(this, paramInt4, paramInt3, paramView));
+    localValueAnimator.addUpdateListener(new ahsm(this, paramInt4, paramInt3, paramView));
     localValueAnimator.start();
-    localValueAnimator.addListener(new aiyc(this, paramInt5));
+    localValueAnimator.addListener(new ahsn(this, paramInt5));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -239,9 +239,9 @@ public class VoiceTextEditScrollerView
     }
   }
   
-  public void setListener(aixt paramaixt)
+  public void setListener(ahse paramahse)
   {
-    this.jdField_a_of_type_Aixt = paramaixt;
+    this.jdField_a_of_type_Ahse = paramahse;
   }
   
   public void setMaskClick(boolean paramBoolean)

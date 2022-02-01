@@ -1,121 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-public class aseh
-  extends asdn
+class aseh
 {
-  public static final String[] a = (String[])new String[] { "libgnustl_shared.so", "libjsc.so" };
+  private int jdField_a_of_type_Int;
+  private asec jdField_a_of_type_Asec;
   
-  public aseh(QQAppInterface paramQQAppInterface)
+  public aseh(aseg paramaseg, asec paramasec)
   {
-    super("android.qq.readinjoy.viola_795", paramQQAppInterface);
-  }
-  
-  public static void f()
-  {
-    if (i()) {}
-    do
-    {
-      return;
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (asde)((QQAppInterface)localObject).getManager(77);
-        if (localObject != null)
-        {
-          localObject = (aseh)((asde)localObject).a("android.qq.readinjoy.viola_795");
-          if (localObject != null)
-          {
-            ((aseh)localObject).a(true);
-            QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
-          }
-        }
-      }
-    } while (aseg.i());
-    aseg.f();
-  }
-  
-  public static boolean i()
-  {
-    String str = pfr.a();
-    int i = 0;
-    while (i < a.length)
-    {
-      File localFile = new File(str, a[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
+    this.jdField_a_of_type_Asec = paramasec;
   }
   
   public int a()
   {
-    return 10071;
+    return this.jdField_a_of_type_Int;
   }
   
-  public Class<? extends XmlData> a()
+  public asec a()
   {
-    return ViolaLibData.class;
+    return this.jdField_a_of_type_Asec;
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return "viola.ViolaLibHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaLibHandler", 1, "version:" + localXmlData.Version);
-    }
-    if (new File(paramString).exists())
-    {
-      if (pfr.a(paramString)) {
-        break label124;
-      }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        asdd.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess],unzip readinjoy_viola lib failed!");
-    }
-    label124:
-    do
-    {
-      return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_795").commit();
-      }
-    } while (!aseg.i());
-    pfl.a("jsc doOnDownloadSuccess");
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aseh
  * JD-Core Version:    0.7.0.1
  */

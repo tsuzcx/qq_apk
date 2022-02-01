@@ -1,32 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdi
-  extends wou
+  extends QQUIEventReceiver<IEventReceiver, wcs>
 {
-  public List<ylw> a = new ArrayList();
-  public boolean b;
-  
-  public xdi(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
+  public xdi(@NonNull IEventReceiver paramIEventReceiver)
   {
-    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
-    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
-    for (;;)
+    super(paramIEventReceiver);
+  }
+  
+  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull wcs paramwcs)
+  {
+    if (paramwcs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.b = bool;
-      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
-      while (paramRspStoryFeedIdList.hasNext())
-      {
-        ylw localylw = new ylw((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
-        this.a.add(localylw);
-      }
-      bool = false;
+      QQToast.a(wkp.a(), 2, amtj.a(2131710144), 0).a();
+      xwa.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramwcs.jdField_a_of_type_Int), "5" });
+      return;
     }
+    QQToast.a(wkp.a(), 1, amtj.a(2131710139), 0).a();
+    xwa.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wcs.class;
   }
 }
 

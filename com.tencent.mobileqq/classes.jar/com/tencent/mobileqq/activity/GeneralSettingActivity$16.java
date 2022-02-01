@@ -1,24 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import bdgb;
+import android.widget.CompoundButton;
+import bbyj;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class GeneralSettingActivity$16
   implements Runnable
 {
-  GeneralSettingActivity$16(GeneralSettingActivity paramGeneralSettingActivity) {}
+  GeneralSettingActivity$16(GeneralSettingActivity paramGeneralSettingActivity, boolean paramBoolean1, int paramInt, CompoundButton paramCompoundButton, boolean paramBoolean2) {}
   
   public void run()
   {
-    if (this.this$0.isFinishing()) {}
-    while ((!bdgb.b()) || (this.this$0.a())) {
-      return;
+    if (!((bbyj)this.this$0.app.getBusinessHandler(154)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
+    {
+      this.this$0.e(2131718228, 0);
+      GeneralSettingActivity localGeneralSettingActivity = this.this$0;
+      CompoundButton localCompoundButton = this.jdField_a_of_type_AndroidWidgetCompoundButton;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localGeneralSettingActivity.a(localCompoundButton, bool);
+        return;
+      }
     }
-    this.this$0.a(true, bdgb.c());
+    GeneralSettingActivity.a(this.this$0, true, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.16
  * JD-Core Version:    0.7.0.1
  */

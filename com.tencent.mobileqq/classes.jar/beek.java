@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import java.util.UUID;
 
-public class beek
-  implements DialogInterface.OnClickListener
+class beek
+  implements ProxyListener
 {
-  public beek(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  beek(beeh parambeeh, UUID paramUUID) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
   }
 }
 

@@ -1,16 +1,46 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkAppManagerPanel;
+import com.tencent.widget.XPanelContainer;
 
-class agwu
-  implements bfmk
+public class agwu
+  implements agxf<ArkAppManagerPanel>
 {
-  agwu(agwt paramagwt, String paramString) {}
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private ArkAppManagerPanel jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
   
-  public void a()
+  public agwu(BaseChatPie paramBaseChatPie)
   {
-    if (agwt.a(this.jdField_a_of_type_Agwt).a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      agwt.a(this.jdField_a_of_type_Agwt).I();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public int a()
+  {
+    return 30;
+  }
+  
+  public ArkAppManagerPanel a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+  }
+  
+  public ArkAppManagerPanel a(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558696, null));
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
+    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(XPanelContainer paramXPanelContainer) {}
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

@@ -1,17 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ayfk
-  implements DialogInterface.OnClickListener
+  extends aptq<ayfl>
 {
-  public ayfk(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public ayfl a(int paramInt)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    return new ayfl();
+  }
+  
+  @Nullable
+  public ayfl a(aptx[] paramArrayOfaptx)
+  {
+    ayfl localayfl = new ayfl();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
+      ayfl.a(localayfl, paramArrayOfaptx[0].a);
     }
+    return localayfl;
+  }
+  
+  public void a(ayfl paramayfl) {}
+  
+  public Class<ayfl> clazz()
+  {
+    return ayfl.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 495;
   }
 }
 

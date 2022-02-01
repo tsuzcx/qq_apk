@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import auxu;
-import bmtd;
-import bmtk;
+import atky;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -22,7 +20,10 @@ import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.share.QZoneShareActivity;
 import eipc.EIPCClient;
 import mqq.app.AppRuntime;
@@ -36,7 +37,7 @@ public class ShareUtils
   {
     if ((paramInt1 == 1010) && (paramInt2 == -1) && (paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      Intent localIntent = agej.a(new Intent(paramActivity, SplashActivity.class), null);
+      Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(paramActivity, SplashActivity.class), null);
       Bundle localBundle = new Bundle();
       localBundle.putString("key_mini_report_event_action_type", "user_click");
       localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
@@ -110,6 +111,11 @@ public class ShareUtils
   
   public static void startSharePicToQQ(Activity paramActivity, String paramString)
   {
+    startSharePicToQQ(paramActivity, paramString, null);
+  }
+  
+  public static void startSharePicToQQ(Activity paramActivity, String paramString, ShareChatModel paramShareChatModel)
+  {
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQQ. localPicPath=" + paramString);
     }
@@ -121,17 +127,18 @@ public class ShareUtils
     localBundle.putString("forward_urldrawable_thumb_url", paramString);
     localBundle.putString("forward_filepath", paramString);
     localBundle.putString("forward_extra", paramString);
-    paramString = new Intent();
-    paramString.putExtras(localBundle);
     if ((com.tencent.mobileqq.mini.app.AppLoaderFactory.isSDKMode()) || ((paramActivity instanceof GameActivity1))) {
       com.tencent.qqmini.sdk.launcher.AppLoaderFactory.g().getCommonManager().addActivityResultListener(new ShareUtils.1(paramActivity));
     }
-    for (;;)
+    while (paramShareChatModel == null)
     {
-      auxu.a(paramActivity, paramString, 1010);
+      paramString = new Intent();
+      paramString.putExtras(localBundle);
+      atky.a(paramActivity, paramString, 1010);
       return;
       MiniAppController.getInstance().setActivityResultListener(new ShareUtils.2(paramActivity));
     }
+    MiniProgramShareUtils.shareToChatDirectly(paramActivity, localBundle, paramShareChatModel.type, String.valueOf(paramShareChatModel.uin), paramShareChatModel.name, 1010, true);
   }
   
   public static void startSharePicToQzone(Activity paramActivity, String paramString1, String paramString2)
@@ -139,9 +146,9 @@ public class ShareUtils
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. localPicPath=" + paramString1);
     }
-    bmtk localbmtk = bmtk.a();
-    localbmtk.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bmtd.a(paramActivity, localbmtk, paramString1, paramString2, "", -1);
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+    localUserInfo.qzone_uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    QZoneHelper.forwardToPublishMood(paramActivity, localUserInfo, paramString1, paramString2, "", -1);
     paramActivity = new Bundle();
     paramActivity.putString("key_mini_report_event_action_type", "user_click");
     paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");
@@ -152,13 +159,13 @@ public class ShareUtils
   
   public static void startSharePicToWeChat(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (!WXShareHelper.a().a()) {
+    if (!WXShareHelper.getInstance().isWXinstalled()) {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.3(paramActivity));
     }
     do
     {
       return;
-      if (!WXShareHelper.a().b())
+      if (!WXShareHelper.getInstance().isWXsupportApi())
       {
         ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.4(paramActivity));
         return;
@@ -169,7 +176,7 @@ public class ShareUtils
       paramActivity = BitmapFactory.decodeFile(paramString);
       if (paramBoolean)
       {
-        WXShareHelper.a().a(paramString, paramActivity, 0);
+        WXShareHelper.getInstance().shareImageToWX(paramString, paramActivity, 0);
         return;
       }
     }
@@ -178,7 +185,7 @@ public class ShareUtils
       paramActivity.printStackTrace();
       return;
     }
-    WXShareHelper.a().a(paramString, paramActivity, 1);
+    WXShareHelper.getInstance().shareImageToWX(paramString, paramActivity, 1);
   }
   
   public static void startShareToQzone(Activity paramActivity, String paramString1, String paramString2, String paramString3, ApkgInfo paramApkgInfo, boolean paramBoolean)
@@ -210,12 +217,12 @@ public class ShareUtils
   
   public static void startShareToWeChat(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt, ApkgInfo paramApkgInfo)
   {
-    if (!WXShareHelper.a().a())
+    if (!WXShareHelper.getInstance().isWXinstalled())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.5(paramActivity));
       return;
     }
-    if (!WXShareHelper.a().b())
+    if (!WXShareHelper.getInstance().isWXsupportApi())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.6(paramActivity));
       return;

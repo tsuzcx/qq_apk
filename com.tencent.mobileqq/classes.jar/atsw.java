@@ -1,59 +1,80 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class atsw
-  implements atqw
+public class atsw
+  extends unp
 {
-  atsw(atsv paramatsv, String paramString, atte paramatte) {}
+  public atsw(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    super.installSucceed(paramString1, paramString2);
+    QQSettingMsgClearFragment.a(this.a, paramString1, paramString2);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("QQSettingMsgClearFragment", 2, "qq onDownloadCancel info = " + paramDownloadInfo);
     }
-    for (;;)
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadError errorCode = " + paramInt1 + "errorMsg = " + paramString + ", state = " + paramInt2 + ", info = " + paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    QQSettingMsgClearFragment.a(paramDownloadInfo, "YYB");
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    if (QLog.isColorLevel()) {
+      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadPause info = " + paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    super.onDownloadUpdate(paramList);
+    if ((QLog.isColorLevel()) && (paramList != null) && (paramList.size() > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsv.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Atsv.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        QLog.w("QQSettingMsgClearFragment", 2, "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
       }
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    paramString2 = new Bundle();
-    paramString2.putString("_m_ForwardFileType", "2");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Atsv.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Atsv.jdField_a_of_type_Long + "");
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Atsv.c);
-    paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atsv.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atsv.f);
-    paramString2.putString("_m_ForwardUuid", paramString1);
+    super.onDownloadWait(paramDownloadInfo);
     if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsv.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
+      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadWait info = " + paramDownloadInfo);
     }
-    this.jdField_a_of_type_Atte.a(paramString1, paramString2);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    super.packageReplaced(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.e("QQSettingMsgClearFragment", 2, "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsw
  * JD-Core Version:    0.7.0.1
  */

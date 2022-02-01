@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class asxs
-  extends asvt
+class asxs
+  implements aszj
 {
-  public asxs(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  asxs(asxp paramasxp, List paramList) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendCampusFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((paramBoolean) && (ExtendFriendCampusFragment.a(this.a) != null)) {
-      ExtendFriendCampusFragment.a(this.a);
-    }
+    ataw.a(asxp.a(this.jdField_a_of_type_Asxp), this.jdField_a_of_type_JavaUtilList, asxp.a(this.jdField_a_of_type_Asxp), asxp.a(this.jdField_a_of_type_Asxp));
   }
 }
 

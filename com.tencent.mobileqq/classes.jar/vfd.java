@@ -1,38 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class vfd
-  extends BroadcastReceiver
+public class vfd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private vfd(vfa paramvfa) {}
+  public vfd(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGlobalLayout()
   {
-    int i;
-    int j;
-    if ("action_update_native_auth_info".equals(paramIntent.getAction()))
-    {
-      i = paramIntent.getIntExtra("type", 1);
-      j = paramIntent.getIntExtra("status", 0);
-      paramContext = paramIntent.getStringExtra("tagName");
-      if (i != 2) {
-        break label59;
-      }
-      i = uzg.a(j);
-      uzg.a(uyn.a(), i, paramContext);
+    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
     }
-    for (;;)
-    {
-      uyn.b();
+    if (i > 150) {
+      PublicAccountImageCollectionCommentActivity.a(this.a, true);
+    }
+    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
       return;
-      label59:
-      if (i == 3)
-      {
-        i = uzg.a(j);
-        uzg.a(uyn.b(), i, paramContext);
-      }
     }
+    PublicAccountImageCollectionCommentActivity.a(this.a, false);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 

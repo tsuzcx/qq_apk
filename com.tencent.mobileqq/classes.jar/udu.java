@@ -1,44 +1,43 @@
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class udu
-  implements bltz
+  extends NativeGifImage
 {
-  public udu(WSRecommendFragment paramWSRecommendFragment) {}
+  private int jdField_a_of_type_Int = 3;
+  private udv jdField_a_of_type_Udv;
+  
+  public udu(File paramFile, boolean paramBoolean, int paramInt)
+  {
+    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
   public void a()
   {
-    uqf.b("WSRecommendFragment", "endOfRefresh");
-    this.a.a.d();
+    this.jdField_a_of_type_Udv = null;
   }
   
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  public void a(udv paramudv)
   {
-    uqf.b("WSRecommendFragment", "startLoadMore");
-    ((une)this.a.b()).a(false, false, "");
+    this.jdField_a_of_type_Udv = paramudv;
   }
   
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  public void executeNewTask()
   {
-    uqf.b("WSRecommendFragment", "startTopRefresh");
-    if (WSRecommendFragment.a(this.a)) {
-      WSRecommendFragment.a(this.a, false);
-    }
-    do
+    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
     {
-      return;
-      if (!WSRecommendFragment.b(this.a)) {
-        WSRecommendFragment.b(this.a, true);
+      if (this.jdField_a_of_type_Udv != null) {
+        this.jdField_a_of_type_Udv.a();
       }
-      WSRecommendFragment.a(this.a, System.currentTimeMillis());
-      ((une)this.a.b()).a(true, false, "");
-    } while (WSRecommendFragment.c(this.a));
-    ((une)this.a.b()).a("");
+      return;
+    }
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udu
  * JD-Core Version:    0.7.0.1
  */

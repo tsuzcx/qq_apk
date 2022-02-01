@@ -1,351 +1,501 @@
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.URLInterceptManager.1;
-import com.tencent.mobileqq.vas.URLInterceptManager.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class bhzh
-  implements Manager
 {
-  public static int a;
-  public static String a;
-  public static int b;
-  public static int c;
-  public static int d = 3;
-  Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  Map<String, String> b;
-  Map<String, String> c;
+  protected static Uri a;
+  protected static final String a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "URLInterceptManager";
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
+    jdField_a_of_type_JavaLangString = bhzh.class.getName();
+    jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
   }
   
-  public bhzh(Context paramContext)
+  /* Error */
+  public static int a(Context paramContext)
   {
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new URLInterceptManager.1(this, paramContext), 8, null, true);
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 40	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   4: getstatic 27	bhzh:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   7: aconst_null
+    //   8: aconst_null
+    //   9: aconst_null
+    //   10: aconst_null
+    //   11: invokevirtual 46	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   14: astore_3
+    //   15: aload_3
+    //   16: ifnonnull +17 -> 33
+    //   19: aload_3
+    //   20: ifnull +9 -> 29
+    //   23: aload_3
+    //   24: invokeinterface 51 1 0
+    //   29: iconst_m1
+    //   30: istore_1
+    //   31: iload_1
+    //   32: ireturn
+    //   33: aload_3
+    //   34: astore_0
+    //   35: aload_3
+    //   36: invokeinterface 55 1 0
+    //   41: pop
+    //   42: aload_3
+    //   43: astore_0
+    //   44: aload_3
+    //   45: aload_3
+    //   46: ldc 57
+    //   48: invokeinterface 61 2 0
+    //   53: invokeinterface 65 2 0
+    //   58: istore_2
+    //   59: iload_2
+    //   60: istore_1
+    //   61: aload_3
+    //   62: ifnull -31 -> 31
+    //   65: aload_3
+    //   66: invokeinterface 51 1 0
+    //   71: iload_2
+    //   72: ireturn
+    //   73: astore 4
+    //   75: aconst_null
+    //   76: astore_3
+    //   77: aload_3
+    //   78: astore_0
+    //   79: aload 4
+    //   81: invokevirtual 68	java/lang/Exception:printStackTrace	()V
+    //   84: aload_3
+    //   85: ifnull +9 -> 94
+    //   88: aload_3
+    //   89: invokeinterface 51 1 0
+    //   94: iconst_m1
+    //   95: ireturn
+    //   96: astore_3
+    //   97: aconst_null
+    //   98: astore_0
+    //   99: aload_0
+    //   100: ifnull +9 -> 109
+    //   103: aload_0
+    //   104: invokeinterface 51 1 0
+    //   109: aload_3
+    //   110: athrow
+    //   111: astore_3
+    //   112: goto -13 -> 99
+    //   115: astore 4
+    //   117: goto -40 -> 77
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	120	0	paramContext	Context
+    //   30	31	1	i	int
+    //   58	14	2	j	int
+    //   14	75	3	localCursor	android.database.Cursor
+    //   96	14	3	localObject1	Object
+    //   111	1	3	localObject2	Object
+    //   73	7	4	localException1	Exception
+    //   115	1	4	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	15	73	java/lang/Exception
+    //   0	15	96	finally
+    //   35	42	111	finally
+    //   44	59	111	finally
+    //   79	84	111	finally
+    //   35	42	115	java/lang/Exception
+    //   44	59	115	java/lang/Exception
   }
   
-  public bhzh(QQAppInterface paramQQAppInterface)
+  public static String a(Context paramContext)
   {
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  private void a(JSONObject paramJSONObject)
-  {
-    int i;
-    String str1;
-    label65:
-    String str2;
-    label84:
-    int j;
-    label120:
-    String str3;
-    if (paramJSONObject != null)
-    {
-      try
-      {
-        if (!paramJSONObject.has("urltoapi")) {
-          break label399;
-        }
-        paramJSONObject = paramJSONObject.getJSONArray("urltoapi");
-      }
-      catch (Exception paramJSONObject)
-      {
-        label146:
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "doParseJson fail: " + paramJSONObject.getMessage());
-      }
-      if (i >= paramJSONObject.length()) {
-        break label369;
-      }
-      localObject = paramJSONObject.getJSONObject(i);
-      if (localObject == null) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("url")) {
-        break label404;
-      }
-      str1 = ((JSONObject)localObject).getString("url");
-      break label387;
-      if (!((JSONObject)localObject).has("api")) {
-        break label308;
-      }
-      str2 = ((JSONObject)localObject).getString("api");
-      if ((TextUtils.isEmpty(str2)) || (!str2.startsWith("mqqapi"))) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("match_type")) {
-        break label314;
-      }
-      j = ((JSONObject)localObject).getInt("match_type");
-      if (j == jdField_a_of_type_Int) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("minVer")) {
-        break label410;
-      }
-      str3 = ((JSONObject)localObject).getString("minVer");
-      if (TextUtils.isEmpty(str3)) {
-        break label392;
-      }
-      if (!((JSONObject)localObject).has("maxVer")) {
-        break label416;
-      }
+    int i = b(paramContext);
+    if (i == 2) {
+      paramContext = "wifi";
     }
-    label387:
-    label392:
-    label399:
-    label402:
-    label404:
-    label408:
-    label410:
-    label416:
-    for (Object localObject = ((JSONObject)localObject).getString("maxVer");; localObject = null)
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (bhyh.a("8.4.5", (String)localObject)) && (bhyh.a(str3, "8.4.5")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "Parse from Json: URL = " + str1 + " API = " + str2 + " type = " + j);
-        }
-        if (j == jdField_b_of_type_Int)
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(str1, str2);
-          break label392;
-          return;
-          label308:
-          str2 = null;
-          break label84;
-          label314:
-          j = jdField_a_of_type_Int;
-          break label120;
-        }
-        if (j == jdField_c_of_type_Int)
-        {
-          this.jdField_b_of_type_JavaUtilMap.put(str1, str2);
-        }
-        else if (j == d)
-        {
-          this.jdField_c_of_type_JavaUtilMap.put(str1, str2);
-          break label392;
-          label369:
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          return;
-          label378:
-          if (paramJSONObject == null) {
-            break label402;
-          }
-          i = 0;
-          break;
-        }
-      }
-      for (;;)
-      {
-        if (str1 != null) {
-          break label408;
-        }
-        i += 1;
-        break;
-        paramJSONObject = null;
-        break label378;
-        break label369;
-        str1 = null;
-      }
-      break label65;
-      str3 = null;
-      break label146;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "checkURL fail config not load");
-      }
-      return null;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "checkURL url = null");
-      }
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL original url = " + paramString);
-    }
-    String str1 = paramString;
-    if (paramString.contains("www.urlshare.cn/umirror_url_check"))
-    {
-      i = paramString.indexOf("&url=");
-      str1 = paramString;
-      if (i > 0)
-      {
-        i += 5;
-        j = paramString.indexOf("&src_uin", i);
-        str1 = paramString;
-        if (j > i) {
-          str1 = paramString.substring(i, j);
-        }
-      }
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(str1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL full match url=" + str1 + " Replace with: " + (String)this.jdField_a_of_type_JavaUtilMap.get(str1));
-      }
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(str1);
-    }
-    int i = str1.indexOf("?");
-    int j = str1.indexOf("#");
-    int k = Math.min(i, j);
-    if (k > 0) {
-      paramString = str1.substring(0, k);
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL without param match url=" + str1 + " Replace with: " + (String)this.jdField_b_of_type_JavaUtilMap.get(paramString));
-        }
-        return (String)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-        i = Math.max(i, j);
-        if (i > 0) {
-          paramString = str1.substring(0, i);
-        }
-      }
-      else
-      {
-        if (this.jdField_c_of_type_JavaUtilMap.keySet().size() > 0)
-        {
-          paramString = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
-          while (paramString.hasNext())
-          {
-            String str2 = (String)paramString.next();
-            if (str1.startsWith(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL part match url=" + str1 + " Replace with: " + (String)this.jdField_c_of_type_JavaUtilMap.get(str1));
-              }
-              return (String)this.jdField_c_of_type_JavaUtilMap.get(str2);
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL not match! url = " + str1);
-        }
-        return null;
-      }
-      paramString = str1;
-    }
-  }
-  
-  public void a(Context paramContext)
-  {
-    String str = bhwl.h.jdField_a_of_type_JavaLangString;
-    paramContext = new File(paramContext.getFilesDir(), str);
-    if (paramContext.exists()) {
-      try
-      {
-        paramContext = bhmi.a(paramContext);
-        if (paramContext == null) {}
-      }
-      catch (OutOfMemoryError paramContext)
-      {
-        for (;;)
-        {
-          try
-          {
-            a(new JSONObject(paramContext));
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            QLog.e(jdField_a_of_type_JavaLangString, 1, "getJsonError,Exception:" + str + paramContext.getMessage());
-            return;
-          }
-          paramContext = paramContext;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_a_of_type_JavaLangString, 2, "getJsonOOM,json_name:" + str + paramContext.getMessage());
-          }
-          paramContext = null;
-        }
-      }
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "json file not exist");
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    a(bhwl.a(paramQQAppInterface, bhwl.h, true));
-  }
-  
-  public boolean a(Intent paramIntent, Activity paramActivity)
-  {
-    if ((paramIntent.getComponent() != null) && ("com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramIntent.getComponent().getClassName())))
-    {
-      paramIntent = a(paramIntent.getStringExtra("url"));
-      if (!TextUtils.isEmpty(paramIntent))
-      {
-        Intent localIntent = new Intent(paramActivity, JumpActivity.class);
-        localIntent.setData(Uri.parse(paramIntent));
-        localIntent.putExtra("from", "webview");
-        paramActivity.startActivity(localIntent);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(Intent paramIntent, QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if ((paramIntent.getComponent() != null) && ("com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramIntent.getComponent().getClassName())))
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        break label51;
-      }
-      ThreadManager.post(new URLInterceptManager.2(this, paramQQAppInterface), 8, null, true);
-    }
-    label51:
+    String str;
     do
     {
-      do
-      {
-        return false;
-        paramIntent = a(paramIntent.getStringExtra("url"));
-      } while (TextUtils.isEmpty(paramIntent));
-      paramIntent = bhni.a(paramQQAppInterface, paramContext, paramIntent);
-    } while (paramIntent == null);
-    paramIntent.a();
-    return true;
+      return paramContext;
+      if (i == 1) {
+        return "cmwap";
+      }
+      if (i == 4) {
+        return "cmnet";
+      }
+      if (i == 16) {
+        return "uniwap";
+      }
+      if (i == 8) {
+        return "uninet";
+      }
+      if (i == 64) {
+        return "wap";
+      }
+      if (i == 32) {
+        return "net";
+      }
+      if (i == 512) {
+        return "ctwap";
+      }
+      if (i == 256) {
+        return "ctnet";
+      }
+      if (i == 2048) {
+        return "3gnet";
+      }
+      if (i == 1024) {
+        return "3gwap";
+      }
+      str = b(paramContext);
+      if (str == null) {
+        break;
+      }
+      paramContext = str;
+    } while (str.length() != 0);
+    return "none";
   }
   
-  public void onDestroy() {}
+  public static boolean a(Context paramContext)
+  {
+    int i = b(paramContext);
+    return (i == 1) || (i == 16) || (i == 64) || (i == 512) || (i == 1024);
+  }
+  
+  public static int b(Context paramContext)
+  {
+    try
+    {
+      Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (localObject == null) {
+        return 128;
+      }
+      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+      if (localObject == null) {
+        return 128;
+      }
+      if (((NetworkInfo)localObject).getTypeName().toUpperCase().equals("WIFI")) {
+        return 2;
+      }
+      localObject = ((NetworkInfo)localObject).getExtraInfo().toLowerCase();
+      if (((String)localObject).startsWith("cmwap")) {
+        return 1;
+      }
+      if ((((String)localObject).startsWith("cmnet")) || (((String)localObject).startsWith("epc.tmobile.com"))) {
+        break label232;
+      }
+      if (((String)localObject).startsWith("uniwap")) {
+        return 16;
+      }
+      if (((String)localObject).startsWith("uninet")) {
+        return 8;
+      }
+      if (((String)localObject).startsWith("wap")) {
+        return 64;
+      }
+      if (((String)localObject).startsWith("net")) {
+        return 32;
+      }
+      if (((String)localObject).startsWith("ctwap")) {
+        return 512;
+      }
+      if (((String)localObject).startsWith("ctnet")) {
+        return 256;
+      }
+      if (((String)localObject).startsWith("3gwap")) {
+        return 1024;
+      }
+      if (((String)localObject).startsWith("3gnet")) {
+        return 2048;
+      }
+      if (((String)localObject).startsWith("#777"))
+      {
+        paramContext = c(paramContext);
+        if (paramContext != null)
+        {
+          int i = paramContext.length();
+          if (i > 0) {
+            return 512;
+          }
+        }
+        return 256;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 128;
+    label232:
+    return 4;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    return AppNetConnInfo.getCurrentAPN();
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getActiveNetworkInfo();
+    return (paramContext != null) && (paramContext.isAvailable());
+  }
+  
+  /* Error */
+  public static String c(Context paramContext)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: aload_0
+    //   3: invokevirtual 40	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   6: getstatic 27	bhzh:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   9: aconst_null
+    //   10: aconst_null
+    //   11: aconst_null
+    //   12: aconst_null
+    //   13: invokevirtual 46	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   16: astore_0
+    //   17: aload_0
+    //   18: ifnonnull +17 -> 35
+    //   21: aload_0
+    //   22: ifnull +9 -> 31
+    //   25: aload_0
+    //   26: invokeinterface 51 1 0
+    //   31: aconst_null
+    //   32: astore_1
+    //   33: aload_1
+    //   34: areturn
+    //   35: aload_0
+    //   36: invokeinterface 55 1 0
+    //   41: pop
+    //   42: aload_0
+    //   43: aload_0
+    //   44: ldc 158
+    //   46: invokeinterface 61 2 0
+    //   51: invokeinterface 162 2 0
+    //   56: astore_2
+    //   57: aload_2
+    //   58: astore_1
+    //   59: aload_0
+    //   60: ifnull -27 -> 33
+    //   63: aload_0
+    //   64: invokeinterface 51 1 0
+    //   69: aload_2
+    //   70: areturn
+    //   71: astore_2
+    //   72: aload_1
+    //   73: astore_0
+    //   74: aload_2
+    //   75: astore_1
+    //   76: aload_1
+    //   77: invokevirtual 68	java/lang/Exception:printStackTrace	()V
+    //   80: aload_0
+    //   81: ifnull +9 -> 90
+    //   84: aload_0
+    //   85: invokeinterface 51 1 0
+    //   90: ldc 164
+    //   92: areturn
+    //   93: astore_1
+    //   94: aconst_null
+    //   95: astore_0
+    //   96: aload_0
+    //   97: ifnull +9 -> 106
+    //   100: aload_0
+    //   101: invokeinterface 51 1 0
+    //   106: aload_1
+    //   107: athrow
+    //   108: astore_1
+    //   109: goto -13 -> 96
+    //   112: astore_1
+    //   113: goto -17 -> 96
+    //   116: astore_1
+    //   117: goto -41 -> 76
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	120	0	paramContext	Context
+    //   1	76	1	localObject1	Object
+    //   93	14	1	localObject2	Object
+    //   108	1	1	localObject3	Object
+    //   112	1	1	localObject4	Object
+    //   116	1	1	localException1	Exception
+    //   56	14	2	str	String
+    //   71	4	2	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	71	java/lang/Exception
+    //   2	17	93	finally
+    //   35	57	108	finally
+    //   76	80	112	finally
+    //   35	57	116	java/lang/Exception
+  }
+  
+  public static boolean c(Context paramContext)
+  {
+    return AppNetConnInfo.isWifiConn();
+  }
+  
+  /* Error */
+  public static String d(Context paramContext)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: aload_0
+    //   3: invokevirtual 40	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   6: getstatic 27	bhzh:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   9: aconst_null
+    //   10: aconst_null
+    //   11: aconst_null
+    //   12: aconst_null
+    //   13: invokevirtual 46	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   16: astore_0
+    //   17: aload_0
+    //   18: ifnonnull +17 -> 35
+    //   21: aload_0
+    //   22: ifnull +9 -> 31
+    //   25: aload_0
+    //   26: invokeinterface 51 1 0
+    //   31: aconst_null
+    //   32: astore_2
+    //   33: aload_2
+    //   34: areturn
+    //   35: aload_0
+    //   36: invokeinterface 55 1 0
+    //   41: pop
+    //   42: aload_0
+    //   43: invokeinterface 171 1 0
+    //   48: ifeq +29 -> 77
+    //   51: aload_0
+    //   52: ifnull +9 -> 61
+    //   55: aload_0
+    //   56: invokeinterface 51 1 0
+    //   61: ldc 173
+    //   63: astore_2
+    //   64: aload_0
+    //   65: ifnull -32 -> 33
+    //   68: aload_0
+    //   69: invokeinterface 51 1 0
+    //   74: ldc 173
+    //   76: areturn
+    //   77: aload_0
+    //   78: aload_0
+    //   79: ldc 57
+    //   81: invokeinterface 61 2 0
+    //   86: invokeinterface 162 2 0
+    //   91: astore_2
+    //   92: aload_2
+    //   93: astore_1
+    //   94: aload_2
+    //   95: ifnonnull +6 -> 101
+    //   98: ldc 173
+    //   100: astore_1
+    //   101: aload_1
+    //   102: astore_2
+    //   103: aload_0
+    //   104: ifnull -71 -> 33
+    //   107: aload_0
+    //   108: invokeinterface 51 1 0
+    //   113: aload_1
+    //   114: areturn
+    //   115: astore_2
+    //   116: aload_1
+    //   117: astore_0
+    //   118: aload_2
+    //   119: astore_1
+    //   120: aload_1
+    //   121: invokevirtual 68	java/lang/Exception:printStackTrace	()V
+    //   124: aload_0
+    //   125: ifnull +9 -> 134
+    //   128: aload_0
+    //   129: invokeinterface 51 1 0
+    //   134: ldc 173
+    //   136: areturn
+    //   137: astore_1
+    //   138: aconst_null
+    //   139: astore_0
+    //   140: aload_0
+    //   141: ifnull +9 -> 150
+    //   144: aload_0
+    //   145: invokeinterface 51 1 0
+    //   150: aload_1
+    //   151: athrow
+    //   152: astore_1
+    //   153: goto -13 -> 140
+    //   156: astore_1
+    //   157: goto -17 -> 140
+    //   160: astore_1
+    //   161: goto -41 -> 120
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	164	0	paramContext	Context
+    //   1	120	1	localObject1	Object
+    //   137	14	1	localObject2	Object
+    //   152	1	1	localObject3	Object
+    //   156	1	1	localObject4	Object
+    //   160	1	1	localException1	Exception
+    //   32	71	2	localObject5	Object
+    //   115	4	2	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	115	java/lang/Exception
+    //   2	17	137	finally
+    //   35	51	152	finally
+    //   55	61	152	finally
+    //   77	92	152	finally
+    //   120	124	156	finally
+    //   35	51	160	java/lang/Exception
+    //   55	61	160	java/lang/Exception
+    //   77	92	160	java/lang/Exception
+  }
+  
+  public static boolean d(Context paramContext)
+  {
+    try
+    {
+      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (paramContext == null) {
+        return true;
+      }
+      paramContext = paramContext.getAllNetworkInfo();
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramContext.length)
+        {
+          boolean bool = paramContext[i].isConnectedOrConnecting();
+          if (bool) {
+            return true;
+          }
+          i += 1;
+        }
+      }
+      return false;
+    }
+    catch (Exception paramContext)
+    {
+      bhzm.c(jdField_a_of_type_JavaLangString, "checkNetWork Exception", paramContext);
+    }
+  }
+  
+  public static String e(Context paramContext)
+  {
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return "MOBILE";
+    }
+    paramContext = paramContext.getActiveNetworkInfo();
+    if (paramContext != null) {
+      return paramContext.getTypeName();
+    }
+    return "MOBILE";
+  }
 }
 
 

@@ -1,41 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import dov.com.qq.im.aeeditor.manage.AEEditorResourceDownloader.3;
+import java.util.concurrent.CountDownLatch;
 
-class bmfe
-  extends biht
+public class bmfe
+  implements bmfg
 {
-  private bmfe(bmfc parambmfc) {}
+  public bmfe(AEEditorResourceDownloader.3 param3, int paramInt, AEEditorDownloadResBean paramAEEditorDownloadResBean, CountDownLatch paramCountDownLatch) {}
   
-  public void onDone(bihu parambihu)
-  {
-    super.onDone(parambihu);
-    if ((parambihu.a() == 3) && (parambihu.jdField_a_of_type_Int == 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("IlivePluginDownloadManager", 2, "onDone , url = " + parambihu.c + " isSuccess = " + bool + " errorCode = " + parambihu.jdField_a_of_type_Int + " httpCode = " + parambihu.f + " errMsg = " + parambihu.b);
-      }
-      bmfc.a(this.a).remove(parambihu);
-      bmfc.a(this.a);
-      if (!bool) {
-        break;
-      }
-      bmfc.b(this.a);
-      return;
-    }
-    bmfc.a(this.a, parambihu);
-  }
+  public void a(int paramInt) {}
   
-  public void onProgress(bihu parambihu)
+  public void a(boolean paramBoolean)
   {
-    super.onProgress(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.e("IlivePluginDownloadManager", 2, "onProgress ,  percent = " + parambihu.jdField_a_of_type_Float + " url = " + parambihu.c + " runTime = " + BaseApplicationImpl.getApplication().getRuntime().getClass());
-    }
-    if (bmfc.a(this.a) != null) {
-      bmfc.a(this.a).onProgress(parambihu.jdField_a_of_type_Float);
-    }
+    bmbx.b(this.jdField_a_of_type_DovComQqImAeeditorManageAEEditorResourceDownloader$3.this$0.c, "preDownloadAllRes---[finish] " + this.jdField_a_of_type_Int + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 

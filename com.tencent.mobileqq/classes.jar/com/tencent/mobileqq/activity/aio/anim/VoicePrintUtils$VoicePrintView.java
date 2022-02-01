@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agmg;
-import agmh;
+import afez;
+import affa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -10,16 +10,16 @@ import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import aqku;
+import apef;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class VoicePrintUtils$VoicePrintView
   extends ImageView
 {
   public int a;
-  private agmg jdField_a_of_type_Agmg;
+  private afez jdField_a_of_type_Afez;
   public BitmapFactory.Options a;
-  private aqku jdField_a_of_type_Aqku;
+  private apef jdField_a_of_type_Apef;
   private VipPngPlayAnimationDrawable jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -46,12 +46,12 @@ public class VoicePrintUtils$VoicePrintView
         localLayoutParams.height = localBitmap.getHeight();
         this.b = localBitmap.getHeight();
       }
-      this.jdField_a_of_type_Agmg.a(localBitmap, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Afez.a(localBitmap, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.e = this.jdField_a_of_type_Agmg.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.e = this.jdField_a_of_type_Afez.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.g = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.h = this.b;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a(this.jdField_a_of_type_Aqku.a, this.jdField_a_of_type_Aqku.c);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a(this.jdField_a_of_type_Apef.a, this.jdField_a_of_type_Apef.c);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.f = -1;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.c = this.jdField_a_of_type_Boolean;
       return true;
@@ -63,33 +63,33 @@ public class VoicePrintUtils$VoicePrintView
   {
     if (paramBoolean)
     {
-      setImageDrawable(this.jdField_a_of_type_Agmg);
+      setImageDrawable(this.jdField_a_of_type_Afez);
       return;
     }
     setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
   }
   
-  public void setBitmap(aqku paramaqku, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  public void setBitmap(apef paramapef, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Agmg = new agmg();
-    this.jdField_a_of_type_Agmg.jdField_a_of_type_Int = (paramInt1 + paramInt3 + paramInt4);
+    this.jdField_a_of_type_Afez = new afez();
+    this.jdField_a_of_type_Afez.jdField_a_of_type_Int = (paramInt1 + paramInt3 + paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
     this.d = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramaqku.a[0];
-    this.jdField_a_of_type_Aqku = paramaqku;
+    this.jdField_a_of_type_JavaLangString = paramapef.a[0];
+    this.jdField_a_of_type_Apef = paramapef;
     setPadding(paramInt3, 0, paramInt4, 0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable = new VipPngPlayAnimationDrawable(getResources());
     if (!a()) {
-      new agmh(this).execute(new String[] { this.jdField_a_of_type_JavaLangString });
+      new affa(this).execute(new String[] { this.jdField_a_of_type_JavaLangString });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView
  * JD-Core Version:    0.7.0.1
  */

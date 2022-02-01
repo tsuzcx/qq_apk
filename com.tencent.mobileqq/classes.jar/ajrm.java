@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import java.util.Map;
-
-public class ajrm
-  extends anyu
+class ajrm
+  implements bhnm
 {
-  public ajrm(TroopView paramTroopView) {}
+  ajrm(ajrg paramajrg, Runnable paramRunnable) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    if (paramBoolean1) {
-      this.a.j();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.j();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.j();
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

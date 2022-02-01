@@ -1,14 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-
-public class skh
-  extends ThreadLocal<Integer>
+public abstract interface skh
 {
-  public skh(ReadInJoyXListView paramReadInJoyXListView) {}
+  public abstract void a(int paramInt);
   
-  protected Integer a()
-  {
-    return Integer.valueOf(0);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

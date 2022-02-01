@@ -1,109 +1,39 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadReport;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.open.agent.JoinTroopPreVerificationFragment;
 
 public class bhsl
-  implements SoLoadReport
+  extends andd
 {
-  private static SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+  public bhsl(JoinTroopPreVerificationFragment paramJoinTroopPreVerificationFragment) {}
   
-  private HashMap<String, String> a(String paramString, long paramLong)
+  protected void onGetJoinTroopTokenForThirdApp(boolean paramBoolean, String paramString1, String paramString2)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("osVersion", Build.VERSION.RELEASE);
-    localHashMap.put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    localHashMap.put("time", a.format(new Date(System.currentTimeMillis())));
-    localHashMap.put("libName", paramString);
-    localHashMap.put("costTime", paramLong + "");
-    localHashMap.put("processName", BaseApplicationImpl.processName);
-    return localHashMap;
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
-  {
-    bdmc.a(paramHashMap, paramInt);
-    bdmc localbdmc = bdmc.a(BaseApplicationImpl.getContext());
+    this.a.d();
+    QLog.i("TroopAbility.PreVerification", 1, "onGetJoinTroopTokenForThirdApp, isSuccess: " + paramBoolean + " token: " + paramString1 + ", troopUin: " + paramString2);
     if (paramBoolean)
     {
-      localbdmc.a("", "loadSoNew", false, 0L, 0L, paramHashMap, "");
+      paramString2 = TroopInfoActivity.a(String.valueOf(paramString2), 32);
+      paramString2.putString("authSig", paramString1);
+      paramString2.putString("appid", this.a.c);
+      paramString2.putBoolean("fromThirdAppByOpenSDK", true);
+      paramString2.putInt("action", 3);
+      paramString2.putString("pkg_name", this.a.d);
+      paramString2.putString("app_name", this.a.jdField_a_of_type_JavaLangString);
+      TroopUtils.openTroopInfoActivity(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 2);
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
       return;
     }
-    localbdmc.a("", "loadSoOld", false, 0L, 0L, paramHashMap, "");
-  }
-  
-  public void report(int paramInt, String paramString, long paramLong)
-  {
-    HashMap localHashMap1 = a(paramString, paramLong);
-    HashMap localHashMap2 = a(paramString, paramLong);
-    boolean bool;
-    int i;
-    if (((paramInt & 0x2) == 2) || ((paramInt & 0x40000) == 262144))
-    {
-      a(true, 0, localHashMap1);
-      bool = true;
-      QLog.i("SoLoadUtilNew", 1, "load " + paramString + " result:" + bool + " code " + paramInt);
-      if ((paramInt & 0x2) != 2) {
-        break label189;
-      }
-      if (((paramInt & 0x8000) != 32768) || ((paramInt & 0x1000) != 4096) || ((paramInt & 0x800) != 0)) {
-        break label149;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      a(false, i, localHashMap2);
-      return;
-      a(true, paramInt, localHashMap1);
-      bool = false;
-      break;
-      label149:
-      i = paramInt;
-      if ((paramInt & 0x200) == 512)
-      {
-        i = paramInt;
-        if ((paramInt & 0x40) == 0)
-        {
-          i = paramInt;
-          if ((paramInt & 0x8) == 0)
-          {
-            i = 0;
-            continue;
-            label189:
-            i = paramInt;
-            if ((paramInt & 0x40000) == 262144) {
-              i = 0;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public void reportThrowable(Throwable paramThrowable, String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramThrowable == null) || (!(paramThrowable instanceof UnsatisfiedLinkError)));
-      paramThrowable = paramThrowable.getMessage();
-    } while ((paramThrowable == null) || (paramThrowable.indexOf("too many libraries") < 0));
-    bdmc.a(BaseApplicationImpl.getContext()).a("", "SoCountLimit", false, 0L, 0L, a(paramString, 0L), "");
+    this.a.a(amtj.a(2131705009));
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhsl
  * JD-Core Version:    0.7.0.1
  */

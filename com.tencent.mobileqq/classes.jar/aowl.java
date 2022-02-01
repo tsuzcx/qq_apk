@@ -1,33 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.List;
 
-public class aowl
-  extends aoxh
+class aowl
+  extends amwl
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aowl(aowk paramaowk) {}
+  
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    paramQQAppInterface = new aowk(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "contact";
-    paramQQAppInterface.c = "add";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    if ((aowk.a(this.a) != null) && (paramList != null))
     {
-      int i = 0;
-      while (i < paramContext.length)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord != null) && (localMessageRecord.uniseq == aowk.a(this.a).b)) {
+          this.a.a(localMessageRecord.uniseq);
         }
-        i += 1;
       }
     }
-    return paramQQAppInterface;
   }
 }
 

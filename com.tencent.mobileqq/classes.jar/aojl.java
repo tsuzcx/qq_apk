@@ -1,59 +1,74 @@
-import android.content.Context;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class aojl
 {
-  private int a;
-  private int b;
+  protected static INetEngine.IBreakDownFix a;
+  public AppInterface a;
+  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<aojp> jdField_a_of_type_JavaUtilArrayList;
   
-  public aojl(QQAppInterface paramQQAppInterface)
+  static
   {
-    TroopManager.a(paramQQAppInterface);
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aojn();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
+  public aojl(AppInterface paramAppInterface)
   {
-    String str;
-    if (paramEditText != null)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a()
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    try
     {
-      str = "";
-      if (paramInt != 0) {
-        break label166;
-      }
-      this.a = ((int)(Math.random() * TroopManager.c.size()));
-      if (TroopManager.c.size() != 1) {
-        break label124;
-      }
-      str = (String)TroopManager.c.get(0);
-      TroopManager.a(paramQQAppInterface);
-    }
-    label166:
-    for (;;)
-    {
-      Object localObject = (anyw)paramQQAppInterface.getManager(51);
-      localObject = bhlg.h(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
-      paramEditText.setText(bgme.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
-      paramEditText.append(str);
-      paramEditText.setSelection(paramEditText.getText().length());
-      return;
-      label124:
-      if (this.a < TroopManager.c.size())
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        str = (String)TroopManager.c.get(this.a);
-        TroopManager.c.remove(this.a);
-        continue;
-        if (this.b < TroopManager.d.size())
-        {
-          str = (String)TroopManager.d.get(this.b);
-          this.b = ((this.b + 1) % TroopManager.d.size());
-        }
+        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((aojp)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.cancelReq(((aojp)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        i += 1;
       }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
+    finally {}
+  }
+  
+  public boolean a(aojp paramaojp, aojo arg2)
+  {
+    if ((paramaojp == null) || (??? == null)) {
+      return false;
+    }
+    ??? = new aojm(this, paramaojp, ???);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = ???;
+    localHttpNetReq.mReqUrl = paramaojp.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = paramaojp.c;
+    localHttpNetReq.mPrioty = 1;
+    localHttpNetReq.mBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
+    paramaojp.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaojp);
+      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramaojp.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+  }
+  
+  public void b()
+  {
+    a();
   }
 }
 

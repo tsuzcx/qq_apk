@@ -1,30 +1,19 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
-
-class artj
-  implements View.OnClickListener
+public class artj
+  extends arti
 {
-  artj(artg paramartg, String paramString) {}
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onClick(View paramView)
+  public artj(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    artg.a(this.jdField_a_of_type_Artg).removeCallbacks(artg.a(this.jdField_a_of_type_Artg));
-    artg.a(this.jdField_a_of_type_Artg).run();
-    int i = artg.a(this.jdField_a_of_type_Artg).getSelectionStart();
-    Editable localEditable = artg.a(this.jdField_a_of_type_Artg).getEditableText();
-    if ((i < 0) || (i >= localEditable.length())) {
-      localEditable.append(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
-    }
+    super(2, paramString1);
+    this.a = paramString2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
   }
 }
 

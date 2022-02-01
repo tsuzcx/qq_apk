@@ -1,8 +1,26 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-
-public abstract interface pak
+public class pak
 {
-  public abstract void a(BaseResp paramBaseResp);
+  public static int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public long d;
+  
+  static
+  {
+    jdField_a_of_type_Int = 300000;
+  }
+  
+  public pak()
+  {
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+  }
 }
 
 

@@ -1,6 +1,23 @@
-public abstract interface bmfz
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
+public class bmfz
+  implements Animator.AnimatorListener
 {
-  public abstract void onPreloadEnd();
+  public bmfz(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AEEditorAILoadingView.a(this.a).setVisibility(0);
+  }
 }
 
 

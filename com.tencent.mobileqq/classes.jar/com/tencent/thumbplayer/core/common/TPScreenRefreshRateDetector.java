@@ -6,6 +6,7 @@ import android.hardware.display.DisplayManager.DisplayListener;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.RequiresApi;
 import android.view.Display;
 import android.view.Display.Mode;
 import android.view.WindowManager;
@@ -14,6 +15,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+@RequiresApi(api=17)
 public class TPScreenRefreshRateDetector
 {
   public static final int DISPLAY_CHANGE = 10001;

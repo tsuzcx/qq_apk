@@ -1,12 +1,18 @@
-import android.graphics.Point;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
 
-public abstract interface awre
+public class awre
+  implements awro
 {
-  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
+  awre(awrd paramawrd) {}
   
-  public abstract void a(boolean paramBoolean, Point paramPoint);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (awhw)this.a.a.getManager(106)), 16, null, false);
+    }
+  }
 }
 
 

@@ -1,15 +1,24 @@
-import android.util.Pair;
+import cooperation.qzone.util.QZLog;
 
-final class blci
-  implements blck
+public class blci
 {
-  public Pair<String, String> a(String paramString)
+  public static int a = 2;
+  public static int b = 1;
+  public static int c = 4;
+  
+  public static void a(String paramString1, String paramString2)
   {
-    paramString = paramString.split(":", 2);
-    if ((paramString == null) || (paramString.length < 2)) {
-      return null;
-    }
-    return new Pair(paramString[0].trim(), paramString[1].trim());
+    QZLog.d(paramString1, c, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    QZLog.d(paramString1, b, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    QZLog.e(paramString1, paramString2, null);
   }
 }
 

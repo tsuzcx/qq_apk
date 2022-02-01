@@ -1,13 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class nry
+public abstract interface nry
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  nry(nrk paramnrk) {}
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3);
 }
 
 

@@ -1,12 +1,25 @@
-import android.view.animation.Interpolator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-final class blsl
-  implements Interpolator
+public class blsl
+  implements Animation.AnimationListener
 {
-  public float getInterpolation(float paramFloat)
+  public blsl(AEMaterialPanel paramAEMaterialPanel) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
+    if (AEMaterialPanel.a(this.a) != null)
+    {
+      AEMaterialPanel.a(this.a).setAlpha(1.0F);
+      AEMaterialPanel.a(this.a).setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

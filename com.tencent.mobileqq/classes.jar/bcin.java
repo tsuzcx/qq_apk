@@ -1,149 +1,71 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class bcin
-  extends bcji
 {
-  protected bcip a;
+  public int a;
+  public bcin a;
+  public String a;
+  public List<bcin> a;
+  public Map<String, String> a;
+  public String b;
   
-  public bcin(aoof paramaoof)
+  public bcin(String paramString, Map<String, String> paramMap)
   {
-    super(paramaoof);
+    this.jdField_a_of_type_Int = 1;
+    this.b = paramString;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public void a(bcfr parambcfr, bcnz parambcnz, Bitmap paramBitmap)
+  public int a()
   {
-    if (parambcfr.c() == 103)
-    {
-      if (parambcnz.b() != null) {
-        parambcnz.b().setImageDrawable(bcni.a(paramBitmap));
-      }
-      return;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    super.a(parambcfr, parambcnz, paramBitmap);
+    return 0;
   }
   
-  public void b(bcfr parambcfr, bcnz parambcnz)
+  public bcin a()
   {
-    if ((parambcfr instanceof bcfw)) {}
-    for (Object localObject1 = (bcfw)parambcfr;; localObject1 = null)
-    {
-      if ((parambcnz instanceof bcoc)) {}
-      for (bcoc localbcoc = (bcoc)parambcnz;; localbcoc = null)
-      {
-        Object localObject2;
-        ColorDrawable localColorDrawable;
-        if (parambcfr.c() == null)
-        {
-          if (localbcoc.c() != null) {
-            localbcoc.c().setVisibility(8);
-          }
-          if (localbcoc.a() != null) {
-            localbcoc.a().setVisibility(8);
-          }
-          localObject2 = localbcoc.a();
-          if (localObject2 != null) {
-            ((URLImageView)localObject2).setVisibility(8);
-          }
-          localObject2 = localbcoc.e();
-          if (localObject2 != null)
-          {
-            ((TextView)localObject2).setVisibility(0);
-            if (!TextUtils.isEmpty(((bcfw)localObject1).a())) {
-              ((TextView)localObject2).setText(((bcfw)localObject1).a());
-            }
-          }
-          if ((parambcnz.b() != null) && (!TextUtils.isEmpty(((bcfw)localObject1).g())))
-          {
-            localObject2 = ((bcfw)localObject1).g();
-            localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions.mRequestWidth = bhgr.a(parambcnz.a().getContext(), 50.0F);
-            localURLDrawableOptions.mRequestHeight = bhgr.a(parambcnz.a().getContext(), 50.0F);
-            localURLDrawableOptions.mFailedDrawable = localColorDrawable;
-            localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
-            if (!blhn.a((String)localObject2)) {
-              break label625;
-            }
-            localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
-            ((URLDrawable)localObject2).setTag(bhez.b(bhgr.a(parambcnz.a().getContext(), 50.0F), bhgr.a(parambcnz.a().getContext(), 50.0F), bhgr.a(parambcnz.a().getContext(), 3.0F)));
-            ((URLDrawable)localObject2).setDecodeHandler(bhez.j);
-            parambcnz.b().setImageDrawable((Drawable)localObject2);
-            if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
-              ((URLDrawable)localObject2).restartDownload();
-            }
-          }
-        }
-        for (;;)
-        {
-          c(parambcfr, parambcnz);
-          if ((localbcoc.a() != null) && (((bcfw)localObject1).c()))
-          {
-            parambcfr = ((bcfw)localObject1).h();
-            localObject1 = new ColorDrawable(Color.parseColor("#e7e7e7"));
-            localObject2 = URLDrawable.URLDrawableOptions.obtain();
-            ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = bhgr.a(parambcnz.a().getContext(), 40.0F);
-            ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = bhgr.a(parambcnz.a().getContext(), 12.0F);
-            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-            parambcfr = URLDrawable.getDrawable(parambcfr, (URLDrawable.URLDrawableOptions)localObject2);
-            parambcfr.setTag(bhez.b(bhgr.a(parambcnz.a().getContext(), 38.0F), bhgr.a(parambcnz.a().getContext(), 12.0F), 0));
-            parambcfr.setDecodeHandler(bhez.j);
-            localbcoc.a().setImageDrawable(parambcfr);
-            if ((parambcfr.getStatus() != 1) && (parambcfr.getStatus() != 0)) {
-              parambcfr.restartDownload();
-            }
-          }
-          return;
-          if ((localbcoc.c() != null) && (!TextUtils.isEmpty(parambcfr.c())))
-          {
-            localbcoc.c().setVisibility(0);
-            localbcoc.c().setText(parambcfr.c());
-          }
-          for (;;)
-          {
-            if (localbcoc.a() != null) {
-              localbcoc.a().setVisibility(0);
-            }
-            localObject2 = localbcoc.e();
-            if (localObject2 != null) {
-              ((TextView)localObject2).setVisibility(8);
-            }
-            if (TextUtils.isEmpty(parambcfr.a())) {
-              break;
-            }
-            localbcoc.a().setText(((bcfw)localObject1).a());
-            break;
-            if (parambcnz.c() != null) {
-              localbcoc.c().setVisibility(8);
-            }
-          }
-          label625:
-          parambcnz.b().setImageDrawable(localColorDrawable);
-        }
-      }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return a(this.jdField_a_of_type_JavaUtilList.indexOf(this) + 1);
     }
+    return null;
   }
   
-  protected void c(bcfr parambcfr, bcnz parambcnz)
+  public bcin a(int paramInt)
   {
-    if (this.a != null)
-    {
-      if (parambcnz.a() != null) {
-        parambcnz.a().setOnClickListener(new bcio(this));
-      }
-      return;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (bcin)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    super.c(parambcfr, parambcnz);
+    return null;
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a(bcin parambcin)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(parambcin);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0);
+  }
+  
+  public bcin b()
+  {
+    return a(0);
   }
 }
 

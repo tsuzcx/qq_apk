@@ -1,70 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troop.utils.VideoAnimationUtils.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.comic.ui.QQComicFragment;
+import cooperation.qqreader.ui.ReaderCommentPageFragment;
+import cooperation.qqreader.ui.ReaderContentPageFragment;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
 public class bgux
 {
-  private static final String a = antf.ba + ".troop/anim_video/";
-  
-  public static void a(bihw parambihw, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, bdyi parambdyi)
+  public static WebViewFragment a(bguf parambguf, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
   {
-    if (parambihw == null) {}
-    Object localObject;
-    do
+    paramIntent.putExtra("url", paramWebViewTabBarData.url);
+    int i = paramIntent.getIntExtra("fragmentStyle", 0);
+    if (i == 2) {
+      return QzoneTranslucentBrowserFragment.newInstance(paramIntent);
+    }
+    if (i == 1) {
+      return QQComicFragment.a(paramIntent);
+    }
+    if (i == 3)
     {
-      return;
-      paramSpriteVideoView = new WeakReference(paramSpriteVideoView);
-      paramString1 = new File(a + paramString1);
-      if (paramString1.exists())
+      if (paramWebViewTabBarData.url.contains("signatureEdit=1")) {
+        return SignatureEditFragment.a(paramIntent);
+      }
+      paramIntent.removeExtra("isTransparentTitle");
+      if (parambguf != null) {
+        return parambguf.a(paramIntent);
+      }
+      return WebViewFragment.newInstance(paramIntent);
+    }
+    if (i == 4)
+    {
+      i = paramIntent.getIntExtra("item_type", 1);
+      if ((i == 1) && (TextUtils.isDigitsOnly(paramWebViewTabBarData.tag)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoAnimationUtils", 2, "res exists, return:" + paramString1.getAbsolutePath());
-        }
-        b(paramSpriteVideoView, paramString1.getAbsolutePath(), parambdyi);
-        return;
+        paramIntent.putExtra("key_tab_id", Integer.valueOf(paramWebViewTabBarData.tag));
+        bkvd.d("WebViewFragmentBuilder", "tab_id =" + paramWebViewTabBarData.tag);
+        return ReaderHomeTabFragment.a(paramIntent);
       }
-      parambihw = parambihw.a(1);
-      localObject = new File(a);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
+      if (i == 4) {
+        return ReaderCommentPageFragment.a(paramIntent);
       }
-      paramString2 = new bihu(paramString2, paramString1);
-      paramString2.b = 2;
-      localObject = new Bundle();
-    } while (parambihw == null);
-    parambihw.a(paramString2, new bguy(paramSpriteVideoView, paramString1, parambdyi), (Bundle)localObject);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, null, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, bdyi parambdyi)
-  {
-    if (paramQQAppInterface == null) {
-      return;
+      return ReaderContentPageFragment.a(paramIntent);
     }
-    a((bihw)paramQQAppInterface.getManager(47), paramString1, paramString2, paramSpriteVideoView, parambdyi);
-  }
-  
-  private static void b(WeakReference<SpriteVideoView> paramWeakReference, String paramString, bdyi parambdyi)
-  {
-    if (paramWeakReference != null)
+    paramWebViewTabBarData = Uri.parse(paramWebViewTabBarData.url);
+    if ((paramWebViewTabBarData.isHierarchical()) && ("4".equals(paramWebViewTabBarData.getQueryParameter("_webviewtype"))))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoAnimationUtils", 2, "playVideoAnim");
-      }
-      if ((SpriteVideoView)paramWeakReference.get() != null) {
-        ThreadManager.getUIHandler().post(new VideoAnimationUtils.2(paramWeakReference, paramString, parambdyi));
-      }
+      paramIntent.putExtra("fragmentStyle", 1);
+      paramIntent.putExtra("tabBarStyle", 1);
+      paramIntent.putExtra("titleBarStyle", 1);
+      paramIntent.putExtra("hide_operation_bar", true);
+      paramIntent.putExtra("hide_more_button", true);
+      paramIntent.putExtra("isScreenOrientationPortrait", true);
+      return QQComicFragment.a(paramIntent);
     }
+    if (parambguf != null) {
+      return parambguf.a(paramIntent);
+    }
+    return WebViewFragment.newInstance(paramIntent);
   }
 }
 

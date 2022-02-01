@@ -1,106 +1,180 @@
-import android.os.Handler;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.biz.now.NowVideoView.2.1;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppInfo;
+import tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppTip;
+import tencent.im.oidb.cmd0x8d3.oidb_0x8d3.ReqBody;
+import tencent.im.oidb.cmd0x8d3.oidb_0x8d3.RspBody;
+import tencent.im.oidb.oidb_0x8cf.oidb_0x8cf.AppBrief;
+import tencent.im.oidb.oidb_0x8cf.oidb_0x8cf.ReqBody;
+import tencent.im.oidb.oidb_0x8cf.oidb_0x8cf.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class nqt
-  implements QQLiveDrawable.OnStateListener
 {
-  public nqt(NowVideoView paramNowVideoView) {}
+  protected QQAppInterface a;
+  protected nqw a;
+  protected boolean a;
   
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
+  public nqt(QQAppInterface paramQQAppInterface)
   {
-    this.a.c = this.a.d;
-    this.a.d = paramInt;
-    paramString = this.a.jdField_a_of_type_AndroidWidgetImageView;
-    boolean bool = nqq.a().b;
-    if (paramInt == 3)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private ArrayList<Long> a(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    oidb_0x8cf.RspBody localRspBody = new oidb_0x8cf.RspBody();
+    localArrayList = new ArrayList();
+    try
     {
-      if (this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation == null)
-      {
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(500L);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatCount(-1);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatMode(1);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setStartTime(-1L);
-        paramQQLiveDrawableParams = new LinearInterpolator();
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(paramQQLiveDrawableParams);
+      localRspBody.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      paramOIDBSSOPkg = localRspBody.rpt_msg_app_brief.get().iterator();
+      while (paramOIDBSSOPkg.hasNext()) {
+        localArrayList.add(Long.valueOf(((oidb_0x8cf.AppBrief)paramOIDBSSOPkg.next()).opt_uint64_appid.get()));
       }
-      if (paramString != null)
-      {
-        paramString.setVisibility(0);
-        paramString.setImageResource(2130843194);
-        paramString.clearAnimation();
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new NowVideoView.2.1(this, paramString));
-      }
+      return localArrayList;
     }
-    for (;;)
+    catch (Exception paramOIDBSSOPkg)
     {
-      this.a.a(this.a.c, this.a.d);
-      return;
-      if (paramInt == 0)
-      {
-        if (paramString != null)
-        {
-          paramString.clearAnimation();
-          paramString.setImageResource(2130843196);
-          paramString.setVisibility(0);
-        }
-      }
-      else if (paramInt == 4)
-      {
-        if ((paramString != null) && (!bool))
-        {
-          paramString.clearAnimation();
-          paramString.setImageResource(2130843196);
-          paramString.setVisibility(0);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        if (paramString != null)
-        {
-          paramString.clearAnimation();
-          paramString.setVisibility(8);
-        }
-        this.a.e = 0;
-        this.a.f = 0;
-        this.a.a(1);
-      }
-      else if (paramInt == 5)
-      {
-        if (paramString != null)
-        {
-          paramString.clearAnimation();
-          paramString.setVisibility(0);
-          paramString.setImageResource(2130843192);
-        }
-        if (!bhnv.g(this.a.getContext()))
-        {
-          QQToast.a(this.a.getContext(), 1, 2131693966, 0).b(NowVideoView.g);
-          return;
-        }
-        if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
-        {
-          this.a.jdField_a_of_type_JavaUtilList.remove(this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1));
-          this.a.jdField_a_of_type_Nqu.a();
-        }
-        if ((this.a.jdField_a_of_type_JavaUtilList.size() == 0) && ((paramObject instanceof QQLiveDrawable.ErrorInfo)))
-        {
-          paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-          QLog.d("NowVideoView", 2, "ErrorInf = " + paramString.toString());
-        }
-      }
-      else if (paramInt != 1) {}
+      paramOIDBSSOPkg.printStackTrace();
     }
+  }
+  
+  private void a(ArrayList<TroopAppInfo> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Nqw != null) {
+      this.jdField_a_of_type_Nqw.a(paramArrayList);
+    }
+  }
+  
+  private void a(List<Long> paramList)
+  {
+    Object localObject = new oidb_0x8d3.ReqBody();
+    ((oidb_0x8d3.ReqBody)localObject).rpt_uint64_appidlist.set(paramList);
+    paramList = new oidb_sso.OIDBSSOPkg();
+    paramList.uint32_command.set(2259);
+    paramList.uint32_service_type.set(1);
+    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x8d3.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), nma.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x8d3_1");
+    ((NewIntent)localObject).putExtra("data", paramList.toByteArray());
+    ((NewIntent)localObject).setObserver(new nqv(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+  }
+  
+  private ArrayList<TroopAppInfo> b(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    localArrayList = new ArrayList();
+    try
+    {
+      Object localObject1 = new oidb_0x8d3.RspBody();
+      ((oidb_0x8d3.RspBody)localObject1).mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      paramOIDBSSOPkg = ((oidb_0x8d3.RspBody)localObject1).rpt_msg_appinfo_list.get();
+      if ((paramOIDBSSOPkg != null) && (paramOIDBSSOPkg.size() > 0))
+      {
+        paramOIDBSSOPkg = paramOIDBSSOPkg.iterator();
+        while (paramOIDBSSOPkg.hasNext())
+        {
+          Object localObject2 = (oidb_0x8d3.AppInfo)paramOIDBSSOPkg.next();
+          localObject1 = new TroopAppInfo();
+          ((TroopAppInfo)localObject1).appId = ((oidb_0x8d3.AppInfo)localObject2).opt_uint64_appid.get();
+          ((TroopAppInfo)localObject1).appName = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_appname.get().toByteArray());
+          ((TroopAppInfo)localObject1).appType = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_type.get();
+          ((TroopAppInfo)localObject1).appFrom = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_from.get();
+          ((TroopAppInfo)localObject1).appIntro = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_app_intro.get().toByteArray());
+          ((TroopAppInfo)localObject1).appUrl = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_app_url.get().toByteArray());
+          ((TroopAppInfo)localObject1).appIcon = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_app_icon.get().toByteArray());
+          ((TroopAppInfo)localObject1).appWindowHeight = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_window_high.get();
+          ((TroopAppInfo)localObject1).appWindowWidth = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_window_width.get();
+          ((TroopAppInfo)localObject1).appUpdateTime = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_update_time.get();
+          ((TroopAppInfo)localObject1).openParam = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_open_param.get().toByteArray());
+          ((TroopAppInfo)localObject1).appStatus = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_status.get();
+          ((TroopAppInfo)localObject1).appInnerType = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_inner_type.get();
+          ((TroopAppInfo)localObject1).initFlag = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_init_flag.get();
+          ((TroopAppInfo)localObject1).settingFlag = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_setting_flag.get();
+          ((TroopAppInfo)localObject1).tags = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_tags.get().toByteArray());
+          ((TroopAppInfo)localObject1).versionAndroid = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_version_android.get().toByteArray());
+          ((TroopAppInfo)localObject1).androidDownloadUrl = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_android_download_url.get().toByteArray());
+          ((TroopAppInfo)localObject1).androidOpen = new String(((oidb_0x8d3.AppInfo)localObject2).opt_bytes_android_open.get().toByteArray());
+          ((TroopAppInfo)localObject1).appSortKey = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_sort_key.get();
+          ((TroopAppInfo)localObject1).appIsNew = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_is_new.get();
+          ((TroopAppInfo)localObject1).appNewTime = ((oidb_0x8d3.AppInfo)localObject2).opt_uint32_app_new_time.get();
+          localObject2 = (oidb_0x8d3.AppTip)((oidb_0x8d3.AppInfo)localObject2).opt_msg_app_tip.get();
+          if (localObject2 != null)
+          {
+            ((TroopAppInfo)localObject1).AppTipInfoSeq = ((oidb_0x8d3.AppTip)localObject2).uint32_tip_info_seq.get();
+            ((TroopAppInfo)localObject1).AppTipIcon = new String(((oidb_0x8d3.AppTip)localObject2).bytes_icon.get().toByteArray());
+            ((TroopAppInfo)localObject1).AppTipIconTimeStamp = ((oidb_0x8d3.AppTip)localObject2).uint32_icon_time_stamp.get();
+            ((TroopAppInfo)localObject1).AppTipToolTip = new String(((oidb_0x8d3.AppTip)localObject2).bytes_tooltip.get().toByteArray());
+            ((TroopAppInfo)localObject1).AppTipReportIdClick = ((oidb_0x8d3.AppTip)localObject2).uint32_reportid_click.get();
+            ((TroopAppInfo)localObject1).AppTipReportIdShow = ((oidb_0x8d3.AppTip)localObject2).uint32_reportid_show.get();
+          }
+          localArrayList.add(localObject1);
+        }
+      }
+      return localArrayList;
+    }
+    catch (Exception paramOIDBSSOPkg)
+    {
+      paramOIDBSSOPkg.printStackTrace();
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Nqw != null) {
+      this.jdField_a_of_type_Nqw.a();
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Nqw = null;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a(String paramString, nqw paramnqw)
+  {
+    return a(paramString, paramnqw, false);
+  }
+  
+  public boolean a(String paramString, nqw paramnqw, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Nqw = paramnqw;
+    paramnqw = new oidb_0x8cf.ReqBody();
+    try
+    {
+      paramnqw.opt_uint64_groupcode.set(Long.parseLong(paramString));
+      paramnqw.opt_uint32_need_mobile_sysapps.set(1);
+      paramString = new oidb_sso.OIDBSSOPkg();
+      paramString.uint32_command.set(2255);
+      paramString.uint32_service_type.set(6);
+      paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramnqw.toByteArray()));
+      paramnqw = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), nma.class);
+      paramnqw.putExtra("cmd", "OidbSvc.0x8cf_6");
+      paramnqw.putExtra("data", paramString.toByteArray());
+      paramnqw.setObserver(new nqu(this, paramBoolean));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramnqw);
+      return true;
+    }
+    catch (NumberFormatException paramnqw)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopCardAppInfoHandler", 2, "getTroopAppList, NumberFormatException, troopUin :" + paramString);
+      }
+      b();
+    }
+    return false;
   }
 }
 

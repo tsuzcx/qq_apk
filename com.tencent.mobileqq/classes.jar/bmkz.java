@@ -1,104 +1,158 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 
 public class bmkz
 {
-  private static bmkz jdField_a_of_type_Bmkz;
-  private ArrayList<bmla> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
+  private int jdField_a_of_type_Int;
+  private List<bmla> jdField_a_of_type_JavaUtilList = new ArrayList(9);
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[9];
+  private List<HashMap<Integer, Float>> b = new ArrayList();
   
-  public static bmkz a()
+  public bmkz()
   {
-    if (jdField_a_of_type_Bmkz == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bmkz == null) {
-        jdField_a_of_type_Bmkz = new bmkz();
-      }
-      return jdField_a_of_type_Bmkz;
-    }
-    finally {}
+    b();
   }
   
-  public bmla a(long paramLong)
+  private bmla a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
-        }
-        return null;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bmla localbmla = (bmla)localIterator.next();
-        if (localbmla.jdField_a_of_type_Long == paramLong)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localbmla);
-          if (QLog.isColorLevel()) {
-            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-          }
-          return localbmla;
-        }
-      }
-    }
-    return null;
+    return (bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public List<Bundle> a(byte[] paramArrayOfByte)
+  public float a(int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    Parcel localParcel = Parcel.obtain();
-    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-    localParcel.setDataPosition(0);
-    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    return paramArrayOfByte.getParcelableArrayList("pendingData");
+    return a(paramInt).a();
   }
   
-  public boolean a()
+  public float a(int paramInt1, int paramInt2, float paramFloat)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (!((HashMap)this.b.get(paramInt1)).containsKey(Integer.valueOf(paramInt2))) {
+      return paramFloat;
+    }
+    return ((Float)((HashMap)this.b.get(paramInt1)).get(Integer.valueOf(paramInt2))).floatValue();
+  }
+  
+  public int a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public bmgl a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public bmgo a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public String a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-      return bool;
+      ((bmla)this.jdField_a_of_type_JavaUtilList.get(i)).a();
+      i += 1;
     }
   }
   
-  public byte[] a()
+  public void a(int paramInt)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (paramInt > 9) {
+      throw new IllegalArgumentException("image count > max count 9");
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    a(paramInt).a(paramFloat);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    ((HashMap)this.b.get(paramInt1)).put(Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
+  }
+  
+  public void a(int paramInt, bmgl parambmgl)
+  {
+    a(paramInt).a(parambmgl);
+  }
+  
+  public void a(int paramInt1, bmgo parambmgo, int paramInt2)
+  {
+    a(paramInt1).a(parambmgo, paramInt2);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = paramString;
+  }
+  
+  public void a(int paramInt1, String paramString, float paramFloat, int paramInt2)
+  {
+    ((bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).a(paramString, paramFloat, paramInt2);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt).a();
+  }
+  
+  public int b(int paramInt)
+  {
+    return a(paramInt).b();
+  }
+  
+  public String b(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
+    int i = 0;
+    while (i < 9)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        return null;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        localArrayList1.add(((bmla)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
-      }
+      this.jdField_a_of_type_JavaUtilList.add(new bmla());
+      this.b.add(new HashMap());
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = "";
+      i += 1;
     }
-    if (localArrayList2.isEmpty()) {
-      return null;
+  }
+  
+  public void b(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((bmla)this.jdField_a_of_type_JavaUtilList.get(i)).a(((bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
+      ((HashMap)this.b.get(i)).put(Integer.valueOf(((bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()), Float.valueOf(((bmla)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()));
+      i += 1;
     }
-    ??? = new Bundle();
-    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
-    Parcel localParcel = Parcel.obtain();
-    ((Bundle)???).writeToParcel(localParcel, 0);
-    ??? = localParcel.marshall();
-    localParcel.recycle();
-    return ???;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return a(paramInt).b();
+  }
+  
+  public void c(int paramInt)
+  {
+    a(paramInt).a();
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return a(paramInt).c();
   }
 }
 

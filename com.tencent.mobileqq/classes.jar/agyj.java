@@ -1,33 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agyj
-  implements View.OnClickListener
+class agyj
+  implements DialogInterface.OnCancelListener
 {
-  public agyj(ApolloItemBuilder paramApolloItemBuilder) {}
+  agyj(agyh paramagyh) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (amsx.a(this.a.a.getApplication()))
-    {
-      ApolloUtil.a(paramView.getContext(), null, "aio", annv.ah, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    if (!amsx.c(this.a.a.getApplication())) {}
-    for (String str = annv.U;; str = annv.V + bmbh.b)
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
-      break;
+    if (this.a.h) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
     }
   }
 }

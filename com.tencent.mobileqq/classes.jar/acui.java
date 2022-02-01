@@ -1,40 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class acui
-  implements View.OnClickListener
+  extends Handler
 {
-  public acui(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  public acui(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    GdtInterstitialFragmentForJS.a(this.a).a = 0;
-    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
-    String str;
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    switch (paramMessage.what)
     {
-      str = "ad is not loaded";
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    }
-    for (;;)
-    {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
-        str = "ad is loading";
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
-        str = GdtInterstitialFragmentForJS.a(this.a).a();
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
-        str = "正在打开插屏";
-      } else {
-        str = "打开插屏错误";
-      }
     }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131719378);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

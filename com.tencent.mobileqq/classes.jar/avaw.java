@@ -1,16 +1,48 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 class avaw
-  extends GridLayoutManager.SpanSizeLookup
+  implements auzr
 {
-  avaw(avav paramavav) {}
+  avaw(avau paramavau) {}
   
-  public int getSpanSize(int paramInt)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (this.a.getItemViewType(paramInt) == avar.b) {
-      return 5;
+    int i = this.a.jdField_a_of_type_Avas.e;
+    String str3 = this.a.jdField_a_of_type_Avas.b;
+    this.a.b(i, str3);
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
+    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
+      bcef.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
     }
-    return 1;
+    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+      return;
+    }
+    String str2 = "2";
+    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
+    String str1 = str2;
+    if (localTroopInfo != null)
+    {
+      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) {
+        break label180;
+      }
+      str1 = "0";
+    }
+    for (;;)
+    {
+      bcef.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
+      return;
+      label180:
+      str1 = str2;
+      if (localTroopInfo.isAdmin()) {
+        str1 = "1";
+      }
+    }
   }
 }
 

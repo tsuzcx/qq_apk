@@ -1,37 +1,46 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-class aiib
-  extends aocj
+public class aiib
+  extends aihx
 {
-  aiib(aihy paramaihy) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public aiib(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    a(paramBoolean, paramString, paramLong, null);
+    super(paramContext, paramQQAppInterface, paramBoolean);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, aocg paramaocg)
+  protected int a()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.a.a)) {
-      return;
-    }
-    this.a.t = true;
-    this.a.a(262144, paramaocg, paramLong);
+    return 10028;
   }
   
-  public void b(String paramString)
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.f(131072);
+    super.a(paramRecommendTroopItem);
+    bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  protected int b()
   {
-    this.a.f(65536);
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    bcef.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 

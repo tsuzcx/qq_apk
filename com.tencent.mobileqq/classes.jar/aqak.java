@@ -1,47 +1,49 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.io.File;
-import java.util.Locale;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqak
-  implements aqau
+public class aqak
 {
-  aqak(aqai paramaqai, aqaw paramaqaw, aqas paramaqas, String paramString1, aqau paramaqau, String paramString2) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 3000L;
   
-  public void a(boolean paramBoolean)
+  public static aqak a(String paramString)
   {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean = false;
-    }
-    synchronized (this.jdField_a_of_type_Aqaw)
+    if (paramString == null) {}
+    do
     {
-      aqaw localaqaw2 = this.jdField_a_of_type_Aqaw;
-      int i = localaqaw2.jdField_a_of_type_Int - 1;
-      localaqaw2.jdField_a_of_type_Int = i;
-      if (i > 0)
+      return null;
+      try
       {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
-        return;
+        aqak localaqak = new aqak();
+        paramString = new JSONObject(paramString);
+        localaqak.jdField_a_of_type_Int = paramString.optInt("pttWithTextSwitch", -1);
+        localaqak.jdField_a_of_type_Long = paramString.optLong("aioSttSpliceTimeout", 45000L);
+        return localaqak;
       }
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean) }));
-      if (!this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean)
-      {
-        bhmi.a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Aqau.a(false);
-        return;
-      }
-    }
-    if (!aqai.a(aqaf.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
-      this.jdField_a_of_type_Aqau.a(false);
-      return;
-    }
-    this.jdField_a_of_type_Aqau.a(true);
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.jdField_a_of_type_Int + "  |  aioSttSpliceTimeout:" + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,33 @@
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-public class aisv
-  implements aitl
+class aisv
+  implements aiks
 {
-  public aiss a;
+  aisv(aist paramaist) {}
   
-  public aisv(aiss paramaiss)
+  public void a(int paramInt)
   {
-    this.a = paramaiss;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationEntryController", 2, new Object[] { "onUnreadCountChanged bShowEntry" + aist.a(this.a), " count" + paramInt });
+    }
+    this.a.d();
   }
   
-  public void a(List<aism> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void a(apus paramapus)
   {
-    if (this.a != null)
+    if ((paramapus == null) || (!paramapus.a(aist.a(this.a).getCurrentAccountUin()))) {
+      aist.a(this.a, false);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
+      if ((QLog.isColorLevel()) && (paramapus != null)) {
+        QLog.d("TroopNotificationEntryController", 2, "onTroopNotificationConfigUpdate bShowEntry" + aist.a(this.a) + " newConf" + paramapus.toString());
       }
-      aiss.a(this.a);
-      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramInt, paramString3, paramString1, paramList, paramString2));
-    }
-    while (!QLog.isColorLevel()) {
+      this.a.d();
       return;
+      aist.a(this.a, true);
     }
-    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
   }
 }
 

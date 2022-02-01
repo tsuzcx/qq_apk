@@ -3,9 +3,11 @@ package dov.com.qq.im.ptv;
 class AIOLongCaptureCtrl$1
   implements Runnable
 {
+  AIOLongCaptureCtrl$1(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
+  
   public void run()
   {
-    AIOLongCaptureCtrl.a(this.this$0);
+    AIOLongCaptureCtrl.b(this.this$0, false);
   }
 }
 

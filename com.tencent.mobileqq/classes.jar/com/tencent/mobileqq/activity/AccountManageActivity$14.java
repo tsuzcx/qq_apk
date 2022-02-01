@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aoot;
-import bdxc;
-import bhlg;
-import bhsr;
+import bcqt;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -32,19 +32,19 @@ class AccountManageActivity$14
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
           return;
         }
-        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_JavaLangString, (byte)3, false);
+        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(this.jdField_a_of_type_JavaLangString, (byte)3, false);
         if (localBitmap != null) {
           break label372;
         }
         if ((!AccountManageActivity.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString)) || (AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) == null))
         {
-          aoot localaoot = aoot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
-          String str2 = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          localObject2 = (bdxc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
+          FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+          String str2 = ContactUtils.getAccountNickName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          localObject2 = (bcqt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
           if (localObject2 == null) {
             break label398;
           }
-          localObject2 = ((bdxc)localObject2).a(this.jdField_a_of_type_JavaLangString);
+          localObject2 = ((bcqt)localObject2).a(this.jdField_a_of_type_JavaLangString);
           String str1;
           if (!this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.isLogined())
           {
@@ -66,18 +66,18 @@ class AccountManageActivity$14
           }
           else
           {
-            str1 = bhlg.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+            str1 = ContactUtils.getFriendNickName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
           }
           if ((TextUtils.isEmpty(str1)) || (this.b.equals(str1)) || (str1.equals(this.jdField_a_of_type_JavaLangString))) {
             break label393;
           }
-          if ((localaoot instanceof aoot)) {
-            ((aoot)localaoot).a(false);
+          if ((localFaceDrawable instanceof FaceDrawable)) {
+            ((FaceDrawable)localFaceDrawable).setSupportMaskView(false);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("AccountManageActivity", 2, String.format("updateAccountListView %b [uin,nick]=[%s,%s]", new Object[] { Boolean.valueOf(bool), bhsr.e(this.jdField_a_of_type_JavaLangString), str1 }));
+            QLog.i("AccountManageActivity", 2, String.format("updateAccountListView %b [uin,nick]=[%s,%s]", new Object[] { Boolean.valueOf(bool), StringUtil.getSimpleUinForPrint(this.jdField_a_of_type_JavaLangString), str1 }));
           }
-          this.this$0.runOnUiThread(new AccountManageActivity.14.1(this, bool, str1, localBitmap, localaoot));
+          this.this$0.runOnUiThread(new AccountManageActivity.14.1(this, bool, str1, localBitmap, localFaceDrawable));
           return;
         }
       }
@@ -87,7 +87,7 @@ class AccountManageActivity$14
         return;
       }
       Bitmap localBitmap = (Bitmap)AccountManageActivity.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      aoot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+      FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
       Object localObject1 = null;
       continue;
       label372:

@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface agfs
+class agfs
+  extends aghj
 {
-  public abstract void a(AudioPlayerBase paramAudioPlayerBase);
+  agfs(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
   
-  public abstract void a(AudioPlayerBase paramAudioPlayerBase, int paramInt);
-  
-  public abstract void b(AudioPlayerBase paramAudioPlayerBase, int paramInt);
-  
-  public abstract void c(AudioPlayerBase paramAudioPlayerBase, int paramInt);
-  
-  public abstract void d(AudioPlayerBase paramAudioPlayerBase, int paramInt);
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agnj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

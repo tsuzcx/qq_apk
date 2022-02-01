@@ -1,24 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import java.util.List;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public abstract class nyi
-  implements anui
+class nyi
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
+  private nyi(nyd paramnyd) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onComplete(String paramString1, String paramString2)
   {
-    if (paramObject != null) {}
-    try
+    for (;;)
     {
-      paramObject = (Bundle)paramObject;
-      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
-      return;
+      synchronized (nyd.a(this.a))
+      {
+        nyd.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
+        paramString2 = new File(nyd.b(paramString1));
+        if (paramString2.exists()) {
+          paramString2.renameTo(new File(nyd.a(paramString1)));
+        }
+        bcef.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nyd.a(this.a).mVideoVid, String.valueOf(nyd.a(this.a).mSource));
+        paramString2 = (QQAppInterface)nyd.a(this.a).get();
+        if (paramString2 != null)
+        {
+          paramString2 = paramString2.getCurrentAccountUin();
+          nya.b(paramString2, paramString1);
+          nyd.a(this.a, nyd.a(this.a));
+          return;
+        }
+      }
+      paramString2 = "";
     }
-    catch (Exception paramObject) {}
-    a(false, null, new Bundle());
-    return;
   }
 }
 

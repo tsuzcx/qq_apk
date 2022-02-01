@@ -32,7 +32,7 @@ public class WebViewClient
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
   public static final int INTERCEPT_BY_ISP = -16;
-  g a;
+  i a;
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {}
   

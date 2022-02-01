@@ -1,20 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import android.os.Handler;
+import android.os.Message;
+import mqq.util.WeakReference;
 
-public class rqt
-  extends AnimatorListenerAdapter
+class rqt
+  extends Handler
 {
-  public rqt(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
+  private WeakReference<rqs> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public rqt(rqs paramrqs)
   {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
+    this.a = new WeakReference(paramrqs);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
+    super.handleMessage(paramMessage);
+    rqs localrqs = (rqs)this.a.get();
+    if (localrqs == null) {}
+    while (paramMessage.what != 101) {
+      return;
+    }
+    rqs.a(localrqs);
   }
 }
 

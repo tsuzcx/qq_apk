@@ -1,9 +1,8 @@
-class nox
+public abstract interface nox
 {
-  public int a;
-  public long a;
+  public abstract void a();
   
-  private nox(nov paramnov) {}
+  public abstract void a(String paramString);
 }
 
 

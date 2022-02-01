@@ -1,16 +1,30 @@
-import android.view.View;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-class bfmr
-  implements bliz
+public class bfmr
 {
-  bfmr(bfmn parambfmn) {}
+  public float a;
+  public int a;
+  public String a;
+  public String b;
   
-  public void OnClick(View paramView, int paramInt)
+  public bfmr(bfmq parambfmq, String paramString, float paramFloat)
   {
-    bfmn.a(this.a);
-    if (paramInt == 0) {
-      bfmn.a(this.a, "");
+    this.b = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public JSONArray a()
+  {
+    JSONArray localJSONArray = new JSONArray();
+    try
+    {
+      localJSONArray.put(this.b);
+      localJSONArray.put(this.jdField_a_of_type_Float);
+      return localJSONArray;
     }
+    catch (JSONException localJSONException) {}
+    return localJSONArray;
   }
 }
 

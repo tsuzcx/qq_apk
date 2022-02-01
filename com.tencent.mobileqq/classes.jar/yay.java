@@ -1,19 +1,8 @@
-import android.support.annotation.NonNull;
-
-class yay
-  implements yau
+public abstract interface yay
 {
-  yay(yax paramyax) {}
+  public abstract void g();
   
-  public void a(@NonNull yas paramyas)
-  {
-    paramyas = paramyas.a();
-    if (paramyas != null) {
-      yax.a(this.a, paramyas);
-    }
-  }
-  
-  public void b(@NonNull yas paramyas) {}
+  public abstract void j();
 }
 
 

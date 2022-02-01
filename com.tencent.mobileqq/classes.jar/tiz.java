@@ -1,21 +1,18 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import com.tencent.viola.core.ViolaInstance;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tiz
-  extends tin
-  implements tig
+  extends tjd
 {
-  public tiz(Activity paramActivity, tia paramtia, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
+  public tiz(BridgeModule paramBridgeModule)
   {
-    super(paramActivity, paramtia, paramVVideoView, paramViolaInstance);
+    super(paramBridgeModule);
   }
   
-  public void I_() {}
-  
-  public void J_() {}
-  
-  public void K_() {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$900(this.a, paramInt2, paramIntent);
+  }
 }
 
 

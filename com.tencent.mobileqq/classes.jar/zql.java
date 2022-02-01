@@ -1,17 +1,40 @@
-class zql
-  extends zqh
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
+
+public class zql
+  implements FFmpegExecuteResponseCallback
 {
-  zql(zqi paramzqi, zqq paramzqq) {}
+  zql(zpq paramzpq) {}
+  
+  public void a(boolean paramBoolean) {}
   
   public void onFailure(String paramString)
   {
-    yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_Zqq.onFailure(paramString);
+    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
+    }
+  }
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
   }
   
   public void onSuccess(String paramString)
   {
-    yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    a(true);
   }
 }
 

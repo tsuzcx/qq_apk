@@ -1,16 +1,19 @@
-import com.tencent.gdtad.api.GdtAd;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface acos
+public class acos
+  extends BroadcastReceiver
 {
-  public abstract void onAdClicked(GdtAd paramGdtAd);
+  public acos(AddAccountActivity paramAddAccountActivity) {}
   
-  public abstract void onAdClosed(GdtAd paramGdtAd);
-  
-  public abstract void onAdFailedToLoad(GdtAd paramGdtAd, acor paramacor);
-  
-  public abstract void onAdImpression(GdtAd paramGdtAd);
-  
-  public abstract void onAdLoaded(GdtAd paramGdtAd);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    QLog.d("AddAccountActivity", 1, "AutoLoginReceiver onReceive");
+    AddAccountActivity.a(this.a, true);
+  }
 }
 
 

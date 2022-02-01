@@ -1,42 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sveffects.Logger;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
-public class blfw
-  implements Logger
+final class blfw
+  implements INetEngine.IBreakDownFix
 {
-  public void d(String paramString1, String paramString2)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    bpam.a(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    bpam.d(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    bpam.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString, Throwable paramThrowable)
-  {
-    bpam.a(paramString, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    bpam.b(paramString1, paramString2);
-  }
-  
-  public boolean isEnable()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    bpam.c(paramString1, paramString2);
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+    } while (!paramNetResp.contains("range="));
+    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+    paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
   }
 }
 

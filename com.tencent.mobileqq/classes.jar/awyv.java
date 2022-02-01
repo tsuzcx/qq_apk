@@ -1,7 +1,13 @@
 class awyv
-  extends aohg
+  implements awjh
 {
-  awyv(awyt paramawyt) {}
+  awyv(awyf paramawyf) {}
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
+  }
 }
 
 

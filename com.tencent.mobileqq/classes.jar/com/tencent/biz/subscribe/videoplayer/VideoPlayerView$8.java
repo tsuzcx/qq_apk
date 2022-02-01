@@ -37,7 +37,7 @@ class VideoPlayerView$8
       return;
       bool = false;
       break;
-      this.this$0.o();
+      this.this$0.n();
       VideoPlayerView.b(this.this$0, true);
       if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 0))
       {
@@ -46,7 +46,7 @@ class VideoPlayerView$8
       }
       if (this.this$0.a().getCurrentPositionMs() >= this.this$0.a().getDurationMs())
       {
-        this.this$0.e();
+        this.this$0.h();
         if (VideoPlayerView.a(this.this$0) != null) {
           VideoPlayerView.a(this.this$0).onVideoStart((int)this.this$0.a().getDurationMs());
         }
@@ -54,7 +54,7 @@ class VideoPlayerView$8
       if (this.this$0.a() != null)
       {
         VideoPlayerView.a(this.this$0).onVideoSize(this.this$0.a().getRenderViewWidth(), this.this$0.a().getRenderViewHeight());
-        this.this$0.d();
+        this.this$0.e();
       }
     } while (VideoPlayerView.a(this.this$0) == null);
     VideoPlayerView.a(this.this$0).getActivity().finish();

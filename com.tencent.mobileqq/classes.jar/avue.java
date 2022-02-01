@@ -1,49 +1,47 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class avue
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
 {
-  avvi a;
-  public ImageView d;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public avue(HotPicPageView paramHotPicPageView, View paramView, avvi paramavvi)
+  public avue(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    super(paramView);
-    if (paramavvi != null)
-    {
-      this.a = paramavvi;
-      this.d = ((ImageView)paramView.findViewById(2131368169));
-      this.d.setTag("HotPicControlTag");
-      this.itemView.setOnClickListener(this);
-      this.itemView.setOnLongClickListener(this);
-      this.itemView.setOnTouchListener(paramavvi);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_Int;
   }
   
-  public boolean onLongClick(View paramView)
+  public String a()
   {
-    boolean bool = false;
-    if (this.a != null)
-    {
-      this.a.b(paramView, getPosition());
-      bool = true;
-    }
-    return bool;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
+    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

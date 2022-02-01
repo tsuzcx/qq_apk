@@ -1,80 +1,77 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.protocol.GetArkTailReq;
+import com.tencent.mobileqq.gamecenter.protocol.ReportTypeReq;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
 
 public class atys
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bizj jdField_a_of_type_Bizj;
-  private Object jdField_a_of_type_JavaLangObject;
+  private static volatile atys jdField_a_of_type_Atys;
+  private Map<MessageRecord, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public atys(Context paramContext, View.OnClickListener paramOnClickListener)
+  public static atys a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(bizj parambizj)
-  {
-    this.jdField_a_of_type_Bizj = parambizj;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
-  {
-    boolean bool = false;
-    if (paramShaderAnimLayout != null)
+    if (jdField_a_of_type_Atys == null) {}
+    try
     {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
-      {
-        bool = true;
-        paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_Bizj != null) {
-          this.jdField_a_of_type_Bizj.setMotionView(paramView, paramInt);
-        }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramButton.setTag(Integer.valueOf(paramInt));
+      if (jdField_a_of_type_Atys == null) {
+        jdField_a_of_type_Atys = new atys();
       }
+      return jdField_a_of_type_Atys;
     }
-    else {
-      return bool;
+    finally {}
+  }
+  
+  public void a(long paramLong, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return;
     }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
-    return false;
+    Object localObject = (Long)this.jdField_a_of_type_JavaUtilMap.get(paramMessageRecord);
+    if (localObject == null) {}
+    for (long l1 = 0L;; l1 = ((Long)localObject).longValue())
+    {
+      long l2 = NetConnInfoCenter.getServerTimeMillis();
+      if (l2 - Long.valueOf(l1).longValue() <= 30000L) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(paramMessageRecord, Long.valueOf(l2));
+      localObject = akgd.a();
+      if (localObject == null) {
+        break;
+      }
+      GetArkTailReq localGetArkTailReq = new GetArkTailReq();
+      localGetArkTailReq.appid = (paramLong + "");
+      localGetArkTailReq.tt = 1;
+      localGetArkTailReq.scene_id = 1;
+      localGetArkTailReq.qq_version = DeviceInfoUtil.getQQVersion();
+      ajvh.a(localGetArkTailReq, new atyu(this, paramMessageRecord, new WeakReference(localObject)));
+      return;
+    }
   }
   
-  public int getCount()
+  public void a(long paramLong, BusinessObserver paramBusinessObserver)
   {
-    return 0;
+    GetArkTailReq localGetArkTailReq = new GetArkTailReq();
+    localGetArkTailReq.appid = (paramLong + "");
+    localGetArkTailReq.tt = 1;
+    localGetArkTailReq.scene_id = 3;
+    localGetArkTailReq.qq_version = DeviceInfoUtil.getQQVersion();
+    ajvh.a(localGetArkTailReq, paramBusinessObserver);
   }
   
-  public Object getItem(int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
+    ReportTypeReq localReportTypeReq = new ReportTypeReq();
+    localReportTypeReq.appid = paramString;
+    localReportTypeReq.type = paramInt1;
+    localReportTypeReq.sub_type = paramInt2;
+    localReportTypeReq.tt = 1;
+    ajvh.a(localReportTypeReq, new atyt(this));
   }
 }
 

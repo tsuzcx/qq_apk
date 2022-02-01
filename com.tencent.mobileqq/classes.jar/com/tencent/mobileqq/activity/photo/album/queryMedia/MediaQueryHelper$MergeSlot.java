@@ -7,6 +7,7 @@ class MediaQueryHelper$MergeSlot
   private final ICursor mCursor;
   LocalMediaInfo mImage;
   private int mOffset = -1;
+  boolean need;
   
   public MediaQueryHelper$MergeSlot(ICursor paramICursor)
   {
@@ -29,7 +30,8 @@ class MediaQueryHelper$MergeSlot
       bool2 = localICursor.moveToPosition(i);
       bool1 = bool2;
     } while (!bool2);
-    this.mImage = this.mCursor.loadImageFromCursor();
+    this.mImage = this.mCursor.makeMediaInfo();
+    this.need = this.mCursor.needMedia(this.mImage);
     return bool2;
   }
 }

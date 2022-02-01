@@ -1,41 +1,13 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
-class aglt
-  implements OnCompositionLoadedListener
+public class aglt
+  implements DialogInterface.OnClickListener
 {
-  aglt(aglq paramaglq) {}
+  public aglt(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    if (aglq.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LottieAnimation", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
-      }
-    }
-    do
-    {
-      return;
-      if (paramLottieComposition == null) {
-        break;
-      }
-      aglq.a(this.a).setComposition(paramLottieComposition);
-      aglq.a(this.a).loop(false);
-      aglq.a(this.a).setVisibility(0);
-      aglq.a(this.a).playAnimation();
-    } while (!QLog.isColorLevel());
-    QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream succ");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream composition null");
-    }
-    aglq.a(this.a).clear();
-    this.a.c();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

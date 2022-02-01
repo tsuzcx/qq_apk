@@ -1,8 +1,13 @@
-public abstract interface wij
+class wij
+  extends wht
 {
-  public abstract void a();
+  wij(wif paramwif, wjm paramwjm) {}
   
-  public abstract void b();
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wjm.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
+  }
 }
 
 

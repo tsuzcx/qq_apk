@@ -14,8 +14,8 @@ class VideoDecoderTrack$DecoderWrapper
   
   private void release()
   {
-    Logger.d(VideoDecoderTrack.access$400(), "Video DecoderWrapper release: ");
-    VideoDecoderTrack.access$500(this.this$0, this.decoder);
+    Logger.d(VideoDecoderTrack.access$500(), "Video DecoderWrapper release: ");
+    VideoDecoderTrack.access$600(this.this$0, this.decoder);
   }
 }
 

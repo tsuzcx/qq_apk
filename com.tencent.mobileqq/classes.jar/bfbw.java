@@ -1,40 +1,52 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class bfbw
 {
-  public int c = -1;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public String g;
-  public String h;
+  public static bfbw a;
+  public amop a;
+  public QQAppInterface a;
   
   public bfbw()
   {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
+    this.jdField_a_of_type_Amop = new bfbx(this);
   }
   
-  public String toString()
+  public static bfbw a(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("result:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" errCode:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append(" errStr:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" reason:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" succCnt:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
-    localStringBuilder.append(" failCnt");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(" isSendByQuickHttp");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
-    localStringBuilder.append(" isAllowRetry");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
-    return localStringBuilder.toString();
+    if (jdField_a_of_type_Bfbw == null) {
+      b(paramQQAppInterface);
+    }
+    for (;;)
+    {
+      return jdField_a_of_type_Bfbw;
+      if (jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
+      {
+        if (jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+        {
+          jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bfbw.jdField_a_of_type_Amop);
+          jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+        }
+        jdField_a_of_type_Bfbw = null;
+        b(paramQQAppInterface);
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_Bfbw != null)
+    {
+      paramQQAppInterface.removeObserver(jdField_a_of_type_Bfbw.jdField_a_of_type_Amop);
+      jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      jdField_a_of_type_Bfbw = null;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface)
+  {
+    jdField_a_of_type_Bfbw = new bfbw();
+    jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface.addObserver(jdField_a_of_type_Bfbw.jdField_a_of_type_Amop);
   }
 }
 

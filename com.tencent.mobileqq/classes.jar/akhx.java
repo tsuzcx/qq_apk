@@ -1,43 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.home.Conversation;
+import mqq.os.MqqHandler;
 
-public class akhx
-  extends apcf
+class akhx
+  implements DialogInterface.OnClickListener
 {
-  akhx(akha paramakha) {}
+  akhx(akhw paramakhw) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bnrf.i()) {
-      this.a.a(39, null);
+    if (alyf.a() != null) {
+      alvx.a();
     }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    if (!bnrf.h()) {}
-    while (this.a.a == null) {
-      return;
+    paramDialogInterface = alvx.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
     }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void c()
-  {
-    if (!bnrf.h()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
   }
 }
 

@@ -1,19 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 
-public final class sor
-  implements Parcelable.Creator<AdData>
+public class sor
+  implements Animator.AnimatorListener
 {
-  public AdData a(Parcel paramParcel)
+  public sor(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new AdData(paramParcel);
+    this.a.setScaleX(1.0F);
+    this.a.setScaleY(1.0F);
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
+    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
+      this.a.a(0);
+    }
   }
   
-  public AdData[] a(int paramInt)
-  {
-    return new AdData[paramInt];
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

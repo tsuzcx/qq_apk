@@ -1,76 +1,42 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class aijw
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  aijw(aijs paramaijs) {}
   
-  aijw(aijm paramaijm) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Aijm.K) || (!(paramView instanceof ImageView))) {
-      return false;
-    }
-    Object localObject = (ImageView)paramView;
-    int i = paramMotionEvent.getAction();
-    localObject = null;
-    paramMotionEvent = (MotionEvent)localObject;
-    if (paramView.getTag() != null)
-    {
-      paramMotionEvent = (MotionEvent)localObject;
-      if ((paramView.getTag() instanceof axtj)) {
-        paramMotionEvent = (axtj)paramView.getTag();
-      }
-    }
-    switch (i)
-    {
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    if ((localRecommendTroopItem == null) || (TextUtils.isEmpty(localRecommendTroopItem.uin))) {
+      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
     }
     for (;;)
     {
-      return true;
-      if (paramMotionEvent != null)
-      {
-        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      amzp.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, localRecommendTroopItem.uin, new aijx(this));
+      this.a.b.remove(localRecommendTroopItem);
+      this.a.notifyDataSetChanged();
+      if ((this.a.b != null) && (this.a.b.size() == 0)) {
+        this.a.jdField_a_of_type_Aiiz.a().sendEmptyMessage(100);
       }
-      else
+      if (aijs.a(this.a) != null)
       {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (paramMotionEvent != null) {
-          paramView.setAlpha(paramMotionEvent.a());
+        amzp localamzp = (amzp)aijs.a(this.a).getManager(22);
+        if ((this.a.b != null) && (this.a.b.size() == 0)) {
+          localamzp.a(1);
         }
-        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-        {
-          return true;
-          paramView.setAlpha(1.0F);
-        }
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramView = new Intent(this.jdField_a_of_type_Aijm.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-        localObject = arfj.a().a(this.jdField_a_of_type_Aijm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        axsf.a(this.jdField_a_of_type_Aijm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aijm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMotionEvent);
-        paramView.putExtra("url", (String)localObject);
-        paramView.putExtra("finish_animation_out_to_right", true);
-        paramView.putExtra("is_wrap_content", true);
-        paramView.putExtra("hide_left_button", false);
-        if (this.jdField_a_of_type_Aijm.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
-        {
-          this.jdField_a_of_type_Aijm.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
+        localamzp.a(localRecommendTroopItem.uin);
       }
+      bcef.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, localRecommendTroopItem.uin, "", "", "");
     }
   }
 }

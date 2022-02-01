@@ -1,22 +1,30 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+
 public class anfy
-  extends anfs
+  extends amua
 {
-  private int b;
+  private anfy(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  public anfy(int paramInt1, int paramInt2, anga paramanga)
+  protected void a(int paramInt)
   {
-    super(paramInt1, paramanga);
-    this.b = paramInt2;
-  }
-  
-  public amww a(long paramLong, String paramString1, String paramString2)
-  {
-    return null;
+    if (GetJoinedHotChatListStep.a(this.a) != null)
+    {
+      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
+    }
+    if (paramInt == 0)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfy
  * JD-Core Version:    0.7.0.1
  */

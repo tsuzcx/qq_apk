@@ -1,63 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atcl
-  extends asvt
+public class atcl
+  implements View.OnClickListener
 {
-  atcl(atck paramatck) {}
+  public atcl(SendBottomBar paramSendBottomBar) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject == null) {}
-    do
+    if (SendBottomBar.a(this.a).isChecked())
     {
-      do
-      {
-        int i;
-        do
-        {
-          Object[] arrayOfObject;
-          do
-          {
-            String str;
-            do
-            {
-              return;
-              arrayOfObject = (Object[])paramObject;
-              str = (String)arrayOfObject[0];
-              if (QLog.isColorLevel()) {
-                QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-              }
-              if (!paramBoolean) {
-                break;
-              }
-              paramObject = (String)arrayOfObject[1];
-            } while (atck.a(this.a) == null);
-            atck.a(this.a).a(str, paramObject);
-            return;
-          } while (paramObject == null);
-          i = ((Integer)arrayOfObject[1]).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode resetCode=%s", new Object[] { Integer.valueOf(i) }));
-          }
-          if (i != 20) {
-            break;
-          }
-        } while (atck.a(this.a) == null);
-        atck.a(this.a).a();
-        return;
-        if (i != 21) {
-          break;
-        }
-      } while (atck.a(this.a) == null);
-      atck.a(this.a).a(2131718517);
+      SendBottomBar.a(this.a).d();
+      SendBottomBar.a(this.a).setText(amtj.a(2131712910));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    } while (atck.a(this.a) == null);
-    atck.a(this.a).a(2131718517);
+      SendBottomBar.a(this.a).e();
+      SendBottomBar.a(this.a).setText(amtj.a(2131712922));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcl
  * JD-Core Version:    0.7.0.1
  */

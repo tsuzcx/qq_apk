@@ -2,9 +2,9 @@ package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import avah;
-import avai;
-import bhpc;
+import atnl;
+import atnm;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ForwardPhotoOption$3
   implements Runnable
@@ -24,7 +24,7 @@ public class ForwardPhotoOption$3
     {
       return;
     }
-    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new avah(this));
+    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new atnl(this));
   }
 }
 

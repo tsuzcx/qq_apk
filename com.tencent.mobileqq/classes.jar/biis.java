@@ -1,97 +1,54 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.config.AppSetting;
 
 public class biis
-  extends bnvn
+  extends mwo
+  implements biip
 {
-  private String a;
+  protected Context a;
+  protected biir a;
   
-  public biis(String paramString1, View paramView, String paramString2)
+  public biis(Context paramContext, biir parambiir)
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    ((TemplateLikeView)paramView).a(1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Biir = parambiir;
+    this.jdField_a_of_type_Biir.a(this);
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  private byte[] a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -2;
-    this.b = a(paramJSONObject.optString("height"));
-    paramLayoutParams.width = -2;
-    paramLayoutParams.height = -2;
-    int i = zps.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("lpd", 2) / 2);
-    int j = zps.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("rpd", 2) / 2);
-    ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setContainerLayoutParams(this.jdField_a_of_type_Int, this.b, i, j);
-    return paramLayoutParams;
+    return paramBundle.getByteArray("buffer");
   }
   
-  protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
+  public void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    String str = paramString;
-    if (!paramString.startsWith("http"))
-    {
-      str = paramString;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
-          break label114;
-        }
-      }
-    }
-    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
-    {
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      paramString.mLoadingDrawable = beyq.a;
-      paramString.mFailedDrawable = beyq.a;
-      paramString.mPlayGifImage = false;
-      if (paramDecodeHandler != null) {
-        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-      }
-      paramString = URLDrawable.getDrawable(str, paramString);
-      paramString.setDecodeHandler(paramDecodeHandler);
-      return paramString;
-      label114:
-      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Biir != null) {
+      this.jdField_a_of_type_Biir.a(paramLong1, paramLong2, paramArrayOfByte);
     }
   }
   
-  protected void a(String paramString1, String paramString2)
+  public void a(long paramLong, byte[] paramArrayOfByte) {}
+  
+  public void b(byte[] paramArrayOfByte) {}
+  
+  public void d(Bundle paramBundle)
   {
-    if ("bg".equals(paramString1)) {
-      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
-        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
-      }
-    }
-    do
-    {
-      return;
-      if (!"style".equals(paramString1)) {
-        break;
-      }
-    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
-    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
-    if ("1".equals(paramString2)) {}
-    for (int i = 0;; i = 1)
-    {
-      paramString1.a(i);
-      return;
-    }
-    super.a(paramString1, paramString2);
+    lkq.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, a(paramBundle));
   }
   
-  public void c()
+  public void e(Bundle paramBundle) {}
+  
+  public void f(Bundle paramBundle) {}
+  
+  public void g(Bundle paramBundle)
   {
-    super.c();
+    receiveMultiVideoMsg(1, a(paramBundle));
+  }
+  
+  public void h(Bundle paramBundle)
+  {
+    receiveMultiVideoMsg(2, a(paramBundle));
   }
 }
 

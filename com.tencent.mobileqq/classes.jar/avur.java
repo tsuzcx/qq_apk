@@ -1,30 +1,65 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.util.List;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avur
-  implements bfcb
+  extends avtg
 {
-  public avur(HotVideoData paramHotVideoData, avut paramavut, avus paramavus) {}
+  public avur(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void a(bfau parambfau, bfbj parambfbj)
+  public void a(boolean paramBoolean)
   {
-    if (parambfbj != null) {
-      if (parambfbj.a.size() > 0)
-      {
-        parambfau = (bfbx)parambfbj.a.get(0);
-        this.jdField_a_of_type_Avut.a(parambfau);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
+    }
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, avuk paramavuk)
+  {
+    if (paramBoolean) {
+      this.a.a(paramavuk);
+    }
+    super.a(paramBoolean, paramavuk);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    Object localObject;
+    if ((paramBoolean) && ((paramObject instanceof avue)))
+    {
+      localObject = (avue)paramObject;
+      this.a.a((avue)localObject);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Avus.a(this.jdField_a_of_type_Avut);
+      super.a(paramBoolean, paramObject);
       return;
-      this.jdField_a_of_type_Avut.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Avut.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_Avut.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Avut.jdField_a_of_type_JavaLangString = "Unknown error！";
+      if ((paramObject instanceof Integer))
+      {
+        localObject = (Integer)paramObject;
+        this.a.a((Integer)localObject);
+      }
     }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
+    }
+    super.b(paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    this.a.a(paramBoolean, paramObject);
+    super.b(paramBoolean, paramObject);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import UserGrowth.stSimpleMetaComment;
 import UserGrowth.stSimpleMetaReply;
-import aakb;
+import amtj;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -12,11 +12,11 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
 import com.tencent.biz.subscribe.comment.ReplyActionView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
+import zgz;
 
 public class WsReplyContainer
   extends LinearLayout
@@ -24,8 +24,8 @@ public class WsReplyContainer
 {
   private int jdField_a_of_type_Int;
   private stSimpleMetaComment jdField_a_of_type_UserGrowthStSimpleMetaComment;
-  private aakb jdField_a_of_type_Aakb;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
+  private zgz jdField_a_of_type_Zgz;
   private int b;
   private int c;
   
@@ -72,7 +72,7 @@ public class WsReplyContainer
         stSimpleMetaReply localstSimpleMetaReply = (stSimpleMetaReply)localArrayList.get(i);
         WsReplyView localWsReplyView = new WsReplyView(getContext());
         localWsReplyView.setPosition(i);
-        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Aakb);
+        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Zgz);
         localWsReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localWsReplyView.setClickable(true);
         localWsReplyView.setFocusable(true);
@@ -104,7 +104,7 @@ public class WsReplyContainer
         setVisibility(0);
         return;
         label278:
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anzj.a(2131712278));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(amtj.a(2131712510));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
         continue;
@@ -114,7 +114,7 @@ public class WsReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anzj.a(2131712276) + paramInt + anzj.a(2131712277));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(amtj.a(2131712508) + paramInt + amtj.a(2131712509));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -137,15 +137,15 @@ public class WsReplyContainer
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Aakb != null)
+      if (this.jdField_a_of_type_Zgz != null)
       {
-        this.jdField_a_of_type_Aakb.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+        this.jdField_a_of_type_Zgz.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
         continue;
-        if (this.jdField_a_of_type_Aakb != null)
+        if (this.jdField_a_of_type_Zgz != null)
         {
           stSimpleMetaComment localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
           int i = getHeight() / this.c;
-          this.jdField_a_of_type_Aakb.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, Integer.valueOf(i) });
+          this.jdField_a_of_type_Zgz.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, Integer.valueOf(i) });
         }
       }
     }
@@ -161,9 +161,9 @@ public class WsReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(aakb paramaakb)
+  public void setOnCommentElementClickListener(zgz paramzgz)
   {
-    this.jdField_a_of_type_Aakb = paramaakb;
+    this.jdField_a_of_type_Zgz = paramzgz;
   }
   
   public void setPosition(int paramInt)
@@ -173,7 +173,7 @@ public class WsReplyContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer
  * JD-Core Version:    0.7.0.1
  */

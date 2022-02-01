@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class affs
-  implements QQPermissionCallback
+class affs
+  implements OnCompositionLoadedListener
 {
-  public affs(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  affs(affp paramaffp) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    bhlq.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QQIdentiferLegacy.a(this.a);
+    affp.a(this.a, paramLottieComposition);
   }
 }
 

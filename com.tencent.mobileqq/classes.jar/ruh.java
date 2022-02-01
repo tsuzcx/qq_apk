@@ -1,20 +1,44 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ruh
-  implements DialogInterface.OnClickListener
+final class ruh
+  implements bgoy
 {
-  ruh(rug paramrug, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rug, rsx.a(this.jdField_a_of_type_Rug.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
+    if (QLog.isColorLevel()) {
+      QLog.d(rug.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
+    }
+    if (paramBoolean1)
+    {
+      rug.a(paramInt);
+      try
+      {
+        JSONObject localJSONObject = rug.a();
+        if (localJSONObject != null) {}
+        try
+        {
+          rug.a().put("simCardType", rug.a());
+          if (QLog.isColorLevel()) {
+            QLog.d(rug.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
+          }
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.e(rug.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
+            }
+          }
+        }
+        return;
+      }
+      finally {}
+    }
   }
 }
 

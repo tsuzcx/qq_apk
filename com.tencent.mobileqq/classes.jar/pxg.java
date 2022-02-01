@@ -1,21 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class pxg
-  implements ViewBase.OnClickListener
-{
-  pxg(pxe parampxe, Container paramContainer, ppu paramppu, int paramInt) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    pxe.a(this.jdField_a_of_type_Pxe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
-    }
-  }
-}
+public abstract interface pxg
+  extends pxc
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

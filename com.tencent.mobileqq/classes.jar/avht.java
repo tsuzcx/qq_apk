@@ -1,8 +1,10 @@
-public abstract interface avht
+import android.graphics.Bitmap;
+
+class avht
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable);
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

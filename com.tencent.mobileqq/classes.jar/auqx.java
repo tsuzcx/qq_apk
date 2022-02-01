@@ -1,17 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Set;
 
-public class auqx
-  implements CompoundButton.OnCheckedChangeListener
+class auqx
+  extends amsu
 {
-  public auqx(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  auqx(auqv paramauqv) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    atul.a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)paramObject).longValue();
+      paramObject = auqv.a(this.a).keySet().toArray();
+      int i = paramObject.length - 1;
+      while (i >= 0)
+      {
+        Long localLong = (Long)paramObject[i];
+        this.a.a(localLong.longValue(), l);
+        i -= 1;
+      }
+    }
   }
 }
 

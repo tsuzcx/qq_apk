@@ -1,17 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import org.json.JSONObject;
 
-class tiu
-  extends AnimatorListenerAdapter
+public abstract interface tiu
 {
-  tiu(tis paramtis, VVideoView paramVVideoView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    tis.a(this.jdField_a_of_type_Tis, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
-  }
+  public abstract void a(String paramString, JSONObject paramJSONObject);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import antf;
-import axfj;
-import bhmi;
+import avsq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 class EmosmActivity$2
@@ -21,28 +21,28 @@ class EmosmActivity$2
     {
       if (localObject1 != null)
       {
-        localObject1 = ((axfj)((QQAppInterface)localObject1).getManager(14)).a(this.a);
+        localObject1 = ((avsq)((QQAppInterface)localObject1).getManager(14)).a(this.a);
         if ((localObject1 == null) || ((!((EmoticonTab)localObject1).aioHave) && (!((EmoticonTab)localObject1).kandianHave)))
         {
-          Object localObject2 = antf.bV + this.a;
+          Object localObject2 = AppConstants.SDCARD_EMOTICON_SAVE + this.a;
           localObject1 = new File((String)localObject2);
           localObject2 = new File((String)localObject2 + "del");
           if (!((File)localObject1).renameTo((File)localObject2)) {
             break label134;
           }
-          bhmi.a(((File)localObject2).getAbsolutePath());
+          FileUtils.deleteDirectory(((File)localObject2).getAbsolutePath());
         }
       }
       return;
       label134:
-      bhmi.a(((File)localObject1).getAbsolutePath());
+      FileUtils.deleteDirectory(((File)localObject1).getAbsolutePath());
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.2
  * JD-Core Version:    0.7.0.1
  */

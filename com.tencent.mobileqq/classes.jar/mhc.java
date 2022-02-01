@@ -1,66 +1,91 @@
-import android.app.Activity;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.VideoController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
-public class mhc
+class mhc
+  implements View.OnTouchListener
 {
-  public Button a;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  public TextView a;
-  public Button b;
-  public TextView b;
+  mhc(mha parammha) {}
   
-  public mhc()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(paramInt);
+    boolean bool = mha.a(this.a).a();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    for (;;)
+    {
+      return false;
+      int i = Calendar.getInstance().get(11) * 60 + Calendar.getInstance().get(12);
+      if (paramView.getId() == 2131373515)
+      {
+        mha.a(this.a, 0);
+        if (((mha.a(this.a).a().w != 2) && (mha.a(this.a).a().w != 3)) || (mha.b(this.a) == 2) || (mha.b(this.a) == 3) || (bool) || (!mum.b())) {
+          break label616;
+        }
+        mha.a(this.a, true);
+        paramView = new mhe(this);
+        if ((mha.a(this.a).a().x <= i) && (i < mha.a(this.a).a().y)) {
+          break label590;
+        }
+        paramView = bfur.a(mha.a(this.a), 0, null, amtj.a(2131708020), amtj.a(2131708018), amtj.a(2131708017), paramView, paramView);
+        if (paramView != null)
+        {
+          paramView.show();
+          mum.a();
+        }
+      }
+      for (;;)
+      {
+        bcef.b(null, "CliOper", "", "", "0X800A564", "0X800A564", 0, 0, "", "", "", "");
+        return false;
+        if (paramView.getId() == 2131373518)
+        {
+          mha.a(this.a, 1);
+          break;
+        }
+        QLog.i("QavDoubleVideoSharpnessMangaer", 1, "hdModeFreeUse. curMinute = " + i + ", startTime = " + mha.a(this.a).a().x + ", endTime = " + mha.a(this.a).a().y + ", tips = " + mha.a(this.a).a().n);
+        if ((bool) || ((mha.a(this.a).a().x <= i) && (i < mha.a(this.a).a().y)))
+        {
+          if (paramView.getId() == 2131373525)
+          {
+            mha.a(this.a, 2);
+            break;
+          }
+          mha.a(this.a, 3);
+          break;
+        }
+        mha.a(this.a, true);
+        if (paramView.getId() == 2131373525) {
+          mha.b(this.a, 2);
+        }
+        for (;;)
+        {
+          paramView = new mhd(this);
+          if ((mha.a(this.a).a().x > i) || (i >= mha.a(this.a).a().y))
+          {
+            paramView = bfur.a(mha.a(this.a), 0, amtj.a(2131708014), null, amtj.a(2131708015), amtj.a(2131708016), paramView, paramView);
+            if (paramView != null) {
+              paramView.show();
+            }
+          }
+          bcef.b(null, "CliOper", "", "", "0X800A562", "0X800A562", 0, 0, "", "", "", "");
+          return false;
+          mha.b(this.a, 3);
+        }
+        label590:
+        this.a.c();
+        mha.a(this.a, false);
+        mha.a(this.a);
+      }
+      label616:
+      mha.a(this.a);
+      bcef.b(null, "CliOper", "", "", "0X800A344", "0X800A344", mha.b(this.a) + 1, 0, "", "", "", "");
     }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(paramInt);
-    }
-    if ((this.jdField_b_of_type_AndroidWidgetButton != null) && (paramInt != 0)) {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(paramInt);
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131373527));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373361));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373360));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373391));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373384));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131373389));
   }
 }
 

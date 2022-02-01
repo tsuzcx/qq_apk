@@ -1,24 +1,20 @@
-import com.tencent.TMG.utils.QLog;
-import feedcloud.FeedCloudWrite.StDoLikeRsp;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class uzh
-  implements aaav<FeedCloudWrite.StDoLikeRsp>
+class uzh
+  implements View.OnClickListener
 {
-  uzh(aaav paramaaav) {}
+  uzh(uzg paramuzg) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramLong == 0L)) {
-      QLog.d("doubleclicklike", 3, " success");
+    if (uzg.a(this.a).getActivity() != null) {
+      uzg.a(this.a).getActivity().doOnBackPressed();
     }
-    for (;;)
-    {
-      if (this.a != null) {
-        this.a.onReceive(paramBoolean, paramLong, paramString, paramStDoLikeRsp);
-      }
-      return;
-      QLog.d("doubleclicklike", 3, " failed：" + paramLong);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

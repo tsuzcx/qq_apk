@@ -1,15 +1,8 @@
-public class aocg
+public abstract interface aocg
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public long e;
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void a(float[] paramArrayOfFloat);
 }
 
 

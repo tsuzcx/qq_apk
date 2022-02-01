@@ -1,24 +1,36 @@
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qdq
-  implements URLDrawable.DownloadListener
+class qdq
+  implements View.OnClickListener
 {
-  public qdq(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  qdq(qdf paramqdf, pvc parampvc, PgcSmallView paramPgcSmallView, Container paramContainer) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    aayd localaayd = new aayd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842704));
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localaayd, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvc.a();
+    localArticleInfo.clickArea = 11;
+    QLog.d("PgcShortContentProteusItem", 1, "click short content small image");
+    if (this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
+    {
+      localArticleInfo.clickJumpTarget = qgg.a(this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.jdField_a_of_type_Rfg.h, "-1");
+      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.jdField_a_of_type_Rfg.h, null);
+    }
+    for (;;)
+    {
+      pay.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localArticleInfo.clickJumpTarget = qgg.a(this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.jdField_a_of_type_Ren.c, "-1");
+      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.jdField_a_of_type_Ren.c, null);
+    }
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

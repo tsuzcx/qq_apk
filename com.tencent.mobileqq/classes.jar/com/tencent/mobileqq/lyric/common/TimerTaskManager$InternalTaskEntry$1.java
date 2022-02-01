@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.lyric.common;
 
-import awwk;
+import avjr;
 
 public class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(awwk paramawwk) {}
+  public TimerTaskManager$InternalTaskEntry$1(avjr paramavjr) {}
   
   public void run()
   {
-    if (awwk.a(this.this$0) != null) {
-      awwk.a(this.this$0).run();
+    if (avjr.a(this.this$0) != null) {
+      avjr.a(this.this$0).run();
     }
   }
 }

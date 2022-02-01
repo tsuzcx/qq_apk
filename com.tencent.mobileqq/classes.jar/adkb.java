@@ -1,32 +1,15 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class adkb
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public adkb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public adkb(adka paramadka) {}
-  
-  public boolean a(JSONObject paramJSONObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
-      this.b = paramJSONObject.getString("func_name").trim();
-      return true;
-    }
-    catch (Exception paramJSONObject)
-    {
-      adjv.a("KingKongNativePatch", "Parse fingerprint error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

@@ -204,7 +204,7 @@ public class MiniAppClientQIPCModule
   
   private void sendArkMsg(JsRuntime paramJsRuntime, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    MiniAppCmdUtil.getInstance().sendArkMsg(null, paramString2, paramString3, paramString4, new MiniAppClientQIPCModule.8(this, paramJsRuntime, paramString1, paramInt));
+    MiniAppCmdUtil.getInstance().sendArkMsg(null, paramString2, paramString3, paramString4, paramString1, new MiniAppClientQIPCModule.8(this, paramJsRuntime, paramString1, paramInt));
   }
   
   private void sendDirectShareArkMsg(JsRuntime paramJsRuntime, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)

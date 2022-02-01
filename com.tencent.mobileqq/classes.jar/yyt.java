@@ -1,18 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-class yyt
-  implements bjbj
+public abstract interface yyt
 {
-  yyt(yyq paramyyq) {}
+  public abstract void a();
   
-  public void a(bjbh parambjbh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

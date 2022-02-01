@@ -1,14 +1,23 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
 class agio
-  implements bjig
+  implements avkz
 {
-  agio(agim paramagim) {}
+  agio(agif paramagif, ChatMessage paramChatMessage, agis paramagis) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void a(agis paramagis)
   {
-    if (paramBaseResp.errCode != 0) {
-      agim.a(this.a, 1, 2131693111);
+    if (QLog.isColorLevel()) {
+      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
+    }
+    agif.a(this.jdField_a_of_type_Agif, paramagis);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      agif.a(this.jdField_a_of_type_Agif, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Agis);
     }
   }
 }

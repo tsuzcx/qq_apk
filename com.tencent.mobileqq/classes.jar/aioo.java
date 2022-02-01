@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aioo
+public class aioo
   implements View.OnClickListener
 {
-  aioo(ainh paramainh, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
+  public aioo(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator) != null)) {
+      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

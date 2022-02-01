@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.data.MessageForTofuBaseProfile;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
 public class bctx
-  implements adbf
 {
-  public MessageRecord a(int paramInt)
-  {
-    if (paramInt == -7010) {
-      return new MessageForTofuBaseProfile();
-    }
-    return null;
-  }
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public TimDocSSOMsg.UinRightInfo a;
+  public TextView b;
+  
+  public bctx(bctw parambctw) {}
 }
 
 

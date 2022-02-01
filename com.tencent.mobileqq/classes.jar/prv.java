@@ -1,9 +1,25 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
+import android.text.TextUtils;
 
-public abstract interface prv<B, C>
+class prv
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<B> paramArrayList, @Nullable C paramC, int paramInt2, String paramString);
+  public String a;
+  public String b;
+  
+  prv(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
+  }
 }
 
 

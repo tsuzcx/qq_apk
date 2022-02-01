@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import nhn;
+import njc;
 
 class AVGamePosterView$1$1
   implements Runnable
@@ -17,39 +17,78 @@ class AVGamePosterView$1$1
   
   public void run()
   {
-    String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.a)) {
-      str = this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.this$0.a();
-    }
-    for (;;)
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.a)) {}
+    for (String str = this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.this$0.a();; str = this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.a)
     {
       Object localObject1 = new File(str);
       try
       {
-        localObject1 = new FileOutputStream((File)localObject1);
-        this.jdField_a_of_type_AndroidGraphicsBitmap.compress(Bitmap.CompressFormat.PNG, 90, (OutputStream)localObject1);
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        if (AVGamePosterView.a(this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.this$0) != null) {
-          AVGamePosterView.a(this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.this$0).b(str);
-        }
-        return;
-        str = this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.a;
+        localFileOutputStream = new FileOutputStream((File)localObject1);
+        localObject1 = localFileOutputStream;
+        if (localFileOutputStream == null) {}
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
         for (;;)
         {
           localFileNotFoundException.printStackTrace();
-          Object localObject2 = null;
+          if (0 == 0) {
+            break;
+          }
+          try
+          {
+            throw new NullPointerException();
+          }
+          catch (Exception localException1)
+          {
+            Object localObject2 = null;
+          }
         }
       }
       catch (IOException localIOException)
       {
-        for (;;)
-        {
-          Object localObject3 = null;
+        while (0 != 0) {
+          try
+          {
+            throw new NullPointerException();
+          }
+          catch (Exception localException2)
+          {
+            Object localObject3 = null;
+          }
         }
       }
+      finally
+      {
+        if (0 == 0) {}
+      }
+      try
+      {
+        localFileOutputStream.close();
+        localObject1 = localFileOutputStream;
+      }
+      catch (Exception localException3)
+      {
+        try
+        {
+          throw new NullPointerException();
+          throw localObject4;
+          localException3 = localException3;
+          localObject5 = localFileOutputStream;
+        }
+        catch (Exception localException4)
+        {
+          break label171;
+        }
+        Object localObject5 = null;
+        break;
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap.compress(Bitmap.CompressFormat.PNG, 90, (OutputStream)localObject1);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      if (AVGamePosterView.a(this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.this$0) != null) {
+        AVGamePosterView.a(this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1.this$0).b(str);
+      }
+      return;
     }
   }
 }

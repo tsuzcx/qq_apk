@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.account;
 
 import com.tencent.qphone.base.util.QLog;
-import ocd;
+import odq;
 import org.json.JSONException;
-import ozs;
-import paa;
+import pay;
+import pbg;
 
 final class RIJUGCAddAccountFragment$2
   implements Runnable
@@ -13,7 +13,7 @@ final class RIJUGCAddAccountFragment$2
   {
     try
     {
-      ocd.a(null, "CliOper", "", "", "0X800AF12", "0X800AF12", 0, 0, "", "", "", ozs.a().a("uin", ozs.a()).a(), false);
+      odq.a(null, "CliOper", "", "", "0X800AF12", "0X800AF12", 0, 0, "", "", "", pay.a().a("uin", pay.a()).a(), false);
       return;
     }
     catch (JSONException localJSONException)

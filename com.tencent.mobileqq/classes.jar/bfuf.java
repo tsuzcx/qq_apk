@@ -1,39 +1,29 @@
-import android.os.Handler;
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class bfuf
-  extends VasQuickUpdateManager.CallBacker
+  extends BroadcastReceiver
 {
-  bfuf(bftx parambftx) {}
+  public bfuf(BusinessCommonConfig paramBusinessCommonConfig, QQAppInterface paramQQAppInterface) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      paramInt1 = bftx.a(paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + paramInt1);
-      }
-      if (paramInt1 > 0)
+      do
       {
-        paramString1 = (bfug)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
-        if (paramString1 == null) {
-          break label154;
-        }
-        if (bgth.a(new File(bftx.jdField_a_of_type_JavaLangString + paramInt1))) {
-          this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
-        }
-      }
-    }
-    return;
-    label154:
-    QLog.e("TroopEnterEffect.Controller", 1, "mResDownloadCallback effectData = null id = " + paramInt1);
+        return;
+      } while (!"tencent.businessnotify.subprocess.to.qq".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("event", 0);
+      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG, 1, "收到其他进程的通知, event[" + i + "]");
+    } while (i != 1);
+    BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
   }
 }
 

@@ -1,25 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bmhm
-  implements DialogInterface.OnClickListener
+public abstract interface bmhm
 {
-  private String jdField_a_of_type_JavaLangString;
-  
-  private bmhm(bmhk parambmhk, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Bmhk.cancelInstall(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(float paramFloat);
 }
 
 

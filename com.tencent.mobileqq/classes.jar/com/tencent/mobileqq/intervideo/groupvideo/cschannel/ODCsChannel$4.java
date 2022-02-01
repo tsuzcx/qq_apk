@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.intervideo.groupvideo.cschannel;
 
 import android.os.Bundle;
-import awan;
-import awaq;
+import aunn;
+import aunq;
 
 public class ODCsChannel$4
   implements Runnable
 {
-  public ODCsChannel$4(awan paramawan, awaq paramawaq, int paramInt, byte[] paramArrayOfByte, Bundle paramBundle) {}
+  public ODCsChannel$4(aunn paramaunn, aunq paramaunq, int paramInt, byte[] paramArrayOfByte, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awaq.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Aunq.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -1,61 +1,132 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PaintDrawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.data.ContactMatch;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.FixSizeImageView;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class aiqd
-  implements npn
+  extends RecyclerView.Adapter<aiqf>
 {
-  public aiqd(TroopChatPie paramTroopChatPie) {}
+  private int jdField_a_of_type_Int;
+  PaintDrawable jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a()
+  public aiqd(QQAppInterface paramQQAppInterface, List<Object> paramList, PaintDrawable paramPaintDrawable, int paramInt)
   {
-    if ((ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) || (QLog.isColorLevel())) {
-      QLog.d(".troop.notify_feeds.aio", 2, "getAppIds onFailed, reqNotifyItems");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList = paramList;
     }
-    bgql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable = paramPaintDrawable;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  public aiqf a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) {}
-    ArrayList localArrayList;
-    do
+    return new aiqf(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131559859, null));
+  }
+  
+  public void a(aiqf paramaiqf, int paramInt)
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      return;
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(1L));
-      localArrayList.add(Long.valueOf(2L));
-      localArrayList.add(Long.valueOf(1101236949L));
-      localArrayList.add(Long.valueOf(1101484419L));
-      localArrayList.add(Long.valueOf(1102858908L));
-      localArrayList.add(Long.valueOf(1106611799L));
-      localArrayList.add(Long.valueOf(1104445552L));
-      localArrayList.add(Long.valueOf(1106717414L));
-      localArrayList.add(Long.valueOf(101509131L));
-      localArrayList.add(Long.valueOf(1106588005L));
-      localArrayList.add(Long.valueOf(1106664488L));
-      localArrayList.add(Long.valueOf(101618516L));
-      localArrayList.add(Long.valueOf(101872323L));
-      localArrayList.add(Long.valueOf(101890494L));
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext()) {
-          localArrayList.add(Long.valueOf(((TroopAppInfo)paramArrayList.next()).appId));
-        }
+      localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!(localObject instanceof aigj)) {
+        break label113;
       }
-      paramArrayList = (aoip)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    } while (paramArrayList == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.notify_feeds.aio", 2, "send_oidb_0x8c9_2, appIds.size=" + localArrayList.size());
+      localObject = (aigj)localObject;
+      localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((aigj)localObject).a());
+      paramaiqf.a.setImageDrawable((Drawable)localObject);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable != null)
+      {
+        if (paramInt != this.jdField_a_of_type_Int - 1) {
+          break label190;
+        }
+        paramaiqf.b.setVisibility(0);
+        paramaiqf.b.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable);
+      }
     }
-    paramArrayList.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, false);
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaiqf, paramInt, getItemId(paramInt));
+      return;
+      label113:
+      if ((localObject instanceof PhoneContact))
+      {
+        localObject = (PhoneContact)localObject;
+        localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((PhoneContact)localObject).unifiedCode);
+        paramaiqf.a.setImageDrawable((Drawable)localObject);
+        break;
+      }
+      if (!(localObject instanceof aigi)) {
+        break;
+      }
+      localObject = (aigi)localObject;
+      localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((aigi)localObject).a.unifiedCode);
+      paramaiqf.a.setImageDrawable((Drawable)localObject);
+      break;
+      label190:
+      paramaiqf.b.setVisibility(8);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (paramObject != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int - 1);
+        notifyItemRemoved(this.jdField_a_of_type_Int - 1);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(0, paramObject);
+      notifyItemInserted(0);
+      if (this.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_Int) {
+        notifyItemChanged(this.jdField_a_of_type_Int - 1);
+      }
+    }
+  }
+  
+  public void a(List<Object> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (paramList.size() <= this.jdField_a_of_type_Int) {
+        break label52;
+      }
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList.subList(0, this.jdField_a_of_type_Int));
+    }
+    for (;;)
+    {
+      notifyDataSetChanged();
+      return;
+      label52:
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
 }
 

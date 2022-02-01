@@ -1,57 +1,25 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.util.ArrayList;
 
 public class bdqb
-  extends bdol
+  implements DialogInterface.OnClickListener
 {
-  public int o;
+  public bdqb(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, int paramInt) {}
   
-  public bdqb()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = "voice";
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.o = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.o);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "voice");
-    paramXmlSerializer.attribute(null, "length", String.valueOf(this.o));
-    paramXmlSerializer.endTag(null, "voice");
-  }
-  
-  public boolean a(bdqc parambdqc)
-  {
-    parambdqc = parambdqc.a("length");
-    if (!TextUtils.isEmpty(parambdqc)) {
-      this.o = Integer.parseInt(parambdqc);
+    paramDialogInterface = (String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int);
+    long l = Long.parseLong((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c.get(this.jdField_a_of_type_Int));
+    amov localamov = (amov)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getBusinessHandler(2);
+    if (localamov != null) {
+      localamov.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), paramDialogInterface, l);
     }
-    return true;
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.isFinishing()) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.finish();
+    }
   }
 }
 

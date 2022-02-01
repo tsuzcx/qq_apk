@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aimn;
+import ahia;
 import com.tencent.qphone.base.util.QLog;
 
 public class MultiForwardChatPie$4
   implements Runnable
 {
-  public MultiForwardChatPie$4(aimn paramaimn) {}
+  public MultiForwardChatPie$4(ahia paramahia) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.a, 2, "mRunOnShow 800 hasDestory=" + this.this$0.M);
+      QLog.d(this.this$0.tag, 2, "mRunOnShow 800 hasDestory=" + this.this$0.hasDestory);
     }
-    if ((aimn.a(this.this$0)) || (this.this$0.M))
+    if ((this.this$0.onShowDone) || (this.this$0.hasDestory))
     {
-      QLog.i(this.this$0.a, 1, "onShowFirst return|3 hasDestory:" + this.this$0.M);
+      QLog.i(this.this$0.tag, 1, "onShowFirst return|3 hasDestory:" + this.this$0.hasDestory);
       return;
     }
-    aimn.a(this.this$0);
+    ahia.a(this.this$0);
   }
 }
 

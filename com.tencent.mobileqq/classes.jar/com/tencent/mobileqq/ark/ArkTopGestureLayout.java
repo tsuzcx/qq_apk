@@ -2,33 +2,32 @@ package com.tencent.mobileqq.ark;
 
 import android.content.Context;
 import android.view.MotionEvent;
-import aqdf;
-import bhlo;
+import aowq;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout.StickerDismissGestureDetector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class ArkTopGestureLayout
   extends TopGestureLayout
 {
-  private int a;
+  private int a = 10;
   
   public ArkTopGestureLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 10;
   }
   
-  public void a(Context paramContext)
+  public void init(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new aqdf(this, paramContext);
-    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+    this.gestureListener = new aowq(this, paramContext);
+    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.gestureListener);
     this.defaultGestureDetector = this.mTopGestureDetector;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    if (paramMotionEvent.getX() <= this.jdField_a_of_type_Int / 100.0F * (float)bhlo.i()) {}
+    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.getPortraitWidth()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {

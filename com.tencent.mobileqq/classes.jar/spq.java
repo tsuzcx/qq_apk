@@ -1,7 +1,35 @@
-import kotlin.Metadata;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.22.1;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/PtsItemViewEventListener$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class spq {}
+public class spq
+  extends pkt
+{
+  public spq(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+    }
+    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
+  }
+  
+  public void j()
+  {
+    super.j();
+    if (ReadinjoyTabFrame.a(this.a) != null) {
+      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.22.1(this));
+    }
+  }
+  
+  public void k()
+  {
+    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

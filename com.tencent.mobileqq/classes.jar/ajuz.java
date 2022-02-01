@@ -1,73 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contacts.mayknow.RecommendFriendFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import java.util.List;
+import java.util.Map;
 
-public class ajuz
-  extends anyu
+class ajuz
+  implements akbj
 {
-  public ajuz(RecommendFriendFragment paramRecommendFriendFragment) {}
+  ajuz(ajux paramajux, AppInterface paramAppInterface) {}
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
+    List localList = (List)ajux.a(this.jdField_a_of_type_Ajux).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      ajux.a(this.jdField_a_of_type_Ajux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
     }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
     }
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      RecommendFriendFragment.a(this.a);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_Ajva != null) {
-        this.a.jdField_a_of_type_Ajva.notifyDataSetChanged();
-      }
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
-      {
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
-      }
-    }
+    ajux.a(this.jdField_a_of_type_Ajux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

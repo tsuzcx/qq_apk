@@ -1,20 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class afbh
-  implements View.OnClickListener
+class afbh
+  implements WXShareHelper.WXShareListener
 {
-  public afbh(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  afbh(afbf paramafbf) {}
   
-  public void onClick(View paramView)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBaseResp.errCode != 0) {
+      afbf.a(this.a, 1, 2131693173);
+    }
   }
 }
 

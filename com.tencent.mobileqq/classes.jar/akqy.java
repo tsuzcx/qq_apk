@@ -1,23 +1,59 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.lang.ref.WeakReference;
 
 public class akqy
-  implements View.OnClickListener
+  extends Handler
 {
-  public akqy(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  private WeakReference<EditLocalVideoActivity> a;
   
-  public void onClick(View paramView)
+  public akqy(EditLocalVideoActivity paramEditLocalVideoActivity)
   {
-    Intent localIntent = QzonePhotoPreviewActivity.a(this.a);
-    localIntent.putExtra("PhotoConst.send_changtu", true);
-    localIntent.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
-    localIntent.putExtra("PhotoConst.KEY_SHOW_ORIGIN_TYPE", 1);
-    PhotoUtils.a(this.a.getActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramEditLocalVideoActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {}
+    EditLocalVideoActivity localEditLocalVideoActivity;
+    do
+    {
+      return;
+      localEditLocalVideoActivity = (EditLocalVideoActivity)this.a.get();
+      switch (paramMessage.what)
+      {
+      case 1000: 
+      default: 
+        return;
+      case 1001: 
+        EditLocalVideoActivity.b(localEditLocalVideoActivity);
+        return;
+      case 1103: 
+        EditLocalVideoActivity.a(localEditLocalVideoActivity);
+        return;
+      case 1102: 
+        EditLocalVideoActivity.a(localEditLocalVideoActivity, paramMessage);
+        return;
+      }
+    } while (EditLocalVideoActivity.a(localEditLocalVideoActivity) == null);
+    EditLocalVideoActivity.a(localEditLocalVideoActivity).requestLayout();
+    return;
+    EditLocalVideoActivity.c(localEditLocalVideoActivity);
+    return;
+    Toast.makeText(localEditLocalVideoActivity.getApplicationContext(), amtj.a(2131702786), 1).show();
+    EditLocalVideoActivity.d(localEditLocalVideoActivity);
+    return;
+    localEditLocalVideoActivity.a("608", "3", "1", true);
+    LpReportInfo_pf00064.allReport(664, 3, 4);
+    paramMessage = (String)paramMessage.obj;
+    return;
+    localEditLocalVideoActivity.a("608", "3", "2", true);
+    return;
+    EditLocalVideoActivity.e(localEditLocalVideoActivity);
   }
 }
 

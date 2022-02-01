@@ -13,8 +13,10 @@ public abstract class ChatMessage
   public boolean isDui;
   public boolean isFirstMsg;
   public boolean isFlowMessage;
+  private boolean isQcircleRedDotPulled;
   public boolean isShowQIMStyleGroup;
   public boolean isShowQWalletPubAd;
+  private boolean isShowQcircleRedDot;
   public boolean isShowQimStyleAvater;
   public boolean isShowTIMStyleGroup;
   public boolean isShowTimStyleAvater;
@@ -33,6 +35,16 @@ public abstract class ChatMessage
   private int mViewHeight;
   
   protected abstract void doParse();
+  
+  public boolean getQcircleRedDotFlag()
+  {
+    return this.isShowQcircleRedDot;
+  }
+  
+  public boolean getQcircleRedDotPulledFlag()
+  {
+    return this.isQcircleRedDotPulled;
+  }
   
   public String getSummaryMsg()
   {
@@ -106,6 +118,16 @@ public abstract class ChatMessage
   public void setIsSentByXG(boolean paramBoolean)
   {
     this.mIsSentByXG = paramBoolean;
+  }
+  
+  public void setQcircleRedDotFlag(boolean paramBoolean)
+  {
+    this.isShowQcircleRedDot = paramBoolean;
+  }
+  
+  public void setQcircleRedDotPulledFlag(boolean paramBoolean)
+  {
+    this.isQcircleRedDotPulled = paramBoolean;
   }
   
   public void setViewHeight(int paramInt)

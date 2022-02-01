@@ -1,16 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class nrp
-  implements View.OnClickListener
+public final class nrp
+  implements DialogInterface.OnClickListener
 {
-  nrp(nrk paramnrk) {}
+  public nrp(int paramInt, BusinessObserver paramBusinessObserver, Context paramContext, zon paramzon, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d(this.a.b());
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
+        return;
+      }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Zon, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Long, false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Zon, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Long, true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 

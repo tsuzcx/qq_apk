@@ -1,18 +1,16 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import java.util.ArrayList;
 
 class rum
-  implements see
 {
-  rum(rul paramrul, rot paramrot) {}
-  
-  public void a(@NonNull View paramView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Rot.w.getVisibility() == 0)) {
-      rul.a(this.jdField_a_of_type_Rul).resumeAnimation();
-    }
-  }
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<ruu> a = new ArrayList();
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 

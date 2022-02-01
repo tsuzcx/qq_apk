@@ -1,26 +1,18 @@
-class uuj
-  implements uiw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel;
+
+public final class uuj
+  implements Parcelable.Creator<WSPushGloryKingModel>
 {
-  uuj(uui paramuui, String paramString1, String paramString2) {}
-  
-  public void a()
+  public WSPushGloryKingModel a(Parcel paramParcel)
   {
-    uvv.a(1000003, uui.a(this.jdField_a_of_type_Uui), this.jdField_a_of_type_JavaLangString, this.b);
+    return new WSPushGloryKingModel(paramParcel);
   }
   
-  public void b()
+  public WSPushGloryKingModel[] a(int paramInt)
   {
-    uvv.a(1000007, uui.a(this.jdField_a_of_type_Uui), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void c()
-  {
-    uvv.a(1000004, uui.a(this.jdField_a_of_type_Uui), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void d()
-  {
-    uvv.a(1000002, uui.a(this.jdField_a_of_type_Uui), this.jdField_a_of_type_JavaLangString, this.b);
+    return new WSPushGloryKingModel[paramInt];
   }
 }
 

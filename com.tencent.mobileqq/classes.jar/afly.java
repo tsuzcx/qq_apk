@@ -1,37 +1,15 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import java.util.List;
+import java.util.Map;
 
-public class afly
-  implements View.OnKeyListener
+public abstract interface afly
 {
-  public afly(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public abstract void a(String paramString, int paramInt, aflq paramaflq, List<afml> paramList, Map<Integer, Integer> paramMap);
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label36;
-      }
-      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
-    }
-    for (;;)
-    {
-      return false;
-      label36:
-      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
-        SelectedAndSearchBar.a(this.a).a();
-      }
-    }
-  }
+  public abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afly
  * JD-Core Version:    0.7.0.1
  */

@@ -1,210 +1,469 @@
 import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.os.Bundle;
+import com.google.gson.JsonArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeLayoutImpl;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
 
 public class qbf
-  extends ViewBase
+  implements qdy
 {
-  private int jdField_a_of_type_Int = Utils.dp2px(233.0D);
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private TextView b;
+  private static final Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet(Collections.singletonList(Integer.valueOf(4)));
+  private static final Set<Integer> jdField_b_of_type_JavaUtilSet = new HashSet(Collections.singletonList(Integer.valueOf(1)));
+  private static final Set<Integer> c = new HashSet(Collections.singletonList(Integer.valueOf(6)));
+  private static final Set<Integer> d = new HashSet(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5) }));
+  private static final Set<Integer> e = new HashSet(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(7) }));
+  private static final Set<Integer> f = new HashSet(Arrays.asList(new Integer[] { Integer.valueOf(3), Integer.valueOf(6), Integer.valueOf(7) }));
+  private static final Set<Integer> g = new HashSet(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7) }));
+  private static final Set<Integer> h = new HashSet(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2) }));
+  private int jdField_a_of_type_Int;
+  private NativeLayoutImpl jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperNativelayoutNativeLayoutImpl;
+  private NativeTextImp jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewTextNativeTextImp;
+  private rmm jdField_a_of_type_Rmm = new qbg(this);
+  private NativeLayoutImpl jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperNativelayoutNativeLayoutImpl;
+  private NativeTextImp jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewTextNativeTextImp;
   
-  public qbf(VafContext paramVafContext)
+  static String a(long paramLong1, long paramLong2)
   {
-    super(paramVafContext);
-    a(paramVafContext);
-  }
-  
-  private int a(String paramString, int paramInt)
-  {
-    int i = Utils.dp2px(paramInt);
-    paramInt = i;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))
-    {
-      paramString = Utils.toDouble(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString));
-      paramInt = i;
-      if (paramString != null) {
-        paramInt = Utils.dp2px(paramString.doubleValue());
-      }
+    long l = paramLong2 - paramLong1;
+    if ((l <= 0L) || (paramLong1 <= 0L) || (paramLong2 <= 0L)) {
+      localObject = "";
     }
-    return paramInt;
-  }
-  
-  private void a(VafContext paramVafContext)
-  {
-    qbg localqbg = new qbg(paramVafContext.getContext());
-    localqbg.c(10);
-    localqbg.d(10);
-    localqbg.a(10);
-    localqbg.b(10);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = localqbg;
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
-    this.b = new TextView(paramVafContext.getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.b.setMaxLines(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.b.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    paramVafContext = new LinearLayout.LayoutParams(Utils.dp2px(20.0D), Utils.dp2px(20.0D));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramVafContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b);
-  }
-  
-  private void a(String paramString, TextView paramTextView, int paramInt)
-  {
-    paramTextView.setTextSize(0, a(paramString, paramInt));
-    a();
-  }
-  
-  private void b()
-  {
-    b("setLocationTextColorString:", this.jdField_a_of_type_AndroidWidgetTextView, Color.parseColor("#4D7CAF"));
-    a("setLocationTextSizeString:", this.jdField_a_of_type_AndroidWidgetTextView, 12);
-    b("setDistanceTextColorString:", this.b, Color.parseColor("#737373"));
-    a("setDistanceTextSizeString:", this.b, 12);
-    int i;
-    Object localObject;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString("setMidMarginString:")))
-    {
-      i = Utils.dp2px(3.0D);
-      localObject = Utils.toInteger(this.jdField_a_of_type_OrgJsonJSONObject.optString("setMidMarginString:"));
-      if (localObject == null) {
-        break label186;
-      }
-      i = Utils.dp2px(((Integer)localObject).intValue());
-    }
-    label186:
-    for (;;)
-    {
-      localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).rightMargin = i;
-      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      i = a("setTopPaddingString:", 6);
-      int j = a("setBottomPaddingString:", 6);
-      int k = a("setLeftPaddingString:", 7);
-      int m = a("setRightPaddingString:", 7);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, i, m, j);
-      a();
-      return;
-    }
-  }
-  
-  private void b(String paramString, TextView paramTextView, int paramInt)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))
-    {
-      paramTextView.setTextColor(Utils.parseColor(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)));
-      return;
-    }
-    paramTextView.setTextColor(paramInt);
-  }
-  
-  public void a()
-  {
-    float f1 = this.b.getPaint().measureText(this.b.getText().toString());
-    int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft();
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight();
-    int k = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).rightMargin;
-    float f2 = this.jdField_a_of_type_Int;
-    float f3 = i;
-    float f4 = j;
-    float f5 = k;
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth((int)(f2 - f1 - f3 - f4 - f5));
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
-    }
+    String str;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              bool1 = bool2;
-            } while (paramObject == null);
-            bool1 = bool2;
-          } while (!(paramObject instanceof JSONObject));
-          this.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)paramObject);
-          bool1 = bool2;
-        } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
-        b();
-        return true;
-        bool1 = bool2;
-      } while (paramObject == null);
-      bool1 = bool2;
-    } while (!(paramObject instanceof JSONObject));
-    paramObject = (JSONObject)paramObject;
-    String str = paramObject.optString("ad_Location_content");
-    if (!TextUtils.isEmpty(str))
+      return localObject;
+      str = pay.g(2131717552);
+      if (l >= 60000L) {
+        break;
+      }
+      localObject = str;
+    } while (!str.isEmpty());
+    Object localObject = pay.g(2131717553);
+    if ((l < 3600000L) && (!((String)localObject).isEmpty())) {
+      return String.format((String)localObject, new Object[] { Long.valueOf(l / 1000L / 60L) });
+    }
+    localObject = pay.g(2131717551);
+    if ((l < 86400000L) && (!((String)localObject).isEmpty())) {
+      return String.format((String)localObject, new Object[] { Long.valueOf(l / 1000L / 60L / 60L) });
+    }
+    localObject = pay.g(2131717550);
+    if ((l >= 86400000L) && (!((String)localObject).isEmpty())) {
+      return String.format((String)localObject, new Object[] { Long.valueOf(l / 1000L / 60L / 60L / 24L) });
+    }
+    return "";
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int != paramInt) {
+      return;
+    }
+    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewTextNativeTextImp, paramBoolean);
+    a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewTextNativeTextImp, paramBoolean);
+    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperNativelayoutNativeLayoutImpl, paramBoolean);
+    a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperNativelayoutNativeLayoutImpl, paramBoolean);
+  }
+  
+  private void a(@NotNull ArticleInfo paramArticleInfo)
+  {
+    rdl localrdl = paramArticleInfo.multiVideoColumnInfo;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("feeds_type", Integer.valueOf(1050));
+    JsonArray localJsonArray = new JsonArray();
+    Iterator localIterator = localrdl.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localJsonArray.add(((rfo)localIterator.next()).jdField_a_of_type_JavaLangString);
+    }
+    localHashMap.put("rowkey", localJsonArray);
+    localHashMap.put("column_id", Integer.valueOf(localrdl.jdField_a_of_type_Int));
+    localHashMap.put("column_card_bg_style", Integer.valueOf(localrdl.e));
+    if (localrdl.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localHashMap.put("subscribe_flag", Integer.valueOf(i));
+      pgw.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+      return;
+    }
+  }
+  
+  private void a(@NotNull ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    rdl localrdl = paramArticleInfo.multiVideoColumnInfo;
+    String str;
+    HashMap localHashMap;
+    if (paramBoolean)
+    {
+      str = "0x800A7FB";
+      localHashMap = new HashMap();
+      if (paramArticleInfo.mChannelID != 0L) {
+        break label123;
+      }
+    }
+    label123:
+    for (int i = 1;; i = 2)
+    {
+      localHashMap.put("subscribe_page", Integer.valueOf(i));
+      localHashMap.put("feeds_type", Integer.valueOf(1050));
+      localHashMap.put("column_id", Integer.valueOf(localrdl.jdField_a_of_type_Int));
+      localHashMap.put("column_card_bg_style", Integer.valueOf(localrdl.e));
+      pgw.a(paramArticleInfo, str, str, (int)paramArticleInfo.mChannelID, localHashMap);
+      return;
+      str = "0x800A7D3";
+      break;
+    }
+  }
+  
+  private void a(@Nullable NativeLayoutImpl paramNativeLayoutImpl, boolean paramBoolean)
+  {
+    if (paramNativeLayoutImpl == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramNativeLayoutImpl.setBackgroundColor(Color.parseColor("#FFFFFF"));
+      paramNativeLayoutImpl.setBorderColor(Color.parseColor("#E6E6E6"));
+      paramNativeLayoutImpl.setBorderWidth(1);
     }
     for (;;)
     {
-      paramObject = paramObject.optString("ad_Location");
-      if (TextUtils.isEmpty(paramObject)) {
-        break;
-      }
-      this.b.setText(paramObject);
-      this.b.setVisibility(0);
-      a();
-      return true;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNativeLayoutImpl.invalidate();
+      return;
+      paramNativeLayoutImpl.setBackgroundColor(Color.parseColor("#00CAFC"));
+      paramNativeLayoutImpl.setBorderWidth(0);
     }
-    this.b.setVisibility(8);
+  }
+  
+  private void a(@Nullable NativeTextImp paramNativeTextImp, boolean paramBoolean)
+  {
+    if (paramNativeTextImp == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramNativeTextImp.setText(pay.g(2131694816));
+      paramNativeTextImp.setTextColor(Color.parseColor("#737373"));
+    }
+    for (;;)
+    {
+      paramNativeTextImp.invalidate();
+      return;
+      paramNativeTextImp.setText(pay.g(2131694817));
+      paramNativeTextImp.setTextColor(Color.parseColor("#FFFFFF"));
+    }
+  }
+  
+  private void a(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    String str = paramrdl.jdField_a_of_type_JavaLangString;
+    if (str.isEmpty()) {
+      QLog.e("ColumnTwoVideoProteusItem", 1, "column Name is empty.");
+    }
+    if ((jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramrdl.e))) && (!paramrdl.g.isEmpty()))
+    {
+      paramJSONObject.put("column_info_name_text", paramrdl.g + "·" + str);
+      return;
+    }
+    paramJSONObject.put("column_info_name_text", str);
+  }
+  
+  private void a(JSONObject paramJSONObject, @NotNull rdl paramrdl, rfo paramrfo1, rfo paramrfo2)
+  {
+    if (c.contains(Integer.valueOf(paramrdl.e)))
+    {
+      if (paramrfo1.jdField_b_of_type_JavaLangString.isEmpty()) {
+        break label65;
+      }
+      paramJSONObject.put("column_show_video_left_title", paramrfo1.jdField_b_of_type_JavaLangString);
+    }
+    while (!paramrfo2.jdField_b_of_type_JavaLangString.isEmpty())
+    {
+      paramJSONObject.put("column_show_video_right_title", paramrfo2.jdField_b_of_type_JavaLangString);
+      return;
+      label65:
+      QLog.e("ColumnTwoVideoProteusItem", 1, "leftVideoInfo's title isEmpty.");
+    }
+    QLog.e("ColumnTwoVideoProteusItem", 1, "rightVideoInfo's title isEmpty.");
+  }
+  
+  private void a(JSONObject paramJSONObject, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      paramJSONObject.put("subscription_background_color", "#FFFFFF");
+      paramJSONObject.put("subscribe_title", pay.g(2131694816));
+      paramJSONObject.put("subscription_title_color", "#737373");
+      paramJSONObject.put("subscription_border_color", "#E6E6E6");
+      paramJSONObject.put("subscription_border_width", "0.5");
+      return;
+    }
+    paramJSONObject.put("subscription_background_color", "#00CAFC");
+    paramJSONObject.put("subscribe_title", pay.g(2131694817));
+    paramJSONObject.put("subscription_title_color", "#FFFFFF");
+    paramJSONObject.remove("subscription_border_color");
+    paramJSONObject.remove("subscription_border_width");
+  }
+  
+  private void a(rdl paramrdl, int paramInt)
+  {
+    QLog.d("ColumnTwoVideoProteusItem", 1, "requestSubscribeEvent, subscribeAction = " + paramInt);
+    oidb_0xd4b.ReqBody localReqBody = new oidb_0xd4b.ReqBody();
+    localReqBody.msg_subscribe_video_column_req.uint32_video_column_id.set(paramrdl.jdField_a_of_type_Int);
+    localReqBody.msg_subscribe_video_column_req.uint32_oper_type.set(paramInt);
+    localReqBody.msg_subscribe_video_column_req.setHasFlag(true);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("subscribeAction", paramInt);
+    localBundle.putString("columnIconUrl", paramrdl.jdField_b_of_type_JavaLangString);
+    localBundle.putInt("columnId", paramrdl.jdField_a_of_type_Int);
+    nmb.a(pay.a(), new qbm(paramrdl, paramInt), localReqBody.toByteArray(), "OidbSvc.0xd4b", 3403, 1, localBundle);
+  }
+  
+  private void a(rdl paramrdl, JSONObject paramJSONObject)
+  {
+    paramJSONObject.put("column_cover_image_url", paramrdl.jdField_b_of_type_JavaLangString);
+    paramJSONObject.put("column_logo_image_url", paramrdl.jdField_c_of_type_JavaLangString);
+    a(paramJSONObject, paramrdl);
+    b(paramJSONObject, paramrdl);
+    a(paramJSONObject, paramrdl.jdField_a_of_type_Boolean);
+  }
+  
+  private void b(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    String str = pay.g(2131717263);
+    if ((jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(paramrdl.e))) && (paramrdl.d != 0) && (!str.isEmpty())) {
+      paramJSONObject.put("column_info_subscription_text", String.format(str, new Object[] { bkwm.b(paramrdl.d) }));
+    }
+  }
+  
+  private void b(JSONObject paramJSONObject, @NotNull rdl paramrdl, rfo paramrfo1, rfo paramrfo2)
+  {
+    if (e.contains(Integer.valueOf(paramrdl.e)))
+    {
+      if (paramrfo1.jdField_b_of_type_Int == 0) {
+        break label65;
+      }
+      paramJSONObject.put("column_card_play_left_time_text", bkwm.c(paramrfo1.jdField_b_of_type_Int));
+    }
+    while (paramrfo2.jdField_b_of_type_Int != 0)
+    {
+      paramJSONObject.put("column_card_play_right_time_text", bkwm.c(paramrfo2.jdField_b_of_type_Int));
+      return;
+      label65:
+      QLog.e("ColumnTwoVideoProteusItem", 1, "leftVideoInfo's duration == 0.");
+    }
+    QLog.e("ColumnTwoVideoProteusItem", 1, "rightVideoInfo's duration == 0.");
+  }
+  
+  private void b(rdl paramrdl, JSONObject paramJSONObject)
+  {
+    rfo localrfo1 = (rfo)paramrdl.jdField_a_of_type_JavaUtilList.get(0);
+    rfo localrfo2 = (rfo)paramrdl.jdField_a_of_type_JavaUtilList.get(1);
+    paramJSONObject.put("column_left_item_cover_url", localrfo1.jdField_c_of_type_JavaLangString);
+    paramJSONObject.put("column_right_item_cover_url", localrfo2.jdField_c_of_type_JavaLangString);
+    a(paramJSONObject, paramrdl, localrfo1, localrfo2);
+    c(paramJSONObject, paramrdl);
+    b(paramJSONObject, paramrdl, localrfo1, localrfo2);
+  }
+  
+  private void c(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    if (d.contains(Integer.valueOf(paramrdl.e)))
+    {
+      paramJSONObject.put("column_card_play_left_icon_url", "rij_multi_video_column_play");
+      paramJSONObject.put("column_card_play_right_icon_url", "rij_multi_video_column_play");
+    }
+  }
+  
+  private void d(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    if (f.contains(Integer.valueOf(paramrdl.e)))
+    {
+      if ((!paramrdl.h.isEmpty()) && (!paramrdl.g.isEmpty()))
+      {
+        paramJSONObject.put("column_bottom_icon_view_visibility", "1");
+        paramJSONObject.put("column_bottom_icon_url", paramrdl.h);
+        paramJSONObject.put("column_bottom_name", paramrdl.g);
+      }
+    }
+    else {
+      return;
+    }
+    QLog.e("ColumnTwoVideoProteusItem", 1, "dataInfo's appIconUrl or appName is Empty.");
+  }
+  
+  private void e(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    String str2 = "";
+    String str3 = pay.g(2131717267);
+    String str1 = str2;
+    if (paramrdl.jdField_c_of_type_Int > 0)
+    {
+      str1 = str2;
+      if (!str3.isEmpty()) {
+        str1 = String.format(str3, new Object[] { Integer.valueOf(paramrdl.jdField_c_of_type_Int) });
+      }
+    }
+    if ((g.contains(Integer.valueOf(paramrdl.e))) && (!str1.isEmpty()))
+    {
+      if ((paramrdl.jdField_a_of_type_Boolean) && (f.contains(Integer.valueOf(paramrdl.e)))) {
+        paramJSONObject.remove("column_bottom_video_count");
+      }
+    }
+    else
+    {
+      str1 = pay.g(2131717268);
+      if ((!paramrdl.jdField_a_of_type_Boolean) || (paramrdl.jdField_b_of_type_Int == 0) || (str1.isEmpty())) {
+        break label178;
+      }
+      paramJSONObject.put("column_bottom_video_update_count", String.format(str1, new Object[] { Integer.valueOf(paramrdl.jdField_b_of_type_Int) }));
+    }
+    label178:
+    do
+    {
+      return;
+      paramJSONObject.put("column_bottom_video_count", str1);
+      break;
+      paramrdl = a(paramrdl.jdField_a_of_type_Long, System.currentTimeMillis());
+    } while (paramrdl.isEmpty());
+    paramJSONObject.put("column_bottom_video_update_time", paramrdl);
+  }
+  
+  private void f(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    JsonArray localJsonArray = new JsonArray();
+    Iterator localIterator = paramrdl.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localJsonArray.add(((rfo)localIterator.next()).jdField_a_of_type_JavaLangString);
+    }
+    paramJSONObject.put("rowkey", localJsonArray);
+    paramJSONObject.put("column_id", paramrdl.jdField_a_of_type_Int);
+    paramJSONObject.put("column_card_bg_style", paramrdl.e);
+    if (paramrdl.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramJSONObject.put("subscribe_flag", i);
+      return;
+    }
+  }
+  
+  private void g(JSONObject paramJSONObject, @NotNull rdl paramrdl)
+  {
+    if (h.contains(Integer.valueOf(paramrdl.e)))
+    {
+      paramJSONObject.put("column_top_view_visibility", "1");
+      paramJSONObject.remove("column_middle_view_visibility");
+    }
+    while (c.contains(Integer.valueOf(paramrdl.e)))
+    {
+      paramJSONObject.put("column_card_show_video_title_visibility", "1");
+      paramJSONObject.remove("column_card_not_show_video_title_visibility");
+      return;
+      paramJSONObject.put("column_middle_view_visibility", "1");
+      paramJSONObject.remove("column_top_view_visibility");
+    }
+    paramJSONObject.put("column_card_not_show_video_title_visibility", "1");
+    paramJSONObject.remove("column_card_show_video_title_visibility");
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.columnStyle != 1)) {
+      return new JSONObject();
+    }
+    paramBaseArticleInfo = paramBaseArticleInfo.multiVideoColumnInfo;
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.jdField_a_of_type_JavaUtilList == null) || (paramBaseArticleInfo.jdField_a_of_type_JavaUtilList.size() < 2)) {
+      return new JSONObject();
+    }
+    this.jdField_a_of_type_Int = paramBaseArticleInfo.jdField_a_of_type_Int;
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("style_ID", "ReadInJoy_Column_card_cell");
+    a(paramBaseArticleInfo, localJSONObject);
+    b(paramBaseArticleInfo, localJSONObject);
+    d(localJSONObject, paramBaseArticleInfo);
+    e(localJSONObject, paramBaseArticleInfo);
+    f(localJSONObject, paramBaseArticleInfo);
+    g(localJSONObject, paramBaseArticleInfo);
+    QLog.d("ColumnTwoVideoInfo", 1, localJSONObject.toString());
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    parampvc = parampvc.a();
+    if ((parampvc == null) || (parampvc.multiVideoColumnInfo == null)) {
+      return;
+    }
+    if (paramContainer.getTag(2131362206) == null)
+    {
+      paramContainer.setTag(2131362206, "true");
+      paramContainer.addOnAttachStateChangeListener(new qbh(this));
+    }
+    paramContainer = paramContainer.getVirtualView();
+    parampvc = paramContainer.findViewBaseByName("id_top_subscribe_view");
+    if ((parampvc != null) && (parampvc.getNativeView() != null) && ((parampvc.getNativeView() instanceof NativeLayoutImpl))) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperNativelayoutNativeLayoutImpl = ((NativeLayoutImpl)parampvc.getNativeView());
+    }
+    parampvc = paramContainer.findViewBaseByName("id_middle_subscribe_view");
+    if ((parampvc != null) && (parampvc.getNativeView() != null) && ((parampvc.getNativeView() instanceof NativeLayoutImpl))) {
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperNativelayoutNativeLayoutImpl = ((NativeLayoutImpl)parampvc.getNativeView());
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewTextNativeTextImp = ((NativeTextImp)paramContainer.findViewBaseByName("id_top_subscribe_label").getNativeView());
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewTextNativeTextImp = ((NativeTextImp)paramContainer.findViewBaseByName("id_middle_subscribe_label").getNativeView());
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    if (paramViewBase == null) {}
+    String str;
+    rdl localrdl;
+    do
+    {
+      return false;
+      str = paramViewBase.getClickEvnet();
+      parampvc = parampvc.a();
+      localrdl = parampvc.multiVideoColumnInfo;
+      paramContainer = paramContainer.getContext();
+      if ("cmd_column_card_click".equals(str))
+      {
+        paramViewBase.setOnClickListener(new qbi(this, paramContainer, localrdl, parampvc));
+        return true;
+      }
+      if ("cmd_column_left_item_click".equals(str))
+      {
+        paramViewBase.setOnClickListener(new qbj(this, paramContainer, localrdl, parampvc));
+        return true;
+      }
+      if ("cmd_column_right_item_click".equals(str))
+      {
+        paramViewBase.setOnClickListener(new qbk(this, paramContainer, localrdl, parampvc));
+        return true;
+      }
+    } while (!"cmd_subscription_click".equals(str));
+    paramViewBase.setOnClickListener(new qbl(this, localrdl, parampvc));
     return true;
   }
 }

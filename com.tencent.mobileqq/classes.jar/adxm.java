@@ -1,59 +1,16 @@
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class adxm
-  extends ayxn
+  implements Comparator<adxi>
 {
-  private WeakReference<ayxn> a;
+  public adxm(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public adxm(ayxn paramayxn)
+  public int a(adxi paramadxi1, adxi paramadxi2)
   {
-    this.a = new WeakReference(paramayxn);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    ayxn localayxn = (ayxn)this.a.get();
-    if (localayxn != null)
-    {
-      localayxn.a(paramString1, paramInt, paramString2);
-      return;
-    }
-    super.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    ayxn localayxn = (ayxn)this.a.get();
-    if (localayxn != null)
-    {
-      localayxn.a(paramString1, paramString2);
-      return;
-    }
-    super.a(paramString1, paramString2);
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    ayxn localayxn = (ayxn)this.a.get();
-    if (localayxn != null)
-    {
-      localayxn.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
-  }
-  
-  public void a(oidb_0x87c.RspBody paramRspBody)
-  {
-    ayxn localayxn = (ayxn)this.a.get();
-    if (localayxn != null)
-    {
-      localayxn.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
+    long l = paramadxi1.a.certifiedGrade;
+    return (int)(paramadxi2.a.certifiedGrade - l);
   }
 }
 

@@ -2,8 +2,7 @@ package cooperation.qzone.event;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import bmww;
-import bmyu;
+import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.util.QZLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -17,12 +16,12 @@ public class ExoticEventPool
   @NonNull
   public static ExoticEventPool getInstance()
   {
-    return bmyu.a();
+    return ExoticEventPool.ExoticEventPoolHolder.access$100();
   }
   
   public boolean onEventReceived(@Nullable ExoticEvent paramExoticEvent)
   {
-    if (bmww.d()) {
+    if (QZoneApiProxy.isInQZoneEnvironment()) {
       return false;
     }
     if (paramExoticEvent == null) {

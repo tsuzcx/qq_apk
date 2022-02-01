@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.graphics.RectF;
 
-public final class bmvj
-  implements DialogInterface.OnClickListener
+public class bmvj
+  extends bmuy
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private float a;
+  private float b;
+  
+  public bmvj(float paramFloat1, float paramFloat2)
   {
-    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
-      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
-    }
-    paramDialogInterface.dismiss();
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  void a(int paramInt, bmuz parambmuz)
+  {
+    float f3 = parambmuz.a.right;
+    float f4 = parambmuz.a.left;
+    float f1 = parambmuz.a.bottom;
+    float f2 = parambmuz.a.top;
+    f3 = Math.abs(f3 - f4 - this.a) / 2.0F;
+    f1 = Math.abs(f1 - f2 - this.b) / 2.0F;
+    RectF localRectF = parambmuz.a;
+    localRectF.left += f3;
+    parambmuz = parambmuz.a;
+    parambmuz.right = (f3 + parambmuz.right);
   }
 }
 

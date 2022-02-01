@@ -1,19 +1,16 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import java.util.ArrayList;
 
-class vxp
-  implements aaav<FeedCloudRead.StGetFeedListRsp>
+public abstract interface vxp
 {
-  vxp(vxo paramvxo, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
-  {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleTagPageViewModel", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
-    this.jdField_a_of_type_Vxo.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
-  }
+  public abstract void a(ArrayList<vxd> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public abstract void a(vxd paramvxd, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

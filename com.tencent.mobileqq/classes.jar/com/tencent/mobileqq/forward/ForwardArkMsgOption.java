@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.forward;
 
-import aean;
+import acvv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apzk;
-import aqbu;
-import aqbx;
-import auxr;
-import auxt;
-import auxu;
-import bdll;
-import bhjx;
-import bjqh;
+import aosx;
+import aovh;
+import atku;
+import atkw;
+import atky;
+import bcef;
+import bftf;
+import bhvw;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.RecentUser;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nok;
+import npt;
 import org.json.JSONArray;
 
 public class ForwardArkMsgOption
-  extends auxu
+  extends atky
 {
   public ForwardArkMsgOption(Intent paramIntent)
   {
@@ -55,7 +55,7 @@ public class ForwardArkMsgOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bhjx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))) {
+      if ((localRecentUser != null) && (!bftf.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(atku.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -64,13 +64,13 @@ public class ForwardArkMsgOption
   
   public void a()
   {
-    if (m()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (n()) {
+    if (p()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (o()) {
+    if (q()) {
       this.jdField_a_of_type_JavaUtilSet.add(b);
     }
   }
@@ -78,7 +78,7 @@ public class ForwardArkMsgOption
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
     super.a(paramQQAppInterface, paramActivity);
-    aqbx.a(paramQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name"), this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view"));
+    ArkAppCenterUtil.preDownloadArkApp(paramQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name"), this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view"));
   }
   
   public boolean a()
@@ -96,13 +96,13 @@ public class ForwardArkMsgOption
   protected boolean a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt1;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    if ((localSessionInfo.jdField_a_of_type_Int < 0) || (TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString)))
+    localSessionInfo.curType = paramInt1;
+    localSessionInfo.curFriendUin = paramString1;
+    localSessionInfo.troopUin = paramString2;
+    if ((localSessionInfo.curType < 0) || (TextUtils.isEmpty(localSessionInfo.curFriendUin)))
     {
       if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+        bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
       }
       return false;
     }
@@ -120,12 +120,12 @@ public class ForwardArkMsgOption
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)))
     {
       if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+        bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
       }
       return false;
     }
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-      bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
+      bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
     }
     paramString1 = new ArkAppMessage(str4, paramString2, (String)localObject2, paramString1, str3, str5, str6, str7);
     if (!TextUtils.isEmpty(str2)) {
@@ -145,7 +145,7 @@ public class ForwardArkMsgOption
         {
           str2 = ((JSONArray)localObject1).optString(paramInt1);
           if (TextUtils.isEmpty(str2)) {
-            break label622;
+            break label623;
           }
           localObject2 = new ArkAppMessage();
           ((ArkAppMessage)localObject2).fromAppXml(str2);
@@ -156,7 +156,7 @@ public class ForwardArkMsgOption
       {
         com.tencent.TMG.utils.QLog.e("ForwardOption.ForwardBaseOption", 1, "appList error");
       }
-      paramString2 = (ArkAppMessage)aqbu.a(2, paramString2, this.jdField_a_of_type_AndroidOsBundle, paramString1);
+      paramString2 = (ArkAppMessage)aovh.a(2, paramString2, this.jdField_a_of_type_AndroidOsBundle, paramString1);
       if (paramString2 == null) {}
       for (;;)
       {
@@ -181,20 +181,20 @@ public class ForwardArkMsgOption
           paramInt1 = i;
           if (paramString2 != null) {
             if (paramString2.length <= paramInt2) {
-              break label602;
+              break label603;
             }
           }
         }
         for (paramInt1 = paramString2[paramInt2];; paramInt1 = i)
         {
-          aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1, paramInt1);
+          acvv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1, paramInt1);
           return true;
-          label602:
+          label603:
           ArkAppCenter.c("ArkApp", "ForwardArkMsgOption.sendArkMessage, forward array has not enough length");
         }
         paramString1 = paramString2;
       }
-      label622:
+      label623:
       paramInt1 += 1;
     }
   }
@@ -206,14 +206,14 @@ public class ForwardArkMsgOption
   
   public boolean c()
   {
-    if (g())
+    if (i())
     {
       List localList = b();
       int i = 0;
       while (i < localList.size())
       {
         ResultRecord localResultRecord = (ResultRecord)localList.get(i);
-        a(localResultRecord.jdField_a_of_type_JavaLangString, localResultRecord.a(), localResultRecord.c, i);
+        a(localResultRecord.uin, localResultRecord.getUinType(), localResultRecord.groupUin, i);
         i += 1;
       }
       return super.c();
@@ -232,9 +232,9 @@ public class ForwardArkMsgOption
     do
     {
       return;
-      bdll.b(null, "dc00898", "", "", "0X800A631", "0X800A631", 0, 0, str1, ForwardUtils.b(i), str2, String.valueOf(this.jdField_a_of_type_Long));
+      bcef.b(null, "dc00898", "", "", "0X800A631", "0X800A631", 0, 0, str1, ForwardUtils.toTypeSimple(i), str2, String.valueOf(this.jdField_a_of_type_Long));
     } while (!com.tencent.qphone.base.util.QLog.isColorLevel());
-    com.tencent.qphone.base.util.QLog.d("ForwardOption.ForwardBaseOption", 2, new Object[] { "ARK转发=0X800A631, type=", str1, ", uinType=", ForwardUtils.b(i), ", title=", str2 });
+    com.tencent.qphone.base.util.QLog.d("ForwardOption.ForwardBaseOption", 2, new Object[] { "ARK转发=0X800A631, type=", str1, ", uinType=", ForwardUtils.toTypeSimple(i), ", title=", str2 });
   }
   
   protected boolean d()
@@ -249,7 +249,7 @@ public class ForwardArkMsgOption
     String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_h5_from_js");
     String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-      apzk.a(str1, str3, str2, new auxt(this));
+      aosx.a(str1, str3, str2, new atkw(this));
     }
   }
 }

@@ -1,202 +1,162 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
 
 public class atvk
 {
-  private static List<atvv> a = new ArrayList();
-  
-  static
-  {
-    
-    if (!bapg.a()) {
-      bapg.a(BaseApplicationImpl.getApplication(), new atvl());
-    }
-  }
-  
-  public static atvv a(aufc arg0)
-  {
-    String str1 = ???.a();
-    QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, "try create downloader:" + str1);
-    Object localObject2 = a(str1);
-    if (localObject2 != null)
-    {
-      a(???);
-      synchronized (a)
-      {
-        a.add(0, localObject2);
-        QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("find downloader %s and set to head", new Object[] { str1 }));
-        return localObject2;
-      }
-    }
-    localObject2 = new atvn(???);
-    synchronized (a)
-    {
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, "new downloader:" + str2);
-      a.add(0, localObject2);
-      return localObject2;
-    }
-  }
-  
-  private static atvv a(String paramString)
+  public static String a(String paramString)
   {
     for (;;)
     {
-      synchronized (a)
+      try
       {
-        Iterator localIterator = a.iterator();
-        if (localIterator.hasNext())
+        localStringBuilder = new StringBuilder(64);
+        atvf localatvf = new atvf(new StringReader(paramString), paramString.length());
+        paramString = null;
+        try
         {
-          atvv localatvv = (atvv)localIterator.next();
-          if (!localatvv.a().equalsIgnoreCase(paramString)) {
+          localatvc = localatvf.a();
+          if (localatvc != null) {
             continue;
           }
-          paramString = localatvv;
-          return paramString;
+          if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && (!TextUtils.isEmpty(paramString.a())))
+          {
+            localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+            localStringBuilder.append("*");
+          }
         }
+        catch (IOException paramString)
+        {
+          atvc localatvc;
+          paramString.printStackTrace();
+          FTSDatabase.a().a("SegmentUtils", "e", "tokenSegment: failure", paramString);
+          continue;
+        }
+        paramString = localStringBuilder.toString();
+        return paramString;
       }
-      paramString = null;
+      catch (Throwable paramString)
+      {
+        StringBuilder localStringBuilder;
+        paramString.printStackTrace();
+        FTSDatabase.a().a("SegmentUtils", "e", "tokenSegment: failure", paramString);
+      }
+      if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && ((!TextUtils.equals(localatvc.b(), "double")) || (paramString.b() < localatvc.a())) && (!TextUtils.isEmpty(paramString.a())))
+      {
+        localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+        localStringBuilder.append("*");
+        localStringBuilder.append(' ');
+      }
+      if ((!TextUtils.isEmpty(localatvc.a())) && ((!TextUtils.equals(localatvc.b(), "double")) || (localatvc.a().length() != 1)))
+      {
+        localStringBuilder.append(localatvc.a());
+        localStringBuilder.append(' ');
+      }
+      paramString = localatvc;
     }
+    return null;
   }
   
-  public static void a()
+  public static ArrayList<String> a(String paramString)
   {
-    ??? = a.iterator();
-    while (((Iterator)???).hasNext()) {
-      ((atvv)((Iterator)???).next()).b();
-    }
-    synchronized (a)
-    {
-      a.clear();
-      return;
-    }
-  }
-  
-  public static void a(aufc paramaufc)
-  {
-    d(paramaufc.a());
-  }
-  
-  public static void a(String paramString)
-  {
-    e(paramString);
-    d(paramString);
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString);
     if (paramString == null) {
-      return;
+      return null;
     }
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    paramString = paramString.split("\\s");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
     {
-      paramString.a(paramBoolean);
-      return;
+      String str = paramString[i].trim();
+      if ((str != null) && (!TextUtils.isEmpty(str))) {
+        localArrayList.add(str);
+      }
+      i += 1;
     }
+    return localArrayList;
   }
   
-  public static void b()
+  public static String[] a(String paramString)
   {
-    if (a.size() == 0)
-    {
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, "download queue is empty");
-      return;
+    int j = 0;
+    Object localObject = a(paramString);
+    if (localObject == null) {
+      return null;
     }
-    ??? = a.iterator();
-    atvv localatvv;
-    while (((Iterator)???).hasNext())
+    paramString = new ArrayList();
+    int i = 0;
+    while (i < ((ArrayList)localObject).size())
     {
-      localatvv = (atvv)((Iterator)???).next();
-      if (localatvv.b())
-      {
-        QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s downloading", new Object[] { localatvv.a() }));
-        return;
+      String str = a((String)((ArrayList)localObject).get(i));
+      if (!TextUtils.isEmpty(str)) {
+        paramString.add(str.trim());
       }
+      i += 1;
     }
-    synchronized (a)
+    if (paramString.size() == 0) {
+      return null;
+    }
+    localObject = new String[paramString.size()];
+    i = j;
+    while (i < paramString.size())
     {
-      localatvv = (atvv)a.get(0);
-      if (localatvv == null)
-      {
-        QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, "next queue has elment, why get head is null?");
-        return;
-      }
+      localObject[i] = ((String)paramString.get(i));
+      i += 1;
     }
-    localObject2.a();
-    QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("start %s to download", new Object[] { localObject2.a() }));
+    return localObject;
   }
   
-  public static void b(String paramString)
+  public static String[] b(String paramString)
   {
-    atvv localatvv1 = a(paramString);
-    if (localatvv1 == null)
+    Object localObject2 = a(paramString);
+    FTSDatabase.a().a("SegmentUtils", "i", "query segments = " + Arrays.toString((Object[])localObject2));
+    Object localObject1;
+    if (localObject2 != null)
     {
-      QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s not in downloadList", new Object[] { paramString }));
-      return;
+      localObject1 = localObject2;
+      if (localObject2.length != 0) {}
     }
-    synchronized (a)
+    else
     {
-      Iterator localIterator = a.iterator();
-      while (localIterator.hasNext())
+      if ((paramString == null) || (paramString.length() <= 0)) {
+        break label223;
+      }
+      localObject1 = new String[1];
+      localObject1[0] = paramString;
+    }
+    paramString = new String[localObject1.length];
+    int i = 0;
+    while (i < localObject1.length)
+    {
+      localObject2 = new StringBuilder(64);
+      String[] arrayOfString = localObject1[i].split(" ");
+      int j = 0;
+      if (j < arrayOfString.length)
       {
-        atvv localatvv2 = (atvv)localIterator.next();
-        if (localatvv2 != localatvv1) {
-          localatvv2.b();
+        if (((StringBuilder)localObject2).length() > 0) {
+          ((StringBuilder)localObject2).append(" ");
+        }
+        if ((arrayOfString[j].length() == 1) || ((arrayOfString[j].charAt(0) >= '0') && (arrayOfString[j].charAt(0) <= '9')) || ((arrayOfString[j].charAt(0) >= 'a') && (arrayOfString[j].charAt(0) <= 'z')))
+        {
+          ((StringBuilder)localObject2).append(arrayOfString[j]);
+          ((StringBuilder)localObject2).append("*");
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          label223:
+          return null;
+          ((StringBuilder)localObject2).append(arrayOfString[j]);
         }
       }
+      paramString[i] = ((StringBuilder)localObject2).toString();
+      i += 1;
     }
-    a.remove(localatvv1);
-    a.add(0, localatvv1);
-    QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("downloa %s set to head and stop other succ!", new Object[] { paramString }));
-    localatvv1.a();
-  }
-  
-  public static void c(String paramString)
-  {
-    atvv localatvv = a(paramString);
-    if (localatvv == null)
-    {
-      QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s not in downloadList", new Object[] { paramString }));
-      return;
-    }
-    localatvv.c();
-  }
-  
-  public static void d(String paramString)
-  {
-    atvv localatvv = a(paramString);
-    if (localatvv == null)
-    {
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, "cann't find downloader with:" + paramString);
-      return;
-    }
-    localatvv.b();
-    synchronized (a)
-    {
-      a.remove(localatvv);
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("####  remove downloader:%s, mapsize:%d", new Object[] { paramString, Integer.valueOf(a.size()) }));
-      return;
-    }
-  }
-  
-  private static void e(String paramString)
-  {
-    atvv localatvv = a(paramString);
-    if (localatvv != null)
-    {
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("####   %s pause!", new Object[] { paramString }));
-      localatvv.b();
-    }
-    for (;;)
-    {
-      d(paramString);
-      return;
-      QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("####   %s pause failed, not find!", new Object[] { paramString }));
-    }
+    return paramString;
   }
 }
 

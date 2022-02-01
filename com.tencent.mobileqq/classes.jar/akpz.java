@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akpz
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public akpz(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public akpz(LoginView paramLoginView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

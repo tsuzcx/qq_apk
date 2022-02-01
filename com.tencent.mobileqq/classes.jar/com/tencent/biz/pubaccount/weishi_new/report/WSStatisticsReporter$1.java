@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
-import bdmc;
 import com.google.gson.Gson;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import uqf;
+import uya;
 
 class WSStatisticsReporter$1
   implements Runnable
@@ -27,15 +27,15 @@ class WSStatisticsReporter$1
     for (;;)
     {
       WSStatisticsReporter.access$1300(this.this$0);
-      uqf.b("WSStatisticsReporter", "event report: " + WSStatisticsReporter.access$1100(this.this$0) + ", position: " + (String)WSStatisticsReporter.access$900(this.this$0).get("position") + ", isImmediately: " + WSStatisticsReporter.access$1000(this.this$0) + ",params:" + WSStatisticsReporter.access$900(this.this$0).toString() + " isFlush: " + WSStatisticsReporter.access$1200(this.this$0));
+      uya.b("WSStatisticsReporter", "event report: " + WSStatisticsReporter.access$1100(this.this$0) + ", position: " + (String)WSStatisticsReporter.access$900(this.this$0).get("position") + ", isImmediately: " + WSStatisticsReporter.access$1000(this.this$0) + ",params:" + WSStatisticsReporter.access$900(this.this$0).toString() + " isFlush: " + WSStatisticsReporter.access$1200(this.this$0));
       return;
-      bdmc.a(BaseApplication.getContext()).a(null, WSStatisticsReporter.access$1100(this.this$0), true, 0L, 0L, WSStatisticsReporter.access$900(this.this$0), "", WSStatisticsReporter.access$1200(this.this$0));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, WSStatisticsReporter.access$1100(this.this$0), true, 0L, 0L, WSStatisticsReporter.access$900(this.this$0), "", WSStatisticsReporter.access$1200(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.1
  * JD-Core Version:    0.7.0.1
  */

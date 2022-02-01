@@ -2,12 +2,12 @@ package com.tencent.qidian;
 
 import android.content.Intent;
 import android.os.Bundle;
-import antf;
-import auxu;
-import azxr;
+import atky;
+import aymg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -34,11 +34,11 @@ class QidianProfileCardActivity$ForwardRunnable
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("forward_type", 1);
-    Object localObject = new File(antf.cb);
+    Object localObject = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    String str = antf.cb + Utils.Crc64String(localQidianProfileCardActivity.a.a.a) + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + Utils.Crc64String(localQidianProfileCardActivity.a.a.a) + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
     localObject = str;
     if (!new File(str).exists()) {}
     try
@@ -51,7 +51,7 @@ class QidianProfileCardActivity$ForwardRunnable
       localBundle.putString("forward_extra", (String)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtras(localBundle);
-      auxu.a(localQidianProfileCardActivity, (Intent)localObject, 21);
+      atky.a(localQidianProfileCardActivity, (Intent)localObject, 21);
       return;
     }
     catch (IOException localIOException)

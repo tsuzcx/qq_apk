@@ -1,21 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class agol
-  implements Animator.AnimatorListener
+public class agol
+  implements View.OnTouchListener
 {
-  agol(agok paramagok, ViewGroup paramViewGroup) {}
+  public agol(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    return true;
   }
 }
 

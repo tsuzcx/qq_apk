@@ -1,17 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class amdw
-  implements View.OnClickListener
+final class amdw
+  extends bgod
 {
-  public amdw(PhoneContactTabView paramPhoneContactTabView) {}
+  amdw(int paramInt, amea paramamea) {}
   
-  public void onClick(View paramView)
+  public void onDone(bgoe parambgoe)
   {
-    PhoneContactTabView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onDone(parambgoe);
+    if (3 == parambgoe.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Amea != null) {
+        this.jdField_a_of_type_Amea.a(true, this.jdField_a_of_type_Int);
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + parambgoe.a());
+      }
+    } while (this.jdField_a_of_type_Amea == null);
+    this.jdField_a_of_type_Amea.a(false, this.jdField_a_of_type_Int);
   }
 }
 

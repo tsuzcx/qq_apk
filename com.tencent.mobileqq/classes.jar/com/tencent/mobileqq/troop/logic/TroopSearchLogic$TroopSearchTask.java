@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.logic;
 
+import anca;
 import android.text.TextUtils;
-import aoip;
-import apaw;
-import bgho;
-import bghp;
-import bhlb;
+import anuz;
+import beqw;
+import beqx;
+import bfuh;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,20 +22,20 @@ import java.util.List;
 class TroopSearchLogic$TroopSearchTask
   implements Runnable
 {
-  bghp jdField_a_of_type_Bghp;
+  beqx jdField_a_of_type_Beqx;
   ArrayList<ResultRecord> jdField_a_of_type_JavaUtilArrayList;
   
-  TroopSearchLogic$TroopSearchTask(bghp parambghp, ArrayList<ResultRecord> paramArrayList)
+  TroopSearchLogic$TroopSearchTask(beqx parambeqx, ArrayList<ResultRecord> paramArrayList)
   {
-    this.jdField_a_of_type_Bghp = paramArrayList;
+    this.jdField_a_of_type_Beqx = paramArrayList;
     Object localObject;
     this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
-  private void a(ArrayList<bgho> paramArrayList)
+  private void a(ArrayList<beqw> paramArrayList)
   {
-    if (this.jdField_a_of_type_Bghp != null) {
-      this.jdField_a_of_type_Bghp.a(paramArrayList);
+    if (this.jdField_a_of_type_Beqx != null) {
+      this.jdField_a_of_type_Beqx.a(paramArrayList);
     }
   }
   
@@ -62,7 +62,7 @@ class TroopSearchLogic$TroopSearchTask
   
   public void run()
   {
-    Object localObject1 = (aoip)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    Object localObject1 = (anca)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
     localObject1 = new ArrayList();
     Object localObject2 = new ArrayList(this.this$0.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b());
     if ((localObject2 == null) || (((List)localObject2).size() == 0))
@@ -106,7 +106,7 @@ class TroopSearchLogic$TroopSearchTask
                 break;
               }
               localTroopMemberInfo = (TroopMemberInfo)localIterator.next();
-            } while (!TextUtils.equals(localResultRecord.jdField_a_of_type_JavaLangString, localTroopMemberInfo.memberuin));
+            } while (!TextUtils.equals(localResultRecord.uin, localTroopMemberInfo.memberuin));
           }
         }
       }
@@ -122,15 +122,15 @@ class TroopSearchLogic$TroopSearchTask
         if (i == 0) {
           break label454;
         }
-        localObject3 = new bgho();
-        ((bgho)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopInfo;
-        ((bgho)localObject3).jdField_a_of_type_Int = localList.size();
-        ((bgho)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopName(), 1).jdField_a_of_type_JavaLangString;
-        localTroopInfo.lastMsgTime = ((RecentUser)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().findRecentUserByUin(localTroopInfo.troopuin, 1)).lastmsgtime;
-        if (k != ((bgho)localObject3).jdField_a_of_type_Int) {
+        localObject3 = new beqw();
+        ((beqw)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
+        ((beqw)localObject3).jdField_a_of_type_Int = localList.size();
+        ((beqw)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopName(), 1).jdField_a_of_type_JavaLangString;
+        localTroopInfo.lastMsgTime = ((RecentUser)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().findRecentUserByUin(localTroopInfo.troopuin, 1)).lastmsgtime;
+        if (k != ((beqw)localObject3).jdField_a_of_type_Int) {
           break;
         }
-        ((bgho)localObject3).b = 1;
+        ((beqw)localObject3).b = 1;
         ((ArrayList)localObject1).add(localObject3);
         break;
         Collections.sort((List)localObject1);

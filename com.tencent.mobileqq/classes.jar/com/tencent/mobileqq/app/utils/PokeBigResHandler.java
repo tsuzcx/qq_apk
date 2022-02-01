@@ -2,17 +2,17 @@ package com.tencent.mobileqq.app.utils;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import antf;
-import anud;
-import anui;
-import apds;
-import bhmi;
-import bigv;
-import bleb;
-import brgs;
+import anxe;
+import bjkf;
+import boaj;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.MD5;
@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class PokeBigResHandler
-  extends anud
+  extends BusinessHandler
 {
   public static final String a;
   public static boolean a;
@@ -34,12 +34,12 @@ public class PokeBigResHandler
   public static final String d;
   private static String e = "";
   private static String f = "";
-  private static final String g = bigv.a(antf.ba + "bigPoke");
-  private apds jdField_a_of_type_Apds = new apds();
+  private static final String g = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "bigPoke");
+  private anxe jdField_a_of_type_Anxe = new anxe();
   
   static
   {
-    jdField_a_of_type_JavaLangString = bigv.a(antf.bI);
+    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_NEW_POKE);
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
     c = jdField_a_of_type_JavaLangString + "/poke_normal";
     d = c + "/dazhao/dazhao_move.png";
@@ -64,14 +64,14 @@ public class PokeBigResHandler
       return;
       try
       {
-        if (!TextUtils.isEmpty(bigv.a(g)))
+        if (!TextUtils.isEmpty(VFSAssistantUtils.getSDKPrivatePath(g)))
         {
-          bhmi.a(bigv.a(jdField_a_of_type_JavaLangString), false);
-          brgs.a(g);
-          bhmi.a(paramString, bigv.a(jdField_a_of_type_JavaLangString), false);
-          brgs.a(jdField_a_of_type_JavaLangString);
+          FileUtils.delete(VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
+          boaj.a(g);
+          FileUtils.uncompressZip(paramString, VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
+          boaj.a(jdField_a_of_type_JavaLangString);
         }
-        bhmi.a(paramString, false);
+        FileUtils.delete(paramString, false);
         long l2 = System.currentTimeMillis();
         if (!QLog.isColorLevel()) {
           continue;
@@ -169,7 +169,7 @@ public class PokeBigResHandler
     File localFile = new File(str);
     if ((localFile.exists()) && (localFile.list() != null))
     {
-      brgs.a(str);
+      boaj.a(str);
       return true;
     }
     return false;
@@ -263,7 +263,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bleb.a(localFile);
+            paramString = bjkf.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -287,7 +287,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bleb.a(localFile);
+            paramString = bjkf.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -330,7 +330,7 @@ public class PokeBigResHandler
     }
   }
   
-  public Class<? extends anui> observerClass()
+  public Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }

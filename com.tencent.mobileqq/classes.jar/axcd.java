@@ -1,19 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public final class axcd
-  implements Parcelable.Creator<MediaFocusStackItem>
+class axcd
+  implements TextWatcher
 {
-  public MediaFocusStackItem a(Parcel paramParcel)
+  axcd(axcb paramaxcb) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return new MediaFocusStackItem(paramParcel);
+    awkj.a(this.a.f, 90);
   }
   
-  public MediaFocusStackItem[] a(int paramInt)
-  {
-    return new MediaFocusStackItem[paramInt];
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

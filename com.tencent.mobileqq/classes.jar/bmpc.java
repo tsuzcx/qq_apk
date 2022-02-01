@@ -1,17 +1,30 @@
-class bmpc
-  implements bmoq
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+public class bmpc
+  extends bmpd
 {
-  bmpc(bmpb parambmpb) {}
+  private SimpleDateFormat a;
   
-  public void a()
+  public bmpc(float paramFloat)
   {
-    if (bmpb.a(this.a) != null) {
-      bmpb.a(this.a);
-    }
-    while (bmpb.a(this.a) == null) {
-      return;
-    }
-    bmpb.a(this.a, bmpb.a(this.a));
+    super(paramFloat);
+    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("mm:ss", Locale.US);
+  }
+  
+  public float a(long paramLong)
+  {
+    return (float)paramLong / 1000.0F / this.jdField_a_of_type_Float;
+  }
+  
+  public long a(float paramFloat)
+  {
+    return Math.round(1000.0F * paramFloat * this.jdField_a_of_type_Float);
+  }
+  
+  public String a(long paramLong)
+  {
+    return this.jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
   }
 }
 

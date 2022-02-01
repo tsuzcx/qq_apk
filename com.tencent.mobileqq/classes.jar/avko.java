@@ -1,67 +1,20 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.12.1;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class avko
-  implements avnb
+  extends Handler
 {
-  public avko(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
-  
-  public void a(int paramInt)
+  public avko(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
   {
-    QLog.d("QQGamePubAccountFragment", 4, "mFeedsAdapter.onPageSelected position=" + paramInt);
-    Object localObject;
-    if (paramInt < QQGamePubAccountFragment.a(this.a).size())
-    {
-      localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).arg1 = paramInt;
-      QQGamePubAccountFragment.a(this.a).removeMessages(1);
-      QQGamePubAccountFragment.a(this.a).sendMessageDelayed((Message)localObject, 200L);
-    }
-    try
-    {
-      com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController.a = 0;
-      if (paramInt < QQGamePubAccountFragment.a(this.a).size())
-      {
-        localObject = (MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt);
-        List localList = (List)QQGamePubAccountFragment.a(this.a).get(Long.valueOf(((MessageRecord)localObject).uniseq));
-        FeedsItemData.TopCardInfo localTopCardInfo = (FeedsItemData.TopCardInfo)QQGamePubAccountFragment.b(this.a).get(Long.valueOf(((MessageRecord)localObject).uniseq));
-        String str = (String)QQGamePubAccountFragment.c(this.a).get(Long.valueOf(((MessageRecord)localObject).uniseq));
-        QQGamePubAccountFragment.a(this.a).a(localList, localTopCardInfo);
-        QQGamePubAccountFragment.a(this.a, localTopCardInfo);
-        if ((localList == null) || (localList.size() == 0)) {
-          this.a.b(false);
-        }
-        QQGamePubAccountFragment.a(QQGamePubAccountFragment.a(this.a), paramInt);
-        this.a.d();
-        if (QQGamePubAccountFragment.d(this.a).containsKey(Long.valueOf(((MessageRecord)localObject).uniseq))) {}
-        acik.a(anbd.a(), "769", "205017", this.a.a(paramInt), "76901", "1", "160", new String[] { avmd.a((MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt)), "" + paramInt, "8" });
-        ((VasExtensionHandler)QQGamePubAccountFragment.a(this.a).a(71)).a(2, ((MessageRecord)QQGamePubAccountFragment.a(this.a).get(0)).getExtInfoFromExtStr("pa_msgId"), "");
-        return;
-      }
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new QQGamePubAccountFragment.12.1(this), 200L);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.d("QQGamePubAccountFragment", 4, "-->onPageSelected decode feed fail :" + localThrowable.getMessage());
-    }
+    super(paramLooper);
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("QQGamePubAccountFragment", 4, "mFeedsAdapter.onPageScrolled position=" + paramInt1);
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 

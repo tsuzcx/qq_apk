@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import android.app.Activity;
-import nsr;
-import nss;
+import nua;
+import nub;
 
 public class AccountDetailVideoManager$1$1
   implements Runnable
 {
-  public AccountDetailVideoManager$1$1(nss paramnss) {}
+  public AccountDetailVideoManager$1$1(nub paramnub) {}
   
   public void run()
   {

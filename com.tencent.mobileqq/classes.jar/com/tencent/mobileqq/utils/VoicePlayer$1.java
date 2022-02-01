@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Handler;
-import bhud;
-import bhue;
+import bgas;
+import bgat;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,24 +12,24 @@ public class VoicePlayer$1
 {
   int a = 0;
   
-  public VoicePlayer$1(bhud parambhud) {}
+  public VoicePlayer$1(bgas parambgas) {}
   
   public void run()
   {
-    if ((bhud.a(this.this$0) == 4) || (bhud.a(this.this$0) == 5) || (bhud.a(this.this$0) == 6) || (bhud.a(this.this$0) == 8)) {
+    if ((bgas.a(this.this$0) == 4) || (bgas.a(this.this$0) == 5) || (bgas.a(this.this$0) == 6) || (bgas.a(this.this$0) == 8)) {
       this.a = 0;
     }
     do
     {
       return;
-      if (bhud.a(this.this$0) == 3)
+      if (bgas.a(this.this$0) == 3)
       {
-        this.a = bhud.b(this.this$0);
+        this.a = bgas.b(this.this$0);
         return;
       }
-    } while (bhud.a(this.this$0) == null);
-    int k = bhud.c(this.this$0);
-    int i = bhud.b(this.this$0);
+    } while (bgas.a(this.this$0) == null);
+    int k = bgas.c(this.this$0);
+    int i = bgas.b(this.this$0);
     if (i < this.a) {
       i = this.a;
     }
@@ -52,14 +52,14 @@ public class VoicePlayer$1
       if (i > this.a) {
         this.a = i;
       }
-      Iterator localIterator = bhud.a(this.this$0).iterator();
+      Iterator localIterator = bgas.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((bhue)localIterator.next()).a(bhud.a(this.this$0), j, i);
+        ((bgat)localIterator.next()).a(bgas.a(this.this$0), j, i);
       }
-      if (bhud.a(this.this$0) == null) {
+      if (bgas.a(this.this$0) == null) {
         break;
       }
-      bhud.a(this.this$0).postDelayed(this, 50L);
+      bgas.a(this.this$0).postDelayed(this, 50L);
       return;
     }
   }

@@ -1,12 +1,14 @@
 package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
-import bdgx;
+import bbzm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.soload.LoadExtResult;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -23,10 +25,9 @@ public class HippyQQLibraryManager
   private String mCDNPath;
   private String mCommonPackagePath;
   private List<HippyQQLibraryManager.LibraryLoadListener> mLibraryLoadListeners = new ArrayList();
+  private HashMap<String, String> mLibraryVerions = new HashMap();
   private int mLoadState = 0;
   private String mOfflinePath;
-  
-  private void HippyQQLibraryManager() {}
   
   private void addLibraryLoadListener(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
   {
@@ -200,9 +201,43 @@ public class HippyQQLibraryManager
     return paramString.getAbsolutePath();
   }
   
+  public int getHippyLibrayId()
+  {
+    String str1 = "";
+    int i = 0;
+    while (i < this.SO_NAME.length)
+    {
+      String str2 = bbzm.a().a(this.SO_NAME[i]);
+      if (TextUtils.isEmpty(str2)) {
+        return 0;
+      }
+      str1 = str1 + str2;
+      i += 1;
+    }
+    return str1.hashCode();
+  }
+  
+  public HashMap<String, String> getLibraryVersions()
+  {
+    return this.mLibraryVerions;
+  }
+  
   public boolean isLibraryLoaded()
   {
     return this.mLoadState == 2;
+  }
+  
+  public boolean isLibrayExists()
+  {
+    int i = 0;
+    while (i < this.SO_NAME.length)
+    {
+      if (TextUtils.isEmpty(bbzm.a().a(this.SO_NAME[i]))) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
   
   public void loadLibraryIfNeed(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
@@ -215,7 +250,7 @@ public class HippyQQLibraryManager
       return;
       this.mLoadState = 1;
       addLibraryLoadListener(paramLibraryLoadListener);
-      bdgx.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
+      bbzm.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
       return;
       addLibraryLoadListener(paramLibraryLoadListener);
       return;
@@ -225,7 +260,23 @@ public class HippyQQLibraryManager
   
   public void preDownload()
   {
-    bdgx.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
+    bbzm.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
+  }
+  
+  protected void updateSoVersions(LoadExtResult paramLoadExtResult)
+  {
+    if (paramLoadExtResult == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < this.SO_NAME.length)
+      {
+        String str = paramLoadExtResult.getVer(this.SO_NAME[i]);
+        this.mLibraryVerions.put(this.SO_NAME[i], str);
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class atfr
-  implements View.OnClickListener
+class atfr
+  implements aszj
 {
-  public atfr(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  atfr(atfq paramatfq) {}
   
-  public void onClick(View paramView)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    bhhz.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    atfo.a(this.a.a);
+    if (atfo.k(this.a.a) != null) {
+      atfo.l(this.a.a).d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfr
  * JD-Core Version:    0.7.0.1
  */

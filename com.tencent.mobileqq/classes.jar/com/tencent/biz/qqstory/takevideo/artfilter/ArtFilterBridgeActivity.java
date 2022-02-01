@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anzj;
 import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
@@ -19,7 +19,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
-import zae;
+import ybn;
 
 public class ArtFilterBridgeActivity
   extends BaseActivity
@@ -35,11 +35,11 @@ public class ArtFilterBridgeActivity
     Object localObject3;
     if (getIntent().getBooleanExtra("USE_FILTER", false))
     {
-      localObject1 = zae.a();
+      localObject1 = ybn.a();
       i = k;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject3 = zae.b();
+        localObject3 = ybn.b();
         i = k;
         if (localObject3 != null)
         {
@@ -60,7 +60,7 @@ public class ArtFilterBridgeActivity
         k = localIntent.getIntExtra("sub_business_id", 0);
         int m = localIntent.getIntExtra("entrance_type", 99);
         String str = localIntent.getStringExtra("PATH");
-        localObject3 = EditVideoParams.a(k);
+        localObject3 = EditVideoParams.setBundleForBusiness(k);
         if (localObject3 == null) {
           localObject3 = new Bundle();
         }
@@ -74,7 +74,7 @@ public class ArtFilterBridgeActivity
           }
           boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
           if (bool2) {
-            ((Bundle)localObject3).putString("extra_publish_text", anzj.a(2131699666));
+            ((Bundle)localObject3).putString("extra_publish_text", amtj.a(2131699901));
           }
           if (localIntent.hasExtra("troop_uin")) {
             ((Bundle)localObject3).putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -125,8 +125,9 @@ public class ArtFilterBridgeActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

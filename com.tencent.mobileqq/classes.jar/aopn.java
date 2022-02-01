@@ -1,85 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.face.FaceDecodeTask;
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aopn
-  extends aoot
+  implements DialogInterface.OnClickListener
 {
-  aopi jdField_a_of_type_Aopi = null;
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  public aopn(ArkAppModuleBase.APIAuthority.1 param1, QQCustomDialog paramQQCustomDialog, Activity paramActivity) {}
   
-  public aopn(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, aoou paramaoou, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, paramaoou, paramBoolean2);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
-  }
-  
-  protected Bitmap a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) {
-      return null;
+    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Aopp != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Aopp.b();
     }
-    String str = FaceInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.c);
-    return ((aope)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(str);
-  }
-  
-  protected Bitmap a(boolean paramBoolean)
-  {
-    return a();
-  }
-  
-  protected void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
-    }
-    Bitmap localBitmap = a();
-    if (localBitmap != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo + ",bitmap is already in cache...");
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label39:
+      aopl.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 2);
+      paramDialogInterface = bfur.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131690123), 2131718436, 2131718436, new bfvf(), null);
+      try
+      {
+        paramDialogInterface.show();
+        return;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, localBitmap);
-      return;
+      catch (Exception paramDialogInterface) {}
     }
-    if (this.jdField_a_of_type_Aopi == null)
+    catch (Exception paramDialogInterface)
     {
-      this.jdField_a_of_type_Aopi = new aopo(this);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Aopi);
+      break label39;
     }
-    ((aopc)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
-  }
-  
-  protected void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
-  }
-  
-  protected boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) {
-      return false;
-    }
-    FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, this));
-    return true;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Aopi != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Aopi);
-      this.jdField_a_of_type_Aopi = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
-    super.b();
   }
 }
 

@@ -1,27 +1,23 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class atlb
+class atlb
+  implements atlm
 {
-  public int a;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  public int b;
-  ImageView b;
+  atlb(atky paramatky) {}
   
-  public atlb(atla paramatla) {}
+  public void a()
+  {
+    this.a.a.setProgressBarVisibility(0);
+  }
+  
+  public void b()
+  {
+    this.a.a.setProgressBarVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atlb
  * JD-Core Version:    0.7.0.1
  */

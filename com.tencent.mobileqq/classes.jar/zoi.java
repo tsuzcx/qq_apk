@@ -1,23 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class zoi
+  implements View.OnClickListener
 {
-  public static String a(String paramString, int paramInt)
+  public zoi(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramString.getBytes().length <= paramInt) {
-      return paramString;
-    }
-    int k = paramString.length();
-    int j = 0;
-    for (int i = 0;; i = j) {
-      if (j < k)
-      {
-        j += Character.charCount(paramString.codePointAt(j));
-        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
-      }
-      else
-      {
-        return paramString.substring(0, i);
-      }
-    }
+    EditUniqueTitleActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

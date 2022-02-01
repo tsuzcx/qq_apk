@@ -1,8 +1,26 @@
-public abstract interface aprk
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+
+public class aprk
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  public aprk(TimeSelectView paramTimeSelectView) {}
   
-  public abstract void a(int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

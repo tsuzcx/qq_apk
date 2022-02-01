@@ -1,15 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qtk
+class qtk
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 0;
-  }
+  qtk(qtj paramqtj) {}
   
-  public Drawable a()
+  public void onClick(View paramView)
   {
-    return null;
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

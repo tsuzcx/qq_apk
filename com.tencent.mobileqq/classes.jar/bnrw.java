@@ -1,12 +1,19 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public abstract interface bnrw
-  extends IInterface
+public class bnrw
+  implements AdapterView.OnItemSelectedListener
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
+  public bnrw(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+  }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

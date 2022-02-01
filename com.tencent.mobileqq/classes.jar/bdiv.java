@@ -1,18 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.StatisticCollector.Proxy;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserStateMachineController.1.1;
+import java.util.List;
 
-public final class bdiv
-  implements IMCoreProxyRoute.StatisticCollector.Proxy
+public class bdiv
+  extends bdji<UserState>
 {
-  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
+  bdiv(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    bdmc.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
+    super(paramUserState, paramList);
   }
   
-  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
+  public void a(UserState paramUserState)
   {
-    bdmc.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+    paramUserState = this.a;
+    if (!bdgn.a(bdiu.a(this.a))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bdiu.a(paramUserState, bool);
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new UserStateMachineController.1.1(this), 3000L);
+      return;
+    }
   }
 }
 

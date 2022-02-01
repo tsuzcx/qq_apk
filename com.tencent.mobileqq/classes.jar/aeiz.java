@@ -1,67 +1,27 @@
-import android.annotation.TargetApi;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeiz
-  implements almg
+  implements View.OnClickListener
 {
-  public aeiz(Conversation paramConversation) {}
+  public aeiz(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Alms != null) {
-      this.a.jdField_a_of_type_Alms.f();
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
-    }
-    if (this.a.jdField_a_of_type_Wyd != null) {
-      this.a.jdField_a_of_type_Wyd.e();
-    }
-  }
-  
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.jdField_a_of_type_Azti.i();
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.a.mSwiftTitleUI != null)
     {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aqgb localaqgb = (aqgb)localIterator.next();
-        if (localaqgb != null) {
-          localaqgb.h();
-        }
+      this.a.mSwiftTitleUI.mUIStyle.isScreenLandscape = false;
+      this.a.mSwiftTitleUI.mUIStyle.mIsPortraitOnly = Boolean.valueOf(true);
+      if (this.a.mUIStyleHandler != null) {
+        this.a.mUIStyleHandler.updateScreenOrientation();
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.F();
-    }
-    if (this.a.jdField_a_of_type_Wyd != null) {
-      this.a.jdField_a_of_type_Wyd.f();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Conversation.o(this.a);
-    this.a.jdField_a_of_type_Azti.j();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.E();
-    }
-    if (this.a.jdField_a_of_type_Wyd != null) {
-      this.a.jdField_a_of_type_Wyd.j();
-    }
-    if (this.a.jdField_a_of_type_Alrd != null) {
-      this.a.jdField_a_of_type_Alrd.f();
-    }
+    this.a.onClick(this.a.mSwiftTitleUI.rightViewImg);
+    this.a.a(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

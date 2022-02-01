@@ -1,16 +1,26 @@
-import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
-class rdp
-  implements rdw
+public class rdp
+  implements Cloneable
 {
-  rdp(rdo paramrdo, rdb paramrdb) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void a() {}
-  
-  public void a(Bitmap paramBitmap, rdu paramrdu)
+  protected Object clone()
   {
-    this.jdField_a_of_type_Rdb.a(paramBitmap);
-    rdo.a(this.jdField_a_of_type_Rdo, paramBitmap, paramrdu.c);
+    try
+    {
+      rdp localrdp = (rdp)super.clone();
+      return localrdp;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
   }
 }
 

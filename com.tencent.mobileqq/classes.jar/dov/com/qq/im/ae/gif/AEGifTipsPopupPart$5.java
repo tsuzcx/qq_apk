@@ -1,14 +1,14 @@
 package dov.com.qq.im.ae.gif;
 
-import bosi;
+import blwn;
 
 public class AEGifTipsPopupPart$5
   implements Runnable
 {
   public void run()
   {
-    if (!bosi.a(this.this$0)) {
-      bosi.a(this.this$0, true, true);
+    if (!blwn.a(this.this$0)) {
+      blwn.a(this.this$0, true, true);
     }
   }
 }

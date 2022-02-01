@@ -1,17 +1,33 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ahhu
-  extends ahkx
+  implements agxa
 {
-  ahhu(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahhu(ahhp paramahhp) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean a(int paramInt)
   {
-    return new agyr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 2) && (paramInt != 4))
+    {
+      bool1 = bool2;
+      if (paramInt != 5) {}
+    }
+    else
+    {
+      bool1 = bool2;
+      if (!ahhp.a(this.a))
+      {
+        QQToast.a(this.a.app.getApp(), 2131698178, 0).b(this.a.mActivity.getResources().getDimensionPixelSize(2131299076));
+        bcef.b(this.a.app, "dc00898", "", "", "0X800B3D2", "0X800B3D2", 0, 0, "", "", "", "");
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

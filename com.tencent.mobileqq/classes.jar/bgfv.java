@@ -1,15 +1,44 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadCanceled.1;
+import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadFialed.1;
+import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadProgressed.1;
+import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadSuccessed.1;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class bgfv<VH extends RecyclerView.ViewHolder, D extends bgeg>
-  extends bgfc<VH, D>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/VasApngFactory$getApngURLDrawable$listenerProxy$1", "Lcom/tencent/image/URLDrawable$URLDrawableListener;", "onLoadCanceled", "", "d", "Lcom/tencent/image/URLDrawable;", "onLoadFialed", "t", "", "onLoadProgressed", "progress", "", "onLoadSuccessed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bgfv
+  implements URLDrawable.URLDrawableListener
 {
-  public bgfv(XMediaEditor paramXMediaEditor)
+  bgfv(bgfu parambgfu) {}
+  
+  public void onLoadCanceled(@NotNull URLDrawable paramURLDrawable)
   {
-    super(paramXMediaEditor);
+    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
+    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadCanceled.1(this, paramURLDrawable));
   }
   
-  public abstract void a(D paramD);
+  public void onLoadFialed(@NotNull URLDrawable paramURLDrawable, @Nullable Throwable paramThrowable)
+  {
+    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
+    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadFialed.1(this, paramURLDrawable, paramThrowable));
+  }
+  
+  public void onLoadProgressed(@NotNull URLDrawable paramURLDrawable, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
+    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadProgressed.1(this, paramURLDrawable, paramInt));
+  }
+  
+  public void onLoadSuccessed(@NotNull URLDrawable paramURLDrawable)
+  {
+    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
+    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadSuccessed.1(this, paramURLDrawable));
+  }
 }
 
 

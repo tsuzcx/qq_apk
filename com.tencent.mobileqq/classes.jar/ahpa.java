@@ -1,20 +1,20 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahpa
-  extends aggl
+class ahpa
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public View c;
-  public TextView c;
+  ahpa(ahow paramahow) {}
   
-  public ahpa(ahow paramahow) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = (mxn)ahow.a(this.a).getManager(373);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(ahow.a(this.a).curFriendUin);
+    }
+  }
 }
 
 

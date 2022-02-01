@@ -1,246 +1,336 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.ui.QQComicFragment;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@TargetApi(16)
-public abstract class bkgj
+public class bkgj
+  extends bgww
 {
-  protected long a;
-  protected MediaCodec.BufferInfo a;
-  protected MediaCodec a;
-  protected MediaExtractor a;
-  protected MediaFormat a;
-  protected bkgk a;
-  protected bkgl a;
-  protected bkgo a;
-  protected boolean a;
-  protected ByteBuffer[] a;
-  protected long b;
-  protected boolean b;
-  protected ByteBuffer[] b;
-  protected long c;
+  bkgj(QQComicFragment paramQQComicFragment) {}
   
-  public bkgj(bkgl parambkgl, bkgk parambkgk)
+  private void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bkgl = parambkgl;
-    this.jdField_a_of_type_Bkgk = parambkgk;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo != null) {
-      return this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-    }
-    return 0L;
-  }
-  
-  public long a(long paramLong)
-  {
-    long l1 = System.currentTimeMillis();
-    try
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity;
+    apkn localapkn = localQQBrowserActivity.a();
+    if (localapkn != null)
     {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 0);
-      long l2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-      if (this.jdField_a_of_type_Bkgo != null) {
-        this.jdField_a_of_type_Bkgo.b(l2 / 1000L);
+      if (localapkn.c()) {
+        break label45;
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_b_of_type_Long = l2;
-      this.c = l2;
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l2;
-      this.jdField_a_of_type_Long = (System.currentTimeMillis() - l2 / 1000L);
-      yuk.b(a(), "end seekTo timecost=" + (System.currentTimeMillis() - l1) + " seekTargetTimeUs:" + paramLong + " realStartTime:" + l2);
-      return l2;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      for (;;)
+      if (localapkn.b())
       {
-        yuk.c(a(), "decoder flush error %s", localRuntimeException);
-      }
-    }
-  }
-  
-  protected abstract String a();
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L);
-  }
-  
-  protected abstract void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo);
-  
-  protected abstract void a(bkgk parambkgk, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat);
-  
-  public void a(bkgo parambkgo)
-  {
-    this.jdField_a_of_type_Bkgo = parambkgo;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    bkgg.a(this.jdField_a_of_type_Bkgl.jdField_a_of_type_Long, "[" + a() + "] init now");
-    this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-    boolean bool1;
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_Bkgk.b);
-        bkgg.a(this.jdField_a_of_type_Bkgl.jdField_a_of_type_Long, "[" + a() + "] extractor setDataSource");
-        i = 0;
-        bool1 = bool2;
-        if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
-        {
-          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-          str = this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime");
-          if (!str.startsWith(this.jdField_a_of_type_Bkgk.a)) {
-            break label353;
-          }
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-          bkgg.a(this.jdField_a_of_type_Bkgl.jdField_a_of_type_Long, "[" + a() + "] find and selectTrack");
-        }
-      }
-      catch (IOException localIOException)
-      {
-        String str;
-        yuk.b(a(), "init set data source error :%s", localIOException);
-        return false;
-      }
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-        bkgg.a(this.jdField_a_of_type_Bkgl.jdField_a_of_type_Long, "[" + a() + "] create codec");
-        a(this.jdField_a_of_type_Bkgk, this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaFormat);
-        bkgg.a(this.jdField_a_of_type_Bkgl.jdField_a_of_type_Long, "[" + a() + "] configureCodec");
-        bool1 = true;
-      }
-      catch (Throwable localThrowable)
-      {
-        yuk.b(a(), "init createDecoderByType error :%s", localThrowable);
-        bool1 = bool2;
-        continue;
-      }
-      if (!bool1) {
-        break;
-      }
-      yuk.b(a(), "create media decoder success!");
-      return bool1;
-      label353:
-      i += 1;
-    }
-    yuk.d(a(), "create media decoder error!");
-    return bool1;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-      }
-      if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-      {
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-        this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      yuk.c(a(), "onRelease error :%s ", localException);
-    }
-  }
-  
-  public boolean b()
-  {
-    yuk.a(a(), "start ! %s", this.jdField_a_of_type_Bkgk);
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      try
-      {
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        return true;
-      }
-      catch (Exception localException)
-      {
-        yuk.c(a(), "decode start error :%s", localException);
-      }
-      localThrowable = localThrowable;
-      yuk.c(a(), "decode start error", localThrowable);
-      return false;
-    }
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      d();
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      a(this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-    }
-    if (this.jdField_b_of_type_Boolean) {}
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  protected void d()
-  {
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-    int j;
-    long l1;
-    if (i >= 0)
-    {
-      ByteBuffer localByteBuffer = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
-      j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
-      l1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-      if (j < 0)
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
-        this.jdField_a_of_type_Boolean = true;
+        localapkn.e();
+        localQQBrowserActivity.finish();
       }
     }
     else
     {
       return;
     }
-    long l2 = this.jdField_b_of_type_Long;
-    this.jdField_b_of_type_Long = l1;
-    this.c += l1 - l2;
-    this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.c, 0);
-    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+    localapkn.i();
+    return;
+    label45:
+    localapkn.f();
+  }
+  
+  private void a(apkn paramapkn, QQBrowserActivity paramQQBrowserActivity)
+  {
+    if (paramapkn == null) {
+      return;
+    }
+    Object localObject1 = "";
+    Object localObject2 = "";
+    Object localObject3 = this.jdField_a_of_type_CooperationComicUiQQComicFragment.getString(2131690588);
+    bkgd localbkgd = this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
+    if (localbkgd != null)
+    {
+      localObject1 = localbkgd.c;
+      localObject2 = localbkgd.d;
+    }
+    if ((((String)localObject1).isEmpty()) && (this.jdField_a_of_type_CooperationComicUiQQComicFragment.mSwiftTitleUI != null)) {
+      if (!this.jdField_a_of_type_CooperationComicUiQQComicFragment.mSwiftTitleUI.getTitle().isEmpty()) {
+        localObject1 = this.jdField_a_of_type_CooperationComicUiQQComicFragment.mSwiftTitleUI.getTitle();
+      }
+    }
+    for (;;)
+    {
+      if (((String)localObject2).isEmpty()) {
+        if (((String)localObject1).equals(localObject3)) {
+          localObject2 = paramQQBrowserActivity.getOriginalUrl();
+        }
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          localObject3 = paramQQBrowserActivity.getOriginalUrl();
+          paramQQBrowserActivity = bkhf.a(bkhf.b((String)localObject3, "from", "1041001"), "from", "1041001");
+          if (QLog.isColorLevel()) {
+            QLog.d("WebLog_WebViewFragment", 2, "originalUrl is " + (String)localObject3 + " ,newUrl is " + paramQQBrowserActivity);
+          }
+          localObject3 = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject3).put("colorNoteType", 2);
+            if (QLog.isColorLevel()) {
+              QLog.d("WebLog_WebViewFragment", 2, "ColorNote mainTitle is " + (String)localObject1 + ",subTitle is " + (String)localObject2 + ",subType is " + paramQQBrowserActivity);
+            }
+            paramapkn.a(new bkgk(this, paramQQBrowserActivity, (String)localObject1, (String)localObject2, ((JSONObject)localObject3).toString().getBytes()));
+            return;
+            localObject1 = localObject3;
+            break;
+            localObject2 = localObject3;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    Object localObject = this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
+    String str1 = localObject[0];
+    String str2 = localObject[1];
+    String str3 = localObject[2];
+    String str4 = localObject[3];
+    String str5 = localObject[4];
+    bkfs.a(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "6", str4, str5);
+    if ((this.jdField_a_of_type_Long & 0x8) == 0L)
+    {
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+      bkfs.a(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "1", str4, str5);
+    }
+    if ((this.jdField_a_of_type_Long & 0x10) == 0L)
+    {
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+      bkfs.a(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "2", str4, str5);
+    }
+    boolean bool = WXShareHelper.getInstance().isWXinstalled();
+    if (((this.jdField_a_of_type_Long & 0x4000) == 0L) && (bool))
+    {
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+      bkfs.a(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "3", str4, str5);
+    }
+    if (((this.jdField_a_of_type_Long & 0x8000) == 0L) && (bool))
+    {
+      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+      bkfs.a(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "4", str4, str5);
+    }
+    ArrayList localArrayList2 = new ArrayList();
+    if ((this.jdField_a_of_type_Long & 0x2000) == 0L)
+    {
+      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(14));
+      bkfs.b(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "1", str4, str5);
+    }
+    bkgd localbkgd = this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
+    int i;
+    int j;
+    if ((localbkgd != null) && (localbkgd.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0))
+    {
+      if (localbkgd.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 1) {
+        break label644;
+      }
+      i = 1;
+      if (i == 0) {
+        break label649;
+      }
+      j = 117;
+      label368:
+      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(j));
+      if (i == 0) {
+        break label655;
+      }
+    }
+    label644:
+    label649:
+    label655:
+    for (localObject = "5";; localObject = "4")
+    {
+      bkfs.b(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, (String)localObject, str4, str5);
+      localObject = (QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity;
+      String str6 = ((QQBrowserActivity)localObject).getOriginalUrl();
+      if ((str6 != null) && (str6.indexOf("cancelColorTab=1") == -1))
+      {
+        apkn localapkn = ((QQBrowserActivity)localObject).a();
+        a(localapkn, (QQBrowserActivity)localObject);
+        if ((localapkn != null) && (localapkn.a()) && (!aplm.c(str6)))
+        {
+          i = 70;
+          localObject = "2";
+          if (localapkn.c())
+          {
+            i = 82;
+            localObject = "3";
+          }
+          localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(i));
+          bkfs.b(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, (String)localObject, str4, str5);
+        }
+      }
+      if ((localbkgd != null) && ((localbkgd.jdField_a_of_type_Int & 0x2) > 0))
+      {
+        localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
+        bkfs.b(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "9", str4, str5);
+      }
+      if ((localbkgd != null) && ((localbkgd.jdField_a_of_type_Int & 0x1) > 0))
+      {
+        localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(40));
+        bkfs.b(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "10", str4, str5);
+      }
+      return (List[])new ArrayList[] { localArrayList1, localArrayList2 };
+      i = 0;
+      break;
+      j = 116;
+      break label368;
+    }
+  }
+  
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+    int j = paramActionSheetItem.action;
+    paramShareActionSheet = a();
+    Object localObject = this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
+    String str1 = localObject[0];
+    String str2 = localObject[1];
+    String str3 = localObject[2];
+    String str4 = localObject[3];
+    localObject = localObject[4];
+    if ((j == 2) || (j == 73)) {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p)) {
+        this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 1, false);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 1, false);
+            return;
+            if (j == 3)
+            {
+              if (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p))
+              {
+                this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 2, false);
+                return;
+              }
+              this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 2, false);
+              return;
+            }
+            if ((j == 9) || (j == 10))
+            {
+              int i = -1;
+              if (!WXShareHelper.getInstance().isWXinstalled()) {
+                i = 2131719722;
+              }
+              while (i != -1)
+              {
+                yyi.a(0, i);
+                return;
+                if (!WXShareHelper.getInstance().isWXsupportApi()) {
+                  i = 2131719723;
+                }
+              }
+              if (j == 9)
+              {
+                if (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p))
+                {
+                  this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 3, true);
+                  return;
+                }
+                this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 3, true);
+                return;
+              }
+              if (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p))
+              {
+                this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 4, true);
+                return;
+              }
+              this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 4, true);
+              return;
+            }
+            if (j != 14) {
+              break;
+            }
+          } while (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p));
+          this.jdField_a_of_type_CooperationComicUiQQComicFragment.getWebView().callJs(this.jdField_a_of_type_Aadf.p, new String[] { "6" });
+          bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "1", str4, (String)localObject);
+          return;
+          if (j == 117)
+          {
+            bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "5", str4, (String)localObject);
+            this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
+            return;
+          }
+          if (j == 116)
+          {
+            bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "4", str4, (String)localObject);
+            this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
+            return;
+          }
+          if (j == 70)
+          {
+            bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "2", str4, (String)localObject);
+            a();
+            return;
+          }
+          if (j == 82)
+          {
+            bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "3", str4, (String)localObject);
+            a();
+            return;
+          }
+          if (j != 72) {
+            break;
+          }
+          if (this.jdField_a_of_type_AndroidOsBundle == null) {
+            this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          }
+          this.jdField_a_of_type_AndroidOsBundle.putString("to_qq", paramActionSheetItem.uin);
+          this.jdField_a_of_type_AndroidOsBundle.putString("to_uin_name", paramActionSheetItem.label);
+          this.jdField_a_of_type_AndroidOsBundle.putInt("to_uin_type", paramActionSheetItem.uinType);
+          if (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p))
+          {
+            this.jdField_a_of_type_Aadf.a(paramShareActionSheet, 1, false);
+            return;
+          }
+        } while (this.jdField_a_of_type_Aadf.a == null);
+        this.jdField_a_of_type_Aadf.a().show();
+        this.jdField_a_of_type_Aadf.a.callJs(this.jdField_a_of_type_Aadf.p, new String[] { String.valueOf(101) });
+        return;
+        if (j != 40) {
+          break;
+        }
+      } while (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p));
+      bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "10", str4, (String)localObject);
+      this.jdField_a_of_type_CooperationComicUiQQComicFragment.getWebView().callJs(this.jdField_a_of_type_Aadf.p, new String[] { "7" });
+      return;
+    } while ((j != 11) || (TextUtils.isEmpty(this.jdField_a_of_type_Aadf.p)));
+    bkfs.c(this.jdField_a_of_type_CooperationComicUiQQComicFragment.mApp, str1, str2, str3, "9", str4, (String)localObject);
+    this.jdField_a_of_type_CooperationComicUiQQComicFragment.getWebView().callJs(this.jdField_a_of_type_Aadf.p, new String[] { "8" });
   }
 }
 

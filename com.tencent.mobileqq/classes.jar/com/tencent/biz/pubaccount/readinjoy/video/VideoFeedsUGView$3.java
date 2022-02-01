@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.open.downloadnew.DownloadInfo;
-import odl;
+import oey;
 
 class VideoFeedsUGView$3
   implements Runnable
@@ -13,11 +13,11 @@ class VideoFeedsUGView$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Odl != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Odl.f)) && (this.this$0.jdField_a_of_type_Odl.f.equals(this.a.d)))
+    if ((this.this$0.jdField_a_of_type_Oey != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Oey.f)) && (this.this$0.jdField_a_of_type_Oey.f.equals(this.a.d)))
     {
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.this$0.b.setVisibility(8);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_a_of_type_Odl.k + this.a.f + "%");
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_a_of_type_Oey.k + this.a.f + "%");
       this.this$0.jdField_a_of_type_Int = this.a.f;
     }
   }

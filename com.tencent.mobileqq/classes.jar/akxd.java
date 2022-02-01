@@ -1,20 +1,8 @@
-public class akxd
+public abstract interface akxd
 {
-  public int a;
-  public long a;
-  public long b;
+  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
   
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof akxd))
-    {
-      paramObject = (akxd)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
-        return true;
-      }
-    }
-    return false;
-  }
+  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
 }
 
 

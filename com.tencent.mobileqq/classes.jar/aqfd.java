@@ -1,23 +1,42 @@
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqfd
-  extends biht
+public class aqfd
+  implements apts<String>
 {
-  aqfd(aqez paramaqez, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  public String a;
+  public boolean a;
   
-  public void onDone(bihu parambihu)
+  public aqfd()
   {
-    super.onDone(parambihu);
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, String.format("download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambihu.a) }));
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(parambihu.a);
+    this.jdField_a_of_type_JavaLangString = "{}";
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, "onParse: but configContent is null!");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("dialogSwitch")) {
+        this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqfd
  * JD-Core Version:    0.7.0.1
  */

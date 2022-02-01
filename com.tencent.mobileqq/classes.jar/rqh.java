@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
 
-final class rqh
-  implements Animation.AnimationListener
+public class rqh
+  extends pkt
 {
-  rqh(View paramView) {}
+  public rqh(SelectVideoFragment paramSelectVideoFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void n()
   {
-    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
-    {
-      this.a.clearAnimation();
-      this.a.setVisibility(8);
-      this.a.setTag(-1, null);
-    }
+    super.n();
+    SelectVideoFragment.a(this.a).finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

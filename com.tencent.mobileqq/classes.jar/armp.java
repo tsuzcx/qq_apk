@@ -1,92 +1,50 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
-public class armp
-  extends armf<QQLevelIconConfig>
+class armp
+  implements arnt
 {
-  public static QQLevelIconConfig c()
-  {
-    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)aran.a().a(542);
-    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
-    if (localQQLevelIconConfig2 == null) {
-      localQQLevelIconConfig1 = new QQLevelIconConfig();
-    }
-    return localQQLevelIconConfig1;
-  }
+  armp(armn paramarmn) {}
   
-  @NonNull
-  public QQLevelIconConfig a()
+  public void a(int paramInt, ariy paramariy, String paramString1, String paramString2)
   {
-    return new QQLevelIconConfig();
-  }
-  
-  @NonNull
-  public QQLevelIconConfig a(araj[] paramArrayOfaraj)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLevelIconProcessor", 1, paramArrayOfaraj[0].a);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ExtendFriendLimitChatManagerExtendFriendLimitChat", 2, "onMatchingResult, result = " + paramInt + " nickName : " + paramString1);
+      if (paramariy != null) {
+        QLog.d("ExtendFriendLimitChatManagerExtendFriendLimitChat", 2, " info：" + paramariy.toString());
+      }
     }
-    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
+    if ((armn.a(this.a) == null) || (armn.a(this.a).get() == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExtendFriendLimitChatManager", 2, "onMatchingResult, listener = null");
+      }
+    }
+    while (this.a.a() != 2) {
+      return;
+    }
+    if ((paramInt != 0) || (paramariy == null)) {
+      this.a.a().a(104);
+    }
     for (;;)
     {
-      try
+      ((arms)armn.a(this.a).get()).a(paramInt, paramariy, paramString1, paramString2);
+      return;
+      armn.a(this.a, paramariy.a());
+      this.a.a = paramString1;
+      this.a.a().a(105);
+      if (!armn.a(this.a))
       {
-        if (!TextUtils.isEmpty(paramArrayOfaraj))
-        {
-          paramArrayOfaraj = new JSONObject(paramArrayOfaraj);
-          if (paramArrayOfaraj.optInt("newguideswitch", 1) != 1) {
-            continue;
-          }
-          bool1 = true;
-          localQQLevelIconConfig.mIsEnableGuide = bool1;
-          bool1 = bool2;
-          if (paramArrayOfaraj.optInt("rushfeeswitch", 1) == 1) {
-            bool1 = true;
-          }
-          localQQLevelIconConfig.mIsNotifyPayment = bool1;
-          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfaraj.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
-          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfaraj.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
-        }
+        QQNotificationManager.getInstance().createLimitChatNotificationChannel();
+        armn.a(this.a, true);
       }
-      catch (JSONException paramArrayOfaraj)
-      {
-        boolean bool1;
-        yuk.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaraj.getMessage());
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
-      }
-      return localQQLevelIconConfig;
-      bool1 = false;
     }
-  }
-  
-  @NonNull
-  public QQLevelIconConfig b()
-  {
-    return new QQLevelIconConfig();
-  }
-  
-  public Class<QQLevelIconConfig> clazz()
-  {
-    return QQLevelIconConfig.class;
-  }
-  
-  public int type()
-  {
-    return 542;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armp
  * JD-Core Version:    0.7.0.1
  */

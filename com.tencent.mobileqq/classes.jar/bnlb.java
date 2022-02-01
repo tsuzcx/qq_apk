@@ -1,34 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import java.util.ArrayList;
 
 public class bnlb
+  extends bnka
 {
-  public static int a(String paramString)
+  public Path a;
+  ArrayList<bnla> a;
+  public int b;
+  public int c;
+  
+  public bnlb(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      a("toInt convert error:" + paramString);
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      a("toInt convert error:" + paramString.getMessage());
-    }
-    return 0;
+    super(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private static final void a(String paramString)
+  public bnlb(bnka parambnka, float paramFloat)
   {
-    try
+    super(parambnka.jdField_a_of_type_Int);
+    if ((parambnka instanceof bnlb))
     {
-      QLog.e("SafeUtil", 1, paramString);
-      return;
+      parambnka = (bnlb)parambnka;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(parambnka.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = parambnka.jdField_a_of_type_Int;
+      this.b = parambnka.b;
+      this.c = ((int)(parambnka.c * paramFloat));
     }
-    catch (Exception paramString) {}
   }
 }
 

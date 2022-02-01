@@ -15,7 +15,6 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bhsr;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -25,6 +24,7 @@ import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.utils.EditAreaAnimatorUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,7 +94,7 @@ public class MiniAppTextArea
   
   private String getActualColor(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -357,7 +357,7 @@ public class MiniAppTextArea
       }
       String str = paramJSONObject.optString("placeholder");
       localObject = paramJSONObject.optJSONObject("placeholderStyle");
-      if (!bhsr.a(str)) {
+      if (!StringUtil.isEmpty(str)) {
         setHint(str);
       }
       if (localObject != null)
@@ -411,7 +411,7 @@ public class MiniAppTextArea
     }
     localObject = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bhsr.a((String)localObject)) {
+    if (!StringUtil.isEmpty((String)localObject)) {
       setHint((CharSequence)localObject);
     }
     if (localJSONObject != null)

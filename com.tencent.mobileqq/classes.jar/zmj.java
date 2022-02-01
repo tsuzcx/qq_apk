@@ -1,27 +1,26 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class zmj
-  implements blmh
+class zmj
+  implements View.OnClickListener
 {
-  public zmj(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  zmj(zmi paramzmi, int paramInt) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    yuk.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
-    switch (paramInt)
+    if (this.jdField_a_of_type_Int < zmi.a(this.jdField_a_of_type_Zmi).size())
     {
-    default: 
-    case 4098: 
-    case 4099: 
-      do
-      {
-        return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).c();
-      return;
+      zmi.b(this.jdField_a_of_type_Zmi).remove(this.jdField_a_of_type_Int);
+      ((ArrayList)this.jdField_a_of_type_Zmi.a.a()).remove(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Zmi.notifyDataSetChanged();
+      if (CommodityListView.a(this.jdField_a_of_type_Zmi.a) != null) {
+        CommodityListView.a(this.jdField_a_of_type_Zmi.a).a(zmi.c(this.jdField_a_of_type_Zmi).size());
+      }
     }
-    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

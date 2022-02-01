@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bflx;
+import bdux;
 import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 
 public class FullListGroupAppsDbHelper$1
   implements Runnable
 {
-  public FullListGroupAppsDbHelper$1(bflx parambflx, FullListGroupAppEntity paramFullListGroupAppEntity) {}
+  public FullListGroupAppsDbHelper$1(bdux parambdux, FullListGroupAppEntity paramFullListGroupAppEntity) {}
   
   public void run()
   {
-    bflx.a(this.this$0, this.a);
+    bdux.a(this.this$0, this.a);
   }
 }
 

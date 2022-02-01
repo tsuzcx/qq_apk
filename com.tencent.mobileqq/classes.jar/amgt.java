@@ -1,24 +1,18 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class amgt
-  extends aacq
+class amgt
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  public amgt(ShoppingFragment paramShoppingFragment, Bundle paramBundle)
+  amgt(amgo paramamgo) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    super(paramBundle);
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
+    }
   }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
-  {
-    return ShoppingFragment.a(this.a);
-  }
-  
-  public void loadData(aabu paramaabu) {}
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

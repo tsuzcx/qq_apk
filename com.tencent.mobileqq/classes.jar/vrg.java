@@ -1,41 +1,42 @@
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader.PicDownLoadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 
 public class vrg
-  extends vrk
+  extends vta
 {
-  public vrg(QCircleFeedPicLoader.PicDownLoadTask paramPicDownLoadTask, vrd paramvrd, long paramLong)
+  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
+  vtb jdField_a_of_type_Vtb;
+  
+  public vrg(qqstory_service.RspAddFeedComment paramRspAddFeedComment, vtb paramvtb)
   {
-    super(paramvrd);
+    super(paramRspAddFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
+    this.jdField_a_of_type_Vtb = paramvtb;
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  public vrg(vtb paramvtb)
   {
-    if (paramBoolean)
-    {
-      QCircleFeedPicLoader.a(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0).remove(this.jdField_a_of_type_Vrd.b());
-      if (this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.a != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.a.a(QCircleFeedPicLoader.c, this.jdField_a_of_type_Vrd);
-        QCircleFeedPicLoader.a(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0, this.jdField_a_of_type_Vrd, 0);
-      }
-      QLog.d(QCircleFeedPicLoader.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " cacheKey = " + this.jdField_a_of_type_Vrd.b() + " download by ImageDownLoader success cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ifFromPreload:" + this.jdField_a_of_type_Vrd.b());
-      if (this.jdField_a_of_type_Vrd.a()) {
-        QCircleFeedPicLoader.a(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0, this.jdField_a_of_type_Vrd, this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.a);
-      }
-      return;
-    }
-    QCircleFeedPicLoader.a(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0).remove(this.jdField_a_of_type_Vrd.b());
-    QCircleFeedPicLoader.a(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0, this.jdField_a_of_type_Vrd, this.jdField_a_of_type_Vrd.b());
-    if (this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.a != null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.a.a(QCircleFeedPicLoader.g, this.jdField_a_of_type_Vrd);
-      QCircleFeedPicLoader.a(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0, this.jdField_a_of_type_Vrd, paramInt);
-      QCircleFeedPicLoader.b(this.jdField_a_of_type_ComTencentBizQqcirclePicloadQCircleFeedPicLoader$PicDownLoadTask.this$0, this.jdField_a_of_type_Vrd, 1);
-    }
-    QLog.d(QCircleFeedPicLoader.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " cacheKey = " + this.jdField_a_of_type_Vrd.b() + " download failed " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ifFromPreload:" + this.jdField_a_of_type_Vrd.b());
+    this.jdField_a_of_type_Vtb = paramvtb;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vtb.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Vtb.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Vtb.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Vtb.a(paramBoolean, paramBundle);
   }
 }
 

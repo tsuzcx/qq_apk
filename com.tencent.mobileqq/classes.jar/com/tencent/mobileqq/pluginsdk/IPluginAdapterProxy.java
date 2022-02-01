@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.pluginsdk;
 
+import android.content.Context;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 
@@ -33,6 +34,16 @@ public class IPluginAdapterProxy
       return null;
     }
     return (Looper)localIPluginAdapter.invoke(2, null);
+  }
+  
+  public void initSkin(Context paramContext)
+  {
+    this.mPluginAdapter.initSkin(paramContext);
+  }
+  
+  public void initSkinEngine(Context paramContext)
+  {
+    this.mPluginAdapter.initSkinEngine(paramContext);
   }
   
   public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)

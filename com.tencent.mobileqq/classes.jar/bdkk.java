@@ -1,26 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.DailyReport;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdkk
-  extends biht
+  implements View.OnClickListener
 {
-  public bdkk(DailyReport paramDailyReport, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public bdkk(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public void onDone(bihu parambihu)
+  public void onClick(View paramView)
   {
-    super.onDone(parambihu);
-    long l = parambihu.a().getLong("id");
-    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, bhkt.a(new File(bhkt.b(l, 4))), "");
-  }
-  
-  public boolean onStart(bihu parambihu)
-  {
-    return true;
+    WriteTogetherEditorFragment.g(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

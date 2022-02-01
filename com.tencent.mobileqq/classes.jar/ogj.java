@@ -1,63 +1,85 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
-import org.json.JSONException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
-public class ogj
-  extends BroadcastReceiver
+class ogj
+  implements View.OnClickListener
 {
-  public ogj(EcshopNewPageFragment paramEcshopNewPageFragment) {}
+  ogj(ogi paramogi, int paramInt, JSONObject paramJSONObject, Context paramContext, MessageRecord paramMessageRecord) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (paramIntent != null)
+    switch (this.jdField_a_of_type_Int)
     {
-      paramContext = paramIntent.getAction();
-      if (!"com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramContext)) {
-        break label41;
-      }
-      if (this.a.getActivity() != null) {
-        this.a.getActivity().finish();
-      }
     }
-    label41:
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"action_notify_view_update".equals(paramContext));
-      j = paramIntent.getIntExtra("businessId", 0);
-      k = paramIntent.getIntExtra("viewId", 0);
-    } while ((25 != j) || (k != 1));
     for (;;)
     {
-      try
+      if ((ogi.a(this.jdField_a_of_type_Ogi) != null) && (ogi.a(this.jdField_a_of_type_Ogi).isShowing())) {
+        ogi.a(this.jdField_a_of_type_Ogi).dismiss();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
+      if (!StringUtil.isEmpty((String)localObject))
       {
-        paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
-        if (EcshopNewPageFragment.a(this.a) == null) {
-          break;
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", (String)localObject);
+        localObject = ugf.b("3046055438");
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
+          localObject = ugf.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
         }
-        paramIntent = EcshopNewPageFragment.a(this.a);
-        if (paramContext.optInt("isShow") == 1)
+        localIntent.putExtra("big_brother_source_key", (String)localObject);
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivity(localIntent);
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
         {
-          paramIntent.setVisibility(i);
-          return;
+          localObject = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (((MessageForArkApp)localObject).arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("Ecshop_EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            ((MessageForArkApp)localObject).arkContainer.doOnEvent(2);
+          }
         }
+        ((oge)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692096), 1).a();
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          localObject = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (((MessageForArkApp)localObject).arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("Ecshop_EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            ((MessageForArkApp)localObject).arkContainer.doOnEvent(2);
+          }
+        }
+        ((oge)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692096), 1).a();
       }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      i = 8;
     }
   }
 }

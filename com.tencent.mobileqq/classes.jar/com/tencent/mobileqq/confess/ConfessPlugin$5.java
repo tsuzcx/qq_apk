@@ -6,14 +6,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
-import aqyz;
-import bioy;
+import apsk;
+import bgve;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
-import nnr;
 import org.json.JSONArray;
 
 public class ConfessPlugin$5
@@ -44,23 +44,23 @@ public class ConfessPlugin$5
       ConfessPlugin.a(this.this$0, false);
       return;
     }
-    Bitmap localBitmap = aqyz.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+    Bitmap localBitmap = apsk.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
     if ((this.jdField_b_of_type_Int == 0) && (localBitmap != null)) {}
-    for (Object localObject2 = aqyz.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
+    for (Object localObject2 = apsk.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
     {
       if ((localBitmap == null) || ((this.jdField_b_of_type_Int == 0) && (localObject2 == null)))
       {
         ConfessPlugin.a(this.this$0);
         ConfessPlugin.a(this.this$0, false);
-        ConfessPlugin.a(this.this$0, 0, 2131718139);
+        ConfessPlugin.a(this.this$0, 0, 2131718380);
         return;
       }
-      String str3 = aqyz.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
+      String str3 = apsk.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
       String str1 = this.jdField_c_of_type_JavaLangString;
       if (this.jdField_b_of_type_Int == 0)
       {
-        localObject1 = aqyz.a(str3, this.this$0.mRuntime.a());
-        localObject2 = aqyz.a(aqyz.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
+        localObject1 = apsk.a(str3, this.this$0.mRuntime.a());
+        localObject2 = apsk.a(apsk.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject3 = ((String)localObject2).replace("http://qqadapt.qpic.cn/qqshare/", "");
@@ -73,7 +73,7 @@ public class ConfessPlugin$5
         {
           ConfessPlugin.a(this.this$0);
           ConfessPlugin.a(this.this$0, false);
-          ConfessPlugin.a(this.this$0, 1, 2131695816);
+          ConfessPlugin.a(this.this$0, 1, 2131695956);
           return;
         }
         localObject2 = this.jdField_d_of_type_JavaLangString;
@@ -100,7 +100,7 @@ public class ConfessPlugin$5
           localObject4 = localObject2;
           if (!((HashMap)localObject5).isEmpty())
           {
-            localObject4 = nnr.a((HashMap)localObject5);
+            localObject4 = HttpUtil.shortenUrlBatch((HashMap)localObject5);
             localObject3 = (String)((HashMap)localObject4).get("remoteUrl");
             if (localObject3 != null) {
               localObject1 = localObject3;

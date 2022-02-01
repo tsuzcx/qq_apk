@@ -18,8 +18,8 @@ public class NotificationCompat$DecoratedCustomViewStyle
   
   private RemoteViews createRemoteViews(RemoteViews paramRemoteViews, boolean paramBoolean)
   {
-    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559523, false);
-    localRemoteViews.removeAllViews(2131361988);
+    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559525, false);
+    localRemoteViews.removeAllViews(2131361987);
     List localList = getNonContextualActions(this.mBuilder.mActions);
     if ((paramBoolean) && (localList != null))
     {
@@ -29,7 +29,7 @@ public class NotificationCompat$DecoratedCustomViewStyle
         i = 0;
         while (i < j)
         {
-          localRemoteViews.addView(2131361988, generateActionButton((NotificationCompat.Action)localList.get(i)));
+          localRemoteViews.addView(2131361987, generateActionButton((NotificationCompat.Action)localList.get(i)));
           i += 1;
         }
       }
@@ -39,7 +39,7 @@ public class NotificationCompat$DecoratedCustomViewStyle
       if (i != 0) {}
       for (i = 0;; i = 8)
       {
-        localRemoteViews.setViewVisibility(2131361988, i);
+        localRemoteViews.setViewVisibility(2131361987, i);
         localRemoteViews.setViewVisibility(2131361951, i);
         buildIntoRemoteViews(localRemoteViews, paramRemoteViews);
         return localRemoteViews;
@@ -60,11 +60,11 @@ public class NotificationCompat$DecoratedCustomViewStyle
       }
     }
     label123:
-    for (int j = 2131559520;; j = 2131559519)
+    for (int j = 2131559522;; j = 2131559521)
     {
       localObject = new RemoteViews((String)localObject, j);
-      ((RemoteViews)localObject).setImageViewBitmap(2131361955, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165862)));
-      ((RemoteViews)localObject).setTextViewText(2131361987, paramAction.title);
+      ((RemoteViews)localObject).setImageViewBitmap(2131361955, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165880)));
+      ((RemoteViews)localObject).setTextViewText(2131361986, paramAction.title);
       if (i == 0) {
         ((RemoteViews)localObject).setOnClickPendingIntent(2131361949, paramAction.actionIntent);
       }

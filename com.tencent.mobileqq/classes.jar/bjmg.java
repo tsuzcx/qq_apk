@@ -1,30 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.open.agent.FriendChooser;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.util.BinderWarpper;
 
-public class bjmg
-  implements View.OnTouchListener
+public final class bjmg
+  implements Parcelable.Creator<BinderWarpper>
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
-  public bjmg(FriendChooser paramFriendChooser) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public BinderWarpper a(Parcel paramParcel)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return new BinderWarpper(paramParcel.readStrongBinder());
+  }
+  
+  public BinderWarpper[] a(int paramInt)
+  {
+    return new BinderWarpper[paramInt];
   }
 }
 

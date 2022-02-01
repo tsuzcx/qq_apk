@@ -1,27 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class bfgb
-  implements bljo
+  implements bfdu
 {
-  public bfgb(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public bfgb(TroopAIORobotLayout paramTroopAIORobotLayout, bffv parambffv) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (paramView == null) {
+    if (paramInt == 0) {
       return;
     }
-    if (this.a.jdField_a_of_type_Bgvw != null) {
-      this.a.jdField_a_of_type_Bgvw.a(false, paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, amtj.a(2131714186) + "", 0).a();
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

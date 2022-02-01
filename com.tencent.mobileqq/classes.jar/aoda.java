@@ -1,21 +1,47 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoda
-  implements Comparator<MessageRecord>
+class aoda
+  implements aojg
 {
-  public aoda(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  aoda(aocz paramaocz, String paramString, aojg paramaojg) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void a()
   {
-    if (paramMessageRecord1.time < paramMessageRecord2.time) {
-      return 1;
+    if (this.jdField_a_of_type_Aojg != null) {
+      this.jdField_a_of_type_Aojg.a();
     }
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return -1;
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Aojg != null) {
+      this.jdField_a_of_type_Aojg.a(paramLong1, paramLong2);
     }
-    return 0;
+  }
+  
+  public void a(boolean paramBoolean, aojh paramaojh)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramaojh.d + ", filename = " + paramaojh.c + ", url = " + paramaojh.jdField_a_of_type_JavaLangString);
+    if (paramBoolean) {
+      if (!aocz.a(this.jdField_a_of_type_Aocz, paramaojh.c, paramaojh.b))
+      {
+        aocz.a(this.jdField_a_of_type_Aocz, paramaojh.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    while (this.jdField_a_of_type_Aojg == null)
+    {
+      return;
+      if ((!paramaojh.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Aocz.a(paramaojh.d, paramaojh.c, paramaojh.b) != 0)) {}
+    }
+    this.jdField_a_of_type_Aojg.a(paramBoolean, paramaojh);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aojg != null) {
+      this.jdField_a_of_type_Aojg.b();
+    }
   }
 }
 

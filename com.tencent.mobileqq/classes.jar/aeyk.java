@@ -1,72 +1,30 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.mobileqq.widget.QQTabHost;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
 public class aeyk
-  implements bjbn
+  extends Handler
 {
-  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public aeyk(AudioPlayerBase paramAudioPlayerBase) {}
   
-  public aeyk(MainFragment paramMainFragment) {}
-  
-  private void a(View paramView, ArrayList<View> paramArrayList)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
-    for (;;)
+    if ((paramMessage.what == 1000) && (this.a.d == 0) && (this.a.a()))
     {
-      return;
-      paramView = (ViewGroup)paramView;
-      if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
-        paramArrayList.add(paramView);
+      int i = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.a.jdField_a_of_type_Bfts.b);
+      int j = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.a.jdField_a_of_type_Bfts.b);
+      if (i / j <= 0.18F) {
+        break label125;
       }
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        a(paramView.getChildAt(i), paramArrayList);
-        i += 1;
+      this.a.d = 1;
+      if (this.a.jdField_a_of_type_Aeyl != null) {
+        this.a.jdField_a_of_type_Aeyl.c(this.a, this.a.d);
       }
     }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    View localView = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentView();
-    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new ArrayList();
-      a(localView, (ArrayList)localObject1);
-      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
-    }
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (View)((Iterator)localObject1).next();
-      if ((localObject2 instanceof FPSXListView)) {
-        ((FPSXListView)localObject2).b(paramBoolean);
-      } else if ((localObject2 instanceof FPSSwipListView)) {
-        ((FPSSwipListView)localObject2).a(paramBoolean);
-      }
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a(false);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    a(true);
+    return;
+    label125:
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
   }
 }
 

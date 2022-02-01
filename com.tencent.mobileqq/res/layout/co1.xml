@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ncv" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="26.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/na9" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gpb" />
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/na8" android:padding="3.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/htn" />
+    <TextView android:textSize="17.0dip" android:textColor="@drawable/e1a" android:layout_gravity="center_vertical" android:id="@id/na_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/lp1" />
+</LinearLayout>

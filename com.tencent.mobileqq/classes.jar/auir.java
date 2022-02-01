@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
-class auir
-  implements View.OnClickListener
+public class auir
+  implements TVK_SDKMgr.InstallListener
 {
-  auir(auip paramauip) {}
+  auir(auij paramauij) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (auip.a(this.a)) {
-      auip.a(this.a);
+    auij.a = false;
+    this.a.a(amtj.a(2131707511));
+    if (QLog.isColorLevel()) {
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
-    for (;;)
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    auij.a = false;
+    if (!this.a.c)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      auip.b(this.a);
+      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
     }
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 

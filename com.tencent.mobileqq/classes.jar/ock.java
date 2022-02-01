@@ -1,29 +1,27 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class ock
-  extends ocj
+  implements DialogInterface.OnClickListener
 {
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  public ock(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramFromServiceMsg = super.a(paramFromServiceMsg);
-    if (paramFromServiceMsg != null)
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
+    if (paramDialogInterface == null) {}
+    do
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      try
+      return;
+      if (paramInt == 0)
       {
-        localStQWebRsp.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
-        return paramFromServiceMsg;
+        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
+        return;
       }
-      catch (Throwable paramFromServiceMsg)
-      {
-        paramFromServiceMsg.printStackTrace();
-      }
-    }
-    return null;
+    } while (paramInt != 1);
+    paramDialogInterface.loadUrl("javascript:" + this.b);
   }
 }
 

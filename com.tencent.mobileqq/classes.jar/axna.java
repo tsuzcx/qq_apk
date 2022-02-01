@@ -1,29 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class axna
-  implements ValueAnimator.AnimatorUpdateListener
+  implements axpe
 {
-  public axna(MultiCardFragment paramMultiCardFragment, axnk paramaxnk, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public axna(TranslateFragment paramTranslateFragment, axll paramaxll) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, axpf paramaxpf)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Axnk == null) {
-      return;
+    if ((paramaxpf != null) && (!TextUtils.isEmpty(paramaxpf.b)))
+    {
+      if (!this.jdField_a_of_type_Axll.b.equalsIgnoreCase(paramaxpf.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramaxpf.b, this.jdField_a_of_type_Axll.b(paramaxpf.b));
+      }
+      axlj.a("0X800AD30", axlj.a(paramaxpf.b));
     }
-    float f2 = this.jdField_a_of_type_Float + (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Axnk.a.setScaleX(f2);
-    this.jdField_a_of_type_Axnk.a.setScaleY(f2);
-    this.jdField_a_of_type_Axnk.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Axnk.a.setTranslationY(this.b * (1.0F - f1));
-    paramValueAnimator = this.jdField_a_of_type_Axnk.a.getLayoutParams();
-    float f3 = this.c;
-    float f4 = this.d;
-    paramValueAnimator.height = ((int)((f1 * (1.0F - this.d) + f4) / f2 * f3));
-    this.jdField_a_of_type_Axnk.a.requestLayout();
   }
 }
 

@@ -1,21 +1,216 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
-import com.tencent.mobileqq.vas.qvip.view.QvipArkView;
+import android.os.Environment;
+import com.tencent.apkupdate.ApkUpdateListener;
+import com.tencent.apkupdate.ApkUpdateParam;
+import com.tencent.apkupdate.ApkUpdateSDK;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.UpdateManager.1;
+import com.tencent.open.downloadnew.UpdateManager.2;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.os.MqqHandler;
 
 public class bide
-  implements View.OnLayoutChangeListener
+  implements ApkUpdateListener
 {
-  public bide(QQVipArkHeaderView paramQQVipArkHeaderView) {}
+  protected static bide a;
+  public static final String a;
+  protected ConcurrentLinkedQueue<bidf> a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  static
   {
-    if (QQVipArkHeaderView.a(this.a).getHeight() > 0)
+    jdField_a_of_type_JavaLangString = bide.class.getName();
+  }
+  
+  protected bide()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    ApkUpdateSDK.getInstance().init(bhpc.a().a());
+    ApkUpdateSDK.getInstance().addListener(this);
+  }
+  
+  public static bide a()
+  {
+    try
     {
-      float f = (this.a.getHeight() * 1.0F - agej.a(54.0F, this.a.getContext().getResources())) / QQVipArkHeaderView.a(this.a).getHeight();
-      QQVipArkHeaderView.a(this.a).setScaleY(f);
-      QQVipArkHeaderView.a(this.a).setScaleX(f);
+      if (jdField_a_of_type_Bide == null) {
+        jdField_a_of_type_Bide = new bide();
+      }
+      bide localbide = jdField_a_of_type_Bide;
+      return localbide;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public static boolean a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 55	bide:jdField_a_of_type_Bide	Lbide;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnull +10 -> 18
+    //   11: iconst_1
+    //   12: istore_0
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: iload_0
+    //   17: ireturn
+    //   18: iconst_0
+    //   19: istore_0
+    //   20: goto -7 -> 13
+    //   23: astore_1
+    //   24: ldc 2
+    //   26: monitorexit
+    //   27: aload_1
+    //   28: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	8	0	bool	boolean
+    //   6	2	1	localbide	bide
+    //   23	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	23	finally
+  }
+  
+  public void a()
+  {
+    try
+    {
+      ApkUpdateSDK.getInstance().removeListener(this);
+      ApkUpdateSDK.getInstance().destory();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException = localException;
+        bhzm.a(jdField_a_of_type_JavaLangString, "onDestroy>>>", localException);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(bidf parambidf)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambidf);
+      return;
+    }
+    finally
+    {
+      parambidf = finally;
+      throw parambidf;
+    }
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo)
+  {
+    String str2 = paramDownloadInfo.e;
+    String str3 = paramDownloadInfo.l;
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    int i;
+    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + biby.jdField_a_of_type_JavaLangString + "newApkDir";; str1 = bhpc.a().a().getFilesDir().getAbsolutePath())
+    {
+      File localFile = new File(str1);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      str1 = str1 + "/" + str2 + ".newGen.apk";
+      bhzm.b(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>packageName=" + str2 + ", patchPath=" + str3 + ", newApkPath=" + str1);
+      i = ApkUpdateSDK.getInstance().patchNewApk(str2, str3, str1);
+      if (i != 0) {
+        break label421;
+      }
+      bhzm.b(jdField_a_of_type_JavaLangString, amtj.a(2131714922));
+      paramDownloadInfo.l = str1;
+      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (ampt.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
+        paramDownloadInfo.a = false;
+      }
+      if ((!"com.tencent.mobileqq".equals(paramDownloadInfo.e)) || (!biby.a().b())) {
+        break label403;
+      }
+      paramDownloadInfo.j = biby.a().a(paramDownloadInfo);
+      if (paramDownloadInfo.j == 0) {
+        break;
+      }
+      bhzm.d(jdField_a_of_type_JavaLangString, "updateManager patchNewApk write code fail......");
+      paramDownloadInfo.a(-2);
+      biby.a().e(paramDownloadInfo);
+      biby.a().a(paramDownloadInfo, paramDownloadInfo.j, null);
+      return;
+    }
+    paramDownloadInfo.a(4);
+    biby.a().e(paramDownloadInfo);
+    bhzm.c(jdField_a_of_type_JavaLangString, "info.path = " + paramDownloadInfo.l);
+    biby.a().a(4, paramDownloadInfo);
+    if (paramDownloadInfo.a) {
+      biby.a().c(paramDownloadInfo);
+    }
+    bias.a("300", paramDownloadInfo.h, paramDownloadInfo.c, paramDownloadInfo.o);
+    ThreadManager.getSubThreadHandler().post(new UpdateManager.1(this, str1, paramDownloadInfo));
+    return;
+    label403:
+    ThreadManager.getSubThreadHandler().post(new UpdateManager.2(this, str1, paramDownloadInfo));
+    return;
+    label421:
+    bhzm.e(jdField_a_of_type_JavaLangString, amtj.a(2131714923) + i);
+    biby.a().a(-24, paramDownloadInfo);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    bhzm.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
+    ApkUpdateSDK.getInstance().checkUpdate(paramList);
+  }
+  
+  public void b(bidf parambidf)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(parambidf);
+      return;
+    }
+    finally
+    {
+      parambidf = finally;
+      throw parambidf;
+    }
+  }
+  
+  public void b(List<ApkUpdateParam> paramList)
+  {
+    bhzm.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
+    ApkUpdateSDK.getInstance().checkUpdateList(paramList);
+  }
+  
+  public void onCheckUpdateFailed(String paramString)
+  {
+    bhzm.c(jdField_a_of_type_JavaLangString, "onCheckUpdateFailed>>>errMsg=" + paramString);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (localIterator.hasNext()) {
+      ((bidf)localIterator.next()).onException(paramString);
+    }
+  }
+  
+  public void onCheckUpdateSucceed(ArrayList paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      while (localIterator.hasNext()) {
+        ((bidf)localIterator.next()).onResult(paramArrayList);
+      }
     }
   }
 }

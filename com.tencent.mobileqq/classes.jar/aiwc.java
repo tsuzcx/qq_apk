@@ -1,39 +1,30 @@
-import android.os.Looper;
-import android.text.TextUtils;
-import androidx.annotation.UiThread;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiwc
-  implements bdvn
+  implements amwq
 {
-  aiwc(aiwa paramaiwa) {}
+  public aiwc(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
   
-  @UiThread
-  private void a(int paramInt)
+  public void a(amwq paramamwq) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramInt <= 0)
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.p();
+    if (paramBoolean)
     {
-      this.a.c();
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
       return;
     }
-    this.a.b();
+    this.a.c(this.a.getString(2131690690));
   }
   
-  public void a(String paramString, int paramInt)
-  {
-    if (!TextUtils.equals(paramString, aiwa.a(this.a).a.a)) {
-      return;
-    }
-    if (Thread.currentThread() != Looper.getMainLooper().getThread())
-    {
-      aiwa.a(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
-      return;
-    }
-    a(paramInt);
-  }
+  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

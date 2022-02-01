@@ -1,27 +1,42 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-class pzk
-  implements syn
+public class pzk
 {
-  pzk(pzj parampzj) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if ((paramBoolean) && ((pzh.a(this.a.a) instanceof Activity)))
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      if (pzh.a(this.a.a) == null) {
-        pzh.a(this.a.a, new ssi());
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      qai.a(paramBaseArticleInfo, localJSONObject1, true);
+      twr.b(paramBaseArticleInfo, localJSONObject1);
+      qai.d(paramBaseArticleInfo, localJSONObject1);
+      qai.g(paramBaseArticleInfo, localJSONObject1);
+      qai.n(paramBaseArticleInfo, localJSONObject1);
+      qai.i(paramBaseArticleInfo, localJSONObject1);
+      qai.ab(paramBaseArticleInfo, localJSONObject1);
+      if (!obb.a(paramBaseArticleInfo)) {
+        break label125;
       }
-      pzh.a(this.a.a).a(pzj.a(this.a), pzj.a(this.a, paramInt), (Activity)pzh.a(this.a.a), "", "", paramString2, "", 0, "");
-      return;
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
     }
-    QQToast.a(pzh.a(this.a.a), 1, 2131717143, 0).a();
+    for (;;)
+    {
+      localJSONObject1.put("id_small_cell_container", new JSONObject());
+      qai.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      str = null;
+      break;
+      label125:
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
+    }
   }
-  
-  public void b(boolean paramBoolean, String paramString) {}
 }
 
 

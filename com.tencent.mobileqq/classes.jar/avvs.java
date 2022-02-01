@@ -1,8 +1,25 @@
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
-public abstract interface avvs
+public class avvs
+  implements avvf
 {
-  public abstract void a(HotPicData paramHotPicData);
+  public avvs(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
+  {
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
+    }
+    for (;;)
+    {
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
+      return;
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
+    }
+  }
 }
 
 

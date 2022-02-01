@@ -1,26 +1,26 @@
 package cooperation.ilive.manager;
 
-import bmfc;
-import bmfr;
-import bmfu;
-import bmfv;
+import bkiz;
+import bkjy;
+import bkkb;
+import bkkc;
 import com.tencent.qphone.base.util.QLog;
 
 public class IlivePreDownloadManager$2
   implements Runnable
 {
-  public IlivePreDownloadManager$2(bmfr parambmfr) {}
+  public IlivePreDownloadManager$2(bkjy parambkjy) {}
   
   public void run()
   {
-    bmfv.a().a("PLUGIN_PRE_DOWNLOAD").a("start_pre_download");
-    if (bmfc.a().b())
+    bkkc.a().a("PLUGIN_PRE_DOWNLOAD").a("start_pre_download");
+    if (bkiz.a().b())
     {
       QLog.e("IlivePreDownloadManager", 1, "preloadPluginConfig preloadDownload plugin exist stop preload");
       return;
     }
     QLog.e("IlivePreDownloadManager", 1, "preload dispatch start");
-    bmfr.b(this.this$0);
+    bkjy.b(this.this$0);
   }
 }
 

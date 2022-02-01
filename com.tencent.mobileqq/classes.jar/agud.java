@@ -1,13 +1,19 @@
-class agud
-  implements anqz
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class agud
+  extends agqm
 {
-  agud(aguc paramaguc) {}
-  
-  public void a(boolean paramBoolean, andl paramandl)
+  agud(agua paramagua, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if ((paramBoolean) && (paramandl != null)) {
-      paramandl.f();
-    }
+    super(paramagua, paramQQAppInterface, paramActivity);
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    agua.a(this.a, true);
   }
 }
 

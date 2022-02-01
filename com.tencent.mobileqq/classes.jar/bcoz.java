@@ -1,46 +1,41 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class bcoz
-  extends bcog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Config;", "", "()V", "showStudyModeSwitchDialog", "", "getShowStudyModeSwitchDialog", "()Z", "setShowStudyModeSwitchDialog", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bcoz
 {
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public Button b;
-  public LinearLayout b;
-  public TextView b;
-  public LinearLayout c;
+  private boolean a;
   
-  public bcoz(ViewGroup paramViewGroup, int paramInt)
+  public final void a(@NotNull String paramString)
   {
-    super(paramViewGroup, paramInt);
+    Intrinsics.checkParameterIsNotNull(paramString, "configText");
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyModeSwitchDialogConfigProcessor", 2, paramString);
+    }
+    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
+    try
+    {
+      if (new JSONObject(paramString).optInt("ConfigEnableStudyModeGuide", 0) == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.a = bool;
+        return;
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("StudyModeSwitchDialogConfigProcessor", 1, paramString, new Object[0]);
+    }
   }
   
-  protected void a()
+  public final boolean a()
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    a(localView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376839));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363920));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369360));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370148));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370149));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379725));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379724));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131369156));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370147));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363746));
+    return this.a;
   }
 }
 

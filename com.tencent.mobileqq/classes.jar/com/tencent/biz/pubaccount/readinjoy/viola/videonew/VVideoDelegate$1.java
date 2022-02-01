@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import pfd;
-import tid;
+import pkp;
+import tmp;
 
 public class VVideoDelegate$1
   implements Runnable
 {
-  public VVideoDelegate$1(tid paramtid) {}
+  public VVideoDelegate$1(tmp paramtmp) {}
   
   public void run()
   {
-    pfd.a().n();
+    pkp.a().n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoDelegate.1
  * JD-Core Version:    0.7.0.1
  */

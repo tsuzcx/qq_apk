@@ -1,14 +1,8 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-
-class zxs
-  extends zxw
+public abstract interface zxs
 {
-  zxs(zxr paramzxr) {}
+  public abstract void failed(zxt paramzxt);
   
-  public void a()
-  {
-    ScannerActivity.a(this.a.a).b();
-  }
+  public abstract void success(zxt paramzxt);
 }
 
 

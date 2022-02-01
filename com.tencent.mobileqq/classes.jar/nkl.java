@@ -1,49 +1,16 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Handler;
 
-public class nkl
-  extends MSFServlet
+class nkl
+  extends nkn
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onReceive");
-    }
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bhuf.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
-    {
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MSFServlet", 2, "onReceive exit");
-      return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
-    }
-  }
+  nkl(nkk paramnkk) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public boolean a(int paramInt, String paramString, naf paramnaf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend");
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bhuf.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend exit");
-    }
+    bija.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nkk.a(this.a).removeCallbacksAndMessages(null);
+    nkk.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 

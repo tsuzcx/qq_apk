@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aodj;
-import bdll;
+import amxk;
+import bcef;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Timer;
@@ -10,13 +10,13 @@ import java.util.TimerTask;
 public class PrinterHandler$2
   extends TimerTask
 {
-  public PrinterHandler$2(aodj paramaodj, long paramLong, Timer paramTimer) {}
+  public PrinterHandler$2(amxk paramamxk, long paramLong, Timer paramTimer) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(this.jdField_a_of_type_Long)))
     {
-      bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)this.jdField_a_of_type_Long, -1, "", "", "", "");
+      bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)this.jdField_a_of_type_Long, -1, "", "", "", "");
       this.this$0.a(Long.valueOf(this.jdField_a_of_type_Long), false);
       if (QLog.isDevelopLevel()) {
         QLog.d("dataline.Printer", 4, "printID=" + this.jdField_a_of_type_Long + ", 超时到了");

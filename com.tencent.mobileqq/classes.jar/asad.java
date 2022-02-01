@@ -1,38 +1,36 @@
-import android.content.Intent;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class asad
-  implements bjdq
+class asad
+  implements aszj
 {
-  public asad(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  asad(asab paramasab, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Asab.a).getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    Intent localIntent;
-    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
+    amqd localamqd;
+    ArrayList localArrayList;
+    do
     {
-      localIntent = new Intent();
-      localIntent.putExtra("curIndex", paramInt2);
-      if (!this.a.e) {
-        break label176;
-      }
-    }
-    label176:
-    for (paramInt1 = this.a.c;; paramInt1 = 0)
-    {
-      localIntent.putExtra("unReadMsgNum", paramInt1);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      this.a.overridePendingTransition(2130772236, 2130772236);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.msgbox.tab", 2, "finish");
-      }
       return;
-    }
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localamqd = (amqd)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Asab.a).getBusinessHandler(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localamqd.a(localArrayList));
+    aszk.a(2131692366);
+    return;
+    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Asab.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 

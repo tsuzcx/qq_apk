@@ -1,10 +1,12 @@
 public abstract interface azci
 {
-  public abstract void a(azch paramazch);
+  public abstract void a();
   
-  public abstract boolean a(azch paramazch);
+  public abstract void a(int paramInt);
   
-  public abstract boolean b(azch paramazch);
+  public abstract void a(azch paramazch, int paramInt1, int paramInt2);
+  
+  public abstract void f();
 }
 
 

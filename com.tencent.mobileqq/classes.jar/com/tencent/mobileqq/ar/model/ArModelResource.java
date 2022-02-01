@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aprx;
+import aolk;
 
 public class ArModelResource
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArModelResource> CREATOR = new aprx();
+  public static final Parcelable.Creator<ArModelResource> CREATOR = new aolk();
   public int a;
   public long a;
   public String a;

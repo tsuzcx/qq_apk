@@ -1,7 +1,6 @@
-public class aofv
-  implements anui
+public abstract interface aofv
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public abstract void a(int paramInt, String paramString, aohg paramaohg);
 }
 
 

@@ -1,8 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bgea
+class bgea
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, boolean paramBoolean);
+  bgea(bgdv parambgdv, long paramLong, int paramInt, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bgdv.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

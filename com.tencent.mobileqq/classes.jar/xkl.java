@@ -1,189 +1,70 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.playvideo.NewProgressControler.2;
-import com.tencent.biz.qqstory.playvideo.NewProgressControler.3;
-import com.tencent.biz.qqstory.view.SplitedProgressBar;
-import java.lang.ref.WeakReference;
-import java.security.InvalidParameterException;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class xkl
-  implements xtr
+  implements IEventReceiver
 {
-  protected long a;
-  public Handler a;
-  private SplitedProgressBar jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar;
-  public WeakReference<xtg> a;
-  public Timer a;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  public boolean a;
-  public long b;
-  public long c;
+  private int jdField_a_of_type_Int = -1;
+  private amsu jdField_a_of_type_Amsu = new xkm(this);
+  public QQUserUIItem a;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private xkn jdField_a_of_type_Xkn;
+  private xko jdField_a_of_type_Xko;
+  private xkp jdField_a_of_type_Xkp;
+  private xkq jdField_a_of_type_Xkq;
+  private xkr jdField_a_of_type_Xkr;
+  private int b = -1;
   
-  public xkl(SplitedProgressBar paramSplitedProgressBar)
+  public xkl(String paramString, @NonNull xkq paramxkq)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_a_of_type_AndroidOsHandler = new xkm(this, Looper.getMainLooper());
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = paramSplitedProgressBar;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setTotalCount(1);
-  }
-  
-  private void a(long paramLong)
-  {
-    int i = 100;
-    int j;
-    if (this.b > 0L)
-    {
-      j = (int)paramLong * 100 / (int)this.b;
-      if (j <= 100) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(0, i);
-      return;
-      i = j;
-      continue;
-      i = 0;
-    }
-  }
-  
-  private void a(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = this.jdField_a_of_type_Long;
-    this.b = paramLong2;
-    a(paramLong1);
-    yuk.a("Q.qqstory.player:NewProgressControler", "seek ft:%d , ed:%d", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      yuk.d("Q.qqstory.player:NewProgressControler", "progress already canceled. can't start.");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    f();
-    if (this.b < 0L)
-    {
-      d();
-      return;
-    }
-    e();
-  }
-  
-  private void d()
-  {
-    NewProgressControler.2 local2 = new NewProgressControler.2(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(local2);
-  }
-  
-  private void e()
-  {
-    try
-    {
-      Timer localTimer = new Timer();
-      NewProgressControler.3 local3 = new NewProgressControler.3(this);
-      localTimer.scheduleAtFixedRate(local3, 0L, 50L);
-      this.jdField_a_of_type_JavaUtilTimer = localTimer;
-      this.jdField_a_of_type_JavaUtilTimerTask = local3;
-      yuk.b("Q.qqstory.player:NewProgressControler", "startTimer");
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void f()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if (this.jdField_a_of_type_JavaUtilTimer != null) {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-      }
-      if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-        this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-      }
-      yuk.b("Q.qqstory.player:NewProgressControler", "cancelTimer");
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Xkq = paramxkq;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    b();
+    this.jdField_a_of_type_Xkr = new xkr(this);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Xkr);
+    wkp.a().addObserver(this.jdField_a_of_type_Amsu);
+    this.jdField_a_of_type_Xkn = new xkn(this);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Xkn);
+    this.jdField_a_of_type_Xko = new xko(this);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Xko);
+    this.jdField_a_of_type_Xkp = new xkp(this);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Xkp);
   }
   
-  public void a(long paramLong1, long paramLong2, xtg paramxtg)
+  public void a(boolean paramBoolean)
   {
-    if (paramxtg == this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    xvv.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
+    if (paramBoolean)
     {
-      yuk.a("Q.qqstory.player:NewProgressControler", "progress callback :onSeek , ft:%d , et:%d", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      a(paramLong1, paramLong2);
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((vvj)vux.a(2)).b(this.jdField_a_of_type_JavaLangString);
+      xvv.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      return;
     }
-  }
-  
-  public void a(xtg paramxtg)
-  {
-    if ((paramxtg instanceof xtm)) {}
-    for (xtg localxtg = ((xtm)paramxtg).a();; localxtg = paramxtg)
-    {
-      if (localxtg == this.jdField_a_of_type_JavaLangRefWeakReference.get())
-      {
-        yuk.b("Q.qqstory.player:NewProgressControler", "cannot set the same video view");
-        return;
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localxtg);
-      if ((paramxtg instanceof xtm)) {
-        ((xtm)paramxtg).a(this);
-      }
-      for (;;)
-      {
-        f();
-        a(0L, paramxtg.b());
-        return;
-        yuk.b("Yarkey", "cannot set the same video view");
-      }
-    }
+    xvv.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
+    new wcg().a(1, new vwe("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
   }
   
   public void b()
   {
-    yuk.b("Q.qqstory.player:NewProgressControler", "pauseProgressBar");
-    f();
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Xkr);
+    wkp.a().removeObserver(this.jdField_a_of_type_Amsu);
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Xkn);
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Xko);
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Xkp);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public void b(xtg paramxtg)
+  public boolean isValidate()
   {
-    if (paramxtg == this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      yuk.b("Q.qqstory.player:NewProgressControler", "progress callback :onStart");
-      c();
-      return;
-    }
-    yuk.b("Yarkey", "onStart ignore !!");
-  }
-  
-  public void c(xtg paramxtg)
-  {
-    if (paramxtg == this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      yuk.b("Q.qqstory.player:NewProgressControler", "progress callback :onPause");
-      b();
-    }
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

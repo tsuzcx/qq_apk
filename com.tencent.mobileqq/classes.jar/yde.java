@@ -1,15 +1,23 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-
 public class yde
-  implements ydt
 {
-  public yde(StoryPickerFragment paramStoryPickerFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void a(String paramString)
+  public void a(yde paramyde)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramyde.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramyde.jdField_a_of_type_Int;
+    this.b = paramyde.b;
+    this.c = paramyde.c;
+    this.d = paramyde.d;
+  }
+  
+  public String toString()
+  {
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
   }
 }
 

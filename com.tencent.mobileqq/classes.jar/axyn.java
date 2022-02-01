@@ -1,40 +1,58 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.os.MqqHandler;
 
-public class axyn
-  implements bgpp
+class axyn
+  implements TencentLocationListener
 {
-  public axyn(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  private volatile boolean jdField_a_of_type_Boolean = true;
+  private Runnable b = this.jdField_a_of_type_JavaLangRunnable;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  axyn(axym paramaxym, Runnable paramRunnable, MqqHandler paramMqqHandler) {}
+  
+  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
   {
-    if (paramJSONObject != null)
+    if (paramInt == 0)
     {
-      paramInt = paramJSONObject.optInt("retcode", -1);
-      paramBundle = new ArrayList();
-      if (paramInt == 0)
+      LatLng localLatLng2 = new LatLng(paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude());
+      LatLng localLatLng1 = localLatLng2;
+      if (QLog.isColorLevel())
       {
-        paramJSONObject = paramJSONObject.optJSONObject("data");
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = paramJSONObject.optJSONArray("rpt_board_items");
-          if (paramJSONObject != null)
-          {
-            paramInt = 0;
-            while (paramInt < paramJSONObject.length())
-            {
-              paramBundle.add(paramJSONObject.optJSONObject(paramInt).optString("uint64_uin"));
-              paramInt += 1;
-            }
-          }
+        localLatLng1 = localLatLng2;
+        if (axym.a != null) {
+          localLatLng1 = axym.a;
         }
       }
-      this.a.jdField_a_of_type_Axzv.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new axyo(this));
+      if ((localLatLng1.getLatitude() == 0.0D) && (localLatLng1.getLongitude() == 0.0D)) {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          QLog.e("LocationHandler", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
+        }
+      }
     }
+    do
+    {
+      return;
+      axym.a(this.jdField_a_of_type_Axym, paramTencentLocation);
+      if (this.b != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
+        }
+        this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.b);
+        this.b = null;
+      }
+      if (paramInt == 0) {
+        axym.a(this.jdField_a_of_type_Axym, true);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. errorCode: " + paramInt + " errorMsg: " + paramString);
   }
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 

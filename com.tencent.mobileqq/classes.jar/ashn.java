@@ -1,277 +1,127 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class ashn<T>
-  extends BaseAdapter
+class ashn
+  implements blgh
 {
-  public int a;
-  protected Context a;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private LruCache<String, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(30);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private HashMap<EmoticonPackage, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  protected List<T> a;
-  JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  ashn(ashf paramashf) {}
   
-  public ashn(Context paramContext, List<T> paramList)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, long paramLong, blfs paramblfs, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839148);
-    bhwl.a((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime(), bhwl.d);
-    paramContext = bhwl.d.a(this.jdField_a_of_type_AndroidContentContext);
-    if (paramContext != null) {}
-    try
+    if (this.a.jdField_a_of_type_Atep == null) {}
+    do
     {
-      this.jdField_a_of_type_OrgJsonJSONArray = paramContext.getJSONArray("wording");
-      this.jdField_a_of_type_AndroidOsHandler = new Handler();
-      return;
-    }
-    catch (JSONException paramContext)
-    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+        if (paramblfs.jdField_a_of_type_Int == 2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onStarted[" + this.a.c + "]");
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+          return;
+        }
+        if (paramblfs.jdField_a_of_type_Int == 5)
+        {
+          if (paramblfs.jdField_b_of_type_Int == 1810002)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is canceled[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+            }
+            if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+            {
+              paramString = new String[3];
+              paramString[0] = "param_WIFIFileFlow";
+              paramString[1] = "param_WIFIFlow";
+              paramString[2] = "param_Flow";
+            }
+            for (;;)
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
+              return;
+              paramString = new String[3];
+              paramString[0] = "param_XGFileFlow";
+              paramString[1] = "param_XGFlow";
+              paramString[2] = "param_Flow";
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onFailed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+          }
+          if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+          {
+            paramString = new String[3];
+            paramString[0] = "param_WIFIFileFlow";
+            paramString[1] = "param_WIFIFlow";
+            paramString[2] = "param_Flow";
+          }
+          for (;;)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 36, null, paramblfs.jdField_b_of_type_Int, paramblfs.jdField_a_of_type_JavaLangString);
+            return;
+            paramString = new String[3];
+            paramString[0] = "param_XGFileFlow";
+            paramString[1] = "param_XGFlow";
+            paramString[2] = "param_Flow";
+          }
+        }
+      } while (paramblfs.jdField_a_of_type_Int != 4);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onSucceed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramblfs.jdField_b_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+      this.a.h = System.currentTimeMillis();
+      if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+      {
+        paramString = new String[3];
+        paramString[0] = "param_WIFIFileFlow";
+        paramString[1] = "param_WIFIFlow";
+        paramString[2] = "param_Flow";
+      }
       for (;;)
       {
-        paramContext.printStackTrace();
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 35, null, 0, null);
+        paramString = new aszs();
+        paramString.jdField_b_of_type_JavaLangString = "rece_file_suc";
+        paramString.jdField_a_of_type_Int = 1;
+        aszr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+        return;
+        paramString = new String[3];
+        paramString[0] = "param_XGFileFlow";
+        paramString[1] = "param_XGFlow";
+        paramString[2] = "param_Flow";
       }
+      paramLong = System.currentTimeMillis();
+      this.a.jdField_a_of_type_Long = paramblfs.jdField_b_of_type_Long;
+    } while (paramLong - this.a.f < 1000L);
+    this.a.f = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "Id[" + this.a.c + "]WeiYun download is onProgressChange mtransferedSize[" + this.a.jdField_a_of_type_Long + "/" + this.a.d + "]");
     }
-  }
-  
-  private Drawable a(EmoticonPackage paramEmoticonPackage)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId) != null) {
-      return (Drawable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId);
-    }
-    Drawable localDrawable = asfa.a(2, paramEmoticonPackage.epId);
-    if (localDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramEmoticonPackage.epId, localDrawable);
-      return localDrawable;
-    }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public List<EmoticonPackage> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((Boolean)localEntry.getValue()).booleanValue()) {
-        localArrayList.add(localEntry.getKey());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    boolean bool = a(paramInt);
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      localHashMap.put(localEmoticonPackage, Boolean.valueOf(bool));
-      return;
-    }
-  }
-  
-  public void a(T paramT)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((paramT instanceof EmoticonPackage))
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramT;
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localEmoticonPackage);
-      }
-      this.jdField_a_of_type_JavaUtilList.remove(paramT);
-      if (this.b) {
-        notifyDataSetChanged();
-      }
-      return;
-    }
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-      if (this.b) {
-        notifyDataSetChanged();
-      }
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localEmoticonPackage)) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localEmoticonPackage)).booleanValue();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = new asho(this);
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559158, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365974));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365979));
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365763));
-      paramView.d = ((ImageView)localView.findViewById(2131365764));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365978));
-      paramView.e = ((ImageView)localView.findViewById(2131365975));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365980));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131377481);
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131380449);
-      paramView.f = ((ImageView)localView.findViewById(2131365976));
-      paramView.jdField_c_of_type_AndroidViewView = localView.findViewById(2131365973);
-      localView.setTag(paramView);
-      paramViewGroup.setTag(paramView);
-      localView.setBackgroundResource(2130839637);
-      localObject = (EmoticonPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((EmoticonPackage)localObject).name);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a((EmoticonPackage)localObject));
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (!((EmoticonPackage)localObject).hasSound) {
-        break label458;
-      }
-      paramView.e.setVisibility(0);
-      if (!((EmoticonPackage)localObject).isNewVoiceType()) {
-        break label445;
-      }
-      paramView.e.setImageResource(2130838297);
-      label280:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label525;
-      }
-      if (a(paramInt)) {
-        break label470;
-      }
-      localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691941) + " " + ((EmoticonPackage)localObject).name);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847120);
-      label347:
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramView.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      label372:
-      if (((EmoticonPackage)localObject).mobileFeetype != 4) {
-        break label564;
-      }
-      paramView.f.setVisibility(0);
-      paramView.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839645));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (asho)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label445:
-      paramView.e.setImageResource(2130839646);
-      break label280;
-      label458:
-      paramView.e.setVisibility(8);
-      break label280;
-      label470:
-      localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691931) + " " + ((EmoticonPackage)localObject).name);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847121);
-      break label347;
-      label525:
-      localView.setContentDescription(((EmoticonPackage)localObject).name);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      break label372;
-      label564:
-      if (((EmoticonPackage)localObject).mobileFeetype == 5)
-      {
-        paramView.f.setVisibility(0);
-        paramView.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847441));
-      }
-      else
-      {
-        paramView.f.setVisibility(8);
-      }
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
-    this.b = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
   }
 }
 

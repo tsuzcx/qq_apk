@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikePayView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class vsb
-  implements DialogInterface.OnClickListener
+class vsb
+  extends whf
 {
-  public vsb(QCirclePolyLikePayView paramQCirclePolyLikePayView) {}
+  vsb(vry paramvry) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QCirclePolyLikePayView.a(this.a).cancel();
-    vtr.a(95, 2, this.a.a(), this.a.a().getPageId());
-    vtn.a(String.valueOf(uzg.a()), 95, 2, QCirclePolyLikePayView.a(this.a), this.a.a(), null, this.a.a().getPageId());
+    super.a();
+    vrx.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    xwa.a("home_page", "suc_share", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    xwa.a("home_page", "share_chanel", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

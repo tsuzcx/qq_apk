@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-class bfec
-  implements QQPermissionCallback
+public class bfec
+  implements HostnameVerifier
 {
-  bfec(bfeb parambfeb) {}
+  public bfec(TroopUploadingThread paramTroopUploadingThread, HttpsURLConnection paramHttpsURLConnection) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    String str = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getRequestProperty("Host");
+    paramString = str;
+    if (str == null) {
+      paramString = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getURL().getHost();
+    }
+    return HttpsURLConnection.getDefaultHostnameVerifier().verify(paramString, paramSSLSession);
   }
 }
 

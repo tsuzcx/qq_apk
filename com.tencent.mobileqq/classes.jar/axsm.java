@@ -1,17 +1,17 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
-final class axsm
-  implements Comparator<axsn>
+public class axsm
+  implements DialogInterface.OnClickListener
 {
-  public int a(axsn paramaxsn1, axsn paramaxsn2)
+  public axsm(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramaxsn1.b < paramaxsn2.b) {
-      return -1;
-    }
-    if (paramaxsn1.b > paramaxsn2.b) {
-      return 1;
-    }
-    return 0;
+    axvz.a("0X800AF9C", 2);
+    paramDialogInterface.dismiss();
+    AccountOnlineStateActivity.b(this.a);
   }
 }
 

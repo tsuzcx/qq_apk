@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
 import android.content.Context;
-import aure;
-import aurl;
-import aurm;
+import atdm;
+import atdt;
+import atdu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -17,18 +17,18 @@ class UniformDownloadPkgInstallReceiver$1
   {
     if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
     {
-      Object localObject = aure.a().a(this.b, true);
+      Object localObject = atdm.a().a(this.b, true);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          aurl localaurl = (aurl)((Iterator)localObject).next();
-          if (localaurl != null)
+          atdt localatdt = (atdt)((Iterator)localObject).next();
+          if (localatdt != null)
           {
-            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localaurl.a);
-            aurm.a().c(localaurl.a, null);
-            this.this$0.a(this.jdField_a_of_type_AndroidContentContext, localaurl);
+            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localatdt.a);
+            atdu.a().c(localatdt.a, null);
+            this.this$0.a(this.jdField_a_of_type_AndroidContentContext, localatdt);
           }
         }
       }

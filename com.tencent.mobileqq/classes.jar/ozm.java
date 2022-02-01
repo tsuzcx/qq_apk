@@ -1,289 +1,237 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.common.ProteusPreloadManager.preloadContainer.1;
+import com.tencent.biz.pubaccount.readinjoy.config.beans.ProteusPreloadRule;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import mqq.app.AppRuntime;
+import kotlin.ExperimentalStdlibApi;
+import kotlin.Metadata;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.JvmOverloads;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ozm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/common/ProteusPreloadManager;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ctxMap", "", "Lcom/tencent/biz/pubaccount/readinjoy/proteus/wrap/ReadInjoyContext;", "preloadConfig", "Lcom/tencent/aladdin/config/AladdinConfig;", "preloadContainerMap", "", "Lcom/tencent/biz/pubaccount/readinjoy/common/ProteusPreloadManager$PreloadContainerWrapper;", "clear", "", "getContainer", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "service", "styleName", "getProteusPreloadConfig", "", "Lcom/tencent/biz/pubaccount/readinjoy/config/beans/ProteusPreloadRule;", "initServiceValCtx", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;", "innerPreload", "key", "bean", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;", "count", "", "ctx", "preloadCards", "rules", "preloadContainer", "PreloadContainerWrapper", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ozm
 {
-  public static int a()
+  private static final AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
+  @NotNull
+  private static final String jdField_a_of_type_JavaLangString = "ProteusPreloadManager";
+  private static final Map<String, List<ozn>> jdField_a_of_type_JavaUtilMap;
+  public static final ozm a;
+  private static final Map<String, qle> b = (Map)new LinkedHashMap();
+  
+  static
   {
-    SharedPreferences localSharedPreferences = a(ozs.a());
-    if (localSharedPreferences == null)
-    {
-      QLog.d("ReadInJoyResetUtils", 2, "[getLocalResetVersion] return 0 for sp is null");
-      return 0;
-    }
-    return localSharedPreferences.getInt("readinjoy_local_reset_config_version", 0);
+    jdField_a_of_type_Ozm = new ozm();
+    jdField_a_of_type_JavaLangString = "ProteusPreloadManager";
+    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(334);
+    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…FIG_PROTEUS_CARD_PRELOAD)");
+    jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = localAladdinConfig;
   }
   
-  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  private final VafContext a(String paramString)
   {
-    if (paramAppRuntime == null)
+    BaseApplication localBaseApplication = BaseApplicationImpl.context;
+    if (localBaseApplication != null)
     {
-      QLog.e("ReadInJoyResetUtils", 1, "[getSharedPreferences] return null for runtime is null");
+      localObject = localBaseApplication.getResources();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources");
+      if (((Resources)localObject).getConfiguration().orientation != 2) {}
+    }
+    else
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "orientation is landscape ! ctx can't init");
       return null;
     }
-    paramAppRuntime = "readinjoy_sp_reset_" + paramAppRuntime.getAccount();
-    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+    Object localObject = new qle();
+    b.put(paramString, localObject);
+    ((qle)localObject).setContext((Context)localBaseApplication);
+    ozp.a((VafContext)localObject, paramString);
+    return (VafContext)localObject;
   }
   
-  public static void a()
+  private final void a(String paramString, TemplateBean paramTemplateBean, int paramInt, VafContext paramVafContext)
   {
-    int i = bhsi.N(BaseApplicationImpl.getApplication(), ozs.a());
-    int j = a();
-    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] remoteVersion=" + i + ", localVersion=" + j);
-    if (i != j) {
+    int k = 0;
+    int j = 0;
+    int i;
+    if (j < paramInt)
+    {
       try
       {
-        b();
-        pap.a();
-        d();
-        e();
-        f();
-        a(i);
-        QLog.i("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] done resetting, update local version to " + i);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] ", localException);
-        return;
-      }
-    }
-    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] won't reset");
-  }
-  
-  private static void a(int paramInt)
-  {
-    SharedPreferences localSharedPreferences = a(ozs.a());
-    if (localSharedPreferences == null)
-    {
-      QLog.d("ReadInJoyResetUtils", 2, "[putLocalResetVersion] sp == null");
-      return;
-    }
-    localSharedPreferences.edit().putInt("readinjoy_local_reset_config_version", paramInt).apply();
-  }
-  
-  private static void a(SharedPreferences paramSharedPreferences)
-  {
-    if (paramSharedPreferences != null)
-    {
-      List localList = qzq.a(paramSharedPreferences.getAll().keySet(), new ozn());
-      paramSharedPreferences = paramSharedPreferences.edit();
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext()) {
-        paramSharedPreferences.remove((String)localIterator.next());
-      }
-      paramSharedPreferences.commit();
-      QLog.d("ReadInJoyResetUtils", 2, "[removeReadInJoyKeysInSharedPreferences] removed " + localList);
-    }
-  }
-  
-  public static void b()
-  {
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_COMMON_CONFIG - 92 to 0");
-    bhsi.p(BaseApplicationImpl.getApplication(), 0, ozs.a());
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_MERGE_CONFIG_CMD - 79 to 0");
-    bhsi.o(BaseApplicationImpl.getApplication(), 0, ozs.a());
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_CONFIG_CMD - 72 to 0");
-    bhsi.s(BaseApplicationImpl.getApplication(), ozs.a(), 0);
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_SETTING_CMD - 72 to 0");
-    bhsi.n(BaseApplicationImpl.getApplication(), 0);
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_SEARCH_JUMP_URL_CONFIG - 292 to 0");
-    bhsi.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", ozs.a(), 0);
-  }
-  
-  public static void c()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP");
-    a(BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4));
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP success");
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP");
-    a(PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()));
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP success");
-  }
-  
-  public static void d()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] ");
-    Object localObject = bnrf.a(ozs.a(), true, true);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).clear();
-      if (((SharedPreferences.Editor)localObject).commit())
-      {
-        QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account related sp success");
-        localObject = bnrf.a(ozs.a(), false, true);
-        if (localObject == null) {
-          break label138;
-        }
-        localObject = ((SharedPreferences)localObject).edit();
-        ((SharedPreferences.Editor)localObject).clear();
-        if (!((SharedPreferences.Editor)localObject).commit()) {
-          break label126;
-        }
-        QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account unrelated sp success");
-      }
-    }
-    for (;;)
-    {
-      c();
-      g();
-      return;
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] fail when commit account related sp");
-      break;
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
-      break;
-      label126:
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] fail when commit account unrelated sp");
-      continue;
-      label138:
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
-    }
-  }
-  
-  public static void e()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase");
-    try
-    {
-      EntityManagerFactory localEntityManagerFactory = pfa.a().a();
-      if ((localEntityManagerFactory instanceof ReadInJoyEntityManagerFactory)) {
-        ((ReadInJoyEntityManagerFactory)localEntityManagerFactory).a();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase: ", localException);
-    }
-  }
-  
-  public static void f()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyLocalFiles");
-    h();
-    i();
-    j();
-  }
-  
-  private static void g()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] QQSETTING_KANDIAN_DOWNLOAD_PIC_IN_WIFI_ONLY set to false");
-    SettingCloneUtil.writeValue(BaseApplicationImpl.getApplication(), ozs.a(), null, "qqsetting_kandian_download_pic_flag", false);
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] done");
-  }
-  
-  private static void h()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "clearSkinRes");
-    Object localObject = new File(bjrc.e());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
+        Object localObject = paramVafContext.getContext();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "ctx.context");
+        localObject = ((Context)localObject).getResources();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "ctx.context.resources");
+        if ((((Resources)localObject).getConfiguration().orientation == 2) || (UIUtils.getScreenWidth(paramVafContext.getContext()) > UIUtils.getScreenHeight(paramVafContext.getContext())))
         {
-          if (i < j)
+          QLog.d(jdField_a_of_type_JavaLangString, 1, "orientation is landscape ! give up preload container[" + paramString + ']');
+          i = k;
+        }
+        else
+        {
+          localObject = paramVafContext.getViewFactory().inflate(paramVafContext, paramTemplateBean);
+          i = k;
+          if (localObject != null)
           {
-            String str = localObject[i];
-            try
+            i = k + 1;
+            if (jdField_a_of_type_JavaUtilMap.containsKey(paramString))
             {
-              if (str.getName().toLowerCase().contains("readinjoy"))
-              {
-                str = str.getAbsolutePath();
-                bhmi.a(str, false);
-                QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] deleted " + str);
+              List localList = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+              if (localList == null) {
+                break label298;
               }
-              i += 1;
+              localList.add(new ozn((Container)localObject));
             }
-            catch (Exception localException2)
+            else
             {
-              for (;;)
-              {
-                QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] ", localException2);
-              }
+              jdField_a_of_type_JavaUtilMap.put(paramString, CollectionsKt.mutableListOf(new ozn[] { new ozn((Container)localObject) }));
             }
           }
         }
       }
-    }
-    try
-    {
-      localObject = (qtp)ozs.a().getManager(271);
-      if (localObject != null)
+      catch (Throwable paramString)
       {
-        ((qtp)localObject).b();
-        QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] successfully delete guide data in db");
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "preload happen error : " + paramString);
         return;
       }
-      QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] operation manager is null");
+    }
+    else
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "innerPreload " + paramString + " success , cnt : " + k);
       return;
     }
-    catch (Exception localException1)
+    label298:
+    for (;;)
     {
-      QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] ", localException1);
+      j += 1;
+      k = i;
+      break;
     }
   }
   
-  private static void i()
+  @ExperimentalStdlibApi
+  @Nullable
+  public final Container a(@Nullable String paramString1, @Nullable String paramString2)
   {
-    QLog.d("ReadInJoyResetUtils", 2, "clearProteusStyles");
-    svr.c();
-  }
-  
-  private static void j()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint");
-    try
+    boolean bool = false;
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    label161:
+    label166:
+    do
     {
-      Object localObject = ((QQAppInterface)ozs.a()).a();
-      ((QQMessageFacade)localObject).a(antf.aA, 7220);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_MERGE_UIN cleared");
-      ((QQMessageFacade)localObject).a(antf.aQ, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_SUBSCRIBE_UIN cleared");
-      ((QQMessageFacade)localObject).a(antf.az, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(antf.az, 0);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(antf.ay, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: OLD_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(antf.ay, 0);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(antf.aP, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: WEISHI_UIN cleared");
-      ((QQMessageFacade)localObject).a(antf.aR, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_DAILY cleared");
-      localObject = bnrf.a((QQAppInterface)ozs.a(), 1);
-      if (localObject != null)
+      return null;
+      String str = paramString1 + '#' + paramString2;
+      paramString1 = (List)jdField_a_of_type_JavaUtilMap.get(str);
+      int i;
+      if (paramString1 != null)
       {
-        if (((SharedPreferences)localObject).edit().clear().commit())
-        {
-          QLog.d("ReadInJoyResetUtils", 2, "[clearRedPoint] clear red point in sp xml success");
-          return;
+        i = paramString1.size();
+        paramString1 = jdField_a_of_type_JavaLangString;
+        paramString2 = new StringBuilder().append("getContainer : ").append(paramString2).append(" ret : ");
+        if (i > 0) {
+          bool = true;
         }
-        QLog.d("ReadInJoyResetUtils", 2, "[clearRedPoint] clear red point in sp xml failed");
-        return;
+        QLog.d(paramString1, 1, bool);
+        if (i <= 0) {
+          break label231;
+        }
+        paramString1 = (List)jdField_a_of_type_JavaUtilMap.get(str);
+        if (paramString1 == null) {
+          break label161;
+        }
       }
+      for (paramString1 = (ozn)CollectionsKt.removeLast(paramString1);; paramString1 = null)
+      {
+        if (paramString1 == null) {
+          break label224;
+        }
+        if (!paramString1.a()) {
+          break label166;
+        }
+        return paramString1.a();
+        i = 0;
+        break;
+      }
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "container size is not suitable, size : " + paramString1.a());
+      paramString2 = (List)jdField_a_of_type_JavaUtilMap.get(str);
+    } while (paramString2 == null);
+    paramString2.add(paramString1);
+    return null;
+    label224:
+    label231:
+    for (paramString1 = (Container)null;; paramString1 = null) {
+      return paramString1;
     }
-    catch (Exception localException)
+  }
+  
+  @NotNull
+  public final List<ProteusPreloadRule> a()
+  {
+    List localList = jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getList("preload_list");
+    Intrinsics.checkExpressionValueIsNotNull(localList, "preloadConfig.getList<Pr…loadRule>(\"preload_list\")");
+    return localList;
+  }
+  
+  public final void a()
+  {
+    b.clear();
+    jdField_a_of_type_JavaUtilMap.clear();
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "clear");
+  }
+  
+  @JvmOverloads
+  public final void a(@NotNull String paramString1, @NotNull String paramString2, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "service");
+    Intrinsics.checkParameterIsNotNull(paramString2, "styleName");
+    if (!udr.a.b()) {}
+    TemplateBean localTemplateBean;
+    do
     {
-      QLog.e("ReadInJoyResetUtils", 2, "clearRedPoint: ", localException);
+      do
+      {
+        return;
+        localObject = syz.a(paramString1, true);
+      } while (localObject == null);
+      localTemplateBean = ((syz)localObject).getTemplate(paramString2);
+    } while (localTemplateBean == null);
+    Object localObject = (qle)b.get(paramString1);
+    if (localObject != null) {}
+    for (localObject = (VafContext)localObject; localObject == null; localObject = a(paramString1))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "ctx is null, can't preload");
+      return;
+    }
+    ThreadManager.executeOnSubThread((Runnable)new ProteusPreloadManager.preloadContainer.1(paramString1, paramString2, localTemplateBean, paramInt, (VafContext)localObject));
+  }
+  
+  public final void a(@NotNull List<ProteusPreloadRule> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramList, "rules");
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "preload list : " + paramList);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ProteusPreloadRule localProteusPreloadRule = (ProteusPreloadRule)paramList.next();
+      a(localProteusPreloadRule.getBizID(), localProteusPreloadRule.getStyleName(), localProteusPreloadRule.getPreloadCount());
     }
   }
 }

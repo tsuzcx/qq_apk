@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
-import pww;
-import pwx;
+import qcq;
+import qcr;
 
 public class NoteCardProteusItem$1$1
   implements Runnable
 {
-  public NoteCardProteusItem$1$1(pwx parampwx) {}
+  public NoteCardProteusItem$1$1(qcr paramqcr) {}
   
   public void run()
   {
-    if (pww.b(this.a.a)) {
-      pww.a(this.a.a);
+    if (qcq.b(this.a.a)) {
+      qcq.a(this.a.a);
     }
   }
 }

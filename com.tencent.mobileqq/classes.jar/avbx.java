@@ -1,31 +1,69 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2.1;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class avbx
-  implements azrg
+  implements INetEngine.INetEngineListener
 {
-  public avbx(ForwardSdkShareOption.2 param2) {}
+  avbx(avbv paramavbv) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onResp(NetResp paramNetResp)
   {
-    return null;
-  }
-  
-  public void a(azrh paramazrh)
-  {
-    if ((paramazrh != null) && (QLog.isColorLevel())) {
-      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramazrh.toString() });
+    boolean bool;
+    Object localObject1;
+    File localFile;
+    int i;
+    String str;
+    label48:
+    Object localObject2;
+    if (paramNetResp.mResult == 0)
+    {
+      bool = true;
+      localObject1 = (HttpNetReq)paramNetResp.mReq;
+      localFile = new File(((HttpNetReq)localObject1).mOutPath);
+      i = paramNetResp.mErrCode;
+      if (paramNetResp.mErrDesc != null) {
+        break label164;
+      }
+      str = "0";
+      localObject2 = (Object[])((HttpNetReq)localObject1).getUserData();
+      localObject1 = (MusicInfo)localObject2[0];
+      localObject2 = (avbz)localObject2[1];
+      if (!bool) {
+        break label173;
+      }
+      ((avbz)localObject2).a = 2;
+      this.a.a(((MusicInfo)localObject1).a);
+    }
+    for (;;)
+    {
+      ThreadManager.getSubThreadHandler().post(new ListenTogetherResDownloader.2.1(this, paramNetResp, bool, (MusicInfo)localObject1));
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.downloader", 2, String.format("onResp, errCode: %s, errDesc: %s, musicReqInfo: %s", new Object[] { Integer.valueOf(i), str, localObject2 }));
+      }
+      return;
+      bool = false;
+      break;
+      label164:
+      str = paramNetResp.mErrDesc;
+      break label48;
+      label173:
+      if ((localFile != null) && (localFile.exists())) {
+        localFile.delete();
+      }
+      ((avbz)localObject2).a = 3;
+      avbv.a(this.a, (MusicInfo)localObject1);
     }
   }
   
-  public void b(azrh paramazrh)
-  {
-    avcw.b("KEY_STAGE_2_UPLOAD_IMAGE");
-    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramazrh, this.a.b, this.a.c, this.a.d);
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

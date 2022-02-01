@@ -1,68 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebViewPlugin;", "Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;", "()V", "handleJsRequest", "", "listener", "Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;", "url", "", "pkgName", "method", "args", "", "(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Z", "onWebCallArk", "", "argument", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ammi
-  extends WebViewPlugin
+public class ammi
+  implements View.OnClickListener
 {
-  public static final ammj a = new ammj(null);
+  public ammi(ApolloPanel paramApolloPanel, amlx paramamlx, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
   
-  private final void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherWebViewPlugin", 2, "onWebCallArk -> argument : " + paramString);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app != null) && (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null)) {
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_Amlx);
     }
-    try
-    {
-      ark.arkNotify("com.tencent.weather_v2", "receive_web_msg", paramString, "json");
-      return;
+    ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "action_flame_clicksend", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
     }
-    catch (Throwable paramString)
-    {
-      QLog.d("WeatherWebViewPlugin", 1, "arkNotify", paramString);
-    }
-  }
-  
-  public boolean handleJsRequest(@Nullable JsBridgeListener paramJsBridgeListener, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @NotNull String... paramVarArgs)
-  {
-    Intrinsics.checkParameterIsNotNull(paramVarArgs, "args");
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherWebViewPlugin", 2, "handleJsRequest -> url : " + paramString1 + ",pkgName : " + paramString2 + ",method : " + paramString3 + ",args[0 : " + paramVarArgs[0]);
-    }
-    if (TextUtils.equals((CharSequence)paramString2, (CharSequence)"weather"))
-    {
-      if (paramVarArgs.length == 0)
-      {
-        i = 1;
-        if (i != 0) {
-          break label147;
-        }
-      }
-      label147:
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (!TextUtils.equals((CharSequence)paramString3, (CharSequence)"notify_ark_msg"))) {
-          break label153;
-        }
-        paramJsBridgeListener = paramVarArgs[0];
-        if (paramJsBridgeListener != null) {
-          ((ammi)this).a(paramJsBridgeListener);
-        }
-        return true;
-        i = 0;
-        break;
-      }
-    }
-    label153:
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    alnr.a(102, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

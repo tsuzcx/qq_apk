@@ -20,12 +20,15 @@ public class ServiceAccountFolderActivityNew$FolderTabFragmentAdapter
   
   public Fragment getItem(int paramInt)
   {
-    return (Fragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt);
+    if (ServiceAccountFolderActivityNew.a(this.a).size() > paramInt) {
+      return (Fragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.FolderTabFragmentAdapter
  * JD-Core Version:    0.7.0.1
  */

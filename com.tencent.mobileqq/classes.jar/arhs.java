@@ -3,26 +3,19 @@ import android.text.TextUtils;
 public class arhs
 {
   public String a;
-  public boolean a;
+  public String b;
+  public String c;
   
-  public arhs(arhp paramarhp)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public arhs(arhi paramarhi) {}
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhs
  * JD-Core Version:    0.7.0.1
  */

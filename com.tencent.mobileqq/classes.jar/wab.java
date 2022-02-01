@@ -1,42 +1,27 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import qqcircle.QQCircleWrite.DoFollowTagRsp;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class wab
-  implements aaav<QQCircleWrite.DoFollowTagRsp>
+class wab
+  implements View.OnLayoutChangeListener
 {
-  public wab(QCircleFollowTagView paramQCircleFollowTagView, int paramInt, boolean paramBoolean) {}
+  wab(vzt paramvzt, vuq paramvuq) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleWrite.DoFollowTagRsp paramDoFollowTagRsp)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    boolean bool = true;
-    if ((paramBoolean) && (paramLong == 0L))
+    xvv.b(vzt.b(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Vzt.d) || (this.jdField_a_of_type_Vzt.e)) && (!this.jdField_a_of_type_Vzt.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.a(this.jdField_a_of_type_Int);
-      if (QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView) != null)
+      xvv.b(vzt.b(), "first show node, showStoryNode");
+      if (this.jdField_a_of_type_Vzt.d)
       {
-        QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext(), QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get(), this.jdField_a_of_type_Int);
-        paramString = vrc.a();
-        paramDoFollowTagRsp = QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get();
-        if (this.jdField_a_of_type_Int != 1) {
-          break label101;
-        }
+        this.jdField_a_of_type_Vzt.d = false;
+        this.jdField_a_of_type_Vuq.b("first_show_node", Boolean.valueOf(false));
       }
-      label101:
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.a(paramDoFollowTagRsp, paramBoolean);
-        return;
+      this.jdField_a_of_type_Vzt.e = false;
+      if (this.jdField_a_of_type_Vzt.a()) {
+        this.jdField_a_of_type_Vzt.jdField_a_of_type_Vzf.a("exp_story", 4);
       }
-    }
-    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2131697224;; i = 2131697352)
-    {
-      QQToast.a(paramString, i, 0).a();
-      return;
     }
   }
 }

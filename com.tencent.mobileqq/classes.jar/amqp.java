@@ -1,117 +1,49 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class amqp
-  extends BaseAdapter
+  extends BroadcastReceiver
 {
-  protected int a;
-  protected Context a;
-  protected View a;
-  protected aohb a;
-  protected QQAppInterface a;
-  public List<String> a;
+  public amqp(DeviceProfileManager paramDeviceProfileManager) {}
   
-  public amqp(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aohb = ((aohb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(299));
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Aohb.a();
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (QLog.isDevelopLevel()) {
+      QLog.e("DeviceProfileManager", 4, "onReceive");
     }
-    for (;;)
+    if (paramIntent == null) {}
+    do
     {
-      notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559816, paramViewGroup, false);
-      paramView = new amqq(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368051));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368054));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)localView.findViewById(2131376778));
-      paramView.b = localView.findViewById(2131365649);
-      paramView.jdField_a_of_type_AndroidViewView = localView;
-      localView.setTag(paramView);
-      paramView.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = paramIntent.getExtras();
+          if (paramContext != null)
+          {
+            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
+            if (DeviceProfileManager.a() != null)
+            {
+              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
       }
-      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        break label241;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
-      paramView.b.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846036);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839394);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846032);
-    }
-    for (;;)
-    {
-      localView.setOnClickListener(paramView);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramView);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      amqq localamqq = (amqq)paramView.getTag();
-      localView = paramView;
-      paramView = localamqq;
-      break;
-      label241:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
-      paramView.b.setBackgroundColor(Color.parseColor("#E6E6E6"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846035);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839393);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846030);
-    }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqp
  * JD-Core Version:    0.7.0.1
  */

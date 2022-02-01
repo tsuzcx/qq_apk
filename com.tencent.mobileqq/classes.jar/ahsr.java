@@ -1,21 +1,47 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class ahsr
-  extends aggl
+public class ahsr
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  View d;
+  private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  ahsr(ahsp paramahsp) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextBottomViewHelper", 2, "hideBottom");
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.bottomMargin = 0;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(VoiceTextPanel paramVoiceTextPanel)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131363664));
+    this.jdField_a_of_type_AndroidViewView = paramVoiceTextPanel.findViewById(2131369938);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextBottomViewHelper", 2, "showBottom");
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.bottomMargin = ScreenUtil.dip2px(75.0F);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void c()
+  {
+    b();
+  }
 }
 
 

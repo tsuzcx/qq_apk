@@ -1,17 +1,17 @@
-import android.view.MotionEvent;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.qq.im.QIMCameraCaptureUnit.14;
 
-public abstract interface blia
+public class blia
+  implements DialogInterface.OnCancelListener
 {
-  public abstract int getMode();
+  public blia(QIMCameraCaptureUnit.14 param14) {}
   
-  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
-  
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
-  
-  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
-  
-  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.this$0.a.setCameraPermissionResult(false);
+  }
 }
 
 

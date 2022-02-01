@@ -1,60 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.SurfaceHolder;
 
-public class bgnk
-  extends arac<bgnj>
+public abstract interface bgnk
 {
-  @NonNull
-  public bgnj a(int paramInt)
-  {
-    QLog.d("TroopMemberLevelMapCofigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new bgnj();
-  }
+  public abstract int a();
   
-  @Nullable
-  public bgnj a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberLevelMapCofigProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return bgnj.a(paramArrayOfaraj[0].a);
-    }
-    return null;
-  }
+  public abstract void a();
   
-  public void a(bgnj parambgnj) {}
+  public abstract void a(int paramInt);
   
-  public Class<bgnj> clazz()
-  {
-    return bgnj.class;
-  }
+  public abstract void a(SurfaceHolder paramSurfaceHolder);
   
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
+  public abstract void a(bgnl parambgnl);
   
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
+  public abstract void a(bgnm parambgnm);
   
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
+  public abstract void a(bgnn parambgnn);
   
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopMemberLevelMapCofigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
+  public abstract boolean a();
   
-  public int type()
-  {
-    return 659;
-  }
+  public abstract boolean a(String paramString, int paramInt);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract int e();
 }
 
 

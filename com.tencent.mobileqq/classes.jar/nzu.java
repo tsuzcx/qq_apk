@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 
-final class nzu
-  extends apck
+public final class nzu
+  implements Parcelable.Creator<EncryptUinInfo>
 {
-  nzu(String paramString)
+  public EncryptUinInfo a(Parcel paramParcel)
   {
-    super(paramString);
+    return new EncryptUinInfo(paramParcel);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public EncryptUinInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
-    }
+    return new EncryptUinInfo[paramInt];
   }
 }
 

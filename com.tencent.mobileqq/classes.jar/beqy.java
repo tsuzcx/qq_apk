@@ -1,70 +1,26 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.abtest.ABTestController;
-import com.tencent.mobileqq.abtest.ABTestController.EvtType;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class beqy
+public abstract class beqy
+  extends beqz
 {
-  private static beqy jdField_a_of_type_Beqy;
-  public static String a;
-  private adqg jdField_a_of_type_Adqg;
-  
-  static
+  public beqy(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    jdField_a_of_type_JavaLangString = "PhotoMessage";
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
   }
   
-  public beqy()
+  public void a(int paramInt1, bdyo parambdyo, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
   {
-    a();
-  }
-  
-  public static beqy a()
-  {
-    if (jdField_a_of_type_Beqy == null) {}
-    try
+    if (parambdyo.a)
     {
-      if (jdField_a_of_type_Beqy == null) {
-        jdField_a_of_type_Beqy = new beqy();
-      }
-      return jdField_a_of_type_Beqy;
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_hongbao", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_hongbao", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+      return;
     }
-    finally {}
-  }
-  
-  @Nullable
-  public adqg a()
-  {
-    if (this.jdField_a_of_type_Adqg != null) {
-      ABTestController.a("AIOPicThumbSizeABConfig", this.jdField_a_of_type_Adqg.a());
-    }
-    return this.jdField_a_of_type_Adqg;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Adqg == null) {
-      this.jdField_a_of_type_Adqg = ABTestController.a().a(jdField_a_of_type_JavaLangString, "171819", "171818");
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    adqg localadqg = a();
-    if (localadqg != null)
-    {
-      localadqg.a(jdField_a_of_type_JavaLangString + "_" + paramString);
-      ABTestController.a("AIOPicThumbSizeABConfig", localadqg.a());
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    adqg localadqg = a();
-    if (localadqg != null)
-    {
-      localadqg.a(ABTestController.EvtType.CLICK, jdField_a_of_type_JavaLangString + "_" + paramString);
-      ABTestController.a("AIOPicThumbSizeABConfig", localadqg.a());
-    }
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_sf", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_special_focus", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
   }
 }
 

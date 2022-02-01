@@ -1,17 +1,17 @@
 package cooperation.qzone.video;
 
-import axua;
+import awhh;
 import com.tencent.mobileqq.myapp.net.HttpResponseException;
 import com.tencent.qphone.base.util.QLog;
 
 public class TcSdkDownloadReportServlet$ReportRunnable
   implements Runnable
 {
-  private String a;
+  private String mReportUrl;
   
   public TcSdkDownloadReportServlet$ReportRunnable(TcSdkDownloadReportServlet paramTcSdkDownloadReportServlet, String paramString)
   {
-    this.a = paramString;
+    this.mReportUrl = paramString;
   }
   
   public void run()
@@ -19,9 +19,9 @@ public class TcSdkDownloadReportServlet$ReportRunnable
     try
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d("TcSdkDownloadReportServlet", 4, "tcSdkReport, report:" + this.a);
+        QLog.d("TcSdkDownloadReportServlet", 4, "tcSdkReport, report:" + this.mReportUrl);
       }
-      axua.a(this.a, null, "GET", null);
+      awhh.a(this.mReportUrl, null, "GET", null);
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "report success");
       }

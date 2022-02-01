@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
+import amtj;
 import android.app.Activity;
-import anzj;
-import blad;
-import blae;
-import blag;
+import bjga;
+import bjgb;
+import bjgd;
 
 public final class ShortcutUtils$4
   implements Runnable
@@ -13,8 +13,8 @@ public final class ShortcutUtils$4
   
   public void run()
   {
-    if (blag.a()) {
-      blag.a(this.a, anzj.a(2131712886), anzj.a(2131712892), anzj.a(2131712873), new blad(this), new blae(this)).show();
+    if (bjgd.a()) {
+      bjgd.a(this.a, amtj.a(2131713118), amtj.a(2131713124), amtj.a(2131713105), new bjga(this), new bjgb(this)).show();
     }
   }
 }

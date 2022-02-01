@@ -1,22 +1,17 @@
-public class arby
-  extends arbu
+import android.graphics.Point;
+import android.view.View;
+
+public abstract interface arby
 {
-  private arcs a;
+  public abstract View a(int paramInt);
   
-  public arby(String paramString, arcs paramarcs)
-  {
-    super(paramString);
-    this.a = paramarcs;
-  }
+  public abstract void a(View paramView);
   
-  public arcs a()
-  {
-    return this.a;
-  }
+  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arby
  * JD-Core Version:    0.7.0.1
  */

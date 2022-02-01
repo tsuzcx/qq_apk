@@ -1,86 +1,65 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.widget.XEditTextEx;
 
 public class wpt
-  extends wrj
+  implements wqm
 {
-  qqstory_service.RspGetCommentList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList;
-  
-  public wpt(wpm paramwpm) {}
-  
-  public wpt(wpm paramwpm, qqstory_service.RspGetCommentList paramRspGetCommentList)
-  {
-    super(paramRspGetCommentList.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList = paramRspGetCommentList;
-  }
+  private wpt(wpl paramwpl) {}
   
   public void a()
   {
-    boolean bool = false;
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.comment_list.get();
-    ArrayList localArrayList = new ArrayList();
-    wpm.a(this.jdField_a_of_type_Wpm, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.cookie.get().toStringUtf8());
-    wtt localwtt = (wtt)wth.a(2);
-    int i = 0;
-    if (i < ((List)localObject).size())
+    if (!wpl.b(this.a)) {
+      this.a.a();
+    }
+  }
+  
+  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    if (wpl.a(this.a) != null) {
+      wpl.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(@NonNull xhh paramxhh, ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isSuccess())
     {
-      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((List)localObject).get(i));
-      QQUserUIItem localQQUserUIItem = localwtt.c(localCommentEntry.authorUnionId);
-      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable()))
-      {
-        localCommentEntry.authorName = xiz.b;
-        label114:
-        if (!TextUtils.isEmpty(localCommentEntry.replyUin))
-        {
-          localQQUserUIItem = localwtt.c(localCommentEntry.replierUnionId);
-          if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-            break label187;
-          }
-        }
+      wpl.a(this.a, paramxhh);
+      wpl.a(this.a).setVisibility(0);
+      wpl.a(this.a, new xhw(this.a.getContext(), wpl.b(this.a), paramxhh, false, 4444, new wpq(this.a, null)));
+      if (wpl.a(this.a).a != null) {
+        wpl.a(this.a).a.setText(wpl.a(this.a).a);
       }
-      label187:
-      for (localCommentEntry.replierName = xiz.b;; localCommentEntry.replierName = localQQUserUIItem.nickName)
+      if (wpl.a(this.a))
       {
-        localArrayList.add(localCommentEntry);
-        i += 1;
-        break;
-        localCommentEntry.authorName = localQQUserUIItem.nickName;
-        break label114;
+        wpl.a(this.a, false);
+        wpl.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
       }
+      return;
     }
-    localObject = this.jdField_a_of_type_Wpm;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.is_end.get() == 1) {
-      bool = true;
-    }
-    ((wpm)localObject).jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Wpm.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.total_comment_num.get();
-    this.jdField_a_of_type_Wpm.jdField_a_of_type_Wqa.a(localArrayList);
+    wpl.a(this.a).setVisibility(8);
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Wpm.jdField_a_of_type_Wqa.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, new Object[] { "ReqGetCommentList NetWork ErrorCode:", Integer.valueOf(paramInt) });
+    if ((paramMotionEvent.getAction() == 1) && (wpl.a(this.a) != null) && (wpl.a(this.a).a()))
+    {
+      wpl.a(this.a).c();
+      return true;
     }
+    return false;
   }
   
-  public void a(int paramInt, String paramString)
+  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Wpm.jdField_a_of_type_Wqa.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "ReqGetCommentList fails: " + paramInt + "|" + paramString);
+    if (wpl.a(this.a) != null) {
+      wpl.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
     }
   }
 }

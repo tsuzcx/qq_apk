@@ -1,113 +1,204 @@
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameLifeCycle.1;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class alyd
 {
-  alye jdField_a_of_type_Alye;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<alye> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static String a;
+  public int a;
+  private alxe jdField_a_of_type_Alxe;
+  private alxs jdField_a_of_type_Alxs;
+  private CmGameStartChecker.StartCheckParam jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
   
-  int a(alye paramalye, boolean paramBoolean)
+  static
   {
-    int i = 1;
-    if (paramalye == null) {}
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        paramalye.jdField_a_of_type_Boolean = true;
-        j = paramalye.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
-        if ((j == 3) && (paramalye.jdField_c_of_type_JavaLangString != null) && (paramBoolean))
-        {
-          bhmi.d(paramalye.jdField_c_of_type_JavaLangString);
-          paramalye.jdField_c_of_type_JavaLangString = null;
-          return j;
-        }
-        i = j;
-      } while (j != 6);
-      i = j;
-    } while (paramalye.jdField_b_of_type_JavaLangString == null);
-    bhmi.d(paramalye.jdField_b_of_type_JavaLangString);
-    paramalye.jdField_b_of_type_JavaLangString = null;
-    return j;
+    jdField_a_of_type_JavaLangString = "cmgame_process.CmGameLifeCycle";
   }
   
-  public alye a()
+  public alyd(int paramInt)
   {
-    return this.jdField_a_of_type_Alye;
+    this.b = paramInt;
+  }
+  
+  private Activity a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  private QQAppInterface a()
+  {
+    AppInterface localAppInterface = alvx.a();
+    if ((localAppInterface instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppInterface;
+    }
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public alyf a()
+  {
+    if (this.jdField_a_of_type_Alxe == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Alxe.a();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Alye != null) {
-      this.jdField_a_of_type_Alye.jdField_b_of_type_Boolean = false;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Alye);
-      this.jdField_a_of_type_Alye = null;
-      return;
+    if (this.jdField_a_of_type_Alxe != null) {
+      this.jdField_a_of_type_Alxe.a();
     }
   }
   
-  public void a(String paramString, float paramFloat, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    a(paramString, paramFloat, paramInt, 0);
-  }
-  
-  public void a(String paramString, float paramFloat, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Alye != null) {
-      this.jdField_a_of_type_Alye.jdField_b_of_type_Boolean = true;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[handleActLifeCycle], gameId:" + paramInt1 + ",status:" + paramInt2);
+    Object localObject1 = a();
+    if (localObject1 == null) {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "app is null.");
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    do
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Alye);
-      this.jdField_a_of_type_Alye = null;
-      b(paramString, paramFloat, paramInt1, paramInt2);
-      return;
-    }
-  }
-  
-  void b()
-  {
-    alye localalye = null;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      do
       {
-        localalye = (alye)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      }
-      if ((localalye == null) || (a(localalye, localalye.jdField_b_of_type_Boolean) != 2)) {}
+        Object localObject2;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if ((2 == paramInt2) && (this.jdField_a_of_type_Alxe != null))
+                {
+                  localObject2 = this.jdField_a_of_type_Alxe.a();
+                  if (localObject2 != null) {
+                    ((alyf)localObject2).d();
+                  }
+                }
+                if (4 != paramInt2) {
+                  break;
+                }
+              } while (this.jdField_a_of_type_Alxe == null);
+              localObject1 = this.jdField_a_of_type_Alxe.a();
+            } while (localObject1 == null);
+            ((alyf)localObject1).e();
+            return;
+            if (1 != paramInt2) {
+              break;
+            }
+            localObject2 = a();
+            if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (localObject2 == null))
+            {
+              QLog.w(jdField_a_of_type_JavaLangString, 1, "null error.");
+              return;
+            }
+            if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId != paramInt1)
+            {
+              QLog.w(jdField_a_of_type_JavaLangString, 1, "not the same game.");
+              return;
+            }
+            if (this.jdField_a_of_type_Alxe != null) {
+              CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Alxe);
+            }
+            if (this.jdField_a_of_type_Alxs != null) {
+              CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Alxs);
+            }
+            this.jdField_a_of_type_Alxs = new alxs((Activity)localObject2, (QQAppInterface)localObject1, this.b);
+            CmGameCmdChannel.a((QQAppInterface)localObject1).a(this.jdField_a_of_type_Alxs);
+            if ((!alvx.a(this.b)) && (!alvx.b(this.b)))
+            {
+              alyf localalyf = new alyf((Activity)localObject2, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+              this.jdField_a_of_type_Alxe = new alxe((Activity)localObject2, localalyf, this.b);
+              CmGameCmdChannel.a((QQAppInterface)localObject1).a(this.jdField_a_of_type_Alxe);
+              localalyf.a((Activity)localObject2);
+              localalyf.f();
+              localalyf.g();
+              return;
+            }
+          } while (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null);
+          QLog.e(jdField_a_of_type_JavaLangString, 1, "land or game box game data not exit");
+          ApolloGameUtil.a((QQAppInterface)localObject1, 0L);
+          return;
+        } while (5 != paramInt2);
+        if (this.jdField_a_of_type_Alxe != null)
+        {
+          localObject2 = this.jdField_a_of_type_Alxe.a();
+          if (localObject2 != null) {
+            ((alyf)localObject2).j();
+          }
+          this.jdField_a_of_type_Alxe.a();
+          CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Alxe);
+          this.jdField_a_of_type_Alxe = null;
+        }
+        if (this.jdField_a_of_type_Alxs != null)
+        {
+          this.jdField_a_of_type_Alxs.a();
+          CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Alxs);
+          this.jdField_a_of_type_Alxs = null;
+        }
+      } while ((alvx.a(this.b)) || (alvx.b(this.b)) || (a() == null));
+      localObject1 = (alnr)a().getManager(153);
+    } while ((localObject1 == null) || (!((alnr)localObject1).j()) || (alvx.a(null)) || (((alnr)localObject1).k) || (((alnr)localObject1).h()) || (((alnr)localObject1).i()) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
+    ((alnr)localObject1).h = false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src != 319) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src != 318)) {
+      alvx.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(localalye);
-      return;
-      localObject1 = finally;
-      throw localObject1;
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "plus status first play goBackToPlus");
+  }
+  
+  public void a(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+  }
+  
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game = paramStartCheckParam.game;
     }
   }
   
-  void b(String paramString, float paramFloat, int paramInt1, int paramInt2)
+  public void b()
   {
-    alye localalye = new alye(this);
-    localalye.jdField_a_of_type_Boolean = false;
-    localalye.jdField_a_of_type_JavaLangString = paramString;
-    localalye.jdField_a_of_type_Int = paramInt1;
-    localalye.jdField_c_of_type_Int = paramInt2;
-    paramInt2 = (int)(localalye.jdField_a_of_type_Int / paramFloat);
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 > 0) {
-      paramInt1 = paramInt2 - 1;
+    if (this.jdField_a_of_type_Alxe != null)
+    {
+      alyf localalyf = this.jdField_a_of_type_Alxe.a();
+      if ((localalyf != null) && (localalyf.a)) {
+        ThreadManagerV2.getUIHandlerV2().post(new CmGameLifeCycle.1(this, localalyf));
+      }
     }
-    localalye.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Alye = localalye;
-    localalye.jdField_a_of_type_Alyf.jdField_a_of_type_Alye = localalye;
-    localalye.jdField_a_of_type_Alyf.execute(new Void[0]);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Alxe != null)
+    {
+      alyf localalyf = this.jdField_a_of_type_Alxe.a();
+      if ((localalyf != null) && (localalyf.a)) {
+        localalyf.h();
+      }
+    }
   }
 }
 

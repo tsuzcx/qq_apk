@@ -1,23 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class nhy
-  implements QQPermissionCallback
+class nhy
+  implements View.OnClickListener
 {
-  nhy(DialogInterface.OnClickListener paramOnClickListener) {}
+  nhy(nhx paramnhx) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.w(nhv.a, 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 0);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w(nhv.a, 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 1);
+    nhx.a(this.a, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

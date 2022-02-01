@@ -1,69 +1,96 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class akoi
-  extends azov
+  extends akns
+  implements Cloneable
 {
-  private akoi(ContactListView paramContactListView) {}
+  public int c;
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public akoi(Context paramContext, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (!bhnv.d(this.a.getContext())))
-    {
-      this.a.i();
-      this.a.g();
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131718959);
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = amtj.a(2131718960);
     }
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d();
-    if (!paramBoolean1)
+    if (paramInt == 29)
     {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_Auxu instanceof ForwardShareCardOption))) && (this.a.b == 0)) {
-        this.a.a(2131717454, 3000L);
-      }
+      parambdyi = new akoi(BaseApplication.getContext(), false);
+      parambdyi.c = 1;
+      return parambdyi;
     }
-    do
+    if ((paramObject instanceof akoi))
     {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f());
-    this.a.a(2131717902, 0L, false);
+      paramObject = (akoi)paramObject;
+      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
+      return paramObject;
+    }
+    paramObject = new akoi(BaseApplication.getContext(), false);
+    paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
+    return paramObject;
   }
   
-  protected void b(boolean paramBoolean)
+  public void a(byte[] paramArrayOfByte)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
+      QLog.d(akoi.class.getSimpleName(), 2, "deSerialize");
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
-      this.a.j();
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("remindText");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getInt("ctl_flag");
+      if (this.jdField_a_of_type_Bdyj == null) {
+        this.jdField_a_of_type_Bdyj = new bdyj();
+      }
+      this.jdField_a_of_type_Bdyj.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
   
-  protected void e(boolean paramBoolean, int paramInt)
+  public byte[] a()
   {
-    if (paramBoolean)
-    {
-      this.a.i();
-      ContactListView.a(this.a, true);
-      if ((paramInt & 0x1) == 0) {
-        this.a.g();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(akoi.class.getSimpleName(), 2, "serialize");
     }
-    for (;;)
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if (this.a.jdField_a_of_type_Int == 6) {
-        this.a.f();
+      localJSONObject.put("remindText", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("ctl_flag", this.c);
+      if (this.jdField_a_of_type_Bdyj != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bdyj.a());
       }
-      return;
-      this.a.g();
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

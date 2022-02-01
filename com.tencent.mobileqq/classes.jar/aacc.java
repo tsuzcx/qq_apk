@@ -1,6 +1,22 @@
-public abstract interface aacc
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
+
+class aacc
+  implements QQPermissionCallback
 {
-  public abstract void a();
+  aacc(aaca paramaaca) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bfur.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    aaca.e(this.a);
+  }
 }
 
 

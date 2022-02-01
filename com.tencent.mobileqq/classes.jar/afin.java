@@ -1,31 +1,17 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afin
-  implements bimf
+class afin
+  implements View.OnClickListener
 {
-  public afin(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
+  afin(afim paramafim) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
-      if (paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQSettingRedesign", 2, paramBoolean);
-      return;
-    }
+    agtw.a(this.a.app, this.a.getActivity(), this.a.sessionInfo, 1, false, this.a.app.getCurrentUin(), "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

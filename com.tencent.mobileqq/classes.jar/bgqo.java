@@ -1,20 +1,25 @@
-import android.util.SparseArray;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
 
-class bgqo
-  extends bgqq
+public class bgqo
+  implements bfvg
 {
-  bgqo(bgqm parambgqm) {}
+  private Dialog a;
   
-  protected void a(boolean paramBoolean)
+  public Dialog a(Context paramContext, bgqg parambgqg, View.OnClickListener paramOnClickListener)
   {
-    if (paramBoolean) {}
-    synchronized (this.a.a)
-    {
-      this.a.a.clear();
-      this.a.b();
-      bgqm.a(this.a);
-      return;
-    }
+    this.a = bfur.a(paramContext, 2131693317, this, parambgqg, 2131690620, 2131693315, new bgqp(this), paramOnClickListener, false, false);
+    return this.a;
+  }
+  
+  public View a(Context paramContext, Object paramObject)
+  {
+    paramContext = new LiangHaoDialogView(paramContext);
+    paramContext.a((bgqg)paramObject);
+    return paramContext;
   }
 }
 

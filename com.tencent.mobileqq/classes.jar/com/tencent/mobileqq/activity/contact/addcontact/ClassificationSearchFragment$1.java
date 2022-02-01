@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajfc;
+import ahzl;
 
 public class ClassificationSearchFragment$1
   implements Runnable
 {
-  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, ajfc paramajfc) {}
+  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, ahzl paramahzl) {}
   
   public void run()
   {

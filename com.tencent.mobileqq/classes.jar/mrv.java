@@ -1,10 +1,10 @@
-import com.tencent.av.VideoController;
+import android.content.Context;
 
 public class mrv
 {
-  public static void a()
+  public static void a(Context paramContext, String paramString, int paramInt, mrw parammrw)
   {
-    mru.a("0X800A3D8", VideoController.a().a().d);
+    parammrw.a(paramContext, paramString);
   }
 }
 

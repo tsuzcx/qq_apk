@@ -1,78 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController.DrawerInfoCallback.1;
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController.DrawerInfoCallback.2;
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amvl
-  implements View.OnClickListener, angl
+  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
 {
-  private amvl(FriendCardApolloViewController paramFriendCardApolloViewController) {}
+  private List<String> a = new ArrayList();
   
   public void a()
   {
-    Object localObject3 = null;
-    QQAppInterface localQQAppInterface = this.a.a();
-    FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)FriendCardApolloViewController.a(this.a).get();
-    Object localObject1 = (View)FriendCardApolloViewController.b(this.a).get();
-    if ((localQQAppInterface == null) || (localFriendProfileCardActivity == null) || (localObject1 == null)) {
-      return;
-    }
-    if ((!TextUtils.isEmpty(FriendCardApolloViewController.a(this.a))) && ((this.a.a == null) || (this.a.a.getVisibility() != 0))) {
-      ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.1(this, localFriendProfileCardActivity, (View)localObject1));
-    }
-    Object localObject2 = localFriendProfileCardActivity.a;
-    if ((localObject2 != null) && (((azxr)localObject2).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null)) {}
-    for (localObject1 = ((azxr)localObject2).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;; localObject1 = null)
-    {
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null) && (((azxr)localObject2).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {}
-      for (localObject2 = ((azxr)localObject2).jdField_a_of_type_ComTencentMobileqqDataCard.uin;; localObject2 = localObject1)
-      {
-        amsx localamsx = (amsx)localQQAppInterface.getManager(153);
-        localObject1 = localObject3;
-        if (!FriendCardApolloViewController.a(this.a)) {
-          localObject1 = localamsx.a(localQQAppInterface, (String)localObject2, new int[] { 4 });
-        }
-        int i = 5;
-        if (localObject1 == null)
-        {
-          localObject1 = new ApolloActionData();
-          ((ApolloActionData)localObject1).actionId = -1;
-          ((ApolloActionData)localObject1).actionType = 0;
-        }
-        for (;;)
-        {
-          angi.a(FriendCardApolloViewController.a(this.a), i, (ApolloActionData)localObject1);
-          new amyo((String)localObject2).a(FriendCardApolloViewController.a(this.a), localFriendProfileCardActivity, localQQAppInterface, anzj.a(2131703759));
-          return;
-          i = 12;
-        }
-      }
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
     }
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void b()
   {
-    ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.2(this, paramInt1, paramInt2, paramString));
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
+    }
   }
   
-  public void b() {}
-  
-  public void onClick(View paramView)
+  public List<String> getRedPointPaths(AppInterface paramAppInterface)
   {
-    this.a.a(1, 0, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
+    }
+    return null;
   }
 }
 

@@ -1,15 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.av.random.RandomWebProtocol;
-
-public class ltn
-  extends ltl
+public abstract interface ltn
 {
-  public Bitmap a;
-  
-  public ltn(RandomWebProtocol paramRandomWebProtocol)
-  {
-    this.a = -100;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

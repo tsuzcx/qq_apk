@@ -1,9 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
+import java.util.List;
 
-public abstract interface axmn
+public class axmn
 {
-  public abstract void b(View paramView, MotionEvent paramMotionEvent);
+  public List<axml> a;
+  public boolean a;
+  public List<axol> b;
 }
 
 

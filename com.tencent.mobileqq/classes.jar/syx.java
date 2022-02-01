@@ -1,10 +1,25 @@
-public abstract interface syx
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+
+public class syx
+  implements Animator.AnimatorListener
 {
-  public abstract int a();
+  public syx(ZImageView paramZImageView) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    ZImageView.access$000(this.a);
+  }
   
-  public abstract boolean a(int paramInt);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ZImageView.access$000(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

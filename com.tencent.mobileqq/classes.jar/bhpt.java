@@ -1,25 +1,20 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.open.agent.AuthorityActivity.5;
 
-class bhpt
-  implements View.OnClickListener
+public class bhpt
+  implements DialogInterface.OnClickListener
 {
-  bhpt(bhpr parambhpr, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bhpt(AuthorityActivity.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpr, 0);
-    }
-    this.jdField_a_of_type_Bhpr.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpt
  * JD-Core Version:    0.7.0.1
  */

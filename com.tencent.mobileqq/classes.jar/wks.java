@@ -1,13 +1,17 @@
-public class wks
-  implements wiq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+final class wks
+  implements DialogInterface.OnClickListener
 {
-  public String a;
+  wks(StoryVideoItem paramStoryVideoItem, String paramString) {}
   
-  public void copy(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject instanceof wks)) {
-      this.a = ((wks)paramObject).a;
-    }
+    xvv.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
+    vns.a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

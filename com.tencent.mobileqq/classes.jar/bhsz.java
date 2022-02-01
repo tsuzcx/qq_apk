@@ -1,32 +1,31 @@
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bhsz
-  extends ClickableSpan
+public class bhsz
+  implements View.OnClickListener
 {
-  bhsz(Context paramContext, aydg paramaydg) {}
+  public bhsz(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Aydg.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Aydg.b());
+    if (System.currentTimeMillis() - OpenAuthorityFragment.d(this.a) > 1000L)
+    {
+      OpenAuthorityFragment.a(this.a).a.setClickable(false);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
+      localIntent.putExtra("key_proxy_appid", OpenAuthorityFragment.c(this.a));
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      adxr.a(this.a.getActivity(), localIntent, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
+      OpenAuthorityFragment.a(this.a).a.setClickable(true);
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#00aced"));
-    paramTextPaint.setUnderlineText(false);
+    OpenAuthorityFragment.b(this.a, System.currentTimeMillis());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

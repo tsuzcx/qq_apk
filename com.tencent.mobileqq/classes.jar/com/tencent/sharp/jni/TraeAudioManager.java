@@ -7,12 +7,12 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
-import blfb;
-import blfc;
-import blfd;
-import blfe;
-import blff;
-import blfl;
+import bjlf;
+import bjlg;
+import bjlh;
+import bjli;
+import bjlj;
+import bjlp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -21,8 +21,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
-import lbj;
-import muk;
+import lba;
+import mtt;
 
 public class TraeAudioManager
   extends BroadcastReceiver
@@ -33,13 +33,13 @@ public class TraeAudioManager
   static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "FORCE_NONE", "FORCE_SPEAKER", "FORCE_HEADPHONES", "FORCE_BT_SCO", "FORCE_BT_A2DP", "FORCE_WIRED_ACCESSORY", "FORCE_BT_CAR_DOCK", "FORCE_BT_DESK_DOCK", "FORCE_ANALOG_DOCK", "FORCE_NO_BT_A2DP", "FORCE_DIGITAL_DOCK" };
   static int e = -1;
   public int a;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  public AudioManager a;
-  blfe jdField_a_of_type_Blfe = null;
-  blff jdField_a_of_type_Blff = null;
-  blfl jdField_a_of_type_Blfl = null;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  bjli jdField_a_of_type_Bjli = null;
+  bjlj jdField_a_of_type_Bjlj = null;
+  bjlp jdField_a_of_type_Bjlp = null;
+  private TraeAudioManager.SwitchThread jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread;
   TraeAudioManager.TraeAudioManagerLooper jdField_a_of_type_ComTencentSharpJniTraeAudioManager$TraeAudioManagerLooper = null;
-  TraeAudioManager.switchThread jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread = null;
   String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
   boolean jdField_a_of_type_Boolean = true;
   int jdField_b_of_type_Int = 0;
@@ -50,7 +50,6 @@ public class TraeAudioManager
   
   TraeAudioManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidMediaAudioManager = null;
     this.jdField_a_of_type_Int = 0;
     AudioDeviceInterface.LogTraceEntry(" context:" + paramContext);
     if (paramContext == null) {
@@ -121,7 +120,7 @@ public class TraeAudioManager
     localHashMap.put("PARAM_SESSIONID", Long.valueOf(paramLong2));
     localHashMap.put("PARAM_OPERATION", paramString);
     localHashMap.put("PARAM_ISHOSTSIDE", Boolean.valueOf(paramBoolean));
-    muk.a(localHashMap, paramLong1);
+    mtt.a(localHashMap, paramLong1);
     return a(32778, localHashMap);
   }
   
@@ -139,7 +138,7 @@ public class TraeAudioManager
     localHashMap.put("PARAM_RING_LOOPCOUNT", Integer.valueOf(paramInt3));
     localHashMap.put("PARAM_RING_MODE", Boolean.valueOf(paramBoolean3));
     localHashMap.put("PARAM_RING_USERDATA_STRING", paramString3);
-    muk.a(localHashMap, paramLong1);
+    mtt.a(localHashMap, paramLong1);
     return a(32782, localHashMap);
   }
   
@@ -154,7 +153,7 @@ public class TraeAudioManager
     localHashMap.put("PARAM_ISHOSTSIDE", Boolean.valueOf(paramBoolean));
     localHashMap.put("CONNECTDEVICE_DEVICENAME", paramString2);
     localHashMap.put("PARAM_DEVICE", paramString2);
-    muk.a(localHashMap, paramLong1);
+    mtt.a(localHashMap, paramLong1);
     return a(32775, localHashMap);
   }
   
@@ -169,7 +168,7 @@ public class TraeAudioManager
     localHashMap.put("PARAM_ISHOSTSIDE", Boolean.valueOf(paramBoolean));
     localHashMap.put("EXTRA_DATA_DEVICECONFIG", paramString2);
     localHashMap.put("EXTRA_DATA_CONNECTDEVICENAMEWHENSERVICEON", paramString3);
-    muk.a(localHashMap, paramLong1);
+    mtt.a(localHashMap, paramLong1);
     return a(32772, localHashMap);
   }
   
@@ -226,12 +225,12 @@ public class TraeAudioManager
     if (jdField_a_of_type_ComTencentSharpJniTraeAudioManager != null)
     {
       i = j;
-      if (jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Blfl != null)
+      if (jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bjlp != null)
       {
         if (!paramBoolean) {
           break label59;
         }
-        jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Blfl.a(paramLong, paramContext);
+        jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bjlp.a(paramLong, paramContext);
       }
     }
     for (;;)
@@ -240,7 +239,7 @@ public class TraeAudioManager
       jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
       return i;
       label59:
-      jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Blfl.a(paramLong);
+      jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bjlp.a(paramLong);
     }
   }
   
@@ -330,7 +329,7 @@ public class TraeAudioManager
     if ((paramInt >= 0) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length)) {
       return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
     }
-    return "unknow";
+    return "unknown";
   }
   
   static void a(int paramInt1, int paramInt2)
@@ -345,6 +344,105 @@ public class TraeAudioManager
     if (QLog.isColorLevel()) {
       QLog.w("TraeAudioManager", 2, "setForceUse  usage:" + paramInt1 + " config:" + paramInt2 + " ->" + a(paramInt2) + " res:" + localObject);
     }
+  }
+  
+  private void a(Context paramContext, Intent paramIntent, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE.qav onReceiveManagerRequest", 2, "   OPERATION:" + paramString);
+    }
+    if ("OPERATION_REGISTERAUDIOSESSION".equals(paramString)) {
+      a(paramIntent.getBooleanExtra("REGISTERAUDIOSESSION_ISREGISTER", false), paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), paramContext);
+    }
+    do
+    {
+      return;
+      if ("OPERATION_STARTSERVICE".equals(paramString))
+      {
+        a(paramLong, paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, paramIntent.getStringExtra("EXTRA_DATA_DEVICECONFIG"), paramIntent.getStringExtra("EXTRA_DATA_CONNECTDEVICENAMEWHENSERVICEON"));
+        return;
+      }
+      if ("OPERATION_STOPSERVICE".equals(paramString))
+      {
+        c(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_GETDEVICELIST".equals(paramString))
+      {
+        a(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_GETSTREAMTYPE".equals(paramString))
+      {
+        b(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_CONNECTDEVICE".equals(paramString))
+      {
+        a(paramLong, paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, paramIntent.getStringExtra("CONNECTDEVICE_DEVICENAME"));
+        return;
+      }
+      if ("OPERATION_CONNECT_HIGHEST_PRIORITY_DEVICE".equals(paramString))
+      {
+        d(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_EARACTION".equals(paramString))
+      {
+        a(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, paramIntent.getIntExtra("EXTRA_EARACTION", -1));
+        return;
+      }
+      if ("OPERATION_ISDEVICECHANGABLED".equals(paramString))
+      {
+        e(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_GETCONNECTEDDEVICE".equals(paramString))
+      {
+        a(paramLong, paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_GETCONNECTINGDEVICE".equals(paramString))
+      {
+        f(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      int i;
+      int j;
+      if ("OPERATION_VOICECALL_PREPROCESS".equals(paramString))
+      {
+        i = paramIntent.getIntExtra("PARAM_MODEPOLICY", -1);
+        j = paramIntent.getIntExtra("PARAM_STREAMTYPE", -1);
+        a(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, i, j);
+        return;
+      }
+      if ("OPERATION_VOICECALL_POSTROCESS".equals(paramString))
+      {
+        g(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
+        return;
+      }
+      if ("OPERATION_VOICECALL_AUDIOPARAM_CHANGED".equals(paramString))
+      {
+        i = paramIntent.getIntExtra("PARAM_MODEPOLICY", -1);
+        j = paramIntent.getIntExtra("PARAM_STREAMTYPE", -1);
+        b(paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, i, j);
+        return;
+      }
+      if ("OPERATION_STARTRING".equals(paramString))
+      {
+        i = paramIntent.getIntExtra("PARAM_RING_DATASOURCE", -1);
+        j = paramIntent.getIntExtra("PARAM_RING_RSID", -1);
+        paramContext = (Uri)paramIntent.getParcelableExtra("PARAM_RING_URI");
+        String str1 = paramIntent.getStringExtra("PARAM_RING_FILEPATH");
+        boolean bool1 = paramIntent.getBooleanExtra("PARAM_RING_LOOP", false);
+        String str2 = paramIntent.getStringExtra("PARAM_RING_USERDATA_STRING");
+        int k = paramIntent.getIntExtra("PARAM_RING_LOOPCOUNT", 1);
+        boolean bool2 = paramIntent.getBooleanExtra("PARAM_RING_MODE", false);
+        a(paramLong, paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, i, j, paramContext, str1, bool1, k, str2, bool2);
+        return;
+      }
+    } while (!"OPERATION_STOPRING".equals(paramString));
+    b(paramLong, paramString, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
   }
   
   static void a(AudioManager paramAudioManager, int paramInt)
@@ -468,7 +566,7 @@ public class TraeAudioManager
     localHashMap.put("PARAM_SESSIONID", Long.valueOf(paramLong2));
     localHashMap.put("PARAM_OPERATION", paramString);
     localHashMap.put("PARAM_ISHOSTSIDE", Boolean.valueOf(paramBoolean));
-    muk.a(localHashMap, paramLong1);
+    mtt.a(localHashMap, paramLong1);
     return a(32783, localHashMap);
   }
   
@@ -579,7 +677,7 @@ public class TraeAudioManager
     }
     catch (Exception localException)
     {
-      lbj.e("TraeAudioManager", localException.getMessage());
+      lba.h("TraeAudioManager", localException.getMessage());
     }
     return false;
   }
@@ -643,7 +741,7 @@ public class TraeAudioManager
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       return -1;
     }
-    Object localObject = this.jdField_a_of_type_Blff.a();
+    Object localObject = this.jdField_a_of_type_Bjlj.a();
     ArrayList localArrayList = (ArrayList)((HashMap)localObject).get("EXTRA_DATA_AVAILABLEDEVICE_LIST");
     String str = (String)((HashMap)localObject).get("EXTRA_DATA_CONNECTEDDEVICE");
     localObject = (String)((HashMap)localObject).get("EXTRA_DATA_PREV_CONNECTEDDEVICE");
@@ -653,7 +751,7 @@ public class TraeAudioManager
     localIntent.putExtra("EXTRA_DATA_AVAILABLEDEVICE_LIST", (String[])localArrayList.toArray(new String[0]));
     localIntent.putExtra("EXTRA_DATA_CONNECTEDDEVICE", str);
     localIntent.putExtra("EXTRA_DATA_PREV_CONNECTEDDEVICE", (String)localObject);
-    localIntent.putExtra("EXTRA_DATA_IF_HAS_BLUETOOTH_THIS_IS_NAME", this.jdField_a_of_type_Blff.a());
+    localIntent.putExtra("EXTRA_DATA_IF_HAS_BLUETOOTH_THIS_IS_NAME", this.jdField_a_of_type_Bjlj.a());
     try
     {
       this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
@@ -743,10 +841,10 @@ public class TraeAudioManager
       do
       {
         return -1;
-        if ((!this.jdField_a_of_type_Blff.d().equals("DEVICE_NONE")) && (paramString.equals(this.jdField_a_of_type_Blff.d()))) {
+        if ((!this.jdField_a_of_type_Bjlj.d().equals("DEVICE_NONE")) && (paramString.equals(this.jdField_a_of_type_Bjlj.d()))) {
           return 0;
         }
-        if ((a(paramString) == true) && (this.jdField_a_of_type_Blff.b(paramString) == true)) {
+        if ((a(paramString) == true) && (this.jdField_a_of_type_Bjlj.b(paramString) == true)) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -758,53 +856,53 @@ public class TraeAudioManager
     } while (!QLog.isColorLevel());
     QLog.e("TraeAudioManager", 2, " InternalIsDeviceChangeable fail");
     return -1;
-    this.jdField_a_of_type_Blff.c(paramString);
-    if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread != null)
+    this.jdField_a_of_type_Bjlj.c(paramString);
+    if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 1, "InternalConnectDevice, quit, _switchThread[" + this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread.a() + "], running_stat[" + this.jdField_a_of_type_Boolean + "], seq[" + paramLong + "]");
+        QLog.w("TraeAudioManager", 1, "InternalConnectDevice, quit, _switchThread[" + this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread.a() + "], running_stat[" + this.jdField_a_of_type_Boolean + "], seq[" + paramLong + "]");
       }
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread.b(paramLong);
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread = null;
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread.b(paramLong);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread = null;
     }
     if (paramString.equals("DEVICE_EARPHONE")) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread = new TraeAudioManager.earphoneSwitchThread(this, paramLong);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread = new TraeAudioManager.EarphoneSwitchThread(this, paramLong);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread != null)
+      if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread.a(paramHashMap);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread.a(paramHashMap);
         paramHashMap = new Intent();
         paramHashMap.setAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
         paramHashMap.putExtra("PARAM_OPERATION", "NOTIFY_BEGIN_CONNECTED_DEVICE");
         paramHashMap.putExtra("CONNECTDEVICE_DEVICENAME", paramString);
-        muk.a(paramHashMap, paramLong);
+        mtt.a(paramHashMap, paramLong);
       }
       try
       {
         this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramHashMap);
-        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread.a(paramLong);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread.a(paramLong);
         if (QLog.isColorLevel()) {
           QLog.w("TraeAudioManager", 1, "InternalConnectDevice.end, devName[" + paramString + "], seq[" + paramLong + "]");
         }
         return 0;
         if (paramString.equals("DEVICE_SPEAKERPHONE"))
         {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread = new TraeAudioManager.speakerSwitchThread(this, paramLong);
+          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread = new TraeAudioManager.speakerSwitchThread(this, paramLong);
           continue;
         }
         if (paramString.equals("DEVICE_WIREDHEADSET"))
         {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread = new TraeAudioManager.headsetSwitchThread(this, paramLong);
+          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread = new TraeAudioManager.headsetSwitchThread(this, paramLong);
           continue;
         }
         if (!paramString.equals("DEVICE_BLUETOOTHHEADSET")) {
           continue;
         }
-        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$switchThread = new TraeAudioManager.bluetoothHeadsetSwitchThread(this, paramLong);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$SwitchThread = new TraeAudioManager.bluetoothHeadsetSwitchThread(this, paramLong);
       }
       catch (Exception paramHashMap)
       {
@@ -827,7 +925,7 @@ public class TraeAudioManager
     Object localObject1 = (String)paramHashMap.get("PARAM_DEVICE");
     boolean bool = b();
     int i;
-    if (a((String)localObject1) != true) {
+    if (!a((String)localObject1)) {
       i = 7;
     }
     for (;;)
@@ -835,7 +933,7 @@ public class TraeAudioManager
       this.jdField_a_of_type_JavaLangString = ((String)localObject1);
       Object localObject2 = paramHashMap.get("PARAM_SESSIONID");
       if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 1, "InternalSessionConnectDevice, sessonID[" + localObject2 + "], devName[" + (String)localObject1 + "], bChangabled[" + bool + "], err[" + i + "], seq[" + paramLong + "]");
+        QLog.w("TraeAudioManager", 1, "InternalSessionConnectDevice, sessionId[" + localObject2 + "], devName[" + (String)localObject1 + "], changeable[" + bool + "], err[" + i + "], seq[" + paramLong + "]");
       }
       if (i != 0)
       {
@@ -843,7 +941,7 @@ public class TraeAudioManager
         ((Intent)localObject1).putExtra("CONNECTDEVICE_RESULT_DEVICENAME", (String)paramHashMap.get("PARAM_DEVICE"));
         a((Intent)localObject1, paramHashMap, i);
         return -1;
-        if (!this.jdField_a_of_type_Blff.b((String)localObject1))
+        if (!this.jdField_a_of_type_Bjlj.b((String)localObject1))
         {
           i = 8;
           continue;
@@ -856,7 +954,7 @@ public class TraeAudioManager
       }
       else
       {
-        if (((String)localObject1).equals(this.jdField_a_of_type_Blff.d()))
+        if (((String)localObject1).equals(this.jdField_a_of_type_Bjlj.d()))
         {
           if (QLog.isColorLevel()) {
             QLog.e("TraeAudioManager", 2, " --has connected!");
@@ -884,7 +982,7 @@ public class TraeAudioManager
     }
     Long localLong = (Long)paramHashMap.get("PARAM_SESSIONID");
     String str = (String)paramHashMap.get("PARAM_OPERATION");
-    long l = muk.a(paramHashMap);
+    long l = mtt.a(paramHashMap);
     if (QLog.isColorLevel()) {
       QLog.w("TraeAudioManager", 1, "sendResBroadcast, operation[" + str + "], sessionID[" + localLong + "], seq[" + l + "]");
     }
@@ -897,7 +995,7 @@ public class TraeAudioManager
     paramIntent.putExtra("PARAM_SESSIONID", localLong);
     paramIntent.putExtra("PARAM_OPERATION", str);
     paramIntent.putExtra("PARAM_RES_ERRCODE", paramInt);
-    muk.a(paramHashMap, l);
+    mtt.a(paramHashMap, l);
     try
     {
       this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramIntent);
@@ -963,20 +1061,20 @@ public class TraeAudioManager
     return 0;
   }
   
-  public blfe a(Context paramContext, blff paramblff)
+  public bjli a(Context paramContext, bjlj parambjlj)
   {
     Object localObject1;
     Object localObject2;
     if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT != 18))
     {
-      localObject1 = new blfb(this);
+      localObject1 = new bjlf(this);
       localObject2 = localObject1;
-      if (!((blfe)localObject1).a(paramContext, paramblff)) {
-        localObject2 = new blfc(this);
+      if (!((bjli)localObject1).a(paramContext, parambjlj)) {
+        localObject2 = new bjlg(this);
       }
       if (QLog.isColorLevel())
       {
-        paramblff = new StringBuilder().append("CreateBluetoothCheck:").append(((blfe)localObject2).a()).append(" skip android4.3:");
+        parambjlj = new StringBuilder().append("CreateBluetoothCheck:").append(((bjli)localObject2).a()).append(" skip android4.3:");
         if (Build.VERSION.SDK_INT != 18) {
           break label142;
         }
@@ -989,10 +1087,10 @@ public class TraeAudioManager
       return localObject2;
       if (Build.VERSION.SDK_INT != 18)
       {
-        localObject1 = new blfd(this);
+        localObject1 = new bjlh(this);
         break;
       }
-      localObject1 = new blfc(this);
+      localObject1 = new bjlg(this);
       break;
     }
   }
@@ -1001,18 +1099,18 @@ public class TraeAudioManager
   {
     int j = 0;
     AudioDeviceInterface.LogTraceEntry("");
-    int k = this.jdField_a_of_type_Blff.a();
+    int k = this.jdField_a_of_type_Bjlj.a();
     if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "   ConnectedDevice:" + this.jdField_a_of_type_Blff.d());
+      QLog.w("TraeAudioManager", 2, "   ConnectedDevice:" + this.jdField_a_of_type_Bjlj.d());
     }
     if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "   ConnectingDevice:" + this.jdField_a_of_type_Blff.c());
+      QLog.w("TraeAudioManager", 2, "   ConnectingDevice:" + this.jdField_a_of_type_Bjlj.c());
     }
     if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "   prevConnectedDevice:" + this.jdField_a_of_type_Blff.e());
+      QLog.w("TraeAudioManager", 2, "   prevConnectedDevice:" + this.jdField_a_of_type_Bjlj.e());
     }
     if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "   AHPDevice:" + this.jdField_a_of_type_Blff.b());
+      QLog.w("TraeAudioManager", 2, "   AHPDevice:" + this.jdField_a_of_type_Bjlj.b());
     }
     if (QLog.isColorLevel()) {
       QLog.w("TraeAudioManager", 2, "   deviceNamber:" + k);
@@ -1020,13 +1118,13 @@ public class TraeAudioManager
     int i = 0;
     while (i < k)
     {
-      localObject = this.jdField_a_of_type_Blff.a(i);
+      localObject = this.jdField_a_of_type_Bjlj.a(i);
       if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "      " + i + " devName:" + (String)localObject + " Visible:" + this.jdField_a_of_type_Blff.b((String)localObject) + " Priority:" + this.jdField_a_of_type_Blff.a((String)localObject));
+        QLog.w("TraeAudioManager", 2, "      " + i + " devName:" + (String)localObject + " Visible:" + this.jdField_a_of_type_Bjlj.b((String)localObject) + " Priority:" + this.jdField_a_of_type_Bjlj.a((String)localObject));
       }
       i += 1;
     }
-    Object localObject = (String[])this.jdField_a_of_type_Blff.a().toArray(new String[0]);
+    Object localObject = (String[])this.jdField_a_of_type_Bjlj.a().toArray(new String[0]);
     i = j;
     if (QLog.isColorLevel())
     {
@@ -1037,7 +1135,7 @@ public class TraeAudioManager
     {
       String str = localObject[i];
       if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "      " + i + " devName:" + str + " Visible:" + this.jdField_a_of_type_Blff.b(str) + " Priority:" + this.jdField_a_of_type_Blff.a(str));
+        QLog.w("TraeAudioManager", 2, "      " + i + " devName:" + str + " Visible:" + this.jdField_a_of_type_Bjlj.b(str) + " Priority:" + this.jdField_a_of_type_Bjlj.a(str));
       }
       i += 1;
     }
@@ -1075,14 +1173,14 @@ public class TraeAudioManager
   
   void a(long paramLong, String paramString)
   {
-    int j = this.jdField_a_of_type_Blff.a();
+    int j = this.jdField_a_of_type_Bjlj.a();
     Object localObject;
     boolean bool;
     int i;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder().append("updateDeviceStatus, connectDeviceNameWhenServiceOn[").append(paramString).append("], getDeviceNumber[").append(j).append("], _bluetoothCheck[");
-      if (this.jdField_a_of_type_Blfe != null)
+      if (this.jdField_a_of_type_Bjli != null)
       {
         bool = true;
         QLog.w("TraeAudioManager", 1, bool + "], seq[" + paramLong + "]");
@@ -1095,39 +1193,39 @@ public class TraeAudioManager
       if (i >= j) {
         break label317;
       }
-      localObject = this.jdField_a_of_type_Blff.a(i);
+      localObject = this.jdField_a_of_type_Bjlj.a(i);
       if (localObject == null) {
         break label311;
       }
       if (!((String)localObject).equals("DEVICE_BLUETOOTHHEADSET")) {
         break label257;
       }
-      if (this.jdField_a_of_type_Blfe != null) {
+      if (this.jdField_a_of_type_Bjli != null) {
         break label236;
       }
-      bool = this.jdField_a_of_type_Blff.a((String)localObject, false);
+      bool = this.jdField_a_of_type_Bjlj.a((String)localObject, false);
     }
     for (;;)
     {
       if ((bool) && (QLog.isColorLevel())) {
-        QLog.w("TraeAudioManager", 1, "updateDeviceStatus, devName[" + (String)localObject + "], Visible[" + this.jdField_a_of_type_Blff.b((String)localObject) + "], seq[" + paramLong + "]");
+        QLog.w("TraeAudioManager", 1, "updateDeviceStatus, devName[" + (String)localObject + "], Visible[" + this.jdField_a_of_type_Bjlj.b((String)localObject) + "], seq[" + paramLong + "]");
       }
       i += 1;
       break label96;
       bool = false;
       break;
       label236:
-      bool = this.jdField_a_of_type_Blff.a((String)localObject, this.jdField_a_of_type_Blfe.a());
+      bool = this.jdField_a_of_type_Bjlj.a((String)localObject, this.jdField_a_of_type_Bjli.a());
       continue;
       label257:
       if (((String)localObject).equals("DEVICE_WIREDHEADSET"))
       {
-        bool = this.jdField_a_of_type_Blff.a((String)localObject, this.jdField_a_of_type_AndroidMediaAudioManager.isWiredHeadsetOn());
+        bool = this.jdField_a_of_type_Bjlj.a((String)localObject, this.jdField_a_of_type_AndroidMediaAudioManager.isWiredHeadsetOn());
       }
       else
       {
         if (((String)localObject).equals("DEVICE_SPEAKERPHONE")) {
-          this.jdField_a_of_type_Blff.a((String)localObject, true);
+          this.jdField_a_of_type_Bjlj.a((String)localObject, true);
         }
         label311:
         bool = false;
@@ -1241,7 +1339,7 @@ public class TraeAudioManager
     Object localObject = paramIntent.getStringExtra("name");
     paramContext = (Context)localObject;
     if (localObject == null) {
-      paramContext = "unkonw";
+      paramContext = "unknown";
     }
     localObject = "" + " [" + paramContext + "] ";
     int i = paramIntent.getIntExtra("state", -1);
@@ -1273,7 +1371,7 @@ public class TraeAudioManager
       if (QLog.isColorLevel()) {
         QLog.w("TraeAudioManager", 2, "onHeadsetPlug:: " + paramContext);
       }
-      paramContext = this.jdField_a_of_type_Blff;
+      paramContext = this.jdField_a_of_type_Bjlj;
       if (1 != i) {
         break label262;
       }
@@ -1289,7 +1387,7 @@ public class TraeAudioManager
       paramContext = "plugged";
       break;
       label255:
-      paramContext = "unkown";
+      paramContext = "unknown";
       break label168;
     }
   }
@@ -1297,21 +1395,21 @@ public class TraeAudioManager
   public void a(String paramString, boolean paramBoolean)
   {
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_Blff.a() == true) {
+    if (this.jdField_a_of_type_Bjlj.a()) {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder().append("checkDevicePlug got update dev:").append(paramString);
         if (!paramBoolean) {
-          break label116;
+          break label115;
         }
       }
     }
-    label116:
+    label115:
     for (Object localObject = " piugin";; localObject = " plugout")
     {
-      QLog.w("TraeAudioManager", 2, (String)localObject + " connectedDev:" + this.jdField_a_of_type_Blff.d());
+      QLog.w("TraeAudioManager", 2, (String)localObject + " connectedDev:" + this.jdField_a_of_type_Bjlj.d());
       b();
-      this.jdField_a_of_type_Blff.b();
+      this.jdField_a_of_type_Bjlj.b();
       if (!paramBoolean) {
         break;
       }
@@ -1320,7 +1418,7 @@ public class TraeAudioManager
       b(32786, (HashMap)localObject);
       return;
     }
-    localObject = this.jdField_a_of_type_Blff.d();
+    localObject = this.jdField_a_of_type_Bjlj.d();
     if ((((String)localObject).equals(paramString)) || (((String)localObject).equals("DEVICE_NONE")))
     {
       localObject = new HashMap();
@@ -1378,46 +1476,46 @@ public class TraeAudioManager
   
   void b()
   {
-    if (this.jdField_a_of_type_Blff.b("DEVICE_WIREDHEADSET"))
+    if (this.jdField_a_of_type_Bjlj.b("DEVICE_WIREDHEADSET"))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TraeAudioManager", 2, " detected headset plugin,so disable earphone");
       }
-      this.jdField_a_of_type_Blff.a("DEVICE_EARPHONE", false);
+      this.jdField_a_of_type_Bjlj.a("DEVICE_EARPHONE", false);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.w("TraeAudioManager", 2, " detected headset plugout,so enable earphone");
     }
-    this.jdField_a_of_type_Blff.a("DEVICE_EARPHONE", true);
+    this.jdField_a_of_type_Bjlj.a("DEVICE_EARPHONE", true);
   }
   
   void b(long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_Blff.a() == true)
+    if (this.jdField_a_of_type_Bjlj.a() == true)
     {
       if (QLog.isColorLevel()) {
         QLog.w("TraeAudioManager", 1, "checkAutoDeviceListUpdate, connectDeviceNameWhenServiceOn[" + paramString + "], seq[" + paramLong + "]");
       }
       b();
-      this.jdField_a_of_type_Blff.b();
+      this.jdField_a_of_type_Bjlj.b();
       HashMap localHashMap = new HashMap();
       localHashMap.put("EXTRA_DATA_CONNECTDEVICENAMEWHENSERVICEON", paramString);
-      muk.a(localHashMap, paramLong);
+      mtt.a(localHashMap, paramLong);
       b(32785, localHashMap);
     }
   }
   
   boolean b()
   {
-    String str = this.jdField_a_of_type_Blff.c();
+    String str = this.jdField_a_of_type_Bjlj.c();
     return (str == null) || (str.equals("DEVICE_NONE")) || (str.equals(""));
   }
   
   int c(HashMap<String, Object> paramHashMap)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("GETCONNECTEDDEVICE_REULT_LIST", this.jdField_a_of_type_Blff.d());
+    localIntent.putExtra("GETCONNECTEDDEVICE_REULT_LIST", this.jdField_a_of_type_Bjlj.d());
     a(localIntent, paramHashMap, 0);
     return 0;
   }
@@ -1425,7 +1523,7 @@ public class TraeAudioManager
   int d(HashMap<String, Object> paramHashMap)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("GETCONNECTINGDEVICE_REULT_LIST", this.jdField_a_of_type_Blff.c());
+    localIntent.putExtra("GETCONNECTINGDEVICE_REULT_LIST", this.jdField_a_of_type_Bjlj.c());
     a(localIntent, paramHashMap, 0);
     return 0;
   }
@@ -1448,163 +1546,80 @@ public class TraeAudioManager
         QLog.d("TraeAudioManager", 2, "onReceive intent or context is null!");
       }
     }
+    boolean bool2;
+    do
+    {
+      String str1;
+      String str2;
+      long l;
+      do
+      {
+        boolean bool1;
+        do
+        {
+          for (;;)
+          {
+            return;
+            try
+            {
+              str1 = paramIntent.getAction();
+              str2 = paramIntent.getStringExtra("PARAM_OPERATION");
+              l = mtt.a(paramIntent);
+              if (QLog.isColorLevel()) {
+                QLog.w("TraeAudioManager", 1, "onReceive, strAction[" + str1 + "], strOption[" + str2 + "], seq[" + l + "]");
+              }
+              if (this.jdField_a_of_type_Bjlj == null)
+              {
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d("TraeAudioManager", 2, "_deviceConfigManager null!");
+              }
+            }
+            catch (Exception paramContext)
+            {
+              QLog.w("TraeAudioManager", 2, "Deal TraeAudioManager.onReceive error", paramContext);
+              return;
+            }
+          }
+          bool1 = this.jdField_a_of_type_Bjlj.b("DEVICE_WIREDHEADSET");
+          bool2 = this.jdField_a_of_type_Bjlj.b("DEVICE_BLUETOOTHHEADSET");
+          if (!"android.intent.action.HEADSET_PLUG".equals(str1)) {
+            break;
+          }
+          a(paramContext, paramIntent);
+          if ((!bool1) && (this.jdField_a_of_type_Bjlj.b("DEVICE_WIREDHEADSET"))) {
+            a("DEVICE_WIREDHEADSET", true);
+          }
+        } while ((!bool1) || (this.jdField_a_of_type_Bjlj.b("DEVICE_WIREDHEADSET")));
+        a("DEVICE_WIREDHEADSET", false);
+        return;
+      } while ("android.media.AUDIO_BECOMING_NOISY".equals(str1));
+      if ("com.tencent.av.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST".equals(str1))
+      {
+        a(paramContext, paramIntent, str2, l);
+        return;
+      }
+      if (("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST".equals(str1)) && (BaseApplicationImpl.processName != null) && (BaseApplicationImpl.processName.endsWith("groupvideo")))
+      {
+        a(l, str2, paramIntent, paramContext);
+        return;
+      }
+    } while (this.jdField_a_of_type_Bjlj == null);
+    if (this.jdField_a_of_type_Bjli != null) {
+      this.jdField_a_of_type_Bjli.a(paramContext, paramIntent, this.jdField_a_of_type_Bjlj);
+    }
     for (;;)
     {
-      return;
-      try
-      {
-        String str2 = paramIntent.getAction();
-        String str1 = paramIntent.getStringExtra("PARAM_OPERATION");
-        long l = muk.a(paramIntent);
-        if (QLog.isColorLevel()) {
-          QLog.w("TraeAudioManager", 1, "onReceive, strAction[" + str2 + "], strOption[" + str1 + "], seq[" + l + "]");
-        }
-        if (this.jdField_a_of_type_Blff == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TraeAudioManager", 2, "_deviceConfigManager null!");
-          }
-        }
-        else
-        {
-          boolean bool1 = this.jdField_a_of_type_Blff.b("DEVICE_WIREDHEADSET");
-          boolean bool2 = this.jdField_a_of_type_Blff.b("DEVICE_BLUETOOTHHEADSET");
-          if ("android.intent.action.HEADSET_PLUG".equals(str2))
-          {
-            a(paramContext, paramIntent);
-            if ((!bool1) && (this.jdField_a_of_type_Blff.b("DEVICE_WIREDHEADSET") == true)) {
-              a("DEVICE_WIREDHEADSET", true);
-            }
-            if ((bool1 == true) && (!this.jdField_a_of_type_Blff.b("DEVICE_WIREDHEADSET"))) {
-              a("DEVICE_WIREDHEADSET", false);
-            }
-          }
-          else if (!"android.media.AUDIO_BECOMING_NOISY".equals(str2))
-          {
-            if ("com.tencent.av.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST".equals(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.w("TRAE.qav", 2, "   OPERATION:" + str1);
-              }
-              if ("OPERATION_REGISTERAUDIOSESSION".equals(str1))
-              {
-                a(paramIntent.getBooleanExtra("REGISTERAUDIOSESSION_ISREGISTER", false), paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), paramContext);
-                return;
-              }
-              if ("OPERATION_STARTSERVICE".equals(str1))
-              {
-                a(l, str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, paramIntent.getStringExtra("EXTRA_DATA_DEVICECONFIG"), paramIntent.getStringExtra("EXTRA_DATA_CONNECTDEVICENAMEWHENSERVICEON"));
-                return;
-              }
-              if ("OPERATION_STOPSERVICE".equals(str1))
-              {
-                c(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_GETDEVICELIST".equals(str1))
-              {
-                a(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_GETSTREAMTYPE".equals(str1))
-              {
-                b(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_CONNECTDEVICE".equals(str1))
-              {
-                a(l, str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, paramIntent.getStringExtra("CONNECTDEVICE_DEVICENAME"));
-                return;
-              }
-              if ("OPERATION_CONNECT_HIGHEST_PRIORITY_DEVICE".equals(str1))
-              {
-                d(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_EARACTION".equals(str1))
-              {
-                a(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, paramIntent.getIntExtra("EXTRA_EARACTION", -1));
-                return;
-              }
-              if ("OPERATION_ISDEVICECHANGABLED".equals(str1))
-              {
-                e(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_GETCONNECTEDDEVICE".equals(str1))
-              {
-                a(l, str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_GETCONNECTINGDEVICE".equals(str1))
-              {
-                f(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              int i;
-              int j;
-              if ("OPERATION_VOICECALL_PREPROCESS".equals(str1))
-              {
-                i = paramIntent.getIntExtra("PARAM_MODEPOLICY", -1);
-                j = paramIntent.getIntExtra("PARAM_STREAMTYPE", -1);
-                a(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, i, j);
-                return;
-              }
-              if ("OPERATION_VOICECALL_POSTROCESS".equals(str1))
-              {
-                g(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-                return;
-              }
-              if ("OPERATION_VOICECALL_AUDIOPARAM_CHANGED".equals(str1))
-              {
-                i = paramIntent.getIntExtra("PARAM_MODEPOLICY", -1);
-                j = paramIntent.getIntExtra("PARAM_STREAMTYPE", -1);
-                b(str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, i, j);
-                return;
-              }
-              if ("OPERATION_STARTRING".equals(str1))
-              {
-                i = paramIntent.getIntExtra("PARAM_RING_DATASOURCE", -1);
-                j = paramIntent.getIntExtra("PARAM_RING_RSID", -1);
-                paramContext = (Uri)paramIntent.getParcelableExtra("PARAM_RING_URI");
-                str2 = paramIntent.getStringExtra("PARAM_RING_FILEPATH");
-                bool1 = paramIntent.getBooleanExtra("PARAM_RING_LOOP", false);
-                String str3 = paramIntent.getStringExtra("PARAM_RING_USERDATA_STRING");
-                int k = paramIntent.getIntExtra("PARAM_RING_LOOPCOUNT", 1);
-                bool2 = paramIntent.getBooleanExtra("PARAM_RING_MODE", false);
-                a(l, str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false, i, j, paramContext, str2, bool1, k, str3, bool2);
-                return;
-              }
-              if ("OPERATION_STOPRING".equals(str1)) {
-                b(l, str1, paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L), false);
-              }
-            }
-            else
-            {
-              if (("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST".equals(str2)) && (BaseApplicationImpl.processName != null) && (BaseApplicationImpl.processName.endsWith("groupvideo")))
-              {
-                a(l, str1, paramIntent, paramContext);
-                return;
-              }
-              if (this.jdField_a_of_type_Blff != null)
-              {
-                if (this.jdField_a_of_type_Blfe != null) {
-                  this.jdField_a_of_type_Blfe.a(paramContext, paramIntent, this.jdField_a_of_type_Blff);
-                }
-                if ((!bool2) && (this.jdField_a_of_type_Blff.b("DEVICE_BLUETOOTHHEADSET") == true)) {
-                  a("DEVICE_BLUETOOTHHEADSET", true);
-                }
-                if ((bool2 == true) && (!this.jdField_a_of_type_Blff.b("DEVICE_BLUETOOTHHEADSET")))
-                {
-                  a("DEVICE_BLUETOOTHHEADSET", false);
-                  return;
-                }
-              }
-            }
-          }
-        }
+      if ((!bool2) && (this.jdField_a_of_type_Bjlj.b("DEVICE_BLUETOOTHHEADSET"))) {
+        a("DEVICE_BLUETOOTHHEADSET", true);
       }
-      catch (Exception paramContext) {}
+      if ((!bool2) || (this.jdField_a_of_type_Bjlj.b("DEVICE_BLUETOOTHHEADSET"))) {
+        break;
+      }
+      a("DEVICE_BLUETOOTHHEADSET", false);
+      return;
+      QLog.w("TraeAudioManager", 2, "Deal TraeAudioManager.onReceive mDeviceConfigManager != null--> mBluetoothCheck = null");
     }
   }
 }

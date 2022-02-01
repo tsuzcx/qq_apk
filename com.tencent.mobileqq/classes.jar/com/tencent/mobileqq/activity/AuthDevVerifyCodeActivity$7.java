@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bjbs;
+import bhht;
 
 class AuthDevVerifyCodeActivity$7
   implements Runnable

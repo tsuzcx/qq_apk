@@ -1,36 +1,64 @@
-public abstract interface ukp
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ukp
+  extends zhc
+  implements View.OnClickListener
 {
-  public abstract void a(ukz paramukz);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void a(ukz paramukz, int paramInt1, int paramInt2, String paramString);
+  public ukp(Context paramContext)
+  {
+    this(paramContext, 2131755172);
+  }
   
-  public abstract void a(ukz paramukz, int paramInt, boolean paramBoolean);
+  protected ukp(Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    b();
+  }
   
-  public abstract void a(ukz paramukz, long paramLong1, long paramLong2);
+  private void b()
+  {
+    setContentView(2131560004);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381220));
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131381183);
+    TextView localTextView = (TextView)findViewById(2131381213);
+    localFrameLayout.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+  }
   
-  public abstract void a(ukz paramukz, boolean paramBoolean);
+  private void c()
+  {
+    if (isShowing()) {
+      dismiss();
+    }
+  }
   
-  public abstract void a(ukz paramukz, boolean paramBoolean1, boolean paramBoolean2);
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
   
-  public abstract boolean a(ukz paramukz);
-  
-  public abstract void b(ukz paramukz);
-  
-  public abstract void c(ukz paramukz);
-  
-  public abstract void d(ukz paramukz);
-  
-  public abstract void e(ukz paramukz);
-  
-  public abstract void f(ukz paramukz);
-  
-  public abstract void g(ukz paramukz);
-  
-  public abstract void h(ukz paramukz);
-  
-  public abstract void i(ukz paramukz);
-  
-  public abstract void j(ukz paramukz);
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      uvm.c();
+      c();
+    }
+  }
 }
 
 

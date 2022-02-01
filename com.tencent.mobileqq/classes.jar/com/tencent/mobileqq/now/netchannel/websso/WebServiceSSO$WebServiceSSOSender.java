@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.now.netchannel.websso;
 
-import aywq;
-import ayws;
+import axjy;
+import axka;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,11 +26,11 @@ public class WebServiceSSO$WebServiceSSOSender
     ThreadManager.executeOnSubThread(new WebServiceSSO.WebServiceSSOSender.2(this));
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, aywq paramaywq)
+  public void a(String paramString, byte[] paramArrayOfByte, axjy paramaxjy)
   {
-    paramString = new ayws(this, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), paramString, paramArrayOfByte);
+    paramString = new axka(this, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), paramString, paramArrayOfByte);
     paramString = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramString);
-    this.jdField_b_of_type_JavaUtilConcurrentExecutorService.submit(new WebServiceSSO.WebServiceSSOSender.1(this, paramString, paramaywq));
+    this.jdField_b_of_type_JavaUtilConcurrentExecutorService.submit(new WebServiceSSO.WebServiceSSOSender.1(this, paramString, paramaxjy));
   }
 }
 

@@ -1,99 +1,182 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.RangeButtonView;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoRecommendManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONObject;
 
 public class sdv
 {
+  private float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private blow jdField_a_of_type_Blow;
-  private List<blpa> jdField_a_of_type_JavaUtilList;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<Long, BaseArticleInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private sdw jdField_a_of_type_Sdw;
   private boolean jdField_a_of_type_Boolean;
-  private List<String> b;
+  private int jdField_b_of_type_Int = -1;
+  private HashMap<Long, BaseArticleInfo> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private int c;
   
-  public sdv(LayoutInflater paramLayoutInflater)
+  public sdv(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    ThreadManager.post(new VideoRecommendManager.1(this), 10, null, true);
   }
   
-  private float a(float paramFloat)
+  private void a(int paramInt, long paramLong)
   {
-    float f = TypedValue.applyDimension(1, 16.0F, anxh.a);
-    if (paramFloat == 15.0F) {
-      f = TypedValue.applyDimension(1, 15.0F, anxh.a);
-    }
-    do
+    switch (paramInt)
     {
-      return f;
-      if (paramFloat == 17.0F) {
-        return TypedValue.applyDimension(1, 17.0F, anxh.a);
+    default: 
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("dynamic_recommend_strategyid", this.jdField_a_of_type_Int);
+        localJSONObject.put("condition", paramInt);
+        localJSONObject.put("strategy_duration_limit", this.jdField_b_of_type_Int);
+        localJSONObject.put("strategy_duration_percent", this.jdField_a_of_type_Float);
+        localJSONObject.put("operator", this.c);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          localJSONObject.put("video_session_id", this.jdField_a_of_type_JavaLangString);
+        }
+        if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null))
+        {
+          paramInt = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("channel_from", -1);
+          odq.b(null, null, "0X80087C7", "0X80087C7", 0, 0, String.valueOf(0), "", "", new sie(ofe.a(localJSONObject)).N(paramInt).a().a(), false);
+          return;
+          paramInt = 1;
+          continue;
+          paramInt = 2;
+          continue;
+          if (paramLong >= this.jdField_b_of_type_Int)
+          {
+            paramInt = 3;
+            continue;
+          }
+          paramInt = 4;
+        }
       }
-      if (paramFloat == 18.0F) {
-        return TypedValue.applyDimension(1, 18.0F, anxh.a);
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          continue;
+          paramInt = 0;
+        }
       }
-    } while (paramFloat != 20.0F);
-    return TypedValue.applyDimension(1, 20.0F, anxh.a);
+    }
   }
   
-  public sdt a()
+  public int a()
   {
-    sdt localsdt = new sdt(null);
-    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559154, null);
-    sdt.a(localsdt, new PopupWindow((View)localObject, -1, -2));
-    sdt.a(localsdt).setBackgroundDrawable(new BitmapDrawable());
-    sdt.a(localsdt).setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131366995);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, long paramLong1, long paramLong2)
+  {
+    int j = 1;
+    if (paramBaseArticleInfo != null) {}
+    int i;
+    try
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new blpa(anzj.a(2131703596), a(15.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new blpa(anzj.a(2131703593), a(16.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new blpa("", a(17.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new blpa("", a(18.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new blpa(anzj.a(2131701333), a(20.0F)));
+      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramBaseArticleInfo.mArticleID));
+      if (bool) {}
+      for (;;)
+      {
+        return;
+        if ((paramInt != 1) && (paramInt != 2)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "updateLatestUserAction() action=" + paramInt);
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+        i = j;
+        if ((i != 0) && (this.jdField_a_of_type_Sdw != null))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "updateLatestUserAction() 触发拉取 articleInfo.mArticleID = " + paramBaseArticleInfo.mArticleID + ", articleInfo.mTitle = " + paramBaseArticleInfo.mTitle);
+          }
+          a(paramInt, paramLong1);
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+          this.jdField_a_of_type_Sdw.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+        }
+      }
+      if (paramInt != 0) {
+        break label347;
+      }
     }
-    ((RangeButtonView)localObject).setTitleData(this.jdField_a_of_type_JavaUtilList);
-    sdt.a(localsdt, this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Blow != null) {
-      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Blow);
-    }
-    ((RangeButtonView)localObject).setThumbPosition(this.jdField_a_of_type_Int);
-    if ((this.b == null) || (this.b.isEmpty()))
+    finally {}
+    if (this.c == 0)
     {
-      this.b = new ArrayList();
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131690967));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131690968));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131690969));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131690970));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131690971));
+      if ((paramLong1 < this.jdField_b_of_type_Int) || ((float)paramLong1 <= (float)paramLong2 * this.jdField_a_of_type_Float)) {
+        break label353;
+      }
+      i = 1;
     }
-    ((RangeButtonView)localObject).setContentDescList(this.b);
-    sdt.a(localsdt, this.jdField_a_of_type_Boolean);
-    return localsdt;
+    for (;;)
+    {
+      if (i != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "updateLatestUserAction() action=" + paramInt + ", playDuration=" + paramLong1 + ", totalDuration=" + paramLong2);
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+        i = j;
+        break;
+        if (paramLong1 < this.jdField_b_of_type_Int)
+        {
+          float f1 = (float)paramLong1;
+          float f2 = (float)paramLong2;
+          float f3 = this.jdField_a_of_type_Float;
+          if (f1 <= f2 * f3) {}
+        }
+        else
+        {
+          i = 1;
+          continue;
+        }
+        i = 0;
+        continue;
+      }
+      label347:
+      i = 0;
+      break;
+      label353:
+      i = 0;
+    }
   }
   
-  public sdv a(int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public sdv a(blow paramblow)
+  public void a(List<ArticleInfo> paramList)
   {
-    this.jdField_a_of_type_Blow = paramblow;
-    return this;
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localArticleInfo.mArticleID), localArticleInfo);
+    }
   }
   
-  public sdv a(boolean paramBoolean)
+  public boolean a(long paramLong)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    return this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong));
   }
 }
 

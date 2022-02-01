@@ -1,25 +1,57 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class wou
-  extends wov
+  extends wnr<ProfileFeedPlayInfo>
 {
-  public String a;
-  public boolean a;
-  
-  public wou(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
+  public wou(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
   {
-    super(paramErrorInfo);
-    if (paramPBUInt32Field.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
-      return;
-      bool = false;
+    super(paramProfileFeedPlayInfo);
+    paramProfileFeedPlayInfo = (xnp)vux.a(11);
+    if (paramProfileFeedPlayInfo.b != null) {
+      this.a = paramProfileFeedPlayInfo.b;
     }
+  }
+  
+  public xnh a(String paramString)
+  {
+    if (this.a == null) {
+      return null;
+    }
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      xnh localxnh = (xnh)localIterator.next();
+      if (localxnh.a.equals(paramString)) {
+        return localxnh;
+      }
+    }
+    return null;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  {
+    if (this.a == null)
+    {
+      paramwoj.a(new ErrorMessage(940001, "null point"), null, true);
+      return;
+    }
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramwoj.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new weo();
+    ((weo)localObject).a = this.a.a();
+    ((weo)localObject).b = QQStoryContext.a().b();
+    xvv.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((weo)localObject).a);
+    vqn.a().a((vqr)localObject, new wov(this, paramwoj));
   }
 }
 

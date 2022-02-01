@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import ltf;
-import ltg;
-import lth;
-import lti;
-import ltj;
-import ltk;
+import lsn;
+import lso;
+import lsp;
+import lsq;
+import lsr;
+import lss;
 
 public class RandomWebProtocol
 {
   private static String jdField_a_of_type_JavaLangString;
   public int a;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  List<ltf> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<lsn> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map<String, RandomWebProtocol.MatchTask> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private ltg jdField_a_of_type_Ltg;
+  private lso jdField_a_of_type_Lso;
   
   RandomWebProtocol(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Ltg = new ltg(this);
+    this.jdField_a_of_type_Lso = new lso(this);
   }
   
   /* Error */
@@ -195,7 +195,7 @@ public class RandomWebProtocol
       if (b()) {
         QLog.w("RandomWebProtocol", 2, "[randomWeb]In Test Env");
       }
-      paramString = new ltk(this, paramInt1, paramLong, paramInt2, paramString);
+      paramString = new lss(this, paramInt1, paramLong, paramInt2, paramString);
       if ((RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(paramString.d) == null)
       {
         if (QLog.isColorLevel()) {
@@ -301,7 +301,7 @@ public class RandomWebProtocol
     //   116: new 142	java/lang/StringBuilder
     //   119: dup
     //   120: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   123: invokestatic 269	msq:a	()Ljava/lang/String;
+    //   123: invokestatic 269	mrz:a	()Ljava/lang/String;
     //   126: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: aload_2
     //   130: invokestatic 274	com/tencent/mobileqq/mqsafeedit/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
@@ -315,7 +315,7 @@ public class RandomWebProtocol
     //   150: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   153: astore 5
     //   155: aload 5
-    //   157: invokestatic 289	auog:a	(Ljava/lang/String;)Z
+    //   157: invokestatic 290	com/tencent/mobileqq/filemanager/util/FileUtil:isFileExists	(Ljava/lang/String;)Z
     //   160: ifeq +107 -> 267
     //   163: invokestatic 194	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   166: ifeq +40 -> 206
@@ -324,36 +324,36 @@ public class RandomWebProtocol
     //   172: new 142	java/lang/StringBuilder
     //   175: dup
     //   176: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   179: ldc_w 291
+    //   179: ldc_w 292
     //   182: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   185: aload_1
     //   186: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: ldc_w 293
+    //   189: ldc_w 294
     //   192: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: aload 5
     //   197: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   200: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   203: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   206: aload 5
-    //   208: invokestatic 289	auog:a	(Ljava/lang/String;)Z
+    //   208: invokestatic 290	com/tencent/mobileqq/filemanager/util/FileUtil:isFileExists	(Ljava/lang/String;)Z
     //   211: istore_3
     //   212: aload 4
     //   214: astore_2
     //   215: iload_3
     //   216: ifeq +32 -> 248
-    //   219: new 295	java/io/BufferedInputStream
+    //   219: new 296	java/io/BufferedInputStream
     //   222: dup
-    //   223: new 297	java/io/FileInputStream
+    //   223: new 298	java/io/FileInputStream
     //   226: dup
     //   227: aload 5
-    //   229: invokespecial 298	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   232: invokespecial 299	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   229: invokespecial 299	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   232: invokespecial 300	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   235: astore 4
     //   237: aload 4
-    //   239: invokestatic 305	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   239: invokestatic 306	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   242: astore_2
     //   243: aload 4
-    //   245: invokevirtual 306	java/io/BufferedInputStream:close	()V
+    //   245: invokevirtual 307	java/io/BufferedInputStream:close	()V
     //   248: aload_2
     //   249: ifnull +145 -> 394
     //   252: aload_0
@@ -362,19 +362,19 @@ public class RandomWebProtocol
     //   259: aload_1
     //   260: aload_2
     //   261: iconst_1
-    //   262: invokevirtual 309	com/tencent/av/VideoController:a	(Ljava/lang/String;Landroid/graphics/Bitmap;Z)V
+    //   262: invokevirtual 310	com/tencent/av/VideoController:a	(Ljava/lang/String;Landroid/graphics/Bitmap;Z)V
     //   265: aload_2
     //   266: areturn
-    //   267: new 311	java/io/File
+    //   267: new 312	java/io/File
     //   270: dup
     //   271: aload 5
-    //   273: invokespecial 312	java/io/File:<init>	(Ljava/lang/String;)V
+    //   273: invokespecial 313	java/io/File:<init>	(Ljava/lang/String;)V
     //   276: astore 6
     //   278: aload_0
     //   279: getfield 30	com/tencent/av/random/RandomWebProtocol:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
     //   282: aload_2
     //   283: aload 6
-    //   285: invokestatic 317	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/io/File;)Z
+    //   285: invokestatic 319	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/io/File;)Z
     //   288: istore_3
     //   289: invokestatic 194	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   292: ifeq -86 -> 206
@@ -383,22 +383,22 @@ public class RandomWebProtocol
     //   298: new 142	java/lang/StringBuilder
     //   301: dup
     //   302: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   305: ldc_w 291
+    //   305: ldc_w 292
     //   308: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   311: aload_1
     //   312: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: ldc_w 319
+    //   315: ldc_w 321
     //   318: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: aload_2
     //   322: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: ldc_w 321
+    //   325: ldc_w 323
     //   328: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: aload 5
     //   333: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   336: ldc_w 323
+    //   336: ldc_w 325
     //   339: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   342: iload_3
-    //   343: invokevirtual 326	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   343: invokevirtual 328	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   346: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   349: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   352: goto -146 -> 206
@@ -421,7 +421,7 @@ public class RandomWebProtocol
     //   382: aload_1
     //   383: aconst_null
     //   384: iconst_1
-    //   385: invokevirtual 309	com/tencent/av/VideoController:a	(Ljava/lang/String;Landroid/graphics/Bitmap;Z)V
+    //   385: invokevirtual 310	com/tencent/av/VideoController:a	(Ljava/lang/String;Landroid/graphics/Bitmap;Z)V
     //   388: aload 4
     //   390: astore_2
     //   391: goto -143 -> 248
@@ -434,11 +434,11 @@ public class RandomWebProtocol
     //   406: new 142	java/lang/StringBuilder
     //   409: dup
     //   410: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   413: ldc_w 291
+    //   413: ldc_w 292
     //   416: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   419: aload_1
     //   420: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: ldc_w 328
+    //   423: ldc_w 330
     //   426: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   429: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   432: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -482,7 +482,7 @@ public class RandomWebProtocol
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Ltg.b = paramInt;
+    this.jdField_a_of_type_Lso.b = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
@@ -497,7 +497,7 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/dchat_test/cgi-bin/chatplay/onechat";; localObject = "https://play.mobile.qq.com/dchat/cgi-bin/chatplay/onechat")
     {
-      paramVarArgs = new lth(this, this.jdField_a_of_type_Ltg, (String)localObject, paramInt1, paramInt2, paramInt3, paramVarArgs);
+      paramVarArgs = new lsp(this, this.jdField_a_of_type_Lso, (String)localObject, paramInt1, paramInt2, paramInt3, paramVarArgs);
       localObject = (RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(paramVarArgs.d);
       if (localObject != null)
       {
@@ -525,15 +525,15 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/grouppull";; localObject = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/grouppull")
     {
-      localObject = new ltj(this, this.jdField_a_of_type_Ltg, (String)localObject, paramInt1, paramInt2, paramString, paramInt3, paramLong);
-      if ((RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((ltj)localObject).d) != null) {
+      localObject = new lsr(this, this.jdField_a_of_type_Lso, (String)localObject, paramInt1, paramInt2, paramString, paramInt3, paramLong);
+      if ((RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((lsr)localObject).d) != null) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("RandomWebProtocol", 2, "[randomWeb][pullhead] ====== pullMulti ====== type(" + paramInt2 + "), uin(" + paramString + "), groupId(" + paramLong + "), gender(" + paramInt3 + ")");
       }
-      paramString = new RandomWebProtocol.MatchTask(this, (ltg)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(((ltj)localObject).d, paramString);
+      paramString = new RandomWebProtocol.MatchTask(this, (lso)localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(((lsr)localObject).d, paramString);
       paramString.start();
       return;
     }
@@ -564,8 +564,8 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/groupchat";; localObject = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/groupchat")
     {
-      localObject = new lti(this, this.jdField_a_of_type_Ltg, (String)localObject, paramBoolean, paramInt);
-      RandomWebProtocol.MatchTask localMatchTask = (RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((lti)localObject).d);
+      localObject = new lsq(this, this.jdField_a_of_type_Lso, (String)localObject, paramBoolean, paramInt);
+      RandomWebProtocol.MatchTask localMatchTask = (RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((lsq)localObject).d);
       if (localMatchTask != null)
       {
         if (QLog.isColorLevel()) {
@@ -573,8 +573,8 @@ public class RandomWebProtocol
         }
         localMatchTask.a();
       }
-      localMatchTask = new RandomWebProtocol.MatchTask(this, (ltg)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(((lti)localObject).d, localMatchTask);
+      localMatchTask = new RandomWebProtocol.MatchTask(this, (lso)localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(((lsq)localObject).d, localMatchTask);
       localMatchTask.start();
       return;
     }
@@ -582,7 +582,7 @@ public class RandomWebProtocol
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Ltg.b != -1;
+    return this.jdField_a_of_type_Lso.b != -1;
   }
   
   public void b()

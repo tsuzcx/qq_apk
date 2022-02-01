@@ -1,51 +1,42 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-final class awva
-  extends Handler
+class awva
+  implements awrb
 {
-  awva(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  awva(awur paramawur) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramMessage.what == 10000001)
-    {
-      paramMessage = (ProgressBar)awuz.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131367008);
-      localDrawable = awuz.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130839593);
-      paramMessage.setIndeterminateDrawable(localDrawable);
-      paramMessage.setBackgroundDrawable(localDrawable);
-      ((TextView)awuz.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131365519)).setText(2131717890);
-      awuz.a().sendEmptyMessageDelayed(10000002, 2000L);
-    }
-    while ((paramMessage.what != 10000002) || (awuz.jdField_a_of_type_AndroidAppProgressDialog == null))
-    {
-      Drawable localDrawable;
-      return;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
     }
     try
     {
-      awuz.jdField_a_of_type_Boolean = false;
-      awuz.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + awur.c(this.a));
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + awur.c(this.a));
+        }
+      }
       return;
     }
-    catch (Exception paramMessage)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramMessage.printStackTrace();
-      return;
-    }
-    finally
-    {
-      awuz.jdField_a_of_type_AndroidAppProgressDialog = null;
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

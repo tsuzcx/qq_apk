@@ -1,26 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aoro
-  extends BroadcastReceiver
+  implements EIPCResultCallback
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  aoro(aori paramaori, aosh paramaosh) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramIntent = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    aori.a().b(paramIntent);
-    bdll.b(paramIntent, "dc00898", "", "", "0X800B278", "0X800B278", 0, 0, "", "", "", "");
-    try
-    {
-      paramContext.unregisterReceiver(this);
-      return;
+    boolean bool = true;
+    if (paramEIPCResult.code != 0) {
+      QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "call.async, method=" + this.jdField_a_of_type_Aosh.a() + " result=" + paramEIPCResult);
     }
-    catch (Exception paramContext)
+    aosh localaosh = this.jdField_a_of_type_Aosh;
+    if (paramEIPCResult.code == 0) {}
+    for (;;)
     {
-      QLog.d("AccountIdentityManager", 1, new Object[] { "unregisterReceiver error : ", paramContext.getMessage() });
+      localaosh.a(bool, paramEIPCResult.data);
+      return;
+      bool = false;
     }
   }
 }

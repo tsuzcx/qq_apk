@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.app;
 
+import andf;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import aoju;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TroopQZoneUploadAlbumHandler$2
   implements Runnable
 {
-  public TroopQZoneUploadAlbumHandler$2(aoju paramaoju) {}
+  public TroopQZoneUploadAlbumHandler$2(andf paramandf) {}
   
   public void run()
   {
-    while (!aoju.a(this.this$0)) {
+    while (!andf.a(this.this$0)) {
       try
       {
-        i = ((Integer)aoju.a(this.this$0).take()).intValue();
+        i = ((Integer)andf.a(this.this$0).take()).intValue();
         if ((this.this$0.jdField_a_of_type_AndroidOsMessenger == null) || (this.this$0.jdField_a_of_type_AndroidOsMessenger.getBinder() == null) || (!this.this$0.jdField_a_of_type_AndroidOsMessenger.getBinder().isBinderAlive()) || (!this.this$0.jdField_a_of_type_AndroidOsMessenger.getBinder().pingBinder()))
         {
           QLog.i("UploadPhoto", 1, "需要重新创建连接");
           this.this$0.a();
-          aoju.a(this.this$0);
-          aoju.a(this.this$0).offer(Integer.valueOf(i));
-          aoju.a(this.this$0, true);
+          andf.a(this.this$0);
+          andf.a(this.this$0).offer(Integer.valueOf(i));
+          andf.a(this.this$0, true);
         }
       }
       catch (InterruptedException localInterruptedException)
       {
         int i;
-        aoju.a(this.this$0, true);
+        andf.a(this.this$0, true);
         QLog.e("UploadPhoto", 1, localInterruptedException, new Object[0]);
         continue;
         Message localMessage = Message.obtain(null, 998, i, 0);

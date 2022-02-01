@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
 import Override;
-import abff;
+import aabq;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,16 +11,16 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bhnv;
-import biqq;
-import biqx;
-import bitq;
-import bits;
-import bitu;
+import bgww;
+import bgxd;
+import bgzs;
+import bgzu;
+import bgzw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
@@ -32,12 +32,12 @@ import org.json.JSONObject;
 
 public class ApolloBaseActivity
   extends AbsBaseWebViewActivity
-  implements bitq, bits, bitu
+  implements bgzs, bgzu, bgzw
 {
   private static int b;
   protected int a;
   protected long a;
-  private abff jdField_a_of_type_Abff;
+  private aabq jdField_a_of_type_Aabq;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   protected String a;
   private boolean jdField_a_of_type_Boolean = true;
@@ -58,14 +58,14 @@ public class ApolloBaseActivity
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Abff == null) && (this.jdField_b_of_type_ComTencentBizUiTouchWebView != null))
+    if ((this.jdField_a_of_type_Aabq == null) && (this.jdField_b_of_type_ComTencentBizUiTouchWebView != null))
     {
       Object localObject = this.jdField_b_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
       if (localObject != null)
       {
         localObject = ((WebViewPluginEngine)localObject).a("offline");
-        if ((localObject != null) && ((localObject instanceof abff))) {
-          this.jdField_a_of_type_Abff = ((abff)localObject);
+        if ((localObject != null) && ((localObject instanceof aabq))) {
+          this.jdField_a_of_type_Aabq = ((aabq)localObject);
         }
       }
     }
@@ -80,7 +80,7 @@ public class ApolloBaseActivity
       this.jdField_h_of_type_Boolean = true;
       try
       {
-        k = bhnv.a(getApplicationContext());
+        k = NetworkUtil.getSystemNetwork(getApplicationContext());
         switch (k)
         {
         default: 
@@ -191,8 +191,9 @@ public class ApolloBaseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -241,8 +242,8 @@ public class ApolloBaseActivity
   public long getOpenUrlAfterCheckOfflineTime()
   {
     b();
-    if (this.jdField_a_of_type_Abff != null) {
-      return this.jdField_a_of_type_Abff.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Aabq != null) {
+      return this.jdField_a_of_type_Aabq.jdField_a_of_type_Long;
     }
     return 0L;
   }
@@ -250,8 +251,8 @@ public class ApolloBaseActivity
   public long getReadIndexFromOfflineTime()
   {
     b();
-    if (this.jdField_a_of_type_Abff != null) {
-      return this.jdField_a_of_type_Abff.b;
+    if (this.jdField_a_of_type_Aabq != null) {
+      return this.jdField_a_of_type_Aabq.b;
     }
     return 0L;
   }
@@ -341,8 +342,8 @@ public class ApolloBaseActivity
   public boolean isMainPageUseLocalFile()
   {
     b();
-    if (this.jdField_a_of_type_Abff != null) {
-      return this.jdField_a_of_type_Abff.e;
+    if (this.jdField_a_of_type_Aabq != null) {
+      return this.jdField_a_of_type_Aabq.e;
     }
     return false;
   }
@@ -371,18 +372,18 @@ public class ApolloBaseActivity
     a(getIntent());
     super.onCreate(paramBundle);
     jdField_b_of_type_Int += 1;
-    if ((this.jdField_b_of_type_ComTencentBizUiTouchWebView != null) && (Build.VERSION.SDK_INT >= 14) && (biqq.a.length >= 1))
+    if ((this.jdField_b_of_type_ComTencentBizUiTouchWebView != null) && (Build.VERSION.SDK_INT >= 14) && (bgww.a.length >= 1))
     {
-      int k = biqq.a[1];
+      int k = bgww.a[1];
       paramBundle = this.jdField_b_of_type_ComTencentBizUiTouchWebView.getSettings();
       if (paramBundle != null) {
         paramBundle.setTextZoom(k);
       }
     }
-    if ((this.jdField_a_of_type_Biqx != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (biqx.d != 0))
+    if ((this.jdField_a_of_type_Bgxd != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (bgxd.d != 0))
     {
-      paramBundle = this.jdField_a_of_type_Biqx;
-      if (this.mRuntime.getLongAccountUin() % biqx.d != 6L) {
+      paramBundle = this.jdField_a_of_type_Bgxd;
+      if (this.mRuntime.getLongAccountUin() % bgxd.d != 6L) {
         break label147;
       }
     }

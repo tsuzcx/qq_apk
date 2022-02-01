@@ -1,56 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bcyh
+class bcyh
+  implements DialogInterface.OnDismissListener
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b = true;
+  bcyh(bcyg parambcyg) {}
   
-  static
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_Int = 18;
-  }
-  
-  public static void a()
-  {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if ((localObject != null) && (localObject.length >= 2))
-        {
-          if (!TextUtils.isEmpty(localObject[0])) {
-            b = localObject[0].equals("1");
-          }
-          if (TextUtils.isEmpty(localObject[1])) {}
-        }
-      }
-    }
-    try
-    {
-      jdField_a_of_type_Int = Integer.parseInt(localObject[1]);
-      jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + b + ", sRequestedFPS:" + jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        jdField_a_of_type_Int = 18;
-      }
-    }
+    this.a.a.a = null;
   }
 }
 

@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class RedTouchTextView
   extends TextView
@@ -53,7 +53,7 @@ public class RedTouchTextView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    setMeasuredDimension(paramInt1 + bhtq.a(10.0F), paramInt2 + bhtq.a(10.0F));
+    setMeasuredDimension(paramInt1 + ViewUtils.dip2px(10.0F), paramInt2 + ViewUtils.dip2px(10.0F));
   }
 }
 

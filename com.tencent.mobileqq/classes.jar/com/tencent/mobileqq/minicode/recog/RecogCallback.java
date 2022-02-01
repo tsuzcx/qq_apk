@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.minicode.recog;
 
-import apqk;
+import aojx;
 import java.util.List;
 
 public abstract interface RecogCallback
 {
   public abstract void onDetectReady(int paramInt);
   
-  public abstract void onDetectResult(List<apqk> paramList, long paramLong);
+  public abstract void onDetectResult(List<aojx> paramList, long paramLong);
   
   public abstract void onSaveImg(long paramLong);
 }

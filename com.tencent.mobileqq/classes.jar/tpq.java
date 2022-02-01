@@ -1,51 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class tpq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/webarticle/RIJWebArticleReportUtil$ReportR5Builder;", "", "()V", "r5", "Lorg/json/JSONObject;", "getR5", "()Lorg/json/JSONObject;", "addString", "key", "", "value", "build", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tpq
 {
-  public static int a(int paramInt)
+  @NotNull
+  private final JSONObject a = new JSONObject();
+  
+  public tpq()
   {
-    switch (paramInt)
+    JSONObject localJSONObject = this.a;
+    if (tpr.a.b())
     {
-    default: 
-      return -1;
-    case 11: 
-      return 1;
-    case 12: 
-      return 2;
-    case 13: 
-      return 3;
+      str = "1";
+      localJSONObject.put("param_webviewPoolReuse", str);
+      localJSONObject = this.a;
+      if (!tpr.a.c()) {
+        break label72;
+      }
     }
-    return 4;
+    label72:
+    for (String str = "1";; str = "0")
+    {
+      localJSONObject.put("param_useVasSonic", str);
+      return;
+      str = "0";
+      break;
+    }
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  @NotNull
+  public final String a()
   {
-    if ((!ubd.a(paramArticleInfo)) || (paramViewBase == null)) {}
-    do
-    {
-      return;
-      if ((paramViewBase instanceof qbu))
-      {
-        nzq.a(new tlx().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-      if ((paramViewBase instanceof ReadInJoyBiuButton))
-      {
-        nzq.a(new tlx().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-    } while (!(paramViewBase instanceof NativeButton));
-    if (paramBoolean)
-    {
-      nzq.a(new tlx().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-      return;
-    }
-    nzq.a(new tlx().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+    String str = this.a.toString();
+    Intrinsics.checkExpressionValueIsNotNull(str, "r5.toString()");
+    return str;
+  }
+  
+  @NotNull
+  public final tpq a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "key");
+    Intrinsics.checkParameterIsNotNull(paramString2, "value");
+    this.a.put(paramString1, paramString2);
+    return this;
   }
 }
 

@@ -1,24 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sdp
-  implements View.OnClickListener
+public class sdp
+  implements shc
 {
-  sdp(sdn paramsdn, Activity paramActivity) {}
+  public sdp(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      sgr.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772315);
-      this.jdField_a_of_type_Sdn.b();
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a));
+    }
+    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
   }
 }
 

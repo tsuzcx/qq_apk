@@ -1,23 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
-public class mph
-  implements mpl
+class mph
+  implements mqi
 {
-  public mph(GuideHelper paramGuideHelper, long paramLong, Context paramContext, int paramInt) {}
+  mph(mpe parammpe) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = paramLottieDrawable;
-    if ((paramLottieDrawable != null) && (this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramLottieDrawable);
-      GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-      QLog.w("GuideHelper", 1, "huanxxiao tryShow, seq[" + this.jdField_a_of_type_Long + "]");
-    }
+    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
+    this.a.a = null;
+    lsz.a().b(8);
   }
 }
 

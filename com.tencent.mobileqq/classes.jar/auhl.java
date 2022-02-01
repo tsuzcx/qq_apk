@@ -1,27 +1,38 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
-class auhl
-  extends aavj
+public class auhl
+  extends Handler
 {
-  auhl(auha paramauha) {}
+  public auhl(HotPicTab paramHotPicTab) {}
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramFileInfo != null)
+    switch (paramMessage.what)
     {
-      String str = bhlg.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_Auei.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
-      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
-      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
-      if (this.a.jdField_a_of_type_Augq != null) {
-        this.a.jdField_a_of_type_Augq.b(str, paramFileInfo);
+    default: 
+      return;
+    case 0: 
+      HotPicTab.a(this.a, 0.0F);
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      if (HotPicTab.a(this.a) < 1.0F)
+      {
+        this.a.invalidate();
+        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+        return;
       }
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
+      return;
     }
+    HotPicTab.a(this.a, 1.0F);
+    HotPicTab.a(this.a, HotPicTab.a(this.a));
+    this.a.invalidate();
   }
 }
 

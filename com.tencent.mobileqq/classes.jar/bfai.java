@@ -1,261 +1,307 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger.1;
 import com.tencent.qphone.base.util.QLog;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lbfbf;>;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.ExtensionReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import java.util.Map;
+import java.util.Observer;
+import java.util.Random;
 
 public class bfai
-  extends bfae
 {
-  private static int a;
+  protected static final List<String> a;
+  protected static Map<String, bfeh> a;
+  protected anca a;
+  protected final String a;
+  protected final String b = "5520";
+  protected final String c = "3";
+  protected final String d = "5";
+  protected final String e = "cgi-bin/httpconn";
+  public String f;
   
-  public void a(bevy parambevy, bevx parambevx)
+  static
   {
-    Object localObject2 = parambevy.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject1 = parambevy.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    bfau localbfau = (bfau)parambevx.jdField_a_of_type_JavaLangObject;
-    bfbj localbfbj = localbfau.jdField_a_of_type_Bfbj;
-    aock localaock = parambevy.jdField_a_of_type_Aock;
-    int i;
-    if (((FromServiceMsg)localObject2).getResultCode() != 1000)
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_JavaUtilList.add("2408:8756:3af0:10::107");
+    jdField_a_of_type_JavaUtilList.add("240e:ff:f101:10::104");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::132");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::22");
+    jdField_a_of_type_JavaUtilList.add("2408:80f1:31:50::21");
+    jdField_a_of_type_JavaUtilList.add("240e:e1:a900:50::3d");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8020:2::86");
+    jdField_a_of_type_JavaUtilList.add("2409:8c1e:8fd0:50::1c");
+    jdField_a_of_type_JavaUtilList.add("2408:8711:10:10::13");
+    jdField_a_of_type_JavaUtilList.add("240e:928:1400:10::23");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8030:1::a0");
+    jdField_a_of_type_JavaUtilList.add("2409:8702:4860:10::41");
+  }
+  
+  public bfai(String paramString, Class<? extends bfeh> paramClass, anca paramanca)
+  {
+    this.jdField_a_of_type_JavaLangString = "0x6ff0072";
+    this.jdField_a_of_type_Anca = paramanca;
+    this.f = paramString;
+    if (jdField_a_of_type_JavaUtilMap == null) {
+      jdField_a_of_type_JavaUtilMap = new HashMap();
+    }
+    if ((bfeh)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
     {
-      i = ((FromServiceMsg)localObject2).getResultCode();
-      if ((i == 1002) || (i == 1013))
-      {
-        localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-        parambevx = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-        parambevy = parambevx;
-        if (parambevx == null) {
-          parambevy = "";
-        }
-        a(-1, 9311, (String)localObject1, parambevy, localaock, localbfbj.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    cmd0x346.ApplyUploadRsp localApplyUploadRsp;
-    bfbn localbfbn;
-    for (;;)
-    {
-      bfca.a(localbfau, localbfbj);
-      return;
-      localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-      parambevx = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-      parambevy = parambevx;
-      if (parambevx == null) {
-        parambevy = "";
-      }
-      a(-1, 9044, (String)localObject1, parambevy, localaock, localbfbj.jdField_a_of_type_JavaUtilList);
-      continue;
-      try
-      {
-        parambevy = new cmd0x346.RspBody();
-        parambevy.mergeFrom((byte[])localObject1);
-        localApplyUploadRsp = (cmd0x346.ApplyUploadRsp)parambevy.msg_apply_upload_rsp.get();
-        localbfbn = (bfbn)localbfbj.jdField_a_of_type_JavaUtilList.get(0);
-        if ((localbfbn != null) && (localObject2 != null) && (((FromServiceMsg)localObject2).getAttributes().containsKey("_attr_send_by_quickHttp"))) {
-          localbfbn.d = ((Boolean)((FromServiceMsg)localObject2).getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttUpHandler.onProtoResp:isSendByQuickHttp=" + localbfbn.d);
-        }
-        i = localApplyUploadRsp.int32_ret_code.get();
-        if (i != 0) {
-          break label577;
-        }
-        localbfbn.jdField_a_of_type_JavaLangString = localApplyUploadRsp.bytes_uuid.get().toStringUtf8();
-        if ((!localApplyUploadRsp.bool_file_exist.has()) || (!localApplyUploadRsp.bool_file_exist.get())) {
-          break;
-        }
-        localbfbn.jdField_a_of_type_Boolean = true;
-      }
-      catch (Exception parambevy)
-      {
-        a(-1, -9527, berp.a("P", -9529L), parambevy.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localaock, localbfbj.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    if (localApplyUploadRsp.uint32_pack_size.has()) {
-      localbfbn.jdField_a_of_type_Int = localApplyUploadRsp.uint32_pack_size.get();
-    }
-    localObject2 = HexUtil.bytes2HexStr(localApplyUploadRsp.bytes_upload_key.get().toByteArray());
-    localbfbn.b = ((String)localObject2);
-    parambevx = localApplyUploadRsp.str_upload_ip.get();
-    parambevy = parambevx;
-    if (parambevx == null) {
-      parambevy = localApplyUploadRsp.str_upload_domain.get();
-    }
-    for (;;)
-    {
-      label473:
-      throw new Exception("ukey or ip missing");
-      label577:
-      do
-      {
-        parambevy = localApplyUploadRsp.rpt_str_uploadip_list.get();
-        if ((parambevy != null) && (parambevy.size() > 0))
-        {
-          parambevy = parambevy.iterator();
-          while (parambevy.hasNext())
-          {
-            parambevx = (String)parambevy.next();
-            localObject2 = new bewy();
-            ((bewy)localObject2).jdField_a_of_type_JavaLangString = parambevx;
-            localbfbn.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-          }
-        }
-        a(0, 0, "", "", localaock, localbfbn);
-        break;
-        a(-1, -9527, berp.a(i), "", localaock, localbfbn);
-        break;
-        if (localObject2 == null) {
-          break label473;
-        }
-      } while (parambevy != null);
+      paramClass = bfeg.a(paramClass);
+      jdField_a_of_type_JavaUtilMap.put(paramString, paramClass);
     }
   }
   
-  public void a(bfau parambfau)
+  private String a(String paramString1, String paramString2, int paramInt)
   {
-    if ((parambfau != null) && (parambfau.jdField_a_of_type_JavaUtilList != null) && (parambfau.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    if (TextUtils.isEmpty(paramString2)) {
+      return null;
+    }
+    try
     {
-      bevx localbevx = new bevx();
-      localbevx.jdField_a_of_type_JavaLangString = "PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500";
-      localbevx.jdField_a_of_type_ArrayOfByte = a(parambfau.jdField_a_of_type_JavaUtilList);
-      localbevx.jdField_a_of_type_JavaLangObject = parambfau;
-      localbevx.jdField_a_of_type_Bevw = this;
-      a(parambfau, localbevx);
+      paramString1 = new URL("http", paramString2, paramInt, "cgi-bin/httpconn").toString();
+      return paramString1;
+    }
+    catch (MalformedURLException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  private String a(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    Object localObject2;
+    Object localObject1;
+    if (!paramBoolean)
+    {
+      bool1 = true;
+      localObject2 = a("htdata3.qq.com", "cgi-bin/httpconn", bool1);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (paramBoolean) {
+          break label77;
+        }
+      }
+    }
+    label77:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localObject1 = a("htdata4.qq.com", "cgi-bin/httpconn", bool1);
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = a("cgi-bin/httpconn", paramBoolean);
+      }
+      return localObject2;
+      bool1 = false;
+      break;
     }
   }
   
-  byte[] a(List<bfbf> paramList)
+  public String a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    int j = 0;
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(500);
-    Object localObject = localReqBody.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    ((PBUInt32Field)localObject).set(i);
-    localReqBody.uint32_business_id.set(17);
-    localReqBody.uint32_client_type.set(104);
-    bfbe localbfbe;
-    if (paramList.size() == 1)
-    {
-      localbfbe = (bfbe)paramList.get(0);
-      cmd0x346.ApplyUploadReq localApplyUploadReq = new cmd0x346.ApplyUploadReq();
-      localApplyUploadReq.uint64_sender_uin.set(Long.parseLong(localbfbe.jdField_c_of_type_JavaLangString));
-      try
-      {
-        localObject = localbfbe.jdField_d_of_type_JavaLangString;
-        paramList = (List<bfbf>)localObject;
-        if (((String)localObject).startsWith("+")) {
-          paramList = ((String)localObject).substring(1);
-        }
-        long l = Long.valueOf(paramList).longValue();
-        localApplyUploadReq.uint64_recver_uin.set(l);
-      }
-      catch (Exception paramList)
-      {
-        for (;;)
-        {
-          paramList.printStackTrace();
-          continue;
-          i = j;
-          if (localbfbe.jdField_a_of_type_Boolean)
-          {
-            i = 500;
-            continue;
-            paramList.str_dst_phonenum.set(localbfbe.jdField_d_of_type_JavaLangString);
-            i = 102;
-            continue;
-            i = 104;
-            continue;
-            i = 104;
-            continue;
-            i = 105;
-            continue;
-            i = 101;
-            continue;
-            i = 103;
-            continue;
-            i = 100;
-            continue;
-            i = 114;
-            continue;
-            i = 130;
-            continue;
-            if (localbfbe.f == 9999) {
-              paramList.uint32_file_type.set(102);
-            }
-          }
-        }
-      }
-      localApplyUploadReq.uint32_file_type.set(2);
-      localApplyUploadReq.str_file_name.set(localbfbe.jdField_a_of_type_JavaLangString);
-      localApplyUploadReq.uint64_file_size.set(localbfbe.b);
-      localApplyUploadReq.bytes_10m_md5.set(ByteStringMicro.copyFrom(localbfbe.jdField_a_of_type_ArrayOfByte));
-      localReqBody.msg_apply_upload_req.set(localApplyUploadReq);
-      paramList = new cmd0x346.ExtensionReq();
-      paramList.uint64_id.set(3L);
-      paramList.uint32_ptt_format.set(localbfbe.jdField_c_of_type_Int);
-      paramList.uint32_ptt_time.set(localbfbe.jdField_a_of_type_Int);
-      i = a();
-      paramList.uint32_net_type.set(i);
-      paramList.uint32_voice_type.set(localbfbe.jdField_d_of_type_Int);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RecordParams", 2, "C2CPttUp: panel[" + localbfbe.jdField_d_of_type_Int + "] type[" + localbfbe.jdField_c_of_type_Int + "] length[" + localbfbe.jdField_a_of_type_Int + "] size[" + localbfbe.b + "]");
-        if (QLog.isColorLevel()) {
-          QLog.d("RecordParams", 2, "C2CPttUp: net[" + i + "]");
-        }
-      }
-      i = j;
-      switch (localbfbe.f)
-      {
-      default: 
-        i = j;
-      case 1005: 
-      case 1023: 
-      case 1024: 
-        paramList.uint64_type.set(i);
-        if (localbfbe.f == 1008)
-        {
-          paramList.uint32_file_type.set(3);
-          localReqBody.msg_extension_req.set(paramList);
-          return localReqBody.toByteArray();
-        }
-        break;
-      }
-    }
-    throw new RuntimeException("only support one request");
-  }
-  
-  void b(bfau parambfau)
-  {
-    bfbj localbfbj = parambfau.jdField_a_of_type_Bfbj;
-    localbfbj.jdField_a_of_type_JavaUtilList.clear();
     int i = 0;
-    while (i < parambfau.jdField_a_of_type_JavaUtilList.size())
+    for (;;)
     {
-      bfbn localbfbn = new bfbn();
-      localbfbj.jdField_a_of_type_JavaUtilList.add(i, localbfbn);
-      i += 1;
+      Object localObject1;
+      try
+      {
+        localObject1 = InetAddress.getAllByName(paramString1);
+        if (localObject1 == null) {
+          break label150;
+        }
+        int j = localObject1.length;
+        if (i >= j) {
+          break label150;
+        }
+        localObject2 = localObject1[i];
+        if (((localObject2 instanceof Inet4Address)) && (paramBoolean))
+        {
+          localObject1 = localObject2.getHostAddress();
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label145;
+          }
+          paramString2 = a(paramString2, (String)localObject1, 80);
+        }
+      }
+      catch (UnknownHostException paramString1)
+      {
+        Object localObject2;
+        paramString2 = null;
+        QLog.i("TroopAvatarManger", 1, "UnknownHostException", paramString1);
+        return paramString2;
+      }
+      try
+      {
+        QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByHost host[%s] %s", new Object[] { paramString1, localObject1 }));
+        return paramString2;
+      }
+      catch (UnknownHostException paramString1)
+      {
+        continue;
+      }
+      if (((localObject2 instanceof Inet6Address)) && (!paramBoolean))
+      {
+        localObject1 = localObject2.getHostAddress();
+      }
+      else
+      {
+        i += 1;
+        continue;
+        label145:
+        paramString2 = null;
+        continue;
+        label150:
+        localObject1 = null;
+      }
     }
+  }
+  
+  public String a(String paramString, boolean paramBoolean)
+  {
+    int i = new Random().nextInt(100);
+    String str;
+    if (paramBoolean)
+    {
+      int j = jdField_a_of_type_JavaUtilList.size();
+      str = (String)jdField_a_of_type_JavaUtilList.get(Math.abs(i) % j);
+    }
+    for (;;)
+    {
+      paramString = a(paramString, str, 80);
+      QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByRandomIp ip=%s bIpv6=%b", new Object[] { str, Boolean.valueOf(paramBoolean) }));
+      return paramString;
+      if (Math.abs(i) % 2 == 0) {
+        str = "14.17.18.20";
+      } else {
+        str = "112.90.139.96";
+      }
+    }
+  }
+  
+  public ArrayList<bfef> a()
+  {
+    return ((bfeh)jdField_a_of_type_JavaUtilMap.get(this.f)).a();
+  }
+  
+  public List<String> a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool2 = amtk.a().a();
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    SosoSrvAddrProvider localSosoSrvAddrProvider = SosoSrvAddrProvider.getInstance();
+    localSosoSrvAddrProvider.init();
+    if (i == 3)
+    {
+      String str = localSosoSrvAddrProvider.getSrvAddrHttps(paramAppInterface, 0, bool2, true);
+      if (!TextUtils.isEmpty(str)) {
+        localArrayList.add(str + "cgi-bin/httpconn");
+      }
+      if (!bool2) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        paramAppInterface = localSosoSrvAddrProvider.getSrvAddrHttps(paramAppInterface, 0, bool1, true);
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          localArrayList.add(paramAppInterface + "cgi-bin/httpconn");
+        }
+        if (localArrayList.size() < 2)
+        {
+          paramAppInterface = a(false);
+          if (!TextUtils.isEmpty(paramAppInterface)) {
+            localArrayList.add(paramAppInterface);
+          }
+        }
+        paramAppInterface = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          localArrayList.add(paramAppInterface);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAvatarManger", 2, String.format("getSrvAddr type=%d prefV6=%b getUrl=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Arrays.toString(localArrayList.toArray()) }));
+        }
+        i = 0;
+        while (i < localArrayList.size())
+        {
+          localArrayList.set(i, (String)localArrayList.get(i) + "?htcmd=" + "0x6ff0072" + "&ver=" + "5520" + "&ukey=" + paramString5 + "&range=" + paramString2 + "&uin=" + paramString4 + "&seq=23&groupuin=" + paramString3 + "&filetype=" + "3" + "&imagetype=" + "5" + "&userdata=" + paramString1);
+          i += 1;
+        }
+      }
+    }
+    if (i == 2)
+    {
+      bool1 = true;
+      label422:
+      paramAppInterface = localSosoSrvAddrProvider.getSrvAddrHttps(paramAppInterface, 0, bool1, true);
+      if (!TextUtils.isEmpty(paramAppInterface)) {
+        localArrayList.add(paramAppInterface + "cgi-bin/httpconn");
+      }
+      if (i != 2) {
+        break label535;
+      }
+    }
+    label535:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramAppInterface = a(bool1);
+      if (!TextUtils.isEmpty(paramAppInterface)) {
+        localArrayList.add(paramAppInterface);
+      }
+      paramAppInterface = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
+      if (TextUtils.isEmpty(paramAppInterface)) {
+        break;
+      }
+      localArrayList.add(paramAppInterface);
+      break;
+      bool1 = false;
+      break label422;
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Anca = null;
+  }
+  
+  public void a(Class<? extends Thread> paramClass, AppInterface paramAppInterface, ArrayList<TroopClipPic> paramArrayList, String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap)
+  {
+    ThreadManager.executeOnNetWorkThread(new TroopAvatarManger.1(this, paramAppInterface, paramString1, paramString3, paramString2, (bfeh)jdField_a_of_type_JavaUtilMap.get(this.f), paramClass, paramArrayList, paramHashMap));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Anca != null) {
+      this.jdField_a_of_type_Anca.e(paramString);
+    }
+  }
+  
+  public void a(String paramString, int paramInt, ArrayList<Integer> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Anca != null) {
+      this.jdField_a_of_type_Anca.a(paramString, paramInt, paramArrayList);
+    }
+  }
+  
+  public void a(Observer paramObserver)
+  {
+    ((bfeh)jdField_a_of_type_JavaUtilMap.get(this.f)).addObserver(paramObserver);
+  }
+  
+  public void b(Observer paramObserver)
+  {
+    ((bfeh)jdField_a_of_type_JavaUtilMap.get(this.f)).a(paramObserver);
   }
 }
 

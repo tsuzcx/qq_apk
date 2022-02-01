@@ -1,15 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class aktd
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public ImageView b;
+  public aktd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public aktd(aktc paramaktc) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    xwa.a("video_shoot", "down_now", 0, 0, new String[0]);
+    aupc.b(null);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

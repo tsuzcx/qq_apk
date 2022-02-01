@@ -20,6 +20,7 @@ public class GetAppInfoByIdRequest
 {
   public static final String KEY_APP_ID = "key_app_id";
   public static final String KEY_APP_INFO_DATA = "mini_app_info_data";
+  public static final String KEY_APP_INFO_DATA_PB = "mini_app_info_data_pb";
   public static final String KEY_ENV_VERSION = "key_env_version";
   public static final String KEY_EXT = "key_ext";
   public static final String KEY_FIRST_PATH = "key_first_path";
@@ -120,9 +121,11 @@ public class GetAppInfoByIdRequest
           ((INTERFACE.StGetAppInfoByIdRsp)localObject).mergeFrom(paramArrayOfByte);
           if (localObject != null)
           {
-            MiniAppInfo localMiniAppInfo = MiniAppInfo.from(((INTERFACE.StGetAppInfoByIdRsp)localObject).appInfo);
+            paramArrayOfByte = ((INTERFACE.StGetAppInfoByIdRsp)localObject).appInfo;
+            MiniAppInfo localMiniAppInfo = MiniAppInfo.from(paramArrayOfByte);
             localMiniAppInfo.firstPath = this.req.firstPath.get();
             paramJSONObject.put("mini_app_info_data", localMiniAppInfo);
+            paramJSONObject.put("mini_app_info_data_pb", ((INTERFACE.StApiAppInfo)paramArrayOfByte.get()).toByteArray());
             paramArrayOfByte = paramJSONObject;
             if (((INTERFACE.StGetAppInfoByIdRsp)localObject).appInfo.type.get() != 3) {
               continue;
@@ -143,9 +146,11 @@ public class GetAppInfoByIdRequest
       {
         try
         {
-          localObject = MiniAppInfo.createMiniAppInfo(new JSONObject(new String(paramArrayOfByte)).optJSONObject("appInfo"));
+          paramArrayOfByte = new JSONObject(new String(paramArrayOfByte)).optJSONObject("appInfo");
+          localObject = MiniAppInfo.createMiniAppInfo(paramArrayOfByte);
           ((MiniAppInfo)localObject).firstPath = this.mJSONObject.optString("firstPath");
           paramJSONObject.put("mini_app_info_data", localObject);
+          paramJSONObject.put("mini_app_info_data_json", paramArrayOfByte);
           paramArrayOfByte = paramJSONObject;
           if (((MiniAppInfo)localObject).verType == 3)
           {

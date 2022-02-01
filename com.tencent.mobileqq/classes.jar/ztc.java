@@ -1,9 +1,19 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import org.json.JSONObject;
 
-public abstract interface ztc
+public class ztc
 {
-  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public ztc(JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("iconGrid");
+    this.c = paramJSONObject.optString("jumpUrl");
+    this.d = paramJSONObject.optString("iconLoveGrid");
+  }
 }
 
 

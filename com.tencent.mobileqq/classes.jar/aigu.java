@@ -1,30 +1,9 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-
 public class aigu
-  extends aigs
+  extends aigo
 {
-  public Bitmap a;
-  public String b;
-  
-  public aigu(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
   public boolean a()
   {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+    return true;
   }
 }
 

@@ -1,501 +1,290 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView.Renderer;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.data.MessageRecord;>;
-import localpb.richMsg.RichMsg.PttRec;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.cs.ptt_reserve.ptt_reserve.ReserveStruct;
-import tencent.im.cs.ptt_waveform.ptt_waveform.PttWaveform;
-import tencent.im.msg.hummer.resv.generalflags.ResvAttr;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.ElemFlags2;
-import tencent.im.msg.im_msg_body.GeneralFlags;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.NearByMessageType;
-import tencent.im.msg.im_msg_body.Ptt;
-import tencent.im.msg.im_msg_body.PubGroup;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.im_msg_body.Text;
+import java.io.File;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class bcsk
-  implements bcsi
+  implements GLSurfaceView.Renderer
 {
-  private int a(msg_comm.Msg paramMsg)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private bcse jdField_a_of_type_Bcse;
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private int jdField_b_of_type_Int;
+  private final float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private int jdField_c_of_type_Int;
+  private final float[] jdField_c_of_type_ArrayOfFloat = new float[16];
+  private int d;
+  private int e;
+  private int f;
+  
+  private bcsk(SpriteGLView paramSpriteGLView) {}
+  
+  /* Error */
+  @android.annotation.SuppressLint({"DefaultLocale"})
+  public void onDrawFrame(GL10 paramGL10)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())) {
-      return 0;
-    }
-    paramMsg = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get().iterator();
-    while (paramMsg.hasNext())
-    {
-      im_msg_body.Elem localElem = (im_msg_body.Elem)paramMsg.next();
-      if ((localElem.elem_flags2.has()) && (((im_msg_body.ElemFlags2)localElem.elem_flags2.get()).uint32_vip_status.has()))
-      {
-        int i = ((im_msg_body.ElemFlags2)localElem.elem_flags2.get()).uint32_vip_status.get();
-        if (i == 1) {
-          return 1;
-        }
-        if (i == 2) {
-          return 2;
-        }
-      }
-    }
-    return 0;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   4: invokestatic 44	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/lang/Object;
+    //   7: astore_1
+    //   8: aload_1
+    //   9: monitorenter
+    //   10: iconst_0
+    //   11: istore_2
+    //   12: iload_2
+    //   13: aload_0
+    //   14: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   17: invokestatic 47	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
+    //   20: invokeinterface 53 1 0
+    //   25: if_icmpge +31 -> 56
+    //   28: aload_0
+    //   29: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   32: invokestatic 47	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
+    //   35: iload_2
+    //   36: invokeinterface 57 2 0
+    //   41: checkcast 59	java/lang/Runnable
+    //   44: invokeinterface 62 1 0
+    //   49: iload_2
+    //   50: iconst_1
+    //   51: iadd
+    //   52: istore_2
+    //   53: goto -41 -> 12
+    //   56: aload_0
+    //   57: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   60: invokestatic 47	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
+    //   63: invokeinterface 65 1 0
+    //   68: aload_1
+    //   69: monitorexit
+    //   70: aload_0
+    //   71: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   74: invokestatic 67	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/lang/Object;
+    //   77: astore_1
+    //   78: aload_1
+    //   79: monitorenter
+    //   80: iconst_0
+    //   81: istore_2
+    //   82: iload_2
+    //   83: aload_0
+    //   84: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   87: invokestatic 69	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:c	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
+    //   90: invokeinterface 53 1 0
+    //   95: if_icmpge +38 -> 133
+    //   98: aload_0
+    //   99: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   102: invokestatic 69	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:c	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
+    //   105: iload_2
+    //   106: invokeinterface 57 2 0
+    //   111: checkcast 59	java/lang/Runnable
+    //   114: invokeinterface 62 1 0
+    //   119: iload_2
+    //   120: iconst_1
+    //   121: iadd
+    //   122: istore_2
+    //   123: goto -41 -> 82
+    //   126: astore 4
+    //   128: aload_1
+    //   129: monitorexit
+    //   130: aload 4
+    //   132: athrow
+    //   133: aload_1
+    //   134: monitorexit
+    //   135: sipush 16640
+    //   138: invokestatic 75	android/opengl/GLES20:glClear	(I)V
+    //   141: aload_0
+    //   142: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   145: invokestatic 77	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
+    //   148: invokeinterface 81 1 0
+    //   153: astore_1
+    //   154: aload_1
+    //   155: arraylength
+    //   156: istore_3
+    //   157: iconst_0
+    //   158: istore_2
+    //   159: iload_2
+    //   160: iload_3
+    //   161: if_icmpge +99 -> 260
+    //   164: aload_1
+    //   165: iload_2
+    //   166: aaload
+    //   167: astore 4
+    //   169: aload 4
+    //   171: instanceof 83
+    //   174: ifeq +72 -> 246
+    //   177: sipush 3042
+    //   180: invokestatic 86	android/opengl/GLES20:glEnable	(I)V
+    //   183: iconst_1
+    //   184: sipush 771
+    //   187: invokestatic 90	android/opengl/GLES20:glBlendFunc	(II)V
+    //   190: aload_0
+    //   191: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   194: getfield 92	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:jdField_c_of_type_Int	I
+    //   197: invokestatic 95	android/opengl/GLES20:glUseProgram	(I)V
+    //   200: aload 4
+    //   202: checkcast 83	bcsg
+    //   205: aload_0
+    //   206: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   209: invokevirtual 98	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getWidth	()I
+    //   212: aload_0
+    //   213: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   216: invokevirtual 101	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getHeight	()I
+    //   219: aload_0
+    //   220: getfield 103	bcsk:jdField_a_of_type_Int	I
+    //   223: aload_0
+    //   224: getfield 104	bcsk:jdField_c_of_type_Int	I
+    //   227: aload_0
+    //   228: getfield 106	bcsk:jdField_b_of_type_Int	I
+    //   231: aload_0
+    //   232: getfield 108	bcsk:d	I
+    //   235: aload_0
+    //   236: getfield 110	bcsk:e	I
+    //   239: aload_0
+    //   240: getfield 30	bcsk:jdField_c_of_type_ArrayOfFloat	[F
+    //   243: invokevirtual 113	bcsg:c	(IIIIIII[F)V
+    //   246: iload_2
+    //   247: iconst_1
+    //   248: iadd
+    //   249: istore_2
+    //   250: goto -91 -> 159
+    //   253: astore 4
+    //   255: aload_1
+    //   256: monitorexit
+    //   257: aload 4
+    //   259: athrow
+    //   260: aload_0
+    //   261: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   264: getfield 116	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	Z
+    //   267: ifeq +137 -> 404
+    //   270: aload_0
+    //   271: aload_0
+    //   272: getfield 118	bcsk:f	I
+    //   275: iconst_1
+    //   276: iadd
+    //   277: putfield 118	bcsk:f	I
+    //   280: aload_0
+    //   281: getfield 118	bcsk:f	I
+    //   284: iconst_5
+    //   285: if_icmplt +64 -> 349
+    //   288: invokestatic 124	java/lang/System:currentTimeMillis	()J
+    //   291: aload_0
+    //   292: getfield 126	bcsk:jdField_a_of_type_Long	J
+    //   295: lsub
+    //   296: l2i
+    //   297: istore_2
+    //   298: ldc 128
+    //   300: iconst_1
+    //   301: anewarray 4	java/lang/Object
+    //   304: dup
+    //   305: iconst_0
+    //   306: aload_0
+    //   307: getfield 118	bcsk:f	I
+    //   310: i2f
+    //   311: ldc 129
+    //   313: fmul
+    //   314: iload_2
+    //   315: i2f
+    //   316: fdiv
+    //   317: invokestatic 135	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   320: aastore
+    //   321: invokestatic 141	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   324: astore_1
+    //   325: aload_0
+    //   326: invokestatic 124	java/lang/System:currentTimeMillis	()J
+    //   329: putfield 126	bcsk:jdField_a_of_type_Long	J
+    //   332: aload_0
+    //   333: iconst_0
+    //   334: putfield 118	bcsk:f	I
+    //   337: aload_0
+    //   338: getfield 143	bcsk:jdField_a_of_type_Bcse	Lbcse;
+    //   341: aload_0
+    //   342: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   345: aload_1
+    //   346: invokevirtual 148	bcse:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;Ljava/lang/String;)V
+    //   349: aload_0
+    //   350: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   353: getfield 92	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:jdField_c_of_type_Int	I
+    //   356: invokestatic 95	android/opengl/GLES20:glUseProgram	(I)V
+    //   359: aload_0
+    //   360: getfield 143	bcsk:jdField_a_of_type_Bcse	Lbcse;
+    //   363: aload_0
+    //   364: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   367: invokevirtual 98	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getWidth	()I
+    //   370: aload_0
+    //   371: getfield 21	bcsk:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   374: invokevirtual 101	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getHeight	()I
+    //   377: aload_0
+    //   378: getfield 103	bcsk:jdField_a_of_type_Int	I
+    //   381: aload_0
+    //   382: getfield 104	bcsk:jdField_c_of_type_Int	I
+    //   385: aload_0
+    //   386: getfield 106	bcsk:jdField_b_of_type_Int	I
+    //   389: aload_0
+    //   390: getfield 108	bcsk:d	I
+    //   393: aload_0
+    //   394: getfield 110	bcsk:e	I
+    //   397: aload_0
+    //   398: getfield 30	bcsk:jdField_c_of_type_ArrayOfFloat	[F
+    //   401: invokevirtual 149	bcse:c	(IIIIIII[F)V
+    //   404: invokestatic 152	android/opengl/GLES20:glFlush	()V
+    //   407: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	408	0	this	bcsk
+    //   0	408	1	paramGL10	GL10
+    //   11	304	2	i	int
+    //   156	6	3	j	int
+    //   126	5	4	localObject1	Object
+    //   167	34	4	localObject2	Object
+    //   253	5	4	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	49	126	finally
+    //   56	70	126	finally
+    //   128	130	126	finally
+    //   82	119	253	finally
+    //   133	135	253	finally
+    //   255	257	253	finally
   }
   
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    im_msg_body.Ptt localPtt = (im_msg_body.Ptt)((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).ptt.get();
-    String str2 = localPtt.bytes_file_name.get().toStringUtf8();
-    Object localObject2 = "";
-    parambcre = null;
-    int m;
-    int i4;
-    int j;
-    boolean bool;
-    long l2;
-    long l3;
-    long l4;
-    long l5;
-    long l6;
-    Object localObject1;
-    int n;
-    label205:
-    int i;
-    long l1;
-    if (str2.endsWith(".amr"))
+    float f1 = paramInt1 / paramInt2;
+    Matrix.frustumM(this.jdField_a_of_type_ArrayOfFloat, 0, -f1, f1, -1.0F, 1.0F, 3.0F, 7.0F);
+    Matrix.setLookAtM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
+    this.jdField_a_of_type_Bcse.c = (DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), 50.0F) - paramInt1 / 2);
+    this.jdField_a_of_type_Bcse.d = (DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), 10.0F) - paramInt2 / 2);
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.o();
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    try
     {
-      if (!bduh.a(paramMessageHandler.app)) {
-        break label1196;
-      }
-      m = 1;
-      i4 = a(paramMsg);
-      j = localPtt.uint32_file_type.get();
-      bool = localPtt.bool_valid.get();
-      l2 = localPtt.uint64_src_uin.get();
-      l3 = localPtt.uint32_file_size.get();
-      l4 = localPtt.uint32_file_id.get() & 0xFFFFFFFF;
-      l5 = localPtt.uint32_server_ip.get();
-      l6 = localPtt.uint32_server_port.get();
-      localObject1 = localPtt.bytes_file_uuid.get().toByteArray();
-      parambcre = localPtt.bytes_file_md5.get().toByteArray();
-      if (!localPtt.uint32_format.has()) {
-        break label1202;
-      }
-      n = localPtt.uint32_format.get();
-      if (!localPtt.uint32_time.has()) {
-        break label1208;
-      }
-      i = localPtt.uint32_time.get();
-      l1 = bhrp.b(i);
-      if (!localPtt.bytes_down_para.has()) {
-        break label2520;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SPD", 2, "receive ptt msg , bytes_down_para has ! " + localPtt.bytes_down_para.get());
-      }
-      localObject4 = localPtt.bytes_down_para.get();
-      if (localObject4 == null) {
-        break label2520;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int = bcsx.a(bcsx.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "VertexShader.glsl"), bcsx.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShader.glsl"));
+      GLES20.glUseProgram(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "vPosition");
+      this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "a_texCoord");
+      this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "uMVPMatrix");
+      this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "s_texture");
+      this.e = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "v_alpha");
+      QLog.i("SpriteGLView", 1, "program = " + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int + ",mPositionHandle =" + this.jdField_a_of_type_Int + ",mTexCoordHandle =" + this.jdField_c_of_type_Int + ",mMatrixHandle= " + this.jdField_b_of_type_Int + ",mTexSamplerHandle =" + this.d + ",mAlphaHandle = " + this.e);
+      this.jdField_a_of_type_Bcse = new bcse(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "fps:", -1, 40);
+      SpriteGLView.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, System.currentTimeMillis());
+      return;
     }
-    label1196:
-    label1202:
-    label1208:
-    label1361:
-    label2006:
-    label2520:
-    for (Object localObject4 = ((ByteStringMicro)localObject4).toStringUtf8();; localObject4 = "")
+    catch (Exception paramGL10)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SPD", 2, "receive ptt msg , url : " + (String)localObject4 + " srcuin " + l2 + "filename" + str2);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RecordParams", 2, "<---decodeGrpDisMsgPkg_PTT voiceType：" + n + " voiceLengh:" + l1);
-      }
-      localObject1 = bhml.a((byte[])localObject1);
-      Object localObject5 = bhml.a(parambcre);
-      if (localPtt.bytes_group_file_key.has()) {}
-      for (parambcre = localPtt.bytes_group_file_key.get().toByteArray();; parambcre = null) {
-        try
-        {
-          parambcre = new String(parambcre, "utf-8");
-          if (localObject5 == null)
-          {
-            localObject5 = "";
-            if (QLog.isColorLevel())
-            {
-              localObject6 = new StringBuilder("<---decodeSinglePbMsg_GroupDis:");
-              ((StringBuilder)localObject6).append(" pttType:").append(j).append(" isValid:").append(bool).append(" srcUin:").append(l2).append(" fileSize:").append(l3 & 0xFFFFFFFF).append(" fileID").append(l4).append(" serverIP:").append(l5 & 0xFFFFFFFF).append(" serverPort:").append(l6 & 0xFFFFFFFF).append(" fileName:").append(str2).append(" uuidStr:").append((String)localObject1).append(" md5Str:").append((String)localObject5).append(" GrpFileKey:").append(parambcre);
-              QLog.d("GrpDisPTTDecoder", 2, ((StringBuilder)localObject6).toString());
-            }
-            i1 = 0;
-            int i2 = 0;
-            int i3 = 0;
-            String str1 = "";
-            if (localPtt.bytes_pb_reserve.has())
-            {
-              ptt_reserve.ReserveStruct localReserveStruct = new ptt_reserve.ReserveStruct();
-              k = i3;
-              j = i2;
-              i = i1;
-              localObject1 = localObject2;
-              try
-              {
-                localReserveStruct.mergeFrom(localPtt.bytes_pb_reserve.get().toByteArray());
-                k = i3;
-                j = i2;
-                i = i1;
-                localObject1 = localObject2;
-                i1 = localReserveStruct.uint32_change_voice.get();
-                k = i3;
-                j = i2;
-                i = i1;
-                localObject1 = localObject2;
-                i2 = localReserveStruct.uint32_redpack_type.get();
-                k = i3;
-                j = i2;
-                i = i1;
-                localObject1 = localObject2;
-                i3 = localReserveStruct.uint32_autototext_voice.get();
-                k = i3;
-                j = i2;
-                i = i1;
-                localObject1 = localObject2;
-                localObject6 = localReserveStruct.bytes_voice_text_abs.get().toStringUtf8();
-                localObject2 = str1;
-                k = i3;
-                j = i2;
-                i = i1;
-                localObject1 = localObject6;
-                if (localReserveStruct.bytes_redpack_score_id.has())
-                {
-                  k = i3;
-                  j = i2;
-                  i = i1;
-                  localObject1 = localObject6;
-                  localObject2 = localReserveStruct.bytes_redpack_score_id.get().toStringUtf8();
-                }
-                localObject1 = localObject2;
-                i = i3;
-                j = i2;
-                k = i1;
-                localObject2 = localObject6;
-              }
-              catch (Exception localException)
-              {
-                do
-                {
-                  for (;;)
-                  {
-                    localObject6 = "";
-                    i1 = i;
-                    localObject3 = localObject1;
-                    localObject1 = localObject6;
-                    i = k;
-                    k = i1;
-                  }
-                  localObject4 = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
-                  localObject3 = new StringBuilder();
-                  if ((localObject4 != null) && (((List)localObject4).size() > 0)) {
-                    break;
-                  }
-                } while (!QLog.isColorLevel());
-                ((StringBuilder)localObject3).append("elems:null || elems.size() <= 0");
-                QLog.d("GrpDisPTTDecoder", 2, ((StringBuilder)localObject3).toString());
-                return;
-                if (!QLog.isColorLevel()) {
-                  break label1361;
-                }
-                ((StringBuilder)localObject3).append("elemsSize").append(((List)localObject4).size()).append("\n");
-                i = 0;
-              }
-              beyo.a(str2, 0L, 2, false, str2);
-              localObject6 = new RichMsg.PttRec();
-              ((RichMsg.PttRec)localObject6).localPath.set(str2);
-              ((RichMsg.PttRec)localObject6).size.set(localPtt.uint32_file_size.get());
-              ((RichMsg.PttRec)localObject6).type.set(2);
-              ((RichMsg.PttRec)localObject6).uuid.set(str2);
-              ((RichMsg.PttRec)localObject6).isRead.set(false);
-              ((RichMsg.PttRec)localObject6).md5.set((String)localObject5);
-              ((RichMsg.PttRec)localObject6).isReport.set(0);
-              ((RichMsg.PttRec)localObject6).version.set(5);
-              ((RichMsg.PttRec)localObject6).groupFileID.set(l4);
-              ((RichMsg.PttRec)localObject6).pttFlag.set(m);
-              ((RichMsg.PttRec)localObject6).longPttVipFlag.set(i4);
-              if (parambcre != null) {
-                ((RichMsg.PttRec)localObject6).group_file_key.set(parambcre);
-              }
-              l2 = System.currentTimeMillis() / 1000L;
-              l3 = paramMsg.msg_head.msg_time.get();
-              ((RichMsg.PttRec)localObject6).msgRecTime.set(l2);
-              ((RichMsg.PttRec)localObject6).msgTime.set(l3);
-              ((RichMsg.PttRec)localObject6).voiceType.set(n);
-              ((RichMsg.PttRec)localObject6).voiceLength.set(bhjx.a(l1));
-              ((RichMsg.PttRec)localObject6).voiceChangeFlag.set(k);
-              ((RichMsg.PttRec)localObject6).directUrl.set((String)localObject4);
-              ((RichMsg.PttRec)localObject6).redpack_type.set(j);
-              ((RichMsg.PttRec)localObject6).autototext_voice.set(i);
-              ((RichMsg.PttRec)localObject6).sttText.set((String)localObject2);
-              parambcre = bcry.a(-2002);
-              parambcre.msgtype = -2002;
-              parambcre.msgData = ((RichMsg.PttRec)localObject6).toByteArray();
-              ((MessageForPtt)parambcre).parse();
-              paramList.add(parambcre);
-              aljb.b((String)localObject1, parambcre);
-              if (parambcre == null)
-              {
-                return;
-                m = 0;
-                break;
-                n = 0;
-                break label205;
-                i = 0;
-              }
-            }
-          }
-        }
-        catch (UnsupportedEncodingException parambcre)
-        {
-          for (;;)
-          {
-            Object localObject6;
-            int i1;
-            int k;
-            parambcre = null;
-            continue;
-            Object localObject3;
-            for (;;)
-            {
-              if (i >= ((List)localObject4).size()) {
-                break label2054;
-              }
-              localObject5 = (im_msg_body.Elem)((List)localObject4).get(i);
-              if (((im_msg_body.Elem)localObject5).near_by_msg.has())
-              {
-                if (QLog.isColorLevel()) {
-                  ((StringBuilder)localObject3).append("elemType: near_by_msg;");
-                }
-                paramList = ((im_msg_body.Elem)localObject5).near_by_msg;
-                if ((paramList.uint32_identify_type.has()) && (paramList.uint32_identify_type.get() == 1))
-                {
-                  parambcre.saveExtInfoToExtStr("identify_flag", "true");
-                  if (QLog.isColorLevel()) {
-                    ((StringBuilder)localObject3).append("has identify;");
-                  }
-                }
-              }
-              for (;;)
-              {
-                if ((!((im_msg_body.Elem)localObject5).general_flags.has()) || (!((im_msg_body.Elem)localObject5).general_flags.bytes_pb_reserve.has())) {
-                  break label2037;
-                }
-                paramList = new generalflags.ResvAttr();
-                try
-                {
-                  paramList.mergeFrom(((im_msg_body.Elem)localObject5).general_flags.bytes_pb_reserve.get().toByteArray());
-                  if (paramList.uint32_holiday_flag.has())
-                  {
-                    j = paramList.uint32_holiday_flag.get();
-                    if (j == 1) {
-                      parambcre.saveExtInfoToExtStr(bcrn.c, String.valueOf(j));
-                    }
-                    if (QLog.isColorLevel()) {
-                      QLog.i("GrpDisPTTDecoder", 2, "decodeGrpDisMsgPkg_PTT uint32_holiday_flag = " + j);
-                    }
-                  }
-                  bool = paramList.bytes_pb_ptt_waveform.has();
-                  if (!bool) {}
-                }
-                catch (Exception paramList)
-                {
-                  for (;;)
-                  {
-                    paramList.printStackTrace();
-                  }
-                }
-                try
-                {
-                  localObject1 = new ptt_waveform.PttWaveform();
-                  ((ptt_waveform.PttWaveform)localObject1).mergeFrom(paramList.bytes_pb_ptt_waveform.get().toByteArray());
-                  ((MessageForPtt)parambcre).waveformArray = bhoi.a((ptt_waveform.PttWaveform)localObject1);
-                  if (QLog.isColorLevel())
-                  {
-                    paramList = new StringBuilder();
-                    localObject1 = ((MessageForPtt)parambcre).waveformArray;
-                    k = localObject1.length;
-                    j = 0;
-                    for (;;)
-                    {
-                      if (j < k)
-                      {
-                        paramList.append(localObject1[j]);
-                        paramList.append(";");
-                        j += 1;
-                        continue;
-                        if (((im_msg_body.Elem)localObject5).pub_group.has())
-                        {
-                          paramList = (im_msg_body.PubGroup)((im_msg_body.Elem)localObject5).pub_group.get();
-                          if (paramList == null) {
-                            break;
-                          }
-                          j = paramList.uint32_gender.get();
-                          localObject1 = paramList.bytes_nickname.get().toStringUtf8();
-                          parambcre.saveExtInfoToExtStr("hotchat_gender", String.valueOf(j));
-                          paramList = (List<MessageRecord>)localObject1;
-                          if (localObject1 == null) {
-                            paramList = "";
-                          }
-                          parambcre.saveExtInfoToExtStr("hotchat_nick", paramList);
-                          if (!QLog.isColorLevel()) {
-                            break;
-                          }
-                          ((StringBuilder)localObject3).append("has pub_group;");
-                          break;
-                        }
-                        if ((((im_msg_body.Elem)localObject5).general_flags.has()) && (((im_msg_body.GeneralFlags)((im_msg_body.Elem)localObject5).general_flags.get()).uint32_olympic_torch.has()))
-                        {
-                          j = ((im_msg_body.Elem)localObject5).general_flags.uint32_olympic_torch.get();
-                          if (QLog.isColorLevel()) {
-                            ((StringBuilder)localObject3).append("has olympicTorch:").append(j).append(";");
-                          }
-                          if (j <= 0) {
-                            break;
-                          }
-                          parambcre.saveExtInfoToExtStr("olympic_torch_flg", j + "");
-                          break;
-                        }
-                        if ((!((im_msg_body.Elem)localObject5).common_elem.has()) || (13 != ((im_msg_body.Elem)localObject5).common_elem.uint32_service_type.get())) {
-                          break;
-                        }
-                        if (QLog.isColorLevel()) {
-                          ((StringBuilder)localObject3).append("decodeGrpDisMsgPkg_PTT decode hummer_commelem == UpdateStrangerAvatar");
-                        }
-                        new bcrt().a((List)localObject4, paramMsg, (StringBuilder)localObject3);
-                        break;
-                      }
-                    }
-                    QLog.d("GrpDisPTTDecoder", 2, "decodeGrpDisMsgPkg_PTT, waveformArray = " + paramList.toString());
-                  }
-                }
-                catch (Throwable paramList)
-                {
-                  break label2006;
-                }
-              }
-              if ((((MessageForPtt)parambcre).waveformArray == null) || (((MessageForPtt)parambcre).waveformArray.length == 0)) {
-                ((MessageForPtt)parambcre).buileDefaultWaveform();
-              }
-              label2037:
-              i += 1;
-            }
-            i = 0;
-            for (;;)
-            {
-              if (i < ((List)localObject4).size())
-              {
-                paramList = (im_msg_body.Elem)((List)localObject4).get(i);
-                if (paramList.general_flags.bytes_pb_reserve.has()) {
-                  localObject1 = new generalflags.ResvAttr();
-                }
-                try
-                {
-                  ((generalflags.ResvAttr)localObject1).mergeFrom(paramList.general_flags.bytes_pb_reserve.get().toByteArray());
-                  if (((generalflags.ResvAttr)localObject1).uint32_robot_msg_flag.has())
-                  {
-                    j = ((generalflags.ResvAttr)localObject1).uint32_robot_msg_flag.get();
-                    parambcre.mRobotFlag = j;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("GrpDisPTTDecoder", 2, "handleGeneralSettingFlags uint32_robot_msg_flag = " + j);
-                    }
-                  }
-                  i += 1;
-                }
-                catch (InvalidProtocolBufferMicroException paramList)
-                {
-                  for (;;)
-                  {
-                    paramList.printStackTrace();
-                  }
-                }
-              }
-            }
-            bool = ((bgty)paramMessageHandler.app.getManager(203)).a(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get());
-            if ((parambcre.mRobotFlag == 1) || (parambcre.mRobotFlag == 2) || (bool))
-            {
-              localObject1 = ((List)localObject4).iterator();
-              while (((Iterator)localObject1).hasNext())
-              {
-                paramList = (im_msg_body.Elem)((Iterator)localObject1).next();
-                if (paramList.text.has())
-                {
-                  paramList = (im_msg_body.Text)paramList.text.get();
-                  if (paramList.attr_6_buf.has())
-                  {
-                    paramList = paramList.attr_6_buf.get();
-                    if (paramList != null) {}
-                    for (paramList = paramList.toByteArray();; paramList = null)
-                    {
-                      if ((paramList == null) || (paramList.length == 0)) {
-                        break label2448;
-                      }
-                      k = bhvd.a(paramList, 0);
-                      j = 2;
-                      i = 0;
-                      for (;;)
-                      {
-                        if ((i >= k) || (j >= 2048)) {
-                          break label2443;
-                        }
-                        localObject4 = new MessageForText.AtTroopMemberInfo();
-                        if (!((MessageForText.AtTroopMemberInfo)localObject4).readFrom(paramList, j)) {
-                          break;
-                        }
-                        j += ((MessageForText.AtTroopMemberInfo)localObject4).length();
-                        i = (short)(i + 1);
-                        if (parambcre.atInfoList == null) {
-                          parambcre.atInfoList = new ArrayList();
-                        }
-                        parambcre.atInfoList.add(localObject4);
-                      }
-                      break;
-                    }
-                  }
-                }
-              }
-              ((MessageForPtt)parambcre).parse();
-            }
-            aqyt.a(paramMsg, parambcre, paramMessageHandler.app);
-            if (QLog.isColorLevel())
-            {
-              QLog.d("GrpDisPTTDecoder", 2, ((StringBuilder)localObject3).toString());
-              return;
-              localObject1 = "";
-              i = 0;
-              j = 0;
-              k = 0;
-              localObject3 = "";
-            }
-          }
-        }
+      for (;;)
+      {
+        QLog.e("SpriteGLView", 2, QLog.getStackTraceString(paramGL10));
       }
     }
   }

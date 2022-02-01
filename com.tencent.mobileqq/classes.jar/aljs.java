@@ -1,33 +1,36 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
-public class aljs
+class aljs
+  implements View.OnClickListener
 {
-  public int a;
-  public View a;
-  public boolean a;
-  public int b;
+  aljs(aljq paramaljq, RedTouch paramRedTouch, aqmf paramaqmf) {}
   
-  public aljs(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt >= 2;
-  }
-  
-  public boolean a()
-  {
-    return this.b >= 2;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(20);
-    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
-    return localStringBuffer.toString();
+    Switch localSwitch;
+    if (AppSetting.c)
+    {
+      localSwitch = (Switch)paramView.findViewById(2131363982);
+      if (localSwitch != null) {
+        if (localSwitch.isChecked()) {
+          break label66;
+        }
+      }
+    }
+    label66:
+    for (boolean bool = true;; bool = false)
+    {
+      localSwitch.setChecked(bool);
+      aljq.a(this.jdField_a_of_type_Aljq, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aqmf, localSwitch.isChecked());
+      paramView.sendAccessibilityEvent(1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

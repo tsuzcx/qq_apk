@@ -1,13 +1,17 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import java.io.File;
 
-public abstract interface bljm
+public class bljm
 {
-  public abstract void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public static final String a = bljv.a + File.separator + "camera";
+  public static final String b = bljv.a + File.separator + "sv_config_resources" + File.separator;
+  public static final String c = a + File.separator + "capture";
+  public static final String d = a + File.separator + "material_zip_download";
+  public static final String e = a + File.separator + "material_usable";
+  public static final String f = a + File.separator + "material_config";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljm
  * JD-Core Version:    0.7.0.1
  */

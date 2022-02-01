@@ -1,4 +1,7 @@
-public class ameb {}
+public abstract interface ameb
+{
+  public abstract void a(boolean paramBoolean, int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

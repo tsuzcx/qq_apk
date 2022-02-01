@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.widget.AuthDialog;
@@ -17,7 +17,7 @@ class BaseJsPluginEngine$7$1
       return;
     }
     AuthDialog.AuthDialogResBuilder localAuthDialogResBuilder = new AuthDialog.AuthDialogResBuilder();
-    localAuthDialogResBuilder.setMiniAppIconUrl(this.this$1.val$miniIconUrl).setMiniAppName(this.this$1.val$miniAppName).setAuthTitle(this.this$1.val$authTitle).setUserIconUrl(this.val$avatarUrl).setUserName(this.val$nickName).setAuthDesc(this.this$1.val$authDesc).setReportSubAction(this.this$1.val$repoetSubAction).setMiniAppConfig(this.this$1.this$0.appBrandRuntime.getApkgInfo().appConfig).setLeftBtnText(anzj.a(2131699920)).setLeftBtnClickListener(new BaseJsPluginEngine.7.1.2(this)).setRightBtnText(anzj.a(2131699924)).setRightBtnClickListener(new BaseJsPluginEngine.7.1.1(this));
+    localAuthDialogResBuilder.setMiniAppIconUrl(this.this$1.val$miniIconUrl).setMiniAppName(this.this$1.val$miniAppName).setAuthTitle(this.this$1.val$authTitle).setUserIconUrl(this.val$avatarUrl).setUserName(this.val$nickName).setAuthDesc(this.this$1.val$authDesc).setReportSubAction(this.this$1.val$repoetSubAction).setMiniAppConfig(this.this$1.this$0.appBrandRuntime.getApkgInfo().appConfig).setLeftBtnText(amtj.a(2131700155)).setLeftBtnClickListener(new BaseJsPluginEngine.7.1.2(this)).setRightBtnText(amtj.a(2131700159)).setRightBtnClickListener(new BaseJsPluginEngine.7.1.1(this));
     this.this$1.this$0.authDialog.show(localAuthDialogResBuilder);
   }
 }

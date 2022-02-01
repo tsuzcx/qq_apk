@@ -1,19 +1,10 @@
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wei
-  implements vxz
 {
-  public wei(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView) {}
-  
-  public void a(String paramString)
-  {
-    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
-    localQCircleInitBean.setUin(paramString);
-    localQCircleInitBean.setFromReportBean(this.a.a().clone().setElementIdStr("portrait"));
-    uyx.b(this.a.getContext(), localQCircleInitBean);
-  }
+  public String a;
+  public List<yml> a = new ArrayList();
 }
 
 

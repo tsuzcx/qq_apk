@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import antz;
-import bgso;
+import amoo;
+import bfcc;
 import java.util.ArrayList;
 
 class TroopManager$8$1
@@ -11,7 +11,7 @@ class TroopManager$8$1
   
   public void run()
   {
-    ((antz)this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.this$0.a.a(22)).d(new bgso(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.a, this.jdField_a_of_type_JavaUtilArrayList));
+    ((amoo)this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.this$0.a.getBusinessHandler(22)).d(new bfcc(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.a, this.jdField_a_of_type_JavaUtilArrayList));
   }
 }
 

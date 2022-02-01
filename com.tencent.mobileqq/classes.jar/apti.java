@@ -1,33 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class apti
-  implements azfc
 {
-  public apti(ARScanEntryView paramARScanEntryView) {}
+  public void a() {}
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
-    }
-    if (ARScanEntryView.a(this.a) != null) {
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
-    }
-  }
+  public void a(boolean paramBoolean, short paramShort, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apti
  * JD-Core Version:    0.7.0.1
  */

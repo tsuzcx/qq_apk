@@ -1,28 +1,58 @@
-import com.tencent.biz.qqcircle.widgets.QCircleBaseVideoView;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import feedcloud.FeedCloudMeta.StVideo;
-import java.util.Collections;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class vyd
-  implements vqj
+  extends vqr
 {
-  public vyd(QCircleBaseVideoView paramQCircleBaseVideoView, int paramInt, FeedCloudMeta.StVideo paramStVideo) {}
+  public static String a = vpl.a("StorySvc.check_activity");
+  public String b;
+  public final String c;
   
-  public void a(long paramLong, String paramString)
+  public vyd(String paramString)
   {
-    QCircleBaseVideoView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, QCircleBaseVideoView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView), "video_exchange_url", this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView.a(), Collections.singletonList(vtt.a("ret_code", String.valueOf(paramLong))));
-    if (VSNetworkHelper.a((int)paramLong)) {
-      return;
-    }
-    QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo, this.jdField_a_of_type_Int);
+    this.c = paramString;
   }
   
-  public void a(FeedCloudMeta.StVideo paramStVideo, boolean paramBoolean)
+  public String a()
   {
-    QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, paramStVideo, this.jdField_a_of_type_Int);
-    if (!paramBoolean) {
-      QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView), "video_exchange_url", this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView.a(), Collections.singletonList(vtt.a("ret_code", "0")));
+    return a;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
+    {
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new vye(localRspCheckActivity);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    }
+    xvv.a("MsgTabCheckActiveRequest", "client version=%s", "8.4.8");
+    localReqCheckActivity.version.set("8.4.8");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 

@@ -1,20 +1,106 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.MotionEvent;
 
 public class axpp
-  extends axot
 {
-  public axpp(QQAppInterface paramQQAppInterface)
+  private float jdField_a_of_type_Float;
+  private final axpq jdField_a_of_type_Axpq;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private boolean jdField_b_of_type_Boolean;
+  private float c;
+  private float d;
+  private float e;
+  
+  public axpp(Context paramContext, axpq paramaxpq)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_Axpq = paramaxpq;
   }
   
-  public void a(axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow)
+  private float a(MotionEvent paramMotionEvent)
   {
-    super.a(paramaxpl, paramHashMap, paramaxow);
-    paramaxow.a(0, 4, paramaxpl);
+    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Axpq.b(this);
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Axpq.a(this));
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+    } while (!this.jdField_b_of_type_Boolean);
+    this.jdField_a_of_type_Axpq.a(this);
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = 0;
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return true;
+            b();
+            return true;
+          } while (paramMotionEvent.getPointerCount() != 2);
+          float f = a(paramMotionEvent);
+          this.d = f;
+          this.e = f;
+          this.c = f;
+          return true;
+        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
+        this.d = a(paramMotionEvent);
+        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
+        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        a();
+        if ((!bool) || (a())) {
+          i = 1;
+        }
+      } while (i == 0);
+      this.e = this.d;
+      return true;
+    } while (paramMotionEvent.getPointerCount() != 2);
+    b();
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public float c()
+  {
+    return this.d - this.e;
   }
 }
 

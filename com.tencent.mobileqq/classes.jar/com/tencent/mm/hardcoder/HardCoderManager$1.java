@@ -1,13 +1,13 @@
 package com.tencent.mm.hardcoder;
 
-import admw;
+import acjp;
 
 public final class HardCoderManager$1
   extends Thread
 {
   public void run()
   {
-    admw.a(admw.b());
+    acjp.a(acjp.b());
   }
 }
 

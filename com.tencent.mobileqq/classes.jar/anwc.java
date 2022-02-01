@@ -1,55 +1,77 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_ICON.lighting_sweet_key_req;
+import SWEET_NEW_ICON.lighting_sweet_key_rsp;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class anwc
-  extends MSFServlet
+  extends QzoneExternalRequest
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private lighting_sweet_key_req jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public anwc() {}
+  
+  public anwc(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineServlet", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("DataLineServlet", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    ((anvu)localQQAppInterface.a(8)).a(paramIntent, paramFromServiceMsg);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req = new lighting_sweet_key_req();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm = new sweet_req_comm();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.opuin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.uin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.loveuin = 0L;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.qua = QUA.getQUA3();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.pf = 1;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.src = 3;
+    this.jdField_a_of_type_JavaLangString = a();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static lighting_sweet_key_rsp a(byte[] paramArrayOfByte, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineServlet", 2, "onSend called");
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    if (paramIntent == null) {
-      QLog.e("DataLineServlet", 1, "onSend : req is null");
+    try
+    {
+      paramArrayOfByte = (lighting_sweet_key_rsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
     }
+    catch (Throwable paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    if (TextUtils.isEmpty("SweetQzoneService.lightingSweetKey")) {}
+    String[] arrayOfString;
     do
     {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
+      return null;
+      arrayOfString = "SweetQzoneService.lightingSweetKey".split("\\.");
+    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
+    return arrayOfString[(arrayOfString.length - 1)];
+  }
+  
+  public String getCmdString()
+  {
+    return "SweetQzoneService.lightingSweetKey";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  }
+  
+  public String uniKey()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

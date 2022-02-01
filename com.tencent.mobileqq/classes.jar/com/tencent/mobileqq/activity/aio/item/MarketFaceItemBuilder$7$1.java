@@ -1,25 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahlt;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Set;
+import agip;
+import agis;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
-class MarketFaceItemBuilder$7$1
+public class MarketFaceItemBuilder$7$1
   implements Runnable
 {
-  MarketFaceItemBuilder$7$1(MarketFaceItemBuilder.7 param7, boolean paramBoolean) {}
+  public MarketFaceItemBuilder$7$1(agip paramagip, agis paramagis) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.this$0.a.isEmpty())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.this$0.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq));
-      ahlt.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.jdField_a_of_type_Ahmg, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-      if (!this.jdField_a_of_type_Boolean) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.this$0.b, 1, 2131689867, 0).a();
-      }
-    }
+    this.jdField_a_of_type_Agis.a.setVisibility(8);
+    this.jdField_a_of_type_Agis.f.setVisibility(8);
   }
 }
 

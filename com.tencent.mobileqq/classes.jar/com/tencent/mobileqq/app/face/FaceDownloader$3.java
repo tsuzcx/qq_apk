@@ -19,9 +19,9 @@ class FaceDownloader$3
     if (localObject.length > 7) {}
     try
     {
-      FaceDownloader.a(Integer.parseInt(localObject[7]));
+      FaceDownloader.access$502(Integer.parseInt(localObject[7]));
       if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "initDPCFlag DPC_WAP_DIRECT_CONNECT=" + FaceDownloader.b());
+        QLog.i("Q.qqhead.FaceDownloader", 2, "initDPCFlag DPC_WAP_DIRECT_CONNECT=" + FaceDownloader.access$500());
       }
       return;
     }

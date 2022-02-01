@@ -1,42 +1,89 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class baqa
-  extends MSFServlet
+  extends bapu
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public baqa(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    if (paramFromServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 0;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public View a(RichStatus paramRichStatus)
   {
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
-    {
-      bapz localbapz = new bapz(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
-      byte[] arrayOfByte = localbapz.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localbapz.uniKey());
-      paramPacket.putSendData(paramIntent);
+    paramRichStatus = super.a(paramRichStatus);
+    l();
+    return paramRichStatus;
+  }
+  
+  protected CharSequence a(RichStatus paramRichStatus, baqd parambaqd, int paramInt)
+  {
+    if (paramRichStatus == null) {
+      parambaqd = "";
     }
+    do
+    {
+      return parambaqd;
+      localObject1 = paramRichStatus.toSpannableStringWithoutAction(parambaqd);
+      parambaqd = (baqd)localObject1;
+    } while (TextUtils.isEmpty(paramRichStatus.actionText));
+    Object localObject2 = paramRichStatus.actionText;
+    parambaqd = (baqd)localObject2;
+    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
+      parambaqd = (String)localObject2 + paramRichStatus.dataText;
+    }
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849505);
+    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
+    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849498);
+    String str = baos.a().a(paramRichStatus.actionId);
+    paramRichStatus = (RichStatus)localObject1;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
+      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
+      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
+      paramRichStatus.mRequestWidth = paramInt;
+      paramRichStatus.mRequestHeight = paramInt;
+      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
+      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
+    }
+    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
+    int i = Color.parseColor("#ffa8a8a8");
+    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
+    for (paramRichStatus = new bank(paramRichStatus, 1, parambaqd, i, localDrawable, paramInt);; paramRichStatus = new bank(paramRichStatus, 0, parambaqd, i, localDrawable, paramInt))
+    {
+      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
+      return localObject2;
+    }
+  }
+  
+  protected boolean b()
+  {
+    return false;
+  }
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  protected void e()
+  {
+    int i = jdField_a_of_type_ArrayOfInt[6];
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.apollo.process.video;
 
+import amaa;
+import amai;
 import android.os.Handler;
-import anfg;
-import anfo;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CmGameTxVideoPlayer$1
   implements Runnable
 {
-  public CmGameTxVideoPlayer$1(anfg paramanfg) {}
+  public CmGameTxVideoPlayer$1(amaa paramamaa) {}
   
   public void run()
   {
-    if (anfg.a(this.this$0) < 0L) {}
+    if (amaa.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = anfg.a(this.this$0).iterator();
+      Iterator localIterator = amaa.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        anfo localanfo = (anfo)localIterator.next();
-        if (localanfo != null) {
-          localanfo.a(anfg.a(this.this$0), this.this$0.a());
+        amai localamai = (amai)localIterator.next();
+        if (localamai != null) {
+          localamai.a(amaa.a(this.this$0), this.this$0.a());
         }
       }
-      anfg.a(this.this$0, this.this$0.a() - this.this$0.b());
-    } while (anfg.a(this.this$0) == null);
-    anfg.a(this.this$0).postDelayed(this, anfg.b(this.this$0));
+      amaa.a(this.this$0, this.this$0.a() - this.this$0.b());
+    } while (amaa.a(this.this$0) == null);
+    amaa.a(this.this$0).postDelayed(this, amaa.b(this.this$0));
   }
 }
 

@@ -1,34 +1,61 @@
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.DialogUtil.1.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class bfus
-  implements bfuu
+public final class bfus
+  extends QQCustomDialog
 {
-  bfus(bfuo parambfuo, TroopEssenceMsgItem paramTroopEssenceMsgItem) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private int b = this.jdField_a_of_type_Int;
   
-  public void a(long paramLong, HashMap<bful, bfum> paramHashMap)
+  bfus(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
-    if (paramHashMap == null) {
-      return;
-    }
-    bful localbful = new bful(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.troopUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSeq, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgRandom);
-    bfum localbfum1 = new bfum(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opType, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSenderUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.graytipuniseq);
-    QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosByPush msgInfo:" + this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.toString());
-    bfum localbfum2 = (bfum)paramHashMap.get(localbful);
-    if ((localbfum2 != null) && (localbfum1.a <= localbfum2.a))
+    super(paramContext, paramInt1);
+  }
+  
+  private Runnable a()
+  {
+    return new DialogUtil.1.1(this);
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    if (this.b > 0)
     {
-      QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosByPush oldValue.opTime:" + localbfum2.a);
+      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, 1000L);
       return;
     }
-    paramHashMap.put(localbful, localbfum1);
-    bfuo.a(this.jdField_a_of_type_Bfuo, paramLong);
-    this.jdField_a_of_type_Bfuo.a(new TroopEssenceMsgItem(localbful, localbfum1));
+    this.lBtn.setText(this.jdField_a_of_type_JavaLangString);
+    this.b = this.jdField_a_of_type_Int;
+    this.lBtn.setEnabled(true);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void onBackPressed() {}
+  
+  public void show()
+  {
+    super.show();
+    if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
+    {
+      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
+      this.lBtn.setEnabled(false);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(a(), 1000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfus
  * JD-Core Version:    0.7.0.1
  */

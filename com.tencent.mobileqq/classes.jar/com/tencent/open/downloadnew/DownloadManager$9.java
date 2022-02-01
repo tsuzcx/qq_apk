@@ -1,13 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import bjtx;
-import bjwq;
+import bhzm;
+import biby;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManager$9
   implements Runnable
 {
-  public DownloadManager$9(bjwq parambjwq, boolean paramBoolean, String paramString) {}
+  public DownloadManager$9(biby parambiby, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class DownloadManager$9
     }
     catch (Exception localException)
     {
-      bjtx.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bhzm.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

@@ -1,43 +1,80 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bfxs
-  extends aavj
+  extends BaseAdapter
 {
-  bfxs(bfxq parambfxq) {}
+  bfxs(bfxr parambfxr) {}
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public int getCount()
   {
-    if ((!paramBoolean) || (paramFileInfo == null)) {}
-    Object localObject2;
-    Object localObject1;
-    do
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    bfxx localbfxx;
+    if (paramView == null)
     {
-      do
+      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559004, null);
+      localbfxx = new bfxx(this.a, null);
+      localbfxx.a = ((TextView)paramView.findViewById(2131369017));
+      paramView.setTag(localbfxx);
+    }
+    for (;;)
+    {
+      localbfxx = (bfxx)paramView.getTag();
+      int i;
+      int j;
+      int k;
+      int m;
+      if (localbfxx.a != null)
       {
-        do
-        {
-          do
-          {
-            return;
-            localObject2 = paramFileInfo.str_file_id.get();
-          } while (TextUtils.isEmpty((CharSequence)localObject2));
-          localObject1 = localObject2;
-          if (!((String)localObject2).startsWith("/")) {
-            localObject1 = "/" + (String)localObject2;
-          }
-        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
-        bfvr.c("TroopFileUploadFeedsSender", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
-        localObject2 = bfvp.a(this.a.d);
-      } while (localObject2 == null);
-      localObject1 = ((bgrn)localObject2).a((String)localObject1);
-    } while (localObject1 == null);
-    ((bfrs)localObject1).a = paramFileInfo.uint32_bus_id.get();
-    ((bfrs)localObject1).c = paramFileInfo.uint32_dead_time.get();
-    ((bgrn)localObject2).d((bfrs)localObject1);
+        localbfxx.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+        localbfxx.a.setOnClickListener(new bfxw(this.a, paramInt));
+        i = localbfxx.a.getPaddingTop();
+        j = localbfxx.a.getPaddingLeft();
+        k = localbfxx.a.getPaddingRight();
+        m = localbfxx.a.getPaddingBottom();
+        if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+          break label232;
+        }
+        localbfxx.a.setBackgroundResource(2130839583);
+      }
+      for (;;)
+      {
+        localbfxx.a.setPadding(j, i, k, m);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        label232:
+        if (paramInt == 0) {
+          localbfxx.a.setBackgroundResource(2130839584);
+        } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+          localbfxx.a.setBackgroundResource(2130839582);
+        }
+      }
+    }
   }
 }
 

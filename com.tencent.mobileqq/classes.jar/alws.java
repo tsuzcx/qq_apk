@@ -1,22 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import org.json.JSONObject;
 
 public class alws
-  extends Handler
+  implements alxg
 {
-  public alws(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
+  private int a;
+  
+  public alws()
   {
-    super(paramLooper);
+    int i = alxf.a;
+    alxf.a = i + 1;
+    this.a = i;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 10) {
-      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
+    return null;
+  }
+  
+  public JSONObject a(alxf paramalxf, JSONObject paramJSONObject)
+  {
+    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    {
+      paramJSONObject = new alwf(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
+      if (paramalxf != null) {
+        paramalxf.a(paramJSONObject);
+      }
     }
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.a;
   }
 }
 

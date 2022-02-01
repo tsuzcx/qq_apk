@@ -1,29 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class advk
   implements DialogInterface.OnClickListener
 {
-  public advk(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public advk(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
-    paramDialogInterface = arms.c();
-    if (TextUtils.isEmpty(paramDialogInterface.a)) {
-      bhrn.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
-    }
-    for (;;)
-    {
-      this.a.b();
-      return;
-      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
-      bhrn.a(this.a, paramDialogInterface);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

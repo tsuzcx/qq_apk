@@ -1,52 +1,29 @@
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import com.tencent.avgame.gameroom.gamelist.GameListRecyclerViewAdapter.1;
 
-public abstract interface nda
+public class nda
+  implements Animator.AnimatorListener
 {
-  public abstract RectF a();
+  public nda(GameListRecyclerViewAdapter.1 param1) {}
   
-  public abstract Drawable a();
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract nbp a();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (ncz.a(this.a.this$0) != null) {
+      ncz.a(this.a.this$0).start();
+    }
+  }
   
-  public abstract void a();
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, mze parammze);
-  
-  public abstract void a(mze parammze);
-  
-  public abstract void a(nbp paramnbp);
-  
-  public abstract void a(ncy paramncy);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract Drawable b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString, mze parammze);
-  
-  public abstract void b(mze parammze);
-  
-  public abstract void b(ncy paramncy);
-  
-  public abstract void c();
-  
-  public abstract void c(ncy paramncy);
-  
-  public abstract void d(ncy paramncy);
-  
-  public abstract void e(ncy paramncy);
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nda
  * JD-Core Version:    0.7.0.1
  */

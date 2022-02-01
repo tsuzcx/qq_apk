@@ -1,24 +1,8 @@
-class aaeh
-  implements aanq
+public abstract interface aaeh
 {
-  aaeh(aaeg paramaaeg, String paramString1, String paramString2) {}
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (!paramBoolean2)
-    {
-      this.jdField_a_of_type_Aaeg.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
-      if (aaeg.a(this.jdField_a_of_type_Aaeg) == null)
-      {
-        aaeg.a(this.jdField_a_of_type_Aaeg, aasb.a());
-        aaeg.a(this.jdField_a_of_type_Aaeg).a();
-      }
-      aaeg.a(this.jdField_a_of_type_Aaeg).i(paramString, this.b);
-      abbe.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
-      return;
-    }
-    abbe.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

@@ -3,8 +3,8 @@ package com.tencent.open.appcommon.js;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import bjrj;
-import bjxr;
+import bhwy;
+import bicz;
 
 public class AppInterface$2
   implements Runnable
@@ -14,17 +14,17 @@ public class AppInterface$2
   public void run()
   {
     Resources localResources = this.this$0.activity.getResources();
-    bjxr localbjxr = new bjxr(this.this$0.activity);
-    localbjxr.a(2131691463, this.a, true);
-    localbjxr.b(2131691464, this.a, true);
-    localbjxr.a(localResources.getString(2131691467));
-    localbjxr.b(localResources.getString(2131691452));
-    localbjxr.setCancelable(false);
-    localbjxr.setOnDismissListener(new bjrj(this));
+    bicz localbicz = new bicz(this.this$0.activity);
+    localbicz.a(2131691507, this.a, true);
+    localbicz.b(2131691508, this.a, true);
+    localbicz.a(localResources.getString(2131691511));
+    localbicz.b(localResources.getString(2131691496));
+    localbicz.setCancelable(false);
+    localbicz.setOnDismissListener(new bhwy(this));
     if ((this.this$0.activity != null) && (!this.this$0.activity.isFinishing())) {
-      localbjxr.show();
+      localbicz.show();
     }
-    this.this$0.tipDialog = localbjxr;
+    this.this$0.tipDialog = localbicz;
   }
 }
 

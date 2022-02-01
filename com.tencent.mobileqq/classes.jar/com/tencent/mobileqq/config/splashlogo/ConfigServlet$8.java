@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import arry;
-import bhsr;
+import aqlw;
 import com.tencent.mobileqq.app.NearbyGrayTipsManager;
 import com.tencent.mobileqq.app.NearbyGrayTipsManager.GrayTipsConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import oicq.wlogin_sdk.tools.MD5;
@@ -13,19 +13,19 @@ import oicq.wlogin_sdk.tools.MD5;
 public class ConfigServlet$8
   implements Runnable
 {
-  public ConfigServlet$8(arry paramarry, String paramString1, File paramFile, String paramString2, NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  public ConfigServlet$8(aqlw paramaqlw, String paramString1, File paramFile, String paramString2, NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
   
   public void run()
   {
     try
     {
-      if (HttpDownloadUtil.a((QQAppInterface)this.this$0.getAppRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
+      if (HttpDownloadUtil.download((QQAppInterface)this.this$0.getAppRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
       {
         if (QLog.isColorLevel()) {
           QLog.d("nearby_aio_operation_gray_tips", 2, "file download succeed. url=" + this.jdField_a_of_type_JavaLangString);
         }
         Object localObject = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile);
-        if ((bhsr.a(this.b)) || ((localObject != null) && (this.b.equals(((String)localObject).toLowerCase()))))
+        if ((StringUtil.isEmpty(this.b)) || ((localObject != null) && (this.b.equals(((String)localObject).toLowerCase()))))
         {
           localObject = NearbyGrayTipsManager.a(this.jdField_a_of_type_JavaIoFile);
           if (localObject != null)

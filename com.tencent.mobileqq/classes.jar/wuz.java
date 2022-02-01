@@ -1,58 +1,19 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-
-public class wuz
+class wuz
+  implements wuu
 {
-  public final int a;
-  public final int b;
-  public final int c;
+  public wuu a;
   
-  public wuz(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = 1;
-  }
+  private wuz(wux paramwux) {}
   
-  public wuz(int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(wur paramwur, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public static wuz a(SosoInterface.SosoLocation paramSosoLocation)
-  {
-    if (paramSosoLocation != null) {
-      return new wuz((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
+    if (wux.a(this.jdField_a_of_type_Wux) != null) {
+      wux.a(this.jdField_a_of_type_Wux).c(wux.a(this.jdField_a_of_type_Wux));
     }
-    return new wuz(0, 0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (wuz)paramObject;
-      if (this.a != paramObject.a) {
-        return false;
-      }
-    } while (this.b == paramObject.b);
+    if (this.jdField_a_of_type_Wuu != null) {
+      return this.jdField_a_of_type_Wuu.a(paramwur, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
     return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.a * 31 + this.b;
-  }
-  
-  public String toString()
-  {
-    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
   }
 }
 

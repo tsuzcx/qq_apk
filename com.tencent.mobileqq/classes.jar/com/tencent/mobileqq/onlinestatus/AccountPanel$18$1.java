@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.content.res.Resources;
-import azfn;
-import azfw;
-import azhq;
-import azlk;
+import axsv;
+import axte;
+import axuy;
+import axys;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.onlinestatus.view.AutoStatusHintFragment;
 import com.tencent.mobileqq.widget.QQToast;
@@ -14,15 +14,15 @@ import mqq.app.AppRuntime.Status;
 public class AccountPanel$18$1
   implements Runnable
 {
-  public AccountPanel$18$1(azfw paramazfw, boolean paramBoolean, AppRuntime.Status paramStatus) {}
+  public AccountPanel$18$1(axte paramaxte, boolean paramBoolean, AppRuntime.Status paramStatus) {}
   
   public void run()
   {
     long l;
     if (this.jdField_a_of_type_Boolean)
     {
-      l = azhq.a().a(azfn.a(this.jdField_a_of_type_Azfw.a));
-      if ((azfn.a(this.jdField_a_of_type_Azfw.a) != 1000L) || (l != 1000L)) {
+      l = axuy.a().a(axsv.a(this.jdField_a_of_type_Axte.a));
+      if ((axsv.a(this.jdField_a_of_type_Axte.a) != 1000L) || (l != 1000L)) {
         break label296;
       }
     }
@@ -30,7 +30,7 @@ public class AccountPanel$18$1
     for (int i = 0;; i = 1)
     {
       int j = i;
-      if (azfn.a(this.jdField_a_of_type_Azfw.a) == 1040L)
+      if (axsv.a(this.jdField_a_of_type_Axte.a) == 1040L)
       {
         j = i;
         if (l == 1040L) {
@@ -40,29 +40,29 @@ public class AccountPanel$18$1
       if (l == 40001L) {
         j = 0;
       }
-      if (!azfn.b(this.jdField_a_of_type_Azfw.a))
+      if (!axsv.b(this.jdField_a_of_type_Axte.a))
       {
-        azfn.c(this.jdField_a_of_type_Azfw.a, true);
+        axsv.c(this.jdField_a_of_type_Axte.a, true);
         if (l == 40001L) {
-          AutoStatusHintFragment.a(azfn.a(this.jdField_a_of_type_Azfw.a));
+          AutoStatusHintFragment.a(axsv.a(this.jdField_a_of_type_Axte.a));
         }
       }
-      if ((j != 0) && (azfn.a(this.jdField_a_of_type_Azfw.a)))
+      if ((j != 0) && (axsv.a(this.jdField_a_of_type_Axte.a)))
       {
-        String str = azhq.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
-        str = azfn.a(this.jdField_a_of_type_Azfw.a).getResources().getString(2131697738, new Object[] { str });
-        QQToast.a(azfn.a(this.jdField_a_of_type_Azfw.a), 2, str, 1).a();
+        String str = axuy.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
+        str = axsv.a(this.jdField_a_of_type_Axte.a).getResources().getString(2131697884, new Object[] { str });
+        QQToast.a(axsv.a(this.jdField_a_of_type_Axte.a), 2, str, 1).a();
         if (QLog.isColorLevel()) {
           QLog.d("AccountPanel", 2, "Show toast in account panel onSetOnlineStatus");
         }
       }
-      azlk.a().a(azfn.a(this.jdField_a_of_type_Azfw.a), l);
-      azfn.a(this.jdField_a_of_type_Azfw.a, l);
+      axys.a().a(axsv.a(this.jdField_a_of_type_Axte.a), l);
+      axsv.a(this.jdField_a_of_type_Axte.a, l);
       for (;;)
       {
-        this.jdField_a_of_type_Azfw.a.c();
+        this.jdField_a_of_type_Axte.a.c();
         return;
-        QQToast.a(azfn.a(this.jdField_a_of_type_Azfw.a), 1, 2131697725, 1).a();
+        QQToast.a(axsv.a(this.jdField_a_of_type_Axte.a), 1, 2131697871, 1).a();
       }
     }
   }

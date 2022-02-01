@@ -1,33 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.identification.UnusableStrategy.1;
-import mqq.os.MqqHandler;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avxq
-  implements avxa
+  implements View.OnClickListener
 {
-  private String a;
+  public avxq(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public avxq(String paramString)
+  public void onClick(View paramView)
   {
-    this.a = paramString;
-  }
-  
-  public void a(avxb paramavxb)
-  {
-    bdll.a(null, "dc00898", "", "", "0X800B0EA", "0X800B0EA", 0, 0, "", "", "", "");
-    ThreadManager.getUIHandler().post(new UnusableStrategy.1(this));
-  }
-  
-  public void a(View... paramVarArgs)
-  {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramVarArgs[i].setVisibility(8);
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
     }
+    MultiAIOFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

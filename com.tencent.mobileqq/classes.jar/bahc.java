@@ -1,52 +1,104 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import java.util.LinkedList;
 
-class bahc
-  extends anyu
+public class bahc
+  extends GPUBaseFilter
 {
-  bahc(bahb parambahb) {}
+  private float jdField_a_of_type_Float;
+  private bagv jdField_a_of_type_Bagv;
+  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private bagv b;
   
-  protected void onSetSelfSignatureResult(boolean paramBoolean)
+  private void a(@NonNull Runnable paramRunnable)
   {
-    if ((bahb.a(this.a) != null) && (((azxr)bahb.a(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(bahb.b(this.a).getCurrentAccountUin())))
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      ExtensionInfo localExtensionInfo = ((anyw)bahb.c(this.a).getManager(51)).a(bahb.d(this.a).getCurrentAccountUin());
-      if (localExtensionInfo != null) {
-        bahb.a(this.a, localExtensionInfo.richBuffer, localExtensionInfo.richTime);
-      }
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
+      return;
     }
   }
   
-  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
   {
-    anyw localanyw;
-    int j;
-    int i;
-    if ((paramBoolean) && (paramArrayOfString != null) && (paramArrayOfString.length > 0) && (bahb.e(this.a) != null))
+    try
     {
-      localanyw = (anyw)bahb.f(this.a).getManager(51);
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      while (!paramLinkedList.isEmpty())
       {
-        if (!TextUtils.equals(((azxr)bahb.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramArrayOfString[i])) {
-          break label143;
-        }
-        paramArrayOfString = localanyw.a(((azxr)bahb.c(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-        if (paramArrayOfString != null)
-        {
-          ((azxr)bahb.d(this.a)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramArrayOfString.getRichStatus();
-          bahb.a(this.a, ((azxr)bahb.e(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        Runnable localRunnable = (Runnable)paramLinkedList.poll();
+        if (localRunnable != null) {
+          localRunnable.run();
         }
       }
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_JavaUtilLinkedList);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
+  {
+    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!bagt.a(paramInt1)) {
+      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
+    }
+    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Bagv != null) || (this.b != null);
+  }
+  
+  public void destroy()
+  {
+    if (this.jdField_a_of_type_Bagv != null) {
+      this.jdField_a_of_type_Bagv.destroy();
+    }
+    if (this.b != null) {
+      this.b.destroy();
+    }
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (!a())
+    {
+      xvv.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
       return;
-      label143:
-      i += 1;
+    }
+    if (this.jdField_a_of_type_Bagv != null) {
+      this.jdField_a_of_type_Bagv.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+  }
+  
+  public void init()
+  {
+    if ((this.jdField_a_of_type_Bagv != null) && (!this.jdField_a_of_type_Bagv.isInitialized())) {
+      this.jdField_a_of_type_Bagv.init();
+    }
+    if ((this.b != null) && (!this.b.isInitialized())) {
+      this.b.init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Bagv != null) {
+      this.jdField_a_of_type_Bagv.onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    if (this.b != null) {
+      this.b.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
 }

@@ -1,101 +1,42 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
 import java.util.List;
 
-public class ydl
-  extends QQUIEventReceiver<StoryPickerFragment, wzr>
+class ydl
+  implements LocationListener
 {
-  public ydl(@NonNull StoryPickerFragment paramStoryPickerFragment)
-  {
-    super(paramStoryPickerFragment);
-  }
+  ydl(ydh paramydh) {}
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull wzr paramwzr)
+  public void onLocationChanged(Location paramLocation)
   {
-    boolean bool1 = false;
-    if (!TextUtils.equals(paramStoryPickerFragment.jdField_a_of_type_JavaLangString, paramwzr.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    boolean bool2 = paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
-    Object localObject = new ArrayList(paramwzr.jdField_a_of_type_JavaUtilList.size());
-    List localList = paramwzr.jdField_a_of_type_JavaUtilList;
-    int i = 0;
-    while (i < localList.size())
+    if (paramLocation != null)
     {
-      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localList.get(i);
-      if (localVideoCollectionItem.collectionType == 1)
+      xvv.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
       {
-        int j = 0;
-        if (j < localVideoCollectionItem.collectionVideoUIItemList.size())
-        {
-          ykj localykj = (ykj)localVideoCollectionItem.collectionVideoUIItemList.get(j);
-          if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localykj.jdField_a_of_type_JavaLangString))
-          {
-            localykj.jdField_a_of_type_Boolean = true;
-            if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
-              localykj.b = true;
-            }
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            localykj.jdField_a_of_type_Boolean = false;
-            if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
-              localykj.b = false;
-            } else {
-              localykj.b = true;
-            }
-          }
-        }
-        ((List)localObject).add(localVideoCollectionItem);
+        this.a.b.remove(0);
+        xvv.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
       }
-      i += 1;
-    }
-    if ((bool2) && (paramwzr.e))
-    {
-      if (!((List)localObject).isEmpty()) {
-        break label327;
-      }
-      paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
-      if (!paramwzr.c) {
-        break label347;
-      }
-      paramStoryPickerFragment.jdField_a_of_type_Ydu.a((List)localObject);
-    }
-    for (;;)
-    {
-      if (paramwzr.c) {
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a(bool2);
-      }
-      localObject = paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a;
-      if (!paramwzr.jdField_a_of_type_Boolean) {
-        bool1 = true;
-      }
-      ((zti)localObject).a(bool2, bool1);
-      paramStoryPickerFragment.stopTitleProgress();
+      this.a.b.add(new Location(paramLocation));
       return;
-      label327:
-      paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(0);
-      break;
-      label347:
-      paramStoryPickerFragment.jdField_a_of_type_Ydu.b((List)localObject);
     }
+    xvv.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  public Class acceptEventClass()
+  public void onProviderDisabled(String paramString)
   {
-    return wzr.class;
+    xvv.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+  }
+  
+  public void onProviderEnabled(String paramString)
+  {
+    xvv.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+  }
+  
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  {
+    xvv.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 

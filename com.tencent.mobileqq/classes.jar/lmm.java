@@ -1,77 +1,94 @@
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class lmm
+  extends MqqHandler
 {
-  int jdField_a_of_type_Int = 0;
-  ArrayList<lml> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  lmj jdField_a_of_type_Lmj = null;
+  WeakReference<AVNotifyCenter> a;
   
-  lmm()
+  public lmm(Looper paramLooper, AVNotifyCenter paramAVNotifyCenter)
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_Lmj = lmj.a();
-    this.jdField_a_of_type_Int = lmr.a(this.jdField_a_of_type_Lmj);
-    QLog.d("QavGPDownloadManager", 1, String.format("QavGPDownloadObserver, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    super(paramLooper);
+    this.a = new WeakReference(paramAVNotifyCenter);
   }
   
-  boolean a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Lmj = lmj.a();
-    this.jdField_a_of_type_Int = lmr.a(this.jdField_a_of_type_Lmj);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, String.format("checkResReady, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
+    if (localAVNotifyCenter == null) {}
+    while (!localAVNotifyCenter.i()) {
+      return;
     }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    if (QLog.isColorLevel()) {
+      QLog.w("AVNotifyCenter", 1, "handleMessage, msg[" + paramMessage.what + "]");
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new lmn(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    this.jdField_a_of_type_Lmj = lmj.a();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = lmr.a(this.jdField_a_of_type_Lmj);
-    if (this.jdField_a_of_type_Int == 11)
+    if ((paramMessage.what >= 10003) && (paramMessage.what <= 10009))
     {
-      this.jdField_a_of_type_Int = 12;
-      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      Intent localIntent = new Intent();
-      localIntent.setAction("from_qavgpsomgr_download");
-      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
-      localIntent.addFlags(268435456);
-      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 35);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
     }
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGPDownloadManager", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGameplay[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
-      }
-      return bool;
+    case 10006: 
+    case 10007: 
+    case 10008: 
+    case 10009: 
+    default: 
+      return;
+    case 10002: 
+      localAVNotifyCenter.b();
+      return;
+    case 10003: 
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 26);
+      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
+      localIntent.putExtra("memberUin", localAVNotifyCenter.a.getCurrentAccountUin());
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10004: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 24);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10005: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 31);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10010: 
+      localAVNotifyCenter.c(((Boolean)paramMessage.obj).booleanValue());
+      return;
     }
+    Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
+    localIntent.putExtra("type", 34);
+    localIntent.putExtra("relationId", ((Long)paramMessage.obj).longValue());
+    localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+    localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lmm
  * JD-Core Version:    0.7.0.1
  */

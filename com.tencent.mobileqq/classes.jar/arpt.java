@@ -1,65 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-public class arpt
-  extends arac<arps>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class arpt
+  implements View.OnClickListener
 {
-  public static arps a()
-  {
-    return (arps)aran.a().a(342);
-  }
+  arpt(arpr paramarpr) {}
   
-  @NonNull
-  public arps a(int paramInt)
+  public final void onClick(View paramView)
   {
-    return new arps();
-  }
-  
-  @Nullable
-  public arps a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arps.a(paramArrayOfaraj);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "v");
+    Object localObject = paramView.getTag();
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
     }
-    return null;
-  }
-  
-  public void a(arps paramarps) {}
-  
-  public Class<arps> clazz()
-  {
-    return arps.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 342;
+    int i = ((Integer)localObject).intValue();
+    localObject = arpr.a(this.a);
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    localObject = (armm)((List)localObject).get(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "onClick position = " + i);
+    }
+    arpr.a(this.a, (armm)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpt
  * JD-Core Version:    0.7.0.1
  */

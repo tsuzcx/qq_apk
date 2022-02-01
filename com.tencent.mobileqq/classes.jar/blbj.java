@@ -1,54 +1,45 @@
-public class blbj
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
+
+class blbj
+  extends QzoneExternalRequest
 {
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean;
+  blbj(blbi paramblbi, Intent paramIntent) {}
   
-  public blbj()
+  public String getCmdString()
   {
-    a();
+    return "SweetQzoneService.GetCommCfg";
   }
   
-  private void a()
+  public JceStruct getReq()
   {
-    a(",");
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    sweet_comm_cfg_get_req localsweet_comm_cfg_get_req = new sweet_comm_cfg_get_req();
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).add(Integer.valueOf(1));
+    localsweet_comm_cfg_get_req.vec_cfg = ((ArrayList)localObject);
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      localObject = new sweet_req_comm();
+      ((sweet_req_comm)localObject).opuin = l;
+      ((sweet_req_comm)localObject).uin = l;
+      ((sweet_req_comm)localObject).loveuin = 0L;
+      ((sweet_req_comm)localObject).qua = QUA.getQUA3();
+      ((sweet_req_comm)localObject).pf = 1;
+      ((sweet_req_comm)localObject).src = 3;
+      localsweet_comm_cfg_get_req.req_comm = ((sweet_req_comm)localObject);
     }
-    this.jdField_a_of_type_Boolean = true;
+    return localsweet_comm_cfg_get_req;
   }
   
-  public blbj a()
+  public String uniKey()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public blbj a(int paramInt)
-  {
-    return a(String.format("%d", new Object[] { Integer.valueOf(paramInt) }));
-  }
-  
-  public blbj a(String paramString)
-  {
-    a();
-    paramString = paramString.replace(',', ';');
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
-    return this;
-  }
-  
-  public blbj a(byte[] paramArrayOfByte)
-  {
-    return a(bhml.a(paramArrayOfByte));
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    return "GetCommCfg";
   }
 }
 

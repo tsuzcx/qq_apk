@@ -1,197 +1,184 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.QQServiceForAV;
+import mqq.observer.BusinessObserver;
 
-class lwz
-  implements lwx
+public class lwz
+  implements BusinessObserver
 {
-  private IBinder a;
-  
-  lwz(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
-  
-  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-        localParcel1.writeString(paramString);
-        localParcel1.writeInt(paramInt1);
-        localParcel1.writeInt(paramInt2);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          this.a.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
-            return paramString;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramString = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
-    }
-  }
+  public lwz(QQServiceForAV paramQQServiceForAV, String paramString1, String paramString2) {}
   
   /* Error */
-  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, android.os.Bundle paramBundle)
   {
     // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 72	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	lwz:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: ldc 30
+    //   4: astore 7
+    //   6: aload 7
+    //   8: astore 6
+    //   10: iload_2
+    //   11: istore 5
+    //   13: iload_2
+    //   14: ifeq +72 -> 86
+    //   17: aload_3
+    //   18: ldc 32
+    //   20: invokevirtual 38	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   23: astore_3
+    //   24: aload_3
+    //   25: ifnull +168 -> 193
+    //   28: new 40	com/tencent/mobileqq/WebSsoBody$WebSsoResponseBody
+    //   31: dup
+    //   32: invokespecial 41	com/tencent/mobileqq/WebSsoBody$WebSsoResponseBody:<init>	()V
+    //   35: astore 6
+    //   37: aload 6
+    //   39: aload_3
+    //   40: invokevirtual 45	com/tencent/mobileqq/WebSsoBody$WebSsoResponseBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   43: pop
+    //   44: aload 6
+    //   46: getfield 49	com/tencent/mobileqq/WebSsoBody$WebSsoResponseBody:ret	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   49: invokevirtual 55	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   52: istore 4
+    //   54: new 57	org/json/JSONObject
+    //   57: dup
+    //   58: aload 6
+    //   60: getfield 60	com/tencent/mobileqq/WebSsoBody$WebSsoResponseBody:data	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   63: invokevirtual 65	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   66: invokespecial 68	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   69: astore_3
+    //   70: iload 4
+    //   72: ifeq +84 -> 156
+    //   75: aload_3
+    //   76: ldc 70
+    //   78: invokevirtual 74	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   81: astore 6
+    //   83: iconst_0
+    //   84: istore 5
+    //   86: aload 6
+    //   88: astore_3
+    //   89: aload_0
+    //   90: getfield 14	lwz:jdField_a_of_type_ComTencentAvServiceQQServiceForAV	Lcom/tencent/av/service/QQServiceForAV;
+    //   93: getfield 79	com/tencent/av/service/QQServiceForAV:a	Landroid/os/RemoteCallbackList;
+    //   96: astore 6
+    //   98: aload 6
+    //   100: monitorenter
+    //   101: aload_0
+    //   102: getfield 14	lwz:jdField_a_of_type_ComTencentAvServiceQQServiceForAV	Lcom/tencent/av/service/QQServiceForAV;
+    //   105: getfield 79	com/tencent/av/service/QQServiceForAV:a	Landroid/os/RemoteCallbackList;
+    //   108: invokevirtual 84	android/os/RemoteCallbackList:beginBroadcast	()I
+    //   111: istore 4
+    //   113: iload_1
+    //   114: iload 4
+    //   116: if_icmpge +166 -> 282
+    //   119: aload_0
+    //   120: getfield 14	lwz:jdField_a_of_type_ComTencentAvServiceQQServiceForAV	Lcom/tencent/av/service/QQServiceForAV;
+    //   123: getfield 79	com/tencent/av/service/QQServiceForAV:a	Landroid/os/RemoteCallbackList;
+    //   126: iload_1
+    //   127: invokevirtual 88	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
+    //   130: checkcast 90	lwi
+    //   133: iload 5
+    //   135: aload_0
+    //   136: getfield 16	lwz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   139: aload_0
+    //   140: getfield 18	lwz:b	Ljava/lang/String;
+    //   143: aload_3
+    //   144: invokeinterface 93 5 0
+    //   149: iload_1
+    //   150: iconst_1
+    //   151: iadd
+    //   152: istore_1
+    //   153: goto -40 -> 113
+    //   156: aload_3
+    //   157: ldc 95
+    //   159: invokevirtual 99	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   162: pop
+    //   163: aload_3
+    //   164: ldc 101
+    //   166: invokevirtual 105	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   169: istore 4
+    //   171: aload 7
+    //   173: astore 6
+    //   175: iload_2
+    //   176: istore 5
+    //   178: iload 4
+    //   180: ifeq -94 -> 86
+    //   183: iconst_0
+    //   184: istore 5
+    //   186: aload 7
+    //   188: astore 6
+    //   190: goto -104 -> 86
+    //   193: iconst_0
+    //   194: istore 5
+    //   196: aload 7
+    //   198: astore 6
+    //   200: goto -114 -> 86
+    //   203: astore_3
+    //   204: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   207: ifeq +31 -> 238
+    //   210: ldc 113
+    //   212: iconst_2
+    //   213: new 115	java/lang/StringBuilder
+    //   216: dup
+    //   217: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   220: ldc 118
+    //   222: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: aload_3
+    //   226: invokevirtual 125	java/lang/Exception:toString	()Ljava/lang/String;
+    //   229: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   235: invokestatic 130	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   238: ldc 30
+    //   240: astore_3
+    //   241: iconst_0
+    //   242: istore 5
+    //   244: goto -155 -> 89
+    //   247: astore_3
+    //   248: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   251: ifeq +31 -> 282
+    //   254: ldc 113
+    //   256: iconst_2
+    //   257: new 115	java/lang/StringBuilder
+    //   260: dup
+    //   261: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   264: ldc 132
+    //   266: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: aload_3
+    //   270: invokevirtual 133	android/os/RemoteException:toString	()Ljava/lang/String;
+    //   273: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   279: invokestatic 130	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   282: aload_0
+    //   283: getfield 14	lwz:jdField_a_of_type_ComTencentAvServiceQQServiceForAV	Lcom/tencent/av/service/QQServiceForAV;
+    //   286: getfield 79	com/tencent/av/service/QQServiceForAV:a	Landroid/os/RemoteCallbackList;
+    //   289: invokevirtual 136	android/os/RemoteCallbackList:finishBroadcast	()V
+    //   292: aload 6
+    //   294: monitorexit
+    //   295: return
+    //   296: astore_3
+    //   297: aload 6
+    //   299: monitorexit
+    //   300: aload_3
+    //   301: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	59	0	this	lwz
-    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
-    //   3	51	2	localParcel	Parcel
+    //   0	302	0	this	lwz
+    //   0	302	1	paramInt	int
+    //   0	302	2	paramBoolean	boolean
+    //   0	302	3	paramBundle	android.os.Bundle
+    //   52	127	4	i	int
+    //   11	232	5	bool	boolean
+    //   4	193	7	str	String
     // Exception table:
     //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
-  {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      if (paramBoolean) {
-        i = 1;
-      }
-      localParcel1.writeInt(i);
-      localParcel1.writeString(paramString1);
-      localParcel1.writeString(paramString2);
-      localParcel1.writeString(paramString3);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel.writeTypedArray(paramArrayOfRecvGVideoLevelInfo, 0);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    //   17	24	203	java/lang/Exception
+    //   28	70	203	java/lang/Exception
+    //   75	83	203	java/lang/Exception
+    //   156	171	203	java/lang/Exception
+    //   119	149	247	android/os/RemoteException
+    //   101	113	296	finally
+    //   119	149	296	finally
+    //   248	282	296	finally
+    //   282	295	296	finally
+    //   297	300	296	finally
   }
 }
 

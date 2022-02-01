@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasExtensionHandler;
@@ -9,17 +9,17 @@ import java.util.List;
 public class PublicAccountChatPie$7
   implements Runnable
 {
-  public PublicAccountChatPie$7(ainh paramainh) {}
+  public PublicAccountChatPie$7(ahiu paramahiu) {}
   
   public void run()
   {
-    int j = ainh.a(this.this$0);
+    int j = ahiu.a(this.this$0);
     int i = j;
     if (j > 2) {
       i = 2;
     }
-    List localList = this.this$0.a.a().a("2747277822", 1008, i);
-    ((VasExtensionHandler)this.this$0.a.a(71)).a(2, localList);
+    List localList = this.this$0.app.getMessageFacade().getMessages("2747277822", 1008, i);
+    ((VasExtensionHandler)this.this$0.app.getBusinessHandler(71)).a(2, localList);
   }
 }
 

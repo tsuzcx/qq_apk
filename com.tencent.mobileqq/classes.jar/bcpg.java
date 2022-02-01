@@ -1,183 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.jungle.videohub.proto.CommProtocolProto.commRequest;
+import com.tencent.jungle.videohub.proto.CommProtocolProto.commResponse;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMemberInfoReq;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMenberInfoRsp;
 
 public class bcpg
-  extends bcpp
+  implements BusinessObserver
 {
-  public View a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public void a(String paramString1, int paramInt, String paramString2) {}
   
-  public bcpg(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, paramInt);
-  }
+  public void a(String paramString, self_study_room_troop.StudyRoomMenberInfoRsp paramStudyRoomMenberInfoRsp) {}
   
-  public static int a(Context paramContext, View... paramVarArgs)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int j = paramContext.getResources().getDisplayMetrics().widthPixels;
-    int k = paramVarArgs.length;
-    int i = 0;
-    while (i < k)
+    switch (paramInt)
     {
-      paramContext = paramVarArgs[i];
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
-      paramContext.measure(0, 0);
-      j = j - paramContext.getMeasuredWidth() - localLayoutParams.leftMargin - localLayoutParams.rightMargin;
-      i += 1;
-    }
-    return j;
-  }
-  
-  private void b(bcha parambcha)
-  {
-    if (a() != null) {
-      a().setText(parambcha.a());
-    }
-    if (b() != null) {
-      b().setText(parambcha.b());
-    }
-    if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(parambcha.f)))
-    {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(parambcha.f);
-      b().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { a(), this.jdField_c_of_type_AndroidWidgetTextView, this.f }) - agej.a(75.0F, b().getResources()));
-    }
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    Object localObject;
-    if (b() != null)
-    {
-      if (parambcha.b != 0)
-      {
-        b().setImageResource(parambcha.b);
-        b().setVisibility(0);
-      }
-    }
-    else if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      localObject = a().getTag(2131381110);
-      if (!(localObject instanceof Integer)) {
-        break label545;
-      }
-    }
-    label523:
-    label535:
-    label545:
-    for (int i = ((Integer)localObject).intValue();; i = -1)
-    {
-      if (i > 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        label212:
-        if ((c() != null) && (!TextUtils.isEmpty(parambcha.c())))
-        {
-          c().setText(parambcha.c());
-          c().setVisibility(0);
-        }
-        if (a() != null)
-        {
-          if (!parambcha.a()) {
-            break label523;
-          }
-          a().setVisibility(0);
-        }
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty(parambcha.h)) {
-          break label535;
-        }
-        i = a().getResources().getDimensionPixelSize(2131298242);
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "rightIcon";
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-        parambcha = URLDrawable.getDrawable(parambcha.h, (URLDrawable.URLDrawableOptions)localObject);
-        if ((parambcha.getStatus() != 1) && (parambcha.getStatus() != 0)) {
-          parambcha.restartDownload();
-        }
-        a().setImageDrawable(parambcha);
-        a().setVisibility(0);
-        return;
-        if (!TextUtils.isEmpty(parambcha.c))
-        {
-          i = a().getResources().getDimensionPixelSize(2131297401);
-          localObject = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-          ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "isAvatar";
-          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-          localObject = URLDrawable.getDrawable(parambcha.c, (URLDrawable.URLDrawableOptions)localObject);
-          ((URLDrawable)localObject).setDecodeHandler(bhez.a);
-          if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
-            ((URLDrawable)localObject).restartDownload();
-          }
-          b().setImageDrawable((Drawable)localObject);
-          b().setVisibility(0);
-          break;
-        }
-        b().setVisibility(8);
-        break;
-        if (i != 0) {
-          break label212;
-        }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        break label212;
-        a().setVisibility(8);
-      }
-      a().setVisibility(8);
-      return;
-    }
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365649);
-    switch (this.jdField_c_of_type_Int)
-    {
-    default: 
-    case 2131559808: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378604));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378606));
-        a().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.f }));
-        a().setTextColor(bcni.b());
-      } while (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null));
-      return;
-    }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371430));
-  }
-  
-  public void a(bcha parambcha)
-  {
-    b();
-    switch (parambcha.a)
-    {
-    case -2: 
     default: 
       return;
     }
-    b(parambcha);
+    paramObject = (Object[])paramObject;
+    Object localObject = (CommProtocolProto.commRequest)paramObject[0];
+    paramObject = (FromServiceMsg)paramObject[1];
+    self_study_room_troop.StudyRoomMemberInfoReq localStudyRoomMemberInfoReq = new self_study_room_troop.StudyRoomMemberInfoReq();
+    try
+    {
+      localStudyRoomMemberInfoReq.mergeFrom(((CommProtocolProto.commRequest)localObject).body.get().toByteArray());
+      if ((paramObject.isSuccess()) && (paramObject.getWupBuffer() != null))
+      {
+        localObject = new CommProtocolProto.commResponse();
+        ((CommProtocolProto.commResponse)localObject).mergeFrom(paramObject.getWupBuffer());
+        self_study_room_troop.StudyRoomMenberInfoRsp localStudyRoomMenberInfoRsp = new self_study_room_troop.StudyRoomMenberInfoRsp();
+        localStudyRoomMenberInfoRsp.mergeFrom(((CommProtocolProto.commResponse)localObject).body.get().toByteArray());
+        a(localStudyRoomMemberInfoReq.troop_uin.get(), localStudyRoomMenberInfoRsp);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      localInvalidProtocolBufferMicroException.printStackTrace();
+      a(localStudyRoomMemberInfoReq.troop_uin.get(), paramObject.getResultCode(), paramObject.getBusinessFailMsg());
+    }
   }
 }
 

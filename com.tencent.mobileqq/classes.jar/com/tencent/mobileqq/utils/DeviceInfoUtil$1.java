@@ -3,8 +3,7 @@ package com.tencent.mobileqq.utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import bhlo;
-import blhc;
+import bjms;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import java.util.concurrent.TimeUnit;
@@ -19,16 +18,16 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.json.JSONObject;
 
-public final class DeviceInfoUtil$1
+final class DeviceInfoUtil$1
   implements Runnable
 {
-  public DeviceInfoUtil$1(SharedPreferences paramSharedPreferences) {}
+  DeviceInfoUtil$1(SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
     Object localObject1 = null;
-    bhlo.a(System.currentTimeMillis());
-    this.a.edit().putLong("device_perf_level_timestamps", bhlo.n()).apply();
+    DeviceInfoUtil.access$002(System.currentTimeMillis());
+    this.val$sp.edit().putLong("device_perf_level_timestamps", DeviceInfoUtil.access$000()).apply();
     for (;;)
     {
       try
@@ -37,7 +36,7 @@ public final class DeviceInfoUtil$1
         ((JSONObject)localObject2).put("pid", "1");
         ((JSONObject)localObject2).put("device", URLEncoder.encode(Build.MODEL, "UTF-8"));
         ((JSONObject)localObject2).put("version", "1.0.0");
-        ((JSONObject)localObject2).put("uin", blhc.a("a4bd32"));
+        ((JSONObject)localObject2).put("uin", bjms.a("a4bd32"));
         ((JSONObject)localObject2).put("userSwitch", "0");
         ((JSONObject)localObject2).put("lastSwitch", "0");
         if (QLog.isColorLevel())
@@ -77,15 +76,15 @@ public final class DeviceInfoUtil$1
           if (i != 0)
           {
             localObject1 = localObject2;
-            this.a.edit().putInt("device_perf_level", i).apply();
+            this.val$sp.edit().putInt("device_perf_level", i).apply();
             localObject1 = localObject2;
-            bhlo.a(i);
+            DeviceInfoUtil.access$102(i);
           }
         }
         if (localObject2 != null) {
           ((Response)localObject2).close();
         }
-        bhlo.a().set(false);
+        DeviceInfoUtil.access$200().set(false);
         return;
       }
       finally

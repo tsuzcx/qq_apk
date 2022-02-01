@@ -1,11 +1,21 @@
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
 public class acat
+  implements abzb
 {
-  public int a;
-  public int b = 1;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  {
+    ((anan)paramQQAppInterface.getBusinessHandler(24)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramabxc.a(), paramMsgType0x210);
+    return null;
+  }
 }
 
 

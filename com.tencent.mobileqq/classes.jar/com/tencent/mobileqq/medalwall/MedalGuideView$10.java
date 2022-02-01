@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.medalwall;
 
-import bdll;
+import bcef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -15,7 +15,7 @@ final class MedalGuideView$10
     if (localQQAppInterface == null) {
       return;
     }
-    bdll.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
+    bcef.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
   }
 }
 

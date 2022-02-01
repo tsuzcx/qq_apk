@@ -1,40 +1,37 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
-class akgh
-  extends auoz
+final class akgh
+  implements View.OnTouchListener
 {
-  akgh(akgf paramakgf) {}
+  private float b = 1.0F;
   
-  public void a(View paramView)
+  akgh(float paramFloat) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((akgf.a(this.a)) && (akgf.a(this.a) != null))
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (paramView.getId() != 2131365823) {
-        break label43;
-      }
-      akgf.a(this.a).a(1);
+      this.b = paramView.getAlpha();
+      paramView.setAlpha(this.a);
     }
-    label43:
-    do
+    for (;;)
     {
-      return;
-      if (paramView.getId() == 2131365828)
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        akgf.a(this.a).a(3);
-        return;
+        paramView.setAlpha(this.b);
       }
-      if (paramView.getId() == 2131365825)
+      else if (paramMotionEvent.getAction() == 2)
       {
-        akgf.a(this.a).a(2);
-        return;
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!akgd.a(paramView, i, j)) {
+          paramView.setAlpha(1.0F);
+        }
       }
-      if (paramView.getId() == 2131365822)
-      {
-        akgf.a(this.a).a(4);
-        return;
-      }
-    } while (paramView.getId() != 2131365824);
-    akgf.a(this.a).a(5);
+    }
   }
 }
 

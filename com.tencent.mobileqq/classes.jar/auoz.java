@@ -1,30 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public abstract class auoz
-  implements View.OnClickListener
+class auoz
+  implements zop
 {
-  private long a;
+  auoz(auoy paramauoy) {}
   
-  public abstract void a(View paramView);
-  
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
+    int i = paramBundle.getInt("msg");
+    if (i == 90)
     {
-      a(paramView);
-      this.a = l;
+      auoy.a(this.a, paramBundle.getInt("state"));
+      auoy.a(this.a, auoy.a(this.a), auoy.b(this.a));
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    while (i != 91) {
       return;
-      b(paramView);
     }
+    i = paramBundle.getInt("errCode");
+    paramBundle = paramBundle.getString("desc");
+    auoy.a(this.a, i, paramBundle);
   }
 }
 

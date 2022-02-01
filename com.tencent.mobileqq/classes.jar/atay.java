@@ -1,20 +1,18 @@
-import android.app.Dialog;
-
-public abstract interface atay
+final class atay
+  implements bgoc
 {
-  public abstract int a();
+  atay(atar paramatar) {}
   
-  public abstract Dialog a();
-  
-  public abstract void a(Dialog paramDialog);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void callback(int paramInt)
+  {
+    if ((paramInt == 1) || (paramInt == 2)) {
+      this.a.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atay
  * JD-Core Version:    0.7.0.1
  */

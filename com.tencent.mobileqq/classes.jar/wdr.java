@@ -1,28 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleLayerBean;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StImage;
+import java.util.List;
 
 public class wdr
-  implements View.OnClickListener
+  extends vqr
 {
-  public wdr(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter, int paramInt, View paramView, FeedCloudMeta.StImage paramStImage) {}
+  public static final String a;
+  private List<String> a;
+  private int c;
   
-  public void onClick(View paramView)
+  static
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (!this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.c()) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.jdField_a_of_type_Var != null))
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_like_list_batch_715");
+  }
+  
+  public wdr(List<String> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      QCircleLayerBean localQCircleLayerBean = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.a(this.jdField_a_of_type_Int);
-      vvh.a((URLImageView)this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StImage.width.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StImage.height.get(), localQCircleLayerBean);
-      uyx.a(this.jdField_a_of_type_AndroidViewView.getContext(), localQCircleLayerBean);
-      vtn.a(7, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.b());
+      this.c = i;
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
+    try
+    {
+      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
+      return new wds(localRspBatchFeedLike);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedLike.feed_id_list.set(localList);
+    localReqBatchFeedLike.source.set(this.c);
+    return localReqBatchFeedLike.toByteArray();
   }
 }
 

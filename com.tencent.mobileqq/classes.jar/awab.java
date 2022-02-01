@@ -1,23 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
 
-class awab
-  implements msk
+public class awab
+  extends GestureDetector.SimpleOnGestureListener
 {
-  awab(awaa paramawaa, String paramString) {}
+  public awab(MultiCardCustomLayout paramMultiCardCustomLayout) {}
   
-  public void a(int paramInt)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
-    }
-    msd.a().a();
-    if (paramInt == 1)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("roomCodeType", 1);
-      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      awaa.a(this.jdField_a_of_type_Awaa, localBundle, 1001L);
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
     }
   }
 }

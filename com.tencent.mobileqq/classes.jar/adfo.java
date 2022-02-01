@@ -1,14 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adfo
-  implements adci
+  implements View.OnClickListener
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public adfo(EditInfoActivity paramEditInfoActivity) {}
+  
+  public void onClick(View paramView)
   {
-    bctt.a(paramadan.a(), paramMsgType0x210.vProtobuf, true);
-    return null;
+    this.a.l();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

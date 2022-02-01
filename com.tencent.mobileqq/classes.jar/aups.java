@@ -1,12 +1,36 @@
-public abstract interface aups
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+class aups
+  implements WtTicketPromise
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  aups(aupc paramaupc, aupw paramaupw) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void Done(Ticket paramTicket)
+  {
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    {
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Aupw.a(1, paramTicket);
+      return;
+    }
+    QLog.w("XProxy|NowProxy", 1, "skey is null");
+    this.jdField_a_of_type_Aupw.a(3, null);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.w("XProxy|NowProxy", 1, "get skey failed");
+    this.jdField_a_of_type_Aupw.a(5, null);
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.w("XProxy|NowProxy", 1, "get skey time out");
+    this.jdField_a_of_type_Aupw.a(4, null);
+  }
 }
 
 

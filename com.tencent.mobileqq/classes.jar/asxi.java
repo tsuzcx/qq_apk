@@ -1,7 +1,8 @@
-public class asxi
+import java.util.List;
+
+public abstract interface asxi<M>
 {
-  public long a;
-  public String a;
+  public abstract void a(List<M> paramList, int paramInt, asxo paramasxo);
 }
 
 

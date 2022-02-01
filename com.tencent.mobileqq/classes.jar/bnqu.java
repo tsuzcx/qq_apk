@@ -1,17 +1,25 @@
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
+import android.util.Property;
 
-public class bnqu
-  implements bnrc
+class bnqu
+  extends Property<bnqm, Float>
 {
-  bnqu(bnqt parambnqt) {}
-  
-  public void onZipLoaded(boolean paramBoolean)
+  bnqu(bnqm parambnqm, Class paramClass, String paramString)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.jdField_a_of_type_Bnqp.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bnqm parambnqm)
+  {
+    if (parambnqm != null) {
+      return Float.valueOf(bnqm.d(parambnqm));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bnqm parambnqm, Float paramFloat)
+  {
+    if (parambnqm != null) {
+      bnqm.c(parambnqm, paramFloat.floatValue());
     }
   }
 }

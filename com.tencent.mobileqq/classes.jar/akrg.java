@@ -1,18 +1,34 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
-class akrg
-  implements DialogInterface.OnClickListener
+public class akrg
+  extends akqf
 {
-  akrg(akrf paramakrf) {}
+  public akrg(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      akrf.a(this.a).moveTaskToBack(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+    }
+    if (this.a.jdField_a_of_type_Aksb != null) {
+      this.a.jdField_a_of_type_Aksb.a();
+    }
+    this.a.h();
+    this.a.e.setVisibility(4);
+    this.a.e.setPadding(0, 0, 0, 0);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.v();
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
     }
   }
 }

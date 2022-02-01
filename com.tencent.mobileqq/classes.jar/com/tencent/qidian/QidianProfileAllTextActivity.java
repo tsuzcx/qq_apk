@@ -16,8 +16,9 @@ public class QidianProfileAllTextActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -26,9 +27,9 @@ public class QidianProfileAllTextActivity
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("content");
-    super.setContentView(2131560946);
-    ((TextView)this.mContentView.findViewById(2131378936)).setText(paramBundle);
-    ((TextView)this.mContentView.findViewById(2131365046)).setText(str);
+    super.setContentView(2131560826);
+    ((TextView)this.mContentView.findViewById(2131378707)).setText(paramBundle);
+    ((TextView)this.mContentView.findViewById(2131365073)).setText(str);
     return true;
   }
   

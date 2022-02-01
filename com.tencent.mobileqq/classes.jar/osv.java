@@ -1,6 +1,6 @@
-public abstract class osv
+public abstract interface osv
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public abstract void a(long paramLong);
 }
 
 

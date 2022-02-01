@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public class bgzu
-  implements bdxo
+public abstract interface bgzu
+  extends bguj
 {
-  public bgzu(TroopGiftToAllSurfaceView.5 param5) {}
+  public abstract String getCurrentUrl();
   
-  public void a()
-  {
-    TroopGiftToAllSurfaceView.a(this.a.this$0).a(new bdxn[] { new bdxt(600, 0, 255), new bdxw(new bdxn[] { new bdxv(300, 0.0F, 1.2F), new bdxv(300, 1.2F, 1.0F) }) });
-  }
+  public abstract CustomWebView getWebView();
+  
+  public abstract void hideQQBrowserButton();
+  
+  public abstract boolean isActivityResume();
+  
+  public abstract void setBottomBarVisible(boolean paramBoolean);
+  
+  public abstract void showActionSheet();
 }
 
 

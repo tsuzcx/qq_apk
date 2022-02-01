@@ -1,61 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+import android.content.Context;
+import android.opengl.GLSurfaceView.Renderer;
+import android.view.ViewGroup;
 
-class bkzq
-  implements Callback
+public abstract class bkzq
+  implements GLSurfaceView.Renderer
 {
-  private volatile boolean jdField_a_of_type_Boolean;
+  public Context a;
+  protected ViewGroup a;
   
-  bkzq(bkzp parambkzp, String paramString, RequestProxy.RequestListener paramRequestListener) {}
-  
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public bkzq(Context paramContext, ViewGroup paramViewGroup)
   {
-    QLog.e("RequestProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_JavaLangString, paramIOException);
-    if ("Canceled".equals(paramIOException.getLocalizedMessage()))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkzp.a.remove(this.jdField_a_of_type_JavaLangString);
-      return;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(bkxi.a(paramIOException, -1), "request error:network");
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
   }
   
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    int i = paramResponse.code();
-    Map localMap = paramResponse.headers().toMultimap();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestHeadersReceived(i, localMap);
-    paramCall = null;
-    try
-    {
-      paramResponse = paramResponse.body().bytes();
-      paramCall = paramResponse;
-    }
-    catch (IOException paramResponse)
-    {
-      for (;;)
-      {
-        paramResponse.printStackTrace();
-      }
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
-    this.jdField_a_of_type_Bkzp.a.remove(this.jdField_a_of_type_JavaLangString);
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

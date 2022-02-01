@@ -1,30 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-
-public class azfb
-  implements Animator.AnimatorListener
+public abstract interface azfb
 {
-  public azfb(ScanIconAnimateView paramScanIconAnimateView) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
+  public abstract void a(azfm paramazfm);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

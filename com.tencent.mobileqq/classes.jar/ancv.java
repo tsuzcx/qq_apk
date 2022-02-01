@@ -1,18 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class ancv
-  implements EIPCResultCallback
+public abstract interface ancv
 {
-  ancv(long paramLong) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    anbd.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
-  }
+  public abstract void a(Object paramObject);
 }
 
 

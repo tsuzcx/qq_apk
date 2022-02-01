@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class olk
   implements View.OnClickListener
 {
-  public olk(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public olk(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
   public void onClick(View paramView)
   {
-    ozs.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
+    if ((this.a.a instanceof oiz)) {
+      ((oiz)this.a.a).o();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

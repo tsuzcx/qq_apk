@@ -1,24 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.pb.profilecard.EditExtendFriendInfo.SchoolInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atcd
-  implements DialogInterface.OnClickListener
+public class atcd
+  implements View.OnClickListener
 {
-  atcd(asvg paramasvg, EditExtendFriendInfo.SchoolInfo paramSchoolInfo) {}
+  public atcd(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Asvg != null) {
-      this.jdField_a_of_type_Asvg.a(this.jdField_a_of_type_ComTencentPbProfilecardEditExtendFriendInfo$SchoolInfo);
+    if (SendBottomBar.a(this.a) != null) {
+      SendBottomBar.a(this.a).a();
     }
-    bdll.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 1, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    if (SendBottomBar.a(this.a)) {
+      aszt.b(SendBottomBar.a(this.a));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aszt.a(SendBottomBar.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,7 @@
-import android.widget.ImageView;
-
 class rbg
+  extends rai
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
-  
-  private rbg(rbe paramrbe) {}
+  rbg(rau paramrau) {}
 }
 
 

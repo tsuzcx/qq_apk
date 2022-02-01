@@ -1,19 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
-
-public final class alzd
-  implements Parcelable.Creator<PacmanParcelItem>
+public abstract interface alzd
 {
-  public PacmanParcelItem a(Parcel paramParcel)
-  {
-    return new PacmanParcelItem(paramParcel);
-  }
+  public abstract String a(int paramInt, String paramString);
   
-  public PacmanParcelItem[] a(int paramInt)
-  {
-    return new PacmanParcelItem[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(alsd paramalsd, long paramLong);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

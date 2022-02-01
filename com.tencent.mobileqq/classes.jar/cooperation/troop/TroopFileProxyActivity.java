@@ -1,14 +1,14 @@
 package cooperation.troop;
 
 import Override;
+import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anzj;
-import bmgk;
-import bmgt;
+import bkkq;
+import bkkz;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -33,20 +33,20 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    bmgt localbmgt = new bmgt(0);
-    localbmgt.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
-    localbmgt.d = anzj.a(2131714115);
-    localbmgt.jdField_a_of_type_JavaLangString = paramString2;
-    localbmgt.e = paramString1;
-    localbmgt.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbmgt.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    bkkz localbkkz = new bkkz(0);
+    localbkkz.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
+    localbkkz.d = amtj.a(2131714347);
+    localbkkz.jdField_a_of_type_JavaLangString = paramString2;
+    localbkkz.e = paramString1;
+    localbkkz.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
+    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbkkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbmgt.jdField_b_of_type_Int = paramInt;
-    localbmgt.c = 10000;
-    localbmgt.f = null;
-    bmgk.a(paramActivity, localbmgt);
+    localbkkz.jdField_b_of_type_Int = paramInt;
+    localbkkz.c = 10000;
+    localbkkz.f = null;
+    bkkq.a(paramActivity, localbkkz);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, String paramString)
@@ -67,8 +67,9 @@ public class TroopFileProxyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

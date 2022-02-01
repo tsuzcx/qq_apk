@@ -1,20 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-class qjo
-  implements Animation.AnimationListener
+public class qjo
+  implements URLDrawable.DownloadListener
 {
-  qjo(qjh paramqjh, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, Object paramObject) {}
+  public qjo(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFileDownloadFailed(int paramInt)
   {
-    qjh.a(this.jdField_a_of_type_Qjh, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject, true);
+    zuq localzuq = new zuq(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842750));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localzuq, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onFileDownloadStarted() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

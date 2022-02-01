@@ -1,98 +1,17 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhuf
+class bhuf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
-    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
-    {
-      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
-      localDataOutputStream.write(paramArrayOfByte);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      label76:
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte = paramArrayOfByte;
-      paramArrayOfByte.printStackTrace();
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException1)
-      {
-        break label76;
-      }
-    }
-  }
+  bhuf(bhue parambhue, bhrj parambhrj) {}
   
-  public static byte[] b(byte[] paramArrayOfByte)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
-    try
-    {
-      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
-      label72:
-      return paramArrayOfByte;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException5) {}
-      localException1 = localException1;
-      paramArrayOfByte = null;
-      localException1.printStackTrace();
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException2)
-      {
-        return paramArrayOfByte;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException3)
-      {
-        break label72;
-      }
-    }
+    this.jdField_a_of_type_Bhrj.b = paramBoolean;
+    this.jdField_a_of_type_Bhue.notifyDataSetChanged();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

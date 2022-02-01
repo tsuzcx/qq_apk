@@ -1,86 +1,56 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.Foreground;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqka
-  implements aqji, aqjn
 {
-  @Nullable
-  private Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<String, List<aqkb>> a = new HashMap();
   
-  aqka(Context paramContext, @Nullable aqji paramaqji)
+  public static aqka a(aptx[] paramArrayOfaptx)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramaqji;
-  }
-  
-  aqka(Context paramContext, @Nullable aqjn paramaqjn)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramaqjn;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof aqjn)) {
-      ((aqjn)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
+      return null;
     }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof aqji)) {
-      ((aqji)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof aqji)) {
-      return ((aqji)this.jdField_a_of_type_JavaLangObject).a();
-    }
-    return false;
-  }
-  
-  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-    a(paramBoolean, paramInt1, paramInt2, paramString);
-  }
-  
-  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
-    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    if (((this.jdField_a_of_type_JavaLangObject instanceof aqji)) && (!((aqji)this.jdField_a_of_type_JavaLangObject).a())) {}
-    Context localContext;
-    do
+    localaqka = new aqka();
+    try
     {
-      return;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
-    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString2);
-    if ((localContext instanceof Activity)) {}
-    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
-    {
-      localIntent.addFlags(268435456);
-      localContext.startActivity(localIntent);
-      return;
+      paramArrayOfaptx = new JSONObject(paramArrayOfaptx[0].a);
+      Iterator localIterator = paramArrayOfaptx.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONArray localJSONArray = paramArrayOfaptx.getJSONArray(str);
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(aqkb.a(localJSONArray.getJSONObject(i)));
+          i += 1;
+        }
+        localaqka.a.put(str, localArrayList);
+      }
+      return localaqka;
     }
-    paramString1.startActivity(localIntent);
+    catch (JSONException paramArrayOfaptx)
+    {
+      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfaptx);
+    }
+  }
+  
+  public Map<String, List<aqkb>> a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqka
  * JD-Core Version:    0.7.0.1
  */

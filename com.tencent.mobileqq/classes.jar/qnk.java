@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSReportTo1160;
+import com.tencent.qphone.base.util.QLog;
 
-class qnk
-  implements View.OnClickListener
+public class qnk
+  implements PTSNativeModuleRegistry.IPTSReportTo1160
 {
-  qnk(qnj paramqnj) {}
-  
-  public void onClick(View paramView)
+  public void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(paramView, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    QLog.i("PTSReportTo1160Module", 1, "[reportTo1160], event = " + paramString1 + ", toUin = " + paramString2 + ", r2 = " + paramLong + ", r3 = " + paramInt + ", r4 = " + paramString3 + ", r5 = " + paramString4);
+    if (!TextUtils.isEmpty(paramString1)) {
+      qob.a(paramString1, "" + paramLong, "" + paramInt, paramString3, new qoc(paramString4).a());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

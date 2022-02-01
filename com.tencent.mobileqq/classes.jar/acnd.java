@@ -1,75 +1,26 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.offline.AdOffline;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.ad.tangram.web.AdBrowserAdapter;
-import com.tencent.ad.tangram.web.AdBrowserAdapter.Params;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class acnd
-  implements AdBrowserAdapter
+public class acnd
+  implements View.OnClickListener
 {
-  public AdError show(AdBrowserAdapter.Params paramParams)
+  public acnd(AboutActivity paramAboutActivity, avnt paramavnt) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Avnt.d))
     {
-      acvc.d("GdtBrowserAdapter", "show error");
-      return new AdError(4);
+      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Avnt.d);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
     }
-    acvc.b("GdtBrowserAdapter", String.format("show %s", new Object[] { paramParams.url }));
-    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    Intent localIntent = new Intent((Context)paramParams.activity.get(), QQBrowserActivity.class);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("url", paramParams.url);
-    if ((paramParams.extrasForIntent != null) && (!paramParams.extrasForIntent.isEmpty())) {
-      localIntent.putExtras(paramParams.extrasForIntent);
-    }
-    if ((paramParams.ad != null) && (paramParams.ad.isValid()))
-    {
-      if (((GdtAd)localObject).getNocoId() != 0L) {
-        localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
-      }
-      localIntent.putExtra("GdtWebReportQQ_TRACE_ID", paramParams.ad.getTraceId());
-      localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
-      localIntent.putExtra("GdtWebReportQQ_ACTION_URL", ((GdtAd)localObject).getUrlForAction());
-    }
-    if (localObject == null) {}
-    for (;;)
-    {
-      if ((paramParams.ad != null) && (paramParams.ad.getProductType() == 25))
-      {
-        localObject = paramParams.ad.getUrlForClick();
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("1".equals(AdUriUtil.getQueryParameter(AdUriUtil.parse((String)localObject), "autoclose")))) {
-          localIntent.putExtra("keyForForceCloseAfterJump", true);
-        }
-      }
-      try
-      {
-        ((Activity)paramParams.activity.get()).startActivity(localIntent);
-        paramParams = new AdError(0);
-        return paramParams;
-      }
-      catch (Throwable paramParams)
-      {
-        acvc.d("GdtBrowserAdapter", "show", paramParams);
-        return new AdError(202, paramParams);
-      }
-      if ((((GdtAd)localObject).isValid()) && (AdOffline.INSTANCE.isEnable(BaseApplicationImpl.getContext())) && ((paramParams.ad.isAppXiJingOffline()) || (paramParams.ad.isWebXiJingOffline())) && (!TextUtils.isEmpty(paramParams.ad.getCanvasForXiJingOffline())))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putParcelable("gdt_ad", (Parcelable)localObject);
-        localIntent.putExtras(localBundle);
-      }
-    }
+    this.jdField_a_of_type_Avnt.a();
+    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

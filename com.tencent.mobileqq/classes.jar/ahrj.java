@@ -1,26 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
 class ahrj
-  implements bliz
+  implements ahrw
 {
-  ahrj(ahri paramahri, MessageForShortVideo paramMessageForShortVideo, ahro paramahro, blir paramblir) {}
+  ahrj(ahrg paramahrg, List paramList1, List paramList2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(long paramLong)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_Ahri.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahro);
-      } else {
-        this.jdField_a_of_type_Ahri.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahro);
-      }
-    }
+    ahrg.a(this.jdField_a_of_type_Ahrg, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
+    ahrg.a(this.jdField_a_of_type_Ahrg).setLeftCheckBoxVisible(false, (ChatMessage)this.b.get(0), false);
   }
 }
 

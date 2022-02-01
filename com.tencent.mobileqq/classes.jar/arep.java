@@ -1,66 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class arep
-  extends arac<areo>
+public abstract class arep
 {
-  @NonNull
-  public areo a(int paramInt)
-  {
-    return new areo();
-  }
-  
-  @Nullable
-  public areo a(araj[] paramArrayOfaraj)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
-    return areo.a(paramArrayOfaraj);
-  }
-  
-  public void a(areo paramareo)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
-  }
-  
-  public Class<areo> clazz()
-  {
-    return areo.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 614;
-  }
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arep
  * JD-Core Version:    0.7.0.1
  */

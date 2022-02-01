@@ -1,24 +1,19 @@
-public class bobm
+import java.util.ArrayList;
+
+class bobm
+  implements bobt
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  bobm(bobl parambobl) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, bobo parambobo) {}
+  
+  public void a(int paramInt, ArrayList<bobo> paramArrayList) {}
+  
+  public void a(String[] paramArrayOfString, String paramString) {}
+  
+  public void b(int paramInt, bobo parambobo) {}
 }
 
 

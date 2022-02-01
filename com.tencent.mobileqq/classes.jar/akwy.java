@@ -1,48 +1,21 @@
-import Wallet.BroadCastInfo;
-import Wallet.GetBroadCastHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
-
-class akwy
-  implements BusinessObserver
+public class akwy
 {
-  akwy(akwx paramakwx) {}
+  public int a;
+  public boolean a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static int a(int paramInt)
   {
-    if (paramInt == 28)
+    switch (paramInt)
     {
-      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        break label21;
-      }
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
     }
-    for (;;)
-    {
-      return;
-      label21:
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_Akwu.a = false;
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
-          if ((this.a.jdField_a_of_type_Akwu.a(str) != null) && (localBroadCastInfo != null)) {
-            if (localBroadCastInfo.isFinished == 1) {
-              this.a.jdField_a_of_type_Akwu.a(str);
-            } else {
-              this.a.jdField_a_of_type_Akwu.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY, localBroadCastInfo.hbPoemRule);
-            }
-          }
-        }
-      }
-    }
+    return 180;
   }
 }
 

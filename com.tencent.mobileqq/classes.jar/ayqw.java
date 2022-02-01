@@ -1,31 +1,45 @@
 import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayqw
-  implements blih
+  implements View.OnClickListener
 {
-  public ayqw(NearbyMomentFragment paramNearbyMomentFragment) {}
+  private long jdField_a_of_type_Long;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public ayqw(QzonePhotoView paramQzonePhotoView) {}
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (paramInt == 0)
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
+    for (;;)
     {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      if ((paramView != null) && ((paramView.getTag() instanceof aykg)))
       {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
+        Object localObject = (aykg)paramView.getTag();
+        if (localObject != null)
+        {
+          int i = ((aykg)localObject).a;
+          localObject = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
+          switch (i)
+          {
+          default: 
+            break;
+          case 25: 
+            bcef.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
+            if (QLog.isColorLevel()) {
+              QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
+            }
+            QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+          }
         }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
       }
     }
   }

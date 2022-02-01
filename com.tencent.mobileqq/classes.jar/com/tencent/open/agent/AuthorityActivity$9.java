@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
-import bjzb;
+import biej;
 
 class AuthorityActivity$9
   implements Runnable
@@ -10,7 +10,7 @@ class AuthorityActivity$9
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.this$0.jdField_a_of_type_Bjzb.a, "", this.a, false);
+    this.this$0.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.this$0.jdField_a_of_type_Biej.a, "", this.a, false);
   }
 }
 

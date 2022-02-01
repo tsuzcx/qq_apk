@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import bmws;
-import bmwt;
-import bmwu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 import java.util.Collections;
@@ -15,82 +12,80 @@ import java.util.Map;
 public class FeedListView
   extends XListView
 {
-  protected Map<String, String> a;
-  private boolean a;
+  public static final String EXT_KEY_SEARCH_MODE = "search_mode";
+  protected Map<String, String> extArgMap = Collections.emptyMap();
+  private boolean isLongClickValid;
   
   public FeedListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaUtilMap = Collections.emptyMap();
   }
   
   public FeedListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilMap = Collections.emptyMap();
   }
   
   public FeedListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaUtilMap = Collections.emptyMap();
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public void attach(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
   
-  public void a(bmwu parambmwu) {}
+  public void doActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
-  
-  public boolean a(String paramString, bmwu parambmwu)
-  {
-    return false;
-  }
-  
-  public int b()
+  public int getFeedCnt()
   {
     return 0;
   }
   
-  public void f() {}
-  
-  public boolean f()
+  public boolean isLongClickValid()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.isLongClickValid;
   }
   
-  public void g() {}
+  public void loadMore(FeedListView.LoadFeedCallback paramLoadFeedCallback) {}
   
-  public void h() {}
+  public void onDestroy() {}
   
-  public void i() {}
+  public void onPause() {}
   
-  public void l() {}
+  public void onResume() {}
   
-  public void m() {}
+  public void onStart() {}
   
-  public void setExpandHead(bmws parambmws) {}
+  public void onStop() {}
+  
+  public void scrollToHeadView() {}
+  
+  public void scrollToTop() {}
+  
+  public void setExpandHead(FeedListView.ExpandHead paramExpandHead) {}
   
   public void setExtArgs(Map<String, String> paramMap)
   {
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
-      if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-        this.jdField_a_of_type_JavaUtilMap.clear();
+      if (!this.extArgMap.isEmpty()) {
+        this.extArgMap.clear();
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.extArgMap = paramMap;
   }
   
-  public void setFeedUinChangedListener(bmwt parambmwt) {}
+  public void setFeedUinChangedListener(FeedListView.FeedUinChangedListener paramFeedUinChangedListener) {}
   
   public void setLongClickValid(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.isLongClickValid = paramBoolean;
   }
   
-  public void u_() {}
+  public boolean switchTag(String paramString, FeedListView.LoadFeedCallback paramLoadFeedCallback)
+  {
+    return false;
+  }
 }
 
 

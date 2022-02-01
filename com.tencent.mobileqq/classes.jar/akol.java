@@ -1,26 +1,149 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class akol
-  implements Animation.AnimationListener
+  extends akns
 {
-  public akol(CountryActivity paramCountryActivity) {}
+  public boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public akol(Context paramContext)
   {
-    if (!this.a.isFinishing())
+    this(paramContext, false);
+  }
+  
+  public akol(Context paramContext, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131697150);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if (paramMessageRecord == null)
     {
-      this.a.jdField_a_of_type_Akor.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      parambdyi = null;
+      return parambdyi;
+    }
+    boolean bool = awig.a(paramMessageRecord);
+    if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
+      return null;
+    }
+    if (bool)
+    {
+      if ((paramObject instanceof akol))
+      {
+        paramObject = (akol)paramObject;
+        paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
+        return paramObject;
+      }
+      paramObject = new akol(BaseApplication.getContext());
+      paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
+      return paramObject;
+    }
+    if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
+    {
+      paramQQAppInterface = (MessageForDeliverGiftTips)paramMessageRecord;
+      paramInt = 1;
+      i = 1;
+      if (!(paramObject instanceof akol)) {
+        break label287;
+      }
+      paramMessageRecord = (akol)paramObject;
+      paramInt = i;
+      if (paramMessageRecord.jdField_a_of_type_Boolean)
+      {
+        paramInt = i;
+        if (!paramQQAppInterface.isToAll()) {
+          paramInt = 0;
+        }
+      }
+      i = paramInt;
+      paramObject = paramMessageRecord;
+      if (!paramMessageRecord.jdField_a_of_type_Boolean)
+      {
+        paramMessageRecord.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
+        paramObject = paramMessageRecord;
+      }
+    }
+    for (int i = paramInt;; i = paramInt)
+    {
+      parambdyi = paramObject;
+      if (i == 0) {
+        break;
+      }
+      parambdyi = paramObject;
+      if (TextUtils.isEmpty(paramQQAppInterface.remindBrief)) {
+        break;
+      }
+      parambdyi = paramQQAppInterface.remindBrief.split("#");
+      paramObject.jdField_a_of_type_JavaLangString = ("[" + parambdyi[0] + "]");
+      return paramObject;
+      bcef.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_RECEIVED_FLOWSER_MSG, MessageRecord cast to GiftTips", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
+      return null;
+      label287:
+      paramObject = new akol(BaseApplication.getContext(), paramQQAppInterface.isToAll());
+      paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
+      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
+      if (this.jdField_a_of_type_Bdyj == null) {
+        this.jdField_a_of_type_Bdyj = new bdyj();
+      }
+      this.jdField_a_of_type_Bdyj.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Bdyj != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bdyj.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
 }
 
 

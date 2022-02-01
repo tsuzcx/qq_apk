@@ -1,24 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import mqq.observer.BusinessObserver;
 
 public class akav
-  extends Handler
+  implements BusinessObserver
 {
-  public akav(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramMessage.what == 1)
+    if ((paramInt == 1) && (paramBundle != null))
     {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
+      paramInt = paramBundle.getInt("btype");
+      String str = paramBundle.getString("bid");
+      if ((akat.a(paramInt)) && (!TextUtils.isEmpty(str))) {
+        a(paramInt, str, paramBundle);
       }
-      this.a.a = new bjbs(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691342);
-      this.a.a.show();
     }
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import acoo;
+import abkw;
 import android.util.Log;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -77,8 +77,7 @@ class AdJsPlugin$2
           this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, paramJSONObject, this.val$callBackId);
           AdJsPlugin.access$000(this.this$0, str2, this.val$adType);
           paramJSONObject = new GdtAd(AdJsPlugin.access$100(this.this$0, str2));
-          acoo.a().a(paramJSONObject);
-          if (localJSONException1 == null) {}
+          abkw.a().a(paramJSONObject);
         }
         catch (JSONException localJSONException2)
         {

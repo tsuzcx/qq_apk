@@ -1,19 +1,65 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.List;
 
 public class smf
-  implements View.OnClickListener
+  implements snm
 {
-  public smf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public smf(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(paramInt1, paramView, paramListView, paramInt2);
+  }
+  
+  public void a(View paramView, ListView paramListView, int paramInt)
+  {
+    this.a.a(paramView, paramListView, paramInt);
+  }
+  
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bjsd)localIterator.next()).onNotCompleteVisable(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bjsd)localIterator.next()).onViewCompleteVisable(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
+    {
+      if (!((bjsd)localIterator.next()).onViewCompleteVisableAndReleased(paramInt, paramView, paramListView)) {
+        break label57;
+      }
+      bool = true;
+    }
+    label57:
+    for (;;)
+    {
+      break;
+      return bool;
+    }
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bjsd)localIterator.next()).onViewNotCompleteVisableAndReleased(paramInt, paramView, paramListView);
+    }
   }
 }
 

@@ -1,60 +1,116 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ViolaLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aqyf
-  extends BaseAdapter
+  extends aqxl
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  public static final String[] a = (String[])new String[] { "libgnustl_shared.so", "libjsc.so" };
   
-  public aqyf(TimeSelectView paramTimeSelectView, int paramInt1, int paramInt2)
+  public aqyf(QQAppInterface paramQQAppInterface)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramTimeSelectView.getResources().getDisplayMetrics()));
+    super("android.qq.readinjoy.viola_795", paramQQAppInterface);
   }
   
-  public int getCount()
+  public static void f()
   {
-    return TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (i()) {}
+    do
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-    }
-    for (;;)
+      return;
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (aqxc)((QQAppInterface)localObject).getManager(77);
+        if (localObject != null)
+        {
+          localObject = (aqyf)((aqxc)localObject).a("android.qq.readinjoy.viola_795");
+          if (localObject != null)
+          {
+            ((aqyf)localObject).a(true);
+            QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
+          }
+        }
+      }
+    } while (aqye.i());
+    aqye.f();
+  }
+  
+  public static boolean i()
+  {
+    String str = pld.a();
+    int i = 0;
+    while (i < a.length)
     {
-      String str = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(TimeSelectView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      File localFile = new File(str, a[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        return false;
+      }
+      i += 1;
     }
+    return true;
+  }
+  
+  public int a()
+  {
+    return 10071;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ViolaLibData.class;
+  }
+  
+  public String a()
+  {
+    return "viola.ViolaLibHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("viola.ViolaLibHandler", 1, "version:" + localXmlData.Version);
+    }
+    if (new File(paramString).exists())
+    {
+      if (pld.a(paramString)) {
+        break label124;
+      }
+      if (localXmlData != null)
+      {
+        localXmlData.loadState = 0;
+        localXmlData.Version = 0;
+        aqxb.a(localXmlData, new String[] { "loadState", "Version" });
+      }
+      QLog.e("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess],unzip readinjoy_viola lib failed!");
+    }
+    label124:
+    do
+    {
+      return;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
+      if (paramString != null) {
+        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_795").commit();
+      }
+    } while (!aqye.i());
+    pkx.a("jsc doOnDownloadSuccess");
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

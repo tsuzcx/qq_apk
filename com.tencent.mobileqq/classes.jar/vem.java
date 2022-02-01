@@ -1,17 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vem
-  implements Observer<vxq<QQCircleFeedBase.StFeedListBusiRspData>>
+  implements View.OnClickListener
 {
-  vem(vel paramvel) {}
+  vem(vel paramvel, WSTabLayout paramWSTabLayout) {}
   
-  public void a(@Nullable vxq<QQCircleFeedBase.StFeedListBusiRspData> paramvxq)
+  public void onClick(View paramView)
   {
-    if (paramvxq != null) {
-      vel.a(this.a, (QQCircleFeedBase.StFeedListBusiRspData)paramvxq.a());
+    if (WSTabLayout.a(this.jdField_a_of_type_Vel.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
+      WSTabLayout.a(this.jdField_a_of_type_Vel.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(vel.a(this.jdField_a_of_type_Vel));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

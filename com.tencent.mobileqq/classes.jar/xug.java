@@ -1,17 +1,36 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class xug
-  implements xvr
+  extends ysg
 {
-  public xug(TrimTextureVideoView paramTrimTextureVideoView) {}
+  public static final String KEY = "NewDividerSegment";
   
-  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
+  public xug(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
-    }
-    return true;
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
+  {
+    return paramxsh.a();
+  }
+  
+  public String a()
+  {
+    return "NewDividerSegment";
+  }
+  
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new xsh(LayoutInflater.from(this.a).inflate(2131561586, paramViewGroup, false));
   }
 }
 

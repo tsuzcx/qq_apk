@@ -1,31 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class qkk
-  implements View.OnClickListener
+  implements qla
 {
-  qkk(qkj paramqkj) {}
+  qkk(qki paramqki) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Sel == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ArticleInfo localArticleInfo = ((ppu)this.a.jdField_a_of_type_JavaLangObject).a();
-      if (localArticleInfo != null)
-      {
-        int i = ComponentContentGalleryBiu.a(localArticleInfo, this.a.jdField_a_of_type_Sel);
-        sgc localsgc = this.a.jdField_a_of_type_Sel.a();
-        if (localsgc != null) {
-          localsgc.a(this.a.jdField_a_of_type_AndroidContentContext, localArticleInfo, 0, localArticleInfo.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
-        }
-      }
-    }
+    QLog.d("RvPolymericContainer", 1, "onError  ");
+    qki.a(this.a);
   }
 }
 

@@ -1,8 +1,9 @@
-import com.tencent.av.VideoController;
-
-public abstract interface ljb
+class ljb
 {
-  public abstract VideoController a();
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

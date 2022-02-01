@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -70,8 +70,8 @@ public class MessageForApproval
           {
             String str3 = ((String)localObject).substring(3);
             localObject = str3;
-            if (anzj.a(2131705501).equalsIgnoreCase(str3)) {
-              localObject = anzj.a(2131705460);
+            if (amtj.a(2131705731).equalsIgnoreCase(str3)) {
+              localObject = amtj.a(2131705690);
             }
             localStringBuilder.append((String)localObject);
           }
@@ -89,7 +89,7 @@ public class MessageForApproval
       }
       for (;;)
       {
-        return anzj.a(2131705480) + localStringBuilder.toString();
+        return amtj.a(2131705710) + localStringBuilder.toString();
         if (((String)localObject).startsWith("002"))
         {
           localStringBuilder.append(((String)localObject).substring(3));
@@ -110,7 +110,7 @@ public class MessageForApproval
   
   public String getSummaryMsg()
   {
-    return anzj.a(2131705496);
+    return amtj.a(2131705726);
   }
 }
 

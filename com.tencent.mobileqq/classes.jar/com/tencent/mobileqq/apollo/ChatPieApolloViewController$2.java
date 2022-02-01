@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import amuy;
+import alps;
+import amkk;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import anpq;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -13,22 +13,22 @@ import com.tencent.qphone.base.util.QLog;
 public class ChatPieApolloViewController$2
   implements Runnable
 {
-  public ChatPieApolloViewController$2(amuy paramamuy, BaseChatPie paramBaseChatPie) {}
+  public ChatPieApolloViewController$2(alps paramalps, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
     QLog.i("sava_ChatPieApolloViewController", 1, "sava_native_log checkNeedPreLoadEngine start");
-    ApolloCmdChannel.getChannel(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).setActivityContext(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    ApolloCmdChannel.getChannel(this.a.app).setActivityContext(this.a.mActivity);
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null)
     {
       float f = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = new ApolloRender(f, this.a.jdField_a_of_type_Ansv, 0);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = new ApolloRender(f, this.a.mApolloViewObserver, 0);
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.setUseGlobalTimer(true);
     }
-    anpq.b(this.this$0.jdField_a_of_type_Anps);
+    amkk.b(this.this$0.jdField_a_of_type_Amkm);
     if (!ApolloEngine.a())
     {
-      anpq.a(this.this$0.jdField_a_of_type_Anps);
+      amkk.a(this.this$0.jdField_a_of_type_Amkm);
       if (QLog.isColorLevel()) {
         QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine !isEngineReady");
       }
@@ -39,14 +39,14 @@ public class ChatPieApolloViewController$2
       if (QLog.isColorLevel()) {
         QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine isEngineReady");
       }
-      if (amuy.a(this.this$0))
+      if (alps.a(this.this$0))
       {
         QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine but AIO destroy!");
         return;
       }
     } while (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null);
     this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
-    amuy.a(this.this$0);
+    alps.a(this.this$0);
   }
 }
 

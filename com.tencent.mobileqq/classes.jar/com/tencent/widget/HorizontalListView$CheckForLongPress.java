@@ -2,10 +2,9 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import blmk;
 
 class HorizontalListView$CheckForLongPress
-  extends blmk
+  extends HorizontalListView.WindowRunnnable
   implements Runnable
 {
   private HorizontalListView$CheckForLongPress(HorizontalListView paramHorizontalListView)
@@ -33,7 +32,7 @@ class HorizontalListView$CheckForLongPress
         i = HorizontalListView.access$500(this.this$0);
         long l = this.this$0.mAdapter.getItemId(HorizontalListView.access$500(this.this$0));
         bool1 = bool2;
-        if (a())
+        if (sameWindow())
         {
           bool1 = bool2;
           if (!this.this$0.mDataChanged) {
@@ -47,7 +46,7 @@ class HorizontalListView$CheckForLongPress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

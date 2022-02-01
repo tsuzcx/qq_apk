@@ -1,39 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akee
-  extends bgst
+  implements View.OnClickListener
 {
-  public akee(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public akee(DrawHbFragment paramDrawHbFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
+    if ((paramView instanceof TextView))
     {
-      paramString = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramString);
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
     }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
-    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
-    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramArrayOfLong1);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

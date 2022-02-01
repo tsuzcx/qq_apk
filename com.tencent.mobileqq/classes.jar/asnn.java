@@ -1,82 +1,71 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class asnn
+public abstract class asnn
 {
-  int jdField_a_of_type_Int = 0;
-  public asmr a;
-  asmy jdField_a_of_type_Asmy;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
-  public String a;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b = false;
-  public int c;
-  boolean c = true;
-  public boolean d = false;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
-  boolean h = false;
-  boolean i = false;
-  boolean j = false;
-  boolean k = false;
+  protected final QQAppInterface a;
   
-  public asnn() {}
-  
-  public asnn(EmoticonMainPanel paramEmoticonMainPanel)
+  public asnn(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = paramEmoticonMainPanel;
-    if (paramEmoticonMainPanel != null)
+    this.a = paramQQAppInterface;
+  }
+  
+  protected abstract String a(boolean paramBoolean);
+  
+  protected abstract HashMap<String, String> a();
+  
+  public abstract void a();
+  
+  public void a(asno paramasno, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
+  {
+    boolean bool = false;
+    paramasno = paramasno.a();
+    if (paramExcitingTransferOneSlotComplete != null) {
+      paramasno.putAll(paramExcitingTransferOneSlotComplete.getReportData());
+    }
+    if (paramHashMap != null) {
+      paramasno.putAll(paramHashMap);
+    }
+    if (paramExcitingTransferOneSlotComplete != null) {
+      if (paramExcitingTransferOneSlotComplete.m_SubReason != 0) {}
+    }
+    for (bool = true;; bool = false)
     {
-      paramEmoticonMainPanel = paramEmoticonMainPanel.a();
-      if (paramEmoticonMainPanel != null)
-      {
-        this.jdField_a_of_type_Asmr = paramEmoticonMainPanel.jdField_a_of_type_Asmr;
-        this.jdField_a_of_type_Boolean = paramEmoticonMainPanel.h;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        this.c = paramEmoticonMainPanel.k;
-        this.jdField_a_of_type_Asmy = EmoticonPanelController.a(paramEmoticonMainPanel);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-        this.i = EmoticonPanelController.a(paramEmoticonMainPanel);
-        this.k = paramEmoticonMainPanel.l;
-      }
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actPDSlot", bool, 0L, 0L, paramasno, "");
+      return;
     }
   }
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) {}
-    EmoticonPanelController localEmoticonPanelController;
-    do
-    {
-      return;
-      localEmoticonPanelController = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a();
-    } while (localEmoticonPanelController == null);
-    this.h = false;
-    localEmoticonPanelController.jdField_a_of_type_Asnn = this;
-    localEmoticonPanelController.jdField_a_of_type_Asmr = this.jdField_a_of_type_Asmr;
-    localEmoticonPanelController.h = this.jdField_a_of_type_Boolean;
-    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localEmoticonPanelController.k = this.c;
-    EmoticonPanelController.a(localEmoticonPanelController, this.jdField_a_of_type_Asmy);
-    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-    EmoticonPanelController.a(localEmoticonPanelController, this.i);
-    localEmoticonPanelController.l = this.k;
-    localEmoticonPanelController.a(this.jdField_a_of_type_Int);
+    if (a()) {
+      b(paramBoolean);
+    }
+    HashMap localHashMap = a();
+    if (localHashMap != null) {
+      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
   }
   
-  public void b()
+  protected abstract boolean a();
+  
+  protected abstract HashMap<String, String> b();
+  
+  public abstract void b();
+  
+  public void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) || (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a() == null)) {
-      return;
+    HashMap localHashMap = b();
+    if (localHashMap != null)
+    {
+      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
     }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a().a();
   }
 }
 

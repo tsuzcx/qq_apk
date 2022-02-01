@@ -1,72 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.GetFlagInfoRsp;
-import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.RspBody;
-import tencent.kandian.flaginfo.flag_info.FlagInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class pqt
-  extends nkq
+public class pqt
+  extends GestureDetector.SimpleOnGestureListener
 {
-  pqt(pqs parampqs) {}
+  public pqt(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    int i = 0;
-    int k = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      return;
-    }
-    for (;;)
+    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
+    for (int i = 1;; i = 0)
     {
-      try
+      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
       {
-        paramBundle = new oidb_0xe1b.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.msg_get_flag_info_rsp.has()) || (!paramBundle.msg_get_flag_info_rsp.rpt_msg_flag_info_list.has())) {
-          break;
-        }
-        paramArrayOfByte = ((oidb_0xe1b.GetFlagInfoRsp)paramBundle.msg_get_flag_info_rsp.get()).rpt_msg_flag_info_list.get();
-        int j = i;
-        if (paramArrayOfByte != null)
-        {
-          j = i;
-          if (!paramArrayOfByte.isEmpty())
-          {
-            i = 0;
-            paramInt = k;
-            j = paramInt;
-            if (i < paramArrayOfByte.size())
-            {
-              paramBundle = (flag_info.FlagInfo)paramArrayOfByte.get(i);
-              if (paramBundle == null) {
-                break label178;
-              }
-              paramInt = paramBundle.uint32_teenager_flag.get();
-              break label178;
-            }
-          }
-        }
-        if (j != 0) {
-          break label168;
-        }
-        bnrf.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
-        return;
+        ReadInjoyIMAXAdFragment.a(this.a, true);
+        ReadInjoyIMAXAdFragment.a(this.a);
+        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, obb.r);
       }
-      catch (Exception paramArrayOfByte) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SelfInfoModule", 2, "updateSelfYoungsterModeSetting failed.");
-      return;
-      label168:
-      bnrf.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
-      return;
-      label178:
-      i += 1;
+      return true;
     }
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (ReadInjoyIMAXAdFragment.a(this.a)) {
+      return true;
+    }
+    ReadInjoyIMAXAdFragment.a(this.a, true);
+    ReadInjoyIMAXAdFragment.a(this.a);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), obb.t);
+    ReadInjoyIMAXAdFragment.b(this.a, 2);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.d(this.a, 0);
+    return true;
   }
 }
 

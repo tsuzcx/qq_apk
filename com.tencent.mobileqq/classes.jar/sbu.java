@@ -1,17 +1,21 @@
+import android.widget.LinearLayout;
+
 class sbu
-  implements bljd
+  implements sbz
 {
-  sbu(sbt paramsbt) {}
+  sbu(sbt paramsbt, rvv paramrvv) {}
   
-  public void ak_()
+  public void a()
   {
-    if (sbi.c(this.a.a))
+    if ((sbt.a(this.jdField_a_of_type_Sbt) instanceof tut)) {
+      ((tut)sbt.a(this.jdField_a_of_type_Sbt)).a = true;
+    }
+    if (this.jdField_a_of_type_Sbt.a() != 3)
     {
-      sbi.c(this.a.a, false);
-      sbi.a(this.a.a).a(sbi.a(this.a.a), sbi.b(this.a.a), true, false);
+      this.jdField_a_of_type_Rvv.e.setVisibility(8);
       return;
     }
-    sbi.a(this.a.a).a(sbi.a(this.a.a), sbi.b(this.a.a), true, true);
+    sbt.a(this.jdField_a_of_type_Sbt, true, false);
   }
 }
 

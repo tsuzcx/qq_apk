@@ -1,6 +1,24 @@
-class rxn
+import com.tencent.mobileqq.qipc.QIPCModule;
+
+public class rxn
 {
-  private static final rxk a = new rxk(null);
+  private static rxn a;
+  
+  public static rxn a()
+  {
+    if (a == null) {}
+    try
+    {
+      a = new rxn();
+      return a;
+    }
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return null;
+  }
 }
 
 

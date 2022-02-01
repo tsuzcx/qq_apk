@@ -1,29 +1,40 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import NS_MOBILE_OPERATION.PicInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
+import java.util.HashMap;
 
 public class ajrd
-  implements ajom
+  extends PhotoPreviewBaseData
 {
-  public ajrd(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (!(paramViewHolder instanceof ajpp)) {}
-    do
-    {
-      return;
-      paramView = (ajpp)paramViewHolder;
-    } while (paramView.a.msg_type.get() != 2);
-    TroopSuspiciousFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
-  }
+  public int a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public ylk a;
+  public boolean a;
+  public int b;
+  public String b;
+  public HashMap<String, PhotoSendParams> b;
+  public boolean b;
+  public int c;
+  public String c;
+  public HashMap<String, PicInfo> c;
+  public boolean c;
+  public int d;
+  public HashMap<String, PicInfo> d;
+  public boolean d;
+  public int e;
+  public HashMap<String, byte[]> e;
+  public boolean e;
+  public int f = 1052;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
 }
 
 

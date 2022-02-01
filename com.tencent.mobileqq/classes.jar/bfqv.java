@@ -1,10 +1,9 @@
+import android.graphics.drawable.Drawable;
+import android.view.View;
+
 public abstract interface bfqv
 {
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(String paramString);
+  public abstract void a(View paramView, Drawable paramDrawable);
 }
 
 

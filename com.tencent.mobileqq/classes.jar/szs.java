@@ -1,15 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import java.util.HashMap;
 
 public class szs
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public szs(TabLayoutCompat paramTabLayoutCompat) {}
+  public int a;
+  public final HashMap<String, String> a;
+  public pip a;
+  public boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public szs()
   {
-    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
+    this.jdField_a_of_type_Int = 1002;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Pip = new pip();
   }
 }
 

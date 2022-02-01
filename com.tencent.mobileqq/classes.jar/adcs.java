@@ -1,59 +1,29 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x115.SubMsgType0x115.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x115.SubMsgType0x115.NotifyItem;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 
 public class adcs
-  implements adci
+  extends aycd
 {
-  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x115, [S2C push for input status]");
-    }
-    try
-    {
-      SubMsgType0x115.MsgBody localMsgBody = new SubMsgType0x115.MsgBody();
-      if (paramadan.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        long l1 = localMsgBody.uint64_from_uin.get();
-        long l2 = localMsgBody.uint64_to_uin.get();
-        paramMsgType0x210 = (SubMsgType0x115.NotifyItem)localMsgBody.msg_notify_item.get();
-        int i = paramMsgType0x210.uint32_timeout_s.get();
-        int j = paramMsgType0x210.uint32_event_type.get();
-        int k = paramMsgType0x210.uint32_interval.get();
-        long l3 = paramMsgType0x210.uint64_timestamp.get();
-        paramMsgType0x210 = paramMsgType0x210.bytes_wording.get().toStringUtf8();
-        paramadan = paramadan.a().getManager(316);
-        if ((paramadan instanceof avyp)) {
-          ((avyp)paramadan).a(l1, l2, l3, k, i, j, paramMsgType0x210);
-        }
-      }
-      return;
-    }
-    catch (Exception paramadan)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x115], errInfo->" + paramadan.getMessage());
-    }
-  }
+  public adcs(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    a(paramadan, paramMsgType0x210);
-    return null;
+    if (paramBoolean1)
+    {
+      int i = ContactSyncJumpActivity.a(this.a).d();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adcs
  * JD-Core Version:    0.7.0.1
  */

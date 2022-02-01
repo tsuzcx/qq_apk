@@ -19,7 +19,7 @@ final class CompositingReportSession$Bean
   
   public CompositingReportSession$Bean()
   {
-    super("TAVKit_Android", "android_tavkit_compositing", "1.3.4.2");
+    super("TAVKit_Android", "android_tavkit_compositing", "1.3.5.6-qq_8.4.8");
   }
   
   public Map<String, Long> toMap()

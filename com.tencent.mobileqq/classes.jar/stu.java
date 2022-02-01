@@ -1,28 +1,24 @@
-import android.view.View;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class stu
-  implements URLDrawableDownListener
+public class stu
+  implements sth
 {
-  stu(stp paramstp) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public int a(BaseData paramBaseData)
   {
-    AbstractGifImage.resumeAll();
-    stp.a(this.a).setVisibility(0);
-    this.a.a("0X800920C", new JSONObject());
+    return 11;
+  }
+  
+  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new stv(LayoutInflater.from(paramContext).inflate(2131560179, paramViewGroup, false), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.r == 11;
   }
 }
 

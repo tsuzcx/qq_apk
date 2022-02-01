@@ -1,20 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
 class amox
-  implements CompoundButton.OnCheckedChangeListener
+  extends ayqd
 {
-  amox(amow paramamow, RedTouch paramRedTouch, arsh paramarsh) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  amox(amov paramamov, long paramLong)
   {
-    if (!AppSetting.c) {
-      amow.a(this.jdField_a_of_type_Amow, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Arsh, paramBoolean);
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = ayqc.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
+    {
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

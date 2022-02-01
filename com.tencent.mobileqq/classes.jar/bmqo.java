@@ -1,17 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
+import java.util.List;
 
 public class bmqo
   implements View.OnClickListener
 {
-  public bmqo(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public bmqo(CaptureModeAdapter paramCaptureModeAdapter) {}
   
   public void onClick(View paramView)
   {
-    ForceUserUpdateActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Integer localInteger = (Integer)paramView.getTag();
+    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
+      CaptureModeAdapter.a(this.a, localInteger.intValue());
+      if (CaptureModeAdapter.a(this.a) != null) {
+        CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
+      }
+    }
   }
 }
 

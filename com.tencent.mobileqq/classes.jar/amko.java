@@ -1,34 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.util.Comparator;
 
-public class amko
+public final class amko
+  implements Comparator<File>
 {
-  public static void a(Activity paramActivity, String paramString, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((paramInt == 3) && (auwl.a().a()))
+    if ((paramFile1.exists()) && (paramFile2.exists()))
     {
-      localObject = new HashMap();
-      ((Map)localObject).put("uin", paramString);
-      ((Map)localObject).put("from", Integer.valueOf(3));
-      auwz.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
-      return;
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
+      return -1;
     }
-    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
-    ((Intent)localObject).putExtra("key_friend_uin", paramString);
-    ((Intent)localObject).putExtra("key_start_from", 3);
-    paramActivity.startActivity((Intent)localObject);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
+    return 0;
   }
 }
 

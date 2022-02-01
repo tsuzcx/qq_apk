@@ -1,119 +1,92 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.util.WebpSoLoader;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import cooperation.plugin.PluginInfo;
+import cooperation.troop.TroopBaseProxyActivity;
+import cooperation.troop.TroopManageProxyActivity;
+import java.util.HashMap;
 
 public class anuc
-  implements TbsListener
+  extends anrh
 {
-  public anuc(BrowserAppInterface paramBrowserAppInterface, SharedPreferences paramSharedPreferences, long paramLong) {}
-  
-  public void onDownloadFinish(int paramInt)
+  public anuc(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    QLog.d("TBS_update", 1, "tbs download finish result=" + paramInt);
-    if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122))
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("groupcode");
+    if ((str == null) || ("".equals(str)) || (str.length() < 5)) {
+      return false;
+    }
+    Object localObject1;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+      localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      if (localObject1 == null) {
+        break label302;
+      }
+      localObject1 = ((TroopManager)localObject1).b(str);
+      if ((localObject1 == null) || (!((TroopInfo)localObject1).isAdmin())) {
+        break label302;
+      }
+    }
+    label302:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
       {
-        QbSdk.setTbsListener(null);
-        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-        long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-        long l2 = System.currentTimeMillis();
-        long l3 = this.jdField_a_of_type_Long;
-        localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.putInt("tbs_download_count", i + 1);
-        localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-        localEditor.commit();
-        bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_download_error", 0, 1, paramInt, "", "", "", "");
         if (QLog.isColorLevel()) {
-          QLog.d("TBS_update", 2, "tbs download aborted:" + paramInt);
+          QLog.i("TroopManagerAction", 2, "gotoGroupManager not admin " + str);
         }
+        return false;
       }
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_complete", paramInt);
-      localEditor.remove("tbs_downloading");
-      localEditor.remove("tbs_download_progress");
-      localEditor.commit();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean) {
-        BrowserAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_AndroidContentIntent);
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((Intent)localObject1).putExtra("troop_uin", str);
+      ((Intent)localObject1).putExtra("key_is_update_before_805", TroopUtils.isUpdateBeforeSomeVersion(this.jdField_a_of_type_AndroidContentContext, "8.0.5"));
+      ((Intent)localObject1).putExtra("troop_manage_from_jump_action", true);
+      ((Intent)localObject1).putExtra("key_is_need_update_Group_info", true);
+      Object localObject2 = new bkxl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+      if (localPluginCommunicationHandler != null) {
+        localPluginCommunicationHandler.register((RemoteCommand)localObject2);
       }
+      localObject2 = TroopBaseProxyActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, (Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject1, (Dialog)localObject2, "com.tencent.mobileqq.activity.TroopManageActivity", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopManagerAction", 2, "gotoGroupManager " + str);
+      }
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopManagerAction", 2, "gotoGroupManager context not activity");
+      }
+      return false;
     }
-    do
-    {
-      return;
-      bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_download_ok", 0, 1, paramInt, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("TBS_update", 2, "tbs download finished");
   }
   
-  public void onDownloadProgress(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TBS_update", 2, "tbs download progress " + paramInt);
-    }
-  }
-  
-  public void onInstallFinish(int paramInt)
-  {
-    QLog.d("TBS_update", 1, "tbs download install finish result=" + paramInt);
-    if (paramInt == 200) {
-      return;
-    }
-    int i;
-    long l1;
-    long l2;
-    long l3;
-    SharedPreferences.Editor localEditor;
-    if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    try
     {
-      QbSdk.setTbsListener(null);
-      if ((paramInt == 232) || (paramInt == 220)) {
-        break label280;
-      }
-      i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-      l2 = System.currentTimeMillis();
-      l3 = this.jdField_a_of_type_Long;
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_count", i + 1);
-      localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-      localEditor.commit();
-      bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_install_error", 0, 1, paramInt, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs install error:" + paramInt);
-      }
+      boolean bool = C();
+      return bool;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_complete", paramInt);
-      localEditor.remove("tbs_downloading");
-      localEditor.remove("tbs_download_progress");
-      localEditor.commit();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean) {
-        break;
-      }
-      BrowserAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_AndroidContentIntent);
-      return;
-      label280:
-      i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-      l2 = System.currentTimeMillis();
-      l3 = this.jdField_a_of_type_Long;
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.remove("tbs_download_count");
-      localEditor.remove("tbs_download_cost");
-      localEditor.commit();
-      bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_install_ok", 0, 1, paramInt, Long.toString(l1 + (l2 - l3)), Integer.toString(i + 1), "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs install finished:" + paramInt);
-      }
-      WebpSoLoader.a(false);
+      QLog.e("TroopManagerAction", 1, "doAction error: " + localException.getMessage());
+      a("TroopManagerAction");
     }
+    return false;
   }
 }
 

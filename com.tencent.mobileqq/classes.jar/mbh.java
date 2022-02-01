@@ -1,66 +1,40 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class mbh
+  extends mbm
 {
-  public static String a;
-  private static mbh jdField_a_of_type_Mbh;
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  static
+  public mbh(AVActivity paramAVActivity, Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "AIOTopRightButtonConfig";
+    super(paramContext, paramInt);
   }
   
-  public static mbh a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    try
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
     {
-      if (jdField_a_of_type_Mbh == null) {
-        jdField_a_of_type_Mbh = new mbh();
-      }
-      return jdField_a_of_type_Mbh;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Int = 1;
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      return;
-      paramString = finally;
-      throw paramString;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
+      if (AudioHelper.e())
       {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
+        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
       }
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_Int == -1) {
-      a(lbx.b(192).jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
+      return;
     }
-    return this.jdField_a_of_type_Int == 1;
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
   }
 }
 

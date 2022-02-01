@@ -1,50 +1,64 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class abfb
 {
-  public abfb(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  public int a;
+  public FrameLayout a;
+  public GameCenterVideoViewController a;
+  public String a;
+  public Map<Integer, View> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public abfb(GameCenterVideoViewController paramGameCenterVideoViewController, FrameLayout paramFrameLayout, Map<Integer, View> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respRecommend", new String[] { localJSONObject.toString() });
-      bhpc.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, anzj.a(2131706321));
-      return;
+      localJSONObject.put("id", this.jdField_a_of_type_Int);
+      localJSONObject.put("x", this.jdField_c_of_type_Int);
+      localJSONObject.put("y", this.jdField_b_of_type_Int);
+      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("streamType", this.d);
+      localJSONObject.put("protocol", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("mute", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getOutputMute());
+      localJSONObject.put("total", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getDuration());
+      localJSONObject.put("current", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getCurrentPostion());
+      localJSONObject.put("autoPlay", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
+      return localJSONObject.toString();
     }
-    catch (Exception localException)
+    catch (JSONException localJSONException)
     {
       for (;;)
       {
-        QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
+        localJSONException.printStackTrace();
       }
-    }
-  }
-  
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
     }
   }
 }

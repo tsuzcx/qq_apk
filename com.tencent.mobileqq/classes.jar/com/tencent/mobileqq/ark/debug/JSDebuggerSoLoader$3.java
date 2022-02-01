@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ark.debug;
 
 import android.text.TextUtils;
-import aqed;
+import aoxo;
 
 public final class JSDebuggerSoLoader$3
   implements Runnable
 {
   public void run()
   {
-    if (aqed.a() == 0)
+    if (aoxo.a() == 0)
     {
-      aqed.a(aqed.a());
-      aqed.a();
-      aqed.a();
+      aoxo.a(aoxo.a());
+      aoxo.a();
+      aoxo.a();
     }
     String str;
     do
@@ -20,16 +20,16 @@ public final class JSDebuggerSoLoader$3
       do
       {
         return;
-        if (aqed.a() == 1)
+        if (aoxo.a() == 1)
         {
-          aqed.a();
+          aoxo.a();
           return;
         }
-      } while (aqed.a() != 2);
-      aqed.a();
-      str = aqed.a();
+      } while (aoxo.a() != 2);
+      aoxo.a();
+      str = aoxo.a();
     } while (TextUtils.isEmpty(str));
-    aqed.a(str, "libarkDebuggerJSImpl.so");
+    aoxo.a(str, "libarkDebuggerJSImpl.so");
   }
 }
 

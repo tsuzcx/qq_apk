@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ansf;
-import anzj;
+import ammw;
+import amtj;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ApolloPanel$CmshowAppController$5
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$5(ansf paramansf) {}
+  public ApolloPanel$CmshowAppController$5(ammw paramammw) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getContext(), 1, anzj.a(2131699395), 0).b(0);
-    ansf.b(this.a);
+    QQToast.a(this.a.a.getContext(), 1, amtj.a(2131699630), 0).b(0);
+    ammw.b(this.a);
   }
 }
 

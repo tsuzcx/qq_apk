@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class adwq
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public adwq(AuthDevActivity paramAuthDevActivity) {}
+  public adwq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
-      AuthDevActivity.a(this.a, null);
-    }
+    ProfileLabelEditorActivity.a(this.a);
   }
 }
 

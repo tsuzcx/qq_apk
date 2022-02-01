@@ -1,35 +1,15 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import mqq.app.AppRuntime;
+import android.view.animation.Animation;
 
-public class omh
+class omh
+  extends bjmc
 {
-  private View a;
+  omh(omf paramomf, View paramView) {}
   
-  public omh(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ozs.a() != null)
-    {
-      paramArkAppMessage = ozs.a().getApplication();
-      if (paramArkAppMessage != null) {}
-    }
-    else
-    {
-      return;
-    }
-    this.a = new View(paramArkAppMessage);
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a() {}
-  
-  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

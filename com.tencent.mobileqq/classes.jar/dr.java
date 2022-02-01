@@ -97,57 +97,57 @@ public class dr
   {
     if (paramDataLineMsgRecord.strMoloKey != null)
     {
-      anvu localanvu = (anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+      amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
       if ((!paramDataLineMsgRecord.bIsApkFile) || (paramDataLineMsgRecord.nAppStatus == 1))
       {
-        int i = localanvu.a(paramDataLineMsgRecord.strMoloKey);
+        int i = localamqd.a(paramDataLineMsgRecord.strMoloKey);
         if (i == 2) {
-          auna.a(2131692472);
+          aszk.a(2131692520);
         }
         while (i == 0) {
           return;
         }
-        auna.a(2131693315);
+        aszk.a(2131693410);
         return;
       }
-      localanvu.b(paramDataLineMsgRecord.strMoloKey);
+      localamqd.b(paramDataLineMsgRecord.strMoloKey);
       return;
     }
     paramDataLineMsgRecord = paramDataLineMsgRecord.path;
-    aunj.a(this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity, paramDataLineMsgRecord);
+    aszt.a(this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity, paramDataLineMsgRecord);
   }
   
   private void a(dv paramdv, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    anvu localanvu = (anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
     if (paramDataLineMsgRecord.strMoloKey != null) {
-      localanvu.b(111);
+      localamqd.b(111);
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(paramDataLineMsgRecord.sessionid));
-    if (localanvu.a(localArrayList))
+    if (localamqd.a(localArrayList))
     {
       paramdv.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_Int = 3;
       paramDataLineMsgRecord.fileMsgStatus = 0L;
       int i = DataLineMsgRecord.getDevTypeBySeId(paramDataLineMsgRecord.sessionid);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).c(paramDataLineMsgRecord.msgId);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getDatalineMessageManager(i).c(paramDataLineMsgRecord.msgId);
       paramDataLineMsgRecord.issuc = true;
       return;
     }
-    auna.a(2131693372);
+    aszk.a(2131693467);
   }
   
   private void b(dv paramdv, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    anvu localanvu = (anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
     if (paramdv.jdField_a_of_type_Int == 0) {
-      localanvu.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 1, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
+      localamqd.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 1, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
     }
     for (;;)
     {
       paramdv.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_Int = 0;
       return;
-      localanvu.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
+      localamqd.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
     }
   }
   
@@ -179,11 +179,11 @@ public class dr
         if (paramFloat < ((DataLineMsgRecord)localObject).progress) {
           f = ((DataLineMsgRecord)localObject).progress;
         }
-        localObject = (ProgressBar)paramListView.findViewById(2131366616);
+        localObject = (ProgressBar)paramListView.findViewById(2131366643);
         if (localObject != null) {
           ((ProgressBar)localObject).setProgress((int)(f * 100.0F));
         }
-        paramListView = (TextView)paramListView.findViewById(2131366645);
+        paramListView = (TextView)paramListView.findViewById(2131366672);
         if (paramListView == null) {
           break;
         }
@@ -231,12 +231,12 @@ public class dr
     {
       i = 1;
       if (i != 0) {
-        break label926;
+        break label927;
       }
     }
-    label647:
-    label785:
-    label926:
+    label648:
+    label786:
+    label927:
     for (Object localObject = (DataLineMsgRecord)getItem(paramInt);; localObject = null)
     {
       dv localdv;
@@ -247,18 +247,18 @@ public class dr
         localdv = new dv(this);
         if (i != 0)
         {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559039, null);
-          localdv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366102));
-          localdv.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = ((WaitTextView)paramView.findViewById(2131366104));
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559047, null);
+          localdv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366131));
+          localdv.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = ((WaitTextView)paramView.findViewById(2131366133));
           paramView.setTag(localdv);
           localView = paramView;
           paramView = localdv;
           label101:
           if (i == 0) {
-            break label551;
+            break label552;
           }
           if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getComeCount() != this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount()) {
-            break label360;
+            break label361;
           }
           localView.setVisibility(4);
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.b();
@@ -270,17 +270,17 @@ public class dr
         return localView;
         i = 0;
         break;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559038, null);
-        localdv.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366631));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559046, null);
+        localdv.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366658));
         localdv.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
         localdv.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localdv);
-        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366605));
-        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844229);
+        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366632));
+        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844114);
         localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localdv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366640));
-        localdv.b = ((TextView)paramView.findViewById(2131366644));
-        localdv.c = ((TextView)paramView.findViewById(2131366645));
-        localdv.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366616));
+        localdv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366667));
+        localdv.b = ((TextView)paramView.findViewById(2131366671));
+        localdv.c = ((TextView)paramView.findViewById(2131366672));
+        localdv.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366643));
         localdv.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131361937));
         localdv.jdField_a_of_type_AndroidWidgetButton.setTag(localdv);
         localdv.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -289,7 +289,7 @@ public class dr
         localView = paramView;
         paramView = localdv;
         break label101;
-        label360:
+        label361:
         int j;
         if (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isTimeOut())
         {
@@ -297,7 +297,7 @@ public class dr
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setVisibility(0);
           i = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getComeCount();
           j = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount();
-          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693363), new Object[] { Integer.valueOf(j - i) });
+          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693458), new Object[] { Integer.valueOf(j - i) });
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setWaitText((String)localObject);
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.a();
         }
@@ -308,59 +308,59 @@ public class dr
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setVisibility(0);
           i = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getComeCount();
           j = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount();
-          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693361), new Object[] { Integer.valueOf(i), Integer.valueOf(j - i) });
+          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693456), new Object[] { Integer.valueOf(i), Integer.valueOf(j - i) });
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setWaitText((String)localObject);
           continue;
-          label551:
+          label552:
           if (localObject != null) {
-            break label575;
+            break label576;
           }
           paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
           paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
         }
       }
-      label575:
+      label576:
       paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       paramView.jdField_a_of_type_ComDatalineUtilFileDLFileInfo = a((DataLineMsgRecord)localObject);
       paramView.jdField_a_of_type_Int = ((DataLineMsgRecord)localObject).msgtype;
       if ((((DataLineMsgRecord)localObject).strMoloKey != null) && (((DataLineMsgRecord)localObject).bIsApkFile))
       {
-        paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844229);
+        paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844114);
         paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(((DataLineMsgRecord)localObject).strMoloIconUrl);
         paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((DataLineMsgRecord)localObject).filename);
         paramView.b.setText(fd.a(((DataLineMsgRecord)localObject).filesize));
         if ((((DataLineMsgRecord)localObject).progress != 1.0F) && (((DataLineMsgRecord)localObject).issuc) && (((DataLineMsgRecord)localObject).fileMsgStatus != 1L) && (((DataLineMsgRecord)localObject).fileMsgStatus != 2L)) {
-          break label846;
+          break label847;
         }
         paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
         paramView.c.setVisibility(4);
         if ((((DataLineMsgRecord)localObject).issuc) && (((DataLineMsgRecord)localObject).fileMsgStatus != 1L) && (((DataLineMsgRecord)localObject).fileMsgStatus != 2L)) {
-          break label785;
+          break label786;
         }
-        paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693373);
+        paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693468);
       }
       for (;;)
       {
         break;
-        aunj.a(paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView, (DataLineMsgRecord)localObject);
-        break label647;
+        aszt.a(paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView, (DataLineMsgRecord)localObject);
+        break label648;
         if (((DataLineMsgRecord)localObject).progress == 1.0F) {
           if ((((DataLineMsgRecord)localObject).strMoloKey == null) || (!((DataLineMsgRecord)localObject).bIsApkFile) || (((DataLineMsgRecord)localObject).nAppStatus == 1))
           {
-            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693360);
+            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693455);
           }
           else
           {
-            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693342);
+            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693437);
             continue;
-            label846:
+            label847:
             paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
             paramView.c.setVisibility(0);
             i = (int)(((DataLineMsgRecord)localObject).progress * 100.0F);
             paramView.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
             paramView.c.setText(String.valueOf(i) + "%");
-            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693364);
+            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693459);
           }
         }
       }

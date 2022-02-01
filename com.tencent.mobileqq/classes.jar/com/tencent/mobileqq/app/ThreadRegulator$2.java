@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aoio;
+import anbz;
 
 class ThreadRegulator$2
   implements Runnable
@@ -10,13 +10,13 @@ class ThreadRegulator$2
   public void run()
   {
     if (ThreadRegulator.a(this.this$0) == null) {}
-    aoio localaoio;
+    anbz localanbz;
     do
     {
       return;
-      localaoio = ThreadRegulator.a(this.this$0);
+      localanbz = ThreadRegulator.a(this.this$0);
       ThreadRegulator.a(this.this$0, null);
-    } while (localaoio == null);
+    } while (localanbz == null);
   }
 }
 

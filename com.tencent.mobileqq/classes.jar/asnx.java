@@ -1,25 +1,18 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
 
-class asnx
-  implements blih
+public abstract interface asnx
 {
-  asnx(asnw paramasnw) {}
+  public abstract void a();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) || (paramInt == 2)) {
-      AbstractGifImage.resumeAll();
-    }
-    for (;;)
-    {
-      this.a.d = paramInt;
-      return;
-      AbstractGifImage.pauseAll();
-    }
-  }
+  public abstract void a(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void a(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
 }
 
 

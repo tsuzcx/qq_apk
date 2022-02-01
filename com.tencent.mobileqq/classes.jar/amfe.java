@@ -1,65 +1,60 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.util.SparseArray;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
 
 class amfe
-  implements Comparator<amfc>
+  implements alqd
 {
-  public int a(amfc paramamfc)
-  {
-    if (paramamfc.jdField_a_of_type_Int != -1) {
-      return paramamfc.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramamfc.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bhlg.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramamfc.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  amfe(amez paramamez, int paramInt, int[] paramArrayOfInt, List paramList, AppInterface paramAppInterface, JSONArray paramJSONArray, String paramString) {}
   
-  public int a(amfc paramamfc1, amfc paramamfc2)
+  public void a(boolean paramBoolean, alqc paramalqc)
   {
-    return a(paramamfc1) - a(paramamfc2);
+    amez.a(this.jdField_a_of_type_Amez).remove(this.jdField_a_of_type_Int);
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc onCheckFinish success:" + paramBoolean);
+    if (paramBoolean)
+    {
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      {
+        paramalqc = alpu.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+        if (paramalqc != null) {
+          this.jdField_a_of_type_JavaUtilList.add(paramalqc);
+        }
+        i += 1;
+      }
+      alpw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new amff(this), this.jdField_a_of_type_JavaUtilList, false, null);
+      return;
+    }
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      paramalqc = alpu.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramalqc != null)
+      {
+        amez localamez = this.jdField_a_of_type_Amez;
+        int k = paramalqc.b;
+        if (paramalqc.a())
+        {
+          j = 0;
+          label167:
+          paramalqc = amez.a(localamez, 8, String.valueOf(k), j);
+          this.jdField_a_of_type_OrgJsonJSONArray.put(paramalqc);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label167;
+        paramalqc = amez.a(this.jdField_a_of_type_Amez, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(paramalqc);
+      }
+    }
+    this.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, amtj.a(2131699649), this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

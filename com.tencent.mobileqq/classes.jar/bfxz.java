@@ -1,73 +1,62 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.os.Build;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bfxz
-  extends aavr
+  implements SensorEventListener
 {
   bfxz(bfxy parambfxy) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent arg1)
   {
-    bfxy.a(this.a, null);
-    if (bfxy.a(this.a))
-    {
-      bfvr.b("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult.but stoped");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
+    }
+    if (bfxy.a(this.a) == null) {
       return;
     }
-    if ((paramUploadFileRspBody == null) || (!paramBoolean))
+    if (AIOUtils.isRubbishSamsun())
     {
-      bfvr.a("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult isSuccess:false  errCode:" + paramInt);
-      bfxy.a(this.a, bguk.A);
+      this.a.a = false;
+      return;
+    }
+    if (???.values[0] < bfxy.a(this.a)) {
       bfxy.a(this.a, true);
+    }
+    for (;;)
+    {
+      ??? = Build.MODEL;
+      if (!AIOUtils.isSamsungPhone()) {
+        break;
+      }
+      if (bfxy.a(this.a).hasMessages(1)) {
+        bfxy.a(this.a).removeMessages(1);
+      }
+      bfxy.a(this.a).sendMessageDelayed(bfxy.a(this.a).obtainMessage(1), 150L);
+      return;
+      bfxy.a(this.a, false);
+    }
+    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
+    {
+      if (bfxy.a(this.a).hasMessages(1)) {
+        bfxy.a(this.a).removeMessages(1);
+      }
+      bfxy.a(this.a).sendMessageDelayed(bfxy.a(this.a).obtainMessage(1), 250L);
       return;
     }
-    int i = paramUploadFileRspBody.int32_ret_code.get();
-    bfvr.c("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
+    synchronized (this.a)
     {
-      bfxy.a(this.a, false);
-      paramInt = 207;
-      switch (i)
-      {
+      if (bfxy.a(this.a) != null) {
+        bfxy.a(this.a).a(bfxy.a(this.a));
       }
-      for (;;)
-      {
-        bfxy.a(this.a, paramInt);
-        return;
-        paramInt = 202;
-        continue;
-        paramInt = 208;
-        continue;
-        paramInt = 210;
-        continue;
-        if (bfxy.a(this.a) != 104)
-        {
-          bfxy.a(this.a, 104);
-          bfxy.a(this.a);
-          return;
-          paramInt = 209;
-          continue;
-          paramInt = -136;
-          continue;
-          paramInt = -138;
-          continue;
-          bfxy.a(this.a, paramUploadFileRspBody.str_client_wording.get());
-          paramInt = 704;
-        }
-      }
+      return;
     }
-    bfxy.b(this.a, paramUploadFileRspBody.str_file_id.get());
-    bfxy.c(this.a, paramUploadFileRspBody.str_upload_ip.get());
-    bfxy.d(this.a, paramUploadFileRspBody.str_server_dns.get());
-    bfxy.a(this.a, paramUploadFileRspBody.bytes_check_key.get().toByteArray());
-    bfxy.a(this.a, paramUploadFileRspBody.uint32_bus_id.get());
-    bfvr.c("TroopFileUploadSimpleWorker", bfvr.a, "[" + bfxy.a(this.a) + "] onReqUploadFileResult fileid:" + bfxy.b(this.a) + " UploadIp:" + bfxy.c(this.a) + " ServerDns:" + bfxy.d(this.a) + " busId:" + bfxy.a(this.a));
-    this.a.a(false);
   }
 }
 

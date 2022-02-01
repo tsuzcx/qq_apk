@@ -1,9 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-
 public abstract interface rlp
-{
-  public abstract void a(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment);
-}
+  extends pxg
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

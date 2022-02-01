@@ -28,8 +28,8 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131371077));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131371076));
+    this.mModuleText = ((TextView)paramView.findViewById(2131371045));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131371044));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)

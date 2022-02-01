@@ -1,9 +1,29 @@
-import cooperation.qzone.QzoneExternalRequest;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-public abstract class bmsy
-  extends QzoneExternalRequest
+class bmsy
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  bmsy(bmsw parambmsw) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a(false);
+    if ((this.a.jdField_a_of_type_Blhu instanceof blht)) {
+      ((blht)this.a.jdField_a_of_type_Blhu).a(false);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().onBackPressed();
+      babk.e();
+      babc.b();
+      return;
+      Log.e("SegmentMode", "mCameraCaptureUnit should implement ISegmentVideoController!");
+    }
+  }
 }
 
 

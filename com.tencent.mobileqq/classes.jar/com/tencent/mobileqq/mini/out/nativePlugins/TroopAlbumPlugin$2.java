@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bngj;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import cooperation.qzone.remote.logic.WebEventListener;
 
 class TroopAlbumPlugin$2
-  implements bngj
+  implements WebEventListener
 {
   TroopAlbumPlugin$2(TroopAlbumPlugin paramTroopAlbumPlugin, String paramString, NativePlugin.JSContext paramJSContext) {}
   

@@ -17,6 +17,7 @@ public abstract interface AttrContants$Name
   public static final String INPUT_TYPE = "type";
   public static final String INPUT_VALUE = "value";
   public static final String INSET = "inset";
+  public static final String INTERRUPT_ENABLE = "interruptEnable";
   public static final String ITEM_SPACING = "itemSpacing";
   public static final String LINE_SPACING = "lineSpacing";
   public static final String LIST_APPEAR_SCOPE_BOTTOM = "appearScopeBottom";

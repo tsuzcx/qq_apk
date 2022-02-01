@@ -58,8 +58,7 @@
                                             "value":"228"
                                             },
                                             "attributes":{
-                                            "setFrameString:":"-1",
-                                            "setText:lineSpace:":["","2"],
+                                            "setText:lineSpace:":["-1","2"],
                                             "setTextColorString:":"#000000",
                                             "setFontSizeString:":"17",
                                             "setNumberOfLinesString:":"2"
@@ -96,7 +95,6 @@
                                                         "value":"124"
                                                         },
                                                         "attributes":{
-                                                        "setFrameString:":"-1",
                                                         "setImageWithURLString:lineup:":["-1","-1"]
                                                         }
                                                         },
@@ -172,7 +170,6 @@
                                             "type":"wrap_content"
                                             },
                                             "attributes":{
-                                            "setFrameString:":"-1",
                                             "setText:":"-1",
                                             "setTextColorString:":"#8e8e8e",
                                             "setFontSizeString:":"12",

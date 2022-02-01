@@ -1,38 +1,25 @@
-public abstract interface nah
+import android.os.CountDownTimer;
+import android.os.SystemClock;
+
+class nah
+  extends CountDownTimer
 {
-  public abstract void a(long paramLong, int paramInt, String paramString1, String paramString2);
+  nah(nag paramnag, long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  {
+    super(paramLong1, paramLong2);
+  }
   
-  public abstract void a(long paramLong, String paramString1, String paramString2);
+  public void onFinish()
+  {
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    nag.a(this.jdField_a_of_type_Nag, this.jdField_a_of_type_Int - i);
+  }
   
-  public abstract void a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(mze parammze, String paramString);
-  
-  public abstract void a(mze parammze, boolean paramBoolean);
-  
-  public abstract void b(long paramLong, String paramString1, String paramString2);
-  
-  public abstract void b(mze parammze, int paramInt);
-  
-  public abstract void c(String paramString, mze parammze);
-  
-  public abstract void c(mze parammze);
-  
-  public abstract void d(String paramString, mze parammze);
-  
-  public abstract void d(mze parammze);
-  
-  public abstract void e(mze parammze);
-  
-  public abstract void f(mze parammze);
-  
-  public abstract void g(mze parammze);
-  
-  public abstract void h(mze parammze);
+  public void onTick(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nah
  * JD-Core Version:    0.7.0.1
  */

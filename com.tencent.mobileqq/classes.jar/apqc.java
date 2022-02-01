@@ -1,28 +1,20 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+
 public class apqc
+  implements TextWatcher
 {
-  public int a;
-  public long a;
-  public beum a;
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "";
+  public apqc(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public apqc()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a.a = true;
   }
   
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

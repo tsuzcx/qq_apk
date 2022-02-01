@@ -1,18 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class bmpg
-  extends BroadcastReceiver
+public abstract interface bmpg
 {
-  private bmpg(bmpb parambmpb) {}
+  public abstract void a(float paramFloat, boolean paramBoolean);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("cooperation.qqreader.start_reader_act_completed".equals(paramIntent.getAction())) {
-      bmpb.b(this.a);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

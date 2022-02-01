@@ -1,67 +1,41 @@
-import android.animation.Animator.AnimatorListener;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xpf
+  extends xpg<TagFeedItem>
 {
-  public static void a(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
+  public xpf(@NonNull TagFeedItem paramTagFeedItem)
   {
-    yuk.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation");
-    View localView = paramViewGroup.findViewById(2131376925);
-    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131362688);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131381045);
-    Drawable localDrawable = paramAnimationParam.a();
-    ImageView localImageView1 = null;
-    if (localDrawable != null)
-    {
-      localImageView1 = new ImageView(paramViewGroup.getContext());
-      localViewGroup.addView(localImageView1, new RelativeLayout.LayoutParams(-1, -1));
-      localImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localImageView1.setImageDrawable(localDrawable);
-    }
-    int i = localView.getMeasuredWidth();
-    int j = localView.getMeasuredHeight();
-    float f1 = paramAnimationParam.c * 1.0F / i;
-    float f2 = paramAnimationParam.d * 1.0F / j;
-    paramViewGroup = new ValueAnimator();
-    paramViewGroup.setInterpolator(new DecelerateInterpolator());
-    paramViewGroup.setDuration(250L);
-    paramViewGroup.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, f1 }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, f2 }), PropertyValuesHolder.ofInt("width", new int[] { i, paramAnimationParam.c }), PropertyValuesHolder.ofInt("height", new int[] { j, paramAnimationParam.d }), PropertyValuesHolder.ofFloat("translateX", new float[] { 0.0F, paramAnimationParam.a }), PropertyValuesHolder.ofFloat("translateY", new float[] { 0.0F, paramAnimationParam.b }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 1.0F, 0.0F }) });
-    paramViewGroup.addUpdateListener(new xpg(localViewGroup, localDrawable, localImageView1, localImageView2));
-    paramViewGroup.addListener(new xph(paramAnimatorListener));
-    paramViewGroup.start();
+    super(paramTagFeedItem);
   }
   
-  public static void b(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    yuk.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation");
-    Object localObject = paramViewGroup.findViewById(2131376925);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362688);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131381045);
-    paramViewGroup = new ImageView(paramViewGroup.getContext());
-    localViewGroup.addView(paramViewGroup, 0, new RelativeLayout.LayoutParams(-1, -1));
-    paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramViewGroup.setImageDrawable(paramAnimationParam.a());
-    int i = ((View)localObject).getMeasuredWidth();
-    int j = ((View)localObject).getMeasuredHeight();
-    float f1 = paramAnimationParam.c * 1.0F / i;
-    float f2 = paramAnimationParam.d * 1.0F / j;
-    localObject = new ValueAnimator();
-    ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
-    ((ValueAnimator)localObject).setDuration(250L);
-    ((ValueAnimator)localObject).setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { f1, 1.0F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { f2, 1.0F }), PropertyValuesHolder.ofInt("width", new int[] { paramAnimationParam.c, i }), PropertyValuesHolder.ofInt("height", new int[] { paramAnimationParam.d, j }), PropertyValuesHolder.ofFloat("translateX", new float[] { paramAnimationParam.a, 0.0F }), PropertyValuesHolder.ofFloat("translateY", new float[] { paramAnimationParam.b, 0.0F }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 0.0F, 1.0F }) });
-    ((ValueAnimator)localObject).addUpdateListener(new xpi(localViewGroup, paramViewGroup, localImageView));
-    ((ValueAnimator)localObject).addListener(new xpj(paramAnimatorListener, localViewGroup, paramViewGroup));
-    ((ValueAnimator)localObject).start();
+    Object localObject = (qqstory_struct.TagFeed)paramStoryFeed.tag_feed.get();
+    ((TagFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
+    ((TagFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.TagFeed)localObject).video_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      qqstory_struct.TagVideoInfo localTagVideoInfo = (qqstory_struct.TagVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localTagVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
+    }
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 

@@ -1,79 +1,95 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QVipWatchWordConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aqik
-  implements View.OnTouchListener
+  extends aqgc<QVipWatchWordConfig>
 {
-  public aqik(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static QVipWatchWordConfig a()
   {
-    boolean bool = true;
-    if (!this.a.jdField_c_of_type_Boolean) {
-      bool = false;
-    }
-    do
+    return (QVipWatchWordConfig)apub.a().a(648);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    Object localObject = a();
+    boolean bool1 = bool2;
+    int i;
+    if (localObject != null)
     {
-      return bool;
-      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
-      switch (paramMotionEvent.getAction())
+      bool1 = bool2;
+      if (((QVipWatchWordConfig)localObject).isEnable())
       {
-      case 2: 
-      default: 
-        return false;
-      case 0: 
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.d.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
-        this.a.e.setVisibility(4);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
-        if (this.a.jdField_b_of_type_Int == 1) {}
-        for (int i = 0;; i = 1)
-        {
-          bdll.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
-          return true;
+        if (QLog.isColorLevel()) {
+          QLog.d("QVipWatchWordProcessor", 2, "isShowWatchWord:" + paramString + " configUrl:" + ((QVipWatchWordConfig)localObject).getWatchUrl() + " configPattern:" + ((QVipWatchWordConfig)localObject).getPattern());
+        }
+        localObject = ((QVipWatchWordConfig)localObject).getWatchUrl();
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < ((ArrayList)localObject).size())
+      {
+        if (paramString.contains((CharSequence)((ArrayList)localObject).get(i))) {
+          bool1 = true;
         }
       }
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
-        break;
+      else {
+        return bool1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
-    return true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+      i += 1;
     }
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
+  }
+  
+  @NonNull
+  public QVipWatchWordConfig a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    QVipWatchWordConfig localQVipWatchWordConfig = null;
+    String str = paramArrayOfaptx[0].a;
+    paramArrayOfaptx = localQVipWatchWordConfig;
+    if (!TextUtils.isEmpty(str))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
-      DynamicAvatarRecordActivity.a(this.a);
-      return true;
+      localQVipWatchWordConfig = (QVipWatchWordConfig)ausy.a(str, QVipWatchWordConfig.class);
+      paramArrayOfaptx = localQVipWatchWordConfig;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QVipWatchWordProcessor", 2, "content:" + str + " config:" + localQVipWatchWordConfig.toString());
+        paramArrayOfaptx = localQVipWatchWordConfig;
+      }
     }
-    DynamicAvatarRecordActivity.b(this.a);
-    return true;
+    return paramArrayOfaptx;
+  }
+  
+  @NonNull
+  public QVipWatchWordConfig b()
+  {
+    return new QVipWatchWordConfig();
+  }
+  
+  @NonNull
+  public QVipWatchWordConfig c()
+  {
+    return new QVipWatchWordConfig();
+  }
+  
+  public Class<QVipWatchWordConfig> clazz()
+  {
+    return QVipWatchWordConfig.class;
+  }
+  
+  public int type()
+  {
+    return 648;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqik
  * JD-Core Version:    0.7.0.1
  */

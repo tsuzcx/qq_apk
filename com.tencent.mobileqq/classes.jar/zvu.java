@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class zvu
-  implements DialogInterface.OnDismissListener
+class zvu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zvu(QRCardActivity paramQRCardActivity) {}
+  zvu(zvt paramzvt, zwc paramzwc, View paramView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.c = false;
+    this.jdField_a_of_type_Zwc.a(this.jdField_a_of_type_AndroidViewView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

@@ -1,13 +1,19 @@
+import Wallet.ReportHBGameRsp;
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class akgg
-  implements bjbn
+final class akgg
+  implements BusinessObserver
 {
-  akgg(akgf paramakgf) {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
+    }
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
+  }
 }
 
 

@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
-class bnru
-  implements DialogInterface.OnDismissListener
+public class bnru
+  extends RecyclerView.ViewHolder
 {
-  bnru(bnrt parambnrt, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RoundCornerImageView a;
+  public boolean a;
+  public RelativeLayout b;
+  public TextView b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bnru(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377568));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131377564));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363360));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377565));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377567));
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377566));
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 

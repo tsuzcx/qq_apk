@@ -1,6 +1,21 @@
-public abstract interface awcw
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class awcw
+  extends awca
 {
-  public abstract void a(int paramInt, String paramString);
+  public awcw(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  public void a(awcs paramawcs, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awcd paramawcd)
+  {
+    super.a(paramawcs, paramHashMap, paramawcd);
+    paramawcd.a(0, 4, paramawcs);
+  }
 }
 
 

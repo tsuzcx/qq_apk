@@ -99,7 +99,7 @@ public class ApkgManager
     {
       return;
       MiniReportManager.reportEventType(paramMiniAppInfo, 619, "0");
-      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString2, null, str, 60, new ApkgManager.2(this, paramOnGetApkgInfoListener, paramString1, str, paramMiniAppInfo, paramString3, paramString4, l));
+      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString2, null, str, 60, new ApkgManager.2(this, paramOnGetApkgInfoListener, paramMiniAppInfo, paramString2, paramString1, str, paramString3, paramString4, l));
     } while (!paramBoolean);
     deleteOldPkg(paramMiniAppInfo, paramString1);
   }
@@ -259,49 +259,65 @@ public class ApkgManager
   
   private void handleApkgDownloadSuccess(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo, String paramString3, String paramString4, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener)
   {
-    Object localObject = null;
-    MiniReportManager.reportEventType(paramMiniAppInfo, 621, "0");
     MiniAppStartState.setApkgDownload(paramMiniAppInfo.appId, false);
-    boolean bool = WxapkgUnpacker.unpackSync(new File(paramString1).getAbsolutePath(), paramString2);
+    File localFile = new File(paramString1);
+    boolean bool1 = false;
+    boolean bool2 = paramMiniAppInfo.launchParam.isFlutterMode;
     int i;
-    if (bool)
+    if (paramMiniAppInfo.launchParam.isFlutterMode)
     {
-      i = 0;
-      MiniReportManager.reportEventType(paramMiniAppInfo, 622, null, null, null, i);
-      if (!bool) {
-        break label154;
+      MiniReportManager.reportEventType(paramMiniAppInfo, 621, "0");
+      bool1 = WxapkgUnpacker.unpackSync(localFile.getAbsolutePath(), paramString2);
+      if (bool1)
+      {
+        i = 0;
+        MiniReportManager.reportEventType(paramMiniAppInfo, 622, null, null, null, i);
+        label80:
+        if ((!bool1) && (bool2)) {
+          break label270;
+        }
+        paramString1 = null;
       }
     }
-    label154:
-    while (paramOnGetApkgInfoListener == null) {
-      try
+    try
+    {
+      paramString2 = ApkgInfo.loadApkgInfoFromFolderPath(paramString2, paramString4, paramMiniAppInfo);
+      paramString1 = paramString2;
+    }
+    catch (Throwable paramString2)
+    {
+      do
       {
-        paramString1 = ApkgInfo.loadApkgInfoFromFolderPath(paramString2, paramString4, paramMiniAppInfo);
-        if ((paramString3 != null) && (paramString1 != null))
+        for (;;)
         {
-          downloadSubPack(paramString1, paramMiniAppInfo, paramString3, new ApkgManager.3(this, paramOnGetApkgInfoListener));
-          return;
-          i = 1;
+          QMLog.e("ApkgManager", "exception when loadApkgInfoFromFolderPath.", paramString2);
         }
+      } while (paramOnGetApkgInfoListener == null);
+      if (paramString1 == null) {
+        break label257;
       }
-      catch (Throwable paramString1)
+      paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
+      return;
+      paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 1, "apkginfo is null");
+      return;
+    }
+    if ((paramString3 != null) && (paramString1 != null)) {
+      downloadSubPack(paramString1, paramMiniAppInfo, paramString3, new ApkgManager.3(this, paramOnGetApkgInfoListener));
+    }
+    label257:
+    label270:
+    while (paramOnGetApkgInfoListener == null)
+    {
+      return;
+      i = 1;
+      break;
+      if (!FileUtils.copyFile(paramString1, paramString2 + "/mini" + ".qapkg"))
       {
-        do
-        {
-          for (;;)
-          {
-            QMLog.e("ApkgManager", "exception when loadApkgInfoFromFolderPath.", paramString1);
-            paramString1 = localObject;
-          }
-        } while (paramOnGetApkgInfoListener == null);
-        if (paramString1 != null)
-        {
-          paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
-          return;
-        }
-        paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 1, "apkginfo is null");
+        QMLog.e("ApkgManager", "copyFile to " + paramString1 + paramString2 + "/mini" + ".qapkg" + " err");
         return;
       }
+      FileUtils.deleteFile(paramString1);
+      break label80;
     }
     paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, "解包失败");
   }
@@ -342,27 +358,32 @@ public class ApkgManager
       str1 = paramMiniAppInfo.downloadUrl;
       QMLog.d("ApkgManager", "downloadSubPack | downPage=" + paramString + "; subPackDownloadUrl=" + str1);
       if (!TextUtils.isEmpty(str1)) {
-        break label117;
+        break label130;
       }
       QMLog.e("ApkgManager", "subPackDownloadUrl is null, return.");
       if (paramOnInitApkgListener != null) {
         paramOnInitApkgListener.onInitApkgInfo(1, paramApkgInfo, null);
       }
     }
-    label117:
+    label130:
     do
     {
       return;
+      if (paramApkgInfo == null)
+      {
+        QMLog.e("ApkgManager", "apkgInfo is null");
+        return;
+      }
       this.subRoot = paramApkgInfo.getRootPath(paramString);
       str1 = getSubPkgDownloadUrl(paramMiniAppInfo, this.subRoot);
       break;
       if (!"/__APP__/".equals(paramString)) {
-        break label142;
+        break label155;
       }
     } while (paramOnInitApkgListener == null);
     paramOnInitApkgListener.onInitApkgInfo(0, paramApkgInfo, null);
     return;
-    label142:
+    label155:
     if (!TextUtils.isEmpty(str1))
     {
       String str2 = ApkgManager.RootPath.getAppPkgRoot() + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.version + ".qapkg";
@@ -387,7 +408,7 @@ public class ApkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager
  * JD-Core Version:    0.7.0.1
  */

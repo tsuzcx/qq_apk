@@ -1,8 +1,21 @@
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+
 public class soz
+  extends RecyclerViewWithHeaderFooterFix
 {
-  public int a;
-  public long a;
-  public Long a;
+  public soz(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
+  }
 }
 
 

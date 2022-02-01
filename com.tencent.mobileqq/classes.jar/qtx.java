@@ -1,13 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qtx
-  extends qtl
+public class qtx
+  implements View.OnClickListener
 {
-  qtx(qtw paramqtw) {}
+  public qtx(ComponentComment paramComponentComment, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public Drawable a()
+  public void onClick(View paramView)
   {
-    return a("readinjoy_diandian_icon_foreground");
+    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
+    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,14 @@
-public abstract interface aziy
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+
+public class aziy
+  implements bjog
 {
-  public abstract void a(int paramInt);
+  public aziy(QCallDetailActivity paramQCallDetailActivity) {}
+  
+  public void onDismiss()
+  {
+    bcef.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+  }
 }
 
 

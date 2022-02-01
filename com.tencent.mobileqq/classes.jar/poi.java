@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class poi
-  implements Comparator<AdvertisementInfo>
+public class poi
+  implements View.OnClickListener
 {
-  poi(pog parampog) {}
+  public poi(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
+  public void onClick(View paramView)
   {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
+    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
+      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

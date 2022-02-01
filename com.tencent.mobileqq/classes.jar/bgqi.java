@@ -1,8 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+
 public class bgqi
+  implements DialogInterface.OnDismissListener
 {
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  public bgqi(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    new bdlq(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
+    if (!LiangHaoBuyFragment.a(this.a)) {
+      LiangHaoBuyFragment.b(this.a);
+    }
   }
 }
 

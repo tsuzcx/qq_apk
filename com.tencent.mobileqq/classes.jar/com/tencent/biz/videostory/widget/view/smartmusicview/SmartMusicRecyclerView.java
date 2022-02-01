@@ -1,27 +1,27 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
 import NS_QQ_STORY_META.META.StMusic;
-import abcs;
-import abdc;
-import abdd;
-import abdg;
-import abdh;
-import agej;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.List;
+import zzd;
+import zzn;
+import zzo;
+import zzr;
+import zzs;
 
 public class SmartMusicRecyclerView
   extends RecyclerView
 {
   private int jdField_a_of_type_Int;
-  private abcs jdField_a_of_type_Abcs;
-  private abdc jdField_a_of_type_Abdc;
-  private abdd jdField_a_of_type_Abdd;
-  private abdg jdField_a_of_type_Abdg;
+  private zzd jdField_a_of_type_Zzd;
+  private zzn jdField_a_of_type_Zzn;
+  private zzo jdField_a_of_type_Zzo;
+  private zzr jdField_a_of_type_Zzr;
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
@@ -43,32 +43,32 @@ public class SmartMusicRecyclerView
   
   private void a()
   {
-    this.jdField_a_of_type_Abcs = new abcs(getContext(), agej.a(120.0F, getContext().getResources()));
-    setLayoutManager(this.jdField_a_of_type_Abcs);
-    this.jdField_a_of_type_Abdd = new abdd();
-    setAdapter(this.jdField_a_of_type_Abdd);
-    addOnScrollListener(new abdh(this));
+    this.jdField_a_of_type_Zzd = new zzd(getContext(), AIOUtils.dp2px(120.0F, getContext().getResources()));
+    setLayoutManager(this.jdField_a_of_type_Zzd);
+    this.jdField_a_of_type_Zzo = new zzo();
+    setAdapter(this.jdField_a_of_type_Zzo);
+    addOnScrollListener(new zzs(this));
   }
   
   private void a(RecyclerView paramRecyclerView, int paramInt)
   {
     if (paramInt == 0)
     {
-      if ((this.jdField_a_of_type_Abdg != null) && (this.jdField_a_of_type_Boolean) && (this.b))
+      if ((this.jdField_a_of_type_Zzr != null) && (this.jdField_a_of_type_Boolean) && (this.b))
       {
-        this.jdField_a_of_type_Abdg.a();
-        this.jdField_a_of_type_Abdg.d();
+        this.jdField_a_of_type_Zzr.a();
+        this.jdField_a_of_type_Zzr.d();
       }
       if (!this.jdField_a_of_type_Boolean)
       {
-        int i = this.jdField_a_of_type_Abcs.a() + 1;
+        int i = this.jdField_a_of_type_Zzd.a() + 1;
         paramRecyclerView.smoothScrollToPosition(i);
         b();
-        this.jdField_a_of_type_Abdg = ((abdg)paramRecyclerView.findViewHolderForAdapterPosition(i));
-        if ((this.jdField_a_of_type_Abdc != null) && (this.jdField_a_of_type_Int != i))
+        this.jdField_a_of_type_Zzr = ((zzr)paramRecyclerView.findViewHolderForAdapterPosition(i));
+        if ((this.jdField_a_of_type_Zzn != null) && (this.jdField_a_of_type_Int != i))
         {
           this.jdField_a_of_type_Int = i;
-          this.jdField_a_of_type_Abdc.a(i, this.jdField_a_of_type_Abdg);
+          this.jdField_a_of_type_Zzn.a(i, this.jdField_a_of_type_Zzr);
         }
         this.jdField_a_of_type_Boolean = true;
       }
@@ -82,17 +82,17 @@ public class SmartMusicRecyclerView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Abdg != null)
+    if (this.jdField_a_of_type_Zzr != null)
     {
-      this.jdField_a_of_type_Abdg.a(false);
-      this.jdField_a_of_type_Abdg.b(false);
-      this.jdField_a_of_type_Abdg.b();
+      this.jdField_a_of_type_Zzr.a(false);
+      this.jdField_a_of_type_Zzr.b(false);
+      this.jdField_a_of_type_Zzr.b();
     }
   }
   
-  public abcs a()
+  public zzd a()
   {
-    return this.jdField_a_of_type_Abcs;
+    return this.jdField_a_of_type_Zzd;
   }
   
   public void setHasAutoSet(boolean paramBoolean)
@@ -105,18 +105,18 @@ public class SmartMusicRecyclerView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setListener(abdc paramabdc)
+  public void setListener(zzn paramzzn)
   {
-    this.jdField_a_of_type_Abdc = paramabdc;
-    if (this.jdField_a_of_type_Abdd != null) {
-      this.jdField_a_of_type_Abdd.a(paramabdc);
+    this.jdField_a_of_type_Zzn = paramzzn;
+    if (this.jdField_a_of_type_Zzo != null) {
+      this.jdField_a_of_type_Zzo.a(paramzzn);
     }
   }
   
   public void setMusicData(List<META.StMusic> paramList)
   {
     if (paramList != null) {
-      this.jdField_a_of_type_Abdd.a(paramList);
+      this.jdField_a_of_type_Zzo.a(paramList);
     }
   }
   
@@ -124,7 +124,7 @@ public class SmartMusicRecyclerView
   {
     this.b = paramBoolean;
     a().a(paramBoolean);
-    if (this.jdField_a_of_type_Abdg != null) {
+    if (this.jdField_a_of_type_Zzr != null) {
       if (!paramBoolean) {
         break label55;
       }
@@ -132,8 +132,8 @@ public class SmartMusicRecyclerView
     label55:
     for (float f = a().a();; f = 1.0F)
     {
-      this.jdField_a_of_type_Abdg.itemView.setScaleY(f);
-      this.jdField_a_of_type_Abdg.itemView.setScaleX(f);
+      this.jdField_a_of_type_Zzr.itemView.setScaleY(f);
+      this.jdField_a_of_type_Zzr.itemView.setScaleX(f);
       return;
     }
   }

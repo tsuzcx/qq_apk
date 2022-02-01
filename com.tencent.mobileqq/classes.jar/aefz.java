@@ -1,35 +1,15 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.Switch;
 
 public class aefz
-  implements npn
 {
-  public aefz(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void a() {}
-  
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
-  {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      axfw localaxfw = (axfw)this.a.app.getManager(37);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localaxfw.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
-      }
-      localaxfw.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.i);
-  }
+  public CompoundButton.OnCheckedChangeListener a;
+  public TextView a;
+  public URLImageView a;
+  public Switch a;
+  public String a;
 }
 
 

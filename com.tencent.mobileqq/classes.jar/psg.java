@@ -1,28 +1,33 @@
-import android.os.Bundle;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.ListView;
 
 class psg
-  implements aasd
+  extends AnimatorListenerAdapter
 {
-  psg(psd parampsd, String paramString) {}
+  psg(psf parampsf) {}
   
-  public void callback(Bundle paramBundle)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
-      this.jdField_a_of_type_Psd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
+    super.onAnimationEnd(paramAnimator);
+    psf.a(this.a).setLayerType(0, null);
+    psf.a(this.a).setVisibility(8);
+    psf.a(this.a).setAlpha(1.0F);
+    if (this.a.a() != null) {
+      this.a.i();
     }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Psd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    psf.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

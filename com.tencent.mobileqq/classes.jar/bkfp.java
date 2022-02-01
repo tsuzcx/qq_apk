@@ -1,14 +1,157 @@
-import com.tencent.qg.sdk.QGReporter.QGReporterImpl;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class bkfp
-  implements QGReporter.QGReporterImpl
+  extends RemoteCommand
 {
-  public void reportEvent(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
+  private static Bundle jdField_a_of_type_AndroidOsBundle;
+  boolean jdField_a_of_type_Boolean;
+  
+  public bkfp(String paramString, boolean paramBoolean)
   {
-    if (yuk.a()) {
-      yuk.b("QGReporter", "[tag]%s;[mainAction]%s;[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString5, paramString6, paramString7, paramString8 });
+    super(paramString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static Bundle a(Bundle paramBundle)
+  {
+    try
+    {
+      Bundle localBundle = jdField_a_of_type_AndroidOsBundle;
+      jdField_a_of_type_AndroidOsBundle = paramBundle;
+      return localBundle;
     }
-    bdll.b(null, paramString1, paramString2, "", paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    finally
+    {
+      paramBundle = finally;
+      throw paramBundle;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bkfp("cacomicetinfo", true));
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.addCategory("android.intent.category.LAUNCHER");
+    localIntent.addFlags(268435456);
+    ugf.a(localIntent, paramQQAppInterface, BaseApplication.getContext(), paramString, -1);
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (amxz)paramQQAppInterface.getManager(56);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.b(paramString) != null;
+    }
+    return false;
+  }
+  
+  private Bundle b(Bundle paramBundle)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    String str = paramBundle.getString("cacomicetinfo");
+    if ("Remotecall_getPublicAccountState".equals(str))
+    {
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        boolean bool = a((QQAppInterface)localObject, paramBundle);
+        paramBundle = new Bundle();
+        paramBundle.putBoolean("state", bool);
+        return paramBundle;
+      }
+    }
+    else
+    {
+      if (!"Remotecall_showPublicAccountDetail".equals(str)) {
+        break label123;
+      }
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle)) {
+        a((QQAppInterface)localObject, paramBundle);
+      }
+    }
+    for (;;)
+    {
+      return null;
+      label123:
+      if ("Remotecall_getUserStatus".equals(str))
+      {
+        paramBundle = new Bundle();
+        if (VipUtils.b((QQAppInterface)localObject)) {
+          paramBundle.putInt("userStatus", 3);
+        }
+        for (;;)
+        {
+          return paramBundle;
+          if (VipUtils.c((QQAppInterface)localObject)) {
+            paramBundle.putInt("userStatus", 2);
+          } else {
+            paramBundle.putInt("userStatus", 1);
+          }
+        }
+      }
+      if ("Remotecall_initQbPlugin".equals(str)) {
+        try
+        {
+          QWalletHelper.preloadQWallet((AppInterface)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.i("VipComicRemoteCommand", 2, "preloadQWallet()");
+          }
+          paramBundle = new Bundle();
+          paramBundle.putBoolean("success", true);
+          return paramBundle;
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      } else if ("Remotecall_showComicBar".equals(str))
+      {
+        if (((QQAppInterface)localObject).getHandler(Conversation.class) != null) {
+          a(paramBundle);
+        }
+      }
+      else if (QLog.isColorLevel()) {
+        QLog.d("VipComicRemoteCommand", 2, "onRemoteInvoke unknow invokeCmd");
+      }
+    }
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    paramBundle = b(paramBundle);
+    if (paramOnInvokeFinishLinstener != null) {
+      paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
+    }
+    return paramBundle;
   }
 }
 

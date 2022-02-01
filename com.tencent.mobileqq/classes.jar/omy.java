@@ -1,42 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
 public class omy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public long a;
-  public ArticleInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e;
+  public omy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public omy()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = null;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "";
-    this.d = "";
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    return "BiuInfo{isFromRecommendFeeds=" + this.jdField_a_of_type_Boolean + ", feedsID=" + this.jdField_a_of_type_Long + ", biuComment='" + this.jdField_a_of_type_JavaLangString + '\'' + ", biuMediaUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", articleInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + ", contentSrc=" + this.jdField_a_of_type_Int + ", commentBtnJumpUrl='" + this.c + '\'' + ", commentShareUrl='" + this.d + '\'' + ", cardJumpUrl='" + this.e + '\'' + ", isCardAvailable=" + this.jdField_b_of_type_Int + '}';
+    ReadInJoySettingActivity localReadInJoySettingActivity = this.a;
+    boolean bool;
+    if (!paramBoolean)
+    {
+      bool = true;
+      ReadInJoySettingActivity.a(localReadInJoySettingActivity, bool);
+      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
+        break label87;
+      }
+      if (paramBoolean) {
+        break label74;
+      }
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool = false;
+      break;
+      label74:
+      ReadInJoySettingActivity.a(this.a).show();
+      continue;
+      label87:
+      this.a.c = false;
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.layer;
 
-import bqjh;
+import bnfz;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
 public class FaceLayer$1
   implements Runnable
 {
-  public FaceLayer$1(bqjh parambqjh, ArrayList paramArrayList, JSONArray paramJSONArray, boolean paramBoolean) {}
+  public FaceLayer$1(bnfz parambnfz, ArrayList paramArrayList, JSONArray paramJSONArray, boolean paramBoolean) {}
   
   /* Error */
   public void run()
@@ -19,7 +19,7 @@ public class FaceLayer$1
     //   3: aload_0
     //   4: getfield 18	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   7: invokevirtual 39	java/util/ArrayList:size	()I
-    //   10: if_icmpge +944 -> 954
+    //   10: if_icmpge +930 -> 940
     //   13: aload_0
     //   14: getfield 18	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   17: iload_1
@@ -38,13 +38,13 @@ public class FaceLayer$1
     //   44: aload 10
     //   46: getfield 59	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
     //   49: iconst_1
-    //   50: if_icmpne +296 -> 346
+    //   50: if_icmpne +283 -> 333
     //   53: getstatic 65	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   56: invokevirtual 69	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   59: aload 10
     //   61: getfield 49	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   64: ldc 71
-    //   66: getstatic 76	beyq:a	Landroid/graphics/drawable/Drawable;
+    //   66: getstatic 77	com/tencent/mobileqq/transfile/URLDrawableHelper:TRANSPARENT	Landroid/graphics/drawable/Drawable;
     //   69: iconst_1
     //   70: newarray int
     //   72: dup
@@ -53,472 +53,467 @@ public class FaceLayer$1
     //   76: iastore
     //   77: ldc 71
     //   79: aconst_null
-    //   80: invokestatic 82	com/tencent/mobileqq/vas/VasApngUtil:getApngDrawable	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/drawable/Drawable;[ILjava/lang/String;Landroid/os/Bundle;)Lcom/tencent/image/URLDrawable;
+    //   80: invokestatic 83	com/tencent/mobileqq/vas/VasApngUtil:getApngDrawable	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/drawable/Drawable;[ILjava/lang/String;Landroid/os/Bundle;)Lcom/tencent/image/URLDrawable;
     //   83: astore 7
     //   85: aload 7
-    //   87: ifnull +906 -> 993
+    //   87: ifnull +892 -> 979
     //   90: aload 7
-    //   92: invokevirtual 87	com/tencent/image/URLDrawable:getStatus	()I
+    //   92: invokevirtual 88	com/tencent/image/URLDrawable:getStatus	()I
     //   95: iconst_1
     //   96: if_icmpeq +8 -> 104
     //   99: aload 7
-    //   101: invokevirtual 90	com/tencent/image/URLDrawable:restartDownload	()V
+    //   101: invokevirtual 91	com/tencent/image/URLDrawable:restartDownload	()V
     //   104: aload 7
     //   106: aload_0
-    //   107: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbqjh;
-    //   110: invokestatic 95	bqjh:a	(Lbqjh;)Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView;
-    //   113: invokevirtual 101	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
+    //   107: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbnfz;
+    //   110: invokestatic 96	bnfz:a	(Lbnfz;)Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView;
+    //   113: invokevirtual 102	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   116: aload 7
     //   118: ifnull -81 -> 37
     //   121: aload 10
-    //   123: getfield 104	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   126: getfield 110	android/graphics/RectF:left	F
+    //   123: getfield 105	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
+    //   126: getfield 111	android/graphics/RectF:left	F
     //   129: f2i
     //   130: istore_2
     //   131: aload 10
-    //   133: getfield 104	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   136: getfield 113	android/graphics/RectF:right	F
+    //   133: getfield 105	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
+    //   136: getfield 114	android/graphics/RectF:right	F
     //   139: f2i
     //   140: istore_3
     //   141: aload 7
     //   143: iload_2
     //   144: aload 10
-    //   146: getfield 104	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   149: getfield 116	android/graphics/RectF:top	F
+    //   146: getfield 105	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
+    //   149: getfield 117	android/graphics/RectF:top	F
     //   152: f2i
     //   153: iload_3
     //   154: aload 10
-    //   156: getfield 104	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   159: getfield 119	android/graphics/RectF:bottom	F
+    //   156: getfield 105	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
+    //   159: getfield 120	android/graphics/RectF:bottom	F
     //   162: f2i
-    //   163: invokevirtual 123	android/graphics/drawable/Drawable:setBounds	(IIII)V
+    //   163: invokevirtual 124	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   166: aload 10
-    //   168: getfield 126	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   168: getfield 127	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   171: invokestatic 55	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   174: ifeq +387 -> 561
-    //   177: getstatic 128	bqjh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   180: ldc 130
-    //   182: invokestatic 136	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   185: new 138	bqjp
+    //   174: ifeq +374 -> 548
+    //   177: getstatic 129	bnfz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   180: ldc 131
+    //   182: invokestatic 137	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: new 139	bngh
     //   188: dup
     //   189: aload 10
-    //   191: getfield 141	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   194: getfield 146	android/graphics/PointF:x	F
+    //   191: getfield 142	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
+    //   194: getfield 147	android/graphics/PointF:x	F
     //   197: aload 10
-    //   199: getfield 141	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   202: getfield 149	android/graphics/PointF:y	F
+    //   199: getfield 142	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
+    //   202: getfield 150	android/graphics/PointF:y	F
     //   205: aload 10
-    //   207: getfield 151	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_Float	F
+    //   207: getfield 152	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_Float	F
     //   210: aload 10
-    //   212: getfield 153	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_Float	F
+    //   212: getfield 154	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_Float	F
     //   215: aload 10
-    //   217: getfield 155	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_Float	F
+    //   217: getfield 156	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_Float	F
     //   220: aload 10
-    //   222: getfield 157	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Float	F
+    //   222: getfield 158	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Float	F
     //   225: aload 10
-    //   227: getfield 160	dov/com/qq/im/capture/paster/PasterParcelData:e	F
+    //   227: getfield 161	dov/com/qq/im/capture/paster/PasterParcelData:e	F
     //   230: f2i
     //   231: aload 10
-    //   233: getfield 162	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_Float	F
+    //   233: getfield 163	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_Float	F
     //   236: f2i
-    //   237: invokespecial 165	bqjp:<init>	(FFFFFFII)V
+    //   237: invokespecial 166	bngh:<init>	(FFFFFFII)V
     //   240: astore 8
-    //   242: new 167	bqjl
+    //   242: new 168	bngd
     //   245: dup
     //   246: aload_0
-    //   247: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbqjh;
+    //   247: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbnfz;
     //   250: aload 7
     //   252: aload 8
     //   254: aload 10
-    //   256: getfield 168	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   256: getfield 169	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   259: aload 10
-    //   261: getfield 170	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   261: getfield 171	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   264: aload 10
     //   266: getfield 49	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   269: aload 10
     //   271: getfield 59	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
-    //   274: invokespecial 173	bqjl:<init>	(Lbqjh;Landroid/graphics/drawable/Drawable;Lbqjp;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    //   274: invokespecial 174	bngd:<init>	(Lbnfz;Landroid/graphics/drawable/Drawable;Lbngh;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
     //   277: astore 7
     //   279: aload 7
-    //   281: getfield 176	bqjl:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper	Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;
-    //   284: aload 10
-    //   286: getfield 177	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper	Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;
-    //   289: invokevirtual 183	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:set	(Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;)V
-    //   292: aload 7
-    //   294: iconst_0
-    //   295: putfield 185	bqjl:e	I
-    //   298: aload 7
-    //   300: iconst_1
-    //   301: putfield 187	bqjl:jdField_f_of_type_Int	I
-    //   304: aload_0
-    //   305: getfield 20	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   308: ifnonnull +408 -> 716
-    //   311: aload_0
-    //   312: getfield 22	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_Boolean	Z
-    //   315: ifne +395 -> 710
-    //   318: iconst_1
-    //   319: istore 4
-    //   321: aload 7
-    //   323: iload 4
-    //   325: invokevirtual 190	bqjl:c	(Z)V
-    //   328: aload_0
-    //   329: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbqjh;
-    //   332: getfield 193	bqjh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   335: aload 7
-    //   337: invokeinterface 199 2 0
-    //   342: pop
-    //   343: goto -306 -> 37
-    //   346: aconst_null
-    //   347: astore 8
-    //   349: aconst_null
-    //   350: astore 9
-    //   352: new 201	java/io/BufferedInputStream
-    //   355: dup
-    //   356: new 203	java/io/FileInputStream
-    //   359: dup
-    //   360: aload 10
-    //   362: getfield 49	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   365: invokespecial 206	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   368: invokespecial 209	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   371: astore 7
-    //   373: aload 7
-    //   375: astore 8
-    //   377: new 211	android/graphics/drawable/BitmapDrawable
-    //   380: dup
-    //   381: aconst_null
-    //   382: aload 7
-    //   384: aconst_null
-    //   385: aconst_null
-    //   386: invokestatic 217	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   389: invokespecial 220	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
-    //   392: astore 9
-    //   394: aload 7
-    //   396: ifnull +590 -> 986
-    //   399: aload 7
-    //   401: invokevirtual 223	java/io/BufferedInputStream:close	()V
-    //   404: aload 9
-    //   406: astore 7
-    //   408: goto -292 -> 116
-    //   411: astore 7
-    //   413: aload 7
-    //   415: invokevirtual 226	java/io/IOException:printStackTrace	()V
-    //   418: goto -14 -> 404
-    //   421: astore 7
-    //   423: aload 7
-    //   425: athrow
-    //   426: astore 9
-    //   428: aconst_null
-    //   429: astore 7
-    //   431: aload 7
-    //   433: astore 8
-    //   435: getstatic 128	bqjh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   438: ldc 228
-    //   440: aload 9
-    //   442: invokestatic 231	yuk:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   445: aload 7
-    //   447: ifnull +533 -> 980
+    //   281: iconst_0
+    //   282: putfield 176	bngd:e	I
+    //   285: aload 7
+    //   287: iconst_1
+    //   288: putfield 178	bngd:jdField_f_of_type_Int	I
+    //   291: aload_0
+    //   292: getfield 20	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   295: ifnonnull +408 -> 703
+    //   298: aload_0
+    //   299: getfield 22	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_Boolean	Z
+    //   302: ifne +395 -> 697
+    //   305: iconst_1
+    //   306: istore 4
+    //   308: aload 7
+    //   310: iload 4
+    //   312: invokevirtual 181	bngd:c	(Z)V
+    //   315: aload_0
+    //   316: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbnfz;
+    //   319: getfield 184	bnfz:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   322: aload 7
+    //   324: invokeinterface 190 2 0
+    //   329: pop
+    //   330: goto -293 -> 37
+    //   333: aconst_null
+    //   334: astore 8
+    //   336: aconst_null
+    //   337: astore 9
+    //   339: new 192	java/io/BufferedInputStream
+    //   342: dup
+    //   343: new 194	java/io/FileInputStream
+    //   346: dup
+    //   347: aload 10
+    //   349: getfield 49	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   352: invokespecial 197	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   355: invokespecial 200	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   358: astore 7
+    //   360: aload 7
+    //   362: astore 8
+    //   364: new 202	android/graphics/drawable/BitmapDrawable
+    //   367: dup
+    //   368: aconst_null
+    //   369: aload 7
+    //   371: aconst_null
+    //   372: aconst_null
+    //   373: invokestatic 208	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   376: invokespecial 211	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   379: astore 9
+    //   381: aload 7
+    //   383: ifnull +589 -> 972
+    //   386: aload 7
+    //   388: invokevirtual 214	java/io/BufferedInputStream:close	()V
+    //   391: aload 9
+    //   393: astore 7
+    //   395: goto -279 -> 116
+    //   398: astore 7
+    //   400: aload 7
+    //   402: invokevirtual 217	java/io/IOException:printStackTrace	()V
+    //   405: goto -14 -> 391
+    //   408: astore 7
+    //   410: aload 7
+    //   412: athrow
+    //   413: astore 9
+    //   415: aconst_null
+    //   416: astore 7
+    //   418: aload 7
+    //   420: astore 8
+    //   422: getstatic 129	bnfz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   425: ldc 219
+    //   427: aload 9
+    //   429: invokestatic 222	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   432: aload 7
+    //   434: ifnull +532 -> 966
+    //   437: aload 7
+    //   439: invokevirtual 214	java/io/BufferedInputStream:close	()V
+    //   442: aconst_null
+    //   443: astore 7
+    //   445: goto -329 -> 116
+    //   448: astore 7
     //   450: aload 7
-    //   452: invokevirtual 223	java/io/BufferedInputStream:close	()V
-    //   455: aconst_null
-    //   456: astore 7
-    //   458: goto -342 -> 116
-    //   461: astore 7
-    //   463: aload 7
-    //   465: invokevirtual 226	java/io/IOException:printStackTrace	()V
-    //   468: goto -13 -> 455
-    //   471: astore 7
+    //   452: invokevirtual 217	java/io/IOException:printStackTrace	()V
+    //   455: goto -13 -> 442
+    //   458: astore 7
+    //   460: aload 7
+    //   462: athrow
+    //   463: astore 8
+    //   465: aload 9
+    //   467: astore 7
+    //   469: aload 8
+    //   471: astore 9
     //   473: aload 7
-    //   475: athrow
-    //   476: astore 8
-    //   478: aload 9
-    //   480: astore 7
-    //   482: aload 8
-    //   484: astore 9
-    //   486: aload 7
-    //   488: astore 8
-    //   490: getstatic 128	bqjh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   493: ldc 228
-    //   495: aload 9
-    //   497: invokestatic 231	yuk:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   500: aload 7
-    //   502: ifnull +478 -> 980
+    //   475: astore 8
+    //   477: getstatic 129	bnfz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   480: ldc 219
+    //   482: aload 9
+    //   484: invokestatic 222	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   487: aload 7
+    //   489: ifnull +477 -> 966
+    //   492: aload 7
+    //   494: invokevirtual 214	java/io/BufferedInputStream:close	()V
+    //   497: aconst_null
+    //   498: astore 7
+    //   500: goto -384 -> 116
+    //   503: astore 7
     //   505: aload 7
-    //   507: invokevirtual 223	java/io/BufferedInputStream:close	()V
-    //   510: aconst_null
-    //   511: astore 7
-    //   513: goto -397 -> 116
-    //   516: astore 7
-    //   518: aload 7
-    //   520: invokevirtual 226	java/io/IOException:printStackTrace	()V
-    //   523: goto -13 -> 510
-    //   526: astore 7
-    //   528: aload 7
-    //   530: athrow
-    //   531: astore 7
-    //   533: aload 8
-    //   535: ifnull +8 -> 543
-    //   538: aload 8
-    //   540: invokevirtual 223	java/io/BufferedInputStream:close	()V
-    //   543: aload 7
-    //   545: athrow
-    //   546: astore 8
-    //   548: aload 8
-    //   550: invokevirtual 226	java/io/IOException:printStackTrace	()V
-    //   553: goto -10 -> 543
-    //   556: astore 7
-    //   558: aload 7
-    //   560: athrow
-    //   561: getstatic 128	bqjh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   564: new 233	java/lang/StringBuilder
-    //   567: dup
-    //   568: invokespecial 234	java/lang/StringBuilder:<init>	()V
-    //   571: ldc 236
-    //   573: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   576: aload 10
-    //   578: getfield 126	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   581: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   584: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   587: invokestatic 136	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   590: new 138	bqjp
-    //   593: dup
-    //   594: aload 10
-    //   596: getfield 141	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   599: getfield 146	android/graphics/PointF:x	F
+    //   507: invokevirtual 217	java/io/IOException:printStackTrace	()V
+    //   510: goto -13 -> 497
+    //   513: astore 7
+    //   515: aload 7
+    //   517: athrow
+    //   518: astore 7
+    //   520: aload 8
+    //   522: ifnull +8 -> 530
+    //   525: aload 8
+    //   527: invokevirtual 214	java/io/BufferedInputStream:close	()V
+    //   530: aload 7
+    //   532: athrow
+    //   533: astore 8
+    //   535: aload 8
+    //   537: invokevirtual 217	java/io/IOException:printStackTrace	()V
+    //   540: goto -10 -> 530
+    //   543: astore 7
+    //   545: aload 7
+    //   547: athrow
+    //   548: getstatic 129	bnfz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   551: new 224	java/lang/StringBuilder
+    //   554: dup
+    //   555: invokespecial 225	java/lang/StringBuilder:<init>	()V
+    //   558: ldc 227
+    //   560: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   563: aload 10
+    //   565: getfield 127	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   568: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   571: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   574: invokestatic 137	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   577: new 139	bngh
+    //   580: dup
+    //   581: aload 10
+    //   583: getfield 142	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
+    //   586: getfield 147	android/graphics/PointF:x	F
+    //   589: aload 10
+    //   591: getfield 142	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
+    //   594: getfield 150	android/graphics/PointF:y	F
+    //   597: aload 10
+    //   599: getfield 152	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_Float	F
     //   602: aload 10
-    //   604: getfield 141	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   607: getfield 149	android/graphics/PointF:y	F
-    //   610: aload 10
-    //   612: getfield 151	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_Float	F
-    //   615: aload 10
-    //   617: getfield 153	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_Float	F
-    //   620: aload 10
-    //   622: getfield 155	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_Float	F
-    //   625: aload 10
-    //   627: getfield 157	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Float	F
-    //   630: aload 10
-    //   632: getfield 160	dov/com/qq/im/capture/paster/PasterParcelData:e	F
-    //   635: f2i
-    //   636: aload 10
-    //   638: getfield 162	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_Float	F
-    //   641: f2i
-    //   642: aload 10
-    //   644: getfield 126	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   647: aload 10
-    //   649: getfield 247	dov/com/qq/im/capture/paster/PasterParcelData:g	I
-    //   652: aload 10
-    //   654: getfield 248	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_Int	I
-    //   657: invokespecial 251	bqjp:<init>	(FFFFFFIILjava/lang/String;II)V
-    //   660: astore 8
-    //   662: new 253	bqji
-    //   665: dup
-    //   666: aload_0
-    //   667: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbqjh;
-    //   670: aload 7
-    //   672: aload 8
-    //   674: aload 10
-    //   676: getfield 168	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   679: aload 10
-    //   681: getfield 170	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   684: aload 10
-    //   686: getfield 49	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   689: aload 10
-    //   691: getfield 59	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
-    //   694: invokespecial 254	bqji:<init>	(Lbqjh;Landroid/graphics/drawable/Drawable;Lbqjp;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
-    //   697: astore 7
-    //   699: aload 7
-    //   701: checkcast 253	bqji
-    //   704: invokevirtual 256	bqji:a	()V
-    //   707: goto -428 -> 279
-    //   710: iconst_0
-    //   711: istore 4
-    //   713: goto -392 -> 321
-    //   716: aload_0
-    //   717: getfield 20	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   720: iload_1
-    //   721: invokevirtual 262	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   724: astore 8
-    //   726: aload 7
-    //   728: aload 8
-    //   730: ldc_w 264
-    //   733: invokevirtual 270	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   736: invokevirtual 190	bqjl:c	(Z)V
-    //   739: aload 8
-    //   741: ldc_w 272
-    //   744: invokevirtual 275	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   747: ifeq -419 -> 328
-    //   750: aload 7
-    //   752: aload 8
-    //   754: ldc_w 272
-    //   757: invokevirtual 278	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   760: putfield 280	bqjl:g	Z
-    //   763: aload 7
-    //   765: aload 8
-    //   767: ldc_w 282
-    //   770: invokevirtual 278	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   773: putfield 285	bqjl:h	Z
+    //   604: getfield 154	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_Float	F
+    //   607: aload 10
+    //   609: getfield 156	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_Float	F
+    //   612: aload 10
+    //   614: getfield 158	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Float	F
+    //   617: aload 10
+    //   619: getfield 161	dov/com/qq/im/capture/paster/PasterParcelData:e	F
+    //   622: f2i
+    //   623: aload 10
+    //   625: getfield 163	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_Float	F
+    //   628: f2i
+    //   629: aload 10
+    //   631: getfield 127	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   634: aload 10
+    //   636: getfield 238	dov/com/qq/im/capture/paster/PasterParcelData:g	I
+    //   639: aload 10
+    //   641: getfield 239	dov/com/qq/im/capture/paster/PasterParcelData:jdField_f_of_type_Int	I
+    //   644: invokespecial 242	bngh:<init>	(FFFFFFIILjava/lang/String;II)V
+    //   647: astore 8
+    //   649: new 244	bnga
+    //   652: dup
+    //   653: aload_0
+    //   654: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbnfz;
+    //   657: aload 7
+    //   659: aload 8
+    //   661: aload 10
+    //   663: getfield 169	dov/com/qq/im/capture/paster/PasterParcelData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   666: aload 10
+    //   668: getfield 171	dov/com/qq/im/capture/paster/PasterParcelData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   671: aload 10
+    //   673: getfield 49	dov/com/qq/im/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   676: aload 10
+    //   678: getfield 59	dov/com/qq/im/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
+    //   681: invokespecial 245	bnga:<init>	(Lbnfz;Landroid/graphics/drawable/Drawable;Lbngh;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    //   684: astore 7
+    //   686: aload 7
+    //   688: checkcast 244	bnga
+    //   691: invokevirtual 247	bnga:a	()V
+    //   694: goto -415 -> 279
+    //   697: iconst_0
+    //   698: istore 4
+    //   700: goto -392 -> 308
+    //   703: aload_0
+    //   704: getfield 20	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   707: iload_1
+    //   708: invokevirtual 253	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   711: astore 8
+    //   713: aload 7
+    //   715: aload 8
+    //   717: ldc 255
+    //   719: invokevirtual 261	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   722: invokevirtual 181	bngd:c	(Z)V
+    //   725: aload 8
+    //   727: ldc_w 263
+    //   730: invokevirtual 266	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   733: ifeq -418 -> 315
+    //   736: aload 7
+    //   738: aload 8
+    //   740: ldc_w 263
+    //   743: invokevirtual 269	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   746: putfield 271	bngd:g	Z
+    //   749: aload 7
+    //   751: aload 8
+    //   753: ldc_w 273
+    //   756: invokevirtual 269	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   759: putfield 276	bngd:h	Z
+    //   762: aload 7
+    //   764: aload 8
+    //   766: ldc_w 278
+    //   769: invokevirtual 282	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   772: d2f
+    //   773: putfield 285	bngd:j	F
     //   776: aload 7
     //   778: aload 8
     //   780: ldc_w 287
-    //   783: invokevirtual 291	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   783: invokevirtual 282	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
     //   786: d2f
-    //   787: putfield 294	bqjl:j	F
+    //   787: putfield 290	bngd:k	F
     //   790: aload 7
     //   792: aload 8
-    //   794: ldc_w 296
-    //   797: invokevirtual 291	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   794: ldc_w 292
+    //   797: invokevirtual 282	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
     //   800: d2f
-    //   801: putfield 299	bqjl:k	F
+    //   801: putfield 295	bngd:l	F
     //   804: aload 7
     //   806: aload 8
-    //   808: ldc_w 301
-    //   811: invokevirtual 291	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   808: ldc_w 297
+    //   811: invokevirtual 282	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
     //   814: d2f
-    //   815: putfield 304	bqjl:l	F
+    //   815: putfield 300	bngd:m	F
     //   818: aload 7
     //   820: aload 8
-    //   822: ldc_w 306
-    //   825: invokevirtual 291	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   828: d2f
-    //   829: putfield 309	bqjl:m	F
-    //   832: aload 7
-    //   834: aload 8
-    //   836: ldc_w 282
-    //   839: invokevirtual 278	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   842: putfield 285	bqjl:h	Z
+    //   822: ldc_w 273
+    //   825: invokevirtual 269	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   828: putfield 276	bngd:h	Z
+    //   831: aload 7
+    //   833: aload 8
+    //   835: ldc_w 278
+    //   838: invokevirtual 282	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   841: d2f
+    //   842: putfield 285	bngd:j	F
     //   845: aload 7
     //   847: aload 8
-    //   849: ldc_w 287
-    //   852: invokevirtual 291	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   855: d2f
-    //   856: putfield 294	bqjl:j	F
-    //   859: aload 7
-    //   861: aload 8
-    //   863: ldc_w 311
-    //   866: invokevirtual 315	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   869: putfield 318	bqjl:i	I
-    //   872: aload 8
-    //   874: ldc_w 320
-    //   877: invokevirtual 324	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   880: astore 8
-    //   882: lconst_0
-    //   883: lstore 5
-    //   885: iconst_0
-    //   886: istore_2
-    //   887: iload_2
+    //   849: ldc_w 302
+    //   852: invokevirtual 306	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   855: putfield 309	bngd:i	I
+    //   858: aload 8
+    //   860: ldc_w 311
+    //   863: invokevirtual 315	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   866: astore 8
+    //   868: lconst_0
+    //   869: lstore 5
+    //   871: iconst_0
+    //   872: istore_2
+    //   873: iload_2
+    //   874: aload 8
+    //   876: invokevirtual 318	org/json/JSONArray:length	()I
+    //   879: if_icmpge -564 -> 315
+    //   882: iload_2
+    //   883: iconst_2
+    //   884: irem
+    //   885: ifne +14 -> 899
     //   888: aload 8
-    //   890: invokevirtual 327	org/json/JSONArray:length	()I
-    //   893: if_icmpge -565 -> 328
-    //   896: iload_2
-    //   897: iconst_2
-    //   898: irem
-    //   899: ifne +14 -> 913
-    //   902: aload 8
-    //   904: iload_2
-    //   905: invokevirtual 331	org/json/JSONArray:getLong	(I)J
-    //   908: lstore 5
-    //   910: goto +89 -> 999
-    //   913: new 333	com/tencent/mobileqq/richmedia/capture/data/TrackerStickerParam$MotionInfo
-    //   916: dup
-    //   917: aload 8
-    //   919: iload_2
-    //   920: invokevirtual 262	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   923: invokespecial 336	com/tencent/mobileqq/richmedia/capture/data/TrackerStickerParam$MotionInfo:<init>	(Lorg/json/JSONObject;)V
-    //   926: astore 9
-    //   928: aload 7
-    //   930: getfield 339	bqjl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   933: lload 5
-    //   935: invokestatic 345	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   938: aload 9
-    //   940: invokeinterface 351 3 0
-    //   945: pop
-    //   946: goto +53 -> 999
-    //   949: astore 8
-    //   951: goto -623 -> 328
-    //   954: aload_0
-    //   955: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbqjh;
-    //   958: invokestatic 353	bqjh:b	(Lbqjh;)Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView;
-    //   961: invokevirtual 358	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView:postInvalidate	()V
-    //   964: return
-    //   965: astore 7
-    //   967: goto -434 -> 533
-    //   970: astore 9
-    //   972: goto -486 -> 486
-    //   975: astore 9
-    //   977: goto -546 -> 431
-    //   980: aconst_null
-    //   981: astore 7
-    //   983: goto -867 -> 116
-    //   986: aload 9
-    //   988: astore 7
-    //   990: goto -874 -> 116
-    //   993: aconst_null
-    //   994: astore 7
-    //   996: goto -880 -> 116
-    //   999: iload_2
-    //   1000: iconst_1
-    //   1001: iadd
-    //   1002: istore_2
-    //   1003: goto -116 -> 887
+    //   890: iload_2
+    //   891: invokevirtual 322	org/json/JSONArray:getLong	(I)J
+    //   894: lstore 5
+    //   896: goto +89 -> 985
+    //   899: new 324	com/tencent/mobileqq/richmedia/capture/data/TrackerStickerParam$MotionInfo
+    //   902: dup
+    //   903: aload 8
+    //   905: iload_2
+    //   906: invokevirtual 253	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   909: invokespecial 327	com/tencent/mobileqq/richmedia/capture/data/TrackerStickerParam$MotionInfo:<init>	(Lorg/json/JSONObject;)V
+    //   912: astore 9
+    //   914: aload 7
+    //   916: getfield 330	bngd:a	Ljava/util/Map;
+    //   919: lload 5
+    //   921: invokestatic 336	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   924: aload 9
+    //   926: invokeinterface 342 3 0
+    //   931: pop
+    //   932: goto +53 -> 985
+    //   935: astore 8
+    //   937: goto -622 -> 315
+    //   940: aload_0
+    //   941: getfield 16	dov/com/tencent/biz/qqstory/takevideo/doodle/layer/FaceLayer$1:this$0	Lbnfz;
+    //   944: invokestatic 344	bnfz:b	(Lbnfz;)Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView;
+    //   947: invokevirtual 349	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView:postInvalidate	()V
+    //   950: return
+    //   951: astore 7
+    //   953: goto -433 -> 520
+    //   956: astore 9
+    //   958: goto -485 -> 473
+    //   961: astore 9
+    //   963: goto -545 -> 418
+    //   966: aconst_null
+    //   967: astore 7
+    //   969: goto -853 -> 116
+    //   972: aload 9
+    //   974: astore 7
+    //   976: goto -860 -> 116
+    //   979: aconst_null
+    //   980: astore 7
+    //   982: goto -866 -> 116
+    //   985: iload_2
+    //   986: iconst_1
+    //   987: iadd
+    //   988: istore_2
+    //   989: goto -116 -> 873
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1006	0	this	1
-    //   1	720	1	i	int
-    //   130	873	2	j	int
+    //   0	992	0	this	1
+    //   1	707	1	i	int
+    //   130	859	2	j	int
     //   140	14	3	k	int
-    //   319	393	4	bool	boolean
-    //   883	51	5	l	long
-    //   83	324	7	localObject1	Object
-    //   411	3	7	localIOException1	java.io.IOException
-    //   421	3	7	localObject2	Object
-    //   429	28	7	localObject3	Object
-    //   461	3	7	localIOException2	java.io.IOException
-    //   471	3	7	localObject4	Object
-    //   480	32	7	localObject5	Object
-    //   516	3	7	localIOException3	java.io.IOException
-    //   526	3	7	localObject6	Object
-    //   531	13	7	localObject7	Object
-    //   556	115	7	localDrawable	android.graphics.drawable.Drawable
-    //   697	232	7	localbqji	bqji
-    //   965	1	7	localObject8	Object
-    //   981	14	7	localObject9	Object
-    //   240	194	8	localObject10	Object
-    //   476	7	8	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   488	51	8	localObject11	Object
-    //   546	3	8	localIOException4	java.io.IOException
-    //   660	258	8	localObject12	Object
-    //   949	1	8	localException	java.lang.Exception
-    //   350	55	9	localBitmapDrawable	android.graphics.drawable.BitmapDrawable
-    //   426	53	9	localIOException5	java.io.IOException
-    //   484	455	9	localObject13	Object
-    //   970	1	9	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   975	12	9	localIOException6	java.io.IOException
-    //   24	666	10	localPasterParcelData	dov.com.qq.im.capture.paster.PasterParcelData
+    //   306	393	4	bool	boolean
+    //   869	51	5	l	long
+    //   83	311	7	localObject1	Object
+    //   398	3	7	localIOException1	java.io.IOException
+    //   408	3	7	localObject2	Object
+    //   416	28	7	localObject3	Object
+    //   448	3	7	localIOException2	java.io.IOException
+    //   458	3	7	localObject4	Object
+    //   467	32	7	localObject5	Object
+    //   503	3	7	localIOException3	java.io.IOException
+    //   513	3	7	localObject6	Object
+    //   518	13	7	localObject7	Object
+    //   543	115	7	localDrawable	android.graphics.drawable.Drawable
+    //   684	231	7	localbnga	bnga
+    //   951	1	7	localObject8	Object
+    //   967	14	7	localObject9	Object
+    //   240	181	8	localObject10	Object
+    //   463	7	8	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   475	51	8	localObject11	Object
+    //   533	3	8	localIOException4	java.io.IOException
+    //   647	257	8	localObject12	Object
+    //   935	1	8	localException	java.lang.Exception
+    //   337	55	9	localBitmapDrawable	android.graphics.drawable.BitmapDrawable
+    //   413	53	9	localIOException5	java.io.IOException
+    //   471	454	9	localObject13	Object
+    //   956	1	9	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   961	12	9	localIOException6	java.io.IOException
+    //   24	653	10	localPasterParcelData	dov.com.qq.im.capture.paster.PasterParcelData
     // Exception table:
     //   from	to	target	type
-    //   399	404	411	java/io/IOException
-    //   399	404	421	finally
-    //   413	418	421	finally
-    //   352	373	426	java/io/IOException
-    //   450	455	461	java/io/IOException
-    //   450	455	471	finally
-    //   463	468	471	finally
-    //   352	373	476	java/lang/OutOfMemoryError
-    //   505	510	516	java/io/IOException
-    //   505	510	526	finally
-    //   518	523	526	finally
-    //   352	373	531	finally
-    //   490	500	531	finally
-    //   538	543	546	java/io/IOException
-    //   538	543	556	finally
-    //   548	553	556	finally
-    //   716	882	949	java/lang/Exception
-    //   887	896	949	java/lang/Exception
-    //   902	910	949	java/lang/Exception
-    //   913	946	949	java/lang/Exception
-    //   377	394	965	finally
-    //   435	445	965	finally
-    //   377	394	970	java/lang/OutOfMemoryError
-    //   377	394	975	java/io/IOException
+    //   386	391	398	java/io/IOException
+    //   386	391	408	finally
+    //   400	405	408	finally
+    //   339	360	413	java/io/IOException
+    //   437	442	448	java/io/IOException
+    //   437	442	458	finally
+    //   450	455	458	finally
+    //   339	360	463	java/lang/OutOfMemoryError
+    //   492	497	503	java/io/IOException
+    //   492	497	513	finally
+    //   505	510	513	finally
+    //   339	360	518	finally
+    //   477	487	518	finally
+    //   525	530	533	java/io/IOException
+    //   525	530	543	finally
+    //   535	540	543	finally
+    //   703	868	935	java/lang/Exception
+    //   873	882	935	java/lang/Exception
+    //   888	896	935	java/lang/Exception
+    //   899	932	935	java/lang/Exception
+    //   364	381	951	finally
+    //   422	432	951	finally
+    //   364	381	956	java/lang/OutOfMemoryError
+    //   364	381	961	java/io/IOException
   }
 }
 

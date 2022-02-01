@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class TPVideoInfo$Builder
 {
+  private String definition;
   private ArrayList<TPDownloadParamData> downloadParamList;
   private String fileID;
   private long height;
@@ -15,6 +16,12 @@ public class TPVideoInfo$Builder
   public TPVideoInfo build()
   {
     return new TPVideoInfo(this, null);
+  }
+  
+  public Builder definition(String paramString)
+  {
+    this.definition = paramString;
+    return this;
   }
   
   public Builder downloadParam(TPDownloadParamData paramTPDownloadParamData)

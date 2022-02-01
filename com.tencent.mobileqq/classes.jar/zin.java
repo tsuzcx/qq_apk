@@ -1,38 +1,36 @@
-import android.app.Activity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zin
+  implements View.OnClickListener
 {
-  public final double a;
-  public final float a;
-  public final int a;
-  public final String a;
-  public final WeakReference<Activity> a;
-  public final boolean a;
-  public final double b;
-  public final int b;
-  public final String b;
-  public final boolean b;
-  public final int c;
+  public zin(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public zin(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-  }
-  
-  public String toString()
-  {
-    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
+    boolean bool2 = true;
+    zda localzda;
+    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
+    {
+      localzda = SubscribeVideoDetailFragment.a(this.a).a(1);
+      bool1 = bool2;
+      if (SubscribeVideoDetailFragment.a(this.a).g()) {
+        if (SubscribeVideoDetailFragment.a(this.a).i()) {
+          break label88;
+        }
+      }
+    }
+    label88:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localzda.c = bool1;
+      this.a.a(localzda);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

@@ -1,82 +1,118 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
-
-public class nzz
-  extends acyg
+public final class nzz
 {
-  public nzz(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString = "";
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString = "";
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
+  private String f = "";
+  private String g = "";
+  private String h = "";
+  private String i = "";
+  
+  public nzx a()
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    return new nzx(this, null);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public nzz a(long paramLong)
   {
-    super.onPageFinished(paramWebView, paramString);
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public nzz a(String paramString)
   {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    paramWebView = this.a.findViewById(2131362807);
-    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
-    {
-      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
-      paramWebView.setVisibility(0);
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
+    return this;
   }
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  public nzz b(long paramLong)
   {
-    super.onReceivedTitle(paramWebView, paramString);
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public nzz b(String paramString)
   {
-    acvc.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
-      return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!niz.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return true;
+    if (paramString != null) {
+      this.jdField_b_of_type_JavaLangString = paramString;
     }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      acvc.d("AbsWebView", paramWebView.toString());
+    return this;
+  }
+  
+  public nzz c(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public nzz c(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_c_of_type_JavaLangString = paramString;
     }
-    return true;
+    return this;
+  }
+  
+  public nzz d(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public nzz d(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_d_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public nzz e(String paramString)
+  {
+    if (paramString != null) {
+      this.e = paramString;
+    }
+    return this;
+  }
+  
+  public nzz f(String paramString)
+  {
+    if (paramString != null) {
+      this.f = paramString;
+    }
+    return this;
+  }
+  
+  public nzz g(String paramString)
+  {
+    if (paramString != null) {
+      this.g = paramString;
+    }
+    return this;
+  }
+  
+  public nzz h(String paramString)
+  {
+    if (paramString != null) {
+      this.h = paramString;
+    }
+    return this;
+  }
+  
+  public nzz i(String paramString)
+  {
+    if (paramString != null) {
+      this.i = paramString;
+    }
+    return this;
   }
 }
 

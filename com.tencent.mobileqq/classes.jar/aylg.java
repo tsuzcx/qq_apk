@@ -1,110 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
 class aylg
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  aylg(aykx paramaykx) {}
+  aylg(ayld paramayld, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayPanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    Object localObject;
-    if (paramBoolean)
-    {
-      try
-      {
-        ((axup)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label602;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayPanel", 2, "retCode = [" + paramInt + "]");
-        }
-        if (paramInt == 0) {
-          break label302;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
-        {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
-          return;
-        }
-        QQToast.a(this.a.a, 1, anzj.a(2131706146), 1).a();
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QQToast.a(this.a.a, 1, anzj.a(2131706249), 1).a();
-        if (!QLog.isColorLevel()) {
-          break label647;
-        }
-      }
-      QLog.e("NearbyProfileDisplayPanel", 2, "未知异常，请稍后重试", paramBundle);
-      return;
-      label302:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (aykx.a(this.a)) {
-          break label648;
-        }
-      }
-    }
-    label647:
-    label648:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      aykx.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (aykx.a(this.a)) {}
-      for (paramBundle = anzj.a(2131706255);; paramBundle = anzj.a(2131706155))
-      {
-        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-        ((aybu)this.a.a.app.a(119)).notifyUI(1000, true, new Object[] { Boolean.valueOf(aykx.a(this.a)), aykx.a(this.a).uin });
-        aykx.a(this.a, 1, 60);
-        if ((!aykx.a(this.a)) && (aykx.a(this.a).getChildAt(2).getVisibility() != 0))
-        {
-          paramBundle = (Button)aykx.a(this.a).getChildAt(1).findViewById(2131380216);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167023));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845533));
-        }
-        if (!aykx.a(this.a)) {
-          break;
-        }
-        paramBundle = (Button)aykx.a(this.a).getChildAt(1).findViewById(2131380216);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131167025));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845534));
-        return;
-      }
-      label602:
-      QQToast.a(this.a.a, 1, anzj.a(2131706140), 1).a();
-      return;
-      QQToast.a(this.a.a, 1, anzj.a(2131706238), 1).a();
-      return;
+    paramDialogInterface = (aylc)this.jdField_a_of_type_AndroidViewView.getTag(2131365376);
+    if (paramDialogInterface != null) {
+      this.jdField_a_of_type_Ayld.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
     }
   }
 }

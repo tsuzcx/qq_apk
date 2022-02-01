@@ -1,86 +1,446 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class asox
-  extends asoy
-  implements View.OnClickListener
 {
-  protected int f;
+  private int jdField_a_of_type_Int = 0;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private aspa jdField_a_of_type_Aspa;
+  private asqp jdField_a_of_type_Asqp;
+  protected asqq a;
+  private asst jdField_a_of_type_Asst;
+  private asuu jdField_a_of_type_Asuu;
+  private aswo jdField_a_of_type_Aswo;
+  private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
   
-  public asox(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, asmr paramasmr, int paramInt4)
+  public asox(Activity paramActivity, asqp paramasqp, aspa paramaspa)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramasmr, paramInt4);
-    this.b = false;
-    this.f = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296907));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Asqp = paramasqp;
+    this.jdField_a_of_type_Aspa = paramaspa;
   }
   
-  public View a(aslu paramaslu, int paramInt, View paramView, ViewGroup paramViewGroup)
+  private void a(ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt);
-    }
-    this.jdField_a_of_type_Asoz = ((asoz)paramaslu);
-    if (paramView == null)
+    if ((paramArrayOfArrayList != null) && (paramArrayOfArrayList.length > 0))
     {
-      paramaslu = aspy.a().a(this.c);
-      paramView = new AbsListView.LayoutParams(-1, this.f);
-      if (paramaslu == null)
+      int i = 0;
+      while (i < paramArrayOfArrayList.length)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
+        Object localObject = paramArrayOfArrayList[i];
+        if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+        {
+          localObject = ((ArrayList)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject).next()).action == 26) {
+              bcef.b(null, "dc00898", "", "", "0X800A60D", "0X800A60D", 0, 0, "", "", "", "");
+            }
+          }
         }
-        paramaslu = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561980, null);
-        paramaslu.setLayoutParams(paramView);
-        this.jdField_a_of_type_Asoz.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramaslu.findViewById(2131365160));
-        this.jdField_a_of_type_Asoz.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramaslu.findViewById(2131365252));
-        this.jdField_a_of_type_Asoz.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramaslu.findViewById(2131365250));
-        a(this.c, paramaslu);
-        paramaslu.setTag(this.jdField_a_of_type_Asoz);
+        i += 1;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Asst != null) {
+      return this.jdField_a_of_type_Asst.e();
+    }
+    return -1;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Asst != null) {
+      return this.jdField_a_of_type_Asst.c();
+    }
+    return 0L;
+  }
+  
+  public apkw a()
+  {
+    if (this.jdField_a_of_type_Asst != null) {
+      return this.jdField_a_of_type_Asst.a();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Asuu != null) {
+      return this.jdField_a_of_type_Asuu.a();
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    List localList = null;
+    ShareActionSheetV2.Param localParam;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
+    {
+      localParam = new ShareActionSheetV2.Param();
+      localParam.context = this.jdField_a_of_type_AndroidAppActivity;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create(localParam);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOnDismissListener(new asoy(this));
+    Object localObject = a();
+    if (localObject != null) {
+      if (localObject.length == 1) {
+        localParam = localObject[0];
       }
     }
     for (;;)
     {
-      a(this.jdField_a_of_type_Asoz);
-      paramInt = XPanelContainer.a - (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296907);
-      if (paramInt != this.f)
+      if (((localParam != null) && (!localParam.isEmpty())) || ((localList != null) && (!localList.isEmpty())))
       {
-        this.f = paramInt;
-        paramView = (AbsListView.LayoutParams)paramaslu.getLayoutParams();
-        if (paramView != null)
-        {
-          paramView.height = this.f;
-          paramaslu.setLayoutParams(paramView);
+        a((ArrayList[])localObject);
+        localObject = a() + "(" + FileUtil.filesizeToString(a()) + ")";
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetTitle((CharSequence)localObject);
+        localObject = this.jdField_a_of_type_Asst.a();
+        String str = this.jdField_a_of_type_Asst.a();
+        this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("big_brother_source_key", str);
+        if ((localObject != null) && (!TextUtils.isEmpty(str))) {
+          break label268;
         }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(8, 0, 0);
       }
-      return paramaslu;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form cache");
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localParam, localList);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new asoz(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
+        return;
+        if (localObject.length != 2) {
+          break label281;
+        }
+        localParam = localObject[0];
+        localList = localObject[1];
+        break;
+        label268:
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity((Intent)localObject);
       }
-      break;
-      paramaslu = paramView;
+      label281:
+      localParam = null;
     }
   }
   
-  public EmoticonPackage a()
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+    if (this.jdField_a_of_type_Asuu != null) {
+      this.jdField_a_of_type_Asuu.a(paramInt1, paramInt2, paramIntent);
+    }
   }
   
-  public int getCount()
+  public void a(Configuration paramConfiguration)
   {
-    return 1;
+    if (this.jdField_a_of_type_Asuu != null) {
+      this.jdField_a_of_type_Asuu.a(paramConfiguration);
+    }
+  }
+  
+  public void a(asqq paramasqq)
+  {
+    this.jdField_a_of_type_Asqq = paramasqq;
+  }
+  
+  public boolean a()
+  {
+    int i = this.jdField_a_of_type_Asst.e();
+    return (i == 3) || (i == 9) || (i == 7) || (i == 10) || (i == 6);
+  }
+  
+  public boolean a(ViewGroup paramViewGroup, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    boolean bool = e();
+    if ((bool) && (paramViewGroup != null) && (paramLayoutParams != null))
+    {
+      paramViewGroup.removeAllViews();
+      paramViewGroup.addView(this.jdField_a_of_type_Aswo.a(), paramLayoutParams);
+    }
+    return bool;
+  }
+  
+  public boolean a(ViewGroup paramViewGroup, ViewGroup.LayoutParams paramLayoutParams, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FileBrowserManager<FileAssistant>", 1, "FileBrowserManager init.");
+    }
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    if (this.jdField_a_of_type_Asst == null)
+    {
+      this.jdField_a_of_type_Asst = this.jdField_a_of_type_Aspa.a();
+      if (this.jdField_a_of_type_Asst == null)
+      {
+        QLog.e("FileBrowserManager<FileAssistant>", 1, "create FileBrowser failed, mFileModel = null");
+        return false;
+      }
+      this.jdField_a_of_type_Asst.a(this.jdField_a_of_type_Asqp);
+      this.jdField_a_of_type_Asst.e(paramInt);
+      this.jdField_a_of_type_Asst.a(paramBundle);
+    }
+    boolean bool2 = e();
+    boolean bool1;
+    if ((this.jdField_a_of_type_Aswo == null) || (this.jdField_a_of_type_Asuu == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileBrowserManager<FileAssistant>", 2, "create file view error");
+      }
+      bool1 = false;
+    }
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      if (paramViewGroup != null)
+      {
+        bool1 = bool2;
+        if (paramLayoutParams != null)
+        {
+          paramViewGroup.removeAllViews();
+          paramViewGroup.addView(this.jdField_a_of_type_Aswo.a(), paramLayoutParams);
+          bool1 = bool2;
+        }
+      }
+    }
+  }
+  
+  public ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  {
+    if ((this.jdField_a_of_type_Asst != null) && (this.jdField_a_of_type_Asst.l())) {
+      return this.jdField_a_of_type_Asst.a();
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    List localList = null;
+    if ((this.jdField_a_of_type_Asuu != null) && ((this.jdField_a_of_type_Asuu instanceof asvt))) {
+      this.jdField_a_of_type_Asuu.p();
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null) {
+      return;
+    }
+    ArrayList[] arrayOfArrayList = a();
+    ArrayList localArrayList;
+    if (arrayOfArrayList != null) {
+      if (arrayOfArrayList.length == 1) {
+        localArrayList = arrayOfArrayList[0];
+      }
+    }
+    for (;;)
+    {
+      if (((localArrayList != null) && (!localArrayList.isEmpty())) || ((localList != null) && (!localList.isEmpty()))) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localArrayList, localList);
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing()) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.refresh();
+      return;
+      if (arrayOfArrayList.length == 2)
+      {
+        localArrayList = arrayOfArrayList[0];
+        localList = arrayOfArrayList[1];
+      }
+      else
+      {
+        localArrayList = null;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Asuu != null) {
+      return this.jdField_a_of_type_Asuu.b();
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Asst != null) {
+      this.jdField_a_of_type_Asst.l();
+    }
+    if (this.jdField_a_of_type_Asuu != null) {
+      this.jdField_a_of_type_Asuu.l();
+    }
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Asuu != null) {
+      return this.jdField_a_of_type_Asuu.a();
+    }
+    return false;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Asst != null) {
+      this.jdField_a_of_type_Asst.j();
+    }
+    if (this.jdField_a_of_type_Asuu != null) {
+      this.jdField_a_of_type_Asuu.j();
+    }
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_a_of_type_Asst != null) && (this.jdField_a_of_type_Asst.j() != 0);
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Asst != null) {
+      this.jdField_a_of_type_Asst.i();
+    }
+    if (this.jdField_a_of_type_Asuu != null) {
+      this.jdField_a_of_type_Asuu.k();
+    }
+  }
+  
+  protected boolean e()
+  {
+    if (this.jdField_a_of_type_Asst != null)
+    {
+      int j = this.jdField_a_of_type_Asst.a();
+      this.jdField_a_of_type_Asst.d();
+      if (QLog.isColorLevel()) {
+        QLog.i("FileBrowserManager<FileAssistant>", 1, "refreshFileView. currentType[" + this.jdField_a_of_type_Int + "] fileType[" + j + "]");
+      }
+      if (this.jdField_a_of_type_Int != j)
+      {
+        if (this.jdField_a_of_type_Asuu != null) {
+          this.jdField_a_of_type_Asuu.i();
+        }
+        String str = this.jdField_a_of_type_Asst.d();
+        int i = j;
+        if (str != null)
+        {
+          i = j;
+          if (str.contains("/chatpic/chatimg/")) {
+            i = 6;
+          }
+        }
+        switch (i)
+        {
+        default: 
+          this.jdField_a_of_type_Asuu = new asvn(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_Asqp);
+          this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_AndroidOsBundle);
+          this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_Asqq);
+          this.jdField_a_of_type_Asuu.a();
+          this.jdField_a_of_type_Aswo = this.jdField_a_of_type_Asuu.a();
+          this.jdField_a_of_type_Int = i;
+          return true;
+          this.jdField_a_of_type_Asuu = new asun(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asuz(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asvf(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asvt(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new aswb(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asvm(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asvk(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asve(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asur(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+          continue;
+          this.jdField_a_of_type_Asuu = new asuj(this.jdField_a_of_type_Asst, this.jdField_a_of_type_AndroidAppActivity);
+        }
+      }
+      this.jdField_a_of_type_Asuu.a();
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileBrowserManager<FileAssistant>", 2, "initFileViewer error : model is null");
+    }
+    return false;
+  }
+  
+  public void f()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileBrowserManager<FileAssistant><FileAssistant>", 1, "FileBrowserManager Finish");
+    }
+    if (this.jdField_a_of_type_Asst != null)
+    {
+      this.jdField_a_of_type_Asst.j_();
+      this.jdField_a_of_type_Asst = null;
+    }
+    if (this.jdField_a_of_type_Asuu != null)
+    {
+      this.jdField_a_of_type_Asuu.i();
+      this.jdField_a_of_type_Asuu = null;
+    }
+    if (this.jdField_a_of_type_Aswo != null) {
+      this.jdField_a_of_type_Aswo = null;
+    }
+  }
+  
+  public boolean f()
+  {
+    Object localObject = null;
+    ArrayList[] arrayOfArrayList = a();
+    ArrayList localArrayList;
+    if (arrayOfArrayList != null) {
+      if (arrayOfArrayList.length == 1) {
+        localArrayList = arrayOfArrayList[0];
+      }
+    }
+    for (;;)
+    {
+      if (((localArrayList != null) && (!localArrayList.isEmpty())) || ((localObject != null) && (!localObject.isEmpty())))
+      {
+        return true;
+        if (arrayOfArrayList.length == 2)
+        {
+          localArrayList = arrayOfArrayList[0];
+          localObject = arrayOfArrayList[1];
+        }
+      }
+      else
+      {
+        return false;
+      }
+      localArrayList = null;
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.jdField_a_of_type_Asst != null) && ((this.jdField_a_of_type_Aswo instanceof SimpleFileViewer))) {
+      ((SimpleFileViewer)this.jdField_a_of_type_Aswo).h(this.jdField_a_of_type_Asst.c());
+    }
   }
 }
 

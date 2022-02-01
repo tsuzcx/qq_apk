@@ -2,13 +2,13 @@ package com.tencent.mobileqq.receipt;
 
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
-import bbai;
-import bews;
+import azuu;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.Iterator;
 public class ReceiptMsgManager$2
   implements Runnable
 {
-  public ReceiptMsgManager$2(bbai parambbai, ArrayList paramArrayList, Bundle paramBundle, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public ReceiptMsgManager$2(azuu paramazuu, ArrayList paramArrayList, Bundle paramBundle, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
@@ -29,16 +29,16 @@ public class ReceiptMsgManager$2
       {
         MessageForPic localMessageForPic = (MessageForPic)localChatMessage;
         int i = this.jdField_a_of_type_AndroidOsBundle.getInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", 0);
-        bbai.a(this.this$0, localMessageForPic, i);
-        localMessageForPic.md5 = bbai.a(this.this$0, localMessageForPic.path);
+        azuu.a(this.this$0, localMessageForPic, i);
+        localMessageForPic.md5 = azuu.a(this.this$0, localMessageForPic.path);
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
         localOptions.inSampleSize = 1;
         SafeBitmapFactory.decodeFile(localMessageForPic.path, localOptions);
         localMessageForPic.width = localOptions.outWidth;
         localMessageForPic.height = localOptions.outHeight;
-        bbai.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage, Integer.toString(i));
-        if (bews.a(localMessageForPic.path))
+        azuu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage, Integer.toString(i));
+        if (RichMediaUtil.isPicLandscape(localMessageForPic.path))
         {
           localMessageForPic.width = localOptions.outHeight;
           localMessageForPic.height = localOptions.outWidth;
@@ -48,7 +48,7 @@ public class ReceiptMsgManager$2
         }
       }
     }
-    bbai.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, bbai.a(this.this$0, 2), false, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle);
+    azuu.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, azuu.a(this.this$0, 2), false, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

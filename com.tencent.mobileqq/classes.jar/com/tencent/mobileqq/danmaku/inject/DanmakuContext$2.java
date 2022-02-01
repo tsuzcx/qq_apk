@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.danmaku.inject;
 
-import arul;
-import arus;
+import aqoj;
+import aqoq;
 
 public class DanmakuContext$2
   implements Runnable
 {
   public void run()
   {
-    arul.a(this.this$0).a(this.jdField_a_of_type_Arvt, this.jdField_a_of_type_Arur);
+    aqoj.a(this.this$0).a(this.jdField_a_of_type_Aqpr, this.jdField_a_of_type_Aqop);
   }
 }
 

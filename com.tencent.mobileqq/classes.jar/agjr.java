@@ -1,16 +1,40 @@
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agjr
+class agjr
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  agjr(agjq paramagjq, MessageForPLNews paramMessageForPLNews, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = (agjs)paramView.getTag();
+    if (localObject == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = new ProfileActivity.AllInOne(((agjs)localObject).jdField_a_of_type_JavaLangString, 1);
+      Intent localIntent = new Intent(this.jdField_a_of_type_Agjq.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
+      localIntent.putExtra("personality_label_allinone", (Parcelable)localObject);
+      localIntent.putExtra("fromType", 2);
+      localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
+      localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
+      if (!(this.jdField_a_of_type_Agjq.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
+      }
+      this.jdField_a_of_type_Agjq.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      bcef.b(this.jdField_a_of_type_Agjq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
+    }
+  }
 }
 
 

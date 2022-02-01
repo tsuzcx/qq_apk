@@ -1,32 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-public class uyh
-  extends GestureDetector.SimpleOnGestureListener
+final class uyh
+  implements DialogInterface.OnShowListener
 {
-  private final uyi jdField_a_of_type_Uyi;
+  uyh(uwy paramuwy) {}
   
-  public uyh(PublicAccountImageView paramPublicAccountImageView, uyi paramuyi)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Uyi = paramuyi;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    uyd.a(this.a);
   }
 }
 

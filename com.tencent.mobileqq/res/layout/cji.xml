@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="54.0dip"
+<FrameLayout android:orientation="vertical" android:paddingTop="14.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.vas.qvip.view.QvipArkView android:layout_gravity="center" android:id="@id/cvu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="left" android:id="@id/n0y" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="start|center" android:id="@id/a35" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/account_panel_add_icon" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/agk" android:id="@id/tv_name" android:paddingLeft="45.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="right" android:id="@id/n0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip">
+        <ImageView android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g09" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/agi" android:gravity="center" android:layout_gravity="end|center" android:id="@id/npd" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:text="@string/wq0" />
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/mpg" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.0dip" android:layout_below="@id/n0z" />
 </FrameLayout>

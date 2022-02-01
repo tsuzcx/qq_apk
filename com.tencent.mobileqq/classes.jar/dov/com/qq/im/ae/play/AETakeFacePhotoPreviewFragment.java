@@ -1,8 +1,7 @@
 package dov.com.qq.im.ae.play;
 
-import aana;
-import afez;
-import affa;
+import adxr;
+import adxs;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,15 +17,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import boqi;
-import boqk;
-import born;
-import boxh;
-import boxi;
-import boxj;
-import boyv;
-import bozr;
-import bqrh;
+import blup;
+import blur;
+import blvr;
+import bmbc;
+import bnnl;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.FileUtils;
@@ -38,160 +33,163 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import javax.annotation.Nullable;
+import zjv;
 
 public class AETakeFacePhotoPreviewFragment
   extends PublicBaseFragment
-  implements affa, View.OnClickListener
+  implements adxs, View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boqi jdField_a_of_type_Boqi = (boqi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(3);
-  private boqk jdField_a_of_type_Boqk;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
+  public static final String INTENT_KEY_PHOTO_PATH = "photo_path";
+  public static final String INTENT_RESULT_KEY_TAKE_PHOTO_PATH = "take_photo_path";
+  private static String detectFacePath = "";
+  private long faceDetectStartTime;
+  private AppInterface mAppInterface = QQStoryContext.a();
+  private blup mHandler = (blup)this.mAppInterface.getBusinessHandler(3);
+  private ImageView mImgFacePreview;
+  private Dialog mLoadingDialog;
+  private blur mObserver;
+  private Bitmap mPhotoBitmap;
+  private String mPhotoPath;
+  private TextView mTvAgain;
+  private TextView mTvConfirm;
+  private int screenHeight;
+  private int screenWidth;
   
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int = bqrh.a(getActivity());
-    this.jdField_b_of_type_Int = bqrh.b(getActivity());
-    this.jdField_b_of_type_JavaLangString = getArguments().getString("photo_path");
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapUtils.decodeSampleBitmap(getActivity(), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        b();
-        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, int paramInt)
-  {
-    afez.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AETakeFacePhotoPreviewFragment.class, paramInt);
-  }
-  
-  private void a(@Nullable Bitmap paramBitmap, @Nullable String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {
-      return;
-    }
-    AEVideoShelfEditFragment.a(getActivity(), true);
-    e();
-    Intent localIntent = getActivity().getIntent();
-    if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (born.h(localIntent))) && (!boyv.a(paramBitmap)))
-    {
-      QQToast.a(getActivity(), 2131689756, 0).a();
-      f();
-      onBackPressed();
-      return;
-    }
-    if ((localIntent.getBooleanExtra("key_need_check_sensitive", false)) || (born.h(localIntent)))
-    {
-      d();
-      this.jdField_a_of_type_Boqk = new boxi(this);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Boqk);
-      this.jdField_a_of_type_Boqi.b(paramString);
-      return;
-    }
-    a(true, 0);
-  }
-  
-  private void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362271));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362285));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362286));
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      if (paramInt == 0) {
-        c();
-      }
-    }
-    for (;;)
-    {
-      f();
-      return;
-      if (paramInt == -1)
-      {
-        QQToast.a(getActivity(), 2131689754, 0).a();
-      }
-      else if (paramInt == -2)
-      {
-        QQToast.a(getActivity(), 2131697081, 0).a();
-        continue;
-        QQToast.a(getActivity(), 2131697081, 0).a();
-      }
-    }
-  }
-  
-  private void b()
-  {
-    jdField_a_of_type_JavaLangString = "";
-    if (!boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap)) {
-      return;
-    }
-    boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap, new boxh(this));
-  }
-  
-  private void c()
+  private void choosePhotoAndBack()
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("take_photo_path", this.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("take_photo_path", this.mPhotoPath);
     getActivity().setResult(-1, localIntent);
     onBackPressed();
   }
   
-  private void d()
+  public static String getDetectFacePath()
   {
-    if (this.jdField_a_of_type_Boqk != null)
+    return detectFacePath;
+  }
+  
+  private void handleSensitiveFaceDetectResult(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean) {
+      if (paramInt == 0) {
+        choosePhotoAndBack();
+      }
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Boqk);
-      this.jdField_a_of_type_Boqk = null;
+      hideLoading();
+      return;
+      if (paramInt == -1)
+      {
+        QQToast.a(getActivity(), 2131689765, 0).a();
+      }
+      else if (paramInt == -2)
+      {
+        QQToast.a(getActivity(), 2131697223, 0).a();
+        continue;
+        QQToast.a(getActivity(), 2131697223, 0).a();
+      }
     }
   }
   
-  private void e()
+  private void hideLoading()
+  {
+    FragmentActivity localFragmentActivity = getActivity();
+    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()) && (this.mLoadingDialog != null) && (this.mLoadingDialog.isShowing())) {
+      this.mLoadingDialog.dismiss();
+    }
+  }
+  
+  private void initData()
+  {
+    this.screenWidth = bnnl.a(getActivity());
+    this.screenHeight = bnnl.b(getActivity());
+    this.mPhotoPath = getArguments().getString("photo_path");
+    if (!TextUtils.isEmpty(this.mPhotoPath))
+    {
+      this.mPhotoBitmap = BitmapUtils.decodeSampleBitmap(getActivity(), this.mPhotoPath, this.screenWidth, this.screenHeight);
+      if (this.mPhotoBitmap != null)
+      {
+        this.mImgFacePreview.setImageBitmap(this.mPhotoBitmap);
+        initDetectData();
+        this.mTvAgain.setOnClickListener(this);
+        this.mTvConfirm.setOnClickListener(this);
+      }
+    }
+  }
+  
+  private void initDetectData()
+  {
+    detectFacePath = "";
+    if (!FaceChangeUtils.hasFaceInPic(this.mPhotoBitmap)) {
+      return;
+    }
+    FaceChangeUtils.cropFace(this.mPhotoBitmap, new AETakeFacePhotoPreviewFragment.1(this));
+  }
+  
+  private void initView(View paramView)
+  {
+    this.mImgFacePreview = ((ImageView)paramView.findViewById(2131362274));
+    this.mTvAgain = ((TextView)paramView.findViewById(2131362288));
+    this.mTvConfirm = ((TextView)paramView.findViewById(2131362289));
+  }
+  
+  public static void jumpToMeForResult(Activity paramActivity, Intent paramIntent, int paramInt)
+  {
+    adxr.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AETakeFacePhotoPreviewFragment.class, paramInt);
+  }
+  
+  private void onPressConfirmBtn(@Nullable Bitmap paramBitmap, @Nullable String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {
+      return;
+    }
+    AEVideoShelfEditFragment.keepScreenOn(getActivity(), true);
+    showLoading();
+    Intent localIntent = getActivity().getIntent();
+    if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (blvr.h(localIntent))) && (!FaceChangeUtils.hasFaceInPic(paramBitmap)))
+    {
+      QQToast.a(getActivity(), 2131689767, 0).a();
+      hideLoading();
+      onBackPressed();
+      return;
+    }
+    if ((localIntent.getBooleanExtra("key_need_check_sensitive", false)) || (blvr.h(localIntent)))
+    {
+      removeOldObserver();
+      this.mObserver = new AETakeFacePhotoPreviewFragment.2(this);
+      this.faceDetectStartTime = System.currentTimeMillis();
+      this.mAppInterface.addObserver(this.mObserver);
+      this.mHandler.b(paramString);
+      return;
+    }
+    handleSensitiveFaceDetectResult(true, 0);
+  }
+  
+  private void removeOldObserver()
+  {
+    if (this.mObserver != null)
+    {
+      this.mAppInterface.removeObserver(this.mObserver);
+      this.mObserver = null;
+    }
+  }
+  
+  private void showLoading()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()))
     {
-      if (this.jdField_a_of_type_AndroidAppDialog == null)
+      if (this.mLoadingDialog == null)
       {
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(localFragmentActivity, 2131755824);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559572);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578)).setText(2131689753);
-        this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new boxj(this));
+        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755826);
+        this.mLoadingDialog.setContentView(2131559574);
+        ((TextView)this.mLoadingDialog.findViewById(2131372546)).setText(2131689764);
+        this.mLoadingDialog.setCancelable(true);
+        this.mLoadingDialog.setCanceledOnTouchOutside(false);
+        this.mLoadingDialog.setOnDismissListener(new AETakeFacePhotoPreviewFragment.3(this));
       }
-      this.jdField_a_of_type_AndroidAppDialog.show();
-    }
-  }
-  
-  private void f()
-  {
-    FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.mLoadingDialog.show();
     }
   }
   
@@ -200,7 +198,7 @@ public class AETakeFacePhotoPreviewFragment
     paramActivity.requestWindowFeature(1);
     paramActivity.getWindow().setFlags(1024, 1024);
     if (Build.VERSION.SDK_INT >= 29) {
-      aana.a(paramActivity.getWindow());
+      zjv.a(paramActivity.getWindow());
     }
   }
   
@@ -222,20 +220,20 @@ public class AETakeFacePhotoPreviewFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131362286) {
-      if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if (i == 2131362289) {
+      if ((!TextUtils.isEmpty(this.mPhotoPath)) || (this.mPhotoBitmap != null))
       {
-        bozr.a().U();
-        a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_JavaLangString);
+        bmbc.a().Y();
+        onPressConfirmBtn(this.mPhotoBitmap, this.mPhotoPath);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i == 2131362285)
+      if (i == 2131362288)
       {
-        bozr.a().V();
+        bmbc.a().Z();
         onBackPressed();
       }
     }
@@ -243,7 +241,7 @@ public class AETakeFacePhotoPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558493, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558492, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -251,24 +249,24 @@ public class AETakeFacePhotoPreviewFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.mPhotoBitmap != null) {
+      BitmapUtils.recycle(this.mPhotoBitmap);
     }
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
-      FileUtils.delete(jdField_a_of_type_JavaLangString);
+    if ((detectFacePath != null) && (detectFacePath.length() > 0)) {
+      FileUtils.delete(detectFacePath);
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    f();
+    hideLoading();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    a(paramView);
-    a();
+    initView(paramView);
+    initData();
   }
 }
 

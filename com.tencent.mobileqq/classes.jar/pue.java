@@ -1,42 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
-
 public class pue
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public int a;
+  public long a;
+  public boolean a;
+  
+  public pue(long paramLong, int paramInt)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label103;
-      }
-    }
-    for (;;)
-    {
-      puo.a(paramBaseArticleInfo, localJSONObject1, true, "3");
-      puo.l(paramBaseArticleInfo, localJSONObject1);
-      puo.e(paramBaseArticleInfo, localJSONObject1);
-      tqa.b(paramBaseArticleInfo, localJSONObject1);
-      tqa.a(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_pk_cell");
-      puo.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label103:
-      localObject = (AdvertisementInfo)paramBaseArticleInfo;
-      if (((AdvertisementInfo)localObject).mAdvertisementExtInfo != null) {
-        tqa.a(localJSONObject1, ((AdvertisementInfo)localObject).mAdvertisementExtInfo);
-      }
-    }
+    this(paramLong, paramInt, false);
+  }
+  
+  public pue(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

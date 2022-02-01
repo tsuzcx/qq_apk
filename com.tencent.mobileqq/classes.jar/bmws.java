@@ -1,8 +1,15 @@
-public abstract interface bmws
+import android.support.annotation.NonNull;
+
+class bmws
+  implements bmvq
 {
-  public abstract void a();
+  bmws(bmwr parambmwr) {}
   
-  public abstract void b();
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
+  {
+    return bfby.b(paramString);
+  }
 }
 
 

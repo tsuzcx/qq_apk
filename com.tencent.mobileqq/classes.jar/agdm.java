@@ -1,16 +1,17 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agdm
-  implements BusinessObserver
+  extends aghj
 {
-  agdm(agdj paramagdj, agdr paramagdr) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  agdm(agcw paramagcw)
   {
-    if ((paramInt == 2003) && (this.jdField_a_of_type_Agdr != null)) {
-      this.jdField_a_of_type_Agdr.a(paramBoolean, paramBundle);
-    }
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agrj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

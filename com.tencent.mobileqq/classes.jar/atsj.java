@@ -1,34 +1,49 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atsj
-  extends aavo
+public class atsj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  atsj(String paramString, atte paramatte, long paramLong) {}
+  public atsj(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!paramBoolean)
+    Object localObject = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    int i;
+    if (paramBoolean)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Long, false), true);
-      return;
+      i = 1;
+      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
+      localObject = (ampt)QQSettingAutoDownloadAndSaveFragment.a(this.a).getBusinessHandler(4);
+      ((ampt)localObject).d();
+      ampt.a(QQSettingAutoDownloadAndSaveFragment.a(this.a), paramBoolean);
+      if (!paramBoolean) {
+        break label136;
+      }
+      if (bfng.a().a() != 4) {
+        bfng.a().a();
+      }
+      bcef.b(null, "CliOper", "", "", "0X8007212", "0X8007212", 0, 0, "", "", "", "");
     }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
+    for (;;)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Atte.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+      ((ampt)localObject).a(paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      i = 0;
+      break;
+      label136:
+      bfng.a().b();
+      bcef.b(null, "CliOper", "", "", "0X8007213", "0X8007213", 0, 0, "", "", "", "");
     }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsj
  * JD-Core Version:    0.7.0.1
  */

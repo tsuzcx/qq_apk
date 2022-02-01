@@ -1,31 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 
-public class ydy
-  implements Subscriber
+class ydy
+  implements View.OnFocusChangeListener
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  ydy(ydv paramydv) {}
   
-  public ydy(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
-  }
-  
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
-  {
-    paramList.add(zoe.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
-    }
+    xvv.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 

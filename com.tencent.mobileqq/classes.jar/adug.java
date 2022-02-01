@@ -1,49 +1,22 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adug
-  extends anyu
+  implements View.OnClickListener
 {
-  public adug(AddRequestActivity paramAddRequestActivity) {}
+  public adug(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (AddRequestActivity.a(this.a))
-    {
-      if (!paramBoolean) {
-        this.a.a(2130839580, this.a.getString(2131717877));
-      }
-    }
-    else {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("base_uin", paramString);
-    String str = this.a.b;
-    if (TextUtils.isEmpty(this.a.b)) {
-      str = this.a.a;
-    }
-    localBundle.putString("base_nick", str);
-    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
-    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
-    if (AddRequestActivity.a(this.a) != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localBundle.putBoolean("isFromWzry", paramBoolean);
-      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
-      return;
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
-      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
-    }
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/nudgeMall?_wv=2");
+    this.a.startActivity(localIntent);
+    bcef.b(null, "dc00898", "", "", "0X800B3A5", "0X800B3A5", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,38 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.util.VersionUtils;
+import UserGrowth.stJumpInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class uxp
-  implements View.OnSystemUiVisibilityChangeListener
 {
-  public uxp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  private void a(String paramString1, String paramString2, stJumpInfo paramstJumpInfo, int paramInt1, int paramInt2)
   {
-    if (paramInt == 4102) {}
-    while (!VersionUtils.isHoneycomb()) {
+    if (paramstJumpInfo == null) {
       return;
     }
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
+    vdq.a(paramString1, paramString2, paramInt1, paramstJumpInfo);
+    uwc.c(paramstJumpInfo.url, paramInt2, paramstJumpInfo.id);
+  }
+  
+  public void a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt1, int paramInt2)
+  {
+    if (paramWSVerticalPageFragment == null) {}
+    stJumpInfo localstJumpInfo;
+    do
+    {
+      return;
+      localstJumpInfo = umu.a().a(paramInt2);
+    } while (localstJumpInfo == null);
+    String str2 = localstJumpInfo.schema_url;
+    if (!TextUtils.isEmpty(localstJumpInfo.h5url)) {}
+    for (String str1 = localstJumpInfo.h5url;; str1 = localstJumpInfo.url)
+    {
+      uya.b("WSBlockPage", "schemaUrl:" + str2 + ",h5url:" + str1 + ",jumpurl:" + localstJumpInfo.url);
+      String str3 = paramWSVerticalPageFragment.a();
+      String str4 = paramWSVerticalPageFragment.b();
+      uyo.a(paramWSVerticalPageFragment.getActivity(), str2, str1, "", 5, new uxq(this, paramWSVerticalPageFragment, str3, str4, localstJumpInfo, paramInt1));
+      uya.b("WSBlockPage", "reportBlockPage, id:" + localstJumpInfo.id + " ,pageType:" + 5);
+      return;
+    }
   }
 }
 

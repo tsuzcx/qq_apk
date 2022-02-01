@@ -1,8 +1,19 @@
-class zhw
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+
+public class zhw
+  implements apom
 {
-  int jdField_a_of_type_Int;
-  zhu jdField_a_of_type_Zhu;
-  zhv jdField_a_of_type_Zhv;
+  public zhw(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  
+  public void onColorNoteAnimFinish()
+  {
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

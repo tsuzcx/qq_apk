@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import adak;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import abwz;
+import anlz;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForLongTextMsg
   extends MessageForText
@@ -10,7 +11,8 @@ public class MessageForLongTextMsg
   public String mFileName;
   public long mFileSize;
   public String mResid;
-  public AbsStructMsg structingMsg;
+  @anlz
+  public StructMsgForGeneralShare structingMsg;
   
   protected void doParse()
   {
@@ -24,7 +26,7 @@ public class MessageForLongTextMsg
   
   public boolean isSupportFTS()
   {
-    return adak.x(this.istroop);
+    return abwz.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -44,7 +46,7 @@ public class MessageForLongTextMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLongTextMsg
  * JD-Core Version:    0.7.0.1
  */

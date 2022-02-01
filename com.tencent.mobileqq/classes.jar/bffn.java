@@ -1,22 +1,16 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class bffn
-  implements InputFilter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bffn(AbsPublishActivity paramAbsPublishActivity) {}
+  public bffn(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (bgqv.a(paramCharSequence, '\n') + bgqv.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
+    this.a.invalidate();
   }
 }
 

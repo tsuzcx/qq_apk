@@ -1,25 +1,51 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class bbgv
-  implements SensorEventListener
+public class bbgv
+  extends bbir
 {
-  private float jdField_a_of_type_Float;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  private bbgv(bbgt parambbgt) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public bbgv(View paramView)
   {
-    if (paramSensorEvent.sensor.getType() == 5)
+    super(paramView);
+  }
+  
+  public bbgv(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131377536));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131379811);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      this.jdField_a_of_type_Float = paramSensorEvent.values[0];
-      if (bbgt.a(this.jdField_a_of_type_Bbgt) != null) {
-        bbgt.a(this.jdField_a_of_type_Bbgt).a(this.jdField_a_of_type_Float);
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
       }
     }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public TextView e()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

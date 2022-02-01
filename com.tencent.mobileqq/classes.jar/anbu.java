@@ -1,25 +1,19 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 class anbu
-  implements SoundPool.OnLoadCompleteListener
+  extends bdbp
 {
-  anbu(anbs paramanbs, float paramFloat, int paramInt, String paramString, amwx paramamwx, long paramLong) {}
+  anbu(anbt paramanbt) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public boolean a(bdbk parambdbk)
   {
-    if (-1.0F == this.jdField_a_of_type_Float) {}
-    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
-    {
-      paramInt1 = anbs.a(this.jdField_a_of_type_Anbs).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
-      if (paramInt1 != 0) {
-        break;
-      }
-      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
-      return;
+    String str = ThemeUtil.getCurrentThemeId();
+    if (!parambdbk.a().equals(str)) {
+      QQToast.a(this.a.app.getApplication(), amtj.a(2131713947), 4000).a();
     }
-    anbs.a(this.jdField_a_of_type_Anbs, this.jdField_a_of_type_Amwx, paramInt1, this.jdField_a_of_type_Long);
+    return false;
   }
 }
 

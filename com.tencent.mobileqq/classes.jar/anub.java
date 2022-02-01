@@ -1,54 +1,16 @@
 import android.content.Context;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.utils.TbsLogClient;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anub
-  extends TbsLogClient
+  extends anri
 {
-  public anub(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    super(paramContext);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void showLog(String paramString)
-  {
-    if (this.a.b == -1) {
-      this.a.b = 0;
-    }
-    if (this.a.b == 1) {
-      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
-    }
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
+    paramQQAppInterface = new anua(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "teamwork";
+    paramQQAppInterface.c = "opendoclist";
+    return paramQQAppInterface;
   }
 }
 

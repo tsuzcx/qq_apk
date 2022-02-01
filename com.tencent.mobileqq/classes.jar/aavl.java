@@ -1,57 +1,130 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RenameFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
+import com.tencent.litetransfersdk.ActionInfo;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class aavl
-  extends nkq
+class aavl
+  extends aasp
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  aavl(aavk paramaavk) {}
+  
+  private List<aasp> a(Session paramSession)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    String str2 = "";
+    String str1 = str2;
+    if (paramSession != null)
+    {
+      str1 = str2;
+      if (paramSession.actionInfo != null) {
+        str1 = paramSession.actionInfo.strServiceName;
+      }
+    }
+    return a(str1);
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private List<aasp> a(String paramString)
   {
-    String str;
-    if (paramBundle != null) {
-      str = paramBundle.getString("folderId");
-    }
-    for (paramBundle = paramBundle.getString("folderName");; paramBundle = "")
+    if (paramString != null) {}
+    for (;;)
     {
-      if (paramInt != 0)
-      {
-        a(false, paramInt, str, paramBundle);
-        return;
+      if (paramString != null) {
+        return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
       }
-      oidb_0x6d7.RspBody localRspBody = new oidb_0x6d7.RspBody();
-      try
-      {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (oidb_0x6d7.RenameFolderRspBody)localRspBody.rename_folder_rsp.get();
-        if (!paramArrayOfByte.int32_ret_code.has()) {
-          break label118;
-        }
-        if (paramArrayOfByte.int32_ret_code.get() == 0)
-        {
-          a(true, 0, str, paramBundle);
-          return;
-        }
+      return null;
+      paramString = "";
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgProgress");
+    }
+    Object localObject = a("");
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((aasp)((Iterator)localObject).next()).a(paramBundle);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        a(false, -1, str, paramBundle);
-        return;
+    }
+  }
+  
+  public void a(Session paramSession)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionNew:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((aasp)((Iterator)localObject).next()).a(paramSession);
       }
-      a(false, paramArrayOfByte.int32_ret_code.get(), str, paramBundle);
-      return;
-      label118:
-      a(false, -1, str, paramBundle);
-      return;
-      str = "";
+    }
+  }
+  
+  public void a(Session paramSession, float paramFloat)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionProgress:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((aasp)((Iterator)localObject).next()).a(paramSession, paramFloat);
+      }
+    }
+  }
+  
+  public void a(Session paramSession, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionComplete:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((aasp)((Iterator)localObject).next()).a(paramSession, paramBoolean);
+      }
+    }
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgSendRet");
+    }
+    Object localObject = a("");
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((aasp)((Iterator)localObject).next()).b(paramBundle);
+      }
+    }
+  }
+  
+  public void b(Session paramSession)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionStart:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((aasp)((Iterator)localObject).next()).b(paramSession);
+      }
     }
   }
 }

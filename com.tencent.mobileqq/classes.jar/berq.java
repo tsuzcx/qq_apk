@@ -1,49 +1,50 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-final class berq
-  implements beup
+public class berq
+  extends beqz
 {
-  public void a(bevl parambevl, bevm parambevm)
+  public berq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    label8:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label8;
-          do
-          {
-            return;
-          } while (!(parambevl instanceof beum));
-          parambevl = (beum)parambevl;
-          parambevl.jdField_a_of_type_Long += parambevm.c;
-          if (0L != parambevl.b) {
-            break;
-          }
-          parambevm.c = 0L;
-          parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-          parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-          parambevm = parambevl.jdField_a_of_type_JavaLangString;
-        } while (!parambevm.contains("range="));
-        parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long);
-        return;
-      } while ((parambevl.jdField_a_of_type_Long <= 0L) || (parambevl.b <= 0L) || (parambevl.jdField_a_of_type_Long >= parambevl.b));
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-" + parambevl.b;
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-    } while (!parambevm.contains("range="));
-    parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-    parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long + "-" + parambevl.b);
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 19;
+  }
+  
+  @Nullable
+  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      return new bera(true, this.jdField_a_of_type_AndroidContentContext.getString(2131692591), bdyo.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2013", "0", false);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_join_team", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2014", "0", false);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_join_team", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     berq
  * JD-Core Version:    0.7.0.1
  */

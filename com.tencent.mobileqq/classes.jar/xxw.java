@@ -1,30 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
 import java.util.List;
 
-public class xxw
-  extends wjm<xxn, xag>
+class xxw
+  implements ydu
 {
-  public xxw(xxn paramxxn)
-  {
-    super(paramxxn);
-  }
+  xxw(xxs paramxxs) {}
   
-  public void a(@NonNull xxn paramxxn, @NonNull xag paramxag)
+  public void a(int paramInt, List<vwc> paramList)
   {
-    if ((paramxxn.a != null) && (paramxag.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxag.jdField_a_of_type_JavaUtilList.contains(paramxxn.a.a)))
-    {
-      yuk.a(this.TAG, "receive tag info change event. %s", paramxag.toString());
-      paramxxn.i();
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
     }
+    vli.a().dispatch(new yds(paramInt, (List)localObject));
   }
-  
-  public Class acceptEventClass()
-  {
-    return xag.class;
-  }
-  
-  public void b(@NonNull xxn paramxxn, @NonNull xag paramxag) {}
 }
 
 

@@ -1,17 +1,81 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-
-class azdp
-  implements ValueAnimator.AnimatorUpdateListener
+public class azdp
 {
-  azdp(azdh paramazdh, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static String a(int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * agej.a(25.0F, azdh.a(this.jdField_a_of_type_Azdh)));
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "Header";
+    case 2: 
+      return "Middle";
+    case 3: 
+      return "Tailor";
+    }
+    return "Invali";
+  }
+  
+  public static void a(azdo paramazdo1, azdo paramazdo2)
+  {
+    if ((paramazdo1.a) && (paramazdo2.a))
+    {
+      if (paramazdo1.b != 3) {
+        paramazdo1.b = 0;
+      }
+      paramazdo2.b = 0;
+    }
+    if ((paramazdo1.a) && (!paramazdo2.a))
+    {
+      if (!paramazdo1.c()) {
+        break label153;
+      }
+      if (paramazdo1.b != 3)
+      {
+        paramazdo1.b = 1;
+        paramazdo2.b = 2;
+      }
+    }
+    else
+    {
+      label71:
+      if ((!paramazdo1.a) && (paramazdo2.a)) {
+        if (paramazdo1.b != 1) {
+          break label166;
+        }
+      }
+    }
+    for (paramazdo2.b = 2;; paramazdo2.b = 3)
+    {
+      if ((!paramazdo1.a) && (!paramazdo2.a))
+      {
+        if (paramazdo1.b != 1) {
+          paramazdo1.b = 2;
+        }
+        paramazdo2.b = 2;
+      }
+      azdw.a().d(paramazdo1);
+      azdw.a().d(paramazdo2);
+      return;
+      paramazdo1.b = 2;
+      break;
+      label153:
+      paramazdo1.b = 0;
+      paramazdo2.b = 1;
+      break label71;
+      label166:
+      paramazdo1.b = 2;
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return paramInt == 3;
   }
 }
 

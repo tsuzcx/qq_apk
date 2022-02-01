@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class uup
-  implements View.OnClickListener
+public final class uup
+  implements Parcelable.Creator<WSRedDotPushMsg>
 {
-  uup(uuo paramuuo) {}
-  
-  public void onClick(View paramView)
+  public WSRedDotPushMsg a(Parcel paramParcel)
   {
-    this.a.g();
-    this.a.i();
-    uuo.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new WSRedDotPushMsg(paramParcel);
+  }
+  
+  public WSRedDotPushMsg[] a(int paramInt)
+  {
+    return new WSRedDotPushMsg[paramInt];
   }
 }
 

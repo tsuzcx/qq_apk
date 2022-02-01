@@ -3,6 +3,9 @@ package com.tencent.qqlive.module.videoreport.dtreport.constants;
 public class DTParamKey
 {
   static final String DT_PRE_FIX = "dt_";
+  public static final String REPORT_KEY_ACTIVITY_BLACKLIST = "dt_activity_blacklist";
+  public static final String REPORT_KEY_ACT_INFO = "dt_active_info";
+  public static final String REPORT_KEY_ACT_NAME = "dt_activity_name";
   public static final String REPORT_KEY_APPKEY = "dt_appkey";
   public static final String REPORT_KEY_APP_FILE_INTERVAL = "dt_app_file_interval";
   public static final String REPORT_KEY_APP_FOREGROUND_DURATION = "dt_app_foreground_duration";
@@ -39,6 +42,7 @@ public class DTParamKey
   public static final String REPORT_KEY_SYS_ELAPSED_REALTIME = "dt_sys_elapsed_realtime";
   public static final String REPORT_KEY_USID = "dt_usid";
   public static final String REPORT_KEY_US_STMP = "dt_usstmp";
+  public static final String REPORT_KEY_WHITE_LVTM = "dt_white_lvtm";
   public static final String USER_DEFINE_KEY_VALUE = "udf_kv";
 }
 

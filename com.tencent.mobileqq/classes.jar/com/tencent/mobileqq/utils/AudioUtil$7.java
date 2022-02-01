@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import android.media.MediaPlayer.OnCompletionListener;
-import bhkm;
+import bftt;
 
 public final class AudioUtil$7
   implements Runnable
@@ -10,7 +10,7 @@ public final class AudioUtil$7
   
   public void run()
   {
-    this.a.onCompletion(bhkm.a);
+    this.a.onCompletion(bftt.a);
   }
 }
 

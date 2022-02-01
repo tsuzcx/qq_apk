@@ -1,20 +1,20 @@
 package com.tencent.avgame.gameresult;
 
-import bhmi;
-import naq;
+import com.tencent.mobileqq.utils.FileUtils;
+import nbr;
 
 public class GameResultUploadMgrForRemote$4
   implements Runnable
 {
-  public GameResultUploadMgrForRemote$4(naq paramnaq, String paramString1, String paramString2) {}
+  public GameResultUploadMgrForRemote$4(nbr paramnbr, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.a != null) {
-      bhmi.d(this.a);
+      FileUtils.deleteFile(this.a);
     }
     if (this.b != null) {
-      bhmi.d(this.b);
+      FileUtils.deleteFile(this.b);
     }
   }
 }

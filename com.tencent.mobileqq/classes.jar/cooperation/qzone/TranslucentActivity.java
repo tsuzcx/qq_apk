@@ -1,69 +1,92 @@
 package cooperation.qzone;
 
 import Override;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anzj;
-import bjbs;
-import bmgk;
-import bmgt;
-import bmwh;
+import android.view.View;
+import android.view.Window;
+import bhht;
+import bkkq;
+import bkkz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.reflect.Field;
 import mqq.app.AndroidOreoUtils;
 
 public class TranslucentActivity
   extends Activity
 {
-  private void a(Intent paramIntent)
+  public static int getStatusHeight(Activity paramActivity)
   {
-    bjbs localbjbs;
-    if (!((bmgk)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
+    Object localObject1 = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
+    int j = ((Rect)localObject1).top;
+    int i = j;
+    if (j == 0) {}
+    try
     {
-      localbjbs = new bjbs(this, getResources().getDimensionPixelSize(2131299011));
-      localbjbs.a(anzj.a(2131713854));
-      localbjbs.setOnDismissListener(new bmwh(this));
+      localObject1 = Class.forName("com.android.internal.R$dimen");
+      Object localObject2 = ((Class)localObject1).newInstance();
+      i = Integer.parseInt(((Class)localObject1).getField("status_bar_height").get(localObject2).toString());
+      i = paramActivity.getResources().getDimensionPixelSize(i);
+      return i;
+    }
+    catch (Exception paramActivity) {}
+    return j;
+  }
+  
+  private void startPlugin(Intent paramIntent)
+  {
+    bhht localbhht;
+    if (!((bkkq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
+    {
+      localbhht = new bhht(this, getResources().getDimensionPixelSize(2131299076));
+      localbhht.a(amtj.a(2131714086));
+      localbhht.setOnDismissListener(new TranslucentActivity.1(this));
     }
     for (;;)
     {
-      String str = QzonePluginProxyActivity.a(paramIntent);
+      String str = QzonePluginProxyActivity.getActivityNameToIntent(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      bmgt localbmgt = new bmgt(0);
-      localbmgt.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localbmgt.d = "QZone";
-      localbmgt.jdField_a_of_type_JavaLangString = "";
-      localbmgt.e = str;
-      localbmgt.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbmgt.jdField_b_of_type_Int = -1;
-      localbmgt.jdField_a_of_type_AndroidAppDialog = localbjbs;
-      localbmgt.c = 10000;
-      localbmgt.f = null;
-      bmgk.a(this, localbmgt);
-      if (localbjbs == null) {
+      bkkz localbkkz = new bkkz(0);
+      localbkkz.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+      localbkkz.d = "QZone";
+      localbkkz.jdField_a_of_type_JavaLangString = "";
+      localbkkz.e = str;
+      localbkkz.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbkkz.jdField_b_of_type_Int = -1;
+      localbkkz.jdField_a_of_type_AndroidAppDialog = localbhht;
+      localbkkz.c = 10000;
+      localbkkz.f = null;
+      bkkq.a(this, localbkkz);
+      if (localbhht == null) {
         finish();
       }
       return;
-      localbjbs = null;
+      localbhht = null;
     }
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -89,9 +112,9 @@ public class TranslucentActivity
     }
     super.onCreate(paramBundle);
     paramBundle = super.getIntent();
-    if (!TextUtils.isEmpty(QzonePluginProxyActivity.a(paramBundle)))
+    if (!TextUtils.isEmpty(QzonePluginProxyActivity.getActivityNameToIntent(paramBundle)))
     {
-      a(paramBundle);
+      startPlugin(paramBundle);
       return;
     }
     finish();

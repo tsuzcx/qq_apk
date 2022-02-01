@@ -1,10 +1,36 @@
-public abstract interface bfvz
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+
+class bfvz
+  implements wka
 {
-  public abstract void a(boolean paramBoolean, bfrs parambfrs);
+  bfvz(bfvp parambfvp) {}
+  
+  public void a(wfm paramwfm, bhht parambhht)
+  {
+    if ((parambhht != null) && (parambhht.isShowing())) {
+      parambhht.dismiss();
+    }
+    wjy.a(this.a.a);
+    if ((paramwfm != null) && (paramwfm.jdField_a_of_type_Int == 0))
+    {
+      wjy.a(paramwfm.jdField_a_of_type_JavaLangString, this.a.a);
+      bfvp.a(this.a);
+      return;
+    }
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694065, 1).a();
+      return;
+    }
+    this.a.c = "open";
+    bfvp.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfvz
  * JD-Core Version:    0.7.0.1
  */

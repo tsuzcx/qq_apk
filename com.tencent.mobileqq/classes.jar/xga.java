@@ -1,16 +1,25 @@
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+
 class xga
-  extends ybd
+  extends SimpleObserver<Void>
 {
-  xga(xfz paramxfz) {}
+  xga(xfy paramxfy, xgc paramxgc) {}
   
-  protected void a(Error paramError)
+  public void a(Void paramVoid)
   {
-    this.a.a(paramError);
+    super.onNext(paramVoid);
+    xvv.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Xfy.a = 2;
+    this.jdField_a_of_type_Xgc.a();
   }
   
-  protected void a(yar paramyar)
+  public void onError(@NonNull Error paramError)
   {
-    this.a.a(paramyar);
+    super.onError(paramError);
+    xvv.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Xfy.a = -1;
+    this.jdField_a_of_type_Xgc.b();
   }
 }
 

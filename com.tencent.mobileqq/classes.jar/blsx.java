@@ -1,8 +1,18 @@
-import android.view.View;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public abstract interface blsx
+class blsx
+  implements Observer<bmah>
 {
-  public abstract void a(View paramView, int paramInt);
+  blsx(blsw paramblsw) {}
+  
+  public void a(@Nullable bmah parambmah)
+  {
+    if (parambmah == null) {
+      return;
+    }
+    blsw.a(this.a, parambmah.b);
+  }
 }
 
 

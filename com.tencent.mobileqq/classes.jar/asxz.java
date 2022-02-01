@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-
-public class asxz
-  implements DialogInterface.OnClickListener
+public abstract class asxz
 {
-  public asxz(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  private asxy a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
+  }
+  
+  public asxy a()
+  {
+    return this.a;
+  }
+  
+  public abstract String a();
+  
+  public void a(asxy paramasxy)
+  {
+    this.a = paramasxy;
   }
 }
 

@@ -1,39 +1,90 @@
-import android.view.View;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class zoz
-  extends zpd
+  extends amop
 {
-  public int a;
+  public zoz(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public zoz(zpi paramzpi, View paramView, int paramInt)
+  protected void a(Object paramObject)
   {
-    super(paramzpi, paramView);
-    this.a = paramInt;
+    paramObject = (becp)paramObject;
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("ProgressTotal", paramObject.jdField_c_of_type_Long);
+    localBundle.putLong("ProgressValue", paramObject.jdField_d_of_type_Long);
+    localBundle.putString("FileName", paramObject.g);
+    localBundle.putString("FilePath", paramObject.e);
+    localBundle.putString("LocalFile", paramObject.a);
+    localBundle.putString("ThumbnailFile_Middle", paramObject.jdField_d_of_type_JavaLangString);
+    localBundle.putString("ThumbnailFile_Large", paramObject.jdField_c_of_type_JavaLangString);
+    localBundle.putInt("Status", paramObject.b);
+    if ((paramObject.b == 8) || ((paramObject.b == 11) && (FileUtils.fileExists(paramObject.e)))) {
+      this.a.a(57, localBundle);
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(paramObject.jdField_c_of_type_JavaLangString))
+      {
+        localBundle.putInt("size", 640);
+        this.a.a(58, localBundle);
+        return;
+      }
+    } while (TextUtils.isEmpty(paramObject.jdField_d_of_type_JavaLangString));
+    localBundle.putInt("size", 383);
+    this.a.a(58, localBundle);
   }
   
-  public int a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    yuk.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
-    return this.a;
+    if ((paramObject instanceof Object[]))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("type", 36);
+      localBundle.putBoolean("isSuccess", paramBoolean);
+      localBundle.putSerializable("data", (Object[])paramObject);
+      localBundle.putSerializable("observer_type", Integer.valueOf(4));
+      this.a.a(3, localBundle);
+    }
   }
   
-  public CharSequence a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    yuk.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putSerializable("data", Boolean.valueOf(paramBoolean2));
+    localBundle.putSerializable("observer_type", Integer.valueOf(4));
+    localBundle.putString("processName", "com.tencent.mobileqq:troopmanage");
+    this.a.a(3, localBundle);
   }
   
-  public void a(CharSequence paramCharSequence)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    yuk.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
+    if ((paramObject instanceof Object[]))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("type", 44);
+      localBundle.putBoolean("isSuccess", paramBoolean);
+      localBundle.putSerializable("data", (Object[])paramObject);
+      localBundle.putSerializable("observer_type", Integer.valueOf(4));
+      this.a.a(3, localBundle);
+    }
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public CharSequence b()
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    yuk.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
+    if ((paramObject instanceof Object[]))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("type", 45);
+      localBundle.putBoolean("isSuccess", paramBoolean);
+      localBundle.putSerializable("data", (Object[])paramObject);
+      localBundle.putSerializable("observer_type", Integer.valueOf(4));
+      this.a.a(3, localBundle);
+    }
   }
 }
 

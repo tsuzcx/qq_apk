@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ocr;
 
-import apny;
-import ayzm;
-import ayzo;
+import aohl;
+import axmu;
+import axmw;
 import java.util.HashMap;
 
 public class OcrControl$2
   implements Runnable
 {
-  public OcrControl$2(ayzm paramayzm, String paramString) {}
+  public OcrControl$2(axmu paramaxmu, String paramString) {}
   
   public void run()
   {
-    if (((apny)this.this$0.a.get(this.a) != null) && (ayzm.a(this.this$0) != null)) {
-      ayzm.a(this.this$0).a();
+    if (((aohl)this.this$0.a.get(this.a) != null) && (axmu.a(this.this$0) != null)) {
+      axmu.a(this.this$0).a();
     }
   }
 }

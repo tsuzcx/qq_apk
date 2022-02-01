@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aryv
-  implements DialogInterface.OnClickListener
+public class aryv
+  extends Handler
 {
-  aryv(aryn paramaryn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aryv(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
   {
-    paramDialogInterface.cancel();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FileAssistantActivity.f(this.a);
   }
 }
 

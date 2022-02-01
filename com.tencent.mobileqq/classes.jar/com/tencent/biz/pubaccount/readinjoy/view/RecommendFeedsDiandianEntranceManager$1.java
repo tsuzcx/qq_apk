@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.qphone.base.util.QLog;
-import sml;
+import sqm;
 
 class RecommendFeedsDiandianEntranceManager$1
   implements Runnable
 {
-  RecommendFeedsDiandianEntranceManager$1(RecommendFeedsDiandianEntranceManager paramRecommendFeedsDiandianEntranceManager, sml paramsml) {}
+  RecommendFeedsDiandianEntranceManager$1(RecommendFeedsDiandianEntranceManager paramRecommendFeedsDiandianEntranceManager, sqm paramsqm) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class RecommendFeedsDiandianEntranceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.1
  * JD-Core Version:    0.7.0.1
  */

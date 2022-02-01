@@ -1,27 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
 
-public final class yee
-  implements URLDrawable.URLDrawableListener
+class yee
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public yee(ImageView paramImageView, Drawable paramDrawable) {}
+  private yee(ydv paramydv) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
     }
+    this.a.jdField_a_of_type_Yec.a(this.a.a());
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

@@ -1,78 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloadBPTransEntity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class auuc
+  implements QQPermissionCallback
 {
-  private static auuc a;
+  public auuc(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
   
-  public static auuc a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     try
     {
-      if (a == null) {
-        a = new auuc();
-      }
-      auuc localauuc = a;
-      return localauuc;
-    }
-    finally {}
-  }
-  
-  public auud a(String paramString)
-  {
-    Object localObject = aure.a().a();
-    if (localObject == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    for (;;)
-    {
-      return null;
-      if (((QQAppInterface)localObject).a() != null) {}
-      for (paramString = ((QQAppInterface)localObject).a().a(paramString); paramString != null; paramString = null)
-      {
-        localObject = new auud();
-        ((auud)localObject).jdField_a_of_type_JavaLangString = paramString.mFileName;
-        ((auud)localObject).jdField_a_of_type_Long = paramString.mFileSize;
-        ((auud)localObject).c = paramString.mFilePath;
-        ((auud)localObject).b = paramString.mTempPath;
-        return localObject;
-        QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getUDLBPTransProxy=null.");
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem. url[" + paramString + "]");
-    QQAppInterface localQQAppInterface = aure.a().a();
-    if (localQQAppInterface == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    while (localQQAppInterface.a() == null) {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
       return;
     }
-    localQQAppInterface.a().a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
-  {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.mUrl = paramString1;
-    localUniformDownloadBPTransEntity.mFileName = paramString2;
-    localUniformDownloadBPTransEntity.mFileSize = paramLong;
-    localUniformDownloadBPTransEntity.mFilePath = paramString4;
-    localUniformDownloadBPTransEntity.mTempPath = paramString3;
-    QQAppInterface localQQAppInterface = aure.a().a();
-    if (localQQAppInterface == null)
+    catch (Exception paramArrayOfString)
     {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.failed APP=null, filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
-      return;
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690618, 0).a();
     }
-    if (localQQAppInterface.a() != null) {
-      localQQAppInterface.a().a(localUniformDownloadBPTransEntity);
-    }
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
   }
 }
 

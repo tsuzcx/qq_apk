@@ -1,128 +1,121 @@
-import android.content.Context;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyLabelInfo;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
+import android.text.TextUtils;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ayqe
+public abstract class ayqe
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private LabelContainer jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  protected int a;
+  public long a;
+  protected AbstractUploadTask a;
+  protected IUploadTaskCallback a;
+  protected Object a;
+  public Map<String, String> a;
+  public byte[] a;
+  public int b;
+  protected IUploadTaskCallback b;
+  protected String b;
+  protected byte[] b;
+  public int c;
+  protected String c;
+  public int d;
+  public String d;
+  protected int e;
+  public String e;
+  protected volatile int f = -10001;
+  public String f;
+  protected String g;
+  protected String h;
   
-  public View a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public ayqe(long paramLong, String paramString, byte[] paramArrayOfByte)
   {
-    int i = paramInt1;
-    if (paramInt1 < 16777216) {
-      i = paramInt1 - 16777216;
-    }
-    paramInt1 = paramInt2;
-    if (paramInt2 < 16777216) {
-      paramInt1 = paramInt2 - 16777216;
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(0);
-    localLinearLayout.setGravity(16);
-    try
-    {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-7829368);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable;
-      localObject = URLDrawable.getDrawable(paramString1, (URLDrawable.URLDrawableOptions)localObject);
-      paramString1 = (String)localObject;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject;
-        if (QLog.isColorLevel()) {
-          QLog.w("TopicLabelCtrl", 2, "getDrawable exception, exp=" + localException + ", url=" + paramString1);
-        }
-        paramString1 = new ColorDrawable(-7829368);
-      }
-    }
-    localObject = new View(this.jdField_a_of_type_AndroidContentContext);
-    ((View)localObject).setBackgroundDrawable(paramString1);
-    localLinearLayout.addView((View)localObject, zft.b(this.jdField_a_of_type_AndroidContentContext, 18.0F), zft.b(this.jdField_a_of_type_AndroidContentContext, 15.0F));
-    ((LinearLayout.LayoutParams)((View)localObject).getLayoutParams()).leftMargin = zft.b(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-    paramString1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    paramString1.setText(paramString2);
-    paramString1.setTextSize(14.0F);
-    paramString1.setTextColor(i);
-    localLinearLayout.addView(paramString1);
-    paramString1 = (LinearLayout.LayoutParams)paramString1.getLayoutParams();
-    paramString1.rightMargin = zft.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    paramString1.leftMargin = zft.b(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-    localLinearLayout.setBackgroundResource(2130845568);
-    paramString1 = localLinearLayout.getBackground();
-    if (paramString1 != null)
-    {
-      paramString1.setColorFilter(new LightingColorFilter(-16777216, paramInt1));
-      paramString1.invalidateSelf();
-    }
-    localLinearLayout.setOnClickListener(new ayqf(this));
-    return localLinearLayout;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 6;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_e_of_type_JavaLangString = "mqq";
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new ayqf(this);
+    this.jdField_a_of_type_Long = paramLong;
+    this.g = paramString;
+    this.h = ayqc.a(paramString);
+    this.jdField_e_of_type_Int = a();
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, View paramView, boolean paramBoolean)
+  protected int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379038);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer = ((LabelContainer)paramView.findViewById(2131369781));
-    this.b = paramView.findViewById(2131369975);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    if (this.g == null) {}
+    for (String str = "";; str = this.g) {
+      return (str + System.currentTimeMillis()).hashCode();
+    }
   }
   
-  public void a(cmd0xac5.NearbyNowData paramNearbyNowData)
+  public final Object a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.getChildCount() > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.removeAllViews();
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public final String a()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask == null) {
+      throw new NullPointerException("Are you forget call buildTask()?");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setSpace(zft.b(this.jdField_a_of_type_AndroidContentContext, 6.0F), zft.b(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-    if (paramNearbyNowData != null) {}
-    for (paramNearbyNowData = paramNearbyNowData.label_info.get();; paramNearbyNowData = null)
-    {
-      if ((paramNearbyNowData != null) && (paramNearbyNowData.size() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TopicLabelCtrl", 2, "updateData, nearbyLabelInfoList.size=" + paramNearbyNowData.size());
-        }
-        int i = 0;
-        while (i < paramNearbyNowData.size())
-        {
-          Object localObject = (cmd0xac5.NearbyLabelInfo)paramNearbyNowData.get(i);
-          localObject = a(((cmd0xac5.NearbyLabelInfo)localObject).label_pic.get().toStringUtf8(), ((cmd0xac5.NearbyLabelInfo)localObject).label_name.get().toStringUtf8(), ((cmd0xac5.NearbyLabelInfo)localObject).font_colour.get(), ((cmd0xac5.NearbyLabelInfo)localObject).label_colour.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.addView((View)localObject, -2, zft.b(this.jdField_a_of_type_AndroidContentContext, 24.0F));
-          i += 1;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(0);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(8);
+    if (!a()) {
       return;
     }
+    b();
+    b();
+  }
+  
+  protected abstract void a(int paramInt, Object... paramVarArgs);
+  
+  protected boolean a()
+  {
+    if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -3, "invalid login data");
+      return false;
+    }
+    return true;
+  }
+  
+  protected void b()
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localHashMap.put("task_state", this.jdField_b_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uiRefer)) {
+      localHashMap.put("business_refer", this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uiRefer);
+    }
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData = localHashMap;
+  }
+  
+  protected boolean b()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -1, "no file path!");
+      return false;
+    }
+    File localFile = new File(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath);
+    if ((localFile == null) || (!localFile.exists()) || (localFile.length() == 0L) || (localFile.isDirectory()))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -2, "file is not exist or empty!");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData.put("task_state", "running_task");
+    return UploadServiceBuilder.getInstance().upload(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask);
   }
 }
 

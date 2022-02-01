@@ -1,17 +1,24 @@
-import android.os.IInterface;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
+import java.util.List;
 
-public abstract interface bnds
-  extends IInterface
+class bnds
+  implements bnhs
 {
-  public abstract void a();
+  bnds(bndn parambndn) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(int paramInt, List<vwc> paramList)
+  {
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
+    }
+    vli.a().dispatch(new bnhq(paramInt, (List)localObject));
+  }
 }
 
 

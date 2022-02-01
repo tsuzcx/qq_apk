@@ -1,14 +1,33 @@
-import com.tencent.theme.SkinData;
+import android.content.Context;
+import com.tencent.image.AbstractGifImage;
 
 public class bbdr
+  extends bbdq
 {
-  public SkinData a;
-  public String a;
-  
-  public bbdr(String paramString, SkinData paramSkinData)
+  protected bbdo a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentThemeSkinData = paramSkinData;
+    return new bbid(this, paramContext);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    super.a(paramString1, paramString2, paramString3);
+    paramString1 = a();
+    if (paramString1 != null) {
+      paramString1.e();
+    }
+  }
+  
+  public void b()
+  {
+    super.b();
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void c()
+  {
+    super.c();
+    AbstractGifImage.resumeAll();
   }
 }
 

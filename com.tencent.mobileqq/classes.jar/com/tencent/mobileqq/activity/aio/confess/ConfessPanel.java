@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import agoy;
+import afig;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,11 +13,11 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import blrp;
+import bjvo;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -28,16 +28,16 @@ import com.tencent.widget.XPanelContainer;
 
 public class ConfessPanel
   extends RelativeLayout
-  implements View.OnClickListener, View.OnLongClickListener, blrp
+  implements View.OnClickListener, View.OnLongClickListener, bjvo
 {
   public static int a;
   public static final int b;
   public static int c;
-  private agoy jdField_a_of_type_Agoy;
+  private afig jdField_a_of_type_Afig;
   private Context jdField_a_of_type_AndroidContentContext;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   public QQAppInterface a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -96,8 +96,8 @@ public class ConfessPanel
   public static int a(BaseChatPie paramBaseChatPie)
   {
     int i = 0;
-    InputLinearLayout localInputLinearLayout = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout;
-    paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+    InputLinearLayout localInputLinearLayout = paramBaseChatPie.mInputBar;
+    paramBaseChatPie = paramBaseChatPie.panelicons;
     if (localInputLinearLayout != null) {
       i = 0 + localInputLinearLayout.getHeight();
     }
@@ -124,10 +124,10 @@ public class ConfessPanel
   {
     if (!this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Agoy = new agoy(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = this.jdField_a_of_type_Agoy.a(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      this.jdField_a_of_type_Afig = new afig(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView = this.jdField_a_of_type_Afig.a(this.jdField_a_of_type_AndroidWidgetFrameLayout);
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine().a(this.jdField_a_of_type_Agoy);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine().a(this.jdField_a_of_type_Afig);
       this.jdField_b_of_type_Boolean = true;
     }
   }
@@ -144,8 +144,8 @@ public class ConfessPanel
         }
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.removeAllViews();
       }
-      if (this.jdField_a_of_type_Agoy != null) {
-        this.jdField_a_of_type_Agoy.a();
+      if (this.jdField_a_of_type_Afig != null) {
+        this.jdField_a_of_type_Afig.a();
       }
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
       this.jdField_b_of_type_Boolean = false;
@@ -184,10 +184,10 @@ public class ConfessPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, jdField_b_of_type_Int);
     jdField_a_of_type_Int = XPanelContainer.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364945));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364972));
   }
   
   public void a(boolean paramBoolean)
@@ -220,7 +220,7 @@ public class ConfessPanel
           jdField_c_of_type_Int = i;
           QLog.d("ConfessPanel", 2, "getPanelHeight , sLastScreenWidth:" + jdField_c_of_type_Int + " winwidth:" + i);
           int j = a(i);
-          a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, j);
+          a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, j);
           QLog.d("ConfessPanel", 2, "getPanelHeight , sLastScreenWidth:" + jdField_c_of_type_Int + " winwidth:" + i + " nWinHeight:" + j);
           return this.f;
         }
@@ -243,11 +243,11 @@ public class ConfessPanel
     }
     if (this.jdField_c_of_type_Boolean)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getStringExtra("url");
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().getIntent().getStringExtra("url");
       if (QLog.isColorLevel()) {
         QLog.d("ConfessPanel", 2, "onShow url :" + str);
       }
-      this.jdField_a_of_type_Agoy.a(str);
+      this.jdField_a_of_type_Afig.a(str);
     }
   }
   
@@ -273,7 +273,7 @@ public class ConfessPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessPanel
  * JD-Core Version:    0.7.0.1
  */

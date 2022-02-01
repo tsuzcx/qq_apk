@@ -2375,9 +2375,10 @@ public class VideoFilterUtil
   
   private static List<RenderItem> createStyleChildRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
+    ArrayList localArrayList;
     if ((paramVideoMaterial != null) && (paramVideoMaterial.getFaceStyleItemList() != null) && (paramVideoMaterial.getFaceStyleItemList().size() != 0))
     {
-      ArrayList localArrayList = new ArrayList();
+      localArrayList = new ArrayList();
       FaceStyleItem localFaceStyleItem = (FaceStyleItem)paramVideoMaterial.getFaceStyleItemList().get(0);
       Object localObject = paramVideoMaterial.getCustomFilterList();
       if ((localFaceStyleItem.styleChangeType != FaceStyleItem.STYLE_CHANGE_TYPE.GENDER_SWITCH.value) && (isTNNAvailable(localFaceStyleItem)))
@@ -2387,25 +2388,33 @@ public class VideoFilterUtil
         if (!FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.isModelLoaded(6)) {
           loadTNNModel(localFaceStyleItem, 6);
         }
-        localObject = new StyleChildFilter(localFaceStyleItem, (List)localObject);
-        ((StyleChildFilter)localObject).setSegmentMode(paramVideoMaterial.isSegmentRequired());
-        if ((localFaceStyleItem.stickerItemList != null) && (localFaceStyleItem.stickerItemList.size() > 0))
+        try
         {
-          paramVideoMaterial = new StyleChildTriggerCtrlItem();
-          paramVideoMaterial.addItem(localFaceStyleItem);
-          paramTriggerManager.addTriggers(paramVideoMaterial);
-          localArrayList.add(new RenderItem((AEFilterI)localObject, paramVideoMaterial));
+          localObject = new StyleChildFilter(localFaceStyleItem, (List)localObject);
+          ((StyleChildFilter)localObject).setSegmentMode(paramVideoMaterial.isSegmentRequired());
+          if ((localFaceStyleItem.stickerItemList != null) && (localFaceStyleItem.stickerItemList.size() > 0))
+          {
+            paramVideoMaterial = new StyleChildTriggerCtrlItem();
+            paramVideoMaterial.addItem(localFaceStyleItem);
+            paramTriggerManager.addTriggers(paramVideoMaterial);
+            localArrayList.add(new RenderItem((AEFilterI)localObject, paramVideoMaterial));
+          }
+          else
+          {
+            paramVideoMaterial = new TriggerCtrlItem(localFaceStyleItem);
+            paramTriggerManager.addTriggers(paramVideoMaterial);
+            localArrayList.add(new RenderItem((AEFilterI)localObject, paramVideoMaterial));
+          }
         }
-        for (;;)
+        catch (Exception paramVideoMaterial)
         {
-          return localArrayList;
-          paramVideoMaterial = new TriggerCtrlItem(localFaceStyleItem);
-          paramTriggerManager.addTriggers(paramVideoMaterial);
-          localArrayList.add(new RenderItem((AEFilterI)localObject, paramVideoMaterial));
+          LogUtils.e("createStyleChildRenderItems", "EXCEPTION: " + paramVideoMaterial + "," + paramVideoMaterial.getMessage());
+          return null;
         }
       }
     }
     return null;
+    return localArrayList;
   }
   
   public static RenderItem createStyleRenderItem(StyleFilterSettingJsonBean paramStyleFilterSettingJsonBean)

@@ -1,18 +1,44 @@
-import java.util.Iterator;
-import java.util.Set;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xlh
-  extends wjd
+public class xlh
+  extends QQUIEventReceiver<xlc, voc>
 {
-  xlh(xlg paramxlg) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public xlh(xlc paramxlc)
   {
-    yuk.a("Q.qqstory.playernew.StoryPlayerImpl", "QQStoryObserver, onUpdate, type=%d, isSuccess=%s, data=%s", Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject);
-    Iterator localIterator = xlg.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((wjd)localIterator.next()).onUpdate(paramInt, paramBoolean, paramObject);
+    super(paramxlc);
+  }
+  
+  public void a(@NonNull xlc paramxlc, @NonNull voc paramvoc)
+  {
+    if (paramvoc.a.isSuccess())
+    {
+      if (!paramvoc.a()) {
+        break label25;
+      }
+      xvv.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
     }
+    label25:
+    do
+    {
+      do
+      {
+        return;
+        if (paramvoc.c())
+        {
+          xvv.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramvoc.toString());
+          return;
+        }
+      } while (!paramvoc.b());
+      xvv.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramvoc.toString());
+    } while (paramvoc.b == null);
+    xlc.a(paramxlc, true);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return voc.class;
   }
 }
 

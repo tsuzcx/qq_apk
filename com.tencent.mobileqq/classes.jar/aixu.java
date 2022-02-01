@@ -1,12 +1,13 @@
-public abstract interface aixu
+public class aixu
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public String a;
   
-  public abstract void a(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public aixu(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

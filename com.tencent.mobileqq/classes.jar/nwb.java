@@ -1,22 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nwb
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public nwb(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public nwb(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.setResult(-1);
-    PublicAccountAdvertisementActivity.g(this.a);
-    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
+    this.a.o = false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

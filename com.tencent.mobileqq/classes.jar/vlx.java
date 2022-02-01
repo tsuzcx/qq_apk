@@ -1,23 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vlx
-  extends RecyclerView.ViewHolder
+class vlx
+  extends SimpleJob<Object>
 {
-  QCircleContentVideo jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo;
-  
-  public vlx(vlr paramvlr, View paramView)
+  vlx(vls paramvls, String paramString1, String paramString2, vmb paramvmb)
   {
-    super(paramView);
-    paramvlr = ((FrameLayout)paramView).getChildAt(0);
-    if ((paramvlr instanceof QCircleContentVideo))
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo = ((QCircleContentVideo)paramvlr);
-      return;
-    }
-    ((FrameLayout)paramView).removeAllViews();
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vls.a(this.jdField_a_of_type_Vls, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vmb);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import alwy;
+import akun;
 
 class CameraFilterGLView$3$2
   implements Runnable
@@ -9,7 +9,7 @@ class CameraFilterGLView$3$2
   
   public void run()
   {
-    alwy.a(2);
+    akun.a(2);
   }
 }
 

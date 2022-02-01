@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-
-class aryx
-  implements DialogInterface.OnKeyListener
+public abstract interface aryx
 {
-  aryx(aryw paramaryw) {}
+  public abstract void d();
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return (paramInt == 84) || (paramInt == 4);
-  }
+  public abstract void e();
+  
+  public abstract void n();
+  
+  public abstract void s();
+  
+  public abstract void t();
 }
 
 

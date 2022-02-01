@@ -1,32 +1,84 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import java.util.Map;
 
 public class adhg
-  extends adic
+  implements aeex
 {
-  public int a()
+  public adhg(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return super.a() + 2;
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.a.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (ForwardRecentActivity.a(this.a) != null) {
+        ForwardRecentActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      this.a.a.setVisibility(0);
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public void onEditTextFocusChanged(boolean paramBoolean)
   {
-    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
-    return true;
+    if ((paramBoolean) && (ForwardRecentActivity.a(this.a) == null))
+    {
+      ForwardRecentActivity.a(this.a, ContactSearchFragment.a(7, 2097177, null, null, ForwardRecentActivity.a(this.a)));
+      Object localObject = new ArrayList();
+      Iterator localIterator = ForwardRecentActivity.a(this.a).values().iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((ResultRecord)localIterator.next()).uin);
+      }
+      ForwardRecentActivity.a(this.a).a((List)localObject, (List)localObject);
+      localObject = this.a.getSupportFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).add(2131376347, ForwardRecentActivity.a(this.a));
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
+    }
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void onItemDeleted(ResultRecord paramResultRecord)
   {
-    return (paramElem.common_elem.has()) && (14 == paramElem.common_elem.uint32_service_type.get());
+    if (paramResultRecord == null) {}
+    for (;;)
+    {
+      return;
+      ForwardRecentActivity.a(this.a, paramResultRecord.uin, paramResultRecord.getUinType());
+      int j = ForwardRecentActivity.a(this.a).getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = ForwardRecentActivity.a(this.a).getChildAt(i);
+        if ((localObject instanceof ForwardRecentItemView))
+        {
+          localObject = (ForwardRecentItemView)localObject;
+          if ((((ForwardRecentItemView)localObject).a.uinType == paramResultRecord.uinType) && (((ForwardRecentItemView)localObject).a.uin.equals(paramResultRecord.uin))) {
+            ((ForwardRecentItemView)localObject).a(false);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adhg
  * JD-Core Version:    0.7.0.1
  */

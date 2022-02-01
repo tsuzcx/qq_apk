@@ -1,17 +1,15 @@
-import com.tencent.util.Pair;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class belu
-  implements Comparator<Pair<String, String>>
+  implements DialogInterface.OnClickListener
 {
-  public int a(Pair<String, String> paramPair1, Pair<String, String> paramPair2)
+  public belu(ReciteRecordLayout paramReciteRecordLayout) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = ((String)paramPair1.first).compareTo((String)paramPair2.first);
-    int i = j;
-    if (j == 0) {
-      i = ((String)paramPair1.second).compareTo((String)paramPair2.second);
-    }
-    return i;
+    paramDialogInterface.dismiss();
   }
 }
 

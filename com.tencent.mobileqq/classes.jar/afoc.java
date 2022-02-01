@@ -1,35 +1,108 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class afoc
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public afoc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  private static int jdField_a_of_type_Int;
+  private static BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private long jdField_a_of_type_Long;
+  private afoe jdField_a_of_type_Afoe;
+  private afof jdField_a_of_type_Afof;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  public boolean a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private boolean a(List<MessageRecord> paramList)
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "containCurMsg  mOriginUniSeq:" + this.jdField_a_of_type_Long);
+    }
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      this.a.app.d(1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("MergeForwardRevokeHelper", 2, "containCurMsg  mr.uniseq:" + localMessageRecord.uniseq);
+        }
+        if (localMessageRecord.uniseq == this.jdField_a_of_type_Long) {
+          return true;
+        }
       }
     }
-    for (;;)
+    return false;
+  }
+  
+  private void d(BaseActivity paramBaseActivity)
+  {
+    ViewGroup localViewGroup = (ViewGroup)paramBaseActivity.getWindow().getDecorView();
+    ImageView localImageView = new ImageView(paramBaseActivity);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localImageView.setImageResource(2130845138);
+    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    localViewGroup.addView(localImageView, localLayoutParams);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(paramBaseActivity, 230).setMessage(amtj.a(2131705673)).setPositiveButton(paramBaseActivity.getString(2131693580), new afod(this, paramBaseActivity));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if (this.jdField_a_of_type_Afoe != null) {
+      this.jdField_a_of_type_Afoe.a();
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    jdField_a_of_type_Int += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "onCreate");
+    }
+    if ((paramBaseActivity.getIntent() != null) && (paramBaseActivity.getAppInterface() != null))
     {
-      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      this.a.app.d(0);
-      break;
-      label78:
-      i = 0;
+      AppInterface localAppInterface = paramBaseActivity.getAppInterface();
+      afof localafof = new afof(this, paramBaseActivity, null);
+      this.jdField_a_of_type_Afof = localafof;
+      localAppInterface.addObserver(localafof);
+      this.jdField_a_of_type_Long = paramBaseActivity.getIntent().getLongExtra("origin_merge_structing_msg_uniseq", -1L);
+    }
+  }
+  
+  public void b(BaseActivity paramBaseActivity)
+  {
+    jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "onResume");
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void c(BaseActivity paramBaseActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MergeForwardRevokeHelper", 2, "onDestroy");
+    }
+    if (paramBaseActivity.getAppInterface() != null) {
+      paramBaseActivity.getAppInterface().removeObserver(this.jdField_a_of_type_Afof);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+    int i = jdField_a_of_type_Int - 1;
+    jdField_a_of_type_Int = i;
+    if (i <= 0) {
+      jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
     }
   }
 }

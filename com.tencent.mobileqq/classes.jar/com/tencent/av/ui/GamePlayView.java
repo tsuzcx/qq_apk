@@ -11,19 +11,19 @@ import com.tencent.av.gameplay.ARNativeBridge;
 import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.mobileqq.armap.ARGLSurfaceView.SurfaceStateListener;
 import com.tencent.qphone.base.util.QLog;
-import lbj;
-import ljc;
-import mes;
+import lba;
+import liw;
+import meb;
 
 public class GamePlayView
   extends FrameLayout
-  implements ljc
+  implements liw
 {
   private long jdField_a_of_type_Long;
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected VideoAppInterface a;
   private ARNativeBridge jdField_a_of_type_ComTencentAvGameplayARNativeBridge;
-  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new mes(this);
+  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new meb(this);
   private ARGLSurfaceView jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView;
   
   public GamePlayView(Context paramContext, AttributeSet paramAttributeSet)
@@ -45,8 +45,8 @@ public class GamePlayView
   public void a(VideoAppInterface paramVideoAppInterface, Activity paramActivity, String paramString, int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    lbj.c("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367596));
+    lba.f("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367625));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge = new ARNativeBridge();
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge.native_updateResourcePath(paramString);

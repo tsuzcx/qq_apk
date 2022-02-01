@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agej;
-import agpd;
-import agpn;
-import agpo;
-import agpp;
-import agpr;
-import agps;
-import agpu;
-import agpv;
-import agre;
-import agrj;
+import afkx;
+import aflh;
+import afli;
+import aflj;
+import afll;
+import aflm;
+import aflo;
+import aflp;
+import afmy;
+import afnd;
+import amtj;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,21 +26,21 @@ import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anzj;
-import azpw;
-import bbxm;
-import bdll;
-import bhjc;
-import bhlq;
-import bhpc;
-import blrp;
+import ayde;
+import barh;
+import bcef;
+import bfur;
+import bjvo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 import com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
@@ -48,15 +48,15 @@ import com.tencent.widget.XPanelContainer;
 
 public class DoodlePanel
   extends RelativeLayout
-  implements View.OnClickListener, View.OnLongClickListener, blrp
+  implements View.OnClickListener, View.OnLongClickListener, bjvo
 {
   public static int a;
   public static final int b;
   private long jdField_a_of_type_Long;
-  private agpv jdField_a_of_type_Agpv;
+  private aflp jdField_a_of_type_Aflp;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private DoodleLayout jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout;
   private ColorPicker jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker;
   private GifTemplatePicker jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker;
@@ -72,7 +72,7 @@ public class DoodlePanel
     Resources localResources = BaseApplicationImpl.sApplication.getResources();
     DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
     int i = (int)(Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) * 1.0F / 1.132931F);
-    jdField_b_of_type_Int = agej.a(81.0F, localResources) + i;
+    jdField_b_of_type_Int = AIOUtils.dp2px(81.0F, localResources) + i;
   }
   
   public DoodlePanel(Context paramContext)
@@ -86,7 +86,7 @@ public class DoodlePanel
   }
   
   /* Error */
-  private boolean a(String paramString, agpd paramagpd)
+  private boolean a(String paramString, afkx paramafkx)
   {
     // Byte code:
     //   0: aconst_null
@@ -100,82 +100,82 @@ public class DoodlePanel
     //   13: aload_2
     //   14: ifnull +10 -> 24
     //   17: aload_1
-    //   18: invokevirtual 101	java/lang/String:length	()I
+    //   18: invokevirtual 102	java/lang/String:length	()I
     //   21: ifne +5 -> 26
     //   24: iconst_0
     //   25: ireturn
     //   26: aload 7
     //   28: astore 5
-    //   30: new 103	java/io/File
+    //   30: new 104	java/io/File
     //   33: dup
     //   34: aload_1
-    //   35: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
+    //   35: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
     //   38: astore_1
     //   39: aload 7
     //   41: astore 5
     //   43: aload_1
-    //   44: invokevirtual 110	java/io/File:getParentFile	()Ljava/io/File;
-    //   47: invokevirtual 114	java/io/File:exists	()Z
+    //   44: invokevirtual 111	java/io/File:getParentFile	()Ljava/io/File;
+    //   47: invokevirtual 115	java/io/File:exists	()Z
     //   50: ifne +15 -> 65
     //   53: aload 7
     //   55: astore 5
     //   57: aload_1
-    //   58: invokevirtual 110	java/io/File:getParentFile	()Ljava/io/File;
-    //   61: invokevirtual 117	java/io/File:mkdirs	()Z
+    //   58: invokevirtual 111	java/io/File:getParentFile	()Ljava/io/File;
+    //   61: invokevirtual 118	java/io/File:mkdirs	()Z
     //   64: pop
     //   65: aload 7
     //   67: astore 5
-    //   69: new 119	java/io/BufferedOutputStream
+    //   69: new 120	java/io/BufferedOutputStream
     //   72: dup
-    //   73: new 121	java/io/FileOutputStream
+    //   73: new 122	java/io/FileOutputStream
     //   76: dup
     //   77: aload_1
-    //   78: invokespecial 124	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   81: invokespecial 127	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   78: invokespecial 125	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   81: invokespecial 128	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   84: astore_1
     //   85: aload_2
-    //   86: new 129	agpt
+    //   86: new 130	afln
     //   89: dup
     //   90: aload_0
     //   91: aload_1
-    //   92: invokespecial 132	agpt:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/DoodlePanel;Ljava/io/OutputStream;)V
-    //   95: invokestatic 137	agpj:a	(Lagpd;Lagpk;)Z
+    //   92: invokespecial 133	afln:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/DoodlePanel;Ljava/io/OutputStream;)V
+    //   95: invokestatic 138	afld:a	(Lafkx;Lafle;)Z
     //   98: pop
     //   99: aload_1
-    //   100: invokevirtual 142	java/io/OutputStream:close	()V
+    //   100: invokevirtual 143	java/io/OutputStream:close	()V
     //   103: iconst_0
     //   104: ifeq +11 -> 115
-    //   107: new 144	java/lang/NullPointerException
+    //   107: new 145	java/lang/NullPointerException
     //   110: dup
-    //   111: invokespecial 146	java/lang/NullPointerException:<init>	()V
+    //   111: invokespecial 147	java/lang/NullPointerException:<init>	()V
     //   114: athrow
     //   115: iconst_1
     //   116: istore_3
-    //   117: ldc 148
+    //   117: ldc 149
     //   119: iconst_2
-    //   120: new 150	java/lang/StringBuilder
+    //   120: new 151	java/lang/StringBuilder
     //   123: dup
-    //   124: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   127: ldc 153
-    //   129: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokestatic 163	java/lang/System:currentTimeMillis	()J
-    //   135: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   124: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   127: ldc 154
+    //   129: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokestatic 164	java/lang/System:currentTimeMillis	()J
+    //   135: invokevirtual 167	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   141: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   144: iload_3
     //   145: ireturn
     //   146: astore_1
-    //   147: ldc 148
+    //   147: ldc 149
     //   149: iconst_2
-    //   150: new 150	java/lang/StringBuilder
+    //   150: new 151	java/lang/StringBuilder
     //   153: dup
-    //   154: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   157: ldc 178
-    //   159: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   157: ldc 179
+    //   159: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: aload_1
-    //   163: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   169: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   163: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   172: iload 4
     //   174: istore_3
     //   175: goto -58 -> 117
@@ -185,82 +185,85 @@ public class DoodlePanel
     //   182: aload_1
     //   183: astore 5
     //   185: aload_2
-    //   186: invokevirtual 184	java/lang/Exception:printStackTrace	()V
+    //   186: invokevirtual 185	java/lang/Exception:printStackTrace	()V
     //   189: aload_1
     //   190: astore 5
-    //   192: ldc 148
+    //   192: ldc 149
     //   194: iconst_2
-    //   195: new 150	java/lang/StringBuilder
+    //   195: new 151	java/lang/StringBuilder
     //   198: dup
-    //   199: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   202: ldc 186
-    //   204: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   202: ldc 187
+    //   204: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: aload_2
-    //   208: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   208: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   211: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   214: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   217: iload 4
     //   219: istore_3
     //   220: aload_1
     //   221: ifnull -104 -> 117
     //   224: aload_1
-    //   225: invokevirtual 142	java/io/OutputStream:close	()V
+    //   225: invokevirtual 143	java/io/OutputStream:close	()V
     //   228: iload 4
     //   230: istore_3
     //   231: goto -114 -> 117
     //   234: astore_1
-    //   235: ldc 148
+    //   235: ldc 149
     //   237: iconst_2
-    //   238: new 150	java/lang/StringBuilder
+    //   238: new 151	java/lang/StringBuilder
     //   241: dup
-    //   242: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   245: ldc 178
-    //   247: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   245: ldc 179
+    //   247: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   250: aload_1
-    //   251: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   251: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   260: iload 4
     //   262: istore_3
     //   263: goto -146 -> 117
     //   266: astore_1
     //   267: aload 5
-    //   269: ifnull +8 -> 277
-    //   272: aload 5
-    //   274: invokevirtual 142	java/io/OutputStream:close	()V
-    //   277: aload_1
-    //   278: athrow
-    //   279: astore_2
-    //   280: ldc 148
-    //   282: iconst_2
-    //   283: new 150	java/lang/StringBuilder
-    //   286: dup
-    //   287: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   290: ldc 178
-    //   292: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: aload_2
-    //   296: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   299: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   302: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   305: goto -28 -> 277
-    //   308: astore_2
-    //   309: aload_1
-    //   310: astore 5
-    //   312: aload_2
-    //   313: astore_1
-    //   314: goto -47 -> 267
-    //   317: astore_2
-    //   318: goto -136 -> 182
+    //   269: astore_2
+    //   270: aload_2
+    //   271: ifnull +7 -> 278
+    //   274: aload_2
+    //   275: invokevirtual 143	java/io/OutputStream:close	()V
+    //   278: aload_1
+    //   279: athrow
+    //   280: astore_2
+    //   281: ldc 149
+    //   283: iconst_2
+    //   284: new 151	java/lang/StringBuilder
+    //   287: dup
+    //   288: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   291: ldc 179
+    //   293: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   296: aload_2
+    //   297: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   300: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   303: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   306: goto -28 -> 278
+    //   309: astore 5
+    //   311: aload_1
+    //   312: astore_2
+    //   313: aload 5
+    //   315: astore_1
+    //   316: goto -46 -> 270
+    //   319: astore_2
+    //   320: goto -138 -> 182
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	321	0	this	DoodlePanel
-    //   0	321	1	paramString	String
-    //   0	321	2	paramagpd	agpd
+    //   0	323	0	this	DoodlePanel
+    //   0	323	1	paramString	String
+    //   0	323	2	paramafkx	afkx
     //   116	147	3	bool1	boolean
     //   7	254	4	bool2	boolean
-    //   28	283	5	localObject1	Object
-    //   4	176	6	localObject2	Object
-    //   1	65	7	localObject3	Object
+    //   28	240	5	localObject1	Object
+    //   309	5	5	localObject2	Object
+    //   4	176	6	localObject3	Object
+    //   1	65	7	localObject4	Object
     // Exception table:
     //   from	to	target	type
     //   107	115	146	java/lang/Exception
@@ -275,9 +278,9 @@ public class DoodlePanel
     //   69	85	266	finally
     //   185	189	266	finally
     //   192	217	266	finally
-    //   272	277	279	java/lang/Exception
-    //   85	103	308	finally
-    //   85	103	317	java/lang/Exception
+    //   274	278	280	java/lang/Exception
+    //   85	103	309	finally
+    //   85	103	319	java/lang/Exception
   }
   
   private boolean b()
@@ -346,7 +349,7 @@ public class DoodlePanel
   
   public void a()
   {
-    this.jdField_a_of_type_Agpv = null;
+    this.jdField_a_of_type_Aflp = null;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.b();
@@ -365,17 +368,17 @@ public class DoodlePanel
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
   
-  public void a(agre paramagre)
+  public void a(afmy paramafmy)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout == null) || (paramagre == null)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout == null) || (paramafmy == null)) {
       return;
     }
-    if (paramagre.jdField_a_of_type_Int == 0)
+    if (paramafmy.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setColor(paramagre.c);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setColor(paramafmy.c);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setTexture(paramagre.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setTexture(paramafmy.jdField_b_of_type_Int);
   }
   
   void a(Context paramContext, int paramInt)
@@ -389,51 +392,51 @@ public class DoodlePanel
       {
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(paramContext, 2131755824);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(paramContext, 2131755826);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559572);
-        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372578)).setText(paramInt);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559574);
+        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372546)).setText(paramInt);
       }
       return;
     }
     catch (Throwable paramContext)
     {
-      azpw.b("PIC_TAG_ERROR", "DoodlePanel showProgress ", paramContext.toString());
+      ayde.b("PIC_TAG_ERROR", "DoodlePanel showProgress ", paramContext.toString());
     }
   }
   
-  public void a(Bitmap paramBitmap, agpd paramagpd, int paramInt)
+  public void a(Bitmap paramBitmap, afkx paramafkx, int paramInt)
   {
     QLog.d("Scribble", 2, "sendDoodleMessage begin:" + System.currentTimeMillis());
-    if ((paramBitmap == null) || (paramagpd == null)) {
+    if ((paramBitmap == null) || (paramafkx == null)) {
       return;
     }
-    a(getContext(), 2131694337);
+    a(getContext(), 2131694451);
     QLog.d("Scribble", 2, "sendDoodleMessage before SendPapScribbleMsg:" + System.currentTimeMillis());
-    bbxm.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBitmap, paramInt, new agps(this, paramagpd));
+    barh.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType, paramBitmap, paramInt, new aflm(this, paramafkx));
   }
   
-  public void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, long paramLong, int paramInt, XPanelContainer paramXPanelContainer, agpv paramagpv)
+  public void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, long paramLong, int paramInt, XPanelContainer paramXPanelContainer, aflp paramaflp)
   {
     int i = 1;
-    this.jdField_a_of_type_Agpv = paramagpv;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_Aflp = paramaflp;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     jdField_a_of_type_Int = XPanelContainer.jdField_a_of_type_Int;
     QLog.d("Scribble", 2, "mOriginPanelHeight:" + jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker = ((ColorPicker)super.findViewById(2131364725));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.setListener(new agpn(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363931));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker = ((ColorPicker)super.findViewById(2131364756));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.setListener(new aflh(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363957));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker = ((GifTemplatePicker)findViewById(2131367556));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker.setListener(new agpo(this));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131369430));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker = ((GifTemplatePicker)findViewById(2131367585));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker.setListener(new afli(this));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131369415));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout = ((DoodleLayout)findViewById(2131365676));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setDoodleLayoutListener(new agpp(this));
-    paramQQAppInterface = bhjc.a(getContext(), "aio_doodle_colorpicker_select");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout = ((DoodleLayout)findViewById(2131365709));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setDoodleLayoutListener(new aflj(this));
+    paramQQAppInterface = SharePreferenceUtils.get(getContext(), "aio_doodle_colorpicker_select");
     if (!TextUtils.isEmpty(paramQQAppInterface))
     {
       paramQQAppInterface = paramQQAppInterface.split(";");
@@ -442,9 +445,9 @@ public class DoodlePanel
         paramInt = Integer.valueOf(paramQQAppInterface[0]).intValue();
         int j = Integer.valueOf(paramQQAppInterface[1]).intValue();
         int k = Integer.valueOf(paramQQAppInterface[2]).intValue();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.b(new agre(paramInt, j, k), false);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.b(new afmy(paramInt, j, k), false);
       }
-      paramQQAppInterface = bhjc.a(getContext(), "aio_doodle_template_picker_select");
+      paramQQAppInterface = SharePreferenceUtils.get(getContext(), "aio_doodle_template_picker_select");
     }
     try
     {
@@ -475,15 +478,15 @@ public class DoodlePanel
       if (paramInt >= this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker.b()) {
         break label446;
       }
-      if (((agrj)this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker.a(paramInt)).jdField_b_of_type_Int == i)
+      if (((afnd)this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker.a(paramInt)).jdField_b_of_type_Int == i)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlGifTemplatePicker.a(paramInt, false);
         e();
         if (AppSetting.c)
         {
-          this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(anzj.a(2131702309));
-          this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(anzj.a(2131702310));
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setContentDescription(anzj.a(2131702311));
+          this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(amtj.a(2131702544));
+          this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(amtj.a(2131702545));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.setContentDescription(amtj.a(2131702546));
         }
         return;
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.a(0, false);
@@ -510,13 +513,13 @@ public class DoodlePanel
   public boolean a()
   {
     Context localContext = getContext();
-    if ((a(true) > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.g() == 0)) {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B8", "0X80081B8", 1, 0, "", "", "", "");
+    if ((a(true) > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurrentPanel() == 0)) {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B8", "0X80081B8", 1, 0, "", "", "", "");
     }
-    if ((a(true) > 10) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.g() == 0))
+    if ((a(true) > 10) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurrentPanel() == 0))
     {
-      agpu localagpu = new agpu(this);
-      bhlq.a(localContext, 230, null, localContext.getString(2131689846), localContext.getString(2131689844), localContext.getString(2131689845), localagpu, localagpu).show();
+      aflo localaflo = new aflo(this);
+      bfur.a(localContext, 230, null, localContext.getString(2131689858), localContext.getString(2131689856), localContext.getString(2131689857), localaflo, localaflo).show();
       return true;
     }
     return false;
@@ -538,7 +541,7 @@ public class DoodlePanel
           if ((i != j) && (j > 0))
           {
             QLog.d("Scribble", 2, "getPanelHeight , disWidth:" + i + " winwidth:" + j);
-            int k = (int)(j * 1.0F / 1.132931F) + agej.a(81.0F, localResources);
+            int k = (int)(j * 1.0F / 1.132931F) + AIOUtils.dp2px(81.0F, localResources);
             QLog.d("Scribble", 2, "getPanelHeight , disWidth:" + i + " winwidth:" + j + " nWinHeight:" + k);
             return k;
           }
@@ -557,7 +560,7 @@ public class DoodlePanel
     this.c = b();
     XPanelContainer.jdField_a_of_type_Int = this.c;
     QLog.d("Scribble", 2, "set mExternalPanelheight :" + XPanelContainer.jdField_a_of_type_Int);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B3", "0X80081B3", 1, 0, "", "", "", "");
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B3", "0X80081B3", 1, 0, "", "", "", "");
   }
   
   public void c()
@@ -584,26 +587,26 @@ public class DoodlePanel
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131369430)
+    if (i == 2131369415)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.b();
       }
       e();
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B6", "0X80081B6", 1, 0, "", "", "", "");
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B6", "0X80081B6", 1, 0, "", "", "", "");
     }
     Bitmap localBitmap;
-    agpd localagpd;
+    afkx localafkx;
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i == 2131363931) {
+      if (i == 2131363957) {
         if (!b())
         {
           QLog.d("Scribble", 2, " onsend error, invalid click, return");
         }
-        else if (this.jdField_a_of_type_Agpv != null)
+        else if (this.jdField_a_of_type_Aflp != null)
         {
           localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a();
           if (localBitmap == null)
@@ -612,8 +615,8 @@ public class DoodlePanel
           }
           else
           {
-            localagpd = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a();
-            if (localagpd != null) {
+            localafkx = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a();
+            if (localafkx != null) {
               break;
             }
             QLog.d("Scribble", 2, " onsend error : doodleParam is null");
@@ -621,7 +624,7 @@ public class DoodlePanel
         }
       }
     }
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081BB", "0X80081BB", 1, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a(false, true), "", "", "", "");
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081BB", "0X80081BB", 1, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a(false, true), "", "", "", "");
     i = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a();
     String str = "";
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a() != null) {
@@ -632,9 +635,9 @@ public class DoodlePanel
     }
     for (;;)
     {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008326", "0X8008326", 0, 0, "", "", String.valueOf(i), str);
-      a(localBitmap, localagpd, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a());
-      this.jdField_a_of_type_Agpv.a(localBitmap, localagpd, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a());
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008326", "0X8008326", 0, 0, "", "", String.valueOf(i), str);
+      a(localBitmap, localafkx, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a());
+      this.jdField_a_of_type_Aflp.onSend(localBitmap, localafkx, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleLayout.a());
       break;
     }
   }
@@ -669,12 +672,12 @@ public class DoodlePanel
   
   public boolean onLongClick(View paramView)
   {
-    if (paramView.getId() == 2131369430)
+    if (paramView.getId() == 2131369415)
     {
-      paramView = new agpr(this);
-      bhlq.a(getContext(), 230, null, getContext().getString(2131689849), getContext().getString(2131689847), getContext().getString(2131689848), paramView, paramView).show();
+      paramView = new afll(this);
+      bfur.a(getContext(), 230, null, getContext().getString(2131689861), getContext().getString(2131689859), getContext().getString(2131689860), paramView, paramView).show();
     }
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B7", "0X80081B7", 1, 0, "", "", "", "");
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80081B7", "0X80081B7", 1, 0, "", "", "", "");
     return true;
   }
   

@@ -1,21 +1,21 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.mobileqq.tofumsg.DrawCircleCornerImageView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ahus
-  extends agen
+public class ahus
+  implements MediaPlayer.OnErrorListener
 {
-  public long a;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  DrawCircleCornerImageView jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView;
-  public String a;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View c;
+  public ahus(BlessActivity paramBlessActivity) {}
   
-  ahus(ahur paramahur) {}
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+    }
+    BlessActivity.a(this.a, true);
+    return true;
+  }
 }
 
 

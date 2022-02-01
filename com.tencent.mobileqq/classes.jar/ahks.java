@@ -1,18 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class ahks
-  extends ahkx
+  implements Comparator<MessageRecord>
 {
-  ahks(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahks(ahkr paramahkr) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return new ahwi(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, (TroopChatPie)ahgk.a(this.a));
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

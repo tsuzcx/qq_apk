@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
+import amoo;
 import android.text.TextUtils;
-import antf;
-import antz;
-import axxb;
-import bhjx;
+import awkj;
+import bftf;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -38,9 +38,9 @@ public class HotChatInfo
   public static final int STATE_JOINED = 0;
   public static final int STATE_KICK_OUT = 6;
   public static final int STATE_LEFT_AS_OVERCOUNT = 9;
+  public static final int STATE_LEFT_LONG_TIME_NOT_SAY = 1;
+  public static final int STATE_LEFT_LONG_WAY_TO_GO = 3;
   public static final int STATE_LEFT_NORMAL = 4;
-  public static final int STATE_LEFT__LONG_TIME_NOT_SAY = 1;
-  public static final int STATE_LEFT__LONG_WAY_TO_GO = 3;
   public static final int STATE_SHELL = 5;
   public static final int SUB_TYPE_PTT = 1;
   private static final long serialVersionUID = 4511795799007124151L;
@@ -122,7 +122,7 @@ public class HotChatInfo
       localHotChatInfo.lLastMsgSeq = 0L;
       localHotChatInfo.extra1 = "";
       if (QLog.isDevelopLevel()) {
-        axxb.a("PttShow", "createHotChat_JSONObject", new Object[] { localHotChatInfo });
+        awkj.a("PttShow", "createHotChat_JSONObject", new Object[] { localHotChatInfo });
       }
       return localHotChatInfo;
       bool = false;
@@ -141,8 +141,8 @@ public class HotChatInfo
     HotChatInfo localHotChatInfo = new HotChatInfo();
     localHotChatInfo.faceId = paramWifiPOIInfo.uint32_face_id.get();
     localHotChatInfo.memberCount = paramWifiPOIInfo.uint32_visitor_num.get();
-    localHotChatInfo.troopUin = String.valueOf(bhjx.a(paramWifiPOIInfo.uint32_group_code.get()));
-    localHotChatInfo.troopCode = String.valueOf(bhjx.a(paramWifiPOIInfo.uint32_group_uin.get()));
+    localHotChatInfo.troopUin = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_code.get()));
+    localHotChatInfo.troopCode = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_uin.get()));
     localHotChatInfo.isWifiHotChat = paramBoolean;
     localHotChatInfo.name = paramWifiPOIInfo.bytes_name.get().toStringUtf8();
     localHotChatInfo.signature = paramWifiPOIInfo.bytes_sig.get().toStringUtf8();
@@ -198,7 +198,7 @@ public class HotChatInfo
       localHotChatInfo.isRobotHotChat = paramBoolean;
       localHotChatInfo.robotUin = paramWifiPOIInfo.uint64_robot_uin.get();
       if (QLog.isDevelopLevel()) {
-        axxb.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
+        awkj.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
       }
       return localHotChatInfo;
       paramBoolean = false;
@@ -218,8 +218,8 @@ public class HotChatInfo
     HotChatInfo localHotChatInfo = new HotChatInfo();
     localHotChatInfo.faceId = paramWifiPOIInfo.uint32_face_id.get();
     localHotChatInfo.memberCount = paramWifiPOIInfo.uint32_visitor_num.get();
-    localHotChatInfo.troopUin = String.valueOf(bhjx.a(paramWifiPOIInfo.uint32_group_code.get()));
-    localHotChatInfo.troopCode = String.valueOf(bhjx.a(paramWifiPOIInfo.uint32_group_uin.get()));
+    localHotChatInfo.troopUin = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_code.get()));
+    localHotChatInfo.troopCode = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_uin.get()));
     localHotChatInfo.isWifiHotChat = paramBoolean;
     localHotChatInfo.name = paramWifiPOIInfo.bytes_name.get().toStringUtf8();
     localHotChatInfo.signature = paramWifiPOIInfo.bytes_sig.get().toStringUtf8();
@@ -266,7 +266,7 @@ public class HotChatInfo
       }
       localHotChatInfo.praiseCount = l;
       if (QLog.isDevelopLevel()) {
-        axxb.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
+        awkj.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
       }
       return localHotChatInfo;
       paramBoolean = false;
@@ -286,7 +286,7 @@ public class HotChatInfo
     if (paramBoolean) {
       localRecentUser.setType(1);
     }
-    for (localRecentUser.uin = antf.X;; localRecentUser.uin = paramHotChatInfo.troopUin)
+    for (localRecentUser.uin = AppConstants.WIFI_HOT_CHAT_UIN;; localRecentUser.uin = paramHotChatInfo.troopUin)
     {
       localRecentUser.troopUin = paramHotChatInfo.troopUin;
       localRecentUser.lFlag = 1L;
@@ -309,8 +309,8 @@ public class HotChatInfo
           localWifiPOIInfo.bytes_sig.set(ByteStringMicro.copyFromUtf8(paramHotChatInfo.signature));
         }
         localWifiPOIInfo.uint32_face_id.set(paramHotChatInfo.faceId);
-        localWifiPOIInfo.uint32_group_code.set(bhjx.a(Long.parseLong(paramHotChatInfo.troopUin)));
-        localWifiPOIInfo.uint32_group_uin.set(bhjx.a(Long.parseLong(paramHotChatInfo.troopCode)));
+        localWifiPOIInfo.uint32_group_code.set(bftf.a(Long.parseLong(paramHotChatInfo.troopUin)));
+        localWifiPOIInfo.uint32_group_uin.set(bftf.a(Long.parseLong(paramHotChatInfo.troopCode)));
         localWifiPOIInfo.uint32_visitor_num.set(paramHotChatInfo.memberCount);
         Object localObject = localWifiPOIInfo.uint32_is_member;
         if (!paramHotChatInfo.hasJoined) {
@@ -343,7 +343,7 @@ public class HotChatInfo
         }
         localWifiPOIInfo.uint32_group_type_flag.set(paramHotChatInfo.hotChatType);
         localWifiPOIInfo.uint32_is_user_create.set(paramHotChatInfo.userCreate);
-        localWifiPOIInfo.uint64_owner_uin.set(antz.a(paramHotChatInfo.ownerUin));
+        localWifiPOIInfo.uint64_owner_uin.set(amoo.a(paramHotChatInfo.ownerUin));
         localWifiPOIInfo.uint32_tv_pk_flag.set(paramHotChatInfo.pkFlag);
         localObject = localWifiPOIInfo.uint64_favorites_time;
         if (!paramHotChatInfo.isFavorite) {
@@ -364,11 +364,11 @@ public class HotChatInfo
         if (!QLog.isColorLevel()) {
           continue;
         }
-        axxb.a("PttShow", "createWifiPOIInfo", new Object[] { localException.toString() });
+        awkj.a("PttShow", "createWifiPOIInfo", new Object[] { localException.toString() });
         continue;
       }
       if (QLog.isDevelopLevel()) {
-        axxb.a("PttShow", "createWifiPOIInfo", new Object[] { paramHotChatInfo });
+        awkj.a("PttShow", "createWifiPOIInfo", new Object[] { paramHotChatInfo });
       }
       return localWifiPOIInfo;
       i = 0;
@@ -499,7 +499,7 @@ public class HotChatInfo
   public void onExit(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      axxb.a("Q.hotchat", new Object[] { "onExit", Integer.valueOf(paramInt) });
+      awkj.a("Q.hotchat", new Object[] { "onExit", Integer.valueOf(paramInt) });
     }
     this.state = paramInt;
     this.leftTime = System.currentTimeMillis();
@@ -572,7 +572,7 @@ public class HotChatInfo
         this.apolloGameId = paramHotChatInfo.apolloGameId;
       }
     } while (!QLog.isDevelopLevel());
-    axxb.a("PttShow", new Object[] { "updateHotChatInfo", paramHotChatInfo });
+    awkj.a("PttShow", new Object[] { "updateHotChatInfo", paramHotChatInfo });
   }
 }
 

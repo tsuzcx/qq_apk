@@ -1,49 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class actg
-  implements acuw
+public class actg
+  implements View.OnClickListener
 {
-  private actg(acsz paramacsz) {}
+  public actg(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public String a(String paramString)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if ((acsz.a(this.a) == null) || (acsz.a(this.a).a() == null) || (acsz.a(this.a).a() == null))
+    View localView = (View)paramView.getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
+    for (;;)
     {
-      QLog.i("EndCardWeb", 1, "onGetAdInfo fail data empty");
-      i = 1;
-    }
-    if (TextUtils.isEmpty(acsz.a(this.a).a().adsContent))
-    {
-      QLog.i("EndCardWeb", 1, "onGetAdInfo fail adsContent empty");
-      i = 1;
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(acsz.a(this.a).a().getTraceId())))
-    {
-      QLog.i("EndCardWeb", 1, "onGetAdInfo fail req=" + paramString + ",local=" + acsz.a(this.a).a().getTraceId());
-      i = 1;
-    }
-    if (i != 0)
-    {
-      if (acsz.a(this.a) != null) {
-        acsz.a(this.a).a();
-      }
-      return "";
-    }
-    return acsz.a(this.a).a().adsContent;
-  }
-  
-  public void a(String paramString)
-  {
-    if (acsz.a(this.a) != null)
-    {
-      acsz.a(this.a).a(2131362124, paramString);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      bcef.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+      if ((localView.getTag() instanceof SubAccountInfo)) {
+        this.a.a((SubAccountInfo)localView.getTag());
+      }
     }
-    QLog.i("EndCardWeb", 1, "mvAnimationController null");
   }
 }
 

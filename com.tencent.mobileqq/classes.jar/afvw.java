@@ -1,27 +1,48 @@
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afvw
-  implements View.OnClickListener
+  extends aezf
 {
-  public afvw(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public TextView b;
+  public String b;
+  public View c;
   
-  public void onClick(View paramView)
+  public void a(afvw paramafvw, aotg paramaotg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bhzu.e, anzj.a(2131714391));
-    localBundle.putString(bhzu.f, "CJCLUBT");
-    localBundle.putString(bhzu.d, "1450000516");
-    localBundle.putInt(bhzu.b, 3);
-    localBundle.putString(bhzu.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    localBundle.putString(bhzu.g, "svip");
-    localBundle.putString(bhzu.a, this.a.app.getCurrentAccountUin());
-    bhzu.a(this.a.app, this.a, localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject2 = paramaotg.getArkAppNameAndPath();
+    String str = localObject2[0];
+    Object localObject1 = localObject2[1];
+    localObject2 = localObject2[2];
+    paramaotg.clickTail(null, paramafvw, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
+    if (localObject1 != null)
+    {
+      ArkAppCacheMgr.getAppIcon(str, new afvx(this, paramafvw));
+      paramaotg = ArkAppCacheMgr.getApplicationDesc(str);
+      if (paramaotg != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        paramafvw.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramafvw.jdField_a_of_type_AndroidWidgetTextView.setText(paramaotg);
+      }
+    }
+    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      return;
+    }
+    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new afvy(this, str, paramafvw));
   }
 }
 

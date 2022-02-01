@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
 public class amiq
-  implements aumz
 {
-  public amiq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void a()
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    try
+    {
+      if (1 != BaseApplicationImpl.sProcessId) {
+        return;
+      }
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
+      {
+        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
+        return;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amiq
  * JD-Core Version:    0.7.0.1
  */

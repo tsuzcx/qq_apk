@@ -1,14 +1,9 @@
-class ohg
-  implements six
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
+
+public abstract interface ohg
 {
-  ohg(ohf paramohf) {}
-  
-  public void a(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Smg != null) {
-      this.a.jdField_a_of_type_Smg.a(paramInt, this.a.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void a(List<ChatMessage> paramList);
 }
 
 

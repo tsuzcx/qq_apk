@@ -1,43 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acth
-  extends BroadcastReceiver
+public class acth
+  implements View.OnClickListener
 {
-  private acth(acsz paramacsz) {}
+  public acth(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (acsz.a(this.a))
-    {
-      acsz.b(this.a, false);
-      QLog.i("GdtMvViewController", 1, "SilentModeReceiver first auto called! so skip!");
-    }
-    while ((acsz.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
-      return;
-    }
-    int i = acsz.a(this.a).getRingerMode();
-    int j = acsz.a(this.a).getStreamVolume(3);
-    QLog.i("GdtMvViewController", 1, "system context mode: " + i + ", streamVolume = " + j);
-    switch (i)
-    {
-    default: 
-      acsz.c(this.a, true);
-      this.a.a = true;
-      acsz.a(this.a).a(true);
-    }
+    if (paramView.getParent() == null) {}
     for (;;)
     {
-      acsz.a(this.a, j, acsz.b(this.a), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      acsz.c(this.a, false);
-      if (j > 0) {
-        this.a.a = false;
+      View localView = (View)paramView.getParent().getParent();
+      if ((localView != null) && (localView.getTag() != null))
+      {
+        bcef.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
+        if ((localView.getTag() instanceof SimpleAccount)) {
+          this.a.a((SimpleAccount)localView.getTag());
+        }
       }
-      acsz.a(this.a).a(this.a.a);
     }
   }
 }

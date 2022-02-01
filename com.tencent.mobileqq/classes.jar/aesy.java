@@ -1,22 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aesy
-  implements bljm
+  implements DialogInterface.OnClickListener
 {
-  public aesy(GroupManagerActivity paramGroupManagerActivity) {}
+  public aesy(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
+    this.a.n();
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "0");
+      this.a.finish();
       return;
     }
-    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
-    GroupManagerActivity.a(this.a, bhlq.a(this.a, 2131692827, 2131692831, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 1);
   }
 }
 

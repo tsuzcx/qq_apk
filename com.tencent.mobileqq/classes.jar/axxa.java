@@ -1,29 +1,49 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.text.TextUtils;
+import com.tencent.lbssearch.httpresponse.AdInfo;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.util.WeakReference;
 
-public class axxa
-  extends bgvk
+class axxa
+  implements axxz
 {
-  private NearbyAppInterface a;
+  axxa(axwz paramaxwz, LatLng paramLatLng, int paramInt) {}
   
-  public axxa(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3)
+  public void a(PoiBean paramPoiBean)
   {
-    super(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
-      return null;
+    axxb localaxxb = (axxb)axwz.a(this.jdField_a_of_type_Axwz).get();
+    if (localaxxb == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. mCallback is null ");
+      }
+      return;
     }
-    return (UsingTimeReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(221);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.reportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.b, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
+    if ((paramPoiBean == null) || (paramPoiBean.adInfo == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
+      }
+      localaxxb.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", axwz.a(this.jdField_a_of_type_Axwz), axwz.a(this.jdField_a_of_type_Axwz));
+      return;
+    }
+    String str1;
+    if (TextUtils.isEmpty(paramPoiBean.adInfo.city))
+    {
+      str1 = "";
+      if (!TextUtils.isEmpty(paramPoiBean.adInfo.district)) {
+        break label213;
+      }
+    }
+    label213:
+    for (String str2 = "";; str2 = paramPoiBean.adInfo.district)
+    {
+      str1 = str1 + str2;
+      localaxxb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, axwz.a(this.jdField_a_of_type_Axwz), axwz.a(this.jdField_a_of_type_Axwz));
+      return;
+      str1 = paramPoiBean.adInfo.city;
+      break;
     }
   }
 }

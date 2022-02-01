@@ -1,35 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class axvs
-  implements DialogInterface.OnClickListener
+public class axvs
+  implements BusinessObserver
 {
-  axvs(axvr paramaxvr, boolean paramBoolean, String paramString1, axvz paramaxvz, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Axvr.b();
-      if (!this.jdField_a_of_type_Axvr.a()) {
-        break label104;
-      }
-      this.jdField_a_of_type_Axvr.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
-      this.jdField_a_of_type_Axvz.a(this.jdField_a_of_type_JavaLangString, false);
-      axvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
+    if (paramInt == 1) {
+      b(paramBoolean, paramBundle);
     }
-    for (;;)
-    {
-      axvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
+    while (paramInt != 2) {
       return;
-      this.jdField_a_of_type_Axvr.c();
-      break;
-      label104:
-      this.jdField_a_of_type_Axvr.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
-      axvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
     }
+    a(paramBoolean, paramBundle);
   }
 }
 

@@ -1,16 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface adbw
+public class adbw
+  extends npj
 {
-  public abstract int a();
+  public adbw(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public abstract boolean a();
-  
-  public abstract boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
-  
-  public abstract int b();
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  {
+    if ((this.a.isFinishing()) || (this.a.m)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.a.p();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.e));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
+      }
+      this.a.s();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
+  }
 }
 
 

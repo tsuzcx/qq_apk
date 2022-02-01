@@ -1,25 +1,17 @@
+import java.util.HashMap;
+
 public class bmgf
 {
-  private static final String[] a = { "B", "K", "M", "G" };
+  private HashMap<String, bmgl> a = new HashMap();
   
-  public static final String a(long paramLong)
+  public bmgl a(String paramString)
   {
-    float f1 = 0.0F;
-    int i = 0;
-    while (paramLong >= 1024L)
-    {
-      paramLong /= 1024L;
-      f1 = (float)(paramLong % 1024L);
-      i += 1;
-    }
-    if (f1 == 0.0F)
-    {
-      f1 = (float)paramLong;
-      return String.valueOf(paramLong) + a[i];
-    }
-    f1 /= 1024.0F;
-    float f2 = (float)paramLong;
-    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
+    return (bmgl)this.a.get(paramString);
+  }
+  
+  public void a(String paramString, bmgl parambmgl)
+  {
+    this.a.put(paramString, parambmgl);
   }
 }
 

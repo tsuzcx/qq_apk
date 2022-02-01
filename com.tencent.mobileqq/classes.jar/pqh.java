@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class pqh
-  implements Parcelable.Creator<ReadInJoyDraftboxItem.ReadInJoyDraftboxContent>
+public class pqh
+  implements View.OnClickListener
 {
-  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(Parcel paramParcel)
-  {
-    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent(paramParcel);
-  }
+  public pqh(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[paramInt];
+    ReadInJoyViolaChannelFragment.a(this.a).d();
+    ReadInJoyViolaChannelFragment.a(this.a);
+    ReadInJoyViolaChannelFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,78 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.List;
 
 public class arjk
-  extends arac<arjl>
 {
-  @NonNull
-  public arjl a(int paramInt)
-  {
-    return new arjl();
-  }
+  public static final int FOOTER_TYPE_LOADING = 0;
+  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
+  public static final int FOOTER_TYPE_LOAD_OVER = 2;
+  public static final int TYPE_CAMPUS_VERIFY = 7;
+  public static final int TYPE_EMTPY = 2;
+  public static final int TYPE_FEED = 0;
+  public static final int TYPE_FEED_ADV = 4;
+  public static final int TYPE_FEED_BANNER = 6;
+  public static final int TYPE_FOOTER = 1;
+  public static final int TYPE_MINI_RECOMM = 5;
+  public int clothesId;
+  public int fontId;
+  public int fontType;
+  public boolean mAddFriendVerified;
+  public int mAge;
+  public AlumBasicData mAlumbasicdata;
+  public int mAvailLikeCount;
+  public boolean mBigVipHide;
+  public int mBigVipLevel;
+  public String mDeclaration;
+  public int mFooterType;
+  public int mGender;
+  public boolean mIsMyFeed;
+  public List<arjl> mLabelInfos;
+  public boolean mLiked;
+  public String mNickName;
+  public int mPopularity;
+  public List<arjm> mSchoolInfos;
+  public String mStrRecomTrace;
+  public int mTemplateId;
+  public int mType;
+  public String mUin;
+  public boolean mVipHide;
+  public int mVipLevel;
+  public int mVipType;
+  public int mVoiceDuration;
+  public String mVoiceUrl;
+  public boolean mbAllowStrangerVote;
+  public byte[] voiceCode;
   
-  @Nullable
-  public arjl a(araj[] paramArrayOfaraj)
+  public boolean equals(Object paramObject)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
-    {
-      arjl localarjl = arjl.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localarjl;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(arjl paramarjl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramarjl.toString());
-    }
-  }
-  
-  public Class<arjl> clazz()
-  {
-    return arjl.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 535;
+    return (paramObject != null) && ((paramObject instanceof arjk)) && (bftf.a(((arjk)paramObject).mUin, this.mUin));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjk
  * JD-Core Version:    0.7.0.1
  */

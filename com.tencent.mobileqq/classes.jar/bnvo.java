@@ -1,70 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import org.json.JSONObject;
-
-public class bnvo
+public final class bnvo
+  implements akxd
 {
-  public View a(Context paramContext, String paramString)
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return null;
-      if ("text_view".equals(paramString)) {
-        return new TextView(paramContext);
-      }
-      if ("image_view".equals(paramString)) {
-        return new ImageView(paramContext);
-      }
-      if ("layout".equals(paramString)) {
-        return new RelativeLayout(paramContext);
-      }
-      if ("lottie_view".equals(paramString)) {
-        return new DiniFlyAnimationView(paramContext);
-      }
-    } while (!"mask_view".equals(paramString));
-    return new ImageView(paramContext);
-  }
-  
-  public bnvn a(View paramView)
-  {
-    if ((paramView == null) || (paramView.getClass() == null)) {
-      return null;
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
     }
-    if (RelativeLayout.class.isInstance(paramView)) {
-      return new bnvl("layout", paramView);
-    }
-    return new bnvn(paramView);
+    return -paramInt1;
   }
   
-  public bnvn a(String paramString, View paramView)
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if ((paramView == null) || (paramView.getClass() == null)) {}
-    do
-    {
-      return null;
-      if ("text_view".equals(paramString)) {
-        return new bnvm(paramString, paramView);
-      }
-      if ("image_view".equals(paramString)) {
-        return new bnvi(paramString, paramView);
-      }
-      if ("layout".equals(paramString)) {
-        return new bnvl(paramString, paramView);
-      }
-      if ("lottie_view".equals(paramString)) {
-        return new bnvj(paramString, paramView);
-      }
-    } while (!"mask_view".equals(paramString));
-    return new bnvk(paramString, paramView);
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
-  
-  public void a(bnvn parambnvn, JSONObject paramJSONObject) {}
 }
 
 

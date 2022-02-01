@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adxc;
-import adxd;
+import acuc;
+import acud;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import asuz;
-import asvb;
-import asvf;
-import bdll;
+import argz;
+import arhb;
+import arhf;
+import bcef;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -39,8 +39,8 @@ public class AuthDevOpenUgActivity
   private int jdField_a_of_type_Int;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private String jdField_a_of_type_JavaLangString;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new adxd(this);
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adxc(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new acud(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new acuc(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -104,9 +104,9 @@ public class AuthDevOpenUgActivity
   {
     try
     {
-      asvf.a().a(null, this.app.getCurrentAccountUin(), 3);
-      asuz localasuz = asuz.a();
-      if ((localasuz != null) && (localasuz.a() == asuz.c))
+      arhf.a().a(null, this.app.getCurrentAccountUin(), 3);
+      argz localargz = argz.a();
+      if ((localargz != null) && (localargz.a() == argz.c))
       {
         String str2 = "";
         String str1 = str2;
@@ -117,7 +117,7 @@ public class AuthDevOpenUgActivity
             str1 = paramDevlockInfo.Mobile;
           }
         }
-        localasuz.a(this, str1);
+        localargz.a(this, str1);
         return;
       }
     }
@@ -137,12 +137,12 @@ public class AuthDevOpenUgActivity
           if ((paramDevlockInfo.AllowSet != 1) || (paramDevlockInfo.DevSetup == 1)) {
             break;
           }
-          if (asvf.a().a(this.app, this.app.getCurrentAccountUin(), "", null, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0) {
-            QQToast.a(getApplicationContext(), getString(2131691838), 0).b(getTitleBarHeight());
+          if (arhf.a().a(this.app, this.app.getCurrentAccountUin(), "", null, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0) {
+            QQToast.a(getApplicationContext(), getString(2131691884), 0).b(getTitleBarHeight());
           }
         } while (!jdField_c_of_type_Boolean);
         QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, new Object[] { "h5call", "BIND_AND_CREDIT_NOT_OPEN_DEVLOCK" });
-        asvf.a().b(null, this.app.getCurrentAccountUin(), 9);
+        arhf.a().b(null, this.app.getCurrentAccountUin(), 9);
         finish();
         startActivity(new Intent(this, LoginInfoActivity.class));
         return;
@@ -157,7 +157,7 @@ public class AuthDevOpenUgActivity
       if (jdField_c_of_type_Boolean)
       {
         QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, new Object[] { "h5call", "BIND_BUT_CREDIT_NOT_OPEN_DEVLOCK" });
-        asvf.a().b(null, this.app.getCurrentAccountUin(), 7);
+        arhf.a().b(null, this.app.getCurrentAccountUin(), 7);
       }
       Intent localIntent = new Intent(this, AuthDevConfirmPhoneNoActivity.class);
       if (getIntent() != null) {
@@ -177,9 +177,9 @@ public class AuthDevOpenUgActivity
       if (jdField_c_of_type_Boolean)
       {
         QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, new Object[] { "h5call", "NO_BIND_AND_NO_CREDIT_NOT_OPEN_DEVLOCK" });
-        asvf.a().b(null, this.app.getCurrentAccountUin(), 6);
+        arhf.a().b(null, this.app.getCurrentAccountUin(), 6);
       }
-      asvb.a(this, this.app, asvb.c, 1003, null);
+      arhb.a(this, this.app, arhb.c, 1003, null);
     }
   }
   
@@ -222,7 +222,7 @@ public class AuthDevOpenUgActivity
   
   private void b(String paramString)
   {
-    Object localObject = (TextView)findViewById(2131367800);
+    Object localObject = (TextView)findViewById(2131367832);
     if (TextUtils.isEmpty(paramString))
     {
       ((TextView)localObject).setVisibility(8);
@@ -232,23 +232,23 @@ public class AuthDevOpenUgActivity
       }
     }
     label178:
-    for (paramString = this.e;; paramString = getString(2131691832))
+    for (paramString = this.e;; paramString = getString(2131691878))
     {
       ((Button)localObject).setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131691801));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131691847));
       if (!TextUtils.isEmpty(this.f)) {
         setTitle(this.f);
       }
       if (this.jdField_b_of_type_Int != 0)
       {
-        paramString = (ImageView)findViewById(2131367784);
+        paramString = (ImageView)findViewById(2131367816);
         if (paramString != null) {
           paramString.setImageResource(this.jdField_b_of_type_Int);
         }
       }
       if (!TextUtils.isEmpty(this.k))
       {
-        paramString = (Button)findViewById(2131367785);
+        paramString = (Button)findViewById(2131367817);
         if (paramString != null)
         {
           paramString.setVisibility(0);
@@ -256,7 +256,7 @@ public class AuthDevOpenUgActivity
           paramString.setOnClickListener(this);
         }
       }
-      asvf.a().a(null, this.app.getCurrentAccountUin(), 1);
+      arhf.a().a(null, this.app.getCurrentAccountUin(), 1);
       return;
       ((TextView)localObject).setText(paramString);
       break;
@@ -278,8 +278,9 @@ public class AuthDevOpenUgActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -312,9 +313,9 @@ public class AuthDevOpenUgActivity
                 do
                 {
                   return;
-                  asuz.a().a(asuz.d);
+                  argz.a().a(argz.d);
                   a(true, 0);
-                  if (asvf.a().a())
+                  if (arhf.a().a())
                   {
                     paramIntent = new Intent(this, AuthDevEnableCompleteActivity.class);
                     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
@@ -380,9 +381,9 @@ public class AuthDevOpenUgActivity
                 this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = str;
               }
             } while (!bool);
-            asvf.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
+            arhf.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
             a(true, 0);
-            boolean bool = asvf.a().a();
+            boolean bool = arhf.a().a();
             paramIntent = new Intent(getIntent());
             if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
             {
@@ -396,7 +397,7 @@ public class AuthDevOpenUgActivity
             }
             for (;;)
             {
-              QQToast.a(getApplicationContext(), 2, getString(2131691797), 0).b(getTitleBarHeight());
+              QQToast.a(getApplicationContext(), 2, getString(2131691843), 0).b(getTitleBarHeight());
               paramIntent = new Intent();
               paramIntent.putExtra("auth_dev_open", true);
               paramIntent.putExtra("allow_set", true);
@@ -423,7 +424,7 @@ public class AuthDevOpenUgActivity
           QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "onActivityResult.resultCode= RESULT_CANCELED resultMobileMask =" + paramIntent);
         }
         if (!TextUtils.isEmpty(paramIntent)) {
-          asvf.a().a(this.app, this.app.getCurrentAccountUin(), null);
+          arhf.a().a(this.app, this.app.getCurrentAccountUin(), null);
         }
       } while (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null);
       this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = paramIntent;
@@ -444,7 +445,7 @@ public class AuthDevOpenUgActivity
     }
     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
     {
-      asvf.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
+      arhf.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
       return;
     }
     a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
@@ -467,14 +468,14 @@ public class AuthDevOpenUgActivity
       return false;
     }
     jdField_c_of_type_Boolean = a(localBundle);
-    asvf.a().a(false);
+    arhf.a().a(false);
     localObject = localBundle.getString("devlock_open_source");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       localObject = "Manually";
     }
     for (;;)
     {
-      asvf.a().a((String)localObject);
+      arhf.a().a((String)localObject);
       this.jdField_a_of_type_Boolean = localBundle.getBoolean("from_login");
       this.jdField_a_of_type_Int = localBundle.getInt("seq");
       this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = ((DevlockInfo)localBundle.get("DevlockInfo"));
@@ -494,8 +495,8 @@ public class AuthDevOpenUgActivity
         }
       }
       super.doOnCreate(paramBundle);
-      super.setContentView(2131561166);
-      super.setTitle(2131691835);
+      super.setContentView(2131561039);
+      super.setTitle(2131691881);
       if (this.app == null) {
         this.app = ((QQAppInterface)getAppRuntime());
       }
@@ -506,9 +507,9 @@ public class AuthDevOpenUgActivity
         return false;
       }
       if (TextUtils.equals((CharSequence)localObject, "PhoneUnity")) {
-        this.leftView.setText(2131698370);
+        this.leftView.setText(2131698539);
       }
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131380341));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131380067));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_Boolean = localBundle.getBoolean("devlock_show_auth_dev_list", true);
       paramBundle = localBundle.getString("devlock_guide_config");
@@ -524,22 +525,22 @@ public class AuthDevOpenUgActivity
           this.e = paramBundle.getString("btn_text");
           this.k = paramBundle.getString("jump_text");
           if (TextUtils.isEmpty(this.d)) {
-            this.d = getString(2131691831);
+            this.d = getString(2131691877);
           }
           if (TextUtils.isEmpty(this.g)) {
-            this.g = getString(2131691814);
+            this.g = getString(2131691860);
           }
           if (TextUtils.isEmpty(this.h)) {
-            this.h = getString(2131691815);
+            this.h = getString(2131691861);
           }
           if (TextUtils.isEmpty(this.i)) {
-            this.i = getString(2131691811);
+            this.i = getString(2131691857);
           }
           if (TextUtils.isEmpty(this.j)) {
-            this.j = getString(2131691812);
+            this.j = getString(2131691858);
           }
           if (TextUtils.isEmpty(this.f)) {
-            this.f = getString(2131691816);
+            this.f = getString(2131691862);
           }
           b(this.d);
           this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.setSeq(this.jdField_a_of_type_Int);
@@ -611,7 +612,7 @@ public class AuthDevOpenUgActivity
           if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (QLog.isColorLevel())) {
             QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "mUin is empty.");
           }
-          asvb.a(this, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, asvb.jdField_a_of_type_Int);
+          arhb.a(this, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, arhb.jdField_a_of_type_Int);
         }
         else
         {
@@ -621,14 +622,14 @@ public class AuthDevOpenUgActivity
           if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (QLog.isColorLevel())) {
             QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "mUin is empty.");
           }
-          asvb.a(this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, asvb.jdField_a_of_type_Int);
+          arhb.a(this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, arhb.jdField_a_of_type_Int);
         }
       }
       else
       {
-        asvb.a(this, this.app, asvb.jdField_a_of_type_Int);
+        arhb.a(this, this.app, arhb.jdField_a_of_type_Int);
         continue;
-        bdll.b(null, "dc00898", "", "", "0X800A71F", "0X800A71F", 0, 0, "", "", "", "");
+        bcef.b(null, "dc00898", "", "", "0X800A71F", "0X800A71F", 0, 0, "", "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d("DevRpt", 2, "点击打开设备锁上报！0X800A71F");
         }
@@ -648,7 +649,7 @@ public class AuthDevOpenUgActivity
           VipUtils.a(this.app, "chat_history", "LockSet", "Clk_buttonUse", 1, 0, new String[0]);
           break;
           if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null) {
-            asvf.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
+            arhf.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
           } else {
             a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
           }
@@ -656,7 +657,7 @@ public class AuthDevOpenUgActivity
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "onClick.cancelVerifyCode mVerifyObserver.seq=" + this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.getSeq());
         }
-        asvf.a().a(this.app, this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+        arhf.a().a(this.app, this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
         this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = null;
         finish();
         overridePendingTransition(0, 2130772001);

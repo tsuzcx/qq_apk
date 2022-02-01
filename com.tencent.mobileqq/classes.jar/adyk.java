@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
 
 public class adyk
-  implements asph
+  implements QQPermissionCallback
 {
-  public adyk(BaseChatPie paramBaseChatPie) {}
+  public adyk(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-      return;
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
+    bfur.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 

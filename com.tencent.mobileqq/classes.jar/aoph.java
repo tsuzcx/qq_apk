@@ -1,12 +1,6 @@
-class aoph
-  extends aojs
+public abstract interface aoph
 {
-  private aoph(aope paramaope) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    this.a.c(106, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
-  }
+  public abstract void a(long paramLong);
 }
 
 

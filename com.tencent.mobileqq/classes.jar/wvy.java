@@ -1,41 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
-import java.util.ArrayList;
-import java.util.Set;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
 public class wvy
-  extends Handler
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public wvy(wvs paramwvs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  wvy(wvv paramwvv) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        removeMessages(1);
-        yuk.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-        this.a.jdField_a_of_type_JavaUtilSet.clear();
-      } while (!wvs.a(this.a, paramMessage, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
-      return;
-      yuk.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
-      paramMessage = (String)paramMessage.obj;
-    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
-    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
-    sendEmptyMessageDelayed(1, 2500L);
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 

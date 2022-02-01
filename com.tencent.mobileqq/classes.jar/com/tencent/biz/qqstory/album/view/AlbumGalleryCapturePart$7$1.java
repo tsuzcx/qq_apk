@@ -2,41 +2,41 @@ package com.tencent.biz.qqstory.album.view;
 
 import android.os.Handler;
 import java.util.List;
-import wfv;
-import wia;
-import wih;
-import wik;
-import yuk;
+import via;
+import vkf;
+import vki;
+import vkk;
+import xvv;
 
 public class AlbumGalleryCapturePart$7$1
   implements Runnable
 {
-  public AlbumGalleryCapturePart$7$1(wih paramwih, List paramList, wfv paramwfv) {}
+  public AlbumGalleryCapturePart$7$1(vki paramvki, List paramList, via paramvia) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      wia.a(this.jdField_a_of_type_Wih.a).a(this.jdField_a_of_type_JavaUtilList);
-      if ((wia.c(this.jdField_a_of_type_Wih.a) != -1) || (wia.a(this.jdField_a_of_type_Wih.a) != -1L)) {
-        wia.a(this.jdField_a_of_type_Wih.a).sendEmptyMessage(1004);
+      vkf.a(this.jdField_a_of_type_Vki.a).a(this.jdField_a_of_type_JavaUtilList);
+      if ((vkf.b(this.jdField_a_of_type_Vki.a) != -1) || (vkf.a(this.jdField_a_of_type_Vki.a) != -1L)) {
+        vkf.a(this.jdField_a_of_type_Vki.a).sendEmptyMessage(1004);
       }
-      this.jdField_a_of_type_Wfv.d();
-      yuk.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data from db , size = %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
+      this.jdField_a_of_type_Via.c();
+      xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data from db , size = %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
       return;
     }
-    wia.a(this.jdField_a_of_type_Wih.a).b();
-    this.jdField_a_of_type_Wfv.d();
-    if (wia.c(this.jdField_a_of_type_Wih.a) != -1) {
-      wia.a(this.jdField_a_of_type_Wih.a).sendEmptyMessage(1004);
+    vkf.a(this.jdField_a_of_type_Vki.a).a();
+    this.jdField_a_of_type_Via.c();
+    if (vkf.b(this.jdField_a_of_type_Vki.a) != -1) {
+      vkf.a(this.jdField_a_of_type_Vki.a).sendEmptyMessage(1004);
     }
-    wia.a(this.jdField_a_of_type_Wih.a).sendEmptyMessageDelayed(1005, 180000L);
-    yuk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data, db no data , scan now");
+    vkf.a(this.jdField_a_of_type_Vki.a).sendEmptyMessageDelayed(1005, 180000L);
+    xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data, db no data , scan now");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1
  * JD-Core Version:    0.7.0.1
  */

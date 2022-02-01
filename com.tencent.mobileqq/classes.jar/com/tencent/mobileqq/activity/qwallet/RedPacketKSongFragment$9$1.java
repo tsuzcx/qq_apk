@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akys;
+import ajwj;
 import com.tencent.mobileqq.widget.AnimationView;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class RedPacketKSongFragment$9$1
   implements Runnable
 {
-  public RedPacketKSongFragment$9$1(akys paramakys, AnimationView.AnimationInfo paramAnimationInfo) {}
+  public RedPacketKSongFragment$9$1(ajwj paramajwj, AnimationView.AnimationInfo paramAnimationInfo) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Akys.a.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Ajwj.a.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Akys.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationFromInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo);
-      this.jdField_a_of_type_Akys.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
+      this.jdField_a_of_type_Ajwj.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationFromInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo);
+      this.jdField_a_of_type_Ajwj.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
     }
   }
 }

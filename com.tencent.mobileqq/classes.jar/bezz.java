@@ -1,867 +1,380 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopAIONotifyItem;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.utils.TroopAioNotifyManager.1;
+import com.tencent.mobileqq.troop.utils.TroopAioNotifyManager.2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Set;
-import mqq.manager.Manager;
+import java.util.Collection;
+import java.util.List;
 
 public class bezz
-  implements Handler.Callback, Manager
 {
-  private double jdField_a_of_type_Double = 0.0D;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bezy jdField_a_of_type_Bezy;
-  private bfab jdField_a_of_type_Bfab = new bfab(null);
-  private bhgv jdField_a_of_type_Bhgv = new bfaa(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<bezy> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double = 0.0D;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<bezy> jdField_b_of_type_JavaUtilArrayList = new ArrayList(10);
-  private boolean jdField_b_of_type_Boolean;
-  private double jdField_c_of_type_Double = 30.0D;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private double jdField_d_of_type_Double = 50.0D;
-  private long jdField_d_of_type_Long;
-  private boolean jdField_d_of_type_Boolean;
-  private long jdField_e_of_type_Long;
-  private boolean jdField_e_of_type_Boolean;
-  private long jdField_f_of_type_Long;
-  private boolean jdField_f_of_type_Boolean;
-  private long jdField_g_of_type_Long = 6L;
-  private boolean jdField_g_of_type_Boolean = true;
-  private boolean h;
-  
-  public bezz(QQAppInterface paramQQAppInterface)
+  public static List<TroopAIONotifyItem> a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    a(paramQQAppInterface);
-  }
-  
-  private int a()
-  {
-    int i = 0;
-    if (BaseApplicationImpl.isFirstLaunchNew) {
-      i = 1;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreDownloadScheduler", 2, " getStartUpCondition  condition = " + i);
-      }
-      return i;
-      if (BaseApplicationImpl.isCurrentVersionFirstLaunch) {
-        i = 2;
-      }
-    }
-  }
-  
-  public static String a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "department should not be empty");
-      }
-      paramString = null;
-      return paramString;
-    }
-    String str3 = (String)bezx.b.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(str3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define english name in PreDownloadConstants.BUSINESS_NAME_ENG for business");
-      }
-      return null;
-    }
-    if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        String str1 = bigv.a(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/pddata/");
-        File localFile = new File(str1);
-        if (!localFile.exists()) {
-          localFile.mkdirs();
-        }
-        str1 = str1 + paramString + "/" + str3;
-        paramString = str1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("PreDownloadScheduler", 1, "[getPreDownloadPath] path = " + str1);
-        return str1;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PreDownloadScheduler", 1, "Exception:", localException);
-        }
-        str2 = bigv.a("/sdcard/tencent/MobileQQ/pddata/");
-        continue;
-      }
-      String str2 = BaseApplicationImpl.getContext().getFilesDir() + "/pddata/";
-    }
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface)
-  {
-    switch (nny.a(paramQQAppInterface.getApp()))
-    {
-    default: 
-      return "unknown";
-    case 0: 
-      return "none";
-    case 1: 
-      return "Wi-Fi";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
-    }
-    return "5G";
-  }
-  
-  private void a(double paramDouble1, double paramDouble2, String paramString, long paramLong)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    HashMap localHashMap = new HashMap(4);
-    localHashMap.put("downloadUrl", paramString);
-    localHashMap.put("downloadSize", String.valueOf(paramLong));
-    localHashMap.put("CPU", String.valueOf(paramDouble2));
-    localHashMap.put("FPS", String.valueOf(paramDouble1));
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder("[report puse info]:");
-      localStringBuilder.append(", ").append("downloadUrl").append("=").append(paramString);
-      localStringBuilder.append(", ").append("downloadSize").append("=").append(String.valueOf(paramLong));
-      localStringBuilder.append(", ").append("CPU").append("=").append(String.valueOf(paramDouble2));
-      localStringBuilder.append(", ").append("FPS").append("=").append(String.valueOf(paramDouble1));
-      QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
-    }
-    bdmc.a(BaseApplicationImpl.getApplication()).a(null, "PreDownloadReportPause", true, 0L, 0L, localHashMap, null);
-  }
-  
-  private void a(int paramInt, bezy parambezy)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder("[network or reqconditon not fit] donot download task :\n");
-      localStringBuilder.append(",businessID=").append(parambezy.jdField_a_of_type_Int);
-      localStringBuilder.append(",businessName=").append(parambezy.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",downloadUrl=").append(parambezy.jdField_e_of_type_JavaLangString);
-      localStringBuilder.append(",reqCondition=").append(parambezy.jdField_f_of_type_Int);
-      localStringBuilder.append(",current appBackground=").append(this.jdField_b_of_type_Boolean);
-      localStringBuilder.append(",reqNetWork=").append(parambezy.jdField_b_of_type_Int);
-      localStringBuilder.append(",current netWorkType=").append(paramInt);
-      QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
-    }
-  }
-  
-  private void a(Message paramMessage)
-  {
-    paramMessage = (bezs)paramMessage.obj;
-    if ((this.jdField_a_of_type_Bezy != null) && (this.jdField_a_of_type_Bezy.jdField_a_of_type_Bezs != null) && (paramMessage != null) && (this.jdField_a_of_type_Bezy.jdField_a_of_type_Bezs == paramMessage))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, " pre download onTaskEnd task key = " + this.jdField_a_of_type_Bezy.jdField_a_of_type_Bezs.key);
-      }
-      this.jdField_a_of_type_Bezy = null;
-    }
-    e();
-  }
-  
-  private void a(bezy parambezy)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder("[forbidden on first start] remove task :\n");
-      localStringBuilder.append(",businessID=").append(parambezy.jdField_a_of_type_Int);
-      localStringBuilder.append(",businessName=").append(parambezy.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",downloadUrl=").append(parambezy.jdField_e_of_type_JavaLangString);
-      localStringBuilder.append(",reqCondition=").append(parambezy.jdField_f_of_type_Int);
-      QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
-    }
-  }
-  
-  private void a(String paramString, bezy parambezy)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder(paramString);
-      paramString.append(",businessID=").append(parambezy.jdField_a_of_type_Int);
-      paramString.append(",businessName=").append(parambezy.jdField_a_of_type_JavaLangString);
-      paramString.append(",downloadUrl=").append(parambezy.jdField_e_of_type_JavaLangString);
-      paramString.append(",fileKey=").append(parambezy.jdField_d_of_type_JavaLangString);
-      QLog.d("PreDownloadScheduler", 2, paramString.toString());
-    }
-  }
-  
-  private void b(Message paramMessage)
-  {
-    String str = (String)paramMessage.obj;
-    int j = paramMessage.arg1;
-    if (!TextUtils.isEmpty(str))
-    {
-      int i = 0;
-      while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
-      {
-        paramMessage = (bezy)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-        if (str.equals(paramMessage.jdField_e_of_type_JavaLangString))
+        localArrayList = new ArrayList();
+        try
         {
-          paramMessage.jdField_d_of_type_Long = j;
-          paramMessage.jdField_c_of_type_Long = (System.currentTimeMillis() - paramMessage.jdField_b_of_type_Long);
-          paramMessage.jdField_e_of_type_Int = 2;
-          if (QLog.isColorLevel()) {
-            QLog.e("PreDownloadScheduler", 1, "[msg download sucess] task.url = " + paramMessage.jdField_e_of_type_JavaLangString);
+          EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+          paramQQAppInterface = localEntityManager.query(TroopAIONotifyItem.class, false, "troopUin=?", new String[] { paramString }, null, null, null, null);
+          localEntityManager.close();
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder().append("getLocalNotifyItems, size=");
+            if (paramQQAppInterface != null) {
+              continue;
+            }
+            i = 0;
+            QLog.d(".troop.notify_feeds.data", 2, i);
           }
-          c(paramMessage);
-          this.jdField_b_of_type_JavaUtilArrayList.remove(i);
-          if (paramMessage == this.jdField_a_of_type_Bezy) {
-            this.jdField_a_of_type_Bezy = null;
+          if (paramQQAppInterface == null) {
+            continue;
           }
         }
-        i += 1;
-      }
-    }
-    e();
-  }
-  
-  private void b(bezy parambezy)
-  {
-    int i = nny.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    if ((i <= 1) || (i >= parambezy.jdField_b_of_type_Int))
-    {
-      parambezy.jdField_g_of_type_Int = a();
-      parambezy.jdField_b_of_type_Long = System.currentTimeMillis();
-      parambezy.jdField_g_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      parambezy.jdField_e_of_type_Int = 1;
-      parambezy.jdField_a_of_type_Bezs.start();
-      this.jdField_b_of_type_JavaUtilArrayList.add(parambezy);
-      a("[start downloading direct without contrl] begin task :", parambezy);
-      c(parambezy);
-    }
-  }
-  
-  private void c(Message paramMessage)
-  {
-    paramMessage = (String)paramMessage.obj;
-    if (!TextUtils.isEmpty(paramMessage))
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        bezy localbezy = (bezy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (paramMessage.equals(localbezy.jdField_e_of_type_JavaLangString))
+        catch (Exception paramQQAppInterface)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localbezy);
-          localbezy.jdField_e_of_type_Int = 3;
-          c(localbezy);
-          if (QLog.isColorLevel()) {
-            QLog.e("PreDownloadScheduler", 1, "[ msg cancel] task.url = " + localbezy.jdField_e_of_type_JavaLangString);
+          int i;
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          if (localbezy == this.jdField_a_of_type_Bezy) {
-            this.jdField_a_of_type_Bezy = null;
-          }
-          g();
+          QLog.e(".troop.notify_feeds.data", 2, "getLocalNotifyItems, exp:" + paramQQAppInterface.toString());
+          paramQQAppInterface = localArrayList;
+          continue;
         }
-        i += 1;
-      }
-    }
-    e();
-  }
-  
-  private void c(bezy parambezy)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    HashMap localHashMap = new HashMap(20);
-    localHashMap.put("businessID", String.valueOf(parambezy.jdField_a_of_type_Int));
-    localHashMap.put("businessName", parambezy.jdField_a_of_type_JavaLangString);
-    localHashMap.put("businessEngName", parambezy.jdField_b_of_type_JavaLangString);
-    localHashMap.put("department", parambezy.jdField_c_of_type_JavaLangString);
-    localHashMap.put("fileKey", parambezy.jdField_d_of_type_JavaLangString);
-    localHashMap.put("downloadUrl", parambezy.jdField_e_of_type_JavaLangString);
-    localHashMap.put("filePath", parambezy.jdField_f_of_type_JavaLangString);
-    localHashMap.put("reqTime", String.valueOf(parambezy.jdField_a_of_type_Long));
-    localHashMap.put("reqNetWork", String.valueOf(parambezy.jdField_b_of_type_Int));
-    localHashMap.put("downNetWork", String.valueOf(parambezy.jdField_g_of_type_JavaLangString));
-    localHashMap.put("startTime", String.valueOf(parambezy.jdField_b_of_type_Long));
-    localHashMap.put("downloadTime", String.valueOf(parambezy.jdField_c_of_type_Long));
-    localHashMap.put("downloadSize", String.valueOf(parambezy.jdField_d_of_type_Long));
-    localHashMap.put("businessPriority", String.valueOf(parambezy.jdField_c_of_type_Int));
-    localHashMap.put("innerPriority", String.valueOf(parambezy.jdField_d_of_type_Int));
-    localHashMap.put("state", String.valueOf(parambezy.jdField_e_of_type_Int));
-    localHashMap.put("reqCondition", String.valueOf(parambezy.jdField_f_of_type_Int));
-    localHashMap.put("startCondition", String.valueOf(parambezy.jdField_g_of_type_Int));
-    localHashMap.put("saveOnSD", String.valueOf(parambezy.jdField_a_of_type_Boolean));
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder("[report item]:");
-      localStringBuilder.append(", ").append("businessID").append("=").append(parambezy.jdField_a_of_type_Int);
-      localStringBuilder.append(", ").append("businessName").append("=").append(parambezy.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(", ").append("businessEngName").append("=").append(parambezy.jdField_b_of_type_JavaLangString);
-      localStringBuilder.append(", ").append("department").append("=").append(parambezy.jdField_c_of_type_JavaLangString);
-      localStringBuilder.append(", ").append("fileKey").append("=").append(parambezy.jdField_d_of_type_JavaLangString);
-      localStringBuilder.append(", ").append("downloadUrl").append("=").append(parambezy.jdField_e_of_type_JavaLangString);
-      localStringBuilder.append(", ").append("filePath").append("=").append(parambezy.jdField_f_of_type_JavaLangString);
-      localStringBuilder.append(", ").append("reqTime").append("=").append(String.valueOf(parambezy.jdField_a_of_type_Long));
-      localStringBuilder.append(", ").append("reqNetWork").append("=").append(String.valueOf(parambezy.jdField_b_of_type_Int));
-      localStringBuilder.append(", ").append("downNetWork").append("=").append(String.valueOf(parambezy.jdField_g_of_type_JavaLangString));
-      localStringBuilder.append(", ").append("startTime").append("=").append(String.valueOf(parambezy.jdField_b_of_type_Long));
-      localStringBuilder.append(", ").append("downloadTime").append("=").append(String.valueOf(parambezy.jdField_c_of_type_Long));
-      localStringBuilder.append(", ").append("downloadSize").append("=").append(String.valueOf(parambezy.jdField_d_of_type_Long));
-      localStringBuilder.append(", ").append("businessPriority").append("=").append(String.valueOf(parambezy.jdField_c_of_type_Int));
-      localStringBuilder.append(", ").append("innerPriority").append("=").append(String.valueOf(parambezy.jdField_d_of_type_Int));
-      localStringBuilder.append(", ").append("state").append("=").append(String.valueOf(parambezy.jdField_e_of_type_Int));
-      localStringBuilder.append(", ").append("reqCondition").append("=").append(String.valueOf(parambezy.jdField_f_of_type_Int));
-      localStringBuilder.append(", ").append("startCondition").append("=").append(String.valueOf(parambezy.jdField_g_of_type_Int));
-      localStringBuilder.append(", ").append("saveOnSD").append("=").append(String.valueOf(parambezy.jdField_a_of_type_Boolean));
-      QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
-    }
-    bdmc.a(BaseApplicationImpl.getApplication()).a(null, "PreDownloadReport", true, 0L, 0L, localHashMap, null);
-  }
-  
-  private void d()
-  {
-    this.jdField_d_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "startPreDownload mBeReady set true, all pre download will start ");
-    }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_pre_downlaod", 0);
-    int i = localSharedPreferences.getInt("sp_key_pre_download_version", 0);
-    if (i != 0)
-    {
-      ArrayList localArrayList = bezv.a(i, 0);
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        i = 0;
-        while (i < localArrayList.size())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PreDownloadScheduler", 1, "[onVersionUpdate PreDownloadScheduler]  delete file: " + (String)localArrayList.get(i));
-          }
-          bhmi.a((String)localArrayList.get(i), false);
-          i += 1;
-        }
-      }
-    }
-    localSharedPreferences.edit().putInt("sp_key_pre_download_version", 0).commit();
-    e();
-    g();
-  }
-  
-  private void d(Message paramMessage)
-  {
-    int j = 0;
-    bezy localbezy1 = (bezy)paramMessage.obj;
-    int i;
-    label138:
-    int k;
-    if (this.jdField_g_of_type_Boolean)
-    {
-      paramMessage = this.jdField_a_of_type_JavaLangObject;
-      i = 0;
-      bezy localbezy3;
-      try
-      {
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label332;
-        }
-        localbezy3 = (bezy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (!localbezy1.jdField_e_of_type_JavaLangString.equals(localbezy3.jdField_e_of_type_JavaLangString)) {
-          break label337;
-        }
-        if ((!localbezy1.jdField_e_of_type_JavaLangString.contains("doodle")) || (localbezy1.jdField_f_of_type_JavaLangString == null) || (localbezy1.jdField_f_of_type_JavaLangString.equals(localbezy3.jdField_f_of_type_JavaLangString))) {
-          break label344;
-        }
-        if (!QLog.isColorLevel()) {
-          break label337;
-        }
-        QLog.d("PreDownloadScheduler", 2, new Object[] { "mPendingList, same url, filePath diff, ", localbezy1.jdField_e_of_type_JavaLangString });
+        return paramQQAppInterface;
       }
       finally {}
-      k = i;
-      if (j < this.jdField_b_of_type_JavaUtilArrayList.size())
-      {
-        localbezy3 = (bezy)this.jdField_b_of_type_JavaUtilArrayList.get(j);
-        if (!localbezy1.jdField_e_of_type_JavaLangString.equals(localbezy3.jdField_e_of_type_JavaLangString)) {
-          break label349;
-        }
-        if ((!localbezy1.jdField_e_of_type_JavaLangString.contains("doodle")) || (localbezy1.jdField_f_of_type_JavaLangString == null) || (localbezy1.jdField_f_of_type_JavaLangString.equals(localbezy3.jdField_f_of_type_JavaLangString))) {
-          break label356;
-        }
-        if (!QLog.isColorLevel()) {
-          break label349;
-        }
-        QLog.d("PreDownloadScheduler", 2, new Object[] { "downloadUrl, same url, filePath diff, ", localbezy1.jdField_e_of_type_JavaLangString });
-        break label349;
-      }
-    }
-    for (;;)
-    {
-      if (k == 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localbezy1);
-      }
-      for (;;)
-      {
-        e();
-        g();
-        if (QLog.isColorLevel()) {
-          QLog.e("PreDownloadScheduler", 1, " [msg request add to list]  mPendingList size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        return;
-        b(localbezy2);
-      }
-      label332:
-      i = 0;
-      break label138;
-      label337:
-      i += 1;
-      break;
-      label344:
-      i = 1;
-      break label138;
-      label349:
-      j += 1;
-      break label138;
-      label356:
-      k = 1;
+      i = paramQQAppInterface.size();
     }
   }
   
-  private void e()
+  public static List<TroopAIONotifyItem> a(QQAppInterface paramQQAppInterface, List<TroopAIONotifyItem> paramList1, List<TroopAIONotifyItem> paramList2)
   {
-    if ((this.jdField_a_of_type_Bezy != null) && (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Bezy.jdField_b_of_type_Long) >= 60000L)) {
-      this.jdField_a_of_type_Bezy = null;
-    }
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    int i;
     int j;
-    int k;
-    if ((a()) && (this.jdField_a_of_type_Bezy == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    Object localObject;
+    boolean bool2;
+    boolean bool1;
+    label328:
+    try
     {
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bfab);
-      j = a();
-      k = nny.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-      if (k != 0) {
-        break label104;
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      i = 0;
+      j = 0;
+      if (j < paramList1.size())
+      {
+        localObject = (TroopAIONotifyItem)paramList1.get(j);
+        if (QLog.isColorLevel()) {
+          QLog.i(".troop.notify_feeds.data.detail", 2, "mergeItemList, fromServer=" + localObject);
+        }
+        if (((TroopAIONotifyItem)localObject).type == 1)
+        {
+          if (localArrayList1.size() != 0) {
+            break label700;
+          }
+          localArrayList1.add(localObject);
+          break label700;
+        }
+        if (((TroopAIONotifyItem)localObject).type != 2) {
+          break label711;
+        }
+        localArrayList2.add(localObject);
+        break label711;
       }
+      long l = NetConnInfoCenter.getServerTime();
+      paramList1 = new ArrayList();
+      j = paramList2.size() - 1;
+      if (j < 0) {
+        break label429;
+      }
+      localObject = (TroopAIONotifyItem)paramList2.get(j);
       if (QLog.isColorLevel()) {
-        QLog.d("PreDownloadScheduler", 2, " [no network] donot start any task! ");
+        QLog.i(".troop.notify_feeds.data.detail", 2, "mergeItemList, fromDb=" + localObject);
       }
+      if (((TroopAIONotifyItem)localObject).type == 1)
+      {
+        if (i == 0) {
+          break label714;
+        }
+        paramList2.remove(j);
+        paramList1.add(localObject);
+        if (!QLog.isColorLevel()) {
+          break label714;
+        }
+        QLog.i(".troop.notify_feeds.data", 2, "mergeItemList, hasNewAppNotify removeLocalAppItem, id=" + ((TroopAIONotifyItem)localObject).id + ", " + ((TroopAIONotifyItem)localObject).title);
+        break label714;
+      }
+      if (((TroopAIONotifyItem)localObject).type != 2) {
+        break label714;
+      }
+      bool2 = localArrayList2.contains(localObject);
+      if (((TroopAIONotifyItem)localObject).expireTime >= l) {
+        break label423;
+      }
+      bool1 = true;
     }
-    return;
+    finally {}
+    paramList2.remove(j);
+    paramList1.add(localObject);
+    label423:
+    label429:
+    ArrayList localArrayList3;
+    if (QLog.isColorLevel())
+    {
+      QLog.i(".troop.notify_feeds.data", 2, "mergeItemList, removeLocalPushItem, hasUpdate=" + bool2 + ", isExpired=" + bool1 + ", id=" + ((TroopAIONotifyItem)localObject).id + ", " + ((TroopAIONotifyItem)localObject).title);
+      break label714;
+      bool1 = false;
+      break label723;
+      localObject = new ArrayList();
+      localArrayList3 = new ArrayList();
+      j = 0;
+    }
     for (;;)
     {
-      label104:
-      int i;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (j < paramList2.size())
       {
-        f();
-        i = 0;
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break;
-        }
-        bezy localbezy1 = (bezy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localbezy1 != null) && (localbezy1.jdField_f_of_type_Int == 1) && (j == 1))
+        TroopAIONotifyItem localTroopAIONotifyItem = (TroopAIONotifyItem)paramList2.get(j);
+        if (localTroopAIONotifyItem.type == 1)
         {
-          a(localbezy1);
-          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-          return;
+          if (i == 0) {
+            if (((List)localObject).size() == 0)
+            {
+              ((List)localObject).add(localTroopAIONotifyItem);
+            }
+            else
+            {
+              paramList1.add(localTroopAIONotifyItem);
+              if (QLog.isColorLevel()) {
+                QLog.i(".troop.notify_feeds.data", 2, "mergeItemList, moreThanOne removeLocalAppItem, id=" + localTroopAIONotifyItem.id + ", " + localTroopAIONotifyItem.title);
+              }
+            }
+          }
         }
-      }
-      if ((localbezy2 != null) && (((localbezy2.jdField_f_of_type_Int == 2) && (!this.jdField_b_of_type_Boolean)) || ((localbezy2.jdField_b_of_type_Int == 1) && (k > 1)) || ((k > 1) && (k < localbezy2.jdField_b_of_type_Int)) || ((localbezy2.jdField_f_of_type_Int == 3) && (!this.jdField_c_of_type_Boolean))))
-      {
-        a(k, localbezy2);
-        i += 1;
+        else if (localTroopAIONotifyItem.type == 2) {
+          localArrayList3.add(localTroopAIONotifyItem);
+        }
       }
       else
       {
-        this.jdField_a_of_type_Bezy = ((bezy)this.jdField_a_of_type_JavaUtilArrayList.remove(i));
+        b(paramQQAppInterface, paramList1);
+        paramList1 = new ArrayList();
+        paramList1.addAll(localArrayList1);
+        paramList1.addAll(localArrayList2);
+        a(paramQQAppInterface, paramList1);
+        paramList1.clear();
+        if (i != 0)
+        {
+          paramList1.addAll(localArrayList1);
+          paramList1.addAll(localArrayList2);
+          paramList1.addAll(localArrayList3);
+        }
+        for (;;)
+        {
+          return paramList1;
+          paramList1.addAll((Collection)localObject);
+          paramList1.addAll(localArrayList2);
+          paramList1.addAll(localArrayList3);
+        }
+        label700:
+        i = 1;
+        label711:
+        for (;;)
+        {
+          j += 1;
+          break;
+        }
+        label714:
+        label723:
+        do
+        {
+          j -= 1;
+          break;
+          if (bool2) {
+            break label328;
+          }
+        } while (!bool1);
+        break label328;
       }
+      j += 1;
     }
-    if ((this.jdField_a_of_type_Bezy != null) && (this.jdField_a_of_type_Bezy.jdField_a_of_type_Bezs != null))
-    {
-      if (this.jdField_e_of_type_Long == 0L) {
-        this.jdField_e_of_type_Long = System.currentTimeMillis();
-      }
-      this.jdField_a_of_type_Bezy.jdField_g_of_type_Int = j;
-      this.jdField_a_of_type_Bezy.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Bezy.jdField_g_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Bezy.jdField_e_of_type_Int = 1;
-      this.jdField_a_of_type_Bezy.jdField_a_of_type_Bezs.start();
-      this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Bezy);
-      a("[start downloading] begin task :", this.jdField_a_of_type_Bezy);
-    }
-    for (;;)
-    {
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, TroopAIONotifyItem paramTroopAIONotifyItem)
+  {
+    if (paramTroopAIONotifyItem == null) {
       return;
-      this.jdField_a_of_type_Bezy = null;
     }
+    ThreadManager.post(new TroopAioNotifyManager.2(paramQQAppInterface, paramTroopAIONotifyItem), 8, null, false);
   }
   
-  private void f()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (QLog.isColorLevel())
+    anca localanca = (anca)paramQQAppInterface.getBusinessHandler(20);
+    Integer localInteger = ChatActivityUtils.a(paramString, paramQQAppInterface.getCurrentAccountUin());
+    if ((localInteger != null) && (localInteger.intValue() == -1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      StringBuilder localStringBuilder = new StringBuilder("pending task id:");
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        bezy localbezy = (bezy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localbezy != null) {
-          localStringBuilder.append(localbezy.jdField_a_of_type_Int).append(",");
-        }
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.notify_feeds.data", 2, "reqNotifyItems, troopUin=" + paramString + ", hasNewNotify=" + bool);
       }
-      QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
+      if (!bool) {
+        break;
+      }
+      localanca.e(Long.valueOf(paramString).longValue());
+      bfdg.a(paramQQAppInterface, paramString, 1102858908);
+      ChatActivityUtils.a(paramQQAppInterface, paramString, Integer.valueOf(0));
+      return;
     }
+    ThreadManager.post(new TroopAioNotifyManager.1(paramQQAppInterface, paramString, localanca), 8, null, true);
   }
   
-  private void g()
+  public static void a(QQAppInterface paramQQAppInterface, List<TroopAIONotifyItem> paramList)
   {
-    if (this.h)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-      {
-        bhgt.a().b(this.jdField_a_of_type_Bhgv);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreDownloadScheduler", 2, "[fps callback disabled],there is no pending task!");
-        }
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        bhgt.a().a(this.jdField_a_of_type_Bhgv);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreDownloadScheduler", 2, "[fps callback enabled],there is pending tasks!");
-        }
-      }
-    }
-  }
-  
-  public bezs a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ cancelPreDownload ] downloadUrl = " + paramString);
-    }
-    Object localObject1 = null;
-    Object localObject2 = null;
-    Object localObject3;
-    int i;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject3 = this.jdField_a_of_type_JavaLangObject;
-      i = 0;
-      localObject1 = localObject2;
-    }
+    if (paramList != null) {}
     for (;;)
     {
+      int j;
+      int i;
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        j = paramList.size();
+        if (j == 0) {
+          return;
+        }
+        try
         {
-          localObject2 = (bezy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (paramString.equals(((bezy)localObject2).jdField_e_of_type_JavaLangString)) {
-            localObject1 = ((bezy)localObject2).jdField_a_of_type_Bezs;
+          paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+          i = 0;
+          if (i >= j) {
+            break label123;
+          }
+          TroopAIONotifyItem localTroopAIONotifyItem = (TroopAIONotifyItem)paramList.get(i);
+          if (localTroopAIONotifyItem.getStatus() == 1000) {
+            paramQQAppInterface.persistOrReplace(localTroopAIONotifyItem);
+          } else {
+            paramQQAppInterface.update(localTroopAIONotifyItem);
           }
         }
-        else
-        {
-          localObject2 = new Message();
-          ((Message)localObject2).what = 1003;
-          ((Message)localObject2).obj = paramString;
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-          return localObject1;
+        catch (Exception paramQQAppInterface) {}
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.e(".troop.notify_feeds.data", 2, "saveNotifyItems, exp:" + paramQQAppInterface.toString());
+        continue;
+        paramQQAppInterface.close();
       }
       finally {}
-      i += 1;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_f_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ startPreDownload ] enable time = " + this.jdField_f_of_type_Long);
-    }
-    if (this.jdField_g_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 10000L);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
-  }
-  
-  public void a(bezs parambezs)
-  {
-    Message localMessage = new Message();
-    localMessage.what = 1006;
-    localMessage.obj = parambezs;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_b_of_type_JavaLangString = (BaseApplicationImpl.getContext().getFilesDir() + "/pddata/");
-    paramQQAppInterface = new File(this.jdField_b_of_type_JavaLangString);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    this.jdField_c_of_type_JavaLangString = (Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/pddata/");
-    this.jdField_c_of_type_JavaLangString = bigv.a(this.jdField_c_of_type_JavaLangString);
-    paramQQAppInterface = new File(this.jdField_c_of_type_JavaLangString);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    this.jdField_g_of_type_Long = 6L;
-    this.jdField_c_of_type_Double = 30.0D;
-    this.jdField_d_of_type_Double = 50.0D;
-    paramQQAppInterface = BaseApplicationImpl.getApplication().getSharedPreferences("sp_pre_downlaod", 0);
-    boolean bool2 = paramQQAppInterface.getBoolean("sp_key_pre_sample_mark", false);
-    QLog.e("PreDownloadScheduler", 1, " pre download bSampledLastTime = " + bool2);
-    double d1 = Math.random();
-    boolean bool1;
-    if (9.999999747378752E-006D >= d1)
-    {
-      bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      QLog.e("PreDownloadScheduler", 1, " pre download random = " + d1);
-      if (!bool2) {
-        break label329;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      paramQQAppInterface.edit().putBoolean("sp_key_pre_sample_mark", false).commit();
-      QLog.e("PreDownloadScheduler", 1, " pre download last time sampled, also sampled this time");
-    }
-    for (;;)
-    {
-      QLog.e("PreDownloadScheduler", 1, " pre download set mNeedReport = " + this.jdField_a_of_type_Boolean);
-      return;
-      bool1 = false;
-      break;
-      label329:
-      paramQQAppInterface.edit().putBoolean("sp_key_pre_sample_mark", this.jdField_a_of_type_Boolean).commit();
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ preDownloadSuccess ] downloadUrl = " + paramString + ",size = " + paramLong);
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_d_of_type_Long = paramLong;
-    Message localMessage = new Message();
-    localMessage.what = 1004;
-    localMessage.obj = paramString;
-    localMessage.arg1 = ((int)paramLong);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_g_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreDownloadScheduler", 2, "[System busy] dowload not ready!");
-      }
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (Math.abs(System.currentTimeMillis() - this.jdField_f_of_type_Long) >= 60000L) && (this.jdField_e_of_type_Long == 0L))
+      label123:
+      if (QLog.isColorLevel())
       {
-        this.jdField_g_of_type_Long -= 2L;
-        this.jdField_d_of_type_Double += 10.0D;
-        this.jdField_c_of_type_Double -= 10.0D;
-        this.jdField_e_of_type_Boolean = true;
-        this.jdField_f_of_type_Boolean = true;
-        this.jdField_d_of_type_Boolean = true;
-        QLog.d("PreDownloadScheduler", 2, "[System busy] for 60 seconds after pull msg, set download enable");
-        QLog.d("PreDownloadScheduler", 2, "mCPUThreshold = " + this.jdField_d_of_type_Double + ",mFPSThreshold=" + this.jdField_c_of_type_Double);
+        QLog.d(".troop.notify_feeds.data", 2, "saveNotifyItems, size=" + j);
+        continue;
+        i += 1;
       }
-    }
-    else
-    {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, bezs parambezs)
-  {
-    if ((bdho.jdField_e_of_type_Boolean) && (!bdho.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt1))) && (!bezx.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt1))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Perf", 2, "delay pre_download,busindessID:" + paramInt1);
-      }
-      bdho.jdField_f_of_type_Long = System.currentTimeMillis();
-      return false;
-    }
-    if ((paramInt1 == 0) || (TextUtils.isEmpty(paramString3)) || (parambezs == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "requestPreDownload param error! busindessID=0 or downloadUrl is empty or task is empty\n");
-      }
-      return false;
-    }
-    String str1 = (String)bezx.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    if (TextUtils.isEmpty(str1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define name in PreDownloadConstants.BUSINESS_NAME for business");
-      }
-      return false;
-    }
-    String str2 = (String)bezx.b.get(Integer.valueOf(paramInt1));
-    if (TextUtils.isEmpty(str2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define english name in PreDownloadConstants.BUSINESS_NAME_ENG for business");
-      }
-      return false;
-    }
-    Object localObject = (Integer)bezx.c.get(Integer.valueOf(paramInt1));
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define priority in PreDownloadConstants.BUSINESS_PRIORITY for business");
-      }
-      return false;
-    }
-    int i = ((Integer)localObject).intValue();
-    if ((i < 0) || (i > 4))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, " requestPreDownload param priority error,priority value should be in[0,1,2,3,4]!");
-      }
-      return false;
-    }
-    localObject = new bezy();
-    ((bezy)localObject).jdField_a_of_type_Int = paramInt1;
-    ((bezy)localObject).jdField_a_of_type_JavaLangString = str1;
-    ((bezy)localObject).jdField_b_of_type_JavaLangString = str2;
-    ((bezy)localObject).jdField_c_of_type_JavaLangString = paramString1;
-    ((bezy)localObject).jdField_d_of_type_JavaLangString = paramString2;
-    ((bezy)localObject).jdField_e_of_type_JavaLangString = paramString3;
-    ((bezy)localObject).jdField_b_of_type_Int = paramInt3;
-    ((bezy)localObject).jdField_d_of_type_Int = paramInt2;
-    ((bezy)localObject).jdField_f_of_type_JavaLangString = paramString4;
-    ((bezy)localObject).jdField_e_of_type_Int = 0;
-    ((bezy)localObject).jdField_a_of_type_Long = System.currentTimeMillis();
-    ((bezy)localObject).jdField_c_of_type_Int = i;
-    ((bezy)localObject).jdField_f_of_type_Int = paramInt4;
-    ((bezy)localObject).jdField_a_of_type_Boolean = paramBoolean;
-    ((bezy)localObject).jdField_a_of_type_Bezs = parambezs;
-    paramString1 = new Message();
-    paramString1.what = 1002;
-    paramString1.obj = localObject;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ requestPreDownload ]  downloadUrl = " + paramString3);
-    }
-    return a();
-  }
-  
-  public void b()
-  {
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ onAppForground ] mAppBackground = " + this.jdField_b_of_type_Boolean);
-    }
-    Message localMessage = new Message();
-    localMessage.what = 1008;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_g_of_type_Boolean = paramBoolean;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[setEnable] enable = " + this.jdField_g_of_type_Boolean);
     }
   }
   
-  public void c()
+  /* Error */
+  public static void b(QQAppInterface paramQQAppInterface, List<TroopAIONotifyItem> paramList)
   {
-    this.jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ onAppBackground ] mAppBackground = " + this.jdField_b_of_type_Boolean);
-    }
-    Message localMessage = new Message();
-    localMessage.what = 1009;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      d();
-      continue;
-      d(paramMessage);
-      continue;
-      c(paramMessage);
-      continue;
-      b(paramMessage);
-      continue;
-      e();
-      g();
-      continue;
-      paramMessage = (Bundle)paramMessage.obj;
-      a(paramMessage.getDouble("FPS"), paramMessage.getDouble("CPU"), this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_Long);
-      continue;
-      a(paramMessage);
-      continue;
-      e();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.h) {
-      bhgt.a().b(this.jdField_a_of_type_Bhgv);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.removeAll(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_b_of_type_JavaUtilArrayList.removeAll(this.jdField_b_of_type_JavaUtilArrayList);
-      return;
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_1
+    //   4: ifnull +14 -> 18
+    //   7: aload_1
+    //   8: invokeinterface 77 1 0
+    //   13: istore_3
+    //   14: iload_3
+    //   15: ifne +7 -> 22
+    //   18: ldc 2
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: invokevirtual 22	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
+    //   26: invokevirtual 28	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   29: astore_0
+    //   30: iconst_0
+    //   31: istore_2
+    //   32: iload_2
+    //   33: iload_3
+    //   34: if_icmpge +25 -> 59
+    //   37: aload_0
+    //   38: aload_1
+    //   39: iload_2
+    //   40: invokeinterface 90 2 0
+    //   45: checkcast 244	com/tencent/mobileqq/persistence/Entity
+    //   48: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   51: pop
+    //   52: iload_2
+    //   53: iconst_1
+    //   54: iadd
+    //   55: istore_2
+    //   56: goto -24 -> 32
+    //   59: aload_0
+    //   60: invokevirtual 43	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   63: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: ifeq -48 -> 18
+    //   69: ldc 60
+    //   71: iconst_2
+    //   72: new 51	java/lang/StringBuilder
+    //   75: dup
+    //   76: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   79: ldc 248
+    //   81: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: iload_3
+    //   85: invokevirtual 63	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: goto -76 -> 18
+    //   97: astore_0
+    //   98: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   101: ifeq -83 -> 18
+    //   104: ldc 60
+    //   106: iconst_2
+    //   107: new 51	java/lang/StringBuilder
+    //   110: dup
+    //   111: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   114: ldc 250
+    //   116: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: aload_0
+    //   120: invokevirtual 80	java/lang/Exception:toString	()Ljava/lang/String;
+    //   123: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   132: goto -114 -> 18
+    //   135: astore_0
+    //   136: ldc 2
+    //   138: monitorexit
+    //   139: aload_0
+    //   140: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	141	0	paramQQAppInterface	QQAppInterface
+    //   0	141	1	paramList	List<TroopAIONotifyItem>
+    //   31	25	2	i	int
+    //   13	72	3	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   22	30	97	java/lang/Exception
+    //   37	52	97	java/lang/Exception
+    //   59	94	97	java/lang/Exception
+    //   7	14	135	finally
+    //   22	30	135	finally
+    //   37	52	135	finally
+    //   59	94	135	finally
+    //   98	132	135	finally
   }
 }
 

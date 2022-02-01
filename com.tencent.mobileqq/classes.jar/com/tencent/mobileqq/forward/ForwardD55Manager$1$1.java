@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.forward;
 
-import auxp;
-import auym;
-import auyn;
+import atks;
+import atlq;
+import atlr;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class ForwardD55Manager$1$1
   implements Runnable
 {
-  public ForwardD55Manager$1$1(auyn paramauyn, byte[] paramArrayOfByte, int paramInt) {}
+  public ForwardD55Manager$1$1(atlr paramatlr, byte[] paramArrayOfByte, int paramInt) {}
   
   public void run()
   {
-    auxp localauxp = new auxp();
-    oidb_0xd55.RspBody localRspBody = ForwardUtils.a(this.jdField_a_of_type_ArrayOfByte);
+    atks localatks = new atks();
+    oidb_0xd55.RspBody localRspBody = ForwardUtils.parseOIDBD55RspBody(this.jdField_a_of_type_ArrayOfByte);
     if (localRspBody != null) {
-      auxp.a(localRspBody, this.jdField_a_of_type_Auyn.jdField_a_of_type_JavaLangString, localauxp);
+      atks.a(localRspBody, this.jdField_a_of_type_Atlr.jdField_a_of_type_JavaLangString, localatks);
     }
-    auym.a(this.jdField_a_of_type_Auyn.jdField_a_of_type_Auym, this.jdField_a_of_type_Int);
-    auym.a(this.jdField_a_of_type_Auyn.jdField_a_of_type_Auym, localauxp);
-    this.jdField_a_of_type_Auyn.jdField_a_of_type_Auym.a(this.jdField_a_of_type_Auyn.jdField_a_of_type_Long, localauxp);
+    atlq.a(this.jdField_a_of_type_Atlr.jdField_a_of_type_Atlq, this.jdField_a_of_type_Int);
+    atlq.a(this.jdField_a_of_type_Atlr.jdField_a_of_type_Atlq, localatks);
+    this.jdField_a_of_type_Atlr.jdField_a_of_type_Atlq.a(this.jdField_a_of_type_Atlr.jdField_a_of_type_Long, localatks);
   }
 }
 

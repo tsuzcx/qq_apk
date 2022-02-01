@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
+import com.tencent.biz.pubaccount.readinjoy.reward.RedPacketTaskData;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -278,7 +278,7 @@ public class ReadInJoyEntityManagerFactory
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 103);
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 105);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;

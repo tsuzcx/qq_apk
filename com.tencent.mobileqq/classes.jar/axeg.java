@@ -1,15 +1,17 @@
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
+
 public class axeg
-  extends wip
+  implements axet
 {
-  public int a;
-  public axeh a;
-  public String a;
-  public boolean a;
-  public Object[] a;
+  public axeg(NearbyMomentFragment paramNearbyMomentFragment, axem paramaxem) {}
   
-  public String toString()
+  public void a(boolean paramBoolean1, List<axfs> paramList, boolean paramBoolean2, int paramInt)
   {
-    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Axem);
   }
 }
 

@@ -1,12 +1,8 @@
-class mhn
-  implements mih
+public abstract interface mhn
 {
-  mhn(mhi parammhi) {}
+  public abstract void a();
   
-  public void a(long paramLong, String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramLong, paramString, paramBoolean);
-  }
+  public abstract void b();
 }
 
 

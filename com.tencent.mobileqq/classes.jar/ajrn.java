@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajrn
-  extends aocj
+class ajrn
+  implements DialogInterface.OnClickListener
 {
-  public ajrn(TroopView paramTroopView) {}
+  ajrn(ajrg paramajrg, Runnable paramRunnable) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.j();
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

@@ -1,134 +1,205 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver.1;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
 
 public class apdo
-  extends aocj
+  implements View.OnClickListener
 {
-  private int a;
+  private final Activity jdField_a_of_type_AndroidAppActivity;
+  private final apdt jdField_a_of_type_Apdt;
+  private final apdv jdField_a_of_type_Apdv;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public apdo(apdn paramapdn, int paramInt)
+  private apdo(Activity paramActivity, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Apdv = new apdv(paramActivity);
+    paramActivity = apds.a(paramActivity, apxa.a());
+    this.jdField_a_of_type_Apdv.a(paramActivity);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Apdt = apdt.a(this.jdField_a_of_type_AndroidAppActivity, -1, -1);
+    c();
   }
   
-  protected void b(boolean paramBoolean)
+  private static int a(apdr paramapdr)
   {
-    if (this.jdField_a_of_type_Apdn.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
+    if (paramapdr.a()) {
+      return 2;
     }
-    aocm localaocm = (aocm)this.jdField_a_of_type_Apdn.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localaocm.a(8, null);
-      return;
-    }
-    localaocm.a(9, null);
+    return 1;
   }
   
-  protected void c(boolean paramBoolean)
+  public static String a(String paramString)
   {
-    if (this.jdField_a_of_type_Apdn.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    aocm localaocm = (aocm)this.jdField_a_of_type_Apdn.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localaocm.a(7, null);
-      return;
-    }
-    localaocm.a(6, null);
-  }
-  
-  protected void c(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = (Bundle)paramObject;
-    String str1 = paramObject.getString("PEER_UIN");
-    long l = paramObject.getLong("BEGTIME");
-    boolean bool1 = paramObject.getBoolean("NO_MSG");
-    int j = paramObject.getInt("SVR_CODE");
-    String str2 = paramObject.getString("SVR_MSG");
-    boolean bool2 = paramObject.getBoolean("FETCH_MORE");
-    int i = paramObject.getInt("MSG_COUNT");
-    boolean bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
+    paramString = (String)bfyz.a(BaseApplicationImpl.context, paramString, "key_selected_browser_name", "");
     if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + j + ",msgCount:" + i + ",fetchMore: " + bool2 + ",svrMsg: " + str2 + ",isPreloadType:" + bool3);
+      QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, new Object[] { "[sp] getSpSelectedBrowserPackage: invoked. ", " pkg: ", paramString });
     }
-    if (bool3) {
-      return;
-    }
-    if ((paramBoolean) && (bool2) && (i > 0) && (i <= 8))
+    return paramString;
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2)
+  {
+    String str = a(paramString2);
+    paramString2 = str;
+    if (!TextUtils.isEmpty(str))
     {
-      ThreadManager.getSubThreadHandler().post(new MessageRoamHandler.ChatHistoryMessageObserver.1(this, l, i, str1, bool2));
-      return;
-    }
-    paramObject = (aocm)this.jdField_a_of_type_Apdn.app.getManager(92);
-    i = 1;
-    if (!paramBoolean)
-    {
-      if (bool1) {
-        i = 2;
-      }
-      if (j == 51) {
-        i = 3;
-      }
-      paramObject.b(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
-      }
-      if (!bool2) {
-        break label354;
-      }
-    }
-    label354:
-    for (j = 1;; j = 0)
-    {
-      paramObject.a(i, j, Long.valueOf(l));
-      return;
-      j = 0;
-      i = j;
-      if (!bool2)
+      paramString2 = str;
+      if (!bjnn.a(BaseApplication.context, str))
       {
-        i = j;
-        if (!paramObject.a(l)) {
-          i = 4;
-        }
+        a(apds.a(), "");
+        paramString2 = "";
       }
-      paramObject.b(true);
-      break;
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      new apdo(paramActivity, paramString1).b();
+      return;
+    }
+    apds.a(paramActivity, paramString1, paramString2);
+  }
+  
+  private void a(apdr paramapdr)
+  {
+    Object localObject = BaseApplication.context.getResources();
+    apdp localapdp = new apdp(this, paramapdr);
+    apdq localapdq = new apdq(this);
+    localObject = String.format(((Resources)localObject).getString(2131690592), new Object[] { paramapdr.a() });
+    bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, (String)localObject, localapdp, localapdq).show();
+    if (QLog.isColorLevel()) {
+      QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, new Object[] { "[dialog] showDownloadBrowserConfirmDialog: invoked. ", " browser: ", paramapdr });
+    }
+    axvz.a("0X800ADEE");
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    bfyz.a(BaseApplicationImpl.context, paramString1, true, "key_selected_browser_name", paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, new Object[] { "[sp] saveSpSelectedBrowserPackage: invoked. ", " pkg: ", paramString2 });
     }
   }
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  private void b()
   {
-    if (paramObject == null) {}
-    Object localObject1;
-    do
+    if (this.jdField_a_of_type_Apdv.getCount() <= 0)
     {
-      return;
-      localObject2 = (HashMap)paramObject;
-      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
-      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
+      yyi.a(1, 2131694779);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
+        QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, "[error] showPopupWindow: invoked. [没有任何浏览器时，对齐旧的错误toast]");
       }
-      localObject1 = this.jdField_a_of_type_Apdn.app.getHandler(akir.class);
-      if (!paramBoolean)
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_Apdt.a();
+    if (localObject != null) {
+      ((XListView)localObject).setAdapter(this.jdField_a_of_type_Apdv);
+    }
+    localObject = this.jdField_a_of_type_AndroidAppActivity.getWindow();
+    if (localObject != null)
+    {
+      ((Window)localObject).setDimAmount(0.5F);
+      this.jdField_a_of_type_Apdt.showAtLocation(((Window)localObject).getDecorView(), 80, 0, 0);
+    }
+    axvz.a("0X800ADEA");
+  }
+  
+  private void c()
+  {
+    Button localButton = this.jdField_a_of_type_Apdt.a();
+    if (localButton != null) {
+      localButton.setOnClickListener(this);
+    }
+    localButton = this.jdField_a_of_type_Apdt.b();
+    if (localButton != null) {
+      localButton.setOnClickListener(this);
+    }
+  }
+  
+  private void d()
+  {
+    e();
+    apdr localapdr = this.jdField_a_of_type_Apdv.a();
+    if (localapdr != null)
+    {
+      a(apds.a(), localapdr.e());
+      axvz.a("0X800ADED", a(localapdr), "", localapdr.a());
+    }
+  }
+  
+  private void e()
+  {
+    a();
+    apdr localapdr = this.jdField_a_of_type_Apdv.a();
+    if (localapdr == null) {
+      return;
+    }
+    if (localapdr.a()) {
+      apds.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localapdr.e());
+    }
+    for (;;)
+    {
+      QLog.d("[BrowserOpt] BrowserDialogViewModel", 1, new Object[] { "[action] onAnyButtonClicked: invoked. ", " browser: ", localapdr });
+      return;
+      if (bjnn.a(BaseApplication.context, localapdr.e())) {
+        apds.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localapdr.e());
+      } else {
+        a(localapdr);
+      }
+    }
+  }
+  
+  private void f()
+  {
+    e();
+    apdr localapdr = this.jdField_a_of_type_Apdv.a();
+    if (localapdr != null) {
+      axvz.a("0X800ADEC", a(localapdr), "", localapdr.a());
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apdt.isShowing()) {}
+    try
+    {
+      this.jdField_a_of_type_Apdt.dismiss();
+      if (this.jdField_a_of_type_Apdv != null) {
+        this.jdField_a_of_type_Apdv.a();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
-        ((Message)localObject2).obj = paramObject;
-        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-        return;
+        QLog.e("[BrowserOpt] BrowserDialogViewModel", 1, "dismissPopupWindow: failed. ", localException);
       }
-    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
-    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
-    ((Message)localObject2).obj = paramObject;
-    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131362671) {
+      d();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getId() == 2131372011) {
+        f();
+      }
+    }
   }
 }
 

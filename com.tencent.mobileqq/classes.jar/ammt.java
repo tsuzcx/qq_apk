@@ -1,23 +1,4 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
-class ammt
-  implements CompoundButton.OnCheckedChangeListener
-{
-  ammt(amms paramamms) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    int i = ((Integer)paramCompoundButton.getTag()).intValue();
-    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
-    amms.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ammt

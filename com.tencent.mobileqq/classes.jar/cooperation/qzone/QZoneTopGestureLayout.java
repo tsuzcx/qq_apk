@@ -6,14 +6,13 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import bmuk;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class QZoneTopGestureLayout
   extends TopGestureLayout
 {
-  private static boolean a = true;
-  private static boolean b = true;
+  private static boolean backEnabled = true;
+  private static boolean shallIntercept = true;
   
   public QZoneTopGestureLayout(Context paramContext)
   {
@@ -25,26 +24,26 @@ public class QZoneTopGestureLayout
     super(paramContext, paramAttributeSet);
   }
   
-  public static void a(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
   public static void setBackEnabled(boolean paramBoolean)
   {
-    a = paramBoolean;
+    backEnabled = paramBoolean;
   }
   
-  public void a(Context paramContext)
+  public static void shouldInterceptEvent(boolean paramBoolean)
   {
-    a = true;
-    b = true;
-    this.mTopGestureDetector = new GestureDetector(paramContext, new bmuk(this, paramContext), new Handler(Looper.getMainLooper()));
+    shallIntercept = paramBoolean;
+  }
+  
+  public void init(Context paramContext)
+  {
+    backEnabled = true;
+    shallIntercept = true;
+    this.mTopGestureDetector = new GestureDetector(paramContext, new QZoneTopGestureLayout.QZoneTopGestureDetector(this, paramContext), new Handler(Looper.getMainLooper()));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!b) {
+    if (!shallIntercept) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);

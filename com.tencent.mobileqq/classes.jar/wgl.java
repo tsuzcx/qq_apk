@@ -1,32 +1,36 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class wgl
-  extends wov
+  extends vqm
 {
-  List<AddressItem> a = new ArrayList();
+  public List<StoryVideoItem> a;
   
-  public wgl(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
+  public wgl(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
   {
-    super(paramRspBatchGetPOIList.result);
-    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
-    if (paramRspBatchGetPOIList != null)
+    super(paramRspBatchGetVideoInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspBatchGetVideoInfo.vid_info_list.has())
     {
-      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
-      while (paramRspBatchGetPOIList.hasNext())
+      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
+      while (paramRspBatchGetVideoInfo.hasNext())
       {
-        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
-        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
-        localAddressItem.poiType = localPOI.poi_type.get();
-        this.a.add(localAddressItem);
+        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
       }
     }
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

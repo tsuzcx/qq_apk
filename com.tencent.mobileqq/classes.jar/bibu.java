@@ -1,22 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Pair;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bibu
-  extends bicc
+final class bibu
+  implements DialogInterface.OnClickListener
 {
-  public void a(String paramString)
-  {
-    QLog.i("GLDrawable", 1, paramString);
-  }
+  bibu(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void a(String paramString, Exception paramException)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("GLDrawable", 1, paramString, paramException);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    biaq.a(paramString1, paramLong, new Pair[] { new Pair("status_code", paramString2), new Pair("status_msg", paramString3) });
+    bibs.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

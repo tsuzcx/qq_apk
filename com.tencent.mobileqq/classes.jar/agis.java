@@ -1,30 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Animatable;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import com.tencent.mobileqq.activity.contact.connections.TriangleView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.doutu.DuiButtonImageView;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
-class agis
-  implements DialogInterface.OnClickListener
+public class agis
+  extends aezf
 {
-  agis(agiq paramagiq) {}
+  public long a;
+  public FrameLayout a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public BreathAnimationLayout a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public TriangleView a;
+  EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+  DuiButtonImageView jdField_a_of_type_ComTencentMobileqqDoutuDuiButtonImageView;
+  public PicEmoticonInfo a;
+  public boolean a;
+  ImageView b;
+  public RelativeLayout b;
+  public boolean b;
+  ImageView c;
+  ImageView d;
+  public int e = -1;
+  public ImageView e;
+  public ImageView f;
+  ImageView g;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      if ((agiq.a(this.a) != null) && (agiq.a(this.a).isShowing())) {
-        agiq.a(this.a).dismiss();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "disband cancel");
-      }
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
     }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    }
+    if ((this.g != null) && ((this.g.getDrawable() instanceof Animatable))) {
+      ((Animatable)this.g.getDrawable()).stop();
     }
   }
 }

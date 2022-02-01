@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahum;
-import bmtd;
+import agra;
+import cooperation.qzone.QZoneHelper;
 
 public class TofuAioMiniProfileItemBuilder$5
   implements Runnable
 {
-  public TofuAioMiniProfileItemBuilder$5(ahum paramahum) {}
+  public TofuAioMiniProfileItemBuilder$5(agra paramagra) {}
   
   public void run()
   {
-    bmtd.a(this.this$0.a, "aio_mini_profile");
+    QZoneHelper.preloadQzone(this.this$0.a, "aio_mini_profile");
   }
 }
 

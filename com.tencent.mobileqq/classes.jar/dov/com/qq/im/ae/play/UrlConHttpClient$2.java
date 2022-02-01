@@ -1,11 +1,9 @@
 package dov.com.qq.im.ae.play;
 
-import bozh;
-
-public class UrlConHttpClient$2
+class UrlConHttpClient$2
   implements Runnable
 {
-  public UrlConHttpClient$2(bozh parambozh, String paramString1, String paramString2, int paramInt, String paramString3) {}
+  UrlConHttpClient$2(UrlConHttpClient paramUrlConHttpClient, String paramString1, String paramString2, int paramInt, String paramString3) {}
   
   /* Error */
   public void run()
@@ -27,74 +25,74 @@ public class UrlConHttpClient$2
     //   18: astore 8
     //   20: aconst_null
     //   21: astore_3
-    //   22: new 38	java/net/URL
+    //   22: new 39	java/net/URL
     //   25: dup
     //   26: aload_0
-    //   27: getfield 19	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   30: invokespecial 41	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   33: invokevirtual 45	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   36: checkcast 47	java/net/HttpURLConnection
+    //   27: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downUrl	Ljava/lang/String;
+    //   30: invokespecial 42	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   33: invokevirtual 46	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   36: checkcast 48	java/net/HttpURLConnection
     //   39: astore 10
     //   41: aload 10
     //   43: sipush 3000
-    //   46: invokevirtual 51	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   46: invokevirtual 52	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   49: aload 10
     //   51: sipush 3000
-    //   54: invokevirtual 54	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   54: invokevirtual 55	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   57: sipush -255
-    //   60: invokestatic 59	android/net/TrafficStats:setThreadStatsTag	(I)V
+    //   60: invokestatic 60	android/net/TrafficStats:setThreadStatsTag	(I)V
     //   63: aload 10
-    //   65: ldc 61
-    //   67: ldc 63
-    //   69: invokevirtual 67	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   65: ldc 62
+    //   67: ldc 64
+    //   69: invokevirtual 68	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   72: aload 10
-    //   74: ldc 69
-    //   76: ldc 71
-    //   78: invokevirtual 74	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   74: ldc 70
+    //   76: ldc 72
+    //   78: invokevirtual 75	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   81: aload 10
-    //   83: invokevirtual 77	java/net/HttpURLConnection:connect	()V
+    //   83: invokevirtual 78	java/net/HttpURLConnection:connect	()V
     //   86: aload 10
-    //   88: invokevirtual 81	java/net/HttpURLConnection:getResponseCode	()I
+    //   88: invokevirtual 82	java/net/HttpURLConnection:getResponseCode	()I
     //   91: istore_1
     //   92: iload_1
     //   93: sipush 200
     //   96: if_icmpne +316 -> 412
-    //   99: new 83	java/io/File
+    //   99: new 84	java/io/File
     //   102: dup
     //   103: aload 10
-    //   105: invokevirtual 87	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
-    //   108: invokevirtual 91	java/net/URL:getFile	()Ljava/lang/String;
-    //   111: invokespecial 92	java/io/File:<init>	(Ljava/lang/String;)V
-    //   114: invokevirtual 95	java/io/File:getName	()Ljava/lang/String;
+    //   105: invokevirtual 88	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   108: invokevirtual 92	java/net/URL:getFile	()Ljava/lang/String;
+    //   111: invokespecial 93	java/io/File:<init>	(Ljava/lang/String;)V
+    //   114: invokevirtual 96	java/io/File:getName	()Ljava/lang/String;
     //   117: astore_2
-    //   118: new 83	java/io/File
+    //   118: new 84	java/io/File
     //   121: dup
     //   122: aload_0
-    //   123: getfield 21	dov/com/qq/im/ae/play/UrlConHttpClient$2:b	Ljava/lang/String;
-    //   126: invokespecial 92	java/io/File:<init>	(Ljava/lang/String;)V
+    //   123: getfield 22	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$localSavePath	Ljava/lang/String;
+    //   126: invokespecial 93	java/io/File:<init>	(Ljava/lang/String;)V
     //   129: astore 11
     //   131: aload 11
-    //   133: invokevirtual 99	java/io/File:exists	()Z
+    //   133: invokevirtual 100	java/io/File:exists	()Z
     //   136: ifne +9 -> 145
     //   139: aload 11
-    //   141: invokevirtual 102	java/io/File:mkdirs	()Z
+    //   141: invokevirtual 103	java/io/File:mkdirs	()Z
     //   144: pop
-    //   145: new 83	java/io/File
+    //   145: new 84	java/io/File
     //   148: dup
     //   149: aload 11
     //   151: aload_2
-    //   152: invokespecial 105	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   152: invokespecial 106	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   155: astore 11
     //   157: aload 11
-    //   159: invokevirtual 99	java/io/File:exists	()Z
+    //   159: invokevirtual 100	java/io/File:exists	()Z
     //   162: ifne +9 -> 171
     //   165: aload 11
-    //   167: invokevirtual 108	java/io/File:createNewFile	()Z
+    //   167: invokevirtual 109	java/io/File:createNewFile	()Z
     //   170: pop
-    //   171: new 110	java/io/FileOutputStream
+    //   171: new 111	java/io/FileOutputStream
     //   174: dup
     //   175: aload 11
-    //   177: invokespecial 113	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   177: invokespecial 114	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   180: astore_2
     //   181: aload 5
     //   183: astore 4
@@ -105,7 +103,7 @@ public class UrlConHttpClient$2
     //   192: aload 8
     //   194: astore 7
     //   196: aload 10
-    //   198: invokevirtual 117	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   198: invokevirtual 118	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   201: astore_3
     //   202: aload_3
     //   203: astore 4
@@ -128,7 +126,7 @@ public class UrlConHttpClient$2
     //   231: astore 7
     //   233: aload_3
     //   234: aload 8
-    //   236: invokevirtual 123	java/io/InputStream:read	([B)I
+    //   236: invokevirtual 124	java/io/InputStream:read	([B)I
     //   239: istore_1
     //   240: iload_1
     //   241: iconst_m1
@@ -145,7 +143,7 @@ public class UrlConHttpClient$2
     //   258: aload 8
     //   260: iconst_0
     //   261: iload_1
-    //   262: invokevirtual 127	java/io/FileOutputStream:write	([BII)V
+    //   262: invokevirtual 128	java/io/FileOutputStream:write	([BII)V
     //   265: goto -44 -> 221
     //   268: astore 4
     //   270: aload_3
@@ -155,22 +153,22 @@ public class UrlConHttpClient$2
     //   275: aload 4
     //   277: astore_2
     //   278: aload_0
-    //   279: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   279: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   282: aload_0
-    //   283: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   286: ldc 129
+    //   283: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   286: ldc 130
     //   288: aload_0
-    //   289: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   292: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   289: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   292: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   295: aload_2
     //   296: ifnull +7 -> 303
     //   299: aload_2
-    //   300: invokevirtual 137	java/io/InputStream:close	()V
+    //   300: invokevirtual 139	java/io/InputStream:close	()V
     //   303: aload_3
     //   304: ifnull +7 -> 311
     //   307: aload_3
-    //   308: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   311: invokestatic 141	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   308: invokevirtual 140	java/io/FileOutputStream:close	()V
+    //   311: invokestatic 143	android/net/TrafficStats:clearThreadStatsTag	()V
     //   314: return
     //   315: aload_3
     //   316: astore 4
@@ -181,8 +179,8 @@ public class UrlConHttpClient$2
     //   324: aload_3
     //   325: astore 7
     //   327: aload_0
-    //   328: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
-    //   331: invokestatic 144	bozh:a	(Lbozh;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
+    //   328: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
+    //   331: invokestatic 147	dov/com/qq/im/ae/play/UrlConHttpClient:access$100	(Ldov/com/qq/im/ae/play/UrlConHttpClient;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
     //   334: ifnull +41 -> 375
     //   337: aload_3
     //   338: astore 4
@@ -193,16 +191,16 @@ public class UrlConHttpClient$2
     //   346: aload_3
     //   347: astore 7
     //   349: aload_0
-    //   350: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
-    //   353: invokestatic 144	bozh:a	(Lbozh;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
+    //   350: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
+    //   353: invokestatic 147	dov/com/qq/im/ae/play/UrlConHttpClient:access$100	(Ldov/com/qq/im/ae/play/UrlConHttpClient;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
     //   356: aload_0
-    //   357: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
+    //   357: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
     //   360: iconst_0
     //   361: aload 11
-    //   363: invokevirtual 147	java/io/File:getPath	()Ljava/lang/String;
+    //   363: invokevirtual 150	java/io/File:getPath	()Ljava/lang/String;
     //   366: aload_0
-    //   367: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   370: invokeinterface 153 5 0
+    //   367: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   370: invokeinterface 156 5 0
     //   375: aload_3
     //   376: astore 4
     //   378: aload_2
@@ -212,50 +210,50 @@ public class UrlConHttpClient$2
     //   384: aload_3
     //   385: astore 7
     //   387: aload 10
-    //   389: invokevirtual 156	java/net/HttpURLConnection:disconnect	()V
+    //   389: invokevirtual 159	java/net/HttpURLConnection:disconnect	()V
     //   392: aload_3
     //   393: ifnull +7 -> 400
     //   396: aload_3
-    //   397: invokevirtual 137	java/io/InputStream:close	()V
+    //   397: invokevirtual 139	java/io/InputStream:close	()V
     //   400: aload_2
     //   401: ifnull +7 -> 408
     //   404: aload_2
-    //   405: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   408: invokestatic 141	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   405: invokevirtual 140	java/io/FileOutputStream:close	()V
+    //   408: invokestatic 143	android/net/TrafficStats:clearThreadStatsTag	()V
     //   411: return
     //   412: iload_1
     //   413: sipush 301
     //   416: if_icmpne +84 -> 500
     //   419: aload_0
-    //   420: getfield 19	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   423: ldc 158
-    //   425: invokevirtual 164	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   420: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downUrl	Ljava/lang/String;
+    //   423: ldc 161
+    //   425: invokevirtual 167	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   428: ifeq +72 -> 500
-    //   431: invokestatic 166	bozh:a	()Ljava/lang/String;
-    //   434: new 168	java/lang/StringBuilder
+    //   431: invokestatic 170	dov/com/qq/im/ae/play/UrlConHttpClient:access$000	()Ljava/lang/String;
+    //   434: new 172	java/lang/StringBuilder
     //   437: dup
-    //   438: invokespecial 169	java/lang/StringBuilder:<init>	()V
-    //   441: ldc 171
-    //   443: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   438: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   441: ldc 175
+    //   443: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   446: aload_0
-    //   447: getfield 19	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   450: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   453: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   456: invokestatic 183	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   447: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downUrl	Ljava/lang/String;
+    //   450: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   453: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   456: invokestatic 187	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   459: aload_0
-    //   460: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   460: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   463: aload_0
-    //   464: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
+    //   464: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
     //   467: aload_0
-    //   468: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
+    //   468: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
     //   471: aload_0
-    //   472: getfield 19	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   475: ldc 158
-    //   477: ldc 185
-    //   479: invokevirtual 189	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   472: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downUrl	Ljava/lang/String;
+    //   475: ldc 161
+    //   477: ldc 189
+    //   479: invokevirtual 193	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   482: aload_0
-    //   483: getfield 21	dov/com/qq/im/ae/play/UrlConHttpClient$2:b	Ljava/lang/String;
-    //   486: invokevirtual 193	bozh:download	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   483: getfield 22	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$localSavePath	Ljava/lang/String;
+    //   486: invokevirtual 197	dov/com/qq/im/ae/play/UrlConHttpClient:download	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   489: aconst_null
     //   490: astore 4
     //   492: aload_2
@@ -264,13 +262,13 @@ public class UrlConHttpClient$2
     //   496: astore_2
     //   497: goto -105 -> 392
     //   500: aload_0
-    //   501: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   501: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   504: aload_0
-    //   505: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   508: ldc 195
+    //   505: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   508: ldc 199
     //   510: aload_0
-    //   511: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   514: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   511: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   514: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   517: aconst_null
     //   518: astore 4
     //   520: aload_2
@@ -280,43 +278,43 @@ public class UrlConHttpClient$2
     //   525: goto -133 -> 392
     //   528: astore_3
     //   529: aload_0
-    //   530: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   530: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   533: aload_0
-    //   534: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   537: ldc 197
+    //   534: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   537: ldc 201
     //   539: aload_0
-    //   540: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   543: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   540: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   543: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   546: goto -146 -> 400
     //   549: astore_2
     //   550: aload_0
-    //   551: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   551: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   554: aload_0
-    //   555: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   558: ldc 197
+    //   555: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   558: ldc 201
     //   560: aload_0
-    //   561: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   564: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   561: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   564: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   567: goto -159 -> 408
     //   570: astore_2
     //   571: aload_0
-    //   572: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   572: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   575: aload_0
-    //   576: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   579: ldc 197
+    //   576: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   579: ldc 201
     //   581: aload_0
-    //   582: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   585: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   582: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   585: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   588: goto -285 -> 303
     //   591: astore_2
     //   592: aload_0
-    //   593: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   593: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   596: aload_0
-    //   597: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   600: ldc 197
+    //   597: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   600: ldc 201
     //   602: aload_0
-    //   603: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   606: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   603: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   606: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   609: goto -298 -> 311
     //   612: astore_2
     //   613: aconst_null
@@ -326,42 +324,42 @@ public class UrlConHttpClient$2
     //   619: aload_2
     //   620: astore 5
     //   622: aload_0
-    //   623: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   623: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   626: aload_0
-    //   627: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   630: ldc 197
+    //   627: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   630: ldc 201
     //   632: aload_0
-    //   633: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   636: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   633: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   636: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   639: aload 7
     //   641: ifnull +8 -> 649
     //   644: aload 7
-    //   646: invokevirtual 137	java/io/InputStream:close	()V
+    //   646: invokevirtual 139	java/io/InputStream:close	()V
     //   649: aload_2
     //   650: ifnull +7 -> 657
     //   653: aload_2
-    //   654: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   657: invokestatic 141	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   654: invokevirtual 140	java/io/FileOutputStream:close	()V
+    //   657: invokestatic 143	android/net/TrafficStats:clearThreadStatsTag	()V
     //   660: return
     //   661: astore_3
     //   662: aload_0
-    //   663: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   663: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   666: aload_0
-    //   667: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   670: ldc 197
+    //   667: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   670: ldc 201
     //   672: aload_0
-    //   673: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   676: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   673: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   676: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   679: goto -30 -> 649
     //   682: astore_2
     //   683: aload_0
-    //   684: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   684: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   687: aload_0
-    //   688: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   691: ldc 197
+    //   688: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   691: ldc 201
     //   693: aload_0
-    //   694: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   697: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   694: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   697: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   700: goto -43 -> 657
     //   703: astore_2
     //   704: aconst_null
@@ -371,42 +369,42 @@ public class UrlConHttpClient$2
     //   710: aload_2
     //   711: astore 5
     //   713: aload_0
-    //   714: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   714: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   717: aload_0
-    //   718: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   721: ldc 199
+    //   718: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   721: ldc 203
     //   723: aload_0
-    //   724: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   727: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   724: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   727: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   730: aload 6
     //   732: ifnull +8 -> 740
     //   735: aload 6
-    //   737: invokevirtual 137	java/io/InputStream:close	()V
+    //   737: invokevirtual 139	java/io/InputStream:close	()V
     //   740: aload_2
     //   741: ifnull +7 -> 748
     //   744: aload_2
-    //   745: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   748: invokestatic 141	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   745: invokevirtual 140	java/io/FileOutputStream:close	()V
+    //   748: invokestatic 143	android/net/TrafficStats:clearThreadStatsTag	()V
     //   751: return
     //   752: astore_3
     //   753: aload_0
-    //   754: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   754: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   757: aload_0
-    //   758: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   761: ldc 197
+    //   758: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   761: ldc 201
     //   763: aload_0
-    //   764: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   767: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   764: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   767: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   770: goto -30 -> 740
     //   773: astore_2
     //   774: aload_0
-    //   775: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   775: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   778: aload_0
-    //   779: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   782: ldc 197
+    //   779: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   782: ldc 201
     //   784: aload_0
-    //   785: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   788: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   785: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   788: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   791: goto -43 -> 748
     //   794: astore_2
     //   795: aconst_null
@@ -414,33 +412,33 @@ public class UrlConHttpClient$2
     //   798: aload 4
     //   800: ifnull +8 -> 808
     //   803: aload 4
-    //   805: invokevirtual 137	java/io/InputStream:close	()V
+    //   805: invokevirtual 139	java/io/InputStream:close	()V
     //   808: aload 5
     //   810: ifnull +8 -> 818
     //   813: aload 5
-    //   815: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   818: invokestatic 141	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   815: invokevirtual 140	java/io/FileOutputStream:close	()V
+    //   818: invokestatic 143	android/net/TrafficStats:clearThreadStatsTag	()V
     //   821: aload_2
     //   822: athrow
     //   823: astore_3
     //   824: aload_0
-    //   825: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   825: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   828: aload_0
-    //   829: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   832: ldc 197
+    //   829: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   832: ldc 201
     //   834: aload_0
-    //   835: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   838: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   835: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   838: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   841: goto -33 -> 808
     //   844: astore_3
     //   845: aload_0
-    //   846: getfield 17	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Lbozh;
+    //   846: getfield 18	dov/com/qq/im/ae/play/UrlConHttpClient$2:this$0	Ldov/com/qq/im/ae/play/UrlConHttpClient;
     //   849: aload_0
-    //   850: getfield 23	dov/com/qq/im/ae/play/UrlConHttpClient$2:jdField_a_of_type_Int	I
-    //   853: ldc 197
+    //   850: getfield 24	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$downCode	I
+    //   853: ldc 201
     //   855: aload_0
-    //   856: getfield 25	dov/com/qq/im/ae/play/UrlConHttpClient$2:c	Ljava/lang/String;
-    //   859: invokestatic 134	bozh:a	(Lbozh;ILjava/lang/String;Ljava/lang/String;)V
+    //   856: getfield 26	dov/com/qq/im/ae/play/UrlConHttpClient$2:val$targetName	Ljava/lang/String;
+    //   859: invokestatic 136	dov/com/qq/im/ae/play/UrlConHttpClient:access$200	(Ldov/com/qq/im/ae/play/UrlConHttpClient;ILjava/lang/String;Ljava/lang/String;)V
     //   862: goto -44 -> 818
     //   865: astore_2
     //   866: goto -68 -> 798

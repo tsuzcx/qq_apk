@@ -1,50 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acrs
-  extends acyg
+public class acrs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  acrs(acrq paramacrq, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  public acrs(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.onPageFinished(paramWebView, paramString);
-    QLog.i("AbsWebView", 1, "onPageFinished:" + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    QLog.i("AbsWebView", 1, "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    QLog.i("AbsWebView", 1, "onReceivedTitle: " + paramString);
-    acrq.a(this.a, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (acrq.a(this.a, paramWebView, paramString)) {
-      return true;
-    }
-    return a(paramWebView, paramString);
+    avxy.a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

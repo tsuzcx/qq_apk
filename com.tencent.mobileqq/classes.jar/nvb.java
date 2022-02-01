@@ -1,92 +1,108 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x487.oidb_0x487.GroupList;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
-public class nvb
-  implements AdapterView.OnItemClickListener
+class nvb
+  extends nmf
 {
-  public nvb(AccountDetailActivity paramAccountDetailActivity) {}
+  nvb(num paramnum) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = paramView.getTag();
-    if (localObject == null)
-    {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, errorCode=" + paramInt);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-    }
-    int i = ((bhsc)localObject).a.action;
-    int j = ocd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    label103:
-    String str;
-    if (i == 11)
+    int i;
+    if ((paramInt != -1) && (paramArrayOfByte != null))
     {
-      this.a.F();
-      i = 7;
-      str = this.a.e;
-      if (!this.a.d()) {
-        break label479;
-      }
-    }
-    label479:
-    for (localObject = "02";; localObject = "01")
-    {
-      ocd.a(null, str, "0X8007CA6", "0X8007CA6", 0, 0, (String)localObject, i + "", j + "", null);
-      break;
-      if (i == 2)
+      try
       {
-        aavs.b(this.a, this.a.a(), this.a.a(), this.a.b());
-        i = 1;
-        break label103;
-      }
-      if (i == 3)
-      {
-        aavs.a(this.a, this.a.a(), this.a.a(), this.a.b());
-        i = 2;
-        break label103;
-      }
-      if ((i == 9) || (i == 10))
-      {
-        aavs.a(this.a, this.a.a(), this.a.a(), this.a.b(), i);
-        if (i == 9)
-        {
-          i = 3;
-          break label103;
+        paramBundle = new oidb_0x487.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        k = paramBundle.uint32_result.get();
+        if (k != 0) {
+          break label463;
         }
-        i = 4;
-        break label103;
+        paramArrayOfByte = new ArrayList();
+        if (!paramBundle.msg_groups.has()) {
+          break label458;
+        }
+        localObject1 = paramBundle.msg_groups.get();
+        if (localObject1 == null) {
+          break label458;
+        }
+        int j = ((List)localObject1).size();
+        i = 0;
+        paramInt = j;
+        if (i < j)
+        {
+          localObject2 = ((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get() + "";
+          ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
+          paramArrayOfByte.add(localObject2);
+          if (paramArrayOfByte.size() < 3) {
+            break label469;
+          }
+          paramInt = j;
+        }
       }
-      if (i == 31)
+      catch (Exception paramArrayOfByte)
       {
-        this.a.E();
-        i = 6;
-        break label103;
+        int k;
+        Object localObject1;
+        Object localObject2;
+        while (QLog.isColorLevel())
+        {
+          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, "getBindedTroops, exception=" + paramArrayOfByte.toString());
+          return;
+          paramInt = 0;
+          continue;
+          paramInt = 0;
+        }
       }
-      if (i == 30)
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayOfByte);
+      if (paramBundle.uint32_privilege_flag.has())
       {
-        this.a.f();
-        i = 5;
-        break label103;
+        localObject1 = this.a;
+        if (paramBundle.uint32_privilege_flag.get() != 1) {
+          break label478;
+        }
       }
-      if (i == 32)
+    }
+    label458:
+    label463:
+    label469:
+    label478:
+    for (boolean bool = true;; bool = false)
+    {
+      ((num)localObject1).d = bool;
+      localObject1 = (bfas)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
+      ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
+      ((bfas)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
+      this.a.d();
+      if (QLog.isColorLevel())
       {
-        this.a.H();
-        i = 8;
-        break label103;
+        if (paramBundle.bytes_errmsg.has()) {}
+        for (paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();; paramArrayOfByte = "")
+        {
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, ret=" + k + "," + paramInt + "," + paramArrayOfByte + "," + this.a.d);
+          return;
+        }
       }
-      if (i == 19) {
-        bkgt.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.i, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, j, true);
-      }
-      i = 0;
-      break label103;
+      return;
+      i += 1;
+      break;
     }
   }
 }

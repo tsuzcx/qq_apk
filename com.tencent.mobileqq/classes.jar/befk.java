@@ -1,10 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class befk
+public abstract interface befk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public abstract void a(boolean paramBoolean, bebc parambebc);
 }
 
 

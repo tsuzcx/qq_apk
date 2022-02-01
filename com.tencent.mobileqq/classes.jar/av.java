@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class av
-  implements bliz
+  implements bjoe
 {
-  public av(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ek paramek, blir paramblir) {}
+  public av(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ek paramek, bjnw parambjnw) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -17,7 +17,7 @@ public class av
     }
     for (;;)
     {
-      this.jdField_a_of_type_Blir.cancel();
+      this.jdField_a_of_type_Bjnw.cancel();
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
       {

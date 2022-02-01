@@ -1,16 +1,9 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.view.View;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
-public class bmvs
-  extends Handler
+public abstract interface bmvs
 {
-  public bmvs(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.onHandleMessage(QzoneVerticalVideoDownloadActivity.access$000(this.a), paramMessage);
-  }
+  public abstract void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt);
 }
 
 

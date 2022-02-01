@@ -1,28 +1,17 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class aafd
-  implements aamv
+  implements aafc
 {
-  public aafd(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
-  
-  public void a(boolean paramBoolean)
+  public AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      abbe.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
-      return;
-    }
+    return paramBaseApplicationImpl.waitAppRuntime(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aafd
  * JD-Core Version:    0.7.0.1
  */

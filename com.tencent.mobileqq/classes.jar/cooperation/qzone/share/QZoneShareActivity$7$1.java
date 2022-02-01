@@ -1,15 +1,14 @@
 package cooperation.qzone.share;
 
+import amtj;
 import android.text.TextUtils;
-import anzj;
-import bnhl;
-import bnqj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.widget.QzoneEmotionUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
@@ -22,24 +21,24 @@ class QZoneShareActivity$7$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int > this.b)
+    if (this.val$currentCount > this.val$maxWordCnt)
     {
-      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131716980, 0).a();
+      QQToast.a(this.this$1.this$0, 4, 2131717214, 0).a();
       return;
     }
-    this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.g();
-    String str1 = bnqj.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
+    this.this$1.this$0.hideKeyboardAndEmo();
+    String str1 = QzoneEmotionUtils.splash2Emo(this.this$1.this$0.getEditText());
     try
     {
-      l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).f);
+      l1 = Long.parseLong(QZoneShareActivity.access$300(this.this$1.this$0).shareUin);
       l2 = l1;
       if (l1 <= 0L) {
-        l2 = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.app.getLongAccountUin();
+        l2 = this.this$1.this$0.app.getLongAccountUin();
       }
       if (l2 <= 0L)
       {
-        l1 = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.app.getLongAccountUin();
-        Object localObject = QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).a;
+        l1 = this.this$1.this$0.app.getLongAccountUin();
+        Object localObject = QZoneShareActivity.access$300(this.this$1.this$0).mImageUrls;
         if (localObject != null)
         {
           Iterator localIterator = ((ArrayList)localObject).iterator();
@@ -54,18 +53,18 @@ class QZoneShareActivity$7$1
           i = 0;
           if (i != 0)
           {
-            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bnhl.class);
+            localObject = new NewIntent(this.this$1.this$0, QzoneShareServlet.class);
             ((NewIntent)localObject).putExtra("reason", str1);
             ((NewIntent)localObject).putExtra("uin", l1);
-            ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0));
+            ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.access$300(this.this$1.this$0));
             BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
             QLog.e("QZoneShare", 1, "startShare()");
-            if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).b != 1) {
+            if (QZoneShareActivity.access$300(this.this$1.this$0).from != 1) {
               break label378;
             }
-            QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0), true);
-            this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.setResult(-1, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.getIntent());
-            this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.finish();
+            QZoneShareActivity.access$800(this.this$1.this$0, this.this$1.this$0, QZoneShareActivity.access$300(this.this$1.this$0), true);
+            this.this$1.this$0.setResult(-1, this.this$1.this$0.getIntent());
+            this.this$1.this$0.finish();
           }
         }
       }
@@ -80,7 +79,8 @@ class QZoneShareActivity$7$1
         ThreadManager.postImmediately(new QZoneShareActivity.7.1.1(this, localException, str1), null, false);
         continue;
         label378:
-        QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, anzj.a(2131711214), 0).a();
+        QZoneShareActivity.access$900(this.this$1.this$0);
+        QQToast.a(this.this$1.this$0, 5, amtj.a(2131711446), 0).a();
         continue;
         int i = 1;
         continue;

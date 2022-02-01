@@ -11,12 +11,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
-import bhlq;
-import bhpc;
-import bjfm;
-import bjfn;
-import bjfo;
-import bjfq;
+import bfur;
+import bhls;
+import bhlt;
+import bhlu;
+import bhlw;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 
@@ -306,8 +306,8 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bjfq.b();
-    bhlq.a(paramContext, 230, paramContext.getString(2131717250), paramContext.getString(2131717248), paramContext.getString(2131717247), paramContext.getString(2131717249), new bjfm(paramContext), null).show();
+    bhlw.b();
+    bfur.a(paramContext, 230, paramContext.getString(2131717483), paramContext.getString(2131717481), paramContext.getString(2131717480), paramContext.getString(2131717482), new bhls(paramContext), null).show();
   }
   
   public static void enterPermissionRequestDialogCustom(Context paramContext, int paramInt1, int paramInt2)
@@ -315,15 +315,15 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bjfq.b();
-    bhlq.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131717247), paramContext.getString(2131717249), new bjfn(paramContext), null).show();
+    bhlw.b();
+    bfur.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131717480), paramContext.getString(2131717482), new bhlt(paramContext), null).show();
   }
   
   private static boolean handleVivoPermissionDialog(Context paramContext)
   {
     if (canUseCheckOpForVivo())
     {
-      bhlq.a(paramContext, 230, paramContext.getString(2131717250), paramContext.getString(2131698543), paramContext.getString(2131717247), paramContext.getString(2131694181), new bjfo(paramContext), null).show();
+      bfur.a(paramContext, 230, paramContext.getString(2131717483), paramContext.getString(2131698778), paramContext.getString(2131717480), paramContext.getString(2131694284), new bhlu(paramContext), null).show();
       return true;
     }
     return false;

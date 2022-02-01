@@ -1,16 +1,42 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-class afnw
-  extends AccessibilityDelegateCompat
+public final class afnw
 {
-  afnw(afnv paramafnv) {}
+  public HashMap<String, String> a = new HashMap();
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  private void a(String paramString)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str1))
+          {
+            String str2 = paramString.optString(str1, "");
+            if (!TextUtils.isEmpty(str2)) {
+              this.a.put(str1, str2);
+            }
+          }
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
+      }
+    }
   }
 }
 

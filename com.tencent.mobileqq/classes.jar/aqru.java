@@ -1,29 +1,38 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QZoneCommonRequest;
+import cooperation.qzone.QzoneExternalRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aqru
+  extends MSFServlet
 {
-  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramView.setPivotX(paramView.getWidth());
-    paramView.setPivotY(paramView.getHeight() / 2);
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    localAnimatorSet.setDuration(paramInt);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
-    localAnimatorSet.start();
+    if (paramIntent == null) {}
+    while (!(paramIntent instanceof QzoneCommonIntent)) {
+      return;
+    }
+    paramIntent = (QzoneCommonIntent)paramIntent;
+    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
   }
   
-  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
-    localAnimatorSet.setDuration(paramInt);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
-    localAnimatorSet.start();
+    if ((paramIntent instanceof QzoneCommonIntent))
+    {
+      QZoneCommonRequest localQZoneCommonRequest = ((QzoneCommonIntent)paramIntent).getRequest();
+      byte[] arrayOfByte = localQZoneCommonRequest.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localQZoneCommonRequest.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

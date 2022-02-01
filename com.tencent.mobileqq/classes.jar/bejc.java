@@ -1,11 +1,10 @@
-import android.graphics.drawable.Drawable;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public class bejc
+class bejc
 {
-  public Drawable a;
-  public String a;
-  public int[] a;
-  public String b;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

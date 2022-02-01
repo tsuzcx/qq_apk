@@ -1,14 +1,50 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
-class vde
-  implements MediaPlayer.OnCompletionListener
+public class vde
+  extends vdc
 {
-  vde(vda paramvda) {}
+  private stSimpleMetaFeed a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public vde(uzq paramuzq)
   {
-    vda.b(this.a);
+    super(paramuzq);
+  }
+  
+  public List<vaq> a(ArrayList paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
+      this.a = ((stSimpleMetaFeed)paramArrayList.get(0));
+    }
+    return null;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if ((this.a != null) && (this.a.collection != null) && (!TextUtils.isEmpty(this.a.collection.cid)))
+    {
+      vae.a().a(this.a.collection.cid, 2, this);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    super.b();
+    vae.a().a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    uzq localuzq = a();
+    if ((localuzq != null) && (this.a != null)) {
+      localuzq.b(this.a);
+    }
   }
 }
 

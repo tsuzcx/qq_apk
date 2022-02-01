@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.facetoface;
 
-import agej;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
-import athd;
+import artl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.Random;
 
 public class SnowView
@@ -17,7 +17,7 @@ public class SnowView
   int jdField_a_of_type_Int = 40;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private athd[] jdField_a_of_type_ArrayOfAthd = new athd[this.jdField_a_of_type_Int];
+  private artl[] jdField_a_of_type_ArrayOfArtl = new artl[this.jdField_a_of_type_Int];
   int b = 10;
   
   public SnowView(Context paramContext)
@@ -35,32 +35,32 @@ public class SnowView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void b(athd paramathd)
+  private void b(artl paramartl)
   {
-    paramathd.e = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.45F);
-    paramathd.d += paramathd.e;
-    if ((paramathd.d > 10.0F) && (paramathd.e > 0.0F))
+    paramartl.e = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.45F);
+    paramartl.d += paramartl.e;
+    if ((paramartl.d > 10.0F) && (paramartl.e > 0.0F))
     {
-      paramathd.e = 0.0F;
-      paramathd.d = 10.0F;
+      paramartl.e = 0.0F;
+      paramartl.d = 10.0F;
     }
-    if ((paramathd.d < 2.0F) && (paramathd.e < 0.0F)) {
-      paramathd.e = 0.0F;
+    if ((paramartl.d < 2.0F) && (paramartl.e < 0.0F)) {
+      paramartl.e = 0.0F;
     }
-    paramathd.b += paramathd.d + jdField_a_of_type_JavaUtilRandom.nextFloat() * 10.0F;
-    paramathd.c += (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F) * 0.5F;
-    if (Math.abs(paramathd.c) > 3.0F) {
-      paramathd.c = (0.96F * paramathd.c);
+    paramartl.b += paramartl.d + jdField_a_of_type_JavaUtilRandom.nextFloat() * 10.0F;
+    paramartl.c += (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F) * 0.5F;
+    if (Math.abs(paramartl.c) > 3.0F) {
+      paramartl.c = (0.96F * paramartl.c);
     }
-    paramathd.jdField_a_of_type_Float += paramathd.c;
-    if (paramathd.jdField_a_of_type_Float > this.jdField_a_of_type_AndroidGraphicsPoint.x) {
-      paramathd.jdField_a_of_type_Float = 5.0F;
+    paramartl.jdField_a_of_type_Float += paramartl.c;
+    if (paramartl.jdField_a_of_type_Float > this.jdField_a_of_type_AndroidGraphicsPoint.x) {
+      paramartl.jdField_a_of_type_Float = 5.0F;
     }
-    if (paramathd.jdField_a_of_type_Float < 5.0F) {
-      paramathd.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPoint.x;
+    if (paramartl.jdField_a_of_type_Float < 5.0F) {
+      paramartl.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPoint.x;
     }
-    if (paramathd.b > this.jdField_a_of_type_AndroidGraphicsPoint.y) {
-      a(paramathd);
+    if (paramartl.b > this.jdField_a_of_type_AndroidGraphicsPoint.y) {
+      a(paramartl);
     }
   }
   
@@ -69,18 +69,18 @@ public class SnowView
     int i = 0;
     while (i < this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_ArrayOfAthd[i] = new athd(jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x), jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.y), jdField_a_of_type_JavaUtilRandom.nextInt(this.b), jdField_a_of_type_JavaUtilRandom.nextInt(this.b), 0, 0.0F);
+      this.jdField_a_of_type_ArrayOfArtl[i] = new artl(jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x), jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.y), jdField_a_of_type_JavaUtilRandom.nextInt(this.b), jdField_a_of_type_JavaUtilRandom.nextInt(this.b), 0, 0.0F);
       i += 1;
     }
   }
   
-  public void a(athd paramathd)
+  public void a(artl paramartl)
   {
-    paramathd.jdField_a_of_type_Float = (jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x) + 5.0F);
-    paramathd.b = 0.0F;
-    paramathd.d = (2.0F + jdField_a_of_type_JavaUtilRandom.nextFloat() * 5.0F);
-    paramathd.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilRandom.nextInt(255);
-    paramathd.f = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F);
+    paramartl.jdField_a_of_type_Float = (jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x) + 5.0F);
+    paramartl.b = 0.0F;
+    paramartl.d = (2.0F + jdField_a_of_type_JavaUtilRandom.nextFloat() * 5.0F);
+    paramartl.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilRandom.nextInt(255);
+    paramartl.f = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -89,13 +89,13 @@ public class SnowView
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
-      b(this.jdField_a_of_type_ArrayOfAthd[i]);
+      b(this.jdField_a_of_type_ArrayOfArtl[i]);
       if (i % 2 == 0) {
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(127);
       }
       for (;;)
       {
-        paramCanvas.drawCircle(this.jdField_a_of_type_ArrayOfAthd[i].jdField_a_of_type_Float, this.jdField_a_of_type_ArrayOfAthd[i].b, agej.a(1.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawCircle(this.jdField_a_of_type_ArrayOfArtl[i].jdField_a_of_type_Float, this.jdField_a_of_type_ArrayOfArtl[i].b, AIOUtils.dp2px(1.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
         i += 1;
         break;
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(51);
@@ -114,7 +114,7 @@ public class SnowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.SnowView
  * JD-Core Version:    0.7.0.1
  */

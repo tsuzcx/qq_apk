@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bisp;
+import bgyr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import org.json.JSONException;
@@ -19,16 +19,16 @@ final class TroopApplicationListUtil$2
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof bisp))
+    if ((paramMessage.obj instanceof bgyr))
     {
-      paramMessage = (bisp)paramMessage.obj;
+      paramMessage = (bgyr)paramMessage.obj;
       if (paramMessage.c == 0)
       {
         int i;
         try
         {
           if (paramMessage.d == null) {
-            break label188;
+            break label203;
           }
           QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
           i = new JSONObject(paramMessage.d).optInt("ec", -1);
@@ -55,9 +55,12 @@ final class TroopApplicationListUtil$2
           return;
         }
         paramMessage.put("errorCode", i);
+        if (i == 44004) {
+          paramMessage.put("errMsg", "not group manager");
+        }
         this.val$listener.onReceiveResult(false, paramMessage);
         return;
-        label188:
+        label203:
         QLog.e("TroopApplicationListUtil", 1, "native error, htmlBody is null");
         this.val$listener.onReceiveResult(false, null);
         return;

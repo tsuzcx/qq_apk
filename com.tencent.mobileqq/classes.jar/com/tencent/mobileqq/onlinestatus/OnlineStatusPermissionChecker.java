@@ -3,7 +3,7 @@ package com.tencent.mobileqq.onlinestatus;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
@@ -31,7 +31,7 @@ public class OnlineStatusPermissionChecker
       if (paramInt == -1) {}
       for (paramQQAppInterface = "0X800AE77";; paramQQAppInterface = "0X800AE78")
       {
-        bdll.b(null, "dc00898", "", "", paramQQAppInterface, paramQQAppInterface, 0, 0, "", "", "", "");
+        bcef.b(null, "dc00898", "", "", paramQQAppInterface, paramQQAppInterface, 0, 0, "", "", "", "");
         if ((paramInt == -1) && (paramIntent != null)) {
           break;
         }
@@ -57,9 +57,9 @@ public class OnlineStatusPermissionChecker
       while (((Iterator)localObject).hasNext())
       {
         ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject).next();
-        paramIntent.add(Long.valueOf(localResultRecord.a));
+        paramIntent.add(Long.valueOf(localResultRecord.uin));
         if (QLog.isColorLevel()) {
-          QLog.d("OnlineStatusPermissionChecker", 2, new Object[] { "onActivityResult param uin=", localResultRecord.a });
+          QLog.d("OnlineStatusPermissionChecker", 2, new Object[] { "onActivityResult param uin=", localResultRecord.uin });
         }
       }
       OnlineStatusPermissionChecker.OnlineStatusPermissionItem.access$002(paramQQAppInterface, false);
@@ -88,8 +88,8 @@ public class OnlineStatusPermissionChecker
     {
       Long localLong = (Long)((Iterator)localObject).next();
       ResultRecord localResultRecord = new ResultRecord();
-      localResultRecord.a = String.valueOf(localLong);
-      localArrayList.add(SelectMemberActivity.a(localResultRecord.a, "", 0, "-1"));
+      localResultRecord.uin = String.valueOf(localLong);
+      localArrayList.add(SelectMemberActivity.constructAResultRecord(localResultRecord.uin, "", 0, "-1"));
     }
     localObject = new Intent(paramActivity, SelectMemberActivity.class);
     ((Intent)localObject).addFlags(536870912);
@@ -98,10 +98,10 @@ public class OnlineStatusPermissionChecker
     ((Intent)localObject).putExtra("param_entrance", 40);
     ((Intent)localObject).putExtra("param_add_passed_members_to_result_set", true);
     ((Intent)localObject).putExtra("param_max", 1000);
-    ((Intent)localObject).putExtra("param_title", paramActivity.getString(2131697692));
+    ((Intent)localObject).putExtra("param_title", paramActivity.getString(2131697838));
     ((Intent)localObject).putExtra("online_status_permission_item", paramOnlineStatusPermissionItem);
-    ((Intent)localObject).putExtra("param_done_button_wording", paramActivity.getString(2131697693));
-    ((Intent)localObject).putExtra("param_done_button_highlight_wording", paramActivity.getString(2131697694));
+    ((Intent)localObject).putExtra("param_done_button_wording", paramActivity.getString(2131697839));
+    ((Intent)localObject).putExtra("param_done_button_highlight_wording", paramActivity.getString(2131697840));
     paramOnlineStatusPermissionItem = new ArrayList(1);
     ((Intent)localObject).putStringArrayListExtra("param_uins_hide", paramOnlineStatusPermissionItem);
     ((Intent)localObject).putExtra("filer_robot", true);

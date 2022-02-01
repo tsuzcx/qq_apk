@@ -1,85 +1,51 @@
-import android.content.Context;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class wgs
-  extends JobSegment<Integer, List<wgh>>
+  extends vqm
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private wgu jdField_a_of_type_Wgu;
+  public long a;
+  public String a;
+  public List<wft> a;
+  public long b;
+  public String c;
+  public String d;
+  public String e;
   
-  public wgs(Context paramContext, wgu paramwgu)
+  public wgs(qqstory_service.RspPublishVideo paramRspPublishVideo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Wgu = paramwgu;
+    super(paramRspPublishVideo.result);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = paramRspPublishVideo.create_time.get();
+    this.jdField_a_of_type_JavaLangString = paramRspPublishVideo.feed_id.get().toStringUtf8();
+    this.c = String.valueOf(paramRspPublishVideo.date.get());
+    this.b = paramRspPublishVideo.video_index.get();
+    if (paramRspPublishVideo.story_id.has()) {
+      this.d = paramRspPublishVideo.story_id.get().toStringUtf8();
+    }
+    if (paramRspPublishVideo.vid.has()) {
+      this.e = paramRspPublishVideo.vid.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspPublishVideo = paramRspPublishVideo.group_feed_list.get().iterator();
+    while (paramRspPublishVideo.hasNext())
+    {
+      qqstory_group.GroupFeed localGroupFeed = (qqstory_group.GroupFeed)paramRspPublishVideo.next();
+      this.jdField_a_of_type_JavaUtilList.add(new wft(localGroupFeed));
+    }
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  public String toString()
   {
-    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "start GalleryScanSegment");
-    paramInteger = (wta)wth.a(10);
-    paramJobContext = new wfm();
-    long l2 = ((Long)paramInteger.b("key_last_pic_scan_time", Long.valueOf(-1L))).longValue();
-    long l1 = ((Long)paramInteger.b("key_last_date_album_time", Long.valueOf(-1L))).longValue();
-    if ((l2 != -1L) && (l1 != -1L))
-    {
-      this.jdField_a_of_type_Wgu.a(true);
-      paramInteger = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, 1L + l2, true, 10);
-      if (paramInteger.isEmpty())
-      {
-        yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No new picture scanned.");
-        notifyResult(paramInteger);
-        return;
-      }
-      paramInteger = ((wfv)wth.a(30)).a();
-      if (!this.jdField_a_of_type_Wgu.a()) {
-        break label255;
-      }
-    }
-    label255:
-    for (paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1 + 1L, true, paramInteger.a(true));; paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1, false, paramInteger.a(false)))
-    {
-      if ((paramJobContext != null) && (!paramJobContext.isEmpty())) {
-        break label275;
-      }
-      yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No picture scanned in your phone");
-      notifyResult(paramJobContext);
-      return;
-      yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "It is not inc scan :" + true + ",lastPicScanTime" + l2 + " ,lastDateAlbumTime=" + l1);
-      this.jdField_a_of_type_Wgu.a(false);
-      l1 = -1L;
-      break;
-    }
-    label275:
-    wfv.b(paramJobContext);
-    this.jdField_a_of_type_Wgu.b(((wgh)paramJobContext.get(paramJobContext.size() - 1)).d);
-    paramInteger = paramJobContext.iterator();
-    while (paramInteger.hasNext()) {
-      yuk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "scan pic result=%s", (wgh)paramInteger.next());
-    }
-    paramInteger = new ArrayList();
-    int i = 0;
-    while (i < paramJobContext.size() - 1)
-    {
-      if (((wgh)paramJobContext.get(i + 1)).b - ((wgh)paramJobContext.get(i)).b > 2L) {
-        paramInteger.add(paramJobContext.get(i));
-      }
-      i += 1;
-    }
-    paramInteger.add(paramJobContext.get(paramJobContext.size() - 1));
-    i = paramJobContext.size() - paramInteger.size();
-    l2 = ((wgh)paramJobContext.get(0)).b;
-    if (paramJobContext.size() > 1) {}
-    for (l1 = ((wgh)paramJobContext.get(paramJobContext.size() - 1)).b;; l1 = l2)
-    {
-      yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "filter the similar last=%d repeatPicCount=%d time span=%d", new Object[] { Integer.valueOf(paramInteger.size()), Integer.valueOf(i), Long.valueOf(l1 - l2) });
-      yup.a("video_shoot_slides", "same_reject", 0, 0, new String[] { "" + i, l1 - l2 + "" });
-      notifyResult(paramInteger);
-      return;
-    }
+    return "PublishStoryVideoRespond{createTime=" + this.jdField_a_of_type_Long + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", storyId='" + this.d + '\'' + ", videoIndex=" + this.b + ", vid=" + this.e + ", addShareGroupFeeds=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

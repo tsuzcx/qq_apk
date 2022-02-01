@@ -1,17 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.ArrayList;
 
-class bbrs
-  implements DialogInterface.OnClickListener
+public abstract class bbrs
+  implements bbrr
 {
-  bbrs(bbrp parambbrp) {}
+  public void a(int paramInt, ArrayList<bbrl> paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
-  }
+  public void b(int paramInt, bbrl parambbrl) {}
 }
 
 

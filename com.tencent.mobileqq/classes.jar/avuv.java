@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class avuv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public avuv(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public avuv(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
-        HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
-      }
-      QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,21 +1,38 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aqhs;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.StringUtil;
 
 class NearbyPeopleProfileActivity$21
   implements Runnable
 {
-  NearbyPeopleProfileActivity$21(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
+  NearbyPeopleProfileActivity$21(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
   public void run()
   {
-    if (NearbyPeopleProfileActivity.a(this.this$0) != null)
-    {
-      NearbyPeopleProfileActivity.a(this.this$0).a(this.a);
-      return;
+    if (!StringUtil.isEmpty(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
+      this.this$0.app.refreshStrangerFace(NearbyPeopleProfileActivity.a(this.this$0).uin, 200, false);
     }
-    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
+    if (this.this$0.a > 0L) {
+      this.this$0.app.refreshStrangerFace(String.valueOf(this.this$0.a), 202, false);
+    }
+    EntityManager localEntityManager;
+    do
+    {
+      do
+      {
+        return;
+      } while (StringUtil.isEmpty(NearbyPeopleProfileActivity.a(this.this$0).uin));
+      localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    } while (localEntityManager == null);
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });
+    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
+      this.this$0.app.refreshStrangerFace(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
+    }
+    localEntityManager.close();
   }
 }
 

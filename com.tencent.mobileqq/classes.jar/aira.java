@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-class aira
-  implements Comparator<MessageRecord>
+public abstract interface aira
 {
-  aira(aiqx paramaiqx) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
-  }
+  public abstract void a();
 }
 
 

@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
+import com.tribe.async.dispatch.Dispatcher;
 
 class ulz
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements uqy
 {
-  ulz(ulx paramulx) {}
+  ulz(uls paramuls) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void a(urj paramurj)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
+    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
     {
-      uqf.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramurj.jdField_a_of_type_JavaLangObject;
+      uya.d(uls.a(), "回复点赞/取消成功,nothing is " + localstPostCommentDingRsp.nothing);
+      vli.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramurj.b), paramurj.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
       return;
     }
+    uya.d(uls.a(), "回复点赞失败new！");
   }
 }
 

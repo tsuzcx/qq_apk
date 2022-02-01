@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agpw;
-import agqr;
+import aflq;
+import afml;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -9,19 +9,19 @@ import java.util.List;
 class LoadDataJob$1
   implements Runnable
 {
-  LoadDataJob$1(LoadDataJob paramLoadDataJob, agpw paramagpw, List paramList) {}
+  LoadDataJob$1(LoadDataJob paramLoadDataJob, aflq paramaflq, List paramList) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("LoadDataJob", 2, "run write parcel begin:");
     }
-    this.this$0.a(this.jdField_a_of_type_Agpw, LoadDataJob.a(this.this$0, this.this$0.a, false));
+    this.this$0.a(this.jdField_a_of_type_Aflq, LoadDataJob.a(this.this$0, this.this$0.a, false));
     if (this.this$0.a(this.jdField_a_of_type_JavaUtilList, LoadDataJob.b(this.this$0, this.this$0.a, false)))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((agqr)localIterator.next()).b();
+        ((afml)localIterator.next()).b();
       }
     }
     if (QLog.isColorLevel()) {

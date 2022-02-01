@@ -1,81 +1,20 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
-class bjpk
-  extends GestureDetector.SimpleOnGestureListener
+public class bjpk
+  implements TypeEvaluator<Rect>
 {
-  bjpk(bjpj parambjpj) {}
+  public bjpk(DynamicGridView paramDynamicGridView) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
-    {
-      bool1 = bool2;
-      if (Math.abs(paramFloat1) > 20.0F)
-      {
-        bool1 = bool2;
-        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
-        {
-          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
-          if (this.a.jdField_a_of_type_AndroidViewView != null) {
-            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          }
-          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
-          {
-            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramMotionEvent1 != null)
-            {
-              paramMotionEvent1 = paramMotionEvent1.findViewById(2131377481);
-              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
-                ((ShaderAnimLayout)paramMotionEvent1).e();
-              }
-            }
-            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-          }
-          if (paramFloat1 > 20.0F)
-          {
-            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-              break label245;
-            }
-            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
-            {
-              paramMotionEvent1 = paramMotionEvent1.findViewById(2131377481);
-              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
-                ((ShaderAnimLayout)paramMotionEvent1).e();
-              }
-            }
-            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      bool1 = true;
-      return bool1;
-      label245:
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131377481);
-        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("AccountManage", 2, "show current selectedAccountView");
-          }
-          ((ShaderAnimLayout)paramMotionEvent1).a();
-          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
-          this.a.jdField_a_of_type_AndroidViewView = null;
-        }
-      }
-    }
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 

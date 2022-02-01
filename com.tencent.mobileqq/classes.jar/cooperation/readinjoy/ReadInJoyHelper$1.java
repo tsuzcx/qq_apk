@@ -1,6 +1,6 @@
 package cooperation.readinjoy;
 
-import bnrg;
+import bkwn;
 import com.tencent.ark.open.ArkAppMgr;
 
 public final class ReadInJoyHelper$1
@@ -10,7 +10,7 @@ public final class ReadInJoyHelper$1
   
   public void run()
   {
-    ArkAppMgr.getInstance().getAppPathByName(this.a, "", this.b, new Object(), new bnrg(this));
+    ArkAppMgr.getInstance().getAppPathByName(this.a, "", this.b, new Object(), new bkwn(this));
   }
 }
 

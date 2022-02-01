@@ -1,24 +1,18 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xsc
+class xsc
+  implements View.OnClickListener
 {
-  wlg jdField_a_of_type_Wlg;
+  xsc(xru paramxru, xvb paramxvb) {}
   
-  private xsc(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public wlg a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Wlg == null) {
-      this.jdField_a_of_type_Wlg = new wlg();
-    }
-    return this.jdField_a_of_type_Wlg;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Wlg != null) {
-      this.jdField_a_of_type_Wlg.a();
-    }
+    xwa.a("home_page", "guide_shoot", 0, 0, new String[0]);
+    this.jdField_a_of_type_Xru.a.a(false, true, 13, null);
+    this.jdField_a_of_type_Xvb.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

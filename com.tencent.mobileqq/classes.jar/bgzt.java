@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import org.json.JSONObject;
 
-public class bgzt
-  implements bdxo
+public abstract interface bgzt
+  extends bguj
 {
-  public bgzt(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public abstract void doTransparent(JSONObject paramJSONObject);
   
-  public void a()
-  {
-    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
-  }
+  public abstract long getRulesFromUrl();
+  
+  public abstract int getTitleBarAlpa();
+  
+  public abstract int getTitleBarHeight();
+  
+  public abstract View getTitleBarView();
+  
+  public abstract void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, acjr paramacjr);
+  
+  public abstract void setWarnToastVisible(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

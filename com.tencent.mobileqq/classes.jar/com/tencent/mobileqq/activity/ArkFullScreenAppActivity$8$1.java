@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aduq;
+import acrj;
 import android.content.Intent;
-import bhow;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 
 public class ArkFullScreenAppActivity$8$1
   implements Runnable
 {
-  public ArkFullScreenAppActivity$8$1(aduq paramaduq) {}
+  public ArkFullScreenAppActivity$8$1(acrj paramacrj) {}
   
   public void run()
   {
-    Intent localIntent = this.a.a.a(ArkFullScreenAppActivity.a(this.a.a).a);
+    Intent localIntent = this.a.a.a(ArkFullScreenAppActivity.a(this.a.a).container);
     ArkAppCenter.a().postToMainThread(new ArkFullScreenAppActivity.8.1.1(this, localIntent));
   }
 }

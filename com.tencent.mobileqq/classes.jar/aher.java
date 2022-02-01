@@ -1,9 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aher
-  implements bljb
+  implements DialogInterface.OnClickListener
 {
-  aher(aheq paramaheq) {}
+  aher(ahek paramahek) {}
   
-  public void onDismiss() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mum.a(this.a.getActivity());
+  }
 }
 
 

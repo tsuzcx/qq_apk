@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.qphone.base.util.QLog;
 
 public class tez
-  implements View.OnClickListener
+  extends pkt
 {
-  public tez(BridgeModule paramBridgeModule, String paramString) {}
+  public tez(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void onClick(View paramView)
+  public void a(tfb paramtfb)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.setDataSource(paramtfb);
+    this.a.a(ColorBandVideoEntranceButton.a(this.a));
+    QLog.d("ColorBandVideoEntranceButton", 1, "onHandle0x6cfResp reddot,data=" + paramtfb);
   }
 }
 

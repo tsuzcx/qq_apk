@@ -1,125 +1,59 @@
-import android.os.Bundle;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.os.CountDownTimer;
+import com.tencent.av.widget.ChildLockCircle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
-import msf.msgsvc.msg_svc.RoutingHead;
-import msf.msgsvc.msg_svc.Trans0x211;
-import tencent.im.msg.im_msg_head.InstCtrl;
-import tencent.im.msg.im_msg_head.InstInfo;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
 
 public class mvh
-  extends anud
+  extends CountDownTimer
 {
-  static String a;
-  public long a;
-  public C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader a;
-  public String b;
+  int jdField_a_of_type_Int = 1;
+  Resources jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   
-  static
+  public mvh(ChildLockCircle paramChildLockCircle, long paramLong1, long paramLong2, Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "VideoC2CHandler";
+    super(paramLong1, paramLong2);
   }
   
-  public mvh(QQAppInterface paramQQAppInterface)
+  public void onFinish()
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader = new C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader();
-  }
-  
-  private msg_svc.PbSendMsgReq a(int paramInt1, String paramString, bcsd parambcsd, long paramLong1, int paramInt2, long paramLong2)
-  {
-    return bcrw.a(this.app, paramInt1, paramString, parambcsd, paramLong1, paramInt2);
-  }
-  
-  private void a(C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader paramMsgHeader)
-  {
-    if (this.b != null)
+    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, ChildLockCircle.b(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle));
+    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, 0);
+    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
+    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle);
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      long l = mrs.a(this.b);
-      paramMsgHeader.uint64_to_uin.set(l);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    if (this.jdField_a_of_type_Long != 0L) {
-      paramMsgHeader.uint64_room_id.set(this.jdField_a_of_type_Long);
+    if (ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle) != null)
+    {
+      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle).cancel();
+      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, null);
     }
-    paramMsgHeader.setHasFlag(true);
-  }
-  
-  public ToServiceMsg a(long paramLong1, int paramInt, C2CType0x211_SubC2CType0xb.MsgBody paramMsgBody, long paramLong2)
-  {
-    paramMsgBody = paramMsgBody.toByteArray();
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send0x211C2CQavMsg QavMsgRecord:" + paramLong2);
+      QLog.d("ChildLockCircle", 2, "LockAnimation,CountDownTimer finish");
     }
-    return a(paramLong1, this.b, 529, 11, paramInt, paramMsgBody, paramLong2);
   }
   
-  public ToServiceMsg a(long paramLong1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, long paramLong2)
+  public void onTick(long paramLong)
   {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putBoolean("ISFROM_QAV", true);
-    localToServiceMsg.addAttribute("cookie", Long.valueOf(paramLong1));
-    paramLong1 = aunj.b();
-    long l = aunj.a();
-    Object localObject = new bcsd();
-    ((bcsd)localObject).jdField_a_of_type_Int = paramInt2;
-    ((bcsd)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    paramString = a(13, paramString, (bcsd)localObject, l, bcsa.b(paramLong1), paramLong2);
-    paramArrayOfByte = new im_msg_head.InstInfo();
-    paramArrayOfByte.uint32_apppid.set(AppSetting.a());
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
-    paramArrayOfByte.setHasFlag(true);
-    paramString.routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add(paramArrayOfByte);
-    localObject = new im_msg_head.InstInfo();
-    paramArrayOfByte.uint32_apppid.set(AppSetting.a());
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
-    ((im_msg_head.InstInfo)localObject).setHasFlag(true);
-    paramString.routing_head.trans_0x211.inst_ctrl.msg_from_inst = ((im_msg_head.InstInfo)localObject);
-    paramString.routing_head.trans_0x211.inst_ctrl.setHasFlag(true);
-    localToServiceMsg.putWupBuffer(paramString.toByteArray());
-    sendPbReq(localToServiceMsg);
-    return localToServiceMsg;
-  }
-  
-  public void a()
-  {
-    C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-    a(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader);
-    this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader.uint32_body_type.set(102);
-    this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader.uint32_session_type.set(0);
-    localMsgBody.msg_msg_header.set(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader);
-    localMsgBody.setHasFlag(true);
-    a(1L, 102, localMsgBody, 1L);
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("MessageSvc.PbSendMsg");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.a(this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, this.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
+      }
+      this.jdField_a_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChildLockCircle", 2, "LockAnimation, i[" + this.jdField_a_of_type_Int + "]");
+      }
     }
-    return !this.allowCmdSet.contains(paramString);
   }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

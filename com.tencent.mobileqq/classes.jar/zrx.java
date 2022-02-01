@@ -1,58 +1,51 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.MoveFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class zrx
-  extends Drawable
+public abstract class zrx
+  extends nmf
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private int b;
-  
-  public zrx(int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this(null, paramInt1, paramInt2);
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public zrx(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    yuk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable.");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    setBounds(0, 0, paramInt1, paramInt2);
-    if (paramBitmap == null) {}
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = bhmq.a();; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(paramInt1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), paramInt2 / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      a(false, paramInt, null);
       return;
     }
+    paramBundle = new oidb_0x6d6.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.MoveFileRspBody)paramBundle.move_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label94;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramArrayOfByte.str_parent_folder_id.get());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label94:
+    a(false, -1, null);
   }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.b / paramBitmap.getHeight());
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    yuk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-    yuk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

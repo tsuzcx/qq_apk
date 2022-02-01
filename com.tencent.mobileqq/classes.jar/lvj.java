@@ -1,68 +1,70 @@
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class lvj
-  extends lur
 {
-  public int b;
+  private static mry a;
   
-  protected float a(int paramInt1, int paramInt2)
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
   {
-    return this.b + paramInt1;
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong -= this.a;
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (paramLong <= 3733L)
-    {
-      paramLong = paramLong * 3L % 2800L / 3L;
-      if ((paramLong < 0L) || (paramLong >= 133L)) {
-        break label65;
-      }
-      f1 = (float)(-3L * paramLong) / 100.0F;
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
     }
-    for (;;)
+    if (a != null)
     {
-      a(f1);
+      if (QLog.isColorLevel()) {
+        QLog.d("AVPushReport", 2, "ReportTask is running.");
+      }
       return;
-      label65:
-      if ((paramLong >= 133L) && (paramLong < 266L))
+    }
+    String str;
+    if (a()) {
+      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
+    }
+    try
+    {
+      for (;;)
       {
-        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
-      }
-      else if ((paramLong >= 266L) && (paramLong < 400L))
-      {
-        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
-      }
-      else if ((paramLong >= 400L) && (paramLong < 533L))
-      {
-        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
-      }
-      else
-      {
-        f1 = f2;
-        if (paramLong >= 533L)
+        paramString = new JSONObject(paramString).optJSONObject("attach");
+        JSONObject localJSONObject = new JSONObject();
+        try
         {
-          f1 = f2;
-          if (paramLong < 666L) {
-            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
+          localJSONObject.put("skey", paramVideoAppInterface.b());
+          localJSONObject.put("qqversion", "8.4.8");
+          localJSONObject.put("time", System.currentTimeMillis());
+          if (paramString != null) {
+            localJSONObject.put("attach", paramString);
           }
         }
+        catch (JSONException paramVideoAppInterface)
+        {
+          for (;;)
+          {
+            paramVideoAppInterface.printStackTrace();
+          }
+        }
+        a = new lvk(str, localJSONObject.toString(), null);
+        a.execute(new Void[0]);
+        return;
+        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = null;
       }
     }
   }
   
-  protected float b(int paramInt1, int paramInt2)
+  public static boolean a()
   {
-    return paramInt2;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt3 = paramInt1 * 102 / 160;
-    paramInt4 = paramInt1 * 140 / 160;
-    this.b = (paramInt1 * 24 / 160);
-    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
+    return false;
   }
 }
 

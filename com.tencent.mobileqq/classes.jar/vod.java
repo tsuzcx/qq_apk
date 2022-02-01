@@ -1,19 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vod
-  implements View.OnClickListener
+  extends QQUIEventReceiver<vns, von>
 {
-  public vod(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
-  
-  public void onClick(View paramView)
+  public vod(@NonNull vns paramvns)
   {
-    vtq.a("", 22, 13);
-    aaak.a().a(new QCircleSelectTabEvent(6));
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramvns);
+  }
+  
+  public void a(@NonNull vns paramvns, @NonNull von paramvon)
+  {
+    if (paramvon.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      xvv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramvon.jdField_a_of_type_JavaLangString, paramvon.b);
+      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramvns, paramvon), 0);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return von.class;
   }
 }
 

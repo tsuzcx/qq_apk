@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.splash;
 
 import android.text.TextUtils;
-import beuq;
-import bevl;
-import bevm;
-import bezv;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nof;
+import npo;
 
 public class SplashMiniGameDownloadManager$DownLoadNetEngine
-  implements beuq
+  implements INetEngine.INetEngineListener
 {
   QQAppInterface app;
   String appid;
@@ -28,29 +28,29 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
     this.resPath = paramString2;
   }
   
-  public void onResp(bevm parambevm)
+  public void onResp(NetResp paramNetResp)
   {
     try
     {
-      if (parambevm.a == 0)
+      if (paramNetResp.mResult == 0)
       {
         QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile has download!");
         if (!TextUtils.isEmpty(this.resPath))
         {
-          parambevm = new File(this.resPath);
-          if (parambevm.exists())
+          paramNetResp = new File(this.resPath);
+          if (paramNetResp.exists())
           {
-            long l = parambevm.length();
-            bezv localbezv = (bezv)this.app.getManager(193);
-            if (localbezv.a())
+            long l = paramNetResp.length();
+            PreDownloadController localPreDownloadController = (PreDownloadController)this.app.getManager(193);
+            if (localPreDownloadController.isEnable())
             {
               QLog.i("SplashMiniGameDownloadMgr", 1, "preDownloadSuccess");
-              localbezv.a(this.downloadurl, l);
+              localPreDownloadController.preDownloadSuccess(this.downloadurl, l);
             }
             if (this.type == 0)
             {
-              nof.a(parambevm, parambevm.getParent() + File.separator);
-              this.resPath = (parambevm.getParent() + File.separator + "splash.png");
+              npo.a(paramNetResp, paramNetResp.getParent() + File.separator);
+              this.resPath = (paramNetResp.getParent() + File.separator + "splash.png");
             }
             SplashMiniGameUtil.downloadSuccess(this.appid, this.type, this.resPath);
             return;
@@ -58,16 +58,16 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
           QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile check not exist");
         }
       }
-      else if (parambevm.a == 1)
+      else if (paramNetResp.mResult == 1)
       {
         QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile dowload faield");
       }
       return;
     }
-    catch (Exception parambevm) {}
+    catch (Exception paramNetResp) {}
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

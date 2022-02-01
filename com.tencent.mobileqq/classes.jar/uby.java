@@ -1,32 +1,26 @@
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class uby
-  implements pgb
 {
-  private static uby a = new uby();
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public static void a()
-  {
-    pfw.a(a);
-  }
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
-  
-  public static void b()
-  {
-    pfw.b(a);
-  }
-  
-  public void l() {}
-  
-  public void m() {}
+  public uby(ubx paramubx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uby
  * JD-Core Version:    0.7.0.1
  */

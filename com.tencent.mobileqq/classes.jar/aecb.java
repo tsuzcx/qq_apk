@@ -1,27 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecb
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aecb(ChatFragment paramChatFragment) {}
+  public aecb(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

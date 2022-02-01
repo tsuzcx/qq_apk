@@ -1,29 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
 public class afhf
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public afhf(QQMapActivity paramQQMapActivity) {}
+  public afhf(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.a == null)
-    {
-      this.a.a = ((blir)blji.a(this.a, null));
-      this.a.a.b(2131697415);
-      this.a.a.b(2131691990);
-      this.a.a.c(2131690580);
-      this.a.a.a(new afhg(this));
-    }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

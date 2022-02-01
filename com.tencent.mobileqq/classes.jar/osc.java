@@ -1,25 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class osc
-  implements ovw
 {
-  public osc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  private static List<owg> a;
   
-  public void a(int paramInt)
+  private osc()
   {
-    if (paramInt != 2) {
-      this.a.d();
+    a = new ArrayList();
+  }
+  
+  public static osc a()
+  {
+    return ose.a();
+  }
+  
+  public List<owg> a()
+  {
+    if (a == null) {
+      return null;
     }
-    paa localpaa1 = new paa();
-    paa localpaa2 = localpaa1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
-    if (paramInt == 2) {}
-    for (String str = "1";; str = "0")
-    {
-      localpaa2.b("result", str);
-      osp.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localpaa1);
+    return a;
+  }
+  
+  public void a()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public void a(owg paramowg)
+  {
+    if ((paramowg == null) || (a == null)) {}
+    while (a.contains(paramowg)) {
       return;
     }
+    a.add(paramowg);
+  }
+  
+  public void b(owg paramowg)
+  {
+    if ((a == null) || (a.size() == 0)) {
+      return;
+    }
+    a.remove(paramowg);
   }
 }
 

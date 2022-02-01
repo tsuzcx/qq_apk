@@ -1,103 +1,38 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.PPCLoginAuthHandler.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_req;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_rsp;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.plat_info;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.req;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.rsp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.qphone.base.util.QLog;
 
 public class aodf
-  extends anud
+  extends AbsPreDownloadTask
 {
-  private long a;
-  public QQAppInterface a;
+  aodc jdField_a_of_type_Aodc;
+  aode jdField_a_of_type_Aode;
   
-  protected aodf(QQAppInterface paramQQAppInterface)
+  public aodf(QQAppInterface paramQQAppInterface, aode paramaode, aodc paramaodc)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramaode.b);
+    this.jdField_a_of_type_Aode = paramaode;
+    this.jdField_a_of_type_Aodc = paramaodc;
   }
   
-  public void a()
+  public void realCancel()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    PPCLoginAuth.plat_info localplat_info = new PPCLoginAuth.plat_info();
-    localplat_info.implat.set(109L);
-    localplat_info.mqqver.set("8.4.5.4745");
-    localplat_info.osver.set(Build.VERSION.RELEASE);
-    PPCLoginAuth.comering_req localcomering_req = new PPCLoginAuth.comering_req();
-    localcomering_req.id.set(String.valueOf(this.jdField_a_of_type_Long));
-    PPCLoginAuth.req localreq = new PPCLoginAuth.req();
-    localreq.comm.set(localplat_info);
-    localreq.reqcmd_0x01.set(localcomering_req);
-    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, "Loginauth.1");
-    ((ToServiceMsg)localObject).putWupBuffer(localreq.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
     if (QLog.isColorLevel()) {
-      QLog.i("PPCLoginAuthHandler", 2, "sendPbReq called. req=" + localreq.toString());
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
   }
   
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void realStart()
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramToServiceMsg = new PPCLoginAuth.rsp();
-      }
-      try
-      {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg.ret.get() == 0L) && (((PPCLoginAuth.comering_rsp)paramToServiceMsg.rspcmd_0x01.get()).ret.get() != 0)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new PPCLoginAuthHandler.1(this));
-        }
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
     }
+    aodc.a(this.jdField_a_of_type_Aodc, this.jdField_a_of_type_Aode);
   }
   
-  public void b()
+  public String toString()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localEntityManager.find(ExtensionInfo.class, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    localEntityManager.close();
-    if ((localExtensionInfo != null) && (localExtensionInfo.commingRingId != 0L))
-    {
-      this.jdField_a_of_type_Long = localExtensionInfo.commingRingId;
-      a();
-    }
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("Loginauth.1".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PPCLoginAuthHandler", 2, "onReceive called.");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Aode + ", mDownloader=" + this.jdField_a_of_type_Aodc;
   }
 }
 

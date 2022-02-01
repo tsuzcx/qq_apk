@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.util;
 
-import agej;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pfs;
-import pra;
-import qfo;
+import ple;
+import pwu;
+import qli;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class PublicAccountUtil$20
@@ -20,8 +20,8 @@ public final class PublicAccountUtil$20
   {
     try
     {
-      pra localpra = new pra(null, null, null, qfo.a(), null);
-      this.jdField_a_of_type_JavaUtilList.addAll(pfs.a().a(this.jdField_a_of_type_Int));
+      pwu localpwu = new pwu(null, null, null, qli.a(), null);
+      this.jdField_a_of_type_JavaUtilList.addAll(ple.a().a(this.jdField_a_of_type_Int));
       String str = "KDreportPushEffectEvent info : eventId:" + Integer.toString(this.jdField_a_of_type_Int) + "; AttributeList:[";
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
@@ -32,19 +32,19 @@ public final class PublicAccountUtil$20
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountUtil", 2, str);
       }
-      localpra.a(this.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaUtilList);
+      localpwu.a(this.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaUtilList);
       return;
     }
     catch (Exception localException)
     {
       QLog.e("PublicAccountUtil", 1, "reportPushEffectEvent", localException);
-      agej.a("PublicAccountUtil", localException.toString(), localException);
+      AIOUtils.catchedExceptionInRelease("PublicAccountUtil", localException.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.20
  * JD-Core Version:    0.7.0.1
  */

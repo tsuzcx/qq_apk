@@ -1,12 +1,14 @@
-import android.view.MotionEvent;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
-public abstract interface zum
+class zum
+  implements nnw
 {
-  public abstract void a(zum paramzum);
+  zum(zul paramzul) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void loaded(int paramInt, String paramString)
+  {
+    this.a.a.loadConfigFromFile();
+  }
 }
 
 

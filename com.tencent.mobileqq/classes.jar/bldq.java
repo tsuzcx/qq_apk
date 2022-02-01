@@ -1,34 +1,20 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlParams;
 
-class bldq
-  implements bldk
+public final class bldq
+  implements Parcelable.Creator<WadlParams>
 {
-  bldq(bldp parambldp) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public WadlParams a(Parcel paramParcel)
   {
-    if (paramInt1 == 1) {
-      synchronized (bldp.a(this.a))
-      {
-        Object localObject2 = (List)bldp.a(this.a).get(Integer.valueOf(paramInt2));
-        if (localObject2 != null)
-        {
-          bldp.a(this.a).remove(Integer.valueOf(paramInt2));
-          bldp.a(this.a);
-        }
-        if (localObject2 != null)
-        {
-          ??? = ((List)localObject2).iterator();
-          if (((Iterator)???).hasNext())
-          {
-            localObject2 = (bldr)((Iterator)???).next();
-            bldp.a(this.a).a(((bldr)localObject2).jdField_a_of_type_Int, ((bldr)localObject2).b, ((bldr)localObject2).c, new Object[] { ((bldr)localObject2).jdField_a_of_type_ArrayOfByte }, null);
-          }
-        }
-      }
-    }
+    WadlParams localWadlParams = new WadlParams("");
+    localWadlParams.a(paramParcel);
+    return localWadlParams;
+  }
+  
+  public WadlParams[] a(int paramInt)
+  {
+    return new WadlParams[paramInt];
   }
 }
 

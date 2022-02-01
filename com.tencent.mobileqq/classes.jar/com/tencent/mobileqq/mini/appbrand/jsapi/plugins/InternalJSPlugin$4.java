@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import anzj;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class InternalJSPlugin$4
   implements Runnable
@@ -14,7 +14,7 @@ class InternalJSPlugin$4
   
   public void run()
   {
-    bhlq.a(this.val$activity, 230, null, String.format(anzj.a(2131704701), new Object[] { this.val$appName }), anzj.a(2131704708), anzj.a(2131704709), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
+    bfur.a(this.val$activity, 230, null, String.format(amtj.a(2131704931), new Object[] { this.val$appName }), amtj.a(2131704938), amtj.a(2131704939), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
   }
 }
 

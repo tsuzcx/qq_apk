@@ -1,39 +1,19 @@
-import android.content.Context;
-import android.widget.OverScroller;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
 
 public class axmc
-  extends OverScroller
+  extends atvu
 {
-  private axmd a;
+  public axmc(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public axmc(Context paramContext)
+  protected void a(boolean paramBoolean, atvx paramatvx)
   {
-    super(paramContext);
-  }
-  
-  public void a(axmd paramaxmd)
-  {
-    this.a = paramaxmd;
-  }
-  
-  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
+    if (!OCRResultFragmentNew.a(this.a)) {
+      return;
     }
-    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-  }
-  
-  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
-    }
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    }
-    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    OCRResultFragmentNew.b(this.a, false);
+    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramatvx));
   }
 }
 

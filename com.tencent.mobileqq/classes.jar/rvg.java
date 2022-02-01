@@ -1,48 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startStretchAnim$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rvg
-  implements Animator.AnimatorListener
+class rvg
+  implements View.OnClickListener
 {
-  rvg(Animator.AnimatorListener paramAnimatorListener) {}
+  rvg(rvd paramrvd, VideoInfo paramVideoInfo) {}
   
-  public void onAnimationCancel(@Nullable Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
-    if (localAnimatorListener != null) {
-      localAnimatorListener.onAnimationCancel(paramAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
-  {
-    ruz.a(this.jdField_a_of_type_Ruz, false);
-    this.jdField_a_of_type_Ruz.a().setStressState(VideoFeedsStressFollowLayout.StressState.Stretched);
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
-    if (localAnimatorListener != null) {
-      localAnimatorListener.onAnimationEnd(paramAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(@Nullable Animator paramAnimator)
-  {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
-    if (localAnimatorListener != null) {
-      localAnimatorListener.onAnimationRepeat(paramAnimator);
-    }
-  }
-  
-  public void onAnimationStart(@Nullable Animator paramAnimator)
-  {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
-    if (localAnimatorListener != null) {
-      localAnimatorListener.onAnimationStart(paramAnimator);
-    }
+    AdvertisementInfo localAdvertisementInfo = txa.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    twr.a(localAdvertisementInfo, 2005, ruw.a(this.jdField_a_of_type_Rvd.a));
+    ruw.a(this.jdField_a_of_type_Rvd.a, rvd.a(this.jdField_a_of_type_Rvd), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, localAdvertisementInfo, 2005);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

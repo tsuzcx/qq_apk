@@ -1,14 +1,70 @@
-import android.text.TextUtils;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acon
+public class acon
+  implements bjoe
 {
-  public int a;
-  public String a;
-  public int b;
+  int jdField_a_of_type_Int = -1;
   
-  public boolean a()
+  public acon(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0) && (this.b >= 0);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bjnw != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bjnw.dismiss();
+      }
+      switch (paramInt)
+      {
+      default: 
+      case 0: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
+          }
+        }
+      case 1: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

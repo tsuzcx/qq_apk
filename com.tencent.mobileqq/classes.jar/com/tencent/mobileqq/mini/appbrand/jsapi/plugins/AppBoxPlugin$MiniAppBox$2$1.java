@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import acpe;
+import abln;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class AppBoxPlugin$MiniAppBox$2$1
-  implements acpe
+  implements abln
 {
   AppBoxPlugin$MiniAppBox$2$1(AppBoxPlugin.MiniAppBox.2 param2) {}
   

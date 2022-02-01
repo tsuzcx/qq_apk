@@ -1,32 +1,33 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class ajgx
-  implements ajti
+class ajgx
+  implements AdapterView.OnItemClickListener
 {
-  public ajgx(TroopView paramTroopView) {}
+  ajgx(ajgq paramajgq) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
+      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
     }
-    paramObject = TroopView.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if ((this.a.jdField_a_of_type_Ajgo.getCount() <= 0) || (paramInt <= 0)) {}
+    do
     {
-      paramObject = paramObject.obtainMessage(14, paramInt, i);
-      TroopView.a(this.a).sendMessage(paramObject);
       return;
+      paramAdapterView = (ajhk)this.a.jdField_a_of_type_Ajgo.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
     }
-  }
-  
-  public void ao_()
-  {
-    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
-      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
-    }
+    ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.uinName, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, 0);
   }
 }
 

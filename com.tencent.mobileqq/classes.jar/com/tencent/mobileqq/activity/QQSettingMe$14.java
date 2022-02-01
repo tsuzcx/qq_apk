@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bhlg;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 class QQSettingMe$14
   implements Runnable
@@ -10,7 +10,7 @@ class QQSettingMe$14
   
   public void run()
   {
-    String str2 = bhlg.i(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
+    String str2 = ContactUtils.getFriendNickName(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
     String str1;
     if (str2 != null)
     {
@@ -26,7 +26,7 @@ class QQSettingMe$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.14
  * JD-Core Version:    0.7.0.1
  */

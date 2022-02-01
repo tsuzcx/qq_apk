@@ -1,10 +1,7 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import com.tencent.qqlive.module.videoreport.IEventDynamicParams;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
-import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
-import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 
 class AppEventReporter$1
   implements Runnable
@@ -14,15 +11,9 @@ class AppEventReporter$1
   public void run()
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("AppEventReporter", "appStartDataSender: 启动上报");
+      Log.i("AppEventReporter", "appInDataSender: 前台上报");
     }
-    FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
-    localFinalData.setEventKey("vst");
-    IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
-    if (localIEventDynamicParams != null) {
-      localIEventDynamicParams.setEventDynamicParams("vst", localFinalData.getEventParams());
-    }
-    FinalDataTarget.handle(null, localFinalData);
+    AppEventReporter.access$000(this.this$0);
   }
 }
 

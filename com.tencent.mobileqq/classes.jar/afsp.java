@@ -1,43 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class afsp
-  extends BroadcastReceiver
+class afsp
+  implements bhbg
 {
-  public afsp(TroopInfoActivity paramTroopInfoActivity) {}
+  afsp(afsn paramafsn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (paramIntent == null) {}
-    do
+    if ((afsn.a(this.a) != null) && (afsn.a(this.a).a()))
     {
-      do
-      {
-        return;
-      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (paramContext == null);
-    try
-    {
-      paramContext = new JSONObject(paramContext);
-      this.a.a.tribeId = paramContext.optInt("bid");
-      this.a.a.tribeName = paramContext.optString("bname");
-      this.a.e = true;
-      paramContext = new ArrayList();
-      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-        paramContext.add(this.a.a.tribeName);
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
       }
-      this.a.a(9, paramContext, true, 1, true);
-      return;
+      afsn.a(this.a).d();
     }
-    catch (JSONException paramContext) {}
+    for (;;)
+    {
+      if ((afsn.a(this.a) != null) && (afsn.a(this.a).a())) {
+        afsn.a(this.a).d();
+      }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
+      }
+    }
   }
 }
 

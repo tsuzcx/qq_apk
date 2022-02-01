@@ -23,10 +23,10 @@ class LoginView$16
       LoginView.a(this.this$0).setVisibility(8);
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(7, 2131369661);
-    localLayoutParams.addRule(5, 2131369661);
+    localLayoutParams.addRule(7, 2131369652);
+    localLayoutParams.addRule(5, 2131369652);
     localLayoutParams.setMargins(0, (int)(13.0F * LoginView.a(this.this$0) + 0.5F), 0, 0);
-    localLayoutParams.addRule(3, 2131370385);
+    localLayoutParams.addRule(3, 2131370353);
     this.this$0.b.setLayoutParams(localLayoutParams);
     int j = (int)(35.0F * LoginView.a(this.this$0));
     int k = LoginView.a(this.this$0) - j;

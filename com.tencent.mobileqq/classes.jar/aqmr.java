@@ -1,19 +1,16 @@
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+
 public class aqmr
 {
-  public int a;
-  long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "0";
+  public static final String[] a = { "_id", "sourceid", "contact_id" };
+  public static final String[] b = { "sync1", "sync2", "sync3" };
   
-  public aqmr()
+  public static final Uri a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
+    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
   }
 }
 

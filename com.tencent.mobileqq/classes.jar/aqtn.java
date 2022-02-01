@@ -1,46 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import mqq.app.AppRuntime;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONObject;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqtn
-  extends beuf
+  implements View.OnClickListener
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public aqtn(DataReportViewer paramDataReportViewer, Context paramContext, ReportData paramReportData, WindowManager paramWindowManager) {}
+  
+  public void onClick(View paramView)
   {
-    String str;
-    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
+    ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
+    if (localClipboardManager != null)
     {
-      try
-      {
-        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
-        localObject = nnr.a(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
-        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
-          continue;
-        }
-        localObject = nnr.a((HttpResponse)localObject);
-        localObject = new JSONObject((String)localObject);
-        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
-        {
-          localObject = ((JSONObject)localObject).getString("thumbUrl");
-          paramDownloadParams.url = new URL((String)localObject);
-          paramDownloadParams.urlStr = ((String)localObject);
-          localObject = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-          return localObject;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+      localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString()));
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), amtj.a(2131701907), 0).a();
     }
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
-class ayih
-  implements View.OnClickListener
+public class ayih
+  extends bjmc
 {
-  ayih(ayhj paramayhj) {}
+  public ayih(FormalView paramFormalView, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.d(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
+      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
+    }
   }
 }
 

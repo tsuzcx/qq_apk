@@ -1,29 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awvu
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public awvu(LoginWelcomeManager paramLoginWelcomeManager, awvy paramawvy, RecentUser paramRecentUser) {}
+  awvu(awur paramawur) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryShowCGRU drawable onLoadSuccessed");
-    }
-    this.jdField_a_of_type_Awvy.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Awvy.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_Awvy.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+    this.a.c(paramView);
+    new awrs().h("video").i("playpage_like_click").b().a(this.a.a);
+    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (awhw)this.a.a.getManager(106)), 16, null, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

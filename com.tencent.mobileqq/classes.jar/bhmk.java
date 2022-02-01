@@ -1,84 +1,46 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ForwardSendPicUtil.1;
-import com.tencent.qphone.base.util.QLog;
 
 public class bhmk
 {
-  private static String a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    String str = bigv.a(bhmq.a(paramContext, paramString, paramInt));
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramBoolean) {}
-    for (int i = 7;; i = 4)
-    {
-      bhmq.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
-      return localImageInfo.b;
-    }
-  }
+  private bhmb[] a = new bhmb[3];
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
+  public bhmb a(Context paramContext, int paramInt)
   {
-    return a(paramQQAppInterface, paramString1, paramString2, paramInt, paramString3, paramBoolean, paramContext, 0);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, boolean paramBoolean, Context paramContext, int paramInt2)
-  {
-    Object localObject;
-    if ((paramContext instanceof Activity))
-    {
-      localObject = ((Activity)paramContext).getIntent();
-      if (localObject == null) {}
+    Object localObject1;
+    if ((paramInt < 0) || (paramInt > 3)) {
+      localObject1 = null;
     }
-    for (boolean bool = ((Intent)localObject).getBooleanExtra("isFromFavorites", false);; bool = false)
+    do
     {
-      localObject = "ForwardSendPicUtil.sendPicTo." + paramContext.getClass().getSimpleName();
-      bhmq.a(-1L, paramInt1, true, "image_send_prepare", (String)localObject + ", isQzoneShare=" + paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage start!");
-      }
-      paramString1 = a(paramContext, paramString1, paramInt1, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage end!");
-      }
-      if (!bhmi.b(paramString1))
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardSendPicUtil", 2, "sendPicTo,pic not exist,return false!");
-        }
-        return false;
+        return localObject1;
+        ??? = this.a[paramInt];
+        localObject1 = ???;
+      } while (??? != null);
+      localObject1 = ???;
+    } while (paramContext == null);
+    synchronized (this.a)
+    {
+      localObject1 = this.a[paramInt];
+      if (localObject1 != null) {
+        return localObject1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord start!");
-      }
-      if (paramString1 != null)
-      {
-        int i = 1009;
-        if (bool) {
-          i = 1053;
-        }
-        paramContext = new azqu();
-        paramContext.a(paramString1);
-        paramContext.d(i);
-        paramContext.d(paramString2);
-        paramContext.c(beya.d);
-        paramContext.e(paramString3);
-        paramContext.c(paramQQAppInterface.getCurrentAccountUin());
-        paramContext.e(paramInt1);
-        paramString2 = azqb.a(2, i);
-        paramString2.a(paramContext.a());
-        paramString2.c = paramInt2;
-        azqb.a(paramString2, paramQQAppInterface);
-        ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord end!");
-      }
-      return true;
+    }
+    switch (paramInt)
+    {
+    default: 
+      paramContext = (Context)localObject1;
+    }
+    for (;;)
+    {
+      this.a[paramInt] = paramContext;
+      return paramContext;
+      paramContext = new bhme(paramContext);
+      continue;
+      paramContext = new bhmc(paramContext);
+      continue;
+      paramContext = new bhmi(paramContext);
     }
   }
 }

@@ -162,24 +162,24 @@ public class QZoneCover
     if (paramCoverCacheData == null) {
       return;
     }
-    printInfo("updateQzoneCover|CoverCacheData", "null", paramCoverCacheData.b, paramCoverCacheData.jdField_a_of_type_JavaUtilHashMap, paramCoverCacheData.jdField_a_of_type_JavaUtilArrayList);
-    this.type = paramCoverCacheData.b;
-    this.jigsaw = paramCoverCacheData.jdField_a_of_type_Int;
+    printInfo("updateQzoneCover|CoverCacheData", "null", paramCoverCacheData.type, paramCoverCacheData.urls, paramCoverCacheData.photoWall);
+    this.type = paramCoverCacheData.type;
+    this.jigsaw = paramCoverCacheData.isJigsawOpen;
     Parcel localParcel = Parcel.obtain();
     localParcel.setDataPosition(0);
-    localParcel.writeMap(paramCoverCacheData.jdField_a_of_type_JavaUtilHashMap);
+    localParcel.writeMap(paramCoverCacheData.urls);
     this.vCoverInfo = localParcel.marshall();
     localParcel.recycle();
     localParcel = Parcel.obtain();
     localParcel.setDataPosition(0);
-    localParcel.writeList(paramCoverCacheData.jdField_a_of_type_JavaUtilArrayList);
+    localParcel.writeList(paramCoverCacheData.photoWall);
     this.vPhotoInfo = localParcel.marshall();
     localParcel.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZoneCover
  * JD-Core Version:    0.7.0.1
  */

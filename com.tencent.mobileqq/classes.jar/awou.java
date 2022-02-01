@@ -1,31 +1,52 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-final class awou
-  implements beup
+class awou
+  implements ServiceConnection
 {
-  public void a(bevl parambevl, bevm parambevm)
+  awou(awot paramawot) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "onServiceConnected");
+    }
+    this.a.jdField_a_of_type_Awoo = awop.a(paramIBinder);
+    try
     {
-      do
-      {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Awoo.a(this.a.jdField_a_of_type_Awow);
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + parambevm);
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramComponentName.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "onServiceDisconnected");
+    }
+    synchronized (awot.a(this.a))
+    {
+      this.a.jdField_a_of_type_Awoo = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
+      }
+      return;
+    }
   }
 }
 

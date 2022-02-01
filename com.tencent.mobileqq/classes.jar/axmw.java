@@ -1,24 +1,10 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardItemFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-class axmw
-  implements View.OnLongClickListener
+public abstract interface axmw
 {
-  axmw(axmv paramaxmv) {}
+  public abstract void a();
   
-  public boolean onLongClick(View paramView)
-  {
-    if (this.a.a != null)
-    {
-      paramView = (MultiCardItemFragment)this.a.a.get();
-      if (paramView != null) {
-        paramView.a(this.a);
-      }
-    }
-    return true;
-  }
+  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
 }
 
 

@@ -1,21 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class QzoneDeviceTagJsPlugin$1
+final class QzoneDeviceTagJsPlugin$1
   implements Runnable
 {
-  public QzoneDeviceTagJsPlugin$1(String[] paramArrayOfString) {}
+  QzoneDeviceTagJsPlugin$1(String[] paramArrayOfString) {}
   
   public void run()
   {
     Object localObject1;
     Object localObject3;
     Object localObject6;
-    if ((this.a != null) && (this.a.length > 0) && (this.a[0] != null))
+    if ((this.val$args != null) && (this.val$args.length > 0) && (this.val$args[0] != null))
     {
       localObject1 = "";
       localObject3 = "";
@@ -27,7 +27,7 @@ public final class QzoneDeviceTagJsPlugin$1
     {
       try
       {
-        JSONObject localJSONObject = new JSONObject(this.a[0]);
+        JSONObject localJSONObject = new JSONObject(this.val$args[0]);
         localObject2 = localObject3;
         localObject5 = localObject1;
         localObject1 = localJSONObject.getString("strDiyMemo");
@@ -48,7 +48,7 @@ public final class QzoneDeviceTagJsPlugin$1
           localObject7 = localObject3;
           localObject6 = localObject2;
           localObject3 = localObject5;
-          bngf.a().a().c((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
+          RemoteHandleManager.getInstance().getSender().setUserTail((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
           return;
         }
         catch (JSONException localJSONException2)

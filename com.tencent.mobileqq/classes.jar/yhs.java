@@ -1,24 +1,28 @@
-import android.support.annotation.NonNull;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
 public class yhs
-  extends wjm<yhc, wsm>
 {
-  public yhs(yhc paramyhc)
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
   {
-    super(paramyhc);
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
+    {
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
-  
-  public void a(@NonNull yhc paramyhc, @NonNull wsm paramwsm)
-  {
-    yhc.a(paramyhc, paramwsm.a, this.TAG);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wsm.class;
-  }
-  
-  public void b(@NonNull yhc paramyhc, @NonNull wsm paramwsm) {}
 }
 
 

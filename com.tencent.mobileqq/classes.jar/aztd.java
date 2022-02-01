@@ -1,79 +1,24 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/PlusPanelRedPointAppIdInterface;", "Lcom/tencent/mobileqq/app/BusinessInfoCheckUpdateItem$DynamicRedPointPathInterface;", "()V", "getAioPanelRedDotIds", "", "", "getRedPointPaths", "appInterface", "Lcom/tencent/common/app/AppInterface;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class aztd
-  implements anuh
+class aztd
+  implements Downloader.DownloadListener
 {
-  private final List<String> a()
+  aztd(aztc paramaztc) {}
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    Set localSet = (Set)new HashSet();
-    Object localObject2;
-    int i;
-    try
-    {
-      Object localObject1 = azte.a(false);
-      if (localObject1 != null)
-      {
-        localObject2 = (Iterable)localObject1;
-        localObject1 = (Collection)new ArrayList();
-        localObject2 = ((Iterable)localObject2).iterator();
-        for (;;)
-        {
-          if (!((Iterator)localObject2).hasNext()) {
-            break label140;
-          }
-          Object localObject3 = ((Iterator)localObject2).next();
-          String str = ((TroopAIOAppInfo)localObject3).redDotID;
-          Intrinsics.checkExpressionValueIsNotNull(str, "it.redDotID");
-          if (Integer.parseInt(str) <= 0) {
-            break;
-          }
-          i = 1;
-          if (i != 0) {
-            ((Collection)localObject1).add(localObject3);
-          }
-        }
-      }
-      return (List)new ArrayList((Collection)localSet);
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("PlusPanelRedPointAppIdInterface", 1, localThrowable, new Object[0]);
-    }
-    for (;;)
-    {
-      i = 0;
-      break;
-      label140:
-      Iterator localIterator = ((Iterable)localThrowable).iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = ((TroopAIOAppInfo)localIterator.next()).redDotID;
-        Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.redDotID");
-        localSet.add(localObject2);
-      }
-    }
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
   }
   
-  @NotNull
-  public List<String> a(@NotNull AppInterface paramAppInterface)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    Intrinsics.checkParameterIsNotNull(paramAppInterface, "appInterface");
-    if (QLog.isColorLevel()) {
-      QLog.d("PlusPanelRedPointAppIdInterface", 2, "getRedPointPaths");
-    }
-    return a();
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
   }
 }
 

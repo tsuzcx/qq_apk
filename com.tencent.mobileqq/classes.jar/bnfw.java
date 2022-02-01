@@ -1,55 +1,44 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
-import NS_MOBILE_QBOSS_PROTO.ReportExceptionInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.mobileqq.utils.StackBlur;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class bnfw
-  extends QzoneExternalRequest
+  extends JobSegment<Bitmap, Bitmap>
 {
-  private JceStruct a;
+  public int a;
   
-  public bnfw(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public bnfw()
   {
-    ArrayList localArrayList = new ArrayList(1);
-    ReportExceptionInfo localReportExceptionInfo = new ReportExceptionInfo();
-    localReportExceptionInfo.iCode = paramInt3;
-    localReportExceptionInfo.iAppid = paramInt1;
-    localReportExceptionInfo.iTaskId = paramInt2;
-    localReportExceptionInfo.strMsg = paramString;
-    localArrayList.add(localReportExceptionInfo);
-    this.a = new MobileQbossReportExceptionReq(paramLong, localArrayList);
+    this.a = 10;
   }
   
-  public static MobileQbossReportExceptionRsp a(byte[] paramArrayOfByte)
+  public bnfw(int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    this.a = paramInt;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
+  {
+    if (paramBitmap == null) {
+      return null;
     }
-    MobileQbossReportExceptionRsp localMobileQbossReportExceptionRsp;
-    do
+    StackBlur.fastblur(paramBitmap, paramInt);
+    return paramBitmap;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    long l = System.currentTimeMillis();
+    paramJobContext = a(paramBitmap, this.a, false);
+    xvv.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
+    if (paramJobContext == null)
     {
-      return paramArrayOfByte;
-      localMobileQbossReportExceptionRsp = (MobileQbossReportExceptionRsp)decode(paramArrayOfByte, "reportException");
-      paramArrayOfByte = localMobileQbossReportExceptionRsp;
-    } while (localMobileQbossReportExceptionRsp != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.reportException";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "reportException";
+      super.notifyError(new BitmapError("BlurJobSegment", 7));
+      return;
+    }
+    super.notifyResult(paramJobContext);
   }
 }
 

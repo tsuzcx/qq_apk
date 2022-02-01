@@ -1,15 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class sni
-  implements MessageQueue.IdleHandler
+  implements View.OnTouchListener
 {
-  public sni(FastWebActivity paramFastWebActivity) {}
+  public sni(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public boolean queueIdle()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FastWebActivity.a(this.a, this.a.a);
-    return false;
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
+    }
+    return true;
   }
 }
 

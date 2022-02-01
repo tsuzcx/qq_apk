@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class oww
-  implements ViewBase.IBuilder
+public abstract interface oww
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new owv(paramVafContext);
-  }
+  public abstract void a(int paramInt);
 }
 
 

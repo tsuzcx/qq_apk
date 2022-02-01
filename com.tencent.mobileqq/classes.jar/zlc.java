@@ -1,51 +1,22 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zlc
-  implements bbmo
+public class zlc
+  implements View.OnClickListener
 {
-  zlc(zlb paramzlb, zku paramzku) {}
+  public zlc(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    synchronized (zlb.a(this.jdField_a_of_type_Zlb))
-    {
-      this.jdField_a_of_type_Zku.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
-      }
-      zlb.a(this.jdField_a_of_type_Zlb).notifyAll();
-      return;
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).setVisibility(8);
     }
-  }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    synchronized (zlb.a(this.jdField_a_of_type_Zlb))
-    {
-      this.jdField_a_of_type_Zku.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      zlb.a(this.jdField_a_of_type_Zlb).notifyAll();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Zku != null) && (!this.jdField_a_of_type_Zku.d) && (!this.jdField_a_of_type_Zku.b))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Zku.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Zku + "  mCanceled : " + this.jdField_a_of_type_Zku.b);
-      }
-      this.jdField_a_of_type_Zlb.b(this.jdField_a_of_type_Zku);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Zku.b);
-      }
-    }
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.a(true);
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

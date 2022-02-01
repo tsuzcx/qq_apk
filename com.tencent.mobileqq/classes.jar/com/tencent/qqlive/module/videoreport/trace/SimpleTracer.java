@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class SimpleTracer
 {
-  private static final Map<String, Long> BEGIN_MAP = new ArrayMap();
+  private static volatile Map<String, Long> BEGIN_MAP;
   private static final String TAG = "SimpleTracer";
   
   public static void begin(String paramString)
@@ -15,7 +15,7 @@ public class SimpleTracer
     if (!VideoReportInner.getInstance().isDebugMode()) {
       return;
     }
-    BEGIN_MAP.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    getBeginMap().put(paramString, Long.valueOf(System.currentTimeMillis()));
   }
   
   public static void end(String paramString)
@@ -25,11 +25,26 @@ public class SimpleTracer
     do
     {
       return;
-      localLong = (Long)BEGIN_MAP.remove(paramString);
+      localLong = (Long)getBeginMap().remove(paramString);
     } while (localLong == null);
     long l1 = System.currentTimeMillis();
     long l2 = localLong.longValue();
     Log.i("SimpleTracer", paramString + " cost " + (l1 - l2) + " ms.");
+  }
+  
+  private static Map<String, Long> getBeginMap()
+  {
+    if (BEGIN_MAP != null) {
+      return BEGIN_MAP;
+    }
+    try
+    {
+      if (BEGIN_MAP == null) {
+        BEGIN_MAP = new ArrayMap();
+      }
+      return BEGIN_MAP;
+    }
+    finally {}
   }
 }
 

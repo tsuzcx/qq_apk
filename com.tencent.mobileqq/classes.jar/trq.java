@@ -1,12 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.persistence.notColumn;
 
-class trq
+public class trq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  trq(trm paramtrm) {}
+  @notColumn
+  public int a;
+  @notColumn
+  public long a;
+  @notColumn
+  public boolean a;
+  @notColumn
+  public int b;
+  @notColumn
+  public boolean b;
+  @notColumn
+  public int c;
+  @notColumn
+  public boolean c;
 }
 
 

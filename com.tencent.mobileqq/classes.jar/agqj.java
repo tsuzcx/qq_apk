@@ -1,12 +1,12 @@
-public class agqj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class agqj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public byte[] a;
+  agqj(agqd paramagqd) {}
   
-  agqj(agqi paramagqi)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

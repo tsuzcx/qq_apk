@@ -1,29 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class zhu
+  extends apkq
 {
-  @NonNull
-  protected final Friends a;
-  protected boolean a;
+  public zhu(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public zhu(@NonNull Friends paramFriends)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    super.onAddColorNote(paramBundle, paramBoolean);
+    apoh.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }

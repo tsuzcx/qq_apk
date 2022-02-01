@@ -1,114 +1,39 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
 
 public class bnly
+  implements bmuj
 {
-  public static String a(Map<Integer, Long> paramMap)
+  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
+  private Boolean jdField_a_of_type_JavaLangBoolean;
+  
+  bnly(bnlw parambnlw, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append("&");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("=");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
+    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131378172));
   }
   
-  public static Map<Integer, Long> a(String paramString)
+  public void a()
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
-    }
-    return localHashMap;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
+    this.jdField_a_of_type_JavaLangBoolean = null;
   }
   
-  public static String b(Map<Integer, Long> paramMap)
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(",");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("_");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
+    paramInt = (int)paramFloat;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, String paramString, bnli parambnli)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("InformationFaceAdapter", 2, "isSuccess:" + paramBoolean);
     }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambnli));
   }
 }
 

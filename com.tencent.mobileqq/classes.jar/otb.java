@@ -1,22 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class otb
-  implements blih
+  implements oww
 {
-  public otb(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public otb(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
-    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
-      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
+    if (paramInt != 2) {
+      this.a.d();
+    }
+    pbg localpbg1 = new pbg();
+    pbg localpbg2 = localpbg1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
+    if (paramInt == 2) {}
+    for (String str = "1";; str = "0")
+    {
+      localpbg2.b("result", str);
+      oto.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localpbg1);
+      return;
     }
   }
 }

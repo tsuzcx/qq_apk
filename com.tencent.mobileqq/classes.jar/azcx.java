@@ -1,68 +1,101 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.mobileqq.olympic.TorchInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
 public class azcx
-  extends azcy
+  extends InputStream
+  implements azcu
 {
-  public azcx(OlympicManager paramOlympicManager) {}
+  protected int a;
+  protected Context a;
+  protected azcv a;
+  protected PipedInputStream a;
+  protected PipedOutputStream a;
+  protected byte[] a;
+  protected byte[] b;
+  protected byte[] c;
+  protected byte[] d = new byte[1];
   
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
+  public azcx(Context paramContext)
   {
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return read(paramArrayOfByte, paramInt, paramArrayOfByte.length);
+  }
+  
+  public azcv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Azcv.jdField_a_of_type_Int = 0;
+    int j = paramInt2;
+    int i = paramInt1;
+    paramInt1 = j;
+    while (paramInt2 > 0)
     {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
+      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
+        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+      }
+      a(paramArrayOfByte, i, paramInt1);
+      i += paramInt1;
+      paramInt1 = paramInt2 - paramInt1;
+      paramInt2 = paramInt1;
+    }
+    return this.jdField_a_of_type_Azcv;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
+    {
+      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
+      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
+    }
+    close();
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
+    if (Build.VERSION.SDK_INT <= 8)
+    {
+      this.jdField_a_of_type_JavaIoPipedInputStream = new bfxp(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+      return;
+    }
+    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+  }
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
+    {
+      paramInt1 = a(this.c, this.jdField_a_of_type_Azcv.jdField_a_of_type_Int);
+      paramArrayOfByte = this.jdField_a_of_type_Azcv;
+      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  public void close()
   {
-    if (QLog.isColorLevel())
+    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
     {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+      this.jdField_a_of_type_JavaIoPipedInputStream.close();
+      this.jdField_a_of_type_JavaIoPipedInputStream = null;
     }
-    OlympicManager.a(this.a, false);
-    if (paramBoolean)
-    {
-      OlympicManager.a(this.a, paramArrayOfByte);
-      if (paramInt == 0)
-      {
-        bdll.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
-        this.a.a(1);
-        this.a.a(paramTorchInfo);
-        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-        paramArrayOfByte = Long.valueOf(-1L);
-        paramString = paramArrayOfByte;
-        if (OlympicManager.a(this.a) != null)
-        {
-          paramString = paramArrayOfByte;
-          if (OlympicManager.a(this.a).type == 2) {
-            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
-          }
-        }
-        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
-      }
+  }
+  
+  public int read()
+  {
+    if (read(this.d, 0, 1) == 1) {
+      return this.d[0] & 0xFF;
     }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.a.a(1);
-      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-      return;
-    }
-    OlympicManager.b(this.a, false);
-    OlympicManager.b(this.a, null);
-    OlympicManager.a(this.a, 0);
+    return -1;
   }
 }
 

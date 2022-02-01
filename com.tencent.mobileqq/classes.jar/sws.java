@@ -1,71 +1,161 @@
-import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Reader;
+import java.util.Map;
+import java.util.Stack;
+import org.xmlpull.v1.XmlPullParser;
 
-public class sws
-  extends qdl
+class sws
 {
-  private final long jdField_a_of_type_Long;
-  private final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private final String jdField_a_of_type_JavaLangString;
+  XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  swr jdField_a_of_type_Swr;
   
-  public sws(long paramLong, String paramString, ArticleInfo paramArticleInfo)
+  public sws(XmlPullParser paramXmlPullParser, swr paramswr)
   {
-    super(-15504151, 13421772, 860716207);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
+    this.jdField_a_of_type_Swr = paramswr;
   }
   
-  public sws(long paramLong, String paramString, ArticleInfo paramArticleInfo, int paramInt)
+  public int a()
   {
-    super(paramInt, 13421772, 860716207);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
   }
   
-  private void a(long paramLong, Context paramContext)
+  public String a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null)) {}
-    ArticleInfo localArticleInfo;
-    String str;
-    do
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getText();
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(paramInt);
+  }
+  
+  public void a()
+  {
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+    int m = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
+    switch (i)
     {
-      return;
-      QLog.d("UserSpan", 1, new Object[] { "openPersonUrl, uin = ", Long.valueOf(paramLong) });
-      ozs.a(paramContext, oyu.g + bhkv.encodeToString(String.valueOf(paramLong).getBytes(), 2));
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      ozs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
-      str = ozs.a(this.jdField_a_of_type_JavaLangString, localArticleInfo, paramLong);
-      if (ubg.a(localArticleInfo.mChannelID)) {}
-      for (paramContext = "0X800935C"; TextUtils.equals(this.jdField_a_of_type_JavaLangString, "3"); paramContext = "0X8007BA3")
+    default: 
+    case 2: 
+      String str;
+      do
       {
-        ocd.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxt.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
-        sel.a(localArticleInfo, (int)localArticleInfo.mChannelID);
-        return;
-      }
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "5"))
-      {
-        if (qno.a(localArticleInfo))
+        for (;;)
         {
-          ocd.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
-          sel.a(localArticleInfo, (int)localArticleInfo.mChannelID);
+          return;
+          str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+          this.jdField_a_of_type_Swr.jdField_a_of_type_JavaUtilStack.push(str);
+          QLog.d("fast_web", 2, new Object[] { "【start】 depth : ", Integer.valueOf(m), ", name : ", str });
+          if (!swn.c().equals(str)) {
+            break;
+          }
+          i = 0;
+          while (i < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
+          {
+            if (this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(i).trim().equals("style"))
+            {
+              this.jdField_a_of_type_Swr.b.put(m, swn.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(i).trim()));
+              return;
+            }
+            i += 1;
+          }
+        }
+        if (swn.d().equals(str))
+        {
+          this.jdField_a_of_type_Swr.b.put(m, swq.a(4, new Object[] { Integer.valueOf(1) }));
           return;
         }
-        ocd.a(null, localArticleInfo.mSubscribeID, paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), "" + localArticleInfo.mStrategyId, str, false);
-        return;
+        if (swn.e().equals(str))
+        {
+          this.jdField_a_of_type_Swr.b.put(m, swq.a(3, new Object[0]));
+          return;
+        }
+        if (swn.f().equals(str))
+        {
+          this.jdField_a_of_type_Swr.b.put(m, swq.a(4, new Object[] { Integer.valueOf(2) }));
+          return;
+        }
+      } while ((!swn.g().equals(str)) && (!swn.h().equals(str)));
+      int j = 0;
+      int k = 0;
+      if (j < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
+      {
+        if (!this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(j).trim().equals("style")) {
+          i = k;
+        }
+        for (;;)
+        {
+          j += 1;
+          k = i;
+          break;
+          str = (String)swn.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(j)).get("text-align");
+          i = k;
+          if (!TextUtils.isEmpty(str)) {
+            if ("right".equals(str))
+            {
+              i = 2;
+            }
+            else if ("left".equals(str))
+            {
+              i = 0;
+            }
+            else
+            {
+              i = k;
+              if ("center".equals(str)) {
+                i = 1;
+              }
+            }
+          }
+        }
       }
-    } while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "2"));
-    ocd.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxt.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+      this.jdField_a_of_type_Swr.jdField_a_of_type_AndroidUtilSparseArray.put(m, Integer.valueOf(k));
+      return;
+    }
+    QLog.d("fast_web", 2, new Object[] { "【remove】 depth : ", Integer.valueOf(m), ", name : ", this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName(), " size : ", Integer.valueOf(this.jdField_a_of_type_Swr.b.size()) });
+    if (!this.jdField_a_of_type_Swr.jdField_a_of_type_JavaUtilStack.isEmpty())
+    {
+      this.jdField_a_of_type_Swr.jdField_a_of_type_JavaUtilStack.pop();
+      this.jdField_a_of_type_Swr.b.remove(m);
+      this.jdField_a_of_type_Swr.jdField_a_of_type_AndroidUtilSparseArray.remove(m);
+      return;
+    }
+    throw new RuntimeException("tag is not close !");
   }
   
-  public void onClick(View paramView)
+  public void a(Reader paramReader)
   {
-    a(this.jdField_a_of_type_Long, paramView.getContext());
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.setInput(paramReader);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount();
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+  }
+  
+  public String b(int paramInt)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(paramInt);
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+  }
+  
+  public int d()
+  {
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
+    a();
+    return i;
   }
 }
 

@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import blnd;
+import bjrs;
 
 @SuppressLint({"AppCompatCustomView"})
 public class LayerImageView
@@ -22,7 +22,7 @@ public class LayerImageView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
-  private blnd[] jdField_a_of_type_ArrayOfBlnd;
+  private bjrs[] jdField_a_of_type_ArrayOfBjrs;
   private boolean b;
   
   public LayerImageView(Context paramContext)
@@ -62,27 +62,27 @@ public class LayerImageView
   public void setBitmaps(Bitmap[] paramArrayOfBitmap, boolean paramBoolean)
   {
     int j = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfBlnd != null))
+    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfBjrs != null))
     {
-      blnd[] arrayOfblnd = this.jdField_a_of_type_ArrayOfBlnd;
-      int k = arrayOfblnd.length;
+      bjrs[] arrayOfbjrs = this.jdField_a_of_type_ArrayOfBjrs;
+      int k = arrayOfbjrs.length;
       i = 0;
       while (i < k)
       {
-        blnd localblnd = arrayOfblnd[i];
-        if (blnd.a(localblnd) != null) {
-          blnd.a(localblnd).recycle();
+        bjrs localbjrs = arrayOfbjrs[i];
+        if (bjrs.a(localbjrs) != null) {
+          bjrs.a(localbjrs).recycle();
         }
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfBlnd = new blnd[paramArrayOfBitmap.length];
+    this.jdField_a_of_type_ArrayOfBjrs = new bjrs[paramArrayOfBitmap.length];
     int i = j;
     while (i < paramArrayOfBitmap.length)
     {
-      this.jdField_a_of_type_ArrayOfBlnd[i] = new blnd(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i]) != null) && (blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i]);
+      this.jdField_a_of_type_ArrayOfBjrs[i] = new bjrs(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((bjrs.a(this.jdField_a_of_type_ArrayOfBjrs[i]) != null) && (bjrs.a(this.jdField_a_of_type_ArrayOfBjrs[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = bjrs.a(this.jdField_a_of_type_ArrayOfBjrs[i]);
       }
       i += 1;
     }
@@ -98,28 +98,28 @@ public class LayerImageView
   
   public void setLayerBitmap(int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    blnd localblnd = this.jdField_a_of_type_ArrayOfBlnd[paramInt];
-    this.jdField_a_of_type_ArrayOfBlnd[paramInt] = new blnd(paramBitmap, this.jdField_a_of_type_Int, null);
-    if ((paramBoolean) && (blnd.a(localblnd) != null)) {
-      blnd.a(localblnd).recycle();
+    bjrs localbjrs = this.jdField_a_of_type_ArrayOfBjrs[paramInt];
+    this.jdField_a_of_type_ArrayOfBjrs[paramInt] = new bjrs(paramBitmap, this.jdField_a_of_type_Int, null);
+    if ((paramBoolean) && (bjrs.a(localbjrs) != null)) {
+      bjrs.a(localbjrs).recycle();
     }
   }
   
   public void setLayerPadding(int paramInt, Rect paramRect)
   {
-    blnd.a(this.jdField_a_of_type_ArrayOfBlnd[paramInt], paramRect);
+    bjrs.a(this.jdField_a_of_type_ArrayOfBjrs[paramInt], paramRect);
     b();
   }
   
   public void setLayerPadding(Rect[] paramArrayOfRect)
   {
-    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfBlnd.length) {
+    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfBjrs.length) {
       throw new IllegalArgumentException("padding must have the same size as input bitmaps");
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBlnd.length)
+    while (i < this.jdField_a_of_type_ArrayOfBjrs.length)
     {
-      blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i], paramArrayOfRect[i]);
+      bjrs.a(this.jdField_a_of_type_ArrayOfBjrs[i], paramArrayOfRect[i]);
       i += 1;
     }
     b();
@@ -127,7 +127,7 @@ public class LayerImageView
   
   public void setLayerVisibility(int paramInt1, int paramInt2)
   {
-    blnd.a(this.jdField_a_of_type_ArrayOfBlnd[paramInt1], paramInt2);
+    bjrs.a(this.jdField_a_of_type_ArrayOfBjrs[paramInt1], paramInt2);
     b();
   }
   
@@ -138,7 +138,7 @@ public class LayerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.LayerImageView
  * JD-Core Version:    0.7.0.1
  */

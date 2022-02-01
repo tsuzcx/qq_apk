@@ -1,42 +1,62 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import java.io.File;
 
-public class akdz
-  extends nkq
+class akdz
+  implements akbj
 {
-  public akdz(ChatHistoryTroopMemberFragment.21 param21) {}
+  akdz(akdw paramakdw, akea paramakea) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private void a()
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    if (this.jdField_a_of_type_Akea != null) {
+      this.jdField_a_of_type_Akea.a(false);
+    }
+  }
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      for (;;)
+      try
       {
-        return;
-        try
+        String str = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
+        paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
+        if ((!new File(str).exists()) || (!new File(paramPathResult).exists()))
         {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
-            ChatHistoryTroopMemberFragment.c(this.a.this$0);
-            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
+          QLog.e("DrawClassifier", 1, "init fail file not exist");
+          a();
+          return;
         }
-        catch (Exception paramArrayOfByte) {}
+        akdw.a(this.jdField_a_of_type_Akdw, new akdp(str, paramPathResult));
+        if (this.jdField_a_of_type_Akea != null) {
+          this.jdField_a_of_type_Akea.a(true);
+        }
+        akdw.a(this.jdField_a_of_type_Akdw, true);
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("DrawClassifier", 2, "init success");
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
+      catch (Throwable paramPathResult)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
+        }
+        paramPathResult.printStackTrace();
+        a();
+        return;
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DrawClassifier", 2, "init download fail");
+      }
+      a();
+    }
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import abgf;
+import aacq;
 
 public class PubAccountWebViewHttpBridge$1
   implements Runnable
 {
-  public PubAccountWebViewHttpBridge$1(abgf paramabgf) {}
+  public PubAccountWebViewHttpBridge$1(aacq paramaacq) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    abgf.a(this.this$0);
+    aacq.a(this.this$0);
     this.this$0.a = (System.currentTimeMillis() - l);
-    abgf.b(this.this$0);
+    aacq.b(this.this$0);
   }
 }
 

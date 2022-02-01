@@ -1,23 +1,30 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.widget.QQToast;
-import eipc.EIPCResult;
+import com.tencent.widget.AuthorizationItem;
 
-class bjot
-  extends QIPCModule
+public final class bjot
 {
-  bjot(bjos parambjos, String paramString)
+  public final int a;
+  public final String a;
+  public final String b;
+  
+  public bjot(String paramString1, String paramString2, int paramInt)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static bjot a(int paramInt)
   {
-    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
-      QQToast.a(BaseApplicationImpl.context, anzj.a(2131710067), 1).a();
+    switch (paramInt)
+    {
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
     }
-    return null;
+    return AuthorizationItem.c;
   }
 }
 

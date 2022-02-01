@@ -1,35 +1,21 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xe5.Submsgtype0xe5.MsgBody;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import mqq.os.MqqHandler;
 
 public class adgm
-  implements adci
+  extends MqqHandler
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Qidian0xe5Push", 2, "<---receive qidian0xe5 push : forward to qidianHandler");
-    }
-    try
-    {
-      paramMsgType0x210 = (Submsgtype0xe5.MsgBody)new Submsgtype0xe5.MsgBody().mergeFrom(paramMsgType0x210.vProtobuf);
-      ((bkib)paramQQAppInterface.a(85)).a(paramMsgType0x210);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decode0xe5push parse failed.", paramQQAppInterface);
-    }
-  }
+  public adgm(FontSettingActivity paramFontSettingActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void handleMessage(Message paramMessage)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if (16711697 == paramMessage.what)
+    {
+      FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), false);
+      this.a.c = true;
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

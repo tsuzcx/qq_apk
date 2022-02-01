@@ -1,12 +1,29 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
+import android.graphics.drawable.Drawable;
 
-public abstract interface tac
+public class tac
+  implements Comparable<tac>
 {
-  public abstract View a(ViewGroup paramViewGroup);
+  public int a;
+  public Drawable a;
+  public String a;
   
-  public abstract void a(szz paramszz1, @Nullable szz paramszz2, int paramInt);
+  public tac(String paramString, int paramInt, Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public int a(tac paramtac)
+  {
+    if (this.jdField_a_of_type_Int < paramtac.jdField_a_of_type_Int) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Int > paramtac.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

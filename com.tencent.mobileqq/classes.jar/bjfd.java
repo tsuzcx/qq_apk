@@ -1,22 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnSeekCompleteListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener;
 
-public class bjfd
-  implements Animator.AnimatorListener
+class bjfd
+  implements IMediaPlayer.OnSeekCompleteListener
 {
-  public bjfd(FloatingScreenContainer paramFloatingScreenContainer) {}
+  bjfd(bjey parambjey, ReliableVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
   {
-    paramAnimator.removeAllListeners();
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjey);
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

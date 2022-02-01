@@ -2,18 +2,15 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import asoc;
-import asod;
-import asoe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class EmoticonPanelMallHelper$3
+class EmoticonPanelMallHelper$3
   implements Runnable
 {
-  public EmoticonPanelMallHelper$3(asoc paramasoc) {}
+  EmoticonPanelMallHelper$3(EmoticonPanelMallHelper paramEmoticonPanelMallHelper) {}
   
   public void run()
   {
@@ -22,8 +19,8 @@ public class EmoticonPanelMallHelper$3
     }
     try
     {
-      Object localObject = this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      Context localContext = this.this$0.a.jdField_a_of_type_AndroidContentContext;
+      Object localObject = this.this$0.mPanelController.app;
+      Context localContext = this.this$0.mPanelController.context;
       if (localObject == null) {
         return;
       }
@@ -37,7 +34,7 @@ public class EmoticonPanelMallHelper$3
           if (QLog.isColorLevel()) {
             QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for market open strategy");
           }
-          localWebProcessManager.a(-1, new asod(this));
+          localWebProcessManager.a(-1, new EmoticonPanelMallHelper.3.1(this));
           return;
         }
         l = ((SharedPreferences)localObject).getLong("sp_key_send_h5_magic_face_time", 0L);
@@ -47,7 +44,7 @@ public class EmoticonPanelMallHelper$3
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
         }
-        localWebProcessManager.a(-1, new asoe(this));
+        localWebProcessManager.a(-1, new EmoticonPanelMallHelper.3.2(this));
         return;
       }
     }
@@ -63,7 +60,7 @@ public class EmoticonPanelMallHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3
  * JD-Core Version:    0.7.0.1
  */

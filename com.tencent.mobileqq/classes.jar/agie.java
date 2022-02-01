@@ -1,18 +1,13 @@
-import android.os.Looper;
-import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class agie
-  extends beyf
+public class agie
+  extends aexg
 {
-  agie(agid paramagid, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ImageView a;
+  public TextView b;
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(paramMessage);
-  }
+  public agie(agid paramagid) {}
 }
 
 

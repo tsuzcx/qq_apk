@@ -1,69 +1,43 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import android.text.TextUtils;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xce.submsgtype0xce.MsgBody;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class adgb
-  implements adci
+  implements arcb
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public adgb(EmosmActivity paramEmosmActivity) {}
+  
+  public void a(int paramInt)
   {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xce push message ");
-    }
-    Object localObject = new submsgtype0xce.MsgBody();
-    try
-    {
-      ((submsgtype0xce.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
-      paramMsgType0x210 = ((submsgtype0xce.MsgBody)localObject).string_params.get();
-      if (QLog.isColorLevel()) {
-        bkad.c("Q.msg.BaseMessageProcessor", "yuyue(push):OnLinePushMessageProcessor receive 0xce strJson=" + paramMsgType0x210);
-      }
-      localObject = new JSONObject(paramMsgType0x210).optString("appid");
-      String[] arrayOfString = acik.a("APPOINTMENT_DOWNLOAD_LIST").split("\\|");
-      int i = 0;
-      for (;;)
-      {
-        int j = k;
-        if (i < arrayOfString.length)
-        {
-          if ((!TextUtils.isEmpty(arrayOfString[i])) && (!TextUtils.isEmpty((CharSequence)localObject)) && (arrayOfString[i].equals(localObject))) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if ((j == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
-          {
-            acik.c((String)localObject, "APPOINTMENT_LIST");
-            acik.a((String)localObject, paramMsgType0x210, "APPOINT_APPID_DETAIL_");
-            acig.a();
-          }
-          GameCenterCheck.a();
-          acik.a(paramQQAppInterface, "426", "202136", (String)localObject, "42601", "1", "116");
-          return;
-        }
-        i += 1;
-      }
+    paramInt -= this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
+    if (paramInt < 0) {
       return;
     }
-    catch (Exception paramQQAppInterface)
+    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!NetworkUtil.isNetSupport(this.a))
     {
-      paramQQAppInterface.printStackTrace();
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).a(2130839590);
+      ((QQToast)localObject).d(1500);
+      ((QQToast)localObject).a(amtj.a(2131703161));
+      ((QQToast)localObject).b(0);
+      return;
     }
-  }
-  
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131691794));
+    this.a.jdField_a_of_type_Bhht.show();
+    ((amrg)this.a.app.getBusinessHandler(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    URLDrawable.clearMemoryCache();
+    if (this.a.b == 1)
+    {
+      bcef.b(this.a.app, "dc00898", "", "", "0X800AB12", "0X800AB12", 1, 0, "", "", "", "");
+      return;
+    }
+    bcef.b(this.a.app, "dc00898", "", "", "0X800AB15", "0X800AB15", 0, 0, "", "", "", "");
   }
 }
 

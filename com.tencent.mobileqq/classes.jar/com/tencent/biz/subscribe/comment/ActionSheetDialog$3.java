@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.comment;
 
-import aahs;
 import android.text.TextUtils;
 import android.widget.TextView;
+import zeq;
 
 public class ActionSheetDialog$3
   implements Runnable
@@ -11,12 +11,12 @@ public class ActionSheetDialog$3
   {
     if (TextUtils.isEmpty(this.a))
     {
-      aahs.a(this.this$0).setText("");
-      aahs.a(this.this$0).setVisibility(8);
+      zeq.a(this.this$0).setText("");
+      zeq.a(this.this$0).setVisibility(8);
       return;
     }
-    aahs.a(this.this$0).setText(this.a);
-    aahs.a(this.this$0).setVisibility(0);
+    zeq.a(this.this$0).setText(this.a);
+    zeq.a(this.this$0).setVisibility(0);
   }
 }
 

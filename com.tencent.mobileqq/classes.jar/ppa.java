@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ppa
-  implements Comparator<ChannelInfo>
+public class ppa
+  implements pqe
 {
-  ppa(poz parampoz) {}
+  public ppa(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public void a()
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
-    }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
+    pay.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), paa.r);
+    odq.a(null, "CliOper", "", "", "0X8008E3C", "0X8008E3C", 0, 0, "", "", "", pay.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), "8.4.8".replace("", ""), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()), false);
   }
 }
 

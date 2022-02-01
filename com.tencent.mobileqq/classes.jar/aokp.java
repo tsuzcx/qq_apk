@@ -1,27 +1,100 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
 public class aokp
-  implements DialogInterface.OnClickListener
+  extends aojz
 {
-  public aokp(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
+  Handler jdField_a_of_type_AndroidOsHandler;
+  aojv jdField_a_of_type_Aojv;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aokp(Handler paramHandler)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramInt = this.jdField_a_of_type_Int;
-    int i = this.jdField_b_of_type_Int;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+  }
+  
+  public int a()
+  {
+    try
     {
-      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
-      paramDialogInterface.dismiss();
-      mru.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause, this.jdField_a_of_type_Boolean);
+      long l = System.currentTimeMillis();
+      Object localObject = new int[2];
+      localObject[0] = 2;
+      localObject[1] = 1;
+      int i = bijo.b(0, "ANY", "UTF-8");
+      int j = bijo.b((int[])localObject, localObject.length);
+      localObject = bijo.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("QRSession.QRRecog", 2, String.format("initQbar time cost:%sms, initResult=%s readerResult=%s version=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(j), localObject }));
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QRSession.QRRecog", 2, "initQbar fail!", localException);
+      }
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bijo.b();
+        this.jdField_a_of_type_Boolean = false;
+      }
       return;
     }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QRSession.QRRecog", 2, "unInitQbar fail!", localException);
+    }
+  }
+  
+  public void a(aoka paramaoka)
+  {
+    this.jdField_a_of_type_Aojv = ((aojv)paramaoka);
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    paramBoolean = false;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    long l = System.currentTimeMillis();
+    if (bijo.b(paramArrayOfByte, paramInt1, paramInt2, 0) == 1)
+    {
+      bijo.b(localStringBuilder1, localStringBuilder2);
+      paramBoolean = true;
+    }
+    if (this.jdField_a_of_type_Aojv != null)
+    {
+      if (!paramBoolean) {
+        break label131;
+      }
+      this.jdField_a_of_type_Aojv.a(localStringBuilder1.toString(), localStringBuilder2.toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        if (!paramBoolean) {
+          break;
+        }
+        QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR suc. type=%s data=%s qrRecog minicode_timecost=%d", new Object[] { localStringBuilder1, localStringBuilder2, Long.valueOf(System.currentTimeMillis() - l) }));
+      }
+      return paramBoolean;
+      label131:
+      this.jdField_a_of_type_Aojv.a(false, 0.0F);
+    }
+    QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR failed. hasQR=%s qrAreaRatio=%s qrRecog minicode_timecost=%d", new Object[] { Boolean.valueOf(false), Float.valueOf(0.0F), Long.valueOf(System.currentTimeMillis() - l) }));
+    return paramBoolean;
   }
 }
 

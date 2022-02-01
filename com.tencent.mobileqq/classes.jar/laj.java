@@ -1,38 +1,87 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-class laj
-  extends kzr
+public class laj
 {
-  laj(lai paramlai, Long paramLong, Context paramContext, List paramList, Language paramLanguage, lau paramlau) {}
+  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  @TargetApi(8)
+  public static File a(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 8) {
+      return paramContext.getExternalCacheDir();
+    }
+    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
+    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+  }
+  
+  public static String a(String paramString)
   {
     try
     {
-      lai.a(this.jdField_a_of_type_Lai).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
-      lai.a(this.jdField_a_of_type_Lai).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
-      lai.a(this.jdField_a_of_type_Lai, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, lai.a(this.jdField_a_of_type_Lai).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Lau);
-      return;
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramString.getBytes("UTF-8"));
+      paramString = a(localMessageDigest.digest());
+      return paramString;
     }
-    catch (JSONException paramArrayOfHeader)
+    catch (NoSuchAlgorithmException paramString)
     {
-      this.jdField_a_of_type_Lau.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
+      throw new AssertionError();
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new AssertionError();
+    }
+    catch (Throwable paramString)
+    {
+      throw new AssertionError();
     }
   }
   
-  public void a(Throwable paramThrowable, String paramString)
+  public static String a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Lau.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
+    return paramString1 + "{@}" + paramString2;
+  }
+  
+  public static String a(String paramString1, String paramString2, long paramLong)
+  {
+    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
+  }
+  
+  static String a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int k = paramArrayOfByte.length;
+    int j = 0;
+    while (i < k)
+    {
+      int m = paramArrayOfByte[i];
+      int n = j + 1;
+      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
+      j = n + 1;
+      arrayOfChar[n] = a[(m & 0xF)];
+      i += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  @TargetApi(9)
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      return Environment.isExternalStorageRemovable();
+    }
+    return true;
   }
 }
 

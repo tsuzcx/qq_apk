@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahvj;
+import agrx;
 import android.os.Handler;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ public class TroopFileItemBuilder$5
 {
   public void run()
   {
-    this.this$0.a.a().b(this.a.frienduin, this.a.istroop, this.a.uniseq);
+    this.this$0.a.getMessageFacade().removeMsgByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq);
     this.this$0.b.post(new TroopFileItemBuilder.5.1(this));
   }
 }

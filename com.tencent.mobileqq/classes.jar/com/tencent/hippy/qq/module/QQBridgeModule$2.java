@@ -1,12 +1,12 @@
 package com.tencent.hippy.qq.module;
 
-import acvb;
-import acvc;
-import acwb;
-import acwc;
-import acwd;
+import abrk;
+import abrl;
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -26,9 +26,9 @@ class QQBridgeModule$2
     Object localObject1 = BaseActivity.sTopActivity.getApplicationContext();
     JSONObject localJSONObject = new JSONObject();
     Object localObject2 = null;
-    Object localObject3 = new acwc();
-    ((acwc)localObject3).a = this.val$jsonObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
-    localObject1 = acwb.a((Context)localObject1, (acwc)localObject3);
+    Object localObject3 = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject3).businessIdForAidTicketAndTaidTicket = this.val$jsonObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
+    localObject1 = GdtDeviceInfoHelper.create((Context)localObject1, (GdtDeviceInfoHelper.Params)localObject3);
     if (localObject1 == null)
     {
       localObject1 = localObject2;
@@ -46,12 +46,12 @@ class QQBridgeModule$2
         }
         this.this$0.invokeCallJS(this.val$promise, localJSONObject);
         return;
-        localObject3 = ((acwd)localObject1).a;
+        localObject3 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
         }
-        localObject3 = acvb.a((PBField)localObject3);
+        localObject3 = abrk.a((PBField)localObject3);
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
@@ -64,11 +64,11 @@ class QQBridgeModule$2
       }
       catch (JSONException localJSONException)
       {
-        acvc.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
+        abrl.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
         continue;
       }
       label165:
-      acvc.d(BridgeModule.TAG, "handleJsCallRequest error");
+      abrl.d(BridgeModule.TAG, "handleJsCallRequest error");
     }
     label176:
     QQBridgeModule.access$000(this.this$0, this.val$promise, localJSONObject);

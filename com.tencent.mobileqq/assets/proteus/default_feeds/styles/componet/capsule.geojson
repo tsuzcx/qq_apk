@@ -15,8 +15,7 @@
     },
     "attributes":{
     },
-    "subviews":[
-        {
+    "subviews":[{
         "view_type":"UIView",
         "view_id":"id_capsule_privacy_tag",
         "event_type": "cmd_privacy_capsule_click",

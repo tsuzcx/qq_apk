@@ -1,53 +1,27 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public class baky
-  extends anuw
+class baky
+  implements DialogInterface.OnClickListener
 {
-  public baky(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  baky(bakw parambakw, int paramInt, Object paramObject) {}
   
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    switch (this.jdField_a_of_type_Int)
     {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
+    default: 
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
     }
-  }
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
-    }
-    this.a.f();
-    if (paramBoolean)
+    do
     {
-      this.a.a(2131690603, 2);
       return;
-    }
-    this.a.a(2131690601, 1);
-  }
-  
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
-  {
-    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {
-      return;
-    }
-    this.a.a(2131694572, 1);
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData));
+    bakw.a(this.jdField_a_of_type_Bakw).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Bakw.updateUI();
   }
 }
 

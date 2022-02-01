@@ -39,7 +39,7 @@ public class ci
   
   void a(List<String> paramList)
   {
-    anvu localanvu = (anvu)this.a.app.a(8);
+    amqd localamqd = (amqd)this.a.app.getBusinessHandler(8);
     for (;;)
     {
       int j = paramList.size();
@@ -48,14 +48,14 @@ public class ci
         i = 0;
         while (i < j)
         {
-          localanvu.a(a((String)paramList.get(i), 0, 0, 0), false);
+          localamqd.a(a((String)paramList.get(i), 0, 0, 0), false);
           i += 1;
         }
       }
       if ((j > 3) && (j < 50))
       {
         localArrayList = new ArrayList();
-        int k = localanvu.a();
+        int k = localamqd.a();
         i = 0;
         while (i < j)
         {
@@ -63,11 +63,11 @@ public class ci
           i += 1;
         }
         dq.n(this.a.app);
-        localanvu.a(localArrayList, false);
+        localamqd.a(localArrayList, false);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      j = localanvu.a();
+      j = localamqd.a();
       int i = 0;
       while (i < 50)
       {
@@ -75,7 +75,7 @@ public class ci
         i += 1;
       }
       dq.n(this.a.app);
-      localanvu.a(localArrayList, false);
+      localamqd.a(localArrayList, false);
       i = 0;
       while (i < 50)
       {
@@ -87,7 +87,7 @@ public class ci
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ci
  * JD-Core Version:    0.7.0.1
  */

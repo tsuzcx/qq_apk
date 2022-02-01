@@ -1,8 +1,8 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QUA;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class LpReport_AlbumInfo_dc02151
     {
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", bmsw.a());
+      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
       if (!TextUtils.isEmpty(this.client_time)) {
         break label202;
       }
@@ -55,7 +55,7 @@ public class LpReport_AlbumInfo_dc02151
     }
     label202:
     label210:
-    for (String str = "8.4.5";; str = this.version)
+    for (String str = "8.4.8";; str = this.version)
     {
       LpReportUtils.safePut(localHashMap, "version", str);
       return localHashMap;

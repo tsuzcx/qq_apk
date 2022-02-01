@@ -1,14 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.9;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
 public class aipc
-  implements oby
+  extends amsu
 {
-  public aipc(PublicAccountChatPie.9 param9) {}
+  public aipc(DeviceFragment paramDeviceFragment) {}
   
-  public void a()
+  protected void onPullIpad()
   {
-    this.a.this$0.a.sendEmptyMessage(1);
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

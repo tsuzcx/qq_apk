@@ -483,6 +483,24 @@ public final class a
     }
   }
   
+  public boolean isHitPreloadCanvasJsonExp()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return false;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101766) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
   public boolean isHitRelationTargetInstallExp()
   {
     if (!isValid()) {}

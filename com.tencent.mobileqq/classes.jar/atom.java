@@ -1,44 +1,38 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class atom
-  extends auoi
+class atom
+  implements ayeo
 {
-  public atom(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
+  atom(atoi paramatoi, Bundle paramBundle, long paramLong) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    Object localObject = atyw.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (atyu.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          bdll.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    return null;
   }
   
-  public void e() {}
-  
-  public void f()
+  public void onSend(ayep paramayep)
   {
-    this.a.a.a().E();
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramayep });
+    atoi.a(this.jdField_a_of_type_Atoi, paramayep, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
+  }
+  
+  public void updateMsg(ayep paramayep)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
+    if (paramayep == null) {}
+    for (paramayep = "null";; paramayep = paramayep.toString())
+    {
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramayep);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atom
  * JD-Core Version:    0.7.0.1
  */

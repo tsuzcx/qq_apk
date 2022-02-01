@@ -1,47 +1,28 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class aeil
-  extends anwb
+  implements View.OnFocusChangeListener
 {
-  public aeil(Conversation paramConversation) {}
+  public aeil(SubLoginActivity paramSubLoginActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, antf.z, 6000);
+    if (true == paramBoolean)
+    {
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
-    while (i != 1) {
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
       return;
     }
-    this.a.a(8, antf.A, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, antf.z, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, antf.A, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, antf.z, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, antf.A, 6003);
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

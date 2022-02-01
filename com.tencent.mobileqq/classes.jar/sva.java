@@ -1,46 +1,15 @@
 import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class sva
-  implements ComplementFileStringLoader
+class sva
+  implements svf
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private svh jdField_a_of_type_Svh;
+  sva(sup paramsup) {}
   
-  public sva(Context paramContext, String paramString)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Svh = new svh(paramContext, paramString);
-  }
-  
-  public String loadFileAsString(String paramString)
-  {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
-    try
-    {
-      InputStream localInputStream = this.jdField_a_of_type_Svh.a(paramString);
-      Object localObject = localInputStream;
-      if (localInputStream == null) {
-        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-      }
-      localObject = svr.a((InputStream)localObject);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-    }
-    return null;
+    svr.a(paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 

@@ -2,36 +2,34 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.view.View;
-import asmr;
-import assk;
 
 public class SystemAndEmojiEmoticonPanelWithActionBar
   extends SystemAndEmojiEmoticonPanel
 {
-  protected View a;
-  public asmr a;
+  protected EmoticonCallback mCallback;
+  protected View mSendBtn;
   
-  public SystemAndEmojiEmoticonPanelWithActionBar(Context paramContext, asmr paramasmr)
+  public SystemAndEmojiEmoticonPanelWithActionBar(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    super(paramContext, paramasmr);
+    super(paramContext, paramEmoticonCallback);
   }
   
-  protected int a()
+  protected int getLayoutId()
   {
-    return 2131559139;
+    return 2131559146;
   }
   
-  protected void a(Context paramContext, asmr paramasmr)
+  protected void initUI(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    super.a(paramContext, paramasmr);
-    this.jdField_a_of_type_Asmr = paramasmr;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377324);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new assk(this));
+    super.initUI(paramContext, paramEmoticonCallback);
+    this.mCallback = paramEmoticonCallback;
+    this.mSendBtn = findViewById(2131377075);
+    this.mSendBtn.setOnClickListener(new SystemAndEmojiEmoticonPanelWithActionBar.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar
  * JD-Core Version:    0.7.0.1
  */

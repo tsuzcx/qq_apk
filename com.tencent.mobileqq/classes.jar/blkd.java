@@ -1,6 +1,28 @@
-public abstract interface blkd
+import dov.com.qq.im.ae.mode.AECaptureMode;
+
+class blkd
+  implements blsm
 {
-  public abstract void a();
+  blkd(bljy parambljy) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Blnv.a(null);
+  }
+  
+  public void a(blvb paramblvb)
+  {
+    if (this.a.b == AECaptureMode.NORMAL)
+    {
+      this.a.jdField_a_of_type_Blnv.a(paramblvb);
+      return;
+    }
+    bmbx.d(this.a.jdField_a_of_type_JavaLangString, "onMaterialSelected---but current capture mode is not normal");
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

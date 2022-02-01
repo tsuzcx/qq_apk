@@ -1,20 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bgad
-  implements DialogInterface.OnClickListener
+final class bgad
+  implements Handler.Callback
 {
-  public bgad(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    QQAppInterface localQQAppInterface;
+    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
     {
-    default: 
-      return;
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
+      switch (paramMessage.what)
+      {
+      }
     }
-    PublishHomeWorkFragment.a(this.a);
+    for (;;)
+    {
+      return true;
+      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715062), 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715061), 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715060), 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715063), 0).a();
+    }
   }
 }
 

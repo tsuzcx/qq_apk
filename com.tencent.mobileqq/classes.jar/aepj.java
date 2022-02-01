@@ -1,28 +1,35 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aepj
-  extends anyu
+  extends Handler
 {
-  public aepj(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aepj(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean1) {
-      this.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.h();
+      QQToast.a(this.a, this.a.getString(2131718128), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.h();
+      QQToast.a(this.a, this.a.getString(2131718115), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.a();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 

@@ -1,36 +1,20 @@
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class adol
+public class adol
+  extends ResourcePluginListener
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public adol(Leba paramLeba) {}
   
-  public JSONObject a()
+  public void a(byte paramByte)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
-      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
-      return localJSONObject;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
     }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(adoi.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
     }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
   }
 }
 

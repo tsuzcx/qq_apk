@@ -1,39 +1,39 @@
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
 public class aovb
-  implements aouy
+  implements INetInfoHandler
 {
-  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
+  public aovb(ArkAppCenter paramArkAppCenter) {}
+  
+  public void onNetMobile2None()
   {
-    switch (paramInt)
-    {
-    case 8037: 
-    case 8040: 
-    case 8041: 
-    case 8042: 
-    case 8043: 
-    case 8044: 
-    case 8045: 
-    default: 
-      return;
-    case 8033: 
-      paramaocj.g(paramArrayOfObject);
-      return;
-    case 8038: 
-      paramaocj.h(paramArrayOfObject);
-      return;
-    case 8034: 
-      paramaocj.b(paramObject);
-      return;
-    case 8035: 
-      paramaocj.q(paramBoolean, paramArrayOfObject);
-      return;
-    case 8036: 
-      paramaocj.i(paramArrayOfObject);
-      return;
-    case 8039: 
-      paramaocj.p(paramBoolean, paramArrayOfObject);
-      return;
-    }
-    paramaocj.p(paramBoolean, paramObject);
+    ArkAppCenter.a(this.a, 1, 0);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ArkAppCenter.a(this.a, 1, 2);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 0, 1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ArkAppCenter.a(this.a, 0, 2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 2, 1);
+  }
+  
+  public void onNetWifi2None()
+  {
+    ArkAppCenter.a(this.a, 2, 0);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
+import abwp;
 import android.content.Context;
 import android.text.TextUtils;
-import antf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
@@ -32,20 +32,20 @@ public class RecentItemActivateFriendsData
     {
       return;
       super.a(paramQQAppInterface, paramContext);
-      QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
+      QQMessageFacade localQQMessageFacade = paramQQAppInterface.getMessageFacade();
       Object localObject1 = localObject2;
       if (localQQMessageFacade != null)
       {
         localObject1 = localObject2;
-        if (localQQMessageFacade.b(antf.ad, 9002).size() > 0) {
-          localObject1 = localQQMessageFacade.a(this.mUser.uin, this.mUser.getType());
+        if (localQQMessageFacade.getMsgList(AppConstants.ACTIVATE_FRIENDS_UIN, 9002).size() > 0) {
+          localObject1 = localQQMessageFacade.getLastMessage(this.mUser.uin, this.mUser.getType());
         }
       }
       if (localObject1 == null) {
         break label268;
       }
       this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
-      paramQQAppInterface = paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.getConversationFacade();
       if (paramQQAppInterface == null) {
         break;
       }
@@ -54,7 +54,7 @@ public class RecentItemActivateFriendsData
       this.mLastMsg = ((QQMessageFacade.Message)localObject1).getMessageText();
       updateMsgUnreadStateMenu();
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131689532);
+        this.mTitleName = paramContext.getString(2131689531);
       }
     } while (!AppSetting.c);
     paramQQAppInterface = new StringBuilder();

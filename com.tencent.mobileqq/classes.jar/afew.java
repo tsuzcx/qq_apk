@@ -1,10 +1,11 @@
-import android.widget.TextView;
-
-public class afew
-  extends amof
+class afew
 {
-  public afeq a;
-  public TextView a;
+  String jdField_a_of_type_JavaLangString;
+  
+  public afew(afeu paramafeu, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

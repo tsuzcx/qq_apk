@@ -1,75 +1,44 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.util.VersionUtils;
 
 public class bfrh
-  extends bfrg
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public static void a(Activity paramActivity)
   {
-    int i = 0;
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
+    if (paramActivity == null) {
+      return;
+    }
+    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
+    switch (paramActivity.getResources().getConfiguration().orientation)
+    {
+    default: 
+      i = 0;
     }
     for (;;)
     {
-      JSONObject localJSONObject;
-      try
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("content");
-        if (i >= paramJSONObject.length()) {
-          break label283;
-        }
-        localJSONObject = paramJSONObject.getJSONObject(i);
-        int j = localJSONObject.getInt("type");
-        if (j == 5)
-        {
-          if (localJSONObject.has("file_path")) {
-            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
-          }
-          localTroopFeedItem.type = 0;
-          if (localJSONObject.has("sharesize")) {
-            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
-          }
-          boolean bool = localJSONObject.has("bus_id");
-          if (bool) {}
-          try
-          {
-            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
-            if (!localJSONObject.has("sharefile")) {
-              break label308;
-            }
-            localTroopFeedItem.title = localJSONObject.getString("sharefile");
-          }
-          catch (JSONException localJSONException)
-          {
-            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
-            continue;
-          }
-        }
-        if (j != 3) {
-          break label308;
-        }
+      paramActivity.setRequestedOrientation(i);
+      return;
+      if ((i == 0) || (i == 1) || (!VersionUtils.isGingerBread())) {
+        break;
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
+      i = 8;
+      continue;
+      if ((i != 0) && (i != 3) && (VersionUtils.isGingerBread())) {
+        i = 9;
+      } else {
+        i = 1;
       }
-      if (localJSONObject.has("pic_id"))
-      {
-        localTroopFeedItem.picPath = ("https://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
-        break label308;
-        label283:
-        if ((bhsr.a(localTroopFeedItem.linkUrl)) || (bhsr.a(localTroopFeedItem.content))) {
-          break;
-        }
-        return localTroopFeedItem;
-      }
-      label308:
-      i += 1;
+    }
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (paramActivity != null) {
+      paramActivity.setRequestedOrientation(-1);
     }
   }
 }

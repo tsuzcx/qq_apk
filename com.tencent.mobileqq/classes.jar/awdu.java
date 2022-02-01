@@ -1,130 +1,34 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
 
-public class awdu
-  implements avzh, Manager
+class awdu
+  implements asyd
 {
-  QQAppInterface a;
+  awdu(awdi paramawdi, String paramString, awdd paramawdd) {}
   
-  public awdu(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public static Bundle a(IVPluginInfo paramIVPluginInfo, avzd paramavzd)
-  {
-    int m = 0;
-    Bundle localBundle = new Bundle();
-    for (;;)
+    if ((this.jdField_a_of_type_Awdd != null) && (this.jdField_a_of_type_Awdd.a != null))
     {
-      try
+      String str = this.jdField_a_of_type_Awdd.a.a();
+      awde localawde = this.jdField_a_of_type_Awdi.a(str);
+      if ((localawde != null) && (!localawde.a))
       {
-        localObject1 = ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
-        str2 = ((AppRuntime)localObject1).getAccount();
-        localObject2 = (anyw)((AppRuntime)localObject1).getManager(51);
-        localObject3 = ((anyw)localObject2).e(str2);
-        if (localObject3 == null) {
-          break label470;
-        }
-        localObject1 = ((Friends)localObject3).name;
-        j = ((Friends)localObject3).gender;
-        i = ((Friends)localObject3).age;
-        localObject3 = ((anyw)localObject2).b(str2);
-        if (localObject3 == null) {
-          break label452;
-        }
-        k = (int)((Card)localObject3).lBirthday;
-        localObject2 = ((Card)localObject3).strCountry;
-        str1 = ((Card)localObject3).strProvince;
-        localObject3 = ((Card)localObject3).strCity;
-      }
-      catch (Exception paramIVPluginInfo)
-      {
-        String str2;
-        paramIVPluginInfo.printStackTrace();
-        return localBundle;
-      }
-      localBundle.putString("nickname", (String)localObject1);
-      localBundle.putLong("roomid", paramIVPluginInfo.a);
-      localBundle.putInt("authtype", 1);
-      localBundle.putString("authid", paramavzd.a().b);
-      localBundle.putInt("gender", j);
-      localBundle.putInt("vastype", 2);
-      localBundle.putLong("hostid", Long.parseLong(str2));
-      localBundle.putString("authkey", paramavzd.a().a);
-      localBundle.putString("appid", paramIVPluginInfo.b);
-      localBundle.putString("vasname", paramIVPluginInfo.g);
-      localBundle.putString("userdata", paramIVPluginInfo.d);
-      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.e));
-      localBundle.putInt("age", i);
-      localBundle.putInt("birthyear", n);
-      localBundle.putInt("birthmonth", m);
-      localBundle.putInt("birthday", k);
-      localBundle.putBoolean("loghost", true);
-      localBundle.putBoolean("reporthost", true);
-      localBundle.putString("backType", paramIVPluginInfo.h);
-      localBundle.putInt("isGroupCode", paramIVPluginInfo.c);
-      localBundle.putString("openType", paramIVPluginInfo.i);
-      localBundle.putString("extra", paramIVPluginInfo.j);
-      localBundle.putString("payToken", paramavzd.a().c);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localBundle.putString("addrCountry", (String)localObject2);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        localBundle.putString("addrProv", str1);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        localBundle.putString("addrCity", (String)localObject3);
-      }
-      return localBundle;
-      int n = k >>> 16;
-      m = (0xFF00 & k) >>> 8;
-      k &= 0xFF;
-      continue;
-      label452:
-      Object localObject2 = "";
-      int k = 0;
-      String str1 = "";
-      Object localObject3 = "";
-      break label481;
-      label470:
-      int i = 0;
-      int j = 0;
-      Object localObject1 = "";
-      continue;
-      label481:
-      if (k == 0)
-      {
-        n = 1995;
-        k = 0;
+        localawde.c = paramInt;
+        this.jdField_a_of_type_Awdi.a(str, localawde);
+        awdi.a(this.jdField_a_of_type_Awdi, localawde, paramInt);
       }
     }
   }
   
-  public void a() {}
-  
-  public void a(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt) {}
-  
-  public void onDestroy()
+  public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("XProxy|ODPROXY", 2, "onDestroy");
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
     }
-    a();
-    this.a = null;
+    awdi.a(this.jdField_a_of_type_Awdi, this.jdField_a_of_type_Awdd, paramBoolean);
   }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

@@ -3,23 +3,23 @@ package com.tencent.mobileqq.minigame.manager;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhlq;
-import bhpc;
-import bhpq;
-import bhtq;
+import bfur;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -28,6 +28,9 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.QQCustomDialogForMiniGame;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.util.GsonUtils;
 import java.util.ArrayList;
@@ -71,30 +74,40 @@ public class GameCloseManager
     return false;
   }
   
-  private static void doShowRetainDialog(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ArrayList<MiniAppInfo> paramArrayList, DialogInterface.OnClickListener paramOnClickListener)
+  private static void doShowRetainDialog(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString1, ArrayList<MiniAppInfo> paramArrayList, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    bhpq localbhpq = new bhpq(paramActivity, 2131755824);
-    localbhpq.setContentView(2131559008);
-    localbhpq.setBodyLayoutNoMargin();
-    View localView = LayoutInflater.from(paramActivity).inflate(2131559427, null, false);
-    ((URLImageView)localView.findViewById(2131378967)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bhtq.b(296.0F), bhtq.b(166.0F));
-    localLayoutParams.gravity = 17;
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376343);
-    int i = 0;
-    while (i < 3)
+    QQCustomDialogForMiniGame localQQCustomDialogForMiniGame = new QQCustomDialogForMiniGame(paramActivity, 2131755826);
+    localQQCustomDialogForMiniGame.setContentView(2131559016);
+    localQQCustomDialogForMiniGame.setBodyLayoutNoMargin();
+    View localView = LayoutInflater.from(paramActivity).inflate(2131559429, null, false);
+    ((URLImageView)localView.findViewById(2131378737)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
+    Object localObject = localView.findViewById(2131376939);
+    if (!TextUtils.isEmpty(paramString2))
     {
-      GameCloseManager.MiniAppViewItem localMiniAppViewItem = new GameCloseManager.MiniAppViewItem(paramActivity);
-      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramArrayList.get(i);
-      localMiniAppViewItem.setData(localMiniAppInfo, new GameCloseManager.1(localMiniAppInfo, localbhpq, paramOnClickListener, paramActivity));
-      localLinearLayout.addView(GameCloseManager.MiniAppViewItem.access$100(localMiniAppViewItem));
-      i += 1;
+      ((View)localObject).setVisibility(0);
+      ((URLImageView)localView.findViewById(2131376938)).setBackgroundURL(paramString2);
     }
-    localbhpq.setCancelable(false);
-    localbhpq.setTitle(null).setMessage(null).addView(localView, localLayoutParams).setNegativeButton(2131693725, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131693726, new GameCloseManager.2(paramMiniAppInfo, paramOnClickListener, paramActivity));
-    localbhpq.getBtnight().setTypeface(Typeface.DEFAULT, 1);
-    localbhpq.getBtnLeft().setTypeface(Typeface.DEFAULT, 1);
-    localbhpq.show();
+    for (;;)
+    {
+      paramString2 = new LinearLayout.LayoutParams(ViewUtils.dpToPx(296.0F), -2);
+      paramString2.gravity = 17;
+      localObject = (LinearLayout)localView.findViewById(2131376110);
+      int i = 0;
+      while (i < 3)
+      {
+        GameCloseManager.MiniAppViewItem localMiniAppViewItem = new GameCloseManager.MiniAppViewItem(paramActivity);
+        MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramArrayList.get(i);
+        localMiniAppViewItem.setData(localMiniAppInfo, new GameCloseManager.1(localMiniAppInfo, localQQCustomDialogForMiniGame, paramOnClickListener, paramActivity));
+        ((LinearLayout)localObject).addView(GameCloseManager.MiniAppViewItem.access$100(localMiniAppViewItem));
+        i += 1;
+      }
+      ((View)localObject).setVisibility(8);
+    }
+    localQQCustomDialogForMiniGame.setCancelable(false);
+    localQQCustomDialogForMiniGame.setTitle(null).setMessage(null).addView(localView, paramString2).setNegativeButton(2131693822, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131693823, new GameCloseManager.2(paramMiniAppInfo, paramString1, paramOnClickListener, paramActivity));
+    localQQCustomDialogForMiniGame.getBtnight().setTypeface(Typeface.DEFAULT, 1);
+    localQQCustomDialogForMiniGame.getBtnLeft().setTypeface(Typeface.DEFAULT, 1);
+    localQQCustomDialogForMiniGame.show();
     MiniProgramLpReportDC04239.reportAsync("minigame_popup", "popup", "expo", "");
   }
   
@@ -125,25 +138,40 @@ public class GameCloseManager
     return j;
   }
   
-  private static void handleClick(MiniAppInfo paramMiniAppInfo, DialogInterface paramDialogInterface, int paramInt, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity, boolean paramBoolean)
+  private static void handleClick(MiniAppInfo paramMiniAppInfo, String paramString, DialogInterface paramDialogInterface, int paramInt, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    try
+    if (paramBoolean)
     {
-      MiniAppController.launchMiniAppByAppInfo(paramActivity, paramMiniAppInfo, 2113);
+      if (TextUtils.isEmpty(paramString)) {
+        break label72;
+      }
+      paramMiniAppInfo = new Intent(paramActivity, AppBrandLaunchUI.class);
+      paramMiniAppInfo.putExtra("from", "SchemeJsPlugin");
+      paramMiniAppInfo.putExtra("scheme", paramString);
+      paramActivity.startActivity(paramMiniAppInfo);
+    }
+    for (;;)
+    {
       paramDialogInterface.dismiss();
       if (paramOnClickListener != null) {
         paramOnClickListener.onClick(paramDialogInterface, paramInt);
       }
       return;
-    }
-    catch (MiniAppException paramMiniAppInfo)
-    {
-      for (;;)
+      try
+      {
+        label72:
+        MiniAppController.launchMiniAppByAppInfo(paramActivity, paramMiniAppInfo, 2113);
+      }
+      catch (MiniAppException paramMiniAppInfo)
       {
         QLog.e("GameCloseManager", 1, "launch more game error", paramMiniAppInfo);
       }
     }
+  }
+  
+  private static String parseBackgroundPic(JSONObject paramJSONObject)
+  {
+    return paramJSONObject.optString("backgroundPic");
   }
   
   private static MiniAppInfo parseMoreAppInfo(JSONObject paramJSONObject)
@@ -155,6 +183,11 @@ public class GameCloseManager
       return null;
     }
     return (MiniAppInfo)GsonUtils.json2Obj(paramJSONObject, MiniAppInfo.class);
+  }
+  
+  private static String parseMoreAppLink(JSONObject paramJSONObject)
+  {
+    return paramJSONObject.optString("jumpLink");
   }
   
   private static ArrayList<MiniAppInfo> parseRecommendList(JSONObject paramJSONObject)
@@ -229,7 +262,7 @@ public class GameCloseManager
     while (!shouldShowAlertViewForBattleGame(paramMiniAppConfig)) {
       return false;
     }
-    paramGameActivity = bhlq.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131718699)).setMessage(paramGameActivity.getString(2131693690)).setNegativeButton(paramGameActivity.getString(2131690580), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693689), new GameCloseManager.4(paramOnClickListener));
+    paramGameActivity = bfur.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131718947)).setMessage(paramGameActivity.getString(2131693785)).setNegativeButton(paramGameActivity.getString(2131690620), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693784), new GameCloseManager.4(paramOnClickListener));
     paramGameActivity.setCancelable(false);
     paramGameActivity.show();
     return true;
@@ -244,10 +277,10 @@ public class GameCloseManager
     String str = paramMiniAppConfig.config.appId;
     if (paramMiniAppConfig.launchParam == null) {
       if (paramMiniAppConfig.config.via != null) {
-        break label65;
+        break label66;
       }
     }
-    label65:
+    label66:
     for (paramMiniAppConfig = "";; paramMiniAppConfig = paramMiniAppConfig.config.via)
     {
       return showRetainGuideDialog(paramActivity, str, i, paramMiniAppConfig, paramOnClickListener);
@@ -258,48 +291,67 @@ public class GameCloseManager
   
   public static boolean showRetainGuideDialog(Activity paramActivity, String paramString1, int paramInt, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1))) {}
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1))) {
+      return false;
+    }
+    int i = paramActivity.getRequestedOrientation();
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 18) {
+      if ((i == 0) || (i == 8) || (i == 6) || (i == 11)) {
+        bool = true;
+      }
+    }
+    int j;
     for (;;)
     {
+      j = getShowTimes();
+      if (j < MINI_GAME_RETAIN_CONFIRM_EXPOSURE_TIMES_THRESHOLD) {
+        break;
+      }
+      QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, show too many times");
       return false;
-      int i = getShowTimes();
-      if (i >= MINI_GAME_RETAIN_CONFIRM_EXPOSURE_TIMES_THRESHOLD)
-      {
-        QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, show too many times");
+      bool = false;
+      continue;
+      if ((i == 0) || (i == 8) || (i == 6)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+    }
+    paramString2 = getRetainInfoCache(paramString1, paramInt, paramString2);
+    if (TextUtils.isEmpty(paramString2))
+    {
+      QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, no result cache");
+      return false;
+    }
+    paramString1 = null;
+    try
+    {
+      Object localObject = new JSONObject(paramString2);
+      if (checkInterval(paramActivity)) {
         return false;
       }
-      paramString1 = getRetainInfoCache(paramString1, paramInt, paramString2);
-      if (TextUtils.isEmpty(paramString1))
-      {
-        QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, no result cache");
+      paramString2 = parseMoreAppInfo((JSONObject)localObject);
+      if (paramString2 == null) {
         return false;
       }
-      try
+      ArrayList localArrayList = parseRecommendList((JSONObject)localObject);
+      if ((localArrayList != null) && (localArrayList.size() >= 3))
       {
-        paramString2 = new JSONObject(paramString1);
-        if (!checkInterval(paramActivity))
-        {
-          paramString1 = parseMoreAppInfo(paramString2);
-          if (paramString1 != null)
-          {
-            paramString2 = parseRecommendList(paramString2);
-            if (paramString2 != null)
-            {
-              paramInt = paramString2.size();
-              if (paramInt >= 3)
-              {
-                doShowRetainDialog(paramActivity, paramString1, paramString2, paramOnClickListener);
-                updateShowTimes(i);
-                return true;
-              }
-            }
-          }
+        if (!bool) {
+          paramString1 = parseBackgroundPic((JSONObject)localObject);
         }
+        localObject = parseMoreAppLink((JSONObject)localObject);
+        QLog.i("GameCloseManager", 1, "orientation:" + i + " isLandscape:" + bool + " searchLeadImgUrl:" + paramString1 + " moreAppLink:" + (String)localObject);
+        doShowRetainDialog(paramActivity, paramString2, (String)localObject, localArrayList, paramString1, paramOnClickListener);
+        updateShowTimes(j);
+        return true;
       }
-      catch (Exception paramActivity)
-      {
-        QLog.e("GameCloseManager", 1, "showRetainGuideDialog: not show, parse json error", paramActivity);
-      }
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.e("GameCloseManager", 1, "showRetainGuideDialog: not show, parse json error", paramActivity);
+      return false;
     }
     return false;
   }

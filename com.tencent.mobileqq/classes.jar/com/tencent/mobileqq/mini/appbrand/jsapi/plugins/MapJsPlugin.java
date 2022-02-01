@@ -46,7 +46,7 @@ public class MapJsPlugin
     label139:
     for (boolean bool2 = true;; bool2 = false)
     {
-      SosoInterface.a(new MapJsPlugin.4(this, 0, true, true, 5000L, false, false, "miniApp", bool1, bool2, paramOnLocationFinish, paramJsRuntime, paramString1, paramInt));
+      SosoInterface.startLocation(new MapJsPlugin.4(this, 0, true, true, 5000L, false, false, "miniApp", bool1, bool2, paramOnLocationFinish, paramJsRuntime, paramString1, paramInt));
       return;
       bool1 = false;
       break;

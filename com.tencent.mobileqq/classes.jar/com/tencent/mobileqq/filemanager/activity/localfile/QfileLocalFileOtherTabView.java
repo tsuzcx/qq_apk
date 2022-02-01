@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
+import amtj;
 import android.content.Context;
-import anzj;
-import atjm;
-import atnf;
-import auog;
-import auom;
-import aupu;
+import arvv;
+import arzo;
+import atau;
+import atcc;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,31 +20,31 @@ import java.util.Set;
 public class QfileLocalFileOtherTabView
   extends QfileBaseLocalFileTabView
 {
-  public QfileLocalFileOtherTabView(Context paramContext, List<aupu> paramList, boolean paramBoolean)
+  public QfileLocalFileOtherTabView(Context paramContext, List<atcc> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     setEditbarButton(false, false, true, true, true);
   }
   
-  protected atjm a()
+  protected arvv a()
   {
-    return new atnf(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new arzo(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   String a(String paramString)
   {
-    paramString = auog.a(paramString);
+    paramString = FileUtil.getExtension(paramString);
     if ((paramString == null) || (paramString.length() == 0)) {
-      return anzj.a(2131708568);
+      return amtj.a(2131708800);
     }
     paramString = paramString.toLowerCase();
     if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
-      return anzj.a(2131708545);
+      return amtj.a(2131708777);
     }
     if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
-      return anzj.a(2131708562);
+      return amtj.a(2131708794);
     }
-    return anzj.a(2131708550);
+    return amtj.a(2131708782);
   }
   
   protected void a()
@@ -110,7 +110,7 @@ public class QfileLocalFileOtherTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView
  * JD-Core Version:    0.7.0.1
  */

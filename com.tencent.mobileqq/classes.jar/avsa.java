@@ -1,93 +1,188 @@
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.tfs.AsyncTask;
+import com.tencent.mobileqq.minigame.manager.EngineChannel;
+import com.tencent.mobileqq.minigame.manager.EngineChannel.Receiver;
+import com.tencent.mobileqq.minigame.manager.InstalledEngine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class avsa
-  extends Handler
+  extends AsyncTask
+  implements EngineChannel.Receiver
 {
-  public void handleMessage(Message paramMessage)
+  private int jdField_a_of_type_Int = 3;
+  private avrz jdField_a_of_type_Avrz;
+  private MiniAppInfo jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo;
+  private EngineChannel jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel;
+  private InstalledEngine jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine;
+  private int b;
+  
+  public avsa(Context paramContext)
   {
-    avrz localavrz = (avrz)paramMessage.obj;
-    if (localavrz == null) {}
-    label277:
-    label299:
-    label322:
-    label344:
-    label377:
-    label380:
-    label381:
-    for (;;)
+    super(paramContext);
+  }
+  
+  private void a(int paramInt, Bundle paramBundle)
+  {
+    paramBundle.putInt("baseLibType", this.jdField_a_of_type_Int);
+    paramBundle.putInt("enginePid", Process.myPid());
+    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]installEngineRequestCount " + this.b);
+    if (this.b >= 2)
+    {
+      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]GET_INSTALLED_ENGINE_LIST requestCount reaches max 2");
+      onTaskFailed(103, amtj.a(2131705928));
+    }
+    do
     {
       return;
-      HiBoomTextView localHiBoomTextView = (HiBoomTextView)avrz.a(localavrz).get();
-      if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null)) {
-        switch (paramMessage.what)
+      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel.send(paramInt, paramBundle);
+    } while (paramInt != 3);
+    this.b += 1;
+  }
+  
+  private void a(InstalledEngine paramInstalledEngine)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine == null)
         {
-        case 258: 
-        default: 
+          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]mEngine == null, loadEngineTask is reset?");
           return;
-        case 257: 
-          if ((localHiBoomTextView.getVisibility() == 0) && (HiBoomTextView.jdField_a_of_type_AndroidOsHandler != null))
+        }
+        long l = System.currentTimeMillis();
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine");
+        if (paramInstalledEngine != null) {
+          avsb.a().a(paramInstalledEngine);
+        }
+        if (!avsb.a().a())
+        {
+          QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine fail");
+          onTaskFailed();
+          continue;
+        }
+        QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]loadSo cost time " + (System.currentTimeMillis() - l));
+      }
+      finally {}
+      onTaskSucceed();
+    }
+  }
+  
+  private boolean a(InstalledEngine paramInstalledEngine, MiniAppInfo paramMiniAppInfo)
+  {
+    boolean bool = true;
+    if (paramInstalledEngine == null) {
+      bool = false;
+    }
+    while (paramMiniAppInfo != null) {
+      return bool;
+    }
+    return true;
+  }
+  
+  public void a(avrz paramavrz)
+  {
+    this.jdField_a_of_type_Avrz = paramavrz;
+  }
+  
+  public void a(EngineChannel paramEngineChannel)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel = paramEngineChannel;
+  }
+  
+  public void executeAsync()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel == null)
+    {
+      onTaskFailed(1, amtj.a(2131705923));
+      return;
+    }
+    EngineChannel localEngineChannel = new EngineChannel();
+    localEngineChannel.setName("AppEngine(" + Process.myPid() + ")");
+    localEngineChannel.setReceiver(this);
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("engineChannel", localEngineChannel);
+    a(1, localBundle);
+  }
+  
+  public void onReceiveData(int paramInt, Bundle paramBundle)
+  {
+    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] onReceiveData what=" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+    }
+    if (paramInt == 51) {
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
+        if (paramBundle != null)
+        {
+          paramInt = paramBundle.size();
+          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList success " + paramInt);
+          if (paramInt > 0)
           {
-            HiBoomTextView.jdField_a_of_type_AndroidOsHandler.obtainMessage(258, avrz.a(localHiBoomTextView)).sendToTarget();
-            return;
-          }
-          break;
-        case 259: 
-          if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null) && (localHiBoomTextView.getVisibility() == 0) && (localavrz != null) && (HiBoomTextView.a(localHiBoomTextView) == avrz.a(localavrz)) && (localHiBoomTextView.jdField_a_of_type_Avry.a() == avrz.a(localavrz)) && (HiBoomTextView.a(localHiBoomTextView).currentFrameIndex() == avrz.b(localavrz)) && (HiBoomTextView.a(localHiBoomTextView) != null) && (HiBoomTextView.a(localHiBoomTextView).equals(avrz.a(localavrz))))
-          {
-            localHiBoomTextView.invalidate();
-            boolean bool;
-            int i;
-            if ((HiBoomTextView.b(localHiBoomTextView)) && (!HiBoomTextView.c(localHiBoomTextView)) && (HiBoomTextView.c()))
+            paramBundle = (InstalledEngine)paramBundle.get(0);
+            if (a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo))
             {
-              bool = true;
-              if (!bool) {
-                break label380;
-              }
-              paramMessage = HiBoomTextView.a(localHiBoomTextView);
-              if (!paramMessage.nextFrame()) {
-                break label344;
-              }
-              i = paramMessage.getFrameDelay();
-              long l = System.currentTimeMillis() - avrz.b(localavrz);
-              if (l <= 0L) {
-                break label377;
-              }
-              i = (int)(i - l);
-              if (i > 1) {
-                break label322;
-              }
-              sendMessage(obtainMessage(257, avrz.a(localHiBoomTextView)));
-              bool = true;
-            }
-            for (;;)
-            {
-              if (localHiBoomTextView.d()) {
-                break label381;
-              }
-              HiBoomTextView.b(localHiBoomTextView, bool);
-              return;
-              bool = false;
-              break;
-              sendMessageDelayed(obtainMessage(257, avrz.a(localHiBoomTextView)), i);
-              break label299;
-              HiBoomTextView.a(localHiBoomTextView, true);
-              HiBoomTextView.b(localHiBoomTextView, false);
-              if (localHiBoomTextView.d()) {
-                localHiBoomTextView.a(true);
-              }
-              bool = false;
-              continue;
-              break label277;
+              this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = paramBundle;
+              a(paramBundle);
             }
           }
-          break;
         }
       }
+    }
+    do
+    {
+      do
+      {
+        return;
+        onTaskFailed(101, amtj.a(2131705925));
+        return;
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
+        a(3, new Bundle());
+        return;
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList miniAppEngineList is null");
+        onTaskFailed(102, amtj.a(2131705921));
+        return;
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList data is null");
+        onTaskFailed(102, amtj.a(2131705920));
+        return;
+        if (paramInt == 52)
+        {
+          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
+          return;
+        }
+        if (paramInt != 53) {
+          break;
+        }
+      } while (paramBundle == null);
+      paramBundle = paramBundle.getString("engineInstallerMessage");
+      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS " + paramBundle);
+      return;
+    } while (paramInt != 54);
+    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
+    a(1, new Bundle());
+  }
+  
+  public void reset()
+  {
+    try
+    {
+      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]" + this + " reset ");
+      this.b = 0;
+      this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo = null;
+      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = null;
+      super.reset();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

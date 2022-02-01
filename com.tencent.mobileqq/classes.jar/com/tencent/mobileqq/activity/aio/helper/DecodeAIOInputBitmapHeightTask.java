@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agej;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,7 +8,8 @@ import android.graphics.Paint.FontMetrics;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextPaint;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
@@ -29,25 +29,25 @@ public class DecodeAIOInputBitmapHeightTask
     if (localBaseChatPie == null) {
       return;
     }
-    Object localObject1 = localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
+    Object localObject1 = localBaseChatPie.input;
     Object localObject2 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject2).inScaled = false;
-    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources(), 2130849843, (BitmapFactory.Options)localObject2);
+    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.mActivity.getResources(), 2130849760, (BitmapFactory.Options)localObject2);
     float f;
     int j;
     int k;
     if (localObject2 != null)
     {
-      i = agej.a(((Bitmap)localObject2).getHeight() / 2, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
+      i = AIOUtils.dp2px(((Bitmap)localObject2).getHeight() / 2, localBaseChatPie.mActivity.getResources());
       localObject2 = ((EditText)localObject1).getPaint().getFontMetrics();
       f = Math.abs(((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top);
-      j = agej.a(36.0F, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
+      j = AIOUtils.dp2px(36.0F, localBaseChatPie.mActivity.getResources());
       k = ((EditText)localObject1).getPaddingTop();
     }
-    for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDimensionPixelSize(2131298060)) / 2;; i = 0)
+    for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.mActivity.getResources().getDimensionPixelSize(2131298125)) / 2;; i = 0)
     {
       i = Math.max(i, 0);
-      localObject1 = localBaseChatPie.a();
+      localObject1 = localBaseChatPie.getUIHandler();
       if (localObject1 == null) {
         break;
       }

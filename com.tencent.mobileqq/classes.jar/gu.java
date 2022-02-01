@@ -1,118 +1,58 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public final class gu
 {
-  public static final gu a;
-  private final int jdField_a_of_type_Int;
-  private gv jdField_a_of_type_Gv;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private final int jdField_b_of_type_Int;
-  private gv jdField_b_of_type_Gv;
-  private int[] jdField_b_of_type_ArrayOfInt;
+  private final gs jdField_a_of_type_Gs;
+  private final List<gt> jdField_a_of_type_JavaUtilList;
   
-  static
+  public gu(gs paramgs)
   {
-    jdField_a_of_type_Gu = new gu(285, 256);
-  }
-  
-  public gu(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (paramInt2 <= 0) {
-      a();
+    if (!gs.jdField_a_of_type_Gs.equals(paramgs)) {
+      throw new IllegalArgumentException("Only QR Code is supported at this time");
     }
+    this.jdField_a_of_type_Gs = paramgs;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new gt(paramgs, new int[] { 1 }));
   }
   
-  static int a(int paramInt1, int paramInt2)
+  private gt a(int paramInt)
   {
-    return paramInt1 ^ paramInt2;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-    this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-    int j = 0;
-    int i = 1;
-    while (j < this.jdField_a_of_type_Int)
+    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_ArrayOfInt[j] = i;
-      int k = i << 1;
-      i = k;
-      if (k >= this.jdField_a_of_type_Int) {
-        i = (k ^ this.jdField_b_of_type_Int) & this.jdField_a_of_type_Int - 1;
+      gt localgt = (gt)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      while (i <= paramInt)
+      {
+        localgt = localgt.b(new gt(this.jdField_a_of_type_Gs, new int[] { 1, this.jdField_a_of_type_Gs.a(i - 1) }));
+        this.jdField_a_of_type_JavaUtilList.add(localgt);
+        i += 1;
       }
-      j += 1;
     }
-    i = 0;
-    while (i < this.jdField_a_of_type_Int - 1)
+    return (gt)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(int[] paramArrayOfInt, int paramInt)
+  {
+    if (paramInt == 0) {
+      throw new IllegalArgumentException("No error correction bytes");
+    }
+    int i = paramArrayOfInt.length - paramInt;
+    if (i <= 0) {
+      throw new IllegalArgumentException("No data bytes provided");
+    }
+    Object localObject = a(paramInt);
+    int[] arrayOfInt = new int[i];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i);
+    localObject = new gt(this.jdField_a_of_type_Gs, arrayOfInt).a(paramInt, 1).a(localObject)[1].a();
+    int j = paramInt - localObject.length;
+    paramInt = 0;
+    while (paramInt < j)
     {
-      this.jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_ArrayOfInt[i]] = i;
-      i += 1;
+      paramArrayOfInt[(i + paramInt)] = 0;
+      paramInt += 1;
     }
-    this.jdField_a_of_type_Gv = new gv(this, new int[] { 0 });
-    this.jdField_b_of_type_Gv = new gv(this, new int[] { 1 });
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      a();
-    }
-  }
-  
-  int a(int paramInt)
-  {
-    b();
-    return this.jdField_a_of_type_ArrayOfInt[paramInt];
-  }
-  
-  gv a()
-  {
-    b();
-    return this.jdField_a_of_type_Gv;
-  }
-  
-  gv a(int paramInt1, int paramInt2)
-  {
-    b();
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException();
-    }
-    if (paramInt2 == 0) {
-      return this.jdField_a_of_type_Gv;
-    }
-    int[] arrayOfInt = new int[paramInt1 + 1];
-    arrayOfInt[0] = paramInt2;
-    return new gv(this, arrayOfInt);
-  }
-  
-  int b(int paramInt)
-  {
-    b();
-    if (paramInt == 0) {
-      throw new IllegalArgumentException();
-    }
-    return this.jdField_b_of_type_ArrayOfInt[paramInt];
-  }
-  
-  int b(int paramInt1, int paramInt2)
-  {
-    b();
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ArrayOfInt[((this.jdField_b_of_type_ArrayOfInt[paramInt1] + this.jdField_b_of_type_ArrayOfInt[paramInt2]) % (this.jdField_a_of_type_Int - 1))];
-  }
-  
-  int c(int paramInt)
-  {
-    b();
-    if (paramInt == 0) {
-      throw new ArithmeticException();
-    }
-    return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int - this.jdField_b_of_type_ArrayOfInt[paramInt] - 1)];
+    System.arraycopy(localObject, 0, paramArrayOfInt, i + j, localObject.length);
   }
 }
 

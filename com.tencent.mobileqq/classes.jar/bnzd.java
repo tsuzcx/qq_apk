@@ -1,45 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
-import cooperation.weiyun.sdk.download.DownloadType;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
-final class bnzd
-  implements bobb
+public class bnzd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(boag paramboag, DownloadType paramDownloadType, boay paramboay)
+  public bnzd(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool = true;
-    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(paramboag.a);
-    if (paramboag.e != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(bocc.a(paramboag.e));
-    }
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(paramboag.b);
-    Object localObject1 = new ArrayList(1);
-    ((List)localObject1).add(localObject2);
-    localObject2 = new WeiyunPB.DiskFileBatchDownloadMsgReq();
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_list.set((List)localObject1);
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).download_type.set(paramDownloadType.ordinal());
-    localObject1 = ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).need_thumb;
-    if (paramDownloadType == DownloadType.FILE_THUMB) {}
-    for (;;)
-    {
-      ((PBBoolField)localObject1).set(bool);
-      if ((!TextUtils.isEmpty(paramboag.d)) && (TextUtils.isDigitsOnly(paramboag.d))) {
-        ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(paramboag.d));
-      }
-      boaf.a((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new bnze(this, paramboag, paramboay, paramDownloadType));
-      return;
-      bool = false;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

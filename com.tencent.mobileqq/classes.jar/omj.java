@@ -1,37 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-@Deprecated
 public class omj
 {
-  public static AtomicBoolean a;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public static ArkAppMessage a(qvj paramqvj)
+  public omj(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
-  
-  public static void a() {}
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(View paramView) {}
-  
-  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
-  
-  public static void a(omh paramomh, int paramInt) {}
-  
-  public static boolean a(ArkAppMessage paramArkAppMessage)
-  {
-    return false;
-  }
-  
-  public static void b() {}
-  
-  public static void b(int paramInt) {}
-  
-  public static void b(View paramView) {}
 }
 
 

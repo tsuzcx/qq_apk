@@ -1,54 +1,60 @@
 import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import java.util.Iterator;
+import java.util.List;
 import mqq.observer.BusinessObserver;
-import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
+import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-final class nml
+class nml
   implements BusinessObserver
 {
-  nml(NewIntent paramNewIntent, nmg paramnmg, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
+  nml(nmj paramnmj) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
-    }
     if (paramBoolean) {
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          return;
-        }
-        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
-        localRspBody.mergeFrom(paramBundle);
-        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
-        if (this.jdField_a_of_type_Nmg != null) {
-          this.jdField_a_of_type_Nmg.loaded(paramBundle, 0);
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          return;
-        }
-        if (this.b)
+        Object localObject = paramBundle.getByteArray("data");
+        paramBundle = new oidb_sso.OIDBSSOPkg();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
         {
-          nmj.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_Nmg);
-          return;
+          if (paramBundle.bytes_bodybuffer.get() == null) {
+            return;
+          }
+          localObject = new oidb_0x791.RspBody();
+          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
+          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
+          if (localObject != null)
+          {
+            paramBundle = "";
+            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              long l = ((Long)((Iterator)localObject).next()).longValue();
+              paramBundle = paramBundle + String.valueOf(l) + ",";
+            }
+            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
+            {
+              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "reportRedTouchHasClick failed result is:" + paramBundle);
+              return;
+            }
+          }
         }
-        nmj.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
-        return;
       }
-      catch (Exception paramBundle)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        this.jdField_a_of_type_Nmg.loaded("{\"r\":-1}", 2);
-        return;
+        paramBundle.printStackTrace();
       }
-    } else if (this.jdField_a_of_type_Nmg != null) {
-      this.jdField_a_of_type_Nmg.loaded("{\"r\":-1}", 2);
     }
   }
 }

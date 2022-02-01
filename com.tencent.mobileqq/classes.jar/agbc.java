@@ -1,12 +1,31 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class agbc
+class agbc
+  extends ClickableSpan
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  agbc(agap paramagap) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bjnw.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131719031);
+      paramView.c(2131690620);
+      paramView.a(new agbd(this));
+      paramView.a(new agbe(this, paramView));
+      paramView.show();
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+  }
 }
 
 

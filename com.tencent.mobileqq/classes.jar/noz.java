@@ -1,28 +1,11 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
-public class noz
+class noz
+  implements bjog
 {
-  public noz(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  noz(noy paramnoy) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
-    }
-    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
+    noy.a(this.a);
   }
 }
 

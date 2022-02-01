@@ -1,30 +1,32 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 class bebu
-  implements View.OnClickListener
+  implements bjoe
 {
-  bebu(bebt parambebt, DialogInterface.OnClickListener paramOnClickListener) {}
+  bebu(bebp parambebp, boolean paramBoolean, bebc parambebc, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bebt, 1);
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
     }
-    try
+    switch (i)
     {
-      if (this.jdField_a_of_type_Bebt.isShowing()) {
-        this.jdField_a_of_type_Bebt.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
+      TroopFileTransferManager.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bebc.a);
+      bcef.b(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Bebp.jdField_a_of_type_Long + "", "", "");
+      continue;
+      if (bebp.a(this.jdField_a_of_type_Bebp) != 0)
+      {
+        bfbb.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bebc);
+        bcef.b(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Bebp.jdField_a_of_type_Long + "", "", "");
+      }
     }
   }
 }

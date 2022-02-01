@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ClipDrawable;
+import com.tencent.av.ui.QavPanel;
 
-class mhy
-  implements View.OnClickListener
+public class mhy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  mhy(mhr parammhr) {}
+  public mhy(QavPanel paramQavPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!mhr.a(this.a))
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (QavPanel.c(this.a))
     {
-      this.a.c();
-      mhr.a(this.a).a.f(0L);
+      if (this.a.a != null) {
+        this.a.a.setLevel(i);
+      }
+      if (QavPanel.d(this.a))
+      {
+        QavPanel.a(this.a).a(i);
+        QavPanel.a(this.a).b(i);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

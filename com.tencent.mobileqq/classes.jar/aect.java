@@ -1,15 +1,35 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
 
 public class aect
-  extends ProxyObserver
+  implements TextWatcher
 {
-  public aect(ChatHistory paramChatHistory) {}
+  public aect(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public void onProxySaveToDbFinished()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a(11, false);
+    if (paramEditable == null) {}
+    for (;;)
+    {
+      return;
+      if (TextUtils.isEmpty(paramEditable.toString())) {
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
+      }
+      while (RegisterPersonalInfoActivity.a(this.a) != null)
+      {
+        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
+        return;
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+      }
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

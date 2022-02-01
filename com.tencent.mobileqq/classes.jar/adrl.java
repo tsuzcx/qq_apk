@@ -1,14 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 
 public class adrl
-  extends azie
+  implements DialogInterface.OnDismissListener
 {
-  public adrl(AccountManageActivity paramAccountManageActivity) {}
+  public adrl(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AccountManageActivity.b(this.a);
+    MoveToGroupActivity.a(this.a, null);
   }
 }
 

@@ -1,6 +1,24 @@
-public abstract interface blml
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+
+class blml
+  implements ThreadExcutor.IThreadListener
 {
-  public abstract void a(long paramLong);
+  blml(blmi paramblmi) {}
+  
+  public void onAdded()
+  {
+    bmbx.a("AEPhotoListLogicBase", "onAdded--serialCompressVideos");
+  }
+  
+  public void onPostRun()
+  {
+    bmbx.a("AEPhotoListLogicBase", "onPostRun--serialCompressVideos");
+  }
+  
+  public void onPreRun()
+  {
+    bmbx.a("AEPhotoListLogicBase", "onPreRun--serialCompressVideos");
+  }
 }
 
 

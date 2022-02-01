@@ -1,33 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMessageShortcutBarPanel.3.1;
-import mqq.os.MqqHandler;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
 
-public class bgla
-  implements PopupWindow.OnDismissListener
+class bgla
+  implements Drawable.Callback
 {
-  bgla(bgkx parambgkx) {}
+  bgla(bgkz parambgkz, bgkx parambgkx) {}
   
-  public void onDismiss()
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    if ((bgkx.a(this.a) != null) && (bgkx.a(this.a) != null))
-    {
-      Object localObject = (ImageView)bgkx.a(this.a).findViewById(2131377595);
-      if (localObject != null)
-      {
-        ((ImageView)localObject).setImageResource(2130846218);
-        localObject = (TextView)bgkx.a(this.a).findViewById(2131377582);
-        if (localObject != null) {
-          ((TextView)localObject).setVisibility(0);
-        }
-      }
-      bgkx.a(this.a).c();
-      ThreadManager.getUIHandler().postDelayed(new ImportantMessageShortcutBarPanel.3.1(this), 100L);
+    if (this.jdField_a_of_type_Bgkx != null) {
+      this.jdField_a_of_type_Bgkx.a(paramDrawable);
     }
   }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
 }
 
 

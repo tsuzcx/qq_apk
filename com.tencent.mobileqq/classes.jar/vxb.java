@@ -1,18 +1,19 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
-
-class vxb
-  implements aaav<FeedCloudRead.StGetLightInteractListRsp>
+public class vxb
 {
-  vxb(vxa paramvxa, QCircleGetLightInteractRequest paramQCircleGetLightInteractRequest, boolean paramBoolean) {}
+  public final long a;
+  public final vwz a;
+  public final long b;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
+  public vxb(vwz paramvwz, long paramLong1, long paramLong2)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d(vxa.a, 1, "requestPolyList onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetLightInteractRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetLightInteractRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
-    this.jdField_a_of_type_Vxa.a(paramBoolean, paramLong, this.jdField_a_of_type_Boolean, paramString, paramStGetLightInteractListRsp);
+    this.jdField_a_of_type_Vwz = paramvwz;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    return "Progress{intput=" + this.jdField_a_of_type_Vwz + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 

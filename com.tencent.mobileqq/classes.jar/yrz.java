@@ -1,22 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class yrz
-  extends QQUIEventReceiver<yrh, xas>
+  implements bjts
 {
-  public yrz(@NonNull yrh paramyrh)
+  public yrz(SegmentList paramSegmentList) {}
+  
+  public void a(View paramView)
   {
-    super(paramyrh);
+    this.a.a.b(paramView);
   }
   
-  public void a(@NonNull yrh paramyrh, @NonNull xas paramxas)
+  public void b(View paramView)
   {
-    paramyrh.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xas.class;
+    this.a.a.c(paramView);
   }
 }
 

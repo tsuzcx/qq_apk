@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.widgets.ElasticHorScrView;
-import rmj;
+import rtl;
 
 public class TopicShareHelper$4
   implements Runnable
 {
-  public TopicShareHelper$4(rmj paramrmj, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public TopicShareHelper$4(rtl paramrtl, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
   
   public void run()
   {

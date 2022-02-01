@@ -1,13 +1,26 @@
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ahvi
-  extends aggl
+public class ahvi
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  public ahvi(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  private ahvi(ahvg paramahvg) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131694311, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.d();
+    }
+  }
 }
 
 

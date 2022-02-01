@@ -1,44 +1,50 @@
+import android.graphics.PointF;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 
 public class ayzc
-  implements bliz
+  implements ayqo
 {
-  public ayzc(OCRResultFragmentNew paramOCRResultFragmentNew, List paramList, ayyd paramayyd) {}
+  public ayzc(VasProfileTagView paramVasProfileTagView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    Object localObject1;
+    if (VasProfileTagView.a(this.a) != null)
     {
-      paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!paramView.equalsIgnoreCase(this.jdField_a_of_type_Ayyd.a)) {
-        break label108;
-      }
-      QLog.i("OCRResultFragmentNew", 2, "lanCode equals, return, selectedLan:" + paramView);
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a = null;
-      return;
-      label108:
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 0, 2131698235, 0).a();
-      ayyb.a.a(paramView);
-      try
+      localObject1 = VasProfileTagView.a(this.a);
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("OCRResultFragmentNew", 2, "requestOcr lan:" + paramView + ", ctx:" + ayyb.a.a());
+        Object localObject2 = localObject1[i];
+        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
+        {
+          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
+          if (localLayoutParams != null)
+          {
+            localLayoutParams.a = VasProfileTagView.a(this.a).x;
+            localLayoutParams.b = VasProfileTagView.a(this.a).y;
+            localObject2.setLayoutParams(localLayoutParams);
+          }
         }
-        OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, ayyb.a);
+        i += 1;
       }
-      catch (Exception paramView)
+      this.a.f();
+    }
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      localObject1 = (FrameLayout)VasProfileTagView.c(this.a).findViewById(16908290);
+      if (localObject1 != null)
       {
-        paramView.printStackTrace();
+        VasProfileTagView.a(this.a, ((FrameLayout)localObject1).getBackground());
+        if (!bgio.a(VasProfileTagView.a(this.a))) {
+          ((FrameLayout)localObject1).setBackgroundDrawable(null);
+        }
       }
     }
   }

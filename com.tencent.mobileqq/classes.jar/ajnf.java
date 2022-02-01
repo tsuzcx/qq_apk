@@ -1,79 +1,24 @@
-import android.text.TextUtils;
-import android.util.Xml;
-import java.io.ByteArrayInputStream;
-import org.xmlpull.v1.XmlPullParser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajnf
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
+  public ajnf(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public ajnf()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public static ajnf a(String paramString)
-  {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      ajnf localajnf = new ajnf();
-      XmlPullParser localXmlPullParser = Xml.newPullParser();
-      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-      for (int i = 0;; i = localXmlPullParser.next())
-      {
-        localObject = localajnf;
-        if (i == 1) {
-          break;
-        }
-        if ((i == 2) && (localXmlPullParser.getName().equalsIgnoreCase("banner")))
-        {
-          int j = localXmlPullParser.getAttributeCount();
-          i = 0;
-          if (i < j)
-          {
-            paramString = localXmlPullParser.getAttributeName(i);
-            if ("text".equals(paramString)) {
-              localajnf.jdField_b_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              if ("url".equals(paramString)) {
-                localajnf.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
-              } else if ("dayNum".equals(paramString)) {
-                localajnf.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("dayIntervalNum".equals(paramString)) {
-                localajnf.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("totalNum".equals(paramString)) {
-                localajnf.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("loginNum".equals(paramString)) {
-                localajnf.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("banner".equals(paramString)) {
-                localajnf.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
-              } else if ("setEntry".equals(paramString)) {
-                localajnf.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
-              }
-            }
-          }
-        }
-      }
+    atky localatky = this.a.a.a();
+    if (localatky != null) {
+      localatky.a(false);
     }
-    return localObject;
-  }
-  
-  public String toString()
-  {
-    return "MobileUnityBannerData [url=" + this.jdField_a_of_type_JavaLangString + ", text=" + this.jdField_b_of_type_JavaLangString + ", dayNum=" + this.jdField_a_of_type_Int + ", dayIntervalNum=" + this.jdField_b_of_type_Int + ", totalNum=" + this.c + ", loginNum = " + this.e + ", version=" + this.d + "]";
+    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

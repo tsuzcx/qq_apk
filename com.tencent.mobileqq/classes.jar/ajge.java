@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-class ajge
-  extends apck
+public class ajge
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  ajge(ajgd paramajgd, String paramString, aoip paramaoip, boolean paramBoolean)
+  protected ajge(ajgd paramajgd) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramString);
+    if (paramInt == 3)
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList onLocationFinish info = " + paramSosoLbsInfo);
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.a();
+      }
+      return true;
     }
-    if (paramInt != 0) {
-      QLog.i("ac_ft.AddContactFindTroopRTLW", 1, "getRecommendTroopList onLocationFinish, errorCode=" + paramInt);
-    }
-    this.jdField_a_of_type_Aoip.a(1, this.jdField_a_of_type_Ajgd.b, 25, this.jdField_a_of_type_Boolean, ajgd.a(this.jdField_a_of_type_Ajgd));
+    return false;
   }
 }
 

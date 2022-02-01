@@ -1,193 +1,593 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.1;
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.2;
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.3;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import java.net.URL;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class pai
 {
-  private static long jdField_a_of_type_Long = -1L;
-  private static MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
   
-  public static long a()
+  public static float a(int paramInt1, int paramInt2)
   {
-    return jdField_a_of_type_Long;
+    paramInt1 = a(paramInt1, paramInt2);
+    if (paramInt1 == 1) {
+      return 0.5625F;
+    }
+    if (paramInt1 == 2) {
+      return 1.333F;
+    }
+    return 1.0F;
   }
   
-  public static MessageForStructing a()
+  public static float a(Context paramContext, sdg paramsdg)
   {
-    return ((pgj)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(274)).a();
+    int j = 28;
+    int i;
+    if (paramsdg != null)
+    {
+      i = j;
+      if (paramsdg.o == 0)
+      {
+        i = j;
+        if (paramsdg.p == 0)
+        {
+          i = j;
+          if (paramsdg.q == 0)
+          {
+            if (paramsdg.r == 0) {
+              break label56;
+            }
+            i = j;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      return DeviceInfoUtil.getAppDisplayWidth(paramContext) - DisplayUtil.dip2px(paramContext, i);
+      label56:
+      if ((paramsdg.a != null) && (paramsdg.a.mChannelID == 56L))
+      {
+        i = j;
+        if (pay.u()) {}
+      }
+      else
+      {
+        i = 12;
+      }
+    }
+  }
+  
+  /* Error */
+  public static float a(android.view.View paramView)
+  {
+    // Byte code:
+    //   0: ldc 85
+    //   2: fstore_2
+    //   3: ldc 2
+    //   5: monitorenter
+    //   6: aload_0
+    //   7: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   10: invokevirtual 91	android/view/View:getLocalVisibleRect	(Landroid/graphics/Rect;)Z
+    //   13: pop
+    //   14: aload_0
+    //   15: invokevirtual 95	android/view/View:getHeight	()I
+    //   18: istore_3
+    //   19: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   22: getfield 98	android/graphics/Rect:top	I
+    //   25: ifne +24 -> 49
+    //   28: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   31: getfield 101	android/graphics/Rect:bottom	I
+    //   34: istore 4
+    //   36: iload 4
+    //   38: iload_3
+    //   39: if_icmpne +10 -> 49
+    //   42: fload_2
+    //   43: fstore_1
+    //   44: ldc 2
+    //   46: monitorexit
+    //   47: fload_1
+    //   48: freturn
+    //   49: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   52: getfield 98	android/graphics/Rect:top	I
+    //   55: ifle +22 -> 77
+    //   58: ldc 85
+    //   60: iload_3
+    //   61: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   64: getfield 98	android/graphics/Rect:top	I
+    //   67: isub
+    //   68: i2f
+    //   69: fmul
+    //   70: iload_3
+    //   71: i2f
+    //   72: fdiv
+    //   73: fstore_1
+    //   74: goto -30 -> 44
+    //   77: fload_2
+    //   78: fstore_1
+    //   79: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   82: getfield 101	android/graphics/Rect:bottom	I
+    //   85: ifle -41 -> 44
+    //   88: fload_2
+    //   89: fstore_1
+    //   90: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   93: getfield 101	android/graphics/Rect:bottom	I
+    //   96: iload_3
+    //   97: if_icmpge -53 -> 44
+    //   100: getstatic 31	pai:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   103: getfield 101	android/graphics/Rect:bottom	I
+    //   106: istore 4
+    //   108: ldc 85
+    //   110: iload 4
+    //   112: i2f
+    //   113: fmul
+    //   114: iload_3
+    //   115: i2f
+    //   116: fdiv
+    //   117: fstore_1
+    //   118: goto -74 -> 44
+    //   121: astore_0
+    //   122: ldc 2
+    //   124: monitorexit
+    //   125: aload_0
+    //   126: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	127	0	paramView	android.view.View
+    //   43	75	1	f1	float
+    //   2	87	2	f2	float
+    //   18	97	3	i	int
+    //   34	77	4	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	36	121	finally
+    //   49	74	121	finally
+    //   79	88	121	finally
+    //   90	108	121	finally
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    return 1;
+  }
+  
+  public static int a(int paramInt, Resources paramResources)
+  {
+    return (paramInt - (AIOUtils.dp2px(24.0F, paramResources) + AIOUtils.dp2px(3.0F, paramResources))) / 2;
+  }
+  
+  public static Drawable a(String paramString)
+  {
+    int i = Color.parseColor(paramString);
+    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, i & 0x14FFFFFF });
+    paramString.setShape(0);
+    paramString.setGradientType(0);
+    paramString.setBounds(0, 0, 400, 400);
+    return paramString;
+  }
+  
+  public static Pair<Integer, Integer> a()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298738)));
+  }
+  
+  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = AIOUtils.dp2px(1.5F, localResources);
+    if (paramInt2 == 56) {
+      i = AIOUtils.dp2px(3.0F, localResources);
+    }
+    bkwq localbkwq = bkwm.a(BaseApplicationImpl.getApplication().getRuntime());
+    float f1;
+    float f2;
+    if (localbkwq != null)
+    {
+      f1 = localbkwq.a;
+      f2 = localbkwq.jdField_b_of_type_Float;
+      paramInt2 = AIOUtils.dp2px(localbkwq.jdField_b_of_type_Int, localResources);
+    }
+    for (;;)
+    {
+      switch (paramInt1)
+      {
+      default: 
+        if (paramInt2 != 0) {
+          break;
+        }
+      }
+      for (paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(6, localResources) - i * 2) / 2.1F);; paramInt1 = paramInt2)
+      {
+        i = (int)(paramInt1 / f2);
+        paramInt2 = paramInt1;
+        paramInt1 = i;
+        for (;;)
+        {
+          return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+          paramInt2 = localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(12, localResources);
+          paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(6, localResources) - i * 2) / 2.5F * 1.3356F);
+          continue;
+          paramInt2 = (int)((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(12, localResources) - i) * 0.5F);
+          paramInt1 = (int)(paramInt2 / f1);
+        }
+      }
+      paramInt2 = 0;
+      f1 = 0.7511F;
+      f2 = 0.7487F;
+    }
   }
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "Other";
+    int k = paramInt / 3600;
+    int j = paramInt / 60;
+    int i = j;
+    if (k > 0) {
+      i = j - k * 60;
     }
-    return "MsgTab";
-  }
-  
-  public static String a(long paramLong)
-  {
-    return String.valueOf((paramLong - a()) / 1000L);
-  }
-  
-  public static String a(RecentBaseData paramRecentBaseData)
-  {
-    if (paramRecentBaseData != null) {
-      return b(paramRecentBaseData.mUnreadFlag);
-    }
-    return "";
-  }
-  
-  public static String a(MessageForStructing paramMessageForStructing)
-  {
-    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mArticleIds)))
+    paramInt %= 60;
+    String str1;
+    String str2;
+    if (i >= 10)
     {
-      paramMessageForStructing = paramMessageForStructing.structingMsg.mArticleIds.split("\\|");
-      if (paramMessageForStructing.length > 0) {
-        return paramMessageForStructing[0];
+      str1 = String.valueOf(i);
+      if (paramInt < 10) {
+        break label115;
+      }
+      str2 = String.valueOf(paramInt);
+      label53:
+      if (k <= 0) {
+        break label157;
+      }
+      if (k < 10) {
+        break label136;
       }
     }
-    return "";
+    label136:
+    for (String str3 = String.valueOf(k);; str3 = String.format("0%d", new Object[] { Integer.valueOf(k) }))
+    {
+      return String.format("%s:%s:%s", new Object[] { str3, str1, str2 });
+      str1 = String.format("0%d", new Object[] { Integer.valueOf(i) });
+      break;
+      label115:
+      str2 = String.format("0%d", new Object[] { Integer.valueOf(paramInt) });
+      break label53;
+    }
+    label157:
+    return String.format("%s:%s", new Object[] { str1, str2 });
+  }
+  
+  public static String a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramInt <= 0)) {
+      return "";
+    }
+    return a(paramInt);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str;
+    if (android.text.TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    do
+    {
+      return str;
+      str = paramString;
+    } while (!com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramString));
+    paramString = new StringBuilder(paramString);
+    int i = 0;
+    while (i < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
+    {
+      str = EmotcationConstants.SYS_EMOTICON_SYMBOL[i];
+      int j = -1;
+      for (;;)
+      {
+        int k = paramString.indexOf(str, j + 1);
+        if (k == -1) {
+          break;
+        }
+        j = k;
+        if (k != 0)
+        {
+          j = k;
+          if (paramString.codePointAt(k - 1) == 20)
+          {
+            char c = (char)i;
+            paramString.replace(k, str.length() + k, String.valueOf(c));
+            j = k;
+          }
+        }
+      }
+      i += 1;
+    }
+    return paramString.toString();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    String str = paramString;
+    if (paramString.length() > paramInt) {
+      str = paramString.substring(0, paramInt - 1) + "…";
+    }
+    return str;
   }
   
   public static void a()
   {
-    a(9, "", "", "", "");
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
+      return;
+    }
+    BaseApplicationImpl.sImageCache.evictAll();
   }
   
-  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static void a(ImageView paramImageView, String paramString, Context paramContext)
   {
-    pfw.a(25);
-    ThreadManager.executeOnSubThread(new WeishiReportUtil.1(paramInt, paramString1, paramString2, paramString3, paramString4));
+    a(paramImageView, pay.a(paramString), paramContext);
   }
   
-  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
+  public static void a(ImageView paramImageView, URL paramURL, Context paramContext)
   {
-    a(paramInt, paramString1, paramString2, paramString3, paramString4, paramLong, paramString5, true);
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5, boolean paramBoolean)
-  {
-    ThreadManager.executeOnSubThread(new WeishiReportUtil.2(paramInt, paramString1, paramLong, paramString2, paramString3, paramString4));
-    if (paramBoolean) {
-      pfw.a();
+    if (paramURL == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
+      }
+      paramImageView.setImageResource(2130841730);
+      return;
+    }
+    if ((paramContext instanceof BaseActivity)) {}
+    for (Object localObject = (BaseActivity)paramContext;; localObject = null)
+    {
+      if (localObject != null) {}
+      for (boolean bool = SettingCloneUtil.readValue((Context)localObject, ((BaseActivity)localObject).app.getCurrentAccountUin(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
+      {
+        if ((!NetworkUtil.isWifiConnected(paramContext)) && (bool) && (!syn.a().a(paramURL)))
+        {
+          paramImageView.setImageResource(2130841730);
+          return;
+        }
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841730);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841730);
+        paramImageView.setImageDrawable(URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject));
+        return;
+      }
     }
   }
   
-  public static void a(RecentBaseData paramRecentBaseData, int paramInt)
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, Context paramContext)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    MessageForStructing localMessageForStructing = ((pgj)localQQAppInterface.getManager(274)).a();
-    if ((localMessageForStructing == null) || (localMessageForStructing.isread)) {}
-    String str;
+    a(paramKandianUrlImageView, paramURL, paramContext, false);
+  }
+  
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, Context paramContext, boolean paramBoolean)
+  {
+    if (paramURL == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
+      }
+      paramKandianUrlImageView.setImageResource(2130841730);
+      return;
+    }
+    if (a(paramContext, paramURL))
+    {
+      if (!paramBoolean)
+      {
+        paramKandianUrlImageView.setImageResource(2130841730);
+        return;
+      }
+      paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165351)));
+      return;
+    }
+    if (!paramBoolean)
+    {
+      if (paramKandianUrlImageView.isRound())
+      {
+        paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130840441)).setImage(paramURL);
+        return;
+      }
+      paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130841730)).setImage(paramURL);
+      return;
+    }
+    paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165351)));
+    paramKandianUrlImageView.setImagePlaceHolder(new ColorDrawable(paramContext.getResources().getColor(2131165351))).setImage(paramURL);
+  }
+  
+  public static void a(ViewBase paramViewBase, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {
+      return;
+    }
+    puz localpuz = pkm.a().a();
+    if ((localpuz != null) && (localpuz.b()))
+    {
+      a(false, paramViewBase, null);
+      paramBaseArticleInfo.isShowFreeNetFlow = false;
+      return;
+    }
+    if (paramBaseArticleInfo.isShowFreeNetFlow)
+    {
+      a(true, paramViewBase, localpuz);
+      return;
+    }
+    if ((localpuz != null) && (localpuz.a()))
+    {
+      a(true, paramViewBase, localpuz);
+      paramBaseArticleInfo.isShowFreeNetFlow = true;
+      localpuz.a(true);
+      return;
+    }
+    a(false, paramViewBase, null);
+  }
+  
+  public static void a(List<KandianUrlImageView> paramList, List<URL> paramList1, Context paramContext)
+  {
+    int j = paramList.size();
+    if (j != paramList1.size()) {
+      throw new IllegalArgumentException("imageViewListSize != urlListSize");
+    }
+    if (paramContext != null) {}
+    for (boolean bool = SettingCloneUtil.readValue(paramContext, BaseApplicationImpl.getApplication().getRuntime().getAccount(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
+    {
+      int i;
+      if ((!bool) || (NetworkUtil.isWifiConnected(paramContext))) {
+        i = 0;
+      }
+      while (i < j)
+      {
+        ((KandianUrlImageView)paramList.get(i)).setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable).setImage((URL)paramList1.get(i));
+        i += 1;
+        continue;
+        i = 0;
+        while (i < j)
+        {
+          ((KandianUrlImageView)paramList.get(i)).setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          i += 1;
+        }
+      }
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, ViewBase paramViewBase, puz parampuz)
+  {
+    if (paramViewBase == null) {}
+    ViewBase localViewBase1;
+    ViewBase localViewBase2;
     do
     {
       return;
-      str = localMessageForStructing.getExtInfoFromExtStr("weishi_red_pnt_report");
-    } while ((!TextUtils.isEmpty(str)) && ("1".equals(str)));
-    localMessageForStructing.saveExtInfoToExtStr("weishi_red_pnt_report", "1");
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    ThreadManager.post(new WeishiReportUtil.3(localQQAppInterface, localMessageForStructing, paramRecentBaseData, paramInt), 5, null, false);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeishiReportUtil", 2, " " + paramString3 + "|" + paramString1 + "|" + paramString2 + "|" + paramString4);
-    }
-    ocd.a(null, "CliOper", "", "", paramString3, paramString3, 0, 0, "", paramString1, paramString2, paramString4, false);
-  }
-  
-  public static boolean a(MessageForStructing paramMessageForStructing)
-  {
-    return (paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null);
-  }
-  
-  public static MessageForStructing b()
-  {
-    MessageForStructing localMessageForStructing = jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
-    jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = null;
-    return localMessageForStructing;
-  }
-  
-  public static String b(int paramInt)
-  {
-    if (paramInt == 1) {
-      return "1";
-    }
-    if (paramInt == 2) {
-      return "0";
-    }
-    return "";
-  }
-  
-  public static String b(MessageForStructing paramMessageForStructing)
-  {
-    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mStrategyIds))) {
-      return paramMessageForStructing.structingMsg.mStrategyIds;
-    }
-    return "";
-  }
-  
-  public static void b()
-  {
-    a(9, "", "", "", "", -1L, "");
-  }
-  
-  public static String c(int paramInt)
-  {
-    switch (paramInt)
+      localViewBase1 = paramViewBase.findViewBaseByName("id_large_video_activity_wrapper");
+      localViewBase2 = paramViewBase.findViewBaseByName("id_large_video_activity_img");
+      paramViewBase = (NativeText)paramViewBase.findViewBaseByName("id_large_video_activity_label");
+    } while ((localViewBase1 == null) || (paramViewBase == null) || (localViewBase2 == null));
+    if ((paramBoolean) && (parampuz != null))
     {
-    default: 
-      return "1";
+      localViewBase1.setVisibility(0);
+      localViewBase2.setVisibility(0);
+      paramViewBase.setVisibility(0);
+      paramViewBase.setText(parampuz.a());
+      puz.a("0X8009660");
+      return;
     }
-    return "0";
+    localViewBase1.setVisibility(8);
+    localViewBase2.setVisibility(8);
+    paramViewBase.setVisibility(8);
   }
   
-  public static String c(MessageForStructing paramMessageForStructing)
+  public static boolean a(int paramInt1, int paramInt2)
   {
-    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mAlgorithmIds))) {
-      return paramMessageForStructing.structingMsg.mAlgorithmIds;
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {}
+    while (paramInt1 > paramInt2) {
+      return false;
     }
-    return "";
+    return true;
   }
   
-  public static void c()
+  private static boolean a(Context paramContext)
   {
-    String str = d(a());
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(1);
-    localAttributeList.att_name.set("FolderStatus");
-    localAttributeList.att_value.set(str);
-    localArrayList.add(localAttributeList);
-    tzq.a(27, localArrayList);
-  }
-  
-  public static String d(MessageForStructing paramMessageForStructing)
-  {
-    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+    if ((paramContext instanceof BaseActivity)) {}
+    for (paramContext = (BaseActivity)paramContext;; paramContext = null)
     {
-      if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.reportEventFolderStatusValue)) {
-        return paramMessageForStructing.structingMsg.reportEventFolderStatusValue;
+      if (paramContext != null)
+      {
+        if (paramContext.app != null) {}
+        for (String str = paramContext.app.getCurrentAccountUin();; str = pay.a()) {
+          return SettingCloneUtil.readValue(paramContext, str, null, "qqsetting_kandian_download_pic_flag", false);
+        }
       }
-      return "2";
+      return false;
     }
-    return "1";
+  }
+  
+  public static boolean a(Context paramContext, URL paramURL)
+  {
+    return (a(paramContext)) && (!NetworkUtil.isWifiConnected(paramContext)) && (!syn.a().a(paramURL));
+  }
+  
+  public static boolean a(sdg paramsdg)
+  {
+    if (paramsdg == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyDisplayUtils", 2, "isProtraitVideo return false for videoPlayParam is null.");
+      }
+      return false;
+    }
+    return a(paramsdg.c, paramsdg.d);
+  }
+  
+  public static Pair<Integer, Integer> b()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = (localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 2;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.33F)));
+  }
+  
+  public static Pair<Integer, Integer> c()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.597F)));
+  }
+  
+  public static Pair<Integer, Integer> d()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = (localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 3;
+    return new Pair(Integer.valueOf(i), Integer.valueOf(i));
+  }
+  
+  public static Pair<Integer, Integer> e()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.562F)));
+  }
+  
+  public static Pair<Integer, Integer> f()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.5625F)));
+  }
+  
+  public static Pair<Integer, Integer> g()
+  {
+    int i = (int)(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels * 0.5F);
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.3333F)));
   }
 }
 

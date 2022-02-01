@@ -1,22 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class aejc
-  extends azie
+  implements bflx
 {
-  public aejc(Conversation paramConversation) {}
+  public aejc(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a() {}
+  
+  public void b()
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
-      }
-      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
-    }
+    Message localMessage = this.a.a.obtainMessage(20);
+    this.a.a.sendMessage(localMessage);
   }
 }
 

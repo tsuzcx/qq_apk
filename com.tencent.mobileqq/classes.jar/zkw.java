@@ -1,8 +1,20 @@
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+
 public class zkw
+  implements bhlz
 {
-  public zkv a;
-  public long b;
-  public boolean d;
+  public zkw(VideoPlayerView paramVideoPlayerView) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    VideoPlayerView.c(this.a, true);
+    return false;
+  }
 }
 
 

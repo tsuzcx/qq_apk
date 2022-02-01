@@ -1,28 +1,31 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.widget.ListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
 public class bccu
-  extends bcbj<bcfr, bcnz>
 {
-  public bccu(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, aoof paramaoof)
+  public static void a()
   {
-    super(paramListView, paramaoof);
-  }
-  
-  protected bcil<bcfr, bcnz> a(int paramInt)
-  {
-    return new bcji(this.a.a);
-  }
-  
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new bcpp(paramViewGroup, 2131562879);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
+    }
+    try
+    {
+      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bccu
  * JD-Core Version:    0.7.0.1
  */

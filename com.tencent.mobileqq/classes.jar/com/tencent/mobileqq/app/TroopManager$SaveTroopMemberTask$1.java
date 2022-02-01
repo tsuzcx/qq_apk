@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 
 class TroopManager$SaveTroopMemberTask$1
   implements Runnable

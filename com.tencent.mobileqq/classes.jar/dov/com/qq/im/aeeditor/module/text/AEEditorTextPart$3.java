@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bpkb;
+import bmmx;
 import com.tencent.tavcut.session.TAVCutSession;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.weseevideo.model.effect.StickerModel;
@@ -8,7 +8,7 @@ import com.tencent.weseevideo.model.effect.StickerModel;
 public class AEEditorTextPart$3
   implements Runnable
 {
-  public AEEditorTextPart$3(bpkb parambpkb, TAVCutSession paramTAVCutSession, StickerModel paramStickerModel) {}
+  public AEEditorTextPart$3(bmmx parambmmx, TAVCutSession paramTAVCutSession, StickerModel paramStickerModel) {}
   
   public void run()
   {

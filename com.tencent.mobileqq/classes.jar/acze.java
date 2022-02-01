@@ -1,45 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class acze
-  extends aczc
+  implements DialogInterface.OnClickListener
 {
-  public acze(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
+  public acze(ChatHistoryFileActivity paramChatHistoryFileActivity, aczg paramaczg) {}
   
-  public String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = super.a();
-    try
-    {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
-    }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    this.jdField_a_of_type_Aczg.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acze
  * JD-Core Version:    0.7.0.1
  */

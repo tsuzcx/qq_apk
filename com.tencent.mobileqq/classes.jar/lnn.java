@@ -1,26 +1,20 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.avcore.jni.data.AVUserInfo;
+import java.util.ArrayList;
 
-public class lnn
-  implements mif
+public abstract interface lnn
+  extends mwm
 {
-  public lnn(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public abstract long a(int paramInt1, int paramInt2, long paramLong);
   
-  public void a()
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.setViewEnable(2131373496, false);
-      this.a.a.setViewEnable(2131373495, false);
-      this.a.a.setViewEnable(2131363092, false);
-    }
-  }
+  public abstract lez a();
   
-  public void b()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772169);
-  }
+  public abstract void a(long paramLong1, long paramLong2, ArrayList<lnl> paramArrayList);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void b(long paramLong1, long paramLong2, String paramString);
+  
+  public abstract void b(long paramLong, ArrayList<AVUserInfo> paramArrayList);
 }
 
 

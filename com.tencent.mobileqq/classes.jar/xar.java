@@ -1,6 +1,8 @@
 public abstract interface xar
 {
-  public abstract void a(xas paramxas);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

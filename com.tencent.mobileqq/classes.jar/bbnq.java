@@ -1,37 +1,96 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import MessageSvcPack.RequestPushStatus;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbnq
+  extends aafe
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  aocj jdField_a_of_type_Aocj;
-  bbnt jdField_a_of_type_Bbnt;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "Push" };
+  private appy jdField_a_of_type_Appy;
   
-  public boolean a()
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    return (this.a != null) && (this.b == 1);
+    paramToServiceMsg = paramFromServiceMsg;
+    if (paramFromServiceMsg.getWupBuffer() == null) {
+      paramToServiceMsg = null;
+    }
+    return paramToServiceMsg;
   }
   
-  public boolean b()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    return (this.a != null) && (this.b >= 2);
+    if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
   
-  public boolean c()
+  public void a() {}
+  
+  public void a(appy paramappy)
   {
-    return (this.a != null) && (this.c == 3);
+    this.jdField_a_of_type_Appy = paramappy;
   }
   
-  public boolean d()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    return (this.a != null) && (this.c >= 4);
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if (paramToServiceMsg.equals("MessageSvc.RequestPushStatus"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StatusPush", 2, "decodeRespMsg MessageSvc.RequestPushStatus uin:" + paramFromServiceMsg.getUin() + " at " + System.currentTimeMillis());
+      }
+      paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
+      if (paramToServiceMsg != null) {}
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramFromServiceMsg = new UniPacket();
+        paramFromServiceMsg.decode(paramToServiceMsg);
+        paramToServiceMsg = (RequestPushStatus)paramFromServiceMsg.getByClass("req_PushStatus", new RequestPushStatus());
+        paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("share", 0);
+        if (paramToServiceMsg.cStatus == 1)
+        {
+          paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, true).commit();
+          return;
+        }
+        paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, false).commit();
+        return;
+        if (!"CliNotifySvc.register".equals(paramToServiceMsg)) {
+          break;
+        }
+      } while ((!paramFromServiceMsg.isSuccess()) || (paramFromServiceMsg.extraData.getLong("pushId") != 128L));
+      return;
+      if ("baseSdk.Msf.NotifyResp".equals(paramToServiceMsg))
+      {
+        paramToServiceMsg = new Intent("tencent.notify.album");
+        paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
+        BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
+        return;
+      }
+      paramToServiceMsg = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    } while (this.jdField_a_of_type_Appy == null);
+    this.jdField_a_of_type_Appy.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

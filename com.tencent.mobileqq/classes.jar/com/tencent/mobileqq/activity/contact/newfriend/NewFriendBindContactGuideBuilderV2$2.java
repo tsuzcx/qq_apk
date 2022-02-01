@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ajjw;
-import ajln;
+import aief;
+import aifw;
 
 public class NewFriendBindContactGuideBuilderV2$2
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$2(ajjw paramajjw) {}
+  public NewFriendBindContactGuideBuilderV2$2(aief paramaief) {}
   
   public void run()
   {

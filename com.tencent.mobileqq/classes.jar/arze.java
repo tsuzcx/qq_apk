@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
-class arze
-  implements DialogInterface.OnClickListener
+public class arze
+  implements View.OnLongClickListener
 {
-  arze(arzc paramarzc) {}
+  public arze(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onLongClick(View paramView)
+  {
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    bgaz localbgaz = new bgaz();
+    localbgaz.a(2131367097, paramView.getContext().getString(2131692448));
+    localbgaz.a(2131365376, paramView.getContext().getString(2131691363));
+    this.a.a = bfue.a(paramView, localbgaz, new arzf(this, paramView), new arzh(this, paramView));
+    return true;
+  }
 }
 
 

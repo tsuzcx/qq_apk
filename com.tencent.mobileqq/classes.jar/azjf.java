@@ -1,132 +1,79 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class azjf
-  extends azjx
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[4];
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
-  private float jdField_d_of_type_Float;
-  private final int jdField_d_of_type_Int = 4;
-  private long jdField_d_of_type_Long;
-  private final float jdField_e_of_type_Float = 1.3F;
-  private int jdField_e_of_type_Int;
-  private long jdField_e_of_type_Long;
-  private float jdField_f_of_type_Float = 2.0F;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h = 250;
+  protected int a;
+  protected QQAppInterface a;
+  protected String a;
+  protected int b;
+  protected String b;
+  protected int c;
   
-  azjf()
+  private azjf(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, QQMessageFacade.Message paramMessage)
   {
-    super(1);
-    this.jdField_a_of_type_JavaLangString = "AccelerometerDetector";
-  }
-  
-  private float a(float paramFloat)
-  {
-    float f1 = this.jdField_f_of_type_Float;
-    if (this.jdField_e_of_type_Int < 4)
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    try
     {
-      this.jdField_b_of_type_ArrayOfFloat[this.jdField_e_of_type_Int] = paramFloat;
-      this.jdField_e_of_type_Int += 1;
-      return f1;
-    }
-    f1 = a(this.jdField_b_of_type_ArrayOfFloat, 4);
-    System.arraycopy(this.jdField_b_of_type_ArrayOfFloat, 1, this.jdField_b_of_type_ArrayOfFloat, 0, 3);
-    this.jdField_b_of_type_ArrayOfFloat[3] = paramFloat;
-    return f1;
-  }
-  
-  private float a(float[] paramArrayOfFloat, int paramInt)
-  {
-    float f1 = 0.0F;
-    int i = 0;
-    while (i < paramInt)
-    {
-      f1 += paramArrayOfFloat[i];
-      i += 1;
-    }
-    f1 /= 4.0F;
-    if (f1 >= 8.0F) {
-      return 4.3F;
-    }
-    if ((f1 >= 7.0F) && (f1 < 8.0F)) {
-      return 3.3F;
-    }
-    if ((f1 >= 4.0F) && (f1 < 7.0F)) {
-      return 2.3F;
-    }
-    if ((f1 >= 3.0F) && (f1 < 4.0F)) {
-      return 2.0F;
-    }
-    return 1.3F;
-  }
-  
-  private void a(float paramFloat)
-  {
-    if (this.jdField_d_of_type_Float == 0.0F) {
-      this.jdField_d_of_type_Float = paramFloat;
-    }
-    for (;;)
-    {
-      this.jdField_d_of_type_Float = paramFloat;
-      return;
-      if (a(paramFloat, this.jdField_d_of_type_Float))
+      azjc localazjc = (azjc)paramQQAppInterface.getManager(38);
+      if (localazjc == null) {
+        break label241;
+      }
+      this.jdField_a_of_type_Int = localazjc.b(paramString, paramInt1);
+      if (this.jdField_a_of_type_Int <= 0) {
+        break label241;
+      }
+      if (paramMessage == null) {
+        break label235;
+      }
+      if (!bfti.b(paramMessage.msgtype))
       {
-        this.jdField_d_of_type_Long = this.jdField_c_of_type_Long;
-        this.jdField_e_of_type_Long = System.currentTimeMillis();
-        if ((this.jdField_e_of_type_Long - this.jdField_d_of_type_Long >= this.h) && (this.jdField_a_of_type_Float - this.jdField_b_of_type_Float >= this.jdField_f_of_type_Float))
-        {
-          this.jdField_c_of_type_Long = this.jdField_e_of_type_Long;
-          a();
-        }
-        if ((this.jdField_e_of_type_Long - this.jdField_d_of_type_Long >= this.h) && (this.jdField_a_of_type_Float - this.jdField_b_of_type_Float >= 1.3F))
-        {
-          this.jdField_c_of_type_Long = this.jdField_e_of_type_Long;
-          this.jdField_f_of_type_Float = a(this.jdField_a_of_type_Float - this.jdField_b_of_type_Float);
+        bool = bfti.c(paramMessage.msgtype);
+        if (!bool) {
+          break label235;
         }
       }
+      bool = true;
+    }
+    catch (Exception paramMessage)
+    {
+      for (;;)
+      {
+        boolean bool = false;
+        continue;
+        bool = false;
+        continue;
+        bool = false;
+      }
+    }
+    if (bool) {}
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("fetchUnReadCount", 4, String.format("CallUnreadCountInfo, isCallTabShow[%s], isConversationTabShow[%s], isInCallList[%s], uin[%s], type[%s], mUnreadMsgNum[%s], mMissCallCount[%s], mMsgExtroInfo[%s], isVideoMsg[%s]", new Object[] { Boolean.valueOf(paramQQAppInterface.isCallTabShow), Boolean.valueOf(paramQQAppInterface.isConversationTabShow), Boolean.valueOf(paramQQAppInterface.isInCallList), paramString, Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) }));
+      }
+      return;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = amtj.a(2131708683);
+      }
+      catch (Exception paramMessage) {}
+      QLog.w("fetchUnReadCount", 1, "CallUnreadCountInfo , Exception", paramMessage);
     }
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  public int a()
   {
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (paramFloat1 >= paramFloat2)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_f_of_type_Int += 1;
-    }
-    while ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && ((this.g >= 2) || (paramFloat2 >= 20.0F)))
-    {
-      this.jdField_a_of_type_Float = paramFloat2;
-      return true;
-      this.g = this.jdField_f_of_type_Int;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_b_of_type_Float = paramFloat2;
-      return false;
-    }
-    return false;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public String a()
   {
-    System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-    this.jdField_c_of_type_Float = ((float)Math.sqrt(this.jdField_a_of_type_ArrayOfFloat[0] * this.jdField_a_of_type_ArrayOfFloat[0] + this.jdField_a_of_type_ArrayOfFloat[1] * this.jdField_a_of_type_ArrayOfFloat[1] + this.jdField_a_of_type_ArrayOfFloat[2] * this.jdField_a_of_type_ArrayOfFloat[2]));
-    a(this.jdField_c_of_type_Float);
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

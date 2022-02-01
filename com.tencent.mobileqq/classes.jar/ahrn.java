@@ -1,181 +1,123 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Looper;
+import android.net.Uri.Builder;
 import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.List;
+import mqq.app.MobileQQ;
 
-class ahrn
-  extends AsyncTask<Void, Void, Integer>
+public class ahrn
+  extends ahrl
 {
-  MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_b_of_type_JavaLangRefWeakReference;
-  
-  public ahrn(QQAppInterface paramQQAppInterface, Context paramContext, MessageForShortVideo paramMessageForShortVideo)
+  public ahrn(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.a = paramQQAppInterface;
   }
   
-  protected Integer a(Void... paramVarArgs)
+  private String a(String paramString)
   {
-    paramVarArgs = null;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return Integer.valueOf(7);
+    if (StringUtil.isEmpty(paramString)) {
+      return "";
     }
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
-      return Integer.valueOf(7);
-    }
-    MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    if (bhmi.b(localMessageForShortVideo.videoFileName))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoPTVItemBuilder", 2, "mr.videoFileName is not null...");
-      }
-      return Integer.valueOf(5);
-    }
-    bhnn.a();
-    localObject = new EncodeThread((Context)localObject, new ahrm(Looper.getMainLooper()), localMessageForShortVideo.mVideoFileSourceDir, null, null);
-    ((EncodeThread)localObject).run();
-    String str2 = ((EncodeThread)localObject).jdField_a_of_type_JavaLangString;
-    bhnn.a("ShortVideoPTVItemBuilder", "EncodeThread");
-    if (!bhmi.b(str2)) {
-      return Integer.valueOf(8);
-    }
-    localObject = new File(str2);
-    long l = ((File)localObject).length();
-    if (l == 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoPTVItemBuilder", 2, "mVideoSize = 0");
-      }
-      return Integer.valueOf(8);
-    }
-    try
-    {
-      localObject = new FileInputStream((File)localObject);
-      if (localObject != null)
-      {
-        localObject = HexUtil.bytes2HexStr(MD5.toMD5Byte((InputStream)localObject, l));
-        paramVarArgs = (Void[])localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoPTVItemBuilder", 2, "processThumb: mVideoMd5 is empty, " + (String)localObject);
-          }
-          return Integer.valueOf(5);
-        }
-      }
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-      if (0 != 0)
-      {
-        str1 = HexUtil.bytes2HexStr(MD5.toMD5Byte(null, l));
-        paramVarArgs = str1;
-        if (TextUtils.isEmpty(str1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoPTVItemBuilder", 2, "processThumb: mVideoMd5 is empty, " + str1);
-          }
-          return Integer.valueOf(5);
-        }
-      }
-    }
-    finally
-    {
-      String str1;
-      if (0 != 0)
-      {
-        str1 = HexUtil.bytes2HexStr(MD5.toMD5Byte(null, l));
-        if (TextUtils.isEmpty(str1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoPTVItemBuilder", 2, "processThumb: mVideoMd5 is empty, " + str1);
-          }
-          return Integer.valueOf(5);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaLangString = paramVarArgs;
-    this.jdField_b_of_type_JavaLangString = str2;
-    localMessageForShortVideo.videoFileSize = ((int)l);
-    if (bhmi.b(localMessageForShortVideo.mThumbFilePath))
-    {
-      paramVarArgs = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
-      if (!paramVarArgs.equals(localMessageForShortVideo.mThumbFilePath))
-      {
-        if (!bhmi.c(paramVarArgs, localMessageForShortVideo.mThumbFilePath)) {
-          return Integer.valueOf(5);
-        }
-        localMessageForShortVideo.mThumbFilePath = paramVarArgs;
-      }
-    }
-    return Integer.valueOf(1);
+    return new QQText(paramString, 5).toPlainText(false);
   }
   
-  protected void a(Integer paramInteger)
+  int a(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    super.onPostExecute(paramInteger);
-    switch (paramInteger.intValue())
-    {
+    int i = 4;
+    if (paramSessionInfo != null) {
+      i = ((Integer)aklg.a(paramQQAppInterface, paramSessionInfo.curType, paramSessionInfo.curFriendUin).first).intValue();
     }
-    do
-    {
-      do
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ShortVideoPTVItemBuilder", 2, "Error code " + paramInteger);
-        }
-        return;
-      } while (this.jdField_b_of_type_JavaLangRefWeakReference == null);
-      paramInteger = (QQAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (paramInteger != null)
-      {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-        ((MessageForShortVideo)localObject1).md5 = this.jdField_a_of_type_JavaLangString;
-        Object localObject2 = ShortVideoUtils.a((MessageForShortVideo)localObject1, "mp4");
-        if (!this.jdField_b_of_type_JavaLangString.equals(localObject2))
-        {
-          bhmi.c(this.jdField_b_of_type_JavaLangString, (String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.i("ShortVideoPTVItemBuilder", 2, "onPostExecute destVideoPath " + (String)localObject2);
-          }
-        }
-        ((MessageForShortVideo)localObject1).videoFileName = ((String)localObject2);
-        ((MessageForShortVideo)localObject1).serial();
-        paramInteger.a().a(((MessageForShortVideo)localObject1).frienduin, ((MessageForShortVideo)localObject1).istroop, ((MessageForShortVideo)localObject1).uniseq, ((MessageForShortVideo)localObject1).msgData);
-        localObject2 = bcwu.a(0, 3);
-        localObject1 = bcwu.a(localObject1, (bcxn)localObject2);
-        ((bcyf)localObject1).a = false;
-        ((bcxn)localObject2).a((bcyf)localObject1);
-        bcwu.a((bcxn)localObject2, paramInteger);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ShortVideoPTVItemBuilder", 2, "QQAppInterface is null...");
+    return i;
   }
   
-  protected void onPreExecute()
+  public ColorNote a(List<MessageRecord> paramList, long paramLong, int paramInt, SessionInfo paramSessionInfo)
   {
-    super.onPreExecute();
+    if ((paramList == null) || (paramList.size() == 0) || (paramSessionInfo == null)) {
+      return null;
+    }
+    String str3;
+    Object localObject;
+    String str1;
+    if (paramLong != -1L)
+    {
+      str3 = this.a.getApplication().getString(2131689983) + ": " + ahrm.a(paramLong);
+      localObject = (MessageRecord)paramList.get(0);
+      str1 = ((MessageRecord)localObject).frienduin;
+      if ((paramSessionInfo.curType != 1) && (paramSessionInfo.curType != 3000)) {
+        break label455;
+      }
+    }
+    label137:
+    label153:
+    label437:
+    label452:
+    label455:
+    for (int i = 0;; i = 1)
+    {
+      String str4;
+      String str2;
+      if ((i != 0) && (a(paramList)))
+      {
+        str4 = ((MessageRecord)paramList.get(0)).selfuin;
+        if (i == 0) {
+          break label353;
+        }
+        str2 = ContactUtils.getFriendDisplayName(this.a, str4);
+        if (paramList.size() == 1) {
+          break label378;
+        }
+        str2 = str2 + "的" + paramList.size() + "条消息";
+      }
+      for (;;)
+      {
+        label199:
+        if (paramSessionInfo.curFriendNick == null)
+        {
+          label207:
+          str1 = a(paramSessionInfo, str1);
+          localObject = new Uri.Builder().scheme("uindrawable");
+          if (i == 0) {
+            break label437;
+          }
+        }
+        for (i = 1;; i = a(paramSessionInfo, this.a))
+        {
+          str4 = ((Uri.Builder)localObject).appendQueryParameter("type", String.valueOf(i)).appendQueryParameter("uin", str4).toString();
+          localObject = new aple();
+          ((aple)localObject).a(17235968).a(ahrr.a(paramLong)).b(0).b(str2).c(str3).d(str4).a(a(paramList, paramInt, str1, paramSessionInfo.troopUin));
+          return ((aple)localObject).a();
+          str3 = this.a.getApplication().getString(2131689982);
+          break;
+          str4 = str1;
+          break label137;
+          label353:
+          if (paramSessionInfo.curFriendNick == null)
+          {
+            str2 = str1;
+            break label153;
+          }
+          str2 = paramSessionInfo.curFriendNick;
+          break label153;
+          label378:
+          str2 = a(((MessageRecord)localObject).msg);
+          if ((!TextUtils.isEmpty(str2)) && (((localObject instanceof MessageForText)) || ((localObject instanceof MessageForLongMsg)))) {
+            break label452;
+          }
+          str2 = ahrr.a(this.a, (MessageRecord)localObject);
+          break label199;
+          str1 = paramSessionInfo.curFriendNick;
+          break label207;
+        }
+      }
+    }
   }
 }
 

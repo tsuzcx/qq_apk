@@ -1,90 +1,33 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import java.util.Observable;
-import java.util.Observer;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bfpd
-  extends Observable
+final class bfpd
+  implements DownloadParams.DecodeHandler
 {
-  public static int a;
-  public static int b;
-  public static int c = 3;
-  public aggs a;
-  public Context a;
-  protected View a;
-  public RelativeLayout a;
-  public SessionInfo a;
-  public QQAppInterface a;
-  public ChatXListView a;
-  public ScrollerRunnable a;
-  public Observer a;
-  public boolean a;
-  public Observer b;
-  
-  static
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      d();
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "mRoundCornerDecoder---------------");
     }
-    this.jdField_a_of_type_Boolean = false;
-    deleteObservers();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, aggs paramaggs, ChatXListView paramChatXListView, ScrollerRunnable paramScrollerRunnable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374287);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    this.jdField_a_of_type_Aggs = paramaggs;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
-    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = paramScrollerRunnable;
-    deleteObservers();
-    addObserver(paramObserver);
-    paramQQAppInterface = (HotChatManager)paramQQAppInterface.getManager(60);
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000))
+    Object localObject;
+    do
     {
-      if (!this.jdField_a_of_type_Boolean)
+      do
       {
-        this.jdField_a_of_type_Boolean = true;
-        c();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bfvo.b(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_JavaUtilObserver != null) {
-      this.jdField_b_of_type_JavaUtilObserver.update(null, null);
-    }
-  }
-  
-  protected abstract void c();
-  
-  protected abstract void d();
 }
 
 

@@ -1,7 +1,7 @@
 package cooperation.vip.manager;
 
-import blhc;
-import bnvx;
+import bjms;
+import blbc;
 import com.tencent.mobileqq.pb.PBStringField;
 import cooperation.qzone.util.QZLog;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
@@ -9,26 +9,26 @@ import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 public class GdtGeneralManager$5
   implements Runnable
 {
-  public GdtGeneralManager$5(bnvx parambnvx) {}
+  public GdtGeneralManager$5(blbc paramblbc) {}
   
   public void run()
   {
     try
     {
-      if (bnvx.a(this.this$0) == null) {
-        bnvx.a(this.this$0, this.this$0.a());
+      if (blbc.a(this.this$0) == null) {
+        blbc.a(this.this$0, this.this$0.a());
       }
-      if (bnvx.a(this.this$0) != null)
+      if (blbc.a(this.this$0) != null)
       {
-        Object localObject2 = blhc.c("35e972");
-        String str = blhc.a("35e972");
-        PBStringField localPBStringField = bnvx.a(this.this$0).mac;
+        Object localObject2 = bjms.c("35e972");
+        String str = bjms.a("35e972");
+        PBStringField localPBStringField = blbc.a(this.this$0).mac;
         Object localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
         localPBStringField.set((String)localObject1);
-        localObject2 = bnvx.a(this.this$0).imei;
+        localObject2 = blbc.a(this.this$0).imei;
         localObject1 = str;
         if (str == null) {
           localObject1 = "";

@@ -1,14 +1,13 @@
-import java.util.ArrayDeque;
-import java.util.LinkedHashMap;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pot
+  implements pqe
 {
-  private ArrayDeque<String> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private LinkedHashMap<String, Object> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  public pot(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public String toString()
+  public void a()
   {
-    return "AtlasStackInfo{stackGalleryMap=" + this.jdField_a_of_type_JavaUtilLinkedHashMap + "mScanStack=" + this.jdField_a_of_type_JavaUtilArrayDeque.toString() + '}';
+    ReadInJoySelfFragment.c(this.a);
   }
 }
 

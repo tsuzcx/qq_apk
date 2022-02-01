@@ -1,20 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
 
-public class rso
-  implements View.OnLayoutChangeListener
+public abstract interface rso
 {
-  public rso(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    this.a.removeOnLayoutChangeListener(this);
-    if (VideoFeedsRecyclerView.a(this.a) != null) {
-      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
-    }
-  }
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(DragFrameLayout paramDragFrameLayout);
 }
 
 

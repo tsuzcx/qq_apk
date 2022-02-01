@@ -1,27 +1,24 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.os.Bundle;
 
-public class ashs
-  extends DataSetObserver
+public abstract interface ashs
 {
-  public ashs(DragSortListView paramDragSortListView) {}
+  public abstract void a(long paramLong);
   
-  private void a()
-  {
-    if (this.a.g == 4) {
-      this.a.a();
-    }
-  }
+  public abstract void a(String paramString);
   
-  public void onChanged()
-  {
-    a();
-  }
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
   
-  public void onInvalidated()
-  {
-    a();
-  }
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
+  
+  public abstract byte[] a(Bundle paramBundle);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

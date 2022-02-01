@@ -1,21 +1,19 @@
 package com.tencent.biz.qqstory.utils;
 
-import zpe;
-import zpi;
+import yqa;
+import yqe;
 
 public class PollWidgetUtils$WidgetWrapper$2
   implements Runnable
 {
-  public PollWidgetUtils$WidgetWrapper$2(zpi paramzpi) {}
-  
   public void run()
   {
-    zpi localzpi = this.this$0;
-    if (!zpi.a(this.this$0)) {}
+    yqe localyqe = this.this$0;
+    if (!yqe.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      zpi.a(localzpi, bool);
-      this.this$0.a.a(zpi.a(this.this$0));
+      yqe.a(localyqe, bool);
+      this.this$0.a.e_(yqe.a(this.this$0));
       return;
     }
   }

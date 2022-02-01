@@ -1,22 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import friendlist.GetOnlineInfoResp;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aklv
-  extends anyu
+  implements View.OnTouchListener
 {
-  aklv(aklt paramaklt) {}
+  aklv(aklu paramaklu) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (TextUtils.equals(paramString, this.a.a.a)) {
-      this.a.f();
+    switch (paramMotionEvent.getAction())
+    {
     }
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.f();
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

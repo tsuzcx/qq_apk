@@ -1,30 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import UserGrowth.stSchema;
+import UserGrowth.stUserAuth;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uks
-  extends Handler
+  implements View.OnClickListener
 {
-  private ukq a;
+  uks(ukq paramukq, Context paramContext, String paramString) {}
   
-  uks(Looper paramLooper, ukq paramukq)
+  public void onClick(View paramView)
   {
-    super(paramLooper);
-    this.a = paramukq;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    uya.a("WSUserAuthDialog", "jump to miniApp to set auth switch");
+    String str2 = "";
+    stUserAuth localstUserAuth = umu.a().a();
+    String str1 = str2;
+    if (localstUserAuth != null)
     {
-    default: 
-      return;
-    case 1: 
-      ukq.a(this.a);
-      return;
+      str1 = str2;
+      if (localstUserAuth.schema != null) {
+        str1 = localstUserAuth.schema.miniAppSchema;
+      }
     }
-    ukq.b(this.a);
+    uya.a("WSUserAuthDialog", "miniAppSchema = " + str1);
+    ukw.a(this.jdField_a_of_type_AndroidContentContext, str1, new ukt(this));
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", this.jdField_a_of_type_JavaLangString, "authorized_window", 1000007);
+    ukq.a(this.jdField_a_of_type_Ukq);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,12 +1,6 @@
-import android.widget.TextView;
-import com.tencent.widget.HorizontalListView;
-
-public class alob
-  extends alnv
+public abstract interface alob
 {
-  public TextView a;
-  public HorizontalListView a;
-  public String a;
+  public abstract void a();
 }
 
 

@@ -1,10 +1,31 @@
-public abstract interface ahdj
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+
+public class ahdj
+  extends ahdi
 {
-  public abstract void a();
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  public abstract void a(int paramInt);
+  public ahdj(String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void b();
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+  }
 }
 
 

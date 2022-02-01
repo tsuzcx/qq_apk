@@ -1,15 +1,16 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bkvq
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  bkvq(bkvm parambkvm, AbsVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
+  bkvq(bkvo parambkvo) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bkvm);
+    bkvo.a(this.a, paramInt);
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

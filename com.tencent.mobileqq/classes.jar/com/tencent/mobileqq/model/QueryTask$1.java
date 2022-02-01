@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import axfu;
+import avtb;
 
 class QueryTask$1
   implements Runnable

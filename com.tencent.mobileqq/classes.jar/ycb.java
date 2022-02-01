@@ -1,78 +1,45 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class ycb
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xas>
+public final class ycb
+  extends ycv
 {
-  public ycb(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public ycb(DoodleView paramDoodleView)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramDoodleView);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xas paramxas)
+  public String a()
   {
-    if ((paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxas.jdField_a_of_type_JavaUtilList != null) && (!paramxas.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
-    {
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label54;
-      }
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
-    }
-    label54:
-    int j;
-    do
-    {
-      return;
-      j = 0;
-      int i = j;
-      Object localObject;
-      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
-      {
-        i = j;
-        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
-        {
-          localObject = paramxas.jdField_a_of_type_JavaUtilList.iterator();
-          QQUserUIItem localQQUserUIItem;
-          do
-          {
-            i = j;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
-          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
-          i = 1;
-        }
-      }
-      j = i;
-      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
-      {
-        paramxas = paramxas.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          j = i;
-          if (!paramxas.hasNext()) {
-            break;
-          }
-          localObject = (QQUserUIItem)paramxas.next();
-        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
-        j = 1;
-      }
-    } while (j == 0);
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+    return "EmptyLayer";
   }
   
-  public Class acceptEventClass()
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public boolean a()
   {
-    return xas.class;
+    return true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    xvv.b("EmptyLayer", "EmptyLayer handle touch event.");
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

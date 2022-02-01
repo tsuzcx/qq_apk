@@ -1,143 +1,60 @@
+import UserGrowth.stH5OpInfo;
 import UserGrowth.stSimpleMetaFeed;
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseIntArray;
-import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSVideoPlayEvent;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class uvk
-  extends uvh
 {
-  private Intent a;
-  
-  public uvk(urv paramurv)
+  private static WSStatisticsReporter.Builder a(String paramString)
   {
-    super(paramurv);
+    return new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName(paramString).setTestId("").setPushId("").setFlush(true).setImmediatelyUpload(true);
   }
   
-  private List<usv> a(List<stSimpleMetaFeed> paramList)
+  public static void a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("event_type", "10");
+    localHashMap.put("operation_or_not", String.valueOf(paramInt));
+    a(a("").addParams(localHashMap), "gzh_action");
+  }
+  
+  public static void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    Map localMap = WSPublicAccReport.getInstance().getFeedsBaseParams("opcard_new", paramInt, paramstSimpleMetaFeed);
+    Object localObject3 = null;
+    HashMap localHashMap = new HashMap();
+    Object localObject2 = localHashMap;
+    Object localObject1 = localObject3;
+    if (paramstSimpleMetaFeed != null)
     {
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.next();
-      if (localstSimpleMetaFeed != null)
+      localObject2 = localHashMap;
+      localObject1 = localObject3;
+      if (paramstSimpleMetaFeed.h5_op_info != null)
       {
-        usv localusv = new usv();
-        localusv.a(localstSimpleMetaFeed);
-        localArrayList.add(localusv);
+        localObject1 = paramstSimpleMetaFeed.h5_op_info;
+        localObject2 = ((stH5OpInfo)localObject1).exp;
       }
     }
-    return localArrayList;
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, usf paramusf, long paramLong)
-  {
-    ugl.a().a(paramBoolean2, paramBoolean1, "", 10, new uvl(this, paramLong, paramusf, paramBoolean1, paramBoolean2));
-  }
-  
-  public int a(int paramInt)
-  {
-    return ugl.a().jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt) + 1;
-  }
-  
-  public List<usv> a(ArrayList paramArrayList)
-  {
-    Object localObject = ugl.a().jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    localObject2 = a("feeds").addParams(localMap).addExtParams((Map)localObject2);
+    if (localObject1 != null) {}
+    for (paramstSimpleMetaFeed = String.valueOf(((stH5OpInfo)localObject1).id);; paramstSimpleMetaFeed = "")
     {
-      paramArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((Iterator)localObject).next();
-        usv localusv = new usv();
-        localusv.a(localstSimpleMetaFeed);
-        paramArrayList.add(localusv);
-      }
-      return paramArrayList;
-    }
-    return null;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    paramViewHolder = a();
-    if (paramViewHolder == null) {
+      a(((WSStatisticsReporter.Builder)localObject2).setOperationId(paramstSimpleMetaFeed), "gzh_exposure");
       return;
     }
-    if (this.jdField_a_of_type_AndroidContentIntent == null) {
-      this.jdField_a_of_type_AndroidContentIntent = new Intent();
-    }
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("key_feed_position", paramInt);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("key_from", paramViewHolder.a());
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("key_play_scene", paramViewHolder.b());
-    paramViewHolder.a(8193, this.jdField_a_of_type_AndroidContentIntent);
-    paramViewHolder = new WSItemExposeEvent((stSimpleMetaFeed)((usv)paramViewHolder.a().a(paramInt)).a());
-    uhf.a().a(paramViewHolder);
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
-    if (paramBoolean2) {
-      return false;
-    }
-    a(paramBoolean1, false, this, System.currentTimeMillis());
-    return true;
+    a(a("feeds").addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("feeds_data_new", 0, paramstSimpleMetaFeed)).addExtParams(paramMap), "gzh_exposure");
   }
   
-  public boolean c()
+  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
   {
-    return false;
-  }
-  
-  public void e()
-  {
-    Object localObject = a();
-    if ((this.jdField_a_of_type_Boolean) && (localObject != null))
-    {
-      uqf.b("WSVerticalForFollowPresenter", "onPause() back to follow page");
-      localObject = ((urv)localObject).a().a();
-      if ((localObject != null) && ((((uuy)localObject).a instanceof utq)))
-      {
-        localObject = (utq)((uuy)localObject).a;
-        if ((((utq)localObject).a() instanceof uuo)) {
-          ((uuo)((utq)localObject).a()).a(0, 100);
-        }
-      }
-      ukq.a().a(false);
-      return;
-    }
-    super.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-    Object localObject = a();
-    if (localObject == null) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((urv)localObject).a();
-      } while (localObject == null);
-      localObject = ((WSPlayerManager)localObject).a();
-    } while (localObject == null);
-    ((ukz)localObject).jdField_a_of_type_Ukp = null;
-    ((ukz)localObject).jdField_a_of_type_AndroidViewViewGroup = null;
-    ugl.a().a((ukz)localObject);
-    localObject = new WSVideoPlayEvent();
-    ((WSVideoPlayEvent)localObject).mCurrentPosition = this.jdField_a_of_type_Int;
-    uhf.a().a((WSSimpleBaseEvent)localObject);
+    paramBuilder.build(paramString).report();
   }
 }
 

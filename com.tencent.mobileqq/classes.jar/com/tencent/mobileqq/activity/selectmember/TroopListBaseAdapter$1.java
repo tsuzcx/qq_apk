@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amgf;
+import albm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class TroopListBaseAdapter$1
   implements Runnable
 {
-  public TroopListBaseAdapter$1(amgf paramamgf) {}
+  public TroopListBaseAdapter$1(albm paramalbm) {}
   
   public void run()
   {

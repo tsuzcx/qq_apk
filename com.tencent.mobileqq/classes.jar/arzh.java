@@ -1,31 +1,13 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arzh
-  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
+class arzh
+  implements bjoy
 {
-  public aryz a;
+  arzh(arze paramarze, View paramView) {}
   
-  protected arzh(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    if (this.jdField_a_of_type_Aryz != null)
-    {
-      this.jdField_a_of_type_Aryz.a = paramBoolean;
-      arzx.a().e();
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, anzj.a(2131701680), new arzi(this), new arzj(this)).show();
-    return true;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

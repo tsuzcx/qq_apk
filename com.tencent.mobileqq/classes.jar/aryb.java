@@ -1,45 +1,32 @@
-import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.ArrayList;
 
 public class aryb
-  extends ClickableSpan
 {
-  private aoad jdField_a_of_type_Aoad;
-  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
+  ArrayList<FavFileInfo> a = new ArrayList();
+  ArrayList<FavFileInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<FavFileInfo> c = new ArrayList();
+  ArrayList<FavFileInfo> d = new ArrayList();
+  ArrayList<FavFileInfo> e = new ArrayList();
   
-  public aryb(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aoad = new aoad((BaseActivity)paramContext, paramQQAppInterface, null);
-  }
+  public aryb(arxv paramarxv) {}
   
-  public void onClick(View paramView)
+  ArrayList<FavFileInfo> a(String paramString)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
-    {
-      paramView = ((HotChatManager)paramView.getManager(60)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
-      this.jdField_a_of_type_Aoad.a(paramView);
+    int i = aszt.a(paramString);
+    if (i == 0) {
+      return this.a;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    if ((i == 3) || (i == 6) || (i == 7) || (i == 9) || (i == 10)) {
+      return this.jdField_b_of_type_JavaUtilArrayList;
+    }
+    if (i == 2) {
+      return this.c;
+    }
+    if (i == 5) {
+      return this.d;
+    }
+    return this.e;
   }
 }
 

@@ -1,128 +1,47 @@
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.minicode.Utils;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgwy
-  implements View.OnClickListener
+class bgwy
+  implements bfsc<String>
 {
-  int jdField_a_of_type_Int = 1000;
-  long jdField_a_of_type_Long = 0L;
-  protected Context a;
-  protected Drawable a;
-  protected bfrm a;
-  protected bghm a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected HashMap<Integer, bgxe> a;
-  protected Drawable b;
-  protected Drawable c;
+  bgwy(bgww parambgww) {}
   
-  public bgwy(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, bfrm parambfrm, bghm parambghm)
+  public String a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bfrm = parambfrm;
-    this.jdField_a_of_type_Bghm = parambghm;
+    String str = bfrx.a() + System.currentTimeMillis() + ".jpg";
+    Utils.saveBitmapToFile(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
+    return str;
   }
   
-  protected int a(int paramInt)
+  public void a(Exception paramException)
   {
-    switch (paramInt)
+    QLog.e("SwiftBrowserShareMenuHandler", 1, "onScreenShotError , error is " + paramException.getMessage());
+    if (this.a.mComponentContext.a() == null)
     {
-    }
-    return 0;
-  }
-  
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2)) != null) {
-      return null;
-    }
-    int i = a(paramTroopFeedItem.type);
-    bgxe localbgxe2 = (bgxe)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    bgxe localbgxe1 = localbgxe2;
-    if (localbgxe2 == null)
-    {
-      localbgxe1 = a(i);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbgxe1);
-    }
-    if (localbgxe1 != null) {
-      return localbgxe1.a(paramTroopFeedItem, paramInt, paramBoolean);
-    }
-    return null;
-  }
-  
-  protected bgxe a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new bgxb(this);
-    case 0: 
-      return new bgxb(this);
-    }
-    return new bgxf(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(2));
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof bgxa)) {
-      this.jdField_a_of_type_Bghm.b(true);
-    }
-    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < this.jdField_a_of_type_Int)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot onScreenShotError, activity is null");
       return;
     }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    int i;
-    if ((localTroopInfo != null) && (str != null)) {
-      if (str.equals(localTroopInfo.troopowneruin)) {
-        i = 0;
-      }
-    }
-    for (;;)
+    QQToast.a(this.a.mComponentContext.a(), 2131717947, 0).a();
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (this.a.mComponentContext.a() == null)
     {
-      ((Intent)localObject).putExtra("url", String.format("https://web.qun.qq.com/qqweb/m/qun/notification/index.html?gc=%s&role=%d&_bid=2223&_wv=1031", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, Integer.valueOf(i) }));
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      localObject = paramView.getTag();
-      if (!(localObject instanceof bgxd)) {
-        break;
-      }
-      localObject = ((bgxd)localObject).a;
-      if ((localObject == null) || (!((TroopFeedItem)localObject).isStoryType())) {
-        break;
-      }
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_story_pgc", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-      break;
-      if ((localTroopInfo.Administrator != null) && (localTroopInfo.Administrator.contains(str))) {
-        i = 1;
-      } else {
-        i = 2;
-      }
+      QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot error, activity is null");
+      return;
     }
+    paramBitmap = new Intent();
+    paramBitmap.putExtra("public_fragment_window_feature", 1);
+    paramBitmap.putExtra("screen_path", paramString);
+    paramBitmap.putExtra("is_web_screen_long_shot", true);
+    adxr.a(this.a.mComponentContext.a(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
   }
 }
 

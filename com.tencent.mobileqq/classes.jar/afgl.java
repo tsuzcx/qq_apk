@@ -1,62 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class afgl
-  extends BroadcastReceiver
+class afgl
+  implements bcrf
 {
-  private String jdField_a_of_type_JavaLangString;
+  afgl(afgi paramafgi) {}
   
-  private afgl(QQLSActivity paramQQLSActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return;
-          if (paramIntent != null) {}
-          try
-          {
-            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
-            }
-          }
-          catch (Exception paramContext)
-          {
-            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
-            return;
-          }
-        }
-        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
-      return;
-    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-      QLog.d("QQLSActivity", 2, axac.f);
-    }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-    if (!axac.f) {
-      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
+    bcrl localbcrl = new bcrl(3000, 360, 0);
+    localbcrl.a = true;
+    this.a.a.f.a(new bcre[] { localbcrl });
   }
 }
 

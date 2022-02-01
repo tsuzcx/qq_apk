@@ -1,6 +1,14 @@
+import android.support.annotation.NonNull;
+
 public abstract interface wng
 {
-  public abstract void a(wnf paramwnf);
+  public abstract void a(@NonNull wnf paramwnf);
+  
+  public abstract void a(@NonNull wnf paramwnf, @NonNull Throwable paramThrowable);
+  
+  public abstract void b(@NonNull wnf paramwnf);
+  
+  public abstract void c(@NonNull wnf paramwnf);
 }
 
 

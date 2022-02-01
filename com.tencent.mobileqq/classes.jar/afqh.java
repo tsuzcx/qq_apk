@@ -1,26 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afqh
-  implements View.OnClickListener
+  implements afrc
 {
-  public afqh(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  private BaseChatPie a;
   
-  public void onClick(View paramView)
+  public afqh(BaseChatPie paramBaseChatPie)
   {
-    if (this.a.mSwiftTitleUI != null)
-    {
-      this.a.mSwiftTitleUI.jdField_a_of_type_Birj.d = false;
-      this.a.mSwiftTitleUI.jdField_a_of_type_Birj.a = Boolean.valueOf(true);
-      if (this.a.mUIStyleHandler != null) {
-        this.a.mUIStyleHandler.l();
-      }
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.app != null)) {
+      ((awdi)this.a.app.getManager(324)).onDestroy();
     }
-    this.a.onClick(this.a.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView);
-    this.a.a(0);
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13 };
   }
 }
 

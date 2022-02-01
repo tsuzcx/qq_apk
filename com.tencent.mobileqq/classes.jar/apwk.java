@@ -1,10 +1,14 @@
-public abstract interface apwk
+public class apwk
 {
-  public abstract boolean notify(String paramString1, String paramString2, String paramString3);
+  public Boolean a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apwk
  * JD-Core Version:    0.7.0.1
  */

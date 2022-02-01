@@ -1,12 +1,12 @@
 package cooperation.comic.utils;
 
-import bmdd;
+import bkha;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQComicRedTouchManager$PluginRedTouchObserver$1
   implements Runnable
 {
-  public QQComicRedTouchManager$PluginRedTouchObserver$1(bmdd parambmdd) {}
+  public QQComicRedTouchManager$PluginRedTouchObserver$1(bkha parambkha) {}
   
   public void run()
   {

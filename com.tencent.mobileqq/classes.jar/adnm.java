@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class adnm
-  implements DialogInterface.OnCancelListener
+public abstract class adnm
 {
-  adnm(adni paramadni, adnh paramadnh, admz paramadmz, JSONObject paramJSONObject, admy paramadmy) {}
+  public adnm(JumpActivity paramJumpActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Adni.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Adnh.a);
-    adni.c(this.jdField_a_of_type_Adni, 4, this.jdField_a_of_type_Admz, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Admy);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adnm
  * JD-Core Version:    0.7.0.1
  */

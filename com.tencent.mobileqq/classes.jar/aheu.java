@@ -1,30 +1,16 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aheu
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  aheu(ahed paramahed) {}
+  aheu(ahek paramahek) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = blir.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131718792);
-      paramView.c(2131690580);
-      paramView.a(new ahev(this));
-      paramView.a(new ahew(this, paramView));
-      paramView.show();
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    ((alnr)this.a.app.getManager(153)).a().b(this.a.sessionInfo.curFriendUin, 319);
   }
 }
 

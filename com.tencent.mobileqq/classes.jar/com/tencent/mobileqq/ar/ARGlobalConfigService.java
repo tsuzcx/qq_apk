@@ -2,9 +2,9 @@ package com.tencent.mobileqq.ar;
 
 import android.content.Intent;
 import android.os.IBinder;
-import aper;
-import apes;
-import aplu;
+import anyd;
+import anye;
+import aofh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,14 +13,14 @@ import mqq.app.AppService;
 public class ARGlobalConfigService
   extends AppService
 {
-  public aper a;
-  private aplu jdField_a_of_type_Aplu = new apes(this);
+  public anyd a;
+  private aofh jdField_a_of_type_Aofh = new anye(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   
   public void onAccountChanged()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
-    this.jdField_a_of_type_Aper = ((aper)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
+    this.jdField_a_of_type_Anyd = ((anyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
     if (QLog.isColorLevel()) {
       QLog.d("ARGlobalConfigService", 2, "onAccountChanged");
     }
@@ -31,7 +31,7 @@ public class ARGlobalConfigService
     if (QLog.isColorLevel()) {
       QLog.d("ARGlobalConfigService", 2, "onBind");
     }
-    return this.jdField_a_of_type_Aplu;
+    return this.jdField_a_of_type_Aofh;
   }
   
   public void onCreate()
@@ -40,7 +40,7 @@ public class ARGlobalConfigService
     if ((this.app instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.app);
-      this.jdField_a_of_type_Aper = ((aper)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
+      this.jdField_a_of_type_Anyd = ((anyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ARGlobalConfigService", 2, "onCreate");

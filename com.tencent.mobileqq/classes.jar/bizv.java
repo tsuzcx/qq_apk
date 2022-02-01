@@ -1,35 +1,31 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.PagingScrollView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class bizv
-  extends GestureDetector.SimpleOnGestureListener
+class bizv
+  implements zop
 {
-  public bizv(PagingScrollView paramPagingScrollView) {}
+  bizv(bizu parambizu) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void callback(Bundle paramBundle)
   {
-    if (PagingScrollView.access$000(this.a))
+    int i = paramBundle.getInt("msg");
+    if (i == 90)
     {
-      PagingScrollView.access$002(this.a, false);
-      paramFloat1 = Math.abs(paramFloat1);
-      paramFloat2 = Math.abs(paramFloat2);
-      if (paramFloat2 > paramFloat1)
+      bizu.a(this.a, paramBundle.getInt("state"));
+      if (QLog.isColorLevel()) {
+        QLog.d("NowLiveJsPlugin", 2, "TroopMemberApiClient.Callback | plugin state: " + bizu.a(this.a));
+      }
+    }
+    do
+    {
+      do
       {
-        if (paramFloat1 >= 0.01F) {
-          break label62;
-        }
-        PagingScrollView.access$002(this.a, true);
-      }
-    }
-    for (;;)
-    {
-      return PagingScrollView.access$000(this.a);
-      label62:
-      if (paramFloat2 / paramFloat1 > 1.73205F) {
-        PagingScrollView.access$002(this.a, true);
-      }
-    }
+        return;
+      } while (i != 91);
+      i = paramBundle.getInt("errCode");
+      paramBundle = paramBundle.getString("desc");
+    } while (!QLog.isColorLevel());
+    QLog.d("NowLiveJsPlugin", 2, "TroopMemberApiClient.Callback | errCode=" + i + ", desc=" + paramBundle);
   }
 }
 

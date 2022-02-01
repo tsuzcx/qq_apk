@@ -1,19 +1,18 @@
 package dov.com.qq.im.ae.play;
 
-import boqr;
-import boqu;
-import borc;
-import bozd;
+import bluy;
+import blvb;
+import blvj;
 
-public class PlayDownloadManagerWrap$1
+class PlayDownloadManagerWrap$1
   implements Runnable
 {
-  public PlayDownloadManagerWrap$1(bozd parambozd, boqr paramboqr, boqu paramboqu, borc paramborc) {}
+  PlayDownloadManagerWrap$1(PlayDownloadManagerWrap paramPlayDownloadManagerWrap, bluy parambluy, blvb paramblvb, blvj paramblvj) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Boqr.a(this.jdField_a_of_type_Boqr.a(), this.jdField_a_of_type_Boqu, this.jdField_a_of_type_Borc);
-    this.jdField_a_of_type_Boqu.f = true;
+    this.val$materialManager.a(this.val$materialManager.getApp(), this.val$templateInfo, this.val$downloadListener);
+    this.val$templateInfo.f = true;
   }
 }
 

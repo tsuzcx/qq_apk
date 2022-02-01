@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.io.File;
-import ohf;
-import ohj;
-import qtl;
+import ois;
+import oiw;
+import raj;
 
 public class KanDianViewController$3
   implements Runnable
 {
-  public KanDianViewController$3(ohf paramohf) {}
+  public KanDianViewController$3(ois paramois) {}
   
   public void run()
   {
-    String str = qtl.f();
+    String str = raj.f();
     if ((str != null) && (new File(str).exists()))
     {
-      ohf.a(this.this$0).removeMessages(2);
-      ohf.a(this.this$0).sendEmptyMessage(3);
+      ois.a(this.this$0).removeMessages(2);
+      ois.a(this.this$0).sendEmptyMessage(3);
     }
   }
 }

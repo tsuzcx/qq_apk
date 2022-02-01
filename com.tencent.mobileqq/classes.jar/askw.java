@@ -1,212 +1,112 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo.QQEmoConfigItem;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.1;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.2;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.3;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class askw
-  extends QQSysAndEmojiResInfo
-  implements aslc
 {
-  private int a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private asia jdField_a_of_type_Asia = new askx(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private LinkedHashMap<String, asky> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private List<asky> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> b = new ArrayList();
   
-  public int a()
+  public askw(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  public int a(int paramInt)
+  private void a()
   {
-    int j = -1;
-    int i = j;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.3(this));
+  }
+  
+  private void a(asky paramasky)
+  {
+    if (paramasky == null) {}
+    do
     {
-      i = j;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        i = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QCid);
-      }
-    }
-    return i;
+      return;
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramasky.jdField_a_of_type_JavaLangString, paramasky);
+    } while (!QLog.isColorLevel());
+    QLog.i("ThumbDownloadManager", 2, "addDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
   }
   
-  public Drawable a(int paramInt)
+  private void a(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        localURL1 = new URL("qqsys_emoji", "host_emoji", String.format("emoji_%03d.png", new Object[] { Integer.valueOf(paramInt) }));
-        localURL2 = localURL1;
-        localURL2 = localURL1;
-      }
-      catch (MalformedURLException localMalformedURLException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QQEmojiResInfo", 2, "getDrawable url:" + localURL1.toString());
-            localURL2 = localURL1;
-          }
-          return a(localURL2, null, false, String.valueOf(paramInt));
-        }
-        catch (MalformedURLException localMalformedURLException2)
-        {
-          URL localURL1;
-          URL localURL2;
-          break label82;
-        }
-        localMalformedURLException1 = localMalformedURLException1;
-        localURL1 = null;
-      }
-      label82:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQEmojiResInfo", 2, "getDrawable ,", localMalformedURLException1);
-        localURL2 = localURL1;
-      }
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.2(this, paramString));
   }
   
-  public String a(int paramInt)
+  private boolean a(long paramLong, String paramString1, String paramString2)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      str1 = str2;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        str1 = ((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QDes;
-      }
+    paramString2 = aszt.g(paramString2);
+    if (!a(paramString1, paramString2)) {
+      return false;
     }
-    return str1;
+    asky localasky = new asky();
+    localasky.b = paramString1;
+    localasky.jdField_a_of_type_JavaLangString = paramString2;
+    localasky.jdField_a_of_type_Long = paramLong;
+    this.b.add(paramString2);
+    this.jdField_a_of_type_JavaUtilList.add(localasky);
+    return true;
   }
   
-  public void a()
+  private boolean a(String paramString1, String paramString2)
   {
-    Object localObject1 = a();
-    if (localObject1 != null)
-    {
-      JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray("emoji");
-      if (localJSONArray != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        if (this.b == null) {
-          this.b = new HashMap();
-        }
-        if (this.c == null) {
-          this.c = new HashMap();
-        }
-        if (this.d == null) {
-          this.d = new HashMap();
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.b.clear();
-        this.c.clear();
-        this.d.clear();
-        long l = System.currentTimeMillis();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= localJSONArray.length()) {
-            break label394;
-          }
-          localObject1 = null;
-          try
-          {
-            localObject2 = localJSONArray.getJSONObject(i);
-            localObject1 = localObject2;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              Object localObject2;
-              localJSONException.printStackTrace();
-            }
-          }
-          localObject1 = (QQSysAndEmojiResInfo.QQEmoConfigItem)awfy.a((JSONObject)localObject1, QQSysAndEmojiResInfo.QQEmoConfigItem.class);
-          try
-          {
-            int j = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).AQLid);
-            int k = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).QCid);
-            if (!TextUtils.isEmpty(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).EMCode))
-            {
-              localObject2 = "[em]e" + ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).EMCode + "[/em]";
-              String str = ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).QDes;
-              this.c.put(str, localObject2);
-              this.d.put(localObject2, Integer.valueOf(j));
-            }
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject1);
-            this.b.put(Integer.valueOf(k), Integer.valueOf(j));
-            if (!a((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1)) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-            }
-            if (j > this.jdField_a_of_type_Int) {
-              this.jdField_a_of_type_Int = j;
-            }
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              QLog.d("QQEmojiResInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject1).AQLid });
-            }
-          }
-          i += 1;
-        }
-        label394:
-        if (QLog.isColorLevel()) {
-          QLog.d("QQEmojiResInfo", 2, new Object[] { "emoji configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), " ,orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), ", maxLid:", Integer.valueOf(this.jdField_a_of_type_Int), " ,costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]" });
-        }
-      }
+    if (this.b.contains(paramString2)) {}
+    while (FileUtil.fileExistsAndNotEmpty(paramString1)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void b(asky paramasky)
+  {
+    if (paramasky == null) {
+      return;
+    }
+    new ashz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramasky.jdField_a_of_type_Long, paramasky.b, paramasky.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asia);
+  }
+  
+  private void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("ThumbDownloadManager", 2, "removeDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
     }
   }
   
-  public void a(int paramInt)
+  private void c(String paramString)
   {
-    a(a(paramInt), paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    bdll.b(null, "dc00898", "", "", "0X800A7A3", "0X800A7A3", a(paramInt1), 0, String.valueOf(paramInt2), "", "", "");
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool = false;
-    String str = asky.a(3, String.format("/emoji_%03d.png", new Object[] { Integer.valueOf(paramInt) }));
-    if (!TextUtils.isEmpty(str)) {
-      bool = new File(str).exists();
+    if (!this.b.remove(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask remove task fail, thumbUrl[" + paramString + "]");
+      }
     }
-    return bool;
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask currentSize[" + this.b.size() + "]");
   }
   
-  public void b()
+  public void a(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Aslb = new aslb(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.1(this, paramLong, paramString1, paramString2));
   }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     askw
  * JD-Core Version:    0.7.0.1
  */

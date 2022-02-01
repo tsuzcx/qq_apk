@@ -17,7 +17,7 @@ final class MiniArkShareAsyncManager$1
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = ((QQAppInterface)localObject).a().createEntityManager();
+      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
       if (localObject != null)
       {
         Entity localEntity = ((EntityManager)localObject).find(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });

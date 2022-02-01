@@ -1,33 +1,19 @@
-import android.support.v4.util.ArrayMap;
-import android.support.v4.util.SparseArrayCompat;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.tencent.util.Pair;
-import java.lang.reflect.Type;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bekq
-  implements JsonDeserializer<beko>
+public class bekq
+  implements View.OnClickListener
 {
-  public beko a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
+  public bekq(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  
+  public void onClick(View paramView)
   {
-    paramType = paramJsonElement.getAsJsonObject();
-    paramJsonElement = new beko();
-    paramJsonElement.jdField_a_of_type_Int = paramType.get("nextNum").getAsInt();
-    paramType = paramType.get("numToAttrib").getAsJsonObject();
-    int i = 0;
-    while (i < paramJsonElement.jdField_a_of_type_Int)
-    {
-      Object localObject = paramType.get(i + "").getAsJsonArray();
-      paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
-      localObject = ((JsonArray)localObject).get(1).getAsString();
-      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
-      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(beko.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
-      i += 1;
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    return paramJsonElement;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

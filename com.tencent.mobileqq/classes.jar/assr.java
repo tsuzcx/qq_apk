@@ -1,50 +1,14 @@
-import android.content.Context;
-
-public class assr
-  extends asss
+class assr
+  implements bcan
 {
-  private int c = 4;
-  private int d = 27;
-  
-  public assr(Context paramContext, asmr paramasmr, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramasmr, paramInt);
-    a(paramBoolean);
-  }
-  
-  private int a(int[] paramArrayOfInt)
-  {
-    return (paramArrayOfInt.length + this.d - 1) / this.d;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.c = 5;
-      this.d = 34;
-      return;
-    }
-    this.c = 4;
-    this.d = 27;
-  }
+  assr(assj paramassj) {}
   
   public void a()
   {
-    super.a();
+    aszt.a(this.a.a, this.a.d());
   }
   
-  public int b()
-  {
-    return a(this.jdField_a_of_type_ArrayOfInt);
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Asmx != null) {
-      this.jdField_a_of_type_Asmx.a(this.c, 7);
-    }
-  }
+  public void b() {}
 }
 
 

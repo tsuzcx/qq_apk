@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import bbfg;
+import baah;
 
 public class CaptureVideoFilterManager$2
   implements Runnable
 {
   public void run()
   {
-    bbfg.a(this.this$0);
+    baah.a(this.this$0);
   }
 }
 

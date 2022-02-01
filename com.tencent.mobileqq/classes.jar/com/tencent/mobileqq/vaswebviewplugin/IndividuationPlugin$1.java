@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bdll;
-import bhyk;
+import bcef;
+import bgev;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -19,8 +19,8 @@ class IndividuationPlugin$1
     localIntent.putExtra("hide_left_button", false);
     localIntent.putExtra("show_right_close_button", false);
     localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    VasWebviewUtil.openQQBrowserWithoutAD(this.this$0.mActivity, bhyk.a("myFont"), 67108864L, localIntent, false, -1);
-    bdll.b(null, "CliOper", "", "", "font_switch", "clk_swtich", 0, 0, "", "", "", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.this$0.mActivity, bgev.a("myFont"), 67108864L, localIntent, false, -1);
+    bcef.b(null, "CliOper", "", "", "font_switch", "clk_swtich", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

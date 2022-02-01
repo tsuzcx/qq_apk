@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class bafo
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final long b;
+  
+  private bafo(long paramLong1, long paramLong2, int paramInt)
   {
-    bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800B1CA", "0X800B1CA", paramInt, 0, "", "", "", "");
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

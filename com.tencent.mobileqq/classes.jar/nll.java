@@ -1,16 +1,18 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class nll
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
+  public nll(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public nll(nlj paramnlj, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

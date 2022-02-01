@@ -1,64 +1,45 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.AIOTimeReporter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
 public class aeww
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeww(LikeSettingActivity paramLikeSettingActivity) {}
+  private static String b = "HighDeviceFirstOpenAIOBusiness";
+  private static String c = "HighDeviceFirstOpenAIOBase";
+  private static String d = "HighDeviceNotFirstOpenAIOBusiness";
+  private static String e = "HighDeviceNotFirstOpenAIOBase";
+  private static String f = "MidDeviceFirstOpenAIOBusiness";
+  private static String g = "MidDeviceFirstOpenAIOBase";
+  private static String h = "MidDeviceNotFirstOpenAIOBusiness";
+  private static String i = "MidDeviceNotFirstOpenAIOBase";
+  private static String j = "LowDeviceFirstOpenAIOBusiness";
+  private static String k = "LowDeviceFirstOpenAIOBase";
+  private static String l = "LowDeviceNotFirstOpenAIOBusiness";
+  private static String m = "LowDeviceNotFirstOpenAIOBase";
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString = "0";
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private void b()
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-    {
-      ((axwo)this.a.app.a(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.aio.AIOTimeReporter", 4, "reSet ");
     }
-    for (;;)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.aio.AIOTimeReporter", 4, "reportAIOLifeCycleTime ");
+    }
+    if (new Random().nextInt(100) != 1)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      b();
       return;
-      if (paramCompoundButton == this.a.c.a())
-      {
-        this.a.app.e(true, paramBoolean);
-      }
-      else
-      {
-        QQAppInterface localQQAppInterface;
-        String str;
-        if (paramCompoundButton == this.a.b.a())
-        {
-          localQQAppInterface = this.a.app;
-          if (paramBoolean) {}
-          for (str = "1";; str = "0")
-          {
-            bdll.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
-            this.a.jdField_a_of_type_Anum.h(paramBoolean);
-            break;
-          }
-        }
-        if (paramCompoundButton == this.a.d.a())
-        {
-          localQQAppInterface = this.a.app;
-          if (paramBoolean) {}
-          for (str = "1";; str = "2")
-          {
-            bdll.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
-            this.a.jdField_a_of_type_Anum.f(paramBoolean);
-            if (paramBoolean) {
-              break label249;
-            }
-            this.a.b.setVisibility(8);
-            break;
-          }
-          label249:
-          this.a.b.setVisibility(0);
-        }
-      }
     }
+    ThreadManager.post(new AIOTimeReporter.1(this), 1, null, false);
   }
 }
 

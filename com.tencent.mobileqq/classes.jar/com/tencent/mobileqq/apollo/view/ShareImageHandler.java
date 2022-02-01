@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
+import amno;
+import amnp;
+import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -12,36 +15,33 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import ansx;
-import ansy;
-import anzj;
-import blir;
-import bliz;
-import bmud;
+import bjnw;
+import bjoe;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneShareManager;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 
 public class ShareImageHandler
-  implements DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, ansy, bliz
+  implements amnp, DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bjoe
 {
   private long jdField_a_of_type_Long;
-  private ansx jdField_a_of_type_Ansx;
-  private blir jdField_a_of_type_Blir;
+  private amno jdField_a_of_type_Amno;
+  private bjnw jdField_a_of_type_Bjnw;
   private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private WeakReference<Activity> b;
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Blir != null) {
-      this.jdField_a_of_type_Blir.dismiss();
+    if (this.jdField_a_of_type_Bjnw != null) {
+      this.jdField_a_of_type_Bjnw.dismiss();
     }
   }
   
@@ -73,10 +73,10 @@ public class ShareImageHandler
                     } while (this.jdField_a_of_type_Boolean);
                     paramMessage = (String)paramMessage.obj;
                   } while ((TextUtils.isEmpty(paramMessage)) || (this.b == null) || (this.b.get() == null));
-                  QQToast.a((Context)this.b.get(), anzj.a(2131712819) + paramMessage, 1).a();
+                  QQToast.a((Context)this.b.get(), amtj.a(2131713051) + paramMessage, 1).a();
                   return false;
-                  if (this.jdField_a_of_type_Blir != null) {
-                    this.jdField_a_of_type_Blir.dismiss();
+                  if (this.jdField_a_of_type_Bjnw != null) {
+                    this.jdField_a_of_type_Bjnw.dismiss();
                   }
                 } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b == null) || (this.b.get() == null));
                 localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -94,10 +94,10 @@ public class ShareImageHandler
             {
               localArrayList.add(URLDecoder.decode(paramMessage));
               localBundle.putStringArrayList("images", localArrayList);
-              localBundle.putString("summary", anzj.a(2131712818));
+              localBundle.putString("summary", amtj.a(2131713050));
               localBundle.putInt("req_type", 7);
               localBundle.putBoolean("key_need_save_draft", false);
-              bmud.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
+              QZoneShareManager.publishToQzone(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
               return false;
             }
             catch (Exception paramMessage)
@@ -105,8 +105,8 @@ public class ShareImageHandler
               QLog.d("ShareImageHandler", 2, "publishToQzone:" + paramMessage.getMessage());
               return false;
             }
-            if (this.jdField_a_of_type_Blir != null) {
-              this.jdField_a_of_type_Blir.dismiss();
+            if (this.jdField_a_of_type_Bjnw != null) {
+              this.jdField_a_of_type_Bjnw.dismiss();
             }
           } while (this.jdField_a_of_type_Boolean);
           paramMessage = (String)paramMessage.obj;
@@ -141,12 +141,12 @@ public class ShareImageHandler
       this.jdField_a_of_type_Long = l;
       if (paramLong == 1L)
       {
-        if (this.jdField_a_of_type_Ansx != null) {
-          this.jdField_a_of_type_Ansx.a(this, 16);
+        if (this.jdField_a_of_type_Amno != null) {
+          this.jdField_a_of_type_Amno.a(this, 16);
         }
       }
-      else if (this.jdField_a_of_type_Ansx != null) {
-        this.jdField_a_of_type_Ansx.a(this, 17);
+      else if (this.jdField_a_of_type_Amno != null) {
+        this.jdField_a_of_type_Amno.a(this, 17);
       }
     }
   }

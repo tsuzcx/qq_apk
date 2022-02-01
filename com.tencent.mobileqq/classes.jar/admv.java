@@ -1,6 +1,27 @@
-public abstract interface admv
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+
+public class admv
+  implements TextWatcher
 {
-  public abstract void a(String paramString);
+  public admv(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = paramEditable.toString();
+    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
+    {
+      this.a.b.setEnabled(true);
+      return;
+    }
+    this.a.b.setEnabled(false);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

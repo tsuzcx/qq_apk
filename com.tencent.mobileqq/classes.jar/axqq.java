@@ -1,61 +1,94 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 
-public abstract class axqq
-  extends Binder
-  implements axqp
+class axqq
+  implements View.OnTouchListener
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
-  static final int TRANSACTION_onPlaySongChanged = 2;
-  static final int TRANSACTION_onPlayStateChanged = 1;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
   
-  public axqq()
-  {
-    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
-  }
+  axqq(axqp paramaxqp) {}
   
-  public static axqp asInterface(IBinder paramIBinder)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramIBinder == null) {
-      return null;
+    axrf localaxrf;
+    float f2;
+    float f1;
+    if (axqp.a(this.jdField_a_of_type_Axqp) != null)
+    {
+      paramView = (axre)axqp.a(this.jdField_a_of_type_Axqp).getTag(2131362915);
+      localaxrf = (axrf)axqp.a(this.jdField_a_of_type_Axqp).getTag();
+      if ((paramView != null) && (localaxrf != null))
+      {
+        f2 = paramMotionEvent.getX();
+        f1 = paramMotionEvent.getY();
+      }
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof axqp))) {
-      return (axqp)localIInterface;
-    }
-    return new axqr(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    switch (paramMotionEvent.getAction())
     {
     default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
+    case 0: 
+    case 2: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return true;
+            this.jdField_a_of_type_Float = f2;
+            this.b = f1;
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+          } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+          localaxrf.a.setPressed(true);
+          return true;
+        } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+        f2 -= this.jdField_a_of_type_Float;
+        f1 -= this.b;
+      } while ((float)Math.sqrt(f2 * f2 + f1 * f1) < axqp.a(this.jdField_a_of_type_Axqp).getScaledTouchSlop());
+      localaxrf.a.setPressed(false);
       return true;
     case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-      onPlayStateChanged(paramParcel1.readInt());
-      return true;
+      f2 -= this.jdField_a_of_type_Float;
+      f1 -= this.b;
+      f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+      long l1 = System.currentTimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (f2 < axqp.a(this.jdField_a_of_type_Axqp).getScaledTouchSlop()) {
+        if (paramView.b == 2)
+        {
+          axqp.a(this.jdField_a_of_type_Axqp).removeMessages(101);
+          axqp.a(this.jdField_a_of_type_Axqp).obtainMessage(101).sendToTarget();
+          if (paramView.jdField_a_of_type_Axrb != null) {
+            paramView.jdField_a_of_type_Axrb.a();
+          }
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Float = 0.0F;
+        this.b = 0.0F;
+        this.jdField_a_of_type_Long = 0L;
+        localaxrf.a.setPressed(false);
+        return true;
+        if ((f2 > axqp.a(this.jdField_a_of_type_Axqp).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
+        {
+          axqp.a(this.jdField_a_of_type_Axqp).removeMessages(101);
+          axqp.a(this.jdField_a_of_type_Axqp).obtainMessage(101).sendToTarget();
+        }
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      onPlaySongChanged(paramParcel1);
-      return true;
-    }
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Long = 0L;
+    localaxrf.a.setPressed(false);
+    return true;
   }
 }
 

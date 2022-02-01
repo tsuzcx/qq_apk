@@ -1,45 +1,114 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class apyn
-  implements WtTicketPromise
+public class apyn
+  extends aptq<apym>
 {
-  apyn(apyl paramapyl, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, apyo paramapyo) {}
+  public static apym a()
+  {
+    apym localapym2 = (apym)apub.a().a(581);
+    apym localapym1 = localapym2;
+    if (localapym2 == null) {
+      localapym1 = new apym();
+    }
+    return localapym1;
+  }
   
-  public void Done(Ticket paramTicket)
+  @NonNull
+  public apym a(int paramInt)
+  {
+    return new apym();
+  }
+  
+  @Nullable
+  public apym a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    {
+      apym localapym = apym.a(paramArrayOfaptx[0].jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("Perf", 2, "onParsed " + paramArrayOfaptx[0].jdField_a_of_type_JavaLangString);
+      }
+      return localapym;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Perf", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public void a(apym paramapym)
+  {
+    if (paramapym == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Perf", 2, "onUpdate but newConf==null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Perf", 2, "onUpdate " + paramapym.toString());
+    }
+    SharedPreferences.Editor localEditor = bcad.a().edit();
+    localEditor.putBoolean("disablepreloadproc_new", paramapym.jdField_a_of_type_Boolean);
+    localEditor.putBoolean("disablegettrooplist_new", paramapym.jdField_c_of_type_Boolean);
+    localEditor.putBoolean("disablepredownload_new", paramapym.jdField_b_of_type_Boolean);
+    localEditor.putBoolean("enableautoperf_new", paramapym.d);
+    localEditor.putString("userratio_new", paramapym.jdField_a_of_type_JavaLangString);
+    localEditor.putString("extralsteps_new", paramapym.jdField_b_of_type_JavaLangString);
+    localEditor.putString("predownloadwhitelist_new", paramapym.jdField_c_of_type_JavaLangString);
+    localEditor.putBoolean("enable_thread_suspend", paramapym.f);
+    localEditor.putBoolean("fake_enable_thread_suspend", paramapym.g);
+    localEditor.putBoolean("suspendWhiteListOnly", paramapym.h);
+    localEditor.commit();
+  }
+  
+  public Class<apym> clazz()
+  {
+    return apym.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
+      QLog.d("Perf", 2, "migrateOldVersion");
     }
-    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Apyo != null) {
-      this.jdField_a_of_type_Apyo.a(paramTicket);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Perf", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public int type()
   {
-    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
-    if (this.jdField_a_of_type_Apyo != null) {
-      this.jdField_a_of_type_Apyo.a(null);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
-    if (this.jdField_a_of_type_Apyo != null) {
-      this.jdField_a_of_type_Apyo.a(null);
-    }
+    return 581;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyn
  * JD-Core Version:    0.7.0.1
  */

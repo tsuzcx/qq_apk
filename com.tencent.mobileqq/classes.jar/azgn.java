@@ -1,21 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.qassistant.view.AssistantBackView;
 
-class azgn
-  implements View.OnClickListener
+public class azgn
+  implements OnCompositionLoadedListener
 {
-  azgn(azgj paramazgj, AutoReplyText paramAutoReplyText) {}
+  public azgn(AssistantBackView paramAssistantBackView) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(LottieComposition arg1)
   {
-    if ((azgj.a(this.jdField_a_of_type_Azgj) != null) && (paramView != null))
+    if ((??? == null) || (AssistantBackView.a(this.a)))
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-      azgj.a(this.jdField_a_of_type_Azgj, (View)paramView.getParent(), i);
+      azeu.a("AssistantBackView", "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + AssistantBackView.a(this.a));
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = AIOUtils.dp2px(70.0F, this.a.getResources());
+    int j = AIOUtils.dp2px(70.0F, this.a.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
+    azeu.a("AssistantBackView", "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new akpd(this.a.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    azeu.a("AssistantBackView", "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + AssistantBackView.a(this.a));
+    AssistantBackView.a(this.a, (LottieDrawable)localObject1);
+    if (AssistantBackView.a(this.a))
+    {
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      AssistantBackView.a(this.a, null);
+    }
+    for (;;)
+    {
+      synchronized (AssistantBackView.a(this.a))
+      {
+        AssistantBackView.a(this.a, null);
+        AssistantBackView.a(this.a, null);
+        return;
+      }
+      if (this.a.isEnabled())
+      {
+        this.a.removeCallbacks(AssistantBackView.a(this.a));
+        this.a.post(AssistantBackView.a(this.a));
+      }
+    }
   }
 }
 

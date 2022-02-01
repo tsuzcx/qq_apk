@@ -1,18 +1,17 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class bdbp
 {
-  int jdField_a_of_type_Int;
-  public bdbb a;
-  public AtomicBoolean a;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  bdbb jdField_b_of_type_Bdbb;
-  int c;
+  public void a() {}
   
-  public bdbp()
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public boolean a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    return false;
+  }
+  
+  public boolean a(bdbk parambdbk)
+  {
+    return false;
   }
 }
 

@@ -1,28 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
 
-class atro
-  implements ausn
+public class atro
+  implements TouchWebView.OnScrollChangedListener
 {
-  atro(atrn paramatrn, atrp paramatrp) {}
+  public atro(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void a()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
-    this.jdField_a_of_type_Atrn.a = true;
-    this.jdField_a_of_type_Atrp.a(true);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
-    this.jdField_a_of_type_Atrp.a(false);
+    if (paramInt4 > paramInt2) {
+      if (paramInt2 == 0) {
+        this.a.a.b();
+      }
+    }
+    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
+      return;
+    }
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atro
  * JD-Core Version:    0.7.0.1
  */

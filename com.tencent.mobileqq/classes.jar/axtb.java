@@ -1,6 +1,17 @@
-public abstract interface axtb
+import com.tencent.qphone.base.util.QLog;
+
+class axtb
+  extends axus
 {
-  public abstract void a(boolean paramBoolean);
+  axtb(axsv paramaxsv) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    axsv.a(this.a).b();
+  }
 }
 
 

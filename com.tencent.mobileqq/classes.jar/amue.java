@@ -1,31 +1,69 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amue
-  implements admy
+class amue
+  extends amsu
 {
-  public amue(View paramView, adnb paramadnb, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
+  amue(amud paramamud) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adnb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onGetFriendDateNick.isSuccess=" + paramBoolean + ",uin=" + paramString1 + ",nick=" + paramString2);
+    }
+    if ((TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {
+        this.a.jdField_a_of_type_JavaLangString = paramString2;
+      }
+      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 1;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          amud.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 2) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
+    }
   }
   
-  public void onPermission(int paramInt)
+  protected void onStrangerHeadReady(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adnb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onStrangerHeadReady.isSuccess=" + paramBoolean + ",id=" + paramString1 + ",idType=" + paramInt + ",downloadUrl=" + paramString2);
+    }
+    if ((paramInt != 200) || (TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin))) {}
+    for (;;)
+    {
+      return;
+      this.a.b = paramString2;
+      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 2;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          amud.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 1) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
+    }
   }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    paramJSONObject = paramJSONObject.optString("city", "");
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adnb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

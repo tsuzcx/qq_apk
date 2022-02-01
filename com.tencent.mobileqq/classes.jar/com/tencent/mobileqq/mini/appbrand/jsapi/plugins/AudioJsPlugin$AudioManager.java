@@ -5,8 +5,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import android.util.Log;
-import bhkm;
-import bhlo;
+import bftt;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder.OnErrorListener;
 import com.tencent.mobileqq.mini.sdk.BridgeInfo;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
@@ -374,13 +374,13 @@ class AudioJsPlugin$AudioManager
     {
       if (i != 0)
       {
-        localObject = bhlo.b();
+        localObject = DeviceInfoUtil.getSDCardMemory();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           if (AudioHelper.b(1))
           {
             if (this.this$0.isColorLevel()) {
-              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131697750));
+              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131697896));
             }
             AudioJsPlugin.access$1400(this.this$0, "startRecord", paramBridgeInfo);
             return;
@@ -396,17 +396,17 @@ class AudioJsPlugin$AudioManager
           }
           paramBridgeInfo = this.recorder.getRecordFilPath();
           QLog.i("QQRecorder", 2, "path: " + paramBridgeInfo);
-          bhkm.a(this.context, true);
+          bftt.a(this.context, true);
           this.recorder.recordStart();
           setFateOfRecorder(0);
           return;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131717722));
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131717958));
         AudioJsPlugin.access$1400(this.this$0, "startRecord", paramBridgeInfo);
         return;
       }
     }
-    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694020));
+    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694120));
     AudioJsPlugin.access$1400(this.this$0, "startRecord", paramBridgeInfo);
   }
   

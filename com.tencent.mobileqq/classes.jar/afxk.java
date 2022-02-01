@@ -1,23 +1,34 @@
-import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForAutoReply;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class afxk
-  implements View.OnClickListener
+class afxk
+  extends ClickableSpan
 {
-  public afxk(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  afxk(afxj paramafxj, MessageForAutoReply paramMessageForAutoReply, agql paramagql) {}
   
-  public void onClick(View paramView)
+  public void onClick(@NonNull View paramView)
   {
-    Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
-    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    localIntent.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(localIntent, 111);
-    EventCollector.getInstance().onViewClicked(paramView);
+    afxj.a(this.jdField_a_of_type_Afxj, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply.senderuin.equals(this.jdField_a_of_type_Afxj.a.getCurrentAccountUin()))
+    {
+      paramTextPaint.setColor(this.jdField_a_of_type_Agql.d.getCurrentTextColor());
+      paramTextPaint.setUnderlineText(true);
+      return;
+    }
+    paramTextPaint.setColor(BaseApplication.context.getResources().getColor(2131167030));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

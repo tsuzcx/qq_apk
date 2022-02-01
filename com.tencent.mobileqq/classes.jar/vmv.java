@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vmv
-  implements View.OnClickListener
+class vmv
+  extends SimpleJob
 {
-  public vmv(QCircleContentOperationView paramQCircleContentOperationView) {}
-  
-  public void onClick(View paramView)
+  vmv(vmu paramvmu, String paramString, boolean paramBoolean)
   {
-    if (((QCircleContentOperationView.a(this.a) instanceof vlx)) && (((vlx)QCircleContentOperationView.a(this.a)).a != null)) {
-      ((vlx)QCircleContentOperationView.a(this.a)).a.M_();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Vmu.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 

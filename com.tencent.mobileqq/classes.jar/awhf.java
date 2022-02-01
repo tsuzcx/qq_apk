@@ -1,82 +1,33 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class awhf
-  extends WebViewPlugin
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"setBackgroundDrawableCompat", "", "Landroid/view/View;", "background", "Landroid/graphics/drawable/Drawable;", "setOnClickListener", "listener", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class awhf
 {
-  aasb jdField_a_of_type_Aasb;
-  String jdField_a_of_type_JavaLangString;
-  nlu jdField_a_of_type_Nlu = new awhg(this);
-  
-  public awhf()
+  public static final void a(@NotNull View paramView, @Nullable Drawable paramDrawable)
   {
-    this.mPluginNameSpace = "push";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
-    for (;;)
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setBackgroundDrawableCompat");
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      int i;
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        i = paramJsBridgeListener.optInt("appid");
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-        this.jdField_a_of_type_Aasb.a().a(i, this.jdField_a_of_type_Nlu);
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-        }
-        return false;
-      }
-      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_Aasb.a().a(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-          }
-        }
-      }
+      paramView.setBackground(paramDrawable);
+      return;
     }
-    return false;
+    paramView.setBackgroundDrawable(paramDrawable);
   }
   
-  public void onCreate()
+  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
   {
-    super.onCreate();
-    if (this.jdField_a_of_type_Aasb == null)
-    {
-      this.jdField_a_of_type_Aasb = aasb.a();
-      this.jdField_a_of_type_Aasb.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Aasb != null) {
-      this.jdField_a_of_type_Aasb.b();
-    }
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
+    paramView.setOnClickListener((View.OnClickListener)new awhg(paramFunction0));
   }
 }
 

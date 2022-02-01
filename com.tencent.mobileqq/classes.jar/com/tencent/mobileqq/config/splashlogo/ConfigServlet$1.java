@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import arry;
+import aqlw;
 import java.io.File;
 
 public class ConfigServlet$1
   implements Runnable
 {
-  public ConfigServlet$1(arry paramarry, File paramFile, String paramString) {}
+  public ConfigServlet$1(aqlw paramaqlw, File paramFile, String paramString) {}
   
   /* Error */
   public void run()
@@ -128,12 +128,12 @@ public class ConfigServlet$1
     //   236: invokevirtual 132	java/io/File:delete	()Z
     //   239: pop
     //   240: aload_0
-    //   241: getfield 15	com/tencent/mobileqq/config/splashlogo/ConfigServlet$1:this$0	Larry;
-    //   244: invokevirtual 138	arry:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   241: getfield 15	com/tencent/mobileqq/config/splashlogo/ConfigServlet$1:this$0	Laqlw;
+    //   244: invokevirtual 138	aqlw:getAppRuntime	()Lmqq/app/AppRuntime;
     //   247: checkcast 140	com/tencent/common/app/AppInterface
     //   250: aload 12
     //   252: aload 9
-    //   254: invokestatic 145	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/io/File;)Z
+    //   254: invokestatic 146	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/io/File;)Z
     //   257: istore 7
     //   259: iload_2
     //   260: istore_1
@@ -147,18 +147,18 @@ public class ConfigServlet$1
     //   275: iload 8
     //   277: ifeq +93 -> 370
     //   280: aload 9
-    //   282: invokestatic 151	oicq/wlogin_sdk/tools/MD5:getFileMD5	(Ljava/io/File;)Ljava/lang/String;
+    //   282: invokestatic 152	oicq/wlogin_sdk/tools/MD5:getFileMD5	(Ljava/io/File;)Ljava/lang/String;
     //   285: aload 11
     //   287: iconst_1
     //   288: aaload
-    //   289: invokevirtual 155	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   289: invokevirtual 156	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   292: ifeq +375 -> 667
     //   295: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   298: ifeq +11 -> 309
     //   301: ldc 50
     //   303: iconst_2
-    //   304: ldc 157
-    //   306: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   304: ldc 158
+    //   306: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   309: new 30	java/io/File
     //   312: dup
     //   313: new 115	java/lang/StringBuilder
@@ -171,13 +171,13 @@ public class ConfigServlet$1
     //   329: iconst_0
     //   330: aaload
     //   331: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: ldc 162
+    //   334: ldc 163
     //   336: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: aload 11
     //   341: iconst_1
     //   342: aaload
     //   343: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   346: ldc 162
+    //   346: ldc 163
     //   348: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   351: aload 11
     //   353: iconst_2
@@ -185,7 +185,7 @@ public class ConfigServlet$1
     //   355: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   358: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   361: invokespecial 126	java/io/File:<init>	(Ljava/lang/String;)V
-    //   364: invokevirtual 165	java/io/File:createNewFile	()Z
+    //   364: invokevirtual 166	java/io/File:createNewFile	()Z
     //   367: pop
     //   368: iconst_1
     //   369: istore_1
@@ -197,7 +197,7 @@ public class ConfigServlet$1
     //   382: ifeq +11 -> 393
     //   385: ldc 50
     //   387: iconst_2
-    //   388: ldc 167
+    //   388: ldc 168
     //   390: invokestatic 56	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   393: aload 9
     //   395: ifnull +17 -> 412
@@ -216,20 +216,20 @@ public class ConfigServlet$1
     //   426: invokevirtual 132	java/io/File:delete	()Z
     //   429: pop
     //   430: aload 10
-    //   432: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   432: invokevirtual 171	java/io/FileInputStream:close	()V
     //   435: return
     //   436: astore 11
     //   438: aload 11
-    //   440: invokevirtual 173	java/io/FileNotFoundException:printStackTrace	()V
+    //   440: invokevirtual 174	java/io/FileNotFoundException:printStackTrace	()V
     //   443: iload_2
     //   444: istore_1
     //   445: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   448: ifeq -78 -> 370
     //   451: ldc 50
     //   453: iconst_2
-    //   454: ldc 175
+    //   454: ldc 176
     //   456: aload 11
-    //   458: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   458: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   461: iload_2
     //   462: istore_1
     //   463: goto -93 -> 370
@@ -242,9 +242,9 @@ public class ConfigServlet$1
     //   479: ifeq +13 -> 492
     //   482: ldc 50
     //   484: iconst_2
-    //   485: ldc 180
+    //   485: ldc 181
     //   487: aload 10
-    //   489: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   489: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   492: aload_0
     //   493: getfield 17	com/tencent/mobileqq/config/splashlogo/ConfigServlet$1:jdField_a_of_type_JavaIoFile	Ljava/io/File;
     //   496: invokevirtual 129	java/io/File:exists	()Z
@@ -254,53 +254,53 @@ public class ConfigServlet$1
     //   506: invokevirtual 132	java/io/File:delete	()Z
     //   509: pop
     //   510: aload 9
-    //   512: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   512: invokevirtual 171	java/io/FileInputStream:close	()V
     //   515: return
     //   516: astore 9
     //   518: aload 9
-    //   520: invokevirtual 181	java/lang/Exception:printStackTrace	()V
+    //   520: invokevirtual 182	java/lang/Exception:printStackTrace	()V
     //   523: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   526: ifeq -91 -> 435
     //   529: ldc 50
     //   531: iconst_2
-    //   532: ldc 183
+    //   532: ldc 184
     //   534: aload 9
-    //   536: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   536: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   539: return
     //   540: astore 9
     //   542: aload 9
-    //   544: invokevirtual 181	java/lang/Exception:printStackTrace	()V
+    //   544: invokevirtual 182	java/lang/Exception:printStackTrace	()V
     //   547: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   550: ifeq -115 -> 435
     //   553: ldc 50
     //   555: iconst_2
-    //   556: ldc 183
+    //   556: ldc 184
     //   558: aload 9
-    //   560: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   560: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   563: return
     //   564: astore 9
     //   566: aconst_null
     //   567: astore 10
     //   569: aload 10
-    //   571: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   571: invokevirtual 171	java/io/FileInputStream:close	()V
     //   574: aload 9
     //   576: athrow
     //   577: astore 10
     //   579: aload 10
-    //   581: invokevirtual 181	java/lang/Exception:printStackTrace	()V
+    //   581: invokevirtual 182	java/lang/Exception:printStackTrace	()V
     //   584: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   587: ifeq -13 -> 574
     //   590: ldc 50
     //   592: iconst_2
-    //   593: ldc 183
+    //   593: ldc 184
     //   595: aload 10
-    //   597: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   597: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   600: goto -26 -> 574
     //   603: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   606: ifeq +11 -> 617
     //   609: ldc 50
     //   611: iconst_2
-    //   612: ldc 185
+    //   612: ldc 186
     //   614: invokestatic 56	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   617: aload_0
     //   618: getfield 17	com/tencent/mobileqq/config/splashlogo/ConfigServlet$1:jdField_a_of_type_JavaIoFile	Ljava/io/File;

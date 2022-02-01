@@ -1,25 +1,10 @@
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class wrv
+  extends vko
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public boolean a;
-  public int b;
-  public String b;
-  public JSONObject b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public ArrayList<String> a;
+  public boolean a = true;
 }
 
 

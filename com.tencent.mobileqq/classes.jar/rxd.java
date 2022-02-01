@@ -1,75 +1,26 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rxd
-  implements Manager
+final class rxd
+  implements View.OnClickListener
 {
-  public static int a;
-  public static int b;
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  HashMap<Long, Bundle> b;
+  private long jdField_a_of_type_Long;
   
-  static
+  rxd(TextView paramTextView, VideoInfo.RichTitleInfo paramRichTitleInfo, VideoInfo paramVideoInfo) {}
+  
+  public void onClick(View paramView)
   {
-    jdField_b_of_type_Int = 1;
-  }
-  
-  public rxd(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a(int paramInt) {}
-  
-  public void a(TroopMemberApiService paramTroopMemberApiService)
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
-    }
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!zom.b(paramString))) {}
-    for (;;)
+    if ((this.jdField_a_of_type_Long == 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 2000L))
     {
-      rxe localrxe = new rxe(this);
-      beyg localbeyg = new beyg();
-      localbeyg.jdField_a_of_type_Azrg = new rxf(this);
-      beyb localbeyb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      localrxe.addFilter(new Class[] { berh.class });
-      localbeyb.a(localrxe);
-      localbeyg.i = paramString;
-      localbeyg.jdField_a_of_type_Boolean = true;
-      localbeyg.jdField_b_of_type_Int = 24;
-      localbeyg.jdField_c_of_type_Int = 54;
-      localbeyg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      localbeyg.jdField_c_of_type_JavaLangString = "0";
-      localbeyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      localbeyb.a(localbeyg);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localbeyg.jdField_a_of_type_Long), paramBundle);
-      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localbeyg.jdField_a_of_type_Long), paramBundle);
-      return;
-      a(jdField_a_of_type_Int);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      pay.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.d);
+      rzu.a.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.b);
     }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

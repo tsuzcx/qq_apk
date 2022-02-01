@@ -1,73 +1,16 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayxf
+class ayxf
+  implements View.OnClickListener
 {
-  private final Bundle a = ayxd.a.a();
+  ayxf(ayxd paramayxd) {}
   
-  public ayxf()
+  public void onClick(View paramView)
   {
-    this.a.putString("tid", "personal_live_base");
-    this.a.putString("bid", "b_sng_im_personal_live");
-    this.a.putString("KEY_START_SRC", "default");
-  }
-  
-  public ayxf a(int paramInt)
-  {
-    return a("obj1", paramInt);
-  }
-  
-  public ayxf a(String paramString)
-  {
-    this.a.putString("module", paramString);
-    return this;
-  }
-  
-  public ayxf a(String paramString, int paramInt)
-  {
-    this.a.putString(paramString, String.valueOf(paramInt));
-    return this;
-  }
-  
-  public ayxf a(String paramString1, String paramString2)
-  {
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "null";
-    }
-    this.a.putString(paramString1, str.replace("&", "_"));
-    return this;
-  }
-  
-  public void a()
-  {
-    ayxd.a.a(this.a);
-  }
-  
-  public ayxf b(String paramString)
-  {
-    this.a.putString("action", paramString);
-    return this;
-  }
-  
-  public ayxf c(String paramString)
-  {
-    this.a.putString("source", paramString);
-    return this;
-  }
-  
-  public ayxf d(String paramString)
-  {
-    return a("obj2", paramString);
-  }
-  
-  public ayxf e(String paramString)
-  {
-    return a("obj3", paramString);
-  }
-  
-  public String toString()
-  {
-    return "ReportTask{map=" + this.a + '}';
+    ayxd.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

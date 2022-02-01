@@ -1,10 +1,26 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public abstract interface agpb
+public class agpb
 {
-  public abstract void a(String paramString, int paramInt);
+  public float a;
+  public int a;
+  public agoz a;
+  public ValueAnimator a;
+  public boolean a;
+  public float b;
+  public int b;
+  public ValueAnimator b;
+  public boolean b;
+  public int c;
+  public ValueAnimator c;
+  public int d;
+  public ValueAnimator d;
+  public int e;
+  public int f;
+  public int g;
   
-  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
+  public agpb(SixCombolEffectView paramSixCombolEffectView) {}
 }
 
 

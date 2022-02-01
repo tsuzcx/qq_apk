@@ -1,58 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
-
 public class ynb
-  extends wjm<ymx, yff>
+  extends ync
 {
-  public ynb(ymx paramymx)
-  {
-    super(paramymx);
-  }
-  
-  public void a(@NonNull ymx paramymx, @NonNull yff paramyff)
-  {
-    int i = 1;
-    if (paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      localObject = paramymx.a(paramyff.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramyff.jdField_a_of_type_JavaLangString });
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (!(localObject instanceof ylo))
-    {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramyff.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = (ylo)localObject;
-    ((ylo)localObject).a(paramyff.jdField_a_of_type_JavaUtilList, paramyff.c);
-    CommentLikeFeedItem localCommentLikeFeedItem = (CommentLikeFeedItem)((ylo)localObject).a;
-    if (paramyff.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      localCommentLikeFeedItem.mCommentIsEnd = i;
-      ((CommentLikeFeedItem)((ylo)localObject).a).mCommentLastCookie = paramyff.jdField_b_of_type_JavaLangString;
-      ((CommentLikeFeedItem)((ylo)localObject).a).mCommentCount = paramyff.jdField_b_of_type_Int;
-      ((yme)wth.a(11)).a(((ylo)localObject).a);
-      ymx.a(paramymx).b(paramyff.jdField_a_of_type_JavaLangString);
-      yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d. isEnd:%b, cookie:%s", paramyff.jdField_a_of_type_JavaLangString, Integer.valueOf(((ylo)localObject).b().size()), Boolean.valueOf(paramyff.jdField_a_of_type_Boolean), paramyff.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return yff.class;
-  }
-  
-  public void b(@NonNull ymx paramymx, @NonNull yff paramyff) {}
+  public static final int[] a = { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
+  public static final int[] b = { 2130846677, 2130846678, 2130846679, 2130846680, 2130846681, 2130846682, 2130846683, 2130846684, 2130846685, 2130846686, 2130846687, 2130846688, 2130846690 };
 }
 
 

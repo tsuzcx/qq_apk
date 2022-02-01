@@ -1,42 +1,68 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
+import KQQ.BatchResponse;
+import KQQ.RespBatchProcess;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aotc
+class aotc
+  extends andd
 {
-  public static final HashSet<aotc> a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  aotc(aota paramaota) {}
   
-  static
+  protected void onBatchGetTroopInfoResp(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
-  
-  public aotc(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PushMsg0x210_c7Info{");
-    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this.a.a().removeObserver(this);
+    paramBundle = new TroopInfoData();
+    paramBundle.isMember = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
+      if (paramRespBatchProcess == null)
+      {
+        paramBoolean = true;
+        QLog.d("ark.Troop", 2, paramBoolean);
+      }
+    }
+    else
+    {
+      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
+        break label121;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
+      }
+    }
+    label121:
+    int j;
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      j = paramRespBatchProcess.batch_response_list.size();
+      int i = 0;
+      if (i < j)
+      {
+        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
+        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (((BatchResponse)localObject).type == 1)
+          {
+            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
+            this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
+          }
+        }
+      }
+    } while (j <= 0);
+    aota.a(this.a, this.a.a, paramBundle);
   }
 }
 

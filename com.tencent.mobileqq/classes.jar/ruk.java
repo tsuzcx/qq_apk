@@ -1,66 +1,41 @@
-import android.util.SparseIntArray;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsShuntBarConfigure.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ruk
+final class ruk
+  implements sjr
 {
-  private static final String jdField_a_of_type_JavaLangString = ruk.class.getSimpleName();
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SparseIntArray jdField_b_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private String jdField_b_of_type_JavaLangString;
+  ruk(rum paramrum, HashMap paramHashMap) {}
   
-  public ruk(QQAppInterface paramQQAppInterface)
+  public void a(sjt paramsjt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_JavaLangString = ozs.a();
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.executeOnSubThread(new VideoFeedsShuntBarConfigure.1(this));
-  }
-  
-  public boolean a(VideoInfo.ECommerceEntranceInfo paramECommerceEntranceInfo)
-  {
-    if (paramECommerceEntranceInfo == null) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoExtractFrame", 2, "换链回包 mHasDestory = " + ruj.a().get() + ", vid = " + paramsjt.jdField_b_of_type_JavaLangString);
     }
-    try
+    if ((ruj.a().get()) || (!this.jdField_a_of_type_Rum.jdField_a_of_type_JavaLangString.equals(paramsjt.jdField_b_of_type_JavaLangString))) {}
+    for (;;)
     {
-      boolean bool = bnrf.x(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!bool) {
-        bnrf.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0));
-      }
-      if (bool) {}
-      for (int i = ((Integer)bnrf.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0))).intValue();; i = 0)
+      return;
+      paramsjt = paramsjt.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramsjt.hasNext())
       {
-        int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
-        int j = this.jdField_b_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
-        if ((i + j >= paramECommerceEntranceInfo.f) || (k >= paramECommerceEntranceInfo.e)) {
-          break;
+        sjt localsjt = (sjt)paramsjt.next();
+        if ((localsjt.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localsjt.jdField_c_of_type_JavaLangString)) && (localsjt.jdField_c_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_Rum.jdField_a_of_type_Long))))
+        {
+          this.jdField_a_of_type_Rum.jdField_b_of_type_Int = localsjt.jdField_b_of_type_Int;
+          this.jdField_a_of_type_Rum.jdField_c_of_type_Int = localsjt.jdField_c_of_type_Int;
+          ruj.a(this.jdField_a_of_type_Rum, localsjt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Rum.jdField_b_of_type_Long);
         }
-        k += 1;
-        j += 1;
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, k);
-        this.jdField_b_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, j);
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "video_source_id: " + paramECommerceEntranceInfo.g + ", one_day_display_counts: " + paramECommerceEntranceInfo.f + ", session_display_counts: " + paramECommerceEntranceInfo.e + ", session_has_display_counts: " + k + ", one_day_has_display_counts: " + (i + j));
-        }
-        return true;
       }
-      return false;
-    }
-    catch (Exception paramECommerceEntranceInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + paramECommerceEntranceInfo.getMessage());
+      for (int i = 1; (i == 0) && (QLog.isColorLevel()); i = 0)
+      {
+        QLog.d("VideoExtractFrame", 2, "no found videoInfo.tag = " + this.jdField_a_of_type_Rum.jdField_b_of_type_JavaLangString);
+        return;
       }
     }
-    return false;
   }
 }
 

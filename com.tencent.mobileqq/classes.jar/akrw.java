@@ -1,63 +1,95 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Calendar;
 
-public class akrw
-  extends beyf
+public abstract class akrw
 {
-  public akrw(SendWebPicActivity paramSendWebPicActivity) {}
+  public static float a;
+  public static int a;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    bete localbete = (bete)paramMessage.obj;
-    if ((localbete == null) || (localbete.b != 24) || (localbete.c != 51)) {}
-    do
+    jdField_a_of_type_Float = 0.75F;
+    jdField_a_of_type_Int = 2;
+  }
+  
+  public static String a()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder(aktw.b);
+    localStringBuilder.append("IMG");
+    localStringBuilder.append(localCalendar.get(1));
+    int i = localCalendar.get(2) + 1;
+    if (i < 10)
     {
-      do
-      {
-        return;
-      } while (localbete.f.equals(SendWebPicActivity.a(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send finished!" + SendWebPicActivity.a(this.a));
-        }
-        break;
+      localObject = "0" + i;
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(5);
+      if (i >= 10) {
+        break label300;
       }
-    } while (SendWebPicActivity.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
+      localObject = "0" + i;
+      label108:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(11);
+      if (i >= 10) {
+        break label308;
+      }
+      localObject = "0" + i;
+      label148:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(12);
+      if (i >= 10) {
+        break label316;
+      }
+      localObject = "0" + i;
+      label188:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(13);
+      if (i >= 10) {
+        break label324;
+      }
+    }
+    label300:
+    label308:
+    label316:
+    label324:
+    for (Object localObject = "0" + i;; localObject = Integer.valueOf(i))
     {
-      paramMessage.mergeFrom(localbete.a, 0, localbete.a.length);
-      SendWebPicActivity.a(this.a, true);
-      SendWebPicActivity.a(this.a, localbete.f);
-      SendWebPicActivity.b(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      SendWebPicActivity.c(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler mUuid=" + SendWebPicActivity.b(this.a) + ", mImageMd5=" + SendWebPicActivity.a(this.a) + ", mImageUrl=" + SendWebPicActivity.c(this.a));
+      localStringBuilder.append(localObject);
+      if (new File(localStringBuilder.toString() + ".jpg").exists()) {
+        break label332;
       }
-      SendWebPicActivity.a(this.a).sendEmptyMessage(1001);
-      return;
+      return localStringBuilder.toString() + ".jpg";
+      localObject = Integer.valueOf(i);
+      break;
+      localObject = Integer.valueOf(i);
+      break label108;
+      localObject = Integer.valueOf(i);
+      break label148;
+      localObject = Integer.valueOf(i);
+      break label188;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    label332:
+    localObject = new StringBuilder(localStringBuilder);
+    int j = localStringBuilder.length();
+    i = 1;
+    for (;;)
     {
-      for (;;)
+      if (i < 2147483647)
       {
-        localInvalidProtocolBufferMicroException.printStackTrace();
+        ((StringBuilder)localObject).append('(');
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(')');
+        ((StringBuilder)localObject).append(".jpg");
+        if (new File(((StringBuilder)localObject).toString()).exists()) {}
       }
+      else
+      {
+        return ((StringBuilder)localObject).toString();
+      }
+      ((StringBuilder)localObject).delete(j, ((StringBuilder)localObject).length());
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send error:" + localbete.g);
-    }
-    SendWebPicActivity.a(this.a).sendEmptyMessage(1003);
   }
 }
 

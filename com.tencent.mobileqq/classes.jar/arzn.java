@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
-class arzn
-  implements View.OnClickListener
+public class arzn
+  implements DialogInterface.OnDismissListener
 {
-  arzn(arzm paramarzm, WindowManager paramWindowManager) {}
+  public arzn(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Arzm.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

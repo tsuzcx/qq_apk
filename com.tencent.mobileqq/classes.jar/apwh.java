@@ -1,37 +1,21 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.SongInfo;
-
-public final class apwh
-  implements axrb
+public class apwh
 {
-  private String a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public apwh(String paramString)
+  public apwh(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    this.a = paramString;
-  }
-  
-  public String getToken()
-  {
-    return apwg.a();
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apwh
  * JD-Core Version:    0.7.0.1
  */

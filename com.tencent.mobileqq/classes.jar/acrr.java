@@ -1,26 +1,56 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acrr
-  implements ValueAnimator.AnimatorUpdateListener
+public class acrr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  acrr(acrq paramacrq, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2) {}
+  public acrr(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    int i = this.jdField_a_of_type_Int;
-    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
-    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin <= acrq.a(this.jdField_a_of_type_Acrq)) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= acrq.b(this.jdField_a_of_type_Acrq))) && (acrq.a(this.jdField_a_of_type_Acrq).a))
+    int i;
+    label43:
+    QQAppInterface localQQAppInterface;
+    String str1;
+    if (paramBoolean)
     {
-      acrq.a(this.jdField_a_of_type_Acrq);
-      return;
+      i = 1;
+      bkwm.d(i);
+      bkwm.a(paramBoolean);
+      bkwm.a(true);
+      if (!paramBoolean) {
+        break label108;
+      }
+      QQToast.a(this.a.getBaseContext(), 2, 2131717529, 2000).a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label131;
+      }
+      str1 = "0X8008236";
+      label60:
+      if (!paramBoolean) {
+        break label138;
+      }
     }
-    acrq.a(this.jdField_a_of_type_Acrq).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Acrq.a((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin - acrq.a(this.jdField_a_of_type_Acrq)) * 1.0F / (acrq.b(this.jdField_a_of_type_Acrq) - acrq.a(this.jdField_a_of_type_Acrq)));
+    label131:
+    label138:
+    for (String str2 = "0X8008236";; str2 = "0X8008235")
+    {
+      odq.a(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "", "", "", "", false);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+      label108:
+      QQToast.a(this.a.getBaseContext(), 2, 2131717527, 2000).a();
+      break label43;
+      str1 = "0X8008235";
+      break label60;
+    }
   }
 }
 

@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import com.tencent.qphone.base.util.QLog;
 
-class awsn
-  extends aojs
+public class awsn
+  implements DialogInterface.OnClickListener
 {
-  awsn(awsk paramawsk) {}
+  public awsn(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
-      awsk.a(awsk.a(this.a), 1, paramString);
+    awkj.a(this.jdField_a_of_type_AndroidAppActivity, 302);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if ((awsk.a(this.a).a() == 1) && (awsk.a(this.a).a().equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
-      }
-      if (awsk.a(this.a) != null)
-      {
-        awsk.a(this.a).finish();
-        QQToast.a(awsk.a(this.a), 2131692855, 1).a();
-      }
-      awsk.a(awsk.a(this.a), 1, paramString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
   }
 }
 

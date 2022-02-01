@@ -1,15 +1,8 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
-
-class qhl
-  extends qfy
+public abstract interface qhl
 {
-  qhl(qhk paramqhk) {}
+  public abstract void a();
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
-  {
-    qhk.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
-  }
+  public abstract void b();
 }
 
 

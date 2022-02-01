@@ -1,37 +1,28 @@
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+
 public class ofv
+  extends amyh
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g;
+  public ofv(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public ofv()
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700417));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
       }
-      paramObject = (ofv)paramObject;
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700396));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847005);
   }
 }
 

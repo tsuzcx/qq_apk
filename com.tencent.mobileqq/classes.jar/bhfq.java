@@ -1,24 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.widget.OvalProgress;
 
-final class bhfq
-  implements DownloadParams.DecodeHandler
+public class bhfq
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    int i;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
-      i = ((int[])(int[])paramDownloadParams)[0];
-    }
-    for (paramDownloadParams = bhmq.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
-      return paramDownloadParams;
-    }
-  }
+  public double a;
+  public double b;
+  public double c;
+  public double d;
+  public double e;
+  
+  public bhfq(OvalProgress paramOvalProgress) {}
 }
 
 

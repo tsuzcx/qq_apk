@@ -1,22 +1,8 @@
-final class vhi<T>
+import feedcloud.FeedCloudMeta.StUser;
+
+public abstract interface vhi
 {
-  public final T a;
-  public vhi<T> a;
-  public vhi<T> b;
-  
-  public vhi()
-  {
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Vhi = this;
-    this.b = this;
-  }
-  
-  public vhi(T paramT, vhi<T> paramvhi1, vhi<T> paramvhi2)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Vhi = paramvhi1;
-    this.b = paramvhi2;
-  }
+  public abstract void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser);
 }
 
 

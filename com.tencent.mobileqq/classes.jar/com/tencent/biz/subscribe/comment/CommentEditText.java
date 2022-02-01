@@ -1,7 +1,5 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaio;
-import aaip;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -9,14 +7,15 @@ import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.theme.ISkinIgnoreTypeface;
-import com.tencent.theme.TextHook;
+import zfm;
+import zfn;
 
 public class CommentEditText
   extends EditText
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 140;
-  private aaip jdField_a_of_type_Aaip;
+  private zfn jdField_a_of_type_Zfn;
   
   public CommentEditText(Context paramContext)
   {
@@ -26,17 +25,12 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new aaio(this));
+    addTextChangedListener(new zfm(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-  }
-  
-  public void a()
-  {
-    setTypeface(TextHook.getInstance().getSystemDefaultFont());
   }
   
   public boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
@@ -59,9 +53,9 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(aaip paramaaip)
+  public void setOnInputBackListener(zfn paramzfn)
   {
-    this.jdField_a_of_type_Aaip = paramaaip;
+    this.jdField_a_of_type_Zfn = paramzfn;
   }
 }
 

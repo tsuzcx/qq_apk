@@ -1,26 +1,49 @@
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import java.util.List;
+
 public class osx
+  implements owf
 {
-  public int a;
-  public long a;
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public osx(String paramString, long paramLong, CharSequence paramCharSequence)
+  public osx(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<ouo> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    this(paramString, paramLong, paramCharSequence, 0);
+    QLog.d("ReadInJoyCommentListFragment", 1, "onCommentListLoad anchor");
+    if (!paramBoolean1) {}
+    do
+    {
+      return;
+      paramList = ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).a().a();
+    } while (paramList == null);
+    if (!TextUtils.isEmpty(paramList.b))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(true, paramList.a, paramList.b);
+    }
+    for (;;)
+    {
+      paramList.a(false);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
+    }
   }
   
-  public osx(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  public void onCommentStateError(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    paramString = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramString = "";
-    }
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      if (paramInt == 1001) {
+        yyi.a(1, 2131717280);
+      }
+    } while (paramInt != 1003);
+    yyi.a(1, 2131717283);
   }
 }
 

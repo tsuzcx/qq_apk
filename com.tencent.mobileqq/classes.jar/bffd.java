@@ -1,14 +1,9 @@
-import android.net.Uri;
-
-class bffd
-  implements bfjp
+public class bffd
 {
-  bffd(bffc parambffc) {}
-  
-  public void a(Uri paramUri)
-  {
-    this.a.a.a = paramUri;
-  }
+  int jdField_a_of_type_Int;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  int b;
+  int c;
 }
 
 

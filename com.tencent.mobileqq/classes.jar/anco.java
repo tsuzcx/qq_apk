@@ -1,42 +1,52 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anco
-  implements anpf
+  extends andd
 {
-  public anco(CmGameSubProcessHandler.1 param1) {}
+  public anco(TroopManager paramTroopManager) {}
   
-  public void a(int paramInt)
+  protected void onActiveExtTroop(boolean paramBoolean, String paramString)
   {
-    int i = 0;
-    ApolloCmdChannel localApolloCmdChannel = anbd.a();
-    if (localApolloCmdChannel != null) {}
-    for (;;)
+    QLog.i("troop_ext", 1, "onActiveExtTroop success: " + paramBoolean + " troopUin: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      ((anca)this.a.a.getBusinessHandler(20)).j(paramString);
+    }
+  }
+  
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  {
+    QLog.i("troop_ext", 1, "onGetTroopInfoResult success: troopUin: " + paramString);
+  }
+  
+  protected void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      try
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        if (!QLog.isColorLevel()) {
-          break label106;
-        }
-        QLog.d("cmgame_process.CmGameSubProcessHandler", 2, new Object[] { "createGameShortCut errorCode:", Integer.valueOf(paramInt) });
-      }
-      catch (Exception localException)
-      {
-        JSONObject localJSONObject;
-        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, "createGameShortCut Exception:" + localException);
-        return;
-      }
-      localJSONObject = new JSONObject();
-      localJSONObject.put("ret", i);
-      localApolloCmdChannel.callbackFromRequest(this.a.a, i, "cs.create_xy_shortcut.local", localJSONObject.toString());
-      return;
-      label106:
-      if (paramInt == 1) {
-        i = -1;
+        paramString = (TroopMemberCardInfo)paramArrayList.get(i);
+        this.a.b(paramString.troopuin, paramString.memberuin);
+        i += 1;
       }
     }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    TroopManager.a(this.a, paramInt1, paramInt2, paramString);
+  }
+  
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  {
+    TroopManager.a(this.a, paramString, paramBoolean, paramList, paramInt1, paramLong, paramInt2);
   }
 }
 

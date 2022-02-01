@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bkad;
-import bnyl;
+import bifn;
+import bldq;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class WadlParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<WadlParams> CREATOR = new bnyl();
+  public static final Parcelable.Creator<WadlParams> CREATOR = new bldq();
   static HashMap<Integer, String> a;
   public int a;
   public long a;
@@ -191,7 +191,7 @@ public class WadlParams
       }
       catch (Exception paramString)
       {
-        bkad.a("WadlParams", "parse json exception:" + paramString.getMessage());
+        bifn.a("WadlParams", "parse json exception:" + paramString.getMessage());
         return;
       }
     }
@@ -268,6 +268,7 @@ public class WadlParams
   {
     this.jdField_c_of_type_Int = paramWadlParams.jdField_c_of_type_Int;
     this.jdField_h_of_type_Int = paramWadlParams.jdField_h_of_type_Int;
+    this.m = paramWadlParams.m;
   }
   
   public boolean a(int paramInt)
@@ -302,7 +303,7 @@ public class WadlParams
   
   public String toString()
   {
-    return "WadlParams{actionCode='" + a(this.jdField_b_of_type_Int) + '\'' + ", appId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isRes='" + this.jdField_a_of_type_Boolean + '\'' + ", resType=" + this.jdField_g_of_type_Int + ", versionCode=" + this.jdField_e_of_type_Int + ", apkUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", packageName='" + this.jdField_f_of_type_JavaLangString + '\'' + ", appName='" + this.jdField_j_of_type_JavaLangString + '\'' + ", delayDownload=" + this.jdField_b_of_type_Boolean + ", extraData='" + this.o + '\'' + ", apkChannel='" + this.jdField_c_of_type_JavaLangString + '\'' + ", via='" + this.l + '\'' + ", flags=" + this.jdField_c_of_type_Int + ", from=" + this.jdField_d_of_type_Int + ", yyStartTime=" + this.jdField_a_of_type_Long + ", yyEndTime=" + this.jdField_b_of_type_Long + ", adtag='" + this.n + '\'' + ", resName='" + this.jdField_h_of_type_JavaLangString + '\'' + ", resIndex='" + this.jdField_f_of_type_Int + '\'' + ", resMD5='" + this.jdField_i_of_type_JavaLangString + '\'' + ", resDir='" + this.jdField_d_of_type_JavaLangString + '\'' + ", pkgSize=" + this.jdField_c_of_type_Long + ", ignoreSpace=" + this.jdField_h_of_type_Int + ", channelNum=" + this.jdField_i_of_type_Int + ", isCancelRequest=" + this.jdField_c_of_type_Boolean + ", extFlags=" + this.jdField_j_of_type_Int + '}';
+    return "WadlParams{actionCode='" + a(this.jdField_b_of_type_Int) + '\'' + ", appId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isRes='" + this.jdField_a_of_type_Boolean + '\'' + ", resType=" + this.jdField_g_of_type_Int + ", versionCode=" + this.jdField_e_of_type_Int + ", apkUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", packageName='" + this.jdField_f_of_type_JavaLangString + '\'' + ", appName='" + this.jdField_j_of_type_JavaLangString + '\'' + ", delayDownload=" + this.jdField_b_of_type_Boolean + ", extraData='" + this.o + '\'' + ", apkChannel='" + this.jdField_c_of_type_JavaLangString + '\'' + ", via='" + this.l + '\'' + ", flags=" + this.jdField_c_of_type_Int + ", from=" + this.jdField_d_of_type_Int + ", fromWebUrl=" + this.m + ", yyStartTime=" + this.jdField_a_of_type_Long + ", yyEndTime=" + this.jdField_b_of_type_Long + ", adtag='" + this.n + '\'' + ", resName='" + this.jdField_h_of_type_JavaLangString + '\'' + ", resIndex='" + this.jdField_f_of_type_Int + '\'' + ", resMD5='" + this.jdField_i_of_type_JavaLangString + '\'' + ", resDir='" + this.jdField_d_of_type_JavaLangString + '\'' + ", pkgSize=" + this.jdField_c_of_type_Long + ", ignoreSpace=" + this.jdField_h_of_type_Int + ", channelNum=" + this.jdField_i_of_type_Int + ", isCancelRequest=" + this.jdField_c_of_type_Boolean + ", extFlags=" + this.jdField_j_of_type_Int + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -1,25 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "value", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"}, k=3, mv={1, 1, 16})
-final class rvf
-  implements ValueAnimator.AnimatorUpdateListener
+class rvf
+  implements View.OnTouchListener
 {
-  rvf(ruz paramruz) {}
+  rvf(rvd paramrvd, GestureDetector paramGestureDetector) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VideoFeedsStressFollowLayout localVideoFeedsStressFollowLayout = this.a.a();
-    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "value");
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
-    }
-    localVideoFeedsStressFollowLayout.a(((Float)paramValueAnimator).floatValue());
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

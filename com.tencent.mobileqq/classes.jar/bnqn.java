@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
+import android.util.Property;
 
-public final class bnqn
-  implements Parcelable.Creator<RedTouchExtendButton.RedInfo>
+class bnqn
+  extends Property<bnqm, Float>
 {
-  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
+  bnqn(bnqm parambnqm, Class paramClass, String paramString)
   {
-    return new RedTouchExtendButton.RedInfo(paramParcel);
+    super(paramClass, paramString);
   }
   
-  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  public Float a(bnqm parambnqm)
   {
-    return new RedTouchExtendButton.RedInfo[paramInt];
+    if (parambnqm != null) {
+      return Float.valueOf(bnqm.a(parambnqm));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bnqm parambnqm, Float paramFloat)
+  {
+    if (parambnqm != null) {
+      bnqm.a(parambnqm, paramFloat.floatValue());
+    }
   }
 }
 

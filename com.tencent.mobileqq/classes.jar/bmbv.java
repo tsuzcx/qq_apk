@@ -1,40 +1,34 @@
-import com.tencent.common.app.AppInterface;
+import android.util.LruCache;
+import android.view.View;
+import androidx.annotation.NonNull;
 
-public class bmbv
+public final class bmbv
 {
-  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  private static final LruCache<String, Long> a = new LruCache(10);
+  
+  public static boolean a(View paramView)
   {
-    if (a(paramString6))
-    {
-      bmbt.a(paramAppInterface, new bmbg().a(paramString1).b("3").c("39815").d(paramString2).e(paramString3).a(new String[] { paramString4 }));
-      return;
-    }
-    bmbt.a(paramAppInterface, paramString1, "3", "300392", paramString3, new String[] { paramString5, paramString4 });
+    Object localObject = paramView.getTag(2131362287);
+    long l = System.currentTimeMillis();
+    paramView.setTag(2131362287, Long.valueOf(l));
+    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
   }
   
-  private static boolean a(String paramString)
+  public static boolean a(@NonNull String paramString)
   {
-    return ("detail".equals(paramString)) || ("tag".equals(paramString)) || ("topic".equals(paramString));
-  }
-  
-  public static void b(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    if (a(paramString6))
+    Long localLong1 = (Long)a.get(paramString);
+    Long localLong2 = Long.valueOf(System.currentTimeMillis());
+    if (localLong1 == null)
     {
-      bmbt.a(paramAppInterface, new bmbg().a(paramString1).b("3").c("39816").d(paramString2).e(paramString3).a(new String[] { paramString4 }));
-      return;
+      a.put(paramString, localLong2);
+      return false;
     }
-    bmbt.a(paramAppInterface, paramString1, "3", "300393", paramString3, new String[] { paramString5, paramString4 });
-  }
-  
-  public static void c(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    if (a(paramString6))
+    if (Math.abs(localLong2.longValue() - localLong1.longValue()) >= 500L)
     {
-      bmbt.a(paramAppInterface, new bmbg().a(paramString1).b("2").c("200778").d(paramString2).e(paramString3).a(new String[] { paramString4 }));
-      return;
+      a.put(paramString, localLong2);
+      return false;
     }
-    bmbt.a(paramAppInterface, paramString1, "2", "210393", paramString3, new String[] { paramString5, paramString4 });
+    return true;
   }
 }
 

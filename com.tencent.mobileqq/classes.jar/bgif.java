@@ -1,37 +1,23 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Pair;
 
-public class bgif
-  extends bghr
+class bgif
+  extends bgin
 {
-  public bgif(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public void a(String paramString)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.a = 7;
+    QLog.i("GLDrawable", 1, paramString);
   }
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a(String paramString, Exception paramException)
   {
-    return null;
+    QLog.e("GLDrawable", 1, paramString, paramException);
   }
   
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public boolean a(int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
   {
-    return false;
+    bgha.a(paramString1, paramLong, new Pair[] { new Pair("status_code", paramString2), new Pair("status_msg", paramString3) });
   }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

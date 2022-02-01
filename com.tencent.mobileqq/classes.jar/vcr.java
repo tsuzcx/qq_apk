@@ -1,9 +1,28 @@
-class vcr
-  implements aaav
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+
+public class vcr
+  extends vbo
 {
-  vcr(vcq paramvcq) {}
+  public vcr(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  {
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+  }
   
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject) {}
+  public vbl a(int paramInt)
+  {
+    return new vcz(a(), this);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
 }
 
 

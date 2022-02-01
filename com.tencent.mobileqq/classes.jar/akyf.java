@@ -1,22 +1,218 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import android.annotation.SuppressLint;
+import android.graphics.Point;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
+import java.lang.ref.WeakReference;
 
-public class akyf
-  extends beyr
+public class akyf<T extends BaseActivity>
+  implements View.OnClickListener
 {
-  public akyf(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  private static int jdField_b_of_type_Int = -1;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private akxy jdField_a_of_type_Akxy;
+  protected akyc a;
+  protected akyt a;
+  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  public String a;
+  protected WeakReference<QQAppInterface> a;
+  private boolean jdField_a_of_type_Boolean;
+  protected WeakReference<T> b;
+  private boolean jdField_b_of_type_Boolean;
+  private int c = -1;
+  private int d = -1;
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected String a()
   {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.a.b();
+    if (akxv.a().c()) {
+      return akxv.a().b();
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    super.onLoadSuccessed(paramURLDrawable);
-    this.a.d();
+    this.jdField_a_of_type_Boolean = true;
   }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    boolean bool = true;
+    akxv localakxv = akxv.a();
+    if ((!localakxv.c()) || (!this.jdField_a_of_type_Boolean)) {}
+    int i;
+    label102:
+    do
+    {
+      do
+      {
+        int j;
+        int k;
+        do
+        {
+          return;
+          i = paramMotionEvent.getAction();
+          j = (int)paramMotionEvent.getRawX();
+          k = (int)paramMotionEvent.getRawY();
+          if (i == 0)
+          {
+            if (!localakxv.a(j, k))
+            {
+              this.jdField_b_of_type_Boolean = bool;
+              this.jdField_a_of_type_Long = localakxv.jdField_a_of_type_Long;
+              if (!this.jdField_b_of_type_Boolean) {
+                break label102;
+              }
+              this.c = j;
+            }
+            for (this.d = k;; this.d = -1)
+            {
+              this.jdField_a_of_type_Int = 0;
+              return;
+              bool = false;
+              break;
+              this.c = -1;
+            }
+          }
+          if (i != 2) {
+            break;
+          }
+        } while ((!this.jdField_b_of_type_Boolean) || (Math.pow(this.c - j, 2.0D) + Math.pow(this.d - k, 2.0D) <= jdField_b_of_type_Int));
+        this.jdField_a_of_type_Int = 2;
+      } while (!com.tencent.TMG.utils.QLog.isColorLevel());
+      com.tencent.TMG.utils.QLog.d("CommonSelectableMenu", 0, "detect scrolling.");
+      return;
+    } while (((i != 1) && (i != 3)) || (!this.jdField_b_of_type_Boolean));
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.d("CommonSelectableMenu", 0, "detect taping.");
+      }
+      long l = localakxv.jdField_a_of_type_Long;
+      if ((this.jdField_a_of_type_Long == -1L) || (l == -1L)) {
+        break label281;
+      }
+      if (this.jdField_a_of_type_Long == l) {
+        localakxv.d();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = -1L;
+      return;
+      label281:
+      localakxv.d();
+    }
+  }
+  
+  protected void a(bgaz parambgaz)
+  {
+    parambgaz.a(2131365216, amtj.a(2131701394), 2130838962);
+    parambgaz.a(2131367094, amtj.a(2131701392), 2130838971);
+    parambgaz.a(2131366347, amtj.a(2131701393), 2130838970);
+  }
+  
+  public void a(T paramT, ContainerView paramContainerView)
+  {
+    this.jdField_a_of_type_JavaLangString = paramContainerView.a();
+    this.jdField_a_of_type_Akyt = new akyt();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT.app);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
+    a(paramContainerView);
+    if (jdField_b_of_type_Int == -1)
+    {
+      int i = ViewConfiguration.get(paramT).getScaledTouchSlop();
+      jdField_b_of_type_Int = i * i;
+    }
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  protected void a(ContainerView paramContainerView)
+  {
+    paramContainerView.a.setOnTouchListener(new akyg(this));
+    paramContainerView.a.setOnLongClickListener(new akyh(this, paramContainerView));
+  }
+  
+  protected void a(ContainerView paramContainerView, View paramView)
+  {
+    if ((paramView instanceof akyk))
+    {
+      akyk localakyk = (akyk)paramView;
+      if (paramView.getContext() != null)
+      {
+        bgaz localbgaz = new bgaz();
+        a(localbgaz);
+        if (this.jdField_a_of_type_Akyc == null)
+        {
+          this.jdField_a_of_type_Akyc = new akys();
+          this.jdField_a_of_type_Akyc.a(this);
+        }
+        int i = this.jdField_a_of_type_AndroidGraphicsPoint.y - AIOUtils.dp2px(10.0F, paramView.getResources());
+        int j = this.jdField_a_of_type_AndroidGraphicsPoint.x - ViewUtils.dpToPx(14.0F);
+        this.jdField_a_of_type_Akyc.a(localbgaz, false);
+        this.jdField_a_of_type_Akyc.a(j);
+        this.jdField_a_of_type_Akyc.b(i);
+        this.jdField_a_of_type_Akyc.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Akyc.jdField_b_of_type_Int = j;
+        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+          com.tencent.qphone.base.util.QLog.d("CommonSelectableMenu", 2, "showMenuView: pointY -> " + i + ", lastShowX -> " + this.jdField_a_of_type_AndroidGraphicsPoint.x);
+        }
+        if (this.jdField_a_of_type_Akxy == null) {
+          this.jdField_a_of_type_Akxy = new akxy();
+        }
+        this.jdField_a_of_type_Akxy.a(localakyk);
+        this.jdField_a_of_type_Akxy.a(paramContainerView, paramContainerView);
+        this.jdField_a_of_type_Akxy.a(this.jdField_a_of_type_Akyc);
+        this.jdField_a_of_type_Akyt.a(paramView, this.jdField_a_of_type_Akyc);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    akxv localakxv = akxv.a();
+    if ((localakxv.c()) && (localakxv.a())) {
+      localakxv.d();
+    }
+  }
+  
+  public void b(ContainerView paramContainerView)
+  {
+    if ((paramContainerView != null) && (paramContainerView.a != null))
+    {
+      paramContainerView.a.setOnLongClickListener(null);
+      paramContainerView.a.setOnClickListener(null);
+    }
+    if (this.jdField_a_of_type_Akxy != null)
+    {
+      this.jdField_a_of_type_Akxy.d();
+      this.jdField_a_of_type_Akxy = null;
+    }
+    if (this.jdField_a_of_type_Akyc != null)
+    {
+      this.jdField_a_of_type_Akyc.a(null);
+      this.jdField_a_of_type_Akyc = null;
+    }
+    this.jdField_a_of_type_Akyt = null;
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 

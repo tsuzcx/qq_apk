@@ -1,19 +1,140 @@
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage.RIJTipMessageManager.3;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import mqq.app.AppRuntime;
 
 public class pgz
-  extends qtv
 {
-  pgz(pgw parampgw) {}
+  private phc jdField_a_of_type_Phc;
+  private pke jdField_a_of_type_Pke;
+  private pkg jdField_a_of_type_Pkg;
+  private spm jdField_a_of_type_Spm;
   
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
+  public pgz(phc paramphc)
   {
-    if ((paramBoolean) && (paramInt == 0)) {
-      ThreadManager.excute(new RIJSkinOperationPopupStep.5.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 16, null, true);
+    this.jdField_a_of_type_Phc = paramphc;
+  }
+  
+  private void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo)
+  {
+    if (this.jdField_a_of_type_Spm == null) {
+      if (pay.k() != 2) {
+        break label98;
+      }
     }
+    label98:
+    for (this.jdField_a_of_type_Spm = new spi(this.jdField_a_of_type_Phc.a());; this.jdField_a_of_type_Spm = new spk(this.jdField_a_of_type_Phc.a(), LayoutInflater.from(this.jdField_a_of_type_Phc.a()).inflate(2131560283, this.jdField_a_of_type_Phc.a(), false)))
+    {
+      this.jdField_a_of_type_Spm.a(new phb(this));
+      this.jdField_a_of_type_Phc.a().addHeaderView(this.jdField_a_of_type_Spm.a());
+      this.jdField_a_of_type_Spm.a(paramKandianMsgBoxRedPntInfo);
+      this.jdField_a_of_type_Spm.a();
+      this.jdField_a_of_type_Phc.a().postInvalidate();
+      return;
+    }
+  }
+  
+  private void k()
+  {
+    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = ((KandianMergeManager)pay.a().getManager(162)).a();
+    if (localKandianMsgBoxRedPntInfo == null)
+    {
+      b();
+      return;
+    }
+    a(localKandianMsgBoxRedPntInfo);
+  }
+  
+  public phc a()
+  {
+    return this.jdField_a_of_type_Phc;
+  }
+  
+  public void a()
+  {
+    if (pay.k() == 0) {}
+    while (this.jdField_a_of_type_Phc.a() != 0) {
+      return;
+    }
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      k();
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new RIJTipMessageManager.3(this));
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Spm != null)
+      {
+        this.jdField_a_of_type_Phc.a().removeHeaderView(this.jdField_a_of_type_Spm.a());
+        this.jdField_a_of_type_Phc.a().postInvalidate();
+        this.jdField_a_of_type_Spm = null;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Spm != null)
+    {
+      this.jdField_a_of_type_Spm.b();
+      this.jdField_a_of_type_Spm = null;
+    }
+    e();
+    this.jdField_a_of_type_Pke = null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Phc.a().d();
+    f();
+  }
+  
+  public void e()
+  {
+    f();
+    g();
+  }
+  
+  public void f()
+  {
+    ((KandianMergeManager)pay.a().getManager(162)).b(this.jdField_a_of_type_Pke);
+  }
+  
+  public void g()
+  {
+    ((KandianMergeManager)pay.a().getManager(162)).b(this.jdField_a_of_type_Pkg);
+  }
+  
+  public void h()
+  {
+    i();
+    j();
+  }
+  
+  public void i()
+  {
+    ((KandianMergeManager)pay.a().getManager(162)).a(this.jdField_a_of_type_Pke);
+  }
+  
+  public void j()
+  {
+    ((KandianMergeManager)pay.a().getManager(162)).a(this.jdField_a_of_type_Pkg);
   }
 }
 

@@ -1,33 +1,11 @@
-import android.view.View;
-import android.view.ViewStub;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
 
 public class wcx
-  extends wcw
+  extends vqm
 {
-  protected String a()
+  public wcx(wcv paramwcv, qqstory_service.RspForbidVideo paramRspForbidVideo)
   {
-    return "QCircleFakeFeedPresenter";
-  }
-  
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wcy(this));
-    }
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = paramInt;
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    super(paramRspForbidVideo.result);
   }
 }
 

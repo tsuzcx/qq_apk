@@ -1,22 +1,24 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion$pullConfigFromServer$1", "Lcom/tencent/biz/pubaccount/readinjoy/viola/view/ViolaBaseView$LoadAsyBack;", "onFail", "", "onProcess", "process", "", "onSucc", "result", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rlh
-  implements tjn
+final class rlh
+  extends rlf<rlk, rlj, rli>
 {
-  public void a()
+  public void a(rlk paramrlk, rlj paramrlj, int paramInt, rli paramrli)
   {
-    rlf.a(rle.a);
-  }
-  
-  public void a(@Nullable String paramString)
-  {
-    if (paramString != null)
+    switch (paramInt)
     {
-      rle.a.a(rle.a.a(paramString));
-      rlf.a(rle.a, paramString);
+    default: 
+      paramrlk.a(paramrlj);
+      return;
+    case 1: 
+      paramrlk.a(paramrlj, paramrli.a, paramrli.b);
+      return;
+    case 2: 
+      paramrlk.b(paramrlj, paramrli.a, paramrli.b);
+      return;
+    case 3: 
+      paramrlk.a(paramrlj, paramrli.a, paramrli.c, paramrli.b);
+      return;
     }
+    paramrlk.c(paramrlj, paramrli.a, paramrli.b);
   }
 }
 

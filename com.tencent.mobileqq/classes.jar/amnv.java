@@ -1,8 +1,10 @@
-import com.tencent.mobileqq.data.PhoneContact;
+import android.graphics.Bitmap;
 
 public abstract interface amnv
 {
-  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Bitmap paramBitmap);
 }
 
 

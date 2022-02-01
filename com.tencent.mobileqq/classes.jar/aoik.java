@@ -1,65 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.SingleThreadExecutor;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class aoik
-  extends AbstractExecutorService
+  extends aoim
 {
-  private final int a;
+  public float a;
+  public int a;
+  public long a;
+  public ArCloudConfigInfo a;
+  public String a;
+  public float[] a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
   
-  protected aoik(int paramInt)
+  public aoik()
   {
-    this.a = paramInt;
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
   }
   
-  public static ExecutorService a(int paramInt)
+  public String toString()
   {
-    return new aoik(paramInt);
-  }
-  
-  public static ExecutorService b(int paramInt)
-  {
-    return new SingleThreadExecutor(paramInt);
-  }
-  
-  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
-  {
-    return false;
-  }
-  
-  public void execute(@NonNull Runnable paramRunnable)
-  {
-    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
-  }
-  
-  public boolean isShutdown()
-  {
-    return false;
-  }
-  
-  public boolean isTerminated()
-  {
-    return false;
-  }
-  
-  public void shutdown()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  @NonNull
-  public List<Runnable> shutdownNow()
-  {
-    throw new UnsupportedOperationException();
+    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoik
  * JD-Core Version:    0.7.0.1
  */

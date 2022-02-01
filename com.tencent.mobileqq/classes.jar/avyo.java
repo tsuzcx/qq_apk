@@ -1,27 +1,10 @@
-public class avyo
-  implements anui
+import com.tencent.widget.ListView;
+
+public abstract interface avyo
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public abstract ListView a();
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
-  }
+  public abstract void a();
 }
 
 

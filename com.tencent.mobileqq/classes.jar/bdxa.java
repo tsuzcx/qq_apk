@@ -1,97 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bdxa
-  extends aoib
+public class bdxa
+  implements TextWatcher
 {
-  bdxa(bdwz parambdwz) {}
+  public bdxa(NewTroopContactView paramNewTroopContactView) {}
   
-  protected void a(boolean paramBoolean, bdxd parambdxd)
+  public void afterTextChanged(Editable paramEditable)
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
-      if (parambdxd == null)
-      {
-        ??? = "data is null";
-        QLog.d("SUB_ACCOUNT", 2, (String)???);
-      }
-    }
-    else
-    {
-      if (!bdwz.a(this.a).l) {
-        break label73;
-      }
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(0);
     }
     for (;;)
     {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
+      }
       return;
-      ??? = parambdxd.c;
-      break;
-      label73:
-      if ((!bdwz.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
-        ThreadManager.getSubThreadHandler().postDelayed(bdwz.a(this.a), 100L);
-      }
-      if (parambdxd != null)
-      {
-        if (parambdxd.a()) {
-          bdwt.a(bdwz.a(this.a), parambdxd.a(), 2);
-        }
-        if (parambdxd.b())
-        {
-          ??? = parambdxd.b();
-          if (??? != null)
-          {
-            ??? = ((ArrayList)???).iterator();
-            while (((Iterator)???).hasNext())
-            {
-              localObject2 = (String)((Iterator)???).next();
-              bdwt.c(bdwz.a(this.a), (String)localObject2);
-            }
-          }
-        }
-        parambdxd.a();
-      }
-      synchronized (bdwz.c())
-      {
-        bdwz.c(this.a, false);
-        bdwz.d(this.a, true);
-        if ((parambdxd == null) || (!parambdxd.b)) {
-          continue;
-        }
-        bdwt.a(bdwz.a(this.a), parambdxd.c, false);
-        ??? = (arjg)aran.a().a(607);
-        if ((??? == null) || (((arjg)???).a)) {
-          continue;
-        }
-        bdxb.a(bdwz.a(this.a), parambdxd.c);
-        return;
-      }
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(8);
     }
   }
   
-  protected void b(boolean paramBoolean, bdxd arg2)
-  {
-    synchronized ()
-    {
-      bdwz.a(this.a, false);
-      return;
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void c(boolean paramBoolean, bdxd arg2)
-  {
-    synchronized ()
-    {
-      bdwz.b(this.a, false);
-      return;
-    }
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

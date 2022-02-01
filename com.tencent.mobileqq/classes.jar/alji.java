@@ -1,6 +1,10 @@
-public abstract interface alji
+import android.widget.TextView;
+
+public class alji
 {
-  public abstract void a(String paramString);
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 

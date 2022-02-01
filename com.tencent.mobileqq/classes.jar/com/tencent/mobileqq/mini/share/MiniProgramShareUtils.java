@@ -3,14 +3,13 @@ package com.tencent.mobileqq.mini.share;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anzj;
-import auxu;
-import bhsr;
+import atky;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 import java.util.concurrent.TimeUnit;
@@ -72,7 +72,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = anzj.a(2131705762);; paramJSONObject = anzj.a(2131705763))
+    for (paramJSONObject = amtj.a(2131705992);; paramJSONObject = amtj.a(2131705993))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -228,10 +228,10 @@ public class MiniProgramShareUtils
     }
     int j = 0;
     int i = j;
-    if (!bhsr.a(paramMiniArkShareModel.getTemplateId()))
+    if (!StringUtil.isEmpty(paramMiniArkShareModel.getTemplateId()))
     {
       i = j;
-      if (!bhsr.a(paramMiniArkShareModel.getTemplateData())) {
+      if (!StringUtil.isEmpty(paramMiniArkShareModel.getTemplateData())) {
         i = 2;
       }
     }
@@ -312,7 +312,7 @@ public class MiniProgramShareUtils
     localIntent.putExtra("miniAppShareTemplateId", paramString2);
     localIntent.putExtra("miniAppShareEvent", paramString3);
     localIntent.putExtra("miniAppShareCallbackId", paramInt2);
-    auxu.a(paramContext, localIntent);
+    atky.a(paramContext, localIntent);
   }
   
   public static String updateImagePathToArkMeta(String paramString1, String paramString2)

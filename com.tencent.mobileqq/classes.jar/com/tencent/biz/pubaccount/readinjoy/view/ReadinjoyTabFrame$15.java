@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bhsi;
+import bfyz;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ReadinjoyTabFrame$15
@@ -12,17 +12,17 @@ class ReadinjoyTabFrame$15
   
   public void run()
   {
-    if (ReadinjoyTabFrame.b(this.this$0) != null)
+    if (ReadinjoyTabFrame.c(this.this$0) != null)
     {
-      ReadinjoyTabFrame.b(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.a(), 2130772328));
-      ReadinjoyTabFrame.b(this.this$0).setVisibility(8);
-      bhsi.A(this.this$0.a(), this.this$0.a.getCurrentAccountUin());
+      ReadinjoyTabFrame.c(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.a(), 2130772326));
+      ReadinjoyTabFrame.c(this.this$0).setVisibility(8);
+      bfyz.A(this.this$0.a(), this.this$0.a.getCurrentAccountUin());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.15
  * JD-Core Version:    0.7.0.1
  */

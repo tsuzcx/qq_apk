@@ -1,27 +1,29 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
-class bbsj
-  implements View.OnClickListener
+public class bbsj
+  extends CameraCaptureSession.CaptureCallback
 {
-  bbsj(bbsi parambbsi) {}
+  public bbsj(Camera2Control paramCamera2Control) {}
   
-  public void onClick(View paramView)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    Intent localIntent = new Intent(bbsi.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, PublicFragmentActivity.class);
-    localIntent.putExtra("key_uin", bbsi.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localIntent.putExtra("key_uin_name", bbsi.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    localIntent.putExtra("key_open_via", "history-liaotian");
-    afez.a(bbsi.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-    bbsi.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X800A66B");
-    EventCollector.getInstance().onViewClicked(paramView);
+    bbsr.a(1, "[Camera2]captureStillPicture completed!");
+    Camera2Control.a(this.a, 0L);
+    Camera2Control.e(this.a, false);
+    Camera2Control.a(this.a).a(0);
+    Camera2Control.b(this.a);
+  }
+  
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
+  {
+    bbsr.a(1, "[Camera2]captureStillPicture failed!");
+    Camera2Control.a(this.a, 0L);
   }
 }
 

@@ -14,14 +14,18 @@ class VideoJsPlugin$1
   public void run()
   {
     Activity localActivity = VideoJsPlugin.access$000(this.this$0).getAttachedActivity();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
+    if ((localActivity == null) || (localActivity.isFinishing()))
+    {
       QMLog.w("VideoJsPlugin", "showLoading(). Do nothing, activity is null or finishing");
-    }
-    while (VideoJsPlugin.access$100(this.this$0) != null) {
       return;
     }
-    VideoJsPlugin.access$102(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
-    VideoJsPlugin.access$100(this.this$0).show(1, "loading", null, this.val$title, -1, false);
+    if (VideoJsPlugin.access$100(this.this$0) == null)
+    {
+      VideoJsPlugin.access$102(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
+      VideoJsPlugin.access$100(this.this$0).show(1, "loading", null, this.val$title, -1, false);
+      return;
+    }
+    VideoJsPlugin.access$100(this.this$0).updateMsg(this.val$title);
   }
 }
 

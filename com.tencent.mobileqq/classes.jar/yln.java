@@ -1,36 +1,78 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import android.media.MediaFormat;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class yln
-  extends ylo<BannerFeedItem>
+  extends BusinessHandler
 {
-  public yln(@NonNull BannerFeedItem paramBannerFeedItem)
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public yln(AppInterface paramAppInterface)
   {
-    super(paramBannerFeedItem);
+    super(paramAppInterface);
   }
   
-  public List<StoryVideoItem> a()
+  public MediaFormat a()
   {
-    return new ArrayList(0);
+    return this.jdField_a_of_type_AndroidMediaMediaFormat;
   }
   
-  public void a() {}
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  public LocalMediaInfo a(String paramString)
   {
-    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
-    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
-    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    return true;
+    if (!TextUtils.isEmpty(paramString)) {
+      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    return null;
   }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
+    }
+  }
+  
+  public void a(MediaFormat paramMediaFormat)
+  {
+    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
+  
+  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

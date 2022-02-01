@@ -1,28 +1,49 @@
 public class zjb
 {
-  public static String a(String paramString)
+  private volatile int jdField_a_of_type_Int = 0;
+  private zjl jdField_a_of_type_Zjl;
+  
+  public void a()
   {
-    return "Q.qqstory.record.RMW." + paramString;
+    a(-1);
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    yuk.a(a(paramString1), paramString2);
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Zjl != null) {}
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case -1: 
+      this.jdField_a_of_type_Zjl.p();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Zjl.n();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Zjl.m();
+      return;
+    }
+    this.jdField_a_of_type_Zjl.o();
   }
   
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  public void a(zjl paramzjl)
   {
-    yuk.c(a(paramString1), String.format(paramString2, paramVarArgs));
+    this.jdField_a_of_type_Zjl = paramzjl;
+    a(this.jdField_a_of_type_Int);
   }
   
-  public static void b(String paramString1, String paramString2)
+  public boolean a()
   {
-    yuk.b(a(paramString1), paramString2);
+    return this.jdField_a_of_type_Int == -1;
   }
   
-  public static void c(String paramString1, String paramString2)
+  public boolean b()
   {
-    yuk.c(a(paramString1), paramString2);
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 

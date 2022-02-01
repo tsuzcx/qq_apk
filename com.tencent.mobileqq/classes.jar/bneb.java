@@ -1,65 +1,18 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-public class bneb
-  implements ServiceConnection
+public final class bneb
+  implements Parcelable.Creator<EditVideoParams>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
-  
-  public bneb(bnea parambnea, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
+  public EditVideoParams a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return new EditVideoParams(paramParcel);
   }
   
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  public EditVideoParams[] a(int paramInt)
   {
-    do
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
-        if (QLog.isColorLevel()) {
-          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
-        }
-        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
-      }
-      catch (Exception localException)
-      {
-        synchronized (bnea.a(this.jdField_a_of_type_Bnea))
-        {
-          do
-          {
-            paramIBinder = (bneb)bnea.a(this.jdField_a_of_type_Bnea).poll();
-            if (paramIBinder == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("QZonePluginManger", 2, "continue process");
-            }
-            bnea.a(this.jdField_a_of_type_Bnea, paramIBinder, 300);
-            return;
-            localException = localException;
-          } while (!QLog.isColorLevel());
-          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
-        }
-      }
-      bnea.a(this.jdField_a_of_type_Bnea, false);
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "queue empty");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
-    }
-    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
+    return new EditVideoParams[paramInt];
   }
 }
 

@@ -4,7 +4,7 @@ import NS_MINI_BOOK_SHELF.MiniBookShelf.Information;
 import NS_MINI_BOOK_SHELF.MiniBookShelf.StQueryBookShelfRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhuf;
+import bgau;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -31,37 +31,45 @@ public class BookShelfQueryServlet
   
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = BookShelfQueryRequest.onResponse(paramArrayOfByte).bookInfo.get();
-    if (paramArrayOfByte != null)
+    paramArrayOfByte = BookShelfQueryRequest.onResponse(paramArrayOfByte);
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte = paramArrayOfByte.bookInfo.get();
+    }
+    JSONArray localJSONArray;
+    for (;;)
     {
-      JSONArray localJSONArray = new JSONArray();
+      if (paramArrayOfByte == null) {
+        break label220;
+      }
+      localJSONArray = new JSONArray();
       int i = 0;
-      for (;;)
-      {
-        if (i < paramArrayOfByte.size()) {
-          try
+      label33:
+      if (i < paramArrayOfByte.size()) {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.putOpt("contentId", ((MiniBookShelf.Information)paramArrayOfByte.get(i)).contentId.get());
+          localJSONObject.putOpt("status", Integer.valueOf(((MiniBookShelf.Information)paramArrayOfByte.get(i)).status.get()));
+          localJSONObject.putOpt("msg", ((MiniBookShelf.Information)paramArrayOfByte.get(i)).msg.get());
+          localJSONObject.putOpt("exist", Integer.valueOf(((MiniBookShelf.Information)paramArrayOfByte.get(i)).existStatus.get()));
+          localJSONArray.put(localJSONObject);
+          i += 1;
+          break label33;
+          paramArrayOfByte = null;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
           {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.putOpt("contentId", ((MiniBookShelf.Information)paramArrayOfByte.get(i)).contentId.get());
-            localJSONObject.putOpt("status", Integer.valueOf(((MiniBookShelf.Information)paramArrayOfByte.get(i)).status.get()));
-            localJSONObject.putOpt("msg", ((MiniBookShelf.Information)paramArrayOfByte.get(i)).msg.get());
-            localJSONObject.putOpt("exist", Integer.valueOf(((MiniBookShelf.Information)paramArrayOfByte.get(i)).existStatus.get()));
-            localJSONArray.put(localJSONObject);
-            i += 1;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              QLog.i("BookShelfQueryServlet", 1, "", localThrowable);
-            }
+            QLog.i("BookShelfQueryServlet", 1, "", localThrowable);
           }
         }
       }
-      paramBundle.putString("key_result_data", localJSONArray.toString());
-      notifyObserver(paramIntent, 1081, true, paramBundle, MiniAppObserver.class);
-      return;
     }
+    paramBundle.putString("key_result_data", localJSONArray.toString());
+    notifyObserver(paramIntent, 1081, true, paramBundle, MiniAppObserver.class);
+    return;
+    label220:
     notifyObserver(paramIntent, 1081, false, paramBundle, MiniAppObserver.class);
   }
   
@@ -76,7 +84,7 @@ public class BookShelfQueryServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_book_shelf.QueryBookShelf");
-    paramPacket.putSendData(bhuf.a((byte[])localObject1));
+    paramPacket.putSendData(bgau.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

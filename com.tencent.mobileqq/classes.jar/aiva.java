@@ -1,45 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aiva
-  implements View.OnClickListener
+public class aiva
+  implements Handler.Callback
 {
-  aiva(aiuz paramaiuz, int paramInt) {}
+  public aiva(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    aiuz.a(this.jdField_a_of_type_Aiuz, 2);
-    aiuz.a(this.jdField_a_of_type_Aiuz).a();
-    bdll.b(aiuz.a(this.jdField_a_of_type_Aiuz), "P_CliOper", "Safe_AntiFraud", aiuz.a(this.jdField_a_of_type_Aiuz).a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    Object localObject1 = (Bundle)bhkf.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
-    if (localObject1 != null) {}
-    for (localObject1 = ((Bundle)localObject1).getString("BannerURL");; localObject1 = null)
+    switch (paramMessage.what)
     {
-      Object localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = "https://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
-      }
-      if (this.jdField_a_of_type_Int == 1) {}
-      for (localObject1 = ((String)localObject2).replace("$SUBAPP$", "notice");; localObject1 = ((String)localObject2).replace("$SUBAPP$", "tips"))
-      {
-        localObject1 = ((String)localObject1).replace("$SYSTEM$", "android").replace("$EVILUIN$", aiuz.a(this.jdField_a_of_type_Aiuz).a).replace("$USERUIN$", aiuz.a(this.jdField_a_of_type_Aiuz).getAccount());
-        localObject2 = BaseActivity.sTopActivity;
-        Intent localIntent = new Intent((Context)localObject2, QQBrowserDelegationActivity.class);
-        localIntent.putExtra("injectrecommend", true);
-        localIntent.putExtra("url", (String)localObject1);
-        ((Context)localObject2).startActivity(localIntent);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+    default: 
+      return false;
+    }
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131380242).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getActivity(), 2, amtj.a(2131700763), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      QQToast.a(this.a.getActivity(), 2, amtj.a(2131700773), 0).b(this.a.getActivity().getTitleBarHeight());
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
 import android.os.Bundle;
-import bgpo;
-import bguq;
+import bezc;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.MobileQQ;
@@ -20,8 +20,8 @@ class GameRoomInviteActivity$20
     Object localObject1 = this.this$0.app.getCurrentAccountUin();
     String str = ((TicketManager)localObject2).getSkey(this.this$0.app.getCurrentAccountUin());
     localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("bkn", "" + bguq.b(str));
-    ((Bundle)localObject2).putString("ver", "8.4.5");
+    ((Bundle)localObject2).putString("bkn", "" + TroopUtils.getBknBySkey(str));
+    ((Bundle)localObject2).putString("ver", "8.4.8");
     ((Bundle)localObject2).putString("src", "1");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("uin", this.this$0.app.getCurrentAccountUin());
@@ -31,7 +31,7 @@ class GameRoomInviteActivity$20
     ((HashMap)localObject1).put("BUNDLE", localObject2);
     this.this$0.app.getApplication();
     ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new bgpo("https://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.this$0.a, 0, null, true).execute(new HashMap[] { localObject1 });
+    new bezc("https://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.this$0.a, 0, null, true).execute(new HashMap[] { localObject1 });
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomInviteActivity", 2, "get feed from server start: " + System.currentTimeMillis());
     }

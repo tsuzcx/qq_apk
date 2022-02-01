@@ -1,29 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
 
 public class okm
-  extends pfh
+  implements MessageQueue.IdleHandler
 {
-  public okm(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public okm(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView)
+  public boolean queueIdle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    if (!ardu.a().a())
+    {
+      ardu.a().a().doBindService(BaseApplicationImpl.getApplication());
+      ardu.a().a(new okn(this));
+      return false;
     }
-    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
+    Bundle localBundle = aqyt.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    ardu.a().a(localBundle);
+    return false;
   }
-  
-  public void b(int paramInt)
-  {
-    this.a.f(paramInt);
-  }
-  
-  public void c(int paramInt) {}
 }
 
 

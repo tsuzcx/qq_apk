@@ -1,21 +1,32 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class aijh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aijh(aijg paramaijg, Context paramContext) {}
+  aijh(aijg paramaijg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = agej.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Aijg.a.a.a);
-    paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    aijj localaijj = (aijj)paramView.getTag();
+    if ((localaijj == null) || (!(localaijj instanceof aijj))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
+      View localView = (View)paramView.getParent();
+      if ((localView instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView).hideDirectly();
+      }
+      aijg.a(this.a, localaijj.a);
+      this.a.jdField_a_of_type_JavaUtilList.add(aijg.a(this.a).remove(this.a.getCount() - localaijj.b - 1));
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

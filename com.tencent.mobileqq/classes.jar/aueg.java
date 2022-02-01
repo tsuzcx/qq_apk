@@ -1,10 +1,8 @@
 public abstract interface aueg
 {
-  public abstract void a();
+  public abstract String a();
   
   public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,141 +1,53 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public final class akqe
-  implements Parcelable.Creator<ImageInfo>
+class akqe
+  implements View.OnClickListener
 {
-  public ImageInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramParcel.readInt() == 0)
-    {
-      bool1 = false;
-      localImageInfo.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label412;
-      }
-      bool1 = false;
-      label35:
-      localImageInfo.jdField_b_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 0) {
-        break label417;
-      }
-      bool1 = false;
-      label59:
-      localImageInfo.jdField_c_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label422;
-      }
-      bool1 = false;
-      label74:
-      localImageInfo.jdField_d_of_type_Boolean = bool1;
-      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label427;
-      }
-      bool1 = false;
-      label116:
-      localImageInfo.jdField_e_of_type_Boolean = bool1;
-      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label432;
-      }
-      bool1 = false;
-      label176:
-      localImageInfo.jdField_f_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 0) {
-        break label437;
-      }
-      bool1 = false;
-      label200:
-      localImageInfo.jdField_h_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label442;
-      }
-      bool1 = false;
-      label215:
-      localImageInfo.jdField_i_of_type_Boolean = bool1;
-      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
-      localImageInfo.g = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label447;
-      }
-      bool1 = true;
-      label321:
-      localImageInfo.o = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label452;
-      }
-      bool1 = true;
-      label337:
-      localImageInfo.n = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label457;
-      }
-    }
-    label412:
-    label417:
-    label422:
-    label427:
-    label432:
-    label437:
-    label442:
-    label447:
-    label452:
-    label457:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localImageInfo.p = bool1;
-      localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      localImageInfo.j = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
-      return localImageInfo;
-      bool1 = true;
-      break;
-      bool1 = true;
-      break label35;
-      bool1 = true;
-      break label59;
-      bool1 = true;
-      break label74;
-      bool1 = true;
-      break label116;
-      bool1 = true;
-      break label176;
-      bool1 = true;
-      break label200;
-      bool1 = true;
-      break label215;
-      bool1 = false;
-      break label321;
-      bool1 = false;
-      break label337;
-    }
-  }
+  akqe(akqc paramakqc, int paramInt) {}
   
-  public ImageInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ImageInfo[paramInt];
+    this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Akqc.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.removeTextChangedListener(this.jdField_a_of_type_Akqc.a.b);
+    this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Akqc.a.jdField_c_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Akqc.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    SimpleAccount localSimpleAccount = (SimpleAccount)this.jdField_a_of_type_Akqc.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Akqc.a.jdField_a_of_type_Int);
+    ImageView localImageView;
+    if (!LoginView.i(this.jdField_a_of_type_Akqc.a))
+    {
+      LoginView.i(this.jdField_a_of_type_Akqc.a, true);
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      localImageView = this.jdField_a_of_type_Akqc.a.jdField_c_of_type_AndroidWidgetImageView;
+      if ((!LoginView.d(this.jdField_a_of_type_Akqc.a)) && (!LoginView.e(this.jdField_a_of_type_Akqc.a)) && (!LoginView.f(this.jdField_a_of_type_Akqc.a)) && (!LoginView.g(this.jdField_a_of_type_Akqc.a))) {
+        break label390;
+      }
+    }
+    label390:
+    for (int i = 2130846890;; i = 2130844587)
+    {
+      localImageView.setImageResource(i);
+      this.jdField_a_of_type_Akqc.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131705478));
+      LoginView.a(this.jdField_a_of_type_Akqc.a, localSimpleAccount);
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.addTextChangedListener(this.jdField_a_of_type_Akqc.a.b);
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Akqc.a.jdField_c_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.clearFocus();
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
+      this.jdField_a_of_type_Akqc.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

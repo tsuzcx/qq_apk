@@ -1,21 +1,13 @@
-import android.os.ResultReceiver;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class aldu
-  implements EIPCResultCallback
+public class aldu
+  implements DialogInterface.OnClickListener
 {
-  aldu(aldt paramaldt, ResultReceiver paramResultReceiver) {}
+  public aldu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

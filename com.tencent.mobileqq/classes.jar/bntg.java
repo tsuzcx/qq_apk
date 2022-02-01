@@ -1,14 +1,28 @@
-public abstract interface bntg
+import com.tencent.qphone.base.util.QLog;
+
+class bntg
+  extends bmte
 {
-  public abstract void a(int paramInt, String paramString);
+  bntg(bntf parambntf) {}
   
-  public abstract void a(String paramString, double paramDouble);
+  public void onCancel(String paramString) {}
   
-  public abstract void b();
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      bntf.a(this.a, true);
+      bntf.a(this.a);
+      return;
+    }
+    QLog.i("EditPicQzComment", 2, "download music fail" + paramInt);
+  }
   
-  public abstract void b(int paramInt, String paramString);
+  public void onNetChange(int paramInt) {}
   
-  public abstract void c();
+  public void onProgress(String paramString, int paramInt) {}
+  
+  public void onStart(String paramString, boolean paramBoolean) {}
 }
 
 

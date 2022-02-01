@@ -1,61 +1,48 @@
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import java.net.MalformedURLException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class adtb
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public adtb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public adtb(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    this.a.app.logout(true);
+    bfyz.a(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), false);
+    paramDialogInterface = (bcqt)this.a.app.getManager(61);
+    if (paramDialogInterface != null) {}
+    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
     {
-    }
-    for (;;)
-    {
-      return;
-      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
-        continue;
-      }
-      AddFriendVerifyActivity.a(this.a).setVisibility(0);
-      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
-      return;
-      if (this.a.isFinishing()) {
-        continue;
-      }
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
-      try
+      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
       {
-        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
-        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
-        label142:
-        if (AddFriendVerifyActivity.a(this.a) == null) {
-          continue;
+        paramDialogInterface = paramDialogInterface.iterator();
+        while (paramDialogInterface.hasNext())
+        {
+          String str = (String)paramDialogInterface.next();
+          if (!aych.a().a(this.a.app, str))
+          {
+            this.a.app.updateSubAccountLogin(str, false);
+            this.a.app.getApplication().refreAccountList();
+          }
         }
-        AddFriendVerifyActivity.a(this.a).setVisibility(8);
-        return;
-        QQToast.a(this.a.getApplicationContext(), 1, 2131719123, 0).b(this.a.getTitleBarHeight());
-        return;
       }
-      catch (MalformedURLException paramMessage)
-      {
-        break label142;
-      }
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+      this.a.finish();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adtb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bdwk
-  implements Callable<Boolean>
+  implements View.OnClickListener
 {
-  bdwk(bdwi parambdwi, File paramFile) {}
+  bdwk(bdwj parambdwj) {}
   
-  public Boolean a()
+  public void onClick(View paramView)
   {
-    if ((bdwi.a(this.jdField_a_of_type_Bdwi).exists()) && (this.jdField_a_of_type_JavaIoFile == bdwi.a(this.jdField_a_of_type_Bdwi))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
+    GroupManagerActivity.a((Activity)bdwj.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

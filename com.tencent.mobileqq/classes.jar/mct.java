@@ -1,348 +1,223 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.AVFunChat.AVFunChatMessage;
-import com.tencent.av.ui.ControlUIObserver.1;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.1.1;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 public class mct
-  implements Observer
+  extends ldz
 {
-  Handler a = null;
+  public mct(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public static <T extends mcu> T a(Object[] paramArrayOfObject)
+  protected void a()
   {
-    return (mcu)paramArrayOfObject[1];
-  }
-  
-  protected void a() {}
-  
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt1, int paramInt2, String paramString) {}
-  
-  protected void a(int paramInt, long paramLong) {}
-  
-  protected void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(long paramLong) {}
-  
-  protected void a(long paramLong, int paramInt) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2) {}
-  
-  protected void a(long paramLong, ArrayList<lob> paramArrayList) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, String paramString) {}
-  
-  protected void a(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
-  
-  protected void a(bhon parambhon) {}
-  
-  protected void a(Object paramObject) {}
-  
-  protected void a(String paramString) {}
-  
-  protected void a(String paramString1, int paramInt1, String paramString2, int paramInt2) {}
-  
-  protected void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage) {}
-  
-  protected void a(String paramString, Boolean paramBoolean) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  protected void a(ArrayList<lob> paramArrayList) {}
-  
-  protected void a(mcv parammcv) {}
-  
-  protected void a(mcw parammcw) {}
-  
-  public void a(mcx parammcx) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, long paramLong) {}
-  
-  protected void b() {}
-  
-  protected void b(int paramInt) {}
-  
-  protected void b(int paramInt, long paramLong) {}
-  
-  protected void b(long paramLong) {}
-  
-  public void b(Object paramObject)
-  {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
     if (QLog.isColorLevel()) {
-      QLog.d("qav.ControlUIObserver", 2, "OnUpdate，msgType = " + i);
+      QLog.d(this.a.d, 2, "onGAudioInviteResp");
     }
-    Object localObject;
-    switch (i)
-    {
-    default: 
-      return;
-    case 101: 
-      a(muk.a(paramObject, 1));
-      return;
-    case 174: 
-      b(muk.a(paramObject, 1));
-      return;
-    case 102: 
-      a();
-      return;
-    case 103: 
-      localObject = (ArrayList)paramObject[1];
-      a(muk.a(paramObject, 2), (ArrayList)localObject);
-      return;
-    case 104: 
-      a((ArrayList)paramObject[1]);
-      return;
-    case 105: 
-      a(((Boolean)paramObject[1]).booleanValue(), muk.a(paramObject, 2));
-      return;
-    case 106: 
-      c(muk.a(paramObject, 1));
-      return;
-    case 107: 
-      d(muk.a(paramObject, 1));
-      return;
-    case 108: 
-      f();
-      return;
-    case 109: 
-      g();
-      return;
-    case 110: 
-      f(muk.a(paramObject, 1));
-      return;
-    case 8001: 
-      b((String)paramObject[1]);
-      return;
-    case 119: 
-      c(((Integer)paramObject[1]).intValue());
-      return;
-    case 111: 
-      a(((Boolean)paramObject[1]).booleanValue());
-      return;
-    case 113: 
-      b();
-      return;
-    case 114: 
-      e();
-      return;
-    case 115: 
-      a((String)paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], ((Integer)paramObject[4]).intValue());
-      return;
-    case 172: 
-      a(((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-      return;
-    case 117: 
-      i = -1;
-      if (paramObject.length > 1) {
-        i = ((Integer)paramObject[1]).intValue();
-      }
-      a(i);
-      return;
-    case 8002: 
-      h();
-      return;
-    case 123: 
-      if (paramObject.length <= 1) {
-        break;
-      }
-    }
-    for (i = ((Integer)paramObject[1]).intValue();; i = 0)
-    {
-      a(muk.a(paramObject, 2), i);
-      return;
-      b(((Integer)paramObject[1]).intValue());
-      return;
-      a((mcx)paramObject[1]);
-      return;
-      localObject = (String)paramObject[1];
-      paramObject = (String)paramObject[2];
-      lir.a((String)localObject, paramObject);
-      b((String)localObject, paramObject);
-      return;
-      if (paramObject.length < 4) {
-        break;
-      }
-      boolean bool1 = ((Boolean)paramObject[1]).booleanValue();
-      boolean bool2 = ((Boolean)paramObject[2]).booleanValue();
-      long l = ((Long)paramObject[3]).longValue();
-      a(muk.a(paramObject, 4), bool1, bool2, l);
-      return;
-      i();
-      return;
-      a(paramObject[1]);
-      return;
-      e(muk.a(paramObject, 1));
-      return;
-      bool1 = ((Boolean)paramObject[1]).booleanValue();
-      i = ((Integer)paramObject[2]).intValue();
-      a(muk.a(paramObject, 3), bool1, i);
-      return;
-      g(muk.a(paramObject, 1));
-      return;
-      a((String)paramObject[1]);
-      return;
-      l();
-      return;
-      j();
-      return;
-      m();
-      return;
-      n();
-      return;
-      o();
-      return;
-      p();
-      return;
-      f(((Integer)paramObject[1]).intValue());
-      return;
-      c();
-      return;
-      a(((Integer)paramObject[1]).intValue(), muk.a(paramObject, 2));
-      return;
-      k();
-      return;
-      d((String)paramObject[1]);
-      return;
-      a((String)paramObject[1], (Boolean)paramObject[2]);
-      return;
-      e((String)paramObject[1]);
-      return;
-      b((String)paramObject[1], (Boolean)paramObject[2]);
-      return;
-      b((mcx)paramObject[1]);
-      return;
-      a((mcv)paramObject[1]);
-      return;
-      a((mcw)paramObject[1]);
-      return;
-      c((mcx)paramObject[1]);
-      return;
-      d((mcx)paramObject[1]);
-      return;
-      e((mcx)paramObject[1]);
-      return;
-      f((mcx)paramObject[1]);
-      return;
-      a((bhon)paramObject[1]);
-      return;
-      a((String)paramObject[1], (String)paramObject[2]);
-      return;
-      d();
-      return;
-      d(((Integer)paramObject[1]).intValue());
-      return;
-      c((String)paramObject[2]);
-      return;
-      e(((Integer)paramObject[1]).intValue());
-      return;
-      b(((Boolean)paramObject[1]).booleanValue());
-      return;
-      a(muk.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
-      return;
-      a(muk.a(paramObject, 1), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      a((String)paramObject[1], (AVFunChat.AVFunChatMessage)paramObject[2]);
-      return;
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-      a(((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
+    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localAVActivity != null) && (!localAVActivity.isFinishing())) {
+      localAVActivity.runOnUiThread(new DoubleVideoMeetingCtrlUI.1.1(this));
     }
   }
   
-  protected void b(String paramString) {}
-  
-  protected void b(String paramString, Boolean paramBoolean) {}
-  
-  public void b(String paramString1, String paramString2) {}
-  
-  protected void b(mcx parammcx) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void c() {}
-  
-  protected void c(int paramInt) {}
-  
-  protected void c(long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  protected void c(mcx parammcx) {}
-  
-  public void d() {}
-  
-  public void d(int paramInt) {}
-  
-  protected void d(long paramLong) {}
-  
-  protected void d(String paramString) {}
-  
-  protected void d(mcx parammcx) {}
-  
-  protected void e() {}
-  
-  protected void e(int paramInt) {}
-  
-  protected void e(long paramLong) {}
-  
-  protected void e(String paramString) {}
-  
-  protected void e(mcx parammcx) {}
-  
-  protected void f() {}
-  
-  protected void f(int paramInt) {}
-  
-  protected void f(long paramLong) {}
-  
-  protected void f(mcx parammcx) {}
-  
-  protected void g() {}
-  
-  protected void g(long paramLong) {}
-  
-  public void h() {}
-  
-  protected void i() {}
-  
-  protected void j() {}
-  
-  protected void k() {}
-  
-  protected void l() {}
-  
-  protected void m() {}
-  
-  protected void n() {}
-  
-  protected void o() {}
-  
-  protected void p() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  protected void a(long paramLong)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.d, 2, "onDestory UI-->relationId = " + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.b(true);
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.d, 2, "onDestroyInviteUI-->GroupId = " + paramLong);
+    }
+    if (paramLong == this.a.jdField_a_of_type_Long)
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
+      super.a(paramLong);
+      this.a.b(true);
+    }
+  }
+  
+  protected void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2)
+  {
+    if (this.a.h()) {}
+    label381:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.w(this.a.d, 1, "onGaOperationResult, result[" + paramInt1 + "], uin[" + paramLong2 + "], info[" + paramLong3 + "], groupId[" + paramLong4 + "], relationType[" + paramInt2 + "], mCameraNum[" + this.a.q + "], seq[" + paramLong1 + "]");
       }
-      this.a.post(new ControlUIObserver.1(this, paramObject));
+      lez locallez = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      switch (paramInt1)
+      {
+      case 93: 
+      case 94: 
+      case 95: 
+      case 97: 
+      case 98: 
+      default: 
+        return;
+      case 90: 
+        if (paramLong3 == 3L) {
+          if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+          {
+            if (this.a.q <= 1) {
+              break label381;
+            }
+            this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131373558, 0);
+          }
+        }
+        break;
+      case 96: 
+        for (;;)
+        {
+          if ((!locallez.j) || (this.a.c))
+          {
+            this.a.c = false;
+            this.a.i(paramLong1);
+            paramInt1 = locallez.a(this.a.jdField_b_of_type_Long, 1);
+            boolean bool = false;
+            if (paramInt1 != -1) {
+              bool = ((lno)locallez.c.get(paramInt1)).a;
+            }
+            this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
+          }
+          DoubleVideoMeetingCtrlUI.a(this.a, paramLong1);
+          return;
+          if ((paramLong3 != 1L) || (locallez.ap)) {
+            break;
+          }
+          this.a.e("onGaOperationResult->REQUEST_VIDEO_SUC");
+          this.a.a(paramLong1, locallez.c);
+          return;
+          this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131373558, 8);
+        }
+      }
+    } while ((paramLong3 == 2L) || (paramLong3 != 4L));
+    return;
+    this.a.c(paramLong1, true);
+    this.a.n(paramLong1);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(paramLong1) });
+  }
+  
+  protected void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.d, 2, "onCreateRoomSuc-->relationId = " + paramLong2);
+    }
+    if (paramLong2 != this.a.jdField_a_of_type_Long) {
       return;
     }
-    b(paramObject);
+    this.a.a(paramLong1, true);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.d, 1, "onMemberVideoOut, groupId[" + paramLong2 + "], friendUin[" + paramLong3 + "], videoSrcType[" + paramInt + "], seq[" + paramLong1 + "]");
+    }
+    this.a.a(paramLong1, paramLong2, paramLong3, 2);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.d, 1, "onMemberLeave, groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], isQQUser[" + paramBoolean + "], seq[" + l + "]");
+    }
+    this.a.a(l, paramLong1, paramLong2, 6);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.d, 1, "onMemberJoin, groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], isRfresh[" + paramBoolean1 + "], isQQUser[" + paramBoolean2 + "], seq[" + l + "]");
+    }
+    if (paramLong2 == this.a.jdField_a_of_type_Long)
+    {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ag = 1;
+      this.a.a(l, paramLong1, paramLong2, 5);
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.d, 2, "EnterRoomSuc-->GroupId = " + paramLong2);
+    }
+    if (paramLong2 == this.a.jdField_a_of_type_Long) {
+      this.a.A(paramLong1);
+    }
+    this.a.a(paramLong1, false);
+  }
+  
+  protected void b(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.d, 1, "onGaMemberShareSrcInOrOut, groupId[" + paramLong1 + "], groupId[" + paramLong1 + "], bIn[" + paramBoolean1 + "], isPPT[" + paramBoolean2 + "], seq[" + l + "]");
+    }
+    if (paramBoolean1) {
+      this.a.a(l, paramLong1, paramLong2, 3);
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_Boolean = paramBoolean2;
+      return;
+      this.a.a(l, paramLong1, paramLong2, 4);
+    }
+  }
+  
+  protected void c(long paramLong, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
+      return;
+    }
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.d, 1, "onFirstFrameDataComeIn, uin[" + paramLong + "], videoSrcType[" + paramInt + "], seq[" + l + "]");
+    }
+    paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
+    if ((paramInt != -1) && (((lno)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).a))
+    {
+      mak.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+      mak.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+    }
+    DoubleVideoMeetingCtrlUI.b(this.a, l);
+    this.a.f("OnFirstFrameDataComeIn");
+  }
+  
+  protected void c(long paramLong1, long paramLong2)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.d, 1, "onMemberVideoIn, groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], seq[" + l + "]");
+    }
+    this.a.a(l, paramLong1, paramLong2, 1);
+  }
+  
+  protected void d(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMeetingNotifyTimeout, relationId[" + paramLong2 + "]");
+    }
+    lez locallez = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+    if ((paramLong2 == this.a.jdField_a_of_type_Long) && (locallez.g == paramLong2)) {
+      this.a.a(paramLong1, locallez, 3);
+    }
   }
 }
 

@@ -1,118 +1,89 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.text.TextUtils;
 
 public class bbqh
+  extends bbqd
 {
-  public static Intent a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  public boolean a;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public String h;
+  public String i;
+  
+  public String a()
   {
-    if (paramIntent == null)
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("ForwardUtils", 4, "getForwardData return null from main process");
-      paramActivity = null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoDownloadInfo");
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
+    localStringBuilder.append("\n |-").append("fileType:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("format:").append(this.d);
+    localStringBuilder.append("\n |-").append("mRequestType:").append(this.f);
+    localStringBuilder.append("\n |-").append("mSceneType:").append(this.g);
+    return localStringBuilder.toString();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      if ((paramInt1 == 0) || (paramInt1 == 1008)) {
+        this.jdField_e_of_type_Int = 1001;
+      }
     }
-    Intent localIntent;
     do
     {
       do
       {
-        return paramActivity;
-        paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-        paramActivity = paramIntent;
-      } while (paramBoolean);
-      paramIntent.putExtra("filepictest", true);
-      paramActivity = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-      String str1 = paramIntent.getStringExtra("forward_filepath");
-      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
-      String str2 = paramIntent.getStringExtra("forward_text");
-      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
-      int i = paramIntent.getIntExtra("forward_type", 0);
-      localIntent = new Intent();
-      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", i);
-      localBundle.putParcelable("fileinfo", paramActivity);
-      localBundle.putBoolean("not_forward", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("forward_filepath", str1);
-      localIntent.putExtra("forward_text", str2);
-      localIntent.putExtra("k_favorites", paramBoolean);
-      localIntent.putExtra("isFromShare", bool);
-      paramActivity = paramIntent;
-    } while (!AIOFilePictureData.class.isInstance(paramIntent));
-    localIntent.putExtra("isPic", true);
-    localIntent.putExtra("direct_send_if_dataline_forward", true);
-    return paramIntent;
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
-  {
-    a(paramActivity, paramIntent, paramBoolean, -1, "");
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (paramIntent == null)
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("ForwardUtils", 4, "getForwardData return null from main process");
-      return;
-    }
-    paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-    if (!paramBoolean)
-    {
-      paramIntent.putExtra("filepictest", true);
-      ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-      String str1 = paramIntent.getStringExtra("forward_filepath");
-      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
-      String str2 = paramIntent.getStringExtra("forward_text");
-      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
-      int i = paramIntent.getIntExtra("forward_type", 0);
-      Intent localIntent = new Intent();
-      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", i);
-      localBundle.putParcelable("fileinfo", localForwardFileInfo);
-      localBundle.putBoolean("not_forward", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("forward_filepath", str1);
-      localIntent.putExtra("forward_text", str2);
-      localIntent.putExtra("k_favorites", paramBoolean);
-      localIntent.putExtra("isFromShare", bool);
-      if (AIOFilePictureData.class.isInstance(paramIntent))
+        do
+        {
+          return;
+          if (paramInt1 == 3000)
+          {
+            this.jdField_e_of_type_Int = 1005;
+            return;
+          }
+        } while (paramInt1 != 1);
+        this.jdField_e_of_type_Int = 1003;
+        return;
+      } while (1 != paramInt2);
+      if ((paramInt1 == 0) || (paramInt1 == 1008))
       {
-        localIntent.putExtra("isPic", true);
-        localIntent.putExtra("direct_send_if_dataline_forward", true);
+        this.jdField_e_of_type_Int = 1002;
+        return;
       }
-      auxu.a(paramActivity, paramIntent, 103, paramInt, paramString);
-      return;
-    }
-    auxu.a(paramActivity, paramIntent, 21, paramInt, paramString);
+      if (paramInt1 == 3000)
+      {
+        this.jdField_e_of_type_Int = 1006;
+        return;
+      }
+    } while (paramInt1 != 1);
+    this.jdField_e_of_type_Int = 1004;
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean, String paramString, int paramInt)
+  public boolean a()
   {
-    if (paramIntent == null)
+    if (TextUtils.isEmpty(this.a))
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("ForwardUtils", 4, "getForwardData return null from main process");
-      return;
+      a("ShortVideoDownloadInfo.check", "uuid invaid:" + this.a);
+      return false;
     }
-    paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-    paramIntent.putExtra("key_req", ForwardRecentActivity.f);
-    paramIntent.putExtra("key_direct_show_uin_type", paramInt);
-    paramIntent.putExtra("key_direct_show_uin", paramString);
-    if (!paramBoolean)
+    if (this.b == null)
     {
-      paramIntent.putExtra("filepictest", true);
-      auxu.a(paramActivity, paramIntent, ForwardRecentTranslucentActivity.class, 21);
-      return;
+      a("ShortVideoDownloadInfo", "selfUin invalid,selfUin:" + this.b);
+      return false;
     }
-    auxu.a(paramActivity, paramIntent, ForwardRecentTranslucentActivity.class, 21);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

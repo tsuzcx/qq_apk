@@ -1,9 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import android.os.Bundle;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class sjp
-  extends pfh
+class sjp
+  implements BusinessObserver
 {
-  public sjp(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  sjp(sjo paramsjo, NewIntent paramNewIntent, String paramString1, String paramString2, sjr paramsjr, long paramLong) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    sjo.a(this.jdField_a_of_type_Sjo, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Sjr, this.jdField_a_of_type_Long, paramBoolean, paramBundle);
+  }
 }
 
 

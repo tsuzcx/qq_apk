@@ -18,8 +18,8 @@
         <View android:id="@id/htf" android:background="@drawable/bse" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_alignParentRight="true" />
     </RelativeLayout>
     <ProgressBar android:id="@id/hte" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/niz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <ImageView android:background="@drawable/dqn" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+    <RelativeLayout android:id="@id/ne5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:background="@drawable/dso" android:layout_width="fill_parent" android:layout_height="24.0dip" />
         <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="编辑封面" />
     </RelativeLayout>
 </RelativeLayout>

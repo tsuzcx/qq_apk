@@ -1,41 +1,22 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class amxa
-  extends amwy
+final class amxa
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public void a(amxc paramamxc, Bitmap paramBitmap)
+  amxa(String paramString, ToServiceMsg paramToServiceMsg)
   {
-    if ((paramBitmap == null) || (paramamxc == null) || (TextUtils.isEmpty(paramamxc.jdField_a_of_type_JavaLangCharSequence))) {
-      return;
-    }
-    String str2 = paramamxc.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramamxc = str1 + paramamxc.jdField_a_of_type_JavaLangCharSequence;
-    this.a.put(paramamxc, new WeakReference(paramBitmap));
+    super(paramString);
   }
   
-  public Bitmap b(amxc paramamxc)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
   {
-    if ((paramamxc == null) || (TextUtils.isEmpty(paramamxc.jdField_a_of_type_JavaLangCharSequence))) {
-      return null;
+    synchronized (this.a)
+    {
+      this.a.notify();
+      return;
     }
-    String str2 = paramamxc.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramamxc = str1 + paramamxc.jdField_a_of_type_JavaLangCharSequence;
-    paramamxc = (WeakReference)this.a.get(paramamxc);
-    if (paramamxc != null) {
-      return (Bitmap)paramamxc.get();
-    }
-    return null;
   }
 }
 

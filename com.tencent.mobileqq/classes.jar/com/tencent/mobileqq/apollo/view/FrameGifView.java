@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.apollo.view;
 
+import amnn;
+import amnq;
+import amnv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import answ;
-import ansz;
-import ante;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class FrameGifView
   extends ImageView
-  implements ante
+  implements amnv
 {
-  answ jdField_a_of_type_Answ;
-  protected ansz a;
+  amnn jdField_a_of_type_Amnn;
+  protected amnq a;
   private FrameGifView.DecoderRunnable jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable = new FrameGifView.DecoderRunnable();
   
   public FrameGifView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Ansz = new ansz(this);
+    this.jdField_a_of_type_Amnq = new amnq(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Ansz = new ansz(this);
+    this.jdField_a_of_type_Amnq = new amnq(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Ansz = new ansz(this);
+    this.jdField_a_of_type_Amnq = new amnq(this);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Answ != null) {
-      this.jdField_a_of_type_Answ.a();
+    if (this.jdField_a_of_type_Amnn != null) {
+      this.jdField_a_of_type_Amnn.a();
     }
   }
   
@@ -51,29 +51,29 @@ public class FrameGifView
   
   public int b()
   {
-    if (this.jdField_a_of_type_Ansz != null) {
-      return this.jdField_a_of_type_Ansz.a();
+    if (this.jdField_a_of_type_Amnq != null) {
+      return this.jdField_a_of_type_Amnq.a();
     }
     return 0;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ansz != null) {
-      this.jdField_a_of_type_Ansz.a();
+    if (this.jdField_a_of_type_Amnq != null) {
+      this.jdField_a_of_type_Amnq.a();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ansz != null) {
-      this.jdField_a_of_type_Ansz.b();
+    if (this.jdField_a_of_type_Amnq != null) {
+      this.jdField_a_of_type_Amnq.b();
     }
   }
   
-  public void setAnimaListener(answ paramansw)
+  public void setAnimaListener(amnn paramamnn)
   {
-    this.jdField_a_of_type_Answ = paramansw;
+    this.jdField_a_of_type_Amnn = paramamnn;
   }
   
   public void setGifData(int paramInt, Drawable paramDrawable, String paramString1, String paramString2, boolean paramBoolean)
@@ -81,9 +81,9 @@ public class FrameGifView
     if (getDrawable() == null) {
       super.setImageDrawable(paramDrawable);
     }
-    if (this.jdField_a_of_type_Ansz != null)
+    if (this.jdField_a_of_type_Amnq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_Ansz, paramInt, paramString1, paramString2, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_Amnq, paramInt, paramString1, paramString2, paramBoolean);
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
       ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
     }
@@ -91,8 +91,8 @@ public class FrameGifView
   
   public void setPlayLoop(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ansz != null) {
-      this.jdField_a_of_type_Ansz.a(paramBoolean);
+    if (this.jdField_a_of_type_Amnq != null) {
+      this.jdField_a_of_type_Amnq.a(paramBoolean);
     }
   }
 }

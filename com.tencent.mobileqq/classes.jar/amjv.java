@@ -1,27 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class amjv
-  implements Animation.AnimationListener
+class amjv
+  extends amkb
 {
-  public amjv(SpecailCareListActivity paramSpecailCareListActivity, amkn paramamkn, int paramInt) {}
+  amjv(amjt paramamjt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Amkn.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(10);
-    paramAnimation.addRule(1, 2131368212);
-    paramAnimation.setMargins(0, (int)(22.0F * SpecailCareListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(23.0F * SpecailCareListActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) + this.jdField_a_of_type_Int), 0);
-    this.jdField_a_of_type_Amkn.a.setLayoutParams(paramAnimation);
+    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

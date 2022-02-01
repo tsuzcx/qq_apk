@@ -1,6 +1,6 @@
 package com.tencent.qqmini.miniapp.plugin;
 
-import android.content.Context;
+import android.app.Activity;
 import com.tencent.qqmini.miniapp.action.CoverViewAction;
 import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.core.manager.ObserverManager;
@@ -8,7 +8,6 @@ import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.widget.CoverView;
 import com.tencent.qqmini.sdk.widget.media.CoverVideoView;
-import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 class MediaJsPlugin$2
@@ -28,18 +27,17 @@ class MediaJsPlugin$2
         this.val$req.fail();
         return;
       }
-      localObject = new CoverVideoView((Context)localObject);
-      ((CoverVideoView)localObject).setAtyRef(new WeakReference(MediaJsPlugin.access$500(this.this$0).getAttachedActivity()));
+      localObject = new CoverVideoView((Activity)localObject);
       ((CoverVideoView)localObject).setData(this.val$jsonObject.optString("data"));
-      ((CoverVideoView)localObject).setPageWebview(this.val$req.jsService);
-      ((CoverVideoView)localObject).setPageWebviewId(PageAction.obtain(MediaJsPlugin.access$600(this.this$0)).getPageId());
+      ((CoverVideoView)localObject).setPageWebView(this.val$req.jsService);
+      ((CoverVideoView)localObject).setPageWebViewId(PageAction.obtain(MediaJsPlugin.access$500(this.this$0)).getPageId());
       ((CoverVideoView)localObject).setVideoPlayerId(this.val$videoPlayerId);
-      CoverViewAction.obtain(MediaJsPlugin.access$700(this.this$0)).add(0, this.val$videoPlayerId, (CoverView)localObject);
-      ((ObserverManager)MediaJsPlugin.access$800(this.this$0).getManager(ObserverManager.class)).addObserver(((CoverVideoView)localObject).getVideoPlayerStatusObserver());
+      CoverViewAction.obtain(MediaJsPlugin.access$600(this.this$0)).add(0, this.val$videoPlayerId, (CoverView)localObject);
+      ((ObserverManager)MediaJsPlugin.access$700(this.this$0).getManager(ObserverManager.class)).addObserver(((CoverVideoView)localObject).getVideoPlayerStatusObserver());
     }
     if ((localObject instanceof CoverVideoView))
     {
-      ((CoverVideoView)localObject).setMiniAppContext(MediaJsPlugin.access$900(this.this$0));
+      ((CoverVideoView)localObject).setMiniAppContext(MediaJsPlugin.access$800(this.this$0));
       ((CoverVideoView)localObject).initVideoPlayerSettings(this.val$jsonObject);
     }
     this.val$req.ok(this.val$result);

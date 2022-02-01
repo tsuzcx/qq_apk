@@ -1,6 +1,24 @@
-public abstract interface azdr
+import android.content.Context;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class azdr
+  implements azcw
 {
-  public abstract void a(boolean paramBoolean);
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  
+  public int a()
+  {
+    return Math.max(2000, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(azcu paramazcu, azcv paramazcv) {}
+  
+  public void b(azcu paramazcu, azcv paramazcv)
+  {
+    this.jdField_a_of_type_Int = ((int)AudioHelper.a(this.jdField_a_of_type_AndroidContentContext, paramazcv.jdField_a_of_type_ArrayOfByte, paramazcv.jdField_a_of_type_Int, 1.0F));
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Handler;
-import atrz;
-import atsg;
+import asej;
+import aseq;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistant.appinfo.GetAppInfoManager;
@@ -13,7 +13,7 @@ import java.util.List;
 public class QFileAppStorePromoteManager$2
   implements Runnable
 {
-  public QFileAppStorePromoteManager$2(atrz paramatrz, String paramString, atsg paramatsg) {}
+  public QFileAppStorePromoteManager$2(asej paramasej, String paramString, aseq paramaseq) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class QFileAppStorePromoteManager$2
     localAppParam.packageName = this.jdField_a_of_type_JavaLangString;
     localAppDetailReqParam.apps.add(localAppParam);
     localAppDetailReqParam.biz = "mobileqq_file";
-    int i = GetAppInfoManager.get().requestAppInfo(localAppDetailReqParam, atrz.a(this.this$0));
+    int i = GetAppInfoManager.get().requestAppInfo(localAppDetailReqParam, asej.a(this.this$0));
     if (QLog.isColorLevel()) {
       QLog.i("QFileAppStorePromoteManager<QFile>", 1, "getApkInfoByPackageName. reqId[" + i + "]");
     }
@@ -37,7 +37,7 @@ public class QFileAppStorePromoteManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.2
  * JD-Core Version:    0.7.0.1
  */

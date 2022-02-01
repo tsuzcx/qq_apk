@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import rxt;
+import sex;
 
 public class VideofeedsUserGuideController$1
   implements Runnable
 {
-  public VideofeedsUserGuideController$1(rxt paramrxt) {}
+  public VideofeedsUserGuideController$1(sex paramsex) {}
   
   public void run()
   {
-    rxt.a(this.this$0).setVisibility(8);
-    rxt.a(this.this$0).findViewById(2131380547).setVisibility(8);
-    rxt.a(this.this$0).findViewById(2131380543).setVisibility(8);
-    rxt.a(this.this$0).findViewById(2131380544).setVisibility(8);
+    sex.a(this.this$0).setVisibility(8);
+    sex.a(this.this$0).findViewById(2131380271).setVisibility(8);
+    sex.a(this.this$0).findViewById(2131380267).setVisibility(8);
+    sex.a(this.this$0).findViewById(2131380268).setVisibility(8);
   }
 }
 

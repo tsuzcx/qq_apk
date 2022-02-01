@@ -1,6 +1,11 @@
-public abstract interface ykh
+public class ykh
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public final int a;
+  
+  public ykh(int paramInt)
+  {
+    this.a = paramInt;
+  }
 }
 
 

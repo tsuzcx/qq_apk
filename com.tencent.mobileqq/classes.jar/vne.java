@@ -1,28 +1,51 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-class vne
-  implements View.OnClickListener
+public class vne
+  implements vmt
 {
-  vne(vmw paramvmw) {}
+  private String a = "SimplePreloadListener";
   
-  public void onClick(View paramView)
+  public vne(String paramString)
   {
-    if ((this.a.a() instanceof Activity)) {
-      this.a.a(0.0F, 0.0F);
-    }
-    ArrayList localArrayList = new ArrayList();
-    if (vmw.a(this.a)) {}
-    for (String str = "1";; str = "2")
+    this.a = paramString;
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, vmp paramvmp) {}
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, vmp paramvmp)
+  {
+    if ((paramInt1 == 1) && (paramErrorMessage.errorCode == 14))
     {
-      localArrayList.add(vtt.a("ext1", str));
-      vtr.a(91, 2, this.a.a(), localArrayList, vmw.b(this.a));
-      EventCollector.getInstance().onViewClicked(paramView);
+      xvv.b(this.a, "download ignore because no mask pic url");
       return;
     }
+    xvv.d(this.a, "download error! vid = %s , fileType = %d , error = %s", new Object[] { paramString, Integer.valueOf(paramInt1), paramErrorMessage });
+  }
+  
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, vmp paramvmp)
+  {
+    paramString = ((vuu)vux.a(5)).a(paramString);
+    if (paramString != null) {
+      vmq.a(paramString, paramFile.getAbsolutePath(), paramInt1);
+    }
+  }
+  
+  public void a(String paramString, int paramInt, vmp paramvmp) {}
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, vmp paramvmp)
+  {
+    xvv.a(this.a, "download success! vid = %s , fileType = %s , file path = %s", paramString, vkm.a(paramInt1), paramFile.getAbsolutePath());
+    paramString = ((vuu)vux.a(5)).a(paramString);
+    if (paramString != null) {
+      vmq.a(paramString, paramFile.getAbsolutePath(), paramInt1, xwa.a(BaseApplicationImpl.getContext()));
+    }
+  }
+  
+  public void b(String paramString, int paramInt, vmp paramvmp)
+  {
+    xvv.a(this.a, "onPause! vid = %s , fileType = %d ", paramString, Integer.valueOf(paramInt));
   }
 }
 

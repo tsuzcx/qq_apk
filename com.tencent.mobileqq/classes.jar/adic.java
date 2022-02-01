@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class adic
-  implements adbr
+  extends amnw
 {
-  public int a()
-  {
-    return 0;
-  }
+  public adic(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void a(List<adbr> paramList) {}
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  protected void a(int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return false;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 

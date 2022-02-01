@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arrd;
-import arrg;
-import auog;
-import bcrg;
-import bede;
-import bedh;
+import aqlb;
+import aqle;
+import bbko;
+import bcwv;
+import bcwy;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,7 +27,7 @@ class BuddyFileAIOMsgTips$1$1
       QLog.i("BuddyFileAIOMsgTips", 1, "sub Thread getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject2 = new StringTokenizer(arrg.a().c(), "|");
+    Object localObject2 = new StringTokenizer(aqle.a().c(), "|");
     if (!((StringTokenizer)localObject2).hasMoreTokens())
     {
       if (QLog.isColorLevel()) {
@@ -43,7 +43,7 @@ class BuddyFileAIOMsgTips$1$1
       arrayOfString[i] = ((StringTokenizer)localObject2).nextToken();
       i += 1;
     }
-    long l = bcrg.a();
+    long l = bbko.a();
     localObject1 = ((List)localObject1).iterator();
     label304:
     label320:
@@ -68,7 +68,7 @@ class BuddyFileAIOMsgTips$1$1
       }
       this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips$1.a.a(localArrayList);
       return;
-      String str = auog.a(((FileManagerEntity)localObject2).fileName);
+      String str = FileUtil.getExtension(((FileManagerEntity)localObject2).fileName);
       int j = arrayOfString.length;
       i = 0;
       if (i < j) {
@@ -89,7 +89,7 @@ class BuddyFileAIOMsgTips$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1.1
  * JD-Core Version:    0.7.0.1
  */

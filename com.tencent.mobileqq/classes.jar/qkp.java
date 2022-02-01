@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
 class qkp
-  implements View.OnTouchListener
+  implements qkh
 {
-  qkp(qkj paramqkj, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  qkp(qki paramqki) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (qki.a(this.a) != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+      qki.a(this.a).a();
+      return;
     }
-    return false;
+    pay.a(qki.b(this.a).getContext(), qki.a(this.a));
+    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + qki.a(this.a));
   }
 }
 

@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import bgus;
-import bhlq;
-import bhpc;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class TroopUtils$4
+final class TroopUtils$4
   implements Runnable
 {
-  public TroopUtils$4(Context paramContext) {}
+  TroopUtils$4(Context paramContext) {}
   
   public void run()
   {
-    bhlq.a(this.a, 230, null, this.a.getString(2131691699), this.a.getString(2131694098), null, null, new bgus(this)).show();
+    bfur.a(this.val$context, 230, null, this.val$context.getString(2131691745), this.val$context.getString(2131694201), null, null, new TroopUtils.4.1(this)).show();
   }
 }
 

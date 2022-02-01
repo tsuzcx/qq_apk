@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class bhae
-  implements bdyi
+  implements bhai<oidb_0x8ed.RspBody>
 {
-  bhae(bhad parambhad) {}
+  bhae(bhab parambhab, bhai parambhai1, HotChatInfo paramHotChatInfo, long paramLong, int paramInt1, int paramInt2, bhai parambhai2) {}
   
-  public void a()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a == null) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int > this.a.jdField_b_of_type_Int + this.a.c)
-      {
-        String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new bhaf(this));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
+    if (this.jdField_a_of_type_Bhai != null) {
+      this.jdField_a_of_type_Bhai.a(paramInt, paramRspBody);
+    }
+    paramRspBody = (HotChatManager)this.jdField_a_of_type_Bhab.app.getManager(60);
+    List localList = paramRspBody.a();
+    if (localList != null) {
+      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    }
+    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+    awkz.a().a(this.jdField_a_of_type_Long);
+    awka.a(this.jdField_a_of_type_Bhab.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(bbko.a()));
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals("0"))) {
+      this.jdField_a_of_type_Bhab.app.getMessageFacade().clearHistory(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin, 1);
+    }
+    this.jdField_a_of_type_Bhab.b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Bhai);
   }
 }
 

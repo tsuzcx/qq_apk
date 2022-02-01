@@ -1,52 +1,15 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
 
 public class ajwt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public short a;
-  public short b;
+  public ajwt(RedPacketPopFragment paramRedPacketPopFragment) {}
   
-  public JSONObject a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      localJSONObject = new JSONObject();
-      localException1.printStackTrace();
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        localJSONObject.put("entryId", this.jdField_a_of_type_Int);
-        localJSONObject.put("flagId", this.jdField_a_of_type_Short);
-        localJSONObject.put("flagValue", this.b);
-        return localJSONObject;
-      }
-      catch (Exception localException2)
-      {
-        JSONObject localJSONObject;
-        break label46;
-      }
-      localException1 = localException1;
-      localJSONObject = null;
-    }
-    label46:
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryId");
-      this.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("flagId"));
-      this.b = ((short)paramJSONObject.optInt("flagValue"));
-    }
-  }
-  
-  boolean a()
-  {
-    return (this.jdField_a_of_type_Short != 0) && (this.b == 1);
+    paramDialogInterface.dismiss();
   }
 }
 

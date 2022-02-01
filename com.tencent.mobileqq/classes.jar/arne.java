@@ -1,61 +1,70 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class arne
-  extends armf<arnd>
+  extends Handler
 {
-  @NonNull
-  public arnd a()
+  public static int a;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 5200;
+  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
+  
+  static
   {
-    return new arnd();
+    jdField_a_of_type_Int = 1;
   }
   
-  @NonNull
-  public arnd a(araj[] paramArrayOfaraj)
+  public arne(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
   {
-    boolean bool = true;
-    localarnd = new arnd();
-    paramArrayOfaraj = paramArrayOfaraj[0].jdField_a_of_type_JavaLangString;
-    try
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == jdField_a_of_type_Int)
     {
-      paramArrayOfaraj = new JSONObject(paramArrayOfaraj);
-      if (paramArrayOfaraj.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramMessage != null)
       {
-        localarnd.jdField_a_of_type_Boolean = bool;
-        localarnd.jdField_a_of_type_JavaLangString = paramArrayOfaraj.optString("recover_text", localarnd.jdField_a_of_type_JavaLangString);
-        localarnd.b = paramArrayOfaraj.optString("recover_url", localarnd.b);
-        return localarnd;
-        bool = false;
+        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
+        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
       }
-      return localarnd;
     }
-    catch (JSONException paramArrayOfaraj)
+    do
     {
-      yuk.e("QVipFriendTagProcessor", "QVipFriendTagConfig onParsed exception :" + paramArrayOfaraj.getMessage());
-    }
-  }
-  
-  @NonNull
-  public arnd b()
-  {
-    return new arnd();
-  }
-  
-  public Class<arnd> clazz()
-  {
-    return arnd.class;
-  }
-  
-  public int type()
-  {
-    return 409;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramMessage.what != b) {
+              break;
+            }
+            paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          } while (paramMessage == null);
+          ExtendFriendLimitChatMatchFragment.b(paramMessage);
+          paramMessage = paramMessage.getActivity();
+        } while (paramMessage == null);
+        paramMessage.finish();
+        return;
+      } while (paramMessage.what != c);
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramMessage == null);
+    ExtendFriendLimitChatMatchFragment.c(paramMessage);
+    ExtendFriendLimitChatMatchFragment.d(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arne
  * JD-Core Version:    0.7.0.1
  */

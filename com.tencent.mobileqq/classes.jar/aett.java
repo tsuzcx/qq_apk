@@ -1,27 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.view.animation.Animation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aett
-  implements TextWatcher
+  extends bjmc
 {
-  public aett(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public aett(VisitorsActivity paramVisitorsActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
-    {
-      this.a.b.setEnabled(true);
-      return;
+    if ((paramAnimation == this.a.b) && (this.a.d)) {
+      this.a.centerView.setText("");
     }
-    this.a.b.setEnabled(false);
+    this.a.centerView.clearAnimation();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == this.a.a) {
+      this.a.centerView.setText(2131694040);
+    }
+  }
 }
 
 

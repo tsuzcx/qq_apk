@@ -1,19 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
 
-class pva
-  implements ViewBase.OnClickListener
+final class pva
+  extends CharacterStyle
 {
-  pva(puz parampuz, Container paramContainer, ppu paramppu, int paramInt) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    puz.a(this.jdField_a_of_type_Puz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
-    }
+    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
   }
 }
 

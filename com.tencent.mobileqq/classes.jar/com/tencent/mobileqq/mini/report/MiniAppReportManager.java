@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import bjjo;
+import bhpc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -190,7 +190,7 @@ public class MiniAppReportManager
     }
     try
     {
-      long l = bjjo.a().a();
+      long l = bhpc.a().a();
       localObject1 = localObject3;
       String str2 = paramMiniAppReportEntity.appId;
       localObject2 = str1;

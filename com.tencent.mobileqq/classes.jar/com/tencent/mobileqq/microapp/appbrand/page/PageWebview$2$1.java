@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.text.TextUtils;
-import bhsr;
 import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
 
@@ -21,13 +21,13 @@ class PageWebview$2$1
     {
       this.this$1.this$0.initJSGlobalConfig();
       PageWebview.access$500(this.this$1.this$0);
-      if (bhsr.a(PageWebview.access$600(this.this$1.this$0))) {
+      if (StringUtil.isEmpty(PageWebview.access$600(this.this$1.this$0))) {
         PageWebview.access$602(this.this$1.this$0, this.this$1.this$0.apkgInfo$5475ea27.d());
       }
       if (!TextUtils.isEmpty(PageWebview.access$600(this.this$1.this$0))) {
         this.this$1.this$0.evaluteJs(PageWebview.access$600(this.this$1.this$0));
       }
-      if (!bhsr.a(PageWebview.access$200(this.this$1.this$0))) {
+      if (!StringUtil.isEmpty(PageWebview.access$200(this.this$1.this$0))) {
         this.this$1.this$0.evaluteJs(PageWebview.access$200(this.this$1.this$0));
       }
       this.this$1.this$0.loadPageWebviewJs$164d4c8c(this.this$1.this$0.apkgInfo$5475ea27);

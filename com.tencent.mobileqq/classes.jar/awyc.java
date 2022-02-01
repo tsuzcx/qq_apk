@@ -1,8 +1,24 @@
-public abstract interface awyc
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
+public class awyc
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  public awyc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public abstract void b();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.k += 1;
+    if (NearbyPeopleProfileActivity.a(this.a) != null) {
+      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

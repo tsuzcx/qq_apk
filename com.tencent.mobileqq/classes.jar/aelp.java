@@ -1,17 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aelp
-  implements bljm
+  implements DialogInterface.OnDismissListener
 {
-  public aelp(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aelp(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

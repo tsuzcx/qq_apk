@@ -1,17 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
 class ahkh
-  extends ahkx
+  implements XListView.DrawFinishedListener
 {
-  ahkh(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahkh(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void drawFinished()
   {
-    return new agyt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((!this.a.t) && (this.a.u))
+    {
+      this.a.t = true;
+      ugt.a("SUBSCRIPT_AIO_COST", null);
+    }
   }
 }
 

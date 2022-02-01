@@ -1,66 +1,29 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordConfig;
 
 public class bccc
-  implements View.OnClickListener
+  implements IRecordConfig
 {
-  public bccc(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public bccc(RecordTracer paramRecordTracer) {}
   
-  public void onClick(View paramView)
+  public int getCachedEventSize()
   {
-    FragmentActivity localFragmentActivity;
-    Object localObject1;
-    Object localObject2;
-    if (paramView.getTag() != null)
-    {
-      localFragmentActivity = this.a.getActivity();
-      localObject1 = (Integer)paramView.getTag(2131381110);
-      localObject2 = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131381109);
-      switch (((AssociateSearchWordsFragment.AssociateItem)localObject2).jdField_a_of_type_Int)
-      {
-      }
-    }
-    label224:
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((localFragmentActivity instanceof bccf))
-      {
-        Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
-        localObject2 = ((AssociateSearchWordsFragment.AssociateItem)localObject2).e;
-        localObject1 = localObject2;
-        if (!((String)localObject2).startsWith("http")) {
-          localObject1 = "http://" + (String)localObject2;
-        }
-        localIntent.putExtra("url", (String)localObject1);
-        localFragmentActivity.startActivity(localIntent);
-        localFragmentActivity.finish();
-        continue;
-        if ((localFragmentActivity instanceof bccf)) {
-          localObject1 = (bccf)localFragmentActivity;
-        }
-        for (;;)
-        {
-          if (localObject1 == null) {
-            break label224;
-          }
-          ((bccf)localObject1).a(((AssociateSearchWordsFragment.AssociateItem)localObject2).jdField_a_of_type_JavaLangString, ((AssociateSearchWordsFragment.AssociateItem)localObject2).d);
-          break;
-          if (AssociateSearchWordsFragment.a(this.a) != null) {
-            localObject1 = AssociateSearchWordsFragment.a(this.a);
-          } else {
-            localObject1 = null;
-          }
-        }
-      }
-    }
+    return 0;
+  }
+  
+  public String getTitleBarId()
+  {
+    return "com.tencent.mobileqq:id/ivTitleName";
+  }
+  
+  public boolean isEnableRelease()
+  {
+    return true;
+  }
+  
+  public boolean isFilterUGC()
+  {
+    return false;
   }
 }
 

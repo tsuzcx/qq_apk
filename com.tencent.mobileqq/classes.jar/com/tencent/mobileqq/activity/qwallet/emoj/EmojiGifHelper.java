@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import alib;
+import akfu;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -31,7 +31,7 @@ public class EmojiGifHelper
       getInstance().compositeAndTransToGifInner(paramConvertParam, paramOnConvertListener);
       return;
     }
-    alib.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
+    akfu.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
   }
   
   public static EmojiGifHelper getInstance()
@@ -58,7 +58,7 @@ public class EmojiGifHelper
       getInstance().removeTaskInner(paramInt);
       return;
     }
-    alib.a(paramInt);
+    akfu.a(paramInt);
   }
   
   private void sendPicToAIO(EmojiGifHelper.EmojiInfo paramEmojiInfo)
@@ -74,13 +74,13 @@ public class EmojiGifHelper
     localArrayList.add(paramEmojiInfo.gifPath);
     localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
     localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
-    localIntent.putExtra("uin", paramEmojiInfo.sessionInfo.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("uintype", paramEmojiInfo.sessionInfo.jdField_a_of_type_Int);
-    localIntent.putExtra("troop_uin", paramEmojiInfo.sessionInfo.b);
-    localIntent.putExtra("key_confess_topicid", paramEmojiInfo.sessionInfo.e);
+    localIntent.putExtra("uin", paramEmojiInfo.sessionInfo.curFriendUin);
+    localIntent.putExtra("uintype", paramEmojiInfo.sessionInfo.curType);
+    localIntent.putExtra("troop_uin", paramEmojiInfo.sessionInfo.troopUin);
+    localIntent.putExtra("key_confess_topicid", paramEmojiInfo.sessionInfo.topicId);
     localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
     localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    localIntent.putExtra("entrance", paramEmojiInfo.sessionInfo.c);
+    localIntent.putExtra("entrance", paramEmojiInfo.sessionInfo.entrance);
     if (localArrayList.size() == 1) {
       localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
     }

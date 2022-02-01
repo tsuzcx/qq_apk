@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import bjez;
+import bhlf;
 
 public class PressEffectTextView
   extends TextView
@@ -26,10 +26,10 @@ public class PressEffectTextView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bjez.a(this);
+      bhlf.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bjez.b(this);
+      bhlf.b(this);
     }
   }
 }

@@ -1,37 +1,40 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class ldv
-  implements mvv
 {
-  public ldv(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, long paramLong, String paramString1, String paramString2)
+  public ldv(VideoAppInterface paramVideoAppInterface)
   {
-    if (AudioHelper.f()) {
-      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed onFinish result: " + paramInt + ", timeConsuming: " + paramLong + ", gpuVendor: " + paramString1 + ", gpuModel: " + paramString2);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ldw(this);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", Build.HARDWARE);
-    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-    localHashMap.put("manufacturer", Build.MANUFACTURER);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("product", Build.PRODUCT);
-    localHashMap.put("fingerprint", Build.FINGERPRINT);
-    localHashMap.put("gpu_vendor", paramString1);
-    localHashMap.put("gpu_model", paramString2);
-    localHashMap.put("result", String.valueOf(paramInt));
-    localHashMap.put("time_consuming", String.valueOf(paramLong));
-    if (AudioHelper.f()) {
-      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    bdmc.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 

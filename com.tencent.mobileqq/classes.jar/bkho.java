@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkho
-  implements View.OnClickListener
+class bkho
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  public bkho(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bkho(bkhk parambkhk) {}
   
-  public void onClick(View paramView)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
+    }
   }
 }
 

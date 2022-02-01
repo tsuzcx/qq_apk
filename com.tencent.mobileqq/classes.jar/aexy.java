@@ -1,8 +1,19 @@
-public abstract interface aexy
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.ContactUtils;
+
+final class aexy
+  implements aeya
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 21);
+    paramString.l = 11;
+    paramString.h = ContactUtils.getTroopMemberName(paramQQAppInterface, paramSessionInfo.troopUin, paramMessageRecord.senderuin);
+    return paramString;
+  }
 }
 
 

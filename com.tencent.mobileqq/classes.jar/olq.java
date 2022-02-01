@@ -1,27 +1,34 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
 public class olq
-  extends nkq
+  extends pkt
 {
-  private boolean b;
+  public olq(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  olq(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.b = paramBoolean;
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    {
+      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
+      return;
+    }
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((ois)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void b(int paramInt)
   {
-    if (paramInt == 0) {
-      bnrf.a(bnrf.a(), this.b);
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a);
-      return;
-      QLog.d("ReadInJoySettingActivity", 1, "troopProtocolObserver fail!");
+    this.a.a(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((ois)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
     }
   }
 }

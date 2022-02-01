@@ -1,11 +1,33 @@
-class auhu
-  implements auoj
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+
+public class auhu
+  implements auhx
 {
-  auhu(auht paramauht) {}
+  public auhu(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    auht.a(this.a);
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Auia != null))
+    {
+      this.a.jdField_a_of_type_Auia.a(0, paramView);
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Auia != null)) {
+      this.a.jdField_a_of_type_Auia.a(4, paramView);
+    }
+    for (;;)
+    {
+      QLog.d("HotVideoRelativeLayout", 2, "click base view");
+      return;
+      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Auia != null)) {
+        this.a.jdField_a_of_type_Auia.a(1, paramView);
+      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Auia != null)) {
+        this.a.jdField_a_of_type_Auia.a(2, paramView);
+      }
+    }
   }
 }
 

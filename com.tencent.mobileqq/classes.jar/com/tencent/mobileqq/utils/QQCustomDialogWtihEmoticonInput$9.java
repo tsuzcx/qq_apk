@@ -2,21 +2,21 @@ package com.tencent.mobileqq.utils;
 
 import android.view.View;
 import android.view.WindowManager;
-import bhpy;
 
-public class QQCustomDialogWtihEmoticonInput$9
+class QQCustomDialogWtihEmoticonInput$9
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$9(bhpy parambhpy, View paramView) {}
+  QQCustomDialogWtihEmoticonInput$9(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput, View paramView) {}
   
   public void run()
   {
-    if (bhpy.a(this.this$0)) {
+    if (QQCustomDialogWtihEmoticonInput.access$200(this.this$0)) {}
+    while (this.this$0.mIsWindowAdded) {
       return;
     }
-    this.this$0.jdField_a_of_type_AndroidViewWindowManager.addView(this.a, this.this$0.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-    this.this$0.c = true;
-    this.a.post(new QQCustomDialogWtihEmoticonInput.9.1(this));
+    this.this$0.mWindowManager.addView(this.val$emotionView, this.this$0.mWindowParams);
+    this.this$0.mIsWindowAdded = true;
+    this.val$emotionView.post(new QQCustomDialogWtihEmoticonInput.9.1(this));
   }
 }
 

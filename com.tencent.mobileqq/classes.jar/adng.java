@@ -1,90 +1,32 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adng
+  extends WtloginObserver
 {
-  public static adnb a(@NonNull Activity paramActivity, int paramInt, String paramString)
-  {
-    return a(paramActivity, paramInt, paramString, null);
-  }
+  public adng(JumpActivity paramJumpActivity) {}
   
-  public static adnb a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    String str = null;
-    adni localadni = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
+    if (paramDevlockInfo != null) {
+      argz.a().a(paramDevlockInfo.TransferInfo);
     }
-    if (paramActivity == null)
-    {
-      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
-      return null;
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
-    }
-    Object localObject = localadni;
-    switch (paramInt)
-    {
-    default: 
-      localObject = localadni;
-    case 2: 
-    case 0: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-      while (localObject == null)
-      {
-        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
-        return localObject;
-        if (paramBundle == null) {}
-        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
-        {
-          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
-          return null;
-        }
-        localObject = new adpb(paramActivity, paramInt, paramString, paramBundle);
-        continue;
-        localadni = new adni(paramActivity, paramInt, paramString);
-        if (paramBundle == null) {
-          break label305;
-        }
-        localObject = paramBundle.getString("sdkVersion");
-        str = paramBundle.getString("pkgName");
-        paramActivity = paramBundle.getString("signature");
-        paramBundle = str;
-      }
-    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
     for (;;)
     {
-      ((adni)localadni).a((String)localObject, paramBundle, paramActivity);
-      localObject = localadni;
-      break;
-      localObject = new adny(paramActivity, paramInt, paramString);
-      break;
-      ((adnb)localObject).a();
-      return localObject;
-      label305:
-      paramBundle = null;
-      localObject = null;
-      paramActivity = str;
+      paramWUserSigInfo.a(paramDevlockInfo);
+      return;
+      paramDevlockInfo = null;
     }
-  }
-  
-  public static void a()
-  {
-    ThreadManager.post(new DoraemonOpenAPI.1(), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adng
  * JD-Core Version:    0.7.0.1
  */

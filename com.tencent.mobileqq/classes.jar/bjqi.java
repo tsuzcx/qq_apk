@@ -1,34 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
-class bjqi
-  extends Handler
+public abstract interface bjqi
 {
-  bjqi(bjqh parambjqh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      bjqh localbjqh = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
-      {
-        localbjqh.a(str);
-        break;
-      }
-      this.a.a();
-    }
-  }
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong);
 }
 
 

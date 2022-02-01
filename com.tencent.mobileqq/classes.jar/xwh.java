@@ -1,42 +1,31 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class xwh
-  extends QQUIEventReceiver<AbsVideoInfoWidget, xbq>
+  implements DialogInterface.OnKeyListener
 {
-  public xwh(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
-  {
-    super(paramAbsVideoInfoWidget);
-  }
+  public xwh(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull xbq paramxbq)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramxbq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramxbq.jdField_a_of_type_JavaUtilList == null)) {}
-    String str;
-    StoryVideoItem localStoryVideoItem;
-    do
+    if (paramInt == 84) {
+      return true;
+    }
+    if (paramInt == 4)
     {
-      do
-      {
-        return;
-        while (paramAbsVideoInfoWidget.a == null) {}
-        str = paramAbsVideoInfoWidget.a.a;
-        paramxbq = paramxbq.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!paramxbq.hasNext());
-      localStoryVideoItem = (StoryVideoItem)paramxbq.next();
-    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
-    paramAbsVideoInfoWidget.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xbq.class;
+      this.a.a();
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      return true;
+    }
+    return false;
   }
 }
 

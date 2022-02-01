@@ -1,89 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.io.File;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bcxd
+  implements WtTicketPromise
 {
-  public static String a()
+  private aqjw jdField_a_of_type_Aqjw;
+  private WeakReference<bcxc> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public bcxd(bcxc parambcxc, aqjw paramaqjw)
   {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
-    boolean bool = bcwi.a(str, 1);
-    VideoEnvironment.a("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "other_res000_0";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcxc);
+    this.jdField_a_of_type_Aqjw = paramaqjw;
   }
   
-  static boolean a()
+  public void Done(Ticket paramTicket)
   {
-    return true;
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    return false;
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists()) {
-      if ((a().equals(paramString1)) && (bcwi.a(paramQQAppInterface, "other_res_config_file"))) {
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
-      }
-    }
-    for (;;)
+    if ((paramTicket != null) && (paramTicket._pskey_map != null))
     {
-      return false;
-      bhmi.a(paramQQAppInterface);
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-      boolean bool = localFile.mkdirs();
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
-      try
-      {
-        bhmi.a(paramString2, paramQQAppInterface, false);
-        bool = bcwi.a(paramQQAppInterface, "other_res_config_file");
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
-        if (bool)
-        {
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
-          if (bool) {
-            continue;
-          }
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
-          return false;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return true;
-      }
+      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
+      return;
     }
-    return true;
+    if (this.jdField_a_of_type_Aqjw != null) {
+      this.jdField_a_of_type_Aqjw.a(false);
+    }
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
   }
   
-  private static boolean a(String paramString)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).edit();
-    localEditor.putString("other_res_sv_md5_version_soname_key", paramString);
-    return localEditor.commit();
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
+    if (this.jdField_a_of_type_Aqjw != null) {
+      this.jdField_a_of_type_Aqjw.a(false);
+    }
   }
   
-  public static String b()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    String str = bdek.a();
-    return str + "other_res_cache" + File.separator;
+    if (this.jdField_a_of_type_Aqjw != null) {
+      this.jdField_a_of_type_Aqjw.a(false);
+    }
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
   }
 }
 

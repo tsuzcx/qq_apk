@@ -1,63 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.HashSet;
-import java.util.Set;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
 
 public class axeh
+  implements axet
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public Set<String> a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f = "";
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  public axeh(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public axeh(String paramString, int paramInt)
+  public void a(boolean paramBoolean1, List<axfs> paramList, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.h = a(paramString, paramInt);
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    return paramInt + "_" + paramString;
-  }
-  
-  public static String[] a(String paramString)
-  {
-    return paramString.split("_");
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public String toString()
-  {
-    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
+    NearbyMomentFragment.a(this.a, false);
+    if (paramBoolean1)
+    {
+      NearbyMomentFragment.b(this.a, paramBoolean2);
+      if (paramBoolean2) {
+        NearbyMomentFragment.a(this.a).setText(amtj.a(2131706336));
+      }
+      NearbyMomentFragment.a(this.a, paramInt);
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramList = NearbyMomentFragment.a(this.a, paramList);
+        NearbyMomentFragment.a(this.a).addAll(paramList);
+        NearbyMomentFragment.a(this.a).b(paramList);
+        NearbyMomentFragment.a(this.a, paramList);
+      }
+    }
   }
 }
 

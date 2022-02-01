@@ -1,39 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 
-class rcq
-  extends DefaultPTSLiteEventListener
+public final class rcq
+  implements Parcelable.Creator<ColumnInfo>
 {
-  rcq(rcp paramrcp) {}
-  
-  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
+  public ColumnInfo a(Parcel paramParcel)
   {
-    qgf.a.a(paramPTSComposer, paramHashMap);
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[onTapEventTriggered], identifier is empty.");
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (TextUtils.equals(paramString, "editPersonalProfile"))
-        {
-          RIJUGCAddAccountFragment.b(rcp.a(this.a));
-          RIJUGCAddAccountFragment.a(RIJUGCAddAccountFragment.c);
-          return;
-        }
-      } while (!TextUtils.equals(paramString, "useOriginalAccount"));
-      RIJUGCAddAccountFragment.a(rcp.a(this.a));
-      RIJUGCAddAccountFragment.a(RIJUGCAddAccountFragment.b);
-    } while (!(rcp.a(this.a) instanceof BaseActivity));
-    ((BaseActivity)rcp.a(this.a)).finish();
+    return new ColumnInfo(paramParcel);
+  }
+  
+  public ColumnInfo[] a(int paramInt)
+  {
+    return new ColumnInfo[paramInt];
   }
 }
 

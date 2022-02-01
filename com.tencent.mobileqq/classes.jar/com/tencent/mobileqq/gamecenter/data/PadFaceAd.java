@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avjx;
+import atwz;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ public class PadFaceAd
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PadFaceAd> CREATOR = new avjx();
+  public static final Parcelable.Creator<PadFaceAd> CREATOR = new atwz();
   public String appName;
   public String appVersion;
   public String appView;

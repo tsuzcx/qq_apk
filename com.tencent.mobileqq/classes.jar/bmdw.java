@@ -1,12 +1,13 @@
-public class bmdw
+import android.view.animation.Interpolator;
+
+final class bmdw
+  implements Interpolator
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "0";
-  public String g = "0";
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 

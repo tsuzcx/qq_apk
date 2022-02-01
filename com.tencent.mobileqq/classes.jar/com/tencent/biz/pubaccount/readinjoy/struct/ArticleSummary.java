@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import com.tencent.mobileqq.persistence.Entity;
-import qzj;
+import rgi;
 
 public class ArticleSummary
   extends Entity
@@ -31,7 +31,7 @@ public class ArticleSummary
   public long time;
   public String title;
   public int videoCommentCount;
-  public qzj videoData;
+  public rgi videoData;
   public int videoPlayCount;
   public String videoReportInfo;
   public String videoSubscriptColor;

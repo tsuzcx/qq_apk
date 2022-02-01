@@ -1,50 +1,19 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bhlm
-  implements ThreadExcutor.IThreadListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private int b;
-  private int c;
+  public bhlm(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
   
-  public bhlm(int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.b = 0;
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
   }
-  
-  public void a()
-  {
-    if (this.b < this.jdField_a_of_type_Int)
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      if (localRunnable != null)
-      {
-        this.b += 1;
-        ThreadManager.excute(localRunnable, this.c, this, false);
-      }
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
-    a();
-  }
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    this.b -= 1;
-    a();
-  }
-  
-  public void onPreRun() {}
 }
 
 

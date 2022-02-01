@@ -1,24 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public class aszq
-  extends anyu
+  implements Comparator<FileInfo>
 {
-  public aszq(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    paramString = this.a.a.a(this.a.c);
-    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    if (paramFileInfo1.c())
     {
-      paramString.mAddFriendVerified = true;
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.2.1(this));
+      if (!paramFileInfo2.c()) {
+        return -1000;
+      }
     }
+    else if (paramFileInfo2.c()) {
+      return 1000;
+    }
+    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
 }
 

@@ -1,49 +1,72 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
-class bdqz
-  implements View.OnTouchListener
+public class bdqz
+  extends Handler
 {
-  bdqz(bdqx parambdqx, View paramView) {}
+  public bdqz(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.a.q)) {
+      localBundle.putString("bid", this.a.q);
     }
-    for (;;)
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
+    int i;
+    for (String str = "interestcircle";; str = "qqbuluo")
     {
-      return false;
-      if (!this.jdField_a_of_type_Bdqx.b)
+      localBundle.putString("from", str);
+      localBundle.putString("uin", this.a.app.getCurrentAccountUin());
+      localBundle.putString("title", bfaj.a(this.a.a).trim());
+      localBundle.putString("content", bfaj.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText).trim());
+      switch (paramMessage.what)
       {
-        this.jdField_a_of_type_Bdqx.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131374402);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131374402, paramMotionEvent);
-        }
-        paramMotionEvent.start();
+      case 3: 
+      default: 
+        i = 3;
+        TroopBarPublishUtils.a(this.a, 1, i, localBundle);
+        return;
       }
-      return true;
-      this.jdField_a_of_type_Bdqx.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Bdqx.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131374402);
-      if (paramView != null) {
-        paramView.reverse();
+    }
+    localBundle.putString("clicktype", "music");
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      i = 2;
+      label210:
+      if (!TextUtils.isEmpty(this.a.q)) {
+        break label259;
       }
+    }
+    label259:
+    for (paramMessage = "0";; paramMessage = this.a.q)
+    {
+      bcef.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_music", i, 0, paramMessage, "", "", "");
+      i = 4;
+      break;
+      i = 1;
+      break label210;
+    }
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      i = 2;
+      if (!TextUtils.isEmpty(this.a.q)) {
+        break label340;
+      }
+    }
+    label340:
+    for (paramMessage = "0";; paramMessage = this.a.q)
+    {
+      bcef.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_record", i, 0, paramMessage, "", "", "");
+      return;
+      i = 1;
+      break;
     }
   }
 }

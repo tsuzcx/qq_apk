@@ -84,6 +84,7 @@ public class JsPluginEngine
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.SubpackageJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AdJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BookShelfJsPlugin"));
+    localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UpdateAppJsPlugin"));
     return localArrayList;
   }
   

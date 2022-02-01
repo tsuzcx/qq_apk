@@ -1,21 +1,91 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bgmo
-  implements View.OnClickListener
+final class bgmo
+  implements BusinessObserver
 {
-  public bgmo(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  bgmo(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        if (paramBundle == null)
+        {
+          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
+          return;
+        }
+        Object localObject1 = new WebSSOAgent.UniSsoServerRsp();
+        ((WebSSOAgent.UniSsoServerRsp)localObject1).mergeFrom(paramBundle);
+        QLog.i("SSOHttpUtils", 1, "requestRedPack report result:" + ((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get());
+        paramBundle = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get());
+        if (paramBundle.optInt("code") == 0)
+        {
+          Object localObject2 = new JSONObject(paramBundle.optString("data"));
+          paramInt = ((JSONObject)localObject2).optInt("redpkg_tips");
+          paramBundle = ((JSONObject)localObject2).optString("icon");
+          if (paramInt == 1)
+          {
+            paramInt = ((JSONObject)localObject2).optInt("actid");
+            int i = ((JSONObject)localObject2).optInt("appid");
+            localObject1 = ((JSONObject)localObject2).optString("title");
+            localObject2 = ((JSONObject)localObject2).optString("link");
+            if (paramInt >= 0)
+            {
+              MqqHandler localMqqHandler = this.a.getHandler(Conversation.class);
+              if (localMqqHandler != null) {
+                try
+                {
+                  Message localMessage = localMqqHandler.obtainMessage(1134043);
+                  JSONObject localJSONObject = new JSONObject();
+                  localJSONObject.put("runningState", 3);
+                  localJSONObject.put("cookieUrl", localObject2);
+                  localJSONObject.put("title", localObject1);
+                  localJSONObject.put("icon", paramBundle);
+                  localJSONObject.put("actid", paramInt);
+                  localJSONObject.put("appid", i);
+                  localMessage.obj = localJSONObject;
+                  localMqqHandler.sendMessage(localMessage);
+                  paramBundle = new Date();
+                  paramBundle = new SimpleDateFormat("yyyy-MM-dd").format(paramBundle);
+                  paramBundle = paramBundle + "-RedPack";
+                  localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences(this.a.getCurrentAccountUin() + ".qqsport", 4).edit();
+                  ((SharedPreferences.Editor)localObject1).putBoolean(paramBundle, false);
+                  ((SharedPreferences.Editor)localObject1).commit();
+                  return;
+                }
+                catch (JSONException paramBundle)
+                {
+                  paramBundle.printStackTrace();
+                  return;
+                }
+              }
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
-    VisitorTroopCardFragment.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

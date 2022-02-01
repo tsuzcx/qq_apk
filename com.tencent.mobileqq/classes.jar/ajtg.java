@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajtg
-  extends View.AccessibilityDelegate
+class ajtg
+  implements DialogInterface.OnClickListener
 {
-  public ajtg(ContactsBaseFragment paramContactsBaseFragment) {}
+  ajtg(ajtd paramajtd, Runnable paramRunnable) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
-    }
-    super.sendAccessibilityEvent(paramView, i);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

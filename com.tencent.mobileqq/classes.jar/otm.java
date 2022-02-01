@@ -1,37 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
 
-public final class otm
-  implements Parcelable.Creator<AnchorData>
+public class otm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public AnchorData a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    AnchorData localAnchorData = new AnchorData();
-    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localAnchorData.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label67;
-      }
-    }
-    label67:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localAnchorData.jdField_b_of_type_Boolean = bool1;
-      return localAnchorData;
-      bool1 = false;
-      break;
-    }
-  }
+  public otm(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams, View paramView) {}
   
-  public AnchorData[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new AnchorData[paramInt];
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 

@@ -1,16 +1,27 @@
-class ailw
-  implements aaxw
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
+
+public class ailw
+  extends MqqHandler
 {
-  ailw(ailn paramailn) {}
+  public ailw(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(false, false, 4);
-  }
-  
-  public void b()
-  {
-    this.a.a.a();
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopSuspiciousFragment.a(this.a) == null);
+      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    this.a.a();
   }
 }
 

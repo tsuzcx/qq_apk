@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaiu;
-import aaix;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import zfs;
+import zfv;
 
 public class CommentPresenter$5$1
   implements Runnable
 {
-  public CommentPresenter$5$1(aaix paramaaix) {}
+  public CommentPresenter$5$1(zfv paramzfv) {}
   
   public void run()
   {
-    aaiu.a(this.a.a, 0, aaiu.a(this.a.a).getReplyId());
-    aaiu.b(this.a.a, false);
+    zfs.a(this.a.a, 0, zfs.a(this.a.a).getReplyId());
+    zfs.b(this.a.a, false);
   }
 }
 

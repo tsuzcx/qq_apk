@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import mqq.os.MqqHandler;
 
-public abstract interface aldq
+public class aldq
+  extends MqqHandler
 {
-  public abstract void onResult(int paramInt, PreloadManager.PathResult paramPathResult);
+  public aldq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = ShortVideoUtils.stringForTime(paramMessage.arg1);
+    this.a.c.setText(paramMessage);
+  }
 }
 
 

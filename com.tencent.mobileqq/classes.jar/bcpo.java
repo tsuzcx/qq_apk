@@ -1,53 +1,45 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcpo
-  implements bcny
 {
-  private TextView a;
-  protected List<bcnz> a;
-  protected View b;
-  protected TextView c;
+  public long a;
+  private DownloaderTask a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "now_for_qq";
+  public String e = "now_appid_2";
+  public String f = "now";
+  public String g;
+  public String h;
   
-  public bcpo() {}
-  
-  public bcpo(ViewGroup paramViewGroup, int paramInt)
+  public static bcpo a(String paramString1, String paramString2, String paramString3)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.c = ((TextView)this.b.findViewById(2131371384));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368825)));
-    this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368831)));
-    this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368837)));
-    if ((paramInt == 2131559638) || (paramInt == 2131562864))
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368843)));
-      this.jdField_a_of_type_JavaUtilList.add(new bcpp(this.b.findViewById(2131368844)));
-    }
+    bcpo localbcpo = new bcpo();
+    localbcpo.jdField_a_of_type_JavaLangString = "2";
+    localbcpo.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
+    localbcpo.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
+    localbcpo.b = paramString1;
+    localbcpo.c = paramString2;
+    localbcpo.jdField_a_of_type_Long = System.currentTimeMillis();
+    QLog.i("NowDownloadTaskInfo", 4, localbcpo.toString());
+    return localbcpo;
   }
   
-  public View a()
+  public DownloaderTask a()
   {
-    return this.b;
+    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
   }
   
-  public TextView a()
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
   }
   
-  public List<bcnz> a()
+  public String toString()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.c;
+    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
   }
 }
 

@@ -1,14 +1,10 @@
-import android.app.Activity;
-
 public abstract interface amwq
 {
-  public abstract int a();
+  public abstract void a(amwq paramamwq);
   
-  public abstract amww a(long paramLong, String paramString1, String paramString2);
+  public abstract void a(boolean paramBoolean, Object paramObject);
   
-  public abstract void a();
-  
-  public abstract boolean a(Activity paramActivity);
+  public abstract void b(int paramInt1, int paramInt2, Object paramObject);
 }
 
 

@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
-import bhtq;
 import com.tencent.mobileqq.troop.widget.FlowLayout;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class AioMiniProfileLabelFlowLayout
   extends FlowLayout
@@ -88,7 +88,7 @@ public class AioMiniProfileLabelFlowLayout
           n = localView.getMeasuredHeight();
           if (paramInt3 == 1)
           {
-            j = k - bhtq.a(90.0F);
+            j = k - ViewUtils.dip2px(90.0F);
             localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
             if (localMarginLayoutParams.leftMargin + paramInt2 + i1 + localMarginLayoutParams.rightMargin <= j) {
               break label275;
@@ -171,7 +171,7 @@ public class AioMiniProfileLabelFlowLayout
           i2 = ((ViewGroup.MarginLayoutParams)localObject).topMargin + i1 + ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
           if (k == 1)
           {
-            i1 = i6 - bhtq.a(90.0F);
+            i1 = i6 - ViewUtils.dip2px(90.0F);
             label195:
             if (m + i3 <= i1) {
               break label337;

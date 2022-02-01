@@ -1,32 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
-import mqq.util.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesi
-  extends beit
+  implements View.OnClickListener
 {
-  WeakReference<afnr> a;
-  WeakReference<View> b;
+  public aesi(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  aesi(afnr paramafnr, View paramView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramafnr);
-    this.b = new WeakReference(paramView);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    afnr localafnr = (afnr)this.a.get();
-    View localView = (View)this.b.get();
-    if ((localafnr != null) && (localView != null)) {
-      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localafnr, localView));
-    }
-    return super.a(paramInt);
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aesi
  * JD-Core Version:    0.7.0.1
  */

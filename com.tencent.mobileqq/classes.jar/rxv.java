@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
 
-class rxv
-  implements Animation.AnimationListener
+public class rxv
+  extends AnimatorListenerAdapter
 {
-  rxv(rxt paramrxt) {}
+  public rxv(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramAnimation = (ImageView)rxt.a(this.a).findViewById(2131380543);
-    ImageView localImageView = (ImageView)rxt.a(this.a).findViewById(2131380544);
-    rxt.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
+  }
 }
 
 

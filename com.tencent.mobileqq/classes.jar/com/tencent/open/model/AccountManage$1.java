@@ -1,14 +1,15 @@
 package com.tencent.open.model;
 
 import android.os.Bundle;
+import biek;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.observer.SSOAccountObserver;
 
-class AccountManage$1
+public class AccountManage$1
   implements Runnable
 {
-  AccountManage$1(AccountManage paramAccountManage, WeakReference paramWeakReference, String paramString1, String paramString2, Bundle paramBundle) {}
+  public AccountManage$1(biek parambiek, WeakReference paramWeakReference, String paramString1, String paramString2, Bundle paramBundle) {}
   
   public void run()
   {

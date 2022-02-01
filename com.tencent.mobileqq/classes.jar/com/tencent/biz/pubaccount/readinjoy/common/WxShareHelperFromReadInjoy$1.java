@@ -9,7 +9,7 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
 import com.tencent.qphone.base.util.QLog;
-import zoc;
+import yoy;
 
 class WxShareHelperFromReadInjoy$1
   implements Runnable
@@ -38,7 +38,7 @@ class WxShareHelperFromReadInjoy$1
       j *= 4;
       if (this.c.startsWith("/pages/index/index?share=1&share_type=1"))
       {
-        localObject1 = zoc.a(zoc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841732), true);
+        localObject1 = yoy.a(yoy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841774), true);
         if (localObject1 != null)
         {
           i = ((Bitmap)localObject1).getWidth();
@@ -62,7 +62,7 @@ class WxShareHelperFromReadInjoy$1
       ((SendMessageToWX.Req)localObject1).scene = 0;
       WxShareHelperFromReadInjoy.a(this.this$0, (SendMessageToWX.Req)localObject1);
       return;
-      localObject1 = zoc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
+      localObject1 = yoy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
       break;
       if (QLog.isColorLevel()) {
         QLog.e("WxShareHelperFromReadInjoy", 2, "shareToMiniProgramWithPathAndId, error icon == null! title" + this.d + ", description = " + this.e + ", path = " + this.c + ", webPageUrl = " + this.jdField_a_of_type_JavaLangString + ", id = " + this.b);

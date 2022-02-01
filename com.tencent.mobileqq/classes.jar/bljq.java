@@ -1,13 +1,17 @@
-import android.content.Context;
-import android.widget.AdapterView;
+import java.io.File;
 
-public abstract interface bljq
+public class bljq
 {
-  public abstract AdapterView a(Context paramContext, int paramInt);
+  public static final String a = bljv.a + File.separator + "gif";
+  public static final String b = a + File.separator + "capture";
+  public static final String c = a + File.separator + "res";
+  public static final String d = a + File.separator + "res_zip_download";
+  public static final String e = c + File.separator + "GifGuide";
+  public static final String f = a + File.separator + "material_config";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljq
  * JD-Core Version:    0.7.0.1
  */

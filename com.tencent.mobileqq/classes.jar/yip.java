@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-
-public final class yip
-  implements Parcelable.Creator<CardItem.CardVideoInfo>
+public abstract interface yip
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public CardItem.CardVideoInfo[] a(int paramInt)
-  {
-    return new CardItem.CardVideoInfo[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

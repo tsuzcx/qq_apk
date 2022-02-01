@@ -1,19 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
-class znp
-  implements View.OnClickListener
+public class znp
+  extends amyh
 {
-  znp(zno paramzno, int paramInt) {}
+  public znp(FollowTextView paramFollowTextView) {}
   
-  public void onClick(View paramView)
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Zno.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Zno.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Zno.jdField_b_of_type_ComTencentImageURLImageView);
+    super.onUnfollowPublicAccount(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, false, FollowTextView.a(this.a));
+      }
+      this.a.a(0);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(false, FollowTextView.a(this.a));
+        }
+        SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(0, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQToast.a(this.a.getContext(), 2131690669, 0).a();
   }
 }
 

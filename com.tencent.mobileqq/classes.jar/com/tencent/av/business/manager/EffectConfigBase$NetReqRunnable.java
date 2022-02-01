@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager;
 
-import beum;
-import beuo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectConfigBase$NetReqRunnable
   implements Runnable
 {
-  final beum a;
+  final HttpNetReq a;
   
-  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, beum parambeum)
+  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, HttpNetReq paramHttpNetReq)
   {
-    this.a = parambeum;
+    this.a = paramHttpNetReq;
   }
   
   public void run()
@@ -20,7 +20,7 @@ class EffectConfigBase$NetReqRunnable
     try
     {
       if ((this.this$0.a != null) && (this.a != null)) {
-        this.this$0.a.getNetEngine(0).a(this.a);
+        this.this$0.a.getNetEngine(0).sendReq(this.a);
       }
       return;
     }

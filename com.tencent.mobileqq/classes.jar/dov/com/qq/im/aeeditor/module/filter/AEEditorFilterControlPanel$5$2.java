@@ -1,12 +1,12 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bpho;
-import bphy;
+import bmkk;
+import bmku;
 
 public class AEEditorFilterControlPanel$5$2
   implements Runnable
 {
-  public AEEditorFilterControlPanel$5$2(bpho parambpho) {}
+  public AEEditorFilterControlPanel$5$2(bmkk parambmkk) {}
   
   public void run()
   {

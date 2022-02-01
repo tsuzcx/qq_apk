@@ -1,15 +1,15 @@
 package com.tencent.av.smallscreen;
 
-import bhpc;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class SmallScreenDialogActivity$2
   implements Runnable
 {
-  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bhpc parambhpc) {}
+  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, QQCustomDialog paramQQCustomDialog) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bhpc);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
   }
 }
 

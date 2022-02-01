@@ -1,13 +1,19 @@
-import android.text.TextUtils;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
 
 public class avgs
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static boolean a(String paramString)
+  public avgs(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
+  
+  public void onGlobalLayout()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
     }
-    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
   }
 }
 

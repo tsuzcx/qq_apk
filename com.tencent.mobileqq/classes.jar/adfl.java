@@ -1,40 +1,21 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.MsgBody;
 
-public class adfl
-  implements adci
+class adfl
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  adfl(adfj paramadfj) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GameParty", 2, "recv 0x210_0xaa push message");
+      QLog.d("ColorNick", 2, "onSetColorNick failed. save colorNick");
     }
-    SubMsgType0xaa.MsgBody localMsgBody = new SubMsgType0xaa.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      ((avoj)paramQQAppInterface.getManager(156)).a(localMsgBody, false);
-      return;
-    }
-    catch (Exception paramMsgType0x210)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GameParty", 2, "recv 0x210_0xaa, prase msgBody error");
-        }
-      }
-    }
-  }
-  
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 

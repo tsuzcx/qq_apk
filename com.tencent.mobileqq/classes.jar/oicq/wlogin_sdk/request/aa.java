@@ -179,7 +179,7 @@ public class aa
         i = t.x;
         long l1 = System.currentTimeMillis() / 1000L;
         long l2 = t.af;
-        t.at.commit(Build.VERSION.RELEASE, new String(t.H), "", util.buf_to_string(util.get_ksid(t.u)), new String(t.F), new String(t.R), new String(t.J), new String(t.I), util.get_release_time(), "6.0.0.2435");
+        t.at.commit(Build.VERSION.RELEASE, new String(t.H), "", util.buf_to_string(util.get_ksid(t.u)), new String(t.F), new String(t.R), new String(t.J), new String(t.I), util.get_release_time(), "6.0.0.2436");
         try
         {
           paramArrayOfByte1 = t.at.toJasonObj().toString().getBytes();

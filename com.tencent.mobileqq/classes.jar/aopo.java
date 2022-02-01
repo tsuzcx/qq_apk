@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class aopo
-  extends aopi
+public class aopo
+  implements DialogInterface.OnClickListener
 {
-  aopo(aopn paramaopn) {}
+  public aopo(ArkAppModuleBase.APIAuthority.1 param1, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Aopp != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Aopp.a();
     }
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Aopi != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Aopi);
-    }
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {}
+    try
     {
-      paramFaceInfo = this.a.a();
-      if (paramFaceInfo != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramFaceInfo);
-        return;
-      }
-      this.a.a();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label39:
+      aopl.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 1);
       return;
     }
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, null);
+    catch (Exception paramDialogInterface)
+    {
+      break label39;
+    }
   }
 }
 

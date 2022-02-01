@@ -1,18 +1,33 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asto
+class asto
   implements View.OnClickListener
 {
-  public asto(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
+  asto(astk paramastk, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Astk.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 1) {
+        break label86;
+      }
+      bcef.b(null, "dc00898", "", "", "0X800A745", "0X800A745", ataw.c(this.jdField_a_of_type_Astk.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Astk.a.d()) {
+        this.jdField_a_of_type_Astk.a.b();
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label86:
+      if (this.jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_Astk.a.g();
+      }
+    }
   }
 }
 

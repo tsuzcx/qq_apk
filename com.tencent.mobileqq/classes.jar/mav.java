@@ -1,18 +1,15 @@
-import android.widget.LinearLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
-abstract class mav
+public class mav
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int = -1;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  int b = -552421387;
-  int c = -15550475;
-  int d = 14;
+  public mav(AVActivity paramAVActivity) {}
   
-  void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-    }
+    this.a.i();
   }
 }
 

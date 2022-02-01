@@ -1,23 +1,20 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-final class bmgl
-  implements bmgr
+public abstract class bmgl
 {
-  bmgl(bmgq parambmgq) {}
+  public boolean a;
   
-  public void a(boolean paramBoolean, Context paramContext, bmgt parambmgt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bmgk.d(paramContext, parambmgt);
-    }
-    if (this.a != null) {
-      this.a.a(paramBoolean);
-    }
-  }
+  public abstract float a();
+  
+  public abstract String a();
+  
+  public abstract HashMap<String, String> a();
+  
+  public abstract float b();
+  
+  public abstract String b();
+  
+  public abstract float c();
 }
 
 

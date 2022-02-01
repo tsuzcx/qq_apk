@@ -1,21 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-
 public class paj
-  implements bjig
 {
-  public paj(WxShareHelperFromReadInjoy paramWxShareHelperFromReadInjoy) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public String toString()
   {
-    if (paramBaseResp.errCode == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      WXShareHelper.a().b(this);
-      uao.a.a(bool);
-      return;
-    }
+    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
   }
 }
 

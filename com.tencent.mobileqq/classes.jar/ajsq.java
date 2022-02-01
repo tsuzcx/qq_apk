@@ -1,16 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contacts.base.Contacts;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class ajsq
-  extends ayxl
+class ajsq
+  implements aszj
 {
-  public ajsq(Contacts paramContacts) {}
+  ajsq(ajsn paramajsn) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onNo()
   {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
-    }
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+  }
+  
+  public void onYes()
+  {
+    this.a.b();
   }
 }
 

@@ -1,16 +1,30 @@
-import com.tencent.biz.qqcircle.beans.Friend;
-import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class vxy
-  implements vya
+class vxy
+  implements vqp<vyd, vye>
 {
-  public vxy(QCircleAsyncTextView paramQCircleAsyncTextView, vxz paramvxz, Friend paramFriend) {}
+  vxy(vxx paramvxx, vkz paramvkz, vla paramvla) {}
   
-  public void a()
+  public void a(@NonNull vyd paramvyd, @Nullable vye paramvye, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_Vxz != null) {
-      this.jdField_a_of_type_Vxz.a(String.valueOf(this.jdField_a_of_type_ComTencentBizQqcircleBeansFriend.mUin));
+    if ((paramErrorMessage.isFail()) || (paramvye == null))
+    {
+      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+      return;
     }
+    if (paramvye.b == 1)
+    {
+      this.jdField_a_of_type_Vxx.a(true);
+      this.jdField_a_of_type_Vkz.b(2);
+      this.jdField_a_of_type_Vxx.a = 2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramvye.b);
+    }
+    this.jdField_a_of_type_Vla.a(paramvye.a);
   }
 }
 

@@ -1,191 +1,224 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper;
+import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.FieldChangedException;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
 public class akmb
-  extends aklt
 {
-  private bkgt a;
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
+  private static AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   
-  public akmb(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public static int a()
   {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-    if (paramQQAppInterface.a(165)) {
-      this.jdField_a_of_type_Bkgt = ((bkgt)paramQQAppInterface.getManager(165));
-    }
-    this.c = true;
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
-  private void A()
+  @Nullable
+  public static RecentBaseData a(QQAppInterface paramQQAppInterface, Context paramContext, @NonNull RecentUser paramRecentUser)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {}
-    label176:
-    for (;;)
+    try
     {
-      return;
-      Object localObject1 = this.jdField_a_of_type_AndroidWidgetTextView.getParent();
-      if ((localObject1 instanceof ViewGroup)) {}
-      for (localObject1 = (ViewGroup)localObject1;; localObject1 = null)
+      paramQQAppInterface = akju.a(paramRecentUser, paramQQAppInterface, paramContext, false);
+      if (paramRecentUser.parceledRecentBaseData == null) {
+        return null;
+      }
+      boolean bool = ParcelHelper.a(paramQQAppInterface, paramRecentUser.parceledRecentBaseData);
+      if (QLog.isColorLevel())
       {
-        if (localObject1 == null) {
-          break label176;
+        QLog.e("RecentParcelUtil", 1, new Object[] { "bytesToObject status=", Boolean.valueOf(bool), " user=", paramRecentUser.uin });
+        paramQQAppInterface.printDataItem();
+        if (((paramQQAppInterface instanceof RecentUserBaseData)) && (((RecentUserBaseData)paramQQAppInterface).getRecentUser() != null)) {
+          QLog.d("RecentParcelUtil", 1, new Object[] { "RecentUser info=[showUpTime=", Long.valueOf(((RecentUserBaseData)paramQQAppInterface).getRecentUser().showUpTime), " opTime=", Long.valueOf(((RecentUserBaseData)paramQQAppInterface).getRecentUser().opTime) });
         }
-        if (bgpy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-        {
-          int i = ((ViewGroup)localObject1).indexOfChild(this.jdField_a_of_type_AndroidWidgetTextView);
-          localObject2 = bbwq.a(this.jdField_a_of_type_AndroidContentContext);
-          if (localObject2 == null) {
-            break;
-          }
-          ((View)localObject2).setId(2131376912);
-          ((View)localObject2).setPadding(agej.a(4.0F, this.jdField_a_of_type_AndroidWidgetTextView.getResources()), agej.a(6.0F, this.jdField_a_of_type_AndroidWidgetTextView.getResources()), 0, 0);
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams.addRule(1, 2131378936);
-          localLayoutParams.addRule(6, 2131378936);
-          ((View)localObject2).setLayoutParams(localLayoutParams);
-          ((ViewGroup)localObject1).addView((View)localObject2, i);
-          return;
-        }
-        Object localObject2 = ((ViewGroup)localObject1).findViewById(2131376912);
-        if (localObject2 == null) {
-          break;
-        }
-        ((ViewGroup)localObject1).removeView((View)localObject2);
-        return;
+      }
+      if (!bool) {
+        return null;
       }
     }
+    catch (ParcelHelper.FieldChangedException paramQQAppInterface)
+    {
+      QLog.e("RecentParcelUtil", 1, "FieldChangedException ", paramQQAppInterface);
+      return null;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("RecentParcelUtil", 1, "getRecentUserData fail, 请对应的开发检查是否使用了不该使用的字段", paramQQAppInterface);
+      a(paramContext, false, paramQQAppInterface);
+      paramQQAppInterface = null;
+    }
+    return paramQQAppInterface;
   }
   
-  protected boolean b()
+  public static String a(Context paramContext)
   {
-    return true;
+    paramContext = paramContext.getSharedPreferences("BootOptimize", 0);
+    String str = paramContext.getString("8.4.8_has_crash_when_parcel_because", "");
+    paramContext.edit().putString("8.4.8_has_crash_when_parcel_because", "").apply();
+    return str;
   }
   
-  protected void f()
+  public static void a()
   {
-    if (!this.d) {}
-    label592:
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  static void a(int paramInt1, int paramInt2)
+  {
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt1);
+    jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt2);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    a(paramContext, paramBoolean, null);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, @Nullable Throwable paramThrowable)
+  {
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("BootOptimize", 0).edit();
+      if (paramBoolean) {
+        paramContext.putLong("_last_crash_time", System.currentTimeMillis());
+      }
+      for (;;)
+      {
+        paramContext.apply();
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        return;
+        paramContext.putBoolean("8.4.8_has_crash_when_parcel", true);
+        if (paramThrowable != null)
+        {
+          while (paramThrowable.getCause() != null) {
+            paramThrowable = paramThrowable.getCause();
+          }
+          StringWriter localStringWriter = new StringWriter();
+          paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+          paramContext.putString("8.4.8_has_crash_when_parcel_because", localStringWriter.getBuffer().toString());
+        }
+      }
+      return;
+    }
+    catch (Throwable paramContext) {}
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, @NonNull List<Object> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    label170:
     do
     {
-      Object localObject;
-      do
+      return;
+      int j = Math.min(paramInt, paramList.size());
+      int i = 0;
+      if (i < paramList.size())
       {
-        do
+        Object localObject = paramList.get(i);
+        int k;
+        if ((localObject instanceof RecentBaseData))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean = false;
-                this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b = false;
-                if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0)
-                {
-                  aifn.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-                  aiuk.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-                }
-                if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f)) {
-                  break;
-                }
-                this.b.setTextColor(-1);
-                this.b.setAlpha(0.8F);
-                localObject = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-                if ((localObject != null) && ((bhlg.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) != 0) || (!TextUtils.isEmpty(((Friends)localObject).strTermDesc))))
-                {
-                  localObject = bhlg.b((Friends)localObject);
-                  this.b.setCompoundDrawablePadding(agej.a(2.0F, BaseApplicationImpl.getContext().getResources()));
-                  this.b.setCompoundDrawables(aifn.a().b(5), null, null, null);
-                  this.b.setOnClickListener(null);
-                  this.b.setText((CharSequence)localObject);
-                  e(true);
-                  return;
-                }
-              } while (this.b.getVisibility() != 0);
-              e(false);
-              return;
-              if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e)) {
-                break;
-              }
-              this.b.setTextColor(-1);
-              this.b.setAlpha(0.8F);
-              localObject = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-              if ((localObject != null) && ((bhlg.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) != 0) || (!TextUtils.isEmpty(((Friends)localObject).strTermDesc))))
-              {
-                localObject = bhlg.b((Friends)localObject);
-                this.b.setCompoundDrawablePadding(agej.a(2.0F, BaseApplicationImpl.getContext().getResources()));
-                this.b.setCompoundDrawables(aiuk.a().b(5), null, null, null);
-                this.b.setText((CharSequence)localObject);
-                e(true);
-                return;
-              }
-            } while (this.b.getVisibility() != 0);
-            e(false);
-            return;
-            this.b.setTextColor(-1);
-            this.b.setAlpha(0.8F);
-            this.b.setCompoundDrawables(null, null, null, null);
-            this.b.setOnClickListener(null);
-            System.currentTimeMillis();
-          } while ((!this.c) || ((this.jdField_a_of_type_Bkgt != null) && (this.jdField_a_of_type_Bkgt.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))));
-          localObject = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1008);
-        localObject = ((anyw)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if ((localObject == null) || ((bhlg.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) == 0) && ((TextUtils.isEmpty(((Friends)localObject).strTermDesc)) || (!((Friends)localObject).strTermDesc.contains("TIM"))))) {
-          break label592;
+          localObject = (RecentBaseData)localObject;
+          if (j <= 0) {
+            continue;
+          }
+          k = j - 1;
+          localObject = (RecentUser)((RecentUserBaseData)localObject).mUser;
+          paramQQAppInterface.getProxyManager().a().a((RecentUser)localObject, true);
+          j = k;
+          if (QLog.isColorLevel()) {
+            if (localObject != null) {
+              break label170;
+            }
+          }
         }
-        localObject = bhlg.b((Friends)localObject);
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (bhjx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+        for (localObject = "";; localObject = ((RecentUser)localObject).uin)
+        {
+          QLog.d("RecentParcelUtil", 2, new Object[] { "saveRecentUserData, ", localObject, " forceUpdateParcelData=true" });
+          j = k;
+          i += 1;
           break;
+          new Object[2][0] = "saveRecentUserData, ignore data class=";
+          throw new NullPointerException();
         }
-        this.b.setText((CharSequence)localObject);
-        e(true);
-      } while (!AppSetting.c);
-      this.b.setContentDescription((CharSequence)localObject);
-      return;
-      e(false);
-      return;
-    } while (this.b.getVisibility() != 0);
-    e(false);
-  }
-  
-  protected void g()
-  {
-    this.e = true;
-    super.g();
-    if (this.d)
-    {
-      f();
-      if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
-        bhtq.b(this.jdField_a_of_type_AndroidWidgetImageView, 0);
       }
+    } while (!QLog.isColorLevel());
+    QLog.d("RecentParcelUtil", 2, new Object[] { "saveRecentUserData, size=", Integer.valueOf(paramInt), " lastData.size()=", Integer.valueOf(paramList.size()) });
+  }
+  
+  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences("BootOptimize", 0).edit().putBoolean("_useParcelForBoot", paramBoolean).apply();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("BootOptimize", 0).getBoolean("8.4.8_has_crash_when_parcel", false);
+  }
+  
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(b(paramQQAppInterface));
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    A();
+    return jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
-  protected void u()
+  public static int b()
   {
-    super.u();
+    return jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
-  protected void v()
+  public static boolean b(Context paramContext)
   {
-    super.v();
+    if (paramContext == null) {}
+    long l;
+    do
+    {
+      return true;
+      l = paramContext.getSharedPreferences("BootOptimize", 0).getLong("_last_crash_time", 0L);
+    } while (System.currentTimeMillis() - l > 1800000L);
+    return false;
   }
   
-  protected void y()
+  private static boolean b(@NonNull QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "MiniPieForC2C";
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("BootOptimize", 0);
+    boolean bool2 = paramQQAppInterface.getBoolean("_useParcelForBoot", true);
+    boolean bool3 = paramQQAppInterface.getBoolean("8.4.8_has_crash_when_parcel", false);
+    long l = paramQQAppInterface.getLong("_last_crash_time", 0L);
+    if (System.currentTimeMillis() - l < 1800000L) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BootOptimize", 2, new Object[] { "getUseBootOptimize=[isDebugVersion=", Boolean.valueOf(false), ", use_parcel:", Boolean.valueOf(bool2), ", has_crash=", Boolean.valueOf(bool3), ", appVersion=", "8.4.8", ", lastCrashTime=", Long.valueOf(l), " recentCrash=", Boolean.valueOf(bool1), "]" });
+      }
+      if ((!bool2) || (bool3) || (bool1)) {
+        break;
+      }
+      return true;
+    }
+    return false;
   }
 }
 

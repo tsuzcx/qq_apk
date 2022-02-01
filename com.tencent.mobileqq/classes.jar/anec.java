@@ -1,39 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
-class anec
-  extends biht
+public class anec
+  implements DialogInterface.OnClickListener
 {
-  anec(anea paramanea) {}
+  public anec(VideoBroadcastReceiver paramVideoBroadcastReceiver, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void onDone(bihu parambihu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onDone(parambihu);
-    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambihu.a());
-  }
-  
-  public void onDoneFile(bihu parambihu)
-  {
-    if ((parambihu == null) || (anea.a(this.a) == null)) {
-      return;
-    }
-    if (parambihu.a() != 3)
+    mrd.e(false, false);
+    if (this.jdField_a_of_type_Int == 3000)
     {
-      anea.a(this.a, 2);
-      if (anea.a(this.a) != null) {
-        anea.a(this.a).c(-1005, anea.a(this.a).jdField_b_of_type_JavaLangString);
-      }
-      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambihu.a());
-      return;
+      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+      VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, this.d);
     }
-    anea.a(this.a);
-  }
-  
-  public void onProgress(bihu parambihu)
-  {
-    int i = (int)parambihu.a;
-    if (anea.a(this.a) != null) {
-      anea.a(this.a).a(i, anea.a(this.a).jdField_b_of_type_Int, anea.a(this.a).jdField_b_of_type_JavaLangString);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
+    mrd.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause);
   }
 }
 

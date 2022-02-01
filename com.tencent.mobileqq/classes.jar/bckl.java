@@ -1,8 +1,17 @@
-public abstract interface bckl
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+
+class bckl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(bckk parambckk);
+  bckl(bckk parambckk, LinearLayout paramLinearLayout) {}
   
-  public abstract void a(bckk parambckk, String paramString1, String paramString2);
+  public void onGlobalLayout()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bckk.a(this.jdField_a_of_type_Bckk, this.jdField_a_of_type_AndroidWidgetLinearLayout);
+  }
 }
 
 

@@ -1,18 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class olj
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public olj(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public olj(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ReadInJoySettingActivity.b(this.a, paramBoolean);
-    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    ReadInJoyChannelActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

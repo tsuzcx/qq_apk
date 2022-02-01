@@ -1,35 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-public final class arwn
-  implements Parcelable.Creator
+class arwn
+  implements bjoy
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
-  {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
-    }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
-  }
+  arwn(arwl paramarwl, View paramView) {}
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  public void a()
   {
-    return new IPSiteModel.Comic[paramInt];
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

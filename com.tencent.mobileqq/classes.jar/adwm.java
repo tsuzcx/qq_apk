@@ -1,30 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class adwm
-  implements bliz
+  extends CardObserver
 {
-  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
+  public adwm(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public adwm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
-    }
-    switch (paramInt)
+    if (paramBoolean)
     {
-    default: 
-      return;
+      this.a.setResult(-1);
+      this.a.b(2131718781);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
-  }
-  
-  public void a(SubAccountInfo paramSubAccountInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131718779);
+    }
   }
 }
 

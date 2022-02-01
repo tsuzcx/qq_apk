@@ -1,17 +1,55 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeji
-  implements View.OnLayoutChangeListener
+  extends bgod
 {
-  public aeji(Conversation paramConversation) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public aeji(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
   {
-    Conversation.a(this.a).removeOnLayoutChangeListener(this);
-    Conversation.k(this.a);
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bgoe parambgoe)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambgoe);
+    }
+    super.onCancel(parambgoe);
+  }
+  
+  public void onDone(bgoe parambgoe)
+  {
+    super.onDone(parambgoe);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambgoe);
+    }
+    if (parambgoe.b()) {}
+    do
+    {
+      return;
+      if (parambgoe.a() == -1)
+      {
+        parambgoe = new Message();
+        parambgoe.what = 17;
+        TextPreviewSettingActivity.a(this.a).sendMessage(parambgoe);
+        return;
+      }
+      parambgoe = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
+    } while (parambgoe == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambgoe;
+    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bgoe parambgoe)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambgoe);
+    }
+    return super.onStart(parambgoe);
   }
 }
 

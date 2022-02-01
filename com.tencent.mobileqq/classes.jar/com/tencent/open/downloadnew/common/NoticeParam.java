@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjyi;
+import bidq;
 
 public class NoticeParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<NoticeParam> CREATOR = new bjyi();
+  public static final Parcelable.Creator<NoticeParam> CREATOR = new bidq();
   public int a;
   public long a;
   public Intent a;

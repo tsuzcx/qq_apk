@@ -1,18 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.Context;
+import android.view.View;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
 
-public class ahrv
-  implements bizc
+class ahrv
+  implements aprr
 {
-  public ahrv(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ahrx paramahrx) {}
+  ahrv(ahru paramahru) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahrx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahrx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahrx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "onConfirm: ");
+    if (ahru.a(this.a) != null) {
+      ahru.a(this.a).a(this.a.jdField_a_of_type_Long);
     }
+    ahru.a(this.a).dismiss();
+    int i = ahru.a(this.a, this.a.jdField_a_of_type_Long);
+    if ((ahru.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
+    for (String str = this.a.a(ahru.a(this.a).a(1));; str = ahru.a(this.a).a(1) + this.a.jdField_a_of_type_AndroidContentContext.getString(2131694174))
+    {
+      bcef.b(null, "dc00898", "", "", "0X800AE7F", "0X800AE7F", ahru.a(this.a), i, "", "", str, "");
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.a(paramInt1, paramInt2);
+    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "column: " + paramInt1 + ", row: " + paramInt2);
+    if (paramInt1 == 0) {
+      ahru.a(this.a).a(1);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    ahru.a(this.a).dismiss();
+    bcef.b(null, "dc00898", "", "", "0X800AE80", "0X800AE80", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    if (ahru.a(this.a) != null) {
+      ahru.a(this.a).a(-1L);
+    }
+    ahru.a(this.a).dismiss();
+    bcef.b(null, "dc00898", "", "", "0X800B411", "0X800B411", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.richmedia.segment;
 
 import android.media.MediaFormat;
-import bboh;
+import baic;
 
 public class SegmentManager$1
   implements Runnable
 {
-  public SegmentManager$1(bboh parambboh, String paramString, MediaFormat paramMediaFormat) {}
+  public SegmentManager$1(baic parambaic, String paramString, MediaFormat paramMediaFormat) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   4: invokestatic 33	bboh:a	(Lbboh;)Ljava/lang/String;
+    //   1: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   4: invokestatic 33	baic:a	(Lbaic;)Ljava/lang/String;
     //   7: astore_1
     //   8: aload_1
     //   9: ifnull +22 -> 31
@@ -30,8 +30,8 @@ public class SegmentManager$1
     //   27: invokevirtual 39	java/io/IOException:printStackTrace	()V
     //   30: return
     //   31: aload_0
-    //   32: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   35: invokevirtual 42	bboh:a	()Ljava/lang/String;
+    //   32: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   35: invokevirtual 42	baic:a	()Ljava/lang/String;
     //   38: astore 4
     //   40: new 44	java/io/File
     //   43: dup
@@ -39,99 +39,99 @@ public class SegmentManager$1
     //   46: invokespecial 47	java/io/File:<init>	(Ljava/lang/String;)V
     //   49: astore_1
     //   50: aload_0
-    //   51: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   54: getfield 50	bboh:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
+    //   51: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   54: getfield 50	baic:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
     //   57: invokevirtual 56	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:getContext	()Landroid/content/Context;
     //   60: aload_0
     //   61: getfield 17	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   64: invokestatic 61	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   64: invokestatic 62	com/tencent/mobileqq/shortvideo/ShortVideoUtils:getVideoThumbnail	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   67: astore_3
     //   68: aload 4
-    //   70: invokestatic 67	bhmi:d	(Ljava/lang/String;)Z
+    //   70: invokestatic 68	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   73: pop
     //   74: aload 4
-    //   76: invokestatic 70	bhmi:a	(Ljava/lang/String;)Ljava/io/File;
+    //   76: invokestatic 72	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   79: pop
     //   80: aload_1
-    //   81: invokevirtual 74	java/io/File:createNewFile	()Z
+    //   81: invokevirtual 76	java/io/File:createNewFile	()Z
     //   84: pop
-    //   85: new 76	java/io/BufferedOutputStream
+    //   85: new 78	java/io/BufferedOutputStream
     //   88: dup
-    //   89: new 78	java/io/FileOutputStream
+    //   89: new 80	java/io/FileOutputStream
     //   92: dup
     //   93: aload 4
-    //   95: invokespecial 79	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   98: invokespecial 82	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   95: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   98: invokespecial 84	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   101: astore_2
     //   102: aload_2
     //   103: astore_1
     //   104: aload_3
-    //   105: getstatic 88	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   105: getstatic 90	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   108: bipush 80
     //   110: aload_2
-    //   111: invokevirtual 94	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   111: invokevirtual 96	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   114: pop
     //   115: aload_2
     //   116: astore_1
     //   117: aload_3
-    //   118: invokevirtual 97	android/graphics/Bitmap:recycle	()V
+    //   118: invokevirtual 99	android/graphics/Bitmap:recycle	()V
     //   121: aload_2
     //   122: astore_1
     //   123: aload_2
-    //   124: invokevirtual 100	java/io/BufferedOutputStream:flush	()V
+    //   124: invokevirtual 102	java/io/BufferedOutputStream:flush	()V
     //   127: aload_2
     //   128: astore_1
     //   129: aload_0
-    //   130: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
+    //   130: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
     //   133: aload 4
-    //   135: invokestatic 103	bboh:a	(Lbboh;Ljava/lang/String;)Ljava/lang/String;
+    //   135: invokestatic 105	baic:a	(Lbaic;Ljava/lang/String;)Ljava/lang/String;
     //   138: pop
     //   139: aload_2
     //   140: astore_1
-    //   141: invokestatic 108	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   141: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   144: ifeq +36 -> 180
     //   147: aload_2
     //   148: astore_1
-    //   149: ldc 110
+    //   149: ldc 112
     //   151: iconst_2
-    //   152: new 112	java/lang/StringBuilder
+    //   152: new 114	java/lang/StringBuilder
     //   155: dup
-    //   156: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   159: ldc 115
-    //   161: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   159: ldc 117
+    //   161: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: aload_0
-    //   165: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   168: invokestatic 33	bboh:a	(Lbboh;)Ljava/lang/String;
-    //   171: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   165: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   168: invokestatic 33	baic:a	(Lbaic;)Ljava/lang/String;
+    //   171: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   180: aload_2
     //   181: astore_1
     //   182: aload_0
-    //   183: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   186: invokestatic 128	bboh:a	(Lbboh;)Landroid/os/Bundle;
+    //   183: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   186: invokestatic 131	baic:a	(Lbaic;)Landroid/os/Bundle;
     //   189: astore_3
     //   190: aload_2
     //   191: astore_1
     //   192: aload_0
-    //   193: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   196: getfield 131	bboh:jdField_a_of_type_Bbeh	Lbbeh;
+    //   193: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   196: getfield 134	baic:jdField_a_of_type_Azzj	Lazzj;
     //   199: sipush 202
     //   202: iconst_m1
     //   203: aload_3
-    //   204: invokevirtual 136	bbeh:a	(IILandroid/os/Bundle;)Z
+    //   204: invokevirtual 139	azzj:a	(IILandroid/os/Bundle;)Z
     //   207: pop
     //   208: aload_2
     //   209: astore_1
     //   210: aload_0
-    //   211: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
+    //   211: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
     //   214: aload_0
     //   215: getfield 19	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:jdField_a_of_type_AndroidMediaMediaFormat	Landroid/media/MediaFormat;
-    //   218: invokestatic 139	bboh:a	(Lbboh;Landroid/media/MediaFormat;)V
+    //   218: invokestatic 142	baic:a	(Lbaic;Landroid/media/MediaFormat;)V
     //   221: aload_2
     //   222: ifnull -198 -> 24
     //   225: aload_2
-    //   226: invokevirtual 142	java/io/BufferedOutputStream:close	()V
+    //   226: invokevirtual 145	java/io/BufferedOutputStream:close	()V
     //   229: return
     //   230: astore_1
     //   231: aload_1
@@ -143,26 +143,26 @@ public class SegmentManager$1
     //   239: aload_2
     //   240: astore_1
     //   241: aload_3
-    //   242: invokevirtual 143	java/lang/Exception:printStackTrace	()V
+    //   242: invokevirtual 146	java/lang/Exception:printStackTrace	()V
     //   245: aload_2
     //   246: astore_1
-    //   247: invokestatic 108	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   247: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   250: ifeq +13 -> 263
     //   253: aload_2
     //   254: astore_1
-    //   255: ldc 110
+    //   255: ldc 112
     //   257: iconst_2
-    //   258: ldc 145
-    //   260: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   258: ldc 148
+    //   260: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   263: aload_2
     //   264: astore_1
     //   265: aload_0
-    //   266: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbboh;
-    //   269: invokevirtual 148	bboh:b	()V
+    //   266: getfield 15	com/tencent/mobileqq/richmedia/segment/SegmentManager$1:this$0	Lbaic;
+    //   269: invokevirtual 151	baic:b	()V
     //   272: aload_2
     //   273: ifnull -249 -> 24
     //   276: aload_2
-    //   277: invokevirtual 142	java/io/BufferedOutputStream:close	()V
+    //   277: invokevirtual 145	java/io/BufferedOutputStream:close	()V
     //   280: return
     //   281: astore_1
     //   282: aload_1
@@ -174,7 +174,7 @@ public class SegmentManager$1
     //   290: aload_1
     //   291: ifnull +7 -> 298
     //   294: aload_1
-    //   295: invokevirtual 142	java/io/BufferedOutputStream:close	()V
+    //   295: invokevirtual 145	java/io/BufferedOutputStream:close	()V
     //   298: aload_2
     //   299: athrow
     //   300: astore_1

@@ -1,67 +1,151 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class zvd
-  extends ValueAnimator
+  extends zvf
 {
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private View jdField_a_of_type_AndroidViewView;
+  private int jdField_a_of_type_Int;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private List<zvc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected zuz a;
+  private int b;
   
-  private zvd(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public zvd(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setObjectValues(new Object[] { new zvg(paramFloat1, paramFloat2, paramFloat3), new zvg(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new zvh(null));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new zve(this, a(paramView));
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    a(2131559157);
+    this.b = 4;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private CircularRevealCompatLayout a(View paramView)
+  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
-    }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
-    }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
-  }
-  
-  public static zvd a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
-  {
-    return new zvd(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localObject instanceof CircularRevealCompatLayout))
+    int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    if (paramInt3 > paramInt1)
     {
-      localObject = (CircularRevealCompatLayout)localObject;
-      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
-      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
-      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
-      int i = localViewGroup.indexOfChild((View)localObject);
-      localViewGroup.removeView((View)localObject);
-      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+      if (paramInt3 > paramInt2 * 2)
+      {
+        localLayoutParams.leftMargin = (paramInt2 - i / 2);
+        return;
+      }
+      if (paramInt3 > (paramInt4 - paramInt2) * 2)
+      {
+        localLayoutParams.leftMargin = (paramInt2 + paramInt3 - paramInt4 - i / 2);
+        return;
+      }
+      localLayoutParams.addRule(14);
+      return;
     }
+    localLayoutParams.addRule(14);
   }
   
-  public void removeAllUpdateListeners()
+  private void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    switch (this.b)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755041);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370710));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362974));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    super.b(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void a(View paramView)
+  {
+    a();
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    Rect localRect = new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.measure(-2, -2);
+    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
+    int m = arrayOfInt[0];
+    int n = (paramView.getWidth() - i) / 2;
+    int i1 = localRect.top;
+    a(paramView.getWidth(), localRect.centerX(), i, k);
+    a(k, localRect.centerX(), true);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, m + n, i1 - j - 10);
+  }
+  
+  public void a(zuz paramzuz)
+  {
+    this.jdField_a_of_type_Zuz = paramzuz;
+  }
+  
+  public void a(zvc paramzvc)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramzvc);
+    String str = paramzvc.b();
+    Drawable localDrawable = paramzvc.a();
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject1).setBackgroundResource(2130839693);
+      localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.dp2px(15.0F, ((ImageView)localObject1).getResources()), 0, AIOUtils.dp2px(15.0F, ((ImageView)localObject1).getResources()), 0);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+    }
+    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559156, null);
+    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131370716);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131370728);
+    if (localDrawable != null)
+    {
+      ((ImageView)localObject2).setImageDrawable(localDrawable);
+      if (str == null) {
+        break label267;
+      }
+      if (npm.a(str) <= 18) {
+        break label258;
+      }
+      localTextView.setText(npm.a(str, 18, "..."));
+    }
+    for (;;)
+    {
+      ((View)localObject1).setOnClickListener(new zve(this, paramzvc.c(), paramzvc.a()));
+      ((View)localObject1).setFocusable(true);
+      ((View)localObject1).setClickable(true);
+      paramzvc = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+      paramzvc.gravity = 17;
+      ((View)localObject1).setLayoutParams(paramzvc);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+      this.jdField_a_of_type_Int += 1;
+      return;
+      ((ImageView)localObject2).setVisibility(8);
+      break;
+      label258:
+      localTextView.setText(str);
+      continue;
+      label267:
+      localTextView.setVisibility(8);
+    }
   }
 }
 

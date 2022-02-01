@@ -1,6 +1,12 @@
-public abstract interface ahfx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ahfx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  ahfx(ahfp paramahfp) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

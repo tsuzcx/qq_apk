@@ -1,39 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ynh
-  extends wjm<ymx, yga>
+public class ynh
 {
-  ynh(ymx paramymx)
+  public int a;
+  public long a;
+  private Map<Integer, Long> a;
+  public int b = -1;
+  
+  public ynh()
   {
-    super(paramymx);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
-  public void a(@NonNull ymx paramymx, @NonNull yga paramyga)
+  public void a(int paramInt, long paramLong)
   {
-    Object localObject = paramymx.a(paramyga.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramyga.jdField_a_of_type_Boolean))
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+    if (this.jdField_a_of_type_Long < paramLong)
     {
-      yuk.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramyga.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramyga.jdField_a_of_type_Boolean) });
-      return;
+      this.jdField_a_of_type_Long = paramLong;
+      this.b = paramInt;
     }
-    if (!(localObject instanceof ylo))
-    {
-      yuk.e(this.TAG, "that is error type!");
-      return;
-    }
-    localObject = (ylo)localObject;
-    ((CommentLikeFeedItem)((ylo)localObject).a).mLikeCount = paramyga.b;
-    ((ylo)localObject).b(paramyga.jdField_a_of_type_JavaUtilList, true);
-    ymx.a(paramymx).b(paramyga.jdField_a_of_type_JavaLangString);
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return yga.class;
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() + l) {}
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+      return "there_is_no_frame";
+    }
+    this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
+    localStringBuilder.append("avg:").append(this.jdField_a_of_type_Int).append("|max:").append(this.jdField_a_of_type_Long).append("|maxId:").append(this.b);
+    return localStringBuilder.toString();
   }
-  
-  public void b(@NonNull ymx paramymx, @NonNull yga paramyga) {}
 }
 
 

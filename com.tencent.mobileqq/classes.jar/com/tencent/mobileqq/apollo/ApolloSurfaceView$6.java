@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amuu;
+import alpo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 

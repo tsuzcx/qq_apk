@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import rzt;
+import sgx;
 
 class VideoView$8
   implements Runnable

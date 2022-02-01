@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.apollo;
 
-import anph;
-import anpk;
+import amkb;
+import amke;
 
 final class ApolloRender$10
   implements Runnable
 {
-  ApolloRender$10(String paramString1, String paramString2, String[] paramArrayOfString, anph paramanph, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
+  ApolloRender$10(String paramString1, String paramString2, String[] paramArrayOfString, amkb paramamkb, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_JavaLangString.toUpperCase();
     if (str.equals("GET")) {
-      anpk.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anph);
+      amke.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Amkb);
     }
     while (!str.equals("POST")) {
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      anpk.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anph);
+      amke.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Amkb);
       return;
     }
-    anpk.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anph);
+    amke.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Amkb);
   }
 }
 

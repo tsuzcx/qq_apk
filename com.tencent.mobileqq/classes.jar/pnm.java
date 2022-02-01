@@ -1,35 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-class pnm
-  implements tfg
+public abstract interface pnm<T>
 {
-  pnm(pnl parampnl, int paramInt, ono paramono) {}
+  public abstract T a(int paramInt);
   
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {}
-    try
-    {
-      paramJSONObject.put("arg_callback", paramString);
-      paramString = new Bundle();
-      paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
-      paramString = EIPCResult.createResult(0, paramString);
-      this.jdField_a_of_type_Pnl.callbackResult(this.jdField_a_of_type_Int, paramString);
-      this.jdField_a_of_type_Ono.a();
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
+  public abstract List<T> a();
+  
+  public abstract void a();
+  
+  public abstract void a(T paramT, int paramInt);
+  
+  public abstract void a(List<T> paramList);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void b(List<T> paramList);
+  
+  public abstract void c();
+  
+  public abstract void c(List<ChannelCoverInfo> paramList);
 }
 
 

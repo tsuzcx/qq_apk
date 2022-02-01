@@ -1,15 +1,15 @@
 package com.tencent.av.gaudio;
 
-import lnc;
+import lmt;
 
 public class AVObserver$1
   implements Runnable
 {
-  public AVObserver$1(lnc paramlnc, Object paramObject) {}
+  public AVObserver$1(lmt paramlmt, Object paramObject) {}
   
   public void run()
   {
-    this.this$0.a(this.a);
+    this.this$0.onUpdate(this.a);
   }
 }
 

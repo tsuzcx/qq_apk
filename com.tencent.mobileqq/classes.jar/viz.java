@@ -1,23 +1,51 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-
-class viz
+public class viz
 {
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private long jdField_a_of_type_Long = -1L;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  public String b;
   
-  public boolean equals(Object paramObject)
+  public viz()
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (!(paramObject instanceof viz))) {
-        return false;
-      }
-    } while (this.a == ((viz)paramObject).a);
-    return false;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

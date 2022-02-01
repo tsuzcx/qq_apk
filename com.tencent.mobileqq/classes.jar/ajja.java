@@ -1,17 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnClickListener;
 
 class ajja
-  extends amof
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  ajja(ajiz paramajiz) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (ajiz.a(this.a) != null)
+    {
+      ajiz.a(this.a).onClick(ajiz.a(this.a));
+      return true;
+    }
+    return false;
+  }
 }
 
 

@@ -1,8 +1,6 @@
-public class bhop
+public abstract interface bhop
 {
-  long a;
-  public String a;
-  public String b;
+  public abstract void a(String paramString);
 }
 
 

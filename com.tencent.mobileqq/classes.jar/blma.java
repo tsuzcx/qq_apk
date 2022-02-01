@@ -1,10 +1,9 @@
+import android.view.View;
+import android.widget.CheckBox;
+
 public abstract interface blma
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void h();
+  public abstract void a(View paramView, int paramInt, CheckBox paramCheckBox);
 }
 
 

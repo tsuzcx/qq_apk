@@ -1,10 +1,15 @@
-import android.view.View;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
 
 public abstract interface ycz
 {
-  public abstract void a(View paramView);
+  public abstract void a();
   
-  public abstract void b(View paramView);
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

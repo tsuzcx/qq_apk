@@ -1,28 +1,48 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.SdkInfo;
+import com.tencent.tmassistant.common.jce.Ticket;
+import com.tencent.tmassistant.common.jce.TicketWtLogin;
+import com.tencent.tmassistantbase.network.PostHttpRequest;
 
-public class bhwk
+public abstract class bhwk
+  extends PostHttpRequest
 {
-  public static boolean a(Context paramContext, String paramString)
+  public int a(JceStruct paramJceStruct)
   {
     try
     {
-      Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.setData(Uri.parse(paramString));
-      localIntent.putExtra("flag_show_loading_dialog", true);
-      localIntent.putExtra("hide_left_button", true);
-      paramContext.startActivity(localIntent);
-      return true;
+      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
+      if (paramJceStruct == null) {
+        return -1;
+      }
     }
-    catch (Exception paramContext)
+    catch (Throwable paramJceStruct)
     {
-      QLog.e("BrowserUtils", 2, paramContext, new Object[0]);
+      for (;;)
+      {
+        paramJceStruct = null;
+      }
+      Object localObject = new SdkInfo();
+      ((SdkInfo)localObject).versionCode = 1;
+      ((SdkInfo)localObject).versionName = bhpc.a().c();
+      ((SdkInfo)localObject).name = "AppNews";
+      ((SdkInfo)localObject).channel = "";
+      ((SdkInfo)localObject).builderNum = "";
+      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
+      localObject = new TicketWtLogin();
+      ((TicketWtLogin)localObject).uin = bhpc.a().a();
+      ((TicketWtLogin)localObject).A2 = bhpc.a().b().getBytes();
+      Ticket localTicket = new Ticket();
+      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
+      localTicket.type = 1;
+      paramJceStruct.head.ticket = localTicket;
+      int i = paramJceStruct.head.requestId;
+      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
+      return i;
     }
-    return false;
   }
 }
 

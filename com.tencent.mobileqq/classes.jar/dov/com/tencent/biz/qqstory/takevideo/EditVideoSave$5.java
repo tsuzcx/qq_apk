@@ -1,30 +1,30 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqha;
+import bneo;
 
 public class EditVideoSave$5
   implements Runnable
 {
-  public EditVideoSave$5(bqha parambqha) {}
+  public EditVideoSave$5(bneo parambneo) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bqha localbqha;
+    bneo localbneo;
     if (this.this$0.jdField_a_of_type_Float < 50.0F) {
-      localbqha = this.this$0;
+      localbneo = this.this$0;
     }
-    for (localbqha.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbqha.jdField_a_of_type_Float += 1.0F)
+    for (localbneo.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbneo.jdField_a_of_type_Float += 1.0F)
     {
       this.this$0.jdField_a_of_type_Float = 99.0F;
       this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
       return;
-      localbqha = this.this$0;
+      localbneo = this.this$0;
     }
     this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
-    this.this$0.d();
+    this.this$0.b();
   }
 }
 

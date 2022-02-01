@@ -1,101 +1,65 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.msf.service.protocol.pb.SubMsgType0x51.MsgBody;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.tablequery.ReportData.ReqBody;
+import com.tencent.mobileqq.tablequery.ReportData.ReqMqqParam;
+import java.util.ArrayList;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bcte
-  implements bctr
+  implements Manager
 {
-  private void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
+  private bctf a;
+  
+  public void a(QQAppInterface paramQQAppInterface, ReportData.ReqBody paramReqBody)
   {
-    byte[] arrayOfByte = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv msg0x210.Submsgtype0x51");
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), bctg.class);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3380);
+    localOIDBSSOPkg.uint32_service_type.set(2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramReqBody.toByteArray()));
+    localNewIntent.setObserver(this.a);
+    localNewIntent.putExtra("RequestBytes", localOIDBSSOPkg.toByteArray());
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
+  {
+    ReportData.ReqMqqParam localReqMqqParam = new ReportData.ReqMqqParam();
+    localReqMqqParam.department.set(paramString2);
+    localReqMqqParam.opername.set(paramString3);
+    localReqMqqParam.action.set(paramString4);
+    if (this.a == null) {
+      this.a = new bctf();
     }
-    if (paramMsgType0x210.sub_msg_type.get() != 81) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush submsgtype != 0x51");
-      }
+    try
+    {
+      paramString2 = new ReportData.ReqBody();
+      paramString3 = new ArrayList();
+      paramString3.add(paramString1);
+      paramString2.reportId.set(paramString3);
+      paramString2.type.set(paramInt);
+      paramString1 = new ArrayList();
+      paramString1.add(localReqMqqParam);
+      paramString2.params.set(paramString1);
+      a(paramQQAppInterface, paramString2);
+      return;
     }
-    do
+    catch (Exception paramQQAppInterface)
     {
-      do
-      {
-        return;
-        if (paramMsgType0x210.msg_content != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
-      return;
-      paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-      if (paramMsgType0x210 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
-    return;
-    new SubMsgType0x51.MsgBody();
-    for (;;)
-    {
-      try
-      {
-        SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
-        localMsgBody.mergeFrom(paramMsgType0x210);
-        if (!localMsgBody.bytes_qrsig_url.has()) {
-          break label335;
-        }
-        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
-        if (!localMsgBody.bytes_hint1.has()) {
-          break label330;
-        }
-        paramMsg = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
-        if (!localMsgBody.bytes_hint2.has()) {
-          break label324;
-        }
-        str = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
-        if (localMsgBody.bytes_login_conf.has()) {
-          arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
-        }
-        asvf.a().a(paramMessageHandler.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
-        return;
-      }
-      catch (Exception paramMsgType0x210) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
-      return;
-      label324:
-      String str = null;
-      continue;
-      label330:
-      paramMsg = null;
-      continue;
-      label335:
-      paramMsgType0x210 = null;
+      QLog.e("TableQueryManager", 1, paramQQAppInterface.toString());
     }
   }
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
-    }
-    a(paramMsgType0x210, paramMsg, paramMessageHandler);
-    bcrw.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-  }
+  public void onDestroy() {}
 }
 
 

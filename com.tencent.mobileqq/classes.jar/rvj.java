@@ -1,11 +1,18 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$OnFollowActionListener;", "", "onFollowClick", "", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rvj
+class rvj
+  extends RecyclerView.AdapterDataObserver
 {
-  public abstract void d(@Nullable VideoInfo paramVideoInfo);
+  private rvj(ruw paramruw) {}
+  
+  public void onChanged() {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    onItemRangeChanged(paramInt1, paramInt2);
+  }
 }
 
 

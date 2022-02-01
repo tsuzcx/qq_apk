@@ -1,16 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-
-class azft
-  extends azhk
+public class azft
 {
-  azft(azfn paramazfn) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
   
-  public void a(int paramInt)
+  public azft(long paramLong, String paramString, float paramFloat, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    azfn.a(this.a).b();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

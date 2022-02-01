@@ -1,76 +1,72 @@
-import java.io.BufferedReader;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class lme
-  extends lmd
 {
-  private float jdField_a_of_type_Float;
-  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
-  private float jdField_b_of_type_Float;
-  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
-  private boolean c;
+  int jdField_a_of_type_Int = 0;
+  ArrayList<lmd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  lmb jdField_a_of_type_Lmb = null;
   
-  public float a(float paramFloat)
+  lme()
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    int j = arrayOfFloat1.length;
-    int i = 1;
-    if (i < j) {
-      if (arrayOfFloat1[i] <= paramFloat) {}
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_Lmb = lmb.a();
+    this.jdField_a_of_type_Int = lmj.a(this.jdField_a_of_type_Lmb);
+    QLog.d("QavGPDownloadManager", 1, String.format("QavGPDownloadObserver, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+  }
+  
+  boolean a()
+  {
+    this.jdField_a_of_type_Lmb = lmb.a();
+    this.jdField_a_of_type_Int = lmj.a(this.jdField_a_of_type_Lmb);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("checkResReady, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
     }
-    for (;;)
+    return 11 != this.jdField_a_of_type_Int;
+  }
+  
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new lmf(this), localIntentFilter) != null;
+  }
+  
+  boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  boolean c()
+  {
+    this.jdField_a_of_type_Lmb = lmb.a();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = lmj.a(this.jdField_a_of_type_Lmb);
+    if (this.jdField_a_of_type_Int == 11)
     {
-      if (i == -1)
-      {
-        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
-        i += 1;
-        break;
-      }
-      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-      j = i - 1;
-      float f1 = arrayOfFloat2[j];
-      float f2 = arrayOfFloat1[j];
-      float f3 = arrayOfFloat2[i];
-      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
-      i = -1;
+      this.jdField_a_of_type_Int = 12;
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      Intent localIntent = new Intent();
+      localIntent.setAction("from_qavgpsomgr_download");
+      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
+      localIntent.addFlags(268435456);
+      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
     }
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      this.jdField_a_of_type_Float = llz.a(paramBufferedReader, "highMin");
-      this.jdField_b_of_type_Float = llz.a(paramBufferedReader, "highMax");
-      this.c = llz.a(paramBufferedReader, "relative");
-      this.jdField_b_of_type_ArrayOfFloat = new float[llz.a(paramBufferedReader, "scalingCount")];
-      int i = 0;
-      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_b_of_type_ArrayOfFloat[i] = llz.a(paramBufferedReader, "scaling" + i);
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("QavGPDownloadManager", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGameplay[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
-      this.jdField_a_of_type_ArrayOfFloat = new float[llz.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = llz.a(paramBufferedReader, "timeline" + i);
-        i += 1;
-      }
+      return bool;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.c;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * llu.a();
   }
 }
 

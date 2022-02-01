@@ -1,13 +1,53 @@
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bfpi
+final class bfpi
+  implements DownloadParams.DecodeHandler
 {
-  public int a;
-  public List<Integer> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      localObject1 = null;
+    }
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject2 = paramDownloadParams.tag;
+        localObject1 = paramBitmap;
+      } while (!(localObject2 instanceof int[]));
+      localObject1 = paramBitmap;
+    } while (((int[])localObject2).length != 3);
+    Object localObject1 = (int[])localObject2;
+    int j = localObject1[0];
+    int i = j;
+    if (j == 0)
+    {
+      if (paramDownloadParams.reqWidth == 0) {
+        i = paramBitmap.getWidth();
+      }
+    }
+    else
+    {
+      int k = localObject1[1];
+      j = k;
+      if (k == 0) {
+        if (paramDownloadParams.reqHeight != 0) {
+          break label128;
+        }
+      }
+    }
+    label128:
+    for (j = paramBitmap.getHeight();; j = paramDownloadParams.reqHeight)
+    {
+      return bfvo.d(paramBitmap, localObject1[2], i, j);
+      i = paramDownloadParams.reqWidth;
+      break;
+    }
+  }
 }
 
 

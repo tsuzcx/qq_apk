@@ -1,16 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-
-public class babx
-  extends AnimatorListenerAdapter
+public abstract interface babx
 {
-  public babx(BreatheEffectView paramBreatheEffectView, babz parambabz) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Babz.a();
-  }
+  public abstract void l();
 }
 
 

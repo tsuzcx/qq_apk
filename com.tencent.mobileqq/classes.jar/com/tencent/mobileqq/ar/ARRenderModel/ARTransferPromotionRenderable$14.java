@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import anzj;
-import apfq;
-import apgs;
-import aphq;
-import aphx;
-import aphz;
-import bhnv;
+import amtj;
+import anzc;
+import aoae;
+import aobd;
+import aobk;
+import aobm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$14
   implements Runnable
 {
-  public ARTransferPromotionRenderable$14(aphx paramaphx, int paramInt1, int paramInt2, int paramInt3) {}
+  public ARTransferPromotionRenderable$14(aobk paramaobk, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class ARTransferPromotionRenderable$14
       case 5: 
       case 6: 
       default: 
-        aphx.e(this.this$0);
+        aobk.e(this.this$0);
       }
     }
     label204:
@@ -51,10 +51,10 @@ public class ARTransferPromotionRenderable$14
             do
             {
               return;
-              if (aphx.a(this.this$0) != null)
+              if (aobk.a(this.this$0) != null)
               {
                 QLog.d("ARTransferPromotionRenderable", 2, "native_switchGameStatusWithVideoId status " + this.b);
-                aphx.a(this.this$0).native_switchGameStatusWithVideoId(i, this.c);
+                aobk.a(this.this$0).native_switchGameStatusWithVideoId(i, this.c);
               }
               if (i == 7)
               {
@@ -66,11 +66,11 @@ public class ARTransferPromotionRenderable$14
                 break;
               }
               QLog.d("ARTransferPromotionRenderable", 2, "GameStatus_TRAVERSING_DOOR");
-              aphx.b(this.this$0, true);
+              aobk.b(this.this$0, true);
               ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.14.2(this));
               break;
             } while (this.b != 1);
-            aphx.e(this.this$0);
+            aobk.e(this.this$0);
             j = this.this$0.b;
             QLog.d("ARTransferPromotionRenderable", 2, "ARPromotionMediaPlayerWrapper.PLAYER_STATUS_END status " + this.this$0.b);
             switch (j)
@@ -86,51 +86,51 @@ public class ARTransferPromotionRenderable$14
                 break label342;
               }
             }
-          } while (aphx.a(this.this$0) == null);
-          aphx.a(this.this$0).b(2, this.c);
+          } while (aobk.a(this.this$0) == null);
+          aobk.a(this.this$0).b(2, this.c);
           return;
-          aphx.a(this.this$0);
-          if ((this.c == 0) && (j == 7) && (!bhnv.g(BaseApplication.getContext())))
+          aobk.a(this.this$0);
+          if ((this.c == 0) && (j == 7) && (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext())))
           {
-            apgs.a(anzj.a(2131699674), false);
+            aoae.a(amtj.a(2131699909), false);
             QLog.d("ARTransferPromotionRenderable", 2, "net work is so terrible ,we have to stop it");
             return;
           }
-          if ((this.this$0.b != 4) || (aphx.a(this.this$0).e != 2)) {
+          if ((this.this$0.b != 4) || (aobk.a(this.this$0).e != 2)) {
             break label439;
           }
-        } while (aphx.a(this.this$0) == null);
-        aphx.a(this.this$0).b(2, 0);
+        } while (aobk.a(this.this$0) == null);
+        aobk.a(this.this$0).b(2, 0);
         return;
-        if ((this.this$0.b == 4) && (aphx.a(this.this$0).e == 1)) {
-          aphx.a(this.this$0).e = 0;
+        if ((this.this$0.b == 4) && (aobk.a(this.this$0).e == 1)) {
+          aobk.a(this.this$0).e = 0;
         }
-        if ((this.this$0.b != 4) || (aphx.a(this.this$0).e != 0)) {
+        if ((this.this$0.b != 4) || (aobk.a(this.this$0).e != 0)) {
           break label683;
         }
-        if (!aphx.a(this.this$0).a.isEmpty()) {
+        if (!aobk.a(this.this$0).a.isEmpty()) {
           break label540;
         }
-      } while (aphx.a(this.this$0) == null);
-      aphx.a(this.this$0).b(2, 0);
+      } while (aobk.a(this.this$0) == null);
+      aobk.a(this.this$0).b(2, 0);
       return;
-      if (aphx.a(this.this$0).a(1))
+      if (aobk.a(this.this$0).a(1))
       {
-        aphx.a(this.this$0).b(true);
+        aobk.a(this.this$0).b(true);
         return;
       }
-      if (aphx.a(this.this$0).a(2)) {
-        aphx.a(this.this$0, aphx.a(this.this$0).b());
+      if (aobk.a(this.this$0).a(2)) {
+        aobk.a(this.this$0, aobk.a(this.this$0).b());
       }
-      while (aphx.a(this.this$0) == null)
+      while (aobk.a(this.this$0) == null)
       {
         QLog.d("ARTransferPromotionRenderable", 1, "onMediaPlayerStatusChange deal GameStatus_INSIDE_WORLD_360 error hapen mFixFullScreenVideoUrl is null");
         return;
-        if (aphx.a(this.this$0).a(3)) {
-          aphx.a(this.this$0, aphx.a(this.this$0).a());
+        if (aobk.a(this.this$0).a(3)) {
+          aobk.a(this.this$0, aobk.a(this.this$0).a());
         }
       }
-      QLog.d("ARTransferPromotionRenderable", 1, "onMediaPlayerStatusChange deal GameStatus_INSIDE_WORLD_360 with auto play:" + aphx.a(this.this$0));
+      QLog.d("ARTransferPromotionRenderable", 1, "onMediaPlayerStatusChange deal GameStatus_INSIDE_WORLD_360 with auto play:" + aobk.a(this.this$0));
     } while (this.this$0.b == 5);
     label439:
     if (this.this$0.b == 4) {

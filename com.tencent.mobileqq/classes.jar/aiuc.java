@@ -1,16 +1,29 @@
-import java.util.Date;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class aiuc
+class aiuc
+  implements DialogInterface.OnKeyListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Date jdField_a_of_type_JavaUtilDate;
-  List<String> jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  Date jdField_b_of_type_JavaUtilDate;
-  String c;
-  String d;
+  aiuc(aitt paramaitt, int paramInt) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      if (!aitt.a(this.jdField_a_of_type_Aitt)) {
+        break label28;
+      }
+      aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      return true;
+      label28:
+      aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue());
+      aitt.a(this.jdField_a_of_type_Aitt);
+    }
+  }
 }
 
 

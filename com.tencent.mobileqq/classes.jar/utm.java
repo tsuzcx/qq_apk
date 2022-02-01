@@ -1,18 +1,40 @@
-public class utm
+import android.support.annotation.UiThread;
+import java.lang.ref.WeakReference;
+
+public class utm<V extends uiz>
+  implements ujc<V>
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
+  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public utm(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt1, int paramInt2)
+  @UiThread
+  public V a()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (uiz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
+  }
+  
+  @UiThread
+  public void a(V paramV)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

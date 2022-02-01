@@ -1,11 +1,15 @@
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ColorNickManagerProxy.Proxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class bdip
-  implements RecentRoute.ColorNickManagerProxy.Proxy
+class bdip
+  implements DialogInterface.OnClickListener
 {
-  public CharSequence transformMessageWithAtTroopMember(String paramString1, String paramString2)
+  bdip(bdio parambdio) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return bhwz.a(paramString1, paramString2, 16, null, 3);
+    bdid.a(this.a.a).finish();
   }
 }
 

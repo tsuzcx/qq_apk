@@ -1,38 +1,12 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class nvv
-  implements bliz
+class nvv
 {
-  public nvv(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    if (paramView != null)
-    {
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-      }
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (!paramView.equals(this.a.getResources().getString(2131692394))) {
-          break label91;
-        }
-        PublicAccountAdvertisementActivity.d(this.a);
-      }
-    }
-    label91:
-    while (!paramView.equals(this.a.getResources().getString(2131692950))) {
-      return;
-    }
-    avxv.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-    bdll.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-  }
+  nvv(nvu paramnvu) {}
 }
 
 

@@ -1,249 +1,111 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyOfflineFileGetListMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskAlbumStatusReportReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.ReqMsgBody;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgRsp;
-import cooperation.weiyun.sdk.api.WeiyunApi.1;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class boaf
+public class boaf
+  extends GPUBaseFilter
 {
-  private static final AtomicBoolean[] a = { new AtomicBoolean(false), new AtomicBoolean(false), new AtomicBoolean(false), new AtomicBoolean(false) };
+  private int jdField_a_of_type_Int = -1;
+  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<RenderBuffer> b;
   
-  public static String a(Context paramContext)
+  private void a()
   {
-    return bobx.a(paramContext, String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "key_pwd_md5");
-  }
-  
-  public static void a(Context paramContext)
-  {
-    ThreadManager.executeOnSubThread(new WeiyunApi.1(paramContext));
-  }
-  
-  public static void a(Context paramContext, long paramLong)
-  {
-    bobx.a(paramContext, String.valueOf(paramLong), "key_pwd_queried");
-    bobx.a(paramContext, String.valueOf(paramLong), "key_pwd_has");
-    bobx.a(paramContext, String.valueOf(paramLong), "key_pwd_verified");
-    a[0].set(false);
-    a[1].set(false);
-    a[2].set(false);
-    a[3].set(false);
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    bobx.a(paramContext, String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "key_pwd_md5", paramString);
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    boolean bool = true;
-    a[3].set(true);
-    AtomicBoolean localAtomicBoolean = a[0];
-    if (!paramBoolean) {}
-    for (;;)
+    if (this.b != null)
     {
-      if (localAtomicBoolean.compareAndSet(bool, paramBoolean)) {
-        bobx.a(paramContext, String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "key_pwd_queried", Boolean.toString(paramBoolean));
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((RenderBuffer)localIterator.next()).destroy();
       }
-      return;
-      bool = false;
+      this.b = null;
     }
   }
   
-  public static void a(boae<WeiyunPB.PwdQueryMsgRsp> paramboae)
+  public RenderBuffer a()
   {
-    if (paramboae == null) {
-      return;
+    if ((this.b != null) && (this.b.size() > 0)) {
+      return (RenderBuffer)this.b.get(this.b.size() - 1);
     }
-    if (a[0].get())
+    throw new RuntimeException("please check your state");
+  }
+  
+  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
+  }
+  
+  public void destroy()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).destroy();
+    }
+    a();
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      WeiyunPB.PwdQueryMsgRsp localPwdQueryMsgRsp = new WeiyunPB.PwdQueryMsgRsp();
-      if ((a[1].get()) && (!a[2].get()))
+      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        localPwdQueryMsgRsp.pwd_open.set(true);
-        paramboae.a(localPwdQueryMsgRsp);
-        return;
+        ((RenderBuffer)this.b.get(paramInt)).bind();
+        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
+        ((RenderBuffer)this.b.get(paramInt)).unbind();
+        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
       }
-      localPwdQueryMsgRsp.pwd_open.set(false);
-      paramboae.a(localPwdQueryMsgRsp);
-      return;
-    }
-    bnzz.a().a(Integer.toString(11001), a(11001, new WeiyunPB.PwdQueryMsgReq()), new boad(11001, paramboae));
-  }
-  
-  public static void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq paramAioPicAndVideoCopyToWeiyunMsgReq, boae<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(246001), a(246001, paramAioPicAndVideoCopyToWeiyunMsgReq), new boad(246001, paramboae));
-  }
-  
-  public static void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq paramCrossBidProxyCopyFileToOtherBidMsgReq, boae<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(245700), a(245700, paramCrossBidProxyCopyFileToOtherBidMsgReq), new boad(245700, paramboae));
-  }
-  
-  public static void a(WeiyunPB.DiskDirFileBatchDeleteExMsgReq paramDiskDirFileBatchDeleteExMsgReq, boae<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(2509), a(2509, paramDiskDirFileBatchDeleteExMsgReq), new boad(2509, paramboae));
-  }
-  
-  public static void a(WeiyunPB.DiskFileBatchDownloadMsgReq paramDiskFileBatchDownloadMsgReq, boae<WeiyunPB.DiskFileBatchDownloadMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(2402), a(2402, paramDiskFileBatchDownloadMsgReq), new boad(2402, paramboae));
-  }
-  
-  public static void a(WeiyunPB.DiskFileDocDownloadAbsMsgReq paramDiskFileDocDownloadAbsMsgReq, boae<WeiyunPB.DiskFileDocDownloadAbsMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(2414), a(2414, paramDiskFileDocDownloadAbsMsgReq), new boad(2414, paramboae));
-  }
-  
-  public static void a(WeiyunPB.DiskPicBackupReq paramDiskPicBackupReq, boae<WeiyunPB.DiskPicBackupRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(2803), a(2803, paramDiskPicBackupReq), new boad(2803, paramboae));
-  }
-  
-  public static void a(WeiyunPB.LibInfoListGetMsgReq paramLibInfoListGetMsgReq, boae<WeiyunPB.LibInfoListGetMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(26113), a(26113, paramLibInfoListGetMsgReq), new boad(26113, paramboae));
-  }
-  
-  public static void a(WeiyunPB.PwdVerifyMsgReq paramPwdVerifyMsgReq, boae<WeiyunPB.PwdVerifyMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(11005), a(11005, paramPwdVerifyMsgReq), new boad(11005, paramboae));
-  }
-  
-  public static void a(WeiyunPB.QqSdkFileUploadMsgReq paramQqSdkFileUploadMsgReq, boae<WeiyunPB.QqSdkFileUploadMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(246000), a(246000, paramQqSdkFileUploadMsgReq), new boad(246000, paramboae));
-  }
-  
-  public static void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgReq paramWeiyunShareAddFromMobileQQMsgReq, boae<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(12102), a(12102, paramWeiyunShareAddFromMobileQQMsgReq), new boad(12102, paramboae));
-  }
-  
-  public static void a(WeiyunPB.WeiyunTrialCouponUseMsgReq paramWeiyunTrialCouponUseMsgReq, boae<WeiyunPB.WeiyunTrialCouponUseMsgRsp> paramboae)
-  {
-    bnzz.a().a(Integer.toString(245520), a(245520, paramWeiyunTrialCouponUseMsgReq), new boad(245520, paramboae));
-  }
-  
-  public static void a(String paramString, boae<WeiyunPB.PwdVerifyMsgRsp> paramboae)
-  {
-    WeiyunPB.PwdVerifyMsgReq localPwdVerifyMsgReq = new WeiyunPB.PwdVerifyMsgReq();
-    localPwdVerifyMsgReq.pwd_md5.set(bocc.a(paramString));
-    a(localPwdVerifyMsgReq, paramboae);
-  }
-  
-  public static boolean a()
-  {
-    return a[0].get();
-  }
-  
-  static byte[] a(int paramInt, Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    WeiyunPB.MsgBody localMsgBody = new WeiyunPB.MsgBody();
-    WeiyunPB.ReqMsgBody localReqMsgBody = new WeiyunPB.ReqMsgBody();
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      localMsgBody.ReqMsg_body = localReqMsgBody;
-      localMsgBody.ReqMsg_body.setHasFlag(true);
-      localMsgBody.setHasFlag(true);
-      return localMsgBody.toByteArray();
-      localReqMsgBody.LibInfoListGetMsgReq_body.set((WeiyunPB.LibInfoListGetMsgReq)paramObject);
-      continue;
-      localReqMsgBody.DiskFileBatchDownloadMsgReq_body.set((WeiyunPB.DiskFileBatchDownloadMsgReq)paramObject);
-      continue;
-      localReqMsgBody.DiskFileDocDownloadAbsMsgReq_body.set((WeiyunPB.DiskFileDocDownloadAbsMsgReq)paramObject);
-      continue;
-      localReqMsgBody.DiskDirFileBatchDeleteExMsgReq_body.set((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)paramObject);
-      continue;
-      localReqMsgBody.DiskPicBackupReq_body.set((WeiyunPB.DiskPicBackupReq)paramObject);
-      continue;
-      localReqMsgBody.DiskAlbumStatusReportReq_body.set((WeiyunPB.DiskAlbumStatusReportReq)paramObject);
-      continue;
-      localReqMsgBody.PwdQueryMsgReq_body.set((WeiyunPB.PwdQueryMsgReq)paramObject);
-      continue;
-      localReqMsgBody.PwdVerifyMsgReq_body.set((WeiyunPB.PwdVerifyMsgReq)paramObject);
-      continue;
-      localReqMsgBody.CrossBidProxyCopyFileToOtherBidMsgReq_body.set((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)paramObject);
-      continue;
-      localReqMsgBody.CrossBidProxyOfflineFileGetListMsgReq_body.set((WeiyunPB.CrossBidProxyOfflineFileGetListMsgReq)paramObject);
-      continue;
-      localReqMsgBody.QqSdkFileUploadMsgReq_body.set((WeiyunPB.QqSdkFileUploadMsgReq)paramObject);
-      continue;
-      localReqMsgBody.AioPicAndVideoCopyToWeiyunMsgReq_body.set((WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq)paramObject);
-      continue;
-      localReqMsgBody.WeiyunTrialCouponUseMsgReq_body.set((WeiyunPB.WeiyunTrialCouponUseMsgReq)paramObject);
-      continue;
-      localReqMsgBody.WeiyunShareAddFromMobileQQMsgReq_body.set((WeiyunPB.WeiyunShareAddFromMobileQQMsgReq)paramObject);
-    }
-  }
-  
-  public static void b(Context paramContext, boolean paramBoolean)
-  {
-    boolean bool = true;
-    a[3].set(true);
-    AtomicBoolean localAtomicBoolean = a[1];
-    if (!paramBoolean) {}
-    for (;;)
-    {
-      if (localAtomicBoolean.compareAndSet(bool, paramBoolean)) {
-        bobx.a(paramContext, String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "key_pwd_has", Boolean.toString(paramBoolean));
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+        }
+        else
+        {
+          ((RenderBuffer)this.b.get(paramInt)).bind();
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+          ((RenderBuffer)this.b.get(paramInt)).unbind();
+          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+        }
       }
-      return;
-      bool = false;
     }
   }
   
-  public static void c(Context paramContext, boolean paramBoolean)
+  public void init()
   {
-    boolean bool = true;
-    a[3].set(true);
-    AtomicBoolean localAtomicBoolean = a[2];
-    if (!paramBoolean) {}
-    for (;;)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    a();
+    this.b = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = j;
+    if (this.jdField_a_of_type_Boolean) {
+      i = j - 1;
+    }
+    j = 0;
+    while (j < i)
     {
-      if (localAtomicBoolean.compareAndSet(bool, paramBoolean)) {
-        bobx.a(paramContext, String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "key_pwd_verified", Boolean.toString(paramBoolean));
-      }
-      return;
-      bool = false;
+      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.b.add(localObject);
+      j += 1;
     }
   }
 }

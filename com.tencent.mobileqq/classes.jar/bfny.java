@@ -1,17 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
 
-class bfny
+public class bfny
+  implements DialogInterface.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
+  public bfny(UpgradeActivity paramUpgradeActivity, bfmy parambfmy, int paramInt) {}
   
-  bfny(bfnw parambfnw) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bfmy.d();
+    bfyr.c(true);
+    bfyr.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity, bfng.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity.finish();
+  }
 }
 
 

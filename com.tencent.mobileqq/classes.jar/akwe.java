@@ -1,55 +1,54 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akwe
-  extends aktq
 {
-  protected akwe(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  private akwf jdField_a_of_type_Akwf;
+  private ConcurrentHashMap<Integer, akwj> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public akwe(akwf paramakwf)
   {
-    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_Akwf = paramakwf;
   }
   
-  public void initData(Intent paramIntent)
+  public akwj a(int paramInt)
   {
-    int i = ((NewPhotoPreviewActivity)this.mActivity).getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
-    ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    ArrayList localArrayList2 = new ArrayList();
-    if (localArrayList1 != null) {
-      localArrayList2.addAll(localArrayList1);
-    }
-    super.initData(paramIntent);
-    this.a.paths.clear();
-    this.a.paths = localArrayList2;
-    this.a.totalPicCount = this.a.paths.size();
-    this.a.firstSelectedPostion = i;
-    if (this.a.firstSelectedPostion >= this.a.totalPicCount) {
-      this.a.firstSelectedPostion = -1;
-    }
-    this.mPhotoCommonData.selectedIndex.clear();
-    this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(this.a.firstSelectedPostion));
-    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-    if (this.mPhotoCommonData.selectedPhotoList == null) {
-      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
-    }
-    for (;;)
+    return (akwj)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
     {
-      if ((paramIntent != null) && (!paramIntent.equals(""))) {
-        this.mPhotoCommonData.selectedPhotoList.add(paramIntent);
-      }
-      QLog.d("PhotoPreviewLogicScanEntry", 1, new Object[] { "count=", Integer.valueOf(this.a.totalPicCount), " pos=", Integer.valueOf(this.a.firstSelectedPostion) });
-      return;
-      this.mPhotoCommonData.selectedPhotoList.clear();
+      akwj localakwj = (akwj)localIterator.next();
+      localakwj.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      localakwj.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
   }
   
-  public void initUI()
+  public void a(akwj paramakwj)
   {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramakwj.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramakwj.jdField_a_of_type_Int), paramakwj);
+    if (this.jdField_a_of_type_Akwf != null) {
+      this.jdField_a_of_type_Akwf.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

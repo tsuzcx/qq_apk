@@ -1,63 +1,87 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
 
 public class ayao
-  implements ayba
 {
-  public ayao(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
-  
-  public void a(InterestTagInfo paramInterestTagInfo)
+  public static final int a(int paramInt)
   {
-    ChooseInterestTagActivity.a(this.a, 0);
-    blgx.b(ChooseInterestTagActivity.a(this.a));
-    boolean bool;
-    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    switch (paramInt)
     {
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
-      if (ChooseInterestTagActivity.b(this.a) != -1)
-      {
-        bool = true;
-        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
-        ChooseInterestTagActivity.a(this.a).setText("");
-        ChooseInterestTagActivity.a(this.a, "");
-      }
+    default: 
+      return 1073741824;
+    case -1037: 
+    case -1000: 
+      return 1;
+    case -2002: 
+      return 2;
+    case -2000: 
+      return 8;
+    case -2007: 
+      return 16;
+    case -2020: 
+      return 32;
+    case -2005: 
+      return 64;
     }
-    else
-    {
-      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
-        break label132;
-      }
-      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
-      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
-    }
-    label132:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
-        break label198;
-      }
-    } while (ChooseInterestTagActivity.d(this.a));
-    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
-    ChooseInterestTagActivity.b(this.a, true);
-    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
-    return;
-    label198:
-    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
-    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
+    return 4;
   }
   
-  public boolean a(InterestTagInfo paramInterestTagInfo)
+  public static final int a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
   {
-    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+    if (paramBoolean)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return 1005;
+      case 1003: 
+        return 1007;
+      }
+      return 1006;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return 1001;
+    case -1: 
+      return 1000;
+    case 2003: 
+      return 1003;
+    }
+    return 1002;
+  }
+  
+  public static final int a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt)
+  {
+    return a(paramQQAppInterface, agkm.a(paramQQAppInterface, paramMessageForPtt), paramMessageForPtt.isSendFromLocal());
+  }
+  
+  public static final int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return 1;
+    case 3000: 
+      return 2;
+    }
+    return 4;
+  }
+  
+  public static final int c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    case 3: 
+    default: 
+      return 0;
+    case 2: 
+      return 3000;
+    }
+    return 1;
   }
 }
 

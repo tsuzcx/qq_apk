@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:orientation="vertical" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="105.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/lwn" android:background="@drawable/bk0" android:layout_width="fill_parent" android:layout_height="93.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" />
+    <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/m1a" android:layout_width="160.0dip" android:layout_height="105.0dip" android:scaleType="fitEnd" android:layout_alignRight="@id/lwn" android:layout_alignBottom="@id/lwn" app:useApngImage="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/m1b" android:paddingLeft="21.0dip" android:paddingRight="21.0dip" android:layout_width="fill_parent" android:layout_height="93.0dip" android:layout_alignLeft="@id/lwn" android:layout_alignTop="@id/lwn" android:layout_alignRight="@id/lwn" android:layout_alignBottom="@id/lwn">
+        <com.dataline.util.widget.AsyncImageView android:id="@id/m1c" android:layout_width="wrap_content" android:layout_height="20.0dip" android:adjustViewBounds="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:id="@id/lxp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/lvx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+            <com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout android:id="@id/lvw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/lvy" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

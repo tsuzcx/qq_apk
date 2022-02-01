@@ -1,134 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import mqq.app.AppRuntime.Status;
 
-public class axtj
+class axtj
+  extends ClickableSpan
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public long d;
-  public String d;
-  public boolean d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
+  axtj(axsv paramaxsv, AppRuntime.Status paramStatus, long paramLong) {}
   
-  public axtj()
+  public void onClick(@NonNull View paramView)
   {
-    this.jdField_b_of_type_Int = 999;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public float a()
-  {
-    if (c()) {}
-    while (a()) {
-      return 0.4F;
-    }
-    return 1.0F;
-  }
-  
-  public void a(axtk paramaxtk)
-  {
-    this.jdField_a_of_type_Long = paramaxtk.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = paramaxtk.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Float = paramaxtk.jdField_a_of_type_Float;
-    this.jdField_c_of_type_Long = paramaxtk.jdField_c_of_type_Long;
-    this.jdField_d_of_type_Long = paramaxtk.jdField_d_of_type_Long;
-    this.e = paramaxtk.e;
-    this.f = paramaxtk.f;
-    this.g = paramaxtk.g;
-    this.h = paramaxtk.h;
-    this.jdField_a_of_type_Boolean = paramaxtk.jdField_b_of_type_Boolean;
-    this.i = paramaxtk.i;
-    this.jdField_c_of_type_JavaLangString = paramaxtk.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramaxtk.jdField_b_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = paramaxtk.jdField_c_of_type_JavaLangString;
-    this.jdField_d_of_type_Boolean = paramaxtk.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Long == 12L) || (this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Long == 3L)) {
-      bool = false;
-    }
-    do
+    paramView = new Intent();
+    paramView.putExtra("KEY_ONLINE_STATUS", this.jdField_a_of_type_MqqAppAppRuntime$Status);
+    paramView.putExtra("KEY_ONLINE_EXT_STATUS", this.jdField_a_of_type_Long);
+    PublicFragmentActivity.a(axsv.a(this.jdField_a_of_type_Axsv), paramView, AccountOnlineStateActivity.class, 234);
+    if ((axsv.a(this.jdField_a_of_type_Axsv) != null) && (axsv.a(this.jdField_a_of_type_Axsv).isShowing()))
     {
-      return bool;
-      if ((!axsr.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkForDisplayInfo", 2, "isInTwinkling icon_status:" + this.f + " currentMillis:" + NetConnInfoCenter.getServerTimeMillis() + " icon_status_end_time:" + this.g);
-      }
-    } while ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L));
-    while (!axsr.a(this.jdField_d_of_type_Long * 1000L)) {
-      return false;
+      axsv.a(this.jdField_a_of_type_Axsv).dismiss();
+      axsv.a(this.jdField_a_of_type_Axsv, null);
     }
-    return true;
+    bcef.b(axsv.a(this.jdField_a_of_type_Axsv), "dc00898", "", "", "0X8009DE2", "0X8009DE2", 0, 0, "", "", "", "");
   }
   
-  public boolean b()
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    return (this.jdField_a_of_type_Long == 5L) || (this.jdField_a_of_type_Long == 6L) || (this.jdField_a_of_type_Long == 8L) || (this.jdField_a_of_type_Long == 4L);
-  }
-  
-  public boolean c()
-  {
-    return this.f == 1L;
-  }
-  
-  public boolean d()
-  {
-    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
-    while ((this.jdField_c_of_type_Int == 0) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkForDisplayInfo{");
-    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", level=").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", count=").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", continue_days=").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", last_action_time=").append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(", last_change_time=").append(this.e);
-    localStringBuilder.append(", icon_status=").append(this.f);
-    localStringBuilder.append(", icon_status_end_time=").append(this.g);
-    localStringBuilder.append(", sub_level=").append(this.h);
-    localStringBuilder.append(", hasRemindInContact=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", remindAnimStartTime=").append(this.i);
-    localStringBuilder.append(", sortKeyForNormal=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", isInAIOTitleLeft2=").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", sortKeyForAIOTitle=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", name='").append(this.jdField_a_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", disableLocalResource=").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(", iconResId=").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", iconApngUrl='").append(this.jdField_b_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", icon_static_url='").append(this.jdField_c_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", icon_name='").append(this.jdField_d_of_type_JavaLangString).append("'");
-    localStringBuilder.append(", user_close_flag=").append(this.jdField_d_of_type_Boolean);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
   }
 }
 

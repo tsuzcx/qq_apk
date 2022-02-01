@@ -1,68 +1,76 @@
 import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardHelper;
-import mqq.app.AppActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewStub;
 
-public class bmar
-  implements ActivityLifecycle.ActivityLifecycleCallback
+public abstract class bmar
 {
-  public void onNewIntent(Activity paramActivity, Intent paramIntent)
+  private volatile boolean hasInflated;
+  protected Activity mActivity;
+  protected bmas mPartManager;
+  protected View mRootView;
+  private ViewStub stub;
+  
+  @Deprecated
+  public bmar(Activity paramActivity, View paramView, bmas parambmas)
   {
-    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
-      BuscardHelper.a("", paramActivity, paramIntent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
-    }
+    this.mActivity = paramActivity;
+    this.mRootView = paramView;
+    this.mPartManager = parambmas;
   }
   
-  public void onPause(Activity paramActivity)
+  public bmar(Activity paramActivity, ViewStub paramViewStub, bmas parambmas)
   {
-    try
-    {
-      BuscardHelper.a(paramActivity, true, "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
-      }
+    this.stub = paramViewStub;
+    this.mActivity = paramActivity;
+    this.mPartManager = parambmas;
+  }
+  
+  public final void ensureInflate()
+  {
+    if (this.hasInflated) {
       return;
     }
-    catch (Throwable paramActivity)
-    {
-      for (;;)
-      {
-        paramActivity.printStackTrace();
-      }
-    }
+    View localView = this.stub.inflate();
+    this.hasInflated = true;
+    initAfterInflation(localView);
   }
   
-  public void onResume(Activity paramActivity)
+  public <T> T get(int paramInt, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
-    }
-    try
-    {
-      if ((paramActivity instanceof AppActivity))
-      {
-        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
-        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
-        {
-          BuscardHelper.a(paramActivity, true, "", "", null);
-          return;
-        }
-        BuscardHelper.a(paramActivity, true, "", "");
-        return;
-      }
-    }
-    catch (Throwable paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
+    return null;
   }
+  
+  public ViewStub getStub()
+  {
+    return this.stub;
+  }
+  
+  public boolean hasInflated()
+  {
+    return this.hasInflated;
+  }
+  
+  protected void initAfterInflation(View paramView) {}
+  
+  protected abstract void initView();
+  
+  public void onActivityPause() {}
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void onActivityResume() {}
+  
+  public void onActivityStart() {}
+  
+  public void onActivityStop() {}
+  
+  public void onCreate(Bundle paramBundle) {}
+  
+  public void onDestroy() {}
+  
+  public void send(int paramInt, Object... paramVarArgs) {}
 }
 
 

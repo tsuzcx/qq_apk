@@ -1,87 +1,22 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.widgets.QCircleLayerStatusView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 import java.util.List;
 
-class vnc
-  implements Observer<vbf>
+@TargetApi(14)
+public class vnc
+  implements vnb
 {
-  vnc(vmw paramvmw) {}
+  public vnc(vna paramvna) {}
   
-  public void a(@Nullable vbf paramvbf)
+  public void a(int paramInt)
   {
-    vmw.b(this.a);
-    if (paramvbf != null)
+    int i = paramInt + 1;
+    if (i < this.a.jdField_a_of_type_JavaUtilList.size())
     {
-      if ((paramvbf.jdField_a_of_type_Boolean) || (paramvbf.jdField_a_of_type_Long == 0L)) {
-        break label146;
-      }
-      if (vmw.a(this.a) != null)
-      {
-        if (!vmw.a(this.a, paramvbf.jdField_a_of_type_Long)) {
-          break label132;
-        }
-        vmw.a(this.a).a(false);
-      }
-    }
-    for (;;)
-    {
-      vmw.c(this.a);
-      QLog.w("QCircleContentPart", 1, String.format("retCode:%s; msg:%s", new Object[] { String.valueOf(paramvbf.jdField_a_of_type_Long), paramvbf.jdField_a_of_type_JavaLangString }));
-      if (vmw.a(this.a) != null)
-      {
-        vmw.a(this.a).clearData();
-        vmw.a(this.a).notifyDataSetChanged();
-      }
-      return;
-      label132:
-      vmw.a(this.a).b(null);
-    }
-    label146:
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).a();
-    }
-    Object localObject;
-    if ((vmw.a(this.a) != null) && (paramvbf.jdField_a_of_type_ComTencentMobileqqPbMessageMicro != null))
-    {
-      if (!(paramvbf.jdField_a_of_type_ComTencentMobileqqPbMessageMicro instanceof FeedCloudRead.StGetFeedListRsp)) {
-        break label377;
-      }
-      localObject = (ArrayList)((FeedCloudRead.StGetFeedListRsp)paramvbf.jdField_a_of_type_ComTencentMobileqqPbMessageMicro).vecFeed.get();
-      if (!paramvbf.jdField_a_of_type_Boolean) {
-        break label363;
-      }
-      vmw.a(this.a).addAll((List)localObject);
-      vmw.a(this.a);
-      vmw.a(this.a, paramvbf);
-      QLog.i("QCircleContentPart", 2, String.format("get feedListData size :%d attachinfo:%s", new Object[] { Integer.valueOf(((ArrayList)localObject).size()), ((FeedCloudRead.StGetFeedListRsp)paramvbf.jdField_a_of_type_ComTencentMobileqqPbMessageMicro).feedAttchInfo.get() }));
-    }
-    for (;;)
-    {
-      if ((vmw.a(this.a).getItemCount() == 0) && (vmw.a(this.a) != null) && (vmw.a(this.a).getExtraTypeInfo() != null) && (vmw.a(this.a).getExtraTypeInfo().pageType == 10)) {
-        this.a.a(0.0F, 0.0F);
-      }
-      vmw.a(this.a, vmw.b(this.a), paramvbf);
-      return;
-      label363:
-      vmw.a(this.a).setDatas((ArrayList)localObject);
-      break;
-      label377:
-      if ((paramvbf.jdField_a_of_type_ComTencentMobileqqPbMessageMicro instanceof FeedCloudRead.StGetFeedDetailRsp))
-      {
-        localObject = ((FeedCloudRead.StGetFeedDetailRsp)paramvbf.jdField_a_of_type_ComTencentMobileqqPbMessageMicro).feed;
-        vmw.a(this.a).setDatas(new ArrayList(Arrays.asList(new FeedCloudMeta.StFeed[] { localObject })));
-      }
+      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      xvv.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
     }
   }
 }

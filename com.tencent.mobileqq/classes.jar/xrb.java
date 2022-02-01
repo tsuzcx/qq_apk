@@ -1,93 +1,55 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class xrb
-  extends xpo
-  implements IEventReceiver
+  extends vqm
 {
-  private long jdField_a_of_type_Long;
-  private VideoCoverListBar jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  private xmn jdField_a_of_type_Xmn;
-  private xre jdField_a_of_type_Xre;
-  private volatile boolean b;
-  private boolean c;
-  private boolean d;
+  public String a;
+  public int b;
+  public String c;
+  public String d;
+  public String e;
   
-  public xrb(@NonNull ViewGroup paramViewGroup)
+  public xrb(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
-    super(paramViewGroup);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131380803));
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  }
-  
-  public void a(int paramInt, xmt paramxmt, @NonNull ArrayList<xqz> paramArrayList)
-  {
-    yuk.a("VideoCoverListGroupHolder", "onBind() pos=%d, group=%s", Integer.valueOf(paramInt), paramxmt);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    super.a(paramInt, paramxmt, paramArrayList);
-    if (!bool)
+    if (paramRspGetUserGuide.pic_url.has())
     {
-      this.d = true;
-      if (this.jdField_a_of_type_Xre == null) {
-        this.jdField_a_of_type_Xre = new xre(this);
+      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
+      this.a = ((String)localObject1);
+      if (!paramRspGetUserGuide.word.has()) {
+        break label129;
       }
-      wjj.a().registerSubscriber("", this.jdField_a_of_type_Xre);
+      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
+      label53:
+      this.c = ((String)localObject1);
+      this.b = paramRspGetUserGuide.seqno.get();
+      if (!paramRspGetUserGuide.confirm_word.has()) {
+        break label134;
+      }
     }
-    if ((paramxmt.c()) || (paramxmt.b())) {}
-    int i;
-    do
+    label129:
+    label134:
+    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
     {
+      this.d = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramRspGetUserGuide.cancel_word.has()) {
+        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
+      }
+      this.e = ((String)localObject1);
       return;
-      i = this.jdField_a_of_type_Xmn.a().size();
-      this.jdField_a_of_type_Xmn.a(paramInt, paramArrayList, paramxmt.a);
-    } while (i == this.jdField_a_of_type_Xmn.a().size());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(paramString);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Xmn = new xmn(a().mUIStyle.showVideoCoverList);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(this.jdField_a_of_type_Xmn);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnVideoClickListener(new xrc(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnScrollListener(new xrd(this));
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Xre != null)
-    {
-      this.d = false;
-      wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Xre);
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label53;
     }
   }
   
-  public void d()
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.b();
-  }
-  
-  public boolean isValidate()
-  {
-    return this.d;
+    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
   }
 }
 

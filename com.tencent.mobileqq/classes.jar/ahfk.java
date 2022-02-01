@@ -1,35 +1,17 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
 class ahfk
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  ahfk(ahed paramahed, int paramInt) {}
+  ahfk(ahff paramahff, ArrayList paramArrayList, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ahed.a instanceof Activity))
-    {
-      paramView = blir.a(this.jdField_a_of_type_Ahed.a);
-      paramView.b(2131691672);
-      paramView.c(2131690580);
-      paramView.a(new ahfl(this, paramView));
-      paramView.show();
-      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Ahed.a).getChatFragment().a();
-      if ((localBaseChatPie instanceof aijc)) {
-        ((aijc)localBaseChatPie).a = paramView;
-      }
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    paramDialogInterface.dismiss();
+    ahff.a(this.jdField_a_of_type_Ahff.app, this.jdField_a_of_type_Ahff.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

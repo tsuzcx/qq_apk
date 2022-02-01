@@ -1,8 +1,6 @@
-import android.graphics.drawable.Drawable;
-
-public abstract interface aewi
+abstract interface aewi
 {
-  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
+  public abstract void a();
 }
 
 

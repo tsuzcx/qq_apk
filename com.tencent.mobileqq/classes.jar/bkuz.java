@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qqreader.view.ReaderTabBarView;
 
 public class bkuz
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public bkuz(TroopAlbumPlugin.2.1 param1) {}
+  public bkuz(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    bkvb.c(this.a.getActivity());
+    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
   }
 }
 

@@ -1,6 +1,16 @@
-public abstract interface baoi
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
+public class baoi
+  implements bjog
 {
-  public abstract void a(String paramString);
+  public baoi(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void onDismiss()
+  {
+    SignatureHistoryFragment.a(this.a, null);
+    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+  }
 }
 
 

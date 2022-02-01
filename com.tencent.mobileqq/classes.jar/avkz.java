@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class avkz
-  implements SDKInitListener
+public abstract interface avkz
 {
-  public avkz(GameCenterVideoViewController paramGameCenterVideoViewController) {}
+  public abstract void a(agis paramagis);
   
-  public void onSDKInited(boolean paramBoolean)
-  {
-    QLog.d("GameCenterVideoViewController", 4, "onSDKInited result:" + paramBoolean);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

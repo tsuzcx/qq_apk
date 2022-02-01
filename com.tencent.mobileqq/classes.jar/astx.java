@@ -1,55 +1,44 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public class astx
-  extends anwy
+class astx
+  extends amop
 {
-  public astx(AIOEmotionFragment paramAIOEmotionFragment) {}
+  astx(astk paramastk) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a(becp parambecp, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
+    if (this.a.jdField_a_of_type_Asqs.a().TroopUin != parambecp.b) {}
+    while ((parambecp.a == null) || (astk.a(this.a) == null) || (!astk.a(this.a).equals(parambecp.a.toString())) || (this.a.jdField_a_of_type_Assw == null) || (paramInt1 != 0)) {
+      return;
     }
-    EmoticonResp localEmoticonResp;
-    int i;
-    label134:
-    QQAppInterface localQQAppInterface;
+    this.a.jdField_a_of_type_Assw.a(paramInt2, paramString1, paramString2, paramBundle);
+  }
+  
+  protected void a(Object paramObject)
+  {
+    Object localObject = this.a.jdField_a_of_type_Asqs.a();
+    paramObject = (becp)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.b) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+      }
+    }
     do
     {
-      do
+      return;
+      if (TextUtils.isEmpty(astk.a(this.a)))
       {
-        return;
-      } while (paramObject == null);
-      localEmoticonResp = (EmoticonResp)paramObject;
-      if (paramBoolean)
-      {
-        i = localEmoticonResp.delEpId;
-        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
-          paramObject = anzj.a(2131698937);
+        localObject = this.a.a((FileManagerEntity)localObject);
+        if (((becp)localObject).a != null) {
+          astk.a(this.a, ((becp)localObject).a.toString());
         }
       }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
-          break label134;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
-        return;
-        paramObject = localEmoticonResp.keySeq;
-        continue;
-        i = -404;
-        paramObject = anzj.a(2131698938);
-      }
-      localQQAppInterface = this.a.a();
-    } while (localQQAppInterface == null);
-    ((axfj)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new asty(this, paramInt, localQQAppInterface, i, paramObject));
+    } while ((paramObject.a == null) || (astk.a(this.a) == null) || (!astk.a(this.a).equals(paramObject.a.toString())));
+    astk.a(this.a, paramObject);
   }
 }
 

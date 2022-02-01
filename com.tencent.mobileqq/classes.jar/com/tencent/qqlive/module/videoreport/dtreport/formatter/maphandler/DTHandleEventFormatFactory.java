@@ -7,9 +7,9 @@ import java.util.Set;
 
 public class DTHandleEventFormatFactory
 {
-  private static final Set<String> APP_KEY_SET;
-  private static final Set<String> PAGE_KEY_SET;
-  private static final Set<String> VIEW_KEY_SET = new HashSet();
+  static final Set<String> APP_KEY_SET;
+  static final Set<String> PAGE_KEY_SET;
+  static final Set<String> VIEW_KEY_SET = new HashSet();
   @DTConfigConstants.ElementFormatMode
   private static int sElementFormatMode;
   
@@ -23,6 +23,7 @@ public class DTHandleEventFormatFactory
     VIEW_KEY_SET.add("imp_end");
     APP_KEY_SET.add("appout");
     APP_KEY_SET.add("appin");
+    APP_KEY_SET.add("origin_vst");
     APP_KEY_SET.add("vst");
     APP_KEY_SET.add("act");
     PAGE_KEY_SET.add("pgin");

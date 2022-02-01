@@ -1,9 +1,10 @@
 package cooperation.hce;
 
 import Override;
-import admy;
-import adnb;
-import adng;
+import acjr;
+import acju;
+import acjz;
+import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,12 +13,11 @@ import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anzj;
-import blhc;
-import bmer;
-import bmes;
-import bmet;
-import bmgk;
+import bjms;
+import bkio;
+import bkip;
+import bkiq;
+import bkkq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -31,10 +31,10 @@ import cooperation.qwallet.plugin.QWalletPayProgressDialog;
 public class HcePluginInstallActivity
   extends BaseActivity
 {
-  private admy jdField_a_of_type_Admy = new bmes(this);
-  private adnb jdField_a_of_type_Adnb;
-  private bmgk jdField_a_of_type_Bmgk;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bmer(this);
+  private acjr jdField_a_of_type_Acjr = new bkip(this);
+  private acju jdField_a_of_type_Acju;
+  private bkkq jdField_a_of_type_Bkkq;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bkio(this);
   protected QWalletPayProgressDialog a;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -42,8 +42,8 @@ public class HcePluginInstallActivity
   
   private void a()
   {
-    adng.a();
-    this.jdField_a_of_type_Adnb = adng.a(this, 4, "1106788359");
+    acjz.a();
+    this.jdField_a_of_type_Acju = acjz.a(this, 4, "1106788359");
   }
   
   private void a(String paramString)
@@ -51,12 +51,12 @@ public class HcePluginInstallActivity
     if (QLog.isDevelopLevel()) {
       QLog.i("HcePluginInstallActivity", 4, "goPlugin " + paramString);
     }
-    if (this.jdField_a_of_type_Bmgk.isPlugininstalled("vfc_plugin.apk"))
+    if (this.jdField_a_of_type_Bkkq.isPlugininstalled("vfc_plugin.apk"))
     {
       c();
       return;
     }
-    this.jdField_a_of_type_Bmgk.installPlugin("vfc_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
+    this.jdField_a_of_type_Bkkq.installPlugin("vfc_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
   }
   
   private void a(boolean paramBoolean)
@@ -76,7 +76,7 @@ public class HcePluginInstallActivity
     {
       return;
       this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog = new QWalletPayProgressDialog(this);
-      this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.setMessage(anzj.a(2131704336));
+      this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.setMessage(amtj.a(2131704566));
       this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.show();
       return;
     }
@@ -111,8 +111,8 @@ public class HcePluginInstallActivity
     if (QLog.isDevelopLevel()) {
       QLog.i("HcePluginInstallActivity", 4, "initPluginManager");
     }
-    this.jdField_a_of_type_Bmgk = ((bmgk)this.app.getManager(27));
-    this.b = blhc.a("0e8bd1");
+    this.jdField_a_of_type_Bkkq = ((bkkq)this.app.getManager(27));
+    this.b = bjms.a("0e8bd1");
     a(true);
     ThreadManagerV2.executeOnSubThread(new HcePluginInstallActivity.1(this));
   }
@@ -122,20 +122,20 @@ public class HcePluginInstallActivity
     this.jdField_a_of_type_JavaLangString = "";
     if (!a(getApplicationContext()))
     {
-      QQToast.a(getApplicationContext(), 2131693974, 0).a();
+      QQToast.a(getApplicationContext(), 2131694073, 0).a();
       d();
     }
-    while (this.jdField_a_of_type_Adnb == null) {
+    while (this.jdField_a_of_type_Acju == null) {
       return;
     }
-    this.jdField_a_of_type_Adnb.a("loginSilent", null, this.jdField_a_of_type_Admy);
+    this.jdField_a_of_type_Acju.a("loginSilent", null, this.jdField_a_of_type_Acjr);
   }
   
   private void d()
   {
     try
     {
-      QWalletHelper.launchVfcPlugin(this, this.app, this.jdField_a_of_type_JavaLangString, this.b, bmet.a());
+      QWalletHelper.launchVfcPlugin(this, this.app, this.jdField_a_of_type_JavaLangString, this.b, bkiq.a());
       return;
     }
     catch (Throwable localThrowable)
@@ -152,8 +152,9 @@ public class HcePluginInstallActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -168,8 +169,8 @@ public class HcePluginInstallActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Adnb != null) {
-      this.jdField_a_of_type_Adnb.b();
+    if (this.jdField_a_of_type_Acju != null) {
+      this.jdField_a_of_type_Acju.b();
     }
     a(false);
   }

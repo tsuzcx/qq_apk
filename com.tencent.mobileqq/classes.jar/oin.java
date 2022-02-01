@@ -1,27 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 class oin
-  implements sja
+  extends pkt
 {
-  private WeakReference<oii> a;
+  oin(oif paramoif) {}
   
-  oin(oii paramoii)
+  public void a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramoii);
-  }
-  
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
-  {
-    oii localoii = (oii)this.a.get();
-    if (((localoii == null) || (oii.a(localoii).a())) && (QLog.isColorLevel()))
+    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
+    if (!paramBoolean)
     {
-      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      if ((oif.a(this.a) == -1) || (oif.a(this.a) == 0))
+      {
+        oif.a(this.a, 0);
+        return;
+      }
+      oif.a(this.a, 4);
       return;
     }
-    localoii.a(paramChannelCoverInfo);
+    oif.a(this.a, 1);
   }
 }
 

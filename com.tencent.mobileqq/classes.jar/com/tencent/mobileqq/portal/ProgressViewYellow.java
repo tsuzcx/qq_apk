@@ -17,7 +17,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bhmq;
+import bfvo;
 
 public class ProgressViewYellow
   extends View
@@ -57,9 +57,9 @@ public class ProgressViewYellow
   private void a()
   {
     int i = 0;
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298139));
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298141));
-    this.c = ((int)getResources().getDimension(2131298140));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298204));
+    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298206));
+    this.c = ((int)getResources().getDimension(2131298205));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int }, null, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(Color.parseColor("#FC9100"));
@@ -142,7 +142,7 @@ public class ProgressViewYellow
       this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
       if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT < 18))
       {
-        localBitmap = bhmq.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
+        localBitmap = bfvo.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
         paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
       }

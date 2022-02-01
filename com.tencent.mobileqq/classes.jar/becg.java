@@ -1,78 +1,57 @@
-import android.app.Activity;
-import java.lang.ref.WeakReference;
-import java.net.URLDecoder;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class becg
-  implements anui
+class becg
+  extends amop
 {
-  public WeakReference<Activity> a;
+  becg(becf parambecf) {}
   
-  public becg(Activity paramActivity)
+  protected void c(Object paramObject)
   {
-    this.a = new WeakReference(paramActivity);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
+    bfbu localbfbu = (bfbu)paramObject;
+    Object localObject1 = localbfbu.c;
+    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692367);
     }
-    do
+    Object localObject2;
+    if (localObject1 != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 2);
-            a((String)paramObject[0], (String)paramObject[1]);
-            return;
-            a();
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        try
-        {
-          paramObject = (JSONObject)paramObject[0];
-          String str = paramObject.optString("url");
-          paramInt = paramObject.optInt("ret");
-          paramObject = URLDecoder.decode(str, "UTF-8");
-          if ((paramInt == 0) && (paramObject.length() > 0))
-          {
-            a(paramBoolean, paramObject);
-            return;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          paramObject.printStackTrace();
-          a(paramObject.toString(), "");
-          return;
-        }
-        a(paramInt + "", "");
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+      localObject2 = localObject1;
+      if (((String)localObject1).length() >= 1) {}
+    }
+    else
+    {
+      localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693496);
+    }
+    if (asld.jdField_a_of_type_Boolean)
+    {
+      localbfbu.jdField_a_of_type_JavaLangString = "183.61.37.13";
+      localbfbu.b = "443";
+    }
+    if ((bfby.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!TextUtils.isEmpty(localbfbu.f)))
+    {
+      short s2 = localbfbu.jdField_a_of_type_Short;
+      short s1 = s2;
+      if (s2 == 0) {
+        s1 = 443;
+      }
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putBoolean("ishttps", true);
+      ((Bundle)localObject1).putString("httpsdomain", localbfbu.f);
+      ((Bundle)localObject1).putShort("httpsport", s1);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Aruk != null) {
+        this.a.jdField_a_of_type_Aruk.a(localbfbu.jdField_a_of_type_Boolean, localbfbu.jdField_a_of_type_JavaLangString, localbfbu.b, localbfbu.jdField_a_of_type_Int, (String)localObject2, localbfbu.d, null, localbfbu.e, (Bundle)localObject1);
+      }
+      super.c(paramObject);
+      return;
+      localObject1 = null;
+    }
   }
 }
 

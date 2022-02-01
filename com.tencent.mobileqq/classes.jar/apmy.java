@@ -1,25 +1,39 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class apmy
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  apmy(apmt paramapmt) {}
+  apmy(apmx paramapmx, HistoryFormItem paramHistoryFormItem) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    paramArrayOfString = new apnb();
-    paramArrayOfString.a = 2;
-    apnt.a(this.a.a.recognitions, apmt.a(this.a), paramArrayOfString);
-    if (apmt.a(this.a) != null) {
-      apmt.a(this.a).a(0, apmt.a(this.a));
+    ColorNote localColorNote = (ColorNote)apmx.a(this.jdField_a_of_type_Apmx).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+    Bundle localBundle = new Bundle();
+    if (apmx.a(this.jdField_a_of_type_Apmx) == 17104896) {
+      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
+        localBundle.putBoolean("isFromFavourite", true);
+      }
     }
-    apmt.a(this.a, null);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
+    for (;;)
+    {
+      apkn.a(paramView.getContext(), localColorNote, localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      }
+      bcef.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", aplm.b(apmx.a(this.jdField_a_of_type_Apmx)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (apmx.a(this.jdField_a_of_type_Apmx) == 16908289) {
+        localBundle.putBoolean("history_note", true);
+      }
+    }
   }
 }
 

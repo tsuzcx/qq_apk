@@ -1,70 +1,27 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wzg
-  extends wzd
+public final class wzg
+  extends QQUIEventReceiver<wyy, xnu>
 {
-  public static final void b(wvn paramwvn)
+  public wzg(@NonNull wyy paramwyy)
   {
-    ThreadManager.post(new RecommendActivityViewHolder.1(paramwvn), 8, null, true);
+    super(paramwyy);
   }
   
-  public void a()
+  public void a(@NonNull wyy paramwyy, @NonNull xnu paramxnu)
   {
-    this.itemView.setTag(2131374689, null);
+    if ((paramxnu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwyy.a != null) && (TextUtils.equals(paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwyy.a.b))) {
+      paramwyy.i();
+    }
   }
   
-  public void a(wvn paramwvn)
+  public Class acceptEventClass()
   {
-    super.a(paramwvn);
-    xiz.b(this.jdField_a_of_type_AndroidWidgetImageView, paramwvn.jdField_b_of_type_JavaLangString, true, (int)bhmg.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str;
-    int i;
-    if (TextUtils.isEmpty(paramwvn.c))
-    {
-      str = anzj.a(2131712146);
-      localTextView.setText(str);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.c.setVisibility(0);
-      if (paramwvn.jdField_b_of_type_Int <= 0) {
-        break label247;
-      }
-      i = 1;
-      label92:
-      a(1, i);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FollowPersonViewHolder userItem = " + paramwvn.c + ", faceDrawable = " + paramwvn.jdField_b_of_type_JavaLangString);
-      }
-      str = (String)this.itemView.getTag(2131374689);
-      if (!TextUtils.equals(paramwvn.jdField_a_of_type_JavaLangString, str)) {
-        switch (paramwvn.jdField_a_of_type_Int)
-        {
-        default: 
-          str = "unknown";
-        }
-      }
-    }
-    for (;;)
-    {
-      yup.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwvn.jdField_a_of_type_JavaLangString, str });
-      this.itemView.setTag(2131374689, paramwvn.jdField_a_of_type_JavaLangString);
-      return;
-      str = paramwvn.c;
-      break;
-      label247:
-      i = 0;
-      break label92;
-      str = "2";
-      continue;
-      str = "3";
-    }
+    return xnu.class;
   }
 }
 

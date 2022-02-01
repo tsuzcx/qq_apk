@@ -1,76 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class atkv
-  extends atpa
+  implements aops
 {
-  public atkv(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public atkv(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    super.a(paramInt, paramString1, paramString2);
-    this.a.c(false);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    aunj.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List<WeiYunFileInfo> paramList, int paramInt2)
-  {
-    QfileCloudFileTabView.b(this.a, true);
-    QfileCloudFileTabView.c(this.a, paramBoolean);
-    this.a.jdField_c_of_type_Int = paramInt2;
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      paramInt1 = aunj.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
-      String str;
-      if (paramInt1 == 0)
-      {
-        str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
-      else if (2 == paramInt1)
-      {
-        str = QfileCloudFileTabView.b(this.a).a().b(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.a.a.putBoolean("forward_ark_from_h5_success", true);
     }
-    if (!paramString1.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QfileCloudFileTabView.b(this.a)) {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    if (!this.a.jdField_a_of_type_JavaLangString.equalsIgnoreCase("picture")) {
-      this.a.setListFooter();
-    }
-    this.a.jdField_c_of_type_JavaLangString = paramString2;
-    this.a.jdField_c_of_type_Boolean = true;
-    this.a.g();
-    this.a.a();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Atjm.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 class zph
-  implements View.OnClickListener
+  implements bgtc
 {
-  zph(zpg paramzpg) {}
+  zph(zpf paramzpf, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    zpc localzpc = this.a.jdField_a_of_type_Zpc;
-    if (localzpc != null) {
-      localzpc.a(this.a.jdField_a_of_type_Zpi, this.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Zpf.a.a(146, paramBundle);
   }
 }
 

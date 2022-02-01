@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class wby
-  implements Animation.AnimationListener
+  extends vko
 {
-  public wby(QCircleRocketView paramQCircleRocketView, View paramView) {}
+  public List<xem> a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public wby(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a = paramErrorMessage;
   }
 }
 

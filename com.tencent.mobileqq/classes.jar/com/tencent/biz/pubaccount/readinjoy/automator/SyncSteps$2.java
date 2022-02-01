@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import omp;
-import omt;
+import ooa;
+import ooe;
 
 public class SyncSteps$2
   implements Runnable
 {
-  public SyncSteps$2(omt paramomt, omp paramomp) {}
+  public SyncSteps$2(ooe paramooe, ooa paramooa) {}
   
   public void run()
   {

@@ -1,116 +1,23 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ajfq
-  implements anui
+class ajfq
+  implements DialogInterface.OnClickListener
 {
-  private void a(boolean paramBoolean, Object paramObject)
+  ajfq(ajey paramajey, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 8) {
-        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4], ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Boolean)paramObject[7]).booleanValue());
-      }
-      return;
-    }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      Object[] arrayOfObject = (Object[])paramObject;
-      if (arrayOfObject.length >= 2)
-      {
-        paramObject = (String)arrayOfObject[0];
-        paramBoolean = ((Boolean)arrayOfObject[1]).booleanValue();
-      }
-    }
-    for (;;)
-    {
-      a(false, paramObject, 0, null, 0, null, 60, 1200, paramBoolean);
-      return;
-      paramBoolean = false;
-      paramObject = null;
-    }
-  }
-  
-  private void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 3) {
-        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      }
-      return;
-    }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length <= 0) {}
-    }
-    for (paramObject = (String)paramObject[0];; paramObject = null)
-    {
-      a(false, paramObject, 0, null);
-      return;
-    }
-  }
-  
-  private void c(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 4) {
-        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (List)paramObject[3]);
-      }
-      return;
-    }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length <= 0) {}
-    }
-    for (paramObject = (String)paramObject[0];; paramObject = null)
-    {
-      a(false, paramObject, 0, null, null);
-      return;
-    }
-  }
-  
-  private void d(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 3) {
-        a((String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, List<ajfx> paramList) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, paramObject);
-      return;
-    case 3: 
-      c(paramBoolean, paramObject);
-      return;
-    }
-    d(paramBoolean, paramObject);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Ajey.a, SearchContactsActivity.class);
+    paramDialogInterface.putExtra("from_key", 0);
+    paramDialogInterface.putExtra("fromType", 13);
+    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
+    this.jdField_a_of_type_Ajey.a.startActivity(paramDialogInterface);
   }
 }
 

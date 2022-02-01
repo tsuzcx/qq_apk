@@ -1,32 +1,32 @@
 package com.tencent.biz.videostory.widget.view;
 
-import abcm;
 import com.tencent.biz.videostory.db.WSPersonalEntity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
+import zyx;
 
 public class MineWSPanel$3
   implements Runnable
 {
-  public MineWSPanel$3(abcm paramabcm, byte[] paramArrayOfByte) {}
+  public MineWSPanel$3(zyx paramzyx, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (abcm.a(this.this$0) == null)
+    if (zyx.a(this.this$0) == null)
     {
       QLog.i("MineWSPanel", 2, "mBaseActivity is null");
       return;
     }
-    EntityManager localEntityManager = abcm.a(this.this$0).app.a().createEntityManager();
-    WSPersonalEntity localWSPersonalEntity2 = (WSPersonalEntity)localEntityManager.find(WSPersonalEntity.class, abcm.a(this.this$0));
+    EntityManager localEntityManager = zyx.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
+    WSPersonalEntity localWSPersonalEntity2 = (WSPersonalEntity)localEntityManager.find(WSPersonalEntity.class, zyx.a(this.this$0));
     WSPersonalEntity localWSPersonalEntity1 = localWSPersonalEntity2;
     if (localWSPersonalEntity2 == null) {
       localWSPersonalEntity1 = new WSPersonalEntity();
     }
-    localWSPersonalEntity1.updateWeiShiFeedListEntity(abcm.a(this.this$0), this.a);
+    localWSPersonalEntity1.updateWeiShiFeedListEntity(zyx.a(this.this$0), this.a);
     if (localWSPersonalEntity1.getStatus() == 1000) {
       localEntityManager.persist(localWSPersonalEntity1);
     }

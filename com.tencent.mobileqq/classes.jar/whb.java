@@ -1,19 +1,40 @@
-import java.util.Comparator;
+import android.app.Activity;
 
 class whb
-  implements Comparator<wgg>
+  implements whd
 {
   whb(wgz paramwgz) {}
   
-  public int a(wgg paramwgg1, wgg paramwgg2)
+  public void a(wjk paramwjk)
   {
-    if (paramwgg1.f() == paramwgg2.f()) {
-      return 0;
+    wgz.a(this.a).c();
+    Activity localActivity = wgz.a(this.a).a();
+    if (localActivity == null)
+    {
+      c(paramwjk);
+      return;
     }
-    if (paramwgg1.f() > paramwgg2.f()) {
-      return 1;
+    wjw.a(localActivity, paramwjk, wgz.a(this.a));
+  }
+  
+  public void b(wjk paramwjk)
+  {
+    wgz.a(this.a).c();
+    if (wgz.a(this.a) != null)
+    {
+      wgz.a(this.a).c(paramwjk.a);
+      wgz.a(this.a).a();
     }
-    return -1;
+  }
+  
+  public void c(wjk paramwjk)
+  {
+    wgz.a(this.a).c();
+    if (wgz.a(this.a) != null)
+    {
+      wgz.a(this.a).d(paramwjk.a);
+      wgz.a(this.a).a();
+    }
   }
 }
 

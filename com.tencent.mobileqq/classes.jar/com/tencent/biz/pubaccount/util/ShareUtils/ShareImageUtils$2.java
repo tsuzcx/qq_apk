@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.util.ShareUtils;
 import android.content.Context;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import mqq.app.AppActivity;
-import ubv;
-import ubx;
+import uil;
+import uin;
 
 public final class ShareImageUtils$2
   implements Runnable
@@ -16,15 +16,15 @@ public final class ShareImageUtils$2
     if ((this.a instanceof AppActivity))
     {
       if (!CheckPermission.isHasStoragePermission(this.a)) {
-        CheckPermission.requestSDCardPermission((AppActivity)this.a, new ubx(this));
+        CheckPermission.requestSDCardPermission((AppActivity)this.a, new uin(this));
       }
-      ubv.c();
+      uil.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2
  * JD-Core Version:    0.7.0.1
  */

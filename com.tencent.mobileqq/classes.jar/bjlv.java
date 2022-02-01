@@ -1,15 +1,32 @@
-public class bjlv
+import com.tencent.tar.jni.ScanFeatureFilterView;
+
+public final class bjlv
 {
+  public float a;
   public int a;
-  public String a;
+  public long a;
   public boolean a;
+  public float b;
   public int b;
-  public String b;
+  public long b;
   public boolean b;
   
-  public String toString()
+  public float a(int paramInt, long paramLong)
   {
-    return "[flag=" + this.jdField_a_of_type_Int + ", title=" + this.jdField_a_of_type_JavaLangString + ", isNew=" + this.jdField_a_of_type_Boolean + ", api=" + this.jdField_b_of_type_JavaLangString + ", id=" + this.jdField_b_of_type_Int + ", isChecked=" + this.jdField_b_of_type_Boolean + "]";
+    if (paramLong < this.jdField_b_of_type_Long) {
+      return 0.0F;
+    }
+    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

@@ -1,27 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
 public class bnqh
-  extends Handler
+  implements Animator.AnimatorListener
 {
-  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  public bnqh(SlideBottomPanel paramSlideBottomPanel) {}
   
-  public bnqh(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_Bnpr != null) {
+      this.a.jdField_a_of_type_Bnpr.displayPanelFinish();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage != null) {
-      paramMessage.invalidateSelf();
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_Bnpr != null) {
+      this.a.jdField_a_of_type_Bnpr.displayPanelFinish();
     }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

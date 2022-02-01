@@ -1,22 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
 
-class vjs
-  implements Animation.AnimationListener
+public abstract interface vjs
 {
-  vjs(vjp paramvjp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.a != null) {
-      this.a.a.setVisibility(0);
-    }
-  }
+  public abstract void a(ArrayList<vim> paramArrayList);
 }
 
 

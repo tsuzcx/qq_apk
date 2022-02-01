@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnag
-  implements Parcelable.Creator<GpsInfo4LocalImage>
+class bnag
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
-  {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
-  }
+  bnag(bnaf parambnaf) {}
   
-  public GpsInfo4LocalImage[] a(int paramInt)
+  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
   {
-    return null;
+    this.a.a.b();
+    if (paramInt == 0)
+    {
+      this.a.a.a.sendEmptyMessage(3);
+      return;
+    }
+    this.a.a.a.sendEmptyMessage(5);
   }
 }
 

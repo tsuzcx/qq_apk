@@ -1,14 +1,18 @@
-public abstract interface bdfl
+import com.tencent.util.Pair;
+import java.util.Comparator;
+
+public class bdfl
+  implements Comparator<Pair<String, String>>
 {
-  public abstract bdfm a(int paramInt1, int paramInt2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public int a(Pair<String, String> paramPair1, Pair<String, String> paramPair2)
+  {
+    int j = ((String)paramPair1.first).compareTo((String)paramPair2.first);
+    int i = j;
+    if (j == 0) {
+      i = ((String)paramPair1.second).compareTo((String)paramPair2.second);
+    }
+    return i;
+  }
 }
 
 

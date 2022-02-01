@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class avdq
-  extends apcq
+class avdq
+  implements bjoe
 {
-  public avdq(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  avdq(avdp paramavdp, bjnw parambjnw) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    if (paramInt != 0)
+    switch (paramInt)
     {
-      QQToast.a(this.a.a, 1, anzj.a(2131701161), 1).a();
-      this.a.e();
-      return;
     }
-    this.a.a(paramSosoLbsInfo);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.e();
+      return;
+      avdp.a(this.jdField_a_of_type_Avdp).finish();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject = avdp.a(this.jdField_a_of_type_Avdp).getIntent();
+      String str = ((Intent)localObject).getStringExtra("uin");
+      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
+      avcw.a(paramView).a.a(3, paramInt, str);
+      localObject = new avcq(paramInt, str);
+      avcw.a(paramView).a((avcq)localObject, false);
+      bcef.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
+    }
   }
 }
 

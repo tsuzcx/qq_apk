@@ -1,29 +1,23 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awnr
-  implements bliz
+public class awnr
+  implements View.OnClickListener
 {
-  awnr(awnq paramawnq, blir paramblir, boolean paramBoolean) {}
+  public awnr(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    if ((this.a.a != null) && (!this.a.isFinishing()))
     {
-      this.jdField_a_of_type_Awnq.b(false);
-      return;
-      awml.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Awnq.a().e, this.jdField_a_of_type_Awnq.a().b);
-      continue;
-      this.jdField_a_of_type_Awnq.g();
-      continue;
-      this.jdField_a_of_type_Awnq.g();
+      this.a.a.dismiss();
+      this.a.a = null;
+      this.a.e("0X800590A");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

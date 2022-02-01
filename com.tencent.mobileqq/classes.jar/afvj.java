@@ -1,35 +1,109 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class afvj
-  implements Animation.AnimationListener
+final class afvj
+  implements ark.ApplicationCallback
 {
-  public afvj(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void AppCreate(ark.Application paramApplication)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void AppDestroy(ark.Application paramApplication)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    aoys.a(paramApplication);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool1 = true;
+    int j;
+    boolean bool2;
+    label67:
+    int i;
+    if (localArkAppUrlChecker != null)
+    {
+      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      if (j != 0) {
+        break label288;
+      }
+      bool1 = true;
+      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
+      boolean bool4 = ArkAppCenterUtil.isPublicAccount();
+      if ((!bool3) || (bool4)) {
+        break label294;
+      }
+      bool2 = true;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
+      }
+      if (bool1) {
+        break label305;
+      }
+      if (bool2) {
+        break label300;
+      }
+      QLog.e("ArkApp.ArkAppContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", npn.b(paramString, new String[0]) });
+      bool1 = true;
+      i = 2;
+      label213:
+      afvi.e();
+    }
+    for (;;)
+    {
+      aoys.a(paramApplication, paramString, j, i, afvi.c);
+      aovl.b(afvi.a(), paramApplication, paramString, 1);
+      QLog.e("ArkApp.ArkAppContainer", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", npn.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
+      return bool1;
+      label288:
+      bool1 = false;
+      break;
+      label294:
+      bool2 = false;
+      break label67;
+      label300:
+      i = 1;
+      break label213;
+      label305:
+      i = 0;
+    }
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkAppContainer", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        }
+        aovl.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
+      }
+    }
+  }
+  
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  {
+    aopr.a(paramModuleRegister, paramApplication);
+  }
 }
 
 

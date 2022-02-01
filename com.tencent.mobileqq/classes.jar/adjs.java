@@ -1,37 +1,25 @@
-import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForWriteTogether;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adjs
-  implements adbi
+  implements Animation.AnimationListener
 {
-  public boolean a(Context paramContext, QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public adjs(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramQQAppInterface == null) || (paramMessage == null) || (paramMsgSummary == null)) {
-      return false;
-    }
-    paramContext = paramQQAppInterface.a();
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.b(paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
-    if ((paramContext instanceof MessageForWriteTogether))
-    {
-      paramContext = (MessageForWriteTogether)paramContext;
-      paramContext.parse();
-      paramMsgSummary.strPrefix = paramString;
-      paramMsgSummary.strContent = ("[一起写] " + paramContext.msg);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
   }
   
-  public boolean a(QQMessageFacade.Message paramMessage)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return false;
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 

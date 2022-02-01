@@ -1,8 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
-public abstract interface wql
+public class wql
+  extends ysw
 {
-  public abstract void a(long paramLong, String paramString, CommentLikeFeedItem paramCommentLikeFeedItem);
+  public wql(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
+  }
 }
 
 

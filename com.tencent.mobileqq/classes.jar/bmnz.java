@@ -1,13 +1,10 @@
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
 
-public class bmnz
-  implements EIPCResultCallback
+public abstract interface bmnz
 {
-  public bmnz(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
+  public abstract Context a();
   
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public abstract void a();
 }
 
 

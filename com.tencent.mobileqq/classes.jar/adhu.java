@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NotOnlineImage;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.QZoneHelper;
 
 public class adhu
-  extends adic
 {
-  public int a()
+  public static void a()
   {
-    return super.a() + 4;
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
+    BaseApplicationImpl.getContext().startActivity(localIntent);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
   {
-    new bcrt().b(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy, paramBoolean2);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.not_online_image.has()) || (paramElem.custom_face.has());
+    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
+      return;
+    }
+    QZoneHelper.forwardToWriteMood(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 

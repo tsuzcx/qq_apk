@@ -1,11 +1,18 @@
-import android.content.DialogInterface;
+import android.opengl.EGLContext;
 
-final class bodu
-  extends bhme
+public class bodu
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  public boee a;
+  private Object jdField_a_of_type_JavaLangObject;
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
+      return;
+    }
   }
 }
 

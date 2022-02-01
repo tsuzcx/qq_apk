@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import boll;
+import blpr;
 
 public class AEBottomListPart$10
   implements Runnable
 {
-  public AEBottomListPart$10(boll paramboll, String paramString1, String paramString2) {}
+  public AEBottomListPart$10(blpr paramblpr, String paramString1, String paramString2) {}
   
   public void run()
   {
-    boll.a(this.this$0, this.a, this.b);
+    blpr.a(this.this$0, this.a, this.b);
   }
 }
 

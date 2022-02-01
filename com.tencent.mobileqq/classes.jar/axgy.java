@@ -1,46 +1,16 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
 public class axgy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public axgy(AutoScrollImageView paramAutoScrollImageView) {}
   
-  public axgx a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new axgx(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
-  
-  public axgy a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public axgy a(MsgBackupUserData paramMsgBackupUserData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
-  
-  public axgy a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public axgy b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public axgy c(String paramString)
-  {
-    this.c = paramString;
-    return this;
+    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

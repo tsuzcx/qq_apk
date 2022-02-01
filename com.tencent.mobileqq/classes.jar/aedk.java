@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-class aedk
-  implements View.OnClickListener
+public class aedk
+  implements Handler.Callback
 {
-  aedk(aede paramaede, MessageRecord paramMessageRecord) {}
+  public aedk(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aede.a.a, abke.a(paramView));
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = new aedl(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    }
   }
 }
 

@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adsh
-  implements bjbu
+  implements DialogInterface.OnClickListener
 {
-  public adsh(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public adsh(NotificationActivity paramNotificationActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onBackPressed();
-    AddFriendLogicActivity.a(this.a).a(null);
+    bcef.a(this.a.app, "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.b(this.a), "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3.1;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
 
-public class tmm
-  implements trl
+public abstract interface tmm
+  extends tmy
 {
-  public tmm(VideoFeedsGameAdComManager.3.1 param1) {}
+  public abstract ViewGroup a();
   
-  public void a()
-  {
-    this.a.a.this$0.b(true);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(VideoPlayManager paramVideoPlayManager);
+  
+  public abstract void a(tmx paramtmx);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setControlType(int paramInt);
+  
+  public abstract void setEndWithLastFrame(boolean paramBoolean);
+  
+  public abstract void setEventListener(tmn paramtmn);
+  
+  public abstract void setFullScreenDisable(boolean paramBoolean);
 }
 
 

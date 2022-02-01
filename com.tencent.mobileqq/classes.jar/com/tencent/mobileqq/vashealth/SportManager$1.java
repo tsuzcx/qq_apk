@@ -2,20 +2,20 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.Context;
 import android.hardware.SensorManager;
-import bige;
+import bgmp;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class SportManager$1
   implements Runnable
 {
-  public SportManager$1(bige parambige) {}
+  public SportManager$1(bgmp parambgmp) {}
   
   public void run()
   {
-    if (bige.a == null) {
-      bige.a = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
+    if (bgmp.a == null) {
+      bgmp.a = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
     }
-    bige.a();
+    bgmp.a();
   }
 }
 

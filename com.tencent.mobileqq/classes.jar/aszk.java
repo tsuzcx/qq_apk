@@ -1,61 +1,205 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.1;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.11;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.2;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.3;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.4;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.5;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.6;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.7;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil.8;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class aszk
-  extends RecyclerView.OnScrollListener
 {
-  public aszk(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  private static int jdField_a_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299076) - (int)bfvh.a(BaseApplicationImpl.getContext(), 5.0F);
+  private static Map<Integer, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static Map<String, Long> b = new HashMap();
   
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public static void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.a.jdField_a_of_type_Aoof != null)
+    try
     {
-      if (paramInt != 0) {
-        break label87;
+      if (BaseApplicationImpl.sApplication.getRuntime().isBackgroundPause) {
+        return;
       }
-      this.a.c = false;
-      this.a.jdField_a_of_type_Aoof.b();
-      this.a.av_();
-    }
-    for (;;)
-    {
-      if (paramInt == 0)
+      if (a(paramInt))
       {
-        this.a.g();
-        this.a.b(false);
+        Looper localLooper = Looper.getMainLooper();
+        if (Thread.currentThread() != localLooper.getThread())
+        {
+          new Handler(localLooper).post(new FMToastUtil.1(paramInt));
+          return;
+        }
+        QQToast.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
       }
       return;
-      label87:
-      this.a.c = true;
-      this.a.jdField_a_of_type_Aoof.c();
-      this.a.jdField_a_of_type_Aoof.a();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
-        }
-      }
     }
+    catch (Exception localException) {}
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static void a(int paramInt1, String paramString, int paramInt2)
   {
-    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aszx != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aszx.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackgroundPause) {}
+    while (!a(paramString)) {
+      return;
     }
-    this.a.a(false, 0L);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.8(paramInt1, paramString, paramInt2));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), paramInt1, paramString, paramInt2).b(jdField_a_of_type_Int);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FMToastUtil.11(paramContext, paramInt1, paramInt2));
+  }
+  
+  public static void a(String paramString)
+  {
+    if (BaseApplicationImpl.sApplication.getRuntime().isBackgroundPause) {}
+    while (!a(paramString)) {
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.2(paramString));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 0, paramString, 0).b(jdField_a_of_type_Int);
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    if (jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      long l1 = ((Long)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).longValue();
+      long l2 = SystemClock.uptimeMillis();
+      if (l1 + 2000L < l2)
+      {
+        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(l2));
+        return true;
+      }
+    }
+    else
+    {
+      jdField_a_of_type_JavaUtilMap.clear();
+      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(SystemClock.uptimeMillis()));
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    if (b.containsKey(paramString))
+    {
+      long l1 = ((Long)b.get(paramString)).longValue();
+      long l2 = SystemClock.uptimeMillis();
+      if (l1 + 2000L < l2)
+      {
+        b.put(paramString, Long.valueOf(l2));
+        return true;
+      }
+    }
+    else
+    {
+      b.clear();
+      b.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
+      return true;
+    }
+    return false;
+  }
+  
+  public static void b(int paramInt)
+  {
+    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackgroundPause) {}
+    while (!a(paramInt)) {
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.3(paramInt));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, paramInt, 0).b(jdField_a_of_type_Int);
+  }
+  
+  public static void b(String paramString)
+  {
+    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackgroundPause) {
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.4(paramString));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, paramString, 0).b(jdField_a_of_type_Int);
+  }
+  
+  public static void c(int paramInt)
+  {
+    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackgroundPause) {}
+    while (!a(paramInt)) {
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.7(paramInt));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
+  }
+  
+  public static void c(String paramString)
+  {
+    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackgroundPause) {}
+    while (!a(paramString)) {
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.5(paramString));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, paramString, 1).b(jdField_a_of_type_Int);
+  }
+  
+  public static void d(String paramString)
+  {
+    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackgroundPause) {
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new FMToastUtil.6(paramString));
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 0, paramString, 0).b(jdField_a_of_type_Int);
   }
 }
 

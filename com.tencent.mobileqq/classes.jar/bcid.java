@@ -1,16 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
-class bcid
-  implements View.OnClickListener
+public class bcid
+  extends Animation
 {
-  bcid(bcia parambcia) {}
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void onClick(View paramView)
+  public bcid(ViewGroup paramViewGroup)
   {
-    bcia.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    if (paramFloat == 1.0F)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      paramTransformation.height = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    }
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

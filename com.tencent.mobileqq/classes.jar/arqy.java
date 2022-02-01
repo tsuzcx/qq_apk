@@ -1,61 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class arqy
-  extends arac<arqx>
+class arqy
+  implements Handler.Callback
 {
-  public static arqx a()
-  {
-    return (arqx)aran.a().a(451);
-  }
+  arqy(arqt paramarqt) {}
   
-  @NonNull
-  public arqx a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new arqx();
-  }
-  
-  @Nullable
-  public arqx a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arqx.a(paramArrayOfaraj);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      if (this.a.b.size() == 0)
+      {
+        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+        return false;
+      }
+      this.a.b();
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      arid.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (String)this.a.b.get(this.a.b.size() - 1));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+      return false;
     }
-    return null;
-  }
-  
-  public void a(arqx paramarqx) {}
-  
-  public Class<arqx> clazz()
-  {
-    return arqx.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    paramMessage = (ArrayList)paramMessage.obj;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      return false;
+    }
+    arqt.a(this.a, paramMessage);
     return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 451;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqy
  * JD-Core Version:    0.7.0.1
  */

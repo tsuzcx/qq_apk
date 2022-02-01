@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
-class xqj
-  implements DialogInterface.OnClickListener
+final class xqj
+  implements xrr
 {
-  xqj(xqi paramxqi) {}
+  xqj(WeakReference paramWeakReference) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(ErrorMessage paramErrorMessage)
+  {
+    xqk localxqk = (xqk)this.a.get();
+    if (localxqk != null) {
+      localxqk.a(paramErrorMessage);
+    }
+  }
 }
 
 

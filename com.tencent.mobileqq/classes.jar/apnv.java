@@ -1,43 +1,24 @@
-import com.tencent.YTFace.model.FaceStatus;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class apnv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public String a;
-  public ArrayList<apnw> a;
-  public FaceStatus[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public apnv(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public static boolean a(apnv paramapnv)
+  public void onGlobalLayout()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramapnv != null)
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
     {
-      bool1 = bool2;
-      if (paramapnv.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramapnv.jdField_b_of_type_Int == 0) {
-          bool1 = true;
-        }
-      }
+      ColorNoteSmallScreenRelativeLayout.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARRspFaceResult", 2, "[ScanStarFace]isRecogSuccess result = " + bool1);
-    }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudRecogRspFaceResult{errCode_MQ=" + this.jdField_a_of_type_Int + ", errMsg_MQ='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errCode_YT=" + this.jdField_b_of_type_Int + ", errMsg_YT=" + this.jdField_b_of_type_JavaLangString + ", time_ms_YT=" + this.jdField_c_of_type_Int + ", group_size_YT=" + this.d + ", sessionID='" + this.jdField_c_of_type_JavaLangString + '\'' + ", starInfoList=" + this.jdField_a_of_type_JavaUtilArrayList + ", faceStatus[]=" + this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

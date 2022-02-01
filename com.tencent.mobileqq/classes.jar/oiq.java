@@ -1,29 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class oiq
-  extends Handler
+  implements ViewBase.OnClickListener
 {
-  private WeakReference<oio> a;
+  oiq(oip paramoip) {}
   
-  public oiq(oio paramoio)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a = new WeakReference(paramoio);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    oio localoio = (oio)this.a.get();
-    if ((localoio == null) || (!localoio.b())) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (paramViewBase.getEventAttachedData() == null)
     {
-    default: 
+      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
       return;
     }
-    localoio.b();
+    oif.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    pay.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

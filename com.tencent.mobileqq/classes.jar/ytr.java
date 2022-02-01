@@ -1,16 +1,12 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ytr
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  ytr(ytq paramytq) {}
-  
-  public void onClick(View paramView)
+  ytr(ytp paramytp, View paramView)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
   }
 }
 

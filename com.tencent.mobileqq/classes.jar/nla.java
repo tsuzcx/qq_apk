@@ -1,37 +1,35 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nla
-  implements INetInfoHandler
+  implements View.OnClickListener
 {
-  protected WeakReference<nku> a;
+  public nla(PoiMapActivity paramPoiMapActivity) {}
   
-  public nla(nku paramnku)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramnku);
-  }
-  
-  public void onNetMobile2None()
-  {
-    nku localnku = (nku)this.a.get();
-    if (localnku != null) {
-      localnku.a = 2;
+    if ((paramView instanceof PoiMapActivity.TabView))
+    {
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      this.a.i();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      }
+      if (!PoiMapActivity.a(this.a)) {
+        break label127;
+      }
+      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    nku localnku = (nku)this.a.get();
-    if (localnku != null) {
-      localnku.a = 2;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label127:
+      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
     }
   }
 }

@@ -1,6 +1,6 @@
 package cooperation.qqreader.host.advertisement;
 
-import acon;
+import abkv;
 import android.text.TextUtils;
 
 public class ReaderAdWrapper$ImageData
@@ -9,11 +9,11 @@ public class ReaderAdWrapper$ImageData
   public String url;
   public int width;
   
-  ReaderAdWrapper$ImageData(acon paramacon)
+  ReaderAdWrapper$ImageData(abkv paramabkv)
   {
-    this.url = paramacon.jdField_a_of_type_JavaLangString;
-    this.width = paramacon.jdField_a_of_type_Int;
-    this.height = paramacon.b;
+    this.url = paramabkv.jdField_a_of_type_JavaLangString;
+    this.width = paramabkv.jdField_a_of_type_Int;
+    this.height = paramabkv.b;
   }
   
   public boolean isValid()

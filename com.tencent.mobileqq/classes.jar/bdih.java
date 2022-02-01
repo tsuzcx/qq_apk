@@ -1,9 +1,21 @@
-import com.tencent.qq.effect.engine.QEffectData;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
 class bdih
-  extends QEffectData
+  extends bdit
 {
-  bdih(bdig parambdig) {}
+  bdih(bdid parambdid, EditorState paramEditorState, List paramList)
+  {
+    super(parambdid, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    if (!aqeg.a(bdid.a(this.a))) {
+      bdid.a(this.a).a(false, false);
+    }
+  }
 }
 
 

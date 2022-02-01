@@ -1,44 +1,29 @@
-import android.app.Activity;
-import android.text.Editable;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
 
 public class azar
-  implements azam
+  implements aymm
 {
-  public azar(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  public azar(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public Activity a()
+  public void a(int paramInt, String paramString)
   {
-    return this.a;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
+      {
+        paramInt = 1;
+        bcef.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        bcef.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
+      }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      return;
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Azas.a(paramBoolean);
+    bcef.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

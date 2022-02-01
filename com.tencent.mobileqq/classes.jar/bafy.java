@@ -1,28 +1,54 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.profilecard.bussiness.circle.ProfileCircleComponent.1.1;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.annotation.TargetApi;
+import android.view.Surface;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
+@TargetApi(14)
 public class bafy
-  implements aaav<FeedCloudRead.StGetMainPageRsp>
 {
-  bafy(bafx parambafx) {}
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private bafv jdField_a_of_type_Bafv;
+  private bafw jdField_a_of_type_Bafw;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a()
   {
-    bafx.a(this.a).set(false);
-    if (paramStGetMainPageRsp != null)
+    if (this.jdField_a_of_type_AndroidViewSurface != null)
     {
-      paramString = paramStGetMainPageRsp.vecFeed.get();
-      if ((paramString != null) && (paramString.size() > 0))
-      {
-        bafx.a(this.a, paramString);
-        bafx.a(this.a).post(new ProfileCircleComponent.1.1(this));
-        QLog.d("ProfileCircleComponent", 4, "makeOrRefreshQQCircle onResponse success");
-      }
+      this.jdField_a_of_type_AndroidViewSurface.release();
+      this.jdField_a_of_type_AndroidViewSurface = null;
     }
+    if (this.jdField_a_of_type_Bafw != null)
+    {
+      this.jdField_a_of_type_Bafw.a();
+      this.jdField_a_of_type_Bafw = null;
+    }
+    if (this.jdField_a_of_type_Bafv != null)
+    {
+      this.jdField_a_of_type_Bafv.a();
+      this.jdField_a_of_type_Bafv = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
+  {
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+    this.jdField_a_of_type_Bafw.a(paramLong);
+    this.jdField_a_of_type_Bafw.a();
+  }
+  
+  public void a(bafx parambafx, Surface paramSurface)
+  {
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    this.jdField_a_of_type_Bafv = new bafv(parambafx.a(), 1);
+    this.jdField_a_of_type_Bafw = new bafw(this.jdField_a_of_type_Bafv);
+    this.jdField_a_of_type_Bafw.a(paramSurface);
+    this.jdField_a_of_type_Bafw.b();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
   }
 }
 

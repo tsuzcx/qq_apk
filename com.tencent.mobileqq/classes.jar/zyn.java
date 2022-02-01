@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class zyn
-  implements View.OnClickListener
+public class zyn
+  implements zyf
 {
-  zyn(zyl paramzyl, zyr paramzyr) {}
-  
-  public void onClick(View paramView)
+  public avjt a(String paramString)
   {
-    if (zyl.a(this.jdField_a_of_type_Zyl) != null) {
-      zyl.a(this.jdField_a_of_type_Zyl).b(this.jdField_a_of_type_Zyr);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new avkf(paramString).a();
   }
 }
 

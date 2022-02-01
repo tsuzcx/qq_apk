@@ -12,12 +12,12 @@ class QZoneMsgFragment$4
   
   public void run()
   {
-    QQMessageFacade localQQMessageFacade = this.this$0.a.a();
-    QQMessageFacade.Message localMessage = localQQMessageFacade.a("2290230341", 1008);
+    QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
+    QQMessageFacade.Message localMessage = localQQMessageFacade.getLastMessage("2290230341", 1008);
     if (localMessage != null)
     {
-      localMessage.saveExtInfoToExtStr("qzone_msg_box_promot", this.a);
-      localQQMessageFacade.a("2290230341", 1008, localMessage.uniseq, "extStr", localMessage.extStr);
+      localMessage.saveExtInfoToExtStr("qzone_msg_box_promot", this.val$prompt);
+      localQQMessageFacade.updateMsgFieldByUniseq("2290230341", 1008, localMessage.uniseq, "extStr", localMessage.extStr);
       return;
     }
     QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText message==null  ");

@@ -1,46 +1,70 @@
-import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ajsk
-  implements ajtl
+public class ajsk
+  extends ajqv
 {
-  protected Activity a;
-  
-  public ajsk(Activity paramActivity)
+  ajsk(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.a = paramActivity;
+    super(paramNewPhotoListActivity);
   }
   
-  public Activity a()
+  private boolean a(LocalMediaInfo paramLocalMediaInfo)
   {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    if ((paramLocalMediaInfo.mediaWidth < 320) || (paramLocalMediaInfo.mediaHeight < 320))
     {
-      FrameHelperActivity.c(paramBoolean);
-      return;
+      paramLocalMediaInfo = bfur.a(this.mActivity, 230, null, amtj.a(2131707200), amtj.a(2131707184), null, null, new ajsl(this));
+      try
+      {
+        paramLocalMediaInfo.show();
+        return false;
+      }
+      catch (Exception paramLocalMediaInfo)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PhotoListLogicNearby", 2, "showLocationFailDialog fail!", paramLocalMediaInfo);
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  public Intent caseNoSingModeImage(View paramView, int paramInt)
+  {
+    LocalMediaInfo localLocalMediaInfo = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+    if ((((NewPhotoListActivity)this.mActivity).photoListAdapter.getItemViewType(paramInt) == 0) && (!a(localLocalMediaInfo))) {
+      return null;
+    }
+    return super.caseNoSingModeImage(paramView, paramInt);
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    return amtj.a(2131694029);
+  }
+  
+  public void onCheckBoxClick(View paramView, int paramInt, CheckBox paramCheckBox)
+  {
+    if (a(((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt))) {
+      super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
     }
   }
   
-  public void d() {}
-  
-  public void e() {}
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    if (paramIntent != null) {
+      super.startPhotoPreviewActivity(paramIntent);
+    }
+  }
 }
 
 

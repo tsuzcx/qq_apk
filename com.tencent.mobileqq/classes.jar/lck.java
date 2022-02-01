@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.1;
 
 public class lck
   implements DialogInterface.OnClickListener
 {
-  public lck(VideoController.1 param1) {}
+  public lck(VideoController paramVideoController) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.g(true);
+    bcef.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 

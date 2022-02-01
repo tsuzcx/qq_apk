@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bmji
-  implements DialogInterface.OnClickListener
+  implements bmqa
 {
-  public bmji(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public bmji(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    bmbx.b("AEEditorMultiCutEditFragment", "updateTimeBarCurrentTime >> curTime:" + paramLong);
+    AEEditorMultiCutEditFragment.a(this.a, true);
+  }
+  
+  public void b(long paramLong)
+  {
+    AEEditorMultiCutEditFragment.b(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmji
  * JD-Core Version:    0.7.0.1
  */

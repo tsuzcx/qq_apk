@@ -1,15 +1,10 @@
-class ahmv
-  extends agen
+public abstract interface ahmv
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  int d;
+  public abstract int a();
   
-  ahmv(ahmt paramahmt) {}
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 

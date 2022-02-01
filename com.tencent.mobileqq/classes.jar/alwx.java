@@ -1,6 +1,14 @@
-public class alwx
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+
+class alwx
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public static final String a = anzj.a(2131711256) + win.a + anzj.a(2131711257);
+  alwx(alwt paramalwt) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

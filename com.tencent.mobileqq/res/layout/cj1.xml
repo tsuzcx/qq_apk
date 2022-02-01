@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="32.0dip" android:layout_height="32.0dip"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView android:layout_gravity="center" android:id="@id/dcw" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerCrop" />
-</FrameLayout>
+    <solid android:color="#ffffffff" />
+    <corners android:radius="3.0dip" />
+</shape>

@@ -1,42 +1,42 @@
 package com.tencent.biz.richframework.part.extendsblock;
 
-import aace;
-import aacn;
-import aacp;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import java.util.ArrayList;
+import zae;
+import zag;
+import zai;
 
 public class HorizontalRvInnerView
   extends RecyclerViewCompat
 {
-  private aacn jdField_a_of_type_Aacn;
-  private aacp jdField_a_of_type_Aacp;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  
-  public HorizontalRvInnerView(Context paramContext, aacn paramaacn)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_Aacn = paramaacn;
-    setDescendantFocusability(393216);
-    this.jdField_a_of_type_Aacp = new aacp(this);
-    setAdapter(this.jdField_a_of_type_Aacp);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new aace(getContext(), 0, false);
-    setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    setOverScrollMode(2);
-  }
+  private zag jdField_a_of_type_Zag;
+  private zai jdField_a_of_type_Zai;
   
   public HorizontalRvInnerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
+  public HorizontalRvInnerView(Context paramContext, zag paramzag)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_Zag = paramzag;
+    setDescendantFocusability(393216);
+    this.jdField_a_of_type_Zai = new zai(this);
+    setAdapter(this.jdField_a_of_type_Zai);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new zae(getContext(), 0, false);
+    setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    setOverScrollMode(2);
+  }
+  
   public void setData(ArrayList paramArrayList)
   {
-    if (this.jdField_a_of_type_Aacp != null) {
-      this.jdField_a_of_type_Aacp.setDatas(paramArrayList);
+    if (this.jdField_a_of_type_Zai != null) {
+      this.jdField_a_of_type_Zai.a(paramArrayList);
     }
   }
   

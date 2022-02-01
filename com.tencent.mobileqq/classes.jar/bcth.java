@@ -1,50 +1,29 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x67.submsgtype0x67.MsgBody;
 
 public class bcth
-  implements bctr
+  implements AdapterView.OnItemLongClickListener
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  public bcth(TableQueryViewer paramTableQueryViewer, Context paramContext) {}
+  
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearbyTroopPush", 2, "receive offline msgtype0x210.submsgtype0x67 group recmd msg");
-    }
-    paramList = new submsgtype0x67.MsgBody();
-    try
+    paramAdapterView = ((bctb)TableQueryViewer.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer).get(paramInt)).b;
+    paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
+    if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
     {
-      paramList.mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
-      if (paramList.rpt_msg_grpinfo.has())
-      {
-        paramMsgType0x210 = paramList.rpt_msg_grpinfo.get();
-        paramList = (aoat)paramMessageHandler.app.a(3);
-        if (paramList != null) {
-          paramList.a(paramMsgType0x210);
-        }
-      }
-      bcrw.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-      return;
+      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690532), 0).a();
     }
-    catch (Exception paramMsgType0x210)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("nearbyTroopPush", 2, "receive offline msgtype0x210.submsgtype0x67 mergeFrom exception: " + paramMsgType0x210.toString());
-        }
-      }
-    }
+    return true;
   }
 }
 

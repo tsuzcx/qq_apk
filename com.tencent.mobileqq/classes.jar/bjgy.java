@@ -1,19 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 
-public class bjgy
-  implements DialogInterface.OnShowListener
+class bjgy
+  extends WebSocketListener
 {
-  public bjgy(ShareActionSheetV2 paramShareActionSheetV2) {}
+  bjgy(bjgx parambjgx, bjgw parambjgw) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    ShareActionSheetV2.a(this.a, false);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onShow(paramDialogInterface);
-    }
-    ShareActionSheetV2.c(this.a);
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int, paramInt, paramString);
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_Bjgw.a.remove(Integer.valueOf(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int));
+  }
+  
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
+  {
+    QLog.e("WebSocketProxyImpl", 1, "onFailure : ", paramThrowable);
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onError(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int, bjcz.a(paramThrowable, -1), paramThrowable.getMessage());
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_Bjgw.a.remove(Integer.valueOf(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int));
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, String paramString)
+  {
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int, paramByteString.toByteArray());
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_Okhttp3WebSocket = paramWebSocket;
+    this.jdField_a_of_type_Bjgx.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onOpen(this.jdField_a_of_type_Bjgx.jdField_a_of_type_Int, paramResponse.code(), paramResponse.headers().toMultimap());
   }
 }
 

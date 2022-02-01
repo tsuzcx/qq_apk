@@ -1,20 +1,52 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class wot
+class wot
+  extends SimpleObserver<List<wkm>>
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
+  wot(wos paramwos, wol paramwol) {}
+  
+  public void a(List<wkm> paramList)
   {
-    return false;
+    ArrayList localArrayList = new ArrayList();
+    woe localwoe = new woe(wos.a(this.jdField_a_of_type_Wos));
+    localwoe.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      wkm localwkm = (wkm)localIterator.next();
+      String str = localwkm.jdField_a_of_type_JavaLangString;
+      localwoe.jdField_a_of_type_JavaUtilMap.put(localwkm.b, str);
+      localwoe.jdField_a_of_type_JavaUtilList.add(localwkm.b);
+    }
+    paramList = woq.a(paramList);
+    if ((paramList != null) && (!wos.a(this.jdField_a_of_type_Wos).a())) {
+      localwoe.jdField_a_of_type_JavaLangString = paramList.b;
+    }
+    localArrayList.add(localwoe);
+    paramList = this.jdField_a_of_type_Wol;
+    if (!wos.a(this.jdField_a_of_type_Wos).a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramList.a(localArrayList, bool);
+      return;
+    }
   }
   
-  public static boolean a(String paramString)
+  public void onError(@NonNull Error paramError)
   {
-    return false;
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    return false;
+    int i = 0;
+    if ((paramError instanceof ErrorMessage)) {
+      i = ((ErrorMessage)paramError).errorCode;
+    }
+    paramError = new ArrayList();
+    paramError.add(wos.a(this.jdField_a_of_type_Wos));
+    this.jdField_a_of_type_Wol.a(new ErrorMessage(i, "fail"), paramError);
   }
 }
 

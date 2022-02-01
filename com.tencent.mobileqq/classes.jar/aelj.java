@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aelj
-  extends anyu
+  implements DialogInterface.OnClickListener
 {
-  public aelj(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aelj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    QQAppInterface localQQAppInterface = this.a.app;
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.bOwner) {}
+    for (String str1 = "0";; str1 = "1")
+    {
+      bcef.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
+      paramDialogInterface.dismiss();
+      return;
     }
   }
 }

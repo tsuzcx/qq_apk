@@ -1,34 +1,55 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mbs
-  implements URLDrawable.URLDrawableListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mbs(AVActivity paramAVActivity) {}
+  public mbs(BeautyToolbar paramBeautyToolbar) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+    if (this.a.mBeautyValue != paramInt)
+    {
+      this.a.updateTip(paramInt);
+      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
+        break label125;
+      }
+      this.a.mSeek.setThumb(this.a.mThumb_0);
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        this.a.mSeek.setContentDescription(paramInt + "%");
+      }
+      this.a.mBeautyValue = paramInt;
+      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
+      EffectSettingUi.a(this.a.mApp, -1003L);
+      return;
+      label125:
+      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+        this.a.mSeek.setThumb(this.a.mThumb_30);
+      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
+        this.a.mSeek.setThumb(this.a.mThumb_60);
+      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
+        this.a.mSeek.setThumb(this.a.mThumb_100);
+      }
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+    EffectSettingUi.a(this.a.mApp, -1004L);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    AVActivity.a(this.a, true);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
+    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
+    EffectSettingUi.a(this.a.mApp, -1005L);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

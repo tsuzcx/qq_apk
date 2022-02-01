@@ -1,38 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Map;
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public final class yhn
-  extends QQUIEventReceiver<yhc, wtm>
+class yhn
+  implements TextView.OnEditorActionListener
 {
-  public yhn(@NonNull yhc paramyhc)
-  {
-    super(paramyhc);
-  }
+  yhn(yhm paramyhm) {}
   
-  public void a(@NonNull yhc paramyhc, @NonNull wtm paramwtm)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (yhc.a(paramyhc) == null) {
-      yuk.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramwtm.toString());
-    }
-    do
+    if (paramInt == 6)
     {
-      do
-      {
-        return;
-      } while (!paramwtm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      yuk.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramwtm.toString());
-      paramwtm = (xcs)paramwtm.jdField_a_of_type_JavaUtilMap.get(yhc.a(paramyhc));
-    } while (paramwtm == null);
-    paramwtm = ((wtk)wth.a(27)).a(yhc.a(paramyhc).a(), paramwtm.a);
-    yhc.a(paramyhc).b(paramwtm, true);
-    paramyhc.a();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wtm.class;
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return false;
   }
 }
 

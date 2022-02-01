@@ -1,25 +1,9 @@
-import mqq.manager.Manager;
-
-public abstract interface axft
-  extends Manager
+public class axft
+  extends axfu
 {
-  public abstract int a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
+  public int a;
+  public String a;
+  public int b;
 }
 
 

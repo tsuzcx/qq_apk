@@ -1,18 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
 
 public class vrm
-  implements View.OnClickListener
+  extends vko
 {
-  public vrm(QCirclePolyBaseLikeView paramQCirclePolyBaseLikeView) {}
+  public int a;
+  public View a;
+  public ViewGroup a;
   
-  public void onClick(View paramView)
-  {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public vrm(vrl paramvrl) {}
 }
 
 

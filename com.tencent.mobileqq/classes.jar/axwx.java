@@ -1,37 +1,38 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import androidx.annotation.NonNull;
 
 public class axwx
-  implements auuj
 {
-  axwx(axww paramaxww) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(String paramString, long paramLong)
+  public axwx(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
-    do
-    {
-      return;
-      localObject = aumo.a().b() + paramString;
-      if (!new File((String)localObject).exists()) {
-        break;
-      }
-      auuf.a((String)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d(axww.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
-    return;
-    axww.a(this.a).post(new NearbyTribeAppController.2.1(this));
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
-    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
-    ((Bundle)localObject).putString("_notify_name_dialog", anzj.a(2131706270));
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
-    QLog.e(axww.a(this.a), 1, "这里已经下架，如果依然发现该log，异常case");
-    aure.a().a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  private boolean a(String[] paramArrayOfString)
+  {
+    String str = null;
+    if (paramArrayOfString.length >= this.jdField_b_of_type_Int) {
+      str = paramArrayOfString[(this.jdField_b_of_type_Int - 1)];
+    }
+    return (str != null) && (str.equals(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Category [statusId=" + this.jdField_a_of_type_Int + ", displayName=" + this.jdField_b_of_type_JavaLangString + ", detectName=" + this.jdField_a_of_type_JavaLangString + ", level=" + this.jdField_b_of_type_Int + "]";
   }
 }
 

@@ -1,58 +1,22 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class awai
+  extends AnimatorListenerAdapter
 {
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  String b = "";
-  String c = "";
-  String d = "";
-  String e;
-  String f;
-  String g;
-  String h;
+  public awai(MultiCardFragment paramMultiCardFragment) {}
   
-  public awai(Context paramContext, String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.b = paramString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  public void e(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void f(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "uin: " + this.jdField_a_of_type_JavaLangString + " roomId: " + this.b + " roomGroupCode: " + this.c + " roomShowNumber: " + this.d + " fromId: " + this.e + " openType: " + this.f + " fromGroupId: " + this.g + " fromGroupOwnerUin: " + this.h;
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
 }
 

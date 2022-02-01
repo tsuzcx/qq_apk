@@ -1,32 +1,21 @@
-import android.view.View;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.avgame.ipc.MapParcelable;
+import java.util.HashMap;
 
-class ngo
-  implements bliz
+public final class ngo
+  implements Parcelable.Creator<MapParcelable>
 {
-  ngo(ngn paramngn) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public MapParcelable a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size()) {
-      switch (((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue())
-      {
-      }
-    }
-    for (;;)
-    {
-      ngn.a(this.a).dismiss();
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      this.a.d();
-    }
+    MapParcelable localMapParcelable = new MapParcelable();
+    localMapParcelable.a = paramParcel.readHashMap(HashMap.class.getClassLoader());
+    return localMapParcelable;
+  }
+  
+  public MapParcelable[] a(int paramInt)
+  {
+    return new MapParcelable[paramInt];
   }
 }
 

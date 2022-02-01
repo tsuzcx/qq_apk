@@ -1,20 +1,17 @@
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class vbd
+class vbd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public ExtraTypeInfo a;
-  public FeedCloudMeta.StFeed a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
+  vbd(vbc paramvbc) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    uya.b("GdtAdWSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    vbc.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

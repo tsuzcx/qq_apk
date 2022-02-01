@@ -5,7 +5,7 @@ class NewFlowCameraActivity$47
 {
   public void run()
   {
-    this.this$0.C();
+    this.this$0.s();
   }
 }
 

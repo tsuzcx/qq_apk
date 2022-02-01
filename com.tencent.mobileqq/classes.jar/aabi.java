@@ -1,39 +1,23 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.biz.richframework.part.block.BlockContainer;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
 
 public class aabi
-  extends RecyclerView.ItemDecoration
+  implements apri
 {
-  public aabi(BlockContainer paramBlockContainer, aabj paramaabj) {}
+  public aabi(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public int a()
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildLayoutPosition(paramView);
-    if ((this.a.a != null) && (this.a.a.a(i) != null)) {
-      this.a.a.a(i).getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    }
+    return 1;
   }
   
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public int a(int paramInt)
   {
-    super.onDraw(paramCanvas, paramRecyclerView, paramState);
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((this.a.a != null) && (this.a.a.a(i) != null))
-      {
-        View localView = paramRecyclerView.getChildAt(i);
-        this.a.a.a(i).onDrawItemDecoration(paramCanvas, paramRecyclerView, localView, paramState);
-      }
-      i += 1;
-    }
+    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
   }
 }
 

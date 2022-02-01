@@ -1,9 +1,18 @@
 public class amas
+  extends amam
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  private int b;
+  
+  public amas(int paramInt1, int paramInt2, amau paramamau)
+  {
+    super(paramInt1, paramamau);
+    this.b = paramInt2;
+  }
+  
+  public alrq a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
+  }
 }
 
 

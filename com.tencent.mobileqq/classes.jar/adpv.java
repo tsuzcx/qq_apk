@@ -1,30 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class adpv
-  implements DialogInterface.OnClickListener
+class adpv
 {
-  public adpv(TestAppFragment paramTestAppFragment, EditText paramEditText1, EditText paramEditText2) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str = this.b.getText().toString();
-    if ((TextUtils.isEmpty(paramDialogInterface)) || (TextUtils.isEmpty(str)))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), anzj.a(2131713652), 1).a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.c = paramDialogInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int = Integer.parseInt(str);
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Adnb = adng.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int, paramDialogInterface);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), "appid切换为:" + paramDialogInterface, 1).a();
-  }
+  adpv(adpt paramadpt) {}
 }
 
 

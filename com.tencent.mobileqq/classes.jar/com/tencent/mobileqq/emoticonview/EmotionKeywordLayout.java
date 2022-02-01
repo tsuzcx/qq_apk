@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import agej;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -9,26 +8,26 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aspi;
-import aspj;
-import aspk;
-import aspl;
-import bhsr;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmotionKeywordLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new aspk(this);
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aspl jdField_a_of_type_Aspl;
-  private EmotionKeywordHorizonListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView;
-  private boolean jdField_a_of_type_Boolean;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private static final int Height_Normal = 81;
+  private static final int Height_WidthTitle = 100;
+  private static final String TAG = "EmotionKeywordLayout";
+  private LinearLayout mAnimationContainer;
+  private Animator.AnimatorListener mAnimatorListener = new EmotionKeywordLayout.3(this);
+  private EmotionKeywordHorizonListView mEmotionView;
+  private boolean mEnableAnim;
+  private int mHeight;
+  private ValueAnimator mHideAnim;
+  private EmotionKeywordLayout.OnVisibilityListener mOnVisibilityListener;
+  private ValueAnimator mShowAnim;
+  private LinearLayout mTitleContainer;
+  private TextView mTitleView;
   
   public EmotionKeywordLayout(Context paramContext)
   {
@@ -38,100 +37,62 @@ public class EmotionKeywordLayout
   public EmotionKeywordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = agej.a(81.0F, paramContext.getResources());
+    this.mHeight = AIOUtils.dp2px(81.0F, paramContext.getResources());
   }
   
-  private void b()
+  private void initUIView()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365958));
+    if (this.mTitleContainer == null) {
+      this.mTitleContainer = ((LinearLayout)findViewById(2131365988));
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365957));
+    if (this.mTitleView == null) {
+      this.mTitleView = ((TextView)findViewById(2131365987));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = ((EmotionKeywordHorizonListView)findViewById(2131365987));
+    if (this.mEmotionView == null) {
+      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366017));
     }
-    if (this.jdField_b_of_type_AndroidWidgetLinearLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362689));
+    if (this.mAnimationContainer == null) {
+      this.mAnimationContainer = ((LinearLayout)findViewById(2131362694));
     }
   }
   
-  private void c()
+  private void updateHeight()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) {}
+    if (this.mTitleContainer.getVisibility() == 0) {}
     for (int i = 100;; i = 81)
     {
-      this.jdField_a_of_type_Int = agej.a(i, getResources());
+      this.mHeight = AIOUtils.dp2px(i, getResources());
       return;
     }
   }
   
-  public void a()
+  public void hide()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmotionKeywordLayout", 2, "hide");
     }
-    b();
+    initUIView();
     if (getVisibility() == 8) {}
     do
     {
       return;
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.mEnableAnim)
       {
         setVisibility(8);
         return;
       }
-    } while ((this.jdField_b_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning()));
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    } while ((this.mHideAnim != null) && (this.mHideAnim.isRunning()));
+    if ((this.mShowAnim != null) && (this.mShowAnim.isRunning())) {
+      this.mShowAnim.cancel();
     }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
+    if (this.mHideAnim == null)
     {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, this.jdField_a_of_type_Int });
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aspj(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
+      this.mHideAnim = ValueAnimator.ofFloat(new float[] { 0.0F, this.mHeight });
+      this.mHideAnim.addUpdateListener(new EmotionKeywordLayout.2(this));
+      this.mHideAnim.setDuration(200L);
+      this.mHideAnim.addListener(this.mAnimatorListener);
     }
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "show");
-    }
-    b();
-    if (bhsr.a(paramString))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      c();
-      if (getVisibility() != 0) {
-        break label74;
-      }
-    }
-    label74:
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      break;
-      setVisibility(0);
-    } while ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()));
-    if ((this.jdField_b_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning())) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Int, 0.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aspi(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    invalidate();
+    this.mHideAnim.start();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -151,25 +112,63 @@ public class EmotionKeywordLayout
   
   public void setEnableAnim(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mEnableAnim = paramBoolean;
   }
   
-  public void setOnVisibilityListener(aspl paramaspl)
+  public void setOnVisibilityListener(EmotionKeywordLayout.OnVisibilityListener paramOnVisibilityListener)
   {
-    this.jdField_a_of_type_Aspl = paramaspl;
+    this.mOnVisibilityListener = paramOnVisibilityListener;
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (this.jdField_a_of_type_Aspl != null) {
-      this.jdField_a_of_type_Aspl.a(paramInt);
+    if (this.mOnVisibilityListener != null) {
+      this.mOnVisibilityListener.onVisibilityChanged(paramInt);
     }
+  }
+  
+  public void show(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionKeywordLayout", 2, "show");
+    }
+    initUIView();
+    if (StringUtil.isEmpty(paramString))
+    {
+      this.mTitleView.setText("");
+      this.mTitleContainer.setVisibility(8);
+      updateHeight();
+      if (getVisibility() != 0) {
+        break label74;
+      }
+    }
+    label74:
+    do
+    {
+      return;
+      this.mTitleView.setText(paramString);
+      this.mTitleContainer.setVisibility(0);
+      break;
+      setVisibility(0);
+    } while ((this.mShowAnim != null) && (this.mShowAnim.isRunning()));
+    if ((this.mHideAnim != null) && (this.mHideAnim.isRunning())) {
+      this.mHideAnim.cancel();
+    }
+    if (this.mShowAnim == null)
+    {
+      this.mShowAnim = ValueAnimator.ofFloat(new float[] { this.mHeight, 0.0F });
+      this.mShowAnim.addUpdateListener(new EmotionKeywordLayout.1(this));
+      this.mShowAnim.setDuration(200L);
+      this.mShowAnim.addListener(this.mAnimatorListener);
+    }
+    this.mShowAnim.start();
+    invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

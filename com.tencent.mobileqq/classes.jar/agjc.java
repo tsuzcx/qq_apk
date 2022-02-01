@@ -1,72 +1,32 @@
-import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
 class agjc
-  extends BaseAdapter
+  implements bjoe
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
+  agjc(agiy paramagiy, MessageForMixedMsg paramMessageForMixedMsg, bjnw parambjnw) {}
   
-  private agjc(agiq paramagiq) {}
-  
-  public void a(List<String> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  @RequiresApi(api=16)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_Agiq.a).inflate(2131559272, null);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      ImageView localImageView = (ImageView)paramView.findViewById(2131367246);
-      String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!TextUtils.isEmpty(str)) {}
-      try
+      this.jdField_a_of_type_Bjnw.dismiss();
+      long l;
+      do
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(str, null);
-        localURLDrawable.setDecodeHandler(bhez.z);
-        localImageView.setImageDrawable(localURLDrawable);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 1, String.format("Url for friend gift:" + str, new Object[] { localException }));
-        }
-      }
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Agiy.c < 500L);
+      this.jdField_a_of_type_Agiy.c = l;
+      paramView = (avsf)this.jdField_a_of_type_Agiy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174);
+      this.jdField_a_of_type_Agiy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      paramView.a(this.jdField_a_of_type_Agiy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
     }
   }
 }

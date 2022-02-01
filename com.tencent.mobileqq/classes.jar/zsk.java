@@ -1,86 +1,61 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class zsk
+public class zsk
+  extends bfch
 {
-  public int a;
-  public Drawable a;
-  public Object a;
-  protected WeakReference<ImageView> a;
-  public zsj a;
-  protected zsl a;
-  protected volatile boolean a;
-  public Drawable b;
+  public zsk(AIOGiftPanelContainer.2 param2, bfci parambfci, long paramLong, beyh parambeyh) {}
   
-  public zsk(ImageView paramImageView)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-  }
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Zsl != null) {
-      this.jdField_a_of_type_Zsl.a(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
   }
   
-  public void a(Drawable paramDrawable, String paramString)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Zsl != null) {
-      this.jdField_a_of_type_Zsl.a(this, paramString);
+    long l = System.currentTimeMillis();
+    int i = this.jdField_a_of_type_Bfci.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 5) {
+      zsz.a(paramString2);
     }
-  }
-  
-  public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    ImageView localImageView;
     do
     {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localImageView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null));
-    if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
-    {
-      yuk.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
-      paramWeakHashMap.put(localImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGiftPanelContainer", 2, "onGetExtraData() , configURL = " + paramString1 + ", serverVer=" + paramInt + ", localVer=" + i + ", exIds=" + paramString2);
+        }
+        QLog.d("TroopGiftPanel.time", 1, "onGetExtraData, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
+        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Zsz = zsz.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin);
+        if ((paramInt > i) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Zsz == null)) {
+          break;
+        }
+        zsj.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
+        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
+        return;
+        if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 4)) {
+          zsz.a(paramString2, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin);
+        }
+      }
+    } while (TextUtils.isEmpty(paramString1));
+    Object localObject = new File(AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    yoq.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131369567), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
-    localImageView.setTag(2131369567, this.jdField_a_of_type_JavaLangObject.toString());
-  }
-  
-  public void a(zsl paramzsl)
-  {
-    this.jdField_a_of_type_Zsl = paramzsl;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    yoq.b("Q.qqstory.newImageLoader", new Object[] { anzj.a(2131713530), this.jdField_a_of_type_JavaLangObject });
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Zsl = null;
-    this.jdField_a_of_type_Zsj = null;
-    yoq.b("Q.qqstory.newImageLoader", new Object[] { anzj.a(2131713531), this.jdField_a_of_type_JavaLangObject });
+    localObject = AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH + "troopGiftConfig.tmp";
+    paramString1 = new bgoe(paramString1, new File((String)localObject));
+    paramString1.b = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("filePath", (String)localObject);
+    this.jdField_a_of_type_Beyh.a().a(paramString1, new zsl(this, l, paramString2, paramInt), localBundle);
   }
 }
 

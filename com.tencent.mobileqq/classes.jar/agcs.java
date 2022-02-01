@@ -1,24 +1,23 @@
-import android.os.Bundle;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage;
-import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.BusinessObserver;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class agcs
-  implements BusinessObserver
+class agcs
+  implements aufd
 {
-  public agcs(ReminderCardItemPage paramReminderCardItemPage) {}
+  agcs(agcr paramagcr) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(View paramView)
   {
-    paramBundle = new ReminderCardItemPage.2.1(this, paramInt, paramBoolean, paramBundle);
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      paramBundle.run();
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
+    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {
       return;
     }
-    ReminderCardItemPage.a(this.a).runOnUiThread(paramBundle);
+    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
   }
 }
 

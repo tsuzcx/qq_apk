@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.canvas;
 
-import acvc;
-import acwn;
+import abrl;
+import absw;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,10 +37,10 @@ public abstract class GdtCanvasBaseFragment
   {
     if ((paramActivity == null) || (paramAdCanvasData == null) || (!paramAdCanvasData.isValid()))
     {
-      acvc.b("GdtCanvasBaseFragment", "start error");
+      abrl.b("GdtCanvasBaseFragment", "start error");
       return;
     }
-    acvc.b("GdtCanvasBaseFragment", "start");
+    abrl.b("GdtCanvasBaseFragment", "start");
     Object localObject = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       ((Bundle)localObject).putAll(paramBundle);
@@ -52,7 +52,7 @@ public abstract class GdtCanvasBaseFragment
     paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
     paramBundle.putExtras((Bundle)localObject);
     if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      acvc.d("GdtCanvasBaseFragment", "start gdt empty refId");
+      abrl.d("GdtCanvasBaseFragment", "start gdt empty refId");
     }
     localObject = AdProcessManager.INSTANCE.getCurrentProcessName(paramActivity);
     String str = AdProcessManager.INSTANCE.getMainProcessName();
@@ -124,7 +124,7 @@ public abstract class GdtCanvasBaseFragment
           paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
         }
         this.contentView = new AdCanvasView(getActivity());
-        acwn.a(this.contentView);
+        absw.a(this.contentView);
         this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         this.contentView.setData(paramLayoutInflater);
         if ((getActivity() != null) && (getActivity().getWindow() != null)) {

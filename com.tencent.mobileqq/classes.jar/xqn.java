@@ -1,43 +1,97 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import java.util.ArrayList;
 
-public abstract class xqn
+public class xqn
+  implements xrq
 {
-  public abstract Activity a();
+  protected waz a;
+  private xpu jdField_a_of_type_Xpu;
+  private xqp jdField_a_of_type_Xqp;
+  protected xqt a;
+  protected xrr a;
+  protected xrs a;
   
-  public abstract OpenPlayerBuilder.Data a();
+  public xqn(xqp paramxqp)
+  {
+    this.jdField_a_of_type_Xqp = paramxqp;
+    this.jdField_a_of_type_Xpu = new xpu();
+  }
   
-  public abstract XViewPager a();
+  public Object a()
+  {
+    return null;
+  }
   
-  public abstract String a(String paramString);
+  public String a()
+  {
+    return getClass().getSimpleName();
+  }
   
-  public abstract xms a();
+  public void a()
+  {
+    xvv.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
+    if (this.jdField_a_of_type_Xqt == null)
+    {
+      if (this.jdField_a_of_type_Xrs != null)
+      {
+        this.jdField_a_of_type_Xrs.a(a());
+        return;
+      }
+      xvv.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Xqt.a);
+    this.jdField_a_of_type_Waz = waz.a(localArrayList);
+    this.jdField_a_of_type_Waz.a("GetMyStoryDesFromVidListStep");
+    this.jdField_a_of_type_Waz.a(new xqo(this, localArrayList));
+    this.jdField_a_of_type_Waz.b();
+  }
   
-  public abstract xmv a();
+  public void a(Object paramObject)
+  {
+    boolean bool2 = true;
+    if ((paramObject instanceof xqt))
+    {
+      this.jdField_a_of_type_Xqt = ((xqt)paramObject);
+      return;
+    }
+    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+    if (this.jdField_a_of_type_Xqt == null)
+    {
+      bool1 = true;
+      xvv.e("GetMyStoryDesFromVidListStep", bool1);
+      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+      if (this.jdField_a_of_type_Xqt != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      yos.a(bool1, new Object[0]);
+      return;
+      bool1 = false;
+      break;
+    }
+  }
   
-  public abstract xqf a();
+  public void a(xrr paramxrr)
+  {
+    this.jdField_a_of_type_Xrr = paramxrr;
+  }
   
-  public abstract xqy a();
+  public void a(xrs paramxrs)
+  {
+    this.jdField_a_of_type_Xrs = paramxrs;
+  }
   
-  public abstract void a();
+  public boolean a()
+  {
+    return false;
+  }
   
-  public abstract void a(Intent paramIntent);
+  public void b() {}
   
-  public abstract void a(wjd paramwjd);
-  
-  public abstract void a(xpd paramxpd);
-  
-  public abstract void a(xrg paramxrg);
-  
-  public abstract boolean a();
-  
-  public abstract void b(wjd paramwjd);
-  
-  public abstract void b(xpd paramxpd);
-  
-  public abstract boolean b();
+  public void c() {}
 }
 
 

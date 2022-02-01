@@ -1,43 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class ayep
-  implements View.OnClickListener
+public class ayep
 {
-  ayep(ayeo paramayeo, long paramLong1, long paramLong2, long paramLong3) {}
+  public int a;
+  public long a;
+  public Object a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    Object localObject = paramView.getContext();
-    if ((localObject instanceof BaseActivity))
-    {
-      localObject = (BaseActivity)localObject;
-      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
-    }
-    for (int i = 2;; i = 3)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("&from=3");
-      ((StringBuilder)localObject).append("&mode=" + i);
-      ((StringBuilder)localObject).append("&now_id=" + this.b);
-      ((StringBuilder)localObject).append("&now_user_type=" + this.c);
-      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
-      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    return "SendResult{result=" + this.jdField_a_of_type_Int + ", errCode=" + this.jdField_b_of_type_Int + ", errStr='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", size=" + this.jdField_a_of_type_Long + ", uuid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", md5='" + this.jdField_d_of_type_JavaLangString + '\'' + ", groupFileID=" + this.jdField_b_of_type_Long + ", thumbFileSize=" + this.jdField_c_of_type_Long + ", videoAttr=" + this.jdField_c_of_type_Int + ", videoKandianType=" + this.jdField_d_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayep
  * JD-Core Version:    0.7.0.1
  */

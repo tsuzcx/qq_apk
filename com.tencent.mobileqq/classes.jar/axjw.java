@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class axjw
-  implements DialogInterface.OnClickListener
+  implements axjt
 {
-  axjw(axjo paramaxjo) {}
+  axjw(axju paramaxju) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(byte[] paramArrayOfByte) {}
 }
 
 

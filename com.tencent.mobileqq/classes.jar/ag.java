@@ -9,15 +9,17 @@ import java.util.Iterator;
 import java.util.List;
 
 class ag
-  implements aumz
+  implements aszj
 {
-  ag(af paramaf, DataLineMsgRecord paramDataLineMsgRecord, anvu paramanvu) {}
+  ag(af paramaf, DataLineMsgRecord paramDataLineMsgRecord, amqd paramamqd) {}
   
-  public void a()
+  public void onNo() {}
+  
+  public void onYes()
   {
     Object localObject1 = null;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.isSendFromLocal()) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
-      this.jdField_a_of_type_Anvu.b(112);
+      this.jdField_a_of_type_Amqd.b(112);
     }
     DLFilesViewerActivity.a(this.jdField_a_of_type_Af.a).setPaused(false);
     Iterator localIterator = DLFilesViewerActivity.a(this.jdField_a_of_type_Af.a).values().iterator();
@@ -56,21 +58,19 @@ class ag
           ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
           localDataLineMsgRecord.fileMsgStatus = 0L;
           int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-          this.jdField_a_of_type_Af.a.app.a().a(i).c(localDataLineMsgRecord.msgId);
+          this.jdField_a_of_type_Af.a.app.getMessageFacade().getDatalineMessageManager(i).c(localDataLineMsgRecord.msgId);
         }
         localObject1 = localObject3;
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Anvu.a(localObject2, true);
+      this.jdField_a_of_type_Amqd.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Anvu.a(localObject1);
+      this.jdField_a_of_type_Amqd.a(localObject1);
     }
     DLFilesViewerActivity.a(this.jdField_a_of_type_Af.a).notifyDataSetChanged();
   }
-  
-  public void b() {}
 }
 
 

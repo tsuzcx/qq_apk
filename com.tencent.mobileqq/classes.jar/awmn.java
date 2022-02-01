@@ -1,8 +1,17 @@
-public abstract interface awmn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+class awmn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  awmn(awml paramawml) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a.dismiss();
+  }
 }
 
 

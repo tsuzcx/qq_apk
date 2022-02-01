@@ -216,9 +216,11 @@ public class AppLoaderFactory
       localMiniAppDexLoader.init(paramContext, bool, paramConfiguration.dexConfig);
       MiniAppDexLoader.g().loadDex();
       bindFields();
+      QMLog.d("minisdk-start", "packageName = " + this.mContext.getPackageName() + ", currentProcessName = " + getCurrentProcessName());
       if (!isMainProcess()) {
-        break label86;
+        break label138;
       }
+      QMLog.i("minisdk-start", "main process. init MiniServer");
       this.miniServer.init(paramContext, paramConfiguration);
     }
     for (;;)
@@ -227,7 +229,8 @@ public class AppLoaderFactory
       return;
       bool = true;
       break;
-      label86:
+      label138:
+      QMLog.i("minisdk-start", "sub process, init MiniAppEnv");
       this.miniAppEnv.init(paramContext, paramConfiguration);
     }
   }
@@ -246,7 +249,7 @@ public class AppLoaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppLoaderFactory
  * JD-Core Version:    0.7.0.1
  */

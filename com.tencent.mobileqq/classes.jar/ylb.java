@@ -1,70 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.1;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
 public class ylb
-  extends nko
+  extends RecyclerView.ViewHolder
 {
-  public ylb(StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RoundCornerImageView a;
+  public boolean a;
+  public RelativeLayout b;
+  public TextView b;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ylb(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgList", 2, "fetch message list result, code=" + paramInt);
-    }
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_message.RspStoryMessageList localRspStoryMessageList;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
-        localRspStoryMessageList.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_710_message.ErrorInfo)localRspStoryMessageList.errinfo.get();
-        paramBundle.error_code.set(paramArrayOfByte.error_code.get());
-        paramBundle.error_desc.set(paramArrayOfByte.error_desc.get());
-        if ((localRspStoryMessageList.errinfo.error_code.has()) && (localRspStoryMessageList.errinfo.error_code.get() == 0))
-        {
-          paramArrayOfByte = new ArrayList(localRspStoryMessageList.message_num.get());
-          Iterator localIterator = localRspStoryMessageList.message_list.get().iterator();
-          while (localIterator.hasNext())
-          {
-            yky localyky = new yky((qqstory_710_message.StoryMessage)localIterator.next());
-            if (localyky.d) {
-              paramArrayOfByte.add(localyky);
-            }
-          }
-        }
-        ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.2(this));
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgList", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-        }
-      }
-    } else {
-      return paramBundle;
-    }
-    ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.1(this, paramArrayOfByte, localRspStoryMessageList));
-    return paramBundle;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377568));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131377564));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363360));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377565));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377567));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377566));
   }
 }
 

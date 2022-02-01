@@ -1,141 +1,104 @@
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowEntry.2;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowEntry.3;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.multimsg.save.FileSaveProgressView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class awcz
+  extends ReportDialog
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
-  public awbt a;
-  private awcx jdField_a_of_type_Awcx;
-  ActionCallback jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceActionCallback = new awdb(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private DialogInterface.OnKeyListener jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener = new awda(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public awdb a;
+  private FileSaveProgressView jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView;
   
-  public awcz(QQAppInterface paramQQAppInterface)
+  public awcz(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_Awbt = awde.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramContext, 2131755187);
+    a(paramContext);
   }
   
-  private boolean a(String paramString)
+  private void a()
   {
-    return (TextUtils.isEmpty(paramString)) || (paramString.startsWith("//"));
+    setCanceledOnTouchOutside(false);
+    setOnKeyListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener);
   }
   
-  private void c(Bundle paramBundle)
+  private void a(@NonNull Context paramContext)
   {
-    String str2 = paramBundle.getString("coverurl");
-    String str1 = "";
-    Object localObject2 = str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      localObject2 = beqz.a(str2);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = beqz.a(str2 + "?busiType=3");
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559179, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView = ((FileSaveProgressView)paramContext.findViewById(2131376764));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364175));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    a();
+  }
+  
+  private void b()
+  {
+    if (isShowing()) {
+      if (this.jdField_a_of_type_Awdb != null) {
+        this.jdField_a_of_type_Awdb.a();
       }
-      localObject2 = str1;
-      if (localObject1 != null) {
-        localObject2 = ((File)localObject1).getAbsolutePath();
-      }
     }
-    paramBundle.putString("cover_file", (String)localObject2);
-    paramBundle.putString("appid", "2");
-    paramBundle.putString("uid", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    paramBundle.putString("hostVersion", String.valueOf(arta.a(BaseApplicationImpl.getContext())));
-    Object localObject1 = Uri.parse(paramBundle.getString("mqqScheme", "")).getQuery();
-    NowLive.doActionWithExtra((String)localObject1 + "&action=openroom", paramBundle, this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceActionCallback);
-  }
-  
-  public void a()
-  {
-    if (Build.VERSION.SDK_INT < 16)
+    try
     {
-      QLog.i("DynamicNow | NowEntry", 2, "API 16以下的系统，不支持预加载");
+      super.cancel();
       return;
     }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 60000L)
+    catch (Throwable localThrowable)
     {
-      QLog.i("DynamicNow | NowEntry", 2, " 进房操作后一分钟之内不需要做预加载");
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FileSaveDialog", 2, "cancel dialog exception: " + localThrowable.getMessage());
     }
-    QLog.i("DynamicNow | NowEntry", 2, "开始预加载Now插件 time = " + System.currentTimeMillis());
-    QLog.d("DynamicNow | NowEntry", 1, "preload Now");
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("is_cpu_64bit", false);
-    NowLive.preload(localBundle);
   }
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt)
   {
-    a(paramBundle, null);
+    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView.setProgress(paramInt);
+    }
   }
   
-  public void a(Bundle paramBundle, awcx paramawcx)
+  public void a(awdb paramawdb)
   {
-    this.jdField_a_of_type_Awcx = paramawcx;
-    paramawcx = paramBundle.getString("mqqUrl", "");
-    long l = System.currentTimeMillis();
-    if ((l - this.jdField_a_of_type_Long < 1000L) && (!awbw.c(paramBundle).equals("1")))
-    {
-      QLog.i("DynamicNow | NowEntry", 1, "开始处理mqq　scheme,time = " + System.currentTimeMillis() + " 点太快了");
-      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131706543), 0).a();
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    QLog.i("DynamicNow | NowEntry", 1, "开始进入now结合版,time = " + System.currentTimeMillis() + " mqqScheme = " + paramawcx);
-    paramBundle.putInt("action", 1);
-    b(paramBundle);
+    this.jdField_a_of_type_Awdb = paramawdb;
   }
   
-  public void b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      b();
+    }
   }
   
-  public void b(Bundle paramBundle)
+  public void show()
   {
-    Object localObject1 = awbw.a(paramBundle);
-    Object localObject2 = awbw.b(paramBundle);
-    long l = awbw.a(paramBundle);
-    this.jdField_a_of_type_Awbt.a(false, (String)localObject2, String.valueOf(l), (String)localObject1, false, false, true);
-    paramBundle.putLong("entryTime", System.currentTimeMillis());
-    localObject1 = paramBundle.getString("coverurl");
-    localObject2 = (String)localObject1 + "?busiType=3";
-    if ((a((String)localObject1)) || (beqz.a((String)localObject1) != null) || (beqz.a((String)localObject2) != null))
+    if (!isShowing()) {}
+    try
     {
-      c(paramBundle);
+      super.show();
       return;
     }
-    localObject2 = new AtomicBoolean(false);
-    l = System.currentTimeMillis();
-    QLog.i("DynamicNow | NowEntry", 1, "start to download cover pic  url = " + (String)localObject1);
-    localObject1 = URLDrawable.getDrawable((String)localObject1, URLDrawable.URLDrawableOptions.obtain());
-    ((URLDrawable)localObject1).setURLDrawableListener(new awda(this, l, (AtomicBoolean)localObject2, paramBundle));
-    if (((URLDrawable)localObject1).getStatus() != 1)
+    catch (Throwable localThrowable)
     {
-      ((AtomicBoolean)localObject2).set(false);
-      ThreadManagerV2.excute(new NowEntry.2(this, (URLDrawable)localObject1), 128, null, false);
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new NowEntry.3(this, (AtomicBoolean)localObject2, paramBundle), 500L);
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FileSaveDialog", 2, "show dialog exception: " + localThrowable.getMessage());
     }
-    QLog.i("DynamicNow | NowEntry", 1, "exception case!");
-    ((AtomicBoolean)localObject2).set(true);
-    c(paramBundle);
   }
 }
 

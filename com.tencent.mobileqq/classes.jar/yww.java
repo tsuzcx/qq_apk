@@ -1,13 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-public abstract interface yww
+public class yww
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public yww(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
-  
-  public abstract void onClick(View paramView);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    QRLoginMgrActivity.a(this.a, true, 0L);
+    bcef.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
+  }
 }
 
 

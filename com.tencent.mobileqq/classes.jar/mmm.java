@@ -1,20 +1,14 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.SeekBar;
-import com.tencent.av.ui.beauty.BeautySeekView;
+import android.view.MotionEvent;
 
-public class mmm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface mmm
 {
-  public mmm(BeautySeekView paramBeautySeekView) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
   
-  public void onGlobalLayout()
-  {
-    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
-    {
-      this.a.a = false;
-      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
-    }
-  }
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 

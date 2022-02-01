@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aysq;
-import azxr;
+import axfy;
+import aymg;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FriendProfileCardActivity$19
@@ -12,13 +12,13 @@ class FriendProfileCardActivity$19
   public void run()
   {
     if (this.this$0.a.a.a == 0) {
-      ((aysq)this.this$0.app.getManager(160)).a(true);
+      ((axfy)this.this$0.app.getManager(160)).a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.19
  * JD-Core Version:    0.7.0.1
  */

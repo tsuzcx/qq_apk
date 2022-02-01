@@ -1,15 +1,17 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class azgt
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
-  View c;
-  View d;
+  azgt(azgs paramazgs) {}
+  
+  public void onClick(View paramView)
+  {
+    azdw.a().d();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

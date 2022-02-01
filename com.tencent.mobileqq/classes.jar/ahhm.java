@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
-
-final class ahhm
-  implements ahky
+class ahhm
+  implements nnw
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhm(ahgz paramahgz) {}
+  
+  public void loaded(int paramInt, String paramString)
   {
-    paramQQAppInterface = (MessageForPoke)paramChatMessage;
-    if ((paramQQAppInterface.interactType == 126) && (!ahnt.a(paramQQAppInterface.minVersion))) {
-      return 0;
-    }
-    return 62;
+    ahgz.a(this.a, 0, 10);
   }
 }
 

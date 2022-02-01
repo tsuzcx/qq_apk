@@ -1,41 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
-public class afba
-  implements CompoundButton.OnCheckedChangeListener
+class afba
+  extends TransProcessorHandler
 {
-  public afba(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  afba(afaz paramafaz, Looper paramLooper)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131717556) + this.a.a, paramBoolean);
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription(anzj.a(2131706537));
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label119;
-      }
-    }
-    label119:
-    for (String str = "1";; str = "0")
-    {
-      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 0;
-      break;
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

@@ -1,18 +1,41 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import dov.com.qq.im.capture.data.TransitionCategoryItem;
 
 public class bmrd
 {
-  public int a;
-  public Drawable a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public int b;
-  public Drawable b;
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem != null))
+    {
+      if (!paramBoolean) {
+        break label45;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844335);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844354);
+    return;
+    label45:
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844351);
+  }
 }
 
 

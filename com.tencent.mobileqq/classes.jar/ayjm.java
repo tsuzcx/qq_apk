@@ -1,89 +1,47 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayjm
-  extends AbstractImageAdapter
-  implements ayjs
+  extends AbsPreDownloadTask
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private ayjs jdField_a_of_type_Ayjs;
+  PrecoverResource jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
+  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
   
-  public ayjm(Context paramContext)
+  public ayjm(QQAppInterface paramQQAppInterface, PrecoverResource paramPrecoverResource, HttpNetReq paramHttpNetReq)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramQQAppInterface, paramPrecoverResource.md5);
+    this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource = paramPrecoverResource;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
   }
   
-  public void a(int paramInt)
+  public void realCancel()
   {
-    int i = nnr.a();
-    if ((i != 1) && (i != 4)) {}
-    ayjq localayjq;
-    do
-    {
-      return;
-      localayjq = (ayjq)getItem(paramInt + 1);
-      if (localayjq != null) {
-        localayjq.a();
-      }
-      localayjq = (ayjq)getItem(paramInt - 1);
-    } while (localayjq == null);
-    localayjq.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    ((ayjq)getItem(paramInt)).a(paramView, paramInt, this);
-  }
-  
-  public void a(ayjs paramayjs)
-  {
-    this.jdField_a_of_type_Ayjs = paramayjs;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView != null) {
-      localObject = paramView;
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realCancel");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = (ayjq)getItem(paramInt);
-      PicInfo localPicInfo = ((ayjq)localObject).a;
-      if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
-        ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(localPicInfo.a);
-      }
-      localObject = ((ayjq)localObject).a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
-      ((View)localObject).setTag(2131296390, Boolean.valueOf(true));
+    ayji localayji = (ayji)this.app.getManager(179);
+    if ((localayji != null) && (localayji.a() != null)) {
+      localayji.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource.md5);
     }
+  }
+  
+  public void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realStart");
+    }
+    ayji localayji = (ayji)this.app.getManager(179);
+    if ((localayji != null) && (localayji.a() != null)) {
+      localayji.a().a(this);
+    }
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] req=" + this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq + ", res=" + this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   }
 }
 

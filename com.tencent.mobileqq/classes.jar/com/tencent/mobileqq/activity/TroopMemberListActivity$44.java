@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ class TroopMemberListActivity$44
       Object localObject3;
       try
       {
-        localObject3 = this.this$0.app.a().createEntityManager();
+        localObject3 = this.this$0.app.getEntityManagerFactory().createEntityManager();
         if (localObject3 == null) {
           break label168;
         }
@@ -53,7 +53,7 @@ class TroopMemberListActivity$44
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.44
  * JD-Core Version:    0.7.0.1
  */

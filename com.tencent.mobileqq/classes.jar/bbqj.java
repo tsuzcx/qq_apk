@@ -1,45 +1,74 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class bbqj
+  extends bbqd
 {
-  private static int a;
-  public ConcurrentHashMap<Long, bbqm> a;
+  public bbqk a;
+  public Object a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public int m;
+  public String m;
+  public int n;
+  public String n = "";
+  public int o;
+  public String o = "";
+  public int p;
+  public String p = "";
+  public int q;
+  public String q = "";
+  public int r;
+  public String r = "";
+  public int s;
+  public String s = "";
+  public String t = "";
   
-  static
+  public String a()
   {
-    jdField_a_of_type_Int = 900000;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoForwardInfo");
+    localStringBuilder.append("\n |-").append("fromChatType:").append(this.c);
+    localStringBuilder.append("\n |-").append("toChatType:").append(this.d);
+    localStringBuilder.append("\n |-").append("fromBusiType:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("toBusiType:").append(this.f);
+    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.g);
+    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_i_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileTime:").append(this.jdField_j_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileSource:").append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("fromUin:").append(this.l);
+    localStringBuilder.append("\n |-").append("fromSessionUin:").append(this.m);
+    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("templateId:").append(this.s);
+    localStringBuilder.append("\n |-").append("templateName:").append(this.t);
+    return localStringBuilder.toString();
   }
   
-  private bbqj()
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final bbqj a()
-  {
-    return bbql.a();
-  }
-  
-  public bbqm a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (bbqm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new bbqm(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

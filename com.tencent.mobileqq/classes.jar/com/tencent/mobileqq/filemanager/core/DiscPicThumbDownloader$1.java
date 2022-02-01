@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atud;
-import auob;
+import asgn;
+import atal;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class DiscPicThumbDownloader$1
   implements Runnable
 {
-  public DiscPicThumbDownloader$1(atud paramatud, FileManagerEntity paramFileManagerEntity) {}
+  public DiscPicThumbDownloader$1(asgn paramasgn, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    auob.b(this.a);
+    atal.b(this.a);
   }
 }
 

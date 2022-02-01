@@ -1,19 +1,22 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aiqm
-  implements ViewPager.OnPageChangeListener
+  implements ThreadExcutor.IThreadListener
 {
-  public aiqm(TroopChatPie paramTroopChatPie) {}
+  public aiqm(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
+  public void onAdded() {}
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onPostRun()
   {
-    TroopChatPie.a(this.a, paramInt);
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
+  
+  public void onPreRun() {}
 }
 
 

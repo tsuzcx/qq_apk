@@ -3,7 +3,6 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import apcq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.TencentLocationRequest;
@@ -15,19 +14,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 final class SosoInterface$7
   implements Runnable
 {
-  SosoInterface$7(apcq paramapcq) {}
+  SosoInterface$7(SosoInterface.OnLocationListener paramOnLocationListener) {}
   
   public void run()
   {
-    Object localObject = SosoInterface.a(this.a.maxCacheInterval, this.a.goonListener, this.a.level, this.a.reqLocation);
+    Object localObject = SosoInterface.getCanUsedLbsInfoCache(this.val$lis.maxCacheInterval, this.val$lis.goonListener, this.val$lis.level, this.val$lis.reqLocation);
     if (localObject != null) {
-      if (this.a.uiThread)
+      if (this.val$lis.uiThread)
       {
-        SosoInterface.a(this.a, 0, (SosoInterface.SosoLbsInfo)localObject);
+        SosoInterface.access$2100(this.val$lis, 0, (SosoInterface.SosoLbsInfo)localObject);
         if (QLog.isColorLevel()) {
-          QLog.d("SOSO.LBS", 2, "startLocation() lis=" + this.a.tag + " use cache and callback now");
+          QLog.d("SOSO.LBS", 2, "startLocation() lis=" + this.val$lis.tag + " use cache and callback now");
         }
-        SosoInterface.a(true, this.a.reqLocation, 0L, 0, this.a.tag, "ERROR_OK", this.a.askGPS, this.a.level, true);
+        SosoInterface.access$2200(true, this.val$lis.reqLocation, 0L, 0, this.val$lis.tag, "ERROR_OK", this.val$lis.askGPS, this.val$lis.level, true);
       }
     }
     label312:
@@ -36,12 +35,12 @@ final class SosoInterface$7
     do
     {
       return;
-      this.a.onLocationFinish(0, (SosoInterface.SosoLbsInfo)localObject);
+      this.val$lis.onLocationFinish(0, (SosoInterface.SosoLbsInfo)localObject);
       break;
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("startLocation() reqLoc=").append(this.a.reqLocation).append(" askGPS=").append(this.a.askGPS).append(" level=").append(this.a.level).append(" caller=").append(this.a.tag).append(" ui=").append(this.a.uiThread).append(" goon=").append(this.a.goonListener);
-        if (SosoInterface.a().get() == 0)
+        StringBuilder localStringBuilder = new StringBuilder().append("startLocation() reqLoc=").append(this.val$lis.reqLocation).append(" askGPS=").append(this.val$lis.askGPS).append(" level=").append(this.val$lis.level).append(" caller=").append(this.val$lis.tag).append(" ui=").append(this.val$lis.uiThread).append(" goon=").append(this.val$lis.goonListener);
+        if (SosoInterface.access$2300().get() == 0)
         {
           localObject = " do startLocation";
           QLog.d("SOSO.LBS", 2, (String)localObject);
@@ -49,50 +48,50 @@ final class SosoInterface$7
       }
       else
       {
-        SosoInterface.c(this.a);
-        if (SosoInterface.a().get() != 0) {
+        SosoInterface.access$2400(this.val$lis);
+        if (SosoInterface.access$2300().get() != 0) {
           continue;
         }
-        if (this.a != SosoInterface.e()) {
+        if (this.val$lis != SosoInterface.access$2500()) {
           break label584;
         }
-        SosoInterface.a().set(1);
-        this.a.sTime = SystemClock.elapsedRealtime();
+        SosoInterface.access$2300().set(1);
+        this.val$lis.sTime = SystemClock.elapsedRealtime();
         localObject = TencentLocationRequest.create();
-        ((TencentLocationRequest)localObject).setInterval(SosoInterface.a);
-        ((TencentLocationRequest)localObject).setRequestLevel(this.a.level);
+        ((TencentLocationRequest)localObject).setInterval(SosoInterface.sContinuousLocationInterval);
+        ((TencentLocationRequest)localObject).setRequestLevel(this.val$lis.level);
         ((TencentLocationRequest)localObject).setAllowCache(true);
-        ((TencentLocationRequest)localObject).setAllowGPS(this.a.askGPS);
+        ((TencentLocationRequest)localObject).setAllowGPS(this.val$lis.askGPS);
         ((TencentLocationRequest)localObject).setCheckInterval(30000L);
-        if (this.a.reqLocation) {
+        if (this.val$lis.reqLocation) {
           break label594;
         }
       }
       for (boolean bool = true;; bool = false)
       {
         TencentExtraKeys.setRequestRawData((TencentLocationRequest)localObject, bool);
-        ((TencentLocationRequest)localObject).getExtras().putInt("qq_level", this.a.level);
-        ((TencentLocationRequest)localObject).getExtras().putBoolean("qq_reqLocation", this.a.reqLocation);
-        ((TencentLocationRequest)localObject).getExtras().putString("qq_caller", this.a.tag);
-        ((TencentLocationRequest)localObject).getExtras().putBoolean("qq_goonListener", this.a.goonListener);
-        SosoInterface.b(0);
-        SosoInterface.a(SystemClock.elapsedRealtime());
-        SosoInterface.c(0);
-        apcq.access$2002(this.a, true);
-        if (SosoInterface.a() == null) {
-          SosoInterface.a(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
+        ((TencentLocationRequest)localObject).getExtras().putInt("qq_level", this.val$lis.level);
+        ((TencentLocationRequest)localObject).getExtras().putBoolean("qq_reqLocation", this.val$lis.reqLocation);
+        ((TencentLocationRequest)localObject).getExtras().putString("qq_caller", this.val$lis.tag);
+        ((TencentLocationRequest)localObject).getExtras().putBoolean("qq_goonListener", this.val$lis.goonListener);
+        SosoInterface.access$902(0);
+        SosoInterface.access$802(SystemClock.elapsedRealtime());
+        SosoInterface.access$1102(0);
+        SosoInterface.OnLocationListener.access$2002(this.val$lis, true);
+        if (SosoInterface.access$2600() == null) {
+          SosoInterface.access$2602(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
         }
-        if (SosoInterface.a().hasMessages(1001)) {
-          SosoInterface.a().removeMessages(1001);
+        if (SosoInterface.access$200().hasMessages(1001)) {
+          SosoInterface.access$200().removeMessages(1001);
         }
-        SosoInterface.a().sendEmptyMessageDelayed(1001, 35000L);
-        SosoInterface.d(0);
-        int i = SosoInterface.a().requestLocationUpdates((TencentLocationRequest)localObject, SosoInterface.a(), ThreadManager.getSubThreadLooper());
+        SosoInterface.access$200().sendEmptyMessageDelayed(1001, 35000L);
+        SosoInterface.access$2702(0);
+        int i = SosoInterface.access$2600().requestLocationUpdates((TencentLocationRequest)localObject, SosoInterface.access$2800(), ThreadManager.getSubThreadLooper());
         QLog.i("SOSO.LBS", 1, "location manager requestLocationUpdates result is: " + i);
         return;
         localObject = " waitting...";
         break;
-        SosoInterface.a().set(2);
+        SosoInterface.access$2300().set(2);
         break label312;
       }
     } while (!QLog.isColorLevel());

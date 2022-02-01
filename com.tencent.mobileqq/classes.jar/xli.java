@@ -1,19 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface xli
+public class xli
+  extends QQUIEventReceiver<xlc, vuc>
 {
-  public abstract Context a();
+  public xli(xlc paramxlc)
+  {
+    super(paramxlc);
+  }
   
-  public abstract View a();
+  public void a(@NonNull xlc paramxlc, @NonNull vuc paramvuc)
+  {
+    if (paramvuc.a.isSuccess())
+    {
+      xvv.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramvuc.toString());
+      xlc.a(paramxlc, true);
+    }
+  }
   
-  public abstract void finish();
-  
-  public abstract Activity getActivity();
-  
-  public abstract void startActivity(Intent paramIntent);
+  public Class acceptEventClass()
+  {
+    return vuc.class;
+  }
 }
 
 

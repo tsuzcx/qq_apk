@@ -1,27 +1,44 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhfz
-  implements DownloadParams.DecodeHandler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final int a = 10;
-  private final int b = 20;
+  public bhfz(ParticipleView paramParticipleView) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
+    long l = System.currentTimeMillis();
+    paramValueAnimator = ParticipleView.a(this.a).iterator();
+    int i = 1;
+    if (paramValueAnimator.hasNext())
     {
-      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
-      bhsp.a(paramDownloadParams, 10);
-      return paramDownloadParams;
+      bhgd localbhgd = (bhgd)paramValueAnimator.next();
+      float f = Math.min((float)(l - bhgd.a(localbhgd)) / ParticipleView.a(this.a), 1.0F);
+      bhgd.a(localbhgd, f);
+      if (f < 1.0F) {
+        i = 0;
+      }
+      for (;;)
+      {
+        break;
+        paramValueAnimator.remove();
+      }
     }
-    catch (OutOfMemoryError paramDownloadParams)
+    if (i != 0)
     {
-      return paramBitmap;
+      ParticipleView.a(this.a).cancel();
+      ParticipleView.a(this.a, null);
+      ParticipleView.a(this.a).clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
+      }
     }
-    catch (Exception paramDownloadParams) {}
-    return paramBitmap;
+    this.a.invalidate();
   }
 }
 

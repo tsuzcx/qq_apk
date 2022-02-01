@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import apky;
+import aoel;
 
 class QRScanEntryView$9
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$9
   public void run()
   {
     if (!QRScanEntryView.b(this.this$0)) {
-      if (this.a > apky.a().c) {
+      if (this.a > aoel.a().c) {
         break label54;
       }
     }

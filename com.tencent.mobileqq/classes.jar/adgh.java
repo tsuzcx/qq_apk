@@ -1,29 +1,32 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.Iterator;
+import java.util.List;
 
 public class adgh
-  implements adci
+  implements avtb<List<EmoticonPackage>>
 {
-  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xdc push message");
-    }
-    paramQQAppInterface = (amsx)paramQQAppInterface.getManager(153);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
-    }
-    bcrw.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
-  }
+  public adgh(EmosmActivity paramEmosmActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(List<EmoticonPackage> paramList)
   {
-    a(paramadan.a(), paramadan.a().a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      this.a.g.setVisibility(8);
+    }
+    do
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
+        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+          this.a.c = true;
+        }
+      }
+    } while (this.a.c);
+    this.a.g.setVisibility(8);
   }
 }
 

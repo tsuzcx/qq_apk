@@ -1,25 +1,24 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bdbg;
-import boiw;
-import bpam;
+import bbuk;
+import bmbx;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AECameraManager$6
+class AECameraManager$6
   implements Runnable
 {
-  public AECameraManager$6(boiw paramboiw) {}
+  AECameraManager$6(AECameraManager paramAECameraManager) {}
   
   public void run()
   {
-    bpam.b("AECameraManager", "cameraStopPreview---ENTER");
-    if (!boiw.b(this.this$0))
+    bmbx.b("AECameraManager", "cameraStopPreview---ENTER");
+    if (!AECameraManager.access$600(this.this$0))
     {
-      bpam.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
+      bmbx.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
       return;
     }
-    boiw.a(this.this$0).a(false);
-    boiw.a(this.this$0).set(2);
+    AECameraManager.access$800(this.this$0).a(false);
+    AECameraManager.access$900(this.this$0).set(2);
   }
 }
 

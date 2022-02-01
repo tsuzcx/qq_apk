@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import adai;
-import adak;
-import aost;
-import aunj;
+import abwx;
+import abwz;
+import anlo;
+import aszt;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -43,16 +43,16 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         QLog.d("AIOImageProviderService", 2, "out of memory", localOutOfMemoryError);
         this.this$0.jdField_d_of_type_Boolean = false;
         continue;
-        List localList = AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Long, arrayOfInt, 60);
+        List localList = AIOImageProviderService.a(this.this$0).getMessageFacade().getMessagesFromDB(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Long, arrayOfInt, 60);
         continue;
-        if ((AIOImageProviderService.a(this.this$0).a() != null) && (!this.this$0.jdField_c_of_type_Boolean)) {
+        if ((AIOImageProviderService.a(this.this$0).getMultiMessageProxy() != null) && (!this.this$0.jdField_c_of_type_Boolean)) {
           continue;
         }
         this.this$0.jdField_d_of_type_Boolean = false;
         this.this$0.b();
         this.this$0.jdField_d_of_type_Boolean = false;
         continue;
-        localList = aunj.a(AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_a_of_type_Long));
+        localList = aszt.a(AIOImageProviderService.a(this.this$0).getMultiMessageProxy().a(this.this$0.jdField_a_of_type_Long));
         continue;
         localArrayList1.addAll(0, localList);
         localArrayList2.addAll(0, this.this$0.a(localList));
@@ -83,7 +83,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       if (QLog.isColorLevel()) {
         QLog.d("AIOImageProviderService", 2, "[IncreasinglyLoadTask] start");
       }
-      if ((this.this$0.jdField_a_of_type_Aiec == null) && (this.this$0.jdField_a_of_type_Aidl == null))
+      if ((this.this$0.jdField_a_of_type_Ahas == null) && (this.this$0.jdField_a_of_type_Ahab == null))
       {
         this.this$0.jdField_d_of_type_Boolean = false;
         this.this$0.b();
@@ -125,11 +125,11 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
     tmp232_225;
     if (!this.this$0.jdField_c_of_type_Boolean)
     {
-      localObject4 = AIOImageProviderService.a(this.this$0).a(this.this$0.jdField_a_of_type_Int).a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt);
+      localObject4 = AIOImageProviderService.a(this.this$0).getMessageProxy(this.this$0.jdField_a_of_type_Int).a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt);
       localObject2 = localObject4;
       if (((List)localObject4).size() < 60)
       {
-        localObject2 = AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt, 60);
+        localObject2 = AIOImageProviderService.a(this.this$0).getMessageFacade().getAllMessages(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt, 60);
         this.this$0.jdField_d_of_type_Int = ((List)localObject2).size();
       }
     }
@@ -153,12 +153,12 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       }
       this.this$0.jdField_d_of_type_Boolean = false;
       break;
-      if (!adak.a(this.this$0.jdField_a_of_type_Int)) {
+      if (!abwz.a(this.this$0.jdField_a_of_type_Int)) {
         break label677;
       }
       localObject2 = this.this$0;
       ((AIOImageProviderService)localObject2).jdField_c_of_type_Long -= 1L;
-      localObject2 = AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_c_of_type_Long, arrayOfInt, 60);
+      localObject2 = AIOImageProviderService.a(this.this$0).getMessageFacade().getMessagesFromDB(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_c_of_type_Long, arrayOfInt, 60);
       this.this$0.jdField_d_of_type_Int = ((List)localObject2).size();
       localObject4 = this.this$0;
       ((AIOImageProviderService)localObject4).e += 1;

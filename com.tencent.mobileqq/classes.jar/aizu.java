@@ -1,168 +1,44 @@
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.zhitu.gate.ZhituSafeGate.GateInfo;
-import tencent.im.zhitu.gate.ZhituSafeGate.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aizu
-  extends MSFServlet
+  implements View.OnClickListener
 {
-  private void a(Intent paramIntent, int paramInt, FromServiceMsg paramFromServiceMsg)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ErrorCode", paramInt);
-    localBundle.putParcelable("FromServerMsg", paramFromServiceMsg);
-    localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
-    notifyObserver(paramIntent, 0, false, localBundle, aizi.class);
-  }
+  public aizu(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
   
-  private byte[] a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
-    bhvd.a(arrayOfByte, 0, paramArrayOfByte.length + 4);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
-    return arrayOfByte;
-  }
-  
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "AIMessage.Text2Image", "MQInference.ZhituReport" };
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
-    }
-    Object localObject = paramIntent.getStringExtra("ZhituCMD");
-    if (((String)localObject).equals("MQInference.ZhituReport")) {}
-    int i;
-    do
-    {
-      do
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment))) {
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
       {
-        do
-        {
-          return;
-          if (!((String)localObject).equals("ZhituGate.Check")) {
-            break label295;
-          }
-          if (!paramFromServiceMsg.isSuccess()) {
-            break;
-          }
-          paramIntent = getAppRuntime();
-        } while ((paramIntent == null) || (!(paramIntent instanceof AppInterface)));
-        i = paramFromServiceMsg.getWupBuffer().length - 4;
-        localObject = new byte[i];
-        bhvd.a((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-        paramFromServiceMsg.putWupBuffer((byte[])localObject);
-        for (;;)
-        {
-          try
-          {
-            paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-            localObject = new ZhituSafeGate.RspBody();
-            ((ZhituSafeGate.RspBody)localObject).mergeFrom(paramFromServiceMsg);
-            i = ((ZhituSafeGate.RspBody)localObject).int32_result.get();
-            if (i != 0) {
-              break;
-            }
-            i = ((ZhituSafeGate.GateInfo)((ZhituSafeGate.RspBody)localObject).gate_info.get()).uint32_state.get();
-            paramFromServiceMsg = aiyz.a((QQAppInterface)paramIntent);
-            if (i == 1)
-            {
-              bool = true;
-              paramFromServiceMsg.c(bool);
-              long l = System.currentTimeMillis();
-              aiyz.a((QQAppInterface)paramIntent).a(l);
-              return;
-            }
-          }
-          catch (Exception paramIntent)
-          {
-            QLog.e("ZhituServlet", 2, "onReceive CMD_SAFE_GATE has exception: ", paramIntent);
-            return;
-          }
-          boolean bool = false;
+        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
+        localIntent.putExtra("member_uin", "0");
+        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, localIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
+          bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE failed result: " + i);
-      return;
-      i = paramFromServiceMsg.getResultCode();
-    } while (!QLog.isColorLevel());
-    QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE not Success code is : " + i);
-    return;
-    label295:
-    if (!paramFromServiceMsg.isSuccess())
-    {
-      a(paramIntent, 1, paramFromServiceMsg);
-      return;
-    }
-    localObject = paramFromServiceMsg.getWupBuffer();
-    if (localObject != null)
-    {
-      String str = new String(Arrays.copyOfRange((byte[])localObject, 4, localObject.length));
-      for (;;)
-      {
-        try
-        {
-          if (!TextUtils.isEmpty(str))
-          {
-            localObject = (ZhituResponse)bhhq.b(new JSONObject(str), ZhituResponse.class);
-            Bundle localBundle = new Bundle();
-            localBundle.putInt("ErrorCode", 0);
-            localBundle.putParcelable("Response", (Parcelable)localObject);
-            localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
-            localBundle.putInt("StartIdx", paramIntent.getIntExtra("StartIdx", 0));
-            localBundle.putString("QueryText", paramIntent.getStringExtra("QueryText"));
-            notifyObserver(paramIntent, 0, true, localBundle, aizi.class);
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituServlet", 2, "parse json error with str:\n" + str + "\n" + localJSONException);
-          }
-          a(paramIntent, 3, paramFromServiceMsg);
-          return;
-        }
-        ZhituResponse localZhituResponse = new ZhituResponse();
       }
     }
-    a(paramIntent, 2, paramFromServiceMsg);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    String str = paramIntent.getStringExtra("ZhituCMD");
-    paramPacket.setSSOCommand(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituServlet", 2, "onSend with cmd: " + str);
-    }
-    paramIntent = paramIntent.getByteArrayExtra("ZhituRequestBytes");
-    if (paramIntent != null)
+    for (;;)
     {
-      paramPacket.putSendData(a(paramIntent));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), amtj.a(2131700812), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      continue;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), amtj.a(2131700750), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      }
     }
-    throw new IllegalArgumentException("no bytes to send");
   }
 }
 

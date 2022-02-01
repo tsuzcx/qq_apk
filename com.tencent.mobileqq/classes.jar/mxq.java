@@ -1,15 +1,21 @@
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class mxq
+class mxq
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<RoomInfo> a;
-  public int b;
-  public int c;
+  mxq(mxn parammxn, Activity paramActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public mxq(mxp parammxp) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Mxn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+    }
+    this.jdField_a_of_type_Mxn.a(this.jdField_a_of_type_AndroidAppActivity);
+  }
 }
 
 

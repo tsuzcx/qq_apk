@@ -1,24 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class bdqk
-  implements View.OnTouchListener
+public class bdqk
+  implements DialogInterface.OnClickListener
 {
-  bdqk(bdqi parambdqi) {}
+  public bdqk(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null)
-    {
-      agjk localagjk = (agjk)this.a.a.get();
-      if (localagjk != null) {
-        return localagjk.onTouch(paramView, paramMotionEvent);
-      }
-    }
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,12 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class per
-  extends bnrq
+public abstract interface per
 {
-  protected void a(String paramString)
-  {
-    TaskManager.getInstance().accept(paramString);
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
 }
 
 

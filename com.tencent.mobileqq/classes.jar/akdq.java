@@ -1,19 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class akdq
-  implements View.OnClickListener
+class akdq
+  implements Comparator<akdr>
 {
-  public akdq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  akdq(akdp paramakdp) {}
   
-  public void onClick(View paramView)
+  public int a(akdr paramakdr1, akdr paramakdr2)
   {
-    this.a.v();
-    new bdlq(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.c }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramakdr2.a - paramakdr1.a > 0.0F) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -5,13 +5,13 @@ import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.qphone.base.util.QLog;
-import qgw;
-import qic;
+import qmx;
+import qof;
 
 public class PTSSwitchManager$1
   implements Runnable
 {
-  public PTSSwitchManager$1(qic paramqic) {}
+  public PTSSwitchManager$1(qof paramqof) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class PTSSwitchManager$1
     }
     for (;;)
     {
-      qic.a(this.this$0, bool1);
-      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + qic.a(this.this$0));
+      qof.a(this.this$0, bool1);
+      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + qof.a(this.this$0));
       label111:
       int i;
-      if (qic.a(this.this$0))
+      if (qof.a(this.this$0))
       {
-        qgw.a().a();
+        qmx.a().a();
         localObject = Build.CPU_ABI;
         if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("armeabi"))) {
           break label283;
@@ -49,10 +49,10 @@ public class PTSSwitchManager$1
       for (;;)
       {
         label138:
-        AladdinConfig localAladdinConfig = Aladdin.getConfig(246);
+        localObject = Aladdin.getConfig(246);
         int j;
         if (localObject != null) {
-          if (localAladdinConfig.getIntegerFromString("pts_item_view_switch", 0) == 1) {
+          if (((AladdinConfig)localObject).getIntegerFromString("pts_item_view_switch", 0) == 1) {
             j = 1;
           }
         }
@@ -72,10 +72,10 @@ public class PTSSwitchManager$1
             }
             QLog.i("PTSSwitchManager", 1, "[init], pageEnabledTmp = " + bool2 + ", viewEnabledTmp = " + bool3 + ", isArm = " + bool1);
             if ((bool2) || (bool3)) {
-              qic.a(this.this$0);
+              qof.a(this.this$0);
             }
-            qic.b(this.this$0, bool2);
-            qic.c(this.this$0, bool3);
+            qof.b(this.this$0, bool2);
+            qof.c(this.this$0, bool3);
             return;
             bool1 = false;
             break;

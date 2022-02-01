@@ -1,13 +1,13 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 
 final class AEEditorAILoadingView$15
   implements Runnable
 {
   public void run()
   {
-    bhmi.a(AEEditorAILoadingView.a);
+    FileUtils.deleteDirectory(AEEditorAILoadingView.a);
   }
 }
 

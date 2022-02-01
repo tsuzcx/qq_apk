@@ -10,9 +10,9 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import bhkd;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.BubblePopupWindow;
 import java.util.ArrayList;
@@ -38,15 +38,16 @@ public class PhotoPreviewActivity
   
   void back()
   {
-    bhkd.anim(this, true, false);
+    AlbumUtil.anim(this, true, false);
     super.finish();
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -63,7 +64,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131562053);
+    setContentView(2131561930);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -75,7 +76,7 @@ public class PhotoPreviewActivity
   {
     super.doOnDestroy();
     if (this.popup != null) {
-      this.popup.b();
+      this.popup.a();
     }
   }
   
@@ -117,7 +118,7 @@ public class PhotoPreviewActivity
     this.showBar = false;
     this.topBar.setVisibility(4);
     if (this.popup != null) {
-      this.popup.b();
+      this.popup.a();
     }
   }
   
@@ -142,18 +143,18 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131379154);
-    this.backBtn = ((TextView)findViewById(2131363240));
+    this.topBar = findViewById(2131378924);
+    this.backBtn = ((TextView)findViewById(2131363271));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131378936));
-    this.gallery = ((ProGallery)findViewById(2131367342));
+    this.titleView = ((TextView)findViewById(2131378707));
+    this.gallery = ((ProGallery)findViewById(2131367366));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297091));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297146));
     this.gallery.setSelection(this.currentSelectedPostion);
     this.gallery.setOnItemClickListener(new PhotoPreviewActivity.2(this));
   }

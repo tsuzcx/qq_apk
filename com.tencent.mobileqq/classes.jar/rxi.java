@@ -1,28 +1,20 @@
-class rxi
-  implements rwa
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class rxi
+  implements Animation.AnimationListener
 {
-  rxi(rxg paramrxg) {}
+  rxi(View paramView) {}
   
-  public void a(rwc paramrwc, rwf paramrwf, int paramInt1, int paramInt2, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt2 == 0) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt2 == 1) || (paramInt2 == 2));
-        if (paramInt2 != 3) {
-          break;
-        }
-        this.a.a(this.a.b(), "video playing", 1);
-      } while (this.a.b());
-      this.a.a(true, "PLAY_STATE_PLAYING");
-      return;
-    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
+    this.a.setTag(-1, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

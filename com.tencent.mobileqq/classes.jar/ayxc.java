@@ -1,48 +1,43 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.bussiness.presentwall.ProfilePresentWallComponent.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
+
 public class ayxc
+  implements View.OnClickListener
 {
-  public static void a()
-  {
-    new ayxf().a("now_qq_gzh").b("notice_click").a();
-  }
+  ayxc(ayxb paramayxb) {}
   
-  public static void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    new ayxf().a("now_qq_gzh").b("msg_exp").a(paramInt).d(paramString1).e(paramString2).a();
-  }
-  
-  public static void a(String paramString)
-  {
-    new ayxf().a("now_qq_gzh").b("homepage_view").c(paramString).a();
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    new ayxf().a("now_qq_gzh").b("follow_anchor_click").a("anchor", paramString).a(paramInt).a();
-  }
-  
-  public static void b()
-  {
-    new ayxf().a("now_qq_gzh").b("notice_page_view").a();
-  }
-  
-  public static void b(int paramInt, String paramString1, String paramString2)
-  {
-    new ayxf().a("now_qq_gzh").b("msg_click").a(paramInt).d(paramString1).e(paramString2).a();
-  }
-  
-  public static void b(String paramString)
-  {
-    new ayxf().a("now_qq_gzh").b("follow_anchor_exp").a("anchor", paramString).a();
-  }
-  
-  public static void b(String paramString, int paramInt)
-  {
-    new ayxf().a("now_qq_gzh").b("rec_anchor_click").a("anchor", paramString).a(paramInt).a();
-  }
-  
-  public static void c(String paramString)
-  {
-    new ayxf().a("now_qq_gzh").b("rec_anchor_exp").a("anchor", paramString).a();
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof aykg)) {}
+    switch (((aykg)localObject).a)
+    {
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    localObject = new Intent(ayxb.a(this.a), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", ((aymg)ayxb.a(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.presentCustourl);
+    ayxb.b(this.a).startActivity((Intent)localObject);
+    ThreadManager.getFileThreadHandler().post(new ProfilePresentWallComponent.1.1(this));
+    if (((aymg)ayxb.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {
+      bcef.b(ayxb.a(this.a), "", "", "", "0X800A1C7", "0X800A1C7", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      aytl.f(ayxb.c(this.a), (aymg)ayxb.c(this.a));
+      break;
+      bcef.b(ayxb.b(this.a), "", "", "", "0X800A1C9", "0X800A1C9", 0, 0, "", "", "", "");
+    }
   }
 }
 

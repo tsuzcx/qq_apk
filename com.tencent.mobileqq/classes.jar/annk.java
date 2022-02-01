@@ -1,31 +1,20 @@
 public class annk
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  
-  public String toString()
+  public static String a(long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
-    if (this.c > 0) {
-      localStringBuilder.append(",mem:").append(this.c);
+    if (paramLong <= 0L) {
+      return "";
     }
-    if (this.d > 0) {
-      localStringBuilder.append(",cpu:").append(this.d);
+    if (paramLong < 1024L) {
+      return paramLong + "B";
     }
-    if (this.f != 0) {
-      localStringBuilder.append(",javaHeap:").append(this.f);
+    if (paramLong < 1048576L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
     }
-    if (this.g != 0) {
-      localStringBuilder.append(",nativeHeap:").append(this.g);
+    if (paramLong < 1073741824L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
     }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
   }
 }
 

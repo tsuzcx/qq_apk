@@ -2,8 +2,8 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import nnr;
 
 public final class MiniAdAntiSpamReportUtil$1
   implements Runnable
@@ -15,7 +15,7 @@ public final class MiniAdAntiSpamReportUtil$1
     this.a.putInt("PostBodyType", 1);
     try
     {
-      String str = nnr.a(BaseApplicationImpl.getContext(), "https://rpt.gdt.qq.com/mqq_log", "POST", this.a, null);
+      String str = HttpUtil.openUrl(BaseApplicationImpl.getContext(), "https://rpt.gdt.qq.com/mqq_log", "POST", this.a, null);
       QLog.i("MiniAdAntiSpamReportUtil", 1, "report reportParams=" + this.a.toString() + " result=" + str);
       return;
     }

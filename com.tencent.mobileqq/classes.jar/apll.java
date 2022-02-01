@@ -1,18 +1,56 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public final class apll
-  implements Parcelable.Creator<ArConfigInfo>
+public class apll
+  extends aptq<aplk>
 {
-  public ArConfigInfo a(Parcel paramParcel)
+  public static aplk a()
   {
-    return new ArConfigInfo(paramParcel);
+    return (aplk)apub.a().a(586);
   }
   
-  public ArConfigInfo[] a(int paramInt)
+  @NonNull
+  public aplk a(int paramInt)
   {
-    return new ArConfigInfo[paramInt];
+    return new aplk();
+  }
+  
+  @Nullable
+  public aplk a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aplk.a(paramArrayOfaptx[0].a);
+    }
+    return null;
+  }
+  
+  public void a(aplk paramaplk) {}
+  
+  public Class<aplk> clazz()
+  {
+    return aplk.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 586;
   }
 }
 

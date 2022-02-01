@@ -1,186 +1,135 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Matrix.ScaleToFit;
+import android.graphics.RectF;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.avgame.videorecord.GuessPictureGamePaintLogic.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class nkb
-  extends BaseAdapter
 {
   public int a;
-  protected TextView a;
-  public ArrayList<nka> a;
-  public boolean a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private njw jdField_a_of_type_Njw;
+  private volatile boolean jdField_a_of_type_Boolean;
   public int b;
-  public boolean b;
+  private int c;
+  private int d;
   
-  public nkb(PoiMapActivity paramPoiMapActivity)
+  public int a(ArrayList<njw> paramArrayList)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public nka a(int paramInt)
-  {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
+    boolean bool = false;
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (((njw)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsBitmap == null)) {
+      return 0;
     }
-    if ((i >= this.jdField_a_of_type_JavaUtilArrayList.size()) || (i < 0)) {
-      return null;
-    }
-    return (nka)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {}
-    nka localnka;
-    do
+    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    a(localCanvas, (njw)paramArrayList.get(0), true);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
+      if (QLog.isColorLevel())
+      {
+        if (this.jdField_a_of_type_Njw == null) {
+          bool = true;
+        }
+        QLog.d("GuessPictureGamePaintLogic", 2, new Object[] { "generateTexture, AnswerImageDataIsNull:", Boolean.valueOf(bool) });
+      }
+      if (this.jdField_a_of_type_Njw != null)
+      {
+        localCanvas.drawColor(this.jdField_a_of_type_Njw.e);
+        b(localCanvas, this.jdField_a_of_type_Njw, true);
+      }
+      int i;
       do
       {
-        do
-        {
-          return;
-        } while (paramInt == this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = paramInt;
-        notifyDataSetChanged();
-      } while ((paramInt == -1) || (!paramBoolean));
-      localnka = a(paramInt);
-    } while (localnka == null);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.l = localnka.a;
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = localnka.jdField_b_of_type_JavaLangString;
-    PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity, localnka.f);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_JavaLangString = localnka.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.j = localnka.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.k = localnka.jdField_c_of_type_Int;
-    PoiMapActivity.g(this.jdField_a_of_type_ComTencentBizPoiMapActivity).b();
-    PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).animateCamera(CameraUpdateFactory.newLatLng(new LatLng(localnka.jdField_b_of_type_Int / 1000000.0D, localnka.jdField_c_of_type_Int / 1000000.0D)));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        i = GlUtil.createTexture(3553, localBitmap);
+        localBitmap.recycle();
+        return i;
+        i = 1;
+      } while (i >= paramArrayList.size());
+      b(localCanvas, (njw)paramArrayList.get(i), true);
+      i += 1;
     }
   }
   
-  public void a(ArrayList<nka> paramArrayList, boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (paramInt == this.jdField_b_of_type_Int)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_b_of_type_Int += 1;
-      notifyDataSetChanged();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.b = paramInt4;
+  }
+  
+  public void a(Canvas paramCanvas, njw paramnjw, boolean paramBoolean)
+  {
+    paramnjw = paramnjw.jdField_a_of_type_AndroidGraphicsBitmap;
+    Matrix localMatrix = new Matrix();
+    localMatrix.setRectToRect(new RectF(0.0F, 0.0F, paramnjw.getWidth(), paramnjw.getHeight()), new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.b), Matrix.ScaleToFit.FILL);
+    if (paramBoolean) {
+      localMatrix.postScale(1.0F, -1.0F, this.jdField_a_of_type_Int / 2, this.b / 2);
+    }
+    if (!paramnjw.isRecycled()) {
+      paramCanvas.drawBitmap(paramnjw, localMatrix, null);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(View arg1)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    int j = 1;
-    int i = 1;
-    if (this.jdField_a_of_type_Boolean)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (this.jdField_b_of_type_Boolean) {}
-      for (;;)
-      {
-        return i + (j - 1);
-        i = 0;
+      if ((this.jdField_a_of_type_Njw != null) && (!this.jdField_a_of_type_Njw.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+        this.jdField_a_of_type_Njw.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       }
-    }
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (this.jdField_b_of_type_Boolean) {}
-    for (i = j;; i = 0) {
-      return i + k;
+      this.jdField_a_of_type_Njw = null;
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
   }
   
-  public long getItemId(int paramInt)
+  public void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    return 0L;
+    ThreadManager.getUIHandler().postDelayed(new GuessPictureGamePaintLogic.1(this, paramView, paramInt, paramBoolean), 200L);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean a()
   {
-    if (paramView == null)
+    return (this.jdField_a_of_type_Njw != null) && (this.jdField_a_of_type_Njw.jdField_a_of_type_Boolean);
+  }
+  
+  public void b(Canvas paramCanvas, njw paramnjw, boolean paramBoolean)
+  {
+    if (paramnjw.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+    Matrix localMatrix;
+    do
     {
-      localObject1 = new nkc(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559965, null);
-      ((nkc)localObject1).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377488);
-      ((nkc)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377487));
-      ((nkc)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371659));
-      ((nkc)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362208));
-      ((nkc)localObject1).jdField_c_of_type_AndroidViewView = paramView.findViewById(2131377278);
-      ((nkc)localObject1).jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371409);
-      ((nkc)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365437);
-      ((nkc)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377486));
-      ((nkc)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379558));
-      ((nkc)localObject1).jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374834));
-      paramView.setTag(localObject1);
-      if ((paramInt != this.jdField_a_of_type_JavaUtilArrayList.size()) && ((!this.jdField_a_of_type_Boolean) || (paramInt != this.jdField_a_of_type_JavaUtilArrayList.size() - 1))) {
-        break label247;
+      return;
+      int i = paramnjw.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      int j = paramnjw.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      float f1 = this.c / this.jdField_a_of_type_Int;
+      float f2 = this.d / this.b;
+      localMatrix = new Matrix();
+      localMatrix.setRectToRect(new RectF(0.0F, 0.0F, i, j), new RectF(paramnjw.c / f1, paramnjw.d / f2, (i + paramnjw.c) / f1, (j + paramnjw.d) / f2), Matrix.ScaleToFit.CENTER);
+      if (paramBoolean) {
+        localMatrix.postScale(1.0F, -1.0F, this.jdField_a_of_type_Int / 2, this.b / 2);
       }
-      ((nkc)localObject1).jdField_d_of_type_AndroidViewView.setVisibility(0);
-      ((nkc)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (Object localObject1 = paramView;; localObject1 = null)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = (nkc)paramView.getTag();
-      break;
-      label247:
-      localObject2 = a(paramInt);
-      if ((paramInt == 0) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((nkc)localObject1).jdField_b_of_type_AndroidWidgetTextView;
-      }
-      if (localObject2 != null) {
-        break label285;
-      }
-    }
-    label285:
-    ((nkc)localObject1).jdField_d_of_type_AndroidViewView.setVisibility(8);
-    ((nkc)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    ((nkc)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(8);
-    ((nkc)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-    ((nkc)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-    ((nkc)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ComTencentBizPoiMapActivity.d);
-    ((nkc)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((nka)localObject2).a);
-    ((nkc)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((nka)localObject2).jdField_b_of_type_JavaLangString);
-    Object localObject2 = ((nka)localObject2).a + ((nka)localObject2).jdField_b_of_type_JavaLangString;
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      ((nkc)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.g);
-      ((nkc)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.g);
-      ((nkc)localObject1).jdField_c_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (localObject1 = (String)localObject2 + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131694400);; localObject1 = (String)localObject2 + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131694401))
-    {
-      paramView.setContentDescription((CharSequence)localObject1);
-      localObject1 = paramView;
-      break;
-      ((nkc)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_Int);
-      ((nkc)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_Int);
-      ((nkc)localObject1).jdField_c_of_type_AndroidViewView.setVisibility(4);
-    }
+    } while (paramnjw.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+    paramCanvas.drawBitmap(paramnjw.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, null);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

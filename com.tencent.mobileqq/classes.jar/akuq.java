@@ -1,82 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
-class akuq
-  extends aktf
+public class akuq
 {
-  protected akuq(NewPhotoListActivity paramNewPhotoListActivity)
+  private static int a = 10000;
+  
+  public static void a(int paramInt)
   {
-    super(paramNewPhotoListActivity);
+    a = paramInt;
   }
   
-  protected void b()
+  public static void a(String paramString, Properties paramProperties)
   {
-    if (this.mPhotoCommonData.selectedPhotoList != null) {}
-    for (int i = this.mPhotoCommonData.selectedPhotoList.size();; i = 0)
-    {
-      bdll.b(null, "CliOper", "", "", "0X800A6D8", "0X800A6D8", 0, 0, String.valueOf(i), "", "", "");
-      Intent localIntent = new Intent();
-      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
-      ((NewPhotoListActivity)this.mActivity).setResult(-1, localIntent);
-      ((NewPhotoListActivity)this.mActivity).finish();
-      bhkd.anim(this.mActivity, false, false);
-      return;
+    Properties localProperties = paramProperties;
+    if (paramProperties == null) {
+      localProperties = new Properties();
     }
-  }
-  
-  public void enterAlbumListFragment(Intent paramIntent)
-  {
-    bdll.b(null, "dc00898", "", "", "0X800A6DF", "0X800A6DF", 0, 0, "", "", "", "");
-    super.enterAlbumListFragment(paramIntent);
-  }
-  
-  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
-  {
-    int i = this.mPhotoCommonData.maxSelectNum;
-    return ((NewPhotoListActivity)this.mActivity).getString(2131694310, new Object[] { Integer.valueOf(i) });
-  }
-  
-  public void initData(Intent paramIntent)
-  {
-    super.initData(paramIntent);
-    this.a.customSendBtnText = ((NewPhotoListActivity)this.mActivity).getString(2131694346);
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    ArrayList localArrayList = this.mPhotoCommonData.selectedPhotoList;
-    if ((QLog.isDevelopLevel()) && (localArrayList != null) && (localArrayList.size() != 0)) {
-      QLog.d("PhotoListActivity", 4, "[NewPhotoListActivity] [onActivityResult] selectedPhotoList = " + localArrayList.size());
-    }
-    if ((paramInt2 == -1) && (paramInt1 == 100015))
-    {
-      ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
-      ((NewPhotoListActivity)this.mActivity).finish();
-    }
-  }
-  
-  public void onPreviewBtnClick(View paramView)
-  {
-    EmotionPreviewFragment.a(this.mActivity, ((NewPhotoListActivity)this.mActivity).getIntent(), this.mPhotoCommonData.selectedPhotoList);
-    bdll.b(null, "dc00898", "", "", "0X800A6DC", "0X800A6DC", 0, 0, "", "", "", "");
-  }
-  
-  public void onTitleBtnCancelClick(View paramView)
-  {
-    bdll.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
-    super.onTitleBtnCancelClick(paramView);
-  }
-  
-  public void startPhotoPreviewActivity(Intent paramIntent)
-  {
-    bdll.b(null, "CliOper", "", "", "0X800A6D9", "0X800A6D9", 0, 0, "", "", "", "");
-    ((NewPhotoListActivity)this.mActivity).startActivityForResult(paramIntent, 100015);
+    localProperties.setProperty("shortvideo_business_type", "" + a);
+    bcdu.a(VideoEnvironment.getContext()).reportKVEvent(paramString, localProperties);
   }
 }
 

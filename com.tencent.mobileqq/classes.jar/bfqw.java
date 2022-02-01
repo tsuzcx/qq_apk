@@ -1,89 +1,100 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public class bfqw
 {
-  public int a;
-  public long a;
-  public bfql a;
-  public String a;
-  public List<ResultRecord> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  protected int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bfqs jdField_a_of_type_Bfqs;
+  private Map<View, bfqz> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
+  private boolean jdField_a_of_type_Boolean;
+  protected int b;
+  private boolean b;
   
-  public bfqw()
+  public bfqw(Context paramContext)
   {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    b();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bfqs = new bfqs(bfrw.a(paramContext) / 8);
   }
   
-  public void a()
+  private bfqy a(View paramView)
   {
-    this.jdField_a_of_type_Bfql = new bfql();
-    this.jdField_a_of_type_Bfql.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Bfql.a = new byte[0];
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    try
+    if (paramView != null)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("classify", 0);
-      this.jdField_b_of_type_Int = paramString.optInt("verifyType", 2);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("classificationInfo", "");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("name", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("introduction", "");
-      this.e = paramString.optString("location", "");
-      this.jdField_c_of_type_Int = paramString.optInt("group_type", -1);
-      if (paramString.optInt("isJumpAio") == 1) {}
-      for (;;)
-      {
-        this.jdField_b_of_type_Boolean = bool;
-        this.jdField_d_of_type_Int = paramString.optInt("create_source", 0);
-        return;
-        bool = false;
+      bfqz localbfqz = (bfqz)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+      if (localbfqz != null) {
+        paramView = localbfqz.jdField_a_of_type_Bfqx;
       }
+      while ((paramView instanceof bfqx))
+      {
+        return ((bfqx)paramView).a();
+        if ((paramView instanceof ImageView)) {
+          paramView = ((ImageView)paramView).getDrawable();
+        } else {
+          paramView = paramView.getBackground();
+        }
+      }
+    }
+    return null;
+  }
+  
+  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, bfqz parambfqz)
+  {
+    Object localObject = paramDrawable;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      localObject = paramDrawable;
+      if (paramBoolean)
+      {
+        localObject = paramDrawable;
+        if (!(paramDrawable instanceof AnimationDrawable))
+        {
+          localObject = paramDrawable;
+          if (paramDrawable != null)
+          {
+            localObject = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
+            ((TransitionDrawable)localObject).startTransition(200);
+          }
+        }
+      }
+    }
+    paramDrawable = null;
+    if (parambfqz != null) {
+      paramDrawable = parambfqz.jdField_a_of_type_Bfqv;
+    }
+    if (paramDrawable != null)
+    {
+      paramDrawable.a(paramView, (Drawable)localObject);
       return;
     }
-    catch (JSONException paramString)
+    if ((paramView instanceof ImageView))
     {
-      paramString.printStackTrace();
+      ((ImageView)paramView).setImageDrawable((Drawable)localObject);
+      return;
     }
+    paramView.setBackgroundDrawable((Drawable)localObject);
   }
   
-  public void b()
+  public bfqs a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.e = "";
-    this.jdField_a_of_type_Bfql = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
+    return this.jdField_a_of_type_Bfqs;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

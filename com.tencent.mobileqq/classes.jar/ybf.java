@@ -1,70 +1,20 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class ybf
-  implements URLDrawable.URLDrawableListener
+final class ybf
+  implements Animation.AnimationListener
 {
-  private final int jdField_a_of_type_Int;
-  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private final String jdField_a_of_type_JavaLangString;
-  private final int b;
+  ybf(View paramView) {}
   
-  public ybf(ybe paramybe, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.a.setAnimation(null);
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    yuk.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    paramURLDrawable = (HashSet)ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramURLDrawable != null)
-    {
-      paramURLDrawable = paramURLDrawable.iterator();
-      while (paramURLDrawable.hasNext()) {
-        ((ybi)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
-      }
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    yuk.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
-    Bitmap localBitmap = ybe.a(this.jdField_a_of_type_Ybe, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
-    if (localBitmap != null)
-    {
-      paramURLDrawable = (HashSet)ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_JavaLangString);
-      if (paramURLDrawable != null)
-      {
-        paramURLDrawable = paramURLDrawable.iterator();
-        while (paramURLDrawable.hasNext()) {
-          ((ybi)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
-        }
-      }
-    }
-    else
-    {
-      yuk.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
-      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

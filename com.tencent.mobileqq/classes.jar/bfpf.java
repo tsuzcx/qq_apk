@@ -1,71 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bfpf
-  extends bfpd
-  implements View.OnClickListener
+final class bfpf
+  implements DownloadParams.DecodeHandler
 {
-  protected aged a;
-  protected String a;
-  protected Context b;
-  protected View b;
-  protected String b;
-  protected boolean b;
-  
-  public bfpf()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  boolean a()
-  {
-    return (this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() != 8);
-  }
-  
-  protected void c()
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  protected void d()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_AndroidContentContext = null;
-    this.jdField_b_of_type_JavaLangString = null;
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Aged != null) {
-      this.jdField_a_of_type_Aged.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!bhsr.a(this.jdField_a_of_type_JavaLangString))
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
     {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      paramView.getContext().startActivity(localIntent);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Aged != null) {
-        this.jdField_a_of_type_Aged.a(null);
-      }
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "sys_msg", "Clk_notice", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
-    }
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bfvo.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
   }
 }
 

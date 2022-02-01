@@ -1,57 +1,65 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asaa
-  extends aryz
+  implements View.OnClickListener
 {
-  public asab a;
-  public String b;
-  public boolean b;
+  public asaa(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public static asaa a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    asaa localasaa = new asaa();
-    localasaa.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localasaa.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localasaa.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localasaa.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localasaa;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    Object localObject1 = paramView.getTag();
+    Object localObject2;
+    FileManagerEntity localFileManagerEntity;
+    int i;
+    if ((localObject1 instanceof asao))
     {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+      localObject2 = (asao)paramView.getTag();
+      localObject1 = ((asao)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+      localFileManagerEntity = (FileManagerEntity)((asao)localObject2).jdField_a_of_type_JavaLangObject;
+      i = ((asao)localObject2).b;
+      i = ((asao)localObject2).c;
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      localJSONException.printStackTrace();
+      if ((paramView.getId() == 2131366631) && (QfileBaseRecentFileTabView.b(this.a))) {
+        bcef.b(QfileBaseRecentFileTabView.s(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      if (localFileManagerEntity != null)
+      {
+        localObject2 = this.a;
+        if (paramView.getId() != 2131366631) {
+          break label190;
+        }
+      }
+      label190:
+      for (boolean bool = true;; bool = false)
+      {
+        ((QfileBaseRecentFileTabView)localObject2).a(localFileManagerEntity, (View)localObject1, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (!(localObject1 instanceof arvu)) {
+          break label195;
+        }
+        localObject2 = (arvu)paramView.getTag();
+        localObject1 = ((arvu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+        localFileManagerEntity = (FileManagerEntity)((arvu)localObject2).jdField_a_of_type_JavaLangObject;
+        i = ((arvu)localObject2).b;
+        i = ((arvu)localObject2).jdField_a_of_type_Int;
+        break;
+      }
+      label195:
+      localObject1 = null;
+      localFileManagerEntity = null;
     }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Asab == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Asab.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,39 @@
-public class bfbe
-  extends bfbf
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+
+class bfbe
+  extends zrq
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  bfbe(bfbb parambfbb) {}
   
-  public bfbe()
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" voiceLength:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" autoToText:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
-    return localStringBuilder.toString();
+    if (paramBundle == null) {
+      return;
+    }
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299076);
+    paramBundle = paramBundle.getString("fileId");
+    befc.c("TroopFileManager", befc.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
+    {
+      this.a.b(paramBundle);
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131714381), 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131714378), 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131714362), 0).b(i);
   }
 }
 

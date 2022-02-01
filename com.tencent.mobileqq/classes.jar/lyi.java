@@ -1,18 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.share.AVSchema;
+import android.view.View;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class lyi
-  implements DialogInterface.OnDismissListener
+class lyi
+  implements bjoe
 {
-  public lyi(AVSchema paramAVSchema) {}
+  lyi(lyh paramlyh, long paramLong, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, bjnw parambjnw) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lyh.a + "]");
     }
-    this.a.b();
+    if (this.jdField_a_of_type_Lyh.a == null) {
+      return;
+    }
+    paramView = paramView.getContext();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.jdField_a_of_type_Lyh.b(this.jdField_a_of_type_Long, paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
+      continue;
+      this.jdField_a_of_type_Lyh.a(this.jdField_a_of_type_Long, paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
+    }
   }
 }
 

@@ -1,31 +1,16 @@
-import androidx.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbcj
+class bbcj
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
+  bbcj(bbci parambbci, bays parambays) {}
   
-  public bbcj()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("age").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("gender").append("=").append(this.jdField_b_of_type_Int).append("|");
-    localStringBuilder.append("place").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("addSrc").append("=").append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append("commFrdCnt").append("=").append(this.c).append("|");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Bays.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

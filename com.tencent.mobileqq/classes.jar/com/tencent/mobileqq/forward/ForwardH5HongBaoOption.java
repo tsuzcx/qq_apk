@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auxu;
-import bhnv;
+import atky;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForwardH5HongBaoOption
-  extends auxu
+  extends atky
 {
   private List<Integer> jdField_a_of_type_JavaUtilList;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
@@ -38,7 +38,7 @@ public class ForwardH5HongBaoOption
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 20	auxu:<init>	(Landroid/content/Intent;)V
+    //   2: invokespecial 20	atky:<init>	(Landroid/content/Intent;)V
     //   5: aload_0
     //   6: new 22	java/util/ArrayList
     //   9: dup
@@ -233,7 +233,7 @@ public class ForwardH5HongBaoOption
     while (localIterator.hasNext())
     {
       int k = ((Integer)localIterator.next()).intValue();
-      if (m()) {
+      if (o()) {
         this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(k));
       }
     }
@@ -287,9 +287,9 @@ public class ForwardH5HongBaoOption
   
   public boolean c()
   {
-    if (!bhnv.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131693963, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
       return true;
     }
     for (;;)

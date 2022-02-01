@@ -1,33 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
-
-public final class bdms
-  implements Parcelable.Creator<UEC.UECItem>
+public class bdms
 {
-  public UEC.UECItem a(Parcel paramParcel)
-  {
-    UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
-    return localUECItem;
-  }
+  public long a;
+  public String a;
+  public String b;
   
-  public UEC.UECItem[] a(int paramInt)
+  public bdms() {}
+  
+  public bdms(long paramLong, String paramString1, String paramString2)
   {
-    return new UEC.UECItem[paramInt];
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class arlo
-  extends arac<arln>
+  extends amsu
 {
-  @NonNull
-  public arln a(int paramInt)
-  {
-    return new arln();
-  }
+  public arlo(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  @Nullable
-  public arln a(araj[] paramArrayOfaraj)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaraj != null) {
-      try
-      {
-        if (paramArrayOfaraj.length > 0)
-        {
-          paramArrayOfaraj = (arln)arax.a(paramArrayOfaraj[0].a, arln.class);
-          return paramArrayOfaraj;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaraj)
-      {
-        QLog.e("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaraj.getMessage());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
     }
-    return null;
-  }
-  
-  public void a(arln paramarln)
-  {
-    if (paramarln != null)
+    paramString = this.a.a.a(this.a.c);
+    if ((paramString != null) && (!paramString.mAddFriendVerified))
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
+      paramString.mAddFriendVerified = true;
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.2.1(this));
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramarln.a)) {
-          paramarln.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_c2cfile_excitingdownload", paramarln.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-C2C-Download config [" + paramarln.a + "]");
-        localObject = (atsh)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atsh)localObject).a(paramarln);
-        }
-      }
-      return;
-    }
-  }
-  
-  public Class<arln> clazz()
-  {
-    return arln.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public int type()
-  {
-    return 556;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlo
  * JD-Core Version:    0.7.0.1
  */

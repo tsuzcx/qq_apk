@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.graphics.Point;
 
-public class affj
-  implements aqvj
+public abstract interface affj
 {
-  public affj(QQBrowserActivity paramQQBrowserActivity) {}
+  public abstract Point a(Point paramPoint);
   
-  public void a()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
-  }
+  public abstract Point a(Point paramPoint1, Point paramPoint2, float paramFloat);
   
-  public void b()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
-  }
+  public abstract void a(ValueAnimator paramValueAnimator);
 }
 
 

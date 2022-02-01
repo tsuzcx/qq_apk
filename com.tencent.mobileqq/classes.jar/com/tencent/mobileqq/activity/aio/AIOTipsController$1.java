@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aged;
-import agee;
-import aiwf;
+import aewx;
+import aewy;
+import ahqq;
 
 public class AIOTipsController$1
   implements Runnable
 {
-  public AIOTipsController$1(aged paramaged, aiwf paramaiwf) {}
+  public AIOTipsController$1(aewx paramaewx, ahqq paramahqq) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AIOTipsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTipsController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,28 @@
-import UserGrowth.stRedDotRsp;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
+import UserGrowth.stSimpleComment;
+import com.tribe.async.dispatch.Dispatcher;
 
 class uly
-  implements ukd
+  implements uqy
 {
-  uly(ulx paramulx) {}
+  uly(uls paramuls, stSimpleComment paramstSimpleComment) {}
   
-  public void a(uko paramuko)
+  public void a(urj paramurj)
   {
-    if ((this.a.a() != null) && (paramuko != null) && (paramuko.a()) && (paramuko.a != null) && ((paramuko.a instanceof stRedDotRsp)))
+    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
     {
-      paramuko = (stRedDotRsp)paramuko.a;
-      ulx.a(this.a, paramuko.notificationReddot);
-      ulx.b(this.a, paramuko.menu);
-      if (this.a.a() != null) {
-        ((umk)this.a.a()).a(paramuko);
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramurj.jdField_a_of_type_JavaLangObject;
+      if (this.jdField_a_of_type_UserGrowthStSimpleComment.isDing == 1) {
+        uya.d(uls.a(), "点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
+      for (;;)
+      {
+        vli.a().dispatch(this.jdField_a_of_type_Uls.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramurj.b), paramurj.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+        return;
+        uya.d(uls.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
       }
     }
-    while (this.a.a() == null) {
-      return;
-    }
-    ((umk)this.a.a()).a();
+    uya.d(uls.a(), "评论点赞失败new！");
   }
 }
 

@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aeyf
-  implements View.OnClickListener
+public abstract interface aeyf
 {
-  public aeyf(MainFragment paramMainFragment) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

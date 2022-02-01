@@ -1,10 +1,16 @@
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
 public class bgly
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
+  public ImageView a;
+  public SeekBar a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
 }
 
 

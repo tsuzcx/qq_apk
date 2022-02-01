@@ -1,15 +1,12 @@
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-public class bjxz
-  implements ValueCallback<String>
+public abstract interface bjxz
 {
-  public bjxz(WebViewDownloadListener.1 param1) {}
+  public abstract void a();
   
-  public void a(String paramString)
-  {
-    bjtx.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
-  }
+  public abstract void a(XRecyclerView paramXRecyclerView, int paramInt);
+  
+  public abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
 }
 
 

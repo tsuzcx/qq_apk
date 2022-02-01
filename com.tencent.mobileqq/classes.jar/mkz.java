@@ -1,17 +1,15 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class mkz
-  extends blir
+  implements lsb
 {
-  public mkz(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
+  public mkz(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a()
   {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
   }
 }
 

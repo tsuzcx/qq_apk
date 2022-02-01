@@ -1,14 +1,19 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
 
-class prs
-  implements prv<BEAN, COOKIE>
+public class prs
 {
-  prs(prq paramprq, boolean paramBoolean, prk paramprk) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
+  public static prr a(int paramInt, Context paramContext)
   {
-    prq.a(this.jdField_a_of_type_Prq, this.jdField_a_of_type_Boolean, paramBoolean1, paramBoolean2, paramInt1, paramArrayList, paramCOOKIE, paramInt2, paramString, this.jdField_a_of_type_Prk);
+    switch (paramInt)
+    {
+    default: 
+      return new MediaGifView(paramContext);
+    case 0: 
+      return new MediaGifView(paramContext);
+    }
+    return new MediaVideoView(paramContext);
   }
 }
 

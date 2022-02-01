@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ocd;
+import odq;
 import org.json.JSONObject;
-import rne;
-import rwk;
+import rug;
+import sdo;
 
 public class VideoPluginInstall$SDKInstallListener$1
   implements Runnable
 {
-  public VideoPluginInstall$SDKInstallListener$1(rwk paramrwk, boolean paramBoolean, int paramInt) {}
+  public VideoPluginInstall$SDKInstallListener$1(sdo paramsdo, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.4.5");
+      localJSONObject.put("version", "8.4.8");
       if (!this.jdField_a_of_type_Boolean) {
         localJSONObject.put("error_code", this.jdField_a_of_type_Int);
       }
@@ -26,9 +26,9 @@ public class VideoPluginInstall$SDKInstallListener$1
           break label124;
         }
         str3 = "1";
-        ocd.a(null, null, "0X8009753", "0X8009753", 0, 0, str3, rne.a(), str1, localJSONObject.toString(), false);
+        odq.a(null, null, "0X8009753", "0X8009753", 0, 0, str3, rug.a(), str1, localJSONObject.toString(), false);
         if (!this.jdField_a_of_type_Boolean) {
-          ocd.a(null, null, "0X8009752", "0X8009752", 0, 0, str3, rne.a(), str1, localJSONObject.toString(), false);
+          odq.a(null, null, "0X8009752", "0X8009752", 0, 0, str3, rug.a(), str1, localJSONObject.toString(), false);
         }
       }
     }

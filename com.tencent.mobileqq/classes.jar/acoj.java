@@ -1,22 +1,17 @@
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acoj
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public qq_ad_get.QQAdGet a;
-  public qq_ad_get.QQAdGetRsp a;
+  public acoj(AccountManageActivity paramAccountManageActivity) {}
   
-  public acoj()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

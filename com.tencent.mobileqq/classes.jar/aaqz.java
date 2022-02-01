@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.ArrayList;
 
 public class aaqz
-  implements DialogInterface.OnDismissListener
+  implements BusinessObserver
 {
-  public aaqz(FollowTextView paramFollowTextView) {}
+  protected void a(ArrayList<DeviceInfo> paramArrayList) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    FollowTextView.a(this.a, true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a((ArrayList)paramObject);
   }
 }
 

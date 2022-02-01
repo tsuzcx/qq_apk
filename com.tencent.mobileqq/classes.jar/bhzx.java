@@ -1,14 +1,30 @@
-class bhzx<E>
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import java.util.concurrent.Executor;
+
+public abstract class bhzx<Param, Progress, Result>
+  extends AsyncTask<Param, Progress, Result>
 {
-  public bhzw<E> a;
-  public Object a;
-  public String a;
+  protected String a;
+  protected String b;
   
-  public bhzx(bhzw<E> parambhzw, Object paramObject, String paramString)
+  public bhzx(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bhzw = parambhzw;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString1;
+    if (!paramString1.toLowerCase().startsWith("http")) {
+      this.a = ("https://openmobile.qq.com/" + paramString1);
+    }
+    this.b = paramString2;
+  }
+  
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public Executor a()
+  {
+    if (Build.VERSION.SDK_INT >= 11) {
+      return AsyncTask.THREAD_POOL_EXECUTOR;
+    }
+    return null;
   }
 }
 

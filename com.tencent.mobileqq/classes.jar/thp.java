@@ -1,82 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SchemaBridgeInvokeHandler.register.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SchemaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "jumpAction", "", "params", "Lorg/json/JSONObject;", "callBackId", "", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thp
-  extends tgo
+class thp
+  extends PagerAdapter
 {
-  public static final thq a = new thq(null);
+  thp(tho paramtho) {}
   
-  public thp(@NotNull BridgeModule paramBridgeModule)
+  public int getCount()
   {
-    super(paramBridgeModule);
+    return tho.a(this.a).size();
   }
   
-  private final void a(JSONObject paramJSONObject, String paramString)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = null;
-    if (paramJSONObject == null)
-    {
-      a(paramString, "params is null");
-      return;
+    View localView = (View)tho.a(this.a).get(paramInt);
+    if (localView.getParent() == null) {
+      paramViewGroup.addView(localView);
     }
-    if (!paramJSONObject.has("schema"))
-    {
-      a(paramString, "schema is null");
-      return;
-    }
-    Activity localActivity = a();
-    AppRuntime localAppRuntime = ozs.a();
-    if (!(localAppRuntime instanceof QQAppInterface)) {}
-    for (;;)
-    {
-      for (;;)
-      {
-        localObject = (QQAppInterface)localObject;
-        if ((localActivity != null) && (localObject != null)) {
-          try
-          {
-            paramJSONObject = paramJSONObject.getString("schema");
-            paramJSONObject = bhni.a((QQAppInterface)localObject, (Context)localActivity, paramJSONObject);
-            if (paramJSONObject == null) {
-              break;
-            }
-            paramJSONObject.b("viola");
-            paramJSONObject.a();
-            a(paramString, null);
-            return;
-          }
-          catch (JSONException paramJSONObject)
-          {
-            paramJSONObject.printStackTrace();
-            return;
-          }
-        }
-      }
-      a(paramString, "activity or app is null");
-      return;
-      localObject = localAppRuntime;
-    }
+    return localView;
   }
   
-  @NotNull
-  public String a()
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return "schema";
-  }
-  
-  public void a()
-  {
-    a("jumpAction", (Function2)new SchemaBridgeInvokeHandler.register.1((thp)this));
+    return paramView == paramObject;
   }
 }
 

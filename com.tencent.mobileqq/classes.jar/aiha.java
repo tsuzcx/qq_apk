@@ -1,158 +1,197 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.AppletsChatPie.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
-import common.config.service.QzoneConfig;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
+import java.util.Set;
 
 public class aiha
-  extends BaseChatPie
+  implements Comparator<PhoneContact>
 {
-  private View n;
+  private final amsw jdField_a_of_type_Amsw;
+  private final Set<String> jdField_a_of_type_JavaUtilSet;
+  private final int[] jdField_a_of_type_ArrayOfInt;
   
-  public aiha(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
+  public aiha(int[] paramArrayOfInt, Set<String> paramSet, amsw paramamsw)
   {
-    super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.jdField_a_of_type_Amsw = paramamsw;
   }
   
-  private void bo()
+  private int a(PhoneContact paramPhoneContact)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(8);
-    this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setVisibility(8);
-  }
-  
-  private void bp()
-  {
-    int i;
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioshowemptyview", 1) == 1) {
-      i = 1;
+    int j = ContactUtils.getFriendStatus(paramPhoneContact.detalStatusFlag, paramPhoneContact.iTermType);
+    if ((j != 6) && (j != 0)) {}
+    for (int i = 65536;; i = 131072) {
+      switch (j)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        return i | (int)a(paramPhoneContact.unifiedCode);
+      }
     }
+    return i | 0x1;
+    return i | 0x2;
+    return i | 0x3;
+  }
+  
+  private int b(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    int j = 1;
+    if (("0".equals(paramPhoneContact1.uin)) || (TextUtils.isEmpty(paramPhoneContact1.uin))) {}
+    for (int i = 0;; i = 1)
+    {
+      if (("0".equals(paramPhoneContact2.uin)) || (TextUtils.isEmpty(paramPhoneContact2.uin))) {
+        j = 0;
+      }
+      return j - i;
+    }
+  }
+  
+  private int c(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_Amsw == null) {
+      return 0;
+    }
+    boolean bool1 = this.jdField_a_of_type_Amsw.a(paramPhoneContact1.unifiedCode, true);
+    boolean bool2 = this.jdField_a_of_type_Amsw.a(paramPhoneContact2.unifiedCode, true);
+    if (bool1) {}
     for (;;)
     {
-      AnyScaleTypeImageView localAnyScaleTypeImageView;
-      Object localObject;
-      if (i != 0) {
-        if (this.n == null)
-        {
-          this.n = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558583, null);
-          if (this.n != null)
-          {
-            localAnyScaleTypeImageView = (AnyScaleTypeImageView)this.n.findViewById(2131366028);
-            if (localAnyScaleTypeImageView != null) {
-              localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioemptybackgroundurl", "https://qzonestyle.gtimg.cn/aoi/sola/20190329164016_N0Y2CuctLc.png");
-            }
-          }
-        }
-      }
-      try
-      {
-        localAnyScaleTypeImageView.setImageURL((String)localObject);
-        localObject = (TextView)this.n.findViewById(2131366044);
-        if (localObject != null) {
-          ((TextView)localObject).setText(QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioemptytips", "还没收到过小程序通知哦"));
-        }
-        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.n, new ViewGroup.LayoutParams(-1, -1));
-        }
-        if (this.n != null) {
-          this.n.setVisibility(0);
-        }
-        return;
+      return i;
+      if (bool2) {
+        i = -1;
+      } else {
         i = 0;
       }
-      catch (Throwable localThrowable)
+    }
+  }
+  
+  private int d(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    if ((paramPhoneContact2.samFriend > 0) && (paramPhoneContact1.samFriend > 0)) {}
+    while ((paramPhoneContact2.samFriend <= 0) && (paramPhoneContact1.samFriend <= 0)) {
+      return 0;
+    }
+    return e(paramPhoneContact1, paramPhoneContact2);
+  }
+  
+  private int e(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    int i = 0;
+    if (paramPhoneContact2.samFriend > paramPhoneContact1.samFriend) {
+      i = 1;
+    }
+    while (paramPhoneContact2.samFriend >= paramPhoneContact1.samFriend) {
+      return i;
+    }
+    return -1;
+  }
+  
+  private int f(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    boolean bool1 = paramPhoneContact1.isNewRecommend;
+    boolean bool2 = paramPhoneContact2.isNewRecommend;
+    if (((bool1) || (bool2)) && ((!bool1) || (!bool2)))
+    {
+      if (bool2) {
+        return 1;
+      }
+      return -1;
+    }
+    return 0;
+  }
+  
+  private int g(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    return a(paramPhoneContact1) - a(paramPhoneContact2);
+  }
+  
+  private int h(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
+    }
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    return i;
+  }
+  
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    int i = 0;
+    int j;
+    if ((paramPhoneContact1 == null) || (paramPhoneContact2 == null)) {
+      if (paramPhoneContact1 != null)
       {
-        for (;;)
-        {
-          QLog.e("AppletsChatPie", 1, "initEmptyLayout set image error! url: " + (String)localObject, localThrowable);
-        }
+        i = 1;
+        j = i;
       }
     }
-  }
-  
-  private void bq()
-  {
-    if (this.n != null) {
-      this.n.setVisibility(8);
-    }
-  }
-  
-  public void H()
-  {
-    super.H();
-  }
-  
-  public void W()
-  {
-    super.W();
-    if ((this.jdField_a_of_type_Aggs == null) || (this.jdField_a_of_type_Aggs.getCount() < 1))
+    int k;
+    label36:
+    do
     {
-      bp();
-      return;
-    }
-    bq();
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return super.a(paramBoolean);
-  }
-  
-  public void f()
-  {
-    super.f();
-    bo();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+      return j;
+      if (paramPhoneContact2 == null) {
+        break;
+      }
+      i = -1;
+      break;
+      k = 0;
+      i = 0;
+      j = i;
+    } while (k >= this.jdField_a_of_type_ArrayOfInt.length);
+    switch (this.jdField_a_of_type_ArrayOfInt[k])
     {
     default: 
-      super.onClick(paramView);
+      i = 0;
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicFragmentActivity.a(a(), AppletsSettingFragment.class);
+      j = i;
+      if (i != 0) {
+        break;
+      }
+      k += 1;
+      break label36;
+      i = f(paramPhoneContact1, paramPhoneContact2);
+      continue;
+      i = g(paramPhoneContact1, paramPhoneContact2);
+      continue;
+      i = e(paramPhoneContact1, paramPhoneContact2);
+      continue;
+      i = h(paramPhoneContact1, paramPhoneContact2);
+      continue;
+      i = c(paramPhoneContact1, paramPhoneContact2);
+      continue;
+      i = b(paramPhoneContact1, paramPhoneContact2);
+      continue;
+      i = d(paramPhoneContact1, paramPhoneContact2);
     }
   }
   
-  public void y()
+  public long a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c == 22))
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new AppletsChatPie.1(this));
-      return;
+    if (this.jdField_a_of_type_JavaUtilSet == null) {
+      return 0L;
     }
-    super.y();
-  }
-  
-  public void z()
-  {
-    super.z();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight1Icon(2130840472, 2130840472);
+    if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
+      return 1L;
+    }
+    return 10L;
   }
 }
 

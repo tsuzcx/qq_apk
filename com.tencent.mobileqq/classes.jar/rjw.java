@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class rjw
-  implements szu
+  implements tdu
 {
-  public rjw(SelectVideoTabFragment paramSelectVideoTabFragment) {}
+  public rjw(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  public void a(szz paramszz)
+  public void a(tdz paramtdz)
   {
-    SelectVideoTabFragment.a(this.a).setCurrentItem(paramszz.a());
+    CoverSelectTabFragment.a(this.a).setCurrentItem(paramtdz.a());
   }
   
-  public void b(szz paramszz) {}
+  public void b(tdz paramtdz) {}
   
-  public void c(szz paramszz) {}
+  public void c(tdz paramtdz) {}
 }
 
 

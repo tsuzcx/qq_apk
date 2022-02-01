@@ -4,15 +4,13 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import bigv;
-import bmsj;
-import bmsk;
-import bmxh;
-import bnjl;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import common.qzone.component.util.SecurityUtil;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.util.FileUtils;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -23,13 +21,13 @@ public class CrashGuard
   private static long appLaunchTime;
   private static int crashBetweenLaunch = -1;
   private Runnable clearTimestamp;
-  private bmsj crashListener;
+  private CrashGuard.CrashListener crashListener;
   AtomicBoolean isTimeOvered = new AtomicBoolean(false);
   private Handler mHandler;
   
   public static void clearFileCache(Context paramContext)
   {
-    bmxh.a(paramContext);
+    CacheManager.clearFileCache(paramContext);
   }
   
   public static int getCrashDurationAfterLaunch()
@@ -44,33 +42,33 @@ public class CrashGuard
   
   public static CrashGuard getInstance()
   {
-    return bmsk.a;
+    return CrashGuard.H.instance;
   }
   
   public void clearCache(BaseApplication paramBaseApplication, String paramString)
   {
     clearFileCache(paramBaseApplication);
     if (!TextUtils.isEmpty(paramString)) {
-      paramBaseApplication.deleteDatabase(SecurityUtil.a(paramString));
+      paramBaseApplication.deleteDatabase(SecurityUtil.encrypt(paramString));
     }
     paramBaseApplication = paramBaseApplication.getFilesDir().getParent() + File.separator + "shared_prefs";
     if (!TextUtils.isEmpty(paramBaseApplication))
     {
-      bnjl.a(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
-      bnjl.a(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
-      bnjl.a(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
+      FileUtils.deleteFile(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
+      FileUtils.deleteFile(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
+      FileUtils.deleteFile(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
     }
-    paramBaseApplication = bigv.a(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
+    paramBaseApplication = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
     if (paramBaseApplication != null) {
-      bnjl.a(new File(paramBaseApplication));
+      FileUtils.deleteFile(new File(paramBaseApplication));
     }
   }
   
-  public void onAppLaunch(long paramLong, Handler paramHandler, bmsj parambmsj)
+  public void onAppLaunch(long paramLong, Handler paramHandler, CrashGuard.CrashListener paramCrashListener)
   {
     appLaunchTime = System.currentTimeMillis();
     this.mHandler = paramHandler;
-    this.crashListener = parambmsj;
+    this.crashListener = paramCrashListener;
     if (this.clearTimestamp == null) {
       this.clearTimestamp = new CrashGuard.1(this, paramLong);
     }
@@ -84,7 +82,7 @@ public class CrashGuard
   {
     int j = 0;
     if (this.crashListener != null) {
-      this.crashListener.a(paramThrowable);
+      this.crashListener.onCrashHandle(paramThrowable);
     }
     if (this.isTimeOvered.get()) {
       return;

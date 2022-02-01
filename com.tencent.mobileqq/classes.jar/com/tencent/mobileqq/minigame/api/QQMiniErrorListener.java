@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.minigame.api;
 
+import amtj;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import anzj;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.triton.exception.ErrorCodes;
 import com.tencent.mobileqq.triton.exception.ErrorSeverity;
 import com.tencent.mobileqq.triton.exception.TritonException;
 import com.tencent.mobileqq.triton.statistic.ErrorCallback;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,7 @@ public final class QQMiniErrorListener
     GameLog.getInstance().e("MiniErrorListener", "On TritonError " + paramString, (Throwable)paramTritonException);
     if ((paramTritonException.getError().getSeverity().compareTo((Enum)ErrorSeverity.SEVER) >= 0) && (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack()))
     {
-      paramString = bhlq.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), anzj.a(2131709099), anzj.a(2131709100), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
+      paramString = bfur.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), amtj.a(2131709331), amtj.a(2131709332), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
       paramString.setCanceledOnTouchOutside(false);
       paramString.show();
       MiniReportManager.reportEventType(this.miniAppInfo, 1024, "1");

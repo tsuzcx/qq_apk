@@ -1,16 +1,9 @@
-import com.tencent.aladdin.config.utils.SpUtils.IAladdinSpOperator;
-
 final class pat
-  implements SpUtils.IAladdinSpOperator
+  implements rgr<String>
 {
-  public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
+  public boolean a(String paramString)
   {
-    return bnrf.a(paramString, paramT, paramBoolean);
-  }
-  
-  public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
-  {
-    bnrf.a(paramString, paramT, paramBoolean);
+    return (paramString.toLowerCase().contains("readinjoy")) && (!paramString.contains("readinjoy_local_reset_config_version")) && (!paramString.contains("readinjoy_remote_reset_config_version"));
   }
 }
 

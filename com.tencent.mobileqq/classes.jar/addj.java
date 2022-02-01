@@ -1,20 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class addj
-  implements adci
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    new ayur(paramQQAppInterface).a(paramMsgType0x210.vProtobuf);
-  }
+  public addj(DialogActivity paramDialogActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
+    this.a.startActivity(paramDialogInterface);
+    this.a.finish();
   }
 }
 

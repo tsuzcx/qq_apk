@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.music;
 
-import wkf;
-import zhq;
+import vme;
+import yiq;
 
 class EditVideoMusicDialog$3
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoMusicDialog$3
   
   public void run()
   {
-    String str = zhq.a(this.a);
-    this.this$0.a = new wkf();
+    String str = yiq.a(this.a);
+    this.this$0.a = new vme();
     this.this$0.a.a(1);
     this.this$0.a.a(this.this$0);
     this.this$0.a.a(this.a, str, 0L);

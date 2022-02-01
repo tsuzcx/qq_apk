@@ -2,10 +2,10 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
 
-public final class FFmpegUtils$1
+final class FFmpegUtils$1
   extends ArrayList<Object>
 {
-  public FFmpegUtils$1(String paramString1, String paramString2, String paramString3)
+  FFmpegUtils$1(String paramString1, String paramString2, String paramString3)
   {
     add(this.val$inputFilePath);
     add(this.val$orientation);

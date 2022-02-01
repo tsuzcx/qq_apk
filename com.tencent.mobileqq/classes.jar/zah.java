@@ -1,29 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 public class zah
-  extends JobSegment<Bitmap, Bitmap>
+  extends RecyclerView.ViewHolder
 {
-  public final float a;
-  public final boolean a;
-  
-  public zah(float paramFloat, boolean paramBoolean)
+  public zah(View paramView)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    paramJobContext = zoc.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    super(paramView);
   }
 }
 

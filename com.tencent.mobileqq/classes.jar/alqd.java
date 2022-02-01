@@ -1,8 +1,6 @@
 public abstract interface alqd
 {
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract byte[] a();
+  public abstract void a(boolean paramBoolean, alqc paramalqc);
 }
 
 

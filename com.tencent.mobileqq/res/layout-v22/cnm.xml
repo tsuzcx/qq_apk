@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView android:id="@id/nc_" android:paddingLeft="12.0dip" android:paddingTop="5.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" app:expandDuration="250" app:expandedText="@string/wsi" app:maxExpandLines="6" app:noExpandText="@string/wsj">
-        <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="15.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineHeight="24.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/agc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView>
-</LinearLayout>

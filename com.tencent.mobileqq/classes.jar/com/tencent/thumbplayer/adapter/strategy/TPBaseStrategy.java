@@ -22,11 +22,18 @@ public abstract class TPBaseStrategy
   
   boolean isSystemPlayerEnable(TPPlaybackInfo paramTPPlaybackInfo)
   {
-    return (TPStrategyUtils.isSystemPlayerEnable()) && (TPStrategyUtils.enablePlayBySystemPlayer(paramTPPlaybackInfo));
+    if (TPStrategyUtils.isTVPlatform()) {}
+    while ((TPStrategyUtils.isSystemPlayerEnable()) && (TPStrategyUtils.enablePlayBySystemPlayer(paramTPPlaybackInfo))) {
+      return true;
+    }
+    return false;
   }
   
   boolean isThumbPlayerEnable(TPPlaybackInfo paramTPPlaybackInfo)
   {
+    if (TPStrategyUtils.isTVPlatform()) {
+      return TPStrategyUtils.isThumbPlayerEnable();
+    }
     return (TPStrategyUtils.isThumbPlayerEnable()) && (TPStrategyUtils.enablePlayByThumbPlayer(paramTPPlaybackInfo));
   }
   

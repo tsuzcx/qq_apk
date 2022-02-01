@@ -1,58 +1,27 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class blhg
+final class blhg
+  implements blgg
 {
-  public static final Object a;
-  private static String a;
-  private static String b;
+  blhg(String paramString1, String paramString2, blhi paramblhi, Context paramContext, File paramFile1, File paramFile2) {}
   
-  static
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static String a()
-  {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = BaseApplicationImpl.getContext();
-      if (localObject == null) {
-        break label65;
-      }
-      localObject = ((Context)localObject).getFilesDir();
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "cmshow/";
-      }
-    }
-    for (;;)
-    {
-      return jdField_a_of_type_JavaLangString;
-      label65:
-      QLog.w("ApolloSoLoader_preLoader", 2, "getSoLibPath but context is null");
+    if (this.jdField_a_of_type_Blhi != null) {
+      this.jdField_a_of_type_Blhi.a(paramLong, paramFloat);
     }
   }
   
-  public static void a(String paramString)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    QLog.d("ApolloSoLoader_preLoader", 1, new Object[] { "setLibJscPath, libJscPath=", paramString });
-    b = paramString;
-    BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).edit().putString("apollo_sp_key_jsc_lib_path", paramString).commit();
-  }
-  
-  public static String b()
-  {
-    if (TextUtils.isEmpty(b)) {
-      b = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).getString("apollo_sp_key_jsc_lib_path", null);
+    if (paramBoolean) {
+      blfu.a().a(blhf.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new blhh(this));
     }
-    QLog.d("ApolloSoLoader_preLoader", 1, new Object[] { "getLibJscPath, sLibJscPath=", b });
-    return b;
+    while (this.jdField_a_of_type_Blhi == null) {
+      return;
+    }
+    this.jdField_a_of_type_Blhi.a(paramString3);
   }
 }
 

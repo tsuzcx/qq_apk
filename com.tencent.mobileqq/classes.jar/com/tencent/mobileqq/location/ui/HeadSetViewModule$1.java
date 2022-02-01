@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.location.ui;
 
-import awqj;
-import awtw;
+import avdp;
+import avhc;
 import java.util.ArrayList;
 
 public class HeadSetViewModule$1
   implements Runnable
 {
-  public HeadSetViewModule$1(awqj paramawqj, ArrayList paramArrayList) {}
+  public HeadSetViewModule$1(avdp paramavdp, ArrayList paramArrayList) {}
   
   public void run()
   {
-    awqj.a(this.this$0).a(this.a);
-    awqj.a(this.this$0, this.a);
+    avdp.a(this.this$0).a(this.a);
+    avdp.a(this.this$0, this.a);
   }
 }
 

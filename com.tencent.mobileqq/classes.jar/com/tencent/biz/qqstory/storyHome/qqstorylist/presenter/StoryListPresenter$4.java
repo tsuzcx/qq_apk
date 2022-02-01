@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.presenter;
 
 import android.os.Handler;
-import yqj;
-import zom;
+import xru;
+import ypi;
 
 public class StoryListPresenter$4
   implements Runnable
 {
-  public StoryListPresenter$4(yqj paramyqj) {}
+  public StoryListPresenter$4(xru paramxru) {}
   
   public void run()
   {
-    String str = zom.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "qqstory_upgrade_guide.mp4");
+    String str = ypi.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "qqstory_upgrade_guide.mp4");
     if (str != null) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new StoryListPresenter.4.1(this, str));
     }

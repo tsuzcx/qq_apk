@@ -1,25 +1,54 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.io.File;
+import java.io.OutputStream;
 
 public class afva
-  implements View.OnClickListener
+  extends AbsDownloader
 {
-  public afva(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
-  
-  public void onClick(View paramView)
+  public static final String a(int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    localIntent.putExtra("param_from", 15);
-    localIntent.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    localIntent.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(localIntent, 4);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return amip.d + paramInt + "/panelGif.gif";
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadStarted();
+    }
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    {
+      paramDownloadParams = (Integer)paramDownloadParams.tag;
+      paramOutputStream = new File(a(paramDownloadParams.intValue()));
+      if (paramOutputStream.exists())
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+      paramOutputStream.getParentFile().mkdirs();
+      if ((BaseApplicationImpl.sApplication != null) && (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+      }
+      paramDownloadParams = new bgoe("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
+      paramDownloadParams.b = 1;
+      paramDownloadParams.p = false;
+      if (bgog.a(paramDownloadParams, null) == 0)
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+    }
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadFailed(0);
+    }
+    return null;
   }
 }
 

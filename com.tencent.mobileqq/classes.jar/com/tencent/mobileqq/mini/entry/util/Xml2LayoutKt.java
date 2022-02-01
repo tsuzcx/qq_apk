@@ -132,7 +132,7 @@ public final class Xml2LayoutKt
   public static final String extractDigital(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    paramString = StringsKt.substringBefore$default(paramString, "dp", null, 2, null);
+    paramString = StringsKt.substringBefore$default(StringsKt.substringBefore$default(paramString, "dp", null, 2, null), "sp", null, 2, null);
     if (paramString == null) {
       throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
     }

@@ -1,51 +1,60 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbgt
+  implements bbha
 {
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private bbgv jdField_a_of_type_Bbgv;
-  private bbgw jdField_a_of_type_Bbgw;
-  private boolean jdField_a_of_type_Boolean;
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bbhb jdField_a_of_type_Bbhb;
+  private List<bbhb> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public static bbgt a()
+  public bbgt() {}
+  
+  public bbgt(ViewGroup paramViewGroup, int paramInt)
   {
-    return bbgx.a();
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371352));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370109));
+    this.jdField_a_of_type_Bbhb = new bbgv(this.jdField_a_of_type_AndroidViewView.findViewById(2131368870));
   }
   
-  public int a(Context paramContext, bbgw parambbgw)
+  public View a()
   {
-    QLog.d("MicroMsg.LightSensor", 1, "SensorShower start");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("MicroMsg.LightSensor", 1, "[SensorShower.start] light sensor has started");
-      return 2;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getApplicationContext().getSystemService("sensor"));
-    paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(5);
-    if (paramContext != null)
-    {
-      this.jdField_a_of_type_Bbgv = new bbgv(this, null);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Bbgv, paramContext, 3);
-      this.jdField_a_of_type_Bbgw = parambbgw;
-      return 0;
-    }
-    QLog.e("MicroMsg.LightSensor", 1, "[SensorShower.start] System do not have lightSensor");
-    return 1;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void a()
+  public LinearLayout a()
   {
-    QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop");
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidHardwareSensorManager == null))
-    {
-      QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop mHasStarted is false or mSensorShower is null");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Bbgv);
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public bbhb a()
+  {
+    return this.jdField_a_of_type_Bbhb;
+  }
+  
+  public List<bbhb> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

@@ -1,67 +1,39 @@
-import android.graphics.Paint;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.data.MessageForPic;
 
-public class ayes
+public final class ayes
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  afxu jdField_a_of_type_Afxu;
+  ChatThumbView jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  int[] jdField_a_of_type_ArrayOfInt;
   
-  public void a(long paramLong)
+  public ayes(MessageForPic paramMessageForPic)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(ayeh.a(1000L * paramLong));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
   }
   
-  public void a(MedalInfo paramMedalInfo, int paramInt, Paint paramPaint, boolean paramBoolean)
+  public ayeq a()
   {
-    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) - mvd.a(this.jdField_c_of_type_AndroidWidgetTextView.getContext(), 30.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    if ((paramMedalInfo == null) || (paramMedalInfo.a == null) || (paramMedalInfo.a.size() < 0))
-    {
-      this.a.setMaxWidth(paramInt);
-      return;
-    }
-    this.a.setMaxWidth(paramInt);
+    return new ayeq(this, null);
   }
   
-  public void a(String paramString)
+  public ayes a(afxu paramafxu)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_Afxu = paramafxu;
+    return this;
   }
   
-  public void a(String paramString1, String paramString2)
+  public ayes a(ChatThumbView paramChatThumbView)
   {
-    if ((paramString1 != null) && (!paramString1.equals("")))
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      localSpannableStringBuilder.append("回复");
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), 0, localSpannableStringBuilder.length(), 17);
-      int i = localSpannableStringBuilder.length();
-      String str = paramString1;
-      if (paramString1.length() > 6)
-      {
-        paramString1 = paramString1.substring(0, 6);
-        str = paramString1 + "...";
-      }
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(": ");
-      localSpannableStringBuilder.append(paramString2);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-16777216), i, str.length() + i, 17);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), i + str.length(), localSpannableStringBuilder.length(), 17);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-      return;
-    }
-    a(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView = paramChatThumbView;
+    return this;
+  }
+  
+  public ayes a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    return this;
   }
 }
 

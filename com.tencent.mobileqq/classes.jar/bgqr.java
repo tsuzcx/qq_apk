@@ -1,479 +1,849 @@
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.SpannableString;
+import android.os.Process;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.VideoView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.business.qvip.QVipBigTroopExpiredConfig;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
+import com.tencent.pb.funcall.VipFunCallAndRing.TSourceInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
 
 public class bgqr
+  implements Manager
 {
-  public static Drawable a(Context paramContext, String paramString, float paramFloat1, float paramFloat2)
+  public static int a;
+  public static String a;
+  public static int b = -6;
+  public static int c = -7;
+  public static int d = -1;
+  bgod jdField_a_of_type_Bgod = new bgqw(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  private bgog jdField_a_of_type_Bgog;
+  public bgok a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  static
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    int i = bhtq.b(paramFloat1);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130843682);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130843682);
-    label119:
-    do
+    jdField_a_of_type_JavaLangString = "Vip_FunCall";
+    jdField_a_of_type_Int = -3;
+  }
+  
+  public bgqr(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bgog = ((bgog)paramQQAppInterface.getManager(47));
+    paramQQAppInterface = new File(lbe.f());
+    if (!paramQQAppInterface.exists()) {
+      paramQQAppInterface.mkdirs();
+    }
+    Object localObject;
+    if (!a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipFunCallManager", 2, "<<need to copy a default config file.");
+      }
+      localObject = null;
+      paramQQAppInterface = null;
+    }
+    for (;;)
     {
       try
       {
-        paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        if (paramFloat2 > 0.0F) {}
-        localException1.printStackTrace();
+        localInputStream = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getAssets().open("funcall/vipfuncall_config.json");
+        paramQQAppInterface = localInputStream;
+        localObject = localInputStream;
+        FileUtils.writeFile(lbe.f(), new StringBuffer("config.json"), localInputStream);
       }
-      catch (Exception localException1)
+      catch (IOException localIOException)
       {
+        InputStream localInputStream;
+        localObject = paramQQAppInterface;
+        localIOException.printStackTrace();
+        if (paramQQAppInterface == null) {
+          continue;
+        }
         try
         {
-          paramContext.setTag(bhez.b(i, i, bhtq.b(paramFloat2)));
-          paramContext.setDecodeHandler(bhez.j);
-          localObject = paramContext;
-          if (paramContext.getStatus() == 2)
-          {
-            paramContext.restartDownload();
-            localObject = paramContext;
-          }
-          return localObject;
+          paramQQAppInterface.close();
+          return;
         }
-        catch (Exception localException2)
+        catch (Exception paramQQAppInterface)
         {
-          Context localContext;
-          break label119;
+          paramQQAppInterface.printStackTrace();
+          return;
         }
-        localException1 = localException1;
-        paramContext = null;
       }
-      localContext = paramContext;
-    } while (!QLog.isColorLevel());
-    QLog.e("TroopAppShortcutUtils", 2, "getIcon url: " + paramString);
-    return paramContext;
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong, TroopInfo paramTroopInfo, boolean paramBoolean, int paramInt)
-  {
-    String str;
-    if (paramTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()))
-    {
-      str = "0";
-      paramString2 = paramString2.replace("$GCODE$", paramString1).replace("$CLIENTVER$", "android8.4.5").replace("$UIN$", paramQQAppInterface.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", str);
-      if (!paramBoolean) {
-        break label144;
-      }
-    }
-    label144:
-    for (paramQQAppInterface = "1";; paramQQAppInterface = "2")
-    {
-      paramString1 = paramString2.replace("$ENTERSOURCE$", paramQQAppInterface).replace("$GUIN$", paramString1).replace("$UNREADNUM$", String.valueOf(paramInt));
-      paramQQAppInterface = paramString1;
-      if (!TextUtils.isEmpty(paramTroopInfo.newTroopName)) {
-        paramQQAppInterface = paramString1.replace("$GNAME$", paramTroopInfo.newTroopName);
-      }
-      return paramQQAppInterface;
-      if (paramTroopInfo.isAdmin())
+      finally
       {
-        str = "1";
-        break;
-      }
-      str = "2";
-      break;
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, BaseActivity paramBaseActivity)
-  {
-    long l2;
-    Object localObject;
-    long l1;
-    int i;
-    if (a(paramQQAppInterface, paramLong))
-    {
-      l2 = 0L;
-      localObject = (TroopManager)paramQQAppInterface.getManager(52);
-      l1 = l2;
-      if (localObject == null) {
-        break label264;
-      }
-      localObject = ((TroopManager)localObject).b(String.valueOf(paramLong));
-      l1 = l2;
-      if (localObject == null) {
-        break label264;
-      }
-      l2 = ((TroopInfo)localObject).dwGroupClassExt;
-      if (!((TroopInfo)localObject).isTroopOwner(paramQQAppInterface.c())) {
-        break label201;
-      }
-      i = 1;
-      l1 = l2;
-    }
-    for (;;)
-    {
-      paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-      paramQQAppInterface.putExtra("url", "https://qun.qq.com/slidepanel/manage?_wv=16777218&_cwv=9&_wwv=129&gc=$GCODE$&gid=$GID$&gtype=$GTYPE$&gfrom=$GFROM".replace("$GCODE$", Long.toString(paramLong)).replace("$GID$", Integer.toString(i)).replace("$GTYPE$", Long.toString(l1)).replace("$GFROM", Integer.toString(paramInt)));
-      paramQQAppInterface.putExtra("webStyle", "noBottomBar");
-      paramQQAppInterface.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramBaseActivity.startActivityForResult(paramQQAppInterface, 20006);
-      if (paramInt == 1) {
-        bdll.b(null, "dc00898", "", Long.toString(paramLong), "0X800AD0B", "0X800AD0B", 0, 0, String.valueOf(l1), "", "", "");
-      }
-      label201:
-      while (paramInt != 2)
-      {
-        return;
-        l1 = l2;
-        if (!((TroopInfo)localObject).isTroopAdmin(paramQQAppInterface.c())) {
-          break label264;
+        if (localObject == null) {
+          break label168;
         }
-        i = 2;
-        l1 = l2;
-        break;
       }
-      bdll.b(null, "dc00898", "", Long.toString(paramLong), "0X800AFC6", "0X800AFC6", 0, 0, String.valueOf(l1), "", "", "");
-      return;
-      label264:
-      i = 0;
-    }
-  }
-  
-  public static void a(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, BaseActivity paramBaseActivity)
-  {
-    long l2;
-    Object localObject;
-    long l1;
-    int i;
-    if (a(paramQQAppInterface, paramLong))
-    {
-      l2 = 0L;
-      localObject = (TroopManager)paramQQAppInterface.getManager(52);
-      l1 = l2;
-      if (localObject == null) {
-        break label182;
-      }
-      localObject = ((TroopManager)localObject).b(String.valueOf(paramLong));
-      l1 = l2;
-      if (localObject == null) {
-        break label182;
-      }
-      l2 = ((TroopInfo)localObject).dwGroupClassExt;
-      if (!((TroopInfo)localObject).isTroopOwner(paramQQAppInterface.c())) {
-        break label156;
-      }
-      i = 1;
-      l1 = l2;
-    }
-    for (;;)
-    {
-      paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-      paramQQAppInterface.putExtra("url", "https://qun.qq.com/slidepanel/search?_wv=16777218&_cwv=9&_wwv=129&gc=$GCODE$&gid=$GID$&gtype=$GTYPE$".replace("$GCODE$", Long.toString(paramLong)).replace("$GID$", Integer.toString(i)).replace("$GTYPE$", Long.toString(l1)));
-      paramQQAppInterface.putExtra("webStyle", "noBottomBar");
-      paramQQAppInterface.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramBaseActivity.startActivityForResult(paramQQAppInterface, 20007);
-      return;
-      label156:
-      l1 = l2;
-      if (((TroopInfo)localObject).isTroopAdmin(paramQQAppInterface.c()))
-      {
-        i = 2;
-        l1 = l2;
-      }
-      else
-      {
-        label182:
-        i = 0;
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, ImageView paramImageView, String paramString, float paramFloat, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (paramImageView == null)) {
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      float f = paramFloat / 10.0F;
       try
       {
-        paramImageView.setImageDrawable(a(paramContext, paramString, paramFloat, f));
-        a(paramImageView, paramBoolean, f);
+        localInputStream.close();
         return;
       }
-      catch (Exception paramString)
+      catch (Exception paramQQAppInterface)
       {
-        QLog.e("TroopAppShortcutUtils", 1, "fetchDrawable: failed. ", paramString);
-        paramImageView.setImageDrawable(paramContext.getResources().getDrawable(2130843682));
-        a(paramImageView, false, 0.0F);
+        paramQQAppInterface.printStackTrace();
         return;
       }
     }
-    paramImageView.setImageDrawable(paramContext.getResources().getDrawable(2130843682));
-    a(paramImageView, false, 0.0F);
-  }
-  
-  public static void a(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setOnTouchListener(new bgqt());
-  }
-  
-  public static void a(View paramView, boolean paramBoolean, float paramFloat)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (paramBoolean)
+    try
     {
-      int i = bhtq.b(0.5F);
-      paramView.setPadding(i, i, i, i);
-      GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setCornerRadius(bhtq.b(paramFloat));
-      localGradientDrawable.setStroke(bhtq.b(0.5F), Color.parseColor("#FFE5E5E5"));
-      paramView.setBackground(localGradientDrawable);
-      return;
+      ((InputStream)localObject).close();
+      label168:
+      throw paramQQAppInterface;
     }
-    paramView.setPadding(0, 0, 0, 0);
-    paramView.setBackground(null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, long paramLong, String paramString, int paramInt1, int paramInt2)
-  {
-    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramSessionInfo.a);
-    if (localTroopInfo == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAppShortcutUtils", 2, "OnClickListener. troopInfo is null.");
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
       }
     }
-    label381:
+  }
+  
+  public static int a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipFunCallManager", 2, "Build.MODEL=[" + Build.MODEL + "],android.os.Build.VERSION.SDK_INT=[" + Build.VERSION.SDK_INT + "]");
+    }
+    if (d < 0) {
+      try
+      {
+        String[] arrayOfString = "R8007,SCH-I869,K-Touch E780,HUAWEI C8812E,AMOI N828,7,8,9,10,11,12,13,HUAWEI Y320-T00,gt-s7568i".split(",");
+        int i = 0;
+        while (i < arrayOfString.length)
+        {
+          if ((arrayOfString[i] != null) && ((arrayOfString[i].equalsIgnoreCase(Build.VERSION.SDK_INT + "")) || (arrayOfString[i].equalsIgnoreCase(Build.MODEL)))) {
+            d = 7;
+          }
+          i += 1;
+        }
+        if (d >= 0) {
+          break label186;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("VipFunCallManager", 1, "Build.MODEL=[" + Build.MODEL + "],android.os.Build.VERSION.SDK_INT=[" + Build.VERSION.SDK_INT + "]");
+      }
+    } else {
+      d = 6;
+    }
+    label186:
+    return d;
+  }
+  
+  public static int a(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = a(paramAppRuntime, 1, null);
+    int i = paramAppRuntime.getInt("last_fun_call_play_id", 0);
+    paramAppRuntime.edit().remove("last_fun_call_play_id").commit();
+    return i;
+  }
+  
+  public static int a(AppRuntime paramAppRuntime, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    AppRuntime localAppRuntime = paramAppRuntime;
+    if (paramAppRuntime == null) {
+      localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    }
+    if (localAppRuntime == null)
+    {
+      QLog.e("VipFunCallManager", 1, "getResIdByUin null == app");
+      return 0;
+    }
+    SharedPreferences localSharedPreferences = a(localAppRuntime, 1, null);
+    if (localSharedPreferences == null)
+    {
+      QLog.e("VipFunCallManager", 1, "getResIdByUin null == sp");
+      return 0;
+    }
+    paramAppRuntime = paramString1;
+    int i;
+    int j;
+    if (TextUtils.isEmpty(paramString1))
+    {
+      if (paramBoolean) {
+        paramAppRuntime = localAppRuntime.getAccount();
+      }
+    }
+    else
+    {
+      i = localSharedPreferences.getInt(paramAppRuntime + "callId" + paramInt, 0);
+      if ((paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label378;
+      }
+      paramAppRuntime = localSharedPreferences.getString("group", null);
+      if (TextUtils.isEmpty(paramAppRuntime)) {
+        break label373;
+      }
+      paramAppRuntime = paramAppRuntime.split(",");
+      j = 0;
+      label146:
+      if (j >= paramAppRuntime.length) {
+        break label373;
+      }
+      paramString1 = localSharedPreferences.getString("group_" + paramAppRuntime[j], null);
+      if ((TextUtils.isEmpty(paramString1)) || (paramString1.indexOf("-" + paramString2 + "-") <= 0)) {
+        break label331;
+      }
+      paramAppRuntime = paramString1.split(",");
+      if (paramAppRuntime.length < 3) {
+        break label373;
+      }
+      if (3 != paramInt) {
+        break label324;
+      }
+      paramAppRuntime = paramAppRuntime[1];
+      label245:
+      if (TextUtils.isEmpty(paramAppRuntime)) {
+        break label370;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        j = Integer.parseInt(paramAppRuntime);
+        i = j;
+        j = i;
+        if (i == 0) {
+          j = localSharedPreferences.getInt(localAppRuntime.getAccount() + "callId" + paramInt, 0);
+        }
+        return j;
+      }
+      catch (Exception paramAppRuntime)
+      {
+        label324:
+        label331:
+        QLog.e("VipFunCallManager", 1, "getResIdByUin err:" + paramAppRuntime.getMessage());
+      }
+      QLog.e("VipFunCallManager", 1, "getResIdByUin null == uin, isICall = false");
+      paramAppRuntime = paramString1;
+      break;
+      paramAppRuntime = paramAppRuntime[0];
+      break label245;
+      j += 1;
+      break label146;
+      label370:
+      continue;
+      label373:
+      paramAppRuntime = null;
+      break label245;
+      label378:
+      j = i;
+    }
+  }
+  
+  public static int a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    int i = a(paramAppRuntime, 1, null).getInt("uin_fun_call_id_change_" + paramString1 + "_" + paramString2, 2);
+    if (i != 0) {
+      a(paramAppRuntime, paramString1, 0, paramString2, 0);
+    }
+    return i;
+  }
+  
+  public static SharedPreferences a(AppRuntime paramAppRuntime, int paramInt, String paramString)
+  {
+    AppRuntime localAppRuntime = paramAppRuntime;
+    if (paramAppRuntime == null) {
+      localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    }
+    if (localAppRuntime == null)
+    {
+      QLog.e("VipFunCallManager", 1, "getFunCallUinSP app == null");
+      return null;
+    }
+    if (1 == paramInt) {}
+    for (paramAppRuntime = "fun_call_uinSp_" + localAppRuntime.getAccount();; paramAppRuntime = "fun_call_appSp")
+    {
+      Object localObject = paramAppRuntime;
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = paramAppRuntime + "_" + paramString;
+      }
+      return localAppRuntime.getApplication().getSharedPreferences((String)localObject, 4);
+    }
+  }
+  
+  public static VipFullScreenVideoView a(Activity paramActivity, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    if ((paramActivity == null) || (paramRelativeLayout == null)) {}
+    View localView;
+    RelativeLayout.LayoutParams localLayoutParams;
     do
     {
+      return null;
+      localView = LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131562978, null);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.addRule(13);
+    } while (paramActivity.isFinishing());
+    paramRelativeLayout.addView(localView, 0, localLayoutParams);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VipFunCall", 4, "addVideoView");
+    }
+    return (VipFullScreenVideoView)localView.findViewById(2131380458);
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = b(paramAppRuntime, paramInt1, paramInt2, null);
+    }
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("VipFunCallManager", 1, "getResourcePathByUrl, url=null , id=" + paramInt1 + ", type=" + paramInt2);
+      return null;
+    }
+    paramAppRuntime = str.substring(str.lastIndexOf("/") + 1);
+    paramString = lbe.f() + paramInt1 + File.separator;
+    return paramString + paramAppRuntime;
+  }
+  
+  private void a(int paramInt, SharedPreferences paramSharedPreferences)
+  {
+    if (paramInt == 0) {
+      QLog.e("VipFunCallManager", 1, "setGroup callId == 0, opType=SET_DATA_DELET_GROUP");
+    }
+    String str2;
+    Object localObject1;
+    label147:
+    do
+    {
+      String str1;
       do
       {
         do
         {
           return;
-          if (paramInt2 != 0) {
-            bgts.a(paramQQAppInterface, paramSessionInfo.a, (int)paramLong);
+          str1 = String.valueOf(paramInt);
+        } while (TextUtils.isEmpty(str1));
+        str2 = paramSharedPreferences.getString("group", null);
+      } while (TextUtils.isEmpty(str2));
+      String[] arrayOfString = str2.split(",");
+      localObject1 = "";
+      paramInt = 0;
+      if (paramInt < arrayOfString.length)
+      {
+        Object localObject2 = localObject1;
+        if (!str1.equals(arrayOfString[paramInt]))
+        {
+          localObject2 = new StringBuilder().append((String)localObject1);
+          if (((String)localObject1).length() <= 0) {
+            break label147;
           }
-          if (paramLong == 101761547L)
-          {
-            awml.b(paramQQAppInterface, paramContext, 1, paramSessionInfo.a, 0);
-            return;
+        }
+        for (localObject1 = "," + arrayOfString[paramInt];; localObject1 = arrayOfString[paramInt])
+        {
+          localObject2 = (String)localObject1;
+          paramInt += 1;
+          localObject1 = localObject2;
+          break;
+        }
+      }
+    } while (str2.equals(localObject1));
+    paramSharedPreferences.edit().putString("group", (String)localObject1).commit();
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    a(paramAppRuntime, 1, null).edit().putInt("last_fun_call_play_id", paramInt).commit();
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt, Bundle paramBundle, VipFunCallAndRing.TSourceInfo paramTSourceInfo, boolean paramBoolean)
+  {
+    int k = 0;
+    int j = -1;
+    String str4 = null;
+    String str3 = null;
+    String str2 = null;
+    Object localObject1 = null;
+    String str1 = null;
+    Object localObject2 = null;
+    int i;
+    if (paramBundle != null)
+    {
+      i = paramBundle.getInt("callId");
+      localObject1 = paramBundle.getString("name");
+      k = paramBundle.getInt("ringId");
+      j = paramBundle.getInt("feeType");
+      str4 = paramBundle.getString("url_Video");
+      str3 = paramBundle.getString("url_Fuzz");
+      str2 = paramBundle.getString("url_Picture");
+      paramTSourceInfo = paramBundle.getString("url_Ring");
+      str1 = paramBundle.getString("url_call_thum");
+      paramBundle = (Bundle)localObject1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipFunCallManager", 2, "downloadFCSuit callid=" + paramInt + ", ringid=" + k + ", feeType" + j + ", mediaUrl=" + str4 + ", fuzzImageUrl" + str3 + ", imageUrl=" + str2 + ", ringUrl" + paramTSourceInfo);
+      }
+      if (i == 0) {}
+      do
+      {
+        return;
+        if (paramTSourceInfo == null) {
+          break label542;
+        }
+        str4 = paramTSourceInfo.str_media_url.get();
+        str3 = paramTSourceInfo.str_image_url.get();
+        str2 = paramTSourceInfo.str_image_url.get();
+        localObject1 = paramTSourceInfo.str_ring_url.get();
+        paramBundle = paramTSourceInfo.str_fc_name.get();
+        str1 = paramTSourceInfo.str_thumb_url.get();
+        i = paramInt;
+        paramTSourceInfo = (VipFunCallAndRing.TSourceInfo)localObject1;
+        break;
+        localObject1 = new File(lbe.f() + paramInt + File.separator);
+        if (!((File)localObject1).exists()) {
+          ((File)localObject1).mkdirs();
+        }
+        localObject1 = a(paramAppRuntime, 0, String.valueOf(paramInt));
+        if (localObject1 != null)
+        {
+          localObject1 = ((SharedPreferences)localObject1).edit();
+          ((SharedPreferences.Editor)localObject1).putInt("callId", i);
+          ((SharedPreferences.Editor)localObject1).putInt("ringId", k);
+          if (j != 0) {
+            ((SharedPreferences.Editor)localObject1).putInt("feeType", j);
           }
-          if (paramLong == 101793773L)
-          {
-            a(paramQQAppInterface, paramContext, localTroopInfo, paramSessionInfo);
-            return;
+          if (!TextUtils.isEmpty(paramBundle)) {
+            ((SharedPreferences.Editor)localObject1).putString("name", paramBundle);
           }
-          if (paramLong == 101817424L)
-          {
-            b(paramQQAppInterface, paramContext, localTroopInfo, paramSessionInfo);
-            return;
-          }
-          if (paramLong == 101847770L)
-          {
-            paramQQAppInterface = TroopMemberListActivity.a(paramContext, paramSessionInfo.a, 19);
-            paramQQAppInterface.putExtra("TROOP_INFO_MEMBER_NUM", localTroopInfo.wMemberNum);
-            paramContext.startActivity(paramQQAppInterface);
-            return;
-          }
-          if (paramLong != 101872203L) {
+          ((SharedPreferences.Editor)localObject1).putString("_6", str4);
+          ((SharedPreferences.Editor)localObject1).putString("_9", str3);
+          ((SharedPreferences.Editor)localObject1).putString("_7", str2);
+          ((SharedPreferences.Editor)localObject1).putString("_3", paramTSourceInfo);
+          ((SharedPreferences.Editor)localObject1).putString("_8", str1);
+          ((SharedPreferences.Editor)localObject1).commit();
+        }
+        paramAppRuntime = a(paramAppRuntime, 0, null);
+      } while (paramAppRuntime == null);
+      paramAppRuntime = paramAppRuntime.edit();
+      paramAppRuntime.putString("_3_" + k, paramTSourceInfo);
+      paramAppRuntime.commit();
+      return;
+      label542:
+      i = paramInt;
+      paramBundle = localObject2;
+      paramTSourceInfo = (VipFunCallAndRing.TSourceInfo)localObject1;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, String paramString2, int paramInt2)
+  {
+    a(paramAppRuntime, 1, null).edit().putInt("uin_fun_call_id_change_" + paramString1 + "_" + paramString2, paramInt1).commit();
+    if (paramInt2 == 0) {}
+    do
+    {
+      return;
+      paramString2 = a(paramAppRuntime, paramInt2, 8, null);
+      paramString1 = new File(paramString2);
+    } while (FileUtils.fileExists(paramString2));
+    String str = b(paramAppRuntime, paramInt2, 8, null);
+    paramString2 = new Bundle();
+    paramString1 = new bgoe(str, paramString1);
+    ((bgog)paramAppRuntime.getManager(47)).a(1).a(paramString1, null, paramString2);
+  }
+  
+  public static boolean a()
+  {
+    return new File(bgqq.jdField_a_of_type_JavaLangString).exists();
+  }
+  
+  public static boolean a(Context paramContext, VideoView paramVideoView, String paramString, int paramInt1, bgqx parambgqx, int paramInt2, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (paramVideoView == null) || (paramString == null)) {
+      return false;
+    }
+    paramContext = new File(paramString);
+    if ((paramContext.exists()) && (!paramVideoView.isPlaying()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipFunCallManager", 2, "playing[" + paramInt2 + "]");
+      }
+      if (paramInt1 == 6)
+      {
+        paramVideoView.setOnTouchListener(new bgqs());
+        paramVideoView.setVideoPath(paramContext.getAbsolutePath());
+        paramVideoView.requestFocus();
+        paramVideoView.setVisibility(0);
+        paramVideoView.setOnPreparedListener(new bgqt(parambgqx));
+        paramVideoView.setOnCompletionListener(new bgqu(paramVideoView));
+        paramVideoView.setOnErrorListener(new bgqv(paramInt2, parambgqx, paramVideoView, paramBoolean));
+        return true;
+      }
+      if (paramInt1 == 7)
+      {
+        paramContext = bfpx.a(paramString);
+        if (paramContext != null) {}
+        for (paramContext = new BitmapDrawable(paramContext); paramContext != null; paramContext = null)
+        {
+          paramVideoView = (RelativeLayout)paramVideoView.getParent();
+          if (paramVideoView == null) {
             break;
           }
-        } while (nhv.a(paramBaseActivity, paramSessionInfo.a));
-        paramQQAppInterface = (mxc)paramQQAppInterface.getManager(373);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface.a(paramBaseActivity, 3, paramSessionInfo.a, 0);
-      return;
-      if (paramLong == 101889454L)
-      {
-        paramBaseActivity = new Bundle();
-        paramBaseActivity.putString("action", "click");
-        paramBaseActivity.putString("page", "group_page");
-        paramBaseActivity.putString("module", "studyroom_entry");
-        paramBaseActivity.putString("room_id", paramSessionInfo.a);
-        bdwp.a(paramBaseActivity);
-      }
-      boolean bool;
-      int i;
-      if ((paramLong == 1101236949L) && (armu.c().mIsEnable) && (localTroopInfo.mIsFreezed == 1) && ((localTroopInfo.isAdmin()) || (localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()))))
-      {
-        bool = aojn.c(localTroopInfo.groupFreezeReason);
-        if (!localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-          break label479;
-        }
-        String str1 = paramSessionInfo.a;
-        if (bool)
-        {
-          i = 15;
-          String str2 = VipUtils.a(0, i).toString();
-          String str3 = anzj.a(2131700652);
-          bgqs localbgqs = new bgqs();
-          if (!bool) {
-            break label466;
+          if (parambgqx != null) {
+            parambgqx.a();
           }
-          paramBaseActivity = "0X800A57F";
-          if (!bool) {
-            break label473;
-          }
-          i = 1;
-          VipUtils.a(paramContext, str1, str2, str3, localbgqs, paramBaseActivity, i, bool);
+          paramVideoView.setBackgroundDrawable(paramContext);
+          return true;
         }
       }
-      else
-      {
-        if (paramInt1 != 0) {
-          break label488;
-        }
-      }
-      for (paramInt1 = 4007;; paramInt1 = 4008)
-      {
-        if (!MiniAppLauncher.isMiniAppUrl(paramString)) {
-          break label496;
-        }
-        MiniAppLauncher.startMiniApp(paramContext, a(paramQQAppInterface, paramSessionInfo.a, paramString, paramLong, localTroopInfo, true, paramInt2), paramInt1, bguq.a(localTroopInfo, paramSessionInfo.a), null);
-        return;
-        i = 8;
-        break;
-        paramBaseActivity = "0X8009E38";
-        break label381;
-        i = 3;
-        break label389;
-        VipUtils.a(paramContext, bool);
-        break label406;
-      }
-      if ((paramString.startsWith("http")) || (paramString.startsWith("https")))
-      {
-        paramBaseActivity = new Intent(paramContext, QQBrowserActivity.class);
-        paramBaseActivity.putExtra("url", a(paramQQAppInterface, paramSessionInfo.a, paramString, paramLong, localTroopInfo, true, paramInt2));
-        paramBaseActivity.putExtra("webStyle", "noBottomBar");
-        paramBaseActivity.putExtra("startOpenPageTime", System.currentTimeMillis());
-        paramContext.startActivity(paramBaseActivity);
-        return;
-      }
-    } while (!paramString.startsWith("mqqapi"));
-    label389:
-    label406:
-    label466:
-    label473:
-    label479:
-    label488:
-    label496:
-    paramBaseActivity = a(paramQQAppInterface, paramSessionInfo.a, paramString, paramLong, localTroopInfo, true, paramInt2);
-    paramSessionInfo = new Intent(paramContext, JumpActivity.class);
-    paramQQAppInterface = paramBaseActivity;
-    if (paramLong == 1105981808L) {
-      paramQQAppInterface = zmw.a(paramSessionInfo, paramBaseActivity, null);
     }
-    paramSessionInfo.setData(Uri.parse(paramQQAppInterface));
-    paramContext.startActivity(paramSessionInfo);
+    return false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, TroopInfo paramTroopInfo, SessionInfo paramSessionInfo)
+  @SuppressLint({"WrongConstant"})
+  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    arjl localarjl = (arjl)aran.a().a(535);
-    if ((localarjl == null) || (localarjl.a == null)) {
-      QQToast.a(paramContext, 0, 2131692838, 0).a();
-    }
-    bejx localbejx;
-    boolean bool;
-    do
-    {
-      return;
-      localbejx = (bejx)paramQQAppInterface.getManager(339);
-      bool = localbejx.a(2, 1, paramTroopInfo.uin);
-      paramSessionInfo = bekk.a(bool, paramTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()), paramTroopInfo.isAdmin(), paramTroopInfo.troopowneruin, paramSessionInfo.a, 0);
-      switch (localarjl.a.a())
-      {
-      default: 
-        if (!localbejx.a(paramContext, 2, paramTroopInfo.troopuin, 0)) {
-          break label231;
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopAppShortcutUtils", 2, new Object[] { "start serviceType=", Integer.valueOf(2), " fail because of other together business exist, from=", Integer.valueOf(0) });
-    return;
-    QQToast.a(paramContext, 0, 2131692838, 0).a();
-    return;
+    long l1 = System.currentTimeMillis();
+    boolean bool = bftf.a();
+    Object localObject = paramContext;
     if (bool)
     {
-      localbejx.b(paramContext, paramTroopInfo.troopuin, 1, 2, 0, paramSessionInfo);
-      return;
+      localObject = paramContext;
+      if (paramContext != null) {}
     }
-    localbejx.a(paramContext, paramTroopInfo.troopuin, 1, 2, 0, paramSessionInfo);
-    return;
-    label231:
-    bekk.a(paramQQAppInterface, localarjl.a.b(), localarjl.a.a(), localarjl.a.b(), paramSessionInfo, 1);
+    for (;;)
+    {
+      try
+      {
+        localObject = BaseApplicationImpl.sApplication;
+        if ((!bool) || (localObject == null)) {
+          break label349;
+        }
+        i = ((Context)localObject).checkPermission("android.permission.READ_EXTERNAL_STORAGE", Process.myPid(), Process.myUid());
+        if (i == 0) {
+          bool = true;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        long l2;
+        QLog.e("VipFunCallManager", 1, "isExternalStorageReady have sdCARD:" + bool + ", from:" + paramString + ", lonth=" + (System.currentTimeMillis() - l1) + ", msg=" + paramContext.getMessage());
+        return bool;
+      }
+      try
+      {
+        l2 = System.currentTimeMillis() - l1;
+        if ((QLog.isColorLevel()) || (!bool) || (paramBoolean)) {
+          QLog.d("VipFunCallManager", 1, "isExternalStorageReady have sdCARD:" + bool + ", from:" + paramString + ", showLog:" + paramBoolean + ", type=" + i + ", lonth=" + l2);
+        }
+        bggr.a("externalStorageType", paramString, i + "_t", l2 + "", bool + "", l2 + "", bool + "_p", "", "", "");
+        return bool;
+      }
+      catch (Exception paramContext)
+      {
+        continue;
+      }
+      bool = false;
+      continue;
+      label349:
+      int i = -10;
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, bgnw parambgnw, long paramLong)
+  public static String b(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, String paramString)
   {
-    if (parambgnw == null) {}
-    bgko localbgko;
+    Object localObject = null;
+    SharedPreferences localSharedPreferences = a(paramAppRuntime, 0, String.valueOf(paramInt1));
+    paramAppRuntime = localObject;
+    if (localSharedPreferences != null)
+    {
+      if (paramInt2 <= -1) {
+        break label101;
+      }
+      paramAppRuntime = localSharedPreferences.getString("_" + paramInt2, null);
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty(paramAppRuntime)) {
+        QLog.e("VipFunCallManager", 1, "getResourceUrl, url=null , id=" + paramInt1 + ", type=" + paramInt2);
+      }
+      return paramAppRuntime;
+      label101:
+      paramAppRuntime = localObject;
+      if (!TextUtils.isEmpty(paramString)) {
+        paramAppRuntime = localSharedPreferences.getString(paramString, null);
+      }
+    }
+  }
+  
+  public static boolean b()
+  {
+    int i = NetworkUtil.getSystemNetwork(null);
+    return (1 == i) || (4 == i);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      bool = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "VipFunCallManager", false);
+      if ((QLog.isColorLevel()) || (!bool)) {
+        QLog.d("VipFunCallManager", 2, "startDownload, id=" + paramInt1 + ", resType=" + paramInt2 + ", isIPC=" + paramBoolean + ", srcType=" + paramInt3 + ", haveSDCard=" + bool);
+      }
+      if (paramInt1 != 0) {
+        break label112;
+      }
+    }
+    label112:
+    String str1;
+    String str2;
+    Object localObject;
+    label298:
     do
     {
+      return;
+      bool = false;
+      break;
+      str1 = b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, null);
+      if (TextUtils.isEmpty(str1))
+      {
+        QLog.e("VipFunCallManager", 1, "startDownload error0 url=null, id=" + paramInt1 + ", resType=" + paramInt2 + ", isIPC=" + paramBoolean + ", srcType=" + paramInt3);
+        return;
+      }
+      str2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, null);
+      if (TextUtils.isEmpty(str2))
+      {
+        QLog.e("VipFunCallManager", 1, "startDownload error resPath=null, id=" + paramInt1 + ", resType=" + paramInt2 + ", isIPC=" + paramBoolean + ", srcType=" + paramInt3);
+        return;
+      }
+      localObject = new File(str2);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {
+        break label519;
+      }
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("VipFunCallManager", 2, "startDownload exists(), id=" + paramInt1 + ", resType=" + paramInt2 + ", isIPC=" + paramBoolean + ", srcType=" + paramInt3 + ", fileExist=" + bool);
+      }
+    } while ((bool) && (!paramBoolean));
+    Bundle localBundle = new Bundle();
+    if ((7 != a()) && (7 == paramInt2)) {}
+    for (int i = 0;; i = paramInt2)
+    {
+      localBundle.putInt("callId", paramInt1);
+      localBundle.putString("path", str2);
+      localBundle.putBoolean("isIPC", paramBoolean);
+      localBundle.putInt("resourceType", paramInt2);
+      localBundle.putInt("srcType", paramInt3);
+      localBundle.putInt("dealType", i);
+      if (bool)
+      {
+        localBundle.putBoolean("isExists", true);
+        localObject = new bgoe(str1, (File)localObject);
+        ((bgoe)localObject).a(3);
+        ((bgoe)localObject).jdField_a_of_type_Int = 0;
+        ((bgoe)localObject).a(localBundle);
+        this.jdField_a_of_type_Bgod.onDone((bgoe)localObject);
+        return;
+        label519:
+        bool = false;
+        break label298;
+      }
+      if (i == 0)
+      {
+        label530:
+        localObject = new bgoe(str1, (File)localObject);
+        ((bgoe)localObject).jdField_a_of_type_Byte = 1;
+        ((bgoe)localObject).jdField_e_of_type_Long = 5242880L;
+        ((bgoe)localObject).jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
+        if ((9 == paramInt2) || (7 == paramInt2)) {
+          if (WebpSoLoader.a() == null) {
+            break label711;
+          }
+        }
+      }
+      label711:
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        ((bgoe)localObject).l = paramBoolean;
+        if (7 != paramInt2) {
+          ((bgoe)localObject).b = true;
+        }
+        this.jdField_a_of_type_Bgog.a(1).a((bgoe)localObject, this.jdField_a_of_type_Bgod, localBundle);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("VipFunCallManager", 2, "startDownload, id=" + paramInt1 + ", resType=" + paramInt2 + ", url=" + str1);
+        return;
+        localObject = new File(str2 + ".tmp");
+        break label530;
+      }
+    }
+  }
+  
+  public void a(AppRuntime paramAppRuntime, int paramInt1, String paramString, int paramInt2, int paramInt3, List<Long> paramList, long paramLong)
+  {
+    Object localObject = paramAppRuntime;
+    if (paramAppRuntime == null) {
+      localObject = BaseApplicationImpl.sApplication.getRuntime();
+    }
+    if (localObject == null) {
+      QLog.e("VipFunCallManager", 1, "setFunCallData null == app opType=" + paramInt1 + ", callId=" + paramInt2);
+    }
+    SharedPreferences localSharedPreferences;
+    do
+    {
+      return;
+      localSharedPreferences = a((AppRuntime)localObject, 1, null);
+      if (localSharedPreferences == null)
+      {
+        QLog.e("VipFunCallManager", 1, "setFunCallData null == sp");
+        return;
+      }
+      if (2 == paramInt1)
+      {
+        a(paramInt2, localSharedPreferences);
+        return;
+      }
+      if (1 != paramInt1) {
+        break;
+      }
+      if ((paramInt2 == 0) || (paramList == null) || (paramList.size() < 1))
+      {
+        QLog.e("VipFunCallManager", 1, "setGroup uins.size() < 1 opType=" + paramInt1 + ", callId=" + paramInt2);
+        return;
+      }
+      paramString = String.valueOf(paramInt2);
+    } while ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.size() < 1));
+    String str1 = localSharedPreferences.getString("group", null);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    String[] arrayOfString;
+    int i;
+    int j;
+    if (!TextUtils.isEmpty(str1))
+    {
+      arrayOfString = str1.split(",");
+      i = -1;
+      paramInt1 = 0;
+      j = i;
+      if (paramInt1 >= arrayOfString.length) {
+        break label444;
+      }
+      if (paramString.equals(arrayOfString[paramInt1])) {
+        j = paramInt1;
+      }
       do
       {
-        do
-        {
-          return;
-          localbgko = (bgko)aran.a().a(590);
-        } while (localbgko == null);
-        paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.b(String.valueOf(paramLong));
-    } while (paramQQAppInterface == null);
-    parambgnw.c = localbgko.a((int)paramQQAppInterface.dwGroupClassExt);
-    if (localbgko.a == bgko.c) {}
-    for (boolean bool = true;; bool = false)
+        paramInt1 += 1;
+        i = j;
+        break;
+        j = i;
+      } while (TextUtils.isEmpty(arrayOfString[paramInt1]));
+      localObject = localSharedPreferences.getString("group_" + arrayOfString[paramInt1], "");
+      Iterator localIterator = paramList.iterator();
+      paramAppRuntime = (AppRuntime)localObject;
+      label327:
+      if (localIterator.hasNext())
+      {
+        String str2 = String.valueOf((Long)localIterator.next());
+        if (TextUtils.isEmpty(str2)) {
+          break label818;
+        }
+        paramAppRuntime = paramAppRuntime.replace(str2 + "-", "");
+      }
+    }
+    label552:
+    label818:
+    for (;;)
     {
-      parambgnw.d = bool;
+      break label327;
+      j = i;
+      if (((String)localObject).equals(paramAppRuntime)) {
+        break;
+      }
+      localEditor.putString("group_" + arrayOfString[paramInt1], paramAppRuntime);
+      j = i;
+      break;
+      j = -1;
+      label444:
+      if (j < 0) {
+        if (TextUtils.isEmpty(str1)) {
+          break label552;
+        }
+      }
+      for (paramAppRuntime = str1 + "," + paramString;; paramAppRuntime = paramString)
+      {
+        localEditor.putString("group", paramAppRuntime);
+        paramString = paramList.iterator();
+        for (paramAppRuntime = "-"; paramString.hasNext(); paramAppRuntime = paramAppRuntime + paramList + "-") {
+          paramList = (Long)paramString.next();
+        }
+      }
+      paramAppRuntime = paramInt2 + "," + paramInt3 + "," + paramAppRuntime + "," + paramLong;
+      localEditor.putString("group_" + paramInt2, paramAppRuntime);
+      localEditor.commit();
+      return;
+      if (paramInt1 == 0)
+      {
+        paramAppRuntime = localSharedPreferences.edit();
+        paramAppRuntime.putInt(paramString + "callId" + 6, paramInt2);
+        paramAppRuntime.putInt(paramString + "callId" + 9, paramInt2);
+        paramAppRuntime.putInt(paramString + "callId" + 7, paramInt2);
+        paramAppRuntime.putInt(paramString + "callId" + 3, paramInt3);
+        paramAppRuntime.commit();
+        return;
+      }
+      QLog.e("VipFunCallManager", 1, "setFunCallData opType == unknow " + paramInt1);
       return;
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  public boolean a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, bgok parambgok)
   {
-    return (bguq.b(paramQQAppInterface, Long.toString(paramLong), paramQQAppInterface.c())) || (bguq.a(paramQQAppInterface, Long.toString(paramLong), paramQQAppInterface.c()));
+    this.jdField_a_of_type_Bgok = parambgok;
+    int i = a();
+    a(paramInt1, 9, paramBoolean, paramInt3);
+    a(paramInt1, i, paramBoolean, paramInt3);
+    if (paramInt2 != 0)
+    {
+      bgdt localbgdt = (bgdt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
+      localbgdt.jdField_a_of_type_Bgok = parambgok;
+      localbgdt.a(paramInt2, 3, paramBoolean, paramInt3, "comering");
+    }
+    if (i == 6) {
+      a(paramInt1, 7, false, 0);
+    }
+    return true;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, Context paramContext, TroopInfo paramTroopInfo, SessionInfo paramSessionInfo)
+  public void onDestroy()
   {
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = (bejx)paramQQAppInterface.getManager(339);
-    boolean bool = paramQQAppInterface.a(4, -1, paramSessionInfo.a);
-    paramTroopInfo = bekk.a(bool, paramTroopInfo.isTroopOwner(str), paramTroopInfo.isAdmin(), paramTroopInfo.troopowneruin, paramSessionInfo.a, 0);
-    if (bool)
-    {
-      paramQQAppInterface.b(paramContext, paramSessionInfo.a, 1, 4, 0, paramTroopInfo);
-      return;
-    }
-    paramQQAppInterface.a(paramContext, paramSessionInfo.a, 1, 4, 0, paramTroopInfo);
+    this.jdField_a_of_type_Bgok = null;
   }
 }
 

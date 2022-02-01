@@ -1,6 +1,18 @@
-public abstract interface bber
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
+
+public class bber
+  extends bbfd
 {
-  public abstract void a(int paramInt);
+  public bber(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
+  }
+  
+  public bays a(List<bayt> paramList, String paramString)
+  {
+    return new bayg(paramList, paramString);
+  }
 }
 
 

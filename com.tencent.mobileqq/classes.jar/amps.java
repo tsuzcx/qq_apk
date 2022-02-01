@@ -1,19 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import SummaryCard.CondFitUser;
+import java.util.List;
 
-class amps
-  implements View.OnClickListener
+public abstract interface amps
 {
-  amps(ampp paramampp, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
-  {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
-    ampp.a(this.jdField_a_of_type_Ampp);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

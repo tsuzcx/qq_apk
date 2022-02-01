@@ -1,111 +1,63 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class biys
-  extends Drawable
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private ColorMatrixColorFilter jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private Paint c;
+  public biys(Login paramLogin) {}
   
-  public biys()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.argb(200, 0, 0, 0));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    this.c = new Paint();
-    this.c.setAntiAlias(true);
-    this.c.setStyle(Paint.Style.FILL);
-    this.c.setColor(0);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    invalidateSelf();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void a(ColorMatrixColorFilter paramColorMatrixColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter = paramColorMatrixColorFilter;
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(paramColorMatrixColorFilter);
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
-    if (this.jdField_a_of_type_Float > Math.min(i, j)) {}
-    do
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
     {
+      AuthDevUgActivity.a(4);
+      this.a.b();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j / 2.0F + this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = (j / 2.0F - this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = (i / 2.0F - this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (i / 2.0F + this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-      this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, j);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j);
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, j / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, j / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath.close();
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.c.getColor() != 0) {
-        paramCanvas.drawCircle(i / 2.0F, j / 2.0F, this.jdField_a_of_type_Float, this.c);
+      Object localObject;
+      if (paramView == this.a.c)
+      {
+        localObject = (InputMethodManager)this.a.getSystemService("input_method");
+        if (localObject != null) {
+          ((InputMethodManager)localObject).hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+        }
+        localObject = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        ((Message)localObject).what = 0;
+        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessageDelayed((Message)localObject, 100L);
       }
-    } while (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter == null);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      else if (paramView == this.a.jdField_a_of_type_AndroidViewView)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      }
+      else if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+      }
+      else if (paramView == this.a.jdField_a_of_type_AndroidWidgetTextView)
+      {
+        localObject = new Intent(this.a, LoginPhoneNumActivity2.class);
+        ((Intent)localObject).putExtra("key_req_src", this.a.jdField_a_of_type_Int);
+        this.a.startActivityForResult((Intent)localObject, 10000);
+      }
+      else if (paramView == this.a.jdField_b_of_type_AndroidWidgetTextView)
+      {
+        this.a.e();
+      }
+    }
   }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

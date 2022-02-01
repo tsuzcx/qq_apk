@@ -1,29 +1,9 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class alqt
-  extends alqi
+  extends alqj
 {
-  public alqt(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131697791);
-    this.b = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramObject instanceof alqt))
-    {
-      paramObject = (alqt)paramObject;
-      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
-      return paramObject;
-    }
-    paramObject = new alqt(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
-    return paramObject;
-  }
+  public alqt(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

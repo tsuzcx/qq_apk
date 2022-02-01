@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView android:id="@id/nc_" android:paddingLeft="12.0dip" android:paddingTop="5.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" app:expandDuration="250" app:expandedText="@string/wsi" app:maxExpandLines="6" app:noExpandText="@string/wsj">
-        <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="15.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/agc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/mxi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/n8u" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+    <TextView android:textColor="@color/skin_over_header" android:id="@id/nqc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqh" android:layout_centerInParent="true" />
 </LinearLayout>

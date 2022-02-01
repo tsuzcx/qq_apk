@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akrx;
-import aksx;
-import aksy;
+import ajpv;
+import ajqn;
+import ajqo;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ import java.util.Locale;
 public class NewAlbumListAdapter$1
   implements Runnable
 {
-  public NewAlbumListAdapter$1(aksx paramaksx) {}
+  public NewAlbumListAdapter$1(ajqn paramajqn) {}
   
   public void run()
   {
-    aksy localaksy = new aksy();
+    ajqo localajqo = new ajqo();
     Object localObject1 = this.this$0.getDataInfos();
     Object localObject2 = new ArrayList(((List)localObject1).size());
     ((List)localObject2).addAll((Collection)localObject1);
@@ -34,14 +34,14 @@ public class NewAlbumListAdapter$1
         {
           str1 = str1.toLowerCase(Locale.US);
           if (str1.contains("/tencent/")) {
-            aksx.a(localaksy, str1, (QQAlbumInfo)localObject2);
+            ajqn.a(localajqo, str1, (QQAlbumInfo)localObject2);
           } else {
-            aksx.b(localaksy, str1, (QQAlbumInfo)localObject2);
+            ajqn.b(localajqo, str1, (QQAlbumInfo)localObject2);
           }
         }
       }
     }
-    akrx.a(localaksy.a, localaksy.b, localaksy.c, localaksy.d, localaksy.e, localaksy.f, localaksy.g, localaksy.h, localaksy.i, localaksy.j, localaksy.k);
+    ajpv.a(localajqo.a, localajqo.b, localajqo.c, localajqo.d, localajqo.e, localajqo.f, localajqo.g, localajqo.h, localajqo.i, localajqo.j, localajqo.k);
   }
 }
 

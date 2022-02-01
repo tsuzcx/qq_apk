@@ -1,18 +1,64 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.together.writetogether.data.EditUserHistory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class benx
-  implements Parcelable.Creator<EditUserHistory>
+public class benx
+  extends beno
 {
-  public EditUserHistory a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean c;
+  
+  public benx(String paramString)
   {
-    return new EditUserHistory(paramParcel);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
+      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public EditUserHistory[] a(int paramInt)
+  public benx(JSONObject paramJSONObject)
   {
-    return new EditUserHistory[paramInt];
+    a(paramJSONObject);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaLangString.length();
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

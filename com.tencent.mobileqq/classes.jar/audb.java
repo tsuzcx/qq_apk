@@ -1,33 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
 
-final class audb
-  implements View.OnClickListener
+class audb
+  implements DialogInterface.OnClickListener
 {
-  audb(FileManagerEntity paramFileManagerEntity, auef paramauef) {}
+  audb(aucz paramaucz, Uri paramUri, String paramString, InputStream paramInputStream, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     try
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      localQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-      auna.d(BaseActivity.sTopActivity.getString(2131692445));
-      if ((this.jdField_a_of_type_Auef != null) && (this.jdField_a_of_type_Auef.c())) {
-        aunj.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      }
-      label70:
-      EventCollector.getInstance().onViewClicked(paramView);
+      aucz.a(this.jdField_a_of_type_Aucz, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Aucz.b = false;
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramDialogInterface)
     {
-      break label70;
+      QLog.e("UriParserPathHelper", 1, "system share.copy file error", paramDialogInterface);
+      if (aucz.jdField_a_of_type_JavaLangString != null) {}
+    }
+    for (paramDialogInterface = this.jdField_a_of_type_Aucz.jdField_a_of_type_AndroidContentContext.getString(2131718384);; paramDialogInterface = aucz.jdField_a_of_type_JavaLangString)
+    {
+      aucz.a(this.jdField_a_of_type_Aucz, paramDialogInterface);
+      if (aucz.a(this.jdField_a_of_type_Aucz) == null) {
+        break;
+      }
+      aucz.a(this.jdField_a_of_type_Aucz).a(this.jdField_a_of_type_AndroidNetUri);
+      aucz.a(this.jdField_a_of_type_Aucz, null);
+      return;
     }
   }
 }

@@ -1,31 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFollowListRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 class vqw
-  implements aaav<FeedCloudRead.StGetFollowListRsp>
+  extends Job<Object, Object, Object>
 {
-  vqw(vqu paramvqu, int paramInt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String arg4, FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp)
+  vqw(vqv paramvqv, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
   {
-    QLog.d("QCircleSpecialFollowMgr", 1, "updateSpecialFollowList: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + ???);
-    synchronized (this.jdField_a_of_type_Vqu)
-    {
-      if (vqu.b(this.jdField_a_of_type_Vqu) != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_Vqu.b();
-        return;
-      }
-      vqu.a(this.jdField_a_of_type_Vqu, false);
-      if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowListRsp != null))
-      {
-        vqu.a(this.jdField_a_of_type_Vqu).obtainMessage(1003, new vrb(paramStGetFollowListRsp, this.jdField_a_of_type_Int, null)).sendToTarget();
-        return;
-      }
-    }
-    vqu.a(this.jdField_a_of_type_Vqu).obtainMessage(1005).sendToTarget();
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    xvv.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Vqv.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 

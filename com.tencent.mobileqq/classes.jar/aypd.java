@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.text.QzoneTextBuilder;
+import com.tencent.widget.XEditTextEx;
 
-class aypd
-  implements DialogInterface.OnClickListener
+public class aypd
+  extends Editable.Factory
 {
-  aypd(ayoz paramayoz, bhpc parambhpc) {}
+  public aypd(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
+    if ((paramCharSequence instanceof QzoneTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QzoneTextBuilder(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
   }
 }
 

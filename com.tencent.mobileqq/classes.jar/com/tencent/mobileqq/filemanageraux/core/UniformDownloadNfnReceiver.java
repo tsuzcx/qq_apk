@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import aure;
+import atdm;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadNfnReceiver
@@ -27,7 +27,7 @@ public class UniformDownloadNfnReceiver
       i = paramContext.getInt("_notify_param_Id");
       paramIntent = paramContext.getString("_notify_param_Url");
       QLog.i(a, 1, "[UniformDL] onReceive. PAUSE_DOWNLOAD: id:" + i + " url:" + paramIntent);
-      aure.a().c(paramIntent, paramContext);
+      atdm.a().c(paramIntent, paramContext);
     }
     label90:
     label100:
@@ -43,7 +43,7 @@ public class UniformDownloadNfnReceiver
           i = paramContext.getInt("_notify_param_Id");
           paramIntent = paramContext.getString("_notify_param_Url");
           QLog.i(a, 1, "[UniformDL] onReceive. DO_DOWNLOAD:id:" + i + " url:" + paramIntent);
-          aure.a().d(paramIntent, paramContext);
+          atdm.a().d(paramIntent, paramContext);
           return;
         }
         QLog.e(a, 1, "[UniformDL] onReceive. DO_DOWNLOAD: param = null");
@@ -56,7 +56,7 @@ public class UniformDownloadNfnReceiver
           i = paramContext.getInt("_notify_param_Id");
           paramIntent = paramContext.getString("_notify_param_Url");
           QLog.i(a, 1, "[UniformDL] onReceive. TRY_DOWNLOAD:id:" + i + " url:" + paramIntent);
-          aure.a().e(paramIntent, paramContext);
+          atdm.a().e(paramIntent, paramContext);
           return;
         }
         QLog.e(a, 1, "[UniformDL] onReceive. TRY_DOWNLOAD: param = null");
@@ -69,10 +69,10 @@ public class UniformDownloadNfnReceiver
       str1 = paramIntent.getStringExtra("_PARAM_PKGNAME");
       String str2 = paramIntent.getStringExtra("big_brother_source_key");
       QLog.i(a, 1, "[UniformDL] onReceive. DO_INSTALL: PH:" + paramContext + "PKGN:" + str1);
-      aure.a().a(paramContext, str2);
+      atdm.a().a(paramContext, str2);
     } while (str1 == null);
     int i = paramIntent.getIntExtra("_PARAM_DL_SUC_NEW_NID", 0);
-    aure.a().a(str1, i);
+    atdm.a().a(str1, i);
     return;
     if (str1.equals("com.tencent.mobileqq.UniformDownloadNfn.BEDEL"))
     {
@@ -81,7 +81,7 @@ public class UniformDownloadNfnReceiver
         i = paramContext.getInt("_notify_param_Id");
         str1 = paramContext.getString("_notify_param_Url");
         QLog.i(a, 1, "[UniformDL] onReceive. NOTIFICATION_BE_DEL: id:" + i + " url:" + str1);
-        aure.a().f(str1, paramContext);
+        atdm.a().f(str1, paramContext);
       }
       for (;;)
       {
@@ -91,7 +91,7 @@ public class UniformDownloadNfnReceiver
         }
         i = paramIntent.getIntExtra("_PARAM_DL_SUC_NEW_NID", 0);
         QLog.i(a, 1, "[UniformDL] onReceive. download suc. NOTIFICATION_BE_DEL: id:" + i);
-        aure.a().a(paramContext, i);
+        atdm.a().a(paramContext, i);
         return;
         QLog.w(a, 1, "[UniformDL] onReceive. NOTIFICATION_BE_DEL: param = null. may not be clean info except download succ");
       }

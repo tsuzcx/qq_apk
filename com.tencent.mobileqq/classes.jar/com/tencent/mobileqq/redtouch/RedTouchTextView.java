@@ -2,8 +2,6 @@ package com.tencent.mobileqq.redtouch;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,9 +17,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
-import beyq;
-import bhmq;
-import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,14 +24,12 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -328,7 +321,7 @@ public class RedTouchTextView
       }
       paramInt1 = getWidth() - a(this.jdField_a_of_type_JavaUtilList, paramInt1) - a(0);
       paramInt2 = getHeight() / 2 - this.d / 2;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850400);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850321);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramInt1, paramInt2, this.d + paramInt1, this.d + paramInt2);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
@@ -364,7 +357,7 @@ public class RedTouchTextView
             if (QLog.isColorLevel()) {
               QLog.d("RedTouchTextView", 2, "draw redtouch img gif ");
             }
-            paramJSONObject = getResources().getDrawable(2130840274);
+            paramJSONObject = getResources().getDrawable(2130840312);
             localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
             localURLDrawableOptions.mLoadingDrawable = paramJSONObject;
             localURLDrawableOptions.mFailedDrawable = paramJSONObject;
@@ -393,7 +386,7 @@ public class RedTouchTextView
           {
             if (paramInt2 == 1)
             {
-              paramJSONObject = getResources().getDrawable(2130850400);
+              paramJSONObject = getResources().getDrawable(2130850321);
               paramJSONObject.setBounds(getWidth() - a(0) - a(9), k - a(4), getWidth() - a(0), k + a(5));
               paramJSONObject.draw(paramCanvas);
             }
@@ -631,7 +624,7 @@ public class RedTouchTextView
     {
       if (paramInt1 == 1)
       {
-        paramRedTypeInfo = getResources().getDrawable(2130850400);
+        paramRedTypeInfo = getResources().getDrawable(2130850321);
         paramRedTypeInfo.setBounds(getWidth() - a(0) - a(9), i - a(4), getWidth() - a(0), a(5) + i);
         paramRedTypeInfo.draw(paramCanvas);
       }
@@ -692,7 +685,7 @@ public class RedTouchTextView
       f2 = ((Paint.FontMetrics)localObject).top;
       if (i != 0)
       {
-        localObject = getResources().getDrawable(2130850404);
+        localObject = getResources().getDrawable(2130850325);
         ((Drawable)localObject).getBounds();
         ((Drawable)localObject).setBounds(paramInt1, m, localRect.right, localRect.bottom);
         ((Drawable)localObject).draw(paramCanvas);
@@ -789,32 +782,228 @@ public class RedTouchTextView
     return Color.parseColor(paramString);
   }
   
-  protected Bitmap a(File paramFile)
+  /* Error */
+  protected android.graphics.Bitmap a(java.io.File paramFile)
   {
-    if (paramFile == null) {
-      return null;
-    }
-    try
-    {
-      paramFile = paramFile.getAbsolutePath();
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramFile));
-      if (!this.jdField_a_of_type_Boolean) {
-        localOptions.inSampleSize = ((int)bhmq.a(localBufferedInputStream, this.e, this.e));
-      }
-      paramFile = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, localOptions);
-      return paramFile;
-    }
-    catch (Exception paramFile)
-    {
-      QLog.e("RedTouchTextView", 1, "getIconFromFile exception e = " + paramFile.getMessage());
-      return null;
-    }
-    catch (Error paramFile)
-    {
-      QLog.e("RedTouchTextView", 1, "getIconFromFile error e = " + paramFile.getMessage());
-    }
-    return null;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_1
+    //   4: ifnonnull +8 -> 12
+    //   7: aload 4
+    //   9: astore_1
+    //   10: aload_1
+    //   11: areturn
+    //   12: aload_1
+    //   13: invokevirtual 569	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   16: astore_3
+    //   17: new 571	android/graphics/BitmapFactory$Options
+    //   20: dup
+    //   21: invokespecial 572	android/graphics/BitmapFactory$Options:<init>	()V
+    //   24: astore 5
+    //   26: new 574	java/io/BufferedInputStream
+    //   29: dup
+    //   30: new 576	java/io/FileInputStream
+    //   33: dup
+    //   34: aload_3
+    //   35: invokespecial 577	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   38: invokespecial 580	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   41: astore_2
+    //   42: aload_2
+    //   43: astore_1
+    //   44: aload_0
+    //   45: getfield 103	com/tencent/mobileqq/redtouch/RedTouchTextView:jdField_a_of_type_Boolean	Z
+    //   48: ifne +23 -> 71
+    //   51: aload_2
+    //   52: astore_1
+    //   53: aload 5
+    //   55: aload_2
+    //   56: aload_0
+    //   57: getfield 55	com/tencent/mobileqq/redtouch/RedTouchTextView:e	I
+    //   60: aload_0
+    //   61: getfield 55	com/tencent/mobileqq/redtouch/RedTouchTextView:e	I
+    //   64: invokestatic 585	bfvo:a	(Ljava/io/InputStream;II)D
+    //   67: d2i
+    //   68: putfield 588	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   71: aload_2
+    //   72: astore_1
+    //   73: new 574	java/io/BufferedInputStream
+    //   76: dup
+    //   77: new 576	java/io/FileInputStream
+    //   80: dup
+    //   81: aload_3
+    //   82: invokespecial 577	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   85: invokespecial 580	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   88: aconst_null
+    //   89: aload 5
+    //   91: invokestatic 594	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   94: astore_3
+    //   95: aload_3
+    //   96: astore_1
+    //   97: aload_2
+    //   98: ifnull -88 -> 10
+    //   101: aload_2
+    //   102: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   105: aload_3
+    //   106: areturn
+    //   107: astore_1
+    //   108: ldc 125
+    //   110: iconst_1
+    //   111: new 127	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   118: ldc_w 599
+    //   121: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: aload_1
+    //   125: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   137: aload_3
+    //   138: areturn
+    //   139: astore_3
+    //   140: aconst_null
+    //   141: astore_2
+    //   142: aload_2
+    //   143: astore_1
+    //   144: ldc 125
+    //   146: iconst_1
+    //   147: new 127	java/lang/StringBuilder
+    //   150: dup
+    //   151: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   154: ldc_w 601
+    //   157: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: aload_3
+    //   161: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   164: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   173: aload 4
+    //   175: astore_1
+    //   176: aload_2
+    //   177: ifnull -167 -> 10
+    //   180: aload_2
+    //   181: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   184: aconst_null
+    //   185: areturn
+    //   186: astore_1
+    //   187: ldc 125
+    //   189: iconst_1
+    //   190: new 127	java/lang/StringBuilder
+    //   193: dup
+    //   194: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   197: ldc_w 599
+    //   200: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: aload_1
+    //   204: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   207: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   213: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   216: aconst_null
+    //   217: areturn
+    //   218: astore_3
+    //   219: aconst_null
+    //   220: astore_2
+    //   221: aload_2
+    //   222: astore_1
+    //   223: ldc 125
+    //   225: iconst_1
+    //   226: new 127	java/lang/StringBuilder
+    //   229: dup
+    //   230: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   233: ldc_w 599
+    //   236: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: aload_3
+    //   240: invokevirtual 602	java/lang/Error:getMessage	()Ljava/lang/String;
+    //   243: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   249: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   252: aload 4
+    //   254: astore_1
+    //   255: aload_2
+    //   256: ifnull -246 -> 10
+    //   259: aload_2
+    //   260: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   263: aconst_null
+    //   264: areturn
+    //   265: astore_1
+    //   266: ldc 125
+    //   268: iconst_1
+    //   269: new 127	java/lang/StringBuilder
+    //   272: dup
+    //   273: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   276: ldc_w 599
+    //   279: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: aload_1
+    //   283: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   286: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   292: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   295: aconst_null
+    //   296: areturn
+    //   297: astore_2
+    //   298: aconst_null
+    //   299: astore_1
+    //   300: aload_1
+    //   301: ifnull +7 -> 308
+    //   304: aload_1
+    //   305: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   308: aload_2
+    //   309: athrow
+    //   310: astore_1
+    //   311: ldc 125
+    //   313: iconst_1
+    //   314: new 127	java/lang/StringBuilder
+    //   317: dup
+    //   318: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   321: ldc_w 599
+    //   324: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   327: aload_1
+    //   328: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   331: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   337: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   340: goto -32 -> 308
+    //   343: astore_2
+    //   344: goto -44 -> 300
+    //   347: astore_3
+    //   348: goto -127 -> 221
+    //   351: astore_3
+    //   352: goto -210 -> 142
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	355	0	this	RedTouchTextView
+    //   0	355	1	paramFile	java.io.File
+    //   41	219	2	localBufferedInputStream	java.io.BufferedInputStream
+    //   297	12	2	localObject1	Object
+    //   343	1	2	localObject2	Object
+    //   16	122	3	localObject3	Object
+    //   139	22	3	localException1	Exception
+    //   218	22	3	localError1	java.lang.Error
+    //   347	1	3	localError2	java.lang.Error
+    //   351	1	3	localException2	Exception
+    //   1	252	4	localObject4	Object
+    //   24	66	5	localOptions	android.graphics.BitmapFactory.Options
+    // Exception table:
+    //   from	to	target	type
+    //   101	105	107	java/lang/Exception
+    //   12	42	139	java/lang/Exception
+    //   180	184	186	java/lang/Exception
+    //   12	42	218	java/lang/Error
+    //   259	263	265	java/lang/Exception
+    //   12	42	297	finally
+    //   304	308	310	java/lang/Exception
+    //   44	51	343	finally
+    //   53	71	343	finally
+    //   73	95	343	finally
+    //   144	173	343	finally
+    //   223	252	343	finally
+    //   44	51	347	java/lang/Error
+    //   53	71	347	java/lang/Error
+    //   73	95	347	java/lang/Error
+    //   44	51	351	java/lang/Exception
+    //   53	71	351	java/lang/Exception
+    //   73	95	351	java/lang/Exception
   }
   
   public void a()
@@ -869,7 +1058,7 @@ public class RedTouchTextView
       {
         BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i);
         if (localRedTypeInfo.red_type.get() == 15) {
-          this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(localRedTypeInfo.red_content.get(), VasApngUtil.VIP_APNG_TAGS, beyq.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(localRedTypeInfo.red_content.get(), VasApngUtil.VIP_APNG_TAGS, URLDrawableHelper.TRANSPARENT);
         }
         i -= 1;
       }

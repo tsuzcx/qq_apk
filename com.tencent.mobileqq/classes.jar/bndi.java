@@ -1,56 +1,38 @@
-import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_REQ;
-import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
-import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
-import android.os.Build.VERSION;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.common.config.AppSetting;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class bndi
-  extends QzoneExternalRequest
+class bndi
+  implements bmvo
 {
-  public JceStruct a;
+  private int jdField_a_of_type_Int = -1;
+  private bnee jdField_a_of_type_Bnee;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public bndi(long paramLong, ArrayList<UPDATE_INFO> paramArrayList1, ArrayList<UPDATE_INFO> paramArrayList2)
+  public bndi(bnee parambnee)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    SQ_CLIENT_UPDATE_REQ localSQ_CLIENT_UPDATE_REQ = new SQ_CLIENT_UPDATE_REQ();
-    localSQ_CLIENT_UPDATE_REQ.qua = bmsw.a();
-    localSQ_CLIENT_UPDATE_REQ.version = AppSetting.f();
-    localSQ_CLIENT_UPDATE_REQ.apiLevel = Build.VERSION.SDK_INT;
-    localSQ_CLIENT_UPDATE_REQ.triggerType = 1;
-    localSQ_CLIENT_UPDATE_REQ.vPlugin = paramArrayList1;
-    localSQ_CLIENT_UPDATE_REQ.vModule = paramArrayList2;
-    this.a = localSQ_CLIENT_UPDATE_REQ;
+    this.jdField_a_of_type_Bnee = parambnee;
   }
   
-  public static SQ_CLIENT_UPDATE_RSP a(byte[] paramArrayOfByte)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EditVideoAblumList", 2, "download Res Finished , type id, " + this.jdField_a_of_type_Int + " isSuccess : " + paramBoolean + " url : " + paramString + " StickerStr : " + this.jdField_a_of_type_JavaLangString + " mParent : " + this.jdField_a_of_type_Bnee);
     }
-    paramArrayOfByte = decode(paramArrayOfByte, "mqBatchUpdate");
-    if ((paramArrayOfByte instanceof SQ_CLIENT_UPDATE_RSP)) {
-      return (SQ_CLIENT_UPDATE_RSP)paramArrayOfByte;
+    if ((this.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bnee != null)) {
+      this.jdField_a_of_type_Bnee.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.update.mqBatchUpdate";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "mqBatchUpdate";
   }
 }
 

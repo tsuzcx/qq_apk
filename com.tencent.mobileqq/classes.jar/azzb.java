@@ -1,96 +1,107 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.theme.SkinnableColorStateList;
+import com.tencent.widget.SingleLineTextView;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class azzb
+  extends azza
 {
-  public static azzb a;
-  public SparseArray<azzc> a;
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  private void a(View paramView, List<azys> paramList)
   {
-    if (jdField_a_of_type_Azzb == null)
-    {
-      if (!azze.a(paramQQAppInterface.getApplication(), "cardWZ.zip"))
-      {
-        azze.a(paramQQAppInterface, null);
-        return false;
-      }
-      return a(azze.a(paramQQAppInterface.getApp()) + "xydata.json");
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VipWZRYTemplateConfig", 2, "configPath = " + paramString);
-      }
-      return false;
-    }
-    Object localObject = new File(paramString);
     try
     {
-      localObject = bhmi.b((File)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      Object localObject = paramView.getClass().getDeclaredField("mTextColor");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(paramView);
+      if ((localObject instanceof SkinnableColorStateList))
       {
-        QLog.e("VipWZRYTemplateConfig", 1, paramString + " content is empty.");
-        return false;
+        paramView = (SkinnableColorStateList)localObject;
+        localObject = new azys(3, ((SkinnableColorStateList)localObject).skinData);
+        ((azys)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
+        ((azys)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
+        paramList.add(localObject);
       }
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramView)
     {
-      QLog.e("VipWZRYTemplateConfig", 1, paramString.getMessage());
-      return false;
+      QLog.d("GrabMainTabResourceName", 1, paramView, new Object[0]);
     }
-    paramString = new azzb();
-    localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
-    int i;
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+  }
+  
+  private void b(View paramView, List<azys> paramList)
+  {
+    try
     {
-      paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      i = 0;
+      Object localObject = paramView.getClass().getDeclaredField("mDrawables");
+      ((Field)localObject).setAccessible(true);
+      paramView = ((Field)localObject).get(paramView);
+      localObject = paramView.getClass().getDeclaredField("mDrawableLeft");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(paramView);
+      if ((localObject instanceof Drawable)) {
+        a((Drawable)localObject, paramList, 2);
+      }
+      localObject = paramView.getClass().getDeclaredField("mDrawableRight");
+      ((Field)localObject).setAccessible(true);
+      paramView = ((Field)localObject).get(paramView);
+      if ((paramView instanceof Drawable)) {
+        a((Drawable)paramView, paramList, 2);
+      }
+      return;
     }
-    for (;;)
+    catch (Exception paramView)
     {
-      if (i < ((JSONArray)localObject).length())
+      QLog.d("GrabMainTabResourceName", 1, paramView, new Object[0]);
+    }
+  }
+  
+  private void c(View paramView, List<azys> paramList)
+  {
+    try
+    {
+      Object localObject = paramView.getClass().getDeclaredField("mIconDrawables");
+      ((Field)localObject).setAccessible(true);
+      paramView = ((Field)localObject).get(paramView);
+      if ((paramView instanceof Object[]))
       {
-        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-        if (localJSONObject != null)
+        paramView = (Object[])paramView;
+        int j = paramView.length;
+        int i = 0;
+        while (i < j)
         {
-          azzc localazzc = new azzc();
-          localazzc.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
-          localazzc.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
-          localazzc.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
-          localazzc.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
-          if (localJSONObject.has("wz_icon"))
-          {
-            azzd localazzd = new azzd();
-            localJSONObject = localJSONObject.getJSONObject("wz_icon");
-            localazzd.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-            localazzd.jdField_a_of_type_Int = localJSONObject.optInt("size");
-            localazzd.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
-            localazzd.jdField_b_of_type_Int = localJSONObject.optInt("width");
-            localazzd.jdField_c_of_type_Int = localJSONObject.optInt("height");
-            localazzd.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
-            localazzc.jdField_a_of_type_Azzd = localazzd;
+          localObject = paramView[i];
+          Field localField = localObject.getClass().getDeclaredField("mDrawable");
+          localField.setAccessible(true);
+          localObject = localField.get(localObject);
+          if ((localObject instanceof Drawable)) {
+            a((Drawable)localObject, paramList, 2);
           }
-          paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localazzc.jdField_a_of_type_Int, localazzc);
+          i += 1;
         }
       }
-      else
-      {
-        jdField_a_of_type_Azzb = paramString;
-        return true;
-      }
-      i += 1;
+      return;
     }
+    catch (Exception paramView)
+    {
+      QLog.d("GrabMainTabResourceName", 1, paramView, new Object[0]);
+    }
+  }
+  
+  public List<azys> a(View paramView)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramView instanceof SingleLineTextView))
+    {
+      a(paramView, localArrayList);
+      b(paramView, localArrayList);
+      c(paramView, localArrayList);
+    }
+    return localArrayList;
   }
 }
 

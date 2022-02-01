@@ -1,18 +1,21 @@
-import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bidd
+class bidd
   implements View.OnClickListener
 {
-  public bidd(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
+  bidd(bicz parambicz, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
   public void onClick(View paramView)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bicz, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bicz.dismiss();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

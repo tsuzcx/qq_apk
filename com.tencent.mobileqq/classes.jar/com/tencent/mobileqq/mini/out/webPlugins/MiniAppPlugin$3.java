@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.webPlugins;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aser;
+import aqyp;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppPlugin$3
-  extends aser
+  extends aqyp
 {
   MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin) {}
   

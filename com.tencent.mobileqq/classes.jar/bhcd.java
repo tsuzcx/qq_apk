@@ -1,20 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.style.CharacterStyle;
 
-class bhcd
-  implements bhcf
+public class bhcd
 {
-  bhcd(bhbx parambhbx) {}
+  public int a;
+  public CharacterStyle a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void a(boolean paramBoolean, String paramString)
+  public bhcd(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      bhbx.e(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131714568), 0).a();
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
   }
 }
 

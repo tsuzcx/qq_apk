@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class bcmg
-  implements Comparator<bcfw>
+class bcmg
+  implements DialogInterface.OnClickListener
 {
-  public bcmg(MiniProgramSearchEngine paramMiniProgramSearchEngine) {}
+  bcmg(bcmf parambcmf, Context paramContext, View paramView) {}
   
-  public int a(bcfw parambcfw1, bcfw parambcfw2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = parambcfw2.a[2] - parambcfw1.a[2];
-    if (i != 0) {}
-    int j;
-    do
-    {
-      return i;
-      j = parambcfw1.a[0] - parambcfw2.a[0];
-      i = j;
-    } while (j != 0);
-    parambcfw1 = parambcfw1.c().substring(parambcfw1.a[0] + parambcfw1.a[1]);
-    parambcfw2 = parambcfw2.c().substring(parambcfw2.a[0] + parambcfw2.a[1]);
-    return ChnToSpell.a(parambcfw1, 2).compareTo(ChnToSpell.a(parambcfw2, 2));
+    bcme.a(this.jdField_a_of_type_Bcmf.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+      bcef.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,27 +1,74 @@
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikePayView;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class vsg
-  implements vrx
+public class vsg
+  extends vta
 {
-  vsg(vsd paramvsd, QCirclePolyBaseLikeView paramQCirclePolyBaseLikeView) {}
+  qqstory_service.RspFeedLikeList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList;
+  boolean jdField_a_of_type_Boolean;
+  
+  public vsg(vse paramvse) {}
+  
+  public vsg(vse paramvse, qqstory_service.RspFeedLikeList paramRspFeedLikeList, boolean paramBoolean)
+  {
+    super(paramRspFeedLikeList.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList = paramRspFeedLikeList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  {
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    vvj localvvj = (vvj)vux.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
+    {
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localvvj.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new vwe("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
+    }
+    if (!localArrayList2.isEmpty()) {
+      new wcg().a(1, localArrayList2);
+    }
+    return localArrayList1;
+  }
   
   public void a()
   {
-    if (vsd.a(this.jdField_a_of_type_Vsd) != null) {
-      vsd.a(this.jdField_a_of_type_Vsd).a();
+    qqstory_struct.FeedLikeInfo localFeedLikeInfo = (qqstory_struct.FeedLikeInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList.feed_like_info.get();
+    List localList = a(localFeedLikeInfo);
+    this.jdField_a_of_type_Vse.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = localFeedLikeInfo.like_total_count.get();
+    this.jdField_a_of_type_Vse.a.jdField_a_of_type_JavaUtilList = localList;
+    this.jdField_a_of_type_Vse.a.jdField_a_of_type_Vuj.a(localList, this.jdField_a_of_type_Vse.c, this.jdField_a_of_type_Boolean, true);
+    this.jdField_a_of_type_Vse.a.a(localList);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Vse.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedLikeDataProvider", 2, new Object[] { "GetLikeListResponse NetWork ErrorCode:", Integer.valueOf(paramInt) });
     }
   }
   
-  public void b()
+  public void a(int paramInt, String paramString)
   {
-    if (vsd.a(this.jdField_a_of_type_Vsd) != null) {
-      vsd.a(this.jdField_a_of_type_Vsd).b();
-    }
-    if ((!(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyBaseLikeView instanceof QCirclePolyLikePayView)) || (((QCirclePolyLikePayView)this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyBaseLikeView).a.price.get() <= vry.a().a())) {
-      this.jdField_a_of_type_Vsd.dismiss();
+    this.jdField_a_of_type_Vse.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedLikeDataProvider", 2, "GetLikeListResponse fails: " + paramInt + "|" + paramString);
     }
   }
 }

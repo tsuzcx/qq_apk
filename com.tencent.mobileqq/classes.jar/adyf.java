@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class adyf
-  implements View.OnLongClickListener
+class adyf
+  implements DialogInterface.OnClickListener
 {
-  public adyf(BaseChatPie paramBaseChatPie) {}
+  adyf(adye paramadye) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("//findcrash".equals(this.a.a.getText().toString())) {
-      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
-    }
-    return true;
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, amtj.a(2131709472));
+    this.a.a.finish();
   }
 }
 

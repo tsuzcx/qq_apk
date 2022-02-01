@@ -1,15 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import mqq.app.AppRuntime;
 
-public class algt
-  implements algi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isSuccess", "", "onResult"}, k=3, mv={1, 1, 16})
+final class algt
+  implements bgso
 {
-  public algt(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  algt(AppRuntime paramAppRuntime, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean)
+  public final void onResult(boolean paramBoolean)
   {
-    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
+    String str;
+    int i;
+    if (paramBoolean)
+    {
+      str = "new_folder_prestart_success";
+      algh.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, str);
+      algs.a("preloadWebProcess isSuccess " + paramBoolean + " isWebProcessExist " + this.jdField_a_of_type_Boolean);
+      if (paramBoolean) {
+        algs.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+      }
+      if (!paramBoolean) {
+        break label111;
+      }
+      i = 0;
+      label75:
+      if ((i != -4001) || (!this.jdField_a_of_type_Boolean)) {
+        break label118;
+      }
+      i = -4000;
+    }
+    label111:
+    label118:
+    for (;;)
+    {
+      algs.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, i);
+      return;
+      str = "new_folder_prestart_fail";
+      break;
+      i = -4001;
+      break label75;
+    }
   }
 }
 

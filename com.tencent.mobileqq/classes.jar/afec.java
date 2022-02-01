@@ -1,21 +1,41 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public class afec
-  implements Handler.Callback
+class afec
+  extends View
 {
-  public afec(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public afec(afdx paramafdx, Context paramContext)
   {
-    switch (paramMessage.what)
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
     {
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
     }
-    for (;;)
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
     {
-      return true;
-      this.a.c();
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
     }
   }
 }

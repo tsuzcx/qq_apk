@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import atup;
-import aunj;
-import aunt;
-import aunu;
+import asgz;
+import aszt;
+import atad;
+import atae;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -19,7 +19,7 @@ class FileManagerUtil$20$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
     if (QLog.isColorLevel()) {
       QLog.i("CHECK_FILE_EXISTED", 1, "find file size[" + ((List)localObject).size() + "]");
     }
@@ -44,7 +44,7 @@ class FileManagerUtil$20$1
       if (QLog.isColorLevel()) {
         QLog.i("CHECK_FILE_EXISTED", 1, ((FileManagerEntity)localObject).fileName + " findFile 10md5[" + ((FileManagerEntity)localObject).str10Md5 + "], sha3[" + ((FileManagerEntity)localObject).strFileSha3 + "], md5[" + ((FileManagerEntity)localObject).strFileMd5 + "]");
       }
-    } while (!aunj.a((FileManagerEntity)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+    } while (!aszt.a((FileManagerEntity)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
     for (;;)
     {
       if (localObject == null)
@@ -52,12 +52,12 @@ class FileManagerUtil$20$1
         if (QLog.isColorLevel()) {
           QLog.i("CHECK_FILE_EXISTED", 1, "cann't find exsited file,entity[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "]");
         }
-        if (this.this$0.jdField_a_of_type_Aunt != null) {
-          this.this$0.jdField_a_of_type_Aunt.a(false);
+        if (this.this$0.jdField_a_of_type_Atad != null) {
+          this.this$0.jdField_a_of_type_Atad.a(false);
         }
         return;
       }
-      aunu.a().execute(new FileManagerUtil.20.1.1(this, (FileManagerEntity)localObject));
+      atae.a().execute(new FileManagerUtil.20.1.1(this, (FileManagerEntity)localObject));
       return;
       label359:
       localObject = null;
@@ -66,7 +66,7 @@ class FileManagerUtil$20$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.20.1
  * JD-Core Version:    0.7.0.1
  */

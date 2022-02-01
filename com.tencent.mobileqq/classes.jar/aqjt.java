@@ -1,40 +1,70 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
-import com.tencent.mobileqq.data.RockDownloadInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aqjt
-  extends aqjo
+  extends aptq<aqjs>
 {
-  public aqjt(RockDownloaderManager.2 param2) {}
-  
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
+  @NonNull
+  public aqjs a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
-    }
+    return new aqjs();
   }
   
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  @Nullable
+  public aqjs a(aptx[] paramArrayOfaptx)
   {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
-      }
-      boolean bool = aqju.b(localRockDownloadInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
-      }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqjs.a(paramArrayOfaptx);
     }
+    return null;
+  }
+  
+  public void a(aqjs paramaqjs)
+  {
+    if (paramaqjs == null) {}
+    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return;
+    }
+    bcvs.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaqjs.a());
+    bcvs.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaqjs.b());
+  }
+  
+  public Class<aqjs> clazz()
+  {
+    return aqjs.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 294;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqjt
  * JD-Core Version:    0.7.0.1
  */

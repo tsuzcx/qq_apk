@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaiq;
-import aaiu;
 import com.tribe.async.dispatch.Dispatcher;
-import wjj;
+import vli;
+import zfo;
+import zfs;
 
 public class CommentPresenter$14
   implements Runnable
 {
-  public CommentPresenter$14(aaiu paramaaiu) {}
+  public CommentPresenter$14(zfs paramzfs) {}
   
   public void run()
   {
-    wjj.a().dispatch(new aaiq(1, new Object[0]));
+    vli.a().dispatch(new zfo(1, new Object[0]));
   }
 }
 

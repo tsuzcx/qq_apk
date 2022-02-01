@@ -1,5 +1,6 @@
 package com.tencent.weseevideo.model.template.auto;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -52,9 +53,8 @@ public class AutoTemplateMediaBuilder
   public static final String TAG = AutoTemplateMediaBuilder.class.getSimpleName();
   
   @Nullable
-  public static void build(@NonNull MediaModel paramMediaModel, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull VideoRenderChainConfigure paramVideoRenderChainConfigure, @NonNull MediaBuilderListener paramMediaBuilderListener)
+  public static void build(@NonNull MediaModel paramMediaModel, Context paramContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull VideoRenderChainConfigure paramVideoRenderChainConfigure, @NonNull MediaBuilderListener paramMediaBuilderListener)
   {
-    TAVAutomaticTemplate localTAVAutomaticTemplate;
     if (paramVideoRenderChainConfigure.getRenderSize() == null)
     {
       if (paramVideoRenderChainConfigure.getApplyType() > 200) {
@@ -63,16 +63,16 @@ public class AutoTemplateMediaBuilder
     }
     else
     {
-      localTAVAutomaticTemplate = buildAutomaticTemplate(paramMediaModel, paramVideoRenderChainConfigure.getRenderSize());
-      if (localTAVAutomaticTemplate != null) {
-        break label89;
+      paramContext = buildAutomaticTemplate(paramContext, paramMediaModel, paramVideoRenderChainConfigure.getRenderSize());
+      if (paramContext != null) {
+        break label90;
       }
       Logger.e(TAG, "build automaticTemplate failed.");
       if (paramMediaBuilderListener != null) {
         paramMediaBuilderListener.buildCompleted(-200, null, null);
       }
     }
-    label89:
+    label90:
     do
     {
       TAVComposition localTAVComposition;
@@ -81,60 +81,60 @@ public class AutoTemplateMediaBuilder
         return;
         paramVideoRenderChainConfigure.setRenderSize(new CGSize(720.0F, 1280.0F));
         break;
-        localTAVComposition = buildComposition(paramVideoRenderChainConfigure.getApplyType(), paramMediaModel, localTAVAutomaticTemplate, null);
+        localTAVComposition = buildComposition(paramVideoRenderChainConfigure.getApplyType(), paramMediaModel, paramContext, null);
         if (localTAVComposition != null) {
-          break label131;
+          break label133;
         }
         Logger.e(TAG, "build composition failed.");
       } while (paramMediaBuilderListener == null);
       paramMediaBuilderListener.buildCompleted(-201, null, null);
       return;
       boolean bool = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().isSwitchToTemplateByUser();
-      paramMediaModel = new VideoRenderChainManager(paramVideoRenderChainConfigure.getApplyType(), localTAVComposition, paramMediaModel, paramIStickerContextInterface, new AutoTemplateMediaBuilder.1(localTAVAutomaticTemplate, bool, paramMediaModel), paramVideoRenderChainConfigure);
-      paramMediaModel.setAutomaticTemplate(localTAVAutomaticTemplate);
+      paramMediaModel = new VideoRenderChainManager(paramVideoRenderChainConfigure.getApplyType(), localTAVComposition, paramMediaModel, paramIStickerContextInterface, new AutoTemplateMediaBuilder.1(paramContext, bool, paramMediaModel), paramVideoRenderChainConfigure);
+      paramMediaModel.setAutomaticTemplate(paramContext);
     } while (paramMediaBuilderListener == null);
-    label131:
+    label133:
     paramIStickerContextInterface = new MediaBuilderOutput();
-    paramIStickerContextInterface.setAutomaticTemplate(localTAVAutomaticTemplate);
+    paramIStickerContextInterface.setAutomaticTemplate(paramContext);
     paramMediaBuilderListener.buildCompleted(0, paramMediaModel, paramIStickerContextInterface);
   }
   
-  private static TAVAutomaticTemplate buildAutomaticTemplate(@NonNull MediaModel paramMediaModel, CGSize paramCGSize)
+  private static TAVAutomaticTemplate buildAutomaticTemplate(Context paramContext, @NonNull MediaModel paramMediaModel, CGSize paramCGSize)
   {
     AutomaticMediaTemplateModel localAutomaticMediaTemplateModel = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel();
     if ((localAutomaticMediaTemplateModel != null) && (!TextUtils.isEmpty(localAutomaticMediaTemplateModel.getTemplateDir()))) {}
-    for (TAVAutomaticTemplate localTAVAutomaticTemplate = TAVAutomaticTemplateParse.parseAutomaticTemplate(localAutomaticMediaTemplateModel.getTemplateDir(), localAutomaticMediaTemplateModel.getTemplateFileName());; localTAVAutomaticTemplate = null)
+    for (paramContext = TAVAutomaticTemplateParse.parseAutomaticTemplate(paramContext, localAutomaticMediaTemplateModel.getTemplateDir(), localAutomaticMediaTemplateModel.getTemplateFileName());; paramContext = null)
     {
-      if (localTAVAutomaticTemplate != null)
+      if (paramContext != null)
       {
-        localTAVAutomaticTemplate.setRenderSize(paramCGSize);
-        localTAVAutomaticTemplate.setImagePagAssetDir(localAutomaticMediaTemplateModel.getImagePagAssetDir());
+        paramContext.setRenderSize(paramCGSize);
+        paramContext.setImagePagAssetDir(localAutomaticMediaTemplateModel.getImagePagAssetDir());
         paramCGSize = paramMediaModel.getMediaEffectModel().getMusicModel();
         if (paramCGSize != null)
         {
-          localTAVAutomaticTemplate.setBgmVolume(paramCGSize.getBgmVolume());
-          localTAVAutomaticTemplate.setVolume(Utils.getPlayVolume(paramCGSize));
+          paramContext.setBgmVolume(paramCGSize.getBgmVolume());
+          paramContext.setVolume(Utils.getPlayVolume(paramCGSize));
           Object localObject = paramCGSize.getMetaDataBean();
           if ((localObject != null) && (FileUtils.exists(((MusicMaterialMetaDataBean)localObject).path)))
           {
             String str = Utils.getPath((MusicMaterialMetaDataBean)localObject);
             boolean bool = FileUtils.exists(str);
-            Logger.i(TAG, "build template, isRhythmMusic: " + ((MusicMaterialMetaDataBean)localObject).isStuckPoint + ", isRhythmFileExist: " + bool + ", muiscId: " + ((MusicMaterialMetaDataBean)localObject).id, new Object[0]);
-            if ((!(localTAVAutomaticTemplate instanceof TAVRhythmAutomaticTemplate)) || (!((MusicMaterialMetaDataBean)localObject).isStuckPoint) || (!bool)) {
-              break label271;
+            Logger.i(TAG, "build template, isRhythmMusic: " + ((MusicMaterialMetaDataBean)localObject).isStuckPoint + ", isRhythmFileExist: " + bool + ", muiscId: " + ((MusicMaterialMetaDataBean)localObject).id);
+            if ((!(paramContext instanceof TAVRhythmAutomaticTemplate)) || (!((MusicMaterialMetaDataBean)localObject).isStuckPoint) || (!bool)) {
+              break label261;
             }
             localObject = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getRhythmSecondEffectIndices();
             int i = localAutomaticMediaTemplateModel.getRandomIndex();
-            ((TAVRhythmAutomaticTemplate)localTAVAutomaticTemplate).parseMusicRhythm(null, str, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime, (List)localObject, i);
+            ((TAVRhythmAutomaticTemplate)paramContext).parseMusicRhythm(null, str, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime, (List)localObject, i);
             paramMediaModel = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getTransitionEffects();
-            ((TAVRhythmAutomaticTemplate)localTAVAutomaticTemplate).setTransitionEffects(paramMediaModel);
+            ((TAVRhythmAutomaticTemplate)paramContext).setTransitionEffects(paramMediaModel);
           }
         }
       }
-      return localTAVAutomaticTemplate;
-      label271:
-      localTAVAutomaticTemplate.configMusic(null, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime);
-      return localTAVAutomaticTemplate;
+      return paramContext;
+      label261:
+      paramContext.configMusic(null, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime);
+      return paramContext;
     }
   }
   

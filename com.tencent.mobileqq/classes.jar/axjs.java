@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-class axjs
-  implements DialogInterface.OnClickListener
+public class axjs
 {
-  axjs(axjo paramaxjo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a()
   {
-    paramDialogInterface.dismiss();
+    return 0;
+  }
+  
+  public static String a()
+  {
+    return DeviceInfoUtil.getQQVersion();
   }
 }
 

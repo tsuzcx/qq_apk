@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class aftd
-  implements View.OnClickListener
+class aftd
+  implements bdvu
 {
-  public aftd(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
+  aftd(aftc paramaftc, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (aftc.a(this.jdField_a_of_type_Aftc).sessionInfo.curFriendUin.equals(this.jdField_a_of_type_JavaLangString)) {
+      aftc.a(this.jdField_a_of_type_Aftc).finish();
+    }
   }
 }
 

@@ -3,11 +3,7 @@ package com.tencent.mobileqq.emoticonview.relateemo;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.NestedScrollingParent;
@@ -25,10 +21,6 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import assx;
-import assy;
-import assz;
-import asta;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -36,22 +28,32 @@ public class RelatedEmoSlideBottomPanel
   extends FrameLayout
   implements NestedScrollingParent
 {
-  private byte jdField_a_of_type_Byte = 0;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private final NestedScrollingParentHelper jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private asta jdField_a_of_type_Asta;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
+  private static final int DEFAULT_ANIMATION_DURATION = 250;
+  private static final byte SLIDE_DIR_DEFAULT = 0;
+  private static final byte SLIDE_DIR_DOWN = 1;
+  private static final byte SLIDE_DIR_UP = 2;
+  private static final String TAG = "RelatedSlideBottomPanel";
+  public static final int TYPE_BACK_DISMISS = 4;
+  public static final int TYPE_CLICK_DISMISS = 2;
+  public static final int TYPE_DRAG_DISMISS = 3;
+  public static final int TYPE_EMPTY_DISMISS = 1;
+  public static final int TYPE_NONE_DISMISS = -1;
+  private RelatedEmoSlideBottomPanel.Callback mCallback;
+  private boolean mConsumeTouchEvent;
+  private int mContentHeight;
+  private LinearLayout mContentView;
+  private float mDensity;
+  private int mDismissType = -1;
+  private FrameLayout mDragArea;
+  private boolean mIsTouch;
+  private ImageView mIvDragIcon;
+  private float mLastY;
+  private int mMoveDistance;
+  private boolean mMoved;
+  private final NestedScrollingParentHelper mNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
+  private boolean mPanelDraging;
+  private int mScaledTouchSlop;
+  private byte mSlideStartDir = 0;
   
   public RelatedEmoSlideBottomPanel(@NonNull Context paramContext)
   {
@@ -68,9 +70,114 @@ public class RelatedEmoSlideBottomPanel
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private float a(int paramInt)
+  private void animateToTargetHeight(int paramInt)
   {
-    float f3 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() - paramInt;
+    if (this.mContentView.getY() != paramInt)
+    {
+      animTranslationY(new float[] { this.mContentView.getY(), paramInt });
+      this.mConsumeTouchEvent = false;
+      doInterceptTouchEvent(false);
+    }
+  }
+  
+  private void doInterceptTouchEvent(boolean paramBoolean)
+  {
+    ViewGroup localViewGroup = (ViewGroup)getParent();
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(paramBoolean);
+    }
+  }
+  
+  private int dp2px(int paramInt)
+  {
+    return (int)(paramInt * this.mDensity + 0.5F);
+  }
+  
+  private void init()
+  {
+    this.mDensity = getContext().getResources().getDisplayMetrics().density;
+    this.mScaledTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.mContentView = new LinearLayout(getContext());
+    Object localObject = new FrameLayout.LayoutParams(-1, -1);
+    ((FrameLayout.LayoutParams)localObject).height = this.mContentHeight;
+    this.mContentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    boolean bool1 = "2971".equals(ThemeUtil.getCurrentThemeId());
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
+    if (bool1)
+    {
+      this.mContentView.setBackgroundResource(2130849586);
+      this.mContentView.setOrientation(1);
+      addView(this.mContentView);
+      i = dp2px(38);
+      this.mDragArea = new FrameLayout(getContext());
+      localObject = new LinearLayout.LayoutParams(-1, i);
+      this.mDragArea.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.mContentView.addView(this.mDragArea);
+      this.mIvDragIcon = new ImageView(getContext());
+      localObject = new FrameLayout.LayoutParams(i, i);
+      ((FrameLayout.LayoutParams)localObject).gravity = 17;
+      this.mIvDragIcon.setImageResource(2130849588);
+      this.mIvDragIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.mDragArea.addView(this.mIvDragIcon);
+      setOnClickListener(new RelatedEmoSlideBottomPanel.1(this));
+      this.mDragArea.setOnClickListener(new RelatedEmoSlideBottomPanel.2(this));
+      setVisibility(4);
+      return;
+    }
+    localObject = this.mContentView;
+    if (bool2) {}
+    for (int i = 2130849585;; i = 2130849584)
+    {
+      ((LinearLayout)localObject).setBackgroundResource(i);
+      break;
+    }
+  }
+  
+  private void onActionMove(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getRawY();
+    float f2 = f1 - this.mLastY;
+    swipeDirectionJudge(f2);
+    updateTranslationY((int)(this.mLastY - f1));
+    this.mLastY = paramMotionEvent.getRawY();
+    this.mMoveDistance = ((int)(this.mMoveDistance + Math.abs(f2)));
+  }
+  
+  private void onActionUp()
+  {
+    if (this.mPanelDraging)
+    {
+      this.mPanelDraging = false;
+      if (this.mCallback != null) {
+        this.mCallback.onPanelEndDrag();
+      }
+    }
+    if (this.mContentHeight == 0) {
+      throw new IllegalArgumentException("content height is 0 !!!");
+    }
+    float f = (this.mContentView.getY() - maxTopY()) * 1.0F / this.mContentHeight;
+    if ((this.mSlideStartDir == 1) && (f > 0.2F))
+    {
+      animateToTargetHeight(getMeasuredHeight());
+      return;
+    }
+    animateToTargetHeight(maxTopY());
+  }
+  
+  private void swipeDirectionJudge(float paramFloat)
+  {
+    if (paramFloat > 0.0F) {
+      this.mSlideStartDir = 1;
+    }
+    while (paramFloat >= 0.0F) {
+      return;
+    }
+    this.mSlideStartDir = 2;
+  }
+  
+  private float updateTranslationY(int paramInt)
+  {
+    float f3 = this.mContentView.getY() - paramInt;
     float f4 = paramInt;
     float f1;
     float f2;
@@ -81,165 +188,38 @@ public class RelatedEmoSlideBottomPanel
     }
     for (;;)
     {
-      if (!this.jdField_d_of_type_Boolean)
+      if (!this.mPanelDraging)
       {
-        this.jdField_d_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Asta != null) {
-          this.jdField_a_of_type_Asta.a();
+        this.mPanelDraging = true;
+        if (this.mCallback != null) {
+          this.mCallback.onPanelStartDrag();
         }
       }
-      if (this.jdField_a_of_type_Asta != null) {
-        this.jdField_a_of_type_Asta.a(f2 - a());
+      if (this.mCallback != null) {
+        this.mCallback.updatePanelDistance(f2 - maxTopY());
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setY(f2);
+      this.mContentView.setY(f2);
       return f1;
       f1 = f4;
       f2 = f3;
-      if (f3 < a())
+      if (f3 < maxTopY())
       {
-        f1 = f4 - (a() - f3);
-        f2 = a();
+        f1 = f4 - (maxTopY() - f3);
+        f2 = maxTopY();
       }
     }
   }
   
-  private int a(int paramInt)
+  public void animTranslationY(boolean paramBoolean, float... paramVarArgs)
   {
-    return (int)(paramInt * this.jdField_a_of_type_Float + 0.5F);
-  }
-  
-  private void a(float paramFloat)
-  {
-    if (paramFloat > 0.0F) {
-      this.jdField_a_of_type_Byte = 1;
-    }
-    while (paramFloat >= 0.0F) {
-      return;
-    }
-    this.jdField_a_of_type_Byte = 2;
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getRawY();
-    float f2 = f1 - this.jdField_b_of_type_Float;
-    a(f2);
-    a((int)(this.jdField_b_of_type_Float - f1));
-    this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-    this.jdField_d_of_type_Int = ((int)(this.jdField_d_of_type_Int + Math.abs(f2)));
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    ViewGroup localViewGroup = (ViewGroup)getParent();
-    if (localViewGroup != null) {
-      localViewGroup.requestDisallowInterceptTouchEvent(paramBoolean);
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Float = getContext().getResources().getDisplayMetrics().density;
-    this.jdField_c_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-    Object localObject = new FrameLayout.LayoutParams(-1, -1);
-    ((FrameLayout.LayoutParams)localObject).height = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if ("2971".equals(ThemeUtil.getCurrentThemeId())) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(a(Color.parseColor("#F5F6FA")));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-      addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      int i = a(38);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
-      localObject = new LinearLayout.LayoutParams(-1, i);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      localObject = new FrameLayout.LayoutParams(i, i);
-      ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849671);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-      setOnClickListener(new assx(this));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new assy(this));
-      setVisibility(4);
-      return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849669);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() != paramInt)
-    {
-      a(new float[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getY(), paramInt });
-      this.jdField_a_of_type_Boolean = false;
-      a(false);
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.jdField_d_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Asta != null) {
-        this.jdField_a_of_type_Asta.b();
-      }
-    }
-    if (this.jdField_b_of_type_Int == 0) {
-      throw new IllegalArgumentException("content height is 0 !!!");
-    }
-    float f = (this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() - a()) * 1.0F / this.jdField_b_of_type_Int;
-    if ((this.jdField_a_of_type_Byte == 1) && (f > 0.2F))
-    {
-      b(getMeasuredHeight());
-      return;
-    }
-    b(a());
-  }
-  
-  public int a()
-  {
-    return getMeasuredHeight() - this.jdField_b_of_type_Int;
-  }
-  
-  public Drawable a(@ColorInt int paramInt)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadii(new float[] { a(6), a(6), a(6), a(6), 0.0F, 0.0F, 0.0F, 0.0F });
-    localGradientDrawable.setColor(paramInt);
-    return localGradientDrawable;
-  }
-  
-  public void a()
-  {
-    post(new RelatedEmoSlideBottomPanel.3(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int != paramInt)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      a(true, new float[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getY(), getMeasuredHeight() });
-    }
-  }
-  
-  public void a(boolean paramBoolean, float... paramVarArgs)
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "y", paramVarArgs);
-    localObjectAnimator.addUpdateListener(new assz(this, paramBoolean, paramVarArgs));
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mContentView, "y", paramVarArgs);
+    localObjectAnimator.addUpdateListener(new RelatedEmoSlideBottomPanel.4(this, paramBoolean, paramVarArgs));
     localObjectAnimator.setDuration(250L).start();
   }
   
-  public void a(float... paramVarArgs)
+  public void animTranslationY(float... paramVarArgs)
   {
-    a(true, paramVarArgs);
+    animTranslationY(true, paramVarArgs);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -248,17 +228,17 @@ public class RelatedEmoSlideBottomPanel
     switch (paramMotionEvent.getAction())
     {
     }
-    while (this.jdField_a_of_type_Boolean)
+    while (this.mConsumeTouchEvent)
     {
       return true;
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_d_of_type_Int = 0;
-      this.jdField_d_of_type_Boolean = false;
+      this.mLastY = paramMotionEvent.getRawY();
+      this.mIsTouch = true;
+      this.mMoved = false;
+      this.mMoveDistance = 0;
+      this.mPanelDraging = false;
       Object localObject = new int[2];
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.getLocationOnScreen((int[])localObject);
-      localObject = new Rect(localObject[0], localObject[1], localObject[0] + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth(), localObject[1] + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight());
+      this.mDragArea.getLocationOnScreen((int[])localObject);
+      localObject = new Rect(localObject[0], localObject[1], localObject[0] + this.mDragArea.getMeasuredWidth(), localObject[1] + this.mDragArea.getMeasuredHeight());
       boolean bool1 = bool2;
       if (!((Rect)localObject).isEmpty())
       {
@@ -267,46 +247,65 @@ public class RelatedEmoSlideBottomPanel
           bool1 = true;
         }
       }
-      this.jdField_a_of_type_Boolean = bool1;
-      if (this.jdField_a_of_type_Boolean) {
-        a(true);
+      this.mConsumeTouchEvent = bool1;
+      if (this.mConsumeTouchEvent) {
+        doInterceptTouchEvent(true);
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("RelatedSlideBottomPanel", 2, "mConsumeTouchEvent : " + this.jdField_a_of_type_Boolean);
+        QLog.d("RelatedSlideBottomPanel", 2, "mConsumeTouchEvent : " + this.mConsumeTouchEvent);
         continue;
-        if (this.jdField_a_of_type_Boolean)
+        if (this.mConsumeTouchEvent)
         {
-          this.jdField_c_of_type_Boolean = true;
-          a(paramMotionEvent);
+          this.mMoved = true;
+          onActionMove(paramMotionEvent);
           return true;
-          this.jdField_b_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Boolean)
+          this.mIsTouch = false;
+          if (this.mConsumeTouchEvent)
           {
-            if (((this.jdField_d_of_type_Int != 0) || (this.jdField_c_of_type_Boolean)) && ((!this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Int >= this.jdField_c_of_type_Int))) {
-              break label295;
+            if (((this.mMoveDistance != 0) || (this.mMoved)) && ((!this.mMoved) || (this.mMoveDistance >= this.mScaledTouchSlop))) {
+              break label294;
             }
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.performClick();
+            this.mDragArea.performClick();
           }
           for (;;)
           {
-            this.jdField_c_of_type_Boolean = false;
+            this.mMoved = false;
             break;
-            label295:
-            this.jdField_a_of_type_Int = 3;
-            c();
+            label294:
+            this.mDismissType = 3;
+            onActionUp();
           }
-          this.jdField_b_of_type_Boolean = false;
-          this.jdField_c_of_type_Boolean = false;
+          this.mIsTouch = false;
+          this.mMoved = false;
         }
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
+  public void displayPanel()
+  {
+    post(new RelatedEmoSlideBottomPanel.3(this));
+  }
+  
   public int getNestedScrollAxes()
   {
-    return this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.getNestedScrollAxes();
+    return this.mNestedScrollingParentHelper.getNestedScrollAxes();
+  }
+  
+  public void hidePanel(int paramInt)
+  {
+    if (this.mDismissType != paramInt)
+    {
+      this.mDismissType = paramInt;
+      animTranslationY(true, new float[] { this.mContentView.getY(), getMeasuredHeight() });
+    }
+  }
+  
+  public int maxTopY()
+  {
+    return getMeasuredHeight() - this.mContentHeight;
   }
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -322,16 +321,16 @@ public class RelatedEmoSlideBottomPanel
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
     int i = 0;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() == a()) {}
+    if (this.mContentView.getY() == maxTopY()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() > a()) {
+      if (this.mContentView.getY() > maxTopY()) {
         i = 1;
       }
       if (((paramInt1 != 0) && (!ViewCompat.canScrollVertically(paramView, paramInt2))) || (i != 0))
       {
-        a(-paramInt2);
-        paramArrayOfInt[1] = ((int)a(paramInt2));
+        swipeDirectionJudge(-paramInt2);
+        paramArrayOfInt[1] = ((int)updateTranslationY(paramInt2));
       }
       return;
     }
@@ -341,12 +340,12 @@ public class RelatedEmoSlideBottomPanel
   {
     float f2;
     float f1;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() >= a())
+    if (this.mContentView.getY() >= maxTopY())
     {
       paramInt1 = 1;
       if (paramInt1 != 0)
       {
-        f2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() - paramInt4;
+        f2 = this.mContentView.getY() - paramInt4;
         if (f2 <= getMeasuredHeight()) {
           break label100;
         }
@@ -355,25 +354,25 @@ public class RelatedEmoSlideBottomPanel
     }
     for (;;)
     {
-      a(-paramInt4);
-      if (this.jdField_a_of_type_Asta != null) {
-        this.jdField_a_of_type_Asta.a(f1 - a());
+      swipeDirectionJudge(-paramInt4);
+      if (this.mCallback != null) {
+        this.mCallback.updatePanelDistance(f1 - maxTopY());
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setY(f1);
+      this.mContentView.setY(f1);
       return;
       paramInt1 = 0;
       break;
       label100:
       f1 = f2;
-      if (f2 < a()) {
-        f1 = a();
+      if (f2 < maxTopY()) {
+        f1 = maxTopY();
       }
     }
   }
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onNestedScrollAccepted(paramView1, paramView2, paramInt);
+    this.mNestedScrollingParentHelper.onNestedScrollAccepted(paramView1, paramView2, paramInt);
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
@@ -383,33 +382,33 @@ public class RelatedEmoSlideBottomPanel
   
   public void onStopNestedScroll(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onStopNestedScroll(paramView);
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int != 4))
+    this.mNestedScrollingParentHelper.onStopNestedScroll(paramView);
+    if ((!this.mIsTouch) && (this.mDismissType != 4))
     {
-      this.jdField_a_of_type_Int = 3;
-      c();
+      this.mDismissType = 3;
+      onActionUp();
     }
   }
   
-  public void setCallback(asta paramasta)
+  public void setCallback(RelatedEmoSlideBottomPanel.Callback paramCallback)
   {
-    this.jdField_a_of_type_Asta = paramasta;
+    this.mCallback = paramCallback;
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    b();
+    this.mContentHeight = paramInt;
+    init();
   }
   
   public void setContentView(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, new LinearLayout.LayoutParams(-1, -1));
+    this.mContentView.addView(paramView, new LinearLayout.LayoutParams(-1, -1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

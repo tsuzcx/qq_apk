@@ -1,8 +1,14 @@
-import android.content.Intent;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public abstract interface agvp
+public class agvp
+  implements agut
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagap.h(paramagcc.b);
+  }
 }
 
 

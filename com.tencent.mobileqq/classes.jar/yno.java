@@ -1,25 +1,26 @@
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Set;
 
 public class yno
-  extends wjm<ymx, xbi>
 {
-  public yno(ymx paramymx)
+  public static void a(@NonNull String paramString, Bundle paramBundle)
   {
-    super(paramymx);
+    if (paramBundle == null)
+    {
+      xvv.b(paramString, ", logBundleDetails : null");
+      return;
+    }
+    xvv.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      xvv.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    }
+    xvv.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
-  
-  public void a(@NonNull ymx paramymx, @NonNull xbi paramxbi)
-  {
-    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramxbi);
-    ymx.a(paramymx, paramxbi.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xbi.class;
-  }
-  
-  public void b(@NonNull ymx paramymx, @NonNull xbi paramxbi) {}
 }
 
 

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import aran;
-import arix;
-import bern;
+import apub;
+import aqcq;
 
-public class BaseTransFileController$1
+class BaseTransFileController$1
   implements Runnable
 {
-  public BaseTransFileController$1(bern parambern) {}
+  BaseTransFileController$1(BaseTransFileController paramBaseTransFileController) {}
   
   public void run()
   {
-    this.this$0.a = ((arix)aran.a().a(538));
+    this.this$0.mRichmediaIpv6ConifgBean = ((aqcq)apub.a().a(538));
   }
 }
 

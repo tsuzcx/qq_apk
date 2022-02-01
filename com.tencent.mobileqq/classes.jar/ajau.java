@@ -1,8 +1,8 @@
-public class ajau
-  implements Cloneable
+public abstract interface ajau
 {
-  public String a;
-  public String b;
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

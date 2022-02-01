@@ -23,12 +23,7 @@ public class SafeTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static boolean a(char paramChar)
-  {
-    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533));
-  }
-  
-  public static boolean a(String paramString)
+  public static boolean containsEmoji(String paramString)
   {
     boolean bool2 = false;
     int j = paramString.length();
@@ -38,7 +33,7 @@ public class SafeTextView
       boolean bool1 = bool2;
       if (i < j)
       {
-        if (!a(paramString.charAt(i))) {
+        if (!isNormalCharacter(paramString.charAt(i))) {
           bool1 = true;
         }
       }
@@ -49,7 +44,7 @@ public class SafeTextView
     }
   }
   
-  public static String b(String paramString)
+  public static String filterEmoji(String paramString)
   {
     if ((paramString == null) || (paramString.length() <= 0)) {}
     int j;
@@ -59,7 +54,7 @@ public class SafeTextView
       do
       {
         return paramString;
-      } while (!a(paramString));
+      } while (!containsEmoji(paramString));
       j = paramString.length();
       localObject1 = null;
       int i = 0;
@@ -67,7 +62,7 @@ public class SafeTextView
       {
         char c = paramString.charAt(i);
         Object localObject2 = localObject1;
-        if (a(c))
+        if (isNormalCharacter(c))
         {
           localObject2 = localObject1;
           if (localObject1 == null) {
@@ -85,6 +80,11 @@ public class SafeTextView
     return localObject1.toString();
   }
   
+  private static boolean isNormalCharacter(char paramChar)
+  {
+    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533));
+  }
+  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
@@ -96,7 +96,7 @@ public class SafeTextView
     {
       try
       {
-        setText(b(getText().toString()));
+        setText(filterEmoji(getText().toString()));
         super.onMeasure(paramInt1, paramInt2);
         return;
       }
@@ -119,7 +119,7 @@ public class SafeTextView
     {
       try
       {
-        super.setText(b(getText().toString()), paramBufferType);
+        super.setText(filterEmoji(getText().toString()), paramBufferType);
         return;
       }
       catch (Throwable paramCharSequence)

@@ -1,49 +1,14 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 
-final class bmks
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class bmks
+  extends TypeToken<AEEditorPagStickerConfig>
 {
-  bmks(Runnable paramRunnable) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
-  {
-    if (paramPluginManagerClient == null) {}
-    try
-    {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
-      }
-      bmkq.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
-    }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new bmkt(this));
-    return;
-  }
+  bmks(bmkn parambmkn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmks
  * JD-Core Version:    0.7.0.1
  */

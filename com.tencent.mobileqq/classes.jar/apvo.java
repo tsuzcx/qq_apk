@@ -1,40 +1,22 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
-
 public class apvo
-  extends apcq
+  extends apvk
 {
-  apvo(apvn paramapvn, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private apwi a;
+  
+  public apvo(String paramString, apwi paramapwi)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramString);
+    this.a = paramapwi;
   }
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  public apwi a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
-    }
-    if (paramInt2 < 3) {
-      return;
-    }
-    ArkAppCenter.a().post(apvn.a(this.a), new ArkAppEventObserverManager.1.2(this));
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
-    }
-    ArkAppCenter.a().post(apvn.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apvo
  * JD-Core Version:    0.7.0.1
  */

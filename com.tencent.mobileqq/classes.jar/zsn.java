@@ -1,19 +1,9 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import java.util.List;
 
 public class zsn
-  implements blpr
 {
-  public zsn(SegmentList paramSegmentList) {}
-  
-  public void a_(View paramView) {}
-  
-  public void e(boolean paramBoolean)
-  {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
-  }
-  
-  public void f() {}
+  public String a;
+  public List<zso> a;
 }
 
 

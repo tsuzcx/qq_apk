@@ -1,18 +1,18 @@
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class beqo
-  extends InputConnectionWrapper
+class beqo
+  extends BroadcastReceiver
 {
-  public beqo(WriteTogetherEditorView paramWriteTogetherEditorView, InputConnection paramInputConnection, boolean paramBoolean)
-  {
-    super(paramInputConnection, paramBoolean);
-  }
+  beqo(beqn parambeqn) {}
   
-  public boolean commitText(CharSequence paramCharSequence, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return super.commitText(bemv.a(paramCharSequence), paramInt);
+    paramContext = paramIntent.getStringExtra("callback");
+    QLog.d("TroopReceiver", 4, paramContext);
+    this.a.e(paramContext);
   }
 }
 

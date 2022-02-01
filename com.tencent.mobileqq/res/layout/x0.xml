@@ -15,7 +15,7 @@
         </LinearLayout>
     </FrameLayout>
     <RelativeLayout android:id="@id/vr" android:layout_width="fill_parent" android:layout_height="26.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/jod">
-        <com.tencent.mobileqq.widget.RoundImageView android:layout_gravity="center" android:id="@id/vs" android:clickable="false" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/dl0" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:contentDescription="@null" app:qwRadius="6.0dip" />
+        <com.tencent.mobileqq.widget.RoundImageView android:layout_gravity="center" android:id="@id/vs" android:clickable="false" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/qb_opensdk_app" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:contentDescription="@null" app:qwRadius="6.0dip" />
         <TextView android:textSize="14.0sp" android:textColor="#ff03081a" android:gravity="center_vertical" android:id="@id/vu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="APPNAME" android:layout_toRightOf="@id/vs" android:layout_centerVertical="true" />
     </RelativeLayout>
     <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/ipi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:text="@string/ppo" android:layout_below="@id/vr" />

@@ -1,8 +1,16 @@
-import android.graphics.SurfaceTexture;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public abstract interface xvx
+final class xvx
+  implements vqp<xvy, vqm>
 {
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  public void a(@NonNull xvy paramxvy, @Nullable vqm paramvqm, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isFail()) {
+      xvv.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    }
+  }
 }
 
 

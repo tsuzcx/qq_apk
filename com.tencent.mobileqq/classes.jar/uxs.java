@@ -1,23 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.View;
 
-public class uxs
-  implements Animation.AnimationListener
+final class uxs
+  implements bjoe
 {
-  public uxs(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  uxs(bjoe parambjoe, bjnw parambjnw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131380543);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131380544);
-    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    uya.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
+    if (this.jdField_a_of_type_Bjoe != null) {
+      this.jdField_a_of_type_Bjoe.OnClick(paramView, paramInt);
+    }
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

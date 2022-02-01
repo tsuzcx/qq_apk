@@ -1,20 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class aski
-  extends askr
+  extends asjn
 {
-  aski(askd paramaskd, String paramString, Object paramObject) {}
-  
-  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
+  public aski(asji paramasji)
   {
-    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        return;
-      }
+    super(paramasji);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
+    asji.b(this.jdField_a_of_type_Asji, 11, 7);
+    asji.c(this.jdField_a_of_type_Asji, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Asjn = new askh(this.jdField_a_of_type_Asji);
   }
 }
 

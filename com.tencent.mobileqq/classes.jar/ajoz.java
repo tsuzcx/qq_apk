@@ -1,42 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import mqq.os.MqqHandler;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.AbsListView.RecyclerListener;
 
-public class ajoz
-  implements View.OnTouchListener
+class ajoz
+  implements AbsListView.RecyclerListener
 {
-  protected float a;
-  protected float b;
+  ajoz(ajoy paramajoy) {}
   
-  public ajoz(NotificationView paramNotificationView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onMovedToScrapHeap(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      }
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof ajpa))) {
+      ((ajpa)paramView).a.setImageDrawable(null);
     }
   }
 }

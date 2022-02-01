@@ -1,54 +1,247 @@
-import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro<*>;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_head.Head;
+import tencent.im.msg.im_msg_head.HttpConnHead;
+import tencent.im.msg.im_msg_head.LoginSig;
 
-public class binb
+public abstract class binb
+  extends BusinessHandler
 {
-  public long a;
-  private bine a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
+  private bina jdField_a_of_type_Bina;
+  public binf a;
+  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private List<bine> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
-  public binb(bine parambine)
+  protected binb(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Bine = parambine;
+    super(paramAppInterface);
+    this.jdField_a_of_type_Binf = new binc(this);
+    this.jdField_a_of_type_Bina = ((bina)this.app.getBusinessHandler(104));
+    this.app.addObserver(this.jdField_a_of_type_Binf);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = this.app.getNetEngine(0);
   }
   
-  public void a(Bundle paramBundle, AppInterface paramAppInterface, Intent paramIntent)
+  protected binb(QQAppInterface paramQQAppInterface)
   {
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_init_webview_plugin", true))) {
-      this.jdField_a_of_type_Bine.preInitWebviewPlugin();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Binf = new binc(this);
+    this.jdField_a_of_type_Bina = ((bina)paramQQAppInterface.getBusinessHandler(104));
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Binf);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramQQAppInterface.getNetEngine(0);
+  }
+  
+  private int a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
+  {
+    int i = 1;
+    String str = this.jdField_a_of_type_Bina.a();
+    if (this.jdField_a_of_type_Bina.a() == null) {
+      if (paramBoolean) {
+        i = 2;
+      }
     }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_get_key", true))) {
-      WebAccelerateHelper.getInstance().preGetKey(paramIntent, paramAppInterface);
-    }
-    long l2 = System.currentTimeMillis();
-    this.jdField_a_of_type_Bine.buildLayout();
-    long l1 = System.currentTimeMillis();
-    this.b = (l1 - l2);
-    this.jdField_a_of_type_Bine.buildContentView(paramBundle);
-    l2 = System.currentTimeMillis();
-    this.e = (l2 - l1);
-    this.jdField_a_of_type_Bine.buildTitleBar();
-    l1 = System.currentTimeMillis();
-    this.c = (l1 - l2);
-    this.jdField_a_of_type_Bine.buildBottomBar();
-    l2 = System.currentTimeMillis();
-    this.d = (l2 - l1);
-    this.jdField_a_of_type_Bine.buildWebView(paramAppInterface);
-    l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = (l1 - l2);
-    this.jdField_a_of_type_Bine.buildData();
-    this.f = (System.currentTimeMillis() - l1);
-    if (QLog.isColorLevel()) {
-      QLog.i("WebViewDirector", 2, "buildLayoutTime : " + this.b + ", buildContentTime " + this.e + ", buildTitleTime " + this.c + ", buildWebViewTime " + this.jdField_a_of_type_Long + ", buildBottomTime " + this.d + ", buildDataTime " + this.f);
+    do
+    {
+      do
+      {
+        do
+        {
+          return i;
+        } while (this.jdField_a_of_type_Bina.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+        return 3;
+        if (this.jdField_a_of_type_Bina.b() != null) {
+          break;
+        }
+        if (paramBoolean) {
+          return 4;
+        }
+      } while (this.jdField_a_of_type_Bina.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+      return 5;
+      if ((str != null) && (str.length() != 0)) {
+        break;
+      }
+      if (paramBoolean) {
+        return 6;
+      }
+    } while (this.jdField_a_of_type_Bina.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+    return 7;
+    return 0;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext())
+        {
+          bine localbine = (bine)localIterator.next();
+          a(localbine.a(), localbine.a(), true, localbine.b(), localbine.a());
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
+  
+  private void a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
+  {
+    int i = a(paramInt1, paramMessageMicro, paramBoolean, paramInt2, paramObject);
+    if (i == 1)
+    {
+      QLog.d("BigDataHandler", 1, "We will wait getIPList call back to do bigData Req" + paramInt1);
+      if (!paramBoolean) {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(new bine(paramInt1, paramMessageMicro, paramInt2, paramObject));
+          return;
+        }
+      }
+    }
+    else
+    {
+      if (i != 0)
+      {
+        QLog.d("BigDataHandler", 1, "USER command get key error status: " + i);
+        a(paramInt1, false, null, paramInt2, paramObject);
+        return;
+      }
+      long l;
+      Object localObject2;
+      try
+      {
+        l = Long.parseLong(this.app.getCurrentAccountUin());
+        localObject2 = new Cryptor().encrypt(paramMessageMicro.toByteArray(), this.jdField_a_of_type_Bina.a());
+        paramMessageMicro = new String();
+        i = 0;
+        while (i < "8.4.8".length())
+        {
+          ??? = paramMessageMicro;
+          if ("8.4.8".charAt(i) != '.') {
+            ??? = paramMessageMicro.concat(Character.toString("8.4.8".charAt(i)));
+          }
+          i += 1;
+          paramMessageMicro = (MessageMicro<?>)???;
+        }
+        ??? = new im_msg_head.LoginSig();
+      }
+      catch (Exception paramMessageMicro)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BigDataHandler", 2, paramInt1 + " uin case long fail");
+        }
+        a(paramInt1, false, null, paramInt2, paramObject);
+        return;
+      }
+      ((im_msg_head.LoginSig)???).uint32_type.set(22);
+      ((im_msg_head.LoginSig)???).bytes_sig.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Bina.b()));
+      Object localObject3 = new im_msg_head.HttpConnHead();
+      ((im_msg_head.HttpConnHead)localObject3).uint64_uin.set(l);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_command.set(1791);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_sub_command.set(paramInt2);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet());
+      ((im_msg_head.HttpConnHead)localObject3).uint32_version.set(Integer.parseInt(paramMessageMicro));
+      ((im_msg_head.HttpConnHead)localObject3).uint32_flag.set(1);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_compress_type.set(0);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_error_code.set(0);
+      paramMessageMicro = new im_msg_head.Head();
+      paramMessageMicro.uint32_head_type.set(4);
+      paramMessageMicro.msg_login_sig.set((MessageMicro)???);
+      paramMessageMicro.msg_httpconn_head.set((MessageMicro)localObject3);
+      ??? = paramMessageMicro.toByteArray();
+      paramMessageMicro = new ByteArrayOutputStream();
+      try
+      {
+        localObject3 = new DataOutputStream(paramMessageMicro);
+        ((DataOutputStream)localObject3).write(40);
+        ((DataOutputStream)localObject3).writeInt(???.length);
+        ((DataOutputStream)localObject3).writeInt(localObject2.length);
+        ((DataOutputStream)localObject3).write((byte[])???);
+        ((DataOutputStream)localObject3).write((byte[])localObject2);
+        ((DataOutputStream)localObject3).write(41);
+        ((DataOutputStream)localObject3).flush();
+        ??? = this.jdField_a_of_type_Bina.a();
+        ??? = (String)??? + "cgi-bin/httpconn";
+        paramMessageMicro = paramMessageMicro.toByteArray();
+        localObject2 = new HttpNetReq();
+        ((HttpNetReq)localObject2).setUserData(paramObject);
+        ((HttpNetReq)localObject2).mSendData = paramMessageMicro;
+        ((HttpNetReq)localObject2).mCallback = new bind(paramInt1, this, this.jdField_a_of_type_Bina.a(), paramInt2, paramObject);
+        ((HttpNetReq)localObject2).mReqUrl = ((String)???);
+        ((HttpNetReq)localObject2).mHttpMethod = 1;
+        ((HttpNetReq)localObject2).mReqProperties.put("Accept-Encoding", "identity");
+        if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq((NetReq)localObject2);
+          return;
+        }
+      }
+      catch (Exception paramMessageMicro)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BigDataHandler", 2, paramMessageMicro.getMessage());
+        }
+        a(paramInt1, false, null, paramInt2, paramObject);
+      }
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext())
+        {
+          bine localbine = (bine)localIterator.next();
+          a(localbine.a(), false, null, localbine.b(), localbine.a());
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  public void a(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  {
+    a(paramInt1, paramMessageMicro, false, paramInt2, paramObject);
+  }
+  
+  protected abstract void a(int paramInt1, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt2, Object paramObject);
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.app != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Binf);
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

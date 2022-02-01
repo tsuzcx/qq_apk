@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qyz;
-import qza;
+import rfy;
+import rfz;
 
 public class TopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicInfo> CREATOR = new qyz();
+  public static final Parcelable.Creator<TopicInfo> CREATOR = new rfy();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -30,20 +30,20 @@ public class TopicInfo
     this.e = paramParcel.readString();
   }
   
-  private TopicInfo(qza paramqza)
+  private TopicInfo(rfz paramrfz)
   {
-    this.jdField_a_of_type_Long = qza.a(paramqza);
-    this.jdField_a_of_type_JavaLangString = qza.a(paramqza);
-    this.jdField_b_of_type_JavaLangString = qza.b(paramqza);
-    this.c = qza.c(paramqza);
-    this.d = qza.d(paramqza);
-    this.jdField_b_of_type_Long = qza.b(paramqza);
-    this.jdField_a_of_type_Boolean = qza.a(paramqza);
+    this.jdField_a_of_type_Long = rfz.a(paramrfz);
+    this.jdField_a_of_type_JavaLangString = rfz.a(paramrfz);
+    this.jdField_b_of_type_JavaLangString = rfz.b(paramrfz);
+    this.c = rfz.c(paramrfz);
+    this.d = rfz.d(paramrfz);
+    this.jdField_b_of_type_Long = rfz.b(paramrfz);
+    this.jdField_a_of_type_Boolean = rfz.a(paramrfz);
   }
   
-  public static qza a()
+  public static rfz a()
   {
-    return new qza(null);
+    return new rfz(null);
   }
   
   public long a()

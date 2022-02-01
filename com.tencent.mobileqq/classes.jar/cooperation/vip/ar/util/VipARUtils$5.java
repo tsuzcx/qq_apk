@@ -1,8 +1,8 @@
 package cooperation.vip.ar.util;
 
 import android.text.TextUtils;
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ public final class VipARUtils$5
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put(this.b, this.c);
-        bdmc.a(BaseApplicationImpl.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
       }
       return;
     }

@@ -1,54 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class bdsz
-  implements View.OnClickListener
+public class bdsz
+  implements bdtc
 {
-  bdsz(bdsy parambdsy) {}
+  public bdsz(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void a(Bitmap paramBitmap)
   {
-    if (TextUtils.isEmpty(this.a.ag))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        String str = bevq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.af);
-        if (!TextUtils.isEmpty(str)) {
-          break label133;
-        }
-        this.a.a();
-        this.a.a(this.a.ag, paramView);
-        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.ag, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.ae, this.a.af);
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      break;
-      label133:
-      if (new File(localException).exists())
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          this.a.d();
-        } else {
-          this.a.c();
-        }
-      }
-      else
-      {
-        this.a.a();
-        this.a.a(this.a.ag, paramView);
-      }
-    }
+    WXShareHelper.getInstance().addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    WXShareHelper.getInstance().shareTroopToWXFriendCircle(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

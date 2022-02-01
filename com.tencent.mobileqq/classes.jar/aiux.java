@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Matrix;
 
-class aiux
-  implements View.OnClickListener
+public class aiux
 {
-  aiux(aiuw paramaiuw) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  public void onClick(View paramView)
+  public aiux()
   {
-    aiuw.a(this.a).a();
-    ChatActivityUtils.a(aiuw.a(this.a), aiuw.a(this.a), aiuw.a(this.a).jdField_a_of_type_Int, aiuw.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    bdll.b(aiuw.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

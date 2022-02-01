@@ -1,6 +1,13 @@
-public abstract interface blje
+import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
+import com.tencent.ttpic.video.AEDecoder;
+
+final class blje
+  implements AECoderFactory.AEDecoderFactory
 {
-  public abstract void a();
+  public AEDecoder createDecoder(String paramString)
+  {
+    return new baed(paramString);
+  }
 }
 
 

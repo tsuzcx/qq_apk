@@ -1,60 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"runRPC", "R", "block", "Lkotlin/Function0;", "defaultValueWhenException", "(Lkotlin/jvm/functions/Function0;Ljava/lang/Object;)Ljava/lang/Object;", "", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
 public final class qza
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  
-  public TopicInfo a()
+  private static final <R> R b(Function0<? extends R> paramFunction0, R paramR)
   {
-    return new TopicInfo(this, null);
+    try
+    {
+      paramFunction0 = paramFunction0.invoke();
+      return paramFunction0;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        paramFunction0 = paramR;
+      } while (!QLog.isColorLevel());
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+    }
+    return paramR;
   }
   
-  public qza a(long paramLong)
+  private static final void b(Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public qza a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public qza a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public qza b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public qza b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public qza c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public qza d(String paramString)
-  {
-    this.d = paramString;
-    return this;
+    try
+    {
+      paramFunction0.invoke();
+      return;
+    }
+    catch (RemoteException paramFunction0)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)paramFunction0));
+    }
   }
 }
 

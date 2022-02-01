@@ -6,16 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import zps;
-import zud;
+import yto;
 
 public class BubbleTextView
   extends TextView
 {
   public float a;
   public int a;
-  private zud a;
+  private yto a;
   public boolean a;
   public float b;
   public int b;
@@ -26,10 +26,10 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166461);
+    this.jdField_a_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166480);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -38,10 +38,10 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166461);
+    this.jdField_a_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166480);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -51,10 +51,10 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = zps.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166461);
+    this.jdField_a_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166480);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -68,16 +68,16 @@ public class BubbleTextView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Zud = new zud();
-    this.jdField_a_of_type_Zud.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
-    this.jdField_a_of_type_Zud.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Zud.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Zud.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_Zud.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
-    this.jdField_a_of_type_Zud.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Zud.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Zud.d = this.d;
-    this.jdField_a_of_type_Zud.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Yto = new yto();
+    this.jdField_a_of_type_Yto.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
+    this.jdField_a_of_type_Yto.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Yto.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Yto.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_Yto.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
+    this.jdField_a_of_type_Yto.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Yto.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Yto.d = this.d;
+    this.jdField_a_of_type_Yto.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
   }
   
   private void c()
@@ -124,8 +124,8 @@ public class BubbleTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Zud != null) {
-      this.jdField_a_of_type_Zud.draw(paramCanvas);
+    if (this.jdField_a_of_type_Yto != null) {
+      this.jdField_a_of_type_Yto.draw(paramCanvas);
     }
     super.onDraw(paramCanvas);
   }

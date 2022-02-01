@@ -1,31 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.AdapterView;
-
-public class bbde
-  implements bljo
+public abstract interface bbde
 {
-  public bbde(IosTimepicker paramIosTimepicker) {}
+  public abstract void a();
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    IosTimepicker.a(this.a, paramView, 1);
-    if (paramView.getTag() != null)
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt) {
-          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
-      }
-    }
-  }
+  public abstract void a(String paramString, int paramInt, boolean paramBoolean);
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

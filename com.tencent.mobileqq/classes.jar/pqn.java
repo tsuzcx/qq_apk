@@ -1,49 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class pqn
+  implements URLDrawable.URLDrawableListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
+  public pqn(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  public ReadInJoyUserInfoModule.Request0xb81Params a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
+    }
   }
   
-  public pqn a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.b = paramInt;
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
+    }
   }
   
-  public pqn a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    }
   }
   
-  public pqn b(int paramInt)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public pqn c(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
-  }
-  
-  public pqn d(int paramInt)
-  {
-    this.e = paramInt;
-    return this;
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).removeMessages(-2);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).sendEmptyMessage(-2);
   }
 }
 

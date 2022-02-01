@@ -1,210 +1,88 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin.1;
-import java.io.File;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import java.lang.ref.WeakReference;
 
-public class bnme
-  extends bnnn
-  implements bngj
+class bnme
+  implements URLDrawableDownListener
 {
-  private bmuu jdField_a_of_type_Bmuu;
-  private String jdField_a_of_type_JavaLangString = "";
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<ProgressBar> b;
   
-  private void a(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
+  public bnme(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
   {
-    String str;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
-      str = "";
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          parambioy = new JSONObject(paramArrayOfString[0]);
-          paramWebViewPlugin = parambioy.getString("giftid");
-          parambioy.printStackTrace();
-        }
-        catch (JSONException parambioy)
-        {
-          try
-          {
-            parambioy = parambioy.getString("callback");
-            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambioy))) {
-              break;
-            }
-            return;
-          }
-          catch (JSONException parambioy)
-          {
-            for (;;)
-            {
-              continue;
-              int i = 0;
-            }
-          }
-          parambioy = parambioy;
-          paramWebViewPlugin = "";
-        }
-        parambioy = str;
-      }
-      paramWebViewPlugin = new File(bmur.a(paramWebViewPlugin) + awyq.a());
-      if ((!paramWebViewPlugin.exists()) || (!paramWebViewPlugin.isDirectory())) {
-        break;
-      }
-      i = 1;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null);
-    paramWebViewPlugin = "window." + parambioy + "({checkGift:" + i + "})";
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramWebViewPlugin);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    this.b = new WeakReference(paramProgressBar);
   }
   
-  private void b(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
+  private boolean a(ImageView paramImageView)
   {
-    parambioy.a().getHandler(bnnh.class).post(new QZoneGiftFullScreenJsPlugin.1(this, paramArrayOfString));
+    paramImageView = (String)paramImageView.getTag(2131378207);
+    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
   }
   
-  private void c(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    Object localObject;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
-      localObject = "";
-    }
-    label63:
-    do
+    xvv.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
     {
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            parambioy = new JSONObject(paramArrayOfString[0]);
-            paramWebViewPlugin = parambioy.getString("giftid");
-            parambioy.printStackTrace();
-          }
-          catch (JSONException parambioy)
-          {
-            try
-            {
-              parambioy = parambioy.getString("callback");
-              if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambioy))) {
-                break;
-              }
-              return;
-            }
-            catch (JSONException parambioy)
-            {
-              break label63;
-            }
-            parambioy = parambioy;
-            paramWebViewPlugin = "";
-          }
-          parambioy = (bioy)localObject;
-        }
-        paramArrayOfString = bmur.a(paramWebViewPlugin);
-        localObject = new File(paramArrayOfString);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      this.jdField_a_of_type_Bmuu = new bmuu(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-    } while (!bmuu.a());
-    this.jdField_a_of_type_Bmuu.a(paramWebViewPlugin, paramArrayOfString, new bnmf(this, parambioy));
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ("checkGift".equalsIgnoreCase(paramString3))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("downloadGift".equalsIgnoreCase(paramString3))
-    {
-      bngf.a().a(this);
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("playGift".equalsIgnoreCase(paramString3))
-    {
-      c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934601L)
-    {
-      String str = QzoneConfig.getInstance().getConfig("H5Url", "GiftDetailPage", "https://h5.qzone.qq.com/gift/detail?_wv=2097155&_proxy=1&uin={uin}&ugcid={ugcid}");
-      if (!TextUtils.isEmpty(str))
-      {
-        int i = str.indexOf("?");
-        if (i != -1)
-        {
-          str = str.substring(0, i);
-          if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(str)) && (this.jdField_a_of_type_Bmuu != null)) {
-            this.jdField_a_of_type_Bmuu.b();
-          }
-        }
-      }
-    }
-    return super.a(paramString, paramLong, paramMap);
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    for (;;)
-    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131378172, Boolean.valueOf(false));
       return;
-      paramBundle = paramBundle.getBundle("data");
-      if (paramBundle == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QZoneGiftFullScreenJsPlugin", 2, "call js function,bundle is empty");
-        }
-      }
-      else if ("cmd.downloadGift".equals(paramString))
-      {
-        int i = paramBundle.getInt("Gift_DownloadProgress_FullScreen");
-        paramString = "-1";
-        if (i > 0) {
-          if (i >= 100) {
-            break label155;
-          }
-        }
-        label155:
-        for (paramString = String.format("%.1f", new Object[] { Double.valueOf(i * 0.01D) }); (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)); paramString = "1")
-        {
-          paramString = "window." + this.jdField_a_of_type_JavaLangString + "({downloadGift:" + paramString + "})";
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString);
-          return;
-        }
-      }
     }
+    xvv.b("LocationFaceAdapter", "onLoadCanceled error.");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    xvv.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131378172, Boolean.valueOf(false));
+      return;
+    }
+    xvv.b("LocationFaceAdapter", "onLoadFialed error.");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    xvv.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131378172, Boolean.valueOf(false));
+      return;
+    }
+    xvv.b("LocationFaceAdapter", "onLoadProgressed error.");
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    xvv.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131378172, Boolean.valueOf(true));
+      return;
+    }
+    xvv.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

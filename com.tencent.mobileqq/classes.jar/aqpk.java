@@ -1,26 +1,85 @@
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Canvas;
+import android.util.SparseArray;
+import android.view.View.MeasureSpec;
+import java.util.ArrayList;
+import java.util.List;
 
-class aqpk
-  extends aqpd
+public abstract class aqpk
+  extends aqpa<aqoi>
 {
-  aqpk(aqph paramaqph) {}
+  private SparseArray<List<aqpl>> a = new SparseArray();
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public int a(Object paramObject)
   {
-    if (paramBoolean1)
+    return 0;
+  }
+  
+  public abstract aqpl a(int paramInt);
+  
+  public aqpy a(aqoi paramaqoi)
+  {
+    int i = a(paramaqoi.a());
+    List localList = (List)this.a.get(i);
+    Object localObject = localList;
+    if (localList == null)
     {
-      if ((aqph.a(this.a) != null) && (paramBoolean2 != aqph.a(this.a).a()))
-      {
-        aqph.a(this.a).setOnCheckedChangeListener(null);
-        aqph.a(this.a).setChecked(paramBoolean2);
-        aqph.a(this.a).setOnCheckedChangeListener(this.a);
-      }
+      localObject = new ArrayList();
+      this.a.put(i, localObject);
+    }
+    if (((List)localObject).isEmpty()) {
+      ((List)localObject).add(a(i));
+    }
+    localObject = (aqpl)((List)localObject).remove(0);
+    a(i, (aqpl)localObject, paramaqoi);
+    ((aqpl)localObject).a(View.MeasureSpec.makeMeasureSpec(paramaqoi.f(), -2147483648), View.MeasureSpec.makeMeasureSpec(paramaqoi.g(), -2147483648));
+    ((aqpl)localObject).a(0, 0, ((aqpl)localObject).a(), ((aqpl)localObject).b());
+    paramaqoi.a((aqpl)localObject);
+    paramaqoi.b(((aqpl)localObject).a());
+    paramaqoi.a(((aqpl)localObject).b());
+    return new aqpy(((aqpl)localObject).a(), ((aqpl)localObject).b());
+  }
+  
+  public abstract void a(int paramInt, aqpl paramaqpl, aqoi paramaqoi);
+  
+  public void a(Canvas paramCanvas, aqoi paramaqoi, aqoj paramaqoj, float paramFloat1, float paramFloat2)
+  {
+    paramaqoj = paramaqoi.a();
+    if (paramaqoj == null) {
       return;
     }
-    paramString = QQToast.a(BaseApplication.getContext(), 1, 2131690565, 0);
-    paramString.b(paramString.c());
+    if (!paramaqoi.i())
+    {
+      paramaqoj.a(View.MeasureSpec.makeMeasureSpec(paramaqoj.a(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramaqoj.b(), 1073741824));
+      paramaqoj.a(0, 0, paramaqoj.a(), paramaqoj.b());
+      paramaqoi.f(true);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat1, paramFloat2);
+    paramaqoj.a(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(aqoi paramaqoi)
+  {
+    aqpl localaqpl = paramaqoi.a();
+    if (localaqpl != null)
+    {
+      int i = a(paramaqoi.a());
+      List localList = (List)this.a.get(i);
+      Object localObject = localList;
+      if (localList == null)
+      {
+        localObject = new ArrayList();
+        this.a.put(i, localObject);
+      }
+      ((List)localObject).add(localaqpl);
+      paramaqoi.a(null);
+    }
+  }
+  
+  public boolean a(aqoa paramaqoa)
+  {
+    return paramaqoa instanceof aqoi;
   }
 }
 

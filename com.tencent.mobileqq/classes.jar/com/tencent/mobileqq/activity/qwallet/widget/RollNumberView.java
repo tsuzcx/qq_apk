@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
+import amtj;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
@@ -108,7 +108,7 @@ public class RollNumberView
       init(0);
     }
     localTextView.setText(".");
-    localTextView.setContentDescription(anzj.a(2131712375));
+    localTextView.setContentDescription(amtj.a(2131712607));
     addView(localTextView, 0);
     i = init(i);
     if (i > this.max) {}

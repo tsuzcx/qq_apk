@@ -1,8 +1,22 @@
-public class awyg
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class awyg
+  implements Handler.Callback
 {
-  public int a;
-  public int b;
-  public int c;
+  awyg(awyf paramawyf) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      awyf.a(this.a);
+    }
+  }
 }
 
 

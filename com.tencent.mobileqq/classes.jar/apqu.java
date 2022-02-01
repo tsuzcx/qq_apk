@@ -1,13 +1,34 @@
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
 
-public abstract interface apqu
-  extends apqn
+public class apqu
+  implements Handler.Callback
 {
-  public abstract void a(long paramLong);
+  public apqu(SearchResultActivity paramSearchResultActivity) {}
   
-  public abstract void a(List<apqk> paramList, long paramLong);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      QQToast.a(this.a, 2131694064, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
+  }
 }
 
 

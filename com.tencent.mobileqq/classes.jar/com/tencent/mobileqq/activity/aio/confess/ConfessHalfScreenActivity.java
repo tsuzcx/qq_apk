@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
 import Override;
-import agor;
+import afhz;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -38,18 +38,19 @@ public class ConfessHalfScreenActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167247);
-    paramBundle = findViewById(2131363678);
+    getWindow().setBackgroundDrawableResource(2131167276);
+    paramBundle = findViewById(2131363709);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167247);
+      paramBundle.setBackgroundResource(2131167276);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
     if (this.jdField_a_of_type_Int <= 0)
@@ -60,7 +61,7 @@ public class ConfessHalfScreenActivity
       finish();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agor(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afhz(this);
     }
     try
     {
@@ -115,7 +116,7 @@ public class ConfessHalfScreenActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity
  * JD-Core Version:    0.7.0.1
  */

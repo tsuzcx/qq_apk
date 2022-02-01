@@ -1,57 +1,17 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ywr
-  extends zfi
+public class ywr
+  implements View.OnClickListener
 {
-  private final List<zex> a = new ArrayList();
+  public ywr(QRLoginBaseActivity paramQRLoginBaseActivity) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.a.size();
-  }
-  
-  public zex a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (zex)this.a.get(paramInt);
-    }
-    return null;
-  }
-  
-  public zex a(String paramString)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      zex localzex = (zex)localIterator.next();
-      if (TextUtils.equals(paramString, localzex.a)) {
-        return localzex;
-      }
-    }
-    return null;
-  }
-  
-  public void a(Collection<zex> paramCollection)
-  {
-    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(zex paramzex)
-  {
-    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramzex);
-    int i = this.a.indexOf(paramzex);
-    if (i >= 0)
-    {
-      this.a.set(i, paramzex);
-      a(i);
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

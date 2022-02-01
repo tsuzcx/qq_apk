@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
 
-class apey
-  implements View.OnClickListener
+public class apey
 {
-  apey(apex paramapex) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
 }
 
 

@@ -1,132 +1,133 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.os.Process;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoAcceptType;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoDownChannelControl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.Foreground;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
 
 public class lek
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lel(this);
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  public static volatile int a;
+  volatile HashMap<Long, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  volatile boolean jdField_a_of_type_Boolean = false;
   
-  public lek(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    jdField_a_of_type_Int = -1;
   }
   
-  private String a(Context paramContext)
+  public static int a()
   {
-    try
-    {
-      int i = Process.myPid();
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-      while (paramContext.hasNext())
-      {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-        if (localRunningAppProcessInfo.pid == i)
-        {
-          paramContext = localRunningAppProcessInfo.processName;
-          return paramContext;
-        }
-      }
-    }
-    catch (Exception paramContext) {}
-    return null;
-  }
-  
-  private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
-  {
-    Time localTime = new Time();
-    localTime.setToNow();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label142;
-      }
-    }
-    label142:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
-    }
-  }
-  
-  private boolean a(String paramString, ArrayList<String> paramArrayList)
-  {
-    if (Foreground.sCountActivity > 0) {}
-    while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(ArrayList<String> paramArrayList)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool1 = true;
-    }
-    String str;
-    do
-    {
-      return bool1;
-      str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(str));
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramArrayList.size()) {
-        break;
-      }
-      if (str.equals(paramArrayList.get(i))) {
-        return true;
-      }
-      i += 1;
-    }
+    return AudioHelper.a(20);
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GKillProcessMonitor", 2, "regist QQ Process Exit Receiver");
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.process.exit");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void b()
+  public boolean a(long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool = true;
+    int i = a();
+    if (i >= 0)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("GVideoDownloadChannelControl", 2, "CheckUinIsBig Debug Mode DEBUG_SMALL_CHANNEL_NUM=" + i);
+      }
+      return paramInt >= i;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).intValue() == 2) {}
+      for (;;)
+      {
+        return bool;
+        bool = false;
+      }
+    }
+    return lez.u();
+  }
+  
+  public boolean a(qav_gvideo_sdk_transfer.gVideoDownChannelControl paramgVideoDownChannelControl)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("GVideoDownloadChannelControl", 2, "UpdateChannelCtlList start");
+    }
+    int k = a();
+    boolean bool1;
+    if (paramgVideoDownChannelControl == null)
+    {
+      bool1 = false;
+      return bool1;
+    }
+    if (paramgVideoDownChannelControl.uint32_switch.get() == 1)
+    {
+      bool1 = true;
+      label46:
+      if (bool1 == this.jdField_a_of_type_Boolean) {
+        break label300;
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+    }
+    label297:
+    label300:
+    for (int i = 1;; i = 0)
+    {
+      if (!bool1)
+      {
+        a();
+        if (i != 0)
+        {
+          bool1 = bool2;
+          if (k < 0) {
+            break;
+          }
+        }
+        return false;
+        bool1 = false;
+        break label46;
+      }
+      HashMap localHashMap = new HashMap();
+      int m = paramgVideoDownChannelControl.uint32_videoacceptTypeSize.get();
+      int j = 0;
+      label113:
+      if (j < m)
+      {
+        Object localObject = (qav_gvideo_sdk_transfer.gVideoAcceptType)paramgVideoDownChannelControl.msg_video_accept_type.get(j);
+        long l = ((qav_gvideo_sdk_transfer.gVideoAcceptType)localObject).uint64_account.get();
+        int n = ((qav_gvideo_sdk_transfer.gVideoAcceptType)localObject).video_type.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("GVideoDownloadChannelControl", 2, "UpdateChannelCtlList index=" + j + " |uin=" + l + " |type=" + n);
+        }
+        localObject = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
+        if ((localObject != null) && (((Integer)localObject).intValue() == n)) {
+          break label297;
+        }
+        localHashMap.put(Long.valueOf(l), Integer.valueOf(n));
+        i = 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break label113;
+        if ((m != this.jdField_a_of_type_JavaUtilHashMap.size()) || (i != 0)) {
+          this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+        }
+        if (i != 0)
+        {
+          bool1 = bool2;
+          if (k < 0) {
+            break;
+          }
+        }
+        return false;
+      }
     }
   }
 }

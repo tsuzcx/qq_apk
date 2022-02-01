@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.navbar;
 
-import agej;
+import amtj;
 import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -21,12 +21,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bhga;
-import bhlo;
-import bhtq;
-import bjey;
+import bfpm;
+import bhle;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class NavBarCommon
@@ -40,7 +40,7 @@ public class NavBarCommon
   private TextView centerView;
   private TextView leftView;
   private TextView leftViewNotBack;
-  private bjey listener;
+  private bhle listener;
   private ViewStub mBottomTitleStub;
   private ImageView mLeftBackIcon;
   private TextView mLeftBackText;
@@ -77,29 +77,29 @@ public class NavBarCommon
   
   private void init(Context paramContext)
   {
-    View.inflate(paramContext, 2131558979, this);
-    setBackgroundResource(2130850099);
-    this.leftView = ((TextView)findViewById(2131369042));
-    this.mLeftBackText = ((TextView)findViewById(2131379635));
-    this.mLeftBackIcon = ((ImageView)findViewById(2131369452));
-    this.leftViewNotBack = ((TextView)findViewById(2131369044));
-    this.centerView = ((TextView)findViewById(2131369088));
-    this.titleContainer = ((RelativeLayout)findViewById(2131378993));
-    this.topTitle = ((TextView)findViewById(2131379036));
-    this.bottomTitle = ((TextView)findViewById(2131378968));
-    this.rightViewText = ((TextView)findViewById(2131369073));
-    this.rightViewImg1 = ((ImageView)findViewById(2131369061));
-    this.rightViewText2 = ((TextView)findViewById(2131369074));
-    this.rightViewImg = ((ImageView)findViewById(2131369056));
-    this.mBottomTitleStub = ((ViewStub)findViewById(2131378969));
+    View.inflate(paramContext, 2131558987, this);
+    setBackgroundResource(2130850016);
+    this.leftView = ((TextView)findViewById(2131369068));
+    this.mLeftBackText = ((TextView)findViewById(2131379417));
+    this.mLeftBackIcon = ((ImageView)findViewById(2131369436));
+    this.leftViewNotBack = ((TextView)findViewById(2131369070));
+    this.centerView = ((TextView)findViewById(2131369115));
+    this.titleContainer = ((RelativeLayout)findViewById(2131378762));
+    this.topTitle = ((TextView)findViewById(2131378805));
+    this.bottomTitle = ((TextView)findViewById(2131378738));
+    this.rightViewText = ((TextView)findViewById(2131369099));
+    this.rightViewImg1 = ((ImageView)findViewById(2131369087));
+    this.rightViewText2 = ((TextView)findViewById(2131369100));
+    this.rightViewImg = ((ImageView)findViewById(2131369082));
+    this.mBottomTitleStub = ((ViewStub)findViewById(2131378739));
     if (AppSetting.c)
     {
-      bhga.b(this.leftView, Button.class.getName());
+      bfpm.b(this.leftView, Button.class.getName());
       if (this.mLeftBackText != null) {
-        bhga.b(this.mLeftBackText, Button.class.getName());
+        bfpm.b(this.mLeftBackText, Button.class.getName());
       }
       if (this.mLeftBackIcon != null) {
-        bhga.b(this.mLeftBackIcon, Button.class.getName());
+        bfpm.b(this.mLeftBackIcon, Button.class.getName());
       }
     }
   }
@@ -118,9 +118,9 @@ public class NavBarCommon
     TextView localTextView;
     if (paramBoolean)
     {
-      i = 2131167302;
+      i = 2131167337;
       setBackgroundResource(i);
-      localColorStateList = getResources().getColorStateList(2131166985);
+      localColorStateList = getResources().getColorStateList(2131167007);
       this.leftView.setTextColor(localColorStateList);
       localTextView = this.leftView;
       if (!paramBoolean) {
@@ -128,7 +128,7 @@ public class NavBarCommon
       }
     }
     label96:
-    for (int i = 2130840286;; i = 2130850668)
+    for (int i = 2130840324;; i = 2130850593)
     {
       localTextView.setBackgroundResource(i);
       this.leftViewNotBack.setTextColor(localColorStateList);
@@ -137,7 +137,7 @@ public class NavBarCommon
       this.rightViewText.setTextColor(localColorStateList);
       this.rightViewText2.setTextColor(localColorStateList);
       return;
-      i = 2130850099;
+      i = 2130850016;
       break;
     }
   }
@@ -157,7 +157,7 @@ public class NavBarCommon
   
   public void hideLeftText()
   {
-    bhtq.b(this.leftViewNotBack, 8);
+    ViewUtils.setVisible(this.leftViewNotBack, 8);
   }
   
   public boolean isTitleProgressShowing()
@@ -217,16 +217,16 @@ public class NavBarCommon
     this.topTitle.setText(paramString);
     this.topTitle.setContentDescription(paramString);
     this.mBottomTitleStub.setLayoutResource(paramInt);
-    return this.mBottomTitleStub.inflate().findViewById(2131378970);
+    return this.mBottomTitleStub.inflate().findViewById(2131378740);
   }
   
   public void setCustomView(View paramView)
   {
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, agej.a(29.0F, getResources()));
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(29.0F, getResources()));
     this.centerView.setVisibility(8);
     localLayoutParams1.addRule(13, -1);
     RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.titleContainer.getLayoutParams();
-    int i = agej.a(24.0F, getResources());
+    int i = AIOUtils.dp2px(24.0F, getResources());
     localLayoutParams2.leftMargin = i;
     localLayoutParams2.rightMargin = i;
     this.titleContainer.setLayoutParams(localLayoutParams2);
@@ -236,13 +236,13 @@ public class NavBarCommon
   
   public void setLeftBackVisible(int paramInt)
   {
-    bhtq.b(this.leftView, paramInt);
+    ViewUtils.setVisible(this.leftView, paramInt);
   }
   
   public void setLeftButton(int paramInt)
   {
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131369044));
+    this.leftViewNotBack = ((TextView)findViewById(2131369070));
     setLayerType(this.leftViewNotBack);
     this.leftViewNotBack.setVisibility(0);
     this.leftViewNotBack.setText(paramInt);
@@ -251,7 +251,7 @@ public class NavBarCommon
   public void setLeftButton(String paramString)
   {
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131369044));
+    this.leftViewNotBack = ((TextView)findViewById(2131369070));
     setLayerType(this.leftViewNotBack);
     this.leftViewNotBack.setVisibility(0);
     this.leftViewNotBack.setText(paramString);
@@ -271,7 +271,7 @@ public class NavBarCommon
       localTextView = this.leftView;
       localObject1 = localObject2;
       if ("".equals(localObject2)) {
-        localObject1 = getContext().getString(2131690559);
+        localObject1 = getContext().getString(2131690599);
       }
       if (!this.mNotShowLeftText) {
         break label144;
@@ -284,8 +284,8 @@ public class NavBarCommon
       if (AppSetting.c)
       {
         localObject2 = localObject1;
-        if (!((String)localObject1).contains(getContext().getString(2131690559))) {
-          localObject2 = getContext().getString(2131690559) + (String)localObject1;
+        if (!((String)localObject1).contains(getContext().getString(2131690599))) {
+          localObject2 = getContext().getString(2131690599) + (String)localObject1;
         }
         this.leftView.setContentDescription((CharSequence)localObject2);
       }
@@ -317,15 +317,15 @@ public class NavBarCommon
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
               paramBundle = (Bundle)localObject;
-              if (((String)localObject).contains(anzj.a(2131705972))) {
-                paramBundle = getContext().getString(2131690559);
+              if (((String)localObject).contains(amtj.a(2131706202))) {
+                paramBundle = getContext().getString(2131690599);
               }
             }
           }
         }
         localObject = paramBundle;
         if (paramBundle == null) {
-          localObject = getContext().getString(2131690559);
+          localObject = getContext().getString(2131690599);
         }
         if (this.mNotShowLeftText) {
           localTextView.setText("  ");
@@ -337,8 +337,8 @@ public class NavBarCommon
             break;
           }
           paramBundle = (Bundle)localObject;
-          if (!((String)localObject).contains(getContext().getString(2131690559))) {
-            paramBundle = getContext().getString(2131690559) + (String)localObject;
+          if (!((String)localObject).contains(getContext().getString(2131690599))) {
+            paramBundle = getContext().getString(2131690599) + (String)localObject;
           }
           this.leftView.setContentDescription(paramBundle);
           return;
@@ -355,9 +355,9 @@ public class NavBarCommon
     this.mNotShowLeftText = paramBoolean;
   }
   
-  public void setOnItemSelectListener(bjey parambjey)
+  public void setOnItemSelectListener(bhle parambhle)
   {
-    this.listener = parambjey;
+    this.listener = parambhle;
     this.leftView.setOnClickListener(this);
     if (this.mLeftBackText != null) {
       this.mLeftBackText.setOnClickListener(this);
@@ -383,7 +383,7 @@ public class NavBarCommon
     this.rightViewText.setText(paramInt);
     this.rightViewText.setEnabled(true);
     if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + anzj.a(2131705973));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + amtj.a(2131706203));
     }
   }
   
@@ -394,7 +394,7 @@ public class NavBarCommon
     this.rightViewText.setText(paramString);
     this.rightViewText.setEnabled(true);
     if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + anzj.a(2131705971));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + amtj.a(2131706201));
     }
   }
   
@@ -405,7 +405,7 @@ public class NavBarCommon
     this.rightViewText2.setText(paramInt);
     this.rightViewText2.setEnabled(true);
     if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + anzj.a(2131705974));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + amtj.a(2131706204));
     }
   }
   
@@ -414,6 +414,14 @@ public class NavBarCommon
     this.rightViewImg1.setVisibility(0);
     this.rightViewText.setVisibility(8);
     this.rightViewImg1.setImageDrawable(paramDrawable);
+  }
+  
+  public void setRightImage(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    this.rightViewImg1.setVisibility(0);
+    this.rightViewText.setVisibility(8);
+    this.rightViewImg1.setImageDrawable(paramDrawable1);
+    this.rightViewImg1.setBackgroundDrawable(paramDrawable2);
   }
   
   public void setRightImage2(Drawable paramDrawable)
@@ -435,7 +443,7 @@ public class NavBarCommon
   
   public void setRightViewTextVisible(int paramInt)
   {
-    bhtq.b(this.rightViewText, paramInt);
+    ViewUtils.setVisible(this.rightViewText, paramInt);
   }
   
   public void setTitle(CharSequence paramCharSequence)
@@ -500,7 +508,7 @@ public class NavBarCommon
   
   public void showLeftText()
   {
-    bhtq.b(this.leftViewNotBack, 0);
+    ViewUtils.setVisible(this.leftViewNotBack, 0);
   }
   
   public boolean startTitleProgress()
@@ -511,7 +519,7 @@ public class NavBarCommon
     Object localObject1;
     if (this.mUseOptimizMode)
     {
-      localObject1 = (RelativeLayout)findViewById(2131378993);
+      localObject1 = (RelativeLayout)findViewById(2131378762);
       if (this.centerView.getVisibility() == 0)
       {
         localObject1 = this.centerView;
@@ -564,13 +572,13 @@ public class NavBarCommon
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
           ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
           this.mLoadingView = new ImageView(getContext());
-          this.mLoadingView.setId(2131370308);
+          this.mLoadingView.setId(2131370276);
           localObject1 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
           ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * bhlo.a()));
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * DeviceInfoUtil.getDesity()));
           this.mLoadingParent.addView(this.mLoadingView, (ViewGroup.LayoutParams)localObject1);
-          localObject1 = getResources().getDrawable(2130839412);
+          localObject1 = getResources().getDrawable(2130839447);
           this.mLoadingView.setImageDrawable((Drawable)localObject1);
           if ((localObject1 instanceof Animatable)) {
             ((Animatable)localObject1).start();
@@ -588,7 +596,7 @@ public class NavBarCommon
       }
       if (this.ad == null)
       {
-        this.ad = getResources().getDrawable(2130839412);
+        this.ad = getResources().getDrawable(2130839447);
         this.mOldDrawables = this.centerView.getCompoundDrawables();
         this.mOldPadding = this.centerView.getCompoundDrawablePadding();
         this.centerView.setCompoundDrawablePadding(10);
@@ -634,7 +642,7 @@ public class NavBarCommon
         return;
       }
       this.animView = new View(getContext());
-      this.animView.setBackgroundResource(2130850099);
+      this.animView.setBackgroundResource(2130850016);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       addView(this.animView, 0, localLayoutParams);
     }
@@ -665,13 +673,13 @@ public class NavBarCommon
     {
       localView.setVisibility(paramInt);
       return;
-      localView = findViewById(2131369055);
+      localView = findViewById(2131369081);
       break;
-      localView = findViewById(2131369060);
+      localView = findViewById(2131369086);
       break;
-      localView = findViewById(2131369075);
+      localView = findViewById(2131369101);
       break;
-      localView = findViewById(2131369076);
+      localView = findViewById(2131369102);
       break;
     }
   }

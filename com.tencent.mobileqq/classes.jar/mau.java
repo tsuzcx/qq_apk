@@ -1,16 +1,19 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.ui.AVActivity;
 
-class mau
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class mau
+  implements bjoe
 {
-  mau(mat parammat) {}
+  public mau(AVActivity paramAVActivity) {}
   
-  public void onGlobalLayout()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.a.b();
     }
-    this.a.a(false);
   }
 }
 

@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class asyj
-  extends aogi
 {
-  public asyj(ExtendFriendFragment paramExtendFriendFragment) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    ExtendFriendFragment.a(this.a);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public byte[] c;
+  public long d;
+  public byte[] d;
 }
 
 

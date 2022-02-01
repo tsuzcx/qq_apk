@@ -1,21 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bmki
-  implements DialogInterface.OnDismissListener
-{
-  bmki(bmkd parambmkd) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (!this.a.b) {
-      bmkd.a(this.a, 1);
-    }
-    this.a.b = false;
-    this.a.a = null;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmki

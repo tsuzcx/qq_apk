@@ -1,6 +1,20 @@
-public abstract interface wmh
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+
+public class wmh
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public wmh(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
+  
+  public boolean onPreDraw()
+  {
+    wqq.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new wmi(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
+  }
 }
 
 

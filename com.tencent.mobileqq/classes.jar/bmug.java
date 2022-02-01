@@ -1,368 +1,229 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.os.FileObserver;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.1;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
+@TargetApi(16)
 public class bmug
+  extends bmqj
 {
-  private static awxb<bmug, Void> jdField_a_of_type_Awxb = new bmuh();
-  private final byte jdField_a_of_type_Byte = 2;
-  private FileObserver jdField_a_of_type_AndroidOsFileObserver;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bmui(this, ThreadManager.getSubThreadLooper());
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final byte jdField_b_of_type_Byte = 1;
-  private volatile boolean jdField_b_of_type_Boolean;
+  private static File jdField_a_of_type_JavaIoFile = new File(bmxv.a(), "information_paster");
+  private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  public bmuk a;
+  private WeakReference<RelativeLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private ConcurrentLinkedQueue<bnli> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public static bmug a()
+  public bmug()
   {
-    return (bmug)jdField_a_of_type_Awxb.b(null);
+    this.jdField_a_of_type_Bmuk = null;
+    this.jdField_a_of_type_Bmuk = new bmuk(this);
   }
   
-  private static File a(File paramFile1, File paramFile2)
+  public static String a()
   {
-    String str = paramFile1.getName();
-    paramFile1 = str;
-    int i;
-    if (!str.endsWith(".dex"))
-    {
-      i = str.lastIndexOf(".");
-      if (i >= 0) {
-        break label57;
-      }
-    }
-    for (paramFile1 = str + ".dex";; paramFile1 = paramFile1.toString())
-    {
-      return new File(paramFile2, paramFile1);
-      label57:
-      paramFile1 = new StringBuilder(i + 4);
-      paramFile1.append(str, 0, i);
-      paramFile1.append(".dex");
-    }
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public static void a()
+  public static String a(bnli parambnli)
   {
-    File localFile;
-    if (BaseApplicationImpl.sProcessId == 2)
-    {
-      QLog.i("QZoneStartupMonitor", 1, "beforeLoadPlugin");
-      localFile = new File(BaseApplicationImpl.getApplication().getDir("qzone_monitor_dir", 0), "qzone_startup_monitor");
-      if (localFile.exists()) {}
-    }
-    try
-    {
-      localFile.createNewFile();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      QLog.w("QZoneStartupMonitor", 1, "", localIOException);
-    }
+    parambnli = parambnli.g + "_" + parambnli.f + ".zip";
+    return new File(jdField_a_of_type_JavaIoFile, parambnli).getPath();
   }
   
-  private void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  public static String b(bnli parambnli)
   {
-    if ((paramInt1 == 0) && (paramBoolean) && (paramInt2 < 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "oat 合法，启动成功不上报");
-      }
-    }
-    Object localObject;
-    label122:
-    do
+    return jdField_a_of_type_JavaLangString + parambnli.g + "_" + parambnli.f + File.separator + parambnli.g;
+  }
+  
+  private boolean d(bnli parambnli)
+  {
+    if (jdField_a_of_type_JavaIoFile != null)
     {
-      do
+      int i;
+      boolean bool1;
+      label44:
+      String str;
+      if (!jdField_a_of_type_JavaIoFile.exists())
       {
-        return;
-        if (a()) {
+        jdField_a_of_type_JavaIoFile.mkdirs();
+        String[] arrayOfString = jdField_a_of_type_JavaIoFile.list();
+        if (arrayOfString == null) {
+          break label229;
+        }
+        int j = arrayOfString.length;
+        i = 0;
+        bool1 = false;
+        bool2 = bool1;
+        if (i >= j) {
+          break label232;
+        }
+        str = arrayOfString[i];
+        bool2 = bool1;
+        if (str.startsWith(parambnli.g))
+        {
+          if (!str.endsWith(".zip")) {
+            break label151;
+          }
+          FileUtils.delete(jdField_a_of_type_JavaIoFile + str, false);
+          bool2 = bool1;
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        bool1 = bool2;
+        break label44;
+        if (jdField_a_of_type_JavaIoFile.isDirectory()) {
           break;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("QZoneStartupMonitor", 2, "非 art 不上报");
-      return;
-      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject != null) {}
-      for (localObject = ((AppRuntime)localObject).getAccount();; localObject = null)
-      {
-        if (paramInt2 >= 1) {
-          bdmc.a(BaseApplication.getContext()).a((String)localObject, "qzoneRecovery", paramBoolean, 0L, 0L, null, "");
+        jdField_a_of_type_JavaIoFile.delete();
+        jdField_a_of_type_JavaIoFile.mkdirs();
+        break;
+        label151:
+        if (str.endsWith(parambnli.f))
+        {
+          bool2 = true;
         }
-        if (!this.jdField_b_of_type_Boolean) {
-          break label122;
+        else
+        {
+          bool2 = bool1;
+          if (!str.endsWith("png"))
+          {
+            bool2 = bool1;
+            if (!str.endsWith("tmp"))
+            {
+              FileUtils.delete(jdField_a_of_type_JavaLangString + str, false);
+              bool2 = bool1;
+            }
+          }
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QZoneStartupMonitor", 2, "已经上报过，不再上报");
-        return;
       }
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    this.jdField_b_of_type_Boolean = true;
-    HashMap localHashMap = new HashMap();
-    int j;
-    int i;
-    label158:
-    label172:
-    bdmc localbdmc;
-    if (paramInt1 == 0)
-    {
-      j = 2;
-      if (!paramBoolean) {
-        break label308;
-      }
-      i = 1;
-      int k = j | i;
-      if (paramInt1 != 0) {
-        break label314;
-      }
-      j = 0;
-      localHashMap.put("oatValid", String.valueOf(j));
-      localHashMap.put("param_FailCode", String.valueOf(k));
-      localHashMap.put("recoveryCount", String.valueOf(paramInt2));
-      localHashMap.put("type", String.valueOf(k));
-      localHashMap.put("errorCode", String.valueOf(paramInt1));
-      localHashMap.put("startupSuccess", String.valueOf(i));
-      if (paramInt2 <= 0) {
-        break label325;
-      }
-      if (!paramBoolean) {
-        break label320;
-      }
-      paramInt1 = 1;
-      label258:
-      localHashMap.put("recovery", String.valueOf(paramInt1));
-      localbdmc = bdmc.a(BaseApplication.getContext());
-      if (k != 0) {
-        break label330;
-      }
-    }
-    label308:
-    label314:
-    label320:
-    label325:
-    label330:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localbdmc.a((String)localObject, "qzoneOdexCheck", paramBoolean, 0L, 0L, localHashMap, "");
-      return;
-      j = 0;
-      break;
-      i = 0;
-      break label158;
-      j = 1;
-      break label172;
-      paramInt1 = 0;
-      break label258;
-      paramInt1 = -1;
-      break label258;
-    }
-  }
-  
-  private static boolean a()
-  {
-    String str = System.getProperty("java.vm.version");
-    if ((str != null) && (str.startsWith("2"))) {}
-    for (int i = 1; (i != 0) && (Build.VERSION.SDK_INT >= 21); i = 0) {
-      return true;
+      label229:
+      boolean bool2 = false;
+      label232:
+      return bool2;
     }
     return false;
   }
   
-  public static boolean a(File paramFile)
+  public void a()
   {
-    boolean bool = false;
-    int i = 0;
-    if (paramFile.exists())
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      int j;
-      do
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localRelativeLayout != null)
       {
-        bool = paramFile.delete();
-        j = i + 1;
-        if (bool) {
-          break;
-        }
-        i = j;
-      } while (j < 2);
-    }
-    return bool;
-  }
-  
-  @NonNull
-  private static Pair<Integer, Throwable> b(Context paramContext, String paramString)
-  {
-    if (a())
-    {
-      File localFile = PluginUtils.getOptimizedDexPath(paramContext);
-      paramContext = a(PluginUtils.getInstalledPluginPath(paramContext, paramString), localFile);
-      if (paramContext.exists()) {
-        return bmwc.a(paramContext);
-      }
-      QLog.w("QZoneStartupMonitor", 1, "qzone_plugin.dex不存在");
-      return new Pair(Integer.valueOf(-9), new IOException("pluginid: " + paramString + ",path:" + paramContext + " not found"));
-    }
-    QLog.i("QZoneStartupMonitor", 1, "非ART机器");
-    return new Pair(Integer.valueOf(0), null);
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneStartupMonitor", 2, "backupQZoneDex:ExternalStorageState():" + Environment.getExternalStorageState().equals("mounted") + ",canWrite:" + Environment.getExternalStorageDirectory().canWrite());
-    }
-    File localFile1 = new File(bmxr.n);
-    boolean bool1;
-    if (!localFile1.exists())
-    {
-      boolean bool2 = localFile1.mkdirs();
-      bool1 = bool2;
-      if (!bool2) {
-        bool1 = localFile1.mkdirs();
+        localRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
       }
     }
-    for (;;)
+  }
+  
+  public void a(bnli parambnli, bmuj parambmuj)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "创建或者删除目标是否成功：" + bool1);
-      }
-      if (bool1)
-      {
-        File localFile2 = PluginUtils.getOptimizedDexPath(BaseApplicationImpl.getContext());
-        localFile2 = a(PluginUtils.getInstalledPluginPath(BaseApplicationImpl.getContext(), "qzone_plugin.apk"), localFile2);
-        localFile1 = new File(localFile1, "qzone_plugin_" + bmsw.a());
-        QLog.i("QZoneStartupMonitor", 1, "copy from " + localFile2.getPath() + " to " + localFile1.getPath());
-        bhmi.a(localFile2, localFile1);
+        QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
       }
       return;
-      if (!localFile1.isDirectory()) {
-        bool1 = a(localFile1);
-      } else {
-        bool1 = true;
+    }
+    ThreadManager.postImmediately(new QIMInformationPasterManager.1(this, parambnli, parambmuj), null, true);
+  }
+  
+  public void a(DoodleEmojiItem paramDoodleEmojiItem)
+  {
+    paramDoodleEmojiItem = paramDoodleEmojiItem.mInfoItemList.iterator();
+    while (paramDoodleEmojiItem.hasNext())
+    {
+      bnli localbnli = (bnli)paramDoodleEmojiItem.next();
+      if ((localbnli.b == 1) && (!a(localbnli))) {
+        a(localbnli, new bmui(this));
       }
     }
   }
   
-  private void d()
+  public void a(List<bnli> paramList)
   {
-    if (!QzonePluginProxyActivity.a())
+    ThreadManager.postImmediately(new QIMInformationPasterManager.2(this, paramList), null, true);
+  }
+  
+  public boolean a(bnli parambnli)
+  {
+    if (TextUtils.isEmpty(parambnli.e)) {
+      if (parambnli.a != 7) {}
+    }
+    Object localObject;
+    do
     {
-      Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-      if ((localObject1 == null) || (!(localObject1 instanceof QQAppInterface))) {
-        QLog.i("QZoneStartupMonitor", 1, "非手q 进程，不进行卸载");
-      }
       do
       {
-        return;
-        localObject1 = (QQAppInterface)localObject1;
-        localObject2 = (bmgk)((QQAppInterface)localObject1).getManager(27);
-        QLog.i("QZoneStartupMonitor", 1, "reInstallQzone cancelInstall:qzone_plugin.apk");
-        ((bmgk)localObject2).cancelInstall("qzone_plugin.apk");
-      } while (((bmgk)localObject2).isPlugininstalled("qzone_plugin.apk"));
-      Object localObject2 = PluginUtils.getOptimizedDexPath(BaseApplicationImpl.getContext());
-      localObject2 = a(PluginUtils.getInstalledPluginPath(BaseApplicationImpl.getContext(), "qzone_plugin.apk"), (File)localObject2);
-      QLog.i("QZoneStartupMonitor", 1, "reInstallQzone delete odex:" + ((File)localObject2).getPath());
-      a((File)localObject2);
-      bmtd.a((QQAppInterface)localObject1, "reInstallQzone");
-      return;
-    }
-    QLog.i("QZoneStartupMonitor", 1, "qzone 进程存在，什么都不要做");
+        do
+        {
+          return false;
+          return true;
+        } while (!d(parambnli));
+        localObject = b(parambnli);
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMInformationPasterManager", 2, "checkDir:" + (String)localObject);
+        }
+        localObject = new File((String)localObject);
+      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      localObject = ((File)localObject).list();
+    } while ((localObject == null) || (localObject.length != bnlj.a(parambnli)));
+    return true;
   }
   
-  /* Error */
-  public void b()
+  public boolean b(bnli parambnli)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: invokestatic 409	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   7: ldc_w 411
-    //   10: ldc_w 413
-    //   13: iconst_1
-    //   14: invokevirtual 417	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   17: iconst_1
-    //   18: if_icmpne +19 -> 37
-    //   21: iload_1
-    //   22: ifne +20 -> 42
-    //   25: ldc 102
-    //   27: iconst_1
-    //   28: ldc_w 419
-    //   31: invokestatic 110	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: return
-    //   37: iconst_0
-    //   38: istore_1
-    //   39: goto -18 -> 21
-    //   42: aload_0
-    //   43: getfield 421	bmug:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
-    //   46: ifnonnull -12 -> 34
-    //   49: invokestatic 114	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   52: ldc 116
-    //   54: iconst_0
-    //   55: invokevirtual 120	com/tencent/common/app/BaseApplicationImpl:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   58: astore_2
-    //   59: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   62: ifeq +32 -> 94
-    //   65: ldc 102
-    //   67: iconst_2
-    //   68: new 75	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 423
-    //   78: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_2
-    //   82: invokevirtual 351	java/io/File:getPath	()Ljava/lang/String;
-    //   85: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: aload_0
-    //   95: new 425	bmuj
-    //   98: dup
-    //   99: aload_0
-    //   100: aload_2
-    //   101: invokevirtual 351	java/io/File:getPath	()Ljava/lang/String;
-    //   104: sipush 768
-    //   107: invokespecial 428	bmuj:<init>	(Lbmug;Ljava/lang/String;I)V
-    //   110: putfield 421	bmug:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
-    //   113: aload_0
-    //   114: getfield 421	bmug:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
-    //   117: invokevirtual 433	android/os/FileObserver:startWatching	()V
-    //   120: goto -86 -> 34
-    //   123: astore_2
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload_2
-    //   127: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	128	0	this	bmug
-    //   1	38	1	i	int
-    //   58	43	2	localFile	File
-    //   123	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	21	123	finally
-    //   25	34	123	finally
-    //   42	94	123	finally
-    //   94	120	123	finally
+    return this.jdField_a_of_type_Bmuk.a(parambnli.e);
+  }
+  
+  public boolean c(bnli parambnli)
+  {
+    boolean bool = false;
+    try
+    {
+      File localFile = new File(jdField_a_of_type_JavaLangString + parambnli.g + "_" + parambnli.f);
+      if (!localFile.exists()) {
+        localFile.mkdir();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMInformationPasterManager", 2, "unzipDir:" + localFile.getAbsolutePath());
+      }
+      npo.a(new File(a(parambnli)), localFile.getAbsolutePath() + File.separator);
+      bool = true;
+    }
+    catch (Exception parambnli)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QIMInformationPasterManager", 2, parambnli, new Object[0]);
+    }
+    return bool;
+    return false;
+  }
+  
+  public void onDestroy() {}
+  
+  public void onInit()
+  {
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   }
 }
 

@@ -1,24 +1,40 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 class alkd
-  implements View.OnClickListener
+  extends Animation
 {
-  alkd(aljw paramaljw) {}
+  alkd(aljz paramaljz, View paramView, int paramInt) {}
   
-  public void onClick(View paramView)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    andl localandl = andl.a();
-    if (localandl != null)
-    {
-      localandl.a(aljw.a(this.a));
-      localandl.a();
-      andl.i();
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
     }
-    bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      do
+      {
+        return;
+        if (paramFloat > 0.99F) {
+          break;
+        }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

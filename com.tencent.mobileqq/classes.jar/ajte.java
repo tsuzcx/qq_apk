@@ -1,6 +1,19 @@
-public abstract interface ajte
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajte
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  ajte(ajtd paramajtd) {}
+  
+  public void onClick(View paramView)
+  {
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

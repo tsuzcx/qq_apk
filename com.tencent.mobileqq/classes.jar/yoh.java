@@ -1,37 +1,21 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class yoh
+class yoh
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public yod a;
-  public int b;
+  yoh(yog paramyog, TroopStoryItemInfo paramTroopStoryItemInfo) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "?";
+    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    if (localStoryVideoItem != null) {
+      ((vns)vux.a().b(3)).a(localStoryVideoItem);
     }
-    if (this.jdField_a_of_type_Yod == null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return yos.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Yod.a() });
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return a().equals(((yoh)paramObject).a());
-  }
-  
-  public int hashCode()
-  {
-    return a().hashCode();
-  }
-  
-  public String toString()
-  {
-    return a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

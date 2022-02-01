@@ -1,42 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
-class bdgk
-  implements aldq
+public class bdgk
+  implements agwi
 {
-  bdgk(bdgh parambdgh, boolean paramBoolean1, boolean paramBoolean2, bdhi parambdhi) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downloadSo] resCode=" + paramInt + ",pathRes=" + paramPathResult);
-    }
-    VACDReportUtil.a(this.jdField_a_of_type_Bdgh.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
-    this.jdField_a_of_type_Bdgh.jdField_a_of_type_Int = paramPathResult.subErrCode;
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      this.jdField_a_of_type_Bdgh.jdField_a_of_type_Boolean = true;
-      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Bdgh.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName).getAbsolutePath();
-      bdgh.a(this.jdField_a_of_type_Bdgh, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Bdhi, paramPathResult, this.jdField_a_of_type_Bdgh.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, 2);
+    if (!(paramMessageRecord instanceof MessageForUniteGrayTip)) {}
+    while (!"1033".equals(paramMessageRecord.getExtInfoFromExtStr("uint64_busi_id"))) {
       return;
     }
-    if (paramInt == 2)
-    {
-      bdgh.a(this.jdField_a_of_type_Bdgh, 4);
-      return;
-    }
-    if (paramPathResult.subErrCode == 404)
-    {
-      bdgh.a(this.jdField_a_of_type_Bdgh, 9);
-      return;
-    }
-    bdgh.a(this.jdField_a_of_type_Bdgh, 3);
+    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800AF35", "0X800AF35", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,12 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arzj
-  implements DialogInterface.OnClickListener
+public class arzj
+  implements View.OnClickListener
 {
-  arzj(arzh paramarzh) {}
+  public arzj(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    arzq localarzq = (arzq)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)localarzq.jdField_a_of_type_JavaLangObject;
+    switch (localarzq.c)
+    {
+    }
+    for (;;)
+    {
+      this.a.i();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.a().Z();
+      this.a.a(localFileInfo, localarzq.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+    }
+  }
 }
 
 

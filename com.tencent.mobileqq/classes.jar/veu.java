@@ -1,215 +1,52 @@
-import android.app.Activity;
-import android.arch.lifecycle.MutableLiveData;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBEnumField;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import qqcircle.QQCirclePrivateMsgShow.StFuelCostRange;
-import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
-import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
+import mqq.observer.BusinessObserver;
 
-public class veu
-  extends vbm
-  implements View.OnClickListener
+class veu
+  implements BusinessObserver
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqxz jdField_a_of_type_Aqxz = new vez(this);
-  private QQCirclePrivateMsgShow.StFuelCostRange jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StFuelCostRange;
-  private QQCirclePrivateMsgShow.StGetPMSettingRsp jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StGetPMSettingRsp;
-  private QQCirclePrivateMsgShow.StPMSettingData jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData;
-  private vxj jdField_a_of_type_Vxj;
-  private ImageView b;
-  private ImageView c;
-  private ImageView d;
+  veu(veq paramveq) {}
   
-  private void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Vxj = ((vxj)a(vxj.class));
-    this.jdField_a_of_type_Vxj.a.observe(a(), new vev(this));
-    this.jdField_a_of_type_Vxj.b.observe(a(), new vew(this));
-    this.jdField_a_of_type_Vxj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-  }
-  
-  private void a(long paramLong, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = anzj.a(2131718459);
-    }
-    for (;;)
-    {
-      QLog.e("QCirclePrivateMessageSettingContentPart", 1, "handleError() return error！ retCode : " + paramLong + " , errMsg : " + paramString);
-      vws.a(paramLong, BaseApplicationImpl.getContext(), 1, paramString, 1);
-      return;
-    }
-  }
-  
-  private void a(ImageView paramImageView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.b.setImageDrawable(null);
-    this.c.setImageDrawable(null);
-    this.d.setImageDrawable(null);
-    if (paramImageView != null) {
-      paramImageView.setImageDrawable(a().getResources().getDrawable(2130843924));
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    vtq.a(String.valueOf(uzg.a()), 11, 39, 1, paramString, "", "", "", "", b());
-  }
-  
-  private void a(QQCirclePrivateMsgShow.StGetPMSettingRsp paramStGetPMSettingRsp)
-  {
-    this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StGetPMSettingRsp = paramStGetPMSettingRsp;
+    if (paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData = ((QQCirclePrivateMsgShow.StPMSettingData)new QQCirclePrivateMsgShow.StPMSettingData().mergeFrom(((QQCirclePrivateMsgShow.StPMSettingData)paramStGetPMSettingRsp.setting.get()).toByteArray()));
-      this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StFuelCostRange = ((QQCirclePrivateMsgShow.StFuelCostRange)paramStGetPMSettingRsp.fuelCostRange.get());
-      if (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData == null) {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+          }
+          this.a.a = true;
+          veq.a(this.a);
+          return;
+        }
+        if (paramInt == 58)
+        {
+          veq.a(this.a, 2131694772);
+          return;
+        }
+        if (paramInt == 65)
+        {
+          veq.a(this.a, 2131694749);
+          return;
+        }
+        veq.a(this.a, 2131694775);
         return;
+        veq.a(this.a, 2131694775);
       }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-      switch (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.privilgetype.get())
-      {
-      default: 
-        a(null);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.fuelCost.get()));
-      return;
-      a(this.c);
-      continue;
-      a(this.d);
-      continue;
-      a(this.b);
-      continue;
-      a(this.jdField_a_of_type_AndroidWidgetImageView);
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData != null) && (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StGetPMSettingRsp != null) && (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.privilgetype.get() == this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StGetPMSettingRsp.setting.privilgetype.get()) && (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.fuelCost.get() == this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StGetPMSettingRsp.setting.fuelCost.get())) {
       return;
     }
-    this.jdField_a_of_type_Vxj.a(this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData);
-  }
-  
-  private void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369367));
-    this.b = ((ImageView)paramView.findViewById(2131369370));
-    this.c = ((ImageView)paramView.findViewById(2131369369));
-    this.d = ((ImageView)paramView.findViewById(2131369368));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379862));
-    paramView.findViewById(2131369411).setOnClickListener(this);
-    paramView.findViewById(2131376845).setOnClickListener(this);
-    paramView.findViewById(2131376848).setOnClickListener(this);
-    paramView.findViewById(2131376847).setOnClickListener(this);
-    paramView.findViewById(2131376846).setOnClickListener(this);
-    paramView.findViewById(2131376788).setOnClickListener(this);
-  }
-  
-  private void c()
-  {
-    blir localblir = blir.c(a());
-    Object localObject = (DispatchActionMoveScrollView)localblir.findViewById(2131361980);
-    ((DispatchActionMoveScrollView)localObject).a = true;
-    ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
-    localObject = (IphonePickerView)LayoutInflater.from(a()).inflate(2131561252, null);
-    ((IphonePickerView)localObject).a(this.jdField_a_of_type_Aqxz);
-    if ((this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StFuelCostRange != null) && (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData != null))
-    {
-      ((IphonePickerView)localObject).setSelection(0, this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.fuelCost.get() - this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StFuelCostRange.min.get());
-      QLog.i("QCirclePrivateMessageSettingContentPart", 1, "fuelUseNumSelect() setSelection  row : " + (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.fuelCost.get() - this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StFuelCostRange.min.get()) + " , fuelCost : " + this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.fuelCost.get());
-    }
-    ((IphonePickerView)localObject).setPickListener(new vex(this, (IphonePickerView)localObject, localblir));
-    localblir.a(new vey(this));
-    localblir.a((View)localObject, null);
-    localblir.show();
-  }
-  
-  public String a()
-  {
-    return "QCirclePrivateMessageSettingContentPart";
-  }
-  
-  protected void a(View paramView)
-  {
-    super.a(paramView);
-    b(paramView);
-    a();
-  }
-  
-  public boolean a()
-  {
-    b();
-    if (a() != null) {
-      a().finish();
-    }
-    return true;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      a();
-      continue;
-      a(this.jdField_a_of_type_AndroidWidgetImageView);
-      if (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData != null) {
-        this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.privilgetype.set(4);
-      }
-      a("1");
-      continue;
-      a(this.b);
-      if (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData != null) {
-        this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.privilgetype.set(3);
-      }
-      a("2");
-      continue;
-      a(this.c);
-      if (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData != null) {
-        this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.privilgetype.set(1);
-      }
-      a("3");
-      continue;
-      a(this.d);
-      if (this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData != null) {
-        this.jdField_a_of_type_QqcircleQQCirclePrivateMsgShow$StPMSettingData.privilgetype.set(2);
-      }
-      a("4");
-      continue;
-      c();
-    }
+    catch (Exception paramBundle) {}
   }
 }
 

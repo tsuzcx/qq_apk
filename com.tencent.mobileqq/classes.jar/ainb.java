@@ -1,25 +1,28 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
 
-class ainb
-  extends axwp
+public class ainb
+  extends CardObserver
 {
-  ainb(aimx paramaimx) {}
+  private ainb(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.a.jdField_a_of_type_JavaLangString, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
-    if (!"tag_nearby_chat".equals(paramString1)) {}
-    while ((TextUtils.isEmpty(paramString2)) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null)) {
-      return;
+  }
+  
+  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      AlphabetFriendFragment.a(this.a, 1400L, false);
     }
-    this.a.aB();
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramString2);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.selectAll();
-    this.a.g = paramString2;
   }
 }
 

@@ -1,14 +1,6 @@
-import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
-
-public class vkv
-  implements vxz
+public abstract interface vkv<T>
 {
-  public vkv(QCircleReplyItemView paramQCircleReplyItemView) {}
-  
-  public void a(String paramString)
-  {
-    QCircleReplyItemView.a(this.a, paramString);
-  }
+  public abstract T a();
 }
 
 

@@ -1,21 +1,39 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public abstract interface bine
+public class bine
 {
-  public abstract void buildBottomBar();
+  int jdField_a_of_type_Int = 0;
+  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
+  Object jdField_a_of_type_JavaLangObject = null;
+  int b = 0;
   
-  public abstract void buildContentView(Bundle paramBundle);
+  public bine(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
   
-  public abstract void buildData();
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
-  public abstract void buildLayout();
+  public MessageMicro<?> a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
+  }
   
-  public abstract void buildTitleBar();
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
   
-  public abstract void buildWebView(AppInterface paramAppInterface);
-  
-  public abstract void preInitWebviewPlugin();
+  public int b()
+  {
+    return this.b;
+  }
 }
 
 

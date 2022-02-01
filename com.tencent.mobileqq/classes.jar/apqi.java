@@ -1,11 +1,32 @@
-public abstract interface apqi
-  extends apqn
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+
+public class apqi
+  implements ampq
 {
-  public abstract void a(int paramInt);
+  public apqi(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat);
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    }
+    if ((this.a.j == 1) || (this.a.j == 2))
+    {
+      if (paramBoolean) {
+        break label110;
+      }
+      this.a.a();
+      QQToast.a(this.a, 2131690945, 0).b(this.a.getTitleBarHeight());
+    }
+    label110:
+    while (paramInt != 2) {
+      return;
+    }
+    this.a.a();
+    this.a.a(this.a.j);
+  }
 }
 
 

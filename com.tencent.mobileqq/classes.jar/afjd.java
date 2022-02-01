@@ -1,30 +1,30 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afjd
-  extends AccountObserver
+class afjd
+  extends aubs
 {
-  public afjd(QuickLoginActivity paramQuickLoginActivity) {}
+  afjd(afiw paramafiw) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  protected void a()
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.mTipsMgr.a(this.a.a, new Object[0]);
+    }
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  protected void b()
   {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
+    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.a.a();
+    }
   }
   
-  public void onLoginTimeout(String paramString)
+  protected void c()
   {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    if ((((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
+      this.a.mTipsMgr.a();
+    }
   }
 }
 

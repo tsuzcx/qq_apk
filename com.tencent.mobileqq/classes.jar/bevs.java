@@ -1,52 +1,52 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.method.ArrowKeyMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.method.Touch;
+import android.view.MotionEvent;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class bevs
-  extends aiem
+  extends ArrowKeyMovementMethod
 {
-  public bevs(BaseApplicationImpl paramBaseApplicationImpl)
+  private static bevs a;
+  
+  public static MovementMethod a()
   {
-    super(paramBaseApplicationImpl);
+    if (a == null) {
+      a = new bevs();
+    }
+    return a;
   }
   
-  public File getFile(DownloadParams paramDownloadParams)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    paramDownloadParams = paramDownloadParams.url;
-    try
+    if (paramMotionEvent.getAction() == 1)
     {
-      File localFile1 = new File(paramDownloadParams.toURI().getPath());
-      return localFile1;
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      try
+      int i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      if (paramTextView.getTag(2131373788) != null)
       {
-        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
-        return localFile2;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
+        bevt localbevt = (bevt)paramTextView.getTag(2131373788);
+        Drawable localDrawable = localbevt.getDrawable();
+        if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("zivonchen", 2, "我擦呢,命中------------------");
+          }
+          localbevt.a(paramTextView);
+          return true;
         }
-        return null;
       }
     }
-    catch (NullPointerException paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-    }
-    return null;
+    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bevs
  * JD-Core Version:    0.7.0.1
  */

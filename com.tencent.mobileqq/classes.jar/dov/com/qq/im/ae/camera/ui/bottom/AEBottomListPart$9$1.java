@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import anzj;
-import boll;
-import bolw;
+import amtj;
+import blpr;
+import blqc;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEBottomListPart$9$1
   implements Runnable
 {
-  public AEBottomListPart$9$1(bolw parambolw) {}
+  public AEBottomListPart$9$1(blqc paramblqc) {}
   
   public void run()
   {
-    QQToast.a(boll.c(this.a.a), anzj.a(2131708700), 0).a();
+    QQToast.a(blpr.c(this.a.a), amtj.a(2131708932), 0).a();
   }
 }
 

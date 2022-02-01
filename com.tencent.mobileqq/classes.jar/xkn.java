@@ -1,59 +1,42 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
-import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
-import java.lang.ref.WeakReference;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xkn
+  extends QQUIEventReceiver<xkl, wbh>
 {
-  protected long a;
-  public Handler a;
-  public WeakReference<xtg> a;
-  public Timer a;
-  private TimerTask a;
-  public boolean a;
-  public long b;
-  public long c;
-  
-  private void a()
+  public xkn(@NonNull xkl paramxkl)
   {
-    ProgressControler.2 local2 = new ProgressControler.2(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+    super(paramxkl);
   }
   
-  private void b()
+  public void a(@NonNull xkl paramxkl, @NonNull wbh paramwbh)
   {
-    Timer localTimer = new Timer();
-    ProgressControler.3 local3 = new ProgressControler.3(this);
-    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
-    this.jdField_a_of_type_JavaUtilTimer = localTimer;
-    this.jdField_a_of_type_JavaUtilTimerTask = local3;
-  }
-  
-  public void a(long paramLong1, long paramLong2, xtg paramxtg)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = this.jdField_a_of_type_Long;
-    this.b = paramLong2;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (paramLong2 <= 0L)
+    if (paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxtg);
-      a();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      return;
+      xvv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramwbh.jdField_a_of_type_Int));
+      if ((TextUtils.isEmpty(paramwbh.b)) || (paramwbh.b.equals(paramxkl.jdField_a_of_type_JavaLangString))) {
+        break label49;
+      }
     }
-    b();
+    label49:
+    do
+    {
+      return;
+      if (paramwbh.jdField_a_of_type_Int != -1) {
+        xkl.a(paramxkl, paramwbh.jdField_a_of_type_Int);
+      }
+    } while (paramxkl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
+    paramxkl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = xkl.a(paramxkl);
+    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramxkl), 5, null, false);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wbh.class;
   }
 }
 

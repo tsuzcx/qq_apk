@@ -1,26 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class avbo
-  implements DialogInterface.OnClickListener
 {
-  public avbo(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(int paramInt1, int paramInt2)
   {
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
-    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    paramDialogInterface.setFlags(268435456);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
+  }
+  
+  public static void b(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, NetworkUtil.getNetworkType(null), paramInt), 5, null, false);
   }
 }
 

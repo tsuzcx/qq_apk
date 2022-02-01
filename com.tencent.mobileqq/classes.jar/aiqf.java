@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.widget.FixSizeImageView;
 
-public class aiqf
-  extends bflz
+class aiqf
+  extends RecyclerView.ViewHolder
 {
-  public aiqf(TroopChatPie paramTroopChatPie) {}
+  public FixSizeImageView a;
+  public FixSizeImageView b;
   
-  protected void a(long paramLong)
+  public aiqf(aiqd paramaiqd, View paramView)
   {
-    if (!String.valueOf(paramLong).equals(this.a.c())) {}
-    PlusPanel localPlusPanel;
-    do
-    {
-      return;
-      localPlusPanel = (PlusPanel)TroopChatPie.g(this.a).b(8);
-    } while (localPlusPanel == null);
-    localPlusPanel.a();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367927));
+    this.b = ((FixSizeImageView)paramView.findViewById(2131370601));
   }
 }
 

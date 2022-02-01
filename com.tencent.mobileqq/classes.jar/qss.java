@@ -1,7 +1,21 @@
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract;", "", "IModel", "IPresenter", "IView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface qss {}
+class qss
+  implements View.OnClickListener
+{
+  qss(qsr paramqsr) {}
+  
+  public void onClick(View paramView)
+  {
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

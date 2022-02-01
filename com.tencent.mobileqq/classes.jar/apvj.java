@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class apvj
-  implements DialogInterface.OnClickListener
 {
-  public apvj(ArkAppDownloadModule.9 param9) {}
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static apvj a(String paramString)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        apvj localapvj = new apvj();
+        localapvj.a = new JSONObject(paramString).optBoolean("is_in_messagetab", false);
+        QLog.d("AppletNotificationConfProcessor", 2, "confBean = " + localapvj.toString());
+        return localapvj;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("AppletNotificationConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apvj
  * JD-Core Version:    0.7.0.1
  */

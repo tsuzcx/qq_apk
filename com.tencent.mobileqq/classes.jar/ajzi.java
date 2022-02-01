@@ -1,21 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import java.util.List;
 
-class ajzi
-  implements QQPermissionCallback
+public class ajzi
+  extends FragmentPagerAdapter
 {
-  ajzi(ajyt paramajyt) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ajzi(SendHbMainFragment paramSendHbMainFragment, FragmentManager paramFragmentManager)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
-    bhlq.a(ajyt.a(this.a), new ajzj(this));
+    super(paramFragmentManager);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int getCount()
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
-    ajyt.a(this.a, ajyt.b(this.a));
+    return SendHbMainFragment.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return ((ajzj)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment;
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return ((ajzj)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
   }
 }
 

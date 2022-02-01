@@ -1,15 +1,14 @@
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.view.View;
 
-public class bjxo
+public abstract interface bjxo
 {
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public Bundle a;
-  public boolean a;
-  public boolean b;
+  public abstract void a(View paramView);
   
-  public bjxo(bjxd parambjxd) {}
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void a(View paramView, boolean paramBoolean);
+  
+  public abstract boolean a(View paramView);
 }
 
 

@@ -1,82 +1,88 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-class awoj
-  extends Handler
+public class awoj
+  extends PopupWindow
 {
-  private final WeakReference<awoh> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new awok(this);
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private awol jdField_a_of_type_Awol;
+  private String jdField_a_of_type_JavaLangString;
   
-  awoj(awoh paramawoh, Looper paramLooper)
+  public awoj(Context paramContext, int paramInt1, int paramInt2)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramawoh);
+    super(paramContext);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = paramInt2;
+    setWidth(this.jdField_a_of_type_Int);
+    setHeight((int)(this.jdField_a_of_type_Float * 42.0F + 0.5D));
+    View localView = LayoutInflater.from(paramContext).inflate(2131559585, null);
+    setContentView(localView);
+    a(paramContext, localView, paramInt1);
+    setOutsideTouchable(true);
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(Context paramContext, View paramView, int paramInt)
   {
-    awoh localawoh = (awoh)this.a.get();
-    if (localawoh == null) {
-      super.handleMessage(paramMessage);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380023));
+    this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363812));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131368603).getLayoutParams();
+    int i = (int)(10.0F * this.jdField_a_of_type_Float + 0.5D);
+    if (paramInt <= 0) {
+      localLayoutParams.leftMargin = 0;
     }
-    do
+    for (;;)
     {
-      do
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      setBackgroundDrawable(paramContext.getResources().getDrawable(2130850605));
+      return;
+      if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
       {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          super.handleMessage(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, "--->handleMessage[MSG_FROM_SERVICE]");
-      return;
-      paramMessage = paramMessage.getData();
-      paramMessage.setClassLoader(ISong.class.getClassLoader());
-      paramMessage = (ISong)paramMessage.getParcelable("key_song");
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_SONG_CHANGE] %s", new Object[] { paramMessage.a() }));
+        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + paramInt);
       }
-      awoh.a(localawoh, paramMessage);
-      return;
-      paramMessage = paramMessage.getData();
-      String str = paramMessage.getString("key_id");
-      i = paramMessage.getInt("key_play_state", -1);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_STATE_CHANGE] %s %s", new Object[] { str, awob.a(i) }));
+      else if (paramInt > paramContext.getResources().getDisplayMetrics().widthPixels - (int)(this.jdField_a_of_type_Float * 40.0F + 0.5D) - (this.jdField_a_of_type_Int - i) / 2)
+      {
+        int j = this.jdField_a_of_type_Int;
+        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + (j + paramInt) - paramContext.getResources().getDisplayMetrics().widthPixels);
       }
-      awoh.a(localawoh, str, i);
-    } while ((i != 4) || (!awoh.a(localawoh)));
-    awoh.a(localawoh);
-    return;
-    boolean bool1 = paramMessage.getData().getBoolean("key_net_state", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_NET_STATE_CHANGE] %b", new Object[] { Boolean.valueOf(bool1) }));
+      else
+      {
+        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Int - i) / 2 + 0.5D));
+      }
     }
-    awoh.a(localawoh, bool1);
-    return;
-    paramMessage = paramMessage.getData();
-    bool1 = paramMessage.getBoolean("key_focus_state", false);
-    boolean bool2 = paramMessage.getBoolean("key_focus_transient", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_FOCUS_STATE_CHANGE] %b_%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+  }
+  
+  public void a(awol paramawol)
+  {
+    this.jdField_a_of_type_Awol = paramawol;
+  }
+  
+  public void a(InterestTagInfo paramInterestTagInfo)
+  {
+    if (paramInterestTagInfo == null) {
+      return;
     }
-    awoh.a(localawoh, bool1, bool2);
-    return;
-    paramMessage = paramMessage.getData();
-    int i = paramMessage.getInt("key_position", -1);
-    int j = paramMessage.getInt("key_duration", -1);
-    paramMessage = paramMessage.getString("key_id");
-    if (((i <= 0) || (j <= 0)) && (QLog.isColorLevel())) {
-      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PROGRESS_CHANGE] [%d/%d] %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramMessage }));
+    if (!TextUtils.isEmpty(paramInterestTagInfo.tagName))
+    {
+      this.jdField_a_of_type_JavaLangString = paramInterestTagInfo.tagName;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     }
-    awoh.a(localawoh, paramMessage, i, j);
+    this.jdField_a_of_type_Long = paramInterestTagInfo.tagId;
   }
 }
 

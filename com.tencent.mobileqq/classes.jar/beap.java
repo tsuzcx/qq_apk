@@ -1,74 +1,47 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class beap
+  extends beaq
 {
-  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.fileName = paramForwardFileInfo.d();
-    localFileManagerEntity.nFileType = aunj.a(localFileManagerEntity.fileName);
-    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
-    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
-    return localFileManagerEntity;
-  }
-  
-  public static ForwardFileInfo a(String paramString)
-  {
-    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-    localForwardFileInfo.d(9);
-    localForwardFileInfo.b(10001);
-    localForwardFileInfo.d(paramString);
-    localForwardFileInfo.b(aunj.a().longValue());
-    return localForwardFileInfo;
-  }
-  
-  public static String a(int paramInt)
-  {
-    String str = anzj.a(2131713596);
-    if (paramInt == 3) {
-      str = "word";
-    }
-    do
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {}
+    for (;;)
     {
-      return str;
-      if (paramInt == 6) {
-        return "excel";
+      return null;
+      localTroopFeedItem.type = 99;
+      try
+      {
+        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+        if (paramJSONObject.has("app_id"))
+        {
+          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
+          if ((!vla.i()) && (localTroopFeedItem.isStoryType()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
+            return null;
+          }
+        }
       }
-      if (paramInt == 7) {
-        return "ppt";
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
       }
-    } while (paramInt != 9);
-    return "pdf";
-  }
-  
-  public static void a(Activity paramActivity, ForwardFileInfo paramForwardFileInfo, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
-    if (paramForwardFileInfo != null) {
-      localIntent.putExtra("fileinfo", paramForwardFileInfo);
     }
-    if (paramBundle != null) {
-      localIntent.putExtra("file_browser_extra_params", paramBundle);
-    }
-    paramActivity.startActivityForResult(localIntent, 102);
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    a(paramActivity, paramString, false);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isMiniProgram", paramBoolean);
-    a(paramActivity, paramString, localBundle);
+    paramJSONObject = paramJSONObject.getJSONObject("content");
+    localTroopFeedItem.content = paramJSONObject.getString("body");
+    localTroopFeedItem.title = paramJSONObject.getString("title");
+    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+    return localTroopFeedItem;
   }
 }
 

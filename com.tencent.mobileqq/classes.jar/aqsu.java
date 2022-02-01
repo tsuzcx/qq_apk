@@ -1,52 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class aqsu
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  aqst jdField_a_of_type_Aqst;
-  aqsx jdField_a_of_type_Aqsx;
+  aqsu(aqst paramaqst) {}
   
-  aqsu(aqst paramaqst, aqsx paramaqsx)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Aqst = paramaqst;
-    this.jdField_a_of_type_Aqsx = paramaqsx;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = this.jdField_a_of_type_Aqsx.getAdapterPosition();
-    ColorNote localColorNote = (ColorNote)aqst.a(this.jdField_a_of_type_Aqst).get(i);
-    aqri.b(localColorNote.mServiceType, localColorNote.mSubType);
-    aqst.a(this.jdField_a_of_type_Aqst).remove(i);
-    this.jdField_a_of_type_Aqst.notifyDataSetChanged();
-    switch (localColorNote.getServiceType())
-    {
-    default: 
-      if (aqsd.b(localColorNote))
-      {
-        if ((aqsc.a().a()) && (aqrl.b())) {
-          aqst.a(this.jdField_a_of_type_Aqst).a(paramView);
-        }
-        bdll.b(null, "dc00898", "", "", "0X800A8AC", "0X800A8AC", aqrd.b(aqsd.a(localColorNote.getServiceType())), 0, "", "", "", "");
-      }
-      break;
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Aqst.getItemCount() == 0) && (aqst.a(this.jdField_a_of_type_Aqst) != null)) {
-        aqst.a(this.jdField_a_of_type_Aqst).b();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQPlayerService.c(paramView.getContext());
-      break;
-      bdll.b(null, "dc00898", "", "", "0X800A747", "0X800A747", aqrd.a(localColorNote.getServiceType()), 0, "", "", "", "");
-    }
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 

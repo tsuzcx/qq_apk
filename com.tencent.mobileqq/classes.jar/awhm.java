@@ -1,223 +1,137 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class awhm
-  extends WebViewPlugin
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new awhn(this);
-  private volatile boolean jdField_a_of_type_Boolean;
+  public static HashSet a = new HashSet();
   
-  public awhm()
+  public static awhl a(AppInterface paramAppInterface)
   {
-    this.mPluginNameSpace = "story";
+    awhl localawhl = new awhl();
+    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
+    localawhl.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
+    localawhl.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
+    localawhl.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
+    localawhl.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
+    localawhl.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
+    localawhl.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getConfig config.expireTime=" + localawhl.jdField_a_of_type_Boolean + "  config.isShowList=" + localawhl.jdField_b_of_type_Boolean + "  config.expireTime=" + localawhl.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + localawhl.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + localawhl.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + localawhl.c);
+    }
+    return localawhl;
   }
   
-  public static final void a(Context paramContext)
+  public static String a(int paramInt, String... paramVarArgs)
   {
-    Intent localIntent = new Intent(paramContext, StoryTransitionActivity.class);
-    localIntent.putExtra("jump_action", 1);
-    paramContext.startActivity(localIntent);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
+      return "";
+    }
+    return paramVarArgs[paramInt];
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static void a(AppInterface paramAppInterface, awhl paramawhl)
   {
-    if (!"story".equals(paramString2)) {
-      return false;
-    }
-    Activity localActivity = this.mRuntime.a();
-    if (paramString3.equals("openIndex"))
-    {
-      StoryTransitionActivity.b(localActivity);
-      return true;
-    }
-    if (paramString3.equals("newStory"))
-    {
-      paramJsBridgeListener = new Intent(localActivity, StoryTransitionActivity.class);
-      paramJsBridgeListener.putExtra("jump_action", 1);
-      paramJsBridgeListener.putExtra("video_tag", paramVarArgs[0]);
-      localActivity.startActivity(paramJsBridgeListener);
-      return true;
-    }
-    long l;
-    if (paramString3.equals("playStory"))
-    {
-      try
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramJsBridgeListener = paramString1.optString("vid", "");
-        l = paramString1.optLong("uin", 0L);
-        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (l > 0L))
-        {
-          paramString1 = new Intent(localActivity, JumpActivity.class);
-          paramString1.setData(Uri.parse("mqqapi://qstory/openVideo?videoOwnerUin=" + l + "&videoId=" + paramJsBridgeListener));
-          localActivity.startActivity(paramString1);
-        }
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
-          }
-        }
-      }
-      return true;
-    }
-    if (paramString3.equals("openTopic")) {
-      return false;
-    }
-    int i;
-    if (paramString3.equals("openLive"))
-    {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        i = paramJsBridgeListener.optInt("type", 0);
-        l = paramJsBridgeListener.optLong("roomId", 0L);
-        int j = paramJsBridgeListener.optInt("fromId", 0);
-        paramJsBridgeListener = paramJsBridgeListener.optJSONObject("extras");
-        if (i != 1) {
-          break label782;
-        }
-        paramString1 = new Intent(localActivity, JumpActivity.class);
-        paramString2 = new StringBuilder().append("mqqapi://qstory/openNow?roomid=").append(l).append("&fromid=").append(j).append("&extras=");
-        if (paramJsBridgeListener == null) {}
-        for (paramJsBridgeListener = "";; paramJsBridgeListener = paramJsBridgeListener.toString())
-        {
-          paramString1.setData(Uri.parse(paramJsBridgeListener));
-          localActivity.startActivity(paramString1);
-          break;
-        }
-        QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (!QLog.isColorLevel()) {
-          break label782;
-        }
-      }
-    }
-    else
-    {
-      if (("openInfoCard".equals(paramString3)) || ("openMiniSummary".equals(paramString3))) {
-        try
-        {
-          QQStoryMemoriesActivity.a(localActivity, 23, new JSONObject(paramVarArgs[0]).optLong("uin", 0L));
-          return true;
-        }
-        catch (Exception paramJsBridgeListener)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
-            }
-          }
-        }
-      }
-      if (paramString3.equals("playVideos")) {}
-      for (;;)
-      {
-        try
-        {
-          paramString1 = new JSONObject(paramVarArgs[0]);
-          paramString2 = paramString1.optString("videolist", "");
-          paramJsBridgeListener = paramString1.optString("feedlist", "");
-          i = paramString1.optInt("index", 0);
-          paramString3 = paramString1.optString("play_scence", "");
-          if ((TextUtils.isEmpty(paramString3)) || (!"videoLabelDetail".equals(paramString3))) {
-            break;
-          }
-          paramString1.optInt("tagid");
-          paramString1.optInt("tagtype");
-          if (TextUtils.isEmpty(paramString2)) {
-            break;
-          }
-          paramString3 = new ArrayList(Arrays.asList(paramString2.split(",")));
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
-          {
-            paramJsBridgeListener = new ArrayList(Arrays.asList(paramJsBridgeListener.split(",")));
-            if (paramString3.size() <= i) {
-              break label776;
-            }
-            paramString1 = (String)paramString3.get(i);
-            if (paramJsBridgeListener.size() <= i) {
-              break label770;
-            }
-            paramString2 = (String)paramJsBridgeListener.get(i);
-            xlj.a(localActivity, new VidListPlayInfo(paramJsBridgeListener, paramString3, paramString2, paramString1), 105, null);
-            break;
-          }
-          paramJsBridgeListener = new ArrayList();
-          continue;
-          QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
-        }
-        catch (Exception paramJsBridgeListener)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-        }
-        break;
-        return false;
-        label770:
-        paramString2 = "";
-        continue;
-        label776:
-        paramString1 = "";
-      }
-    }
-    label782:
-    return true;
-    return true;
-  }
-  
-  public void onActivityReady()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_do_like");
-    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_comment");
-    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_subscribe");
-    Activity localActivity = this.mRuntime.a();
-    if ((localActivity != null) && (!this.jdField_a_of_type_Boolean)) {}
     try
     {
-      localActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-      this.jdField_a_of_type_Boolean = true;
+      String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).edit().putBoolean("isShowCard", paramawhl.jdField_a_of_type_Boolean).putBoolean("isShowList", paramawhl.jdField_b_of_type_Boolean).putLong("expireTime", paramawhl.jdField_a_of_type_Long).putString("entranceJumpUrl", paramawhl.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramawhl.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramawhl.c).commit();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.saveConfig config.expireTime=" + paramawhl.jdField_a_of_type_Boolean + "  config.isShowList=" + paramawhl.jdField_b_of_type_Boolean + "  config.expireTime=" + paramawhl.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + paramawhl.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + paramawhl.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + paramawhl.c);
+      }
       return;
     }
-    catch (Exception localException)
+    finally
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQStoryApiPlugin", 2, "regist receiver error:" + localException.toString());
+      paramAppInterface = finally;
+      throw paramAppInterface;
     }
   }
   
-  public void onDestroy()
+  public static void a(AppInterface paramAppInterface, String paramString)
   {
-    super.onDestroy();
-    Activity localActivity = this.mRuntime.a();
-    if ((localActivity != null) && (this.jdField_a_of_type_Boolean))
+    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
+    str = "has_insert_face_score_msg_" + paramString;
+    paramAppInterface.edit().putBoolean(str, true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.setHasInsertMsgFlag uin=" + paramString);
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q..troop.faceScore", 2, "setFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString + " flag=" + paramBoolean);
+    }
+    if (paramMessageRecord == null) {
+      return;
+    }
+    for (;;)
     {
-      localActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      try
+      {
+        if (TextUtils.isEmpty(paramMessageRecord.extStr))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put(paramString, paramBoolean);
+          paramMessageRecord.extStr = localJSONObject.toString();
+          paramMessageRecord.extLong |= 0x1;
+          return;
+        }
+      }
+      catch (JSONException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+        return;
+      }
+      JSONObject localJSONObject = new JSONObject(paramMessageRecord.extStr);
+      localJSONObject.put(paramString, paramBoolean);
+      paramMessageRecord.extStr = localJSONObject.toString();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String... paramVarArgs)
+  {
+    bcef.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, String paramString)
+  {
+    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+    boolean bool = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).getBoolean("has_insert_face_score_msg_" + paramString, false);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getHasInsertMsgFlag uin=" + paramString + "  flag=" + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord, String paramString)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q..troop.faceScore", 2, "getFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString);
+    }
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    if ((paramMessageRecord.extStr != null) && ((paramMessageRecord.extLong & 0x1) == 1) && (paramMessageRecord.extStr.contains(paramString)) && (paramMessageRecord.getExtInfoFromExtStr(paramString).equals("true"))) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q..troop.faceScore.FaceScoreUtils", 2, "isFaceScoreGrayTips, ret=" + bool + ", mr=" + paramMessageRecord);
+      }
+      return bool;
+      bool = false;
     }
   }
 }

@@ -1,36 +1,24 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
-import java.util.ArrayList;
-
 public class vbh
-  implements ViewPager.OnPageChangeListener
 {
-  public vbh(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public int d;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public vbh(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QCircleAggregationFragmentsPart.a(this.a, paramInt, 2);
-    uys.a();
-    if ((QCircleAggregationFragmentsPart.a(this.a) != null) && (QCircleAggregationFragmentsPart.a(this.a).getChildCount() > paramInt)) {
-      QCircleAggregationFragmentsPart.a(this.a).getChildAt(paramInt).performClick();
-    }
-    if ((QCircleAggregationFragmentsPart.a(this.a) != null) && (QCircleAggregationFragmentsPart.a(this.a).size() > paramInt))
-    {
-      ((QCircleBaseAggregationFragment)QCircleAggregationFragmentsPart.a(this.a).get(paramInt)).a(paramInt);
-      vbe localvbe = ((QCircleBaseAggregationFragment)QCircleAggregationFragmentsPart.a(this.a).get(paramInt)).a();
-      if (localvbe != null) {
-        QCircleAggregationFragmentsPart.a(this.a, localvbe.a());
-      }
-    }
-    this.a.b("tab_changed", Integer.valueOf(QCircleAggregationFragmentsPart.a(this.a)));
-    QCircleAggregationFragmentsPart.a(this.a, QCircleAggregationFragmentsPart.a(this.a));
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 

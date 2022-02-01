@@ -1,58 +1,76 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
+
 class awzf
+  implements DownloadListener
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public byte[] b;
-  public int c;
-  public int d;
+  awzf(awyf paramawyf) {}
   
-  awzf(awze paramawze) {}
-  
-  public boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (paramArrayOfByte1 != null)
-    {
-      if (this.jdField_a_of_type_ArrayOfByte != null) {
-        break label28;
-      }
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
-      if (this.jdField_a_of_type_ArrayOfByte != null) {
-        break label49;
-      }
+    this.a.jdField_a_of_type_Int = 4;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    if (awyf.a(this.a) != null) {
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, awyf.a(this.a).uin, "", "yes", "android");
     }
-    for (;;)
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.a.jdField_a_of_type_Axdh != null) {
+      this.a.jdField_a_of_type_Axdh.a(5);
+    }
+    if (awyf.a(this.a) != null) {
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, awyf.a(this.a).uin, "", "yes", "android");
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Int = 1;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      return false;
-      label28:
-      if (this.jdField_a_of_type_ArrayOfByte.length == paramArrayOfByte1.length) {
-        break;
-      }
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
-      break;
-      label49:
-      System.arraycopy(paramArrayOfByte1, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte1.length);
-      if (this.jdField_b_of_type_ArrayOfByte == null) {
-        this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
-      }
-      while (this.jdField_b_of_type_ArrayOfByte != null)
-      {
-        System.arraycopy(paramArrayOfByte2, 0, this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte2.length);
-        this.jdField_a_of_type_Int = paramInt3;
-        this.jdField_b_of_type_Int = paramInt4;
-        this.c = paramInt1;
-        this.d = paramInt2;
-        this.jdField_a_of_type_Float = paramFloat;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        return true;
-        if (this.jdField_b_of_type_ArrayOfByte.length != paramArrayOfByte2.length) {
-          this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
-        }
+      paramList = (DownloadInfo)paramList.get(0);
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 2;
+      localMessage.arg1 = paramList.f;
+      localMessage.sendToTarget();
+      if ((paramList.f == 0) && (awyf.a(this.a) != null)) {
+        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, awyf.a(this.a).uin, "", "yes", "android");
       }
     }
   }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

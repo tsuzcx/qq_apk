@@ -1,22 +1,15 @@
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
 
-class otz
-  extends ovd
+public class otz
+  extends pkt
 {
-  otz(otv paramotv, int paramInt)
-  {
-    super(paramotv, null);
-  }
+  public otz(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  void a(ovg paramovg)
+  public void b(String paramString)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      paramovg.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    paramovg.onCommentLoadMore(2, false, new ArrayList(), false, 4);
+    super.b(paramString);
+    ReadInJoySecondCommentListFragment.a(this.a).a(paramString, 2);
+    ReadInJoySecondCommentListFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

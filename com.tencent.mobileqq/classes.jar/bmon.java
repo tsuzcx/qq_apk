@@ -1,46 +1,75 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.util.Pair;
-import mqq.util.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.graphics.Rect;
+import android.transition.TransitionValues;
+import android.util.Property;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.RequiresApi;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-class bmon
-  extends OnPluginInstallListener.Stub
+public class bmon
 {
-  private int jdField_a_of_type_Int;
+  private static final Property<View, Rect> jdField_a_of_type_AndroidUtilProperty = new bmoo(Rect.class, "clipBounds");
+  private static int[] jdField_a_of_type_ArrayOfInt = new int[2];
   
-  bmon(bmom parambmom) {}
-  
-  public void onInstallBegin(String paramString)
+  @RequiresApi(api=19)
+  private static Animator a(TransitionValues paramTransitionValues1, TransitionValues paramTransitionValues2)
   {
-    bmqw.d("QRPluginManager", "launchPlugin onInstallBegin: pluginId = " + paramString);
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Int == 0) || (paramInt1 - this.jdField_a_of_type_Int > paramInt2 / 101))
+    View localView = paramTransitionValues1.view;
+    Object localObject = (Rect)paramTransitionValues1.values.get("android:clipBounds:bounds");
+    Rect localRect = (Rect)paramTransitionValues2.values.get("android:clipBounds:bounds");
+    bmoh localbmoh = new bmoh(new Rect());
+    localObject = ObjectAnimator.ofObject(localView, jdField_a_of_type_AndroidUtilProperty, localbmoh, new Rect[] { localObject, localRect });
+    ((ObjectAnimator)localObject).addListener(new bmop(localView));
+    paramTransitionValues1 = paramTransitionValues1.values.get("android:changeBounds:windowX");
+    if ((paramTransitionValues1 instanceof Integer)) {}
+    for (int i = ((Integer)paramTransitionValues1).intValue();; i = 0)
     {
-      bmqw.e("QRPluginManager", "launchPlugin onInstallDownloadProgress: pluginId = " + paramString + ", offset = " + paramInt1 + ", total = " + paramInt2);
-      this.jdField_a_of_type_Int = paramInt1;
+      paramTransitionValues1 = paramTransitionValues2.values.get("android:changeBounds:windowX");
+      if ((paramTransitionValues1 instanceof Integer)) {}
+      for (int j = ((Integer)paramTransitionValues1).intValue();; j = 0)
+      {
+        float f1 = j - i;
+        float f2 = localView.getTranslationX();
+        paramTransitionValues1 = ObjectAnimator.ofFloat(localView, "translationX", new float[] { f1 });
+        paramTransitionValues1.addListener(new bmoq(localView, f2));
+        paramTransitionValues2 = new AnimatorSet();
+        paramTransitionValues2.playTogether(new Animator[] { localObject, paramTransitionValues1 });
+        return paramTransitionValues2;
+      }
     }
   }
   
-  public void onInstallError(String paramString, int paramInt)
+  @RequiresApi(api=19)
+  public static Animator a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
   {
-    bmqw.a("QRPluginManager", "launchPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
-    bmom.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    bmqw.c("QRPluginManager", "launchPlugin onInstallFinish, pluginId = " + paramString);
-    bmom.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0);
-    if ((bmom.a(this.jdField_a_of_type_Bmom) != null) && (((WeakReference)bmom.a(this.jdField_a_of_type_Bmom).first).get() != null))
-    {
-      bmom.a(this.jdField_a_of_type_Bmom, (Context)((WeakReference)bmom.a(this.jdField_a_of_type_Bmom).first).get(), ((Integer)bmom.a(this.jdField_a_of_type_Bmom).second).intValue());
-      bmom.a(this.jdField_a_of_type_Bmom, null);
+    if (paramViewGroup == null) {
+      return new AnimatorSet();
     }
+    LinkedList localLinkedList = new LinkedList();
+    int i = 0;
+    while (i < paramViewGroup.getChildCount())
+    {
+      View localView = paramViewGroup.getChildAt(i);
+      localView.getLocationInWindow(jdField_a_of_type_ArrayOfInt);
+      TransitionValues localTransitionValues1 = new TransitionValues();
+      localTransitionValues1.values.put("android:changeBounds:windowX", Integer.valueOf(jdField_a_of_type_ArrayOfInt[0]));
+      localTransitionValues1.values.put("android:clipBounds:bounds", new Rect(0, 0, localView.getWidth(), localView.getHeight()));
+      localTransitionValues1.view = localView;
+      TransitionValues localTransitionValues2 = new TransitionValues();
+      localTransitionValues2.values.put("android:clipBounds:bounds", new Rect(0, 0, paramInt3, localView.getHeight()));
+      localTransitionValues2.values.put("android:changeBounds:windowX", Integer.valueOf((i - paramInt1) * paramInt3 + paramInt2));
+      localTransitionValues2.view = localView;
+      localLinkedList.add(a(localTransitionValues1, localTransitionValues2));
+      i += 1;
+    }
+    paramViewGroup = new AnimatorSet();
+    paramViewGroup.playTogether(localLinkedList);
+    return paramViewGroup;
   }
 }
 

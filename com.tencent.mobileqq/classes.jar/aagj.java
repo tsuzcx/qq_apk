@@ -1,24 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class aagj
-  implements View.OnClickListener
+  implements aagl
 {
-  aagj(aagi paramaagi) {}
+  aagj(aagd paramaagd) {}
   
-  public void onClick(View paramView)
+  public void f()
   {
-    if ((this.a.getParentFragment() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.getParentFragment()).a(this.a.a(2));
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.f();
+  }
+  
+  public void g()
+  {
+    this.a.g();
+  }
+  
+  public void h()
+  {
+    this.a.h();
+  }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    }
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aagj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,103 @@
-import android.os.AsyncTask;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.client.HttpClient;
+import com.tencent.util.VersionUtils;
+import java.util.HashMap;
 
 public class afhj
-  extends AsyncTask<GeoPoint, Void, String>
+  extends Handler
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected GeoPoint a;
-  protected HttpClient a;
-  
-  public afhj(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
+  public afhj(PressToChangeVoicePanel paramPressToChangeVoicePanel, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+    super(paramLooper);
   }
   
-  protected String a(GeoPoint... paramVarArgs)
+  @TargetApi(11)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    if (i < 3)
+    try
     {
-      if (isCancelled())
+      switch (paramMessage.what)
       {
-        localObject = "";
-        label17:
-        return localObject;
-      }
-      paramVarArgs = bhrr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
-        if (paramVarArgs != null) {
-          break label125;
-        }
-      }
-      label125:
-      for (Object localObject = "";; localObject = paramVarArgs)
-      {
-        QLog.i("fetch_address", 2, (String)localObject);
-        if (paramVarArgs != null)
-        {
-          localObject = paramVarArgs;
-          if (paramVarArgs.length() > 0) {
-            break label17;
-          }
-        }
-        i += 1;
-        break;
+      case 1001: 
+        this.a.d();
+        return;
       }
     }
-    return "";
-  }
-  
-  protected void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    catch (Exception paramMessage)
     {
-      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-          break label115;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
+      QLog.e("PressToChangeVoicePanel", 1, "uiHandler Error:" + paramMessage.getMessage());
+      return;
     }
+    this.a.e();
     return;
-    label115:
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.g = paramString;
+    Object localObject1 = (HashMap)paramMessage.obj;
+    paramMessage = (String)((HashMap)localObject1).get(Integer.valueOf(0));
+    localObject1 = (QQRecorder.RecorderParam)((HashMap)localObject1).get(Integer.valueOf(1));
+    this.a.g();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.recorderEnd(paramMessage, (QQRecorder.RecorderParam)localObject1);
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.recorderEnd((String)paramMessage.obj, null);
+    this.a.g();
+    return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("changevoice", 2, "recored end callback , pie is null !!");
+      }
+    }
+    else
+    {
+      localObject1 = (HashMap)paramMessage.obj;
+      paramMessage = (String)((HashMap)localObject1).get(Integer.valueOf(0));
+      localObject1 = (QQRecorder.RecorderParam)((HashMap)localObject1).get(Integer.valueOf(1));
+      this.a.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.recoderToListen(paramMessage, (QQRecorder.RecorderParam)localObject1);
+      azcr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo, (QQRecorder.RecorderParam)localObject1);
+      Object localObject2 = (ListenChangeVoicePanel)this.a.f.findViewById(2131370053);
+      ((ListenChangeVoicePanel)localObject2).d();
+      ((ListenChangeVoicePanel)localObject2).setVisibility(0);
+      ((ListenChangeVoicePanel)localObject2).setAudioPath(paramMessage, this.a.jdField_a_of_type_Double, (QQRecorder.RecorderParam)localObject1);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.setStatus(4);
+      this.a.setVisibility(8);
+      this.a.setClickable(true);
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof ahiu)) {
+        odq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005850", "0X8005850", 0, 0, "", "", Double.toString(this.a.jdField_a_of_type_Double), "", false);
+      }
+      paramMessage = (ViewGroup)((ListenChangeVoicePanel)localObject2).findViewById(2131364377);
+      if (VersionUtils.isHoneycomb())
+      {
+        localObject1 = ObjectAnimator.ofFloat(paramMessage, "scaleX", new float[] { 0.4F, 1.0F });
+        localObject2 = ObjectAnimator.ofFloat(paramMessage, "scaleY", new float[] { 0.4F, 1.0F });
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramMessage, "alpha", new float[] { 0.4F, 1.0F });
+        AnimatorSet localAnimatorSet = new AnimatorSet();
+        localAnimatorSet.play((Animator)localObject1).with((Animator)localObject2).with(localObjectAnimator);
+        localAnimatorSet.setDuration(300L);
+        localAnimatorSet.addListener(new afhk(this, paramMessage));
+        localAnimatorSet.start();
+        return;
+      }
+      paramMessage.setVisibility(0);
+      return;
+      this.a.b(paramMessage.arg1);
+      PressToChangeVoicePanel.a(this.a).setText(AudioPanel.a(((Double)paramMessage.obj).doubleValue()));
+      return;
+      this.a.g();
+      return;
+    }
   }
 }
 

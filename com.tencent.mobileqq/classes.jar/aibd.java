@@ -1,20 +1,26 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aibd
-  implements auoj
+  implements View.OnClickListener
 {
-  public aibd(AIOFileVideoData paramAIOFileVideoData, aksn paramaksn, View paramView) {}
+  public aibd(TroopView paramTroopView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData))
-    {
-      AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData, false);
-      this.jdField_a_of_type_Aksn.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.a(false));
-    }
-    this.jdField_a_of_type_Aksn.b();
-    this.jdField_a_of_type_Aksn.f();
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Ahyg.a(), SearchContactsActivity.class);
+    localIntent.putExtra("from_key", 1);
+    localIntent.putExtra("fromType", 13);
+    this.a.jdField_a_of_type_Ahyg.a().startActivity(localIntent);
+    this.a.jdField_a_of_type_Ahyg.a().overridePendingTransition(0, 0);
+    bbgk.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
+    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class aedo
+  implements DialogInterface.OnClickListener
 {
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
+  public aedo(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  protected aedo(ChatHistory paramChatHistory) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.b);
+  }
 }
 
 

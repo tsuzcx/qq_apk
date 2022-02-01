@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class rbq
-  extends pfh
+public abstract interface rbq
 {
-  public rbq(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
-  {
-    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
-    raa.g();
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
 }
 
 

@@ -1,227 +1,236 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.SparseArray;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import cooperation.vip.manager.GdtGeneralManager.2;
-import cooperation.vip.manager.GdtGeneralManager.3;
-import cooperation.vip.manager.GdtGeneralManager.5;
-import cooperation.vip.pb.vac_adv_get.VacAdvMetaMsg;
-import cooperation.vip.pb.vac_adv_get.VacAdvRsp;
-import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
-import java.lang.ref.WeakReference;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.1;
+import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.2;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class bnvx
+  implements bnsn
 {
-  private static final bnhx<bnvx, Void> jdField_a_of_type_Bnhx = new bnvy();
-  public WeakReference<bnvz> a;
-  public HashMap<Long, qq_ad_get.QQAdGetRsp.AdInfo> a;
-  public HashSet<String> a;
-  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+  private static bnvx jdField_a_of_type_Bnvx;
+  private int jdField_a_of_type_Int = 2;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private SparseArray<bnvz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(1);
+  private bnwa jdField_a_of_type_Bnwa;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new bnvy(this);
+  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public bnvx()
+  private bnvx(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
-  
-  public static bnvx a()
-  {
-    return (bnvx)jdField_a_of_type_Bnhx.b(null);
-  }
-  
-  public HashSet<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public qq_ad_get.QQAdGet.DeviceInfo a()
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = new acwc();
-        ((acwc)localObject).a = "1018ec";
-        localObject = acwb.a(BaseApplicationImpl.getApplication(), (acwc)localObject);
-        if (localObject == null) {
-          continue;
-        }
-        localObject = ((acwd)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
-        this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo = ((qq_ad_get.QQAdGet.DeviceInfo)localObject);
-        if ((QZLog.isColorLevel()) && (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.taid_ticket.get()))) {
-          QZLog.i("GdtGeneralManager", "@gdttaid  is not null");
-        }
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        QZLog.e("GdtGeneralManager", 2, new Object[] { localException.toString() });
-        continue;
-      }
-      return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
-      localObject = null;
+    if (paramAppInterface == null) {
+      throw new RuntimeException("new LbsFilterStatusManager app==null");
     }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = ThreadManager.getUIHandlerV2();
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, bnvz.a());
+    AppNetConnInfo.registerConnectionChangeReceiver(VideoEnvironment.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
   
-  public void a()
+  public static bnvx a(AppInterface paramAppInterface)
   {
-    ThreadManager.executeOnSubThread(new GdtGeneralManager.5(this));
+    try
+    {
+      if (jdField_a_of_type_Bnvx == null)
+      {
+        jdField_a_of_type_Bnvx = new bnvx(paramAppInterface);
+        bnsj.a(paramAppInterface).a(jdField_a_of_type_Bnvx);
+      }
+      paramAppInterface = jdField_a_of_type_Bnvx;
+      return paramAppInterface;
+    }
+    finally {}
   }
   
-  public void a(int paramInt, vac_adv_get.VacAdvRsp paramVacAdvRsp)
+  private String a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      QZLog.e("GdtGeneralManager", "onGdtInfoResponse erro businessType =" + paramInt);
-      return;
+      return "LBS_FILTER_UNINIT_KIND";
+    case 1: 
+      return "LBS_FILTER_LOADING_KIND";
+    case 2: 
+      return "LBS_FILTER_NOMAL_KIND";
     }
-    a(paramVacAdvRsp);
+    return "LBS_FILTER_SPECIAL_KIND";
   }
   
-  public void a(long paramLong, int paramInt1, String paramString, int paramInt2, bnvz parambnvz)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnvz);
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new GdtGeneralManager.2(this, paramLong, paramInt1, paramInt2, paramString));
-  }
-  
-  public void a(bnvc parambnvc)
-  {
-    if (parambnvc == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo == null)
+    bnvz localbnvz = (bnvz)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType);
+    a("startLocationUsingActivity", String.format("activityType=%s", new Object[] { this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType) }), null);
+    if ((localbnvz == null) || (!this.jdField_a_of_type_Boolean)) {}
+    do
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new GdtGeneralManager.3(this, parambnvc));
       return;
-    }
-    bnwa.a(parambnvc, this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo);
-    QZLog.i("GdtGeneralManager", " @getGdtInfo sendAdvInfoExposeOrClickReport");
-  }
-  
-  public void a(vac_adv_get.VacAdvRsp paramVacAdvRsp)
-  {
-    if (paramVacAdvRsp == null) {
-      return;
-    }
-    ArrayList localArrayList;
-    try
+      a("startLocationUsingActivity", String.format("mRequestStatus=%s", new Object[] { localbnvz.a() }), null);
+    } while (localbnvz.jdField_a_of_type_Int != 3);
+    a("startLocationUsingActivity", String.format("mRequestBeginTime=%s", new Object[] { "" + localbnvz.jdField_a_of_type_Long }), null);
+    if (localbnvz.jdField_a_of_type_Long > 0L)
     {
-      localArrayList = new ArrayList();
-      paramVacAdvRsp = paramVacAdvRsp.vac_adv_msgs.get();
-      if ((paramVacAdvRsp == null) || (paramVacAdvRsp.size() <= 0)) {
-        break label209;
-      }
-      paramVacAdvRsp = paramVacAdvRsp.iterator();
-      while (paramVacAdvRsp.hasNext())
-      {
-        vac_adv_get.VacAdvMetaMsg localVacAdvMetaMsg = (vac_adv_get.VacAdvMetaMsg)paramVacAdvRsp.next();
-        localArrayList.add(AlumBasicData.a(localVacAdvMetaMsg));
-        if ((localVacAdvMetaMsg != null) && (localVacAdvMetaMsg.adv_rsp != null) && (localVacAdvMetaMsg.adv_rsp.report_info != null) && (localVacAdvMetaMsg.adv_rsp.report_info.trace_info != null)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localVacAdvMetaMsg.adv_rsp.report_info.trace_info.aid.get()), localVacAdvMetaMsg.adv_rsp);
-        }
-      }
-      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-        break label200;
-      }
+      long l = System.currentTimeMillis() - localbnvz.jdField_a_of_type_Long;
+      a("startLocationUsingActivity", String.format("diffTime=%s", new Object[] { "" + l }), null);
+      if (l >= 30000L) {}
     }
-    catch (Exception paramVacAdvRsp)
+    for (boolean bool = false;; bool = true)
     {
-      QZLog.e("GdtGeneralManager", "handleAlumFloatViewData erro");
-      return;
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-    {
-      ((bnvz)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a((AlumBasicData)localArrayList.get(0));
-      QZLog.i("GdtGeneralManager", " @getGdtInfo handleAlumFloatViewData success");
-      return;
-    }
-    label200:
-    QZLog.i("GdtGeneralManager", " @getGdtInfo handleAlumFloatViewData alumBasicDataList is null");
-    return;
-    label209:
-    QZLog.i("GdtGeneralManager", " @getGdtInfo handleAlumFloatViewData advMetaMsg is null");
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-  }
-  
-  public void a(URL paramURL)
-  {
-    if (paramURL == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramURL = (HttpURLConnection)paramURL.openConnection();
-        paramURL.setRequestMethod("POST");
-        paramURL.setConnectTimeout(10000);
-        paramURL.setReadTimeout(10000);
-        paramURL.setUseCaches(false);
-        paramURL.connect();
-        int i = paramURL.getResponseCode();
-        if (i != 200) {
-          break label124;
-        }
-        bool = true;
-        if (!QZLog.isColorLevel()) {
-          break;
-        }
-        QZLog.i("GdtGeneralManager", "@getGdtInfo exporsure rspCode " + i + "， request gdt" + bool);
-        return;
-      }
-      catch (Exception paramURL) {}
-      if (!QZLog.isColorLevel()) {
+      a("startLocationUsingActivity", String.format("timeOK=%s", new Object[] { "" + bool }), null);
+      if (!bool) {
         break;
       }
-      QZLog.w("GdtGeneralManager", 2, new Object[] { paramURL.toString() });
+      localbnvz.c();
+      localbnvz.b();
+      localbnvz.jdField_a_of_type_Int = 1;
+      localbnvz.jdField_a_of_type_Long = System.currentTimeMillis();
+      bnsj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType);
       return;
-      label124:
-      boolean bool = false;
     }
   }
   
-  public byte[] a()
+  private void a(int paramInt)
   {
-    vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
-    try
+    String str = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt);
+    a("sendLoadingFilterMsg", String.format("[%s]acitvityName=%s", new Object[] { this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, str }), null);
+    if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) && (a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType)) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType == paramInt))
     {
-      if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo != null) {
-        localVacFeedsAdvMetaReq.device_info.set(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo);
-      }
-      return localVacFeedsAdvMetaReq.toByteArray();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      boolean bool = b(paramInt);
+      a("sendLoadingFilterMsg", String.format("needRefresh=%s", new Object[] { "" + bool }), null);
+      if ((this.jdField_a_of_type_Bnwa != null) && (bool))
       {
-        QZLog.e("GdtGeneralManager", 2, new Object[] { localException.toString() });
+        a("sendLoadingFilterMsg", "refreshed filterName=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, null);
+        this.jdField_a_of_type_Bnwa.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name);
       }
     }
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel())
+    {
+      if (paramThrowable != null) {
+        QLog.i("LbsFilterStatusManager", 2, paramString1 + "_" + paramString2, paramThrowable);
+      }
+    }
+    else {
+      return;
+    }
+    QLog.i("LbsFilterStatusManager", 2, paramString1 + "_" + paramString2);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null)
+    {
+      a("processMobile2WifiNet", String.format("activityType=%s", new Object[] { this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType) }), null);
+      if (!this.b) {
+        a();
+      }
+    }
+  }
+  
+  private void b(int paramInt, boolean paramBoolean)
+  {
+    bnvz localbnvz = (bnvz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localbnvz != null)
+    {
+      a("processLocationPermission", String.format("[%s]acitvityName=%s", new Object[] { "" + paramBoolean, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt) }), null);
+      if (localbnvz.jdField_a_of_type_Int == 3) {
+        break label98;
+      }
+      localbnvz.jdField_a_of_type_Boolean = paramBoolean;
+      if (paramBoolean) {
+        localbnvz.jdField_a_of_type_Int = 2;
+      }
+    }
+    else
+    {
+      return;
+    }
+    localbnvz.jdField_a_of_type_Int = 3;
+    a(paramInt);
+    return;
+    label98:
+    a("processLocationPermission", String.format("[Error]Status=%s", new Object[] { localbnvz.a() }), null);
+    localbnvz.jdField_a_of_type_Boolean = paramBoolean;
+    localbnvz.jdField_a_of_type_JavaUtilArrayList.clear();
+    localbnvz.jdField_a_of_type_Bnvz.jdField_a_of_type_JavaUtilArrayList.clear();
+    a(paramInt);
+  }
+  
+  private void b(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    bnvz localbnvz = (bnvz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localbnvz != null)
+    {
+      a("processLocationForTemplate", String.format("[%s]acitvityName=%s", new Object[] { "" + paramBoolean, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt) }), null);
+      if (localbnvz.jdField_a_of_type_Int != 3)
+      {
+        if (paramBoolean)
+        {
+          localbnvz.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+          a("processLocationForTemplate", String.format("templateIds= %s", new Object[] { paramArrayList.toString() }), null);
+        }
+        localbnvz.jdField_a_of_type_Int = 3;
+        a(paramInt);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a("processLocationForTemplate", String.format("[Error]templateIds= %s,Status=%s", new Object[] { paramArrayList.toString(), localbnvz.a() }), null);
+  }
+  
+  private boolean b(int paramInt)
+  {
+    bnvz localbnvz = (bnvz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if ((localbnvz.jdField_a_of_type_Boolean) && (localbnvz.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id))) {}
+    for (paramInt = 3;; paramInt = 2)
+    {
+      a("filterNeedRefresh", String.format("newKindName=%s,currentKindName=%s", new Object[] { a(paramInt), a(this.jdField_a_of_type_Int) }), null);
+      if (paramInt == this.jdField_a_of_type_Int) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      b(paramInt, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new LbsFilterStatusManager.1(this, paramInt, paramBoolean));
+  }
+  
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    Thread.currentThread().getId();
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      b(paramInt, paramBoolean, paramArrayList);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new LbsFilterStatusManager.2(this, paramInt, paramBoolean, paramArrayList));
   }
 }
 

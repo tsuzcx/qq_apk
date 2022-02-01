@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.studymode;
 
 import android.widget.Button;
-import bdvc;
+import bcot;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
@@ -11,19 +11,19 @@ public final class StudyModeSwitchDialog$btnSwitchOn$2
   extends Lambda
   implements Function0<Button>
 {
-  public StudyModeSwitchDialog$btnSwitchOn$2(bdvc parambdvc)
+  public StudyModeSwitchDialog$btnSwitchOn$2(bcot parambcot)
   {
     super(0);
   }
   
   public final Button invoke()
   {
-    return (Button)this.this$0.findViewById(2131363959);
+    return (Button)this.this$0.findViewById(2131363984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.btnSwitchOn.2
  * JD-Core Version:    0.7.0.1
  */

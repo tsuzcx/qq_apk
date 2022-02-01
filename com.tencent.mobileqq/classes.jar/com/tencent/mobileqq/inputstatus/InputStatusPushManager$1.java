@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.inputstatus;
 
-import avyl;
-import avyp;
+import aull;
+import aulp;
 
 public class InputStatusPushManager$1
   implements Runnable
 {
-  public InputStatusPushManager$1(avyp paramavyp) {}
+  public InputStatusPushManager$1(aulp paramaulp) {}
   
   public void run()
   {
-    if (avyp.a(this.this$0) != null) {
-      avyp.a(this.this$0).a(false, "");
+    if (aulp.a(this.this$0) != null) {
+      aulp.a(this.this$0).a(false, "");
     }
   }
 }

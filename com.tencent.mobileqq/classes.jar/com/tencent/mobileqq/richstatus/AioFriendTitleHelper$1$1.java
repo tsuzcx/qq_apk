@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus;
 
-import bbsi;
+import bamd;
 
 class AioFriendTitleHelper$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class AioFriendTitleHelper$1$1
   
   public void run()
   {
-    bbsi.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusAioFriendTitleHelper$1.this$0, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+    bamd.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusAioFriendTitleHelper$1.this$0, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
   }
 }
 

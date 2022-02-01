@@ -10,14 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import awjx;
-import bhtq;
-import bmxt;
-import bmxu;
+import auxb;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.contentbox.model.MQMsg;
@@ -33,17 +31,20 @@ import mqq.app.AppRuntime;
 public abstract class BaseMsgView
   extends FrameLayout
 {
-  private static final int c = bhtq.a() - bhtq.b(24.0F);
-  private static final int d = bhtq.b(230.0F);
-  protected int a;
-  public Context a;
-  protected bmxu a;
-  protected QQAppInterface a;
-  protected QzoneMsgPagerAdapter a;
-  protected QzoneMsgViewPager a;
-  public MQMsg a;
-  private WeakReference<ViewPager> a;
-  protected int b;
+  private static final int IMAGE_HEIGHT = ViewUtils.dpToPx(230.0F);
+  private static final int IMAGE_WIDTH = ViewUtils.getScreenWidth() - ViewUtils.dpToPx(24.0F);
+  private static final int MSG_PAGER_NEXT_ITEM = 10000;
+  protected static final int PAGER_ITEM_TIME = 3000;
+  private static final String TAG = "QZoneMsgManager.BaseMsgView";
+  protected int apngTag;
+  protected QQAppInterface app;
+  protected Context mContext;
+  protected MQMsg mData;
+  protected BaseMsgView.MyHandler mUiHandler;
+  protected QzoneMsgPagerAdapter pagerAdapter;
+  protected int position;
+  private WeakReference<ViewPager> reference;
+  protected QzoneMsgViewPager viewPager;
   
   public BaseMsgView(@NonNull Context paramContext)
   {
@@ -60,7 +61,7 @@ public abstract class BaseMsgView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static URLDrawable a(AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
+  public static URLDrawable getApngDrawable(AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
   {
     if (TextUtils.isEmpty(paramString1)) {
       return null;
@@ -81,7 +82,7 @@ public abstract class BaseMsgView
       if ((i > 0) && (j > 0)) {
         paramBundle.mRequestWidth = i;
       }
-      for (paramBundle.mRequestHeight = j;; paramBundle.mRequestHeight = d)
+      for (paramBundle.mRequestHeight = j;; paramBundle.mRequestHeight = IMAGE_HEIGHT)
       {
         paramBundle.mLoadingDrawable = paramDrawable;
         paramBundle.mFailedDrawable = paramDrawable;
@@ -94,7 +95,7 @@ public abstract class BaseMsgView
         }
         QLog.d("QZoneMsgManager.BaseMsgView", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
         break;
-        paramBundle.mRequestWidth = c;
+        paramBundle.mRequestWidth = IMAGE_WIDTH;
       }
       return paramAppRuntime;
     }
@@ -105,83 +106,41 @@ public abstract class BaseMsgView
     }
   }
   
-  protected URLDrawable a()
-  {
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getFilesDir() + "/qzone_msg_content_box/";
-    Object localObject = new File(str1);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
-    }
-    localObject = ((MQPhotoCell)this.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.msgBody.photolist.get(0)).coverUrl;
-    String str2 = MD5.toMD5((String)localObject).substring(0, 20);
-    this.jdField_a_of_type_Int = (this.b + 10000);
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1 + str2, (String)localObject, null, new int[] { this.jdField_a_of_type_Int }, "content-box", null);
-  }
-  
-  protected URLDrawable a(String paramString)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = c;
-    localURLDrawableOptions.mRequestHeight = d;
-    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bmxu == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager != null) && (this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager.getVisibility() == 0) && (this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter != null) && (this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter.getCount() > 1))
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager);
-      Message localMessage = this.jdField_a_of_type_Bmxu.obtainMessage(10000, this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter.getCount(), 0, this.jdField_a_of_type_JavaLangRefWeakReference);
-      this.jdField_a_of_type_Bmxu.removeMessages(10000);
-      this.jdField_a_of_type_Bmxu.sendMessageDelayed(localMessage, 3000L);
-      return;
-    }
-    ApngImage.playByTag(this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg == null) {}
-    while (this.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.msgType == 6) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(Message paramMessage)
+  protected boolean doHandleMessage(Message paramMessage)
   {
     return false;
   }
   
-  public void b()
+  protected URLDrawable getApngDrawable()
   {
-    if ((this.jdField_a_of_type_Bmxu == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
-      return;
+    String str1 = this.mContext.getFilesDir() + "/qzone_msg_content_box/";
+    Object localObject = new File(str1);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
     }
-    this.jdField_a_of_type_Bmxu.removeMessages(10000, this.jdField_a_of_type_JavaLangRefWeakReference);
-    ApngImage.pauseByTag(this.jdField_a_of_type_Int);
+    localObject = ((MQPhotoCell)this.mData.msgBody.photolist.get(0)).coverUrl;
+    String str2 = MD5.toMD5((String)localObject).substring(0, 20);
+    this.apngTag = (this.position + 10000);
+    return getApngDrawable(this.app, str1 + str2, (String)localObject, null, new int[] { this.apngTag }, "content-box", null);
   }
   
-  public void c()
+  protected URLDrawable getUrlDrawable(String paramString)
   {
-    if (this.jdField_a_of_type_Bmxu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bmxu.removeMessages(10000);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = IMAGE_WIDTH;
+    localURLDrawableOptions.mRequestHeight = IMAGE_HEIGHT;
+    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
   }
   
-  protected void d()
+  protected void initViewPager()
   {
     try
     {
       Field localField = Class.forName("android.support.v4.view.ViewPager").getDeclaredField("mScroller");
-      bmxt localbmxt = new bmxt(this.jdField_a_of_type_AndroidContentContext, new awjx(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
-      localbmxt.a(400);
+      BaseMsgView.CustumScroller localCustumScroller = new BaseMsgView.CustumScroller(this.mContext, new auxb(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
+      localCustumScroller.setmDuration(400);
       localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager, localbmxt);
+      localField.set(this.viewPager, localCustumScroller);
       return;
     }
     catch (Exception localException)
@@ -190,25 +149,67 @@ public abstract class BaseMsgView
     }
   }
   
-  public void e()
+  public boolean isLargePhoto()
   {
-    c();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgViewPager = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_CooperationQzoneContentboxQzoneMsgPagerAdapter = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg = null;
+    if (this.mData == null) {}
+    while (this.mData.msgType == 6) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void recycle()
+  {
+    stopAll();
+    this.mContext = null;
+    this.viewPager = null;
+    this.reference = null;
+    this.pagerAdapter = null;
+    this.app = null;
+    this.mData = null;
   }
   
   public void setApp(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.app = paramQQAppInterface;
   }
   
   public void setPosition(int paramInt)
   {
-    this.b = paramInt;
+    this.position = paramInt;
+  }
+  
+  public void startPlay()
+  {
+    if (this.mUiHandler == null) {
+      return;
+    }
+    if ((this.viewPager != null) && (this.viewPager.getVisibility() == 0) && (this.pagerAdapter != null) && (this.pagerAdapter.getCount() > 1))
+    {
+      this.reference = new WeakReference(this.viewPager);
+      Message localMessage = this.mUiHandler.obtainMessage(10000, this.pagerAdapter.getCount(), 0, this.reference);
+      this.mUiHandler.removeMessages(10000);
+      this.mUiHandler.sendMessageDelayed(localMessage, 3000L);
+      return;
+    }
+    ApngImage.playByTag(this.apngTag);
+  }
+  
+  public void stopAll()
+  {
+    if (this.mUiHandler == null) {
+      return;
+    }
+    this.mUiHandler.removeMessages(10000);
+  }
+  
+  public void stopPlay()
+  {
+    if ((this.mUiHandler == null) || (this.reference == null)) {
+      return;
+    }
+    this.mUiHandler.removeMessages(10000, this.reference);
+    ApngImage.pauseByTag(this.apngTag);
   }
 }
 

@@ -1,27 +1,36 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
-public class anzj
+class anzj
+  extends aofq
 {
-  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
+  anzj(anzi paramanzi) {}
   
-  public static String a(int paramInt)
+  public void a()
   {
-    try
-    {
-      String str = a.getResources().getString(paramInt);
-      return str;
+    if (QLog.isColorLevel()) {
+      QLog.d(anzv.a, 2, "onArSoDownloadSuccess");
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    this.a.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(anzv.a, 2, "onArSoDownloadProcess process=" + paramInt);
     }
-    return "";
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(anzv.a, 2, "onArSoDownloadFail");
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,95 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class blbm
-  implements bldf
+public class blbm
 {
-  blbm(blbl paramblbl) {}
+  private static blbm jdField_a_of_type_Blbm;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
+  private boolean b;
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  private int a()
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
-      }
-      if (paramLong1 == 0L) {
-        break label99;
-      }
-      this.a.a((String)paramObject1, (byte[])paramObject2, new blbp(this.a, paramLong1));
+    if (this.b) {
+      return this.jdField_a_of_type_Int;
     }
-    for (;;)
-    {
-      return 0;
-      label99:
-      this.a.a((String)paramObject1, (byte[])paramObject2, null);
+    this.b = true;
+    long l = a(BaseApplicationImpl.getApplication());
+    if (b(BaseApplicationImpl.getApplication()) > l) {}
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
+      return this.jdField_a_of_type_Int;
     }
+  }
+  
+  public static long a(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public static blbm a()
+  {
+    if (jdField_a_of_type_Blbm == null) {}
+    try
+    {
+      if (jdField_a_of_type_Blbm == null) {
+        jdField_a_of_type_Blbm = new blbm();
+      }
+      return jdField_a_of_type_Blbm;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
+    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
+    localEditor.apply();
+  }
+  
+  public static long b(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
+    }
+    while (a() != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
+    ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).getFriendGroupList(true);
+    a();
   }
 }
 

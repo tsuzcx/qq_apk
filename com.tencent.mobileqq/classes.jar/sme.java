@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class sme
-  implements View.OnClickListener
+  implements peu
 {
-  public sme(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public sme(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (ReadInJoyDailyXListView.a(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
+      }
+      if ((this.a.c == 0) && ((!uhv.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
+    }
   }
 }
 

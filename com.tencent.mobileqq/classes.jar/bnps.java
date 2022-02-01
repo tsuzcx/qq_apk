@@ -1,223 +1,36 @@
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class bnps
-  extends bnnn
+  implements Comparator<RecentUser>
 {
-  private bnpr jdField_a_of_type_Bnpr = new bnpr();
-  private String jdField_a_of_type_JavaLangString = "";
-  private bnpr jdField_b_of_type_Bnpr = new bnpr();
-  private String jdField_b_of_type_JavaLangString = "";
-  
-  private String a()
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    long l2 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
+    long l3 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
+    long l1 = l2;
+    if (paramRecentUser1.lastmsgtime <= 0L)
     {
-      if (!Environment.getExternalStorageState().equals("mounted"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "no sdcard");
-        }
-        return "";
-      }
-      Object localObject = bmxr.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "tencent/Qzone/tinyprogram/");
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists())
-      {
-        if (!((File)localObject).mkdirs())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("QzoneSoundPlugin", 2, "make dir fail");
-          }
-          return "";
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "make dir suc");
-        }
+      l1 = l2;
+      if (paramRecentUser1.lastmsgdrafttime <= 0L) {
+        l1 = Math.max(l2, paramRecentUser1.opTime);
       }
     }
-    for (;;)
+    l2 = l3;
+    if (paramRecentUser2.lastmsgtime <= 0L)
     {
-      return this.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("QzoneSoundPlugin", 2, "dir is exists");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "cache root found use : " + this.jdField_a_of_type_JavaLangString);
-        }
+      l2 = l3;
+      if (paramRecentUser2.lastmsgdrafttime <= 0L) {
+        l2 = Math.max(l3, paramRecentUser2.opTime);
       }
     }
-  }
-  
-  private void a(String... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Bnpr != null) {
-      this.jdField_a_of_type_Bnpr.b();
+    if (l1 > l2) {
+      return -1;
     }
-  }
-  
-  private void b(String... paramVarArgs)
-  {
-    if (this.jdField_b_of_type_Bnpr != null) {
-      this.jdField_b_of_type_Bnpr.b();
+    if (l1 < l2) {
+      return 1;
     }
-  }
-  
-  private void c(String... paramVarArgs)
-  {
-    try
-    {
-      paramVarArgs = bjtz.d(new JSONObject(paramVarArgs[0]).optString("url"));
-      paramVarArgs = a() + paramVarArgs + ".mp3";
-      QLog.d("QzoneSoundPlugin", 2, "playLocalSound : " + paramVarArgs);
-      if (new File(paramVarArgs).exists())
-      {
-        this.jdField_b_of_type_Bnpr.a(paramVarArgs);
-        this.jdField_b_of_type_Bnpr.a();
-      }
-      return;
-    }
-    catch (Exception paramVarArgs) {}
-  }
-  
-  private void d(String... paramVarArgs)
-  {
-    try
-    {
-      paramVarArgs = bjtz.d(new JSONObject(paramVarArgs[0]).optString("url"));
-      paramVarArgs = a() + paramVarArgs + ".mp3";
-      QLog.d("QzoneSoundPlugin", 2, "playLocalBackSound : " + paramVarArgs);
-      if (new File(paramVarArgs).exists())
-      {
-        this.jdField_a_of_type_Bnpr.a(paramVarArgs);
-        this.jdField_a_of_type_Bnpr.a();
-      }
-      return;
-    }
-    catch (Exception paramVarArgs) {}
-  }
-  
-  private void e(String... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-      try
-      {
-        Object localObject2 = new JSONObject(paramVarArgs[0]);
-        paramVarArgs = ((JSONObject)localObject2).optString("callback");
-        Object localObject1 = ((JSONObject)localObject2).optString("url");
-        localObject2 = bjtz.d(((JSONObject)localObject2).optString("url"));
-        QLog.d("QzoneSoundPlugin", 2, "downloadMusicUrl : " + (String)localObject1);
-        QLog.d("QzoneSoundPlugin", 2, "downloadMusicMD5 : " + (String)localObject2);
-        this.jdField_b_of_type_JavaLangString = (a() + (String)localObject2 + ".mp3");
-        QLog.d("QzoneSoundPlugin", 2, "mDownloadMusicFinalCachePath : " + this.jdField_b_of_type_JavaLangString);
-        if (!new File(this.jdField_b_of_type_JavaLangString).exists())
-        {
-          DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.jdField_b_of_type_JavaLangString, new bnpt(this, paramVarArgs));
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneSoundPlugin", 2, "The Music File is Exist");
-        }
-        try
-        {
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("code", 0);
-          ((JSONObject)localObject1).put("message", "success");
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramVarArgs, new String[] { ((JSONObject)localObject1).toString() });
-          return;
-        }
-        catch (Exception paramVarArgs)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-        }
-        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramVarArgs.getMessage());
-        return;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneSoundPlugin", 2, "METHOD_DOWNLOAD_SUPER_LIKE_MUSIC: ", paramVarArgs);
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDestroy");
-    }
-    if (this.jdField_a_of_type_Bnpr != null)
-    {
-      this.jdField_a_of_type_Bnpr.a();
-      this.jdField_a_of_type_Bnpr = null;
-    }
-    if (this.jdField_b_of_type_Bnpr != null)
-    {
-      this.jdField_b_of_type_Bnpr.a();
-      this.jdField_b_of_type_Bnpr = null;
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (paramString3.equalsIgnoreCase("playLocalSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "playLocalSound");
-      }
-      c(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("playLocalBackSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "playLocalBackSound");
-      }
-      d(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("preloadSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "preloadSound");
-      }
-      e(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("stopLocalSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "stopLocalSound");
-      }
-      b(new String[0]);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("stopLocalBackSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "stopLocalBackSound");
-      }
-      a(new String[0]);
-      return true;
-    }
-    return false;
+    return 0;
   }
 }
 

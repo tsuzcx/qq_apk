@@ -1,83 +1,83 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-class ajxy
-  extends BaseAdapter
+public class ajxy
+  extends FrameLayout
 {
-  private ajxy(ajxw paramajxw) {}
+  agme jdField_a_of_type_Agme;
+  Context jdField_a_of_type_AndroidContentContext;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  public int getCount()
+  public ajxy(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, agme paramagme)
   {
-    return 6;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = LayoutInflater.from(ajxw.a(this.a)).inflate(2131563032, null);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Agme = paramagme;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = -2;
+    paramTroopUnAccalimedRedPacketList.height = -2;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
+    if (!bbyp.b()) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130847400);
     }
-    for (;;)
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = UIUtils.dip2px(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.height = UIUtils.dip2px(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 1;
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = UIUtils.dip2px(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.height = UIUtils.dip2px(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 17;
+  }
+  
+  public void a(RedPackGrapInfo paramRedPackGrapInfo)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      int k;
-      int j;
-      int i;
-      switch (paramInt)
-      {
-      case 4: 
-      default: 
-        k = 2130839087;
-        j = 2131718150;
-        i = 2131718540;
-      }
-      for (;;)
-      {
-        ImageView localImageView = (ImageView)paramView.findViewById(2131362822);
-        TextView localTextView = (TextView)paramView.findViewById(2131362834);
-        localImageView.setImageResource(k);
-        localTextView.setText(j);
-        if (AppSetting.c) {
-          paramView.setContentDescription(ajxw.a(this.a).getString(i));
-        }
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        j = 2131718164;
-        k = 2130839091;
-        i = 2131718556;
-        continue;
-        j = 2131718166;
-        k = 2130839092;
-        i = 2131718557;
-        continue;
-        j = 2131718171;
-        k = 2130839095;
-        i = 2131718564;
-        continue;
-        j = 2131718162;
-        k = 2130839089;
-        i = 2131718547;
-        continue;
-        i = 2131715920;
-        j = 2131715920;
-        k = 2130842427;
-      }
+      localObject = FaceDrawable.getUserFaceDrawable(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     }
+    if (this.jdField_a_of_type_Agme != null)
+    {
+      this.jdField_a_of_type_Agme.a(paramRedPackGrapInfo);
+      localObject = this.jdField_a_of_type_Agme.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (localObject == null) {
+        break label120;
+      }
+      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.topMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 11.5F);
+      localLayoutParams.gravity = 16;
+      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Agme.a((FrameLayout)localObject, paramRedPackGrapInfo, new ajxz(this));
+    }
+    label120:
+    while (!QLog.isColorLevel())
+    {
+      LinearLayout.LayoutParams localLayoutParams;
+      return;
+    }
+    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
   }
 }
 

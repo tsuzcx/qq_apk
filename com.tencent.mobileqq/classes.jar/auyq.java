@@ -1,71 +1,116 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.media_relation.media_relation.MediaRelationInfo;
 
-final class auyq
-  implements DialogInterface.OnClickListener
+public class auyq
 {
-  auyq(Intent paramIntent, int paramInt, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public static String a = "ListenTogetherAIOStatusHelper";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("sdk_mult_share_source_app_id", 0L);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sdk_mult_share_msg_service_id", 0);
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "setIsGroupListenTogetherOpen, app = " + paramQQAppInterface + " troopuin:" + paramString + " isOpen:" + paramBoolean);
     }
-    do
+    if (paramQQAppInterface != null)
     {
-      do
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      if (paramQQAppInterface != null)
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("ForwardDialogMgr", 2, "-->showMultShareDialog--back");
-        }
-        if (this.jdField_a_of_type_Int == 2) {
-          avcj.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, avcj.a);
-        }
-        while (this.jdField_a_of_type_Int == 1)
+        paramString = paramQQAppInterface.b(paramString);
+        if (paramString != null)
         {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A740", new String[0]);
-          return;
-          avcj.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
+          paramString.setIsListenTogether(paramBoolean);
+          paramQQAppInterface.b(paramString);
+          if (QLog.isColorLevel()) {
+            QLog.i(a, 2, "setIsGroupListenTogetherOpen troopinfo saved");
+          }
         }
-        if (this.jdField_a_of_type_Int == 0)
+      }
+    }
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte)
+  {
+    media_relation.MediaRelationInfo localMediaRelationInfo;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      localMediaRelationInfo = new media_relation.MediaRelationInfo();
+    }
+    try
+    {
+      localMediaRelationInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localMediaRelationInfo;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i;
+        long l;
+        paramArrayOfByte = null;
+        localException.printStackTrace();
+      }
+    }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.create_time.has()))
+    {
+      i = paramArrayOfByte.create_time.get();
+      l = NetConnInfoCenter.getServerTime();
+    }
+    return i >= l - 604800L;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "setIsC2CListenTogetherOpen, app = " + paramQQAppInterface + " frienduin:" + paramString + " isOpen:" + paramBoolean);
+    }
+    Friends localFriends;
+    Object localObject;
+    if (paramQQAppInterface != null)
+    {
+      amsw localamsw = (amsw)paramQQAppInterface.getManager(51);
+      if (localamsw != null)
+      {
+        localFriends = localamsw.e(paramString);
+        if ((localFriends == null) || (!localFriends.isFriend())) {
+          paramBoolean = false;
+        }
+        ExtensionInfo localExtensionInfo = localamsw.a(paramString);
+        localObject = localExtensionInfo;
+        if (localExtensionInfo == null)
         {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73C", new String[0]);
-          return;
+          localObject = new ExtensionInfo();
+          ((ExtensionInfo)localObject).uin = paramString;
         }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73E", new String[0]);
+        boolean bool = ((ExtensionInfo)localObject).isListenTogetherOpen;
+        if (bool != paramBoolean)
+        {
+          ((ExtensionInfo)localObject).isListenTogetherOpen = paramBoolean;
+          localamsw.a((ExtensionInfo)localObject);
+          ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).notifyUI(3, true, paramString);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramString = a;
+          localObject = new StringBuilder().append("setIsC2CListenTogetherOpen extensionInfo saved, old=").append(bool).append(" new:").append(paramBoolean).append(" friend:");
+          if (localFriends == null) {
+            break label234;
+          }
+        }
+      }
+    }
+    label234:
+    for (paramQQAppInterface = Boolean.valueOf(localFriends.isFriend());; paramQQAppInterface = "null")
+    {
+      QLog.i(paramString, 2, paramQQAppInterface);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardDialogMgr", 2, "-->showMultShareDialog--stay");
-      }
-      if (this.jdField_a_of_type_Int == 901503) {
-        avcj.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, avcj.a);
-      }
-      while (this.jdField_a_of_type_Int == 1)
-      {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73F", new String[0]);
-        return;
-        if (this.jdField_a_of_type_Int == 3) {
-          avcj.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        } else {
-          avcj.a(l, i, this.jdField_a_of_type_AndroidAppActivity);
-        }
-      }
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73B", new String[0]);
-        return;
-      }
-    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73D", new String[0]);
+    }
   }
 }
 

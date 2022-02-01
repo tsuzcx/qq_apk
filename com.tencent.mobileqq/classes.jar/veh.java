@@ -1,26 +1,9 @@
-class veh
-  implements aabr
+public class veh
 {
-  veh(vee paramvee) {}
-  
-  public void a(aabu paramaabu, Object paramObject)
-  {
-    if (paramaabu.e()) {
-      if (vee.a(this.a) != null) {
-        vee.a(this.a).a(vee.a(this.a), true, false);
-      }
-    }
-    do
-    {
-      return;
-      if (paramaabu.d())
-      {
-        vee.a(this.a, false);
-        return;
-      }
-    } while (!paramaabu.c());
-    vee.a(this.a, true);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
 }
 
 

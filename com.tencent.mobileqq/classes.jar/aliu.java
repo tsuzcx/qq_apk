@@ -1,27 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aliu
-  implements ValueAnimator.AnimatorUpdateListener
+class aliu
+  implements View.OnClickListener
 {
-  public aliu(KSongMicView paramKSongMicView) {}
+  aliu(alis paramalis) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = KSongMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof alix)) {}
+    for (;;)
     {
-      aliv localaliv = (aliv)paramValueAnimator.next();
-      localaliv.jdField_c_of_type_Float = (localaliv.f + (localaliv.g - localaliv.f) * f);
-      localaliv.d = (localaliv.h + (localaliv.i - localaliv.h) * f);
-      localaliv.e = (localaliv.j + (localaliv.k - localaliv.j) * f);
-      localaliv.a = (localaliv.b + (int)((localaliv.jdField_c_of_type_Int - localaliv.b) * f));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (alix)localObject;
+      if ((((alix)localObject).a != null) && (this.a.a != null)) {
+        this.a.a.a(((alix)localObject).a);
+      }
     }
-    this.a.invalidate();
   }
 }
 

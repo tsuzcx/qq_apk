@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface ajbj
 {
-  public abstract void a();
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

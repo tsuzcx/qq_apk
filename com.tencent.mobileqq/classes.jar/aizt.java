@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aizt
-  implements Parcelable.Creator<ZhituResponse>
+public class aizt
+  implements View.OnClickListener
 {
-  public ZhituResponse a(Parcel paramParcel)
-  {
-    return new ZhituResponse(paramParcel);
-  }
+  public aizt(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ZhituResponse[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ZhituResponse[paramInt];
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,24 +1,220 @@
+import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 
-class rtp
-  extends sbh
+public class rtp
 {
-  rtp(rsx paramrsx) {}
+  private static long jdField_a_of_type_Long;
+  private static String jdField_a_of_type_JavaLangString;
+  private static rtp jdField_a_of_type_Rtp;
+  private static String jdField_b_of_type_JavaLangString = pay.e;
+  private static String c;
+  public static boolean c;
+  public float a;
+  private int jdField_a_of_type_Int = 0;
+  public Context a;
+  protected boolean a;
+  public float b;
+  private long jdField_b_of_type_Long = -1L;
+  public boolean b;
+  public float c;
+  private boolean d;
+  private boolean e;
+  private boolean f = true;
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  static
   {
-    if ((rsx.a(this.a) != null) && (rsx.a(this.a).c()))
+    jdField_c_of_type_JavaLangString = pay.e;
+  }
+  
+  public rtp()
+  {
+    this(-1);
+  }
+  
+  private rtp(int paramInt)
+  {
+    this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_c_of_type_Float = -1.0F;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+    this.jdField_c_of_type_Float = ((int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels / 16.0D * 9.0D));
+    this.jdField_b_of_type_Float = (2.0F * this.jdField_c_of_type_Float * 1.2F);
+    if (Build.VERSION.SDK_INT >= 14) {}
+    for (;;)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690750), 5000).a();
-      rsx.a(this.a).f();
-      QLog.d("VideoFeedsShareController", 2, "mColorNoteController ： delete colorNote");
+      this.jdField_a_of_type_Boolean = bool;
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "mDeviceAutoPlaySwitch : " + this.jdField_a_of_type_Boolean);
+      }
+      return;
+      bool = false;
     }
+  }
+  
+  public static rtp a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Rtp == null) {
+        jdField_a_of_type_Rtp = new rtp();
+      }
+      rtp localrtp = jdField_a_of_type_Rtp;
+      return localrtp;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (this.f) {
+      jdField_b_of_type_JavaLangString = pay.e();
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    try
+    {
+      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getActiveNetworkInfo();
+        if ((paramContext != null) && (paramContext.isConnected()) && (paramContext.getState() == NetworkInfo.State.CONNECTED))
+        {
+          int i = paramContext.getType();
+          if (i == 1) {
+            return true;
+          }
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.d(rtp.class.getSimpleName(), 2, paramContext.toString());
+    }
+    return false;
+  }
+  
+  public static boolean d()
+  {
+    if (jdField_a_of_type_Long == -1L) {
+      return false;
+    }
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin();
+      if (!str.equals(jdField_a_of_type_JavaLangString))
+      {
+        jdField_a_of_type_JavaLangString = str;
+        jdField_a_of_type_Long = -1L;
+        return false;
+      }
+    }
+    if (System.currentTimeMillis() - jdField_a_of_type_Long < 600000L) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = true;
+    boolean bool3 = true;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAutoPlayController", 2, "canAutoPlayVideo：getKandianMode: " + pay.e());
+    }
+    QQAppInterface localQQAppInterface = pay.a();
+    if ((localQQAppInterface != null) && (localQQAppInterface.isVideoChatting())) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (pay.e() != 6) {
+          break;
+        }
+        jdField_c_of_type_JavaLangString = pay.a(this.jdField_b_of_type_Long);
+      } while (pay.e.equals(jdField_c_of_type_JavaLangString));
+      if ((pay.jdField_c_of_type_JavaLangString.equals(jdField_c_of_type_JavaLangString)) && (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))) {
+        return this.jdField_a_of_type_Boolean;
+      }
+      if ((this.e) && (this.jdField_a_of_type_Boolean)) {}
+      for (;;)
+      {
+        return bool1;
+        bool1 = false;
+      }
+      jdField_b_of_type_JavaLangString = pay.a(this.jdField_b_of_type_Long);
+    } while (pay.e.equals(jdField_b_of_type_JavaLangString));
+    if ((pay.jdField_c_of_type_JavaLangString.equals(jdField_b_of_type_JavaLangString)) && (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      if (((this.e) || (twq.a(a().jdField_a_of_type_AndroidContentContext))) && (this.jdField_a_of_type_Boolean)) {}
+      for (bool1 = bool2;; bool1 = false) {
+        return bool1;
+      }
+    }
+    if ((this.e) && (this.jdField_a_of_type_Boolean)) {}
+    for (bool1 = bool3;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public boolean c()
+  {
+    if (pay.jdField_c_of_type_JavaLangString.equals(jdField_b_of_type_JavaLangString)) {}
+    while ((NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext)) || (d())) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean e()
+  {
+    return this.e;
   }
 }
 

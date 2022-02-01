@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import anji;
-import anjp;
+import amec;
+import amej;
 import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -15,10 +15,10 @@ class ApolloJsPlugin$5$1
   {
     if (ApolloJsPlugin.access$200(this.this$1.this$0).contains(this.this$1.val$param.apolloId))
     {
-      if (!(this.this$1.val$activity instanceof anjp)) {
+      if (!(this.this$1.val$activity instanceof amej)) {
         break label60;
       }
-      ((anjp)this.this$1.val$activity).a(this.val$tempList);
+      ((amej)this.this$1.val$activity).a(this.val$tempList);
     }
     label60:
     while (ApolloJsPlugin.access$300(this.this$1.this$0) == null) {

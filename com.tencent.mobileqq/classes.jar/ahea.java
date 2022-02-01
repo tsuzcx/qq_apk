@@ -1,30 +1,34 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qidian.data.BmqqAccountType;
 
 class ahea
-  implements ahca
+  extends CardObserver
 {
-  ahea(ahdy paramahdy, ahdx paramahdx, MessageForPoke paramMessageForPoke) {}
+  ahea(ahdt paramahdt) {}
   
-  public void a()
+  public void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
   {
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Ahdx.b == ahdk.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Ahdy.a.a instanceof ChatHistoryActivity)) && (!ahdk.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Ahdx.c.setVisibility(0);
-    }
-    for (;;)
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    ahdt.a(this.a);
+    this.a.c();
+    if ((this.a.panelicons != null) && (this.a.b.f(this.a.sessionInfo.curFriendUin)) && (!ahdt.a(this.a)))
     {
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Ahdx.c.setVisibility(8);
+      ahdt.a(this.a, true);
+      this.a.panelicons.a(this.a.app, this.a.sessionInfo, this.a.mActivity.getChatFragment().a);
+    }
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.sessionInfo != null) && (this.a.sessionInfo.curFriendUin != null) && (paramBmqqAccountType.getUin().equals(this.a.sessionInfo.curFriendUin)) && (paramBmqqAccountType.getAccountType() == 6)) {
+      ahdt.b(this.a);
+    }
+    if ((this.a.sessionInfo != null) && (this.a.sessionInfo.curType == 1024) && ((TextUtils.isEmpty(this.a.sessionInfo.curFriendNick)) || (this.a.sessionInfo.curFriendNick.equals(this.a.sessionInfo.curFriendUin))))
+    {
+      this.a.sessionInfo.curFriendNick = npt.b(this.a.app, this.a.sessionInfo.curFriendUin);
+      this.a.mTitleText.setText(this.a.sessionInfo.curFriendNick);
     }
   }
 }

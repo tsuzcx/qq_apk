@@ -28,8 +28,9 @@ public class ReportAlertDialog
   
   public boolean dispatchTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onDialogDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onDialogDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onDialogDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

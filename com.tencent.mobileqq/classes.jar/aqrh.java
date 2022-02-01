@@ -1,38 +1,29 @@
-import android.graphics.Point;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqrh
+class aqrh
+  implements URLDrawable.URLDrawableListener
 {
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  aqrh(aqrg paramaqrg) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("param_service_type");
-      String str = paramBundle.getString("param_sub_type");
-      if (paramBundle.getInt("param_extra", 1) != 2) {
-        aqsf.a().a(i, str, paramBoolean);
-      }
-      aqsf.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForGrayTips", 2, "onLoadSuccessed() called with: urlDrawable = [" + paramURLDrawable + "]");
     }
-  }
-  
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
-  {
-    aqsf.a().a(paramInt, paramString, paramBoolean);
-  }
-  
-  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
-  
-  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (paramBundle != null)
+    paramURLDrawable = paramURLDrawable.getCallback();
+    if ((paramURLDrawable instanceof View))
     {
-      aqsf.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
-      aqsf.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
-      aqsf.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
-      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
-      aqsf.a().b(bool);
+      ((View)paramURLDrawable).invalidate();
+      ((View)paramURLDrawable).requestLayout();
     }
   }
 }

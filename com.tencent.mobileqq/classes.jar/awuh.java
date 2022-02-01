@@ -1,19 +1,106 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import java.io.File;
 
-class awuh
-  implements View.OnClickListener
+public class awuh
+  implements awtu
 {
-  awuh(awud paramawud, View.OnClickListener paramOnClickListener) {}
+  TextureVideoView a;
   
-  public void onClick(View paramView)
+  public awuh(Context paramContext)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.a = new TextureVideoView(paramContext.getApplicationContext());
+  }
+  
+  public int a()
+  {
+    if (this.a == null) {
+      return 0;
     }
-    this.jdField_a_of_type_Awud.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (int)(this.a.getCurrentPosition() / (this.a.getDuration() + 0.1D) * 100.0D);
+  }
+  
+  public long a()
+  {
+    return this.a.getCurrentPosition();
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.seekTo((int)paramLong);
+  }
+  
+  public void a(awtv paramawtv)
+  {
+    this.a.setOnCompletionListener(new awui(this, paramawtv));
+  }
+  
+  public void a(awtw paramawtw) {}
+  
+  public void a(awtx paramawtx)
+  {
+    this.a.setOnErrorListener(new awuj(this, paramawtx, null));
+  }
+  
+  public void a(awty paramawty)
+  {
+    this.a.setOnInfoListener(new awuk(this, paramawty));
+  }
+  
+  public void a(awtz paramawtz)
+  {
+    TextureVideoView localTextureVideoView = this.a;
+    if (paramawtz == null) {}
+    for (paramawtz = null;; paramawtz = new awul(this, paramawtz))
+    {
+      localTextureVideoView.setOnPreparedListener(paramawtz);
+      return;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  {
+    paramString1 = paramString3;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString3;
+      if (vmq.a(new File(paramString2))) {
+        paramString1 = paramString2;
+      }
+    }
+    this.a.setVideoPath(paramString1);
+  }
+  
+  public boolean a()
+  {
+    return this.a.isPlaying();
+  }
+  
+  public void b()
+  {
+    this.a.start();
+  }
+  
+  public void c()
+  {
+    this.a.pause();
+  }
+  
+  public void d()
+  {
+    b();
   }
 }
 

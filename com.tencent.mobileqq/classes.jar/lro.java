@@ -1,19 +1,17 @@
-import android.util.Log;
+import android.os.SystemClock;
 
-public abstract class lro
+public class lro
 {
-  private String a;
-  protected lrn a;
+  private static volatile long a;
   
-  public lro()
+  public static long a()
   {
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
+    return a;
   }
   
-  public void a(lrn paramlrn)
+  public static void a()
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lrn = paramlrn;
+    a = SystemClock.uptimeMillis();
   }
 }
 

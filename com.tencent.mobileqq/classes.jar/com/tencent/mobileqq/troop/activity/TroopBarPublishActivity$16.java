@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.activity;
 
+import amtj;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import bfio;
-import bfip;
+import bdrf;
+import bdrg;
 import java.io.File;
 
 public class TroopBarPublishActivity$16
@@ -16,19 +16,19 @@ public class TroopBarPublishActivity$16
   {
     if (this.a == null)
     {
-      this.this$0.t();
+      this.this$0.q();
       this.this$0.r = false;
-      this.this$0.d.setText(anzj.a(2131714014));
+      this.this$0.d.setText(amtj.a(2131714246));
       this.this$0.d.setTextColor(-65536);
-      this.this$0.b.setOnClickListener(new bfio(this));
+      this.this$0.b.setOnClickListener(new bdrf(this));
       return;
     }
     this.this$0.r = false;
     this.this$0.d.setText("");
-    this.this$0.d.setCompoundDrawablesWithIntrinsicBounds(2130848324, 0, 0, 0);
+    this.this$0.d.setCompoundDrawablesWithIntrinsicBounds(2130848235, 0, 0, 0);
     this.this$0.y = this.a;
     this.this$0.a.a = new File(this.a).length();
-    this.this$0.b.setOnClickListener(new bfip(this));
+    this.this$0.b.setOnClickListener(new bdrg(this));
     this.this$0.a(TroopBarPublishActivity.c(this.this$0), true);
   }
 }

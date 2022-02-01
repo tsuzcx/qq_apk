@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aibo;
-import aicx;
-import aicy;
-import aidw;
+import agye;
+import agzn;
+import agzo;
+import aham;
 
 public class AIOImageListScene$8
   implements Runnable
 {
-  public AIOImageListScene$8(aicy paramaicy, long paramLong, boolean paramBoolean) {}
+  public AIOImageListScene$8(agzo paramagzo, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      aidw localaidw = this.this$0.a.a();
+      aham localaham = this.this$0.a.a();
       if (this.this$0.a.a(this.jdField_a_of_type_Long) != null) {
         this.this$0.e();
       }
-      if ((this.jdField_a_of_type_Boolean) && (localaidw != null) && (this.jdField_a_of_type_Long == localaidw.a.f)) {
-        aibo.a(aicy.p(this.this$0));
+      if ((this.jdField_a_of_type_Boolean) && (localaham != null) && (this.jdField_a_of_type_Long == localaham.a.f)) {
+        agye.a(agzo.p(this.this$0));
       }
     }
   }

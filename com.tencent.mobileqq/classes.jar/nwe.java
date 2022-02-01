@@ -1,77 +1,72 @@
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONObject;
 
 public class nwe
-  implements INetInfoHandler
+  extends Handler
 {
-  private nwe(VideoCoverAdapter paramVideoCoverAdapter) {}
+  public nwe(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onNetMobile2None()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
-    }
-    VideoCoverAdapter.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
+    switch (paramMessage.what)
     {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
+    default: 
+      return;
+    case 3: 
+      this.a.S();
+      return;
+    case 1: 
+      if (this.a.c)
       {
-        this.a.c();
-        this.a.d();
+        AccountDetailActivity.e(this.a);
+        this.a.M();
       }
-      VideoCoverAdapter.a(this.a, true);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
-    {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
+      for (;;)
       {
-        this.a.c();
-        this.a.d();
+        this.a.c(this.a.getIntent());
+        return;
+        AccountDetailActivity.e(this.a);
       }
-      VideoCoverAdapter.a(this.a, true);
+    case 2: 
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
+      return;
+    case 4: 
+      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      paramMessage.putExtra("BSafeReportPost", true);
+      try
+      {
+        if (this.a.a != null) {
+          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
+        }
+        paramMessage.putExtra("hide_more_buttonbutton", true);
+        paramMessage.putExtra("ishiderefresh", true);
+        paramMessage.putExtra("ishidebackforward", true);
+        this.a.startActivity(paramMessage.putExtra("url", "https://jubao.mp.qq.com/mobile/reportAccount"));
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+        }
+      }
     }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
-    }
-    VideoCoverAdapter.a(this.a);
+    paramMessage = new AlphaAnimation(1.0F, 0.0F);
+    paramMessage.setDuration(500L);
+    this.a.d.startAnimation(paramMessage);
+    this.a.d.setVisibility(8);
   }
 }
 

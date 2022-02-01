@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajyw
-  implements DialogInterface.OnClickListener
+public class ajyw
+  implements View.OnClickListener
 {
-  ajyw(ajyt paramajyt) {}
+  public ajyw(LingHbFragment paramLingHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
-      ajyt.c(this.a);
-    }
-    while (paramInt != 0) {
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (String str = "yyhongbao.word.change";; str = "klhongbao.word.change")
+    {
+      this.a.addUploadData(str, "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    ajyt.a(this.a);
   }
 }
 

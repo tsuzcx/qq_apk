@@ -1,6 +1,22 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+
 public class qwz
-  extends qvp
-{}
+  implements Animation.AnimationListener
+{
+  public qwz(ComponentSocialOperation paramComponentSocialOperation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.startAnimation(this.a.c);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,19 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class waa
-  implements Animation.AnimationListener
+public class waa
+  extends DataSetObserver
 {
-  waa(vzy paramvzy) {}
+  waa(vzt paramvzt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onChanged()
   {
-    vzy.b(this.a);
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

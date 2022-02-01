@@ -86,8 +86,8 @@ public class InnerFrameManager
         if (getDisplayedChild() >= paramInt) {
           break label135;
         }
-        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772048);
-        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772049);
+        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772050);
+        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772051);
       }
     }
     for (;;)
@@ -100,11 +100,11 @@ public class InnerFrameManager
       ((InnerFrame)getChildAt(paramInt)).a();
       return;
       label135:
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772044);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772045);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772046);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772047);
       continue;
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772100);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772100);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772106);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772106);
     }
   }
   

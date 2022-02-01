@@ -1,10 +1,10 @@
-import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface fy
+public abstract class fy
 {
-  public abstract void a(ETTextView paramETTextView);
+  public abstract void a(ChatMessage paramChatMessage, int paramInt);
   
-  public abstract void a(ETTextView paramETTextView, CharSequence paramCharSequence);
+  public abstract void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt);
 }
 
 

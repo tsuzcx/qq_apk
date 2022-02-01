@@ -1,25 +1,20 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import mqq.os.MqqHandler;
 
 class sbl
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  sbl(sbi paramsbi) {}
+  sbl(sbk paramsbk, String paramString) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((sbi.a(this.a) != null) && (sbi.a(this.a).getStatus() == 1) && ((sbi.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)sbi.a(this.a).getCurrDrawable();
-      sbi.a(this.a, paramURLDrawable.getBitmap());
-    }
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Sbk, sab.a(this.jdField_a_of_type_Sbk.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
   }
 }
 

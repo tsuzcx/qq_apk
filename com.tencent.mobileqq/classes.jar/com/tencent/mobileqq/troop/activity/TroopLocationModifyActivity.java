@@ -37,8 +37,9 @@ public class TroopLocationModifyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -63,7 +64,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131719030, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131719315, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -74,20 +75,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131719035, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131719320, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131719042);
+      str = getString(2131719327);
     }
     for (;;)
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131719029);
+        str = getString(2131719314);
       } else {
-        str = getString(2131719034);
+        str = getString(2131719319);
       }
     }
   }

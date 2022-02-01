@@ -1,21 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import android.os.IInterface;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
 
-public class qyq
+public abstract interface qyq
+  extends IInterface
 {
-  public int a;
-  public long a;
-  public UrlJumpInfo a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public abstract int a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public abstract RIJRewardTask a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(RIJRewardTask paramRIJRewardTask);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt, qyt paramqyt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract RIJRewardTask b();
+  
+  public abstract void b(RIJRewardTask paramRIJRewardTask);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 

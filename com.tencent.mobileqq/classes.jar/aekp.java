@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aekp
-  implements DialogInterface.OnClickListener
+  extends lmt
 {
-  public aekp(DialogActivity paramDialogActivity) {}
+  public aekp(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onMeetingCancel(int paramInt, long paramLong)
   {
-    this.a.finish();
+    this.a.c();
+  }
+  
+  protected void onMeetingReady(int paramInt, long paramLong)
+  {
+    this.a.c();
+  }
+  
+  protected void onMemberInfo(int paramInt, long paramLong1, long paramLong2)
+  {
+    this.a.c();
   }
 }
 

@@ -1,43 +1,38 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class avtg
+  implements BusinessObserver
 {
-  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public void a(boolean paramBoolean) {}
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
+  public void a(boolean paramBoolean, avuk paramavuk) {}
   
-  public HotPicTagInfo a(int paramInt)
-  {
-    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public List<HotPicTagInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
+  public void b(boolean paramBoolean) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-  }
+  public void b(boolean paramBoolean, Object paramObject) {}
   
-  public void a(HotPicTagInfo paramHotPicTagInfo)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
-  }
-  
-  public HotPicTagInfo b(int paramInt)
-  {
-    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      a(paramBoolean, (avuk)paramObject);
+      return;
+    }
+    b(paramBoolean);
   }
 }
 

@@ -1,845 +1,767 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.ims.safecheckPB.ReportItem;
-import com.tencent.ims.safecheckPB.ReqMQScanRequest;
-import com.tencent.ims.safecheckPB.RspMQScanReport;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mqpsdk.secsrv.MQPAPPScanService.1;
+import android.os.Bundle;
+import android.util.Pair;
+import java.io.File;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class bjjc
 {
-  public static int a;
-  private static boolean jdField_a_of_type_Boolean;
-  private bjja jdField_a_of_type_Bjja;
+  private int jdField_a_of_type_Int = 1;
+  private List<bjjd> jdField_a_of_type_JavaUtilList;
   
-  public bjjc(bjja parambjja)
+  public bjjc()
   {
-    this.jdField_a_of_type_Bjja = parambjja;
-  }
-  
-  /* Error */
-  private void b(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: getstatic 25	bjjc:jdField_a_of_type_Boolean	Z
-    //   8: ifne -4 -> 4
-    //   11: iconst_1
-    //   12: putstatic 25	bjjc:jdField_a_of_type_Boolean	Z
-    //   15: new 27	com/tencent/ims/safecheckPB$ReqMQScanRequest
-    //   18: dup
-    //   19: invokespecial 28	com/tencent/ims/safecheckPB$ReqMQScanRequest:<init>	()V
-    //   22: astore 4
-    //   24: new 30	com/tencent/ims/safecheckPB$RspMQScanReport
-    //   27: dup
-    //   28: invokespecial 31	com/tencent/ims/safecheckPB$RspMQScanReport:<init>	()V
-    //   31: astore 5
-    //   33: aload 4
-    //   35: aload_1
-    //   36: invokevirtual 35	com/tencent/ims/safecheckPB$ReqMQScanRequest:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   39: pop
-    //   40: aload 4
-    //   42: getfield 39	com/tencent/ims/safecheckPB$ReqMQScanRequest:uint32_check_condition	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   45: invokevirtual 45	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   48: ifeq +539 -> 587
-    //   51: aload 4
-    //   53: getfield 39	com/tencent/ims/safecheckPB$ReqMQScanRequest:uint32_check_condition	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   56: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   59: istore_2
-    //   60: aload_0
-    //   61: iload_2
-    //   62: invokevirtual 52	bjjc:a	(I)Z
-    //   65: ifne +59 -> 124
-    //   68: aload_0
-    //   69: monitorenter
-    //   70: getstatic 54	bjjc:jdField_a_of_type_Int	I
-    //   73: iconst_1
-    //   74: isub
-    //   75: putstatic 54	bjjc:jdField_a_of_type_Int	I
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: iconst_0
-    //   81: putstatic 25	bjjc:jdField_a_of_type_Boolean	Z
-    //   84: return
-    //   85: astore_1
-    //   86: iconst_0
-    //   87: putstatic 25	bjjc:jdField_a_of_type_Boolean	Z
-    //   90: aload_1
-    //   91: invokevirtual 57	java/lang/Exception:printStackTrace	()V
-    //   94: aload_0
-    //   95: iload_2
-    //   96: invokevirtual 52	bjjc:a	(I)Z
-    //   99: ifne +184 -> 283
-    //   102: aload_0
-    //   103: monitorenter
-    //   104: getstatic 54	bjjc:jdField_a_of_type_Int	I
-    //   107: iconst_1
-    //   108: isub
-    //   109: putstatic 54	bjjc:jdField_a_of_type_Int	I
-    //   112: aload_0
-    //   113: monitorexit
-    //   114: iconst_0
-    //   115: putstatic 25	bjjc:jdField_a_of_type_Boolean	Z
-    //   118: return
-    //   119: astore_1
-    //   120: aload_0
-    //   121: monitorexit
-    //   122: aload_1
-    //   123: athrow
-    //   124: aload 4
-    //   126: getfield 60	com/tencent/ims/safecheckPB$ReqMQScanRequest:uint32_check_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   129: invokevirtual 45	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   132: ifeq +450 -> 582
-    //   135: aload 4
-    //   137: getfield 60	com/tencent/ims/safecheckPB$ReqMQScanRequest:uint32_check_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   140: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   143: istore_3
-    //   144: aload 5
-    //   146: getfield 63	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_uid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   149: aload 4
-    //   151: getfield 64	com/tencent/ims/safecheckPB$ReqMQScanRequest:uint32_check_uid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   154: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   157: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   160: aload 5
-    //   162: getfield 71	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   165: iconst_0
-    //   166: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   169: iload_3
-    //   170: tableswitch	default:+422 -> 592, 1001:+42->212, 1002:+53->223, 1003:+422->592, 1004:+75->245, 1005:+86->256, 1006:+97->267, 1007:+64->234
-    //   213: aload 4
-    //   215: aload 5
-    //   217: invokevirtual 74	bjjc:a	(Lcom/tencent/ims/safecheckPB$ReqMQScanRequest;Lcom/tencent/ims/safecheckPB$RspMQScanReport;)V
-    //   220: goto -126 -> 94
-    //   223: aload_0
-    //   224: aload 4
-    //   226: aload 5
-    //   228: invokevirtual 76	bjjc:b	(Lcom/tencent/ims/safecheckPB$ReqMQScanRequest;Lcom/tencent/ims/safecheckPB$RspMQScanReport;)V
-    //   231: goto -137 -> 94
-    //   234: aload_0
-    //   235: aload 4
-    //   237: aload 5
-    //   239: invokevirtual 79	bjjc:c	(Lcom/tencent/ims/safecheckPB$ReqMQScanRequest;Lcom/tencent/ims/safecheckPB$RspMQScanReport;)V
-    //   242: goto -148 -> 94
-    //   245: aload_0
-    //   246: aload 4
-    //   248: aload 5
-    //   250: invokevirtual 82	bjjc:e	(Lcom/tencent/ims/safecheckPB$ReqMQScanRequest;Lcom/tencent/ims/safecheckPB$RspMQScanReport;)V
-    //   253: goto -159 -> 94
-    //   256: aload_0
-    //   257: aload 4
-    //   259: aload 5
-    //   261: invokevirtual 85	bjjc:f	(Lcom/tencent/ims/safecheckPB$ReqMQScanRequest;Lcom/tencent/ims/safecheckPB$RspMQScanReport;)V
-    //   264: goto -170 -> 94
-    //   267: aload_0
-    //   268: aload 4
-    //   270: aload 5
-    //   272: invokevirtual 88	bjjc:d	(Lcom/tencent/ims/safecheckPB$ReqMQScanRequest;Lcom/tencent/ims/safecheckPB$RspMQScanReport;)V
-    //   275: goto -181 -> 94
-    //   278: astore_1
-    //   279: aload_0
-    //   280: monitorexit
-    //   281: aload_1
-    //   282: athrow
-    //   283: iconst_0
-    //   284: istore_2
-    //   285: new 30	com/tencent/ims/safecheckPB$RspMQScanReport
-    //   288: dup
-    //   289: invokespecial 31	com/tencent/ims/safecheckPB$RspMQScanReport:<init>	()V
-    //   292: astore_1
-    //   293: aload 5
-    //   295: getfield 71	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   298: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   301: bipush 48
-    //   303: if_icmple +197 -> 500
-    //   306: aload_1
-    //   307: getfield 71	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   310: bipush 48
-    //   312: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   315: aload_1
-    //   316: getfield 63	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_uid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   319: aload 5
-    //   321: getfield 63	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_uid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   324: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   327: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   330: new 90	java/util/ArrayList
-    //   333: dup
-    //   334: invokespecial 91	java/util/ArrayList:<init>	()V
-    //   337: astore 4
-    //   339: iconst_0
-    //   340: istore_3
-    //   341: iload_3
-    //   342: bipush 48
-    //   344: if_icmpge +36 -> 380
-    //   347: aload 4
-    //   349: aload 5
-    //   351: getfield 95	com/tencent/ims/safecheckPB$RspMQScanReport:rpt_check_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   354: iconst_0
-    //   355: invokevirtual 100	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   358: invokeinterface 106 2 0
-    //   363: pop
-    //   364: aload 5
-    //   366: getfield 95	com/tencent/ims/safecheckPB$RspMQScanReport:rpt_check_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   369: iconst_0
-    //   370: invokevirtual 109	com/tencent/mobileqq/pb/PBRepeatMessageField:remove	(I)V
-    //   373: iload_3
-    //   374: iconst_1
-    //   375: iadd
-    //   376: istore_3
-    //   377: goto -36 -> 341
-    //   380: aload_1
-    //   381: getfield 95	com/tencent/ims/safecheckPB$RspMQScanReport:rpt_check_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   384: aload 4
-    //   386: invokevirtual 112	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
-    //   389: aload 5
-    //   391: getfield 71	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   394: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   397: istore_3
-    //   398: aload 5
-    //   400: getfield 71	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   403: iload_3
-    //   404: bipush 48
-    //   406: isub
-    //   407: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   410: aload_0
-    //   411: getfield 15	bjjc:jdField_a_of_type_Bjja	Lbjja;
-    //   414: ifnull -410 -> 4
-    //   417: aload_0
-    //   418: getfield 15	bjjc:jdField_a_of_type_Bjja	Lbjja;
-    //   421: getfield 117	bjja:jdField_a_of_type_Bjix	Lbjix;
-    //   424: astore 6
-    //   426: aload 6
-    //   428: ifnull -424 -> 4
-    //   431: aload_1
-    //   432: invokevirtual 121	com/tencent/ims/safecheckPB$RspMQScanReport:toByteArray	()[B
-    //   435: astore 4
-    //   437: aload 6
-    //   439: ldc 123
-    //   441: invokeinterface 129 2 0
-    //   446: astore 7
-    //   448: aload 4
-    //   450: astore_1
-    //   451: aload 7
-    //   453: ifnull +13 -> 466
-    //   456: aload 7
-    //   458: aload 4
-    //   460: invokeinterface 135 2 0
-    //   465: astore_1
-    //   466: aload 6
-    //   468: aload_1
-    //   469: invokeinterface 139 2 0
-    //   474: pop
-    //   475: iload_2
-    //   476: istore_3
-    //   477: iload_3
-    //   478: istore_2
-    //   479: iload_3
-    //   480: ifeq -195 -> 285
-    //   483: aload_0
-    //   484: monitorenter
-    //   485: getstatic 54	bjjc:jdField_a_of_type_Int	I
-    //   488: iconst_1
-    //   489: isub
-    //   490: putstatic 54	bjjc:jdField_a_of_type_Int	I
-    //   493: aload_0
-    //   494: monitorexit
-    //   495: iconst_0
-    //   496: putstatic 25	bjjc:jdField_a_of_type_Boolean	Z
-    //   499: return
-    //   500: aload_0
-    //   501: getfield 15	bjjc:jdField_a_of_type_Bjja	Lbjja;
-    //   504: ifnull -500 -> 4
-    //   507: aload_0
-    //   508: getfield 15	bjjc:jdField_a_of_type_Bjja	Lbjja;
-    //   511: getfield 117	bjja:jdField_a_of_type_Bjix	Lbjix;
-    //   514: astore 6
-    //   516: aload 6
-    //   518: ifnull -514 -> 4
-    //   521: aload 5
-    //   523: invokevirtual 121	com/tencent/ims/safecheckPB$RspMQScanReport:toByteArray	()[B
-    //   526: astore 4
-    //   528: aload 6
-    //   530: ldc 123
-    //   532: invokeinterface 129 2 0
-    //   537: astore 7
-    //   539: aload 4
-    //   541: astore_1
-    //   542: aload 7
-    //   544: ifnull +13 -> 557
-    //   547: aload 7
-    //   549: aload 4
-    //   551: invokeinterface 135 2 0
-    //   556: astore_1
-    //   557: aload 6
-    //   559: aload_1
-    //   560: invokeinterface 139 2 0
-    //   565: pop
-    //   566: iconst_1
-    //   567: istore_3
-    //   568: goto -91 -> 477
-    //   571: astore_1
-    //   572: aload_0
-    //   573: monitorexit
-    //   574: aload_1
-    //   575: athrow
-    //   576: astore_1
-    //   577: iconst_0
-    //   578: istore_2
-    //   579: goto -493 -> 86
-    //   582: iconst_0
-    //   583: istore_3
-    //   584: goto -440 -> 144
-    //   587: iconst_0
-    //   588: istore_2
-    //   589: goto -529 -> 60
-    //   592: goto -498 -> 94
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	595	0	this	bjjc
-    //   0	595	1	paramArrayOfByte	byte[]
-    //   59	530	2	i	int
-    //   143	441	3	j	int
-    //   22	528	4	localObject	Object
-    //   31	491	5	localRspMQScanReport	safecheckPB.RspMQScanReport
-    //   424	134	6	localbjix	bjix
-    //   446	102	7	localbjiy	bjiy
-    // Exception table:
-    //   from	to	target	type
-    //   60	70	85	java/lang/Exception
-    //   80	84	85	java/lang/Exception
-    //   122	124	85	java/lang/Exception
-    //   124	144	85	java/lang/Exception
-    //   144	169	85	java/lang/Exception
-    //   212	220	85	java/lang/Exception
-    //   223	231	85	java/lang/Exception
-    //   234	242	85	java/lang/Exception
-    //   245	253	85	java/lang/Exception
-    //   256	264	85	java/lang/Exception
-    //   267	275	85	java/lang/Exception
-    //   70	80	119	finally
-    //   120	122	119	finally
-    //   104	114	278	finally
-    //   279	281	278	finally
-    //   485	495	571	finally
-    //   572	574	571	finally
-    //   33	60	576	java/lang/Exception
-  }
-  
-  public void a(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)
-  {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_Bjja != null) {
-      localObject1 = this.jdField_a_of_type_Bjja.jdField_a_of_type_AndroidContentContext;
+    Pair localPair = a(a(), 1);
+    if (localPair != null)
+    {
+      this.jdField_a_of_type_Int = ((Integer)localPair.first).intValue();
+      this.jdField_a_of_type_JavaUtilList = ((List)localPair.second);
     }
-    if (localObject1 == null) {}
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    }
+  }
+  
+  private int a(Element paramElement)
+  {
     for (;;)
     {
-      return;
-      Object localObject2 = ((Context)localObject1).getPackageManager();
+      int i;
       try
       {
-        localObject2 = ((PackageManager)localObject2).getPackageInfo(((Context)localObject1).getPackageName(), 1);
-        localObject1 = SecUtil.getSign((Context)localObject1);
-        new String();
-        localObject1 = SecUtil.getSignatureHash((byte[])localObject1);
-        new String();
-        if (!paramReqMQScanRequest.string_check_target.get().equalsIgnoreCase((String)localObject1))
-        {
-          paramReqMQScanRequest = new safecheckPB.ReportItem();
-          paramReqMQScanRequest.string_target_packname.set(((PackageInfo)localObject2).packageName);
-          paramReqMQScanRequest.string_target_md5.set(SecUtil.getFileMd5(((PackageInfo)localObject2).applicationInfo.sourceDir));
-          paramRspMQScanReport.rpt_check_item.add(paramReqMQScanRequest);
-          paramRspMQScanReport.uint32_check_count.set(1);
-          return;
+        paramElement = paramElement.getAttributes();
+        if (paramElement != null) {
+          break label76;
         }
+        return 0;
       }
-      catch (PackageManager.NameNotFoundException paramReqMQScanRequest)
+      catch (Exception paramElement)
       {
-        paramReqMQScanRequest.printStackTrace();
-        return;
+        Node localNode;
+        String str;
+        paramElement.printStackTrace();
       }
-      catch (RuntimeException paramReqMQScanRequest)
+      if (i < paramElement.getLength())
       {
-        paramReqMQScanRequest.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return;
-    }
-    try
-    {
-      if (jdField_a_of_type_Int >= 1) {
-        return;
-      }
-    }
-    finally {}
-    new MQPAPPScanService.1(this, paramArrayOfByte).start();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return true;
-    }
-    int i;
-    switch (bjjh.a(this.jdField_a_of_type_Bjja.jdField_a_of_type_AndroidContentContext))
-    {
-    default: 
-      i = 0;
-    }
-    while ((i & paramInt) == 0)
-    {
-      return false;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 4;
-      continue;
-      i = 8;
-      continue;
-      i = 16;
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {}
-    while ((paramString1.length() == 0) || (paramString2.length() == 0)) {
-      return false;
-    }
-    try
-    {
-      boolean bool = Pattern.compile(paramString1, 2).matcher(paramString2).find();
-      return bool;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return false;
-  }
-  
-  public void b(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)
-  {
-    paramReqMQScanRequest = null;
-    if (this.jdField_a_of_type_Bjja != null) {
-      paramReqMQScanRequest = this.jdField_a_of_type_Bjja.jdField_a_of_type_AndroidContentContext;
-    }
-    if (paramReqMQScanRequest == null) {
-      return;
-    }
-    paramReqMQScanRequest = paramReqMQScanRequest.getPackageManager();
-    List localList = paramReqMQScanRequest.getInstalledApplications(8192);
-    int j = 0;
-    int i = 0;
-    for (;;)
-    {
-      if (j < localList.size()) {
-        try
+        localNode = paramElement.item(i);
+        str = localNode.getNodeName();
+        if ((str != null) && (str.equalsIgnoreCase("version")))
         {
-          safecheckPB.ReportItem localReportItem = new safecheckPB.ReportItem();
-          try
-          {
-            PackageInfo localPackageInfo = paramReqMQScanRequest.getPackageInfo(((ApplicationInfo)localList.get(j)).packageName, 1);
-            localReportItem.string_target_packname.set(localPackageInfo.packageName);
-            localReportItem.string_target_md5.set(SecUtil.getFileMd5(localPackageInfo.applicationInfo.sourceDir));
-            paramRspMQScanReport.rpt_check_item.add(localReportItem);
-            i += 1;
-          }
-          catch (RuntimeException localRuntimeException)
-          {
-            localRuntimeException.printStackTrace();
-            return;
-          }
-          paramRspMQScanReport.uint32_check_count.set(i);
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          localNameNotFoundException.printStackTrace();
-        }
-      } else {
-        return;
-      }
-      j += 1;
-    }
-  }
-  
-  public void c(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_Bjja != null) {
-      localObject = this.jdField_a_of_type_Bjja.jdField_a_of_type_AndroidContentContext;
-    }
-    if (localObject == null) {
-      return;
-    }
-    localObject = ((Context)localObject).getPackageManager();
-    int i;
-    label82:
-    String str;
-    do
-    {
-      try
-      {
-        localObject = ((PackageManager)localObject).getInstalledApplications(8192);
-        i = 0;
-        while (i < ((List)localObject).size())
-        {
-          if ((ApplicationInfo)((List)localObject).get(i) != null) {
-            break label82;
-          }
-          i += 1;
-        }
-        str = ((ApplicationInfo)((List)localObject).get(i)).processName;
-      }
-      catch (RuntimeException paramReqMQScanRequest)
-      {
-        paramReqMQScanRequest.printStackTrace();
-        return;
-      }
-    } while ((str == null) || (!a(paramReqMQScanRequest.string_check_target.get(), str)));
-    paramReqMQScanRequest = new safecheckPB.ReportItem();
-    paramReqMQScanRequest.string_target_packname.set(((ApplicationInfo)((List)localObject).get(i)).packageName);
-    paramReqMQScanRequest.string_target_md5.set(SecUtil.getFileMd5(((ApplicationInfo)((List)localObject).get(i)).sourceDir));
-    paramRspMQScanReport.rpt_check_item.add(paramReqMQScanRequest);
-    paramRspMQScanReport.uint32_check_count.set(1);
-  }
-  
-  /* Error */
-  public void d(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_0
-    //   4: getfield 15	bjjc:jdField_a_of_type_Bjja	Lbjja;
-    //   7: ifnull +330 -> 337
-    //   10: aload_0
-    //   11: getfield 15	bjjc:jdField_a_of_type_Bjja	Lbjja;
-    //   14: getfield 146	bjja:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   17: astore 4
-    //   19: aload 4
-    //   21: ifnonnull +4 -> 25
-    //   24: return
-    //   25: aload 4
-    //   27: invokevirtual 152	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   30: astore 5
-    //   32: aload 5
-    //   34: aload 4
-    //   36: invokevirtual 156	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   39: iconst_1
-    //   40: invokevirtual 162	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   43: astore 7
-    //   45: new 278	com/tencent/commonsdk/zip/QZipFile
-    //   48: dup
-    //   49: aload 7
-    //   51: getfield 209	android/content/pm/PackageInfo:applicationInfo	Landroid/content/pm/ApplicationInfo;
-    //   54: getfield 214	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   57: invokespecial 280	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
-    //   60: astore 5
-    //   62: aload 5
-    //   64: ldc_w 282
-    //   67: invokevirtual 286	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   70: astore 4
-    //   72: aload 4
-    //   74: ifnull +199 -> 273
-    //   77: aload 5
-    //   79: aload 4
-    //   81: invokevirtual 290	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   84: astore 4
-    //   86: sipush 8192
-    //   89: newarray byte
-    //   91: astore 6
-    //   93: ldc_w 292
-    //   96: invokestatic 298	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   99: astore 8
-    //   101: aload 4
-    //   103: aload 6
-    //   105: invokevirtual 304	java/io/InputStream:read	([B)I
-    //   108: istore_3
-    //   109: iload_3
-    //   110: ifle +63 -> 173
-    //   113: aload 8
-    //   115: aload 6
-    //   117: iconst_0
-    //   118: iload_3
-    //   119: invokevirtual 308	java/security/MessageDigest:update	([BII)V
-    //   122: goto -21 -> 101
-    //   125: astore_2
-    //   126: aload 4
-    //   128: astore_1
-    //   129: aload_2
-    //   130: invokevirtual 222	android/content/pm/PackageManager$NameNotFoundException:printStackTrace	()V
-    //   133: aload_1
-    //   134: ifnull +7 -> 141
-    //   137: aload_1
-    //   138: invokevirtual 311	java/io/InputStream:close	()V
-    //   141: aload 5
-    //   143: ifnull -119 -> 24
-    //   146: aload 5
-    //   148: invokevirtual 312	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   151: return
-    //   152: astore_1
-    //   153: aload_1
-    //   154: invokevirtual 313	java/lang/Throwable:printStackTrace	()V
-    //   157: return
-    //   158: astore_1
-    //   159: aload_1
-    //   160: invokevirtual 223	java/lang/RuntimeException:printStackTrace	()V
-    //   163: return
-    //   164: astore_2
-    //   165: aconst_null
-    //   166: astore 5
-    //   168: aconst_null
-    //   169: astore_1
-    //   170: goto -41 -> 129
-    //   173: aload 8
-    //   175: invokevirtual 316	java/security/MessageDigest:digest	()[B
-    //   178: invokestatic 319	com/tencent/mobileqq/utils/SecUtil:toHexString	([B)Ljava/lang/String;
-    //   181: astore 8
-    //   183: new 170	java/lang/String
-    //   186: dup
-    //   187: invokespecial 171	java/lang/String:<init>	()V
-    //   190: pop
-    //   191: aload 4
-    //   193: astore 6
-    //   195: aload_1
-    //   196: getfield 179	com/tencent/ims/safecheckPB$ReqMQScanRequest:string_check_target	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   199: invokevirtual 183	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   202: aload 8
-    //   204: invokevirtual 187	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   207: ifne +66 -> 273
-    //   210: aload_2
-    //   211: getfield 63	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_uid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   214: aload_1
-    //   215: getfield 64	com/tencent/ims/safecheckPB$ReqMQScanRequest:uint32_check_uid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   218: invokevirtual 49	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   221: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   224: aload_2
-    //   225: getfield 71	com/tencent/ims/safecheckPB$RspMQScanReport:uint32_check_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   228: iconst_1
-    //   229: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   232: new 189	com/tencent/ims/safecheckPB$ReportItem
-    //   235: dup
-    //   236: invokespecial 190	com/tencent/ims/safecheckPB$ReportItem:<init>	()V
-    //   239: astore_1
-    //   240: aload_1
-    //   241: getfield 193	com/tencent/ims/safecheckPB$ReportItem:string_target_packname	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   244: aload 7
-    //   246: getfield 199	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
-    //   249: invokevirtual 202	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   252: aload_1
-    //   253: getfield 205	com/tencent/ims/safecheckPB$ReportItem:string_target_md5	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   256: aload 8
-    //   258: invokevirtual 202	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   261: aload_2
-    //   262: getfield 95	com/tencent/ims/safecheckPB$RspMQScanReport:rpt_check_item	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   265: aload_1
-    //   266: invokevirtual 221	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   269: aload 4
-    //   271: astore 6
-    //   273: aload 6
-    //   275: astore_1
-    //   276: goto -143 -> 133
-    //   279: astore_2
-    //   280: aconst_null
-    //   281: astore 5
-    //   283: aconst_null
-    //   284: astore_1
-    //   285: aload_2
-    //   286: invokevirtual 320	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   289: goto -156 -> 133
-    //   292: astore_2
-    //   293: aconst_null
-    //   294: astore 5
-    //   296: aconst_null
-    //   297: astore_1
-    //   298: aload_2
-    //   299: invokevirtual 321	java/io/IOException:printStackTrace	()V
-    //   302: goto -169 -> 133
-    //   305: astore_2
-    //   306: aconst_null
-    //   307: astore_1
-    //   308: goto -10 -> 298
-    //   311: astore_2
-    //   312: aload 4
-    //   314: astore_1
-    //   315: goto -17 -> 298
-    //   318: astore_2
-    //   319: aconst_null
-    //   320: astore_1
-    //   321: goto -36 -> 285
-    //   324: astore_2
-    //   325: aload 4
-    //   327: astore_1
-    //   328: goto -43 -> 285
-    //   331: astore_2
-    //   332: aconst_null
-    //   333: astore_1
-    //   334: goto -205 -> 129
-    //   337: aconst_null
-    //   338: astore 4
-    //   340: goto -321 -> 19
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	343	0	this	bjjc
-    //   0	343	1	paramReqMQScanRequest	safecheckPB.ReqMQScanRequest
-    //   0	343	2	paramRspMQScanReport	safecheckPB.RspMQScanReport
-    //   108	11	3	i	int
-    //   17	322	4	localObject1	Object
-    //   30	265	5	localObject2	Object
-    //   1	273	6	localObject3	Object
-    //   43	202	7	localPackageInfo	PackageInfo
-    //   99	158	8	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   86	101	125	android/content/pm/PackageManager$NameNotFoundException
-    //   101	109	125	android/content/pm/PackageManager$NameNotFoundException
-    //   113	122	125	android/content/pm/PackageManager$NameNotFoundException
-    //   173	191	125	android/content/pm/PackageManager$NameNotFoundException
-    //   195	269	125	android/content/pm/PackageManager$NameNotFoundException
-    //   137	141	152	java/lang/Throwable
-    //   146	151	152	java/lang/Throwable
-    //   32	45	158	java/lang/RuntimeException
-    //   32	45	164	android/content/pm/PackageManager$NameNotFoundException
-    //   45	62	164	android/content/pm/PackageManager$NameNotFoundException
-    //   159	163	164	android/content/pm/PackageManager$NameNotFoundException
-    //   32	45	279	java/security/NoSuchAlgorithmException
-    //   45	62	279	java/security/NoSuchAlgorithmException
-    //   159	163	279	java/security/NoSuchAlgorithmException
-    //   32	45	292	java/io/IOException
-    //   45	62	292	java/io/IOException
-    //   159	163	292	java/io/IOException
-    //   62	72	305	java/io/IOException
-    //   77	86	305	java/io/IOException
-    //   86	101	311	java/io/IOException
-    //   101	109	311	java/io/IOException
-    //   113	122	311	java/io/IOException
-    //   173	191	311	java/io/IOException
-    //   195	269	311	java/io/IOException
-    //   62	72	318	java/security/NoSuchAlgorithmException
-    //   77	86	318	java/security/NoSuchAlgorithmException
-    //   86	101	324	java/security/NoSuchAlgorithmException
-    //   101	109	324	java/security/NoSuchAlgorithmException
-    //   113	122	324	java/security/NoSuchAlgorithmException
-    //   173	191	324	java/security/NoSuchAlgorithmException
-    //   195	269	324	java/security/NoSuchAlgorithmException
-    //   62	72	331	android/content/pm/PackageManager$NameNotFoundException
-    //   77	86	331	android/content/pm/PackageManager$NameNotFoundException
-  }
-  
-  public void e(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_Bjja != null) {}
-    for (Object localObject1 = this.jdField_a_of_type_Bjja.jdField_a_of_type_AndroidContentContext;; localObject1 = null)
-    {
-      if (localObject1 == null) {}
-      for (;;)
-      {
-        return;
-        Object localObject2 = (ActivityManager)((Context)localObject1).getSystemService("activity");
-        localObject1 = ((Context)localObject1).getPackageManager();
-        localObject2 = ((ActivityManager)localObject2).getRunningAppProcesses();
-        while (i < ((List)localObject2).size())
-        {
-          if (a(paramReqMQScanRequest.string_check_target.get(), ((ActivityManager.RunningAppProcessInfo)((List)localObject2).get(i)).processName)) {
-            try
-            {
-              paramReqMQScanRequest = ((PackageManager)localObject1).getPackageInfo(((ActivityManager.RunningAppProcessInfo)localObject2.get(i)).pkgList[0], 1);
-              localObject1 = new safecheckPB.ReportItem();
-              ((safecheckPB.ReportItem)localObject1).string_target_packname.set(paramReqMQScanRequest.packageName);
-              ((safecheckPB.ReportItem)localObject1).string_target_md5.set(SecUtil.getFileMd5(paramReqMQScanRequest.applicationInfo.sourceDir));
-              paramRspMQScanReport.rpt_check_item.add((MessageMicro)localObject1);
-              paramRspMQScanReport.uint32_check_count.set(1);
-              return;
-            }
-            catch (PackageManager.NameNotFoundException paramReqMQScanRequest)
-            {
-              paramReqMQScanRequest.printStackTrace();
-              return;
-            }
-            catch (RuntimeException paramReqMQScanRequest)
-            {
-              paramReqMQScanRequest.printStackTrace();
-              return;
-            }
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public void f(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)
-  {
-    int i = 0;
-    Object localObject;
-    int j;
-    if (this.jdField_a_of_type_Bjja != null)
-    {
-      paramReqMQScanRequest = this.jdField_a_of_type_Bjja.jdField_a_of_type_AndroidContentContext;
-      if (paramReqMQScanRequest == null) {
-        return;
-      }
-      localObject = (ActivityManager)paramReqMQScanRequest.getSystemService("activity");
-      paramReqMQScanRequest = paramReqMQScanRequest.getPackageManager();
-      localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-      j = 0;
-    }
-    for (;;)
-    {
-      if (j < ((List)localObject).size())
-      {
-        try
-        {
-          safecheckPB.ReportItem localReportItem = new safecheckPB.ReportItem();
-          try
-          {
-            PackageInfo localPackageInfo = paramReqMQScanRequest.getPackageInfo(((ActivityManager.RunningAppProcessInfo)localObject.get(j)).pkgList[0], 1);
-            localReportItem.string_target_packname.set(localPackageInfo.packageName);
-            localReportItem.string_target_md5.set(SecUtil.getFileMd5(localPackageInfo.applicationInfo.sourceDir));
-            paramRspMQScanReport.rpt_check_item.add(localReportItem);
-            i += 1;
-          }
-          catch (RuntimeException localRuntimeException)
-          {
-            localRuntimeException.printStackTrace();
-            return;
-          }
-          paramRspMQScanReport.uint32_check_count.set(i);
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          localNameNotFoundException.printStackTrace();
+          i = Integer.parseInt(localNode.getNodeValue());
+          return i;
         }
       }
       else
       {
-        return;
-        paramReqMQScanRequest = null;
-        break;
+        return 0;
+        label76:
+        i = 0;
+        continue;
       }
-      j += 1;
+      i += 1;
     }
+  }
+  
+  private Bundle a(Node paramNode)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Bundle localBundle = new Bundle();
+        NodeList localNodeList = paramNode.getChildNodes();
+        int j = localNodeList.getLength();
+        i = 0;
+        paramNode = localBundle;
+        if (i < j)
+        {
+          paramNode = localNodeList.item(i);
+          if (paramNode.getNodeType() != 1) {
+            break label166;
+          }
+          Object localObject = paramNode.getAttributes();
+          if (localObject == null) {
+            break label166;
+          }
+          paramNode = ((NamedNodeMap)localObject).getNamedItem("name");
+          if ((paramNode == null) || (paramNode.getNodeType() != 2)) {
+            break label166;
+          }
+          paramNode = paramNode.getNodeValue();
+          if (paramNode == null) {
+            break label166;
+          }
+          localObject = ((NamedNodeMap)localObject).getNamedItem("value");
+          if ((localObject == null) || (((Node)localObject).getNodeType() != 2)) {
+            break label166;
+          }
+          localObject = ((Node)localObject).getNodeValue();
+          if (localObject == null) {
+            break label166;
+          }
+          localBundle.putString(paramNode, (String)localObject);
+        }
+      }
+      catch (Exception paramNode)
+      {
+        paramNode.printStackTrace();
+        paramNode = null;
+      }
+      return paramNode;
+      label166:
+      i += 1;
+    }
+  }
+  
+  private Pair<Integer, List<bjjd>> a(String paramString, int paramInt)
+  {
+    Object localObject = null;
+    byte[] arrayOfByte = new bjjx().a(paramString, null, 1);
+    paramString = localObject;
+    if (arrayOfByte != null) {
+      paramString = a(arrayOfByte, paramInt);
+    }
+    return paramString;
+  }
+  
+  /* Error */
+  private Pair<Integer, List<bjjd>> a(byte[] paramArrayOfByte, int paramInt)
+  {
+    // Byte code:
+    //   0: invokestatic 132	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   3: astore 5
+    //   5: aload 5
+    //   7: invokevirtual 136	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   10: astore 6
+    //   12: new 138	java/io/ByteArrayInputStream
+    //   15: dup
+    //   16: aload_1
+    //   17: invokespecial 141	java/io/ByteArrayInputStream:<init>	([B)V
+    //   20: astore 5
+    //   22: aload 5
+    //   24: astore_1
+    //   25: aload 6
+    //   27: aload 5
+    //   29: invokevirtual 147	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   32: invokeinterface 153 1 0
+    //   37: astore 7
+    //   39: aload 5
+    //   41: astore_1
+    //   42: aload_0
+    //   43: aload 7
+    //   45: invokespecial 155	bjjc:a	(Lorg/w3c/dom/Element;)I
+    //   48: istore_3
+    //   49: iload_3
+    //   50: ifeq +8 -> 58
+    //   53: iload_3
+    //   54: iload_2
+    //   55: if_icmple +46 -> 101
+    //   58: aload 5
+    //   60: astore_1
+    //   61: new 22	android/util/Pair
+    //   64: dup
+    //   65: iload_3
+    //   66: invokestatic 159	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   69: aconst_null
+    //   70: invokespecial 162	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   73: astore 6
+    //   75: aload 6
+    //   77: astore_1
+    //   78: aload 5
+    //   80: ifnull +11 -> 91
+    //   83: aload 5
+    //   85: invokevirtual 165	java/io/ByteArrayInputStream:close	()V
+    //   88: aload 6
+    //   90: astore_1
+    //   91: aload_1
+    //   92: areturn
+    //   93: astore_1
+    //   94: aload_1
+    //   95: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   98: aload 6
+    //   100: areturn
+    //   101: aload 5
+    //   103: astore_1
+    //   104: new 41	java/util/LinkedList
+    //   107: dup
+    //   108: invokespecial 42	java/util/LinkedList:<init>	()V
+    //   111: astore 6
+    //   113: aload 5
+    //   115: astore_1
+    //   116: aload 7
+    //   118: invokeinterface 167 1 0
+    //   123: astore 7
+    //   125: aload 5
+    //   127: astore_1
+    //   128: aload 7
+    //   130: invokeinterface 95 1 0
+    //   135: istore 4
+    //   137: iconst_0
+    //   138: istore_2
+    //   139: iload_2
+    //   140: iload 4
+    //   142: if_icmpge +117 -> 259
+    //   145: aload 5
+    //   147: astore_1
+    //   148: aload 7
+    //   150: iload_2
+    //   151: invokeinterface 96 2 0
+    //   156: astore 8
+    //   158: aload 5
+    //   160: astore_1
+    //   161: aload 8
+    //   163: invokeinterface 100 1 0
+    //   168: iconst_1
+    //   169: if_icmpeq +6 -> 175
+    //   172: goto +173 -> 345
+    //   175: aload 5
+    //   177: astore_1
+    //   178: aload 8
+    //   180: invokeinterface 66 1 0
+    //   185: astore 9
+    //   187: aload 9
+    //   189: ifnull +156 -> 345
+    //   192: aload 5
+    //   194: astore_1
+    //   195: aload 9
+    //   197: ldc 169
+    //   199: invokevirtual 74	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   202: ifeq +143 -> 345
+    //   205: aload 5
+    //   207: astore_1
+    //   208: aload_0
+    //   209: aload 8
+    //   211: invokespecial 172	bjjc:a	(Lorg/w3c/dom/Node;)Lbjjd;
+    //   214: astore 8
+    //   216: aload 8
+    //   218: ifnull +127 -> 345
+    //   221: aload 5
+    //   223: astore_1
+    //   224: aload 6
+    //   226: aload 8
+    //   228: invokeinterface 176 2 0
+    //   233: pop
+    //   234: goto +111 -> 345
+    //   237: astore 6
+    //   239: aload 5
+    //   241: astore_1
+    //   242: aload 6
+    //   244: invokevirtual 84	java/lang/Exception:printStackTrace	()V
+    //   247: aload 5
+    //   249: ifnull +8 -> 257
+    //   252: aload 5
+    //   254: invokevirtual 165	java/io/ByteArrayInputStream:close	()V
+    //   257: aconst_null
+    //   258: areturn
+    //   259: aload 5
+    //   261: astore_1
+    //   262: new 22	android/util/Pair
+    //   265: dup
+    //   266: iload_3
+    //   267: invokestatic 159	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   270: aload 6
+    //   272: invokespecial 162	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   275: astore 6
+    //   277: aload 6
+    //   279: astore_1
+    //   280: aload 5
+    //   282: ifnull -191 -> 91
+    //   285: aload 5
+    //   287: invokevirtual 165	java/io/ByteArrayInputStream:close	()V
+    //   290: aload 6
+    //   292: areturn
+    //   293: astore_1
+    //   294: aload_1
+    //   295: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   298: aload 6
+    //   300: areturn
+    //   301: astore_1
+    //   302: aload_1
+    //   303: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   306: goto -49 -> 257
+    //   309: astore 5
+    //   311: aconst_null
+    //   312: astore_1
+    //   313: aload_1
+    //   314: ifnull +7 -> 321
+    //   317: aload_1
+    //   318: invokevirtual 165	java/io/ByteArrayInputStream:close	()V
+    //   321: aload 5
+    //   323: athrow
+    //   324: astore_1
+    //   325: aload_1
+    //   326: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   329: goto -8 -> 321
+    //   332: astore 5
+    //   334: goto -21 -> 313
+    //   337: astore 6
+    //   339: aconst_null
+    //   340: astore 5
+    //   342: goto -103 -> 239
+    //   345: iload_2
+    //   346: iconst_1
+    //   347: iadd
+    //   348: istore_2
+    //   349: goto -210 -> 139
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	352	0	this	bjjc
+    //   0	352	1	paramArrayOfByte	byte[]
+    //   0	352	2	paramInt	int
+    //   48	219	3	i	int
+    //   135	8	4	j	int
+    //   3	283	5	localObject1	Object
+    //   309	13	5	localObject2	Object
+    //   332	1	5	localObject3	Object
+    //   340	1	5	localObject4	Object
+    //   10	215	6	localObject5	Object
+    //   237	34	6	localException1	Exception
+    //   275	24	6	localPair	Pair
+    //   337	1	6	localException2	Exception
+    //   37	112	7	localObject6	Object
+    //   156	71	8	localObject7	Object
+    //   185	11	9	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   83	88	93	java/io/IOException
+    //   25	39	237	java/lang/Exception
+    //   42	49	237	java/lang/Exception
+    //   61	75	237	java/lang/Exception
+    //   104	113	237	java/lang/Exception
+    //   116	125	237	java/lang/Exception
+    //   128	137	237	java/lang/Exception
+    //   148	158	237	java/lang/Exception
+    //   161	172	237	java/lang/Exception
+    //   178	187	237	java/lang/Exception
+    //   195	205	237	java/lang/Exception
+    //   208	216	237	java/lang/Exception
+    //   224	234	237	java/lang/Exception
+    //   262	277	237	java/lang/Exception
+    //   285	290	293	java/io/IOException
+    //   252	257	301	java/io/IOException
+    //   5	22	309	finally
+    //   317	321	324	java/io/IOException
+    //   25	39	332	finally
+    //   42	49	332	finally
+    //   61	75	332	finally
+    //   104	113	332	finally
+    //   116	125	332	finally
+    //   128	137	332	finally
+    //   148	158	332	finally
+    //   161	172	332	finally
+    //   178	187	332	finally
+    //   195	205	332	finally
+    //   208	216	332	finally
+    //   224	234	332	finally
+    //   242	247	332	finally
+    //   262	277	332	finally
+    //   5	22	337	java/lang/Exception
+  }
+  
+  private bjjd a(Node paramNode)
+  {
+    int k = 0;
+    do
+    {
+      for (;;)
+      {
+        int j;
+        int i;
+        try
+        {
+          NamedNodeMap localNamedNodeMap = paramNode.getAttributes();
+          if (localNamedNodeMap == null) {
+            return null;
+          }
+          localbjjd = new bjjd();
+          int m = localNamedNodeMap.getLength();
+          j = 0;
+          if (j >= m) {
+            break;
+          }
+          Object localObject = localNamedNodeMap.item(j);
+          if (((Node)localObject).getNodeType() != 2)
+          {
+            i = k;
+          }
+          else
+          {
+            String str = ((Node)localObject).getNodeName();
+            localObject = ((Node)localObject).getNodeValue();
+            i = k;
+            if (str != null)
+            {
+              i = k;
+              if (localObject != null) {
+                if (str.equalsIgnoreCase("id"))
+                {
+                  localbjjd.jdField_a_of_type_Int = Integer.parseInt((String)localObject);
+                  i = k + 1;
+                }
+                else if (str.equalsIgnoreCase("type"))
+                {
+                  localbjjd.jdField_b_of_type_Int = Integer.parseInt((String)localObject);
+                  i = k + 1;
+                }
+                else if (str.equalsIgnoreCase("flags"))
+                {
+                  localbjjd.c = Integer.parseInt((String)localObject);
+                  i = k + 1;
+                }
+                else if (str.equalsIgnoreCase("path"))
+                {
+                  localbjjd.jdField_b_of_type_JavaLangString = ((String)localObject);
+                  i = k + 1;
+                }
+                else
+                {
+                  i = k;
+                  if (str.equalsIgnoreCase("ver"))
+                  {
+                    localbjjd.jdField_a_of_type_JavaLangString = ((String)localObject);
+                    i = k + 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        catch (Exception paramNode)
+        {
+          bjjd localbjjd;
+          paramNode.printStackTrace();
+          return null;
+        }
+        localbjjd.jdField_a_of_type_AndroidOsBundle = a(paramNode);
+        return localbjjd;
+        j += 1;
+        k = i;
+      }
+    } while (k == 5);
+    return null;
+  }
+  
+  private String a()
+  {
+    return bjhi.a() + File.separator + "QSec.dat";
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return b(paramInt) != null;
+  }
+  
+  private boolean a(String paramString, int paramInt, List<bjjd> paramList)
+  {
+    paramList = a(paramInt, paramList);
+    if (paramList == null) {
+      return false;
+    }
+    return new bjjx().a(paramString, paramList, null, 1);
+  }
+  
+  /* Error */
+  private byte[] a(int paramInt, List<bjjd> paramList)
+  {
+    // Byte code:
+    //   0: invokestatic 245	android/util/Xml:newSerializer	()Lorg/xmlpull/v1/XmlSerializer;
+    //   3: astore 5
+    //   5: new 247	java/io/ByteArrayOutputStream
+    //   8: dup
+    //   9: invokespecial 248	java/io/ByteArrayOutputStream:<init>	()V
+    //   12: astore 4
+    //   14: aload 4
+    //   16: astore_3
+    //   17: aload 5
+    //   19: aload 4
+    //   21: ldc 250
+    //   23: invokeinterface 256 3 0
+    //   28: aload 4
+    //   30: astore_3
+    //   31: aload 5
+    //   33: aconst_null
+    //   34: iconst_1
+    //   35: invokestatic 261	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   38: invokeinterface 265 3 0
+    //   43: aload 4
+    //   45: astore_3
+    //   46: aload 5
+    //   48: aconst_null
+    //   49: ldc_w 267
+    //   52: invokeinterface 271 3 0
+    //   57: pop
+    //   58: aload 4
+    //   60: astore_3
+    //   61: aload 5
+    //   63: aconst_null
+    //   64: ldc 68
+    //   66: iload_1
+    //   67: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   70: invokeinterface 278 4 0
+    //   75: pop
+    //   76: aload 4
+    //   78: astore_3
+    //   79: aload_2
+    //   80: invokeinterface 282 1 0
+    //   85: astore_2
+    //   86: aload 4
+    //   88: astore_3
+    //   89: aload_2
+    //   90: invokeinterface 288 1 0
+    //   95: ifeq +178 -> 273
+    //   98: aload 4
+    //   100: astore_3
+    //   101: aload_2
+    //   102: invokeinterface 292 1 0
+    //   107: checkcast 179	bjjd
+    //   110: astore 6
+    //   112: aload 4
+    //   114: astore_3
+    //   115: aload 5
+    //   117: aconst_null
+    //   118: ldc 169
+    //   120: invokeinterface 271 3 0
+    //   125: pop
+    //   126: aload 4
+    //   128: astore_3
+    //   129: aload 5
+    //   131: aconst_null
+    //   132: ldc 182
+    //   134: aload 6
+    //   136: getfield 183	bjjd:jdField_a_of_type_Int	I
+    //   139: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   142: invokeinterface 278 4 0
+    //   147: pop
+    //   148: aload 4
+    //   150: astore_3
+    //   151: aload 5
+    //   153: aconst_null
+    //   154: ldc 185
+    //   156: aload 6
+    //   158: getfield 188	bjjd:jdField_b_of_type_Int	I
+    //   161: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   164: invokeinterface 278 4 0
+    //   169: pop
+    //   170: aload 4
+    //   172: astore_3
+    //   173: aload 5
+    //   175: aconst_null
+    //   176: ldc 190
+    //   178: aload 6
+    //   180: getfield 193	bjjd:c	I
+    //   183: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   186: invokeinterface 278 4 0
+    //   191: pop
+    //   192: aload 4
+    //   194: astore_3
+    //   195: aload 5
+    //   197: aconst_null
+    //   198: ldc 200
+    //   200: aload 6
+    //   202: getfield 202	bjjd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   205: invokeinterface 278 4 0
+    //   210: pop
+    //   211: aload 4
+    //   213: astore_3
+    //   214: aload 5
+    //   216: aconst_null
+    //   217: ldc 195
+    //   219: aload 6
+    //   221: getfield 198	bjjd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   224: invokeinterface 278 4 0
+    //   229: pop
+    //   230: aload 4
+    //   232: astore_3
+    //   233: aload 5
+    //   235: aconst_null
+    //   236: ldc 169
+    //   238: invokeinterface 295 3 0
+    //   243: pop
+    //   244: goto -158 -> 86
+    //   247: astore_3
+    //   248: aload 4
+    //   250: astore_2
+    //   251: aload_3
+    //   252: astore 4
+    //   254: aload_2
+    //   255: astore_3
+    //   256: aload 4
+    //   258: invokevirtual 84	java/lang/Exception:printStackTrace	()V
+    //   261: aload_2
+    //   262: ifnull +7 -> 269
+    //   265: aload_2
+    //   266: invokevirtual 296	java/io/ByteArrayOutputStream:close	()V
+    //   269: aconst_null
+    //   270: astore_3
+    //   271: aload_3
+    //   272: areturn
+    //   273: aload 4
+    //   275: astore_3
+    //   276: aload 5
+    //   278: aconst_null
+    //   279: ldc_w 267
+    //   282: invokeinterface 295 3 0
+    //   287: pop
+    //   288: aload 4
+    //   290: astore_3
+    //   291: aload 5
+    //   293: invokeinterface 299 1 0
+    //   298: aload 4
+    //   300: astore_3
+    //   301: aload 4
+    //   303: invokevirtual 303	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   306: astore_2
+    //   307: aload_2
+    //   308: astore_3
+    //   309: aload 4
+    //   311: ifnull -40 -> 271
+    //   314: aload 4
+    //   316: invokevirtual 296	java/io/ByteArrayOutputStream:close	()V
+    //   319: aload_2
+    //   320: areturn
+    //   321: astore_3
+    //   322: aload_3
+    //   323: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   326: aload_2
+    //   327: areturn
+    //   328: astore_2
+    //   329: aload_2
+    //   330: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   333: goto -64 -> 269
+    //   336: astore_2
+    //   337: aconst_null
+    //   338: astore_3
+    //   339: aload_3
+    //   340: ifnull +7 -> 347
+    //   343: aload_3
+    //   344: invokevirtual 296	java/io/ByteArrayOutputStream:close	()V
+    //   347: aload_2
+    //   348: athrow
+    //   349: astore_3
+    //   350: aload_3
+    //   351: invokevirtual 166	java/io/IOException:printStackTrace	()V
+    //   354: goto -7 -> 347
+    //   357: astore_2
+    //   358: goto -19 -> 339
+    //   361: astore 4
+    //   363: aconst_null
+    //   364: astore_2
+    //   365: goto -111 -> 254
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	368	0	this	bjjc
+    //   0	368	1	paramInt	int
+    //   0	368	2	paramList	List<bjjd>
+    //   16	217	3	localObject1	Object
+    //   247	5	3	localException1	Exception
+    //   255	54	3	localObject2	Object
+    //   321	2	3	localIOException1	java.io.IOException
+    //   338	6	3	localObject3	Object
+    //   349	2	3	localIOException2	java.io.IOException
+    //   12	303	4	localObject4	Object
+    //   361	1	4	localException2	Exception
+    //   3	289	5	localXmlSerializer	org.xmlpull.v1.XmlSerializer
+    //   110	110	6	localbjjd	bjjd
+    // Exception table:
+    //   from	to	target	type
+    //   17	28	247	java/lang/Exception
+    //   31	43	247	java/lang/Exception
+    //   46	58	247	java/lang/Exception
+    //   61	76	247	java/lang/Exception
+    //   79	86	247	java/lang/Exception
+    //   89	98	247	java/lang/Exception
+    //   101	112	247	java/lang/Exception
+    //   115	126	247	java/lang/Exception
+    //   129	148	247	java/lang/Exception
+    //   151	170	247	java/lang/Exception
+    //   173	192	247	java/lang/Exception
+    //   195	211	247	java/lang/Exception
+    //   214	230	247	java/lang/Exception
+    //   233	244	247	java/lang/Exception
+    //   276	288	247	java/lang/Exception
+    //   291	298	247	java/lang/Exception
+    //   301	307	247	java/lang/Exception
+    //   314	319	321	java/io/IOException
+    //   265	269	328	java/io/IOException
+    //   0	14	336	finally
+    //   343	347	349	java/io/IOException
+    //   17	28	357	finally
+    //   31	43	357	finally
+    //   46	58	357	finally
+    //   61	76	357	finally
+    //   79	86	357	finally
+    //   89	98	357	finally
+    //   101	112	357	finally
+    //   115	126	357	finally
+    //   129	148	357	finally
+    //   151	170	357	finally
+    //   173	192	357	finally
+    //   195	211	357	finally
+    //   214	230	357	finally
+    //   233	244	357	finally
+    //   256	261	357	finally
+    //   276	288	357	finally
+    //   291	298	357	finally
+    //   301	307	357	finally
+    //   0	14	361	java/lang/Exception
+  }
+  
+  private bjjd b(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      bjjd localbjjd = (bjjd)localIterator.next();
+      if (localbjjd.jdField_a_of_type_Int == paramInt) {
+        return localbjjd;
+      }
+    }
+    return null;
+  }
+  
+  public bjjd a(int paramInt)
+  {
+    return b(paramInt);
+  }
+  
+  public List<bjjd> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    bjjd localbjjd = b(paramInt);
+    if (localbjjd == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilList.remove(localbjjd);
+    } while (!paramBoolean);
+    a(a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public boolean a()
+  {
+    return a(a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public boolean a(bjjd parambjjd, boolean paramBoolean)
+  {
+    if (a(parambjjd.jdField_a_of_type_Int)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(parambjjd);
+    if (paramBoolean) {
+      return a();
+    }
+    return true;
   }
 }
 

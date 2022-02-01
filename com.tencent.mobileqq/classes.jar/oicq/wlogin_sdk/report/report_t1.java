@@ -13,7 +13,7 @@ public class report_t1
   public String _app_sig = new String("");
   public String _app_v = new String("");
   public String _btime = util.get_release_time();
-  public String _bver = "6.0.0.2435";
+  public String _bver = "6.0.0.2436";
   public String _device = new String("");
   public String _disp_name = new String("");
   public String _ksid = new String("");

@@ -1,31 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ExpandableListView;
-
 class atjo
-  implements zvl
 {
-  atjo(atjm paramatjm, int paramInt) {}
+  public int a;
+  private long a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
+  private long d;
+  
+  private atjo()
+  {
+    this.jdField_a_of_type_Int = 1;
+  }
   
   public void a()
   {
-    String str = (String)this.jdField_a_of_type_Atjm.getGroup(this.jdField_a_of_type_Int);
-    if (atjm.a(this.jdField_a_of_type_Atjm).c(this.jdField_a_of_type_Int))
-    {
-      QQAppInterface.f(str + anzj.a(2131708505));
-      return;
-    }
-    QQAppInterface.f(str + anzj.a(2131708485));
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = System.currentTimeMillis();
   }
   
-  public void b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.d = (System.currentTimeMillis() - this.c);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjo
  * JD-Core Version:    0.7.0.1
  */

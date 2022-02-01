@@ -1,88 +1,91 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
 
 public class nvt
-  extends Handler
+  extends nui
 {
-  public nvt(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Looper paramLooper)
+  public nvt(Context paramContext, ArrayList<obr> paramArrayList, nts paramnts, String paramString1, String paramString2)
   {
-    super(paramLooper);
+    super(paramContext, paramArrayList, paramnts, paramString1, paramString2);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, obq paramobq, int paramInt, nts paramnts, String paramString1, String paramString2)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    paramobq = a(paramobq, paramInt);
+    if (paramobq.isEmpty())
     {
+      paramContext = paramView;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("AccountDetailWindowViewWrapper", 2, "createView return convertView!");
+        paramContext = paramView;
+      }
     }
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            int i;
-            do
-            {
-              do
-              {
-                return;
-                i = paramMessage.arg1;
-              } while (PublicAccountAdvertisementActivity.a(this.a) == null);
-              PublicAccountAdvertisementActivity.a(this.a).a(i);
-              if ((i > 0) && (i < 100))
-              {
-                PublicAccountAdvertisementActivity.a(this.a).c(true);
-                return;
-              }
-            } while (i != 100);
-            PublicAccountAdvertisementActivity.a(this.a).c(false);
-            return;
-            switch (paramMessage.arg1)
-            {
-            case 201: 
-            case 202: 
-            case 203: 
-            default: 
-              this.a.a(2131689546);
-              return;
-            case -24: 
-              this.a.b(this.a.getString(2131689544));
-              return;
-            }
-            this.a.a(2131689547);
-            return;
-            this.a.b(this.a.getString(2131689545));
-            return;
-          } while (PublicAccountAdvertisementActivity.a(this.a) == null);
-          VideoCoverFragment localVideoCoverFragment = PublicAccountAdvertisementActivity.a(this.a);
-          if (paramMessage.arg1 == 1) {}
-          for (;;)
-          {
-            localVideoCoverFragment.c(bool);
-            return;
-            bool = false;
-          }
-        } while (!this.a.isResume());
-        paramMessage = this.a.getSupportFragmentManager().beginTransaction();
-        PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
-        PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.add(2131381326, PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.commit();
-      } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
-      paramMessage = this.a.findViewById(2131371834);
-    } while (paramMessage == null);
-    paramMessage.setVisibility(0);
+      return paramContext;
+      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
+        break;
+      }
+      paramView = (LinearLayout)paramView;
+      Object localObject = paramView.getTag();
+      if ((localObject == null) || (!(localObject instanceof nvt)) || (!((nvt)localObject).a(paramobq))) {
+        break;
+      }
+      paramContext = paramView;
+    } while (!QLog.isDevelopLevel());
+    QLog.d("AccountDetailWindowViewWrapper", 2, "createView reuse!");
+    return paramView;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailWindowViewWrapper", 2, "createView new create!");
+    }
+    paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131558410, paramViewGroup, false);
+    paramView.setPadding(0, AIOUtils.dp2px(20.0F, paramViewGroup.getResources()), 0, 0);
+    paramContext = new nvt(paramContext, paramobq, paramnts, paramString1, paramString2);
+    paramView.setTag(paramContext);
+    paramContext.a(paramView);
+    return paramView;
+  }
+  
+  @TargetApi(9)
+  private void a(LinearLayout paramLinearLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailWindowViewWrapper", 2, "buildView!");
+    }
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = AIOUtils.dp2px(140.0F, (Resources)localObject);
+    int j = AIOUtils.dp2px(10.0F, (Resources)localObject);
+    if (Build.VERSION.SDK_INT >= 9) {
+      ((HorizontalScrollView)paramLinearLayout.findViewById(2131381130)).setOverScrollMode(2);
+    }
+    localObject = (GridView)paramLinearLayout.findViewById(2131381121);
+    ((GridView)localObject).setClickable(true);
+    ((GridView)localObject).setColumnWidth(i);
+    ((GridView)localObject).setStretchMode(0);
+    ((GridView)localObject).setHorizontalSpacing(j);
+    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    ((GridView)localObject).setLayoutParams(new LinearLayout.LayoutParams((i + j) * k - j, -2));
+    ((GridView)localObject).setNumColumns(k);
+    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
+    if (Build.VERSION.SDK_INT >= 9) {
+      ((GridView)localObject).setOverScrollMode(2);
+    }
+    ((GridView)localObject).setAdapter(new nvu(this));
+    paramLinearLayout.setClickable(false);
+    paramLinearLayout.setOnClickListener(null);
   }
 }
 

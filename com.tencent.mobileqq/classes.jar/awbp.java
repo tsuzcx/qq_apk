@@ -1,57 +1,103 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-class awbp
-  implements awbn
+public class awbp
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  awbp(awbo paramawbo) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public List<RecommendPerson> a;
+  public List<awbq> b;
   
-  public void a(DownloaderTask paramDownloaderTask)
+  public awbp(awbo paramawbo, View paramView, int paramInt)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
-    if (awbo.a(this.a) != null) {
-      awbo.a(this.a).deleteTask(paramDownloaderTask, false);
+    super(paramView);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramawbo.a.get(Integer.valueOf(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379898));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376643));
+      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramView.hasNext())
+      {
+        Object localObject = (RecommendPerson)paramView.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        }
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562932, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131376644);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131369410);
+        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131379899);
+        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131379900);
+        Button localButton = (Button)((View)localObject).findViewById(2131364000);
+        a(AIOUtils.dp2px(85.0F, awbo.a(paramawbo).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
+        awbq localawbq = new awbq(this);
+        localawbq.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+        localawbq.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localawbq.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+        localawbq.b = localTextView2;
+        localawbq.jdField_a_of_type_AndroidWidgetButton = localButton;
+        this.b.add(localawbq);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+      }
     }
-    if ((awbo.a(this.a) != null) && (awbo.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (awbo.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((awbm)awbo.a(this.a).get(paramDownloaderTask.getUrl())).a();
+  }
+  
+  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
+  {
+    if (paramInt2 > 1)
+    {
+      int i = ViewUtils.getScreenWidth();
+      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
+      localLayoutParams.leftMargin = paramInt2;
+      localLayoutParams.rightMargin = paramInt2;
+      paramRelativeLayout.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
+      }
     }
-    awbo.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public void b(DownloaderTask paramDownloaderTask)
+  public void onClick(View paramView)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void c(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
-    if (awbo.a(this.a) != null) {
-      awbo.a(this.a).deleteTask(paramDownloaderTask, false);
+    switch (paramView.getId())
+    {
     }
-    if ((awbo.a(this.a) != null) && (awbo.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (awbo.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((awbm)awbo.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
-    }
-    awbo.a(this.a, paramDownloaderTask.getUrl());
-  }
-  
-  public void d(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void e(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
-    if ((awbo.a(this.a) != null) && (awbo.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (awbo.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((awbm)awbo.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (awbo.a(this.jdField_a_of_type_Awbo) != null)
+      {
+        awbo.a(this.jdField_a_of_type_Awbo).a((RecyclerView.ViewHolder)paramView.getTag(2131376644), (RecommendPerson)paramView.getTag(2131364000));
+        continue;
+        if (awbo.a(this.jdField_a_of_type_Awbo) != null) {
+          awbo.a(this.jdField_a_of_type_Awbo).b((RecyclerView.ViewHolder)paramView.getTag(2131376644), (RecommendPerson)paramView.getTag(2131364000));
+        }
+      }
     }
   }
 }

@@ -1,24 +1,11 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.qphone.base.util.QLog;
-
-public class asge
-  implements asgb
+class asge
+  implements bhnm
 {
-  public asge(CameraEmoSingleSend paramCameraEmoSingleSend) {}
+  asge(asgc paramasgc) {}
   
-  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onAddEmoFinish, result:", Integer.valueOf(paramInt), " emoId:", Integer.valueOf(paramCameraEmotionData.emoId), " originalId:", Integer.valueOf(CameraEmoSingleSend.a(this.a).emoId) });
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      CameraEmoSingleSend.a(this.a, bool, paramInt);
-      this.a.a(String.valueOf(paramInt), 2);
-      return;
-      bool = false;
-    }
+    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, asgc.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

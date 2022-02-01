@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arzs
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public arzs(DataReportViewer paramDataReportViewer) {}
+  public arzs(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    QfileLocalFilePicTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

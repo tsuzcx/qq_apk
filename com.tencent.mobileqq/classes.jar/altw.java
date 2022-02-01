@@ -1,43 +1,27 @@
-import android.animation.Animator;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class altw
-  extends also
+  implements Observer
 {
-  public altw(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public altw(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
-    this.a.m();
-    if (!this.a.jdField_f_of_type_Boolean) {
-      this.a.e(false);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
-    }
-    this.a.e.setVisibility(0);
-    this.a.jdField_f_of_type_AndroidViewView.setBackgroundColor(this.a.getResources().getColor(2131165649));
-    this.a.c = true;
-    if (this.a.jdField_a_of_type_Aluk != null) {
-      this.a.jdField_a_of_type_Aluk.b();
-    }
-    if (this.a.jdField_f_of_type_Boolean)
+    if ((paramObject != null) && ((paramObject instanceof Bundle)))
     {
-      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.b.setLongClickable(false);
+      paramObservable = (Bundle)paramObject;
+      long l1 = paramObservable.getLong("START_TIME_KEY");
+      long l2 = paramObservable.getLong("END_TIME_KEY");
+      paramObject = paramObservable.getString("MESSAGE");
+      int i = paramObservable.getInt("FROM");
+      int j = paramObservable.getInt("TO");
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+      }
     }
   }
 }

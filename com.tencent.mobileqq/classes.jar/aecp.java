@@ -1,32 +1,31 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class aecp
-  implements DialogInterface.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public aecp(ChatHistory paramChatHistory) {}
+  public aecp(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (bhnv.d(BaseApplication.getContext()))
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.h();
-      bdll.b(this.a.app, "CliOper", "", "", "AIO", "AIO_chatlog_lately", 0, 0, "", "", "", "");
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
+    }
+    else {
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131691989));
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,17 +1,12 @@
-public class wru
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class wru
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  wru(wrt paramwrt) {}
   
-  public wru(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,147 +1,49 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.data.MessageForTroopGift;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.util.Observable;
+import java.util.Observer;
 
-public class agsg
+public abstract class agsg
+  extends aezf
+  implements Observer
 {
-  private static agsg jdField_a_of_type_Agsg;
-  private SparseArray<agsf> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public ViewGroup a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  private QQAppInterface a;
+  public MessageForTroopGift a;
+  public BubbleImageView a;
+  public ViewGroup b;
+  public Button b;
+  public TextView b;
+  public View c;
+  public ViewGroup c;
+  public Button c;
+  public View d;
+  public Button d;
+  public Button e;
   
-  private agsf a(long paramLong, boolean paramBoolean)
+  public agsg(QQAppInterface paramQQAppInterface)
   {
-    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
-    while (i >= 0)
-    {
-      agsf localagsf = (agsf)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localagsf != null) && (localagsf.a(paramLong, paramBoolean))) {
-        return localagsf;
-      }
-      i -= 1;
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static agsg a()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (jdField_a_of_type_Agsg == null) {}
-    try
-    {
-      if (jdField_a_of_type_Agsg == null) {
-        jdField_a_of_type_Agsg = new agsg();
-      }
-      return jdField_a_of_type_Agsg;
+    paramObservable = (beyt)paramObject;
+    if ((paramObservable.a.equals(bfcv.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
+      this.d.post(new TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1(this, paramObservable));
     }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
-    }
-    agsf localagsf = (agsf)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localagsf != null) {
-      localagsf.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
-  {
-    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
-        }
-      }
-    }
-    if (paramInt1 == 1) {}
-    for (paramList = new agsm();; paramList = new agsh())
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
-      return;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
-    }
-    agsf localagsf = a(paramLong, false);
-    if ((localagsf != null) && (localagsf.a(paramQQAppInterface, paramLong))) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localagsf.a);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    agsf localagsf = (agsf)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localagsf != null) {
-      localagsf.a(paramQQAppInterface, paramLong);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      agsf localagsf = a(paramMessageRecord.uniseq, true);
-      if (localagsf != null) {
-        localagsf.a(paramQQAppInterface, paramMessageRecord);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
-  {
-    if (paramList != null) {
-      try
-      {
-        if (paramList.size() > 0)
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext()) {
-            a(paramQQAppInterface, (MessageRecord)paramList.next());
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
-  {
-    try
-    {
-      ((agsf)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
-      return;
-    }
-    finally {}
   }
 }
 

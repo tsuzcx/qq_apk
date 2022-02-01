@@ -1,101 +1,94 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-class rsj
-  extends odq
+public abstract class rsj<T>
+  implements sdr
 {
-  private rsj(rsg paramrsg) {}
+  protected abstract String a();
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected abstract List<T> a();
+  
+  public List<sds> a(int paramInt, boolean paramBoolean)
   {
-    int m = 0;
-    Object localObject1;
-    if (paramBoolean)
+    ArrayList localArrayList = new ArrayList();
+    if (paramInt >= 0)
     {
-      localObject1 = paramBundle.getString("VALUE_REQUEST_VIDEO_ARTICLE_ID");
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(rsg.a(this.a).g))) {
-        break label42;
+      List localList = a();
+      int i = paramInt;
+      if (b()) {
+        i = paramInt - 1;
       }
+      a(i, paramBoolean, localList, localArrayList);
+      b(i, paramBoolean, localList, localArrayList);
     }
-    for (;;)
+    return localArrayList;
+  }
+  
+  protected abstract sdj a();
+  
+  protected abstract sds a(T paramT);
+  
+  protected void a(int paramInt, boolean paramBoolean, List<T> paramList, List<sds> paramList1)
+  {
+    int j = paramInt + 1;
+    int i = 0;
+    int k = 0;
+    paramList1.size();
+    if (j < paramList.size())
     {
-      return;
-      label42:
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      if ((paramBundle != null) && (paramBundle.size() != 0))
+      int m = Math.min(sfm.a().a(a(), paramInt) + paramInt, paramList.size() - 1);
+      paramInt = k;
+      for (;;)
       {
-        Object localObject2 = paramBundle.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (VideoInfo)((Iterator)localObject2).next();
-          ((VideoInfo)localObject3).j = true;
-          ((VideoInfo)localObject3).t = ((String)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.pubaccount.video.feeds.VideoFeedsRecommendManager", 2, "动态插入视频 title = " + ((VideoInfo)localObject3).jdField_c_of_type_JavaLangString + ", rowkey = " + ((VideoInfo)localObject3).g);
-          }
+        i = paramInt;
+        if (j > m) {
+          break;
         }
-        localObject2 = new ArrayList();
-        Object localObject3 = new ArrayList();
-        int i = 0;
-        int j = -1;
-        if (i < rsg.a(this.a).size())
-        {
-          int k;
-          if (j == -1) {
-            if (((VideoInfo)rsg.a(this.a).get(i)).a() == null) {
-              k = j;
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            j = k;
-            break;
-            k = j;
-            if (((VideoInfo)rsg.a(this.a).get(i)).a().equals(rsg.a(this.a).a()))
-            {
-              k = i;
-              continue;
-              k = j;
-              if (((VideoInfo)rsg.a(this.a).get(i)).jdField_c_of_type_Boolean)
-              {
-                ((ArrayList)localObject2).add(Integer.valueOf(i));
-                ((ArrayList)localObject3).add(rsg.a(this.a).get(i));
-                k = j;
-              }
-            }
-          }
-        }
-        if ((!rsg.a(this.a).c()) && (((String)localObject1).equals(rsg.a(this.a).g)))
-        {
-          localObject1 = rsg.b(this.a).iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((rsi)((Iterator)localObject1).next()).c();
-          }
-          i = ((ArrayList)localObject2).size() - 1;
-          while (i >= 0)
-          {
-            rsg.a(this.a).remove(((Integer)((ArrayList)localObject2).get(i)).intValue());
-            rsg.a(this.a).notifyItemRemoved(((Integer)((ArrayList)localObject2).get(i)).intValue());
-            i -= 1;
-          }
-          rsg.a(this.a).addAll(j + 1, paramBundle);
-          rsg.a(this.a).notifyItemRangeInserted(j + 1, paramBundle.size());
-          i = m;
-          while (i < ((ArrayList)localObject2).size())
-          {
-            rsg.a(this.a).add(((Integer)((ArrayList)localObject2).get(i)).intValue(), ((ArrayList)localObject3).get(i));
-            rsg.a(this.a).notifyItemInserted(((Integer)((ArrayList)localObject2).get(i)).intValue());
-            i += 1;
-          }
-        }
+        paramList1.add(a(paramList.get(j)));
+        j += 1;
+        paramInt += 1;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to forward = " + i);
+    }
+  }
+  
+  public boolean a()
+  {
+    return sfm.a().a(a());
+  }
+  
+  protected void b(int paramInt, boolean paramBoolean, List<T> paramList, List<sds> paramList1)
+  {
+    int i = 0;
+    int k = 0;
+    int j = paramInt - 1;
+    paramList1.size();
+    if (j >= 0)
+    {
+      int m = Math.max(paramInt - sfm.a().a(), 0);
+      paramInt = k;
+      for (;;)
+      {
+        i = paramInt;
+        if (j < m) {
+          break;
+        }
+        paramList1.add(a(paramList.get(j)));
+        j -= 1;
+        paramInt += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to backward = " + i);
+    }
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
 }
 

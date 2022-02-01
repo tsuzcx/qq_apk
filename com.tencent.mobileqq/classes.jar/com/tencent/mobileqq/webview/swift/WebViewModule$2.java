@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bios;
-import biru;
+import bguy;
+import bgxw;
 
 public class WebViewModule$2
   implements Runnable
 {
-  public WebViewModule$2(bios parambios) {}
+  public WebViewModule$2(bguy parambguy) {}
   
   public void run()
   {
-    biru.a(this.this$0.a());
+    bgxw.a(this.this$0.a());
   }
 }
 

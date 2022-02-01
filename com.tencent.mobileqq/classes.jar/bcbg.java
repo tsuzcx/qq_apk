@@ -1,21 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfoStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopManagerProxy.Proxy;
 
-public class bcbg
-  implements View.OnClickListener
+public final class bcbg
+  implements RecentRoute.TroopManagerProxy.Proxy
 {
-  public bcbg(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
+  public TroopInfoStub getTroopInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
   {
-    Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("keyword", this.a.f);
-    this.a.setResult(2, localIntent);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
+    {
+      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(52);
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(paramString, true);
+      }
+    }
+    return null;
   }
 }
 

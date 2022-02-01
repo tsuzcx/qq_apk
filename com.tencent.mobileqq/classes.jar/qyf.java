@@ -1,40 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class qyf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJVideoRewardCoinManager$Callback;", "", "onRewardCoinWindowVisibilityChanged", "", "visiable", "", "onRewardDuplicate", "msg", "", "onRewardResult", "success", "itemIndex", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qyf
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(@NotNull String paramString);
   
-  public qyf(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
-  {
-    if (paramOutsideLinkInfo.title.has()) {
-      this.a = paramOutsideLinkInfo.title.get();
-    }
-    if (paramOutsideLinkInfo.bring_goods_url.has()) {
-      this.b = paramOutsideLinkInfo.bring_goods_url.get();
-    }
-    if (paramOutsideLinkInfo.icon_url.has()) {
-      this.c = paramOutsideLinkInfo.icon_url.get();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public articlesummary.OutsideLinkInfo a()
-  {
-    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
-    if (!TextUtils.isEmpty(this.c)) {
-      localOutsideLinkInfo.icon_url.set(this.c);
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localOutsideLinkInfo.bring_goods_url.set(this.b);
-    }
-    if (!TextUtils.isEmpty(this.a)) {
-      localOutsideLinkInfo.title.set(this.a);
-    }
-    return localOutsideLinkInfo;
-  }
+  public abstract void a(boolean paramBoolean, @NotNull String paramString, int paramInt);
 }
 
 

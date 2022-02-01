@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class urx
-  implements View.OnClickListener
+public class urx
 {
-  urx(urw paramurw) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    urw.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    if ((this.a > 0) && (this.b > 0)) {
+      return 0;
+    }
+    return 2;
   }
 }
 

@@ -1,36 +1,56 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aets
-  implements TextWatcher
+  implements View.OnTouchListener
 {
-  public aets(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public aets(VisitorsActivity paramVisitorsActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
-    }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131167070));
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      this.a.a.setText("" + (40 - i));
-      return;
-      this.a.a.setTextColor(-65536);
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+        this.a.b.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+        bcef.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
+        paramView = new Intent(this.a, LikeRankingListActivity.class);
+        this.a.startActivity(paramView);
+        this.a.d.setVisibility(8);
+        this.a.f.clearAnimation();
+        this.a.c = 0;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+      }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

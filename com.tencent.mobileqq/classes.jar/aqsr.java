@@ -1,27 +1,16 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 
-public class aqsr
-  implements aqsi
+class aqsr
+  implements DialogInterface.OnClickListener
 {
-  private QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
+  aqsr(aqsk paramaqsk) {}
   
-  public void launch(Context paramContext, ColorNote paramColorNote)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      ((aixd)localQQAppInterface.getManager(365)).a(paramContext, paramColorNote);
-    }
+    paramDialogInterface.cancel();
+    aqsk.a(this.a).c();
   }
 }
 

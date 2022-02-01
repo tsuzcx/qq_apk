@@ -1,18 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.virtual.QavVirtualMenuView;
+import com.tencent.av.VideoController;
 
 public class mrg
-  implements View.OnTouchListener
 {
-  public mrg(QavVirtualMenuView paramQavVirtualMenuView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a()
   {
-    EffectSettingUi.a(QavVirtualMenuView.a(this.a), -1051L);
-    return false;
+    mrd.a("0X800A3D9", VideoController.a().a().d);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    int i = VideoController.a().a().d;
+    if (paramBoolean) {
+      mrd.a("0X800A3DA", i);
+    }
   }
 }
 

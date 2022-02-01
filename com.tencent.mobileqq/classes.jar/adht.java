@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class adht
-  extends adic
+  implements Comparator<RecentUser>
 {
-  public int a()
-  {
-    return super.a() + 7;
-  }
+  public adht(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2, parambfoy);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (8 == paramElem.common_elem.uint32_service_type.get());
+    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adht
  * JD-Core Version:    0.7.0.1
  */

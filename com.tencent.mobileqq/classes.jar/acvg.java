@@ -1,40 +1,30 @@
-import com.tencent.ad.tangram.Ad;
-import com.tencent.gdtad.statistics.GdtReporter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acvg
+final class acvg
+  implements DialogInterface.OnClickListener
 {
-  public static void a(acvh paramacvh)
+  acvg(acxb paramacxb, int paramInt, acxa paramacxa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramacvh == null) || (!paramacvh.a()))
+    if (this.jdField_a_of_type_Acxb.a)
     {
-      acvc.d("GdtActionReporter", "report error");
-      return;
-    }
-    Object localObject1 = paramacvh.jdField_a_of_type_ComTencentAdTangramAd.getUrlForAction();
-    try
-    {
-      Object localObject2 = ((String)localObject1).replace("__TRACE_ID__", URLEncoder.encode(paramacvh.jdField_a_of_type_ComTencentAdTangramAd.getTraceId(), "utf-8")).replace("__PAGE_ACTION_ID__", String.valueOf(paramacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.get()));
-      localObject1 = localObject2;
-      if (paramacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.has()) {
-        localObject1 = ((String)localObject2).replace("__PAGE_TIME__", String.valueOf(paramacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.get()));
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
       }
-      localObject2 = localObject1;
-      if (paramacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.has()) {
-        localObject2 = ((String)localObject1).replace("__LANDING_ERROR_CODE__", String.valueOf(paramacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.get()));
-      }
-      paramacvh = ((String)localObject2).replace("__OS_TYPE__", String.valueOf(2)).replace("__VERSION__", URLEncoder.encode(acvf.a(), "utf-8"));
-      acvc.b("GdtActionReporter", "GdtActionReporter report url = " + paramacvh);
-      GdtReporter.doCgiReport(paramacvh);
-      return;
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
-    catch (UnsupportedEncodingException paramacvh)
+    for (;;)
     {
-      acvc.d("GdtActionReporter", "report error", paramacvh);
+      if (this.jdField_a_of_type_Acxa != null) {
+        this.jdField_a_of_type_Acxa.onCancel();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        bcef.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
     }
   }
 }

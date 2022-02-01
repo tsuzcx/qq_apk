@@ -1,77 +1,47 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbaw
-  extends bbap
+  implements View.OnClickListener
 {
-  bbaw(bbav parambbav, vtg paramvtg, int paramInt) {}
+  bbaw(bbau parambbau, baxr parambaxr) {}
   
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  public void onClick(View paramView)
   {
-    ArraySet localArraySet = new ArraySet();
-    ArrayList localArrayList = new ArrayList();
-    if ("QQCircleRedCircle".equals(paramString))
+    Object localObject;
+    if (this.jdField_a_of_type_Baxr.o == 1)
     {
-      QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle updateNumMsg");
-      if (paramList != null)
+      bcef.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
+      localObject = (amsw)bbau.a(this.jdField_a_of_type_Bbau).getManager(51);
+      if ((((amsw)localObject).b(this.jdField_a_of_type_Baxr.b)) || (((amsw)localObject).d(this.jdField_a_of_type_Baxr.b))) {
+        break label210;
+      }
+      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Baxr.b, null, 3020, 3, this.jdField_a_of_type_Baxr.c, null, null, paramView.getContext().getString(2131689550), null);
+      paramView.getContext().startActivity((Intent)localObject);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcef.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
+      break;
+      label210:
+      if (((amsw)localObject).b(this.jdField_a_of_type_Baxr.b))
       {
-        paramString = paramList.iterator();
-        while (paramString.hasNext())
-        {
-          paramList = (NumRedMsg.NumMsgBusi)paramString.next();
-          if ((paramList != null) && (paramList.str_ext.get() != null)) {
-            try
-            {
-              JSONObject localJSONObject = new JSONObject(paramList.str_ext.get());
-              localArraySet.add(localJSONObject.optString("_red_ext_uin"));
-              long l = bbav.a(this.jdField_a_of_type_Bbav);
-              if (l > 0L) {
-                try
-                {
-                  if (Long.parseLong(localJSONObject.optString("_red_ext_feed_time")) < bbav.a(this.jdField_a_of_type_Bbav))
-                  {
-                    localArrayList.add(Long.valueOf(paramList.ui64_msgid.get()));
-                    bbav.a(this.jdField_a_of_type_Bbav, 140000, (int)paramList.ui64_msgid.get(), 3);
-                  }
-                }
-                catch (Exception paramList)
-                {
-                  paramList.printStackTrace();
-                  QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle ", paramList);
-                }
-              }
-            }
-            catch (Exception paramList)
-            {
-              paramList.printStackTrace();
-              QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle ", paramList);
-            }
-          }
-        }
-        paramString = new ArrayList(localArraySet);
-        if (this.jdField_a_of_type_Vtg != null)
-        {
-          this.jdField_a_of_type_Vtg.a(paramString, this.b);
-          QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle listener returns successfully: " + paramString.size() + ", num = " + this.b);
-        }
-        if (bbav.a(this.jdField_a_of_type_Bbav) > 0L)
-        {
-          bbav.a(this.jdField_a_of_type_Bbav, 0L);
-          if (localArrayList.size() > 0)
-          {
-            paramString = this.jdField_a_of_type_Bbav.a("140000");
-            bbav.a(this.jdField_a_of_type_Bbav, paramString, 9, false, null, localArrayList, "");
-            QLog.d("RedPointLog.RedTouchManager", 1, "getPassiveRedNumQQCircle updateNumMsg updateMsgId: " + localArrayList);
-          }
-        }
+        this.jdField_a_of_type_Baxr.n = 2;
+        bbau.a(this.jdField_a_of_type_Bbau).notifyDataSetChanged();
+      }
+      else
+      {
+        this.jdField_a_of_type_Baxr.n = 1;
+        bbau.a(this.jdField_a_of_type_Bbau).notifyDataSetChanged();
       }
     }
   }

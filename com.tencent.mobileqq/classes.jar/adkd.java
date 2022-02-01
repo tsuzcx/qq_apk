@@ -1,34 +1,18 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adkd
+  extends apgj
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public adkd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public adkd(adka paramadka) {}
-  
-  public boolean a(JSONObject paramJSONObject)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    try
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
-      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
-      return true;
+      apgi localapgi = (apgi)this.a.app.getManager(112);
+      this.a.a = localapgi.a(paramString);
     }
-    catch (Exception paramJSONObject)
-    {
-      adjv.a("KingKongNativePatch", "Parse parameter error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 

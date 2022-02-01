@@ -1,8 +1,6 @@
-import android.os.Bundle;
-
-public abstract interface aydk
+public class aydk
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public static boolean a;
 }
 
 

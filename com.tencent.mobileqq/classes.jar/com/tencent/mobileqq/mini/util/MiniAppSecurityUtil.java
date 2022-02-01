@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class MiniAppSecurityUtil
 {
@@ -129,12 +130,22 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString + "_" + "kLoginMiniAppForbidToken", "");
-      return paramContext;
+      if (BaseApplicationImpl.getApplication().getRuntime().isLogin())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppSecurityUtil", 2, "getLoginMiniAppForbidToken: isLogin return empty");
+        }
+      }
+      else
+      {
+        paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString + "_" + "kLoginMiniAppForbidToken", "");
+        return paramContext;
+      }
     }
     catch (Exception paramContext)
     {
       QLog.e("MiniAppSecurityUtil", 1, "getLoginMiniAppForbidToken error: " + paramContext.getMessage());
+      return "";
     }
     return "";
   }

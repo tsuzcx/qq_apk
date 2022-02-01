@@ -1,35 +1,101 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import mqq.manager.Manager;
 
-class akmi
-  extends aocj
+public class akmi
+  implements Manager
 {
-  akmi(akmh paramakmh) {}
+  public static akmi a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public akmi()
   {
-    if (akmh.a(this.a) != null) {
-      akmh.a(this.a).a(paramString1);
+    a();
+  }
+  
+  public static akmi a()
+  {
+    if (jdField_a_of_type_Akmi == null) {}
+    try
+    {
+      if (jdField_a_of_type_Akmi == null) {
+        jdField_a_of_type_Akmi = new akmi();
+      }
+      return jdField_a_of_type_Akmi;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = bfyz.s(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
+      this.jdField_a_of_type_JavaUtilSet = localQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + localQQAppInterface.getCurrentAccountUin(), 0).getStringSet("white_list_key", null);
+    } while (!QLog.isColorLevel());
+    QLog.d("RecentPubAccManager", 2, "loadFromSp   mBlackUinList:" + this.jdField_a_of_type_JavaUtilSet + ",  Switch: " + this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Set<String> paramSet)
+  {
+    if (paramQQAppInterface == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccWhiteList: " + paramSet);
+        }
+        this.jdField_a_of_type_JavaUtilSet = paramSet;
+        paramQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putStringSet("white_list_key", paramSet).apply();
+      }
+      finally {}
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    a(paramBoolean, paramString, paramLong, null);
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccSwitch: " + paramBoolean);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    bfyz.l(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, aocg paramaocg)
+  public boolean a()
   {
-    if (akmh.a(this.a) != null) {
-      akmh.a(this.a).a(paramString);
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void b(String paramString)
+  public boolean a(String paramString)
   {
-    if (akmh.a(this.a) != null) {
-      akmh.a(this.a).a(paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
+  
+  public void onDestroy() {}
 }
 
 

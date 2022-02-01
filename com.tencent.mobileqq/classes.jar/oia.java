@@ -1,79 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class oia
-  extends pfh
+public class oia
+  implements View.OnClickListener
 {
-  oia(ohz paramohz) {}
+  public oia(MinusViewBotomView paramMinusViewBotomView, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramInt);
+    ohn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext(), "jumpPreview", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "fypbtn");
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext() instanceof ChatActivity)) {
+      ((ChatActivity)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext()).finish();
     }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ohz.a(this.a)))
-    {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-      ohz.a(this.a);
-    }
-  }
-  
-  public void as_()
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).p();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohz.a(this.a)).b(paramInt, paramList);
-    }
-  }
-  
-  public void d(int paramInt, List<oor> paramList)
-  {
-    if ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))
-    {
-      pmm localpmm = (pmm)((ReadInJoyListViewGroup)ohz.a(this.a)).a(2);
-      if (localpmm != null) {
-        localpmm.b(paramInt, paramList);
-      }
-    }
+    ohq.a(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    ohq.b(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

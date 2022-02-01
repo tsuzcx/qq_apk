@@ -1,15 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 public class alan
+  extends alap
 {
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigHandler", 2, "onReceivePreExec|" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    }
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3))) {}
-  }
+  public long a;
+  public View a;
 }
 
 

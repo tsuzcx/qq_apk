@@ -1,0 +1,25 @@
+package cooperation.qzone.webviewplugin;
+
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+
+class QZonePassivePraiseJsPlugin$2
+  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
+{
+  QZonePassivePraiseJsPlugin$2(QZonePassivePraiseJsPlugin paramQZonePassivePraiseJsPlugin, String paramString) {}
+  
+  public void giftFullScreenPlayEnd()
+  {
+    if (this.this$0.parentPlugin != null)
+    {
+      String str = "window." + this.val$playCmd + "({playAnimationFinish:1})";
+      this.this$0.parentPlugin.callJs(str);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin.2
+ * JD-Core Version:    0.7.0.1
+ */

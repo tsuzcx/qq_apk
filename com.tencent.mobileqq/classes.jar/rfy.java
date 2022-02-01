@@ -1,9 +1,18 @@
-public class rfy
-  extends pfh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+
+public final class rfy
+  implements Parcelable.Creator<TopicInfo>
 {
-  public void o()
+  public TopicInfo a(Parcel paramParcel)
   {
-    super.o();
+    return new TopicInfo(paramParcel);
+  }
+  
+  public TopicInfo[] a(int paramInt)
+  {
+    return new TopicInfo[paramInt];
   }
 }
 

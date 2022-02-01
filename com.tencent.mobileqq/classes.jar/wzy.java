@@ -1,55 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
-public class wzy
-  extends wri
+class wzy
+  extends nmd
 {
-  boolean jdField_a_of_type_Boolean = false;
+  wzy(wzx paramwzx) {}
   
-  public wzy(wzx paramwzx, boolean paramBoolean)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String a()
-  {
-    return wnu.a("StoryGroupSvc.get_hot_rank_video_list");
-  }
-  
-  public wrj a(byte[] paramArrayOfByte)
-  {
-    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
-    try
-    {
-      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
-      return new wzz(this.jdField_a_of_type_Wzx, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Wzo.l();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_Wzo.jdField_b_of_type_JavaLangString, 2, "troop story delete result, code=" + paramInt);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
-    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(wzx.a(this.jdField_a_of_type_Wzx)));
-    localReqGetGroupHotRankVideo.size.set(10);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetGroupHotRankVideo.seq.set(wzx.a(this.jdField_a_of_type_Wzx));
-      if (!TextUtils.isEmpty(wzx.b(this.jdField_a_of_type_Wzx))) {
-        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(wzx.b(this.jdField_a_of_type_Wzx)));
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = this.a.jdField_a_of_type_Wzo.a.jdField_b_of_type_JavaLangString;
+        Object localObject = new qqstory_group.RspGroupVideoDelete();
+        ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
+        this.a.jdField_a_of_type_Xnv.a(paramBundle, 0, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.a.jdField_a_of_type_Xnv.a(paramBundle, 1, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        localObject = new vuc(new ErrorMessage(), this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+        ((vuc)localObject).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+        ((vuc)localObject).d = paramBundle;
+        ((vuc)localObject).jdField_b_of_type_Boolean = false;
+        ((vuc)localObject).c = this.a.jdField_a_of_type_Wzo.b();
+        ((vuc)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+        if (((vuc)localObject).a == 0L) {
+          ((vuc)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+        }
+        Bosses.get().scheduleJobDelayed(new wzz(this, this.a.jdField_a_of_type_Wzo.jdField_b_of_type_JavaLangString, (vuc)localObject), 400);
+        return paramArrayOfByte;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_Wzo.jdField_b_of_type_JavaLangString, 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        }
       }
     }
-    return localReqGetGroupHotRankVideo.toByteArray();
+    return null;
   }
 }
 

@@ -1,29 +1,39 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class baiw
-  extends baik
+  implements IBrowserLog
 {
-  public baiw(baei parambaei, azxr paramazxr)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    super(parambaei, paramazxr);
+    if (isColorLevel()) {
+      QLog.d(paramString1, paramInt, paramString2);
+    }
   }
   
-  public String a()
+  public void e(String paramString1, int paramInt, String paramString2)
   {
-    return "VasProfileHeaderWZRYComponent";
+    if (isColorLevel()) {
+      QLog.e(paramString1, paramInt, paramString2);
+    }
   }
   
-  protected void a()
+  public void i(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileWZRYView localVasProfileWZRYView = new VasProfileWZRYView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azxr)this.b);
-      localVasProfileWZRYView.setClickListener(this);
-      localVasProfileWZRYView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileWZRYView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    if (isColorLevel()) {
+      QLog.i(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.w(paramString1, paramInt, paramString2);
     }
   }
 }

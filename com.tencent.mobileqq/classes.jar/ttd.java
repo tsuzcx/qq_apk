@@ -1,13 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData;
 
 public class ttd
-  implements ViewBase.IBuilder
+  extends tsx
 {
-  public ViewBase build(VafContext paramVafContext)
+  public int a(BaseData paramBaseData)
   {
-    return new ttc(paramVafContext);
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerBigPicItemData)) {
+      i = twh.a((ProteusBannerBigPicItemData)paramBaseData);
+    }
+    return i;
+  }
+  
+  protected stg a(View paramView, BaseData paramBaseData)
+  {
+    return new tte(this, paramView, paramBaseData, this.a);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.r == 10);
   }
 }
 

@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 import android.os.Parcel;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import ocd;
-import sbf;
-import sbg;
+import odq;
+import sid;
+import sie;
 
 public final class ReportUtil$1
   implements Runnable
@@ -34,13 +34,13 @@ public final class ReportUtil$1
       }
       long l1 = NetConnInfoCenter.getServerTime();
       long l2 = this.jdField_a_of_type_Long;
-      ocd.a(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", new sbg(localVideoInfo).i(localVideoInfo.g).n(3).i(l1 - l2).a().a(), false);
+      odq.a(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", new sie(localVideoInfo).i(localVideoInfo.g).n(3).i(l1 - l2).a().a(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class FDStatsHooker
       localStringBuilder.append(arrayOfStackTraceElement[i] + "\n");
       i += 1;
     }
-    if (QLog.isColorLevel()) {
+    if ((QLog.isColorLevel()) && (FDNative.a().a())) {
       QLog.d("FDStats", 2, new Object[] { "fdPath: ", paramString, " fd:", Integer.valueOf(paramInt), " thread:", localThread.getName(), " threadId:", Long.valueOf(localThread.getId()) });
     }
     localStringBuilder.append("thread:").append(localThread.getName()).append(" id:").append(localThread.getId()).append("\n");
@@ -102,7 +102,7 @@ public class FDStatsHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsHooker
  * JD-Core Version:    0.7.0.1
  */

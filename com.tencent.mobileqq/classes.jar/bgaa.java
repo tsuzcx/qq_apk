@@ -1,21 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
-public class bgaa
-  implements DialogInterface.OnClickListener
+abstract interface bgaa<T>
 {
-  public bgaa(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
-  }
+  public abstract T a(float paramFloat, T paramT1, T paramT2);
 }
 
 

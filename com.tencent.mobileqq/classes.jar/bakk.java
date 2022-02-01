@@ -1,45 +1,223 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.TextureView;
 import android.view.View;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmediabrowser.view.AIOBrowserScene.1;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.MainBrowserScene;
+import com.tencent.richmediabrowser.view.recyclerview.DragView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileExtendFriendSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileExtendFriendSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileExtendFriendSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "profileExtendFriendTv", "Landroid/widget/TextView;", "getProfileExtendFriendTv", "()Landroid/widget/TextView;", "setProfileExtendFriendTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bakk
-  extends RecyclerView.ViewHolder
+public class bakk
+  extends MainBrowserScene
 {
-  @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  @NotNull
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  public TextureView a;
+  private View jdField_a_of_type_AndroidViewView;
+  private bajl jdField_a_of_type_Bajl;
   
-  public bakk(@NotNull View paramView)
+  public bakk(Activity paramActivity, bajl parambajl)
   {
-    super(paramView);
-    View localView = paramView.findViewById(2131366187);
-    if (localView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
-    paramView = paramView.findViewById(2131366191);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+    super(paramActivity, parambajl);
+    this.mActivity = paramActivity;
+    this.jdField_a_of_type_Bajl = parambajl;
   }
   
-  @NotNull
-  public final TextView a()
+  public void a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AIOBrowserScene.1(this), 1000L);
+    }
   }
   
-  @NotNull
-  public final FormSwitchItem a()
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+    TextureView localTextureView;
+    if (this.jdField_a_of_type_AndroidViewTextureView != null)
+    {
+      localTextureView = this.jdField_a_of_type_AndroidViewTextureView;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localTextureView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_AndroidViewTextureView != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewTextureView.getVisibility() == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean back()
+  {
+    a(false);
+    return super.back();
+  }
+  
+  public void buildComplete()
+  {
+    super.buildComplete();
+  }
+  
+  public void buildParams(Intent paramIntent)
+  {
+    super.buildParams(paramIntent);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public void initView()
+  {
+    super.initView();
+    this.mDragView.setOriginRect(bais.a().a());
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.mContext).inflate(2131558591, null);
+    if (baiq.a()) {
+      this.jdField_a_of_type_AndroidViewTextureView = ((TextureView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365284));
+    }
+    getContentView().addView(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 19002)
+    {
+      if (paramInt2 == -1) {
+        this.mContext.setResult(-1, paramIntent);
+      }
+      this.mContext.finish();
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (paramInt1 != 19000) {
+                  break;
+                }
+              } while (paramInt2 != -1);
+              return;
+              if (paramInt1 != 19005) {
+                break;
+              }
+            } while (paramInt2 != -1);
+            paramIntent = getCurrentView();
+          } while (!(paramIntent instanceof baki));
+          ((baki)paramIntent).b();
+          return;
+        } while (paramInt1 == 103);
+        super.onActivityResult(paramInt1, paramInt2, paramIntent);
+        if ((paramInt2 != -1) || (paramInt1 != 0)) {
+          break;
+        }
+        bakd.a(this.mContext, paramIntent.getExtras());
+      } while (bais.a().a() != 9501);
+      this.mContext.finish();
+      return;
+    } while ((paramInt2 != -1) || (paramInt1 != 10001));
+    QQToast.a(this.mContext, 2131718452, 0).a();
+  }
+  
+  public void onContentMove(float paramFloat)
+  {
+    super.onContentMove(paramFloat);
+    this.jdField_a_of_type_Bajl.a(false);
+    if ((getCurrentView() instanceof baki)) {
+      ((baki)getCurrentView()).b(false);
+    }
+  }
+  
+  public void onCreate(ViewGroup paramViewGroup)
+  {
+    super.onCreate(paramViewGroup);
+    this.mRoot.setVisibility(4);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void onGestureFinish()
+  {
+    Object localObject = this.jdField_a_of_type_Bajl.a.getSelectedItem();
+    if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null)) {
+      if (((RichMediaBrowserInfo)localObject).baseData.getType() == 100) {
+        localObject = "0X8009AB2";
+      }
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        bcef.b(null, "dc00898", "", "", (String)localObject, (String)localObject, bais.a().c(), 0, "", "", "", "");
+      }
+      this.jdField_a_of_type_Bajl.i();
+      super.onGestureFinish();
+      return;
+      if (((RichMediaBrowserInfo)localObject).baseData.getType() == 101) {
+        localObject = "0X8009AB3";
+      } else {
+        localObject = null;
+      }
+    }
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    if (this.jdField_a_of_type_Bajl.b(this.jdField_a_of_type_Bajl.getCurrentPosition())) {
+      this.jdField_a_of_type_Bajl.a(true);
+    }
+  }
+  
+  public void onResetPosition()
+  {
+    if (bais.a().c() == 4) {}
+    do
+    {
+      return;
+      super.onResetPosition();
+      this.jdField_a_of_type_Bajl.d();
+    } while (!(getCurrentView() instanceof baki));
+    ((baki)getCurrentView()).b(true);
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (this.jdField_a_of_type_Bajl.b(this.jdField_a_of_type_Bajl.getCurrentPosition())) {
+      this.jdField_a_of_type_Bajl.d();
+    }
   }
 }
 

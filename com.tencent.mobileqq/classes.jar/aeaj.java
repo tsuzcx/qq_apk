@@ -1,27 +1,49 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import MQQ.PayRuleCfg;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
 
-final class aeaj
-  implements DialogInterface.OnClickListener
+public class aeaj
+  extends Handler
 {
-  aeaj(QQAppInterface paramQQAppInterface, aeca paramaeca, long paramLong, Context paramContext, aebz paramaebz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aeaj(QQSettingMe paramQQSettingMe, Looper paramLooper)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Aeca.jdField_a_of_type_Int, this.jdField_a_of_type_Aeca.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aeca.jdField_c_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Aeca.jdField_a_of_type_Boolean) {
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      return;
+    case 1: 
+      QQSettingMe.a(this.a);
+      return;
+    case 2: 
+      this.a.t();
+      return;
     }
-    this.jdField_a_of_type_Aeca.b = false;
-    this.jdField_a_of_type_Aeca.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Aeca.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    int i = ((Bundle)paramMessage.obj).getInt("type");
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
+    {
+      QQSettingMe.a(this.a).enable = 0;
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
+      aneg.a(this.a.a.getCurrentUin(), QQSettingMe.a(this.a));
+      sendEmptyMessage(2);
     }
+    bgov.a(this.a.a, "last_pull_pay_rule", 0L);
+    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
+    ((aneg)this.a.a.getBusinessHandler(27)).a(paramMessage, this.a.a.getCurrentUin());
   }
 }
 

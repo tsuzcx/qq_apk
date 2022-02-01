@@ -1,30 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class adzy
-  implements DialogInterface.OnClickListener
+class adzy
+  implements bjoe
 {
-  adzy(aeca paramaeca, int paramInt, aebz paramaebz) {}
+  adzy(adzx paramadzx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Aeca.a)
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Aebz != null) {
-        this.jdField_a_of_type_Aebz.a();
-      }
+      this.a.a.jdField_a_of_type_Bjnw.dismiss();
       return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bdll.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
+      aaec.a("share_success");
+      this.a.a.u();
+      continue;
+      if (bkov.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+      {
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131299076);
+        QQToast.a(this.a.a, 2, this.a.a.getString(2131692037), 1).b(paramInt);
+        aaec.a("favorite_success");
       }
+      bkpf.a(null, 65, 7);
+      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
     }
   }
 }

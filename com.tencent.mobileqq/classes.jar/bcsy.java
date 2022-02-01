@@ -1,44 +1,151 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class bcsy
-  implements bcsi
 {
-  private adbd<Integer, bcsi> a = new adbe();
+  private static bcsy jdField_a_of_type_Bcsy;
+  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private long b = -1L;
   
-  public bcsy()
+  public static bcsy a()
   {
-    a();
+    if (jdField_a_of_type_Bcsy == null) {
+      jdField_a_of_type_Bcsy = new bcsy();
+    }
+    return jdField_a_of_type_Bcsy;
   }
   
-  protected void a()
+  public int a(QQAppInterface paramQQAppInterface)
   {
-    this.a.a(Integer.valueOf(169), bcta.class);
-    this.a.a(Integer.valueOf(241), bcta.class);
-    this.a.a(Integer.valueOf(242), bcta.class);
-    this.a.a(Integer.valueOf(243), bcta.class);
-    this.a.a(Integer.valueOf(175), bcsz.class);
-    this.a.a(Integer.valueOf(11), bcsz.class);
-    this.a.a(Integer.valueOf(129), bctb.class);
-    this.a.a(Integer.valueOf(131), bctb.class);
-    this.a.a(Integer.valueOf(133), bctb.class);
+    int i = 0;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      i = paramQQAppInterface.getInt("sp_unread_friendsys_count", 0);
+    }
+    return i;
   }
   
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  public long a()
   {
-    if (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has()) {}
-    bcsi localbcsi;
-    do
+    return this.b;
+  }
+  
+  public long a(QQAppInterface paramQQAppInterface)
+  {
+    long l = 0L;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      l = paramQQAppInterface.getLong("sp_oldest_friendmsg", 0L);
+    }
+    return l;
+  }
+  
+  public structmsg.StructMsg a(Long paramLong)
+  {
+    structmsg.StructMsg localStructMsg = null;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
+    }
+    return localStructMsg;
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_Bcsy = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendSystemMsgController", 2, "setUnReadFriendSystemMsgNum count = " + paramInt, new Throwable("debug"));
+    }
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putInt("sp_unread_friendsys_count", paramInt).commit();
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putLong("sp_oldest_friendmsg", paramLong).commit();
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.edit().putBoolean("sp_is_sysmsg_over", paramBoolean).commit();
+    }
+  }
+  
+  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      return;
-      int i = paramMsg.msg_head.c2c_cmd.get();
-      localbcsi = (bcsi)this.a.a(Integer.valueOf(i));
-    } while (localbcsi == null);
-    localbcsi.a(paramMessageHandler, paramMsg, paramList, parambcre);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendSystemMsgController", 2, "putStructMsgToMap key=" + paramLong);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
+    }
+  }
+  
+  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface.execute(new FriendSystemMsgController.1(this, paramQQAppInterface, paramBoolean));
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()))) {
+      this.jdField_a_of_type_Boolean = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null) {
+      bool = paramQQAppInterface.getBoolean("sp_is_sysmsg_over", false);
+    }
+    return bool;
   }
 }
 

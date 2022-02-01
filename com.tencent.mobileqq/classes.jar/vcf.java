@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
 
-class vcf
-  implements DialogInterface.OnClickListener
+public class vcf
+  extends vcb
 {
-  vcf(vcb paramvcb) {}
+  public vcf(Context paramContext, vct paramvct)
+  {
+    super(paramContext, paramvct);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected int b()
+  {
+    return 2131560036;
+  }
 }
 
 

@@ -1,24 +1,78 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.apollo.ApolloManager.21;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class amtd
-  implements nmg
+  extends FriendListHandler
+  implements bbnm
 {
-  public amtd(ApolloManager.21 param21) {}
+  private ToServiceMsg a;
   
-  public void loaded(String paramString, int paramInt)
+  public amtd(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("ApolloManager", 1, new Object[] { "[predownloadForGameCenter] offline pkg bid:", this.a.jdField_a_of_type_JavaLangString, " loaded, param=", paramString, ", code=", Integer.valueOf(paramInt) });
-    if (paramInt == 0) {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(this.a.b, this.a.jdField_a_of_type_Int).commit();
-    }
-    VipUtils.a(this.a.this$0.a, "cmshow", "Apollo", "gamecenter_preload_res_android", 0, paramInt, new String[] { this.a.jdField_a_of_type_JavaLangString, String.valueOf(this.a.jdField_a_of_type_Int) });
+    super(paramQQAppInterface);
   }
   
-  public void progress(int paramInt) {}
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject2 = new ArrayList(2);
+    ((ArrayList)localObject2).add(this.app.getAccount());
+    Object localObject1 = (bcqt)this.app.getManager(61);
+    if (localObject1 != null) {}
+    for (localObject1 = ((bcqt)localObject1).a();; localObject1 = null)
+    {
+      if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
+        ((ArrayList)localObject2).addAll((Collection)localObject1);
+      }
+      localObject1 = new String[((ArrayList)localObject2).size()];
+      ((ArrayList)localObject2).toArray((Object[])localObject1);
+      getRichStatus((String[])localObject1);
+      if (this.a != null)
+      {
+        localObject2 = this.app.mqqService.a(this.a.getServiceCmd());
+        if (localObject2 != null)
+        {
+          localObject1 = new UniPacket(true);
+          ((UniPacket)localObject1).setEncodeName("utf-8");
+          if (((aafe)localObject2).a(this.a, (UniPacket)localObject1))
+          {
+            localObject2 = new ReqItem();
+            ((ReqItem)localObject2).eServiceID = 119;
+            ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
+            return localObject2;
+          }
+        }
+      }
+      return null;
+    }
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 119) && (paramRespItem.cResult == 2))
+    {
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetRichSig");
+      localFromServiceMsg.setMsgSuccess();
+      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
+      this.app.receiveToService(this.a, localFromServiceMsg);
+    }
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.a = paramToServiceMsg;
+  }
 }
 
 

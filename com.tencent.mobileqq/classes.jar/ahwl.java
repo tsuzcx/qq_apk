@@ -1,18 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
 
-class ahwl
-  implements ahwn
+public class ahwl
+  implements bjoe
 {
-  ahwl(ahwi paramahwi, String paramString, ahwo paramahwo) {}
+  public ahwl(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bjnw parambjnw) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (new File(this.jdField_a_of_type_JavaLangString).exists())
-    {
-      this.jdField_a_of_type_Ahwo.a.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Ahwo.f.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Bjnw.isShowing()) {
+      this.jdField_a_of_type_Bjnw.dismiss();
     }
   }
 }

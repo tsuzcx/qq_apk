@@ -6,6 +6,7 @@ import com.tencent.superplayer.player.SuperPlayerPool;
 import com.tencent.superplayer.report.SPBeaconReporter;
 import com.tencent.thumbplayer.api.ITPModuleLoader;
 import com.tencent.thumbplayer.api.TPPlayerMgr;
+import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
 import com.tencent.tmediacodec.TCodecManager;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -78,6 +79,7 @@ public class SuperPlayerSDKMgr
     TPPlayerMgr.initSdk(sAppContext, null, getPlatform());
     TPPlayerMgr.setProxyEnable(true);
     TPPlayerMgr.setDebugEnable(false);
+    TPDownloadProxyNative.getInstance().isNativeLoaded();
   }
   
   private static void innerInitTVideoMgr()

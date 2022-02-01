@@ -1,32 +1,29 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class atby
+  implements aszj
 {
-  public static void a(View paramView, Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      atbz.a(paramView, paramDrawable);
-      return;
-    }
-    paramView.setBackgroundDrawable(paramDrawable);
-  }
+  public atby(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public static void a(View paramView, Runnable paramRunnable)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      atbz.a(paramView, paramRunnable);
-      return;
+    QfileEditBottomBar.a(this.a).getFileManagerEngine().a(QfileEditBottomBar.a(this.a));
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    paramView.postDelayed(paramRunnable, 16L);
+    aslg.b();
+    QfileEditBottomBar.a(this.a).h();
+    QfileEditBottomBar.a(this.a).f(false);
+    QfileEditBottomBar.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atby
  * JD-Core Version:    0.7.0.1
  */

@@ -1,144 +1,59 @@
-import android.content.Context;
-import com.tencent.TMG.opengl.GraphicRendererMgr;
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
 import java.util.HashMap;
 import java.util.Map;
 
 public class anlu
 {
-  static anlu jdField_a_of_type_Anlu;
-  int jdField_a_of_type_Int = 0;
-  public Context a;
-  private anmg jdField_a_of_type_Anmg = new anmb(this);
-  anmk jdField_a_of_type_Anmk;
-  public bkti a;
-  private AVCallback jdField_a_of_type_ComTencentTMGSdkAVCallback = new anma(this);
-  public String a;
-  Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Map<String, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
   
-  private anlu()
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).second).intValue();
   }
   
-  public static anlu a()
+  public static String a(String paramString)
   {
-    if (jdField_a_of_type_Anlu == null) {
-      jdField_a_of_type_Anlu = new anlu();
-    }
-    return jdField_a_of_type_Anlu;
+    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).first;
   }
   
-  private void d()
+  public static Map<String, Pair<String, Integer>> a()
   {
-    anml.a().a(this.jdField_a_of_type_Anmk, new anlv(this));
-  }
-  
-  public void a()
-  {
-    QLog.i("AVEngineWalper", 1, "DestroyEngine()");
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a();
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Anmk = new anmk(paramInt, paramString1, paramString2);
-  }
-  
-  public void a(long paramLong)
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(paramLong);
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    QLog.e("Begin:TMGProformanceHelper", 1, anmj.a());
-    QLog.e("AVEngineWalper", 1, "InitSDKEngine() strAppid=" + paramString2 + ", strUin=" + paramString1 + ", strAccountType=" + paramString3);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Anmg);
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_AndroidContentContext);
-    paramContext = new anme();
-    paramContext.jdField_a_of_type_JavaLangString = paramString2;
-    paramContext.b = paramString3;
-    paramContext.c = paramString1;
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(paramContext);
-    d();
-  }
-  
-  public void a(bkti parambkti)
-  {
-    this.jdField_a_of_type_Bkti = parambkti;
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.e("AVEngineWalper", 1, "ExitRoom!!!, strRoomID" + paramString);
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).b();
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(paramString, paramBoolean1, paramBoolean2, this.jdField_a_of_type_Int, new anlw(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new anly(this));
-  }
-  
-  boolean a()
-  {
-    try
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      GraphicRendererMgr localGraphicRendererMgr = GraphicRendererMgr.getInstance();
-      int i = localGraphicRendererMgr.getRecvDecoderFrameFunctionptr();
-      QLog.e("AVEngineWalper", 1, "mgr=" + String.valueOf(localGraphicRendererMgr) + ", nFunID=" + String.valueOf(i));
-      return true;
+      if (jdField_a_of_type_JavaUtilMap == null) {
+        a();
+      }
+      return jdField_a_of_type_JavaUtilMap;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("AVEngineWalper", 1, "CheckGraphicMgrStart stack=" + QLog.getStackTraceString(localThrowable));
-    }
-    return false;
   }
   
-  public void b()
+  private static void a()
   {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).b();
-  }
-  
-  public void b(long paramLong)
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).b(paramLong);
-  }
-  
-  public void b(String paramString)
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
-  }
-  
-  public void b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    bktj.a().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), new anlx(this, paramString, paramBoolean1, paramBoolean2));
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new anlz(this));
-  }
-  
-  public void c()
-  {
-    anmc.a(this.jdField_a_of_type_AndroidContentContext).c();
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", Pair.create("system_processor", Integer.valueOf(6003)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", Pair.create("system_processor", Integer.valueOf(6006)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", Pair.create("system_processor", Integer.valueOf(6007)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", Pair.create("system_processor", Integer.valueOf(6008)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", Pair.create("system_processor", Integer.valueOf(6009)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", Pair.create("c2c_processor", Integer.valueOf(1003)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", Pair.create("c2c_processor", Integer.valueOf(2001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", Pair.create("c2c_processor", Integer.valueOf(2005)));
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", Pair.create("offlinefile_processor", Integer.valueOf(7001)));
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", Pair.create("businessbase_processor", Integer.valueOf(3001)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", Pair.create("sub_account_processor", Integer.valueOf(4001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", Pair.create("sub_account_processor", Integer.valueOf(4002)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", Pair.create("sub_account_processor", Integer.valueOf(4003)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", Pair.create("uncommon_msg_processor", Integer.valueOf(8001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", Pair.create("uncommon_msg_processor", Integer.valueOf(8002)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", Pair.create("uncommon_msg_processor", Integer.valueOf(8003)));
+    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", Pair.create("uncommon_msg_processor", Integer.valueOf(8004)));
   }
 }
 

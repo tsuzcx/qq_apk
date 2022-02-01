@@ -139,6 +139,7 @@ public class AEFilterManager
   private int compareLevel;
   private int cosmeticsAlpha;
   private int decodeTexture;
+  private BeautyRealConfig.TYPE defaultTransBasicType;
   private int encodeTexture;
   private int exposureValue = 50;
   private String faceBeautyVersion = AEFaceBeauty.class.getName();
@@ -250,6 +251,10 @@ public class AEFilterManager
   private int thinShoulder;
   private int transBasic3;
   private int transBasic4;
+  private int transBasic5;
+  private int transBasic6;
+  private int transBasic7;
+  private int transBasic8;
   private int transCheekboneThin;
   private int transChin;
   private int transEye;
@@ -311,6 +316,7 @@ public class AEFilterManager
       this.smoothLevel = 0;
       this.smoothSharpenStrength = 1.2F;
       this.beautyColorTone = 50;
+      this.defaultTransBasicType = BeautyRealConfig.TYPE.BASIC4;
       this.cosmeticsAlpha = 100;
       this.adjustAlpha = 1.0F;
       this.lightnessLevel = 0;
@@ -745,7 +751,7 @@ public class AEFilterManager
       Iterator localIterator = this.mFilterEnableMap.entrySet().iterator();
       i = 0;
       if (!localIterator.hasNext()) {
-        break label2193;
+        break label2203;
       }
       localEntry = (Map.Entry)localIterator.next();
       j = i;
@@ -936,7 +942,7 @@ public class AEFilterManager
                               if (this.mAESegment != null)
                               {
                                 this.mAESegment.setSegAttr((PTSegAttr)this.mAiAttr.getRealtimeData(AEDetectorType.SEGMENT.value));
-                                if (this.mVideoMaterial == null)
+                                if ((this.mVideoMaterial == null) || (this.mVideoMaterial.getDataPath() == null))
                                 {
                                   this.mAESegment.setStrokeWidthInPixel(this.segStrokeWidthInPixel);
                                   this.mAESegment.setStrokeGapInPixel(this.segStrokeGapInPixel);
@@ -982,7 +988,7 @@ public class AEFilterManager
                                       this.mPTBodyBeauty.updateAIAttr(this.mAiAttr);
                                       j = i;
                                       continue;
-                                      label1929:
+                                      label1939:
                                       AIImageFilterResult localAIImageFilterResult;
                                       if (this.mAdjust != null)
                                       {
@@ -1013,14 +1019,14 @@ public class AEFilterManager
                                         }
                                         localAIImageFilterResult = (AIImageFilterResult)((Iterator)localObject3).next();
                                         if ((TextUtils.isEmpty(localAIImageFilterResult.lutPath)) || (!"lookup".equals(localAIImageFilterResult.fid))) {
-                                          break label2118;
+                                          break label2128;
                                         }
                                         updateAIFilterListLut(k, localAIImageFilterResult.lutPath, localAIImageFilterResult.lutStrengt);
                                       }
                                       for (;;)
                                       {
                                         k += 1;
-                                        break label1929;
+                                        break label1939;
                                         this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.LIGHTNESS, this.lightnessLevel);
                                         this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.HIGHLIGHT, this.hightLightLevel);
                                         this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.SHADOW, this.shadowLevel);
@@ -1030,7 +1036,7 @@ public class AEFilterManager
                                         this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.COLOR_TEMPERATURE, this.colorTemperature);
                                         this.mAdjust.setAdjustLevel(AdjustRealConfig.TYPE.FADE, this.fadeLevel);
                                         break;
-                                        label2118:
+                                        label2128:
                                         if ("adjust".equals(localAIImageFilterResult.fid)) {
                                           updateAIFilterListAdjust(k, localAIImageFilterResult);
                                         } else if ("xuanlan".equals(localAIImageFilterResult.fid)) {
@@ -1060,7 +1066,7 @@ public class AEFilterManager
         }
       }
     }
-    label2193:
+    label2203:
     if (this.mAEProfiler != null) {
       this.mAEProfiler.endByTag("IAEProfiler-configFilters");
     }
@@ -1934,6 +1940,31 @@ public class AEFilterManager
     }
   }
   
+  private void updateFaceTransformType(BeautyRealConfig.TYPE paramTYPE)
+  {
+    switch (AEFilterManager.3.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC3, this.transBasic3);
+      return;
+    case 2: 
+      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC4, this.transBasic4);
+      return;
+    case 3: 
+      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC5, this.transBasic5);
+      return;
+    case 4: 
+      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC6, this.transBasic6);
+      return;
+    case 5: 
+      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC7, this.transBasic7);
+      return;
+    }
+    this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC8, this.transBasic8);
+  }
+  
   private void updateTips()
   {
     if ((this.mAEDetector != null) && (this.mAEDetector.getFaceDetector() != null)) {
@@ -2616,89 +2647,101 @@ public class AEFilterManager
     {
     default: 
       return;
-    case 1: 
+    case 7: 
       setSmoothLevel((int)(paramInt * 0.6D));
       this.beautySkinLevel = paramInt;
       return;
-    case 2: 
+    case 8: 
       this.beautyEyeLighten = paramInt;
       return;
-    case 3: 
+    case 9: 
       this.beautyToothWhiten = paramInt;
       return;
-    case 4: 
+    case 10: 
       this.beautyRemovePounch = paramInt;
       return;
-    case 5: 
+    case 11: 
       this.beautyRemoveWrinkles = paramInt;
       return;
-    case 6: 
+    case 12: 
       this.beautyRemoveWrinkles2 = paramInt;
       return;
-    case 7: 
+    case 13: 
       this.beautyColorTone = ((paramInt + 100) / 2);
       return;
-    case 8: 
+    case 14: 
       this.beautyContrastRatio = paramInt;
       return;
-    case 9: 
+    case 15: 
       this.transForehead = paramInt;
       return;
-    case 10: 
+    case 16: 
       this.transEye = paramInt;
       return;
-    case 11: 
+    case 17: 
       this.transEyeDistance = paramInt;
       return;
-    case 12: 
+    case 18: 
       this.transEyeAngle = paramInt;
       return;
-    case 13: 
+    case 19: 
       this.transMouthShape = paramInt;
       return;
-    case 14: 
+    case 20: 
       this.transChin = paramInt;
       return;
-    case 15: 
+    case 21: 
       this.transFaceThin = paramInt;
       return;
-    case 16: 
+    case 22: 
       this.transFaceV = paramInt;
       return;
-    case 17: 
+    case 23: 
       this.transNoseWing = paramInt;
       return;
-    case 18: 
+    case 24: 
       this.transNosePosition = paramInt;
       return;
-    case 19: 
+    case 25: 
       this.transLipsThickness = paramInt;
       return;
-    case 20: 
+    case 26: 
       this.transLipsWidth = paramInt;
       return;
-    case 21: 
+    case 27: 
       this.transNose = paramInt;
       return;
-    case 22: 
+    case 28: 
       this.transCheekboneThin = paramInt;
       return;
-    case 23: 
+    case 29: 
       this.transFaceShorten = paramInt;
       return;
-    case 24: 
-      this.transBasic4 = paramInt;
-      return;
-    case 25: 
+    case 1: 
       this.transBasic3 = paramInt;
       return;
-    case 26: 
+    case 2: 
+      this.transBasic4 = paramInt;
+      return;
+    case 3: 
+      this.transBasic5 = paramInt;
+      return;
+    case 4: 
+      this.transBasic6 = paramInt;
+      return;
+    case 5: 
+      this.transBasic7 = paramInt;
+      return;
+    case 6: 
+      this.transBasic8 = paramInt;
+      return;
+    case 30: 
       this.longLeg = paramInt;
       return;
-    case 27: 
+    case 31: 
       this.slimWaist = paramInt;
       return;
-    case 28: 
+    case 32: 
       this.thinShoulder = paramInt;
       return;
     }
@@ -2724,6 +2767,11 @@ public class AEFilterManager
   {
     curLabel = paramString;
     updateAIFilter();
+  }
+  
+  public void setDefaultTransBasicType(BeautyRealConfig.TYPE paramTYPE)
+  {
+    this.defaultTransBasicType = paramTYPE;
   }
   
   public void setDownEventUnProjectionPoint(ArrayList<float[]> paramArrayList)
@@ -3084,19 +3132,22 @@ public class AEFilterManager
   
   public void updateFaceTransform(PTFaceAttr paramPTFaceAttr)
   {
-    boolean bool;
+    AEFaceTransform localAEFaceTransform;
     if ((this.mPTFaceTransform != null) && (this.hasApplyPTFaceTransform))
     {
       if (!this.closeAIBeautyConfig) {
-        break label357;
+        break label358;
       }
       this.mPTFaceTransform.closeAIBeautyConfig();
-      AEFaceTransform localAEFaceTransform = this.mPTFaceTransform;
+      localAEFaceTransform = this.mPTFaceTransform;
       if (this.closeAIBeautyConfig) {
-        break label378;
+        break label379;
       }
-      bool = true;
-      label42:
+    }
+    label358:
+    label379:
+    for (boolean bool = true;; bool = false)
+    {
       localAEFaceTransform.setAgeDetectOn(bool);
       this.mPTFaceTransform.setAIBeautyValid(this.mAIBeautyValid);
       this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FOREHEAD, this.transForehead);
@@ -3114,13 +3165,10 @@ public class AEFilterManager
       this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.NOSE, this.transNose);
       this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.CHEEKBONE_THIN, this.transCheekboneThin);
       this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.FACE_SHORTEN, this.transFaceShorten);
-      if (!AEModule.isEnableDefaultBasic3()) {
-        break label383;
+      if (AEModule.isEnableDefaultBasic3()) {
+        setDefaultTransBasicType(BeautyRealConfig.TYPE.BASIC3);
       }
-      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC3, this.transBasic3);
-    }
-    for (;;)
-    {
+      updateFaceTransformType(this.defaultTransBasicType);
       this.mPTFaceTransform.setPointUpdate(this.pointUpdate);
       if (isDetectorOn(AEDetectorType.HAIR_SEGMENT)) {
         this.mPTFaceTransform.setAiAttr(this.mAiAttr);
@@ -3128,17 +3176,11 @@ public class AEFilterManager
       this.mPTFaceTransform.setFaceStatus(paramPTFaceAttr.getAllFacePoints(), paramPTFaceAttr.getAllFaceAngles(), paramPTFaceAttr.getFaceStatusList(), this.mFaceDetectScale, this.phoneRotation);
       this.mPTFaceTransform.setFaceAttr(paramPTFaceAttr);
       return;
-      label357:
       if (this.mAIBeautyParamsJsonBean == null) {
         break;
       }
       this.mPTFaceTransform.updateAgeSexBeautyConfig(this.mAIBeautyParamsJsonBean);
       break;
-      label378:
-      bool = false;
-      break label42;
-      label383:
-      this.mPTFaceTransform.setFaceTransformLevel(BeautyRealConfig.TYPE.BASIC4, this.transBasic4);
     }
   }
   

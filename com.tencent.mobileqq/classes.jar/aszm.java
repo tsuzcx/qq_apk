@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-public class aszm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class aszm
+  implements Comparator<FileInfo>
 {
-  public aszm(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
-  
-  public void onGlobalLayout()
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
-    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
-    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 

@@ -1,58 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
-public class xcv
-  extends wpa<xep>
+class xcv
+  implements xct
 {
-  private static final String a = wnu.a("StorySvc.get_location");
-  public final int c;
-  public final int d;
-  public final int e;
+  xcv(xcu paramxcu, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
   
-  public xcv(int paramInt1, int paramInt2, int paramInt3)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    xcb.b(xcu.a(this.jdField_a_of_type_Xcu), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
   }
   
-  public String a()
+  public void a(String paramString, Throwable paramThrowable)
   {
-    return a;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
-    try
-    {
-      localRspGetLocation.mergeFrom(paramArrayOfByte);
-      return new xep(localRspGetLocation);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
-    localReqGetLocation.coordinate.set(this.c);
-    localReqGetLocation.gps.lng.set(this.d);
-    localReqGetLocation.gps.lat.set(this.e);
-    localReqGetLocation.gps.setHasFlag(true);
-    return localReqGetLocation.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    xcb.c(xcu.a(this.jdField_a_of_type_Xcu), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 

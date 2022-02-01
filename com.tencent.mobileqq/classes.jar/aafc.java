@@ -1,25 +1,13 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class aafc
-  implements aamw
+public abstract interface aafc
 {
-  public aafc(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      aaak.a().a(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
-      return;
-    }
-    QQToast.a(this.a.getContext(), 2131718483, 0).a();
-  }
+  public abstract AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aafc
  * JD-Core Version:    0.7.0.1
  */

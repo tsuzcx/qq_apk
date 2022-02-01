@@ -1,6 +1,6 @@
 public abstract interface apol
 {
-  public abstract void a(apon paramapon);
+  public abstract void e();
 }
 
 

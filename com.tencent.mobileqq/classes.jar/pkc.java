@@ -1,13 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-
 public class pkc
-  implements pks
 {
-  public pkc(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public int a;
+  public long a;
   
-  public void a()
+  public String toString()
   {
-    ReadInJoySelfFragment.k(this.a);
+    return "articleId : " + this.jdField_a_of_type_Long + "  launchFrom: " + this.jdField_a_of_type_Int;
   }
 }
 

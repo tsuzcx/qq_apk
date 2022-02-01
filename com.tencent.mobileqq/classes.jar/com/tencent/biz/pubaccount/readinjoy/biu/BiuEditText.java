@@ -3,29 +3,40 @@ package com.tencent.biz.pubaccount.readinjoy.biu;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import swi;
-import swj;
+import tai;
+import taj;
 
 public class BiuEditText
   extends EditText
 {
+  private TextWatcher a;
+  
   public BiuEditText(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public BiuEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    addTextChangedListener(new swj());
+    this.a = new taj();
+    addTextChangedListener(this.a);
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      removeTextChangedListener(this.a);
+    }
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -44,16 +55,16 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      swi[] arrayOfswi = (swi[])localEditable.getSpans(paramInt1, paramInt2, swi.class);
-      if ((arrayOfswi != null) && (arrayOfswi.length > 0))
+      tai[] arrayOftai = (tai[])localEditable.getSpans(paramInt1, paramInt2, tai.class);
+      if ((arrayOftai != null) && (arrayOftai.length > 0))
       {
-        int i = arrayOfswi.length;
+        int i = arrayOftai.length;
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          swi localswi = arrayOfswi[paramInt2];
-          int j = localEditable.getSpanStart(localswi);
-          int k = localEditable.getSpanEnd(localswi);
+          tai localtai = arrayOftai[paramInt2];
+          int j = localEditable.getSpanStart(localtai);
+          int k = localEditable.getSpanEnd(localtai);
           if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
           {
             setSelection(k);

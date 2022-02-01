@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.manage;
 
 import android.text.TextUtils;
-import bpam;
+import bmbx;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class AEEditorEffectGroupListBean
       paramList.add(localAEEditorEffectGroupItem);
       i += 1;
       continue;
-      bpam.d("AEEditorEffectGroupListBean", "group list empty.");
+      bmbx.d("AEEditorEffectGroupListBean", "group list empty.");
     }
   }
   
@@ -60,10 +60,11 @@ public class AEEditorEffectGroupListBean
       AEEditorEffectGroupListBean.AEEditorEffectItem.access$1102(localAEEditorEffectItem, localJSONObject.optInt("preDownload"));
       AEEditorEffectGroupListBean.AEEditorEffectItem.access$1202(localAEEditorEffectItem, localJSONObject.optString("resourceMD5"));
       AEEditorEffectGroupListBean.AEEditorEffectItem.access$1302(localAEEditorEffectItem, localJSONObject.optString("resourceURL"));
+      AEEditorEffectGroupListBean.AEEditorEffectItem.access$1402(localAEEditorEffectItem, localJSONObject.optInt("uploadMaxSize"));
       paramList.add(localAEEditorEffectItem);
       i += 1;
       continue;
-      bpam.d("AEEditorEffectGroupListBean", "effect list is empty.");
+      bmbx.d("AEEditorEffectGroupListBean", "effect list is empty.");
     }
   }
   
@@ -81,7 +82,7 @@ public class AEEditorEffectGroupListBean
     }
     catch (Exception paramString)
     {
-      bpam.d("AEEditorEffectGroupListBean", paramString.toString());
+      bmbx.d("AEEditorEffectGroupListBean", paramString.toString());
     }
     return localAEEditorEffectGroupListBean;
   }

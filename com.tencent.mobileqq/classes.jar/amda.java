@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class amda
-  implements View.OnClickListener
+  extends aluy
 {
-  public amda(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public amda(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
   {
-    if (this.a.c) {
-      bdll.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      bdll.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
-      this.a.finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bdll.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
     }
   }
 }

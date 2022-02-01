@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.utils;
 
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

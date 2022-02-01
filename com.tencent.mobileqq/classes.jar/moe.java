@@ -1,49 +1,30 @@
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
 class moe
+  extends Handler
 {
-  public int a;
-  public mod a;
-  public boolean a;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<mod> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public moe(mod parammod, boolean paramBoolean)
+  moe(String paramString, mod parammod)
   {
-    this.jdField_a_of_type_Mod = parammod;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammod);
   }
   
-  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      for (;;)
-      {
-        i = paramInt2;
-        if (paramInt1 >= paramInt2) {
-          break;
-        }
-        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mod.a.length) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        i = Math.min(this.jdField_a_of_type_Mod.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
-        System.arraycopy(this.jdField_a_of_type_Mod.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
-        this.jdField_a_of_type_Int += i;
-        paramInt1 += i;
-      }
-    }
-    if (a())
+    mod localmod = (mod)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmod != null) {}
+    switch (paramMessage.what)
     {
-      i = 0;
-      return i;
+    default: 
+      return;
     }
-    paramInt2 = Math.min(this.jdField_a_of_type_Mod.a.length - this.jdField_a_of_type_Int, paramInt2);
-    System.arraycopy(this.jdField_a_of_type_Mod.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
-    this.jdField_a_of_type_Int += paramInt2;
-    return paramInt2;
-  }
-  
-  public boolean a()
-  {
-    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mod.a.length);
+    mod.a(localmod);
+    lba.f(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 

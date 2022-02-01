@@ -1,11 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
 class wye
-  implements bljb
+  implements DialogInterface.OnDismissListener
 {
-  wye(wyd paramwyd, wvn paramwvn) {}
+  wye(wyc paramwyc, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onDismiss()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    yup.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Wvn.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString });
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    wyc.a(this.jdField_a_of_type_Wyc).a = wyc.a(this.jdField_a_of_type_Wyc).a();
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface ashv
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+
+final class ashv
+  implements SDKInitListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onSDKInited(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      QLog.e("FileVideoDownloadManager<FileAssistant>XOXO", 1, "initSDKAsync failed!");
+    }
+  }
 }
 
 

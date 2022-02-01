@@ -1,185 +1,214 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.UniformParam.Float2fParam;
-import com.tencent.aekit.openrender.UniformParam.Float3fParam;
-import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.UniformParam.Mat4Param;
-import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.model.DoodleItem;
-import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
-import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.util.AlgoUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.comment.ActionSheetDialog.1;
+import com.tencent.biz.subscribe.comment.ActionSheetDialog.4;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class zeq
-  extends VideoFilterBase
+  extends zhc
+  implements DialogInterface.OnCancelListener, Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  protected UniformParam.TextureBitmapParam a;
-  DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
-  private String jdField_a_of_type_JavaLangString = "doodle_image";
-  List<List<PointF>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  List<Bitmap> b;
-  public int c = 480;
-  public int d = 1080;
-  public int e = 1440;
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ArrayList<Button> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected Context b;
+  private LinearLayout b;
   
-  public zeq(DoodleItem paramDoodleItem, String paramString)
+  public zeq(Context paramContext, int paramInt)
   {
-    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = 320;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
-    initParams();
-    a(paramString);
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_b_of_type_AndroidContentContext = paramContext;
+    setContentView(2131558820);
+    b();
+    c();
+    G_();
   }
   
-  private double a(PointF paramPointF1, PointF paramPointF2)
+  public zeq(Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  private void b()
   {
-    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365263));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370450));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131361943));
+    this.jdField_a_of_type_AndroidWidgetButton.setDrawingCacheEnabled(false);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363274);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378707));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
   
-  private void a()
+  private void c()
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localObject = (Bitmap)((List)localObject).get(i % this.jdField_b_of_type_JavaUtilList.size());
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam != null)
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new zer(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  private void d()
+  {
+    Object localObject = new TranslateAnimation(0.0F, 0.0F, this.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight(), 0.0F);
+    ((TranslateAnimation)localObject).setFillAfter(true);
+    ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(this.jdField_a_of_type_AndroidContentContext, 17432582));
+    ((TranslateAnimation)localObject).setDuration(200L);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation((Animation)localObject);
+    localObject = new AlphaAnimation(0.0F, 1.0F);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    ((AlphaAnimation)localObject).setDuration(200L);
+    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+  }
+  
+  private void e()
+  {
+    Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
+    ((TranslateAnimation)localObject).setFillAfter(true);
+    ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(this.jdField_a_of_type_AndroidContentContext, 17432582));
+    ((TranslateAnimation)localObject).setDuration(200L);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation((Animation)localObject);
+    localObject = new AlphaAnimation(1.0F, 0.0F);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    ((AlphaAnimation)localObject).setDuration(200L);
+    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+    ((AlphaAnimation)localObject).setAnimationListener(this);
+  }
+  
+  public Button a(String paramString, int paramInt, View.OnClickListener paramOnClickListener)
+  {
+    Button localButton = new Button(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton);
+    Object localObject = (LinearLayout.LayoutParams)localButton.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).width = -1;
+    ((LinearLayout.LayoutParams)localObject).height = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297319));
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296774));
+    ((LinearLayout.LayoutParams)localObject).gravity = 17;
+    localButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localButton.setText(paramString);
+    int i;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.swapTextureBitmap((Bitmap)localObject);
+    default: 
+      i = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131165295);
+      paramInt = 2130839115;
+    }
+    for (;;)
+    {
+      localButton.setBackgroundDrawable(this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(paramInt));
+      localButton.setTextColor(i);
+      localButton.setTextSize(16.0F);
+      localButton.setOnClickListener(paramOnClickListener);
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localButton);
+      return localButton;
+      i = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131166908);
+      paramInt = 2130839115;
+      continue;
+      i = -14207157;
+      paramInt = 2130839113;
+      continue;
+      paramInt = AIOUtils.dp2px(8.0F, getContext().getResources());
+      paramString = new SpannableString(localButton.getText());
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840399);
+      ((Drawable)localObject).setBounds(paramInt, 0, ((Drawable)localObject).getIntrinsicWidth() + paramInt, ((Drawable)localObject).getIntrinsicHeight());
+      paramString.setSpan(new ImageSpan((Drawable)localObject, 1), paramString.length() - 1, paramString.length(), 33);
+      localButton.setText(paramString);
+      i = -16777216;
+      paramInt = 2130839115;
+      continue;
+      i = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131167385);
+      localButton.setTypeface(Typeface.defaultFromStyle(1));
+      paramInt = 2130839115;
+      continue;
+      i = -14833678;
+      paramInt = 2130839115;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetButton.post(new ActionSheetDialog.4(this, paramString));
+  }
+  
+  public void dismiss()
+  {
+    e();
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    super.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
       return;
     }
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject, 33986, false);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
-    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
+    catch (Exception paramDialogInterface) {}
   }
   
-  private void a(String paramString)
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    if (i < this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.count)
-    {
-      Bitmap localBitmap = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(paramString + "/" + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_JavaLangString + "_" + i + ".png"), 80, 80);
-      if (BitmapUtils.isLegal(localBitmap)) {
-        this.jdField_b_of_type_JavaUtilList.add(localBitmap);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("Personality", 2, "PersonalityImageFilter unlegal bitmap " + i);
-        }
-      }
+    if (paramInt == 82) {
+      dismiss();
     }
+    return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void ApplyGLSLFilter()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      super.ApplyGLSLFilter();
+    if (paramMotionEvent.getAction() == 1) {
+      dismiss();
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void a(List<PointF> paramList)
+  public void show()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-    if (this.jdField_b_of_type_JavaUtilList.size() < 1) {
+    if (isShowing()) {}
+    while (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing())) {
       return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      PointF localPointF = (PointF)paramList.next();
-      localArrayList.add(new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y));
-    }
-    this.jdField_a_of_type_JavaUtilList.add(localArrayList);
-  }
-  
-  public void initAttribParams()
-  {
-    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
-    setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
-  }
-  
-  public void initParams()
-  {
-    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
-    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
-    super.addParam(new UniformParam.IntParam("blendMode", this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.blendMode));
-    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
-    super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
-  }
-  
-  public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1) || (((List)this.jdField_a_of_type_JavaUtilList.get(0)).size() < 1)) {
-      return false;
-    }
-    this.jdField_a_of_type_Int = 0;
-    Object localObject = null;
-    paramInt2 = 0;
-    while (paramInt2 < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramInt3 = 0;
-      if (paramInt3 < ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).size())
-      {
-        PointF localPointF = (PointF)((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).get(paramInt3);
-        if ((localObject != null) && (a(localPointF, (PointF)localObject) <= Math.max(this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width, this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height) * 1.2D)) {}
-        for (;;)
-        {
-          paramInt3 += 1;
-          break;
-          a();
-          float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.d * 1.5F;
-          float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.e * 1.5F;
-          float f3 = localPointF.x - f1 / 2.0F;
-          float f4 = this.height - localPointF.y + f2 / 2.0F;
-          super.setPositions(AlgoUtils.calPositions(f3, f4, f1 + f3, f4 - f2, this.width, this.height));
-          super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
-          super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-          super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-          GLES20.glFlush();
-          super.OnDrawFrameGLSL();
-          super.renderTexture(paramInt1, this.width, this.height);
-          localObject = localPointF;
-        }
-      }
-      paramInt2 += 1;
-    }
-    return true;
-  }
-  
-  public void updatePreview(Object paramObject) {}
-  
-  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
-  {
-    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
-    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
+    super.show();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ActionSheetDialog.1(this), 0L);
   }
 }
 

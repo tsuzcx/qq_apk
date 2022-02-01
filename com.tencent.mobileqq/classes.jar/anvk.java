@@ -1,9 +1,13 @@
-import SummaryCard.CondFitUser;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface anvk
+final class anvk
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    anvj.a(null);
+  }
 }
 
 

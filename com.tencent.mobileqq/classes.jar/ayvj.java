@@ -1,51 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class ayvj
-  implements Manager
+  extends RecyclerView.ItemDecoration
 {
-  private QQAppInterface a;
+  private int a;
+  private int b;
   
-  public ayvj(QQAppInterface paramQQAppInterface)
+  public ayvj(int paramInt1, int paramInt2)
   {
-    this.a = paramQQAppInterface;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  private boolean a(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if ((paramNowPushMsg.uint32_version.get() == 0L) && (paramNowPushMsg.uint64_start_time.get() == 0L) && (paramNowPushMsg.uint64_end_time.get() == 0L))
+    if (paramRecyclerView.getChildPosition(paramView) == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
-      }
-      ((awcc)this.a.getManager(306)).c();
-      return true;
+      paramRect.left = this.b;
+      return;
     }
-    return false;
+    paramRect.left = this.a;
   }
-  
-  private void c(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    if (a(paramNowPushMsg)) {}
-  }
-  
-  public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOnLinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
-    c(paramNowPushMsg);
-  }
-  
-  public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOfflinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
-    c(paramNowPushMsg);
-  }
-  
-  public void onDestroy() {}
 }
 
 

@@ -1,20 +1,25 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
-final class adls
-  implements Comparator
+public class adls
+  implements DialogInterface.OnDismissListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public adls(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
-    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
-    if (i == j) {
-      return 0;
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
     }
-    if (i < j) {
-      return 2;
-    }
-    return -1;
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.getInstance(this.a.getBaseContext()).reportActionCount(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

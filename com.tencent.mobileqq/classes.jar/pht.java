@@ -1,23 +1,31 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 class pht
-  implements ViewTreeObserver.OnPreDrawListener
+  implements pen
 {
-  pht(phs paramphs) {}
+  pht(phl paramphl) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
-    Object localObject = new int[2];
-    localView.getLocationOnScreen((int[])localObject);
-    localObject = this.a.a.a(phs.a(this.a), (int[])localObject);
-    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
-    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(phs.a(this.a));
-    return false;
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof sjz)) {
+      ((sjz)localObject).onClick(paramView);
+    }
+    do
+    {
+      return;
+      localObject = (sjy)paramView.getTag();
+      localObject = phl.a(this.a).a(((sjy)localObject).a);
+    } while (localObject == null);
+    if (oof.a() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      phy.a(false, bool, (BaseArticleInfo)localObject, (Activity)phl.a(this.a).a().a(), phl.a(this.a).a().b(), phl.a(this.a).a().a(), phl.a(this.a).a().a());
+      psf.a(paramView);
+      return;
+    }
   }
 }
 

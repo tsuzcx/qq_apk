@@ -1,12 +1,50 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xac
-  extends wip
+  extends QQUIEventReceiver<wzo, wlf>
 {
-  public ShareGroupItem a;
-  public String a;
-  public List<ShareGroupItem> a;
+  public xac(@NonNull wzo paramwzo)
+  {
+    super(paramwzo);
+  }
+  
+  public void a(@NonNull wzo paramwzo, @NonNull wlf paramwlf)
+  {
+    if (!TextUtils.equals(paramwlf.b, String.valueOf(paramwzo.hashCode()))) {
+      return;
+    }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramwzo.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramwzo.l();
+    if (paramwlf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      xvv.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramwlf.jdField_a_of_type_JavaLangString);
+      if (paramwlf.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        wld.a().a(paramwzo.b(), paramwlf.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      wld.a().a(paramwzo.b(), paramwlf.jdField_a_of_type_JavaLangString, paramwlf.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramwzo.hashCode());
+      return;
+    }
+    xvv.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131706000), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wlf.class;
+  }
 }
 
 

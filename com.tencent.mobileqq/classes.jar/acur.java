@@ -1,51 +1,54 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.qqproxy.GdtLocationUtil;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class acur
-  implements acun
+  extends aycd
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  acur(acup paramacup) {}
+  
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    Object localObject = null;
-    if (paramacts != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramVarArgs = paramacts.a();
-        paramVarArgs = GdtLocationUtil.INSTANCE.getLocation(paramVarArgs);
-        localJSONObject = new JSONObject();
-        if (paramVarArgs == null) {
-          continue;
-        }
-        localJSONObject.put("lat", paramVarArgs[0]);
-        localJSONObject.put("lon", paramVarArgs[1]);
-        paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
-      }
-      catch (Exception paramString)
-      {
-        JSONObject localJSONObject;
-        paramString.printStackTrace();
-        continue;
-        paramString = null;
-        continue;
-      }
-      if (paramacts == null) {
-        continue;
-      }
-      paramString = paramacts.a();
-      paramVarArgs = localObject;
-      if (paramacts != null) {
-        paramVarArgs = paramacts.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
-      return true;
-      paramVarArgs = null;
-      continue;
-      localJSONObject.put("lat", JSONObject.NULL);
-      localJSONObject.put("lon", JSONObject.NULL);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        acup.a(this.a, true);
+        acup.b(this.a);
+      }
+      do
+      {
+        return;
+        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
+          break;
+        }
+        acup.a(this.a);
+      } while (acup.a(this.a) == null);
+      Intent localIntent = new Intent(acup.a(this.a), VerifyPhoneNumActivity.class);
+      localIntent.putExtra("phonenum", this.a.a);
+      localIntent.putExtra("key", this.a.b);
+      localIntent.putExtra("uin", acup.a(this.a));
+      localIntent.putExtra("key_register_sign", acup.a(this.a));
+      localIntent.putExtra("key_register_binduin", paramString);
+      acup.a(this.a).startActivity(localIntent);
+      acup.a(this.a).finish();
+      return;
+      acup.b(this.a);
+      return;
+    }
+    acup.b(this.a);
   }
 }
 

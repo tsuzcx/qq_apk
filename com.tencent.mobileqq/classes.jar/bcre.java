@@ -1,51 +1,84 @@
-import android.util.SparseArray;
-
-public class bcre
-  extends bcsb
+public abstract class bcre
 {
+  public float a;
   public int a;
-  public long a;
-  private SparseArray<Object> a;
+  protected long a;
+  private bcrf a;
   public boolean a;
+  public float b;
   public int b;
-  public long b;
+  protected long b;
   public boolean b;
+  public float c;
   public int c;
-  public long c;
-  public boolean c;
   public int d;
-  public long d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g = true;
-  public boolean h;
-  public boolean i;
+  public int e = 0;
   
-  public bcre(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public bcre(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Int = 255;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
-  public Object a(int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    }
-    return null;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a(int paramInt, Object paramObject)
+  protected void a(int paramInt, float paramFloat)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    if ((paramInt >= this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Bcrf != null)) {
+      this.jdField_a_of_type_Bcrf.a();
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
+  }
+  
+  public void a(bcrf parambcrf)
+  {
+    this.jdField_a_of_type_Bcrf = parambcrf;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return false;
+    }
+    int i = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    float f = i / this.jdField_c_of_type_Int;
+    if (this.e == 1) {
+      f = i * i / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int);
+    }
+    for (;;)
+    {
+      a(i, f);
+      if (i >= this.jdField_c_of_type_Int) {
+        b();
+      }
+      return true;
+      if (this.e == 2)
+      {
+        f = i / this.jdField_c_of_type_Int;
+        f *= (2.0F - f);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Long += System.currentTimeMillis() - this.jdField_b_of_type_Long;
   }
 }
 

@@ -1,115 +1,84 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ayjt
-  implements abjt
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<ayjq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public ayjt(Context paramContext, List<PicInfo> paramList)
+  public ayjt(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramList != null) && (!paramList.isEmpty()))
+    this.jdField_a_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    this.jdField_a_of_type_Boolean = bbqp.a(paramQQAppInterface, paramMessageForShortVideo);
+    if (paramMessageForShortVideo.videoAttr == 1) {}
+    for (;;)
     {
-      int i = 0;
-      if (i < paramList.size())
+      this.c = bool;
+      paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+      if (paramQQAppInterface != null)
       {
-        paramContext = (PicInfo)paramList.get(i);
-        if ((ShortVideoUtils.a()) && ((!TextUtils.isEmpty(paramContext.d)) || (!TextUtils.isEmpty(paramContext.e)))) {}
-        for (paramContext = new ayjg(this.jdField_a_of_type_AndroidContentContext, paramContext);; paramContext = new ayjf(this.jdField_a_of_type_AndroidContentContext, paramContext))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-          i += 1;
-          break;
+        paramQQAppInterface = paramQQAppInterface.e(String.valueOf(paramMessageForShortVideo.senderuin));
+        if (paramQQAppInterface != null) {
+          this.jdField_b_of_type_Boolean = paramQQAppInterface.isFriend();
         }
       }
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_b_of_type_Long = paramLong2;
+      return;
+      bool = false;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public ayjq a()
-  {
-    if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (ayjq)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-  }
-  
-  public ayjq a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (ayjq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public ArrayList<PicInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((ayjq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a);
-      i += 1;
-    }
-    return localArrayList;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      ((ayjq)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (QLog.isColorLevel())
     {
-      ayjq localayjq = (ayjq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramInt == i) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localayjq.a(bool);
-        i += 1;
-        break;
-      }
+      localObject = new StringBuilder("doReport:");
+      ((StringBuilder)localObject).append("mMsgViewedInAIOTime=").append(this.jdField_a_of_type_Long).append("|");
+      ((StringBuilder)localObject).append("mMsgClickedTime=").append(this.jdField_b_of_type_Long).append("|");
+      ((StringBuilder)localObject).append("mViewNetType=").append(this.jdField_a_of_type_Int).append("|");
+      ((StringBuilder)localObject).append("mClickNetType=").append(this.jdField_b_of_type_Int).append("|");
+      ((StringBuilder)localObject).append("mAutoDownload=").append(this.jdField_a_of_type_Boolean).append("|");
+      ((StringBuilder)localObject).append("mIsFriend=").append(this.jdField_b_of_type_Boolean).append("|");
+      ((StringBuilder)localObject).append("mIsHotVideo=").append(this.c).append("|");
+      QLog.i("ShortVideoPredictionEvaluator", 2, ((StringBuilder)localObject).toString());
     }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public ayjq b(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
+    ((HashMap)localObject).put("viewed_time", String.valueOf(this.jdField_a_of_type_Long));
+    ((HashMap)localObject).put("click_time", String.valueOf(this.jdField_b_of_type_Long));
+    ((HashMap)localObject).put("view_net", String.valueOf(this.jdField_a_of_type_Int));
+    ((HashMap)localObject).put("click_net", String.valueOf(this.jdField_b_of_type_Int));
+    ((HashMap)localObject).put("auto_download", String.valueOf(this.jdField_a_of_type_Boolean));
+    ((HashMap)localObject).put("is_friend", String.valueOf(this.jdField_b_of_type_Boolean));
+    ((HashMap)localObject).put("is_hot", String.valueOf(this.c));
+    if (this.jdField_b_of_type_Long > 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject1 = localObject2;
-      if (paramInt >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          localObject1 = (ayjq)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
-        }
-      }
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actVideoMessageTime", bool, 0L, 0L, (HashMap)localObject, "");
+      return;
     }
-    return localObject1;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_b_of_type_Long == 0L)
+    {
+      this.jdField_b_of_type_Long = paramLong;
+      this.jdField_b_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    }
   }
 }
 

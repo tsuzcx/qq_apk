@@ -117,7 +117,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+    String str = StorageUtil.getPreference().getString("version", "1.19.0.00043");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -227,7 +227,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.19.0.00043");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -246,14 +246,14 @@ public class BaseLibManager
     {
       try
       {
-        String str = g().getBaseLibDir("mini", "1.18.0.00132");
+        String str = g().getBaseLibDir("mini", "1.19.0.00043");
         if (g().isBaseLibDirValid4MiniGame(str))
         {
-          QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, inner baseLib already installed, version:1.18.0.00132");
+          QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, inner baseLib already installed, version:1.19.0.00043");
           return str;
         }
         int j = WnsConfig.getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, version:1.18.0.00132, totalCount:" + j);
+        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, version:1.19.0.00043, totalCount:" + j);
         int i = 0;
         boolean bool;
         if (i < j)
@@ -439,7 +439,7 @@ public class BaseLibManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,20 @@
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import com.tencent.av.ui.QavMenuBaseView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mda
-  implements mhh
+class mda
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  mda(mcy parammcy) {}
   
-  public mda(String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      mrl.a(this.jdField_a_of_type_JavaLangString, 0);
-    }
-    if ((paramRelativeLayout instanceof QavMenuBaseView)) {
-      ((QavMenuBaseView)paramRelativeLayout).c(paramLong, paramBoolean);
-    }
-  }
-  
-  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if ((paramRelativeLayout instanceof QavMenuBaseView)) {
-      ((QavMenuBaseView)paramRelativeLayout).d(paramLong, paramBoolean);
-    }
+    this.a.a.a().a().av = true;
+    mum.a(this.a.a);
+    mcy.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

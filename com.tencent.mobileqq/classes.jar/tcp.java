@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class tcp
-  implements View.OnClickListener
+  implements TypeEvaluator<Rect>
 {
-  public tcp(ViolaFragment paramViolaFragment) {}
+  public tcp(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void onClick(View paramView)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    this.a.mViolaUiDelegate.d();
-    this.a.reloadPage();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 

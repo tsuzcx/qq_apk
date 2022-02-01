@@ -1,31 +1,93 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.util.DisplayMetrics;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.open.delegate.ArkDelegateManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class aoye
-  extends aoxh
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  protected static final ark.ApplicationCallback a = new aoyp();
+  
+  public static void a()
   {
-    paramQQAppInterface = new aoyd(paramQQAppInterface, paramContext);
-    paramQQAppInterface.b = "qqreg";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    String str3 = aovn.a().a();
+    String str1 = "";
+    Object localObject = str1;
+    String str2 = str3;
+    if (1 != BaseApplicationImpl.sProcessId)
     {
-      int i = 0;
-      while (i < paramContext.length)
+      str2 = MobileQQ.getMobileQQ().getQQProcessName();
+      localObject = str1;
+      if (str2 != null)
       {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
+        int i = str2.lastIndexOf(':');
+        localObject = str1;
+        if (i > -1) {
+          localObject = "_" + str2.substring(i + 1);
         }
-        i += 1;
+      }
+      str2 = str3 + (String)localObject;
+    }
+    ArkDelegateManager.getInstance().init(str2, (String)localObject, "8.4.8", BaseApplicationImpl.getContext());
+    localObject = BaseApplicationImpl.getApplication().getRuntime();
+    ArkEnvironmentManager.getInstance().setCurrentUin(((AppRuntime)localObject).getAccount());
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (aovn.a() != null)
+    {
+      bool1 = bool2;
+      if (aovn.a().a() == 1) {
+        bool1 = true;
       }
     }
-    return paramQQAppInterface;
+    ArkEnvironmentManager.getInstance().setEnv(bool1);
+    ArkDelegateManager.getInstance().setSetupDelegate(new aoyj());
+    ArkDelegateManager.getInstance().setNetDelegate(new aoyk());
+    ArkDelegateManager.getInstance().setInputCallback(new aoyq(null));
+    ArkDelegateManager.getInstance().setApplicationCallback(a);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    Object localObject1 = ArkEnvironmentManager.getInstance();
+    if (!ArkAppCenter.a) {}
+    try
+    {
+      if (!ArkAppCenter.a)
+      {
+        ((ArkEnvironmentManager)localObject1).setThreadCreator(new aoyf());
+        ((ArkEnvironmentManager)localObject1).setLogCallback(new aoyg());
+        ((ArkEnvironmentManager)localObject1).setLibraryLoader(new aoyh());
+        ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
+        ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
+        ((ArkEnvironmentManager)localObject1).setDataReport(new aoyi());
+        ArkAppCenter.a = true;
+      }
+      if ((paramBoolean) && (!ArkAppCenter.b))
+      {
+        ((ArkEnvironmentManager)localObject1).setEnableAndroid9EmojiSupport(aoth.b());
+        ((ArkEnvironmentManager)localObject1).loadLibrary();
+        if (ArkAppCenter.b)
+        {
+          if (BaseApplicationImpl.getContext() != null)
+          {
+            localObject1 = ArkAppCenterUtil.sDisplayMetrics;
+            ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
+          }
+          ArkEnvironmentManager.getInstance().setSingleThreadMode(true);
+          ArkEnvironmentManager.getInstance().setThreadMode();
+          QLog.i("ArkApp.ArkMultiProcUtil", 1, "setupArkEnvironment, https=true, multithreads=true");
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 

@@ -1,8 +1,41 @@
-public abstract interface zak
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+
+public class zak
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString1, String paramString2);
+  public static int a(RecyclerView paramRecyclerView)
+  {
+    int i;
+    if (paramRecyclerView != null) {
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+        }
+        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+        {
+          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int[] arrayOfInt = new int[i];
+          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
+          i = arrayOfInt[(i - 1)];
+          if (arrayOfInt.length != 2) {
+            return i;
+          }
+          i = Math.max(arrayOfInt[0], arrayOfInt[1]);
+          return i;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    } else {
+      i = -1;
+    }
+    return i;
+  }
 }
 
 

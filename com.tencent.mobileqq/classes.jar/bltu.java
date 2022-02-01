@@ -1,8 +1,21 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.common.app.AppInterface;
 
-public abstract interface bltu
+class bltu
+  extends blur
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  bltu(blts paramblts, AppInterface paramAppInterface) {}
+  
+  public void onUpdateOnlineUserNum(boolean paramBoolean, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean) {
+      synchronized (blts.a(this.jdField_a_of_type_Blts))
+      {
+        blts.a(this.jdField_a_of_type_Blts, paramInt);
+        return;
+      }
+    }
+  }
 }
 
 

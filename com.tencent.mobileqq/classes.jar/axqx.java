@@ -1,21 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public final class axqx
-  implements axcc
+class axqx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(int paramInt)
+  axqx(axqp paramaxqp, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
-      return;
-    }
-    QQPlayerService.c(BaseApplicationImpl.getContext());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * AIOUtils.dp2px(25.0F, axqp.a(this.jdField_a_of_type_Axqp)));
   }
 }
 

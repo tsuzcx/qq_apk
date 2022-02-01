@@ -1,179 +1,166 @@
-import SummaryCard.TPraiseInfo;
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.shortvideo.util.VidUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class azzw
 {
-  public static int a;
-  public static Vector<String> a;
-  private static AtomicBoolean a;
-  public static int b;
-  public static Vector<azzx> b;
-  public static int c;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  static
+  public azzw(String paramString)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = 10;
-    jdField_b_of_type_Int = 2000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
+    paramString = new File(this.jdField_a_of_type_JavaLangString);
+    boolean bool1 = paramString.mkdirs();
+    boolean bool2 = paramString.isDirectory();
+    if ((!bool1) && (!bool2))
+    {
+      paramString = new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+      QLog.e("AudioDataCache", 2, paramString, new Object[0]);
+      bahf.a(paramString);
+    }
   }
   
-  public static List<TPraiseInfo> a(List<TPraiseInfo> paramList)
+  private static void a(String paramString, Throwable paramThrowable)
   {
-    Object localObject = paramList;
-    if (c == 0)
+    if (QLog.isColorLevel())
     {
-      localObject = paramList;
-      if (paramList != null)
-      {
-        localObject = paramList;
-        if (!paramList.isEmpty())
-        {
-          localObject = new ArrayList();
-          ArrayList localArrayList = new ArrayList();
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            TPraiseInfo localTPraiseInfo = (TPraiseInfo)paramList.next();
-            if (localTPraiseInfo.uCustomId > 0L) {
-              ((List)localObject).add(localTPraiseInfo);
-            } else {
-              localArrayList.add(localTPraiseInfo);
-            }
-          }
-          ((List)localObject).addAll(localArrayList);
-        }
+      if (paramThrowable != null) {
+        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
       }
     }
-    return localObject;
+    else {
+      return;
+    }
+    QLog.d("AudioDataCache", 2, "[@] " + paramString);
   }
   
-  public static void a(AppRuntime paramAppRuntime)
+  /* Error */
+  public String a()
   {
-    if (paramAppRuntime == null) {}
-    JSONObject localJSONObject;
-    Object localObject2;
-    label86:
-    int i;
-    Object localObject1;
-    for (;;)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 17	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   9: ldc 83
+    //   11: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: aload_0
+    //   15: getfield 85	azzw:b	Ljava/lang/String;
+    //   18: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: aconst_null
+    //   25: invokestatic 87	azzw:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   28: new 17	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   35: aload_0
+    //   36: getfield 15	azzw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   39: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_0
+    //   43: getfield 85	azzw:b	Ljava/lang/String;
+    //   46: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: aload_0
+    //   54: getfield 89	azzw:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: ifnull +10 -> 69
+    //   62: aload_0
+    //   63: getfield 89	azzw:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   66: invokevirtual 94	java/io/FileOutputStream:close	()V
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_1
+    //   72: areturn
+    //   73: astore_1
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: aload_1
+    //   77: athrow
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	azzw
+    //   52	20	1	str	String
+    //   73	4	1	localObject	Object
+    //   57	2	2	localFileOutputStream	FileOutputStream
+    //   78	1	2	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   2	58	73	finally
+    //   62	69	73	finally
+    //   62	69	78	java/io/IOException
+  }
+  
+  public void a()
+  {
+    File localFile;
+    try
     {
-      try
-      {
-        QLog.e("PraiseConfigHelper", 1, "parseJson, app null");
-        return;
-      }
-      finally {}
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "praise.config.json", true, null);
-        if (localJSONObject == null) {
-          break label415;
-        }
-        localObject2 = localJSONObject.optJSONArray("colorEntries");
-        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
-          if (jdField_a_of_type_JavaUtilVector == null)
-          {
-            jdField_a_of_type_JavaUtilVector = new Vector();
-            break label425;
-            if (i < ((JSONArray)localObject2).length())
-            {
-              localObject1 = ((JSONArray)localObject2).optString(i);
-              if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                break label430;
-              }
-              paramAppRuntime = (AppRuntime)localObject1;
-              if (!((String)localObject1).startsWith("http:")) {
-                paramAppRuntime = "http:" + (String)localObject1;
-              }
-              jdField_a_of_type_JavaUtilVector.add(paramAppRuntime);
-              break label430;
-            }
-          }
-          else
-          {
-            jdField_a_of_type_JavaUtilVector.clear();
-            break label425;
-          }
-        }
+      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
+      this.b = VidUtil.generateVid();
+      String str = this.jdField_a_of_type_JavaLangString + this.b;
+      localFile = new File(str);
+      if (localFile.exists()) {
+        throw new RuntimeException("AudioDataCache: file exists| " + str);
       }
     }
-    paramAppRuntime = localJSONObject.optJSONArray("newEntries");
-    if ((paramAppRuntime != null) && (paramAppRuntime.length() > 0)) {
-      if (jdField_b_of_type_JavaUtilVector == null)
-      {
-        jdField_b_of_type_JavaUtilVector = new Vector();
-        break label437;
-      }
-    }
-    for (;;)
+    finally {}
+    try
     {
-      label204:
-      int j;
-      if (i < paramAppRuntime.length())
-      {
-        localObject2 = paramAppRuntime.optJSONObject(i);
-        if (localObject2 == null) {
-          break label449;
-        }
-        localObject1 = new azzx();
-        ((azzx)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("title");
-        ((azzx)localObject1).b = ((JSONObject)localObject2).optString("subtitle");
-        ((azzx)localObject1).c = ((JSONObject)localObject2).optString("bannerLink");
-        ((azzx)localObject1).d = ((JSONObject)localObject2).optString("reportName");
-        ((azzx)localObject1).jdField_a_of_type_JavaUtilVector = new Vector();
-        localObject2 = ((JSONObject)localObject2).optJSONArray("entrys");
-        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
-          j = 0;
-        }
-      }
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+      a("initCache: newPath=" + this.b, null);
+      return;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
       for (;;)
       {
-        if (j < ((JSONArray)localObject2).length())
-        {
-          String str = ((JSONArray)localObject2).optJSONObject(j).optString("icon");
-          if (TextUtils.isEmpty(str)) {
-            break label442;
-          }
-          ((azzx)localObject1).jdField_a_of_type_JavaUtilVector.add(str);
-          break label442;
-          jdField_b_of_type_JavaUtilVector.clear();
-        }
-        else
-        {
-          jdField_b_of_type_JavaUtilVector.add(localObject1);
-          break label449;
-          jdField_a_of_type_Int = localJSONObject.optInt("playNum", 10);
-          jdField_b_of_type_Int = (int)(localJSONObject.optDouble("downloadTimeLimit", 2.0D) * 1000.0D);
-          c = localJSONObject.optInt("praiseFlyOrder", 0);
-          label415:
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          break;
-          label425:
-          i = 0;
-          break label86;
-          label430:
-          i += 1;
-          break label86;
-        }
-        label437:
-        i = 0;
-        break label204;
-        label442:
-        j += 1;
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
       }
-      label449:
-      i += 1;
     }
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    try
+    {
+      FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+      bool1 = bool2;
+      if (localFileOutputStream != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+        bool1 = true;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          a("writeData: exp=", paramArrayOfByte);
+          bool1 = bool2;
+        }
+      }
+      return bool1;
+    }
+    finally {}
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.b;
   }
 }
 

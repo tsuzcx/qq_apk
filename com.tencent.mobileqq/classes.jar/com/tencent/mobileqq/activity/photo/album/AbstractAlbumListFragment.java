@@ -35,14 +35,14 @@ public abstract class AbstractAlbumListFragment
   @TargetApi(14)
   private void initUI(View paramView)
   {
-    this.xListLayout = ((XFrameLayout)paramView.findViewById(2131370040));
+    this.xListLayout = ((XFrameLayout)paramView.findViewById(2131370037));
     this.xListLayout.setCornerRadiusAndMode(20, 5);
-    this.mListView = ((XListView)paramView.findViewById(2131362567));
+    this.mListView = ((XListView)paramView.findViewById(2131362571));
     this.mListView.setWrapByScroll(true);
     this.mListView.setAdapter(this.listAdapter);
     this.mListView.setOnItemClickListener(new AbstractAlbumListFragment.AlbumListItemClickListener(this, null));
     this.mListView.setOverScrollMode(2);
-    this.albumListRoot = ((FrameLayout)paramView.findViewById(2131362598));
+    this.albumListRoot = ((FrameLayout)paramView.findViewById(2131362602));
     this.albumListRoot.setOnClickListener(new AbstractAlbumListFragment.1(this));
     int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
@@ -73,7 +73,7 @@ public abstract class AbstractAlbumListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561073, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560946, paramViewGroup, false);
     this.mAlbumListLogic = generateLogic();
     this.mAlbumListData = this.mAlbumListLogic.mAlbumListData;
     paramViewGroup = getActivity().getIntent();

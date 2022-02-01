@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ocr;
 
-import ayzg;
-import bdmc;
+import axmo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 public class OcrCamera$5
   implements Runnable
 {
-  public OcrCamera$5(ayzg paramayzg, long paramLong) {}
+  public OcrCamera$5(axmo paramaxmo, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("costTime", String.valueOf(this.a));
-    bdmc.a(BaseApplicationImpl.getContext()).a("", "ocr_select_pic", true, 0L, 0L, localHashMap, "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ocr_select_pic", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

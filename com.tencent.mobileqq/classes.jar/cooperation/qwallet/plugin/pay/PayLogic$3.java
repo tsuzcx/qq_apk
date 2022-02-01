@@ -1,7 +1,7 @@
 package cooperation.qwallet.plugin.pay;
 
-import akyb;
-import akyc;
+import ajvs;
+import ajvt;
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,11 +22,11 @@ class PayLogic$3
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       this.val$dialog.dismiss();
-      akyc localakyc = akyb.a(this.this$0.isPCPushDesc);
-      this.this$0.startPCPushPay(localakyc);
+      ajvt localajvt = ajvs.a(this.this$0.isPCPushDesc);
+      this.this$0.startPCPushPay(localajvt);
       continue;
       this.val$dialog.dismiss();
-      akyb.b();
+      ajvs.b();
       this.this$0.end();
     }
   }

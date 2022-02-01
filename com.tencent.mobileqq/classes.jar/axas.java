@@ -1,29 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axas
-  extends asvt
+class axas
+  implements View.OnClickListener
 {
-  public axas(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  axas(awzr paramawzr, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatMsgListFragment", 2, "onUpdateSignalBombPush " + paramBoolean + " " + paramString);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Awzr.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Awzr.a.j)) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localIntent.putExtra("url", (String)localObject);
+      this.jdField_a_of_type_Awzr.a.startActivity(localIntent);
+      bcef.b(this.jdField_a_of_type_Awzr.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    if ((this.a.a != null) && (this.a.a.isResume()) && (!MatchChatMsgListFragment.a(this.a))) {
-      MatchChatMsgListFragment.a(this.a, atbg.a(this.a.a, this.a.a.app, MatchChatMsgListFragment.a(this.a)));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatMsgListFragment", 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    MatchChatMsgListFragment.a(this.a, paramArrayList);
   }
 }
 

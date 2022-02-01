@@ -1,75 +1,83 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.AudioHelper;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class avxi
-  implements beuq
+public class avxi
 {
-  avxi(avxe paramavxe, String paramString1, String paramString2, String paramString3, int paramInt) {}
-  
-  public void onResp(bevm parambevm)
+  public static void a(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord)
   {
-    if (parambevm.jdField_a_of_type_Int == 3)
+    a(paramContext, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramMessageRecord, null);
+  }
+  
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord, String paramString2)
+  {
+    if (yyi.b(paramString1))
     {
-      QLog.d("qqidentification_server", 2, "identification res download repeating ");
+      paramMessageRecord = new Intent(paramContext, JoinDiscussionActivity.class);
+      int i = paramString1.indexOf("dc/ft?k=");
+      if (i > 0) {
+        paramMessageRecord.putExtra("innerSig", paramString1.substring("dc/ft?k=".length() + i));
+      }
+      for (;;)
+      {
+        paramContext.startActivity(paramMessageRecord);
+        return;
+        paramMessageRecord.putExtra("innerSig", paramString1);
+      }
+    }
+    if ((!TextUtils.isEmpty(paramString1)) && (tgc.b(paramString1)))
+    {
+      tgc.a(paramContext, null, tgc.b(paramString1), null);
       return;
     }
-    if (parambevm.jdField_a_of_type_Int == 0)
+    AudioHelper.b("gotoWebViewBrowser_" + paramString1);
+    Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
+    localIntent.putExtra("param_force_internal_browser", paramBoolean4);
+    localIntent.putExtra("key_isReadModeEnabled", paramBoolean1);
+    localIntent.putExtra("big_brother_source_key", paramString2);
+    if ((paramContext instanceof BaseActivity)) {
+      localIntent.putExtra("uin", ((BaseActivity)paramContext).getAppRuntime().getAccount());
+    }
+    localIntent.putExtra("useDefBackText", paramBoolean3);
+    localIntent.putExtra("injectrecommend", paramBoolean2);
+    if (paramMessageRecord != null)
     {
-      parambevm = parambevm.jdField_a_of_type_Bevl.c;
-      String str = bhmi.c(parambevm);
-      if ((str == null) || (!str.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {}
+      localIntent.putExtra("curtype", paramMessageRecord.istroop);
+      localIntent.putExtra("friendUin", paramMessageRecord.frienduin);
+      if (paramMessageRecord.istroop != 0) {
+        break label347;
+      }
+      localIntent.putExtra("articalChannelId", 2);
     }
     for (;;)
     {
-      try
-      {
-        bhmi.a(parambevm, this.b, false);
-        QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but unzip is failed");
+      localIntent.putExtra("url", paramString1);
+      localIntent.putExtra("fromOneCLickCLose", true);
+      localIntent.putExtra("fromAio", true);
+      ugf.a(paramMessageRecord, localIntent, paramString1);
+      paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if ((paramString2 instanceof QQAppInterface)) {
+        aewt.a(localIntent, (QQAppInterface)paramString2, paramMessageRecord);
       }
-      catch (IOException localIOException1)
-      {
-        try
-        {
-          avxe.a(this.jdField_a_of_type_Avxe).a();
-          avxe.a(this.jdField_a_of_type_Avxe, null);
-          bool = true;
-          bhmi.d(parambevm);
-          if (QLog.isColorLevel()) {
-            QLog.d("qqidentification_server", 2, "downloadRes.onResp download path : " + this.b);
-          }
-          QLog.d("qqidentification_server", 1, new Object[] { "download face res success : ", Boolean.valueOf(bool) });
-          if (bool)
-          {
-            bhsi.c(this.b);
-            bhsi.b(this.jdField_a_of_type_Int);
-            bhsi.c(avxc.b());
-          }
-          avxe.a(this.jdField_a_of_type_Avxe, 1, bool);
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          for (;;)
-          {
-            boolean bool = true;
-          }
-        }
-        localIOException1 = localIOException1;
-        bool = false;
+      aeub.a(paramContext, localIntent, paramString1);
+      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
+      return;
+      label347:
+      if (paramMessageRecord.istroop == 1) {
+        localIntent.putExtra("articalChannelId", 3);
+      } else if (paramMessageRecord.istroop == 3000) {
+        localIntent.putExtra("articalChannelId", 4);
       }
-      continue;
-      QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but md5 is mismatched ");
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "downloadRes.onResp download succ but md5 is mismatched,fileSize = " + bhmi.a(parambevm) + ",md5 = " + localIOException1 + ",url = " + this.c);
-      }
-      bool = false;
-      continue;
-      QLog.d("qqidentification_server", 1, new Object[] { "downloadRes.onResp failed  isSuccess is false, code is : ", Integer.valueOf(parambevm.b), " msg : ", parambevm.jdField_a_of_type_JavaLangString });
-      bool = false;
     }
   }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,31 +1,32 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bcvq
-  extends apck
+class bcvq
+  implements View.OnClickListener
 {
-  bcvq(String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  bcvq(bcvp parambcvp) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
-    long l1 = System.currentTimeMillis();
-    long l2 = bcvp.a();
-    bngk.a(paramInt, this.businessId, l1 - l2);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    if ((bcvp.a(this.a) instanceof CustomWebView))
     {
-      bcvp.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + bcvp.a());
+      if (2 != bcvp.a(this.a).c) {
+        break label57;
+      }
+      ((CustomWebView)bcvp.a(this.a)).callJs("openAdvPermissionsMobile()");
+      this.a.dismiss();
     }
     for (;;)
     {
-      bcvp.a(paramInt);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
+      label57:
+      ((CustomWebView)bcvp.a(this.a)).callJs("openCooperationMobile()");
+      this.a.dismiss();
+      bcef.b(bcvp.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anyw;
+import amsw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,9 +15,9 @@ class AccountManageActivity$1
     {
       if (this.this$0.app != null)
       {
-        anyw localanyw = (anyw)this.this$0.app.getManager(51);
-        if (localanyw != null) {
-          AccountManageActivity.a(this.this$0, localanyw.b(this.this$0.app.getCurrentAccountUin()));
+        amsw localamsw = (amsw)this.this$0.app.getManager(51);
+        if (localamsw != null) {
+          AccountManageActivity.a(this.this$0, localamsw.b(this.this$0.app.getCurrentAccountUin()));
         }
       }
       return;

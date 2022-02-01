@@ -1,19 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.1;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class ahsb
-  implements Animator.AnimatorListener
+  implements INetInfoHandler
 {
-  public ahsb(SixCombolEffectView paramSixCombolEffectView) {}
+  ahsb(ahsa paramahsa) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onNetMobile2None()
+  {
+    ahsa.a(this.a).post(new VoiceTextSttProcessController.1.1(this));
+  }
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public void onNetMobile2Wifi(String paramString) {}
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onNetNone2Mobile(String paramString) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    ahsa.a(this.a).post(new VoiceTextSttProcessController.1.2(this));
+  }
 }
 
 

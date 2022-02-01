@@ -12,14 +12,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bpam;
-import bpcu;
-import bpcz;
-import bpdc;
-import bpdi;
-import bpdj;
-import bpdk;
-import bpdl;
+import bmbx;
+import bmee;
+import bmej;
+import bmem;
+import bmes;
+import bmet;
+import bmeu;
+import bmev;
 import com.tencent.weseevideo.editor.sticker.music.LyricParseHelper;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 import java.text.SimpleDateFormat;
@@ -27,11 +27,11 @@ import java.text.SimpleDateFormat;
 public class LyricWithBuoyView
   extends FrameLayout
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new bpdi(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new bmes(this, Looper.getMainLooper());
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bpcz a;
-  private bpdl jdField_a_of_type_Bpdl;
+  public bmej a;
+  private bmev jdField_a_of_type_Bmev;
   public LyricViewDetail a;
   private volatile boolean jdField_a_of_type_Boolean = true;
   private View b;
@@ -50,14 +50,14 @@ public class LyricWithBuoyView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = LayoutInflater.from(paramContext).inflate(2131558555, this);
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail = ((LyricViewDetail)paramContext.findViewById(2131363861));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379954));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131363862);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new bpdj(this));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bpdk(this));
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail = ((LyricViewDetail)paramContext.findViewById(2131363887));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379720));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131363888);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new bmet(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bmeu(this));
     this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail.setIsDealTouchEvent(false);
-    this.b = paramContext.findViewById(2131371565);
-    this.jdField_a_of_type_Bpcz = new bpcz(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail);
+    this.b = paramContext.findViewById(2131371533);
+    this.jdField_a_of_type_Bmej = new bmej(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail);
   }
   
   public static String a(int paramInt)
@@ -73,12 +73,12 @@ public class LyricWithBuoyView
   public void a()
   {
     if (this.b == null) {
-      bpam.c("LyricWithBuoyView", "handlerHideSelection() mMusicLyricLineView == null.");
+      bmbx.c("LyricWithBuoyView", "handlerHideSelection() mMusicLyricLineView == null.");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bpcz != null) {
-        this.jdField_a_of_type_Bpcz.b(false);
+      if (this.jdField_a_of_type_Bmej != null) {
+        this.jdField_a_of_type_Bmej.b(false);
       }
       return;
       this.b.setVisibility(4);
@@ -87,41 +87,41 @@ public class LyricWithBuoyView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bpcz != null) {
-      this.jdField_a_of_type_Bpcz.a(paramInt);
+    if (this.jdField_a_of_type_Bmej != null) {
+      this.jdField_a_of_type_Bmej.a(paramInt);
     }
   }
   
-  public void a(bpcu parambpcu)
+  public void a(bmee parambmee)
   {
-    if (this.jdField_a_of_type_Bpcz == null)
+    if (this.jdField_a_of_type_Bmej == null)
     {
-      bpam.c("LyricWithBuoyView", "registerScrollListener() mLyricViewController == null.");
+      bmbx.c("LyricWithBuoyView", "registerScrollListener() mLyricViewController == null.");
       return;
     }
-    this.jdField_a_of_type_Bpcz.a(parambpcu);
+    this.jdField_a_of_type_Bmej.a(parambmee);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, bpdc parambpdc)
+  public void a(String paramString1, String paramString2, int paramInt, bmem parambmem)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      bpam.a("LyricWithBuoyView", "initLyricView() lyric info is empty.");
+      bmbx.a("LyricWithBuoyView", "initLyricView() lyric info is empty.");
     }
     label199:
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Bpcz != null) {
-        this.jdField_a_of_type_Bpcz.a();
+      if (this.jdField_a_of_type_Bmej != null) {
+        this.jdField_a_of_type_Bmej.a();
       }
       Lyric localLyric;
       if (TextUtils.equals(paramString2.toUpperCase(), "LRC"))
       {
         localLyric = LyricParseHelper.parseTextToLyric(paramString1, false);
         paramString1 = localLyric;
-        if (this.jdField_a_of_type_Bpcz != null)
+        if (this.jdField_a_of_type_Bmej != null)
         {
-          this.jdField_a_of_type_Bpcz.a(null, localLyric, null);
+          this.jdField_a_of_type_Bmej.a(null, localLyric, null);
           paramString1 = localLyric;
         }
       }
@@ -130,21 +130,21 @@ public class LyricWithBuoyView
         if (paramString1 == null) {
           break label199;
         }
-        bpam.a("LyricWithBuoyView", "initLyricView() startTime => " + paramInt + ",lyricFormat:" + paramString2);
-        if (this.jdField_a_of_type_Bpcz == null) {
+        bmbx.a("LyricWithBuoyView", "initLyricView() startTime => " + paramInt + ",lyricFormat:" + paramString2);
+        if (this.jdField_a_of_type_Bmej == null) {
           break;
         }
-        this.jdField_a_of_type_Bpcz.a(false);
-        this.jdField_a_of_type_Bpcz.a(paramInt, true);
-        this.jdField_a_of_type_Bpcz.a(parambpdc);
+        this.jdField_a_of_type_Bmej.a(false);
+        this.jdField_a_of_type_Bmej.a(paramInt, true);
+        this.jdField_a_of_type_Bmej.a(parambmem);
         return;
         if (TextUtils.equals(paramString2.toUpperCase(), "QRC"))
         {
           localLyric = LyricParseHelper.parseTextToLyric(paramString1, true);
           paramString1 = localLyric;
-          if (this.jdField_a_of_type_Bpcz != null)
+          if (this.jdField_a_of_type_Bmej != null)
           {
-            this.jdField_a_of_type_Bpcz.a(localLyric, null, null);
+            this.jdField_a_of_type_Bmej.a(localLyric, null, null);
             paramString1 = localLyric;
           }
         }
@@ -189,12 +189,12 @@ public class LyricWithBuoyView
       if ((this.b != null) && (this.b.getVisibility() != 0)) {
         this.b.setVisibility(0);
       }
-      if (this.jdField_a_of_type_Bpcz != null)
+      if (this.jdField_a_of_type_Bmej != null)
       {
-        this.jdField_a_of_type_Bpcz.b(true);
+        this.jdField_a_of_type_Bmej.b(true);
         continue;
         Log.d("LyricWithBuoyView", "onTouchEvent -> ACTION_MOVE");
-        String str = a(this.jdField_a_of_type_Bpcz.a());
+        String str = a(this.jdField_a_of_type_Bmej.a());
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
         invalidate();
         continue;
@@ -206,24 +206,24 @@ public class LyricWithBuoyView
   
   public void setLyric(Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3)
   {
-    if (this.jdField_a_of_type_Bpcz == null)
+    if (this.jdField_a_of_type_Bmej == null)
     {
-      bpam.c("LyricWithBuoyView", "setLyric() mLyricViewController == null.");
+      bmbx.c("LyricWithBuoyView", "setLyric() mLyricViewController == null.");
       return;
     }
-    this.jdField_a_of_type_Bpcz.a(paramLyric1, paramLyric2, paramLyric3);
+    this.jdField_a_of_type_Bmej.a(paramLyric1, paramLyric2, paramLyric3);
   }
   
-  public void setOnLyricWithBuoyViewOperationListener(bpdl parambpdl)
+  public void setOnLyricWithBuoyViewOperationListener(bmev parambmev)
   {
-    this.jdField_a_of_type_Bpdl = parambpdl;
+    this.jdField_a_of_type_Bmev = parambmev;
   }
   
   public void setSelectedFlag(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bpcz != null)
+    if (this.jdField_a_of_type_Bmej != null)
     {
-      this.jdField_a_of_type_Bpcz.a(paramInt, true);
+      this.jdField_a_of_type_Bmej.a(paramInt, true);
       a();
     }
   }

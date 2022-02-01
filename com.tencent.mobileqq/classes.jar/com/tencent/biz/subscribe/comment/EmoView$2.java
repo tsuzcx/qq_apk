@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaju;
 import android.widget.GridView;
 import com.tencent.qphone.base.util.QLog;
+import zgs;
 
 class EmoView$2
   implements Runnable
 {
-  EmoView$2(EmoView paramEmoView, int paramInt, GridView paramGridView, aaju paramaaju) {}
+  EmoView$2(EmoView paramEmoView, int paramInt, GridView paramGridView, zgs paramzgs) {}
   
   public void run()
   {
-    QLog.d("CommentInputPopupWindow", 1, "GridView initPage:" + this.jdField_a_of_type_Int + "  currentView size:" + this.jdField_a_of_type_AndroidWidgetGridView.getWidth() + "  " + this.jdField_a_of_type_AndroidWidgetGridView.getHeight() + "  dataSize:" + this.jdField_a_of_type_Aaju.getCount());
+    QLog.d("CommentInputPopupWindow", 1, "GridView initPage:" + this.jdField_a_of_type_Int + "  currentView size:" + this.jdField_a_of_type_AndroidWidgetGridView.getWidth() + "  " + this.jdField_a_of_type_AndroidWidgetGridView.getHeight() + "  dataSize:" + this.jdField_a_of_type_Zgs.getCount());
   }
 }
 

@@ -1,40 +1,54 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
+import android.view.ViewParent;
+import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
 
-class ayog
-  extends beyf
+public class ayog
+  implements RecyclerView.OnItemTouchListener
 {
-  ayog(aynp paramaynp) {}
+  private float jdField_a_of_type_Float;
+  private boolean jdField_a_of_type_Boolean;
+  private float b;
   
-  public void handleMessage(Message paramMessage)
+  public ayog(LifeAchivementPanelView paramLifeAchivementPanelView) {}
+  
+  private boolean a(MotionEvent paramMotionEvent)
   {
-    bete localbete = (bete)paramMessage.obj;
-    switch (paramMessage.what)
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    return Math.abs(this.jdField_a_of_type_Float - f1) > Math.abs(this.b - f2);
+  }
+  
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-    case 1004: 
     default: 
-    case 1003: 
+    case 0: 
+    case 2: 
       do
       {
         do
         {
-          return;
-        } while (localbete.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bevi.a);
-        }
-      } while (aynp.a(this.a) == null);
-      aynp.a(this.a).a = bevi.a;
-      aynp.d(this.a);
-      return;
+          return false;
+          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.b = paramMotionEvent.getY();
+          this.jdField_a_of_type_Boolean = false;
+          return false;
+        } while (this.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_Boolean = true;
+      } while (!a(paramMotionEvent));
+      this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLifeAchivementPanelView.getParent().requestDisallowInterceptTouchEvent(true);
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b(anzj.a(2131706189));
+    this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLifeAchivementPanelView.getParent().requestDisallowInterceptTouchEvent(false);
+    return false;
   }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

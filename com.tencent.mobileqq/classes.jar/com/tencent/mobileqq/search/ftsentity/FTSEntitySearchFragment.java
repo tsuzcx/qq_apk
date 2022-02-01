@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import android.os.Bundle;
-import bcbi;
-import bcde;
-import bcdh;
-import bcdk;
-import bcmc;
-import bcmr;
-import bcni;
+import baum;
+import bawg;
+import bawj;
+import bawm;
+import bbfe;
+import bbft;
+import bbgk;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -25,21 +25,21 @@ public class FTSEntitySearchFragment
     return localFTSEntitySearchFragment;
   }
   
-  public bcbi a()
+  public baum a()
   {
-    return new bcde(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof);
+    return new bawg(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
   }
   
-  public bcmc a()
+  public bbfe a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return bcdh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
+    return bawj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public String a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return bcdh.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
+    return bawj.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public void a(String paramString)
@@ -64,21 +64,21 @@ public class FTSEntitySearchFragment
     label93:
     for (paramInt = i;; paramInt = paramList.size())
     {
-      bcni.a("talk", "exp_page", new String[] { str, paramInt });
+      bbgk.a("talk", "exp_page", new String[] { str, paramInt });
       this.b = true;
       return;
     }
   }
   
-  public void a(List paramList, bcmr parambcmr)
+  public void a(List paramList, bbft parambbft)
   {
-    if (parambcmr.a(this.c)) {
-      a(paramList, parambcmr.jdField_a_of_type_Int);
+    if (parambbft.a(this.c)) {
+      a(paramList, parambbft.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambcmr.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
+    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambbft.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
   }
   
   public void onCreate(Bundle paramBundle)
@@ -92,30 +92,30 @@ public class FTSEntitySearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bcmc.c();
+    this.jdField_a_of_type_Bbfe.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bcmc.d();
+    this.jdField_a_of_type_Bbfe.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    ((bcdk)this.jdField_a_of_type_Bcmc).f();
+    ((bawm)this.jdField_a_of_type_Bbfe).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((bcdk)this.jdField_a_of_type_Bcmc).g();
+    ((bawm)this.jdField_a_of_type_Bbfe).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment
  * JD-Core Version:    0.7.0.1
  */

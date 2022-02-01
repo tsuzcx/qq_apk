@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.util;
 
-import avmi;
+import atzh;
 import com.tencent.common.app.BaseApplicationImpl;
-import nmj;
+import nny;
 
 public final class QQGameHelper$3
   implements Runnable
 {
   public void run()
   {
-    nmj.b("4235", BaseApplicationImpl.getApplication().getRuntime(), true, new avmi(this));
+    nny.b("4235", BaseApplicationImpl.getApplication().getRuntime(), true, new atzh(this));
   }
 }
 

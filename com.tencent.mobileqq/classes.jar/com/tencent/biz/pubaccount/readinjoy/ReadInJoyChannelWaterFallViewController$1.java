@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.util.Map;
-import ohx;
-import pir;
+import ojk;
+import pod;
 
 public class ReadInJoyChannelWaterFallViewController$1
   implements Runnable
 {
-  public ReadInJoyChannelWaterFallViewController$1(ohx paramohx, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  public ReadInJoyChannelWaterFallViewController$1(ojk paramojk, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
   
   public void run()
   {

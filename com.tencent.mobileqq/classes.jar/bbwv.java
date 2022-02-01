@@ -1,73 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class bbwv
-  extends arac<bbww>
 {
-  @NonNull
-  public bbww a(int paramInt)
-  {
-    return new bbww();
-  }
-  
-  @Nullable
-  public bbww a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaraj[0].a);
-      }
-      return bbww.a(paramArrayOfaraj[0].a);
-    }
-    return new bbww();
-  }
-  
-  public void a(bbww parambbww)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + parambbww);
-    }
-    bbxg.a(parambbww);
-  }
-  
-  public Class<bbww> clazz()
-  {
-    return bbww.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 485;
-  }
+  public int a;
+  public bbux a;
+  public bbxm a;
+  public AVIOStruct a;
+  public AtomicReference<SVHwEncoder> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

@@ -1,86 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
 
-class oim
-  extends pfh
+public class oim
+  extends LbsManagerService.OnLocationChangeListener
 {
-  oim(oii paramoii) {}
-  
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  oim(oif paramoif, String paramString)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if ((paramList != null) && (paramList.size() > 0)) {
-        this.a.a(paramList);
-      }
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (ChannelCoverInfo)localIterator.next();
-        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
-          for (;;)
-          {
-            int i;
-            try
-            {
-              for (;;)
-              {
-                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
-                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
-                  break;
-                }
-                localObject = ((URL)localObject).getQuery().split("[&]");
-                int j = localObject.length;
-                i = 0;
-                if (i >= j) {
-                  break;
-                }
-                String[] arrayOfString = localObject[i].split("[=]");
-                if (arrayOfString.length <= 1) {
-                  break label272;
-                }
-                boolean bool = "topicid".equals(arrayOfString[0]);
-                if (!bool) {
-                  break label272;
-                }
-                try
-                {
-                  Integer.valueOf(arrayOfString[1]).intValue();
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
-                }
-                catch (Exception localException) {}
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
-            }
-            catch (MalformedURLException localMalformedURLException) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
-            break;
-            label272:
-            i += 1;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
-    }
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
+    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
   }
 }
 

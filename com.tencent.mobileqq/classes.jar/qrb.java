@@ -1,13 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public class qrb
-  implements View.OnClickListener
+class qrb
+  implements View.OnTouchListener
 {
-  public qrb(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
+  qrb(qqy paramqqy, RelativeLayout paramRelativeLayout) {}
   
-  public void onClick(View paramView) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    }
+    return false;
+  }
 }
 
 

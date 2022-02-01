@@ -6,8 +6,8 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
-import mvs;
-import mvv;
+import mvb;
+import mve;
 
 public class VideoEffectTest
   implements Runnable
@@ -20,11 +20,11 @@ public class VideoEffectTest
   private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
   private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  mvv jdField_a_of_type_Mvv = null;
+  mve jdField_a_of_type_Mve = null;
   
-  public VideoEffectTest(mvv parammvv)
+  public VideoEffectTest(mve parammve)
   {
-    this.jdField_a_of_type_Mvv = parammvv;
+    this.jdField_a_of_type_Mve = parammve;
   }
   
   private void c()
@@ -118,10 +118,10 @@ public class VideoEffectTest
     {
       try
       {
-        localObject = new mvs((byte[])localObject, 480, 640);
-        ((mvs)localObject).a();
-        l2 = (((mvs)localObject).a() + 0L + ((mvs)localObject).a()) / 2L;
-        ((mvs)localObject).b();
+        localObject = new mvb((byte[])localObject, 480, 640);
+        ((mvb)localObject).a();
+        l2 = (((mvb)localObject).a() + 0L + ((mvb)localObject).a()) / 2L;
+        ((mvb)localObject).b();
         if (l2 > 0L) {
           continue;
         }
@@ -134,8 +134,8 @@ public class VideoEffectTest
         i = 0;
         continue;
       }
-      if (this.jdField_a_of_type_Mvv != null) {
-        this.jdField_a_of_type_Mvv.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
+      if (this.jdField_a_of_type_Mve != null) {
+        this.jdField_a_of_type_Mve.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
       }
       return;
       i = 1;
@@ -164,9 +164,9 @@ public class VideoEffectTest
     }
     catch (Throwable localThrowable)
     {
-      if (this.jdField_a_of_type_Mvv != null)
+      if (this.jdField_a_of_type_Mve != null)
       {
-        this.jdField_a_of_type_Mvv.a(0, 0L, null, null);
+        this.jdField_a_of_type_Mve.a(0, 0L, null, null);
         return;
         d();
       }

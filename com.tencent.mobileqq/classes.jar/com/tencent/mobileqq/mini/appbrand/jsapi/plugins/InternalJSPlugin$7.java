@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.app.Activity;
 import android.util.Log;
-import anzj;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 class InternalJSPlugin$7
@@ -15,10 +15,10 @@ class InternalJSPlugin$7
   
   public void run()
   {
-    bhpc localbhpc = bhlq.a(this.val$activity, 230, anzj.a(2131704707), String.format(anzj.a(2131704705), new Object[] { this.val$appName }), anzj.a(2131704702), anzj.a(2131704700), new InternalJSPlugin.7.1(this), new InternalJSPlugin.7.2(this));
+    QQCustomDialog localQQCustomDialog = bfur.a(this.val$activity, 230, amtj.a(2131704937), String.format(amtj.a(2131704935), new Object[] { this.val$appName }), amtj.a(2131704932), amtj.a(2131704930), new InternalJSPlugin.7.1(this), new InternalJSPlugin.7.2(this));
     try
     {
-      localbhpc.show();
+      localQQCustomDialog.show();
       return;
     }
     catch (Exception localException)

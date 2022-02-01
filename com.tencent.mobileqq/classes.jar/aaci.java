@@ -1,34 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aaci
-  extends aabe
+class aaci
+  implements View.OnClickListener
 {
-  public String a()
-  {
-    return null;
-  }
+  aaci(aach paramaach) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    super.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  protected void a(View paramView)
-  {
-    super.a(paramView);
-  }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    super.onActivityCreated(paramActivity, paramBundle);
+    this.a.b.setClickable(false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

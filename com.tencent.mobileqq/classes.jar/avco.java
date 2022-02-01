@@ -1,24 +1,75 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.annotation.Nullable;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import org.jetbrains.annotations.NotNull;
 
-class avco
-  implements DialogInterface.OnClickListener
+public class avco
 {
-  avco(avcj paramavcj, int paramInt, String paramString) {}
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int = -1;
+  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avco(String paramString, LatLng paramLatLng, double paramDouble)
   {
-    if (paramInt == 1)
-    {
-      avcj.a(avcj.a(this.jdField_a_of_type_Avcj), "shareToQQ", avcj.a(this.jdField_a_of_type_Avcj), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      noe.a(avcj.a(this.jdField_a_of_type_Avcj), 0, "", "");
-      if (avcj.a(this.jdField_a_of_type_Avcj) != null) {
-        avcj.a(this.jdField_a_of_type_Avcj).b(1);
-      }
-      avcj.a(this.jdField_a_of_type_Avcj).moveTaskToBack(true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public LatLng a()
+  {
+    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(LatLng paramLatLng, Double paramDouble)
+  {
+    if (paramLatLng != null) {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
     }
+    if (paramDouble != null) {
+      this.jdField_a_of_type_Double = paramDouble.doubleValue();
+    }
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof avco))
+    {
+      paramObject = (avco)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+    }
+    return super.equals(paramObject);
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
   }
 }
 

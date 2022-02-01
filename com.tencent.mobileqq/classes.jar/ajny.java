@@ -1,30 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class ajny
-  extends ajnu
+  implements DialogInterface.OnDismissListener
 {
-  public ajny(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajnx paramajnx)
-  {
-    super(paramQQAppInterface, paramContext, paramXListView, paramajnx);
-  }
+  public ajny(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  protected ajno a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ajnt(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
-  
-  protected void d()
-  {
-    super.d();
-    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
-  
-  public void e()
-  {
-    super.e();
-    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+    this.a.a = null;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bcpt;
+import bbjb;
 import mqq.manager.Manager;
 
 class QQAppInterface$11
@@ -10,13 +10,13 @@ class QQAppInterface$11
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.c();
+    if (this.this$0.mqqService != null) {
+      this.this$0.mqqService.b();
     }
     int i = 0;
-    while (i < QQAppInterface.a(this.this$0).length)
+    while (i < QQAppInterface.access$2600(this.this$0).length)
     {
-      Manager localManager = QQAppInterface.a(this.this$0)[i];
+      Manager localManager = QQAppInterface.access$2600(this.this$0)[i];
       if (localManager != null) {
         localManager.onDestroy();
       }

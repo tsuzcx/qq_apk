@@ -9,12 +9,12 @@ class EmoticonPanelLinearLayout$1
   
   public void run()
   {
-    EmoticonPanelLinearLayout.a(this.this$0).removeView(EmoticonPanelLinearLayout.a(this.this$0));
+    EmoticonPanelLinearLayout.access$500(this.this$0).removeView(EmoticonPanelLinearLayout.access$400(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,52 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
+import kotlin.Metadata;
 
-public class rcd
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoBigPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rcd
+  extends rby
 {
-  public rcd(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a()
   {
-    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
-    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    Object localObject = a();
+    if (localObject != null) {
+      ((SocializeFeedsInfo)localObject).a = 6;
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((rfe)localObject).a = true;
+    }
+    localObject = a();
+    if (localObject != null)
     {
-      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
-      if (paramMotionEvent.getRawX() >= f)
+      localObject = ((rex)localObject).a;
+      if (localObject != null)
       {
-        ReadInJoyVideoSearchTagFragment.a(this.a);
-        return true;
+        a().mTitle = ((rfg)localObject).g;
+        a().mVideoVid = ((rfg)localObject).e;
       }
     }
-    return false;
+    try
+    {
+      localObject = a();
+      if (localObject != null)
+      {
+        localObject = ((rex)localObject).a;
+        if (localObject != null)
+        {
+          localObject = ((rfg)localObject).d;
+          if (localObject != null) {
+            a().mVideoCoverUrl = new URL((String)localObject);
+          }
+        }
+      }
+      return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
+    }
   }
 }
 

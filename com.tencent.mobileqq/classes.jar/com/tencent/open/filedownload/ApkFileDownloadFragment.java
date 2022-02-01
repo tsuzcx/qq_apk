@@ -1,5 +1,6 @@
 package com.tencent.open.filedownload;
 
+import amtj;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -9,26 +10,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import bdll;
-import bhdm;
-import bhnv;
-import bjsz;
-import bjto;
-import bjtp;
-import bjtq;
-import bjtr;
-import bjtx;
-import bjuh;
-import bjyn;
-import bjyo;
-import bjyp;
-import bjyq;
-import bjyr;
-import bjys;
-import bjyu;
+import bcef;
+import bfmy;
+import bhyo;
+import bhzd;
+import bhze;
+import bhzf;
+import bhzg;
+import bhzm;
+import bhzt;
+import bidv;
+import bidw;
+import bidx;
+import bidy;
+import bidz;
+import biea;
+import biec;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.filedownload.ui.NormalDownloadButton;
 import com.tencent.open.filedownload.ui.SafeDownloadButton;
@@ -43,15 +43,15 @@ public class ApkFileDownloadFragment
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjyr jdField_a_of_type_Bjyr;
-  private bjyu jdField_a_of_type_Bjyu;
+  private bidz jdField_a_of_type_Bidz;
+  private biec jdField_a_of_type_Biec;
   private NormalDownloadButton jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton;
   private SafeDownloadButton jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton;
   private WhiteListDownloadButton jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private bjyu jdField_b_of_type_Bjyu;
+  private biec jdField_b_of_type_Biec;
   private TextView c;
   
   private <T extends View> T a(int paramInt)
@@ -61,27 +61,27 @@ public class ApkFileDownloadFragment
   
   private void a()
   {
-    bjtx.b("ApkFileDownloadFragment_", ">specialCode " + this.jdField_a_of_type_Boolean + "|" + this.jdField_a_of_type_Bjyu.f + "|" + bhnv.g(getActivity()) + "|" + bhnv.h(getActivity()));
-    if ((this.jdField_a_of_type_Boolean) && (TextUtils.equals(this.jdField_a_of_type_Bjyu.f, "com.tencent.weishi")) && (bhnv.g(getActivity())) && (bhnv.h(getActivity()))) {
+    bhzm.b("ApkFileDownloadFragment_", ">specialCode " + this.jdField_a_of_type_Boolean + "|" + this.jdField_a_of_type_Biec.f + "|" + NetworkUtil.isNetworkAvailable(getActivity()) + "|" + NetworkUtil.isWifiConnected(getActivity()));
+    if ((this.jdField_a_of_type_Boolean) && (TextUtils.equals(this.jdField_a_of_type_Biec.f, "com.tencent.weishi")) && (NetworkUtil.isNetworkAvailable(getActivity())) && (NetworkUtil.isWifiConnected(getActivity()))) {
       this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.a(true, true);
     }
   }
   
-  private void a(bjyu parambjyu)
+  private void a(biec parambiec)
   {
-    bjys.a(this.jdField_a_of_type_AndroidWidgetImageView, parambjyu.g);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambjyu.h);
-    if (parambjyu.jdField_a_of_type_Long <= 0L)
+    biea.a(this.jdField_a_of_type_AndroidWidgetImageView, parambiec.g);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambiec.h);
+    if (parambiec.jdField_a_of_type_Long <= 0L)
     {
-      DownloadInfo localDownloadInfo = bjsz.a().b(parambjyu.e);
+      DownloadInfo localDownloadInfo = bhyo.a().b(parambiec.e);
       if (localDownloadInfo != null) {
-        parambjyu.jdField_a_of_type_Long = localDownloadInfo.c;
+        parambiec.jdField_a_of_type_Long = localDownloadInfo.c;
       }
     }
-    if (parambjyu.jdField_a_of_type_Long > 0L)
+    if (parambiec.jdField_a_of_type_Long > 0L)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(bhdm.a((float)parambjyu.jdField_a_of_type_Long, true, 2));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(bfmy.a((float)parambiec.jdField_a_of_type_Long, true, 2));
       return;
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -95,10 +95,10 @@ public class ApkFileDownloadFragment
     this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setVisibility(8);
     this.c.setVisibility(4);
     QQAppInterface localQQAppInterface = getActivity().app;
-    if (this.jdField_a_of_type_Bjyu.h == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_Bjyu.h)
+    if (this.jdField_a_of_type_Biec.h == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_Biec.h)
     {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009AC5", "0X8009AC5", 0, 0, "", "", str, "");
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009AC5", "0X8009AC5", 0, 0, "", "", str, "");
       return;
     }
   }
@@ -114,22 +114,22 @@ public class ApkFileDownloadFragment
   
   private void b()
   {
-    bjto.a(bjtp.a().k(this.jdField_a_of_type_Bjyr.jdField_b_of_type_JavaLangString).j("0").l("0").m(this.jdField_a_of_type_Bjyr.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_Bjyu.h).b(this.jdField_a_of_type_Bjyu.f).g(this.jdField_a_of_type_Bjyu.e));
+    bhzd.a(bhze.a().k(this.jdField_a_of_type_Bidz.jdField_b_of_type_JavaLangString).j("0").l("0").m(this.jdField_a_of_type_Bidz.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_Biec.h).b(this.jdField_a_of_type_Biec.f).g(this.jdField_a_of_type_Biec.e));
     if (this.jdField_a_of_type_Boolean)
     {
       localQQAppInterface = getActivity().app;
-      if (this.jdField_a_of_type_Bjyu.h == null) {}
-      for (str = "";; str = this.jdField_a_of_type_Bjyu.h)
+      if (this.jdField_a_of_type_Biec.h == null) {}
+      for (str = "";; str = this.jdField_a_of_type_Biec.h)
       {
-        bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009AC3", "0X8009AC3", 0, 0, "", "", str, "");
+        bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009AC3", "0X8009AC3", 0, 0, "", "", str, "");
         return;
       }
     }
     QQAppInterface localQQAppInterface = getActivity().app;
-    if (this.jdField_a_of_type_Bjyu.h == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_Bjyu.h)
+    if (this.jdField_a_of_type_Biec.h == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_Biec.h)
     {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009AC2", "0X8009AC2", 0, 0, "", "", str, "");
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009AC2", "0X8009AC2", 0, 0, "", "", str, "");
       return;
     }
   }
@@ -139,38 +139,38 @@ public class ApkFileDownloadFragment
     Bundle localBundle = getArguments();
     if (localBundle == null)
     {
-      bjuh.a().a(anzj.a(2131699195));
+      bhzt.a().a(amtj.a(2131699430));
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
       return;
     }
     this.jdField_a_of_type_Boolean = localBundle.getBoolean("param_in_white_list", false);
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bjyr = bjyr.jdField_a_of_type_Bjyr;
+      this.jdField_a_of_type_Bidz = bidz.jdField_a_of_type_Bidz;
     }
     for (;;)
     {
       Object localObject = localBundle.getString("param_ext_info");
-      this.jdField_a_of_type_Bjyu = new bjyu();
-      this.jdField_a_of_type_Bjyu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bjyr.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Bjyu.d = this.jdField_a_of_type_Bjyr.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Bjyu.e = localBundle.getString("param_url");
-      bjtx.b("ApkFileDownloadFragment_", "RealUrl:" + this.jdField_a_of_type_Bjyu.e);
-      this.jdField_a_of_type_Bjyu.jdField_a_of_type_Long = localBundle.getLong("_filesize");
+      this.jdField_a_of_type_Biec = new biec();
+      this.jdField_a_of_type_Biec.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bidz.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Biec.d = this.jdField_a_of_type_Bidz.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Biec.e = localBundle.getString("param_url");
+      bhzm.b("ApkFileDownloadFragment_", "RealUrl:" + this.jdField_a_of_type_Biec.e);
+      this.jdField_a_of_type_Biec.jdField_a_of_type_Long = localBundle.getLong("_filesize");
       try
       {
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          bjtx.b("ApkFileDownloadFragment_", "appInfoJson:" + (String)localObject);
+          bhzm.b("ApkFileDownloadFragment_", "appInfoJson:" + (String)localObject);
           localObject = new JSONObject((String)localObject);
-          if (TextUtils.isEmpty(this.jdField_a_of_type_Bjyu.e)) {
-            this.jdField_a_of_type_Bjyu.e = ((JSONObject)localObject).optString("url");
+          if (TextUtils.isEmpty(this.jdField_a_of_type_Biec.e)) {
+            this.jdField_a_of_type_Biec.e = ((JSONObject)localObject).optString("url");
           }
-          this.jdField_a_of_type_Bjyu.g = ((JSONObject)localObject).optString("app_icon");
-          this.jdField_a_of_type_Bjyu.h = ((JSONObject)localObject).optString("app_name");
-          if (this.jdField_a_of_type_Bjyu.jdField_a_of_type_Long <= 0L) {
-            this.jdField_a_of_type_Bjyu.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("app_filesize");
+          this.jdField_a_of_type_Biec.g = ((JSONObject)localObject).optString("app_icon");
+          this.jdField_a_of_type_Biec.h = ((JSONObject)localObject).optString("app_name");
+          if (this.jdField_a_of_type_Biec.jdField_a_of_type_Long <= 0L) {
+            this.jdField_a_of_type_Biec.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("app_filesize");
           }
-          this.jdField_a_of_type_Bjyu.f = ((JSONObject)localObject).optString("packagename");
+          this.jdField_a_of_type_Biec.f = ((JSONObject)localObject).optString("packagename");
         }
       }
       catch (JSONException localJSONException)
@@ -179,23 +179,23 @@ public class ApkFileDownloadFragment
         {
           localJSONException.printStackTrace();
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Bjyu.h)) {
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Biec.h)) {
           break label393;
         }
-        this.jdField_a_of_type_Bjyu.h = bjys.a(this.jdField_a_of_type_Bjyu.e);
+        this.jdField_a_of_type_Biec.h = biea.a(this.jdField_a_of_type_Biec.e);
         this.jdField_a_of_type_JavaLangString = localBundle.getString("big_brother_source_key");
-        bjtx.b("ApkFileDownloadFragment_", "mPageType:" + this.jdField_a_of_type_Bjyr + "\nTaskInfo:" + this.jdField_a_of_type_Bjyu + "\nmSource:" + this.jdField_a_of_type_JavaLangString);
+        bhzm.b("ApkFileDownloadFragment_", "mPageType:" + this.jdField_a_of_type_Bidz + "\nTaskInfo:" + this.jdField_a_of_type_Biec + "\nmSource:" + this.jdField_a_of_type_JavaLangString);
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bjyu.e)) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Biec.e)) {
         break;
       }
-      bjuh.a().a(anzj.a(2131699192));
+      bhzt.a().a(amtj.a(2131699427));
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
       return;
-      if (bjys.a()) {
-        this.jdField_a_of_type_Bjyr = bjyr.jdField_b_of_type_Bjyr;
+      if (biea.a()) {
+        this.jdField_a_of_type_Bidz = bidz.jdField_b_of_type_Bidz;
       } else {
-        this.jdField_a_of_type_Bjyr = bjyr.c;
+        this.jdField_a_of_type_Bidz = bidz.c;
       }
     }
     label393:
@@ -203,16 +203,16 @@ public class ApkFileDownloadFragment
   
   private void d()
   {
-    this.leftView.setText(anzj.a(2131699193));
-    this.leftView.setOnClickListener(new bjyn(this));
-    setTitle(anzj.a(2131699197));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131368313));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380294));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131380293));
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton = ((NormalDownloadButton)a(2131363873));
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton = ((SafeDownloadButton)a(2131363923));
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton = ((WhiteListDownloadButton)a(2131363987));
-    this.c = ((TextView)a(2131380310));
+    this.leftView.setText(amtj.a(2131699428));
+    this.leftView.setOnClickListener(new bidv(this));
+    setTitle(amtj.a(2131699432));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131368337));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380020));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131380019));
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton = ((NormalDownloadButton)a(2131363899));
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton = ((SafeDownloadButton)a(2131363949));
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton = ((WhiteListDownloadButton)a(2131364011));
+    this.c = ((TextView)a(2131380036));
   }
   
   private void e()
@@ -223,30 +223,30 @@ public class ApkFileDownloadFragment
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.setVisibility(0);
-      this.jdField_a_of_type_Bjyu.jdField_b_of_type_JavaLangString = "3";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.setApkInfo(this.jdField_a_of_type_Bjyu);
+      this.jdField_a_of_type_Biec.jdField_b_of_type_JavaLangString = "3";
+      this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.setApkInfo(this.jdField_a_of_type_Biec);
       this.c.setVisibility(8);
     }
     for (;;)
     {
-      a(this.jdField_a_of_type_Bjyu);
+      a(this.jdField_a_of_type_Biec);
       return;
-      this.jdField_b_of_type_Bjyu = bjyu.a(this.jdField_a_of_type_Bjyu);
-      this.jdField_b_of_type_Bjyu.e = "https://a.app.qq.com/o/myapp-down?g_f=1005234";
-      this.jdField_b_of_type_Bjyu.f = "com.tencent.android.qqdownloader";
-      this.jdField_b_of_type_Bjyu.h = anzj.a(2131699189);
-      this.jdField_b_of_type_Bjyu.jdField_a_of_type_Long = 0L;
+      this.jdField_b_of_type_Biec = biec.a(this.jdField_a_of_type_Biec);
+      this.jdField_b_of_type_Biec.e = "https://a.app.qq.com/o/myapp-down?g_f=1005234";
+      this.jdField_b_of_type_Biec.f = "com.tencent.android.qqdownloader";
+      this.jdField_b_of_type_Biec.h = amtj.a(2131699424);
+      this.jdField_b_of_type_Biec.jdField_a_of_type_Long = 0L;
       this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setVisibility(0);
-      this.jdField_a_of_type_Bjyu.jdField_b_of_type_JavaLangString = "3";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setOriApkInfo(this.jdField_a_of_type_Bjyu);
-      this.jdField_b_of_type_Bjyu.jdField_b_of_type_JavaLangString = "3";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setApkInfo(this.jdField_b_of_type_Bjyu);
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setEventCallback(new bjyo(this));
-      this.jdField_a_of_type_Bjyu.jdField_b_of_type_JavaLangString = "4";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setApkInfo(this.jdField_a_of_type_Bjyu);
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setEventCallback(new bjyp(this));
-      this.c.setText(anzj.a(2131699198));
-      this.c.setOnClickListener(new bjyq(this));
+      this.jdField_a_of_type_Biec.jdField_b_of_type_JavaLangString = "3";
+      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setOriApkInfo(this.jdField_a_of_type_Biec);
+      this.jdField_b_of_type_Biec.jdField_b_of_type_JavaLangString = "3";
+      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setApkInfo(this.jdField_b_of_type_Biec);
+      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setEventCallback(new bidw(this));
+      this.jdField_a_of_type_Biec.jdField_b_of_type_JavaLangString = "4";
+      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setApkInfo(this.jdField_a_of_type_Biec);
+      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setEventCallback(new bidx(this));
+      this.c.setText(amtj.a(2131699433));
+      this.c.setOnClickListener(new bidy(this));
     }
   }
   
@@ -263,24 +263,24 @@ public class ApkFileDownloadFragment
   
   public int getContentLayoutId()
   {
-    return 2131559656;
+    return 2131559658;
   }
   
   public boolean onBackEvent()
   {
     if (a())
     {
-      bjto.b(bjtq.a().a("301").k(this.jdField_a_of_type_Bjyr.jdField_b_of_type_JavaLangString).j("2").l("0").m(this.jdField_a_of_type_Bjyr.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_Bjyu.h).b(this.jdField_a_of_type_Bjyu.f).g(this.jdField_a_of_type_Bjyu.e));
+      bhzd.b(bhzf.a().a("301").k(this.jdField_a_of_type_Bidz.jdField_b_of_type_JavaLangString).j("2").l("0").m(this.jdField_a_of_type_Bidz.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_Biec.h).b(this.jdField_a_of_type_Biec.f).g(this.jdField_a_of_type_Biec.e));
       this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.b(false, true);
       return true;
     }
-    bjto.b(bjtq.a().a("200").k(this.jdField_a_of_type_Bjyr.jdField_b_of_type_JavaLangString).j("2").l("0").m(this.jdField_a_of_type_Bjyr.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_Bjyu.h).b(this.jdField_a_of_type_Bjyu.f).g(this.jdField_a_of_type_Bjyu.e));
+    bhzd.b(bhzf.a().a("200").k(this.jdField_a_of_type_Bidz.jdField_b_of_type_JavaLangString).j("2").l("0").m(this.jdField_a_of_type_Bidz.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_Biec.h).b(this.jdField_a_of_type_Biec.f).g(this.jdField_a_of_type_Biec.e));
     return super.onBackEvent();
   }
   
   public void onDestroy()
   {
-    bjtx.b("ApkFileDownloadFragment_", "[onDestroy]");
+    bhzm.b("ApkFileDownloadFragment_", "[onDestroy]");
     if (this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton != null) {
       this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.c();
     }
@@ -295,7 +295,7 @@ public class ApkFileDownloadFragment
   
   public void onResume()
   {
-    bjtx.b("ApkFileDownloadFragment_", "[onResume]");
+    bhzm.b("ApkFileDownloadFragment_", "[onResume]");
     this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.j();
     super.onResume();
   }

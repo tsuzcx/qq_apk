@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ziy
-  implements Parcelable.Creator<PublishParam>
+public class ziy
+  extends zja
 {
-  public PublishParam a(Parcel paramParcel)
+  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  
+  public ziy(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    return new PublishParam(paramParcel);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
+    }
   }
   
-  public PublishParam[] a(int paramInt)
+  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
   {
-    return new PublishParam[paramInt];
+    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
+    try
+    {
+      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
+      }
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
   }
 }
 

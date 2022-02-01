@@ -1,18 +1,18 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acsh;
-import acvc;
-import acwn;
+import aboq;
+import abrl;
+import absw;
 
 public final class GdtMotiveVideoAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private acsh params;
+  private aboq params;
   
-  public GdtMotiveVideoAd(acsh paramacsh)
+  public GdtMotiveVideoAd(aboq paramaboq)
   {
-    super(paramacsh);
-    this.params = paramacsh;
+    super(paramaboq);
+    this.params = paramaboq;
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -23,16 +23,16 @@ public final class GdtMotiveVideoAd
     }
     if ((paramGdtAd == null) || (!isValid()) || (getParams().a == null))
     {
-      acvc.d("GdtMotiveVideoAd", "getErrorCode error");
+      abrl.d("GdtMotiveVideoAd", "getErrorCode error");
       return 1;
     }
-    if (acwn.a(paramGdtAd.getCreativeSize())) {
+    if (absw.a(paramGdtAd.getCreativeSize())) {
       return 0;
     }
     return 7;
   }
   
-  protected acsh getParams()
+  protected aboq getParams()
   {
     return this.params;
   }

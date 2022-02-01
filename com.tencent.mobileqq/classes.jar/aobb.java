@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import java.util.Comparator;
-
-public class aobb
-  implements Comparator<arsh>
+public abstract interface aobb
 {
-  public int a(arsh paramarsh1, arsh paramarsh2)
-  {
-    if (paramarsh1.b > paramarsh2.b) {}
-    do
-    {
-      return 1;
-      if (paramarsh1.b < paramarsh2.b) {
-        return -1;
-      }
-    } while (paramarsh1.a.sPriority > paramarsh2.a.sPriority);
-    if (paramarsh1.a.sPriority < paramarsh2.a.sPriority) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(aobj paramaobj);
+  
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 

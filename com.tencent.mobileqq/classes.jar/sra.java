@@ -1,23 +1,15 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-
-class sra
-  implements srh
+public abstract class sra
 {
-  sra(sqr paramsqr) {}
+  private static int a = 7;
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public static int a()
   {
-    if ((paramProteusItemData instanceof AuthorData))
-    {
-      ((AuthorData)paramProteusItemData).b();
-      if (sqq.a(this.a.a) != null) {
-        sqq.a(this.a.a).notifyDataSetChanged();
-      }
-    }
+    return a;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a = paramInt;
   }
 }
 

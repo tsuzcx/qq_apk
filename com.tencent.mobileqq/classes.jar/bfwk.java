@@ -1,16 +1,19 @@
-import android.os.Bundle;
+import java.util.Collection;
 
-public abstract interface bfwk
+public class bfwk
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  public static int a(Collection paramCollection)
+  {
+    if (paramCollection == null) {
+      return 0;
+    }
+    return paramCollection.size();
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void d();
+  public static boolean a(Collection paramCollection)
+  {
+    return (paramCollection == null) || (paramCollection.isEmpty());
+  }
 }
 
 

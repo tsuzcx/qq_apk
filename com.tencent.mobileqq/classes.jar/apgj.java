@@ -1,66 +1,40 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class apgj
+  implements BusinessObserver
 {
-  static apgl a;
-  public static String a;
+  public void a(boolean paramBoolean) {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "AREngine_ARPromotion";
-  }
+  public void a(boolean paramBoolean, String paramString) {}
   
-  public static apgc a(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      return (apgc)((QQAppInterface)paramAppInterface).getManager(279);
-    }
-    if (AudioHelper.e()) {
-      throw new IllegalArgumentException(anzj.a(2131707397));
-    }
-    return null;
-  }
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
   
-  public static apgl a(AppInterface paramAppInterface)
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (((paramAppInterface instanceof QQAppInterface)) && (AudioHelper.e())) {
-      throw new IllegalArgumentException(anzj.a(2131707395));
-    }
-    if (jdField_a_of_type_Apgl == null) {}
-    try
+    switch (paramInt)
     {
-      if (jdField_a_of_type_Apgl == null) {
-        jdField_a_of_type_Apgl = new apgl(paramAppInterface);
-      }
-      return jdField_a_of_type_Apgl;
-    }
-    finally {}
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      a(paramAppInterface).a(paramAppInterface);
-      BusinessCommonConfig.getInstance(paramAppInterface).doOnReconnect();
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
       return;
     }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "doOnReconnect, 不是主进程");
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong < AudioHelper.a();
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    long l = AudioHelper.a();
-    return (paramLong1 < l) && (paramLong2 > l);
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 

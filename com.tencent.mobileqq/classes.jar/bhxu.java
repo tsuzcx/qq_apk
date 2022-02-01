@@ -1,6 +1,19 @@
-class bhxu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+
+public class bhxu
+  implements DialogInterface.OnClickListener
 {
-  private static final bhxt a = new bhxt(null);
+  public bhxu(DownloadJSApi.2 param2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bibw.r, false);
+    bhxt.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

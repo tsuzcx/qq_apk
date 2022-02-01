@@ -1,28 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class xyu
-  extends QQUIEventReceiver<xyd, xas>
+  implements Animation.AnimationListener
 {
-  public xyu(@NonNull xyd paramxyd)
+  public xyu(EditVideoGuide paramEditVideoGuide) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramxyd);
+    this.a.h();
+    this.a.a.a(0);
   }
   
-  public void a(@NonNull xyd paramxyd, @NonNull xas paramxas)
-  {
-    if (paramxas.a.isSuccess())
-    {
-      yuk.a(paramxyd.b, "receive user info event. %s.", paramxas.toString());
-      paramxyd.i();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Class acceptEventClass()
-  {
-    return xas.class;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

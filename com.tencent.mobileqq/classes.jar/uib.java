@@ -1,18 +1,8 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
-class uib
-  implements View.OnTouchListener
+public class uib
 {
-  uib(uhz paramuhz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    uhz.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
-  }
+  private View a;
 }
 
 

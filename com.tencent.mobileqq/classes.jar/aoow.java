@@ -1,6 +1,18 @@
-public abstract interface aoow
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
+
+public class aoow
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public aoow(ArkAppDownloadModule.9 param9) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

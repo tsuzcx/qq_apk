@@ -1,12 +1,23 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TalkBack.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdje
-  implements IMCoreProxyRoute.TalkBack.Proxy
+class bdje
+  extends bdji<UserState>
 {
-  public boolean getTalkBackStatus()
+  bdje(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    return AppSetting.c;
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.b(this.a);
+    bdiu.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

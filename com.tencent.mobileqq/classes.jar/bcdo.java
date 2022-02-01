@@ -1,56 +1,58 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
 
-class bcdo
-  extends anzf
+public class bcdo
 {
-  bcdo(bcdk parambcdk) {}
+  private static int jdField_a_of_type_Int = -1;
+  public static String a;
+  static boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
+  static
   {
-    super.a(paramBoolean, paramArrayList, paramArrayList1);
-    paramArrayList1 = (String)paramArrayList1.get(0);
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
+    jdField_a_of_type_JavaLangString = "GeneralConfigUtils";
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString2)) {
+      jdField_a_of_type_Int = -1;
+    }
+    try
     {
-      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
-      while (paramArrayList.hasNext())
+      paramString2 = Integer.valueOf(paramString2);
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt(paramString1, paramString2.intValue()).commit();
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "parseConfig(): e = " + paramString1);
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Int == -1) {
+      if (BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getInt("pic_thumb_400Enable", 0) == 1)
       {
-        Object localObject = (String)paramArrayList.next();
-        if (((String)localObject).charAt(0) < '')
-        {
-          localObject = bhut.b((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
-          {
-            int j = localObject.length;
-            int i = 0;
-            while (i < j)
-            {
-              localStringBuilder.append(localObject[i]).append(" ");
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject).append(" ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
+        jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_Int = 1;
       }
     }
-    bcdk.a(this.a).put(paramArrayList1, localStringBuilder);
-    paramArrayList = bcdk.b(this.a).get(paramArrayList1);
-    if (paramArrayList != null) {
-      try
-      {
-        paramArrayList.notify();
-        return;
+    for (;;)
+    {
+      return jdField_a_of_type_Boolean;
+      jdField_a_of_type_Boolean = false;
+      jdField_a_of_type_Int = 0;
+      continue;
+      if (jdField_a_of_type_Int == 1) {
+        jdField_a_of_type_Boolean = true;
+      } else {
+        jdField_a_of_type_Boolean = false;
       }
-      finally {}
     }
   }
 }

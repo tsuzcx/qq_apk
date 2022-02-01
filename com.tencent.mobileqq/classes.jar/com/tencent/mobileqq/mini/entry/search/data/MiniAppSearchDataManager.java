@@ -8,6 +8,7 @@ import NS_STORE_APP_SEARCH.MiniAppSearch.StHotWatching;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,7 +29,6 @@ import java.util.LinkedList;
 import java.util.List;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nny;
 
 public class MiniAppSearchDataManager
   implements Manager
@@ -68,7 +68,7 @@ public class MiniAppSearchDataManager
   
   private void checkNetwork()
   {
-    if ((!nny.a(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
+    if ((!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
     {
       this.mSearchResultList.clear();
       this.mResultDataChangedListener.onResultDataChanged();

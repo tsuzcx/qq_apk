@@ -15,6 +15,7 @@
           "disableForVideo":1,
           "effectType":"network",
           "netStylizeType":1,
+          "uploadMaxSize": 736,
           "preDownload":1
         },
         {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.widget.TextView;
-import blkk;
+import bjpg;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class CapsuleButton$4
@@ -14,7 +14,7 @@ class CapsuleButton$4
     if ((CapsuleButton.access$400() > 0) && (CapsuleButton.access$500(this.this$0) != null) && (!CapsuleButton.access$500(this.this$0).isAnimating()))
     {
       CapsuleButton.access$600(this.this$0).setVisibility(0);
-      blkk.a(CapsuleButton.access$600(this.this$0), 7, CapsuleButton.access$400(), 0);
+      bjpg.a(CapsuleButton.access$600(this.this$0), 7, CapsuleButton.access$400(), 0);
       return;
     }
     CapsuleButton.access$600(this.this$0).setVisibility(8);

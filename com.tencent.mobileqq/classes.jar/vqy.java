@@ -1,37 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class vqy
-  implements aaam<QCircleFollowUpdateEvent>
+public class vqy
+  extends SimpleJob<Void>
 {
-  private final Handler a;
-  
-  private vqy(Handler paramHandler)
+  public vqy(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, vqr paramvqr)
   {
-    this.a = paramHandler;
+    super(paramString);
   }
   
-  public ArrayList<Class<QCircleFollowUpdateEvent>> getEventClass()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCircleFollowUpdateEvent.class);
-    return localArrayList;
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if (!(paramSimpleBaseEvent instanceof QCircleFollowUpdateEvent)) {}
-    do
-    {
-      return;
-      paramSimpleBaseEvent = (QCircleFollowUpdateEvent)paramSimpleBaseEvent;
-      QLog.i("QCircleSpecialFollowMgr", 4, "onReceiveEvent: QCircleFollowUpdateEvent " + paramSimpleBaseEvent.mUserId + " " + paramSimpleBaseEvent.mFollowStatus);
-    } while (paramSimpleBaseEvent.mFollowStatus != 0);
-    this.a.obtainMessage(1002, paramSimpleBaseEvent.mUserId).sendToTarget();
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Vqr);
+    return null;
   }
 }
 

@@ -1,50 +1,51 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.Face;
-import tencent.im.msg.im_msg_body.OnlineImage;
-import tencent.im.msg.im_msg_body.SmallEmoji;
-import tencent.im.msg.im_msg_body.Text;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class adie
-  extends adic
+  implements aeex
 {
-  public static Boolean a(im_msg_body.Elem paramElem)
+  public adie(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    boolean bool = true;
-    if ((paramElem.text.has()) || (paramElem.face.has()) || (paramElem.small_emoji.has()) || (paramElem.online_image.has()) || (paramElem.bankcode_ctrl_info.has())) {
-      return Boolean.valueOf(true);
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
     }
-    if (paramElem.common_elem.has())
+    for (;;)
     {
-      if (33 == paramElem.common_elem.uint32_service_type.get()) {}
-      for (;;)
-      {
-        return Boolean.valueOf(bool);
-        bool = false;
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
       }
+      return;
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
     }
-    return Boolean.valueOf(false);
   }
   
-  public int a()
+  public void onEditTextFocusChanged(boolean paramBoolean)
   {
-    return -1;
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
+    {
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131376347, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public void onItemDeleted(ResultRecord paramResultRecord)
   {
-    new bcrt().i(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return a(paramElem).booleanValue();
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.uin, paramResultRecord.getUinType());
+    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

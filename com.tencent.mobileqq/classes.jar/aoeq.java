@@ -1,42 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class aoeq
-  extends BroadcastReceiver
+  implements axra
 {
-  public aoeq(QQAppInterface paramQQAppInterface) {}
+  public aoeq(ScanningSurfaceView.8 param8) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (this.a.l) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
     }
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (bcvn)this.a.getManager(10);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
-      return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((bapy)this.a.getManager(104)).b();
+    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
+    bcef.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
+    }
+    this.a.this$0.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoeq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bigb;
-import bige;
-import bigj;
+import bgmm;
+import bgmp;
+import bgmu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -14,7 +14,7 @@ import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.sdk.utils.SignUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
-import oer;
+import oge;
 
 public class StepServiceAsync
   extends AsyncStep
@@ -25,12 +25,12 @@ public class StepServiceAsync
     if (QLog.isColorLevel()) {
       QLog.i("StepServiceAsync", 2, "StepServiceAsync call!");
     }
-    Object localObject = (oer)this.a.app.a(139);
-    ((oer)localObject).a = true;
-    ((oer)localObject).b = System.currentTimeMillis();
-    ((oer)localObject).a(null, null, false, null, 1);
+    Object localObject = (oge)this.a.app.getBusinessHandler(139);
+    ((oge)localObject).a = true;
+    ((oge)localObject).b = System.currentTimeMillis();
+    ((oge)localObject).a(null, null, false, null, 1);
     localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-    if (!bige.a())
+    if (!bgmp.a())
     {
       QLog.i("StepServiceAsync", 1, "step counter unsupported model.");
       return super.a();
@@ -39,7 +39,7 @@ public class StepServiceAsync
     QLog.i("StepServiceAsync", 1, "ban_info:" + str);
     if ((!TextUtils.isEmpty(str)) && (Integer.parseInt(str) == 0))
     {
-      localObject = new NewIntent((Context)localObject, bigj.class);
+      localObject = new NewIntent((Context)localObject, bgmu.class);
       ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_health_switch");
       ((NewIntent)localObject).putExtra("isOpen", false);
       this.a.app.startServlet((NewIntent)localObject);
@@ -49,12 +49,12 @@ public class StepServiceAsync
     if (!SignUtils.isSupportKeyStore()) {
       bool = true;
     }
-    bigb.b = bool;
-    localObject = (bige)this.a.app.getManager(260);
-    if (bigb.a(1)) {
-      ((bige)localObject).a("login");
+    bgmm.b = bool;
+    localObject = (bgmp)this.a.app.getManager(260);
+    if (bgmm.a(1)) {
+      ((bgmp)localObject).a("login");
     }
-    ((bige)localObject).a();
+    ((bgmp)localObject).a();
     return 7;
   }
 }

@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class bfpp
-  extends bfpu
+final class bfpp
+  extends View.AccessibilityDelegate
 {
-  public bfpp(TroopAioKeywordTipBar.4 param4) {}
+  bfpp(bfpr parambfpr) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (!this.a.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    bfpj.a(this.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.a != null)) {
+      this.a.onClick(paramView);
+    }
   }
 }
 

@@ -1,15 +1,27 @@
-public abstract class agrm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class agrm
+  implements View.OnClickListener
 {
-  private boolean a;
+  agrm(agrl paramagrl) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
+    agrq localagrq = (agrq)AIOUtils.getHolder(paramView);
+    if (paramView == localagrq.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localagrq);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == localagrq.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localagrq);
+      }
+    }
   }
 }
 

@@ -1,22 +1,22 @@
-import Wallet.SetSelectedSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class alff
-  implements BusinessObserver
+  implements Animation.AnimationListener
 {
-  public alff(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
+  public alff(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
-    }
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

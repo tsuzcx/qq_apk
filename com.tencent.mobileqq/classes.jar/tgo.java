@@ -1,85 +1,28 @@
-import android.app.Activity;
-import android.support.v4.util.ArrayMap;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "", "bridgeModule", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "getBridgeModule", "()Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "funcMap", "Landroid/support/v4/util/ArrayMap;", "", "Lkotlin/Function2;", "Lorg/json/JSONObject;", "", "getActivity", "Landroid/app/Activity;", "getFragment", "Landroid/support/v4/app/Fragment;", "invokeCallJS", "callback", "data", "invokeErrorCallJS", "errorText", "invokeNsHandler", "", "method", "param", "mineSpace", "ns", "nameSpace", "register", "registerFunc", "func", "violaInstance", "Lcom/tencent/viola/core/ViolaInstance;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class tgo
+public class tgo
+  extends apkq
 {
-  private final ArrayMap<String, Function2<JSONObject, String, Unit>> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  @NotNull
-  private final BridgeModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+  public tgo(ViolaFragment paramViolaFragment) {}
   
-  public tgo(@NotNull BridgeModule paramBridgeModule)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule = paramBridgeModule;
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-    a();
-  }
-  
-  @Nullable
-  public final Activity a()
-  {
-    ViolaInstance localViolaInstance = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance();
-    if (localViolaInstance != null) {
-      return localViolaInstance.getActivity();
-    }
-    return null;
-  }
-  
-  @NotNull
-  public final BridgeModule a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
-  }
-  
-  @NotNull
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public final void a(@Nullable String paramString, @Nullable Object paramObject)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(paramString, paramObject);
-  }
-  
-  public final void a(@Nullable String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString2, "errorText");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(paramString1, paramString2);
-  }
-  
-  public final void a(@NotNull String paramString, @NotNull Function2<? super JSONObject, ? super String, Unit> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "method");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "func");
-    ((Map)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap).put(paramString, paramFunction2);
-  }
-  
-  public final boolean a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "ns");
-    return a().equals(paramString);
-  }
-  
-  public final boolean a(@NotNull String paramString1, @Nullable JSONObject paramJSONObject, @Nullable String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "method");
-    paramString1 = (Function2)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString1);
-    if (paramString1 != null)
+    super.onAddColorNote(paramBundle, paramBoolean);
+    int i = paramBundle.getInt("color_note_curd_from_type");
+    if (ViolaFragment.access$300(this.a) != null)
     {
-      paramString1.invoke(paramJSONObject, paramString2);
-      return true;
+      ViolaFragment.access$300(this.a).a(i);
+      swy.b(ViolaFragment.access$300(this.a).a());
     }
-    return false;
+    if (i != 1) {
+      ViolaFragment.access$500(this.a);
+    }
+  }
+  
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  {
+    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
   }
 }
 

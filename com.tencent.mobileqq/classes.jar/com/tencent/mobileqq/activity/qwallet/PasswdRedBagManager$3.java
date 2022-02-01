@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akwt;
-import akwu;
+import ajuk;
+import ajul;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,12 +15,12 @@ import java.util.List;
 public class PasswdRedBagManager$3
   implements Runnable
 {
-  public PasswdRedBagManager$3(akwu paramakwu, SessionInfo paramSessionInfo) {}
+  public PasswdRedBagManager$3(ajul paramajul, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = akwu.a(this.this$0).a().b(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
+    Object localObject1 = ajul.a(this.this$0).getMessageFacade().getMsgList(this.a.curFriendUin, this.a.curType);
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -34,7 +34,7 @@ public class PasswdRedBagManager$3
           {
             Object localObject3 = ((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg;
             localObject3 = this.this$0.a(((QQWalletRedPacketMsg)localObject3).redPacketId);
-            if ((localObject3 != null) && (((akwt)localObject3).jdField_a_of_type_Int == 4) && (!((akwt)localObject3).b)) {
+            if ((localObject3 != null) && (((ajuk)localObject3).a == 4) && (!((ajuk)localObject3).b)) {
               localArrayList.add(((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.redPacketId);
             }
           }

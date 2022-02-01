@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bfuo;
+import bedz;
 
 class TroopEssenceMsgManager$6$1
   implements Runnable
@@ -9,7 +9,7 @@ class TroopEssenceMsgManager$6$1
   
   public void run()
   {
-    bfuo.a(this.a.this$0, this.a.a);
+    bedz.a(this.a.this$0, this.a.a);
   }
 }
 

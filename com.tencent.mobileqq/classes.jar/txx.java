@@ -1,158 +1,343 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdTimeLoadManager.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdTimeLoadManager.3;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class txx
 {
-  public static bdts a(MessageRecord paramMessageRecord)
+  private static SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray;
+  private static CopyOnWriteArrayList<VideoInfo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private static ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new txy(this, Looper.getMainLooper());
+  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
+  private ruw jdField_a_of_type_Ruw;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 2;
+  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private boolean jdField_b_of_type_Boolean;
+  
+  static
   {
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = (MessageForStructing)paramMessageRecord;
-      paramMessageRecord.parse();
-      return a(paramMessageRecord.structingMsg);
-    }
-    return null;
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public static bdts a(AbsStructMsg paramAbsStructMsg)
+  public txx(ruw paramruw, ArrayList<VideoInfo> paramArrayList)
   {
-    if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+    this.jdField_a_of_type_Ruw = paramruw;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public static int a()
+  {
+    if ((jdField_b_of_type_JavaUtilArrayList != null) && (jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
+      return ((Integer)jdField_b_of_type_JavaUtilArrayList.get(jdField_b_of_type_JavaUtilArrayList.size() - 1)).intValue();
+    }
+    return 0;
+  }
+  
+  private int a(int paramInt)
+  {
+    Integer localInteger = (Integer)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      Object localObject2;
-      do
+      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, Integer.valueOf(0));
+      return 0;
+    }
+    return localInteger.intValue();
+  }
+  
+  public static ArrayList<VideoInfo> a(ArrayList<VideoInfo> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        do
-        {
-          paramAbsStructMsg = ((StructMsgForGeneralShare)paramAbsStructMsg).iterator();
-          Object localObject1;
-          while (!((Iterator)localObject1).hasNext())
-          {
-            do
-            {
-              if (!paramAbsStructMsg.hasNext()) {
-                break;
-              }
-              localObject1 = (bdol)paramAbsStructMsg.next();
-            } while (!(localObject1 instanceof bdsg));
-            localObject1 = ((bdsg)localObject1).a.iterator();
-          }
-          localObject2 = (bdol)((Iterator)localObject1).next();
-        } while (!(localObject2 instanceof bdts));
-        localObject2 = (bdts)localObject2;
-      } while (!((bdts)localObject2).a());
-      return localObject2;
+        VideoInfo localVideoInfo = (VideoInfo)paramArrayList.next();
+        if (localVideoInfo.jdField_c_of_type_Boolean) {
+          localArrayList.add(localVideoInfo);
+        }
+      }
     }
-    return null;
+    if (localArrayList.size() > 0) {
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(localArrayList);
+    }
+    return localArrayList;
   }
   
-  public static String a(String paramString)
+  public static void a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (paramInt != 88888888) {
+      return;
     }
-    return oyu.k + bhkv.encodeToString(paramString.getBytes(), 2);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
   }
   
-  public static void a(StructMsgForGeneralShare paramStructMsgForGeneralShare)
+  public static void a(int paramInt, ArrayList<AdvertisementInfo> paramArrayList)
   {
-    if (paramStructMsgForGeneralShare == null) {}
+    if ((paramInt != 88888888) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramArrayList.next();
+      VideoInfo localVideoInfo = txu.a(localAdvertisementInfo, false);
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localVideoInfo);
+      localStringBuilder.append(localAdvertisementInfo.mTitle + "---");
+    }
+    twp.a("VideoAdTimeLoadManager", "onAsyncDataReady :" + localStringBuilder.toString());
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    if ((!paramBoolean) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1))
+    {
+      localStringBuilder = new StringBuilder().append("repeat startPlay, so return isMainThread : ");
+      if (Looper.myLooper() == Looper.getMainLooper()) {}
+      for (paramBoolean = bool1;; paramBoolean = false)
+      {
+        twp.a("VideoAdTimeLoadManager", paramBoolean);
+        return;
+      }
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append("startTiming :").append(this.jdField_a_of_type_Long).append(" isMainThread : ");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      twp.a("VideoAdTimeLoadManager", paramBoolean);
+      this.jdField_a_of_type_Long += 1L;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 1000L);
+      int i = txw.jdField_b_of_type_Int;
+      if (this.jdField_a_of_type_Boolean) {
+        i = txw.jdField_c_of_type_Int;
+      }
+      if (this.jdField_a_of_type_Long >= i - txw.d) {
+        i();
+      }
+      if (this.jdField_a_of_type_Long < i) {
+        break;
+      }
+      g();
+      return;
+    }
+  }
+  
+  private boolean a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Ruw == null) || (this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt))
+    {
+      twp.a("VideoAdTimeLoadManager", "Invalid parameter");
+      return false;
+    }
+    if (((VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_c_of_type_Boolean)
+    {
+      twp.a("VideoAdTimeLoadManager", paramInt + " has adVideo");
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Ruw == null) || (this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt)) {
+      twp.a("VideoAdTimeLoadManager", "Invalid parameter");
+    }
     do
     {
-      return;
-      Iterator localIterator = paramStructMsgForGeneralShare.iterator();
-      while (localIterator.hasNext())
+      return false;
+      int i = a();
+      if ((i > 0) && (paramInt - i < txw.e + 1))
       {
-        Object localObject1 = (bdol)localIterator.next();
-        if ((localObject1 instanceof bdsg))
-        {
-          localObject1 = ((bdsg)localObject1).a.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            Object localObject2 = (bdol)((Iterator)localObject1).next();
-            if ((localObject2 instanceof bdts))
-            {
-              localObject2 = (bdts)localObject2;
-              if (((bdts)localObject2).a())
-              {
-                ((bdts)localObject2).ag = null;
-                ((bdts)localObject2).ad = null;
-                ((bdts)localObject2).o = 0;
-                if (QLog.isColorLevel()) {
-                  QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: summary = null");
-                }
-                bdll.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800682F", "0X800682F", 0, 0, ((bdts)localObject2).ae, "" + ((bdts)localObject2).v, "" + ((bdts)localObject2).a.msgId, "");
-              }
-            }
-            else if ((localObject2 instanceof StructMsgItemTitle))
-            {
-              localObject2 = (StructMsgItemTitle)localObject2;
-              String str = ((StructMsgItemTitle)localObject2).b();
-              int i = str.length();
-              if (QLog.isColorLevel()) {
-                QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: title = " + ((StructMsgItemTitle)localObject2).b() + ", length=" + i);
-              }
-              if (i > 15)
-              {
-                ((StructMsgItemTitle)localObject2).a(str.substring(0, 15) + "...");
-                if (QLog.isColorLevel()) {
-                  QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: after reduce title length, title = " + ((StructMsgItemTitle)localObject2).b());
-                }
-              }
-            }
-          }
-        }
+        twp.a("VideoAdTimeLoadManager", "not meet adProtectGap");
+        return false;
       }
-    } while ((TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgBrief)) || (paramStructMsgForGeneralShare.mMsgBrief.length() <= 15));
-    paramStructMsgForGeneralShare.mMsgBrief = (paramStructMsgForGeneralShare.mMsgBrief.substring(0, 15) + "...");
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt >= 1) && (paramInt <= 100);
-  }
-  
-  public static boolean a(AbsStructMsg paramAbsStructMsg)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAbsStructMsg != null)
-    {
-      bool1 = bool2;
-      if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+      if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
       {
-        paramAbsStructMsg = ((StructMsgForGeneralShare)paramAbsStructMsg).iterator();
-        bool1 = false;
-        if (paramAbsStructMsg.hasNext())
-        {
-          Object localObject = (bdol)paramAbsStructMsg.next();
-          if (!(localObject instanceof bdsg)) {
-            break label110;
-          }
-          localObject = ((bdsg)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            bdol localbdol = (bdol)((Iterator)localObject).next();
-            if ((localbdol instanceof bdts)) {
-              if (((bdts)localbdol).a()) {
-                bool1 = true;
-              }
-            }
-          }
-        }
+        twp.a("VideoAdTimeLoadManager", "article size = " + this.jdField_a_of_type_JavaUtilArrayList.size() + " but  pos = " + paramInt);
+        return false;
+      }
+    } while (a(paramInt));
+    return true;
+  }
+  
+  public static void h()
+  {
+    jdField_b_of_type_JavaUtilArrayList.clear();
+    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    jdField_a_of_type_AndroidUtilSparseArray.clear();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+  }
+  
+  private void i()
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0) {
+      twp.a("VideoAdTimeLoadManager", "adVideoCache size :" + jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    }
+    while (a(this.jdField_a_of_type_Int + 1)) {
+      return;
+    }
+    int i = a();
+    int j = a(i);
+    if (j >= 3)
+    {
+      twp.a("VideoAdTimeLoadManager", "has preLoad 3 times");
+      return;
+    }
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      twp.a("VideoAdTimeLoadManager", "preLoadAd :" + this.jdField_a_of_type_Long);
+      oaa localoaa = new oaa();
+      localoaa.h = 1;
+      localoaa.i = this.jdField_b_of_type_Int;
+      localoaa.j = i;
+      ThreadManager.executeOnSubThread(new VideoAdTimeLoadManager.2(this, localoaa));
+      jdField_a_of_type_AndroidUtilSparseArray.put(i, Integer.valueOf(j + 1));
+      return;
+    }
+    twp.a("VideoAdTimeLoadManager", "preLoading : so return");
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public VideoInfo a()
+  {
+    if ((jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)) {
+      return (VideoInfo)jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(0);
+    }
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      i();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(VideoInfo paramVideoInfo)
+  {
+    if (paramVideoInfo != null)
+    {
+      if (paramVideoInfo.jdField_b_of_type_Int > paramVideoInfo.jdField_c_of_type_Int) {}
+      for (this.jdField_b_of_type_Int = 1;; this.jdField_b_of_type_Int = 2)
+      {
+        QLog.d("VideoAdTimeLoadManager", 1, "setSceneId : sceneId = " + this.jdField_b_of_type_Int + " , videoInfo = " + paramVideoInfo.jdField_c_of_type_JavaLangString);
+        return;
       }
     }
-    label110:
-    for (;;)
+    QLog.d("VideoAdTimeLoadManager", 1, "setSceneId : videoInfo is null");
+  }
+  
+  public void b()
+  {
+    if (txw.b()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    StringBuilder localStringBuilder = new StringBuilder().append("pauseTiming :").append(this.jdField_a_of_type_Long).append(" isMainThread : ");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (boolean bool = true;; bool = false)
     {
-      break;
-      return bool1;
+      twp.a("VideoAdTimeLoadManager", bool);
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt > this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    twp.a("VideoAdTimeLoadManager", "lastPlayPosition = " + this.jdField_a_of_type_Int);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) {
+      a(true);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
+  }
+  
+  public void d()
+  {
+    b();
+  }
+  
+  public void e()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    f();
+  }
+  
+  public void f()
+  {
+    if (txw.b()) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    twp.a("VideoAdTimeLoadManager", "restoreTiming :" + this.jdField_a_of_type_Long);
+  }
+  
+  public void g()
+  {
+    twp.a("VideoAdTimeLoadManager", "onInsertAd :");
+    int i = this.jdField_a_of_type_Int + 1;
+    if (!b(i)) {
+      return;
+    }
+    VideoInfo localVideoInfo = a();
+    if (localVideoInfo == null)
+    {
+      twp.a("VideoAdTimeLoadManager", "empty cache");
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoAdTimeLoadManager.3(this, i, localVideoInfo));
+    localVideoInfo.a.jdField_a_of_type_Int = i;
+    int j = a();
+    if (j == 0) {}
+    for (localVideoInfo.a.jdField_b_of_type_Int = 0;; localVideoInfo.a.jdField_b_of_type_Int = (i - j))
+    {
+      localVideoInfo.a.jdField_c_of_type_Int = txw.jdField_c_of_type_Int;
+      c(i);
+      twp.a("VideoAdTimeLoadManager", "insert success: pos = " + i);
+      return;
     }
   }
 }

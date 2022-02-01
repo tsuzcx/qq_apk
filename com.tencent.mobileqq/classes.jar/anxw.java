@@ -1,42 +1,52 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
 public class anxw
-  implements View.OnTouchListener
 {
-  public anxw(FrameHelperActivity paramFrameHelperActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anxw a(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
-      {
-        return false;
-      } while (!bdwt.c(this.a.getActivity().app, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
-      return false;
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    return false;
-    FrameHelperActivity.b(this.a);
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public anxw a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public anxw a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public AppletItem a()
+  {
+    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public anxw b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public anxw b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

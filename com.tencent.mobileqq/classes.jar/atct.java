@@ -1,20 +1,20 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class atct
-  implements AudioManager.OnAudioFocusChangeListener
+public class atct
+  implements bhnm
 {
-  atct(atcs paramatcs) {}
+  public atct(SendBottomBar paramSendBottomBar) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void a(int paramInt)
   {
-    if ((atcs.a(this.a) != null) && (paramInt == -1) && (atcs.a(this.a) != null)) {
-      atcs.a(this.a).c(false);
+    if (paramInt == 2) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atct
  * JD-Core Version:    0.7.0.1
  */

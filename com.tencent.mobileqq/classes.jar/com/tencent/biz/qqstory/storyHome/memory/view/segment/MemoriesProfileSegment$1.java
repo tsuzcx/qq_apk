@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.view.segment;
 
-import wth;
-import wtt;
-import yja;
-import yks;
+import vux;
+import vvj;
+import xkl;
+import xmd;
 
 public class MemoriesProfileSegment$1
   implements Runnable
 {
-  public MemoriesProfileSegment$1(yks paramyks) {}
+  public MemoriesProfileSegment$1(xmd paramxmd) {}
   
   public void run()
   {
-    ((wtt)wth.a(2)).a(yks.a(this.this$0).a);
+    ((vvj)vux.a(2)).a(xmd.a(this.this$0).a);
   }
 }
 

@@ -1,13 +1,28 @@
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+
 public class aicr
+  implements AbsListView.OnScrollListener
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = false;
-  boolean f = false;
+  public aicr(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public aicr(aibr paramaibr) {}
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    {
+      if ((paramInt != 0) && (paramInt != 1)) {
+        NewFriendVerifyBlockedListFragment.a(this.a).a();
+      }
+    }
+    else {
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a).b();
+    NewFriendVerifyBlockedListFragment.a(this.a).c();
+  }
 }
 
 

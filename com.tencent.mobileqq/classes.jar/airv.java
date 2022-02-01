@@ -1,6 +1,11 @@
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
+
 public abstract interface airv
 {
-  public abstract void a(airu paramairu);
+  public abstract void a(List<MayKnowRecommend> paramList);
+  
+  public abstract boolean a();
 }
 
 

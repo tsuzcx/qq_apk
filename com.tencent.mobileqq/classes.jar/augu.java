@@ -1,11 +1,20 @@
-class augu
-  implements atit
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
+import com.tencent.qphone.base.util.QLog;
+
+public class augu
+  implements DialogInterface.OnClickListener
 {
-  augu(augr paramaugr) {}
+  public augu(HotPicPageView.4.2 param2) {}
   
-  public void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    augr.a(this.a, paramLong);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_Auhb.a == 1) {
+      this.a.a.jdField_a_of_type_Auhb.a(0);
+    }
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 

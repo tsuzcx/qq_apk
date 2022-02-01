@@ -1,6 +1,21 @@
-public abstract interface ahca
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+
+class ahca
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  ahca(ahbz paramahbz, ahbu paramahbu) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
+    }
+    return false;
+  }
 }
 
 

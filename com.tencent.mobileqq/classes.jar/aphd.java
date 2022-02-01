@@ -1,54 +1,45 @@
+import ProfileLogic.QC.setUserProfileRsp;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class aphd
+  extends anam
 {
-  private int jdField_a_of_type_Int;
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
+  public aphd(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public aphd(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaIoBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = 0;
-    if ((this.c != 8) && (this.c != 16)) {
-      throw new RuntimeException(String.format("bit deepth must be 8 or 16, current is %s", new Object[] { Integer.valueOf(this.c) }));
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    try
+    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
     {
-      this.jdField_a_of_type_JavaIoBufferedInputStream.close();
+      i = ((setUserProfileRsp)paramObject).ret;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
+      }
+      if (i == 0)
+      {
+        if (this.a.app != null)
+        {
+          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
+          paramObject.g = 1;
+          paramObject.h = 8;
+          ProfileActivity.b(this.a, paramObject);
+          QQToast.a(this.a, 0, 2131719241, 0).a();
+        }
+        this.a.finish();
+      }
+    }
+    while (!"profilelogic.setUserProfile".equals(paramObject))
+    {
+      int i;
+      return;
+      QQToast.a(this.a, 1, 2131719238, 0).a();
       return;
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-  }
-  
-  public byte[] a(long paramLong)
-  {
-    int i = (int)(this.jdField_a_of_type_Int * paramLong / 1000L) * this.b * (this.c / 8);
-    byte[] arrayOfByte1 = new byte[i];
-    byte[] arrayOfByte2 = new byte[i];
-    i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(arrayOfByte1, this.d, i);
-    if (i != -1) {
-      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
-    }
-    QLog.d("AudioGenerator", 4, String.format("read index:%s, len: %s", new Object[] { Integer.valueOf(this.e), Integer.valueOf(i) }));
-    return arrayOfByte2;
+    QQToast.a(this.a, 1, 2131719238, 0).a();
   }
 }
 

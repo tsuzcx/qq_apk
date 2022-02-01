@@ -56,7 +56,7 @@ class ImageExporter$1
         localObject1 = ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getPath();
         Object localObject2 = BitmapUtil.getImageSize((String)localObject1, false);
         if (ImageExporter.access$200(this.this$0) == null) {
-          break label481;
+          break label488;
         }
         j = ImageExporter.access$200(this.this$0).getMaxExportSize();
         label199:
@@ -65,7 +65,7 @@ class ImageExporter$1
           localObject3 = Util.constrainMaxSize((Size)localObject2, j);
           int k = ((Size)localObject2).getWidth() / ((Size)localObject3).getWidth();
           if (((Size)localObject2).getWidth() % ((Size)localObject3).getWidth() != 0) {
-            break label486;
+            break label493;
           }
           j = 0;
           k = j + k;
@@ -83,7 +83,7 @@ class ImageExporter$1
         Object localObject3 = (String)ImageExporter.access$200(this.this$0).getOutputPaths().get(i);
         StickerController localStickerController = new StickerController(ImageExporter.access$400(this.this$0));
         ImageExporter.access$502(this.this$0, new CountDownLatch(1));
-        MediaBuilderFactory.mediaBuilderAsync(localMediaModel, localStickerController, localVideoRenderChainConfigure, new ImageExporter.1.1(this, localStickerController, localMediaModel, (CGSize)localObject2, localLinkedBlockingDeque, (String)localObject3, (String)localObject1, localAtomicInteger, l));
+        MediaBuilderFactory.mediaBuilderAsync(localMediaModel, ImageExporter.access$400(this.this$0), localStickerController, localVideoRenderChainConfigure, new ImageExporter.1.1(this, localStickerController, localMediaModel, (CGSize)localObject2, localLinkedBlockingDeque, (String)localObject3, (String)localObject1, localAtomicInteger, l));
       }
       try
       {
@@ -97,10 +97,10 @@ class ImageExporter$1
         }
         localVideoRenderChainConfigure.setSceneType(0);
         break label145;
-        label481:
+        label488:
         j = -1;
         break label199;
-        label486:
+        label493:
         j = 1;
       }
       catch (InterruptedException localInterruptedException)

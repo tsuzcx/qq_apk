@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import anvl;
-import bhng;
+import ampt;
+import bfwe;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,22 +11,22 @@ import mqq.app.MobileQQ;
 public class ConfigHandler$1
   implements Runnable
 {
-  public ConfigHandler$1(anvl paramanvl, String paramString, long paramLong) {}
+  public ConfigHandler$1(ampt paramampt, String paramString, long paramLong) {}
   
   public void run()
   {
     File localFile = new File(this.this$0.app.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
     String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.a(this.this$0.app, str, localFile);
+    int i = HttpDownloadUtil.downloadData(this.this$0.app, str, localFile);
     if (QLog.isColorLevel()) {
       QLog.d("JumpWhiteList", 2, "handleJumpWhiteList download: " + i);
     }
     if (i == 0)
     {
-      bhng.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      bfwe.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
       return;
     }
-    bhng.a().a(this.this$0.app.getApplication());
+    bfwe.a().a(this.this$0.app.getApplication());
   }
 }
 

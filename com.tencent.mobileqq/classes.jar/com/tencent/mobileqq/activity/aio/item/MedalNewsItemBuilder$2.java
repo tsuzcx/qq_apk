@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahmi;
+import agiu;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.MessageForMedalNews;
 
 public class MedalNewsItemBuilder$2
   implements Runnable
 {
-  public MedalNewsItemBuilder$2(ahmi paramahmi, MessageForMedalNews paramMessageForMedalNews) {}
+  public MedalNewsItemBuilder$2(agiu paramagiu, MessageForMedalNews paramMessageForMedalNews) {}
   
   public void run()
   {
-    ahmi.a(this.this$0, this.a.frienduin, this.this$0.a.d, this.a.level, this.a.id, this.a.ts, this.a.seq);
+    agiu.a(this.this$0, this.a.frienduin, this.this$0.a.curFriendNick, this.a.level, this.a.id, this.a.ts, this.a.seq);
   }
 }
 

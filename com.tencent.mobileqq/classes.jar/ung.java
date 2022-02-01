@@ -1,44 +1,50 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 
 public class ung
-  extends blsv<uho, blsy<uho>>
 {
-  private ucr a;
-  
-  public ung(Context paramContext, ucr paramucr)
+  public static ung a()
   {
-    super(paramContext);
-    this.a = paramucr;
+    return new ung();
   }
   
-  public int a(int paramInt)
+  private uqy a(String paramString, int paramInt)
   {
-    return 0;
+    return new uni(this, paramInt, paramString);
   }
   
-  public blsy<uho> a(ViewGroup paramViewGroup, int paramInt)
+  private void c(String paramString, int paramInt)
   {
-    return unh.a(paramViewGroup);
-  }
-  
-  public void a(blsy<uho> paramblsy)
-  {
-    super.onViewAttachedToWindow(paramblsy);
-    if (((paramblsy instanceof unh)) && (this.a != null) && (this.a.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
-      ((unh)paramblsy).a();
+    FollowEvent localFollowEvent = new FollowEvent();
+    localFollowEvent.setPersonId(paramString);
+    if (paramInt == 1) {
+      localFollowEvent.setIsFollow(1);
     }
-  }
-  
-  public void a(blsy<uho> paramblsy, int paramInt)
-  {
-    uho localuho = (uho)a(paramInt);
-    if (localuho == null) {}
-    while (!(paramblsy instanceof unh)) {
+    for (;;)
+    {
+      unw.a().a(localFollowEvent);
       return;
+      localFollowEvent.setIsFollow(2);
     }
-    ((unh)paramblsy).a(localuho, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    uya.b("WSUserBusiness", "[actionBlockRecommendPerson] personID : " + paramString);
+    paramString = new urj(new uwe(paramString), null, new unh(this), 4006);
+    urc.a().a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    uya.b("WSUserBusiness", "[actionChangeFollow] personID : " + paramString + "  followStatus:" + paramInt);
+    c(paramString, paramInt);
+    paramString = new urj(new uwf(paramString, paramInt), null, a(paramString, paramInt), 4005);
+    urc.a().a(paramString);
   }
 }
 

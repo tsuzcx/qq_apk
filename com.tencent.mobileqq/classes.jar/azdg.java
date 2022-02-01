@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import java.util.List;
 
-public final class azdg
-  implements Parcelable.Creator<ShuayishuaConfig>
+public abstract interface azdg
 {
-  public ShuayishuaConfig a(Parcel paramParcel)
-  {
-    return new ShuayishuaConfig(paramParcel);
-  }
-  
-  public ShuayishuaConfig[] a(int paramInt)
-  {
-    return new ShuayishuaConfig[paramInt];
-  }
+  public abstract void a(List<PushDialogTemplate> paramList);
 }
 
 

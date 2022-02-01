@@ -1,43 +1,106 @@
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class ahnu
-  implements OnCompositionLoadedListener
+class ahnu
+  implements INetEngine.INetEngineListener
 {
-  ahnu(DiniFlyAnimationView paramDiniFlyAnimationView, ahdx paramahdx, String paramString) {}
+  ahnu(ahns paramahns, String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new ahnv(this));
-    if (paramLottieComposition == null)
+    if (QLog.isColorLevel()) {
+      QLog.i("StickerRecManager", 2, "onResp resultcode: " + paramNetResp.mHttpCode + " threadid=" + Thread.currentThread().getId());
+    }
+    long l1;
+    if ((paramNetResp.mHttpCode == 200) && (ahns.a(this.jdField_a_of_type_Ahns, ahns.a(this.jdField_a_of_type_Ahns), ahns.b(this.jdField_a_of_type_Ahns), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ahnt.jdField_a_of_type_JavaLangString, 2, "composition is null ,return");
+      if (!ahns.b(this.jdField_a_of_type_Ahns).exists()) {
+        break label423;
       }
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecManager", 2, "pull words success");
+      }
+      l1 = 0L;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    if ((this.jdField_a_of_type_Ahdx != null) && ("bubble".equals(this.jdField_a_of_type_JavaLangString)))
+    for (;;)
     {
-      paramLottieComposition = this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getCompRect();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
-      int i = paramLottieComposition.width() * localLayoutParams.height / paramLottieComposition.height();
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams().width = i;
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      int i;
+      try
+      {
+        long l2 = SystemClock.elapsedRealtime();
+        l1 = l2;
+        Object localObject = new JSONObject(FileUtils.readFileToString(ahns.b(this.jdField_a_of_type_Ahns)));
+        l1 = l2;
+        paramNetResp = ((JSONObject)localObject).optString("version", null);
+        l1 = l2;
+        localObject = ((JSONObject)localObject).optJSONArray("words");
+        l1 = l2;
+        BloomFilter localBloomFilter = new BloomFilter();
+        l1 = l2;
+        localBloomFilter.version = paramNetResp;
+        i = 0;
+        l1 = l2;
+        if (i < ((JSONArray)localObject).length())
+        {
+          l1 = l2;
+          paramNetResp = ((JSONArray)localObject).optString(i);
+          l1 = l2;
+          if (TextUtils.isEmpty(paramNetResp)) {
+            break label438;
+          }
+          l1 = l2;
+          localBloomFilter.add(paramNetResp);
+          break label438;
+        }
+        l1 = l2;
+        FileUtils.deleteFile(ahns.c(this.jdField_a_of_type_Ahns).getAbsolutePath());
+        l1 = l2;
+        ahns.a(this.jdField_a_of_type_Ahns, ahns.c(this.jdField_a_of_type_Ahns).getAbsolutePath(), localBloomFilter);
+        l1 = l2;
+        FileUtils.deleteFile(ahns.b(this.jdField_a_of_type_Ahns).getAbsolutePath());
+        l1 = l2;
+        bfyz.d(ahns.a(this.jdField_a_of_type_Ahns).getApp(), "words_version_key805_gray_one", ahns.a(this.jdField_a_of_type_Ahns).getCurrentUin(), this.b);
+        l1 = l2;
+        this.jdField_a_of_type_Ahns.b();
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          l1 = l2;
+          QLog.d("StickerRecManager", 2, "generate encode table time cost : " + (SystemClock.elapsedRealtime() - l2));
+        }
+        return;
+      }
+      catch (Exception paramNetResp)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StickerRecManager", 2, "generate encode table time error cost : " + (SystemClock.elapsedRealtime() - l1));
+        QLog.d("StickerRecManager", 2, "build EncodeTable error !");
+        return;
+      }
+      label423:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("StickerRecManager", 2, "updateWords fail: words file is not exist.");
+        return;
+        label438:
+        i += 1;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

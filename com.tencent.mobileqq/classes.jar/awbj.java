@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.huayang.Monitor.1;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class awbj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public static boolean a = true;
+  public awbj(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public static void a(String paramString)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (a) {
-      b(paramString);
+    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
+    {
+      awbm localawbm = (awbm)MultiCardRootLayout.a(this.a).get();
+      if (localawbm != null) {
+        localawbm.a(this.a);
+      }
     }
-  }
-  
-  public static void b(String paramString)
-  {
-    ThreadManager.executeOnNetWorkThread(new Monitor.1("https://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

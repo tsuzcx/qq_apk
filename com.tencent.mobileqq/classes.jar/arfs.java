@@ -1,91 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class arfs
-  extends arac<arfr>
+  implements View.OnTouchListener
 {
-  @NonNull
-  public arfr a(int paramInt)
-  {
-    return new arfr();
-  }
+  public arfs(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
   
-  @Nullable
-  public arfr a(araj[] paramArrayOfaraj)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    if (paramMotionEvent.getAction() == 1)
     {
-      arfr localarfr = arfr.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
+        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
       }
-      return localarfr;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onParsed is null");
+    while (paramMotionEvent.getAction() != 0)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
+      return false;
     }
-    return null;
-  }
-  
-  public void a(arfr paramarfr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramarfr.toString());
-    }
-    paramarfr = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (paramarfr == null) {
-      return;
-    }
-    ((azic)paramarfr.getManager(369)).d(paramarfr.getExtOnlineStatus());
-  }
-  
-  public Class<arfr> clazz()
-  {
-    return arfr.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
     return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    QLog.d("OnlineStatusConfProcessor", 1, "isNeedUpgradeReset ");
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 578;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfs
  * JD-Core Version:    0.7.0.1
  */

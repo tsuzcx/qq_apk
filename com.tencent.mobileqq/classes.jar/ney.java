@@ -1,59 +1,27 @@
-import android.text.TextUtils;
+import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPClientConnectListener;
-import java.util.concurrent.atomic.AtomicInteger;
 
-class ney
-  implements EIPCOnGetConnectionListener, EIPClientConnectListener
+public class ney
+  implements ncc
 {
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public ney(GuessSongStageView paramGuessSongStageView) {}
   
-  private ney(new paramnew) {}
-  
-  public boolean a()
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
-  }
-  
-  public void connectFailed()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
-    QLog.i("AVGameClientQIPCModule", 1, "connectFailed");
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-    QLog.i("AVGameClientQIPCModule", 1, "connectSuccess, server[" + paramEIPCConnection.procName + "]");
-  }
-  
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessSongStageView", 2, "onLoad lottieDrawable = " + paramLottieDrawable);
+    }
+    if (paramLottieDrawable != null)
     {
-      return;
-      QLog.i("AVGameClientQIPCModule", 1, "onConnectBind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection == null) {}
-    do
-    {
-      return;
-      QLog.i("AVGameClientQIPCModule", 1, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+      this.a.a = paramLottieDrawable;
+      GuessSongStageView.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ney
  * JD-Core Version:    0.7.0.1
  */

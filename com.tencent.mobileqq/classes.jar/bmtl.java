@@ -1,136 +1,127 @@
-import android.content.Context;
-import com.tencent.component.network.utils.NetworkUtils;
-import cooperation.qzone.util.NetworkState;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
-import org.apache.http.impl.conn.SingleClientConnManager;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bmtl
+  extends bmte
 {
-  public static final int a = "https://".length();
+  private bmte jdField_a_of_type_Bmte;
+  private ConcurrentHashMap<String, MusicItemInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentHashMap<String, bgoe> b;
   
-  private static String a(String paramString)
+  public bmtl(ConcurrentHashMap<String, MusicItemInfo> paramConcurrentHashMap, ConcurrentHashMap<String, bgoe> paramConcurrentHashMap1, bmte parambmte)
   {
-    String str = paramString.trim().replace(" ", "");
-    int i = str.indexOf('#');
-    paramString = str;
-    if (i > 0) {
-      paramString = str.substring(0, i);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
+    this.b = paramConcurrentHashMap1;
+    this.jdField_a_of_type_Bmte = parambmte;
+  }
+  
+  public void onCancel(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMusicDownloadListener", 2, "onCancel key=" + paramString);
     }
-    return paramString;
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localMusicItemInfo != null) {
+      localMusicItemInfo.mProgress = -1;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    this.b.remove(paramString);
+    this.jdField_a_of_type_Bmte.onCancel(paramString);
+    bmzd.a(localMusicItemInfo).c();
   }
   
-  public static HttpResponse a(Context paramContext, String paramString, HttpEntity paramHttpEntity)
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    return a(paramContext, paramString, paramHttpEntity, null);
-  }
-  
-  public static HttpResponse a(Context paramContext, String paramString, HttpEntity paramHttpEntity, bmtm parambmtm)
-  {
-    return a(false).execute(a(paramContext, paramString, paramHttpEntity, parambmtm));
-  }
-  
-  public static HttpClient a(boolean paramBoolean)
-  {
-    Object localObject2 = new BasicHttpParams();
-    HttpConnectionParams.setStaleCheckingEnabled((HttpParams)localObject2, false);
-    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, 20000);
-    HttpConnectionParams.setTcpNoDelay((HttpParams)localObject2, true);
-    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, 45000);
-    HttpConnectionParams.setSocketBufferSize((HttpParams)localObject2, 8192);
-    HttpProtocolParams.setVersion((HttpParams)localObject2, HttpVersion.HTTP_1_1);
-    HttpProtocolParams.setUserAgent((HttpParams)localObject2, "android-qzone");
-    Object localObject1 = new SchemeRegistry();
-    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-    try
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMusicDownloadListener", 2, new Object[] { "onFinish, info:", localMusicItemInfo });
+    }
+    boolean bool = paramBoolean;
+    if (localMusicItemInfo != null)
     {
-      ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-      label98:
-      if (paramBoolean) {}
-      for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
-      {
-        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
-        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
-        return localObject2;
+      if (!paramBoolean) {
+        break label214;
       }
-    }
-    catch (Exception localException)
-    {
-      break label98;
-    }
-  }
-  
-  public static HttpPost a(Context paramContext, String paramString, HttpEntity paramHttpEntity, bmtm parambmtm)
-  {
-    Object localObject = a(paramString);
-    paramString = b((String)localObject);
-    localObject = new HttpPost((String)localObject);
-    ((HttpPost)localObject).addHeader("Host", paramString);
-    ((HttpPost)localObject).addHeader("x-online-host", paramString);
-    if ((paramHttpEntity instanceof ByteArrayEntity)) {
-      ((HttpPost)localObject).addHeader("Content-Type", "application/octet-stream");
-    }
-    ((HttpPost)localObject).setEntity(paramHttpEntity);
-    a(paramContext, (HttpRequest)localObject, parambmtm);
-    return localObject;
-  }
-  
-  private static void a(Context paramContext, HttpRequest paramHttpRequest, bmtm parambmtm)
-  {
-    boolean bool1;
-    if (parambmtm != null)
-    {
-      bool1 = parambmtm.a;
-      if (parambmtm == null) {
-        break label89;
-      }
-    }
-    label89:
-    for (boolean bool2 = parambmtm.b;; bool2 = false)
-    {
-      if ((bool1) && (NetworkState.isMobile()))
+      localMusicItemInfo.mProgress = 100;
+      bmzd.a(localMusicItemInfo).b();
+      bool = paramBoolean;
+      if (localMusicItemInfo.isMyMusicInfo())
       {
-        paramContext = NetworkUtils.getProxy(paramContext, bool2);
-        if (paramContext != null)
+        bool = paramBoolean;
+        if (localMusicItemInfo.fileSize > 0L)
         {
-          paramContext = (InetSocketAddress)paramContext.address();
-          if (paramContext != null)
+          File localFile = new File(paramString);
+          if (localFile.length() != localMusicItemInfo.fileSize)
           {
-            paramContext = new HttpHost(paramContext.getHostName(), paramContext.getPort());
-            paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramContext);
+            localMusicItemInfo.mProgress = -1;
+            bmzd.a(localMusicItemInfo).c();
+            paramBoolean = false;
+          }
+          bool = paramBoolean;
+          if (QLog.isColorLevel()) {
+            QLog.d("QQMusicDownloadListener", 2, "file.length =" + localFile.length() + " info.fileSize=" + localMusicItemInfo.fileSize);
           }
         }
       }
+    }
+    for (bool = paramBoolean;; bool = paramBoolean)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      this.b.remove(paramString);
+      this.jdField_a_of_type_Bmte.onFinish(paramString, bool, paramInt);
       return;
-      bool1 = true;
-      break;
+      label214:
+      localMusicItemInfo.mProgress = -1;
+      bmzd.a(localMusicItemInfo).c();
     }
   }
   
-  private static String b(String paramString)
+  public void onNetChange(int paramInt)
   {
-    return new URL(paramString).getAuthority();
+    this.jdField_a_of_type_Bmte.onNetChange(paramInt);
+  }
+  
+  public void onProgress(String paramString, int paramInt)
+  {
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    int i = paramInt;
+    if (localMusicItemInfo != null)
+    {
+      i = paramInt;
+      if (paramInt == 100)
+      {
+        i = paramInt;
+        if (this.b.contains(localMusicItemInfo.getLocalPath())) {
+          i = 99;
+        }
+      }
+      localMusicItemInfo.mProgress = i;
+    }
+    this.jdField_a_of_type_Bmte.onProgress(paramString, i);
+  }
+  
+  public void onStart(String paramString, boolean paramBoolean)
+  {
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localMusicItemInfo != null)
+    {
+      if (paramBoolean) {
+        break label60;
+      }
+      bmzd.a(localMusicItemInfo).c();
+      localMusicItemInfo.mProgress = -1;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      this.b.remove(paramString);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bmte.onStart(paramString, paramBoolean);
+      return;
+      label60:
+      localMusicItemInfo.mProgress = 1;
+    }
   }
 }
 

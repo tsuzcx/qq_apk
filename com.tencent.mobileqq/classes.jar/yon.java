@@ -1,26 +1,45 @@
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class yon
-  extends QQUIEventReceiver<yol, xbq>
+  extends xnj<xoe>
 {
-  public yon(@NonNull yol paramyol)
+  public yon(@Nullable xnn paramxnn)
   {
-    super(paramyol);
+    super(paramxnn);
   }
   
-  public void a(@NonNull yol paramyol, @NonNull xbq paramxbq)
+  protected JobSegment<xnm, xoe> a()
   {
-    if ((paramxbq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramxbq.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    paramyol.b(paramxbq.jdField_a_of_type_JavaUtilList);
+    return new xnz();
   }
   
-  public Class acceptEventClass()
+  protected JobSegment<Integer, xnm> a(xnl paramxnl)
   {
-    return xbq.class;
+    return new yoo(paramxnl);
+  }
+  
+  protected xoe a()
+  {
+    xnp localxnp = (xnp)vux.a(11);
+    List localList = localxnp.b();
+    xoe localxoe = new xoe(new ErrorMessage());
+    localxoe.jdField_b_of_type_JavaUtilList = localxnp.b(localList);
+    localxoe.jdField_b_of_type_Boolean = true;
+    localxoe.a = localxoe.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localxoe;
+  }
+  
+  protected xoe a(ErrorMessage paramErrorMessage)
+  {
+    return new xoe(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((xnp)vux.a(11)).b(paramList, paramBoolean);
   }
 }
 

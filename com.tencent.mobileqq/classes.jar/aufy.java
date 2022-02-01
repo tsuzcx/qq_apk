@@ -1,37 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aufy
-  implements aumz
+public abstract class aufy
 {
-  aufy(aufx paramaufx) {}
+  protected int a;
+  protected Context a;
+  protected Bitmap a;
+  protected aufs a;
   
-  public void a()
+  public aufy(Context paramContext, int paramInt)
   {
-    int i = this.a.a.g();
-    if (this.a.a.f() == 6000) {
-      if (i == 0) {
-        if (this.a.a.h() == 2) {
-          auft.c(this.a.a);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a.a != null) {
-        this.a.a.a.d();
-      }
-      return;
-      auft.a(this.a.a);
-      continue;
-      auft.c(this.a.a);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
-      }
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b() {}
+  public aufy(Context paramContext, int paramInt, aufs paramaufs)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Aufs = paramaufs;
+  }
+  
+  public Bitmap a()
+  {
+    if (this.jdField_a_of_type_Aufs != null) {
+      a(this.jdField_a_of_type_Aufs.a());
+    }
+    return null;
+  }
+  
+  public void a(aufu paramaufu)
+  {
+    paramaufu.c = 1.0F;
+  }
+  
+  public Drawable[] a(QQAppInterface paramQQAppInterface)
+  {
+    return null;
+  }
 }
 
 

@@ -1,17 +1,29 @@
 import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.aifilter.MultiVideoAIFilterProxy.1;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-final class bmgp
-  implements bmgr
+public class bmgp
+  extends bmgv
 {
-  public void a(boolean paramBoolean, Context paramContext, bmgt parambmgt)
+  private static final String a = bmgp.class.getSimpleName();
+  
+  public bmgp(TAVCutVideoSession paramTAVCutVideoSession)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bmgk.f(paramContext, parambmgt);
-    }
+    super(paramTAVCutVideoSession);
+  }
+  
+  protected void a(Context paramContext, bmgj parambmgj)
+  {
+    List localList = a();
+    ThreadManager.getSubThreadHandler().post(new MultiVideoAIFilterProxy.1(this, localList, paramContext, parambmgj));
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

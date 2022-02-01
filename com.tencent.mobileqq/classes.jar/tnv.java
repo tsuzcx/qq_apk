@@ -1,59 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
-import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView.BarrageType;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class tnv
-  extends anud
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$Companion;", "", "()V", "BARRAGE_HEIGHT", "", "getBARRAGE_HEIGHT", "()I", "EMOTICON_TEXT_SIZE", "MAX_TEXT_LIMIT", "NEXT_LINE_LIMIT", "PADDING_LEFT_RIGHT", "getPADDING_LEFT_RIGHT", "getBarrageType", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$BarrageType;", "text", "", "getShowText", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tnv
 {
-  public static long a = 1800L;
-  
-  public tnv(QQAppInterface paramQQAppInterface)
+  public final int a()
   {
-    super(paramQQAppInterface);
+    return BarrageItemView.b();
   }
   
-  public void a()
+  @NotNull
+  public final BarrageItemView.BarrageType a(@Nullable String paramString)
   {
-    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
-    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
-    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
-    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
-      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
-    }
-    try
+    if (paramString != null)
     {
-      localAdReqInfo.int32_req_type.set(3);
-      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
-      localReqAdvertisePara.msg_phone_info.set(tpb.a());
-      localReqBody.req_advertise_para.set(localReqAdvertisePara);
-      nkm.a(this.app, new tnw(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
-        }
+      if (paramString.length() <= 16) {
+        return BarrageItemView.BarrageType.SHORT;
       }
+      if (paramString.length() <= 25) {
+        return BarrageItemView.BarrageType.LONG;
+      }
+      return BarrageItemView.BarrageType.DOUBLE_LINE;
     }
+    return BarrageItemView.BarrageType.SHORT;
   }
   
-  protected Class<? extends anui> observerClass()
+  @NotNull
+  public final String a(@NotNull String paramString)
   {
-    return tnx.class;
+    Intrinsics.checkParameterIsNotNull(paramString, "text");
+    paramString = new StringBuilder(paramString);
+    if (paramString.length() >= 33)
+    {
+      paramString.delete(33, paramString.length());
+      paramString.replace(31, 34, "...");
+    }
+    if (paramString.length() >= 16) {
+      paramString.insert(16, '\n');
+    }
+    paramString = paramString.toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "stringBuilder.toString()");
+    return paramString;
   }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

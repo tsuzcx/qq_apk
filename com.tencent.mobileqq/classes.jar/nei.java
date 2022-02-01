@@ -1,19 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
+import android.view.View;
+import android.widget.ImageView;
 
-class nei
-  implements zye
+public abstract interface nei
 {
-  nei(neg paramneg, Runnable paramRunnable, long paramLong) {}
+  public abstract RectF a();
   
-  public void a()
-  {
-    neg.a(this.jdField_a_of_type_Neg, this.jdField_a_of_type_JavaLangRunnable);
-    QLog.d("AVGameLaunchWebHelper", 2, "preLoadToolProcAndExecuteCallable time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(naf paramnaf);
+  
+  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(naf paramnaf);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nei
  * JD-Core Version:    0.7.0.1
  */

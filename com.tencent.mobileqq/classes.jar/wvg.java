@@ -1,52 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.HashSet;
+import android.util.SparseArray;
 
-public class wvg
+final class wvg
+  extends SparseArray<String>
 {
-  final int jdField_a_of_type_Int;
-  public final Bundle a;
-  String jdField_a_of_type_JavaLangString = "";
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = true;
-  
-  public wvg(int paramInt)
+  wvg()
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static wvg a()
-  {
-    return new wvg(20);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
-    {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      a();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    put(31, "PLAYER_INFO_PLAYER_TYPE");
+    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
+    put(33, "PLAYER_INFO_START_GET_VINFO");
+    put(21, amtj.a(2131713584));
+    put(34, "PLAYER_INFO_END_GET_VINFO");
+    put(22, amtj.a(2131713588));
+    put(23, "PLAYER_INFO_START_RENDERING");
+    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
   }
 }
 

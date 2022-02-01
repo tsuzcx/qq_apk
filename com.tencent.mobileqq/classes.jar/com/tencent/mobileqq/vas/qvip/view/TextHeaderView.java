@@ -7,18 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bicz;
-import bidb;
-import bidg;
-import bidh;
-import bmzn;
+import bgjk;
+import bgjm;
+import bgjr;
+import bgjs;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
 public class TextHeaderView
   extends RelativeLayout
-  implements bidb
+  implements bgjm
 {
   private View jdField_a_of_type_AndroidViewView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -39,10 +39,10 @@ public class TextHeaderView
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
     localIntent.putExtra("url", this.c);
     paramActivity.startActivity(localIntent);
-    bmzn.a().a("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
+    MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
     try
     {
-      bicz.a(118, paramQQVipMsgInfo, paramInt);
+      bgjk.a(118, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramActivity)
@@ -56,21 +56,21 @@ public class TextHeaderView
     this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.title;
     this.jdField_b_of_type_JavaLangString = paramQQVipMsgInfo.contentText;
     this.c = paramQQVipMsgInfo.url;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561936, this, false));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561813, this, false));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378936));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378707));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378603));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378367));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370633);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370601);
     URLDrawable localURLDrawable = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/welling-test/qqvip/background_android@2x.png");
     this.jdField_a_of_type_AndroidViewView.setBackground(localURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365424).setOnClickListener(new bidg(this, paramActivity, paramInt, paramQQVipMsgInfo));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bidh(this, paramActivity, paramInt, paramQQVipMsgInfo));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365456).setOnClickListener(new bgjr(this, paramActivity, paramInt, paramQQVipMsgInfo));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bgjs(this, paramActivity, paramInt, paramQQVipMsgInfo));
     addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     try
     {
-      bicz.a(117, paramQQVipMsgInfo, paramInt);
+      bgjk.a(117, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramQQVipMsgInfo)

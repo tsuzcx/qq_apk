@@ -1,69 +1,107 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
-
 public class bcgc
-  extends bcga
+  extends bcgb
 {
-  public static final String a;
-  public float a;
+  public double a;
   public int a;
-  public CharSequence a;
-  public float b;
-  public CharSequence b;
-  public String b;
-  public String j;
-  public String k;
+  public String e = "0";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  public String v = "";
+  public String w = "";
+  public String x = "";
   
-  static
+  public bcgc()
   {
-    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bcgc.class.getSimpleName();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+    this.d = "";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Double = 0.0D;
   }
   
-  public bcgc(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public String a(int paramInt)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public bcgc(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.b).append("|");
+    localStringBuilder.append(this.c).append("|");
+    localStringBuilder.append(this.e).append("|");
+    localStringBuilder.append(this.d).append("|");
+    localStringBuilder.append(this.f).append("|");
+    localStringBuilder.append(this.g).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
     }
-    return i;
+    for (;;)
+    {
+      localStringBuilder.append(this.jdField_a_of_type_Double).append("|");
+      localStringBuilder.append(this.h).append("|");
+      localStringBuilder.append(this.i).append("|");
+      localStringBuilder.append(this.j).append("|");
+      localStringBuilder.append(this.k).append("|");
+      localStringBuilder.append(this.l).append("|");
+      localStringBuilder.append(this.m).append("|");
+      localStringBuilder.append(this.n).append("|");
+      localStringBuilder.append(this.o).append("|");
+      localStringBuilder.append(this.p).append("|");
+      localStringBuilder.append(this.q).append("|");
+      localStringBuilder.append(this.r).append("|");
+      localStringBuilder.append(this.s).append("|");
+      localStringBuilder.append(this.t).append("|");
+      localStringBuilder.append(this.u).append("|");
+      localStringBuilder.append(this.v).append("|");
+      localStringBuilder.append(this.w).append("|");
+      localStringBuilder.append(this.x).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    }
   }
   
-  public void a(String paramString)
+  public String toString()
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
-      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
-      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
-      this.j = paramString.optString("topLeftTagText");
-      this.k = paramString.optString("topLeftTagColor");
-      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
-      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
-    }
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Double).append("|");
+    localStringBuffer.append(this.h).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.l).append("|");
+    localStringBuffer.append(this.m).append("|");
+    localStringBuffer.append(this.n).append("|");
+    localStringBuffer.append(this.o).append("|");
+    localStringBuffer.append(this.p).append("|");
+    localStringBuffer.append(this.q).append("|");
+    localStringBuffer.append(this.r).append("|");
+    localStringBuffer.append(this.s).append("|");
+    localStringBuffer.append(this.t).append("|");
+    localStringBuffer.append(this.u).append("|");
+    localStringBuffer.append(this.v).append("|");
+    localStringBuffer.append(this.w).append("|");
+    localStringBuffer.append(this.x).append("|");
+    return localStringBuffer.toString();
   }
 }
 

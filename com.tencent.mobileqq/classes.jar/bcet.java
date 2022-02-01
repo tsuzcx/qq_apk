@@ -1,91 +1,33 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcet
-  extends bcfs
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
-  
-  public bcet(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  private static String a(bceu parambceu)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    return parambceu.a();
   }
   
-  public CharSequence a()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    AddFriendActivity.a((Activity)paramView.getContext(), new SearchResultItem(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record), ((BaseActivity)paramView.getContext()).app, true, 1);
-    bcni.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    bcni.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    StringBuilder localStringBuilder;
-    if (this.b == null)
-    {
-      localStringBuilder = new StringBuilder().append("(");
-      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() == 0L) {
-        break label78;
-      }
+    bceu localbceu = new bceu();
+    localbceu.jdField_a_of_type_Long = paramLong9;
+    localbceu.b = paramLong1;
+    localbceu.c = paramLong2;
+    localbceu.jdField_d_of_type_Long = paramLong3;
+    localbceu.e = paramLong4;
+    localbceu.jdField_f_of_type_Long = paramLong5;
+    localbceu.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentUin();
+    localbceu.g = paramLong6;
+    localbceu.m = paramLong7;
+    localbceu.h = paramLong8;
+    localbceu.jdField_d_of_type_JavaLangString = paramString1;
+    localbceu.jdField_f_of_type_JavaLangString = paramString2;
+    paramString1 = a(localbceu);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreReportController", 1, "getReportingDetail=" + paramString1);
     }
-    label78:
-    for (String str = String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());; str = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get())
-    {
-      this.b = bcni.a(str + ")", this.jdField_a_of_type_JavaLangString);
-      return this.b;
-    }
-  }
-  
-  public String b()
-  {
-    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-    }
-    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return 1;
-    }
-    return 11;
-  }
-  
-  public CharSequence c()
-  {
-    return anzj.a(2131704248);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    bcef.b(paramQQAppInterface, "dc02653", paramString1, 1);
   }
 }
 

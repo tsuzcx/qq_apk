@@ -1,6 +1,9 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
@@ -9,12 +12,14 @@ import com.tencent.qqmini.sdk.auth.AuthStateItem;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.auth.SubscribeMessage;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,8 +34,27 @@ import org.json.JSONObject;
 public class SettingsJsPlugin
   extends BaseJsPlugin
 {
+  private static final String ACTION_RETURN_ADDRESS_TO_MINIAPP = "action_return_address_to_miniapp";
+  private static final String KEY_MINIAPP_ADDRESS_INFO = "key_miniapp_address_info";
   private static final String TAG = "SettingsJsPlugin";
+  private BroadcastReceiver addressReceiver = new SettingsJsPlugin.1(this);
+  private RequestEvent addressReq = null;
   private ChannelProxy mProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+  private boolean receiverRegistered = false;
+  
+  private void callbackChooseAddress(String paramString, RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      paramRequestEvent.ok(new JSONObject(paramString));
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QMLog.e("SettingsJsPlugin", "callbackChooseAddress get an error.", paramString);
+      paramRequestEvent.fail();
+    }
+  }
   
   private void callbackSettingEvent(AuthState paramAuthState, RequestEvent paramRequestEvent, boolean paramBoolean, Map<String, String> paramMap)
   {
@@ -143,6 +167,24 @@ public class SettingsJsPlugin
     return localHashMap;
   }
   
+  private void launchChooseAddressH5(String paramString)
+  {
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("webStyle", "noBottomBar");
+    localMiniAppProxy.startBrowserActivity(this.mMiniAppContext.getAttachedActivity(), localIntent);
+  }
+  
+  @JsEvent({"openAddress"})
+  private void openAddress(RequestEvent paramRequestEvent)
+  {
+    String str = WnsConfig.getConfig("qqminiapp", "miniappChooseAddressUrl", "https://i.qianbao.qq.com/profile/address/choose.html");
+    this.addressReq = paramRequestEvent;
+    registerChooseAddressReceiver();
+    launchChooseAddressH5(str);
+  }
+  
   private void openSettingActivity(Activity paramActivity, ApkgInfo paramApkgInfo)
   {
     if (paramApkgInfo == null)
@@ -153,9 +195,29 @@ public class SettingsJsPlugin
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, paramApkgInfo.appId, paramApkgInfo.apkgName);
   }
   
+  private void registerChooseAddressReceiver()
+  {
+    if (this.receiverRegistered) {
+      return;
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("action_return_address_to_miniapp");
+    this.mMiniAppContext.getAttachedActivity().registerReceiver(this.addressReceiver, localIntentFilter);
+    this.receiverRegistered = true;
+  }
+  
   private void requestAuthList(boolean paramBoolean, RequestEvent paramRequestEvent, String paramString, AuthState paramAuthState)
   {
-    this.mProxy.getAuthList(paramString, new SettingsJsPlugin.2(this, paramAuthState, paramBoolean, paramRequestEvent));
+    this.mProxy.getAuthList(paramString, new SettingsJsPlugin.3(this, paramAuthState, paramBoolean, paramRequestEvent));
+  }
+  
+  private void unregisterChooseAddressReceiver()
+  {
+    if ((!this.receiverRegistered) || (this.addressReceiver == null)) {
+      return;
+    }
+    this.mMiniAppContext.getAttachedActivity().unregisterReceiver(this.addressReceiver);
+    this.receiverRegistered = false;
   }
   
   @JsEvent({"getSetting"})
@@ -195,10 +257,16 @@ public class SettingsJsPlugin
     requestAuthList(bool1, paramRequestEvent, str, localAuthState);
   }
   
+  public void onDestroy()
+  {
+    unregisterChooseAddressReceiver();
+    super.onDestroy();
+  }
+  
   @JsEvent({"openSetting"})
   public void openSetting(RequestEvent paramRequestEvent)
   {
-    ActivityResultManager.g().addActivityResultListener(new SettingsJsPlugin.1(this, paramRequestEvent));
+    ActivityResultManager.g().addActivityResultListener(new SettingsJsPlugin.2(this, paramRequestEvent));
     openSettingActivity(this.mMiniAppContext.getAttachedActivity(), this.mApkgInfo);
   }
 }

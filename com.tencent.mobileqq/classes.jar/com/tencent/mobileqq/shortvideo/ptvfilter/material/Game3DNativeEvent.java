@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import bdcq;
+import bbvs;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class Game3DNativeEvent
-  implements bdcq
+  implements bbvs
 {
   public void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
@@ -15,7 +15,7 @@ class Game3DNativeEvent
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      VideoEnvironment.a("GameplayEngine.GameEvent", " gestureRegistered:", localUnsatisfiedLinkError);
+      VideoEnvironment.LogDownLoad("GameplayEngine.GameEvent", " gestureRegistered:", localUnsatisfiedLinkError);
     }
   }
   
@@ -28,7 +28,7 @@ class Game3DNativeEvent
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      VideoEnvironment.a("GameplayEngine.GameEvent", " touchEventInternal:", localUnsatisfiedLinkError);
+      VideoEnvironment.LogDownLoad("GameplayEngine.GameEvent", " touchEventInternal:", localUnsatisfiedLinkError);
     }
   }
   
@@ -41,7 +41,7 @@ class Game3DNativeEvent
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      VideoEnvironment.a("GameplayEngine.GameEvent", " gestureRegistered:", localUnsatisfiedLinkError);
+      VideoEnvironment.LogDownLoad("GameplayEngine.GameEvent", " gestureRegistered:", localUnsatisfiedLinkError);
     }
     return true;
   }
@@ -56,7 +56,7 @@ class Game3DNativeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.material.Game3DNativeEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.javahook;
 
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 public final class BadTokenHooker$2
@@ -25,7 +25,7 @@ public final class BadTokenHooker$2
       ((HashMap)localObject).put("detail", this.b);
     }
     ((HashMap)localObject).put("type", String.valueOf(this.jdField_a_of_type_Int));
-    bdmc.a(BaseApplicationImpl.getApplication()).a(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
   }
 }
 

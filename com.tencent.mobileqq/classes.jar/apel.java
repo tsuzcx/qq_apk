@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.applets.data.AppletItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class apel
+class apel
+  extends AnimatorListenerAdapter
 {
-  public String a;
-  public List<AppletItem> a;
+  apel(apeg paramapeg, apen paramapen) {}
   
-  public apel()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public String toString()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AppletsSetting:[").append("des = ").append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startPassiveAnimator!");
+    }
+    if ((this.jdField_a_of_type_Apen != null) && (this.jdField_a_of_type_Apen.b != null))
+    {
+      paramAnimator = "";
+      if (this.jdField_a_of_type_Apen.b.istroop != 0) {
+        break label84;
+      }
+      paramAnimator = "1";
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Passive_dync", paramAnimator, 1, 0, 0, "", String.valueOf(anaj.a(this.jdField_a_of_type_Apen.b.vipBubbleID)), "");
+      return;
+      label84:
+      if (this.jdField_a_of_type_Apen.b.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_Apen.b.istroop == 3000) {
+        paramAnimator = "3";
+      }
+    }
   }
 }
 

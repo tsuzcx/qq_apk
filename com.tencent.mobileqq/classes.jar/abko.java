@@ -1,35 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtAd;
 
-class abko
-  extends URLDrawableDownListener.Adapter
+public final class abko
+  implements Parcelable.Creator<GdtAd>
 {
-  abko(abkn paramabkn, int paramInt, ViewGroup paramViewGroup) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public GdtAd a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Abkn.a(this.jdField_a_of_type_Int, false);
+    return new GdtAd(paramParcel);
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public GdtAd[] a(int paramInt)
   {
-    this.jdField_a_of_type_Abkn.b(this.jdField_a_of_type_Int, paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Abkn.a(this.jdField_a_of_type_Int, true);
-    paramView = this.jdField_a_of_type_Abkn.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
-    if (paramView != null) {
-      this.jdField_a_of_type_Abkn.a(paramView, paramURLDrawable);
-    }
+    return new GdtAd[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abko
  * JD-Core Version:    0.7.0.1
  */

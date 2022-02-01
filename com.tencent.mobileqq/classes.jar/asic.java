@@ -1,8 +1,24 @@
 public abstract interface asic
 {
-  public abstract void a(int paramInt);
+  public abstract int a();
   
-  public abstract void b(int paramInt);
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(ashs paramashs);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

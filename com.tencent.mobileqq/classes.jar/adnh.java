@@ -1,17 +1,26 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class adnh
+  extends BroadcastReceiver
 {
-  public String a;
-  public String b;
+  public adnh(JumpActivity paramJumpActivity) {}
   
-  public adnh(String paramString1, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adnh
  * JD-Core Version:    0.7.0.1
  */

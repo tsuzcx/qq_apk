@@ -1,13 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
 
-public class qay
-  implements ViewBase.IBuilder
+class qay
+  implements qug
 {
-  public ViewBase build(VafContext paramVafContext)
+  qay(qat paramqat, pvc parampvc, Container paramContainer, int paramInt) {}
+  
+  public void a(int paramInt)
   {
-    return new qax(paramVafContext);
+    Object localObject = this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((rfe)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
+    }
+    localObject = (rff)((rfe)localObject).a.get(paramInt);
+    qat.a(this.jdField_a_of_type_Qat, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc.a(), (int)((rff)localObject).a, this.jdField_a_of_type_Pvc.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pvc.a());
   }
 }
 

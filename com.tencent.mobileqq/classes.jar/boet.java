@@ -1,8 +1,6 @@
-import java.io.File;
-
-public class boet
+public abstract interface boet
 {
-  public static final String a = boev.f + File.separator + "camera_story_default_template.json";
+  public abstract void a(boolean paramBoolean);
 }
 
 

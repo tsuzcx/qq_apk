@@ -1,17 +1,15 @@
-public class bngt
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class bngt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  bngt(bngq parambngq) {}
   
-  public bngt()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.k();
   }
 }
 

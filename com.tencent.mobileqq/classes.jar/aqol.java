@@ -1,22 +1,42 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aqol
-  implements TextWatcher
+public final class aqol
 {
-  public aqol(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  private int jdField_a_of_type_Int;
+  private aqon jdField_a_of_type_Aqon;
+  public aqoo a;
+  private aqoq jdField_a_of_type_Aqoq;
+  private aqor jdField_a_of_type_Aqor;
+  public aqos a;
+  private aqot jdField_a_of_type_Aqot;
+  private aqov jdField_a_of_type_Aqov;
+  private aqow jdField_a_of_type_Aqow;
+  private List<aqpa> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public aqoj a()
   {
-    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
-      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
-    }
-    ClearEllipsisEditText.a(this.a, false);
+    return new aqoj(this, null);
+  }
+  
+  public aqol a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aqol a(aqot paramaqot)
+  {
+    this.jdField_a_of_type_Aqot = paramaqot;
+    return this;
+  }
+  
+  public aqol a(aqpa paramaqpa)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramaqpa);
+    return this;
   }
 }
 

@@ -1,12 +1,12 @@
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import android.graphics.Bitmap;
 
-public abstract interface bgdq
+public class bgdq
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(WordInfo paramWordInfo);
-  
-  public abstract void g();
+  public int a;
+  public Bitmap a;
+  public float[] a;
+  public int[] a;
+  public int b;
 }
 
 

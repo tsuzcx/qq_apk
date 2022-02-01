@@ -1,26 +1,72 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class apur
-  implements apvw
+public class apur
+  extends aptq<apuq>
 {
-  apur(apuq paramapuq) {}
-  
-  public void a(long paramLong)
+  @NonNull
+  public apuq a(int paramInt)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.jdField_a_of_type_Apun.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    QLog.d("TroopNotificationConfigProcessor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new apuq();
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  @Nullable
+  public apuq a(aptx[] paramArrayOfaptx)
   {
-    apuk.a(this.a.jdField_a_of_type_Apun.a, this.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return apuq.a(paramArrayOfaptx[0].a);
+    }
+    return null;
+  }
+  
+  public void a(apuq paramapuq)
+  {
+    QLog.d("TroopNotificationConfigProcessor.config", 1, "onUpdate, newConf = " + paramapuq);
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+  }
+  
+  public Class<apuq> clazz()
+  {
+    return apuq.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopNotificationConfigProcessor.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 634;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apur
  * JD-Core Version:    0.7.0.1
  */

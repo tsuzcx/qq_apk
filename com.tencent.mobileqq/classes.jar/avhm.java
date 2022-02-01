@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
-import java.util.Arrays;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avhm
+class avhm
+  implements View.OnClickListener
 {
-  public int a;
-  public Class<? extends FTSEntity> a;
-  public String a;
-  public boolean a;
-  public avho[] a;
-  public String b;
+  avhm(avhj paramavhj, View.OnClickListener paramOnClickListener) {}
   
-  public avhm(Class<? extends FTSEntity> paramClass, avho[] paramArrayOfavho, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_ArrayOfAvho = paramArrayOfavho;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAvho) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    this.jdField_a_of_type_Avhj.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

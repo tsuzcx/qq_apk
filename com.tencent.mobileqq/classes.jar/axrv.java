@@ -1,44 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupMenu;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axrv
-  extends axqq
+class axrv
+  implements View.OnClickListener
 {
-  public axrv(MusicPlayerActivity paramMusicPlayerActivity) {}
+  axrv(axrr paramaxrr) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void onClick(View paramView)
   {
-    if (paramSongInfo != null)
-    {
-      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
-      if (!MusicPlayerActivity.b().containsKey(localObject)) {
-        break label64;
-      }
-      localObject = (axsb)MusicPlayerActivity.b().get(localObject);
-      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((axsb)localObject).a);
-      MusicPlayerActivity.a(this.a, (axsb)localObject, paramSongInfo);
-    }
-    label64:
-    while (MusicPlayerActivity.a().containsKey(localObject)) {
-      return;
-    }
-    Object localObject = MusicPlayerActivity.a(this.a);
-    if (localObject != null) {}
-    for (int i = ((axqs)localObject).c();; i = 0)
-    {
-      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
-      MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
-      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
-      return;
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
+    PopupMenu localPopupMenu = new PopupMenu(axrr.a(this.a), paramView);
+    this.a.a(axrr.a(this.a).b, localPopupMenu);
+    localPopupMenu.show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

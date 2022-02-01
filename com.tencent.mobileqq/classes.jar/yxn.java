@@ -1,44 +1,90 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver;
+import com.tencent.qphone.base.util.QLog;
 
-class yxn
-  implements View.OnClickListener
+public class yxn
+  implements Handler.Callback
 {
-  yxn(yxk paramyxk) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private String jdField_a_of_type_JavaLangString;
+  private yxp jdField_a_of_type_Yxp;
   
-  public void onClick(View paramView)
+  public yxn(Context paramContext)
   {
-    String str;
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Zgm.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    b();
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Zgm.jdField_a_of_type_JavaLangString;
-      str = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((str.equals("##")) || (TextUtils.isEmpty(str)) || (!str.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        yxt localyxt = this.a.jdField_a_of_type_Yxt;
-        if (this.a.jdField_a_of_type_Yxt.a())
-        {
-          str = "2";
-          localyxt.a("use_custom_tag", 0, 0, new String[] { str });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yxo(this);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Yxp = null;
+  }
+  
+  public void a(String paramString, long paramLong, yxp paramyxp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("callUpToolProc from=%s", new Object[] { paramString }));
+    }
+    this.jdField_a_of_type_Yxp = paramyxp;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    paramyxp = new Intent(this.jdField_a_of_type_AndroidContentContext, ARMapThreadStubReceiver.class);
+    paramyxp.setAction("com.tencent.mobileqq.armap.ACTION_START_THREAD");
+    paramyxp.putExtra("from", paramString);
+    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramyxp);
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(108);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(108, paramLong);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Yxt.a(0);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      return true;
+      if (this.jdField_a_of_type_Yxp != null) {
+        this.jdField_a_of_type_Yxp.a();
+      }
     }
   }
 }

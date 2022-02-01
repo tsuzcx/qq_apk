@@ -1,24 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class ych
-  extends SimpleJob<Object>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ych(ycf paramycf, String paramString)
-  {
-    super(paramString);
-  }
+  ych(ycg paramycg) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a == null) {
-      this.a.a = new yci(this.a, this.a.c);
-    }
-    this.a.d = this.a.a.a;
-    ycf.a(this.a);
-    return null;
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
   }
 }
 

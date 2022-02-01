@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alig;
+import akfz;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 import org.json.JSONObject;
@@ -13,16 +12,12 @@ import org.json.JSONObject;
 public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
   extends ResultReceiver
 {
-  private WeakReference<Activity> mActivityWeakReference;
-  private AppInterface mApp;
-  protected QWalletPayJsPlugin mJsPlugin;
+  protected WeakReference<QWalletPayJsPlugin> mJsPluginRef;
   
-  public QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver(QWalletPayJsPlugin paramQWalletPayJsPlugin, Handler paramHandler, AppInterface paramAppInterface, WeakReference<Activity> paramWeakReference)
+  public QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver(QWalletPayJsPlugin paramQWalletPayJsPlugin, Handler paramHandler)
   {
     super(paramHandler);
-    this.mJsPlugin = paramQWalletPayJsPlugin;
-    this.mApp = paramAppInterface;
-    this.mActivityWeakReference = paramWeakReference;
+    this.mJsPluginRef = new WeakReference(paramQWalletPayJsPlugin);
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
@@ -31,25 +26,32 @@ public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
     if (QLog.isColorLevel()) {
       QLog.i("QWalletPayJsHandler", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
     }
-    if ((this.mJsPlugin == null) || (paramBundle == null)) {}
+    if (this.mJsPluginRef == null) {}
+    QWalletPayJsPlugin localQWalletPayJsPlugin;
+    Activity localActivity;
     do
     {
-      return;
-      if (this.mActivityWeakReference == null) {
-        break label112;
-      }
-      Activity localActivity = (Activity)this.mActivityWeakReference.get();
+      do
+      {
+        return;
+        localQWalletPayJsPlugin = (QWalletPayJsPlugin)this.mJsPluginRef.get();
+      } while ((localQWalletPayJsPlugin == null) || (paramBundle == null));
+      localActivity = QWalletPayJsPlugin.access$000(localQWalletPayJsPlugin);
       if (localActivity == null) {
         break;
       }
-      paramBundle = alig.a(paramInt, paramBundle, localActivity);
+      QLog.d("QWalletPayJsHandler", 4, "activity.isFinishing():" + localActivity.isFinishing());
+      paramBundle = akfz.a(paramInt, paramBundle, localActivity);
     } while (paramBundle == null);
-    QWalletPayJsPlugin.access$000(this.mJsPlugin, paramBundle.toString());
+    QWalletPayJsPlugin.access$100(localQWalletPayJsPlugin, paramBundle.toString());
     return;
-    QLog.i("QWalletPayJsHandler", 1, "activity is null");
-    return;
-    label112:
-    QLog.i("QWalletPayJsHandler", 1, "mActivityWeakReference is null");
+    paramBundle = new StringBuilder().append("activity==null:");
+    if (localActivity == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("QWalletPayJsHandler", 1, bool);
+      return;
+    }
   }
 }
 

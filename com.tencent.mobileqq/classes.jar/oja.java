@@ -1,25 +1,13 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
-
-public class oja
-  implements MessageQueue.IdleHandler
+class oja
+  implements pep
 {
-  public oja(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  oja(oiz paramoiz) {}
   
-  public boolean queueIdle()
+  public void a(int paramInt)
   {
-    if (!asjw.a().a())
-    {
-      asjw.a().a().doBindService(BaseApplicationImpl.getApplication());
-      asjw.a().a(new ojb(this));
-      return false;
+    if (this.a.jdField_a_of_type_Sqh != null) {
+      this.a.jdField_a_of_type_Sqh.a(paramInt, this.a.jdField_a_of_type_Int);
     }
-    Bundle localBundle = asev.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    asjw.a().a(localBundle);
-    return false;
   }
 }
 

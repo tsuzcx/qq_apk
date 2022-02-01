@@ -1,14 +1,26 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aulj
-  implements bjhv
+public final class aulj
 {
-  aulj(aulf paramaulf, List paramList) {}
+  public boolean a;
+  public boolean b = true;
   
-  public void a(int paramInt)
+  private void a(String paramString)
   {
-    if (paramInt == 2) {
-      bgsk.a(aulf.a(this.jdField_a_of_type_Aulf), aulf.a(this.jdField_a_of_type_Aulf), this.jdField_a_of_type_JavaUtilList);
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a = paramString.optBoolean("input_status_gray_switch", false);
+      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
     }
   }
 }

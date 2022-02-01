@@ -1,50 +1,111 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.support.annotation.IntRange;
+import android.support.annotation.Nullable;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
 import com.tencent.qphone.base.util.QLog;
 
-public class affy
-  implements View.OnTouchListener
+public abstract class affy
+  implements afgd
 {
-  public affy(QQLSActivity paramQQLSActivity) {}
+  private afga jdField_a_of_type_Afga = new affz(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private FriendShipLayout jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public affy(Context paramContext)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "singlelist  click doble");
-        }
-        if (QQLSActivity.a(this.a) != null)
-        {
-          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
-          QQLSActivity.a(this.a, true);
-        }
-        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "BaseDirector init");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+  }
+  
+  @Nullable
+  public static afgd a(@IntRange(from=0L, to=3L) int paramInt, Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "makeDirector type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return null;
+    case 1: 
+      return new affn(paramActivity);
+    case 2: 
+      return new affp(paramActivity);
+    }
+    return new afft(paramActivity);
+  }
+  
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public FriendShipLayout a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "BaseDirector play");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = new FriendShipLayout(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setBackListener(this.jdField_a_of_type_Afga);
+      if (Build.VERSION.SDK_INT < 19) {
+        break label101;
       }
     }
-    for (;;)
+    label101:
+    for (int i = 67109888;; i = 1024)
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "singlelist  click once");
-      }
-      if (QQLSActivity.a(this.a)) {
-        QQLSActivity.b(this.a).setText(2131698151);
-      }
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -1, 2, i, -2);
+      new FrameLayout.LayoutParams(-1, -1).gravity = 51;
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout, localLayoutParams);
+      return;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(afge paramafge) {}
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "BaseDirector cancel");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.removeAllViews();
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = null;
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
       for (;;)
       {
-        paramView = QQLSActivity.a(this.a).obtainMessage(5);
-        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
-        break;
-        QQLSActivity.b(this.a).setText(2131698150);
-      }
-      if (paramMotionEvent.getAction() == 1) {
-        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
+        QLog.e("BaseDirector", 1, "cancel anim error");
       }
     }
   }

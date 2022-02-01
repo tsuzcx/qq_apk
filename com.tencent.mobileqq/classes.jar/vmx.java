@@ -1,57 +1,74 @@
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqcircle.events.QCircleDanmakuEvent;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.Map;
 
 class vmx
-  implements vvu
+  extends vne
 {
-  vmx(vmw paramvmw) {}
-  
-  public void a()
+  public vmx(vmu paramvmu)
   {
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).a(0, 100);
-    }
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).animate().alpha(0.0F).setDuration(100L);
-    }
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).animate().alpha(0.0F).setDuration(100L);
-    }
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).animate().alpha(0.0F).setDuration(100L);
-    }
-    vmw.a(this.a, 1, 0, 100);
-    aaak.a().a(new QCircleDanmakuEvent(7));
+    super("Q.qqstory.download.preload.PlayingListPreloader");
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, vmp paramvmp)
   {
-    this.a.a(paramFloat1, paramFloat2);
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramvmp);
+    a(paramString, paramInt1, paramErrorMessage, paramvmp);
   }
   
-  public void b()
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, vmp paramvmp)
   {
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).a(1, 100);
+    vmw localvmw = this.a.jdField_a_of_type_Vmw;
+    if (localvmw == null) {}
+    label14:
+    label169:
+    do
+    {
+      break label14;
+      do
+      {
+        return;
+      } while (!TextUtils.equals(paramString, localvmw.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localvmw.b)) {
+          break label136;
+        }
+      }
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localvmw.b = paramErrorMessage;
+        localvmw.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramvmp.a.containsKey("handleCallback")) || (localvmw.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localvmw.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label169;
+        }
+        if (this.a.jdField_a_of_type_Vmy == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Vmy.a(paramString, paramvmp.d, paramInt);
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Vmy == null);
+    label136:
+    this.a.jdField_a_of_type_Vmy.a(paramString, paramvmp.d, localvmw.a(), paramInt);
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, vmp paramvmp)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramvmp);
+    a(paramString, paramInt1, new ErrorMessage(), paramvmp);
+  }
+  
+  public void b(String paramString, int paramInt, vmp paramvmp)
+  {
+    super.b(paramString, paramInt, paramvmp);
+    if ((this.a.jdField_a_of_type_Vmy != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_Vmy.b(paramString, paramvmp.d, paramInt);
     }
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).animate().alpha(1.0F).setDuration(100L);
-    }
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).animate().alpha(1.0F).setDuration(100L);
-    }
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).animate().alpha(1.0F).setDuration(100L);
-    }
-    vmw.a(this.a, 0, 1, 100);
-    if (vmw.a(this.a) != null) {
-      vmw.a(this.a).a(true);
-    }
-    aaak.a().a(new QCircleDanmakuEvent(8));
   }
 }
 

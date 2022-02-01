@@ -1,13 +1,11 @@
-public abstract class ayxm
-  implements anui
+class ayxm
+  implements zzc
 {
-  protected void a(Object paramObject) {}
+  ayxm(ayxl paramayxl) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if ((105 == paramInt) && (paramBoolean)) {
-      a(paramObject);
-    }
+    aytl.m(ayxl.a(this.a), (aymg)ayxl.a(this.a));
   }
 }
 

@@ -1,35 +1,10 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-public class bcpk
-  extends bcpo
+public abstract interface bcpk
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
+  public abstract void a();
   
-  public bcpk() {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public bcpk(ViewGroup paramViewGroup)
-  {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562869, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131371405);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369569));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370112));
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
-  }
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

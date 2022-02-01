@@ -1,32 +1,62 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-final class ugu
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/RIJBlackWhiteModeHelper;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "blackWhiteConfig", "", "getBlackWhiteConfig", "()Z", "setBlackWhiteConfig", "(Z)V", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "addBlackWhiteMode", "", "canvas", "Landroid/graphics/Canvas;", "needConfig", "drawCanvas", "Lkotlin/Function1;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ugu
 {
-  ugu(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt1, int paramInt2) {}
+  @NotNull
+  private static final Paint jdField_a_of_type_AndroidGraphicsPaint;
+  @NotNull
+  private static final String jdField_a_of_type_JavaLangString = "RIJBlackWhiteModeHelper";
+  public static final ugu a;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (zqd.a(this.jdField_a_of_type_AndroidAppActivity))
+    jdField_a_of_type_Ugu = new ugu();
+    jdField_a_of_type_JavaLangString = "RIJBlackWhiteModeHelper";
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    ColorMatrix localColorMatrix = new ColorMatrix();
+    localColorMatrix.setSaturation(0.0F);
+    jdField_a_of_type_AndroidGraphicsPaint.setColorFilter((ColorFilter)new ColorMatrixColorFilter(localColorMatrix));
+  }
+  
+  public final void a(@NotNull Canvas paramCanvas, boolean paramBoolean, @NotNull Function1<? super Canvas, Unit> paramFunction1)
+  {
+    int i = 0;
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "drawCanvas");
+    if (Aladdin.get(320).getIntegerFromString("is_black_white_mode", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      uqh.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-      uno.a(114, this.jdField_a_of_type_Int, this.b, null);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      unx.b(112, 1, 0);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem = uno.a();
+      jdField_a_of_type_Boolean = bool;
+      if ((!paramBoolean) || (jdField_a_of_type_Boolean)) {
+        i = 1;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.downloadscene = ugz.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.comment_loctaion = this.b;
-      ugz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+      if (i == 0) {
+        break;
+      }
+      paramCanvas.saveLayer(null, jdField_a_of_type_AndroidGraphicsPaint, 31);
+      paramFunction1.invoke(paramCanvas);
+      paramCanvas.restore();
+      return;
     }
+    paramFunction1.invoke(paramCanvas);
+  }
+  
+  public final boolean a()
+  {
+    return jdField_a_of_type_Boolean;
   }
 }
 

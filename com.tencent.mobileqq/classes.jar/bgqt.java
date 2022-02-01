@@ -1,27 +1,17 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
 final class bgqt
-  implements View.OnTouchListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bgqt(bgqx parambgqx) {}
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+    paramMediaPlayer.start();
+    paramMediaPlayer.setLooping(true);
+    if (this.a != null) {
+      this.a.a();
     }
   }
 }

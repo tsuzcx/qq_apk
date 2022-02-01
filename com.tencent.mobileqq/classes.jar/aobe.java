@@ -1,39 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import mqq.app.AppRuntime;
-
 public class aobe
-  extends anzi
+  extends aobg
 {
-  protected void a(String paramString)
-  {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
-  }
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  float[] jdField_a_of_type_ArrayOfFloat;
+  float jdField_b_of_type_Float;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  float c;
   
-  protected void b()
+  public aobe(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    this.a.a(6, "fake_p_msg");
-  }
-  
-  public void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.c();
-    this.a.c(true);
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(4, anzg.a().a, 0L);
-    CoreService.stopCoreService();
+    super(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat3;
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobe
  * JD-Core Version:    0.7.0.1
  */

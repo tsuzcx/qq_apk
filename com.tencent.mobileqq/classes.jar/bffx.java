@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bffx
-  implements DialogInterface.OnDismissListener
+public abstract interface bffx
 {
-  bffx(bffu parambffu) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    bffu.a(this.a);
-  }
+  public abstract void a(String paramString);
 }
 
 

@@ -1,12 +1,20 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class amgp
-  extends afwn
+  extends amhi
 {
-  public CheckBox a;
+  amgp(amgo paramamgo) {}
   
-  private amgp(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
+    }
+  }
 }
 
 

@@ -1,13 +1,22 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vzq
-  implements vxz
+  extends QQUIEventReceiver<vzf, vzp>
 {
-  public vzq(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
-  
-  public void a(String paramString)
+  public vzq(@NonNull vzf paramvzf)
   {
-    QCircleFeedCommentWidget.a(this.a, paramString);
+    super(paramvzf);
+  }
+  
+  public void a(@NonNull vzf paramvzf, @NonNull vzp paramvzp)
+  {
+    vzf.a(paramvzf, paramvzp.jdField_a_of_type_Wod, paramvzp.jdField_a_of_type_JavaLangString);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vzp.class;
   }
 }
 

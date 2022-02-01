@@ -1,20 +1,51 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
-@Deprecated
 public class wyt
-  extends wyv
+  extends wrx
 {
-  public wyt(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561785);
-  }
+  public wyt(wys paramwys) {}
   
-  public void a(wvn paramwvn)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super.a(paramwvn);
-    this.a.setDisplayState(5);
-    this.a.setNodeName(anzj.a(2131705834), false);
+    String str1;
+    String str2;
+    if ((paramInt1 == 20000) && (paramInt2 == -1))
+    {
+      paramIntent = BaseActivity.sActivityRoute;
+      str1 = SplashActivity.class.getSimpleName();
+      str2 = QQStoryMainActivity.class.getSimpleName();
+      paramInt1 = paramIntent.size() - 1;
+    }
+    for (;;)
+    {
+      String str3;
+      if (paramInt1 >= 0)
+      {
+        str3 = (String)paramIntent.get(paramInt1);
+        if (TextUtils.isEmpty(str3)) {
+          break label95;
+        }
+        if (str3.startsWith(str1)) {
+          this.a.b();
+        }
+      }
+      else
+      {
+        return;
+      }
+      if (TextUtils.equals(str3, str2))
+      {
+        this.a.c();
+        return;
+      }
+      label95:
+      paramInt1 -= 1;
+    }
   }
 }
 

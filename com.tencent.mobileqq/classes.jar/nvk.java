@@ -1,19 +1,19 @@
-import android.os.AsyncTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class nvk
-  extends AsyncTask<Void, Void, Void>
+  implements View.OnClickListener
 {
-  nvk(nvj paramnvj, aeqz paramaeqz) {}
+  nvk(num paramnum, String paramString, obr paramobr) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Nvj.a.a(this.jdField_a_of_type_Aeqz);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_Nvj.a.a(-1);
+    num.c(this.jdField_a_of_type_Num, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

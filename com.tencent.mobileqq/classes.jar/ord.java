@@ -1,50 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class ord
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentHideButtonClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ord
+  implements oqp
 {
-  private static List<ovg> a;
-  
-  private ord()
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
   {
-    a = new ArrayList();
-  }
-  
-  public static ord a()
-  {
-    return orf.a();
-  }
-  
-  public List<ovg> a()
-  {
-    if (a == null) {
-      return null;
-    }
-    return a;
-  }
-  
-  public void a()
-  {
-    if (a != null) {
-      a.clear();
-    }
-  }
-  
-  public void a(ovg paramovg)
-  {
-    if ((paramovg == null) || (a == null)) {}
-    while (a.contains(paramovg)) {
-      return;
-    }
-    a.add(paramovg);
-  }
-  
-  public void b(ovg paramovg)
-  {
-    if ((a == null) || (a.size() == 0)) {
-      return;
-    }
-    a.remove(paramovg);
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new ore(paramouc, paramouo));
   }
 }
 

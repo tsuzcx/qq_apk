@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
+import abwp;
 import android.content.Context;
-import antf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -30,9 +30,9 @@ public class RecentItemNearbyLiveTipData
     {
       long l1 = Long.valueOf(str2).longValue();
       String str1 = str2;
-      if (l1 > antf.g)
+      if (l1 > AppConstants.NOW_LIVE_TIP_UIN_BASE)
       {
-        long l2 = antf.g;
+        long l2 = AppConstants.NOW_LIVE_TIP_UIN_BASE;
         str1 = l1 - l2 + "";
       }
       return str1;
@@ -46,10 +46,10 @@ public class RecentItemNearbyLiveTipData
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    Object localObject = paramQQAppInterface.a();
-    adab localadab = paramQQAppInterface.a();
+    Object localObject = paramQQAppInterface.getMessageFacade();
+    abwp localabwp = paramQQAppInterface.getConversationFacade();
     if (localObject != null) {}
-    for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
+    for (localObject = ((QQMessageFacade)localObject).getLastMessage(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
       MsgSummary localMsgSummary = getMsgSummaryTemp();
       if (localObject == null)
@@ -61,7 +61,7 @@ public class RecentItemNearbyLiveTipData
         return;
       }
       this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
-      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.a().a(((QQMessageFacade.Message)localObject).senderuin, ((QQMessageFacade.Message)localObject).istroop, ((QQMessageFacade.Message)localObject).uniseq));
+      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.getMessageFacade().getMsgItemByUniseq(((QQMessageFacade.Message)localObject).senderuin, ((QQMessageFacade.Message)localObject).istroop, ((QQMessageFacade.Message)localObject).uniseq));
       if (this.nearbyLiveTipMsg == null)
       {
         if (!QLog.isColorLevel()) {
@@ -73,9 +73,9 @@ public class RecentItemNearbyLiveTipData
       this.nearbyLiveTipMsg.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
       localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localadab != null)
+      if (localabwp != null)
       {
-        this.mUnreadNum = localadab.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localabwp.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
         if (a().equals("1822701914")) {
           this.mUnreadFlag = 3;
         }

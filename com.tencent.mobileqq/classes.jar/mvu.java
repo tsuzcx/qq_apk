@@ -1,19 +1,24 @@
-import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
-import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
 public class mvu
-  extends QQAVImageFilterGroup
+  implements Animation.AnimationListener
 {
-  public mvu()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(null);
-    int i = 0;
-    while (i < 3)
-    {
-      addFilter(new QQAVImageGaussianBlurFilter());
-      i += 1;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,9 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-public abstract interface poq
+public class poq
+  implements pqe
 {
-  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
+  public poq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    pay.a(this.a.a.getContext(), paa.m);
+  }
 }
 
 

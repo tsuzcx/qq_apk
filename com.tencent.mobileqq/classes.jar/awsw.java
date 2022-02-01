@@ -1,24 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class awsw
-  implements View.OnClickListener
+public class awsw
+  implements TextWatcher
 {
-  awsw(awsu paramawsu, awsk paramawsk) {}
+  public awsw(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (ShortVideoCommentsView.a(this.a) == null) {}
+    while (awrp.a(paramEditable.toString()) <= 140) {
       return;
-      awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk).a(awsu.a(this.jdField_a_of_type_Awsu));
-      bdll.b(null, "CliOper", "", "", "0X800A96F", "0X800A96F", 0, 0, "0", "0", "0", "");
     }
+    int j = Selection.getSelectionEnd(paramEditable);
+    paramEditable = awrp.a(paramEditable.toString(), 0, 140).toString();
+    ShortVideoCommentsView.a(this.a).setText(paramEditable);
+    paramEditable = ShortVideoCommentsView.a(this.a).getText();
+    int i = j;
+    if (j > paramEditable.length()) {
+      i = paramEditable.length();
+    }
+    Selection.setSelection(paramEditable, i);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,26 +1,12 @@
-import common.config.service.QzoneConfig;
-
 public class bmag
 {
-  private static volatile bmag jdField_a_of_type_Bmag;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
   
-  public static bmag a()
-  {
-    if (jdField_a_of_type_Bmag == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Bmag == null) {
-        jdField_a_of_type_Bmag = new bmag();
-      }
-      return jdField_a_of_type_Bmag;
-    }
-  }
-  
-  public int a()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "POICacheDistance", 1000);
-  }
+  public bmag(bmad parambmad) {}
 }
 
 

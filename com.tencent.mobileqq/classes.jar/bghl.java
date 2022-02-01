@@ -1,16 +1,45 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.os.Handler;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 class bghl
-  implements bgpm
+  implements Observer
 {
-  bghl(bghh parambghh, TroopChatPie paramTroopChatPie) {}
+  bghl(bghk parambghk) {}
   
-  public void a(int paramInt)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (!bgpk.a(paramInt)) {
-      this.jdField_a_of_type_Bghh.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
+    if ((paramObject instanceof ArrayList))
+    {
+      paramObservable = (ArrayList)paramObject;
+      switch (((Integer)paramObservable.get(0)).intValue())
+      {
+      default: 
+        return;
+      }
+      paramObservable = (RichStatus)paramObservable.get(1);
+      bghk.a(this.a, paramObservable);
+      if (bghk.a(this.a).plainText != null)
+      {
+        paramObject = baos.a().b;
+        if (paramObject != null)
+        {
+          paramObject.plainText = ((ArrayList)bghk.a(this.a).plainText.clone());
+          paramObject.topics.clear();
+          paramObject.topics.addAll(bghk.a(this.a).topics);
+        }
+      }
+      if (paramObservable != null) {
+        bghk.b(this.a).copyFrom(paramObservable);
+      }
+      bghk.a(this.a).a().sendEmptyMessage(10003);
+      baos.a().deleteObserver(bghk.a(this.a));
+      return;
     }
-    this.jdField_a_of_type_Bghh.e(bgpk.b(paramInt));
+    bghk.a(this.a).a().sendEmptyMessage(10003);
   }
 }
 

@@ -1,97 +1,116 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class awfm
 {
-  private static abiy a = new abiy(BaseApplicationImpl.sApplication);
+  public static void a(QQAppInterface paramQQAppInterface) {}
   
-  public static void a()
+  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
   {
-    try
+    if (paramMessageForUniteGrayTip != null)
     {
-      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new awfn(90001) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException2)
-    {
-      try
+      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
+      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
+      String str3 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
+      String str4 = paramMessageForUniteGrayTip.frienduin;
+      if (!TextUtils.isEmpty(str2))
       {
-        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new awfn(90002) });
+        long l1 = awfy.b(str2);
+        long l2 = awfy.a(str2);
+        if ((awfy.b(l1)) && (l2 >= 0L))
+        {
+          String str5 = awfy.a(l1, l2);
+          int i = (int)(l1 * 10L + l2);
+          paramMessageForUniteGrayTip = str1;
+          if (TextUtils.isEmpty(str1)) {
+            paramMessageForUniteGrayTip = "0";
+          }
+          bcef.b(paramQQAppInterface, "dc00898", "", str4, "0X800A7E4", str5, i, 0, paramMessageForUniteGrayTip, "", "", "");
+        }
       }
-      catch (NoSuchMethodException localNoSuchMethodException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new awfn(90003) });
-            try
-            {
-              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new awfn(90004) });
-              return;
-            }
-            catch (NoSuchMethodException localNoSuchMethodException4)
-            {
-              bhjx.a(localNoSuchMethodException4);
-            }
-            localNoSuchMethodException1 = localNoSuchMethodException1;
-            bhjx.a(localNoSuchMethodException1);
-            continue;
-            localNoSuchMethodException2 = localNoSuchMethodException2;
-            bhjx.a(localNoSuchMethodException2);
-          }
-        }
-        catch (NoSuchMethodException localNoSuchMethodException3)
-        {
-          for (;;)
-          {
-            bhjx.a(localNoSuchMethodException3);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipExposure id:" + str2 + " willDowngradeSoon:" + str3 + " grayID:" + paramInt);
       }
     }
   }
   
-  private static void b(boolean paramBoolean, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt, String paramString)
   {
-    String str = null;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
+    if (paramMessageForUniteGrayTip != null)
+    {
+      paramQQAppInterface = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
+      paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
+      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClickWebLink id:" + paramQQAppInterface + " willDowngradeSoon:" + paramMessageForUniteGrayTip + " url:" + paramString);
+      }
     }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
-    bdmc.a(BaseApplicationImpl.getApplication()).a(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
   }
   
-  private static void c()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, awgq paramawgq)
   {
-    if (BaseApplicationImpl.sImageCache != null) {
-      BaseApplicationImpl.sImageCache.evictAll();
-    }
-    System.gc();
-    Thread.yield();
-    System.gc();
-    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
-    try
+    if (paramawgq != null)
     {
-      Thread.sleep(1000L);
+      bcef.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", awfy.a(paramawgq.a, paramawgq.b), (int)(paramawgq.a * 10L + paramawgq.b), 0, "" + paramawgq.h, "", "", "");
+      switch ((int)paramawgq.a)
+      {
+      }
+    }
+    for (;;)
+    {
+      VipUtils.a(paramString, paramawgq, paramQQAppInterface, "C2C_click");
+      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
       return;
+      bcef.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, "" + paramawgq.h, "", "", "");
     }
-    catch (InterruptedException localInterruptedException)
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, awgq paramawgq1, awgq paramawgq2)
+  {
+    if (paramawgq1 != null) {
+      bcef.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", awfy.a(paramawgq1.a, paramawgq1.b), (int)(paramawgq1.a * 10L + paramawgq1.b), 0, "" + paramawgq1.h, "", "", "");
+    }
+    if (paramawgq2 != null) {
+      bcef.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", awfy.a(paramawgq2.a, paramawgq2.b), (int)(paramawgq2.a * 10L + paramawgq2.b), 0, "" + paramawgq2.h, "", "", "");
+    }
+    bcef.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
+  {
+    if (paramMessageForUniteGrayTip != null)
     {
-      localInterruptedException.printStackTrace();
+      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
+      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("sub_level");
+      String str3 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
+      String str4 = paramMessageForUniteGrayTip.frienduin;
+      if (!TextUtils.isEmpty(str2))
+      {
+        long l1 = awfy.b(str2);
+        long l2 = awfy.a(str2);
+        if ((awfy.b(l1)) && (l2 >= 0L))
+        {
+          String str5 = awfy.a(l1, l2);
+          int i = (int)(l1 * 10L + l2);
+          paramMessageForUniteGrayTip = str1;
+          if (TextUtils.isEmpty(str1)) {
+            paramMessageForUniteGrayTip = "0";
+          }
+          bcef.b(paramQQAppInterface, "dc00898", "", str4, "0X800A7E5", str5, i, 0, paramMessageForUniteGrayTip, "", "", "");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClick id:" + str2 + " willDowngradeSoon:" + str3 + " grayID:" + paramInt);
+      }
     }
   }
 }

@@ -1,15 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class wda
-  extends vrh
+public final class wda
+  extends vko
 {
-  wda(wcz paramwcz) {}
-  
-  public void a(int paramInt, vrd paramvrd)
-  {
-    super.a(paramInt, paramvrd);
-    QLog.d(this.a.a(), 1, paramvrd.a() + "\n , state callback:" + paramInt);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public int b;
+  public String b;
 }
 
 

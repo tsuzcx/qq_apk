@@ -1,29 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
-
-public class blod
-  implements View.OnTouchListener
+public abstract interface blod
 {
-  public blod(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_Bllm == null) || (!this.a.jdField_a_of_type_Bllm.a(this.a, paramView, i, this.a.jdField_a_of_type_Blof.getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
-    }
-    return true;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

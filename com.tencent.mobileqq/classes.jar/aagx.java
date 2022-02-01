@@ -1,38 +1,35 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
 class aagx
-  extends RecyclerView.OnScrollListener
+  extends URLDrawableDownListener.Adapter
 {
-  aagx(aagu paramaagu) {}
+  aagx(aagw paramaagw, int paramInt, ViewGroup paramViewGroup) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
-      paramRecyclerView.computeVerticalScrollExtent(new RecyclerView.State());
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!aagu.b(this.a)))
-      {
-        aagu.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        aagu.a(this.a, false);
-      }
-    }
+    this.jdField_a_of_type_Aagw.a(this.jdField_a_of_type_Int, false);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    this.jdField_a_of_type_Aagw.b(this.jdField_a_of_type_Int, paramInt / 100);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Aagw.a(this.jdField_a_of_type_Int, true);
+    paramView = this.jdField_a_of_type_Aagw.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramView != null) {
+      this.jdField_a_of_type_Aagw.a(paramView, paramURLDrawable);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aagx
  * JD-Core Version:    0.7.0.1
  */

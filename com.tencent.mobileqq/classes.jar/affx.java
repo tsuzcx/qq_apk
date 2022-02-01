@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class affx
-  extends aocj
+class affx
+  implements OnCompositionLoadedListener
 {
-  public affx(QQLSActivity paramQQLSActivity) {}
+  affx(afft paramafft) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
-    }
-    QQLSActivity.a(this.a);
+    afft.a(this.a, paramLottieComposition);
   }
 }
 

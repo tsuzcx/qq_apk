@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-
 class vzu
-  implements DialogInterface.OnClickListener
+  implements bjog
 {
-  vzu(vzr paramvzr) {}
+  vzu(vzt paramvzt, vxd paramvxd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).b(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    xwa.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Vxd.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Vxd.jdField_a_of_type_JavaLangString });
   }
 }
 

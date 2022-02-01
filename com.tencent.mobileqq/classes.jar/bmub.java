@@ -1,43 +1,23 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
+import java.util.List;
 
-public class bmub
-  extends QzoneExternalRequest
+class bmub
+  implements bnhs
 {
-  public JceStruct a;
+  bmub(bmua parambmua) {}
   
-  public bmub(long paramLong1, long paramLong2, int paramInt)
+  public void a(int paramInt, List<vwc> paramList)
   {
-    mobile_sub_get_cover_req localmobile_sub_get_cover_req = new mobile_sub_get_cover_req();
-    localmobile_sub_get_cover_req.uin = paramLong1;
-    localmobile_sub_get_cover_req.flag = paramInt;
-    this.a = localmobile_sub_get_cover_req;
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    xvv.b("PasterDataManager", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
     }
-    return decode(paramArrayOfByte, "getCover");
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getCover";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getCover";
+    vli.a().dispatch(new bnhq(paramInt, (List)localObject));
   }
 }
 

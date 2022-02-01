@@ -1,22 +1,61 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aqkc
+  extends aptq<aqka>
 {
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  public static aqka a()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.putExtra("big_brother_source_key", paramString2);
-    localIntent.putExtra("key_callback_id", paramInt);
-    localIntent.setData(Uri.parse(paramString1));
-    paramActivity.startActivity(localIntent);
+    return (aqka)apub.a().a(429);
+  }
+  
+  @NonNull
+  public aqka a(int paramInt)
+  {
+    return new aqka();
+  }
+  
+  @Nullable
+  public aqka a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqka.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public void a(aqka paramaqka) {}
+  
+  public Class<aqka> clazz()
+  {
+    return aqka.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 429;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqkc
  * JD-Core Version:    0.7.0.1
  */

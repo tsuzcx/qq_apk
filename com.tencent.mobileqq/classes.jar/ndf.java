@@ -1,27 +1,38 @@
-import com.tencent.avgame.gameroom.stage.StageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class ndf
-  implements nbb
+  implements View.OnTouchListener
 {
-  public ndf(StageView paramStageView) {}
+  public ndf(GameListView paramGameListView) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StageView", 2, "COUNT_DOWN_5S_JSON onLoad lottieDrawable = " + paramLottieDrawable);
-    }
-    if (paramLottieDrawable != null)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      this.a.a = paramLottieDrawable;
-      StageView.a(this.a);
+    }
+    for (;;)
+    {
+      return false;
+      paramView = njh.a("avgame_start_game_owner_hl@3x.png");
+      if (paramView != null)
+      {
+        this.a.a.a().setImageBitmap(paramView);
+        continue;
+        paramView = njh.a("avgame_start_game_owner_normal@3x.png");
+        if (paramView != null) {
+          this.a.a.a().setImageBitmap(paramView);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndf
  * JD-Core Version:    0.7.0.1
  */

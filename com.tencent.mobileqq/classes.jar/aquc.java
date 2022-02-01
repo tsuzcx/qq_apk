@@ -1,43 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aquc
-  implements View.OnClickListener
+  extends amzx
 {
-  public aquc(HistoryFormItem paramHistoryFormItem) {}
+  public aquc(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    int i;
-    HistoryFormItem localHistoryFormItem;
-    if (aqri.a())
-    {
-      i = 1;
-      if ((i != 0) && (this.a.a()))
-      {
-        localHistoryFormItem = this.a;
-        if (HistoryFormItem.a(this.a)) {
-          break label119;
-        }
-      }
+    super.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): isSucc=" + paramBoolean);
     }
+    if ((!this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView == null) || (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
+    label141:
     for (;;)
     {
-      HistoryFormItem.a(localHistoryFormItem, bool);
-      this.a.a(paramView, HistoryFormItem.a(this.a));
-      if (HistoryFormItem.a(this.a) != null) {
-        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      aqsd.a(paramView.getContext());
-      i = 0;
-      break;
-      label119:
-      bool = false;
+      int i = 0;
+      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).tabType != 7) {}
+      }
+      for (;;)
+      {
+        if (i < 0) {
+          break label141;
+        }
+        BaseMsgBoxActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(i));
+        return;
+        i += 1;
+        break;
+        i = -1;
+      }
     }
   }
 }

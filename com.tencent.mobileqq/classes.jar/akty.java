@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class akty
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  akty(aktq paramaktq) {}
+  akty(aktx paramaktx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    switch (paramMessage.what)
+    {
     }
-    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (aktx.a(this.a) != null) {
+        aktx.a(this.a).e();
+      }
     }
   }
 }

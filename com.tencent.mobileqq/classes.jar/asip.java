@@ -1,70 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.NonNull;
 
-public class asip
-  extends bebi
+class asip
 {
-  public asip(MessengerService paramMessengerService) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
+  String d = "";
+  String e = "";
+  String f = "";
+  String g = "";
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    Bundle localBundle;
-    int i;
-    String str;
-    if (this.a.a != null)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("url", null);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label115;
-      }
-      i = paramTeamWorkFileImportInfo.f;
-      localBundle.putInt("retCode", i);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label120;
-      }
-      str = paramTeamWorkFileImportInfo.h;
-      label53:
-      localBundle.putString("errorStr", str);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label126;
-      }
-    }
-    label115:
-    label120:
-    label126:
-    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
-    {
-      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
-      return;
-      i = 0;
-      break;
-      str = "";
-      break label53;
-    }
-  }
+  private asip(asii paramasii) {}
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  @NonNull
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
-    }
-    if (this.a.a != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", paramString);
-      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
-        localBundle.putBoolean("needRefresh", true);
-      }
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
-    }
+    return "busiType:" + this.jdField_a_of_type_Int + " fileMd5:" + this.f + " fileSha:" + this.g;
   }
 }
 

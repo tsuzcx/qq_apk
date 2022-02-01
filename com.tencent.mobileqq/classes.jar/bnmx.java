@@ -1,29 +1,10 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.graphics.Bitmap;
 
-final class bnmx
-  implements DialogInterface.OnClickListener
+public class bnmx
 {
-  bnmx(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      if (bmsw.a().indexOf("GM") < 0) {
-        bnmv.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
-    }
-  }
+  public int a;
+  public Bitmap a;
+  public int b;
 }
 
 

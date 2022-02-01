@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aydd;
+import awql;
 
 public class MedalItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MedalItem> CREATOR = new aydd();
+  public static final Parcelable.Creator<MedalItem> CREATOR = new awql();
   public int a;
   public long a;
   public String a;

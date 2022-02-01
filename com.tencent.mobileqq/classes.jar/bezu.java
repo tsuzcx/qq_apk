@@ -1,7 +1,12 @@
-public abstract interface bezu
-  extends beuq
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bezu
+  implements View.OnClickListener
 {
-  public abstract void a(bezt parambezt);
+  bezu(bezt parambezt) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

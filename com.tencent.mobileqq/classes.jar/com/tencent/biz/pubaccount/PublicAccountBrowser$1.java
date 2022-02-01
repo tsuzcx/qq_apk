@@ -1,13 +1,18 @@
 package com.tencent.biz.pubaccount;
 
-class PublicAccountBrowser$1
+import android.content.Intent;
+import qxp;
+
+public class PublicAccountBrowser$1
   implements Runnable
 {
   PublicAccountBrowser$1(PublicAccountBrowser paramPublicAccountBrowser, String paramString) {}
   
   public void run()
   {
-    PublicAccountBrowser.a(this.this$0, this.a);
+    PublicAccountBrowser.a(this.this$0).b();
+    PublicAccountBrowser.a(this.this$0, this.this$0.getIntent().getStringExtra("url"));
+    PublicAccountBrowser.b(this.this$0, this.a);
   }
 }
 

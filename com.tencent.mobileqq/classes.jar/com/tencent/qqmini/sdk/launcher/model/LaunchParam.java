@@ -58,6 +58,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_LONG_PRESS = 1048;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
+  public static final int LAUNCH_SCENE_MODIFY_FRIEND_INTERACTIVE_STORAGE = 2218;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
   public static final int LAUNCH_SCENE_PROFILE_CARD = 2062;
@@ -81,6 +82,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_SEARCH_RESULT_TOP = 1005;
   public static final int LAUNCH_SCENE_SHARE_C2C = 1007;
   public static final int LAUNCH_SCENE_SHARE_GROUP = 1008;
+  public static final int LAUNCH_SCENE_SHARE_MESSAGE_TO_FRIEND = 2217;
   public static final int LAUNCH_SCENE_SHARE_OPEN_SDK = 1036;
   public static final int LAUNCH_SCENE_SHARE_QZONE = 2003;
   public static final int LAUNCH_SCENE_SHARE_TICKET = 1044;
@@ -322,7 +324,7 @@ public class LaunchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

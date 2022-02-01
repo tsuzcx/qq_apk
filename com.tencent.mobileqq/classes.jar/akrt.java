@@ -1,26 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class akrt
-  implements DialogInterface.OnClickListener
+public class akrt
+  implements bjoe
 {
-  akrt(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
+  public akrt(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return;
-    case 0: 
-      akrn.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
-      return;
     }
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    akrx.b("", "0X800656F", "0");
   }
 }
 

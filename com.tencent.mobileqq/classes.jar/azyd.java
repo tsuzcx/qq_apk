@@ -1,8 +1,6 @@
-public class azyd
+public abstract interface azyd
 {
-  public long a;
-  public long b;
-  public long c;
+  public abstract void a(long paramLong);
 }
 
 

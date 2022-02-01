@@ -3,12 +3,12 @@ package com.tencent.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bllf;
+import bjqb;
 
 public class ExpandableListConnector$GroupMetadata
   implements Parcelable, Comparable<GroupMetadata>
 {
-  public static final Parcelable.Creator<GroupMetadata> CREATOR = new bllf();
+  public static final Parcelable.Creator<GroupMetadata> CREATOR = new bjqb();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   int b;
@@ -47,7 +47,7 @@ public class ExpandableListConnector$GroupMetadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector.GroupMetadata
  * JD-Core Version:    0.7.0.1
  */

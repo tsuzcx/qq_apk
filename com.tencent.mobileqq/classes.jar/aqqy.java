@@ -1,40 +1,7 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.chat.autoreply.AutoReplyUtil.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-
-public class aqqy
+public final class aqqy
 {
-  public static int a(AppRuntime.Status paramStatus)
-  {
-    if (paramStatus == AppRuntime.Status.away) {
-      return 1;
-    }
-    if (paramStatus == AppRuntime.Status.busy) {
-      return 2;
-    }
-    if (paramStatus == AppRuntime.Status.dnd) {
-      return 3;
-    }
-    return -1;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("[AutoReply] AutoReplyUtil", 2, new Object[] { "[report] reportReplyMessageExposed: invoked. ", " uinType: ", Integer.valueOf(paramInt) });
-    }
-    if (paramInt != 0) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new AutoReplyUtil.1(paramQQAppInterface, paramString));
-  }
-  
-  public static boolean a(AppRuntime.Status paramStatus)
-  {
-    return (paramStatus != AppRuntime.Status.away) && (paramStatus != AppRuntime.Status.dnd) && (paramStatus != AppRuntime.Status.busy);
-  }
+  public String a;
+  public String b;
 }
 
 

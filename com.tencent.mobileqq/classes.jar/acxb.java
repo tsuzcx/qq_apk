@@ -1,14 +1,19 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import java.util.Map;
 
-class acxb
-  extends AdHttp.Params
+public class acxb
 {
-  public int a = -2147483648;
-  
-  public boolean isSuccess()
-  {
-    return (super.isSuccess()) && (this.responseData != null);
-  }
+  public int a;
+  public String a;
+  public Map<String, String> a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
 }
 
 

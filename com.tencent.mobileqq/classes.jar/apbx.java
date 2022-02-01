@@ -1,89 +1,38 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.Calendar;
-import java.util.Map;
-import org.json.JSONObject;
 
 public class apbx
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public static final int a;
-  private static long a;
+  public apbx(DynamicAvatarView paramDynamicAvatarView) {}
   
-  static
+  public void onPlayRepeat(int paramInt)
   {
-    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  }
-  
-  public static int a(Context paramContext)
-  {
-    return ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-  }
-  
-  public static int a(Context paramContext, int paramInt)
-  {
-    return bhgr.a(paramContext, paramInt);
-  }
-  
-  private static long a()
-  {
-    long l = System.currentTimeMillis() / 1000L;
-    if ((jdField_a_of_type_Long != 0L) && (86400L + jdField_a_of_type_Long > l)) {
-      return jdField_a_of_type_Long;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    l = localCalendar.getTimeInMillis() / 1000L;
-    jdField_a_of_type_Long = l;
-    return l;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = "{" + paramString + "}";
-    paramString = "";
-    try
-    {
-      str = new JSONObject(str).get("metaData").toString();
-      paramString = str;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQDailyUtils", 2, localException, new Object[0]);
-    }
-    return paramString;
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong > a();
-  }
-  
-  public static boolean a(Map<String, String> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQDailyUtils", 2, "param is null");
-      }
-      return false;
-    }
-    String str1 = (String)paramMap.get("appname");
-    String str2 = (String)paramMap.get("appview");
-    String str3 = (String)paramMap.get("appversion");
-    paramMap = (String)paramMap.get("metaData");
     if (QLog.isColorLevel()) {
-      QLog.d("QQDailyUtils", 2, "appName: " + str1 + "\nappView: " + str2 + "\nappVersion: " + str3 + "\nmetaData: " + paramMap);
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
     }
-    return (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(paramMap));
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
+      return;
+    }
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
+    {
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
+      {
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_Apbm.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        }
+      }
+    }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
   }
 }
 

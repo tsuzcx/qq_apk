@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ocz
-  implements Parcelable.Creator<VideoInfo.ClassInfo>
+class ocz
+  implements bjoe
 {
-  public VideoInfo.ClassInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.ClassInfo(paramParcel);
-  }
+  ocz(ocw paramocw, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bjnw parambjnw) {}
   
-  public VideoInfo.ClassInfo[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new VideoInfo.ClassInfo[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+    case 0: 
+      afcm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      paramView = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
+      if (paramView != null) {
+        paramView.putString("LastScreenShotUri", null).apply();
+      }
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+    }
+    afcm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

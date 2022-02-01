@@ -1,17 +1,8 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import javax.microedition.khronos.opengles.GL;
 
-final class bnkp
-  implements QQPermissionCallback
+public abstract interface bnkp
 {
-  bnkp(Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhlq.b(bnko.a(this.a));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public abstract GL a(GL paramGL);
 }
 
 

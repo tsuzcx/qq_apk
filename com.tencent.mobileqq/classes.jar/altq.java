@@ -1,52 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class altq
-  implements View.OnTouchListener
+  implements EIPCResultCallback
 {
-  public altq(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public altq(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
-    }
-    do
+    try
     {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
       }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.k = false;
-      this.a.a(false, true);
+      paramEIPCResult = paramEIPCResult.data.getString("respData");
+      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
+      return;
     }
-    for (;;)
+    catch (Throwable paramEIPCResult)
     {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692289);
-      return false;
-      this.a.k = true;
-      this.a.a(true, true);
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
     }
   }
 }

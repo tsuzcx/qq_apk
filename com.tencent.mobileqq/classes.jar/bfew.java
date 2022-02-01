@@ -1,134 +1,87 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ReplacementSpan;
+import android.util.TypedValue;
 
-class bfew
-  extends BaseAdapter
+public class bfew
+  extends ReplacementSpan
 {
+  private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bfeu jdField_a_of_type_Bfeu;
-  private List<bfex> jdField_a_of_type_JavaUtilList;
-  private List<bfex> b;
+  private String jdField_a_of_type_JavaLangString;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private float c;
+  private float d;
   
-  public bfew(Context paramContext)
+  public bfew(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.b = new ArrayList();
-    this.jdField_a_of_type_Bfeu = new bfeu(this);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, paramInt2, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+    this.c = TypedValue.applyDimension(1, paramInt4, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+    this.d = TypedValue.applyDimension(1, paramInt5, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+    this.jdField_b_of_type_Int = paramInt6;
+    this.jdField_b_of_type_Float = a(paramString, paramInt3);
   }
   
-  private void a()
+  private float a(String paramString, int paramInt)
   {
-    this.b.clear();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramString.length() > 1)
     {
-      if (this.jdField_a_of_type_Int != i) {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.get(i));
-      }
-      i += 1;
+      Rect localRect = new Rect();
+      Paint localPaint = new Paint();
+      localPaint.setTextSize(this.d);
+      localPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
+      float f = TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+      return localRect.width() + f * 2.0F;
     }
+    return this.jdField_a_of_type_Float;
   }
   
-  private void a(int paramInt)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-    notifyDataSetChanged();
+    paramCharSequence = new Paint();
+    paramCharSequence.setColor(this.jdField_a_of_type_Int);
+    paramCharSequence.setStyle(Paint.Style.FILL);
+    paramCharSequence.setAntiAlias(true);
+    paramPaint = paramPaint.getFontMetrics();
+    float f2 = paramPaint.descent;
+    float f3 = paramPaint.ascent;
+    float f1 = paramInt4;
+    f2 = (f2 - f3 - this.jdField_a_of_type_Float) / 2.0F;
+    f1 = paramPaint.ascent + (f2 + f1);
+    paramCanvas.drawRoundRect(new RectF(paramFloat, f1, this.jdField_b_of_type_Float + paramFloat, this.jdField_a_of_type_Float + f1), 0.0F, 0.0F, paramCharSequence);
+    paramCharSequence = new TextPaint();
+    paramCharSequence.setColor(this.jdField_b_of_type_Int);
+    paramCharSequence.setTextSize(this.d);
+    paramCharSequence.setAntiAlias(true);
+    paramCharSequence.setTextAlign(Paint.Align.CENTER);
+    paramPaint = paramCharSequence.getFontMetrics();
+    f2 = paramPaint.bottom;
+    f3 = paramPaint.top;
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Float / 2.0F + paramFloat, f1 + (this.jdField_a_of_type_Float - (f2 - f3)) / 2.0F - paramPaint.top, paramCharSequence);
   }
   
-  private void a(View paramView)
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(bhtq.a(17.0F));
-    localGradientDrawable.setColor(Color.parseColor("#FBFBFB"));
-    localGradientDrawable.setStroke(1, Color.parseColor("#E7E7EE"));
-    paramView.setBackgroundDrawable(localGradientDrawable);
-  }
-  
-  public void a(bfev parambfev)
-  {
-    if (this.jdField_a_of_type_Bfeu != null) {
-      this.jdField_a_of_type_Bfeu.a(parambfev);
-    }
-  }
-  
-  public void a(List<bfex> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d(bfes.a(), 2, new Object[] { "mPrefixList size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-    }
-    this.jdField_a_of_type_Int = 0;
-    a();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = new bfey(null);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559917, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372932));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372934));
-      localView.setTag(paramView);
-      localObject = (bfex)this.b.get(paramInt);
-      if (localObject != null) {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bfex)localObject).a + ((bfex)localObject).b + ((bfex)localObject).c);
-      }
-      a(paramView.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      if (paramInt >= this.jdField_a_of_type_Int) {
-        break label198;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_Bfeu);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bfey)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label198:
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt + 1));
-    }
+    return (int)(this.jdField_b_of_type_Float + this.c);
   }
 }
 

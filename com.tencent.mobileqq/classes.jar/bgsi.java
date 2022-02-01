@@ -1,52 +1,147 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bgsi
 {
-  public static bgsi a;
-  public anua a;
-  public QQAppInterface a;
+  public static long a;
+  public static WebViewPluginEngine a;
+  public static final Object a;
+  public static HashMap<Integer, bgsk> a;
+  public static volatile boolean a;
+  public static WebViewPluginEngine b;
+  public static HashMap<Integer, bgsk> b;
+  public static volatile boolean b;
+  public static volatile boolean c;
+  public static volatile boolean d;
   
-  public bgsi()
+  static
   {
-    this.jdField_a_of_type_Anua = new bgsj(this);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    b = new HashMap();
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  public static bgsi a(QQAppInterface paramQQAppInterface)
+  public static void a()
   {
-    if (jdField_a_of_type_Bgsi == null) {
-      b(paramQQAppInterface);
-    }
-    for (;;)
+    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
     {
-      return jdField_a_of_type_Bgsi;
-      if (jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
+      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      bgsk localbgsk;
+      HashMap localHashMap;
+      while (localIterator.hasNext())
       {
-        if (jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-        {
-          jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bgsi.jdField_a_of_type_Anua);
-          jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        }
-        jdField_a_of_type_Bgsi = null;
-        b(paramQQAppInterface);
+        localbgsk = (bgsk)localIterator.next();
+        localHashMap = new HashMap(4);
+        localHashMap.put("type", String.valueOf(localbgsk.a));
+        localHashMap.put("totalNum", String.valueOf(localbgsk.b));
+        localHashMap.put("hasProc", String.valueOf(localbgsk.c));
+        localHashMap.put("noProc", String.valueOf(localbgsk.d));
+        StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
+      }
+      localIterator = b.values().iterator();
+      while (localIterator.hasNext())
+      {
+        localbgsk = (bgsk)localIterator.next();
+        localHashMap = new HashMap(4);
+        localHashMap.put("type", String.valueOf(localbgsk.a));
+        localHashMap.put("totalNum", String.valueOf(localbgsk.b));
+        localHashMap.put("hasProc", String.valueOf(localbgsk.c));
+        localHashMap.put("noProc", String.valueOf(localbgsk.d));
+        StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
+      }
+      jdField_a_of_type_JavaUtilHashMap.clear();
+      b.clear();
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadService", 2, "reportInterval...");
       }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static void a(int paramInt)
   {
-    if ((jdField_a_of_type_Bgsi != null) && (jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_accelerator_mode_", 3);
+    localBundle.putInt("from", paramInt);
+    bgxy.a().a(localBundle);
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return false;
+    }
+    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
+  }
+  
+  public static void b(int paramInt)
+  {
+    int j = 0;
+    Object localObject = (aqdu)apub.a().a(158);
+    if ((localObject != null) && (((aqdu)localObject).b == 1)) {
+      return;
+    }
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (!bool)
     {
-      paramQQAppInterface.removeObserver(jdField_a_of_type_Bgsi.jdField_a_of_type_Anua);
-      jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_Bgsi = null;
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("from", 305);
+      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
+      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
+      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
+      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadService", 2, "preloadWebview...");
+      }
+    }
+    localObject = new bgsk(paramInt);
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      localObject = (bgsk)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    ((bgsk)localObject).b += 1;
+    int k = ((bgsk)localObject).c;
+    if (bool)
+    {
+      i = 1;
+      label184:
+      ((bgsk)localObject).c = (i + k);
+      k = ((bgsk)localObject).d;
+      if (!bool) {
+        break label244;
+      }
+    }
+    label244:
+    for (int i = j;; i = 1)
+    {
+      ((bgsk)localObject).d = (k + i);
+      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+      if (((bgsk)localObject).b <= 3) {
+        break;
+      }
+      a();
+      return;
+      i = 0;
+      break label184;
     }
   }
   
-  private static void b(QQAppInterface paramQQAppInterface)
+  public static boolean b(AppRuntime paramAppRuntime)
   {
-    jdField_a_of_type_Bgsi = new bgsi();
-    jdField_a_of_type_Bgsi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(jdField_a_of_type_Bgsi.jdField_a_of_type_Anua);
+    if (paramAppRuntime == null) {
+      return false;
+    }
+    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 

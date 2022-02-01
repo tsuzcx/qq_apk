@@ -1,30 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import java.util.List;
 
-public class awne
-  implements View.OnTouchListener
+public abstract interface awne
 {
-  float jdField_a_of_type_Float = 0.0F;
-  
-  public awne(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
-    }
-  }
+  public abstract void a(List<awnf> paramList, boolean paramBoolean);
 }
 
 

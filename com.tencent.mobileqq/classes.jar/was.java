@@ -1,33 +1,31 @@
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public class was
-  implements wak
+class was
+  extends wal
 {
-  public was(QCircleLightInteractPolyLikeWidget paramQCircleLightInteractPolyLikeWidget) {}
-  
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public was(ViewGroup paramViewGroup)
   {
-    vud localvud;
-    vuf localvuf;
-    if (paramBoolean)
-    {
-      vtn.a(73, 2, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
-      localvud = vud.a();
-      localvuf = new vuf().a("followbutton");
-      if (!paramBoolean) {
-        break label125;
-      }
-    }
-    label125:
-    for (String str = "follow";; str = "unfollow")
-    {
-      localvud.a(localvuf.b(str).a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(this.a.a()).a(this.a.jdField_a_of_type_Int).c(paramStUser.id.get()));
-      return;
-      vtn.a(74, 2, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
-      break;
-    }
+    super(paramViewGroup, 2131561663);
+  }
+  
+  public void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    super.a(paramvxd);
+    xvv.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramvxd);
+    a(yql.b(paramvxd.g));
+    this.a.setNodeName(paramvxd.c, 2130846566);
+  }
+  
+  protected void b(vxd paramvxd)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramvxd);
   }
 }
 

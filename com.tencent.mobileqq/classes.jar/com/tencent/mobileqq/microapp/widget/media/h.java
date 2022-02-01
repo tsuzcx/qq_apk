@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.microapp.widget.media;
 
 import android.graphics.Bitmap;
-import bhsr;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.io.File;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ final class h
           return;
         }
         MiniAppCamera.a(localBitmap, (File)localObject, "");
-        if (bhsr.a(MiniAppCamera.g()))
+        if (StringUtil.isEmpty(MiniAppCamera.g()))
         {
           MiniAppCamera.a(this.d, this.a, this.b, this.c);
           return;

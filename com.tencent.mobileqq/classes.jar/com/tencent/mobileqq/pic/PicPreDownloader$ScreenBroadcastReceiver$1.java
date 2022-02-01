@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import bcxf;
+import bbqp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -16,15 +16,15 @@ class PicPreDownloader$ScreenBroadcastReceiver$1
       Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.this$0.a);
       if (localObject1 != null)
       {
-        PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
-        localObject1 = (bcxf)((QQAppInterface)localObject1).getManager(95);
+        PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).getPicPreDownloader();
+        localObject1 = (bbqp)((QQAppInterface)localObject1).getManager(95);
         if (localPicPreDownloader != null)
         {
           localPicPreDownloader.d();
           PicPreDownloader.a(localPicPreDownloader);
         }
         if (localObject1 != null) {
-          ((bcxf)localObject1).d();
+          ((bbqp)localObject1).d();
         }
       }
       return;

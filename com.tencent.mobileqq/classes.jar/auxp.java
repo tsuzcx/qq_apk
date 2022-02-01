@@ -1,267 +1,119 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qconn.protofile.appType.AndroidInfo;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.oidb_0xd55.RspBody;
-import tencent.im.oidb.qqconnect.AndroidAppInfo;
-import tencent.im.oidb.qqconnect.Appinfo;
-import tencent.im.oidb.qqconnect.MobileAppInfo;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
-public class auxp
+public abstract class auxp
 {
-  private int jdField_a_of_type_Int;
-  public GetAppInfoProto.Ads a;
-  private String jdField_a_of_type_JavaLangString;
-  public List<abgz> a;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
+  private auxq jdField_a_of_type_Auxq = new auxq();
+  private final HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final Map<Long, auxs> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  private static int a(List<abgz> paramList)
+  public auxp()
   {
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      abgz localabgz = (abgz)paramList.next();
-      if ("16".equals(localabgz.b.get()))
-      {
-        i |= 0x1;
-      }
-      else if ("64".equals(localabgz.b.get()))
-      {
-        i |= 0x2;
-      }
-      else
-      {
-        if (!"100".equals(localabgz.b.get())) {
-          break label96;
-        }
-        i |= 0x4;
+    apyg localapyg = (apyg)apub.a().a(598);
+    if (localapyg != null) {
+      if (localapyg.jdField_a_of_type_Boolean) {
+        break label74;
       }
     }
-    label96:
-    for (;;)
+    label74:
+    for (boolean bool = true;; bool = false)
     {
-      break;
-      return i;
-    }
-  }
-  
-  public static int a(qqconnect.Appinfo paramAppinfo)
-  {
-    int j = 0;
-    if (paramAppinfo.icon_mini_url.has()) {
-      j = 1;
-    }
-    int i;
-    if (!paramAppinfo.icon_middle_url.has())
-    {
-      i = j;
-      if (!paramAppinfo.icon_small_url.has()) {}
-    }
-    else
-    {
-      i = j | 0x2;
-    }
-    j = i;
-    if (paramAppinfo.icon_url.has()) {
-      j = i | 0x4;
-    }
-    return j;
-  }
-  
-  public static auxp a(GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse)
-  {
-    auxp localauxp = new auxp();
-    localauxp.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads = paramGetAppinfoResponse.ads;
-    localauxp.jdField_a_of_type_JavaUtilList = abgu.a(paramGetAppinfoResponse.iconsURL);
-    if (!localauxp.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      localauxp.jdField_a_of_type_JavaLangString = abgu.a(localauxp.jdField_a_of_type_JavaUtilList, 16);
-      localauxp.b = abgu.a(localauxp.jdField_a_of_type_JavaUtilList, 100);
-      localauxp.jdField_a_of_type_Int = a(localauxp.jdField_a_of_type_JavaUtilList);
-    }
-    GetAppInfoProto.AndroidInfo localAndroidInfo = paramGetAppinfoResponse.androidInfo;
-    if (localAndroidInfo != null)
-    {
-      localauxp.jdField_a_of_type_Boolean = true;
-      if (!localAndroidInfo.sourceUrl.has()) {
-        break label183;
-      }
-      paramGetAppinfoResponse = localAndroidInfo.sourceUrl.get();
-      localauxp.c = paramGetAppinfoResponse;
-      if (!localAndroidInfo.messagetail.has()) {
-        break label189;
-      }
-      paramGetAppinfoResponse = localAndroidInfo.messagetail.get();
-      label131:
-      localauxp.d = paramGetAppinfoResponse;
-      if (!localAndroidInfo.packName.has()) {
-        break label195;
-      }
-    }
-    label183:
-    label189:
-    label195:
-    for (paramGetAppinfoResponse = localAndroidInfo.packName.get();; paramGetAppinfoResponse = "")
-    {
-      localauxp.e = paramGetAppinfoResponse;
-      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localauxp.toString() });
-      return localauxp;
-      paramGetAppinfoResponse = "";
-      break;
-      paramGetAppinfoResponse = "";
-      break label131;
-    }
-  }
-  
-  public static auxp a(preAuth.PreAuthResponse paramPreAuthResponse, appType.AndroidInfo paramAndroidInfo)
-  {
-    auxp localauxp = new auxp();
-    String str;
-    if (paramAndroidInfo.message_tail.has())
-    {
-      str = paramAndroidInfo.message_tail.get();
-      localauxp.d = str;
-      if (!paramAndroidInfo.pack_name.has()) {
-        break label172;
-      }
-      str = paramAndroidInfo.pack_name.get();
-      label49:
-      localauxp.e = str;
-      if (!paramAndroidInfo.source_url.has()) {
-        break label178;
-      }
-    }
-    label172:
-    label178:
-    for (paramAndroidInfo = paramAndroidInfo.source_url.get();; paramAndroidInfo = "")
-    {
-      localauxp.c = paramAndroidInfo;
-      localauxp.jdField_a_of_type_Boolean = true;
-      localauxp.jdField_a_of_type_JavaUtilList = abgu.b(paramPreAuthResponse.icons_url);
-      if (!localauxp.jdField_a_of_type_JavaUtilList.isEmpty())
-      {
-        localauxp.jdField_a_of_type_JavaLangString = abgu.a(localauxp.jdField_a_of_type_JavaUtilList, 16);
-        localauxp.b = abgu.a(localauxp.jdField_a_of_type_JavaUtilList, 100);
-        localauxp.jdField_a_of_type_Int = a(localauxp.jdField_a_of_type_JavaUtilList);
-      }
-      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localauxp.toString() });
-      return localauxp;
-      str = "";
-      break;
-      str = "";
-      break label49;
-    }
-  }
-  
-  private static String a(qqconnect.Appinfo paramAppinfo, String paramString)
-  {
-    Iterator localIterator = null;
-    Object localObject2 = null;
-    Object localObject1 = localIterator;
-    if (paramAppinfo.mobile_app_info.has())
-    {
-      localObject1 = localIterator;
-      if (paramAppinfo.mobile_app_info.android_app_info.has())
-      {
-        localIterator = paramAppinfo.mobile_app_info.android_app_info.get().iterator();
-        paramAppinfo = localObject2;
-        localObject1 = paramAppinfo;
-        if (localIterator.hasNext())
-        {
-          localObject1 = (qqconnect.AndroidAppInfo)localIterator.next();
-          if (((qqconnect.AndroidAppInfo)localObject1).pack_name.has())
-          {
-            localObject1 = ((qqconnect.AndroidAppInfo)localObject1).pack_name.get();
-            paramAppinfo = (qqconnect.Appinfo)localObject1;
-            if (!((String)localObject1).equals(paramString)) {}
-          }
-        }
-      }
-    }
-    while (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      return paramString;
-      break;
-    }
-    return localObject1;
-  }
-  
-  public static void a(oidb_0xd55.RspBody paramRspBody, String paramString, auxp paramauxp)
-  {
-    paramauxp.jdField_a_of_type_Boolean = true;
-    qqconnect.Appinfo localAppinfo = paramRspBody.appinfo;
-    paramauxp.jdField_a_of_type_JavaLangString = localAppinfo.icon_mini_url.get();
-    paramauxp.b = localAppinfo.icon_url.get();
-    paramauxp.jdField_a_of_type_Int = a(localAppinfo);
-    paramauxp.c = localAppinfo.source_url.get();
-    paramauxp.d = localAppinfo.app_name.get();
-    paramauxp.e = a(localAppinfo, paramString);
-    if (paramRspBody.wording.has()) {}
-    for (paramRspBody = paramRspBody.wording.get();; paramRspBody = "")
-    {
-      paramauxp.f = paramRspBody;
-      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "fillAppInfo AppInfo : ", paramauxp.toString() });
+      this.jdField_a_of_type_Boolean = bool;
       return;
+    }
+  }
+  
+  private void a(long paramLong, RedTouch paramRedTouch)
+  {
+    int i = auxt.a(paramRedTouch);
+    if (i != 0) {
+      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), new auxs(i, auxt.b(paramRedTouch)));
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, long paramLong, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramLong))) && (paramAppInfo != null) && (paramAppInfo.iNewFlag.get() != 0))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramLong));
+      ((azvi)paramQQAppInterface.getManager(36)).a((int)paramLong, 30);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Auxq != null) {
+      return this.jdField_a_of_type_Auxq.jdField_a_of_type_Int;
+    }
+    return -1;
   }
   
-  public String a()
+  public abstract BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString);
+  
+  public Map<Long, auxs> a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaUtilMap;
   }
   
-  public boolean a()
+  public void a()
   {
-    return this.jdField_a_of_type_Boolean;
+    if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {}
+    try
+    {
+      ajek.jdField_a_of_type_Int |= 0x2;
+      QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause update" + ajek.jdField_a_of_type_Int);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((amzu)((QQAppInterface)localAppRuntime).getBusinessHandler(87)).notifyUI(4, true, null);
+      }
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause", localException);
+      }
+    }
   }
   
-  public String b()
+  public void a(ajeh paramajeh)
   {
-    return this.c;
+    QQAppInterface localQQAppInterface = paramajeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Context localContext = paramajeh.jdField_a_of_type_AndroidContentContext;
+    RedTouch localRedTouch = paramajeh.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+    long l = paramajeh.jdField_a_of_type_Long;
+    String str = paramajeh.jdField_a_of_type_JavaLangString;
+    int i = paramajeh.jdField_a_of_type_Int;
+    paramajeh = a(localQQAppInterface, String.valueOf(l));
+    a(localQQAppInterface, l, paramajeh);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = this.jdField_a_of_type_Auxq.a(localQQAppInterface, localContext, l, localRedTouch, str, this.jdField_a_of_type_JavaUtilMap, i);; bool = false)
+    {
+      QLog.d("Q.lebatab.LebaRedTouchBase", 1, new Object[] { "updateRedTouch,resID=", Long.valueOf(l), ",resPkgName=", str, ",isHandledRedTouch=", Boolean.valueOf(bool), ",leba_red_touch_spcific_enable->mSpecificEnable=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      if (!bool)
+      {
+        a(localRedTouch, paramajeh);
+        a(l, localRedTouch);
+        this.jdField_a_of_type_Auxq.a(localQQAppInterface, str, paramajeh);
+      }
+      return;
+    }
   }
   
-  public String c()
-  {
-    return this.d;
-  }
-  
-  public String d()
-  {
-    return this.e;
-  }
-  
-  public String e()
-  {
-    return this.b;
-  }
-  
-  public String f()
-  {
-    return this.f;
-  }
-  
-  public String toString()
-  {
-    return "iconUrlMini=" + this.jdField_a_of_type_JavaLangString + ", iconUrlBig=" + this.b + ", appLackOfIcons=" + this.jdField_a_of_type_Int + ", isAndroidInfoExist=" + this.jdField_a_of_type_Boolean + ", sourceUrl=" + this.c + ", appName=" + this.d + ", pkgName=" + this.e + ", mErrorWording=" + this.f;
-  }
+  public abstract void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo);
 }
 
 

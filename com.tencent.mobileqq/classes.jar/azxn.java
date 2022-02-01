@@ -1,12 +1,11 @@
-import android.util.Pair;
-import java.util.Comparator;
-
-class azxn
-  implements Comparator<Pair<Long, String>>
+public class azxn
 {
-  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  public long a;
+  public boolean a;
+  
+  public String toString()
   {
-    return azxm.a((CharSequence)paramPair1.second) - azxm.a((CharSequence)paramPair2.second);
+    return "OneWayFriendResult{friendUin=" + this.jdField_a_of_type_Long + ", oneWayFriend=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

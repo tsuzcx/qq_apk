@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.webview.swift;
 
-import binl;
-import birg;
+import bgtr;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class SwiftFloatViewUI$3
   implements Runnable
 {
-  public SwiftFloatViewUI$3(binl parambinl) {}
+  public SwiftFloatViewUI$3(bgtr parambgtr) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a != null)) {
-      this.this$0.a.a.hideVirtualNavBar();
+    if ((this.this$0.a != null) && (this.this$0.a.mHostFragment != null)) {
+      this.this$0.a.mHostFragment.hideVirtualNavBar();
     }
   }
 }

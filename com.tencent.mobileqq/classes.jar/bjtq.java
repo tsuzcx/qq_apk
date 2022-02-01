@@ -1,23 +1,8 @@
-public class bjtq
-  extends bjtr
+import com.tencent.widget.ScrollView;
+
+public abstract interface bjtq
 {
-  private String n;
-  
-  public static bjtq a()
-  {
-    return new bjtq();
-  }
-  
-  public bjtq a(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c() + "|" + this.n;
-  }
+  public abstract void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean);
 }
 
 

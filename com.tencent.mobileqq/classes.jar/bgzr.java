@@ -1,25 +1,11 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
-public class bgzr
-  implements bdxo
+public abstract interface bgzr
+  extends bguj
 {
-  public bgzr(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public abstract String getMsgid();
   
-  public void a()
-  {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
-    }
-    for (;;)
-    {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
-      }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
-    }
-  }
+  public abstract String getPublicUin();
+  
+  public abstract String getSourcePuin();
 }
 
 

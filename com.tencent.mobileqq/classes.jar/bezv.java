@@ -1,63 +1,39 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
 
 public class bezv
-  implements Manager
 {
-  private bezz jdField_a_of_type_Bezz;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public bezv(QQAppInterface paramQQAppInterface)
+  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends Entity> paramMap, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-    this.jdField_a_of_type_Bezz = ((bezz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(233));
-    this.jdField_a_of_type_Bezz.b(this.jdField_a_of_type_Boolean);
-  }
-  
-  public static String a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    return bezz.a(paramInt, paramString, paramBoolean);
-  }
-  
-  public static ArrayList<String> a(int paramInt1, int paramInt2)
-  {
-    return new ArrayList(5);
-  }
-  
-  public bezs a(String paramString)
-  {
-    return this.jdField_a_of_type_Bezz.a(paramString);
-  }
-  
-  void a(bezs parambezs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Controller", 2, "onTaskEnd: " + parambezs);
+    if (paramMap == null) {
+      QLog.e("SerializableManager", 4, "bad Entity Param");
     }
-    this.jdField_a_of_type_Bezz.a(parambezs);
+    Object localObject;
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject = new TroopFileTansferItemEntity();
+      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    } while (!paramQQAppInterface.drop(((TroopFileTansferItemEntity)localObject).getTableName()));
+    paramMap = paramMap.values().iterator();
+    while (paramMap.hasNext())
+    {
+      localObject = (Entity)paramMap.next();
+      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+      ((Entity)localObject).setStatus(1000);
+      paramQQAppInterface.persist((Entity)localObject);
+    }
+    return true;
   }
-  
-  public void a(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_Bezz.a(paramString, paramLong);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, bezs parambezs)
-  {
-    return this.jdField_a_of_type_Bezz.a(paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4, paramInt3, paramInt4, paramBoolean, parambezs);
-  }
-  
-  public void onDestroy() {}
 }
 
 

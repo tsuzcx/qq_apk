@@ -1,17 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.widget.SingleLineTextView;
-
-public class alpe
-  extends alnv
+public abstract interface alpe
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public MyGridView a;
-  public SingleLineTextView a;
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b(long paramLong);
 }
 
 

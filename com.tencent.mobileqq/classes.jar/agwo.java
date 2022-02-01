@@ -1,22 +1,27 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agwo
-  implements aspl
+  implements View.OnClickListener
 {
-  agwo(agwn paramagwn) {}
+  agwo(agwl paramagwl) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 8) {
-      agwn.a(this.a).b();
+    if (agwl.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(agwl.a(this.a).a) }));
+      }
+      agwk localagwk = agwl.a(this.a);
+      agwl.a(this.a);
+      if (localagwk != null) {
+        localagwk.a();
+      }
     }
-    while ((paramInt != 0) || (agwn.a(this.a) == 0L)) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = agwn.a(this.a);
-    bdmc.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
-    agwn.a(this.a, 0L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,50 +1,98 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class aqes
-  implements View.OnClickListener
+  extends aptq<aqer>
 {
-  aqes(aqer paramaqer) {}
-  
-  public void onClick(View paramView)
+  public static aqer a()
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (aqer.a(this.a).selectedPhotoList.size() > 0)
+    aqer localaqer2 = (aqer)apub.a().a(493);
+    aqer localaqer1 = localaqer2;
+    if (localaqer2 == null) {
+      localaqer1 = new aqer();
+    }
+    return localaqer1;
+  }
+  
+  @NonNull
+  public aqer a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aqer();
+  }
+  
+  @Nullable
+  public aqer a(aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder(aqer.b(this.a).selectedPhotoList.size() * 128);
-        int i = 0;
-        while (i < aqer.c(this.a).selectedPhotoList.size())
-        {
-          localStringBuilder.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), aqer.d(this.a).selectedPhotoList.get(i) }));
-          i += 1;
-        }
-        QLog.d("PhotoPreviewLogicArk", 2, localStringBuilder.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
       }
-      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
+      return aqer.a(paramArrayOfaptx[0]);
     }
-    for (;;)
+    return null;
+  }
+  
+  public void a(aqer paramaqer)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aqel.a().a("callbackArk", null, null);
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaqer == null) {
+        break label43;
+      }
     }
+    label43:
+    for (paramaqer = paramaqer.toString();; paramaqer = " empty")
+    {
+      QLog.d("SearchBusinessConfProcessor", 2, paramaqer);
+      return;
+    }
+  }
+  
+  public Class<aqer> clazz()
+  {
+    return aqer.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 493;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqes
  * JD-Core Version:    0.7.0.1
  */

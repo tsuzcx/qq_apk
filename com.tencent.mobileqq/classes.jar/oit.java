@@ -1,23 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
 class oit
-  implements ViewFactory.FoundClickableViewListener
+  implements pep
 {
-  oit(ois paramois, TemplateBean paramTemplateBean) {}
+  oit(ois paramois) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void a(int paramInt)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
+    if (this.a.jdField_a_of_type_Sqh != null) {
+      this.a.jdField_a_of_type_Sqh.a(paramInt, this.a.jdField_a_of_type_Int);
     }
-    do
-    {
-      return;
-    } while (!(paramViewBase instanceof qek));
-    ((qek)paramViewBase).a(new oiu(this, paramViewBase));
   }
 }
 

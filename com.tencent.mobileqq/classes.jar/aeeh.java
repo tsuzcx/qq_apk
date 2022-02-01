@@ -1,47 +1,54 @@
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class aeeh
-  implements Comparator<Object>
+public class aeeh
+  extends BaseAdapter
 {
-  aeeh(aeeg paramaeeg) {}
+  private aeeh(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public int getCount()
   {
-    if ((paramObject1 instanceof FileManagerEntity)) {
-      if ((paramObject2 instanceof FileManagerEntity)) {
-        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
-      }
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
+      return null;
     }
-    do
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      do
-      {
-        do
-        {
-          return -1;
-          return 1;
-          if (!(paramObject2 instanceof TencentDocData)) {
-            break;
-          }
-        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
-        return 1;
-        if (!(paramObject1 instanceof TencentDocData)) {
-          break label124;
-        }
-        if (!(paramObject2 instanceof FileManagerEntity)) {
-          break;
-        }
-      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
-      return 1;
-      if (!(paramObject2 instanceof TencentDocData)) {
-        break;
-      }
-    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
-    return 1;
-    label124:
-    return 0;
+      paramView = this.a.getLayoutInflater().inflate(2131562739, paramViewGroup, false);
+      aeei localaeei = new aeei();
+      localaeei.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367958));
+      localaeei.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371790));
+      localaeei.b = ((TextView)paramView.findViewById(2131365361));
+      paramView.setTag(localaeei);
+      paramView.setOnClickListener(this.a);
+    }
+    for (;;)
+    {
+      this.a.a(paramView, paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

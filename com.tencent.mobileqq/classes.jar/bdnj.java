@@ -1,12 +1,6 @@
-import android.content.Context;
-
-public class bdnj
+public abstract interface bdnj
 {
-  public static void a() {}
-  
-  public static void a(Context paramContext) {}
-  
-  public static void b() {}
+  public abstract void a(bdnl parambdnl);
 }
 
 

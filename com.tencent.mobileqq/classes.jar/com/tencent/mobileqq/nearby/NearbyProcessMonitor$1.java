@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import axwe;
-import axws;
+import awjm;
+import awka;
 
 public final class NearbyProcessMonitor$1
   implements Runnable
@@ -10,11 +10,11 @@ public final class NearbyProcessMonitor$1
   
   public void run()
   {
-    axwe.b(this.a);
-    axwe.a(this.a);
-    axwe.a += 1;
-    axws.b(this.a);
-    axwe.a();
+    awjm.b(this.a);
+    awjm.a(this.a);
+    awjm.a += 1;
+    awka.b(this.a);
+    awjm.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.jsapi.manager;
 
-import bnwo;
+import blbu;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.manager.MiniTianShuManager;
 import com.tencent.mobileqq.minigame.data.FloatDragAdInfo;
@@ -106,10 +106,10 @@ public class FloatDragAdDataManager
       return;
     }
     GameLog.getInstance().i("FloatDragAdDataManager", "requestTianShu with appId=" + paramString + " scene=" + paramInt);
-    bnwo localbnwo = new bnwo();
-    localbnwo.jdField_a_of_type_Int = 473;
-    localbnwo.b = 1;
-    localbnwo.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    blbu localblbu = new blbu();
+    localblbu.jdField_a_of_type_Int = 473;
+    localblbu.b = 1;
+    localblbu.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     JSONObject localJSONObject = new JSONObject();
     JSONArray localJSONArray1 = new JSONArray();
     localJSONArray1.put(paramString);
@@ -119,8 +119,8 @@ public class FloatDragAdDataManager
     {
       localJSONObject.put("Appid", localJSONArray1);
       localJSONObject.put("Refer", localJSONArray2);
-      localbnwo.jdField_a_of_type_JavaUtilHashMap.put("FilterInfo", localJSONObject.toString());
-      MiniTianShuManager.requestAdv(Collections.singletonList(localbnwo), new FloatDragAdDataManager.2(paramString, paramInt, paramDragAdListener));
+      localblbu.jdField_a_of_type_JavaUtilHashMap.put("FilterInfo", localJSONObject.toString());
+      MiniTianShuManager.requestAdv(Collections.singletonList(localblbu), new FloatDragAdDataManager.2(paramString, paramInt, paramDragAdListener));
       return;
     }
     catch (JSONException localJSONException)

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.tablequery;
 
-import bdzl;
+import bctc;
 
 public class TableQueryController$1
   implements Runnable
 {
-  public TableQueryController$1(bdzl parambdzl) {}
+  public TableQueryController$1(bctc parambctc) {}
   
   public void run()
   {
-    bdzl.a(false);
+    bctc.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryController.1
  * JD-Core Version:    0.7.0.1
  */

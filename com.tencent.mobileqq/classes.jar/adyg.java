@@ -1,24 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class adyg
-  implements DialogInterface.OnClickListener
+class adyg
+  implements DialogInterface.OnDismissListener
 {
-  public adyg(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  adyg(adye paramadye) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    QQIdentiferActivity.a(this.a.a, 205, amtj.a(2131709472));
+    this.a.a.finish();
   }
 }
 

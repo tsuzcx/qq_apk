@@ -16,6 +16,9 @@ import com.tencent.thumbplayer.utils.TPNetworkChangeMonitor;
 
 public class TPPlayerMgr
 {
+  public static final String BEACON_LOG_HOST_KEY = "beacon_log_host";
+  public static final String BEACON_PLYAER_HOST_KEY = "player_host_config";
+  public static final String BEACON_POLICY_HOST_KEY = "beacon_policy_host";
   public static final int EVENT_ID_APP_ENTER_BACKGROUND = 100001;
   public static final int EVENT_ID_APP_ENTER_FOREGROUND = 100002;
   private static final String TAG = "TPThumbPlayer[TPPlayerMgr.java]";
@@ -48,7 +51,7 @@ public class TPPlayerMgr
   
   public static String getThumbPlayerVersion()
   {
-    return "2.5.0.1084";
+    return "2.8.0.1104";
   }
   
   public static void initSdk(Context paramContext, String paramString, int paramInt)
@@ -105,6 +108,11 @@ public class TPPlayerMgr
     TPPlayerConfig.setDebugEnable(paramBoolean);
   }
   
+  public static void setHost(String paramString)
+  {
+    TPPlayerConfig.parseHostConfig(paramString);
+  }
+  
   public static void setLibLoader(ITPModuleLoader paramITPModuleLoader)
   {
     if (isInit) {
@@ -117,6 +125,11 @@ public class TPPlayerMgr
   public static void setOnLogListener(TPPlayerMgr.OnLogListener paramOnLogListener)
   {
     TPLogUtil.setOnLogListener(paramOnLogListener);
+  }
+  
+  public static void setOutNetIP(String paramString)
+  {
+    TPPlayerConfig.setOutNetIp(paramString);
   }
   
   public static void setProxyConfigsWithServiceType(int paramInt, String paramString1, String paramString2, String paramString3)

@@ -1,23 +1,20 @@
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class axhc
+  extends axhd
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public axha a()
+  public axhc(String paramString, axhl paramaxhl)
   {
-    return new axha(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
+    super(paramString, paramaxhl);
   }
   
-  public axhc a(int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public axhc a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    super.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839326);
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

@@ -1,32 +1,34 @@
-import com.tencent.component.network.downloader.strategy.ConfigKeepAliveStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class bnek
-  extends ConfigKeepAliveStrategy
-  implements bmaf
+class bnek
+  extends SimpleObserver<Bitmap>
 {
-  public bnek()
+  bnek(bnej parambnej) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    a();
-    QzoneConfig.getInstance().addListener(this);
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        xvv.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
+    }
+    else {
+      return;
+    }
+    xvv.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
   }
   
-  private void a()
+  public void onError(@NonNull Error paramError)
   {
-    String str = QzoneConfig.getInstance().getConfig("PhotoDownload", "KpDomainList", "m.qpic.cn,a[0-9].qpic.cn,b\\d+\\.photo\\.store\\.qq\\.com,a\\d+\\.photo\\.store\\.qq\\.com,.*d3g\\.qq\\.com,.*i.gtimg.cn,.*qzonestyle.gtimg.cn,.*qzs.qq.com,qlogo[0-9].store.qq.com,group.store.qq.com,pgdt.gtimg.cn,img[0-7].paipaiimg.com");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "loadConfig, kp_domain_list=" + str);
-    }
-    setConfig(str);
-  }
-  
-  public void onConfigChange()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "KeepAlive receive change");
-    }
-    a();
+    super.onError(paramError);
+    xvv.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 

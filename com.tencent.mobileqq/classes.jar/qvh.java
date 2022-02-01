@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class qvh
-  implements Parcelable.Creator<AdvertisementInfo>
+public class qvh
+  extends pkt
 {
-  public AdvertisementInfo a(Parcel paramParcel)
-  {
-    return new AdvertisementInfo(paramParcel);
-  }
+  public qvh(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  public AdvertisementInfo[] a(int paramInt)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    return new AdvertisementInfo[paramInt];
+    ComponentContentRecommendFollowList.6.1 local1 = new ComponentContentRecommendFollowList.6.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
+    }
+    local1.run();
   }
 }
 

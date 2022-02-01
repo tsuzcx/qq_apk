@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import beeo;
+import bcyf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
@@ -13,13 +13,13 @@ public class GroupTeamWorkListActivity$3
   {
     WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.app.getManager(13);
     if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(101, new beeo(this));
+      localWebProcessManager.a(101, new bcyf(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3
  * JD-Core Version:    0.7.0.1
  */

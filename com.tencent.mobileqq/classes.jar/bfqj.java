@@ -1,17 +1,10 @@
-import java.nio.ByteBuffer;
+import java.util.List;
 
-class bfqj
+public abstract interface bfqj
 {
-  public final int a;
-  public final long a;
-  public final long b;
+  public abstract void a(int paramInt, List<bfqk> paramList);
   
-  public bfqj(ByteBuffer paramByteBuffer)
-  {
-    this.jdField_a_of_type_Int = (paramByteBuffer.get() & 0xFFFF);
-    this.jdField_a_of_type_Long = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-  }
+  public abstract void a(bfqk parambfqk);
 }
 
 

@@ -7,11 +7,11 @@ import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import taq;
+import teq;
 
 public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
   extends PagerAdapter
-  implements taq
+  implements teq
 {
   private List<MeasureGridView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
@@ -142,7 +142,7 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

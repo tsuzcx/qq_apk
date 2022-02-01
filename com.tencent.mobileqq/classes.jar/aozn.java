@@ -1,16 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
-public class aozn
-  extends aoxh
+class aozn
+  extends bjmc
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aozn(aozm paramaozm) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramQQAppInterface = new aozm(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qzone";
-    paramQQAppInterface.c = "to_publish_queue";
-    return paramQQAppInterface;
+    this.a.a.setVisibility(0);
   }
 }
 

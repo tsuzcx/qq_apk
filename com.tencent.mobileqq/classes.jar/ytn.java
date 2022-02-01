@@ -1,30 +1,35 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class ytn
-  extends QQUIEventReceiver<ysw, xas>
+  extends ImageSpan
 {
-  public ytn(@NonNull ysw paramysw)
+  public ytn(Context paramContext, int paramInt)
   {
-    super(paramysw);
+    super(paramContext, paramInt);
   }
   
-  public void a(@NonNull ysw paramysw, @NonNull xas paramxas)
+  public ytn(Drawable paramDrawable)
   {
-    if ((paramxas == null) || (paramxas.a == null) || (TextUtils.isEmpty(paramxas.a.headUrl))) {
-      yuk.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
-    }
-    while (!paramxas.a.isMe()) {
-      return;
-    }
-    ysw.b(paramysw);
+    super(paramDrawable);
   }
   
-  public Class acceptEventClass()
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    return xas.class;
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

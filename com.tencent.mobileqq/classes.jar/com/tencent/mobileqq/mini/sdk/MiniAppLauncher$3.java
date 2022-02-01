@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import anzj;
+import amtj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ final class MiniAppLauncher$3
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131705702) + this.val$appId, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131705932) + this.val$appId, 1).a();
   }
 }
 

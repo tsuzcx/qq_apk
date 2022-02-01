@@ -1,28 +1,75 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDynamicFragment;
-import com.tencent.biz.richframework.part.BasePartFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vpy
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  public vpy(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
+  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
   
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  static
   {
-    QLog.d("QCirclePersonalDynamicFragment", 4, "initViewData:getFeedListRequestRsp");
-    this.a.a(paramvxq);
-    if ((uzg.a(this.a.jdField_a_of_type_JavaLangString)) && (paramvxq != null) && (paramvxq.a() == 0) && (!this.a.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a())) {
-      this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(false));
+    a.put(xbm.class, vpv.class);
+    b.put(vum.class, vpw.class);
+  }
+  
+  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
+  {
+    try
+    {
+      if (paramClass.equals(xbm.class))
+      {
+        Object localObject = paramClass1.cast(new vpv());
+        return localObject;
+      }
     }
-    while ((!uzg.a(this.a.jdField_a_of_type_JavaLangString)) || (paramvxq == null) || (paramvxq.a() == 1)) {
-      return;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      xvv.e("ExtensionFactoryImplement", "parse int exception");
+      try
+      {
+        paramClass = (Class)a.get(paramClass);
+        if (paramClass != null)
+        {
+          if (vpk.class.isAssignableFrom(paramClass)) {
+            break label110;
+          }
+          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+        }
+      }
+      catch (Exception paramClass)
+      {
+        xvv.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+      }
+      return vpz.a(paramClass1);
     }
-    this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(true));
+    label110:
+    paramClass = vpz.a(paramClass, paramVarArgs);
+    return paramClass;
+  }
+  
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  {
+    if (!vpk.class.isAssignableFrom(paramClass)) {
+      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+    }
+    try
+    {
+      Class localClass = (Class)b.get(paramClass);
+      if (localClass != null)
+      {
+        if (vpk.class.isAssignableFrom(localClass)) {
+          break label124;
+        }
+        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
+      }
+    }
+    catch (Exception localException)
+    {
+      xvv.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+    }
+    return vpz.a(paramClass, paramVarArgs);
+    label124:
+    Object localObject = vpz.a(localException, paramVarArgs);
+    return localObject;
   }
 }
 

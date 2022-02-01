@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.widget.TextView;
-import bokv;
-import bokx;
+import blpb;
+import blpd;
 
 public class VideoStoryAIScenePart$10$1
   implements Runnable
 {
-  public VideoStoryAIScenePart$10$1(bokx parambokx) {}
+  public VideoStoryAIScenePart$10$1(blpd paramblpd) {}
   
   public void run()
   {
-    if (bokv.b(this.a.jdField_a_of_type_Bokv) != null) {
-      bokv.b(this.a.jdField_a_of_type_Bokv).startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    if (blpb.b(this.a.jdField_a_of_type_Blpb) != null) {
+      blpb.b(this.a.jdField_a_of_type_Blpb).startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     }
   }
 }

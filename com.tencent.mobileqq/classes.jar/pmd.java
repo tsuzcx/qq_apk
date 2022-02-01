@@ -1,156 +1,143 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.SoftReference;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.jetbrains.annotations.NotNull;
 
 public class pmd
+  extends pmb
+  implements twy
 {
-  public static void a(View paramView)
+  private SoftReference<Activity> jdField_a_of_type_JavaLangRefSoftReference;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public pmd(@NotNull pmc parampmc, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if ((paramView instanceof plx)) {
-      ((plx)paramView).a();
+    super(parampmc, "RIJADSuperMaskPopupStep");
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramActivity);
+  }
+  
+  private boolean b()
+  {
+    boolean bool = false;
+    pmc localpmc = a();
+    if (localpmc != null) {
+      bool = localpmc.a();
     }
+    return bool;
   }
   
-  public static void a(Container paramContainer)
+  private void i()
   {
-    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
-    while (paramContainer.hasNext())
-    {
-      Object localObject = (Map.Entry)paramContainer.next();
-      if ((((Map.Entry)localObject).getValue() instanceof qcr))
-      {
-        localObject = (qcr)((Map.Entry)localObject).getValue();
-        if ((((qcr)localObject).a() instanceof NativeVideoView)) {
-          ((qcr)localObject).a().startPlay();
-        }
-      }
-    }
+    tvi.a.a(new pme(this));
   }
   
-  public static void a(ListView paramListView)
+  public void a()
   {
-    a(paramListView, true);
+    super.a();
+    twx.a().a(this);
   }
   
-  public static void a(ListView paramListView, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    e(paramListView);
-  }
-  
-  public static void b(Container paramContainer)
-  {
-    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
-    while (paramContainer.hasNext())
-    {
-      Object localObject = (Map.Entry)paramContainer.next();
-      if ((((Map.Entry)localObject).getValue() instanceof qcr))
-      {
-        localObject = (qcr)((Map.Entry)localObject).getValue();
-        if ((((qcr)localObject).a() instanceof NativeVideoView)) {
-          ((qcr)localObject).a().stop();
-        }
-      }
-    }
-  }
-  
-  public static void b(ListView paramListView)
-  {
-    if ((!ozs.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
-    for (;;)
-    {
+    if ((paramInt != 0) && (!pcl.c(paramInt))) {
       return;
-      int i = 0;
-      while (i < paramListView.getChildCount())
-      {
-        View localView = paramListView.getChildAt(i);
-        if ((localView instanceof plx)) {
-          ((plx)localView).b();
-        }
-        i += 1;
-      }
     }
-  }
-  
-  public static void c(ListView paramListView)
-  {
-    if ((!ozs.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
-    for (;;)
+    int i = -1;
+    if (paramInt == 0) {
+      i = tvd.a.c().getAndAdd(1);
+    }
+    while (i != 0)
     {
+      a(false);
       return;
-      int i = 0;
-      while (i < paramListView.getChildCount())
-      {
-        View localView = paramListView.getChildAt(i);
-        if ((localView instanceof plx)) {
-          ((plx)localView).a();
-        }
-        i += 1;
+      if (pcl.c(paramInt)) {
+        i = tvd.a.d().getAndAdd(1);
       }
     }
-  }
-  
-  public static void d(ListView paramListView)
-  {
-    if ((!ozs.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
-    for (;;)
+    if (!(tve.a.a() instanceof AdvertisementInfo))
     {
+      a(false);
       return;
-      int i = 0;
-      while (i < paramListView.getChildCount())
-      {
-        View localView = paramListView.getChildAt(i);
-        if ((localView instanceof plx)) {
-          ((plx)localView).c();
-        }
-        i += 1;
-      }
     }
+    if (tvi.a.b())
+    {
+      tvg.a.a("beginShowMask");
+      if (b())
+      {
+        tvi.a.a(tuz.a.d());
+        tvg.a.a("alertManagerShowAfter");
+        tvg.a.a(tve.a.a(), false, "has high level float", null, "resource_use_key");
+        a(false);
+        return;
+      }
+      tvg.a.a("alertManagerShowNow");
+      i();
+      return;
+    }
+    tvi.a.a(tuz.a.d());
+    twp.a("ReadInJoySuperMaskAd", "superMask not show, refreshNum = " + i);
+    a(false);
   }
   
-  private static void e(ListView paramListView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int j = 0;
-    int i = 0;
-    View localView;
-    if (i < paramListView.getChildCount())
-    {
-      localView = paramListView.getChildAt(i);
-      if (((localView instanceof plx)) && (ozc.a(localView) >= 80.0F))
-      {
-        QLog.d("gifvideo.VideoPlayControlUtils", 2, ">= 80f");
-        if (!((plx)localView).a()) {}
+    if (tvi.a.c()) {
+      if (paramBoolean) {
+        break label33;
       }
     }
-    for (;;)
+    label33:
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      if (i != -1)
-      {
-        QLog.d("gifvideo.VideoPlayControlUtils", 2, "item to play: " + i);
-        for (;;)
-        {
-          if (j < paramListView.getChildCount())
-          {
-            localView = paramListView.getChildAt(j);
-            if (((localView instanceof plx)) && (j != i)) {
-              ((plx)localView).a();
-            }
-            j += 1;
-            continue;
-            i += 1;
-            break;
-          }
-        }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (this.jdField_a_of_type_Boolean) {
+        a(false);
       }
       return;
-      i = -1;
     }
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    twx.a().a();
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public void d()
+  {
+    super.d();
+  }
+  
+  public void e()
+  {
+    super.e();
+  }
+  
+  public void f()
+  {
+    super.f();
+  }
+  
+  protected void g() {}
+  
+  protected void h() {}
 }
 
 

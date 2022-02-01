@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableLoaderImpl.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bibt
-  implements bicb
+final class bibt
+  implements DialogInterface.OnClickListener
 {
-  public bibt(GLDrawableLoaderImpl.2 param2) {}
+  bibt(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bibs.a(false);
-  }
-  
-  public void c()
-  {
-    bibs.a(false);
+    bibs.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bcef.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bibw.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bibw.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bibw.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bhwl.a().a(25, paramDialogInterface);
   }
 }
 

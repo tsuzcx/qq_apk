@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import apbd;
+import anvg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 

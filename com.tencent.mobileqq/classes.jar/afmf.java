@@ -1,17 +1,10 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-
-public abstract interface afmf
+public abstract interface afmf<T>
 {
-  public abstract void a(Editable paramEditable);
-  
-  public abstract void a(ResultRecord paramResultRecord);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract T a(afmc paramafmc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmf
  * JD-Core Version:    0.7.0.1
  */

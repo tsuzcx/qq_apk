@@ -1,34 +1,33 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.util.ArrayList;
 
-public class bdcu
+class bdcu
+  implements blbv
 {
-  public static void a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("crashKind", "" + paramInt);
-    bdmc.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
-  }
+  bdcu(bdct parambdct) {}
   
-  public static void a(String paramString, long paramLong)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("time", "" + paramLong);
-    localHashMap.put("filter_id", bdcv.jdField_a_of_type_JavaLangString);
-    localHashMap.put("front_camera", String.valueOf(bdcv.jdField_a_of_type_Boolean));
-    bdmc.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, bczp.c, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bdcv.jdField_a_of_type_JavaLangString + " ; front_camera = " + bdcv.jdField_a_of_type_Boolean);
+    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
+    if (paramBoolean)
+    {
+      paramGetAdsRsp = bdda.a(paramBoolean, paramGetAdsRsp);
+      if (paramGetAdsRsp != null)
+      {
+        this.a.a.add(paramGetAdsRsp);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
+        blbw.a().a(paramGetAdsRsp.a);
+      }
     }
+    else
+    {
+      return;
+    }
+    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
 }
 

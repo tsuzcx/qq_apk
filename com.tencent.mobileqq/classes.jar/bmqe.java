@@ -1,37 +1,18 @@
-import android.os.Bundle;
-import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import dov.com.qq.im.aeeditor.view.videotrack.RoundFrameLayout;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
 
 public class bmqe
+  extends AnimatorListenerAdapter
 {
-  private static bmqe a;
+  public bmqe(VideoTrackTimeLineView paramVideoTrackTimeLineView, View paramView) {}
   
-  public static bmqe a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      if (a == null) {
-        a = new bmqe();
-      }
-      bmqe localbmqe = a;
-      return localbmqe;
-    }
-    finally {}
-  }
-  
-  public boolean a(String paramString, Bundle paramBundle)
-  {
-    if (!bmop.a().a())
-    {
-      bmqw.d("ReaderInterfacePlugin", "plugin is not Ready, launch it");
-      bmop.a().a();
-    }
-    ReaderInterfacePluginProxy localReaderInterfacePluginProxy;
-    do
-    {
-      return false;
-      localReaderInterfacePluginProxy = bmop.a().a();
-    } while (localReaderInterfacePluginProxy == null);
-    return localReaderInterfacePluginProxy.handleEvent(paramString, paramBundle);
+    VideoTrackTimeLineView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackTimeLineView).removeView(this.jdField_a_of_type_AndroidViewView);
+    VideoTrackTimeLineView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackTimeLineView, null);
   }
 }
 

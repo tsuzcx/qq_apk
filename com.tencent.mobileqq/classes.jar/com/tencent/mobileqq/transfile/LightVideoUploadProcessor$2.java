@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import beuw;
-
-public class LightVideoUploadProcessor$2
+class LightVideoUploadProcessor$2
   implements Runnable
 {
-  public LightVideoUploadProcessor$2(beuw parambeuw) {}
+  LightVideoUploadProcessor$2(LightVideoUploadProcessor paramLightVideoUploadProcessor) {}
   
   public void run()
   {
-    beuw.a(this.this$0, 1003);
+    LightVideoUploadProcessor.access$001(this.this$0, 1003);
   }
 }
 

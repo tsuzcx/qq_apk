@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import acqn;
+import abmw;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -12,7 +12,7 @@ public final class GdtMotiveBrowsingDialog$initTitle$1
   extends FunctionReference
   implements Function0<Unit>
 {
-  public GdtMotiveBrowsingDialog$initTitle$1(acqn arg1) {}
+  public GdtMotiveBrowsingDialog$initTitle$1(abmw arg1) {}
   
   public final String getName() {}
   

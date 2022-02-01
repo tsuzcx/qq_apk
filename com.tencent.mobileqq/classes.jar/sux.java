@@ -1,25 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import android.view.View;
 
-public class sux
-  implements Animator.AnimatorListener
+class sux
+  implements bjoy
 {
-  public sux(ZImageView paramZImageView) {}
+  sux(suv paramsuv) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    ZImageView.access$000(this.a);
+    this.a.a.setSelected(false);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ZImageView.access$000(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

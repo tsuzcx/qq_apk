@@ -1,42 +1,79 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "measuredWidth", "", "measuredHeight", "onMeasured", "com/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent$updateDiyText$1$1"}, k=3, mv={1, 1, 16})
-final class baii
-  implements agag
+public class baii
+  implements BusinessObserver
 {
-  baii(baih parambaih) {}
+  protected void a(long paramLong, int paramInt) {}
   
-  public final void a(int paramInt1, int paramInt2)
+  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2) {}
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2, badg parambadg) {}
+  
+  protected void b(long paramLong, int paramInt) {}
+  
+  protected void c(long paramLong, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = baih.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
+    if (QLog.isColorLevel()) {
+      QLog.d("TransObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
     }
-    ((SingleTouchLayout)localObject).setActualViewSize(paramInt1, paramInt2);
-    localObject = baih.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((SingleTouchLayout)localObject).invalidate();
-    if (QLog.isColorLevel())
+    switch (paramInt)
     {
-      localObject = this.a.b();
-      StringBuilder localStringBuilder = new StringBuilder().append("updateDiyText: x=");
-      SingleTouchLayout localSingleTouchLayout = baih.a(this.a);
-      if (localSingleTouchLayout == null) {
-        Intrinsics.throwNpe();
+    default: 
+      return;
+    case 0: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (String)paramObject[5]);
+        return;
       }
-      localStringBuilder = localStringBuilder.append(localSingleTouchLayout.a().x).append(',').append("y=");
-      localSingleTouchLayout = baih.a(this.a);
-      if (localSingleTouchLayout == null) {
-        Intrinsics.throwNpe();
+      b(-1L, -1);
+      return;
+    case 1: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        long l = ((Long)paramObject[0]).longValue();
+        paramInt = ((Integer)paramObject[1]).intValue();
+        int i = ((Integer)paramObject[2]).intValue();
+        if (paramObject[3] != null) {}
+        for (paramObject = (badg)paramObject[3];; paramObject = null)
+        {
+          a(l, paramInt, i, paramObject);
+          return;
+        }
       }
-      QLog.d((String)localObject, 2, localSingleTouchLayout.a().y + ',' + "width=" + paramInt1 + ',' + "height=" + paramInt2);
+      b(-1L, -1);
+      return;
+    case 2: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      }
+      b(-1L, -1);
+      return;
+    case 3: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        b(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      }
+      b(-1L, -1);
+      return;
     }
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      c(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
+      return;
+    }
+    b(-1L, -1);
   }
 }
 

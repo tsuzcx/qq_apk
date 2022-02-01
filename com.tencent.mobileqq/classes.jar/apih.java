@@ -1,266 +1,512 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARNativeBridge.ActionCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.1;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.10;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.11;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x587.ReqBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.cmd0xd51.Oidb_0xd51.AioQuickAppData;
+import tencent.im.oidb.cmd0xd51.Oidb_0xd51.ReqBody;
+import tencent.im.oidb.cmd0xeb5.oidb_0xeb5.App;
+import tencent.im.oidb.cmd0xeb5.oidb_0xeb5.Label;
+import tencent.im.oidb.cmd0xeb5.oidb_0xeb5.ReqBody;
+import tencent.im.oidb.cmd0xeb5.oidb_0xeb5.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class apih
-  implements apho, ARNativeBridge.ActionCallback
+  extends BusinessHandler
 {
-  private volatile int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
-  private apfb jdField_a_of_type_Apfb;
-  private aphq jdField_a_of_type_Aphq;
-  private apii jdField_a_of_type_Apii;
-  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
-  private volatile int c = 1;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  private QQAppInterface a;
   
-  public apih(aphq paramaphq, apii paramapii, GLSurfaceView paramGLSurfaceView)
+  public apih(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aphq = paramaphq;
-    this.jdField_a_of_type_Apii = paramapii;
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_Aphq.a();
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = ((ARNativeBridge)this.jdField_a_of_type_Aphq.a(0));
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
   }
   
-  public void a(int paramInt)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
+    Object localObject = new oidb_0xeb5.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    long l2 = paramToServiceMsg.extraData.getLong("key_friend_uin");
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "setNativeState, mCurState=" + this.jdField_a_of_type_Int + ", new State=" + paramInt);
+      QLog.d("C2CShortcutBarHandler", 2, "handleRequestC2CShortcutAppList result = " + i);
     }
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
+    boolean bool = false;
+    paramFromServiceMsg = new ArrayList();
+    if (i == 0)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 11: 
-    default: 
-      return;
-    case 2: 
-      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
-      this.b = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeCreateEngineBusiness(this.b, this.jdField_a_of_type_Apii.b, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getAssets(), this.jdField_a_of_type_Apii.c, this.d, this.e, 100);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
-      a(7);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.b, this.d, this.e);
-      return;
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.b);
-      this.c = 0;
-      a(11);
-      return;
-    case 9: 
-      this.jdField_a_of_type_Aphq.a(new Interactive3DRenderable.1(this));
-      return;
-    case 8: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.b);
-      return;
+      int j;
+      label148:
+      label203:
+      int k;
+      if (((oidb_0xeb5.RspBody)localObject).cache_ts.has())
+      {
+        i = ((oidb_0xeb5.RspBody)localObject).cache_ts.get();
+        apil.a(this.app).a(Long.valueOf(l2), Long.valueOf(System.currentTimeMillis() / 1000L + i));
+        if (!((oidb_0xeb5.RspBody)localObject).max_show_app_num.has()) {
+          break label730;
+        }
+        j = ((oidb_0xeb5.RspBody)localObject).max_show_app_num.get();
+        apil.a(this.app).a(j);
+        if (((oidb_0xeb5.RspBody)localObject).redpoint_cache_ts.has()) {
+          ((oidb_0xeb5.RspBody)localObject).redpoint_cache_ts.get();
+        }
+        if (!((oidb_0xeb5.RspBody)localObject).cookies.has()) {
+          break label736;
+        }
+        ((oidb_0xeb5.RspBody)localObject).cookies.get().toStringUtf8();
+        if (!((oidb_0xeb5.RspBody)localObject).expose_id.has()) {
+          break label739;
+        }
+        k = ((oidb_0xeb5.RspBody)localObject).expose_id.get();
+        label224:
+        apil.a(this.app).a(String.valueOf(l2), k);
+        if (!((oidb_0xeb5.RspBody)localObject).app.has()) {
+          break label913;
+        }
+        paramObject = ((oidb_0xeb5.RspBody)localObject).app.get().iterator();
+      }
+      for (;;)
+      {
+        if (!paramObject.hasNext()) {
+          break label857;
+        }
+        localObject = (oidb_0xeb5.App)paramObject.next();
+        aphw localaphw = new aphw();
+        label315:
+        long l1;
+        label342:
+        label369:
+        int m;
+        label395:
+        label421:
+        label447:
+        label474:
+        label502:
+        oidb_0xeb5.Label localLabel;
+        label530:
+        label557:
+        label601:
+        aphx localaphx;
+        if (((oidb_0xeb5.App)localObject).appid.has())
+        {
+          paramToServiceMsg = ((oidb_0xeb5.App)localObject).appid.get();
+          localaphw.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+          if (!((oidb_0xeb5.App)localObject).type.has()) {
+            break label752;
+          }
+          l1 = ((oidb_0xeb5.App)localObject).type.get();
+          localaphw.jdField_a_of_type_Long = l1;
+          if (!((oidb_0xeb5.App)localObject).name.has()) {
+            break label758;
+          }
+          paramToServiceMsg = ((oidb_0xeb5.App)localObject).name.get();
+          localaphw.b = paramToServiceMsg;
+          if (!((oidb_0xeb5.App)localObject).icon.has()) {
+            break label765;
+          }
+          paramToServiceMsg = ((oidb_0xeb5.App)localObject).icon.get();
+          localaphw.jdField_c_of_type_JavaLangString = paramToServiceMsg;
+          if (!((oidb_0xeb5.App)localObject).url.has()) {
+            break label772;
+          }
+          paramToServiceMsg = ((oidb_0xeb5.App)localObject).url.get();
+          localaphw.jdField_d_of_type_JavaLangString = paramToServiceMsg;
+          if (!((oidb_0xeb5.App)localObject).desc.has()) {
+            break label779;
+          }
+          paramToServiceMsg = ((oidb_0xeb5.App)localObject).desc.get();
+          localaphw.e = paramToServiceMsg;
+          if (!((oidb_0xeb5.App)localObject).redpoint.has()) {
+            break label786;
+          }
+          m = ((oidb_0xeb5.App)localObject).redpoint.get();
+          localaphw.jdField_a_of_type_Int = m;
+          if (!((oidb_0xeb5.App)localObject).playing_num.has()) {
+            break label792;
+          }
+          m = ((oidb_0xeb5.App)localObject).playing_num.get();
+          localaphw.jdField_c_of_type_Int = m;
+          if (!((oidb_0xeb5.App)localObject).ark.has()) {
+            break label798;
+          }
+          bool = ((oidb_0xeb5.App)localObject).ark.get();
+          localaphw.jdField_a_of_type_Boolean = bool;
+          if (!((oidb_0xeb5.App)localObject).ark_label.has()) {
+            break label804;
+          }
+          paramToServiceMsg = ((oidb_0xeb5.App)localObject).ark_label.get();
+          localaphw.g = paramToServiceMsg;
+          if (!((oidb_0xeb5.App)localObject).labels.has()) {
+            break label832;
+          }
+          localaphw.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          Iterator localIterator = ((oidb_0xeb5.App)localObject).labels.get().iterator();
+          if (!localIterator.hasNext()) {
+            break label832;
+          }
+          localLabel = (oidb_0xeb5.Label)localIterator.next();
+          localaphx = new aphx();
+          if (!localLabel.string_name.has()) {
+            break label811;
+          }
+          paramToServiceMsg = localLabel.string_name.get();
+          label652:
+          localaphx.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+          if (!localLabel.text_color.has()) {
+            break label818;
+          }
+          paramToServiceMsg = localLabel.text_color.get();
+          label678:
+          localaphx.jdField_c_of_type_JavaLangString = paramToServiceMsg;
+          if (!localLabel.bg_color.has()) {
+            break label825;
+          }
+        }
+        label772:
+        label779:
+        label786:
+        label792:
+        label798:
+        label804:
+        label811:
+        label818:
+        label825:
+        for (paramToServiceMsg = localLabel.bg_color.get();; paramToServiceMsg = "")
+        {
+          localaphx.b = paramToServiceMsg;
+          localaphw.jdField_a_of_type_JavaUtilArrayList.add(localaphx);
+          break label601;
+          i = 0;
+          break;
+          label730:
+          j = 0;
+          break label148;
+          label736:
+          break label203;
+          label739:
+          k = 0;
+          break label224;
+          paramToServiceMsg = "";
+          break label315;
+          label752:
+          l1 = 0L;
+          break label342;
+          label758:
+          paramToServiceMsg = "";
+          break label369;
+          label765:
+          paramToServiceMsg = "";
+          break label395;
+          paramToServiceMsg = "";
+          break label421;
+          paramToServiceMsg = "";
+          break label447;
+          m = 0;
+          break label474;
+          m = 0;
+          break label502;
+          bool = false;
+          break label530;
+          paramToServiceMsg = "";
+          break label557;
+          paramToServiceMsg = "";
+          break label652;
+          paramToServiceMsg = "";
+          break label678;
+        }
+        label832:
+        localaphw.jdField_d_of_type_Int = ((oidb_0xeb5.App)localObject).jump_type.get();
+        paramFromServiceMsg.add(localaphw);
+      }
+      label857:
+      apil.a(this.a).a(Long.valueOf(l2), paramFromServiceMsg);
+      if (paramFromServiceMsg.size() > j) {
+        apil.a(this.a).a(String.valueOf(l2), paramFromServiceMsg.subList(j, paramFromServiceMsg.size()));
+      }
+      label913:
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarHandler", 2, "handleRequestC2CShortcutAppList maxDisplayNum = " + j + "，cacheTS = " + i + "， friendUin = " + l2 + " ，exposeId = " + k + "，shortcutAppInfoList = " + paramFromServiceMsg);
+      }
+      bool = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
-    this.b = 0;
-    if (this.jdField_a_of_type_Apfb != null)
+    notifyUI(1, bool, new Object[] { Long.valueOf(l2), paramFromServiceMsg });
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    boolean bool3;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      this.jdField_a_of_type_Apfb.b();
-      this.jdField_a_of_type_Apfb.c();
+      bool1 = true;
+      bool3 = ((Boolean)paramToServiceMsg.getAttribute("is_global_open")).booleanValue();
+      if (bool1)
+      {
+        paramFromServiceMsg = (byte[])paramObject;
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+      }
     }
-    this.jdField_a_of_type_Int = 1;
+    else
+    {
+      try
+      {
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+        paramToServiceMsg = paramFromServiceMsg;
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        for (;;)
+        {
+          QLog.d("C2CShortcutBarHandler", 1, "handleSetC2CSwitcherStatus()  e =", paramFromServiceMsg);
+          continue;
+          bool1 = false;
+          continue;
+          if (bool3) {
+            bool2 = false;
+          }
+        }
+      }
+      if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0)) {
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarHandler", 2, new Object[] { "handleSetGlobalSwitcherStatus() isGlobalOpen = ", Boolean.valueOf(bool3), " isSuccess = ", Boolean.valueOf(bool1) });
+      }
+      paramToServiceMsg = this.a;
+      if (bool1)
+      {
+        bool2 = bool3;
+        apin.a(paramToServiceMsg, bool2);
+        notifyUI(3, bool1, Boolean.valueOf(bool3));
+        return;
+        bool1 = false;
+        break;
+      }
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.d = paramInt1;
-    this.e = paramInt2;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {}
+    for (bool2 = true;; bool2 = false)
+    {
+      bool3 = ((Boolean)paramToServiceMsg.getAttribute("is_open")).booleanValue();
+      String str = (String)paramToServiceMsg.getAttribute("friend_uin");
+      bool1 = bool2;
+      if (bool2)
+      {
+        paramFromServiceMsg = (byte[])paramObject;
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+      }
+      try
+      {
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+        paramToServiceMsg = paramFromServiceMsg;
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        for (;;)
+        {
+          QLog.d("C2CShortcutBarHandler", 1, "handleSetC2CSwitcherStatus()  e =", paramFromServiceMsg);
+          continue;
+          bool1 = false;
+          continue;
+          if (!bool3) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+        }
+      }
+      if ((!paramToServiceMsg.uint32_result.has()) || (paramToServiceMsg.uint32_result.get() != 0)) {
+        break;
+      }
+      bool1 = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarHandler", 2, new Object[] { "handleSetSwitcherStatus() isOpen = ", Boolean.valueOf(bool3), " isSuccess =" + bool1 });
+      }
+      paramToServiceMsg = this.a;
+      if (!bool1) {
+        break label227;
+      }
+      bool2 = bool3;
+      apin.a(paramToServiceMsg, bool2, str);
+      notifyUI(2, bool1, new Object[] { str, Boolean.valueOf(bool3) });
+      return;
+    }
   }
   
-  public void a(aphw paramaphw)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.b, paramaphw.a, (float[])paramaphw.a("CAMERA_POSITION"));
+    apil.a(this.app).a(Long.valueOf(paramLong), Long.valueOf(0L));
+    notifyUI(6, true, new Object[] { Long.valueOf(paramLong) });
   }
   
-  public void a(String paramString)
+  public void a(long paramLong, int paramInt1, boolean paramBoolean, int paramInt2, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "playEffectMusic, " + paramString);
+      QLog.d("C2CShortcutBarHandler", 2, "requestC2CShortcutAppList");
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.10(this, paramString));
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d;
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "playBgMusic, " + paramString);
+    oidb_0xeb5.ReqBody localReqBody = new oidb_0xeb5.ReqBody();
+    localReqBody.friend_uin.set(paramLong);
+    localReqBody.aio_type.set(paramInt1);
+    localReqBody.redpoint.set(paramBoolean);
+    if (paramInt2 > 0) {
+      localReqBody.num.set(paramInt2);
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.11(this, paramString));
+    if (!TextUtils.isEmpty(paramString)) {
+      localReqBody.cookies.set(ByteStringMicro.copyFromUtf8(paramString));
+    }
+    paramString = makeOIDBPkg("OidbSvc.oidb_0xeb5", 3765, 1, localReqBody.toByteArray());
+    paramString.extraData.putLong("key_friend_uin", paramLong);
+    sendPbReq(paramString);
   }
   
-  public int c()
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_Apii.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "init");
+    try
+    {
+      if (!this.a.getCurrentUin().equals(String.valueOf(paramLong2)))
+      {
+        QLog.d("C2CShortcutBarHandler", 1, "onPushC2CSwitcherStatusChanged() accountUin is not current user just return");
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarHandler", 2, "onPushC2CSwitcherStatusChanged()");
+      }
+      if (paramBoolean) {
+        apil.a(this.app).a(Long.valueOf(paramLong1), Long.valueOf(0L));
+      }
+      apin.a(this.a, paramBoolean, String.valueOf(paramLong1));
+      notifyUI(2, true, new Object[] { String.valueOf(paramLong1), Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      localNumberFormatException.printStackTrace();
     }
   }
   
-  public void callback(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "fNativeDoActionCallback action=" + paramInt1 + ", params=" + paramString1 + ", callbackId=" + paramInt2 + ", result=" + paramString2);
+    Object localObject = new Oidb_0xd51.ReqBody();
+    ((Oidb_0xd51.ReqBody)localObject).appid.set(10002L);
+    ((Oidb_0xd51.ReqBody)localObject).frd_uin.set(Long.valueOf(paramString).longValue());
+    ((Oidb_0xd51.ReqBody)localObject).add_direction.set(1);
+    ((Oidb_0xd51.ReqBody)localObject).ext_sns_type.set(25);
+    Oidb_0xd51.AioQuickAppData localAioQuickAppData = new Oidb_0xd51.AioQuickAppData();
+    PBUInt32Field localPBUInt32Field = localAioQuickAppData.uint32_switch;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBUInt32Field.set(i);
+      ((Oidb_0xd51.ReqBody)localObject).bytes_aio_quick_app.set(ByteStringMicro.copyFrom(localAioQuickAppData.toByteArray()));
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarHandler", 2, new Object[] { "setSwitcherStatus() isOpen = ", Boolean.valueOf(paramBoolean), " friendUin =", paramString });
+      }
+      localObject = makeOIDBPkg("OidbSvc.oidb_0xd51", 3409, 15, ((Oidb_0xd51.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("is_open", Boolean.valueOf(paramBoolean));
+      ((ToServiceMsg)localObject).addAttribute("friend_uin", paramString);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
     }
-    if (this.jdField_a_of_type_Aphq == null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int i = 2;
+    Object localObject2;
+    Object localObject1;
+    if (this.app != null)
+    {
+      localObject2 = this.app.getCurrentAccountUin();
+      localObject1 = new oidb_0x587.ReqBody();
+    }
+    try
+    {
+      long l = Long.parseLong((String)localObject2);
+      ((oidb_0x587.ReqBody)localObject1).rpt_uint64_uins.add(Long.valueOf(l));
+      localObject2 = ((oidb_0x587.ReqBody)localObject1).uint32_c2c_aio_shortcut_switch;
+      if (paramBoolean) {
+        i = 1;
+      }
+      ((PBUInt32Field)localObject2).set(i);
+      localObject1 = makeOIDBPkg("OidbSvc.oidb_0x587", 1415, 74, ((oidb_0x587.ReqBody)localObject1).toByteArray());
+      ((ToServiceMsg)localObject1).addAttribute("is_global_open", Boolean.valueOf(paramBoolean));
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarHandler", 2, new Object[] { "setGlobalSwitcherStatus() isChecked =", Boolean.valueOf(paramBoolean) });
+      }
+      sendPbReq((ToServiceMsg)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("C2CShortcutBarHandler", 1, "setGlobalSwitcherStatus()  e =", localException);
+    }
+  }
+  
+  public boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.oidb_0xeb5");
+      this.allowCmdSet.add("OidbSvc.oidb_0xd51");
+      this.allowCmdSet.add("OidbSvc.oidb_0x587");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return apim.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
+      QLog.d("C2CShortcutBarHandler", 4, new Object[] { "onReceive() req.cmd = ", paramToServiceMsg.getServiceCmd() });
+    }
     do
     {
       return;
-      switch (paramInt1)
+      if ("OidbSvc.oidb_0xeb5".equals(paramFromServiceMsg.getServiceCmd()))
       {
-      case 57: 
-      default: 
-        this.jdField_a_of_type_Aphq.a(this, this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramInt1, 0, paramString2);
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 300L);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a("res/music/fudai_click.mp3");
-    return;
-    a("res/music/fudai_explode.mp3");
-    return;
-    a("res/music/fudai_appear.mp3");
-    b("res/music/fudai_background.mp3");
-    return;
-    b("res/music/gameing_background.mp3");
-    return;
-    b("res/music/gameend_background.mp3");
-    return;
-    a("res/music/redpack_get.mp3");
-    return;
-    a("res/music/aimed.mp3");
-    return;
-    this.g += 1;
-    this.f += paramInt2;
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "start");
-    }
-    if (1 == this.jdField_a_of_type_Int)
-    {
-      String str = this.jdField_a_of_type_Apii.c;
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[8];
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = (str + "res/music/loading.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[1] = (str + "res/music/321ready.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[2] = (str + "res/music/redpack_open.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[3] = (str + "res/music/fudai_click.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[4] = (str + "res/music/fudai_explode.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[5] = (str + "res/music/fudai_appear.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[6] = (str + "res/music/redpack_get.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[7] = (str + "res/music/aimed.mp3");
-      this.jdField_a_of_type_Apfb = new apfb(1, this.jdField_a_of_type_ArrayOfJavaLangString);
-      a(2);
-      this.g = 0;
-      this.f = 0;
-    }
-    if (this.jdField_a_of_type_Aphq != null) {
-      this.jdField_a_of_type_Aphq.a(this, this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 100, 0, null);
-    }
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Int == 9) && (this.b != 0);
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Int == 11)
-    {
-      int i = this.c + 1;
-      this.c = i;
-      if (i >= 2) {
-        a(9);
-      }
-    }
-  }
-  
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, " + this);
-    }
-    if (this.jdField_a_of_type_Int == 9)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, queueEvent, " + this);
-      }
-      if ((this.jdField_a_of_type_Aphq != null) && (this.jdField_a_of_type_Boolean == true))
+      if ("OidbSvc.oidb_0xd51".equals(paramToServiceMsg.getServiceCmd()))
       {
-        this.jdField_a_of_type_Aphq.b(1, 0);
-        this.jdField_a_of_type_Boolean = false;
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
       }
-      if (this.jdField_a_of_type_Aphq != null)
-      {
-        this.jdField_a_of_type_Aphq.a(this.jdField_a_of_type_Apii.jdField_a_of_type_JavaLangString);
-        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, remove hsRender here, " + this);
-        this.jdField_a_of_type_Aphq.a(this, this.jdField_a_of_type_Apii.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 101, 0, null);
-      }
-      if (this.jdField_a_of_type_Int == 9) {
-        a(10);
-      }
-    }
-    if (this.g > 0)
-    {
-      float f1 = this.f * 1.0F / this.g;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("fps_total", String.valueOf(this.f));
-      localHashMap.put("fps_count", String.valueOf(this.g));
-      localHashMap.put("fps_avg", String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(f1) }));
-      bdmc.a(BaseApplicationImpl.getContext()).a(BaseActivity.sTopActivity.getCurrentAccountUin(), "binhai_fps", true, 0L, 0L, localHashMap, "", false);
-    }
+    } while (!"OidbSvc.oidb_0x587".equals(paramToServiceMsg.getServiceCmd()));
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

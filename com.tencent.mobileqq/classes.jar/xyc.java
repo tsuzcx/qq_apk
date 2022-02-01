@@ -1,27 +1,57 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class xyc
-  extends QQUIEventReceiver<xyb, wmd>
+class xyc
+  extends ygj
 {
-  public xyc(@NonNull xyb paramxyb)
+  private final List<yfy> a = new ArrayList();
+  
+  public int a()
   {
-    super(paramxyb);
+    return this.a.size();
   }
   
-  public void a(@NonNull xyb paramxyb, @NonNull wmd paramwmd)
+  public yfy a(int paramInt)
   {
-    if ((xyb.a(paramxyb) == null) || (paramwmd.a == null) || (!TextUtils.equals(xyb.a(paramxyb).a, paramwmd.a.mVid))) {
-      return;
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (yfy)this.a.get(paramInt);
     }
-    paramxyb.a.i();
+    return null;
   }
   
-  public Class acceptEventClass()
+  public yfy a(String paramString)
   {
-    return wmd.class;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      yfy localyfy = (yfy)localIterator.next();
+      if (TextUtils.equals(paramString, localyfy.a)) {
+        return localyfy;
+      }
+    }
+    return null;
+  }
+  
+  public void a(Collection<yfy> paramCollection)
+  {
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(yfy paramyfy)
+  {
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramyfy);
+    int i = this.a.indexOf(paramyfy);
+    if (i >= 0)
+    {
+      this.a.set(i, paramyfy);
+      a(i);
+    }
   }
 }
 

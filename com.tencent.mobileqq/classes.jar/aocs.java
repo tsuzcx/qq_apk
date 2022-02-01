@@ -1,24 +1,54 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.8.1;
+import com.tencent.mobileqq.ar.ArConfigService.8.2;
+import com.tencent.mobileqq.ar.ArConfigService.8.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class aocs
-  implements anuh
+  implements aojg
 {
-  private List<String> a = new ArrayList();
+  public aocs(ArConfigService paramArConfigService) {}
   
-  public List<String> a(AppInterface paramAppInterface)
+  public void a()
   {
-    if (this.a.isEmpty()) {
-      this.a.add("100077");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
     }
-    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
-      return this.a;
-    }
-    return null;
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, aojh paramaojh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      ArConfigService.f(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
+    ArConfigService.a(this.a, true);
+  }
+  
+  public void b() {}
 }
 
 

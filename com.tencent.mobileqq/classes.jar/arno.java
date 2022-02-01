@@ -1,89 +1,104 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.math.BigDecimal;
+import mqq.app.QQPermissionCallback;
 
 public class arno
 {
-  private String a;
-  public boolean a;
-  private String b;
-  public boolean b;
-  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
-  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
-  
-  public arno()
+  public static String a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
+    if (paramInt < 1000) {
+      return paramInt + "m";
+    }
+    float f = new BigDecimal(paramInt / 1000.0F).setScale(1, 1).floatValue();
+    return f + "km";
   }
   
-  @NonNull
-  public static arno a(String paramString)
+  public static void a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    boolean bool2 = false;
-    arno localarno = new arno();
-    if (TextUtils.isEmpty(paramString)) {
-      return localarno;
+    if ((paramBaseActivity != null) && (paramQQPermissionCallback != null)) {
+      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
     }
-    for (;;)
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface != null) {
+      bfyz.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").edit().putBoolean("sp_extend_friend_signal_guide", paramBoolean).commit();
+    }
+  }
+  
+  public static boolean a()
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("showCreateIcon") == 1)
-        {
-          bool1 = true;
-          localarno.jdField_b_of_type_Boolean = bool1;
-          localarno.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
-          localarno.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
-          localarno.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
-          localarno.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
-          bool1 = bool2;
-          if (paramString.optInt("limit_off", 0) == 1) {
-            bool1 = true;
-          }
-          localarno.jdField_a_of_type_Boolean = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("vip_pretty.ConfigProcessor", 1, localarno.toString());
-          return localarno;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("SignalBombHelper", 2, "hasLocationPermission no permission " + Build.VERSION.SDK_INT);
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
-        return localarno;
-      }
-      boolean bool1 = false;
+      return false;
     }
+    return true;
   }
   
-  public String a()
+  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
   {
-    return this.c;
+    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
+    {
+      if (((arhi)paramQQAppInterface.getManager(264)).j())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SignalBombHelper", 2, "checkIsSignalBombWaiting waiting");
+        }
+        return false;
+      }
+      return true;
+    }
+    return false;
   }
   
-  public String a(String paramString)
+  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
+    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
+    {
+      paramQQAppInterface = (arhi)paramQQAppInterface.getManager(264);
+      if (!paramQQAppInterface.j()) {
+        break label49;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed waiting");
+      }
+    }
+    label49:
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed show dialog");
+    }
+    arqh.a(paramBaseActivity, paramQQAppInterface, paramOnDismissListener);
+    return true;
   }
   
-  public String a(String paramString1, String paramString2)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
-  }
-  
-  public String b()
-  {
-    return this.d;
+    boolean bool = false;
+    if (paramQQAppInterface != null) {
+      bool = bfyz.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getBoolean("sp_extend_friend_signal_guide", false);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arno
  * JD-Core Version:    0.7.0.1
  */

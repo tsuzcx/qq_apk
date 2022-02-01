@@ -1,25 +1,24 @@
 package cooperation.qzone;
 
-import bmvg;
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
+import cooperation.qqcircle.beans.QCircleFakeFeed;
 
 class QzoneIPCModule$RetryRequestFeed
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  bmvg jdField_a_of_type_Bmvg;
-  QCircleFakeFeed jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed;
+  QCircleFakeFeed fakeFeed;
+  QzoneIPCModule.ResultParmas resultParmas;
+  int retryCount = 0;
   
-  public QzoneIPCModule$RetryRequestFeed(QzoneIPCModule paramQzoneIPCModule, QCircleFakeFeed paramQCircleFakeFeed, int paramInt, bmvg parambmvg)
+  public QzoneIPCModule$RetryRequestFeed(QzoneIPCModule paramQzoneIPCModule, QCircleFakeFeed paramQCircleFakeFeed, int paramInt, QzoneIPCModule.ResultParmas paramResultParmas)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed = paramQCircleFakeFeed;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bmvg = parambmvg;
+    this.fakeFeed = paramQCircleFakeFeed;
+    this.retryCount = paramInt;
+    this.resultParmas = paramResultParmas;
   }
   
   public void run()
   {
-    QzoneIPCModule.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bmvg);
+    QzoneIPCModule.access$500(this.this$0, this.fakeFeed, this.retryCount, this.resultParmas);
   }
 }
 

@@ -1,14 +1,14 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.graphics.Rect;
 
 public class apsp
-  extends apsq
 {
-  public String a = "10001";
+  public Rect a;
+  public String a;
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public apsp(Rect paramRect, String paramString)
   {
-    this.a = paramBundle.getString("PromotionDescription");
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

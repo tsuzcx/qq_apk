@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import agej;
+import amtj;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -17,17 +17,17 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import anzj;
-import awnl;
-import awnm;
-import awnn;
-import awno;
-import beyq;
+import avap;
+import avaq;
+import avar;
+import avas;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -40,7 +40,7 @@ public class FloatIconLayout
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  DownloadParams.DecodeHandler jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new awnm(this);
+  DownloadParams.DecodeHandler jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new avaq(this);
   URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   String jdField_a_of_type_JavaLangString;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -73,7 +73,7 @@ public class FloatIconLayout
     }
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { f1, paramFloat });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration((Math.abs(paramFloat - f1) * 200.0F / 28.0F));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new awnl(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avap(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -94,8 +94,8 @@ public class FloatIconLayout
       int i = this.jdField_d_of_type_Int;
       paramString.mRequestWidth = i;
       paramString.mRequestHeight = i;
-      paramString.mFailedDrawable = beyq.a;
-      paramString.mLoadingDrawable = beyq.a;
+      paramString.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      paramString.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
       {
         this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
@@ -119,21 +119,21 @@ public class FloatIconLayout
   
   private void f()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131561054, null);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131368239));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364599));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131371557));
-    this.c = ((ImageView)((View)localObject).findViewById(2131371558));
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131376954);
-    this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131371578);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131560925, null);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131368263));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364630));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131371525));
+    this.c = ((ImageView)((View)localObject).findViewById(2131371526));
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131376709);
+    this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131371546);
     addView((View)localObject, new FrameLayout.LayoutParams(-2, -2));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131703520));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131703521));
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297250));
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131297249));
-    this.jdField_d_of_type_Int = agej.a(40.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131703750));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131703751));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297305));
+    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131297304));
+    this.jdField_d_of_type_Int = AIOUtils.dp2px(40.0F, getResources());
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
@@ -142,14 +142,14 @@ public class FloatIconLayout
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(10000L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_a_of_type_AndroidViewView.setPivotX(agej.a(40.0F, getResources()) / 2);
-    this.jdField_a_of_type_AndroidViewView.setPivotY(agej.a(40.0F, getResources()) / 2);
+    this.jdField_a_of_type_AndroidViewView.setPivotX(AIOUtils.dp2px(40.0F, getResources()) / 2);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(AIOUtils.dp2px(40.0F, getResources()) / 2);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
     this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
-    this.jdField_b_of_type_AndroidViewView.setPivotX(agej.a(20.0F, getResources()));
-    this.jdField_b_of_type_AndroidViewView.setPivotY(agej.a(3.0F, getResources()));
+    this.jdField_b_of_type_AndroidViewView.setPivotX(AIOUtils.dp2px(20.0F, getResources()));
+    this.jdField_b_of_type_AndroidViewView.setPivotY(AIOUtils.dp2px(3.0F, getResources()));
     this.jdField_b_of_type_AndroidViewView.setRotation(-28.0F);
     this.f = 0.0F;
     h();
@@ -191,31 +191,31 @@ public class FloatIconLayout
     this.c.setVisibility(0);
   }
   
-  public int a(awno paramawno)
+  public int a(avas paramavas)
   {
-    return paramawno.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
+    return paramavas.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
   }
   
-  public void a(awno paramawno)
+  public void a(avas paramavas)
   {
-    if (paramawno == null) {
+    if (paramavas == null) {
       return;
     }
-    if ((paramawno.f) && (!paramawno.g) && (paramawno.jdField_c_of_type_Boolean)) {
-      a(paramawno.jdField_a_of_type_JavaLangString);
+    if ((paramavas.f) && (!paramavas.g) && (paramavas.jdField_c_of_type_Boolean)) {
+      a(paramavas.jdField_a_of_type_JavaLangString);
     }
-    paramawno.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-    paramawno.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
+    paramavas.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+    paramavas.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
   }
   
-  public boolean a(awno paramawno)
+  public boolean a(avas paramavas)
   {
     boolean bool1 = true;
-    if (paramawno == null) {
+    if (paramavas == null) {
       return false;
     }
     boolean bool2 = c();
-    if ((paramawno.f) && (!paramawno.g) && (paramawno.jdField_c_of_type_Boolean)) {
+    if ((paramavas.f) && (!paramavas.g) && (paramavas.jdField_c_of_type_Boolean)) {
       if (a()) {}
     }
     for (;;)
@@ -232,9 +232,9 @@ public class FloatIconLayout
     }
   }
   
-  public int b(awno paramawno)
+  public int b(avas paramavas)
   {
-    return paramawno.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
+    return paramavas.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
   }
   
   public void b()
@@ -317,12 +317,12 @@ public class FloatIconLayout
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Awnn != null)
+      if (this.jdField_a_of_type_Avar != null)
       {
-        this.jdField_a_of_type_Awnn.d();
+        this.jdField_a_of_type_Avar.d();
         continue;
-        if (this.jdField_a_of_type_Awnn != null) {
-          this.jdField_a_of_type_Awnn.c();
+        if (this.jdField_a_of_type_Avar != null) {
+          this.jdField_a_of_type_Avar.c();
         }
       }
     }

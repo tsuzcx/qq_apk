@@ -1,12 +1,25 @@
+import android.annotation.TargetApi;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+
+@TargetApi(21)
 public class bhlh
+  extends ViewOutlineProvider
 {
-  public String a;
-  public boolean a;
+  private float a;
   
-  bhlh(String paramString, boolean paramBoolean)
+  public bhlh(float paramFloat)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramFloat;
+  }
+  
+  public void getOutline(View paramView, Outline paramOutline)
+  {
+    Rect localRect = new Rect();
+    paramView.getGlobalVisibleRect(localRect);
+    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
   }
 }
 

@@ -1,23 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.subscript.SubscriptConstants.1;
+import java.util.Map;
 
-final class ubj
-  implements Comparator<ArticleInfo>
+public class ubj
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
-  {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
-  }
+  public static final Map<String, String> a = new SubscriptConstants.1();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apih;
+import aobu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 
@@ -9,7 +9,7 @@ public class Interactive3DRenderable$9
 {
   public void run()
   {
-    apih.a(this.this$0).native_setBinHaiState(BaseActivity.sTopActivity, apih.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    aobu.a(this.this$0).native_setBinHaiState(BaseActivity.sTopActivity, aobu.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

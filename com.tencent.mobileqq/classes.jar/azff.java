@@ -1,24 +1,44 @@
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qassistant.core.ViewCommandModelCheck.1;
+import com.tencent.mobileqq.qassistant.core.ViewCommandModelCheck.2;
+import mqq.os.MqqHandler;
 
 public class azff
 {
-  public azff(AccountOnlineStateActivity paramAccountOnlineStateActivity, boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem) {}
+  private static int a;
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public azff()
   {
-    bhlq.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity), 2131697714, 2131697715);
+    b();
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public static void a()
   {
-    AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity).a(this.jdField_a_of_type_Boolean);
-    AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity).a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
-    AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity).show();
+    a += 1;
+    ThreadManager.getFileThreadHandler().post(new ViewCommandModelCheck.2());
+  }
+  
+  public static boolean a()
+  {
+    return a < 3;
+  }
+  
+  private int b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("view_command_count_file", 0).getInt("view_command_count", 0);
+  }
+  
+  private void b()
+  {
+    ThreadManager.getFileThreadHandler().post(new ViewCommandModelCheck.1(this));
+  }
+  
+  private static void b(int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("view_command_count_file", 0).edit().putInt("view_command_count", paramInt).apply();
   }
 }
 

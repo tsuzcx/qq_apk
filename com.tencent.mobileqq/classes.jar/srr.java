@@ -1,27 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class srr
-  implements ppi
+  extends pkt
 {
-  public srr(FastWebArticleInfo.2 param2) {}
+  public srr(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
+  public void b(String paramString)
   {
-    if ((paramBoolean1) && (paramFastWebArticleInfo != null))
-    {
-      this.a.this$0.jdField_b_of_type_Long = paramFastWebArticleInfo.jdField_b_of_type_Long;
-      if (paramFastWebArticleInfo.a > this.a.this$0.a) {
-        this.a.this$0.a = paramFastWebArticleInfo.a;
-      }
-      this.a.this$0.jdField_b_of_type_Boolean = false;
-      QLog.d("Q.readinjoy.fast_web", 2, "update fastweb info, rowkey : " + paramFastWebArticleInfo.j + ",  commentCnt : " + paramFastWebArticleInfo.jdField_b_of_type_Long + ", readCnt :" + paramFastWebArticleInfo.a);
+    super.b(paramString);
+    paramString = FastWebActivity.a(this.a).a(paramString, FastWebActivity.d(this.a));
+    if (paramString != null) {
+      this.a.a(true, paramString.a.commentId, null);
     }
-    ThreadManager.getUIHandler().post(new FastWebArticleInfo.2.1.1(this));
+    FastWebActivity.a(this.a).notifyDataSetChanged();
   }
 }
 

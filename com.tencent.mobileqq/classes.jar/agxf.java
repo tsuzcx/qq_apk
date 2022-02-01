@@ -1,22 +1,22 @@
+import android.content.Context;
 import android.view.View;
+import com.tencent.widget.XPanelContainer;
 
-public abstract interface agxf
+public abstract interface agxf<T extends View>
 {
-  public abstract View a();
+  public abstract int a();
+  
+  public abstract T a();
+  
+  public abstract T a(Context paramContext);
   
   public abstract void a();
   
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void b();
+  public abstract void a(XPanelContainer paramXPanelContainer);
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void j();
-  
-  public abstract void n();
+  public abstract boolean a();
 }
 
 

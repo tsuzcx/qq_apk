@@ -1,24 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bjjy
-  implements DialogInterface.OnClickListener
+  implements IRuntimeInterface
 {
-  public bjjy(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
+  private static volatile bjjy a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bjjy()
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new AuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
+    QSecFramework.a(3L, new bjjz(this));
+  }
+  
+  public static bjjy a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bjjy();
+      }
+      return a;
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a == null)) {
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 1) {
+      bjhk.a(paramString, paramInt2);
+    }
+    while (paramInt1 != 2) {
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a = null;
+    bjhk.b(paramString, paramInt2);
+  }
+  
+  public String getInterfaceName()
+  {
+    return "Rpt";
   }
 }
 

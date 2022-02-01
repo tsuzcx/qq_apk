@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import org.json.JSONObject;
 
-public final class yxq
-  implements Parcelable.Creator<EditVideoParams>
+public abstract interface yxq
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public abstract JSONObject a();
   
-  public EditVideoParams[] a(int paramInt)
-  {
-    return new EditVideoParams[paramInt];
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

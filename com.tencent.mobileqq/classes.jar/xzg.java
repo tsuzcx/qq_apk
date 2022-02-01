@@ -1,8 +1,22 @@
-public abstract interface xzg
+import android.view.View;
+
+class xzg
+  implements bjoe
 {
-  public abstract void a();
+  xzg(xzd paramxzd, bjnw parambjnw) {}
   
-  public abstract void b();
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.jdField_a_of_type_Xzd.c();
+    }
+  }
 }
 
 

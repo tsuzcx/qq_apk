@@ -1,17 +1,22 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aukr
-  implements View.OnClickListener
+public class aukr
+  implements auka
 {
-  aukr(aukp paramaukp) {}
-  
-  public void onClick(View paramView)
+  public void a(aukb paramaukb)
   {
-    this.a.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramaukb.a();
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramVarArgs[i].setVisibility(0);
+      i += 1;
+    }
   }
 }
 

@@ -1,12 +1,26 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface zdj
+public class zdj
+  implements yyq
 {
-  public abstract void a(int paramInt);
+  zdj(zdg paramzdg) {}
   
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(boolean paramBoolean);
+  public void a(boolean paramBoolean, Drawable paramDrawable)
+  {
+    if ((paramBoolean) && ((paramDrawable instanceof AnimationDrawable)))
+    {
+      paramDrawable = (AnimationDrawable)paramDrawable;
+      if (zdg.a(this.a) != null) {
+        zdg.f(this.a).runOnUiThread(new DetailBaseBlock.3.1(this, paramDrawable));
+      }
+      return;
+    }
+    QLog.d(zdg.a, 2, "showFollowTipView error, create animationDrawable error");
+  }
 }
 
 

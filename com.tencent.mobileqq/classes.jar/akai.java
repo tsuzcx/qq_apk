@@ -1,49 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
-public class akai
-  extends auoz
+class akai
+  implements DialogInterface.OnClickListener
 {
-  public akai(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  akai(akag paramakag, akaa paramakaa) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView.getId() == 2131366151) {
-      ChatHistoryBaseTenDocFragment.a(this.a);
-    }
-    while ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    TencentDocItem localTencentDocItem = ((akaf)paramView.getTag()).a;
-    if (this.a.c)
-    {
-      this.a.jdField_a_of_type_Akfq.a(localTencentDocItem);
-      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    paramView = "unknown";
-    if (atyu.b(localTencentDocItem.mUrl)) {
-      paramView = "doc";
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", localTencentDocItem.mUrl);
-      localBundle.putString("tdsourcetag", "s_qq_history_tab");
-      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
-      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
-      return;
-      if (atyu.e(localTencentDocItem.mUrl)) {
-        paramView = "form";
-      } else if (atyu.d(localTencentDocItem.mUrl)) {
-        paramView = "ppt";
-      } else if (atyu.c(localTencentDocItem.mUrl)) {
-        paramView = "sheet";
-      }
+    paramDialogInterface = this.jdField_a_of_type_Akaa.a.pop_dialog.right_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      bkvx.a(akad.a(this.jdField_a_of_type_Akag.a), paramDialogInterface);
     }
   }
 }

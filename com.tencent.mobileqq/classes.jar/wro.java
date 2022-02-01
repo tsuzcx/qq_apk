@@ -1,46 +1,84 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class wro<M>
-  extends RecyclerView.ViewHolder
+public class wro
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private SparseArray<View> a = new SparseArray();
+  private wro(wrm paramwrm) {}
   
-  public wro(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramView);
-  }
-  
-  public wro(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  protected <T extends View> T a(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    int i = 0;
+    Object localObject = (StoryPlayerGroupHolder)this.a.a();
+    if (((StoryPlayerGroupHolder)localObject).a() == null) {
+      return super.onDoubleTap(paramMotionEvent);
     }
-    return localView1;
+    localObject = (wyc)((StoryPlayerGroupHolder)localObject).b(wyc.class);
+    if ((localObject != null) && (((wyc)localObject).d()))
+    {
+      try
+      {
+        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130846844);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((AnimationDrawable)localObject).start();
+        int j = 0;
+        while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
+        {
+          j += ((AnimationDrawable)localObject).getDuration(i);
+          i += 1;
+        }
+        ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
+      }
+      catch (OutOfMemoryError paramMotionEvent)
+      {
+        bcdb.a(paramMotionEvent);
+        return false;
+      }
+      xvv.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
+    }
+    for (;;)
+    {
+      return super.onDoubleTap(paramMotionEvent);
+      xvv.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
+    }
   }
   
-  public void a() {}
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    super.onLongPress(paramMotionEvent);
+  }
   
-  public void a(M paramM) {}
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
+    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
+    if (localVideoViewVideoHolder != null) {
+      switch (localVideoViewVideoHolder.a())
+      {
+      }
+    }
+    for (;;)
+    {
+      xvv.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
+      return true;
+      paramMotionEvent.a(true, true);
+      xwa.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
+      continue;
+      paramMotionEvent.a(false, true);
+      xwa.a("play_video", "clk_video", 0, 0, new String[] { "", "1", "", "" });
+    }
+  }
 }
 
 

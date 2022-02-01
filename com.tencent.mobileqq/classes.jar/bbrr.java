@@ -1,30 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.ArrayList;
 
-class bbrr
-  implements DialogInterface.OnClickListener
+public abstract interface bbrr
 {
-  bbrr(bbrp parambbrp, int paramInt, Object paramObject) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-    }
-    do
-    {
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOVideoData));
-    paramDialogInterface = (AIOVideoData)this.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_Bbrp.a.a(paramDialogInterface);
-    this.jdField_a_of_type_Bbrp.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
-    this.jdField_a_of_type_Bbrp.updateUI();
-  }
+  public abstract void a(int paramInt, bbrl parambbrl);
+  
+  public abstract void a(int paramInt, ArrayList<bbrl> paramArrayList);
+  
+  public abstract void b(int paramInt, bbrl parambbrl);
 }
 
 

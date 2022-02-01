@@ -1,95 +1,124 @@
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.util.Log;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapter;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
+import com.tencent.ttpic.filter.aifilter.PhotoAIFilter;
+import dov.com.qq.im.aeeditor.module.aifilter.VideoAIFilterProxy.1;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Lbmgk;>;
+import mqq.os.MqqHandler;
 
 public class bmgv
-  implements IPluginAdapter
+  extends bmgg
 {
-  public static HashMap<String, Integer> a = new HashMap();
+  private static final String a;
+  public TAVCutVideoSession a;
+  protected final int b = 250;
   
   static
   {
-    a.put("qzone_plugin.apk", Integer.valueOf(2));
+    jdField_a_of_type_JavaLangString = bmgv.class.getSimpleName();
   }
   
-  public static int a(String paramString)
+  public bmgv(TAVCutVideoSession paramTAVCutVideoSession)
   {
-    if ((Integer)a.get(paramString) == null) {
-      return 1;
-    }
-    return ((Integer)a.get(paramString)).intValue();
+    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = paramTAVCutVideoSession;
   }
   
-  public Object invoke(int paramInt, Object paramObject)
+  protected bmgl a(List<bmgk> paramList)
   {
-    int i = 4;
-    boolean bool = false;
-    String str;
-    switch (paramInt)
+    bmgw localbmgw = new bmgw();
+    if (a(this.jdField_a_of_type_JavaUtilList)) {}
+    try
     {
-    default: 
-      return null;
-    case 1: 
-      paramObject = BaseApplicationImpl.getApplication();
-      str = IPluginAdapterProxy.getProxy().currentUin;
-      if (!TextUtils.isEmpty(str))
+      localbmgw.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData = PhotoAIFilter.preprocessImages(this.jdField_a_of_type_JavaUtilList);
+      localbmgw.jdField_a_of_type_ArrayOfFloat = bmfh.a(localbmgw.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
+      localbmgw.jdField_a_of_type_JavaUtilHashMap = bmfh.a(localbmgw.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
+      localObject2 = new ArrayList();
+      if ((paramList == null) || (paramList.size() == 0))
       {
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (;;)
+        String str = NewEnhanceCategories.COMMON.serverLabel;
+        paramList = (List<bmgk>)localObject2;
+        bmbx.b(jdField_a_of_type_JavaLangString, "sceneLabel: " + str);
+        localObject2 = paramList.iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
-          if ((!"1103".equals(paramObject)) && (!"2920".equals(paramObject))) {
-            break;
-          }
-          return Boolean.valueOf(true);
-          i = 0;
+          localObject3 = (YoutuResultItem)((Iterator)localObject2).next();
+          bmbx.b(jdField_a_of_type_JavaLangString, "label: " + ((YoutuResultItem)localObject3).Label + ", confidence: " + ((YoutuResultItem)localObject3).Confidence);
         }
       }
-      return Boolean.valueOf(false);
-    case 3: 
-      paramObject = BaseApplicationImpl.getApplication();
-      str = IPluginAdapterProxy.getProxy().currentUin;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (;;)
-        {
-          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
-          if ((!"1000".equals(paramObject)) && (!"999".equals(paramObject))) {
-            break;
-          }
-          return Boolean.valueOf(true);
-          i = 0;
-        }
-      }
-      return Boolean.valueOf(false);
-    case 2: 
-      return ThreadManager.getSubThreadLooper();
-    case 4: 
-      if (a((String)paramObject) > 1) {
-        bool = true;
-      }
-      return Boolean.valueOf(bool);
     }
-    return Integer.valueOf(ImmersiveUtils.isSupporImmersive());
+    catch (Exception localException)
+    {
+      Object localObject1;
+      for (;;)
+      {
+        Object localObject2;
+        bmbx.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException));
+        continue;
+        Object localObject3 = a(paramList);
+        Iterator localIterator = paramList.iterator();
+        do
+        {
+          paramList = (List<bmgk>)localObject2;
+          localObject1 = localObject3;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          paramList = (bmgk)localIterator.next();
+        } while (!paramList.jdField_a_of_type_JavaLangString.equals(localObject3));
+        paramList = paramList.jdField_a_of_type_JavaUtilList;
+        localObject1 = localObject3;
+      }
+      localbmgw.jdField_a_of_type_JavaLangString = localObject1;
+      localbmgw.jdField_a_of_type_JavaUtilList = paramList;
+      localbmgw.b = b(localbmgw.jdField_a_of_type_JavaLangString);
+    }
+    return localbmgw;
   }
   
-  public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  protected List<Long> a()
   {
-    return bmge.a(MobileQQ.sMobileQQ).a(paramString, paramPluginBaseInfo);
+    ArrayList localArrayList = new ArrayList();
+    if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration() != null))
+    {
+      long l1 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs() / 1000L;
+      int i = 3000;
+      if (l1 > 30000L) {
+        i = 6000;
+      }
+      int j = 0;
+      while ((j <= l1 / i) && (j < 10))
+      {
+        long l2 = j * i;
+        if (l2 < l1) {
+          localArrayList.add(Long.valueOf(l2));
+        }
+        j += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  protected void a(Context paramContext, bmgj parambmgj)
+  {
+    List localList = a();
+    ThreadManager.getSubThreadHandler().post(new VideoAIFilterProxy.1(this, localList, paramContext, parambmgj));
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmgv
  * JD-Core Version:    0.7.0.1
  */

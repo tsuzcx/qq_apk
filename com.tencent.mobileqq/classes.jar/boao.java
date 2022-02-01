@@ -1,12 +1,6 @@
-import com.tencent.weiyun.utils.Singleton;
-
-final class boao
-  extends Singleton<boan, Void>
+public abstract interface boao
 {
-  protected boan a(Void paramVoid)
-  {
-    return new boan(null);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

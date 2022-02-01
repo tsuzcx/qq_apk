@@ -1,16 +1,39 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
 
 public class akyp
-  implements MediaPlayer.OnCompletionListener
+  implements bhfy
 {
-  public akyp(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public akyp(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a()
   {
-    RedPacketKSongFragment.a(this.a, false);
-    paramMediaPlayer.release();
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+  }
+  
+  public void a(String paramString)
+  {
+    bdaf.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    bdaf.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    bdaf.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
   }
 }
 

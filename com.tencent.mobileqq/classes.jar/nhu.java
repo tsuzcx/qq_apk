@@ -1,14 +1,16 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AVGameJoinRoomFragment;
+
 public class nhu
+  extends mya
 {
-  public int a;
-  public int b;
-  public int c;
+  public nhu(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
   
-  public nhu(int paramInt1, int paramInt2, int paramInt3)
+  public void b(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super.b(paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
+    this.a.getActivity().finish();
   }
 }
 

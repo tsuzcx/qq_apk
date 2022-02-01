@@ -1,33 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.launch.CmdCallback;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class bkyn
-  implements EIPCResultCallback
+public abstract interface bkyn
 {
-  bkyn(bkyl parambkyl, JSONObject paramJSONObject, CmdCallback paramCmdCallback) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    paramEIPCResult = paramEIPCResult.data.getString("preview");
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("metaData").optJSONObject("detail").put("preview", paramEIPCResult);
-      bkyl.a(this.jdField_a_of_type_Bkyl, this.jdField_a_of_type_OrgJsonJSONObject.toString(), this.jdField_a_of_type_ComTencentMobileqqMiniLaunchCmdCallback);
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      for (;;)
-      {
-        QLog.e("MiniSDKClientQIPCModule", 1, "getReplaceJsonString JSONException,", paramEIPCResult);
-      }
-    }
-  }
+  public abstract void a(String paramString, double paramDouble);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
 }
 
 

@@ -1,88 +1,64 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.RoamSetting;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
-public abstract class aybp
-  extends Binder
-  implements aybo
+public class aybp
+  extends OGAbstractDao
 {
   public aybp()
   {
-    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    this.columnLen = 2;
   }
   
-  public static aybo a(IBinder paramIBinder)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof aybo))) {
-      return (aybo)localIInterface;
-    }
-    return new aybq(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    paramEntity = (RoamSetting)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      paramEntity.path = paramCursor.getString(paramCursor.getColumnIndex("path"));
+      paramEntity.value = paramCursor.getString(paramCursor.getColumnIndex("value"));
+      return paramEntity;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    localObject1 = localObject2;
-    if (paramParcel1.readInt() != 0) {
-      localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
-    }
-    paramParcel1 = a((Message)localObject1);
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
+    int i = paramCursor.getColumnIndex("path");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("path", String.class));
     }
     for (;;)
     {
-      return true;
-      paramParcel2.writeInt(0);
+      i = paramCursor.getColumnIndex("value");
+      if (i != -1) {
+        break;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("value", String.class));
+      return paramEntity;
+      paramEntity.path = paramCursor.getString(i);
     }
+    paramEntity.value = paramCursor.getString(i);
+    return paramEntity;
+  }
+  
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (RoamSetting)paramEntity;
+    paramContentValues.put("path", paramEntity.path);
+    paramContentValues.put("value", paramEntity.value);
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,path TEXT UNIQUE ,value TEXT)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aybp
  * JD-Core Version:    0.7.0.1
  */

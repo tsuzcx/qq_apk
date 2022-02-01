@@ -1,26 +1,38 @@
 package dov.com.qq.im.aeeditor;
 
 import Override;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.Lifecycle.Event;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LifecycleRegistry;
+import android.arch.lifecycle.ViewModelStore;
+import android.arch.lifecycle.ViewModelStoreOwner;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import boem;
-import born;
-import bozv;
-import bpan;
-import bpbg;
-import bpbh;
-import bpbk;
-import bpdp;
+import bljd;
+import blvr;
+import bmbg;
+import bmbx;
+import bmby;
+import bmcr;
+import bmcs;
+import bmcu;
+import bmez;
 import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tavcut.TAVCut;
+import com.tencent.theme.SkinnableBitmapDrawable;
 import com.tencent.ttpic.openapi.PTFaceDetector;
 import com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.PagInitializer;
@@ -29,29 +41,33 @@ import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import vuc;
 
 public class AEEditorActivity
   extends PeakFragmentActivity
+  implements LifecycleOwner, ViewModelStoreOwner
 {
-  private static final String jdField_a_of_type_JavaLangString = AEEditorActivity.class.getSimpleName();
-  private bpbk jdField_a_of_type_Bpbk;
-  private List<bpbh> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
+  private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
+  private bmcu jdField_a_of_type_Bmcu;
+  private List<bmcs> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private List<String> b = new ArrayList();
   private List<String> c = new ArrayList();
   
   private void a()
   {
-    if (!boem.a()) {
-      this.jdField_a_of_type_JavaUtilList.add(new bpbh(this, -1));
+    if (!bljd.a()) {
+      this.jdField_a_of_type_JavaUtilList.add(new bmcs(this, -1));
     }
     for (;;)
     {
-      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bpbg(this));
+      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bmcr(this));
       return;
       a(FeatureManager.Features.YT_COMMON.init(), -2);
       a(FeatureManager.Features.PTU_TOOLS.init(), -3);
@@ -65,7 +81,7 @@ public class AEEditorActivity
   private void a(boolean paramBoolean, int paramInt)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.add(new bpbh(this, paramInt));
+      this.jdField_a_of_type_JavaUtilList.add(new bmcs(this, paramInt));
     }
   }
   
@@ -73,12 +89,38 @@ public class AEEditorActivity
   {
     VideoReport.addToDetectionWhitelist(getActivity());
     VideoReport.setPageId(this, "small_world_base");
-    VideoReport.setPageParams(this, new vuc().a(jdField_a_of_type_JavaLangString).a());
+    VideoReport.setPageParams(this, new QCircleDTParamBuilder().setPageSubclass("AEEditorActivity").buildPageParams());
+    QLog.i("AEEditorActivity", 1, "reportDaTongRegister  subPage: AEEditorActivity");
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {}
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      localObject = new StringBuilder();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bmcs localbmcs = (bmcs)localIterator.next();
+        ((StringBuilder)localObject).append(localbmcs.toString() + "\n");
+      }
+      localObject = ((StringBuilder)localObject).toString();
+      bmbx.d("AEEditorActivity", "checkInitResult--" + (String)localObject);
+      return;
+    }
+    VideoThumbProviderManager.initLruCacheSize(3072);
+    Object localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837929);
+    if ((localObject instanceof BitmapDrawable)) {
+      VideoThumbProviderManager.getInstance().setDefaultBitmap(((BitmapDrawable)localObject).getBitmap());
+    }
+    for (;;)
+    {
+      d();
+      return;
+      if ((localObject instanceof SkinnableBitmapDrawable)) {
+        VideoThumbProviderManager.getInstance().setDefaultBitmap(((SkinnableBitmapDrawable)localObject).getBitmap());
+      }
+    }
   }
   
   private void d()
@@ -87,8 +129,8 @@ public class AEEditorActivity
     if (getIntent().getExtras() != null) {
       localBundle = getIntent().getExtras();
     }
-    this.jdField_a_of_type_Bpbk = new bpbk(getSupportFragmentManager());
-    this.jdField_a_of_type_Bpbk.a(localBundle);
+    this.jdField_a_of_type_Bmcu = new bmcu(getSupportFragmentManager());
+    this.jdField_a_of_type_Bmcu.a(localBundle);
   }
   
   private void e()
@@ -96,91 +138,208 @@ public class AEEditorActivity
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("editorType", -1);
     int j = localIntent.getIntExtra("editorFrom", -1);
-    if ((j == born.x.a()) || (j == born.z.a())) {
+    if ((j == blvr.x.a()) || (j == blvr.z.a())) {
       if (i == 0) {
-        bozv.a().a().b = bozv.b.longValue();
+        bmbg.a().a().b = bmbg.b.longValue();
       }
     }
     for (;;)
     {
-      bozv.a().a().jdField_a_of_type_JavaLangString = bozv.a().b();
+      bmbg.a().a().a = bmbg.a().b();
       return;
       if (i == 1)
       {
-        bozv.a().a().b = bozv.c.longValue();
+        bmbg.a().a().b = bmbg.c.longValue();
       }
       else
       {
-        bozv.a().a().b = bozv.a.longValue();
+        bmbg.a().a().b = bmbg.a.longValue();
         continue;
-        if ((j == born.y.a()) || (j == born.A.a()))
+        if ((j == blvr.y.a()) || (j == blvr.A.a()))
         {
           if (i == 0) {
-            bozv.a().a().b = bozv.d.longValue();
+            bmbg.a().a().b = bmbg.d.longValue();
           } else if (i == 1) {
-            bozv.a().a().b = bozv.e.longValue();
+            bmbg.a().a().b = bmbg.e.longValue();
           } else {
-            bozv.a().a().b = bozv.a.longValue();
+            bmbg.a().a().b = bmbg.a.longValue();
           }
         }
         else {
-          bozv.a().a().b = bozv.a.longValue();
+          bmbg.a().a().b = bmbg.a.longValue();
         }
       }
     }
   }
   
-  public bpbk a()
+  public bmcu a()
   {
-    return this.jdField_a_of_type_Bpbk;
+    return this.jdField_a_of_type_Bmcu;
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
+  }
+  
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    bmbx.b("AEEditorActivity", "doOnActivityResult---requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
+    if (this.jdField_a_of_type_Bmcu != null) {
+      this.jdField_a_of_type_Bmcu.a(paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_Bpbk != null) {
-      this.jdField_a_of_type_Bpbk.a(this, true);
+    if (this.jdField_a_of_type_Bmcu != null) {
+      this.jdField_a_of_type_Bmcu.a(this, true);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    bpan.a();
-    this.jdField_a_of_type_Boolean = bpan.a();
+    bmby.a();
+    this.jdField_a_of_type_Boolean = bmby.a();
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
     setImmersiveStatus(getResources().getColor(2131165215));
     super.doOnCreate(paramBundle);
-    setContentView(2131558539);
-    if (Build.VERSION.SDK_INT >= 19)
+    try
     {
-      paramBundle = (RelativeLayout)findViewById(2131376925);
-      int i = getStatusBarHeight();
-      paramBundle.setPadding(paramBundle.getPaddingLeft(), i + paramBundle.getPaddingTop(), paramBundle.getPaddingRight(), paramBundle.getPaddingBottom());
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      setContentView(2131558538);
+      if (Build.VERSION.SDK_INT >= 19)
+      {
+        paramBundle = (RelativeLayout)findViewById(2131376679);
+        int i = getStatusBarHeight();
+        paramBundle.setPadding(paramBundle.getPaddingLeft(), i + paramBundle.getPaddingTop(), paramBundle.getPaddingRight(), paramBundle.getPaddingBottom());
+      }
+      if (ImmersiveUtils.c()) {
+        ImmersiveUtils.a(true, getWindow());
+      }
+      a();
+      c();
+      bmez.a();
+      e();
+      b();
+      return true;
     }
-    if (ImmersiveUtils.c()) {
-      ImmersiveUtils.a(true, getWindow());
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        QLog.e("AEEditorActivity", 1, "mLifecycleRegistry 初始化失败");
+      }
     }
-    a();
-    c();
-    bpdp.a();
-    d();
-    e();
-    b();
-    return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bpdp.b();
+    bmez.b();
+    VideoThumbProviderManager.getInstance().release(String.valueOf(hashCode()));
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+      if ((this.jdField_a_of_type_AndroidArchLifecycleViewModelStore != null) && (!isChangingConfigurations())) {
+        this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AEEditorActivity", 1, "mLifecycleRegistry 初始化失败");
+      }
+    }
+  }
+  
+  public void doOnPause()
+  {
+    super.doOnPause();
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AEEditorActivity", 1, "mLifecycleRegistry 初始化失败");
+    }
+  }
+  
+  public void doOnResume()
+  {
+    super.doOnResume();
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+      VideoThumbProviderManager.getInstance().resume();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AEEditorActivity", 1, "mLifecycleRegistry 初始化失败");
+      }
+    }
+  }
+  
+  public void doOnStart()
+  {
+    super.doOnStart();
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AEEditorActivity", 1, "mLifecycleRegistry 初始化失败");
+    }
+  }
+  
+  public void doOnStop()
+  {
+    super.doOnStop();
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+      VideoThumbProviderManager.getInstance().pause();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AEEditorActivity", 1, "mLifecycleRegistry 初始化失败");
+      }
+    }
+  }
+  
+  public Lifecycle getLifecycle()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+  }
+  
+  @NonNull
+  public ViewModelStore getViewModelStore()
+  {
+    if (BaseApplicationImpl.getApplication() == null) {
+      throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+    }
+    if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore == null) {
+      this.jdField_a_of_type_AndroidArchLifecycleViewModelStore = new ViewModelStore();
+    }
+    return this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
   }
   
   public boolean isWrapContent()

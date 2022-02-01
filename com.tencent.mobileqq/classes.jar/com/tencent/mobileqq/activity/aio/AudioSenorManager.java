@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import agft;
-import agfu;
-import agfv;
+import aeym;
+import aeyn;
+import aeyo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
-import bhsr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -23,9 +23,9 @@ public class AudioSenorManager
 {
   public static int a;
   public float a;
-  private agft jdField_a_of_type_Agft;
-  private agfu jdField_a_of_type_Agfu;
-  private agfv jdField_a_of_type_Agfv;
+  private aeym jdField_a_of_type_Aeym;
+  private aeyn jdField_a_of_type_Aeyn;
+  private aeyo jdField_a_of_type_Aeyo;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -88,7 +88,7 @@ public class AudioSenorManager
   
   private void a(String paramString)
   {
-    if (!bhsr.a(paramString))
+    if (!StringUtil.isEmpty(paramString))
     {
       if (!this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
         this.jdField_a_of_type_JavaUtilList.add(paramString);
@@ -110,25 +110,25 @@ public class AudioSenorManager
     // Byte code:
     //   0: iconst_0
     //   1: istore 5
-    //   3: invokestatic 196	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   6: getstatic 202	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:qq_audio_play	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
-    //   9: invokevirtual 206	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   3: invokestatic 197	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   6: getstatic 203	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:qq_audio_play	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   9: invokevirtual 207	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
     //   12: aconst_null
-    //   13: invokevirtual 209	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   13: invokevirtual 210	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   16: astore 7
-    //   18: invokestatic 214	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   18: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   21: ifeq +29 -> 50
-    //   24: ldc 216
+    //   24: ldc 217
     //   26: iconst_2
-    //   27: new 218	java/lang/StringBuilder
+    //   27: new 219	java/lang/StringBuilder
     //   30: dup
-    //   31: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   34: ldc 221
-    //   36: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokespecial 220	java/lang/StringBuilder:<init>	()V
+    //   34: ldc 222
+    //   36: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: aload 7
-    //   41: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 228	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 231	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   50: aload 7
     //   52: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   55: ifne +441 -> 496
@@ -195,25 +195,25 @@ public class AudioSenorManager
     //   170: ifgt +5 -> 175
     //   173: iconst_0
     //   174: istore_3
-    //   175: invokestatic 196	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   175: invokestatic 197	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
     //   178: getstatic 267	com/tencent/mobileqq/app/DeviceProfileManager$AccountDpcManager$DpcAccountNames:qq_audio_play_fix	Lcom/tencent/mobileqq/app/DeviceProfileManager$AccountDpcManager$DpcAccountNames;
     //   181: invokevirtual 268	com/tencent/mobileqq/app/DeviceProfileManager$AccountDpcManager$DpcAccountNames:name	()Ljava/lang/String;
     //   184: aconst_null
-    //   185: invokevirtual 209	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   185: invokevirtual 210	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   188: astore 7
-    //   190: invokestatic 214	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   190: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   193: ifeq +30 -> 223
-    //   196: ldc 216
+    //   196: ldc 217
     //   198: iconst_2
-    //   199: new 218	java/lang/StringBuilder
+    //   199: new 219	java/lang/StringBuilder
     //   202: dup
-    //   203: invokespecial 219	java/lang/StringBuilder:<init>	()V
+    //   203: invokespecial 220	java/lang/StringBuilder:<init>	()V
     //   206: ldc_w 270
-    //   209: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: aload 7
-    //   214: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: invokevirtual 228	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 231	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   223: aload 7
     //   225: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   228: ifne +262 -> 490
@@ -259,13 +259,13 @@ public class AudioSenorManager
     //   303: getfield 78	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensorManager	Landroid/hardware/SensorManager;
     //   306: iconst_1
     //   307: invokevirtual 276	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
-    //   310: putfield 189	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_b_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
+    //   310: putfield 190	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_b_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   313: aload_0
-    //   314: new 278	agft
+    //   314: new 278	aeym
     //   317: dup
     //   318: aload_0
-    //   319: invokespecial 279	agft:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
-    //   322: putfield 149	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Agft	Lagft;
+    //   319: invokespecial 279	aeym:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
+    //   322: putfield 149	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Aeym	Laeym;
     //   325: aload_0
     //   326: aload_0
     //   327: getfield 78	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensorManager	Landroid/hardware/SensorManager;
@@ -273,11 +273,11 @@ public class AudioSenorManager
     //   332: invokevirtual 276	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
     //   335: putfield 158	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   338: aload_0
-    //   339: new 281	agfv
+    //   339: new 281	aeyo
     //   342: dup
     //   343: aload_0
-    //   344: invokespecial 282	agfv:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
-    //   347: putfield 155	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Agfv	Lagfv;
+    //   344: invokespecial 282	aeyo:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
+    //   347: putfield 155	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Aeyo	Laeyo;
     //   350: fload_1
     //   351: ldc_w 283
     //   354: fcmpl
@@ -301,9 +301,9 @@ public class AudioSenorManager
     //   383: fstore_1
     //   384: iload 4
     //   386: istore_3
-    //   387: invokestatic 214	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   387: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   390: ifeq -238 -> 152
-    //   393: ldc 216
+    //   393: ldc 217
     //   395: iconst_2
     //   396: ldc_w 289
     //   399: aload 7
@@ -320,9 +320,9 @@ public class AudioSenorManager
     //   417: fstore_1
     //   418: iload_3
     //   419: istore 4
-    //   421: invokestatic 214	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   421: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   424: ifeq -128 -> 296
-    //   427: ldc 216
+    //   427: ldc 217
     //   429: iconst_2
     //   430: ldc_w 294
     //   433: aload 7
@@ -387,7 +387,7 @@ public class AudioSenorManager
   
   private void b(String paramString)
   {
-    if (!bhsr.a(paramString))
+    if (!StringUtil.isEmpty(paramString))
     {
       if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.indexOf(paramString));
@@ -399,8 +399,8 @@ public class AudioSenorManager
         if (this.jdField_b_of_type_Int != 0)
         {
           this.jdField_b_of_type_Int = 0;
-          if (this.jdField_a_of_type_Agfu != null) {
-            this.jdField_a_of_type_Agfu.a(this.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Aeyn != null) {
+            this.jdField_a_of_type_Aeyn.a(this.jdField_b_of_type_Int);
           }
         }
       }
@@ -422,17 +422,17 @@ public class AudioSenorManager
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     }
-    this.jdField_a_of_type_Agfu = null;
+    this.jdField_a_of_type_Aeyn = null;
     this.jdField_a_of_type_JavaUtilList.clear();
     ThreadManager.removeJobFromThreadPool(this.jdField_b_of_type_JavaLangRunnable, 16);
     ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 16);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Agft);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Agfv);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aeym);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aeyo);
   }
   
-  public void a(agfu paramagfu)
+  public void a(aeyn paramaeyn)
   {
-    this.jdField_a_of_type_Agfu = paramagfu;
+    this.jdField_a_of_type_Aeyn = paramaeyn;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -460,7 +460,7 @@ public class AudioSenorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioSenorManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
 package com.tencent.av;
 
-import android.content.Context;
-import android.media.AudioManager;
-import lff;
+import lez;
 
 class VideoController$20
   implements Runnable
 {
-  VideoController$20(VideoController paramVideoController) {}
+  VideoController$20(VideoController paramVideoController, long paramLong) {}
   
   public void run()
   {
-    if (this.this$0.a().P) {
-      ((AudioManager)this.this$0.a.getSystemService("audio")).setSpeakerphoneOn(true);
-    }
+    this.this$0.a(this.a, this.this$0.a().d, 12);
   }
 }
 

@@ -1,60 +1,69 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.1;
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public abstract interface amcl
+public class amcl
+  extends bggc
+  implements alqx
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int = 3;
+  private ambs jdField_a_of_type_Ambs;
+  private WeakReference<ambw> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  public amcl(ambw paramambw, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramambw);
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract int a(int paramInt1, int paramInt2);
+  public void a(ambs paramambs)
+  {
+    this.jdField_a_of_type_Ambs = paramambs;
+  }
   
-  @Nullable
-  public abstract String a();
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
+    }
+    ThreadManager.post(new CmShowViewListener.2(this, paramBoolean, paramObject), 5, null, true);
+  }
   
-  public abstract void a();
+  public void onNotifyLongTouch(String paramString)
+  {
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyLongTouch name", paramString });
+    if (this.jdField_a_of_type_Ambs != null) {
+      this.jdField_a_of_type_Ambs.a(paramString);
+    }
+  }
   
-  public abstract void a(int paramInt);
+  public void onNotifyStatusChanged(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      ambx localambx = ((ambw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      if (localambx != null) {
+        localambx.a(ambc.a(paramInt), null, paramString);
+      }
+    }
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyStatusChanged clickPart:", Integer.valueOf(paramInt), " apolloId:" + paramString });
+    if (this.jdField_a_of_type_Ambs != null) {
+      this.jdField_a_of_type_Ambs.a(paramInt, paramString);
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(@NonNull amcn paramamcn);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@ColorInt int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(@ColorInt int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract boolean f();
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
+    }
+    ThreadManager.post(new CmShowViewListener.1(this, paramInt1, paramInt2), 8, null, true);
+  }
 }
 
 

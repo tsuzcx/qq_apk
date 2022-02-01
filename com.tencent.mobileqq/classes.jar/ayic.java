@@ -1,22 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
 class ayic
-  implements View.OnTouchListener
+  extends bjmc
 {
-  ayic(ayhj paramayhj) {}
+  ayic(ayhx paramayhx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131377499).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131377499).setAlpha(1.0F);
-    }
+    this.a.a.setVisibility(0);
   }
 }
 

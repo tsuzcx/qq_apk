@@ -1,9 +1,9 @@
 package com.tencent.av.ui;
 
-import bdll;
+import bcef;
 import com.tencent.av.VideoController;
-import lff;
-import mbb;
+import lez;
+import mak;
 
 class DoubleVideoCtrlUI$3
   implements Runnable
@@ -14,8 +14,8 @@ class DoubleVideoCtrlUI$3
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().l()))
     {
-      mbb.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
-      bdll.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
+      mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
+      bcef.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
     }
   }
 }

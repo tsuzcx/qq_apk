@@ -1,28 +1,95 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTodayStoryVidList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 class xqs
-  implements xsn
+  implements vqp<wdw, wfu>
 {
-  private xqs(xqp paramxqp) {}
+  xqs(xqr paramxqr, qqstory_service.ReqTodayStoryVidList paramReqTodayStoryVidList, String paramString) {}
   
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
-  
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg) {}
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, int paramInt, Object paramObject)
+  public void a(@NonNull wdw paramwdw, @Nullable wfu paramwfu, @NonNull ErrorMessage paramErrorMessage)
   {
-    return false;
+    if (paramErrorMessage.isFail())
+    {
+      if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrr != null) {
+        this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrr.a(paramErrorMessage);
+      }
+      return;
+    }
+    if (paramwfu == null)
+    {
+      this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt.jdField_a_of_type_Int = paramErrorMessage.errorCode;
+      if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs != null)
+      {
+        this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqr.a());
+        return;
+      }
+      xvv.d("GetMyStoryVideoListStep", "finish callBack is null");
+      return;
+    }
+    paramwdw = new qqstory_service.RspTodayStoryVidList();
+    for (;;)
+    {
+      try
+      {
+        paramwdw.mergeFrom(paramwfu.a);
+        paramwfu = paramwdw.vid_list.get().listIterator();
+        paramErrorMessage = paramwdw.feed_id.get().toStringUtf8();
+        if (!TextUtils.isEmpty(paramErrorMessage)) {
+          this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt.jdField_a_of_type_JavaLangString = paramErrorMessage;
+        }
+        paramErrorMessage = this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt;
+        if (paramwdw.share_to_discover.get() == 1)
+        {
+          bool = true;
+          paramErrorMessage.jdField_a_of_type_Boolean = bool;
+          ((vuq)vux.a(10)).b("qqstory_my_story_have_contributed", Integer.valueOf(paramwdw.share_to_discover.get()));
+          if (!paramwfu.hasNext()) {
+            break;
+          }
+          this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)paramwfu.next()).toStringUtf8());
+          continue;
+        }
+        boolean bool = false;
+      }
+      catch (InvalidProtocolBufferMicroException paramwdw)
+      {
+        xvv.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramwdw);
+        if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs != null)
+        {
+          this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqr.a());
+          return;
+        }
+        xvv.d("GetMyStoryVideoListStep", "finish callBack is null");
+        return;
+      }
+    }
+    if ((!paramwdw.is_end.has()) || (paramwdw.is_end.get() == 1))
+    {
+      if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs != null)
+      {
+        this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqr.a());
+        return;
+      }
+      xvv.d("GetMyStoryVideoListStep", "finish callBack is null");
+      return;
+    }
+    paramwfu = new qqstory_service.ReqTodayStoryVidList();
+    paramwfu.date.set(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$ReqTodayStoryVidList.date.get());
+    paramwfu.cookie.set(paramwdw.cookie.get());
+    vqn.a().a(new wdw(this.jdField_a_of_type_JavaLangString, paramwfu, null), this);
   }
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, boolean paramBoolean)
-  {
-    return this.a.a.a(paramVideoViewVideoHolder, paramxtg, paramBoolean);
-  }
-  
-  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg) {}
-  
-  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg) {}
 }
 
 

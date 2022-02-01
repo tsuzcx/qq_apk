@@ -1,16 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSReportTo1160;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qhj
-  implements PTSNativeModuleRegistry.IPTSReportTo1160
+  implements ViewBase.IBuilder
 {
-  public void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
+  public ViewBase build(VafContext paramVafContext)
   {
-    QLog.i("PTSReportTo1160Module", 1, "[reportTo1160], event = " + paramString1 + ", toUin = " + paramString2 + ", r2 = " + paramLong + ", r3 = " + paramInt + ", r4 = " + paramString3 + ", r5 = " + paramString4);
-    if (!TextUtils.isEmpty(paramString1)) {
-      qhy.a(paramString1, "" + paramLong, "" + paramInt, paramString3, new qhz(paramString4).a());
-    }
+    return new qhi(paramVafContext);
   }
 }
 

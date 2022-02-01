@@ -1,24 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import android.annotation.TargetApi;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bjln
-  implements DialogInterface.OnClickListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public bjln(BindGroupFragment paramBindGroupFragment, String paramString) {}
+  public bjln(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(8)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (paramInt == 1)
-    {
-      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, anzj.a(2131700030));
-      ((aoip)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + TraeAudioManager.a(this.a.this$0).getMode() + " _activeMode:" + this.a.this$0.a);
     }
-    while (paramInt != 0) {
+    if (paramInt == -1) {}
+    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
       return;
     }
-    paramDialogInterface.dismiss();
   }
 }
 

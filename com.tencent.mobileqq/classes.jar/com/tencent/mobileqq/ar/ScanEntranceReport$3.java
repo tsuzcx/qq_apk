@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ public class ScanEntranceReport$3
     localHashMap.put("got_config_time", String.valueOf(this.b));
     localHashMap.put("resource_check_time", String.valueOf(this.c));
     localHashMap.put("dependence_wait_time", String.valueOf(this.d));
-    bdmc.a(BaseApplication.getContext()).a("", "scanner_ar_init_pre", true, this.e, 0L, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_ar_init_pre", true, this.e, 0L, localHashMap, "");
   }
 }
 

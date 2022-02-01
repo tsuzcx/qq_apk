@@ -1,103 +1,63 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import android.os.Bundle;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract class zex
+public class zex
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
 {
-  private float jdField_a_of_type_Float = 0.1F;
-  private int jdField_a_of_type_Int = 5;
-  public Drawable a;
-  public final String a;
-  public String b;
-  public String c;
-  public String d;
-  private String e;
+  public zex(CommentBottomBar paramCommentBottomBar) {}
   
-  public zex(@NonNull String paramString)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalStateException("FacePackage'id can not be null.");
+    CommentBottomBar.a(this.a, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
+      QQToast.a(this.a.getContext(), 1, paramString, 0).a();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract String a();
-  
-  public void a(String paramString)
-  {
-    int i;
-    if (TextUtils.isEmpty(paramString))
-    {
-      yuk.e("FacePackage", "config json is empty.");
-      i = 0;
-      if (i == 0)
-      {
-        yuk.e("FacePackage", "config json is illegal, use default value, type : %s", new Object[] { a() });
-        if (!"NormalFacePackage".equals(a())) {
-          break label237;
-        }
-        if (!"1".equals(this.jdField_a_of_type_JavaLangString)) {
-          break label223;
-        }
-        this.jdField_a_of_type_Int = 5;
-        this.jdField_a_of_type_Float = 0.1F;
-      }
-    }
+    label286:
+    label290:
     for (;;)
     {
-      for (;;)
+      return;
+      if (paramStDoLikeRsp.like.status.get() == 1)
       {
-        this.e = null;
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
+        if (CommentBottomBar.a(this.a) != null)
+        {
+          CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
+          CommentBottomBar.a(this.a).likeInfo.count.set(i);
+        }
+        SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
+        if (BaseApplicationImpl.sProcessId != 1) {
+          break label286;
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label290;
+        }
+        paramVSBaseRequest = new Bundle();
+        paramVSBaseRequest.putString("feed_id", CommentBottomBar.a(this.a).id.get());
+        paramVSBaseRequest.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
+        paramVSBaseRequest.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
+        QIPCClientHelper.getInstance().callServer(SimpleEventBus.IPC_SERVICE_MODULE_NAME, SimpleEventBus.ACTION_PRAISED_UPDATE, paramVSBaseRequest, null);
         return;
-        try
-        {
-          JSONObject localJSONObject = new JSONObject(paramString);
-          this.jdField_a_of_type_Int = localJSONObject.getInt("amount");
-          this.jdField_a_of_type_Float = Float.valueOf(localJSONObject.getString("spacing")).floatValue();
-          if ((this.jdField_a_of_type_Int < 1) || (this.jdField_a_of_type_Float < 0.0F) || (this.jdField_a_of_type_Float >= 0.5D))
-          {
-            yuk.e("FacePackage", "config json is illegal : %s", new Object[] { paramString });
-            i = 0;
-            break;
-          }
-          this.e = paramString;
-          yuk.a("FacePackage", "parse config json success : %s", paramString);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          yuk.e("FacePackage", "parse config json error : " + paramString + ", exception : " + localException.toString());
-          i = 0;
-        }
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
+        break;
       }
-      break;
-      label223:
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_Float = 0.05F;
-      continue;
-      label237:
-      if (!"LocationFacePackage".equals(a())) {
-        break label263;
-      }
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_Float = 0.1F;
     }
-    label263:
-    throw new IllegalStateException("unknown face package, type:" + a());
   }
-  
-  public abstract int b();
 }
 
 

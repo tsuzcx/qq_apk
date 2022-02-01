@@ -1,100 +1,91 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
+import java.util.Observable;
+import java.util.Observer;
+
 public class bddy
+  extends bddu
+  implements Observer
 {
-  public static void a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private bddp jdField_a_of_type_Bddp;
+  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  
+  public bddy(DiniFlyAnimationView paramDiniFlyAnimationView, RelativeLayout paramRelativeLayout, Context paramContext, bddn parambddn, bddp parambddp)
   {
-    int m = 0;
-    int i = 0;
-    int i7 = paramInt1 * paramInt2;
-    int j = 0;
-    int i4 = 0;
-    int n;
-    int k;
-    int i5;
-    int i1;
-    if (i4 < paramInt2)
+    super(parambddn);
+    if (parambddn != null) {
+      parambddn.addObserver(this);
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_Bddp = parambddp;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = paramDiniFlyAnimationView;
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null)
     {
-      n = (i4 >> 1) * paramInt1 / 2 + i7;
-      k = i7 * 5 / 4 + (i4 >> 1) * paramInt1 / 2;
-      i5 = 0;
-      if (i5 < paramInt1)
-      {
-        i1 = (paramArrayOfByte[j] & 0xFF) - 16;
-        if (i1 >= 0) {
-          break label361;
-        }
-        i1 = 0;
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bddz(this));
+      if ((this.jdField_a_of_type_Bddp != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bddp.m))) {
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimationFromUrl(this.jdField_a_of_type_Bddp.m);
       }
     }
-    label194:
-    label202:
-    label361:
-    for (;;)
-    {
-      int i2;
-      if ((i5 & 0x1) == 0)
-      {
-        i = paramArrayOfByte[n];
-        i2 = paramArrayOfByte[k];
-        m = n + 1;
-        n = (i2 & 0xFF) - 128;
-        i = (i & 0xFF) - 128;
-        k += 1;
-      }
-      for (;;)
-      {
-        i1 *= 1192;
-        i2 = i1 + n * 1634;
-        int i3 = i1 - n * 833 - i * 400;
-        int i6 = i1 + i * 2066;
-        if (i2 < 0)
-        {
-          i1 = 0;
-          if (i3 >= 0) {
-            break label296;
-          }
-          i2 = 0;
-          if (i6 >= 0) {
-            break label314;
-          }
-          i3 = 0;
-        }
-        for (;;)
-        {
-          paramArrayOfInt[j] = (i3 >> 10 & 0xFF | i2 >> 2 & 0xFF00 | i1 << 6 & 0xFF0000 | 0xFF000000);
-          i1 = j + 1;
-          j = n;
-          i5 += 1;
-          n = m;
-          m = i;
-          i = j;
-          j = i1;
-          break;
-          i1 = i2;
-          if (i2 <= 262143) {
-            break label194;
-          }
-          i1 = 262143;
-          break label194;
-          i2 = i3;
-          if (i3 <= 262143) {
-            break label202;
-          }
-          i2 = 262143;
-          break label202;
-          i3 = i6;
-          if (i6 > 262143) {
-            i3 = 262143;
-          }
-        }
-        i4 += 1;
-        break;
-        return;
-        i2 = m;
-        m = n;
-        n = i;
-        i = i2;
-      }
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Bddp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bddp.m))) {
+      return;
     }
+    int i = ScreenUtil.getInstantScreenHeight(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject = new int[2];
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocationOnScreen((int[])localObject);
+    int j = localObject[1];
+    int k = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
+    ((FrameLayout.LayoutParams)localObject).bottomMargin = (i - j - k - ViewUtils.dpToPx(30.0F));
+    if (((FrameLayout.LayoutParams)localObject).bottomMargin + ViewUtils.dpToPx(170.0F) > i) {
+      ((FrameLayout.LayoutParams)localObject).bottomMargin = (i - ViewUtils.dpToPx(170.0F) + ViewUtils.dpToPx(30.0F));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimationFromUrl(this.jdField_a_of_type_Bddp.m);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(false);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAllAnimatorListener();
+      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(paramInt);
+    }
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (!(paramObject instanceof Integer)) {}
+    while (((Integer)paramObject).intValue() != 4) {
+      return;
+    }
+    b();
   }
 }
 

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="50" android:drawable="@drawable/gzs" />
-    <item android:duration="50" android:drawable="@drawable/gzt" />
-    <item android:duration="50" android:drawable="@drawable/gzu" />
-    <item android:duration="50" android:drawable="@drawable/gzv" />
-    <item android:duration="50" android:drawable="@drawable/gzw" />
-    <item android:duration="50" android:drawable="@drawable/gzx" />
-    <item android:duration="50" android:drawable="@drawable/gzz" />
-    <item android:duration="50" android:drawable="@drawable/h00" />
-    <item android:duration="50" android:drawable="@drawable/h01" />
-    <item android:duration="50" android:drawable="@drawable/h02" />
-    <item android:duration="50" android:drawable="@drawable/h04" />
-    <item android:duration="50" android:drawable="@drawable/h05" />
-    <item android:duration="50" android:drawable="@drawable/h06" />
-    <item android:duration="50" android:drawable="@drawable/h07" />
-    <item android:duration="50" android:drawable="@drawable/h08" />
-</animation-list>
+    <item android:state_checked="false" android:drawable="@drawable/d0a" />
+    <item android:state_checked="true" android:drawable="@drawable/d0c" />
+</selector>

@@ -1,17 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class sle
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface sle
 {
-  public sle(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
-  }
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

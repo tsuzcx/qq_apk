@@ -1,6 +1,16 @@
-public abstract interface sge
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+
+public class sge
+  extends AnimatorListenerAdapter
 {
-  public abstract void c();
+  public sge(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    HorizontalRefreshLayout.a(this.a, 0.0F);
+  }
 }
 
 

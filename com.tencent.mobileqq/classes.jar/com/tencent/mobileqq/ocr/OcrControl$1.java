@@ -1,49 +1,49 @@
 package com.tencent.mobileqq.ocr;
 
-import apnx;
-import ayzm;
-import ayzo;
-import ayzp;
+import aohk;
+import axmu;
+import axmw;
+import axmx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class OcrControl$1
   implements Runnable
 {
-  public OcrControl$1(ayzm paramayzm, String paramString1, boolean paramBoolean, String paramString2) {}
+  public OcrControl$1(axmu paramaxmu, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    if (ayzp.a(this.jdField_a_of_type_JavaLangString))
+    if (axmx.a(this.jdField_a_of_type_JavaLangString))
     {
-      localObject = ayzp.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
-      if ((this.jdField_a_of_type_Boolean) && (ayzp.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
+      localObject = axmx.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
+      if ((this.jdField_a_of_type_Boolean) && (axmx.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
       {
-        localapnx = new apnx();
-        localapnx.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localapnx.jdField_a_of_type_Int = 0;
-        localapnx.b = this.jdField_a_of_type_JavaLangString;
+        localaohk = new aohk();
+        localaohk.jdField_a_of_type_JavaLangString = ((String)localObject);
+        localaohk.jdField_a_of_type_Int = 0;
+        localaohk.b = this.jdField_a_of_type_JavaLangString;
         if (QLog.isColorLevel()) {
           QLog.d("Q.ocr.control", 2, "upload pic size:" + new File((String)localObject).length() / 1024L + "KB");
         }
-        this.this$0.a(localapnx, this.b);
+        this.this$0.a(localaohk, this.b);
       }
     }
-    while (ayzm.a(this.this$0) == null)
+    while (axmu.a(this.this$0) == null)
     {
-      apnx localapnx;
+      aohk localaohk;
       return;
-      Object localObject = new apnx();
-      ((apnx)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((apnx)localObject).jdField_a_of_type_Int = 0;
-      ((apnx)localObject).b = this.jdField_a_of_type_JavaLangString;
+      Object localObject = new aohk();
+      ((aohk)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((aohk)localObject).jdField_a_of_type_Int = 0;
+      ((aohk)localObject).b = this.jdField_a_of_type_JavaLangString;
       if (QLog.isColorLevel()) {
         QLog.d("Q.ocr.control", 2, "upload pic size:" + new File(this.jdField_a_of_type_JavaLangString).length() / 1024L + "KB");
       }
-      this.this$0.a((apnx)localObject, this.b);
+      this.this$0.a((aohk)localObject, this.b);
       return;
     }
-    ayzm.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
+    axmu.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
   }
 }
 

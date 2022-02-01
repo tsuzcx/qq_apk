@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bisp;
+import bgyr;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -19,32 +19,33 @@ final class TroopApplicationListUtil$1
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof bisp))
+    JSONObject localJSONObject;
+    if ((paramMessage.obj instanceof bgyr))
     {
-      paramMessage = (bisp)paramMessage.obj;
+      paramMessage = (bgyr)paramMessage.obj;
       if (paramMessage.c == 0)
       {
         int i;
         try
         {
           if (paramMessage.d == null) {
-            break label262;
+            break label272;
           }
           QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
           i = new JSONObject(paramMessage.d).optInt("ec", -1);
-          paramMessage = new JSONObject();
+          localJSONObject = new JSONObject();
           if (i == 44012)
           {
-            paramMessage.put("isExisted", true);
-            paramMessage.put("errorCode", i);
-            this.val$jsPluginEngine.callbackJsEventOK(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, paramMessage, this.val$jsPluginParam.callbackId);
+            localJSONObject.put("isExisted", true);
+            localJSONObject.put("errorCode", i);
+            this.val$jsPluginEngine.callbackJsEventOK(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, localJSONObject, this.val$jsPluginParam.callbackId);
             return;
           }
           if (i == 0)
           {
-            paramMessage.put("isExisted", false);
-            paramMessage.put("errorCode", i);
-            this.val$jsPluginEngine.callbackJsEventOK(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, paramMessage, this.val$jsPluginParam.callbackId);
+            localJSONObject.put("isExisted", false);
+            localJSONObject.put("errorCode", i);
+            this.val$jsPluginEngine.callbackJsEventOK(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, localJSONObject, this.val$jsPluginParam.callbackId);
             return;
           }
         }
@@ -54,19 +55,27 @@ final class TroopApplicationListUtil$1
           this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, null, "native error, json exception", this.val$jsPluginParam.callbackId);
           return;
         }
-        paramMessage.put("errorCode", i);
-        this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, paramMessage, this.val$jsPluginParam.callbackId);
-        return;
-        label262:
-        this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, null, "native error, htmlBody is null", this.val$jsPluginParam.callbackId);
-        return;
+        localJSONObject.put("errorCode", i);
+        if (i != 44004) {
+          break label416;
+        }
       }
+    }
+    label272:
+    label416:
+    for (paramMessage = "not group manager";; paramMessage = null)
+    {
+      this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, localJSONObject, paramMessage, this.val$jsPluginParam.callbackId);
+      return;
+      this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, null, "native error, htmlBody is null", this.val$jsPluginParam.callbackId);
+      return;
       QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList ,resultCode : " + paramMessage.c);
       this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, null, "native error, request fail", this.val$jsPluginParam.callbackId);
       return;
+      QLog.e("TroopApplicationListUtil", 1, new Object[] { "handleMessage addMiniAppToTroopApplicationList ", " invalid msg.obj" });
+      this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, null, "native error, invalid msg.obj", this.val$jsPluginParam.callbackId);
+      return;
     }
-    QLog.e("TroopApplicationListUtil", 1, new Object[] { "handleMessage addMiniAppToTroopApplicationList ", " invalid msg.obj" });
-    this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, null, "native error, invalid msg.obj", this.val$jsPluginParam.callbackId);
   }
 }
 

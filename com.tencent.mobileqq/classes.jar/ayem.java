@@ -1,37 +1,17 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import java.util.ArrayList;
 
-public class ayem
+public abstract class ayem
+  implements ayel
 {
-  private static ayem jdField_a_of_type_Ayem = new ayem();
-  static boolean jdField_a_of_type_Boolean;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  public final void a(int paramInt) {}
   
-  public static void a(Context paramContext, String paramString)
-  {
-    jdField_a_of_type_Ayem.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy(paramString, 0);
-    jdField_a_of_type_Boolean = true;
-  }
+  public final void a(int paramInt, ArrayList<aydt> paramArrayList) {}
   
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = jdField_a_of_type_Ayem.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.commit();
-  }
+  public final void b(int paramInt, aydt paramaydt) {}
   
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      boolean bool = jdField_a_of_type_Ayem.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, paramBoolean);
-      return bool;
-    }
-    catch (ClassCastException paramString) {}
-    return paramBoolean;
-  }
+  public final void c(int paramInt, aydt paramaydt) {}
+  
+  public final void d(int paramInt, aydt paramaydt) {}
 }
 
 

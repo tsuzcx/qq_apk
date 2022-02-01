@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bizd
+  extends BroadcastReceiver
 {
-  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
+  public bizd(Login paramLogin) {}
   
-  public bizd(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public ChatThumbView a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(ChatThumbView paramChatThumbView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
+    QLog.d("Login", 1, "AutoLoginReceiver onReceive");
+    Login.a(this.a, true);
   }
 }
 

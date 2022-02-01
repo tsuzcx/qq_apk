@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class vzx
-  implements DialogInterface.OnClickListener
+  extends amnw
 {
-  vzx(vzr paramvzr) {}
+  vzx(vzt paramvzt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      xvv.b(vzt.b() + ".VASH", "Friend Cache Inited!");
+      vzt.h = true;
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

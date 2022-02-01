@@ -1,23 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aspi
-  implements ValueAnimator.AnimatorUpdateListener
+final class aspi
+  implements View.OnClickListener
 {
-  public aspi(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  aspi(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "show:offset=" + f);
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
     }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).setTranslationY(f);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

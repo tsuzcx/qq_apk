@@ -1,70 +1,17 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public class axxp
-  extends BaseAdapter
+class axxp
+  implements axxz
 {
-  protected int a;
+  axxp(axxo paramaxxo, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
   
-  public axxp(GameQuickWordsPanel paramGameQuickWordsPanel)
+  public void a(PoiBean paramPoiBean)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2131558607, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, agej.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
-      paramView = new axxq(this);
-      paramView.a = ((TextView)localView.findViewById(2131374856));
-      localView.setTag(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d(axxq.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Axxo.b + "] diskPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
     }
-    for (;;)
-    {
-      Object localObject = (String)getItem(paramInt);
-      paramView.a.setText((CharSequence)localObject);
-      paramView.a.setTextColor(this.jdField_a_of_type_Int);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (axxq)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_Aikq.a();
-    if (localHashMap.containsKey("quickWordColor")) {
-      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
-    }
-    super.notifyDataSetChanged();
   }
 }
 

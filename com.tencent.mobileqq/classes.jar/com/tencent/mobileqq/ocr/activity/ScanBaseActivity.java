@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.ocr.activity;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,13 +10,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import aper;
-import apix;
-import apjm;
-import apmt;
-import ayxt;
-import bjbs;
+import anyd;
+import aock;
+import aocz;
+import aogg;
+import axlb;
+import bhht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -31,7 +31,7 @@ public class ScanBaseActivity
   extends FragmentActivity
 {
   protected TextView a;
-  private bjbs a;
+  private bhht a;
   public AppInterface a;
   public QQAppInterface a;
   public OcrConfig a;
@@ -48,10 +48,10 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = ayxt.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = axlb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = apmt.a();
+      boolean bool2 = aogg.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -59,16 +59,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((aper)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
+    Object localObject = ((anyd)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      apjm localapjm = new apjm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!apix.a()) {
-        localapjm.a(localArrayList, (ArrayList)localObject, "arcloud");
+      aocz localaocz = new aocz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!aock.a()) {
+        localaocz.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -86,7 +86,7 @@ public class ScanBaseActivity
     {
       localObject = localOcrConfig;
       if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((ayxt)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
+        localObject = ((axlb)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
       }
     }
     if (QLog.isColorLevel()) {
@@ -97,18 +97,18 @@ public class ScanBaseActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369042));
-    this.b = ((TextView)findViewById(2131369088));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369068));
+    this.b = ((TextView)findViewById(2131369115));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131378950);
+      View localView = findViewById(2131378721);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
     if (AppSetting.c) {
-      findViewById(2131369042).setContentDescription(anzj.a(2131712387));
+      findViewById(2131369068).setContentDescription(amtj.a(2131712619));
     }
   }
   
@@ -117,8 +117,9 @@ public class ScanBaseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -135,8 +136,8 @@ public class ScanBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bjbs != null) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if (this.jdField_a_of_type_Bhht != null) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
   }
   

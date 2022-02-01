@@ -1,41 +1,14 @@
-import android.os.Parcel;
-import org.json.JSONException;
-import org.json.JSONObject;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaReply;
 
-public class umn
+class umn
+  implements zfa
 {
-  public String mMsgData;
-  public String mPushId;
+  umn(umj paramumj, stSimpleMetaComment paramstSimpleMetaComment, boolean paramBoolean, stSimpleMetaReply paramstSimpleMetaReply) {}
   
-  protected umn(Parcel paramParcel)
+  public void a()
   {
-    this.mPushId = paramParcel.readString();
-    this.mMsgData = paramParcel.readString();
-  }
-  
-  protected umn(String paramString)
-  {
-    this.mMsgData = paramString;
-    try
-    {
-      parseJson(new JSONObject(paramString));
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      uqf.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
-    }
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject)
-  {
-    this.mPushId = paramJSONObject.optString("pushid");
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.mPushId);
-    paramParcel.writeString(this.mMsgData);
+    umj.a(this.jdField_a_of_type_Umj, this.jdField_a_of_type_UserGrowthStSimpleMetaComment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_UserGrowthStSimpleMetaReply);
   }
 }
 

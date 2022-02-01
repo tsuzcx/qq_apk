@@ -1,155 +1,41 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import feedcloud.FeedCloudRead.StGetFeedListReq;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
-import qqcircle.QQCircleFeedBase.StTagPageData;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class vxo
-  extends aabb
+  extends Handler
 {
-  public MutableLiveData<vxq<List<FeedCloudMeta.StFeed>>> a;
-  private String a;
-  public MutableLiveData<vxq<FeedCloudMeta.StTagInfo>> b;
-  private String b;
-  
-  public vxo()
+  public vxo(vxi paramvxi, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_b_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_a_of_type_Vua = vua.a(31);
+    super(paramLooper);
   }
   
-  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Vua != null) {
-      return this.jdField_a_of_type_Vua.a(paramBoolean);
-    }
-    return new FeedCloudCommon.StCommonExt();
-  }
-  
-  public String a()
-  {
-    return "QCircleTagPageViewModel";
-  }
-  
-  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
-  {
-    if (this.jdField_a_of_type_Vua != null) {
-      this.jdField_a_of_type_Vua.a(paramStCommonExt);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str;
-    if (paramBoolean1)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      str = this.jdField_a_of_type_JavaLangString;
-      paramString1 = new QCircleGetFeedListRequest(paramString1, paramString2, str, this.jdField_b_of_type_JavaLangString);
-      paramString2 = paramString1.mRequest.extInfo;
-      if (paramBoolean1) {
-        break label89;
-      }
     }
-    label89:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      paramString2.set(a(bool));
-      paramString1.setEnableCache(paramBoolean2);
-      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vxq.b());
-      a(paramString1, new vxp(this, paramString1, paramBoolean1));
-      return;
-      str = null;
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp, boolean paramBoolean2)
-  {
-    boolean bool1 = false;
-    boolean bool2 = VSNetworkHelper.a(paramString);
-    if ((!paramBoolean1) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
-    {
-      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vxq.a(paramString).a(paramLong).b(paramBoolean2));
-      return;
-    }
-    paramString = paramStGetFeedListRsp.vecFeed.get();
-    Object localObject1;
-    Object localObject2;
-    if (paramString.size() > 0)
-    {
-      localObject1 = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
-      localObject2 = vxq.a(bool2).a(paramBoolean2, paramString);
-      if (paramStGetFeedListRsp.isFinish.get() > 0) {
-        paramBoolean1 = true;
-      }
-    }
-    for (;;)
-    {
-      ((MutableLiveData)localObject1).setValue(((vxq)localObject2).c(paramBoolean1));
-      localObject1 = new QQCircleFeedBase.StFeedListBusiRspData();
-      if (paramStGetFeedListRsp.busiRspData.has()) {}
-      try
+      do
       {
-        ((QQCircleFeedBase.StFeedListBusiRspData)localObject1).mergeFrom(paramStGetFeedListRsp.busiRspData.get().toByteArray());
-        if (((QQCircleFeedBase.StFeedListBusiRspData)localObject1).tagPageData.has())
-        {
-          localObject2 = (FeedCloudMeta.StTagInfo)((QQCircleFeedBase.StFeedListBusiRspData)localObject1).tagPageData.tagInfo.get();
-          if (localObject2 != null) {
-            this.jdField_b_of_type_AndroidArchLifecycleMutableLiveData.setValue(vxq.a(bool2).a(false, localObject2));
-          }
-        }
-        else
-        {
-          if (((QQCircleFeedBase.StFeedListBusiRspData)localObject1).refreshAttachInfo.has()) {
-            this.jdField_b_of_type_JavaLangString = ((QQCircleFeedBase.StFeedListBusiRspData)localObject1).refreshAttachInfo.get();
-          }
-          if (paramStGetFeedListRsp.extInfo.has()) {
-            a((FeedCloudCommon.StCommonExt)paramStGetFeedListRsp.extInfo.get());
-          }
-          this.jdField_a_of_type_JavaLangString = paramStGetFeedListRsp.feedAttchInfo.get();
-          paramString = new StringBuilder().append("feed size:").append(paramString.size()).append(" | isFinish:");
-          paramBoolean1 = bool1;
-          if (paramStGetFeedListRsp.isFinish.get() > 0) {
-            paramBoolean1 = true;
-          }
-          QLog.d("QCircleTagPageViewModel", 1, paramBoolean1 + " | feedAttachInfo:" + this.jdField_a_of_type_JavaLangString);
-          return;
-          paramBoolean1 = false;
-          continue;
-          localObject1 = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
-          localObject2 = vxq.a().b(paramBoolean2);
-          if (paramStGetFeedListRsp.isFinish.get() > 0) {}
-          for (paramBoolean1 = true;; paramBoolean1 = false)
-          {
-            ((MutableLiveData)localObject1).setValue(((vxq)localObject2).c(paramBoolean1));
-            break;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-          continue;
-          this.jdField_b_of_type_AndroidArchLifecycleMutableLiveData.setValue(vxq.a());
-        }
-      }
-    }
+        return;
+        removeMessages(1);
+        xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
+        this.a.jdField_a_of_type_JavaUtilSet.clear();
+      } while (!vxi.a(this.a, paramMessage, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
+      return;
+      xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
+      paramMessage = (String)paramMessage.obj;
+    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
+    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+    sendEmptyMessageDelayed(1, 2500L);
   }
 }
 

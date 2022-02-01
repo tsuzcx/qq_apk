@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.util.Pair;
+import cooperation.comic.ui.QQComicFragment;
 
 public class bkgi
-  extends Handler
+  implements bgvx
 {
-  public bkgi(bkgh parambkgh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bkgi(QQComicFragment paramQQComicFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public Object a(int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
-      return;
+      return null;
     }
-    paramMessage = (Pair)paramMessage.obj;
-    bkgh.a(this.a, bkgh.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
+    return new bkgj(this.a);
   }
 }
 

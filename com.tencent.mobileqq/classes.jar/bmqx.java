@@ -1,25 +1,12 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmqx
+class bmqx
+  implements DialogInterface.OnClickListener
 {
-  @Nullable
-  public static Activity a(Context paramContext)
-  {
-    if ((paramContext instanceof Activity)) {
-      return (Activity)paramContext;
-    }
-    if ((paramContext instanceof ContextWrapper))
-    {
-      paramContext = (ContextWrapper)paramContext;
-      if ((paramContext.getBaseContext() instanceof Activity)) {
-        return (Activity)paramContext.getBaseContext();
-      }
-    }
-    return null;
-  }
+  bmqx(bmqu parambmqu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

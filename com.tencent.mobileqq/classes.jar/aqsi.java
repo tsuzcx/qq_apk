@@ -1,9 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public abstract interface aqsi
+public class aqsi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void launch(Context paramContext, ColorNote paramColorNote);
+  public aqsi(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(anoe.a, 0).edit().putBoolean(anoe.c, paramBoolean).commit();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

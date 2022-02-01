@@ -1,65 +1,23 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.Button;
+import com.tencent.ttpic.openapi.model.WMEditItem;
 
-public class blty
-  extends RecyclerView.OnScrollListener
+class blty
+  implements View.OnFocusChangeListener
 {
-  public blty(XRecyclerView paramXRecyclerView) {}
+  blty(bltv parambltv, blud paramblud, WMEditItem paramWMEditItem) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    int i = 0;
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (XRecyclerView.c(this.a) == 2)) {
-      this.a.a();
-    }
-    int j = paramRecyclerView.getChildCount();
-    boolean bool;
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    if (paramBoolean)
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      i = paramRecyclerView.getItemCount();
-      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
-      int k = XRecyclerView.a(this.a).a();
-      if (i - j <= paramRecyclerView[0] + k)
-      {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
-        }
-        if (bool) {
-          XRecyclerView.a(this.a).b(true);
-        }
-      }
-    }
-    for (;;)
-    {
-      XRecyclerView.c(this.a, paramInt);
+      bltv.a(this.jdField_a_of_type_Bltv, this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+      this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837693);
+      this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       return;
-      bool = false;
-      break;
-      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
-      {
-        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + XRecyclerView.a(this.a).a()) {
-          i = 1;
-        }
-        if (i != 0) {
-          XRecyclerView.a(this.a).b(true);
-        }
-      }
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    XRecyclerView.a(this.a, XRecyclerView.a(this.a) + paramInt1);
-    XRecyclerView.b(this.a, XRecyclerView.b(this.a) + paramInt2);
+    this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
   }
 }
 

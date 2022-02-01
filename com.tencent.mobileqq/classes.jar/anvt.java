@@ -1,17 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
-public abstract class anvt<T extends CustomEmotionBase>
-  extends anud
+class anvt
+  implements anvz
 {
-  protected anvt(QQAppInterface paramQQAppInterface)
+  anvt(anvs paramanvs) {}
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody)
   {
-    super(paramQQAppInterface);
+    long l = paramRspBody.uint32_test_keep_silence_sec.get();
+    paramToServiceMsg = this.a;
+    if (l <= 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      anvs.a(paramToServiceMsg, bool);
+      if (l > 0L)
+      {
+        anvs.a(this.a).removeMessages(6);
+        anvs.a(this.a).sendEmptyMessageDelayed(6, l);
+        if (QLog.isColorLevel()) {
+          QLog.d("FrontBackReportManager", 2, "receive keep silence");
+        }
+      }
+      return;
+    }
   }
-  
-  public abstract void a();
-  
-  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

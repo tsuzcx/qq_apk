@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bhih;
+import bfrr;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QQSettingUtil$1
@@ -10,7 +10,7 @@ public final class QQSettingUtil$1
   
   public void run()
   {
-    bhih.b(this.a);
+    bfrr.b(this.a);
   }
 }
 

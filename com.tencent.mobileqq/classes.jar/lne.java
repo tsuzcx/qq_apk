@@ -1,27 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.gaudio.BaseGaInvite;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class lne
-  implements lnf
+  extends ldz
 {
-  public lne(BaseGaInvite paramBaseGaInvite) {}
+  public lne(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public boolean a(Bitmap paramBitmap, String paramString)
+  protected void a(long paramLong, ArrayList<lcp> paramArrayList, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
     }
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
-      }
-      return bool;
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+      return;
     }
+    GaInviteLockActivity.a(this.a, paramInt);
   }
 }
 

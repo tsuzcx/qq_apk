@@ -1,18 +1,16 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.text.SpannableStringBuilder;
 
-final class uqk
-  implements bjig
+public class uqk
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public int a;
+  public SpannableStringBuilder a;
+  public String a;
+  
+  public uqk(SpannableStringBuilder paramSpannableStringBuilder, int paramInt, String paramString)
   {
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      bjuh.a().a(2131718139);
-    }
-    WXShareHelper.a().b(this);
+    this.jdField_a_of_type_AndroidTextSpannableStringBuilder = paramSpannableStringBuilder;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

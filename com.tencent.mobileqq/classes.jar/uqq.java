@@ -1,14 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.view.View;
 
-final class uqq
-  implements DialogInterface.OnShowListener
+class uqq
+  extends uqr
 {
-  uqq(upd paramupd) {}
+  uqq(uqp paramuqp) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void hide()
   {
-    uqi.a(this.a);
+    super.hide();
+    if (uqp.a(this.a) != null)
+    {
+      uqp.a(this.a).setVisibility(4);
+      uqp.a(this.a, 0);
+    }
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    super.updateUnreadCount(paramInt, paramBoolean);
+    if (paramInt == 0) {
+      uqp.a(this.a, 0);
+    }
+    while ((paramInt <= uqp.a(this.a)) || (uqp.a(this.a) == null)) {
+      return;
+    }
+    if (uqp.a(this.a)) {
+      uqp.a(this.a).setVisibility(0);
+    }
+    uqp.a(this.a, paramInt);
   }
 }
 

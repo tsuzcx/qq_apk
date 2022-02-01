@@ -1,21 +1,19 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import mqq.app.QQPermissionCallback;
 
 public class yvo
+  implements QQPermissionCallback
 {
-  public static String a;
+  public yvo(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public static boolean a(long paramLong, Context paramContext)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    a = anxf.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
-    }
-    return (bool1) || (bool2);
+    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.f();
   }
 }
 

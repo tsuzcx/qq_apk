@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import aana;
+import amvi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -24,15 +24,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aobf;
-import bhrz;
-import bhsa;
-import bhsd;
-import bjgq;
-import blir;
-import blji;
+import bjnw;
+import bjon;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.IShareActionSheetV2BottomBar;
 import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
 import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
@@ -40,37 +36,40 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import zjv;
 
 public class ShareActionSheetBuilder
   implements ShareActionSheet
 {
-  public int a;
-  protected Context a;
-  protected View a;
-  protected AdapterView.OnItemClickListener a;
-  protected GridView a;
-  public LinearLayout a;
-  protected TextView a;
-  protected bhsd a;
-  public blir a;
-  public ElasticHorScrView a;
-  private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
-  protected CharSequence a;
-  private String jdField_a_of_type_JavaLangString;
-  protected boolean a;
-  protected List<ShareActionSheetBuilder.ActionSheetItem>[] a;
-  protected int b;
-  protected GridView b;
-  public TextView b;
-  public ElasticHorScrView b;
-  protected boolean b;
-  protected int c;
-  private boolean c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
+  protected static final int CHARS_COUNT_PER_LINE = 5;
+  private static final String TAG = "ShareActionSheetBuilder";
+  public TextView cancel;
+  protected AdapterView.OnItemClickListener clickListener;
+  protected CharSequence dialogTitle;
+  protected GridView grid_row_view1;
+  protected GridView grid_row_view2;
+  protected int itemImageSize;
+  protected int itemMargin;
+  protected int itemTextMargin;
+  protected int itemTextWidth;
+  protected List<ShareActionSheetBuilder.ActionSheetItem>[] mActionSheetItems;
+  public LinearLayout mActionSheetLin;
+  protected ShareActionSheetBuilder.AdViewManager mAdViewManager;
+  public bjnw mDialog;
+  private boolean mEnableNotTriggerVirtualNavigationBar;
+  public int mGridView1Length;
+  protected int mGridView2Length;
+  protected boolean mIsDataChanged;
+  protected Context mOutAct;
+  private ShareActionSheet mProxy;
+  public ElasticHorScrView mScrollView1;
+  public ElasticHorScrView mScrollView2;
+  protected View mShowView;
+  protected TextView mTitleTv;
+  private String openSource;
+  protected int scrollViewMargin;
+  protected boolean showTitle = true;
+  protected int textSpacingExtra;
   
   public ShareActionSheetBuilder(Context paramContext)
   {
@@ -84,25 +83,24 @@ public class ShareActionSheetBuilder
   
   public ShareActionSheetBuilder(Context paramContext, boolean paramBoolean, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
     if (paramInt == 2)
     {
       ShareActionSheetV2.Param localParam = new ShareActionSheetV2.Param();
       localParam.context = paramContext;
       localParam.fullScreen = paramBoolean;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create(localParam);
+      this.mProxy = ShareActionSheetFactory.create(localParam);
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.mOutAct = paramContext;
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Blir = ((blir)blji.b(this.jdField_a_of_type_AndroidContentContext, null));
-      paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-      this.jdField_c_of_type_Int = paramContext.getDimensionPixelSize(2131296740);
-      this.e = this.jdField_c_of_type_Int;
-      this.f = paramContext.getDimensionPixelOffset(2131296742);
-      this.g = paramContext.getDimensionPixelOffset(2131296743);
-      this.jdField_a_of_type_Bhsd = new bhsd();
+      this.mDialog = ((bjnw)bjon.b(this.mOutAct, null));
+      paramContext = this.mOutAct.getResources();
+      this.itemImageSize = paramContext.getDimensionPixelSize(2131296795);
+      this.itemTextWidth = this.itemImageSize;
+      this.itemTextMargin = paramContext.getDimensionPixelOffset(2131296797);
+      this.textSpacingExtra = paramContext.getDimensionPixelOffset(2131296798);
+      this.mAdViewManager = new ShareActionSheetBuilder.AdViewManager();
       paramInt = paramContext.getDisplayMetrics().widthPixels;
       int i = paramContext.getDisplayMetrics().heightPixels;
       if (paramInt <= i) {
@@ -117,36 +115,25 @@ public class ShareActionSheetBuilder
       setIconMarginLeftRight(paramInt);
       setRowMarginLeftRight((int)(paramInt * 6 / 5.5F));
       return;
-      this.jdField_a_of_type_Blir = ((blir)blji.a(this.jdField_a_of_type_AndroidContentContext, null));
+      this.mDialog = ((bjnw)bjon.a(this.mOutAct, null));
       break;
     }
   }
   
-  private static int a(TextPaint paramTextPaint, String paramString, float paramFloat)
+  protected static String breakLabel(String paramString, int paramInt)
   {
-    int j;
-    if (paramTextPaint.measureText(paramString) < paramFloat)
+    String str = paramString;
+    if (paramString != null)
     {
-      j = paramString.length();
-      return j;
-    }
-    int i = 1;
-    for (;;)
-    {
-      if (i > paramString.length()) {
-        break label54;
+      str = paramString;
+      if (paramString.length() > paramInt) {
+        str = paramString.substring(0, paramInt) + "\n" + paramString.substring(paramInt);
       }
-      j = i;
-      if (paramTextPaint.measureText(paramString.substring(0, i)) > paramFloat) {
-        break;
-      }
-      i += 1;
     }
-    label54:
-    return paramString.length();
+    return str;
   }
   
-  public static String a(TextPaint paramTextPaint, float paramFloat, String paramString, int paramInt)
+  protected static String breakLabel2(TextPaint paramTextPaint, float paramFloat, String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {}
     int i;
@@ -156,15 +143,15 @@ public class ShareActionSheetBuilder
       do
       {
         return paramString;
-        i = a(paramTextPaint, paramString, paramFloat);
-        if (!aobf.a()) {
+        i = findMaxCharCntPerLine(paramTextPaint, paramString, paramFloat);
+        if (!amvi.a()) {
           break;
         }
         paramInt = Math.min(paramInt, i);
       } while (paramString.length() <= paramInt);
       str = paramString.substring(0, paramInt);
       paramString = paramString.substring(paramInt);
-      paramInt = a(paramTextPaint, paramString, paramFloat);
+      paramInt = findMaxCharCntPerLine(paramTextPaint, paramString, paramFloat);
       paramTextPaint = paramString;
       if (paramString.length() > paramInt) {
         paramTextPaint = paramString.substring(0, paramInt) + "..";
@@ -201,7 +188,31 @@ public class ShareActionSheetBuilder
     }
   }
   
-  private void a(GridView paramGridView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
+  private static int findMaxCharCntPerLine(TextPaint paramTextPaint, String paramString, float paramFloat)
+  {
+    int j;
+    if (paramTextPaint.measureText(paramString) < paramFloat)
+    {
+      j = paramString.length();
+      return j;
+    }
+    int i = 1;
+    for (;;)
+    {
+      if (i > paramString.length()) {
+        break label54;
+      }
+      j = i;
+      if (paramTextPaint.measureText(paramString.substring(0, i)) > paramFloat) {
+        break;
+      }
+      i += 1;
+    }
+    label54:
+    return paramString.length();
+  }
+  
+  private void handleScrollView(GridView paramGridView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
     paramGridView.setOverScrollMode(2);
     Object localObject = paramList.iterator();
@@ -217,52 +228,52 @@ public class ShareActionSheetBuilder
     for (;;)
     {
       break;
-      int j = this.d + getIconWidth() + this.d;
+      int j = this.itemMargin + getIconWidth() + this.itemMargin;
       paramGridView.setColumnWidth(j);
       paramGridView.setNumColumns(i);
       localObject = paramGridView.getLayoutParams();
-      paramGridView.setPadding(this.h, paramGridView.getPaddingTop(), this.h, paramGridView.getPaddingBottom());
-      ((ViewGroup.LayoutParams)localObject).width = (j * i + this.h + this.h);
-      ((ViewGroup.LayoutParams)localObject).height = (this.jdField_c_of_type_Int + this.f + paramStaticLayout.getHeight() + paramInt);
+      paramGridView.setPadding(this.scrollViewMargin, paramGridView.getPaddingTop(), this.scrollViewMargin, paramGridView.getPaddingBottom());
+      ((ViewGroup.LayoutParams)localObject).width = (j * i + this.scrollViewMargin + this.scrollViewMargin);
+      ((ViewGroup.LayoutParams)localObject).height = (this.itemImageSize + this.itemTextMargin + paramStaticLayout.getHeight() + paramInt);
       paramGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramGridView.setAdapter(a(this.jdField_a_of_type_AndroidContentContext, paramList));
+      paramGridView.setAdapter(createActionSheetItemAdapter(this.mOutAct, paramList));
       paramGridView.setSelector(new ColorDrawable(0));
-      paramGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+      paramGridView.setOnItemClickListener(this.clickListener);
       return;
     }
   }
   
-  private void b(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
+  private void handleScrollViewTwo(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367684));
-    this.jdField_b_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
-    a(this.jdField_b_of_type_AndroidWidgetGridView, paramList, paramStaticLayout, paramInt);
-    this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams().width;
+    this.grid_row_view2 = ((GridView)paramView.findViewById(2131367716));
+    this.grid_row_view2.setSmoothScrollbarEnabled(false);
+    handleScrollView(this.grid_row_view2, paramList, paramStaticLayout, paramInt);
+    this.mGridView2Length = this.grid_row_view2.getLayoutParams().width;
   }
   
-  protected int a()
+  protected ShareActionSheetBuilder.ActionSheetItemAdapter createActionSheetItemAdapter(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    return 2131558936;
+    return new ShareActionSheetBuilder.ActionSheetItemAdapter(paramContext, paramList);
   }
   
   @TargetApi(9)
-  protected View a()
+  protected View createViewFlipper()
   {
-    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, a(), null);
-    this.jdField_a_of_type_Bhsd.a((RelativeLayout)localView.findViewById(2131362216));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131361977));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361975));
+    View localView = View.inflate(this.mOutAct, getActionSheetLayoutId(), null);
+    this.mAdViewManager.setAdContainer((RelativeLayout)localView.findViewById(2131362216));
+    this.mActionSheetLin = ((LinearLayout)localView.findViewById(2131361976));
+    this.mTitleTv = ((TextView)localView.findViewById(2131361974));
     Object localObject2;
     Object localObject1;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.showTitle)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.mTitleTv.setVisibility(0);
+      if (this.dialogTitle != null) {
+        this.mTitleTv.setText(this.dialogTitle);
       }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131377120));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131377121));
-      localObject2 = a();
+      this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131376872));
+      this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131376873));
+      localObject2 = getActionSheetItems();
       if (localObject2.length <= 0) {
         break label439;
       }
@@ -288,27 +299,27 @@ public class ShareActionSheetBuilder
       for (int j = 0;; j = 1)
       {
         Object localObject4 = new TextPaint();
-        ((TextPaint)localObject4).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298939));
-        Object localObject3 = new StaticLayout(a((TextPaint)localObject4, this.e, a((List)localObject1), 5), (TextPaint)localObject4, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
-        localObject4 = new StaticLayout(a((TextPaint)localObject4, this.e, a((List)localObject2), 5), (TextPaint)localObject4, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
+        ((TextPaint)localObject4).setTextSize(this.mOutAct.getResources().getDimensionPixelSize(2131299004));
+        Object localObject3 = new StaticLayout(breakLabel2((TextPaint)localObject4, this.itemTextWidth, getLongestLabel((List)localObject1), 5), (TextPaint)localObject4, this.itemTextWidth, Layout.Alignment.ALIGN_CENTER, 1.0F, this.textSpacingExtra, true);
+        localObject4 = new StaticLayout(breakLabel2((TextPaint)localObject4, this.itemTextWidth, getLongestLabel((List)localObject2), 5), (TextPaint)localObject4, this.itemTextWidth, Layout.Alignment.ALIGN_CENTER, 1.0F, this.textSpacingExtra, true);
         if (((StaticLayout)localObject3).getHeight() >= ((StaticLayout)localObject4).getHeight()) {}
         for (;;)
         {
-          int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131296739);
+          int k = this.mOutAct.getResources().getDimensionPixelOffset(2131296794);
           if (i != 0) {
-            a(localView, (List)localObject1, (StaticLayout)localObject3, k);
+            handleScrollViewOne(localView, (List)localObject1, (StaticLayout)localObject3, k);
           }
           if (j != 0) {
-            b(localView, (List)localObject2, (StaticLayout)localObject3, k);
+            handleScrollViewTwo(localView, (List)localObject2, (StaticLayout)localObject3, k);
           }
-          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361967));
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131692522);
-          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bhrz(this));
+          this.cancel = ((TextView)localView.findViewById(2131361966));
+          this.cancel.setText(2131692570);
+          this.cancel.setOnClickListener(new ShareActionSheetBuilder.1(this));
           if (i == 0) {
-            this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
+            this.mScrollView1.setVisibility(8);
           }
           if (j == 0) {
-            this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
+            this.mScrollView2.setVisibility(8);
           }
           localView.post(new ShareActionSheetBuilder.2(this));
           return localView;
@@ -324,12 +335,90 @@ public class ShareActionSheetBuilder
     }
   }
   
-  protected bhsa a(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void dismiss()
   {
-    return new bhsa(paramContext, paramList);
+    if (this.mProxy != null) {
+      this.mProxy.dismiss();
+    }
+    do
+    {
+      return;
+      setOpenSource(null);
+    } while (!isShowing());
+    try
+    {
+      this.mDialog.dismiss();
+      this.mShowView = null;
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      QLog.w("ShareActionSheetBuilder", 2, "Exception while dismiss", localRuntimeException);
+    }
   }
   
-  protected String a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void dismissImmediately()
+  {
+    if (this.mProxy != null) {
+      this.mProxy.dismissImmediately();
+    }
+  }
+  
+  public View findViewById(int paramInt)
+  {
+    if (this.mProxy != null) {
+      return this.mProxy.findViewById(paramInt);
+    }
+    Window localWindow = this.mDialog.getWindow();
+    if (localWindow != null) {
+      return localWindow.findViewById(paramInt);
+    }
+    return null;
+  }
+  
+  public bjnw getActionSheet()
+  {
+    if (this.mProxy != null) {
+      return this.mProxy.getActionSheet();
+    }
+    return this.mDialog;
+  }
+  
+  protected List<ShareActionSheetBuilder.ActionSheetItem>[] getActionSheetItems()
+  {
+    if (this.mActionSheetItems != null) {
+      return this.mActionSheetItems;
+    }
+    return (List[])new ArrayList[0];
+  }
+  
+  protected int getActionSheetLayoutId()
+  {
+    return 2131558944;
+  }
+  
+  public int getActionSheetPanelViewHeight()
+  {
+    if (this.mProxy != null) {
+      return this.mProxy.getActionSheetPanelViewHeight();
+    }
+    return 0;
+  }
+  
+  public int getIconMarginLeftRight()
+  {
+    return this.itemMargin;
+  }
+  
+  public int getIconWidth()
+  {
+    if (this.mProxy != null) {
+      return this.mProxy.getIconWidth();
+    }
+    return this.itemImageSize;
+  }
+  
+  protected String getLongestLabel(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
     Object localObject = "";
     int i = 0;
@@ -350,14 +439,30 @@ public class ShareActionSheetBuilder
     }
   }
   
-  protected void a(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
+  public String getOpenSource()
   {
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367683));
-    a(this.jdField_a_of_type_AndroidWidgetGridView, paramList, paramStaticLayout, paramInt);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width;
+    if (this.mProxy != null) {
+      return this.mProxy.getOpenSource();
+    }
+    return this.openSource;
   }
   
-  protected void a(ElasticHorScrView paramElasticHorScrView, int paramInt)
+  public Window getWindow()
+  {
+    if (this.mProxy != null) {
+      return this.mProxy.getWindow();
+    }
+    return this.mDialog.getWindow();
+  }
+  
+  protected void handleScrollViewOne(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
+  {
+    this.grid_row_view1 = ((GridView)paramView.findViewById(2131367715));
+    handleScrollView(this.grid_row_view1, paramList, paramStaticLayout, paramInt);
+    this.mGridView1Length = this.grid_row_view1.getLayoutParams().width;
+  }
+  
+  protected void handleSetMove(ElasticHorScrView paramElasticHorScrView, int paramInt)
   {
     boolean bool = true;
     int i = paramElasticHorScrView.getWidth();
@@ -368,7 +473,7 @@ public class ShareActionSheetBuilder
       {
         paramElasticHorScrView = new StringBuilder().append("setMove, scrollViewLength = ").append(i).append("; gridViewLength = ").append(paramInt).append("; move = ");
         if (i >= paramInt) {
-          break label88;
+          break label87;
         }
       }
     }
@@ -378,130 +483,36 @@ public class ShareActionSheetBuilder
       return;
       paramElasticHorScrView.setMove(false);
       break;
-      label88:
+      label87:
       bool = false;
     }
   }
   
-  protected List<ShareActionSheetBuilder.ActionSheetItem>[] a()
-  {
-    if (this.jdField_a_of_type_ArrayOfJavaUtilList != null) {
-      return this.jdField_a_of_type_ArrayOfJavaUtilList;
-    }
-    return (List[])new ArrayList[0];
-  }
-  
-  public void dismiss()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-    }
-    do
-    {
-      return;
-      setOpenSource(null);
-    } while (!isShowing());
-    try
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      this.jdField_a_of_type_AndroidViewView = null;
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.w("ShareActionSheetBuilder", 2, "Exception while dismiss", localRuntimeException);
-    }
-  }
-  
-  public void dismissImmediately()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismissImmediately();
-    }
-  }
-  
-  public View findViewById(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.findViewById(paramInt);
-    }
-    Window localWindow = this.jdField_a_of_type_Blir.getWindow();
-    if (localWindow != null) {
-      return localWindow.findViewById(paramInt);
-    }
-    return null;
-  }
-  
-  public blir getActionSheet()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getActionSheet();
-    }
-    return this.jdField_a_of_type_Blir;
-  }
-  
-  public int getActionSheetPanelViewHeight()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getActionSheetPanelViewHeight();
-    }
-    return 0;
-  }
-  
-  public int getIconMarginLeftRight()
-  {
-    return this.d;
-  }
-  
-  public int getIconWidth()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getIconWidth();
-    }
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String getOpenSource()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getOpenSource();
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Window getWindow()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getWindow();
-    }
-    return this.jdField_a_of_type_Blir.getWindow();
-  }
-  
   public void hideTitle()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.hideTitle();
+    if (this.mProxy != null) {
+      this.mProxy.hideTitle();
     }
     do
     {
       return;
-      this.jdField_b_of_type_Boolean = false;
-    } while ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.showTitle = false;
+    } while ((this.mTitleTv == null) || (this.mTitleTv.getVisibility() == 8));
+    this.mTitleTv.setVisibility(8);
   }
   
   public boolean isShowing()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing();
+    if (this.mProxy != null) {
+      return this.mProxy.isShowing();
     }
-    return this.jdField_a_of_type_Blir.isShowing();
+    return this.mDialog.isShowing();
   }
   
   public void onConfigurationChanged()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.onConfigurationChanged();
+    if (this.mProxy != null) {
+      this.mProxy.onConfigurationChanged();
     }
     int i;
     do
@@ -509,25 +520,25 @@ public class ShareActionSheetBuilder
       do
       {
         return;
-      } while (this.jdField_a_of_type_AndroidContentContext == null);
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - this.h;
-    } while ((this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView == null) || (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView == null));
-    if (i < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      } while (this.mOutAct == null);
+      i = this.mOutAct.getResources().getDisplayMetrics().widthPixels - this.scrollViewMargin;
+    } while ((this.mScrollView1 == null) || (this.mScrollView2 == null));
+    if (i < this.mGridView1Length) {
+      this.mScrollView1.setMove(true);
     }
-    while (i < this.jdField_b_of_type_Int)
+    while (i < this.mGridView2Length)
     {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      this.mScrollView2.setMove(true);
       return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      this.mScrollView1.setMove(false);
     }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    this.mScrollView2.setMove(false);
   }
   
   public void refresh()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.refresh();
+    if (this.mProxy != null) {
+      this.mProxy.refresh();
     }
   }
   
@@ -535,207 +546,207 @@ public class ShareActionSheetBuilder
   
   public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(paramArrayOfList);
+      this.mProxy.setActionSheetItems(paramArrayOfList);
       return;
     }
-    this.jdField_a_of_type_ArrayOfJavaUtilList = paramArrayOfList;
-    this.jdField_a_of_type_Boolean = true;
+    this.mActionSheetItems = paramArrayOfList;
+    this.mIsDataChanged = true;
   }
   
   public void setActionSheetTitle(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetTitle(paramCharSequence);
+    if (this.mProxy != null) {
+      this.mProxy.setActionSheetTitle(paramCharSequence);
     }
     do
     {
       return;
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    } while (this.jdField_a_of_type_AndroidWidgetTextView == null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.dialogTitle = paramCharSequence;
+    } while (this.mTitleTv == null);
+    this.mTitleTv.setText(this.dialogTitle);
   }
   
   public void setAdvBgColor(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setAdvBgColor(paramInt);
+      this.mProxy.setAdvBgColor(paramInt);
       return;
     }
-    this.jdField_a_of_type_Bhsd.a(paramInt);
+    this.mAdViewManager.setBgColor(paramInt);
   }
   
   public void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setAdvView(paramView, paramLayoutParams);
+      this.mProxy.setAdvView(paramView, paramLayoutParams);
       return;
     }
-    this.jdField_a_of_type_Bhsd.a(paramView, paramLayoutParams);
+    this.mAdViewManager.setAdView(paramView, paramLayoutParams);
   }
   
-  public void setBottomBarInterface(bjgq parambjgq)
+  public void setBottomBarInterface(ShareActionSheet.IShareActionSheetV2BottomBar paramIShareActionSheetV2BottomBar)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setBottomBarInterface(parambjgq);
+    if (this.mProxy != null) {
+      this.mProxy.setBottomBarInterface(paramIShareActionSheetV2BottomBar);
     }
   }
   
   public void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setCancelListener(paramOnCancelListener);
+      this.mProxy.setCancelListener(paramOnCancelListener);
       return;
     }
-    this.jdField_a_of_type_Blir.setOnCancelListener(paramOnCancelListener);
+    this.mDialog.setOnCancelListener(paramOnCancelListener);
   }
   
   public void setEnableNotTriggerVirtualNavigationBar(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
+      this.mProxy.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
       return;
     }
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.mEnableNotTriggerVirtualNavigationBar = paramBoolean;
   }
   
   public void setExtras(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setExtras(paramBundle);
+    if (this.mProxy != null) {
+      this.mProxy.setExtras(paramBundle);
     }
   }
   
   public void setIconMarginLeftRight(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIconMarginLeftRight(paramInt);
+      this.mProxy.setIconMarginLeftRight(paramInt);
       return;
     }
-    this.d = paramInt;
+    this.itemMargin = paramInt;
   }
   
   public void setIntentForStartForwardRecentActivity(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(paramIntent);
+    if (this.mProxy != null) {
+      this.mProxy.setIntentForStartForwardRecentActivity(paramIntent);
     }
   }
   
   public void setItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListener(paramOnItemClickListener);
+    if (this.mProxy != null) {
+      this.mProxy.setItemClickListener(paramOnItemClickListener);
     }
     do
     {
       do
       {
         return;
-        this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
-        this.jdField_a_of_type_Boolean = true;
+        this.clickListener = paramOnItemClickListener;
+        this.mIsDataChanged = true;
       } while (paramOnItemClickListener != null);
-      if (this.jdField_a_of_type_AndroidWidgetGridView != null) {
-        this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(null);
+      if (this.grid_row_view1 != null) {
+        this.grid_row_view1.setOnItemClickListener(null);
       }
-    } while (this.jdField_b_of_type_AndroidWidgetGridView == null);
-    this.jdField_b_of_type_AndroidWidgetGridView.setOnItemClickListener(null);
+    } while (this.grid_row_view2 == null);
+    this.grid_row_view2.setOnItemClickListener(null);
   }
   
   public void setItemClickListenerV2(ShareActionSheet.OnItemClickListener paramOnItemClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(paramOnItemClickListener);
+    if (this.mProxy != null) {
+      this.mProxy.setItemClickListenerV2(paramOnItemClickListener);
     }
   }
   
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOnDismissListener(paramOnDismissListener);
+    if (this.mProxy != null) {
+      this.mProxy.setOnDismissListener(paramOnDismissListener);
     }
-    while (this.jdField_a_of_type_Blir == null) {
+    while (this.mDialog == null) {
       return;
     }
-    this.jdField_a_of_type_Blir.setOnDismissListener(paramOnDismissListener);
+    this.mDialog.setOnDismissListener(paramOnDismissListener);
   }
   
   public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOnShowListener(paramOnShowListener);
+      this.mProxy.setOnShowListener(paramOnShowListener);
       return;
     }
-    this.jdField_a_of_type_Blir.setOnShowListener(paramOnShowListener);
+    this.mDialog.setOnShowListener(paramOnShowListener);
   }
   
   public void setOpenSource(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOpenSource(paramString);
+      this.mProxy.setOpenSource(paramString);
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.openSource = paramString;
   }
   
   public void setRowMarginLeftRight(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    if (this.mProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowMarginLeftRight(paramInt);
+      this.mProxy.setRowMarginLeftRight(paramInt);
       return;
     }
-    this.h = paramInt;
+    this.scrollViewMargin = paramInt;
   }
   
   public void setRowVisibility(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(paramInt1, paramInt2, paramInt3);
+    if (this.mProxy != null) {
+      this.mProxy.setRowVisibility(paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void setTitlePadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.mTitleTv != null) {
+      this.mTitleTv.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void show()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
+    if (this.mProxy != null) {
+      this.mProxy.show();
     }
     do
     {
       for (;;)
       {
         return;
-        if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_AndroidViewView = a();
+        if ((this.mShowView == null) || (this.mIsDataChanged)) {
+          this.mShowView = createViewFlipper();
         }
-        this.jdField_a_of_type_Blir.a(this.jdField_a_of_type_AndroidViewView, null);
+        this.mDialog.a(this.mShowView, null);
         try
         {
           if (!isShowing())
           {
-            if (this.jdField_c_of_type_Boolean) {
-              aana.b(getWindow());
+            if (this.mEnableNotTriggerVirtualNavigationBar) {
+              zjv.b(getWindow());
             }
-            this.jdField_a_of_type_Blir.show();
-            if (this.jdField_c_of_type_Boolean)
+            this.mDialog.show();
+            if (this.mEnableNotTriggerVirtualNavigationBar)
             {
-              aana.a(getWindow());
-              aana.c(getWindow());
+              zjv.a(getWindow());
+              zjv.c(getWindow());
               return;
             }
           }
@@ -748,26 +759,26 @@ public class ShareActionSheetBuilder
   
   public void updateUI()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.updateUI();
+    if (this.mProxy != null) {
+      this.mProxy.updateUI();
     }
-    while (!this.jdField_a_of_type_Blir.isShowing()) {
+    while (!this.mDialog.isShowing()) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_a_of_type_Blir.a(this.jdField_a_of_type_AndroidViewView, null);
+    this.mShowView = createViewFlipper();
+    this.mDialog.a(this.mShowView, null);
   }
   
   public void updateUIIfShowing()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.updateUIIfShowing();
+    if (this.mProxy != null) {
+      this.mProxy.updateUIIfShowing();
     }
-    while (!this.jdField_a_of_type_Blir.isShowing()) {
+    while (!this.mDialog.isShowing()) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_a_of_type_Blir.a(this.jdField_a_of_type_AndroidViewView, null);
+    this.mShowView = createViewFlipper();
+    this.mDialog.a(this.mShowView, null);
   }
 }
 

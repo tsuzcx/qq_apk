@@ -1,23 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class awbb
-  implements awbf
+  implements avzk
 {
-  public awbb(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
+  public awbb(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public void a(int paramInt)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    Intent localIntent = new Intent(awax.d(HuayangLoadbackgroudActivity.a(this.a)));
-    localIntent.putExtra("key_state", 4);
-    localIntent.putExtra("key_progress", paramInt);
-    localIntent.putExtra("key_totalSize", 100L);
-    this.a.sendBroadcast(localIntent);
-  }
-  
-  public void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    this.a.finish();
+    MultiCardPageIndicator.a(this.a);
+    return false;
   }
 }
 

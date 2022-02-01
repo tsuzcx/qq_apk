@@ -1,25 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-public class bocx
-  implements Animation.AnimationListener
+public abstract interface bocx
 {
-  public bocx(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a(double paramDouble);
 }
 
 

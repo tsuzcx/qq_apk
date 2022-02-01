@@ -1,39 +1,24 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ApolloActionPush;
 import com.tencent.qphone.base.util.QLog;
 
 class alon
-  extends apee
+  implements aloo
 {
-  alon(alol paramalol, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  alon(alom paramalom) {}
   
-  public int a()
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow success");
+    if ((alom.a(this.a) != null) && (paramApolloActionPush != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((alom.a(this.a).curType == paramInt) && (paramInt == alom.a(this.a).curType) && (!TextUtils.isEmpty(alom.a(this.a).curFriendUin)) && (alom.a(this.a).curFriendUin.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
     }
-    alol.a(this.jdField_a_of_type_Alol, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    ((bgre)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    alol.b(this.jdField_a_of_type_Alol, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    alol.a(this.jdField_a_of_type_Alol, 2131694659);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    alol.a(this.jdField_a_of_type_Alol);
   }
 }
 

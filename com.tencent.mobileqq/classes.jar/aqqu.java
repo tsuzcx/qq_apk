@@ -1,7 +1,4 @@
-public abstract interface aqqu
-{
-  public abstract void a(int paramInt);
-}
+public class aqqu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

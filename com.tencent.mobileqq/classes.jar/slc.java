@@ -1,11 +1,4 @@
-public abstract interface slc
-{
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-}
+class slc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,57 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
 public class onh
-  implements View.OnClickListener
+  extends sdx
 {
-  public onh(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
+  public onh(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.doOnBackPressed();
-    Object localObject1 = paramView.getTag();
-    try
-    {
-      i = Integer.valueOf(localObject1.toString()).intValue();
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-        switch (paramView.getId())
-        {
-        default: 
-          EventCollector.getInstance().onViewClicked(paramView);
-          return;
-        }
-      }
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-        continue;
-        if (localException != null)
-        {
-          String str = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, str);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953D", localException.c);
-          continue;
-          if (localException != null)
-          {
-            str = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.c, localException.b);
-            ReadInjoyFriendsBiuComponentFragment.a(this.a, str);
-            ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953C", localException.c);
-            continue;
-            Object localObject2 = null;
-          }
-        }
-      }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
     }
+    ReadInJoyVideoSubChannelActivity.a(this.a).c();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 

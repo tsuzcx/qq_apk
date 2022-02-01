@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class afgf
-  implements Comparator<ChatMessage>
+  implements bcrf
 {
-  public afgf(QQLSActivity paramQQLSActivity) {}
+  public afgf(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void a()
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
-    }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
+    int i = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Bcsi.b / 2.0F);
+    int j = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Bcsi.b / 2.0F);
+    int k = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Bcsi.b / 2.0F);
+    bcrn localbcrn = new bcrn(new bcre[] { new bcri(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Bcsi.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bcri(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bcri(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
+    localbcrn.a(new afgg(this));
+    this.a.jdField_a_of_type_Bcsi.a(new bcre[] { localbcrn });
   }
 }
 

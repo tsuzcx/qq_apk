@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import bnrf;
+import bkwm;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import ogs;
-import ogz;
-import pfa;
+import oif;
+import oim;
+import pkm;
 
 public class DailyDynamicHeaderViewController$5$1
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$5$1(ogz paramogz, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public DailyDynamicHeaderViewController$5$1(oim paramoim, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a != null))
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation != null))
     {
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.f;
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.e;
+      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.cityCode;
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.city;
       QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] adCode=" + str1 + " cityName=" + str2);
-      bnrf.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(System.currentTimeMillis()));
-      pfa.a().s();
+      bkwm.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(System.currentTimeMillis()));
+      pkm.a().s();
       return;
     }
-    ogs.a(this.jdField_a_of_type_Ogz.a, 2);
+    oif.a(this.jdField_a_of_type_Oim.a, 2);
   }
 }
 

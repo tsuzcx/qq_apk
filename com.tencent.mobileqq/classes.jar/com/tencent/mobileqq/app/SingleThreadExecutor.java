@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.app;
 
 import android.support.annotation.NonNull;
-import aoik;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.annotation.concurrent.GuardedBy;
 
 public class SingleThreadExecutor
-  extends aoik
+  extends ThreadManagerExecutor
 {
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   @GuardedBy("lock")
@@ -15,7 +14,7 @@ public class SingleThreadExecutor
   @GuardedBy("lock")
   private boolean jdField_a_of_type_Boolean;
   
-  public SingleThreadExecutor(int paramInt)
+  SingleThreadExecutor(int paramInt)
   {
     super(paramInt);
   }

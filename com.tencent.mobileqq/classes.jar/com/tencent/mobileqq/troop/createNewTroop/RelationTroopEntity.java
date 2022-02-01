@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 
 public class RelationTroopEntity

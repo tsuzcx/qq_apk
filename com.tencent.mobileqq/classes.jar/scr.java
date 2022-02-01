@@ -1,16 +1,19 @@
-import android.os.Bundle;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class scr
-  implements BusinessObserver
+public class scr
+  implements View.OnClickListener
 {
-  scr(scq paramscq, NewIntent paramNewIntent, String paramString1, String paramString2, sct paramsct, long paramLong) {}
+  public scr(VideoFeedsUGView paramVideoFeedsUGView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    scq.a(this.jdField_a_of_type_Scq, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Sct, this.jdField_a_of_type_Long, paramBoolean, paramBundle);
+    bfyz.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
+    this.a.setVisibility(8);
+    oix.a(oix.b(this.a.jdField_a_of_type_Oey.i, "101", this.a.jdField_a_of_type_JavaLangString));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

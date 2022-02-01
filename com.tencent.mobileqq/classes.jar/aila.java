@@ -1,14 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-class aila
-  implements DialogInterface.OnDismissListener
+public class aila
+  implements DialogInterface.OnClickListener
 {
-  aila(aikq paramaikq) {}
+  public aila(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(1);
+    this.a.k();
+    this.a.q();
+    if (TroopNotifyAndRecommendView.b(this.a) != null) {
+      TroopNotifyAndRecommendView.b(this.a).setVisibility(8);
+    }
+    bcef.b(this.a.a, "dc00899", "Grp_contacts_news", "", "notice", "clear_clk", 0, 0, "", "", "", "");
   }
 }
 

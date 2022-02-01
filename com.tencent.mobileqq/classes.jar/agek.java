@@ -1,9 +1,15 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+
 final class agek
-  extends ThreadLocal<char[]>
+  implements aghk
 {
-  protected char[] a()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    return new char[1024];
+    if (paramChatMessage.msgtype == -3016) {
+      return 93;
+    }
+    return 15;
   }
 }
 

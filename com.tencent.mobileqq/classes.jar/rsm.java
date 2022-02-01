@@ -1,24 +1,13 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rsm
-  extends RecyclerView.OnScrollListener
+public abstract interface rsm
 {
-  public rsm(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  public abstract long a();
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    paramRecyclerView = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsRecyclerView.a(paramRecyclerView, bool);
-      return;
-    }
-  }
+  public abstract View a();
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
 }
 
 

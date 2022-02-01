@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 public class EmoticonPageIndicator
   extends EmoticonPagerRadioGroup
 {
+  private static final String LOG_TAG = "EmoticonPageIndicator";
+  
   public EmoticonPageIndicator(Context paramContext)
   {
     super(paramContext);
@@ -19,12 +21,12 @@ public class EmoticonPageIndicator
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.a = paramViewPager;
+    this.viewPager = paramViewPager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPageIndicator
  * JD-Core Version:    0.7.0.1
  */

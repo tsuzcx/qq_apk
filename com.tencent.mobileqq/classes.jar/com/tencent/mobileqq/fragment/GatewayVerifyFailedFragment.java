@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdll;
+import bcef;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -104,14 +104,14 @@ public class GatewayVerifyFailedFragment
           {
             localObject1 = (QQAppInterface)getActivity().getAppInterface();
             label485:
-            bdll.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800ADE0", "0X800ADE0", 0, 0, "", "", "", "");
+            bcef.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800ADE0", "0X800ADE0", 0, 0, "", "", "", "");
             if (!(getActivity().getAppInterface() instanceof QQAppInterface)) {
               break label588;
             }
           }
           for (localObject1 = (QQAppInterface)getActivity().getAppInterface();; localObject1 = null)
           {
-            bdll.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
+            bcef.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
             return;
             ((StringBuilder)localObject1).append("?");
             break;
@@ -163,18 +163,18 @@ public class GatewayVerifyFailedFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131561164, paramViewGroup, false);
-    ((TextView)paramViewGroup.findViewById(2131379986)).setOnClickListener(this);
-    ((TextView)paramViewGroup.findViewById(2131369088)).setText(getString(2131691836));
-    paramLayoutInflater = paramViewGroup.findViewById(2131376869);
+    paramViewGroup = paramLayoutInflater.inflate(2131561037, paramViewGroup, false);
+    ((TextView)paramViewGroup.findViewById(2131379749)).setOnClickListener(this);
+    ((TextView)paramViewGroup.findViewById(2131369115)).setText(getString(2131691882));
+    paramLayoutInflater = paramViewGroup.findViewById(2131376628);
     paramBundle = (LinearLayout.LayoutParams)paramLayoutInflater.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
     paramLayoutInflater.setLayoutParams(paramBundle);
-    paramViewGroup.findViewById(2131369042).setOnClickListener(this);
+    paramViewGroup.findViewById(2131369068).setOnClickListener(this);
     if ((getActivity().getAppInterface() instanceof QQAppInterface)) {}
     for (paramLayoutInflater = (QQAppInterface)getActivity().getAppInterface();; paramLayoutInflater = null)
     {
-      bdll.a(paramLayoutInflater, "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
+      bcef.a(paramLayoutInflater, "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
       V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
       return paramViewGroup;
     }

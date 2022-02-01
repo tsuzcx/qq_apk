@@ -1,14 +1,15 @@
-import android.content.Context;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ahyn
-  implements ahyf
+class ahyn
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.a(paramMessageRecord, paramLinearLayout, paramahfq);
-  }
+  public int a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  
+  ahyn(ahyl paramahyl) {}
 }
 
 

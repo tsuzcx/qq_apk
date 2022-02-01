@@ -1,12 +1,21 @@
-public abstract interface ncv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ncv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  ncv(ncu paramncu) {}
   
-  public abstract void a(ncr paramncr);
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncv
  * JD-Core Version:    0.7.0.1
  */

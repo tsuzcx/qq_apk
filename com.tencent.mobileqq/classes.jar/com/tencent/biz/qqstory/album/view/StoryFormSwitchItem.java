@@ -17,8 +17,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhga;
-import bixy;
+import bfpm;
+import bhea;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ import com.tencent.widget.Switch;
 
 public class StoryFormSwitchItem
   extends RelativeLayout
-  implements bixy
+  implements bhea
 {
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -50,8 +50,8 @@ public class StoryFormSwitchItem
   public StoryFormSwitchItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int m = getResources().getDimensionPixelSize(2131298132);
-    int n = getResources().getDimensionPixelSize(2131296710);
+    int m = getResources().getDimensionPixelSize(2131298197);
+    int n = getResources().getDimensionPixelSize(2131296765);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem);
     this.h = paramContext.getDimensionPixelSize(2, m);
     this.g = paramContext.getDimensionPixelSize(1, n);
@@ -78,14 +78,14 @@ public class StoryFormSwitchItem
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367074);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367091);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int m = getContext().getResources().getDimensionPixelSize(2131296708);
+    int m = getContext().getResources().getDimensionPixelSize(2131296763);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, m);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166990));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167012));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.i, this.j);
@@ -99,13 +99,13 @@ public class StoryFormSwitchItem
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
     if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
     {
-      bhga.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-      bhga.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
+      bfpm.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      bfpm.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
       if (TextUtils.isEmpty(getContentDescription())) {
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131367073);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131367090);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.h;
     localLayoutParams.addRule(11);
@@ -310,7 +310,7 @@ public class StoryFormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166990));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167012));
       }
     }
     else {
@@ -321,7 +321,7 @@ public class StoryFormSwitchItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.StoryFormSwitchItem
  * JD-Core Version:    0.7.0.1
  */

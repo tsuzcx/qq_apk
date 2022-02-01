@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia;
 
+import amtj;
 import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
-import anzj;
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
-import yuk;
-import yup;
+import xvv;
+import xwa;
 
 class NewFlowCameraActivity$WaitStartEditActivityRunnable
   implements Runnable
@@ -26,7 +26,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
     {
       this.b = a();
       this.jdField_a_of_type_Int = paramInt;
-      paramNewFlowCameraActivity.d(anzj.a(2131706360));
+      paramNewFlowCameraActivity.c(amtj.a(2131706590));
       return;
     }
   }
@@ -46,7 +46,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
         if (i >= j) {
           break;
         }
-        l2 = bhmi.a(arrayOfFile[i].getAbsolutePath());
+        l2 = FileUtils.getFileSizes(arrayOfFile[i].getAbsolutePath());
         i += 1;
         l1 = l2 + l1;
       }
@@ -57,11 +57,11 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
   public void run()
   {
     long l = a();
-    yuk.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
+    xvv.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
     if (l == this.b)
     {
-      yup.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
-      this.this$0.R();
+      xwa.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
+      this.this$0.M();
       NewFlowCameraActivity.a(this.this$0, this.jdField_a_of_type_Int);
       return;
     }

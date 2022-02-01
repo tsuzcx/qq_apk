@@ -1,16 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class afvx
-  implements View.OnTouchListener
+class afvx
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public afvx(TroopMemberListActivity paramTroopMemberListActivity) {}
+  afvx(afvw paramafvw1, afvw paramafvw2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return true;
+    if (paramBitmap != null)
+    {
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 

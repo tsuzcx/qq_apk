@@ -1,12 +1,27 @@
-class zhz
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class zhz
+  implements zgb
 {
-  final int jdField_a_of_type_Int;
-  final zia jdField_a_of_type_Zia;
+  public zhz(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public zhz(zia paramzia, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Zia = paramzia;
-    this.jdField_a_of_type_Int = paramInt;
+    SubscribeHybirdFragment.a(this.a).a(paramInt);
+  }
+  
+  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  {
+    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
+    {
+      QQToast.a(this.a.getHostActivity(), amtj.a(2131713675), 0).a();
+      return;
+    }
+    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
   }
 }
 

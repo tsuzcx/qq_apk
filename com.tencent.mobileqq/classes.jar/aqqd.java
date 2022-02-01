@@ -1,27 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.1;
-import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.2;
-import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.lang.ref.WeakReference;
 
 public class aqqd
-  implements aqpu
+  implements afwm
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqpu jdField_a_of_type_Aqpu;
+  public aqqd(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.1(this, paramInt));
-  }
-  
-  public void a(aqpq paramaqpq)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.3(this, paramaqpq));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.2(this, paramInt));
+    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
+    {
+      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject != null) {
+        localObject = (aovo)((QQAppInterface)localObject).getBusinessHandler(95);
+      }
+    }
   }
 }
 

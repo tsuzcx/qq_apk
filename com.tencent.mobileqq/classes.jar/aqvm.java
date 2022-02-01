@@ -1,63 +1,26 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class aqvm
-  implements InvocationHandler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private List<aqvn> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  public aqvm(Activity paramActivity, boolean paramBoolean)
+  public aqvm()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void a()
+  public String toString()
   {
-    if ((!this.b) && (this.jdField_a_of_type_AndroidAppActivity != null))
-    {
-      this.b = true;
-      aqvh.a(this.jdField_a_of_type_AndroidAppActivity, this);
-    }
-  }
-  
-  public void a(aqvn paramaqvn)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramaqvn);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-  {
-    if ((paramMethod.getName().equalsIgnoreCase("onTranslucentConversionComplete")) && (paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      paramMethod = paramArrayOfObject[0];
-      if (QLog.isColorLevel()) {
-        QLog.d("TranslucentConvertor", 2, "onTranslucentConversionComplete: " + paramMethod);
-      }
-      paramObject = Boolean.valueOf(false);
-      if ((paramMethod instanceof Boolean)) {
-        paramObject = (Boolean)paramMethod;
-      }
-      paramMethod = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMethod.hasNext()) {
-        ((aqvn)paramMethod.next()).d_(paramObject.booleanValue());
-      }
-    }
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
+    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
+    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
+    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
+    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
+    return localStringBuilder.toString();
   }
 }
 

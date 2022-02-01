@@ -1,19 +1,46 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
-import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
 class awcf
-  extends CustomizedDownloader
+  implements ayeo
 {
-  awcf(awcc paramawcc) {}
+  awcf(awce paramawce, MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
   
-  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    paramBundle = new Bundle();
-    paramBundle.putString("url", paramString1);
-    paramBundle.putString("path", paramString2);
-    awde.a().a(paramBundle, paramDownloadCallback);
+    return null;
   }
+  
+  public void onSend(ayep paramayep)
+  {
+    try
+    {
+      if (paramayep.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramayep.c;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramayep.b + ",result.errStr=" + paramayep.jdField_a_of_type_JavaLangString);
+      }
+      awcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      return;
+    }
+    catch (Exception paramayep)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramayep);
+      }
+      awcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    }
+  }
+  
+  public void updateMsg(ayep paramayep) {}
 }
 
 

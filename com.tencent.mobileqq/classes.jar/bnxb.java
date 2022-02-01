@@ -1,6 +1,23 @@
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+
 public class bnxb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final String a = bnxb.class.getName();
+  public bnxb(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.f = this.a.a.getWidth();
+    this.a.g = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

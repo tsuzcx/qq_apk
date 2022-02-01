@@ -1,44 +1,84 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import io.flutter.embedding.android.SplashScreen;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class auwq
-  implements SplashScreen
+  extends WebViewPlugin
 {
-  private auwr a;
-  
-  public auwq(auwr paramauwr)
+  public auwq()
   {
-    this.a = paramauwr;
+    this.mPluginNameSpace = "share";
   }
   
-  @Nullable
-  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
+  private Activity a()
   {
-    return LayoutInflater.from(paramContext).inflate(2131560944, null);
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
   }
   
-  public boolean doesSplashViewRememberItsTransition()
+  private boolean a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String[] paramArrayOfString)
   {
+    bgsf localbgsf = bgsf.a(2);
+    if (localbgsf == null)
+    {
+      QLog.e("LoginPlugin_demo", 1, "doShare wbShareHelper==null !!!");
+      return false;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 1: 
+      localbgsf.a(a(), paramString1);
+    }
+    for (;;)
+    {
+      return true;
+      localbgsf.b(a(), paramString2);
+      continue;
+      localbgsf.a(a(), paramString3, paramString4, paramString5, paramString1, BitmapFactory.decodeFile(paramString2));
+      continue;
+      localbgsf.a(a(), paramString1, paramArrayOfString);
+      continue;
+      localbgsf.a(a(), paramString1, paramString2);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"share".equals(paramString2)) || (!"weibo".equals(paramString3))) {
+      return false;
+    }
+    try
+    {
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      int i = paramVarArgs.getInt("type");
+      paramJsBridgeListener = paramVarArgs.optString("text");
+      paramString1 = paramVarArgs.optString("sdcardpath");
+      paramString2 = paramVarArgs.optString("title");
+      paramString3 = paramVarArgs.optString("description");
+      paramVarArgs = paramVarArgs.optString("actionurl");
+      String[] arrayOfString = paramString1.split(",");
+      QLog.d("LoginPlugin_demo", 1, new Object[] { "handleJsRequest type=", Integer.valueOf(i), ", text=", paramJsBridgeListener, ", sdcardPath=", paramString1, ", title=", paramString2 + ", description=", paramString3 + ", actionUrl=", paramVarArgs });
+      boolean bool = a(i, paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs, arrayOfString);
+      return bool;
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      QLog.e("LoginPlugin_demo", 1, new Object[] { "handleJsRequest error : ", paramJsBridgeListener.getMessage() });
+    }
     return false;
   }
   
-  @Nullable
-  public Bundle saveSplashScreenState()
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    return null;
-  }
-  
-  public void transitionToFlutter(@NonNull Runnable paramRunnable)
-  {
-    paramRunnable.run();
-    if (this.a != null) {
-      this.a.b();
-    }
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    bgsf.a(2).a(a(), paramIntent, new auwr(this));
   }
 }
 

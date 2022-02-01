@@ -1,29 +1,31 @@
-import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class aejm
-  extends QCircleObserver
+  implements PopupWindow.OnDismissListener
 {
-  private WeakReference<Conversation> a;
+  public aejm(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public aejm(Conversation paramConversation)
+  public void onDismiss()
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void onUpdateRedPoint(int paramInt)
-  {
-    Conversation localConversation = (Conversation)this.a.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("QCircleObserver onUpdateRedPoint: ");
-    if (localConversation != null) {}
-    for (boolean bool = true;; bool = false)
+    this.a.b = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
     {
-      QLog.d("Q.recent", 2, bool);
-      if (localConversation != null) {
-        localConversation.p();
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
       }
+    }
+    label76:
+    for (int i = 2130845519;; i = 2130846062)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
       return;
     }
   }

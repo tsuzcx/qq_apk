@@ -7,8 +7,8 @@ class PlayViewPagerAdapter$1
   
   public void run()
   {
-    PlayViewPagerAdapter.a(this.this$0).b();
-    PlayViewPagerAdapter.a(this.this$0).setTabId(PlayViewPagerAdapter.a(this.this$0, this.a));
+    PlayViewPagerAdapter.access$000(this.this$0).reportItemExpose();
+    PlayViewPagerAdapter.access$000(this.this$0).setTabId(PlayViewPagerAdapter.access$100(this.this$0, this.val$position));
   }
 }
 

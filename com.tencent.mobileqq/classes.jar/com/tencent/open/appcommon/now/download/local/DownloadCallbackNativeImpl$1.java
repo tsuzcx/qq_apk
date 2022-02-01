@@ -1,9 +1,9 @@
 package com.tencent.open.appcommon.now.download.local;
 
-import bjrz;
-import bjsi;
-import bjsj;
-import bjso;
+import bhxo;
+import bhxx;
+import bhxy;
+import bhyd;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,38 +12,38 @@ import java.util.Map;
 public class DownloadCallbackNativeImpl$1
   implements Runnable
 {
-  public DownloadCallbackNativeImpl$1(bjsi parambjsi, int paramInt) {}
+  public DownloadCallbackNativeImpl$1(bhxx parambhxx, int paramInt) {}
   
   public void run()
   {
     Iterator localIterator;
     if ((this.a == 4) || (this.a == 3) || (this.a == 2)) {
-      localIterator = bjsi.a(this.this$0).values().iterator();
+      localIterator = bhxx.a(this.this$0).values().iterator();
     }
     while (localIterator.hasNext())
     {
-      bjso localbjso = (bjso)localIterator.next();
-      DownloadInfo localDownloadInfo = bjrz.a().a(localbjso.a);
+      bhyd localbhyd = (bhyd)localIterator.next();
+      DownloadInfo localDownloadInfo = bhxo.a().a(localbhyd.a);
       if (localDownloadInfo != null) {
         if (localDownloadInfo.a() == 2)
         {
-          if (localbjso.b) {
-            bjsj.a().a(localbjso.a);
+          if (localbhyd.b) {
+            bhxy.a().a(localbhyd.a);
           }
         }
-        else if ((localDownloadInfo.a() == 3) && (!localbjso.b) && (!localbjso.c))
+        else if ((localDownloadInfo.a() == 3) && (!localbhyd.b) && (!localbhyd.c))
         {
-          bjsj.a().a(null, localbjso);
+          bhxy.a().a(null, localbhyd);
           continue;
           if (this.a == 1)
           {
-            localIterator = bjsi.a(this.this$0).values().iterator();
+            localIterator = bhxx.a(this.this$0).values().iterator();
             while (localIterator.hasNext())
             {
-              localbjso = (bjso)localIterator.next();
-              localDownloadInfo = bjrz.a().a(localbjso.a);
-              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbjso.c)) {
-                bjsj.a().a(null, localbjso);
+              localbhyd = (bhyd)localIterator.next();
+              localDownloadInfo = bhxo.a().a(localbhyd.a);
+              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbhyd.c)) {
+                bhxy.a().a(null, localbhyd);
               }
             }
           }

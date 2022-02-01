@@ -1,61 +1,69 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oar
-  implements View.OnClickListener
+  extends oaj
 {
-  public oar(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  public long a;
+  public oas a;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onClick(View paramView)
+  public static oar a(JSONObject paramJSONObject)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      onClick(paramView);
-    }
+    if (paramJSONObject == null) {}
+    oar localoar;
+    Object localObject;
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str;
-      if (!this.a.mUIStyleHandler.a.a)
+      return null;
+      localoar = new oar();
+      try
       {
-        str = this.a.mSwiftTitleUI.c.getText().toString();
-        this.a.webView.loadUrl("javascript:onRightBtn(\"" + str + "\")");
-      }
-      else if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
-      {
-        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
-        this.a.getActivity().finish();
-      }
-      else
-      {
-        onClick(paramView);
-        continue;
-        if (!this.a.mUIStyleHandler.a.a)
+        localObject = paramJSONObject.optJSONObject("video");
+        if (localObject != null)
         {
-          str = this.a.mSwiftTitleUI.a.getText().toString();
-          if (str.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText"))) {
-            this.a.doOnBackEvent();
-          } else {
-            this.a.webView.loadUrl("javascript:onLeftBtn(\"" + str + "\")");
+          localoar.e = ((JSONObject)localObject).optString("coverUrl");
+          localoar.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
+          if (TextUtils.isEmpty(localoar.jdField_d_of_type_JavaLangString))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AdModuleVideo", 2, "video url is null");
+            return null;
           }
         }
-        else
-        {
-          onClick(paramView);
-        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
       }
     }
+    localoar.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
+    localoar.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
+    localoar.f = paramJSONObject.optString("linkUrl");
+    paramJSONObject = paramJSONObject.optString("appInfo");
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      paramJSONObject = new JSONObject(paramJSONObject);
+      localObject = new oas();
+      ((oas)localObject).a = paramJSONObject.optString("appid");
+      ((oas)localObject).b = paramJSONObject.optString("scheme");
+      ((oas)localObject).c = paramJSONObject.optString("packageName");
+      ((oas)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
+      ((oas)localObject).e = paramJSONObject.optString("appName");
+      localoar.jdField_a_of_type_Oas = ((oas)localObject);
+    }
+    return localoar;
   }
+  
+  public void b() {}
 }
 
 

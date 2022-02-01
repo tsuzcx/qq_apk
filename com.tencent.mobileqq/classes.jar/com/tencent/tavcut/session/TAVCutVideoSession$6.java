@@ -3,11 +3,11 @@ package com.tencent.tavcut.session;
 class TAVCutVideoSession$6
   implements Runnable
 {
-  TAVCutVideoSession$6(TAVCutVideoSession paramTAVCutVideoSession, String paramString) {}
+  TAVCutVideoSession$6(TAVCutVideoSession paramTAVCutVideoSession, float paramFloat) {}
   
   public void run()
   {
-    this.this$0.setMaterial(this.this$0.getMediaModel(), TAVCutVideoSession.access$000(this.this$0), this.val$materialPath);
+    this.this$0.setEffectStrength(this.this$0.getMediaModel(), TAVCutVideoSession.access$000(this.this$0), this.val$effectStrength);
     this.this$0.refresh();
   }
 }

@@ -1,9 +1,4 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
-
-public class bgbu
-{
-  PinyinTextView a;
-}
+class bgbu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

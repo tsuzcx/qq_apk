@@ -1,15 +1,13 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import java.io.File;
 
-public abstract interface bljo
+public class bljo
 {
-  public abstract void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
-  
-  public abstract void onNothingSelected(AdapterView<?> paramAdapterView);
+  public static final String a = bljq.f + File.separator + "camera_emo_default_template.json";
+  public static final String b = bljq.f + File.separator + "camera_emo_updated_template.json";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljo
  * JD-Core Version:    0.7.0.1
  */

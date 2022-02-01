@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bhnv;
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public final class ReadinjoySPEventReport$4
   implements Runnable
 {
   public void run()
   {
-    int i = bhnv.a(BaseApplicationImpl.getContext());
+    int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
     String str;
     if ((i == 2) || (i == 3) || (i == 4)) {
       str = "WWAN";

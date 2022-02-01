@@ -1,9 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
 
-public abstract interface sgd
+public final class sgd
+  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
 {
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
+  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
+  {
+    return new DiscoveryInfo.TopicVideoCard(paramParcel);
+  }
+  
+  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
+  {
+    return new DiscoveryInfo.TopicVideoCard[paramInt];
+  }
 }
 
 

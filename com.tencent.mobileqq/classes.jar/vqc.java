@@ -1,28 +1,13 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalWorksFragment;
-import com.tencent.biz.richframework.part.BasePartFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class vqc
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  public vqc(QCirclePersonalWorksFragment paramQCirclePersonalWorksFragment) {}
-  
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  public static void a(Object paramObject)
   {
-    QLog.d("QCirclePersonalWorksFragment", 4, "initViewData:getFeedListRequestRsp");
-    this.a.a(paramvxq);
-    if ((uzg.a(this.a.jdField_a_of_type_JavaLangString)) && (paramvxq != null) && (paramvxq.a() == 0) && (!this.a.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a())) {
-      this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(false));
+    if ((paramObject instanceof QQAppInterface)) {
+      vqd.a = new WeakReference((QQAppInterface)paramObject);
     }
-    while ((!uzg.a(this.a.jdField_a_of_type_JavaLangString)) || (paramvxq == null) || (paramvxq.a() == 1)) {
-      return;
-    }
-    this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(true));
   }
 }
 

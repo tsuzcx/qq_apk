@@ -1,13 +1,12 @@
-import android.view.animation.Interpolator;
-
-final class blsm
-  implements Interpolator
+public abstract interface blsm
 {
-  public float getInterpolation(float paramFloat)
-  {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
-  }
+  public abstract void a();
+  
+  public abstract void a(blvb paramblvb);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

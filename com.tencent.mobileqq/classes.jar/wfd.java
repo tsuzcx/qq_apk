@@ -1,39 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wfd
-  extends GestureDetector.SimpleOnGestureListener
+  extends vql
 {
-  public wfd(PhotoViewAttacher paramPhotoViewAttacher) {}
+  public List<xnh> a = new ArrayList();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public wfd(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
   {
-    if ((PhotoViewAttacher.a(this.a) == null) || (this.a.a() > PhotoViewAttacher.d())) {}
-    while ((paramMotionEvent1.getPointerCount() > PhotoViewAttacher.a()) || (paramMotionEvent2.getPointerCount() > PhotoViewAttacher.a())) {
-      return false;
+    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
+    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspGroupStoryFeedIdList.hasNext())
+    {
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
+      this.a.add(new xnh(localFeedSeqInfo));
     }
-    return PhotoViewAttacher.a(this.a).a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).onLongClick(PhotoViewAttacher.a(this.a));
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    QLog.d("PhotoViewAttacher", 4, "onScroll distanceX:" + paramFloat1 + " distanceY:" + paramFloat2);
-    paramFloat1 = 0.0F - paramFloat1;
-    paramFloat2 = 0.0F - paramFloat2;
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).a(paramFloat1, paramFloat2);
-    }
-    return this.a.a(paramFloat1, paramFloat2);
   }
 }
 

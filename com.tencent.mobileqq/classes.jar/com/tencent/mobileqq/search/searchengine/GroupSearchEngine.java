@@ -1,44 +1,45 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
-import apau;
-import apaz;
-import bcdk;
-import bcfq;
-import bckx;
-import bclc;
-import bclj;
-import bclk;
-import bcll;
-import bclm;
-import bcln;
-import bclo;
-import bclp;
-import bclq;
-import bclr;
-import bcls;
-import bclt;
-import bclu;
-import bclv;
-import bclw;
-import bclx;
-import bcly;
-import bclz;
-import bcma;
-import bcmb;
-import bcmc;
-import bcmd;
-import bcme;
-import bcmq;
-import bcnf;
-import bcnh;
-import bcni;
-import bdmc;
-import bhut;
+import anux;
+import anvc;
+import bawm;
+import bays;
+import bbdz;
+import bbee;
+import bbel;
+import bbem;
+import bben;
+import bbeo;
+import bbep;
+import bbeq;
+import bber;
+import bbes;
+import bbet;
+import bbeu;
+import bbev;
+import bbew;
+import bbex;
+import bbey;
+import bbez;
+import bbfa;
+import bbfb;
+import bbfc;
+import bbfd;
+import bbfe;
+import bbff;
+import bbfg;
+import bbfs;
+import bbgh;
+import bbgj;
+import bbgk;
+import bcoo;
+import bgbo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
 import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
@@ -56,17 +57,17 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class GroupSearchEngine
-  implements bcmc<bcfq>, Observer
+  implements bbfe<bays>, Observer
 {
-  private static final Comparator<bcmb> jdField_a_of_type_JavaUtilComparator = new bclk();
-  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new bclu(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new bclt());
+  private static final Comparator<bbfd> jdField_a_of_type_JavaUtilComparator = new bbem();
+  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new bbew(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new bbev());
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private GroupSearchEngine.SearchRunnable jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable;
   private GroupSearchEngine.TroopMemberSearchRunnable jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$TroopMemberSearchRunnable;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<bcmb> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<bbfd> jdField_a_of_type_JavaUtilArrayList;
   private Future jdField_a_of_type_JavaUtilConcurrentFuture;
   private ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
@@ -77,45 +78,80 @@ public class GroupSearchEngine
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilArrayList = a();
-    paramQQAppInterface.a().a().a(this);
+    paramQQAppInterface.getFTSDBManager().a().a(this);
   }
   
-  private ArrayList<bcmb> a()
+  private ArrayList<bbfd> a()
   {
     ArrayList localArrayList = new ArrayList();
     if (this.jdField_a_of_type_Int == 12)
     {
-      localArrayList.add(new bclv(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new bclw(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
+      localArrayList.add(new bbex(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new bbey(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
     }
     if (this.jdField_a_of_type_Int == 14)
     {
-      localArrayList.add(new bclx(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new bcly(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
+      localArrayList.add(new bbez(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new bbfa(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
     }
-    localArrayList.add(new bclz(this, new bclc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 197437, null), "people", 20));
-    localArrayList.add(new bcma(this, new MiniProgramSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "", 0));
-    localArrayList.add(new bcll(this, new bckx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 793, null), "people", 20));
-    localArrayList.add(new bclm(this, new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "function", 130));
-    boolean bool1 = bcnf.f();
-    boolean bool2 = bcnf.e();
+    localArrayList.add(new bbfb(this, new bbee(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 197437, null), "people", 20));
+    if (bcoo.a()) {
+      d(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
+      return localArrayList;
+      a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+      b(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+      c(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+      d(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+      a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      e(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+    }
+  }
+  
+  private void a(ArrayList<bbfd> paramArrayList, QQAppInterface paramQQAppInterface)
+  {
+    paramArrayList.add(new bbes(this, new FavoriteSearchEngine(paramQQAppInterface), "favorite", 60));
+  }
+  
+  private void a(ArrayList<bbfd> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramArrayList.add(new bbfc(this, new MiniProgramSearchEngine(paramQQAppInterface, paramInt), "", 0, paramInt));
+  }
+  
+  private void b(ArrayList<bbfd> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramArrayList.add(new bben(this, new bbdz(paramQQAppInterface, paramInt, 793, null), "people", 20, paramInt));
+  }
+  
+  private void c(ArrayList<bbfd> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramArrayList.add(new bbeo(this, new FunctionSearchEngine(paramQQAppInterface, paramInt), "function", 130, paramInt));
+  }
+  
+  private void d(ArrayList<bbfd> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    boolean bool1 = bbgh.f();
+    boolean bool2 = bbgh.e();
     if (bool1)
     {
-      localArrayList.add(new bcln(this, new bclj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "create_discussion", 120));
-      if ((bool2) && (apau.jdField_a_of_type_Boolean) && (bhut.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) && (bhut.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      paramArrayList.add(new bbep(this, new bbel(paramQQAppInterface, paramInt), "create_discussion", 120, paramInt));
+      if ((bool2) && (anux.jdField_a_of_type_Boolean) && (bgbo.a(paramQQAppInterface)) && (paramQQAppInterface.getFTSDBManager().a()) && (bgbo.d(paramQQAppInterface)))
       {
-        localArrayList.add(new bclo(this, new bcdk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "fts_message", 40));
+        paramArrayList.add(new bbeq(this, new bawm(paramQQAppInterface), "fts_message", 40, paramInt));
         if (QLog.isColorLevel()) {
           QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines add FTSMessageSearchEngine");
         }
-        if ((bool2) && (apau.jdField_a_of_type_Boolean) && (bhut.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) && (bhut.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 1) && ((!bhut.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (bhut.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))) {
-          break label669;
+        if ((bool2) && (anux.jdField_a_of_type_Boolean) && (bgbo.a(paramQQAppInterface)) && (paramQQAppInterface.getFTSDBManager().a()) && (bgbo.e(paramQQAppInterface) != 1) && ((!bgbo.a(paramQQAppInterface)) || (bgbo.d(paramQQAppInterface)))) {
+          break label270;
         }
-        localArrayList.add(new bclp(this, new bcme(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "message", 40));
+        paramArrayList.add(new bber(this, new bbfg(paramQQAppInterface), "message", 40));
         if (QLog.isColorLevel()) {
           QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines add MessageSearchEngine");
         }
@@ -124,16 +160,13 @@ public class GroupSearchEngine
     for (;;)
     {
       QLog.d("GroupSearchEngine", 2, "bShowMsgSearchResult : " + bool1 + "bEnableFtsSearch: " + bool2);
-      localArrayList.add(new bclq(this, new FavoriteSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "favorite", 60));
-      localArrayList.add(new bclr(this, new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "file", 100));
-      Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
-      return localArrayList;
+      return;
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines not add FTSMessageSearchEngine");
       break;
-      label669:
+      label270:
       if (QLog.isColorLevel())
       {
         QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines not add MessageSearchEngine");
@@ -141,6 +174,11 @@ public class GroupSearchEngine
         QLog.e("GroupSearchEngine", 2, "not show message search! ");
       }
     }
+  }
+  
+  private void e(ArrayList<bbfd> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramArrayList.add(new bbet(this, new FileManagerSearchEngine(paramQQAppInterface, paramInt), "file", 100, paramInt));
   }
   
   private void h()
@@ -167,7 +205,7 @@ public class GroupSearchEngine
     }
   }
   
-  public List<bcfq> a(bcmq parambcmq)
+  public List<bays> a(bbfs parambbfs)
   {
     return null;
   }
@@ -182,7 +220,7 @@ public class GroupSearchEngine
       int i = 0;
       if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bcmc.a();
+        ((bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bbfe.a();
         i += 1;
       }
     }
@@ -190,23 +228,23 @@ public class GroupSearchEngine
     if (QLog.isColorLevel()) {
       QLog.d("GroupSearchEngine", 2, "GroupSearchEngine.init() cost time : " + (l2 - l1));
     }
-    bdmc.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "GroupSearchEngineInit", true, l2 - l1, 0L, bcni.a(null), "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "GroupSearchEngineInit", true, l2 - l1, 0L, bbgk.a(null), "", false);
   }
   
-  public void a(bcmq parambcmq, bcmd<bcfq> parambcmd)
+  public void a(bbfs parambbfs, bbff<bays> parambbff)
   {
-    this.jdField_a_of_type_JavaLangString = parambcmq.jdField_a_of_type_JavaLangString;
-    if (parambcmq.jdField_a_of_type_AndroidOsBundle == null) {
-      parambcmq.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_JavaLangString = parambbfs.jdField_a_of_type_JavaLangString;
+    if (parambbfs.jdField_a_of_type_AndroidOsBundle == null) {
+      parambbfs.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    parambcmq.jdField_a_of_type_AndroidOsBundle.putBoolean("bSearchNet", true);
-    parambcmq.jdField_a_of_type_AndroidOsBundle.putInt("iNumber", 11);
-    parambcmq.jdField_a_of_type_AndroidOsBundle.putBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", true);
-    parambcmq.jdField_a_of_type_AndroidOsBundle.putBoolean("searchTroopMember", false);
+    parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("bSearchNet", true);
+    parambbfs.jdField_a_of_type_AndroidOsBundle.putInt("iNumber", 11);
+    parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", true);
+    parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("searchTroopMember", false);
     h();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable = new GroupSearchEngine.SearchRunnable(this, parambcmq, parambcmd);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable = new GroupSearchEngine.SearchRunnable(this, parambbfs, parambbff);
     this.jdField_a_of_type_JavaUtilConcurrentFuture = jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable);
-    bcni.a("all_result", "active_local", new String[] { this.jdField_a_of_type_JavaLangString });
+    bbgk.a("all_result", "active_local", new String[] { this.jdField_a_of_type_JavaLangString });
   }
   
   public void a(boolean paramBoolean)
@@ -219,14 +257,14 @@ public class GroupSearchEngine
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       return;
     }
-    bcnh.a();
+    bbgj.a();
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     int i = 0;
     try
     {
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bcmc.b();
+        ((bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bbfe.b();
         i += 1;
       }
       h();
@@ -243,7 +281,7 @@ public class GroupSearchEngine
     {
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bcmc.c();
+        ((bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bbfe.c();
         i += 1;
       }
       return;
@@ -259,7 +297,7 @@ public class GroupSearchEngine
     {
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bcmc.d();
+        ((bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bbfe.d();
         i += 1;
       }
       return;
@@ -273,14 +311,14 @@ public class GroupSearchEngine
     // Byte code:
     //   0: aload_0
     //   1: getfield 66	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 78	com/tencent/mobileqq/app/QQAppInterface:a	()Lapau;
-    //   7: invokevirtual 83	apau:a	()Lapaz;
+    //   4: invokevirtual 79	com/tencent/mobileqq/app/QQAppInterface:getFTSDBManager	()Lanux;
+    //   7: invokevirtual 84	anux:a	()Lanvc;
     //   10: astore_2
     //   11: aload_2
     //   12: ifnull +8 -> 20
     //   15: aload_2
     //   16: aload_0
-    //   17: invokevirtual 436	apaz:b	(Ljava/util/Observer;)V
+    //   17: invokevirtual 460	anvc:b	(Ljava/util/Observer;)V
     //   20: aload_0
     //   21: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   24: astore_2
@@ -291,15 +329,15 @@ public class GroupSearchEngine
     //   29: iload_1
     //   30: aload_0
     //   31: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   34: invokevirtual 340	java/util/ArrayList:size	()I
+    //   34: invokevirtual 363	java/util/ArrayList:size	()I
     //   37: if_icmpge +29 -> 66
     //   40: aload_0
     //   41: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   44: iload_1
-    //   45: invokevirtual 344	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   48: checkcast 346	bcmb
-    //   51: getfield 349	bcmb:jdField_a_of_type_Bcmc	Lbcmc;
-    //   54: invokeinterface 438 1 0
+    //   45: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   48: checkcast 369	bbfd
+    //   51: getfield 372	bbfd:jdField_a_of_type_Bbfe	Lbbfe;
+    //   54: invokeinterface 462 1 0
     //   59: iload_1
     //   60: iconst_1
     //   61: iadd
@@ -312,9 +350,9 @@ public class GroupSearchEngine
     //   72: ldc2_w 61
     //   75: lcmp
     //   76: ifeq +207 -> 283
-    //   79: new 440	java/util/HashMap
+    //   79: new 464	java/util/HashMap
     //   82: dup
-    //   83: invokespecial 441	java/util/HashMap:<init>	()V
+    //   83: invokespecial 465	java/util/HashMap:<init>	()V
     //   86: astore_3
     //   87: aload_0
     //   88: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -326,46 +364,46 @@ public class GroupSearchEngine
     //   96: iload_1
     //   97: aload_0
     //   98: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   101: invokevirtual 340	java/util/ArrayList:size	()I
+    //   101: invokevirtual 363	java/util/ArrayList:size	()I
     //   104: if_icmpge +106 -> 210
     //   107: aload_3
     //   108: aload_0
     //   109: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   112: iload_1
-    //   113: invokevirtual 344	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   116: checkcast 346	bcmb
-    //   119: getfield 442	bcmb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   113: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   116: checkcast 369	bbfd
+    //   119: getfield 466	bbfd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   122: aload_0
     //   123: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   126: iload_1
-    //   127: invokevirtual 344	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   130: checkcast 346	bcmb
-    //   133: getfield 443	bcmb:jdField_a_of_type_Long	J
-    //   136: invokestatic 447	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   139: invokevirtual 451	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   127: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   130: checkcast 369	bbfd
+    //   133: getfield 467	bbfd:jdField_a_of_type_Long	J
+    //   136: invokestatic 471	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   139: invokevirtual 475	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   142: pop
     //   143: aload_3
-    //   144: new 238	java/lang/StringBuilder
+    //   144: new 282	java/lang/StringBuilder
     //   147: dup
-    //   148: invokespecial 239	java/lang/StringBuilder:<init>	()V
+    //   148: invokespecial 283	java/lang/StringBuilder:<init>	()V
     //   151: aload_0
     //   152: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   155: iload_1
-    //   156: invokevirtual 344	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   159: checkcast 346	bcmb
-    //   162: getfield 442	bcmb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   165: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: ldc_w 453
-    //   171: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   159: checkcast 369	bbfd
+    //   162: getfield 466	bbfd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   165: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: ldc_w 477
+    //   171: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   177: aload_0
     //   178: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   181: iload_1
-    //   182: invokevirtual 344	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   185: checkcast 346	bcmb
-    //   188: getfield 454	bcmb:jdField_a_of_type_Int	I
-    //   191: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   194: invokevirtual 451	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   182: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   185: checkcast 369	bbfd
+    //   188: getfield 479	bbfd:b	I
+    //   191: invokestatic 482	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   194: invokevirtual 475	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   197: pop
     //   198: iload_1
     //   199: iconst_1
@@ -380,40 +418,40 @@ public class GroupSearchEngine
     //   210: aload_2
     //   211: monitorexit
     //   212: aload_0
-    //   213: getfield 99	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   213: getfield 100	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   216: ifnonnull +73 -> 289
-    //   219: ldc 157
+    //   219: ldc 202
     //   221: astore_2
     //   222: aload_3
-    //   223: ldc_w 459
+    //   223: ldc_w 484
     //   226: aload_2
-    //   227: invokevirtual 451	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   227: invokevirtual 475	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   230: pop
     //   231: aload_0
-    //   232: getfield 99	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   232: getfield 100	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   235: ifnonnull +62 -> 297
-    //   238: ldc_w 461
+    //   238: ldc_w 486
     //   241: astore_2
     //   242: aload_3
-    //   243: ldc_w 463
+    //   243: ldc_w 488
     //   246: aload_2
-    //   247: invokevirtual 451	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   247: invokevirtual 475	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   250: pop
-    //   251: invokestatic 361	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   254: invokestatic 366	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   251: invokestatic 384	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   254: invokestatic 390	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   257: aload_0
     //   258: getfield 66	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   261: invokevirtual 369	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   264: ldc_w 465
+    //   261: invokevirtual 393	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   264: ldc_w 490
     //   267: iconst_1
     //   268: aload_0
     //   269: getfield 64	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_Long	J
     //   272: lconst_0
     //   273: aload_3
-    //   274: invokestatic 376	bcni:a	(Ljava/util/HashMap;)Ljava/util/HashMap;
-    //   277: ldc 157
+    //   274: invokestatic 400	bbgk:a	(Ljava/util/HashMap;)Ljava/util/HashMap;
+    //   277: ldc 202
     //   279: iconst_0
-    //   280: invokevirtual 379	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   280: invokevirtual 404	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   283: return
     //   284: astore_3
     //   285: aload_2
@@ -421,16 +459,16 @@ public class GroupSearchEngine
     //   287: aload_3
     //   288: athrow
     //   289: aload_0
-    //   290: getfield 99	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   290: getfield 100	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   293: astore_2
     //   294: goto -72 -> 222
     //   297: aload_0
-    //   298: getfield 99	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   301: invokevirtual 468	java/lang/String:trim	()Ljava/lang/String;
-    //   304: ldc_w 470
-    //   307: invokevirtual 474	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   298: getfield 100	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   301: invokevirtual 493	java/lang/String:trim	()Ljava/lang/String;
+    //   304: ldc_w 495
+    //   307: invokevirtual 499	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   310: arraylength
-    //   311: invokestatic 478	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   311: invokestatic 503	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   314: astore_2
     //   315: goto -73 -> 242
     // Local variable table:
@@ -461,9 +499,9 @@ public class GroupSearchEngine
       {
         if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          bcmb localbcmb = (bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((localbcmb.jdField_a_of_type_Bcmc instanceof bcdk)) {
-            ((bcdk)localbcmb.jdField_a_of_type_Bcmc).f();
+          bbfd localbbfd = (bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if ((localbbfd.jdField_a_of_type_Bbfe instanceof bawm)) {
+            ((bawm)localbbfd.jdField_a_of_type_Bbfe).f();
           }
         }
         else
@@ -486,9 +524,9 @@ public class GroupSearchEngine
       {
         if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          bcmb localbcmb = (bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((localbcmb.jdField_a_of_type_Bcmc instanceof bcdk)) {
-            ((bcdk)localbcmb.jdField_a_of_type_Bcmc).g();
+          bbfd localbbfd = (bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if ((localbbfd.jdField_a_of_type_Bbfe instanceof bawm)) {
+            ((bawm)localbbfd.jdField_a_of_type_Bbfe).g();
           }
         }
         else
@@ -503,7 +541,7 @@ public class GroupSearchEngine
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if ((apau.jdField_a_of_type_Boolean) && ((paramObservable instanceof apau)))
+    if ((anux.jdField_a_of_type_Boolean) && ((paramObservable instanceof anux)))
     {
       paramObservable = this.jdField_a_of_type_JavaUtilArrayList;
       int i = 0;
@@ -514,20 +552,20 @@ public class GroupSearchEngine
           if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
             break;
           }
-          paramObject = (bcmb)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((paramObject.jdField_a_of_type_Bcmc instanceof bcdk))
+          paramObject = (bbfd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if ((paramObject.jdField_a_of_type_Bbfe instanceof bawm))
           {
             if (QLog.isColorLevel()) {
               QLog.d("GroupSearchEngine", 2, "update() searchEngines has add FTSMessageSearchEngine");
             }
             return;
           }
-          if ((paramObject.jdField_a_of_type_Bcmc instanceof bcme))
+          if ((paramObject.jdField_a_of_type_Bbfe instanceof bbfg))
           {
-            paramObject = new bcdk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            paramObject = new bawm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             paramObject.a();
-            this.jdField_a_of_type_JavaUtilArrayList.add(i, new bcls(this, paramObject, "fts message", 40));
-            if (bhut.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(i, new bbeu(this, paramObject, "fts message", 40));
+            if (bgbo.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
               this.jdField_a_of_type_JavaUtilArrayList.remove(i + 1);
             }
             if (QLog.isColorLevel()) {
@@ -548,7 +586,7 @@ public class GroupSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine
  * JD-Core Version:    0.7.0.1
  */

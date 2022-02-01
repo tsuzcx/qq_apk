@@ -1,313 +1,427 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
 import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARLocalControl.1;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
-import com.tencent.mobileqq.ar.arengine.ARLocalMarkerRecog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Point;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class apoh
-  implements apol, apop, apov
 {
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  private long jdField_a_of_type_Long = 0L;
-  apoi jdField_a_of_type_Apoi = null;
-  public apoj a;
-  ARLocalGestureCircleRecog jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
-  ARLocalMarkerRecog jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private static Point jdField_a_of_type_AndroidGraphicsPoint = new Point(-1, -1);
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  private void a(Context paramContext, int paramInt1, int paramInt2, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo)
+  public static int a(ColorNote paramColorNote)
   {
-    QLog.i("AREngine_ARLocalControl", 1, "initFaceRecogAsync start.");
-    ThreadManager.postImmediately(new ARLocalControl.1(this, paramInt1, paramInt2, paramContext, paramARScanStarFaceConfigInfo, System.currentTimeMillis()), null, true);
+    if ((paramColorNote != null) && (aplm.d(paramColorNote))) {
+      return 2;
+    }
+    if (aplm.b(paramColorNote)) {
+      return 3;
+    }
+    return 1;
   }
   
-  public void a()
+  public static Point a(QQAppInterface paramQQAppInterface)
   {
-    QLog.i("AREngine_ARLocalControl", 1, "stop start.");
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.d();
-    }
-    if (this.jdField_a_of_type_Apoj != null) {
-      this.jdField_a_of_type_Apoj.e();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c();
-    }
-    this.jdField_b_of_type_Boolean = false;
-    QLog.i("AREngine_ARLocalControl", 1, "stop end. mIsStarted = " + this.jdField_b_of_type_Boolean);
-  }
-  
-  public void a(long paramLong)
-  {
-    QLog.i("AREngine_ARLocalControl", 1, "pause. recogType = " + paramLong);
-    if (((1L & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.b();
-    }
-    if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_Apoj != null)) {
-      this.jdField_a_of_type_Apoj.c();
-    }
-    if (((0x1000 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a();
-    }
-  }
-  
-  public void a(long paramLong, apoz paramapoz)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if ((jdField_a_of_type_AndroidGraphicsPoint.x == -1) || (jdField_a_of_type_AndroidGraphicsPoint.y == -1))
     {
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Apoi != null)) {
-        this.jdField_a_of_type_Apoi.a(paramLong, paramapoz);
-      }
-      return;
-    }
-  }
-  
-  public void a(long paramLong, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (!this.jdField_b_of_type_Boolean)) {}
-    do
-    {
-      do
+      paramQQAppInterface = bfyz.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
+      int j = paramQQAppInterface.getInt("colornote_windows_x", -1);
+      int k = paramQQAppInterface.getInt("colornote_windows_y", -1);
+      int i;
+      if (j != -1)
       {
-        return;
-        if (!this.d) {
-          break;
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog == null);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramLong, paramArrayOfByte);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramLong, paramArrayOfByte);
+        i = k;
+        if (k != -1) {}
       }
-    } while (this.jdField_a_of_type_Apoj == null);
-    this.jdField_a_of_type_Apoj.a(paramLong, paramArrayOfByte);
-  }
-  
-  public void a(apon paramapon)
-  {
-    a(4L, paramapon);
-  }
-  
-  public void a(apoq paramapoq)
-  {
-    a(4096L, paramapoq);
-  }
-  
-  public void a(apox paramapox)
-  {
-    a(1L, paramapox);
-  }
-  
-  public boolean a()
-  {
-    QLog.i("AREngine_ARLocalControl", 1, "start start.");
-    if (!this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      return true;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a()))
-    {
-      this.jdField_b_of_type_Boolean = false;
-      QLog.i("AREngine_ARLocalControl", 1, "start end. marker recog start failed. mIsStarted = " + this.jdField_b_of_type_Boolean);
-      return this.jdField_b_of_type_Boolean;
-    }
-    if ((this.jdField_a_of_type_Apoj != null) && (!this.jdField_a_of_type_Apoj.b()))
-    {
-      this.jdField_b_of_type_Boolean = false;
-      QLog.i("AREngine_ARLocalControl", 1, "start end. face recog start failed. mIsStarted = " + this.jdField_b_of_type_Boolean);
-      return this.jdField_b_of_type_Boolean;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c()))
-    {
-      this.jdField_b_of_type_Boolean = false;
-      QLog.i("AREngine_ARLocalControl", 1, "start end. gesture circle recog start failed. mIsStarted = " + this.jdField_b_of_type_Boolean);
-      return this.jdField_b_of_type_Boolean;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    QLog.i("AREngine_ARLocalControl", 1, "start end. mIsStarted = " + this.jdField_b_of_type_Boolean);
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    if (((1L & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.b();
-    }
-    if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_Apoj != null)) {
-      return this.jdField_a_of_type_Apoj.c();
-    }
-    if (((0x1000 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d();
-    }
-    return true;
-  }
-  
-  public boolean a(Context arg1, long paramLong, int paramInt1, int paramInt2, ArConfigInfo paramArConfigInfo, ArrayList<ArCloudConfigInfo> paramArrayList, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, apoi paramapoi)
-  {
-    long l = System.currentTimeMillis();
-    QLog.i("AREngine_ARLocalControl", 1, String.format("init start. mIsInited=%s recogType=%s imageWidth=%s imageHeight=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    if (this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Apoi = paramapoi;
-    a(???, paramInt1, paramInt2, paramARScanStarFaceConfigInfo);
-    QLog.i("AREngine_ARLocalControl", 1, "init running. marker recog start.");
-    paramLong = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long & 1L) != 0L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = new ARLocalMarkerRecog();
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramInt1, paramInt2, paramArConfigInfo, paramArrayList, this)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
+      else
+      {
+        j = ViewUtils.getScreenWidth() - ViewUtils.dip2px(25.0F);
+        i = ViewUtils.getScreenHeight() / 2 + ViewUtils.dip2px(25.0F);
       }
+      jdField_a_of_type_AndroidGraphicsPoint.x = j;
+      jdField_a_of_type_AndroidGraphicsPoint.y = i;
     }
-    if ((this.jdField_a_of_type_Long & 0x1000) != 0L)
+    return jdField_a_of_type_AndroidGraphicsPoint;
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    jdField_a_of_type_AndroidGraphicsPoint.x = paramInt1;
+    jdField_a_of_type_AndroidGraphicsPoint.y = paramInt2;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    Intent localIntent;
+    if (!jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = new ARLocalGestureCircleRecog();
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramInt1, paramInt2, this)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
-      }
-    }
-    QLog.i("AREngine_ARLocalControl", 1, String.format("init running. marker recog end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - paramLong) }));
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (!this.c) {
-        QLog.i("AREngine_ARLocalControl", 1, "init running. face recog has not init complete, wait...");
-      }
+      jdField_a_of_type_Boolean = true;
+      localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
     }
     try
     {
-      jdField_b_of_type_JavaLangObject.wait();
-      label239:
-      QLog.i("AREngine_ARLocalControl", 1, "init running. face recog init complete.");
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) || (this.jdField_a_of_type_Apoj != null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {}
-      for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-      {
-        this.jdField_b_of_type_Boolean = false;
-        QLog.i("AREngine_ARLocalControl", 1, String.format("init end. mIsInited=%s time cost:%sms", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Long.valueOf(System.currentTimeMillis() - l) }));
-        appv.a().a(System.currentTimeMillis() - l, this.jdField_a_of_type_Boolean);
-        return this.jdField_a_of_type_Boolean;
-        paramArConfigInfo = finally;
-        throw paramArConfigInfo;
-      }
-    }
-    catch (Exception paramArConfigInfo)
-    {
-      break label239;
-    }
-  }
-  
-  public boolean a(apnv paramapnv)
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (this.jdField_a_of_type_Apoj == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_Apoj.a(paramapnv);
-  }
-  
-  public boolean a(String paramString1, String paramString2, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramString1, paramString2, paramArCloudConfigInfo);
-  }
-  
-  public boolean a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = new ARLocalGestureCircleRecog();
-        if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramInt1, paramInt2, this))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
-          return false;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c();
-        this.jdField_b_of_type_Boolean = true;
-      }
-    }
-    for (this.jdField_a_of_type_Long |= 0x1000;; this.jdField_a_of_type_Long &= 0xFFFFEFFF)
-    {
-      this.d = paramBoolean;
-      return this.d;
-    }
-  }
-  
-  public float[] a(int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramInt1, paramInt2);
-  }
-  
-  public void b()
-  {
-    QLog.i("AREngine_ARLocalControl", 1, "uninit start.");
-    if (!this.jdField_a_of_type_Boolean) {
+      paramContext.startService(localIntent);
+      a(paramContext, 3, true);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.e();
-    }
-    if (this.jdField_a_of_type_Apoj != null) {
-      this.jdField_a_of_type_Apoj.b();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    QLog.i("AREngine_ARLocalControl", 1, "uninit end. mIsInited = " + this.jdField_a_of_type_Boolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("AREngine_ARLocalControl", 1, "resume. recogType = " + paramLong);
-    if (((1L & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.c();
-    }
-    if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_Apoj != null)) {
-      this.jdField_a_of_type_Apoj.d();
-    }
-    if (((0x1000 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.b();
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteSmallScreenUtil", 2, "actionOn e = " + localException);
+        }
+        jdField_a_of_type_Boolean = false;
+      }
     }
   }
   
-  public boolean b(long paramLong)
+  private static void a(Context paramContext, int paramInt)
   {
-    if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_Apoj != null)) {
-      return this.jdField_a_of_type_Apoj.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("ColorNoteSmallScreenUtil", 2, "showPermissionDialog in");
     }
-    return true;
+    paramContext = new Intent();
+    paramContext.putExtra("public_fragment_window_feature", 1);
+    paramContext.putExtra("key_permission_from", paramInt);
+    if ((paramInt == 3) && (apku.c())) {}
+    while (ColorNoteSmallScreenPermissionDialogFragment.jdField_a_of_type_Boolean) {
+      return;
+    }
+    adxr.a(paramContext, PublicTransFragmentActivity.class, ColorNoteSmallScreenPermissionDialogFragment.class);
   }
   
-  public void c()
+  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if ((this.d) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d())) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenUtil", 1, "sendUpdateSmallScreenStateBroadcast sHasServiceExit = " + jdField_a_of_type_Boolean + ", from = " + paramInt + ", shouldShow = " + paramBoolean);
     }
+    Intent localIntent1 = new Intent("action_update_cn_smallscreen_state");
+    localIntent1.setPackage(paramContext.getPackageName());
+    localIntent1.putExtra("param_from", paramInt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      paramContext.sendBroadcast(localIntent1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteSmallScreenUtil", 2, "sendUpdateSmallScreenStateBroadcast:" + paramBoolean);
+      }
+      return;
+      localIntent1.putExtra("param_not_in_colornote_list", paramBoolean);
+      continue;
+      localIntent1.putExtra("param_shoule_show_smallscreen", paramBoolean);
+      continue;
+      Intent localIntent2;
+      if (paramBoolean) {
+        localIntent2 = new Intent(paramContext, ColorNoteSmallScreenService.class);
+      }
+      try
+      {
+        paramContext.startService(localIntent2);
+        localIntent1.putExtra("param_is_app_foreground", paramBoolean);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ColorNoteSmallScreenUtil", 2, "actionOn e = " + localException);
+          }
+        }
+      }
+      localIntent1.putExtra("param_custom_night_mode", paramBoolean);
+    }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    if (BaseApplicationImpl.getApplication().getRuntime().isLogin())
+    {
+      Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+      localIntent.putExtra("KEY_CMD_SHOW_LIST", 1);
+      localIntent.putExtra("KEY_SHOW_LIST_LAND", paramBoolean);
+      paramContext.startService(localIntent);
+    }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    try
+    {
+      a(paramContext, paramBoolean1, paramBoolean2, null);
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, ColorNote paramColorNote)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteSmallScreenUtil", 1, "showColorNoteSmallScreen , idAdd = " + paramBoolean1 + ", sHasServiceExit = " + jdField_a_of_type_Boolean + ", force = " + paramBoolean2);
+        }
+        int i = a(paramColorNote);
+        if ((!apnt.a(paramContext)) && (paramBoolean1)) {
+          a(paramContext, i);
+        }
+        if ((!jdField_a_of_type_Boolean) || (paramBoolean2))
+        {
+          jdField_a_of_type_Boolean = true;
+          paramColorNote = new Intent(paramContext, ColorNoteSmallScreenService.class);
+          try
+          {
+            paramContext.startService(paramColorNote);
+            return;
+          }
+          catch (Exception paramContext)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ColorNoteSmallScreenUtil", 2, "actionOn e = " + paramContext);
+            }
+            jdField_a_of_type_Boolean = false;
+            continue;
+          }
+        }
+        a(paramContext, 3, true);
+      }
+      finally {}
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    boolean bool = paramBoolean;
+    if (!paramBoolean)
+    {
+      bool = paramBoolean;
+      if (b(BaseApplicationImpl.getContext())) {
+        bool = true;
+      }
+    }
+    if ((bool) && (b))
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (((localAppRuntime instanceof QQAppInterface)) && (localAppRuntime.isLogin()) && (((QQAppInterface)localAppRuntime).getProxyManager().a().a() > 0)) {
+        a(((QQAppInterface)localAppRuntime).getApp(), false, true);
+      }
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ColorNoteSmallScreenUtil", 2, "isAfterSyncMsg() " + b);
+    }
+    return b;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = false;
+    String str = paramContext.getPackageName();
+    for (;;)
+    {
+      try
+      {
+        localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
+        List localList = localActivityManager.getRunningTasks(1);
+        localRunningAppProcessInfo = null;
+        paramContext = localRunningAppProcessInfo;
+        if (localList != null)
+        {
+          paramContext = localRunningAppProcessInfo;
+          if (localList.size() > 0) {
+            paramContext = ((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity;
+          }
+        }
+        if ((paramContext == null) || (!paramContext.getPackageName().startsWith(str))) {
+          break label260;
+        }
+        if (!QLog.isDevelopLevel()) {
+          break label265;
+        }
+        QLog.d("ColorNoteSmallScreenUtil", 2, "isAppOnForeground componentName = " + paramContext);
+      }
+      catch (Throwable paramContext)
+      {
+        ActivityManager localActivityManager;
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
+        bool1 = bool2;
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("ColorNoteSmallScreenUtil", 2, "isAppOnForeground e = " + paramContext);
+        return false;
+      }
+      if (bool1)
+      {
+        paramContext = localActivityManager.getRunningAppProcesses();
+        if (paramContext != null)
+        {
+          paramContext = paramContext.iterator();
+          if (paramContext.hasNext())
+          {
+            localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+            if ((localRunningAppProcessInfo.importance != 100) || (!localRunningAppProcessInfo.processName.startsWith(str))) {
+              continue;
+            }
+            if (QLog.isDevelopLevel()) {
+              QLog.d("ColorNoteSmallScreenUtil", 2, "isAppOnForeground appProcess.processName = " + localRunningAppProcessInfo.processName);
+            }
+            bool1 = true;
+            return bool1;
+          }
+        }
+        bool1 = false;
+        continue;
+      }
+      continue;
+      label260:
+      boolean bool1 = false;
+      continue;
+      label265:
+      bool1 = true;
+    }
+  }
+  
+  /* Error */
+  public static void b(Context paramContext)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6: ifeq +31 -> 37
+    //   9: ldc 104
+    //   11: iconst_1
+    //   12: new 106	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 335
+    //   22: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: getstatic 80	apoh:jdField_a_of_type_Boolean	Z
+    //   28: invokevirtual 158	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokestatic 123	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   37: new 82	android/content/Intent
+    //   40: dup
+    //   41: aload_0
+    //   42: ldc 84
+    //   44: invokespecial 87	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   47: astore_1
+    //   48: iconst_0
+    //   49: putstatic 80	apoh:jdField_a_of_type_Boolean	Z
+    //   52: aload_0
+    //   53: aload_1
+    //   54: invokevirtual 339	android/content/Context:stopService	(Landroid/content/Intent;)Z
+    //   57: pop
+    //   58: ldc 2
+    //   60: monitorexit
+    //   61: return
+    //   62: astore_0
+    //   63: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: ifeq -8 -> 58
+    //   69: ldc 104
+    //   71: iconst_2
+    //   72: new 106	java/lang/StringBuilder
+    //   75: dup
+    //   76: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   79: ldc_w 341
+    //   82: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: aload_0
+    //   86: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   92: invokestatic 344	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   95: goto -37 -> 58
+    //   98: astore_0
+    //   99: ldc 2
+    //   101: monitorexit
+    //   102: aload_0
+    //   103: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	104	0	paramContext	Context
+    //   47	7	1	localIntent	Intent
+    // Exception table:
+    //   from	to	target	type
+    //   48	58	62	java/lang/Exception
+    //   3	37	98	finally
+    //   37	48	98	finally
+    //   48	58	98	finally
+    //   63	95	98	finally
+  }
+  
+  public static void b(Context paramContext, boolean paramBoolean)
+  {
+    if (BaseApplicationImpl.getApplication().getRuntime().isLogin())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteSmallScreenUtil", 2, "[showListFromAddTodo], is called");
+      }
+      Intent localIntent = new Intent(paramContext, ColorNoteSmallScreenService.class);
+      localIntent.putExtra("KEY_CMD_SHOW_LIST", 1);
+      localIntent.putExtra("key_upcoming_notify", 2);
+      localIntent.putExtra("KEY_SHOW_LIST_LAND", paramBoolean);
+      paramContext.startService(localIntent);
+    }
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    try
+    {
+      b = paramBoolean;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("ColorNoteSmallScreenUtil", 2, "setAfterSyncMsg " + b);
+      }
+      Intent localIntent = new Intent("key_after_sync_msg");
+      localIntent.putExtra("extra_after_sync_msg", b);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+      return;
+    }
+    finally {}
+  }
+  
+  private static boolean b(Context paramContext)
+  {
+    Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FSReceiver", 4, new Object[] { "currTopPkg:", ((ComponentName)localObject).getPackageName() });
+      }
+      if (((ComponentName)localObject).getPackageName().equals(paramContext.getPackageName())) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

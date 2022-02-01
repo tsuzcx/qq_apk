@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import agos;
+import afia;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import binq;
-import bipn;
-import birg;
-import bitv;
+import bgtw;
+import bgvt;
+import bgzx;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -23,29 +23,29 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
   private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
   
-  public bipn createComponentsProvider()
+  public bgvt createComponentsProvider()
   {
-    return new bipn(this, 127, new agos(this));
+    return new bgvt(this, 127, new afia(this));
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_Final(paramBundle);
-    this.mSwiftTitleUI.b(false);
-    this.mUIStyleHandler.a.setVisibility(8);
+    this.mSwiftTitleUI.setTitleBarVisibility(false);
+    this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
     return i;
   }
   
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
-    this.mUIStyle.c = 0L;
+    this.mUIStyle.mFloatBarRulesFromUrl = 0L;
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167247);
-    if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167276);
+    if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
+      ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
     }
-    if (this.mUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
-      this.mUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.mUIStyleHandler.mBrowserTips != null) {
+      this.mUIStyleHandler.mBrowserTips.setVisibility(8);
     }
     this.contentView.setBackgroundColor(0);
     return i;
@@ -57,7 +57,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
       QLog.d("WebLog_WebViewFragment", 2, "ConfessBrowserFragment doOnCreate = ");
     }
     boolean bool = super.doOnCreate(paramBundle);
-    this.mPluginEngine.a(new String[] { "sayHonest", bitv.a, "QQApi", "ui", "share", "PublicAccountJs" });
+    this.mPluginEngine.a(new String[] { "sayHonest", bgzx.a, "QQApi", "ui", "share", "PublicAccountJs" });
     return bool;
   }
   
@@ -80,7 +80,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

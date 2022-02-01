@@ -1,54 +1,54 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Build.VERSION;
-import boqe;
-import borf;
-import borg;
-import bozz;
-import bpam;
+import blul;
+import blvn;
+import bmbk;
+import bmbx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import dov.com.qq.im.ae.download.AEResInfo;
 
 public class CameraCategoryMaterialStep
   extends AsyncStep
 {
   private long a()
   {
-    return bozz.a().a("lasttime", 0L, 0);
+    return bmbk.a().a("lasttime", 0L, 0);
   }
   
   private String a()
   {
-    return bozz.a().a("last_entry_version", "", 4);
+    return bmbk.a().a("last_entry_version", "", 4);
   }
   
   private void a(String paramString)
   {
-    bozz.a().a("last_entry_version", paramString, 4);
+    bmbk.a().a("last_entry_version", paramString, 4);
   }
   
   private void b(long paramLong)
   {
-    bozz.a().a("lasttime", paramLong, 0);
+    bmbk.a().a("lasttime", paramLong, 0);
   }
   
   public int a()
   {
-    boqe localboqe;
+    blul localblul;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      localboqe = (boqe)this.a.app.a(159);
+      localblul = (blul)this.a.app.getBusinessHandler(159);
       if (System.currentTimeMillis() - a() > 86400000L)
       {
         b(System.currentTimeMillis());
         a(AppSetting.a());
-        localboqe.a("MqStoryCamera");
-        localboqe.a("MqEmoCamera");
-        localboqe.b();
-        localboqe.a();
-        borg.a().b(borf.b, null, false);
+        localblul.a("MqStoryCamera");
+        localblul.a("MqEmoCamera");
+        localblul.b();
+        localblul.a();
+        blvn.a().b(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
       }
     }
     for (;;)
@@ -57,10 +57,10 @@ public class CameraCategoryMaterialStep
       if (!AppSetting.a().equals(a()))
       {
         a(AppSetting.a());
-        localboqe.a();
-        borg.a().b(borf.b, null, false);
+        localblul.a();
+        blvn.a().b(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
         continue;
-        bpam.d("QQInitHandler", "[CameraCategoryMaterialStep] Build.VERSION.SDK_INT < 5.0");
+        bmbx.d("QQInitHandler", "[CameraCategoryMaterialStep] Build.VERSION.SDK_INT < 5.0");
       }
     }
   }

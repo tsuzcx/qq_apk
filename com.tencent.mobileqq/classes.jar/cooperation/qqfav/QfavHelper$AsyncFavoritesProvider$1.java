@@ -6,14 +6,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bmkv;
+import bkpc;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QfavHelper$AsyncFavoritesProvider$1
   implements Runnable
 {
-  public QfavHelper$AsyncFavoritesProvider$1(bmkv parambmkv) {}
+  public QfavHelper$AsyncFavoritesProvider$1(bkpc parambkpc) {}
   
   public void run()
   {

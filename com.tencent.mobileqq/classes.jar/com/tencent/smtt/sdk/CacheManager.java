@@ -10,9 +10,9 @@ public final class CacheManager
   @Deprecated
   public static boolean cacheDisabled()
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b())) {
-      return ((Boolean)((v)localObject).c().c()).booleanValue();
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b())) {
+      return ((Boolean)((x)localObject).c().c()).booleanValue();
     }
     localObject = i.a("android.webkit.CacheManager", "cacheDisabled");
     if (localObject == null) {
@@ -23,18 +23,18 @@ public final class CacheManager
   
   public static InputStream getCacheFile(String paramString, boolean paramBoolean)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().a(paramString, paramBoolean);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().a(paramString, paramBoolean);
     }
     return null;
   }
   
   public static Object getCacheFile(String paramString, Map<String, String> paramMap)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().g();
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().g();
     }
     try
     {
@@ -48,9 +48,9 @@ public final class CacheManager
   @Deprecated
   public static File getCacheFileBaseDir()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return (File)localv.c().g();
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return (File)localx.c().g();
     }
     return (File)i.a("android.webkit.CacheManager", "getCacheFileBaseDir");
   }

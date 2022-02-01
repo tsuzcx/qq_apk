@@ -1,6 +1,26 @@
-public abstract interface ukm<T extends ukb>
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+
+public class ukm
+  implements ukh
 {
-  public abstract void a(T paramT);
+  public ukm(WSRecommendFragment paramWSRecommendFragment) {}
+  
+  public void a(bjwy<stSimpleMetaFeed> parambjwy)
+  {
+    int i;
+    if (WSRecommendFragment.d(this.a))
+    {
+      i = parambjwy.getAdapterPosition();
+      parambjwy = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
+      if (parambjwy != null) {}
+    }
+    else
+    {
+      return;
+    }
+    WSRecommendFragment.a(this.a, parambjwy, i);
+  }
 }
 
 

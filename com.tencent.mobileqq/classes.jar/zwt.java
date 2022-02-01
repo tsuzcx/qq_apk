@@ -1,46 +1,50 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class zwt
-  implements URLDrawable.URLDrawableListener
 {
-  public zwt(QRDisplayActivity paramQRDisplayActivity, arie paramarie, int paramInt, boolean paramBoolean) {}
+  private String a = "";
+  private String b = "";
+  private String c = "";
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static zwt a(String paramString)
   {
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadCanceled:" + this.jdField_a_of_type_Arie.a);
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      zwt localzwt = new zwt();
+      paramString = new JSONObject(paramString);
+      localzwt.a = paramString.optString("icon_image_url", "");
+      localzwt.b = paramString.optString("md5", "");
+      localzwt.c = paramString.optString("widget_id", "");
+      return localzwt;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Arie.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131695802), 0).a();
+    return this.a;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public String b()
   {
-    QRDisplayActivity.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Arie, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Arie.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
   }
 }
 

@@ -1,43 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class wpp
-  extends wrj
+class wpp
+  implements Animation.AnimationListener
 {
-  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
-  wrk jdField_a_of_type_Wrk;
+  wpp(wpl paramwpl) {}
   
-  public wpp(qqstory_service.RspAddFeedComment paramRspAddFeedComment, wrk paramwrk)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramRspAddFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
-    this.jdField_a_of_type_Wrk = paramwrk;
+    this.a.dismiss();
   }
   
-  public wpp(wrk paramwrk)
-  {
-    this.jdField_a_of_type_Wrk = paramwrk;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Wrk.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Wrk.a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Wrk.a(paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Wrk.a(paramBoolean, paramBundle);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

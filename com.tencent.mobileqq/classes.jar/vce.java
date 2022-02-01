@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class vce
-  implements DialogInterface.OnClickListener
+  implements upr
 {
-  vce(vcb paramvcb) {}
+  vce(vcd paramvcd, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    vbr.a(this.a.jdField_a_of_type_Vbr).b(this.a.jdField_a_of_type_Vbr.a().hashCode(), vbr.a(this.a.jdField_a_of_type_Vbr), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    vdq.a(1000003, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
+  }
+  
+  public void b()
+  {
+    vdq.a(1000007, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
+  }
+  
+  public void c()
+  {
+    vdq.a(1000004, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
+  }
+  
+  public void d()
+  {
+    vdq.a(1000002, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

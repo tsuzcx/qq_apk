@@ -1,97 +1,229 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter.2;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.database.sqlite.SQLiteException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.fts.FTSTroop;
+import com.tencent.mobileqq.data.fts.TroopIndex;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Observable;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class atur
-  extends Observable
 {
-  public QQAppInterface a;
-  MqqHandler a;
-  
-  public atur(QQAppInterface paramQQAppInterface)
+  public static int a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new atus(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+    paramString = "SELECT cursor FROM " + paramString + " WHERE id=1;";
+    try
+    {
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
   }
   
-  private void b(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  public static int a(FTSDatabase paramFTSDatabase, ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt)
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("averageSpeed", String.valueOf(0.0F));
-    ((HashMap)localObject).put("peerUin", String.valueOf(paramFileManagerEntity.peerUin));
-    ((HashMap)localObject).put("fileType", auog.a(paramFileManagerEntity.fileName));
-    switch (paramInt)
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
     {
-    default: 
-      QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, "what type is report?!nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "],may be not report!");
-      return;
-    case 5: 
-      return;
-    case 6: 
-      localObject = "actFileOf2Of";
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: entities == null");
+      }
+      return -1;
+    }
+    long l1 = System.currentTimeMillis();
+    int k = a(paramFTSDatabase, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts.FTSDatabaseHelper", 2, "FTSDatabaseHelper.queryCursorTable = " + k + " cost:" + (System.currentTimeMillis() - l1));
+    }
+    if (k == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: syncCursor == -1");
+      }
+      return -1;
+    }
+    if (!paramFTSDatabase.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: beginTransaction failed");
+      }
+      return -1;
+    }
+    int i = 0;
+    long l3 = 0L;
+    long l2 = 0L;
+    l1 = 0L;
+    boolean bool1 = true;
+    int j = 0;
+    long l4;
+    TroopIndex localTroopIndex;
+    if (j < paramArrayList.size())
+    {
+      l4 = System.currentTimeMillis();
+      FTSTroop localFTSTroop = (FTSTroop)paramArrayList.get(j);
+      localTroopIndex = new TroopIndex(localFTSTroop.mType, localFTSTroop.mTroopUin, localFTSTroop.mMemberUin, localFTSTroop.mMemberName, localFTSTroop.mMemberCard, localFTSTroop.mMemberNick);
+      localTroopIndex.preWrite();
+      switch (localFTSTroop.mOpt)
+      {
+      default: 
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        label268:
+        if (bool1) {
+          break;
+        }
+      }
     }
     for (;;)
     {
-      aunj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
-      return;
-      localObject = "actFileOf2Wy";
-      continue;
-      localObject = "actFileWy2Of";
-      continue;
-      localObject = "actFileDisc2Of";
-      continue;
-      localObject = "actFileDisc2Disc";
-      continue;
-      localObject = "actFileTroop2Of";
-      continue;
-      localObject = "actFileTroop2Disc";
-      continue;
-      localObject = "actFileFav2Disc";
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.fts.FTSDatabaseHelper", 2, String.format("batchTransToDatabase: insert count = %d, insertCost=%d, delCost=%d, updateCost=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }));
+      }
+      i = paramInt;
+      if (paramInt == -1) {
+        i = paramArrayList.size();
+      }
+      label400:
+      long l5;
+      if ((bool1) && (paramArrayList.size() != 0) && (i != 0))
+      {
+        bool1 = paramFTSDatabase.a("UPDATE " + paramString + " SET cursor=" + (k + i) + " WHERE id=1;");
+        boolean bool2 = bool1;
+        if (bool1)
+        {
+          l1 = System.currentTimeMillis();
+          bool1 = paramFTSDatabase.c();
+          l1 = System.currentTimeMillis() - l1;
+          if (!QLog.isColorLevel())
+          {
+            bool2 = bool1;
+            if (l1 <= 30000L) {}
+          }
+          else
+          {
+            QLog.d("Q.fts.FTSDatabaseHelper", 1, "commitTransaction cost=" + l1 + " success=" + bool1);
+            bool2 = bool1;
+          }
+        }
+        if (bool2)
+        {
+          return k + i;
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+          l5 = System.currentTimeMillis();
+          i += 1;
+          l4 = l1 + (l5 - l4);
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          l5 = System.currentTimeMillis();
+          l2 += l5 - l4;
+          l4 = l1;
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          if (!bool1) {
+            break label650;
+          }
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+        }
+      }
+      label650:
+      for (;;)
+      {
+        l5 = System.currentTimeMillis();
+        l4 = l3 + (l5 - l4);
+        l3 = l1;
+        l1 = l4;
+        break label268;
+        j += 1;
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        break;
+        return k;
+        break label400;
+      }
+      l4 = l1;
+      l1 = l3;
+      l3 = l4;
     }
   }
   
-  public void a(long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, Object paramObject, int paramInt3, String paramString2)
+  public static boolean a(FTSDatabase paramFTSDatabase, TroopIndex paramTroopIndex)
   {
-    setChanged();
-    if (paramObject == null)
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("DELETE FROM " + paramTroopIndex.getTableName() + " WHERE " + paramTroopIndex.getTableName() + " MATCH 'type:");
+    localStringBuilder.append(paramTroopIndex.type);
+    localStringBuilder.append(" ext1:");
+    localStringBuilder.append(paramTroopIndex.ext1);
+    if (!TextUtils.isEmpty(paramTroopIndex.ext6))
     {
-      notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), paramString2 });
-      return;
+      localStringBuilder.append(" ext6:");
+      localStringBuilder.append(paramTroopIndex.ext6);
     }
-    notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), paramObject });
+    localStringBuilder.append("';");
+    return paramFTSDatabase.a(localStringBuilder.toString());
   }
   
-  public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  public static boolean a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    b(paramFileManagerEntity, paramInt, paramString);
-    ThreadManager.executeOnSubThread(new FileManagerNotifyCenter.2(this, paramFileManagerEntity, paramInt));
+    paramFTSDatabase = paramFTSDatabase.a("SELECT name FROM sqlite_master WHERE type='table' AND name='" + paramString + "'", new int[] { 3 });
+    return (paramFTSDatabase != null) && (paramFTSDatabase.size() > 0);
   }
   
-  public void a(boolean paramBoolean, int paramInt, Object paramObject)
+  public static int b(FTSDatabase paramFTSDatabase, String paramString)
   {
+    paramString = "SELECT COUNT(*) FROM " + paramString;
     try
     {
-      setChanged();
-      notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject });
-      return;
+      int i = c(paramFTSDatabase, paramString);
+      return i;
     }
-    finally
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
+  }
+  
+  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    if (!paramFTSDatabase.b()) {}
+    do
     {
-      paramObject = finally;
-      throw paramObject;
+      return false;
+      paramFTSDatabase.a("CREATE TABLE IF NOT EXISTS " + paramString + "(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
+      paramFTSDatabase.a("INSERT INTO " + paramString + "(cursor) VALUES(0);");
+    } while (!paramFTSDatabase.c());
+    return true;
+  }
+  
+  public static int c(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    paramFTSDatabase = paramFTSDatabase.a(paramString, new int[] { 1 });
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No result or result size != 1");
+    }
+    paramFTSDatabase = (Map)paramFTSDatabase.get(0);
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No column or column count != 1");
+    }
+    try
+    {
+      int i = ((Long)paramFTSDatabase.values().toArray()[0]).intValue();
+      return i;
+    }
+    catch (Exception paramFTSDatabase)
+    {
+      throw new SQLiteException("No column or column count != 1");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atur
  * JD-Core Version:    0.7.0.1
  */

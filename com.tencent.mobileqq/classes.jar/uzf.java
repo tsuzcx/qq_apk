@@ -1,10 +1,20 @@
-public class uzf
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
+
+class uzf
+  implements usd
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public static int d = 4;
-  public static int e = 5;
+  uzf(uze paramuze) {}
+  
+  public List<use> a(int paramInt, boolean paramBoolean)
+  {
+    return uzy.a(this.a.a(), paramInt, paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return AppNetConnInfo.isWifiConn();
+  }
 }
 
 

@@ -1,33 +1,81 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class axyq
-  implements biug<oidb_0x8e4.RspBody>
 {
-  public axyq(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public String b;
+  public double c;
+  public String c;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public axyq(double paramDouble1, double paramDouble2, String paramString1, String paramString2)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    if (a(this.jdField_a_of_type_Double, this.jdField_b_of_type_Double, paramString2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+      this.jdField_a_of_type_Int = 0;
       return;
     }
-    paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-    paramRspBody.b = null;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.c();
-      return;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public static boolean a(double paramDouble1, double paramDouble2, String paramString)
+  {
+    return (Math.abs(paramDouble1) > 0.0001D) && (Math.abs(paramDouble2) > 0.0001D) && (!TextUtils.isEmpty(paramString));
+  }
+  
+  public static boolean a(axyq paramaxyq, double paramDouble1, double paramDouble2, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramaxyq == null) {
+      bool1 = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (paramString == null);
+          if (!paramString.equals(paramaxyq.jdField_c_of_type_JavaLangString)) {
+            return true;
+          }
+          bool1 = bool2;
+        } while (Math.abs(paramDouble1) < 0.0001D);
+        bool1 = bool2;
+      } while (Math.abs(paramDouble2) < 0.0001D);
+      if (Math.abs(paramaxyq.jdField_a_of_type_Double - paramDouble1) > 0.001D) {
+        break;
+      }
+      bool1 = bool2;
+    } while (Math.abs(paramaxyq.jdField_b_of_type_Double - paramDouble2) <= 0.001D);
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("mLatitude:").append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mLongitude:").append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mDirection:").append(this.jdField_c_of_type_Double);
+    localStringBuilder.append(" mPoiName:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mPoiAddr:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" adCode:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mUpdateTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mValidFlag:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

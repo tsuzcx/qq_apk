@@ -1,20 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 
-public class baby
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface baby
 {
-  public baby(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Rect)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramValueAnimator);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramValueAnimator);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(bacc parambacc);
+  
+  public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

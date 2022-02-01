@@ -2,24 +2,24 @@ package com.tencent.biz.richframework.animation.recyclerview;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import zzl;
-import zzs;
+import yyu;
+import yzb;
 
 public class EnhanceItemAnimator$2
   implements Runnable
 {
-  public EnhanceItemAnimator$2(zzl paramzzl, ArrayList paramArrayList) {}
+  public EnhanceItemAnimator$2(yyu paramyyu, ArrayList paramArrayList) {}
   
   public void run()
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      zzs localzzs = (zzs)localIterator.next();
-      zzl.a(this.this$0, localzzs);
+      yzb localyzb = (yzb)localIterator.next();
+      yyu.a(this.this$0, localyzb);
     }
     this.a.clear();
-    zzl.b(this.this$0).remove(this.a);
+    yyu.b(this.this$0).remove(this.a);
   }
 }
 

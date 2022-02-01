@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class atkx
-  implements View.OnClickListener
-{
-  public atkx(QfileCloudFileTabView paramQfileCloudFileTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    QfileCloudFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/forward/ForwardAskAnonymouslyMsgOption$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class atkx {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkx
  * JD-Core Version:    0.7.0.1
  */

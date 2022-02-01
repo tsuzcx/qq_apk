@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 
-import agej;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class BannerView$DotsIndicator
   extends LinearLayout
@@ -33,10 +33,10 @@ public class BannerView$DotsIndicator
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.f = paramInt1;
-    this.b = agej.a(6.0F, getResources());
-    this.c = agej.a(10.0F, getResources());
-    this.d = agej.a(7.0F, getResources());
-    this.e = agej.a(7.0F, getResources());
+    this.b = AIOUtils.dp2px(6.0F, getResources());
+    this.c = AIOUtils.dp2px(10.0F, getResources());
+    this.d = AIOUtils.dp2px(7.0F, getResources());
+    this.e = AIOUtils.dp2px(7.0F, getResources());
     paramContext = new FrameLayout.LayoutParams(-2, -2);
     paramContext.bottomMargin = this.b;
     paramContext.gravity = paramInt2;

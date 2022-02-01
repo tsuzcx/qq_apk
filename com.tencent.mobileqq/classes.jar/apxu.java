@@ -1,42 +1,93 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
 
-final class apxu
-  implements aqep
+public class apxu
+  extends aptq<apxt>
 {
-  public void a()
+  @NonNull
+  public apxt a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkCommonUtil", 2, "ArkSafe.report onDisableReport");
-    }
-    aqel.a().a(null);
+    return new apxt();
   }
   
-  public void a(String paramString)
+  @Nullable
+  public apxt a(aptx[] paramArrayOfaptx)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkCommonUtil", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
+      QLog.d("GameCenterConfProcessor", 2, "[onParsed]");
     }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      if (localObject != null)
-      {
-        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
-        if (localObject != null) {
-          ((aqay)localObject).a(paramString);
-        }
-      }
+      apxt localapxt = new apxt();
+      localapxt.a = paramArrayOfaptx[0].a;
+      return localapxt;
+    }
+    return null;
+  }
+  
+  public void a(apxt paramapxt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterConfProcessor", 2, "[onUpdate]");
+    }
+    alnr localalnr = (alnr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153);
+    if (paramapxt != null) {}
+    for (paramapxt = paramapxt.a;; paramapxt = null)
+    {
+      localalnr.d(paramapxt);
       return;
     }
+  }
+  
+  public Class<apxt> clazz()
+  {
+    return apxt.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterConfProcessor", 2, "[onReqNoReceive]");
+    }
+    apxt localapxt = (apxt)apub.a().a(417);
+    if (localapxt != null) {
+      ((alnr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153)).d(localapxt.a);
+    }
+  }
+  
+  public int type()
+  {
+    return 417;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxu
  * JD-Core Version:    0.7.0.1
  */

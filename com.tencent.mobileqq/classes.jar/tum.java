@@ -1,43 +1,38 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StMessageStatus;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowFeedsRsp;
-import NS_COMM.COMM.StCommonExt;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class tum
-  implements aaav<CertifiedAccountRead.StGetFollowFeedsRsp>
+  implements qdy
 {
-  public tum(FolderFollowTabFragment paramFolderFollowTabFragment, aagu paramaagu) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowFeedsRsp paramStGetFollowFeedsRsp)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowFeedsRsp == null))
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return qaa.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((parampvc != null) && (parampvc.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampvc.a())))
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QQToast.a(FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment), 1, paramString, 0).a();
+      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
+      if ((paramContainer != null) && ((paramContainer instanceof uad))) {
+        ((uad)paramContainer).a(parampvc);
       }
-      return;
     }
-    this.jdField_a_of_type_Aagu.getLoadInfo().d(paramStGetFollowFeedsRsp.livePageInfo.get());
-    if (paramStGetFollowFeedsRsp.messStatus.get() != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment.a(paramStGetFollowFeedsRsp.messStatus.noticeCount.get());
-      FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment, paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
-    }
-    paramString = paramStGetFollowFeedsRsp.careLive.get();
-    aagu localaagu = this.jdField_a_of_type_Aagu;
-    COMM.StCommonExt localStCommonExt = paramStGetFollowFeedsRsp.extInfo;
-    if (paramStGetFollowFeedsRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localaagu.b(paramString, localStCommonExt, paramBoolean);
-      return;
-    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

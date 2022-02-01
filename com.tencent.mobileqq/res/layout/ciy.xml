@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.qqmini.minigame.widget.DragLinearLayout android:id="@id/bei" android:background="@drawable/bxu" android:layout_width="140.0dip" android:layout_height="25.0dip" android:layout_marginTop="80.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/lac" android:background="@drawable/f9a" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-        <ImageView android:layout_gravity="center" android:id="@id/jnm" android:visibility="gone" android:layout_width="13.5dip" android:layout_height="13.5dip" android:src="@drawable/hoz" />
-        <ImageView android:layout_gravity="center" android:id="@id/jnn" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/bue" />
-        <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/f18" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="left" android:id="@id/bej" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已连接" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="right" android:id="@id/beh" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已结束" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</com.tencent.qqmini.minigame.widget.DragLinearLayout>

@@ -1,18 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aelm
-  implements View.OnClickListener
+  implements nrb
 {
-  public aelm(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aelm(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.l();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
   }
 }
 

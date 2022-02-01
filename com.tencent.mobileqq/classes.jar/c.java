@@ -10,9 +10,9 @@ public final class c
   public static final int a = 0;
   public static final int[] a = { 16843173, 16843551, 2131034177 };
   public static final int b = 1;
-  public static final int[] b = { 2131034472, 2131034473, 2131034474, 2131034475, 2131034476, 2131034477 };
+  public static final int[] b = { 2131034478, 2131034479, 2131034480, 2131034481, 2131034482, 2131034483 };
   public static final int c = 2;
-  public static final int[] c = { 16844082, 16844083, 16844095, 16844143, 16844144, 2131034471, 2131034478, 2131034479, 2131034480, 2131035191 };
+  public static final int[] c = { 16844082, 16844083, 16844095, 16844143, 16844144, 2131034477, 2131034484, 2131034485, 2131034486, 2131035201 };
   public static final int d = 0;
   public static final int[] d = { 16843165, 16843166, 16843169, 16843170, 16843171, 16843172, 16843265, 16843275, 16844048, 16844049, 16844050, 16844051 };
   public static final int e = 1;
@@ -41,7 +41,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,15 @@
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
-class azfo
+public class azfo
 {
-  azfo(azfn paramazfn) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public azfo(int paramInt)
   {
-    bhlq.a(azfn.a(this.a), 2131697714, 2131697715);
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    azfn.a(this.a).a(null);
-    azfn.a(this.a).show();
+    this.a = paramInt;
   }
 }
 

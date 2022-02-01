@@ -1,75 +1,60 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bcgl
-  extends bcga
+  extends Handler
 {
-  public static final String a;
-  public List<bcgw> a;
-  public String b;
-  public boolean b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  private bcgk jdField_a_of_type_Bcgk;
+  private Thread jdField_a_of_type_JavaLangThread;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public bcgl(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, bcgk parambcgk)
   {
-    jdField_a_of_type_JavaLangString = bcgk.class.getSimpleName();
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangThread = paramThread;
+    this.jdField_a_of_type_Bcgk = parambcgk;
   }
   
-  public bcgl(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    sendMessageDelayed(localMessage, 200L);
   }
   
-  private List<bcgw> a(JSONArray paramJSONArray)
+  public void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
+    removeMessages(1);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        localObject = new bcgw(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
-        if (((bcgw)localObject).a()) {
-          localArrayList.add(localObject);
-        }
-        i += 1;
-      }
     }
-    return localArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    this.g = false;
-    try
+    do
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
-      this.l = paramString.optString("jumpUrl");
-      this.m = paramString.optString("subItemLeftIconUrl");
-      paramString = paramString.optJSONArray("itemList");
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilList = a(paramString);
-      }
       return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
-    }
+      if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
+      {
+        if (this.jdField_a_of_type_Boolean == true)
+        {
+          SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.a());
+          SuspendThreadManager.a(1);
+          b();
+          this.jdField_a_of_type_Bcgk.a();
+          return;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        a();
+        return;
+      }
+    } while (SuspendThreadManager.a().isEmpty());
+    this.jdField_a_of_type_Boolean = false;
+    a();
   }
 }
 

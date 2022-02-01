@@ -1,6 +1,16 @@
-public abstract interface nks
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class nks
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  nks(nkr paramnkr) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.jdField_a_of_type_Nku.c();
+    this.a.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

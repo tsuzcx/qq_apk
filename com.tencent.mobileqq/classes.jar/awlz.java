@@ -1,29 +1,29 @@
-import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class awlz
-  implements awod
+  implements bhai<oidb_0x8e4.RspBody>
 {
-  public awlz(ListenTogetherManager paramListenTogetherManager) {}
+  public awlz(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(ISong paramISong)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramISong != null)
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      ListenTogetherManager.a(this.a, paramISong);
-      this.a.a(paramISong.a());
-      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
-      if (!TextUtils.isEmpty(str)) {
-        ListenTogetherManager.a(this.a, paramISong.a(), str);
-      }
+      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.a = this.a.b;
     }
-    else
+    for (;;)
     {
+      this.a.a(true);
       return;
+      paramRspBody = this.a;
+      GameRoomInviteActivity.a = null;
+      paramRspBody.b = null;
     }
-    ListenTogetherManager.a(this.a, paramISong.a());
   }
 }
 

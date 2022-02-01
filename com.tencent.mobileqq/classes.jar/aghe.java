@@ -1,8 +1,19 @@
-public abstract interface aghe
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class aghe
+  extends aghj
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  aghe(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
   
-  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agsw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, (TroopChatPie)agcw.a(this.a));
+  }
 }
 
 

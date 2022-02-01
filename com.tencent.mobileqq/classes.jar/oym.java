@@ -1,16 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class oym
-  implements ViewBase.OnClickListener
+public class oym
+  implements ViewBase.IBuilder
 {
-  oym(oyk paramoyk) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (this.a.a != null) {
-      oyj.a(this.a.a, paramViewBase);
-    }
+    return new oyl(paramVafContext);
   }
 }
 

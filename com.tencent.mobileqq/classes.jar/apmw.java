@@ -1,140 +1,48 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONObject;
 
-class apmw
-  implements apmi
+public class apmw
+  extends HttpDownloader
 {
-  apmw(apmt paramapmt, long paramLong, apny paramapny) {}
-  
-  public void a(int paramInt, String paramString, apnt paramapnt)
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    apmt.c(this.jdField_a_of_type_Apmt, false);
-    if (apmt.a(this.jdField_a_of_type_Apmt)) {
-      return;
-    }
-    for (;;)
+    String str;
+    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
     {
       try
       {
-        localObject = this.jdField_a_of_type_Apmt;
-        if ((paramapnt == null) || (paramapnt.jdField_a_of_type_Apne == null)) {
+        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
+        localObject = HttpUtil.openRequest(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
+        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
           continue;
         }
-        i = paramapnt.jdField_a_of_type_Apne.c;
-        ((apmt)localObject).i = i;
-        apmt localapmt = this.jdField_a_of_type_Apmt;
-        if ((paramapnt == null) || (paramapnt.jdField_a_of_type_Apne == null) || (paramapnt.jdField_a_of_type_Apne.a == null) || (paramapnt.jdField_a_of_type_Apne.a.length <= 0)) {
-          continue;
+        localObject = HttpUtil.readHttpResponse((HttpResponse)localObject);
+        localObject = new JSONObject((String)localObject);
+        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
+        {
+          localObject = ((JSONObject)localObject).getString("thumbUrl");
+          paramDownloadParams.url = new URL((String)localObject);
+          paramDownloadParams.urlStr = ((String)localObject);
+          localObject = super.downloadImage(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+          return localObject;
         }
-        localObject = paramapnt.jdField_a_of_type_Apne.a[0].jdField_a_of_type_JavaLangString;
-        localapmt.jdField_a_of_type_JavaLangString = ((String)localObject);
       }
       catch (Exception localException)
       {
-        Object localObject;
-        long l1;
-        long l2;
-        boolean bool2;
-        boolean bool1;
-        QLog.i("AREngine_ARCloudControl", 1, "  mCloudTime  mImageId " + localException.getMessage());
-        continue;
-        int i = 0;
-        continue;
-        QLog.i("AREngine_ARCloudControl", 1, "MIGObjectClaasify not need  run requestToCheckLBSLocation.");
-        apmt.a(this.jdField_a_of_type_Apmt).a(paramInt, paramapnt);
-        return;
+        localException.printStackTrace();
       }
-      if (this.jdField_a_of_type_Apmt.c != 0L) {
-        this.jdField_a_of_type_Apmt.jdField_j_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Apmt.c);
-      }
-      if (this.jdField_a_of_type_Apmt.d != 0L)
-      {
-        localObject = this.jdField_a_of_type_Apmt;
-        ((apmt)localObject).g += System.currentTimeMillis() - this.jdField_a_of_type_Apmt.d;
-      }
-      if (apmt.a(this.jdField_a_of_type_Apmt) != null) {
-        apmt.a(this.jdField_a_of_type_Apmt).removeMessages(1);
-      }
-      l1 = System.currentTimeMillis();
-      l2 = this.jdField_a_of_type_Long;
-      QLog.i("AREngine_ARCloudControl", 1, "[DEBUG_SCAN_yt_face] onARCloudUploadImgComplete  retCode = " + paramInt + ", rspInfo = , sessionId = " + paramString + ",uploadCost = " + (l1 - l2));
-      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "requestToUpload" }));
-      if (apmt.a(this.jdField_a_of_type_Apmt) == null) {
-        break;
-      }
-      if ((paramInt == 0) && (paramapnt != null) && ((apne.a(paramapnt.jdField_a_of_type_Apne)) || (apnj.a(paramapnt.jdField_a_of_type_Apnj)) || (appa.a(paramapnt.jdField_a_of_type_Appa)) || (apnv.a(paramapnt.jdField_a_of_type_Apnv)) || (apob.a(paramapnt.jdField_a_of_type_Apob))))
-      {
-        QLog.d("AREngine_ARCloudControl", 2, "mResult set:" + this.jdField_a_of_type_Apmt.jdField_j_of_type_Int);
-        this.jdField_a_of_type_Apmt.jdField_j_of_type_Int = 0;
-      }
-      if ((paramapnt != null) && (apne.a(paramapnt.jdField_a_of_type_Apne))) {
-        paramapnt.jdField_a_of_type_Apne.b = this.jdField_a_of_type_Apny.a.jdField_a_of_type_JavaLangString;
-      }
-      if ((paramapnt != null) && (apnj.a(paramapnt.jdField_a_of_type_Apnj))) {
-        paramapnt.jdField_a_of_type_Apnj.b = this.jdField_a_of_type_Apny.a.jdField_a_of_type_JavaLangString;
-      }
-      if ((paramapnt != null) && (apob.a(paramapnt.jdField_a_of_type_Apob))) {
-        paramapnt.jdField_a_of_type_Apob.b = this.jdField_a_of_type_Apny.a.jdField_a_of_type_JavaLangString;
-      }
-      if (!apmt.c(this.jdField_a_of_type_Apmt))
-      {
-        bool2 = false;
-        bool1 = bool2;
-        if (paramInt == 0)
-        {
-          bool1 = bool2;
-          if (paramapnt != null) {
-            if ((!apne.a(paramapnt.jdField_a_of_type_Apne)) && (!apnj.a(paramapnt.jdField_a_of_type_Apnj)) && (!apnv.a(paramapnt.jdField_a_of_type_Apnv)) && (!apnl.a(paramapnt.jdField_a_of_type_Apnl)))
-            {
-              bool1 = bool2;
-              if (!apob.a(paramapnt.jdField_a_of_type_Apob)) {}
-            }
-            else
-            {
-              bool1 = true;
-            }
-          }
-        }
-        l1 = apmt.a(this.jdField_a_of_type_Apmt).b();
-        apkz.a().a(bool1, l1);
-        apmt.d(this.jdField_a_of_type_Apmt, true);
-      }
-      if ((!apmt.d(this.jdField_a_of_type_Apmt)) && (paramInt == 0) && (paramapnt != null) && ((apne.a(paramapnt.jdField_a_of_type_Apne)) || (apnj.a(paramapnt.jdField_a_of_type_Apnj)) || (apnv.a(paramapnt.jdField_a_of_type_Apnv)) || (apnl.a(paramapnt.jdField_a_of_type_Apnl)) || (apob.a(paramapnt.jdField_a_of_type_Apob))))
-      {
-        l1 = apmt.a(this.jdField_a_of_type_Apmt).b();
-        apkz.a().a(l1, this.jdField_a_of_type_Apmt.jdField_a_of_type_Apna.c);
-        apmt.e(this.jdField_a_of_type_Apmt, true);
-      }
-      if (apmt.a(this.jdField_a_of_type_Apmt) != null) {
-        apmt.a(this.jdField_a_of_type_Apmt).add(paramString);
-      }
-      if ((this.jdField_a_of_type_Apmt.jdField_j_of_type_Int != 0) || (!apnt.a(this.jdField_a_of_type_Apmt.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramapnt))) {
-        break label932;
-      }
-      if (this.jdField_a_of_type_Apmt.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.switchLBSLocation != 1) {
-        break label917;
-      }
-      if ((paramapnt.jdField_a_of_type_Long == 128L) && ((paramapnt.jdField_a_of_type_Long != 128L) || (!apmt.a(this.jdField_a_of_type_Apmt).a(paramapnt.jdField_a_of_type_Appa)))) {
-        continue;
-      }
-      i = 1;
-      if (i == 0) {
-        continue;
-      }
-      QLog.i("AREngine_ARCloudControl", 1, "normal process run requestToCheckLBSLocation.");
-      apmt.a(this.jdField_a_of_type_Apmt, paramInt, paramapnt);
-      return;
-      i = 0;
-      continue;
-      localObject = "";
+      return super.downloadImage(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     }
-    label917:
-    apmt.a(this.jdField_a_of_type_Apmt).a(2, null);
-    return;
-    label932:
-    apmt.a(this.jdField_a_of_type_Apmt).a(paramInt, paramapnt);
   }
 }
 

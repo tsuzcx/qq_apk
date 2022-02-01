@@ -1,59 +1,47 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
 
 public class axit
-  extends axiy<MessageForMixedMsg>
+  extends axip
 {
-  public axit(MessageForMixedMsg paramMessageForMixedMsg)
-  {
-    super(paramMessageForMixedMsg);
-  }
+  private final int jdField_a_of_type_Int = 1000;
+  private long jdField_a_of_type_Long;
+  public RecyclerView a;
+  public View a;
+  public TextView a;
+  public CircleImageView a;
+  public TextView b;
   
-  protected int a()
+  public axit(View paramView)
   {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131363145));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379724));
+    this.b = ((TextView)paramView.findViewById(2131379622));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131366958));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370119);
+    int i = -1;
+    if (paramView.getContext() != null) {
+      i = paramView.getContext().getResources().getDimensionPixelSize(2131298813);
+    }
+    if (i > 0) {}
+    for (;;)
     {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
+      axks localaxks = new axks(i);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(localaxks);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new axiu(this));
+      if ((paramView.getContext() instanceof Activity))
       {
-        localObject = axgs.a((MessageRecord)localObject);
-        ((axiy)localObject).a(this.a);
-        localArrayList.addAll(((axiy)localObject).a());
+        paramView = (Activity)paramView.getContext();
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new axiy(paramView, new axiv(this, paramView)));
       }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        axgs.a(localMessageRecord).a();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
-    {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
+      return;
+      i = 25;
     }
   }
 }

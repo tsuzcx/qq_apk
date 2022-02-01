@@ -1,41 +1,65 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.1.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.1.2;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class amlz
+public class amlz
+  extends amks
 {
-  private boolean a = true;
+  public amlz(ApolloPanel paramApolloPanel) {}
   
-  public final void a(@NotNull String paramString)
+  public void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "configText");
     if (QLog.isColorLevel()) {
-      QLog.d("WeatherPreloadWebPageConfigProcessor", 2, paramString);
-    }
-    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
-    {
-      if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.a = bool;
-        return;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("WeatherPreloadWebPageConfigProcessor", 1, paramString, new Object[0]);
+      QLog.d("ApolloPanel", 2, "tab download Done");
     }
   }
   
-  public final boolean a()
+  public void a(ApolloActionData paramApolloActionData)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
+    }
+    this.a.a(paramApolloActionData);
+    if (ApolloPanel.a(this.a) != null) {
+      ApolloPanel.a(this.a).a(paramApolloActionData);
+    }
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app == null)) {}
+    MqqHandler localMqqHandler;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getHandler(ChatActivity.class);
+        } while (localMqqHandler == null);
+        localMqqHandler.post(new ApolloPanel.1.1(this));
+        if (!paramBoolean.booleanValue()) {
+          break;
+        }
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentAccountUin());
+      } while (this.a.c == null);
+      this.a.c.clear();
+      this.a.d(this.a.a(ApolloPanel.jdField_a_of_type_Int));
+      return;
+    } while ((this.a.jdField_a_of_type_Amly == null) || (this.a.jdField_a_of_type_Amly.b != 3));
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
+    }
+    localMqqHandler.post(new ApolloPanel.1.2(this));
   }
 }
 

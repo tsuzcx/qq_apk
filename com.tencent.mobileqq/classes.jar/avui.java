@@ -1,9 +1,4 @@
-public abstract interface avui
-{
-  public abstract void c();
-  
-  public abstract void d();
-}
+class avui {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -3,21 +3,21 @@ package com.tencent.mobileqq.app.avgameshare;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import aonm;
+import angy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 public class AVGameShareResultPic$3
   implements Runnable
 {
-  public AVGameShareResultPic$3(aonm paramaonm, Map paramMap, Runnable paramRunnable) {}
+  public AVGameShareResultPic$3(angy paramangy, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
       QLog.d("AVGameShareResultPic", 1, "shareToWeChat decodeFile");
-      Bitmap localBitmap = BitmapFactory.decodeFile(aonm.a(this.this$0));
+      Bitmap localBitmap = BitmapFactory.decodeFile(angy.a(this.this$0));
       this.jdField_a_of_type_JavaUtilMap.put("image", localBitmap);
       if (this.this$0.a() != null) {
         this.this$0.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);

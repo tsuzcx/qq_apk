@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.now.view.logic;
 
-import aygl;
+import awtt;
 import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
 
 public class VideoInfoListenerImpl$3
   implements Runnable
 {
-  public VideoInfoListenerImpl$3(aygl paramaygl) {}
+  public VideoInfoListenerImpl$3(awtt paramawtt) {}
   
   public void run()
   {
-    if (aygl.a(this.this$0) != null) {
-      aygl.a(this.this$0).setVisibility(0);
+    if (awtt.a(this.this$0) != null) {
+      awtt.a(this.this$0).setVisibility(0);
     }
   }
 }

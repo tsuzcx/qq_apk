@@ -1,40 +1,63 @@
-public class yaq
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Iterator;
+import java.util.List;
+
+class yaq
+  extends SimpleObserver<yjh>
 {
-  public static void a(String paramString1, String paramString2)
+  yaq(yap paramyap, yjh paramyjh) {}
+  
+  public void a(yjh paramyjh)
   {
-    yuk.b(paramString1, paramString2);
+    super.onNext(paramyjh);
+    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.b();
+    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity().overridePendingTransition(0, 0);
+    this.jdField_a_of_type_Yap.o();
+    this.jdField_a_of_type_Yap.jdField_b_of_type_Boolean = false;
+    Iterator localIterator = this.jdField_a_of_type_Yap.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((xzb)localIterator.next()).b(paramyjh);
+    }
+    this.jdField_a_of_type_Yap.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.b();
+    paramyjh = (xzp)this.jdField_a_of_type_Yap.a(xzp.class);
+    if (paramyjh != null) {
+      paramyjh.i();
+    }
+    if (this.jdField_a_of_type_Yap.jdField_b_of_type_JavaUtilList.isEmpty())
+    {
+      paramyjh = this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity();
+      if (paramyjh != null)
+      {
+        ((EditWebVideoActivity)paramyjh).a(amtj.a(2131703096));
+        yap.a(this.jdField_a_of_type_Yap, paramyjh, this.jdField_a_of_type_Yap.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource, this.jdField_a_of_type_Yjh.a);
+      }
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.a(), amtj.a(2131703095), 0).a();
+    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity().finish();
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public void onCancel()
   {
-    yuk.a(paramString1, paramString2, paramObject);
+    super.onCancel();
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
-  
-  public static void b(String paramString1, String paramString2)
+  public void onError(@NonNull Error paramError)
   {
-    yuk.d(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    yuk.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    yuk.a(paramString1, paramString2, paramObject1, paramObject2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    yuk.e(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    yuk.a(paramString1, paramString2, paramObject1, paramObject2);
+    super.onError(paramError);
+    this.jdField_a_of_type_Yap.jdField_b_of_type_JavaUtilList.add(paramError);
+    if (QLog.isColorLevel()) {
+      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
+    }
+    QQToast.a(this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.a(), amtj.a(2131703099), 0).a();
+    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity().finish();
   }
 }
 

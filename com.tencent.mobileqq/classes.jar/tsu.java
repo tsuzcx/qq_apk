@@ -1,28 +1,43 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Context;
+import android.content.IntentFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class tsu
-  implements TVK_SDKMgr.InstallListener
 {
-  public tsu(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private tsv jdField_a_of_type_Tsv;
+  private tsw jdField_a_of_type_Tsw;
   
-  public void onInstallProgress(float paramFloat)
+  public tsu(Context paramContext)
   {
-    acvc.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
   }
   
-  public void onInstalledFailed(int paramInt)
+  public void a()
   {
-    acvc.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+    if ((this.jdField_a_of_type_Tsv != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Tsv, this.jdField_a_of_type_AndroidContentIntentFilter);
+    }
   }
   
-  public void onInstalledSuccessed()
+  public void a(tsw paramtsw)
   {
-    acvc.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
-    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
-      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    this.jdField_a_of_type_Tsw = paramtsw;
+    this.jdField_a_of_type_Tsv = new tsv(this);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Tsv != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Tsv);
     }
   }
 }

@@ -1,56 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
 public class ayvw
-  implements ayvt
+  extends Handler
 {
-  private static volatile ayvw jdField_a_of_type_Ayvw;
-  private ayvt jdField_a_of_type_Ayvt;
-  private List<ayvx> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public static boolean a;
   
-  public static ayvw a()
+  public void a(Message paramMessage)
   {
-    if (jdField_a_of_type_Ayvw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ayvw == null) {
-        jdField_a_of_type_Ayvw = new ayvw();
-      }
-      return jdField_a_of_type_Ayvw;
+    View localView = (View)paramMessage.obj;
+    int i = paramMessage.getData().getInt("iTipsTimes");
+    long l = paramMessage.getData().getLong("iRemindTime");
+    int j = paramMessage.what;
+    paramMessage = ValueAnimator.ofFloat(new float[] { 3.0F });
+    paramMessage.setEvaluator(new ayvz(this));
+    paramMessage.setDuration(3000L);
+    if (i >= 1) {
+      paramMessage.setRepeatCount(i - 1);
     }
-    finally {}
+    paramMessage.addUpdateListener(new ayvx(this, localView));
+    paramMessage.addListener(new ayvy(this, localView, l, j));
+    paramMessage.start();
   }
   
-  public List<ayvx> a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    new ayvu().a(this);
-  }
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(ayvt paramayvt)
-  {
-    this.jdField_a_of_type_Ayvt = paramayvt;
-  }
-  
-  public void a(List<ayvx> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_Ayvt != null) {
-      this.jdField_a_of_type_Ayvt.a(paramList);
+    if (1 == paramMessage.arg1) {
+      a(paramMessage);
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Ayvt = null;
-    jdField_a_of_type_Ayvw = null;
   }
 }
 

@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.4.1;
 
 public class bedp
-  extends bedd
+  implements bcrz
 {
-  public bedp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bedj parambedj)
-  {
-    super(paramQQAppInterface, paramChatMessage, parambedj);
-  }
+  public bedp(TroopEnterEffectController.3 param3) {}
   
-  protected String a()
+  public void a()
   {
-    return ((MessageForTroopFile)this.a).fileName;
-  }
-  
-  protected void a(bede parambede)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
+    {
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
+      this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.4.1(this));
     }
-    ThreadManager.post(new TroopFileAIOMsgTips.1(this, parambede), 8, null, true);
   }
 }
 

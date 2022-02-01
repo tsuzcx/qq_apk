@@ -158,24 +158,24 @@ public class StickerController
     if (this.stickerContext != null) {
       return this.stickerContext;
     }
-    TAVStickerContext localTAVStickerContext = new TAVStickerContext(this.ctx);
+    WsStickerContext localWsStickerContext = new WsStickerContext(this.ctx);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      configure(localTAVStickerContext);
-      this.stickerContext = localTAVStickerContext;
-      return localTAVStickerContext;
+      configure(localWsStickerContext);
+      this.stickerContext = localWsStickerContext;
+      return localWsStickerContext;
     }
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    HandlerUtils.getMainHandler().post(new StickerController.5(this, localTAVStickerContext, localCountDownLatch));
+    HandlerUtils.getMainHandler().post(new StickerController.5(this, localWsStickerContext, localCountDownLatch));
     try
     {
       localCountDownLatch.await();
-      return localTAVStickerContext;
+      return localWsStickerContext;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      return localTAVStickerContext;
+      return localWsStickerContext;
     }
     finally
     {
@@ -192,6 +192,11 @@ public class StickerController
   {
     releaseStickerContext();
     StickerEventDispatcher.getInstance().removeStickerEventListener(this);
+  }
+  
+  public Context getCtx()
+  {
+    return this.ctx;
   }
   
   public TAVSticker getCurrentSticker()
@@ -363,19 +368,19 @@ public class StickerController
   public TAVSticker updateTextSticker(TextEditorData paramTextEditorData)
   {
     Object localObject1;
+    TAVSticker localTAVSticker;
     for (;;)
     {
-      Object localObject2;
       try
       {
         localObject1 = this.stickerContext.getStickers().iterator();
         if (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (TAVSticker)((Iterator)localObject1).next();
-          if (!((TAVSticker)localObject2).getStickerId().equals(paramTextEditorData.getUniqueID())) {
+          localTAVSticker = (TAVSticker)((Iterator)localObject1).next();
+          if (!localTAVSticker.getStickerId().equals(paramTextEditorData.getUniqueID())) {
             continue;
           }
-          this.stickerContext.removeSticker((TAVSticker)localObject2);
+          this.stickerContext.removeSticker(localTAVSticker);
           localObject1 = new TAVSticker();
           ((TAVSticker)localObject1).setStickerId(paramTextEditorData.getUniqueID());
           ((TAVSticker)localObject1).setExtras(paramTextEditorData.getItemID());
@@ -383,17 +388,28 @@ public class StickerController
           {
             ((TAVSticker)localObject1).setFilePath(paramTextEditorData.getPagFilePath());
             ((TAVSticker)localObject1).setAssetFilePath(null);
-            ((TAVSticker)localObject1).setLayerIndex(((TAVSticker)localObject2).getLayerIndex());
-            ((TAVSticker)localObject1).setScale(((TAVSticker)localObject2).getScale());
-            ((TAVSticker)localObject1).setRotate(((TAVSticker)localObject2).getRotate());
-            ((TAVSticker)localObject1).setCenterX(((TAVSticker)localObject2).getCenterX());
-            ((TAVSticker)localObject1).setCenterY(((TAVSticker)localObject2).getCenterY());
-            ((TAVSticker)localObject1).setEditable(((TAVSticker)localObject2).isEditable());
-            ((TAVSticker)localObject1).setMinScale(((TAVSticker)localObject2).getMinScale());
-            ((TAVSticker)localObject1).setMaxScale(((TAVSticker)localObject2).getMaxScale());
-            ((TAVSticker)localObject1).setTimeRange(((TAVSticker)localObject2).getTimeRange());
+            ((TAVSticker)localObject1).setLayerIndex(localTAVSticker.getLayerIndex());
+            ((TAVSticker)localObject1).setScale(localTAVSticker.getScale());
+            ((TAVSticker)localObject1).setRotate(localTAVSticker.getRotate());
+            ((TAVSticker)localObject1).setCenterX(localTAVSticker.getCenterX());
+            ((TAVSticker)localObject1).setCenterY(localTAVSticker.getCenterY());
+            ((TAVSticker)localObject1).setEditable(localTAVSticker.isEditable());
+            ((TAVSticker)localObject1).setMinScale(localTAVSticker.getMinScale());
+            ((TAVSticker)localObject1).setMaxScale(localTAVSticker.getMaxScale());
+            ((TAVSticker)localObject1).setTimeRange(localTAVSticker.getTimeRange());
+            if ((paramTextEditorData.getStickerType() != null) && (paramTextEditorData.getStickerType().equals("blur")))
+            {
+              TAVStickerExKt.setExtraStickerType((TAVSticker)localObject1, paramTextEditorData.getStickerType());
+              TAVStickerExKt.setStickerLockRatio((TAVSticker)localObject1, false);
+              TAVStickerExKt.setStickerEnableRotate((TAVSticker)localObject1, false);
+              TAVStickerExKt.setStickerScaleX((TAVSticker)localObject1, localTAVSticker.getScale());
+              TAVStickerExKt.setStickerScaleY((TAVSticker)localObject1, localTAVSticker.getScale());
+              TAVStickerExKt.setStickerTextPngPath((TAVSticker)localObject1, paramTextEditorData.getBlurTextPath());
+              TAVStickerExKt.setStickerTexturePngPath((TAVSticker)localObject1, paramTextEditorData.getBlurTexturePath());
+              ((TAVSticker)localObject1).setRotate(0.0F);
+            }
             ((TAVSticker)localObject1).init();
-            localObject2 = ((TAVSticker)localObject1).getStickerSolidItems();
+            Object localObject2 = ((TAVSticker)localObject1).getStickerSolidItems();
             if (CollectionUtil.isEmptyList((List)localObject2)) {
               break;
             }
@@ -418,14 +434,15 @@ public class StickerController
       {
         Logger.e(paramTextEditorData);
       }
-      ((TAVSticker)localObject1).setFilePath(((TAVSticker)localObject2).getFilePath());
-      ((TAVSticker)localObject1).setAssetFilePath(((TAVSticker)localObject2).getAssetFilePath());
+      ((TAVSticker)localObject1).setFilePath(localTAVSticker.getFilePath());
+      ((TAVSticker)localObject1).setAssetFilePath(localTAVSticker.getAssetFilePath());
     }
-    if (!((TAVSticker)localObject1).getStickerTextItems().isEmpty())
+    if ((!((TAVSticker)localObject1).getStickerTextItems().isEmpty()) && (TAVStickerExKt.isStickerCarryTextFromOther(localTAVSticker)))
     {
       ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(0)).setText(paramTextEditorData.getContent());
       ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(0)).setTextColor(paramTextEditorData.getTextColor());
       ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(0)).setFontPath(paramTextEditorData.getFontPath());
+      TAVStickerExKt.setStickerCarryTextFromOther((TAVSticker)localObject1, true);
     }
     ((TAVSticker)localObject1).updateTextData();
     ((TAVSticker)localObject1).updateImageData();

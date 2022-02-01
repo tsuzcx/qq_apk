@@ -3,7 +3,7 @@ package com.tencent.qqmini.proxyimpl;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bkwo;
+import bjce;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 public class ChannelProxyImpl$13
   implements Runnable
 {
-  public ChannelProxyImpl$13(bkwo parambkwo, Activity paramActivity, String paramString1, String paramString2) {}
+  public ChannelProxyImpl$13(bjce parambjce, Activity paramActivity, String paramString1, String paramString2) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import acpn;
+import ablw;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ class BannerAdPlugin$5
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", "resize");
       localJSONObject.put("width", this.val$resizeValue);
-      localJSONObject.put("height", acpn.a(0, this.val$resizeValue));
+      localJSONObject.put("height", ablw.a(0, this.val$resizeValue));
       BannerAdPlugin.access$300(this.this$0, this.val$webview, localJSONObject, "onBannerAdStateChange");
       QLog.i("[minigame] BannerAdPlugin", 1, "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
       return;

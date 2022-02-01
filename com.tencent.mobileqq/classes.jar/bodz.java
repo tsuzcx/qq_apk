@@ -1,17 +1,14 @@
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
 public class bodz
+  implements FileFilter
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

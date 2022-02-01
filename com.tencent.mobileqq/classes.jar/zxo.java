@@ -1,56 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.biz.videostory.config.VSConfigManager;
 
 public class zxo
-  extends anyu
 {
-  public zxo(QRLoginMgrActivity paramQRLoginMgrActivity) {}
-  
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  private static float a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onKickOutDevFResult isSuccess:", Boolean.valueOf(paramBoolean), " appid:", Long.valueOf(paramLong), " result:", Integer.valueOf(paramInt1), " index:", Integer.valueOf(paramInt2) });
+    if (paramInt1 <= paramInt2) {
+      return 1.0F;
     }
-    if (!paramBoolean)
+    return 1.0F * paramInt2 / paramInt1;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap)
+  {
+    int i;
+    int j;
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      if (QRLoginMgrActivity.a(this.a) == null) {
-        QRLoginMgrActivity.a(this.a, new HashSet());
-      }
-      QRLoginMgrActivity.a(this.a).add(Long.valueOf(paramLong));
+      i = paramBitmap.getWidth();
+      j = paramBitmap.getHeight();
+      if ((i > 0) && (j > 0)) {}
     }
-    if (QRLoginMgrActivity.a(this.a) != null) {
-      QRLoginMgrActivity.a(this.a).remove(Long.valueOf(paramLong));
-    }
-    if ((QRLoginMgrActivity.a(this.a) == null) || (QRLoginMgrActivity.a(this.a).size() == 0))
+    else
     {
-      QRLoginMgrActivity.a(this.a);
-      this.a.finish();
-      if ((QRLoginMgrActivity.a(this.a) != null) && (QRLoginMgrActivity.a(this.a).size() > 0)) {
-        QQToast.a(this.a.getApplicationContext(), 1, 2131715932, 0).a();
-      }
+      return paramBitmap;
     }
-    while (paramInt2 != 100)
+    int k = ((Long)VSConfigManager.getInstance().getValue("SmartCutPicWidth", Long.valueOf(224L))).intValue();
+    if (i <= j) {}
+    for (float f = a(i, k);; f = a(j, k))
     {
-      return;
-      QQToast.a(this.a.getApplicationContext(), 2, 2131715933, 0).a();
-      Intent localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
-      localIntent.putExtra("status", "logout");
-      this.a.getApplicationContext().sendBroadcast(localIntent);
-      return;
+      k = (int)f;
+      int m = (int)f;
+      ayde.a("Q.videostory", "Q.videostory.capture", "resizeImage", k * i + " " + m * j);
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(f, f);
+      return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
     }
-    QRLoginMgrActivity.a(this.a);
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131715958, 0).a();
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, 2131715932, 0).a();
   }
 }
 

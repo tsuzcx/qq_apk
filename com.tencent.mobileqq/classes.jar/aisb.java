@@ -1,8 +1,6 @@
 public abstract interface aisb
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(String paramString, int paramInt);
 }
 
 

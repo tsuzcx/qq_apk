@@ -1,15 +1,18 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zbr
+public class zbr
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public zbr(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void onClick(View paramView)
+  {
+    FollowedRecommendBannerView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,13 +1,17 @@
 package com.tencent.thumbplayer.core.downloadproxy.apiinner;
 
+import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
+import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils;
+
 class TPListenerManager$3
   implements Runnable
 {
-  TPListenerManager$3(TPListenerManager paramTPListenerManager, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5) {}
+  TPListenerManager$3(TPListenerManager paramTPListenerManager, int paramInt) {}
   
   public void run()
   {
-    TPListenerManager.access$700(this.this$0, this.val$message, this.val$taskId, this.val$arg1, this.val$arg2, this.val$arg3, this.val$arg4, this.val$arg5);
+    String str = TPDLProxyUtils.losePackageCheck(this.val$sendPackageCount);
+    TPDownloadProxyNative.getInstance().setUserData("lose_package_check_info", str);
   }
 }
 

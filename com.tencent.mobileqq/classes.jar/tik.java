@@ -1,49 +1,58 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class tik
-  extends Handler
+  implements INetInfoHandler
 {
-  private WeakReference<VideoPlayManager> a;
+  public tik(BridgeModule paramBridgeModule, String paramString) {}
   
-  public tik(VideoPlayManager paramVideoPlayManager)
+  public void onNetMobile2None()
   {
-    this.a = new WeakReference(paramVideoPlayManager);
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onNetMobile2Wifi(String paramString)
   {
-    VideoPlayManager localVideoPlayManager;
-    if (this.a != null)
-    {
-      localVideoPlayManager = (VideoPlayManager)this.a.get();
-      if (localVideoPlayManager != null) {
-        switch (paramMessage.what)
-        {
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
     }
-    do
-    {
-      return;
-      localVideoPlayManager = null;
-      break;
-    } while ((VideoPlayManager.a(localVideoPlayManager) == null) || (til.a(VideoPlayManager.a(localVideoPlayManager)) == null));
-    Object localObject = til.a(VideoPlayManager.a(localVideoPlayManager));
-    paramMessage = VideoPlayManager.a(localVideoPlayManager);
-    if ((localObject != null) && (((rwf)localObject).f()))
-    {
-      long l = ((rwf)localObject).a();
-      localObject = VideoPlayManager.a(localVideoPlayManager).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((tim)((Iterator)localObject).next()).a(paramMessage, tin.a(l) * 1000);
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
     }
-    VideoPlayManager.a(localVideoPlayManager).sendEmptyMessageDelayed(0, VideoPlayManager.a(localVideoPlayManager));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
   }
 }
 

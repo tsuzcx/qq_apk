@@ -1,11 +1,6 @@
-import android.util.Property;
-import android.view.View;
-
-public class zuk
+public abstract interface zuk
 {
-  public float a;
-  public Property<View, Float> a;
-  public float b;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

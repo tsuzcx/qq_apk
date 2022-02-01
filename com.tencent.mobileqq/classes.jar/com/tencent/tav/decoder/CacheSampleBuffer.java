@@ -1,6 +1,8 @@
 package com.tencent.tav.decoder;
 
+import android.support.annotation.NonNull;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import java.nio.ByteBuffer;
@@ -9,6 +11,31 @@ public class CacheSampleBuffer
   extends CMSampleBuffer
 {
   private VideoTexture texture;
+  
+  public CacheSampleBuffer(@NonNull CMSampleState paramCMSampleState)
+  {
+    super(paramCMSampleState);
+  }
+  
+  public CacheSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
+  {
+    super(paramCMSampleState, paramTextureInfo);
+  }
+  
+  public CacheSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
+  {
+    super(paramCMSampleState, paramTextureInfo, paramBoolean);
+  }
+  
+  public CacheSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
+  {
+    super(paramCMSampleState, paramByteBuffer);
+  }
+  
+  public CacheSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
+  {
+    super(paramCMSampleState, paramByteBuffer, paramBoolean);
+  }
   
   public CacheSampleBuffer(CMTime paramCMTime)
   {

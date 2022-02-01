@@ -1,12 +1,19 @@
+import android.content.Context;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqtl
-  extends aqth
+  implements AdapterView.OnItemClickListener
 {
-  public void a(aqsx paramaqsx, int paramInt, boolean paramBoolean)
+  public aqtl(DataReportViewer paramDataReportViewer, Context paramContext) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.a(paramaqsx, paramInt, paramBoolean);
-    paramaqsx.b.setBackgroundResource(2130839253);
+    DataReportViewer.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer, this.jdField_a_of_type_AndroidContentContext, paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

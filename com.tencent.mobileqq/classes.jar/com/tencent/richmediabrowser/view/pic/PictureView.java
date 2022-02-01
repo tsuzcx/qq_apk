@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -18,28 +17,34 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import com.android.volley.VolleyError;
+import com.tencent.image.JpegExifReader;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.richmediabrowser.download.HttpDownloadManager;
-import com.tencent.richmediabrowser.download.IImageDownloadListener;
 import com.tencent.richmediabrowser.listener.IBrowserItemEventListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.RichMediaBaseData;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.model.pic.PictureData;
 import com.tencent.richmediabrowser.presenter.pic.PicturePresenter;
 import com.tencent.richmediabrowser.utils.ScreenUtils;
 import com.tencent.richmediabrowser.view.BrowserBaseView;
 import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PictureView
   extends BrowserBaseView
-  implements Handler.Callback, View.OnClickListener, IImageDownloadListener, IBrowserItemEventListener
+  implements Handler.Callback, View.OnClickListener, IBrowserItemEventListener
 {
   private static final int REFRESH_IMAGE = 1;
   private static final String TAG = "PictureView";
+  public static final Drawable TRANSPARENT = new ColorDrawable(0);
   private BrowserScaleView imageView;
   Handler mHandler;
   public PicturePresenter picPresenter;
@@ -50,6 +55,28 @@ public class PictureView
     this.picPresenter = paramPicturePresenter;
   }
   
+  private void updateOriginalData(RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (paramRichMediaBrowserInfo.orientation == -2) {}
+    try
+    {
+      paramRichMediaBrowserInfo.orientation = JpegExifReader.readOrientation(paramString);
+      paramURLDrawable.setTag(Integer.valueOf(1));
+      this.picPresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramURLDrawable);
+      this.imageView.initDrawable(paramURLDrawable, this.mScreenWidthPx, this.mScreenHeightPx, this.picPresenter.getRotation(paramRichMediaBrowserInfo.orientation));
+      this.picPresenter.onLoadFinish(paramInt, true);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        BrowserLogHelper.getInstance().getGalleryLog().d("PictureView", 4, "read exif error" + paramString.getMessage());
+        paramRichMediaBrowserInfo.orientation = 1;
+      }
+    }
+  }
+  
   public boolean back()
   {
     return super.back();
@@ -57,20 +84,51 @@ public class PictureView
   
   public void bindView(int paramInt)
   {
-    Object localObject = this.picPresenter.getItem(paramInt);
-    HttpDownloadManager.getInstance().addImageDownloadListener(((RichMediaBrowserInfo)localObject).baseData.url, this);
-    if (Integer.parseInt(((RichMediaBrowserInfo)localObject).baseData.id) % 2 == 0) {}
-    for (localObject = this.mContext.getResources().getDrawable(2130850749);; localObject = this.mContext.getResources().getDrawable(2130850749))
+    RichMediaBrowserInfo localRichMediaBrowserInfo = this.picPresenter.getItem(paramInt);
+    PictureData localPictureData;
+    Object localObject2;
+    File localFile;
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 1))
     {
-      this.imageView.setOnItemEventListener(this);
-      this.imageView.setImageDrawable((Drawable)localObject);
-      this.imageView.setMainBrowserPresenter(this.picPresenter.mainBrowserPresenter);
-      this.imageView.initDrawable((Drawable)localObject, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
-      localObject = new PictureView.GalleryPictureViewHolder(this);
-      ((PictureView.GalleryPictureViewHolder)localObject).urlImageView = this.imageView;
-      this.mBrowserItemView.setTag(localObject);
-      return;
+      localPictureData = (PictureData)localRichMediaBrowserInfo.baseData;
+      localObject1 = null;
+      localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.mScreenWidthPx;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.mScreenHeightPx;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = TRANSPARENT;
+      if (!localPictureData.isLocal) {
+        break label130;
+      }
+      localFile = new File(localPictureData.filePath);
     }
+    for (;;)
+    {
+      try
+      {
+        localObject2 = URLDrawable.getDrawable(localFile.toURI().toURL().toString(), (URLDrawable.URLDrawableOptions)localObject2);
+        localObject1 = localObject2;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        continue;
+      }
+      if (localObject1 != null) {
+        break;
+      }
+      return;
+      label130:
+      localObject1 = URLDrawable.getDrawable(localPictureData.url);
+    }
+    this.imageView.setOnItemEventListener(this);
+    this.imageView.setMainBrowserPresenter(this.picPresenter.mainBrowserPresenter);
+    this.imageView.setImageDrawable((Drawable)localObject1);
+    this.imageView.setOriginalImage(true);
+    this.imageView.setGalleryImageListener(new PictureView.1(this, localRichMediaBrowserInfo, localPictureData, (URLDrawable)localObject1));
+    this.imageView.initDrawable((Drawable)localObject1, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
+    Object localObject1 = new PictureView.GalleryPictureViewHolder(this);
+    ((PictureView.GalleryPictureViewHolder)localObject1).urlImageView = this.imageView;
+    this.mBrowserItemView.setTag(localObject1);
   }
   
   public void buildComplete()
@@ -105,8 +163,8 @@ public class PictureView
     for (;;)
     {
       return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559580, paramViewGroup, false));
-      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368343));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559582, paramViewGroup, false));
+      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368367));
       this.imageView.setOnClickListener(this);
     }
   }
@@ -118,7 +176,7 @@ public class PictureView
     default: 
       return false;
     }
-    paramMessage = this.mContext.getResources().getDrawable(2130850749);
+    paramMessage = this.mContext.getResources().getDrawable(2130850678);
     this.imageView.initDrawable(paramMessage, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
     this.imageView.setImageDrawable(paramMessage);
     return false;
@@ -181,16 +239,6 @@ public class PictureView
     super.onEnterAnimationStart();
   }
   
-  public void onError(VolleyError paramVolleyError)
-  {
-    if (paramVolleyError != null) {}
-    for (paramVolleyError = paramVolleyError.getMessage();; paramVolleyError = "")
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("PictureView", 4, "onError: " + paramVolleyError);
-      return;
-    }
-  }
-  
   public void onItemSelected(int paramInt)
   {
     super.onItemSelected(paramInt);
@@ -213,20 +261,6 @@ public class PictureView
       return;
     }
     ((URLDrawable)paramView).updateRegionBitmap(paramRegionDrawableData);
-  }
-  
-  public void onSuccess(String paramString, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("PictureView", 4, "onSuccess");
-      RichMediaBrowserInfo localRichMediaBrowserInfo = this.picPresenter.getSelectedItem();
-      if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (!TextUtils.isEmpty(localRichMediaBrowserInfo.baseData.url)) && (paramString.equals(localRichMediaBrowserInfo.baseData.url)) && (this.mBrowserItemView != null) && ((this.mBrowserItemView.getTag() instanceof PictureView.GalleryPictureViewHolder))) {
-        ((PictureView.GalleryPictureViewHolder)this.mBrowserItemView.getTag()).urlImageView.setImageDrawable(new BitmapDrawable(paramBitmap));
-      }
-      return;
-    }
-    BrowserLogHelper.getInstance().getGalleryLog().d("PictureView", 4, "onSuccess bitmap is null, url = " + paramString);
   }
   
   public void onViewDetached(int paramInt, View paramView, RichMediaBrowserInfo paramRichMediaBrowserInfo)

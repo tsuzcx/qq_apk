@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
-
-public final class ascd
-  implements Parcelable.Creator<DoutuData>
+class ascd
+  implements ascz
 {
-  public DoutuData a(Parcel paramParcel)
-  {
-    return new DoutuData(paramParcel);
-  }
+  ascd(asbj paramasbj) {}
   
-  public DoutuData[] a(int paramInt)
+  public void a(Object[] paramArrayOfObject)
   {
-    return new DoutuData[paramInt];
+    asbj.access$1700(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ascd
  * JD-Core Version:    0.7.0.1
  */

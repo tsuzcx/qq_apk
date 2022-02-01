@@ -1,6 +1,40 @@
-public abstract interface anje
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.FriendInfo;
+
+public class anje
 {
-  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  QQAppInterface a;
+  
+  public anje(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public void a(Friends paramFriends, FriendInfo paramFriendInfo)
+  {
+    paramFriends = ((amsw)this.a.getManager(51)).e(paramFriends.uin);
+    if (paramFriends != null)
+    {
+      alnr localalnr = (alnr)this.a.getManager(153);
+      ApolloBaseInfo localApolloBaseInfo = localalnr.b(paramFriends.uin);
+      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime))
+      {
+        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
+        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
+        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
+        localApolloBaseInfo.apolloSignStr = "";
+        localalnr.a(localApolloBaseInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "handleGetFriendDetailInfo, update apollo info uin=" + paramFriends.uin + "apollo status: " + paramFriendInfo.cApolloFlag + ", apollo svr TS: " + paramFriendInfo.uApolloTimestamp + ", sign TS: " + paramFriendInfo.uApolloSignTime);
+        }
+      }
+    }
+  }
 }
 
 

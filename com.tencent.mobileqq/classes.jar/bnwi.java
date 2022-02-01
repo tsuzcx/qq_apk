@@ -1,155 +1,56 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import cooperation.vip.pb.TianShuAccess.MapEntry;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bnwi
-  extends almm
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public int d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public bnwi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public bnwi(tAdvDesc paramtAdvDesc)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramtAdvDesc);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramSeekBar = this.a;
+      paramSeekBar.g += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+    }
+    this.a.b(paramInt * this.a.b / 10000L);
   }
   
-  public bnwi(TianShuAccess.AdItem paramAdItem)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    super(paramAdItem);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
-    {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
-    }
-    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(str);
-      this.d = localJSONObject.optInt("enableCountdown");
-      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
-      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
-      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("topText");
-      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("bottomText");
-      this.g = localJSONObject.optString("textColor");
-      this.h = localJSONObject.optString("coutdownBgColor");
-      this.i = localJSONObject.optString("coutdownTextColor");
-      this.j = localJSONObject.optString("buttonTitle");
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      bnfx.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
     }
   }
   
-  public void a(SharedPreferences paramSharedPreferences, String paramString)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if (paramSharedPreferences == null) {
-      return;
+    this.a.l();
+    ShortVideoPlayActivity localShortVideoPlayActivity = this.a;
+    localShortVideoPlayActivity.h += 1;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.b / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
     }
-    super.a(paramSharedPreferences, paramString);
-    try
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      this.jdField_e_of_type_JavaLangString = paramSharedPreferences.getString("splash_union_banner_top_text" + this.c, "");
-      this.jdField_f_of_type_JavaLangString = paramSharedPreferences.getString("splash_union_banner_bottom_text" + this.c, "");
-      this.g = paramSharedPreferences.getString("splash_union_banner_text_color" + this.c, "");
-      this.h = paramSharedPreferences.getString("splash_union_banner_cout_down_bg_color" + this.c, "");
-      this.i = paramSharedPreferences.getString("splash_union_banner_cout_down_text_color" + this.c, "");
-      this.j = paramSharedPreferences.getString("splash_union_banner_botton_title" + this.c, "");
-      this.d = paramSharedPreferences.getInt("splash_union_banner_enable_count_down" + this.c, -1);
-      this.jdField_e_of_type_Int = paramSharedPreferences.getInt("splash_union_banner_count_down_min" + this.c, -1);
-      this.jdField_f_of_type_Int = paramSharedPreferences.getInt("splash_union_banner_count_down_sec" + this.c, -1);
-      return;
-    }
-    catch (Exception paramSharedPreferences)
-    {
-      paramSharedPreferences.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "buildUnionBannerFromSP error msg = " + paramSharedPreferences.getMessage());
-    }
-  }
-  
-  public void a(String paramString, SharedPreferences paramSharedPreferences)
-  {
-    if (paramSharedPreferences == null) {
-      return;
-    }
-    super.a(paramString, paramSharedPreferences);
-    paramString = paramSharedPreferences.edit();
-    paramString.putString("splash_union_banner_top_text" + this.c, this.jdField_e_of_type_JavaLangString);
-    paramString.putString("splash_union_banner_bottom_text" + this.c, this.jdField_f_of_type_JavaLangString);
-    paramString.putString("splash_union_banner_text_color" + this.c, this.g);
-    paramString.putString("splash_union_banner_cout_down_bg_color" + this.c, this.h);
-    paramString.putString("splash_union_banner_cout_down_text_color" + this.c, this.i);
-    paramString.putString("splash_union_banner_botton_title" + this.c, this.j);
-    paramString.putInt("splash_union_banner_enable_count_down" + this.c, this.d);
-    paramString.putInt("splash_union_banner_count_down_min" + this.c, this.jdField_e_of_type_Int);
-    paramString.putInt("splash_union_banner_count_down_sec" + this.c, this.jdField_f_of_type_Int);
-    paramString.apply();
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem == null)
-    {
-      QLog.e("QbossADBannerConfigInfo", 1, "fillDataFromUnionSplashItem error with data = null");
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.argList.get().iterator();
-    while (localIterator.hasNext())
-    {
-      TianShuAccess.MapEntry localMapEntry = (TianShuAccess.MapEntry)localIterator.next();
-      localHashMap.put(localMapEntry.key.get(), localMapEntry.value.get());
-    }
-    try
-    {
-      if (!TextUtils.isEmpty((CharSequence)localHashMap.get("enableCountdown"))) {
-        this.d = Integer.parseInt((String)localHashMap.get("enableCountdown"));
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
       }
-      if (!TextUtils.isEmpty((CharSequence)localHashMap.get("countdownMinute"))) {
-        this.jdField_e_of_type_Int = Integer.parseInt((String)localHashMap.get("countdownMinute"));
-      }
-      if (!TextUtils.isEmpty((CharSequence)localHashMap.get("countdownSecond"))) {
-        this.jdField_f_of_type_Int = Integer.parseInt((String)localHashMap.get("countdownSecond"));
-      }
-      this.jdField_e_of_type_JavaLangString = ((String)localHashMap.get("topText"));
-      this.jdField_f_of_type_JavaLangString = ((String)localHashMap.get("bottomText"));
-      this.g = ((String)localHashMap.get("textColor"));
-      this.h = ((String)localHashMap.get("coutdownBgColor"));
-      this.i = ((String)localHashMap.get("coutdownTextColor"));
-      this.j = ((String)localHashMap.get("buttonTitle"));
-      return;
+      this.a.a(j);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner fillDataFromUnionSplashItem error msg = " + localException.getMessage());
-    }
+    ShortVideoPlayActivity.b(this.a, false);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

@@ -1,348 +1,339 @@
-import android.annotation.TargetApi;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.os.Build;
+import android.content.Intent;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-@TargetApi(14)
 public class zbh
-  extends zbn
 {
-  public static int a;
-  public static final int b;
-  public static int c;
-  public static int d = 270;
-  public final long a;
-  public Paint a;
-  public zbi a;
-  public zbj a;
-  public zfv a;
-  public boolean a;
-  private zbj b;
-  public int e;
-  public int f;
-  public int g;
-  public int h = jdField_b_of_type_Int;
-  public int i;
-  public int j;
-  public int k;
+  private static long a;
   
-  static
+  public static int a(int paramInt)
   {
-    jdField_b_of_type_Int = Color.parseColor("#80000000");
-  }
-  
-  public zbh(DoodleView paramDoodleView)
-  {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Long = 270L;
-    e();
-  }
-  
-  private void b(int paramInt)
-  {
-    yuk.b("TextLayer", "setMode:" + paramInt + ",preMode:" + this.f);
-    this.f = this.e;
-    this.e = paramInt;
-  }
-  
-  private boolean c()
-  {
-    return ("vivo Xplay3S".equalsIgnoreCase(Build.MODEL)) || ("G3226".equalsIgnoreCase(Build.MODEL));
-  }
-  
-  private void e()
-  {
-    this.i = agej.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.g = zft.a(this.jdField_a_of_type_AndroidContentContext);
-    this.f = 1;
-    this.e = 1;
-    this.jdField_a_of_type_Zbj = new zbj(this);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-    this.jdField_a_of_type_Zfv = new zfv();
-    zfv localzfv = this.jdField_a_of_type_Zfv;
-    if (c()) {}
-    for (float f1 = 3.0F;; f1 = 6.0F)
+    switch (paramInt)
     {
-      localzfv.a(f1);
-      this.jdField_a_of_type_Zfv.b(0.2F);
-      this.jdField_a_of_type_Zfv.a(true);
-      c = ViewConfiguration.get(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getContext()).getScaledTouchSlop();
-      return;
+    case 4: 
+    default: 
+      return 0;
+    case 0: 
+    case 3: 
+    case 5: 
+    case 6: 
+      return 7000;
+    case 2: 
+    case 7: 
+      return 7001;
     }
+    return 8001;
   }
   
-  private void j()
+  public static CertifiedAccountMeta.StFeed a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    b(6);
-    this.jdField_b_of_type_Zbj = new zbj(this, this.jdField_a_of_type_Zbj);
-    zbj.a(this.jdField_b_of_type_Zbj);
-  }
-  
-  public int a()
-  {
-    if (b()) {
-      return 1;
+    CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+    if (paramString1 != null) {
+      localStFeed.id.set(paramString1);
     }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return "TextLayer";
-  }
-  
-  public zbw a()
-  {
-    return this.jdField_a_of_type_Zbj.a();
-  }
-  
-  public void a()
-  {
-    this.e = 1;
-    this.f = 1;
-    this.h = jdField_b_of_type_Int;
-    this.k = 0;
-    this.jdField_a_of_type_Zbj.d();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-    this.jdField_a_of_type_Zfv.b(this.jdField_a_of_type_Zbj);
-    d();
-    yuk.b("TextLayer", "clear over");
-    if (this.jdField_a_of_type_Zbi != null) {
-      this.jdField_a_of_type_Zbi.b();
+    localStFeed.type.set(paramInt1);
+    localStFeed.createTime.set(paramLong);
+    paramString1 = new CertifiedAccountMeta.StUser();
+    if (paramString2 != null) {
+      paramString1.id.set(paramString2);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt < 0)
+    localStFeed.poster.set(paramString1);
+    if (a(paramInt1))
     {
-      yuk.e("TextLayer", "setTextTop:" + paramInt);
-      return;
+      paramString1 = new CertifiedAccountMeta.StVideo();
+      paramString1.height.set(paramInt3);
+      paramString1.width.set(paramInt2);
+      localStFeed.video.set(paramString1);
     }
-    yuk.b("TextLayer", "setTextTop:" + paramInt);
-    this.k = paramInt;
+    return localStFeed;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private static String a(String paramString)
   {
-    super.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Zbj.jdField_a_of_type_AndroidGraphicsRect.set(0, this.jdField_a_of_type_AndroidGraphicsRect.height() / 2 - this.i / 2, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.height() / 2 + this.i / 2);
-    this.jdField_a_of_type_Zbj.jdField_a_of_type_AndroidGraphicsPointF.x = (paramInt1 / 2);
-    this.jdField_a_of_type_Zbj.jdField_a_of_type_AndroidGraphicsPointF.y = (0.42F * paramInt2);
-    jdField_a_of_type_Int = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a() * 0.04F);
+    String str = paramString;
+    if (paramString == null) {
+      str = "0";
+    }
+    return str;
   }
   
-  protected void a(Canvas paramCanvas)
+  private static void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    zbc.a();
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    a(paramContext, null, null, new ExtraTypeInfo(paramInt2, paramInt1), paramIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt, Intent paramIntent)
+  {
+    a(paramContext, paramInt, 7004, paramIntent);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    a(paramContext, paramStFeed, 0);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, int paramInt)
+  {
+    a(paramContext, paramStFeed, paramInt, null);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, int paramInt, Intent paramIntent)
+  {
+    a(paramContext, "", paramStFeed, new ExtraTypeInfo(0, paramInt), paramIntent);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    a(paramContext, "", paramStFeed, paramExtraTypeInfo, null);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser)
+  {
+    a(paramContext, paramStUser.id.get(), paramStUser, 0, null);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, 0);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    a(paramContext, paramString, null, paramInt, null);
+  }
+  
+  public static void a(Context paramContext, String paramString, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo, Intent paramIntent)
+  {
+    if (Math.abs(System.currentTimeMillis() - a) < 500L) {
+      QLog.i("SubscribeLauncher", 2, "prevent SubscribeLaucher from doubleClick");
+    }
+    Intent localIntent;
+    for (;;)
     {
       return;
-      if ((this.e == 6) && (this.jdField_b_of_type_Zbj != null))
+      a();
+      localIntent = paramIntent;
+      if (paramIntent == null) {
+        localIntent = new Intent();
+      }
+      if (paramString != null) {
+        localIntent.putExtra("url", paramString);
+      }
+      if (paramStFeed != null)
       {
-        this.jdField_b_of_type_Zbj.a(paramCanvas);
+        ((CertifiedAccountMeta.StUser)paramStFeed.poster.get()).setHasFlag(true);
+        ((CertifiedAccountMeta.StImage)paramStFeed.cover.get()).setHasFlag(true);
+        ((CertifiedAccountMeta.StVideo)paramStFeed.video.get()).setHasFlag(true);
+        localIntent.putExtra("bundle_key_subscribe_feed_bytes_array", paramStFeed.toByteArray());
+        localIntent.putExtra("bundle_key_feed_type", paramStFeed.type.get());
+      }
+      a = System.currentTimeMillis();
+      localIntent.putExtra("PERF_OPEN_PAGE_TIME", System.currentTimeMillis());
+      if (paramContext == null) {}
+      for (paramString = BaseApplicationImpl.getContext(); !a(paramString, paramStFeed, paramExtraTypeInfo, localIntent); paramString = paramContext)
+      {
+        localIntent.setClass(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+        localIntent.putExtra("fragment_class", SubscribeHybirdFragment.class.getCanonicalName());
+        if (!(paramContext instanceof Activity)) {
+          break label212;
+        }
+        paramContext.startActivity(localIntent);
         return;
       }
-    } while ((this.e != 4) && (this.e != 3));
-    this.jdField_a_of_type_Zbj.a(paramCanvas);
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat)
-  {
-    paramCanvas.save();
-    paramCanvas.scale(paramFloat, paramFloat);
-    this.jdField_a_of_type_Zbj.a(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(zbi paramzbi)
-  {
-    this.jdField_a_of_type_Zbi = paramzbi;
-  }
-  
-  public void a(zbw paramzbw)
-  {
-    if (paramzbw == null)
-    {
-      yuk.e("TextLayer", "textInfo is null.");
-      return;
     }
-    yuk.b("TextLayer", "setTextInfo:" + paramzbw.a);
-    this.jdField_a_of_type_Zbj.a(paramzbw);
-    super.g();
+    label212:
+    localIntent.addFlags(268435456);
+    BaseApplicationImpl.getContext().startActivity(localIntent);
   }
   
-  public void a(boolean paramBoolean)
+  public static void a(Context paramContext, String paramString, CertifiedAccountMeta.StUser paramStUser, int paramInt, Intent paramIntent)
   {
-    yuk.b("TextLayer", "setKeyboardState:" + paramBoolean);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      super.g();
-      return;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Zbj.jdField_a_of_type_Zbw.a)) {
-        b(1);
-      } else {
-        b(4);
-      }
+    zam.a("1001" + paramString);
+    zam.a("1001" + paramString, new zit(paramString));
+    ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo(7002, paramInt);
+    paramString = a("", paramString, -1, 0, 0, 0L);
+    if (paramStUser != null) {
+      paramString.poster.set(paramStUser);
     }
+    a(paramContext, null, paramString, localExtraTypeInfo, paramIntent);
   }
   
-  public boolean a()
+  public static void a(Context paramContext, String paramString, Intent paramIntent)
   {
-    return this.e == 1;
+    a(paramContext, paramString, null, 0, paramIntent);
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public static void a(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
   {
-    boolean bool = false;
-    int m;
-    int n;
-    if (b())
+    if (paramString != null)
     {
-      m = (int)paramMotionEvent.getY();
-      n = Math.abs(m - this.j);
-      switch (paramMotionEvent.getAction() & 0xFF)
+      if (paramString.startsWith("opendetail"))
       {
-      case 3: 
-      case 4: 
-      default: 
-        this.jdField_a_of_type_Zfv.a(paramMotionEvent, false);
-        if (this.jdField_a_of_type_Zbj != null) {
-          this.jdField_a_of_type_Zbi.a(this.jdField_a_of_type_Zbj.f, this.jdField_a_of_type_Zbj.k, (int)this.jdField_a_of_type_Zbj.l, (int)this.jdField_a_of_type_Zbj.m, this.jdField_a_of_type_Zbj.jdField_a_of_type_AndroidGraphicsPointF, this.jdField_a_of_type_Zbj.e, 2);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      bool = true;
-      return bool;
-      if (this.jdField_a_of_type_Zbj != null)
-      {
-        this.jdField_a_of_type_Zbj.e = false;
-        this.jdField_a_of_type_Zbj.f = false;
-        this.jdField_a_of_type_Zbj.b();
-      }
-      this.jdField_a_of_type_Zfv.a(this.jdField_a_of_type_Zbj);
-      this.j = m;
-      break;
-      if (this.jdField_a_of_type_Zbj == null) {
-        break;
-      }
-      this.jdField_a_of_type_Zbj.e = true;
-      this.jdField_a_of_type_Zbj.c();
-      break;
-      if (this.jdField_a_of_type_Zbj != null)
-      {
-        this.jdField_a_of_type_Zbj.f = true;
-        if (this.e == 3) {
-          this.jdField_a_of_type_Zbj.c();
+        QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema detail");
+        paramContext = a(a((String)paramHashMap.get("feedid")), a((String)paramHashMap.get("uin")), Integer.parseInt(b((String)paramHashMap.get("type"))), Integer.parseInt(b((String)paramHashMap.get("width"))), Integer.parseInt(b((String)paramHashMap.get("height"))), Long.parseLong(b((String)paramHashMap.get("createtime"))));
+        paramString = (String)paramHashMap.get("commentid");
+        if (TextUtils.isEmpty(paramString)) {
+          a(null, paramContext);
         }
       }
-      if (n <= c) {
-        break;
-      }
-      b(3);
-      break;
-      if (this.jdField_a_of_type_Zbj != null)
+      do
       {
-        this.jdField_a_of_type_Zbj.f = false;
-        this.jdField_a_of_type_Zbj.c();
-      }
-      a(this, false);
-      if (n < c)
-      {
-        b();
-        break;
-      }
-      if (this.e != 3) {
-        break;
-      }
-      b(4);
-      break;
-      if (this.jdField_a_of_type_Zbj == null) {
-        break;
-      }
-      this.jdField_a_of_type_Zbj.e = false;
-      break;
-      this.jdField_a_of_type_Zbi.a(false, 0.0F, 0, 0, null, false, 0);
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Zbi != null) && (this.jdField_a_of_type_Zbi.a(this.jdField_a_of_type_Zbj))) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    a(paramCanvas, this.jdField_a_of_type_Float);
-  }
-  
-  public boolean b()
-  {
-    return (this.e == 4) || (this.e == 3);
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    float f1 = paramMotionEvent.getX(0);
-    float f2 = paramMotionEvent.getY(0);
-    boolean bool1 = bool2;
-    if (b())
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Zfv.a(this.jdField_a_of_type_Zbj, f1, f2, false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public void c()
-  {
-    if (!a()) {
-      j();
-    }
-    while (this.jdField_a_of_type_Zbi == null) {
+        return;
+        ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo(0, 0);
+        localExtraTypeInfo.setReplyId((String)paramHashMap.get("replyid"));
+        localExtraTypeInfo.setCommentId(paramString);
+        a(null, paramContext, localExtraTypeInfo);
+        return;
+        if (paramString.startsWith("openhomepage"))
+        {
+          QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema personal page");
+          a(paramContext, a((String)paramHashMap.get("uid")));
+          return;
+        }
+      } while (!paramString.startsWith("opendiscoverpage"));
+      QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema ServiceAccountFolder page");
+      a(paramContext, 0, 7004, null);
       return;
     }
-    this.jdField_a_of_type_Zbi.a(1.0F);
+    QLog.e("SubscribeLauncher", 2, "launchSubscribeBySchema failed");
   }
   
-  public boolean c(MotionEvent paramMotionEvent)
+  public static void a(String paramString)
   {
-    if (!b()) {}
-    while (paramMotionEvent.getPointerCount() < 2) {
-      return false;
-    }
-    float f1 = paramMotionEvent.getX(0);
-    float f2 = paramMotionEvent.getY(0);
-    float f3 = paramMotionEvent.getX(1);
-    float f4 = paramMotionEvent.getY(1);
-    return this.jdField_a_of_type_Zfv.a(this.jdField_a_of_type_Zbj, f1, f2, f3, f4);
+    a(paramString, 8000);
   }
   
-  public void d()
+  public static void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Zbj != null) {
-      this.jdField_a_of_type_Zbj.d = false;
+    a(paramString, paramInt, 0);
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    a(null, paramString, new CertifiedAccountMeta.StFeed(), new ExtraTypeInfo(paramInt1, paramInt2), null);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 3) || (paramInt == 5) || (paramInt == 6);
+  }
+  
+  private static boolean a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo, Intent paramIntent)
+  {
+    boolean bool2 = true;
+    ExtraTypeInfo localExtraTypeInfo = paramExtraTypeInfo;
+    if (paramExtraTypeInfo == null) {
+      localExtraTypeInfo = new ExtraTypeInfo();
     }
+    if ((localExtraTypeInfo.pageType == 0) && (paramStFeed != null)) {
+      localExtraTypeInfo.pageType = a(paramStFeed.type.get());
+    }
+    boolean bool1;
+    int i;
+    switch (localExtraTypeInfo.pageType)
+    {
+    default: 
+      bool1 = false;
+      bool2 = false;
+      i = 0;
+    }
+    for (;;)
+    {
+      paramIntent.putExtra("key_subscribe_intent_extra_type_info", localExtraTypeInfo);
+      if (i != 0)
+      {
+        zam.a("1002" + paramStFeed.id.get());
+        zam.a("1002" + paramStFeed.id.get(), new zir(paramStFeed));
+      }
+      if (bool2)
+      {
+        if ((!bool1) || (!(paramContext instanceof Activity)) || (Build.VERSION.SDK_INT < 16)) {
+          break;
+        }
+        paramContext = (Activity)paramContext;
+        paramContext.startActivity(paramIntent, zjc.a());
+        paramContext.overridePendingTransition(0, 0);
+      }
+      return bool2;
+      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+      paramIntent.putExtra("public_fragment_class", SubscribeVideoDetailFragment.class.getName());
+      paramIntent.addFlags(268435456);
+      bool1 = zjc.a();
+      i = 1;
+      continue;
+      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+      paramIntent.putExtra("public_fragment_class", SubscribeMultiPicFragment.class.getName());
+      paramIntent.addFlags(268435456);
+      bool1 = zjc.a();
+      i = 1;
+      continue;
+      paramIntent.setClass(paramContext, PublicFragmentActivity.class);
+      paramIntent.putExtra("public_fragment_class", SubscribePersonalDetailFragment.class.getName());
+      paramIntent.addFlags(268435456);
+      bool1 = false;
+      i = 0;
+      continue;
+      paramIntent.setClass(paramContext, ServiceAccountFolderActivity.class);
+      paramIntent.setFlags(67108864);
+      bool1 = false;
+      i = 0;
+    }
+    if (!(paramContext instanceof Activity)) {
+      paramIntent.addFlags(268435456);
+    }
+    paramContext.startActivity(paramIntent);
+    return bool2;
+  }
+  
+  private static String b(String paramString)
+  {
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      str = "0";
+    }
+    return str;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 2) || (paramInt == 7);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 8);
   }
 }
 

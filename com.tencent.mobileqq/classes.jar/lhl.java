@@ -1,48 +1,191 @@
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.AVEffectPendantReport.1;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class lhl
-  implements lhg
+public class lhl
 {
-  lhl(lhk paramlhk) {}
+  private static int jdField_a_of_type_Int;
+  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
+  private static int b;
   
-  public void a(long paramLong, String paramString)
+  private static Class<?> a()
   {
-    lbj.c("AVMagicfacePlayer", "play video begin." + paramString);
-    if (this.a.jdField_b_of_type_Lhg != null) {
-      this.a.jdField_b_of_type_Lhg.a(paramLong, paramString);
-    }
+    return PendantItem.class;
   }
   
-  public void a(long paramLong, String arg3, int paramInt)
+  private static String a()
   {
-    QLog.w("AVMagicfacePlayer", 1, "onEndMagicPlay, id[" + ??? + "], reason[" + paramInt + "], seq[" + paramLong + "]");
-    if (this.a.jdField_b_of_type_Lhg != null) {
-      this.a.jdField_b_of_type_Lhg.a(paramLong, ???, paramInt);
+    return "content";
+  }
+  
+  private static String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = lbe.c() + paramPendantItem.getName();
     }
-    synchronized (this.a)
-    {
-      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_Lhi != null)) {
-        this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Lhi, this.a.jdField_a_of_type_Lhh, this.a.jdField_a_of_type_Lhg);
+    return str;
+  }
+  
+  private static ArrayList<PendantItem> a(String paramString)
+  {
+    localArrayList = new ArrayList();
+    b = 0;
+    jdField_a_of_type_Int = 0;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        int j = mum.a();
+        Object localObject = a();
+        if (paramString.has((String)localObject))
+        {
+          paramString = paramString.getJSONArray((String)localObject);
+          localObject = a();
+          int i = 0;
+          while (i < paramString.length())
+          {
+            PendantItem localPendantItem = (PendantItem)bfra.a((JSONObject)paramString.get(i), (Class)localObject);
+            if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
+            {
+              int k = localPendantItem.getPlatform();
+              if ((k == 0) || (j >= k))
+              {
+                boolean bool = b(localPendantItem);
+                localPendantItem.setUsable(bool);
+                localArrayList.add(localPendantItem);
+                b += 1;
+                if (bool) {
+                  jdField_a_of_type_Int += 1;
+                }
+              }
+            }
+            i += 1;
+          }
+        }
+        return localArrayList;
       }
-      return;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
-  public void a(long paramLong, String paramString, boolean paramBoolean)
+  public static void a()
   {
-    lbj.c("AVMagicfacePlayer", "play audio begin. id = " + paramString + ", repeat = " + paramBoolean);
-    if (paramBoolean)
+    bfyz.b(jdField_a_of_type_Int, b);
+    lba.f("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
+  }
+  
+  private static String b()
+  {
+    return lbp.b(e()).a;
+  }
+  
+  public static void b()
+  {
+    bfyz.c();
+    lba.f("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
+  }
+  
+  private static boolean b(PendantItem paramPendantItem)
+  {
+    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
+      lba.h("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
+    }
+    do
     {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
+      return false;
+      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
+        return true;
+      }
+    } while (!new File(a(paramPendantItem)).exists());
+    System.currentTimeMillis();
+    String str = SecUtil.getFileMd5(a(paramPendantItem));
+    System.currentTimeMillis();
+    return paramPendantItem.getMd5().equalsIgnoreCase(str);
   }
   
-  public void b(long paramLong, String paramString)
+  public static void c()
   {
-    lbj.c("AVMagicfacePlayer", "play audio end. id = " + paramString);
-    this.a.a(this.a.jdField_a_of_type_JavaLangString);
+    ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
+  }
+  
+  public static void d()
+  {
+    String str = b();
+    jdField_a_of_type_JavaUtilArrayList = null;
+    jdField_a_of_type_JavaUtilArrayList = a(str);
+  }
+  
+  private static int e()
+  {
+    return 106;
+  }
+  
+  public static void e()
+  {
+    long l1 = -1L;
+    try
+    {
+      localHashMap = new HashMap();
+      bool = bfyz.b();
+      arrayOfInt = bfyz.b();
+      l2 = bfyz.b();
+      if ((!bool) && (arrayOfInt[1] <= 0))
+      {
+        azzx.a().b(false);
+        bfyz.d();
+      }
+      if (l2 <= 0L) {
+        break label380;
+      }
+      l1 = (System.currentTimeMillis() - l2) / 1000L;
+    }
+    catch (Throwable localThrowable)
+    {
+      int[] arrayOfInt;
+      do
+      {
+        HashMap localHashMap;
+        boolean bool;
+        long l2;
+        BigDecimal localBigDecimal;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
+        return;
+        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
+          break;
+        }
+      } while (arrayOfInt[0] <= arrayOfInt[1]);
+    }
+    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
+    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
+    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
+    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
+    localHashMap.put("filter_spacing", String.valueOf(l1));
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
+    }
+    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
+    UserAction.flushObjectsToDB(true);
+    lba.f("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
+    return;
+    label380:
   }
 }
 

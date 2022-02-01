@@ -1,10 +1,27 @@
-import com.tencent.image.URLImageView;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
 
 public class bacj
+  extends Animation
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public bacj(CircleBarView paramCircleBarView) {}
   
-  public bacj(baci parambaci) {}
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
+    {
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    }
+    this.a.postInvalidate();
+  }
 }
 
 

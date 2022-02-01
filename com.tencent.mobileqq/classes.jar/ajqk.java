@@ -1,45 +1,167 @@
+import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.AlbumListLogic.IalbumListAdapterCallBack;
+import com.tencent.mobileqq.activity.photo.album.AlbumListLogicBase;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class ajqk
-  extends ajoe<MessageRecord>
+  extends AlbumListLogicBase<AlbumListFragment, ajrc>
+  implements AlbumListLogic.IalbumListAdapterCallBack
 {
-  public ajqk(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView, Context paramContext, int paramInt)
+  protected ajqj a;
+  
+  public ajqk(AlbumListFragment paramAlbumListFragment)
   {
-    super(paramContext, paramInt);
+    super(paramAlbumListFragment);
+    this.mAlbumListAdapterCallBack = this;
+    this.mAlbumListData = new ajqj();
+    this.a = ((ajqj)this.mAlbumListData);
   }
   
-  protected ajoo a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  protected ajqn a()
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
-    paramContext = new ajpp(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373680));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373670));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373677));
-    paramContext.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373684));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373675));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373681));
-    paramContext.c = ((TextView)paramViewGroup.findViewById(2131373683));
-    paramContext.d = ((TextView)paramViewGroup.findViewById(2131373676));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373679));
-    paramContext.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131379495));
-    paramViewGroup = (Button)paramViewGroup.findViewById(2131379494);
-    ajrj.a(paramContext.a(), false);
-    return paramContext;
+    return (ajqn)super.getAlbumListAdapter();
   }
   
-  protected void a(ajoo paramajoo, MessageRecord paramMessageRecord, int paramInt)
+  protected ajrc a()
   {
-    TroopNotifyAndRecommendView.a(this.a, paramajoo, paramMessageRecord, paramInt);
+    return new ajql(this);
+  }
+  
+  public String adapterGenerateSelection()
+  {
+    return super.adapterGenerateSelection();
+  }
+  
+  public AlbumListAdapter generateAlbumListAdapter()
+  {
+    return new ajqn((AlbumListFragment)this.mFragment);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    Object localObject1 = a();
+    Object localObject2 = ((ajqn)localObject1).getItem(paramInt);
+    paramViewGroup = (TextView)paramView;
+    if (((QQAlbumInfo)localObject2)._id.equals("qzone_album"))
+    {
+      localObject2 = ((ajqn)localObject1).mResources.getDrawable(2130847578);
+      ((Drawable)localObject2).setBounds(0, 0, ((ajqn)localObject1).mCoverWidth, ((ajqn)localObject1).mCoverHeight);
+      localObject1 = this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(((ajqn)localObject1).mResources);
+      ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+      paramViewGroup.setCompoundDrawables((Drawable)localObject2, null, (Drawable)localObject1, null);
+    }
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      paramView.setBackgroundColor(-16777216);
+      paramViewGroup.setTextColor(-9211021);
+    }
+    return paramView;
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
+    String str2 = paramIntent.getStringExtra("peak.myUin");
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = bmqh.a().getCurrentAccountUin();
+    }
+    if (str1 != null) {
+      this.mPhotoCommonData.myUin = str1;
+    }
+    if (this.mPhotoCommonData.myUin == null) {
+      throw new RuntimeException("must set MY_UIN");
+    }
+    this.mPhotoCommonData.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
+    a().a(((ajrc)this.mOtherCommonData).jdField_a_of_type_Long);
+    this.mPhotoCommonData.mIsDisableTroopAlbum = paramIntent.getBooleanExtra("PhotoConst.DISABLE_UPLOAD_TO_TROOP_ALBUM", this.mPhotoCommonData.mIsDisableTroopAlbum);
+    if ((this.mPhotoCommonData.isShowQzoneAlbum) && (!((ajrc)this.mOtherCommonData).jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_Axkw = new ajqm(this);
+      paramIntent = new NewIntent(BaseApplicationImpl.getApplication(), bbov.class);
+      paramIntent.putExtra("selfuin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+      BaseApplicationImpl.getApplication().getRuntime().registObserver(this.a.jdField_a_of_type_Axkw);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramIntent);
+      this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.mActivity.getResources().getDrawable(2130839316).getConstantState();
+    }
+  }
+  
+  public boolean needUpdateAlbum(boolean paramBoolean, QQAlbumInfo paramQQAlbumInfo)
+  {
+    return (!paramQQAlbumInfo._id.equals("qzone_album")) && (paramBoolean);
+  }
+  
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    Object localObject;
+    if (paramQQAlbumInfo._id.equals("qzone_album"))
+    {
+      localObject = paramIntent.getExtras();
+      ((Bundle)localObject).putInt("key_personal_album_enter_model", 1);
+      ((Bundle)localObject).putInt("PhotoConst.CURRENT_QUALITY_TYPE", paramIntent.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
+      ((Bundle)localObject).putSerializable("PhotoConst.PHOTO_INFOS", paramIntent.getSerializableExtra("PhotoConst.PHOTO_INFOS"));
+      ((Bundle)localObject).putBoolean("PhotoConst.IS_SHOW_QZONE_ALBUM", true);
+      ((Bundle)localObject).putStringArrayList("PhotoConst.PHOTO_PATHS", paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"));
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+      localUserInfo.qzone_uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      ((Bundle)localObject).putString("keyAction", "actionSelectPicture");
+      ((Bundle)localObject).putBoolean("key_need_change_to_jpg", true);
+      QZoneHelper.forwardToPersonalAlbumSelect(((AlbumListFragment)this.mFragment).getActivity(), localUserInfo, (Bundle)localObject, 100016);
+      return checkAlbumChange(paramIntent, paramQQAlbumInfo);
+    }
+    if (paramQQAlbumInfo._id.equals("$CustomAlbumId"))
+    {
+      localObject = ylg.a().b();
+      if (((List)localObject).size() > 0) {
+        paramIntent.putExtra("ALBUM_NAME", ((LocalMediaInfo)((List)localObject).get(0)).mAlbumName);
+      }
+      paramIntent.putExtra("ALBUM_ID", "$CustomAlbumId");
+      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 5);
+      paramIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+      paramIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 10);
+      paramIntent.putExtra("report_first_exposure", true);
+      paramIntent.putExtra("PhotoConst.IS_SUPPORT_VIDEO_CHECKBOX", true);
+      paramIntent.putExtra("PhotoConst.IS_FROM_EDIT", true);
+      paramIntent.putExtra("PhotoConst.IS_FROM_EDIT", false);
+      return checkAlbumChange(paramIntent, paramQQAlbumInfo);
+    }
+    paramIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramIntent.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
+    if ("$VideoAlbumId".equals(paramQQAlbumInfo._id)) {
+      bcef.b(null, "CliOper", "", "", "0X8006131", "0X8006131", 0, 0, "", "", "", "");
+    }
+    return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+  }
+  
+  public void postInitUI() {}
+  
+  public List<LocalMediaInfo> queryRecentImageList(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    return super.queryRecentImageList(paramContext, paramInt1, paramInt2, paramMediaFileFilter, paramInt3, paramBoolean, paramArrayList);
   }
 }
 

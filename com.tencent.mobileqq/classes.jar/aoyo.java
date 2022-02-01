@@ -1,17 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoyo
-  extends aoxh
+class aoyo
+  extends bgod
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aoyo(aoyk paramaoyk, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  
+  public void onDone(bgoe parambgoe)
   {
-    paramQQAppInterface = new aoyn(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qm";
-    paramQQAppInterface.c = "qr";
-    paramQQAppInterface.a("url", paramString);
-    return paramQQAppInterface;
+    super.onDone(parambgoe);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, String.format("download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambgoe.a) }));
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(parambgoe.a);
+    }
   }
 }
 

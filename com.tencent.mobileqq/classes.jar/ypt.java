@@ -1,90 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.text.Layout;
+import android.widget.TextView;
 
 public class ypt
-  extends wov
 {
-  public String a;
-  public int b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  
-  public ypt(qqstory_service.RspGetUserSelfInfo paramRspGetUserSelfInfo)
+  public static String a(TextView paramTextView, int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    Object localObject = paramRspGetUserSelfInfo.result;
-    this.jdField_a_of_type_Int = ((qqstory_struct.ErrorInfo)localObject).error_code.get();
-    this.jdField_b_of_type_JavaLangString = ((qqstory_struct.ErrorInfo)localObject).error_desc.get().toStringUtf8();
-    int i;
-    if (paramRspGetUserSelfInfo.is_vip.has())
+    Layout localLayout = paramTextView.getLayout();
+    String str = paramTextView.getText().toString();
+    paramTextView = str;
+    if (localLayout != null)
     {
-      i = paramRspGetUserSelfInfo.is_vip.get();
-      this.jdField_b_of_type_Int = i;
-      if (!paramRspGetUserSelfInfo.union_id.has()) {
-        break label233;
-      }
-      localObject = paramRspGetUserSelfInfo.union_id.get().toStringUtf8();
-      label96:
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      if (!paramRspGetUserSelfInfo.fans_count.has()) {
-        break label240;
-      }
-      i = paramRspGetUserSelfInfo.fans_count.get();
-      label120:
-      this.jdField_c_of_type_Int = i;
-      if (!paramRspGetUserSelfInfo.video_count.has()) {
-        break label245;
-      }
-      i = paramRspGetUserSelfInfo.video_count.get();
-      label143:
-      this.jdField_d_of_type_Int = i;
-      i = j;
-      if (paramRspGetUserSelfInfo.visit_total_count.has()) {
-        i = paramRspGetUserSelfInfo.visit_total_count.get();
-      }
-      this.e = i;
-      if (!paramRspGetUserSelfInfo.newest_video_cover.has()) {
-        break label250;
-      }
-      localObject = paramRspGetUserSelfInfo.newest_video_cover.get().toStringUtf8();
-      label195:
-      this.jdField_c_of_type_JavaLangString = ((String)localObject);
-      if (!paramRspGetUserSelfInfo.newest_video_vid.has()) {
-        break label257;
+      paramTextView = str;
+      if (localLayout.getLineCount() > paramInt) {
+        paramTextView = str.substring(0, localLayout.getLineStart(paramInt));
       }
     }
-    label257:
-    for (paramRspGetUserSelfInfo = paramRspGetUserSelfInfo.newest_video_vid.get().toStringUtf8();; paramRspGetUserSelfInfo = "")
-    {
-      this.jdField_d_of_type_JavaLangString = paramRspGetUserSelfInfo;
-      return;
-      i = 0;
-      break;
-      label233:
-      localObject = "";
-      break label96;
-      label240:
-      i = 0;
-      break label120;
-      label245:
-      i = 0;
-      break label143;
-      label250:
-      localObject = "";
-      break label195;
-    }
+    return paramTextView;
   }
   
-  public String toString()
+  public static ypu a(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    return yos.a(new Object[] { "Response{ isVip=", Integer.valueOf(this.jdField_b_of_type_Int), " fansCount=", Integer.valueOf(this.jdField_c_of_type_Int), " myVideoCount=", Integer.valueOf(this.jdField_d_of_type_Int), " myVisitTotalCount=", Integer.valueOf(this.e), " newestVideoCover=", this.jdField_c_of_type_JavaLangString, " newestVideoVid=", this.jdField_d_of_type_JavaLangString });
+    return new yqe(paramContext);
+  }
+  
+  public static float[] a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return new float[] { (float)(paramFloat1 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) - (float)(paramFloat2 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)), (float)(paramFloat1 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)) + (float)(paramFloat2 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) };
   }
 }
 

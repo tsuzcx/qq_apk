@@ -6,8 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Surface;
-import bnjq;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.JarReflectUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -295,7 +295,7 @@ public class TXLivePusherJSAdapter
               WXLivePushConfigReflect.setMaxVideoBitrate(k, this.mLivePushConfig);
             }
             if (!str1.equalsIgnoreCase("low")) {
-              break label1724;
+              break label1730;
             }
             WXLivePushConfigReflect.setAudioSampleRate(16000, this.mLivePushConfig);
           }
@@ -304,7 +304,7 @@ public class TXLivePusherJSAdapter
         {
           int i3 = paramBundle.getInt("focusMode", this.mFocusMode);
           if (i3 == 0) {
-            break label1747;
+            break label1753;
           }
           bool1 = true;
           WXLivePushConfigReflect.setTouchFocus(bool1, this.mLivePushConfig);
@@ -323,7 +323,7 @@ public class TXLivePusherJSAdapter
           if (!str2.equalsIgnoreCase(this.mOrientation))
           {
             if (!str2.equalsIgnoreCase("horizontal")) {
-              break label1753;
+              break label1759;
             }
             adjustHomeOrientation(this.mLastAngle, str2);
             WXLivePusherReflect.setRenderRotation(90, this.mLivePusher);
@@ -332,7 +332,7 @@ public class TXLivePusherJSAdapter
           if (!str3.equalsIgnoreCase(this.mLocalMirror))
           {
             if (!str3.equalsIgnoreCase("auto")) {
-              break label1784;
+              break label1790;
             }
             WXLivePusherReflect.setLocalVideoMirrorType(0, this.mLivePushConfig);
           }
@@ -343,7 +343,7 @@ public class TXLivePusherJSAdapter
           }
           boolean bool3 = paramBundle.getBoolean("backgroundMute", this.mPauseAudio);
           if (!bool3) {
-            break label1828;
+            break label1834;
           }
           WXLivePushConfigReflect.setPauseFlag(3, this.mLivePushConfig);
           boolean bool4 = paramBundle.getBoolean("zoom", this.mEnableZoom);
@@ -354,7 +354,7 @@ public class TXLivePusherJSAdapter
           localObject1 = paramBundle.getString("watermarkImage", this.mWatermarkImage);
           localObject2 = BitmapFactory.decodeFile((String)localObject1);
           if (localObject2 == null) {
-            break label1839;
+            break label1845;
           }
           WXLivePushConfigReflect.setWatermark((Bitmap)localObject2, f1, f2, f3, this.mLivePushConfig);
           label745:
@@ -366,13 +366,13 @@ public class TXLivePusherJSAdapter
           WXLivePushConfigReflect.enableAudioEarMonitoring(bool7, this.mLivePushConfig);
           localObject2 = paramBundle.getString("audioVolumeType", this.mAudioVolumeType);
           if (!((String)localObject2).equalsIgnoreCase("voicecall")) {
-            break label1881;
+            break label1887;
           }
           WXLivePushConfigReflect.setVolumeType(0, this.mLivePushConfig);
           label842:
           boolean bool8 = paramBundle.getBoolean("enableCamera", this.mEnableCamera);
           if (bool8) {
-            break label1903;
+            break label1909;
           }
           bool2 = true;
           label863:
@@ -387,20 +387,20 @@ public class TXLivePusherJSAdapter
           if (bool8 != this.mEnableCamera)
           {
             if (!bool8) {
-              break label1909;
+              break label1915;
             }
             stopPreview();
             startPreview(bool8);
           }
           label1140:
           if (!paramBundle.keySet().contains("enableMic")) {
-            break label1935;
+            break label1941;
           }
           boolean bool9 = paramBundle.getBoolean("enableMic", this.mEnableMic);
           if (bool9 != this.mEnableMic)
           {
             if (!bool9) {
-              break label1916;
+              break label1922;
             }
             stopAudioRecord();
             startAudioRecord(true);
@@ -409,7 +409,7 @@ public class TXLivePusherJSAdapter
           if ((paramBoolean) || (bool9 != this.mEnableMic))
           {
             if (bool9) {
-              break label1923;
+              break label1929;
             }
             bool2 = true;
             label1212:
@@ -417,7 +417,7 @@ public class TXLivePusherJSAdapter
           }
           this.mEnableMic = bool9;
           if (bool9) {
-            break label1929;
+            break label1935;
           }
           bool2 = true;
           label1235:
@@ -450,7 +450,7 @@ public class TXLivePusherJSAdapter
           this.mNeedBGMEvent = paramBundle.getBoolean("needBGMEvent", this.mNeedBGMEvent);
           bool1 = this.mRemoteMirror;
           if (!paramBundle.keySet().contains("remoteMirror")) {
-            break label1994;
+            break label2000;
           }
           bool1 = paramBundle.getBoolean("remoteMirror");
         }
@@ -462,7 +462,7 @@ public class TXLivePusherJSAdapter
           this.mRemoteMirror = bool1;
           i = paramBundle.getInt("beauty", this.mBeauty);
           j = paramBundle.getInt("whiteness", this.mWhiteness);
-          if (i != this.mBeauty) {
+          if ((i != this.mBeauty) || (j != this.mWhiteness)) {
             WXLivePusherReflect.setBeautyFilter(0, i, j, 2, this.mLivePusher);
           }
           this.mBeauty = i;
@@ -498,23 +498,23 @@ public class TXLivePusherJSAdapter
           }
           WXLivePushConfigReflect.setVideoResolution(0, this.mLivePushConfig);
           break label296;
-          label1724:
+          label1730:
           if (!str1.equalsIgnoreCase("high")) {
             break label391;
           }
           WXLivePushConfigReflect.setAudioSampleRate(48000, this.mLivePushConfig);
           break label391;
-          label1747:
+          label1753:
           bool1 = false;
           break label412;
-          label1753:
+          label1759:
           if (!str2.equalsIgnoreCase("vertical")) {
             break label544;
           }
           adjustHomeOrientation(this.mLastAngle, str2);
           WXLivePusherReflect.setRenderRotation(0, this.mLivePusher);
           break label544;
-          label1784:
+          label1790:
           if (str3.equalsIgnoreCase("enable"))
           {
             WXLivePusherReflect.setLocalVideoMirrorType(1, this.mLivePushConfig);
@@ -525,37 +525,37 @@ public class TXLivePusherJSAdapter
           }
           WXLivePusherReflect.setLocalVideoMirrorType(2, this.mLivePushConfig);
           break label587;
-          label1828:
+          label1834:
           WXLivePushConfigReflect.setPauseFlag(1, this.mLivePushConfig);
           break label646;
-          label1839:
+          label1845:
           if ((!WXLivePusherReflect.isPushing(this.mLivePusher)) || (!paramBundle.keySet().contains("watermarkImage"))) {
             break label745;
           }
           WXLivePushConfigReflect.setWatermark((Bitmap)localObject2, f1, f2, f3, this.mLivePushConfig);
           break label745;
-          label1881:
+          label1887:
           if (!((String)localObject2).equalsIgnoreCase("media")) {
             break label842;
           }
           WXLivePushConfigReflect.setVolumeType(1, this.mLivePushConfig);
           break label842;
-          label1903:
+          label1909:
           bool2 = false;
           break label863;
-          label1909:
+          label1915:
           stopPreview();
           break label1140;
-          label1916:
+          label1922:
           stopAudioRecord();
           break label1191;
-          label1923:
-          bool2 = false;
-          break label1212;
           label1929:
           bool2 = false;
-          break label1235;
+          break label1212;
           label1935:
+          bool2 = false;
+          break label1235;
+          label1941:
           if (!paramBundle.keySet().contains("muted")) {
             break label1241;
           }
@@ -565,7 +565,7 @@ public class TXLivePusherJSAdapter
           }
           this.mMute = bool2;
           break label1241;
-          label1994:
+          label2000:
           if (paramBundle.keySet().contains("mirror")) {
             bool1 = paramBundle.getBoolean("mirror");
           }
@@ -643,12 +643,12 @@ public class TXLivePusherJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean, Object paramObject)
   {
-    bnjq.a(paramObject, "disableLog", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(paramObject, "disableLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txCloudVideoView_setVisibility(int paramInt, Object paramObject)
   {
-    bnjq.a(paramObject, "setVisibility", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    JarReflectUtil.callSpecifiedMethod(paramObject, "setVisibility", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public TXJSAdapterError enterBackground(boolean paramBoolean)

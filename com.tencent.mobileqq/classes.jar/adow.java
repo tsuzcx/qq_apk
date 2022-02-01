@@ -1,22 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.28.1;
+import com.tencent.qphone.base.util.QLog;
 
-final class adow
-  extends BroadcastReceiver
+public class adow
+  extends anwh
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public adow(Leba paramLeba) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    Iterator localIterator = adov.a().iterator();
-    while (localIterator.hasNext())
-    {
-      adov localadov = (adov)((WeakReference)localIterator.next()).get();
-      if (localadov != null) {
-        localadov.a(paramContext, paramIntent);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.b(new Leba.28.1(this));
     }
   }
 }

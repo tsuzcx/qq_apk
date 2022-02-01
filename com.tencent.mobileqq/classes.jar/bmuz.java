@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import org.json.JSONObject;
+import android.graphics.RectF;
+import android.text.TextPaint;
 
-public class bmuz
-  implements MiniAppPrePullManager.IPrePullListener
+public abstract class bmuz
 {
-  public bmuz(QzoneIPCModule paramQzoneIPCModule) {}
+  protected int a;
+  protected RectF a;
+  protected TextPaint a;
+  protected int b;
   
-  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
+  public bmuz(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
   {
-    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
   }
 }
 

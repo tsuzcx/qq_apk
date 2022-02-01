@@ -1,86 +1,32 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class auwl
+  extends WebViewPlugin
 {
-  private static auwl jdField_a_of_type_Auwl;
-  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.qflutterCfg.name();
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public static final String a;
+  protected zon a;
   
-  private auwl()
+  static
   {
-    DeviceProfileManager.a(new auwm(this));
-    a();
+    jdField_a_of_type_JavaLangString = auwl.class.getSimpleName();
   }
   
-  public static auwl a()
+  public auwl()
   {
-    if (jdField_a_of_type_Auwl == null) {}
-    try
-    {
-      if (jdField_a_of_type_Auwl == null) {
-        jdField_a_of_type_Auwl = new auwl();
-      }
-      return jdField_a_of_type_Auwl;
+    this.mPluginNameSpace = "ftssearch";
+    this.jdField_a_of_type_Zon = zon.a();
+    this.jdField_a_of_type_Zon.a();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    while ("ftssearch".equals(paramString2)) {
+      return false;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 2) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        if (Integer.valueOf(arrayOfString[0]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        if (jdField_a_of_type_JavaUtilRandom.nextFloat() >= Float.valueOf(arrayOfString[1]).floatValue()) {
-          continue;
-        }
-        this.b = true;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("QFlutterDPC", 1, "loadConfig exception :" + localException.getMessage());
-        this.b = true;
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        this.b = false;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutterDPC", 2, String.format("loadConfig, dpcValue: %s, mIsSupport: %s, mNeedReport: %s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
-      }
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      continue;
-      this.b = true;
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    return false;
   }
 }
 

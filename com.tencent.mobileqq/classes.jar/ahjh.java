@@ -1,18 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class ahjh
-  extends ahkx
+  implements DialogInterface.OnDismissListener
 {
-  ahjh(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjh(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.p = false;
+    bcef.b(this.a.app, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 

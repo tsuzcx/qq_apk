@@ -1,19 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alaz
+class alaz
   implements View.OnClickListener
 {
-  public alaz(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  alaz(alay paramalay) {}
   
   public void onClick(View paramView)
   {
-    if ((paramView instanceof TextView)) {
-      KuaKuaHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-    }
+    Object localObject = paramView.getTag();
+    alay.a(this.a, (aiph)localObject);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -5,22 +5,21 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import blhn;
-import bmxh;
-import bmxj;
-import bnox;
+import bjnd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.cache.FileCacheService;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import nof;
+import npo;
 
 public class QzoneZipCacheHelper
 {
@@ -33,7 +32,7 @@ public class QzoneZipCacheHelper
   private static final String TAG = "QzoneZipCacheHelper";
   private static final byte[] URL_LOCK = new byte[0];
   public static final String ZIPURL = "zipurl";
-  private static bmxj mFileCache;
+  private static FileCacheService mFileCache;
   private static ConcurrentHashMap<String, CopyOnWriteArrayList<Object>> sDownloadindUrlMap = new ConcurrentHashMap();
   
   public static boolean checkAndDownLoadFileIfNeeded(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
@@ -43,7 +42,7 @@ public class QzoneZipCacheHelper
       String str;
       try
       {
-        str = getFileCache().a(getFolderName(paramString2, paramString3));
+        str = getFileCache().getPath(getFolderName(paramString2, paramString3));
         if (isDangerousLocalPath(str))
         {
           QLog.w("QzoneZipCacheHelper", 1, "路径不合法：" + str);
@@ -178,13 +177,13 @@ public class QzoneZipCacheHelper
   
   public static String getBasePath(String paramString1, String paramString2)
   {
-    return getFileCache().a(getFolderName(paramString1, paramString2));
+    return getFileCache().getPath(getFolderName(paramString1, paramString2));
   }
   
-  private static bmxj getFileCache()
+  private static FileCacheService getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = bmxh.c();
+      mFileCache = CacheManager.getZipCacheService();
     }
     return mFileCache;
   }
@@ -194,7 +193,7 @@ public class QzoneZipCacheHelper
     if (!URLUtil.isNetworkUrl(paramString)) {
       return null;
     }
-    Map localMap = blhn.a(paramString);
+    Map localMap = bjnd.a(paramString);
     return getFileIfExists(paramAppInterface, getUrlBase(paramString), getFileName(paramString), (String)localMap.get("business"), (String)localMap.get("dir"), null);
   }
   
@@ -202,7 +201,7 @@ public class QzoneZipCacheHelper
   {
     try
     {
-      paramAppInterface = getFileCache().a(getFolderName(paramString3, paramString4));
+      paramAppInterface = getFileCache().getPath(getFolderName(paramString3, paramString4));
       paramString1 = new File(paramAppInterface + File.separator + paramString2);
       if ((paramString1.exists()) && (paramString1.length() > 0L))
       {
@@ -276,12 +275,12 @@ public class QzoneZipCacheHelper
   
   public static String[] getFolderFileNameList(String paramString1, String paramString2)
   {
-    return getFileList(getFileCache().a(getFolderName(paramString1, paramString2)));
+    return getFileList(getFileCache().getPath(getFolderName(paramString1, paramString2)));
   }
   
   public static String[] getFolderFileNameList(String paramString1, String paramString2, String paramString3)
   {
-    paramString1 = getFileCache().a(getFolderName(paramString1, paramString2));
+    paramString1 = getFileCache().getPath(getFolderName(paramString1, paramString2));
     return getFileList(paramString1 + File.separator + paramString3);
   }
   
@@ -307,12 +306,12 @@ public class QzoneZipCacheHelper
   public static void unzipFile(String paramString1, String paramString2)
   {
     createAndClearFile(new File(paramString2));
-    nof.a(paramString1, paramString2);
+    npo.a(paramString1, paramString2);
   }
   
   private static void updateLruFileInNewThread(String paramString1, String paramString2)
   {
-    PriorityThreadPool.getDefault().submit(new bnox(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
+    PriorityThreadPool.getDefault().submit(new QzoneZipCacheHelper.1(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
   }
 }
 

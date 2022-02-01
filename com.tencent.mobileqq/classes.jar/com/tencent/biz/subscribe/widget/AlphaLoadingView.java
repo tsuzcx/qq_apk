@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaoq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import zll;
 
 public class AlphaLoadingView
   extends View
@@ -42,7 +42,7 @@ public class AlphaLoadingView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidOsHandler = new aaoq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new zll(this);
   }
   
   private int a(int paramInt, boolean paramBoolean)

@@ -5,12 +5,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bhnv;
-import birz;
-import bitb;
+import bgyb;
+import bgzd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import niz;
-import noe;
+import nko;
+import npn;
 
 public class SonicRuntimeImpl
   extends SonicRuntime
@@ -149,12 +149,12 @@ public class SonicRuntimeImpl
   
   public String getUserAgent()
   {
-    return bitb.a();
+    return bgzd.a();
   }
   
   public boolean isNetworkValid()
   {
-    return bhnv.a(BaseApplicationImpl.getContext()) != 0;
+    return NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext()) != 0;
   }
   
   public boolean isSonicUrl(String paramString)
@@ -201,7 +201,7 @@ public class SonicRuntimeImpl
         continue;
         label188:
         localObject1 = paramString.trim();
-        Object localObject2 = birz.b((String)localObject1);
+        Object localObject2 = bgyb.b((String)localObject1);
         if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
           break;
         }
@@ -210,24 +210,24 @@ public class SonicRuntimeImpl
           break;
         }
         localObject2 = ((Uri)localObject2).getHost();
-        niz localniz = niz.a();
+        nko localnko = nko.a();
         if ((((String)localObject2).endsWith(".qq.com")) || (((String)localObject2).endsWith(".tencent.com")))
         {
           if (!QLog.isColorLevel()) {
             break label456;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + noe.c((String)localObject1, new String[0]));
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + npn.c((String)localObject1, new String[0]));
           break label456;
         }
-        if ((localniz.b(paramString)) || (localniz.g((String)localObject1)))
+        if ((localnko.b(paramString)) || (localnko.g((String)localObject1)))
         {
           if (!QLog.isColorLevel()) {
             break label458;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + noe.c((String)localObject1, new String[0]));
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + npn.c((String)localObject1, new String[0]));
           break label458;
         }
-        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + noe.c((String)localObject1, new String[0]));
+        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + npn.c((String)localObject1, new String[0]));
         return false;
       }
       int i = 1;
@@ -260,7 +260,7 @@ public class SonicRuntimeImpl
   
   public void notifyError(SonicSessionClient paramSonicSessionClient, String paramString, int paramInt)
   {
-    int j = bhnv.a(BaseApplicationImpl.getContext());
+    int j = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
     int i = j;
     if (j == 0) {
       i = -1;

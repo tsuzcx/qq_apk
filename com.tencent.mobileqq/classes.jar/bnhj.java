@@ -1,25 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.share.QZoneShareActivity;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bnhj
-  implements View.OnClickListener
+class bnhj
+  implements FilenameFilter
 {
-  public bnhj(QZoneShareActivity paramQZoneShareActivity) {}
+  bnhj(bnhh parambnhh) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    bmwa.a().a(QZoneShareActivity.a, paramView);
-    this.a.a(false);
-    Intent localIntent = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_min", 1);
-    this.a.startActivityForResult(localIntent, 1000);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
   }
 }
 

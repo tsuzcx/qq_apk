@@ -1,14 +1,6 @@
-class bdhc
-  implements bdhh
+public abstract interface bdhc
 {
-  bdhc(bdhb parambdhb, bdhe parambdhe, String paramString) {}
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bdhe != null) {
-      this.jdField_a_of_type_Bdhe.a(paramInt, bdhb.a(this.jdField_a_of_type_Bdhb, this.jdField_a_of_type_JavaLangString));
-    }
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

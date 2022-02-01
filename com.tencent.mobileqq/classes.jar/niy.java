@@ -1,40 +1,72 @@
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.avgame.ui.AvGameLoadingActivity.5.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class niy
-  implements nag
+  implements nax
 {
-  public void a(int paramInt, String paramString1, String paramString2, mze parammze) {}
+  public niy(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, int paramInt, mze parammze) {}
-  
-  public void a(String paramString, mze parammze) {}
-  
-  public void a(HashMap<String, String> paramHashMap) {}
-  
-  public void a(mze parammze) {}
-  
-  public void a(mze parammze, int paramInt) {}
-  
-  public boolean a(int paramInt, String paramString, mze parammze)
+  public void a()
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadStart");
+    }
+    this.a.jdField_a_of_type_Int = 0;
+    AvGameLoadingActivity.a(this.a, this.a.jdField_a_of_type_Int);
+    AvGameLoadingActivity.b(this.a, true);
   }
   
-  public void b(String paramString, mze parammze) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadProgress and percent is " + paramInt);
+    }
+    this.a.jdField_a_of_type_Int = (paramInt / this.a.b);
+    AvGameLoadingActivity.a(this.a, this.a.jdField_a_of_type_Int);
+  }
   
-  public void b(mze parammze) {}
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadReady");
+    }
+    SharedPreferences localSharedPreferences;
+    if (AvGameLoadingActivity.e(this.a))
+    {
+      AvGameLoadingActivity.a(this.a);
+      AvGameLoadingActivity.b(this.a, false);
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("av_game_sp", 4);
+      if (!paramString.endsWith("/")) {
+        break label125;
+      }
+    }
+    for (;;)
+    {
+      localSharedPreferences.edit().putString("resPath", paramString).commit();
+      bcef.b(null, "dc00898", "", "", "0X800B043", "0X800B043", 0, 0, "", "", "", "");
+      return;
+      ThreadManager.getUIHandlerV2().postDelayed(new AvGameLoadingActivity.5.1(this), 150L);
+      break;
+      label125:
+      paramString = paramString + File.separator;
+    }
+  }
   
-  public void c(mze parammze, int paramInt) {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 1, "onResDownloadFailed");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    bcef.b(null, "dc00898", "", "", "0X800B044", "0X800B044", 0, 0, "" + paramInt, "", "", "");
+  }
 }
 
 

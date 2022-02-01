@@ -1,31 +1,10 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bjpx
-  extends BaseAdapter
+public abstract interface bjpx
 {
-  public int getCount()
-  {
-    return 0;
-  }
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

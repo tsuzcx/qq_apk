@@ -1,24 +1,54 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bfzg
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
+  public static long a;
+  private static ConcurrentHashMap<String, Long> a;
   
-  public bfzg(HomeworkGuideFragment paramHomeworkGuideFragment) {}
-  
-  public void a(int paramInt, View paramView)
+  static
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372628));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365387));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+  }
+  
+  public static void a(String paramString, long paramLong) {}
+  
+  public static void a(String paramString1, String paramString2) {}
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("AIO_Start_cost");
+  }
+  
+  public static final void b(String paramString1, String paramString2)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (paramString1 != null)
+    {
+      paramString2 = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+      if (paramString2 != null)
+      {
+        jdField_a_of_type_Long = l - paramString2.longValue();
+        paramString1 = paramString1 + ", cost=" + jdField_a_of_type_Long + "|" + QQAppInterface.AIO_HAD_OPEN + "|" + aewu.a;
+        if (!QLog.isColorLevel()) {
+          break label90;
+        }
+        QLog.i("AutoMonitor", 2, paramString1);
+      }
+    }
+    label90:
+    while (paramString2 == null)
+    {
+      return;
+      Log.i("AutoMonitor", paramString1);
+      return;
+    }
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l));
   }
 }
 

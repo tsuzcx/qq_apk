@@ -1,17 +1,14 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
+import java.util.ArrayList;
 
 public class rhh
-  implements bllo
+  implements TransFileController.OnCancelListener
 {
-  public rhh(FriendListFragment paramFriendListFragment) {}
+  public rhh(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(int paramInt)
-  {
-    if (FriendListFragment.a(this.a) != null) {
-      FriendListFragment.a(this.a).onClick(null);
-    }
-  }
+  public void onCancel(ArrayList<MessageRecord> paramArrayList) {}
 }
 
 

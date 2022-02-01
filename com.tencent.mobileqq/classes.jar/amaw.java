@@ -1,21 +1,15 @@
-public class amaw
+import com.tencent.mobileqq.app.QQAppInterface;
+
+final class amaw
+  implements amdy
 {
-  public int a;
-  public boolean a;
+  amaw(amjf paramamjf, QQAppInterface paramQQAppInterface, int paramInt, int[] paramArrayOfInt) {}
   
-  public static int a(int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (paramInt)
-    {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
+    if (this.jdField_a_of_type_Amjf != null) {
+      this.jdField_a_of_type_Amjf.a(-1L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
     }
-    return 180;
   }
 }
 

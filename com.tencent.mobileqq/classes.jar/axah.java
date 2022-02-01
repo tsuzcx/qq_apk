@@ -1,6 +1,12 @@
-public abstract interface axah
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class axah
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2);
+  axah(awzr paramawzr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

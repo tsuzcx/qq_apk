@@ -1,34 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ron
-  implements Animation.AnimationListener
+public class ron
+  implements AdapterView.OnItemClickListener
 {
-  ron(rom paramrom) {}
+  public ron(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((rnu.a(this.a.c) == rom.a(this.a)) && (rnu.a(this.a.c) != null)) {
-      rnu.a(this.a.c).a(rom.a(this.a));
-    }
+    this.a.a.remove(paramInt);
+    this.a.e();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if ((rom.a(this.a).a != null) && (rom.a(this.a).a.a != null))
-    {
-      boolean bool = rom.a(this.a).a.a.o;
-      if (rom.a(this.a).o != null) {
-        rom.a(this.a).o.setImageDrawable(rnu.a(this.a.c, this.a.a(bool)));
-      }
-    }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,59 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class yex
-  implements RadioGroup.OnCheckedChangeListener
+  implements yec
 {
-  public yex(VideoEncodeActivity paramVideoEncodeActivity) {}
+  private yex(DoodleLayout paramDoodleLayout) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a()
   {
-    RadioButton localRadioButton = (RadioButton)paramRadioGroup.findViewById(paramInt);
-    VideoEncodeActivity.a(this.a, (String)localRadioButton.getTag());
-    yuk.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
-    VideoEncodeActivity.a(this.a);
-    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+    this.a.a().c();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, yde paramyde)
+  {
+    ycp localycp = this.a.a();
+    if (paramBoolean)
+    {
+      localycp.a(true);
+      switch (this.a.b)
+      {
+      }
+      for (;;)
+      {
+        this.a.c(3);
+        return;
+        this.a.a().b(false);
+      }
+    }
+    if (paramyde.jdField_a_of_type_Int != -1) {
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
+    }
+    for (;;)
+    {
+      localycp.a(paramyde);
+      localycp.a(false);
+      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+      this.a.c(0);
+      this.a.d(0);
+      this.a.jdField_a_of_type_Yew.i();
+      return;
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Yew != null) {
+      this.a.jdField_a_of_type_Yew.b(3, paramInt);
+    }
   }
 }
 

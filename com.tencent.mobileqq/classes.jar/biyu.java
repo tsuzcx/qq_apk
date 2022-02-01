@@ -1,15 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-class biyu
-  implements ValueAnimator.AnimatorUpdateListener
+public class biyu
+  implements DialogInterface.OnDismissListener
 {
-  biyu(biyt parambiyt) {}
+  public biyu(Login paramLogin) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    biyt.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidateSelf();
+    Login.b(this.a, false);
   }
 }
 

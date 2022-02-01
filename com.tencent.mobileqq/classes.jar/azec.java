@@ -1,12 +1,19 @@
-import android.widget.RelativeLayout;
-
-public abstract interface azec
+public class azec
+  implements azeb
 {
-  public abstract RelativeLayout a();
+  private azfa a;
   
-  public abstract void b(apfz paramapfz);
+  public azec(azfa paramazfa)
+  {
+    this.a = paramazfa;
+  }
   
-  public abstract boolean c();
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.a(paramazfk);
+    }
+  }
 }
 
 

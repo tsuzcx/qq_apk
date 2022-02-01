@@ -1,15 +1,22 @@
-import android.text.InputFilter;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public abstract interface alcs
+class alcs
+  implements DialogInterface.OnClickListener
 {
-  public abstract String a(List<String> paramList, boolean paramBoolean);
+  alcs(alcr paramalcr) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract InputFilter[] a(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
+      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
+    }
+  }
 }
 
 

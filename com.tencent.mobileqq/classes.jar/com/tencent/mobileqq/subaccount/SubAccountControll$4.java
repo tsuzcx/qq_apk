@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.subaccount;
 
-import bdwt;
+import bcqk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubAccountControll$4
   implements Runnable
 {
-  public SubAccountControll$4(bdwt parambdwt) {}
+  public SubAccountControll$4(bcqk parambcqk) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class SubAccountControll$4
     {
       QLog.d("SUB_ACCOUNT", 2, localObject);
       if ((this.this$0.a != null) && (this.this$0.a.isRunning())) {
-        this.this$0.a.a(false, 1);
+        this.this$0.a.startAllSubMessageAccountMsg(false, 1);
       }
       return;
     }
@@ -32,7 +32,7 @@ public class SubAccountControll$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountControll.4
  * JD-Core Version:    0.7.0.1
  */

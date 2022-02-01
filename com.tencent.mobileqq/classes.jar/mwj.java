@@ -1,21 +1,13 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-import java.util.Comparator;
-
-public class mwj
-  implements Comparator<Integer>
+public abstract interface mwj
+  extends mwh
 {
-  public mwj(StageEffectView paramStageEffectView) {}
+  public abstract String getCustomInfo(long paramLong, String paramString);
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
-  {
-    paramInteger1 = (mwq)this.a.getChildAt(paramInteger1.intValue()).getTag();
-    paramInteger2 = (mwq)this.a.getChildAt(paramInteger2.intValue()).getTag();
-    if (paramInteger1.c < paramInteger2.c) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void initClientLogReport();
+  
+  public abstract void initConfig();
+  
+  public abstract void loadLibrary();
 }
 
 

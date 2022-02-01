@@ -1,43 +1,35 @@
 import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class wpr
-  extends wrj
+class wpr
+  implements vtb
 {
-  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
-  wrk jdField_a_of_type_Wrk;
-  
-  public wpr(qqstory_service.RspDelFeedComment paramRspDelFeedComment, wrk paramwrk)
-  {
-    super(paramRspDelFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
-    this.jdField_a_of_type_Wrk = paramwrk;
-  }
-  
-  public wpr(wrk paramwrk)
-  {
-    this.jdField_a_of_type_Wrk = paramwrk;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Wrk.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
-  }
+  wpr(wpq paramwpq, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Wrk.a(paramInt, paramBundle);
+    a(-1, amtj.a(2131701326));
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Wrk.a(paramInt, paramString);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131701323), 0).a();
+    xvv.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(MessageMicro paramMessageMicro)
   {
-    this.jdField_a_of_type_Wrk.a(paramBoolean, paramBundle);
+    if (!wpl.b(this.jdField_a_of_type_Wpq.a)) {
+      wpl.a(this.jdField_a_of_type_Wpq.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
   }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

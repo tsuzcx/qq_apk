@@ -1,23 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class alvj
-  implements bliz
+class alvj
 {
-  public alvj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ImageView a;
+  public TextView a;
+  public CornerImageView a;
+  public CornerImageView b;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_Blir.dismiss();
-  }
+  alvj(alvi paramalvi) {}
 }
 
 

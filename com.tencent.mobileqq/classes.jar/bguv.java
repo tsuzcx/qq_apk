@@ -1,34 +1,16 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class bguv
+  extends SosoInterface.OnLocationListener
 {
-  public static <T extends bguw> T a(Class<T> paramClass)
+  public bguv(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    try
-    {
-      paramClass = (bguw)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static <T extends Thread> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (TroopUploadingThread)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
 }
 
 

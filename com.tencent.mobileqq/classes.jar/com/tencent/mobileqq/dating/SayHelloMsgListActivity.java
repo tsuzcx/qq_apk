@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.dating;
 
 import Override;
-import adab;
+import abwp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import antf;
-import asam;
-import asbh;
-import axwp;
+import aquj;
+import aqve;
+import awjx;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -31,11 +31,11 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  axwp a;
+  awjx a;
   
   public SayHelloMsgListActivity()
   {
-    this.jdField_a_of_type_Axwp = new asbh(this);
+    this.jdField_a_of_type_Awjx = new aqve(this);
   }
   
   protected List<RecentBaseData> a(List<MessageRecord> paramList)
@@ -97,7 +97,7 @@ public class SayHelloMsgListActivity
       {
         localIterator.remove();
       }
-      else if (asam.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (aquj.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject1;
         if (localObject1 == null) {
@@ -107,7 +107,7 @@ public class SayHelloMsgListActivity
         ((List)localObject3).add(localMessageRecord);
         localObject1 = localObject3;
       }
-      else if (asam.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (aquj.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -131,31 +131,32 @@ public class SayHelloMsgListActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setTitle(2131698175);
-    this.app.addObserver(this.jdField_a_of_type_Axwp, true);
+    super.setTitle(2131698340);
+    this.app.addObserver(this.jdField_a_of_type_Awjx, true);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Axwp);
+    removeObserver(this.jdField_a_of_type_Awjx);
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Int == 1001) && (antf.aj.equals(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Int == 1001) && (AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(this.jdField_a_of_type_JavaLangString)))
     {
       this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
-      this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+      this.app.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
     }
     super.finish();
   }
@@ -169,7 +170,7 @@ public class SayHelloMsgListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.SayHelloMsgListActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class alef
-  implements aldr
+public class alef
+  extends amzn
 {
-  alef(alee paramalee, int paramInt) {}
+  public alef(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public void a(Object paramObject)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramHashMap);
-    this.jdField_a_of_type_Alee.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    }
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialCareSettingActivity.a(this.a);
   }
 }
 

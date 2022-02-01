@@ -1,14 +1,27 @@
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.ProductNetLinkInfo;
 
-public class aaqu
-  implements aaqt
+public final class aaqu
+  implements Parcelable.Creator<ProductNetLinkInfo>
 {
-  public aaqu(AsyncRichTextView paramAsyncRichTextView) {}
-  
-  public boolean a(String paramString)
+  public ProductNetLinkInfo a(Parcel paramParcel)
   {
-    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
-    return true;
+    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
+    localProductNetLinkInfo.productId = paramParcel.readInt();
+    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
+    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
+    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
+    return localProductNetLinkInfo;
+  }
+  
+  public ProductNetLinkInfo[] a(int paramInt)
+  {
+    return new ProductNetLinkInfo[paramInt];
   }
 }
 

@@ -1,57 +1,136 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraper.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import dualsim.common.OrderCheckResult;
+import mqq.os.MqqHandler;
 
 public class bgom
-  extends bgku
 {
-  public bgom(TroopAppShortcutContainer paramTroopAppShortcutContainer, QQAppInterface paramQQAppInterface)
+  private static SharedPreferences a()
   {
-    super(paramQQAppInterface);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_sdk", 4);
   }
   
-  protected void a(long paramLong)
+  protected static Pair<Boolean, Integer> a()
   {
-    if (paramLong != TroopAppShortcutContainer.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopAppShortcutContainer", 2, "onShortcutBarItemUpdated troopCode:" + paramLong);
-    }
-    TroopAppShortcutContainer.a(this.a, 1, 0, 3);
+    SharedPreferences localSharedPreferences = a();
+    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
   }
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public static void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopAppShortcutContainer", 2, "onSetTotalSwitch:" + String.valueOf(paramLong) + "isSuccess" + paramBoolean + "disabled" + paramInt);
-    }
-    bgnv localbgnv = new bgnv(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, TroopAppShortcutContainer.a(this.a), TroopAppShortcutContainer.a(this.a));
-    bgnw localbgnw = new bgnw();
-    bgkr localbgkr = ((bgks)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355)).a(Long.valueOf(TroopAppShortcutContainer.a(this.a)));
-    if (localbgkr != null) {
-      localbgnw.jdField_a_of_type_Bgkr = localbgkr;
-    }
-    localbgnw.b = bgqr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopAppShortcutContainer.a(this.a));
-    if (!paramBoolean)
+    a().edit().putBoolean("supportActivationView", paramBoolean).apply();
+  }
+  
+  protected static boolean a(@NonNull String paramString, @NonNull OrderCheckResult paramOrderCheckResult)
+  {
+    Object localObject = a();
+    boolean bool;
+    int j;
+    int i;
+    if (((SharedPreferences)localObject).getInt("kingCardProduct", -1) != paramOrderCheckResult.product)
     {
-      if (paramInt != 0) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      localObject = ((SharedPreferences)localObject).edit().putInt("kingCardProduct", paramOrderCheckResult.product);
+      if (paramOrderCheckResult.kingcard > 0)
       {
-        localbgnw.jdField_a_of_type_Boolean = paramBoolean;
-        bgqr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbgnw, TroopAppShortcutContainer.a(this.a));
-        localbgnv.a(localbgnw);
-        this.a.jdField_a_of_type_Bgon.a(0, localbgnv);
-        return;
+        bool = true;
+        ((SharedPreferences.Editor)localObject).putBoolean("kingCard", bool).apply();
       }
     }
-    if (paramInt == 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+    else
     {
-      localbgnw.jdField_a_of_type_Boolean = paramBoolean;
-      break;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramString, 4);
+      j = paramString.getInt("kingCardSdk", -1);
+      if (paramOrderCheckResult.kingcard != 0) {
+        break label163;
+      }
+      i = -1;
     }
+    for (;;)
+    {
+      if (j == i) {
+        break label195;
+      }
+      paramString.edit().putInt("kingCardSdk", i).putInt("toast_version", 0).putInt("popup_version_v2", 0).commit();
+      return true;
+      bool = false;
+      break;
+      label163:
+      if (paramOrderCheckResult.kingcard == 1)
+      {
+        if (paramOrderCheckResult.product == 90155946) {
+          i = 2;
+        } else {
+          i = 1;
+        }
+      }
+      else {
+        i = 0;
+      }
+    }
+    label195:
+    return false;
+  }
+  
+  protected static boolean c()
+  {
+    return a().getBoolean("supportActivationView", false);
+  }
+  
+  String a()
+  {
+    return "KC.KCWraper";
+  }
+  
+  void a(ViewGroup paramViewGroup) {}
+  
+  void a(bgoy parambgoy, boolean paramBoolean)
+  {
+    if (parambgoy != null)
+    {
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraper.1(this, parambgoy));
+      }
+    }
+    else {
+      return;
+    }
+    parambgoy.a(false, false, 0);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("tryLoad : disable kingcard");
+  }
+  
+  public final void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a(), 2, paramString);
+    }
+  }
+  
+  boolean a()
+  {
+    a("isReady : disable kingcard");
+    return false;
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    return false;
+  }
+  
+  boolean b()
+  {
+    return false;
   }
 }
 

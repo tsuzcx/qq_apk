@@ -1,42 +1,25 @@
-import com.tencent.biz.qqcircle.hippy.QCircleHippyFragment;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.Arrays;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vql
-  implements HippyQQEngine.HippyQQEngineListener
+  extends vqm
 {
-  public vql(QCircleHippyFragment paramQCircleHippyFragment) {}
+  public String a;
+  public boolean a;
   
-  public void onError(int paramInt, String paramString)
+  public vql(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
   {
-    QCircleHippyFragment.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleHippyFragment", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
-    }
-    double d = 0.0D;
-    if (QCircleHippyFragment.a(this.a) > 0L)
+    super(paramErrorInfo);
+    if (paramPBUInt32Field.get() == 1) {}
+    for (;;)
     {
-      d = (float)(System.currentTimeMillis() - QCircleHippyFragment.a(this.a)) / 1000.0F;
-      QCircleHippyFragment.a(this.a, 0L);
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
+      return;
+      bool = false;
     }
-    vts.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("time_cost", String.valueOf(d)), vtt.a("ret_code", String.valueOf(paramInt)), vtt.a("attach_info", "errMsg:" + paramString + ",module name:" + QCircleHippyFragment.a(this.a)) }), false);
-  }
-  
-  public void onSuccess()
-  {
-    this.a.mViolaUiDelegate.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleHippyFragment", 2, "Hippy: initHippy success!");
-    }
-    double d = 0.0D;
-    if (QCircleHippyFragment.a(this.a) > 0L)
-    {
-      d = (float)(System.currentTimeMillis() - QCircleHippyFragment.a(this.a)) / 1000.0F;
-      QCircleHippyFragment.a(this.a, 0L);
-    }
-    vts.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("time_cost", String.valueOf(d)), vtt.a("ret_code", "0"), vtt.a("attach_info", "module name:" + QCircleHippyFragment.a(this.a)) }), false);
   }
 }
 

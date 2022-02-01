@@ -1,7 +1,23 @@
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+
 class bjwe
-  implements bjwc
+  implements bjwb
 {
-  bjwe(bjwd parambjwd) {}
+  private final GestureDetector a;
+  
+  public bjwe(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

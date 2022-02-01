@@ -1,52 +1,24 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.DisplayMetrics;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 class bltj
-  extends LinearSmoothScroller
+  implements Observer<Boolean>
 {
-  bltj(blth paramblth, Context paramContext, LinearLayoutManager paramLinearLayoutManager)
-  {
-    super(paramContext);
-  }
+  bltj(bltd parambltd) {}
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return blth.a(this.jdField_a_of_type_Blth) / paramDisplayMetrics.densityDpi;
-  }
-  
-  public int calculateTimeForDeceleration(int paramInt)
-  {
-    return super.calculateTimeForDeceleration(paramInt);
-  }
-  
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    return super.calculateTimeForScrolling(paramInt);
-  }
-  
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.computeScrollVectorForPosition(paramInt);
-  }
-  
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
-  {
-    paramView = blth.a(this.jdField_a_of_type_Blth, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
-    int i = paramView[0];
-    int j = paramView[1];
-    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    if (k > 0)
-    {
-      paramAction.update(i, j, k, this.mDecelerateInterpolator);
+    if (paramBoolean == null) {
       return;
     }
-    bltn.a(blth.a(this.jdField_a_of_type_Blth));
+    View localView = bltd.a(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
 }
 

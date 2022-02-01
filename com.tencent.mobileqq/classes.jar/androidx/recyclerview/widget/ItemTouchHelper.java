@@ -390,8 +390,8 @@ public class ItemTouchHelper
       this.mRecyclerView = paramRecyclerView;
     } while (paramRecyclerView == null);
     paramRecyclerView = paramRecyclerView.getResources();
-    this.mSwipeEscapeVelocity = paramRecyclerView.getDimension(2131297206);
-    this.mMaxSwipeVelocity = paramRecyclerView.getDimension(2131297205);
+    this.mSwipeEscapeVelocity = paramRecyclerView.getDimension(2131297261);
+    this.mMaxSwipeVelocity = paramRecyclerView.getDimension(2131297260);
     setupCallbacks();
   }
   

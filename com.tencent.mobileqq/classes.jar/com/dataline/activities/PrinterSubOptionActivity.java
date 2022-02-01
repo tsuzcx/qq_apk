@@ -1,6 +1,9 @@
 package com.dataline.activities;
 
 import Override;
+import amqd;
+import amtj;
+import amxn;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,9 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
-import anvu;
-import anzj;
-import aodm;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -30,8 +30,8 @@ public class PrinterSubOptionActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
+  public amqd a;
   public LayoutInflater a;
-  public anvu a;
   public XListView a;
   da jdField_a_of_type_Da;
   private dn jdField_a_of_type_Dn = new cy(this);
@@ -42,18 +42,18 @@ public class PrinterSubOptionActivity
   
   public PrinterSubOptionActivity()
   {
-    this.jdField_a_of_type_Anvu = null;
+    this.jdField_a_of_type_Amqd = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk != null)
+    if (this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk != null)
     {
       int j = 0;
       int k = 0;
       this.b.clear();
-      List localList = this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a();
+      List localList = this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a();
       int i1 = localList.size();
       int i = 0;
       if (i < i1)
@@ -96,8 +96,9 @@ public class PrinterSubOptionActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -105,49 +106,49 @@ public class PrinterSubOptionActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_Anvu = ((anvu)this.app.a(8));
-    this.jdField_a_of_type_Anvu.jdField_a_of_type_Aodj.jdField_a_of_type_JavaUtilList = null;
-    getWindow().setBackgroundDrawableResource(2131165429);
-    setContentView(2131559051);
-    setTitle(2131691212);
+    this.jdField_a_of_type_Amqd = ((amqd)this.app.getBusinessHandler(8));
+    this.jdField_a_of_type_Amqd.jdField_a_of_type_Amxk.jdField_a_of_type_JavaUtilList = null;
+    getWindow().setBackgroundDrawableResource(2131165437);
+    setContentView(2131559059);
+    setTitle(2131691251);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_Da = new da(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372976));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372947));
     this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Da);
-    if (!this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a())
+    if (!this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a())
     {
-      paramBundle = findViewById(2131366032);
+      paramBundle = findViewById(2131366062);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(anzj.a(2131707303));
-      ((TextView)findViewById(2131379192)).setText(getString(2131691204));
-      ((TextView)findViewById(2131363653)).setText(getString(2131691203));
+      paramBundle.setContentDescription(amtj.a(2131707535));
+      ((TextView)findViewById(2131378961)).setText(getString(2131691243));
+      ((TextView)findViewById(2131363685)).setText(getString(2131691242));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      setLeftViewName(2131690559);
+      setLeftViewName(2131690599);
       this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
       return true;
       a();
-      this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a(this.jdField_a_of_type_Dn);
+      this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a(this.jdField_a_of_type_Dn);
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Anvu.jdField_a_of_type_Dk.a();
+    this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_JavaLangString = getString(2131691205);
+    this.jdField_a_of_type_JavaLangString = getString(2131691244);
     this.b.clear();
     a();
-    aodm localaodm = (aodm)this.app.a(74);
-    this.jdField_a_of_type_Boolean = localaodm.a();
-    localaodm.a();
+    amxn localamxn = (amxn)this.app.getBusinessHandler(74);
+    this.jdField_a_of_type_Boolean = localamxn.a();
+    localamxn.a();
   }
   
   public boolean onBackEvent()
@@ -168,7 +169,7 @@ public class PrinterSubOptionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.PrinterSubOptionActivity
  * JD-Core Version:    0.7.0.1
  */

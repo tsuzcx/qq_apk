@@ -1,35 +1,30 @@
-import java.io.File;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
-class wlq
-  implements Comparable<wlq>
+public class wlq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public long a;
-  public final File a;
+  public wlq(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public wlq(wlp paramwlp, File paramFile)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    paramwlp = paramFile.getName();
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramwlp);
-      return;
-    }
-    catch (Exception paramFile)
-    {
-      yuk.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramwlp, paramFile.getMessage() });
-    }
+    return true;
   }
   
-  public int a(wlq paramwlq)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Long < paramwlq.jdField_a_of_type_Long) {
-      return -1;
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    {
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
+        this.a.a.dismiss();
+      }
     }
-    if (this.jdField_a_of_type_Long == paramwlq.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    return false;
   }
 }
 

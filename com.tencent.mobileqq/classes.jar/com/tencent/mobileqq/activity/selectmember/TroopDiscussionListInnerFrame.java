@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import anzj;
-import bjdq;
+import bhjm;
 import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.widget.TabBarView;
 
 public class TroopDiscussionListInnerFrame
   extends SelectMemberInnerFrame
-  implements bjdq
+  implements bhjm
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TroopDiscussionBaseV jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopDiscussionBaseV;
@@ -66,14 +66,14 @@ public class TroopDiscussionListInnerFrame
   public ContactSearchFragment a()
   {
     int i = 1;
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.g)
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mOnlyFriends)
     {
       i = 4194309;
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_d_of_type_Boolean) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mDonotNeedContacts) {
         i = 4194565;
       }
     }
-    return ContactSearchFragment.a(-1, i | 0x8 | 0x200000 | 0x10, null, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_d_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
+    return ContactSearchFragment.a(-1, i | 0x8 | 0x200000 | 0x10, null, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
   }
   
   public String a()
@@ -85,36 +85,36 @@ public class TroopDiscussionListInnerFrame
   {
     super.a(paramBundle);
     paramBundle = a();
-    setContentView(2131560422);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131378345));
+    setContentView(2131560432);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131378112));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131690947));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(anzj.a(2131714070) + paramBundle.getString(2131690947));
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131690987));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(amtj.a(2131714302) + paramBundle.getString(2131690987));
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mDonotNeedDiscussion)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131690946));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131690946));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131690986));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131690986));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368718));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368742));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131717844), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131717868));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mOnlySelectTroopOrDiscussionMember) {
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.setupTitleBar(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131718082), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131718106));
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.a())
+      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mSelectedAndSearchBar.a())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.p();
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mSelectedAndSearchBar.b();
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.quitSearchState();
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, "", this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131717868));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.setupTitleBar(true, "", this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131718106));
     }
   }
   

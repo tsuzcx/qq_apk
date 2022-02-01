@@ -1,10 +1,14 @@
-import java.util.ArrayList;
-
-public abstract interface azhi
+class azhi
+  extends ayzm
 {
-  public abstract ArrayList<Integer> a();
+  azhi(azhh paramazhh) {}
   
-  public abstract void a();
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      azhh.a().a("roam true");
+    }
+  }
 }
 
 

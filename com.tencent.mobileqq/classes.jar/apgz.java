@@ -1,16 +1,12 @@
-public abstract interface apgz
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+
+public class apgz
 {
-  public abstract int a();
+  public String a;
+  public boolean a;
+  public String b;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(apha paramapha);
-  
-  public abstract void b();
+  public apgz(BusinessCardEditActivity paramBusinessCardEditActivity) {}
 }
 
 

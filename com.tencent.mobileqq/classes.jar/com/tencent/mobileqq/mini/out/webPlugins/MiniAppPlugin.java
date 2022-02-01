@@ -2,17 +2,17 @@ package com.tencent.mobileqq.mini.out.webPlugins;
 
 import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import anzj;
-import aser;
-import asev;
-import asjw;
-import bioy;
+import aqyp;
+import aqyt;
+import ardu;
+import bgve;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -48,7 +48,7 @@ public class MiniAppPlugin
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "https://mqqapi//microapp/open?";
   private static final String URL_PREFIX_MINIGAME_PAY_BY_H5 = "https://h5.qzone.qq.com/miniapp/act/midasPay";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private aser remoteRespObserver = new MiniAppPlugin.3(this);
+  private aqyp remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -203,16 +203,17 @@ public class MiniAppPlugin
       return false;
     }
     if (paramString3.equals("openApp")) {}
-    label1139:
-    label1142:
-    label1145:
+    label773:
+    label1159:
+    label1162:
+    label1165:
     for (;;)
     {
       try
       {
         paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
         if (paramJsBridgeListener != null) {
-          break label1145;
+          break label1165;
         }
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         paramString1 = null;
@@ -243,7 +244,7 @@ public class MiniAppPlugin
         paramJsBridgeListener.putString("miniapp_appid", paramString1);
         paramJsBridgeListener.putString("miniapp_type", paramString2);
         paramJsBridgeListener.putString("miniapp_via", paramString3);
-        sendRemoteReq(asev.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
+        sendRemoteReq(aqyt.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       }
       catch (Throwable paramJsBridgeListener)
       {
@@ -310,38 +311,47 @@ public class MiniAppPlugin
         }
         return true;
       }
-      if (paramString3.equals("payCallback")) {
+      if (paramString3.equals("payCallback"))
+      {
         try
         {
-          paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-          QLog.i("MiniAppPlugin", 1, "payCallback" + paramJsBridgeListener.toString());
-          paramString1 = new Intent();
-          paramString1.putExtra("errCode", paramJsBridgeListener.optInt("errCode"));
-          paramString1.putExtra("errMsg", paramJsBridgeListener.optString("errMsg"));
-          if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+          paramString1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+          if ("payCallback" + paramString1 != null) {}
+          for (paramJsBridgeListener = paramString1.toString();; paramJsBridgeListener = "")
           {
-            this.mRuntime.a().setResult(-1, paramString1);
+            QLog.i("MiniAppPlugin", 1, paramJsBridgeListener);
+            paramJsBridgeListener = new Intent();
+            paramJsBridgeListener.putExtra("errCode", paramString1.optInt("errCode"));
+            paramJsBridgeListener.putExtra("errMsg", paramString1.optString("errMsg"));
+            if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
+              break;
+            }
+            this.mRuntime.a().setResult(-1, paramJsBridgeListener);
             this.mRuntime.a().finish();
+            break;
           }
-          return true;
+          if (!paramString3.equals("closeFriendPaymentH5")) {
+            break label773;
+          }
         }
         catch (Throwable paramJsBridgeListener)
         {
-          for (;;)
-          {
-            QLog.e("MiniAppPlugin", 1, "payCallback error.", paramJsBridgeListener);
-          }
+          QLog.e("MiniAppPlugin", 1, "payCallback error.", paramJsBridgeListener);
         }
       }
-      if (paramString3.equals("closeFriendPaymentH5"))
+      else
       {
         if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
           this.mRuntime.a().setVisibility(8);
         }
         return true;
       }
-      if (paramString3.equals("shareFriendPayment")) {
+      if (paramString3.equals("shareFriendPayment"))
+      {
         paramString1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+        if (paramString1 == null) {
+          return false;
+        }
       }
       for (;;)
       {
@@ -352,11 +362,11 @@ public class MiniAppPlugin
           paramJsBridgeListener = paramString1.optString("title");
           paramString1 = paramString1.optString("imageUrl");
           if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-            break label1142;
+            break label1162;
           }
           paramJsBridgeListener = GameWnsUtils.defaultPayShareTitle();
           if (!TextUtils.isEmpty(paramString1)) {
-            break label1139;
+            break label1159;
           }
           paramString1 = GameWnsUtils.defaultPayShareImg();
           paramString3 = new COMM.StCommonExt();
@@ -387,6 +397,7 @@ public class MiniAppPlugin
         return false;
       }
     }
+    return true;
   }
   
   public boolean handleSchemaRequest(String paramString1, String paramString2)
@@ -411,30 +422,30 @@ public class MiniAppPlugin
   public void onCreate()
   {
     super.onCreate();
-    asjw.a().a(this.remoteRespObserver);
+    ardu.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    asjw.a().b(this.remoteRespObserver);
+    ardu.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!asjw.a().a())
+    if (!ardu.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), anzj.a(2131705722), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), amtj.a(2131705952), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      asjw.a().b(paramBundle);
+      ardu.a().b(paramBundle);
       return;
     }
-    asjw.a().a(paramBundle);
+    ardu.a().a(paramBundle);
   }
 }
 

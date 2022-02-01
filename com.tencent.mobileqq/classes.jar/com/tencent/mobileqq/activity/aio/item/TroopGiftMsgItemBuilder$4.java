@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahvl;
+import agrz;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Map;
 public class TroopGiftMsgItemBuilder$4
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$4(ahvl paramahvl, String paramString1, BubbleImageView paramBubbleImageView, String paramString2, int paramInt) {}
+  public TroopGiftMsgItemBuilder$4(agrz paramagrz, String paramString1, BubbleImageView paramBubbleImageView, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class TroopGiftMsgItemBuilder$4
       }
     }
     this.this$0.b.remove(this.jdField_a_of_type_JavaLangString);
-    ahvl.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.b, this.jdField_a_of_type_Int);
+    agrz.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.b, this.jdField_a_of_type_Int);
   }
 }
 

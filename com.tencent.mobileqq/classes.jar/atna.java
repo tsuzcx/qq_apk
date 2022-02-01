@@ -1,35 +1,34 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class atna
-  implements View.OnClickListener
+class atna
+  implements View.OnTouchListener
 {
-  public atna(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  atna(atmx paramatmx) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    atnh localatnh = (atnh)paramView.getTag();
-    FileInfo localFileInfo = (FileInfo)localatnh.jdField_a_of_type_JavaLangObject;
-    switch (localatnh.c)
+    atmx.a(this.a).setImageResource(2130840169);
+    atmx.a(this.a).setTag(Integer.valueOf(2130840169));
+    if (atmx.a(this.a))
     {
+      atmx.a(this.a);
+      atmx.a(this.a).removeView(atmx.a(this.a));
+      atmx.a(this.a, false);
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
     }
-    for (;;)
-    {
-      this.a.i();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.a().Z();
-      this.a.a(localFileInfo, localatnh.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,13 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public abstract interface bnhn
+final class bnhn
+  implements FilenameFilter
 {
-  public abstract void a(BaseResp paramBaseResp);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+  }
 }
 
 

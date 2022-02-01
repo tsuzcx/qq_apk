@@ -1,31 +1,16 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import java.util.Comparator;
 
-public class axnw
-  extends RecyclerView.OnScrollListener
+class axnw
+  implements Comparator<String>
 {
-  public axnw(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  axnw(axnv paramaxnv) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    if (MultiCardRecommendFragment.a(this.a) != null)
-    {
-      if ((paramInt == 0) || (paramInt == 1)) {
-        break label38;
-      }
-      MultiCardRecommendFragment.a(this.a);
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
     }
-    for (;;)
-    {
-      if (paramInt == 0) {
-        MultiCardRecommendFragment.d(this.a);
-      }
-      return;
-      label38:
-      MultiCardRecommendFragment.b(this.a);
-      MultiCardRecommendFragment.c(this.a);
-    }
+    return paramString2.length() - paramString1.length();
   }
 }
 

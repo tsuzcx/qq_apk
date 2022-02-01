@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aekz
-  extends anua
+class aekz
+  implements DialogInterface.OnClickListener
 {
-  public aekz(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  aekz(aeky paramaeky, QQCustomDialog paramQQCustomDialog) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e();
-    if (paramBoolean)
-    {
-      if (paramBoolean1.booleanValue()) {
-        DiscussionInfoCardActivity.e(this.a);
-      }
-      return;
-    }
-    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
+    bcef.b(this.jdField_a_of_type_Aeky.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Aeky.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Aeky.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Aeky.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

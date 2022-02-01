@@ -1,8 +1,15 @@
-import android.content.Intent;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.videoplatform.api.IReport;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public abstract interface azjt
+public class azjt
+  implements IReport
 {
-  public abstract void a(int paramInt1, double paramDouble1, double paramDouble2, String paramString1, String paramString2, int paramInt2, Intent paramIntent);
+  public void report(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
+  {
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
+  }
 }
 
 

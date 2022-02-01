@@ -1,54 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
 
-public class xfd
-  extends wov
+public abstract interface xfd
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<wvn> jdField_a_of_type_JavaUtilList;
-  
-  public xfd(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
-  {
-    super(paramRspMsgListHeadNode.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
-  }
-  
-  private static List<wvn> a(List<qqstory_service.MsgTabNodeInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
-      wvn localwvn = new wvn();
-      localwvn.a(localMsgTabNodeInfo);
-      localArrayList.add(localwvn);
-    }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<wvn> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String toString()
-  {
-    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
-  }
+  public abstract void a(String paramString, int paramInt, View paramView, xlu paramxlu);
 }
 
 

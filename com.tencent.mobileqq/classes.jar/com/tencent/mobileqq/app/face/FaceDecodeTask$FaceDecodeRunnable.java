@@ -2,18 +2,17 @@ package com.tencent.mobileqq.app.face;
 
 import android.os.Process;
 import android.text.TextUtils;
-import aood;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 
 class FaceDecodeTask$FaceDecodeRunnable
   implements Runnable
 {
-  private boolean a = true;
+  private boolean isRunning = true;
   
-  public void a()
+  public void close()
   {
-    this.a = false;
+    this.isRunning = false;
   }
   
   public void run()
@@ -28,14 +27,14 @@ class FaceDecodeTask$FaceDecodeRunnable
     {
       localObject1 = null;
       label57:
-      if (this.a) {
-        synchronized (FaceDecodeTask.a)
+      if (this.isRunning) {
+        synchronized (FaceDecodeTask.mDecodeQueue)
         {
-          int i = FaceDecodeTask.a.size();
+          int i = FaceDecodeTask.mDecodeQueue.size();
           if (i == 0) {}
           try
           {
-            FaceDecodeTask.a.wait();
+            FaceDecodeTask.mDecodeQueue.wait();
             localObject3 = localObject1;
           }
           catch (InterruptedException localInterruptedException)
@@ -50,14 +49,14 @@ class FaceDecodeTask$FaceDecodeRunnable
           if (localObject3 == null) {
             break label57;
           }
-          ((FaceDecodeTask)localObject3).a();
+          ((FaceDecodeTask)localObject3).doDecodeBitmap();
           localObject1 = localObject3;
           break label57;
-          if (FaceDecodeTask.b().b != -2147483648)
+          if (FaceDecodeTask.access$200().priority != -2147483648)
           {
-            Process.setThreadPriority(FaceDecodeTask.b().b);
+            Process.setThreadPriority(FaceDecodeTask.access$200().priority);
             continue;
-            localObject3 = (FaceDecodeTask)FaceDecodeTask.a.remove(0);
+            localObject3 = (FaceDecodeTask)FaceDecodeTask.mDecodeQueue.remove(0);
           }
         }
       }

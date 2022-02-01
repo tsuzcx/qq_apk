@@ -1,65 +1,55 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bfxq
+  extends QQCustomDialog
 {
-  aavj jdField_a_of_type_Aavj = new bfxs(this);
-  aavo jdField_a_of_type_Aavo = new bfxr(this);
-  public TroopFileTransferManager.Item a;
-  public String a;
-  public long d;
+  private int jdField_a_of_type_Int = 2131559004;
+  bgaz jdField_a_of_type_Bgaz;
   
-  protected bfxq(long paramLong, TroopFileTransferManager.Item paramItem)
+  public bfxq(Context paramContext, int paramInt)
   {
-    this.d = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
+    super(paramContext, paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(bgaz parambgaz, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (parambgaz == null) {}
+    do
     {
-      this.jdField_a_of_type_JavaLangString = paramItem;
       return;
-    }
+      this.jdField_a_of_type_Bgaz = parambgaz;
+      String[] arrayOfString = new String[parambgaz.a()];
+      int i = 0;
+      while (i < parambgaz.a())
+      {
+        arrayOfString[i] = parambgaz.a(i).a();
+        i += 1;
+      }
+      setItems(arrayOfString, paramOnClickListener);
+      parambgaz = parambgaz.a();
+    } while (parambgaz == null);
+    setTitle(parambgaz);
   }
   
-  public static bfxq a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public int customWhichToCallBack(int paramInt)
   {
-    if (paramLong == 0L)
-    {
-      bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "getSender. troopuin=0");
-      return null;
+    bgbb localbgbb = this.jdField_a_of_type_Bgaz.a(paramInt);
+    if (localbgbb != null) {
+      return localbgbb.a();
     }
-    if (paramItem == null)
-    {
-      bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "getSender. item=null");
-      return null;
-    }
-    if (paramItem.Id == null) {
-      bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "getSender. item.id=null");
-    }
-    return new bfxq(paramLong, paramItem);
+    return -1;
   }
   
-  public long a()
+  public int getDialogListItemLayout()
   {
-    return this.d;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public void j()
-  {
-    QQAppInterface localQQAppInterface = bfvp.a();
-    if (localQQAppInterface == null)
-    {
-      bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
-      return;
-    }
-    bfvr.c("TroopFileUploadFeedsSender", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
-    aauw.a(localQQAppInterface, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Aavo);
+    return this.jdField_a_of_type_Int;
   }
 }
 

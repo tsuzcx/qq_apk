@@ -1,7 +1,19 @@
-abstract class bhgj
+import android.view.View;
+import android.widget.BaseAdapter;
+
+public abstract class bhgj
+  extends BaseAdapter
 {
-  public int a;
-  public byte[] a;
+  public abstract int a();
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract boolean a(int paramInt);
+  
+  public boolean a(View paramView, int paramInt)
+  {
+    return false;
+  }
 }
 
 

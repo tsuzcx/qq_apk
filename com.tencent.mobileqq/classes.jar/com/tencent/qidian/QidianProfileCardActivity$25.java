@@ -1,11 +1,11 @@
 package com.tencent.qidian;
 
 import android.text.TextUtils;
-import azxr;
-import bmtd;
-import bmtk;
+import aymg;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 class QidianProfileCardActivity$25
   implements Runnable
@@ -19,10 +19,10 @@ class QidianProfileCardActivity$25
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = this.this$0.app.getCurrentNickname();
     }
-    localObject2 = bmtk.a();
-    ((bmtk)localObject2).a = this.this$0.app.getCurrentAccountUin();
-    ((bmtk)localObject2).b = ((String)localObject1);
-    bmtd.a(this.this$0, (bmtk)localObject2, this.this$0.jdField_a_of_type_Azxr.a.a, this.this$0.jdField_a_of_type_Azxr.a.g, -1, 5, this.this$0.jdField_a_of_type_Avsk, this.a, false);
+    localObject2 = QZoneHelper.UserInfo.getInstance();
+    ((QZoneHelper.UserInfo)localObject2).qzone_uin = this.this$0.app.getCurrentAccountUin();
+    ((QZoneHelper.UserInfo)localObject2).nickname = ((String)localObject1);
+    QZoneHelper.forwardToUserHome(this.this$0, (QZoneHelper.UserInfo)localObject2, this.this$0.jdField_a_of_type_Aymg.a.a, this.this$0.jdField_a_of_type_Aymg.a.g, -1, 5, this.this$0.jdField_a_of_type_Aufm, this.a, false);
     QidianProfileCardActivity.b(this.this$0, false);
   }
 }

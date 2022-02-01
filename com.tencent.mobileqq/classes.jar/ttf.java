@@ -1,16 +1,17 @@
-public abstract interface ttf
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+
+class ttf
+  implements ViewFactory.FoundClickableViewListener
 {
-  public abstract void a(rwc paramrwc, int paramInt);
+  ttf(tte paramtte, BaseData paramBaseData, Context paramContext) {}
   
-  public abstract void a(rwc paramrwc, int paramInt1, int paramInt2);
-  
-  public abstract void b(rwc paramrwc, int paramInt);
-  
-  public abstract void b(rwc paramrwc, int paramInt1, int paramInt2);
-  
-  public abstract void c(rwc paramrwc, int paramInt);
-  
-  public abstract void d(rwc paramrwc, int paramInt);
+  public void onFound(ViewBase paramViewBase)
+  {
+    paramViewBase.setOnClickListener(new ttg(this));
+  }
 }
 
 

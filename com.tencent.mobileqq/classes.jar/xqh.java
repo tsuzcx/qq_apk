@@ -1,12 +1,25 @@
-class xqh
-  implements bimf
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.lang.ref.WeakReference;
+
+public class xqh
 {
-  xqh(xqg paramxqg) {}
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  public void a(boolean paramBoolean)
+  public static void a(xqk<Integer> paramxqk)
   {
-    yuk.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
-    this.a.a = true;
+    paramxqk = new WeakReference(paramxqk);
+    xrc localxrc = new xrc(null);
+    localxrc.a(new xqi(paramxqk));
+    localxrc.a(new xqj(paramxqk));
+    localxrc.a();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
   }
 }
 

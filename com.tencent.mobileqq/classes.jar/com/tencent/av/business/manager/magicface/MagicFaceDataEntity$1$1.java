@@ -1,6 +1,6 @@
 package com.tencent.av.business.manager.magicface;
 
-import lbj;
+import lba;
 
 class MagicFaceDataEntity$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class MagicFaceDataEntity$1$1
   
   public void run()
   {
-    lbj.c("MagicFaceDataEntity", "reloadDecrateList 3:" + this.a.a);
+    lba.f("MagicFaceDataEntity", "reloadDecrateList 3:" + this.a.a);
     MagicFaceDataEntity.a(this.a.this$0, this.a.a);
   }
 }

@@ -1,47 +1,26 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-
-public class avrv
-  extends GestureDetector.SimpleOnGestureListener
+class avrv
+  extends avrr<avrt>
 {
-  public avrv(HiBoomTextView paramHiBoomTextView) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public avrv(avrt paramavrt)
   {
-    if (this.a.jdField_a_of_type_Avsb != null)
-    {
-      this.a.jdField_a_of_type_Avsb.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    super(paramavrt);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void a(avrt paramavrt, boolean paramBoolean, avro paramavro)
   {
-    avrf localavrf = avrd.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Avre);
-    if (this.a.b())
-    {
-      localavrf.a(true);
-      this.a.invalidate();
-      return true;
+    if (paramavrt == null) {
+      return;
     }
-    if (HiBoomTextView.a(this.a)) {
-      this.a.a();
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      return super.onSingleTapConfirmed(paramMotionEvent);
-      if (localavrf.jdField_a_of_type_Int == 3)
+      avrm localavrm = paramavrt.a(paramavro.f);
+      if (localavrm != null)
       {
-        this.a.a(true);
-      }
-      else if (localavrf.jdField_a_of_type_Int == 4)
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
+        avrt.a(paramavrt).a(paramavro, localavrm);
+        return;
       }
     }
+    avrt.a(paramavrt, paramavro.jdField_a_of_type_JavaLangString, paramavro.jdField_a_of_type_Int, 1002);
   }
 }
 

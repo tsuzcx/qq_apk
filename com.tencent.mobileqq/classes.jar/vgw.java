@@ -1,69 +1,192 @@
-import android.content.Context;
-import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.content.BroadcastReceiver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.qcircleshadow.lib.HostUIHelper;
+import com.tencent.biz.qcircleshadow.lib.QCircleInitInject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.DynamicRuntime;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import common.config.service.QzoneConfig;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import cooperation.qzone.QUA;
+import java.util.List;
 
 public class vgw
 {
-  private final PhotoDanmakuDrawer jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer;
-  private final BlockingQueue<vhb> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private final vgp jdField_a_of_type_Vgp;
-  private final vhc jdField_a_of_type_Vhc;
-  private final vhe jdField_a_of_type_Vhe;
-  private final BlockingQueue<vhb> b;
+  private static vgw jdField_a_of_type_Vgw;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private final BaseApplication jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication = BaseApplicationImpl.context;
+  private vgo jdField_a_of_type_Vgo;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public vgw(Context paramContext, vhe paramvhe, int paramInt)
+  private vgw()
   {
-    this.jdField_a_of_type_Vhe = paramvhe;
-    this.jdField_a_of_type_Vgp = vgp.a(paramContext, 1, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer = new PhotoDanmakuDrawer(paramContext, null);
-    this.jdField_a_of_type_Vhc = new vhc(this.jdField_a_of_type_Vgp.d);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-    this.b = new LinkedBlockingQueue();
+    f();
+    e();
+    d();
+    c();
   }
   
-  public vhb a(int paramInt)
+  public static vgw a()
   {
-    Object localObject = null;
-    switch (paramInt)
+    try
     {
+      if (jdField_a_of_type_Vgw == null) {
+        jdField_a_of_type_Vgw = new vgw();
+      }
+      vgw localvgw = jdField_a_of_type_Vgw;
+      return localvgw;
     }
-    vhb localvhb;
-    do
-    {
-      return localObject;
-      localvhb = (vhb)this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
-      localObject = localvhb;
-    } while (localvhb != null);
-    return new vhf(this.jdField_a_of_type_Vgp, this.jdField_a_of_type_Vhc.a(), this.jdField_a_of_type_Vhe);
+    finally {}
   }
   
-  public vhb a(int paramInt1, long paramLong, String paramString, CharSequence paramCharSequence, int paramInt2, float paramFloat, int paramInt3)
+  private void c()
   {
-    vhb localvhb = a(paramInt1);
-    if (localvhb != null)
-    {
-      localvhb.a(paramLong);
-      localvhb.c(paramString);
-      localvhb.a(paramCharSequence);
-      localvhb.d(paramFloat);
-      localvhb.d(paramInt3);
-      localvhb.a(paramInt2);
-    }
-    return localvhb;
+    QCircleInitInject.g().injectApp(new vgx(this)).injectLogDelegate(new vgi()).injectToastDelegate(new vgk()).injectPluginInfoDelegate(new vgj()).injectDaTongReportDelegate(new vgh());
   }
   
-  public vhb a(vhb paramvhb)
+  private void d()
   {
-    switch (paramvhb.a())
+    azjl.a(BaseApplicationImpl.context, new vgy(this));
+  }
+  
+  private void e()
+  {
+    QIPCServerHelper.getInstance().register(new vgl("Q_CIRCLE_HOST_MODULE_NAME"));
+  }
+  
+  private void f()
+  {
+    a();
+    DynamicRuntime.recoveryRuntime(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication);
+    vgp.a().a();
+    HostUIHelper.init(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication);
+  }
+  
+  private void g()
+  {
+    List localList = vgp.a().a();
+    if (localList != null)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (!TextUtils.isEmpty((CharSequence)localList.get(i))) {
+          localStringBuilder.append("plugin").append(i + 1).append(":").append((String)localList.get(i)).append("\n");
+        }
+        i += 1;
+      }
+      QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     }
-    do
+  }
+  
+  public String a()
+  {
+    String str3 = "0";
+    String str4 = "U";
+    String str2 = str4;
+    String str1 = str3;
+    if (this.jdField_a_of_type_Vgo != null)
     {
-      return paramvhb;
-    } while (paramvhb.a());
-    paramvhb.b(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer);
-    return paramvhb;
+      vgv localvgv = this.jdField_a_of_type_Vgo.a();
+      str2 = str4;
+      str1 = str3;
+      if (localvgv != null)
+      {
+        str1 = localvgv.a() + "";
+        str2 = localvgv.d();
+      }
+    }
+    return QUA.getQUA3() + "_" + str2 + "_" + str1;
+  }
+  
+  public vgo a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Vgo == null)
+      {
+        QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_start").setPluginType("UnKnow"));
+        localObject1 = vgp.a().a();
+        if ((localObject1 != null) && (((vgs)localObject1).getLatest() != null))
+        {
+          this.jdField_a_of_type_Vgo = new vgo("QQ_CIRCLE", new DynamicPluginManager((PluginManagerUpdater)localObject1));
+          this.jdField_a_of_type_Vgo.a((vgs)localObject1);
+          this.jdField_a_of_type_Vgo.a(((vgs)localObject1).a());
+          g();
+        }
+      }
+      Object localObject1 = this.jdField_a_of_type_Vgo;
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      LoggerFactory.setILoggerFactory(aulz.a());
+      label13:
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      break label13;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (paramString.toLowerCase().contains("qcircle"))
+        {
+          int i = this.jdField_a_of_type_Vgo.a().a();
+          SharedPreferences localSharedPreferences = BaseApplicationImpl.context.getSharedPreferences("QCircle_crash_share", 0);
+          int j = localSharedPreferences.getInt("QCircle_crash_count_" + i, 0) + 1;
+          localSharedPreferences.edit().putInt("QCircle_crash_count_" + i, j).commit();
+          if (j >= QzoneConfig.getQCircleMaxCrashCount()) {
+            vho.a().a(i);
+          }
+          QLog.i("QCIRCLE_PLUGIN", 1, "crashCount: " + j + " crashVersion:" + i + "---------" + paramString);
+          return;
+        }
+      }
+      catch (Exception paramString) {}
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    }
   }
 }
 

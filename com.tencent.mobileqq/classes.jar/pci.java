@@ -1,50 +1,57 @@
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class pci
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
-  private static void a(int paramInt)
-  {
-    QLog.d("WormholeConfigHandler", 0, "update wormhole value: " + paramInt);
-    bnrf.a("wormhole_open", Integer.valueOf(paramInt));
-  }
-  
-  public static boolean a()
-  {
-    return ((Integer)bnrf.a("wormhole_open", Integer.valueOf(0))).intValue() == 1;
-  }
+  public static String a = "CommentFamilyConfigHandler";
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("WormholeConfigHandler", 0, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    try
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pbt.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
     {
-      paramString = pan.a(paramString);
-      Iterator localIterator = paramString.keySet().iterator();
-      while (localIterator.hasNext())
+      String str1;
+      String str2;
+      try
       {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "open")) {
-          a(Integer.parseInt(str2));
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
+            bkwm.m(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
         }
       }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("WormholeConfigHandler", 0, "parse wormhole error: " + paramString.getMessage());
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
+        bkwm.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
+      }
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    a(0);
+    super.onWipeConfig(paramInt);
+    bkwm.m(0);
   }
 }
 

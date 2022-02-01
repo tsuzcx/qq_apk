@@ -1,8 +1,19 @@
 public class anwr
 {
   public int a;
+  public long a;
   public String a;
-  public int b = 100;
+  public boolean a;
+  public int b;
+  
+  public anwr(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
 }
 
 

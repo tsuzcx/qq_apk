@@ -1,68 +1,84 @@
-import android.text.TextUtils;
-import com.tencent.open.appstore.js.DINewForCommonWebView;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.io.File;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.widget.RangeButtonView;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bjti
-  implements bjwx
+  extends ExploreByTouchHelper
 {
-  public bjti(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
-  
-  public void a(int paramInt, String paramString)
+  public bjti(RangeButtonView paramRangeButtonView, View paramView)
   {
-    bjtx.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+    super(paramView);
   }
   
-  public void a(List<DownloadInfo> paramList)
+  public Rect a(int paramInt)
   {
-    bjtx.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
+    Point localPoint = (Point)RangeButtonView.a(this.a).a().get(paramInt);
+    paramInt = RangeButtonView.a(this.a).a() / 2;
+    return new Rect(localPoint.x - paramInt, localPoint.y - paramInt, localPoint.x + paramInt, localPoint.y + paramInt);
+  }
+  
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  {
+    return RangeButtonView.a(this.a, (int)paramFloat1, (int)paramFloat2, RangeButtonView.a(this.a).a() / 2, RangeButtonView.a(this.a).a() / 2, false);
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
     int i = 0;
-    for (;;)
+    while (i < RangeButtonView.a(this.a).size())
     {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          if (TextUtils.isEmpty(localDownloadInfo.l)) {
-            localJSONObject.put("final_file_exits", "false");
-          }
-          for (;;)
-          {
-            localJSONArray.put(localJSONObject);
-            i += 1;
-            break;
-            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+      paramList.add(Integer.valueOf(i));
+      i += 1;
     }
-    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
-    bjtx.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
-    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
+  }
+  
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    switch (paramInt2)
+    {
+    }
+    do
+    {
+      return false;
+    } while ((RangeButtonView.a(this.a) == null) || (RangeButtonView.a(this.a) == null));
+    if ((paramInt1 != RangeButtonView.a(this.a)) && (paramInt1 != -1))
+    {
+      if (RangeButtonView.a(this.a) != null) {
+        RangeButtonView.a(this.a).a(RangeButtonView.a(this.a), paramInt1);
+      }
+      RangeButtonView.a(this.a, paramInt1);
+      this.a.invalidate();
+    }
+    return true;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt)) {
+      paramAccessibilityEvent.setContentDescription((CharSequence)RangeButtonView.b(this.a).get(paramInt));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt))
+    {
+      String str2 = (String)RangeButtonView.b(this.a).get(paramInt);
+      String str1 = str2;
+      if (paramInt == RangeButtonView.a(this.a)) {
+        str1 = str2 + amtj.a(2131711813);
+      }
+      paramAccessibilityNodeInfoCompat.setContentDescription(str1);
+    }
+    paramAccessibilityNodeInfoCompat.addAction(16);
+    paramAccessibilityNodeInfoCompat.setBoundsInParent(a(paramInt));
   }
 }
 

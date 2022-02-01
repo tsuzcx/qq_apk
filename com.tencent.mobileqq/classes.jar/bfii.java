@@ -1,74 +1,52 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bfii
-  extends Handler
+class bfii
+  implements ITransactionCallback
 {
-  public bfii(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bfii(bfih parambfih) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.a.q)) {
-      localBundle.putString("bid", this.a.q);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
     }
-    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
-    int i;
-    for (String str = "interestcircle";; str = "qqbuluo")
-    {
-      localBundle.putString("from", str);
-      localBundle.putString("uin", this.a.app.getCurrentAccountUin());
-      localBundle.putString("title", bgqv.a(this.a.a).trim());
-      localBundle.putString("content", bgqv.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText).trim());
-      switch (paramMessage.what)
-      {
-      case 3: 
-      default: 
-        i = 3;
-        TroopBarPublishUtils.a(this.a, 1, i, localBundle);
-        return;
-      }
+    this.a.e();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
     }
-    localBundle.putString("clicktype", "music");
-    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
+    try
     {
-      i = 2;
-      label210:
-      if (!TextUtils.isEmpty(this.a.q)) {
-        break label259;
-      }
-    }
-    label259:
-    for (paramMessage = "0";; paramMessage = this.a.q)
-    {
-      bdll.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_music", i, 0, paramMessage, "", "", "");
-      i = 4;
-      break;
-      i = 1;
-      break label210;
-    }
-    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
-    {
-      i = 2;
-      if (!TextUtils.isEmpty(this.a.q)) {
-        break label340;
-      }
-    }
-    label340:
-    for (paramMessage = "0";; paramMessage = this.a.q)
-    {
-      bdll.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_record", i, 0, paramMessage, "", "", "");
+      paramHashMap.mergeFrom(paramArrayOfByte);
+      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.b();
       return;
-      i = 1;
-      break;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

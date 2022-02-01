@@ -1,40 +1,37 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-final class awdk
-  implements Callable<Bundle>
+class awdk
+  implements asyb
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<awde> jdField_a_of_type_MqqUtilWeakReference;
-  private final String b;
+  awdk(awdi paramawdi, asya paramasya) {}
   
-  awdk(awde paramawde, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramawde);
+    Message localMessage = awdi.a(this.jdField_a_of_type_Awdi).obtainMessage(1);
+    awde localawde = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Asya.a());
+    if (localawde != null)
+    {
+      localawde.jdField_a_of_type_Int = 0;
+      localMessage.obj = localawde;
+      awdi.a(this.jdField_a_of_type_Awdi).sendMessage(localMessage);
+    }
   }
   
-  public Bundle a()
+  public void a(int paramInt, String paramString)
   {
-    Object localObject = (awde)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    Bundle[] arrayOfBundle = new Bundle[1];
-    if (localObject != null)
-    {
-      avzd localavzd = new avzd();
-      CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      localavzd.a(((awde)localObject).a, this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new awdl(this, localavzd, arrayOfBundle, localCountDownLatch));
-      localCountDownLatch.await();
-      return arrayOfBundle[0];
+    if (QLog.isColorLevel()) {
+      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isSuccess", false);
-    ((Bundle)localObject).putInt("code", -1000);
-    arrayOfBundle[0] = localObject;
-    return arrayOfBundle[0];
+    awde localawde = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Asya.a());
+    if (localawde != null)
+    {
+      localawde.jdField_a_of_type_Int = -1;
+      localawde.b = paramInt;
+      localawde.jdField_a_of_type_JavaLangString = paramString;
+      awdi.a(this.jdField_a_of_type_Awdi, localawde);
+    }
   }
 }
 

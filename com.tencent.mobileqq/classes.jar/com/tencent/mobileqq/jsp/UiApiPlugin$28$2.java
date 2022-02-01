@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.jsp;
 
+import amtj;
 import android.app.ProgressDialog;
-import anzj;
-import awis;
-import bioy;
+import auvw;
+import bgve;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class UiApiPlugin$28$2
   implements Runnable
 {
-  public UiApiPlugin$28$2(awis paramawis) {}
+  public UiApiPlugin$28$2(auvw paramauvw) {}
   
   public void run()
   {
     this.a.a.b.dismiss();
-    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, anzj.a(2131714630), 0).a();
+    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, amtj.a(2131714862), 0).a();
   }
 }
 

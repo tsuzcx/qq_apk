@@ -1,22 +1,36 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehi
-  extends ScaleAnimation
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aehi(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
-  {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
-  }
+  public aehi(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramTransformation == null) {
-      return;
+    int i = 1;
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      this.a.app.setTroopGeneralSettingRing(1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label78;
+      }
     }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    for (;;)
+    {
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.app.setTroopGeneralSettingRing(0);
+      break;
+      label78:
+      i = 0;
+    }
   }
 }
 

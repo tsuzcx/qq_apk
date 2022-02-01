@@ -1,156 +1,306 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.text.DecimalFormat;
 
 public class bgge
-  extends bggf
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130843777, 2130843776, 2130843775 };
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anzj.a(2131712122), anzj.a(2131712121), anzj.a(2131712123) };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "https://p.qpic.cn/qqconadmin/0/7af9600e477b4f868fbaa01c879ab2bc/0", "https://p.qpic.cn/qqconadmin/0/a5c9695d3d0c4958b20b505cccf02c55/0", "https://p.qpic.cn/qqconadmin/0/a9fbe3f96d294504811d5c4dc802d02b/0" };
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#.##");
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private TextView d;
-  private TextView e;
-  private TextView f;
+  private static Long a;
+  public static String a;
+  public static String b = "openMonth";
+  public static String c = "aid";
+  public static String d = "offerId";
+  public static String e = "serviceName";
+  public static String f = "serviceCode";
+  public static String g = "type";
+  public static String h = "callbacksn";
+  public static String i = "payUrl";
   
-  protected bgge(View paramView)
+  static
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380031));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370125);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379815));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380048));
-    this.d = ((TextView)paramView.findViewById(2131379744));
-    this.e = ((TextView)paramView.findViewById(2131380030));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369123));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369357));
-    this.f = ((TextView)paramView.findViewById(2131380029));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365943));
-    paramView.setLayerType(1, null);
+    jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+    jdField_a_of_type_JavaLangString = "sendUin";
   }
   
-  private void b()
+  public static String a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.e.setVisibility(0);
-    ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1).append("|").append(paramInt1).append("|").append(paramInt2).append("|").append(paramInt3).append("|").append(paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasH5PayUtil", 2, "getOpenVipParam result = " + localStringBuilder.toString());
+    }
+    return localStringBuilder.toString();
   }
   
-  public void a()
+  private static StringBuilder a(String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    localAnimationDrawable.stop();
-    localAnimationDrawable.selectDrawable(0);
-  }
-  
-  public void a(View paramView, HWReciteItem paramHWReciteItem, bggd parambggd)
-  {
-    parambggd = (bgei)parambggd.a;
-    switch (paramView.getId())
+    if ("SVHHZLH".equals(paramString2))
     {
-    default: 
-    case 2131370125: 
-      do
+      long l = 16781315L;
+      if (paramBoolean3) {
+        l = 0x1001003 | 0x80000;
+      }
+      localObject = "https://h5.qzone.qq.com/vip/payBigDialog/{openUin}/{openMonth}?_wv={wv}&_wwv=13&_proxy=1&aid={aid}".replace("{openUin}", "0");
+      if (paramInt > 0) {}
+      for (paramString2 = String.valueOf(paramInt);; paramString2 = "0")
       {
-        return;
-        if (parambggd.jdField_a_of_type_Boolean)
-        {
-          paramHWReciteItem.b();
-          a();
-          return;
-        }
-      } while (TextUtils.isEmpty(parambggd.jdField_d_of_type_JavaLangString));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReciteResultSubViewHolder", 2, new Object[] { "onItemViewClick, play audio, filePath = ", parambggd.jdField_d_of_type_JavaLangString });
+        paramString1 = new StringBuilder(((String)localObject).replace("{openMonth}", paramString2).replace("{aid}", paramString1).replace("{wv}", String.valueOf(l)));
+        return paramString1;
       }
-      paramHWReciteItem.e(parambggd);
-      b();
-      bhju.a("Grp_edu", "Grp_recite", "Finish_Recite_Play_Clk", 0, 0, new String[] { parambggd.jdField_f_of_type_JavaLangString });
-      return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramHWReciteItem.b(parambggd);
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, bggd parambggd, bgei parambgei, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    Object localObject = parambgei.jdField_b_of_type_JavaLangString;
-    String str = ReciteFragment.a((String)localObject);
-    if (str.length() > 8) {
-      localObject = "《" + str.substring(0, 8) + "…";
-    }
-    localObject = new StringBuilder(anzj.a(2131712125)).append((String)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(parambgei.jdField_d_of_type_Int));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(parambgei.jdField_e_of_type_Int));
-    this.e.setText(String.format("%s\"", new Object[] { this.jdField_a_of_type_JavaTextDecimalFormat.format(parambgei.jdField_a_of_type_Long) }));
-    paramInt = parambgei.jdField_f_of_type_Int - 1;
-    if ((paramInt > -1) && (paramInt < jdField_a_of_type_ArrayOfInt.length))
-    {
-      this.d.setText(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      this.f.setText(bgbw.jdField_a_of_type_ArrayOfJavaLangString[paramInt].replace("\n", ""));
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bhgr.a(BaseApplicationImpl.getContext(), 120.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bhgr.a(BaseApplicationImpl.getContext(), 120.0F);
-      localObject = URLDrawable.getDrawable(jdField_b_of_type_ArrayOfJavaLangString[paramInt], (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    if ((!TextUtils.isEmpty(parambgei.jdField_d_of_type_JavaLangString)) && (new File(parambgei.jdField_d_of_type_JavaLangString).exists()))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.e.setVisibility(0);
-      if (!parambgei.jdField_a_of_type_Boolean) {
-        break label417;
+    Object localObject = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
+    ((StringBuilder)localObject).append(paramString1);
+    if ("CJCLUBT".equals(paramString2)) {
+      if (paramBoolean2) {
+        ((StringBuilder)localObject).append("&type=!svip");
       }
-      b();
-      label315:
-      if (parambgei.g != 2) {
-        break label424;
-      }
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
-      paramHWReciteItem.b(this.jdField_b_of_type_AndroidViewView, parambggd);
-      paramHWReciteItem.b(this.jdField_b_of_type_AndroidWidgetImageView, parambggd);
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.e.setVisibility(8);
-      if ((TextUtils.isEmpty(parambgei.jdField_e_of_type_JavaLangString)) || (parambgei.jdField_b_of_type_Int != 0)) {
+      paramString1 = (String)localObject;
+      if (paramInt <= 0) {
         break;
       }
-      paramHWReciteItem.d(parambgei);
-      if (parambgei.jdField_b_of_type_Int != 2) {
-        break;
+      if (!paramBoolean1) {
+        break label198;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.e.setVisibility(0);
-      break;
-      label417:
-      a();
-      break label315;
-      label424:
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      ((StringBuilder)localObject).append("&month=!" + paramInt);
+      return localObject;
+      ((StringBuilder)localObject).append("&type=svip");
+      continue;
+      if ("LTMCLUB".equals(paramString2)) {
+        ((StringBuilder)localObject).append("&type=vip");
+      }
     }
+    label198:
+    ((StringBuilder)localObject).append("&month=" + paramInt);
+    return localObject;
+  }
+  
+  private static StringBuilder a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&type=" + paramString2);
+    localStringBuilder.append("&month=" + paramString3);
+    return localStringBuilder;
+  }
+  
+  public static void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    Intent localIntent = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    if (!(paramActivity instanceof Activity)) {
+      localIntent.addFlags(268435456);
+    }
+    paramActivity.startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  {
+    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    {
+      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      paramString1 = a(paramString1, paramString2, paramInt1, paramBoolean1, paramBoolean2, false);
+      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
+      paramString2.putExtra("url", paramString1.toString());
+      paramActivity.startActivityForResult(paramString2, paramInt2);
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    {
+      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      paramString1 = a(paramString1, paramString2, paramString3);
+      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
+      paramString2.putExtra("url", paramString1.toString());
+      paramActivity.startActivityForResult(paramString2, paramInt);
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    if (!(paramContext instanceof Activity)) {
+      localIntent.addFlags(268435456);
+    }
+    paramContext.startActivity(localIntent);
+  }
+  
+  private static void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  {
+    StringBuilder localStringBuilder;
+    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    {
+      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      localStringBuilder = new StringBuilder();
+      if (!TextUtils.isEmpty(paramString4)) {
+        break label189;
+      }
+      localStringBuilder.append("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
+      if (!TextUtils.isEmpty(paramString1)) {
+        localStringBuilder.append(paramString1);
+      }
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramString2)) {
+        localStringBuilder.append("&type=" + paramString2);
+      }
+      if (!TextUtils.isEmpty(paramString3)) {
+        localStringBuilder.append("&sendServiceUin=" + paramString3);
+      }
+      if (paramInt > 0) {
+        localStringBuilder.append("&month=" + paramInt);
+      }
+      paramString1 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
+      paramString1.putExtra("url", localStringBuilder.toString());
+      paramContext.startActivity(paramString1);
+      return;
+      label189:
+      localStringBuilder.append(paramString4);
+      if ((!TextUtils.isEmpty(paramString1)) && (!paramString4.contains("aid="))) {
+        if (paramString4.contains("?")) {
+          localStringBuilder.append("&aid=" + paramString1);
+        } else {
+          localStringBuilder.append("?aid=" + paramString1);
+        }
+      }
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, "");
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
+  {
+    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramString3, "", false, false);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    {
+      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      paramString1 = a(paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramBoolean4);
+      if (!TextUtils.isEmpty(paramString3)) {
+        paramString1.append("&disableChannel=" + paramString3);
+      }
+      if (paramBoolean3) {
+        paramString1.append("&disableMobile=1");
+      }
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VasH5PayUtil", 2, "openH5Pay callback = " + paramString4);
+        }
+        paramString1.append("&return_url=" + paramString4);
+      }
+      paramString2 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
+      paramString2.putExtra("url", paramString1.toString());
+      paramContext.startActivity(paramString2);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Bundle paramBundle)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramBundle == null)) {
+      return;
+    }
+    paramQQAppInterface = paramBundle.getString(c);
+    String str1 = paramBundle.getString(g);
+    int j = paramBundle.getInt(b);
+    String str2 = paramBundle.getString(jdField_a_of_type_JavaLangString);
+    paramBundle.getString(d);
+    paramBundle.getString(e);
+    paramBundle.getString(f);
+    paramBundle.getString(h);
+    a(paramContext, paramQQAppInterface, str1, j, str2, paramBundle.getString(i));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if ((!TextUtils.isEmpty(paramString5)) && ((paramString5.equals("svipdiyCardH5Pay")) || (paramString5.equals("vipdiyCardH5Pay"))))
+    {
+      a(paramContext, paramString1, paramString3, paramInt, false, false, "hfpay");
+      return;
+    }
+    a(paramContext, paramString1, paramString3, paramInt, false, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramContext, paramString1, paramString3, paramInt, paramBoolean1, paramBoolean2);
+  }
+  
+  public static void a(String paramString, Context paramContext)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param is empty");
+      return;
+    }
+    if (paramContext == null)
+    {
+      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam context is null");
+      return;
+    }
+    Object localObject = paramString.split("\\|");
+    if (localObject.length != 5)
+    {
+      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param not correct: " + localObject);
+      return;
+    }
+    paramString = localObject[0];
+    String str1 = localObject[1];
+    CharSequence localCharSequence = localObject[2];
+    String str2 = localObject[3];
+    localObject = localObject[4];
+    boolean bool1;
+    boolean bool2;
+    if (str1.equals("1"))
+    {
+      bool1 = true;
+      if (!str2.equals("1")) {
+        break label209;
+      }
+      bool2 = true;
+    }
+    for (;;)
+    {
+      if (!TextUtils.isDigitsOnly(localCharSequence))
+      {
+        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param openMonth not correct: " + localCharSequence);
+        return;
+        if (str1.equals("0"))
+        {
+          bool1 = false;
+          break;
+        }
+        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardType not correct: " + str1);
+        return;
+        label209:
+        if (str2.equals("0"))
+        {
+          bool2 = false;
+        }
+        else
+        {
+          QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardMonth not correct: " + str2);
+          return;
+        }
+      }
+    }
+    a(paramContext, (String)localObject, paramString, Integer.parseInt(localCharSequence), bool2, bool1);
   }
 }
 

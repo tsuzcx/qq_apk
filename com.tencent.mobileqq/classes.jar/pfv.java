@@ -1,13 +1,17 @@
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.widget.AbsListView;
 
-public class pfv
+class pfv
+  extends pse
 {
-  public oidb_cmd0x80a.AttributeList a;
-  public oidb_cmd0x80a.AttributeList b;
-  public oidb_cmd0x80a.AttributeList c;
-  public oidb_cmd0x80a.AttributeList d;
+  pfv(pey parampey, String paramString, AbsListView paramAbsListView, int paramInt)
+  {
+    super(paramString);
+  }
   
-  public pfv(pfs parampfs) {}
+  public void a(prx paramprx)
+  {
+    paramprx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+  }
 }
 
 

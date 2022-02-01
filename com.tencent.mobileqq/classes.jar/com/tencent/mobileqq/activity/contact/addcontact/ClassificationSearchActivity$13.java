@@ -18,7 +18,7 @@ class ClassificationSearchActivity$13
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     Object localObject2 = localEntityManager.query(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     Object localObject1;
     if (localObject2 != null)

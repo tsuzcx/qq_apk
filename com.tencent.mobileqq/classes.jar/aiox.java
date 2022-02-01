@@ -1,11 +1,21 @@
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
+
 class aiox
-  implements nmg
+  implements QQPermissionCallback
 {
-  aiox(ainh paramainh) {}
+  aiox(aiow paramaiow, View paramView, BaseActivity paramBaseActivity) {}
   
-  public void loaded(String paramString, int paramInt) {}
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
   
-  public void progress(int paramInt) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aiow.a(this.jdField_a_of_type_Aiow, this.jdField_a_of_type_AndroidViewView);
+  }
 }
 
 

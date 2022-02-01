@@ -1,8 +1,8 @@
 package com.tencent.av.utils;
 
 import android.text.TextUtils;
-import awzq;
-import bhrl;
+import avmx;
+import bfyg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,21 +20,21 @@ final class VideoMsgTools$2
       QLog.d("VideoMsgTools", 2, "addMessage");
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bhrl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
+    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bfyg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
     }
     for (;;)
     {
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        awzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+        avmx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
       }
       if (QLog.isColorLevel()) {
         QLog.d("VideoMsgTools", 2, "addMessage end");
       }
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
       if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin))) {
-        ((QQMessageFacade)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
+        ((QQMessageFacade)localObject).addMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
       }
     }
   }

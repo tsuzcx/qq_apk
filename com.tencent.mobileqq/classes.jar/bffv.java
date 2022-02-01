@@ -1,28 +1,35 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBBoolField;
+import tencent.im.oidb.cmd0x934.cmd0x934.Item;
 
-class bffv
-  extends aojs
+public class bffv
 {
-  bffv(bffu parambffu) {}
+  public bffw a;
+  public boolean a;
+  public bffw b;
+  public boolean b;
   
-  protected void a(int paramInt1, int paramInt2)
+  public static bffv a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    bffu.a(this.a, false, paramInt1, paramInt2, null);
+    bffv localbffv = new bffv();
+    localbffv.jdField_a_of_type_Bffw = bffw.a(paramString4, paramString3);
+    localbffv.b = bffw.a(paramString2, paramString1);
+    localbffv.jdField_a_of_type_Boolean = false;
+    return localbffv;
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public static bffv a(cmd0x934.Item paramItem)
   {
-    bffu.a(this.a, true, paramInt1, paramInt2, paramString);
+    bffv localbffv = new bffv();
+    localbffv.jdField_a_of_type_Bffw = bffw.a(paramItem.off_info);
+    localbffv.b = bffw.a(paramItem.on_info);
+    localbffv.jdField_a_of_type_Boolean = paramItem.hot.get();
+    return localbffv;
   }
   
-  protected void a(String paramString)
+  public boolean a()
   {
-    bffu.a(this.a, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    bffu.a(this.a, paramBoolean, paramLong, paramTroopInfo);
+    return !TextUtils.isEmpty(this.b.a);
   }
 }
 

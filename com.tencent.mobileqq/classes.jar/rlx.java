@@ -1,61 +1,20 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rlx
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  public rlx(rlu paramrlu, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public rlx(EditVideoFragment paramEditVideoFragment) {}
   
-  public ContentResolver a()
+  public void onClick(View paramView)
   {
-    if (this.a.a() != null) {
-      return this.a.a().getContentResolver();
+    if ((EditVideoFragment.b(this.a) != null) && (EditVideoFragment.b(this.a).isShowing())) {
+      EditVideoFragment.b(this.a).dismiss();
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (a() != null) {
-      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-    }
-  }
-  
-  public void b()
-  {
-    if (a() != null) {
-      a().unregisterContentObserver(this);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (this.a.a() == null) {}
-    for (;;)
-    {
-      return;
-      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
-      if (i == 1)
-      {
-        rlu.a(this.a, true);
-        this.a.a(true);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(rlu.a, 2, "RotationObserver.onChange() : rotateState=" + i);
-        return;
-        rlu.a(this.a, false);
-        this.a.a(false);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

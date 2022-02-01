@@ -9,7 +9,9 @@ import java.util.ArrayList;
 
 public class FDNative
 {
-  private static FDNative a;
+  private static FDNative jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   private FDNative()
   {
@@ -27,13 +29,13 @@ public class FDNative
   
   public static FDNative a()
   {
-    if (a == null) {}
+    if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {}
     try
     {
-      if (a == null) {
-        a = new FDNative();
+      if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {
+        jdField_a_of_type_ComTencentMobileqqStatisticsFDNative = new FDNative();
       }
-      return a;
+      return jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
     }
     finally {}
   }
@@ -77,7 +79,7 @@ public class FDNative
     }
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext());
     localSharedPreferences.getBoolean("FDHookChanged", false);
@@ -117,10 +119,23 @@ public class FDNative
   }
   
   public void a(String paramString) {}
+  
+  public boolean a()
+  {
+    if (!this.b)
+    {
+      this.jdField_a_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext()).getBoolean("FDLog", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("FDStats", 2, new Object[] { "getEnableLog ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      }
+      this.b = true;
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDNative
  * JD-Core Version:    0.7.0.1
  */

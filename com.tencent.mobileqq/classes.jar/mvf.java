@@ -1,54 +1,54 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class mvf
 {
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  private ConcurrentHashMap<String, Entity> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static String a;
+  public static String b = jdField_a_of_type_JavaLangString + "test/";
+  public static String c = "min_sdk";
+  public static String d = "disable_sdk";
+  public static String e = "flag";
+  public static String f = b + c;
+  public static String g = b + d;
+  public static String h = b + e;
+  @Deprecated
+  lke a;
   
-  public mvf(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.createEntityManager();
+    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
   }
   
-  public ExtensionInfo a(String paramString)
+  public mvf()
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    ??? = localObject2;
-    if (paramString != null)
-    {
-      if (!"".equals(paramString)) {
-        break label24;
-      }
-      ??? = localObject2;
+    this.jdField_a_of_type_Lke = null;
+  }
+  
+  public int a(lke paramlke)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
     }
-    label24:
-    do
+    try
     {
-      do
+      int[] arrayOfInt = paramlke.a(h);
+      if (arrayOfInt != null)
       {
-        return ???;
-        localObject2 = localObject3;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-          localObject2 = (ExtensionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        if ((arrayOfInt[0] & 0x1) != 1) {
+          return 0;
         }
-        ??? = localObject2;
-      } while (localObject2 != null);
-      localObject2 = (ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(ExtensionInfo.class, paramString);
-      ??? = localObject2;
-    } while (localObject2 == null);
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
-      return localObject2;
+        arrayOfInt = paramlke.a(f);
+        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        {
+          boolean bool = mqv.a(paramlke.a(g), Build.VERSION.SDK_INT);
+          if (!bool) {
+            return 1;
+          }
+        }
+      }
     }
+    catch (Exception paramlke) {}
+    return 0;
   }
 }
 

@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.os.ResultReceiver;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class akbn
-  implements aule
+  implements EIPCResultCallback
 {
-  akbn(akbm paramakbm) {}
+  akbn(akbm paramakbm, ResultReceiver paramResultReceiver) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0))
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      bdll.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
-      ChatHistoryC2CFileFragment.a(this.a.a, true);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
+      return;
     }
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
   }
 }
 

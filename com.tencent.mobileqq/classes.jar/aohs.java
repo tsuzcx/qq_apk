@@ -1,49 +1,34 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-class aohs
-  extends Handler
+public abstract interface aohs
 {
-  aohs(aohr paramaohr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), nkl.class);
-        ((NewIntent)localObject).putExtra("data", ((aohw)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Aohw = null;
-        return;
-        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((aohw)paramMessage.obj).a.toByteArray());
-        this.a.sendPbReq((ToServiceMsg)localObject);
-      }
-    }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, aoci paramaoci, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(long paramLong, int paramInt, aobg paramaobg, aoim paramaoim);
+  
+  public abstract void a(long paramLong, aoci paramaoci);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, aoci paramaoci);
+  
+  public abstract void a(aogo paramaogo, ArLBSActivity paramArLBSActivity);
+  
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aobd paramaobd);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

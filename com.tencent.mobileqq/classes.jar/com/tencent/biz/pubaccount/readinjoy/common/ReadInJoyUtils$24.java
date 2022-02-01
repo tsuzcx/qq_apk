@@ -5,7 +5,7 @@ import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.SneakyParams;
 import java.util.Iterator;
 import java.util.List;
-import ocd;
+import odq;
 import org.json.JSONObject;
 
 public final class ReadInJoyUtils$24
@@ -22,7 +22,7 @@ public final class ReadInJoyUtils$24
       if (localObject == null) {}
       for (;;)
       {
-        ocd.a(null, "CliOper", "", "", "0X8009EB2", "0X8009EB2", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Long), "1", localJSONObject.toString(), false);
+        odq.a(null, "CliOper", "", "", "0X8009EB2", "0X8009EB2", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Long), "1", localJSONObject.toString(), false);
         return;
         localObject = ((AladdinConfig)localObject).getList("param_list");
         if (localObject != null)

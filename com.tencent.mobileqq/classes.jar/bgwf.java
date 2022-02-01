@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+import mqq.app.TicketManagerListener;
 
 public class bgwf
-  implements bgug
+  implements TicketManagerListener
 {
-  public bgwf(RobotPanelLayoutBase paramRobotPanelLayoutBase, bgwj parambgwj) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onTicketRefreshed()
   {
-    if (paramInt == 0) {
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, anzj.a(2131712362) + "", 0).a();
+    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
+    SwiftBrowserCookieMonster.d();
+    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
   }
 }
 

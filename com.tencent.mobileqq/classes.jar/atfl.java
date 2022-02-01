@@ -1,22 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class atfl
-  implements DialogInterface.OnClickListener
+public final class atfl
+  implements INetEngine.INetEngineListener
 {
-  public atfl(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private atfl(String paramString, IHostInterface.IHttpListener paramIHttpListener)
   {
-    this.a.a = false;
-    this.a.doOnBackPressed();
-    bdll.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
   }
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    if ((paramNetResp.mHttpCode == 200) || (paramNetResp.mHttpCode == 206)) {}
+    for (String str = new String(paramNetResp.mRespData);; str = null)
+    {
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramNetResp.mHttpCode, str);
+      }
+      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramNetResp.mHttpCode + ", rsp=" + str);
+      return;
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfl
  * JD-Core Version:    0.7.0.1
  */

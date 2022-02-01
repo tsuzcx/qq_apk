@@ -1,146 +1,75 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCircleBannerView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
-import feedcloud.FeedCloudMeta.StDittoFeed;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
-import qqcircle.QQCircleDitto.StCircleDittoDataNew;
-import qqcircle.QQCircleDitto.StSinglePicBanner;
-import qqcircle.QQCircleFeedBase.StFollowPageData;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class uzj
-  extends vbn
+  extends ukz<Object>
 {
-  public static final long a;
-  private QCircleBannerView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView;
-  private QQCircleDitto.StSinglePicBanner jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  static
+  public uzj(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    jdField_a_of_type_Long = TimeUnit.SECONDS.toMillis(QzoneConfig.getQQCircleShowBannerInterval());
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
   }
   
-  public uzj(Bundle paramBundle)
+  protected void a()
   {
-    super(paramBundle);
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView = new QCircleBannerView(getContext());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setReportBean(a());
-    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView;
-  }
-  
-  protected String a()
-  {
-    return "QCircleInviteBannerBlock";
-  }
-  
-  public void a(QQCircleFeedBase.StFollowPageData paramStFollowPageData)
-  {
-    boolean bool1;
-    boolean bool2;
-    label85:
-    QQCircleDitto.StCircleDittoDataNew localStCircleDittoDataNew;
-    if ((paramStFollowPageData != null) && (paramStFollowPageData.has())) {
-      if ((!TextUtils.isEmpty(paramStFollowPageData.tipsTitle.get())) && (uyk.a().e()))
-      {
-        bool1 = true;
-        if ((!paramStFollowPageData.dittoFeed.has()) || (paramStFollowPageData.dittoFeed.get() == null) || (paramStFollowPageData.dittoFeed.dittoId.get() != 3) || (paramStFollowPageData.dittoFeed.dittoPatternId.get() != 2)) {
-          break label318;
-        }
-        bool2 = true;
-        QLog.d("QCircleInviteBannerBlock", 1, "needShowAuthBanner:" + bool1 + "    needShowDittoBanner:" + bool2);
-        if ((bool1) || (!bool2)) {
-          break label357;
-        }
-        localStCircleDittoDataNew = new QQCircleDitto.StCircleDittoDataNew();
-      }
+    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
     }
-    for (;;)
+  }
+  
+  protected int b()
+  {
+    return 2131560007;
+  }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null))
     {
-      try
-      {
-        localStCircleDittoDataNew.mergeFrom(paramStFollowPageData.dittoFeed.dittoDataNew.get().toByteArray());
-        if (localStCircleDittoDataNew.singlePicBanner.get() != null)
-        {
-          long l1 = uyk.a().a();
-          long l2 = System.currentTimeMillis() - l1;
-          if (l1 == 0L) {
-            break label363;
-          }
-          if (l2 > jdField_a_of_type_Long)
-          {
-            break label363;
-            QLog.d("QCircleInviteBannerBlock", 1, "min interval:" + jdField_a_of_type_Long + "    current show interval:" + l2 + "    isValid:" + bool1);
-            a(bool1);
-            if (!bool1) {
-              break label357;
-            }
-            if (paramStFollowPageData.busiReport.get() != null) {
-              this.jdField_a_of_type_ArrayOfByte = paramStFollowPageData.busiReport.get().toByteArray();
-            }
-            setDatas(new ArrayList(Arrays.asList(new QQCircleDitto.StSinglePicBanner[] { (QQCircleDitto.StSinglePicBanner)localStCircleDittoDataNew.singlePicBanner.get() })));
-            return;
-            bool1 = false;
-            break;
-            label318:
-            bool2 = false;
-            break label85;
-          }
-          bool1 = false;
-          continue;
-        }
-        a(false);
-      }
-      catch (Exception paramStFollowPageData)
-      {
-        QLog.e("QCircleInviteBannerBlock", 1, "getSinglePicBanner error" + paramStFollowPageData.getMessage());
-      }
-      label357:
+      int i = (int)(this.jdField_b_of_type_AndroidViewView.getWidth() * 1.5F);
+      int j = uyn.c();
+      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(j - i);
+      String str = a().getString(2131719673);
+      str = str + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.name;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    }
+  }
+  
+  protected void c() {}
+  
+  public void c(int paramInt)
+  {
+    if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null))
+    {
+      String str = paramInt + "/" + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.feed_count;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+    }
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
       return;
-      label363:
-      bool1 = true;
     }
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380426);
+    uzy.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
+    this.jdField_b_of_type_AndroidViewView = a(2131380425);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new uzk(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380418));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131379525));
   }
-  
-  protected String b()
-  {
-    return "banner";
-  }
-  
-  public void loadData(aabu paramaabu) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.mDataList != null) && (this.mDataList.size() > 0))
-    {
-      this.jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner = ((QQCircleDitto.StSinglePicBanner)this.mDataList.get(paramInt));
-      if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView != null) && (this.jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner != null))
-      {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setReportInfo(this.jdField_a_of_type_ArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setData(this.jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setInviteBannerClickListener(new uzk(this));
-      }
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

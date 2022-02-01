@@ -1,12 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ObservableScrollView;
 
-class bhiz
-  implements View.OnClickListener
+public abstract interface bhiz
 {
-  bhiz(bhiu parambhiu) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(ObservableScrollView paramObservableScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

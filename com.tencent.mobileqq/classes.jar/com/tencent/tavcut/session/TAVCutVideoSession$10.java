@@ -1,38 +1,28 @@
 package com.tencent.tavcut.session;
 
 import android.util.SparseArray;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.session.config.SessionConfig;
-import com.tencent.tavkit.composition.TAVComposition;
-import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
-import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
+import com.tencent.weseevideo.editor.sticker.StickerController;
+import com.tencent.weseevideo.editor.sticker.utils.StickerConverter;
 import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import java.util.List;
 
 class TAVCutVideoSession$10
-  implements MediaBuilderListener
+  implements Runnable
 {
-  TAVCutVideoSession$10(TAVCutVideoSession paramTAVCutVideoSession, boolean paramBoolean) {}
+  TAVCutVideoSession$10(TAVCutVideoSession paramTAVCutVideoSession, List paramList) {}
   
-  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
+  public void run()
   {
-    paramInt = ((MediaClipModel)paramVideoRenderChainManager.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getWidth();
-    int i = ((MediaClipModel)paramVideoRenderChainManager.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getHeight();
-    paramMediaBuilderOutput = this.this$0.constrainRenderSize(paramInt, i);
-    paramVideoRenderChainManager.getComposition().setRenderSize(paramMediaBuilderOutput);
-    this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
-    this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
-    TAVComposition localTAVComposition = paramVideoRenderChainManager.getComposition();
-    if (this.this$0.sessionConfig != null) {}
-    for (paramMediaBuilderOutput = this.this$0.sessionConfig.getRenderLayoutMode();; paramMediaBuilderOutput = null)
+    this.this$0.getStickerController().restoreSticker(this.val$stickerModels);
+    this.this$0.getMediaModel().getMediaEffectModel().setStickerModelList(this.val$stickerModels);
+    MediaModel localMediaModel = this.this$0.getMediaModel();
+    if ((localMediaModel.getMediaEffectModel().getSubtitleModel() != null) && (this.this$0.stickerControllers.size() > 0))
     {
-      localTAVComposition.setRenderLayoutMode(paramMediaBuilderOutput);
-      this.this$0.getPlayer().updateComposition(paramVideoRenderChainManager.getComposition(), this.val$autoPlay);
-      return;
+      StickerController localStickerController = (StickerController)this.this$0.stickerControllers.get(0);
+      if (localStickerController != null) {
+        localStickerController.addSticker(StickerConverter.subtitleModel2TavSticker(localMediaModel.getMediaEffectModel().getSubtitleModel()));
+      }
     }
   }
 }

@@ -3,61 +3,65 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmuc;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class QZoneShareData
   implements Parcelable
 {
-  public static final Parcelable.Creator<QZoneShareData> CREATOR = new bmuc();
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public Map<String, String> a;
-  public int b;
-  public long b;
-  public String b;
-  public Map<String, String> b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public static final Parcelable.Creator<QZoneShareData> CREATOR = new QZoneShareData.1();
+  public static final int FROM_DEFAULT = 0;
+  public static final int FROM_H5 = 2;
+  public static final int FROM_THIRD_PARTY_SHARE = 1;
+  public static final int OTHER_PLATFORM_NOT_SHOW = 0;
+  public static final int OTHER_PLATFORM_SHOW = 1;
+  public String action;
+  public String appName;
+  public long appid;
+  public String extString;
+  public int from;
+  public int iUrlInfoFrm;
+  public String jFrom;
+  public String mDefaultForwardReason;
+  public String mHint;
+  public ArrayList<String> mImageUrls;
+  public long mShareBeginTime;
+  public String mSummary;
+  public String mTitle;
+  public String mWebUrl;
+  public String openId;
+  public String pkgname;
+  public Map<String, String> qzoneShareInfo;
+  public String shareUin;
+  public int showShareOtherPlat;
+  public String targetUrl;
+  public Map<String, String> xcxMapEx;
   
   public QZoneShareData() {}
   
   private QZoneShareData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.d = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readStringList(this.jdField_a_of_type_JavaUtilArrayList);
-    this.e = paramParcel.readString();
-    this.f = paramParcel.readString();
-    this.g = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.h = paramParcel.readString();
-    this.i = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.j = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.k = paramParcel.readString();
-    this.l = paramParcel.readString();
-    this.m = paramParcel.readString();
-    this.jdField_b_of_type_JavaUtilMap = paramParcel.readHashMap(Map.class.getClassLoader());
+    this.appid = paramParcel.readLong();
+    this.openId = paramParcel.readString();
+    this.mTitle = paramParcel.readString();
+    this.mSummary = paramParcel.readString();
+    this.targetUrl = paramParcel.readString();
+    this.mImageUrls = new ArrayList();
+    paramParcel.readStringList(this.mImageUrls);
+    this.appName = paramParcel.readString();
+    this.shareUin = paramParcel.readString();
+    this.extString = paramParcel.readString();
+    this.iUrlInfoFrm = paramParcel.readInt();
+    this.from = paramParcel.readInt();
+    this.action = paramParcel.readString();
+    this.pkgname = paramParcel.readString();
+    this.showShareOtherPlat = paramParcel.readInt();
+    this.jFrom = paramParcel.readString();
+    this.mShareBeginTime = paramParcel.readLong();
+    this.mHint = paramParcel.readString();
+    this.mDefaultForwardReason = paramParcel.readString();
+    this.mWebUrl = paramParcel.readString();
+    this.qzoneShareInfo = paramParcel.readHashMap(Map.class.getClassLoader());
   }
   
   public int describeContents()
@@ -67,31 +71,31 @@ public class QZoneShareData
   
   public String toString()
   {
-    return "appid:" + this.jdField_a_of_type_Long + " openId:" + this.jdField_a_of_type_JavaLangString + " mTitle:" + this.jdField_b_of_type_JavaLangString + " mSummary:" + this.jdField_c_of_type_JavaLangString + " targetUrl:" + this.d + " mImageUrl:" + this.jdField_a_of_type_JavaUtilArrayList.toString() + " appName:" + this.e + " shareUin:" + this.f + " extString:" + this.g + " from:" + this.jdField_b_of_type_Int + " action:" + this.h + " pkgname:" + this.i + " iUrlInfoFrm" + this.jdField_a_of_type_Int + " mWebUrl:" + this.m;
+    return "appid:" + this.appid + " openId:" + this.openId + " mTitle:" + this.mTitle + " mSummary:" + this.mSummary + " targetUrl:" + this.targetUrl + " mImageUrl:" + this.mImageUrls.toString() + " appName:" + this.appName + " shareUin:" + this.shareUin + " extString:" + this.extString + " from:" + this.from + " action:" + this.action + " pkgname:" + this.pkgname + " iUrlInfoFrm" + this.iUrlInfoFrm + " mWebUrl:" + this.mWebUrl;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.d);
-    paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeString(this.e);
-    paramParcel.writeString(this.f);
-    paramParcel.writeString(this.g);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.h);
-    paramParcel.writeString(this.i);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.j);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.k);
-    paramParcel.writeString(this.l);
-    paramParcel.writeString(this.m);
-    paramParcel.writeMap(this.jdField_b_of_type_JavaUtilMap);
+    paramParcel.writeLong(this.appid);
+    paramParcel.writeString(this.openId);
+    paramParcel.writeString(this.mTitle);
+    paramParcel.writeString(this.mSummary);
+    paramParcel.writeString(this.targetUrl);
+    paramParcel.writeStringList(this.mImageUrls);
+    paramParcel.writeString(this.appName);
+    paramParcel.writeString(this.shareUin);
+    paramParcel.writeString(this.extString);
+    paramParcel.writeInt(this.iUrlInfoFrm);
+    paramParcel.writeInt(this.from);
+    paramParcel.writeString(this.action);
+    paramParcel.writeString(this.pkgname);
+    paramParcel.writeInt(this.showShareOtherPlat);
+    paramParcel.writeString(this.jFrom);
+    paramParcel.writeLong(this.mShareBeginTime);
+    paramParcel.writeString(this.mHint);
+    paramParcel.writeString(this.mDefaultForwardReason);
+    paramParcel.writeString(this.mWebUrl);
+    paramParcel.writeMap(this.qzoneShareInfo);
   }
 }
 

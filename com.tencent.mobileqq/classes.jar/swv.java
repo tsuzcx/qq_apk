@@ -1,24 +1,50 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-public class swv
-  extends GestureDetector.SimpleOnGestureListener
+final class swv
+  implements bjrp
 {
-  private swv(GestureCropImageView paramGestureCropImageView) {}
+  swv(Context paramContext, BaseData paramBaseData, AdData paramAdData) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    if (GestureCropImageView.a(this.a)) {
-      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FastWebActivity)) {
+      ((FastWebActivity)this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
     }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.a.a(-paramFloat1, -paramFloat2);
-    return true;
+    if (((QQAppInterface)pay.a() != null) && (paramArrayList != null))
+    {
+      paramView = "";
+      paramInt = 0;
+      if (paramInt < paramArrayList.size())
+      {
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label223;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
+    }
+    label223:
+    for (;;)
+    {
+      paramInt += 1;
+      break;
+      obb.a(new trn().a(this.jdField_a_of_type_AndroidContentContext).a(obb.c).b(obb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a(tws.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a(paramView).d(obb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a());
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, -1, this.jdField_a_of_type_AndroidContentContext.getString(2131698823), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+      return;
+    }
   }
 }
 

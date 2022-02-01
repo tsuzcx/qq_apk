@@ -1,42 +1,16 @@
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
 
 public class anra
+  extends anri
 {
-  public float a;
-  public int a;
-  public ApolloActionData a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  
-  public Drawable a(Context paramContext, float paramFloat)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    return behh.a(paramContext.getResources(), this.i);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
-  
-  public String toString()
-  {
-    if (this.a != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("[");
-      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
-      return localStringBuilder.toString();
-    }
-    return "ApolloActionData is null";
+    paramQQAppInterface = new anqz(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "miniapp";
+    paramQQAppInterface.c = "open";
+    return paramQQAppInterface;
   }
 }
 

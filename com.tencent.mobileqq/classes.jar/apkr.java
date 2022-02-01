@@ -1,517 +1,901 @@
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Point;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class apkr
-  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ServiceConnection a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RemoteArConfigManager");
-  public apkh a;
-  public apki a;
-  private apkj jdField_a_of_type_Apkj;
-  public apkk a;
-  public apln a;
-  public aplq a;
-  public aplw a;
-  public aplz a;
-  private apmc jdField_a_of_type_Apmc = new apkw(this);
-  public ARCommonConfigInfo a;
-  public ArConfigInfo a;
-  public ArEffectConfig a;
-  public boolean a;
-  volatile boolean b = false;
-  boolean c = false;
+  private aplh jdField_a_of_type_Aplh;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public apkr()
+  public apkr() {}
+  
+  public apkr(aplh paramaplh)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new apks(this);
-    this.jdField_a_of_type_Aplz = new apkt(this);
-    this.jdField_a_of_type_Aplq = new apku(this);
-    this.jdField_a_of_type_Aplw = new apkv(this);
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_Aplh = paramaplh;
   }
   
-  public ARCommonConfigInfo a()
+  public apkr(QQAppInterface paramQQAppInterface, aplh paramaplh)
   {
-    Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    this(paramaplh);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public static Bundle a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    return a(paramInt, paramString, paramBoolean, 0);
+  }
+  
+  public static Bundle a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteHelper", 2, "updateColorNote~~~");
     }
-    Object localObject2;
+    Bundle localBundle = new Bundle();
+    String str = String.valueOf(paramInt1) + paramString + paramInt2;
+    Object localObject;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteHelper", 2, "updateColorNote~~~ key " + str);
+      }
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      aplh localaplh = a((QQAppInterface)localObject);
+      paramString = null;
+      if (localaplh != null) {
+        paramString = localaplh.a(str);
+      }
+      if (paramString != null)
+      {
+        if (paramBoolean)
+        {
+          paramInt1 = i;
+          paramString.setState(paramInt1);
+        }
+      }
+      else
+      {
+        if (paramString == null) {
+          break label223;
+        }
+        paramBoolean = true;
+        label147:
+        localBundle.putBoolean("extra_is_colornote_exists", paramBoolean);
+        localBundle.putBoolean("extra_can_add_colornote", b());
+        localBundle.putBoolean("extra_after_sync_msg", apoh.a());
+        paramString = apoh.a((QQAppInterface)localObject);
+        localBundle.putInt("key_float_window_position_x", paramString.x);
+        localBundle.putInt("key_float_window_position_y", paramString.y);
+        apoh.a(((QQAppInterface)localObject).getApp(), 3, true);
+        paramString = localBundle;
+      }
+    }
+    label223:
     do
     {
+      return paramString;
+      paramInt1 = 1;
+      break;
+      paramBoolean = false;
+      break label147;
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("extra_unikey", str);
+      ((Bundle)localObject).putBoolean("extra_update_colornote_state", paramBoolean);
+      paramString = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_update_colornote_state", (Bundle)localObject);
+      if ((paramString == null) || (!paramString.isSuccess())) {
+        break label325;
+      }
+      localBundle = paramString.data;
+      paramString = localBundle;
+    } while (!QLog.isColorLevel());
+    QLog.d("ColorNoteHelper", 2, "receive from ipc server: " + localObject);
+    return localBundle;
+    label325:
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("updateColorNote eipcResult = ");
+      if (paramString != null) {
+        break label370;
+      }
+    }
+    label370:
+    for (paramString = "null";; paramString = Boolean.valueOf(paramString.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramString);
+      return localBundle;
+    }
+  }
+  
+  private static aplh a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return null;
+      paramQQAppInterface = paramQQAppInterface.getProxyManager();
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  private EIPCResult a(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    paramString2 = QIPCClientHelper.getInstance().getClient().callServer(paramString1, paramString2, paramBundle);
+    if (((paramString2 == null) || (paramString2.isSuccess())) && (QLog.isColorLevel()))
+    {
+      paramBundle = new StringBuilder().append("addColorNote eipcResult = ");
+      if (paramString2 != null) {
+        break label66;
+      }
+    }
+    label66:
+    for (paramString1 = "null";; paramString1 = Boolean.valueOf(paramString2.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramString1);
+      return paramString2;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ProxyListener paramProxyListener)
+  {
+    aplh localaplh = a(paramQQAppInterface);
+    ArrayList localArrayList = null;
+    if (localaplh != null) {
+      localArrayList = localaplh.a(paramQQAppInterface.getCurrentAccountUin(), paramProxyListener);
+    }
+    apkv.a(localArrayList);
+  }
+  
+  protected static void a(String paramString, int paramInt)
+  {
+    Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = a((QQAppInterface)localObject2);
+    if (localObject1 != null) {}
+    for (paramString = ((aplh)localObject1).a(paramString, paramInt);; paramString = null)
+    {
+      if (paramString == null) {}
       do
       {
-        return localObject1;
-        localObject2 = null;
-        localObject1 = null;
-      } while (this.jdField_a_of_type_Apln == null);
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Apln.a();
-        localObject2 = localObject1;
+        return;
+        ((aplh)localObject1).a(((QQAppInterface)localObject2).getCurrentUin(), paramString, null);
+        apoh.a(((QQAppInterface)localObject2).getApp(), 3, false);
+        localObject2 = paramString.getServiceType() + "";
+        String str = paramString.getSubType();
+        Intent localIntent = new Intent("key_delete_item_call");
+        localIntent.putExtra("key_color_note_servicetype_list", new String[] { localObject2 });
+        localIntent.putExtra("key_color_note_suptype_list", new String[] { str });
+        localIntent.putExtra("extra_can_add_colornote", ((aplh)localObject1).a());
+        localIntent.putExtras(paramString.parseBundle());
+        BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(paramString);
+        apkv.a((ArrayList)localObject1);
+      } while ((paramString == null) || (paramString.getServiceType() != 16908290));
+      swy.a(paramString);
+      return;
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      localObject = a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      if ((localObject != null) && (((aplh)localObject).a())) {
+        bool = true;
       }
-      catch (Exception localException)
+    }
+    do
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 1, "getARCommonConfigInfo fail!", localException);
-        }
+        return bool;
+        bool = false;
       }
-      localObject1 = localObject2;
+      localObject = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_can_add_colornote", null);
+      if ((localObject != null) && (((EIPCResult)localObject).isSuccess())) {
+        return ((EIPCResult)localObject).data.getBoolean("extra_can_add_colornote", true);
+      }
     } while (!QLog.isColorLevel());
-    QLog.d("ArConfig_RemoteArConfigManager", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject2 }));
-    return localObject2;
-  }
-  
-  public ArConfigInfo a()
-  {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
-    }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder().append("deleteColorNote eipcResult = ");
+    if (localObject == null) {}
+    for (Object localObject = "null";; localObject = Boolean.valueOf(((EIPCResult)localObject).isSuccess()))
     {
-      return localObject2;
-      localObject2 = null;
-      Object localObject1 = localObject2;
-      if (this.jdField_a_of_type_Apln != null) {}
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Apln.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|info=" + localObject1);
-        return localObject1;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        for (;;)
-        {
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject2;
-          }
-        }
-      }
+      QLog.d("ColorNoteHelper", 2, localObject);
+      return false;
     }
   }
   
-  public ArEffectConfig a()
+  public static boolean a(int paramInt)
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-    }
-    for (;;)
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      return localObject2;
-      Object localObject3 = null;
-      localObject2 = null;
-      if (this.jdField_a_of_type_Apln == null) {
-        continue;
+      apnb.a(paramInt);
+      return true;
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("color_note_service_type", paramInt);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_clear_history_color_notes", (Bundle)localObject);
+    if ((localObject != null) && (((EIPCResult)localObject).isSuccess())) {
+      return ((EIPCResult)localObject).data.getBoolean("extra_clear_history_succ", false);
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("clearHistoryNote eipcResult = ");
+      if (localObject != null) {
+        break label112;
       }
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Apln.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|info=" + localObject1);
-        return localObject1;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        for (;;)
-        {
-          Object localObject1 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject3;
-          }
-        }
-      }
+    }
+    label112:
+    for (localObject = "null";; localObject = Boolean.valueOf(((EIPCResult)localObject).isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, localObject);
+      return false;
     }
   }
   
-  public void a()
+  public static boolean a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      b();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if ((!this.b) || (this.jdField_a_of_type_AndroidContentContext != null)) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.b = false;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_Apkh = null;
-      this.jdField_a_of_type_Apki = null;
-      this.jdField_a_of_type_Apkj = null;
-      this.jdField_a_of_type_Apkk = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    return a(paramInt, paramString, 0);
   }
   
-  public void a(int paramInt)
+  public static boolean a(int paramInt1, String paramString, int paramInt2)
   {
-    if (this.jdField_a_of_type_Apln != null) {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteHelper", 2, "isColorNoteExit~~~ serviceType = " + paramInt1 + ", subType = " + paramString);
+    }
+    paramString = String.valueOf(paramInt1) + paramString + paramInt2;
+    Object localObject;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      localObject = a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      if (localObject == null) {
+        break label287;
+      }
+      localObject = ((aplh)localObject).a(false).iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (!((ColorNote)((Iterator)localObject).next()).getUniKey().equals(paramString));
+    }
+    label287:
+    for (bool = true;; bool = false)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources type " + paramInt);
+        QLog.d("ColorNoteHelper", 2, "isColorNoteExit main ~~~ result = " + bool);
+      }
+      do
+      {
+        return bool;
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("extra_unikey", paramString);
+        paramString = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_query_isexists", (Bundle)localObject);
+        if ((paramString != null) && (paramString.isSuccess())) {
+          return paramString.data.getBoolean("extra_is_colornote_exists", false);
+        }
+      } while (!QLog.isColorLevel());
+      localObject = new StringBuilder().append("isColorNoteExit eipcResult = ");
+      if (paramString == null) {}
+      for (paramString = "null";; paramString = Boolean.valueOf(paramString.isSuccess()))
+      {
+        QLog.d("ColorNoteHelper", 2, paramString);
+        return false;
       }
     }
-    try
-    {
-      this.jdField_a_of_type_Apln.a(paramInt);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources|RemoteException e= " + localRemoteException);
-    }
   }
   
-  public void a(Context paramContext, apkh paramapkh, apkk paramapkk)
+  private boolean a(QQAppInterface paramQQAppInterface)
   {
-    a(paramContext, false, paramapkh, null, null, paramapkk);
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean, apkh paramapkh, apki paramapki, apkj paramapkj, apkk paramapkk)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramBoolean;
-    paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, ArConfigService.class);
-    this.jdField_a_of_type_AndroidContentContext.bindService(paramContext, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    this.b = true;
-    if (paramapkh != null) {
-      this.jdField_a_of_type_Apkh = paramapkh;
-    }
-    if (paramapki != null) {
-      this.jdField_a_of_type_Apki = paramapki;
-    }
-    this.jdField_a_of_type_Apkj = paramapkj;
-    this.jdField_a_of_type_Apkk = paramapkk;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_Apln != null) {}
-    try
+    if (paramQQAppInterface == null) {}
+    do
     {
-      bool1 = this.jdField_a_of_type_Apln.a();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
+      return false;
+      if (this.jdField_a_of_type_Aplh == null)
       {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady " + bool1);
-        bool2 = bool1;
-      }
-      return bool2;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
+        paramQQAppInterface = paramQQAppInterface.getProxyManager();
+        if (paramQQAppInterface != null) {
+          this.jdField_a_of_type_Aplh = paramQQAppInterface.a();
         }
       }
-    }
+    } while (this.jdField_a_of_type_Aplh == null);
+    return true;
   }
   
-  public void b()
+  public static boolean a(ColorNote paramColorNote)
   {
-    if (this.jdField_a_of_type_Apln != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload");
-      }
+    if (BaseApplicationImpl.sProcessId == 1) {
+      return d(paramColorNote);
     }
-    try
-    {
-      this.jdField_a_of_type_Apln.b();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload|RemoteException e= " + localRemoteException);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("color_note_recently_viewed_comparator", paramColorNote);
+    return QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_clear_color_note", localBundle).isSuccess();
   }
   
-  public void b(int paramInt)
+  public static boolean a(String paramString1, String paramString2, Object paramObject)
+  {
+    return a(paramString1, paramString2, paramObject, 0);
+  }
+  
+  public static boolean a(String paramString1, String paramString2, Object paramObject, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onToolScannerActivityStateChanged state:" + paramInt + "  mConfigManager:" + this.jdField_a_of_type_Apln);
+      QLog.d("ColorNoteHelper", 2, "updateColorNote~~~");
     }
-    if (this.jdField_a_of_type_Apln != null) {
-      try
-      {
-        this.jdField_a_of_type_Apln.c(paramInt);
-        return;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteHelper", 2, "updateColorNote~~~ main[ uniKey = " + paramString1 + ", fieldName = " + paramString2 + ", fieldValue = " + paramObject + "]");
       }
-      catch (RemoteException localRemoteException)
-      {
-        localRemoteException.printStackTrace();
-        return;
+      return b(paramString1, paramString2, paramObject);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("extra_unikey", paramString1);
+    localBundle.putString("extra_field_name", paramString2);
+    if (paramInt == 0) {
+      localBundle.putString("extra_field_value", (String)paramObject);
+    }
+    for (;;)
+    {
+      paramString1 = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_update_colornote", localBundle);
+      if ((paramString1 == null) || (!paramString1.isSuccess())) {
+        break;
+      }
+      return paramString1.data.getBoolean("extra_update_colornote_succ", false);
+      if (paramInt == 1) {
+        localBundle.putByteArray("extra_field_value", (byte[])paramObject);
       }
     }
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder().append("updateColorNote eipcResult = ");
+      if (paramString1 != null) {
+        break label233;
+      }
+    }
+    label233:
+    for (paramString1 = "null";; paramString1 = Boolean.valueOf(paramString1.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramString1);
+      return false;
+    }
   }
   
-  public boolean b()
+  private boolean a(String paramString, List<ColorNote> paramList)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Apln != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Apln.c();
-      return bool1;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "isArSoReady fail!", localException);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (((ColorNote)paramList.next()).getUniKey().equals(paramString)) {
+        return true;
+      }
     }
     return false;
   }
   
-  public void c()
+  protected static boolean b()
   {
-    if (this.jdField_a_of_type_Apln != null) {}
-    try
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      this.jdField_a_of_type_Apln.c();
-      return;
+      aplh localaplh = a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      if ((localaplh != null) && (localaplh.a())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ColorNoteHelper", 2, "[canAddColorNoteInner] noteProxy: " + localaplh);
+          if (localaplh != null) {
+            QLog.d("ColorNoteHelper", 2, "[canAddColorNoteInner] canAddColorNote: " + localaplh);
+          }
+        }
+        return bool;
+      }
     }
-    catch (Exception localException)
+    return false;
+  }
+  
+  public static boolean b(int paramInt, String paramString)
+  {
+    return b(paramInt, paramString, 0);
+  }
+  
+  public static boolean b(int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteHelper", 2, "deleteColorNote~~~");
+    }
+    paramString = String.valueOf(paramInt1) + paramString + paramInt2;
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadArSo fail!", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteHelper", 2, "deleteColorNote~~~ main key" + paramString);
+      }
+      a(paramString, paramInt2);
+      return true;
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("extra_unikey", paramString);
+    ((Bundle)localObject).putInt("color_note_extra_type", paramInt2);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_delete_colornote", (Bundle)localObject);
+    if ((paramString != null) && (paramString.isSuccess())) {
+      return paramString.data.getBoolean("extra_delete_colornote_succ", false);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("deleteColorNote eipcResult = ");
+      if (paramString != null) {
+        break label192;
+      }
+    }
+    label192:
+    for (paramString = "null";; paramString = Boolean.valueOf(paramString.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramString);
+      return false;
     }
   }
   
-  public void c(int paramInt)
+  protected static boolean b(String paramString1, String paramString2, Object paramObject)
   {
-    if (this.jdField_a_of_type_Apln != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource type " + paramInt);
+    boolean bool;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      aplh localaplh = a(localQQAppInterface);
+      if (localaplh != null)
+      {
+        paramString2 = localaplh.a(localQQAppInterface.getCurrentUin(), paramString1, paramString2, paramObject);
+        if (paramString2 != null) {
+          bool = true;
+        }
       }
     }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteHelper", 2, "updateColorNoteInner~~~ unikey " + paramString1 + ", result" + bool);
+      }
+      return bool;
+      bool = false;
+      continue;
+      paramString2 = null;
+      break;
+      bool = false;
+    }
+  }
+  
+  private boolean d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
     try
     {
-      this.jdField_a_of_type_Apln.b(paramInt);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        return true;
+      }
     }
-    catch (RemoteException localRemoteException)
+    catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource|RemoteException e= " + localRemoteException);
+      for (;;)
+      {
+        QLog.e("ColorNoteHelper", 1, "mApp init failed", localException);
+      }
+    }
+    return false;
+  }
+  
+  private static boolean d(ColorNote paramColorNote)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    aplh localaplh = a(localQQAppInterface);
+    if (localaplh == null) {
+      return false;
+    }
+    apoh.a(localQQAppInterface.getApp(), true, false);
+    return localaplh.a(localQQAppInterface.getCurrentUin(), paramColorNote);
+  }
+  
+  private boolean e()
+  {
+    if (!d())
+    {
+      QLog.e("ColorNoteHelper", 1, "[_updateColorNoteState] app is null" + aplm.a());
+      return false;
+    }
+    if (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    {
+      QLog.e("ColorNoteHelper", 1, "[_updateColorNoteState] proxy is null" + aplm.a());
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean e(ColorNote paramColorNote)
+  {
+    if (!e())
+    {
+      QLog.e("ColorNoteHelper", 1, "[addColorNoteAux] app or proxy is null");
+      return false;
+    }
+    if (paramColorNote.mExtra == 2) {}
+    for (int i = 1;; i = 0)
+    {
+      Object localObject = this.jdField_a_of_type_Aplh;
+      paramColorNote.animate = true;
+      boolean bool1;
+      if ((((aplh)localObject).a()) || (i != 0) || (paramColorNote.getServiceType() == 16973824))
+      {
+        bool1 = ((aplh)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramColorNote, null, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteHelper", 2, "addColorNoteInner~~~ " + paramColorNote);
+        }
+        if (paramColorNote.mExtra != 2)
+        {
+          localObject = bfyz.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+          boolean bool2 = ((SharedPreferences)localObject).getBoolean("color_note_permission_music", true);
+          if (paramColorNote.mServiceType == 16973824)
+          {
+            i = 1;
+            if ((i != 0) && (!bool2)) {
+              break label229;
+            }
+          }
+          label229:
+          for (int j = 1;; j = 0)
+          {
+            if (j != 0)
+            {
+              apoh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), true, false, paramColorNote);
+              if (i != 0) {
+                ((SharedPreferences)localObject).edit().putBoolean("color_note_permission_music", false).apply();
+              }
+            }
+            if (i != 0) {
+              apoh.a(BaseApplicationImpl.getContext());
+            }
+            return bool1;
+            i = 0;
+            break;
+          }
+        }
+      }
+      else
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ColorNoteHelper", 2, "addColorNoteInner~~~ fail cause count limit, maxCount = " + aplh.a + " , currCount = " + ((aplh)localObject).a());
+        return false;
+      }
+      return bool1;
+    }
+  }
+  
+  private boolean f()
+  {
+    return BaseApplicationImpl.sProcessId == 1;
+  }
+  
+  public Bundle a(String paramString, boolean paramBoolean)
+  {
+    int i = 2;
+    Bundle localBundle = new Bundle();
+    if (f())
+    {
+      if (!e())
+      {
+        QLog.e("ColorNoteHelper", 1, "[_updateColorNoteState] app or proxy is null");
+        return null;
+      }
+      paramString = this.jdField_a_of_type_Aplh.a(paramString);
+      if (paramString != null)
+      {
+        if (paramBoolean) {
+          paramString.setState(i);
+        }
+      }
+      else {
+        if (paramString == null) {
+          break label143;
+        }
+      }
+      label143:
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        localBundle.putBoolean("extra_is_colornote_exists", paramBoolean);
+        localBundle.putBoolean("extra_can_add_colornote", c());
+        localBundle.putBoolean("extra_after_sync_msg", apoh.a());
+        paramString = apoh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localBundle.putInt("key_float_window_position_x", paramString.x);
+        localBundle.putInt("key_float_window_position_y", paramString.y);
+        apoh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 3, true);
+        return localBundle;
+        i = 1;
+        break;
+      }
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("extra_unikey", paramString);
+    ((Bundle)localObject).putBoolean("extra_update_colornote_state", paramBoolean);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_update_colornote_state", (Bundle)localObject);
+    if ((paramString != null) && (paramString.isSuccess()))
+    {
+      paramString = paramString.data;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ColorNoteHelper", 2, "[_updateColorNoteState] call server result: " + paramString);
+        return paramString;
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("updateColorNote eipcResult = ");
+        if (paramString != null) {
+          break label284;
+        }
+      }
+      label284:
+      for (paramString = "null";; paramString = Boolean.valueOf(paramString.isSuccess()))
+      {
+        QLog.d("ColorNoteHelper", 2, paramString);
+        return localBundle;
+      }
+    }
+    return paramString;
+  }
+  
+  public void a(aplh paramaplh)
+  {
+    this.jdField_a_of_type_Aplh = paramaplh;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    if (f()) {
+      return e(new ColorNote(paramBundle));
+    }
+    paramBundle = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_add_colornote", paramBundle);
+    if ((paramBundle != null) && (paramBundle.isSuccess())) {
+      return paramBundle.data.getBoolean("extra_add_colornote_succ", false);
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("addColorNote eipcResult = ");
+      if (paramBundle != null) {
+        break label101;
+      }
+    }
+    label101:
+    for (paramBundle = "null";; paramBundle = Boolean.valueOf(paramBundle.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramBundle);
+      return false;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteHelper", 2, "start search. key: " + paramString);
+    }
+    if (f()) {
+      if (this.jdField_a_of_type_Aplh == null) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteHelper", 2, "ColorNoteProxy is null");
+        }
+      }
+    }
+    do
+    {
+      return false;
+      return a(paramString, this.jdField_a_of_type_Aplh.a(false));
+      Bundle localBundle = new Bundle();
+      localBundle.putString("extra_unikey", paramString);
+      paramString = a("ColorNoteIPCServer", "cmd_query_isexists", localBundle);
+    } while (paramString == null);
+    return paramString.data.getBoolean("extra_is_colornote_exists", false);
+  }
+  
+  boolean a(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Aplh == null) || (StringUtil.isEmpty(paramString))) {}
+    do
+    {
+      return false;
+      paramString = this.jdField_a_of_type_Aplh.a(paramString, paramInt);
+    } while (paramString == null);
+    this.jdField_a_of_type_Aplh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString, null);
+    apoh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 3, false);
+    Object localObject = paramString.getServiceType() + "";
+    String str = paramString.getSubType();
+    Intent localIntent = new Intent("key_delete_item_call");
+    localIntent.putExtra("key_color_note_servicetype_list", new String[] { localObject });
+    localIntent.putExtra("key_color_note_suptype_list", new String[] { str });
+    localIntent.putExtra("extra_can_add_colornote", this.jdField_a_of_type_Aplh.a());
+    localIntent.putExtras(paramString.parseBundle());
+    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    localObject = new ArrayList();
+    ((ArrayList)localObject).add(paramString);
+    apkv.a((ArrayList)localObject);
+    return true;
+  }
+  
+  boolean b(ColorNote paramColorNote)
+  {
+    if (this.jdField_a_of_type_Aplh == null) {
+      return false;
+    }
+    apoh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), true, false, paramColorNote);
+    return this.jdField_a_of_type_Aplh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramColorNote);
+  }
+  
+  public boolean b(String paramString, int paramInt)
+  {
+    if (f())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteHelper", 2, "deleteColorNote~~~ main key" + paramString);
+      }
+      a(paramString, paramInt);
+      return true;
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("extra_unikey", paramString);
+    ((Bundle)localObject).putInt("color_note_extra_type", paramInt);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_delete_colornote", (Bundle)localObject);
+    if ((paramString != null) && (paramString.isSuccess())) {
+      return paramString.data.getBoolean("extra_delete_colornote_succ", false);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("deleteColorNote eipcResult = ");
+      if (paramString != null) {
+        break label153;
+      }
+    }
+    label153:
+    for (paramString = "null";; paramString = Boolean.valueOf(paramString.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramString);
+      return false;
+    }
+  }
+  
+  public boolean b(String paramString1, String paramString2, Object paramObject, int paramInt)
+  {
+    if (f()) {
+      return c(paramString1, paramString2, paramObject);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("extra_unikey", paramString1);
+    localBundle.putString("extra_field_name", paramString2);
+    if (paramInt == 0) {
+      localBundle.putString("extra_field_value", (String)paramObject);
+    }
+    for (;;)
+    {
+      paramString1 = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_update_colornote", localBundle);
+      if ((paramString1 == null) || (!paramString1.isSuccess())) {
+        break;
+      }
+      return paramString1.data.getBoolean("extra_update_colornote_succ", false);
+      if (paramInt == 1) {
+        localBundle.putByteArray("extra_field_value", (byte[])paramObject);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder().append("updateColorNote eipcResult = ");
+      if (paramString1 != null) {
+        break label164;
+      }
+    }
+    label164:
+    for (paramString1 = "null";; paramString1 = Boolean.valueOf(paramString1.isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, paramString1);
+      return false;
     }
   }
   
   public boolean c()
   {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_Apln != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Apln.b();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
+    if (f()) {
+      if (!e())
       {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady " + bool1);
-        bool2 = bool1;
+        QLog.e("ColorNoteHelper", 1, "[_canAddColorNote] app or proxy is null");
+        return false;
       }
-      return bool2;
     }
-    catch (RemoteException localRemoteException)
+    for (boolean bool = this.jdField_a_of_type_Aplh.a();; bool = ((EIPCResult)localObject).data.getBoolean("extra_can_add_colornote", true))
     {
-      for (;;)
-      {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
-        }
+      return bool;
+      localObject = QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_can_add_colornote", null);
+      if ((localObject == null) || (!((EIPCResult)localObject).isSuccess())) {
+        break;
       }
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("deleteColorNote eipcResult = ");
+      if (localObject != null) {
+        break label122;
+      }
+    }
+    label122:
+    for (Object localObject = "null";; localObject = Boolean.valueOf(((EIPCResult)localObject).isSuccess()))
+    {
+      QLog.d("ColorNoteHelper", 2, localObject);
+      bool = false;
+      break;
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean c(ColorNote paramColorNote)
   {
-    switch (paramMessage.what)
-    {
+    if (f()) {
+      return b(paramColorNote);
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("color_note_recently_viewed_comparator", paramColorNote);
+    return QIPCClientHelper.getInstance().getClient().callServer("ColorNoteIPCServer", "cmd_clear_color_note", localBundle).isSuccess();
+  }
+  
+  public boolean c(String paramString1, String paramString2, Object paramObject)
+  {
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = bool1;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      if (this.jdField_a_of_type_Aplh != null) {
+        break label31;
+      }
+      bool2 = bool1;
+    }
+    label31:
     do
     {
-      do
+      return bool2;
+      bool1 = bool3;
+      if (f())
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            for (;;)
-                            {
-                              return false;
-                              if (this.jdField_a_of_type_Apkh != null)
-                              {
-                                this.jdField_a_of_type_Apkh.a();
-                                return false;
-                                if (this.jdField_a_of_type_Apkh != null)
-                                {
-                                  paramMessage = paramMessage.obj;
-                                  if ((paramMessage instanceof ArConfigInfo))
-                                  {
-                                    this.jdField_a_of_type_Apkh.a((ArConfigInfo)paramMessage);
-                                    return false;
-                                    if (this.jdField_a_of_type_Apkh != null)
-                                    {
-                                      paramMessage = paramMessage.obj;
-                                      if ((paramMessage instanceof ArEffectConfig))
-                                      {
-                                        this.jdField_a_of_type_Apkh.a((ArEffectConfig)paramMessage);
-                                        return false;
-                                        if (this.jdField_a_of_type_Apkh != null) {
-                                          try
-                                          {
-                                            if ((paramMessage.obj instanceof ARCommonConfigInfo))
-                                            {
-                                              this.jdField_a_of_type_Apkh.a((ARCommonConfigInfo)paramMessage.obj);
-                                              return false;
-                                            }
-                                          }
-                                          catch (Exception paramMessage)
-                                          {
-                                            QLog.e("ArConfig_RemoteArConfigManager", 1, "handleMessage AR_COMMON_CONFIG_UPDATE fail.", paramMessage);
-                                            return false;
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          } while (this.jdField_a_of_type_Apkh == null);
-                          this.jdField_a_of_type_Apkh.b();
-                          this.jdField_a_of_type_Boolean = false;
-                          return false;
-                        } while (this.jdField_a_of_type_Apkh == null);
-                        i = paramMessage.arg1;
-                        j = paramMessage.arg2;
-                        this.jdField_a_of_type_Apkh.a(i, j);
-                        return false;
-                      } while ((this.jdField_a_of_type_Apkh == null) || (!(paramMessage.obj instanceof Integer)));
-                      this.jdField_a_of_type_Apkh.a(((Integer)paramMessage.obj).intValue());
-                      this.jdField_a_of_type_Boolean = false;
-                      return false;
-                    } while (this.jdField_a_of_type_Apki == null);
-                    i = paramMessage.arg1;
-                    this.jdField_a_of_type_Apki.k_(i);
-                    return false;
-                  } while (this.jdField_a_of_type_Apki == null);
-                  i = paramMessage.arg1;
-                  j = paramMessage.arg2;
-                  this.jdField_a_of_type_Apki.a(i, j);
-                  return false;
-                } while (this.jdField_a_of_type_Apki == null);
-                i = paramMessage.arg1;
-                j = paramMessage.arg2;
-                this.jdField_a_of_type_Apki.b(i, j);
-                return false;
-              } while (this.jdField_a_of_type_Apkj == null);
-              this.jdField_a_of_type_Apkj.c();
-              return false;
-            } while (this.jdField_a_of_type_Apkj == null);
-            this.jdField_a_of_type_Apkj.d();
-            return false;
-          } while (this.jdField_a_of_type_Apkj == null);
-          this.jdField_a_of_type_Apkj.b(paramMessage.arg1);
-          return false;
-        } while (this.jdField_a_of_type_Apkk == null);
-        i = paramMessage.arg1;
-        this.jdField_a_of_type_Apkk.a(i);
-        return false;
-      } while (this.jdField_a_of_type_Apkk == null);
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
-      this.jdField_a_of_type_Apkk.a(i, j);
-      return false;
-    } while (this.jdField_a_of_type_Apkk == null);
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    this.jdField_a_of_type_Apkk.b(i, j);
-    return false;
+        bool1 = bool3;
+        if (this.jdField_a_of_type_Aplh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, paramString2, paramObject) != null) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.d("ColorNoteHelper", 2, "updateColorNoteInner~~~ unikey " + paramString1 + ", result" + bool1);
+    return bool1;
   }
 }
 

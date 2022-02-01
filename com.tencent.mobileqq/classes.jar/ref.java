@@ -1,6 +1,15 @@
-public abstract class ref<C, T, A>
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.UGCFeedsInfo;
+
+public final class ref
+  implements psw<articlesummary.UGCFeedsInfo, rfj>
 {
-  public abstract void a(C paramC, T paramT, int paramInt, A paramA);
+  public ref(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  
+  public rfj a(articlesummary.UGCFeedsInfo paramUGCFeedsInfo)
+  {
+    return rfj.a(this.a, paramUGCFeedsInfo);
+  }
 }
 
 

@@ -1,17 +1,33 @@
 package com.tencent.mobileqq.startup.director;
 
-import bdho;
-import mqq.app.AppActivity;
+import amxv;
+import com.tencent.qphone.base.util.QLog;
 
-public class StartupDirector$5
-  implements Runnable
+public final class StartupDirector$5
+  extends Thread
 {
-  public StartupDirector$5(bdho parambdho, AppActivity paramAppActivity) {}
-  
   public void run()
   {
-    this.a.superFinish();
-    System.exit(0);
+    long l2 = amxv.a("-1");
+    long l4 = System.currentTimeMillis();
+    long l1 = l2;
+    try
+    {
+      for (;;)
+      {
+        Thread.sleep(2000L);
+        long l3 = amxv.a("-1");
+        QLog.d("Perf", 1, new Object[] { "ProcCpu,proc;", Long.valueOf(System.currentTimeMillis() - l4), ";cost cpu;", Long.valueOf(l3 - l2), ";", Long.valueOf(l3 - l1) });
+        l1 = l3;
+      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
 }
 

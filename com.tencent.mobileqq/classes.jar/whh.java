@@ -1,68 +1,36 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Queue;
-import java.util.Set;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
 public class whh
+  extends wje
 {
-  private whi a = new whi();
+  StoryVideoItem a;
+  public xcs a;
   
-  public whh(HashMap<String, List<wgh>> paramHashMap)
+  public whh(StoryVideoItem paramStoryVideoItem)
   {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
     {
-      Object localObject = (Map.Entry)paramHashMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = ((Map.Entry)localObject).getValue();
-      if (localObject == null)
-      {
-        yuk.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
-      }
-      else
-      {
-        localObject = (List)localObject;
-        this.a.a(str, ((List)localObject).size());
-      }
+      xvv.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
     }
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(this.a);
-    while (localLinkedList.size() > 0)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
     {
-      int j = localLinkedList.size();
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = (whi)localLinkedList.poll();
-        if (localObject != null)
-        {
-          localStringBuilder.append(" [").append(((whi)localObject).toString()).append("];");
-          localObject = ((whi)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            localLinkedList.offer((whi)((Iterator)localObject).next());
-          }
-        }
-        i += 1;
-      }
-      localStringBuilder.append("\n");
+      this.jdField_a_of_type_Xcs = new xcp();
+      this.jdField_a_of_type_Xcs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new whi(this));
+      return;
     }
-    localStringBuilder.append("\n]");
-    yuk.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
-    return localStringBuilder.toString();
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
   }
   
-  public whi a()
-  {
-    return this.a;
-  }
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

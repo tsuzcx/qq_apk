@@ -1,36 +1,39 @@
+import android.view.View;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+
 public class bevx
+  implements bjoe
 {
-  public int a;
-  public bevw a;
-  public bevy a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
+  public bevx(VisitorTroopCardFragment paramVisitorTroopCardFragment, bjnw parambjnw) {}
   
-  public bevx()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 30000;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 1;
+    paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
+    if (paramView == null) {
+      return;
+    }
+    switch (paramView.c)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      VisitorTroopCardFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+      continue;
+      TroopUtils.doReportTroop(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Bflj != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Bflj.e();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Bflj = TroopUtils.shareTroop(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bevx
  * JD-Core Version:    0.7.0.1
  */

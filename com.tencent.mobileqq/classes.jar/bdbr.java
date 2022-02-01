@@ -1,16 +1,18 @@
-import android.graphics.Rect;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.theme.ThemeUtil.2.1;
+import mqq.os.MqqHandler;
 
-class bdbr
+public final class bdbr
+  extends bdbp
 {
-  int jdField_a_of_type_Int;
-  amap jdField_a_of_type_Amap;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  File jdField_a_of_type_JavaIoFile;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public bdbr(QQAppInterface paramQQAppInterface) {}
   
-  private bdbr(bdbg parambdbg) {}
+  public boolean a(int paramInt)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
+    return super.a(paramInt);
+  }
 }
 
 

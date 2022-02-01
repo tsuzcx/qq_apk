@@ -1,31 +1,34 @@
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.HashMap;
+import android.view.View;
+import androidx.annotation.NonNull;
+import com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView;
 import java.util.List;
 
-class mza
-  extends mxu
+public class mza
+  extends mzg<myv>
 {
-  mza(myz parammyz) {}
+  private AutoResizeAsyncImageView a;
   
-  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
+  public mza(@NonNull View paramView)
   {
-    if (paramBoolean)
+    super(paramView);
+    this.a = ((AutoResizeAsyncImageView)paramView.findViewById(2131363190));
+  }
+  
+  public void a(mzj parammzj, myv parammyv, int paramInt)
+  {
+    super.a(parammzj, parammyv, paramInt);
+    if (parammyv == null) {}
+    do
     {
-      mze localmze = (mze)myz.a(this.a).a();
-      localmze.a(paramHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.i("avgame_logic.GameRoomController", 2, String.format("updateNicks when onUserNickUpdated %s", new Object[] { Arrays.toString(localmze.a().players.toArray()) }));
-      }
-      myz.a(this.a).a(paramHashMap);
-      myz.a(this.a, paramHashMap);
-    }
+      return;
+      parammzj = parammyv.a();
+    } while ((parammzj == null) || (parammzj.size() <= 0));
+    this.a.a(((nil)parammzj.get(0)).a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mza
  * JD-Core Version:    0.7.0.1
  */

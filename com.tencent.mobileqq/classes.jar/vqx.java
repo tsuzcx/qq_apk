@@ -1,22 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFollowListRsp;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
 
-class vqx
-  implements aaav<FeedCloudRead.StGetFollowListRsp>
+public class vqx
+  extends SimpleJob<Void>
 {
-  vqx(vqu paramvqu, vra paramvra) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp)
+  public vqx(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    QLog.d("QCircleSpecialFollowMgr", 1, "loadMoreSpecialFollowList: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowListRsp != null))
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
+    paramJobContext = (vqr)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
+    if (paramJobContext == null)
     {
-      vqu.a(this.jdField_a_of_type_Vqu).obtainMessage(1004, new vrb(paramStGetFollowListRsp, vra.a(this.jdField_a_of_type_Vra), null)).sendToTarget();
-      return;
+      xvv.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
+      return null;
     }
-    vqu.a(this.jdField_a_of_type_Vqu).obtainMessage(1005).sendToTarget();
+    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
+    return null;
   }
 }
 

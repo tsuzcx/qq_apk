@@ -1,11 +1,26 @@
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class anlb
+public class anlb
+  extends anla
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  boolean jdField_a_of_type_Boolean;
+  public anlb(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
+  {
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+    this.jdField_a_of_type_Int = 6000;
+  }
+  
+  protected anuv a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0);
+  }
+  
+  protected void a()
+  {
+    ((amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).a(false);
+  }
 }
 
 

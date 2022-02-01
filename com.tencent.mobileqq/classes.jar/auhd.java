@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 
 class auhd
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  auhd(auha paramauha, FileManagerEntity paramFileManagerEntity) {}
+  auhd(auhb paramauhb) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bdll.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    auoo.a(this.jdField_a_of_type_Auha.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Auha.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    if (this.a.a.getVisibility() == 0) {
+      this.a.a.setAlpha(f);
+    }
+    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
+    if (localHotVideoMongoliaRelativeLayout != null) {
+      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
+    }
   }
 }
 

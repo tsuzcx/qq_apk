@@ -1,6 +1,22 @@
-class apgy
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class apgy
+  implements View.OnClickListener
 {
-  private static final apgw a = new apgw(null);
+  public apgy(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str)) {
+      this.a.a(str);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

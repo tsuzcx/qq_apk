@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import artz;
-import arua;
-import aruc;
+import aqnx;
+import aqny;
+import aqoa;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,17 +10,17 @@ import java.util.List;
 public class DanmakuMeasureManager$2
   implements Runnable
 {
-  public DanmakuMeasureManager$2(artz paramartz, List paramList, arua paramarua) {}
+  public DanmakuMeasureManager$2(aqnx paramaqnx, List paramList, aqny paramaqny) {}
   
   public void run()
   {
     Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
     while (localIterator.hasNext())
     {
-      aruc localaruc = (aruc)localIterator.next();
-      artz.a(artz.a(this.this$0), localaruc);
-      if (this.jdField_a_of_type_Arua != null) {
-        this.jdField_a_of_type_Arua.a(localaruc);
+      aqoa localaqoa = (aqoa)localIterator.next();
+      aqnx.a(aqnx.a(this.this$0), localaqoa);
+      if (this.jdField_a_of_type_Aqny != null) {
+        this.jdField_a_of_type_Aqny.a(localaqoa);
       }
     }
   }

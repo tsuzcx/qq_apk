@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class ajmt
-  implements Comparator<PhoneContact>
+  implements DialogInterface.OnClickListener
 {
-  public ajmt(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public ajmt(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.a.finish();
   }
 }
 

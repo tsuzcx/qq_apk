@@ -1,19 +1,16 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+
 public class zbs
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public zbq a;
-  public int b;
+  public zbs(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  private zbs(zbu paramzbu)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Zbq = zbu.a(paramzbu);
-    this.jdField_a_of_type_Int = zbu.a(paramzbu);
-    this.b = zbu.b(paramzbu);
-  }
-  
-  public String toString()
-  {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Zbq + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
+    this.a.clearAnimation();
   }
 }
 

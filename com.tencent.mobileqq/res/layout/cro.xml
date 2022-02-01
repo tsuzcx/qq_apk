@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@id/ntb" android:background="@drawable/qq_hot_recommend_group_tag_bg" android:paddingLeft="8.0dip" android:paddingTop="2.0dip" android:paddingRight="8.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="6.0dip" android:maxLines="1" android:maxEms="12" />
-</LinearLayout>
+<RelativeLayout android:id="@id/ny2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.togetherui.writetogether.SavingAnimView android:id="@id/ny8" android:visibility="gone" android:layout_width="@dimen/bfi" android:layout_height="@dimen/bfi" android:layout_marginRight="@dimen/bfh" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:saving_stroke_width="@dimen/bfj" app:saving_view_color="@color/skin_bar_text" />
+        <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/ny5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ny8" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/ny7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xle" android:layout_toRightOf="@id/ny8" android:layout_centerVertical="true" android:alpha="0.0" />
+        <com.tencent.mobileqq.togetherui.writetogether.SavingAnimView android:layout_width="@dimen/bfi" android:layout_height="@dimen/bfi" android:layout_marginLeft="@dimen/bfh" android:layout_toRightOf="@id/ny7" android:layout_centerVertical="true" android:alpha="0.0" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:id="@id/ny4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:id="@id/ny3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+</RelativeLayout>

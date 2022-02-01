@@ -1,26 +1,20 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-class vnt
-  implements Observer<vbf>
+final class vnt
+  implements DialogInterface.OnClickListener
 {
-  vnt(vnp paramvnp) {}
+  vnt(List paramList) {}
   
-  public void a(@Nullable vbf paramvbf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramvbf != null) && (vnp.a(this.a) != null))
-    {
-      vnp.a(this.a, paramvbf);
-      if (vnp.a(this.a)) {
-        break label41;
-      }
-      vnp.b(this.a, paramvbf);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      vns.a((String)localIterator.next());
     }
-    label41:
-    while (vnp.a(this.a) == null) {
-      return;
-    }
-    vnp.a(this.a).clearData();
+    paramDialogInterface.dismiss();
   }
 }
 

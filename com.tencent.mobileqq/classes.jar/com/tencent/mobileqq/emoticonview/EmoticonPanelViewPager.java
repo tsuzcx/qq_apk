@@ -8,14 +8,14 @@ import com.tencent.mobileqq.widget.QQViewPager;
 public class EmoticonPanelViewPager
   extends QQViewPager
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private int mDistanceX;
+  private boolean mFromLeftToRightScrollDisEnable;
+  private boolean mFromRightToLeftScrollDisEnable;
+  private int mLeftNoScrollSize;
+  private float mMoveX;
+  private boolean mOnFingerTouch;
+  private int mRightNoScrollItem;
+  private float mStartX;
   
   public EmoticonPanelViewPager(Context paramContext)
   {
@@ -35,17 +35,17 @@ public class EmoticonPanelViewPager
     for (;;)
     {
       return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_c_of_type_Int = 0;
+      this.mOnFingerTouch = true;
+      this.mDistanceX = 0;
       continue;
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_c_of_type_Boolean = false;
+      this.mDistanceX = 0;
+      this.mOnFingerTouch = false;
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean))
+    if ((this.mFromLeftToRightScrollDisEnable) || (this.mFromRightToLeftScrollDisEnable))
     {
       switch (paramMotionEvent.getAction())
       {
@@ -55,11 +55,11 @@ public class EmoticonPanelViewPager
         for (;;)
         {
           return super.onInterceptTouchEvent(paramMotionEvent);
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.mStartX = paramMotionEvent.getX();
         }
-        this.jdField_b_of_type_Float = (paramMotionEvent.getX() - this.jdField_a_of_type_Float);
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      } while (((!this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Float <= 0.0F)) && ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Float >= 0.0F)));
+        this.mMoveX = (paramMotionEvent.getX() - this.mStartX);
+        this.mStartX = paramMotionEvent.getX();
+      } while (((!this.mFromLeftToRightScrollDisEnable) || (this.mMoveX <= 0.0F)) && ((!this.mFromRightToLeftScrollDisEnable) || (this.mMoveX >= 0.0F)));
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -67,43 +67,43 @@ public class EmoticonPanelViewPager
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    if ((!this.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0)))
+    if ((!this.mOnFingerTouch) || ((this.mLeftNoScrollSize == 0) && (this.mRightNoScrollItem == 0)))
     {
       super.scrollTo(paramInt1, paramInt2);
       return;
     }
     int i = paramInt1;
     int j;
-    if (getCurrentItem() == this.jdField_a_of_type_Int)
+    if (getCurrentItem() == this.mLeftNoScrollSize)
     {
       i = paramInt1;
-      if (this.jdField_a_of_type_Int != 0)
+      if (this.mLeftNoScrollSize != 0)
       {
         i = paramInt1;
-        if (this.jdField_a_of_type_Boolean)
+        if (this.mFromLeftToRightScrollDisEnable)
         {
           j = getScrollX();
-          this.jdField_c_of_type_Int = (paramInt1 - j + this.jdField_c_of_type_Int);
+          this.mDistanceX = (paramInt1 - j + this.mDistanceX);
           i = paramInt1;
-          if (this.jdField_c_of_type_Int < 0) {
+          if (this.mDistanceX < 0) {
             i = j;
           }
         }
       }
     }
     paramInt1 = i;
-    if (getCurrentItem() == this.jdField_b_of_type_Int)
+    if (getCurrentItem() == this.mRightNoScrollItem)
     {
       paramInt1 = i;
-      if (this.jdField_b_of_type_Int != 0)
+      if (this.mRightNoScrollItem != 0)
       {
         paramInt1 = i;
-        if (this.jdField_b_of_type_Boolean)
+        if (this.mFromRightToLeftScrollDisEnable)
         {
           j = getScrollX();
-          this.jdField_c_of_type_Int = (i - j + this.jdField_c_of_type_Int);
+          this.mDistanceX = (i - j + this.mDistanceX);
           paramInt1 = i;
-          if (this.jdField_c_of_type_Int > 0) {
+          if (this.mDistanceX > 0) {
             paramInt1 = j;
           }
         }
@@ -114,23 +114,23 @@ public class EmoticonPanelViewPager
   
   public void setLeftScrollDisEnable(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.mFromRightToLeftScrollDisEnable = paramBoolean;
   }
   
   public void setNoScrollItem(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.mLeftNoScrollSize = paramInt1;
+    this.mRightNoScrollItem = paramInt2;
   }
   
   public void setRightScrollDisEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mFromLeftToRightScrollDisEnable = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelViewPager
  * JD-Core Version:    0.7.0.1
  */

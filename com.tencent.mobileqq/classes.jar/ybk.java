@@ -1,28 +1,62 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import org.json.JSONObject;
 
-class ybk
-  implements ybi
+public class ybk
+  implements Cloneable
 {
-  ybk(ybj paramybj, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  static
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    yaq.b(ybj.a(this.jdField_a_of_type_Ybj), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
+    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public static ybk a(JSONObject paramJSONObject)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    yaq.c(ybj.a(this.jdField_a_of_type_Ybj), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
+    ybk localybk = new ybk();
+    localybk.jdField_b_of_type_Int = paramJSONObject.getInt("version");
+    localybk.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
+    localybk.c = paramJSONObject.getString("url");
+    localybk.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
+    return localybk;
+  }
+  
+  public String a()
+  {
+    Object localObject = new File(c());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
+        return c();
+      }
+    }
+    return null;
+  }
+  
+  public String b()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+  }
+  
+  public String c()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  public String d()
+  {
+    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 

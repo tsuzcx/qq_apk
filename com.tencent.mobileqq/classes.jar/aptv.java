@@ -1,34 +1,41 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aptv
-  extends AnimatorListenerAdapter
+  implements aptf
 {
-  public aptv(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, apte paramapte)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if ((paramapte != null) && ("smart_devices_discovery_config".equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramapte.a);
       }
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    try
+    {
+      paramInt = new JSONObject(paramapte.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    catch (Exception paramString) {}finally
+    {
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aptv
  * JD-Core Version:    0.7.0.1
  */

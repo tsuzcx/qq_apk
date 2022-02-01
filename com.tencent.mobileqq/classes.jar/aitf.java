@@ -1,89 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class aitf
-  extends aisj
+  extends BaseAdapter
 {
-  private Collection<String> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<aith> jdField_a_of_type_JavaUtilList;
   
-  public aitf(QQAppInterface paramQQAppInterface)
+  public aitf(Context paramContext)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public List<? extends aism> a(String paramString, SessionInfo paramSessionInfo)
+  public void a(List<aith> paramList)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticon search start.");
-    }
-    paramSessionInfo = new ArrayList();
-    axfj localaxfj = (axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    Object localObject = (ashc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    aiti localaiti = aiti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localObject = ((ashc)localObject).a();
-    if (localObject != null)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticonDataList.size : " + ((List)localObject).size());
+      paramView = new aiti(this, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561863, null, false);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368529));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368528));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379982));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379983));
+      localView.setTag(paramView);
+      localObject = (aith)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(((aith)localObject).jdField_a_of_type_AndroidGraphicsBitmap);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aith)localObject).b);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((aith)localObject).jdField_a_of_type_Int + amtj.a(2131703725));
+      if (!((aith)localObject).jdField_a_of_type_Boolean) {
+        break label224;
       }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
-        if (("isUpdate".equals(localCustomEmotionData.RomaingType)) || ("needDownload".equals(localCustomEmotionData.RomaingType)) || ("overflow".equals(localCustomEmotionData.RomaingType)) || ("overflow_downloaded".equals(localCustomEmotionData.RomaingType))) {
-          if ((!TextUtils.isEmpty(localCustomEmotionData.modifyWord)) && (paramString.equals(localaiti.b(localCustomEmotionData.modifyWord))))
-          {
-            paramSessionInfo.add(new aite(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
-          }
-          else if ((!TextUtils.isEmpty(localCustomEmotionData.ocrWord)) && (paramString.equals(localaiti.b(localCustomEmotionData.ocrWord))))
-          {
-            paramSessionInfo.add(new aite(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
-          }
-          else if (localCustomEmotionData.isMarkFace)
-          {
-            Emoticon localEmoticon = localaxfj.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId);
-            if ((localEmoticon != null) && (!TextUtils.isEmpty(localEmoticon.name)) && (paramString.equals(localaiti.b(localEmoticon.name)))) {
-              paramSessionInfo.add(new aite(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
-            }
-          }
-        }
-      }
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839240));
     }
-    if (paramSessionInfo.isEmpty())
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite onSearchStickerRecLocalEmoticon matchList is null or empty,keyWord: " + bhjx.a(paramString));
-      }
-      return null;
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (aiti)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label224:
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839242));
     }
-    return paramSessionInfo;
-  }
-  
-  public void a()
-  {
-    aiti localaiti = aiti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localaiti != null) {
-      this.jdField_a_of_type_JavaUtilCollection = localaiti.b();
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
-      a();
-    }
-    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
   }
 }
 

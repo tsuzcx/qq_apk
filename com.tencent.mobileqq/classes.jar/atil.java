@@ -1,37 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.HashMap;
 
-class atil
-  implements View.OnClickListener
+public abstract class atil
+  implements MethodChannel.MethodCallHandler
 {
-  atil(atik paramatik, View paramView) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void onClick(View paramView)
+  protected abstract void a(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    Object localObject = (atzi)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Atik.a.e = ((atzi)localObject).a;
-    localObject = (FileInfo)this.jdField_a_of_type_Atik.a.b.get(this.jdField_a_of_type_Atik.a.e);
-    if ((!auog.a(((FileInfo)localObject).c())) || (auog.c(((FileInfo)localObject).c())))
+    String str = paramMethodCall.method;
+    if ("reportException".equals(str))
     {
-      aunj.d(((FileInfo)localObject).c());
-      this.jdField_a_of_type_Atik.a.b.remove(this.jdField_a_of_type_Atik.a.e);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Atik.a);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("category"), (String)paramMethodCall.argument("errorType"), (String)paramMethodCall.argument("errorMsg"), (String)paramMethodCall.argument("stack"), (HashMap)paramMethodCall.argument("extraInfo"), paramResult);
       return;
-      auna.a(2131692076);
     }
+    if ("recordPageView".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), paramResult);
+      return;
+    }
+    if ("reportScrollPerfomance".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("FPS"), (Double)paramMethodCall.argument("dropRate"), paramResult);
+      return;
+    }
+    if ("reportPageLoadTime".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("loadTime"), paramResult);
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atil
  * JD-Core Version:    0.7.0.1
  */

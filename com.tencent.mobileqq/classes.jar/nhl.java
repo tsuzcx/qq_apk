@@ -1,67 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 
 public class nhl
-  implements DialogInterface.OnClickListener
+  extends biiv
 {
-  public nhl(AvGameLoadingActivity paramAvGameLoadingActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nhl(Context paramContext, nhk paramnhk)
   {
-    int i = -102;
-    if (paramInt == 1)
-    {
-      paramDialogInterface.cancel();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        Object localObject2 = null;
-        Object localObject1 = null;
-        AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, true);
-        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 5);
-        paramDialogInterface = localObject2;
-        if (!this.jdField_a_of_type_Boolean) {
-          if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 3)
-          {
-            paramDialogInterface = localObject2;
-            if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 5) {}
-          }
-          else
-          {
-            paramDialogInterface = localObject1;
-            if (AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != null)
-            {
-              AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 6);
-              paramDialogInterface = AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
-            }
-            QLog.e("AvGameManagerAvGameLoadingActivity", 2, "join failed alert DIALOG change to troop  with  troop UIN " + paramDialogInterface);
-          }
-        }
-        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity), paramDialogInterface);
-        return;
-      }
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        AVGameNodeReportUtil.b(i);
-        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
-        return;
-        i = -103;
-      }
-    }
-    paramDialogInterface.cancel();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      AVGameNodeReportUtil.b(i);
-      AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
-      return;
-      i = -103;
-    }
+    super(paramContext, paramnhk);
+  }
+  
+  public nhk a()
+  {
+    return (nhk)super.a();
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

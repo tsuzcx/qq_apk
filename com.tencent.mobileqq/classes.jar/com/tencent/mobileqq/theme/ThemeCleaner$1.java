@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import beio;
+import bdbk;
 import java.io.File;
 import mqq.app.AppRuntime;
 
@@ -11,7 +11,7 @@ final class ThemeCleaner$1
   
   public void run()
   {
-    ThemeCleaner.a(new File(new beio().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication())));
+    ThemeCleaner.a(new File(new bdbk().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication())));
   }
 }
 

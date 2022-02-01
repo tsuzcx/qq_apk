@@ -1,92 +1,40 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajav
-  extends aocj
 {
-  public ajav(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
   
-  public void a(boolean paramBoolean, int paramInt)
+  public ajav(String paramString)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
-    }
-    if (paramBoolean) {}
-    while ((i != 0) && (!BlessSelectMemberActivity.b()))
+    try
     {
-      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
-      return;
-      if (paramInt != 0) {
-        if (paramInt == 1)
+      paramString = aptd.a(paramString, "troop_member_list_config");
+      if (paramString != null)
+      {
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
         {
-          BlessSelectMemberActivity.a(this.a, 2131690518, true);
-          i = 0;
-        }
-        else
-        {
-          if (paramInt == 8) {
-            BlessSelectMemberActivity.a(this.a, 2131690542, true);
-          }
-          i = 0;
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
         }
       }
-    }
-    this.a.e();
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
-    }
-    if (!this.a.a) {
-      return;
-    }
-    this.a.a = false;
-    if (paramInt == 67L)
-    {
-      BlessSelectMemberActivity.a(System.currentTimeMillis());
-      this.a.a(paramLong);
-      this.a.e();
-      BlessSelectMemberActivity.a(this.a, 2131690529, true);
-      return;
-    }
-    if (BlessSelectMemberActivity.b(this.a) == 15)
-    {
-      this.a.a(paramBoolean1);
-      return;
-    }
-    this.a.a(paramBoolean1, paramBoolean2);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
-    }
-    if (BlessSelectMemberActivity.c(this.a) == 3) {
-      if (paramBoolean) {
-        BlessSelectMemberActivity.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
       }
+      return;
     }
-    do
+    catch (Throwable paramString)
     {
-      do
-      {
-        return;
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131690528, false);
-        return;
-      } while (BlessSelectMemberActivity.c(this.a) != 2);
-      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
-      {
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131690543, false);
-        return;
-      }
-    } while (BlessSelectMemberActivity.b());
-    BlessSelectMemberActivity.b(this.a);
+      paramString.printStackTrace();
+    }
   }
 }
 

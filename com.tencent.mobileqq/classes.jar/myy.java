@@ -1,28 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
+import androidx.annotation.NonNull;
 
-class myy
-  extends Handler
+public abstract interface myy
 {
-  myy(myx parammyx) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      myx.a(this.a, myx.a(this.a), myx.a(this.a));
-      myx.a(this.a);
-      return;
-    }
-    myx.b(this.a);
-  }
+  @NonNull
+  public abstract String a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myy
  * JD-Core Version:    0.7.0.1
  */

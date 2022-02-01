@@ -1,22 +1,98 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.HitAndRunHelper.1;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class afqz
-  implements DialogInterface.OnClickListener
+  implements afrc
 {
-  public afqz(TranslucentTRansferFragment paramTranslucentTRansferFragment, bhpc parambhpc) {}
+  private BaseChatPie a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  afqz(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
-    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
-    bdll.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    bfxf.a(this.a.app);
+    agkq.h = this.a.app.getApp().getSharedPreferences("check_update_sp_key", 0).getBoolean("businessinfo_ptt_slice_to_text_" + this.a.app.getCurrentAccountUin(), false);
+    aqai localaqai = (aqai)apub.a().a(442);
+    try
+    {
+      if (!agkq.e)
+      {
+        if ((int)(Long.valueOf(this.a.app.getCurrentAccountUin()).longValue() / 1000L % 1000L) > localaqai.a())
+        {
+          agkq.f = true;
+          return;
+        }
+        agkq.f = false;
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PttAutoChange", 2, "error=" + localException.toString());
+      }
+    }
+  }
+  
+  private void b()
+  {
+    if (!agkq.c) {}
+    try
+    {
+      System.loadLibrary("sonic");
+      agkq.c = true;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("sonic", 2, "load error:" + localThrowable.toString());
+      }
+      agkq.c = false;
+      return;
+    }
+    finally
+    {
+      bfxf.a(agkq.c);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 9: 
+    case 6: 
+      do
+      {
+        return;
+        ((AvatarPendantManager)this.a.app.getManager(46)).c();
+        ahlz.a(this.a.afRoot);
+        return;
+        a();
+        ThreadManager.post(new HitAndRunHelper.1(this), 5, null, true);
+      } while (!QLog.isColorLevel());
+      QLog.d("PttAutoChange", 2, "pttAutoChangeTxt =" + agkq.d + " hasAddGrayTip =" + agkq.e + " grayTipPerThousandStatus=" + agkq.f);
+      return;
+    }
+    agnj.g();
+    ShortVideoRealItemBuilder.g();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 9, 6 };
   }
 }
 

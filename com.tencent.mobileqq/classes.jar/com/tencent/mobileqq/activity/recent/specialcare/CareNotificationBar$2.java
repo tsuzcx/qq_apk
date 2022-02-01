@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import alrd;
+import akou;
 import android.view.View;
 
 public class CareNotificationBar$2
   implements Runnable
 {
-  public CareNotificationBar$2(alrd paramalrd) {}
+  public CareNotificationBar$2(akou paramakou) {}
   
   public void run()
   {
-    if (alrd.a(this.this$0) == null) {}
-    while (alrd.a(this.this$0).getVisibility() != 0) {
+    if (akou.a(this.this$0) == null) {}
+    while (akou.a(this.this$0).getVisibility() != 0) {
       return;
     }
-    alrd.a(this.this$0).clearAnimation();
-    alrd.a(this.this$0).startAnimation(alrd.a(this.this$0));
-    alrd.a(this.this$0).setVisibility(8);
+    akou.a(this.this$0).clearAnimation();
+    akou.a(this.this$0).startAnimation(akou.a(this.this$0));
+    akou.a(this.this$0).setVisibility(8);
   }
 }
 

@@ -1,96 +1,23 @@
-import com.tencent.widget.ExpandableListView;
-import java.util.ArrayList;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class blli
+class blli
+  implements OnApplyWindowInsetsListener
 {
-  private static ArrayList<blli> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  blli(bllh parambllh) {}
   
-  static
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  }
-  
-  private static blli a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    if ((paramView instanceof ViewGroup))
     {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localblli = (blli)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localblli.b();
-        return localblli;
+      paramView = (ViewGroup)paramView.findViewById(2131376679);
+      if (paramView != null) {
+        paramView.setPadding(0, paramWindowInsetsCompat.getSystemWindowInsetTop(), 0, 0);
       }
-      blli localblli = new blli();
-      return localblli;
     }
-  }
-  
-  public static blli a(int paramInt)
-  {
-    return a(2, paramInt, 0, 0);
-  }
-  
-  public static blli a(int paramInt1, int paramInt2)
-  {
-    return a(1, paramInt1, paramInt2, 0);
-  }
-  
-  public static blli a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    blli localblli = a();
-    localblli.d = paramInt1;
-    localblli.jdField_a_of_type_Int = paramInt2;
-    localblli.b = paramInt3;
-    localblli.c = paramInt4;
-    return localblli;
-  }
-  
-  public static blli a(long paramLong)
-  {
-    if (paramLong == 4294967295L) {
-      return null;
-    }
-    blli localblli = a();
-    localblli.jdField_a_of_type_Int = ExpandableListView.c(paramLong);
-    if (ExpandableListView.b(paramLong) == 1)
-    {
-      localblli.d = 1;
-      localblli.b = ExpandableListView.d(paramLong);
-      return localblli;
-    }
-    localblli.d = 2;
-    return localblli;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  public long a()
-  {
-    if (this.d == 1) {
-      return ExpandableListView.a(this.jdField_a_of_type_Int, this.b);
-    }
-    return ExpandableListView.b(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
-      }
-      return;
-    }
+    return paramWindowInsetsCompat;
   }
 }
 

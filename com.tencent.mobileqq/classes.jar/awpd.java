@@ -1,42 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class awpd
-  extends awow
+  implements BusinessObserver
 {
-  public awpd(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-  }
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aijm)) {
-      ((aijm)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bz();
+    switch (paramInt)
+    {
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_Awpc.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    if (this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString = "";
-    }
-    this.jdField_a_of_type_Awpb = new awpb();
-    this.jdField_a_of_type_Awpb.jdField_a_of_type_JavaLangString = "c2c_AIO";
-    this.jdField_a_of_type_Awpb.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Awpb.b = "";
+    do
+    {
+      return;
+    } while (!paramBoolean);
+    paramObject = (Object[])paramObject;
+    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
 }
 

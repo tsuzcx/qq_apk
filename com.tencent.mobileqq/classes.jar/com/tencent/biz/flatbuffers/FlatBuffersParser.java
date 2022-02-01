@@ -6,13 +6,13 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
-import bhlo;
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.IOUtil;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import mqq.app.AppRuntime;
-import niz;
+import nko;
 
 public class FlatBuffersParser
 {
@@ -42,7 +42,7 @@ public class FlatBuffersParser
   public static void a()
   {
     if (!b()) {
-      niz.a(false).b();
+      nko.a(false).b();
     }
   }
   
@@ -155,7 +155,7 @@ public class FlatBuffersParser
   
   public static boolean c()
   {
-    boolean bool1 = VideoEnvironment.c();
+    boolean bool1 = VideoEnvironment.isX86Platform();
     boolean bool2 = bool1;
     if (!bool1)
     {
@@ -188,7 +188,7 @@ public class FlatBuffersParser
     if (!bool2)
     {
       QLog.d("FlatBuffersParser", 1, "os.arch: " + System.getProperty("os.arch"));
-      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + bhlo.g());
+      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + DeviceInfoUtil.getCpuType());
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI: " + Build.CPU_ABI);
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI2: " + Build.CPU_ABI2);
       QLog.d("FlatBuffersParser", 1, "isX86: " + bool2);
@@ -223,7 +223,7 @@ public class FlatBuffersParser
       QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip real start");
       try
       {
-        bhmi.a(str3, (String)localObject, false);
+        FileUtils.uncompressZip(str3, (String)localObject, false);
         QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip success");
         localObject = new File((String)localObject + "libFlatBuffersParser.so");
         if (((File)localObject).exists()) {

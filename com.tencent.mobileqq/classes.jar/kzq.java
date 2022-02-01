@@ -1,14 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.qphone.base.util.Cryptor;
 
-class kzq
-  extends Handler
+public class kzq
 {
-  kzq(kzp paramkzp) {}
+  private final String a = "ZaDA32%dkn_vs4dAjg";
   
-  public void handleMessage(Message paramMessage)
+  protected String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.a.a(paramMessage);
+    return new String(new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2));
+  }
+  
+  protected byte[] a()
+  {
+    return "ZaDA32%dkn_vs4dAjg".getBytes();
   }
 }
 

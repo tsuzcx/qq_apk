@@ -39,7 +39,7 @@ public class UpArrowView
     this.jdField_a_of_type_Int = Color.argb(255, 255, 255, 255);
     this.b = Color.argb(255, 241, 242, 249);
     setDuplicateParentStateEnabled(true);
-    int i = getResources().getColor(2131167050);
+    int i = getResources().getColor(2131167072);
     if (this.jdField_a_of_type_Int != i) {
       this.jdField_a_of_type_Int = i;
     }
@@ -90,7 +90,7 @@ public class UpArrowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.UpArrowView
  * JD-Core Version:    0.7.0.1
  */

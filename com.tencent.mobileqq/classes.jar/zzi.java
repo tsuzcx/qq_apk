@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zzi
+class zzi
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, QQAnimationDrawable paramQQAnimationDrawable);
+  zzi(zzf paramzzf) {}
+  
+  public void onClick(View paramView)
+  {
+    zzf.b(this.a).setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

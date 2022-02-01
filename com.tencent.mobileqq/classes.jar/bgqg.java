@@ -1,12 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bgqg
-  implements View.OnClickListener
+public class bgqg
 {
-  bgqg(bgqf parambgqf) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView) {}
+  public bgqg(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+  }
 }
 
 

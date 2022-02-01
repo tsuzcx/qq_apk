@@ -1,118 +1,110 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.SurfaceHolder;
+import android.view.View;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import dov.com.tencent.mobileqq.richmedia.capture.view.TvkVideoViewHelper.1;
+import mqq.os.MqqHandler;
 
 public class bnzq
-  extends WebViewPlugin
+  implements afbb, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
-  public bnzq()
+  private bnzr jdField_a_of_type_Bnzr;
+  private bnzs jdField_a_of_type_Bnzs;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public boolean a;
+  
+  public void OnDownloadCallback(String paramString)
   {
-    this.mPluginNameSpace = "Weiyun";
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "OnDownloadCallback " + paramString);
+    }
   }
   
-  public static boolean a(String paramString)
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return bool1;
-      }
-      paramString = Uri.parse(paramString);
-      String str = paramString.getScheme();
-      if (("http".equalsIgnoreCase(str)) || ("https".equalsIgnoreCase(str)))
-      {
-        paramString = paramString.getHost();
-        bool1 = bool2;
-        if (TextUtils.isEmpty(paramString)) {
-          return bool1;
-        }
-        if (!paramString.contains("share.weiyun.com"))
-        {
-          bool1 = bool2;
-          if (!paramString.contains("h5.weiyun.com")) {
-            return bool1;
-          }
-        }
-      }
-      else
-      {
-        Log.e("WeiyunJsPlugin", "Weiyun urlString is not url!");
-        return false;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "handleMessage");
     }
-    catch (Exception paramString)
-    {
-      Log.e("WeiyunJsPlugin", "Weiyun exception: " + paramString);
-      return false;
-    }
-    bool1 = true;
-    return bool1;
   }
   
-  public WeiYunFileInfo a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-    localWeiYunFileInfo.jdField_a_of_type_JavaLangString = paramString4;
-    localWeiYunFileInfo.c = paramString3;
-    localWeiYunFileInfo.jdField_a_of_type_Long = paramLong;
-    localWeiYunFileInfo.f = "FTN5K";
-    localWeiYunFileInfo.g = paramString2;
-    localWeiYunFileInfo.jdField_a_of_type_Int = 2;
-    localWeiYunFileInfo.e = blhn.b(paramString1);
-    localWeiYunFileInfo.h = (bocd.b() + "/" + paramString3);
-    localWeiYunFileInfo.jdField_b_of_type_JavaLangString = ("FTN5K=" + paramString2);
-    localWeiYunFileInfo.jdField_b_of_type_Long = System.currentTimeMillis();
-    return localWeiYunFileInfo;
+    if (this.jdField_a_of_type_Bnzr != null) {
+      this.jdField_a_of_type_Bnzr.a();
+    }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    int i = 0;
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("Weiyun")) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!paramString3.equals("createDownload"))) {
-      return false;
+    paramTVK_IMediaPlayer = "onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2 + "s:" + paramString;
+    if (QLog.isColorLevel()) {
+      QLog.e("TvkVideoViewHelper", 2, paramTVK_IMediaPlayer);
     }
-    paramString1 = paramVarArgs[0];
-    try
-    {
-      paramJsBridgeListener = new ArrayList();
-      paramString1 = new JSONObject(paramString1);
-      if (paramString1.has("file_list"))
-      {
-        paramString1 = paramString1.getJSONArray("file_list");
-        while (i < paramString1.length())
-        {
-          paramString2 = paramString1.getJSONObject(i);
-          paramString3 = paramString2.getString("url");
-          paramVarArgs = paramString2.getString("pack_name");
-          String str = paramString2.getString("file_id");
-          paramJsBridgeListener.add(a(paramString3, paramString2.getString("FTN5K"), paramVarArgs, str, paramString2.getLong("file_size")));
-          i += 1;
-        }
-      }
-      paramString1 = new Intent("com.weiyun.BROADCAST");
-      paramString1.setPackage(MobileQQ.getContext().getPackageName());
-      paramString1.putExtra("fileinfos", paramJsBridgeListener);
-      this.mRuntime.a().sendBroadcast(paramString1);
+    if (this.jdField_a_of_type_Bnzs != null) {
+      this.jdField_a_of_type_Bnzs.a(paramTVK_IMediaPlayer);
     }
-    catch (Exception paramJsBridgeListener)
-    {
-      label204:
-      break label204;
+    return false;
+  }
+  
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "onInfo");
     }
-    return true;
+    return false;
+  }
+  
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "onNetVideoInfo");
+    }
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "onSurfaceChanged");
+    }
+  }
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "onSurfaceCreated");
+    }
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "onSurfaceDestory");
+    }
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new TvkVideoViewHelper.1(this));
+    }
+  }
+  
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TvkVideoViewHelper", 2, "onVideoPreparing");
+    }
   }
 }
 

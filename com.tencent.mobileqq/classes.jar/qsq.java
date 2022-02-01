@@ -1,16 +1,36 @@
-import kotlin.Lazy;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$Companion;", "", "()V", "CLIP_TAG", "", "TAG", "WATCH_WORD_COUNT", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qsq
+class qsq
+  implements View.OnClickListener
 {
-  @NotNull
-  public final qsp a()
+  qsq(qso paramqso, ArticleInfo paramArticleInfo, rga paramrga) {}
+  
+  public void onClick(View paramView)
   {
-    Lazy localLazy = qsp.a();
-    qsq localqsq = qsp.a;
-    return (qsp)localLazy.getValue();
+    pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    pay.a(this.jdField_a_of_type_Qso.a, this.jdField_a_of_type_Rga.b.b);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("folder_status", pay.d);
+      localJSONObject.put("kandian_mode", "" + pay.e());
+      localJSONObject.put("tab_source", "" + pay.d());
+      odq.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,59 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import org.apache.http.Header;
 
 public class bggx
-  extends arac<bggw>
 {
-  @NonNull
-  public bggw a(int paramInt)
-  {
-    QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new bggw();
-  }
+  public int a;
+  public String a;
+  public Header[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  @Nullable
-  public bggw a(araj[] paramArrayOfaraj)
+  public bggx(VasResDrawable paramVasResDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return bggw.a(paramArrayOfaraj[0].a);
-    }
-    return null;
-  }
-  
-  public void a(bggw parambggw) {}
-  
-  public Class<bggw> clazz()
-  {
-    return bggw.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("JoinTroopSecurityTipsConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 669;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

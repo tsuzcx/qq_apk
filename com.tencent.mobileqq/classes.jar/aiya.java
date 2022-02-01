@@ -1,48 +1,34 @@
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.widget.XListView;
+
 public class aiya
+  extends Handler
 {
-  boolean a = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
+  public aiya(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public boolean d()
-  {
-    return this.d;
+    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
+    for (;;)
+    {
+      return;
+      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
+      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
+      {
+        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.getTag();
+          if ((paramMessage != null) && ((paramMessage instanceof beff))) {
+            ((beff)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

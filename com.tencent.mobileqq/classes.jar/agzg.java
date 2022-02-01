@@ -1,46 +1,54 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import android.app.Activity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery;
 
-class agzg
-  implements ArkViewImplement.LoadCallback
+final class agzg
+  implements URLDrawable.URLDrawableListener
 {
-  agzg(agzf paramagzf, MessageForArkApp paramMessageForArkApp, agzk paramagzk) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    onLoadState(paramInt1);
-  }
+  agzg(agyh paramagyh) {}
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkAppItemBubbleBuilder", 2, new Object[] { "onLoadFinish state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
     }
-    if (paramInt == 1)
-    {
-      if (!bgpy.b(this.jdField_a_of_type_Agzf.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.senderuin)) {
-        this.jdField_a_of_type_Agzk.a(this.jdField_a_of_type_Agzk, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer.getContainerRect();
-      float f = aqbx.a();
-      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-      localObject = this.jdField_a_of_type_Agzk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams();
-      StringBuilder localStringBuilder = new StringBuilder("ArkFold.onLoadFinish arkContainer rect(");
-      localStringBuilder.append(paramInt).append(",").append(i).append(")").append(", arkView layout rect(").append(((ViewGroup.LayoutParams)localObject).width).append(",").append(((ViewGroup.LayoutParams)localObject).height).append(")").append(", init mArkWidth=").append(agzf.b(this.jdField_a_of_type_Agzf)).append(",mArkHeight=").append(agzf.a(this.jdField_a_of_type_Agzf)).append(",app=").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName);
-      QLog.i("ArkAppItemBubbleBuilder", 1, localStringBuilder.toString());
-      return;
+    this.a.a(false);
+    this.a.jdField_a_of_type_Agzg = null;
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
     }
-    this.jdField_a_of_type_Agzk.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    QQToast.a(agyh.b(this.a), agyh.c(this.a).getString(2131694569), 0).a();
+    this.a.c(true);
+    this.a.a(false);
+    this.a.jdField_a_of_type_Agzg = null;
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
+    }
+    this.a.c(false);
+    this.a.a(false);
+    this.a.jdField_a_of_type_Agzn.b.b = paramURLDrawable.getExifOrientation();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, agyh.c(this.a).getSelectedItemPosition());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
+    agyh.d(this.a).e();
+    this.a.jdField_a_of_type_Agzg = null;
   }
 }
 

@@ -1,162 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.aladdin.config.network.AladdinRequestHandler;
+import com.tencent.aladdin.config.network.AladdinResponseHandler;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class pbw
-  implements AladdinConfigHandler
+  extends AladdinRequestHandler
 {
-  public static JSONObject a()
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    return a(299);
+    int i = paramArrayOfByte.length - 4;
+    byte[] arrayOfByte = new byte[i];
+    PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 4, i);
+    return arrayOfByte;
   }
   
-  public static JSONObject a(int paramInt)
+  private static void b(Bundle paramBundle)
   {
-    localJSONObject = new JSONObject();
-    try
+    HashMap localHashMap = new HashMap();
+    int i = paramBundle.getInt("key_ret_code", 0);
+    localHashMap.put("param_OpCode", String.valueOf(paramBundle.getInt("key_rsp_type", 0)));
+    localHashMap.put("param_FailCode", String.valueOf(i));
+    long l1 = paramBundle.getLong("key_config_count");
+    long l2 = paramBundle.getLong("key_failed_count");
+    localHashMap.put("param_ConfigCount", String.valueOf(l1));
+    localHashMap.put("param_FailCount", String.valueOf(l2));
+    l1 = paramBundle.getLong("key_response_timestamp", 0L) - paramBundle.getLong("key_request_timestamp", 0L);
+    localHashMap.put("param_CostTime", String.valueOf(l1));
+    paramBundle = StatisticCollector.getInstance(pay.a().getApplication());
+    String str = pay.a();
+    if (i == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      Object localObject = Aladdin.getConfig(paramInt);
-      if (localObject == null) {
-        return localJSONObject;
-      }
-      localObject = ((AladdinConfig)localObject).getAll().entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-      }
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DyHandler", 1, "getMultiVideoConfig error: " + localThrowable.getMessage());
-    }
-  }
-  
-  /* Error */
-  public static int[] a()
-  {
-    // Byte code:
-    //   0: ldc 96
-    //   2: ldc 98
-    //   4: invokestatic 103	bnrf:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   7: checkcast 62	java/lang/String
-    //   10: astore_1
-    //   11: aload_1
-    //   12: invokestatic 109	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   15: ifeq +5 -> 20
-    //   18: aconst_null
-    //   19: areturn
-    //   20: aload_1
-    //   21: ldc 111
-    //   23: invokevirtual 115	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   26: astore_3
-    //   27: aload_3
-    //   28: arraylength
-    //   29: ifne +5 -> 34
-    //   32: aconst_null
-    //   33: areturn
-    //   34: aload_3
-    //   35: arraylength
-    //   36: newarray int
-    //   38: astore_2
-    //   39: iconst_0
-    //   40: istore_0
-    //   41: aload_2
-    //   42: astore_1
-    //   43: iload_0
-    //   44: aload_3
-    //   45: arraylength
-    //   46: if_icmpge +50 -> 96
-    //   49: aload_2
-    //   50: iload_0
-    //   51: aload_3
-    //   52: iload_0
-    //   53: aaload
-    //   54: invokestatic 121	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   57: iastore
-    //   58: iload_0
-    //   59: iconst_1
-    //   60: iadd
-    //   61: istore_0
-    //   62: goto -21 -> 41
-    //   65: astore_1
-    //   66: ldc 71
-    //   68: iconst_1
-    //   69: new 73	java/lang/StringBuilder
-    //   72: dup
-    //   73: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   76: ldc 123
-    //   78: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_1
-    //   82: invokevirtual 84	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   85: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 93	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: aconst_null
-    //   95: astore_1
-    //   96: aload_1
-    //   97: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   40	22	0	i	int
-    //   10	33	1	localObject	Object
-    //   65	17	1	localThrowable	Throwable
-    //   95	2	1	arrayOfInt1	int[]
-    //   38	12	2	arrayOfInt2	int[]
-    //   26	26	3	arrayOfString	String[]
-    // Exception table:
-    //   from	to	target	type
-    //   0	18	65	java/lang/Throwable
-    //   20	32	65	java/lang/Throwable
-    //   34	39	65	java/lang/Throwable
-    //   43	58	65	java/lang/Throwable
-  }
-  
-  public static JSONObject b()
-  {
-    return a(291);
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    try
-    {
-      paramString = pan.a(paramString).entrySet().iterator();
-      while (paramString.hasNext())
-      {
-        Object localObject2 = (Map.Entry)paramString.next();
-        Object localObject1 = (String)bnrf.a("key_viola_dynamic", "");
-        localObject2 = (String)((Map.Entry)localObject2).getValue();
-        bnrf.a("key_viola_dynamic", localObject2);
-        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals(localObject1)))
-        {
-          localObject1 = ozs.a();
-          if (localObject1 != null) {
-            AladdinConfigServlet.a((QQAppInterface)localObject1, ((QQAppInterface)localObject1).c());
-          }
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("DyHandler", 0, "parse dynamic error: " + paramString.getMessage());
+      paramBundle.collectPerformance(str, "actKanDianAladdinResult", bool, l1, 0L, localHashMap, null, false);
+      return;
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  private static byte[] c(byte[] paramArrayOfByte)
   {
-    bnrf.a("key_viola_dynamic", "");
+    long l = paramArrayOfByte.length;
+    byte[] arrayOfByte = new byte[(int)l + 4];
+    PkgTools.DWord2Byte(arrayOfByte, 0, 4L + l);
+    PkgTools.copyData(arrayOfByte, 4, paramArrayOfByte, (int)l);
+    return arrayOfByte;
+  }
+  
+  public void onSend(byte[] paramArrayOfByte, Bundle paramBundle, AladdinResponseHandler paramAladdinResponseHandler)
+  {
+    AppRuntime localAppRuntime = pay.a();
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), pbx.class);
+    localNewIntent.putExtra("key_body_bytes", paramArrayOfByte);
+    localNewIntent.putExtra("key_extra_info", paramBundle);
+    localNewIntent.putExtra("key_response_handler", paramAladdinResponseHandler);
+    localNewIntent.putParcelableArrayListExtra("key_aladdin_listeners", pbs.a);
+    localAppRuntime.startServlet(localNewIntent);
   }
 }
 

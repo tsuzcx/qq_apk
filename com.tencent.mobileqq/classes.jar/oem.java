@@ -1,23 +1,18 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
 
-class oem
-  implements aoog
+public final class oem
+  implements Parcelable.Creator<VideoInfo.ClassInfo>
 {
-  oem(oek paramoek) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public VideoInfo.ClassInfo a(Parcel paramParcel)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
-    {
-      Intent localIntent = new Intent("action_decode_finish");
-      localIntent.putExtra("bitmap", paramBitmap);
-      localIntent.putExtra("uin", paramString);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+    return new VideoInfo.ClassInfo(paramParcel);
+  }
+  
+  public VideoInfo.ClassInfo[] a(int paramInt)
+  {
+    return new VideoInfo.ClassInfo[paramInt];
   }
 }
 

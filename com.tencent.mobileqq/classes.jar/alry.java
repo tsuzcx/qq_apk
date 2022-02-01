@@ -1,83 +1,90 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
 public class alry
-  implements TextWatcher
+  extends alrt<Canvas>
 {
-  public alry(LoginView paramLoginView) {}
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(Canvas paramCanvas, float paramFloat)
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
-      LoginView.a(this.a, null);
+    boolean bool = false;
+    if (paramCanvas == null) {
+      return bool;
     }
-    String str;
-    SimpleAccount localSimpleAccount;
+    label25:
+    alrw localalrw;
+    Bitmap localBitmap;
     for (;;)
     {
-      return;
-      if (paramCharSequence != null)
+      try
       {
-        str = paramCharSequence.toString();
-        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
-          break;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break label360;
         }
-        paramInt1 = 0;
-        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        localalrw = (alrw)localIterator.next();
+        localalrw.b();
+        if (!localalrw.a())
         {
-          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
-          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
-            break label110;
+          localIterator.remove();
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          paramInt1 += 1;
+          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localalrw);
+          continue;
         }
+        localBitmap = localalrw.a();
       }
-    }
-    label110:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      paramCharSequence = localSimpleAccount.getUin();
-      label126:
-      if (!str.equals(paramCharSequence)) {
-        break label308;
-      }
-      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
-        if (!LoginView.i(this.a))
+      finally {}
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        paramCanvas.save();
+        if (paramFloat == 1.0F)
         {
-          LoginView.i(this.a, true);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-          paramCharSequence = this.a.c;
-          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a)) && (!LoginView.g(this.a))) {
-            break label310;
+          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localalrw.d) {
+            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localalrw.d);
+          }
+          label165:
+          if (localalrw.h <= 0.0F) {
+            break label388;
           }
         }
       }
     }
-    label308:
-    label310:
-    for (paramInt1 = 2130846982;; paramInt1 = 2130844711)
+    label388:
+    for (float f1 = localalrw.h;; f1 = 1.0F)
     {
-      paramCharSequence.setImageResource(paramInt1);
-      this.a.c.setContentDescription(anzj.a(2131705243));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("!@#ewaGbhkc$!!=");
-      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
-      LoginView.c(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
-      return;
-      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin());
-      break label126;
-      break;
+      float f2 = localalrw.jdField_e_of_type_Float;
+      float f3 = localalrw.jdField_f_of_type_Float;
+      float f4 = localalrw.jdField_e_of_type_Float;
+      float f5 = localalrw.jdField_e_of_type_Int;
+      float f6 = localalrw.jdField_f_of_type_Float;
+      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localalrw.jdField_f_of_type_Int + f6);
+      paramCanvas.translate(localalrw.jdField_e_of_type_Float, localalrw.jdField_f_of_type_Float);
+      if (localalrw.h != 0.0F) {
+        paramCanvas.scale(localalrw.h, localalrw.h);
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      this.b.set(0, 0, localalrw.jdField_e_of_type_Int, localalrw.jdField_f_of_type_Int);
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
+      break label25;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
+      break label165;
+      label360:
+      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      if (!bool) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
     }
   }
 }

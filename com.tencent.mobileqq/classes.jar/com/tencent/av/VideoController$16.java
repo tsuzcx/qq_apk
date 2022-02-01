@@ -1,7 +1,8 @@
 package com.tencent.av;
 
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import lff;
+import lez;
 
 class VideoController$16
   implements Runnable
@@ -11,9 +12,9 @@ class VideoController$16
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "mDoubleVideoMeetingSwitchMulti timeOut ");
     }
-    this.this$0.b(this.this$0.a().d, 2);
+    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(this.this$0.a().g), Boolean.valueOf(true) });
   }
 }
 

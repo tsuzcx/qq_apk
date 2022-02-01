@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atol
-  implements View.OnClickListener
+class atol
+  implements DialogInterface.OnClickListener
 {
-  public atol(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  atol(atoi paramatoi) {}
   
-  public void onClick(View paramView)
-  {
-    QfileRecentPicFileTabView.a(this.a, paramView, false);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atol
  * JD-Core Version:    0.7.0.1
  */

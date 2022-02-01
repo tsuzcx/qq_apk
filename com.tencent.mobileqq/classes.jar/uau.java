@@ -1,44 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
 
-final class uau
-  implements DialogInterface.OnClickListener
+class uau
+  extends anxq
 {
-  uau(int paramInt1, int paramInt2, Runnable paramRunnable) {}
+  uau(uar paramuar, uaq paramuaq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    paramInt = 1;
-    bnrf.a("readinjoy_user_data_switch", Integer.valueOf(1));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
-      }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 2);
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    uar.b(this.jdField_a_of_type_Uar, this.jdField_a_of_type_Uaq);
+    StructLongMessageDownloadProcessor.deleteTask(uar.a(this.jdField_a_of_type_Uar), this.jdField_a_of_type_Uaq.a);
+    ((bfas)uar.a(this.jdField_a_of_type_Uar).getManager(132)).a(this.jdField_a_of_type_Uaq.a);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Uaq.a + ", success:" + String.valueOf(paramBoolean));
     }
-    ocd.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((uar.a(this.jdField_a_of_type_Uar) != null) && (uar.a(this.jdField_a_of_type_Uar).isResume())) {
+      uar.a(this.jdField_a_of_type_Uar).b(false);
     }
   }
+  
+  public void b(Object paramObject)
+  {
+    uar.a(this.jdField_a_of_type_Uar);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uau
  * JD-Core Version:    0.7.0.1
  */

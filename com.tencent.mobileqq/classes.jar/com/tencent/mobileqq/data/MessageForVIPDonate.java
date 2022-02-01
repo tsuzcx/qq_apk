@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import apdm;
+import anwz;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForVIPDonate
@@ -14,7 +14,7 @@ public class MessageForVIPDonate
   {
     try
     {
-      this.donateMsg = ((VIPDonateMsg)apdm.a(this.msgData));
+      this.donateMsg = ((VIPDonateMsg)anwz.a(this.msgData));
       if (QLog.isColorLevel()) {
         QLog.d("MessageForVIPDonate", 2, "doParse :VIPDonateMsg = " + this.donateMsg);
       }
@@ -54,7 +54,7 @@ public class MessageForVIPDonate
     while (!QLog.isColorLevel()) {
       try
       {
-        this.msgData = apdm.a(this.donateMsg);
+        this.msgData = anwz.a(this.donateMsg);
         return;
       }
       catch (Exception localException)
@@ -68,7 +68,7 @@ public class MessageForVIPDonate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForVIPDonate
  * JD-Core Version:    0.7.0.1
  */

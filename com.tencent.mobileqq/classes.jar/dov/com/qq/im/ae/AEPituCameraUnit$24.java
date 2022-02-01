@@ -1,22 +1,19 @@
 package dov.com.qq.im.ae;
 
-import bofh;
-import bojx;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import bljy;
+import bluy;
+import bmas;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public class AEPituCameraUnit$24
   implements Runnable
 {
-  public AEPituCameraUnit$24(bofh parambofh) {}
+  public AEPituCameraUnit$24(bljy parambljy, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    bojx localbojx = bofh.a(this.this$0);
-    if (bofh.b(this.this$0) == AECaptureMode.NORMAL) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbojx.c(bool);
-      return;
+    if ((this.this$0.a != null) && (this.this$0.a.a(131072) != null)) {
+      this.this$0.a.a(131072).a(115, this.a);
     }
   }
 }

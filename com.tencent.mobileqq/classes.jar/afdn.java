@@ -1,47 +1,78 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import protocol.KQQConfig.GetResourceReqInfo;
 
 public class afdn
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
+  extends ampt
+  implements bbnm
 {
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  private ToServiceMsg a;
+  
+  public afdn(QQAppInterface paramQQAppInterface)
   {
-    return false;
+    super(paramQQAppInterface);
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public int a()
   {
-    return false;
+    return 7;
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public ReqItem a(int paramInt)
   {
-    return false;
+    Object localObject2 = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AioAnimationConfigCheckUpdateItem", 2, "getCheckUpdateItemData:");
+    }
+    a(null, new GetResourceReqInfo[] { a() });
+    Object localObject1 = localObject2;
+    if (this.a != null)
+    {
+      aafe localaafe = this.app.mqqService.a(this.a.getServiceCmd());
+      localObject1 = localObject2;
+      if (localaafe != null)
+      {
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        localObject1 = localObject2;
+        if (localaafe.a(this.a, localUniPacket))
+        {
+          localObject1 = new ReqItem();
+          ((ReqItem)localObject1).eServiceID = 120;
+          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
+        }
+      }
+    }
+    return localObject1;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(RespItem paramRespItem)
   {
-    return false;
+    if (paramRespItem != null)
+    {
+      int i = paramRespItem.cResult;
+      Object localObject = paramRespItem.vecUpdate;
+      if (QLog.isColorLevel()) {
+        QLog.d("AioAnimationConfigCheckUpdateItem", 2, "handleCheckUpdateItemData: item.cResult = " + i + ", dataLen = " + localObject.length);
+      }
+      if ((paramRespItem.eServiceID == 120) && (paramRespItem.cResult == 2))
+      {
+        localObject = new FromServiceMsg(this.app.getAccount(), "ResourceConfig.GetResourceReq");
+        ((FromServiceMsg)localObject).setMsgSuccess();
+        ((FromServiceMsg)localObject).putWupBuffer(paramRespItem.vecUpdate);
+        this.app.receiveToService(this.a, (FromServiceMsg)localObject);
+      }
+    }
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void send(ToServiceMsg paramToServiceMsg)
   {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a = paramToServiceMsg;
   }
 }
 

@@ -1,50 +1,53 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bhnf
-  extends Handler
+final class bhnf
+  implements DialogInterface.OnClickListener
 {
-  private bhnf(bhmr parambhmr) {}
+  bhnf(int paramInt, Activity paramActivity, bhnm parambhnm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what != 1) {
+    paramInt = 2;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+      bhnb.a("0X80094F5");
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      bhnb.c(this.jdField_a_of_type_AndroidAppActivity, paramInt);
+      this.jdField_a_of_type_Bhnm.a(1);
+      paramDialogInterface.dismiss();
       return;
-    }
-    if (bhmr.a(this.a) != null)
-    {
-      bhmr.a(this.a).a();
-      this.a.a.removeObserver(bhmr.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
-      }
-      bhmr.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
+      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 5))
       {
-        bhmr.b(this.a);
-        return;
+        bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+        bhnb.a("0X80094F4");
+        paramInt = 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      else if (this.jdField_a_of_type_Int == 3)
+      {
+        bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398671);
+        bhnb.a("0X80094F6");
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Int == 4)
+        {
+          bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398690);
+          bhnb.a("0X80094F4");
+        }
+        paramInt = 1;
       }
     }
-    bhmr.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnf
  * JD-Core Version:    0.7.0.1
  */

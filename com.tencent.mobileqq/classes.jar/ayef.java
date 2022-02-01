@@ -1,29 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ayef
-  implements bjig
+public class ayef
+  extends Handler
 {
-  ayef(ayed paramayed) {}
+  private final WeakReference<PresendPicMgr> a;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public ayef(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    super(paramLooper);
+    this.a = new WeakReference(paramPresendPicMgr);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
+    if (localPresendPicMgr != null)
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
+      switch (paramMessage.what)
+      {
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 1: 
+        ayde.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
+        localPresendPicMgr.a = paramMessage.replyTo;
+        paramMessage = Message.obtain(null, 2);
+        ArrayList localArrayList = new ArrayList();
+        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localArrayList.add(((ayeg)((Iterator)localObject).next()).a);
+        }
+        localObject = new Bundle();
+        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
+        paramMessage.setData((Bundle)localObject);
+        try
+        {
+          localPresendPicMgr.a.send(paramMessage);
+          localPresendPicMgr.a = null;
+          PresendPicMgr.a(localPresendPicMgr);
+          localPresendPicMgr.b();
+          return;
+        }
+        catch (RemoteException paramMessage)
+        {
+          for (;;)
+          {
+            localPresendPicMgr.a = null;
+            if (QLog.isColorLevel()) {
+              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
+            }
+            paramMessage.printStackTrace();
+          }
+        }
       }
-      if (this.a.jdField_a_of_type_Ayeg != null) {
-        this.a.jdField_a_of_type_Ayeg.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Ayeg == null) {
+      ayde.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
+      localPresendPicMgr.a = null;
       return;
     }
-    this.a.jdField_a_of_type_Ayeg.a(false);
+    ayde.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
   }
 }
 

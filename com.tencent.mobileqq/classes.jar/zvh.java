@@ -1,25 +1,20 @@
-import android.animation.TypeEvaluator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
-final class zvh
-  implements TypeEvaluator<zvg>
+public class zvh
+  extends Handler
 {
-  private zvg a;
+  public zvh(RefreshView paramRefreshView) {}
   
-  public zvg a(float paramFloat, zvg paramzvg1, zvg paramzvg2)
+  public void handleMessage(Message paramMessage)
   {
-    float f1 = paramzvg1.a + (paramzvg2.a - paramzvg1.a) * paramFloat;
-    float f2 = paramzvg1.b + (paramzvg2.b - paramzvg1.b) * paramFloat;
-    paramFloat = paramzvg1.c + (paramzvg2.c - paramzvg1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new zvg(f1, f2, paramFloat);
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
+    default: 
+      return;
     }
+    this.a.a();
   }
 }
 

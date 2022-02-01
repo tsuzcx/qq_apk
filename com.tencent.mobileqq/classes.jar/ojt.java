@@ -1,17 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.hotpic.HotPicData;
-
 public class ojt
-  implements avvs
+  extends bkww
 {
-  public ojt(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void a(HotPicData paramHotPicData)
+  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {
-    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
-    }
+    ojq.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
   }
 }
 

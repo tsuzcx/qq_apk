@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieComposition;
-import swf;
+import taf;
 
 public class RefreshAnimView
   extends RelativeLayout
@@ -24,10 +24,10 @@ public class RefreshAnimView
   public RefreshAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    inflate(paramContext, 2131562799, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370414));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376449));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView = ((RefreshEyeView)findViewById(2131376443));
+    inflate(paramContext, 2131562677, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370382));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376217));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView = ((RefreshEyeView)findViewById(2131376211));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView.b();
     ThreadManager.excute(new RefreshAnimView.1(this, paramContext), 64, null, true);
   }
@@ -63,7 +63,7 @@ public class RefreshAnimView
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(200L);
     localScaleAnimation.setFillAfter(true);
-    localScaleAnimation.setAnimationListener(new swf(this, paramString, paramBoolean));
+    localScaleAnimation.setAnimationListener(new taf(this, paramString, paramBoolean));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshEyeView.startAnimation(localScaleAnimation);
   }
   
@@ -77,7 +77,7 @@ public class RefreshAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView
  * JD-Core Version:    0.7.0.1
  */

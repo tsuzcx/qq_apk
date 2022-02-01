@@ -1,21 +1,41 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class addo
-  implements adci
+  extends BroadcastReceiver
 {
-  public static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    ((PublicAccountHandler)paramQQAppInterface.a(11)).a(paramMsgType0x210.uSubMsgType, paramMsgType0x210.vProtobuf);
-  }
+  public addo(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bfqa.a(paramIntent, paramContext))) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

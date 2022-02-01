@@ -1,15 +1,11 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-
-class bmnk
-  extends aokd
+public abstract interface bmnk
+  extends bmng
 {
-  bmnk(bmnj parambmnj) {}
+  public abstract void x();
   
-  public void a()
-  {
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
-  }
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

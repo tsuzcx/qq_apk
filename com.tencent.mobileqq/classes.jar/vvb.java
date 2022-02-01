@@ -1,21 +1,44 @@
-import com.tencent.biz.qqcircle.requests.QCircleBaseRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class vvb
-  implements aadq<QCircleBaseRequest, vuz>
+class vvb
+  implements vqp<weh, wej>
 {
-  public String a()
-  {
-    return "QCircleSenderReqInterceptor";
-  }
+  vvb(vva paramvva) {}
   
-  public void a(QCircleBaseRequest paramQCircleBaseRequest, vuz paramvuz)
+  public void a(@NonNull weh paramweh, @Nullable wej paramwej, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramQCircleBaseRequest == null) || (paramvuz == null)) {
+    paramweh = paramweh.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramweh.hasNext())
+    {
+      localObject = (String)paramweh.next();
+      vva.a(this.a).remove(localObject);
+    }
+    paramweh = new vvc();
+    paramweh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramwej == null))
+    {
+      xvv.d("Q.qqstory:TagManager", "request fail for get tag request");
+      vli.a().dispatch(paramweh);
       return;
     }
-    VSNetworkHelper.a().a(BaseApplication.getContext(), paramQCircleBaseRequest, new vvc(this, paramvuz, paramQCircleBaseRequest));
+    paramErrorMessage = paramweh.jdField_a_of_type_JavaUtilMap;
+    Object localObject = (vva)vux.a(27);
+    paramwej = paramwej.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramwej.hasNext())
+    {
+      wei localwei = (wei)paramwej.next();
+      ((vva)localObject).a(localwei.jdField_a_of_type_JavaLangString, localwei.jdField_a_of_type_JavaUtilList);
+      paramErrorMessage.put(localwei.jdField_a_of_type_JavaLangString, localwei);
+      xvv.a("Q.qqstory:TagManager", "save feedId :%s , %s", localwei.jdField_a_of_type_JavaLangString, localwei.jdField_a_of_type_JavaUtilList);
+    }
+    vli.a().dispatch(paramweh);
   }
 }
 

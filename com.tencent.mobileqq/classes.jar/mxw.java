@@ -1,33 +1,13 @@
-import com.tencent.qav.QavDef.MultiUserInfo;
-import java.util.List;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
 
 public abstract class mxw
+  extends BusinessHandler
 {
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt) {}
-  
-  public void a(List<QavDef.MultiUserInfo> paramList) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
-  
-  public void b(boolean paramBoolean, long paramLong, int paramInt) {}
-  
-  public void c(int paramInt) {}
+  protected mxw(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+  }
 }
 
 

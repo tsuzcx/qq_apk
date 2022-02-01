@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 
-public class rgh
-  extends prw<ColumnInfo, pro<ColumnInfo>>
+public final class rgh
+  implements Parcelable.Creator<VideoColumnInfo>
 {
-  public rgh(rgf paramrgf)
+  public VideoColumnInfo a(Parcel paramParcel)
   {
-    super(paramrgf);
+    return new VideoColumnInfo(paramParcel);
   }
   
-  public void a()
+  public VideoColumnInfo[] a(int paramInt)
   {
-    super.a();
-  }
-  
-  public void a(pro<ColumnInfo> parampro)
-  {
-    super.a(parampro);
+    return new VideoColumnInfo[paramInt];
   }
 }
 

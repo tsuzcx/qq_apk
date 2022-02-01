@@ -9,11 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
-import auxu;
-import avcw;
-import bhkv;
-import bhmr;
-import bhow;
+import atky;
+import atqa;
+import bfuc;
+import bfvp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -21,6 +20,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -41,9 +41,9 @@ public class MiniProgramOpenSdkUtil
   public static final String KEY_MINI_PROGRAM_SHARE_OBJ = "KEY_MINI_PROGRAM_SHARE_OBJ";
   private static final String TAG = "MiniProgramOpenSdkUtil";
   
-  public static boolean asyncShareMiniProgram(bhmr parambhmr)
+  public static boolean asyncShareMiniProgram(bfvp parambfvp)
   {
-    return (isSharingMiniProgram(parambhmr.a)) && (!"to_qzone".equals(parambhmr.c));
+    return (isSharingMiniProgram(parambfvp.a)) && (!"to_qzone".equals(parambfvp.c));
   }
   
   private static JSONObject buildArkConfig(JSONObject paramJSONObject, String paramString)
@@ -141,7 +141,7 @@ public class MiniProgramOpenSdkUtil
     paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
     paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
-    avcw.a("KEY_STAGE_1_GET_SHARE_INFO");
+    atqa.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
   }
   
@@ -228,8 +228,8 @@ public class MiniProgramOpenSdkUtil
       com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = true;
       paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
       paramIntent.putExtra("forward_ark_app_meta", str3);
-      paramIntent.putExtras(bhow.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
-      auxu.a(paramContext, paramIntent);
+      paramIntent.putExtras(QQCustomArkDialog.AppInfo.zipArgs(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
+      atky.a(paramContext, paramIntent);
       finishPreviousActivity(paramContext);
       return;
     }
@@ -244,7 +244,7 @@ public class MiniProgramOpenSdkUtil
     }
     try
     {
-      paramString = new String(bhkv.decode(paramString, 0));
+      paramString = new String(bfuc.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}

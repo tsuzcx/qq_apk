@@ -1,172 +1,96 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
 
-public class unr
+final class unr
+  extends unp
 {
-  private static WSStatisticsReporter.Builder a(String paramString)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    return new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName(paramString).setTestId(uqt.a(10003)).setPushId(uqc.a().a()).setFlush(true).setImmediatelyUpload(uqt.c());
-  }
-  
-  public static String a(String paramString)
-  {
-    if ("fullscreen_videoplay".equals(paramString)) {
-      return "comment_entry";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_entry";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_entry";
-    }
-    return "dynamics_comment_entry";
-  }
-  
-  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
-  {
-    paramBuilder.build(paramString).report();
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    a("dynamics_comment_like" + paramInt1, paramString, paramInt2, null, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    a(paramString2, paramString1, paramInt, null, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str;
-    if (TextUtils.equals(paramString1, "focus"))
-    {
-      str = "dynamics_comment_page_reply" + paramInt;
-      if (!paramBoolean2) {
-        break label100;
-      }
-    }
-    label100:
-    for (paramInt = 1002002;; paramInt = 1002003)
-    {
-      HashMap localHashMap = null;
-      if (!TextUtils.equals(paramString1, "focus"))
-      {
-        localHashMap = new HashMap();
-        localHashMap.put("play_scene", paramString2);
-      }
-      a(str, paramString1, paramInt, localHashMap, paramstSimpleMetaFeed);
+    super.installSucceed(paramString1, paramString2);
+    if (unq.b()) {
       return;
-      if (paramBoolean1) {}
-      for (str = "comment_page_reply_explicit";; str = "comment_page_reply") {
-        break;
+    }
+    unq.a(paramString1, paramString2, true);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    uya.c("WeishiDownloadUtil", "qq onDownloadCancel info = " + paramDownloadInfo);
+    if (unq.a(paramDownloadInfo))
+    {
+      unq.a();
+      int i = unq.b();
+      WSPublicAccReport.getInstance().reportDownload(unq.a(), i, 3, 2, 0);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    uya.d("WeishiDownloadUtil", "qq onDownloadError info = " + paramDownloadInfo);
+    if (unq.a(paramDownloadInfo))
+    {
+      unq.a();
+      paramInt2 = unq.b();
+      WSPublicAccReport.getInstance().reportDownload(unq.a(), paramInt2, 3, 2, 0);
+      uya.d("WeishiDownloadUtil", " errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      unq.a(paramDownloadInfo, paramInt1);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    unq.a();
+    int i = unq.a();
+    int j = unq.b();
+    if (unq.b())
+    {
+      if (unq.d()) {
+        uya.d("WeishiDownloadUtil", "这是预下载中点击操作，qq监听器响应");
+      }
+    }
+    else
+    {
+      unq.a(paramDownloadInfo, i, j, "QQ");
+      return;
+    }
+    uya.d("WeishiDownloadUtil", "这是qq的监听器，不响应qzone. onDownloadFinish eventId:" + i + ",eventType:" + j);
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    uya.d("WeishiDownloadUtil", "qq onDownloadPause info = " + paramDownloadInfo);
+    if (unq.a(paramDownloadInfo)) {
+      unq.a();
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    super.onDownloadUpdate(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        uya.c("WeishiDownloadUtil", "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
       }
     }
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    paramString1 = a(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed));
-    if ((paramMap != null) && (!paramMap.isEmpty())) {
-      paramString1.addExtParams(paramMap);
-    }
-    a(paramString1, "gzh_click");
+    super.onDownloadWait(paramDownloadInfo);
+    uya.d("WeishiDownloadUtil", "qq onDownloadWait info = " + paramDownloadInfo);
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void packageReplaced(String paramString1, String paramString2)
   {
-    HashMap localHashMap = new HashMap();
-    if (!TextUtils.equals(paramString1, "focus")) {
-      localHashMap.put("play_scene", paramString2);
-    }
-    localHashMap.put("object", String.valueOf(paramInt2));
-    a(paramString3, paramString1, paramInt1, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = null;
-    if (!TextUtils.equals(paramString1, "focus"))
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("play_scene", paramString2);
-    }
-    a(paramString3, paramString1, paramInt, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = null;
-    if (!TextUtils.equals(paramString1, "focus"))
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("play_scene", paramString2);
-    }
-    a(paramString3, paramString1, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramString1 = a(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, 0, paramstSimpleMetaFeed));
-    if ((paramMap != null) && (!paramMap.isEmpty())) {
-      paramString1.addExtParams(paramMap);
-    }
-    a(paramString1, "gzh_exposure");
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "second_fullscreen_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen"));
-  }
-  
-  public static String b(String paramString)
-  {
-    if (a(paramString)) {
-      return "comment_page";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_page";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_page";
-    }
-    return "dynamics_comment_page";
-  }
-  
-  public static void b(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    a("dynamics_comment_entry_text" + paramInt1, paramString, paramInt2, null, paramstSimpleMetaFeed);
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = null;
-    if (!TextUtils.equals(paramString1, "focus"))
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("play_scene", paramString2);
-    }
-    a(paramString3, paramString1, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static String c(String paramString)
-  {
-    if (a(paramString)) {
-      return "comment_tag";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_tag";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_tag";
-    }
-    return "dynamics_comment_tag";
+    super.packageReplaced(paramString1, paramString2);
+    uya.d("WeishiDownloadUtil", "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
   }
 }
 

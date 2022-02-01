@@ -1,36 +1,31 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class atml
-  extends atpa
+  implements View.OnTouchListener
 {
-  public atml(FileAssistantActivity paramFileAssistantActivity) {}
+  public atml(ForwardFileOption paramForwardFileOption, View paramView) {}
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.a(paramLong1, paramLong2, paramString, paramInt);
-    this.a.a.a();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (FileAssistantActivity.a(this.a)) {
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      }
     }
-    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!FileAssistantActivity.a(this.a)) {
-      auna.a(paramString);
+    while ((paramMotionEvent.getAction() != 1) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return false;
     }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atml
  * JD-Core Version:    0.7.0.1
  */

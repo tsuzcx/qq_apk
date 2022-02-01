@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class awrz
-  implements View.OnClickListener
+public abstract interface awrz
 {
-  public awrz(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-    bdll.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  
+  public abstract void a(Comments paramComments);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

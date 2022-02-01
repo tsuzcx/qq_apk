@@ -1,78 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class ayej
+public final class ayej
+  implements Parcelable.Creator<ReportInfo>
 {
-  private static ayej a = new ayej();
-  
-  public static ayej a()
+  public ReportInfo a(Parcel paramParcel)
   {
-    return a;
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.d = paramParcel.readInt();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    return localReportInfo;
   }
   
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
+  public ReportInfo[] a(int paramInt)
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      yuk.e("ImageLoader", "ImageView or uri is null.");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
-      localURLDrawableOptions.mRequestWidth = paramInt1;
-      localURLDrawableOptions.mRequestHeight = paramInt2;
-    }
-    Drawable localDrawable = paramDrawable1;
-    if (paramDrawable1 == null) {
-      localDrawable = beyq.a;
-    }
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    paramDrawable1 = paramDrawable2;
-    if (paramDrawable2 == null) {
-      paramDrawable1 = beyq.a;
-    }
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    if (paramBoolean) {
-      paramString.setDecodeHandler(bhez.a);
-    }
-    if (paramURLDrawableListener != null)
-    {
-      if (paramString.getStatus() != 1) {
-        break label208;
-      }
-      yuk.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramString);
-    }
-    for (;;)
-    {
-      paramString.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramString);
-      return;
-      label208:
-      yuk.b("ImageLoader", "start load URLDrawable.");
-    }
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
-  {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
-  {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
+    return new ReportInfo[paramInt];
   }
 }
 

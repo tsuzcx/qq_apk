@@ -1,17 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
 public class bnbh
-  implements View.OnClickListener
 {
-  public bnbh(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public int a;
+  private bnbi jdField_a_of_type_Bnbi;
+  private bnbl jdField_a_of_type_Bnbl;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public bnbh(int paramInt1, int paramInt2, int paramInt3)
   {
-    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bnbi a()
+  {
+    return this.jdField_a_of_type_Bnbi;
+  }
+  
+  public bnbl a()
+  {
+    return this.jdField_a_of_type_Bnbl;
+  }
+  
+  public void a(bnbi parambnbi)
+  {
+    this.jdField_a_of_type_Bnbi = parambnbi;
+    if (this.jdField_a_of_type_Bnbi.a() != null) {
+      this.b = this.jdField_a_of_type_Bnbi.b();
+    }
+  }
+  
+  public void a(bnbl parambnbl)
+  {
+    this.jdField_a_of_type_Bnbl = parambnbl;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import aody;
+import amxz;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class PublicAccountDataManager$6
   implements Runnable
 {
-  public PublicAccountDataManager$6(aody paramaody, PublicAccountInfo paramPublicAccountInfo) {}
+  public PublicAccountDataManager$6(amxz paramamxz, PublicAccountInfo paramPublicAccountInfo) {}
   
   public void run()
   {

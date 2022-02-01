@@ -1,25 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class bffc
-  implements bliz
+  extends TextView
 {
-  public bffc(AbsPublishActivity paramAbsPublishActivity, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public bffc(FollowImageTextView paramFollowImageTextView, Context paramContext)
   {
-    switch (paramInt)
+    super(paramContext);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if (FollowImageTextView.a(this.a))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.e();
+      super.onDraw(paramCanvas);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_AndroidNetUri = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new bffd(this));
-      continue;
-      TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c);
     }
+    Object localObject = getPaint();
+    ((TextPaint)localObject).setColor(getCurrentTextColor());
+    ((TextPaint)localObject).drawableState = getDrawableState();
+    localObject = FollowImageTextView.a(this.a);
+    ((bfff)localObject).a(FollowImageTextView.a(this.a) - 1);
+    ((bfff)localObject).a(paramCanvas);
   }
 }
 

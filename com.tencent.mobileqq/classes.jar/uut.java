@@ -1,68 +1,44 @@
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class uut
-  extends uej<usv>
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private uuu jdField_a_of_type_Uuu;
-  private uuy jdField_a_of_type_Uuy;
-  
-  public uut(Context paramContext, uuy paramuuy)
+  public static uuq a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Uuy = paramuuy;
-  }
-  
-  private stSimpleMetaFeed a()
-  {
-    usv localusv = (usv)a();
-    if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localusv.a();
-    }
-    return null;
-  }
-  
-  private void b(usv paramusv)
-  {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    if (paramWSRedDotPushMsg == null) {}
+    do
     {
-      if (this.jdField_a_of_type_Uuu == null)
-      {
-        this.jdField_a_of_type_Uuu = new uuu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uuy);
-        this.jdField_a_of_type_Uuu.a(this.jdField_a_of_type_AndroidViewViewStub);
+      return null;
+      int i;
+      if (paramWSRedDotPushMsg.mStrategyInfo != null) {
+        i = paramWSRedDotPushMsg.mStrategyInfo.getType();
       }
-      this.jdField_a_of_type_Uuu.a(paramusv);
-    }
-  }
-  
-  protected void a() {}
-  
-  public void a(usv paramusv)
-  {
-    super.a(paramusv);
-    b(paramusv);
-  }
-  
-  protected int b()
-  {
-    return 2131560035;
-  }
-  
-  protected void b() {}
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Uuu != null) {
-      this.jdField_a_of_type_Uuu.c();
-    }
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380704));
+      while (paramInt == 2) {
+        if (i == 1)
+        {
+          return new uuu(paramWSRedDotPushMsg);
+          i = 0;
+        }
+        else if (i == 5)
+        {
+          return new uur(paramWSRedDotPushMsg);
+        }
+      }
+      if (i == 2) {
+        return new uuv(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 3) {
+        return new uuw(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 4) {
+        return new uus(paramWSRedDotPushMsg, paramInt);
+      }
+      if (paramInt == 2) {
+        return new uuu(paramWSRedDotPushMsg);
+      }
+    } while (paramInt != 6);
+    return new uuv(paramWSRedDotPushMsg, paramInt, paramIntent);
   }
 }
 

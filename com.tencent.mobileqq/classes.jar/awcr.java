@@ -1,36 +1,128 @@
-import android.text.TextUtils;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.intervideo.nowproxy.common.login.LoginData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForRichText;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicLong;
-import mqq.manager.TicketManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import tencent.im.msg.im_msg_body.RichText;
 
 class awcr
-  implements awcw
+  implements ayeo
 {
-  awcr(awcc paramawcc, LoginData paramLoginData, TicketManager paramTicketManager, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private awcm jdField_a_of_type_Awcm;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
+  private int b;
   
-  public void a(int paramInt, String paramString)
+  private awcr(MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, awcm paramawcm)
   {
-    if ((!awcc.a(this.jdField_a_of_type_Awcc, paramInt)) || (TextUtils.isEmpty(paramString)))
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Awcm = paramawcm;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  {
+    if (paramRichText != null)
     {
-      QLog.w("XProxy|NowProxy", 1, "asyn get skey error. retCode: " + paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack attachRichText2Msg with " + paramRichText.toString());
+      }
+      if (((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForRichText)) && (((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText == null)) {
+        if (QLog.isColorLevel()) {
+          break label185;
+        }
+      }
+      for (;;)
+      {
+        ((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText = paramRichText;
+        if (!(this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt)) {
+          break label272;
+        }
+        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize >= 0L) {
+          break label211;
+        }
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg with fileSize < 0");
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
+        paramRichText = Thread.currentThread().getStackTrace();
+        int j = paramRichText.length;
+        int i = 0;
+        while (i < j)
+        {
+          QLog.d("MultiMsg_TAG", 2, new Object[] { paramRichText[i] });
+          i += 1;
+        }
+        label185:
+        QLog.d("MultiMsg_TAG", 2, "PttUploadCallback.attachRichText2Msg return but mr.richtext is null");
+      }
+      ((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize = 1L;
+      for (;;)
+      {
+        label211:
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+        awcm.a(this.jdField_a_of_type_Awcm, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new HashMap(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.b);
+        return null;
+        label272:
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg but not message for ptt");
+      }
+    }
+    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack attachRichText2Msg with null");
+    return null;
+  }
+  
+  public void onSend(ayep paramayep)
+  {
+    if (paramayep.jdField_a_of_type_Int != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack onSend fail with " + paramayep.toString());
+      }
+      if ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt))
+      {
+        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize < 0L)
+        {
+          QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend with fileSize < 0");
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
+            paramayep = Thread.currentThread().getStackTrace();
+            int j = paramayep.length;
+            int i = 0;
+            while (i < j)
+            {
+              QLog.d("MultiMsg_TAG", 2, new Object[] { paramayep[i] });
+              i += 1;
+            }
+          }
+        }
+      }
+      else {
+        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend but no message for ptt");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      awcm.a(this.jdField_a_of_type_Awcm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setSkey(paramString.getBytes());
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setST(this.jdField_a_of_type_MqqManagerTicketManager.getSt(this.jdField_a_of_type_JavaLangString, 16));
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setSTKey(this.jdField_a_of_type_MqqManagerTicketManager.getStkey(this.jdField_a_of_type_JavaLangString, 16));
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setUserId(this.jdField_a_of_type_JavaLangString);
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Awcc.b)) || (TextUtils.isEmpty(this.jdField_a_of_type_Awcc.jdField_a_of_type_JavaLangString)))
-    {
-      NowLive.login(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData);
-      return;
+    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack onSend result ok");
+  }
+  
+  public void updateMsg(ayep paramayep)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack updateMsg with " + paramayep.toString());
     }
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setKey(this.jdField_a_of_type_Awcc.b.getBytes());
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setAuthAppId("101490787");
-    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setOriginalId(this.jdField_a_of_type_Awcc.jdField_a_of_type_JavaLangString);
-    NowLive.login(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData);
-    awcc.a(this.jdField_a_of_type_Awcc).set(System.currentTimeMillis());
   }
 }
 

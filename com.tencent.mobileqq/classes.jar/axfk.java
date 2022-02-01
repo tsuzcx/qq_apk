@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class axfk
-  implements axfv<Integer, List<EmoticonPackage>>
+public abstract class axfk
+  extends axdo
 {
-  axfk(axfj paramaxfj) {}
-  
-  public List<EmoticonPackage> a(Integer paramInteger)
+  public axfk(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return this.a.a(paramInteger.intValue());
+    super(paramContext, paramQQAppInterface);
   }
 }
 

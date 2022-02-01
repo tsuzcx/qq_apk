@@ -1,36 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class arje
+public abstract interface arje
 {
-  public String a = "";
-  
-  public static arje a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      try
-      {
-        arje localarje = new arje();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("contents")) {
-          localarje.a = paramString.getJSONArray("contents").toString();
-        }
-        return localarje;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
-    return null;
-  }
+  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arje
  * JD-Core Version:    0.7.0.1
  */

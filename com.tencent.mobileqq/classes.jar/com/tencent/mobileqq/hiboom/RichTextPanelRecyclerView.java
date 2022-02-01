@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import avse;
-import avsh;
+import aufg;
+import aufj;
 
 public class RichTextPanelRecyclerView
   extends RecyclerView
 {
-  private avsh a;
+  private aufj a;
   
   public RichTextPanelRecyclerView(Context paramContext)
   {
@@ -47,12 +47,12 @@ public class RichTextPanelRecyclerView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setPanelExtendHelper(avse paramavse)
+  public void setPanelExtendHelper(aufg paramaufg)
   {
-    if (paramavse == null) {
+    if (paramaufg == null) {
       return;
     }
-    this.a = new avsh(paramavse);
+    this.a = new aufj(paramaufg);
     addOnScrollListener(this.a);
   }
 }

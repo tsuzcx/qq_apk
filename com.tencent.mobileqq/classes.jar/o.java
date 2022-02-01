@@ -22,7 +22,7 @@ public abstract class o
     this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
   }
   
-  public abstract int a(int paramInt1, int paramInt2, gl paramgl);
+  public abstract int a(int paramInt1, int paramInt2, gj paramgj);
   
   protected String a()
   {

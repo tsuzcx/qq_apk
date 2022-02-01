@@ -6,7 +6,6 @@
     <com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView android:layout_gravity="center" android:id="@id/d9r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
     <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/cur" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
     <ImageView android:id="@id/cey" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    <ViewStub android:id="@id/j80" android:layout="@layout/b9k" android:inflatedId="@id/j7z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.biz.qqstory.view.widget.FullScreenImageView android:id="@id/hvs" android:background="@color/bp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <View android:id="@id/cal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/bo8" android:layout="@layout/b5m" android:inflatedId="@id/bo7" android:layout_width="fill_parent" android:layout_height="fill_parent" />

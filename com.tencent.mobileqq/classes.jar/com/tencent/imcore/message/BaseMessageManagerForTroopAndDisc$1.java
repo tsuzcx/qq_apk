@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import aczn;
+import abvw;
 import android.os.Bundle;
-import bftl;
+import becw;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseMessageManagerForTroopAndDisc$1
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$1(aczn paramaczn, long paramLong1, long paramLong2, int paramInt, long paramLong3, String paramString, Bundle paramBundle) {}
+  public BaseMessageManagerForTroopAndDisc$1(abvw paramabvw, long paramLong1, long paramLong2, int paramInt, long paramLong3, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
@@ -18,8 +18,8 @@ public class BaseMessageManagerForTroopAndDisc$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageManager.trooptroop_pull_msg.troop_parallel_pull_msg.trooptroop_pull_msg", 2, "--->>pkgIndex : " + this.jdField_a_of_type_Int + " beginSeq:" + this.c + " fixEndSeq:" + l);
     }
-    this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.c, l);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.c, l, true, this.jdField_a_of_type_AndroidOsBundle, 0);
+    this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getTroopMessageManager().a(this.jdField_a_of_type_JavaLangString, this.c, l);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_JavaLangString, this.c, l, true, this.jdField_a_of_type_AndroidOsBundle, 0);
   }
 }
 

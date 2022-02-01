@@ -16,7 +16,7 @@ class ComboProviderView$2
     if (localGridView != null)
     {
       localGridView.setSelection(this.a);
-      localGridView.smoothScrollToPosition(this.a / localGridView.c());
+      localGridView.smoothScrollToPosition(this.a / localGridView.getNumColumns());
       if (QLog.isColorLevel()) {
         QLog.d("ComboProviderView", 2, "positon= " + this.a);
       }

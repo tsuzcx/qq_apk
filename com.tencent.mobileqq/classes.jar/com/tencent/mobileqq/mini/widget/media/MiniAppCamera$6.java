@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.widget.media;
 
 import android.util.Log;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import zqi;
 
 class MiniAppCamera$6
   implements Runnable
@@ -26,7 +26,7 @@ class MiniAppCamera$6
       {
         try
         {
-          MiniAppCamera.access$600(this.this$0).a(this.val$cmds, new MiniAppCamera.6.1(this));
+          MiniAppCamera.access$600(this.this$0).execute(this.val$cmds, new MiniAppCamera.6.1(this));
           return;
         }
         catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)

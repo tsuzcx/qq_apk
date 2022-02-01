@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class bcow
-  extends bcog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class bcow
+  implements DialogInterface.OnDismissListener
 {
-  public LinearLayout a;
-  public TextView a;
+  bcow(bcot parambcot) {}
   
-  public bcow(ViewGroup paramViewGroup, int paramInt)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131380141));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131362963));
+    bcot.a(this.a).b((bcog)this.a);
+    bcot.a(this.a).a();
   }
 }
 

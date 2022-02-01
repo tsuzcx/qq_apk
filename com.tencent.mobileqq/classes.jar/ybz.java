@@ -1,177 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.io.File;
 
 public class ybz
-  implements View.OnClickListener, blih, blni, yda
+  extends ybw
 {
-  private final long jdField_a_of_type_Long = 500L;
-  private final QQStoryShareGroupProfileActivity jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity;
-  private long b;
-  
-  public ybz(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity = paramQQStoryShareGroupProfileActivity;
-  }
-  
-  private void a(View paramView, String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.b;
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.a;
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    int j = 0;
-    while (i < ((List)localObject).size())
-    {
-      HotSortVideoEntry localHotSortVideoEntry = (HotSortVideoEntry)((List)localObject).get(i);
-      localArrayList1.add(localHotSortVideoEntry.feedId);
-      localArrayList2.add(localHotSortVideoEntry.storyId);
-      if (paramString.equals(localHotSortVideoEntry.storyId)) {
-        j = i;
-      }
-      i += 1;
-    }
-    if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
-    {
-      localObject = new OpenPlayerBuilder(new VidListPlayInfo(localArrayList1, localArrayList2, (String)localArrayList1.get(j), (String)localArrayList2.get(j)), 88);
-      xlj.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, ((OpenPlayerBuilder)localObject).a(), paramView);
-    }
-    yup.a("share_story", "clk_video_card", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.b, paramString });
-  }
+  private xzd a;
   
   public void a()
   {
-    QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, "2", 1003);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(View paramView) {}
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Yce != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Yce.a(paramString);
-    }
-  }
-  
-  public void a(String paramString1, int paramInt, View paramView, String paramString2)
-  {
-    if (System.currentTimeMillis() - this.b < 500L) {}
-    for (;;)
+    super.a();
+    if (jdField_b_of_type_Int != 2)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.g)
-      {
-        a(paramView, paramString2);
-        return;
-      }
-      String str = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.b;
-      wsu localwsu = (wsu)wth.a(19);
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = localwsu.a(str, localArrayList1);
-      if ((localArrayList2 != null) && (localArrayList2.size() != 0))
-      {
-        paramInt = localArrayList2.indexOf(paramString1);
-        paramString1 = localwsu.a(str);
-        if ((paramString1 != null) && (paramString1.isEnd == 1)) {}
-        for (boolean bool = true; this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c == 1; bool = false)
-        {
-          paramString1 = new OpenPlayerBuilder(new MemoriesFeedPlayInfo(str, (String)localArrayList1.get(paramInt), paramString2, String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Yce.hashCode()), localArrayList2, bool, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c), this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a());
-          paramString1.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a());
-          xlj.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramString1.a(), paramView);
-          return;
-        }
+      String str = new File(this.jdField_b_of_type_JavaLangString).getParent();
+      if (str != null) {
+        FileUtils.deleteDirectory(str);
       }
     }
   }
   
-  public void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList)
+  public void a(Activity paramActivity, String paramString1, String paramString2, AppInterface paramAppInterface, xzd paramxzd)
   {
-    if (zps.b()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Xfj == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Xfj = xfj.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Xfj.a(anzj.a(2131709918) + win.a + anzj.a(2131709890)).a(xgm.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem, paramStoryVideoItem, paramString1, paramLong, paramInt)).a(new yca(this)).b();
-    yup.a("share_story", "share_day", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    super.a(paramActivity, paramString1, paramString2, paramAppInterface);
+    this.a = paramxzd;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    VideoCollectionItem localVideoCollectionItem = ((wsu)wth.a(19)).a(paramString);
-    if (localVideoCollectionItem != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a(localVideoCollectionItem);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onLoadMore: videoCollectionItem is null, collectionId:" + paramString);
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.b(false);
-  }
-  
-  public void b(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "QQStoryShareGroupProfileActivity onHeaderItemClick!");
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.g) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a();
-    }
-    while (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Yce == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Yce.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.a());
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if (paramActionSheetItem.action == 2)
     {
+      if (this.a != null) {
+        this.a.a();
+      }
+      return true;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, "5", 1004);
-      continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.finish();
-      continue;
-      QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity);
-    }
+    return super.a(paramActionSheetItem);
   }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_Zpq.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

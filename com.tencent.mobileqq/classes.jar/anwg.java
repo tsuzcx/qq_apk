@@ -1,49 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class anwg
-  extends BroadcastReceiver
+  implements pwy
 {
-  public anwg(DeviceProfileManager paramDeviceProfileManager) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public anwg(int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e("DeviceProfileManager", 4, "onReceive");
-    }
-    if (paramIntent == null) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = paramIntent.getExtras();
-          if (paramContext != null)
-          {
-            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
-            if (DeviceProfileManager.a() != null)
-            {
-              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
-              return;
-            }
-          }
-        }
-        catch (Exception paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    paramString = new Intent("notify_main_subscribe_follow_state");
+    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
+    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
+    paramString.putExtra("follow_uin_smooth_dx", this.b);
+    paramString.putExtra("follow_uin_status", paramBoolean);
+    BaseApplication.getContext().sendBroadcast(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwg
  * JD-Core Version:    0.7.0.1
  */

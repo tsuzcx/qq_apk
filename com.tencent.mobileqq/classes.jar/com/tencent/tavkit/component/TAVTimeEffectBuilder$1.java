@@ -11,7 +11,12 @@ class TAVTimeEffectBuilder$1
   
   public int compare(TAVTimeEffect paramTAVTimeEffect1, TAVTimeEffect paramTAVTimeEffect2)
   {
-    if (paramTAVTimeEffect1.getTimeRange().getStart().bigThan(paramTAVTimeEffect2.getTimeRange().getStart())) {
+    paramTAVTimeEffect1 = paramTAVTimeEffect1.getTimeRange().getStart();
+    paramTAVTimeEffect2 = paramTAVTimeEffect2.getTimeRange().getStart();
+    if (paramTAVTimeEffect1.equalsTo(paramTAVTimeEffect2)) {
+      return 0;
+    }
+    if (paramTAVTimeEffect1.bigThan(paramTAVTimeEffect2)) {
       return 1;
     }
     return -1;

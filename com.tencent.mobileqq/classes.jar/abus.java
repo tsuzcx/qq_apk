@@ -1,80 +1,57 @@
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1;
 
-class abus
-  implements Handler.Callback
+public class abus
+  implements abuh
 {
-  abus(abur paramabur) {}
+  public abus(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(View paramView)
   {
-    int i = 0;
-    boolean bool1 = false;
-    switch (paramMessage.what)
+    GdtVideoImaxFragment.a(this.a).a().b(2);
+    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
     {
+      GdtVideoImaxFragment.a(this.a);
+      GdtVideoImaxFragment.b(this.a);
     }
-    for (;;)
+    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0) {
+      return;
+    }
+    GdtVideoImaxFragment.a(this.a).g();
+    paramView = absw.a(this.a.getActivity());
+    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
+  }
+  
+  public void a(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    abrl.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
+  }
+  
+  public void b(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    abrl.a("GdtVideoImaxFragment", "onStart() called with: ");
+    if (GdtVideoImaxFragment.a(this.a))
     {
-      return true;
-      this.a.a();
-      return true;
-      try
-      {
-        paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        boolean bool2 = bnrt.a().a(paramMessage);
-        boolean bool3 = bhnv.h(BaseApplicationImpl.getContext());
-        boolean bool4 = bhlo.e();
-        if (bhmi.a() <= 1.048576E+008F) {
-          bool1 = true;
-        }
-        abur.a(this.a, "SmartDeviceProxyMgr check plugin: isInstalled " + bool2 + " isWifiConnected " + bool3 + " lowPhone = " + bool4 + " lowMemory = " + bool1);
-        if ((bool2) || (!bool3) || (bool4) || (bool1)) {
-          continue;
-        }
-        bnrt.a().a();
-        return true;
-      }
-      catch (Exception paramMessage)
-      {
-        return true;
-      }
-      try
-      {
-        if (abur.a(this.a) != null)
-        {
-          paramMessage = new Bundle();
-          paramMessage.putString("notify_cmd", "getServerDeviceList");
-          paramMessage = abur.a(this.a).a(paramMessage);
-          if (paramMessage != null)
-          {
-            paramMessage = paramMessage.getParcelableArray("devicelist");
-            if (paramMessage != null)
-            {
-              DeviceInfo[] arrayOfDeviceInfo = new DeviceInfo[paramMessage.length];
-              while (i < paramMessage.length)
-              {
-                arrayOfDeviceInfo[i] = ((DeviceInfo)paramMessage[i]);
-                i += 1;
-              }
-              abur.a(this.a, arrayOfDeviceInfo);
-              if (arrayOfDeviceInfo != null)
-              {
-                this.a.notifyUI(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
-                return true;
-              }
-            }
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
+      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
+      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
+      GdtVideoImaxFragment.a(this.a, false);
     }
-    return true;
+  }
+  
+  public void c(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    abrl.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
+  }
+  
+  public void d(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    abrl.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
   }
 }
 

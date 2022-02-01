@@ -1,14 +1,17 @@
-public abstract interface bhus
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
+
+public class bhus
+  implements Comparator<Friend>
 {
-  public abstract void a(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
+  public bhus(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
   
-  public abstract boolean a(float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
+  public int a(Friend paramFriend1, Friend paramFriend2)
+  {
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
+  }
 }
 
 

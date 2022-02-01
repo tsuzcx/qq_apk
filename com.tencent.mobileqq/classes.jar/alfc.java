@@ -1,104 +1,150 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONArray;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
 
 public class alfc
+  extends amsu
 {
-  private static volatile alfc jdField_a_of_type_Alfc;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anzj.a(2131712201), anzj.a(2131712191), anzj.a(2131712172) };
-  private static final String[] b = { anzj.a(2131712197), anzj.a(2131712192), anzj.a(2131712177) };
+  public alfc(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public static alfc a()
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (jdField_a_of_type_Alfc == null) {}
-    try
-    {
-      if (jdField_a_of_type_Alfc == null) {
-        jdField_a_of_type_Alfc = new alfc();
-      }
-      return jdField_a_of_type_Alfc;
+    int i = ((Integer)paramArrayOfObject[0]).intValue();
+    paramArrayOfObject = (String[])paramArrayOfObject[1];
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onSetSpecialCareSwitch_global isSucess= " + paramBoolean + ",type=" + i + ",uinSize=" + paramArrayOfObject.length);
     }
-    finally {}
-  }
-  
-  public int a()
-  {
-    Object localObject = alil.a();
-    if (localObject != null)
+    if ((SpecailCareListActivity.a(this.a) != null) && (paramArrayOfObject != null)) {}
+    for (boolean bool = Arrays.equals(SpecailCareListActivity.a(this.a), paramArrayOfObject);; bool = false)
     {
-      localObject = (alao)((QQAppInterface)localObject).getManager(245);
-      if (localObject != null) {
-        return ((alao)localObject).a("hb_exclusive", 1, new String[] { "ani_queue_max" });
-      }
-    }
-    return 1;
-  }
-  
-  public String a(int paramInt)
-  {
-    Object localObject1 = alil.a();
-    Object localObject2;
-    JSONArray localJSONArray;
-    if (localObject1 != null)
-    {
-      localObject2 = (alao)((QQAppInterface)localObject1).getManager(245);
-      if (localObject2 != null) {
-        if (paramInt == 0)
+      if (bool) {
+        if (paramArrayOfObject.length >= 1)
         {
-          localObject1 = "ask_text_list";
-          localJSONArray = ((alao)localObject2).a("hb_exclusive", new String[] { "aio_red", localObject1 });
-          if (paramInt != 0) {
-            break label110;
-          }
-          localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
-          label59:
-          localObject2 = localObject1;
-          if (localJSONArray != null)
-          {
-            if (localJSONArray.length() != 0) {
-              break label117;
+          this.a.h();
+          if (paramBoolean) {
+            if (this.a.c != null)
+            {
+              this.a.d();
+              QQToast.a(BaseApplication.getContext(), 2, 2131689560, 0).b(this.a.getTitleBarHeight());
+              this.a.a();
+              this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
             }
-            localObject2 = localObject1;
           }
         }
       }
-    }
-    for (;;)
-    {
-      if ((localObject2 != null) && (localObject2.length > 0))
+      while (!paramBoolean)
       {
-        return localObject2[(new java.util.Random().nextInt(localObject2.length + 0) + 0)];
-        localObject1 = "thx_text_list";
-        break;
-        label110:
-        localObject1 = b;
-        break label59;
-        label117:
-        localObject2 = new String[localJSONArray.length()];
-        paramInt = 0;
+        do
+        {
+          for (;;)
+          {
+            return;
+            QQToast.a(BaseApplication.getContext(), 2, 2131698601, 0).b(this.a.getTitleBarHeight());
+          }
+          if (this.a.c != null)
+          {
+            QQToast.a(BaseApplication.getContext(), 1, 2131698585, 0).b(this.a.getTitleBarHeight());
+            return;
+          }
+          QQToast.a(BaseApplication.getContext(), 1, 2131698600, 0).b(this.a.getTitleBarHeight());
+          return;
+        } while (!paramBoolean);
+        this.a.a();
+        this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+        return;
       }
-      while (paramInt < localJSONArray.length())
-      {
-        localObject2[paramInt] = localJSONArray.optString(paramInt);
-        paramInt += 1;
-        continue;
-        return null;
-      }
-      continue;
-      localObject2 = null;
+      this.a.a();
+      this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+      return;
     }
   }
   
-  public boolean a()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = alil.a();
-    if (localObject != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateDelFriend isSucess= " + paramBoolean + ", uin=" + (Long)paramObject);
+    }
+    if (paramBoolean)
     {
-      localObject = (alao)((QQAppInterface)localObject).getManager(245);
-      if (localObject != null) {
-        return ((alao)localObject).a("hb_exclusive", 1, new String[] { "is_display_all" }) == 1;
+      this.a.a();
+      this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateFriendList isSuccess=" + paramBoolean1 + ", isComplete=" + paramBoolean2 + " mIsPullRefresh=" + this.a.jdField_a_of_type_Boolean);
+    }
+    if ((!paramBoolean1) || (paramBoolean2))
+    {
+      this.a.a();
+      this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      if ((!paramBoolean1) || (!paramBoolean2)) {
+        break label135;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
+      this.a.jdField_a_of_type_Boolean = false;
+    }
+    label135:
+    while (paramBoolean1) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
+    this.a.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateSignature isSucess= " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (this.a.d != 0) {
+        this.a.b = true;
       }
     }
-    return true;
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateSignature isSucess= " + paramBoolean);
+    }
+    if (this.a.d != 0)
+    {
+      this.a.b = true;
+      return;
+    }
+    this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      this.a.a();
+      this.a.jdField_a_of_type_Alfi.notifyDataSetChanged();
+    }
   }
 }
 

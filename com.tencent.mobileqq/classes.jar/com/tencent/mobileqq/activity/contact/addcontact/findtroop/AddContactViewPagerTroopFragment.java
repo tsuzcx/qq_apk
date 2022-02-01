@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import ajgd;
-import ajgf;
-import ajgl;
-import ajgm;
-import ajgp;
-import ajgr;
+import aiam;
+import aiao;
+import aiau;
+import aiav;
+import aiay;
+import aiba;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
@@ -19,10 +19,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import apch;
-import bdll;
+import bcef;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
@@ -32,9 +32,9 @@ public class AddContactViewPagerTroopFragment
   implements View.OnClickListener
 {
   protected int a;
-  public ajgd a;
-  ajgf jdField_a_of_type_Ajgf = new ajgp(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajgm(this);
+  public aiam a;
+  aiao jdField_a_of_type_Aiao = new aiay(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aiav(this);
   public View.OnTouchListener a;
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
@@ -52,7 +52,7 @@ public class AddContactViewPagerTroopFragment
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajgl(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aiau(this);
   }
   
   private void c(boolean paramBoolean)
@@ -64,12 +64,12 @@ public class AddContactViewPagerTroopFragment
       ((URLDrawable)localObject).restartDownload();
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689625);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131706046);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131689624);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689624);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131706276);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131689623);
     localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
     if ((localObject != null) && ((localObject instanceof ViewGroup))) {
-      ((ViewGroup)localObject).setBackgroundResource(2130839402);
+      ((ViewGroup)localObject).setBackgroundResource(2130839437);
     }
     if (paramBoolean)
     {
@@ -93,15 +93,15 @@ public class AddContactViewPagerTroopFragment
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559850, null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378924));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368443));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378795));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378796));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378797));
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376356));
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559852, null);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378695));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368468));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378559));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378560));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378561));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376123));
       this.jdField_a_of_type_ComTencentWidgetXListView.setId(2131362156);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167247);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167276);
       this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(true);
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setClipToPadding(false);
@@ -123,22 +123,22 @@ public class AddContactViewPagerTroopFragment
       if (!bool)
       {
         c(true);
-        this.jdField_a_of_type_Ajgd = new ajgd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentWidgetXListView, null, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_Ajgd.jdField_a_of_type_Ajgf = this.jdField_a_of_type_Ajgf;
+        this.jdField_a_of_type_Aiam = new aiam(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentWidgetXListView, null, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_Aiam.jdField_a_of_type_Aiao = this.jdField_a_of_type_Aiao;
       }
       for (;;)
       {
         return this.jdField_a_of_type_AndroidViewView;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
         this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-        paramLayoutInflater = apch.a("recommend_troop");
+        paramLayoutInflater = LbsManagerService.getCachedLbsInfo("recommend_troop");
         if (QLog.isColorLevel()) {
           QLog.w("ac_ft.AddContactViewPagerTroopFragment", 2, "getView  >= M, canRequestLocation = " + bool + ",cached info = " + paramLayoutInflater);
         }
         if (paramLayoutInflater != null) {
           break;
         }
-        apch.a(new ajgr(this, "recommend_troop"));
+        LbsManagerService.startLocation(new aiba(this, "recommend_troop"));
         break;
         paramLayoutInflater = this.jdField_a_of_type_AndroidViewView.getParent();
         if ((paramLayoutInflater != null) && ((paramLayoutInflater instanceof ViewGroup))) {
@@ -154,8 +154,8 @@ public class AddContactViewPagerTroopFragment
       QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "doOnDestroy");
     }
     e();
-    if (this.jdField_a_of_type_Ajgd != null) {
-      this.jdField_a_of_type_Ajgd.c();
+    if (this.jdField_a_of_type_Aiam != null) {
+      this.jdField_a_of_type_Aiam.c();
     }
   }
   
@@ -168,8 +168,8 @@ public class AddContactViewPagerTroopFragment
     if (!this.jdField_b_of_type_JavaLangString.equals(paramString1))
     {
       this.jdField_b_of_type_JavaLangString = paramString1;
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ajgd != null)) {
-        this.jdField_a_of_type_Ajgd.a(paramString1);
+      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aiam != null)) {
+        this.jdField_a_of_type_Aiam.a(paramString1);
       }
     }
   }
@@ -188,10 +188,10 @@ public class AddContactViewPagerTroopFragment
       }
       if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0))
       {
-        if (!this.jdField_a_of_type_AndroidWidgetTextView.getText().equals(getResources().getString(2131689625))) {
+        if (!this.jdField_a_of_type_AndroidWidgetTextView.getText().equals(getResources().getString(2131689624))) {
           break label158;
         }
-        bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "no_location_exp", 0, 0, "", "", "", "");
+        bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "no_location_exp", 0, 0, "", "", "", "");
       }
       while ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
       {
@@ -199,18 +199,18 @@ public class AddContactViewPagerTroopFragment
           QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onResume requestData");
         }
         this.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_Ajgd.b(false);
+        this.jdField_a_of_type_Aiam.b(false);
         return;
         label158:
-        bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "no_meet_exp", 0, 0, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "", "");
+        bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "no_meet_exp", 0, 0, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "", "");
       }
     }
   }
   
-  public void ap_()
+  public void af_()
   {
     if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Ajgd.e();
+      this.jdField_a_of_type_Aiam.e();
     }
   }
   

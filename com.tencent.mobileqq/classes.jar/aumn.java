@@ -1,12 +1,19 @@
-public abstract interface aumn
+import com.tencent.qphone.base.util.QLog;
+
+final class aumn
+  implements aulu
 {
-  public abstract void a();
+  aumn(String paramString) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void a()
+  {
+    synchronized ()
+    {
+      auml.a(null);
+      QLog.i("shadow::Shadow", 2, "pluginManagerWrapper pmUpdaterCallBcak : bizType:" + this.a);
+      return;
+    }
+  }
 }
 
 

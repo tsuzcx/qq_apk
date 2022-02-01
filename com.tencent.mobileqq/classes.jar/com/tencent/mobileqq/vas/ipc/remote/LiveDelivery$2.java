@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import anui;
-import biij;
+import bgot;
+import com.tencent.mobileqq.app.BusinessObserver;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 
 class LiveDelivery$2
-  implements anui
+  implements BusinessObserver
 {
   LiveDelivery$2(LiveDelivery paramLiveDelivery, EIPCModule paramEIPCModule, int paramInt) {}
   
@@ -17,7 +17,7 @@ class LiveDelivery$2
     localEIPCResult.data = new Bundle();
     localEIPCResult.data.putBoolean("isSuccess", paramBoolean);
     if (paramObject != null) {
-      localEIPCResult.data.putByteArray("rspBytes", biij.a((byte[])paramObject));
+      localEIPCResult.data.putByteArray("rspBytes", bgot.a((byte[])paramObject));
     }
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
   }

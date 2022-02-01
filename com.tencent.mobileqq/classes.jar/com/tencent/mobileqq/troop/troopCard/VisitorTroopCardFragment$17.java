@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bgmr;
-import bhlq;
-import bhpc;
+import bewd;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class VisitorTroopCardFragment$17
   implements Runnable
@@ -19,11 +19,11 @@ public class VisitorTroopCardFragment$17
     do
     {
       return;
-      this.this$0.a = bhlq.a(this.this$0.getActivity(), 230);
+      this.this$0.a = bfur.a(this.this$0.getActivity(), 230);
       this.this$0.a.setMessage(this.a);
-      bgmr localbgmr = new bgmr(this);
-      this.this$0.a.setPositiveButton(2131690912, localbgmr);
-      this.this$0.a.setNegativeButton(2131690580, localbgmr);
+      bewd localbewd = new bewd(this);
+      this.this$0.a.setPositiveButton(2131690952, localbewd);
+      this.this$0.a.setNegativeButton(2131690620, localbewd);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

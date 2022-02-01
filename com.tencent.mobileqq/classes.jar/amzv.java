@@ -1,8 +1,20 @@
-public abstract interface amzv
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
+
+class amzv
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public abstract void a();
+  amzv(amzu paramamzu, String paramString, boolean paramBoolean)
+  {
+    super(paramString, paramBoolean);
+  }
   
-  public abstract void a(int paramInt);
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.d("RedPointLog.RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    amzu.a(this.a, paramInt, paramSosoLbsInfo, 0);
+  }
 }
 
 

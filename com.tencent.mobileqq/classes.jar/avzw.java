@@ -1,55 +1,67 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.data.IntimateInfo;
 
 public class avzw
-  implements awag
 {
-  public avzw(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  public int a;
+  private long a;
+  public IntimateInfo a;
+  public String a;
   
-  public void a(boolean paramBoolean)
+  public avzw(IntimateInfo paramIntimateInfo)
   {
-    int k = 1;
-    IVPluginDataReporter localIVPluginDataReporter;
-    int j;
-    if (!bhnv.a(GroupVideoLoadingFragment.a(this.a)))
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label80;
-      }
-      GroupVideoLoadingFragment.a(this.a, false);
-      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
-      if (!paramBoolean) {
-        break label111;
-      }
-      j = 1;
-      label50:
-      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
-      if (i == 0) {
-        break label116;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.isFriend) {
+        break label44;
       }
     }
-    label80:
-    label111:
-    label116:
-    for (int i = k;; i = 0)
+    label44:
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
     {
-      localIVPluginDataReporter.opResult(i).report();
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
       return;
-      i = 0;
-      break;
-      if (i != 0) {
-        GroupVideoLoadingFragment.a(this.a, true);
-      }
-      for (;;)
-      {
-        awbj.b("2880338");
-        break;
-        GroupVideoLoadingFragment.a(this.a, false);
-      }
-      j = 0;
-      break label50;
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.friendUin;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {}
+    int i;
+    do
+    {
+      return false;
+      i = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.maskType;
+    } while ((i != 3) && (i != 2) && (i != 26) && (i != 1));
+    return true;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

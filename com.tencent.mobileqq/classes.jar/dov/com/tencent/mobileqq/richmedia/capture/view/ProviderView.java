@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.richmedia.capture.view;
 import android.content.Context;
 import android.os.Handler;
 import android.widget.FrameLayout;
-import brev;
+import bnyi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
@@ -13,7 +13,7 @@ public abstract class ProviderView
   protected int a;
   Context a;
   protected Handler a;
-  protected brev a;
+  protected bnyi a;
   protected AppInterface a;
   protected boolean a;
   protected int b = 206;
@@ -36,9 +36,9 @@ public abstract class ProviderView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(brev parambrev)
+  public void setProviderViewListener(bnyi parambnyi)
   {
-    this.jdField_a_of_type_Brev = parambrev;
+    this.jdField_a_of_type_Bnyi = parambnyi;
   }
   
   public void setTabBarPosition(int paramInt)

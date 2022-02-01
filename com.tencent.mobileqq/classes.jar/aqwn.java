@@ -1,19 +1,19 @@
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.ArrayList;
 
-class aqwn
-  extends arvn
+public class aqwn
 {
-  public ETTextView a;
-  public RoundImageView a;
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public ArrayList<String> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public aqwn(aqwk paramaqwk, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131368212));
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364772));
-  }
+  public aqwn(aqwm paramaqwm) {}
 }
 
 

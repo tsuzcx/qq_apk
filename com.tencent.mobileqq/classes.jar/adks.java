@@ -1,8 +1,21 @@
-public abstract interface adks
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class adks
+  implements View.OnClickListener
 {
-  public abstract boolean a();
+  public adks(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public abstract boolean b();
+  public void onClick(View paramView)
+  {
+    avwr.a("0X800A22D");
+    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

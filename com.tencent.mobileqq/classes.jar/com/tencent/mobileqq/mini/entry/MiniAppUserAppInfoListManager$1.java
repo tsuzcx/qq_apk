@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.entry;
 
-import apec;
-import arfd;
+import anxo;
+import apyt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class MiniAppUserAppInfoListManager$1
-  extends apec
+  extends anxo
 {
   MiniAppUserAppInfoListManager$1(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager) {}
   
   public void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    if ((arfd.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
+    if ((apyt.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
       paramObject = (MiniAppRedDotEntity)paramObject;
       this.this$0.setMiniAppPushRedDotData(paramObject);

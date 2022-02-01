@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class aemm
-  extends bhwt
+class aemm
+  implements DialogInterface.OnClickListener
 {
-  public aemm(EditInfoActivity paramEditInfoActivity) {}
+  aemm(aeml paramaeml) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
+    this.a.a.finish();
   }
 }
 

@@ -1,51 +1,23 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+
 public class wgu
+  extends vqm
 {
-  private long jdField_a_of_type_Long = -1L;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
-  public String b;
+  public vlq a = new vlq();
   
-  public wgu()
+  public wgu(qqstory_service.RspAuthKey paramRspAuthKey)
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public String toString()
-  {
-    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
+    super(paramRspAuthKey.result);
+    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
+    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
+    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
+    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
+    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
+    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
+    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
   }
 }
 

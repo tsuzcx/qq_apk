@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bdmc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,8 +31,8 @@ public final class AIOOpenWebMonitor$1
       } while (localObject == null);
       HashMap localHashMap = new HashMap(3);
       localHashMap.put("m_num", ((TroopInfo)localObject).wMemberNum + "");
-      bdmc.a(BaseApplication.getContext()).a(null, "AIOWebTC", false, 0L, 0L, localHashMap, "", false);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AIOWebTC", false, 0L, 0L, localHashMap, "", false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     } while (localObject == null);
     Object localObject = ((List)localObject).iterator();
     do
@@ -45,14 +45,14 @@ public final class AIOOpenWebMonitor$1
     {
       localObject = new HashMap(3);
       ((HashMap)localObject).put("m_i", i + "");
-      bdmc.a(BaseApplication.getContext()).a(null, "AIOWebmsgposition", false, 0L, 0L, (HashMap)localObject, "", false);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AIOWebmsgposition", false, 0L, 0L, (HashMap)localObject, "", false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor.1
  * JD-Core Version:    0.7.0.1
  */

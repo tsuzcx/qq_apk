@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aksa;
+import ajpy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class TroopClipPic
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<TroopClipPic> CREATOR = new aksa();
+  public static final Parcelable.Creator<TroopClipPic> CREATOR = new ajpy();
   public String clipInfo;
   public String id;
   public long ts;

@@ -38,27 +38,27 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallGetBufferPercent(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallGetDuration(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallGetPosition(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallGetStatus(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallGetVideoSize(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallPause(TPPlayerState paramTPPlayerState)
@@ -68,17 +68,17 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallPrepare(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(8));
+    return (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9));
   }
   
   private static boolean validCallRelease(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(9));
+    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(10));
   }
   
   private static boolean validCallReset(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(9));
+    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(10));
   }
   
   private static boolean validCallSeek(TPPlayerState paramTPPlayerState)
@@ -88,7 +88,7 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallSelectProgram(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallSetDataSource(TPPlayerState paramTPPlayerState)
@@ -98,7 +98,7 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallSetParams(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(8));
+    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9));
   }
   
   private static boolean validCallSetSurface(TPPlayerState paramTPPlayerState)
@@ -113,7 +113,7 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallStop(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallSwitchDef(TPPlayerState paramTPPlayerState)

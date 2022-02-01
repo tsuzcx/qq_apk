@@ -1,36 +1,36 @@
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
 public class bdbb
+  implements bgfl
 {
-  private double a;
-  public int a;
-  public int b;
+  bdbb(bday parambday) {}
   
-  public bdbb() {}
-  
-  public bdbb(int paramInt1, int paramInt2)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Double = (paramInt1 / paramInt2);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    if (paramQQAppInterface != null)
     {
-      return true;
-      if (!(paramObject instanceof bdbb)) {
-        return false;
+      paramQQAppInterface = bgiw.a.getDir(paramQQAppInterface.getApp().getApplicationContext(), paramString1);
+      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (bday.a(this.a) != null))
+      {
+        bday.a(this.a, true);
+        this.a.a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString);
+        }
+        if (this.a.jdField_a_of_type_Boolean) {
+          ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
+        }
       }
-      paramObject = (bdbb)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b));
-    return false;
+    }
   }
   
-  public String toString()
-  {
-    return "CustomSize[width=" + this.jdField_a_of_type_Int + ", height=" + this.b + ", scaleWH='" + this.jdField_a_of_type_Double + ']';
-  }
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

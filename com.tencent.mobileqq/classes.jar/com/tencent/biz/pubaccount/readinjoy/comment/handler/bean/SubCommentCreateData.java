@@ -5,14 +5,14 @@ import android.os.Parcelable;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import owo;
+import oxo;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "commentStr", "getCommentStr", "()Ljava/lang/String;", "setCommentStr", "(Ljava/lang/String;)V", "firstCommentId", "getFirstCommentId", "setFirstCommentId", "repliedSubAuthorId", "", "getRepliedSubAuthorId", "()J", "setRepliedSubAuthorId", "(J)V", "repliedSubCommentId", "getRepliedSubCommentId", "setRepliedSubCommentId", "describeContents", "toString", "writeToParcel", "", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class SubCommentCreateData
   extends SimpleCommentData
   implements Parcelable
 {
-  public static final owo CREATOR = new owo(null);
+  public static final oxo CREATOR = new oxo(null);
   private long jdField_a_of_type_Long;
   @NotNull
   private String jdField_a_of_type_JavaLangString = "";

@@ -1,61 +1,73 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewStub;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class wdu
-  extends wcw
+  extends vqr
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private List<FeedCloudMeta.StTagInfo> jdField_a_of_type_JavaUtilList;
-  private wdw jdField_a_of_type_Wdw;
+  public static final String a;
+  public List<xnh> a;
+  public List<String> b = new ArrayList();
   
-  protected String a()
+  static
   {
-    return "QCircleFeedItemTagPresenter";
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.homepage_batch_feeds_detail_720");
   }
   
-  public void a(ViewStub paramViewStub)
+  public wdu()
   {
-    if (paramViewStub != null)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
+    try
     {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373945));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-      paramViewStub = new LinearLayoutManager(this.jdField_a_of_type_AndroidViewView.getContext());
-      paramViewStub.setOrientation(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramViewStub);
-      this.jdField_a_of_type_Wdw = new wdw(this, null);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wdw);
+      localRspStoryFeed.mergeFrom(paramArrayOfByte);
+      return new wdv(localRspStoryFeed);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
   
-  public void a(Object paramObject, int paramInt)
+  protected byte[] a()
   {
-    if ((paramObject instanceof FeedCloudMeta.StFeed))
+    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
-      this.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaUtilList = ((FeedCloudMeta.StFeed)paramObject).tagInfos.get();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label100;
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_Wdw != null) {
-        this.jdField_a_of_type_Wdw.a(this.jdField_a_of_type_JavaUtilList);
+      xnh localxnh = (xnh)localIterator.next();
+      if (localxnh != null) {
+        if (TextUtils.isEmpty(localxnh.jdField_a_of_type_JavaLangString)) {
+          xvv.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
+        } else {
+          localArrayList.add(localxnh.a());
+        }
       }
     }
-    return;
-    label100:
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (localArrayList.size() == 0) {
+      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    }
+    localReqStoryFeed.feed_id_list.set(localArrayList);
+    return localReqStoryFeed.toByteArray();
   }
 }
 

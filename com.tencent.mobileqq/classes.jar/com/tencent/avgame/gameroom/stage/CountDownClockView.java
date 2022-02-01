@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import androidx.annotation.Nullable;
-import ncx;
+import nec;
 
 public class CountDownClockView
   extends ImageView
@@ -52,7 +52,7 @@ public class CountDownClockView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-469632);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
-    setBackgroundResource(2130838699);
+    setBackgroundResource(2130838724);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1831);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setFlags(1);
@@ -87,7 +87,7 @@ public class CountDownClockView
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { (int)(360L * paramLong2 * 1.0D / paramLong1), 360 }).setDuration(paramLong1 - paramLong2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ncx(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new nec(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   

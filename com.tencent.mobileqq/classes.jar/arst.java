@@ -1,17 +1,21 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class arst
+class arst
+  implements Animation.AnimationListener
 {
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final String[] b = { "sync1", "sync2", "sync3" };
+  arst(arsq paramarsq, int paramInt, boolean paramBoolean) {}
   
-  public static final Uri a(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
+    this.jdField_a_of_type_Arsq.jdField_a_of_type_Float = this.jdField_a_of_type_Arsq.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Arsq.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -16,6 +16,7 @@
         "type":"wrap_content"
     },
     "attributes":{
+        "setCornerRadiusString:":"4",
         "setBackgroundColorString:": "#F5F6FA"
     },
     "subviews":[

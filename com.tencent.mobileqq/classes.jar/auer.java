@@ -1,60 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-public class auer
-  implements aqrn
+final class auer
+  implements aueg
 {
-  private DataLineMsgRecord a;
-  
-  public auer(DataLineMsgRecord paramDataLineMsgRecord)
+  public String a()
   {
-    this.a = paramDataLineMsgRecord;
+    return aynu.a;
   }
   
-  private String a()
+  public void a(int paramInt)
   {
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
-        str = localJSONObject.toString();
-      }
-      return str;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.a == null)
-    {
-      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    aqrv localaqrv = new aqrv();
-    localaqrv.a(17039360);
-    String str = auoo.b(6, this.a.sessionid + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localaqrv.a(str);
-    localaqrv.b(this.a.filename);
-    localaqrv.c(auog.a(this.a.filesize));
-    int i = aunj.a(aunj.a(this.a.filename));
-    localaqrv.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaqrv.a(str.getBytes());
-    }
-    return localaqrv.a();
   }
 }
 

@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimTipsInfo;
 
-public abstract class ajmf
+public class ajmf
+  implements bksf
 {
-  public long a;
-  public String a;
-  public boolean b;
+  public ajmf(ContactListView paramContactListView) {}
   
-  public String a()
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return this.a;
-  }
-  
-  public abstract boolean a();
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
+    if (paramQQPimTipsInfo == null) {
+      return;
+    }
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    bksm.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

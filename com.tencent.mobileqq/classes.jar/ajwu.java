@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class ajwu
+  implements OnCompositionLoadedListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public ajwu(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
+  
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      axws.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
-    } while (!QLog.isColorLevel());
-    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
   }
 }
 

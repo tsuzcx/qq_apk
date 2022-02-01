@@ -1,10 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface blmq
+class blmq
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
+  blmq(blmi paramblmi, bllo parambllo, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Blmi.a(this.jdField_a_of_type_Bllo.itemView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

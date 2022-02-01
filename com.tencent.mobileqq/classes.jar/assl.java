@@ -1,28 +1,28 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1.1;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
-public class assl
-  implements blih
+class assl
+  implements zrl
 {
-  public assl(SystemAndEmojiUniversalPanel.1.1 param1) {}
+  assl(assk paramassk, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(List<aswh> paramList)
   {
-    SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, paramAbsListView);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) || (paramInt == 2))
+    if (this.jdField_a_of_type_Assk.a.jdField_a_of_type_Asta != null)
     {
-      URLDrawable.resume();
-      SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, this.a.jdField_a_of_type_JavaUtilList, SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0));
-      return;
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        break label126;
+      }
+      this.jdField_a_of_type_Assk.a.jdField_a_of_type_Asta.a(-1000L);
     }
-    URLDrawable.pause();
+    while (paramList != null)
+    {
+      bcef.b(this.jdField_a_of_type_Assk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Assk.a.jdField_a_of_type_Asqs.a().TroopUin, "", aszt.f(this.jdField_a_of_type_Assk.a.c()), "1");
+      return;
+      label126:
+      this.jdField_a_of_type_Assk.a.jdField_a_of_type_Asta.a(paramList, this.jdField_a_of_type_Assk.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Assk.a.b, this.jdField_a_of_type_Assk.a.c, this.jdField_a_of_type_Assk.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    }
+    bcef.b(this.jdField_a_of_type_Assk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Assk.a.jdField_a_of_type_Asqs.a().TroopUin, "-1", aszt.f(this.jdField_a_of_type_Assk.a.c()), "1");
   }
 }
 

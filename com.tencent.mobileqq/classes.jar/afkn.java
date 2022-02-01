@@ -1,56 +1,68 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class afkn
-  extends AccountObserver
+  extends BroadcastReceiver
 {
-  public afkn(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public afkn(TroopChatPie paramTroopChatPie) {}
   
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    RegisterSendUpSms.c(this.a, paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
+    {
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label41;
+      }
     }
-    if (paramInt1 == 4) {}
     for (;;)
     {
-      RegisterSendUpSms.a(this.a, 0);
       return;
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      if (paramInt1 == 0)
-      {
-        RegisterSendUpSms.a(this.a).setText(anzj.a(2131712245));
-        RegisterSendUpSms.a(this.a, paramString1);
-        RegisterSendUpSms.b(this.a, paramString2);
-        RegisterSendUpSms.c(this.a, paramString3);
-        RegisterSendUpSms.d(this.a, paramString5);
-        RegisterSendUpSms.a(this.a);
-        continue;
-      }
-      paramString1 = paramString4;
-      if (paramInt1 == -1) {}
       try
       {
-        paramString1 = new String(paramArrayOfByte, "utf-8");
-        paramArrayOfByte = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          paramArrayOfByte = this.a.getString(2131715884);
-        }
-        QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        for (;;)
+        label41:
+        Object localObject = new JSONObject(paramContext);
+        paramContext = ((JSONObject)localObject).optString("groupCode");
+        if (TextUtils.equals(paramContext, this.a.sessionInfo.curFriendUin))
         {
-          paramArrayOfByte.printStackTrace();
-          paramString1 = paramString4;
+          paramIntent = ((JSONObject)localObject).optString("content");
+          String str1 = ((JSONObject)localObject).optString("source");
+          int i = ((JSONObject)localObject).optInt("rankId", 333);
+          String str2 = ((JSONObject)localObject).optString("nickName");
+          String str3 = ((JSONObject)localObject).optString("uin");
+          String str4 = ((JSONObject)localObject).optString("course");
+          localObject = ((JSONObject)localObject).optString("name");
+          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.app.getCurrentAccountUin())))
+          {
+            ((TroopManager)this.a.app.getManager(52)).b(this.a.sessionInfo.curFriendUin, str3, str2, i, str4, (String)localObject);
+            if (this.a.a != null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.a.tag, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
+              }
+              this.a.a.a(this.a.mTipsMgr, false);
+            }
+            if (TroopChatPie.a(this.a) != null) {
+              TroopChatPie.a(this.a).a(i);
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
+            return;
+          }
         }
       }
+      catch (JSONException paramContext) {}
     }
   }
 }

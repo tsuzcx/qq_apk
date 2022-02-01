@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import agyv;
-import agyw;
-import agza;
-import agzk;
+import afvh;
+import afvi;
+import afvm;
+import afvw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -11,12 +11,12 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import apzt;
-import aqcm;
-import aqcq;
-import aqcy;
-import arwf;
-import arwg;
+import aotg;
+import aovx;
+import aowb;
+import aowj;
+import aqqc;
+import aqqd;
 import com.tencent.ark.ArkViewImplement.ArkViewInterface;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkAppMgr;
@@ -32,7 +32,7 @@ import java.util.LinkedList;
 import org.json.JSONObject;
 
 public class ArkBabyqCardInfo
-  implements apzt
+  implements aotg
 {
   public final String TAG = "ArkBabyqCardInfo";
   public String appDesc;
@@ -43,7 +43,7 @@ public class ArkBabyqCardInfo
   public String compatibleText;
   public String config;
   public String extra;
-  public agyv mArkBabyqContainer;
+  public afvh mArkBabyqContainer;
   public WeakReference<MessageForArkBabyqReply> mBabyQReplyMsg;
   public LinkedList<ArkBabyqCardInfo> mExtendedArkBabyqCardList;
   public String metaList;
@@ -55,42 +55,42 @@ public class ArkBabyqCardInfo
     this.mBabyQReplyMsg = new WeakReference(paramMessageForArkBabyqReply);
   }
   
-  public void attachArkView(aqcm paramaqcm, aqcq paramaqcq, int paramInt)
+  public void attachArkView(aovx paramaovx, aowb paramaowb, int paramInt)
   {
-    paramaqcq.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844902);
+    paramaowb.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844782);
     if (this.mArkBabyqContainer == null)
     {
-      this.mArkBabyqContainer = new agyv();
-      this.mArkBabyqContainer.a(paramaqcm);
+      this.mArkBabyqContainer = new afvh();
+      this.mArkBabyqContainer.a(paramaovx);
     }
     Object localObject = new ArkBabyqCardInfo.Config();
     ((ArkBabyqCardInfo.Config)localObject).fromString(this.config);
     if ((((ArkBabyqCardInfo.Config)localObject).autoSize != null) && (((ArkBabyqCardInfo.Config)localObject).autoSize.intValue() == 1)) {}
     localObject = this.mArkBabyqContainer;
-    ((agyv)localObject).a(this.appName, this.appView, this.appMinVersion, this.metaList, paramaqcm.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().scaledDensity, this, paramaqcm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    ((agyv)localObject).setFixSize(BaseChatItemLayout.e, BaseChatItemLayout.e);
-    ((agyv)localObject).setMaxSize(BaseChatItemLayout.e, BaseChatItemLayout.e);
-    ((agyv)localObject).setMinSize(BaseChatItemLayout.e * 7 / 10, BaseChatItemLayout.e);
-    localObject = new arwf(this, paramaqcq, paramaqcm, (agyv)localObject, paramInt);
-    ArkAppView localArkAppView1 = paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-    ArkAppView localArkAppView2 = paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+    ((afvh)localObject).a(this.appName, this.appView, this.appMinVersion, this.metaList, paramaovx.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().scaledDensity, this, paramaovx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    ((afvh)localObject).setFixSize(BaseChatItemLayout.e, BaseChatItemLayout.e);
+    ((afvh)localObject).setMaxSize(BaseChatItemLayout.e, BaseChatItemLayout.e);
+    ((afvh)localObject).setMinSize(BaseChatItemLayout.e * 7 / 10, BaseChatItemLayout.e);
+    localObject = new aqqc(this, paramaowb, paramaovx, (afvh)localObject, paramInt);
+    ArkAppView localArkAppView1 = paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+    ArkAppView localArkAppView2 = paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     localArkAppView1.setClipRadius(15.0F);
     localArkAppView1.setBorderType(1);
-    localArkAppView2.a(this.mArkBabyqContainer, paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
-    localArkAppView1.setOnTouchListener(paramaqcm.jdField_a_of_type_Agjk);
-    localArkAppView1.setOnLongClickListener(paramaqcm.jdField_a_of_type_Agjk);
+    localArkAppView2.a(this.mArkBabyqContainer, paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
+    localArkAppView1.setOnTouchListener(paramaovx.jdField_a_of_type_Afce);
+    localArkAppView1.setOnLongClickListener(paramaovx.jdField_a_of_type_Afce);
     localArkAppView1.setLoadCallback((ArkViewImplement.LoadCallback)localObject);
-    if (paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout != null)
+    if (paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout != null)
     {
-      paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnTouchListener(paramaqcm.jdField_a_of_type_Agjk);
-      paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnLongClickListener(paramaqcm.jdField_a_of_type_Agjk);
+      paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnTouchListener(paramaovx.jdField_a_of_type_Afce);
+      paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnLongClickListener(paramaovx.jdField_a_of_type_Afce);
     }
-    paramaqcq.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new arwg(this));
-    paramaqcq.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    paramaqcq.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    paramaowb.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new aqqd(this));
+    paramaowb.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramaowb.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
   }
   
-  public void clickTail(aqcq paramaqcq, agzk paramagzk, Context paramContext) {}
+  public void clickTail(aowb paramaowb, afvw paramafvw, Context paramContext) {}
   
   public void destroyContainerByRemove()
   {
@@ -119,9 +119,9 @@ public class ArkBabyqCardInfo
     }
   }
   
-  public apzt extendArkCardByOpen(agyw paramagyw, String paramString1, String paramString2)
+  public aotg extendArkCardByOpen(afvi paramafvi, String paramString1, String paramString2)
   {
-    if (this.mArkBabyqContainer == paramagyw) {
+    if (this.mArkBabyqContainer == paramafvi) {
       if ((this.mBabyQReplyMsg == null) || (this.mBabyQReplyMsg.get() == null)) {
         break label167;
       }
@@ -129,12 +129,12 @@ public class ArkBabyqCardInfo
     label167:
     for (Object localObject = (MessageForArkBabyqReply)this.mBabyQReplyMsg.get();; localObject = null)
     {
-      paramagyw = paramagyw.getAppName();
-      if ((localObject != null) && ((((MessageForArkBabyqReply)localObject).getArkBabyqCardCount() >= aqcy.f) || ((!((MessageForArkBabyqReply)localObject).isSingleApp) && (((MessageForArkBabyqReply)localObject).getArkBabyqCardCountForApp(paramagyw) >= aqcy.g)))) {
+      paramafvi = paramafvi.getAppName();
+      if ((localObject != null) && ((((MessageForArkBabyqReply)localObject).getArkBabyqCardCount() >= aowj.f) || ((!((MessageForArkBabyqReply)localObject).isSingleApp) && (((MessageForArkBabyqReply)localObject).getArkBabyqCardCountForApp(paramafvi) >= aowj.g)))) {
         return null;
       }
       localObject = new ArkBabyqCardInfo((MessageForArkBabyqReply)localObject);
-      ((ArkBabyqCardInfo)localObject).appName = paramagyw;
+      ((ArkBabyqCardInfo)localObject).appName = paramafvi;
       ((ArkBabyqCardInfo)localObject).appView = paramString1;
       ((ArkBabyqCardInfo)localObject).appMinVersion = this.appMinVersion;
       ((ArkBabyqCardInfo)localObject).metaList = paramString2;

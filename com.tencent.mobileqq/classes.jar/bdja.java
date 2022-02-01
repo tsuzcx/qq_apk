@@ -1,12 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.SQLiteFTSUtils.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdja
-  implements IMCoreProxyRoute.SQLiteFTSUtils.Proxy
+class bdja
+  extends bdji<UserState>
 {
-  public int getFTSNotifyFlag()
+  bdja(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    return bhut.a(BaseApplicationImpl.getApplication());
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.a(this.a).i();
+    bdiu.a(this.a).b();
   }
 }
 

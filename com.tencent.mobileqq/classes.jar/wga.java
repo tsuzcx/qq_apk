@@ -1,151 +1,55 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoTarget;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class wga
-  implements wgb
+  extends vqm
 {
-  public int a;
-  protected String a;
-  protected List<wgv> a;
-  protected wgc a;
-  protected boolean a;
-  private List<wgh> b;
-  private List<wgh> c = new ArrayList();
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<String> b;
   
-  public wga(int paramInt)
+  public wga(qqstory_service.RspBannerVideoList paramRspBannerVideoList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic_BaseAlbumFilter";
-  }
-  
-  private void a(List<wgg> paramList, String paramString) {}
-  
-  @NonNull
-  protected List<wgh> a()
-  {
-    if (this.b == null) {
-      return new ArrayList();
-    }
-    return this.b;
-  }
-  
-  public void a(List<wgh> paramList)
-  {
-    this.b = new ArrayList();
-    this.b.addAll(paramList);
-  }
-  
-  public void a(wgc paramwgc)
-  {
-    yuk.b(this.jdField_a_of_type_JavaLangString, "start");
-    this.jdField_a_of_type_Wgc = paramwgc;
-    paramwgc = a();
-    if ((paramwgc == null) || (paramwgc.isEmpty()))
+    super(paramRspBannerVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    if ((paramRspBannerVideoList.video_list.has()) && (!paramRspBannerVideoList.video_list.isEmpty()))
     {
-      yuk.e(this.jdField_a_of_type_JavaLangString, "can't find enough pic");
-      b(null);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      yuk.e(this.jdField_a_of_type_JavaLangString, "must set split strategy");
-      b(null);
-      return;
-    }
-    paramwgc = new wgg(this.jdField_a_of_type_Int, paramwgc);
-    Object localObject1 = new LinkedList();
-    ((Queue)localObject1).offer(paramwgc);
-    paramwgc = new LinkedList();
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      Object localObject2 = (wgv)this.jdField_a_of_type_JavaUtilList.get(i);
-      while (((Queue)localObject1).size() > 0)
+      Iterator localIterator = paramRspBannerVideoList.video_list.get().iterator();
+      while (localIterator.hasNext())
       {
-        Object localObject3 = (wgg)((Queue)localObject1).poll();
-        if (localObject3 != null)
-        {
-          yuk.b(this.jdField_a_of_type_JavaLangString, "to split StoryAlbum=%s", ((wgg)localObject3).toString());
-          ((wgv)localObject2).a((wgg)localObject3);
-          localObject3 = ((wgv)localObject2).b();
-          if ((localObject3 == null) || (((List)localObject3).size() == 0))
-          {
-            yuk.d(this.jdField_a_of_type_JavaLangString, "find no album strategy=" + localObject2.toString());
-          }
-          else
-          {
-            a((List)localObject3, localObject2.toString());
-            yuk.b(this.jdField_a_of_type_JavaLangString, "split strategy=%s, result=%s", localObject2.toString(), localObject3.toString());
-            localObject3 = ((List)localObject3).iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              wgg localwgg = (wgg)((Iterator)localObject3).next();
-              if (i == this.jdField_a_of_type_JavaUtilList.size() - 1) {
-                localArrayList.add(localwgg);
-              } else {
-                paramwgc.add(localwgg);
-              }
-            }
-          }
-        }
+        qqstory_struct.VideoTarget localVideoTarget = (qqstory_struct.VideoTarget)localIterator.next();
+        this.jdField_a_of_type_JavaUtilList.add(localVideoTarget.vid.get().toStringUtf8());
+        this.jdField_b_of_type_JavaUtilList.add(localVideoTarget.feed_id.get().toStringUtf8());
       }
-      if (paramwgc.size() <= 0) {
-        break;
+    }
+    if (paramRspBannerVideoList.is_end.has()) {
+      if (paramRspBannerVideoList.is_end.get() != 1) {
+        break label202;
       }
-      i += 1;
-      localObject2 = paramwgc;
-      paramwgc = (wgc)localObject1;
-      localObject1 = localObject2;
     }
-    b(localArrayList);
-  }
-  
-  public void a(wgv paramwgv)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramwgv);
-  }
-  
-  protected void b(List<wgg> paramList)
-  {
-    this.c = new ArrayList();
-    this.c.addAll(this.b);
-    if ((paramList != null) && (paramList.size() > 0))
+    label202:
+    for (boolean bool = true;; bool = false)
     {
-      c(paramList);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        localObject = paramList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Iterator localIterator = ((wgg)((Iterator)localObject).next()).a().iterator();
-          while (localIterator.hasNext())
-          {
-            wgh localwgh = (wgh)localIterator.next();
-            this.c.remove(localwgh);
-          }
-        }
+      this.jdField_a_of_type_Boolean = bool;
+      if (paramRspBannerVideoList.next_cookie.has()) {
+        this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
       }
-    }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      yuk.a((String)localObject, "handleResult, find album count=%d, leaving pic count=%d", Integer.valueOf(i), Integer.valueOf(this.c.size()));
-      this.jdField_a_of_type_Wgc.a(paramList, this.c);
+      if (paramRspBannerVideoList.total_count.has()) {
+        this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
+      }
       return;
     }
   }
-  
-  protected void c(List<wgg> paramList) {}
 }
 
 

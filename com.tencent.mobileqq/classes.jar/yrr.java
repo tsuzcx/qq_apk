@@ -1,85 +1,270 @@
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class yrr
-  extends yop
+public class yrr
+  extends ReportDialog
+  implements View.OnClickListener
 {
-  yrr(yrh paramyrh) {}
+  protected int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  protected Button a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected String a;
+  private yrs jdField_a_of_type_Yrs;
+  protected boolean a;
+  private String b;
+  private String c = "";
+  private String d = "";
+  private String e = "";
+  private String f;
+  private String g;
   
-  public void a(int paramInt, View paramView, Object paramObject, yqw paramyqw)
+  public yrr(@NonNull Context paramContext, int paramInt, String paramString)
   {
-    if (paramView.getVisibility() != 0) {}
-    while (zps.b()) {
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.g = paramString;
+  }
+  
+  public yrr(@NonNull Context paramContext, String paramString)
+  {
+    this(paramContext, 2131755826, paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public static Dialog a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  {
+    if (yqu.a(paramContext))
+    {
+      yqu.a(paramContext, "biz_src_jc_hyws", paramString4);
+      return null;
+    }
+    paramContext = new yrr(paramContext, "biz_src_jc_hyws").a(paramString1, paramString2, paramString3).a(paramInt, paramString4);
+    paramContext.show();
+    return paramContext;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Yrs != null) {
+      this.jdField_a_of_type_Yrs.a(this, paramInt);
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363817));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369194));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370133);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379702));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131715946));
+    a();
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = "https://pub.idqqimg.com/pc/misc/files/20180423/03d546703c3f49a3857c67be2e94f928.png";
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+    localObject = URLDrawable.getDrawable(this.b, (URLDrawable.URLDrawableOptions)localObject);
+    ((URLDrawable)localObject).setURLDrawableListener(new yrt(this.jdField_a_of_type_AndroidWidgetTextView));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+    int i = ((URLDrawable)localObject).getStatus();
+    if (i != 1)
+    {
+      if (i == 2) {
+        ((URLDrawable)localObject).restartDownload();
+      }
       return;
     }
-    paramyqw = (yln)this.a.jdField_a_of_type_Ymx.a().get(paramInt);
-    paramObject = (BannerFeedItem)paramyqw.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public yrr a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public yrr a(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public yrr a(String paramString1, String paramString2, String paramString3)
+  {
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    return this;
+  }
+  
+  public void a()
+  {
+    boolean bool = yqu.a(getContext());
+    if (this.jdField_a_of_type_Boolean != bool)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131715947));
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131715950));
+  }
+  
+  public void onBackPressed()
+  {
+    super.onBackPressed();
+    a(-1);
+  }
+  
+  public void onClick(View paramView)
+  {
+    int m = 1;
+    int i;
+    label117:
+    int k;
+    label182:
+    int j;
     switch (paramView.getId())
     {
     default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131362134: 
-      if (!zot.a(yrh.a(this.a)))
+    case 2131363817: 
+      a();
+      if (TextUtils.isEmpty(this.f))
       {
-        QQToast.a(yrh.a(this.a), 1, anzj.a(2131703372), 0).a();
-        return;
-      }
-    case 2131374596: 
-      wnu.a(yrh.a(this.a), 4, paramObject.getOwner().getUnionId());
-      paramInt = yup.a(paramObject);
-      int i = yup.b(paramObject);
-      if (this.a.jdField_a_of_type_Int == 11) {}
-      for (paramView = "3";; paramView = "1")
-      {
-        yup.a("home_page", "clk_head_nick", paramInt, 0, new String[] { String.valueOf(i), paramView, paramObject.feedId, "" });
-        return;
-      }
-    case 2131374558: 
-    case 2131374566: 
-      String str1 = paramObject.getOwner().getUnionId();
-      String str2 = paramObject.feedId;
-      if (paramView.getId() == 2131374558) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        yup.a("home_page", "clk_ac_card", 0, 0, new String[] { paramView, "", str1, str2 });
-        if (!TextUtils.isEmpty(paramObject.schema)) {
-          break;
+        if (this.jdField_a_of_type_Boolean) {
+          yqu.a(getContext(), this.g, this.jdField_a_of_type_JavaLangString);
         }
-        yuk.e("Q.qqstory.home:FeedSegment", "The schema url is null!!");
-        return;
+        for (i = 0;; i = 1)
+        {
+          xwa.a("weishi_share", "cover_clk", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
+          dismiss();
+          a(i);
+          break;
+          QQToast.a(getContext(), amtj.a(2131715948), 0).a();
+          yqu.a(getContext(), this.g);
+        }
       }
-      yuk.a("Q.qqstory.home:FeedSegment", "click banner feed and jump to %s", paramObject.schema);
-      if (((BannerFeedItem)paramyqw.a()).schema.startsWith("mqqapi:"))
+      if (this.jdField_a_of_type_Boolean)
       {
-        QQStoryContext.a();
-        bhni.a((QQAppInterface)QQStoryContext.a(), yrh.a(this.a), paramObject.schema).a();
-        return;
+        uit.a(getContext(), this.f);
+        i = 0;
+        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          break label513;
+        }
+        k = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
+        j = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("VIDEO_FROM_TYPE", -1);
+        if ((j != 9) && (j != 12)) {
+          break label386;
+        }
+        j = 1;
       }
-      if (!zot.a(yrh.a(this.a)))
-      {
-        QQToast.a(yrh.a(this.a), 1, anzj.a(2131703366), 0).a();
-        return;
-      }
-      paramView = new Intent(yrh.a(this.a), QQBrowserActivity.class);
-      paramView.putExtra("url", paramObject.schema);
-      yrh.a(this.a).startActivity(paramView);
-      return;
-      paramObject = ((BannerFeedItem)paramyqw.a()).getOwner();
-      ((wja)xiz.a().a(98)).a(1, paramObject.getUnionId(), 0, 12);
-      paramView.setVisibility(8);
-      yup.a("home_page", "follow_recom", 0, 0, new String[] { "3", "1", paramObject.getUnionId(), ((BannerFeedItem)paramyqw.a()).feedId });
-      return;
+      break;
     }
-    yrh.a(this.a, paramInt);
+    for (;;)
+    {
+      label242:
+      JSONObject localJSONObject = new JSONObject();
+      for (;;)
+      {
+        try
+        {
+          if (!this.jdField_a_of_type_Boolean) {
+            continue;
+          }
+          str = "0";
+          localJSONObject.put("download", str);
+          if (j == 0) {
+            continue;
+          }
+          j = m;
+          ofe.a(localJSONObject, j);
+        }
+        catch (JSONException localJSONException)
+        {
+          String str;
+          label386:
+          localJSONException.printStackTrace();
+          continue;
+          odq.a(null, null, "0X80092A9", "0X80092A9", 0, 0, String.valueOf(k), "", "", ofe.a(null, null, "", "", localJSONObject), false);
+        }
+        if (!"video_type_videopublic".equals(this.f)) {
+          continue;
+        }
+        odq.a(null, null, "0X80092A7", "0X80092A7", 0, 0, String.valueOf(k), "", "", ofe.a(null, null, "", "", localJSONObject), false);
+        break;
+        QQToast.a(getContext(), -1, amtj.a(2131715949), 0).b(getContext().getResources().getDimensionPixelSize(2131299076));
+        uit.b(getContext(), this.f);
+        i = 1;
+        break label182;
+        j = 0;
+        break label242;
+        str = "1";
+        continue;
+        j = 0;
+      }
+      break label117;
+      dismiss();
+      a(-1);
+      if (!TextUtils.isEmpty(this.f)) {
+        break;
+      }
+      xwa.a("weishi_share", "cover_close", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
+      break;
+      label513:
+      j = 0;
+      k = 0;
+    }
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    setContentView(2131561804);
+    b();
+    setCanceledOnTouchOutside(false);
+  }
+  
+  public void show()
+  {
+    super.show();
+    if (TextUtils.isEmpty(this.f)) {
+      xwa.a("weishi_share", "cover_exp", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
+    }
   }
 }
 

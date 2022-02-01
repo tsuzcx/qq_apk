@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class szp
-  implements View.OnClickListener
 {
-  szp(szo paramszo) {}
+  String a;
+  String b;
+  String c;
   
-  public void onClick(View paramView)
+  public szp(String paramString1, String paramString2, String paramString3)
   {
-    szo.a(this.a).a(szo.a(this.a), szo.a(this.a));
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

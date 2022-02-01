@@ -1,17 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import java.util.List;
 
-class ajzt
-  extends RecyclerView.ViewHolder
+public abstract interface ajzt
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  
-  ajzt(ajzs paramajzs, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377928));
-  }
+  public abstract void a(boolean paramBoolean, List<String> paramList);
 }
 
 

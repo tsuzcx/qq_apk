@@ -1,8 +1,14 @@
-public final class aytj<Params>
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+
+public class aytj
+  implements aytk
 {
-  public int a;
-  public Params a;
-  public boolean a;
+  public aytj(ComponentCenter paramComponentCenter) {}
+  
+  public void a(aysw paramaysw)
+  {
+    ComponentCenter.a(this.a, ComponentCenter.a(this.a) | paramaysw.a());
+  }
 }
 
 

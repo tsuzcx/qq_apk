@@ -2,22 +2,22 @@ package com.tencent.mobileqq.olympic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anud;
-import anui;
-import apev;
-import apjz;
-import aqfw;
-import azdd;
-import azde;
-import bdll;
-import beuo;
-import bevk;
+import anyh;
+import aodm;
+import aozh;
+import axql;
+import axqm;
+import bcef;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetEngineFactory;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -34,11 +34,11 @@ public class OlympicToolAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  azdd jdField_a_of_type_Azdd = null;
-  public azde a;
-  private bevk jdField_a_of_type_Bevk;
-  public HashMap<Integer, anud> a;
-  public List<anui> a;
+  axql jdField_a_of_type_Axql = null;
+  public axqm a;
+  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
+  public HashMap<Integer, BusinessHandler> a;
+  public List<BusinessObserver> a;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
   
   public OlympicToolAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -46,42 +46,42 @@ public class OlympicToolAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public anud a(int paramInt)
+  public BusinessHandler a(int paramInt)
   {
-    anud localanud1 = (anud)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localanud1 == null) {}
+    BusinessHandler localBusinessHandler1 = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localBusinessHandler1 == null) {}
     for (;;)
     {
-      anud localanud2;
+      BusinessHandler localBusinessHandler2;
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localanud2 = (anud)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localanud2 == null) {
+        localBusinessHandler2 = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localBusinessHandler2 == null) {
           break label106;
         }
-        return localanud2;
-        if (localanud1 != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localanud1);
+        return localBusinessHandler2;
+        if (localBusinessHandler1 != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localBusinessHandler1);
         }
-        return localanud1;
+        return localBusinessHandler1;
       }
-      Object localObject2 = new aqfw(this);
+      Object localObject2 = new aozh(this);
       continue;
-      localObject2 = new apev(this);
+      localObject2 = new anyh(this);
       continue;
       return localObject2;
       label106:
-      localObject2 = localanud2;
+      localObject2 = localBusinessHandler2;
       switch (paramInt)
       {
       }
-      localObject2 = localanud2;
+      localObject2 = localBusinessHandler2;
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Azde.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Axqm.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void addManager(int paramInt, Manager paramManager)
@@ -92,15 +92,15 @@ public class OlympicToolAppInterface
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramManager);
   }
   
-  public void addObserver(anui paramanui)
+  public void addObserver(BusinessObserver paramBusinessObserver)
   {
-    addObserver(paramanui, false);
+    addObserver(paramBusinessObserver, false);
   }
   
-  public void addObserver(anui paramanui, boolean paramBoolean)
+  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramanui)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramanui);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
     }
   }
   
@@ -114,7 +114,7 @@ public class OlympicToolAppInterface
     return AppSetting.a();
   }
   
-  public List<anui> getBusinessObserver(int paramInt)
+  public List<BusinessObserver> getBusinessObserver(int paramInt)
   {
     if (paramInt == 0) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -137,12 +137,12 @@ public class OlympicToolAppInterface
     return "module_olympic";
   }
   
-  public beuo getNetEngine(int paramInt)
+  public INetEngine getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Bevk == null) {
-      this.jdField_a_of_type_Bevk = new bevk();
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = new NetEngineFactory();
     }
-    return this.jdField_a_of_type_Bevk.a(this, paramInt);
+    return this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.getEngineInstance(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -158,7 +158,7 @@ public class OlympicToolAppInterface
       QLog.i("olympic.OlympicToolAppInterface", 2, "onCreate");
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Azde = new azde(this);
+    this.jdField_a_of_type_Axqm = new axqm(this);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
     AudioHelper.a(this.app, getLongAccountUin());
@@ -167,7 +167,7 @@ public class OlympicToolAppInterface
   public void onDestroy()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + apjz.b);
+      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + aodm.b);
     }
     super.onDestroy();
     if (this.mHwEngine != null) {
@@ -191,25 +191,25 @@ public class OlympicToolAppInterface
     return false;
   }
   
-  public void removeObserver(anui paramanui)
+  public void removeObserver(BusinessObserver paramBusinessObserver)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramanui);
+    this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
   }
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    bdll.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    bcef.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Azde.a(paramToServiceMsg);
+    this.jdField_a_of_type_Axqm.a(paramToServiceMsg);
   }
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Azdd = new azdd(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Azdd);
+    this.jdField_a_of_type_Axql = new axql(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Axql);
     super.start(paramBoolean);
   }
 }

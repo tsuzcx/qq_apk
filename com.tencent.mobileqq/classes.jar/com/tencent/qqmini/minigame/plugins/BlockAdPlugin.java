@@ -83,19 +83,21 @@ public class BlockAdPlugin
           QMLog.e("BlockAdPlugin", "showBannerAd error, data is null");
           continue;
         }
-        localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
+        localAbsBlockAdView = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
       }
       finally {}
-      ViewGroup localViewGroup;
+      AdProxy.AbsBlockAdView localAbsBlockAdView;
+      ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().getWindow().getDecorView();
       if (localViewGroup == null)
       {
         QMLog.e("BlockAdPlugin", "showBlockAd, root view is null");
       }
       else
       {
-        localViewGroup.removeView(((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView());
+        localViewGroup.removeView(localAbsBlockAdView.getView());
         this.mBlockAdInfoMap.remove(Integer.valueOf(paramInt));
         this.mBlockAdViewMap.remove(Integer.valueOf(paramInt));
+        localAbsBlockAdView.clearBlockAdAnimation(localAbsBlockAdView);
       }
     }
   }
@@ -243,6 +245,7 @@ public class BlockAdPlugin
   {
     for (;;)
     {
+      BlockAdInfo localBlockAdInfo;
       View localView;
       ViewGroup localViewGroup;
       try
@@ -259,8 +262,9 @@ public class BlockAdPlugin
           bool = false;
           continue;
         }
-        Object localObject1 = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(paramInt));
-        localView = ((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getView();
+        Object localObject1 = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+        localBlockAdInfo = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(paramInt));
+        localView = ((AdProxy.AbsBlockAdView)localObject1).getView();
         if (localView == null)
         {
           bool = false;
@@ -276,16 +280,17 @@ public class BlockAdPlugin
         if ((localViewGroup instanceof FrameLayout))
         {
           localObject3 = new FrameLayout.LayoutParams(-2, -2);
-          ((FrameLayout.LayoutParams)localObject3).leftMargin = gameDpTopx(((BlockAdInfo)localObject1).getLeft());
-          ((FrameLayout.LayoutParams)localObject3).topMargin = gameDpTopx(((BlockAdInfo)localObject1).getTop());
+          ((FrameLayout.LayoutParams)localObject3).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
+          ((FrameLayout.LayoutParams)localObject3).topMargin = gameDpTopx(localBlockAdInfo.getTop());
           localViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject3);
+          ((AdProxy.AbsBlockAdView)localObject1).showBlockAdAnimation((AdProxy.AbsBlockAdView)localObject1);
           localObject1 = ((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).getReportUrl();
           if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
-            break label355;
+            break label367;
           }
           localObject1 = ((ArrayList)localObject1).iterator();
           if (!((Iterator)localObject1).hasNext()) {
-            break label355;
+            break label367;
           }
           reportBlockAd((String)((Iterator)localObject1).next());
           continue;
@@ -296,11 +301,11 @@ public class BlockAdPlugin
       }
       finally {}
       Object localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject3).leftMargin = gameDpTopx(localObject2.getLeft());
-      ((RelativeLayout.LayoutParams)localObject3).topMargin = gameDpTopx(localObject2.getTop());
+      ((RelativeLayout.LayoutParams)localObject3).leftMargin = gameDpTopx(localBlockAdInfo.getLeft());
+      ((RelativeLayout.LayoutParams)localObject3).topMargin = gameDpTopx(localBlockAdInfo.getTop());
       localViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject3);
       continue;
-      label355:
+      label367:
       boolean bool = true;
     }
   }
@@ -335,13 +340,14 @@ public class BlockAdPlugin
           bool = false;
           continue;
         }
-        View localView = ((AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt))).updateAdInfo(localBlockAdInfo.getLeft(), localBlockAdInfo.getTop());
+        Object localObject2 = (AdProxy.AbsBlockAdView)this.mBlockAdViewMap.get(Integer.valueOf(paramInt));
+        View localView = ((AdProxy.AbsBlockAdView)localObject2).updateAdInfo(localBlockAdInfo.getLeft(), localBlockAdInfo.getTop());
         if (localView == null)
         {
           bool = false;
           continue;
         }
-        Object localObject2;
+        ((AdProxy.AbsBlockAdView)localObject2).showBlockAdAnimation((AdProxy.AbsBlockAdView)localObject2);
         if ((localView.getLayoutParams() instanceof FrameLayout.LayoutParams))
         {
           localObject2 = (FrameLayout.LayoutParams)localView.getLayoutParams();
@@ -516,39 +522,45 @@ public class BlockAdPlugin
     //   94: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   97: invokevirtual 122	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   100: checkcast 124	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
-    //   103: invokevirtual 128	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
-    //   106: astore_3
-    //   107: aload_3
-    //   108: ifnonnull +8 -> 116
-    //   111: iconst_0
-    //   112: istore_2
-    //   113: goto -61 -> 52
-    //   116: aload_3
-    //   117: bipush 8
-    //   119: invokevirtual 292	android/view/View:setVisibility	(I)V
-    //   122: iconst_1
-    //   123: istore_2
-    //   124: goto -72 -> 52
-    //   127: astore_3
-    //   128: aload_0
-    //   129: monitorexit
-    //   130: aload_3
-    //   131: athrow
+    //   103: astore_3
+    //   104: aload_3
+    //   105: invokevirtual 128	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
+    //   108: astore 4
+    //   110: aload 4
+    //   112: ifnonnull +8 -> 120
+    //   115: iconst_0
+    //   116: istore_2
+    //   117: goto -65 -> 52
+    //   120: aload 4
+    //   122: bipush 8
+    //   124: invokevirtual 296	android/view/View:setVisibility	(I)V
+    //   127: aload_3
+    //   128: aload_3
+    //   129: invokevirtual 170	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:clearBlockAdAnimation	(Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView;)V
+    //   132: iconst_1
+    //   133: istore_2
+    //   134: goto -82 -> 52
+    //   137: astore_3
+    //   138: aload_0
+    //   139: monitorexit
+    //   140: aload_3
+    //   141: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	this	BlockAdPlugin
-    //   0	132	1	paramInt	int
-    //   51	73	2	bool	boolean
-    //   106	11	3	localView	View
-    //   127	4	3	localObject	Object
+    //   0	142	0	this	BlockAdPlugin
+    //   0	142	1	paramInt	int
+    //   51	83	2	bool	boolean
+    //   103	26	3	localAbsBlockAdView	AdProxy.AbsBlockAdView
+    //   137	4	3	localObject	Object
+    //   108	13	4	localView	View
     // Exception table:
     //   from	to	target	type
-    //   2	43	127	finally
-    //   43	50	127	finally
-    //   56	77	127	finally
-    //   77	84	127	finally
-    //   89	107	127	finally
-    //   116	122	127	finally
+    //   2	43	137	finally
+    //   43	50	137	finally
+    //   56	77	137	finally
+    //   77	84	137	finally
+    //   89	110	137	finally
+    //   120	132	137	finally
   }
   
   public void initActivitySize(Activity paramActivity)

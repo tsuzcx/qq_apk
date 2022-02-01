@@ -1,32 +1,23 @@
-import java.util.LinkedList;
-import java.util.List;
-
-public class axop<T>
+public class axop
 {
-  private List<T> a = new LinkedList();
+  axog[] a = new axog[3];
   
-  public int a()
+  public axog a(int paramInt)
   {
-    return this.a.size();
-  }
-  
-  public T a()
-  {
-    if (this.a.size() == 0) {
-      return null;
+    Object localObject = this.a[paramInt];
+    if (localObject != null) {
+      return localObject;
     }
-    return this.a.remove(0);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (!this.a.contains(paramT)) {
-      this.a.add(paramT);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a[paramInt] = localObject;
+      return localObject;
+      localObject = new axom();
+      continue;
+      localObject = new axoj();
     }
   }
 }

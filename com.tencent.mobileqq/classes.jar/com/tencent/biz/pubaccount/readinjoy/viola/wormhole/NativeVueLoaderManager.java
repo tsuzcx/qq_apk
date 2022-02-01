@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdgx;
+import bbzm;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.nativevue.NativeVueEngine;
@@ -17,9 +17,9 @@ import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.core.ViolaDomManager;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.utils.ViolaUtils;
-import thy;
-import tjv;
-import tjw;
+import tmd;
+import tpf;
+import tpg;
 
 public class NativeVueLoaderManager
   implements NativeVuePreconditionAdapter
@@ -74,7 +74,7 @@ public class NativeVueLoaderManager
     {
       return;
       this.jdField_a_of_type_Boolean = true;
-      NativeVueEngine.Builder localBuilder = new NativeVueEngine.Builder().env("ViolaEnv", thy.a()).logAdapter(new tjw(null)).preconditionAdapter(this);
+      NativeVueEngine.Builder localBuilder = new NativeVueEngine.Builder().env("ViolaEnv", tmd.a()).logAdapter(new tpg(null)).preconditionAdapter(this);
       NativeVueEngine.getInstance().init(localBuilder);
     } while (!QLog.isColorLevel());
     QLog.d("NativeVueLoaderManager", 2, "init NativeVue");
@@ -145,12 +145,12 @@ public class NativeVueLoaderManager
   
   public void loadNativeVueSo(NativeVuePreconditionAdapter.LoadSoResult paramLoadSoResult)
   {
-    bdgx.a().a("nativevue", new tjv(this, paramLoadSoResult));
+    bbzm.a().a("nativevue", new tpf(this, paramLoadSoResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager
  * JD-Core Version:    0.7.0.1
  */

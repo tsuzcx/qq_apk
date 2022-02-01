@@ -1,28 +1,19 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IPresenter;", "model", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;", "(Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;)V", "view", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IView;", "attachView", "", "detachView", "requestWatchWordUrl", "watchWord", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qta
+class qta
+  implements View.OnClickListener
 {
-  public static final qtb a;
-  private final qst jdField_a_of_type_Qst;
-  private qsu jdField_a_of_type_Qsu;
+  qta(qsz paramqsz) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Qtb = new qtb(null);
-  }
-  
-  public qta(@NotNull qst paramqst)
-  {
-    this.jdField_a_of_type_Qst = paramqst;
-  }
-  
-  public void a(@NotNull qsu paramqsu)
-  {
-    Intrinsics.checkParameterIsNotNull(paramqsu, "view");
-    this.jdField_a_of_type_Qsu = paramqsu;
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

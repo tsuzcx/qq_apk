@@ -1,116 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-
-public class aqnr
-  extends BaseAdapter
+class aqnr
+  implements aqpw<aqoa>
 {
-  public aqnr(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  aqnr(aqnq paramaqnq) {}
   
-  public String a(int paramInt)
+  public int a(aqoa paramaqoa, long paramLong)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aqob localaqob;
-    Object localObject;
-    if (paramView == null)
+    if (paramaqoa == null) {}
+    do
     {
-      paramView = this.a.getLayoutInflater().inflate(2131561108, null);
-      localaqob = new aqob();
-      localaqob.a = ((URLImageView)paramView.findViewById(2131364246));
-      paramView.setTag(localaqob);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      return -1;
+      paramLong = paramaqoa.d() - paramLong;
+      if (paramLong == 0L) {
+        return 0;
       }
-      if (localObject == null) {}
-    }
-    else
-    {
-      try
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          break label210;
-        }
-        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        label139:
-        localaqob.a.setImageDrawable((Drawable)localObject);
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          localException1.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localaqob = (aqob)paramView.getTag();
-      break;
-      label210:
-      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-      break label139;
-      try
-      {
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          localException1.a.setImageDrawable((Drawable)localObject);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          break;
-          localException1.a.setImageDrawable(null);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          localException2.printStackTrace();
-        }
-      }
-    }
+    } while (paramLong <= 0L);
+    return 1;
   }
 }
 

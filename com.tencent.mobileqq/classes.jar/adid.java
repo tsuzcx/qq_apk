@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.SourceMsg;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class adid
-  extends adic
+  implements adhy
 {
-  public int a()
+  public adid(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  public void a(View paramView)
   {
-    return super.a() + 3;
+    ForwardTroopListFragment.a(this.a, paramView);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public boolean a(String paramString, int paramInt)
   {
-    new bcrt().h(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.src_msg.has();
+    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
   }
 }
 

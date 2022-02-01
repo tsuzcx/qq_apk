@@ -1,13 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 public class aswu
-  extends asxh
+  implements athm
 {
-  public int a;
-  public List<String> a = new ArrayList();
-  public int b;
-  public int c = -1;
+  public aswu(SimpleFileViewer paramSimpleFileViewer) {}
+  
+  public void a()
+  {
+    this.a.e();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.i(paramString);
+  }
 }
 
 

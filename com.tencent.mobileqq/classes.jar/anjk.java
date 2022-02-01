@@ -1,31 +1,30 @@
-import android.os.Message;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class anjk
-  implements amwd
+public class anjk
+  extends amsu
 {
-  anjk(anji paramanji, DisplayMetrics paramDisplayMetrics, anjm paramanjm) {}
+  public anjk(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Anji.jdField_c_of_type_Boolean = true;
-    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
-    this.jdField_a_of_type_Anji.jdField_c_of_type_Float = (paramInt1 / 2 / f);
-    if ((this.jdField_a_of_type_Anji.b != null) && (this.jdField_a_of_type_Anji.a != null) && (anji.a(this.jdField_a_of_type_Anji) != null))
-    {
-      this.jdField_a_of_type_Anji.b.onExecDispose();
-      this.jdField_a_of_type_Anji.a.onExecDispose();
-      Message localMessage = anji.a(this.jdField_a_of_type_Anji).obtainMessage(19, this.jdField_a_of_type_Anjm.c, this.jdField_a_of_type_Anjm.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Anjm.a) {
-        localMessage.obj = Float.valueOf(this.jdField_a_of_type_Anjm.jdField_b_of_type_Float);
-      }
-      anji.a(this.jdField_a_of_type_Anji).sendMessageDelayed(localMessage, 100L);
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
     }
+    do
+    {
+      do
+      {
+        return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+        }
+      } while (!paramBoolean);
+      this.a.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
 }
 

@@ -1,11 +1,17 @@
-final class pfy
-  implements pgb
+import java.util.Map;
+import java.util.Set;
+
+class pfy
+  extends pse
 {
-  public void l() {}
-  
-  public void m()
+  pfy(pey parampey, String paramString, Set paramSet, Map paramMap)
   {
-    pfs.a().a("2909288299", pfw.b, false, null, false);
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import java.util.List;
 
-class beos
-  extends beox
+final class beos
+  implements DialogInterface.OnClickListener
 {
-  public beos(EditorState paramEditorState, List<EditorState> paramList)
-  {
-    super(paramEditorState, paramList, localList);
-  }
+  beos(XMediaEditor paramXMediaEditor, List paramList) {}
   
-  public void a(EditorState paramEditorState)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramEditorState);
-    bhlq.a(beoh.a(this.jdField_a_of_type_Beoh), 233, null, this.jdField_a_of_type_JavaLangString, new beot(this), null).show();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 

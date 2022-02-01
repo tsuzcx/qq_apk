@@ -7,27 +7,28 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bjbs;
+import bhht;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URLDecoder;
 import mqq.app.NewIntent;
-import zvq;
-import zxa;
-import zxb;
+import yvb;
+import ywl;
+import ywm;
 
 public class QRJumpActivity
   extends BaseActivity
 {
-  protected bjbs a;
+  protected bhht a;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -45,9 +46,9 @@ public class QRJumpActivity
     if (isFinishing()) {
       return false;
     }
-    this.a = new bjbs(this, super.getTitleBarHeight());
-    this.a.c(2131715973);
-    this.a.setOnCancelListener(new zxa(this));
+    this.a = new bhht(this, super.getTitleBarHeight());
+    this.a.c(2131716207);
+    this.a.setOnCancelListener(new ywl(this));
     this.a.show();
     String str1;
     try
@@ -117,8 +118,8 @@ public class QRJumpActivity
       if (QLog.isColorLevel()) {
         QLog.i("QRJumpActivity", 2, String.format("JumpUrl authSig=%s oriUrl=%s", new Object[] { paramBundle, str3 }));
       }
-      paramBundle = new zxb(this, (String)localObject1, paramBundle, this, str1);
-      localObject1 = new NewIntent(this, zvq.class);
+      paramBundle = new ywm(this, (String)localObject1, paramBundle, this, str1);
+      localObject1 = new NewIntent(this, yvb.class);
       ((NewIntent)localObject1).putExtra("d", str1);
       ((NewIntent)localObject1).putExtra("cmd", "QRCodeSvc.decode");
       ((NewIntent)localObject1).putExtra("bqq", "1");

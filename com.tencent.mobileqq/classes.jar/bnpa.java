@@ -1,105 +1,38 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.io.PrintStream;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class bnpa
-  extends bnnn
 {
-  public static String a;
-  public static String b = "famous_uin";
-  public static String c = "title";
-  public static String d = "summary";
-  public static String e = "thumb_photo_url";
-  public static String f = "detail_url";
-  public static String g = "h5_detail_url";
-  public static String h = "schema_detail_url";
-  public static String i = "is_followed";
-  public static String j = "show_report";
-  public static String k = "nick_name";
-  public static String l = "descption";
-  public static String m = "fans_count";
-  public static String n = "visitor_count";
-  public static String o = "background_url";
-  public static String p = "qrcode_url";
+  public final double a;
+  public final float a;
+  public final int a;
+  public final String a;
+  public final WeakReference<Activity> a;
+  public final boolean a;
+  public final double b;
+  public final int b;
+  public final String b;
+  public final boolean b;
+  public final int c;
   
-  static
+  public bnpa(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
   {
-    jdField_a_of_type_JavaLangString = "Qzone";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  private void a(Activity paramActivity, String[] paramArrayOfString)
+  public String toString()
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return;
-    }
-    try
-    {
-      Object localObject = new JSONObject(paramArrayOfString[0]);
-      String str4 = ((JSONObject)localObject).getString("famous_uin");
-      String str5 = ((JSONObject)localObject).getString("title");
-      String str6 = ((JSONObject)localObject).getString("summary");
-      String str7 = ((JSONObject)localObject).getString("thumb_photo_url");
-      String str8 = ((JSONObject)localObject).getString("detail_url");
-      paramArrayOfString = null;
-      String str1 = null;
-      String str2 = null;
-      String str3 = null;
-      long l1 = 0L;
-      int i1 = 0;
-      if (((JSONObject)localObject).has("nick_name")) {
-        paramArrayOfString = ((JSONObject)localObject).getString("nick_name");
-      }
-      if (((JSONObject)localObject).has("descption")) {
-        str1 = ((JSONObject)localObject).getString("descption");
-      }
-      if (((JSONObject)localObject).has("fans_count")) {
-        l1 = ((JSONObject)localObject).getLong("fans_count");
-      }
-      if (((JSONObject)localObject).has("visitor_count")) {
-        i1 = ((JSONObject)localObject).getInt("visitor_count");
-      }
-      if (((JSONObject)localObject).has("background_url")) {
-        str2 = ((JSONObject)localObject).getString("background_url");
-      }
-      if (((JSONObject)localObject).has("qrcode_url")) {
-        str3 = ((JSONObject)localObject).getString("qrcode_url");
-      }
-      System.out.println("---------title:" + str5 + ",summary:" + str6 + ",thumb_photo_url" + str7 + ",detail_url:" + str8);
-      localObject = new Intent();
-      ((Intent)localObject).putExtra(b, str4);
-      ((Intent)localObject).putExtra(c, str5);
-      ((Intent)localObject).putExtra(d, str6);
-      ((Intent)localObject).putExtra(e, str7);
-      ((Intent)localObject).putExtra(k, paramArrayOfString);
-      ((Intent)localObject).putExtra(l, str1);
-      ((Intent)localObject).putExtra(m, l1);
-      ((Intent)localObject).putExtra(n, i1);
-      ((Intent)localObject).putExtra(o, str2);
-      ((Intent)localObject).putExtra(p, str3);
-      ((Intent)localObject).putExtra(f, str8);
-      ((Intent)localObject).setClassName(paramActivity, "com.qzone.misc.web.QZoneTranslucentActivity");
-      ((Intent)localObject).putExtra("cmd", bnmg.jdField_a_of_type_JavaLangString);
-      paramActivity.startActivity((Intent)localObject);
-      return;
-    }
-    catch (JSONException paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("showShareMenu")) {
-      return false;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramVarArgs);
-    return true;
+    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

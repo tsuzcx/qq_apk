@@ -1,25 +1,19 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class axdz
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  axdz(axdx paramaxdx, BaseActivity paramBaseActivity) {}
+  axdz(axdy paramaxdy, ViewGroup paramViewGroup) {}
   
   public void onClick(View paramView)
   {
-    axdx.a(this.jdField_a_of_type_Axdx, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_Axdx.a.getApp().getResources().getColor(2131166998));
+    if (axdy.a(this.jdField_a_of_type_Axdy) != null) {
+      axdy.a(this.jdField_a_of_type_Axdy).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

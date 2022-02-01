@@ -1,12 +1,6 @@
-class ytc
-  implements zpx<ypf>
+public abstract interface ytc
 {
-  ytc(ysw paramysw) {}
-  
-  public ypf a()
-  {
-    return new ypf();
-  }
+  public abstract void a(yta paramyta, float paramFloat);
 }
 
 

@@ -1,49 +1,98 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.CheckConErroObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bevv
-  extends CheckConErroObserver
+  extends BroadcastReceiver
 {
-  bevx jdField_a_of_type_Bevx;
-  bevy jdField_a_of_type_Bevy;
+  public bevv(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public bevv(ProtoReqManager paramProtoReqManager, bevy parambevy, bevx parambevx)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bevy = parambevy;
-    this.jdField_a_of_type_Bevx = parambevx;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle != null)
+    int j = 0;
+    paramContext = paramIntent.getAction();
+    int i = j;
+    if (this.a.a != null)
     {
-      Object localObject = paramBundle.getString("msf_con_erro");
-      paramBundle = (Bundle)localObject;
-      if (localObject == null) {
-        paramBundle = "";
+      i = j;
+      if (this.a.a.isHomeworkTroop()) {
+        i = 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
-      }
-      if (this.jdField_a_of_type_Bevy != null)
+    }
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("data");
+      if ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event")))
       {
-        localObject = this.jdField_a_of_type_Bevy.a;
-        if (localObject != null) {
-          ((FromServiceMsg)localObject).addAttribute("_tag_socket_connerror", paramBundle);
+        paramIntent = new Intent("com.tencent.mobileqq.action.closewebview");
+        paramIntent.putExtra("event", "closeWebView");
+        BaseApplicationImpl.getContext().sendBroadcast(paramIntent, "com.tencent.msg.permission.pushnotify");
+        if (i != 0) {
+          break label102;
         }
       }
     }
-    if (this.jdField_a_of_type_Bevx.a != null) {
-      this.jdField_a_of_type_Bevx.a.a(this.jdField_a_of_type_Bevy, this.jdField_a_of_type_Bevx);
+    label351:
+    for (;;)
+    {
+      return;
+      label102:
+      if (!TextUtils.isEmpty(paramContext)) {
+        try
+        {
+          paramContext = new JSONObject(paramContext);
+          paramIntent = paramContext.optString("groupCode");
+          if (TextUtils.equals(this.a.a.troopUin, paramIntent))
+          {
+            String str1 = paramContext.optString("content");
+            String str2 = paramContext.optString("source");
+            i = paramContext.optInt("rankId", 333);
+            String str3 = paramContext.optString("nickName");
+            paramContext.optString("uin");
+            paramContext.optString("course");
+            paramContext.optString("name");
+            if ("join".equals(str2))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("wyx", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver source=join. cGroupOption=", Short.valueOf(this.a.a.cGroupOption), ", joinType=", Integer.valueOf(VisitorTroopCardFragment.a(this.a)) });
+              }
+              if (VisitorTroopCardFragment.a(this.a) != 1) {
+                break label351;
+              }
+              this.a.e();
+            }
+            while (QLog.isColorLevel())
+            {
+              QLog.d("zivonchen", 2, "mHomeworkTroopIdentityChangedReceiver troopUin = " + paramIntent + ", content = " + str1 + ", source = " + str2 + ", rankId = " + i + ", nickName = " + str3);
+              return;
+              if (VisitorTroopCardFragment.a(this.a) == 2) {
+                VisitorTroopCardFragment.a(this.a, str1);
+              }
+            }
+            if ("start_recomend_page".equals(paramContext))
+            {
+              this.a.getActivity().finish();
+              return;
+            }
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bevv
  * JD-Core Version:    0.7.0.1
  */

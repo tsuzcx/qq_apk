@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.qphone.base.util.QLog;
-import nlb;
+import nmq;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 class BaseMsgBoxActivity$8
@@ -15,7 +15,7 @@ class BaseMsgBoxActivity$8
   
   public void run()
   {
-    oidb_0x791.RedDotInfo localRedDotInfo = ((nlb)this.this$0.app.getManager(70)).a(70);
+    oidb_0x791.RedDotInfo localRedDotInfo = ((nmq)this.this$0.app.getManager(70)).a(70);
     String str;
     if (QLog.isColorLevel())
     {
@@ -47,7 +47,7 @@ class BaseMsgBoxActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.8
  * JD-Core Version:    0.7.0.1
  */

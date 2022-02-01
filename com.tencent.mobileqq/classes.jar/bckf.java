@@ -1,30 +1,19 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-final class bckf
-  implements ArkAppMgr.IGetAppPathByNameCallback
+class bckf
 {
-  protected WeakReference<bcke> a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  String c;
   
-  public bckf(bcke parambcke)
-  {
-    this.a = new WeakReference(parambcke);
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    bcke localbcke = (bcke)this.a.get();
-    if (localbcke == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    localbcke.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
-  }
+  bckf(bckd parambckd) {}
 }
 
 

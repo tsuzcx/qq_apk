@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahlt;
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class MarketFaceItemBuilder$13
   implements Runnable
 {
-  public MarketFaceItemBuilder$13(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, String paramString) {}
+  public MarketFaceItemBuilder$13(Context paramContext, String paramString) {}
   
   public void run()
   {
-    ahlt.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131718704), this.jdField_a_of_type_JavaLangString);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299076));
   }
 }
 

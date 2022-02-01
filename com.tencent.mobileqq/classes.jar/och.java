@@ -1,21 +1,15 @@
-public class och
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class och
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  och(ocd paramocd, String paramString) {}
   
-  public och(oce paramoce, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Ocd.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

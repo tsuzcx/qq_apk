@@ -1,6 +1,10 @@
-public abstract interface bmkp
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
+
+class bmkp
+  extends TypeToken<AEEditorEffectGroupListBean>
 {
-  public abstract void b(boolean paramBoolean);
+  bmkp(bmko parambmko) {}
 }
 
 

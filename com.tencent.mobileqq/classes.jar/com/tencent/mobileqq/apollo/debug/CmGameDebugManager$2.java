@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import amxt;
-import amxu;
+import alsn;
+import also;
 import java.lang.ref.WeakReference;
 
 public class CmGameDebugManager$2
   implements Runnable
 {
-  public CmGameDebugManager$2(amxt paramamxt) {}
+  public CmGameDebugManager$2(alsn paramalsn) {}
   
   public void run()
   {
-    if ((amxt.a(this.this$0) != null) && (amxt.a(this.this$0).get() != null)) {
-      ((amxu)amxt.a(this.this$0).get()).a(0);
+    if ((alsn.a(this.this$0) != null) && (alsn.a(this.this$0).get() != null)) {
+      ((also)alsn.a(this.this$0).get()).a(0);
     }
   }
 }

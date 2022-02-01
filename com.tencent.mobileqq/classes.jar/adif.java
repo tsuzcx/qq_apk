@@ -1,26 +1,44 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.TipsInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class adif
-  extends adic
+  implements bbbg
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public adif(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public void onAction(View paramView)
   {
-    new bcrt().b(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.tips_info.has();
+    int i = 1;
+    bayp localbayp = (bayp)paramView.getTag(2131380831);
+    if (localbayp == null) {}
+    for (;;)
+    {
+      return;
+      String str1 = localbayp.b();
+      String str2 = localbayp.a().toString();
+      paramView = "-1";
+      if ((localbayp instanceof baxd))
+      {
+        paramView = ((baxd)localbayp).e();
+        i = 3000;
+      }
+      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        if ((localbayp instanceof baxj)) {
+          paramView = ((baxj)localbayp).a;
+        } else if ((localbayp instanceof baxo)) {
+          paramView = ((baxo)localbayp).a().troopuin;
+        } else if ((localbayp instanceof baxe)) {
+          i = 0;
+        } else {
+          i = -1;
+        }
+      }
+    }
   }
 }
 

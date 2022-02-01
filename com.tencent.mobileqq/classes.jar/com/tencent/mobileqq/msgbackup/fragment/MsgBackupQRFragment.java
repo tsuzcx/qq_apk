@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import agej;
+import amtj;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,29 +18,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anzj;
-import axfy;
-import axgj;
-import axgp;
-import axgx;
-import axhd;
-import axii;
-import axjd;
-import axjk;
-import axjn;
-import bhnv;
-import bhtq;
+import avtf;
+import avtq;
+import avtw;
+import avue;
+import avuk;
+import avvp;
+import avwk;
+import avwr;
+import avwu;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import gt;
-import gx;
+import gr;
+import gv;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
@@ -51,7 +51,7 @@ public class MsgBackupQRFragment
   extends MsgBackupBaseFragment
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private axgx jdField_a_of_type_Axgx;
+  private avue jdField_a_of_type_Avue;
   private Runnable d;
   private Runnable jdField_e_of_type_JavaLangRunnable = new MsgBackupQRFragment.6(this);
   private boolean jdField_e_of_type_Boolean;
@@ -73,7 +73,7 @@ public class MsgBackupQRFragment
     }
     for (;;)
     {
-      axjk.a("0X800A241", 1);
+      avwr.a("0X800A241", 1);
       return;
       a(a(null));
       if (paramBoolean2) {
@@ -89,7 +89,7 @@ public class MsgBackupQRFragment
     int i = 1;
     boolean bool;
     Message localMessage;
-    if (bhnv.a(getActivity()) == 1)
+    if (NetworkUtil.getSystemNetwork(getActivity()) == 1)
     {
       bool = true;
       d(bool);
@@ -111,33 +111,33 @@ public class MsgBackupQRFragment
     }
   }
   
-  private void b(axgx paramaxgx)
+  private void b(avue paramavue)
   {
-    if (paramaxgx == null)
+    if (paramavue == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupQRFragment", 2, "refreshQRLayout QRCode fail, data is null!");
       }
       return;
     }
-    String str1 = paramaxgx.b();
-    String str2 = paramaxgx.a();
-    String str3 = paramaxgx.c();
-    int i = paramaxgx.a();
-    axgj localaxgj = axgj.a();
-    axjd localaxjd = localaxgj.a();
-    localaxjd.d(str3);
-    localaxgj.a().b(str1);
-    localaxgj.a().a(str2);
-    localaxgj.a().a(i);
-    localaxjd.g(2);
+    String str1 = paramavue.b();
+    String str2 = paramavue.a();
+    String str3 = paramavue.c();
+    int i = paramavue.a();
+    avtq localavtq = avtq.a();
+    avwk localavwk = localavtq.a();
+    localavwk.d(str3);
+    localavtq.a().b(str1);
+    localavtq.a().a(str2);
+    localavtq.a().a(i);
+    localavwk.g(2);
     this.jdField_b_of_type_MqqOsMqqHandler.postDelayed(this.jdField_e_of_type_JavaLangRunnable, 800L);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.5(this, paramaxgx));
+      this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.5(this, paramavue));
       return;
     }
-    b(a(paramaxgx));
+    b(a(paramavue));
   }
   
   private void d(boolean paramBoolean)
@@ -168,12 +168,12 @@ public class MsgBackupQRFragment
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
   }
   
-  public Bitmap a(axgx paramaxgx)
+  public Bitmap a(avue paramavue)
   {
     Object localObject;
-    if (paramaxgx == null)
+    if (paramavue == null)
     {
-      paramaxgx = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=1";
+      paramavue = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=1";
       localObject = new Hashtable();
       ((Hashtable)localObject).put(EncodeHintType.MARGIN, Integer.valueOf(0));
       ((Hashtable)localObject).put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -185,28 +185,28 @@ public class MsgBackupQRFragment
       int j;
       try
       {
-        i = agej.a(200.0F, getResources());
-        paramaxgx = new gx().a(paramaxgx, i, i, (Map)localObject);
-        k = paramaxgx.a();
-        m = paramaxgx.b();
+        i = AIOUtils.dp2px(200.0F, getResources());
+        paramavue = new gv().a(paramavue, i, i, (Map)localObject);
+        k = paramavue.a();
+        m = paramavue.b();
         localObject = new int[k * m];
         i = 0;
       }
-      catch (Exception paramaxgx)
+      catch (Exception paramavue)
       {
         int k;
         boolean bool;
-        QLog.e("MsgBackup.MsgBackupQRFragment", 1, "Create QRCode fail", paramaxgx);
+        QLog.e("MsgBackup.MsgBackupQRFragment", 1, "Create QRCode fail", paramavue);
         return null;
       }
       if (j < k)
       {
-        if (paramaxgx.a(j, i)) {
+        if (paramavue.a(j, i)) {
           localObject[(i * k + j)] = -16777216;
         }
         j += 1;
         continue;
-        paramaxgx = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=" + paramaxgx.a();
+        paramavue = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=" + paramavue.a();
         break;
       }
       i += 1;
@@ -217,10 +217,10 @@ public class MsgBackupQRFragment
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
         bool = true;
-        axjn.b("MsgBackup.MsgBackupQRFragment", "create qr bitmap is called! bitmap is not null!   -----> %b", new Object[] { Boolean.valueOf(bool) });
+        avwu.b("MsgBackup.MsgBackupQRFragment", "create qr bitmap is called! bitmap is not null!   -----> %b", new Object[] { Boolean.valueOf(bool) });
         this.jdField_a_of_type_AndroidGraphicsBitmap.setPixels((int[])localObject, 0, k, 0, 0, k, m);
-        paramaxgx = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        return paramaxgx;
+        paramavue = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        return paramavue;
       }
       bool = false;
       continue;
@@ -234,19 +234,19 @@ public class MsgBackupQRFragment
   protected void a()
   {
     super.a();
-    axjn.b("MsgBackup.MsgBackupQRFragment-bindData ..start MsgBackupQRFragment", new Object[0]);
-    if (this.jdField_a_of_type_Axfz != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Axfz);
+    avwu.b("MsgBackup.MsgBackupQRFragment-bindData ..start MsgBackupQRFragment", new Object[0]);
+    if (this.jdField_a_of_type_Avtg != null) {
+      getActivity().app.removeObserver(this.jdField_a_of_type_Avtg);
     }
-    Object localObject = new HashSet(axgj.a().jdField_a_of_type_JavaUtilHashSet.size());
-    ((HashSet)localObject).addAll(axgj.a().jdField_a_of_type_JavaUtilHashSet);
-    axgj.b = axgj.a().jdField_a_of_type_JavaUtilHashSet.size();
-    axjk.a();
-    axjk.a.b = axgj.b;
-    axgp localaxgp = new axgp();
-    axjn.b("MsgBackup.MsgBackupQRFragment-loadData ..start toPage TO_QRCODE dataSize = %d", new Object[] { Integer.valueOf(((HashSet)localObject).size()) });
-    localaxgp.jdField_a_of_type_JavaUtilHashSet = ((HashSet)localObject);
-    localaxgp.jdField_a_of_type_Int = 0;
+    Object localObject = new HashSet(avtq.a().jdField_a_of_type_JavaUtilHashSet.size());
+    ((HashSet)localObject).addAll(avtq.a().jdField_a_of_type_JavaUtilHashSet);
+    avtq.b = avtq.a().jdField_a_of_type_JavaUtilHashSet.size();
+    avwr.a();
+    avwr.a.b = avtq.b;
+    avtw localavtw = new avtw();
+    avwu.b("MsgBackup.MsgBackupQRFragment-loadData ..start toPage TO_QRCODE dataSize = %d", new Object[] { Integer.valueOf(((HashSet)localObject).size()) });
+    localavtw.jdField_a_of_type_JavaUtilHashSet = ((HashSet)localObject);
+    localavtw.jdField_a_of_type_Int = 0;
     long l3 = 0L;
     long l4 = 0L;
     int j = 1;
@@ -267,19 +267,19 @@ public class MsgBackupQRFragment
         this.f = ((Intent)localObject).getBooleanExtra("session_net_status", true);
       }
     }
-    axjn.b("MsgBackup.MsgBackupQRFragment", "select params startTime = %d ,endTime = %d,contentType = %d isNetStatusForSelectPage = %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Boolean.valueOf(this.f) });
+    avwu.b("MsgBackup.MsgBackupQRFragment", "select params startTime = %d ,endTime = %d,contentType = %d isNetStatusForSelectPage = %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Boolean.valueOf(this.f) });
     if ((l1 != 0L) && (l2 != 0L) && (l1 < l2))
     {
-      localaxgp.jdField_a_of_type_Long = l1;
-      localaxgp.b = l2;
+      localavtw.jdField_a_of_type_Long = l1;
+      localavtw.b = l2;
       if (i == 2)
       {
         bool = true;
-        localaxgp.jdField_a_of_type_Boolean = bool;
-        getActivity().app.addObserver(this.jdField_a_of_type_Axfz);
-        axgj.a().i();
-        axgj.a().a(localaxgp);
-        if (bhnv.a(getActivity()) != 1) {
+        localavtw.jdField_a_of_type_Boolean = bool;
+        getActivity().app.addObserver(this.jdField_a_of_type_Avtg);
+        avtq.a().i();
+        avtq.a().a(localavtw);
+        if (NetworkUtil.getSystemNetwork(getActivity()) != 1) {
           break label541;
         }
       }
@@ -289,63 +289,63 @@ public class MsgBackupQRFragment
     {
       if ((!this.f) && (bool))
       {
-        axgj.a().a(false);
+        avtq.a().a(false);
         this.g = true;
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupQRFragment", 2, "bindData startServerProxy is called!");
         }
       }
       this.jdField_e_of_type_Boolean = bool;
-      axjn.b("MsgBackup.MsgBackupQRFragment", "bindData net state = %b", new Object[] { Boolean.valueOf(this.jdField_e_of_type_Boolean) });
+      avwu.b("MsgBackup.MsgBackupQRFragment", "bindData net state = %b", new Object[] { Boolean.valueOf(this.jdField_e_of_type_Boolean) });
       if (!bool) {
         a(bool, false);
       }
-      this.jdField_a_of_type_Axgx = axgj.a().a();
-      if ((this.jdField_a_of_type_Axgx != null) && (bool))
+      this.jdField_a_of_type_Avue = avtq.a().a();
+      if ((this.jdField_a_of_type_Avue != null) && (bool))
       {
-        axjn.b("MsgBackup.MsgBackupQRFragment", "manager msgBackupGetQrRsp is existed!", new Object[0]);
+        avwu.b("MsgBackup.MsgBackupQRFragment", "manager msgBackupGetQrRsp is existed!", new Object[0]);
         this.h = false;
-        b(this.jdField_a_of_type_Axgx);
+        b(this.jdField_a_of_type_Avue);
       }
       this.jdField_b_of_type_MqqOsMqqHandler.post(this.d);
       return;
       bool = false;
       break;
-      localaxgp.jdField_a_of_type_Long = 0L;
-      localaxgp.b = 9223372036854775807L;
+      localavtw.jdField_a_of_type_Long = 0L;
+      localavtw.b = 9223372036854775807L;
       if (i == 2) {}
       for (bool = true;; bool = false)
       {
-        localaxgp.jdField_a_of_type_Boolean = bool;
+        localavtw.jdField_a_of_type_Boolean = bool;
         break;
       }
     }
   }
   
-  protected void a(axgx paramaxgx)
+  protected void a(avue paramavue)
   {
-    super.a(paramaxgx);
+    super.a(paramavue);
     this.h = false;
-    b(paramaxgx);
-    axgj.a().o();
+    b(paramavue);
+    avtq.a().o();
   }
   
-  protected void a(axhd paramaxhd)
+  protected void a(avuk paramavuk)
   {
     int i = 0;
-    super.a(paramaxhd);
-    if (paramaxhd != null)
+    super.a(paramavuk);
+    if (paramavuk != null)
     {
-      if (paramaxhd.a() != 2) {
+      if (paramavuk.a() != 2) {
         break label356;
       }
       if (this.d != null) {
         this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.d);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: " + paramaxhd);
+        QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: " + paramavuk);
       }
-      if (axgj.d) {
+      if (avtq.d) {
         QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: has been started link page!");
       }
     }
@@ -354,45 +354,45 @@ public class MsgBackupQRFragment
       return;
     }
     this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_e_of_type_JavaLangRunnable);
-    String str1 = paramaxhd.b();
-    String str2 = paramaxhd.a();
-    int k = paramaxhd.b();
-    String str3 = paramaxhd.a().a();
-    paramaxhd = paramaxhd.a().a();
+    String str1 = paramavuk.b();
+    String str2 = paramavuk.a();
+    int k = paramavuk.b();
+    String str3 = paramavuk.a().a();
+    paramavuk = paramavuk.a().a();
     int j;
-    if (paramaxhd.size() == 2)
+    if (paramavuk.size() == 2)
     {
-      j = ((Integer)paramaxhd.get(0)).intValue();
-      i = ((Integer)paramaxhd.get(1)).intValue();
+      j = ((Integer)paramavuk.get(0)).intValue();
+      i = ((Integer)paramavuk.get(1)).intValue();
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: client ip = " + str3 + ", udpport = " + i + ", tcpport = " + j);
       }
-      paramaxhd = axgj.a();
-      axjd localaxjd = paramaxhd.a();
-      localaxjd.d(str1);
-      localaxjd.b(str3);
-      localaxjd.b(j);
-      localaxjd.a(i);
-      paramaxhd.a().a(k);
-      paramaxhd.a().b(str2);
-      localaxjd.g(2);
-      localaxjd.f(2);
-      axgj.d = true;
+      paramavuk = avtq.a();
+      avwk localavwk = paramavuk.a();
+      localavwk.d(str1);
+      localavwk.b(str3);
+      localavwk.b(j);
+      localavwk.a(i);
+      paramavuk.a().a(k);
+      paramavuk.a().b(str2);
+      localavwk.g(2);
+      localavwk.f(2);
+      avtq.d = true;
       if ((getActivity() == null) || (getActivity().isFinishing())) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: has deal, so app will start transport page!");
       }
-      paramaxhd = new Intent();
-      paramaxhd.putExtra("param_start", 4);
-      PublicFragmentActivity.a(getActivity(), paramaxhd, MsgBackupTransportFragment.class, 1000);
+      paramavuk = new Intent();
+      paramavuk.putExtra("param_start", 4);
+      PublicFragmentActivity.a(getActivity(), paramavuk, MsgBackupTransportFragment.class, 1000);
       return;
       label356:
-      if ((paramaxhd.a() == 1) || (paramaxhd.a() == 3) || (paramaxhd.a() != 4)) {
+      if ((paramavuk.a() == 1) || (paramavuk.a() == 3) || (paramavuk.a() != 4)) {
         break;
       }
       return;
@@ -410,17 +410,17 @@ public class MsgBackupQRFragment
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690409));
+    setTitle(getActivity().getString(2131690449));
   }
   
   protected void c()
   {
     super.c();
     if (AppSetting.c) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131705812));
+      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131706042));
     }
-    this.c.setText(getResources().getString(2131690463));
-    this.c.setTextColor(getResources().getColor(2131166990));
+    this.c.setText(getResources().getString(2131690503));
+    this.c.setTextColor(getResources().getColor(2131167012));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -430,7 +430,7 @@ public class MsgBackupQRFragment
   protected void d()
   {
     super.d();
-    this.vg.setOnItemSelectListener(new axii(this));
+    this.vg.setOnItemSelectListener(new avvp(this));
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -440,7 +440,7 @@ public class MsgBackupQRFragment
       if (QLog.isColorLevel()) {
         QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click KEYCODE_BACK");
       }
-      axgj.a().d();
+      avtq.a().d();
       onBackEvent();
       return true;
     }
@@ -469,13 +469,13 @@ public class MsgBackupQRFragment
         if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
           this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         }
-        axgj.a().k();
-        axjk.a("0X800A239", 1);
+        avtq.a().k();
+        avwr.a("0X800A239", 1);
         break;
       }
       label136:
       k();
-      axjn.b("MsgBackup.MsgBackupQRFragment", "handleMessage MSG_WHAT_QR_SOURCE net state is XG!!!", new Object[0]);
+      avwu.b("MsgBackup.MsgBackupQRFragment", "handleMessage MSG_WHAT_QR_SOURCE net state is XG!!!", new Object[0]);
       continue;
       if (paramMessage.arg1 == 1) {}
       for (i = 1;; i = 0)
@@ -483,20 +483,20 @@ public class MsgBackupQRFragment
         if (i == 0) {
           break label196;
         }
-        bhtq.a(this.jdField_e_of_type_AndroidWidgetLinearLayout, 0);
-        bhtq.a(this.c, 8);
+        ViewUtils.setViewVisibility(this.jdField_e_of_type_AndroidWidgetLinearLayout, 0);
+        ViewUtils.setViewVisibility(this.c, 8);
         break;
       }
       label196:
-      bhtq.a(this.jdField_e_of_type_AndroidWidgetLinearLayout, 8);
-      this.c.setText(getResources().getString(2131690463));
-      this.c.setTextColor(getResources().getColor(2131166990));
-      bhtq.a(this.c, 0);
+      ViewUtils.setViewVisibility(this.jdField_e_of_type_AndroidWidgetLinearLayout, 8);
+      this.c.setText(getResources().getString(2131690503));
+      this.c.setTextColor(getResources().getColor(2131167012));
+      ViewUtils.setViewVisibility(this.c, 0);
       continue;
-      bhtq.a(this.jdField_e_of_type_AndroidWidgetLinearLayout, 8);
-      this.c.setText(getResources().getString(2131690464));
-      this.c.setTextColor(getResources().getColor(2131165848));
-      bhtq.a(this.c, 0);
+      ViewUtils.setViewVisibility(this.jdField_e_of_type_AndroidWidgetLinearLayout, 8);
+      this.c.setText(getResources().getString(2131690504));
+      this.c.setTextColor(getResources().getColor(2131165866));
+      ViewUtils.setViewVisibility(this.c, 0);
       continue;
       Object localObject = new BitmapDrawable((Bitmap)paramMessage.obj);
       ((BitmapDrawable)localObject).setColorFilter(872415231, PorterDuff.Mode.MULTIPLY);
@@ -506,11 +506,11 @@ public class MsgBackupQRFragment
         if ((this.jdField_a_of_type_AndroidWidgetProgressBar != null) && (!this.h)) {
           this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         }
-        axgj.a().k();
+        avtq.a().k();
       }
-      axjk.a("0X800A239", 2);
+      avwr.a("0X800A239", 2);
       continue;
-      bhtq.b(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
+      ViewUtils.setVisible(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
     }
   }
   
@@ -530,7 +530,7 @@ public class MsgBackupQRFragment
       Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10013);
       this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
       this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.7(this));
-      axjk.a("0X800A23C");
+      avwr.a("0X800A23C");
     }
   }
   
@@ -543,25 +543,25 @@ public class MsgBackupQRFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Axfz != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Axfz);
+    if (this.jdField_a_of_type_Avtg != null) {
+      getActivity().app.removeObserver(this.jdField_a_of_type_Avtg);
     }
     this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_e_of_type_JavaLangRunnable);
     this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.d);
-    axgj.a().l();
+    avtq.a().l();
   }
   
   public void onPause()
   {
     super.onPause();
-    axgj.a().b(getActivity());
+    avtq.a().b(getActivity());
   }
   
   public void onResume()
   {
     super.onResume();
-    axgj.a().a(getActivity());
-    axgj.f = false;
+    avtq.a().a(getActivity());
+    avtq.f = false;
   }
   
   public void onStop()

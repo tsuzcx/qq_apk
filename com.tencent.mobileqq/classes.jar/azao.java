@@ -1,16 +1,24 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-class azao
-  implements Comparator<String>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$3$1"}, k=3, mv={1, 1, 16})
+final class azao
+  implements View.OnClickListener
 {
-  azao(azan paramazan) {}
+  azao(azag paramazag, azaf paramazaf, azak paramazak, int paramInt) {}
   
-  public int a(String paramString1, String paramString2)
+  public final void onClick(View paramView)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
+    azag localazag = this.jdField_a_of_type_Azag;
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
+    Object localObject = azaf.a(this.jdField_a_of_type_Azaf).get(this.jdField_a_of_type_Int);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
+    localazag.b(paramView, (azaz)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

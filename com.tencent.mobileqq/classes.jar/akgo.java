@@ -1,15 +1,10 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
-
-public class akgo
+public abstract interface akgo
 {
-  public int a;
-  public long a;
-  public Context a;
-  public QQAppInterface a;
-  public RedTouch a;
-  public String a;
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

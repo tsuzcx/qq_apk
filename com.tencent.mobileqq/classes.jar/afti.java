@@ -1,76 +1,65 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity.30.1;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class afti
-  implements Observer
+class afti
+  implements nqw
 {
-  public afti(TroopInfoActivity paramTroopInfoActivity) {}
+  afti(afth paramafth) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void a()
   {
-    if (this.a.isFinishing()) {
-      break label10;
+    if ((ChatActivityUtils.a(afth.a(this.a).sessionInfo.curFriendUin, afth.a(this.a).app.getCurrentAccountUin()) != null) || (QLog.isColorLevel())) {
+      QLog.d(".troop.notify_feeds.aio", 2, "getAppIds onFailed, reqNotifyItems");
     }
-    label10:
-    label271:
-    for (;;)
+    bezz.a(afth.a(this.a).app, afth.a(this.a).sessionInfo.curFriendUin);
+  }
+  
+  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  {
+    if ((afth.a(this.a) == null) || (afth.a(this.a).app == null) || (afth.a(this.a).sessionInfo == null)) {}
+    ArrayList localArrayList;
+    do
     {
-      return;
-      if ((paramObject instanceof bgup))
+      do
       {
-        paramObservable = (bgup)paramObject;
-        if (paramObservable.a != 1) {
-          break;
-        }
-        boolean bool;
-        if (paramObservable.d == 1)
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.troopinfo", 2, String.format("update isAvatar=%b", new Object[] { Boolean.valueOf(bool) }));
-          }
-          if (!bool) {
-            break label236;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar) {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar = false;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetNewTroopHead = true;
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
-            if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isUseClassAvatar()) {
-              this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.setUseClassAvatar(false);
-            }
-            this.a.d();
-          }
-        }
-        for (;;)
-        {
-          if (!this.a.isResume()) {
-            break label271;
-          }
-          this.a.runOnUiThread(new TroopInfoActivity.30.1(this, paramObservable));
-          return;
-          bool = false;
-          break;
-          label236:
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.troopinfo", 2, "pullAvatarList");
-          }
-          this.a.jdField_a_of_type_Bgqu.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+        return;
+      } while (ChatActivityUtils.a(afth.a(this.a).sessionInfo.curFriendUin, afth.a(this.a).app.getCurrentAccountUin()) != null);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(1L));
+      localArrayList.add(Long.valueOf(2L));
+      localArrayList.add(Long.valueOf(1101236949L));
+      localArrayList.add(Long.valueOf(1101484419L));
+      localArrayList.add(Long.valueOf(1102858908L));
+      localArrayList.add(Long.valueOf(1106611799L));
+      localArrayList.add(Long.valueOf(1104445552L));
+      localArrayList.add(Long.valueOf(1106717414L));
+      localArrayList.add(Long.valueOf(101509131L));
+      localArrayList.add(Long.valueOf(1106588005L));
+      localArrayList.add(Long.valueOf(1106664488L));
+      localArrayList.add(Long.valueOf(101618516L));
+      localArrayList.add(Long.valueOf(101872323L));
+      localArrayList.add(Long.valueOf(101890494L));
+      localArrayList.add(Long.valueOf(101896870L));
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext()) {
+          localArrayList.add(Long.valueOf(((TroopAppInfo)paramArrayList.next()).appId));
         }
       }
+      paramArrayList = (anca)afth.a(this.a).app.getBusinessHandler(20);
+    } while (paramArrayList == null);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.notify_feeds.aio", 2, "send_oidb_0x8c9_2, appIds.size=" + localArrayList.size());
     }
+    paramArrayList.a(afth.a(this.a).sessionInfo.curFriendUin, localArrayList, false);
   }
 }
 

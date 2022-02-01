@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas;
 
-import bhzg;
+import bgfr;
 
 public class SonicTemplateUpdateManager$1
   implements Runnable
 {
-  public SonicTemplateUpdateManager$1(bhzg parambhzg) {}
+  public SonicTemplateUpdateManager$1(bgfr parambgfr) {}
   
   public void run()
   {

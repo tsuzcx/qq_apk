@@ -1,8 +1,24 @@
-public abstract interface avuj
+public class avuj
 {
-  public abstract void f();
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public abstract void g();
+  public avuh a()
+  {
+    return new avuh(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
+  }
+  
+  public avuj a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public avuj a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
 }
 
 

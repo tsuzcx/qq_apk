@@ -1,26 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
-class bgvc
-  extends RecyclerView.ViewHolder
+final class bgvc
+  extends WebAccelerateHelper.CommonJsPluginFactory
 {
-  protected ImageView a;
-  protected TextView a;
-  protected String a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c;
-  
-  public bgvc(bgvb parambgvb, View paramView)
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
-    super(paramView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365306));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367895));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367912));
-    this.c = ((ImageView)paramView.findViewById(2131376418));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new bgte());
+    localArrayList.add(new autn());
+    localArrayList.add(new UiApiPlugin());
+    localArrayList.add(new aurh());
+    return localArrayList;
   }
 }
 

@@ -5,79 +5,79 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
-import bhtq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import java.util.ArrayList;
 
 public class QzoneMsgPagerAdapter
   extends PagerAdapter
 {
-  private static final int jdField_a_of_type_Int = bhtq.a() - bhtq.b(24.0F);
-  private static final int jdField_b_of_type_Int = bhtq.b(230.0F);
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private ArrayList<AnyScaleTypeImageView> jdField_b_of_type_JavaUtilArrayList;
+  private static final int IMAGE_HEIGHT = ViewUtils.dpToPx(230.0F);
+  private static final int IMAGE_WIDTH = ViewUtils.getScreenWidth() - ViewUtils.dpToPx(24.0F);
+  private ArrayList<String> urls;
+  private ArrayList<AnyScaleTypeImageView> views;
   
   public QzoneMsgPagerAdapter(Context paramContext, ArrayList<String> paramArrayList)
   {
     if (paramArrayList == null) {}
     for (int i = 0;; i = paramArrayList.size())
     {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(i);
+      this.views = new ArrayList(i);
       while (j < i)
       {
         AnyScaleTypeImageView localAnyScaleTypeImageView = new AnyScaleTypeImageView(paramContext);
         localAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         ThemeUtil.setColorFilterIfNeed(localAnyScaleTypeImageView);
-        this.jdField_b_of_type_JavaUtilArrayList.add(localAnyScaleTypeImageView);
+        this.views.add(localAnyScaleTypeImageView);
         j += 1;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.urls = paramArrayList;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.size() == 0) || (paramInt < 0) || (paramInt >= this.jdField_b_of_type_JavaUtilArrayList.size())) {
+    if ((this.views == null) || (this.views.size() == 0) || (paramInt < 0) || (paramInt >= this.views.size())) {
       return;
     }
-    paramObject = (AnyScaleTypeImageView)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    paramObject = (AnyScaleTypeImageView)this.views.get(paramInt);
     paramObject.setImageDrawable(null);
     paramViewGroup.removeView(paramObject);
   }
   
   public int getCount()
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+    if (this.views == null) {
       return 0;
     }
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
+    return this.views.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.size() == 0) || (paramInt < 0) || (paramInt >= this.jdField_b_of_type_JavaUtilArrayList.size())) {
+    if ((this.views == null) || (this.views.size() == 0) || (paramInt < 0) || (paramInt >= this.views.size())) {
       return null;
     }
-    AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)this.views.get(paramInt);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = jdField_a_of_type_Int;
-    localURLDrawableOptions.mRequestHeight = jdField_b_of_type_Int;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) != null))
+    localURLDrawableOptions.mRequestWidth = IMAGE_WIDTH;
+    localURLDrawableOptions.mRequestHeight = IMAGE_HEIGHT;
+    if ((this.urls != null) && (this.urls.get(paramInt) != null))
     {
-      if ((!((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).startsWith("http")) && (!((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).startsWith("https"))) {
+      if ((!((String)this.urls.get(paramInt)).startsWith("http")) && (!((String)this.urls.get(paramInt)).startsWith("https"))) {
         break label157;
       }
-      localAnyScaleTypeImageView.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), localURLDrawableOptions));
+      localAnyScaleTypeImageView.setImageDrawable(URLDrawable.getDrawable((String)this.urls.get(paramInt), localURLDrawableOptions));
     }
     for (;;)
     {
       paramViewGroup.addView(localAnyScaleTypeImageView);
-      return this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+      return this.views.get(paramInt);
       label157:
-      localAnyScaleTypeImageView.setImageDrawable(URLDrawable.getFileDrawable((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), localURLDrawableOptions));
+      localAnyScaleTypeImageView.setImageDrawable(URLDrawable.getFileDrawable((String)this.urls.get(paramInt), localURLDrawableOptions));
     }
   }
   

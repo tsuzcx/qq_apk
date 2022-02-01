@@ -1,16 +1,17 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalWorksFragment;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class vqd
-  implements Observer<FeedCloudMeta.StUser>
 {
-  public vqd(QCirclePersonalWorksFragment paramQCirclePersonalWorksFragment) {}
+  public static WeakReference<QQAppInterface> a = new WeakReference(null);
   
-  public void a(@Nullable FeedCloudMeta.StUser paramStUser)
+  public static boolean a()
   {
-    this.a.a(paramStUser);
+    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
+    if (localQQAppInterface == null) {
+      throw new IllegalStateException(amtj.a(2131713438));
+    }
+    return localQQAppInterface.getNowLiveManager().a;
   }
 }
 

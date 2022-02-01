@@ -1,25 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public final class bfjo
-  implements DialogInterface.OnClickListener
+public class bfjo
+  implements bcsq
 {
-  public bfjo(Activity paramActivity) {}
+  public bfjo(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
+    if (this.a.a.this$0.a != null) {
+      this.a.a.this$0.a.setProgress(paramInt / 30);
     }
-    TroopBarPublishUtils.c(this.a);
-    paramDialogInterface.dismiss();
   }
 }
 

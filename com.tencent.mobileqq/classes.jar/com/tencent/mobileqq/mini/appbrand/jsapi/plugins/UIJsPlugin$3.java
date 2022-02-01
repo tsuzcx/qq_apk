@@ -21,7 +21,7 @@ class UIJsPlugin$3
     {
       if (UIJsPlugin.access$000(this.this$0) == null)
       {
-        ViewGroup localViewGroup2 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(2131371199);
+        ViewGroup localViewGroup2 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(2131371168);
         ViewGroup localViewGroup1 = localViewGroup2;
         if (localViewGroup2 == null) {
           localViewGroup1 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(16908290);

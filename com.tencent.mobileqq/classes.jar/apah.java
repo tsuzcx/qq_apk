@@ -1,50 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.qphone.base.util.QLog;
-
-public class apah
-  extends aoxg
+public abstract interface apah
 {
-  public apah(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public abstract void onRotationUpdateOriginal(float[] paramArrayOfFloat);
   
-  public boolean a()
-  {
-    if (!(this.a instanceof BaseActivity)) {}
-    Object localObject2;
-    do
-    {
-      do
-      {
-        do
-        {
-          return true;
-          localObject1 = ((BaseActivity)this.a).getIntent();
-        } while (localObject1 == null);
-        localObject2 = ((Intent)localObject1).getExtras();
-      } while (localObject2 == null);
-      localObject1 = ((Bundle)localObject2).getString("localAPKPath");
-      localObject2 = ((Bundle)localObject2).getString("sourceId");
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlAction", 1, "gamecenter installApk, pkgName=" + this.e + ",localAPKPath=" + (String)localObject1 + ",sourceId=" + (String)localObject2);
-      }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Intent localIntent = FileProvider7Helper.openApkIntent(this.a, (String)localObject1);
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "biz_src_zf_games";
-    }
-    localIntent.putExtra("big_brother_source_key", (String)localObject1);
-    this.a.startActivity(localIntent);
-    return true;
-  }
+  public abstract void onRotationUpdateQuaternion(float[] paramArrayOfFloat);
+  
+  public abstract void onSensorSupport(int paramInt, boolean paramBoolean);
+  
+  public abstract void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updateAzimuth(float paramFloat);
+  
+  public abstract void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updatePitch(float paramFloat);
+  
+  public abstract void updateRoll(float paramFloat);
+  
+  public abstract void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

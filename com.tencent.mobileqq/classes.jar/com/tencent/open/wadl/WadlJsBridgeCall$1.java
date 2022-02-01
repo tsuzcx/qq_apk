@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import bkai;
+import bifs;
 import java.util.Map;
 
 public final class WadlJsBridgeCall$1
@@ -10,7 +10,7 @@ public final class WadlJsBridgeCall$1
   
   public void run()
   {
-    bkai.a().put(this.a, new Boolean(false));
+    bifs.a().put(this.a, new Boolean(false));
   }
 }
 

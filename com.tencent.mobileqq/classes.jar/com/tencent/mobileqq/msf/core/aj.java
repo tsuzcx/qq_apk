@@ -1400,12 +1400,12 @@ public class aj
         if (((com.tencent.msf.service.protocol.e.d)localObject1).a == 1)
         {
           this.D.getSsoRespHandler();
-          ak.a.put(paramFromServiceMsg.getUin(), localObject1);
+          al.a.put(paramFromServiceMsg.getUin(), localObject1);
           QLog.d("MSF.C.NetConnTag", 1, Thread.currentThread().getName() + " onRecvCheckRoleResp setAccountNoLogin uin=" + MsfSdkUtils.getShortUin(paramFromServiceMsg.getUin()));
           this.D.getAccountCenter().k(paramFromServiceMsg.getUin());
           return;
         }
-        ak.a.remove(paramFromServiceMsg.getUin());
+        al.a.remove(paramFromServiceMsg.getUin());
         return;
       }
       catch (ObjectCreateException paramFromServiceMsg)
@@ -2061,7 +2061,7 @@ public class aj
         this.D.addRespToQuque(paramToServiceMsg, (FromServiceMsg)???);
         return paramToServiceMsg.getRequestSsoSeq();
       }
-      localObject2 = (com.tencent.msf.service.protocol.e.d)ak.a.get(paramToServiceMsg.getUin());
+      localObject2 = (com.tencent.msf.service.protocol.e.d)al.a.get(paramToServiceMsg.getUin());
       ??? = localObject2;
       if (localObject2 != null)
       {
@@ -2069,7 +2069,7 @@ public class aj
         if (paramToServiceMsg.getServiceCmd().equals("wtlogin.login"))
         {
           this.X.remove(paramToServiceMsg.getUin());
-          ak.a.remove(paramToServiceMsg.getUin());
+          al.a.remove(paramToServiceMsg.getUin());
           ??? = null;
         }
       }

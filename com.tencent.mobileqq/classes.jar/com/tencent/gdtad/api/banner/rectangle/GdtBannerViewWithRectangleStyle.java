@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.banner.rectangle;
 
-import acon;
-import acpm;
-import acpt;
-import acpu;
-import acvc;
-import acwn;
+import abkv;
+import ablv;
+import abmc;
+import abmd;
+import abrl;
+import absw;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -32,9 +32,9 @@ import com.tencent.image.URLImageView;
 
 public final class GdtBannerViewWithRectangleStyle
   extends RelativeLayout
-  implements acpm
+  implements ablv
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acpt(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new abmc(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private GdtHandler.Params jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
@@ -45,13 +45,13 @@ public final class GdtBannerViewWithRectangleStyle
     super(paramContext);
     if ((paramContext == null) || (paramParams == null) || (!paramParams.a()))
     {
-      acvc.d("GdtBannerContainerView", "constructor");
+      abrl.d("GdtBannerContainerView", "constructor");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
     if (!a())
     {
-      acvc.d("GdtBannerContainerView", "constructor");
+      abrl.d("GdtBannerContainerView", "constructor");
       return;
     }
     setGravity(16);
@@ -66,19 +66,19 @@ public final class GdtBannerViewWithRectangleStyle
     paramParams = new RelativeLayout.LayoutParams(-2, -1);
     paramParams.addRule(9);
     this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131367431);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131367459);
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL(a().getImageData().jdField_a_of_type_JavaLangString);
     addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramParams);
     paramParams = new GradientDrawable();
     paramParams.setShape(0);
-    paramParams.setCornerRadius(acwn.a(14.0F, getResources()));
+    paramParams.setCornerRadius(absw.a(14.0F, getResources()));
     paramParams.setColor(Color.parseColor("#00CAFC"));
-    Object localObject1 = new RelativeLayout.LayoutParams(acwn.a(58.0F, getResources()), acwn.a(29.0F, getResources()));
-    ((RelativeLayout.LayoutParams)localObject1).rightMargin = acwn.a(12.0F, getResources());
+    Object localObject1 = new RelativeLayout.LayoutParams(absw.a(58.0F, getResources()), absw.a(29.0F, getResources()));
+    ((RelativeLayout.LayoutParams)localObject1).rightMargin = absw.a(12.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject1).addRule(15);
     ((RelativeLayout.LayoutParams)localObject1).addRule(11);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367430);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367458);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
@@ -90,10 +90,10 @@ public final class GdtBannerViewWithRectangleStyle
     paramParams = new LinearLayout(paramContext);
     paramParams.setOrientation(1);
     localObject1 = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject1).leftMargin = acwn.a(12.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject1).rightMargin = acwn.a(12.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131367431);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131367430);
+    ((RelativeLayout.LayoutParams)localObject1).leftMargin = absw.a(12.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject1).rightMargin = absw.a(12.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131367459);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131367458);
     ((RelativeLayout.LayoutParams)localObject1).addRule(15);
     addView(paramParams, (ViewGroup.LayoutParams)localObject1);
     Object localObject2;
@@ -108,18 +108,18 @@ public final class GdtBannerViewWithRectangleStyle
       paramParams.addView((View)localObject1, new LinearLayout.LayoutParams(-1, -2));
       localObject1 = new LinearLayout(paramContext);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).topMargin = acwn.a(8.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject2).topMargin = absw.a(8.0F, getResources());
       ((LinearLayout)localObject1).setOrientation(0);
       ((LinearLayout)localObject1).setGravity(16);
       paramParams.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      int i = acwn.a(16.0F, getResources());
+      int i = absw.a(16.0F, getResources());
       paramParams = new LinearLayout.LayoutParams(i, i);
-      localObject2 = new acpu(paramContext);
-      ((acpu)localObject2).setImageURL(a().getAdvertiser_corporate_logo());
-      ((acpu)localObject2).a(i / 2);
+      localObject2 = new abmd(paramContext);
+      ((abmd)localObject2).setImageURL(a().getAdvertiser_corporate_logo());
+      ((abmd)localObject2).a(i / 2);
       ((LinearLayout)localObject1).addView((View)localObject2, paramParams);
       paramParams = new LinearLayout.LayoutParams(-1, -2);
-      paramParams.leftMargin = acwn.a(4.0F, getResources());
+      paramParams.leftMargin = absw.a(4.0F, getResources());
       localObject2 = new TextView(paramContext);
       ((TextView)localObject2).setMaxLines(1);
       ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
@@ -131,13 +131,13 @@ public final class GdtBannerViewWithRectangleStyle
     for (;;)
     {
       localObject1 = new FrameLayout(paramContext);
-      addView((View)localObject1, new FrameLayout.LayoutParams(acwn.a(36.0F, getResources()), acwn.a(22.0F, getResources())));
+      addView((View)localObject1, new FrameLayout.LayoutParams(absw.a(36.0F, getResources()), absw.a(22.0F, getResources())));
       paramParams = new LinearLayout(paramContext);
       localObject2 = new GradientDrawable();
       ((GradientDrawable)localObject2).setShape(0);
-      ((GradientDrawable)localObject2).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, acwn.a(4.0F, getResources()), acwn.a(4.0F, getResources()), 0.0F, 0.0F });
+      ((GradientDrawable)localObject2).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, absw.a(4.0F, getResources()), absw.a(4.0F, getResources()), 0.0F, 0.0F });
       ((GradientDrawable)localObject2).setColor(Color.argb(127, 0, 0, 0));
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, acwn.a(14.0F, getResources()));
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, absw.a(14.0F, getResources()));
       paramParams.setOrientation(0);
       paramParams.setGravity(17);
       if (Build.VERSION.SDK_INT >= 16) {
@@ -149,16 +149,16 @@ public final class GdtBannerViewWithRectangleStyle
       ((TextView)localObject1).setTextColor(Color.argb(Double.valueOf(204.0D).intValue(), 255, 255, 255));
       ((TextView)localObject1).setTextSize(2, 9.0F);
       paramParams.addView((View)localObject1);
-      new LinearLayout.LayoutParams(acwn.a(8.0F, getResources()), acwn.a(8.0F, getResources())).leftMargin = acwn.a(2.0F, getResources());
-      new ImageView(paramContext).setImageResource(2130840208);
+      new LinearLayout.LayoutParams(absw.a(8.0F, getResources()), absw.a(8.0F, getResources())).leftMargin = absw.a(2.0F, getResources());
+      new ImageView(paramContext).setImageResource(2130840245);
       paramContext = new GradientDrawable();
       paramContext.setShape(0);
       paramContext.setStroke(1, Color.parseColor("#EBEDF5"));
-      paramContext.setCornerRadius(acwn.a(6.0F, getResources()));
+      paramContext.setCornerRadius(absw.a(6.0F, getResources()));
       paramContext.setColor(-1);
-      paramParams = new RelativeLayout.LayoutParams(acwn.a(88.0F, getResources()), acwn.a(34.0F, getResources()));
-      paramParams.leftMargin = acwn.a(3.0F, getResources());
-      paramParams.topMargin = acwn.a(18.0F, getResources());
+      paramParams = new RelativeLayout.LayoutParams(absw.a(88.0F, getResources()), absw.a(34.0F, getResources()));
+      paramParams.leftMargin = absw.a(3.0F, getResources());
+      paramParams.topMargin = absw.a(18.0F, getResources());
       this.b = new TextView(getContext());
       this.b.setGravity(17);
       this.b.setText("不感兴趣");
@@ -168,7 +168,7 @@ public final class GdtBannerViewWithRectangleStyle
         this.b.setBackground(paramContext);
       }
       if (Build.VERSION.SDK_INT > 22) {
-        ViewCompat.setElevation(this.b, acwn.a(5.0F, getResources()));
+        ViewCompat.setElevation(this.b, absw.a(5.0F, getResources()));
       }
       addView(this.b, paramParams);
       this.b.setVisibility(8);
@@ -185,7 +185,7 @@ public final class GdtBannerViewWithRectangleStyle
         ((TextView)localObject2).setTextSize(2, 14.0F);
         paramParams.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
         localObject1 = new LinearLayout.LayoutParams(-1, -2);
-        ((LinearLayout.LayoutParams)localObject1).topMargin = acwn.a(8.0F, getResources());
+        ((LinearLayout.LayoutParams)localObject1).topMargin = absw.a(8.0F, getResources());
         localObject2 = new TextView(paramContext);
         ((TextView)localObject2).setMaxLines(2);
         ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
@@ -196,7 +196,7 @@ public final class GdtBannerViewWithRectangleStyle
       }
       else
       {
-        acvc.d("GdtBannerContainerView", "constructor");
+        abrl.d("GdtBannerContainerView", "constructor");
       }
     }
   }
@@ -252,7 +252,7 @@ public final class GdtBannerViewWithRectangleStyle
   {
     if (!a())
     {
-      acvc.d("GdtBannerContainerView", "setSize error");
+      abrl.d("GdtBannerContainerView", "setSize error");
       return;
     }
     paramInt1 = paramInt2 - 2;

@@ -1,0 +1,16 @@
+package cooperation.qqcircle;
+
+public class QCircleConstants$CircleTab
+{
+  public static final int CERTIFIED = 1;
+  public static final int FAILED = 3;
+  public static final int PENDING = 2;
+  public static final int RECOMMEND = 5;
+  public static final int SURE_RECOMMEND = 4;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     cooperation.qqcircle.QCircleConstants.CircleTab
+ * JD-Core Version:    0.7.0.1
+ */

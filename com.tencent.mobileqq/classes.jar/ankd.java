@@ -1,36 +1,32 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ankd
-  extends Animation
+class ankd
+  implements View.OnClickListener
 {
-  private final int a;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private final int f;
+  ankd(anjz paramanjz, Activity paramActivity, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
   
-  public ankd(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onClick(View paramView)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.d = paramInt5;
-    this.c = paramInt6;
-    this.a = paramInt3;
-    this.b = paramInt4;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.e;
-    float f2 = this.a;
-    float f3 = this.d;
-    float f4 = this.f;
-    float f5 = this.b;
-    float f6 = this.c;
-    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
+    if (System.currentTimeMillis() - anjz.a(this.jdField_a_of_type_Anjz) < 1000L)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    anjz.a(this.jdField_a_of_type_Anjz, System.currentTimeMillis());
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, PhoneUnityBindInfoActivity.class);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (localObject = "0X800B3E7";; localObject = "0X800B3E4")
+    {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      break;
+    }
   }
 }
 

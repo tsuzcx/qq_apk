@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bgzm
-  implements bdym
+public abstract interface bgzm
+  extends bguj
 {
-  public bgzm(TroopGiftAnimationController.5.5 param5) {}
+  public abstract View a(int paramInt);
   
-  public void a(bdyr parambdyr)
-  {
-    this.a.a.this$0.a();
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, int paramInt3);
+  
+  public abstract void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt4);
 }
 
 

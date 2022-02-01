@@ -1,88 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.1;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.2;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.3;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.4;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.content.Intent;
 
-public class auus
-  implements ITMAssistantDownloadClientListener
+public abstract interface auus
 {
-  auus(auur paramauur) {}
+  public abstract void onSharMsgcallback(String paramString1, String paramString2);
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
-  {
-    auur.b(this.a);
-    if (!auur.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
-      QLog.e(auur.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int i = 0;
-    int j = 0;
-    Object localObject2 = null;
-    QLog.i(auur.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
-    String str = "";
-    Object localObject1;
-    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
-    {
-      try
-      {
-        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        i = 0;
-        paramTMAssistantDownloadClient = str;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        do
-        {
-          for (;;)
-          {
-            paramTMAssistantDownloadClient.printStackTrace();
-            paramTMAssistantDownloadClient = auuk.a(22);
-            localObject1 = null;
-            j = 22;
-            i = 1;
-            continue;
-            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
-          }
-        } while ((auur.a(this.a) == null) || (auur.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
-        QLog.e(auur.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-        return;
-      }
-      if (localObject1 == null) {
-        localObject1 = localObject2;
-      }
-    }
-    for (;;)
-    {
-      auur.b(this.a);
-      if (i != 0)
-      {
-        if (!auur.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, j, paramTMAssistantDownloadClient))) {
-          QLog.e(auur.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
-        }
-        return;
-      }
-      localObject1 = null;
-      paramTMAssistantDownloadClient = "";
-      j = 0;
-    }
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    QLog.e(auur.a, 1, "[UniformDL] ABSdkdownload service invalid ");
-    auur.b(this.a);
-    if (!auur.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
-      QLog.e(auur.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
-    }
-  }
+  public abstract void startActivityForResult(Intent paramIntent, byte paramByte);
 }
 
 

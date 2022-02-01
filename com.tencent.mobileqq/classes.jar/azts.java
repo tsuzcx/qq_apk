@@ -1,24 +1,22 @@
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azts
-  extends blgm
+  implements View.OnClickListener
 {
-  public azts(FormalView paramFormalView, View paramView) {}
+  public azts(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, MessageForPic paramMessageForPic) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
+    if (!this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.isAdded()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.getActivity(), ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment));
     }
   }
 }

@@ -7,9 +7,9 @@ import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
-import bdll;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import bcef;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -27,40 +27,40 @@ class PressToChangeVoicePanel$3
   public void run()
   {
     PressToChangeVoicePanel.a(this.this$0, true);
-    boolean bool = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.n();
+    boolean bool = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.isRecording();
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "isRecording is:" + bool);
     }
     if (bool)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m())
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.isRecorderRecording())
       {
         this.this$0.setClickable(false);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.k(2);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.stopAudioRecord(2);
       }
       return;
     }
     PressToChangeVoicePanel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, "0X8006386");
     if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null)
     {
-      QQToast.a(BaseApplication.getContext(), 2131697745, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131697891, 0).a();
       return;
     }
-    bewa.a = SystemClock.uptimeMillis();
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getTitleBarHeight();
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    com.tencent.mobileqq.transfile.PttInfoCollector.sCostUntilPrepare = SystemClock.uptimeMillis();
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().getTitleBarHeight();
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRecorderParam();
     if (!QQRecorder.d())
     {
-      QQToast.a(BaseApplication.getContext(), 2131717722, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131717958, 0).b(i);
       label173:
-      if (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e) {
+      if (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mIsFromVoiceChangerGuide) {
         break label623;
       }
     }
     label623:
     for (i = 1;; i = 2)
     {
-      bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005472", "0X8005472", i, 0, "", "", "", "8.4.5");
+      bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005472", "0X8005472", i, 0, "", "", "", "8.4.8");
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel == null) {
         break;
       }
@@ -68,22 +68,22 @@ class PressToChangeVoicePanel$3
       return;
       if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
       {
-        QQToast.a(BaseApplication.getContext(), 2131693066, 0).b(i);
+        QQToast.a(BaseApplication.getContext(), 2131693124, 0).b(i);
         break label173;
       }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d())
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isVideoChatting())
       {
-        QQToast.a(BaseApplication.getContext(), 2131694616, 0).a();
+        QQToast.a(BaseApplication.getContext(), 2131694732, 0).a();
         break label173;
       }
       if (AudioHelper.b(1))
       {
-        ChatActivityUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+        ChatActivityUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
         break label173;
       }
       this.this$0.f();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.this$0, false, (QQRecorder.RecorderParam)localObject);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.l(2);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.recorderInit(this.this$0, false, (QQRecorder.RecorderParam)localObject);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setFateOfRecorder(2);
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.setStatus(3);
       this.this$0.h();
       localObject = new Rect();
@@ -107,16 +107,16 @@ class PressToChangeVoicePanel$3
         i = j - ((Rect)localObject).top;
       }
       if (localRect.top <= this.this$0.getResources().getDisplayMetrics().heightPixels) {
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), ((Rect)localObject).width(), i, this.this$0, 0, 0, 0);
+        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity(), ((Rect)localObject).width(), i, this.this$0, 0, 0, 0);
       }
-      this.this$0.jdField_a_of_type_AndroidViewView = AudioPanel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.this$0.b, this.this$0.c);
+      this.this$0.jdField_a_of_type_AndroidViewView = AudioPanel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity(), this.this$0.b, this.this$0.c);
       break label173;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel.3
  * JD-Core Version:    0.7.0.1
  */

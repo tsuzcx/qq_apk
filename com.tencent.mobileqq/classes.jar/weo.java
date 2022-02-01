@@ -1,23 +1,43 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class weo
+  extends vqr
 {
-  public static void a(View paramView, Runnable paramRunnable)
+  public String a;
+  public String b;
+  
+  public String a()
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      b(paramView, paramRunnable);
-      return;
-    }
-    paramView.postDelayed(paramRunnable, 16L);
+    return vpl.a("StorySvc.get_profile_feed_id_list");
   }
   
-  @TargetApi(16)
-  private static void b(View paramView, Runnable paramRunnable)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    paramView.postOnAnimation(paramRunnable);
+    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
+    try
+    {
+      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new wep(localRspProfileStoryFeedIdList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
+    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqProfileStoryFeedIdList.toByteArray();
   }
 }
 

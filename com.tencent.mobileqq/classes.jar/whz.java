@@ -1,76 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnDownloadListener;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-class whz
-  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
+public class whz
+  extends wie
 {
-  WeakReference<whs> a;
+  public static final String a;
+  public static final String b = jdField_a_of_type_JavaLangString + "&type=" + "onedaylist" + "&feedid=%s&identify=%d";
+  private int[] a;
   
-  public whz(whs paramwhs)
+  static
   {
-    this.a = new WeakReference(paramwhs);
+    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + vpl.a(2131698833);
   }
   
-  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
+  public whz(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
   {
-    int i = -1;
-    if ((this.a.get() == null) || (whs.a((whs)this.a.get()) != 2)) {
-      yuk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
-    }
-    while (TextUtils.isEmpty(paramString2)) {
+    Object localObject = ((xnp)vux.a(11)).a(paramString);
+    if (localObject == null) {
       return;
     }
-    if ((paramString2.contains("\"callBackType\":\"4\"")) && (whs.b((whs)this.a.get()) != -1))
+    vvj localvvj = (vvj)vux.a(2);
+    localObject = (QQUserUIItem)((FeedItem)localObject).getOwner();
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + amtj.a(2131703566) + vkm.jdField_a_of_type_JavaLangString);
+    this.e = (((QQUserUIItem)localObject).nickName + amtj.a(2131703565) + vkm.jdField_a_of_type_JavaLangString);
+    this.f = localvvj.a(((QQUserUIItem)localObject).getUnionId(), false);
+    int i;
+    if (((QQUserUIItem)localObject).isMe())
     {
-      yuk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
-      if (bhnv.d(BaseApplication.getContext())) {
-        break label209;
+      i = 0;
+      this.jdField_a_of_type_Int = i;
+      this.h = paramString;
+      this.jdField_d_of_type_Int = paramInt;
+      this.jdField_c_of_type_JavaLangString = ((QQUserUIItem)localObject).nickName;
+      this.g = ((QQUserUIItem)localObject).getUnionId();
+      this.k = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime);
+      paramStoryVideoItem = new SimpleDateFormat("M月d日").format(Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime));
+      this.i = (paramStoryVideoItem + " · " + this.jdField_d_of_type_Int + amtj.a(2131703568));
+      this.j = ("#" + vkm.jdField_a_of_type_JavaLangString + "# " + this.jdField_c_of_type_JavaLangString + amtj.a(2131703567) + vkm.jdField_a_of_type_JavaLangString + "（" + this.i + "）");
+      if (this.jdField_a_of_type_Int != 0) {
+        break label400;
       }
-      whs.a((whs)this.a.get());
     }
-    for (;;)
+    label400:
+    for (paramInt = 8;; paramInt = 9)
     {
-      whs.a((whs)this.a.get(), i);
-      ((whs)this.a.get()).a();
-      return;
-      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (whs.b((whs)this.a.get()) == 0)) {
-        break;
+      this.jdField_c_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_Int != 0) {
+        break label406;
       }
-      yuk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
-      whs.a((whs)this.a.get(), 0);
-      ((whs)this.a.get()).a();
+      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 81, 82, 83, 84, 85, 45 };
       return;
-      label209:
-      i = -2;
+      i = 1;
+      break;
     }
+    label406:
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 69, 70, 71, 72, 73, 45 };
   }
   
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
+  protected String a(int paramInt)
   {
-    if ((this.a.get() == null) || (whs.a((whs)this.a.get()) != 2)) {
-      yuk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
+    if (paramInt == 1) {
+      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&type=onedaylist&feedid=%s&identify=%d&sharefromtype=%d", new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), this.h, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
     }
-    while (paramInt != 5) {
-      return;
-    }
-    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
-    {
-      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-      if ((paramString.model != 122) || (paramString.what != 204)) {}
-    }
-    for (paramInt = -1;; paramInt = -2)
-    {
-      yuk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
-      whs.a((whs)this.a.get());
-      whs.a((whs)this.a.get(), paramInt);
-      ((whs)this.a.get()).a();
-      return;
-    }
+    return String.format(b, new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), this.h, Integer.valueOf(this.jdField_a_of_type_Int) });
+  }
+  
+  public String a(String paramString, long paramLong)
+  {
+    String str = new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
+    return paramString + amtj.a(2131703561) + str;
   }
 }
 

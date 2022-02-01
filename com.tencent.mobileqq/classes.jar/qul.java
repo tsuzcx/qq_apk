@@ -1,18 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class qul
-  extends qtv
+  implements View.OnClickListener
 {
-  qul(quk paramquk) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  rdc jdField_a_of_type_Rdc;
+  TextView b;
   
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
+  protected qul(ComponentContentHotSearch paramComponentContentHotSearch) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramInt == quk.a(this.a))) {
-      ThreadManager.post(new ReadInjoySkinAndRefreshFacade.2.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    Object localObject = new Intent(this.b.getContext(), PublicAccountBrowser.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Rdc.b);
+    this.b.getContext().startActivity((Intent)localObject);
+    localObject = pay.a(this.jdField_a_of_type_Rdc.a, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).hotWordInfo.a.indexOf(this.jdField_a_of_type_Rdc) + 1);
+    try
+    {
+      odq.a(null, "CliOper", "", "", "0X80096DD", "0X80096DD", 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
+      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), (int)ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).mChannelID);
+      localObject = new ArrayList();
+      ReportInfo localReportInfo = new ReportInfo();
+      localReportInfo.mUin = pay.a();
+      localReportInfo.mOperation = 53;
+      localReportInfo.mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID;
+      localReportInfo.mHotWord = this.jdField_a_of_type_Rdc.a;
+      ((List)localObject).add(localReportInfo);
+      pkm.a().a((List)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e(ComponentContentHotSearch.a, 1, "onClick, e = " + localException);
+      }
     }
   }
 }

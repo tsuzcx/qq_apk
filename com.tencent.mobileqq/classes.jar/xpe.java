@@ -1,18 +1,76 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class xpe
-  implements Parcelable.Creator<AnimationParam>
+public abstract class xpe<T extends FeedItem>
 {
-  public AnimationParam a(Parcel paramParcel)
+  protected T a;
+  public boolean b;
+  
+  public xpe(@NonNull T paramT)
   {
-    return new AnimationParam(paramParcel);
+    yos.a(paramT);
+    this.a = paramT;
   }
   
-  public AnimationParam[] a(int paramInt)
+  public static xpe a(int paramInt)
   {
-    return new AnimationParam[paramInt];
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
+    if (localFeedItem == null) {
+      return null;
+    }
+    return localFeedItem.generateHomeFeed();
+  }
+  
+  public T a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, wdv paramwdv, wdp paramwdp, wds paramwds);
+  
+  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
+  
+  public abstract void b();
+  
+  public List<StoryVideoItem> d()
+  {
+    return new ArrayList(0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (xpe)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

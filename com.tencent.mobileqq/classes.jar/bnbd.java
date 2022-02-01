@@ -1,19 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastMusicInfo;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class bnbd
-  implements Parcelable.Creator<BroadcastMusicInfo>
+public abstract interface bnbd
 {
-  public BroadcastMusicInfo a(Parcel paramParcel)
-  {
-    return new BroadcastMusicInfo(paramParcel);
-  }
+  public abstract Activity a();
   
-  public BroadcastMusicInfo[] a(int paramInt)
-  {
-    return new BroadcastMusicInfo[paramInt];
-  }
+  public abstract SessionInfo a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract boolean a();
 }
 
 

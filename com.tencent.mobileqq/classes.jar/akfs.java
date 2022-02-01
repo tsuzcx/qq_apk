@@ -1,282 +1,99 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Looper;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.ark.ark;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.utils.ArkPubicEventWrap.QWalletArkNotify.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class akfs
-  implements View.OnClickListener
+  extends aopv
+  implements aopx
 {
-  public int a;
-  public akfc a;
-  private akfu jdField_a_of_type_Akfu;
-  private akfv jdField_a_of_type_Akfv;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private anyu jdField_a_of_type_Anyu = new akft(this);
-  public bbbq a;
-  private bgty jdField_a_of_type_Bgty;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
-  private String jdField_a_of_type_JavaLangString;
-  public final ArrayList<String> a;
-  private List<akfc> jdField_a_of_type_JavaUtilList;
-  public boolean a;
+  public akfs(akfp paramakfp) {}
   
-  public akfs(Context paramContext, akfu paramakfu, QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo, List<akfc> paramList)
+  public boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-    this.jdField_a_of_type_Bbbq = ((anyw)paramQQAppInterface.getManager(51)).a();
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anyu);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bgty = ((bgty)paramQQAppInterface.getManager(203));
-    this.jdField_a_of_type_Akfu = paramakfu;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Akfc != null)
-    {
-      a(this.jdField_a_of_type_Akfc);
-      a(1, this.jdField_a_of_type_Akfc.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkPubicEventWrap", 2, String.format(Locale.getDefault(), "appName:%1$s;eventName:%2$s;params:%3$s;", new Object[] { paramString1, paramString2, paramString3 }));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Akfc = null;
-      return;
-      b();
+    if ("ad_query_mute".equals(paramString2)) {
+      akfp.a(this.a, paramString1);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
-    if ((this.jdField_a_of_type_Int < 2) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      if (Thread.currentThread() == Looper.getMainLooper().getThread())
-      {
-        b();
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      } while (this.jdField_a_of_type_Akfu == null);
-      this.jdField_a_of_type_Akfu.a();
-    }
-  }
-  
-  public void a(akfc paramakfc)
-  {
-    bbbq localbbbq = this.jdField_a_of_type_Bbbq;
-    if (paramakfc == null) {
-      return;
-    }
-    if (!a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo))
-    {
-      paramakfc.n = 0;
-      return;
-    }
-    if (localbbbq != null)
-    {
-      if (this.jdField_a_of_type_Bgty.b(paramakfc.jdField_a_of_type_JavaLangString))
-      {
-        paramakfc.n = 0;
-        return;
-      }
-      paramakfc.n = localbbbq.a(paramakfc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    paramakfc.n = 0;
-  }
-  
-  public void a(akfj paramakfj, akfc paramakfc)
-  {
-    if (paramakfj == null) {}
-    TroopInfo localTroopInfo;
-    Button localButton;
     do
     {
       do
       {
-        do
-        {
-          return;
-        } while (paramakfj.f == null);
-        localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
-        int i;
-        if (paramakfc == null) {
-          i = 0;
-        }
-        for (;;)
-        {
-          if (i == 0) {
-            break label197;
-          }
-          paramakfj.f.setVisibility(0);
-          localButton = (Button)paramakfj.f.findViewById(2131362162);
-          paramakfj = (TextView)paramakfj.f.findViewById(2131362164);
-          if (paramakfc.n != 2) {
-            break;
-          }
-          localButton.setVisibility(8);
-          paramakfj.setVisibility(0);
-          return;
-          if ((paramakfc.n == 3) || (paramakfc.n == 2)) {
-            i = 1;
-          } else {
-            i = 0;
-          }
-        }
-        if (paramakfc.n != 3) {
+        return true;
+        if (!"event_query_package".equals(paramString2)) {
           break;
         }
-        localButton.setTag(paramakfc);
-        localButton.setOnClickListener(this);
-        localButton.setText(anzj.a(2131714430));
-        localButton.setVisibility(0);
-        paramakfj.setVisibility(8);
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Boolean = true;
-    } while (localTroopInfo == null);
-    paramakfj = localTroopInfo.troopuin;
-    long l = localTroopInfo.dwGroupClassExt;
-    return;
-    localButton.setVisibility(8);
-    paramakfj.setVisibility(8);
-    return;
-    label197:
-    paramakfj.f.setVisibility(8);
-  }
-  
-  public boolean a(TroopInfo paramTroopInfo)
-  {
-    if ((paramTroopInfo == null) || (paramTroopInfo.isQidianPrivateTroop())) {}
-    do
-    {
-      return false;
-      if (this.jdField_a_of_type_Akfv == null) {
-        d();
-      }
-    } while ((!this.jdField_a_of_type_Akfv.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramTroopInfo.dwGroupClassExt))) || (paramTroopInfo.wMemberNum > this.jdField_a_of_type_Akfv.jdField_a_of_type_Int));
-    return true;
-  }
-  
-  public void b()
-  {
-    akfc localakfc;
-    if (this.jdField_a_of_type_Int == 1) {
-      try
-      {
-        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator1.hasNext())
-        {
-          localakfc = (akfc)localIterator1.next();
-          if ((localakfc != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(localakfc.jdField_a_of_type_JavaLangString))) {
-            a(localakfc);
-          }
-        }
-        this.jdField_a_of_type_Int = 0;
-      }
-      catch (Throwable localThrowable1)
-      {
-        localThrowable1.printStackTrace();
-        if (this.jdField_a_of_type_Akfu != null) {
-          this.jdField_a_of_type_Akfu.b();
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        return;
-      }
-      catch (Throwable localThrowable3)
-      {
-        localThrowable3.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Int == 2)
+      } while (TextUtils.isEmpty(paramString3));
+      for (;;)
       {
         try
         {
-          Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-          if (localIterator2.hasNext())
+          paramString2 = new JSONObject(paramString3).optString("packageName");
+          paramString2 = bfwv.a(BaseApplicationImpl.getContext(), paramString2);
+          paramString3 = new JSONObject();
+          if ("0".equals(paramString2))
           {
-            localakfc = (akfc)localIterator2.next();
-            if (localakfc == null) {
-              continue;
-            }
-            a(localakfc);
-            continue;
-          }
-          if (this.jdField_a_of_type_Akfu == null) {
-            continue;
+            paramString3.put("errCode", 0);
+            paramString3.put("isInstall", false);
+            ark.arkNotify(paramString1, "event_query_package_callback", paramString3.toString(), "json");
+            return true;
           }
         }
-        catch (Throwable localThrowable2)
+        catch (Throwable paramString2)
         {
-          localThrowable2.printStackTrace();
+          paramString2.printStackTrace();
+          ark.arkNotify(paramString1, "event_query_package_callback", "", "json");
+          return true;
         }
-        this.jdField_a_of_type_Akfu.b();
+        paramString3.put("errCode", 0);
+        paramString3.put("isInstall", true);
+        paramString3.put("version", paramString2);
       }
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyu);
-    this.jdField_a_of_type_Bbbq = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  protected void d()
-  {
-    if (this.jdField_a_of_type_Akfv == null) {
-      this.jdField_a_of_type_Akfv = new akfv(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = paramView.getTag();
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((localObject instanceof akfc)))
+      if (!"event_fullscreen_play".equals(paramString2)) {
+        break;
+      }
+    } while (TextUtils.isEmpty(paramString3));
+    try
     {
-      localObject = (akfc)localObject;
-      this.jdField_a_of_type_Akfc = ((akfc)localObject);
-      String str = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode;
-      localObject = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, ((akfc)localObject).jdField_a_of_type_JavaLangString, str, 3004, 13, ((akfc)localObject).m, null, null, null, null);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-        long l = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt;
+      paramString1 = new JSONObject(paramString3);
+      paramString1.optString("videoUrl");
+      paramString1.optString("playRate");
+      paramString1.optString("totalRate");
+      return true;
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+      return true;
+    }
+    if ("beacon_report".equals(paramString2)) {
+      try
+      {
+        paramString1 = new JSONObject(paramString3);
+        akgk.a("000004B5DU3Q3LD1", paramString1.optString("event_name"), paramString1.optJSONObject("params"));
+        return true;
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("ArkPubicEventWrap", 1, paramString1, new Object[0]);
+        return true;
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ("get_view_location".equals(paramString2))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ArkPubicEventWrap.QWalletArkNotify.1(this, paramString1, paramString3));
+      return true;
+    }
+    akfp.a(this.a);
+    this.a.notifyObservers(new akfr(this.a, paramString1, paramString2, paramString3));
+    return super.notify(paramString1, paramString2, paramString3);
   }
 }
 

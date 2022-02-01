@@ -1,50 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import org.json.JSONObject;
 
 public class qaf
-  implements ViewBase.OnClickListener
 {
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  
-  public qaf(ArticleInfo paramArticleInfo, VafContext paramVafContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      return;
-    }
-    if (ozs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-    {
-      osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, 17, "", "", false, null, -1);
-      oxw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A72", null);
-      return;
-    }
-    osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId, anzj.a(2131706725), null, false, null, false, null, 1);
-    if (ubg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID)) {}
-    for (paramViewBase = "0X80094A0";; paramViewBase = "0X800949E") {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", "x");
-        ocd.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, paramViewBase, paramViewBase, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId, localJSONObject.toString(), false);
-        return;
-      }
-      catch (JSONException paramViewBase)
-      {
-        paramViewBase.printStackTrace();
-        return;
-      }
-    }
+    JSONObject localJSONObject1 = new JSONObject();
+    qai.y(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    qai.d(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_multi_image", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", amtj.a(2131712139));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    qai.a(paramBaseArticleInfo, localJSONObject1, true);
+    qai.g(paramBaseArticleInfo, localJSONObject1);
+    qai.n(paramBaseArticleInfo, localJSONObject1);
+    qai.E(paramBaseArticleInfo, localJSONObject1);
+    qai.F(paramBaseArticleInfo, localJSONObject1);
+    qai.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_multi_cell");
+    return localJSONObject1;
   }
 }
 

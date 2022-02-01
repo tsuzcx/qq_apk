@@ -1,29 +1,29 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.StackBlur;
 
-class bfpl
-  implements Animation.AnimationListener
+public class bfpl
+  implements DownloadParams.DecodeHandler
 {
-  bfpl(bfpj parambfpj) {}
+  private final int a = 10;
+  private final int b = 20;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (bfpj.a(this.a) != null) {
-      bfpj.a(this.a).a.clearAnimation();
+    try
+    {
+      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
+      StackBlur.fastblur(paramDownloadParams, 10);
+      return paramDownloadParams;
     }
-    bfpj.a(this.a);
-    if ((bfpj.a(this.a) != null) && (!bfpj.a(this.a).isSend())) {
-      ((bfpr)this.a.a.getManager(225)).a(this.a.a.getCurrentAccountUin(), bfpj.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(bfpj.a(this.a).ruleId));
+    catch (OutOfMemoryError paramDownloadParams)
+    {
+      return paramBitmap;
     }
+    catch (Exception paramDownloadParams) {}
+    return paramBitmap;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

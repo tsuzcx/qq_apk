@@ -1,24 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class wzp
-  extends SimpleJob<Object>
+  implements View.OnLongClickListener
 {
-  wzp(wzn paramwzn, String paramString)
-  {
-    super(paramString);
-  }
+  wzp(wzo paramwzo) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean onLongClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Wzq == null) {
-      this.a.jdField_a_of_type_Wzq = new wzq(this.a, this.a.d);
+    int i = 0;
+    paramView = (vuq)vux.a(10);
+    boolean bool;
+    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
+    {
+      bool = true;
+      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      if (paramView != null)
+      {
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+        if (paramView != null) {
+          if (!bool) {
+            break label90;
+          }
+        }
+      }
     }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Wzq.jdField_a_of_type_JavaLangString;
-    wzn.a(this.a);
-    return null;
+    for (;;)
+    {
+      paramView.a(i);
+      return true;
+      bool = false;
+      break;
+      label90:
+      i = 8;
+    }
   }
 }
 

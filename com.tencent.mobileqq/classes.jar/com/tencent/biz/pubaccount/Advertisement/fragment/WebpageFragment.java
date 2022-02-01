@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import bdll;
-import birg;
-import birj;
+import bcef;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.QLog;
-import noe;
-import nwf;
-import nwh;
+import npn;
+import nxq;
+import nxs;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private nwf a;
+  private nxq a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,15 +31,15 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(nwf paramnwf)
+  public void a(nxq paramnxq)
   {
-    this.a = paramnwf;
+    this.a = paramnxq;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    bdll.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
+    bcef.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
   }
   
   public void onResume()
@@ -55,23 +55,23 @@ public class WebpageFragment
   
   public boolean showPreview()
   {
-    noe.a("Web_qqbrowser_ShowPreview");
+    npn.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.mUIStyleHandler.a(this.intent);
-    this.mUIStyle.c = 0L;
-    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_Birj.D);
+    this.mUIStyleHandler.initUIStyle(this.intent);
+    this.mUIStyle.mFloatBarRulesFromUrl = 0L;
+    this.contentView.a(this.mUIStyleHandler.mUIStyle.mIsDisableRefreshView);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     setImmersiveStatus();
     if (QLog.isColorLevel()) {
       QLog.d("WebpageFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
     }
-    this.mUIStyleHandler.c = true;
-    this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
+    this.mUIStyleHandler.mIsShownPreview = true;
+    this.mUIStyleHandler.waitting = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
     this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.mUIStyleHandler.a(this.mUrl);
-    this.mUIStyleHandler.b = false;
-    noe.b("Web_qqbrowser_ShowPreview");
+    this.mUIStyleHandler.needTitlebarTransparent(this.mUrl);
+    this.mUIStyleHandler.canWebViewOverScroll = false;
+    npn.b("Web_qqbrowser_ShowPreview");
     return true;
   }
 }

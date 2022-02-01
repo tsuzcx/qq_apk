@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import agej;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -13,17 +12,17 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import aslv;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public class BigEmotionDownloadedAdapter$1
+class BigEmotionDownloadedAdapter$1
   implements Runnable
 {
-  public BigEmotionDownloadedAdapter$1(aslv paramaslv, Context paramContext) {}
+  BigEmotionDownloadedAdapter$1(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, Context paramContext) {}
   
   public void run()
   {
-    this.this$0.a = new ColorDrawable(Color.parseColor("#fafafa"));
-    Bitmap localBitmap = Bitmap.createBitmap(agej.a(44.0F, this.a.getResources()), agej.a(44.0F, this.a.getResources()), Bitmap.Config.ARGB_8888);
+    this.this$0.defaultCommercialDrawable = new ColorDrawable(Color.parseColor("#fafafa"));
+    Bitmap localBitmap = Bitmap.createBitmap(AIOUtils.dp2px(44.0F, this.val$mContext.getResources()), AIOUtils.dp2px(44.0F, this.val$mContext.getResources()), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint();
     Rect localRect = new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
@@ -34,12 +33,12 @@ public class BigEmotionDownloadedAdapter$1
     localCanvas.drawRoundRect(localRectF, 4.0F, 4.0F, localPaint);
     localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
     localCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), localRect, localPaint);
-    this.this$0.a.draw(localCanvas);
+    this.this$0.defaultCommercialDrawable.draw(localCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter.1
  * JD-Core Version:    0.7.0.1
  */

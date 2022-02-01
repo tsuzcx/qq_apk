@@ -1,13 +1,34 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-final class zzg
-  implements Comparator<File>
+public class zzg
+  implements INetEngine.INetEngineListener
 {
-  public int a(File paramFile1, File paramFile2)
+  public zzg(EditVideoSmartMusicPart.1 param1) {}
+  
+  public void onResp(NetResp paramNetResp)
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + paramNetResp.mHttpCode);
+    if (zzf.a(this.a.this$0) == null) {
+      return;
+    }
+    try
+    {
+      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
+      npo.a(zzf.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + paramNetResp);
+    }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

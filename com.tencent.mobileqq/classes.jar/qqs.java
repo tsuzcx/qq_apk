@@ -1,26 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericPullAnimatorView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qqs
-  implements View.OnClickListener
+class qqs
+  implements View.OnTouchListener
 {
-  public qqs(ComponentPolymericPullAnimatorView paramComponentPolymericPullAnimatorView, ArticleInfo paramArticleInfo, JSONObject paramJSONObject) {}
+  qqs(qqm paramqqm, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericPullAnimatorView.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.d);
-    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId + "";
-    if (ozs.o(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
-    for (String str1 = "1";; str1 = "2")
+    if (paramMotionEvent.getAction() == 0)
     {
-      ocd.a(null, "CliOper", "", "", "0X800982B", "0X800982B", 0, 0, str2, str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", this.jdField_a_of_type_OrgJsonJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
     }
+    return false;
   }
 }
 

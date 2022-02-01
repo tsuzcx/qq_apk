@@ -2,10 +2,10 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
 import java.util.List;
-import yuk;
-import ywf;
-import yxt;
-import yzl;
+import xvv;
+import xxq;
+import xzd;
+import yau;
 
 class HWEditLocalVideoPlayer$2$1
   implements Runnable
@@ -16,16 +16,16 @@ class HWEditLocalVideoPlayer$2$1
   {
     if (this.a.this$0.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      yzl localyzl = (yzl)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.this$0, localyzl);
+      yau localyau = (yau)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.this$0, localyau);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Yxt.a(Message.obtain(null, 8));
+      this.a.this$0.jdField_a_of_type_Xzd.a(Message.obtain(null, 8));
       HWEditLocalVideoPlayer.a(this.a.this$0, this.a.this$0.jdField_a_of_type_Int);
-      this.a.this$0.jdField_a_of_type_Yxt.a.a(true);
+      this.a.this$0.jdField_a_of_type_Xzd.a.a(true);
       return;
-      yuk.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      xvv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }

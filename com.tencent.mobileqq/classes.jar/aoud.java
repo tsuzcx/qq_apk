@@ -1,34 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.open.base.BspatchUtil;
+import java.io.File;
 
 class aoud
-  implements PermissionMonitor.Listener
+  implements aoug
 {
-  static
+  aoud(aotv paramaotv, aouf paramaouf1, String paramString1, aouf paramaouf2, String paramString2, aouh paramaouh) {}
+  
+  public void a(byte[] paramArrayOfByte)
   {
-    if (!aotx.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.jdField_b_of_type_JavaLangString }));
+    }
+    for (;;)
     {
-      jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Aouh.a(false);
       return;
+      if (!aotv.b(paramArrayOfByte, this.jdField_a_of_type_Aouf.f))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aouf.f }));
+      }
+      else
+      {
+        String str1 = aotv.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Aouf.jdField_a_of_type_JavaLangString);
+        if (!new File(str1).isFile())
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, str1 }));
+        }
+        else
+        {
+          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aouf.d });
+          if (!aotv.a(paramArrayOfByte, str2))
+          {
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, str2 }));
+          }
+          else
+          {
+            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString }))) {
+              break;
+            }
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.f }));
+          }
+        }
+      }
     }
-  }
-  
-  aoud(aotx paramaotx) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
-    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 4)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.b(aotx.a(this.jdField_a_of_type_Aotx), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    this.jdField_a_of_type_Aouh.a(true);
   }
 }
 

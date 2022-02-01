@@ -1,14 +1,23 @@
-import android.os.IInterface;
-import cooperation.qlink.SendMsg;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
-public abstract interface bmij
-  extends IInterface
+public class bmij
+  implements bmim
 {
-  public abstract void a(SendMsg paramSendMsg);
+  public bmij(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public void a(int paramInt)
+  {
+    AEEditorImageEditFragment.a(this.a, paramInt);
+    if (!AEEditorImageEditFragment.a(this.a))
+    {
+      AEEditorImageEditFragment.a(this.a, true);
+      AEEditorImageEditFragment.c(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmij
  * JD-Core Version:    0.7.0.1
  */

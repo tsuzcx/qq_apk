@@ -1,263 +1,89 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.IBaseActionListener;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bcul
-  extends abiv
+class bcul
+  extends asdv
 {
-  private static String[] a = { "QzoneService", "SQQzoneSvc" };
+  bcul(bcuk parambcuk) {}
   
-  private UniPacket a(String paramString)
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setEncodeName("utf8");
-    a(localUniPacket);
-    localUniPacket.put("uin", Long.valueOf(Long.parseLong(paramString)));
-    return localUniPacket;
-  }
-  
-  private Object a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramFromServiceMsg = bmub.a(paramFromServiceMsg.getWupBuffer());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "decodeGetQZoneCover|jceObj = " + paramFromServiceMsg);
-    }
-    return paramFromServiceMsg;
-  }
-  
-  private void a(UniPacket paramUniPacket)
-  {
-    paramUniPacket.setEncodeName("utf8");
-    paramUniPacket.put("version", Integer.valueOf(1091030));
-    paramUniPacket.put("Q-UA", AppSetting.e());
-    paramUniPacket.put("rupt", Boolean.valueOf(false));
-  }
-  
-  private Object b(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramFromServiceMsg = bmtc.a(paramFromServiceMsg.getWupBuffer());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "decodeGetQZonePhotoWall|jceObj = " + paramFromServiceMsg);
-    }
-    return paramFromServiceMsg;
-  }
-  
-  private byte[] b(ToServiceMsg paramToServiceMsg)
-  {
-    UniPacket localUniPacket = a(paramToServiceMsg.getUin());
-    localUniPacket.put("uin", Long.valueOf(Long.parseLong(paramToServiceMsg.getUin())));
-    a(localUniPacket);
-    localUniPacket.setServantName("QzoneServer");
-    localUniPacket.setFuncName("GetNewAndUnread");
-    return bhuf.a(localUniPacket.encode());
-  }
-  
-  private Object c(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramFromServiceMsg = bmta.a(paramFromServiceMsg.getWupBuffer());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "decodeDelQZonePhotoWall|jceObj = " + paramFromServiceMsg);
-    }
-    return paramFromServiceMsg;
-  }
-  
-  private byte[] c(ToServiceMsg paramToServiceMsg)
-  {
-    long l4 = 0L;
-    String str = (String)paramToServiceMsg.getAttribute("uin");
-    Integer localInteger = (Integer)paramToServiceMsg.getAttribute("flag", Integer.valueOf(1));
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "handleGetQZoneCover|uin = " + str + ",flag=" + localInteger.intValue());
+    paramInt = 0;
+    paramByteStringMicro = new JSONObject();
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TeamWorkFileImportForH5", 2, "---onUpdateGetOfflineDownloadInfo retCode: " + paramLong1 + ",retMsg: " + paramString1 + ",strCookie: " + paramString2 + ",strIP: " + paramString3 + ",port: " + paramShort);
+      }
+      paramString1 = new StringBuilder("http://");
+      paramString1.append(paramString3).append(":").append(paramShort).append(paramString4);
+      if (paramBoolean2) {
+        paramString1.append("&isthumb=0");
+      }
+      try
+      {
+        paramString3 = new JSONArray();
+        paramString3.put(0, paramString1.toString());
+        paramByteStringMicro.put("urls", paramString3);
+        paramByteStringMicro.put("filename", paramString5);
+        paramByteStringMicro.put("cookie", paramString2);
+        paramByteStringMicro.put("bUseMediaPlatform", paramBoolean2);
+        paramShort = 1;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramShort = 0;
+          QLog.e("TeamWorkFileImportForH5", 2, "onUpdateGetOfflineDownloadInfo exception: " + paramString1.toString());
+        }
+      }
+      paramInt = 0;
     }
     for (;;)
     {
       try
       {
-        l1 = Long.parseLong(str);
-        l3 = l1;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        try
+        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
         {
-          l2 = Long.parseLong(paramToServiceMsg.getUin());
-          l3 = l1;
-          return new bmub(l3, l2, localInteger.intValue()).encode();
+          if (paramShort == 0) {
+            paramByteStringMicro.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+          }
+          paramByteStringMicro.put("filetype", 1);
+          paramByteStringMicro.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
+          paramByteStringMicro.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
+          paramByteStringMicro.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
+          paramByteStringMicro.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+          if (!this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend) {
+            continue;
+          }
+          paramByteStringMicro.put("ownertype", 1);
+          paramInt = 1;
         }
-        catch (Exception paramToServiceMsg)
-        {
-          long l1;
-          long l2;
-          long l3;
-          break label115;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        l1 = 0L;
       }
-      label115:
-      l2 = l4;
-      if (QLog.isColorLevel())
+      catch (Exception paramString1)
       {
-        QLog.i("Q.qzonecover.", 2, paramToServiceMsg.toString());
-        l3 = l1;
-        l2 = l4;
+        QLog.e("TeamWorkFileImportForH5", 2, "put fileid exception: " + paramString1.toString());
+        paramInt = 0;
+        continue;
+        this.a.a(true);
       }
-    }
-  }
-  
-  private byte[] d(ToServiceMsg paramToServiceMsg)
-  {
-    long l4 = 0L;
-    String str2 = (String)paramToServiceMsg.getAttribute("uin");
-    String str1 = (String)paramToServiceMsg.getAttribute("photo_id");
-    Long localLong = (Long)paramToServiceMsg.getAttribute("photo_time");
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "handleDetQZonePhotoWall|uin = " + str2);
-    }
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(str2);
-        l3 = l1;
+      if (((paramInt == 0) && (paramShort == 0)) || (paramByteStringMicro == null)) {
+        continue;
       }
-      catch (Exception paramToServiceMsg)
-      {
-        try
-        {
-          l2 = Long.parseLong(paramToServiceMsg.getUin());
-          l3 = l1;
-          return new bmta(l3, l2, str1, localLong).encode();
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          long l1;
-          long l2;
-          long l3;
-          break label108;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        l1 = 0L;
-      }
-      label108:
-      l2 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
-        l3 = l1;
-        l2 = l4;
-      }
-    }
-  }
-  
-  private byte[] e(ToServiceMsg paramToServiceMsg)
-  {
-    long l4 = 0L;
-    String str2 = (String)paramToServiceMsg.getAttribute("uin");
-    String str1 = (String)paramToServiceMsg.getAttribute("attachInfo");
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonephotowall", 2, "handleGetQZonePhotoWall|uin = " + str2);
-    }
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(str2);
-        l3 = l1;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        try
-        {
-          l2 = Long.parseLong(paramToServiceMsg.getUin());
-          l3 = l1;
-          return new bmtc(l3, l2, str1).encode();
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          long l1;
-          long l2;
-          long l3;
-          break label95;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        l1 = 0L;
-      }
-      label95:
-      l2 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
-        l3 = l1;
-        l2 = l4;
-      }
-    }
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    Object localObject = null;
-    if ("SQQzoneSvc.getCover".equals(str)) {
-      localObject = a(paramFromServiceMsg, paramToServiceMsg);
-    }
-    do
-    {
-      return localObject;
-      if ("SQQzoneSvc.getPhotoWall".equals(str)) {
-        return b(paramFromServiceMsg, paramToServiceMsg);
-      }
-    } while (!"SQQzoneSvc.delPhotoWall".equals(str));
-    return c(paramFromServiceMsg, paramToServiceMsg);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    try
-    {
-      paramToServiceMsg.actionListener.onActionResult(paramFromServiceMsg);
+      this.a.jdField_a_of_type_Bcum.b(paramByteStringMicro, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.a.hashCode());
       return;
+      QLog.e("TeamWorkFileImportForH5", 1, "---onUpdateGetOfflineDownloadInfo retCode: " + paramLong1 + ",fileName: " + paramString5 + "----");
+      paramShort = paramInt;
+      break;
+      paramByteStringMicro.put("ownertype", 2);
     }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return false;
-  }
-  
-  public byte[] a(ToServiceMsg paramToServiceMsg)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("QzoneService.GetNewAndUnread".equals(str)) {
-      return b(paramToServiceMsg);
-    }
-    if ("SQQzoneSvc.getCover".equals(str)) {
-      return c(paramToServiceMsg);
-    }
-    if ("SQQzoneSvc.getPhotoWall".equals(str)) {
-      return e(paramToServiceMsg);
-    }
-    if ("SQQzoneSvc.delPhotoWall".equals(str)) {
-      return d(paramToServiceMsg);
-    }
-    return null;
-  }
-  
-  public String[] a()
-  {
-    return a;
   }
 }
 

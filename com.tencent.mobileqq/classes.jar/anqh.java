@@ -1,128 +1,94 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public class anqh
-  extends RelativeLayout
+  extends anrh
 {
-  int jdField_a_of_type_Int = 1;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 2;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  int c = 3;
-  
-  public anqh(ApolloGameInfoFragment paramApolloGameInfoFragment, Context paramContext, String paramString)
+  public anqh(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramContext);
-    a(paramString);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void a(int paramInt, String paramString)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, new Object[] { "[setGameId] gameId:", Integer.valueOf(paramInt) });
-    }
-    if (paramInt > 0)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
-    }
-    setOnClickListener(new anqk(this, paramString, paramInt));
-  }
-  
-  public void a(Bitmap paramBitmap, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, new Object[] { "[setPubAccountInfo] uin:", paramString });
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
-    }
+    Object localObject1 = null;
     for (;;)
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      setOnClickListener(new anqj(this));
-      return;
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130838512);
-      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] logoUrl is null");
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    int i = Color.parseColor("#FFDEDFE0");
-    Object localObject = new ImageView(getContext());
-    ((ImageView)localObject).setBackgroundColor(i);
-    ((ImageView)localObject).setId(this.jdField_a_of_type_Int);
-    addView((View)localObject, new RelativeLayout.LayoutParams(-1, 1));
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    localObject = new RelativeLayout.LayoutParams(-2, -2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_a_of_type_Int);
-    ((RelativeLayout.LayoutParams)localObject).addRule(9);
-    ((RelativeLayout.LayoutParams)localObject).setMargins(agej.a(12.0F, getResources()), agej.a(17.0F, getResources()), 100, agej.a(20.0F, getResources()));
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    paramString = new ImageView(getContext());
-    paramString.setBackgroundColor(i);
-    localObject = new RelativeLayout.LayoutParams(-1, 1);
-    ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_b_of_type_Int);
-    addView(paramString, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849596);
-    paramString = new RelativeLayout.LayoutParams(agej.a(9.0F, getResources()), agej.a(18.0F, getResources()));
-    paramString.addRule(11);
-    paramString.addRule(15);
-    paramString.rightMargin = agej.a(27.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(this.c);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-7829368);
-    paramString = new RelativeLayout.LayoutParams(-2, -2);
-    paramString.rightMargin = agej.a(11.0F, getResources());
-    paramString.addRule(11);
-    paramString.rightMargin = agej.a(27.0F, getResources());
-    paramString.addRule(15);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    addView(this.jdField_b_of_type_AndroidWidgetTextView, paramString);
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
-    paramString = new RelativeLayout.LayoutParams(agej.a(25.0F, getResources()), agej.a(25.0F, getResources()));
-    paramString.rightMargin = agej.a(11.0F, getResources());
-    paramString.addRule(0, this.c);
-    paramString.addRule(15);
-    setBackgroundResource(2130839362);
-    addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramString);
-    setOnClickListener(new anqi(this));
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      try
+      {
+        Intent localIntent = new Intent();
+        Object localObject2 = this.jdField_a_of_type_JavaLangString.split("\\?");
+        if (localObject2.length < 2) {
+          break label324;
+        }
+        localIntent.putExtra("extra_key_url_append", localObject2[1]);
+        if (localObject2[1] == null) {
+          break label324;
+        }
+        if (localObject2[1].contains("tab=game_center"))
+        {
+          i = 0;
+          j = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("CMShowAction", 2, new Object[] { "apollo_store url:", localObject1 });
+          }
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            localObject2 = amip.ah;
+          }
+          if (j != 0)
+          {
+            ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext);
+            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+              break;
+            }
+            localObject1 = (alnr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_clk", ((alnr)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()), 0, new String[] { "0" });
+            break;
+          }
+        }
+        else
+        {
+          if (localObject2[1].contains("tab=other_url&url="))
+          {
+            localObject1 = URLDecoder.decode(localObject2[1].substring(localObject2[1].indexOf("tab=other_url&url=") + "tab=other_url&url=".length()));
+            i = 1;
+            j = 0;
+            continue;
+          }
+          localObject1 = new HashMap();
+          wjy.a(localObject2[1], (HashMap)localObject1);
+          localObject1 = alnr.b((String)((HashMap)localObject1).get("tab"), true);
+          i = 0;
+          j = 0;
+          continue;
+        }
+        if (i != 0)
+        {
+          ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2);
+          continue;
+        }
+        ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext, localIntent, null, (String)localObject2, null);
       }
+      catch (Exception localException)
+      {
+        a("CMShowAction");
+        QLog.e("CMShowAction", 1, "doAction error: " + localException.getMessage());
+        return false;
+      }
+      continue;
+      label324:
+      int i = 0;
+      int j = 0;
     }
+    return true;
   }
 }
 

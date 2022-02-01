@@ -1,19 +1,8 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
-
 public class bajc
-  extends baje
 {
-  public bajc(VasProfileSimpleView paramVasProfileSimpleView, azxr paramazxr)
-  {
-    super(null);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    VasProfileSimpleView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView, true);
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView.b(this.jdField_a_of_type_Azxr);
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

@@ -1,83 +1,48 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.database.Cursor;
+import android.os.Parcel;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import com.tencent.open.component.cache.database.DbCacheData.Structure;
 
-public class biac
+final class biac
+  implements DbCacheData.DbCreator<biab>
 {
-  private static int a = 57600;
-  private static int b = -1;
-  
-  private static Bitmap a(Bitmap paramBitmap)
+  public biab a(Cursor paramCursor)
   {
-    double d2 = -1.0D;
-    int i;
-    double d1;
-    if (a > 0)
-    {
-      i = paramBitmap.getWidth() * paramBitmap.getHeight();
-      d1 = d2;
-      if (i > a) {
-        d1 = Math.sqrt(a / i);
-      }
-    }
-    while (d1 <= 0.0D)
-    {
-      return paramBitmap;
-      d1 = d2;
-      if (b > 0)
-      {
-        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
-        d1 = d2;
-        if (i > b) {
-          d1 = b / i;
-        }
-      }
-    }
     try
     {
-      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
-      return paramBitmap;
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new biab(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
     }
-    catch (OutOfMemoryError paramBitmap)
+    catch (Exception paramCursor)
     {
-      QLog.e("VasPalette", 1, "scaleBitmapDown failed.", paramBitmap);
+      paramCursor.printStackTrace();
     }
     return null;
   }
   
-  public static List<biad> a(Bitmap paramBitmap)
+  public String sortOrder()
   {
-    if (paramBitmap != null)
-    {
-      paramBitmap = a(paramBitmap);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-      {
-        biaf localbiaf = new biaf();
-        try
-        {
-          localbiaf.a(a(paramBitmap), 16);
-          paramBitmap.recycle();
-          return localbiaf.a();
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
-          }
-        }
-      }
-    }
     return null;
   }
   
-  private static int[] a(Bitmap paramBitmap)
+  public DbCacheData.Structure[] structure()
   {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[i * j];
-    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
-    return arrayOfInt;
+    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
+  }
+  
+  public int version()
+  {
+    return 1;
   }
 }
 

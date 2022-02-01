@@ -1,28 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
 public class bifl
-  implements TVK_SDKMgr.InstallListener
 {
-  public bifl(HealthBusinessPlugin.7 param7) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onInstallProgress(float paramFloat)
+  public bifl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a.this$0.c = ((int)(100.0F * paramFloat));
-    this.a.this$0.b.sendEmptyMessage(2);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.d = paramString3;
+    this.c = paramString4;
+    this.e = paramString5;
   }
   
-  public void onInstalledFailed(int paramInt)
+  public String toString()
   {
-    this.a.this$0.d = paramInt;
-    this.a.this$0.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.this$0.b.sendEmptyMessage(0);
+    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
   }
 }
 

@@ -1,30 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.HttpNetReq;
 
 public class aojp
-  implements aojm
 {
   public int a;
+  public long a;
+  public HttpNetReq a;
   public String a;
-  public String b;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  private aojp(TroopManager paramTroopManager) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public aojp()
   {
-    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin))) {
-      return;
-    }
-    paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "newRealLevel:" + this.jdField_a_of_type_Int + ",troopUin : " + this.b + ",memberUin" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramTroopMemberInfo.getStatus() == 1000) {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

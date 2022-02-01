@@ -1,174 +1,177 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.MessageForConfessNews;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Locale;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.widget.RoundRectImageView;
+import java.util.ArrayList;
 
-public class ahbx
-  extends agem
+class ahbx
+  extends ahbz
 {
-  public ahbx(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public ahbx(ahbu paramahbu, Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    super(paramahbu, paramContext, paramViewGroup);
   }
   
-  protected agen a()
+  private boolean a(int paramInt)
   {
-    return new ahbz();
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
-  {
-    MessageForConfessNews localMessageForConfessNews = (MessageForConfessNews)paramMessageRecord;
-    ahbz localahbz = (ahbz)paramagen;
-    paramLinearLayout = paramView;
-    if (paramView == null)
-    {
-      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558830, null);
-      localahbz.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131378936));
-      localahbz.c = ((TextView)paramLinearLayout.findViewById(2131365078));
-      localahbz.d = ((TextView)paramLinearLayout.findViewById(2131378163));
-      localahbz.jdField_b_of_type_AndroidViewView = paramLinearLayout.findViewById(2131365046);
-      localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView = ((ConfessNewsBgView)paramLinearLayout.findViewById(2131363390));
-      localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setPressMask(true);
-      localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnClickListener(new ahby(this));
+    Object localObject1 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Ahbr.itemView.getWidth() - (int)(2.0F * this.jdField_a_of_type_Ahbu.e + 0.5F), this.jdField_a_of_type_Ahbr.itemView.getHeight() - (int)(2.0F * this.jdField_a_of_type_Ahbu.e + 0.5F) * 2);
+    ((RelativeLayout.LayoutParams)localObject1).leftMargin = (this.jdField_c_of_type_ArrayOfInt[0] + (int)(2.0F * this.jdField_a_of_type_Ahbu.e + 0.5F));
+    this.jdField_a_of_type_AndroidViewViewGroup.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = (this.jdField_c_of_type_ArrayOfInt[1] - this.jdField_b_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Ahbu.jdField_a_of_type_Int + (int)(2.0F * this.jdField_a_of_type_Ahbu.e + 0.5F));
+    this.jdField_a_of_type_Ahbr.itemView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
+      return false;
     }
-    localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setTag(localMessageForConfessNews);
-    localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setBgType(localMessageForConfessNews.nBGType);
-    localahbz.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-    localahbz.jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentWidgetRoundRectImageView, (ViewGroup.LayoutParams)localObject1);
+    float f1;
+    int j;
     int i;
-    boolean bool1;
-    Object localObject;
-    label251:
-    String str2;
-    String str1;
-    label306:
-    StringBuilder localStringBuilder;
-    if ((paramMessageRecord.istroop != 0) || (paramMessageRecord.istroop == 1))
+    int k;
+    int m;
+    float f2;
+    switch (PhotoListPanel.f())
     {
-      i = 1;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localMessageForConfessNews.strConfessorUin);
-      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localMessageForConfessNews.strRecUin);
-      if (!bool2) {
-        break label574;
-      }
-      localObject = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { anzj.a(2131701318) });
-      localahbz.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      str2 = localMessageForConfessNews.strConfessorDesc;
-      float f = aqzc.a(str2);
-      paramView = localMessageForConfessNews.strConfessorNick;
-      if (bool1) {
-        paramView = anzj.a(2131701317);
-      }
-      if (localMessageForConfessNews.confessTime > 0L) {
-        break label692;
-      }
-      str1 = "";
-      localStringBuilder = new StringBuilder();
-      if (localMessageForConfessNews.nBizType != 1) {
-        break label741;
-      }
-      if (!bool2) {
-        break label712;
-      }
-      paramView = anzj.a(2131701322);
-      label335:
-      localStringBuilder.append(String.format(Locale.getDefault(), anzj.a(2131701321), new Object[] { Integer.valueOf(localMessageForConfessNews.nConfessNum), paramView }));
-      label371:
-      localahbz.d.setText(localStringBuilder.toString());
-      if (f <= 8.0F) {
-        break label792;
-      }
-      localahbz.c.setTextSize(1, 21.0F);
-      localahbz.c.setLineSpacing(0.0F, 1.2F);
-      if ((f > 12.0F) || (!aqzc.a(str2))) {
-        break label814;
-      }
-      i = (int)(f * 0.7D);
-    }
-    label792:
-    label814:
-    for (paramView = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; paramView = str2)
-    {
-      localahbz.c.setText(paramView);
-      if (e)
+    default: 
+      f1 = this.jdField_a_of_type_Ahbu.a(paramInt, this.jdField_a_of_type_Ahbr.itemView.getWidth() - (int)(4.0F * this.jdField_a_of_type_Ahbu.e), this.jdField_a_of_type_Ahbr.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Ahbu.e));
+      ayde.a("PhotoListPanel", "startFlingAnim", "f scale = " + f1);
+      j = this.jdField_a_of_type_Ahbu.jdField_a_of_type_ArrayOfInt[0] - (int)(65.0F * this.jdField_a_of_type_Ahbu.e + 0.5F + this.jdField_a_of_type_Ahbr.itemView.getWidth() * f1 + 0.5F) - this.jdField_c_of_type_ArrayOfInt[0];
+      paramInt = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+      i = this.jdField_a_of_type_Ahbu.jdField_a_of_type_ArrayOfInt[1];
+      k = this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getHeight();
+      int n = (int)(13.0F * this.jdField_a_of_type_Ahbu.e + 0.5F + this.jdField_a_of_type_Ahbr.itemView.getHeight() * f1 + 0.5F);
+      int i1 = this.jdField_c_of_type_ArrayOfInt[1];
+      m = ((RelativeLayout.LayoutParams)localObject1).topMargin - (int)(30.0F * this.jdField_a_of_type_Ahbu.e);
+      k = paramInt + i - k - n - i1 + m;
+      localObject1 = this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Ahbp.a(this.jdField_a_of_type_Ahbu.c);
+      f2 = ((LocalMediaInfo)localObject1).mediaHeight * 1.0F / ((LocalMediaInfo)localObject1).mediaWidth;
+      if (this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Ahbp.getItemViewType(this.jdField_b_of_type_Int) == 1)
       {
-        paramagen.b.append((String)localObject).append(paramView).append(",").append(localStringBuilder.toString());
-        paramLinearLayout.setContentDescription(paramagen.b.toString());
+        paramInt = k - (int)(70.0F * this.jdField_a_of_type_Ahbu.e + 0.5F);
+        i = j;
       }
-      localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setTag(paramMessageRecord);
-      localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnTouchListener(paramagjk);
-      localahbz.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnLongClickListener(paramagjk);
-      return paramLinearLayout;
-      i = 0;
       break;
-      label574:
-      localObject = localMessageForConfessNews.strRecNick;
-      paramView = (View)localObject;
-      if (i != 0) {
-        if (localMessageForConfessNews.nRecNickType != 1)
+    }
+    for (;;)
+    {
+      localObject1 = new AnimationSet(false);
+      Object localObject2 = new ScaleAnimation(1.0F, f1, 1.0F, f1);
+      ((ScaleAnimation)localObject2).setStartOffset(200L);
+      ((ScaleAnimation)localObject2).setDuration(300L);
+      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
+      localObject2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -m);
+      ((TranslateAnimation)localObject2).setStartOffset(0L);
+      ((TranslateAnimation)localObject2).setDuration(200L);
+      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
+      localObject2 = new AnimationSet(false);
+      ((AnimationSet)localObject2).setStartOffset(200L);
+      ((AnimationSet)localObject2).setDuration(300L);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, i, 0.0F, 0.0F);
+      localTranslateAnimation.setInterpolator(new LinearInterpolator());
+      ((AnimationSet)localObject2).addAnimation(localTranslateAnimation);
+      localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, paramInt);
+      localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
+      ((AnimationSet)localObject2).addAnimation(localTranslateAnimation);
+      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
+      localObject2 = new AlphaAnimation(1.0F, 0.0F);
+      ((AlphaAnimation)localObject2).setStartOffset(200L + 300L - 200L / 2L);
+      ((AlphaAnimation)localObject2).setDuration(200L);
+      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
+      this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation((Animation)localObject1);
+      ((AnimationSet)localObject1).setAnimationListener(new ahby(this));
+      return true;
+      f1 = this.jdField_a_of_type_Ahbu.a(paramInt, this.jdField_a_of_type_Ahbr.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Ahbu.e));
+      break;
+      paramInt = k;
+      i = j;
+      if (PhotoListPanel.f() == 1) {
+        if (((LocalMediaInfo)localObject1).mediaHeight > ((LocalMediaInfo)localObject1).mediaWidth)
         {
-          paramView = (View)localObject;
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+          paramInt = k - (int)((this.jdField_a_of_type_Ahbr.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Ahbu.e)) * 0.5F * (f2 - 1.0F) * f1);
+          i = j;
         }
         else
         {
-          str1 = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForConfessNews.strGroupUin, localMessageForConfessNews.strRecUin);
-          paramView = (View)localObject;
-          if (!TextUtils.isEmpty(str1)) {
-            paramView = str1;
-          }
+          i = j - (int)((this.jdField_a_of_type_Ahbr.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Ahbu.e)) * 0.5F * (1.0F / f2 - 1.0F) * f1);
+          paramInt = k;
         }
       }
-      localObject = paramView;
-      if (paramView != null)
-      {
-        localObject = paramView;
-        if (paramView.length() > 7) {
-          localObject = aqyz.a(paramView, 7.0F);
-        }
-      }
-      localObject = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { localObject });
-      break label251;
-      label692:
-      str1 = bhsw.a(localMessageForConfessNews.confessTime * 1000L, true, "");
-      break label306;
-      label712:
-      if (localMessageForConfessNews.nGetConfessSex == 1)
-      {
-        paramView = anzj.a(2131701319);
-        break label335;
-      }
-      paramView = anzj.a(2131701320);
-      break label335;
-      label741:
-      localStringBuilder.append("来自");
-      if ((i != 0) && (!bool1)) {}
-      localStringBuilder.append(paramView);
-      if (TextUtils.isEmpty(str1)) {
-        break label371;
-      }
-      localStringBuilder.append(" | ").append(str1);
-      break label371;
-      localahbz.c.setTextSize(1, 24.0F);
-      localahbz.c.setLineSpacing(0.0F, 1.0F);
     }
   }
   
-  public bhum[] a(View paramView)
+  boolean a(MotionEvent paramMotionEvent)
   {
-    paramView = new bhuk();
-    a(paramView);
-    return paramView.a();
+    this.jdField_a_of_type_Ahbu.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    return true;
+  }
+  
+  boolean b(MotionEvent paramMotionEvent)
+  {
+    ayde.a("PhotoListPanel", "handleUp", "handler = " + this);
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    float f3 = f2 - this.jdField_a_of_type_Ahbu.jdField_b_of_type_Float;
+    float f4 = this.jdField_a_of_type_Ahbu.jdField_a_of_type_Float;
+    int i = paramMotionEvent.getPointerId(0);
+    this.jdField_a_of_type_Ahbu.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
+    float f5 = this.jdField_a_of_type_Ahbu.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
+    ayde.a("PhotoListPanel", "FlingHandler", "@@handleUp,x = " + f1 + ",y = " + f2 + ",delY = " + f3 + ",velocityY = " + f5 + ",SWIPE_THRESHOLD = " + ahbu.b());
+    if ((-f3 > ahbu.b()) && (Math.abs(f5) > 100.0F) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Ahbu.jdField_a_of_type_Long < 500L) && ((this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) || (this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 0)) && (Math.abs(f3) > Math.abs(f1 - f4)))
+    {
+      if (this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Ahbp.a.size() == 0)
+      {
+        ayde.a("PhotoListPanel", "handleUp", "handler = " + this + "mInfos is null!!!!!! targetPosition=" + this.jdField_b_of_type_Int);
+        return false;
+      }
+      this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean = true;
+      if (!a(this.jdField_b_of_type_Int))
+      {
+        ayde.a("PhotoListPanel", "handleUp", "handler  animLayout already hasparent= ");
+        return false;
+      }
+      i = this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Ahbp.getItemViewType(this.jdField_b_of_type_Int);
+      paramMotionEvent = new ArrayList();
+      paramMotionEvent.add(this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Ahbp.a(this.jdField_b_of_type_Int).path);
+      bcef.b(null, "dc00898", "", "", "0X800A7B0", "0X800A7B0", this.jdField_b_of_type_Int + 1, 0, "1", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A914", "0X800A914", PhotoUtils.getTypeforReport2(this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo), 0, "" + (this.jdField_b_of_type_Int + 1), "", "", "");
+      boolean bool;
+      if (this.jdField_a_of_type_Ahbu.jdField_a_of_type_Ahbt != null)
+      {
+        paramMotionEvent = this.jdField_a_of_type_Ahbu.jdField_a_of_type_Ahbt;
+        String str = this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Ahbp.a(this.jdField_b_of_type_Int).path;
+        if (this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.c == 2)
+        {
+          bool = true;
+          paramMotionEvent.a(str, bool);
+        }
+      }
+      for (;;)
+      {
+        return true;
+        bool = false;
+        break;
+        this.jdField_a_of_type_Ahbu.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a(this.jdField_b_of_type_Int, paramMotionEvent, false, true, "0X8005E0D", "1", i + "", false);
+      }
+    }
+    ayde.a("PhotoListPanel", "FlingHandler", "@handleUp,return false. velocityY = " + f5 + ",dely = " + (f2 - this.jdField_a_of_type_Ahbu.jdField_b_of_type_Float));
+    return (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Ahbu.jdField_a_of_type_Long >= 200L) || (Math.abs(f2 - this.jdField_a_of_type_Ahbu.jdField_b_of_type_Float) >= this.jdField_a_of_type_Ahbu.jdField_b_of_type_Int) || (Math.abs(f1 - this.jdField_a_of_type_Ahbu.jdField_a_of_type_Float) >= this.jdField_a_of_type_Ahbu.jdField_b_of_type_Int);
   }
 }
 

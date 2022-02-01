@@ -9,7 +9,7 @@ class AgentActivity$1
   
   public void run()
   {
-    AgentActivity.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b);
+    AgentActivity.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, 1);
   }
 }
 

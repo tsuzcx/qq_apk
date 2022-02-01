@@ -1,11 +1,11 @@
 package cooperation.troop_homework;
 
-import bnsq;
+import bkxx;
 
 public class TroopHomeworkHelper$UploadFileTask$1
   implements Runnable
 {
-  public TroopHomeworkHelper$UploadFileTask$1(bnsq parambnsq) {}
+  public TroopHomeworkHelper$UploadFileTask$1(bkxx parambkxx) {}
   
   public void run()
   {

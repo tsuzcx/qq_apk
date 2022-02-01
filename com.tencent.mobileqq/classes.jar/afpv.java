@@ -1,18 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class afpv
-  extends BroadcastReceiver
+class afpv
+  implements DialogInterface.OnClickListener
 {
-  public afpv(SubLoginActivity paramSubLoginActivity) {}
+  afpv(afpu paramafpu, String paramString, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
-    SubLoginActivity.b(this.a, true);
+    paramDialogInterface = new Intent(afpu.a(this.jdField_a_of_type_Afpu), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    afpu.a(this.jdField_a_of_type_Afpu).startActivity(paramDialogInterface);
+    VipUtils.a(afpu.a(this.jdField_a_of_type_Afpu), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(afpu.a(this.jdField_a_of_type_Afpu).curType), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

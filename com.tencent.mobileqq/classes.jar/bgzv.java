@@ -1,17 +1,9 @@
-public class bgzv
+public abstract interface bgzv
+  extends bguj
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract int b();
+  
+  public abstract boolean c();
 }
 
 

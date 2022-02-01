@@ -1,34 +1,34 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.ui.MultiMembersVideoUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 public class mfr
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  public mfr(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  public mfr(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Mss == null) {}
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.h()) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().b() == -1) {
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.r(this.jdField_a_of_type_Long);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      paramDialogInterface.dismiss();
       return;
-      mfp localmfp = (mfp)paramView.getTag();
-      if (localmfp == null)
+      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
-        }
+        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
+        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 65535);
       }
-      else if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2))) {
-        this.a.jdField_a_of_type_Mss.a(localmfp.jdField_a_of_type_Long, localmfp.jdField_a_of_type_Int, paramInt, true);
-      } else {
-        this.a.jdField_a_of_type_Mss.a(localmfp.jdField_a_of_type_Long, localmfp.jdField_a_of_type_Int, paramInt, false);
+      else if (QLog.isColorLevel())
+      {
+        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
       }
     }
   }

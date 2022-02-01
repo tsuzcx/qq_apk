@@ -1,23 +1,36 @@
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import android.app.Application;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
+import android.arch.lifecycle.ViewModelProvider.Factory;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import com.tencent.common.app.BaseApplicationImpl;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class awhc
-  implements QQPermissionCallback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"ofViewModelProvider", "Landroid/arch/lifecycle/ViewModelProvider;", "owner", "Landroid/arch/lifecycle/ViewModelStoreOwner;", "observe", "", "T", "Landroid/arch/lifecycle/LifecycleOwner;", "liveData", "Landroid/arch/lifecycle/LiveData;", "observer", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class awhc
 {
-  public awhc(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  @NotNull
+  public static final ViewModelProvider a(@NotNull ViewModelStoreOwner paramViewModelStoreOwner)
   {
-    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
-    bhlq.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    Intrinsics.checkParameterIsNotNull(paramViewModelStoreOwner, "owner");
+    ViewModelProvider.AndroidViewModelFactory localAndroidViewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance((Application)BaseApplicationImpl.getApplication());
+    Intrinsics.checkExpressionValueIsNotNull(localAndroidViewModelFactory, "ViewModelProvider.Androi…ionImpl.getApplication())");
+    return new ViewModelProvider(paramViewModelStoreOwner.getViewModelStore(), (ViewModelProvider.Factory)localAndroidViewModelFactory);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static final <T> void a(@NotNull LifecycleOwner paramLifecycleOwner, @NotNull LiveData<T> paramLiveData, @NotNull Function1<? super T, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
+    Intrinsics.checkParameterIsNotNull(paramLifecycleOwner, "$this$observe");
+    Intrinsics.checkParameterIsNotNull(paramLiveData, "liveData");
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "observer");
+    paramLiveData.observe(paramLifecycleOwner, (Observer)new awhd(paramFunction1));
   }
 }
 

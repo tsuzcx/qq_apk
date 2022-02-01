@@ -1,16 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
 
-class aqvs
-  implements EIPCResultCallback
+public class aqvs
+  extends lyp
 {
-  aqvs(aqvr paramaqvr) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static boolean a(Context paramContext, String paramString)
   {
-    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
+    return a(paramContext, "TencentDoc_USER_" + paramString, false);
+  }
+  
+  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import bdll;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$8
@@ -10,7 +10,7 @@ public final class PublicAccountEventReport$8
   
   public void run()
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB7", "0X8009EB7", this.jdField_a_of_type_Int, 0, "", "", this.b + "", "");
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB7", "0X8009EB7", this.jdField_a_of_type_Int, 0, "", "", this.b + "", "");
   }
 }
 

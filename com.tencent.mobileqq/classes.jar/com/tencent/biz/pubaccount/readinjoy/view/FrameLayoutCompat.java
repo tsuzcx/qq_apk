@@ -6,12 +6,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import sdw;
+import sle;
 
 public class FrameLayoutCompat
   extends FrameLayout
 {
-  private sdw a;
+  private sle a;
   
   public FrameLayoutCompat(@NonNull Context paramContext)
   {
@@ -36,9 +36,9 @@ public class FrameLayoutCompat
     }
   }
   
-  public void setVisibilityChangedListener(sdw paramsdw)
+  public void setVisibilityChangedListener(sle paramsle)
   {
-    this.a = paramsdw;
+    this.a = paramsle;
   }
 }
 

@@ -1,19 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.text.Editable;
+import android.widget.EditText;
 
-public class ole
-  implements bliz
+public final class ole
+  implements avtb<char[]>
 {
-  public ole(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ole(EditText paramEditText) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(char[] paramArrayOfChar)
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131372670)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    ozs.a(Integer.toString(paramInt));
-    ocd.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 

@@ -90,7 +90,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "0"
+                                "double_card_pos": "0"
                             }
                         }
                       },
@@ -110,7 +110,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "0"
+                                "double_card_pos": "0"
                             }
                         }
                       },
@@ -217,7 +217,6 @@
                       "value":"84.5"
                     },
                     "attributes": {
-                      "setFrameString:": "-1",
                       "loadImageWithPath:": "$family_icon_url",
                       "setWHRate:widthBenchmark:": ["$family_icon_wh_rate", "NO"],
                       "setAttatchInfo:":"$family_jump_schemafamily_jump_schema"
@@ -479,7 +478,7 @@
             "data_attributes":{
                 "setLocalInfo:": {
                     "click_area": "7",
-                    "card_pos": "1"
+                    "double_card_pos": "1"
                 }
             },
             "subviews":[
@@ -522,7 +521,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "1"
+                                "double_card_pos": "1"
                             }
                         }
                       },
@@ -542,7 +541,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "1"
+                                "double_card_pos": "1"
                             }
                         }
                       },
@@ -650,7 +649,6 @@
                       "value":"84.5"
                     },
                     "attributes": {
-                      "setFrameString:": "-1",
                       "loadImageWithPath:": "$right_item_family_icon_url",
                       "setWHRate:widthBenchmark:": ["$right_family_icon_wh_rate", "NO"],
                       "setAttatchInfo:":"$right_family_jump_schema"
@@ -904,7 +902,6 @@
           "value": "363"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setBackgroundColorString:": "#E5E5E5"
         }
       }

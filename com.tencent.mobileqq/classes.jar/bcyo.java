@@ -1,12 +1,8 @@
-public class bcyo
+public abstract interface bcyo
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
+  public abstract int getCloudFileType();
+  
+  public abstract boolean isClickable();
 }
 
 

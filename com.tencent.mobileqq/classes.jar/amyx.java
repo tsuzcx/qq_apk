@@ -1,28 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-
-public class amyx
-  implements andu
+class amyx
+  implements lxl
 {
-  public amyx(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
+  amyx(amyp paramamyp, byte[] paramArrayOfByte) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(lxk paramlxk)
   {
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = new Bundle();
-      paramString1.putInt("type", this.jdField_a_of_type_Int);
-      paramString1.putString("uin", paramString2);
-      paramString2 = new amyy(this);
-      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
-    }
+    paramlxk.a(this.jdField_a_of_type_ArrayOfByte);
+    paramlxk.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyx
  * JD-Core Version:    0.7.0.1
  */

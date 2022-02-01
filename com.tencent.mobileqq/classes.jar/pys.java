@@ -1,26 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pys
-  implements ViewBase.OnClickListener
+class pys
+  implements View.OnClickListener
 {
-  BaseArticleInfo a;
+  pys(pyr parampyr, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public pys(BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    this.a = paramBaseArticleInfo;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    sel.a((ArticleInfo)this.a, (int)this.a.mChannelID);
-    ozs.a(localBaseActivity, paramViewBase);
+    pay.a(pyr.a(this.jdField_a_of_type_Pyr), this.jdField_a_of_type_JavaLangString);
+    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

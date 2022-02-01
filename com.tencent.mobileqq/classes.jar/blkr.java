@@ -1,23 +1,11 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.widget.DynamicGridView;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
 public class blkr
-  extends AnimatorListenerAdapter
+  extends ViewModel
 {
-  public blkr(DynamicGridView paramDynamicGridView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    DynamicGridView.b(this.a, false);
-    DynamicGridView.a(this.a);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.b(this.a, true);
-    DynamicGridView.a(this.a);
-  }
+  public final MutableLiveData<blst> a = new MutableLiveData();
+  public final MutableLiveData<bloc> b = new MutableLiveData();
 }
 
 

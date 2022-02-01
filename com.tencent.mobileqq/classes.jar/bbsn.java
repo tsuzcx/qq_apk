@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.graphics.Rect;
+import android.hardware.camera2.CameraCharacteristics;
+import java.io.File;
 
 public class bbsn
-  implements bbsr
 {
-  public bbsn(EditActivity paramEditActivity) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
-    {
-      bbsa localbbsa = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
-      if (localbbsa != null)
-      {
-        EditActivity.a(this.a).actionText = localbbsa.d;
-        EditActivity.a(this.a, false);
-      }
-    }
-  }
+  public int a;
+  public akwr a;
+  public Rect a;
+  public CameraCharacteristics a;
+  public File a;
+  public boolean a;
 }
 
 

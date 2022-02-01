@@ -1,55 +1,28 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class ajat
-  implements bfqg
+class ajat
+  extends amsu
 {
-  public ajat(BlessResultActivity paramBlessResultActivity) {}
+  ajat(ajas paramajas) {}
   
-  public void a()
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_Blha.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Blha.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Blha.sendEmptyMessage(1001);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
-    }
-    if (this.a.jdField_a_of_type_Blha.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Blha.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Blha.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
     }
   }
   
-  public void b(long paramLong)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    if (paramBoolean) {
+      this.a.a(1, paramString);
     }
   }
   
-  public void c(long paramLong)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = bhmi.a(this.a.jdField_a_of_type_Ajau.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
     }
   }
 }

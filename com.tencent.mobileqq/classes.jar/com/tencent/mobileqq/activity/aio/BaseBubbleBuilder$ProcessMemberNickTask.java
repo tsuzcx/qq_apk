@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.aio;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View.OnLongClickListener;
-import bhlg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 import java.io.UnsupportedEncodingException;
 
 class BaseBubbleBuilder$ProcessMemberNickTask
@@ -40,7 +40,7 @@ class BaseBubbleBuilder$ProcessMemberNickTask
       Object localObject;
       if (this.jdField_a_of_type_Int == 1)
       {
-        str1 = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+        str1 = ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
         localObject = str1;
         if (str1 != null)
         {
@@ -76,7 +76,7 @@ class BaseBubbleBuilder$ProcessMemberNickTask
         if (this.jdField_a_of_type_Int != 3000) {
           break label55;
         }
-        str1 = bhlg.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+        str1 = ContactUtils.getDiscussionMemberShowName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
@@ -91,7 +91,7 @@ class BaseBubbleBuilder$ProcessMemberNickTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ProcessMemberNickTask
  * JD-Core Version:    0.7.0.1
  */

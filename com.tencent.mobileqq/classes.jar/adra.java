@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-
-public class adra
-  implements DialogInterface.OnClickListener
+public abstract interface adra
 {
-  public adra(AccountManageActivity paramAccountManageActivity) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
-    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    this.a.startActivity(paramDialogInterface);
-    bdll.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
-    this.a.d();
-  }
+  public abstract void b();
 }
 
 

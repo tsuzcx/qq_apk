@@ -1,15 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 class blmp
-  implements blmr
+  implements View.OnTouchListener
 {
-  blmp(blmm paramblmm) {}
+  blmp(blmi paramblmi, bllo parambllo, int paramInt) {}
   
-  public void a(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.c(paramView);
-    this.a.c();
-    blmm.a(this.a, paramView.getTag(), false);
+    if (this.jdField_a_of_type_Bllo.a.isChecked())
+    {
+      paramView = (LocalMediaInfo)blmi.a(this.jdField_a_of_type_Blmi).get(this.jdField_a_of_type_Int);
+      blmi.a(this.jdField_a_of_type_Blmi, paramView, this.jdField_a_of_type_Bllo);
+      blmi.a(this.jdField_a_of_type_Blmi, this.jdField_a_of_type_Bllo);
+      blmi.a(this.jdField_a_of_type_Blmi);
+      if (blmi.b(this.jdField_a_of_type_Blmi).isEmpty()) {
+        ((bllh)this.jdField_a_of_type_Blmi.a.get()).a.notifyDataSetChanged();
+      }
+      return true;
+    }
+    return false;
   }
 }
 

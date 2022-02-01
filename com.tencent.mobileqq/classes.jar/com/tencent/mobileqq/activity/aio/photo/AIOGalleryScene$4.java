@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aibr;
-import aicx;
-import aidw;
+import agyh;
+import agzn;
+import aham;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class AIOGalleryScene$4
   implements Runnable
 {
-  public AIOGalleryScene$4(aibr paramaibr, long paramLong, float paramFloat, String paramString) {}
+  public AIOGalleryScene$4(agyh paramagyh, long paramLong, float paramFloat, String paramString) {}
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_Aicx.a();
-    if ((localObject == null) || (((aidw)localObject).a.f != this.jdField_a_of_type_Long)) {
+    Object localObject = this.this$0.jdField_a_of_type_Agzn.a();
+    if ((localObject == null) || (((aham)localObject).a.f != this.jdField_a_of_type_Long)) {
       return;
     }
-    if (AIOFileVideoData.class.isInstance(((aidw)localObject).a))
+    if (AIOFileVideoData.class.isInstance(((aham)localObject).a))
     {
-      localObject = (AIOFileVideoData)((aidw)localObject).a;
+      localObject = (AIOFileVideoData)((aham)localObject).a;
       ((AIOFileVideoData)localObject).c = (((float)((AIOFileVideoData)localObject).h * this.jdField_a_of_type_Float));
     }
     this.this$0.c(false);

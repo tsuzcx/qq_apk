@@ -1,25 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-import cooperation.qzone.report.lp.LpReportInfo_dc00321;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.image.NativeApngDecoder;
+import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bmtp
-  implements View.OnClickListener
+  implements GifDecoder
 {
-  public bmtp(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  private NativeApngDecoder jdField_a_of_type_ComTencentImageNativeApngDecoder;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public bmtp(String paramString)
   {
-    if (!this.a.b)
-    {
-      if (1 == this.a.c) {
-        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
-      }
-      this.a.a(false, false);
-      this.a.b();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public Bitmap getNextGifFrame(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentImageNativeApngDecoder != null) {
+      return this.jdField_a_of_type_ComTencentImageNativeApngDecoder.getNextFrameBitmap(paramLong);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
+  }
+  
+  public void init()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    File localFile;
+    do
+    {
+      do
+      {
+        return;
+        if (VasApngIPCModule.getInstance().loadSoLib()) {
+          break;
+        }
+        VasApngIPCModule.getInstance().download();
+      } while (!QLog.isColorLevel());
+      QLog.d("ApngDecodeWrapper", 2, "so not loaded");
+      return;
+      localFile = new File(this.jdField_a_of_type_JavaLangString);
+    } while ((!localFile.exists()) || (!localFile.isFile()));
+    try
+    {
+      this.jdField_a_of_type_ComTencentImageNativeApngDecoder = new NativeApngDecoder(localFile);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void release()
+  {
+    this.jdField_a_of_type_ComTencentImageNativeApngDecoder = null;
   }
 }
 

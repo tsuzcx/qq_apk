@@ -1,33 +1,60 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.app.Activity;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public final class angx
-  implements EIPCResultCallback
+public class angx
+  extends angu
 {
-  public angx(angz paramangz) {}
+  private String b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public angx(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
-    boolean bool = true;
-    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
-    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
-    angz localangz;
-    if (this.a != null)
-    {
-      localangz = this.a;
-      if (paramEIPCResult.code != 0) {
-        break label82;
-      }
+    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
+    this.b = paramString4;
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (TextUtils.isEmpty(paramString)) || (a() == 1);
+  }
+  
+  protected String f()
+  {
+    String str2 = anha.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.f();
     }
-    for (;;)
-    {
-      localangz.a(bool);
-      return;
-      label82:
-      bool = false;
+    return str1;
+  }
+  
+  protected String g()
+  {
+    String str2 = anha.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.g();
     }
+    return str1;
+  }
+  
+  protected String h()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("type", "result");
+    localJSONObject2.put("gameType", a());
+    JSONObject localJSONObject3 = new JSONObject();
+    localJSONObject3.put("jump_url", a());
+    String str2 = anha.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png";
+    }
+    localJSONObject3.put("icon_url", str1);
+    localJSONObject2.put("extra", localJSONObject3);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
   }
 }
 

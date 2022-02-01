@@ -1,49 +1,54 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity.4.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime.Status;
 
-public class azfh
-  extends anuw
+class azfh
+  extends BroadcastReceiver
 {
-  public azfh(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  private azfh(azfg paramazfg) {}
   
-  protected void onGetAutoReplyList(boolean paramBoolean, List<AutoReplyText> paramList, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, String.format("onGetAutoReplyList, isSuccess: %s, selectId: %s, replyList: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramList }));
-    }
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).runOnUiThread(new AccountOnlineStateActivity.4.1(this, paramBoolean, paramList));
-    }
-  }
-  
-  protected void onSetAutoReplyList(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      azib localazib = AccountOnlineStateActivity.a(this.a).a();
-      AppRuntime.Status localStatus = azhq.a().a(localazib);
-      if ((localStatus != null) && (!AccountOnlineStateActivity.a(this.a, localazib, localStatus)))
+      do
       {
-        AccountOnlineStateActivity.a(this.a, true);
-        AccountOnlineStateActivity.a(this.a).a(localStatus, localazib.a);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountOnlineStateActivity", 2, "onSetAutoReplyList, isSuccess: " + paramBoolean);
-      }
+        do
+        {
+          return;
+          if (azhh.a().b()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("VoiceAssistantManager", 2, "VoiceAssistantReceiver not allow");
+        return;
+        paramContext = paramIntent.getAction();
+        if ((!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) && (!"tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+          break;
+        }
+        azeu.a("HelloQQWake", "releaseQQWake()");
+        if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+          azhh.a().f = true;
+        }
+        if (this.a.b()) {
+          azfg.a(this.a, false, false);
+        }
+        azhh.a().b(paramContext);
+      } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext));
+      azhh.a().a();
       return;
-      AccountOnlineStateActivity.a(this.a, true, 0);
-      continue;
-      AccountOnlineStateActivity.a(this.a, false, -2);
-    }
+      if (("mqq.intent.action.QQ_FOREGROUND".equals(paramContext)) || ("tencent.av.v2q.StopVideoChat".equals(paramContext)))
+      {
+        if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext)) {
+          azhh.a().f = false;
+        }
+        azhh.a().a(paramContext);
+        return;
+      }
+    } while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext));
+    azhh.a().b(paramContext);
   }
 }
 

@@ -1,265 +1,148 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.1;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import org.json.JSONObject;
+import java.io.File;
+import kotlin.jvm.functions.Function0;
 
 public class bgio
-  extends bghr
-  implements Observer
 {
-  private long jdField_a_of_type_Long;
-  @Nullable
-  private bfrm jdField_a_of_type_Bfrm;
-  private bfrq jdField_a_of_type_Bfrq;
-  private bgia jdField_a_of_type_Bgia;
-  private Object jdField_a_of_type_JavaLangObject;
+  private static bgil jdField_a_of_type_Bgil;
+  private static bgio jdField_a_of_type_Bgio = new bgio();
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
+  private bgip jdField_a_of_type_Bgip = new bgip(this);
   
-  bgio(QQAppInterface paramQQAppInterface, Context paramContext, bgia parambgia, SessionInfo paramSessionInfo)
+  static
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 102;
-    this.jdField_a_of_type_Bgia = parambgia;
+    jdField_a_of_type_Bgil = new bgic();
+    jdField_a_of_type_Boolean = aqhy.c().a(Build.VERSION.SDK_INT);
+    b = true;
+    ThreadManagerV2.executeOnSubThread(new GLDrawableWraper.1());
   }
   
-  public int a(int paramInt)
+  private bgio()
   {
-    return 2130850736;
+    ThreadManagerV2.executeOnSubThread(new GLDrawableWraper.2(this));
   }
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public static bgil a()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696955), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    return jdField_a_of_type_Bgil;
+  }
+  
+  public static bgio a()
+  {
+    return jdField_a_of_type_Bgio;
+  }
+  
+  private void a()
+  {
+    if ((!bgih.a()) && (!bgih.b()) && (!jdField_a_of_type_Bgil.a()) && (!jdField_a_of_type_Bgil.b())) {
+      jdField_a_of_type_Bgil.a();
     }
-    return null;
   }
   
-  public void a()
+  public static boolean a()
   {
-    super.a();
-    this.jdField_a_of_type_Bfrq = null;
-    axfw localaxfw = (axfw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-    long l = bhnw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    if (l == -1L) {
-      return;
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(Drawable paramDrawable)
+  {
+    if (d(paramDrawable)) {
+      return true;
     }
-    this.jdField_a_of_type_Bfrm = localaxfw.a(Long.valueOf(l), true);
+    return bgih.a(paramDrawable);
+  }
+  
+  public static boolean b()
+  {
+    return b;
+  }
+  
+  public static boolean b(Drawable paramDrawable)
+  {
+    return bgih.a(paramDrawable);
+  }
+  
+  public static boolean c(Drawable paramDrawable)
+  {
+    return bgih.b(paramDrawable);
+  }
+  
+  private static boolean d(Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof URLDrawable))
+    {
+      paramDrawable = ((URLDrawable)paramDrawable).getExtraInfo();
+      if ((paramDrawable instanceof Bundle)) {
+        return ((Bundle)paramDrawable).getBoolean("key_use_gldrawable", false);
+      }
+    }
+    return false;
+  }
+  
+  public Drawable a(File paramFile, boolean paramBoolean)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
+    a();
+    return bgih.a().a(paramFile, ThreadManagerV2.getFileThreadLooper(), paramBoolean);
+  }
+  
+  public Drawable a(String paramString, Handler paramHandler, boolean paramBoolean)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
+    a();
+    return bgih.a().a(paramString, paramHandler, paramBoolean);
+  }
+  
+  public bghx a(bgig parambgig, boolean paramBoolean, Function0<Drawable> paramFunction0)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
+    return bgih.a().a(parambgig, ThreadManagerV2.getFileThreadLooper(), paramBoolean, paramFunction0);
+  }
+  
+  public bghx a(File paramFile, boolean paramBoolean, Function0<Drawable> paramFunction0)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("TroopAioMsgNavigateNotification", 2, "onInit");
+      QLog.i("GLDrawable", 1, "use Async-GLDrawable : " + paramFile.getAbsolutePath());
     }
-    this.jdField_a_of_type_Bfrm.addObserver(this);
+    return bgih.a().a(paramFile, ThreadManagerV2.getFileThreadLooper(), paramBoolean, paramFunction0);
   }
   
-  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
+  public bgip a()
   {
-    paramTextView1.setText(paramString);
-    paramTextView1.setVisibility(0);
-    paramTextView2.setVisibility(8);
+    return this.jdField_a_of_type_Bgip;
   }
   
-  public void a(int paramInt, Object paramObject, String paramString)
+  public void a(Drawable paramDrawable)
   {
-    paramObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    String str;
-    long l;
-    if (paramObject != null)
-    {
-      paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      if (paramObject != null)
-      {
-        boolean bool = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131696967));
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        l = paramObject.dwGroupClassExt;
-        if (!bool) {
-          break label104;
-        }
-      }
-    }
-    label104:
-    for (paramObject = "2";; paramObject = "1")
-    {
-      bdll.b(paramString, "dc00898", "", "", "", "0X800AACB", 0, 1, 0, str, String.valueOf(l), paramObject, "");
-      return;
-    }
+    bgih.a().a(paramDrawable);
   }
   
-  public void b()
+  public void a(Drawable paramDrawable, boolean paramBoolean)
   {
-    super.b();
-    this.jdField_a_of_type_Bfrq = null;
-    if (this.jdField_a_of_type_Bfrm != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAioMsgNavigateNotification", 2, "onUnInit");
-      }
-      this.jdField_a_of_type_Bfrm.deleteObserver(this);
-    }
+    bgih.a().a(paramDrawable, paramBoolean);
   }
   
-  public void b(int paramInt, Object paramObject, String paramString)
+  public boolean a(Drawable paramDrawable, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    paramObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    String str;
-    long l;
-    if (paramObject != null)
-    {
-      paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      if (paramObject != null)
-      {
-        boolean bool = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131696967));
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        l = paramObject.dwGroupClassExt;
-        if (!bool) {
-          break label104;
-        }
-      }
-    }
-    label104:
-    for (paramObject = "2";; paramObject = "1")
-    {
-      bdll.b(paramString, "dc00898", "", "", "", "0X800AACC", 0, 1, 0, str, String.valueOf(l), paramObject, "");
-      return;
-    }
-  }
-  
-  void c()
-  {
-    boolean bool3 = this.jdField_a_of_type_Bgia.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAioMsgNavigateNotification", 2, "showTroopNotifyBar troopNotifyData = " + this.jdField_a_of_type_Bfrq + ",  mFIsShow = " + bool3);
-    }
-    if (this.jdField_a_of_type_Bfrq == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Bgia.a())
-    {
-      this.jdField_a_of_type_Bfrq = null;
-      return;
-    }
-    bool2 = false;
-    str2 = "";
-    Object localObject1 = str2;
-    bool1 = bool2;
-    Object localObject2;
-    if (bool3)
-    {
-      localObject1 = str2;
-      bool1 = bool2;
-      if (!this.jdField_a_of_type_Bfrq.b)
-      {
-        localObject1 = str2;
-        bool1 = bool2;
-        if ((this.jdField_a_of_type_JavaLangObject instanceof MessageForArkApp))
-        {
-          localObject1 = str2;
-          bool1 = bool2;
-          if (!this.jdField_a_of_type_Bfrq.d)
-          {
-            localObject2 = (MessageForArkApp)this.jdField_a_of_type_JavaLangObject;
-            localObject1 = str2;
-            bool1 = bool2;
-            if (((MessageForArkApp)localObject2).ark_app_message != null)
-            {
-              localObject1 = str2;
-              bool1 = bool2;
-              if (!"com.tencent.mannounce".equals(((MessageForArkApp)localObject2).ark_app_message.appName)) {}
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TroopAioMsgNavigateNotification", 2, "showTroopNotifyBar ark.ark_app_message.metaList:" + ((MessageForArkApp)localObject2).ark_app_message.metaList);
-          QLog.d("TroopAioMsgNavigateNotification", 2, "showTroopNotifyBar mTroopNotifyData confirmRequired:" + this.jdField_a_of_type_Bfrq.c + " fid:" + this.jdField_a_of_type_Bfrq.jdField_a_of_type_JavaLangString + " isShowTipWindow:" + this.jdField_a_of_type_Bfrq.b);
-        }
-        localObject1 = new JSONObject(((MessageForArkApp)localObject2).ark_app_message.metaList).optJSONObject("mannounce");
-        localObject2 = this.jdField_a_of_type_Bgia.a();
-        if ((localObject1 == null) || (localObject2 == null) || (!((JSONObject)localObject1).optString("fid").equals(this.jdField_a_of_type_Bfrq.jdField_a_of_type_JavaLangString))) {
-          continue;
-        }
-        long l = ((MessageRecord)localObject2).shmsgseq;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if ((localObject1 == null) || (!a((MessageRecord)localObject1, l, this.jdField_a_of_type_Bgia.a()))) {
-          continue;
-        }
-        if (!this.jdField_a_of_type_Bfrq.c) {
-          continue;
-        }
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696967);
-        bool1 = true;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("TroopAioMsgNavigateNotification", 1, "[showTroopNotifyBar] ", localException);
-        String str1 = str2;
-        bool1 = bool2;
-        continue;
-        str1 = "";
-        bool1 = false;
-        continue;
-      }
-      this.jdField_a_of_type_Bgia.a(new bghs(bool1, (String)localObject1, null, ""));
-      this.jdField_a_of_type_Bfrq = null;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopAioMsgNavigateNotification", 2, "showTroopNotifyBar mFIsShow:" + bool1);
-      return;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696955);
-    }
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAioMsgNavigateNotification", 2, "troopNotify update");
-    }
-    if (!(paramObject instanceof Integer)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObservable = (Integer)paramObject;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopAioMsgNavigateNotification", 2, "update. notifyType = " + paramObservable);
-        }
-      } while ((paramObservable.intValue() != 1007) && (paramObservable.intValue() != 1011));
-      if ((this.jdField_a_of_type_Bfrm != null) && (this.jdField_a_of_type_Bfrm.b != null)) {
-        try
-        {
-          this.jdField_a_of_type_Bfrq = bfrq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfrm.b);
-          c();
-          return;
-        }
-        finally {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopAioMsgNavigateNotification", 2, "update. mNewNorNotice = null!");
+    return bgih.a().a(paramDrawable, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
   }
 }
 

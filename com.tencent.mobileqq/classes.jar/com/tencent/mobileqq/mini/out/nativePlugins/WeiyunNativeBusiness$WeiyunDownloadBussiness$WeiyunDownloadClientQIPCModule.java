@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import bjtx;
+import bhzm;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -39,7 +39,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    bjtx.c("WeiyunDownloadClientIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    bhzm.c("WeiyunDownloadClientIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
     if (paramBundle == null) {}
     for (;;)
     {

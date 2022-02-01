@@ -1,19 +1,36 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-public abstract interface wku
+final class wku
+  implements bjoe
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, wkq paramwkq);
+  wku(QQUserUIItem paramQQUserUIItem, bjnw parambjnw) {}
   
-  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wkq paramwkq);
-  
-  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, wkq paramwkq);
-  
-  public abstract void a(String paramString, int paramInt, wkq paramwkq);
-  
-  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, wkq paramwkq);
-  
-  public abstract void b(String paramString, int paramInt, wkq paramwkq);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new wct().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      xvv.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
+  }
 }
 
 

@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class pxq
-  implements ViewBase.OnClickListener
+  implements pxe<BEAN>
 {
-  pxq(pxl parampxl, ppu paramppu) {}
+  pxq(pxp parampxp) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
   {
-    pxl.a(this.jdField_a_of_type_Pxl, this.jdField_a_of_type_Ppu, paramViewBase);
-    pxl.a(this.jdField_a_of_type_Pxl, this.jdField_a_of_type_Ppu.a());
+    if (paramBoolean)
+    {
+      pxp.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
+      return;
+    }
+    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
+    pxp.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
   }
 }
 

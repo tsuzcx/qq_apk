@@ -1,115 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
-import mqq.app.AppRuntime;
-import mqq.manager.PushManager;
+import android.content.Intent;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.vip.manager.CommonRequestManager.1;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import mqq.os.MqqHandler;
 
-@ProxyService(proxy=VoIPProxy.class)
-public class blaw
-  extends VoIPProxy
+public abstract class blaw
+  extends MSFServlet
 {
-  private bkdo jdField_a_of_type_Bkdo = new blay(this);
-  private VoIPProxy.VoIPListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener;
-  
-  private void a()
+  protected long a()
   {
-    QLog.i("VoIPProxyImpl", 1, "qavDeInitSDK");
-    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
-    bkdd localbkdd = bkdd.a();
-    localbkdd.b(this.jdField_a_of_type_Bkdo);
-    localbkdd.a();
+    return 10000L;
   }
   
-  public int enableLocalAudio(boolean paramBoolean)
+  public abstract QzoneExternalRequest a(Intent paramIntent);
+  
+  public void a(Intent paramIntent)
   {
-    bkdl localbkdl = bkdd.a().a();
-    if (localbkdl != null)
+    ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    QzoneExternalRequest localQzoneExternalRequest = a(paramIntent);
+    if (localQzoneExternalRequest == null)
     {
-      localbkdl.a(paramBoolean);
-      return 0;
+      QLog.i("CommonRequestManager", 1, " onSend request = null");
+      return;
     }
-    return -1;
-  }
-  
-  public int enableRemoteAudio(boolean paramBoolean)
-  {
-    bkdl localbkdl = bkdd.a().a();
-    if (localbkdl != null)
+    byte[] arrayOfByte = localQzoneExternalRequest.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
     {
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        localbkdl.b(paramBoolean);
-        return 0;
-      }
+      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
+      paramIntent = new byte[4];
     }
-    return -1;
-  }
-  
-  public void exitRoom()
-  {
-    bkdl localbkdl = bkdd.a().a();
-    if (localbkdl != null) {
-      localbkdl.e();
-    }
-  }
-  
-  public void init(long paramLong, VoIPProxy.VoIPListener paramVoIPListener)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
-    bkdp.a(new bkdr());
-    bkdg localbkdg = bkdg.a();
-    localbkdg.a((AppRuntime)localObject);
-    localbkdg.a(new blax(this));
-    localObject = bkdd.a();
-    ((bkdd)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbkdg);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = paramVoIPListener;
-    ((bkdd)localObject).a(this.jdField_a_of_type_Bkdo);
-  }
-  
-  public int joinRoom(long paramLong, int paramInt, String paramString, byte[] paramArrayOfByte)
-  {
-    bkdl localbkdl = bkdd.a().a();
-    if (localbkdl != null)
-    {
-      bkdc localbkdc = new bkdc();
-      localbkdc.jdField_a_of_type_Int = 11;
-      localbkdc.b = 14;
-      localbkdc.c = 1;
-      localbkdc.d = paramInt;
-      localbkdc.jdField_a_of_type_Long = paramLong;
-      localbkdc.jdField_a_of_type_JavaLangString = paramString;
-      localbkdc.e = 1;
-      localbkdc.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      return localbkdl.a(localbkdc);
-    }
-    return -4;
-  }
-  
-  public void setAudioRoute(int paramInt)
-  {
-    bkdl localbkdl = bkdd.a().a();
-    if (localbkdl != null) {
-      localbkdl.b(paramInt);
-    }
-  }
-  
-  public void unInit()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = null;
-  }
-  
-  public void updateRoomInfo()
-  {
-    bkdl localbkdl = bkdd.a().a();
-    if (localbkdl != null) {
-      localbkdl.f();
-    }
+    paramPacket.setTimeout(a());
+    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

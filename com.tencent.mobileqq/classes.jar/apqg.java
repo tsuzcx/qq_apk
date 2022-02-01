@@ -1,12 +1,21 @@
-public abstract interface apqg
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class apqg
+  extends Handler
 {
-  public abstract void a();
+  public apqg(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
+    {
+      this.a.a();
+      QQToast.a(this.a, 2131690945, 0).b(this.a.getTitleBarHeight());
+    }
+  }
 }
 
 

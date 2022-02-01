@@ -1,54 +1,88 @@
-import android.content.SharedPreferences;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract class nlw
+public class nlw
+  extends BaseAdapter
 {
-  public SharedPreferences a;
-  public nlw a;
+  protected LayoutInflater a;
   
-  public nlw(SharedPreferences paramSharedPreferences, nlw paramnlw)
+  public nlw(PoiMapActivity paramPoiMapActivity, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Nlw = paramnlw;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public static boolean a(int paramInt)
+  public int getCount()
   {
-    return (paramInt & 0x1) != 0;
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.d) {
+      return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size() + 1;
+    }
+    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size();
   }
   
-  public static boolean b(int paramInt)
+  public Object getItem(int paramInt)
   {
-    return (paramInt & 0x2) != 0;
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
   }
   
-  public abstract int a(String paramString1, String paramString2);
-  
-  public int a(boolean paramBoolean1, boolean paramBoolean2)
+  public long getItemId(int paramInt)
   {
-    int j = 0;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      if (paramBoolean2) {
-        j = 2;
+      paramView = new nlr(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559969, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371627));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362208));
+      paramView.c = localView.findViewById(2131377028);
+      paramView.c.setVisibility(4);
+      paramView.d = localView.findViewById(2131371377);
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365469);
+      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131377251);
+      localView.setTag(paramView);
+      paramView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      if (paramInt != this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size()) {
+        break label195;
       }
-      return j | i;
+      paramView.d.setVisibility(0);
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      Object localObject = (nlr)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label195:
+      paramView.d.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localObject = (nlp)getItem(paramInt);
+      if (localObject != null)
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((nlp)localObject).a);
+        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((nlp)localObject).b);
+      }
     }
   }
-  
-  public abstract String a();
-  
-  public abstract JSONArray a(String paramString);
-  
-  public abstract JSONObject a();
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract String c();
 }
 
 

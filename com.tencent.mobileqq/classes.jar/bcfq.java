@@ -1,18 +1,22 @@
-import android.view.View;
-import java.util.List;
-
-public abstract interface bcfq
-  extends bcfp
+public abstract class bcfq
 {
-  public abstract int a();
+  public int a = 0;
+  public int b;
+  public long b;
+  public int c = 1;
+  public String i = "";
+  public String j = "";
+  public String k = "";
   
-  public abstract String a();
+  bcfq()
+  {
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+  }
   
-  public abstract List<bcfr> a();
+  public abstract String a(int paramInt);
   
-  public abstract void a(View paramView);
-  
-  public abstract String b();
+  public abstract String toString();
 }
 
 

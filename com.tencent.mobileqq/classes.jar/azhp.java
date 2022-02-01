@@ -1,22 +1,6 @@
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-
 class azhp
-  implements nbb
 {
-  azhp(azho paramazho) {}
-  
-  public void a(LottieDrawable paramLottieDrawable)
-  {
-    azho.a(this.a, paramLottieDrawable);
-    azho.a(this.a).setImageDrawable(azho.a(this.a));
-    if (azho.a(this.a))
-    {
-      this.a.b();
-      return;
-    }
-    this.a.a();
-  }
+  private static final azhn a = new azhn();
 }
 
 

@@ -1,46 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 class sub
-  extends aoki
+  implements Animation.AnimationListener
 {
-  sub(sua paramsua) {}
+  sub(sua paramsua, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void handleSearchDiscoveryError(int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void handleSearchDiscoveryResult(List<bcgy> paramList, int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 10) {}
-    String str;
-    bcgy localbcgy;
-    do
+    ImageView localImageView = sua.a(this.jdField_a_of_type_Sua);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842882;; i = 2130841692)
     {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
       return;
-      while (!paramList.hasNext())
-      {
-        do
-        {
-          str = bbzo.b;
-        } while ((paramList == null) || (paramList.size() <= 0));
-        paramList = paramList.iterator();
-      }
-      localbcgy = (bcgy)paramList.next();
-    } while (((localbcgy.c != 1) || (!TextUtils.equals(str, "Hot_word"))) && ((localbcgy.c != 7) || (!TextUtils.equals(str, "Recom_word"))));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localbcgy);
-    sua.jdField_a_of_type_Int = 0;
-    this.a.a(true, -1, -1);
+    }
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

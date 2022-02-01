@@ -1,32 +1,8 @@
 package com.tencent.secprotocol;
 
-import a.a.a.b.d;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 public class ByteData$d
-  extends Handler
 {
-  public ByteData$d(ByteData paramByteData, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    d locald = (d)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 162: 
-      ByteData.access$600(this.a, Long.valueOf((String)locald.c).longValue());
-      return;
-    }
-    ByteData.logCat("java_poxy", "cmd: " + locald.a + " reqType: " + locald.b);
-    ByteData.access$300(this.a, paramMessage.what, locald.a, locald.b, locald.c, null);
-  }
+  public static ByteData a = new ByteData(null);
 }
 
 

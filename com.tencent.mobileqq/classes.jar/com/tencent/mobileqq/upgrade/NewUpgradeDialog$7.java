@@ -2,7 +2,7 @@ package com.tencent.mobileqq.upgrade;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bjxd;
+import bicl;
 
 public final class NewUpgradeDialog$7
   implements Runnable
@@ -11,7 +11,7 @@ public final class NewUpgradeDialog$7
   
   public void run()
   {
-    bjxd.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
+    bicl.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
   }
 }
 

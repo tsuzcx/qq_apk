@@ -1,66 +1,114 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.text.StaticLayout;
 
 public class alrw
-  implements TextWatcher
 {
-  public alrw(LoginView paramLoginView) {}
+  public float a;
+  public int a;
+  public long a;
+  private alrs jdField_a_of_type_Alrs;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  public StaticLayout a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public float c;
+  public int c;
+  private boolean c;
+  public float d;
+  public int d;
+  public float e;
+  public int e;
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public float h;
+  public int h;
   
-  public void afterTextChanged(Editable paramEditable)
+  public alrw(alrs paramalrs, float paramFloat1, float paramFloat2, float paramFloat3, String paramString1, String paramString2)
   {
-    LoginView.c(this.a);
+    this.jdField_b_of_type_Int = -16777216;
+    this.jdField_g_of_type_Float = 24.0F;
+    this.jdField_c_of_type_Int = 20000;
+    this.jdField_d_of_type_Int = 255;
+    this.jdField_h_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaLangCharSequence = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_g_of_type_Int = ((int)(12.0F * paramFloat1));
+    this.jdField_h_of_type_Int = ((int)(6.0F * paramFloat1));
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, paramFloat2, paramFloat3);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = l;
+    this.jdField_b_of_type_Long = l;
+    this.jdField_a_of_type_Alrs = paramalrs;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public Bitmap a()
   {
-    Object localObject;
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null)
-      {
-        localObject = (alsl)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
-        if ((localObject != null) && (((alsl)localObject).getCount() != 0)) {
-          break label139;
-        }
-        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
-        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
-        {
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        this.a.b.setVisibility(0);
-      }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    }
+    if (this.jdField_a_of_type_Alrs != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Alrs.a(this);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Alrs != null)
+    {
+      this.jdField_a_of_type_Alrs.a(this);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Alrs.a(this);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_e_of_type_Float += this.jdField_c_of_type_Float * (float)(l - this.jdField_b_of_type_Long);
+    this.jdField_f_of_type_Float += this.jdField_d_of_type_Float * (float)(l - this.jdField_b_of_type_Long);
+    this.jdField_b_of_type_Long = l;
+    if (this.jdField_e_of_type_Float + this.jdField_e_of_type_Int >= 0.0F) {
+      this.jdField_c_of_type_Boolean = true;
     }
     for (;;)
     {
-      if (paramCharSequence.length() <= 4) {
-        break label237;
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= this.jdField_c_of_type_Int) {
+        this.jdField_c_of_type_Boolean = false;
       }
-      this.a.b(paramCharSequence.toString());
       return;
-      label139:
-      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
-      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
-        break;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidGraphicsRectF.width();
+        this.jdField_c_of_type_Boolean = true;
       }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
+      else
+      {
+        this.jdField_c_of_type_Boolean = false;
       }
     }
-    label237:
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mIsAlive: ").append(this.jdField_c_of_type_Boolean).append(" mText: ").append(this.jdField_a_of_type_JavaLangCharSequence).append(" mMeasured: ").append(this.jdField_a_of_type_Boolean).append(" mBgFilePath: ").append(this.jdField_a_of_type_JavaLangString).append(" mActionId: ").append(this.jdField_a_of_type_Int).append(" mStartX: ").append(this.jdField_a_of_type_Float).append(" mStartY: ").append(this.jdField_b_of_type_Float).append(" mSpeedX: ").append(this.jdField_c_of_type_Float).append(" mSpeedY: ").append(this.jdField_d_of_type_Float).append(" mCurrentX: ").append(this.jdField_e_of_type_Float).append(" mCurrentY: ").append(this.jdField_f_of_type_Float).append(" mTextColor: ").append(this.jdField_b_of_type_Int).append(" mTextSize: ").append(this.jdField_g_of_type_Float).append(" mStartTime: ").append(this.jdField_a_of_type_Long).append(" mAlpha: ").append(this.jdField_d_of_type_Int).append(" mWidth: ").append(this.jdField_e_of_type_Int).append(" mHeight: ").append(this.jdField_f_of_type_Int).append(" mLeftPadding: ").append(this.jdField_g_of_type_Int).append(" mTopPadding: ").append(this.jdField_h_of_type_Int).append(" mViewRect: ").append(this.jdField_a_of_type_AndroidGraphicsRectF);
+    return localStringBuilder.toString();
   }
 }
 

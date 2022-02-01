@@ -1,81 +1,59 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.app.SignatureManager.SigComments;
 import java.util.List;
 
 public class aegg
-  extends aojs
+  extends anbd
 {
-  public aegg(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aegg(SigCommentListActivity paramSigCommentListActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<bhau> paramList, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while ((!paramBoolean1) || (paramList == null) || (paramList.size() <= 0)) {
+    List localList;
+    if (this.a.isResume())
+    {
+      this.a.stopTitleProgress();
+      if (!paramBoolean) {
+        break label175;
+      }
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
+        paramBoolean = paramObject.isOver;
+        paramObject = paramObject.mlist;
+        localList = this.a.a.a();
+        if (paramObject.size() <= 0) {
+          break label128;
+        }
+        if (localList == null) {
+          break label113;
+        }
+        localList.addAll(localList.size(), paramObject);
+        this.a.a.a(localList, paramBoolean);
+        this.a.a.notifyDataSetChanged();
+      }
+    }
+    label113:
+    do
+    {
       return;
-    }
-    paramInt = 0;
-    label31:
-    bhau localbhau;
-    if (paramInt < paramList.size())
-    {
-      localbhau = (bhau)paramList.get(paramInt);
-      if ((localbhau != null) && (bhjx.a(localbhau.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-      {
-        if (localbhau.jdField_a_of_type_Long != 2L) {
-          break label206;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum = localbhau.b;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = localbhau.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        if (paramBoolean2) {
-          bmtd.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "onUpdateTroopUnreadMsg| isPush = " + paramBoolean2 + ", " + localbhau);
-      }
-      paramInt += 1;
-      break label31;
+      this.a.a.a(paramObject, paramBoolean);
       break;
-      label206:
-      if (localbhau.jdField_a_of_type_Long == 1L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadFileMsgnum = localbhau.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewFileMsgNum = localbhau.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      if ((localList != null) && (localList.size() > 0)) {
+        this.a.a.a(localList, paramBoolean);
       }
-      else if (localbhau.jdField_a_of_type_Long == 1101236949L)
+      for (;;)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mNewTroopNotificationNum = localbhau.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+        this.a.a.notifyDataSetChanged();
+        return;
+        SigCommentListActivity.a(this.a, 3);
       }
-      else if (localbhau.jdField_a_of_type_Long == 1106611799L)
-      {
-        Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(19);
-        ((Message)localObject).arg1 = localbhau.b;
-        ((Message)localObject).sendToTarget();
-        if ((localbhau.b == -1) || (localbhau.b > 0))
-        {
-          localObject = (aoip)this.a.app.a(20);
-          if (localObject != null) {
-            ((aoip)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, true, this.a.j, 3);
-          }
-        }
-      }
-      else if (localbhau.jdField_a_of_type_Long == 1106664488L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadFileMsgnum = 1;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewFileMsgNum = localbhau.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-      }
-    }
+      paramObject = this.a.a.a();
+    } while ((paramObject != null) && (paramObject.size() > 0));
+    label128:
+    label175:
+    SigCommentListActivity.a(this.a, 2);
   }
 }
 

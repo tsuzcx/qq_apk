@@ -128,36 +128,46 @@ public class StickerRecommendSortEntity
   {
     int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.clickedList.size())
+    int i;
+    if (this.clickedList != null)
     {
-      localStringBuilder.append(this.clickedList.get(i));
-      if (i < this.clickedList.size() - 1) {
-        localStringBuilder.append(",");
+      i = 0;
+      while (i < this.clickedList.size())
+      {
+        localStringBuilder.append(this.clickedList.get(i));
+        if (i < this.clickedList.size() - 1) {
+          localStringBuilder.append(",");
+        }
+        i += 1;
       }
-      i += 1;
     }
     this.clicked = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    i = 0;
-    while (i < this.exposedList.size())
+    if (this.exposedList != null)
     {
-      localStringBuilder.append(this.exposedList.get(i));
-      if (i < this.exposedList.size() - 1) {
-        localStringBuilder.append(",");
+      i = 0;
+      while (i < this.exposedList.size())
+      {
+        localStringBuilder.append(this.exposedList.get(i));
+        if (i < this.exposedList.size() - 1) {
+          localStringBuilder.append(",");
+        }
+        i += 1;
       }
-      i += 1;
     }
     this.exposed = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    i = j;
-    while (i < this.noExposeList.size())
+    if (this.noExposeList != null)
     {
-      localStringBuilder.append(this.noExposeList.get(i));
-      if (i < this.noExposeList.size() - 1) {
-        localStringBuilder.append(",");
+      i = j;
+      while (i < this.noExposeList.size())
+      {
+        localStringBuilder.append(this.noExposeList.get(i));
+        if (i < this.noExposeList.size() - 1) {
+          localStringBuilder.append(",");
+        }
+        i += 1;
       }
-      i += 1;
     }
     this.noExpose = localStringBuilder.toString();
   }

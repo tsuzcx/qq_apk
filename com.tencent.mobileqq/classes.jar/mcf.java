@@ -1,20 +1,8 @@
-import android.graphics.Bitmap;
-
-class mcf
-  implements lnf
+public class mcf
+  extends mcg
 {
-  mcf(mce parammce) {}
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.a(paramBitmap);
-      bool = true;
-    }
-    return bool;
-  }
+  public int a;
+  public boolean a;
 }
 
 

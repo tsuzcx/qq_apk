@@ -1,27 +1,81 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adrr
-  implements CompoundButton.OnCheckedChangeListener
+  implements ViewPager.OnPageChangeListener
 {
-  public adrr(AccountManageActivity paramAccountManageActivity) {}
+  public adrr(NearbyActivity paramNearbyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
-    ((bdxc)this.a.app.getManager(61)).a(this.a.app);
-    QQAppInterface localQQAppInterface = this.a.app;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
+    if (QLog.isColorLevel()) {
+      awkj.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.f), Integer.valueOf(paramInt) });
+    }
+    Object localObject = this.a;
+    int i = ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
+    ((NearbyActivity)localObject).b = i;
+    NearbyBaseFragment.b = i;
+    if ((this.a.h == 0L) && (this.a.b == 2))
     {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      this.a.h = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        awkj.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.h) });
+      }
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        awkj.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      }
+    }
+    if (this.a.f != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    }
+    if (this.a.f != -1)
+    {
+      i = this.a.f;
+      if (this.a.f != this.a.c) {
+        break label475;
+      }
+      i = 9;
+    }
+    for (;;)
+    {
+      if (TextUtils.equals(amtj.a(2131706213), ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
+        i = 11;
+      }
+      int j = ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
+      if (j != 0)
+      {
+        if (QLog.isColorLevel()) {
+          awkj.a("report_switch_tab", new Object[] { ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
+        }
+        i = j;
+      }
+      awkj.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
+      localObject = this.a.a(paramInt);
+      if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabType == 7)
+      {
+        ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).showRedRot = false;
+        NearbyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(this.a.f));
+      }
+      if (localObject != null) {
+        ((NearbyBaseFragment)localObject).aA_();
+      }
       return;
+      label475:
+      i += 1;
     }
   }
 }

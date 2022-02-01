@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
-import yrc;
+import xsn;
 
 public class StoryDownloadView$5$1
   implements Runnable
 {
-  public StoryDownloadView$5$1(yrc paramyrc) {}
+  public StoryDownloadView$5$1(xsn paramxsn) {}
   
   public void run()
   {

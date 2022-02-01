@@ -1,21 +1,16 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bfoa
-  implements Comparator<Map.Entry<String, bfoc>>
+public class bfoa
+  implements DialogInterface.OnClickListener
 {
-  bfoa(bfnz parambfnz) {}
+  public bfoa(UpgradeActivity paramUpgradeActivity) {}
   
-  public int a(Map.Entry<String, bfoc> paramEntry1, Map.Entry<String, bfoc> paramEntry2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((bfoc)paramEntry2.getValue()).a() - ((bfoc)paramEntry1.getValue()).a();
-    if (f > 0.0F) {
-      return 1;
-    }
-    if (f < 0.0F) {
-      return -1;
-    }
-    return 0;
+    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bfnf.b(), String.valueOf(0), bfng.a(), "0");
+    this.a.a();
   }
 }
 

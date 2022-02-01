@@ -1,16 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.identification.UnusableStrategy.1;
+import mqq.os.MqqHandler;
 
-class aukq
-  implements View.OnClickListener
+public class aukq
+  implements auka
 {
-  aukq(aukp paramaukp, String paramString) {}
+  private String a;
   
-  public void onClick(View paramView)
+  public aukq(String paramString)
   {
-    aunj.a(this.jdField_a_of_type_Aukp.a, this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString;
+  }
+  
+  public void a(aukb paramaukb)
+  {
+    bcef.a(null, "dc00898", "", "", "0X800B0EA", "0X800B0EA", 0, 0, "", "", "", "");
+    ThreadManager.getUIHandler().post(new UnusableStrategy.1(this));
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramVarArgs[i].setVisibility(8);
+      i += 1;
+    }
   }
 }
 

@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-
 public abstract interface bamm
 {
-  public abstract void a();
-  
-  public abstract boolean a(MessageForPtt paramMessageForPtt);
-  
-  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
-  
-  public abstract boolean b(MessageForPtt paramMessageForPtt);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

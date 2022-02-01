@@ -17,23 +17,6 @@
   },
   "subviews": [
     {
-        "view_type": "UIView",
-        "view_id": "id_pack_bottom_separator_line",
-        "margin_left": "12",
-        "height": {
-            "type": "absolutely",
-            "value": "0.5"
-        },
-        "width": {
-            "type": "relative",
-            "value": "351"
-        },
-        "attributes": {
-            "setFrameString:": "-1",
-            "setBackgroundColorString:": "#ebebeb"
-        }
-    },
-    {
       "view_type": "UILabel",
       "view_id": "id_pack_bottom_label",
       "margin_left": "12",

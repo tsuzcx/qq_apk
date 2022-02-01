@@ -22,7 +22,7 @@ public class VideoLayerUI$1
       i = this.this$0.b.getHeight();
       j = this.this$0.b.getWidth();
     } while ((i == 0) || (j == 0));
-    int j = this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299103);
+    int j = this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168);
     VideoLayerUI.a(this.this$0, new Rect(0, i - j - this.this$0.k, VideoLayerUI.a(this.this$0).widthPixels, i - j));
     QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "initGlRootView mSlideWindowAreas init end");
   }

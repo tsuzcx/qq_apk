@@ -1,15 +1,18 @@
-import com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.2;
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
 
-public class zze
-  implements Comparator<File>
+class zze
+  extends LinearSmoothScroller
 {
-  public zze(AnimationDrawableFactory.2 param2) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  zze(zzd paramzzd, Context paramContext)
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    super(paramContext);
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return this.a.a(paramInt);
   }
 }
 

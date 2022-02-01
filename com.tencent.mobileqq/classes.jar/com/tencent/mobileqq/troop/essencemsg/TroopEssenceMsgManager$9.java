@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bfuo;
+import bedz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 public class TroopEssenceMsgManager$9
   implements Runnable
 {
-  public TroopEssenceMsgManager$9(bfuo parambfuo, long paramLong) {}
+  public TroopEssenceMsgManager$9(bedz parambedz, long paramLong) {}
   
   public void run()
   {

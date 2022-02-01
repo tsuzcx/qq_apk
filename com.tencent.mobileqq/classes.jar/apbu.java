@@ -1,19 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 
-class apbu
-  implements View.OnClickListener
+public class apbu
+  implements bjoe
 {
-  apbu(apbt paramapbt, ArkViewModel paramArkViewModel) {}
+  public apbu(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.a("DynamicAvatarRecordActivity");
+    this.a.finish();
   }
 }
 

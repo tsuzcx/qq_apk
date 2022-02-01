@@ -1,14 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class xwf
-  implements MediaPlayer.OnInfoListener
+public class xwf
+  implements View.OnClickListener
 {
-  xwf(xvy paramxvy, xvs paramxvs) {}
+  public xwf(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Xvs.a_(this.jdField_a_of_type_Xvy, paramInt1, paramInt2);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

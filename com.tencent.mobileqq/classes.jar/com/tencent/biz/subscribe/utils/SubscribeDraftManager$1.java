@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.utils;
 
-import aanf;
-import aanj;
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import zka;
+import zke;
 
 public class SubscribeDraftManager$1
   implements Runnable
 {
-  public SubscribeDraftManager$1(aanf paramaanf, String paramString1, String paramString2, String paramString3, String paramString4, aanj paramaanj) {}
+  public SubscribeDraftManager$1(zka paramzka, String paramString1, String paramString2, String paramString3, String paramString4, zke paramzke) {}
   
   public void run()
   {
-    Pair localPair = aanf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Pair localPair = zka.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localPair != null)
     {
       int i;
@@ -23,8 +23,8 @@ public class SubscribeDraftManager$1
         if (i == 0) {
           break label100;
         }
-        if (this.jdField_a_of_type_Aanj != null) {
-          this.jdField_a_of_type_Aanj.a(3, true, this.b, new Object[0]);
+        if (this.jdField_a_of_type_Zke != null) {
+          this.jdField_a_of_type_Zke.a(3, true, this.b, new Object[0]);
         }
       }
       label100:
@@ -33,16 +33,16 @@ public class SubscribeDraftManager$1
         return;
         i = 0;
         break;
-        bhmi.d((String)localPair.first);
-        bhmi.d((String)localPair.second);
-      } while (this.jdField_a_of_type_Aanj == null);
-      this.jdField_a_of_type_Aanj.a(3, false, this.b, new Object[0]);
+        FileUtils.deleteFile((String)localPair.first);
+        FileUtils.deleteFile((String)localPair.second);
+      } while (this.jdField_a_of_type_Zke == null);
+      this.jdField_a_of_type_Zke.a(3, false, this.b, new Object[0]);
       return;
     }
-    if (this.jdField_a_of_type_Aanj != null) {
-      this.jdField_a_of_type_Aanj.a(3, false, this.b, new Object[0]);
+    if (this.jdField_a_of_type_Zke != null) {
+      this.jdField_a_of_type_Zke.a(3, false, this.b, new Object[0]);
     }
-    QLog.d(aanf.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
+    QLog.d(zka.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
   }
 }
 

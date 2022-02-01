@@ -1,37 +1,43 @@
+import android.os.Handler;
 import android.text.TextUtils;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.RefreshEntryTask;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.ShowAwardResult;
 import com.tencent.qphone.base.util.QLog;
 
-class mzv
-  implements ardd
+public class mzv
+  extends nbn
 {
-  mzv(mzu parammzu) {}
+  public mzv(GameActivityCenterCtrl paramGameActivityCenterCtrl) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished result:" + paramInt);
+      QLog.i("GameACCtrl", 2, "onSyncShareGame, [isSuccess: " + paramBoolean + ", errorCode: " + paramInt + ", errorMsg:" + paramString1 + ", playGameId: " + paramString2 + ", jumpUrl: " + paramString3 + "]");
     }
-    if (paramInt == 0)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString3))) {
+      nht.a().b().post(new GameActivityCenterCtrl.ShowAwardResult(paramString3));
+    }
+    if (paramBoolean) {
+      GameActivityCenterCtrl.a(this.a, true);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, nai paramnai)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameACCtrl", 2, "onGetActivityEntry, [isSuccess: " + paramBoolean + ", errorCode: " + paramInt + ", errorMsg:" + paramString + ", entry: " + paramnai + "]");
+    }
+    if (paramBoolean)
     {
-      String str1 = ardc.a().a();
-      String str2 = ardc.a().b();
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished url:" + str1 + " md5:" + str2);
-      }
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
-      {
-        mzu.a(this.a).b(110);
-        return;
-      }
-      this.a.a(new mzx(str1, str2));
-      return;
+      GameActivityCenterCtrl.a(this.a, paramnai);
+      nht.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
     }
-    mzu.a(this.a).b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzv
  * JD-Core Version:    0.7.0.1
  */

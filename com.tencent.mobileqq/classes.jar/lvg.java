@@ -1,49 +1,31 @@
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
+
 public class lvg
-  extends lur
+  implements WXShareHelper.WXShareListener
 {
-  public void a(long paramLong)
+  public lvg(RedPacketShareFragment.3.1 param1) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramLong -= this.a;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if ((paramLong > 4631L) && (paramLong < 4964L))
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
     {
-      i = (int)(255L * (paramLong - 4631L) / 333L);
-      f1 = (0.5F * (float)(paramLong + 4964L) - 4631.0F) / 333.0F;
     }
     for (;;)
     {
-      a(i);
-      b(f1);
+      WXShareHelper.getInstance().removeObserver(this);
       return;
-      if ((paramLong >= 4964L) && (paramLong <= 5397L))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 5397L)
-        {
-          f1 = f2;
-          i = j;
-          if (paramLong < 5564L)
-          {
-            i = (int)(255L * (5564L - paramLong) / 167L);
-            f1 = (167.0F - (float)(5397L - paramLong) * 0.5F) / 167.0F;
-          }
-        }
-      }
+      RedPacketShareFragment.a("0X8008CF8", 3);
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(paramInt1 * 361 / 1500, paramInt2 - paramInt1 * 968 / 1500, paramInt1 * 1139 / 1500, paramInt2 - paramInt1 * 536 / 1500);
   }
 }
 

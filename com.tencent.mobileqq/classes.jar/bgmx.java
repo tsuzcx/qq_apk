@@ -1,36 +1,45 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bgmx
-  extends ViewPager.SimpleOnPageChangeListener
 {
-  public bgmx(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
-  
-  public void onPageSelected(int paramInt)
+  public static void a(AppInterface paramAppInterface, String paramString, HashMap<String, String> paramHashMap)
   {
-    super.onPageSelected(paramInt);
-    String str1;
-    String str3;
-    if (this.a.a != null)
-    {
-      if (!VisitorTroopCardFragment.a(this.a)) {
-        break label85;
-      }
-      str1 = "grpData_admin";
-      str3 = this.a.a.troopUin;
-      if (!VisitorTroopCardFragment.a(this.a)) {
-        break label91;
-      }
+    if (a()) {
+      b(paramAppInterface, paramString, paramHashMap);
     }
-    label85:
-    label91:
-    for (String str2 = bhju.a(this.a.a);; str2 = "1")
-    {
-      bhju.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+    while (!QLog.isColorLevel()) {
       return;
-      str1 = "grpData_visitor";
-      break;
+    }
+    QLog.e("VSHealthReportUtil", 1, "[reportToBeacon] no need to report to beacon");
+  }
+  
+  private static boolean a()
+  {
+    return ((Boolean)VSConfigManager.getInstance().getValue("is_redirect_aio_to_main_page", Boolean.valueOf(false))).booleanValue();
+  }
+  
+  private static void b(AppInterface paramAppInterface, String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramAppInterface == null)
+    {
+      QLog.e("VSHealthReportUtil", 1, "[reportToBeacon] report to beacon error, app is null!");
+      return;
+    }
+    if (paramHashMap == null) {
+      paramHashMap = new HashMap();
+    }
+    for (;;)
+    {
+      paramHashMap.put("userid", paramAppInterface.getCurrentAccountUin());
+      paramHashMap.put("platform", "android");
+      paramHashMap.put("data_timestamp", String.valueOf(System.currentTimeMillis()));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramAppInterface.getCurrentAccountUin(), paramString, true, 0L, 0L, paramHashMap, "");
+      return;
     }
   }
 }

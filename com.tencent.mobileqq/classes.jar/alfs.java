@@ -1,14 +1,28 @@
-public class alfs
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class alfs
+  implements MediaPlayer.OnCompletionListener
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  alfs(alfo paramalfo, int paramInt, String paramString) {}
   
-  public alfs(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
+    try
+    {
+      paramMediaPlayer = new JSONObject();
+      paramMediaPlayer.put("code", 1);
+      this.jdField_a_of_type_Alfo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+      return;
+    }
+    catch (JSONException paramMediaPlayer)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
+    }
   }
 }
 

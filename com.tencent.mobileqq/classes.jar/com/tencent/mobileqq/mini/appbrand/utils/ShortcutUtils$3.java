@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
+import amtj;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
@@ -9,9 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Icon;
 import android.os.Build.VERSION;
 import android.os.PersistableBundle;
-import anzj;
-import bhsk;
-import bjuh;
+import bfzb;
+import bhzt;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -36,11 +36,11 @@ final class ShortcutUtils$3
       if (ShortcutUtils.isShortcutCreated_O(this.val$apkgInfo.appId, localShortcutManager))
       {
         QLog.i("Shortcut", 1, "Shortcut has created before!");
-        bjuh.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
+        bhzt.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
         if (this.val$callback == null) {
           return;
         }
-        this.val$callback.onAddResult(0, anzj.a(2131712888));
+        this.val$callback.onAddResult(0, amtj.a(2131713120));
         return;
       }
       if (localShortcutManager.isRequestPinShortcutSupported())
@@ -59,7 +59,7 @@ final class ShortcutUtils$3
         if (this.val$callback == null) {
           return;
         }
-        this.val$callback.onAddResult(1, anzj.a(2131712884));
+        this.val$callback.onAddResult(1, amtj.a(2131713116));
         return;
       }
     }
@@ -72,20 +72,20 @@ final class ShortcutUtils$3
     if (ShortcutUtils.isShortcutCreated_O(this.val$apkgInfo.appId, localThrowable))
     {
       if (this.val$callback != null) {
-        this.val$callback.onAddResult(0, anzj.a(2131712879));
+        this.val$callback.onAddResult(0, amtj.a(2131713111));
       }
     }
     else if (this.val$callback != null)
     {
-      this.val$callback.onAddResult(1, anzj.a(2131712884));
+      this.val$callback.onAddResult(1, amtj.a(2131713116));
       return;
       label347:
-      if (bhsk.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+      if (bfzb.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
       {
         QLog.i("Shortcut", 1, "Shortcut has created before!");
-        bjuh.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
+        bhzt.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
         if (this.val$callback != null) {
-          this.val$callback.onAddResult(0, anzj.a(2131712876));
+          this.val$callback.onAddResult(0, amtj.a(2131713108));
         }
       }
       else
@@ -97,18 +97,18 @@ final class ShortcutUtils$3
         localIntent.putExtra("android.intent.extra.shortcut.INTENT", ShortcutUtils.access$000(this.val$activity, this.val$apkgInfo));
         this.val$activity.sendBroadcast(localIntent);
         Thread.sleep(1000L);
-        if (bhsk.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+        if (bfzb.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
         {
-          bjuh.a().a("已创建\"" + this.val$apkgInfo.apkgName + "\"快捷方式到桌面");
+          bhzt.a().a("已创建\"" + this.val$apkgInfo.apkgName + "\"快捷方式到桌面");
           if (this.val$callback != null) {
-            this.val$callback.onAddResult(0, anzj.a(2131712878));
+            this.val$callback.onAddResult(0, amtj.a(2131713110));
           }
         }
         else
         {
           ShortcutUtils.access$200(this.val$activity);
           if (this.val$callback != null) {
-            this.val$callback.onAddResult(1, anzj.a(2131712887));
+            this.val$callback.onAddResult(1, amtj.a(2131713119));
           }
         }
       }

@@ -1,23 +1,33 @@
+import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class athv
-  implements View.OnClickListener
+  implements afce
 {
-  public athv(FilePreviewActivity paramFilePreviewActivity) {}
+  public athv(FlashChatPanel paramFlashChatPanel) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    bdll.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, beaj.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718622), true));
-    EventCollector.getInstance().onViewClicked(paramView);
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramView instanceof ArkAppView)) {
+      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athv
  * JD-Core Version:    0.7.0.1
  */

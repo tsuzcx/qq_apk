@@ -1,48 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public abstract class auvy
+public class auvy
+  implements DialogInterface.OnCancelListener
 {
-  public static int a;
-  public static int b = 2;
-  private String a;
+  public auvy(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  static
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public auvy(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public AppRuntime a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
-    }
-  }
-  
-  public String b()
-  {
-    AppRuntime localAppRuntime = a();
-    if (localAppRuntime != null) {
-      return localAppRuntime.getAccount();
-    }
-    return "";
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
   }
 }
 

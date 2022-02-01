@@ -1,7 +1,6 @@
-class qug
-  extends qtk
+public abstract interface qug
 {
-  qug(qtw paramqtw) {}
+  public abstract void a(int paramInt);
 }
 
 

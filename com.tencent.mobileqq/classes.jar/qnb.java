@@ -1,54 +1,111 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qnb
-  extends qnd
 {
-  public qnb(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  private static volatile qnb jdField_a_of_type_Qnb;
+  private boolean jdField_a_of_type_Boolean;
   
-  public qjh g()
+  private List<Integer> a(String paramString)
   {
-    this.jdField_a_of_type_Qjg = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qjh o()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Qjg != null)
+    if (TextUtils.isEmpty(paramString))
     {
-      if ((this.jdField_a_of_type_Qjg instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      paramString = new ArrayList();
+      return paramString;
+    }
+    String[] arrayOfString = paramString.split("\\.");
+    ArrayList localArrayList = new ArrayList();
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      paramString = localArrayList;
+      if (i >= j) {
+        break;
       }
-      this.jdField_a_of_type_Qjg.a(ComponentContentGridImage.a(((ppu)this.jdField_a_of_type_JavaLangObject).a()));
+      paramString = arrayOfString[i];
+      try
+      {
+        localArrayList.add(Integer.valueOf(Integer.parseInt(paramString)));
+        i += 1;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("PTSSoLoader", 1, "[getVersionList] error, e = " + paramString);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    return new ArrayList();
+  }
+  
+  public static qnb a()
+  {
+    if (jdField_a_of_type_Qnb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qnb == null) {
+        jdField_a_of_type_Qnb = new qnb();
+      }
+      return jdField_a_of_type_Qnb;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    finally {}
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2)
+  {
+    paramString1 = new qoc().a("name", paramString1).a("resCode", "" + paramInt).a("version", paramString2).a();
+    if (paramInt == 0)
+    {
+      qob.a("0X800A832", "", "", "", paramString1);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+    qob.a("0X800A833", "", "", "", paramString1);
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    QLog.i("PTSSoLoader", 1, "[isVersionValid], currentVersion = " + paramString1 + ", supportMinVersion = " + paramString2);
+    List localList = a(paramString1);
+    paramString2 = a(paramString2);
+    if (paramString1.length() <= 0)
+    {
+      QLog.i("PTSSoLoader", 1, "[isVersionValid] false, currentVersion = " + paramString1);
+      return false;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
+    int j = Math.min(localList.size(), paramString2.size());
+    int i = 0;
+    while (i < j)
+    {
+      if (((Integer)localList.get(i)).intValue() < ((Integer)paramString2.get(i)).intValue())
+      {
+        QLog.i("PTSSoLoader", 1, "[isVersionValid] = false");
+        return false;
+      }
+      if (((Integer)localList.get(i)).intValue() > ((Integer)paramString2.get(i)).intValue())
+      {
+        QLog.i("PTSSoLoader", 1, "[isVersionValid] = true");
+        return true;
+      }
+      i += 1;
     }
-    return this;
+    if (localList.size() >= paramString2.size()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("PTSSoLoader", 1, "[isVersionValid] = " + bool);
+      return bool;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("PTSSoLoader", 1, "[load], name = " + paramString);
+    bbzm.a().a(paramString, new qnc(this, paramString));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

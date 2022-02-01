@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pfs;
+import ple;
 
 public class ReadinjoySPEventReport$8
   implements Runnable
 {
-  public ReadinjoySPEventReport$8(pfs parampfs) {}
+  public ReadinjoySPEventReport$8(ple parample) {}
   
   public void run()
   {
-    pfs.a(this.this$0, 1);
+    ple.a(this.this$0, 1);
   }
 }
 

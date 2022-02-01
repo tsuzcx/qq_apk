@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stPostCommentReplyV2Req;
+import UserGrowth.stPostCommentReplyV2Rsp;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaReply;
 
-class uwp
-  implements View.OnClickListener
+public class uwp
+  extends urg<stPostCommentReplyV2Rsp>
 {
-  uwp(uwo paramuwo, WSTabLayout paramWSTabLayout) {}
-  
-  public void onClick(View paramView)
+  public uwp(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
   {
-    if (WSTabLayout.a(this.jdField_a_of_type_Uwo.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
-      WSTabLayout.a(this.jdField_a_of_type_Uwo.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(uwo.a(this.jdField_a_of_type_Uwo));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super("PostCommentReplyV2", 10003);
+    this.a = new stPostCommentReplyV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment.id, paramstSimpleMetaReply);
   }
 }
 

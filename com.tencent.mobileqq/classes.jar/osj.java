@@ -1,59 +1,15 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class osj
-  implements blih
+public final class osj
+  extends Editable.Factory
 {
-  private List<blih> a = new ArrayList();
-  
-  public void a(blih paramblih)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((this.a != null) && (!this.a.contains(paramblih))) {
-      this.a.add(paramblih);
+    if ((paramCharSequence instanceof oog)) {
+      return (Editable)paramCharSequence;
     }
-  }
-  
-  public void b(blih paramblih)
-  {
-    if (this.a != null) {
-      this.a.remove(paramblih);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        blih localblih = (blih)localIterator.next();
-        if (localblih != null) {
-          localblih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        blih localblih = (blih)localIterator.next();
-        if (localblih != null) {
-          localblih.onScrollStateChanged(paramAbsListView, paramInt);
-        }
-      }
-    }
+    return new oog(paramCharSequence, 3, 20);
   }
 }
 

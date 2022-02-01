@@ -1,74 +1,65 @@
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.mobileqq.statistics.CaughtException;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport.1;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
 
-public abstract class bcdb<M extends bcfo, V extends bcnx>
-  extends bcbj<M, V>
+public final class bcdb
 {
-  FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private List<bcdf> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private int c;
-  private int d;
+  private static final Set<String> a = new CaughtExceptionReport.1(20);
+  private static final Set<Class> b = new CaughtExceptionReport.2(5);
   
-  public bcdb(ListView paramListView, aoof paramaoof, List<FTSEntity> paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
+  public static void a(@NonNull Throwable paramThrowable)
   {
-    super(paramListView, paramaoof);
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = paramFTSEntitySearchDetailActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a(paramThrowable, "This is CaughtException");
   }
   
-  private void b()
+  public static void a(@NonNull Throwable paramThrowable, @NonNull String paramString)
   {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
-      a();
+    if ((paramThrowable == null) || (paramString == null)) {
+      return;
     }
-  }
-  
-  public void a()
-  {
-    ArrayList localArrayList = bhut.a(this.jdField_a_of_type_JavaLangString);
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i;
-    if (j + 50 < this.jdField_b_of_type_JavaUtilList.size()) {
-      i = j + 50;
-    }
-    while (j < i)
+    if (!a(paramThrowable))
     {
-      bcdf localbcdf = bcdh.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localArrayList, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(j));
-      if (localbcdf != null) {
-        this.jdField_a_of_type_JavaUtilList.add(localbcdf);
-      }
-      j += 1;
-      continue;
-      i = this.jdField_b_of_type_JavaUtilList.size();
+      Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
+      return;
     }
-    a(this.jdField_a_of_type_JavaUtilList);
+    Object localObject = paramThrowable;
+    if (!(paramThrowable instanceof CaughtException)) {
+      localObject = new CaughtException("Caught: " + paramThrowable.getMessage(), paramThrowable);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("CaughtExceptionReport-eup", 2, "rqd将上报信息到rdm网站，上报不会导致客户端闪退，仅用作数据统计");
+    }
+    CrashReport.handleCatchException(Thread.currentThread(), (Throwable)localObject, "ExtraMessage: " + paramString, null);
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  private static boolean a(Throwable paramThrowable)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    b();
+    if (b.contains(paramThrowable.getClass())) {
+      return true;
+    }
+    paramThrowable = paramThrowable.getStackTrace();
+    if ((paramThrowable == null) || (paramThrowable.length < 1)) {
+      return false;
+    }
+    paramThrowable = paramThrowable[0].getClassName();
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      if (paramThrowable.startsWith((String)localIterator.next())) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcdb
  * JD-Core Version:    0.7.0.1
  */

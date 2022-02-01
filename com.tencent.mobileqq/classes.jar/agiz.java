@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agiz
-  implements agxq
+  implements View.OnClickListener
 {
-  agiz(agiq paramagiq) {}
+  agiz(agiy paramagiy) {}
   
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public void onClick(View paramView)
   {
-    agiq.a(this.a);
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      agiy.a(this.a).onClick(paramView);
+    }
   }
 }
 

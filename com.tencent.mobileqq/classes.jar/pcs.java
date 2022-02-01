@@ -1,161 +1,131 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class pcs
-  extends LottieDrawable
+  implements AladdinConfigHandler
 {
-  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
-  private static final String jdField_a_of_type_JavaLangString = bigv.a(antf.ba + ".readInjoy/resource/lottie_background_res");
-  private static LruCache<String, LottieComposition> jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(1048576);
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean jdField_b_of_type_Boolean = true;
-  
-  private static long a(String paramString)
+  pvw a(String paramString, List<pvw> paramList)
   {
-    long l = 0L;
-    int i = 0;
-    while (i < paramString.length())
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
-      i += 1;
-    }
-    return l;
-  }
-  
-  @Nullable
-  private File a(File[] paramArrayOfFile, String paramString)
-  {
-    int j = paramArrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      File localFile = paramArrayOfFile[i];
-      if (localFile.getName().equals(paramString)) {
-        return localFile;
+      pvw localpvw = (pvw)paramList.next();
+      if (localpvw.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localpvw;
       }
-      i += 1;
     }
     return null;
   }
   
-  public static pcs a(String paramString)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    pcs localpcs = new pcs();
-    long l = a(paramString);
-    String str = jdField_a_of_type_JavaLangString + File.separator + l;
-    File localFile1 = new File(str);
-    if (a(localFile1)) {
-      localpcs.a(localFile1);
-    }
-    for (;;)
-    {
-      return localpcs;
-      bihz localbihz = ((bihw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-      File localFile2 = new File(jdField_a_of_type_JavaLangString);
-      if (!localFile2.exists()) {}
-      for (boolean bool = localFile2.mkdirs(); bool; bool = true)
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    Map localMap = pbt.a(paramString);
+    Object localObject4 = localMap.keySet();
+    Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
+    paramString = new JSONArray();
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      try
       {
-        str = str + ".zip";
-        localFile2 = new File(str);
-        paramString = new bihu(paramString, localFile2);
-        paramString.b = 3;
-        paramString.d = 60L;
-        Bundle localBundle = new Bundle();
-        localBundle.putLong("bgLottieResId", l);
-        localBundle.putString("bgLottieResPath", str);
-        localbihz.a(paramString, new pcx(l, str, localFile2, localFile1, new WeakReference(localpcs)), localBundle);
-        return localpcs;
+        localObject1 = new JSONArray((String)localObject1);
+        if (localObject1 != null) {}
+        Object localObject5;
+        String[] arrayOfString;
+        Object localObject3;
+        Object localObject2;
+        for (;;) {}
       }
-    }
-  }
-  
-  private void a(File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation " + paramFile.getName());
-    }
-    File[] arrayOfFile = paramFile.listFiles(new pct(this));
-    Object localObject = paramFile.listFiles(new pcu(this));
-    if ((arrayOfFile == null) || (localObject == null) || (localObject.length == 0)) {}
-    do
-    {
-      return;
-      localObject = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject);
-    } while (arrayOfFile.length <= 0);
-    if ((LottieComposition)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramFile.getAbsolutePath()) == null)
-    {
-      ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, arrayOfFile, paramFile, (Runnable)localObject), 64, null, true);
-      return;
-    }
-    ((Runnable)localObject).run();
-  }
-  
-  private static boolean a(File paramFile)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramFile.exists())
-    {
-      paramFile = paramFile.listFiles(new pcy());
-      bool1 = bool2;
-      if (paramFile != null)
+      catch (JSONException localJSONException1)
       {
-        bool1 = bool2;
-        if (paramFile.length > 0) {
-          bool1 = true;
+        for (;;)
+        {
+          try
+          {
+            QLog.d("KandianDailySettingConfigHandler", 2, "old data: " + localObject1);
+            paramInt1 = 0;
+            if (paramInt1 < ((JSONArray)localObject1).length())
+            {
+              localArrayList.add(pvw.a(((JSONArray)localObject1).optJSONObject(paramInt1)));
+              paramInt1 += 1;
+              continue;
+            }
+            paramString = (String)localObject1;
+            localObject4 = ((Set)localObject4).iterator();
+            if (!((Iterator)localObject4).hasNext()) {
+              continue;
+            }
+            localObject5 = (String)((Iterator)localObject4).next();
+            localObject1 = (String)localMap.get(localObject5);
+            QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] key=" + (String)localObject5 + ", value=" + (String)localObject1);
+            arrayOfString = ((String)localObject1).split("\\|");
+            if (arrayOfString.length != 3) {
+              continue;
+            }
+            paramInt1 = 1;
+            localObject3 = a((String)localObject5, localArrayList);
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              paramInt1 = 0;
+              localObject1 = new pvw();
+            }
+            ((pvw)localObject1).jdField_b_of_type_JavaLangString = arrayOfString[0];
+            ((pvw)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject5);
+            localObject3 = arrayOfString[1].split(",");
+            localObject5 = arrayOfString[2].split(",");
+            ((pvw)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
+            ((pvw)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+            ((pvw)localObject1).jdField_b_of_type_JavaUtilList.add("");
+            ((pvw)localObject1).jdField_a_of_type_JavaUtilList.add("");
+            paramInt2 = 0;
+            if (paramInt2 >= localObject3.length) {
+              continue;
+            }
+            ((pvw)localObject1).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
+            paramInt2 += 1;
+            continue;
+            localJSONException1 = localJSONException1;
+          }
+          catch (JSONException localJSONException2)
+          {
+            paramString = localJSONException1;
+            localObject2 = localJSONException2;
+            continue;
+          }
+          localJSONException1.printStackTrace();
+          continue;
+          paramInt2 = 0;
+          if (paramInt2 < localObject5.length)
+          {
+            localJSONException1.jdField_b_of_type_JavaUtilList.add(localObject5[paramInt2]);
+            paramInt2 += 1;
+          }
+          else if (paramInt1 == 0)
+          {
+            paramString.put(localJSONException1.a());
+          }
         }
+        QLog.d("KandianDailySettingConfigHandler", 2, "new data: " + paramString.toString());
+        ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", paramString.toString());
+        return true;
       }
     }
-    return bool1;
   }
   
-  public void a(boolean paramBoolean)
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void playAnimation()
-  {
-    super.playAnimation();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyLottieDrawable", 2, "playAnimation: ");
-    }
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!paramBoolean1) && (this.jdField_a_of_type_Boolean)) {
-      cancelAnimation();
-    }
-    return super.setVisible(paramBoolean1, paramBoolean2);
-  }
-  
-  public void start()
-  {
-    super.start();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyLottieDrawable", 2, "start: ");
-    }
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onWipeConfig]");
+    ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", "");
   }
 }
 

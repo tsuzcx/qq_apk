@@ -1,38 +1,22 @@
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class nif
+  extends RecyclerView.ViewHolder
 {
-  public static int a()
-  {
-    return (int)(0.64F * bhtq.a());
-  }
+  public ImageView a;
+  public TextView a;
+  public nam a;
+  public ImageView b;
   
-  public static int a(TextView paramTextView)
+  public nif(nic paramnic, View paramView, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView)
   {
-    if ((paramTextView != null) && (paramTextView.getText() != null))
-    {
-      TextPaint localTextPaint = paramTextView.getPaint();
-      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramTextView.getWidth() - paramTextView.getPaddingLeft() - paramTextView.getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
-    }
-    return -1;
-  }
-  
-  public static int b()
-  {
-    return (int)(bhtq.a() * 0.045F);
-  }
-  
-  public static int c()
-  {
-    return (int)(bhtq.a() * 0.058F);
-  }
-  
-  public static int d()
-  {
-    return (int)(bhtq.a() * 0.048F);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
+    this.b = paramImageView2;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
   }
 }
 

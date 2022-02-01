@@ -1,15 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
 
-public abstract interface wrk
+public class wrk
+  implements wuk
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public final ViewPager.PageTransformer a;
   
-  public abstract void a(int paramInt, String paramString);
+  public wrk(ViewPager.PageTransformer paramPageTransformer)
+  {
+    this.a = paramPageTransformer;
+  }
   
-  public abstract void a(MessageMicro paramMessageMicro);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public void a(View paramView, float paramFloat)
+  {
+    this.a.transformPage(paramView, paramFloat);
+  }
 }
 
 

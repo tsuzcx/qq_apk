@@ -1,81 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class odz
-  extends arac<ody>
+class odz<T extends MessageMicro<?>>
+  implements BusinessObserver
 {
-  @NonNull
-  public ody a(int paramInt)
+  private Class<T> jdField_a_of_type_JavaLangClass;
+  private oea<T> jdField_a_of_type_Oea;
+  
+  public odz(oea<T> paramoea, Class<T> paramClass)
   {
-    if (paramInt == 0)
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (QQAppInterface)localObject;
-        boolean bool = tvz.d((QQAppInterface)localObject);
-        return ody.a(tvz.a((QQAppInterface)localObject), tvz.b((QQAppInterface)localObject), bool);
-      }
-    }
-    return new ody();
+    this.jdField_a_of_type_Oea = paramoea;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
   
-  @Nullable
-  public ody a(araj[] paramArrayOfaraj)
+  private T a(byte[] paramArrayOfByte, Class<T> paramClass)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "[onParsed]");
+    try
+    {
+      paramClass = (MessageMicro)paramClass.newInstance();
+      if (paramArrayOfByte == null) {
+        return null;
+      }
+      paramClass.mergeFrom(paramArrayOfByte);
+      return paramClass;
     }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return ody.a(paramArrayOfaraj);
+    catch (Throwable paramArrayOfByte)
+    {
+      Toast.makeText(BaseApplicationImpl.getContext(), 2131694775, 0).show();
+      QLog.w("PublicAccountStQWebServlet", 4, "decode pb err:" + paramArrayOfByte.getMessage(), paramArrayOfByte);
     }
     return null;
   }
   
-  public void a(ody paramody)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramody.a();
-  }
-  
-  public Class<ody> clazz()
-  {
-    return ody.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      return bhsi.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+    if (this.jdField_a_of_type_Oea == null) {
+      return;
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 35;
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Oea.a(paramInt, paramBoolean, null, paramBundle);
+    }
+    byte[] arrayOfByte = paramBundle.getByteArray("data");
+    if (a(arrayOfByte, this.jdField_a_of_type_JavaLangClass) == null)
+    {
+      this.jdField_a_of_type_Oea.a(paramInt, false, null, paramBundle);
+      return;
+    }
+    this.jdField_a_of_type_Oea.a(paramInt, paramBoolean, a(arrayOfByte, this.jdField_a_of_type_JavaLangClass), paramBundle);
   }
 }
 

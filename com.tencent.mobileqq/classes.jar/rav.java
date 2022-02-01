@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.3;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.graphics.drawable.Drawable;
 
-public class rav
-  implements DialogInterface.OnClickListener
+class rav
+  extends raj
 {
-  public rav(ReadInJoyDeliverVideoActivity.3 param3) {}
+  rav(rau paramrau) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Drawable a()
   {
-    ForwardSdkShareOption.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
-    this.a.this$0.moveTaskToBack(true);
-    this.a.this$0.finish();
+    return a("readinjoy_diandian_icon_foreground");
   }
 }
 

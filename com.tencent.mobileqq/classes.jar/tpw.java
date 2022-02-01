@@ -1,132 +1,133 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0x885.oidb_0x885.AdInfo;
+import tencent.im.oidb.cmd0x885.oidb_0x885.NegFeedback;
 
 public class tpw
 {
-  private static String a = "ReadInJoyAdInnerUtils";
+  private static HashMap<Integer, Pair<Integer, Integer>> a = new HashMap();
   
-  public static String a(String paramString, int paramInt)
+  static
   {
-    int i = 0;
-    int j = 0;
-    for (;;)
+    a.put(Integer.valueOf(385), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
+    a.put(Integer.valueOf(65), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
+    a.put(Integer.valueOf(600), new Pair(Integer.valueOf(1000), Integer.valueOf(560)));
+    a.put(Integer.valueOf(769), new Pair(Integer.valueOf(1280), Integer.valueOf(720)));
+    a.put(Integer.valueOf(710), new Pair(Integer.valueOf(720), Integer.valueOf(1280)));
+  }
+  
+  public static AdvertisementInfo a(oidb_0x885.AdInfo paramAdInfo)
+  {
+    AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
+    int i;
+    if ((paramAdInfo != null) && (paramAdInfo.has()))
     {
-      String str1 = paramString;
-      for (;;)
+      localAdvertisementInfo.mAdKdPos = paramAdInfo.int32_kd_pos.get();
+      localAdvertisementInfo.mAdCl = paramAdInfo.bytes_cl.get().toStringUtf8();
+      localAdvertisementInfo.mAdImg = paramAdInfo.bytes_img.get().toStringUtf8();
+      localAdvertisementInfo.mAdImgs = paramAdInfo.bytes_img_s.get().toStringUtf8();
+      localAdvertisementInfo.mAdTxt = paramAdInfo.bytes_txt.get().toStringUtf8();
+      localAdvertisementInfo.mAdDesc = paramAdInfo.bytes_desc.get().toStringUtf8();
+      localAdvertisementInfo.mAdRl = paramAdInfo.bytes_rl.get().toStringUtf8();
+      localAdvertisementInfo.mAdApurl = paramAdInfo.bytes_apurl.get().toStringUtf8();
+      localAdvertisementInfo.mAdTraceId = paramAdInfo.bytes_trace_id.get().toStringUtf8();
+      localAdvertisementInfo.mAdProductId = paramAdInfo.bytes_product_id.get().toStringUtf8();
+      localAdvertisementInfo.mAdProductType = paramAdInfo.int32_product_type.get();
+      localAdvertisementInfo.mAdType = paramAdInfo.uint32_ad_type.get();
+      localAdvertisementInfo.mAdLandingPage = paramAdInfo.bytes_landing_page.get().toStringUtf8();
+      localAdvertisementInfo.mAdPrice = paramAdInfo.bytes_price.get().toStringUtf8();
+      localAdvertisementInfo.mAdBtnTxt = paramAdInfo.bytes_button_txt.get().toStringUtf8();
+      localAdvertisementInfo.mAdViewId = paramAdInfo.bytes_view_id.get().toStringUtf8();
+      localAdvertisementInfo.mAdCustomizedInvokeUrl = paramAdInfo.bytes_customized_invoke_url.get().toStringUtf8();
+      localAdvertisementInfo.mAdCorporationName = paramAdInfo.bytes_corporation_name.get().toStringUtf8();
+      localAdvertisementInfo.mAdCorporateImageName = paramAdInfo.bytes_corporate_image_name.get().toStringUtf8();
+      localAdvertisementInfo.mAdCorporateLogo = paramAdInfo.bytes_corporate_logo.get().toStringUtf8();
+      localAdvertisementInfo.mAdUin = paramAdInfo.uint64_ad_uin.get();
+      localAdvertisementInfo.mAdExt = paramAdInfo.bytes_ext.get().toStringUtf8();
+      if (TextUtils.isEmpty(localAdvertisementInfo.mAdExt)) {
+        localAdvertisementInfo.mAdExt = new JSONObject().toString();
+      }
+      localAdvertisementInfo.mAdVideoUrl = paramAdInfo.bytes_video_url.get().toStringUtf8();
+      localAdvertisementInfo.mAdCostType = paramAdInfo.uint32_cost_type.get();
+      localAdvertisementInfo.mAdAid = paramAdInfo.uint64_aid.get();
+      localAdvertisementInfo.mAdLayout = paramAdInfo.enum_ad_layout.get();
+      localAdvertisementInfo.mAdMaterialId = paramAdInfo.uint32_ad_material_id.get();
+      localAdvertisementInfo.mAdJumpMode = paramAdInfo.enum_ad_jump_mode.get();
+      localAdvertisementInfo.mAdExtInfo = paramAdInfo.bytes_extra_data.get().toStringUtf8();
+      if (TextUtils.isEmpty(localAdvertisementInfo.mAdExtInfo)) {
+        localAdvertisementInfo.mAdExtInfo = new JSONObject().toString();
+      }
+      localAdvertisementInfo.mAdAppDownLoadSchema = paramAdInfo.bytes_app_download_schema.get().toStringUtf8();
+      localAdvertisementInfo.mAdCanvasJson = paramAdInfo.string_canvas_json.get();
+      localAdvertisementInfo.mAdLandingPageReportUrl = paramAdInfo.bytes_landing_page_report_url.get().toStringUtf8();
+      localAdvertisementInfo.mAdAdvertiseId = paramAdInfo.uint64_advertiser_id.get();
+      localAdvertisementInfo.mAdDestType = paramAdInfo.uint32_dest_type.get();
+      localAdvertisementInfo.mAdEffectUrl = paramAdInfo.string_effect_url.get();
+      localAdvertisementInfo.mAdNocoId = paramAdInfo.int64_noco_id.get();
+      localAdvertisementInfo.mAdVia = paramAdInfo.bytes_via.get().toStringUtf8();
+      localAdvertisementInfo.mAdFeedId = paramAdInfo.uint64_feeds_id.get();
+      localAdvertisementInfo.mAdInteractionReportUrl = paramAdInfo.string_interaction_report_url.get();
+      if (paramAdInfo.rpt_msg_neg_feedback.has())
       {
-        try
+        localAdvertisementInfo.mAdDislikeInfos = new ArrayList();
+        Iterator localIterator = paramAdInfo.rpt_msg_neg_feedback.get().iterator();
+        while (localIterator.hasNext())
         {
-          if (j < paramString.length())
-          {
-            if (String.valueOf(paramString.charAt(j)).getBytes().length != 1) {
-              continue;
-            }
-            i += 1;
-            if ((j >= paramString.length() - 1) || (i < paramInt)) {
-              continue;
-            }
-            str1 = paramString.substring(0, j) + "...";
+          oidb_0x885.NegFeedback localNegFeedback = (oidb_0x885.NegFeedback)localIterator.next();
+          if (localNegFeedback != null) {
+            localAdvertisementInfo.mAdDislikeInfos.add(new AdDislikeInfo(localNegFeedback));
           }
         }
-        catch (Exception localException)
-        {
-          String str2 = paramString;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("ReadInJoyAdUtils", 2, "getTitle error");
-        }
-        return str1;
-        i += 2;
       }
-      j += 1;
+      localAdvertisementInfo.mAdScoreNum = paramAdInfo.uint32_app_score_num.get();
+      if (paramAdInfo.string_download_api_url.has()) {
+        localAdvertisementInfo.mAdDownloadApiUrl = paramAdInfo.string_download_api_url.get();
+      }
+      localAdvertisementInfo.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
+      localAdvertisementInfo.processAdExtraDataInfo(localAdvertisementInfo.mAdExtInfo);
+      localAdvertisementInfo.mAdvertisementExtInfo = new tro(localAdvertisementInfo.mAdExtInfo);
+      localAdvertisementInfo.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
+      if (paramAdInfo.string_interact_image_list.has()) {
+        localAdvertisementInfo.mInteractImageList = paramAdInfo.string_interact_image_list.get();
+      }
+      localAdvertisementInfo.mInteractType = paramAdInfo.uint32_interact_type.get();
+      if (!paramAdInfo.int32_soft_ad_type.has()) {
+        break label820;
+      }
+      i = paramAdInfo.int32_soft_ad_type.get();
+      localAdvertisementInfo.mSoftAdType = i;
+      if (!paramAdInfo.bytes_soft_ad_data.has()) {
+        break label825;
+      }
     }
-    return paramString;
-  }
-  
-  public static JSONObject a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3)))
+    label820:
+    label825:
+    for (paramAdInfo = paramAdInfo.bytes_soft_ad_data.get().toStringUtf8();; paramAdInfo = new JSONObject().toString())
     {
-      QLog.e("ReadInJoyAdUtils", 2, "getBusinessJson error articleId123:" + paramString1 + " tag:" + paramString2 + " cashInfo:" + paramString3);
-      return null;
+      localAdvertisementInfo.mSoftAdData = paramAdInfo;
+      if (localAdvertisementInfo.mSoftAdType == 2) {
+        localAdvertisementInfo.processSoftDataInfo(localAdvertisementInfo.mSoftAdData);
+      }
+      return localAdvertisementInfo;
+      i = 0;
+      break;
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (!TextUtils.isEmpty(paramString1)) {
-        localJSONObject.put("article_id", paramString1);
-      }
-      if (!TextUtils.isEmpty(paramString3)) {
-        localJSONObject.put("cash_tag", paramString3);
-      }
-      if (!TextUtils.isEmpty(paramString2)) {
-        localJSONObject.put("tags", paramString2);
-      }
-      return localJSONObject;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if (paramJSONObject2 == null) {}
-    for (;;)
-    {
-      return paramJSONObject1;
-      try
-      {
-        if (paramJSONObject2.has("article_id")) {
-          paramJSONObject1.put("article_id", paramJSONObject2.get("article_id"));
-        }
-        if (paramJSONObject2.has("tags")) {
-          paramJSONObject1.put("tags", paramJSONObject2.get("tags"));
-        }
-        if (paramJSONObject2.has("cash_tag")) {
-          paramJSONObject1.put("cash_tag", paramJSONObject2.get("cash_tag"));
-        }
-        if (paramJSONObject2.has("message")) {
-          paramJSONObject1.put("message", paramJSONObject2.get("message"));
-        }
-        if (paramJSONObject2.has("rowkey"))
-        {
-          paramJSONObject1.put("rowkey", paramJSONObject2.get("rowkey"));
-          return paramJSONObject1;
-        }
-      }
-      catch (Exception paramJSONObject2)
-      {
-        paramJSONObject2.printStackTrace();
-      }
-    }
-    return paramJSONObject1;
-  }
-  
-  public static void a(ProteusInnerData paramProteusInnerData, int paramInt)
-  {
-    if (paramProteusInnerData == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 1, "doClickReport adData null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 1, "doClickReport");
-      }
-      localQQAppInterface = (QQAppInterface)ozs.a();
-    } while (localQQAppInterface == null);
-    nzq.a(new tlx().a(localQQAppInterface).a(BaseApplication.getContext()).a(nzq.a).b(nzq.Y).a(tqb.a(paramProteusInnerData)).d(paramInt).d(nzq.a(paramProteusInnerData)).a());
   }
 }
 

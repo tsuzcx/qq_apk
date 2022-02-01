@@ -42,7 +42,7 @@ class TAVAspectFillEffect$AspectFillVideoCompositionEffect
     TextureInfo localTextureInfo = getCacheTextureInfo((int)paramCIImage.getSize().width, (int)paramCIImage.getSize().height);
     paramRenderInfo = paramRenderInfo.getCiContext();
     paramCIImage = TAVAspectFillEffect.access$300(this.this$0, paramRenderInfo.convertImageToTexture(paramCIImage, localTextureInfo));
-    this.scaleTextureFilter.scale(paramFloat1, paramFloat2, paramFloat3);
+    this.scaleTextureFilter.scale(paramFloat1, Math.round(paramFloat2), Math.round(paramFloat3));
     paramRenderInfo = this.scaleTextureFilter.applyFilter(paramCIImage);
     paramCIImage = this.hGaosiBlurFilter.applyFilter(paramCIImage);
     paramCIImage = this.vGaosiBlurFilter.applyFilter(paramCIImage);
@@ -76,9 +76,9 @@ class TAVAspectFillEffect$AspectFillVideoCompositionEffect
     return localTextureInfo2;
   }
   
-  private void prepareFilter(float paramFloat1, float paramFloat2)
+  private void prepareFilter(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
-    float f2 = 1.0F;
+    float f = 0.0F;
     this.scaleTextureFilter.setRendererWidth((int)TAVAspectFillEffect.access$100(this.this$0).width);
     this.scaleTextureFilter.setRendererHeight((int)TAVAspectFillEffect.access$100(this.this$0).height);
     this.hGaosiBlurFilter.setRendererWidth((int)TAVAspectFillEffect.access$100(this.this$0).width);
@@ -87,52 +87,55 @@ class TAVAspectFillEffect$AspectFillVideoCompositionEffect
     this.vGaosiBlurFilter.setRendererHeight((int)TAVAspectFillEffect.access$100(this.this$0).height);
     this.mergeTextureFilter.setRendererWidth((int)TAVAspectFillEffect.access$100(this.this$0).width);
     this.mergeTextureFilter.setRendererHeight((int)TAVAspectFillEffect.access$100(this.this$0).height);
-    if (paramFloat1 < TAVAspectFillEffect.access$100(this.this$0).width) {}
-    for (float f1 = TAVAspectFillEffect.access$100(this.this$0).width / paramFloat1;; f1 = 1.0F)
+    if (paramBoolean)
     {
-      if (paramFloat2 < TAVAspectFillEffect.access$100(this.this$0).height) {
-        f2 = TAVAspectFillEffect.access$100(this.this$0).height / paramFloat2;
-      }
-      if (f1 > f2) {}
-      for (;;)
-      {
-        paramFloat1 = (TAVAspectFillEffect.access$100(this.this$0).width - f1 * paramFloat1) / 2.0F;
-        paramFloat2 = (TAVAspectFillEffect.access$100(this.this$0).height - f1 * paramFloat2) / 2.0F;
-        this.hGaosiBlurFilter.scale(f1, paramFloat1, paramFloat2);
-        return;
-        f1 = f2;
-      }
+      paramFloat3 = -(TAVAspectFillEffect.access$100(this.this$0).height / paramFloat4 * TAVAspectFillEffect.access$100(this.this$0).width - TAVAspectFillEffect.access$100(this.this$0).width) / 2.0F;
+      paramFloat1 = TAVAspectFillEffect.access$100(this.this$0).height / paramFloat2;
+      paramFloat2 = f;
+    }
+    for (;;)
+    {
+      this.hGaosiBlurFilter.scale(paramFloat1, paramFloat3, paramFloat2);
+      return;
+      paramFloat2 = -(TAVAspectFillEffect.access$100(this.this$0).width / paramFloat3 * TAVAspectFillEffect.access$100(this.this$0).height - TAVAspectFillEffect.access$100(this.this$0).height) / 2.0F;
+      paramFloat1 = TAVAspectFillEffect.access$100(this.this$0).width / paramFloat1;
+      paramFloat3 = 0.0F;
     }
   }
   
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
+    float f4 = 0.0F;
     float f1 = paramCIImage.getSize().width;
-    float f2 = paramCIImage.getSize().height;
-    float f4 = TAVAspectFillEffect.access$100(this.this$0).width / TAVAspectFillEffect.access$100(this.this$0).height;
-    float f3 = f1 / f2;
+    float f6 = paramCIImage.getSize().height;
+    float f2 = TAVAspectFillEffect.access$100(this.this$0).width / TAVAspectFillEffect.access$100(this.this$0).height;
+    float f3 = f1 / f6;
+    if (f3 == f2) {
+      return paramCIImage;
+    }
     float f5;
-    if ((f4 > 1.0F) && (f3 < 1.0F))
+    if (f3 > f2)
     {
-      f4 = TAVAspectFillEffect.access$100(this.this$0).height;
-      f3 = f4 * f3;
-      f4 /= f2;
-      f5 = (TAVAspectFillEffect.access$100(this.this$0).width - f3) / 2.0F;
-      f3 = (TAVAspectFillEffect.access$100(this.this$0).width - f3) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).width;
-      prepareFilter(f1, f2);
-      return applyFilter(paramRenderInfo, paramCIImage, f4, f5, 0.0F, f3, 0.0F);
+      f2 = TAVAspectFillEffect.access$100(this.this$0).width;
+      float f7 = f2 / f3;
+      f3 = (TAVAspectFillEffect.access$100(this.this$0).height - f7) / 2.0F;
+      f5 = (TAVAspectFillEffect.access$100(this.this$0).height - f7) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).height;
+      prepareFilter(f1, f6, f2, f7, true);
+      f1 = (TAVAspectFillEffect.access$100(this.this$0).height - Math.round(f3) * 2) * 1.0F / f6;
+      f2 = 0.0F;
     }
-    if ((f4 < 1.0F) && (f3 > 1.0F))
+    for (;;)
     {
-      f4 = TAVAspectFillEffect.access$100(this.this$0).width;
-      f3 = f4 / f3;
-      f4 /= f1;
-      f5 = (TAVAspectFillEffect.access$100(this.this$0).height - f3) / 2.0F;
-      f3 = (TAVAspectFillEffect.access$100(this.this$0).height - f3) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).height;
-      prepareFilter(f1, f2);
-      return applyFilter(paramRenderInfo, paramCIImage, f4, 0.0F, f5, 0.0F, f3);
+      return applyFilter(paramRenderInfo, paramCIImage, f1, f2, f3, f4, f5);
+      f5 = TAVAspectFillEffect.access$100(this.this$0).height;
+      f3 = f5 * f3;
+      f2 = (TAVAspectFillEffect.access$100(this.this$0).width - f3) / 2.0F;
+      f4 = (TAVAspectFillEffect.access$100(this.this$0).width - f3) / 2.0F / TAVAspectFillEffect.access$100(this.this$0).width;
+      prepareFilter(f1, f6, f3, f5, false);
+      f1 = (TAVAspectFillEffect.access$100(this.this$0).width - Math.round(f2) * 2) * 1.0F / f1;
+      f3 = 0.0F;
+      f5 = 0.0F;
     }
-    return paramCIImage;
   }
   
   public String getReportKey()

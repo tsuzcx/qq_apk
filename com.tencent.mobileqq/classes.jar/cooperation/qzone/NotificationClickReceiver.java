@@ -8,22 +8,33 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import bcux;
-import bmsx;
+import bboh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
+import java.util.HashMap;
 import java.util.List;
-import uyx;
+import vgn;
 
 public class NotificationClickReceiver
   extends BroadcastReceiver
 {
-  private static final String[] a = { "com.tencent.mobileqq.activity.SplashActivity", "com.tencent.mobileqq.activity.NearbyActivity", "com.tencent.mobileqq.activity.ChatActivity" };
+  public static final String INTENT = "realIntent";
+  public static final String IS_NEED_BACK_TO_FRIEND_FEED = "isNeedBackToFriendFeed";
+  public static final String MERGENUM = "mergenum";
+  public static final String PUSHSTATKEY = "pushstatkey";
+  public static final String SCHEMA = "pushschema";
+  public static final String TAG = "pushReport";
+  public static final String TYPE = "type";
+  public static final int TYPE_QCIRCLE = 2;
+  public static final int TYPE_QZONE = 1;
+  public static final String UIN = "hostuin";
+  private static final String[] sBlackList = { "com.tencent.mobileqq.activity.SplashActivity", "com.tencent.mobileqq.activity.NearbyActivity", "com.tencent.mobileqq.activity.ChatActivity" };
   
-  public static boolean a()
+  public static boolean isNeedBackToFriendFeed()
   {
     List localList = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningTasks(100);
     int i;
@@ -38,7 +49,7 @@ public class NotificationClickReceiver
       {
         String str = ((ActivityManager.RunningTaskInfo)localList.get(i)).topActivity.getClassName();
         QLog.i("pushReport", 4, "---------" + i + ":topActivity:" + str + " --baseActivity:" + ((ActivityManager.RunningTaskInfo)localList.get(i)).baseActivity.getClassName());
-        String[] arrayOfString = a;
+        String[] arrayOfString = sBlackList;
         int m = arrayOfString.length;
         j = 0;
         label141:
@@ -75,12 +86,17 @@ public class NotificationClickReceiver
     ((Intent)localObject).setExtrasClassLoader(getClass().getClassLoader());
     String str1 = ((Intent)localObject).getStringExtra("qzone_plugin_activity_name");
     if ((!TextUtils.isEmpty(str1)) && (str1.equals("com.qzone.detail.ui.activity.QzoneDetailActivity"))) {
-      ((Intent)localObject).putExtra("isNeedBackToFriendFeed", a());
+      ((Intent)localObject).putExtra("isNeedBackToFriendFeed", isNeedBackToFriendFeed());
     }
     int i = ((Intent)localObject).getIntExtra("type", 1);
     str1 = paramIntent.getStringExtra("pushschema");
-    if (i == 2) {
-      uyx.a(BaseApplicationImpl.getContext(), str1);
+    if ((i == 2) && (!TextUtils.isEmpty(str1))) {
+      if (str1.startsWith("https://"))
+      {
+        paramContext = new HashMap();
+        paramContext.put("url", str1);
+        vgn.a(BaseApplicationImpl.getContext(), "openwebview", paramContext);
+      }
     }
     try
     {
@@ -93,21 +109,21 @@ public class NotificationClickReceiver
       {
         if (str1.startsWith("mqzone://arouse/livevideo"))
         {
-          paramContext = new bmsx();
-          paramContext.c = String.valueOf(322);
-          paramContext.d = String.valueOf(3);
-          paramContext.e = String.valueOf(7);
+          paramContext = new QZoneClickReport.ReportInfo();
+          paramContext.actionType = String.valueOf(322);
+          paramContext.subactionType = String.valueOf(3);
+          paramContext.reserves = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          bcux.a.clear();
+          bboh.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {
-          break label301;
+          break label384;
         }
         paramContext = paramIntent;
         if (localUri.getPathSegments().size() <= 0) {}
       }
-      label301:
+      label384:
       for (paramContext = (String)localUri.getPathSegments().get(0);; paramContext = localUri.getQueryParameter("from"))
       {
         LpReportInfo_dc00420.report(3, 0, paramContext, str2, 1);
@@ -116,6 +132,13 @@ public class NotificationClickReceiver
           QLog.d("pushReport", 2, "CLICK: uin: " + (String)localObject + " schema: " + str1 + " pushstatkey: " + str2);
         }
         return;
+        if (!str1.startsWith("mqqapi://")) {
+          break;
+        }
+        localObject = new Intent(paramContext, JumpActivity.class);
+        ((Intent)localObject).setData(Uri.parse(str1));
+        paramContext.startActivity((Intent)localObject);
+        break;
         paramContext.startActivity((Intent)localObject);
         break;
       }

@@ -1,8 +1,6 @@
-import java.util.List;
-
-public abstract interface prk<B>
+public abstract interface prk
 {
-  public abstract void a(boolean paramBoolean, List<B> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString);
+  public abstract void a(String paramString, prl paramprl);
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.activity;
 
-import axes;
+import avrz;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 
 class LoadingFragment$2
-  implements axes
+  implements avrz
 {
   LoadingFragment$2(LoadingFragment paramLoadingFragment) {}
   

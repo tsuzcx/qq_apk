@@ -1,36 +1,70 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserListRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-class zco
-  implements TextWatcher
+public class zco
+  implements zcm
 {
-  zco(zcn paramzcn) {}
+  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private zcn jdField_a_of_type_Zcn;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public zco(zcn paramzcn)
   {
-    if (this.a.jdField_a_of_type_Zcu == null) {}
-    do
+    this.jdField_a_of_type_Zcn = paramzcn;
+    this.jdField_a_of_type_Zcn.setPresenter(this);
+  }
+  
+  private List<zcz> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramStGetRecommendUserListRsp.expType.get() == 0)
     {
-      return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
+      if (paramStGetRecommendUserListRsp.vecUser.has())
       {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_Zcu != null) {
-          this.a.jdField_a_of_type_Zcu.b(420);
+        paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+        while (paramStGetRecommendUserListRsp.hasNext()) {
+          localArrayList.add(new zcz((CertifiedAccountMeta.StUser)paramStGetRecommendUserListRsp.next()));
         }
       }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
+    }
+    else if ((paramStGetRecommendUserListRsp.expType.get() == 1) && (paramStGetRecommendUserListRsp.vecUserWithFeed.has()))
+    {
+      paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUserWithFeed.get().iterator();
+      while (paramStGetRecommendUserListRsp.hasNext()) {
+        localArrayList.add(new zcz((CertifiedAccountMeta.StFeed)paramStGetRecommendUserListRsp.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = System.currentTimeMillis();
+    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
+    ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
+    VSNetworkHelper.getInstance().sendRequest((VSBaseRequest)localObject, new zcp(this, l));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Zcn != null)
+    {
+      this.jdField_a_of_type_Zcn.setPresenter(null);
+      this.jdField_a_of_type_Zcn = null;
+    }
   }
 }
 

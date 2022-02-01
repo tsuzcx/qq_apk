@@ -1,72 +1,23 @@
-import android.app.Activity;
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.biz.richframework.part.demo.DemoBaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
-public class aacj
-  extends aacq
+class aacj
+  implements Animation.AnimationListener
 {
-  private BaseWidgetView a;
+  aacj(aach paramaach, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
   
-  public aacj(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramBundle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  private void a()
-  {
-    this.a.setData(null);
-    setShareData("share_key_subscribe_user", new aabn(new ExtraTypeInfo()));
-    notifyLoadingComplete(true);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
-  {
-    this.a = new DemoBaseWidgetView(getContext());
-    return this.a;
-  }
-  
-  protected void handleBlockChange(aabp paramaabp, int paramInt)
-  {
-    super.handleBlockChange(paramaabp, paramInt);
-  }
-  
-  public void handleShareDataChange(String paramString, aabn paramaabn)
-  {
-    super.handleShareDataChange(paramString, paramaabn);
-  }
-  
-  public boolean isEnableRefresh()
-  {
-    return false;
-  }
-  
-  public void loadData(aabu paramaabu)
-  {
-    if ((paramaabu.d()) || (paramaabu.c())) {
-      a();
-    }
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    super.onActivityCreated(paramActivity, paramBundle);
-  }
-  
-  public boolean onBackEvent()
-  {
-    return super.onBackEvent();
-  }
-  
-  public void onInitBlock(Bundle paramBundle)
-  {
-    if (paramBundle != null) {}
-    ((aacg)getViewModel(aacg.class)).a().observe((QCircleBaseFragment)getParentFragment(), new aack(this));
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

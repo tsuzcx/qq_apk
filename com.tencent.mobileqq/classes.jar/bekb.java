@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bekb
-  implements DialogInterface.OnClickListener
+public class bekb
+  implements View.OnClickListener
 {
-  bekb(bejx parambejx) {}
+  public bekb(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    bjmm.b(paramView);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

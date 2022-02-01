@@ -1,76 +1,94 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
-class axqe
-  extends azre
+public class axqe
+  implements axqj
 {
-  axqe(axqb paramaxqb, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString1, String paramString2) {}
+  public axqe(OlympicManager paramOlympicManager) {}
   
-  public void a(int paramInt, azql paramazql)
+  public void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadRawImage id = " + this.jdField_a_of_type_Long + ", result = " + paramInt);
-    }
-    axpx localaxpx = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString);
-    if ((localaxpx != null) && (!localaxpx.jdField_a_of_type_Boolean))
+    if ((paramObject == null) || (!(paramObject instanceof String[]))) {}
+    do
     {
-      localaxpx.jdField_a_of_type_Int = paramInt;
-      if (paramInt != 0) {
-        break label226;
-      }
-      paramInt = 1;
-      localaxpx.jdField_a_of_type_Axpw.jdField_a_of_type_Int = 1;
-      if (paramazql == null) {
-        break label236;
-      }
-      localaxpx.jdField_a_of_type_Int = paramazql.jdField_a_of_type_Int;
-      if ((paramazql.jdField_a_of_type_Int != 0) && (paramazql.jdField_a_of_type_Azqh != null))
+      for (;;)
       {
-        localaxpx.jdField_b_of_type_Int = paramazql.jdField_a_of_type_Azqh.jdField_a_of_type_Int;
-        localaxpx.jdField_a_of_type_JavaLangString = paramazql.jdField_a_of_type_Azqh.jdField_b_of_type_JavaLangString;
+        return;
+        axsb.b("OlympicManager", new Object[] { "onDownloadFinish, url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt) });
+        if (paramInt == 0) {
+          this.a.a(paramString1, 0, true);
+        }
+        String[] arrayOfString = (String[])paramObject;
+        String str = arrayOfString[0];
+        if ("shuayishua".equals(str))
+        {
+          int i = Integer.valueOf(arrayOfString[1]).intValue();
+          if (QLog.isColorLevel()) {
+            QLog.i("OlympicManager", 2, "onDownloadFinish.type=shuayishuaurl=" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject + ",errCode=" + paramInt + ",filePath=" + paramString3);
+          }
+          paramString1 = OlympicManager.a(this.a);
+          if ((paramInt == 0) && (paramString1 != null) && (paramString1.id == i)) {
+            OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+          }
+        }
+        else if ("shuayishua_anim".equals(str))
+        {
+          if (paramInt == 0) {
+            try
+            {
+              OlympicManager.a(this.a);
+              paramString1 = axqh.a(paramString2);
+              FileUtils.uncompressZip(paramString3, paramString1, false);
+              if (QLog.isColorLevel()) {
+                QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim success.destDir=" + paramString1);
+              }
+              paramString1 = OlympicManager.a(this.a);
+              if ((paramString1 == null) || (paramString1.id != -1)) {
+                continue;
+              }
+              OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+              return;
+            }
+            catch (Exception paramString1)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim failed: " + paramString1.getMessage());
+                }
+              }
+            }
+          }
+        }
+        else if ("ActConfig".equals(str))
+        {
+          paramObject = arrayOfString[1];
+          axsb.a("OlympicManager", new Object[] { "mDownloadListener.onDownloadFinish, type=", str, ", itemType=", paramObject, ", url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt), ", filePath=", paramString3 });
+          if (("TorchAnim".equals(paramObject)) && (paramInt == 0)) {
+            try
+            {
+              OlympicManager.a(this.a);
+              paramString1 = axqh.a(paramString2);
+              FileUtils.uncompressZip(paramString3, paramString1, false);
+              if (QLog.isColorLevel())
+              {
+                QLog.d("OlympicManager", 2, "un compressZip TorchAnim success.destDir=" + paramString1);
+                return;
+              }
+            }
+            catch (Exception paramString1) {}
+          }
+        }
       }
-      if (paramazql.jdField_a_of_type_Int != 0) {
-        break label231;
-      }
-      paramInt = i;
-    }
-    label152:
-    label226:
-    label231:
-    label236:
-    for (boolean bool = paramazql.jdField_a_of_type_Boolean;; bool = false)
-    {
-      localaxpx.jdField_a_of_type_Axqo = new axqo(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_JavaLangString, bool);
-      this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString, localaxpx);
-      axqb.a(this.jdField_a_of_type_Axqb, localaxpx.jdField_a_of_type_Axpw, 0, localaxpx.jdField_b_of_type_Int, localaxpx.jdField_a_of_type_JavaLangString);
-      return;
-      paramInt = 2;
-      break;
-      paramInt = 2;
-      break label152;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("OlympicManager", 2, "un compressZip TorchAnim failed: " + paramString1.getMessage());
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Axqb.a != null) {
-      this.jdField_a_of_type_Axqb.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
-    axpx localaxpx = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString);
-    if ((localaxpx != null) && (!localaxpx.jdField_a_of_type_Boolean))
-    {
-      if (axqb.a(this.jdField_a_of_type_Axqb)) {
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx.jdField_a_of_type_Axpw, paramInt);
-      }
-    }
-    else {
-      return;
-    }
-    paramInt /= 100;
-    localaxpx.c = paramInt;
-    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString, localaxpx);
-    axqb.b(this.jdField_a_of_type_Axqb, localaxpx, paramInt);
-  }
+  public void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 

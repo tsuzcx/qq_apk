@@ -1,57 +1,127 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.VasApngFactory.sam.java_lang_Runnable.0;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmOverloads;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class bgft
-  implements TextWatcher
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/VasApngFactory;", "", "()V", "TAG", "", "doOnMainThread", "", "block", "Lkotlin/Function0;", "getApngDrawableFromUrl", "Lcom/tencent/image/URLDrawable;", "filePath", "urlStr", "options", "Lcom/tencent/mobileqq/vas/VasApngFactory$Options;", "getApngURLDrawable", "Options", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bgft
 {
-  bgft(bgfo parambgfo, bgfu parambgfu, bgep parambgep) {}
+  public static final bgft a = new bgft();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  @JvmStatic
+  @JvmOverloads
+  @Nullable
+  public static final URLDrawable a(@NotNull String paramString, @NotNull bgfu parambgfu)
   {
-    int i;
-    int k;
-    if (this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b() != 0)
+    return a(paramString, parambgfu, null, 4, null);
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  @Nullable
+  public static final URLDrawable a(@NotNull String paramString1, @NotNull bgfu parambgfu, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "urlStr");
+    Intrinsics.checkParameterIsNotNull(parambgfu, "options");
+    Intrinsics.checkParameterIsNotNull(paramString2, "filePath");
+    bgfv localbgfv = new bgfv(parambgfu);
+    paramString1 = a.a(paramString2, paramString1, parambgfu);
+    if (paramString1 != null)
     {
-      int j = this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
-      i = this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
-      j -= i;
-      k = paramInt3 - paramInt2;
-      if (k > j)
+      int i = paramString1.getStatus();
+      if (i != 1)
       {
-        QQToast.a(bgfo.a(this.jdField_a_of_type_Bgfo), "最多可以输入500个字", 1).a();
-        paramInt2 = j + paramInt2;
-        this.jdField_a_of_type_Bgfu.a.removeTextChangedListener(this);
-        CharSequence localCharSequence = paramCharSequence.subSequence(0, paramInt1 + paramInt2);
-        paramCharSequence = paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length());
-        paramCharSequence = localCharSequence.toString() + paramCharSequence.toString();
-        this.jdField_a_of_type_Bgfu.a.setText(paramCharSequence);
-        this.jdField_a_of_type_Bgfu.a.addTextChangedListener(this);
-        this.jdField_a_of_type_Bgfu.a.setSelection(paramInt1 + paramInt2);
-        this.jdField_a_of_type_Bgfo.jdField_a_of_type_Bgfd.a(i, i + paramInt2);
-        this.jdField_a_of_type_Bgep.jdField_a_of_type_Int = (paramInt2 + paramInt1);
-        this.jdField_a_of_type_Bgep.b(paramCharSequence);
+        if (QLog.isColorLevel()) {
+          QLog.e("VasApngFactory", 2, "UrlDrawable is not  SUCCESSED :" + i);
+        }
+        paramString1.setURLDrawableListener((URLDrawable.URLDrawableListener)localbgfv);
+        if (i == 2) {
+          paramString1.restartDownload();
+        }
       }
+      for (;;)
+      {
+        return paramString1;
+        if (i != 0)
+        {
+          paramString1.startDownload();
+          continue;
+          localbgfv.onLoadSuccessed(paramString1);
+        }
+      }
+    }
+    return null;
+  }
+  
+  private final URLDrawable a(String paramString1, String paramString2, bgfu parambgfu)
+  {
+    if (((CharSequence)paramString1).length() == 0) {}
+    for (int i = 1; i != 0; i = 0) {
+      return null;
+    }
+    String str = new File(paramString2).getName();
+    try
+    {
+      Object localObject = parambgfu.a();
+      ((Bundle)localObject).putInt("key_loop", parambgfu.a());
+      ((Bundle)localObject).putIntArray("key_tagId_arr", parambgfu.a());
+      ((Bundle)localObject).putBoolean("key_double_bitmap", true);
+      ((Bundle)localObject).putString("key_name", str);
+      paramString2 = new URL("vasapngdownloader", paramString1, paramString2);
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mExtraInfo = parambgfu.a();
+      ((URLDrawable.URLDrawableOptions)localObject).mUseApngImage = true;
+      ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = parambgfu.a();
+      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = String.valueOf(parambgfu.a());
+      ((URLDrawable.URLDrawableOptions)localObject).mUseUnFinishCache = parambgfu.c();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = parambgfu.b();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = parambgfu.c();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = parambgfu.a();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = parambgfu.a();
+      ((URLDrawable.URLDrawableOptions)localObject).mUseAutoScaleParams = parambgfu.b();
+      paramString2 = URLDrawable.getDrawable(paramString2, (URLDrawable.URLDrawableOptions)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("VasApngFactory", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + str);
+      }
+      return paramString2;
+    }
+    catch (Throwable paramString2)
+    {
+      QLog.e("VasApngFactory", 1, "getApngDrawable ApngImage err:" + paramString2 + ", path:" + paramString1 + ", name=" + str);
+    }
+    return null;
+  }
+  
+  private final void a(Function0<Unit> paramFunction0)
+  {
+    if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
+    {
+      paramFunction0.invoke();
+      return;
+    }
+    Handler localHandler = ThreadManagerV2.getUIHandlerV2();
+    if (paramFunction0 != null) {
+      paramFunction0 = new VasApngFactory.sam.java_lang_Runnable.0(paramFunction0);
     }
     for (;;)
     {
-      QLog.i("xmediaEditor", 1, "onTextChanged, mData.position:" + this.jdField_a_of_type_Bgep.c + ", text:" + this.jdField_a_of_type_Bgep.jdField_a_of_type_JavaLangString + ",Listener:" + toString());
+      localHandler.post((Runnable)paramFunction0);
       return;
-      this.jdField_a_of_type_Bgfo.jdField_a_of_type_Bgfd.a(i, i + k);
-      this.jdField_a_of_type_Bgep.jdField_a_of_type_Int = (paramInt1 + k);
-      this.jdField_a_of_type_Bgep.b(paramCharSequence.toString());
-      continue;
-      i = this.jdField_a_of_type_Bgfo.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
-      this.jdField_a_of_type_Bgfo.jdField_a_of_type_Bgfd.a(i, i + paramInt3 - paramInt2);
-      this.jdField_a_of_type_Bgep.jdField_a_of_type_Int = (paramInt1 + paramInt3);
-      this.jdField_a_of_type_Bgep.b(paramCharSequence.toString());
     }
   }
 }

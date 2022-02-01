@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 
-public class aqxe
-  implements View.OnClickListener
+class aqxe
 {
-  public aqxe(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  AbsPreDownloadTask jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask;
 }
 
 

@@ -1,79 +1,80 @@
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
+
 class airk
+  implements airv
 {
-  boolean a;
+  airk(airj paramairj) {}
   
-  void a()
+  public void a(List<MayKnowRecommend> paramList)
   {
-    try
+    Object localObject2 = this.a.a(3);
+    boolean bool3 = ((aire)localObject2).c;
+    Object localObject1 = ((aire)localObject2).jdField_a_of_type_JavaLangObject;
+    Object localObject3;
+    boolean bool2;
+    boolean bool1;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      this.a = false;
-      return;
+      ((aire)localObject2).jdField_a_of_type_JavaLangString = airj.a(this.a).getApp().getResources().getString(2131698330);
+      ((aire)localObject2).b = "";
+      ((aire)localObject2).jdField_a_of_type_JavaLangObject = paramList;
+      localObject3 = (amvo)airj.a(this.a).getManager(159);
+      if (localObject3 == null) {
+        break label262;
+      }
+      bool2 = ((amvo)localObject3).b("sp_mayknow_entry_list_recommend");
+      bool1 = ((amvo)localObject3).b("sp_mayknow_entry_list_head");
     }
-    finally {}
-  }
-  
-  boolean a()
-  {
-    return a(0L);
-  }
-  
-  /* Error */
-  boolean a(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	airk:a	Z
-    //   6: ifeq +7 -> 13
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: iconst_1
-    //   12: ireturn
-    //   13: aload_0
-    //   14: lload_1
-    //   15: invokevirtual 25	java/lang/Object:wait	(J)V
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iconst_1
-    //   21: ireturn
-    //   22: astore_3
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_3
-    //   26: athrow
-    //   27: astore_3
-    //   28: aload_3
-    //   29: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iconst_0
-    //   35: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	airk
-    //   0	36	1	paramLong	long
-    //   22	4	3	localObject	Object
-    //   27	2	3	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	22	finally
-    //   13	18	22	finally
-    //   18	20	22	finally
-    //   23	25	22	finally
-    //   28	34	22	finally
-    //   13	18	27	java/lang/InterruptedException
-  }
-  
-  void b()
-  {
-    try
+    for (;;)
     {
-      this.a = true;
-      notify();
-      return;
+      label128:
+      Object localObject4;
+      if ((bool1) && (!bool2))
+      {
+        ((aire)localObject2).c = true;
+        airj.a(this.a);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = Locale.getDefault();
+          bool1 = ((aire)localObject2).c;
+          localObject4 = ((aire)localObject2).jdField_a_of_type_JavaLangObject;
+          localObject2 = ((aire)localObject2).b;
+          if (paramList == null) {
+            break label257;
+          }
+        }
+      }
+      label257:
+      for (int i = paramList.size();; i = 0)
+      {
+        QLog.i("CTEntryMng", 2, String.format((Locale)localObject3, "updateMayKnow pre: [%s,%s], cur: [%s,%s], subtitle: %s recommends:%s", new Object[] { Boolean.valueOf(bool3), localObject1, Boolean.valueOf(bool1), localObject4, localObject2, Integer.valueOf(i) }));
+        return;
+        ((aire)localObject2).jdField_a_of_type_JavaLangObject = null;
+        ((aire)localObject2).b = null;
+        break;
+        ((aire)localObject2).c = false;
+        break label128;
+      }
+      label262:
+      bool1 = true;
+      bool2 = false;
     }
-    finally {}
+  }
+  
+  public boolean a()
+  {
+    aire localaire = this.a.a(3);
+    airq localairq = this.a.a(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "isMayKnowEntryShown, canBeShown = " + localaire.c + ", flagValue = " + localairq.b);
+    }
+    return (localaire.c) && (localairq.b == 0);
   }
 }
 

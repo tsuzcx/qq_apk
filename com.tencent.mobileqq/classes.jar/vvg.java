@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class vvg
-  implements Parcelable.Creator<QCircleWebViewTitleStyle>
+public class vvg
+  extends andd
 {
-  public QCircleWebViewTitleStyle a(Parcel paramParcel)
-  {
-    return new QCircleWebViewTitleStyle(paramParcel);
-  }
+  vvg(vvf paramvvf) {}
   
-  public QCircleWebViewTitleStyle[] a(int paramInt)
+  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    return new QCircleWebViewTitleStyle[paramInt];
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
+      return;
+    }
   }
 }
 

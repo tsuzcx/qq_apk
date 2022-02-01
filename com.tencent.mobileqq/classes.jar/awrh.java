@@ -1,36 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class awrh
-  implements awsg
+final class awrh
+  implements URLDrawable.URLDrawableListener
 {
-  awrh(awrg paramawrg, String paramString) {}
+  awrh(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, awro paramawro) {}
   
-  public void a(List<LocationRoom.Venue> paramList)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((awrg.a(this.jdField_a_of_type_Awrg) != null) && (awrg.a(this.jdField_a_of_type_Awrg).size() > 0)) {}
-    for (int i = 1;; i = 0)
-    {
-      awrg.a(this.jdField_a_of_type_Awrg, paramList);
-      this.jdField_a_of_type_Awrg.notifyDataSetChanged();
-      awrg.a(this.jdField_a_of_type_Awrg, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-      if ((awrg.a(this.jdField_a_of_type_Awrg).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        if (i == 0) {
-          this.jdField_a_of_type_Awrg.a(0);
-        }
-      }
-      while (awrg.a(this.jdField_a_of_type_Awrg) == null) {
-        return;
-      }
-      paramList = awrg.a(this.jdField_a_of_type_Awrg);
-      if (awrg.a(this.jdField_a_of_type_Awrg).size() > 0) {}
-      for (i = 3;; i = 2)
-      {
-        paramList.a(i);
-        return;
-      }
-    }
+    xvv.c("ShortVideoShareUtil", "onLoadCanceled --");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    awrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Awro);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    xvv.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = awrc.a(paramURLDrawable);
+    awrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Awro);
   }
 }
 

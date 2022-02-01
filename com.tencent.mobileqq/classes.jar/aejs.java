@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class aejs
-  implements View.OnClickListener
+public class aejs
+  implements DialogInterface.OnClickListener
 {
-  aejs(aejr paramaejr) {}
+  public aejs(TranslucentTRansferFragment paramTranslucentTRansferFragment, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.b.performLongClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

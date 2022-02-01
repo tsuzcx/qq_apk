@@ -1,27 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-final class apqa
-  implements beup
+public class apqa
+  extends MSFServlet
 {
-  public void a(bevl parambevl, bevm parambevm)
+  public String[] getPreferSSOCommands()
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    while (!(parambevl instanceof beum)) {
-      return;
-    }
-    beum localbeum = (beum)parambevl;
-    localbeum.jdField_a_of_type_Long += parambevm.c;
-    parambevm.c = 0L;
-    parambevm = "bytes=" + localbeum.jdField_a_of_type_Long + "-";
-    localbeum.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-    parambevm = localbeum.jdField_a_of_type_JavaLangString;
-    if (parambevm.contains("range="))
+    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushBindUinGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify", "ImStatus.ReqPushStatus" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramIntent != null)
     {
-      parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-      localbeum.jdField_a_of_type_JavaLangString = (parambevm + "range=" + localbeum.jdField_a_of_type_Long);
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((beum)parambevl).jdField_a_of_type_JavaLangString + ", offset=" + localbeum.jdField_a_of_type_Long);
+    for (;;)
+    {
+      if ((getAppRuntime() instanceof QQAppInterface)) {
+        ((QQAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

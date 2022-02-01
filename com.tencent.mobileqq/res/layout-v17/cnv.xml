@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cgb" android:layout_marginStart="16.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/nqv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxEms="15" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" android:layout_marginStart="8.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff4899df" android:id="@id/nqw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:maxLength="4" android:layout_marginStart="8.0dip" />
+    <ImageView android:id="@id/my9" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/cip" android:contentDescription="@string/close" android:layout_marginEnd="16.0dip" />
+</LinearLayout>

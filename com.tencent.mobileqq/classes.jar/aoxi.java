@@ -1,22 +1,16 @@
-public class aoxi
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+
+class aoxi
+  implements bjoe
 {
-  private Class jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
+  aoxi(aoxg paramaoxg, bjnw parambjnw) {}
   
-  public aoxi(String paramString, Class paramClass)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-  }
-  
-  public Class a()
-  {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Aoxg.a.d();
+    this.jdField_a_of_type_Aoxg.a.b("本地APP已删除成功");
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

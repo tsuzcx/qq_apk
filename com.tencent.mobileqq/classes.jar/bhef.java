@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.graphics.drawable.Drawable;
 
-public class bhef
-  implements DialogInterface.OnClickListener
+public abstract interface bhef
 {
-  public bhef(UpgradeActivity paramUpgradeActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void a(Drawable paramDrawable);
+  
+  public abstract void b(Drawable paramDrawable);
 }
 
 

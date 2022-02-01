@@ -1,50 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class anfi
-  implements TVK_SDKMgr.OnLogListener
+  implements Comparator<File>
 {
-  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  public anfi(CleanCache paramCleanCache) {}
   
-  public int d(String paramString1, String paramString2)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
+    do
+    {
+      return -1;
+      if (paramFile1.lastModified() != paramFile2.lastModified()) {
+        break;
+      }
+      if (paramFile1.length() > paramFile2.length()) {
+        return 1;
+      }
+    } while (paramFile1.length() < paramFile2.length());
     return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(a, 1, paramString1 + ":" + paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w(a, 1, paramString1 + ":" + paramString2);
-    return 0;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfi
  * JD-Core Version:    0.7.0.1
  */

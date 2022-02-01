@@ -1,15 +1,22 @@
-public class mcz
-  extends mcu
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+class mcz
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public int a;
-  public String b;
+  mcz(mcy parammcy, TextView paramTextView) {}
   
-  public mcz(long paramLong, String paramString1, int paramInt, String paramString2)
+  public boolean onPreDraw()
   {
-    super(6005);
-    a(paramLong, paramString1);
-    this.a = paramInt;
-    this.b = paramString2;
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.jdField_a_of_type_Mcy.a.a().a().av = true;
+    mum.a(this.jdField_a_of_type_Mcy.a);
+    QLog.d("qav_face_guide", 1, "onPreDraw");
+    return false;
   }
 }
 

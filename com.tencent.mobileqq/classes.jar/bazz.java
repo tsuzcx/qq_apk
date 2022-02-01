@@ -1,56 +1,106 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bazz
-  extends Handler
+  extends bazc
 {
-  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int d;
+  private String j;
   
-  private bazz(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
+  public bazz(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
-    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
-    do
-    {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
-      switch (paramMessage.what)
-      {
-      case 0: 
-      default: 
-        return;
-      case -1: 
-        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
-        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      case 1: 
-        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      }
-    } while (this.a.get() == null);
-    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
-      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
     }
-    for (;;)
+    try
     {
-      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
+      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
       return;
-      sendEmptyMessage(5);
     }
-    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    catch (JSONException paramString)
+    {
+      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String d()
+  {
+    return this.j;
+  }
+  
+  public String e()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public int h()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 

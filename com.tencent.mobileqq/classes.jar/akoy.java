@@ -1,41 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
 
-public class akoy
-  extends Handler
+public abstract interface akoy
 {
-  private WeakReference<DialogBaseActivity> a;
+  public abstract void a();
   
-  public akoy(DialogBaseActivity paramDialogBaseActivity)
-  {
-    this.a = new WeakReference(paramDialogBaseActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localDialogBaseActivity.a(i, bool);
-        return;
-        bool = false;
-      }
-    }
-    localDialogBaseActivity.finish();
-  }
+  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
 }
 
 

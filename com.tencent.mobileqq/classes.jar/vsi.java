@@ -1,35 +1,24 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
 
-final class vsi
-  extends QCirclePolyBaseLikeView
+public class vsi
+  extends vta
 {
-  vsi(Context paramContext, int paramInt)
+  qqstory_service.RspLikeFeed a;
+  
+  public vsi() {}
+  
+  public vsi(qqstory_service.RspLikeFeed paramRspLikeFeed)
   {
-    super(paramContext, paramInt);
+    super(paramRspLikeFeed.result);
+    this.a = paramRspLikeFeed;
   }
   
-  public int a()
-  {
-    return 0;
-  }
+  public void a() {}
   
-  public String a()
-  {
-    return "emptyPolyView";
-  }
+  public void a(int paramInt, Bundle paramBundle) {}
   
-  public void a(Context paramContext, View paramView)
-  {
-    super.a(paramContext, paramView);
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(Object paramObject, int paramInt) {}
-  
-  public void setReportBean(Object paramObject) {}
+  public void a(int paramInt, String paramString) {}
 }
 
 

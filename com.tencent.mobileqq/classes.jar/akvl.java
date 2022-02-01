@@ -1,64 +1,19 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class akvl
-  extends aktq
+  extends akvn
 {
-  akvl(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void a()
   {
-    super(paramNewPhotoPreviewActivity);
-  }
-  
-  private void c(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.a.lastTimeShowToast >= 700L)
-    {
-      this.a.lastTimeShowToast = l;
-      QQToast.a(this.mActivity, paramString, 0).b(((NewPhotoPreviewActivity)this.mActivity).getResources().getDimensionPixelSize(2131299011));
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.n();
     }
   }
   
-  private boolean c()
+  public void b()
   {
-    return this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum;
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akvm(this));
-  }
-  
-  public void onSelectClick(View paramView)
-  {
-    if ((!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()))) && (this.mPhotoCommonData.selectedPhotoList.size() >= this.mPhotoCommonData.maxSelectNum))
-    {
-      c(String.format(((NewPhotoPreviewActivity)this.mActivity).getString(2131689730), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
-      return;
-    }
-    super.onSelectClick(paramView);
-  }
-  
-  public void updateButton()
-  {
-    super.updateButton();
-    String str = ((NewPhotoPreviewActivity)this.mActivity).getString(2131715854);
-    int i = this.mPhotoCommonData.selectedPhotoList.size();
-    str = str + " " + i + "/" + this.mPhotoCommonData.maxSelectNum;
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText(str);
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setEnabled(true);
-    if (c())
-    {
-      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130849769);
-      return;
-    }
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130837960);
+    RMVideoStateMgr.a().a(2);
   }
 }
 

@@ -18,7 +18,7 @@ public class cj
     for (;;)
     {
       return null;
-      paramVarArgs = (anvu)this.a.app.a(8);
+      paramVarArgs = (amqd)this.a.app.getBusinessHandler(8);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -38,7 +38,7 @@ public class cj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cj
  * JD-Core Version:    0.7.0.1
  */

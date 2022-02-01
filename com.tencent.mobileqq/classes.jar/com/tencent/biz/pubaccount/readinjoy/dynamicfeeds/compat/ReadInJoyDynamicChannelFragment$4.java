@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import ocd;
+import odq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,7 +62,7 @@ class ReadInJoyDynamicChannelFragment$4
             QLog.d("ReadInJoyDynamicChannelFragment", 2, "reportExposedData, json exception, ", localJSONException2);
           }
           QLog.d("ReadInJoyDynamicChannelFragment", 1, new Object[] { "actionName = ", ReadInJoyDynamicChannelFragment.a(this.this$0), "\n", "r5 = ", localJSONObject });
-          ocd.a(null, "", ReadInJoyDynamicChannelFragment.b(this.this$0), ReadInJoyDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
+          odq.a(null, "", ReadInJoyDynamicChannelFragment.b(this.this$0), ReadInJoyDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
         }
       }
     }

@@ -1,57 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
-@JsPlugin(secondary=true)
 public class bkuv
-  extends BaseJsPlugin
+  implements View.OnClickListener
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QMLog.e("TimTeamPlugin", "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
-  }
+  public bkuv(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  @JsEvent({"tim_space"})
-  public void timSpace(RequestEvent paramRequestEvent)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramRequestEvent = new JSONObject(a(paramRequestEvent).getString("data")).getString("action");
-      if (QMLog.isColorLevel()) {
-        QMLog.d("TimTeamPlugin", "onInvoke|" + paramRequestEvent);
-      }
-      if (TextUtils.equals(paramRequestEvent, "showCoopSpaceProfile"))
-      {
-        paramRequestEvent = this.mMiniAppContext.getAttachedActivity();
-        Intent localIntent = new Intent(paramRequestEvent, AccountDetailActivity.class);
-        localIntent.putExtra("uin", antf.aV);
-        paramRequestEvent.startActivity(localIntent);
-      }
-      return;
-    }
-    catch (Exception paramRequestEvent)
-    {
-      while (!QMLog.isColorLevel()) {}
-      QMLog.w("TimTeamPlugin", "decode param error");
-    }
+    ForceUserUpdateActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

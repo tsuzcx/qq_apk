@@ -1,59 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class asaj
-  implements Manager
+  extends ataq
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  private byte jdField_a_of_type_Byte;
-  private int jdField_a_of_type_Int;
-  protected NearbyAppInterface a;
-  protected EntityManager a;
-  private String jdField_a_of_type_JavaLangString;
+  public asaj(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
   
-  public asaj(NearbyAppInterface paramNearbyAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramNearbyAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = -2147483648;
+    this.a.a.a().b();
   }
   
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public void b()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (!axxb.c())
-    {
-      axws.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      axws.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      axws.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
-    }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
+    this.a.a.a().o();
   }
   
-  public void onDestroy()
+  public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {}
-    try
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+    Object localObject = aslg.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (asle.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          bcef.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
+        }
+      }
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 

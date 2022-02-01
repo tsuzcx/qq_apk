@@ -1,38 +1,42 @@
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.lang.ref.WeakReference;
 
 public class bhcz
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  private WeakReference<CustomedTabWidget> a;
   
-  public bhcz(bhct parambhct) {}
-  
-  public JSONObject a()
+  public bhcz(CustomedTabWidget paramCustomedTabWidget)
   {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
-    localJSONObject.put("app_version", this.c);
-    localJSONObject.put("net_type", this.d);
-    localJSONObject.put("carrier_type", this.e);
-    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
-    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
-    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
-    localJSONObject.put("cpu_type", this.f);
-    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
-    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
-    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
-    return localJSONObject;
+    this.a = new WeakReference(paramCustomedTabWidget);
+  }
+  
+  public void handleMessage(Message arg1)
+  {
+    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
+    if (localCustomedTabWidget == null) {
+      return;
+    }
+    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
+      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
+    }
+    synchronized (localCustomedTabWidget.jdField_a_of_type_Bhcz)
+    {
+      Rect localRect = localCustomedTabWidget.b;
+      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
+      localRect = localCustomedTabWidget.b;
+      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
+      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
+      {
+        sendEmptyMessage(0);
+        return;
+        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
+      }
+    }
+    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
   }
 }
 

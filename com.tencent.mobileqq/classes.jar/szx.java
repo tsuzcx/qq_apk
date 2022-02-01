@@ -1,21 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class szx
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface szx
 {
-  szx(szw paramszw, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = paramValueAnimator.getAnimatedFraction();
-    this.jdField_a_of_type_Szw.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

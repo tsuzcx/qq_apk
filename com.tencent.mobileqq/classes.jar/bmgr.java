@@ -1,8 +1,23 @@
 import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.aifilter.SilentMultiVideoAIFilterProxy.1;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public abstract interface bmgr
+public class bmgr
+  extends bmgs
 {
-  public abstract void a(boolean paramBoolean, Context paramContext, bmgt parambmgt);
+  public bmgr(TAVCutVideoSession paramTAVCutVideoSession)
+  {
+    super(paramTAVCutVideoSession);
+  }
+  
+  protected void a(Context paramContext, bmgj parambmgj)
+  {
+    List localList = a();
+    ThreadManager.getSubThreadHandler().post(new SilentMultiVideoAIFilterProxy.1(this, localList, paramContext, parambmgj));
+  }
 }
 
 

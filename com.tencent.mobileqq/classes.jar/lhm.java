@@ -1,182 +1,271 @@
 import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.pendant.EffectPendantBase.1;
 import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.util.VideoTemplateParser;
+import com.tencent.ttpic.util.DecryptListener;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.BitSet;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class lhm
-  extends lhs
+public abstract class lhm
+  extends EffectConfigBase<PendantItem>
+  implements lgo
 {
-  public static final String[] b;
-  public final ConcurrentHashMap<String, Integer> a;
-  public int b;
-  private int c;
-  public String d;
+  private static final DecryptListener a;
+  protected final lho a;
+  protected lhq a;
+  protected boolean a;
+  protected String[] c;
   
   static
   {
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "params.dat" };
+    jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new lhn();
   }
   
   public lhm(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_c_of_type_ArrayOfJavaLangString = jdField_b_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_Lho = new lho();
   }
   
-  public int a()
+  public static VideoMaterial a(String paramString1, String paramString2)
   {
-    return 591;
+    return VideoTemplateParser.parseVideoMaterial(paramString1, paramString2, false, jdField_a_of_type_ComTencentTtpicUtilDecryptListener);
   }
   
-  public int a(String paramString)
+  public VideoMaterial a(String paramString)
   {
-    Integer localInteger = null;
-    if (!TextUtils.isEmpty(paramString)) {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    VideoMaterial localVideoMaterial = a(paramString, "params");
+    localVideoMaterial.setDataPath(paramString);
+    return localVideoMaterial;
+  }
+  
+  public Class<?> a()
+  {
+    return PendantItem.class;
+  }
+  
+  public String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = lbe.c() + paramPendantItem.getMd5();
     }
-    if (localInteger == null) {
-      return 50;
-    }
-    return localInteger.intValue();
+    return str;
   }
   
-  public List<PendantItem> a(int paramInt, String paramString)
+  public List<PendantItem> a(String paramString)
   {
-    Object localObject = super.a(paramInt, paramString);
+    paramString = super.a(paramString);
     ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
-        if (localPendantItem != null) {
-          localArrayList.add(localPendantItem);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "parse, cid[" + paramInt + "], config[" + paramString + "], size[" + localArrayList.size() + "]");
+    if (paramString != null) {
+      localArrayList.addAll(paramString);
     }
     return localArrayList;
   }
   
-  public lhu a(int paramInt1, int paramInt2)
+  public lho a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_c_of_type_Int == 3002) {
-      a(0L, "getVideoPendant");
+    if (!lou.g()) {
+      return null;
     }
-    lhu locallhu = super.a(paramInt1, paramInt2);
-    if ((locallhu != null) && (locallhu.a != null)) {
-      locallhu.a.extraParam = Integer.valueOf(this.jdField_b_of_type_Int);
-    }
-    return locallhu;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, fromMuteKey[" + paramInt + "], seq[" + l + "], data[" + paramString + "]");
-    }
-    if (paramInt == 3004) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt == 3002)
-        {
-          if (this.jdField_c_of_type_Int == 3003) {
-            a(l, this.d);
-          }
-          this.jdField_c_of_type_Int = 3002;
-          return;
-        }
-        if (paramInt != 3003) {
-          break;
-        }
-      } while (!"creativecop".equals(paramString));
-      this.jdField_c_of_type_Int = 3003;
-      a(l, null);
-      return;
-    } while (paramInt != 3005);
-    this.jdField_c_of_type_Int = 3005;
-    a(l, null);
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "clearMuteFlag, muteFlag[" + this.jdField_c_of_type_Int + "], from[" + paramString + "], cur[" + this.d + "], value[" + this.jdField_b_of_type_Int + "]");
-    }
-    if ((this.jdField_c_of_type_Int == 3003) || (this.jdField_c_of_type_Int == 3005)) {
-      a(paramLong, this.d);
-    }
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (a()) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((TextUtils.equals(paramString, this.d)) && (paramInt == this.jdField_b_of_type_Int));
-      this.d = paramString;
-      this.jdField_b_of_type_Int = paramInt;
-    } while (TextUtils.isEmpty(this.d));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.d, Integer.valueOf(paramInt));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
+    VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
     PendantItem localPendantItem = (PendantItem)a();
-    if (localPendantItem == null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.d = null;
-      this.jdField_b_of_type_Int = 50;
+      this.jdField_a_of_type_Boolean = false;
+      c();
     }
-    for (;;)
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onDestroyUI, peerUin[" + paramString + "], quit[" + paramBoolean + "], item[" + a() + "]");
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Lho.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_Lho.jdField_a_of_type_JavaLangString = null;
       }
-      return;
-      this.d = localPendantItem.getId();
+      return null;
+    }
+    String str1 = c(localPendantItem);
+    String str2 = localPendantItem.getId();
+    if ((str1.equals(this.jdField_a_of_type_Lho.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Lho.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_Lho.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
+      return this.jdField_a_of_type_Lho;
+    }
+    long l = System.currentTimeMillis();
+    VideoMaterial localVideoMaterial = a(str1);
+    this.jdField_a_of_type_Lho.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
+    this.jdField_a_of_type_Lho.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
+    this.jdField_a_of_type_Lho.jdField_a_of_type_JavaLangString = str1;
+    lba.f(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
+    return this.jdField_a_of_type_Lho;
+  }
+  
+  public void a()
+  {
+    super.a();
+    lgn locallgn = (lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    if (locallgn != null) {
+      locallgn.a(b(), this);
     }
   }
   
-  public boolean a()
+  protected void a(long paramLong, PendantItem paramPendantItem)
   {
-    return (this.jdField_c_of_type_Int == 3002) || (this.jdField_c_of_type_Int == 3003);
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      ((lgp)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
+    }
+  }
+  
+  public void a(lhq paramlhq)
+  {
+    this.jdField_a_of_type_Lhq = paramlhq;
   }
   
   public boolean a(long paramLong, PendantItem paramPendantItem)
   {
     boolean bool = super.a(paramLong, paramPendantItem);
-    if ((!a()) && (bool) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    lez locallez = VideoController.a().a();
+    a(paramLong, paramPendantItem);
+    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
-      lgt locallgt = (lgt)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-      if (locallgt != null) {
-        locallgt.a(3004, paramPendantItem.getId());
-      }
+      locallez.a.set(1);
+      return bool;
     }
+    locallez.a.clear(1);
     return bool;
   }
   
-  public int b()
+  protected boolean a(PendantItem paramPendantItem)
   {
-    return 3004;
+    boolean bool = super.a(paramPendantItem);
+    String str1;
+    Object localObject;
+    int k;
+    int i;
+    if (bool)
+    {
+      str1 = c(paramPendantItem);
+      if ((this.c == null) || (this.c.length <= 0)) {
+        break label284;
+      }
+      localObject = this.c;
+      int m = localObject.length;
+      k = 0;
+      i = 0;
+      j = i;
+      if (k < m)
+      {
+        String str2 = localObject[k];
+        File localFile = new File(str1, str2);
+        long l = localFile.length();
+        if (((!localFile.exists()) || (l >= 1L)) && (localFile.exists())) {
+          break label265;
+        }
+        j = 1;
+        label111:
+        if ((j == 0) && (i == 0)) {
+          break label270;
+        }
+        i = 1;
+        label121:
+        if ((j != 0) && (QLog.isColorLevel())) {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "isTemplateUsable, fileName[" + str2 + "], item[" + paramPendantItem + "]");
+        }
+        if (i == 0) {
+          break label275;
+        }
+      }
+    }
+    label265:
+    label270:
+    label275:
+    label284:
+    for (int j = i;; j = 0)
+    {
+      if (j != 0)
+      {
+        str1 = a(paramPendantItem);
+        localObject = b(paramPendantItem);
+        ThreadManager.excute(new EffectPendantBase.1(this, new File(str1), (String)localObject), 16, null, false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "isTemplateUsable, need unzip item[" + paramPendantItem + "]");
+        }
+      }
+      return bool;
+      j = 0;
+      break label111;
+      i = 0;
+      break label121;
+      k += 1;
+      break;
+    }
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return lif.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+  }
+  
+  public abstract int b();
+  
+  public String b(PendantItem paramPendantItem)
+  {
+    String str = "";
+    if (paramPendantItem != null) {
+      str = lbe.d() + paramPendantItem.getMd5() + File.separator;
+    }
+    return str;
+  }
+  
+  protected String c(PendantItem paramPendantItem)
+  {
+    Object localObject1 = "";
+    Object localObject3 = localObject1;
+    Object localObject2;
+    String str;
+    if (paramPendantItem != null)
+    {
+      localObject2 = null;
+      str = b(paramPendantItem) + paramPendantItem.getName() + File.separator;
+      if (!new File(str).exists()) {
+        break label142;
+      }
+      localObject1 = str;
+    }
+    for (;;)
+    {
+      localObject3 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject3 = localObject1;
+        if (QLog.isDevelopLevel())
+        {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "getFilterPathForRead, new[" + str + "], old[" + (String)localObject2 + "], item[" + paramPendantItem + "]");
+          localObject3 = localObject1;
+        }
+      }
+      return localObject3;
+      label142:
+      localObject3 = lbe.b() + paramPendantItem.getName() + File.separator;
+      localObject2 = localObject3;
+      if (new File((String)localObject3).exists())
+      {
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Lho.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_Lho.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.jdField_a_of_type_Lho.jdField_a_of_type_JavaLangString = null;
   }
 }
 

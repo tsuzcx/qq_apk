@@ -1,103 +1,61 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.open.component.cache.database.DbCacheData;
+import java.lang.Class<+Lcom.tencent.open.component.cache.database.DbCacheData;>;
+import java.util.HashMap;
 
 public class bibl
-  extends VasWebviewJsPlugin
 {
-  public void a(JSONObject paramJSONObject, String paramString)
+  protected static bibl a;
+  protected Context a;
+  protected bibk a;
+  protected final HashMap<String, bibi> a;
+  
+  protected bibl(Context paramContext)
   {
-    int i = paramJSONObject.getInt("faceId");
-    if (QLog.isColorLevel()) {
-      QLog.i("VasFaceJsPlugin", 2, "setup " + paramJSONObject.toString());
-    }
-    paramJSONObject = new Bundle();
-    paramJSONObject.clear();
-    paramJSONObject.putInt("id", i);
-    super.sendRemoteReq(asev.a("face_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bibk = new bibm(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static bibl a(Context paramContext)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasFaceJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    boolean bool1;
-    if ((paramString1 == null) || (!"face".equals(paramString2)) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    do
-    {
-      for (;;)
-      {
-        return bool1;
-        try
-        {
-          paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-          bool1 = bool2;
-          if (paramJsBridgeListener != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VasFaceJsPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-            }
-            paramString1 = paramJsBridgeListener.optString("callback");
-            if (!TextUtils.isEmpty(paramString1)) {
-              break label171;
-            }
-            QLog.e("VasFaceJsPlugin", 1, "callback id is null, so return");
-            return true;
-          }
-        }
-        catch (Throwable paramJsBridgeListener)
-        {
-          bool1 = bool2;
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("VasFaceJsPlugin", 2, paramJsBridgeListener.getMessage());
-    return true;
-    label171:
-    if ("setup".equals(paramString3))
-    {
-      a(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    throw new Exception(" unsupport method name " + paramString3);
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    Object localObject;
-    String str;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
-    {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      if (QLog.isColorLevel()) {
-        QLog.i("VasFaceJsPlugin", 2, "response:" + (String)localObject);
-      }
-      if (!"face_setup".equals(localObject)) {}
+    if (jdField_a_of_type_Bibl != null) {
+      return jdField_a_of_type_Bibl;
     }
     try
     {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("result", paramBundle.getInt("result"));
-      ((JSONObject)localObject).put("message", "ok");
-      if (QLog.isColorLevel()) {
-        QLog.i("VasFaceJsPlugin", 2, "setup result: " + ((JSONObject)localObject).toString());
+      if (jdField_a_of_type_Bibl == null) {
+        jdField_a_of_type_Bibl = new bibl(paramContext);
       }
-      super.callJs(str + "(" + ((JSONObject)localObject).toString() + ");");
-      return;
+      paramContext = jdField_a_of_type_Bibl;
+      return paramContext;
     }
-    catch (JSONException paramBundle)
+    finally {}
+  }
+  
+  public bibi a(Class<? extends DbCacheData> paramClass, long paramLong, String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      QLog.e("VasFaceJsPlugin", 1, "", paramBundle);
+      if (this.jdField_a_of_type_AndroidContentContext == null) {
+        throw new RuntimeException("call initiate(Context context) before this");
+      }
+    }
+    if (paramString == null) {
+      throw new RuntimeException("invalid table name");
+    }
+    Object localObject = bibi.a(paramLong, paramString);
+    localObject = (bibi)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    if (localObject == null)
+    {
+      paramClass = new bibi(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
+      paramClass.a(this.jdField_a_of_type_Bibk);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
+    }
+    for (;;)
+    {
+      return paramClass;
+      paramClass = (Class<? extends DbCacheData>)localObject;
     }
   }
 }

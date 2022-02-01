@@ -1,26 +1,12 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
-
 class beea
-  implements URLDrawable.DownloadListener
+  extends andd
 {
-  beea(bedz parambedz, String paramString) {}
+  beea(bedz parambedz) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  protected void onSetTroopEssenceMsg(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
   {
-    if (!bedz.a(this.jdField_a_of_type_Bedz).contains(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
-      }
-      bedz.a(this.jdField_a_of_type_Bedz).add(this.jdField_a_of_type_JavaLangString);
-    }
+    bedz.a(this.a, paramBoolean, paramObject1, paramObject2, paramInt);
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

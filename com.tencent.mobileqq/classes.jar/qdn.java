@@ -1,19 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 class qdn
-  implements View.OnClickListener
+  extends ComponentPGCShortContentBig
 {
-  qdn(qdm paramqdm) {}
-  
-  public void onClick(View paramView)
+  qdn(qdf paramqdf, Context paramContext, ArticleInfo paramArticleInfo)
   {
-    sgr.a((Activity)qdm.a(this.a).getContext());
-    sgr.a(2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
+      return 11;
+    }
+    return super.a();
   }
 }
 

@@ -1,11 +1,29 @@
 package dov.com.qq.im.ptv;
 
+import android.app.Activity;
+import android.content.Intent;
+import bnbd;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.qphone.base.util.QLog;
+
 class AIOLongCaptureCtrl$2
   implements Runnable
 {
   public void run()
   {
-    this.this$0.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOLongCaptureCtrl", 2, "start preload peak process");
+    }
+    Intent localIntent = new Intent(AIOLongCaptureCtrl.a(this.this$0).a(), PeakService.class);
+    try
+    {
+      AIOLongCaptureCtrl.a(this.this$0).a().startService(localIntent);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AIOLongCaptureCtrl", 1, "onShow_otherThings startService ", localThrowable);
+    }
   }
 }
 

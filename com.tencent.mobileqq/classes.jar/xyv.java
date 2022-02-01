@@ -1,54 +1,135 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class xyv
-  extends xqm
+  extends xzb
+  implements View.OnClickListener
 {
-  public xyv(xyd paramxyd) {}
+  protected ViewStub a;
+  protected TextView a;
+  protected String a;
+  protected yhm a;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public xyv(@NonNull xzd paramxzd)
   {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Xms.equals(localObject))) {}
-    do
-    {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        yuk.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          xjn.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        wlt.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131718165), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (xyd.a(this.a) != null)) {
-        xyd.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Xfj == null);
-    this.a.jdField_a_of_type_Xfj.a(paramInt1, paramInt2, paramIntent);
+    super(paramxzd);
   }
   
-  public void g()
+  private void g()
   {
-    super.g();
-    if (xyd.a(this.a) != null) {
-      xyd.a(this.a).a();
+    i();
+    if (this.jdField_a_of_type_Yhm.a() != 0)
+    {
+      this.jdField_a_of_type_Yhm.a(0);
+      this.jdField_a_of_type_Yhm.a.requestFocus();
+      bjmm.a(this.jdField_a_of_type_Yhm.a);
     }
+  }
+  
+  private void h()
+  {
+    if ((this.jdField_a_of_type_Yhm != null) && (this.jdField_a_of_type_Yhm.a() == 0))
+    {
+      this.jdField_a_of_type_Yhm.a(4);
+      bjmm.b(this.jdField_a_of_type_Yhm.a);
+      this.jdField_a_of_type_Yhm.a.clearFocus();
+    }
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_Yhm == null)
+    {
+      this.jdField_a_of_type_Yhm = new yhm(this.jdField_a_of_type_AndroidViewViewStub.inflate());
+      this.jdField_a_of_type_Yhm.a(new xyx(this));
+      this.jdField_a_of_type_Yhm.b(new xyy(this));
+    }
+  }
+  
+  @Nullable
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362180));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new xyw(this));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      h();
+      return;
+    case 0: 
+      h();
+      return;
+    }
+    g();
+  }
+  
+  public void a(int paramInt, @NonNull yjh paramyjh)
+  {
+    super.a(paramInt, paramyjh);
+    paramyjh.a.videoLabel = a();
+    xzd localxzd;
+    String str;
+    if (!TextUtils.isEmpty(a()))
+    {
+      paramInt = 1;
+      if (paramInt != 0)
+      {
+        localxzd = this.jdField_a_of_type_Xzd;
+        str = a();
+        if (!this.jdField_a_of_type_Xzd.a()) {
+          break label89;
+        }
+      }
+    }
+    label89:
+    for (paramyjh = "2";; paramyjh = "1")
+    {
+      localxzd.a("pub_tag", 0, 0, new String[] { "1", str, paramyjh });
+      return;
+      paramInt = 0;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Yhm != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Yhm.a() == 0)
+      {
+        this.jdField_a_of_type_Xzd.a(0);
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void d() {}
+  
+  public void onClick(View paramView)
+  {
+    paramView.getId();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/nct" android:layout_width="fill_parent" android:layout_height="250.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/ncj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <com.tencent.image.URLImageView android:id="@id/nck" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <FrameLayout android:background="@drawable/gey" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/ncl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cc5" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/ncm" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="4.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView android:id="@id/ne0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true">
-        <SeekBar android:layout_gravity="center" android:id="@id/ncn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" style="@style/zy" />
-        <View android:layout_gravity="center_horizontal" android:id="@id/nch" android:background="#ff6d75ff" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/nco" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="4.0dip" android:text="00:00" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:alpha="0.7" />
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dc6" android:background="@color/br" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/cll" android:scaleType="center" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dc9" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/list_checkbox_selected" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/nsz" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/c_y" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/ayq" android:textStyle="bold" android:gravity="center|left|top" android:id="@id/no5" android:background="@drawable/gol" android:paddingLeft="6.0dip" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </RelativeLayout>

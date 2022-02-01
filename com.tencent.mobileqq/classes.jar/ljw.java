@@ -1,20 +1,10 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.chatroom.ChatRoomInfo;
 
-class ljw
-  implements Camera.AutoFocusCallback
+public abstract interface ljw
 {
-  ljw(ljv paramljv) {}
+  public abstract void a(int paramInt, ChatRoomInfo paramChatRoomInfo);
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
-    }
-    GraphicRenderMgr.getInstance().setIsFocusing(false);
-  }
+  public abstract void a(ljv paramljv);
 }
 
 

@@ -1,25 +1,54 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
 
-class xyf
-  implements bliz
+public class xyf
+  implements xyh
 {
-  xyf(xyd paramxyd, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, blir paramblir) {}
+  private long jdField_a_of_type_Long;
   
-  public void OnClick(View paramView, int paramInt)
+  public xyf(EditVideoFilter paramEditVideoFilter) {}
+  
+  public void a(MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
+    xwj localxwj = (xwj)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(xwj.class);
+    if (localxwj != null) {
+      localxwj.a(paramMotionEvent);
     }
-    for (;;)
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  {
+    if (paramMotionEvent2 != null)
     {
-      this.jdField_a_of_type_Blir.dismiss();
+      xwj localxwj = (xwj)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(xwj.class);
+      if (localxwj != null) {}
+      for (boolean bool = localxwj.a(paramMotionEvent2);; bool = false)
+      {
+        if (bool)
+        {
+          a(paramMotionEvent1);
+          a(paramMotionEvent2);
+        }
+        return bool;
+      }
+    }
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 300L)
+    {
+      this.jdField_a_of_type_Long = l;
+      paramView = (xwj)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(xwj.class);
+      if (paramView != null) {
+        paramView.e_();
+      }
       return;
-      xiz.a(this.jdField_a_of_type_Xyd.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new xyg(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
+    xvv.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
   }
 }
 

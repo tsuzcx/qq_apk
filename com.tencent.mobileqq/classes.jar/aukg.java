@@ -1,131 +1,52 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.observer.BusinessObserver;
 
-public class aukg
-  extends auke
+class aukg
+  implements BusinessObserver
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
+  aukg(auke paramauke, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public aukg(Activity paramActivity)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramActivity);
-  }
-  
-  public void a()
-  {
-    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560931, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371590));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372080));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366615));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372799));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362659));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372920));
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366612));
-      if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
+      paramInt = paramBundle.getInt("app_id", 0);
+      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
+      if (paramInt == 0) {
+        return;
+      }
+      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
+      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
+      }
+      this.jdField_a_of_type_Auke.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
+      return;
+    }
+    if (paramInt != 15)
+    {
+      this.jdField_a_of_type_Auke.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
+      if (paramInt != 17) {
+        break label186;
+      }
+      if (paramBundle != null) {
+        break label180;
       }
     }
-  }
-  
-  public void a(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
-  {
-    if (paramOnSeekBarChangeListener != null) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
-    }
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public void c()
-  {
-    if (anxh.a() > 17.0F)
+    label180:
+    for (paramBundle = "1";; paramBundle = "2")
     {
-      float f1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(150.0F * f1), (int)(f1 * 150.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
-  }
-  
-  public void c(String paramString)
-  {
-    this.f.setText(paramString);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(paramBoolean);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(paramInt);
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.e.setText(paramString);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844334);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131690985));
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
       return;
+      this.jdField_a_of_type_Auke.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
+      break;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844335);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131690987));
-  }
-  
-  public void e(String paramString)
-  {
-    if (this.g.getMeasuredWidth() <= 0)
-    {
-      this.g.post(new MusicFileViewer.1(this, paramString));
-      return;
-    }
-    this.g.setText(aunj.a(paramString, false, this.g.getMeasuredWidth(), this.g.getPaint(), 2));
-  }
-  
-  public void f(String paramString)
-  {
-    this.h.setText(paramString);
+    label186:
+    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
   }
 }
 

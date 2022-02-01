@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class sln
-  implements View.OnClickListener
 {
-  public sln(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public ArrayBlockingQueue a;
+  private slo jdField_a_of_type_Slo;
+  private int b;
   
-  public void onClick(View paramView)
+  public sln(int paramInt1, int paramInt2, ViewGroup paramViewGroup, slo paramslo)
   {
-    ReadinjoyTabFrame.a(this.a).setText("");
-    ReadinjoyTabFrame.a(this.a).setVisibility(8);
-    ubg.a(this.a.a, true);
-    ((KandianMergeManager)this.a.a.getManager(162)).d(true);
-    ozs.a(this.a.a(), 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Slo = paramslo;
+  }
+  
+  public sln(int paramInt, ViewGroup paramViewGroup, slo paramslo)
+  {
+    this(paramInt, 1, paramViewGroup, paramslo);
   }
 }
 

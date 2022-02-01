@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profilecard.vas.component.background;
 
-import baij;
+import ayya;
 import kotlin.Metadata;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class VasProfileWzBackgroundComponent$onVasDataUpdate$1
   implements Runnable
 {
-  public VasProfileWzBackgroundComponent$onVasDataUpdate$1(baij parambaij) {}
+  public VasProfileWzBackgroundComponent$onVasDataUpdate$1(ayya paramayya) {}
   
   public final void run()
   {
-    baij.a(this.this$0);
+    ayya.a(this.this$0);
   }
 }
 

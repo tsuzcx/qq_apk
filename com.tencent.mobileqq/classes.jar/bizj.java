@@ -1,8 +1,18 @@
-import android.view.View;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 
-public abstract interface bizj
+public class bizj
+  extends BaseJsPlugin
 {
-  public abstract void setMotionView(View paramView, int paramInt);
+  @JsEvent({"getGUID"})
+  public void checkGameBuddyType(RequestEvent paramRequestEvent)
+  {
+    QLog.d("DeviceInfoPlugin", 1, "checkGameBuddyType getGUID");
+    QIPCClientHelper.getInstance().callServer("DeviceProtectQIPCModule", "ACTION_GET_GUID_INFO", null, new bizk(this, paramRequestEvent));
+  }
 }
 
 

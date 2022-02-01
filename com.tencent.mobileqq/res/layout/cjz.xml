@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="46.0dip"
+<RelativeLayout android:id="@id/na2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e85" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:text="@string/xbf" android:singleLine="true" android:layout_alignParentLeft="true" android:lineSpacingMultiplier="1.0" />
-    <ImageView android:id="@id/ija" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/g4s" android:layout_alignParentRight="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/ln6" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+    <ImageView android:id="@id/lnp" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/g9i" android:layout_toRightOf="@id/ln6" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
 </RelativeLayout>

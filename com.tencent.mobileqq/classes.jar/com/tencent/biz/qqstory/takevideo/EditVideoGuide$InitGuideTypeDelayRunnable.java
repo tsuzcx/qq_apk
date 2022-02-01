@@ -12,7 +12,7 @@ class EditVideoGuide$InitGuideTypeDelayRunnable
     if (this.this$0.a.compareAndSet(true, false))
     {
       this.this$0.a(false);
-      this.this$0.f();
+      this.this$0.g();
     }
   }
 }

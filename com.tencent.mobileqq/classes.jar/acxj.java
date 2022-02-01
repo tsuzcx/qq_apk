@@ -1,28 +1,18 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acxj
   implements View.OnClickListener
 {
-  public acxj(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment) {}
+  public acxj(ChatHistory paramChatHistory) {}
   
   public void onClick(View paramView)
   {
-    if ((GdtBaseHalfScreenFragment.a(this.a) != null) && (GdtBaseHalfScreenFragment.a(this.a).canGoBack())) {
-      GdtBaseHalfScreenFragment.a(this.a).goBack();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.getActivity() != null) {
-        this.a.getActivity().finish();
-      }
-    }
+    this.a.k();
+    bcef.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

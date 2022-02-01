@@ -1,23 +1,25 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public class awmw
+final class awmw
   implements DialogInterface.OnClickListener
 {
-  public awmw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  awmw(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      ListenTogetherOverlayFragment.a(this.a, true);
-      return;
+      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
+      paramDialogInterface.putExtra("isInviteTroop", false);
     }
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
   }
 }
 

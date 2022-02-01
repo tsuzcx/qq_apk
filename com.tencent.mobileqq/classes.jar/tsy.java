@@ -1,81 +1,113 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.SurfaceHolder;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class tsy
-  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
+  extends stg
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
+  protected ProteusItemData a;
+  public Container a;
+  protected WeakReference<Context> a;
   
-  public tsy(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public tsy(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject) {}
+  
+  protected void a(BaseData paramBaseData1, BaseData paramBaseData2) {}
+  
+  protected void a(Container paramContainer, ProteusItemData paramProteusItemData)
   {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
+    ViewBase localViewBase2;
+    if (paramContainer != null)
+    {
+      localViewBase2 = paramContainer.getVirtualView();
+      if ((!(paramProteusItemData instanceof ProteusInnerData)) && (!(paramProteusItemData instanceof RecommendAdData))) {
+        break label147;
+      }
+    }
+    label147:
+    for (ViewBase localViewBase1 = localViewBase2.findViewBaseByName("id_view_AdDownloadView");; localViewBase1 = localViewBase2.findViewBaseByName(tqi.a(Aladdin.getConfig(341).getIntegerFromString("bottom_ad_style", 0))))
+    {
+      if ((localViewBase1 instanceof tyx)) {
+        ((tyx)localViewBase1).a(null, true);
+      }
+      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (twh.a((AdData)paramProteusItemData)))
+      {
+        localViewBase1 = localViewBase2.findViewBaseByName("id_game_small_img");
+        if ((localViewBase1 != null) && ((localViewBase1 instanceof qiv)) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).B)))
+        {
+          int i = AIOUtils.dp2px(40.0F, paramContainer.getContext().getResources());
+          twh.a(paramContainer.getContext(), localViewBase1, ((AdData)paramProteusItemData).B, 10, i, i);
+        }
+      }
       return;
     }
-    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
-    tno.c = true;
-    paramTVK_IMediaPlayer.j();
-    paramTVK_IMediaPlayer.r();
-    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).f = true;
   }
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
   {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {}
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
-      }
-      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
-      paramTVK_IMediaPlayer.j();
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
     return false;
   }
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  protected void b() {}
   
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramSurfaceHolder == null) {
-      return;
-    }
-    paramSurfaceHolder.q();
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
-      return;
-    }
-    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
+    TemplateBean localTemplateBean;
+    do
     {
-      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      do
+      {
+        return;
+      } while (!(paramBaseData2 instanceof ProteusItemData));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
+      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+    } while (localTemplateBean == null);
+    if (a(paramBaseData1, paramBaseData2)) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+    }
+    if (paramBaseData1 != paramBaseData2) {}
+    try
+    {
+      localTemplateBean.bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
+      ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+      a(paramBaseData2, paramBaseData1);
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+        a(paramBaseData2, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
+      }
+      this.jdField_a_of_type_AndroidViewView.setTag(2131362098, paramBaseData2);
+      b();
       return;
     }
-    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

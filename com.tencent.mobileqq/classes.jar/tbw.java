@@ -1,27 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.qphone.base.util.QLog;
-
-public class tbw
-  extends AnimatorListenerAdapter
+public abstract interface tbw
 {
-  public tbw(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
-    }
-  }
+  public abstract boolean a(int paramInt);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

@@ -1,24 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.CreateColumnFragment;
+
 public class rmo
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public rmo(CreateColumnFragment paramCreateColumnFragment) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[");
-    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mCurIndexDiff: ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mPreIndexDiff: ").append(this.c);
-    localStringBuilder.append(", mTimeInterval: ").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", mIsPull: ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    this.a.a(false);
+    this.a.a.c();
+    this.a.i();
   }
 }
 

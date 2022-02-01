@@ -2,8 +2,8 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import Override;
 import android.graphics.Bitmap;
-import bhsr;
 import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
@@ -21,7 +21,7 @@ class PageWebview$2
     if (QLog.isColorLevel()) {
       QLog.d(PageWebview.access$100(), 2, "---finish loadHtml---");
     }
-    if (bhsr.a(PageWebview.access$300(this.this$0))) {
+    if (StringUtil.isEmpty(PageWebview.access$300(this.this$0))) {
       PageWebview.access$302(this.this$0, this.this$0.apkgInfo$5475ea27.e());
     }
     this.this$0.evaluteJs(PageWebview.access$300(this.this$0), new PageWebview.2.1(this));
@@ -98,10 +98,10 @@ class PageWebview$2
     //   124: aload_0
     //   125: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   128: aload 7
-    //   130: getfield 145	com/tencent/mobileqq/microapp/apkg/f:a	Ljava/lang/String;
-    //   133: ldc 147
-    //   135: invokevirtual 151	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   138: invokestatic 155	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$002	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;[B)[B
+    //   130: getfield 146	com/tencent/mobileqq/microapp/apkg/f:a	Ljava/lang/String;
+    //   133: ldc 148
+    //   135: invokevirtual 152	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   138: invokestatic 156	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$002	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;[B)[B
     //   141: pop
     //   142: invokestatic 24	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   145: ifeq +52 -> 197
@@ -110,7 +110,7 @@ class PageWebview$2
     //   152: new 93	java/lang/StringBuilder
     //   155: dup
     //   156: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   159: ldc 157
+    //   159: ldc 158
     //   161: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: astore_2
     //   165: aload_0
@@ -126,10 +126,10 @@ class PageWebview$2
     //   185: iconst_2
     //   186: aload_2
     //   187: iload_3
-    //   188: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   188: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   191: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   194: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   197: new 162	java/io/ByteArrayInputStream
+    //   197: new 163	java/io/ByteArrayInputStream
     //   200: dup
     //   201: aload_0
     //   202: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
@@ -139,16 +139,16 @@ class PageWebview$2
     //   210: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   213: invokestatic 140	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$000	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;)[B
     //   216: arraylength
-    //   217: invokespecial 165	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   217: invokespecial 166	java/io/ByteArrayInputStream:<init>	([BII)V
     //   220: astore 5
     //   222: aload 5
     //   224: astore_2
-    //   225: new 167	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   225: new 168	com/tencent/smtt/export/external/interfaces/WebResourceResponse
     //   228: dup
-    //   229: ldc 169
-    //   231: ldc 147
+    //   229: ldc 170
+    //   231: ldc 148
     //   233: aload 5
-    //   235: invokespecial 172	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   235: invokespecial 173	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
     //   238: astore_1
     //   239: aload 5
     //   241: astore_2
@@ -158,34 +158,34 @@ class PageWebview$2
     //   250: astore_2
     //   251: invokestatic 30	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$100	()Ljava/lang/String;
     //   254: iconst_2
-    //   255: ldc 174
+    //   255: ldc 175
     //   257: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   260: aload 5
     //   262: astore_2
     //   263: aload_0
     //   264: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
-    //   267: invokestatic 177	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$200	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;)Ljava/lang/String;
-    //   270: invokestatic 46	bhsr:a	(Ljava/lang/String;)Z
+    //   267: invokestatic 178	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$200	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;)Ljava/lang/String;
+    //   270: invokestatic 46	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
     //   273: ifeq +19 -> 292
     //   276: aload 5
     //   278: astore_2
     //   279: aload_0
     //   280: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   283: aload 7
-    //   285: getfield 180	com/tencent/mobileqq/microapp/apkg/f:b	Ljava/lang/String;
-    //   288: invokestatic 183	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$202	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;Ljava/lang/String;)Ljava/lang/String;
+    //   285: getfield 181	com/tencent/mobileqq/microapp/apkg/f:b	Ljava/lang/String;
+    //   288: invokestatic 184	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$202	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;Ljava/lang/String;)Ljava/lang/String;
     //   291: pop
     //   292: aload_1
     //   293: astore_2
     //   294: aload 5
     //   296: ifnull -235 -> 61
     //   299: aload 5
-    //   301: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
+    //   301: invokevirtual 187	java/io/ByteArrayInputStream:close	()V
     //   304: aload_1
     //   305: areturn
     //   306: astore_2
     //   307: aload_2
-    //   308: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   308: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   311: aload_1
     //   312: areturn
     //   313: invokestatic 24	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -195,7 +195,7 @@ class PageWebview$2
     //   323: new 93	java/lang/StringBuilder
     //   326: dup
     //   327: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   330: ldc 191
+    //   330: ldc 192
     //   332: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: astore_2
     //   336: iload 4
@@ -213,7 +213,7 @@ class PageWebview$2
     //   359: iconst_2
     //   360: aload_2
     //   361: iload_3
-    //   362: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   362: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   365: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   368: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   371: goto -174 -> 197
@@ -225,18 +225,18 @@ class PageWebview$2
     //   381: aload 5
     //   383: astore_2
     //   384: aload 6
-    //   386: invokevirtual 192	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   386: invokevirtual 193	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   389: aload_1
     //   390: astore_2
     //   391: aload 5
     //   393: ifnull -332 -> 61
     //   396: aload 5
-    //   398: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
+    //   398: invokevirtual 187	java/io/ByteArrayInputStream:close	()V
     //   401: aload_1
     //   402: areturn
     //   403: astore_2
     //   404: aload_2
-    //   405: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   405: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   408: aload_1
     //   409: areturn
     //   410: astore_1
@@ -245,143 +245,143 @@ class PageWebview$2
     //   414: aload_2
     //   415: ifnull +7 -> 422
     //   418: aload_2
-    //   419: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
+    //   419: invokevirtual 187	java/io/ByteArrayInputStream:close	()V
     //   422: aload_1
     //   423: athrow
     //   424: astore_2
     //   425: aload_2
-    //   426: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   426: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   429: goto -7 -> 422
     //   432: aload_2
-    //   433: ldc 194
+    //   433: ldc 195
     //   435: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   438: ifne +12 -> 450
     //   441: aload_2
-    //   442: ldc 196
+    //   442: ldc 197
     //   444: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   447: ifeq +58 -> 505
     //   450: aload_2
     //   451: ldc 122
-    //   453: invokevirtual 200	java/lang/String:length	()I
-    //   456: invokevirtual 204	java/lang/String:substring	(I)Ljava/lang/String;
+    //   453: invokevirtual 201	java/lang/String:length	()I
+    //   456: invokevirtual 205	java/lang/String:substring	(I)Ljava/lang/String;
     //   459: astore 5
     //   461: aload_2
-    //   462: ldc 194
+    //   462: ldc 195
     //   464: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   467: ifeq +32 -> 499
-    //   470: ldc 206
+    //   470: ldc 207
     //   472: astore_1
-    //   473: new 167	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   473: new 168	com/tencent/smtt/export/external/interfaces/WebResourceResponse
     //   476: dup
     //   477: aload_1
-    //   478: ldc 147
+    //   478: ldc 148
     //   480: aload_0
     //   481: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   484: getfield 50	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:apkgInfo$5475ea27	Lcom/tencent/mobileqq/microapp/a/c;
     //   487: aload 5
-    //   489: invokevirtual 210	com/tencent/mobileqq/microapp/a/c:j	(Ljava/lang/String;)Ljava/lang/String;
-    //   492: invokestatic 214	com/tencent/mobileqq/microapp/a/c:s	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
-    //   495: invokespecial 172	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   489: invokevirtual 211	com/tencent/mobileqq/microapp/a/c:j	(Ljava/lang/String;)Ljava/lang/String;
+    //   492: invokestatic 215	com/tencent/mobileqq/microapp/a/c:s	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+    //   495: invokespecial 173	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
     //   498: areturn
-    //   499: ldc 216
+    //   499: ldc 217
     //   501: astore_1
     //   502: goto -29 -> 473
     //   505: aload_2
-    //   506: ldc 218
+    //   506: ldc 219
     //   508: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   511: ifne +12 -> 523
     //   514: aload_2
-    //   515: ldc 220
+    //   515: ldc 221
     //   517: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   520: ifeq +204 -> 724
     //   523: aload_2
     //   524: ldc 122
-    //   526: invokevirtual 200	java/lang/String:length	()I
-    //   529: invokevirtual 204	java/lang/String:substring	(I)Ljava/lang/String;
+    //   526: invokevirtual 201	java/lang/String:length	()I
+    //   529: invokevirtual 205	java/lang/String:substring	(I)Ljava/lang/String;
     //   532: astore 5
     //   534: aload_2
-    //   535: ldc 218
+    //   535: ldc 219
     //   537: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   540: ifeq +32 -> 572
-    //   543: ldc 222
+    //   543: ldc 223
     //   545: astore_1
-    //   546: new 167	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   546: new 168	com/tencent/smtt/export/external/interfaces/WebResourceResponse
     //   549: dup
     //   550: aload_1
-    //   551: ldc 147
+    //   551: ldc 148
     //   553: aload_0
     //   554: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   557: getfield 50	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:apkgInfo$5475ea27	Lcom/tencent/mobileqq/microapp/a/c;
     //   560: aload 5
-    //   562: invokevirtual 210	com/tencent/mobileqq/microapp/a/c:j	(Ljava/lang/String;)Ljava/lang/String;
-    //   565: invokestatic 225	com/tencent/mobileqq/microapp/a/c:r	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
-    //   568: invokespecial 172	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   562: invokevirtual 211	com/tencent/mobileqq/microapp/a/c:j	(Ljava/lang/String;)Ljava/lang/String;
+    //   565: invokestatic 226	com/tencent/mobileqq/microapp/a/c:r	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+    //   568: invokespecial 173	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
     //   571: areturn
-    //   572: ldc 227
+    //   572: ldc 228
     //   574: astore_1
     //   575: goto -29 -> 546
     //   578: aload_2
-    //   579: ldc 229
+    //   579: ldc 230
     //   581: invokevirtual 127	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   584: ifeq +117 -> 701
     //   587: aload_2
-    //   588: ldc 194
+    //   588: ldc 195
     //   590: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   593: ifne +12 -> 605
     //   596: aload_2
-    //   597: ldc 196
+    //   597: ldc 197
     //   599: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   602: ifeq +42 -> 644
     //   605: aload_2
-    //   606: ldc 194
+    //   606: ldc 195
     //   608: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   611: ifeq +27 -> 638
-    //   614: ldc 206
+    //   614: ldc 207
     //   616: astore_1
-    //   617: new 167	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   617: new 168	com/tencent/smtt/export/external/interfaces/WebResourceResponse
     //   620: dup
     //   621: aload_1
-    //   622: ldc 147
-    //   624: invokestatic 234	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
+    //   622: ldc 148
+    //   624: invokestatic 235	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
     //   627: aload_2
-    //   628: invokevirtual 236	com/tencent/mobileqq/microapp/appbrand/b/b:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   631: invokestatic 214	com/tencent/mobileqq/microapp/a/c:s	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
-    //   634: invokespecial 172	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   628: invokevirtual 237	com/tencent/mobileqq/microapp/appbrand/b/b:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   631: invokestatic 215	com/tencent/mobileqq/microapp/a/c:s	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+    //   634: invokespecial 173	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
     //   637: areturn
-    //   638: ldc 216
+    //   638: ldc 217
     //   640: astore_1
     //   641: goto -24 -> 617
     //   644: aload_2
-    //   645: ldc 218
+    //   645: ldc 219
     //   647: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   650: ifne +12 -> 662
     //   653: aload_2
-    //   654: ldc 220
+    //   654: ldc 221
     //   656: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   659: ifeq +65 -> 724
     //   662: aload_2
-    //   663: ldc 218
+    //   663: ldc 219
     //   665: invokevirtual 132	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   668: ifeq +27 -> 695
-    //   671: ldc 222
+    //   671: ldc 223
     //   673: astore_1
-    //   674: new 167	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   674: new 168	com/tencent/smtt/export/external/interfaces/WebResourceResponse
     //   677: dup
     //   678: aload_1
-    //   679: ldc 147
-    //   681: invokestatic 234	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
+    //   679: ldc 148
+    //   681: invokestatic 235	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
     //   684: aload_2
-    //   685: invokevirtual 236	com/tencent/mobileqq/microapp/appbrand/b/b:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   688: invokestatic 225	com/tencent/mobileqq/microapp/a/c:r	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
-    //   691: invokespecial 172	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   685: invokevirtual 237	com/tencent/mobileqq/microapp/appbrand/b/b:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   688: invokestatic 226	com/tencent/mobileqq/microapp/a/c:r	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+    //   691: invokespecial 173	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
     //   694: areturn
-    //   695: ldc 227
+    //   695: ldc 228
     //   697: astore_1
     //   698: goto -24 -> 674
     //   701: aload_0
     //   702: aload_1
     //   703: aload_2
-    //   704: invokespecial 239	com/tencent/smtt/sdk/WebViewClient:shouldInterceptRequest	(Lcom/tencent/smtt/sdk/WebView;Ljava/lang/String;)Lcom/tencent/smtt/export/external/interfaces/WebResourceResponse;
+    //   704: invokespecial 240	com/tencent/smtt/sdk/WebViewClient:shouldInterceptRequest	(Lcom/tencent/smtt/sdk/WebView;Ljava/lang/String;)Lcom/tencent/smtt/export/external/interfaces/WebResourceResponse;
     //   707: areturn
     //   708: astore_1
     //   709: goto -295 -> 414

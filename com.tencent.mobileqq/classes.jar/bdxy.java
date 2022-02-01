@@ -1,13 +1,29 @@
-class bdxy
-  implements bdym
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class bdxy
 {
-  bdxy(bdxx parambdxx, bdxj parambdxj, String paramString) {}
+  public int a;
+  public String a;
+  public ArrayList<bdxy> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(bdyr parambdyr)
+  public bdxy() {}
+  
+  public bdxy(String paramString1, String paramString2)
   {
-    if (bdxx.a(this.jdField_a_of_type_Bdxx) != null) {
-      bdxx.a(this.jdField_a_of_type_Bdxx).a(this.jdField_a_of_type_Bdxj, parambdyr, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = ((Integer)bdxx.a().get(paramString)).intValue();
   }
 }
 

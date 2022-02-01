@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastOneShow;
+import dov.com.qq.im.ptv.LWMotionEvent;
 
 public final class bnbe
-  implements Parcelable.Creator<BroadcastOneShow>
+  implements Parcelable.Creator<LWMotionEvent>
 {
-  public BroadcastOneShow a(Parcel paramParcel)
+  public LWMotionEvent a(Parcel paramParcel)
   {
-    return new BroadcastOneShow(paramParcel);
+    return new LWMotionEvent(paramParcel, null);
   }
   
-  public BroadcastOneShow[] a(int paramInt)
+  public LWMotionEvent[] a(int paramInt)
   {
-    return new BroadcastOneShow[paramInt];
+    return new LWMotionEvent[paramInt];
   }
 }
 

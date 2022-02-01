@@ -7,15 +7,15 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import blqj;
-import blqk;
+import bjuk;
+import bjul;
 
 public class LabelTextView
   extends TextView
-  implements blqk
+  implements bjul
 {
   private int jdField_a_of_type_Int = 2147483647;
-  protected blqj a;
+  protected bjuk a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -48,21 +48,21 @@ public class LabelTextView
   
   private void b()
   {
-    this.jdField_a_of_type_Blqj = new blqj();
-    this.jdField_a_of_type_Blqj.a(true);
-    this.jdField_a_of_type_Blqj.a(blqj.c);
+    this.jdField_a_of_type_Bjuk = new bjuk();
+    this.jdField_a_of_type_Bjuk.a(true);
+    this.jdField_a_of_type_Bjuk.a(bjuk.c);
   }
   
-  public void a_(Canvas paramCanvas)
+  public void a(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.b) && (this.jdField_a_of_type_Blqj != null))
+    if ((this.b) && (this.jdField_a_of_type_Bjuk != null))
     {
-      this.jdField_a_of_type_Blqj.a(paramCanvas, this);
+      this.jdField_a_of_type_Bjuk.a(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);
@@ -109,7 +109,7 @@ public class LabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.LabelTextView
  * JD-Core Version:    0.7.0.1
  */

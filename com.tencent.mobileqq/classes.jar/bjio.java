@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.util.Pair;
 
-final class bjio
-  implements DialogInterface.OnClickListener
+abstract interface bjio
 {
-  bjio(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdll.b(null, "P_CliOper", "Safe_SensMsg", this.jdField_a_of_type_JavaLangString, "Alert_Dialog", "Cancel", this.jdField_a_of_type_Int, this.b, "", "", "", "");
-    paramDialogInterface.dismiss();
-  }
+  public abstract Pair<String, String> a(String paramString);
 }
 
 

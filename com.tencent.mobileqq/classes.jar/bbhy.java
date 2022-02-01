@@ -1,10 +1,24 @@
-import android.graphics.Paint;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public abstract interface bbhy
+public class bbhy
+  extends bbhi
 {
-  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public LinearLayout a;
+  public TextView a;
   
-  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
+  public bbhy(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131379877));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131362977));
+  }
 }
 
 

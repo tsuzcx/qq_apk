@@ -1,25 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class adrp
-  implements View.OnClickListener
+class adrp
+  implements DialogInterface.OnClickListener
 {
-  public adrp(AccountManageActivity paramAccountManageActivity) {}
+  adrp(adro paramadro) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!azoz.a().a(this.a.app, this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.b == null) || (!this.a.b.isShowing())) {
-        AccountManageActivity.a(this.a);
-      }
+    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
+    this.a.a.finish();
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      atrh.a(this.a.a.a);
     }
+    new bcek(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
   }
 }
 

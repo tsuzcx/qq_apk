@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import anzj;
-import arfd;
+import amtj;
+import apyt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -17,12 +17,12 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (arfd.c())
+    if (apyt.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131705323) + arfd.a() + anzj.a(2131705319), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131705553) + apyt.a() + amtj.a(2131705549), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131693722), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131693819), 0).a();
   }
 }
 

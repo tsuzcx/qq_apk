@@ -1,18 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ancu
-  implements EIPCResultCallback
+public final class ancu
+  implements DialogInterface.OnClickListener
 {
-  ancu(long paramLong) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    anbd.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

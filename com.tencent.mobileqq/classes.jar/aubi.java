@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.gamecenter.web.view.QQGameIndicator2;
 
-class aubi
+public class aubi
+  extends RadioButton
 {
-  int jdField_a_of_type_Int = 201;
-  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+  public aubi(QQGameIndicator2 paramQQGameIndicator2, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  aubi(aubh paramaubh) {}
+  public boolean performClick()
+  {
+    return true;
+  }
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.minigame.jsapi.widgets;
 
+import amtj;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anzj;
 import com.tencent.mobileqq.minigame.utils.DpUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import org.json.JSONException;
@@ -38,18 +38,18 @@ public class KeyboardLayout
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
     localLayoutParams.rightMargin = DpUtil.dip2px(getContext(), 2.0F);
     localLayoutParams.topMargin = DpUtil.dip2px(getContext(), 2.0F);
-    this.mConfirmBT.setText(anzj.a(2131704843));
+    this.mConfirmBT.setText(amtj.a(2131705073));
     this.mConfirmBT.setTextColor(-1);
-    this.mConfirmBT.setBackgroundResource(2130841008);
+    this.mConfirmBT.setBackgroundResource(2130841044);
     this.mConfirmBT.setMinHeight(0);
     this.mConfirmBT.setMinimumHeight(0);
     this.mConfirmBT.setPadding(DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F), DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F));
     addView(this.mConfirmBT, localLayoutParams);
-    this.mConfirmBT.setId(2131371196);
+    this.mConfirmBT.setId(2131371165);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.mConfirmBT.getId());
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
-    this.mInputET.setBackgroundResource(2130841011);
+    this.mInputET.setBackgroundResource(2130841047);
     addView(this.mInputET, localLayoutParams);
     setBackgroundColor(-1);
     setPadding(0, DpUtil.dip2px(getContext(), 5.0F), 0, DpUtil.dip2px(getContext(), 2.0F));
@@ -91,11 +91,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = anzj.a(2131704842);
+          paramString = amtj.a(2131705072);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = anzj.a(2131704841);
+            paramString = amtj.a(2131705071);
             this.mInputET.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -116,20 +116,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = anzj.a(2131704844);
+              paramString = amtj.a(2131705074);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = anzj.a(2131704840);
+              paramString = amtj.a(2131705070);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = anzj.a(2131704839);
+            paramString = amtj.a(2131705069);
             continue;
           }
           this.mInputET.setFilters(new InputFilter[0]);

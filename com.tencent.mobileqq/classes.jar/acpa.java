@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-class acpa
-  implements View.OnClickListener
+public class acpa
+  implements bhhv
 {
-  acpa(acox paramacox) {}
+  public acpa(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.jdField_a_of_type_Acpg.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView, this.a.a(paramView), acox.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

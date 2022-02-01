@@ -44,9 +44,9 @@ public class VolumeChangeView
     this.jdField_a_of_type_Int = paramTypedArray.getInt(3, 5);
     this.b = ((int)paramTypedArray.getDimension(5, 8.0F));
     this.c = ((int)paramTypedArray.getDimension(4, 48.0F));
-    this.d = getResources().getColor(2131166982);
-    this.h = getResources().getColor(2131166981);
-    this.i = getResources().getDimensionPixelOffset(2131299111);
+    this.d = getResources().getColor(2131167004);
+    this.h = getResources().getColor(2131167003);
+    this.i = getResources().getDimensionPixelOffset(2131299176);
     this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
   }
   
@@ -165,7 +165,7 @@ public class VolumeChangeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeChangeView
  * JD-Core Version:    0.7.0.1
  */

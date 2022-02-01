@@ -1,16 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aeua
+class aeua
   implements View.OnClickListener
 {
-  public aeua(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  aeua(aetx paramaetx, aetu paramaetu) {}
   
   public void onClick(View paramView)
   {
-    this.a.a();
+    this.jdField_a_of_type_Aetx.a.a(this.jdField_a_of_type_Aetu);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

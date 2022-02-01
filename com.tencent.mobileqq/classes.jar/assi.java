@@ -1,11 +1,37 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.EmoticonImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class assi
-  extends aslu
+class assi
+  implements aszj
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  EmoticonImageView[] jdField_a_of_type_ArrayOfComTencentMobileqqEmoticonviewEmoticonImageView;
+  assi(assh paramassh) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    int i = this.a.a.g();
+    if (this.a.a.f() == 6000) {
+      if (i == 0) {
+        if (this.a.a.h() == 2) {
+          assd.c(this.a.a);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a.a != null) {
+        this.a.a.a.d();
+      }
+      return;
+      assd.a(this.a.a);
+      continue;
+      assd.c(this.a.a);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+      }
+    }
+  }
 }
 
 

@@ -1,25 +1,15 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
 
 public class ykd
-  extends wzi
+  extends Handler
 {
-  public int a;
-  public String a;
-  public List<ShareGroupCollectionItem> a;
+  public ykd(RMWService paramRMWService) {}
   
-  public ykd(ErrorMessage paramErrorMessage, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    ykb.b("RMWService", "service.handle : " + ykc.a(paramMessage));
   }
 }
 

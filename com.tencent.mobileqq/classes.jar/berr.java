@@ -1,84 +1,43 @@
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+
 public class berr
+  extends beqz
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  
-  public berr()
+  public berr(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_Int = -1;
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 6;
   }
   
-  public long a()
+  @Nullable
+  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L)) {}
-    for (long l = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000000L;; l = 0L)
-    {
-      if (l < 0L) {
-        return 0L;
-      }
-      return l;
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      return new bera(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696900), bdyo.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
+    return null;
   }
   
-  public String a(int paramInt)
+  public void a(int paramInt, Object paramObject, String paramString)
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      l1 = l2;
-      if (this.jdField_a_of_type_Long != 0L)
-      {
-        l1 = l2;
-        if (this.jdField_b_of_type_Long != 0L) {
-          l1 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000000L;
-        }
-      }
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.jdField_b_of_type_Int).append("_").append(this.c).append("_").append(l1);
-    return localStringBuilder.toString();
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_homework", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
   }
   
-  public void a()
+  public void b(int paramInt, Object paramObject, String paramString)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = System.nanoTime();
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (paramLong >= this.jdField_b_of_type_Long) {
-      this.jdField_a_of_type_Long = 0L;
-    }
-    while (paramLong <= this.jdField_a_of_type_Long) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void b()
-  {
-    long l = System.nanoTime();
-    if (l > this.jdField_b_of_type_Long) {
-      this.jdField_b_of_type_Long = l;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("startTime: ").append(this.jdField_a_of_type_Long).append(" finishTime: ").append(this.jdField_b_of_type_Long);
-    return localStringBuffer.toString();
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_homework", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     berr
  * JD-Core Version:    0.7.0.1
  */

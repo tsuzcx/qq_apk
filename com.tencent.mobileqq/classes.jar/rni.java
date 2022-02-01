@@ -1,41 +1,125 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class rni
-  implements sct
+public class rni
+  extends ooa
 {
-  rni(rnk paramrnk, HashMap paramHashMap) {}
+  @Nullable
+  private rnk jdField_a_of_type_Rnk;
+  @NotNull
+  private rnl jdField_a_of_type_Rnl;
+  @NotNull
+  private rno jdField_a_of_type_Rno;
+  @Nullable
+  private sjh jdField_a_of_type_Sjh;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public void a(scv paramscv)
+  public rni(@NotNull QQAppInterface paramQQAppInterface, @NotNull rnl paramrnl, @Nullable rnk paramrnk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "换链回包 mHasDestory = " + rnh.a().get() + ", vid = " + paramscv.jdField_b_of_type_JavaLangString);
+    super(paramrnl, true, "UploadCoverTaskStep");
+    this.jdField_a_of_type_Rno = ((rno)paramQQAppInterface.getManager(356));
+    this.jdField_a_of_type_Rnl = paramrnl;
+    this.jdField_a_of_type_Rnk = paramrnk;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.b = true;
+    if (this.jdField_a_of_type_Sjh != null) {
+      this.jdField_a_of_type_Sjh.a();
     }
-    if ((rnh.a().get()) || (!this.jdField_a_of_type_Rnk.jdField_a_of_type_JavaLangString.equals(paramscv.jdField_b_of_type_JavaLangString))) {}
-    for (;;)
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Rnl.a();
+    localUgcVideo.status = UgcVideo.STATUS_PAUSE;
+    this.jdField_a_of_type_Rno.d(localUgcVideo);
+    if (this.jdField_a_of_type_Rnk != null) {
+      this.jdField_a_of_type_Rnk.a(1, true, false, null);
+    }
+  }
+  
+  public boolean a()
+  {
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Rnl.a();
+    int j;
+    label72:
+    String str;
+    label113:
+    long l;
+    if ((localUgcVideo.compressPath != null) && (!localUgcVideo.compressPath.isEmpty()) && (new File(localUgcVideo.compressPath).exists()))
     {
-      return;
-      paramscv = paramscv.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramscv.hasNext())
-      {
-        scv localscv = (scv)paramscv.next();
-        if ((localscv.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localscv.jdField_c_of_type_JavaLangString)) && (localscv.jdField_c_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_Rnk.jdField_a_of_type_Long))))
-        {
-          this.jdField_a_of_type_Rnk.jdField_b_of_type_Int = localscv.jdField_b_of_type_Int;
-          this.jdField_a_of_type_Rnk.jdField_c_of_type_Int = localscv.jdField_c_of_type_Int;
-          rnh.a(this.jdField_a_of_type_Rnk, localscv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Rnk.jdField_b_of_type_Long);
-        }
+      i = 1;
+      if (i != 0) {
+        localUgcVideo.compressProgress = 100;
       }
-      for (int i = 1; (i == 0) && (QLog.isColorLevel()); i = 0)
+      if (localUgcVideo.retryTime < UgcVideo.RETRY_TIME_LIMIT) {
+        break label196;
+      }
+      j = 1;
+      if (j != 0)
       {
-        QLog.d("VideoExtractFrame", 2, "no found videoInfo.tag = " + this.jdField_a_of_type_Rnk.jdField_b_of_type_JavaLangString);
-        return;
+        str = localUgcVideo.filePath;
+        File localFile = new File(str);
+        localUgcVideo.compressPath = str;
+        str = udy.a(localFile);
+        if (str == null) {
+          break label201;
+        }
+        localUgcVideo.fileMd5 = str;
+        if (!localFile.exists()) {
+          break label208;
+        }
+        l = localFile.length();
+        label134:
+        localUgcVideo.fileSize = l;
+      }
+      if ((i != 0) || (localUgcVideo.status == UgcVideo.STATUS_PAUSE) || (j != 0)) {
+        break label213;
       }
     }
+    label196:
+    label201:
+    label208:
+    label213:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.b = false;
+        localUgcVideo.startCompressTime = System.currentTimeMillis();
+      }
+      if ((!super.a()) || (i == 0)) {
+        break label218;
+      }
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label72;
+      str = "";
+      break label113;
+      l = 0L;
+      break label134;
+    }
+    label218:
+    return false;
+  }
+  
+  public boolean b()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      UgcVideo localUgcVideo = this.jdField_a_of_type_Rnl.a();
+      this.jdField_a_of_type_Sjh = new sjh(BaseApplicationImpl.getContext(), new rnj(this, localUgcVideo));
+      this.jdField_a_of_type_Sjh.execute(new String[] { localUgcVideo.filePath });
+      localUgcVideo.uploadVideoStatus = UgcVideo.SUBSTATUS_COMPRESS_VIDEO;
+    }
+    return false;
   }
 }
 

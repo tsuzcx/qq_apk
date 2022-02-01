@@ -1,42 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akia
-  implements aocq
+class akia
+  implements View.OnClickListener
 {
-  akia(akha paramakha) {}
+  akia(akho paramakho) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    this.a.a(32, 16, Integer.valueOf(paramInt));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    pfs.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((!paramBoolean) && (paramInt >= 0))
-    {
-      a(paramInt);
-      return;
-    }
-    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
+    akho.a(this.a).app.getQQProxyForQlink().a("0X800474F", 1);
+    bkmt.a(akho.a(this.a), 4, null);
+    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

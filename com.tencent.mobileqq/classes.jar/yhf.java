@@ -1,35 +1,41 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-class yhf
-  implements wrk
+public class yhf
+  extends ygy
 {
-  yhf(yhc paramyhc, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  protected EditVideoParams a;
+  public String c;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public yhf(int paramInt1, String paramString, int paramInt2)
   {
-    a(-1, anzj.a(2131713212));
+    super(paramInt1, paramString, paramInt2);
   }
   
-  public void a(int paramInt, String paramString)
+  public yhf(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131713209), 0).a();
-    yuk.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  @NonNull
+  public Class<? extends ygz> a()
   {
-    if (!yhc.a(this.jdField_a_of_type_Yhc).get()) {
-      yhc.a(this.jdField_a_of_type_Yhc, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
-    }
+    return yhh.class;
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  @NonNull
+  public ygz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new yhh(this, paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

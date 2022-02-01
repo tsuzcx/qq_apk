@@ -1,215 +1,50 @@
-import QQWalletPay.ReqCheckChangePwdAuth;
-import QQWalletPay.RespCheckChangePwdAuth;
-import Wallet.AuthCodeReq;
-import Wallet.AuthCodeRsp;
-import Wallet.GetPasswordReq;
-import Wallet.GetPasswordRsp;
-import Wallet.PfaFriendRqt;
-import Wallet.PfaFriendRsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
 
 public class bcuh
-  extends abiv
+  extends BusinessHandler
+  implements Handler.Callback
 {
-  private static final String[] a = { "QQWalletPayAuthServer", "AdvRuleSvrCmd", "WalletGestureSvc", "VacThirdCodeSvc", "QWalletPfa" };
+  private String[] a = { "docs.qq.com" };
   
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public bcuh(QQAppInterface paramQQAppInterface)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (RespCheckChangePwdAuth)paramToServiceMsg.getByClass("resp", new RespCheckChangePwdAuth());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
+    super(paramQQAppInterface);
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  private void a(Runnable paramRunnable)
   {
-    paramUniPacket.setServantName("MQQ.OpenPayServer.QQWalletPayAuthObj");
-    paramUniPacket.setFuncName("checkChangePwdAuth");
-    paramUniPacket.put("req", (ReqCheckChangePwdAuth)paramToServiceMsg.extraData.getSerializable("ReqCheckChangePwdAuth"));
-    return true;
+    if (this.app == null) {}
+    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bcui(this, paramRunnable)) == null) {
+      return;
+    }
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
   
-  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (GetPasswordRsp)paramToServiceMsg.getByClass("rsp", new GetPasswordRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
+    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
   }
   
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramUniPacket.setServantName("Wallet.GesturePasswordServer.GesturePasswordObj");
-    paramUniPacket.setFuncName("GetPassword");
-    paramUniPacket.put("req", (GetPasswordReq)paramToServiceMsg.extraData.getSerializable("GetPasswordReq"));
-    return true;
+    return false;
   }
   
-  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (AuthCodeRsp)paramToServiceMsg.getByClass("rsp", new AuthCodeRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
+    return bcuf.class;
   }
   
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("VAC.AuthCodeCoroServer.AuthCodeCoroObj");
-    paramUniPacket.setFuncName("fetchCodes");
-    paramUniPacket.put("req", (AuthCodeReq)paramToServiceMsg.extraData.getSerializable("AuthCodeReq"));
-    return true;
-  }
-  
-  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (PfaFriendRsp)paramToServiceMsg.getByClass("rsp", new PfaFriendRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("Wallet.WalletFriendQueryServer.WalletFriendObj");
-    paramUniPacket.setFuncName("QueryRecommendFriend");
-    paramUniPacket.put("rqt", (PfaFriendRqt)paramToServiceMsg.extraData.getSerializable("PfaFriendRqt"));
-    return true;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return null;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return b(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return c(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return d(paramToServiceMsg, paramFromServiceMsg);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return e(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return false;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return b(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return c(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return d(paramToServiceMsg, paramUniPacket);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return e(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return a;
-  }
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

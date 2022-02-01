@@ -1,14 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class vbu
-  implements aakg
+  implements View.OnClickListener
 {
-  vbu(vbr paramvbr) {}
+  vbu(vbt paramvbt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    vbr.b(this.a, 0);
+    vbt.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(int paramInt) {}
 }
 
 

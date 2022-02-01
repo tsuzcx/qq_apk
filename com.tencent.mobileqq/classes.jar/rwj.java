@@ -1,6 +1,23 @@
-public abstract interface rwj
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.qphone.base.util.QLog;
+
+public class rwj
+  implements sjr
 {
-  public abstract void a(boolean paramBoolean);
+  public rwj(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  
+  public void a(sjt paramsjt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(rwh.a(), 2, "UUIDToUrlCallback Callback vid=" + paramsjt.jdField_b_of_type_JavaLangString + ", url=" + paramsjt.jdField_a_of_type_JavaLangString + ", isH265=" + paramsjt.jdField_a_of_type_Boolean + ", isHWCodec=" + paramsjt.jdField_b_of_type_Boolean + ", fileBitRate=" + paramsjt.c);
+    }
+    if ((!TextUtils.isEmpty(paramsjt.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramsjt.jdField_a_of_type_JavaLangString, paramsjt.jdField_b_of_type_JavaLangString))) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramsjt.jdField_a_of_type_JavaLangString, paramsjt.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
+    }
+  }
 }
 
 

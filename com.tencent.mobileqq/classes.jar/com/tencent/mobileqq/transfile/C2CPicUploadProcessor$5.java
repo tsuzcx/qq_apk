@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import besa;
-
-public class C2CPicUploadProcessor$5
+class C2CPicUploadProcessor$5
   implements Runnable
 {
-  public C2CPicUploadProcessor$5(besa parambesa) {}
+  C2CPicUploadProcessor$5(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
   public void run()
   {
-    this.this$0.u();
+    this.this$0.internal_retry();
   }
 }
 

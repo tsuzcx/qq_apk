@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
+import mqq.app.QQPermissionCallback;
 
-class aylp
-  implements DialogInterface.OnClickListener
+public class aylp
+  implements QQPermissionCallback
 {
-  aylp(aykx paramaykx) {}
+  public aylp(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.d(true);
-    bdll.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    PersonalityLabelShareActivity.a(this.a);
   }
 }
 

@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class avvp
-  implements DialogInterface.OnClickListener
+public class avvp
+  implements bhle
 {
-  avvp(avvj paramavvj) {}
+  public avvp(MsgBackupQRFragment paramMsgBackupQRFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    avvj.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
+    }
+    avtq.a().d();
+    this.a.onBackEvent();
+    avwr.a("0X800A242", 4);
   }
 }
 

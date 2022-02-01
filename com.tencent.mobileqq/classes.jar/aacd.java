@@ -1,41 +1,21 @@
-import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class aacd
-  extends GridLayoutManager
+class aacd
+  implements QQPermissionCallback
 {
-  public aacd(Context paramContext, int paramInt)
+  aacd(aaca paramaaca) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramContext, paramInt);
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bfur.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    aaca.f(this.a);
   }
 }
 

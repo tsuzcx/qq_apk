@@ -1,154 +1,295 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.multicard.manager.TroopMemberRecommendManager.1;
+import com.tencent.mobileqq.multicard.manager.TroopMemberRecommendManager.2;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class awby
-  extends WebViewPlugin
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private aasb jdField_a_of_type_Aasb;
-  final aasd jdField_a_of_type_Aasd = new awbz(this);
-  private int b;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  public aqdl a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, List<RecommendPerson>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public awby()
+  public awby(QQAppInterface paramQQAppInterface)
   {
-    this.mPluginNameSpace = "nowlive";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("TroopMemberRecom" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    ThreadManager.getSubThreadHandler().post(new TroopMemberRecommendManager.1(this));
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private awbx a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("progress", paramInt2);
-      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    return (awbx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(167);
   }
   
-  private void a(int paramInt, String paramString)
+  public static awby a(QQAppInterface paramQQAppInterface)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("errcode", paramInt);
-      localJSONObject.put("desc", paramString);
-      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+    return (awby)paramQQAppInterface.getManager(347);
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Aqdl == null) {
+      this.jdField_a_of_type_Aqdl = aqdm.a();
     }
   }
   
-  public aasb a()
+  public int a(String paramString)
   {
-    return this.jdField_a_of_type_Aasb;
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localTroopManager != null)
+    {
+      paramString = localTroopManager.c(paramString);
+      if (paramString != null) {
+        return paramString.wMemberNum;
+      }
+    }
+    return 0;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public SharedPreferences a()
   {
-    boolean bool = false;
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+  }
+  
+  List<RecommendPerson> a(List<RecommendPerson> paramList, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = paramList.size();
+    if (j > 0)
+    {
+      k = ((RecommendPerson)paramList.get(0)).cardMaxDisplayPersonNum;
+      if (j <= k) {
+        localArrayList.addAll(paramList);
+      }
+    }
+    else
+    {
+      return localArrayList;
+    }
+    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0);
+    if (i + k <= j)
+    {
+      j = k + i;
+      localArrayList.addAll(paramList.subList(i, j));
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, j).commit();
+      return localArrayList;
+    }
+    int k = (k + i) % j;
+    localArrayList.addAll(paramList.subList(i, j));
+    localArrayList.addAll(paramList.subList(0, k));
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, k).commit();
+    return localArrayList;
+  }
+  
+  public Map<Integer, List<RecommendPerson>> a(List<RecommendPerson> paramList, String paramString)
+  {
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     if (QLog.isColorLevel()) {
-      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+      QLog.d("TroopMemberRecommend.Manager", 2, "filterAndReorderRecommenList start ,troopUin = " + paramString);
     }
-    if ((this.jdField_a_of_type_Aasb == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
-    label337:
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      Iterator localIterator = paramList.iterator();
+      Object localObject;
+      if (localIterator.hasNext())
+      {
+        localObject = (RecommendPerson)localIterator.next();
+        if (localLinkedHashMap.containsKey(Integer.valueOf(((RecommendPerson)localObject).cardTypeID))) {}
+        for (paramList = (List)localLinkedHashMap.get(Integer.valueOf(((RecommendPerson)localObject).cardTypeID));; paramList = new ArrayList())
+        {
+          paramList.add(localObject);
+          localLinkedHashMap.put(Integer.valueOf(((RecommendPerson)localObject).cardTypeID), paramList);
+          break;
+        }
+      }
+      localIterator = localLinkedHashMap.entrySet().iterator();
+      if (localIterator.hasNext())
+      {
+        paramList = (Map.Entry)localIterator.next();
+        localObject = (Integer)paramList.getKey();
+        List localList = (List)paramList.getValue();
+        paramList = "";
+        switch (((Integer)localObject).intValue())
+        {
+        }
+        for (;;)
+        {
+          localLinkedHashMap.put(localObject, a(localList, paramList));
+          break;
+          paramList = "key_ActiveMember_ri" + paramString;
+          continue;
+          paramList = "key_SameUserInfo_ri" + paramString;
+          continue;
+          paramList = "key_CommonBehavior_ri" + paramString;
+          continue;
+          paramList = "key_Interactive_ri" + paramString;
+          continue;
+          paramList = "key_GroupKOL_ri" + paramString;
+        }
+      }
+    }
+    return localLinkedHashMap;
+  }
+  
+  public void a(String paramString, int paramInt, List<Long> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.Manager", 2, "getTroopMemRecommendCardsData troopUin = " + paramString + ",entryId = " + paramInt);
+    }
+    Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      a(paramString, false);
+      localObject = a((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString), paramString);
+      a().notifyUI(1, true, new Object[] { localObject, paramString, Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      if (a(paramInt, paramString)) {
+        a().a(paramString, paramInt, paramList);
+      }
+      return;
+      ThreadManager.excute(new TroopMemberRecommendManager.2(this, paramString), 32, null, true);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
     do
     {
-      return false;
-      if ("getPluginInfo".equals(paramString3))
+      return;
+      Object localObject = new ArrayList();
+      ((List)localObject).addAll((Collection)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1));
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        this.jdField_a_of_type_Aasb.i();
-        a(this.jdField_a_of_type_Int, this.b);
-      }
-      for (;;)
-      {
-        return true;
-        if ("openRoom".equals(paramString3))
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-            break;
+          RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
+          if (paramString2.equals(localRecommendPerson.uin)) {
+            ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1)).remove(localRecommendPerson);
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
-          }
-          paramJsBridgeListener = paramVarArgs[0];
-          if (TextUtils.isEmpty(paramJsBridgeListener)) {
-            break;
-          }
-          this.jdField_a_of_type_Aasb.a(Long.valueOf(paramJsBridgeListener).longValue());
-          continue;
         }
-        if ("install".equals(paramString3))
+      }
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    } while (paramString1 == null);
+    paramString1.delete(RecommendPerson.class.getSimpleName(), "uin=?", new String[] { String.valueOf(paramString2) });
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      Object localObject = new ArrayList();
+      ((List)localObject).addAll((Collection)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString));
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            paramJsBridgeListener = paramVarArgs[0];
-          }
-          for (;;)
+          RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
+          if ((localamsw != null) && (localamsw.b(localRecommendPerson.uin)))
           {
-            try
-            {
-              i = Integer.valueOf(paramJsBridgeListener).intValue();
-              paramJsBridgeListener = this.jdField_a_of_type_Aasb;
-              if (i == 1) {
-                bool = true;
-              }
-              paramJsBridgeListener.b(bool);
+            ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).remove(localRecommendPerson);
+            if ((paramBoolean) && (localEntityManager != null)) {
+              localEntityManager.delete(RecommendPerson.class.getSimpleName(), "uin=?", new String[] { String.valueOf(localRecommendPerson.uin) });
             }
-            catch (NumberFormatException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-            int i = 0;
           }
-        }
-        if ("preload".equals(paramString3))
-        {
-          this.jdField_a_of_type_Aasb.g();
-        }
-        else
-        {
-          if (!"audioRoomSetting".equals(paramString3)) {
-            break label337;
-          }
-          awdo.a(this, paramVarArgs);
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+    }
+  }
+  
+  public void a(boolean paramBoolean, List<RecommendPerson> paramList, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.Manager", 2, "onGetTroopMemRecommendList, success = " + paramBoolean + ",troopUin = " + paramString);
+    }
+    Object localObject = new LinkedHashMap();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_ActiveMember_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_SameUserInfo_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_CommonBehavior_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_Interactive_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_GroupKOL_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramList);
+      localObject = a(paramList, paramString);
+    }
+    a().notifyUI(1, paramBoolean, new Object[] { localObject, paramString, Integer.valueOf(3) });
+  }
+  
+  boolean a(int paramInt, String paramString)
+  {
+    long l1 = 0L;
+    boolean bool = false;
+    SharedPreferences localSharedPreferences = a();
+    if (paramInt == 11) {
+      l1 = localSharedPreferences.getLong("key_LeftSlide_fetch_ts" + paramString, 0L);
+    }
+    for (;;)
+    {
+      long l2 = System.currentTimeMillis() / 1000L;
+      if (l2 > l1) {
+        bool = true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Manager", 2, "isTimeToObtainRemote result = " + bool + ",entryId = " + paramInt + ",troopUin = " + paramString + ",curTimeStamp = " + l2 + ",fetchTimeStamp = " + l1);
+      }
+      return bool;
+      if (paramInt == 12) {
+        l1 = localSharedPreferences.getLong("key_AIO_fetch_ts" + paramString, 0L);
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = true;
+    a();
+    int i = a(paramString);
+    if ((this.jdField_a_of_type_Aqdl == null) || (i <= 0)) {
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Manager", 2, "needShowTroopRecommend() troopUin =" + paramString + " troopMemRecommendConfBean = " + this.jdField_a_of_type_Aqdl.toString() + " troopMemCount = " + i);
+      }
+    } while ((this.jdField_a_of_type_Aqdl.a == 1) && (i > this.jdField_a_of_type_Aqdl.b));
     return false;
   }
   
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_Aasb = aasb.a();
-    this.jdField_a_of_type_Aasb.a();
-    this.jdField_a_of_type_Aasb.h(this.jdField_a_of_type_Aasd);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Aasb != null)
-    {
-      this.jdField_a_of_type_Aasb.b();
-      this.jdField_a_of_type_Aasb.h();
-    }
-  }
+  public void onDestroy() {}
 }
 
 

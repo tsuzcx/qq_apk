@@ -117,7 +117,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> accessibilityHeadingProperty()
   {
-    return new ViewCompat.5(2131378394, Boolean.class, 28);
+    return new ViewCompat.5(2131378161, Boolean.class, 28);
   }
   
   public static int addAccessibilityAction(@NonNull View paramView, @NonNull CharSequence paramCharSequence, @NonNull AccessibilityViewCommand paramAccessibilityViewCommand)
@@ -153,12 +153,12 @@ public class ViewCompat
     Object localObject1;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject2 = (SimpleArrayMap)paramView.getTag(2131378439);
+      localObject2 = (SimpleArrayMap)paramView.getTag(2131378206);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new SimpleArrayMap();
-        paramView.setTag(2131378439, localObject1);
+        paramView.setTag(2131378206, localObject1);
       }
       localObject2 = new ViewCompat.2(paramOnUnhandledKeyEventListenerCompat);
       ((SimpleArrayMap)localObject1).put(paramOnUnhandledKeyEventListenerCompat, localObject2);
@@ -167,12 +167,12 @@ public class ViewCompat
     do
     {
       return;
-      localObject2 = (ArrayList)paramView.getTag(2131378439);
+      localObject2 = (ArrayList)paramView.getTag(2131378206);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramView.setTag(2131378439, localObject1);
+        paramView.setTag(2131378206, localObject1);
       }
       ((ArrayList)localObject1).add(paramOnUnhandledKeyEventListenerCompat);
     } while (((ArrayList)localObject1).size() != 1);
@@ -551,12 +551,12 @@ public class ViewCompat
   
   private static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378392);
+    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378159);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      paramView.setTag(2131378392, localArrayList1);
+      paramView.setTag(2131378159, localArrayList1);
     }
     return localArrayList1;
   }
@@ -1298,7 +1298,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<CharSequence> paneTitleProperty()
   {
-    return new ViewCompat.4(2131378395, CharSequence.class, 8, 28);
+    return new ViewCompat.4(2131378162, CharSequence.class, 8, 28);
   }
   
   public static boolean performAccessibilityAction(@NonNull View paramView, int paramInt, Bundle paramBundle)
@@ -1382,7 +1382,7 @@ public class ViewCompat
     Object localObject;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject = (SimpleArrayMap)paramView.getTag(2131378439);
+      localObject = (SimpleArrayMap)paramView.getTag(2131378206);
       if (localObject != null) {}
     }
     do
@@ -1396,7 +1396,7 @@ public class ViewCompat
         } while (paramOnUnhandledKeyEventListenerCompat == null);
         paramView.removeOnUnhandledKeyEventListener(paramOnUnhandledKeyEventListenerCompat);
         return;
-        localObject = (ArrayList)paramView.getTag(2131378439);
+        localObject = (ArrayList)paramView.getTag(2131378206);
       } while (localObject == null);
       ((ArrayList)localObject).remove(paramOnUnhandledKeyEventListenerCompat);
     } while (((ArrayList)localObject).size() != 0);
@@ -1456,7 +1456,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> screenReaderFocusableProperty()
   {
-    return new ViewCompat.3(2131378429, Boolean.class, 28);
+    return new ViewCompat.3(2131378196, Boolean.class, 28);
   }
   
   public static void setAccessibilityDelegate(@NonNull View paramView, AccessibilityDelegateCompat paramAccessibilityDelegateCompat)

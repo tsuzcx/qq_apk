@@ -1,16 +1,58 @@
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class shn
-  extends pmr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerSDKMgr;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "Lcom/tencent/mobileqq/videoplatform/SDKInitListener;", "()V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "initSDK", "", "installPlugin", "isInstalled", "", "onSDKInited", "success", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class shn
+  implements SDKInitListener, she
 {
-  shn(shl paramshl, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  private static shd a;
+  public static final shn a;
+  
+  static
   {
-    super(paramString);
+    jdField_a_of_type_Shn = new shn();
   }
   
-  public void a(pmk parampmk)
+  public void a()
   {
-    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.readinjoy.video", 2, "initSuperPlayerSDK() finish");
+    }
+  }
+  
+  public void a(@NotNull shd paramshd)
+  {
+    Intrinsics.checkParameterIsNotNull(paramshd, "listener");
+    jdField_a_of_type_Shd = paramshd;
+    azjl.a((Context)BaseApplicationImpl.getContext(), (SDKInitListener)this);
+  }
+  
+  public boolean a()
+  {
+    return azjl.a();
+  }
+  
+  public void onSDKInited(boolean paramBoolean)
+  {
+    shd localshd;
+    if (paramBoolean)
+    {
+      localshd = jdField_a_of_type_Shd;
+      if (localshd != null) {
+        localshd.a();
+      }
+    }
+    do
+    {
+      return;
+      localshd = jdField_a_of_type_Shd;
+    } while (localshd == null);
+    localshd.a(0);
   }
 }
 

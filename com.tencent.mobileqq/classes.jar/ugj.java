@@ -1,24 +1,21 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-public class ugj
-  extends ugc
+final class ugj
+  implements DialogInterface.OnCancelListener
 {
-  public String a;
+  ugj(Activity paramActivity, ProfileParams paramProfileParams) {}
   
-  public ugj(JSONObject paramJSONObject)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super(paramJSONObject);
-  }
-  
-  public static ugj a(JSONObject paramJSONObject)
-  {
-    return new ugj(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      this.a = paramJSONObject.toString();
+    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    {
+      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
 }

@@ -1,60 +1,90 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 
-class bagp
-  implements View.OnClickListener
+public class bagp
 {
-  bagp(bagl parambagl, Card paramCard) {}
+  private volatile int jdField_a_of_type_Int;
+  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
+  private Frame[] jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame = new Frame[3];
+  private volatile int b;
+  private int c;
+  private int d;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    switch (paramView.getId())
+    if (Math.min(1, this.jdField_a_of_type_Int - this.b) == 1)
     {
+      int i = this.b;
+      return this.jdField_a_of_type_ArrayOfInt[(i % 3)];
     }
+    return -1;
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
+    }
+    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    while (i < 3)
+    {
+      if (this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] != null) {
+        this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].clear();
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = new GPUBaseFilter();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.init();
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    while (i < 3)
+    {
+      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] = new Frame();
+      i += 1;
+    }
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((bagl.a(this.jdField_a_of_type_Bagl) != null) && (bagl.a(this.jdField_a_of_type_Bagl).isShowing())) {
-        bagl.a(this.jdField_a_of_type_Bagl).dismiss();
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration))
+      try
       {
-        bdll.b(bagl.c(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_Int += paramInt;
+        return;
       }
-      else
-      {
-        bdll.b(bagl.d(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
-        continue;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
-          PublicFragmentActivity.a(bagl.g(this.jdField_a_of_type_Bagl), ExtendFriendEditFragment.class);
-        }
-        for (;;)
-        {
-          if ((bagl.a(this.jdField_a_of_type_Bagl) != null) && (bagl.a(this.jdField_a_of_type_Bagl).isShowing())) {
-            bagl.a(this.jdField_a_of_type_Bagl).dismiss();
-          }
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
-            break label284;
-          }
-          bdll.b(bagl.e(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
-          break;
-          Intent localIntent = InterestSwitchEditActivity.a(bagl.h(this.jdField_a_of_type_Bagl));
-          bagl.i(this.jdField_a_of_type_Bagl).startActivityForResult(localIntent, 1022);
-        }
-        label284:
-        bdll.b(bagl.f(this.jdField_a_of_type_Bagl), "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
-      }
+      finally {}
+      this.b += paramInt;
     }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (Math.min(1, 3 - (this.jdField_a_of_type_Int - this.b)) == 1)
+    {
+      int i = this.jdField_a_of_type_Int % 3;
+      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].bindFrame(this.jdField_a_of_type_ArrayOfInt[i], this.c, this.d, 1.0D);
+      GlUtil.checkGlError("bindFrame");
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(paramInt, null, null);
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glFinish();
+      a(true, 1);
+      return true;
+    }
+    return false;
   }
 }
 

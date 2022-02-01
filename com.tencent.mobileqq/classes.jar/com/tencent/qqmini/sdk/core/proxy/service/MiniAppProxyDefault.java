@@ -1,5 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IAppUpdateListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IChoosePhotoListner;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IDrawableLoadedCallBack;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.SenderListener;
@@ -82,6 +84,13 @@ public class MiniAppProxyDefault
   public String getAppName()
   {
     return "sdk";
+  }
+  
+  public void getAppUpdate(Activity paramActivity, MiniAppProxy.IAppUpdateListener paramIAppUpdateListener)
+  {
+    if (paramIAppUpdateListener != null) {
+      paramIAppUpdateListener.onGetAppUpdateResult(false, "更新失败");
+    }
   }
   
   public String getAppVersion()
@@ -250,6 +259,11 @@ public class MiniAppProxyDefault
     HttpServer.sendData(paramArrayOfByte, paramSenderListener);
   }
   
+  public void sendRequestByMsf(byte[] paramArrayOfByte, String paramString, MiniAppProxy.SenderListener paramSenderListener)
+  {
+    HttpServer.sendData(paramArrayOfByte, paramSenderListener);
+  }
+  
   public void setDrawableCallback(Drawable paramDrawable, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack) {}
   
   public boolean startBrowserActivity(Context paramContext, Intent paramIntent)
@@ -259,7 +273,7 @@ public class MiniAppProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault
  * JD-Core Version:    0.7.0.1
  */

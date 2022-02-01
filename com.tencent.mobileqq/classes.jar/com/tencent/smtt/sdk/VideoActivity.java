@@ -15,15 +15,16 @@ public class VideoActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    q.a(this).a(paramInt1, paramInt2, paramIntent);
+    s.a(this).a(paramInt1, paramInt2, paramIntent);
   }
   
   @Override
@@ -45,7 +46,7 @@ public class VideoActivity
       if (paramBundle != null)
       {
         paramBundle.putInt("callMode", 1);
-        q.a(super.getApplicationContext()).a(null, paramBundle, null);
+        s.a(super.getApplicationContext()).a(null, paramBundle, null);
       }
       return;
     }
@@ -54,25 +55,25 @@ public class VideoActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    q.a(this).a(this, 4);
+    s.a(this).a(this, 4);
   }
   
   protected void onPause()
   {
     super.onPause();
-    q.a(this).a(this, 3);
+    s.a(this).a(this, 3);
   }
   
   protected void onResume()
   {
     super.onResume();
-    q.a(this).a(this, 2);
+    s.a(this).a(this, 2);
   }
   
   protected void onStop()
   {
     super.onStop();
-    q.a(this).a(this, 1);
+    s.a(this).a(this, 1);
   }
 }
 

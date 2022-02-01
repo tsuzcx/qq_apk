@@ -1,23 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import org.jetbrains.annotations.NotNull;
 
-public class rqz
-  implements anui
+public abstract interface rqz<R>
 {
-  public rqz(rqy paramrqy) {}
+  public abstract void a(float paramFloat);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
-    rqy.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-    bnrf.a();
-    bnrf.a(rqy.a(this.a));
-    rqy.a(this.a, rqy.a(this.a));
-  }
+  public abstract void a(int paramInt, @NotNull String paramString);
+  
+  public abstract void a(R paramR);
+  
+  public abstract void a(@NotNull String paramString);
 }
 
 

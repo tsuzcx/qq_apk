@@ -1,85 +1,14 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
 
-class bkux
-  extends BroadcastReceiver
+public class bkux
+  implements apkw
 {
-  bkux(bkuw parambkuw) {}
+  public bkux(ReaderHomePageActivity paramReaderHomePageActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ColorNote getColorNote()
   {
-    if ("troop_upload".equals(paramIntent.getAction())) {
-      if (bkuw.a(this.a).getAttachedActivity() == null) {
-        QMLog.e("TroopAlbumPlugin", "Failed to handle troop_upload, activity is null");
-      }
-    }
-    while (!"troop_select".equals(paramIntent.getAction()))
-    {
-      return;
-      paramContext = bkuw.b(this.a).getAttachedActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).edit();
-      localObject = new JSONObject();
-      i = paramIntent.getIntExtra("count", 0);
-      boolean bool = paramIntent.getBooleanExtra("fail", false);
-      for (;;)
-      {
-        try
-        {
-          ((JSONObject)localObject).put("count", i);
-          ((JSONObject)localObject).put("isFail", bool);
-          if (QLog.isColorLevel()) {
-            QLog.w("TroopAlbumPlugin", 2, "troopAlbumReceiver" + i + ",isfail" + bool);
-          }
-          if (!bool) {
-            continue;
-          }
-          paramContext.putBoolean("is_exit_fail_misson", true).apply();
-        }
-        catch (JSONException paramIntent)
-        {
-          paramIntent.printStackTrace();
-          continue;
-        }
-        bkuw.a(this.a, "groupAlbum_onGroupAlbumUpload", ((JSONObject)localObject).toString());
-        if (i != 0) {
-          break;
-        }
-        paramContext.putBoolean("is_exit_fail_misson", false).apply();
-        bkuw.c(this.a).getAttachedActivity().unregisterReceiver(bkuw.a(this.a));
-        bkuw.a(this.a, null);
-        return;
-        paramContext.putBoolean("is_exit_fail_misson", false).apply();
-      }
-    }
-    QLog.w("TroopAlbumPlugin", 2, "troop_select recive");
-    paramContext = paramIntent.getStringExtra("key_selected_albuminfo.id");
-    Object localObject = paramIntent.getStringExtra("key_selected_albuminfo.name");
-    String str = paramIntent.getStringExtra("key_selected_albuminfo.cover");
-    int i = paramIntent.getIntExtra("key_selected_albuminfo.permission", 0);
-    paramIntent = new StringBuilder();
-    paramIntent.append("{albumid:\"").append(paramContext).append("\",albumname:\"").append((String)localObject).append("\",albumcover:\"").append(str).append("\",albumpermission:").append(i).append("}");
-    try
-    {
-      paramContext = new JSONObject(paramIntent.toString());
-      bkuw.a(this.a).ok(paramContext);
-      bkuw.d(this.a).getAttachedActivity().unregisterReceiver(bkuw.a(this.a));
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return new aple().d("https://qzonestyle.gtimg.cn/aoi/sola/20191105163912_ONRjyZUKh8.png").b(this.jdField_a_of_type_JavaLangString).c(this.b).a(16908289).a(this.c + "_PUPUReader").a();
   }
 }
 

@@ -1,761 +1,1327 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.troop.data.VideoUploadTask;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import mqq.app.MobileQQ;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auuz
-  implements bhvc
+  extends WebViewPlugin
 {
-  public static int a;
-  public static String a;
-  public static int b;
-  public static int c;
-  long jdField_a_of_type_Long = 0L;
-  private auuy jdField_a_of_type_Auuy;
-  private bhva jdField_a_of_type_Bhva;
-  private OutputStream jdField_a_of_type_JavaIoOutputStream;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  long jdField_b_of_type_Long = 0L;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private final String jdField_b_of_type_JavaLangString;
-  private final long jdField_c_of_type_Long;
-  private Object jdField_c_of_type_JavaLangObject = new Object();
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int = jdField_b_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private Object jdField_d_of_type_JavaLangObject = new Object();
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private long jdField_e_of_type_Long;
-  private Object jdField_e_of_type_JavaLangObject = new Object();
-  private int f;
+  int jdField_a_of_type_Int;
+  andd jdField_a_of_type_Andd = new auvb(this);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  VideoUploadTask jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask;
+  String jdField_a_of_type_JavaLangString;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  zon jdField_a_of_type_Zon = null;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  zon jdField_b_of_type_Zon;
+  String c;
+  String d;
+  String e;
   
-  static
+  public auuz()
   {
-    jdField_a_of_type_JavaLangString = "UniformDownloaderGenWorker<FileAssistant>";
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
+    this.mPluginNameSpace = "troopApi";
   }
   
-  public auuz(long paramLong1, QQAppInterface paramQQAppInterface, String paramString1, long paramLong2, String paramString2, auuy paramauuy)
+  private Context a()
   {
-    this.jdField_c_of_type_Long = paramLong1;
-    this.jdField_b_of_type_JavaLangString = new atvr(paramQQAppInterface, paramString1).a();
-    this.jdField_a_of_type_Auuy = paramauuy;
-    this.jdField_d_of_type_Long = paramLong2;
-    this.jdField_d_of_type_JavaLangString = paramString2;
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
   }
   
-  private int a()
+  private String a(String paramString)
   {
-    int i = jdField_b_of_type_Int;
-    synchronized (this.jdField_e_of_type_JavaLangObject)
+    String str;
+    if (paramString != null)
     {
-      i = this.jdField_d_of_type_Int;
-      return i;
+      str = paramString;
+      if (!"Unknown".equals(paramString)) {}
     }
-  }
-  
-  private long a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    else
     {
-      long l = this.jdField_e_of_type_Long;
-      return l;
+      str = "";
     }
-  }
-  
-  private auuy a()
-  {
-    synchronized (this.jdField_d_of_type_JavaLangObject)
-    {
-      auuy localauuy = this.jdField_a_of_type_Auuy;
-      return localauuy;
-    }
-  }
-  
-  private bhva a()
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      bhva localbhva = this.jdField_a_of_type_Bhva;
-      return localbhva;
-    }
+    return str;
   }
   
   private void a(int paramInt)
   {
-    synchronized (this.jdField_e_of_type_JavaLangObject)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. setStatus: " + this.jdField_d_of_type_Int + " -> " + paramInt);
-      this.jdField_d_of_type_Int = paramInt;
-      return;
+    a(paramInt, 0);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    if (this.mRuntime.a() != null) {
+      QQToast.a(this.mRuntime.a(), paramInt2, this.mRuntime.a().getString(paramInt1), 0).b(this.mRuntime.a().getResources().getDimensionPixelSize(2131299076));
     }
   }
   
-  private void a(int paramInt, String paramString1, String paramString2)
+  private void a(SosoInterface.SosoLbsInfo paramSosoLbsInfo, String paramString)
   {
-    c();
-    QQAppInterface localQQAppInterface = aure.a().a();
-    if (localQQAppInterface != null)
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", this.jdField_e_of_type_Int, paramString2, null);
-      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", this.jdField_e_of_type_Int, paramString2, null);
-      bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-    }
-    for (;;)
-    {
-      paramString2 = a();
-      if (paramString2 != null) {
-        paramString2.a(paramInt, paramString1, null);
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("lat", paramSosoLbsInfo.mLocation.mLat02);
+        localJSONObject.put("lon", paramSosoLbsInfo.mLocation.mLon02);
+        localJSONObject.put("nation", a(paramSosoLbsInfo.mLocation.nation));
+        localJSONObject.put("province", a(paramSosoLbsInfo.mLocation.province));
+        localJSONObject.put("city", a(paramSosoLbsInfo.mLocation.city));
+        localJSONObject.put("district", a(paramSosoLbsInfo.mLocation.district));
+        callJs(paramString, new String[] { "0", localJSONObject.toString() });
+        return;
       }
-      return;
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 3");
+      catch (Exception paramSosoLbsInfo)
+      {
+        QLog.e(this.TAG, 1, "onLocationFinish Failed!", paramSosoLbsInfo);
+        callJs(paramString, new String[] { "-5", "{}" });
+        return;
+      }
     }
+    callJs(paramString, new String[] { "-4", "{}" });
   }
   
-  private void a(long paramLong)
+  private void a(TroopInfo paramTroopInfo)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    this.jdField_a_of_type_Zon.b(paramTroopInfo.troopuin, this.jdField_b_of_type_Int, this.e);
+  }
+  
+  private void b(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo.cGroupOption != 3)
     {
-      this.jdField_e_of_type_Long = paramLong;
+      Intent localIntent = AddFriendLogicActivity.a(a(), paramTroopInfo.troopuin, paramTroopInfo.getTroopName(), paramTroopInfo.cGroupOption, this.jdField_b_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.c, this.d);
+      this.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
+      startActivityForResult(localIntent, (byte)3);
       return;
     }
+    this.jdField_a_of_type_Int = -1;
+    a(2131719201);
   }
   
-  private void a(auuy paramauuy)
+  void a()
   {
-    synchronized (this.jdField_d_of_type_JavaLangObject)
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
     {
-      this.jdField_a_of_type_Auuy = paramauuy;
-      return;
+      this.jdField_a_of_type_Zon = zon.a();
+      this.jdField_a_of_type_Zon.a();
     }
   }
   
-  private void a(bhva parambhva)
+  public void a(String paramString)
   {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.TAG, 2, "getPois:" + paramString);
+    }
+    if (this.mRuntime.a() == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w(this.TAG, 2, "getWebView()==null, return");
+      }
+    }
+    Activity localActivity;
+    String str;
+    do
     {
-      this.jdField_a_of_type_Bhva = parambhva;
-      return;
-    }
-  }
-  
-  private boolean a()
-  {
-    return jdField_b_of_type_Int == a();
+      for (;;)
+      {
+        return;
+        localActivity = this.mRuntime.a();
+        if ((localActivity == null) || (localActivity.isFinishing()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w(this.TAG, 2, "context==null || isFinishing, return");
+          }
+        }
+        else
+        {
+          str = paramString;
+          if (paramString.charAt(0) == '{') {}
+          try
+          {
+            str = new JSONObject(paramString).getString("callback");
+            if (!TextUtils.isEmpty(str))
+            {
+              if (!(localActivity instanceof AppActivity)) {
+                break label237;
+              }
+              paramString = LbsManagerService.getCachedLbsInfo("webview");
+              if ((paramString == null) || (paramString.mLocation == null) || (paramString.mLocation.poi == null) || (paramString.mLocation.poi.size() <= 0)) {
+                break label209;
+              }
+              a(paramString, str);
+              return;
+            }
+          }
+          catch (JSONException paramString) {}
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w(this.TAG, 2, "getLocation exception:", paramString);
+    return;
+    label209:
+    ((AppActivity)localActivity).requestPermissions(new auvc(this, str), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    return;
+    label237:
+    callJs(str, new String[] { "-4", "{}" });
   }
   
   /* Error */
-  private boolean a(long paramLong)
+  public boolean handleJsRequest(com.tencent.mobileqq.webview.swift.JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: lload_1
-    //   6: invokespecial 174	auuz:a	(J)V
-    //   9: new 81	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 176
-    //   18: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: lload_1
-    //   22: invokevirtual 91	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   25: ldc 178
-    //   27: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore 5
-    //   35: aload_0
-    //   36: getfield 64	auuz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   39: ifnull +237 -> 276
-    //   42: aload_0
-    //   43: getfield 64	auuz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   46: ldc 180
-    //   48: invokevirtual 186	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   51: ifne +225 -> 276
-    //   54: new 81	java/lang/StringBuilder
-    //   57: dup
-    //   58: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   61: aload_0
-    //   62: getfield 64	auuz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   65: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: ldc 188
-    //   70: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: lload_1
-    //   74: invokestatic 192	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   77: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: astore 4
-    //   85: new 194	bhva
-    //   88: dup
-    //   89: aload 4
-    //   91: aconst_null
-    //   92: aload_0
-    //   93: iconst_1
-    //   94: invokespecial 197	bhva:<init>	(Ljava/lang/String;[BLbhvc;Z)V
-    //   97: astore 6
-    //   99: ldc 199
-    //   101: astore 4
-    //   103: invokestatic 205	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   106: invokestatic 210	bhnv:b	(Landroid/content/Context;)I
-    //   109: iconst_1
-    //   110: if_icmpne +7 -> 117
-    //   113: ldc 212
-    //   115: astore 4
-    //   117: aload 6
-    //   119: ldc 214
-    //   121: aload 4
-    //   123: invokevirtual 217	bhva:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   126: aload 6
-    //   128: ldc 219
-    //   130: aload 5
-    //   132: invokevirtual 217	bhva:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: aload 6
-    //   137: iconst_1
-    //   138: invokevirtual 221	bhva:b	(I)V
-    //   141: aload_0
-    //   142: getfield 70	auuz:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   145: invokestatic 226	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   148: ifne +14 -> 162
-    //   151: aload 6
-    //   153: ldc 228
-    //   155: aload_0
-    //   156: getfield 70	auuz:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   159: invokevirtual 217	bhva:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   162: aload 6
-    //   164: iconst_1
-    //   165: invokevirtual 231	bhva:a	(Z)V
-    //   168: aload 6
-    //   170: iconst_5
-    //   171: putfield 232	bhva:jdField_b_of_type_Int	I
-    //   174: aload 6
-    //   176: iconst_0
-    //   177: putfield 233	bhva:jdField_c_of_type_Int	I
-    //   180: aload 6
-    //   182: invokestatic 238	java/lang/System:currentTimeMillis	()J
-    //   185: invokestatic 192	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   188: putfield 239	bhva:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   191: aload 6
-    //   193: ldc 241
-    //   195: ldc 243
-    //   197: invokevirtual 217	bhva:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   200: aload_0
-    //   201: aload 6
-    //   203: invokespecial 245	auuz:a	(Lbhva;)V
-    //   206: invokestatic 115	aure:a	()Laure;
-    //   209: invokevirtual 118	aure:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   212: astore 4
-    //   214: aload 4
-    //   216: ifnonnull +94 -> 310
-    //   219: getstatic 25	auuz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   222: iconst_1
-    //   223: new 81	java/lang/StringBuilder
-    //   226: dup
-    //   227: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   230: ldc 84
-    //   232: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: aload_0
-    //   236: getfield 54	auuz:jdField_c_of_type_Long	J
-    //   239: invokevirtual 91	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   242: ldc 247
-    //   244: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: lload_1
-    //   248: invokevirtual 91	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   251: ldc 249
-    //   253: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: lload_1
-    //   257: aload_0
-    //   258: getfield 68	auuz:jdField_d_of_type_Long	J
-    //   261: ldiv
-    //   262: l2i
-    //   263: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   266: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   269: invokestatic 107	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   272: aload_0
-    //   273: monitorexit
-    //   274: iload_3
-    //   275: ireturn
-    //   276: new 81	java/lang/StringBuilder
-    //   279: dup
-    //   280: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   283: aload_0
-    //   284: getfield 64	auuz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   287: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: ldc 251
-    //   292: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: lload_1
-    //   296: invokestatic 192	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   299: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   302: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   305: astore 4
-    //   307: goto -222 -> 85
-    //   310: aload 4
-    //   312: invokevirtual 255	com/tencent/mobileqq/app/QQAppInterface:getHttpCommunicatort	()Lbhuw;
-    //   315: aload 6
-    //   317: invokevirtual 260	bhuw:a	(Lbhva;)I
-    //   320: pop
-    //   321: getstatic 25	auuz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   324: iconst_1
-    //   325: new 81	java/lang/StringBuilder
-    //   328: dup
-    //   329: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   332: ldc 84
-    //   334: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: aload_0
-    //   338: getfield 54	auuz:jdField_c_of_type_Long	J
-    //   341: invokevirtual 91	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   344: ldc_w 262
-    //   347: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: lload_1
-    //   351: invokevirtual 91	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   354: ldc 249
-    //   356: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: lload_1
-    //   360: aload_0
-    //   361: getfield 68	auuz:jdField_d_of_type_Long	J
-    //   364: ldiv
-    //   365: l2i
-    //   366: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   369: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   372: invokestatic 107	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   375: iconst_1
-    //   376: istore_3
-    //   377: goto -105 -> 272
-    //   380: astore 4
-    //   382: aload_0
-    //   383: monitorexit
-    //   384: aload 4
-    //   386: athrow
+    //   0: ldc 38
+    //   2: aload_3
+    //   3: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6: ifne +5 -> 11
+    //   9: iconst_0
+    //   10: ireturn
+    //   11: ldc_w 330
+    //   14: aload 4
+    //   16: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   19: ifeq +5 -> 24
+    //   22: iconst_1
+    //   23: ireturn
+    //   24: ldc_w 332
+    //   27: aload 4
+    //   29: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   32: ifne -10 -> 22
+    //   35: ldc_w 334
+    //   38: aload 4
+    //   40: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   43: ifeq +136 -> 179
+    //   46: new 122	org/json/JSONObject
+    //   49: dup
+    //   50: aload 5
+    //   52: iconst_0
+    //   53: aaload
+    //   54: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   57: astore_3
+    //   58: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   61: ifeq +30 -> 91
+    //   64: ldc_w 336
+    //   67: iconst_2
+    //   68: new 250	java/lang/StringBuilder
+    //   71: dup
+    //   72: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   75: ldc_w 338
+    //   78: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: aload_3
+    //   82: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   85: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   91: aload_3
+    //   92: ldc_w 343
+    //   95: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   98: astore_1
+    //   99: aload_3
+    //   100: ldc_w 348
+    //   103: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   106: astore_2
+    //   107: aload_3
+    //   108: ldc_w 350
+    //   111: invokevirtual 354	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   114: lstore 8
+    //   116: aload_3
+    //   117: ldc_w 356
+    //   120: invokevirtual 354	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   123: lstore 10
+    //   125: aload_3
+    //   126: ldc_w 281
+    //   129: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   132: astore_3
+    //   133: aload_0
+    //   134: getfield 29	auuz:jdField_a_of_type_Zon	Lzon;
+    //   137: aload_1
+    //   138: aload_2
+    //   139: new 358	auva
+    //   142: dup
+    //   143: aload_0
+    //   144: lload 8
+    //   146: lload 10
+    //   148: aload_3
+    //   149: invokespecial 361	auva:<init>	(Lauuz;JJLjava/lang/String;)V
+    //   152: invokevirtual 364	zon:b	(Ljava/lang/String;Ljava/lang/String;Lzop;)V
+    //   155: goto -133 -> 22
+    //   158: astore_1
+    //   159: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   162: ifeq -140 -> 22
+    //   165: ldc_w 336
+    //   168: iconst_2
+    //   169: ldc_w 366
+    //   172: aload_1
+    //   173: invokestatic 313	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   176: goto -154 -> 22
+    //   179: ldc_w 368
+    //   182: aload 4
+    //   184: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   187: ifeq +382 -> 569
+    //   190: new 122	org/json/JSONObject
+    //   193: dup
+    //   194: aload 5
+    //   196: iconst_0
+    //   197: aaload
+    //   198: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   201: astore_2
+    //   202: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: ifeq +30 -> 235
+    //   208: ldc_w 370
+    //   211: iconst_2
+    //   212: new 250	java/lang/StringBuilder
+    //   215: dup
+    //   216: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   219: ldc_w 372
+    //   222: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: aload_2
+    //   226: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   235: aload_2
+    //   236: ldc_w 343
+    //   239: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   242: astore_1
+    //   243: aload_2
+    //   244: ldc_w 374
+    //   247: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   250: astore_2
+    //   251: invokestatic 379	beda:a	()Lbeda;
+    //   254: aload_1
+    //   255: aload_2
+    //   256: invokevirtual 382	beda:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   259: ifeq -237 -> 22
+    //   262: aload_0
+    //   263: getfield 47	auuz:mRuntime	Lbgve;
+    //   266: invokevirtual 52	bgve:a	()Landroid/app/Activity;
+    //   269: astore_2
+    //   270: aload_0
+    //   271: getfield 47	auuz:mRuntime	Lbgve;
+    //   274: invokevirtual 385	bgve:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   277: astore_1
+    //   278: aload_2
+    //   279: ifnull +155 -> 434
+    //   282: aload_2
+    //   283: instanceof 387
+    //   286: ifeq +148 -> 434
+    //   289: aload_2
+    //   290: checkcast 387	com/tencent/biz/webviewbase/AbsBaseWebViewActivity
+    //   293: astore_1
+    //   294: aload_1
+    //   295: getfield 390	com/tencent/biz/webviewbase/AbsBaseWebViewActivity:rightViewImg	Landroid/widget/ImageView;
+    //   298: iconst_0
+    //   299: invokevirtual 395	android/widget/ImageView:setVisibility	(I)V
+    //   302: aload_0
+    //   303: new 392	android/widget/ImageView
+    //   306: dup
+    //   307: aload_1
+    //   308: invokespecial 398	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   311: putfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   314: aload_1
+    //   315: ldc_w 401
+    //   318: invokevirtual 405	com/tencent/biz/webviewbase/AbsBaseWebViewActivity:findViewById	(I)Landroid/view/View;
+    //   321: checkcast 407	android/widget/RelativeLayout
+    //   324: astore_2
+    //   325: aload_2
+    //   326: ifnull -304 -> 22
+    //   329: new 409	android/widget/RelativeLayout$LayoutParams
+    //   332: dup
+    //   333: bipush 254
+    //   335: bipush 254
+    //   337: invokespecial 411	android/widget/RelativeLayout$LayoutParams:<init>	(II)V
+    //   340: astore_3
+    //   341: aload_3
+    //   342: bipush 7
+    //   344: ldc_w 412
+    //   347: invokevirtual 415	android/widget/RelativeLayout$LayoutParams:addRule	(II)V
+    //   350: aload_3
+    //   351: iconst_0
+    //   352: ldc_w 416
+    //   355: aload_1
+    //   356: invokevirtual 417	com/tencent/biz/webviewbase/AbsBaseWebViewActivity:getResources	()Landroid/content/res/Resources;
+    //   359: invokestatic 423	com/tencent/mobileqq/activity/aio/AIOUtils:dp2px	(FLandroid/content/res/Resources;)I
+    //   362: ldc_w 416
+    //   365: aload_1
+    //   366: invokevirtual 417	com/tencent/biz/webviewbase/AbsBaseWebViewActivity:getResources	()Landroid/content/res/Resources;
+    //   369: invokestatic 423	com/tencent/mobileqq/activity/aio/AIOUtils:dp2px	(FLandroid/content/res/Resources;)I
+    //   372: iconst_0
+    //   373: invokevirtual 427	android/widget/RelativeLayout$LayoutParams:setMargins	(IIII)V
+    //   376: aload_0
+    //   377: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   380: aload_3
+    //   381: invokevirtual 431	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   384: aload_0
+    //   385: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   388: iconst_0
+    //   389: invokevirtual 395	android/widget/ImageView:setVisibility	(I)V
+    //   392: aload_0
+    //   393: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   396: ldc_w 432
+    //   399: invokevirtual 435	android/widget/ImageView:setImageResource	(I)V
+    //   402: aload_2
+    //   403: aload_0
+    //   404: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   407: invokevirtual 439	android/widget/RelativeLayout:addView	(Landroid/view/View;)V
+    //   410: goto -388 -> 22
+    //   413: astore_1
+    //   414: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   417: ifeq -395 -> 22
+    //   420: ldc_w 370
+    //   423: iconst_2
+    //   424: ldc_w 441
+    //   427: aload_1
+    //   428: invokestatic 313	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   431: goto -409 -> 22
+    //   434: aload_1
+    //   435: ifnull -413 -> 22
+    //   438: aload_1
+    //   439: getfield 447	com/tencent/mobileqq/webview/swift/WebViewFragment:mSwiftTitleUI	Lbgtw;
+    //   442: getfield 450	bgtw:rightViewImg	Landroid/widget/ImageView;
+    //   445: iconst_0
+    //   446: invokevirtual 395	android/widget/ImageView:setVisibility	(I)V
+    //   449: aload_0
+    //   450: new 392	android/widget/ImageView
+    //   453: dup
+    //   454: aload_1
+    //   455: invokevirtual 454	com/tencent/mobileqq/webview/swift/WebViewFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
+    //   458: invokespecial 398	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   461: putfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   464: aload_1
+    //   465: getfield 458	com/tencent/mobileqq/webview/swift/WebViewFragment:mUIStyleHandler	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserUIStyleHandler;
+    //   468: getfield 464	com/tencent/mobileqq/webview/swift/component/SwiftBrowserUIStyleHandler:mRootView	Landroid/view/ViewGroup;
+    //   471: ldc_w 401
+    //   474: invokevirtual 467	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
+    //   477: checkcast 407	android/widget/RelativeLayout
+    //   480: astore_2
+    //   481: aload_2
+    //   482: ifnull -460 -> 22
+    //   485: new 409	android/widget/RelativeLayout$LayoutParams
+    //   488: dup
+    //   489: bipush 254
+    //   491: bipush 254
+    //   493: invokespecial 411	android/widget/RelativeLayout$LayoutParams:<init>	(II)V
+    //   496: astore_3
+    //   497: aload_3
+    //   498: bipush 7
+    //   500: ldc_w 412
+    //   503: invokevirtual 415	android/widget/RelativeLayout$LayoutParams:addRule	(II)V
+    //   506: aload_3
+    //   507: iconst_0
+    //   508: ldc_w 416
+    //   511: aload_1
+    //   512: invokevirtual 468	com/tencent/mobileqq/webview/swift/WebViewFragment:getResources	()Landroid/content/res/Resources;
+    //   515: invokestatic 423	com/tencent/mobileqq/activity/aio/AIOUtils:dp2px	(FLandroid/content/res/Resources;)I
+    //   518: ldc_w 416
+    //   521: aload_1
+    //   522: invokevirtual 468	com/tencent/mobileqq/webview/swift/WebViewFragment:getResources	()Landroid/content/res/Resources;
+    //   525: invokestatic 423	com/tencent/mobileqq/activity/aio/AIOUtils:dp2px	(FLandroid/content/res/Resources;)I
+    //   528: iconst_0
+    //   529: invokevirtual 427	android/widget/RelativeLayout$LayoutParams:setMargins	(IIII)V
+    //   532: aload_0
+    //   533: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   536: aload_3
+    //   537: invokevirtual 431	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   540: aload_0
+    //   541: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   544: iconst_0
+    //   545: invokevirtual 395	android/widget/ImageView:setVisibility	(I)V
+    //   548: aload_0
+    //   549: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   552: ldc_w 432
+    //   555: invokevirtual 435	android/widget/ImageView:setImageResource	(I)V
+    //   558: aload_2
+    //   559: aload_0
+    //   560: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   563: invokevirtual 439	android/widget/RelativeLayout:addView	(Landroid/view/View;)V
+    //   566: goto -544 -> 22
+    //   569: ldc_w 470
+    //   572: aload 4
+    //   574: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   577: ifeq +137 -> 714
+    //   580: new 122	org/json/JSONObject
+    //   583: dup
+    //   584: aload 5
+    //   586: iconst_0
+    //   587: aaload
+    //   588: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   591: astore_3
+    //   592: aload_0
+    //   593: aload_3
+    //   594: ldc_w 281
+    //   597: invokevirtual 283	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   600: putfield 472	auuz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   603: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   606: ifeq +30 -> 636
+    //   609: ldc_w 370
+    //   612: iconst_2
+    //   613: new 250	java/lang/StringBuilder
+    //   616: dup
+    //   617: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   620: ldc_w 474
+    //   623: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   626: aload_3
+    //   627: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   630: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   633: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   636: aload_3
+    //   637: ldc_w 343
+    //   640: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   643: astore_1
+    //   644: aload_3
+    //   645: ldc_w 374
+    //   648: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   651: astore_2
+    //   652: aload_3
+    //   653: ldc_w 476
+    //   656: invokevirtual 480	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   659: istore 6
+    //   661: aload_3
+    //   662: ldc_w 482
+    //   665: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   668: astore_3
+    //   669: aload_0
+    //   670: aload_0
+    //   671: getfield 47	auuz:mRuntime	Lbgve;
+    //   674: invokevirtual 52	bgve:a	()Landroid/app/Activity;
+    //   677: iconst_1
+    //   678: aload_1
+    //   679: aload_2
+    //   680: iload 6
+    //   682: aload_3
+    //   683: invokestatic 487	com/tencent/biz/troop/EditUniqueTitleActivity:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;)Landroid/content/Intent;
+    //   686: iconst_4
+    //   687: invokevirtual 231	auuz:startActivityForResult	(Landroid/content/Intent;B)V
+    //   690: goto -668 -> 22
+    //   693: astore_1
+    //   694: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   697: ifeq -675 -> 22
+    //   700: ldc_w 370
+    //   703: iconst_2
+    //   704: ldc_w 489
+    //   707: aload_1
+    //   708: invokestatic 313	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   711: goto -689 -> 22
+    //   714: ldc_w 491
+    //   717: aload 4
+    //   719: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   722: ifeq +122 -> 844
+    //   725: aload_0
+    //   726: invokestatic 239	zon:a	()Lzon;
+    //   729: putfield 493	auuz:jdField_b_of_type_Zon	Lzon;
+    //   732: aload_0
+    //   733: getfield 493	auuz:jdField_b_of_type_Zon	Lzon;
+    //   736: invokevirtual 241	zon:a	()V
+    //   739: new 122	org/json/JSONObject
+    //   742: dup
+    //   743: aload 5
+    //   745: iconst_0
+    //   746: aaload
+    //   747: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   750: astore_1
+    //   751: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   754: ifeq +30 -> 784
+    //   757: ldc_w 370
+    //   760: iconst_2
+    //   761: new 250	java/lang/StringBuilder
+    //   764: dup
+    //   765: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   768: ldc_w 495
+    //   771: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   774: aload_1
+    //   775: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   778: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   781: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   784: aload_1
+    //   785: ldc_w 343
+    //   788: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   791: astore_2
+    //   792: aload_1
+    //   793: ldc_w 374
+    //   796: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   799: astore_3
+    //   800: aload_1
+    //   801: ldc_w 497
+    //   804: invokevirtual 480	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   807: istore 6
+    //   809: aload_0
+    //   810: getfield 493	auuz:jdField_b_of_type_Zon	Lzon;
+    //   813: aload_2
+    //   814: aload_3
+    //   815: iload 6
+    //   817: invokevirtual 500	zon:a	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   820: goto -798 -> 22
+    //   823: astore_1
+    //   824: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   827: ifeq -805 -> 22
+    //   830: ldc_w 370
+    //   833: iconst_2
+    //   834: ldc_w 502
+    //   837: aload_1
+    //   838: invokestatic 313	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   841: goto -819 -> 22
+    //   844: ldc_w 504
+    //   847: aload 4
+    //   849: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   852: ifeq +117 -> 969
+    //   855: new 122	org/json/JSONObject
+    //   858: dup
+    //   859: aload 5
+    //   861: iconst_0
+    //   862: aaload
+    //   863: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   866: astore_2
+    //   867: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   870: ifeq +30 -> 900
+    //   873: ldc_w 370
+    //   876: iconst_2
+    //   877: new 250	java/lang/StringBuilder
+    //   880: dup
+    //   881: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   884: ldc_w 506
+    //   887: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   890: aload_2
+    //   891: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   894: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   897: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   900: aload_2
+    //   901: ldc_w 343
+    //   904: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   907: astore_1
+    //   908: aload_2
+    //   909: ldc_w 374
+    //   912: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   915: astore_2
+    //   916: invokestatic 379	beda:a	()Lbeda;
+    //   919: aload_1
+    //   920: aload_2
+    //   921: invokevirtual 382	beda:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   924: ifeq -902 -> 22
+    //   927: aload_0
+    //   928: getfield 400	auuz:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   931: bipush 8
+    //   933: invokevirtual 395	android/widget/ImageView:setVisibility	(I)V
+    //   936: invokestatic 379	beda:a	()Lbeda;
+    //   939: aload_1
+    //   940: aload_2
+    //   941: iconst_0
+    //   942: invokevirtual 509	beda:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   945: goto -923 -> 22
+    //   948: astore_1
+    //   949: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   952: ifeq -930 -> 22
+    //   955: ldc_w 370
+    //   958: iconst_2
+    //   959: ldc_w 511
+    //   962: aload_1
+    //   963: invokestatic 313	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   966: goto -944 -> 22
+    //   969: ldc_w 513
+    //   972: aload 4
+    //   974: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   977: ifeq +522 -> 1499
+    //   980: new 122	org/json/JSONObject
+    //   983: dup
+    //   984: aload 5
+    //   986: iconst_0
+    //   987: aaload
+    //   988: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   991: astore_2
+    //   992: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   995: ifeq +30 -> 1025
+    //   998: ldc_w 336
+    //   1001: iconst_2
+    //   1002: new 250	java/lang/StringBuilder
+    //   1005: dup
+    //   1006: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1009: ldc_w 515
+    //   1012: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1015: aload_2
+    //   1016: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1019: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1022: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1025: aload_2
+    //   1026: ldc_w 343
+    //   1029: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1032: astore_1
+    //   1033: aload_0
+    //   1034: aload_2
+    //   1035: ldc_w 517
+    //   1038: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1041: invokestatic 522	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   1044: putfield 194	auuz:jdField_b_of_type_Int	I
+    //   1047: aload_2
+    //   1048: ldc_w 524
+    //   1051: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1054: astore 4
+    //   1056: aload_2
+    //   1057: ldc_w 526
+    //   1060: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1063: astore_3
+    //   1064: aload_3
+    //   1065: ifnull +87 -> 1152
+    //   1068: aload 4
+    //   1070: ifnull +82 -> 1152
+    //   1073: aload_3
+    //   1074: invokevirtual 528	java/lang/String:isEmpty	()Z
+    //   1077: ifne +75 -> 1152
+    //   1080: aload 4
+    //   1082: invokevirtual 528	java/lang/String:isEmpty	()Z
+    //   1085: istore 12
+    //   1087: iload 12
+    //   1089: ifne +63 -> 1152
+    //   1092: aload_3
+    //   1093: invokestatic 522	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   1096: istore 7
+    //   1098: aload 4
+    //   1100: invokestatic 522	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   1103: istore 6
+    //   1105: iload 6
+    //   1107: iconst_1
+    //   1108: if_icmpne +196 -> 1304
+    //   1111: iconst_1
+    //   1112: istore 6
+    //   1114: iload 7
+    //   1116: tableswitch	default:+36 -> 1152, 1:+194->1310, 2:+315->1431, 3:+1039->2155, 4:+1060->2176, 5:+1081->2197
+    //   1153: aload_2
+    //   1154: ldc_w 530
+    //   1157: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1160: putfield 218	auuz:c	Ljava/lang/String;
+    //   1163: aload_0
+    //   1164: aload_2
+    //   1165: ldc_w 532
+    //   1168: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1171: putfield 220	auuz:d	Ljava/lang/String;
+    //   1174: aload_0
+    //   1175: aload_2
+    //   1176: ldc_w 534
+    //   1179: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1182: putfield 196	auuz:e	Ljava/lang/String;
+    //   1185: aload_0
+    //   1186: aload_2
+    //   1187: ldc_w 281
+    //   1190: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1193: putfield 536	auuz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1196: aload_0
+    //   1197: getfield 47	auuz:mRuntime	Lbgve;
+    //   1200: invokevirtual 539	bgve:a	()Lcom/tencent/common/app/AppInterface;
+    //   1203: aload_0
+    //   1204: getfield 47	auuz:mRuntime	Lbgve;
+    //   1207: invokevirtual 539	bgve:a	()Lcom/tencent/common/app/AppInterface;
+    //   1210: invokevirtual 544	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   1213: invokevirtual 548	com/tencent/common/app/AppInterface:getEntityManagerFactory	(Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   1216: invokevirtual 554	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1219: astore_2
+    //   1220: aload_2
+    //   1221: ldc 189
+    //   1223: aload_1
+    //   1224: invokevirtual 560	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   1227: checkcast 189	com/tencent/mobileqq/data/troop/TroopInfo
+    //   1230: astore_3
+    //   1231: aload_2
+    //   1232: invokevirtual 563	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   1235: aload_3
+    //   1236: ifnull +249 -> 1485
+    //   1239: aload_0
+    //   1240: ldc_w 564
+    //   1243: invokespecial 103	auuz:a	(I)V
+    //   1246: goto -1224 -> 22
+    //   1249: astore_1
+    //   1250: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1253: ifeq +30 -> 1283
+    //   1256: ldc_w 336
+    //   1259: iconst_2
+    //   1260: new 250	java/lang/StringBuilder
+    //   1263: dup
+    //   1264: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1267: ldc_w 566
+    //   1270: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1273: aload_1
+    //   1274: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1277: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1280: invokestatic 268	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1283: aload_0
+    //   1284: aload_0
+    //   1285: getfield 536	auuz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1288: iconst_1
+    //   1289: anewarray 65	java/lang/String
+    //   1292: dup
+    //   1293: iconst_0
+    //   1294: ldc_w 568
+    //   1297: aastore
+    //   1298: invokevirtual 171	auuz:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   1301: goto -1279 -> 22
+    //   1304: iconst_0
+    //   1305: istore 6
+    //   1307: goto -193 -> 1114
+    //   1310: iload 6
+    //   1312: ifeq +111 -> 1423
+    //   1315: sipush 30003
+    //   1318: istore 6
+    //   1320: aload_0
+    //   1321: iload 6
+    //   1323: putfield 194	auuz:jdField_b_of_type_Int	I
+    //   1326: goto -174 -> 1152
+    //   1329: astore 4
+    //   1331: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1334: ifeq -182 -> 1152
+    //   1337: aload_0
+    //   1338: getfield 174	auuz:TAG	Ljava/lang/String;
+    //   1341: iconst_2
+    //   1342: new 250	java/lang/StringBuilder
+    //   1345: dup
+    //   1346: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1349: ldc_w 570
+    //   1352: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1355: aload_3
+    //   1356: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1359: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1362: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1365: goto -213 -> 1152
+    //   1368: astore_1
+    //   1369: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1372: ifeq +30 -> 1402
+    //   1375: ldc_w 336
+    //   1378: iconst_2
+    //   1379: new 250	java/lang/StringBuilder
+    //   1382: dup
+    //   1383: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1386: ldc_w 572
+    //   1389: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1392: aload_1
+    //   1393: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1396: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1399: invokestatic 268	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1402: aload_0
+    //   1403: aload_0
+    //   1404: getfield 536	auuz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1407: iconst_1
+    //   1408: anewarray 65	java/lang/String
+    //   1411: dup
+    //   1412: iconst_0
+    //   1413: ldc_w 574
+    //   1416: aastore
+    //   1417: invokevirtual 171	auuz:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   1420: goto -1398 -> 22
+    //   1423: sipush 30005
+    //   1426: istore 6
+    //   1428: goto -108 -> 1320
+    //   1431: iload 6
+    //   1433: ifeq +714 -> 2147
+    //   1436: sipush 30003
+    //   1439: istore 6
+    //   1441: aload_0
+    //   1442: iload 6
+    //   1444: putfield 194	auuz:jdField_b_of_type_Int	I
+    //   1447: goto -295 -> 1152
+    //   1450: aload_0
+    //   1451: iload 6
+    //   1453: putfield 194	auuz:jdField_b_of_type_Int	I
+    //   1456: goto -304 -> 1152
+    //   1459: aload_0
+    //   1460: iload 6
+    //   1462: putfield 194	auuz:jdField_b_of_type_Int	I
+    //   1465: goto -313 -> 1152
+    //   1468: aload_0
+    //   1469: iload 6
+    //   1471: putfield 194	auuz:jdField_b_of_type_Int	I
+    //   1474: goto -322 -> 1152
+    //   1477: sipush 30019
+    //   1480: istore 6
+    //   1482: goto -14 -> 1468
+    //   1485: aload_0
+    //   1486: getfield 29	auuz:jdField_a_of_type_Zon	Lzon;
+    //   1489: aload_1
+    //   1490: ldc_w 575
+    //   1493: invokevirtual 578	zon:a	(Ljava/lang/String;I)V
+    //   1496: goto -1474 -> 22
+    //   1499: ldc_w 580
+    //   1502: aload 4
+    //   1504: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1507: ifeq +158 -> 1665
+    //   1510: aload 5
+    //   1512: iconst_0
+    //   1513: aaload
+    //   1514: astore_1
+    //   1515: ldc_w 582
+    //   1518: iconst_1
+    //   1519: new 250	java/lang/StringBuilder
+    //   1522: dup
+    //   1523: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1526: ldc_w 584
+    //   1529: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1532: aload_1
+    //   1533: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1536: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1539: invokestatic 587	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1542: new 122	org/json/JSONObject
+    //   1545: dup
+    //   1546: aload_1
+    //   1547: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1550: astore_1
+    //   1551: aload_1
+    //   1552: ldc_w 589
+    //   1555: invokevirtual 480	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   1558: istore 6
+    //   1560: aload_1
+    //   1561: ldc_w 591
+    //   1564: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1567: pop
+    //   1568: aload_1
+    //   1569: ldc_w 343
+    //   1572: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1575: astore_1
+    //   1576: iload 6
+    //   1578: ifne -1556 -> 22
+    //   1581: aload_0
+    //   1582: getfield 47	auuz:mRuntime	Lbgve;
+    //   1585: invokevirtual 52	bgve:a	()Landroid/app/Activity;
+    //   1588: checkcast 593	com/tencent/mobileqq/app/BaseActivity
+    //   1591: astore_2
+    //   1592: aload_2
+    //   1593: ifnonnull +5 -> 1598
+    //   1596: iconst_0
+    //   1597: ireturn
+    //   1598: new 595	android/content/Intent
+    //   1601: dup
+    //   1602: invokespecial 596	android/content/Intent:<init>	()V
+    //   1605: astore_3
+    //   1606: aload_3
+    //   1607: ldc_w 597
+    //   1610: invokevirtual 601	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   1613: pop
+    //   1614: aload_3
+    //   1615: ldc_w 603
+    //   1618: iconst_2
+    //   1619: invokevirtual 607	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   1622: pop
+    //   1623: aload_3
+    //   1624: ldc_w 609
+    //   1627: aload_1
+    //   1628: invokevirtual 612	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   1631: pop
+    //   1632: aload_2
+    //   1633: aload_3
+    //   1634: ldc_w 614
+    //   1637: ldc_w 616
+    //   1640: invokestatic 621	adxr:a	(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/Class;Ljava/lang/Class;)V
+    //   1643: aload_2
+    //   1644: iconst_0
+    //   1645: iconst_0
+    //   1646: invokevirtual 624	com/tencent/mobileqq/app/BaseActivity:overridePendingTransition	(II)V
+    //   1649: goto -1627 -> 22
+    //   1652: astore_1
+    //   1653: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1656: ifeq +7 -> 1663
+    //   1659: aload_1
+    //   1660: invokevirtual 627	java/lang/Exception:printStackTrace	()V
+    //   1663: iconst_0
+    //   1664: ireturn
+    //   1665: ldc_w 629
+    //   1668: aload 4
+    //   1670: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1673: ifeq +146 -> 1819
+    //   1676: aload 5
+    //   1678: ifnull -1656 -> 22
+    //   1681: aload 5
+    //   1683: arraylength
+    //   1684: ifle -1662 -> 22
+    //   1687: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1690: ifeq +33 -> 1723
+    //   1693: ldc_w 336
+    //   1696: iconst_2
+    //   1697: new 250	java/lang/StringBuilder
+    //   1700: dup
+    //   1701: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1704: ldc_w 631
+    //   1707: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1710: aload 5
+    //   1712: iconst_0
+    //   1713: aaload
+    //   1714: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1717: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1720: invokestatic 268	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1723: new 122	org/json/JSONObject
+    //   1726: dup
+    //   1727: aload 5
+    //   1729: iconst_0
+    //   1730: aaload
+    //   1731: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1734: astore_1
+    //   1735: aload_1
+    //   1736: ldc_w 343
+    //   1739: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1742: aload_1
+    //   1743: ldc_w 633
+    //   1746: invokevirtual 480	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   1749: invokestatic 638	com/tencent/mobileqq/activity/TroopInfoActivity:a	(Ljava/lang/String;I)Landroid/os/Bundle;
+    //   1752: astore_2
+    //   1753: aload_2
+    //   1754: ldc_w 532
+    //   1757: aload_1
+    //   1758: ldc_w 532
+    //   1761: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1764: invokevirtual 644	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1767: aload_0
+    //   1768: getfield 47	auuz:mRuntime	Lbgve;
+    //   1771: invokevirtual 52	bgve:a	()Landroid/app/Activity;
+    //   1774: aload_2
+    //   1775: iconst_2
+    //   1776: invokestatic 650	com/tencent/mobileqq/troop/utils/TroopUtils:openTroopInfoActivity	(Landroid/content/Context;Landroid/os/Bundle;I)V
+    //   1779: goto -1757 -> 22
+    //   1782: astore_1
+    //   1783: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1786: ifeq -1764 -> 22
+    //   1789: ldc_w 336
+    //   1792: iconst_2
+    //   1793: new 250	java/lang/StringBuilder
+    //   1796: dup
+    //   1797: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   1800: ldc_w 652
+    //   1803: invokevirtual 257	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1806: aload_1
+    //   1807: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1810: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1813: invokestatic 268	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1816: goto -1794 -> 22
+    //   1819: ldc_w 654
+    //   1822: aload 4
+    //   1824: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1827: ifeq +124 -> 1951
+    //   1830: new 122	org/json/JSONObject
+    //   1833: dup
+    //   1834: aload 5
+    //   1836: iconst_0
+    //   1837: aaload
+    //   1838: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1841: astore_1
+    //   1842: aload_1
+    //   1843: ldc_w 656
+    //   1846: invokevirtual 659	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   1849: istore 6
+    //   1851: aload_1
+    //   1852: ldc_w 661
+    //   1855: invokevirtual 283	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1858: astore_1
+    //   1859: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1862: ifeq +32 -> 1894
+    //   1865: ldc_w 663
+    //   1868: iconst_2
+    //   1869: ldc_w 665
+    //   1872: iconst_2
+    //   1873: anewarray 667	java/lang/Object
+    //   1876: dup
+    //   1877: iconst_0
+    //   1878: aload_1
+    //   1879: aastore
+    //   1880: dup
+    //   1881: iconst_1
+    //   1882: iload 6
+    //   1884: invokestatic 671	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1887: aastore
+    //   1888: invokestatic 675	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1891: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1894: aload_1
+    //   1895: invokestatic 289	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1898: ifne -1876 -> 22
+    //   1901: aload_0
+    //   1902: getfield 29	auuz:jdField_a_of_type_Zon	Lzon;
+    //   1905: astore_2
+    //   1906: iload 6
+    //   1908: iconst_1
+    //   1909: if_icmpne +36 -> 1945
+    //   1912: iconst_1
+    //   1913: istore 12
+    //   1915: aload_2
+    //   1916: aload_1
+    //   1917: iload 12
+    //   1919: invokevirtual 678	zon:d	(Ljava/lang/String;Z)V
+    //   1922: goto -1900 -> 22
+    //   1925: astore_1
+    //   1926: aload_1
+    //   1927: invokevirtual 627	java/lang/Exception:printStackTrace	()V
+    //   1930: aload_0
+    //   1931: getfield 174	auuz:TAG	Ljava/lang/String;
+    //   1934: iconst_1
+    //   1935: ldc_w 680
+    //   1938: aload_1
+    //   1939: invokestatic 682	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1942: goto -1920 -> 22
+    //   1945: iconst_0
+    //   1946: istore 12
+    //   1948: goto -33 -> 1915
+    //   1951: ldc_w 684
+    //   1954: aload 4
+    //   1956: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1959: ifeq +166 -> 2125
+    //   1962: aload 5
+    //   1964: ifnull -1942 -> 22
+    //   1967: aload 5
+    //   1969: arraylength
+    //   1970: ifle -1948 -> 22
+    //   1973: aload_0
+    //   1974: getfield 47	auuz:mRuntime	Lbgve;
+    //   1977: invokevirtual 52	bgve:a	()Landroid/app/Activity;
+    //   1980: astore_1
+    //   1981: new 595	android/content/Intent
+    //   1984: dup
+    //   1985: invokespecial 596	android/content/Intent:<init>	()V
+    //   1988: astore_2
+    //   1989: new 122	org/json/JSONObject
+    //   1992: dup
+    //   1993: aload 5
+    //   1995: iconst_0
+    //   1996: aaload
+    //   1997: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   2000: astore_3
+    //   2001: aload_3
+    //   2002: ldc_w 281
+    //   2005: invokevirtual 346	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2008: astore 4
+    //   2010: aload_3
+    //   2011: invokevirtual 687	org/json/JSONObject:length	()I
+    //   2014: ifle +88 -> 2102
+    //   2017: aload_0
+    //   2018: aload 4
+    //   2020: iconst_1
+    //   2021: anewarray 65	java/lang/String
+    //   2024: dup
+    //   2025: iconst_0
+    //   2026: aload_1
+    //   2027: ldc_w 688
+    //   2030: invokevirtual 81	android/app/Activity:getString	(I)Ljava/lang/String;
+    //   2033: aastore
+    //   2034: invokevirtual 171	auuz:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   2037: aload_2
+    //   2038: ldc_w 690
+    //   2041: aload_3
+    //   2042: ldc_w 692
+    //   2045: invokevirtual 283	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2048: invokevirtual 612	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   2051: pop
+    //   2052: aload_2
+    //   2053: ldc_w 661
+    //   2056: aload_3
+    //   2057: ldc_w 661
+    //   2060: invokevirtual 283	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2063: invokevirtual 612	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   2066: pop
+    //   2067: aload_1
+    //   2068: iconst_m1
+    //   2069: aload_2
+    //   2070: invokevirtual 696	android/app/Activity:setResult	(ILandroid/content/Intent;)V
+    //   2073: aload_1
+    //   2074: invokevirtual 699	android/app/Activity:finish	()V
+    //   2077: goto -2055 -> 22
+    //   2080: astore_1
+    //   2081: invokestatic 702	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   2084: ifeq -2062 -> 22
+    //   2087: aload_0
+    //   2088: getfield 174	auuz:TAG	Ljava/lang/String;
+    //   2091: iconst_4
+    //   2092: ldc_w 704
+    //   2095: aload_1
+    //   2096: invokestatic 181	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2099: goto -2077 -> 22
+    //   2102: aload_0
+    //   2103: aload 4
+    //   2105: iconst_1
+    //   2106: anewarray 65	java/lang/String
+    //   2109: dup
+    //   2110: iconst_0
+    //   2111: aload_1
+    //   2112: ldc_w 705
+    //   2115: invokevirtual 81	android/app/Activity:getString	(I)Ljava/lang/String;
+    //   2118: aastore
+    //   2119: invokevirtual 171	auuz:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   2122: goto -85 -> 2037
+    //   2125: ldc_w 707
+    //   2128: aload 4
+    //   2130: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2133: ifeq -2111 -> 22
+    //   2136: aload_0
+    //   2137: aload 5
+    //   2139: iconst_0
+    //   2140: aaload
+    //   2141: invokevirtual 709	auuz:a	(Ljava/lang/String;)V
+    //   2144: goto -2122 -> 22
+    //   2147: sipush 30007
+    //   2150: istore 6
+    //   2152: goto -711 -> 1441
+    //   2155: iload 6
+    //   2157: ifeq +11 -> 2168
+    //   2160: sipush 30009
+    //   2163: istore 6
+    //   2165: goto -715 -> 1450
+    //   2168: sipush 30011
+    //   2171: istore 6
+    //   2173: goto -723 -> 1450
+    //   2176: iload 6
+    //   2178: ifeq +11 -> 2189
+    //   2181: sipush 30013
+    //   2184: istore 6
+    //   2186: goto -727 -> 1459
+    //   2189: sipush 30015
+    //   2192: istore 6
+    //   2194: goto -735 -> 1459
+    //   2197: iload 6
+    //   2199: ifeq -722 -> 1477
+    //   2202: sipush 30017
+    //   2205: istore 6
+    //   2207: goto -739 -> 1468
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	387	0	this	auuz
-    //   0	387	1	paramLong	long
-    //   1	376	3	bool	boolean
-    //   83	228	4	localObject1	Object
-    //   380	5	4	localObject2	Object
-    //   33	98	5	str	String
-    //   97	219	6	localbhva	bhva
+    //   0	2210	0	this	auuz
+    //   0	2210	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
+    //   0	2210	2	paramString1	String
+    //   0	2210	3	paramString2	String
+    //   0	2210	4	paramString3	String
+    //   0	2210	5	paramVarArgs	String[]
+    //   659	1547	6	i	int
+    //   1096	19	7	j	int
+    //   114	31	8	l1	long
+    //   123	24	10	l2	long
+    //   1085	862	12	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   4	85	380	finally
-    //   85	99	380	finally
-    //   103	113	380	finally
-    //   117	162	380	finally
-    //   162	214	380	finally
-    //   219	272	380	finally
-    //   276	307	380	finally
-    //   310	375	380	finally
+    //   46	91	158	java/lang/Exception
+    //   91	155	158	java/lang/Exception
+    //   190	235	413	java/lang/Exception
+    //   235	278	413	java/lang/Exception
+    //   282	325	413	java/lang/Exception
+    //   329	410	413	java/lang/Exception
+    //   438	481	413	java/lang/Exception
+    //   485	566	413	java/lang/Exception
+    //   580	636	693	java/lang/Exception
+    //   636	690	693	java/lang/Exception
+    //   725	784	823	java/lang/Exception
+    //   784	820	823	java/lang/Exception
+    //   855	900	948	java/lang/Exception
+    //   900	945	948	java/lang/Exception
+    //   980	1025	1249	org/json/JSONException
+    //   1025	1064	1249	org/json/JSONException
+    //   1073	1087	1249	org/json/JSONException
+    //   1092	1105	1249	org/json/JSONException
+    //   1152	1235	1249	org/json/JSONException
+    //   1239	1246	1249	org/json/JSONException
+    //   1320	1326	1249	org/json/JSONException
+    //   1331	1365	1249	org/json/JSONException
+    //   1441	1447	1249	org/json/JSONException
+    //   1450	1456	1249	org/json/JSONException
+    //   1459	1465	1249	org/json/JSONException
+    //   1468	1474	1249	org/json/JSONException
+    //   1485	1496	1249	org/json/JSONException
+    //   1092	1105	1329	java/lang/NumberFormatException
+    //   1320	1326	1329	java/lang/NumberFormatException
+    //   1441	1447	1329	java/lang/NumberFormatException
+    //   1450	1456	1329	java/lang/NumberFormatException
+    //   1459	1465	1329	java/lang/NumberFormatException
+    //   1468	1474	1329	java/lang/NumberFormatException
+    //   980	1025	1368	java/lang/Exception
+    //   1025	1064	1368	java/lang/Exception
+    //   1073	1087	1368	java/lang/Exception
+    //   1092	1105	1368	java/lang/Exception
+    //   1152	1235	1368	java/lang/Exception
+    //   1239	1246	1368	java/lang/Exception
+    //   1320	1326	1368	java/lang/Exception
+    //   1331	1365	1368	java/lang/Exception
+    //   1441	1447	1368	java/lang/Exception
+    //   1450	1456	1368	java/lang/Exception
+    //   1459	1465	1368	java/lang/Exception
+    //   1468	1474	1368	java/lang/Exception
+    //   1485	1496	1368	java/lang/Exception
+    //   1515	1576	1652	java/lang/Exception
+    //   1581	1592	1652	java/lang/Exception
+    //   1598	1649	1652	java/lang/Exception
+    //   1681	1723	1782	org/json/JSONException
+    //   1723	1779	1782	org/json/JSONException
+    //   1830	1894	1925	java/lang/Exception
+    //   1894	1906	1925	java/lang/Exception
+    //   1915	1922	1925	java/lang/Exception
+    //   1967	2037	2080	java/lang/Exception
+    //   2037	2077	2080	java/lang/Exception
+    //   2102	2122	2080	java/lang/Exception
   }
   
-  private boolean a(bhva parambhva1, bhva parambhva2)
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    if (parambhva1 == null) {
-      return false;
-    }
-    if (parambhva2 == null) {
-      return true;
-    }
-    return parambhva2.c();
-  }
-  
-  private boolean a(byte[] paramArrayOfByte)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 4)
     {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoOutputStream == null)
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. writeFileStream: stream = null:");
-          return false;
-        }
-        this.jdField_a_of_type_JavaIoOutputStream.write(paramArrayOfByte);
-        return true;
+      if (paramInt != -1) {
+        break label93;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return false;
+      if (paramIntent != null) {
+        break label74;
       }
+      paramIntent = "";
     }
-  }
-  
-  private boolean b()
-  {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        OutputStream localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
-        if (localOutputStream == null) {
-          try
-          {
-            this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_c_of_type_JavaLangString, true);
-            QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. openFileStream: filepath:" + this.jdField_c_of_type_JavaLangString);
-            return true;
-          }
-          catch (FileNotFoundException localFileNotFoundException)
-          {
-            QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. openFileStream: exception");
-            localFileNotFoundException.printStackTrace();
-            return false;
-          }
-        }
-      }
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. openFileStream: had be opened");
-    }
-  }
-  
-  private void c()
-  {
-    try
-    {
-      a(jdField_b_of_type_Int);
-      d();
-      c();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private boolean c()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
+      JSONObject localJSONObject = new JSONObject();
       try
       {
-        if (this.jdField_a_of_type_JavaIoOutputStream != null)
-        {
-          this.jdField_a_of_type_JavaIoOutputStream.close();
-          this.jdField_a_of_type_JavaIoOutputStream = null;
-          QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. closeFileStream: filepath:" + this.jdField_c_of_type_JavaLangString);
-        }
+        localJSONObject.put("code", 0);
+        localJSONObject.put("uniqueTitle", paramIntent);
+        callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+        label74:
+        paramIntent = paramIntent.getStringExtra("newUniqueTitle");
+      }
+      catch (JSONException paramIntent)
+      {
         for (;;)
         {
-          return true;
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. closeFileStream.had closed: stream = null:");
+          paramIntent.printStackTrace();
         }
-        localObject2 = finally;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. closeFileStream: exception");
-        localIOException.printStackTrace();
-        return false;
       }
     }
+    label93:
+    callJs(this.jdField_b_of_type_JavaLangString, new String[] { "{\"code\":-1}" });
   }
   
-  private void d()
+  public void onCreate()
   {
-    bhva localbhva = a();
-    if (localbhva != null)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. stopHttpRequest");
-      a(null);
-      QQAppInterface localQQAppInterface = aure.a().a();
-      if (localQQAppInterface == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. stopHttpRequest failed.APP=null");
-        return;
-      }
-      localQQAppInterface.getHttpCommunicatort().b(localbhva);
-      return;
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. stopHttpRequest: no request");
-  }
-  
-  public void a()
-  {
-    c();
-    a(null);
-  }
-  
-  public void a(bhva parambhva1, bhva parambhva2)
-  {
-    if (a()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. decode. but had stoped");
-    }
-    int i;
+    AppInterface localAppInterface = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.a();
+    if ((localAppInterface == null) || (localActivity == null)) {}
     do
     {
-      long l1;
-      do
-      {
-        for (;;)
-        {
-          return;
-          try
-          {
-            if ((parambhva2.c() == 206) || (parambhva2.c() == 200)) {
-              if (!a(parambhva2.a()))
-              {
-                i = 3;
-                parambhva1 = auuk.a(3);
-                l1 = 0L;
-                if (bhjr.a()) {
-                  l1 = bhjr.a() * 1024L;
-                }
-                if (l1 < this.jdField_d_of_type_Long - a())
-                {
-                  QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] write file failed. sd card space is no enough:[" + this.jdField_d_of_type_Long + " " + a() + " " + l1 + "]");
-                  i = 9;
-                  parambhva1 = auuk.a(9);
-                }
-                a(i, parambhva1, parambhva1);
-                return;
-              }
-            }
-          }
-          catch (Exception parambhva1)
-          {
-            parambhva1.printStackTrace();
-            parambhva1 = auuk.a(12);
-            a(12, parambhva1, parambhva1);
-            return;
-          }
-        }
-        l1 = a() + parambhva2.a().length;
-        long l2 = parambhva2.a();
-        if (this.jdField_d_of_type_Long != l2) {
-          this.jdField_d_of_type_Long = l2;
-        }
-        a(l1);
-        this.jdField_b_of_type_Long += parambhva2.a().length;
-        if (l1 < this.jdField_d_of_type_Long) {
-          break;
-        }
-        if (!c())
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].closeFileStream falied.path=" + this.jdField_c_of_type_JavaLangString);
-          parambhva1 = auuk.a(4);
-          a(4, parambhva1, parambhva1);
-          return;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].decode >>>>>>>. SUCESSFUL!!!");
-        parambhva1 = a();
-      } while (parambhva1 == null);
-      parambhva2 = new Bundle();
-      parambhva2.putLong("EXT_TRANS_SIZE ", this.jdField_e_of_type_Long);
-      parambhva2.putLong("EXT_TTRANS_SIZE ", this.jdField_b_of_type_Long);
-      parambhva2.putInt("EXT_AUTOTRY_COUNT", this.jdField_e_of_type_Int);
-      parambhva1.a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long, parambhva2);
       return;
-      i = (int)((float)l1 / (float)this.jdField_d_of_type_Long * 100.0F);
-      parambhva1 = a();
-    } while (parambhva1 == null);
-    parambhva1.a(i, null);
+      a();
+    } while (this.jdField_a_of_type_Zon == null);
+    this.jdField_a_of_type_Zon.a(this.jdField_a_of_type_Andd);
   }
   
-  public void a(String paramString) {}
-  
-  public boolean a(bhva parambhva1, bhva parambhva2, int paramInt)
+  public void onDestroy()
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. HttpCommunicator statusChanged. status:" + paramInt);
-    if ((5 == paramInt) && (a() < this.jdField_d_of_type_Long))
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      c();
-      parambhva1 = auuk.a(14);
-      QQAppInterface localQQAppInterface = aure.a().a();
-      if (localQQAppInterface == null) {
-        break label226;
-      }
-      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 14, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, parambhva2.b(), parambhva2.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, parambhva1, null);
-      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 14, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, parambhva2.b(), parambhva2.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, parambhva1, null);
-      bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+      this.jdField_a_of_type_Zon.b(this.jdField_a_of_type_Andd);
+      this.jdField_a_of_type_Zon.b();
     }
-    for (;;)
-    {
-      parambhva1 = a();
-      if (parambhva1 != null) {
-        parambhva1.a(14, "downloader fialed", null);
-      }
-      return true;
-      label226:
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 2");
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask.a())) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask.a();
     }
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    if (paramString == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. start failed. filepath = null. POS:" + paramLong);
-      return false;
-    }
-    if (jdField_a_of_type_Int == a())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. start. is runing. POS:" + paramLong);
-      return true;
-    }
-    this.jdField_c_of_type_JavaLangString = paramString;
-    if (!b())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. start failed. openFileStream failed. POS:" + paramLong);
-      paramString = auuk.a(8);
-      a(8, paramString, paramString);
-      return false;
-    }
-    if (!a(paramLong))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. start download failed. POS:" + paramLong);
-      paramString = auuk.a(6);
-      a(6, paramString, paramString);
-      return false;
-    }
-    a(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. start to run download . POS:" + paramLong);
-    return true;
-  }
-  
-  public void b()
-  {
-    a(jdField_c_of_type_Int);
-  }
-  
-  public void b(bhva parambhva1, bhva parambhva2)
-  {
-    if (a())
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. handleError..user puase");
-      return;
-    }
-    if (parambhva2 == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. handleError.. response=NULL:");
-      c();
-      parambhva1 = auuk.a(5);
-      parambhva2 = aure.a().a();
-      if (parambhva2 != null)
-      {
-        aunj.a(parambhva2, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 5, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, parambhva1, null);
-        aunj.a(parambhva2, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 5, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, parambhva1, null);
-        bdmb.a(parambhva2.getApplication().getApplicationContext(), parambhva2.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-      }
-      for (;;)
-      {
-        parambhva2 = a();
-        if (parambhva2 == null) {
-          break;
-        }
-        parambhva2.a(5, parambhva1, null);
-        return;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 111");
-      }
-    }
-    Object localObject2 = parambhva2.d();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "null";
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. handleError.. errString:" + (String)localObject1);
-    if (jdField_c_of_type_Int == a())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. handleError.. slience pause. may app destroy!!");
-      c();
-      return;
-    }
-    if (!bhnv.d(BaseApplication.getContext()))
-    {
-      c();
-      parambhva1 = auuk.a(2);
-      parambhva2 = aure.a().a();
-      if (parambhva2 != null)
-      {
-        aunj.a(parambhva2, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 2, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, parambhva1, null);
-        aunj.a(parambhva2, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 2, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, parambhva1, null);
-        bdmb.a(parambhva2.getApplication().getApplicationContext(), parambhva2.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-      }
-      for (;;)
-      {
-        parambhva2 = a();
-        if (parambhva2 == null) {
-          break;
-        }
-        parambhva2.a(2, parambhva1, null);
-        return;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 11");
-      }
-    }
-    long l = parambhva2.f;
-    int i = parambhva2.a();
-    localObject1 = parambhva2.d();
-    if ((a(parambhva1, parambhva2)) && (this.jdField_e_of_type_Int < 3))
-    {
-      this.jdField_e_of_type_Int += 1;
-      if ((this.f < 3) && (parambhva2.f == 9056))
-      {
-        this.f += 1;
-        this.jdField_e_of_type_Int -= 1;
-        label655:
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. handleError. auto retry to download. autoRetry=" + this.jdField_e_of_type_Int + " eofRetry=" + this.f);
-        d();
-        if (a(a())) {
-          break label995;
-        }
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. auto retry dowload failed.");
-        localObject1 = auuk.a((int)13L);
-        l = 13L;
-      }
-    }
-    for (parambhva1 = (bhva)localObject1;; parambhva1 = String.valueOf(i))
-    {
-      this.jdField_e_of_type_Int = 0;
-      this.f = 0;
-      c();
-      localObject2 = aure.a().a();
-      if (localObject2 != null)
-      {
-        if (13L == l) {
-          break label1179;
-        }
-        l = 11L;
-        localObject1 = auuk.a((int)11L);
-        parambhva1 = (bhva)localObject1;
-      }
-      label1179:
-      for (;;)
-      {
-        aunj.a((QQAppInterface)localObject2, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", l, parambhva1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, parambhva2.b(), parambhva2.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, (String)localObject1, null);
-        aunj.a((QQAppInterface)localObject2, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", parambhva2.f, String.valueOf(parambhva2.a()), this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, parambhva2.b(), parambhva2.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, parambhva2.d(), null);
-        bdmb.a(((QQAppInterface)localObject2).getApplication().getApplicationContext(), ((QQAppInterface)localObject2).getCurrentAccountUin(), "Stop_download_2-0_3-1");
-        for (;;)
-        {
-          parambhva1 = a();
-          if (parambhva1 == null) {
-            break;
-          }
-          parambhva1.a(6, "downloader fialed", null);
-          return;
-          this.f = 0;
-          break label655;
-          label995:
-          QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. auto retry dowload started.");
-          parambhva1 = aure.a().a();
-          if (parambhva1 != null)
-          {
-            aunj.a(parambhva1, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", parambhva2.f, String.valueOf(parambhva2.a()), this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, parambhva2.b(), parambhva2.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Int, parambhva2.d(), null);
-            return;
-          }
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 1");
-          return;
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 2");
-        }
-      }
+    if (this.jdField_b_of_type_Zon != null) {
+      this.jdField_b_of_type_Zon.b();
     }
   }
 }

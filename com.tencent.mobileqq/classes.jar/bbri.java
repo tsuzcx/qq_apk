@@ -1,31 +1,6 @@
-import android.text.TextUtils;
-import android.view.View;
-
-class bbri
-  implements bliz
+public abstract interface bbri
 {
-  bbri(bbrb parambbrb, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    paramView = this.jdField_a_of_type_Blir.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    this.jdField_a_of_type_Blir.dismiss();
-  }
+  public abstract void onConfigResult(int paramInt1, int paramInt2);
 }
 
 

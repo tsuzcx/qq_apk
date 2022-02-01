@@ -1,32 +1,45 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import android.content.Context;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
 
 public class aomi
-  extends ResourcePluginListener
 {
-  private aomi(GetConfig paramGetConfig) {}
-  
-  public void a(byte paramByte)
+  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
   {
-    if (this.a.b == 44)
+    int i = 0;
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString2);
+    GLES20.glCompileShader(paramInt);
+    paramContext = new int[1];
+    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
+    if (paramContext[0] == 0)
     {
-      if ((paramByte != 2) && (paramByte == 3)) {}
-      this.a.a.app.c(GetConfig.a(this.a));
-      this.a.a(7);
+      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
+      GLES20.glDeleteShader(paramInt);
+      paramInt = i;
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {}
+      return paramInt;
     }
   }
   
-  public void b(byte paramByte)
+  public static void a(String paramString1, String paramString2)
   {
-    if ((paramByte != 2) && (paramByte == 3)) {}
-    this.a.a.app.d(this);
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomi
  * JD-Core Version:    0.7.0.1
  */

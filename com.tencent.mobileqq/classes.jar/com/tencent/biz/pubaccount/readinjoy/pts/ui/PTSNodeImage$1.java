@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.readinjoy.pts.ui;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import pql;
+import pwf;
 
 class PTSNodeImage$1
-  implements pql
+  implements pwf
 {
   PTSNodeImage$1(PTSNodeImage paramPTSNodeImage) {}
   

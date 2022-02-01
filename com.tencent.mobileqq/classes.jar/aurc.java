@@ -1,54 +1,181 @@
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class aurc
-  extends atvf
+  implements bded
 {
-  atpa jdField_a_of_type_Atpa = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString = "DiscOfflinePreviewController<FileAssistant>";
-  String b;
-  String c;
+  private QQAppInterface a;
   
-  public aurc(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public aurc(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = paramString1;
-    this.c = paramString2;
-    b();
+    this.a = paramQQAppInterface;
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    bdct localbdct = (bdct)this.a.getManager(339);
+    if (paramInt == 4) {
+      bcef.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_join_suc", 0, 1, paramString, "", "", "");
+    }
+    do
+    {
+      return;
+      if (paramInt == 9)
+      {
+        bcef.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark_suc", 0, 1, paramString, "", "", "");
+        return;
+      }
+      if (paramInt == 1)
+      {
+        localbdct.a("sing_tab", "clk_join_suc", 0, paramString);
+        return;
+      }
+    } while (paramInt != 8);
+    localbdct.a("sing_tab", "clk_setsing_suc", 0, paramString);
+  }
+  
+  private boolean a(boolean paramBoolean, Bundle paramBundle, String paramString, Context paramContext, int paramInt)
+  {
+    if ((!paramBoolean) || (paramInt <= 0)) {
+      return true;
+    }
+    paramString = ((auqv)this.a.getManager(348)).a(Long.parseLong(paramString), paramInt, true);
+    if (TextUtils.isEmpty(paramString))
+    {
+      Toast.makeText(paramContext, "加载中，请稍后再试。", 1).show();
+      return false;
+    }
+    paramBundle.putString("TOGETHER_BUNDLE_KEY_C2C_FRIEND_OPENID", paramString);
+    return true;
   }
   
   public int a()
   {
-    return 2;
+    return 9;
   }
   
-  public void a()
+  public int a(int paramInt1, String paramString, Context paramContext, int paramInt2, Map<String, bddf> paramMap, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Atpa != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Atpa);
+    a(paramString, paramInt2);
+    Object localObject = "4_" + paramInt1 + "_" + paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + (String)localObject + " from=" + paramInt2);
     }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.b))
+    int i;
+    if (paramInt1 == 2) {
+      i = 2080;
+    }
+    while (((paramInt2 == 4) || (paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 8)) && (paramMap != null) && (paramMap.get(localObject) != null))
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + aunj.a());
-      if (this.jdField_a_of_type_Atib != null) {
-        this.jdField_a_of_type_Atib.a(false, "", "", -100005L, "", "", null, this.b, null);
+      paramMap = (SingTogetherSession)paramMap.get(localObject);
+      if (!TextUtils.isEmpty(paramMap.b))
+      {
+        MiniAppLauncher.startMiniApp(paramContext, paramMap.b, i, null);
+        return 1;
+        i = 2081;
       }
-      return false;
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA is empty");
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.c, this.b);
+    if (TextUtils.isEmpty(""))
+    {
+      localObject = ((aqcu)apub.a().a(551)).a(4);
+      if ((localObject != null) && (((aqcv)localObject).c != 1))
+      {
+        bool = TextUtils.isEmpty(((aqcv)localObject).a);
+        if (bool)
+        {
+          paramMap = "mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc";
+          if (!bool) {
+            break label299;
+          }
+          paramInt2 = 2;
+          label261:
+          if (paramInt1 != 2) {
+            break label309;
+          }
+        }
+        label299:
+        label309:
+        for (bool = true;; bool = false)
+        {
+          if (a(bool, paramBundle, paramString, paramContext, ((aqcv)localObject).d)) {
+            break label315;
+          }
+          return 0;
+          paramMap = ((aqcv)localObject).a;
+          break;
+          paramInt2 = ((aqcv)localObject).b;
+          break label261;
+        }
+        label315:
+        bddg.a(this.a, paramInt2, paramMap, null, paramBundle, paramInt1);
+        return 2;
+      }
+      if (paramInt1 == 2) {}
+      for (boolean bool = true; !a(bool, paramBundle, paramString, paramContext, 1109995692); bool = false) {
+        return 0;
+      }
+      if (paramInt1 == 1) {}
+      for (paramString = bddg.a("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle);; paramString = bddg.b("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle))
+      {
+        MiniAppLauncher.startMiniApp(paramContext, paramString, i, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + paramString);
+        }
+        return 3;
+      }
+    }
+    return -1;
+  }
+  
+  public QQCustomDialog a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "一起K歌";
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, bddf> paramMap, @Nullable Bundle paramBundle) {}
+  
+  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt) {}
+  
+  public void a(Context paramContext, String paramString, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  
+  public void a(bddf parambddf, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bddf> paramMap, @Nullable Bundle paramBundle)
+  {
+    a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
+    return false;
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, bddf> paramMap, @Nullable Bundle paramBundle)
+  {
     return true;
   }
   
-  public void b()
+  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bddf> paramMap, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_Atpa = new aurd(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Atpa);
+    a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
+    return false;
   }
 }
 

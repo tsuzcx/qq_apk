@@ -1,107 +1,69 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity.2.1;
 import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aauu
-  extends BaseAdapter
-  implements blih
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public aauu(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
   
-  private aauu(MoveFileActivity paramMoveFileActivity) {}
-  
-  public int getCount()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aauv localaauv;
-    if (paramView == null)
+    this.a.jdField_a_of_type_Bhht.dismiss();
+    if (!paramBoolean)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131560612, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
-      localaauv = new aauv(null);
-      localaauv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366942));
-      localaauv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366941));
-      localaauv.b = ((TextView)paramView.findViewById(2131364497));
-      paramView.setTag(localaauv);
+      bhzt.a().a(this.a.getString(2131692713));
+      DeviceMsgSettingActivity.b(this.a);
+      return;
+    }
+    if (paramBundle.getInt("cgiResultCode", -1) != 0)
+    {
+      bhzt.a().a(this.a.getString(2131692713));
+      return;
     }
     for (;;)
     {
-      localaauv = (aauv)paramView.getTag();
-      bfrs localbfrs = (bfrs)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-      if (localbfrs != null)
+      try
       {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
-          break label183;
+        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
+        if (paramBundle.optInt("ret", -1) != 0)
+        {
+          bhzt.a().a(this.a.getString(2131692713));
+          this.a.jdField_a_of_type_AndroidOsHandler.post(new DeviceMsgSettingActivity.2.1(this));
+          return;
         }
-        localaauv.jdField_a_of_type_AndroidWidgetTextView.setText(localbfrs.c);
-        localaauv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843692);
-        if (paramInt != MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label209;
+        paramBundle = paramBundle.optJSONArray("data");
+        if (paramBundle == null)
+        {
+          bhzt.a().a(this.a.getString(2131694114));
+          DeviceMsgSettingActivity.b(this.a);
+          return;
         }
-        localaauv.b.setVisibility(0);
       }
-      for (;;)
+      catch (JSONException paramBundle)
       {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label183:
-        localaauv.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131705788));
-        localaauv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843694);
-        break;
-        label209:
-        localaauv.b.setVisibility(4);
+        bhzm.e("DeviceMsgSettingActivity", "get msg setting json format faild!");
+        bhzt.a().a(this.a.getString(2131692713));
+        continue;
+        paramInt = 0;
       }
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
-      if (this.jdField_a_of_type_Int == this.b - 2)
+      while (paramInt < paramBundle.length())
       {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label44;
-        }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+        JSONObject localJSONObject = paramBundle.getJSONObject(paramInt);
+        aauw localaauw = new aauw(this.a, null);
+        localaauw.jdField_a_of_type_Int = localJSONObject.getInt("id");
+        localaauw.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
+        localaauw.b = localJSONObject.getInt("enable");
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(localaauw);
+        paramInt += 1;
       }
     }
-    label44:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-    } while (bgsk.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
   }
 }
 

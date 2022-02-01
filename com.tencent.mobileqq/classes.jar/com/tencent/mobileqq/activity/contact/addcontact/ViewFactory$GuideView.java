@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajff;
-import ajfg;
+import ahzo;
+import ahzp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -18,12 +18,12 @@ public class ViewFactory$GuideView
   implements View.OnClickListener
 {
   public static final int a;
-  public ajfg a;
+  public ahzp a;
   private int b = -1;
   
   static
   {
-    jdField_a_of_type_Int = 3;
+    jdField_a_of_type_Int = 2;
   }
   
   public ViewFactory$GuideView(Context paramContext)
@@ -39,7 +39,7 @@ public class ViewFactory$GuideView
     int i = 0;
     while (i < jdField_a_of_type_Int)
     {
-      addView(paramContext.inflate(2131558471, this, false));
+      addView(paramContext.inflate(2131558470, this, false));
       i += 1;
     }
   }
@@ -52,7 +52,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131367786)).setText(paramString);
+      ((TextView)localView.findViewById(2131367818)).setText(paramString);
       String str = localView.getContentDescription().toString();
       int k = str.length();
       int m = str.indexOf(":");
@@ -66,7 +66,7 @@ public class ViewFactory$GuideView
     }
   }
   
-  private void a(ArrayList<ajff> paramArrayList, String paramString)
+  private void a(ArrayList<ahzo> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -74,28 +74,28 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((ajff)paramArrayList.get(i)).b));
-      localView.setTag(((ajff)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131367781)).setImageResource(((ajff)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131367797)).setText(localView.getContext().getResources().getString(((ajff)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131367786)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((ajff)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setTag(Integer.valueOf(((ahzo)paramArrayList.get(i)).b));
+      localView.setTag(((ahzo)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131367813)).setImageResource(((ahzo)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131367829)).setText(localView.getContext().getResources().getString(((ahzo)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      ((TextView)localView.findViewById(2131367818)).setText(paramString);
+      localView.setContentDescription(getResources().getString(((ahzo)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
   }
   
-  public ajff a(int paramInt)
+  public ahzo a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 80000000: 
-      return new ajff(2131689631, 2130844734);
+      return new ahzo(2131689630, 2130844610);
     case 80000001: 
-      return new ajff(2131689633, 2130844735);
+      return new ahzo(2131689632, 2130844611);
     }
-    return new ajff(2131689632, 2130844736);
+    return new ahzo(2131689631, 2130844612);
   }
   
   public void a(int paramInt, String paramString)
@@ -127,8 +127,8 @@ public class ViewFactory$GuideView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ajfg != null) {
-        this.jdField_a_of_type_Ajfg.a(i, str);
+      if (this.jdField_a_of_type_Ahzp != null) {
+        this.jdField_a_of_type_Ahzp.a(i, str);
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -140,9 +140,9 @@ public class ViewFactory$GuideView
     }
   }
   
-  public void setListener(ajfg paramajfg)
+  public void setListener(ahzp paramahzp)
   {
-    this.jdField_a_of_type_Ajfg = paramajfg;
+    this.jdField_a_of_type_Ahzp = paramahzp;
   }
 }
 

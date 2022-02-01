@@ -1,23 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-public class bajp
-  extends AnimatorListenerAdapter
+class bajp
+  extends MqqHandler
 {
-  public bajp(VasProfileTagView paramVasProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
+  bajp(bajo parambajo) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Boolean) && (VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375036) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375036).equals(Boolean.valueOf(true))))
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131375036, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375038)).longValue());
+    default: 
+      return;
+    case 1: 
+      QQToast.a(this.a.a.mContext, 2131718446, 0).a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
+    paramMessage = (String)paramMessage.obj;
+    bfvo.a(this.a.a.mContext, paramMessage);
+    QQToast.a(this.a.a.mContext, 2, amtj.a(2131699178), 0).a();
   }
 }
 

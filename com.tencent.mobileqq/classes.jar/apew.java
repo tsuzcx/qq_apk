@@ -1,29 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
-public abstract class apew
-  implements anui
+class apew
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(apnb paramapnb);
+  apew(apet paramapet, ObjectAnimator paramObjectAnimator) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Apet.c != null) {
+      this.jdField_a_of_type_Apet.c.setVisibility(0);
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    try
-    {
-      a((apnb)paramObject);
-      return;
-    }
-    catch (Exception paramObject)
-    {
-      a(new apnb());
-    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

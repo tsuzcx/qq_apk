@@ -1,23 +1,17 @@
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-@TargetApi(16)
-class atbz
+public class atbz
+  implements DialogInterface.OnClickListener
 {
-  public static void a(View paramView, Drawable paramDrawable)
-  {
-    paramView.setBackground(paramDrawable);
-  }
+  public atbz(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public static void a(View paramView, Runnable paramRunnable)
-  {
-    paramView.postOnAnimation(paramRunnable);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbz
  * JD-Core Version:    0.7.0.1
  */

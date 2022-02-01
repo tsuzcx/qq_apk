@@ -2,14 +2,14 @@ package cooperation.qzone.webviewplugin;
 
 import com.tencent.biz.pubaccount.CustomWebView;
 
-public final class QzoneInternalWebViewPlugin$1
+final class QzoneInternalWebViewPlugin$1
   implements Runnable
 {
-  public QzoneInternalWebViewPlugin$1(CustomWebView paramCustomWebView, String paramString) {}
+  QzoneInternalWebViewPlugin$1(CustomWebView paramCustomWebView, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+    this.val$webView.loadUrl(this.val$url);
   }
 }
 

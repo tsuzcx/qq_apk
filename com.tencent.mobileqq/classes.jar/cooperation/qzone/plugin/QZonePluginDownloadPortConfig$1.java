@@ -1,15 +1,13 @@
 package cooperation.qzone.plugin;
 
-import bnem;
-
-public class QZonePluginDownloadPortConfig$1
+class QZonePluginDownloadPortConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadPortConfig$1(bnem parambnem) {}
+  QZonePluginDownloadPortConfig$1(QZonePluginDownloadPortConfig paramQZonePluginDownloadPortConfig) {}
   
   public void run()
   {
-    bnem.a(this.this$0);
+    QZonePluginDownloadPortConfig.access$000(this.this$0);
   }
 }
 

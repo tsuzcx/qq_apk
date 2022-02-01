@@ -1,46 +1,90 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.8.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tct
-  implements tjr
+  implements AbsListView.OnScrollListener
 {
-  public tct(ViolaFragment paramViolaFragment) {}
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
+  
+  public tct(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  private void c()
+  {
+    if ((this.d > 0) && (this.e == 0))
+    {
+      if ((!ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) || (!ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView))) {
+        break label42;
+      }
+      ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+    label42:
+    while (!ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) {
+      return;
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+  }
   
   public void a()
   {
-    this.a.mViolaUiDelegate.b();
-    this.a.mViolaUiDelegate.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reloadPage success!");
+    if ((this.c != this.jdField_a_of_type_Int) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
+    {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
     }
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    if (this.a.getActivity() != null) {}
-    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
     {
-      new Handler(localLooper).postDelayed(new ViolaFragment.8.1(this), 1000L);
-      if (QLog.isColorLevel()) {
-        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.d;; i = this.b)
+    {
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+        ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
       return;
+      i = this.jdField_a_of_type_Int;
+      break;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void b(int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    this.e = paramInt;
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, paramInt);
+    c();
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }

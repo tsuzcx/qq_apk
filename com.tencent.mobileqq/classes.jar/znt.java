@@ -1,30 +1,86 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
-class znt
-  implements woy<xdm, xdn>
+public class znt
 {
-  znt(zns paramzns, JobContext paramJobContext, Integer paramInteger) {}
+  protected static znt a;
+  protected SessionInfo a;
+  protected HashMap<String, Object> a;
   
-  public void a(@NonNull xdm paramxdm, @Nullable xdn paramxdn, @NonNull ErrorMessage paramErrorMessage)
+  public znt()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static znt a()
+  {
+    if (jdField_a_of_type_Znt == null) {
+      jdField_a_of_type_Znt = new znt();
+    }
+    return jdField_a_of_type_Znt;
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramxdn == null))
-    {
-      yuk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      zns.a(this.jdField_a_of_type_Zns, paramErrorMessage);
-      return;
+    bcef.a(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_app", paramString2, 0, 0, paramString1, paramString3, paramString4, paramString5);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (!"thridapp".equals(paramIntent.getStringExtra("share_from"))) {
+      bool1 = false;
     }
-    zns.a(this.jdField_a_of_type_Zns).a(paramxdn.jdField_a_of_type_JavaUtilList, paramxdn.jdField_a_of_type_JavaLangString, paramxdn.jdField_a_of_type_Boolean);
-    ((yme)wth.a(11)).a(paramxdn.jdField_a_of_type_JavaUtilList);
-    paramxdm = zns.a(this.jdField_a_of_type_Zns).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    zns.a(this.jdField_a_of_type_Zns, paramxdm);
+    Object localObject;
+    Long localLong;
+    do
+    {
+      do
+      {
+        return bool1;
+        paramIntent.removeExtra("share_from");
+        localObject = a();
+        localLong = Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L));
+        bool1 = bool2;
+      } while (!((znt)localObject).a(String.valueOf(localLong)));
+      paramIntent.putExtra("share_from_aio", true);
+      paramIntent.putExtra("forward_type", 11);
+      paramIntent.putExtra("req_type", 1);
+      if (!paramIntent.hasExtra("pkg_name")) {
+        paramIntent.putExtra("pkg_name", "");
+      }
+      paramIntent.putExtra("refuse_show_share_result_dialog", true);
+      localObject = ((znt)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      bool1 = bool2;
+    } while (localObject == null);
+    paramIntent = atnh.a(paramIntent, paramQQAppInterface, paramActivity);
+    paramActivity = new Bundle();
+    paramActivity.putString("uin", ((SessionInfo)localObject).curFriendUin);
+    paramActivity.putInt("uintype", ((SessionInfo)localObject).curType);
+    paramActivity.putString("troop_uin", ((SessionInfo)localObject).troopUin);
+    paramActivity.putString("uinname", ((SessionInfo)localObject).curFriendNick);
+    paramIntent.a(atku.a.intValue(), paramActivity);
+    a(String.valueOf(localLong), "app_share_view", "", "", "");
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 

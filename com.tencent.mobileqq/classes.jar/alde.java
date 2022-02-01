@@ -1,43 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.Map;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class alde
-  extends alea
+public class alde
+  implements View.OnClickListener
 {
-  alde(aldd paramaldd, biht parambiht)
-  {
-    super(parambiht);
-  }
+  public alde(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onDoneFile(bihu parambihu)
+  public void onClick(View paramView)
   {
-    long l2 = -1L;
-    super.onDoneFile(parambihu);
-    if ((parambihu != null) && (parambihu.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambihu.jdField_a_of_type_JavaLangString)))
-    {
-      File localFile = (File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString);
-      if (localFile != null)
-      {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null)
-        {
-          localObject = (bezv)((QQAppInterface)localObject).getManager(193);
-          String str = parambihu.jdField_a_of_type_JavaLangString;
-          long l1 = l2;
-          if (parambihu.jdField_a_of_type_Int == 0)
-          {
-            l1 = l2;
-            if (localFile.exists()) {
-              l1 = localFile.length();
-            }
-          }
-          ((bezv)localObject).a(str, l1);
-        }
-      }
-    }
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

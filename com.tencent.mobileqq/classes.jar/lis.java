@@ -1,24 +1,87 @@
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
-class lis
-  implements Observer
+public class lis
 {
-  private WeakReference<lir> a;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  static boolean jdField_a_of_type_Boolean;
   
-  public lis(lir paramlir)
+  static long a(String paramString)
   {
-    this.a = new WeakReference(paramlir);
+    long l1 = 0L;
+    long l2 = l1;
+    if (!lsd.a(paramString, jdField_a_of_type_JavaLangString))
+    {
+      long l3 = System.currentTimeMillis();
+      lba.f("EffectZimuManager", "DataReport calTime zimu:" + paramString + "|" + jdField_a_of_type_JavaLangString + "|" + jdField_a_of_type_Long);
+      l2 = l1;
+      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      {
+        if (jdField_a_of_type_Long != 0L)
+        {
+          l1 = l3 - jdField_a_of_type_Long;
+          lba.f("EffectZimuManager", "DataReport zimu:" + l1);
+          jdField_a_of_type_Boolean = true;
+          l1 /= 1000L;
+          a(jdField_a_of_type_JavaLangString, l1);
+          bcef.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          if (liq.a(jdField_a_of_type_JavaLangString)) {
+            bcef.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          }
+        }
+        lba.f("EffectZimuManager", "DataReport zimu 33:" + l1);
+        l2 = l1;
+      }
+      jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_Long = l3;
+    }
+    return l2;
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    lir locallir = (lir)this.a.get();
-    if (locallir == null) {
+    if (paramVideoAppInterface.a(0))
+    {
+      paramVideoAppInterface = (ZimuItem)((lir)paramVideoAppInterface.a(0)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(null);
+      }
+    }
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    lba.f("EffectZimuManager", "DataReport zimu:" + paramString + "|" + paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("zimuName", paramString);
+    localHashMap.put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, localHashMap, true);
+    try
+    {
+      UserAction.flushObjectsToDB(true);
       return;
     }
-    lir.a(locallir, paramObservable, paramObject);
+    catch (Exception paramString)
+    {
+      lba.h("EffectZimuManager", paramString.getMessage());
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    lba.f("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
+    bcef.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    lba.f("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
+    bcef.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
   }
 }
 

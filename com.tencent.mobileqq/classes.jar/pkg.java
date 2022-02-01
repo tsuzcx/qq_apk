@@ -1,20 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
-
-public class pkg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface pkg
 {
-  public pkg(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
-  }
+  public abstract void C_();
 }
 
 

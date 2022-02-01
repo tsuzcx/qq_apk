@@ -1,31 +1,7 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
+import kotlin.Metadata;
 
-public class azaa
-  implements SurfaceHolder.Callback
-{
-  public azaa(ScanOcrActivity paramScanOcrActivity) {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
-    {
-      ScanOcrActivity.a(this.a, new ayzg(this.a, this.a.jdField_a_of_type_Ayzl, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      if (ScanOcrActivity.a(this.a)) {
-        ScanOcrActivity.a(this.a).a();
-      }
-    }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingObserver$Companion;", "", "()V", "ON_GET_CARD_DISPLAY_SETTING", "", "ON_SET_CARD_DISPLAY_SETTING", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azaa {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

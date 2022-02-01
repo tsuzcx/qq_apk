@@ -1,14 +1,10 @@
+import com.tencent.image.URLImageView;
+
 class ayrh
-  implements ayrx
 {
-  ayrh(ayrf paramayrf, String paramString) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_Ayrf.b(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
-  }
+  ayrh(ayrg paramayrg) {}
 }
 
 

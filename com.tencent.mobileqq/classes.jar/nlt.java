@@ -1,60 +1,144 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.util.WeakReference;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class nlt
 {
-  aasb jdField_a_of_type_Aasb;
-  HashMap<Integer, WeakReference<nlu>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  final int jdField_a_of_type_Int = 1;
+  public TextView a;
+  public PoiMapActivity.TabView a;
+  public XListView a;
+  public nlq a;
+  final int b;
+  final int c = 3;
+  final int d = 4;
+  public int e;
+  public int f;
+  public int g;
   
-  public nlt(aasb paramaasb)
+  public nlt(PoiMapActivity paramPoiMapActivity, Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Aasb = paramaasb;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_b_of_type_Int = 2;
+    this.e = paramInt;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131372809));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramPoiMapActivity.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView = new PoiMapActivity.TabView(paramPoiMapActivity, paramContext, paramString, paramInt);
+    this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(paramContext);
+    this.jdField_a_of_type_Nlq = new nlq(paramPoiMapActivity);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Nlq);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new nlu(this, paramPoiMapActivity));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new nlv(this, paramPoiMapActivity));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-  }
-  
-  public void a(int paramInt, nlu paramnlu)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131693287));
+      return;
+    case 2: 
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131694509));
+      return;
+    case 3: 
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131694511));
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramnlu));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramBundle == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebPushClient", 2, "data is null");
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.c)
+    {
+      this.jdField_a_of_type_Nlq.a(paramInt, paramBoolean);
+      return;
+    }
+    if (this.e == 0) {
+      if ((paramInt > 0) && (!this.jdField_a_of_type_Nlq.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPoiMapActivity.g)) {
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.g = false;
       }
     }
-    WeakReference localWeakReference;
+    for (;;)
+    {
+      this.jdField_a_of_type_Nlq.a(paramInt, paramBoolean);
+      return;
+      if (paramInt == -1) {}
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Nlq.a(paramString);
+  }
+  
+  public void a(ArrayList<nlp> paramArrayList, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    if (paramBoolean2) {
+      a(3);
+    }
     do
     {
-      int i;
-      do
-      {
-        return;
-        i = paramBundle.getInt("msgType", -1);
-        if (i != 0) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("WebPushClient", 2, "type is 0");
       return;
-      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    } while ((localWeakReference == null) || (localWeakReference.get() == null));
-    ((nlu)localWeakReference.get()).a(paramBundle);
+      if (paramArrayList == null)
+      {
+        a(1);
+        return;
+      }
+      this.jdField_a_of_type_Nlq.a(paramArrayList, paramBoolean1, paramInt);
+    } while (this.jdField_a_of_type_ComTencentBizPoiMapActivity.l != this.e);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    a(4);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_Nlq.getCount() > 0)
+      {
+        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+        a(4);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView.setSelect(paramBoolean);
+      return;
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PoiMapActivity", 2, "POI list update isfirst = " + paramBoolean);
+    }
+    if ((this.f != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.g != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i) || (!paramBoolean))
+    {
+      if (paramBoolean)
+      {
+        a(2);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+        this.jdField_a_of_type_Nlq.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.jdField_a_of_type_Nlq.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Nlq.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Nlq.notifyDataSetChanged();
+      }
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity.h, this.jdField_a_of_type_ComTencentBizPoiMapActivity.i, "", this.jdField_a_of_type_ComTencentBizPoiMapActivity.b[this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView.jdField_a_of_type_Int], this.jdField_a_of_type_Nlq.jdField_b_of_type_Int, 20);
+      this.f = this.jdField_a_of_type_ComTencentBizPoiMapActivity.h;
+      this.g = this.jdField_a_of_type_ComTencentBizPoiMapActivity.i;
+    }
   }
 }
 

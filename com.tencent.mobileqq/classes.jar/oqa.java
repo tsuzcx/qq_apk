@@ -1,50 +1,110 @@
-import android.app.Activity;
-import android.graphics.Color;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqa
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerController$init$1", "Lcom/tencent/pts/core/lite/DefaultPTSLiteEventListener;", "onScrollViewItemExposureTriggered", "", "identifier", "", "dataSet", "Ljava/util/HashMap;", "view", "Landroid/view/View;", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "onTapEventTriggered", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oqa
+  extends DefaultPTSLiteEventListener
 {
-  oqa(otp paramotp, Container paramContainer, otd paramotd, ViewBase paramViewBase) {}
+  oqa(Context paramContext) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public void onScrollViewItemExposureTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView, @Nullable PTSComposer paramPTSComposer)
   {
-    if ((tpk.a(this.jdField_a_of_type_Otp)) && (this.jdField_a_of_type_Otp.a.advertisementInfo != null))
+    if (paramHashMap != null)
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().findViewBaseByName("id_comment_tail_3_dot");
-      localObject = this.jdField_a_of_type_Otd.jdField_a_of_type_Toa;
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "idCommentTail3Dot");
-      ((toa)localObject).a(paramViewBase.getNativeView(), this.jdField_a_of_type_Otp.a.advertisementInfo);
-    }
-    do
-    {
-      return;
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-      paramViewBase = (ViewBase)localObject;
-      if (!(localObject instanceof owv)) {
-        paramViewBase = null;
-      }
-      paramViewBase = (owv)paramViewBase;
-      if (paramViewBase != null)
+      paramHashMap = (String)paramHashMap.get("avatarStatus");
+      paramView = opy.a(this.jdField_a_of_type_Opy);
+      if (paramView != null)
       {
-        paramViewBase = paramViewBase.getNativeView();
-        if (paramViewBase != null) {
-          paramViewBase.setBackgroundColor(Color.parseColor("#DBE5EF"));
+        paramPTSComposer = this.jdField_a_of_type_Opy;
+        if (paramString == null) {
+          break label50;
         }
       }
-      paramViewBase = this.jdField_a_of_type_Otd;
-    } while (paramViewBase == null);
-    Object localObject = (Activity)this.jdField_a_of_type_Otd.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-    Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
-    paramViewBase.a((Activity)localObject, localViewBase.getNativeView(), this.jdField_a_of_type_Otp, (blkc)new oqb(this));
+    }
+    for (;;)
+    {
+      opy.b(paramPTSComposer, paramString, paramHashMap, paramView);
+      return;
+      paramHashMap = null;
+      break;
+      label50:
+      paramString = "";
+    }
+  }
+  
+  public void onTapEventTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView, @Nullable PTSComposer paramPTSComposer)
+  {
+    Object localObject = null;
+    QLog.i("RIJChannelBannerController", 1, "[onTapEventTriggered], " + getLogString(paramString, paramHashMap));
+    qmg.a.a(paramPTSComposer, paramHashMap);
+    int i;
+    if (paramHashMap != null)
+    {
+      paramView = (String)paramHashMap.get("jumpUrl");
+      if (!TextUtils.isEmpty((CharSequence)paramView)) {
+        pay.a(this.jdField_a_of_type_AndroidContentContext, paramView);
+      }
+      paramView = localObject;
+      if (paramHashMap != null) {
+        paramView = (String)paramHashMap.get("avatarStatus");
+      }
+      if (paramView == null) {
+        break label213;
+      }
+      i = Integer.parseInt(paramView);
+      label101:
+      if (i == 2) {
+        opy.a(this.jdField_a_of_type_Opy, paramString, 0);
+      }
+      paramPTSComposer = opy.a(this.jdField_a_of_type_Opy);
+      if (paramPTSComposer != null)
+      {
+        paramHashMap = opy.a(this.jdField_a_of_type_Opy);
+        if (paramHashMap == null) {
+          break label219;
+        }
+        paramHashMap = paramHashMap.getJsonData();
+        if (paramHashMap == null) {
+          break label219;
+        }
+        label151:
+        paramPTSComposer.c(paramHashMap);
+      }
+      paramHashMap = opy.a(this.jdField_a_of_type_Opy);
+      if (paramHashMap != null) {
+        opy.a(this.jdField_a_of_type_Opy, paramHashMap);
+      }
+      paramHashMap = opy.a(this.jdField_a_of_type_Opy);
+      if (paramHashMap != null)
+      {
+        paramPTSComposer = this.jdField_a_of_type_Opy;
+        if (paramString == null) {
+          break label225;
+        }
+      }
+    }
+    for (;;)
+    {
+      opy.a(paramPTSComposer, paramString, paramView, paramHashMap);
+      return;
+      paramView = null;
+      break;
+      label213:
+      i = 0;
+      break label101;
+      label219:
+      paramHashMap = "";
+      break label151;
+      label225:
+      paramString = "";
+    }
   }
 }
 

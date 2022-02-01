@@ -1,14 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class tsv
-  implements ViewBase.IBuilder
+class tsv
+  extends BroadcastReceiver
 {
-  public ViewBase build(VafContext paramVafContext)
+  tsv(tsu paramtsu) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ReadInJoyArticleBottomVideoView(paramVafContext);
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (tsu.a(this.a) != null))
+      {
+        if (!paramContext.equals("homekey")) {
+          break label55;
+        }
+        tsu.a(this.a).a();
+      }
+    }
+    label55:
+    while (!paramContext.equals("recentapps")) {
+      return;
+    }
+    tsu.a(this.a).b();
   }
 }
 

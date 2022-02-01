@@ -1,50 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
-public abstract class aavd
-  extends nkq
+public class aavd
+  implements View.OnTouchListener
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
+  public aavd(DeviceTipActivity paramDeviceTipActivity) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt != 0)
+    switch (paramMotionEvent.getAction())
     {
-      a(false, paramInt, paramBundle, "", anzj.a(2131714155));
-      return;
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
+    for (;;)
     {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label133;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      return true;
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      DeviceTipActivity.c(this.a);
+      continue;
+      int i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
+      if (i > 2)
       {
-        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
-        return;
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      }
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.left += i;
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.right = (i + paramView.right);
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      continue;
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.d)
+      {
+        this.a.b();
+      }
+      else if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, paramBundle, "", anzj.a(2131714151));
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
-    return;
-    label133:
-    a(false, -1, paramBundle, "", anzj.a(2131714159));
   }
 }
 

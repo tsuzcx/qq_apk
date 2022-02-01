@@ -1,8 +1,12 @@
-public abstract interface agsk
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class agsk
+  extends agsg
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public agsk(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
 }
 
 

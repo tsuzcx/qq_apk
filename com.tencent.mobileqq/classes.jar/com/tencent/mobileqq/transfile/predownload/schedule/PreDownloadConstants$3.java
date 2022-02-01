@@ -2,10 +2,10 @@ package com.tencent.mobileqq.transfile.predownload.schedule;
 
 import java.util.HashMap;
 
-public final class PreDownloadConstants$3
+final class PreDownloadConstants$3
   extends HashMap<Integer, Integer>
 {
-  public PreDownloadConstants$3()
+  PreDownloadConstants$3()
   {
     put(Integer.valueOf(10001), Integer.valueOf(3));
     put(Integer.valueOf(10002), Integer.valueOf(3));

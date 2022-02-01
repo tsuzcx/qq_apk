@@ -1,8 +1,20 @@
-public abstract interface ampn
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
+
+class ampn
+  implements Comparator<BaseAddress>
 {
-  public abstract void a();
+  ampn(ampm paramampm) {}
   
-  public abstract void b();
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  {
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
+    }
+    return i;
+  }
 }
 
 

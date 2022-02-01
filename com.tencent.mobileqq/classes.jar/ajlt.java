@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class ajlt
-  extends anuw
+  implements DialogInterface.OnClickListener
 {
-  public ajlt(SystemMsgListView paramSystemMsgListView) {}
+  public ajlt(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
-      }
-      QQToast.a(this.a.getContext(), 2131698208, 3000).a();
-      return;
-    }
-    QQToast.a(this.a.getContext(), 2131698207, 1).a();
+    this.a.a("dc00898", "0X8009F15", 0);
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

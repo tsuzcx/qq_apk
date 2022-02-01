@@ -1,21 +1,38 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
-class artd
-  implements nks
+public class artd
+  implements Animation.AnimationListener
 {
-  artd(artb paramartb, nkr[] paramArrayOfnkr) {}
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public artd(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    if (!paramBoolean)
-    {
-      artb.a(this.jdField_a_of_type_Artb).removeCallbacks(artb.a(this.jdField_a_of_type_Artb));
-      artb.a(this.jdField_a_of_type_Artb).run();
-      if (this.jdField_a_of_type_ArrayOfNkr[0] != null) {
-        this.jdField_a_of_type_ArrayOfNkr[0].a();
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

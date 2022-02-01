@@ -1,18 +1,23 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1.1.1;
 
 public class amne
+  implements Animation.AnimationListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
+  public amne(ApolloPanelListAdapter.1 param1) {}
   
-  public amne(amnd paramamnd) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloPanelListAdapter.1.1.1(this), 300L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

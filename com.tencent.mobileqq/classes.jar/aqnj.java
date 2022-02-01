@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class aqnj
-  implements View.OnClickListener
 {
-  public aqnj(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private aqnm a;
   
-  public void onClick(View paramView)
+  public static aqnj a()
   {
-    aqno localaqno = (aqno)paramView.getTag();
-    this.a.a(localaqno.jdField_a_of_type_JavaLangString, localaqno.b, localaqno.jdField_a_of_type_Boolean);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return aqnl.a();
+  }
+  
+  public aqnm a()
+  {
+    if (this.a == null) {
+      this.a = new aqnn();
+    }
+    return this.a;
   }
 }
 

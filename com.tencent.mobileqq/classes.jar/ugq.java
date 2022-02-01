@@ -1,22 +1,35 @@
-import UserGrowth.stBlockRecommPersonRsp;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-class ugq
-  implements ukd
+final class ugq
+  extends anxq
 {
-  ugq(ugp paramugp) {}
+  ugq(amyh paramamyh, String paramString, AppInterface paramAppInterface, Context paramContext) {}
   
-  public void a(uko paramuko)
+  public int a()
   {
-    if (!(paramuko.a instanceof stBlockRecommPersonRsp)) {
-      uqf.b("WSUserBusiness", "[actionBlockRecommendPerson] data error: " + paramuko.a);
-    }
-    do
-    {
-      return;
-      paramuko = (stBlockRecommPersonRsp)paramuko.a;
-    } while (paramuko == null);
-    uqf.b("WSUserBusiness", "[actionBlockRecommendPerson] data success resultBean.ret:" + paramuko.ret);
+    return 4;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Amyh != null) {
+      this.jdField_a_of_type_Amyh.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    ugf.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Amyh != null) {
+      this.jdField_a_of_type_Amyh.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

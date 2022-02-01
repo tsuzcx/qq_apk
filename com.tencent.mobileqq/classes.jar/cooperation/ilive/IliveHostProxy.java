@@ -1,7 +1,7 @@
 package cooperation.ilive;
 
 import androidx.annotation.Keep;
-import bapg;
+import azjl;
 import com.tencent.qphone.base.util.QLog;
 
 @Keep
@@ -14,7 +14,7 @@ public class IliveHostProxy
   public static boolean isVideoPlayerReady()
   {
     QLog.e("IliveHostProxy", 1, "host isVideoPlayerReady");
-    return bapg.b();
+    return azjl.b();
   }
 }
 

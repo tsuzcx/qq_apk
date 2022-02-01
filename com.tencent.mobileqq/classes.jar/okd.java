@@ -1,19 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class okd
-  implements nmg
+class okd
+  extends Handler
 {
-  public okd(ReadInJoyFeedsActivity.1 param1) {}
+  private WeakReference<okb> a;
   
-  public void loaded(String paramString, int paramInt)
+  public okd(okb paramokb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
-    }
+    this.a = new WeakReference(paramokb);
   }
   
-  public void progress(int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    okb localokb = (okb)this.a.get();
+    if ((localokb == null) || (!localokb.b())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localokb.b();
+  }
 }
 
 

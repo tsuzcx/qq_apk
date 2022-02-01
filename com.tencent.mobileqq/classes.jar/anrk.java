@@ -1,40 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class anrk
-  implements DialogInterface.OnClickListener
 {
-  public anrk(ApolloPanel paramApolloPanel, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static anri a(anrl paramanrl, ArrayList<anrj> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    boolean bool;
-    do
+    if ((paramanrl != null) && (paramArrayList != null)) {}
+    for (;;)
     {
-      return;
-      paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", annv.S + "&actionId=" + this.jdField_a_of_type_JavaLangString + "&_bid=2282");
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivityForResult(paramDialogInterface, 0);
-      bool = ((amsx)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i = ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (bool) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      VipUtils.a(paramDialogInterface, "cmshow", "Apollo", "level_alert_view", i, paramInt, new String[] { "" + this.jdField_a_of_type_JavaLangString, "0" });
-      return;
+      int i;
+      try
+      {
+        if (paramanrl.d() != null) {
+          break label134;
+        }
+        QLog.e("JumpParserFactory", 1, "createJumpParser error: param is null");
+        return null;
+      }
+      catch (Exception paramanrl)
+      {
+        anrj localanrj;
+        QLog.e("JumpParserFactory", 1, "createJumpParser error: " + paramanrl.getMessage());
+        return null;
+      }
+      if (i < paramArrayList.size())
+      {
+        localanrj = (anrj)paramArrayList.get(i);
+        if (!paramanrl.d().startsWith(localanrj.a())) {
+          break label141;
+        }
+        paramanrl = localanrj.a();
+        if (paramanrl != null)
+        {
+          paramanrl = paramanrl.newInstance();
+          if ((paramanrl instanceof anri)) {
+            paramanrl = (anri)paramanrl;
+          } else {
+            QLog.e("JumpParserFactory", 1, "createJumpParser error: not extends JumpParserBase");
+          }
+        }
+        else
+        {
+          paramanrl = null;
+        }
+      }
+      else
+      {
+        paramanrl = null;
+        continue;
+        label134:
+        i = 0;
+        continue;
+      }
+      return paramanrl;
+      label141:
+      i += 1;
     }
   }
 }

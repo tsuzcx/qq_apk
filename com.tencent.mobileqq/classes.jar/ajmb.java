@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class ajmb
-  extends ajmf
+  implements DialogInterface.OnClickListener
 {
-  public ConnectsExplorationBanner a;
+  public ajmb(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public ajmb(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
-    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner.uin;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

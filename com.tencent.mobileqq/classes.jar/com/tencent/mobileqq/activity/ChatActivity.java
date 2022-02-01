@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import agej;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,9 +12,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import bhjs;
-import bhsq;
+import bfta;
+import bfzg;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.startup.step.SetSplash;
 import com.tencent.qphone.base.util.QLog;
@@ -38,8 +39,9 @@ public class ChatActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -62,14 +64,14 @@ public class ChatActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     ThreadRegulator.a().a(1);
-    bhsq.b(null, "AIO_Start_cost");
+    bfzg.b(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate strat ");
     }
-    bhjs.a(true);
+    bfta.a(true);
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    if (agej.a(this, this.app, true, getIntent())) {
+    if (AIOUtils.beforeEnterAIO(this, this.app, true, getIntent())) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -125,12 +127,12 @@ public class ChatActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     ThreadRegulator.a().a(1);
-    bhsq.b(null, "AIO_Start_cost");
+    bfzg.b(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent start ");
     }
     super.doOnNewIntent(paramIntent);
-    if (agej.a(this, this.app, false, getIntent())) {}
+    if (AIOUtils.beforeEnterAIO(this, this.app, false, getIntent())) {}
     for (;;)
     {
       return;
@@ -228,7 +230,7 @@ public class ChatActivity
     Object localObject = getSupportFragmentManager();
     Fragment localFragment = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
     if (localFragment != null) {
-      ((MainFragment)localFragment).h();
+      ((MainFragment)localFragment).i();
     }
     localObject = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
     if (localObject != null) {
@@ -262,10 +264,10 @@ public class ChatActivity
   public boolean showPreview()
   {
     SetSplash.a(this, null, true);
-    getWindow().setFeatureInt(7, 2131559027);
+    getWindow().setFeatureInt(7, 2131559035);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131366714).getParent());
+      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131366744).getParent());
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return true;
     }
@@ -278,7 +280,7 @@ public class ChatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivity
  * JD-Core Version:    0.7.0.1
  */

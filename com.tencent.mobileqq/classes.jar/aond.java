@@ -1,54 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateFriend;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aond
-  extends anyu
+class aond
+  implements Animator.AnimatorListener
 {
-  private aond(UpdateFriend paramUpdateFriend) {}
+  aond(aonc paramaonc) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.a.b == 7) || (this.a.b == 3))
-    {
-      if (paramBoolean1) {
-        break label37;
-      }
-      this.a.a(6);
+    if (aonc.a(this.a) != null) {
+      aonc.a(this.a).a();
     }
-    label37:
-    while ((!paramBoolean1) || (!paramBoolean2)) {
-      return;
-    }
-    this.a.a.a.edit().putBoolean("isFriendlistok", true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
-    }
-    this.a.a.notifyUI(3, true, Integer.valueOf(1));
-    this.a.a(7);
   }
   
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (this.a.b == 8)
-    {
-      if (paramBoolean1) {
-        break label26;
-      }
-      this.a.a(6);
-    }
-    label26:
-    while (!paramBoolean2) {
-      return;
-    }
-    this.a.a(7);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aond
  * JD-Core Version:    0.7.0.1
  */

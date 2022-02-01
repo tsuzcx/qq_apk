@@ -1,27 +1,27 @@
-import android.graphics.drawable.Drawable;
-import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.support.annotation.NonNull;
 
-public final class bnlp
-  implements InvocationHandler
+public class bnlp
+  implements Comparable
 {
-  public bnlp(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public bnlp(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    if (paramMethod.getName().equals("onFailed")) {
-      if (this.a != null) {
-        this.a.onFailed();
-      }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramString3;
+  }
+  
+  public int compareTo(@NonNull Object paramObject)
+  {
+    if ((paramObject instanceof bnlp)) {
+      return this.b.compareTo(((bnlp)paramObject).b);
     }
-    for (;;)
-    {
-      return null;
-      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
-        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
-      }
-    }
+    return 0;
   }
 }
 

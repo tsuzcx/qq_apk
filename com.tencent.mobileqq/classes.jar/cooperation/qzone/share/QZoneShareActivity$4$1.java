@@ -1,17 +1,15 @@
 package cooperation.qzone.share;
 
-import bnhe;
-
-public class QZoneShareActivity$4$1
+class QZoneShareActivity$4$1
   implements Runnable
 {
-  public QZoneShareActivity$4$1(bnhe parambnhe) {}
+  QZoneShareActivity$4$1(QZoneShareActivity.4 param4) {}
   
   public void run()
   {
-    QZoneShareActivity.d(this.a.a);
-    QZoneShareActivity.a(this.a.a);
-    this.a.a.k();
+    QZoneShareActivity.access$500(this.this$1.this$0);
+    QZoneShareActivity.access$000(this.this$1.this$0);
+    this.this$1.this$0.hideProgressDialog();
   }
 }
 

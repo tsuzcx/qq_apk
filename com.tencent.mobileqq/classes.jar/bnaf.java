@@ -1,18 +1,69 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DynamicPhotoData;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnaf
-  implements Parcelable.Creator<DynamicPhotoData>
+public class bnaf
+  extends Handler
 {
-  public DynamicPhotoData a(Parcel paramParcel)
-  {
-    return new DynamicPhotoData(paramParcel);
-  }
+  public bnaf(CropVideoActivity paramCropVideoActivity) {}
   
-  public DynamicPhotoData[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new DynamicPhotoData[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 2: 
+      do
+      {
+        return;
+        postDelayed(this.a.a, 1000L);
+        CropVideoActivity.a(this.a).setProgress(paramMessage.arg1);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("CropVideoActivity", 2, "crop video begin");
+        }
+        if ((CropVideoActivity.a(this.a) >= CropVideoActivity.b(this.a)) && (CropVideoActivity.b(this.a) >= 0L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("CropVideoActivity", 2, "startCropVideo illegal time!");
+          }
+          QQToast.a(this.a.getApplicationContext(), amtj.a(2131701768), 1).a();
+          return;
+        }
+      } while (CropVideoActivity.a(this.a, CropVideoActivity.a(this.a)) != 0);
+      if (Build.VERSION.SDK_INT >= 18) {
+        bnai.a(CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.e(this.a), CropVideoActivity.f(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), new bnag(this));
+      }
+      for (;;)
+      {
+        this.a.a();
+        return;
+        CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
+      }
+    case 3: 
+      if (QLog.isColorLevel()) {
+        QLog.d("CropVideoActivity", 2, "crop video success");
+      }
+      this.a.finish();
+      return;
+    case 4: 
+      if (QLog.isColorLevel()) {
+        QLog.d("CropVideoActivity", 2, "crop video fail");
+      }
+      QQToast.a(this.a.getApplicationContext(), 1, amtj.a(2131701766), 1).a();
+      this.a.finish();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "crop video with ffmpeg");
+    }
+    CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
+    this.a.a();
   }
 }
 

@@ -1,45 +1,37 @@
-import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class sxm
-  extends sxk
+  implements View.OnClickListener
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private sxn jdField_a_of_type_Sxn;
-  private List<String> b;
-  protected boolean b;
+  public int a;
   
-  public sxm(Activity paramActivity, sxn paramsxn, List<String> paramList1, List<String> paramList2)
+  public void onClick(View paramView)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Sxn = paramsxn;
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.jdField_b_of_type_JavaUtilList = paramList2;
-  }
-  
-  public View a(LayoutInflater paramLayoutInflater)
-  {
-    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131560144, null);
-    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364953);
-    oyv localoyv = new oyv(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Sxn);
-    localRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity));
-    localRecyclerView.setAdapter(localoyv);
-    return paramLayoutInflater;
-  }
-  
-  public void b(View paramView)
-  {
-    if (!this.jdField_b_of_type_Boolean)
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str;
+    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaUtilList.size())
     {
-      a();
-      this.jdField_b_of_type_Boolean = true;
+      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+      str = localCommunityConfigInfo.jumpUrl;
+      paramView.postDelayed(new ReadInJoyDiandianHeaderController.OnCommunityItemListener.1(this, paramView), 300L);
+      odq.a(null, "", "0X8009B9F", "0X8009B9F", 0, 0, localQQAppInterface.getCurrentAccountUin(), localCommunityConfigInfo.bid + "", this.jdField_a_of_type_Int + 1 + "", "", false);
     }
-    a(paramView);
+    for (;;)
+    {
+      pay.a(paramView.getContext(), str);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaLangString;
+      odq.a(null, "", "0X8009BA3", "0X8009BA3", 0, 0, localQQAppInterface.getCurrentAccountUin(), "", "", "", false);
+    }
   }
 }
 

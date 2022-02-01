@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.main;
 
-import akha;
-import akia;
-import baou;
+import ajey;
+import ajfz;
+import azjc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import tug;
+import uaw;
 
 public class MainAssistObserver$8$1
   implements Runnable
 {
-  public MainAssistObserver$8$1(akia paramakia) {}
+  public MainAssistObserver$8$1(ajfz paramajfz) {}
   
   public void run()
   {
@@ -21,12 +21,12 @@ public class MainAssistObserver$8$1
     }
     QQAppInterface localQQAppInterface = localSplashActivity.app;
     int i = 0;
-    int j = baou.a(localQQAppInterface);
-    QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
+    int j = azjc.a(localQQAppInterface);
+    QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
     if (localQQMessageFacade != null)
     {
-      tug.a().a(localQQAppInterface);
-      i = localQQMessageFacade.b();
+      uaw.a().a(localQQAppInterface);
+      i = localQQMessageFacade.getUnreadMsgsNum();
     }
     localSplashActivity.runOnUiThread(new MainAssistObserver.8.1.1(this, i + j));
   }

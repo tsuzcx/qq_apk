@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
-import uci;
+import uiy;
 
 public class FPSSuspendedBall
   extends TextView
@@ -28,12 +28,12 @@ public class FPSSuspendedBall
   
   private void a(Context paramContext)
   {
-    setId(2131371355);
-    setBackgroundColor(paramContext.getResources().getColor(2131165356));
+    setId(2131371323);
+    setBackgroundColor(paramContext.getResources().getColor(2131165364));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
-    setOnTouchListener(new uci(this, null));
+    setOnTouchListener(new uiy(this, null));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-2, -2, 1000, 8, -3);
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 53;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = 250;
@@ -44,7 +44,7 @@ public class FPSSuspendedBall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall
  * JD-Core Version:    0.7.0.1
  */

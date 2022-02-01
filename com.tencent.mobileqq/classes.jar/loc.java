@@ -1,18 +1,42 @@
-import android.app.Notification;
-import android.os.IInterface;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public abstract interface loc
-  extends IInterface
 {
-  public abstract int a(long paramLong, int paramInt);
+  public abstract int a(int paramInt, boolean paramBoolean1, lox paramlox, boolean paramBoolean2);
   
   public abstract void a();
   
-  public abstract void a(lwr paramlwr);
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  public abstract void a(long paramLong);
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(FilterDesc paramFilterDesc);
+  
+  public abstract void a(lor paramlor, lox paramlox);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(loi paramloi);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

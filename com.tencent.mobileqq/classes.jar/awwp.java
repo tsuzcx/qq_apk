@@ -1,12 +1,33 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
 public class awwp
+  extends aagp
 {
-  public int a = 1;
-  public Bitmap a;
-  public int b = Color.parseColor("#FFFF0000");
-  public int c;
+  public awwp(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  
+  public aafw a(Activity paramActivity, aagc paramaagc)
+  {
+    return new awwr(paramActivity, paramaagc);
+  }
+  
+  public aafy a(Activity paramActivity, aagc paramaagc)
+  {
+    return new awwv((PicBrowserActivity)paramActivity, paramaagc);
+  }
+  
+  public aagc a(Activity paramActivity)
+  {
+    paramActivity = new awxb(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public aagd a(Activity paramActivity, aagc paramaagc)
+  {
+    return null;
+  }
 }
 
 

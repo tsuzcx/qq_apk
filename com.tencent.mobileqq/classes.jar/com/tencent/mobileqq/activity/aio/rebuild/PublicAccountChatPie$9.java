@@ -1,50 +1,50 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
-import aipc;
+import ahiu;
+import ahkp;
+import amxz;
 import android.os.Handler;
 import android.text.TextUtils;
-import aody;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import obj;
-import ocd;
+import ocw;
+import odq;
 
 public class PublicAccountChatPie$9
   implements Runnable
 {
-  public PublicAccountChatPie$9(ainh paramainh) {}
+  public PublicAccountChatPie$9(ahiu paramahiu) {}
   
   public void run()
   {
     Object localObject = null;
-    aody localaody = (aody)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-    if (localaody != null) {
-      localObject = localaody.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    amxz localamxz = (amxz)this.this$0.app.getManager(56);
+    if (localamxz != null) {
+      localObject = localamxz.b(this.this$0.sessionInfo.curFriendUin);
     }
     boolean bool;
     if (localObject == null)
     {
-      bool = this.this$0.F();
-      this.this$0.E();
-      if ((bool) && (TextUtils.isEmpty(this.this$0.g)) && (localaody != null))
+      bool = this.this$0.b();
+      this.this$0.a();
+      if ((bool) && (TextUtils.isEmpty(this.this$0.b)) && (localamxz != null))
       {
-        localObject = localaody.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        localObject = localamxz.a(this.this$0.sessionInfo.curFriendUin);
         if ((localObject != null) && (!TextUtils.isEmpty(((AccountDetail)localObject).summary))) {
-          this.this$0.g = ((AccountDetail)localObject).summary;
+          this.this$0.b = ((AccountDetail)localObject).summary;
         }
       }
     }
     for (;;)
     {
-      if ((bool) || (ainh.a(this.this$0)))
+      if ((bool) || (ahiu.a(this.this$0)))
       {
-        ocd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004EFB", "0X8004EFB", 0, 0, "", "", "", "", false);
-        this.this$0.T = true;
+        odq.a(this.this$0.app, "CliOper", "", "", "0X8004EFB", "0X8004EFB", 0, 0, "", "", "", "", false);
+        this.this$0.c = true;
         this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
       }
       for (;;)
@@ -55,12 +55,12 @@ public class PublicAccountChatPie$9
         }
         long l = NetConnInfoCenter.getServerTime();
         if (QLog.isColorLevel()) {
-          QLog.d("struct_log_tag", 2, "PublicAccountChatPie :CliOper|" + this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + "|0X8005619|0X8005619" + 0 + "|" + 0 + "|" + Long.toString(l) + "|" + (String)localObject);
+          QLog.d("struct_log_tag", 2, "PublicAccountChatPie :CliOper|" + this.this$0.sessionInfo.curFriendUin + "|0X8005619|0X8005619" + 0 + "|" + 0 + "|" + Long.toString(l) + "|" + (String)localObject);
         }
-        bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8005619", "0X8005619", 0, 0, Long.toString(l), (String)localObject, "", "");
+        bcef.b(this.this$0.app, "CliOper", "", this.this$0.sessionInfo.curFriendUin, "0X8005619", "0X8005619", 0, 0, Long.toString(l), (String)localObject, "", "");
         return;
-        if (!ainh.b(this.this$0)) {
-          this.this$0.jdField_a_of_type_Obj.a(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, new aipc(this));
+        if (!ahiu.b(this.this$0)) {
+          this.this$0.jdField_a_of_type_Ocw.a(this.this$0.mActivity, this.this$0.app, this.this$0.app.getAccount(), this.this$0.sessionInfo.curFriendUin, new ahkp(this));
         }
       }
       bool = false;

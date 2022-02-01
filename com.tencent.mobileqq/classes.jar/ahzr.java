@@ -1,53 +1,33 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.ListView;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 
-public class ahzr
-  implements agvc
+class ahzr
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  private ahzs jdField_a_of_type_Ahzs;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
+  ahzr(ahzq paramahzq) {}
   
-  public ahzr(BaseChatPie paramBaseChatPie)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private ListView a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aimn)) {
-      return ((aimn)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
-    default: 
-    case 3: 
-    case 7: 
-    case 19: 
-      do
+      paramInt2 = ahzq.a(this.a).getChildCount();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
       {
-        return;
-        this.jdField_a_of_type_Ahzs = new ahzs();
-        return;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Ahzs.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Ahzs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-      return;
+        Object localObject = ahzq.a(this.a).getChildViewHolder(ahzq.a(this.a).getChildAt(paramInt1));
+        if ((localObject instanceof ahzs))
+        {
+          localObject = (ahzs)localObject;
+          if (((ahzs)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
+            ((ahzs)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          }
+        }
+        paramInt1 += 1;
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ahzs = null;
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 7, 13, 19 };
   }
 }
 

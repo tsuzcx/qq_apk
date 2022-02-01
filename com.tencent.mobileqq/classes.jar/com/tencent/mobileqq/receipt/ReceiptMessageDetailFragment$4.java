@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import bcsa;
+import bblk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,7 +16,7 @@ class ReceiptMessageDetailFragment$4
     if (QLog.isColorLevel()) {
       QLog.d("ReceiptMessageDetailFragment", 2, "mSendReadReportRequestRunnable");
     }
-    switch (ReceiptMessageDetailFragment.a(this.this$0).a)
+    switch (ReceiptMessageDetailFragment.a(this.this$0).curType)
     {
     default: 
       return;
@@ -29,7 +29,7 @@ class ReceiptMessageDetailFragment$4
     }
     ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.a(this.this$0), false);
     QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c");
-    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), bcsa.a(ReceiptMessageDetailFragment.b(this.this$0))));
+    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getMsgHandler().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), bblk.a(ReceiptMessageDetailFragment.b(this.this$0))));
   }
 }
 

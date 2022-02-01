@@ -1,27 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-class bahp
-  implements bimf
+public class bahp
 {
-  private WeakReference<avsm> a;
-  
-  bahp(avsm paramavsm)
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramavsm);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt1));
+    localHashMap.put("idType", String.valueOf(paramInt2));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "OrderMediaMsgAddTimeout", false, 0L, 0L, localHashMap, "");
   }
   
-  public void a(boolean paramBoolean)
+  public static void a(int paramInt, long paramLong)
   {
-    if (paramBoolean)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt));
+    localHashMap.put("totalCost", String.valueOf(paramLong));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "OrderMediaMsgCompleteInfo", true, paramLong, paramInt, localHashMap, "");
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt));
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      avsm localavsm = (avsm)this.a.get();
-      if (localavsm != null) {
-        localavsm.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileQZoneComponent", 2, "check friend's profile and preload web-process!");
-      }
+      localStatisticCollector.collectPerformance(null, "OrderMediaMsgSendTimeout", paramBoolean, 0L, 0L, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt1));
+    localHashMap.put("mediaSize", String.valueOf(paramInt2));
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localStatisticCollector.collectPerformance(null, "OrderMediaMsgMultiSeperate", bool, 0L, paramInt1, localHashMap, "");
+      return;
     }
   }
 }

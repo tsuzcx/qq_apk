@@ -1,54 +1,82 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import cooperation.qzone.QZoneTopGestureLayout;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class bmuk
-  extends TopGestureLayout.TopGestureDetector
 {
-  public bmuk(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
+  private bmug jdField_a_of_type_Bmug;
+  private ConcurrentHashMap<String, ArrayList<WeakReference<bmuj>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public bmuk(bmug parambmug)
   {
-    super(paramQZoneTopGestureLayout, paramContext);
+    this.jdField_a_of_type_Bmug = parambmug;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(@NonNull bnli parambnli, bmuj parambmuj)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return false;
-    }
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.b(this.a, -1);
-    }
-    if (QZoneTopGestureLayout.a(this.a)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
-    if (QZoneTopGestureLayout.a(this.a, 1))
+    String str = parambnli.e;
+    if ((str == null) || (TextUtils.isEmpty(str)))
     {
-      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
-      {
-        QZoneTopGestureLayout.c(this.a, -1);
-        this.a.mOnFlingGesture.flingLToR();
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicTextRes fontInfo is null or resUrl is empty.");
       }
+      return;
     }
-    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicText res url: " + str);
+    }
+    for (;;)
     {
-      QZoneTopGestureLayout.d(this.a, -1);
-      this.a.mOnFlingGesture.flingRToL();
-      return true;
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if (localArrayList != null)
+        {
+          parambnli = localArrayList.iterator();
+          if (!parambnli.hasNext()) {
+            break label292;
+          }
+          if (((WeakReference)parambnli.next()).get() != parambmuj) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            localArrayList.add(new WeakReference(parambmuj));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("QIMInformationPasterManager", 2, "already put url " + str);
+          }
+          return;
+        }
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new WeakReference(parambmuj));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localArrayList);
+      parambmuj = new HttpNetReq();
+      parambmuj.mCallback = new bmul(this);
+      parambmuj.mReqUrl = str;
+      parambmuj.mHttpMethod = 0;
+      parambmuj.mOutPath = bmug.a(parambnli);
+      parambmuj.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      parambmuj.setUserData(parambnli);
+      lbc.a().sendReq(parambmuj);
+      return;
+      label292:
+      int i = 0;
     }
-    return false;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a(String paramString)
   {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.a(this.a, -1);
-    }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null;
   }
 }
 

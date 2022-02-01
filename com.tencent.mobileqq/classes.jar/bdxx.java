@@ -1,830 +1,167 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.1;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bdxx
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private bdyb jdField_a_of_type_Bdyb;
-  private bdyc jdField_a_of_type_Bdyc;
-  private bdyd jdField_a_of_type_Bdyd;
-  private bdye jdField_a_of_type_Bdye;
-  private bdyf jdField_a_of_type_Bdyf;
-  private bdyi jdField_a_of_type_Bdyi;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private static bdxx a;
+  private static final HashMap<String, Integer> b = new HashMap();
+  protected HashMap<String, bdxy> a;
+  protected JSONArray a;
+  protected JSONObject a;
   
-  private bdxf a(bdxl parambdxl, JSONObject paramJSONObject)
+  static
   {
-    int n;
+    b.put("10009", Integer.valueOf(2130843719));
+    b.put("10010", Integer.valueOf(2130843720));
+    b.put("10011", Integer.valueOf(2130843721));
+    b.put("24", Integer.valueOf(2130843722));
+    b.put("25", Integer.valueOf(2130843723));
+    b.put("26", Integer.valueOf(2130843724));
+    b.put("27", Integer.valueOf(2130843725));
+    b.put("28", Integer.valueOf(2130843726));
+    b.put("29", Integer.valueOf(2130843727));
+    b.put("30", Integer.valueOf(2130843728));
+    b.put("31", Integer.valueOf(2130843729));
+    b.put("32", Integer.valueOf(2130843730));
+    b.put("20001", Integer.valueOf(2130843639));
+    b.put("20002", Integer.valueOf(2130843640));
+    b.put("20003", Integer.valueOf(2130846849));
+  }
+  
+  private bdxx()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject("{\"0\":[\"TOP\",\"23\",\"28\",\"29\",\"25\",\"31\",\"30\",\"27\",\"24\",\"26\",\"32\"],\"23\":[\"同事•朋友\",\"10009\",\"10010\",\"10011\",\"10012\"],\"24\":[\"置业安家\",\"10015\",\"10017\",\"30007\",\"30008\"],\"25\":[\"游戏\"],\"26\":[\"品牌产品\"],\"27\":[\"粉丝\"],\"28\":[\"兴趣爱好\",\"10018\",\"10019\",\"10020\",\"10021\",\"10022\",\"10023\",\"10024\",\"30000\",\"30001\",\"30002\",\"10026\"],\"29\":[\"生活休闲\",\"10029\",\"10028\",\"30003\",\"10027\",\"10031\",\"10032\",\"30004\",\"10033\",\"30005\",\"30006\",\"10014\",\"10034\"],\"30\":[\"学习考试\",\"10035\",\"10036\",\"10037\",\"10038\",\"10039\",\"10040\",\"10041\",\"10042\",\"10043\",\"10044\",\"10045\",\"10046\"],\"31\":[\"行业交流\",\"10047\",\"10048\",\"10049\",\"10050\",\"10051\",\"10052\",\"10053\",\"10054\",\"10055\",\"10056\",\"10057\",\"10058\"],\"32\":[\"家校\"],\"10009\":[\"同事\"],\"10010\":[\"亲友\"],\"10011\":[\"同学\"],\"10012\":[\"办公\"],\"10013\":[\"同城\"],\"10014\":[\"同乡\"],\"10015\":[\"业主\"],\"10017\":[\"装修\"],\"10018\":[\"影视\"],\"10019\":[\"音乐\"],\"10020\":[\"星座\"],\"10021\":[\"动漫\"],\"10022\":[\"运动\"],\"10023\":[\"读书\"],\"10024\":[\"摄影\"],\"10026\":[\"其他\"],\"10027\":[\"购物\"],\"10028\":[\"旅游\"],\"10029\":[\"美食\"],\"10030\":[\"美容\"],\"10031\":[\"宠物\"],\"10032\":[\"健康\"],\"10033\":[\"母婴\"],\"10034\":[\"其他\"],\"10035\":[\"托福\"],\"10036\":[\"雅思\"],\"10037\":[\"CET 4/6\"],\"10038\":[\"GRE\"],\"10039\":[\"GMAT\"],\"10040\":[\"MBA\"],\"10041\":[\"考研\"],\"10042\":[\"高考\"],\"10043\":[\"中考\"],\"10044\":[\"职业认证\"],\"10045\":[\"公务员\"],\"10046\":[\"其他\"],\"10047\":[\"投资\"],\"10048\":[\"IT/互联网\"],\"10049\":[\"建筑工程\"],\"10050\":[\"服务\"],\"10051\":[\"传媒\"],\"10052\":[\"营销与广告\"],\"10053\":[\"教师\"],\"10054\":[\"律师\"],\"10055\":[\"公务员\"],\"10056\":[\"银行\"],\"10057\":[\"咨询\"],\"10058\":[\"其他\"], \"20001\":[\"2000人群\"], \"20002\":[\"3000人群\"], \"20003\":[\"靓号群\"], \"30000\":[\"舞蹈\"], \"30001\":[\"电子产品\"], \"30002\":[\"汽车\"], \"30003\":[\"交友\"],\"30004\":[\"兼职\"],\"30005\":[\"二手闲置\"],\"30006\":[\"公益\"],\"30007\":[\"房屋租赁\"],\"30008\":[\"房屋出售\"]}");
+      if (aqgn.c().b)
+      {
+        this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray("[{\"title\":\"熟人与家校\",\"cates\":[\"23:10011\",\"23:10009\",\"23:10010\",\"32\"]},{\"title\":\"兴趣娱乐\",\"cates\":[\"25\",\"27\",\"28\",\"29\"]},{\"title\":\"学习交流\",\"cates\":[\"31\",\"30\",\"24\",\"26\"]},{\"title\":\"靓号群与超大群\",\"cates\":[\"20001\", \"20002\", \"20003\"]}]");
+        return;
+      }
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray("[{\"title\":\"熟人与家校\",\"cates\":[\"23:10011\",\"23:10009\",\"23:10010\",\"32\"]},{\"title\":\"兴趣娱乐\",\"cates\":[\"25\",\"27\",\"28\",\"29\"]},{\"title\":\"学习交流\",\"cates\":[\"31\",\"30\",\"24\",\"26\"]},{\"title\":\"超大群\",\"cates\":[\"20001\", \"20002\"]}]");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public static bdxx a()
+  {
+    if (jdField_a_of_type_Bdxx == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bdxx == null) {
+        jdField_a_of_type_Bdxx = new bdxx();
+      }
+      return jdField_a_of_type_Bdxx;
+    }
+    finally {}
+  }
+  
+  public bdxy a(String paramString, boolean paramBoolean)
+  {
+    int i = paramString.indexOf(":");
     Object localObject1;
-    Object localObject3;
-    label38:
-    Object localObject2;
-    int i1;
-    int i;
-    Paint localPaint;
-    Object localObject5;
-    int k;
-    Object localObject4;
-    int i4;
-    if ((parambdxl instanceof SpriteGLView))
+    if (i != -1)
     {
-      n = 4;
-      localObject1 = paramJSONObject.optString("text");
-      if (!(parambdxl instanceof SpriteGLView)) {
-        break label764;
-      }
-      localObject3 = new bdyr((SpriteGLView)parambdxl);
-      ((bdxf)localObject3).c(1.0F / n);
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_Bdye != null) {
-        localObject2 = this.jdField_a_of_type_Bdye.a((bdxk)localObject3, (String)localObject1);
-      }
-      i1 = paramJSONObject.optInt("textSize", 20) * n;
-      i = Color.parseColor(paramJSONObject.optString("textColor"));
-      localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      localPaint.setColor(i);
-      localPaint.setTextSize(i1);
-      localObject5 = paramJSONObject.optJSONObject("size");
-      k = (int)localPaint.measureText((String)localObject2);
-      localObject4 = paramJSONObject.optString("imageRight");
-      i4 = paramJSONObject.optInt("imagePadding") * n;
-      if (TextUtils.isEmpty((CharSequence)localObject4)) {
-        break label961;
-      }
-      if (this.jdField_a_of_type_Bdyd == null) {
-        break label955;
-      }
-      localObject1 = this.jdField_a_of_type_Bdyd.a((bdxk)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-      label205:
-      if (localObject1 != null) {
-        break label817;
-      }
+      localObject1 = paramString.substring(0, i);
+      paramString = paramString.substring(i + 1);
     }
-    label817:
-    label946:
-    label955:
-    label961:
     for (;;)
     {
-      int j;
-      int m;
-      int i2;
-      float f2;
-      float f1;
-      float f6;
-      float f3;
-      float f5;
-      try
+      if (localObject1 == null) {}
+      for (i = 1; this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString); i = 0)
       {
-        localObject4 = bhmq.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-        localObject1 = localObject4;
-        if (localObject1 == null) {
-          break label946;
+        localObject2 = (bdxy)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if ((paramBoolean) && ((((bdxy)localObject2).jdField_a_of_type_JavaUtilArrayList == null) || (((bdxy)localObject2).jdField_a_of_type_JavaUtilArrayList.isEmpty()))) {
+          break;
         }
-        i = ((Bitmap)localObject1).getWidth();
-        j = ((Bitmap)localObject1).getHeight();
-        j *= n;
-        i *= n;
-        if (localObject5 == null) {
-          break label935;
-        }
-        if (((JSONObject)localObject5).optInt("width") == 0) {
-          break label932;
-        }
-        k = ((JSONObject)localObject5).optInt("width") * n;
-        if (((JSONObject)localObject5).optInt("height") == 0) {
-          break label925;
-        }
-        m = ((JSONObject)localObject5).optInt("height") * n;
-        if (this.jdField_a_of_type_Bdye != null) {
-          this.jdField_a_of_type_Bdye.a(k - i - i4, (String)localObject2, localPaint);
-        }
-        localObject2 = a(k - i - i4, (String)localObject2, localPaint);
-        i2 = m;
-        m = k;
-        if (this.jdField_a_of_type_Bdye == null) {
-          break label919;
-        }
-        k = this.jdField_a_of_type_Bdye.a(m, i, i4, (String)localObject2, localPaint);
-        i3 = k;
-        if (k == 0) {
-          i3 = (int)localPaint.measureText((String)localObject2);
-        }
-        i = i + i3 + i4;
+        return localObject2;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray(paramString);
+      bdxy localbdxy = new bdxy();
+      localbdxy.a(paramString);
+      localbdxy.d = ((String)localObject1);
+      localbdxy.jdField_b_of_type_Int = i;
+      localbdxy.jdField_b_of_type_JavaLangString = ((JSONArray)localObject2).optString(0);
+      int j = ((JSONArray)localObject2).length();
+      if (j > 1)
       {
-        int i3;
-        float f7;
-        float f4;
-        label764:
-        if (QLog.isColorLevel()) {
-          QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(localOutOfMemoryError));
-        }
-      }
-      try
-      {
-        localObject4 = Bitmap.createBitmap(m, i2, Bitmap.Config.ARGB_8888);
-        localObject5 = new Canvas((Bitmap)localObject4);
-        ((Canvas)localObject5).drawColor(-16777216, PorterDuff.Mode.CLEAR);
-        f7 = i1 * 0.8F;
-        f2 = 0.0F;
-        f1 = 0.0F;
-        f4 = 0.0F;
-        f6 = 0.0F;
-        f3 = 0.0F;
-        f5 = 0.0F;
-        paramJSONObject = paramJSONObject.optString("gravity");
-        if (paramJSONObject == null) {
-          break label913;
-        }
-        if (!paramJSONObject.contains("left")) {
-          break label858;
-        }
-        f1 = 0.0F;
-        if (!paramJSONObject.contains("top")) {
-          break label877;
-        }
-        f2 = 0.0F;
-        f3 = f5;
-        f4 = f2;
-        if (paramJSONObject.equals("center"))
+        localbdxy.jdField_a_of_type_Boolean = true;
+        if (paramBoolean)
         {
-          f1 = (m - i) / 2;
-          f4 = (i2 - i1) / 2;
-          f3 = (i2 - j) / 2;
-        }
-        if (paramJSONObject.contains("center_horizontal")) {
-          f1 = (m - i) / 2;
-        }
-        f2 = f1;
-        if (!paramJSONObject.contains("center_vertical")) {
-          break label913;
-        }
-        f2 = (i2 - i1) / 2;
-        f3 = (i2 - j) / 2;
-        f4 = f2;
-        f2 = f1;
-        f1 = f3;
-        if ((this.jdField_a_of_type_Bdye == null) || (!this.jdField_a_of_type_Bdye.a((Canvas)localObject5, (String)localObject2, f2, f4, f7, m, i2, localPaint))) {
-          ((Canvas)localObject5).drawText((String)localObject2, f2, f4 + f7, localPaint);
-        }
-        if (localObject1 != null)
-        {
-          paramJSONObject = new Matrix();
-          paramJSONObject.postScale(n, n);
-          f3 = i4;
-          paramJSONObject.postTranslate(i3 + (f3 + f2), f1);
-          ((Canvas)localObject5).drawBitmap((Bitmap)localObject1, paramJSONObject, localPaint);
-        }
-        ((bdxk)localObject3).a(parambdxl, (Bitmap)localObject4);
-      }
-      catch (OutOfMemoryError parambdxl)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(parambdxl));
-        return localObject3;
-      }
-      return localObject3;
-      n = 1;
-      break;
-      localObject3 = new bdze((SpriteNativeView)parambdxl);
-      break label38;
-      continue;
-      label858:
-      if (paramJSONObject.contains("right"))
-      {
-        f1 = m - i;
-        continue;
-        label877:
-        f3 = f5;
-        f2 = f6;
-        if (paramJSONObject.contains("bottom"))
-        {
-          f2 = i2 - i1;
-          f3 = i2 - j;
-          continue;
-          f1 = f3;
-          continue;
-          k = 0;
-          continue;
-          m = i1;
-          continue;
-          continue;
-          i2 = i1;
-          m = k;
-          continue;
-          j = 0;
-          i = 0;
-          continue;
-          localObject1 = null;
-          break label205;
-          localObject1 = null;
-          j = 0;
-          i = 0;
-        }
-      }
-    }
-  }
-  
-  private bdxf a(bdxl parambdxl, JSONObject paramJSONObject, bdxj parambdxj)
-  {
-    Object localObject1 = null;
-    Object localObject3 = paramJSONObject.optString("type");
-    if ("layer".equals(localObject3)) {
-      if ((parambdxl instanceof SpriteGLView)) {
-        localObject1 = new bdyo((SpriteGLView)parambdxl);
-      }
-    }
-    Object localObject6;
-    label134:
-    int i;
-    int j;
-    label412:
-    label457:
-    Object localObject2;
-    while (localObject1 == null)
-    {
-      localObject3 = null;
-      return localObject3;
-      localObject1 = new bdzc((SpriteNativeView)parambdxl);
-      continue;
-      if ("image".equals(localObject3))
-      {
-        localObject1 = null;
-        Object localObject4 = paramJSONObject.optString("path");
-        localObject6 = paramJSONObject.optString("event");
-        if ((parambdxl instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)parambdxl;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
+          localbdxy.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
+          localObject1 = new StringBuilder();
+          i = 1;
+          if (i < j)
           {
-            localObject3 = new bdyr((SpriteGLView)localObject3);
-            if (this.jdField_a_of_type_Bdyd != null) {
-              localObject1 = this.jdField_a_of_type_Bdyd.a((bdxk)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-            }
-            if (localObject1 != null) {
-              break label412;
-            }
-          }
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
+            Object localObject3 = ((JSONArray)localObject2).optString(i);
+            JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray((String)localObject3);
+            if ((localJSONArray == null) || (localJSONArray.length() == 0)) {}
+            for (;;)
             {
-              localObject4 = bhmq.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-              localObject1 = localObject3;
-              if (localObject4 == null) {
-                break;
-              }
-              localObject1 = paramJSONObject.optJSONObject("size");
-              if (localObject1 == null) {
-                break label457;
-              }
-              i = ((JSONObject)localObject1).optInt("width");
-              j = ((JSONObject)localObject1).optInt("height");
-            }
-            catch (OutOfMemoryError localOutOfMemoryError2)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError2));
+              i += 1;
+              break;
+              localObject3 = new bdxy((String)localObject3, localJSONArray.optString(0));
+              ((bdxy)localObject3).d = paramString;
+              localbdxy.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+              if (i <= 2)
+              {
+                if (i != 1) {
+                  ((StringBuilder)localObject1).append("、");
+                }
+                ((StringBuilder)localObject1).append(((bdxy)localObject3).jdField_b_of_type_JavaLangString);
               }
             }
-            try
-            {
-              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, j, true);
-              ((bdxk)localObject3).a(parambdxl, (Bitmap)localObject1);
-              localObject1 = localObject3;
-            }
-            catch (OutOfMemoryError localOutOfMemoryError1)
-            {
-              if (!QLog.isColorLevel()) {
-                break label457;
-              }
-              QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError1));
-            }
           }
-          localObject3 = new bdyl((SpriteGLView)localObject3, true, (String)localObject6);
-          ((bdyl)localObject3).a(new bdxy(this, parambdxj, (String)localObject6));
-          break label134;
-          localObject3 = (SpriteNativeView)parambdxl;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new bdze((SpriteNativeView)localObject3);
-            break label134;
-          }
-          localObject3 = new bdzb((SpriteNativeView)localObject3, (String)localObject6);
-          ((bdzb)localObject3).a(new bdxz(this, parambdxj, (bdxf)localObject3, (String)localObject6));
-          break label134;
-          localObject5 = localObject1;
-          continue;
-          localObject2 = localObject5;
+          localbdxy.c = ((StringBuilder)localObject1).toString();
         }
       }
-      if ("video".equals(localObject3))
-      {
-        if ((parambdxl instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)parambdxl;
-          localObject2 = new VideoSprite((SpriteGLView)localObject3, ((SpriteGLView)localObject3).getContext(), true);
-          ((VideoSprite)localObject2).c(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
-          if (paramJSONObject.optBoolean("isKey", false)) {
-            ((SpriteGLView)localObject3).setVideoTimeGetter((VideoSprite)localObject2);
-          }
-          if (paramJSONObject.optBoolean("autoClose", false)) {
-            ((VideoSprite)localObject2).a(this.jdField_a_of_type_Bdyi);
-          }
-          ((VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
-        }
-        else
-        {
-          localObject2 = (SpriteNativeView)parambdxl;
-          localObject3 = this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path");
-          localObject2 = new bdzf((SpriteNativeView)localObject2, (String)localObject3);
-          ((bdzf)localObject2).a((String)localObject3, paramJSONObject.optBoolean("isLooping", false));
-        }
-      }
-      else if ("label".equals(localObject3)) {
-        localObject2 = a(parambdxl, paramJSONObject);
-      }
-    }
-    ((bdxf)localObject2).a(paramJSONObject.optString("name"));
-    ((bdxf)localObject2).a(paramJSONObject.optInt("tag"));
-    ((bdxf)localObject2).a((float)paramJSONObject.optDouble("x", 0.0D));
-    ((bdxf)localObject2).b((float)paramJSONObject.optDouble("y", 0.0D));
-    ((bdxf)localObject2).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
-    ((bdxf)localObject2).c(((bdxf)localObject2).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
-    ((bdxf)localObject2).d((float)paramJSONObject.optDouble("rotate", 0.0D));
-    ((bdxf)localObject2).e(((bdxf)parambdxj).a());
-    localObject3 = paramJSONObject.optJSONArray("actions");
-    if (localObject3 != null) {
-      ((bdxf)localObject2).a(a((JSONArray)localObject3));
-    }
-    Object localObject5 = paramJSONObject.optJSONObject("frames");
-    if (localObject5 != null)
-    {
-      localObject3 = new bdxg();
-      ((bdxg)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("fps");
-      localObject5 = ((JSONObject)localObject5).optJSONArray("datas");
-      j = ((JSONArray)localObject5).length();
-      ((bdxg)localObject3).jdField_a_of_type_ArrayOfBdxh = new bdxh[j];
-      i = 0;
-      while (i < j)
-      {
-        ((bdxg)localObject3).jdField_a_of_type_ArrayOfBdxh[i] = new bdxh();
-        localObject6 = ((JSONArray)localObject5).optJSONObject(i);
-        localObject3.jdField_a_of_type_ArrayOfBdxh[i].jdField_a_of_type_Float = ((JSONObject)localObject6).optInt("x");
-        localObject3.jdField_a_of_type_ArrayOfBdxh[i].b = ((JSONObject)localObject6).optInt("y");
-        i += 1;
-      }
-      ((bdxf)localObject2).a((bdxg)localObject3);
-    }
-    localObject3 = paramJSONObject.optString("horizontal_align");
-    if (localObject3 != null)
-    {
-      if (((String)localObject3).equals("left")) {
-        ((bdxf)localObject2).c(0);
-      }
-    }
-    else
-    {
-      label1028:
-      localObject3 = paramJSONObject.optString("vertical_align");
-      if (localObject3 != null)
-      {
-        if (!((String)localObject3).equals("top")) {
-          break label1180;
-        }
-        ((bdxf)localObject2).d(0);
-      }
-    }
-    for (;;)
-    {
-      localObject3 = localObject2;
-      if (!(localObject2 instanceof bdxj)) {
-        break;
-      }
-      localObject5 = (bdxj)localObject2;
-      paramJSONObject = paramJSONObject.optJSONArray("children");
-      j = paramJSONObject.length();
-      i = 0;
-      for (;;)
-      {
-        localObject3 = localObject2;
-        if (i >= j) {
-          break;
-        }
-        localObject3 = a(parambdxl, paramJSONObject.getJSONObject(i), parambdxj);
-        if (localObject3 != null) {
-          ((bdxj)localObject5).a((bdxf)localObject3);
-        }
-        i += 1;
-      }
-      if (((String)localObject3).equals("right"))
-      {
-        ((bdxf)localObject2).c(1);
-        break label1028;
-      }
-      if (!((String)localObject3).equals("center")) {
-        break label1028;
-      }
-      ((bdxf)localObject2).c(2);
-      break label1028;
-      label1180:
-      if (((String)localObject3).equals("bottom")) {
-        ((bdxf)localObject2).d(1);
-      } else if (((String)localObject3).equals("center")) {
-        ((bdxf)localObject2).d(2);
-      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbdxy);
+      return localbdxy;
+      localObject1 = null;
     }
   }
   
-  private bdxj a(bdxl parambdxl, String paramString)
+  public ArrayList<bdxy> a()
   {
-    Object localObject1;
-    if ((parambdxl instanceof SpriteGLView))
-    {
-      localObject1 = new bdyo((SpriteGLView)parambdxl);
-      if (paramString != null) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      return localObject1;
-      localObject1 = new bdzc((SpriteNativeView)parambdxl);
-      break;
-      try
-      {
-        label43:
-        paramString = new JSONObject(paramString);
-        Object localObject2 = paramString.optJSONObject("size");
-        int i = ((JSONObject)localObject2).optInt("width");
-        int j = ((JSONObject)localObject2).optInt("height");
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localObject2 = ((ViewGroup)parambdxl).getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-          ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
-          ((ViewGroup)parambdxl).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          ((bdxf)localObject1).c(this.jdField_a_of_type_Float);
-          if (this.jdField_a_of_type_Bdyf != null) {
-            this.jdField_a_of_type_Bdyf.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
-          }
-        }
-        paramString = paramString.optJSONArray("scene");
-        if (paramString != null)
-        {
-          j = paramString.length();
-          i = 0;
-          while (i < j)
-          {
-            localObject2 = a(parambdxl, paramString.getJSONObject(i), (bdxj)localObject1);
-            if (localObject2 != null) {
-              ((bdxj)localObject1).a((bdxf)localObject2);
-            }
-            i += 1;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-      }
-      catch (Exception parambdxl) {}
-    }
-    QLog.e("SceneBuilder", 2, "buildFromJson" + QLog.getStackTraceString(parambdxl));
-    return localObject1;
-  }
-  
-  private bdxn a(JSONObject paramJSONObject)
-  {
-    Object localObject1 = null;
-    JSONObject localJSONObject = null;
-    Object localObject2 = paramJSONObject.optString("type");
-    String str = paramJSONObject.optString("timeType");
-    int j = paramJSONObject.optInt("duration");
-    if (((String)localObject2).equals("sequence")) {
-      localObject1 = new bdxw(a(paramJSONObject.optJSONArray("actions")));
-    }
-    label513:
-    label516:
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        ((bdxn)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
-        if (str != null)
-        {
-          if (!str.equals("linear")) {
-            break label473;
-          }
-          ((bdxn)localObject1).e = 0;
-        }
-        label102:
-        if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_Bdyi != null)) {
-          ((bdxn)localObject1).a(new bdya(this));
-        }
-      }
-      return localObject1;
-      if (((String)localObject2).equals("delay"))
-      {
-        localObject1 = new bdxp(j);
-      }
-      else
-      {
-        if (((String)localObject2).equals("position"))
-        {
-          localJSONObject = paramJSONObject.optJSONObject("from");
-          localObject2 = paramJSONObject.optJSONObject("to");
-          if ((this.jdField_a_of_type_Bdyb == null) || (!"$POSITIONX$".equals(((JSONObject)localObject2).optString("x")))) {
-            break label513;
-          }
-          bdxm[] arrayOfbdxm = this.jdField_a_of_type_Bdyb.a(localJSONObject, (JSONObject)localObject2, this.jdField_a_of_type_Float);
-          if ((arrayOfbdxm == null) || (arrayOfbdxm.length != 2)) {
-            break label513;
-          }
-          localObject1 = new bdxr(j, arrayOfbdxm[0].jdField_a_of_type_Float, arrayOfbdxm[0].b, arrayOfbdxm[1].jdField_a_of_type_Float, arrayOfbdxm[1].b);
-        }
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label516;
-          }
-          localObject1 = new bdxr(j, (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"), (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"));
-          break;
-          if (((String)localObject2).equals("scale"))
-          {
-            localObject1 = new bdxv(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
-            break;
-          }
-          if (((String)localObject2).equals("alpha"))
-          {
-            localObject1 = new bdxt(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
-            break;
-          }
-          localObject1 = localJSONObject;
-          if (!((String)localObject2).equals("rotate")) {
-            break;
-          }
-          localObject1 = new bdxu(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
-          break;
-          label473:
-          if (str.equals("easeIn"))
-          {
-            ((bdxn)localObject1).e = 1;
-            break label102;
-          }
-          if (!str.equals("easeOut")) {
-            break label102;
-          }
-          ((bdxn)localObject1).e = 2;
-          break label102;
-        }
-      }
-    }
-  }
-  
-  public static String a(int paramInt, String paramString, Paint paramPaint)
-  {
-    String str2 = "";
-    if (paramInt <= 0) {}
-    float f;
-    do
-    {
-      return paramString;
-      f = paramPaint.measureText("...");
-    } while ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt);
-    int i = paramString.length() - 1;
-    for (;;)
-    {
-      String str1 = str2;
-      if (i > 0)
-      {
-        if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt) {
-          str1 = paramString.substring(0, i) + "...";
-        }
-      }
-      else {
-        return str1;
-      }
-      i -= 1;
-    }
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    StringBuffer localStringBuffer;
-    Object localObject;
-    if (paramFile.exists())
-    {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
-    }
-    else
-    {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject = bhmi.b((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label225;
-        }
-        if (localObject[i].startsWith("﻿")) {
-          localObject[i] = localObject[i].replace("﻿", "");
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i]);
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label218;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("SceneBuilder", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
-        return false;
-      }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("SceneBuilder", 2, "isAnimationPackageValid IOException");
-      return false;
-      label218:
-      i += 1;
-    }
-    label225:
-    return true;
-  }
-  
-  private bdxn[] a(JSONArray paramJSONArray)
-  {
-    int j = paramJSONArray.length();
-    bdxn[] arrayOfbdxn = new bdxn[j];
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_OrgJsonJSONArray.length());
+    int k = this.jdField_a_of_type_OrgJsonJSONArray.length();
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
-      arrayOfbdxn[i] = a(paramJSONArray.optJSONObject(i));
-      i += 1;
-    }
-    return arrayOfbdxn;
-  }
-  
-  private static String b(String paramString)
-  {
-    try
-    {
-      localInputStreamReader = new InputStreamReader(new FileInputStream(new File(paramString)));
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+      Object localObject = this.jdField_a_of_type_OrgJsonJSONArray.optJSONObject(i);
+      bdxy localbdxy1 = new bdxy();
+      localbdxy1.jdField_b_of_type_Int = 2;
+      localbdxy1.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("title");
+      localArrayList.add(localbdxy1);
+      localbdxy1.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      localObject = ((JSONObject)localObject).optJSONArray("cates");
+      int m = ((JSONArray)localObject).length();
+      int j = 0;
+      if (j < m)
       {
-        label66:
-        localBufferedReader = null;
-        InputStreamReader localInputStreamReader = null;
-      }
-    }
-    try
-    {
-      localBufferedReader = new BufferedReader(localInputStreamReader);
-      try
-      {
-        paramString = new StringBuilder();
+        bdxy localbdxy2 = a(((JSONArray)localObject).optString(j), true);
+        if (localbdxy2 == null) {}
         for (;;)
         {
-          String str = localBufferedReader.readLine();
-          if (str == null) {
-            break;
-          }
-          paramString.append(str);
-          paramString.append('\n');
+          j += 1;
+          break;
+          localbdxy1.jdField_a_of_type_JavaUtilArrayList.add(localbdxy2);
         }
-        paramString.printStackTrace();
       }
-      catch (Exception paramString) {}
+      i += 1;
     }
-    catch (Exception paramString)
-    {
-      localBufferedReader = null;
-      break label66;
-    }
-    if (localBufferedReader != null) {}
-    try
-    {
-      localBufferedReader.close();
-      if (localInputStreamReader != null) {}
-      try
-      {
-        localInputStreamReader.close();
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      localBufferedReader.close();
-      localInputStreamReader.close();
-      paramString = paramString.toString();
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public bdxx a(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bdxx a(bdyc parambdyc)
-  {
-    this.jdField_a_of_type_Bdyc = parambdyc;
-    return this;
-  }
-  
-  public bdxx a(bdyd parambdyd)
-  {
-    this.jdField_a_of_type_Bdyd = parambdyd;
-    return this;
-  }
-  
-  public bdxx a(bdye parambdye)
-  {
-    this.jdField_a_of_type_Bdye = parambdye;
-    return this;
-  }
-  
-  public bdxx a(bdyf parambdyf)
-  {
-    this.jdField_a_of_type_Bdyf = parambdyf;
-    return this;
-  }
-  
-  public bdxx a(bdyi parambdyi)
-  {
-    this.jdField_a_of_type_Bdyi = parambdyi;
-    return this;
-  }
-  
-  public bdxx a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void a(bdxl parambdxl, bdyg parambdyg)
-  {
-    ThreadManager.post(new SceneBuilder.1(this, parambdxl, parambdyg), 8, null, true);
+    return localArrayList;
   }
 }
 

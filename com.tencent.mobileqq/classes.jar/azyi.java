@@ -1,79 +1,118 @@
+import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class azyi
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
+  private static volatile azyi a;
   
-  private String b()
+  public static azyi a()
   {
-    switch (this.jdField_c_of_type_Int)
+    if (a == null) {}
+    try
     {
-    default: 
-      return "";
-    case 4: 
-      return anzj.a(2131712444);
-    case 5: 
-      return anzj.a(2131712442);
-    case 6: 
-      return anzj.a(2131712440);
-    case 7: 
-      return anzj.a(2131712441);
-    case 8: 
-      return anzj.a(2131712445);
+      if (a == null) {
+        a = new azyi();
+      }
+      return a;
     }
-    return anzj.a(2131712443);
+    finally {}
   }
   
-  public String a()
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_b_of_type_Int == 3)
-    {
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("   ");
-        }
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-      }
-      if (this.jdField_c_of_type_Int > 0)
-      {
-        String str = b();
-        if (!TextUtils.isEmpty(str))
-        {
-          if (localStringBuilder.length() > 0) {
-            localStringBuilder.append("   ");
-          }
-          localStringBuilder.append(str);
-        }
+    long l = paramIntent.getLongExtra("FORWARD_MSG_UNISEQ", 0L);
+    if (l == 0L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplyMsgSender", 2, "sendReplyMessage uniseq=0");
       }
     }
-    for (;;)
+    ChatMessage localChatMessage;
+    do
     {
-      return localStringBuilder.toString();
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
+      return;
+      localChatMessage = ((azye)paramQQAppInterface.getManager(340)).a(l);
+      if (localChatMessage != null) {
+        break;
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ReplyMsgSender", 2, "sendReplyMessage chatMessage is null");
+    return;
+    a(paramQQAppInterface, localChatMessage, paramSessionInfo, 0, paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0), true);
   }
   
-  public String toString()
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList1, acwc paramacwc, MessageRecord paramMessageRecord, String paramString2, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList2)
   {
-    return "uint32_idx:" + this.jdField_a_of_type_Int + " uint32_category:" + this.jdField_b_of_type_Int + " str_school_id:" + this.jdField_a_of_type_JavaLangString + " str_school_name:" + this.jdField_b_of_type_JavaLangString + " str_department_id:" + this.jdField_c_of_type_JavaLangString + " str_department_name:" + this.jdField_d_of_type_JavaLangString + " uint32_degree:" + this.jdField_c_of_type_Int + " uint32_enrollment_year:" + this.jdField_d_of_type_Int + " uint32_graduation_year:" + this.e + " uint32_allow_recommend:" + this.f;
+    MessageForReplyText localMessageForReplyText = new MessageForReplyText();
+    localMessageForReplyText.msg = paramString1;
+    localMessageForReplyText.istroop = paramSessionInfo.curType;
+    localMessageForReplyText.msgtype = -1049;
+    localMessageForReplyText.atInfoList = paramArrayList1;
+    localMessageForReplyText.mSourceMsgInfo = paramacwc.a;
+    localMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
+    localMessageForReplyText.isBarrageMsg = paramacwc.jdField_d_of_type_Boolean;
+    localMessageForReplyText.barrageTimeLocation = paramacwc.b;
+    localMessageForReplyText.barrageSourceMsgType = paramacwc.jdField_d_of_type_Int;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramArrayList2 != null) && (!paramArrayList2.isEmpty()))
+    {
+      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_msg", paramString2);
+      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_at_list", bevq.a(paramArrayList2));
+    }
+    int i = 2;
+    if (!TextUtils.isEmpty(paramacwc.a.mSourceMsgTroopName)) {
+      i = 0;
+    }
+    a(paramQQAppInterface, localMessageForReplyText, paramSessionInfo, i, 0, false);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, SessionInfo paramSessionInfo, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    new ArrayList(1).add(paramChatMessage);
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(paramChatMessage);
+    paramChatMessage = new awcs();
+    paramChatMessage.jdField_a_of_type_Int = paramInt1;
+    paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    paramChatMessage.jdField_a_of_type_JavaUtilList = localArrayList;
+    paramChatMessage.jdField_a_of_type_JavaUtilMap = null;
+    paramChatMessage.g = paramInt2;
+    paramChatMessage.b = 8;
+    paramChatMessage.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
+    paramChatMessage.jdField_a_of_type_Boolean = paramBoolean;
+    new azyh(paramQQAppInterface).e(paramChatMessage);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (paramMessageForMixedMsg == null) {
+      return;
+    }
+    if (paramMessageForMixedMsg.getReplyMessage(paramQQAppInterface) != null)
+    {
+      new ArrayList(1).add(paramMessageForMixedMsg);
+      ArrayList localArrayList = new ArrayList(1);
+      localArrayList.add(paramMessageForMixedMsg);
+      paramMessageForMixedMsg = new awcs();
+      paramMessageForMixedMsg.jdField_a_of_type_Int = 0;
+      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilList = localArrayList;
+      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilMap = null;
+      paramMessageForMixedMsg.b = 9;
+      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
+      new azyf(paramQQAppInterface).e(paramMessageForMixedMsg);
+      return;
+    }
+    ((avsf)paramQQAppInterface.getManager(174)).a(paramSessionInfo, paramMessageForMixedMsg, false, paramInt);
   }
 }
 

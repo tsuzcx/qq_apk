@@ -1,15 +1,16 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class srf
-  implements srh
+  extends DataSetObserver
 {
-  srf(sqr paramsqr) {}
+  srf(sre paramsre) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onChanged()
   {
-    srt.b(paramContext, paramProteusItemData.b, paramProteusItemData.a);
+    QLog.d("FastWebActivity", 2, "DataSetObserver ");
+    FastWebActivity.a(this.a.a, 100L);
   }
 }
 

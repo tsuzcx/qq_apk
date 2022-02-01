@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bhuw;
-import bhuy;
-import bhva;
-
-public class HttpCommunicator$1
+class HttpCommunicator$1
   implements Runnable
 {
-  public HttpCommunicator$1(bhuw parambhuw, bhva parambhva, bhuy parambhuy) {}
+  HttpCommunicator$1(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, HttpCommunicator.HttpCommunicatorHandler paramHttpCommunicatorHandler) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Bhva, this.jdField_a_of_type_Bhuy);
+    this.this$0.onResponseTimeout(this.val$msg, this.val$handler);
   }
 }
 

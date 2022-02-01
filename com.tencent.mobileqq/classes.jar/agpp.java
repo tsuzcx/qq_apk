@@ -1,30 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class agpp
-  implements agpf
+  implements andi
 {
-  public agpp(DoodlePanel paramDoodlePanel) {}
+  public agpp(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void a(int paramInt)
+  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    DoodlePanel.a(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 2)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
+    do
     {
-      if (!DoodlePanel.a(this.a))
-      {
-        DoodlePanel.a(this.a, true);
-        agpq localagpq = new agpq(this);
-        bhlq.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689850), null, this.a.getContext().getString(2131689841), localagpq, null).show();
+      return;
+      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+      if (paramInt1 != 1001) {
+        paramInt2 = 100;
       }
+      paramView.setProgress(paramInt2);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131377849);
+    } while (!(paramView instanceof ProgressBar));
+    ((ProgressBar)paramView).setProgress(paramInt2);
+    if (paramInt2 == 100) {}
+    for (paramInt1 = 8;; paramInt1 = 0)
+    {
+      paramView.setVisibility(paramInt1);
       return;
     }
-    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689843), 0).a();
   }
 }
 

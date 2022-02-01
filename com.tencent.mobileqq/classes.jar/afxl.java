@@ -1,15 +1,16 @@
-import android.app.ProgressDialog;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afxl
-  implements anvi
+class afxl
+  implements DialogInterface.OnClickListener
 {
-  public afxl(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  afxl(afxj paramafxj, Context paramContext) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopRobotPickerActivity.a(this.a);
-    this.a.a.dismiss();
+    afxj.a(this.jdField_a_of_type_Afxj.a, this.jdField_a_of_type_AndroidContentContext);
+    axvz.a("0X800B0AF");
   }
 }
 

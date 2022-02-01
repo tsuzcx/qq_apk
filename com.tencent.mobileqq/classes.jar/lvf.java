@@ -1,39 +1,39 @@
-public abstract class lvf
-  extends lur
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
+
+public class lvf
+  extends Handler
 {
-  protected long b;
-  public lvr[] c;
+  WeakReference<RedPacketRollTextView> a;
   
-  public void a(long paramLong)
+  public lvf(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (this.c != null)
-    {
-      int i = (int)((paramLong - l) % this.b * this.c.length / this.b);
-      if ((i >= 0) && (i < this.c.length)) {
-        this.jdField_a_of_type_Lvr = this.c[i];
-      }
-    }
+    this.a = new WeakReference(paramRedPacketRollTextView);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    super.b();
-    if (this.c != null)
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
     {
-      lvr[] arrayOflvr = this.c;
-      int j = arrayOflvr.length;
-      int i = 0;
-      while (i < j)
+      Bundle localBundle;
+      do
       {
-        lvr locallvr = arrayOflvr[i];
-        if (locallvr != null) {
-          locallvr.a();
-        }
-        i += 1;
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
       }
-      this.c = null;
-    }
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 

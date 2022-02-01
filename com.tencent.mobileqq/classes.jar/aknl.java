@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.view.View;
 
-public class aknl
-  implements DialogInterface.OnKeyListener
+public abstract interface aknl
 {
-  public aknl(BaseActivityView paramBaseActivityView) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return (paramInt == 4) && (this.a.a.f()) && (bhnv.d(this.a.getContext()));
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
 }
 
 

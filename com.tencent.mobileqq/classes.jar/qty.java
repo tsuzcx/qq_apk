@@ -1,15 +1,20 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qty
-  extends qtl
+public class qty
+  implements View.OnClickListener
 {
-  qty(qtw paramqtw, AppInterface paramAppInterface) {}
+  public qty(ComponentComment paramComponentComment, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public Drawable a()
+  public void onClick(View paramView)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
+    String str = paa.g + bfuc.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), str);
+    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

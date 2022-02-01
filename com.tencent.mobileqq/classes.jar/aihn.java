@@ -1,14 +1,42 @@
+import android.database.ContentObserver;
 import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aihn
-  extends aocj
+public class aihn
+  extends ContentObserver
 {
-  aihn(aihh paramaihh) {}
+  WeakReference<PhoneContactManagerImp> a;
   
-  protected void f(boolean paramBoolean)
+  public aihn(Handler paramHandler)
   {
-    super.f(paramBoolean);
-    this.a.a.sendEmptyMessage(0);
+    super(paramHandler);
+  }
+  
+  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  {
+    if (this.a != null) {
+      this.a.clear();
+    }
+    if (paramPhoneContactManagerImp != null) {
+      this.a = new WeakReference(paramPhoneContactManagerImp);
+    }
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+    }
+    if (this.a == null) {}
+    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    {
+      if (localPhoneContactManagerImp != null) {
+        localPhoneContactManagerImp.g = true;
+      }
+      return;
+    }
   }
 }
 

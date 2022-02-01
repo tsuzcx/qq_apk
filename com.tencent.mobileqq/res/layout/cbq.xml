@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nka" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@drawable/bih" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
-</RelativeLayout>
+<dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout android:gravity="bottom" android:id="@id/n6w" android:layout_width="fill_parent" android:layout_height="fill_parent" app:umanoDragView="@id/n74" app:umanoOverlay="true" app:umanoPanelHeight="@dimen/bb5" app:umanoParallaxOffset="100.0dip" app:umanoScrollableView="@id/n77" app:umanoShadowHeight="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/n75" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/n74" android:layout_width="fill_parent" android:layout_height="@dimen/bb5">
+            <ImageView android:layout_gravity="center" android:id="@id/n76" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bif" android:scaleType="fitCenter" />
+            <dov.com.qq.im.aeeditor.lyric.widget.LyricViewSingleLine android:layout_gravity="center" android:id="@id/n78" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" app:aelvLyricHilightColor="@color/fe" app:aelvLyricHilightSize="14.0dip" app:aelvLyricHilightThinColor="@color/fe" app:aelvLyricLineHeight="14.0dip" app:aelvLyricLineMargin="14.0dip" app:aelvLyricLiteratim="false" app:aelvLyricScrollable="false" app:aelvLyricTextColor="@color/fe" app:aelvLyricTextFakeBold="false" app:aelvLyricTextSize="14.0dip" app:aelvLyricTextThinColor="@color/fe" />
+        </LinearLayout>
+        <dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView android:layout_gravity="center_horizontal" android:id="@id/n77" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="25.0dip" />
+    </LinearLayout>
+</dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout>

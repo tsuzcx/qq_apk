@@ -1,25 +1,30 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class agaz
-  extends blgm
+class agaz
+  extends ClickableSpan
 {
-  public agaz(VisitorsActivity paramVisitorsActivity) {}
+  agaz(agap paramagap) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
-      this.a.centerView.setText("");
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bjnw.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131719031);
+      paramView.c(2131690620);
+      paramView.a(new agba(this));
+      paramView.a(new agbb(this, paramView));
+      paramView.show();
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
     }
-    this.a.centerView.clearAnimation();
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131693941);
-    }
+    paramTextPaint.setColor(-12541697);
   }
 }
 

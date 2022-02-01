@@ -1,35 +1,46 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class akzu
-  implements TextWatcher
+  implements bdxp
 {
-  public akzu(TransactionActivity paramTransactionActivity) {}
+  public akzu(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public ArrayList<ResultRecord> a()
   {
-    if (TransactionActivity.b(this.a).getText().length() > 4) {
-      if (!TransactionActivity.b(this.a).isEnabled())
-      {
-        TransactionActivity.b(this.a).setEnabled(true);
-        TransactionActivity.b(this.a).setClickable(true);
-        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
-      }
-    }
-    while (!TransactionActivity.b(this.a).isEnabled()) {
-      return;
-    }
-    TransactionActivity.b(this.a).setClickable(false);
-    TransactionActivity.b(this.a).setEnabled(false);
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResultRecordList();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a()
+  {
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    {
+      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        FriendTeamListInnerFrame.a(this.a).a(0);
+        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
+        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
+        if (localGroups1 != null) {
+          this.a.jdField_a_of_type_Bdxn.a();
+        }
+        if (localGroups2 != null) {
+          this.a.jdField_a_of_type_Bdxn.c();
+        }
+      }
+    }
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public ArrayList<String> b()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSelectedUinList();
+  }
 }
 
 

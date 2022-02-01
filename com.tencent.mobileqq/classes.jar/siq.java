@@ -1,28 +1,61 @@
 import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-public class siq
-  implements onp
+class siq
+  extends sif
 {
-  public siq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo) {}
+  siq(sig paramsig) {}
   
-  public void a(ons paramons)
+  public int a()
   {
-    if (paramons.a() == 0)
+    return 5;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    sig.a(this.a, false);
+    Object localObject = null;
+    try
     {
-      osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a(), 2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a().getString(2131717057), 0).a();
+      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.getSubscribeUin()))
+      {
+        paramString = paramBaseArticleInfo.getSubscribeUin();
+        paramBaseArticleInfo = "https://post.mp.qq.com/jubao/index?_wv=3&puin=" + paramString + "&uin_type=0&url=" + paramActionSheetItem + "&type=4&key=" + paramBaseArticleInfo.getInnerUniqueID();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "click jubao btn, reportUrl:" + paramBaseArticleInfo);
+        }
+        paramString = new Intent(sig.a(this.a), QQBrowserActivity.class);
+        paramString.putExtra("url", paramBaseArticleInfo);
+        paramString.putExtra("hide_more_button", true);
+        sig.a(this.a).startActivity(paramString);
+        return;
+      }
     }
-    for (;;)
+    catch (UnsupportedEncodingException paramString)
     {
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).a();
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup, null);
-      return;
-      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131711767), 0).a();
+      for (;;)
+      {
+        paramActionSheetItem = localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "encode url failed, because UTF-8 is unknown");
+          paramActionSheetItem = localObject;
+          continue;
+          if (!TextUtils.isEmpty(paramBaseArticleInfo.thirdUin)) {
+            paramString = paramBaseArticleInfo.thirdUin;
+          } else {
+            paramString = "0";
+          }
+        }
+      }
     }
   }
 }

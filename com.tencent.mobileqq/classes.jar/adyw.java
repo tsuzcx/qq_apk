@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
-class adyw
-  implements axfu<Emoticon>
+public class adyw
+  implements Comparator<ChatMessage>
 {
-  adyw(adyv paramadyv, int paramInt1, int paramInt2, String paramString) {}
+  public adyw(QQLSActivity paramQQLSActivity) {}
   
-  public void a(Emoticon paramEmoticon)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    ahlt.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Adyv.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adyv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      return 0;
+    }
+    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
+      return 1;
+    }
+    return -1;
   }
 }
 

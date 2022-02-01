@@ -1,8 +1,8 @@
-public class bjqp
+import android.view.MotionEvent;
+
+public abstract interface bjqp
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import amtj;
 import android.text.TextUtils;
-import anzj;
-import bhhq;
+import bfra;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -14,39 +14,39 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pox;
-import poy;
-import qvr;
-import qyr;
+import puf;
+import pug;
+import rcp;
+import rfq;
 
 public class ChannelCoverInfoModule$4
   implements Runnable
 {
-  public ChannelCoverInfoModule$4(pox parampox) {}
+  public ChannelCoverInfoModule$4(puf parampuf) {}
   
   public void run()
   {
     List localList1 = this.this$0.c();
     if (localList1.isEmpty())
     {
-      localList1.add(new qvr(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, anzj.a(2131700456), anzj.a(2131700428)));
-      localList1.add(new qvr(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, anzj.a(2131700445), anzj.a(2131700454)));
+      localList1.add(new rcp(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, amtj.a(2131700691), amtj.a(2131700663)));
+      localList1.add(new rcp(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, amtj.a(2131700680), amtj.a(2131700689)));
     }
     Object localObject2 = new HashMap();
     Object localObject1 = localList1.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (qvr)((Iterator)localObject1).next();
-      ((HashMap)localObject2).put(Long.valueOf(((qvr)localObject3).jdField_a_of_type_Long), ((qvr)localObject3).jdField_a_of_type_JavaUtilList);
+      localObject3 = (rcp)((Iterator)localObject1).next();
+      ((HashMap)localObject2).put(Long.valueOf(((rcp)localObject3).jdField_a_of_type_Long), ((rcp)localObject3).jdField_a_of_type_JavaUtilList);
     }
-    localObject1 = ((qvr)localList1.get(0)).jdField_a_of_type_JavaUtilList;
-    Object localObject3 = pox.a(this.this$0);
+    localObject1 = ((rcp)localList1.get(0)).jdField_a_of_type_JavaUtilList;
+    Object localObject3 = puf.a(this.this$0);
     Object localObject4;
     if ((localObject3 != null) && (((List)localObject3).size() > 0))
     {
       localObject4 = localList1.iterator();
       while (((Iterator)localObject4).hasNext()) {
-        ((qvr)((Iterator)localObject4).next()).jdField_a_of_type_JavaUtilList.clear();
+        ((rcp)((Iterator)localObject4).next()).jdField_a_of_type_JavaUtilList.clear();
       }
       localObject3 = ((List)localObject3).iterator();
       for (;;)
@@ -58,7 +58,7 @@ public class ChannelCoverInfoModule$4
           if (!TextUtils.isEmpty(((TabChannelCoverInfo)localObject4).redPointJson)) {}
           try
           {
-            ((TabChannelCoverInfo)localObject4).redPoint = ((qyr)bhhq.b(new JSONObject(((TabChannelCoverInfo)localObject4).redPointJson), qyr.class));
+            ((TabChannelCoverInfo)localObject4).redPoint = ((rfq)bfra.b(new JSONObject(((TabChannelCoverInfo)localObject4).redPointJson), rfq.class));
             List localList2 = (List)((HashMap)localObject2).get(Long.valueOf(((TabChannelCoverInfo)localObject4).channelConfigType));
             if (localList2 != null) {
               localList2.add(localObject4);
@@ -77,14 +77,14 @@ public class ChannelCoverInfoModule$4
       }
       localObject2 = localList1.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        Collections.sort(((qvr)((Iterator)localObject2).next()).jdField_a_of_type_JavaUtilList, new poy(this));
+        Collections.sort(((rcp)((Iterator)localObject2).next()).jdField_a_of_type_JavaUtilList, new pug(this));
       }
       if (((List)localObject1).size() == 0)
       {
         QLog.d("ChannelCoverInfoModule", 2, "loadAllChannelCoverListFromDb mylist empty");
         ((List)localObject1).addAll(this.this$0.b());
-        ((qvr)localList1.get(1)).jdField_a_of_type_JavaUtilList.clear();
-        localObject2 = pox.b(this.this$0).iterator();
+        ((rcp)localList1.get(1)).jdField_a_of_type_JavaUtilList.clear();
+        localObject2 = puf.b(this.this$0).iterator();
       }
     }
     label846:
@@ -108,36 +108,36 @@ public class ChannelCoverInfoModule$4
         if (i != 0) {
           break label846;
         }
-        ((qvr)localList1.get(1)).jdField_a_of_type_JavaUtilList.add(localObject3);
+        ((rcp)localList1.get(1)).jdField_a_of_type_JavaUtilList.add(localObject3);
         break;
-        localObject2 = pox.a(this.this$0, pox.a(this.this$0, (List)localObject1), TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG);
+        localObject2 = puf.a(this.this$0, puf.a(this.this$0, (List)localObject1), TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG);
         ((List)localObject1).clear();
         ((List)localObject1).addAll((Collection)localObject2);
         localObject2 = localList1.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (qvr)((Iterator)localObject2).next();
-          pox.a(((qvr)localObject3).jdField_a_of_type_JavaUtilList, "loadAllChannelCoverListFromDb " + ((qvr)localObject3).jdField_a_of_type_Long);
+          localObject3 = (rcp)((Iterator)localObject2).next();
+          puf.a(((rcp)localObject3).jdField_a_of_type_JavaUtilList, "loadAllChannelCoverListFromDb " + ((rcp)localObject3).jdField_a_of_type_Long);
         }
-        pox.a(this.this$0, true, (List)localObject1);
+        puf.a(this.this$0, true, (List)localObject1);
         for (;;)
         {
-          pox.a(this.this$0, localList1);
+          puf.a(this.this$0, localList1);
           ThreadManager.getUIHandler().post(new ChannelCoverInfoModule.4.2(this, localList1));
           return;
           if (QLog.isColorLevel()) {
             QLog.d("ChannelCoverInfoModule", 2, "loadAllChannelCoverListFromDb list is null");
           }
           ((List)localObject1).addAll(this.this$0.b());
-          ((qvr)localList1.get(1)).jdField_a_of_type_JavaUtilList.clear();
-          ((qvr)localList1.get(1)).jdField_a_of_type_JavaUtilList.addAll(pox.b(this.this$0));
+          ((rcp)localList1.get(1)).jdField_a_of_type_JavaUtilList.clear();
+          ((rcp)localList1.get(1)).jdField_a_of_type_JavaUtilList.addAll(puf.b(this.this$0));
           localObject2 = localList1.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (qvr)((Iterator)localObject2).next();
-            pox.a(((qvr)localObject3).jdField_a_of_type_JavaUtilList, "loadAllChannelCoverListFromDb default" + ((qvr)localObject3).jdField_a_of_type_Long);
+            localObject3 = (rcp)((Iterator)localObject2).next();
+            puf.a(((rcp)localObject3).jdField_a_of_type_JavaUtilList, "loadAllChannelCoverListFromDb default" + ((rcp)localObject3).jdField_a_of_type_Long);
           }
-          pox.a(this.this$0, true, (List)localObject1);
+          puf.a(this.this$0, true, (List)localObject1);
         }
       }
     }

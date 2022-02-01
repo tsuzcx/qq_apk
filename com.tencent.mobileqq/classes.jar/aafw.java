@@ -1,94 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
+import java.util.ArrayList;
 
-public abstract class aafw<T>
-  implements Handler.Callback
+public abstract class aafw
+  implements aagl
 {
-  protected int a;
-  protected Context a;
-  protected Handler a;
-  protected View a;
-  protected int b = -1;
+  protected long a;
+  protected ArrayList<aagl> a;
+  protected boolean a;
+  public boolean b = true;
+  public boolean c;
   
-  public aafw(Context paramContext, boolean paramBoolean)
+  public aafw()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (paramBoolean) {
-      a();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = 350L;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 350L;
+  }
+  
+  public void a(aagl paramaagl)
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaagl)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaagl);
     }
   }
   
-  public int a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
+  public abstract boolean b();
   
-  protected Resources a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
-    }
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected final void a(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public abstract void b();
-  
-  public final void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  protected abstract void d();
-  
-  protected abstract void e();
-  
-  public void f()
-  {
-    e();
-    a(-1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    d();
-    return true;
-  }
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aafw
  * JD-Core Version:    0.7.0.1
  */

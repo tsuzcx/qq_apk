@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public abstract interface bcyt
+class bcyt
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  bcyt(bcyq parambcyq) {}
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
-  
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 4) && (bcyq.a(this.a) != null)) {
+      bcyq.a(this.a).a();
+    }
+    return paramInt == 4;
+  }
 }
 
 

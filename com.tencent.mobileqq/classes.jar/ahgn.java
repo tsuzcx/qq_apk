@@ -1,17 +1,48 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
 class ahgn
-  extends ahkx
+  implements bjoe
 {
-  ahgn(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahgn(ahgc paramahgc, boolean paramBoolean, bjnw parambjnw) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new ahpb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bjnw.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Ahgc.n();
+      }
+      else
+      {
+        this.jdField_a_of_type_Ahgc.l();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Ahgc.l();
+        }
+        else
+        {
+          this.jdField_a_of_type_Ahgc.k();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_Ahgc.k();
+          }
+        }
+      }
+    }
   }
 }
 

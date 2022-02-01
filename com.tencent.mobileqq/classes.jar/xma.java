@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-class xma
-  implements View.OnClickListener
+public class xma
+  extends xva
 {
-  xma(xlz paramxlz, xly paramxly) {}
-  
-  public void onClick(View paramView)
+  public xma(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (VideoCoverListBar.a(this.jdField_a_of_type_Xlz.jdField_a_of_type_Xly.a) != null) {
-      VideoCoverListBar.a(this.jdField_a_of_type_Xlz.jdField_a_of_type_Xly.a).a(xlz.a(this.jdField_a_of_type_Xlz));
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void O_()
+  {
+    ysg localysg = a().a("FeedSegment");
+    if ((localysg != null) && (localysg.a() == 0))
+    {
+      this.a = true;
+      return;
     }
-    yup.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", xlz.a(this.jdField_a_of_type_Xlz) });
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = false;
   }
 }
 

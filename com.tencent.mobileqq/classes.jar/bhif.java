@@ -1,75 +1,93 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.concurrent.BlockingQueue;
 
 public class bhif
-  extends anyu
+  extends Handler
 {
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  private long a = 0L;
+  
+  private bhif(Looper paramLooper)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    super(paramLooper);
+  }
+  
+  private void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
+    }
+    removeMessages(1);
+    sendEmptyMessageDelayed(1, paramLong);
+  }
+  
+  private void a(bhie parambhie)
+  {
+    long l2 = 0L;
+    parambhie = parambhie.a();
+    long l1;
+    int i;
+    if (parambhie != null)
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
-      if (paramSetting == null) {
-        break label99;
+      parambhie.a();
+      if (QQToast.a(parambhie) == 0)
+      {
+        l1 = 2000L;
+        this.a = (System.currentTimeMillis() + l1);
+        i = 1;
       }
     }
-    label99:
-    for (String str = paramSetting.uin;; str = "")
+    for (;;)
     {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bhie.a(this.a)))) {
-        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
+      if (!QQToast.a().isEmpty())
+      {
+        if (i != 0) {
+          l2 = 100L + l1;
+        }
+        a(l2);
       }
       return;
+      l1 = 3500L;
+      break;
+      i = 0;
+      l1 = 0L;
     }
   }
   
-  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    switch (paramMessage.what)
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
-      if (paramList == null) {
-        break label138;
-      }
     }
-    label138:
-    for (String str = paramList.toString();; str = "")
+    long l;
+    do
     {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if (paramList != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          if ((str != null) && (str.equals(bhie.a(this.a))))
-          {
-            if (!paramBoolean) {
-              break label145;
-            }
-            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
-          }
-        }
-      }
       return;
-    }
-    label145:
-    bhie.a(this.a).obtainMessage(1).sendToTarget();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
+      }
+      l = System.currentTimeMillis();
+      if (l <= this.a + 100L) {
+        break;
+      }
+      paramMessage = (bhie)QQToast.a().poll();
+      if (paramMessage != null)
+      {
+        a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
+    return;
+    a(this.a - l + 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhif
  * JD-Core Version:    0.7.0.1
  */

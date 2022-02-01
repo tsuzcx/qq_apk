@@ -1,30 +1,26 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-final class zqs
-  extends zqh
+class zqs
+  extends Handler
 {
-  zqs(zqh paramzqh, PublishVideoEntry paramPublishVideoEntry) {}
+  zqs(zqq paramzqq) {}
   
-  public void onFailure(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
-    this.jdField_a_of_type_Zqh.onFailure(paramString);
-    yup.a("music_composite", "music_clip", 0, 1, new String[0]);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    yup.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Beba + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Bebb);
+    }
+    if (this.a.jdField_a_of_type_Bebb != null) {
+      this.a.a(this.a.jdField_a_of_type_Bebb);
+    }
+    this.a.a();
   }
 }
 

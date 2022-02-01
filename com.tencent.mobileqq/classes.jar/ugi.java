@@ -1,69 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ugi
-  extends arac<ugh>
+final class ugi
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public ugh a(int paramInt)
-  {
-    return new ugh();
-  }
+  ugi(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
   
-  @Nullable
-  public ugh a(araj[] paramArrayOfaraj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    switch (paramInt)
     {
-      uqf.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaraj[0].a);
-      ugh localugh = new ugh();
-      localugh.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localugh;
     }
-    return null;
-  }
-  
-  public void a(ugh paramugh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramugh);
-    }
-  }
-  
-  public Class<ugh> clazz()
-  {
-    return ugh.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 447;
+    do
+    {
+      do
+      {
+        return;
+        ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+    } while (ugf.a == null);
+    ugf.a.dismiss();
+    ugf.a = null;
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    ugf.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
   }
 }
 

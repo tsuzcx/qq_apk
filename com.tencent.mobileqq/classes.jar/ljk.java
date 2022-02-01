@@ -1,21 +1,11 @@
-import java.util.Observable;
-
 public class ljk
-  extends Observable
 {
-  public void a(Object[] paramArrayOfObject)
+  public int a;
+  public byte[] a;
+  
+  public ljk(ljj paramljj)
   {
-    try
-    {
-      super.setChanged();
-      super.notifyObservers(paramArrayOfObject);
-      return;
-    }
-    finally
-    {
-      paramArrayOfObject = finally;
-      throw paramArrayOfObject;
-    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

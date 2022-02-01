@@ -9,9 +9,9 @@ class VideoPlayerView$21
   
   public void run()
   {
-    if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 8) && (!VideoPlayerView.m()))
+    if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 8) && (!VideoPlayerView.j()))
     {
-      this.this$0.c();
+      this.this$0.f();
       VideoPlayerView.e(this.this$0);
       VideoPlayerView.a(this.this$0).setVisibility(0);
       VideoPlayerView.a(this.this$0, true);

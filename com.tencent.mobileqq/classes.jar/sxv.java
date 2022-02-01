@@ -1,105 +1,153 @@
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public abstract class sxv<T>
-  extends sxu<T>
+class sxv
+  implements URLDrawable.URLDrawableListener, sxz
 {
-  protected Context a;
-  protected List<T> a;
-  protected int b;
+  private static sxx jdField_a_of_type_Sxx = new sxx(null);
+  private ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
+  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  protected sxv(Context paramContext, int paramInt)
+  sxv(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView = paramReadInJoyCapsuleView;
   }
   
-  private void c(List<T> paramList)
+  private void a(boolean paramBoolean)
   {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt < getCount())
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = sxp.a();
+    localURLDrawableOptions.mFailedDrawable = sxp.a();
+    localURLDrawableOptions.mPlayGifImage = paramBoolean;
+    try
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      QLog.e("ReadInJoyFeedsHeaderVie", 2, "fail to set background", localMalformedURLException);
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
+  private void c()
   {
-    if (paramInt2 < getCount())
-    {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-      notifyDataSetChanged();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
+    int i = sxp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, false);
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    a(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setColorFilter(sxp.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(-1);
+    int i = sxp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, true);
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
     }
   }
   
-  public void b(T paramT)
+  private void e()
   {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramT);
-    notifyDataSetChanged();
+    a(true);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
+        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      }
+    }
   }
   
-  public void b(List<T> paramList)
+  public ChannelCoverInfo a()
   {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
+  }
+  
+  public void a()
+  {
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onPlayOnce: pause the animation - " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+    {
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      if ((localDrawable instanceof GifDrawable))
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
+        ((GifDrawable)localDrawable).getImage().reset();
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
+        a(false);
+        QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
+      }
+    }
+  }
+  
+  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new sxw(this, paramOnClickListener));
+    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bkwm.c(paramChannelCoverInfo.mChannelCoverId)))
+    {
+      c();
+      return;
+    }
+    e();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_Sxx.a();
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadCanceled: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
     c();
-    c(paramList);
-    notifyDataSetChanged();
   }
   
-  public void c()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    b();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadFialed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
+    c();
   }
   
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public T getItem(int paramInt)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
+    d();
+    AbstractGifImage.resumeAll();
+    jdField_a_of_type_Sxx.a(this, paramURLDrawable);
   }
 }
 

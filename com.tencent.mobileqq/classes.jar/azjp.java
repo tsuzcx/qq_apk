@@ -1,38 +1,56 @@
-import androidx.annotation.NonNull;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.videoplatform.api.ILoadSo;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
 
 public class azjp
+  implements ILoadSo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  boolean a = false;
   
-  public azjp(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public boolean isCkeygeneratorV2Load()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
+    return this.a;
   }
   
-  private boolean a(String[] paramArrayOfString)
+  public boolean isCkguardLoad()
   {
-    String str = null;
-    if (paramArrayOfString.length >= this.jdField_b_of_type_Int) {
-      str = paramArrayOfString[(this.jdField_b_of_type_Int - 1)];
+    return this.a;
+  }
+  
+  public boolean isDownProxyLoad()
+  {
+    return this.a;
+  }
+  
+  public boolean isTPCoreLoad()
+  {
+    return this.a;
+  }
+  
+  public boolean loadDownProxySync()
+  {
+    boolean bool = bbzm.a().a("DownloadProxy").isSucc();
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
     }
-    return (str != null) && (str.equals(this.jdField_a_of_type_JavaLangString));
+    return bool;
   }
   
-  public int a()
+  public void loadSo(LoadSoCallback paramLoadSoCallback)
   {
-    return this.jdField_a_of_type_Int;
+    bbzm localbbzm = bbzm.a();
+    paramLoadSoCallback = new azjq(this, paramLoadSoCallback);
+    localbbzm.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
   }
   
-  @NonNull
-  public String toString()
+  public boolean loadTPCoreSync()
   {
-    return "Category [statusId=" + this.jdField_a_of_type_Int + ", displayName=" + this.jdField_b_of_type_JavaLangString + ", detectName=" + this.jdField_a_of_type_JavaLangString + ", level=" + this.jdField_b_of_type_Int + "]";
+    boolean bool = bbzm.a().a("TPCore-master").isSucc();
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
+    }
+    return bool;
   }
 }
 

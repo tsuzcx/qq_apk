@@ -1,29 +1,62 @@
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import java.util.Comparator;
+import com.tencent.ark.open.ArkView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class anvr
-  implements Comparator<DiscussionMemberInfo>
 {
-  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
+  private List<ArkView> a = new ArrayList();
+  
+  public void a()
   {
-    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null))
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      paramDiscussionMemberInfo1 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo1.memberUin));
-      paramDiscussionMemberInfo2 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo2.memberUin));
-      if (paramDiscussionMemberInfo1.longValue() <= paramDiscussionMemberInfo2.longValue()) {}
-    }
-    while (paramDiscussionMemberInfo1 != null)
-    {
-      return 1;
-      if (paramDiscussionMemberInfo1.longValue() < paramDiscussionMemberInfo2.longValue()) {
-        return -1;
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onDestroy();
       }
-      return 0;
     }
-    if (paramDiscussionMemberInfo2 != null) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onDestroy");
     }
-    return 0;
+    this.a.clear();
+  }
+  
+  public void a(ArkView paramArkView)
+  {
+    this.a.add(paramArkView);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onPause();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onPause");
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onResume();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onResume");
+    }
   }
 }
 

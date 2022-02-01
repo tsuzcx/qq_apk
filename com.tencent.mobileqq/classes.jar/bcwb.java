@@ -1,30 +1,29 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-public class bcwb
-  extends MSFServlet
+class bcwb
+  extends WebViewClient
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  bcwb(bcvz parambcvz) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
-  
-  public void service(Intent paramIntent)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    String str = paramIntent.getAction();
-    if ((str != null) && ("gif_ui_show".equals(str)))
-    {
-      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
-      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
-      paramIntent = new Bundle();
-      paramIntent.putInt("gif_ui_show_bid", i);
-      paramIntent.putLong("gif_ui_show_seq", l);
-      notifyObserver(null, 0, true, paramIntent, ayxp.class);
-      return;
-    }
-    super.service(paramIntent);
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest);
   }
 }
 

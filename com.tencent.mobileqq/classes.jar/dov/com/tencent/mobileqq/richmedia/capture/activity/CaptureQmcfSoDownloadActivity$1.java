@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
 import android.os.Bundle;
-import bpam;
+import bmbx;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -27,15 +27,15 @@ class CaptureQmcfSoDownloadActivity$1
         {
           QIMCameraCaptureActivity.a(this.this$0, CaptureQmcfSoDownloadActivity.a(this.this$0), CaptureQmcfSoDownloadActivity.a(this.this$0));
           return;
-          bpam.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]soDownloadFragment not instanceof CaptureQmcfSoDownloadFragment");
+          bmbx.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]soDownloadFragment not instanceof CaptureQmcfSoDownloadFragment");
         }
       }
-      bpam.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]hasRequest false");
+      bmbx.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]hasRequest false");
       QIMCameraCaptureActivity.a(this.this$0, CaptureQmcfSoDownloadActivity.a(this.this$0));
       this.this$0.finish();
       return;
     }
-    bpam.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]BaseActivity.sTopActivity not instanceof CaptureQmcfSoDownloadActivity");
+    bmbx.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]BaseActivity.sTopActivity not instanceof CaptureQmcfSoDownloadActivity");
   }
 }
 

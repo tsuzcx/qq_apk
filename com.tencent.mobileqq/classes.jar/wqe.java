@@ -1,65 +1,51 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class wqe
-  extends zte<CommentEntry>
+  extends ysg
 {
-  boolean jdField_a_of_type_Boolean;
+  public static final String KEY = "EmptyPlaceHolderSegment";
+  private final int jdField_a_of_type_Int;
+  private xsh jdField_a_of_type_Xsh;
   
-  public wqe(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
+  public wqe(Context paramContext, int paramInt)
   {
-    super(paramList, paramBoolean);
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    super(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt, CommentEntry paramCommentEntry, yqw paramyqw)
+  public int a()
   {
-    if (paramCommentEntry == null) {
-      yuk.e("FeedCommentLego", "FeedComment getView. data is null.");
+    return 1;
+  }
+  
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
+  {
+    return paramxsh.a();
+  }
+  
+  public String a()
+  {
+    return "EmptyPlaceHolderSegment";
+  }
+  
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
+    if (QQStoryContext.a()) {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166495));
     }
-    Object localObject2;
-    Object localObject1;
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        localObject2 = (TextView)paramyqw.a(2131364805);
-        paramyqw = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
-        localObject1 = wrc.a().a(paramyqw);
-        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
-        {
-          ((TextView)localObject2).setText((CharSequence)localObject1);
-          ((TextView)localObject2).setSpannableFactory(begp.a);
-          ((TextView)localObject2).setOnTouchListener(wqa.a(this.jdField_a_of_type_Wqa));
-          return;
-        }
-        localObject1 = ygd.a(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wqa.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, wqa.a(this.jdField_a_of_type_Wqa));
-        if (QQStoryContext.a()) {
-          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Wqa.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
-        }
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        ((TextView)localObject2).setSpannableFactory(begp.a);
-        ((TextView)localObject2).setOnTouchListener(wqa.a(this.jdField_a_of_type_Wqa));
-        wtt localwtt = (wtt)wth.a(2);
-        localObject2 = localwtt.b(paramCommentEntry.authorUnionId);
-        if (!paramCommentEntry.isReply()) {
-          break;
-        }
-        paramCommentEntry = localwtt.b(paramCommentEntry.replierUnionId);
-      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
-      wrc.a().a(paramyqw, (CharSequence)localObject1);
-      return;
-    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
-    wrc.a().a(paramyqw, (CharSequence)localObject1);
+      this.jdField_a_of_type_Xsh = new xsh(paramViewGroup);
+      return this.jdField_a_of_type_Xsh;
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165553));
+    }
   }
 }
 

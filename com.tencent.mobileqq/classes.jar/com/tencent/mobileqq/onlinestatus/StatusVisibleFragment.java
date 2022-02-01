@@ -10,13 +10,13 @@ import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import azih;
-import azij;
-import azir;
-import bhlg;
+import axvp;
+import axvr;
+import axvz;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class StatusVisibleFragment
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, azij
+  implements View.OnClickListener, axvr
 {
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
@@ -50,16 +50,16 @@ public class StatusVisibleFragment
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131377611);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131377625);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131377379);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131377393);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131361910));
-    this.c = this.mContentView.findViewById(2131377626);
+    this.c = this.mContentView.findViewById(2131377394);
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131361911));
     this.mContentView.findViewById(2131361912).setOnClickListener(this);
-    this.mContentView.findViewById(2131368925).setOnClickListener(this);
-    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131711707));
-    setLeftButton(2131690580, null);
-    setRightButton(2131692262, this);
+    this.mContentView.findViewById(2131368951).setOnClickListener(this);
+    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131711939));
+    setLeftButton(2131690620, null);
+    setRightButton(2131692310, this);
     a();
     this.jdField_a_of_type_Int = getActivity().getIntent().getIntExtra("key_launch_scene", -1);
   }
@@ -113,7 +113,7 @@ public class StatusVisibleFragment
       this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)getActivity().getIntent().getSerializableExtra("online_status_permission_item"));
       if (this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem == null)
       {
-        OnlineStatusFriendsPermissionItem localOnlineStatusFriendsPermissionItem = ((azih)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(370)).a(40001L, true, this);
+        OnlineStatusFriendsPermissionItem localOnlineStatusFriendsPermissionItem = ((axvp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(370)).a(40001L, true, this);
         if (localOnlineStatusFriendsPermissionItem != null)
         {
           this.jdField_a_of_type_Boolean = false;
@@ -143,14 +143,14 @@ public class StatusVisibleFragment
     while (i < this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().size())
     {
       Long localLong = (Long)this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().get(i);
-      ((SpannableStringBuilder)localObject).append(bhlg.m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localLong)));
+      ((SpannableStringBuilder)localObject).append(ContactUtils.getFriendShowName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localLong)));
       if (i != this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().size() - 1) {
         ((SpannableStringBuilder)localObject).append("、");
       }
       i += 1;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(((SpannableStringBuilder)localObject).toString());
-    localObject = getResources().getDrawable(2130839281);
+    localObject = getResources().getDrawable(2130839316);
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
     this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
     if (this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().size() > 0)
@@ -221,27 +221,27 @@ public class StatusVisibleFragment
       if (paramInt2 != 0) {
         break label53;
       }
-      azir.a("0X800AF4B", 1);
+      axvz.a("0X800AF4B", 1);
     }
     label53:
     while (paramInt2 != -1) {
       return;
     }
-    azir.a("0X800AF4A", 1);
+    axvz.a("0X800AF4A", 1);
   }
   
   public boolean onBackEvent()
   {
     if (this.jdField_a_of_type_Int == 2) {
-      azir.a("0X800AF95", 2, "1");
+      axvz.a("0X800AF95", 2, "1");
     }
     for (;;)
     {
       return super.onBackEvent();
       if (this.jdField_a_of_type_Int == 1) {
-        azir.a("0X800AF95", 1, "1");
+        axvz.a("0X800AF95", 1, "1");
       } else if (this.jdField_a_of_type_Int == 3) {
-        azir.a("0X800AF95", 1, "2");
+        axvz.a("0X800AF95", 1, "2");
       }
     }
   }
@@ -270,11 +270,11 @@ public class StatusVisibleFragment
       this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
       this.jdField_a_of_type_AndroidAppActivity.finish();
       if (this.jdField_a_of_type_Int == 2) {
-        azir.a("0X800AF96", 2, "1");
+        axvz.a("0X800AF96", 2, "1");
       } else if (this.jdField_a_of_type_Int == 1) {
-        azir.a("0X800AF96", 1, "1");
+        axvz.a("0X800AF96", 1, "1");
       } else if (this.jdField_a_of_type_Int == 3) {
-        azir.a("0X800AF96", 1, "2");
+        axvz.a("0X800AF96", 1, "2");
       }
     }
   }

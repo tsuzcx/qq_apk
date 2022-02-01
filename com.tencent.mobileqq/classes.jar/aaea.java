@@ -1,16 +1,19 @@
-import android.os.Handler;
-import com.tencent.biz.richframework.widget.BaseVideoView;
-import com.tencent.biz.richframework.widget.BaseVideoView.1.1;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aaea
-  implements SDKInitListener
+class aaea
+  implements View.OnClickListener
 {
-  public aaea(BaseVideoView paramBaseVideoView) {}
+  aaea(aady paramaady, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.a().post(new BaseVideoView.1.1(this));
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aady, 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
-import pww;
+import qcq;
 
 public class NoteCardProteusItem$5
   implements Runnable
 {
-  public NoteCardProteusItem$5(pww parampww) {}
+  public NoteCardProteusItem$5(qcq paramqcq) {}
   
   public void run()
   {
-    pww.b(this.this$0);
+    qcq.b(this.this$0);
   }
 }
 

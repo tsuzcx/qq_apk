@@ -1,173 +1,146 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDetectModeData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
+import tencent.im.msg.im_msg_body.RichText;
+import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
 
-public class asdt
-  extends asdn
+class asdt
 {
-  private int a;
-  private boolean d;
+  private int jdField_a_of_type_Int;
+  private msg_comm.Msg jdField_a_of_type_MsfMsgcommMsg_comm$Msg;
+  private msg_comm.MsgHead jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead;
+  private im_msg_body.NotOnlineFile jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public asdt(QQAppInterface paramQQAppInterface)
+  public asdt(asdm paramasdm, msg_comm.Msg paramMsg, msg_comm.MsgHead paramMsgHead, int paramInt1, int paramInt2)
   {
-    super("qq.android.minidetect.model_v8.2.0", paramQQAppInterface);
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead = paramMsgHead;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public int a()
+  private boolean a(msg_comm.Msg paramMsg)
   {
-    return 10085;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return MiniScanDetectModeData.class;
-  }
-  
-  public String a()
-  {
-    return "MiniScanDetectModeData";
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.a = ((int)(100L * paramLong1 / paramLong2));
-    apqv.a(2, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download progress: " + this.a);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean)
-    {
-      f();
-      apqv.a(2, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download success: " + paramString);
-    }
-    if (apqy.a(paramString) != 0)
-    {
-      f();
-      apqv.a(2, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      apqv.a(2, true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Object localObject = a();
-    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
-    {
-      localObject = (MiniScanDecodeSoData)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
-      }
-      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
-    }
-    do
-    {
-      return;
-      if (!this.d) {
-        this.d = paramBoolean;
-      }
-      super.a(paramBoolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b()
-  {
-    boolean bool = auog.a(new File(apqy.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "isNetValid2Download by user ");
+        QLog.e("FileTransferHandler<FileAssistant>", 2, "<---decodeC2CMsgPkg_OfflineFile return null:hasBody:" + paramMsg.msg_body.has() + "hasRichT:" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has());
       }
       return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
+    return false;
   }
   
-  public boolean e()
+  private boolean a(im_msg_body.RichText paramRichText)
   {
-    if (!this.d)
+    if (!paramRichText.not_online_file.has())
     {
-      if (BaseActivity.mAppForground) {}
-      for (boolean bool = false;; bool = true)
+      if (QLog.isColorLevel()) {
+        QLog.e("FileTransferHandler<FileAssistant>", 2, "hasNotOnlineFile");
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean a(SubMsgType0x4.MsgBody paramMsgBody)
+  {
+    if (!paramMsgBody.msg_not_online_file.has())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has not NotOnlineFile");
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public asdt a()
+  {
+    Object localObject;
+    if ((bblk.c(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead.c2c_cmd.has()) && (this.b == 169))
+    {
+      if (a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg))
       {
+        this.jdField_a_of_type_Boolean = true;
+        return this;
+      }
+      localObject = (im_msg_body.RichText)((im_msg_body.MsgBody)this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).rich_text.get();
+      if (a((im_msg_body.RichText)localObject))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return this;
+      }
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject).not_online_file.get());
+    }
+    label222:
+    label229:
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return this;
+      if ((this.jdField_a_of_type_Int != 529) || (this.b != 4)) {
+        break;
+      }
+      try
+      {
+        localObject = ((im_msg_body.MsgBody)this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+        SubMsgType0x4.MsgBody localMsgBody = new SubMsgType0x4.MsgBody();
+        this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)localInvalidProtocolBufferMicroException.msg_not_online_file.get());
+      }
+      catch (Exception localException)
+      {
+        try
+        {
+          localObject = (SubMsgType0x4.MsgBody)localMsgBody.mergeFrom((byte[])localObject);
+          if (!a((SubMsgType0x4.MsgBody)localObject)) {
+            break label229;
+          }
+          this.jdField_a_of_type_Boolean = true;
+          return this;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label222;
+          }
+          QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", localInvalidProtocolBufferMicroException);
+          this.jdField_a_of_type_Boolean = true;
+          return this;
+        }
+        localException = localException;
         if (QLog.isColorLevel()) {
-          QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "downloadResource later " + bool);
+          QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failed.", localException);
         }
-        if (!bool) {
-          break;
-        }
-        return false;
+        this.jdField_a_of_type_Boolean = true;
+        return this;
       }
     }
-    return super.e();
+    this.jdField_a_of_type_Boolean = true;
+    return this;
   }
   
-  public void f()
+  public im_msg_body.NotOnlineFile a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    asdd.a(a(), new String[0]);
+    return this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asdt
  * JD-Core Version:    0.7.0.1
  */

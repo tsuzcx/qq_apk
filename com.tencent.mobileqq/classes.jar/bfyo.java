@@ -1,7 +1,13 @@
-public class bfyo
+class bfyo
 {
-  public static final String a = antf.ba + "troop/homework/";
-  public static final String b = a + "upload/";
+  public int a;
+  public String a;
+  
+  public bfyo()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+  }
 }
 
 

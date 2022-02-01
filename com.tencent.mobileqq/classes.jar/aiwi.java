@@ -1,44 +1,60 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aiwi
-  implements Animation.AnimationListener
+public class aiwi
+  extends atbh
 {
-  aiwi(aiwh paramaiwh) {}
+  public aiwi(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView)
   {
-    try
+    paramView = (ajao)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      aszt.b(localFileManagerEntity);
+    }
+    switch (paramView.jdField_a_of_type_Int)
     {
-      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
+    }
+    for (;;)
+    {
+      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+      return;
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772266);
-        paramAnimation.setInterpolator(new LinearInterpolator());
-        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366924));
-        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366925));
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        aszk.a(2131692367);
         return;
       }
-      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
+      asyq.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new aiwj(this, localFileManagerEntity));
+      continue;
+      this.a.a(localFileManagerEntity);
+      continue;
+      if (localFileManagerEntity.getCloudType() == 0)
       {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        return;
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
+      }
+      else if (localFileManagerEntity.getCloudType() == 6)
+      {
+        ((amqd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).a(0, localFileManagerEntity.uniseq, false);
+      }
+      else
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity.nSessionId);
+        continue;
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        {
+          aszk.a(2131692367);
+          return;
+        }
+        boolean bool = localFileManagerEntity.isSend();
+        asyq.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new aiwk(this, localFileManagerEntity));
       }
     }
-    catch (Throwable paramAnimation) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

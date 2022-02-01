@@ -1,6 +1,15 @@
-public abstract interface psa
+import com.tencent.qphone.base.util.QLog;
+
+class psa
+  implements bcoq
 {
-  public abstract void A_();
+  psa(prz paramprz) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.i("FrameworkHandler", 1, "[onChange], isStudyMode = " + paramBoolean);
+    prz.a(this.a, paramBoolean);
+  }
 }
 
 

@@ -1,138 +1,76 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.view.View;
 
 public class ndp
-  implements ncy
+  implements ndn
 {
-  ncz jdField_a_of_type_Ncz;
-  nda jdField_a_of_type_Nda;
+  protected ncq a;
+  protected ndo a;
   
-  public ndp(ncz paramncz)
+  public ndp(ndo paramndo)
   {
-    this.jdField_a_of_type_Ncz = paramncz;
+    this.jdField_a_of_type_Ndo = paramndo;
   }
   
-  public String a(Context paramContext, mze parammze)
+  public int a()
   {
-    paramContext = "";
-    Object localObject = parammze.a();
-    if (localObject == null)
-    {
-      QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip null gameItem");
-      localObject = paramContext;
-      if (TextUtils.isEmpty(paramContext))
-      {
-        localObject = BaseApplicationImpl.getContext().getResources().getString(2131690277);
-        QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip tips isEmpty");
-      }
-      paramContext = parammze.c();
-      if (TextUtils.isEmpty(paramContext)) {
-        break label98;
-      }
-      paramContext = paramContext + "\n";
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label109;
-      }
-      return localObject;
-      paramContext = ((mzj)localObject).m;
-      break;
-      label98:
-      QLog.e("GuessPictureStagePresenter", 1, "songTypeString tips isEmpty");
-    }
-    label109:
-    return paramContext + (String)localObject;
+    return this.jdField_a_of_type_Ndo.a();
   }
   
-  public String a(Context paramContext, boolean paramBoolean)
+  public View a()
   {
-    if (paramContext == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessPictureStagePresenter", 2, "getGameRuleAnswerTip null context");
-      }
-      return "";
-    }
-    return paramContext.getResources().getString(2131690276);
+    return this.jdField_a_of_type_Ndo.a();
   }
   
-  public nda a()
+  public void a()
   {
-    return this.jdField_a_of_type_Nda;
+    this.jdField_a_of_type_Ndo.a();
   }
   
-  public void a(myp parammyp)
+  public void a(RectF paramRectF)
   {
-    this.jdField_a_of_type_Ncz.a(parammyp);
+    this.jdField_a_of_type_Ndo.a(paramRectF);
   }
   
-  public void a(mze parammze)
+  public void a(String paramString)
   {
-    a(myk.a(parammze), false);
-    this.jdField_a_of_type_Nda.a().d(false);
+    this.jdField_a_of_type_Ndo.a(paramString);
   }
   
-  public void a(nda paramnda)
+  public void a(String paramString1, Bitmap paramBitmap1, String paramString2, long paramLong1, long paramLong2, long paramLong3, Bitmap paramBitmap2, long paramLong4, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Nda = paramnda;
+    this.jdField_a_of_type_Ndo.a(paramString1, paramBitmap1, paramString2, paramLong1, paramLong2, paramLong3, paramBitmap2, paramLong4, paramBoolean);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString, RectF paramRectF, int paramInt)
   {
-    this.jdField_a_of_type_Ncz.a(paramBoolean);
+    this.jdField_a_of_type_Ndo.a(paramString, paramRectF, paramInt);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(ncq paramncq)
   {
-    this.jdField_a_of_type_Ncz.a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_Ncq = paramncq;
   }
   
-  public boolean a()
+  public void b(RectF paramRectF)
   {
-    return false;
+    this.jdField_a_of_type_Ndo.b(paramRectF);
   }
   
-  public boolean a(boolean paramBoolean)
+  public void b(String paramString)
   {
-    return false;
+    this.jdField_a_of_type_Ndo.b(paramString);
   }
   
-  public void b(mze parammze)
+  public void b(String paramString, RectF paramRectF, int paramInt)
   {
-    a(myk.a(parammze), true);
-    a(parammze.a());
-    this.jdField_a_of_type_Nda.a().d(true);
-    String str = parammze.e() + 1 + "/" + parammze.f();
-    this.jdField_a_of_type_Nda.a().b(str);
-    this.jdField_a_of_type_Nda.a(this.jdField_a_of_type_Ncz.a(), parammze.a().f(), parammze.a().d());
-    this.jdField_a_of_type_Nda.a().k(parammze);
+    this.jdField_a_of_type_Ndo.b(paramString, paramRectF, paramInt);
   }
-  
-  public void c(mze parammze)
-  {
-    a(myk.a(parammze), true);
-    a(parammze.a());
-    this.jdField_a_of_type_Nda.a(this.jdField_a_of_type_Ncz.a(), parammze.a().f(), parammze.a().d());
-    String str = parammze.e() + 1 + "/" + parammze.f();
-    this.jdField_a_of_type_Nda.a().b(str);
-    this.jdField_a_of_type_Nda.a().k(parammze);
-  }
-  
-  public void d(mze parammze) {}
-  
-  public void e(mze parammze) {}
-  
-  public void f(mze parammze) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndp
  * JD-Core Version:    0.7.0.1
  */

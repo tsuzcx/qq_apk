@@ -1,55 +1,55 @@
 package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import bbmy;
-import bbna;
-import bbnh;
+import bagt;
+import bagv;
+import bahc;
 
 public class GpuImagePartsFilterGroup$2
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$2(bbnh parambbnh, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
+  public GpuImagePartsFilterGroup$2(bahc parambahc, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
   
   public void run()
   {
-    bbna localbbna2 = null;
-    bbna localbbna1;
-    if ((bbnh.a(this.this$0) == null) || (bbnh.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
+    bagv localbagv2 = null;
+    bagv localbagv1;
+    if ((bahc.a(this.this$0) == null) || (bahc.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
     {
-      localbbna1 = bbnh.a(this.this$0);
-      bbnh.a(this.this$0, (bbna)bbmy.a(this.jdField_a_of_type_Int));
-      bbnh.a(this.this$0).init();
-      bbnh.a(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localbagv1 = bahc.a(this.this$0);
+      bahc.a(this.this$0, (bagv)bagt.a(this.jdField_a_of_type_Int));
+      bahc.a(this.this$0).init();
+      bahc.a(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
     for (;;)
     {
-      if ((bbnh.b(this.this$0) == null) || (bbnh.b(this.this$0).getFilterType() != this.d))
+      if ((bahc.b(this.this$0) == null) || (bahc.b(this.this$0).getFilterType() != this.d))
       {
-        localbbna2 = bbnh.b(this.this$0);
-        bbnh.b(this.this$0, (bbna)bbmy.a(this.d));
-        bbnh.b(this.this$0).init();
-        bbnh.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+        localbagv2 = bahc.b(this.this$0);
+        bahc.b(this.this$0, (bagv)bagt.a(this.d));
+        bahc.b(this.this$0).init();
+        bahc.b(this.this$0).onOutputSizeChanged(this.b, this.c);
       }
       if ((this.e == 90) || (this.e == 270))
       {
-        bbnh.a(this.this$0).a(false);
-        bbnh.b(this.this$0).a(false);
+        bahc.a(this.this$0).a(false);
+        bahc.b(this.this$0).a(false);
       }
       for (;;)
       {
-        bbnh.a(this.this$0, this.jdField_a_of_type_Float);
-        bbnh.a(this.this$0).a(true, 0.1F * 2.0F + this.jdField_a_of_type_Float);
-        bbnh.b(this.this$0).a(false, this.jdField_a_of_type_Float);
-        if (localbbna1 != null) {
-          localbbna1.destroy();
+        bahc.a(this.this$0, this.jdField_a_of_type_Float);
+        bahc.a(this.this$0).a(true, 0.1F * 2.0F + this.jdField_a_of_type_Float);
+        bahc.b(this.this$0).a(false, this.jdField_a_of_type_Float);
+        if (localbagv1 != null) {
+          localbagv1.destroy();
         }
-        if (localbbna2 != null) {
-          localbbna2.destroy();
+        if (localbagv2 != null) {
+          localbagv2.destroy();
         }
         return;
-        bbnh.a(this.this$0).a(true);
-        bbnh.b(this.this$0).a(true);
+        bahc.a(this.this$0).a(true);
+        bahc.b(this.this$0).a(true);
       }
-      localbbna1 = null;
+      localbagv1 = null;
     }
   }
 }

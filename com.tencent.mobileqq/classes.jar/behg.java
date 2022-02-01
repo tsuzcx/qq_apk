@@ -1,21 +1,40 @@
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.FileUploadMgrObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
-class behg
-  implements Comparator
+public class behg
+  implements Observer
 {
-  behg(behe parambehe) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
+  private final void a(Object paramObject)
   {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i == j) {
-      return 0;
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    paramObject = (Object[])paramObject[1];
+    switch (i)
+    {
+    default: 
+      return;
     }
-    if (i > j) {
-      return 1;
+    a((Set)paramObject[0]);
+  }
+  
+  protected void a(Set<Long> paramSet) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
     }
-    return -1;
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      new Handler(paramObservable).post(new TroopFileUploadMgr.FileUploadMgrObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 

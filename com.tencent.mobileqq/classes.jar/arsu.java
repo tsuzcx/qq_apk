@@ -1,8 +1,21 @@
-public class arsu
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
+class arsu
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public String a;
+  arsu(arsq paramarsq) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
+    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class ahju
-  extends ahkx
+  implements DialogInterface.OnDismissListener
 {
-  ahju(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahju(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ahcj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.a = null;
   }
 }
 

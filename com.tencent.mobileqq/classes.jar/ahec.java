@@ -1,90 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 public class ahec
-  extends VasQuickUpdateManager.CallBacker
+  implements BusinessObserver
 {
-  public ahec(ahdk paramahdk) {}
+  ahec(ahdt paramahdt) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 1;
-    String str;
-    if (paramLong == 21L)
-    {
-      paramString3 = "";
-      paramString2 = Integer.valueOf(0);
-      if (!paramString1.startsWith("poke.item.effect.")) {
-        break label245;
-      }
-      str = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-      paramVasQuickUpdateManager = Integer.valueOf(str);
-      paramString2 = paramVasQuickUpdateManager;
-      paramString3 = str;
-      if (!ahnt.c.contains(paramVasQuickUpdateManager)) {
-        break label337;
-      }
-      ahnt.c.remove(paramVasQuickUpdateManager);
-      paramString3 = str;
-      paramString2 = paramVasQuickUpdateManager;
-      paramInt2 = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    for (;;)
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
-      if ((!TextUtils.isEmpty(paramString3)) && (paramInt2 != 0) && (!ahnt.c.contains(paramString2)) && (!ahnt.c.contains(paramString2)))
-      {
-        if (ahnt.a("bubble", paramString2.intValue())) {
-          break label318;
-        }
-        paramInt2 = 1;
-        label142:
-        if (ahnt.a("/normal.png", paramString2.intValue())) {
-          break label324;
-        }
-        label155:
-        boolean bool = ahnt.b.contains(paramString2);
-        paramString3 = this.a.a;
-        if ((paramInt2 == 0) || (i == 0) || (!bool)) {
-          break label330;
-        }
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
-      label318:
-      label324:
-      label330:
-      for (paramString2 = anzj.a(2131704177);; paramString2 = "")
-      {
-        bhto.a(paramString3, paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("GivingHeart", 2, "vas poke download id: " + paramString1 + " , errorcode: " + paramInt1);
-        }
-        return;
-        label245:
-        if (!paramString1.startsWith("poke.item.res.")) {
-          break label337;
-        }
-        str = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        paramVasQuickUpdateManager = Integer.valueOf(str);
-        paramString2 = paramVasQuickUpdateManager;
-        paramString3 = str;
-        if (!ahnt.d.contains(paramVasQuickUpdateManager)) {
-          break label337;
-        }
-        ahnt.d.remove(paramVasQuickUpdateManager);
-        paramString3 = str;
-        paramString2 = paramVasQuickUpdateManager;
-        paramInt2 = 1;
-        break;
-        paramInt2 = 0;
-        break label142;
-        i = 0;
-        break label155;
-      }
-      label337:
-      paramInt2 = 0;
     }
+    try
+    {
+      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+      {
+        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 

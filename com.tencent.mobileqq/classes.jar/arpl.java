@@ -1,61 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class arpl
-  extends arac<arpk>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/extendfriend/wiget/ColdPalaceTipDialog$init$1$1"}, k=3, mv={1, 1, 16})
+final class arpl
+  implements View.OnClickListener
 {
-  public static arpk a()
-  {
-    return (arpk)aran.a().a(486);
-  }
+  arpl(arpj paramarpj, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  @NonNull
-  public arpk a(int paramInt)
+  public final void onClick(View paramView)
   {
-    return new arpk();
-  }
-  
-  @Nullable
-  public arpk a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arpk.a(paramArrayOfaraj);
+    if (this.jdField_a_of_type_Arpj.isShowing())
+    {
+      bcef.b(null, "dc00898", "", "", "0X800B2CF", "0X800B2CF", 2, 0, "", "", "", "");
+      this.jdField_a_of_type_Arpj.dismiss();
     }
-    return null;
-  }
-  
-  public void a(arpk paramarpk) {}
-  
-  public Class<arpk> clazz()
-  {
-    return arpk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 486;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpl
  * JD-Core Version:    0.7.0.1
  */

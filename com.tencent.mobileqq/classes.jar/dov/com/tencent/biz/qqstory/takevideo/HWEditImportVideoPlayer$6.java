@@ -1,23 +1,23 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bqch;
-import bqgk;
-import bqid;
+import bnck;
+import bnee;
+import bnfa;
 
 public class HWEditImportVideoPlayer$6
   implements Runnable
 {
-  public HWEditImportVideoPlayer$6(bqid parambqid) {}
+  public HWEditImportVideoPlayer$6(bnfa parambnfa) {}
   
   public void run()
   {
-    if (this.this$0.j) {
+    if (this.this$0.g) {
       return;
     }
-    bqch localbqch = (bqch)this.this$0.a(bqch.class);
-    if (localbqch != null) {
-      localbqch.b();
+    bnck localbnck = (bnck)this.this$0.a(bnck.class);
+    if (localbnck != null) {
+      localbnck.b();
     }
     this.this$0.a.a(Message.obtain(null, 14));
   }

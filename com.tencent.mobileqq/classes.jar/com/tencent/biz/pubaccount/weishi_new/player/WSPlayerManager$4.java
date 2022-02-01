@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ukp;
-import ukz;
-import ula;
+import urk;
+import urt;
+import uru;
 
 class WSPlayerManager$4
   implements Runnable
@@ -13,16 +13,16 @@ class WSPlayerManager$4
   
   public void run()
   {
-    if ((WSPlayerManager.a(this.this$0) != null) && (WSPlayerManager.b(this.this$0).jdField_a_of_type_AndroidViewView != null))
+    if ((WSPlayerManager.a(this.this$0) != null) && (WSPlayerManager.b(this.this$0).jdField_a_of_type_Usr != null))
     {
-      if (WSPlayerManager.b(this.this$0).jdField_a_of_type_Ukp != null) {
-        WSPlayerManager.b(this.this$0).jdField_a_of_type_Ukp.d(WSPlayerManager.b(this.this$0));
+      if (WSPlayerManager.b(this.this$0).jdField_a_of_type_Urk != null) {
+        WSPlayerManager.b(this.this$0).jdField_a_of_type_Urk.d(WSPlayerManager.b(this.this$0));
       }
       if (WSPlayerManager.a(this.this$0) != null)
       {
         Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((ula)localIterator.next()).b(WSPlayerManager.b(this.this$0));
+          ((uru)localIterator.next()).b(WSPlayerManager.b(this.this$0));
         }
       }
     }
@@ -30,7 +30,7 @@ class WSPlayerManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.4
  * JD-Core Version:    0.7.0.1
  */

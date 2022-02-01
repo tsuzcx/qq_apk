@@ -1,32 +1,40 @@
-class aqhk
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aqhk
 {
-  static final float[] a;
+  public boolean a = true;
   
-  static
+  public static aqhk a(String paramString)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
+    aqhk localaqhk = new aqhk();
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      j = k;
-      if (i >= 8192) {
-        break;
+      for (;;)
+      {
+        return localaqhk;
+        try
+        {
+          localaqhk.a = new JSONObject(paramString).optBoolean("isEnable", true);
+          if (QLog.isColorLevel())
+          {
+            QLog.d("QVipPrettyAccountConfig", 2, "pretty_account config :" + localaqhk.a);
+            return localaqhk;
+          }
+        }
+        catch (JSONException paramString) {}
       }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
-      j += 90;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("QVipPrettyAccountConfig", 2, "pretty_account config init error:" + paramString);
+    return localaqhk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhk
  * JD-Core Version:    0.7.0.1
  */

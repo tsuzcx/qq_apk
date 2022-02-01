@@ -1,38 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoxt
-  extends aoxg
+class aoxt
+  implements DialogInterface.OnDismissListener
 {
-  public aoxt(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aoxt(aoxr paramaoxr) {}
   
-  public boolean a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      boolean bool = f();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("OpenOnProfileSettingAction", 1, "doAction error: " + localException.getMessage());
-      a("OpenOnProfileSettingAction");
-    }
-    return false;
-  }
-  
-  public boolean f()
-  {
-    Intent localIntent = new Intent(this.a, InterestSwitchEditActivity.class);
-    localIntent.setFlags(67108864);
-    this.a.startActivity(localIntent);
-    return true;
+    aoxr.a(this.a, false);
+    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
   }
 }
 

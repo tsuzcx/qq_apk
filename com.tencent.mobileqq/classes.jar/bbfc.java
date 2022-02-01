@@ -1,6 +1,18 @@
-public abstract interface bbfc
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
+
+public class bbfc
+  extends bbfd
 {
-  public abstract void a();
+  public bbfc(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt1, int paramInt2)
+  {
+    super(paramGroupSearchEngine, parambbfe, paramString, paramInt1);
+  }
+  
+  protected bays a(List<bayt> paramList, String paramString)
+  {
+    return new bayh(paramList, paramString, this.jdField_a_of_type_Int);
+  }
 }
 
 

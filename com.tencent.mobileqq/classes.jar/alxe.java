@@ -1,49 +1,102 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
-class alxe
-  implements beuq
+public class alxe
+  implements alxd
 {
-  alxe(alxd paramalxd) {}
+  private int jdField_a_of_type_Int;
+  private alyf jdField_a_of_type_Alyf;
+  public WeakReference<Context> a;
   
-  public void onResp(bevm parambevm)
+  public alxe(Activity paramActivity, alyf paramalyf, int paramInt)
   {
-    Object localObject = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
-    if (parambevm.jdField_a_of_type_Int != 0) {
-      lbj.c("VideoFilterTools", "download file failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
-      {
-        lbj.c("VideoFilterTools", "download file failed: md5 is not match.");
-        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-        return;
-      }
-      lbj.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = alxd.b;
-        bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
-        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-        if ((alxd.a(this.a).decrementAndGet() == 0) && (alxd.a(this.a) != null))
-        {
-          alxd.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException parambevm)
-      {
-        parambevm.printStackTrace();
-        lbj.c("VideoFilterTools", "unzip file failed.");
-      }
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Alyf = paramalyf;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public int a()
+  {
+    return 200;
+  }
+  
+  public alrq a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    alyf localalyf = this.jdField_a_of_type_Alyf;
+    if ((!(localAppRuntime instanceof QQAppInterface)) || (localalyf == null)) {}
+    do
+    {
+      do
+      {
+        return null;
+        if (this.jdField_a_of_type_Int == paramInt2) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("CmGameHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+      return null;
+      if ("cs.first_frame_drawn.local".equals(paramString1))
+      {
+        localalyf.e(paramString2);
+        return null;
+      }
+      if ("cs.create_room.local".equals(paramString1))
+      {
+        localalyf.f(paramString2);
+        return null;
+      }
+      if ("cs.join_room.local".equals(paramString1))
+      {
+        localalyf.g(paramString2);
+        return null;
+      }
+      if ("cs.game_start.local".equals(paramString1))
+      {
+        localalyf.h(paramString2);
+        return null;
+      }
+      if ("cs.make_room_min.local".equals(paramString1))
+      {
+        localalyf.b();
+        return null;
+      }
+      if ("cs.close_room.local".equals(paramString1))
+      {
+        localalyf.c();
+        return null;
+      }
+      if ("cs.game_tips.local".equals(paramString1))
+      {
+        localalyf.i(ApolloUtil.a(paramString2, "tips"));
+        return null;
+      }
+      if ("cs.check_pubAccount_state.local".equals(paramString1))
+      {
+        localalyf.a(paramString2, paramInt1);
+        return null;
+      }
+    } while (!"cs.on_get_open_key.local".equals(paramString1));
+    localalyf.b(paramString2, paramInt1);
+    return null;
+  }
+  
+  public alyf a()
+  {
+    return this.jdField_a_of_type_Alyf;
+  }
+  
+  public void a()
+  {
+    QLog.i("CmGameHandler", 1, "[destroyHandler]");
+    this.jdField_a_of_type_Alyf = null;
+  }
 }
 
 

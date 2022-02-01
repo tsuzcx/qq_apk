@@ -1,44 +1,124 @@
 public class utn
+  implements urk
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
+  private uou jdField_a_of_type_Uou;
+  private boolean jdField_a_of_type_Boolean;
   
-  public utm a()
+  private void a()
   {
-    return new utm(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    if ((this.jdField_a_of_type_Uou != null) && (!this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Uou.c();
+    }
   }
   
-  public utn a(int paramInt)
+  public void a(upp paramupp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if ((paramupp instanceof uou)) {
+      this.jdField_a_of_type_Uou = ((uou)paramupp);
+    }
   }
   
-  public utn a(long paramLong)
+  public void a(urt paramurt) {}
+  
+  public void a(urt paramurt, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(urt paramurt, int paramInt, boolean paramBoolean) {}
+  
+  public void a(urt paramurt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
+    if (paramLong1 > 2000L) {
+      a();
+    }
   }
   
-  public utn a(boolean paramBoolean)
+  public void a(urt paramurt, boolean paramBoolean) {}
+  
+  public void a(urt paramurt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    if ((this.jdField_a_of_type_Uou != null) && (paramBoolean1) && (paramBoolean2)) {
+      this.jdField_a_of_type_Uou.a(8, 400);
+    }
+    uya.e("WS_VIDEO_PRE_PLAY", "[WSFollowFeedUIDelegate.java][onPrePlayFinished] title:" + paramurt.jdField_a_of_type_Urx.d + "\nisPreOutputFirstFrame:" + paramBoolean1 + ", isFirstFrameDrawSuccess:" + paramBoolean2 + "\nmFollowPlayableHolder:" + this.jdField_a_of_type_Uou);
   }
   
-  public utn b(int paramInt)
+  public boolean a(urt paramurt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
+    return false;
   }
   
-  public utn b(long paramLong)
+  public void b(urt paramurt) {}
+  
+  public void c(urt paramurt)
   {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
+    if ((this.jdField_a_of_type_Uou != null) && (paramurt != null) && (paramurt.jdField_a_of_type_Urw != null))
+    {
+      boolean bool = paramurt.jdField_a_of_type_Urw.b();
+      this.jdField_a_of_type_Uou.b(bool);
+      paramurt = this.jdField_a_of_type_Uou;
+      if (!bool) {
+        break label57;
+      }
+    }
+    label57:
+    for (int i = 8;; i = 0)
+    {
+      paramurt.a(i, 0);
+      a();
+      return;
+    }
+  }
+  
+  public void d(urt paramurt)
+  {
+    if (this.jdField_a_of_type_Uou != null)
+    {
+      this.jdField_a_of_type_Uou.b(true);
+      this.jdField_a_of_type_Uou.a(8, 400);
+      this.jdField_a_of_type_Uou.c(true);
+      uya.a("WS_VIDEO_PLAYER", "[WSFollowFeedUIDelegate.java][onVideoStart] title:" + paramurt.jdField_a_of_type_Urx.d);
+    }
+  }
+  
+  public void e(urt paramurt)
+  {
+    if (this.jdField_a_of_type_Uou != null)
+    {
+      this.jdField_a_of_type_Uou.b(false);
+      this.jdField_a_of_type_Uou.d(true);
+    }
+  }
+  
+  public void f(urt paramurt)
+  {
+    if (this.jdField_a_of_type_Uou != null)
+    {
+      this.jdField_a_of_type_Uou.b(true);
+      this.jdField_a_of_type_Uou.d(false);
+    }
+  }
+  
+  public void g(urt paramurt)
+  {
+    if (this.jdField_a_of_type_Uou != null)
+    {
+      this.jdField_a_of_type_Uou.b(false);
+      this.jdField_a_of_type_Uou.a(0, 0);
+      this.jdField_a_of_type_Uou.c(false);
+    }
+    a();
+  }
+  
+  public void h(urt paramurt) {}
+  
+  public void i(urt paramurt) {}
+  
+  public void j(urt paramurt)
+  {
+    if (this.jdField_a_of_type_Uou != null) {
+      this.jdField_a_of_type_Uou.a(0, 100);
+    }
   }
 }
 

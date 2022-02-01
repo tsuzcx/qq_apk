@@ -202,12 +202,17 @@ public class PicMessageExtraData
   
   public boolean isEmotion()
   {
-    return (isCustomFace()) || (isStickerPics()) || (isStickerAdPic()) || (isDiyDouTu()) || (isHotPics()) || (isZhitu()) || (isSelfieFace()) || (isDoutu()) || (isRelatedEmo());
+    return (isCustomFace()) || (isStickerPics()) || (isStickerAdPic()) || (isDiyDouTu()) || (isHotPics()) || (isZhitu()) || (isSelfieFace()) || (isDoutu()) || (isRelatedEmo()) || (isHotSearch());
   }
   
   public boolean isHotPics()
   {
     return this.imageBizType == 2;
+  }
+  
+  public boolean isHotSearch()
+  {
+    return this.imageBizType == 13;
   }
   
   public boolean isRelatedEmo()
@@ -253,7 +258,7 @@ public class PicMessageExtraData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PicMessageExtraData
  * JD-Core Version:    0.7.0.1
  */

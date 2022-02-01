@@ -1,20 +1,21 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class adfv
-  implements adci
+  implements InputFilter
 {
-  public static void a(adan paramadan, byte[] paramArrayOfByte, long paramLong)
-  {
-    ((KandianMergeManager)paramadan.a().getManager(162)).a(paramArrayOfByte, paramLong, paramadan);
-  }
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public adfv(EditInfoActivity paramEditInfoActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    a(paramadan, paramMsgType0x210.vProtobuf, paramMsgInfo.uRealMsgTime);
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
+    }
     return null;
   }
 }

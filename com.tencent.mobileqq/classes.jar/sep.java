@@ -1,16 +1,10 @@
-class sep
-  implements rwd
+public abstract interface sep
 {
-  sep(sel paramsel) {}
+  public abstract void onHeadsetStateChanged(boolean paramBoolean);
   
-  public void a(rwc paramrwc, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    while ((this.a.c == 0) || (this.a.c == 56) || (rmn.c)) {
-      return;
-    }
-    this.a.a(paramrwc);
-  }
+  public abstract void onPhoneCome();
+  
+  public abstract void onSystemVolumeChanged(int paramInt);
 }
 
 

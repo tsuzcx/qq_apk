@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,14 +10,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anzj;
-import bfzq;
-import bfzr;
+import beiy;
+import beiz;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -29,9 +29,9 @@ public class HomeWorkTroopSelectorFragment
   extends IphoneTitleBarFragment
   implements Runnable
 {
-  private bfzr jdField_a_of_type_Bfzr;
+  private beiz jdField_a_of_type_Beiz;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
+  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString = "";
   private List<String> jdField_a_of_type_JavaUtilList;
@@ -53,15 +53,15 @@ public class HomeWorkTroopSelectorFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      this.jdField_a_of_type_Bfzr = new bfzr(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bfzr);
+      this.jdField_a_of_type_Beiz = new beiz(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Beiz);
     }
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368099));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368130));
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
     if (getActivity() == null) {}
@@ -75,8 +75,8 @@ public class HomeWorkTroopSelectorFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    setRightButton(2131696773, new bfzq(this));
-    setTitle(anzj.a(2131704406));
+    setRightButton(2131696914, new beiy(this));
+    setTitle(amtj.a(2131704636));
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {
@@ -94,7 +94,7 @@ public class HomeWorkTroopSelectorFragment
   
   public int getContentLayoutId()
   {
-    return 2131560636;
+    return 2131560646;
   }
   
   public boolean onBackEvent()
@@ -117,14 +117,14 @@ public class HomeWorkTroopSelectorFragment
           return;
           localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         } while (localTroopManager == null);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(-2);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopListUin(-2);
       } while (localObject1 == null);
       localObject1 = (String[])((HashMap)localObject1).get(Integer.valueOf(-2));
       if (this.jdField_a_of_type_JavaLangString == null) {
         this.jdField_a_of_type_JavaLangString = "";
       }
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopManager.b(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopManager.b(this.jdField_a_of_type_JavaLangString);
       }
     } while (localObject1 == null);
     LinkedList localLinkedList = new LinkedList();

@@ -1,115 +1,212 @@
-import android.graphics.Bitmap;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class bbqy
-  implements VideoPlayerCallback
+public class bbqy
+  implements bbri
 {
-  bbqy(bbqw parambbqw, VideoPlayParam paramVideoPlayParam) {}
+  private static String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
+  private static ConcurrentHashMap<Integer, bbqy> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public int a;
+  private bbrb jdField_a_of_type_Bbrb;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  private bbqy(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onCapFrame, id:" + paramLong + ", isSuccess:" + paramBoolean + ", w:" + paramInt1 + ", h:" + paramInt2);
-    }
-    bbqw.a(this.jdField_a_of_type_Bbqw, paramBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bbrb = new bbrb(jdField_a_of_type_JavaLangString, this);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onDownloadComplete(long paramLong)
+  public static void a()
   {
-    QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "@@@@@@@@@@@ videoView Download Success:" + paramLong);
-    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_Bbqw.a();
-    if (!localAIOFileVideoData.f) {
-      this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.d(localAIOFileVideoData);
-    }
-  }
-  
-  public void onDownloadProgress(long paramLong1, long paramLong2) {}
-  
-  public void onFirstFrameRendered(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onFirstFrameRendered, id:" + paramLong);
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
   
-  public void onLoopBack(long paramLong1, long paramLong2) {}
-  
-  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  private void a(@Nullable bbrj parambbrj)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().e("AIOFileVideoView<FileAssistant>XOXO", 1, "onPlayError, id = " + paramLong + " ,module = " + paramInt1 + " , errorType = " + paramInt2 + ", errCode = " + paramInt3 + " , exInfo = " + paramString);
-    bbqw.a(this.jdField_a_of_type_Bbqw, paramInt1, paramInt3, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+    bmbx.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLoginInternal] - BEGIN -");
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bbra(this, parambbrj));
+    bmbx.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLoginInternal] - END -");
   }
   
-  public void onPlayProgress(long paramLong1, long paramLong2)
+  public static void a(@NonNull QQAppInterface paramQQAppInterface, @Nullable bbrj parambbrj)
   {
-    bbqw.a(this.jdField_a_of_type_Bbqw, paramLong2);
-    int i = (int)(paramLong2 / this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs() * 10000.0D);
-    this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(paramLong2));
-    this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-  }
-  
-  public void onStateChange(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onStateChange , state = " + bbqw.a(this.jdField_a_of_type_Bbqw, paramInt) + ", msgUniseq=" + paramLong);
-    }
-    switch (paramInt)
+    bmbx.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - BEGIN -");
+    boolean bool = VideoEnvironment.supportShortVideoRecordAndPlay(paramQQAppInterface);
+    if (!bool)
     {
-    case 7: 
-    default: 
-      return;
-    case 4: 
-      Object localObject = this.jdField_a_of_type_Bbqw.a();
-      if (((AIOFileVideoData)localObject).f) {
-        bbqw.a(this.jdField_a_of_type_Bbqw, 5);
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      if (parambbrj != null) {
+        parambbrj.a(-1, -6);
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_Bbqw.updateUI();
-        if (localObject != null)
-        {
-          this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.b(((AIOFileVideoData)localObject).a);
-          this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a(((AIOFileVideoData)localObject).a);
-        }
-        if (!this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a(this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.getCurrentPosition())) {
-          break;
-        }
-        this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a();
-        localObject = this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.getSelectedItem();
-        if ((localObject == null) || (!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)) || (this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a() == null) || (this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null)) {
-          break;
-        }
-        this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a().a(bbov.a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).d, this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos(), this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a(), this.jdField_a_of_type_Bbqw.jdField_a_of_type_Bbpt.a));
-        return;
-        bbqw.a(this.jdField_a_of_type_Bbqw, 1);
-      }
-    case 8: 
-      this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.a(this.jdField_a_of_type_Bbqw.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs()));
-      this.jdField_a_of_type_Bbqw.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(100);
-      bbqw.a(this.jdField_a_of_type_Bbqw, 0);
-      this.jdField_a_of_type_Bbqw.updateUI();
-      return;
-    case 9: 
-      bbqw.a(this.jdField_a_of_type_Bbqw);
-      return;
-    case 6: 
-      bbqw.a(this.jdField_a_of_type_Bbqw, 6);
-      this.jdField_a_of_type_Bbqw.updateUI();
+      bmbx.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -, supportShortVideo=" + bool);
       return;
     }
-    bbqw.a(this.jdField_a_of_type_Bbqw, 3);
-    this.jdField_a_of_type_Bbqw.updateUI();
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+    {
+      if (parambbrj != null) {
+        parambbrj.a(-1, -1);
+      }
+      bmbx.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -, reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      return;
+    }
+    paramQQAppInterface = new bbqy(paramQQAppInterface, true);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
+    paramQQAppInterface.a(parambbrj);
+    bmbx.b(jdField_a_of_type_JavaLangString, "[startDownload215ConfigWithoutLogin] - END -");
+  }
+  
+  private boolean a()
+  {
+    boolean bool = NetworkUtil.isNetworkAvailable(null);
+    if (bool)
+    {
+      VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, amtj.a(2131713196), null);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+      return bool;
+    }
+    VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, amtj.a(2131713135), null);
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return a(paramQQAppInterface, true);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    boolean bool = false;
+    for (;;)
+    {
+      try
+      {
+        if (!VideoEnvironment.supportShortVideoRecordAndPlay(paramQQAppInterface))
+        {
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          paramBoolean = bool;
+          return paramBoolean;
+        }
+        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+        {
+          VideoEnvironment.LogDownLoad("ShortVideoResDownload", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
+          paramBoolean = bool;
+          continue;
+        }
+        paramQQAppInterface = new bbqy(paramQQAppInterface, paramBoolean);
+      }
+      finally {}
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
+      bool = paramQQAppInterface.a();
+      paramBoolean = bool;
+      if (!bool)
+      {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
+        paramBoolean = bool;
+      }
+    }
+  }
+  
+  private static void b(bbqy parambbqy)
+  {
+    if (parambbqy != null) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(parambbqy.jdField_a_of_type_Int));
+    }
+  }
+  
+  private boolean b()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "startDownloadConfigNoLogin");
+    boolean bool = NetworkUtil.isNetworkAvailable(null);
+    if (bool)
+    {
+      VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, amtj.a(2131713196), null);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bbqz(this));
+      return bool;
+    }
+    VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, amtj.a(2131713135), null);
+    return bool;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = false;
+    if (!VideoEnvironment.supportShortVideoRecordAndPlay(paramQQAppInterface)) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    boolean bool2;
+    do
+    {
+      return bool1;
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+      {
+        VideoEnvironment.LogDownLoad("startDownloadResourceNoLogin", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
+        return false;
+      }
+      paramQQAppInterface = new bbqy(paramQQAppInterface, true);
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
+      bool2 = paramQQAppInterface.b();
+      bool1 = bool2;
+    } while (bool2);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
+    return bool2;
+  }
+  
+  public void onConfigResult(int paramInt1, int paramInt2)
+  {
+    VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, "onConfigResult| uncompress config error=" + paramInt2, null);
+        b(this);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
+        this.jdField_a_of_type_Bbrb.jdField_a_of_type_Boolean = false;
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bbrb);
+        VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (bbxj.c())
+          {
+            this.jdField_a_of_type_Bbrb.b = false;
+            ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bbrb);
+          }
+          if (bbxj.g())
+          {
+            this.jdField_a_of_type_Bbrb.d = false;
+            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Bbrb);
+          }
+        }
+        this.jdField_a_of_type_Bbrb.a();
+        return;
+      }
+      VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
+      b(this);
+      return;
+    }
+    VideoEnvironment.LogDownLoad(jdField_a_of_type_JavaLangString, "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    b(this);
   }
 }
 

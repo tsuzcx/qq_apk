@@ -1,34 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bntc
-  implements bntd
+  implements View.OnClickListener
 {
   bntc(bntb parambntb) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bnsz.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
-      try
-      {
-        localJSONObject.put("result", 0);
-        localJSONObject.put("progress", 1.0D);
-        localJSONObject.put("coverurl", paramString);
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
-        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bnsz.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
-        return;
-      }
+    xwa.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
+    if (!this.a.a().g()) {
+      bntb.a(this.a);
     }
-    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
-    this.a.b(-1);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a().e(false);
+      bntb.a(this.a).setSelected(false);
+      this.a.a().c(3003);
+    }
   }
 }
 

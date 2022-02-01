@@ -1,33 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.image.RegionDrawableData;
 
-class ajou
-  implements View.OnClickListener
+public abstract interface ajou
 {
-  ajou(ajot paramajot) {}
+  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public void onClick(View paramView)
-  {
-    ajov localajov = (ajov)paramView.getTag();
-    if ((localajov == null) || (!(localajov instanceof ajov))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      View localView = (View)paramView.getParent();
-      if ((localView instanceof ShaderAnimLayout)) {
-        ((ShaderAnimLayout)localView).d();
-      }
-      ajot.a(this.a, localajov.a);
-      this.a.jdField_a_of_type_JavaUtilList.add(ajot.a(this.a).remove(this.a.getCount() - localajov.b - 1));
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
+  
+  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
+  
+  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

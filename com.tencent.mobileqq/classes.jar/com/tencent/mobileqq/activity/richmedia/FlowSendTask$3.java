@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alul;
+import aksc;
 import android.app.Activity;
 
 public class FlowSendTask$3
   implements Runnable
 {
-  public FlowSendTask$3(alul paramalul) {}
+  public FlowSendTask$3(aksc paramaksc) {}
   
   public void run()
   {

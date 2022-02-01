@@ -1,22 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qqa
-  implements uyg
+class qqa
+  implements View.OnTouchListener
 {
-  public qqa(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qqa(qpw paramqpw, LinearLayout paramLinearLayout) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, suk paramsuk)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
     }
-    ComponentHeaderTopicRecommend.a(this.a, paramsuk.a());
+    return false;
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arwq;
+import aqqm;
 
 public class IPSiteModel$GameRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameRich> CREATOR = new arwq();
+  public static final Parcelable.Creator<GameRich> CREATOR = new aqqm();
   public String anchorFaceUrl;
   public String anchorId;
   public String anchorName;

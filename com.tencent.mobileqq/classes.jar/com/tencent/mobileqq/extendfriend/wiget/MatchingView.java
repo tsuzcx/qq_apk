@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import aoot;
-import atet;
+import arid;
+import arrb;
 import com.nineoldandroids.animation.AnimatorInflater;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.tencent.common.app.AppInterface;
@@ -48,10 +48,10 @@ public class MatchingView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561199, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView = ((RoundImageView)findViewById(2131370653));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370654));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370658);
+    LayoutInflater.from(paramContext).inflate(2131561073, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView = ((RoundImageView)findViewById(2131370622));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370623));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370627);
     this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setBorderColor(-1);
     this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setBorderWidth(6);
     c();
@@ -61,9 +61,7 @@ public class MatchingView
   private void c()
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    String str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    Drawable localDrawable = aoot.a(1, 4);
-    localObject = aoot.a((AppInterface)localObject, 1, str, 3, localDrawable, localDrawable, null);
+    localObject = arid.a((AppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
     this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setImageDrawable((Drawable)localObject);
   }
   
@@ -79,7 +77,7 @@ public class MatchingView
       this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet = ((AnimatorSet)AnimatorInflater.loadAnimator(getContext(), 2130903040));
       this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.setTarget(this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView);
       this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.setStartDelay(1000L);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.addListener(new atet(this));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.addListener(new arrb(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
@@ -118,7 +116,7 @@ public class MatchingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.MatchingView
  * JD-Core Version:    0.7.0.1
  */

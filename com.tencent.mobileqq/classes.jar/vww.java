@@ -1,25 +1,52 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleSetProfileRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.List;
-import qqcircle.QQCircleProfile.SetProfileRsp;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.HashSet;
 
 public class vww
-  extends aabb
 {
-  public MutableLiveData<vxq<QQCircleProfile.SetProfileRsp>> a = new MutableLiveData();
+  final int jdField_a_of_type_Int;
+  public final Bundle a;
+  String jdField_a_of_type_JavaLangString = "";
+  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString = "";
+  boolean jdField_b_of_type_Boolean = true;
   
-  public String a()
+  public vww(int paramInt)
   {
-    return "QCircleDataEditViewMode";
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString, List<FeedCloudMeta.StTagInfo> paramList, List<Long> paramList1)
+  public static vww a()
   {
-    paramString = new QCircleSetProfileRequest(paramString, paramList, paramList1);
-    this.a.setValue(vxq.b());
-    VSNetworkHelper.a().a(paramString, new vwx(this));
+    return new vww(20);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
+    {
+      this.jdField_b_of_type_JavaLangString = paramString;
+      a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

@@ -1,110 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0xb61.GetAppinfoRsp;
-import tencent.im.oidb.oidb_0xb61.GetPkgUrlRsp;
-import tencent.im.oidb.oidb_0xb61.RspBody;
-import tencent.im.oidb.qqconnect.Appinfo;
 
 public class axej
-  extends nkn
+  implements URLDrawable.URLDrawableListener
 {
-  public axej(MiniAppInfoManager.1 param1) {}
+  public axej(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppInfoManager", 2, "onResult type=" + this.a.jdField_a_of_type_Axeh.jdField_a_of_type_Int + ", appid=" + this.a.jdField_a_of_type_Axeh.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+    QLog.i("NearbyMomentFragment", 1, "onLoadCanceled");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 1) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label798;
-      }
-    }
-    label798:
-    for (;;)
+    QLog.i("NearbyMomentFragment", 1, "onLoadFialed");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i("NearbyMomentFragment", 1, "onLoadProgressed");
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 1)
     {
-      try
-      {
-        paramBundle = ((oidb_0xb61.RspBody)new oidb_0xb61.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("MiniAppInfoManager", 2, paramArrayOfByte);
-          if ((this.a.jdField_a_of_type_Axek != null) && (this.a.jdField_a_of_type_Axek.a != null)) {
-            this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), false, this.a.jdField_a_of_type_Axeh);
-          }
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb61.RspBody();
-      for (;;)
-      {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.wording.has()) {
-            this.a.jdField_a_of_type_Axeh.g = paramBundle.wording.get();
-          }
-          if ((this.a.jdField_a_of_type_Int != 1) || (!paramBundle.get_appinfo_rsp.appinfo.has())) {
-            break label637;
-          }
-          this.a.jdField_a_of_type_Axeh.jdField_b_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.platform.get();
-          this.a.jdField_a_of_type_Axeh.jdField_b_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.app_name.get();
-          this.a.jdField_a_of_type_Axeh.jdField_c_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.app_state.get();
-          this.a.jdField_a_of_type_Axeh.jdField_c_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_url.get();
-          this.a.jdField_a_of_type_Axeh.e = paramBundle.get_appinfo_rsp.appinfo.icon_small_url.get();
-          this.a.jdField_a_of_type_Axeh.jdField_d_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_middle_url.get();
-          if (paramBundle.next_req_duration.has()) {
-            this.a.jdField_a_of_type_Axeh.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniAppInfoManager", 2, "receive appInfo: " + this.a.jdField_a_of_type_Axeh);
-          }
-          axem.a().a(this.a.jdField_a_of_type_Axeh);
-          if ((this.a.jdField_a_of_type_Axek == null) || (this.a.jdField_a_of_type_Axek.a == null)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), true, this.a.jdField_a_of_type_Axeh);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-        if ((this.a.jdField_a_of_type_Axek == null) || (this.a.jdField_a_of_type_Axek.a == null)) {
-          break;
-        }
-        this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), false, this.a.jdField_a_of_type_Axeh);
-        return;
-        label637:
-        if ((this.a.jdField_a_of_type_Int != 2) || (!paramBundle.get_mqqapp_url_rsp.has())) {
-          break label743;
-        }
-        this.a.jdField_a_of_type_Axeh.jdField_d_of_type_Int = paramBundle.get_mqqapp_url_rsp.app_version.get();
-        this.a.jdField_a_of_type_Axeh.f = paramBundle.get_mqqapp_url_rsp.pkg_url.get();
-        if (paramBundle.next_req_duration.has()) {
-          this.a.jdField_a_of_type_Axeh.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
-        }
-      }
-      label743:
-      if ((this.a.jdField_a_of_type_Axek != null) && (this.a.jdField_a_of_type_Axek.a != null))
-      {
-        this.a.jdField_a_of_type_Axek.a(this.a.jdField_a_of_type_Axek.a.get(), false, this.a.jdField_a_of_type_Axeh);
-        return;
-        paramBundle = "";
-      }
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyMomentFragment.a(this.a).setVisibility(0);
     }
+    QLog.i("NearbyMomentFragment", 1, "onLoadSuccessed");
   }
 }
 

@@ -1,51 +1,72 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.TipsInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class arcs
-  implements arae<String>
+  implements bamr
 {
-  public boolean a = true;
-  public boolean b = true;
+  public arcs(MessengerService paramMessengerService) {}
   
-  public void a(String paramString)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    try
+    if (this.a.b != null)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
+      this.a.b.putString("cmd", "ipc_signature_setordelete");
+      paramRichStatus = new Bundle();
+      paramRichStatus.putInt("result", paramInt);
+      paramRichStatus.putBoolean("hasTipsInfo", false);
+      if ((paramObject instanceof TipsInfo))
       {
-        bool = true;
-        this.a = bool;
-        apzu.a = this.a;
-        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
-          break label115;
+        paramObject = (TipsInfo)paramObject;
+        if (paramObject.type > 0)
+        {
+          paramRichStatus.putInt("result", paramObject.ret);
+          paramRichStatus.putBoolean("hasTipsInfo", true);
+          paramRichStatus.putInt("tips_type", paramObject.type);
+          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
+          paramRichStatus.putString("tips_wording", paramObject.wording);
+          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
+          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
+          paramRichStatus.putString("tips_vipType", paramObject.vipType);
+          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
+          paramRichStatus.putString("tips_url", paramObject.url);
         }
       }
-      label115:
-      for (boolean bool = true;; bool = false)
-      {
-        this.b = bool;
-        apzu.f = this.b;
-        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
-        return;
-        bool = false;
-        break;
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
+      this.a.b.putBundle("response", paramRichStatus);
+      this.a.a(this.a.b);
+      this.a.b = null;
     }
   }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      if (this.a.a != null) {
+        this.a.a.post(new MessengerService.8.1(this));
+      }
+    }
+    while (this.a.c == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSync", paramBoolean);
+    this.a.c.putBundle("response", localBundle);
+    this.a.a(this.a.c);
+    this.a.c = null;
+  }
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcs
  * JD-Core Version:    0.7.0.1
  */

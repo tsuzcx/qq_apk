@@ -19,6 +19,7 @@ import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.ApkgManager;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
@@ -89,26 +90,31 @@ public class GameRuntimeLoader
   
   private void onGpkgLoadAsyncTaskDone(GpkgLoadAsyncTask paramGpkgLoadAsyncTask)
   {
+    Object localObject;
     if (paramGpkgLoadAsyncTask.isSucceed())
     {
       this.miniGamePkg = paramGpkgLoadAsyncTask.getGpkgInfo();
       if (this.mMiniAppInfo != null)
       {
-        this.mMiniAppInfo.apkgInfo = new ApkgInfo(ApkgManager.getApkgFolderPath(this.mMiniAppInfo), this.mMiniAppInfo);
+        localObject = new ApkgInfo(ApkgManager.getApkgFolderPath(this.mMiniAppInfo), this.mMiniAppInfo);
+        if (this.miniGamePkg != null) {
+          ((ApkgInfo)localObject).mConfigStr = this.miniGamePkg.mConfigStr;
+        }
+        this.mMiniAppInfo.apkgInfo = ((ApkgBaseInfo)localObject);
         updateMiniGameInfo(this.mMiniAppInfo);
       }
       this.mGameInfoManager.setLaunchOptions();
       if (!paramGpkgLoadAsyncTask.isSucceed()) {
-        break label140;
+        break label160;
       }
     }
-    label140:
+    label160:
     for (int i = 2002;; i = 2003)
     {
       notifyRuntimeEvent(i, new Object[] { paramGpkgLoadAsyncTask.msg });
       return;
       this.miniGamePkg = null;
-      Object localObject = paramGpkgLoadAsyncTask.getMiniAppInfo();
+      localObject = paramGpkgLoadAsyncTask.getMiniAppInfo();
       if (localObject == null) {
         break;
       }

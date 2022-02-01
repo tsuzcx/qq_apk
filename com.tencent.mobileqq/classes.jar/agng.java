@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
-public class agng
-  implements bdxo
+class agng
+  implements DialogInterface.OnClickListener
 {
-  public agng(FriendShipWaveView paramFriendShipWaveView) {}
+  agng(agne paramagne, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = (int)(this.a.b - bhgr.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Bdyr.b / 2.0F);
-    int j = (int)(this.a.b - bhgr.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Bdyr.b / 2.0F);
-    int k = (int)(this.a.b - bhgr.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Bdyr.b / 2.0F);
-    bdxw localbdxw = new bdxw(new bdxn[] { new bdxr(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Bdyr.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bdxr(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bdxr(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
-    localbdxw.a(new agnh(this));
-    this.a.jdField_a_of_type_Bdyr.a(new bdxn[] { localbdxw });
+    acvv.a(this.jdField_a_of_type_Agne.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agne.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agne.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

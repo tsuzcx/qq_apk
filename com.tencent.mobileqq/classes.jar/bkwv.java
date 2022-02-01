@@ -1,38 +1,48 @@
-import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
-import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
-
-class bkwv
-  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StReportExecuteRsp>
+public class bkwv
 {
-  bkwv(bkwo parambkwo, AsyncResult paramAsyncResult) {}
+  private static bkwv jdField_a_of_type_Bkwv = new bkwv();
+  private bkww jdField_a_of_type_Bkww;
+  bkwx jdField_a_of_type_Bkwx;
   
-  public void a(boolean paramBoolean, INTERFACE.StReportExecuteRsp paramStReportExecuteRsp)
+  public static bkwv a()
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("response", paramStReportExecuteRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
+    return jdField_a_of_type_Bkwv;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bkww = null;
+  }
+  
+  public void a(bkww parambkww)
+  {
+    this.jdField_a_of_type_Bkww = parambkww;
+  }
+  
+  public void a(bkwx parambkwx)
+  {
+    this.jdField_a_of_type_Bkwx = parambkwx;
+  }
+  
+  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bkww == null) {
       return;
     }
-    catch (Throwable paramStReportExecuteRsp)
-    {
-      for (;;)
-      {
-        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStReportExecuteRsp);
-      }
+    this.jdField_a_of_type_Bkww.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    bkwx localbkwx = this.jdField_a_of_type_Bkwx;
+    if ((localbkwx != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
+      localbkwx.a(paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkwv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-class zgn
-  implements TextView.OnEditorActionListener
+public class zgn
+  extends Handler
 {
-  zgn(zgm paramzgm) {}
+  public zgn(EmoView paramEmoView) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 6)
+    int i;
+    if (paramMessage.what == 0)
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
+      i = EmoView.a(this.a) + 1;
+      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
     }
-    return false;
+    else
+    {
+      return;
+    }
+    EmoView.a(this.a, i);
+    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
   }
 }
 

@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class awtf
-  implements DialogInterface.OnDismissListener
+public abstract interface awtf
 {
-  awtf(awte paramawte) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.finish();
-  }
+  public abstract void a(int paramInt);
 }
 
 

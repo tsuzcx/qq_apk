@@ -24,11 +24,11 @@ class MutiMemberThumbList$1$1
     {
       return;
       localObject1 = String.format("%d名成员被邀请", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.a) });
-      localObject2 = (TextView)this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(2131368803);
+      localObject2 = (TextView)this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(2131368828);
       ((TextView)localObject2).setTextColor(MutiMemberThumbList.b(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0));
       ((TextView)localObject2).setText((CharSequence)localObject1);
       ((TextView)localObject2).setVisibility(0);
-      localObject1 = this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(2131364744);
+      localObject1 = this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(2131364775);
       if (this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.a <= 0) {
         break;
       }
@@ -37,8 +37,8 @@ class MutiMemberThumbList$1$1
       if (i < MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).length)
       {
         localObject1 = this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0)[i]);
-        localObject2 = (ImageView)((View)localObject1).findViewById(2131373394);
-        TextView localTextView = (TextView)((View)localObject1).findViewById(2131373396);
+        localObject2 = (ImageView)((View)localObject1).findViewById(2131373310);
+        TextView localTextView = (TextView)((View)localObject1).findViewById(2131373312);
         localTextView.setVisibility(8);
         ((ImageView)localObject2).setImageDrawable(null);
         if ((!this.jdField_a_of_type_Boolean) || (i != MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).length - 1)) {
@@ -46,7 +46,7 @@ class MutiMemberThumbList$1$1
         }
         localTextView.setText(String.format("%d+", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.a - MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).length + 1) }));
         localTextView.setVisibility(0);
-        ((ImageView)((View)localObject1).findViewById(2131373394)).setImageDrawable(MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0));
+        ((ImageView)((View)localObject1).findViewById(2131373310)).setImageDrawable(MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0));
         ((View)localObject1).setVisibility(0);
       }
       this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.setVisibility(0);

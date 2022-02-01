@@ -1,43 +1,64 @@
-public class zaj
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import java.util.ArrayList;
+
+public abstract class zaj
+  extends yzp
 {
-  private static volatile zaj jdField_a_of_type_Zaj;
-  private zak jdField_a_of_type_Zak;
+  private BaseWidgetView a;
+  private boolean c = true;
   
-  public static zaj a()
+  public zaj(Bundle paramBundle)
   {
-    if (jdField_a_of_type_Zaj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Zaj == null) {
-        jdField_a_of_type_Zaj = new zaj();
-      }
-      return jdField_a_of_type_Zaj;
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, yzp paramyzp);
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    notifyDataSetChanged();
+    if (paramArrayList == null) {
+      return;
     }
-    finally {}
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    notifyDataSetChanged();
   }
   
-  public void a()
+  public int getItemCount()
   {
-    this.jdField_a_of_type_Zak = null;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Zak != null) {
-      this.jdField_a_of_type_Zak.a(paramString1, paramString2);
+    if (this.c) {
+      return 1;
     }
+    return 0;
   }
   
-  public void a(zak paramzak)
+  public int getItemViewType(int paramInt)
   {
-    this.jdField_a_of_type_Zak = paramzak;
+    return 1;
   }
   
-  public void b()
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Zak != null) {
-      this.jdField_a_of_type_Zak.a();
+    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView == null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
     }
+    return new yzt(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
   }
 }
 

@@ -1,28 +1,27 @@
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
-class skf
-  implements View.OnClickListener
+public class skf
+  extends AccessibilityDelegateCompat
 {
-  skf(ske paramske, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo, ImageView paramImageView) {}
+  public skf(BaseTabbar paramBaseTabbar) {}
   
-  public void onClick(View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if (ske.a(this.jdField_a_of_type_Ske) != null) {
-      ske.a(this.jdField_a_of_type_Ske).a(this.jdField_a_of_type_Int);
-    }
-    TabChannelCoverInfo localTabChannelCoverInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo;
-    int j = oof.b;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
-    for (int i = 1;; i = 0)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      oof.a("0X8009496", localTabChannelCoverInfo, j, i, this.jdField_a_of_type_Int);
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
       return;
     }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

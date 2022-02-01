@@ -1,10 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aebl
-  implements DialogInterface.OnClickListener
+public class aebl
+  extends BroadcastReceiver
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aebl(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSetting2Activity", 1, "bindMiBaoReceiver onReceive mIsBindMb：" + QQSettingSettingActivity.a(this.a));
+    }
+    if (QQSettingSettingActivity.a(this.a)) {
+      bcef.b(this.a.app, "dc00898", "", "", "0X800B312", "0X800B312", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 

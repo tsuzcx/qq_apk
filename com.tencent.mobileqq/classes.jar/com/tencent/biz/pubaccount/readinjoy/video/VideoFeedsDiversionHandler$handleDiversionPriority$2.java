@@ -6,8 +6,8 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import rpe;
-import tlz;
+import rwg;
+import trp;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class VideoFeedsDiversionHandler$handleDiversionPriority$2
@@ -22,9 +22,9 @@ public final class VideoFeedsDiversionHandler$handleDiversionPriority$2
   public final void invoke()
   {
     AdvertisementInfo localAdvertisementInfo = this.$videoInfo.a;
-    tlz localtlz = this.$videoInfo.a.mAdvertisementSoftInfo;
-    rpe.a(rpe.a, this.$videoInfo);
-    localAdvertisementInfo.mAdvertisementSoftInfo = localtlz;
+    trp localtrp = this.$videoInfo.a.mAdvertisementSoftInfo;
+    rwg.a(rwg.a, this.$videoInfo);
+    localAdvertisementInfo.mAdvertisementSoftInfo = localtrp;
     this.$videoInfo.a = localAdvertisementInfo;
   }
 }

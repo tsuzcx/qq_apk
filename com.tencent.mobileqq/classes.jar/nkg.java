@@ -1,22 +1,16 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AbsListView;
+import android.os.Handler;
 
 class nkg
-  implements blih
+  extends nkn
 {
-  nkg(nke paramnke, PoiMapActivity paramPoiMapActivity) {}
+  nkg(nkf paramnkf) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public boolean a(int paramInt, String paramString, naf paramnaf)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Nke.jdField_a_of_type_Nkb.b))
-    {
-      this.jdField_a_of_type_Nke.b(false);
-      if (!PoiMapActivity.b(this.jdField_a_of_type_Nke.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
-        this.jdField_a_of_type_Nke.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Nke.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Nke.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
-      }
-    }
+    bija.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nkf.a(this.a).removeCallbacksAndMessages(null);
+    nkf.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 

@@ -1,11 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
-public class afjz
+class afjz
   implements DialogInterface.OnClickListener
 {
-  public afjz(RegisterNewBaseActivity.2 param2) {}
+  afjz(afjy paramafjy) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

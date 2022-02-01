@@ -1,21 +1,16 @@
-import java.net.URL;
-
 public class twj
 {
-  public int a;
-  public String a;
-  public URL a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  
-  public twj()
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
+    if (!ozo.a()) {
+      return false;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
 }
 

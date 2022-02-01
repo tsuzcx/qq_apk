@@ -1,180 +1,246 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.imcore.message.BaseMessageManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.locks.Lock;
+import mqq.manager.Manager;
 
 public class aubv
-  extends aubd
+  implements Manager
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  ExcitingTransferUploadResultRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
-  long e = 0L;
-  long f = 0L;
-  long g;
+  private int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
   public aubv(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = ((Integer)bfyz.a("gray_tips_wording_id", Integer.valueOf(0))).intValue();
+    this.jdField_a_of_type_JavaLangString = ((String)bfyz.a("add_guide_gray_tips_time", ""));
+    this.b = ((Integer)bfyz.a("add_guide_gray_tips_times", Integer.valueOf(0))).intValue();
   }
   
-  protected String a(boolean paramBoolean)
+  private static int a(int paramInt)
   {
-    return "actC2CXTFUpload";
+    switch (paramInt)
+    {
+    default: 
+      return 10;
+    case 0: 
+      return 1;
+    }
+    return 2;
   }
   
-  protected HashMap<String, String> a()
+  @NonNull
+  private MessageForUniteGrayTip a(@NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_ReportVer", String.valueOf(1));
-    localHashMap.put("param_TransferType", String.valueOf(0));
-    localHashMap.put("param_Platform", String.valueOf(2));
-    localHashMap.put("param_AppType", String.valueOf(0));
-    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_FileName", String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localHashMap.put("param_Suffix", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_GroupCode", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_FileSize", String.valueOf(this.jdField_d_of_type_Long));
-    localHashMap.put("param_IsFlashFile", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("param_TotalCostTime", String.valueOf(this.g));
-    localHashMap.put("param_CalcShaCostTime", String.valueOf(this.e));
-    localHashMap.put("param_CalcHashCostTime", String.valueOf(this.f));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
+    QLog.d("CustomizeGrayTipsManager", 1, "makeGuideCustomizeGrayTips, friendUin = " + paramString1 + ", senderUin = " + paramString2 + ", uinType = " + paramInt + ", time = " + paramLong1 + ", shMsgSeq = " + paramLong2);
+    String str = amtj.a(2131691223);
+    paramString1 = new aucf(paramString1, paramString2, str + amtj.a(2131691222), paramInt, -5020, 3, paramLong1);
+    paramString1.e = true;
+    paramString2 = new Bundle();
+    paramString2.putInt("key_action", 56);
+    paramString1.a(0, str.length(), paramString2);
+    paramString2 = new MessageForUniteGrayTip();
+    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+    paramString2.shmsgseq = paramLong2;
+    return paramString2;
+  }
+  
+  @Nullable
+  private <T extends MessageRecord> MessageForUniteGrayTip a(@NonNull List<T> paramList)
+  {
+    int i = paramList.size() - 1;
+    while (i >= 0)
     {
-      localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nResult));
-      localHashMap.put("param_IsXTFValid", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_bIsXTFValid));
-      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64HttpTime));
-      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nSrvReturCode));
-      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSpeed));
-      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSize));
-      localHashMap.put("param_StartSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize));
-      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strServerIp));
-      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wServerPort));
-      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strFileUrl));
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uMaxUploadingFtnNum));
-      localHashMap.put("param_RetryCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount));
-      localHashMap.put("param_IpChangeCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uIpChangeCount));
-      localHashMap.put("param_RollBackCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRollBackCount));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uQueryHoleCount));
-      localHashMap.put("param_RangDiffCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRangDiffCount));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uDelayTotoalCount));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpCnnCode));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpSocketCode));
-      localHashMap.put("param_HttpsSupport", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wHttpsSupport));
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
+      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (a((MessageForUniteGrayTip)localMessageRecord))) {
+        return (MessageForUniteGrayTip)localMessageRecord;
+      }
+      i -= 1;
     }
-    for (;;)
+    return null;
+  }
+  
+  private String a()
+  {
+    Object localObject = Calendar.getInstance();
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(2);
+    int k = ((Calendar)localObject).get(5);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i).append(j + 1).append(k);
+    return ((StringBuilder)localObject).toString();
+  }
+  
+  private void a()
+  {
+    this.b += 1;
+    this.jdField_a_of_type_JavaLangString = a();
+    bfyz.a("add_guide_gray_tips_time", this.jdField_a_of_type_JavaLangString);
+    bfyz.a("add_guide_gray_tips_times", Integer.valueOf(this.b));
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    if ((paramContext instanceof ChatHistoryActivity)) {}
+    do
     {
-      localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_b_of_type_Int));
-      localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_c_of_type_Int));
-      localHashMap.put("param_stackType", String.valueOf(auoo.b()));
-      localHashMap.put("param_loginType", String.valueOf(auoo.c()));
-      localHashMap.put("param_ishttps", String.valueOf(this.jdField_d_of_type_Int));
-      QLog.i("ExcitingTransfer.OfflineSenderRP<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> SendDataReport:" + localHashMap.toString());
-      return localHashMap;
-      localHashMap.put("param_IsXTFValid", String.valueOf(false));
-      localHashMap.put("param_HttpTime", String.valueOf(0));
-      localHashMap.put("param_SrvReturCode", String.valueOf(0));
-      localHashMap.put("param_TransferSpeed", String.valueOf(0));
-      localHashMap.put("param_TransferSize", String.valueOf(0));
-      localHashMap.put("param_StartSize", String.valueOf(0));
-      localHashMap.put("param_ServerIp", "");
-      localHashMap.put("param_ServerPort", String.valueOf(0));
-      localHashMap.put("param_FileUrl", "");
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(0));
-      localHashMap.put("param_RetryCount", String.valueOf(0));
-      localHashMap.put("param_IpChangeCount", String.valueOf(0));
-      localHashMap.put("param_RollBackCount", String.valueOf(0));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(0));
-      localHashMap.put("param_RangDiffCount", String.valueOf(0));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(0));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(0));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(0));
-      localHashMap.put("param_HttpsSupport", String.valueOf(0));
+      return;
+      if (TextUtils.equals("1", paramString))
+      {
+        paramContext.startActivity(new Intent(paramContext, QQSettingSettingActivity.class));
+        paramContext.startActivity(new Intent(paramContext, NotifyPushSettingActivity.class));
+        localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
+        paramContext.startActivity(localIntent);
+        c(paramInt);
+        return;
+      }
+    } while (!TextUtils.equals("2", paramString));
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
+    paramContext.startActivity(localIntent);
+    b();
+  }
+  
+  private void a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, List<MessageRecord> paramList, MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  {
+    a();
+    MessageForUniteGrayTip localMessageForUniteGrayTip = a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin, paramMessageForUniteGrayTip.senderuin, paramInt, paramMessageForUniteGrayTip.time, paramMessageForUniteGrayTip.shmsgseq);
+    paramQQAppInterface.getMessageFacade().getBaseMessageManager(paramInt).a(paramInt, paramMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip, paramList);
+    aucg.a(paramQQAppInterface, localMessageForUniteGrayTip);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeGrayTipsManager", 2, "insert guide customize gray tips to aioList and db");
     }
   }
   
-  public void a() {}
+  private boolean a()
+  {
+    if (this.jdField_a_of_type_Int != 0) {}
+    String str;
+    do
+    {
+      do
+      {
+        return false;
+      } while (this.b >= 3);
+      str = a();
+    } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, str));
+    return true;
+  }
+  
+  private boolean a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  {
+    return (paramMessageForUniteGrayTip.tipParam.b == 1) && (!nmy.a(paramMessageForUniteGrayTip)) && (TextUtils.equals(String.valueOf(0), paramMessageForUniteGrayTip.getExtInfoFromExtStr("revoke_op_type")));
+  }
+  
+  private <T extends MessageRecord> boolean a(@NonNull List<T> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localMessageRecord).tipParam.b == 3)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static void b()
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B25B", "0X800B25B", 0, 0, "", "", "", "");
+  }
+  
+  static void b(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B1FC", "0X800B1FC", a(paramInt), 0, "", "", "", "");
+  }
+  
+  private static void c(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B25A", "0X800B25A", a(paramInt), 0, "", "", "", "");
+  }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
-  {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_d_of_type_Long = paramLong3;
-  }
-  
-  public void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  protected HashMap<String, String> b()
-  {
-    return null;
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.e = paramLong;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(long paramLong)
-  {
-    this.g = paramLong;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_d_of_type_Int = i;
-      return;
+    bfyz.a("gray_tips_wording_id", Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeGrayTipsManager", 2, "setGrayTipsWordingId, id = " + paramInt);
     }
   }
+  
+  public boolean a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeGrayTipsManager", 2, "insertGuideCustomizeGrayTipsIfNeed: uinType = " + paramInt + ", mGrayTipsWordingId = " + this.jdField_a_of_type_Int + ", mAddGuideGrayTipsTimes = " + this.b + ", mAddGuideGrayTipsDate = " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (paramInt == 3000) {}
+    do
+    {
+      return false;
+      if (a()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CustomizeGrayTipsManager", 2, "do not need to insert guide customize gray tips to aioList");
+    return false;
+    List localList = paramQQAppInterface.getMessageProxy(paramInt).g(paramString, paramInt);
+    paramString = paramQQAppInterface.getMessageProxy(paramInt).a().a(paramString, paramInt);
+    paramString.lock();
+    try
+    {
+      if (bfwk.a(localList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomizeGrayTipsManager", 2, "aioList is empty");
+        }
+        return false;
+      }
+      MessageForUniteGrayTip localMessageForUniteGrayTip = a(localList);
+      if (localMessageForUniteGrayTip == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomizeGrayTipsManager", 2, "aioList do not contains revoke gray tip");
+        }
+        return false;
+      }
+      if (a(localList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomizeGrayTipsManager", 2, "aioList contains GuideCustomizeGrayTips");
+        }
+        return false;
+      }
+      a(paramQQAppInterface, paramInt, localList, localMessageForUniteGrayTip);
+      return true;
+    }
+    finally
+    {
+      paramString.unlock();
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

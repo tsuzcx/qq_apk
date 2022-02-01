@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class alsr
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public alsr(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public alsr(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.finish();
+    CmGameDebugView.a(this.a).setVisibility(8);
+    CmGameDebugView.b(this.a).setVisibility(8);
+    CmGameDebugView.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

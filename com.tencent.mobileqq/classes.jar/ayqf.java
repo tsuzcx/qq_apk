@@ -1,21 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
 
 class ayqf
-  implements View.OnClickListener
+  implements IUploadTaskCallback
 {
   ayqf(ayqe paramayqe) {}
   
-  public void onClick(View paramView)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    Intent localIntent = new Intent(ayqe.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://nearby.qq.com/nearby-topic/topicTags.html");
-    ayqe.a(this.a).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.f = 1002;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramString;
+    this.a.a(1002, new Object[0]);
+  }
+  
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  {
+    if (this.a.f != paramInt)
+    {
+      this.a.f = paramInt;
+      this.a.a(this.a.f, new Object[0]);
+    }
+  }
+  
+  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
+  {
+    this.a.f = 1001;
+    this.a.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.a(1001, new Object[0]);
   }
 }
 

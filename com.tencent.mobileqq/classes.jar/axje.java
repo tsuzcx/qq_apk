@@ -1,110 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axje
-  extends arac<axjf>
+  implements axjb
 {
-  public static boolean a;
-  private static boolean b;
+  private static volatile axje jdField_a_of_type_Axje;
+  private axjb jdField_a_of_type_Axjb;
+  private List<axjf> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static boolean a()
+  public static axje a()
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean b()
-  {
-    axjf localaxjf2 = (axjf)aran.a().a(522);
-    axjf localaxjf1 = localaxjf2;
-    if (localaxjf2 == null)
+    if (jdField_a_of_type_Axje == null) {}
+    try
     {
-      localaxjf2 = new axjf();
-      localaxjf1 = localaxjf2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData = null, general new bean, so switch default");
-        localaxjf1 = localaxjf2;
+      if (jdField_a_of_type_Axje == null) {
+        jdField_a_of_type_Axje = new axje();
       }
+      return jdField_a_of_type_Axje;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData switch isOpened = " + localaxjf1);
-    }
-    return localaxjf1.a();
+    finally {}
   }
   
-  @NonNull
-  public axjf a(int paramInt)
+  public List<axjf> a()
   {
-    return new axjf();
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  @Nullable
-  public axjf a(araj[] paramArrayOfaraj)
+  public void a()
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackupConfigProcessor", 2, "onParsed : " + paramArrayOfaraj[0].a);
-      }
-      return axjf.a(paramArrayOfaraj[0].a);
-    }
-    return new axjf();
+    new axjc().a(this);
   }
   
-  public void a(axjf paramaxjf)
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(axjb paramaxjb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onUpdate : " + paramaxjf);
-    }
-    if (paramaxjf != null) {
-      a = paramaxjf.a();
+    this.jdField_a_of_type_Axjb = paramaxjb;
+  }
+  
+  public void a(List<axjf> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Axjb != null) {
+      this.jdField_a_of_type_Axjb.a(paramList);
     }
   }
   
-  public Class<axjf> clazz()
+  public void b()
   {
-    return axjf.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onReqFailed : " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 522;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Axjb = null;
+    jdField_a_of_type_Axje = null;
   }
 }
 

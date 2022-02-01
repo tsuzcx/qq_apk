@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.banner;
 
-import beum;
-import beuo;
-import bevn;
-import bhnv;
-import bpmj;
-import bpmk;
+import bmre;
+import bmrf;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -19,13 +19,13 @@ public class QIMCaptureBannerManager$3
     do
     {
       return;
-      beum localbeum = new beum();
-      localbeum.jdField_a_of_type_Beuq = new bpmk(this);
-      localbeum.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl;
-      localbeum.jdField_a_of_type_Int = 0;
-      localbeum.c = new File(bpmj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgMd5).getPath();
-      localbeum.b = bhnv.a(bevn.a().a());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a(localbeum);
+      HttpNetReq localHttpNetReq = new HttpNetReq();
+      localHttpNetReq.mCallback = new bmrf(this);
+      localHttpNetReq.mReqUrl = this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl;
+      localHttpNetReq.mHttpMethod = 0;
+      localHttpNetReq.mOutPath = new File(bmre.a, this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgMd5).getPath();
+      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
     } while (!QLog.isColorLevel());
     QLog.i("QIMCaptureBannerManager", 2, "preLoadBannerResources, url: " + this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl);
   }

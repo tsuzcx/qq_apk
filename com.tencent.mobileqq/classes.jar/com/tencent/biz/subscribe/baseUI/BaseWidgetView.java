@@ -1,10 +1,9 @@
 package com.tencent.biz.subscribe.baseUI;
 
-import aafy;
-import aafz;
-import aaga;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -15,18 +14,22 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
+import zcw;
+import zcx;
+import zcy;
 
 public abstract class BaseWidgetView<T>
   extends FrameLayout
 {
-  private aafz jdField_a_of_type_Aafz;
+  public int a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private T jdField_a_of_type_JavaLangObject;
   private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, aaga> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  public int c;
-  protected int d;
+  private HashMap<Integer, zcy> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private zcx jdField_a_of_type_Zcx;
+  protected int b;
   
   public BaseWidgetView(@NonNull Context paramContext)
   {
@@ -51,33 +54,28 @@ public abstract class BaseWidgetView<T>
     c(paramContext, c());
   }
   
-  private void a(View paramView, aaga paramaaga)
+  private void a(View paramView, zcy paramzcy)
   {
     if (paramView != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramaaga);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramzcy);
     }
   }
   
   private void c(Context paramContext, int paramInt)
   {
-    this.d = paramInt;
-    a(paramContext, paramInt);
+    this.b = paramInt;
+    b(paramContext, paramInt);
     if (a() != 0) {
       LayoutInflater.from(paramContext).inflate(a(), this, true);
     }
     a(paramContext, this);
-    if (b() != null) {
-      b().setOnClickListener(new aafy(this));
+    if (a() != null) {
+      a().setOnClickListener(new zcw(this));
     }
-    b(paramContext, paramInt);
+    a(paramContext, paramInt);
   }
   
   protected abstract int a();
-  
-  public aafz a()
-  {
-    return this.jdField_a_of_type_Aafz;
-  }
   
   public Activity a()
   {
@@ -87,7 +85,20 @@ public abstract class BaseWidgetView<T>
     return null;
   }
   
+  public Handler a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
   public View.OnClickListener a()
+  {
+    return null;
+  }
+  
+  public View a()
   {
     return null;
   }
@@ -108,6 +119,13 @@ public abstract class BaseWidgetView<T>
   
   protected abstract void a(Context paramContext, View paramView);
   
+  public void a(View paramView)
+  {
+    if ((paramView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId())) != null)) {
+      ((zcy)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
+    }
+  }
+  
   protected abstract void a(T paramT);
   
   public void a(T paramT, int paramInt) {}
@@ -126,30 +144,19 @@ public abstract class BaseWidgetView<T>
     return true;
   }
   
-  public View b()
-  {
-    return null;
-  }
-  
-  public void b() {}
-  
   protected void b(Context paramContext, int paramInt) {}
-  
-  public void b(View paramView)
-  {
-    if ((paramView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId())) != null)) {
-      ((aaga)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
-    }
-  }
   
   public int c()
   {
-    return this.d;
+    return this.b;
   }
   
-  public int f()
+  public void i() {}
+  
+  protected void onDetachedFromWindow()
   {
-    return this.c;
+    super.onDetachedFromWindow();
+    a().removeCallbacksAndMessages(null);
   }
   
   public void setData(T paramT)
@@ -166,7 +173,7 @@ public abstract class BaseWidgetView<T>
   
   public void setDataPosInList(int paramInt)
   {
-    this.c = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
@@ -179,24 +186,24 @@ public abstract class BaseWidgetView<T>
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
   }
   
-  public void setInteractor(aafz paramaafz)
+  public void setInteractor(zcx paramzcx)
   {
-    this.jdField_a_of_type_Aafz = paramaafz;
+    this.jdField_a_of_type_Zcx = paramzcx;
   }
   
-  public void setPreClickListener(aaga paramaaga)
+  public void setPreClickListener(View paramView, zcy paramzcy)
   {
-    a(b(), paramaaga);
+    a(paramView, paramzcy);
   }
   
-  public void setPreClickListener(View paramView, aaga paramaaga)
+  public void setPreClickListener(zcy paramzcy)
   {
-    a(paramView, paramaaga);
+    a(a(), paramzcy);
   }
   
   public void setViewType(int paramInt)
   {
-    this.d = paramInt;
+    this.b = paramInt;
   }
 }
 

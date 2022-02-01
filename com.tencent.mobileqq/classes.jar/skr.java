@@ -1,23 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class skr
-  implements Animator.AnimatorListener
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public skr(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public skr(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
+    JSONObject localJSONObject;
+    if (paramInt == 4098) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
+      odq.a(null, pay.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

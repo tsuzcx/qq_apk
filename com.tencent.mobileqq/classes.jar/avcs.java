@@ -1,41 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class avcs
-  extends bkia
+abstract class avcs<T extends BusinessHandler>
 {
-  public avcs(ForwardShareCardOption paramForwardShareCardOption) {}
+  protected final QQAppInterface a;
   
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public avcs(QQAppInterface paramQQAppInterface)
   {
-    this.a.z();
-    if (ForwardShareCardOption.a(this.a) != -1)
-    {
-      if ((!paramBoolean) || (paramHashMap == null)) {
-        break label151;
-      }
-      String str = (String)paramHashMap.get("uin");
-      paramHashMap = (String)paramHashMap.get("url");
-      ForwardShareCardOption.a(this.a, paramHashMap);
-      ForwardShareCardOption.b(this.a, paramHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
+    this.a = paramQQAppInterface;
+  }
+  
+  protected final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseProto", 2, new Object[] { "ssoLinkOk: invoked. ", " req: ", paramToServiceMsg, " res: ", paramFromServiceMsg, " data: ", paramObject });
     }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label151:
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131692671), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
+    for (int i = 1; i == 0; i = 0) {
+      return true;
     }
+    return false;
   }
 }
 

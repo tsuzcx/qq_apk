@@ -1,35 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class xll
-  implements xjk
+public class xll
+  extends QQUIEventReceiver<xlj, vub>
 {
-  xll(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
-  
-  public void a(int paramInt)
+  public xll(@NonNull xlj paramxlj)
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
+    super(paramxlj);
+  }
+  
+  public void a(@NonNull xlj paramxlj, @NonNull vub paramvub)
+  {
+    if (paramvub.a)
     {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label66;
-      }
+      xvv.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramvub);
+      xlj.a(paramxlj).a.h();
     }
-    label66:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      localData.mUIStyle.mPlayerRepeatMode = 2;
-      xlj.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vub.class;
   }
 }
 

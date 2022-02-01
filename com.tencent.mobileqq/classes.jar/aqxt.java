@@ -1,19 +1,88 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
+import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aqxt
-  implements View.OnClickListener
+  extends aqxl
 {
-  public aqxt(IphonePickerView paramIphonePickerView) {}
+  private boolean d;
   
-  public void onClick(View paramView)
+  public aqxt(QQAppInterface paramQQAppInterface)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
+    super("qq.android.poke.res_0625", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10044;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PokeResData.class;
+  }
+  
+  public String a()
+  {
+    return "PokeResHandler_0625";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
+      }
+      return;
+    }
+    String str = VFSAssistantUtils.getSDKPrivatePath(agkg.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
+    }
+    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
+    super.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public void f()
+  {
+    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
+  }
+  
+  public boolean g()
+  {
+    if (!this.d) {
+      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
+    }
+    return super.g() & this.d;
   }
 }
 

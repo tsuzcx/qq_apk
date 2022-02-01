@@ -1,37 +1,12 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.animation.Interpolator;
 
-class bjte
-  implements ITMAssistantExchangeURLListenner
+public final class bjte
+  implements Interpolator
 {
-  bjte(bjtd parambjtd) {}
-  
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public float getInterpolation(float paramFloat)
   {
-    bjtx.b("DownloadResolver", "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bjtd.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bjtd.a(this.a))
-    {
-      bjtd.a(this.a).notify();
-      return;
-    }
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

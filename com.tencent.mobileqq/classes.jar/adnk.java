@@ -1,26 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 class adnk
-  implements View.OnClickListener
+  implements bcan
 {
-  adnk(adni paramadni, adnh paramadnh, admz paramadmz, JSONObject paramJSONObject, admy paramadmy) {}
+  adnk(adnj paramadnj) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_Adni.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "accept " + this.jdField_a_of_type_Adnh.a);
-    adni.a(this.jdField_a_of_type_Adni, this.jdField_a_of_type_Adnh, 2);
-    adni.a(this.jdField_a_of_type_Adni, 0, this.jdField_a_of_type_Admz, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Admy);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog grant");
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public void b()
+  {
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog denied");
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adnk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
 
 class muu
-  implements DialogInterface.OnShowListener
+  extends Handler
 {
-  muu(mur parammur) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    mut localmut = (mut)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    bdll.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
+    localmut.jdField_a_of_type_Mus.a(((muv[])localmut.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 

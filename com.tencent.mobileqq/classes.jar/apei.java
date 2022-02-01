@@ -1,54 +1,42 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
 
-public class apei
+class apei
+  implements Animator.AnimatorListener
 {
-  private static int a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 0;
-    }
-    return 2;
-  }
+  apei(apeg paramapeg, apen paramapen) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    paramInt = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
-    }
-    paramQQAppInterface = (apeb)paramQQAppInterface.a(148);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramString1, paramString2, paramInt);
-    }
-  }
-  
-  private static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountStateReporter", 2, new Object[] { "doPublicAccountFollowState { isFollow=", Boolean.valueOf(paramBoolean), " appType=", Integer.valueOf(paramInt1), " appid=", Long.valueOf(paramLong1), " puin=", Long.valueOf(paramLong2), " source=", Integer.valueOf(paramInt2), " }" });
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Apen.jdField_a_of_type_Long);
     }
-    paramQQAppInterface = (apeb)paramQQAppInterface.a(148);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramBoolean, paramInt1, paramLong1, paramLong2, paramInt2);
+    this.jdField_a_of_type_Apeg.a(this.jdField_a_of_type_Apen);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Apen.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Apeg.a(this.jdField_a_of_type_Apen);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Apen.jdField_a_of_type_Long);
     }
   }
   
-  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    try
-    {
-      a(paramQQAppInterface, paramBoolean, -1, -1L, Long.parseLong(paramString), paramInt);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Apen.jdField_a_of_type_Long);
     }
-    catch (NumberFormatException paramQQAppInterface)
-    {
-      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
-    }
+    this.jdField_a_of_type_Apen.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 

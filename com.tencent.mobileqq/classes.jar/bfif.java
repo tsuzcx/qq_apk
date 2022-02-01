@@ -1,63 +1,86 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class bfif
-  implements BusinessObserver
+public class bfif
+  extends QIPCModule
 {
-  bfif(bfie parambfie) {}
+  public static bfif a;
+  private bfih a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private bfif()
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695614);
-    if (paramBoolean) {}
+    super("Module_CheckInServer");
+  }
+  
+  public static bfif a()
+  {
+    if (jdField_a_of_type_Bfif == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bfif == null) {
+        jdField_a_of_type_Bfif = new bfif();
+      }
+      return jdField_a_of_type_Bfif;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Bfih != null)
+    {
+      this.jdField_a_of_type_Bfih.d();
+      this.jdField_a_of_type_Bfih = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
+    }
+    paramBundle = EIPCResult.createResult(0, paramBundle);
+    a();
+    callbackResult(paramInt, paramBundle);
+  }
+  
+  public void onAccountChange()
+  {
+    super.onAccountChange();
+    a();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
+    }
+    a();
+    bfie localbfie;
+    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
+    {
+      localbfie = new bfie();
+      if ("ACTION_UPLOAD_PIC".equals(paramString))
+      {
+        localbfie.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        paramString = new bfig(localbfie, paramInt);
+        this.jdField_a_of_type_Bfih = paramString;
+        paramString.a();
+      }
+    }
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        Object localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          continue;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695615, new Object[] { Integer.valueOf(paramInt) });
-        }
+      return null;
+      localbfie.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+      localbfie.b = paramBundle.getString("BUNDLE_NAME_COVER");
+      localbfie.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
+      paramString = new bfij(localbfie, paramInt);
+      break;
+      if ("ACTION_CANCEL".equals(paramString)) {
+        a();
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695615, new Object[] { Integer.valueOf(9992) });
-        continue;
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695615, new Object[] { Integer.valueOf(9991) });
-        continue;
-      }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, paramBundle, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      bgqv.a("two_comment", "fail", this.a.d, "4", "", "");
-      this.a.jdField_c_of_type_Boolean = false;
-      return;
-      paramBundle = paramBundle.getJSONObject("result");
-      bgqv.a("two_comment", "suc", this.a.d, this.a.h, "", "");
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a(this.a.jdField_c_of_type_JavaLangString, paramBundle.toString(), true);
-      this.a.dismiss();
-      return;
-      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695615, new Object[] { Integer.valueOf(9992) });
     }
   }
 }

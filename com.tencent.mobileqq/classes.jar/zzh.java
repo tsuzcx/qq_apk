@@ -1,8 +1,18 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zzh
+class zzh
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, Drawable paramDrawable);
+  zzh(zzf paramzzf) {}
+  
+  public void onClick(View paramView)
+  {
+    zzf.a(this.a).setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

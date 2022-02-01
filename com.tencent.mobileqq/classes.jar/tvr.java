@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import kotlin.Metadata;
 
-public class tvr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ShowIntervalCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "channelID", "", "(I)V", "getChannelID", "()I", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvr
+  extends tvc
 {
-  public int a;
-  public long a;
-  public ReadInJoyArticle a;
-  public String a;
-  public String b = "";
+  private final int a;
   
-  public tvr()
+  public tvr(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

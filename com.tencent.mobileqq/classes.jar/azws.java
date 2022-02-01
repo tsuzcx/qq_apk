@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class azws
-  implements DialogInterface.OnClickListener
+public class azws
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  azws(azwo paramazwo) {}
+  public azws(AIOIceBreakShow paramAIOIceBreakShow) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (AIOIceBreakShow.a(this.a) == null) {
+      return;
     }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
+    int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
+    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
+    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
+    ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
+    paramValueAnimator.requestLayout();
+    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
   }
 }
 

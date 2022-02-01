@@ -1,8 +1,25 @@
-import android.view.View;
+import java.util.concurrent.atomic.AtomicReference;
 
-public abstract interface blpf
+class blpf
+  implements blow
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  blpf(blpb paramblpb, AtomicReference paramAtomicReference) {}
+  
+  public void a(blpa paramblpa)
+  {
+    babv localbabv = (babv)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localbabv != null) {
+      localbabv.a(paramblpa);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    babv localbabv = (babv)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localbabv != null) {
+      localbabv.a(paramString);
+    }
+  }
 }
 
 

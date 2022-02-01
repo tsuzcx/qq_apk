@@ -10,9 +10,9 @@ public class AnimatedImageSpan$1
   
   public void run()
   {
-    if ((fk.a(this.this$0) != null) && ((fk.a(this.this$0) instanceof AnimatedImageDrawable)))
+    if ((fk.access$000(this.this$0) != null) && ((fk.access$000(this.this$0) instanceof AnimatedImageDrawable)))
     {
-      AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)fk.a(this.this$0);
+      AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)fk.access$000(this.this$0);
       localAnimatedImageDrawable.a();
       this.a.postDelayed(this, localAnimatedImageDrawable.a());
     }
@@ -20,7 +20,7 @@ public class AnimatedImageSpan$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.AnimatedImageSpan.1
  * JD-Core Version:    0.7.0.1
  */

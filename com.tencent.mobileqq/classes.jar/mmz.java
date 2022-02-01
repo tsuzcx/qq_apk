@@ -1,23 +1,31 @@
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
-class mmz
-  implements View.OnKeyListener
+public class mmz
+  implements Animation.AnimationListener
 {
-  mmz(mmw parammmw) {}
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public mmz(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    if (paramKeyEvent.getAction() == 0) {}
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    mmw.b(this.a);
-    return true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lba.f("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

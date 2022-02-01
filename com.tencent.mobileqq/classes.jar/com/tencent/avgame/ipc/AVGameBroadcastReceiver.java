@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
-import mxc;
-import myk;
+import mxn;
+import mzl;
 
 public class AVGameBroadcastReceiver
   extends BroadcastReceiver
@@ -46,7 +46,7 @@ public class AVGameBroadcastReceiver
       QLog.i("AVGameBroadcastReceiver", 2, "actionToAVGame, action[" + paramAVGameAppInterface + "]");
     }
     if ("tencent.video.v2g.exitAVGame".equals(paramAVGameAppInterface)) {
-      myk.a().a(8, null, myk.a().a());
+      mzl.a().a(8, null, mzl.a().a());
     }
     while (!"tencent.avgame.q2g.entring".equals(paramAVGameAppInterface)) {
       return;
@@ -74,7 +74,7 @@ public class AVGameBroadcastReceiver
         }
         i = paramIntent.getIntExtra("action_key_status", 0);
         paramContext = paramIntent.getStringExtra("action_key_room_id");
-        paramQQAppInterface = (mxc)paramQQAppInterface.getManager(373);
+        paramQQAppInterface = (mxn)paramQQAppInterface.getManager(373);
       } while (paramQQAppInterface == null);
       paramQQAppInterface.a(i, paramContext);
       return;

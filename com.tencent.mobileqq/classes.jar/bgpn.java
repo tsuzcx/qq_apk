@@ -1,111 +1,34 @@
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Card;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgpn
-  extends SSLSocketFactory
 {
-  private final String jdField_a_of_type_JavaLangString = bgpn.class.getSimpleName();
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-  private HttpsURLConnection jdField_a_of_type_JavaxNetSslHttpsURLConnection;
-  
-  public bgpn(HttpsURLConnection paramHttpsURLConnection)
+  public static bgpj a(Activity paramActivity, @NonNull JSONObject paramJSONObject, aymg paramaymg, String paramString)
   {
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection = paramHttpsURLConnection;
-  }
-  
-  public Socket createSocket()
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getRequestProperty("Host");
-    if (localObject == null) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "customized createSocket. host: " + paramString);
-      }
-      localObject = paramSocket.getInetAddress();
-      if (paramBoolean) {
-        paramSocket.close();
-      }
-      SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-      paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket((InetAddress)localObject, paramInt);
-      paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-      if (Build.VERSION.SDK_INT >= 17)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Setting SNI hostname");
-        }
-        localSSLCertificateSocketFactory.setHostname(paramSocket, paramString);
-      }
-      for (;;)
-      {
-        localObject = paramSocket.getSession();
-        if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(paramString, (SSLSession)localObject)) {
-          break;
-        }
-        throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "No documented SNI support on Android <4.2, trying with reflection");
-        }
-        try
-        {
-          paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
-      }
-      return paramSocket;
-      paramString = localException;
+    if ((paramaymg == null) || (paramaymg.a == null)) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
     }
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return new String[0];
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return new String[0];
+    long l1 = paramaymg.a.lCurrentStyleId;
+    if (l1 < 0L) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
+    }
+    long l2 = paramJSONObject.optLong("id");
+    if (l2 != l1) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
+    }
+    if (l2 == aymn.l) {}
+    for (paramActivity = new bgpo(paramActivity, paramJSONObject, paramaymg);; paramActivity = new bgpp(paramActivity, paramJSONObject, paramaymg))
+    {
+      paramActivity.a(paramString);
+      return paramActivity;
+      if (l2 != aymn.m) {
+        break;
+      }
+    }
+    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
   }
 }
 

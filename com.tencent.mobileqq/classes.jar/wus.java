@@ -1,9 +1,6 @@
-public class wus
+public abstract interface wus
 {
-  @zoq(a="mqqapiUrl")
-  public String a;
-  @zoq(a="jumpH5Url")
-  public String b;
+  public abstract void a(wur paramwur);
 }
 
 

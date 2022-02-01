@@ -1,27 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.pic.CompressInfo;
 
 public class ayfb
-  implements bliz
+  extends ayfa
 {
-  public ayfb(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  ayfb(CompressInfo paramCompressInfo)
   {
-    switch (paramInt)
+    super(paramCompressInfo);
+  }
+  
+  protected int a()
+  {
+    int i = 85;
+    if (this.a.g == 2)
     {
+      i = 100;
+      return i;
     }
-    for (;;)
+    switch (this.a.h)
     {
-      if (this.jdField_a_of_type_Blir != null) {
-        this.jdField_a_of_type_Blir.dismiss();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-      continue;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    case 4: 
+    case 2: 
+    case 3: 
+    default: 
+      return 85;
     }
+    return 90;
   }
 }
 

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class apiv
+class apiv
+  implements View.OnClickListener
 {
-  public ArCloudConfigInfo a;
+  apiv(apiu paramapiu, int paramInt) {}
   
-  public apiv(ArCloudConfigInfo paramArCloudConfigInfo)
+  public void onClick(View paramView)
   {
-    this.a = paramArCloudConfigInfo;
-  }
-  
-  public String toString()
-  {
-    return "ARTarget{arResourceInfo=" + this.a + '}';
+    if (apiq.a(this.jdField_a_of_type_Apiu.a) != null) {
+      apiq.a(this.jdField_a_of_type_Apiu.a).a(this.jdField_a_of_type_Int, (aphw)apiq.a(this.jdField_a_of_type_Apiu.a).get(this.jdField_a_of_type_Int));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

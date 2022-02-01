@@ -1,14 +1,36 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.6.1.1;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class bgpc
-  implements bdyi
+  extends blas
 {
-  bgpc(bgpb parambgpb) {}
+  private HashMap<String, blas> a;
   
-  public void a()
+  public bgpc(String paramString, View paramView, HashMap<String, blas> paramHashMap)
   {
-    this.a.a.a.post(new AIOAnimationControlManager.6.1.1(this));
+    super(paramString, paramView);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  {
+    int i = UIUtils.getScreenWidth(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    return paramLayoutParams;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("border".equals(paramString1))
+    {
+      if ((blas)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
+      return;
+    }
+    super.a(paramString1, paramString2);
   }
 }
 

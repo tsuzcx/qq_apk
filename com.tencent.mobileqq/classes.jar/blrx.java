@@ -1,14 +1,9 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-class blrx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface blrx
 {
-  blrx(blrw paramblrw) {}
-  
-  public void onGlobalLayout()
-  {
-    blrw.a(this.a);
-  }
+  public abstract void a(@NonNull List<blrj> paramList, @NonNull List<blri> paramList1);
 }
 
 

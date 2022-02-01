@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-final class aeak
-  implements DialogInterface.OnClickListener
+public class aeak
+  implements bdan
 {
-  aeak(aeca paramaeca, aebz paramaebz) {}
+  public aeak(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    if (this.jdField_a_of_type_Aeca.a) {
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Aebz != null) {
-      this.jdField_a_of_type_Aebz.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    QQSettingMe.d(this.a);
   }
 }
 

@@ -161,7 +161,7 @@ public class SystemInfoPlugin
     int m = (int)((float)Math.round(((DisplayMetrics)localObject2).widthPixels / d) + 0.5F);
     int n = getRelHeight((DisplayMetrics)localObject2, (Activity)localObject1);
     int i1 = getRelWindowHeight(d, j, n);
-    int k = ImmersiveUtils.getNotchHeight((Context)localObject1, (Activity)localObject1);
+    int k = ImmersiveUtils.getNotchHeight(this.mMiniAppContext.getContext(), (Activity)localObject1);
     int i = k;
     if (k == 0) {
       i = j;
@@ -194,7 +194,7 @@ public class SystemInfoPlugin
         ((JSONObject)localObject2).put("SDKVersion", this.mMiniAppContext.getBaseLibVersion());
         ((JSONObject)localObject2).put("AppPlatform", this.mMiniAppProxy.getAppName());
         ((JSONObject)localObject2).put("safeArea", localObject1);
-        ((JSONObject)localObject2).put("runtimeVersion", "1.7.0.0");
+        ((JSONObject)localObject2).put("runtimeVersion", "1.8.0.0");
         if (this.mApkgInfo.getAppConfigInfo().darkmode) {
           ((JSONObject)localObject2).put("theme", ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserTheme());
         }

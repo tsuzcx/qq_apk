@@ -1,32 +1,7 @@
-class aopg
-  extends anyu
+public abstract interface aopg
+  extends aoph
 {
-  private aopg(aope paramaope) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
-  }
-  
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
-  }
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

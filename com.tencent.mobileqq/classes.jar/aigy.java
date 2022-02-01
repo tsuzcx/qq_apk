@@ -1,34 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMFollwerAdd;
 
 public class aigy
-  extends aigs
+  extends aigo
 {
-  public aghh a;
-  public Bitmap a;
-  public boolean a;
-  public Drawable[] a;
+  public QIMFollwerAdd a;
   
-  public aigy(String paramString)
+  public aigy(QIMFollwerAdd paramQIMFollwerAdd)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
+    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public String a()
   {
-    if (paramRedPacketInfo != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      this.jdField_a_of_type_Aghh = paramRedPacketInfo.jdField_a_of_type_Aghh;
-      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
-    }
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
   }
 }
 

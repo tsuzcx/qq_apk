@@ -1,30 +1,84 @@
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class aorb
-  extends anyu
+class aorb
+  implements DownloadListener
 {
-  public aorb(HiddenChatFragment paramHiddenChatFragment) {}
+  aorb(aoqz paramaoqz) {}
   
-  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
-      QLog.e("tag_hidden_chat", 1, "data not right");
+    if (aoqz.a(this.a) != null) {
+      aoqz.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
     }
-    do
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
+      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
+      aoqz.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
+      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
+      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if ((paramList != null) && (aoqz.a(this.a) != null))
     {
-      do
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        return;
-        String[] arrayOfString = (String[])paramArrayOfObject[0];
-        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
-        if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
-        }
-      } while (!paramBoolean);
-      this.a.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        localJSONArray.put(this.a.a(localDownloadInfo));
+      }
+      aoqz.a(this.a).a(localJSONArray.toString());
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
+      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (aoqz.a(this.a) != null) {
+      aoqz.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (aoqz.a(this.a) != null) {
+      aoqz.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
+    }
   }
 }
 

@@ -1,16 +1,18 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 
-class amqc
-  implements bbst
+public abstract class amqc<T extends CustomEmotionBase>
+  extends BusinessHandler
 {
-  amqc(amqb paramamqb) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected amqc(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
+    super(paramQQAppInterface);
   }
+  
+  public abstract void a();
+  
+  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

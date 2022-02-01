@@ -1,317 +1,161 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-public class ptl
+class ptl
 {
-  JSONObject a = new JSONObject();
+  public int a;
+  HashMap<Integer, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private puu jdField_a_of_type_Puu = new ptm(this);
+  HashMap<Integer, ArrayList<Integer>> b = new HashMap();
+  HashMap<Integer, ArrayList<BaseArticleInfo>> c = new HashMap();
   
-  public ptl A(BaseArticleInfo paramBaseArticleInfo)
+  ptl(ptk paramptk, int paramInt)
   {
-    puo.O(paramBaseArticleInfo, this.a);
-    return this;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public ptl B(BaseArticleInfo paramBaseArticleInfo)
+  private put a()
   {
-    puo.a(this.a, paramBaseArticleInfo);
-    return this;
-  }
-  
-  public ptl C(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.Q(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl D(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mChannelID == 0L)) {
-      return this;
+    AppRuntime localAppRuntime = pay.a();
+    if (localAppRuntime != null) {
+      return ((pks)localAppRuntime.getManager(163)).a().a();
     }
-    puo.a(this.a);
-    return this;
+    return null;
   }
   
-  public ptl E(BaseArticleInfo paramBaseArticleInfo)
+  public BaseArticleInfo a(int paramInt1, int paramInt2)
   {
-    puo.v(paramBaseArticleInfo, this.a);
-    return this;
+    Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      int i = ((ArrayList)localObject).indexOf(Integer.valueOf(paramInt2));
+      if (i != -1)
+      {
+        if ((this.c.containsKey(Integer.valueOf(paramInt1))) && (i < ((ArrayList)this.c.get(Integer.valueOf(paramInt1))).size()))
+        {
+          localObject = (BaseArticleInfo)((ArrayList)this.c.get(Integer.valueOf(paramInt1))).get(i);
+          if (localObject != null) {
+            ((BaseArticleInfo)localObject).mRecommendSeq = ptk.a(1, paramInt2);
+          }
+          return localObject;
+        }
+        QLog.d("ReadinjoyFixPosArticleManager", 1, "article isn't exist ! positon : " + paramInt2);
+      }
+    }
+    for (;;)
+    {
+      return null;
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "positons is null !");
+    }
   }
   
-  public ptl F(BaseArticleInfo paramBaseArticleInfo)
+  void a(int paramInt)
   {
-    puo.R(paramBaseArticleInfo, this.a);
-    return this;
+    int j = 0;
+    b(paramInt);
+    Object localObject2 = a();
+    if (localObject2 == null)
+    {
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "adinterface is null !");
+      return;
+    }
+    Object localObject3 = ((put)localObject2).a(paramInt);
+    if ((localObject3 == null) || (localObject3.length <= 0))
+    {
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "get ad position fail ~ return data is null !");
+      return;
+    }
+    Object localObject1 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localObject3.length)
+    {
+      ((ArrayList)localObject1).add(Integer.valueOf(localObject3[i]));
+      localArrayList.add(Integer.valueOf(0));
+      i += 1;
+    }
+    Collections.sort((List)localObject1, new ptn(this));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject1);
+    this.b.put(Integer.valueOf(paramInt), localArrayList);
+    localObject2 = ((put)localObject2).a(paramInt);
+    if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
+    {
+      localObject3 = new ArrayList((Collection)localObject2);
+      this.c.put(Integer.valueOf(paramInt), localObject3);
+    }
+    localObject1 = new StringBuilder().append("ad pos : ").append(localObject1).append(", channelID : ").append(paramInt).append(", articleSize : ");
+    paramInt = j;
+    if (localObject2 != null) {
+      paramInt = ((ArrayList)localObject2).size();
+    }
+    QLog.d("ReadinjoyFixPosArticleManager", 1, paramInt);
   }
   
-  public ptl G(BaseArticleInfo paramBaseArticleInfo)
+  void a(int paramInt1, int paramInt2)
   {
-    puo.S(paramBaseArticleInfo, this.a);
-    return this;
+    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localArrayList != null)
+    {
+      int i = localArrayList.indexOf(Integer.valueOf(paramInt2));
+      if (i != -1)
+      {
+        ((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1))).remove(i);
+        ((ArrayList)this.b.get(Integer.valueOf(paramInt1))).remove(i);
+        ((ArrayList)this.c.get(Integer.valueOf(paramInt1))).remove(i);
+        QLog.d("ReadinjoyFixPosArticleManager", 1, "delete ad article , position : " + paramInt2);
+      }
+    }
   }
   
-  public ptl H(BaseArticleInfo paramBaseArticleInfo)
+  boolean a(int paramInt)
   {
-    puo.U(paramBaseArticleInfo, this.a);
-    return this;
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).size() > 0) && (this.c.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.c.get(Integer.valueOf(paramInt))).size() > 0))
+        {
+          bool = true;
+          return bool;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
   }
   
-  public ptl I(BaseArticleInfo paramBaseArticleInfo)
+  public void b(int paramInt)
   {
-    puo.V(paramBaseArticleInfo, this.a);
-    return this;
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+      this.c.remove(Integer.valueOf(paramInt));
+      this.b.remove(Integer.valueOf(paramInt));
+      return;
+    }
+    finally {}
   }
   
-  public ptl J(BaseArticleInfo paramBaseArticleInfo)
+  void c(int paramInt)
   {
-    puo.W(paramBaseArticleInfo, this.a);
-    return this;
+    put localput = a();
+    if (localput != null) {
+      localput.a(paramInt, this.jdField_a_of_type_Puu);
+    }
   }
   
-  public ptl K(BaseArticleInfo paramBaseArticleInfo)
+  void d(int paramInt)
   {
-    puo.T(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl L(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.z(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl M(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.A(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl N(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.L(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl O(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.ac(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl P(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.ai(paramBaseArticleInfo, this.a);
-    puo.ad(paramBaseArticleInfo, this.a);
-    puo.ae(paramBaseArticleInfo, this.a);
-    puo.af(paramBaseArticleInfo, this.a);
-    puo.ag(paramBaseArticleInfo, this.a);
-    puo.ah(paramBaseArticleInfo, this.a);
-    puo.ak(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public JSONObject a()
-  {
-    return this.a;
-  }
-  
-  public ptl a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    I(paramBaseArticleInfo);
-    J(paramBaseArticleInfo);
-    return this;
-  }
-  
-  public ptl a(BaseArticleInfo paramBaseArticleInfo, long paramLong)
-  {
-    puo.a(paramBaseArticleInfo, this.a, Long.valueOf(paramLong));
-    return this;
-  }
-  
-  public ptl a(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    puo.b(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public ptl a(String paramString)
-  {
-    this.a.put("style_ID", paramString);
-    return this;
-  }
-  
-  public ptl a(String paramString, Object paramObject)
-  {
-    this.a.put(paramString, paramObject);
-    return this;
-  }
-  
-  public ptl b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.p(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl b(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    puo.a(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public ptl c(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.x(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl c(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    puo.c(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public ptl d(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.q(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl d(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    puo.d(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public ptl e(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.r(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl f(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.s(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl g(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.t(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl h(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.P(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl i(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.a(paramBaseArticleInfo, this.a, "id_dislike_button");
-    return this;
-  }
-  
-  public ptl j(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.j(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl k(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.k(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl l(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.G(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl m(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.E(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl n(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.H(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl o(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.I(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl p(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.F(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl q(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.l(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl r(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.m(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl s(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.n(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl t(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.o(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl u(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.C(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl v(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.D(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl w(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.J(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl x(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.K(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl y(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.M(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public ptl z(BaseArticleInfo paramBaseArticleInfo)
-  {
-    puo.N(paramBaseArticleInfo, this.a);
-    return this;
+    put localput = a();
+    if (localput != null) {
+      localput.a(paramInt);
+    }
   }
 }
 

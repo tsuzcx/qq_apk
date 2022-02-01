@@ -1,6 +1,19 @@
-public abstract interface pex
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJDislikeAnimation.1.1;
+
+public class pex
+  implements Animation.AnimationListener
 {
-  public abstract void z_();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.post(new RIJDislikeAnimation.1.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -3,28 +3,34 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnai;
 
 public class KingCardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<KingCardInfo> CREATOR = new bnai();
-  public String a;
-  public boolean a;
-  public String b;
+  public static final Parcelable.Creator<KingCardInfo> CREATOR = new KingCardInfo.1();
+  public String buttonTitle;
+  public String jumpUrl;
+  public boolean showGuide;
   
   public KingCardInfo() {}
   
-  public KingCardInfo(Parcel paramParcel)
+  protected KingCardInfo(Parcel paramParcel)
   {
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.b = paramParcel.readString();
+      this.showGuide = bool;
+      this.buttonTitle = paramParcel.readString();
+      this.jumpUrl = paramParcel.readString();
       return;
     }
+  }
+  
+  public KingCardInfo(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    this.showGuide = paramBoolean;
+    this.buttonTitle = paramString1;
+    this.jumpUrl = paramString2;
   }
   
   public int describeContents()
@@ -34,17 +40,17 @@ public class KingCardInfo
   
   public String toString()
   {
-    return "KingCardInfo [showGuide=" + this.jdField_a_of_type_Boolean + ", buttonTitle=" + this.jdField_a_of_type_JavaLangString + ", jumpUrl=" + this.b + "]";
+    return "KingCardInfo [showGuide=" + this.showGuide + ", buttonTitle=" + this.buttonTitle + ", jumpUrl=" + this.jumpUrl + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    if (this.showGuide) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeString(this.b);
+      paramParcel.writeString(this.buttonTitle);
+      paramParcel.writeString(this.jumpUrl);
       return;
     }
   }

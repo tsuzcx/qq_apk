@@ -1,15 +1,6 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class awty
+public abstract interface awty
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  
-  public awty(View paramView)
-  {
-    this.a = ((ImageView)awtw.a(paramView, 2131370357));
-  }
+  public abstract boolean a(awtu paramawtu, int paramInt, Object paramObject);
 }
 
 

@@ -1,43 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import tencent.im.qqwallet.kua_kua_hb_srv.TopicMatchRequest;
 
 public class akyw
-  implements bmrs
+  extends aycd
 {
-  akyw(akyv paramakyv) {}
+  public akyw(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.a.b()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketKuaKuaFragment", 2, "ansyBack:getActivity() == null || getActivity().isFinishing()");
-      }
-    }
-    while ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
+    this.a.a.unRegistObserver(this);
+    switch (ContactsInnerFrame.a(this.a).d())
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      ContactsInnerFrame.c(this.a);
+      return;
+    case 0: 
+    case 7: 
+    case 9: 
+      ContactsInnerFrame.a(this.a);
+      return;
+    case 1: 
+    case 5: 
+      ContactsInnerFrame.b(this.a);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("RedPacketKuaKuaFragment", 2, "get getPskeyAsync success");
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    {
+      ContactsInnerFrame.a(this.a);
+      return;
     }
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    String str1 = this.a.a.a.a;
-    paramInt = alik.a(this.a.a.getActivity().app, this.a.a.a);
-    String str2 = this.a.a.getActivity().app.c();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), akwq.class);
-    localNewIntent.putExtra("cmd", "trpc.qqhb.kua_kua_hb_srv.KuaKuaHbSvc.TopicMatch");
-    paramVarArgs = this.a.a.a(paramVarArgs[0], str2, paramInt, str1);
-    if (paramVarArgs != null) {
-      localNewIntent.putExtra("data", bhuf.a(paramVarArgs.toByteArray()));
-    }
-    localNewIntent.setObserver(new akyx(this, l));
-    this.a.a.getActivity().app.startServlet(localNewIntent);
+    ContactsInnerFrame.b(this.a);
   }
 }
 

@@ -1,14 +1,23 @@
-public class aosl
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+
+class aosl
+  implements aosn
 {
-  public int a;
-  public String a;
-  public int b;
+  aosl(aosk paramaosk, aosi paramaosi) {}
   
-  public aosl(String paramString, int paramInt1, int paramInt2)
+  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    Bundle localBundle = new Bundle();
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      localBundle.putString("userAccount", paramString1);
+      localBundle.putString("openID", paramString2);
+      localBundle.putString("openToken", paramString3);
+      localBundle.putLong("dstAppID", paramLong);
+    }
+    this.jdField_a_of_type_Aosi.a(EIPCResult.createResult(0, localBundle));
   }
 }
 

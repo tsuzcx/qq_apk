@@ -1,16 +1,6 @@
-import java.util.List;
-import java.util.regex.Matcher;
-
-final class bekt
-  implements belv
+public abstract interface bekt
 {
-  bekt(List paramList, beko parambeko) {}
-  
-  public String a(Matcher paramMatcher)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Beko.a(beks.a(paramMatcher.group(1))));
-    return "";
-  }
+  public abstract void b(boolean paramBoolean, int paramInt);
 }
 
 

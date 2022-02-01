@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
-class awph
-  implements DialogInterface.OnClickListener
+public class awph
+  extends Handler
 {
-  awph(awpf paramawpf, bhpc parambhpc) {}
+  public awph(StoryPlayController paramStoryPlayController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      StoryPlayController.a(this.a, this.a.a);
+    }
   }
 }
 

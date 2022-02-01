@@ -1,18 +1,12 @@
-public class akjb
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class akjb
+  implements View.OnClickListener
 {
-  public String a;
+  akjb(akho paramakho) {}
   
-  public akjb(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("keyword = ").append(this.a);
-    return localStringBuilder.toString();
-  }
+  public void onClick(View paramView) {}
 }
 
 

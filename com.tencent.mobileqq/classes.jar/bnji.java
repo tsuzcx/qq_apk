@@ -1,104 +1,25 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QzoneHardwareRestriction;
-import java.io.File;
+import android.graphics.Bitmap;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class bnji
+  implements bngk
 {
-  public static final String a;
-  public static final boolean a;
-  public static final String b;
-  private static boolean b;
-  private static boolean c;
-  private static boolean d;
+  public bnji(DoodleLayout paramDoodleLayout) {}
   
-  static
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    boolean bool = true;
-    jdField_a_of_type_JavaLangString = bnji.class.getSimpleName();
-    jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "animatedWebpMD5", "4c8590a921c2722051416111dfd57122");
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "ENABLE_ANIMATED_WEBP", 1) == 1) {}
-    for (;;)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
     }
   }
   
-  public static boolean a()
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!c) {
-      if ((!jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean) || (!QzoneHardwareRestriction.meetHardwareRestriction(2, 1))) {
-        break label40;
-      }
-    }
-    label40:
-    for (boolean bool = true;; bool = false)
+    if (this.a.a != null)
     {
-      d = bool;
-      c = true;
-      return d;
+      xvv.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
     }
-  }
-  
-  public static boolean b()
-  {
-    if (!a())
-    {
-      QZLog.i(jdField_a_of_type_JavaLangString, "enable animtedWebp false");
-      return false;
-    }
-    if ((!e()) && (c())) {
-      return d();
-    }
-    QzoneModuleManager.getInstance().downloadModule("animatedWebp.so", new bnjj());
-    return false;
-  }
-  
-  public static boolean c()
-  {
-    String str = QzoneModuleManager.getInstance().getModuleFilePath("animatedWebp.so");
-    if (TextUtils.isEmpty(str))
-    {
-      QZLog.i(jdField_a_of_type_JavaLangString, "isWebp SO path not exit");
-      return false;
-    }
-    boolean bool = new File(str).exists();
-    QZLog.i(jdField_a_of_type_JavaLangString, "isWebp SO path exit : " + bool);
-    return bool;
-  }
-  
-  private static boolean d()
-  {
-    try
-    {
-      String str = QzoneModuleManager.getInstance().getModuleFilePath("animatedWebp.so");
-      if (TextUtils.isEmpty(str)) {
-        return false;
-      }
-      System.load(str);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      jdField_b_of_type_Boolean = true;
-      QZLog.e(jdField_a_of_type_JavaLangString, "load webp so fail", localThrowable);
-    }
-    return false;
-  }
-  
-  private static boolean e()
-  {
-    String str = bjwf.a().getString("PREFERENCE_SO_MD5_KEY", null);
-    if (TextUtils.isEmpty(str)) {}
-    while (!str.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) {
-      return true;
-    }
-    return false;
   }
 }
 

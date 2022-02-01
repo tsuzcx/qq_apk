@@ -1,56 +1,89 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajlr
-  extends anwt
+  extends aycd
 {
-  public ajlr(SystemMsgListView paramSystemMsgListView) {}
+  public ajlr(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).b(paramLong);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label76;
+    this.a.f = false;
+    this.a.a();
+    this.a.b();
+    int i;
+    if (paramBoolean)
+    {
+      String str = ContactUtils.getRequestPathKey();
+      if (!TextUtils.isEmpty(str)) {
+        bcef.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      i = paramBundle.getInt("k_result");
+      if (paramBundle.getBoolean("k_buto_bind", false)) {
+        this.a.c();
       }
     }
-    label76:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    for (;;)
     {
-      if ((paramObject != null) && (paramObject.size() > 0))
+      ContactUtils.clearRequestPathKey();
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      if ((i == 104) || (i == 0))
       {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
+        this.a.b();
+      }
+      else
+      {
+        if (i == 107)
         {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
+          this.a.a(paramBundle);
+          return;
+        }
+        if (i == 106)
+        {
+          this.a.a(null, 2);
+        }
+        else if (i == 227)
+        {
+          this.a.d();
+        }
+        else if (i == 226)
+        {
+          this.a.e();
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "bind error " + i);
           }
+          this.a.a(a(i));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
+          }
+          this.a.a(2131717686);
         }
       }
-      return;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {}
-    try
-    {
-      long l = Long.parseLong(paramString);
-      SystemMsgListView.a(this.a).b(l);
-      return;
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      this.a.a(2131717686);
     }
   }
 }

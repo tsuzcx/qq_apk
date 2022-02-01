@@ -1,46 +1,66 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.TextureView;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class wmy
-  implements zqq
 {
-  private wmz jdField_a_of_type_Wmz;
-  
-  public wmy(wmx paramwmx, wmz paramwmz)
+  public static TextureView a(View paramView)
   {
-    this.jdField_a_of_type_Wmz = paramwmz;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    yuk.e(wmx.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    wmx.a(this.jdField_a_of_type_Wmx);
-    if (wmx.b(this.jdField_a_of_type_Wmx) == 0)
+    if ((paramView instanceof ViewGroup))
     {
-      yuk.b(wmx.a, "all ffmpeg commands have already finished. start clearing cache.");
-      wmx.a(this.jdField_a_of_type_Wmx);
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        TextureView localTextureView = a(paramView.getChildAt(i));
+        if (localTextureView != null) {
+          return localTextureView;
+        }
+        i += 1;
+      }
     }
+    if ((paramView instanceof TextureView)) {
+      return (TextureView)paramView;
+    }
+    return null;
   }
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    yuk.b(wmx.a, "start executing ffmpeg commands.");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (zom.a(BaseApplication.getContext(), this.jdField_a_of_type_Wmz.d, this.jdField_a_of_type_Wmz.e))
+    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
     {
-      yuk.b(wmx.a, "save video to album success.");
-      yup.a("video_edit", "video_save_local", 0, 0, new String[0]);
-      return;
+      yos.a(false, "bitmap is not ARGB_8888");
+      return false;
     }
-    yuk.e(wmx.a, "save video to album failed.");
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int m = j / paramInt1;
+    int n = k / paramInt1;
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 >= j) {
+        break label118;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= k) {
+          break label110;
+        }
+        int i1 = paramBitmap.getPixel(paramInt1, i);
+        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
+          break;
+        }
+        i += n;
+      }
+      label110:
+      paramInt1 += m;
+    }
+    label118:
+    return true;
   }
 }
 

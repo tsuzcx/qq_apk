@@ -1,57 +1,55 @@
-import ColorNick.QC.GroupNickEmoji;
-import ColorNick.QC.GroupNickItem;
-import ColorNick.QC.readItemInfoRsp;
+import android.content.res.Resources;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aemi
-  extends aogx
+  extends amwl
 {
-  public aemi(EditInfoActivity paramEditInfoActivity) {}
+  public aemi(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected void onSendSystemMsgActionError(String paramString)
   {
-    Object localObject1;
-    if ((paramBoolean) && ((paramObject instanceof readItemInfoRsp)))
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopInviteStatusFragment", 2, "onSendSystemMsgActionError logStr:" + paramString);
+    }
+    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
     {
-      paramObject = (readItemInfoRsp)paramObject;
-      EditInfoActivity.a(this.a, paramObject.index);
-      localObject1 = paramObject.urlprefix;
-      Iterator localIterator;
-      Object localObject2;
-      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditInfoActivity.a(this.a).size() == 0))
-      {
-        localIterator = paramObject.emojilist.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (GroupNickEmoji)localIterator.next();
-          EditInfoActivity.a(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
-        }
-        this.a.a.sendEmptyMessage(260);
-      }
-      if ((paramObject.itemlist != null) && (paramObject.itemlist.size() > 0))
-      {
-        localIterator = paramObject.itemlist.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (GroupNickItem)localIterator.next();
-          String str = (String)localObject1 + ((GroupNickItem)localObject2).url;
-          localObject2 = new bhws(3, null, ((GroupNickItem)localObject2).itemid, str);
-          EditInfoActivity.b(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramObject.left != 1) {
-          break label257;
-        }
+      this.a.jdField_a_of_type_Bhht.dismiss();
+      paramString = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131718765);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, paramString, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight()).show();
+    }
+  }
+  
+  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
+      this.a.jdField_a_of_type_Bhht.dismiss();
+    }
+    if (!paramBoolean)
+    {
+      paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131718115);
+      if (TextUtils.isEmpty(paramString3)) {
+        break label175;
       }
     }
-    label257:
-    for (paramBoolean = true;; paramBoolean = false)
+    for (;;)
     {
-      EditInfoActivity.a((EditInfoActivity)localObject1, paramBoolean);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, paramString3, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       return;
+      paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131692460);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, paramString1, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      this.a.c = -1;
+      TroopInviteStatusFragment.a(this.a);
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.jdField_b_of_type_JavaLangRunnable);
+      return;
+      label175:
+      paramString3 = paramString1;
     }
   }
 }

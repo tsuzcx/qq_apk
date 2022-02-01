@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import agej;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import bdep;
-import yoc;
-import yuk;
-import zoc;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import xpn;
+import xvv;
+import yoy;
 
 class NewFlowCameraActivity$43
   implements Runnable
@@ -15,30 +15,30 @@ class NewFlowCameraActivity$43
   
   public void run()
   {
-    int i = agej.a(47.0F, this.this$0.getResources());
-    int j = agej.a(75.0F, this.this$0.getResources());
-    Bitmap localBitmap1 = zoc.a(this.a, i, j, false);
+    int i = AIOUtils.dp2px(47.0F, this.this$0.getResources());
+    int j = AIOUtils.dp2px(75.0F, this.this$0.getResources());
+    Bitmap localBitmap1 = yoy.a(this.a, i, j, false);
     if (localBitmap1 == null) {
-      yuk.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
+      xvv.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
     }
     Bitmap localBitmap2;
     do
     {
       return;
-      localBitmap2 = new yoc(agej.a(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+      localBitmap2 = new xpn(AIOUtils.dp2px(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
       if (localBitmap2 == null)
       {
-        yuk.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
+        xvv.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
         return;
       }
       i = this.a.getWidth();
       j = this.a.getHeight();
-      float f1 = bdep.a;
-      float f2 = bdep.a(this.this$0.getApplicationContext());
+      float f1 = ScreenUtil.SCREEN_WIDTH;
+      float f2 = ScreenUtil.getInstantScreenHeight(this.this$0.getApplicationContext());
       if (i / j > f1 / f2) {}
-      for (localBitmap1 = zoc.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = zoc.a(this.a, i, (int)(f2 / f1 * i), true))
+      for (localBitmap1 = yoy.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = yoy.a(this.a, i, (int)(f2 / f1 * i), true))
       {
-        yuk.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
+        xvv.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
         return;
       }
     } while (this.this$0.a == null);

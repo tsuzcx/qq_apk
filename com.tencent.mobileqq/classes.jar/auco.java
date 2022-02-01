@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.DialogInterface.OnClickListener;
 
 class auco
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  auco(aucn paramaucn) {}
+  auco(aucm paramaucm) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    apdi.a().a(this.a.jdField_a_of_type_Int, -1);
+    if (this.a.jdField_a_of_type_JavaLangString == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = this.a.jdField_a_of_type_JavaLangString)
+    {
+      bcef.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
+      return;
+    }
   }
 }
 

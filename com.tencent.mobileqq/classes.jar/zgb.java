@@ -1,41 +1,10 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public class zgb
-  extends zfz<zga>
+public abstract interface zgb
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370359);
+  public abstract void a(int paramInt);
   
-  zgb(zga paramzga, @NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561819, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(zga paramzga, int paramInt)
-  {
-    super.a(paramzga, paramInt);
-    if (paramzga != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramzga.a());
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
+  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
 }
 
 

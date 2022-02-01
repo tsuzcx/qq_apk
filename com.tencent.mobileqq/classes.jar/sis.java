@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-
-public class sis
-  extends rfm
+class sis
+  implements bjoi
 {
-  public sis(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  sis(sir paramsir) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void ab_()
   {
-    ReadInJoyListViewGroup.a(this.a).b(paramInt1, paramInt2, paramInt3);
+    if (sig.c(this.a.a))
+    {
+      sig.c(this.a.a, false);
+      sig.a(this.a.a).a(sig.a(this.a.a), sig.b(this.a.a), true, false);
+      return;
+    }
+    sig.a(this.a.a).a(sig.a(this.a.a), sig.b(this.a.a), true, true);
   }
 }
 

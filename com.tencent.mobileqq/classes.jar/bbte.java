@@ -1,26 +1,8 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class bbte
-  implements bbsw
+public abstract interface bbte
 {
-  public bbte(SignTextEditFragment paramSignTextEditFragment) {}
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    SignTextEditFragment.a(this.a, this.a.a, paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      QQToast.a(this.a.getActivity(), 2131717966, 1).a();
-    }
-    SignTextEditFragment.a(this.a, this.a.a, SignTextEditFragment.a(this.a).b());
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

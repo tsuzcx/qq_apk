@@ -36,16 +36,16 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
   public MiniAppDesktopAdapter$RecommendModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131371131));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371136));
-    this.mTitle = ((TextView)paramView.findViewById(2131371135));
-    this.mRecommendNumber = ((TextView)paramView.findViewById(2131371134));
-    this.mRecommendDesc = ((TextView)paramView.findViewById(2131371132));
-    this.mApps.add(paramView.findViewById(2131371125));
-    this.mApps.add(paramView.findViewById(2131371126));
-    this.mApps.add(paramView.findViewById(2131371127));
-    this.mApps.add(paramView.findViewById(2131371128));
-    this.mApps.add(paramView.findViewById(2131371129));
+    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131371100));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371105));
+    this.mTitle = ((TextView)paramView.findViewById(2131371104));
+    this.mRecommendNumber = ((TextView)paramView.findViewById(2131371103));
+    this.mRecommendDesc = ((TextView)paramView.findViewById(2131371101));
+    this.mApps.add(paramView.findViewById(2131371094));
+    this.mApps.add(paramView.findViewById(2131371095));
+    this.mApps.add(paramView.findViewById(2131371096));
+    this.mApps.add(paramView.findViewById(2131371097));
+    this.mApps.add(paramView.findViewById(2131371098));
   }
   
   public void bindView(Activity paramActivity, DesktopRecommendModuleInfo paramDesktopRecommendModuleInfo)
@@ -54,7 +54,7 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848407);
+      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848318);
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
       this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(localStModuleInfo.backgroundPic.get(), localURLDrawableOptions));

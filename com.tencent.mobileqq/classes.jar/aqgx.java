@@ -1,22 +1,61 @@
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class aqgx
+  extends aqgc<aqgw>
 {
-  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  @NonNull
+  public aqgw a()
   {
-    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
-    {
-      int i = 0;
-      while (i < paramArrayOfFloat1.length)
-      {
-        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
-        i += 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
     }
-    return paramArrayOfFloat1;
+    return new aqgw();
+  }
+  
+  @NonNull
+  public aqgw a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    aqgw localaqgw = new aqgw();
+    try
+    {
+      localaqgw.a = new JSONObject(paramArrayOfaptx[0].a).optBoolean("showVipIcon", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localaqgw.a);
+      }
+      return localaqgw;
+    }
+    catch (JSONException paramArrayOfaptx)
+    {
+      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaptx);
+    }
+    return localaqgw;
+  }
+  
+  @NonNull
+  public aqgw b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
+    }
+    return new aqgw();
+  }
+  
+  public Class<aqgw> clazz()
+  {
+    return aqgw.class;
+  }
+  
+  public int type()
+  {
+    return 465;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqgx
  * JD-Core Version:    0.7.0.1
  */

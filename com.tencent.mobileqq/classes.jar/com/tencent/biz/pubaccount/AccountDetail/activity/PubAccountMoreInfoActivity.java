@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
 import Override;
+import amxz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -10,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import aody;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -23,9 +23,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import nrj;
-import ntc;
-import ocj;
+import nss;
+import num;
+import odw;
 
 public class PubAccountMoreInfoActivity
   extends IphoneTitleBarActivity
@@ -38,14 +38,14 @@ public class PubAccountMoreInfoActivity
   String jdField_a_of_type_JavaLangString;
   protected NewIntent a;
   protected BusinessObserver a;
-  ntc jdField_a_of_type_Ntc;
+  num jdField_a_of_type_Num;
   
   private void c()
   {
     super.setContentView(2131558406);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376944));
-    setTitle(getResources().getString(2131694657));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374202);
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376699));
+    setTitle(getResources().getString(2131694773));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131373947);
     if (ThemeUtil.isInNightMode(this.app)) {
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -56,8 +56,8 @@ public class PubAccountMoreInfoActivity
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
       if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
       {
-        this.jdField_a_of_type_Ntc = new ntc(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
-        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Ntc.a());
+        this.jdField_a_of_type_Num = new num(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
+        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Num.a());
       }
       return;
       if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -68,8 +68,8 @@ public class PubAccountMoreInfoActivity
   
   private void d()
   {
-    this.jdField_a_of_type_Ntc = new ntc(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
-    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Ntc.a());
+    this.jdField_a_of_type_Num = new num(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
+    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Num.a());
   }
   
   protected void a()
@@ -82,9 +82,9 @@ public class PubAccountMoreInfoActivity
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("uin");
     }
-    localObject = (aody)this.app.getManager(56);
+    localObject = (amxz)this.app.getManager(56);
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((aody)localObject).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((amxz)localObject).a(this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
       b();
@@ -104,10 +104,10 @@ public class PubAccountMoreInfoActivity
     if (this.jdField_a_of_type_MqqAppNewIntent != null) {
       this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
     }
-    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), ocj.class);
+    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), odw.class);
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.5,3,4745");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.8,3,4810");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {
       localGetPublicAccountDetailInfoRequest.seqno.set(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno);
@@ -119,7 +119,7 @@ public class PubAccountMoreInfoActivity
         localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(this.jdField_a_of_type_JavaLangString));
         label119:
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-        this.jdField_a_of_type_MqqObserverBusinessObserver = new nrj(this);
+        this.jdField_a_of_type_MqqObserverBusinessObserver = new nss(this);
         this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         this.app.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
         return;
@@ -135,8 +135,9 @@ public class PubAccountMoreInfoActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -151,8 +152,8 @@ public class PubAccountMoreInfoActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ntc != null) {
-      this.jdField_a_of_type_Ntc.b();
+    if (this.jdField_a_of_type_Num != null) {
+      this.jdField_a_of_type_Num.b();
     }
   }
   

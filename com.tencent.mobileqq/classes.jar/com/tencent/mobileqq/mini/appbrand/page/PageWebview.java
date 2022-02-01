@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
-import bhsr;
-import bmsw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo.PageHtmlContent;
@@ -24,10 +22,12 @@ import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.mini.webview.BaseAppBrandWebview;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.os.MqqHandler;
@@ -131,7 +131,7 @@ public class PageWebview
   
   private void onWebViewReady(ApkgInfo paramApkgInfo)
   {
-    if (bhsr.a(this.pageFrameHtmlJsStr))
+    if (StringUtil.isEmpty(this.pageFrameHtmlJsStr))
     {
       String str = paramApkgInfo.getPageFrameJSStr(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -228,7 +228,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView end load wawebview ---   webviewid:" + this.pageWebviewId);
     }
-    if (bhsr.a(this.mAppWxss)) {
+    if (StringUtil.isEmpty(this.mAppWxss)) {
       this.mAppWxss = this.apkgInfo.getRootWxssJsContent();
     }
     if (!TextUtils.isEmpty(this.mAppWxss)) {
@@ -237,7 +237,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView begin load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
     }
-    if (!bhsr.a(this.pageFrameHtmlJsStr)) {
+    if (!StringUtil.isEmpty(this.pageFrameHtmlJsStr)) {
       evaluteJs(this.pageFrameHtmlJsStr);
     }
     for (;;)
@@ -248,7 +248,7 @@ public class PageWebview
       QLog.i("miniapp-start", 1, "---PageWebView end initApkgJs ---   webviewid:" + this.pageWebviewId);
       return;
       this.pageFrameHtmlJsStr = this.apkgInfo.getPageHtmlContent().jsStr;
-      if (!bhsr.a(this.pageFrameHtmlJsStr))
+      if (!StringUtil.isEmpty(this.pageFrameHtmlJsStr))
       {
         QLog.i("miniapp-start", 1, "--- PageWebView load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
         evaluteJs(this.pageFrameHtmlJsStr);
@@ -278,7 +278,7 @@ public class PageWebview
       if (this.mEnableNativeBuffer) {}
       for (localObject = "__qqConfig.nativeBufferEnabled = true;";; localObject = "")
       {
-        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bmsw.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
+        localObject = String.format((String)localObject + "__qqConfig.QUA='" + QUA.getQUA3() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
         localObject = (String)localObject + "__qqConfig.useXWebVideo=" + this.enableEmbeddedVideo + ";";
         localObject = (String)localObject + "__qqConfig.useXWebLive=" + this.enableEmbeddedLive + ";";
         localObject = (String)localObject + "__qqConfig.XWebVideoMinVersion=045100;";
@@ -375,10 +375,10 @@ public class PageWebview
     //   14: aload_0
     //   15: iconst_1
     //   16: putfield 562	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
-    //   19: ldc_w 374
+    //   19: ldc_w 373
     //   22: iconst_1
     //   23: ldc_w 564
-    //   26: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: invokestatic 364	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   29: aload_0
     //   30: sipush 623
     //   33: invokespecial 129	com/tencent/mobileqq/mini/appbrand/page/PageWebview:reportAppQualityEvent	(I)V
@@ -407,7 +407,7 @@ public class PageWebview
   
   public void loadPageWebviewJs(ApkgInfo paramApkgInfo)
   {
-    if (bhsr.a(this.mRouteUrl)) {}
+    if (StringUtil.isEmpty(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }

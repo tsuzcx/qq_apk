@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akhs
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akhs(akha paramakha) {}
+  akhs(akho paramakho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (akho.a(this.a).app != null)
+    {
+      ((amov)akho.a(this.a).app.getBusinessHandler(2)).a(0, "", "not_disturb_from_conversation");
+      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8009EBA", "0X8009EBA", 0, 1, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

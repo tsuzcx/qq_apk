@@ -1,65 +1,36 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class apga
+class apga
+  implements bjoe
 {
-  public final int a;
-  long jdField_a_of_type_Long = 0L;
-  aqgu jdField_a_of_type_Aqgu = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  boolean jdField_a_of_type_Boolean = true;
-  public int b;
-  long b;
-  public String b;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  public String c;
-  int d;
-  public String d;
-  public final String e;
+  apga(apfz paramapfz, Context paramContext, bjnw parambjnw) {}
   
-  public apga(String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = -1;
-    this.e = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    switch (paramInt)
     {
-      if (this.jdField_c_of_type_Int == 1) {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      do
+      {
         return;
+        paramView = this.jdField_a_of_type_Apfz.b + this.jdField_a_of_type_Apfz.jdField_a_of_type_JavaLangString;
+      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Apfz.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Apfz.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        bcef.b((QQAppInterface)this.jdField_a_of_type_Apfz.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Apfz.jdField_a_of_type_JavaLangString, "");
       }
-      if (this.jdField_c_of_type_Int == -1) {
-        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
-      }
-      a(0);
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_c_of_type_Long = 0L;
-      return;
     }
-  }
-  
-  void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      return;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
   }
 }
 

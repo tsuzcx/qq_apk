@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.mobileqq.widget.RandomCoverView;
-
-final class blgv
-  extends VasQuickUpdateManager.CallBacker
+abstract interface blgv
 {
-  blgv(BaseActivity paramBaseActivity, Card paramCard, RandomCoverView paramRandomCoverView, anyl paramanyl, boolean paramBoolean) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    blgu.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVasQuickUpdateManager.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView, this.jdField_a_of_type_Anyl, this.jdField_a_of_type_Boolean);
-    paramVasQuickUpdateManager.removeCallBacker(this);
-  }
+  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
 }
 
 

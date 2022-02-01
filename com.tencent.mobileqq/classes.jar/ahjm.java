@@ -1,17 +1,25 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import android.os.Handler;
+import mqq.observer.BusinessObserver;
 
 class ahjm
-  extends ahkx
+  implements BusinessObserver
 {
-  ahjm(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjm(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new ahpn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 

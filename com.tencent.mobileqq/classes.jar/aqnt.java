@@ -1,19 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
 public class aqnt
-  implements bljm
+  implements aqny
 {
-  public aqnt(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public aqnt(DanmakuManager paramDanmakuManager) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(aqoa paramaqoa)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.overridePendingTransition(0, 2130772356);
-      this.a.finish();
-    }
+    DanmakuManager.a(this.a).a(paramaqoa);
   }
 }
 

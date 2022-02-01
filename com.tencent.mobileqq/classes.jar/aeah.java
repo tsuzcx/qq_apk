@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
-final class aeah
-  implements DialogInterface.OnClickListener
+public class aeah
+  implements aeaf
 {
-  aeah(aeca paramaeca, aebz paramaebz) {}
+  public aeah(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aeca.a) {
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Aebz != null) {
-      this.jdField_a_of_type_Aebz.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.this$0.a.setPercent(paramInt);
   }
 }
 

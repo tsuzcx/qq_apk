@@ -1,12 +1,28 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgwu
+class bgwu
+  implements Animation.AnimationListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  bgwu(bgwr parambgwr) {}
   
-  protected bgwu(bgws parambgws) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
+    }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

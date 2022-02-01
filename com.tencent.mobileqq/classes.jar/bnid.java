@@ -1,16 +1,36 @@
-import android.net.Proxy;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-final class bnid
-  extends bnic
+class bnid
+  implements View.OnTouchListener
 {
-  public int a()
-  {
-    return Proxy.getDefaultPort();
-  }
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public String a()
+  bnid(bnhv parambnhv) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return Proxy.getDefaultHost();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bhlo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.DownloadRequest;
@@ -17,6 +16,7 @@ import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
@@ -215,7 +215,7 @@ public class MiniappDownloadUtil
   private boolean rangeDownloadEnvEnable()
   {
     List localList = getRangeModePerfLevel();
-    if ((localList != null) && (!localList.contains(Integer.valueOf(bhlo.f())))) {}
+    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtil.getPerfLevel())))) {}
     do
     {
       return false;

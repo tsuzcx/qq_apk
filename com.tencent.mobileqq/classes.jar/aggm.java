@@ -1,25 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aggm
-  implements View.OnClickListener
+class aggm
+  extends aghj
 {
-  public aggm(BaseChatItemLayout paramBaseChatItemLayout) {}
-  
-  public void onClick(View paramView)
+  aggm(agcw paramagcw)
   {
-    String str = (String)paramView.getTag();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatItemLayout", 2, "vip_card_extension jumpUrl=" + str);
-    }
-    if (!bhsr.a(str)) {
-      VasWebviewUtil.openQQBrowserActivity(this.a.getContext(), str, 256L, null, false, -1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afxz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

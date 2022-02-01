@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anzj;
-import bhlq;
-import bhpc;
+import amtj;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class LogJsPlugin$2
   implements Runnable
@@ -11,7 +11,7 @@ class LogJsPlugin$2
   
   public void run()
   {
-    bhlq.a(this.this$0.jsPluginEngine.getActivityContext(), 230, anzj.a(2131705256), null, 2131690580, 2131694098, new LogJsPlugin.2.1(this), null).show();
+    bfur.a(this.this$0.jsPluginEngine.getActivityContext(), 230, amtj.a(2131705486), null, 2131690620, 2131694201, new LogJsPlugin.2.1(this), null).show();
   }
 }
 

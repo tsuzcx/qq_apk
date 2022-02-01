@@ -1,19 +1,10 @@
-public class blhi
+public abstract interface blhi
 {
-  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  public abstract void a(long paramLong, float paramFloat);
   
-  public static StringBuilder a()
-  {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (localStringBuilder == null)
-    {
-      localStringBuilder = new StringBuilder();
-      a.set(localStringBuilder);
-      return localStringBuilder;
-    }
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

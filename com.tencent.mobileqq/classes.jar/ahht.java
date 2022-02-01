@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahht
-  extends ahkx
+  implements DialogInterface.OnClickListener
 {
-  ahht(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahht(ahhp paramahhp) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ahng(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, null);
+    bcef.b(this.a.app, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
   }
 }
 

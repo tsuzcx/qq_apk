@@ -1,29 +1,34 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
 
-final class aeag
-  implements DialogInterface.OnClickListener
+public class aeag
+  extends Handler
 {
-  aeag(QQAppInterface paramQQAppInterface, aeca paramaeca, long paramLong, Context paramContext, aebz paramaebz) {}
+  public aeag(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    axwo localaxwo = (axwo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(66);
-    if (localaxwo != null) {
-      localaxwo.a((byte)0);
+    switch (paramMessage.what)
+    {
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true);
-    if (this.jdField_a_of_type_Aeca.a) {
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
-    }
-    this.jdField_a_of_type_Aeca.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.a.a(this.a.getString(2131690749));
+        this.a.a.d(2130849594);
+        this.a.a.b(false);
+      }
+      sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.a == null) || (!this.a.a.isShowing()));
+    this.a.a.cancel();
+    this.a.a.a(this.a.getString(2131690751));
+    this.a.a.c(true);
+    this.a.a.a(false);
+    this.a.a.b(true);
   }
 }
 

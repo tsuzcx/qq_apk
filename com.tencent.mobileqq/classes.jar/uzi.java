@@ -1,18 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uzi
-  extends FlingGestureHandler
+class uzi
+  implements View.OnClickListener
 {
-  public uzi(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  uzi(uzg paramuzg) {}
   
-  public void flingLToR()
+  public void onClick(View paramView)
   {
-    vtq.a("", 22, 10);
-    super.flingLToR();
+    if (zvo.a("vertical_video_top_homepage_click")) {
+      uya.a("AbsWsUIGroup", "fast click, ignored: vertical video top homepage");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      vdq.e(uzg.a(this.a).a(), uzg.a(this.a).b(), uzg.a(this.a));
+      ukw.a(uzg.a(this.a).getActivity(), "from_qq_chat", 0, false);
+    }
   }
 }
 

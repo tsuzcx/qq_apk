@@ -1,38 +1,20 @@
 import android.view.View;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agpg
-  implements URLDrawableDownListener
+  implements Animation.AnimationListener
 {
-  public agpg(DoodleMsgLayout paramDoodleMsgLayout) {}
+  public agpg(StructingMsgItemBuilder paramStructingMsgItemBuilder, agpx paramagpx) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramView == DoodleMsgLayout.a(this.a))
-    {
-      DoodleMsgLayout.a(this.a, true);
-      DoodleMsgLayout.a(this.a);
-    }
-    do
-    {
-      return;
-      if (paramView == DoodleMsgLayout.b(this.a))
-      {
-        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
-        return;
-      }
-    } while (paramView != DoodleMsgLayout.c(this.a));
+    this.jdField_a_of_type_Agpx.a.setVisibility(0);
   }
 }
 

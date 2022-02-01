@@ -1,30 +1,40 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-
-class yyk
-  extends wve
+public class yyk
 {
-  yyk(yyj paramyyj, String paramString)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public int a()
   {
-    super(paramString);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public long a()
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Yyg.a = paramSosoLbsInfo.a.a;
-      this.a.jdField_a_of_type_Yyg.b = paramSosoLbsInfo.a.b;
-      yuk.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Yyg.a + " longitude=" + this.a.jdField_a_of_type_Yyg.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Yyg.f();
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Yyg.a = 0.0D;
-    this.a.jdField_a_of_type_Yyg.b = 0.0D;
-    yuk.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

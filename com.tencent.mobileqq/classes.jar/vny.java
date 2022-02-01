@@ -1,72 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.qqcircle.fragments.hybird.QCircleHybirdFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class vny
-  extends BroadcastReceiver
+class vny
+  extends SimpleJob<Object>
 {
-  private WeakReference<QCircleHybirdFragment> a;
-  
-  public vny(QCircleHybirdFragment paramQCircleHybirdFragment)
+  vny(vns paramvns, String paramString)
   {
-    this.a = new WeakReference(paramQCircleHybirdFragment);
+    super(paramString);
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramContext = (QCircleHybirdFragment)this.a.get();
-    Object localObject;
-    if ((paramContext != null) && (paramIntent != null))
-    {
-      localObject = paramIntent.getAction();
-      if (!TextUtils.equals((CharSequence)localObject, "action_update_web_user_follow_state")) {
-        break label96;
-      }
+    paramVarArgs = ((vuu)vux.a(5)).a();
+    paramJobContext = new ArrayList(paramVarArgs.size());
+    paramVarArgs = paramVarArgs.iterator();
+    while (paramVarArgs.hasNext()) {
+      paramJobContext.add(new vpd((StoryVideoItem)paramVarArgs.next()));
     }
-    for (;;)
-    {
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("uin", paramIntent.getStringExtra("uin"));
-        ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
-        if (paramContext.getWebView() != null) {
-          paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleFollowState", (JSONObject)localObject, null));
-        }
-        return;
-      }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      label96:
-      if (TextUtils.equals((CharSequence)localObject, "action_update_web_tag_follow_state")) {
-        try
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("tagId", paramIntent.getStringExtra("tagId"));
-          ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
-          if (paramContext.getWebView() != null)
-          {
-            paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleTagFollowState", (JSONObject)localObject, null));
-            return;
-          }
-        }
-        catch (Exception paramContext)
-        {
-          QLog.e(QCircleHybirdFragment.a(), 1, "update tag follow state error.", paramContext);
-        }
-      }
-    }
+    this.a.a(paramJobContext);
+    xvv.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
+    return null;
   }
 }
 

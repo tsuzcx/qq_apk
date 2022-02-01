@@ -1,16 +1,25 @@
-public abstract interface awnn
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.2.1;
+
+public class awnn
+  extends awkv
 {
-  public abstract void a();
+  public awnn(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString)
+  {
+    if (paramBoolean1)
+    {
+      this.a.app.deleteStrangerFace(this.a.app.getCurrentAccountUin(), 200);
+      long l = ((Long)awka.a(this.a.app.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+      if (l != 0L) {
+        this.a.app.deleteStrangerFace(String.valueOf(l), 202);
+      }
+    }
+    this.a.runOnUiThread(new NearbyGuideActivity.2.1(this, paramBoolean1, paramString));
+  }
 }
 
 

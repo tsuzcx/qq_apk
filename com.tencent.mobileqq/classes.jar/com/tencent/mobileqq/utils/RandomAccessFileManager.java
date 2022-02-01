@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bhro;
+import bfyj;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,14 +9,14 @@ public class RandomAccessFileManager
 {
   private static RandomAccessFileManager jdField_a_of_type_ComTencentMobileqqUtilsRandomAccessFileManager = new RandomAccessFileManager();
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private Map<String, bhro> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, bfyj> jdField_a_of_type_JavaUtilMap = new HashMap();
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private Map<String, bhro> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private Map<String, bfyj> jdField_b_of_type_JavaUtilMap = new HashMap();
   private byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
   
-  private bhro a(String paramString, Map<String, bhro> paramMap)
+  private bfyj a(String paramString, Map<String, bfyj> paramMap)
   {
-    paramMap = (bhro)paramMap.get(paramString);
+    paramMap = (bfyj)paramMap.get(paramString);
     int i;
     if (paramMap != null)
     {
@@ -30,12 +30,12 @@ public class RandomAccessFileManager
       if (i != 0)
       {
         return paramString;
-        bhro localbhro = paramString.jdField_a_of_type_Bhro;
-        paramString = localbhro;
-        if (localbhro != paramMap) {
+        bfyj localbfyj = paramString.jdField_a_of_type_Bfyj;
+        paramString = localbfyj;
+        if (localbfyj != paramMap) {
           break;
         }
-        paramString = localbhro;
+        paramString = localbfyj;
         i = 0;
         continue;
       }
@@ -59,61 +59,61 @@ public class RandomAccessFileManager
     }
   }
   
-  private void a(bhro parambhro1, bhro parambhro2, String paramString, Map<String, bhro> paramMap)
+  private void a(bfyj parambfyj1, bfyj parambfyj2, String paramString, Map<String, bfyj> paramMap)
   {
-    if (parambhro1 == null) {
-      parambhro1 = (bhro)paramMap.get(paramString);
+    if (parambfyj1 == null) {
+      parambfyj1 = (bfyj)paramMap.get(paramString);
     }
     for (;;)
     {
-      if ((parambhro1 == null) || (parambhro2 == null)) {
+      if ((parambfyj1 == null) || (parambfyj2 == null)) {
         return;
       }
-      if (parambhro2 == parambhro1)
+      if (parambfyj2 == parambfyj1)
       {
-        if ((parambhro1.jdField_a_of_type_Bhro != parambhro1) && (parambhro1.jdField_a_of_type_Bhro != null)) {
+        if ((parambfyj1.jdField_a_of_type_Bfyj != parambfyj1) && (parambfyj1.jdField_a_of_type_Bfyj != null)) {
           break label87;
         }
         paramMap.remove(paramString);
       }
       for (;;)
       {
-        parambhro2.jdField_b_of_type_Bhro.jdField_a_of_type_Bhro = parambhro2.jdField_a_of_type_Bhro;
-        parambhro2.jdField_a_of_type_Bhro.jdField_b_of_type_Bhro = parambhro2.jdField_b_of_type_Bhro;
-        parambhro2.jdField_a_of_type_Bhro = null;
-        parambhro2.jdField_b_of_type_Bhro = null;
+        parambfyj2.jdField_b_of_type_Bfyj.jdField_a_of_type_Bfyj = parambfyj2.jdField_a_of_type_Bfyj;
+        parambfyj2.jdField_a_of_type_Bfyj.jdField_b_of_type_Bfyj = parambfyj2.jdField_b_of_type_Bfyj;
+        parambfyj2.jdField_a_of_type_Bfyj = null;
+        parambfyj2.jdField_b_of_type_Bfyj = null;
         return;
         label87:
-        paramMap.put(paramString, parambhro1.jdField_a_of_type_Bhro);
+        paramMap.put(paramString, parambfyj1.jdField_a_of_type_Bfyj);
       }
     }
   }
   
-  private void a(bhro parambhro, String paramString, Map<String, bhro> paramMap)
+  private void a(bfyj parambfyj, String paramString, Map<String, bfyj> paramMap)
   {
-    bhro localbhro = (bhro)paramMap.get(paramString);
-    if (parambhro == null) {
+    bfyj localbfyj = (bfyj)paramMap.get(paramString);
+    if (parambfyj == null) {
       return;
     }
-    if (localbhro == null)
+    if (localbfyj == null)
     {
-      parambhro.jdField_b_of_type_Bhro = parambhro;
-      parambhro.jdField_a_of_type_Bhro = parambhro;
-      paramMap.put(paramString, parambhro);
+      parambfyj.jdField_b_of_type_Bfyj = parambfyj;
+      parambfyj.jdField_a_of_type_Bfyj = parambfyj;
+      paramMap.put(paramString, parambfyj);
       return;
     }
-    parambhro.jdField_a_of_type_Bhro = localbhro;
-    parambhro.jdField_b_of_type_Bhro = localbhro.jdField_b_of_type_Bhro;
-    localbhro.jdField_b_of_type_Bhro.jdField_a_of_type_Bhro = parambhro;
-    localbhro.jdField_b_of_type_Bhro = parambhro;
+    parambfyj.jdField_a_of_type_Bfyj = localbfyj;
+    parambfyj.jdField_b_of_type_Bfyj = localbfyj.jdField_b_of_type_Bfyj;
+    localbfyj.jdField_b_of_type_Bfyj.jdField_a_of_type_Bfyj = parambfyj;
+    localbfyj.jdField_b_of_type_Bfyj = parambfyj;
   }
   
-  private void a(String arg1, bhro parambhro)
+  private void a(String arg1, bfyj parambfyj)
   {
-    parambhro.jdField_b_of_type_Long = System.currentTimeMillis();
+    parambfyj.jdField_b_of_type_Long = System.currentTimeMillis();
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      a(parambhro, ???, this.jdField_b_of_type_JavaUtilMap);
+      a(parambfyj, ???, this.jdField_b_of_type_JavaUtilMap);
     }
     synchronized (this.jdField_b_of_type_ArrayOfByte)
     {
@@ -138,7 +138,7 @@ public class RandomAccessFileManager
     //   3: aload_1
     //   4: aload_0
     //   5: getfield 25	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   8: invokespecial 104	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lbhro;
+    //   8: invokespecial 104	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lbfyj;
     //   11: astore_3
     //   12: aload_3
     //   13: astore_2
@@ -153,7 +153,7 @@ public class RandomAccessFileManager
     //   26: aload_1
     //   27: aload_0
     //   28: getfield 27	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   31: invokespecial 104	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lbhro;
+    //   31: invokespecial 104	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lbfyj;
     //   34: astore_3
     //   35: aload_3
     //   36: ifnull +14 -> 50
@@ -163,7 +163,7 @@ public class RandomAccessFileManager
     //   42: aload_1
     //   43: aload_0
     //   44: getfield 27	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   47: invokespecial 79	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbhro;Lbhro;Ljava/lang/String;Ljava/util/Map;)V
+    //   47: invokespecial 79	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbfyj;Lbfyj;Ljava/lang/String;Ljava/util/Map;)V
     //   50: aload_2
     //   51: monitorexit
     //   52: aload_3
@@ -175,17 +175,17 @@ public class RandomAccessFileManager
     //   60: aload_1
     //   61: aload_0
     //   62: getfield 25	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   65: invokespecial 89	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbhro;Ljava/lang/String;Ljava/util/Map;)V
+    //   65: invokespecial 89	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbfyj;Ljava/lang/String;Ljava/util/Map;)V
     //   68: aload_3
     //   69: astore_2
     //   70: aload_2
     //   71: astore_3
     //   72: aload_2
     //   73: ifnonnull +85 -> 158
-    //   76: new 40	bhro
+    //   76: new 40	bfyj
     //   79: dup
     //   80: aload_0
-    //   81: invokespecial 105	bhro:<init>	(Lcom/tencent/mobileqq/utils/RandomAccessFileManager;)V
+    //   81: invokespecial 105	bfyj:<init>	(Lcom/tencent/mobileqq/utils/RandomAccessFileManager;)V
     //   84: astore_3
     //   85: aload_3
     //   86: new 107	java/io/RandomAccessFile
@@ -193,41 +193,41 @@ public class RandomAccessFileManager
     //   90: aload_1
     //   91: ldc 109
     //   93: invokespecial 112	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   96: putfield 115	bhro:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   96: putfield 115	bfyj:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   99: aload_3
     //   100: invokestatic 49	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   103: invokevirtual 53	java/lang/Thread:getId	()J
-    //   106: putfield 43	bhro:jdField_a_of_type_Long	J
+    //   106: putfield 43	bfyj:jdField_a_of_type_Long	J
     //   109: invokestatic 121	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   112: ifeq +36 -> 148
     //   115: ldc 123
     //   117: iconst_2
-    //   118: invokestatic 128	agej:a	()Ljava/lang/StringBuilder;
-    //   121: ldc 130
-    //   123: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokestatic 129	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
+    //   121: ldc 131
+    //   123: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: aload_1
-    //   127: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: ldc 138
-    //   132: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: ldc 139
+    //   132: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: aload_3
-    //   136: getfield 43	bhro:jdField_a_of_type_Long	J
-    //   139: invokevirtual 141	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 149	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   136: getfield 43	bfyj:jdField_a_of_type_Long	J
+    //   139: invokevirtual 142	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   148: aload_0
     //   149: aload_3
     //   150: aload_1
     //   151: aload_0
     //   152: getfield 25	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   155: invokespecial 89	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbhro;Ljava/lang/String;Ljava/util/Map;)V
+    //   155: invokespecial 89	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbfyj;Ljava/lang/String;Ljava/util/Map;)V
     //   158: aload_3
     //   159: aload_3
-    //   160: getfield 152	bhro:jdField_a_of_type_Int	I
+    //   160: getfield 153	bfyj:jdField_a_of_type_Int	I
     //   163: iconst_1
     //   164: iadd
-    //   165: putfield 152	bhro:jdField_a_of_type_Int	I
+    //   165: putfield 153	bfyj:jdField_a_of_type_Int	I
     //   168: aload_3
-    //   169: getfield 115	bhro:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   169: getfield 115	bfyj:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   172: astore_1
     //   173: aload_0
     //   174: monitorexit
@@ -267,14 +267,14 @@ public class RandomAccessFileManager
   {
     try
     {
-      bhro localbhro = a(paramString, this.jdField_a_of_type_JavaUtilMap);
-      if (localbhro != null)
+      bfyj localbfyj = a(paramString, this.jdField_a_of_type_JavaUtilMap);
+      if (localbfyj != null)
       {
-        localbhro.jdField_a_of_type_Int -= 1;
-        if (localbhro.jdField_a_of_type_Int == 0)
+        localbfyj.jdField_a_of_type_Int -= 1;
+        if (localbfyj.jdField_a_of_type_Int == 0)
         {
-          a(null, localbhro, paramString, this.jdField_a_of_type_JavaUtilMap);
-          a(paramString, localbhro);
+          a(null, localbfyj, paramString, this.jdField_a_of_type_JavaUtilMap);
+          a(paramString, localbfyj);
         }
       }
       return;

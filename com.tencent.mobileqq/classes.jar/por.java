@@ -1,6 +1,14 @@
-public abstract interface por
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
+public class por
+  implements pqe
 {
-  public abstract void a(int paramInt);
+  public por(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ReadInJoySelfFragment.a(this.a.getActivity());
+  }
 }
 
 

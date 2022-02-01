@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import apfk;
-import apfl;
-import apig;
+import anyw;
+import anyx;
+import aobt;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
@@ -11,31 +11,29 @@ public class ARPromotionMediaPlayerWrapper$2
 {
   public void run()
   {
-    if (apfk.a(this.this$0)) {}
+    if (anyw.a(this.this$0)) {}
     for (;;)
     {
       return;
       try
       {
-        apfk.a(this.this$0);
-        apfk.a(this.this$0);
-        if ((apfk.a(this.this$0) != null) && (apfk.a(this.this$0) != null))
+        anyw.a(this.this$0);
+        anyw.a(this.this$0);
+        if ((anyw.a(this.this$0) != null) && (anyw.a(this.this$0) != null))
         {
-          apfk.a(this.this$0).bind();
-          apfk.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
-          if (!apfk.a(this.this$0).a())
+          anyw.a(this.this$0).bind();
+          anyw.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
+          if (!anyw.a(this.this$0).a())
           {
-            apfk.a(this.this$0).a();
-            apig localapig = apfk.a(this.this$0);
-            apfk.a(this.this$0);
-            localapig.a(apig.g);
+            anyw.a(this.this$0).a();
+            anyw.a(this.this$0).a(aobt.g);
           }
-          apfk.a(this.this$0).a(apfk.a(this.this$0)[0], apfk.a(this.this$0)[1], apfk.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          apfk.a(this.this$0).b();
-          apfk.a(this.this$0).unbind();
-          if ((apfk.b(this.this$0) == 2L) && (apfk.a(this.this$0) != null))
+          anyw.a(this.this$0).a(anyw.a(this.this$0)[0], anyw.a(this.this$0)[1], anyw.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          anyw.a(this.this$0).b();
+          anyw.a(this.this$0).unbind();
+          if ((anyw.b(this.this$0) == 2L) && (anyw.a(this.this$0) != null))
           {
-            apfk.a(this.this$0).a(apfk.b(this.this$0), 0, apfk.a(this.this$0).getTexId());
+            anyw.a(this.this$0).a(anyw.b(this.this$0), 0, anyw.a(this.this$0).getTexId());
             QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
             return;
           }

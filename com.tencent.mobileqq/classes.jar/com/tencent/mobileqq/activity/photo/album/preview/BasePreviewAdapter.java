@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.activity.photo.album.preview;
 
-import akqw;
+import ajou;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import bljm;
-import bljo;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
@@ -17,13 +15,15 @@ import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class BasePreviewAdapter
   extends BaseAdapter
-  implements akqw, bljm, bljo
+  implements ajou, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener
 {
   public static final String TAG = "BasePreviewAdapter";
   BasePreviewPresent mCurrentPreviewPresent;

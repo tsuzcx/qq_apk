@@ -40,7 +40,6 @@
               "value": "90"
             },
             "attributes": {
-              "setFrameString:": "-1",
               "setTitle:":"$interaction_like_count",
               "setScaleType:":"3",
               "setInnerMargin:": "4",
@@ -65,7 +64,6 @@
               "value": "90"
             },
             "attributes": {
-              "setFrameString:": "-1",
               "setTitle:":"不喜欢",
               "setScaleType:":"3",
               "setInnerMargin:": "4",
@@ -92,7 +90,6 @@
               "value": "90"
             },
             "attributes": {
-              "setFrameString:": "-1",
               "setInnerMargin:": "4",
               "setTitle:":"分享",
               "setScaleType:":"3",

@@ -1,12 +1,24 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-public abstract interface arwl
+public class arwl
+  implements View.OnLongClickListener
 {
-  public abstract boolean getHasPulledSourceMsg();
+  public arwl(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
-  
-  public abstract void setPulledSourceMsg();
+  public boolean onLongClick(View paramView)
+  {
+    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    bgaz localbgaz = new bgaz();
+    localbgaz.a(2131365376, paramView.getContext().getString(2131691363));
+    this.a.a = bfue.a(paramView, localbgaz, new arwm(this, paramView), new arwn(this, paramView));
+    return true;
+  }
 }
 
 

@@ -2,12 +2,12 @@ package com.tencent.widget.itemtouchhelper;
 
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
-import blsg;
+import bjwf;
 
 public class ItemTouchHelper$1
   implements Runnable
 {
-  public ItemTouchHelper$1(blsg paramblsg) {}
+  public ItemTouchHelper$1(bjwf parambjwf) {}
   
   public void run()
   {

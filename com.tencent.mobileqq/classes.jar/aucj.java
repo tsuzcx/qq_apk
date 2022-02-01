@@ -1,22 +1,13 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
 public class aucj
-  extends GestureDetector.SimpleOnGestureListener
+  extends ThreadLocal<Boolean>
 {
-  public aucj(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
+  public aucj(JefsClass paramJefsClass) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected Boolean a()
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
-    do
-    {
-      return false;
-      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c()));
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
+    return Boolean.valueOf(false);
   }
 }
 

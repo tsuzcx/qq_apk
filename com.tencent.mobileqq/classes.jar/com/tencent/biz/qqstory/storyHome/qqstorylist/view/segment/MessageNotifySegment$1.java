@@ -4,20 +4,20 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import wth;
-import wtt;
-import yst;
+import vux;
+import vvj;
+import xue;
 
 public class MessageNotifySegment$1
   implements Runnable
 {
-  public MessageNotifySegment$1(yst paramyst, ImageView paramImageView, Drawable paramDrawable) {}
+  public MessageNotifySegment$1(xue paramxue, ImageView paramImageView, Drawable paramDrawable) {}
   
   public void run()
   {
-    wtt localwtt = (wtt)wth.a(2);
-    String str = localwtt.b(Long.toString(yst.a(this.this$0)), true);
-    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localwtt));
+    vvj localvvj = (vvj)vux.a(2);
+    String str = localvvj.b(Long.toString(xue.a(this.this$0)), true);
+    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localvvj));
   }
 }
 

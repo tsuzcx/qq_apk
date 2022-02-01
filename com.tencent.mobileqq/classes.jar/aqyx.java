@@ -1,32 +1,17 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.confess.ConfessPlugin.5;
-import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aqyx
-  implements bjig
+public final class aqyx
 {
-  public aqyx(ConfessPlugin.5.1 param1) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public static aqyi a(QQAppInterface paramQQAppInterface, aqzb paramaqzb, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
-    }
-    switch (paramBaseResp.errCode)
+    switch (paramInt)
     {
-    case -1: 
     default: 
-      ConfessPlugin.a(this.a.a.this$0, false);
-      ConfessPlugin.a(this.a.a.this$0, 1, 2131718139);
-      return;
+      return new aqzl(paramQQAppInterface, paramaqzb);
     case 0: 
-      ConfessPlugin.a(this.a.a.this$0, true);
-      ConfessPlugin.a(this.a.a.this$0, 2, 2131718157);
-      return;
+      return new aqzl(paramQQAppInterface, paramaqzb);
     }
-    ConfessPlugin.a(this.a.a.this$0, false);
+    return new aqyj(paramQQAppInterface, paramaqzb);
   }
 }
 

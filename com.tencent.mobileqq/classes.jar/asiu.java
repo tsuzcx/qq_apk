@@ -1,68 +1,166 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 
 public class asiu
-  implements bbsw
+  implements asih, IHttpCommunicatorListener
 {
-  public asiu(MessengerService paramMessengerService) {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private asig jdField_a_of_type_Asig;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+  private boolean jdField_a_of_type_Boolean;
+  private final int b;
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  private asiu(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
   {
-    if (this.a.b != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static asiu a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
+  {
+    return new asiu(paramQQAppInterface, paramLong, paramInt1, paramInt2);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
-      {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.type > 0)
-        {
-          paramRichStatus.putInt("result", paramObject.ret);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.type);
-          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
-          paramRichStatus.putString("tips_wording", paramObject.wording);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
-          paramRichStatus.putString("tips_vipType", paramObject.vipType);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
-          paramRichStatus.putString("tips_url", paramObject.url);
-        }
-      }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(asig paramasig)
   {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.8.1(this));
+    this.jdField_a_of_type_Asig = paramasig;
+  }
+  
+  public boolean a(String paramString, long paramLong, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = new HttpMsg(paramString + "&bmd5=" + MD5.toMD5(paramArrayOfByte) + "&range=" + String.valueOf(paramLong), paramArrayOfByte, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setInstanceFollowRedirects(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("cache-control", "no-cache");
+    paramString = "gprs";
+    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {
+      paramString = "wifi";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Net-type", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Range", "bytes=" + paramLong + "-");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestMethod("POST");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setPriority(1);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.fileType = this.b;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.busiType = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.msgId = String.valueOf(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().sendMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    return true;
+  }
+  
+  public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.e("##########", 2, "nSessionID[" + String.valueOf(this.jdField_a_of_type_Long) + "]已经结束,返回");
       }
     }
-    while (this.a.c == null) {
+    do
+    {
+      return;
+      if (paramHttpMsg1 == this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg) {
+        break;
+      }
+      if ((paramHttpMsg1 != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null))
+      {
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+        return;
+      }
+      if (paramHttpMsg1 != null)
+      {
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "]");
+        return;
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg == null);
+    QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+    return;
+    if (paramHttpMsg2.getResponseCode() == 200) {
+      if (paramHttpMsg2.getResponseProperty("User-ReturnCode") == null) {
+        break label409;
+      }
+    }
+    label409:
+    for (long l = Long.parseLong(paramHttpMsg2.getResponseProperty("User-ReturnCode"));; l = 0L)
+    {
+      if (0L != l)
+      {
+        this.jdField_a_of_type_Asig.a(paramHttpMsg2.errCode, paramHttpMsg2.getErrorString(), paramHttpMsg2.rawRespHeader);
+        return;
+      }
+      paramHttpMsg1 = paramHttpMsg2.getResponseProperty("Range");
+      if (paramHttpMsg1 == null)
+      {
+        this.jdField_a_of_type_Asig.a(9001, "httpServer not has range");
+        return;
+      }
+      l = Long.parseLong(paramHttpMsg1);
+      this.jdField_a_of_type_Asig.a(l, paramHttpMsg2.rawRespHeader);
+      return;
+      QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],decode but response Code [" + paramHttpMsg2.getResponseCode() + "] is not 200");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
   }
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Asig.a(paramHttpMsg2.errCode, paramHttpMsg2.getErrorString(), paramHttpMsg2.rawRespHeader);
+  }
+  
+  public void handleRedirect(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Asig.a(paramString);
+  }
+  
+  public void onFlowEvent(HttpMsg paramHttpMsg)
+  {
+    int i;
+    int j;
+    int k;
+    if (paramHttpMsg != null)
+    {
+      i = paramHttpMsg.fileType;
+      j = paramHttpMsg.busiType;
+      k = paramHttpMsg.netType;
+      if (!"POST".equals(paramHttpMsg.getRequestMethod())) {
+        break label61;
+      }
+    }
+    label61:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), bool, k, i, j, paramHttpMsg.flow);
+      return;
+    }
+  }
+  
+  public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  {
+    return true;
+  }
 }
 
 

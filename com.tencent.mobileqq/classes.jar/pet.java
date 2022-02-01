@@ -1,6 +1,9 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+
 public abstract interface pet
 {
-  public abstract void a();
+  public abstract void a(View paramView, ArticleInfo paramArticleInfo, int paramInt);
 }
 
 

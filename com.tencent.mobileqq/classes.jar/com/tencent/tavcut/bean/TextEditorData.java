@@ -6,6 +6,8 @@ import java.util.Map;
 public class TextEditorData
 {
   public static final String BACKGROUND = "bgcolor";
+  private String blurTextPath;
+  private String blurTexturePath;
   private Map<String, Integer> colorList = new HashMap();
   private String content;
   private String fontPath;
@@ -27,6 +29,16 @@ public class TextEditorData
     this.pagFilePath = paramString4;
     this.fontPath = paramString5;
     this.colorList.put("bgcolor", Integer.valueOf(paramInt2));
+  }
+  
+  public String getBlurTextPath()
+  {
+    return this.blurTextPath;
+  }
+  
+  public String getBlurTexturePath()
+  {
+    return this.blurTexturePath;
   }
   
   public Map<String, Integer> getColorList()
@@ -77,6 +89,16 @@ public class TextEditorData
   public void setBackGroundColor(String paramString, int paramInt)
   {
     this.colorList.put(paramString, Integer.valueOf(paramInt));
+  }
+  
+  public void setBlurTextPath(String paramString)
+  {
+    this.blurTextPath = paramString;
+  }
+  
+  public void setBlurTexturePath(String paramString)
+  {
+    this.blurTexturePath = paramString;
   }
   
   public void setContent(String paramString)

@@ -1,36 +1,25 @@
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-public final class aoms
-  implements beup
+public class aoms
+  implements TencentMap.OnCameraChangeListener
 {
-  public void a(bevl parambevl, bevm parambevm)
+  public aoms(ARScanEntryView paramARScanEntryView) {}
+  
+  public void onCameraChange(CameraPosition paramCameraPosition) {}
+  
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + parambevm);
+    if ((ARScanEntryView.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("AREngine_ARScanEntryView", 2, "ARLBSPOIDialog onCameraChangeFinish");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoms
  * JD-Core Version:    0.7.0.1
  */

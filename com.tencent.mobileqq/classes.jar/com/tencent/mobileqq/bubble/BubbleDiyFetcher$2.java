@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import aqkr;
+import apec;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -13,11 +13,11 @@ import java.util.Map;
 public class BubbleDiyFetcher$2
   implements Runnable
 {
-  public BubbleDiyFetcher$2(aqkr paramaqkr, QQAppInterface paramQQAppInterface) {}
+  public BubbleDiyFetcher$2(apec paramapec, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = this.a.a().createEntityManager().query(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
+    List localList = this.a.getEntityManagerFactory().createEntityManager().query(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
       Iterator localIterator = localList.iterator();

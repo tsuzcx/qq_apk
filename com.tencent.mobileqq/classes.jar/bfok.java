@@ -1,36 +1,61 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.graphics.Bitmap;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-class bfok
-  extends AnimatorListenerAdapter
+public class bfok
+  extends WebViewClient
 {
-  bfok(bfoi parambfoi, boolean paramBoolean, View paramView, int paramInt) {}
+  private bfok(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
     }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      i = zps.d(this.jdField_a_of_type_Bfoi.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
-      if (i >= this.jdField_a_of_type_Int) {}
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
     }
-    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
+    if (this.a.a(paramString)) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    try
     {
-      if (this.jdField_a_of_type_Bfoi.jdField_a_of_type_Bfom != null)
-      {
-        paramAnimator = this.jdField_a_of_type_Bfoi.jdField_a_of_type_Bfom;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
-        }
-        paramAnimator.a(bool, i);
-      }
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
       return;
+    }
+    catch (Exception paramWebView) {}
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    return;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(true);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
+    }
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    for (;;)
+    {
+      return true;
+      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+        this.a.a(paramString);
+      }
     }
   }
 }

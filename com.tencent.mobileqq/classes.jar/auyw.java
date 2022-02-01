@@ -1,26 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class auyw
-  implements TextWatcher
+  implements auzs
 {
-  public auyw(ForwardFileOption paramForwardFileOption, EditText paramEditText) {}
+  public auyw(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    if (paramCharSequence.toString().trim().length() > 36)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString().substring(0, 36));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(36);
-      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -4);
+    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
+      return;
     }
+    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
   }
+  
+  public void b() {}
 }
 
 

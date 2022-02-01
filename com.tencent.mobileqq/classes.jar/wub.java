@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.model.filter.FilterItem;
-import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class wub
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public wub(XViewPager paramXViewPager) {}
   
-  public FilterItem a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
-    {
-      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
-      return localFilterItem;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.scrollTo(i, 0);
+    XViewPager.a(this.a, i);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(2);
     }
   }
 }

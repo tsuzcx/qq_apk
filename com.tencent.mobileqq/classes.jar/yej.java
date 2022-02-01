@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.animation.ValueAnimator;
 
 public class yej
-  implements bjey
+  implements yei
 {
-  public yej(QQStoryMainController paramQQStoryMainController) {}
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public void onItemSelect(View paramView, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.a.jdField_a_of_type_Yel.a();
-    }
-    while (paramInt != 7) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
-  }
+  public void b(ValueAnimator paramValueAnimator) {}
+  
+  public void c(ValueAnimator paramValueAnimator) {}
+  
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

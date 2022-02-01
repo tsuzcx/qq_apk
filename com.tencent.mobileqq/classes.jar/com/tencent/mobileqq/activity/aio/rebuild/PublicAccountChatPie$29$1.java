@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
@@ -13,8 +13,8 @@ class PublicAccountChatPie$29$1
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("isNeedFinish", true);
-    this.a.this$0.a.setResult(-1, localIntent);
-    this.a.this$0.I();
+    this.a.this$0.mActivity.setResult(-1, localIntent);
+    this.a.this$0.finish();
   }
 }
 

@@ -1,17 +1,36 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
 
-class avyx
-  implements Callable<Boolean>
+public class avyx
+  extends avzf
 {
-  avyx(avyv paramavyv, File paramFile) {}
+  private final MultiAIOBaseViewPager a;
   
-  public Boolean a()
+  public avyx(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
   {
-    if ((avyv.a(this.jdField_a_of_type_Avyv).exists()) && (this.jdField_a_of_type_JavaIoFile == avyv.a(this.jdField_a_of_type_Avyv))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    this.a = paramMultiAIOBaseViewPager;
+  }
+  
+  public int a(View paramView1, View paramView2)
+  {
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
+    {
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
     }
+    int i = this.a.a();
+    if (i == paramView1.b) {
+      return 1;
+    }
+    if (i == paramView2.b) {
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 

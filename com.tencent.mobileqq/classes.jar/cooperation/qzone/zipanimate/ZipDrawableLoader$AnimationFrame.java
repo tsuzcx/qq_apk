@@ -1,0 +1,15 @@
+package cooperation.qzone.zipanimate;
+
+import android.graphics.drawable.BitmapDrawable;
+
+public class ZipDrawableLoader$AnimationFrame
+{
+  public BitmapDrawable mBitmapDrawable;
+  public String path;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     cooperation.qzone.zipanimate.ZipDrawableLoader.AnimationFrame
+ * JD-Core Version:    0.7.0.1
+ */

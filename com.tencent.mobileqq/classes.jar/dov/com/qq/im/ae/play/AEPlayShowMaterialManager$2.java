@@ -1,16 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import bczq;
-import bowy;
+import bbsv;
 
-public class AEPlayShowMaterialManager$2
+class AEPlayShowMaterialManager$2
   implements Runnable
 {
-  public AEPlayShowMaterialManager$2(bowy parambowy) {}
+  AEPlayShowMaterialManager$2(AEPlayShowMaterialManager paramAEPlayShowMaterialManager) {}
   
   public void run()
   {
-    bowy.a(this.this$0).a(1, null);
+    AEPlayShowMaterialManager.access$400(this.this$0).a(1, null);
   }
 }
 

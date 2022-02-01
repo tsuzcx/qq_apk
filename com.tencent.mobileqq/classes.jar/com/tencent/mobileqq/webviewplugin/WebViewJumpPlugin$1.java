@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webviewplugin;
 
 import android.app.Activity;
-import bioy;
-import bitv;
+import bgve;
+import bgzx;
 
 public class WebViewJumpPlugin$1
   implements Runnable
 {
-  public WebViewJumpPlugin$1(bitv parambitv) {}
+  public WebViewJumpPlugin$1(bgzx parambgzx) {}
   
   public void run()
   {

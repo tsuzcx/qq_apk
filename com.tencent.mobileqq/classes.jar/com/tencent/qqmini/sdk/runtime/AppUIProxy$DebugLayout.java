@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 public class AppUIProxy$DebugLayout
   extends FrameLayout
 {
-  public AppUIProxy$DebugLayout(AppUIProxy paramAppUIProxy, Context paramContext)
+  public AppUIProxy$DebugLayout(Context paramContext)
   {
     super(paramContext);
   }

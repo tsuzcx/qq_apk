@@ -1,16 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
-
 public class bael
-  implements baev
+  implements baem
 {
-  public bael(ComponentCenter paramComponentCenter, BaseActivity paramBaseActivity, Bundle paramBundle) {}
+  public void a(int paramInt, Throwable paramThrowable) {}
   
-  public void a(baeh parambaeh)
-  {
-    parambaeh.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public void a(long paramLong) {}
+  
+  public void b(long paramLong) {}
+  
+  public void g() {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
 }
 
 

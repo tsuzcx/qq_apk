@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.view.SplitedProgressBar;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class AdvertisementSplitedProgressBar
   extends SplitedProgressBar
@@ -24,7 +24,7 @@ public class AdvertisementSplitedProgressBar
     this.e = 872415231;
     this.f = -2130706433;
     this.h = 4;
-    this.g = agej.a(1.5F, paramContext.getResources());
+    this.g = AIOUtils.dp2px(1.5F, paramContext.getResources());
   }
 }
 

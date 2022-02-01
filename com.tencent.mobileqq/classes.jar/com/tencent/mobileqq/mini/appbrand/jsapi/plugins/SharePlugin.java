@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -9,9 +10,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import anzj;
-import bhmq;
-import bmud;
+import bfvo;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -25,6 +24,7 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.data.PublishMoodInfo;
 import com.tencent.mobileqq.minigame.data.PublishMoodInfo.MediaInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareManager;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -53,12 +53,12 @@ public class SharePlugin
   {
     String str1 = PublishMoodInfo.getFileSizeDesc(PublishMoodInfo.MOOD_MAX_SINGLE_PHOTO_SIZE);
     String str2 = PublishMoodInfo.getFileSizeDesc(PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_SIZE);
-    mTip.put(Integer.valueOf(1), anzj.a(2131712829) + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + anzj.a(2131712832));
-    mTip.put(Integer.valueOf(2), anzj.a(2131712823) + str1 + anzj.a(2131712833));
-    mTip.put(Integer.valueOf(4), anzj.a(2131712822) + str2 + anzj.a(2131712824));
-    mTip.put(Integer.valueOf(8), anzj.a(2131712827) + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION / 60000 + anzj.a(2131712828));
-    mTip.put(Integer.valueOf(16), anzj.a(2131712826) + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + anzj.a(2131712830));
-    mTip.put(Integer.valueOf(32), anzj.a(2131712831) + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT + anzj.a(2131712825));
+    mTip.put(Integer.valueOf(1), amtj.a(2131713061) + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + amtj.a(2131713064));
+    mTip.put(Integer.valueOf(2), amtj.a(2131713055) + str1 + amtj.a(2131713065));
+    mTip.put(Integer.valueOf(4), amtj.a(2131713054) + str2 + amtj.a(2131713056));
+    mTip.put(Integer.valueOf(8), amtj.a(2131713059) + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION / 60000 + amtj.a(2131713060));
+    mTip.put(Integer.valueOf(16), amtj.a(2131713058) + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + amtj.a(2131713062));
+    mTip.put(Integer.valueOf(32), amtj.a(2131713063) + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT + amtj.a(2131713057));
     QLog.i("[minigame] SharePlugin", 2, "textCount = " + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + ", singlePhotoSize = " + PublishMoodInfo.MOOD_MAX_SINGLE_PHOTO_SIZE + ", singleVideoSize = " + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_SIZE + ", singleVideoDuration = " + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION + ", videoCount = " + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + ", photoAndVideoCount = " + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT);
   }
   
@@ -77,10 +77,10 @@ public class SharePlugin
     localOptions.inJustDecodeBounds = true;
     try
     {
-      bhmq.a(paramString, localOptions);
+      bfvo.a(paramString, localOptions);
       localLocalMediaInfo.mediaWidth = localOptions.outWidth;
       localLocalMediaInfo.mediaHeight = localOptions.outHeight;
-      localLocalMediaInfo.mMimeType = PhotoUtils.a(paramString);
+      localLocalMediaInfo.mMimeType = PhotoUtils.getImageMimeType(paramString);
       localLocalMediaInfo.fileSize = localFile.length();
       localLocalMediaInfo.modifiedDate = localFile.lastModified();
       return localLocalMediaInfo;
@@ -327,7 +327,7 @@ public class SharePlugin
           if (!TextUtils.isEmpty(paramPublishMoodInfo.mFootnote)) {
             break label476;
           }
-          paramPublishMoodInfo = this.jsPluginEngine.activityContext.getResources().getString(2131693706);
+          paramPublishMoodInfo = this.jsPluginEngine.activityContext.getResources().getString(2131693802);
           localJSONObject = new JSONObject();
         }
       }
@@ -340,7 +340,7 @@ public class SharePlugin
         localJSONObject.put("title", this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.name);
         localJSONObject.put("summary", paramPublishMoodInfo);
         localJSONObject.put("jump_url", str2);
-        localJSONObject.put("button_txt", this.jsPluginEngine.activityContext.getResources().getString(2131693715));
+        localJSONObject.put("button_txt", this.jsPluginEngine.activityContext.getResources().getString(2131693811));
         localJSONObject.put("recom_bottom_id", 2);
         localJSONObject.put("action_type", 2);
         paramPublishMoodInfo = localJSONObject.toString();
@@ -348,7 +348,7 @@ public class SharePlugin
         QLog.d("[minigame] SharePlugin", 1, "publishMood， comm_recom_bottom： " + paramPublishMoodInfo);
         paramPublishMoodInfo = str1;
         localBundle.putString("key_mini_appid", paramPublishMoodInfo);
-        bmud.a(paramActivity, localBundle, null, -1);
+        QZoneShareManager.publishToQzoneFromMiniApp(paramActivity, localBundle, null, -1);
         return;
       }
       catch (Exception paramPublishMoodInfo)

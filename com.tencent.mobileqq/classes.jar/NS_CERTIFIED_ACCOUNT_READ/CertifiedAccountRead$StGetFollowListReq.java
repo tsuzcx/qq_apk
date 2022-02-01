@@ -4,17 +4,19 @@ import NS_COMM.COMM.StCommonExt;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class CertifiedAccountRead$StGetFollowListReq
   extends MessageMicro<StGetFollowListReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "extInfo", "seq", "attach_info", "count" }, new Object[] { null, Integer.valueOf(0), "", Integer.valueOf(0) }, StGetFollowListReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "extInfo", "seq", "attach_info", "count", "source" }, new Object[] { null, Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) }, StGetFollowListReq.class);
   public final PBStringField attach_info = PBField.initString("");
   public final PBUInt32Field count = PBField.initUInt32(0);
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBUInt32Field seq = PBField.initUInt32(0);
+  public final PBInt32Field source = PBField.initInt32(0);
 }
 
 

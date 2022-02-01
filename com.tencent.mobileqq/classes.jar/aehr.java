@@ -1,24 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class aehr
-  extends azov
+  implements DialogInterface.OnClickListener
 {
-  public aehr(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public aehr(SplashActivity paramSplashActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1)
-    {
-      int i = ContactSyncJumpActivity.a(this.a).d();
-      if ((i == 1) || (i == 5))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

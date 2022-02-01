@@ -1,64 +1,22 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.util.Pair;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.4.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class bain
-  extends anuw
+  extends BroadcastReceiver
 {
-  bain(baik parambaik) {}
+  public bain(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      if (!baik.e(this.a).isFinishing())
-      {
-        baik.a(this.a).removeCallbacks(baik.a(this.a));
-        baik.a(this.a);
-        if ((paramBoolean) && (paramObject != null))
-        {
-          if ((paramObject instanceof Card))
-          {
-            ThreadManager.post(new AbsVasProfileHeaderComponent.4.1(this, (Card)paramObject), 5, null, true);
-            return;
-          }
-          if ((paramObject instanceof Pair))
-          {
-            paramObject = (Pair)paramObject;
-            if (((Integer)paramObject.first).intValue() == 101107) {
-              baik.a(this.a, 1);
-            }
-            for (;;)
-            {
-              baik.b(this.a);
-              return;
-              if (((Integer)paramObject.first).intValue() == 101108)
-              {
-                baik.a(this.a, 2);
-              }
-              else if (((Integer)paramObject.first).intValue() == 101111)
-              {
-                baik.a(this.a, 3);
-              }
-              else
-              {
-                if (((Integer)paramObject.first).intValue() != 12002) {
-                  break;
-                }
-                baik.a(this.a, 4);
-              }
-            }
-            baik.a(this.a, 5);
-            baik.a(this.a, (SSummaryCardRsp)paramObject.second);
-          }
-        }
-      }
-      return;
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "receive videochat in aiogallery");
+      this.a.finish();
     }
-    catch (Exception paramObject) {}
   }
 }
 

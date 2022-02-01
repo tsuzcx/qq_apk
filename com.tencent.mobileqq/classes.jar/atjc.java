@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import io.flutter.plugin.common.MethodChannel.Result;
 
-public class atjc
-  implements View.OnClickListener
+class atjc
+  extends atjd
 {
-  public atjc(UniformDownloadActivity paramUniformDownloadActivity) {}
+  atjc(atjb paramatjb) {}
   
-  public void onClick(View paramView)
+  protected void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    atjb.a(this.a, paramRequestPacket, paramResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjc
  * JD-Core Version:    0.7.0.1
  */

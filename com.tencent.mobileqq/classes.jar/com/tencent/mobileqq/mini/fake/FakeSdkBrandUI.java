@@ -14,10 +14,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bjjo;
-import bjsu;
-import bjsv;
-import bkyl;
+import bhpc;
+import bhyj;
+import bhyk;
+import bjei;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -35,7 +35,6 @@ import com.tencent.qqmini.sdk.launcher.core.IProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.report.MiniAppStartState;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.Iterator;
 import java.util.List;
@@ -216,18 +215,18 @@ public class FakeSdkBrandUI
     long l1 = System.currentTimeMillis();
     try
     {
-      bjsv localbjsv = new bjsv(bjjo.a().a());
-      bjsu localbjsu = new bjsu();
-      localbjsu.a(true);
-      long l2 = bjjo.a().a();
+      bhyk localbhyk = new bhyk(bhpc.a().a());
+      bhyj localbhyj = new bhyj();
+      localbhyj.a(true);
+      long l2 = bhpc.a().a();
       Object localObject = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       String str = ((TicketManager)localObject).getSkey(String.valueOf(l2));
       localObject = ((TicketManager)localObject).getPskey(String.valueOf(l2), "qzone.qq.com");
-      localbjsu.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbjsu.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbjsu.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbjsu.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbjsv.a();
+      localbhyj.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbhyj.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbhyj.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbhyj.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbhyk.a();
       l2 = System.currentTimeMillis();
       QLog.e(AppBrandUI3.class.getSimpleName(), 1, "setCookie cost:" + (l2 - l1));
       return;
@@ -266,8 +265,6 @@ public class FakeSdkBrandUI
       {
         try
         {
-          MiniAppStartState.setBaseLibLoad(((MiniAppInfo)localObject1).appId, MiniAppStartState.isBaseLibLoaded);
-          QLog.w("minisdk-start", 1, "AppBrandUI3.onCreate baseLib pre load:" + MiniAppStartState.isBaseLibLoaded + " appid:" + ((MiniAppInfo)localObject1).appId);
           localObject2 = new MiniAppConfig(MiniSdkLauncher.convert((MiniAppInfo)localObject1));
           AppBrandProxy.g().setMiniAppConfig((MiniAppConfig)localObject2);
           localObject2 = localObject1;
@@ -278,18 +275,18 @@ public class FakeSdkBrandUI
             QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
             this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
           }
-          bkyl.a();
+          bjei.a();
           return true;
         }
         catch (Throwable localThrowable2)
         {
           Object localObject3;
-          break label240;
+          break label188;
         }
         localThrowable1 = localThrowable1;
         localObject1 = null;
       }
-      label240:
+      label188:
       localObject3 = localObject1;
     }
   }
@@ -336,7 +333,7 @@ public class FakeSdkBrandUI
     if (this.mUIProxy != null) {
       this.mUIProxy.onDetachActivity(paramBaseActivity);
     }
-    bkyl.b();
+    bjei.b();
   }
   
   public void doOnNewIntent(BaseActivity paramBaseActivity, Intent paramIntent)

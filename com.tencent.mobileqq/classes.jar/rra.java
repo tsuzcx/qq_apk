@@ -1,32 +1,12 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-
-public class rra
-  extends DataSetObserver
+public abstract interface rra
 {
-  public rra(VideoFeedsListView paramVideoFeedsListView) {}
+  public abstract void a();
   
-  public void onChanged()
-  {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
-    }
-  }
+  public abstract void a(String paramString);
   
-  public void onInvalidated()
-  {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
-    }
-  }
+  public abstract void a(rqz<String> paramrqz);
+  
+  public abstract void b(String paramString);
 }
 
 

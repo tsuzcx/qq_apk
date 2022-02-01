@@ -1,58 +1,51 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-class bdpp
-  implements View.OnClickListener
+public class bdpp
+  extends AsyncTask<Void, Void, String>
 {
-  bdpp(bdpo parambdpo) {}
+  public bdpp(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onClick(View paramView)
+  protected String a(Void... paramVarArgs)
   {
-    if (bdpo.a(this.a) == null)
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      String str2 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (str2 != null)
+      {
+        bfvo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, str2);
+        String str1 = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694485) + " " + str2;
+        paramVarArgs = str1;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "savePhoto:" + str2);
+          return str1;
+        }
+      }
+      else
+      {
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694483);
+        return paramVarArgs;
+      }
     }
-    for (;;)
+    catch (IOException paramVarArgs)
     {
-      int i;
-      try
-      {
-        int j = Integer.parseInt(String.valueOf(paramView.getTag()));
-        i = 0;
-        if (i >= this.a.a.size()) {
-          break;
-        }
-        View localView = (View)bdpo.a(this.a).get(i);
-        if (localView == null) {
-          break label174;
-        }
-        if (i == j) {
-          break label135;
-        }
-        bdol localbdol2 = (bdol)this.a.a.get(i);
-        if ((localbdol2 != null) && ((localbdol2 instanceof bdpq))) {
-          ((bdpq)localbdol2).a();
-        } else {
-          localView.setVisibility(8);
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      break;
-      label135:
-      bdol localbdol1 = (bdol)this.a.a.get(i);
-      if ((localbdol1 != null) && ((localbdol1 instanceof bdpq))) {
-        ((bdpq)localbdol1).b();
-      }
-      label174:
-      i += 1;
+      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694483);
     }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694483);
+    }
+    return paramVarArgs;
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getTitleBarHeight());
   }
 }
 

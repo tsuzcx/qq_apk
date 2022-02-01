@@ -1,12 +1,20 @@
-public abstract interface bmdy
+import android.os.Handler;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+
+public class bmdy
 {
-  public abstract void a();
+  private static final bmeb<Handler, Void> a = new bmdz();
+  private static bmeb<TimerTaskManager, Void> b = new bmea();
   
-  public abstract void a(int paramInt, String paramString);
+  public static Handler a()
+  {
+    return (Handler)a.b(null);
+  }
   
-  public abstract void a(int paramInt, String[] paramArrayOfString);
-  
-  public abstract void a(String[] paramArrayOfString);
+  public static TimerTaskManager a()
+  {
+    return (TimerTaskManager)b.b(null);
+  }
 }
 
 

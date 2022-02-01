@@ -1,22 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bioy;
-import bnmr;
+import bgve;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.qzone.util.QZLog;
 
-public class QZoneSharePictureJsPlugin$11
+class QZoneSharePictureJsPlugin$11
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$11(bnmr parambnmr, int paramInt, String paramString) {}
+  QZoneSharePictureJsPlugin$11(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, int paramInt, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((this.this$0.a != null) && (this.this$0.a.mRuntime != null)) {
-        QQToast.a(this.this$0.a.mRuntime.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
+      if ((this.this$0.parentPlugin != null) && (this.this$0.parentPlugin.mRuntime != null)) {
+        QQToast.a(this.this$0.parentPlugin.mRuntime.a(), this.val$icon, this.val$msg, 0).a();
       }
       return;
     }

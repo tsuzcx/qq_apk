@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
-
-public final class aqof
-  implements Parcelable.Creator<CardUinInfo>
+public class aqof
+  extends aqoh
 {
-  public CardUinInfo a(Parcel paramParcel)
+  public aqof(aqoj paramaqoj)
   {
-    return new CardUinInfo(paramParcel);
+    super(paramaqoj);
   }
   
-  public CardUinInfo[] a(int paramInt)
+  public int a()
   {
-    return new CardUinInfo[paramInt];
+    return -2147483648;
   }
 }
 

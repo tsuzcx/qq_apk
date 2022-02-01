@@ -1,8 +1,10 @@
-import cooperation.qqpim.QQPimTipsInfo;
-
 public abstract interface bmny
 {
-  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

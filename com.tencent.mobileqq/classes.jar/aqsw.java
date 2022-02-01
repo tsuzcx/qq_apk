@@ -1,8 +1,13 @@
-import android.view.View;
+import org.json.JSONObject;
 
-public abstract interface aqsw
+public abstract class aqsw
 {
-  public abstract void a(View paramView);
+  public String a;
+  public boolean a = true;
+  
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
 }
 
 

@@ -1,79 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.SparseArray;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.config.Config;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class adkn
+  implements bjoe
 {
-  public static int a;
-  private static long a;
-  public static SparseArray<adko> a;
+  public adkn(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bjnw parambjnw) {}
   
-  static
+  public void OnClick(View paramView, int paramInt)
   {
-    jdField_a_of_type_Long = Math.round((float)(System.currentTimeMillis() / 86400000L));
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(18);
-    jdField_a_of_type_AndroidUtilSparseArray.put(6, new adko(0L, 0));
-    jdField_a_of_type_AndroidUtilSparseArray.put(14, new adko(0L, 0));
-  }
-  
-  public static void a()
-  {
-    long l;
-    if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      l = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_start_date", 0L);
-    }
-    int[] arrayOfInt;
-    int j;
-    int i;
-    int k;
-    for (;;)
+    this.jdField_a_of_type_Bjnw.dismiss();
+    switch (paramInt)
     {
-      if ((jdField_a_of_type_Long - l > 0L) && (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null))
-      {
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_start_date", jdField_a_of_type_Long);
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", 0);
-        arrayOfInt = Config.Plugins;
-        j = arrayOfInt.length;
-        i = 0;
-        for (;;)
-        {
-          if (i < j)
-          {
-            k = arrayOfInt[i];
-            MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), 0);
-            jdField_a_of_type_AndroidUtilSparseArray.put(k, new adko(0L, 0));
-            i += 1;
-            continue;
-            l = jdField_a_of_type_Long;
-            break;
-          }
-        }
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
-      }
-    }
-    for (;;)
-    {
+    default: 
       return;
-      if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null)
-      {
-        jdField_a_of_type_Int = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_today_reported", 0);
-        if (jdField_a_of_type_Int >= Config.MAX_REPORT_NUM) {
-          break;
-        }
-        arrayOfInt = Config.Plugins;
-        j = arrayOfInt.length;
-        i = 0;
-        while (i < j)
-        {
-          k = arrayOfInt[i];
-          int m = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_plugin_" + String.valueOf(k), 0);
-          jdField_a_of_type_AndroidUtilSparseArray.put(k, new adko(0L, m));
-          i += 1;
-        }
-      }
+    case 0: 
+      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
+      return;
+    case 1: 
+      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
+      return;
+    case 2: 
+      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
+      return;
+    case 3: 
+      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
+      return;
     }
+    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
   }
 }
 

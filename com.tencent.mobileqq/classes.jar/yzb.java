@@ -1,34 +1,32 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+
 public class yzb
 {
   public int a;
-  public long a;
-  public boolean a;
+  public RecyclerView.ViewHolder a;
+  public int b;
+  public RecyclerView.ViewHolder b;
+  public int c;
+  public int d;
   
-  public boolean equals(Object paramObject)
+  private yzb(RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (yzb)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder1;
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder2;
   }
   
-  public int hashCode()
+  private yzb(RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+    this(paramViewHolder1, paramViewHolder2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
   
   public String toString()
   {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+    return "ChangeInfo{oldHolder=" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder + ", newHolder=" + this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder + ", fromX=" + this.jdField_a_of_type_Int + ", fromY=" + this.jdField_b_of_type_Int + ", toX=" + this.c + ", toY=" + this.d + '}';
   }
 }
 

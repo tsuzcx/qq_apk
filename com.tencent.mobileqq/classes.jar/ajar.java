@@ -1,26 +1,36 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ajar
-  implements DialogInterface.OnClickListener
+public class ajar
 {
-  ajar(ajaq paramajaq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    if (this.a.a.getActivity() != null)
+    if ((paramMessageRecord instanceof MessageForText))
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.getActivity().startActivity(localIntent);
+      paramMessageRecord = (MessageForText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
     }
-    paramDialogInterface.dismiss();
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
+    }
+    if ((paramMessageRecord instanceof MessageForReplyText))
+    {
+      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
+    }
+    return "";
   }
 }
 

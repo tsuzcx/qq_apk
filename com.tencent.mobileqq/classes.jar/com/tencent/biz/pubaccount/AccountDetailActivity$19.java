@@ -11,7 +11,7 @@ class AccountDetailActivity$19
   
   public void run()
   {
-    Object localObject = this.this$0.a.a(115, this.this$0.e, (byte)1, true, 0);
+    Object localObject = this.this$0.a.getFaceBitmap(115, this.this$0.e, (byte)1, true, 0);
     if (localObject != null)
     {
       localObject = this.this$0.a((Bitmap)localObject);

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import agej;
-import alxn;
-import alxo;
-import alxp;
-import alxq;
+import akvc;
+import akvd;
+import akve;
+import akvf;
+import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -28,17 +28,17 @@ import android.widget.GridView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anzj;
-import bhlo;
-import bhmi;
-import bhnv;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo;
 import com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -47,35 +47,35 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
-import wjs;
-import wkf;
-import wow;
-import woy;
-import wrz;
-import wsc;
-import wsh;
-import wsi;
-import wth;
-import xcw;
-import xeq;
-import yup;
-import yuq;
-import zhe;
-import zho;
-import zhp;
-import zhq;
-import zhr;
-import zom;
+import vlr;
+import vme;
+import vqn;
+import vqp;
+import vtp;
+import vts;
+import vtx;
+import vty;
+import vux;
+import wem;
+import wgg;
+import xwa;
+import xwb;
+import yie;
+import yio;
+import yip;
+import yiq;
+import yir;
+import ypi;
 
 @TargetApi(11)
 public class P2VEditMusicDialog
   extends Dialog
-  implements View.OnClickListener, AdapterView.OnItemClickListener, wjs, woy<xcw, xeq>, zhp
+  implements View.OnClickListener, AdapterView.OnItemClickListener, vlr, vqp<wem, wgg>, yip
 {
   private static final String jdField_a_of_type_JavaLangString = P2VEditMusicDialog.class.getSimpleName();
   public int a;
   protected long a;
-  public alxq a;
+  public akvf a;
   public Handler a;
   public View a;
   protected GridView a;
@@ -83,14 +83,14 @@ public class P2VEditMusicDialog
   public TextView a;
   public MusicHorizontalSeekView a;
   protected P2VEditMusicDialog.MusicPlayTask a;
-  public ArrayList<zhr> a;
+  public ArrayList<yir> a;
   protected HashMap<String, String> a;
   protected Timer a;
-  protected wkf a;
-  private wsh<wsc> jdField_a_of_type_Wsh = new alxp(this);
-  private zhe jdField_a_of_type_Zhe;
-  public zho a;
-  public zhr a;
+  protected vme a;
+  private vtx<vts> jdField_a_of_type_Vtx = new akve(this);
+  private yie jdField_a_of_type_Yie;
+  public yio a;
+  public yir a;
   public boolean a;
   public int b;
   protected long b;
@@ -105,19 +105,19 @@ public class P2VEditMusicDialog
   protected TextView e;
   protected TextView f;
   
-  public P2VEditMusicDialog(Context paramContext, alxq paramalxq, int paramInt, boolean paramBoolean)
+  public P2VEditMusicDialog(Context paramContext, akvf paramakvf, int paramInt, boolean paramBoolean)
   {
     super(paramContext, 2131755166);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_Long = 1000L;
-    this.jdField_a_of_type_AndroidOsHandler = new alxo(this);
+    this.jdField_a_of_type_AndroidOsHandler = new akvd(this);
     super.requestWindowFeature(1);
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Alxq = paramalxq;
-    this.jdField_a_of_type_Zhe = new zhe(paramContext, new alxn(this), this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_a_of_type_Akvf = paramakvf;
+    this.jdField_a_of_type_Yie = new yie(paramContext, new akvc(this), this.jdField_a_of_type_AndroidOsHandler);
     a(paramContext);
     paramContext = super.getWindow().getAttributes();
     paramContext.width = -1;
@@ -129,7 +129,7 @@ public class P2VEditMusicDialog
   public static void a(Activity paramActivity)
   {
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s", new Object[] { bhlo.a(), "", Integer.valueOf(5) }));
+    localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s", new Object[] { DeviceInfoUtil.getIMEI(), "", Integer.valueOf(5) }));
     localIntent.putExtra("finish_animation_up_down", true);
     paramActivity.startActivityForResult(localIntent, 1000);
     paramActivity.overridePendingTransition(2130771979, 0);
@@ -137,47 +137,47 @@ public class P2VEditMusicDialog
   
   private void g()
   {
-    this.jdField_a_of_type_Alxq.a(this.jdField_a_of_type_Zhr);
-    if (this.jdField_a_of_type_Zhr != null)
+    this.jdField_a_of_type_Akvf.a(this.jdField_a_of_type_Yir);
+    if (this.jdField_a_of_type_Yir != null)
     {
-      if (this.jdField_a_of_type_Zhr.jdField_b_of_type_Int == 1)
+      if (this.jdField_a_of_type_Yir.jdField_b_of_type_Int == 1)
       {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
         return;
       }
-      if (this.jdField_a_of_type_Zhr.jdField_b_of_type_Int == 0)
+      if (this.jdField_a_of_type_Yir.jdField_b_of_type_Int == 0)
       {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
         return;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Zhr.g))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Yir.g))
       {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(11);
         return;
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-      this.jdField_a_of_type_Alxq.a(zhr.jdField_b_of_type_Zhr);
+      this.jdField_a_of_type_Akvf.a(yir.jdField_b_of_type_Yir);
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-    this.jdField_a_of_type_Alxq.a(zhr.jdField_b_of_type_Zhr);
+    this.jdField_a_of_type_Akvf.a(yir.jdField_b_of_type_Yir);
   }
   
   private void h()
   {
-    zhr localzhr = this.jdField_a_of_type_Alxq.a();
-    if ((localzhr == null) || (this.jdField_a_of_type_Zhr == null) || ((localzhr.jdField_b_of_type_Int != 3) && (localzhr.jdField_b_of_type_Int != 2))) {}
+    yir localyir = this.jdField_a_of_type_Akvf.a();
+    if ((localyir == null) || (this.jdField_a_of_type_Yir == null) || ((localyir.jdField_b_of_type_Int != 3) && (localyir.jdField_b_of_type_Int != 2))) {}
     for (;;)
     {
       dismiss();
       return;
-      if (localzhr.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Zhr.jdField_a_of_type_JavaLangString)) {}
+      if (localyir.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Yir.jdField_a_of_type_JavaLangString)) {}
     }
   }
   
   private void i()
   {
-    this.jdField_a_of_type_Alxq.d();
+    this.jdField_a_of_type_Akvf.d();
   }
   
   public int a()
@@ -213,64 +213,64 @@ public class P2VEditMusicDialog
   
   public void a(Context paramContext)
   {
-    Object localObject = LayoutInflater.from(paramContext).inflate(2131561789, null);
+    Object localObject = LayoutInflater.from(paramContext).inflate(2131561667, null);
     super.setContentView((View)localObject);
     boolean bool;
     if (this.jdField_a_of_type_Int < 5000)
     {
       this.jdField_a_of_type_Long = (this.jdField_a_of_type_Int / 6);
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject).findViewById(2131371554));
-      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131371538);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView = ((MusicHorizontalSeekView)((View)localObject).findViewById(2131371540));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject).findViewById(2131371522));
+      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131371506);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView = ((MusicHorizontalSeekView)((View)localObject).findViewById(2131371508));
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setOnSeekListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371541));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377249));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377248));
-      this.e = ((TextView)super.findViewById(2131371550));
-      this.f = ((TextView)super.findViewById(2131371551));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371509));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131376999));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131376998));
+      this.e = ((TextView)super.findViewById(2131371518));
+      this.f = ((TextView)super.findViewById(2131371519));
       this.e.setOnClickListener(this);
       this.f.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131366014));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131366044));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131377296);
-      if (!this.jdField_a_of_type_Alxq.b()) {
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131377047);
+      if (!this.jdField_a_of_type_Akvf.b()) {
         break label459;
       }
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)((View)localObject).findViewById(2131371539));
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)((View)localObject).findViewById(2131371507));
       this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(-1);
       this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
       if (Build.VERSION.SDK_INT >= 9) {
         this.jdField_a_of_type_AndroidWidgetGridView.setOverScrollMode(2);
       }
       this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = ((View)localObject).findViewById(2131365616);
+      this.jdField_c_of_type_AndroidViewView = ((View)localObject).findViewById(2131365649);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       localObject = this.jdField_a_of_type_AndroidWidgetGridView;
-      if (this.jdField_a_of_type_Alxq.c()) {
+      if (this.jdField_a_of_type_Akvf.c()) {
         break label454;
       }
       bool = true;
       label317:
-      this.jdField_a_of_type_Zho = new zho(paramContext, (GridView)localObject, bool, true);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Zho);
-      this.jdField_a_of_type_Zho.a(null);
+      this.jdField_a_of_type_Yio = new yio(paramContext, (GridView)localObject, bool, true);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Yio);
+      this.jdField_a_of_type_Yio.a(null);
       label351:
-      if (this.jdField_a_of_type_Alxq.a() == null) {
+      if (this.jdField_a_of_type_Akvf.a() == null) {
         break label497;
       }
-      this.jdField_a_of_type_Zhr = new zhr();
-      this.jdField_a_of_type_Zhr.a(this.jdField_a_of_type_Alxq.a());
+      this.jdField_a_of_type_Yir = new yir();
+      this.jdField_a_of_type_Yir.a(this.jdField_a_of_type_Akvf.a());
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = zhr.a(getContext());
+      this.jdField_a_of_type_JavaUtilArrayList = yir.a(getContext());
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      if (!bhnv.d(getContext())) {
+      if (!NetworkUtil.isNetSupport(getContext())) {
         break label513;
       }
       this.jdField_b_of_type_Long = System.currentTimeMillis();
-      paramContext = new xcw();
-      wow.a().a(paramContext, this);
+      paramContext = new wem();
+      vqn.a().a(paramContext, this);
       return;
       this.jdField_a_of_type_Long = 1000L;
       break;
@@ -278,20 +278,20 @@ public class P2VEditMusicDialog
       bool = false;
       break label317;
       label459:
-      ((View)localObject).findViewById(2131365536).getLayoutParams().height = agej.a(138.0F, paramContext.getResources());
-      ((View)localObject).findViewById(2131371542).setVisibility(8);
+      ((View)localObject).findViewById(2131365569).getLayoutParams().height = AIOUtils.dp2px(138.0F, paramContext.getResources());
+      ((View)localObject).findViewById(2131371510).setVisibility(8);
       break label351;
       label497:
-      this.jdField_a_of_type_Zhr = this.jdField_a_of_type_Alxq.a();
+      this.jdField_a_of_type_Yir = this.jdField_a_of_type_Akvf.a();
     }
     label513:
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    QQToast.a(getContext(), anzj.a(2131706739), 0).a();
+    QQToast.a(getContext(), amtj.a(2131706971), 0).a();
   }
   
   public void a(String paramString, int paramInt)
   {
-    String str = zhq.a(paramString);
+    String str = yiq.a(paramString);
     if (paramInt == 0)
     {
       this.jdField_d_of_type_Int = 0;
@@ -302,26 +302,26 @@ public class P2VEditMusicDialog
         this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString, str);
-      zhr localzhr = this.jdField_a_of_type_Alxq.a();
-      if ((localzhr != null) && (paramString.equals(localzhr.jdField_d_of_type_JavaLangString)))
+      yir localyir = this.jdField_a_of_type_Akvf.a();
+      if ((localyir != null) && (paramString.equals(localyir.jdField_d_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Alxq.a(str);
+        this.jdField_a_of_type_Akvf.a(str);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        getContext().getSharedPreferences("VideoMusicCache", 0).edit().putString(localzhr.jdField_a_of_type_JavaLangString, str).apply();
+        getContext().getSharedPreferences("VideoMusicCache", 0).edit().putString(localyir.jdField_a_of_type_JavaLangString, str).apply();
       }
-      yup.a("edit_video", "music_download_success", 0, 0, new String[] { "", "", "", "" });
+      xwa.a("edit_video", "music_download_success", 0, 0, new String[] { "", "", "", "" });
     }
     for (;;)
     {
       if (QLog.isColorLevel())
       {
         long l = ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue();
-        paramString = new StringBuffer("onDownloadFinish errCode = ").append(paramInt).append(", name = ").append(zom.b(paramString)).append(", downloadTime = ").append(System.currentTimeMillis() - l).append(", fileSize = ").append(zom.a(str)).append(", url = " + paramString);
+        paramString = new StringBuffer("onDownloadFinish errCode = ").append(paramInt).append(", name = ").append(ypi.b(paramString)).append(", downloadTime = ").append(System.currentTimeMillis() - l).append(", fileSize = ").append(ypi.a(str)).append(", url = " + paramString);
         QLog.d(jdField_a_of_type_JavaLangString, 2, paramString.toString());
       }
       return;
-      yup.a("edit_video", "music_download_failed", 0, 0, new String[] { String.valueOf(paramInt), "", "", "" });
-      yuq.a("0X80076D9");
+      xwa.a("edit_video", "music_download_failed", 0, 0, new String[] { String.valueOf(paramInt), "", "", "" });
+      xwb.a("0X80076D9");
     }
   }
   
@@ -351,7 +351,7 @@ public class P2VEditMusicDialog
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
   }
   
-  public void a(xcw paramxcw, xeq paramxeq, ErrorMessage paramErrorMessage)
+  public void a(wem paramwem, wgg paramwgg, ErrorMessage paramErrorMessage)
   {
     String str;
     StringBuilder localStringBuilder;
@@ -364,49 +364,49 @@ public class P2VEditMusicDialog
       }
     }
     label203:
-    for (paramxcw = "null";; paramxcw = paramErrorMessage.getErrorMessage())
+    for (paramwem = "null";; paramwem = paramErrorMessage.getErrorMessage())
     {
-      QLog.d(str, 2, paramxcw);
-      yup.a("edit_video", "music_list_time", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long), "", "", "" });
+      QLog.d(str, 2, paramwem);
+      xwa.a("edit_video", "music_list_time", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long), "", "", "" });
       if ((paramErrorMessage == null) || (!paramErrorMessage.isFail())) {
         break;
       }
-      paramxcw = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(7);
-      paramxcw.obj = ("onCmdRespond error = " + paramErrorMessage.getErrorMessage());
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramxcw);
-      yup.a("edit_video", "music_list_failed", 0, 0, new String[] { "", "", "", "" });
+      paramwem = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(7);
+      paramwem.obj = ("onCmdRespond error = " + paramErrorMessage.getErrorMessage());
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramwem);
+      xwa.a("edit_video", "music_list_failed", 0, 0, new String[] { "", "", "", "" });
       return;
     }
-    paramxeq = paramxeq.a;
-    int j = paramxeq.music_config.size();
-    paramxcw = new ArrayList(j);
+    paramwgg = paramwgg.a;
+    int j = paramwgg.music_config.size();
+    paramwem = new ArrayList(j);
     if (j > 0)
     {
       int i = 0;
       while (i < j)
       {
-        paramxcw.add(new zhr((qqstory_struct.MusicConfigInfo)paramxeq.music_config.get(i)));
+        paramwem.add(new yir((qqstory_struct.MusicConfigInfo)paramwgg.music_config.get(i)));
         i += 1;
       }
       if (QLog.isColorLevel())
       {
-        paramxeq = new StringBuffer();
-        paramxeq.append("GetMusicConfigResponse size = " + j);
+        paramwgg = new StringBuffer();
+        paramwgg.append("GetMusicConfigResponse size = " + j);
         i = 0;
         while (i < j)
         {
-          paramErrorMessage = (zhr)paramxcw.get(i);
-          paramxeq.append(", " + i + ": title = " + paramErrorMessage.jdField_b_of_type_JavaLangString + ", audioUrl = " + paramErrorMessage.jdField_d_of_type_JavaLangString);
+          paramErrorMessage = (yir)paramwem.get(i);
+          paramwgg.append(", " + i + ": title = " + paramErrorMessage.jdField_b_of_type_JavaLangString + ", audioUrl = " + paramErrorMessage.jdField_d_of_type_JavaLangString);
           i += 1;
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, paramxeq.toString());
+        QLog.d(jdField_a_of_type_JavaLangString, 2, paramwgg.toString());
       }
     }
     for (;;)
     {
-      yup.a("edit_video", "music_list_count", 0, 0, new String[] { String.valueOf(j), "", "", "" });
-      this.jdField_a_of_type_JavaUtilArrayList = paramxcw;
-      zhr.a(getContext(), paramxcw);
+      xwa.a("edit_video", "music_list_count", 0, 0, new String[] { String.valueOf(j), "", "", "" });
+      this.jdField_a_of_type_JavaUtilArrayList = paramwem;
+      yir.a(getContext(), paramwem);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       return;
       if (QLog.isColorLevel()) {
@@ -415,52 +415,52 @@ public class P2VEditMusicDialog
     }
   }
   
-  public void a(zhr paramzhr)
+  public void a(yir paramyir)
   {
-    String str2 = paramzhr.jdField_d_of_type_JavaLangString;
-    String str1 = paramzhr.g;
+    String str2 = paramyir.jdField_d_of_type_JavaLangString;
+    String str1 = paramyir.g;
     if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str1)))
     {
-      paramzhr = str1;
-      if (!zom.e(str1))
+      paramyir = str1;
+      if (!ypi.e(str1))
       {
         str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(str2);
-        paramzhr = str1;
-        if (!zom.e(str1)) {
-          paramzhr = zhq.a(str2);
+        paramyir = str1;
+        if (!ypi.e(str1)) {
+          paramyir = yiq.a(str2);
         }
       }
-      if (zom.e(paramzhr))
+      if (ypi.e(paramyir))
       {
-        if ((this.jdField_a_of_type_Wkf != null) && (this.jdField_a_of_type_Wkf.a()))
+        if ((this.jdField_a_of_type_Vme != null) && (this.jdField_a_of_type_Vme.a()))
         {
-          bhmi.d(this.jdField_a_of_type_Wkf.a());
-          this.jdField_a_of_type_Wkf.a();
+          FileUtils.deleteFile(this.jdField_a_of_type_Vme.a());
+          this.jdField_a_of_type_Vme.a();
         }
-        if (this.jdField_a_of_type_Alxq.a() != null)
+        if (this.jdField_a_of_type_Akvf.a() != null)
         {
-          this.jdField_a_of_type_Alxq.a(paramzhr);
+          this.jdField_a_of_type_Akvf.a(paramyir);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
         }
         for (;;)
         {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "exists audio_url = " + str2 + ", path = " + paramzhr);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "exists audio_url = " + str2 + ", path = " + paramyir);
           return;
           QLog.e(jdField_a_of_type_JavaLangString, 1, "getCurFragmentMusic - urMusic is null");
         }
       }
-      if (!bhnv.g(BaseApplication.getContext()))
+      if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
       {
         f();
-        QQToast.a(BaseApplication.getContext(), 2131694659, 0).a();
+        QQToast.a(BaseApplication.getContext(), 2131694775, 0).a();
         return;
       }
       this.jdField_b_of_type_JavaUtilHashMap.put(str2, Long.valueOf(System.currentTimeMillis()));
-      this.jdField_a_of_type_JavaUtilHashMap.put(str2, paramzhr);
-      if ((this.jdField_a_of_type_Wkf != null) && (this.jdField_a_of_type_Wkf.a()))
+      this.jdField_a_of_type_JavaUtilHashMap.put(str2, paramyir);
+      if ((this.jdField_a_of_type_Vme != null) && (this.jdField_a_of_type_Vme.a()))
       {
-        bhmi.d(this.jdField_a_of_type_Wkf.a());
-        this.jdField_a_of_type_Wkf.a();
+        FileUtils.deleteFile(this.jdField_a_of_type_Vme.a());
+        this.jdField_a_of_type_Vme.a();
       }
       ThreadManager.post(new P2VEditMusicDialog.3(this, str2), 5, null, true);
       return;
@@ -471,7 +471,7 @@ public class P2VEditMusicDialog
   public void b()
   {
     e();
-    this.jdField_a_of_type_Alxq.b();
+    this.jdField_a_of_type_Akvf.b();
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -497,8 +497,8 @@ public class P2VEditMusicDialog
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "start = " + paramInt1 + ", end = " + paramInt2 + ", displayEnd = " + i);
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(zhq.a(paramInt1, false));
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(zhq.a(i, true));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(yiq.a(paramInt1, false));
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(yiq.a(i, true));
       return;
       i = j;
     }
@@ -506,32 +506,32 @@ public class P2VEditMusicDialog
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    zhr localzhr = this.jdField_a_of_type_Alxq.a();
-    if (localzhr != null)
+    yir localyir = this.jdField_a_of_type_Akvf.a();
+    if (localyir != null)
     {
-      localzhr.jdField_d_of_type_Int = ((int)(localzhr.f * (paramInt3 / paramInt1)));
-      localzhr.e = (localzhr.jdField_d_of_type_Int + this.jdField_a_of_type_Int);
-      b(localzhr.jdField_d_of_type_Int, localzhr.e);
+      localyir.jdField_d_of_type_Int = ((int)(localyir.f * (paramInt3 / paramInt1)));
+      localyir.e = (localyir.jdField_d_of_type_Int + this.jdField_a_of_type_Int);
+      b(localyir.jdField_d_of_type_Int, localyir.e);
     }
   }
   
-  public void b(zhr paramzhr)
+  public void b(yir paramyir)
   {
-    if ((!TextUtils.isEmpty(paramzhr.jdField_d_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramzhr.g)))
+    if ((!TextUtils.isEmpty(paramyir.jdField_d_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramyir.g)))
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramzhr.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramyir.jdField_b_of_type_JavaLangString);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    this.jdField_a_of_type_Alxq.a(paramzhr);
-    a(paramzhr);
-    yuq.a("0X80076D6");
+    this.jdField_a_of_type_Akvf.a(paramyir);
+    a(paramyir);
+    xwb.a("0X80076D6");
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Alxq.c();
+    this.jdField_a_of_type_Akvf.c();
   }
   
   public void c(int paramInt1, int paramInt2, int paramInt3)
@@ -550,13 +550,13 @@ public class P2VEditMusicDialog
   
   public void dismiss()
   {
-    this.jdField_a_of_type_Zhe.a();
-    if ((this.jdField_a_of_type_Wkf != null) && (this.jdField_a_of_type_Wkf.a()))
+    this.jdField_a_of_type_Yie.a();
+    if ((this.jdField_a_of_type_Vme != null) && (this.jdField_a_of_type_Vme.a()))
     {
-      bhmi.d(this.jdField_a_of_type_Wkf.a());
-      this.jdField_a_of_type_Wkf.a();
+      FileUtils.deleteFile(this.jdField_a_of_type_Vme.a());
+      this.jdField_a_of_type_Vme.a();
     }
-    ((wrz)((wsi)wth.a(20)).a(1)).b(this.jdField_a_of_type_Wsh);
+    ((vtp)((vty)vux.a(20)).a(1)).b(this.jdField_a_of_type_Vtx);
     e();
     c();
     super.dismiss();
@@ -580,11 +580,11 @@ public class P2VEditMusicDialog
   
   protected void f()
   {
-    zhr localzhr = this.jdField_a_of_type_Alxq.a();
-    if ((localzhr != null) && (localzhr.jdField_b_of_type_Int == 3) && (this.jdField_a_of_type_Zho != null) && (this.jdField_a_of_type_Zho.a(localzhr) > 0) && (!localzhr.equals(this.jdField_a_of_type_Zho.a())))
+    yir localyir = this.jdField_a_of_type_Akvf.a();
+    if ((localyir != null) && (localyir.jdField_b_of_type_Int == 3) && (this.jdField_a_of_type_Yio != null) && (this.jdField_a_of_type_Yio.a(localyir) > 0) && (!localyir.equals(this.jdField_a_of_type_Yio.a())))
     {
-      this.jdField_a_of_type_Zho.a(localzhr);
-      this.jdField_a_of_type_Zho.notifyDataSetChanged();
+      this.jdField_a_of_type_Yio.a(localyir);
+      this.jdField_a_of_type_Yio.notifyDataSetChanged();
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "checkButtonState 按钮错位!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       }
@@ -622,11 +622,11 @@ public class P2VEditMusicDialog
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    zhr localzhr;
-    if (this.jdField_a_of_type_Zho != null)
+    yir localyir;
+    if (this.jdField_a_of_type_Yio != null)
     {
-      localzhr = (zhr)this.jdField_a_of_type_Zho.getItem(paramInt);
-      if (localzhr != null) {
+      localyir = (yir)this.jdField_a_of_type_Yio.getItem(paramInt);
+      if (localyir != null) {
         break label70;
       }
       if (QLog.isColorLevel()) {
@@ -638,32 +638,32 @@ public class P2VEditMusicDialog
       EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
       label70:
-      this.jdField_a_of_type_Zho.a(localzhr);
-      this.jdField_a_of_type_Zho.notifyDataSetChanged();
-      if (paramInt < this.jdField_a_of_type_Zho.a())
+      this.jdField_a_of_type_Yio.a(localyir);
+      this.jdField_a_of_type_Yio.notifyDataSetChanged();
+      if (paramInt < this.jdField_a_of_type_Yio.a())
       {
         b();
-        if (localzhr.jdField_b_of_type_Int == 0)
+        if (localyir.jdField_b_of_type_Int == 0)
         {
-          this.jdField_a_of_type_Alxq.a(localzhr);
+          this.jdField_a_of_type_Akvf.a(localyir);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
         }
-        else if (localzhr.jdField_b_of_type_Int == 1)
+        else if (localyir.jdField_b_of_type_Int == 1)
         {
-          this.jdField_a_of_type_Alxq.a(localzhr);
+          this.jdField_a_of_type_Akvf.a(localyir);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
         }
-        else if (localzhr.jdField_b_of_type_Int == 2)
+        else if (localyir.jdField_b_of_type_Int == 2)
         {
-          if (!bhnv.g(BaseApplication.getContext()))
+          if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
           {
             f();
-            QQToast.a(BaseApplication.getContext(), 2131694659, 0).a();
+            QQToast.a(BaseApplication.getContext(), 2131694775, 0).a();
           }
           else
           {
-            this.jdField_a_of_type_Alxq.a();
-            if ((!this.jdField_a_of_type_Alxq.a()) && ((getContext() instanceof ContextThemeWrapper)) && ((((ContextThemeWrapper)getContext()).getBaseContext() instanceof Activity))) {
+            this.jdField_a_of_type_Akvf.a();
+            if ((!this.jdField_a_of_type_Akvf.a()) && ((getContext() instanceof ContextThemeWrapper)) && ((((ContextThemeWrapper)getContext()).getBaseContext() instanceof Activity))) {
               a((Activity)((ContextThemeWrapper)getContext()).getBaseContext());
             }
           }
@@ -672,16 +672,16 @@ public class P2VEditMusicDialog
       else
       {
         b();
-        if (!TextUtils.isEmpty(localzhr.jdField_d_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(localyir.jdField_d_of_type_JavaLangString))
         {
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(localzhr.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(localyir.jdField_b_of_type_JavaLangString);
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
-        this.jdField_a_of_type_Alxq.a(localzhr);
-        a(localzhr);
-        yup.a("video_edit", "add_music", 0, 0, new String[] { "1", "", "", "" });
+        this.jdField_a_of_type_Akvf.a(localyir);
+        a(localyir);
+        xwa.a("video_edit", "add_music", 0, 0, new String[] { "1", "", "", "" });
       }
     }
   }

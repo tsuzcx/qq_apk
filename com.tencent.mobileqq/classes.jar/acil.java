@@ -1,56 +1,20 @@
-import android.content.Context;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
-import java.io.File;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Enumeration;
-import java.util.UUID;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class acil
-  extends bjrc
+final class acil
+  implements Comparator
 {
-  private static final String b = ;
-  
-  public static String a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
-  }
-  
-  public static String a(Context paramContext)
-  {
-    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
-    String str = "" + ((TelephonyManager)localObject).getDeviceId();
-    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
-    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
-    long l2 = str.hashCode();
-    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      InetAddress localInetAddress;
-      do
-      {
-        localObject = NetworkInterface.getNetworkInterfaces();
-        Enumeration localEnumeration;
-        while (!localEnumeration.hasMoreElements())
-        {
-          if (!((Enumeration)localObject).hasMoreElements()) {
-            break;
-          }
-          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
-        }
-        localInetAddress = (InetAddress)localEnumeration.nextElement();
-      } while (localInetAddress.isLoopbackAddress());
-      Object localObject = localInetAddress.getHostAddress().toString();
-      return localObject;
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
     }
-    catch (SocketException localSocketException) {}
-    return null;
+    if (i < j) {
+      return 2;
+    }
+    return -1;
   }
 }
 

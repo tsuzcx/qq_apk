@@ -1,24 +1,23 @@
-public abstract interface yui
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+
+public class yui
+  implements Animator.AnimatorListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public yui(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract boolean a(int paramInt);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    RotateCircleImageView.a(this.a).start();
+  }
   
-  public abstract void b(String paramString1, String paramString2);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

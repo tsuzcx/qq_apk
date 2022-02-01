@@ -1,40 +1,80 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class amgv
-  implements aaav<CertifiedAccountRead.StGetFeedListRsp>
+class amgv
+  implements amha
 {
-  public amgv(ShoppingFragment paramShoppingFragment, aagu paramaagu) {}
+  amgv(amgo paramamgo) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(ShoppingFragment.a, 2, "loadMore:" + paramBoolean + " " + paramLong + " " + paramString);
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Biyn != null) {
+      this.a.jdField_a_of_type_Biyn.a();
     }
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Biyn != null) {
+      this.a.jdField_a_of_type_Biyn.c(paramInt, paramString);
+    }
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
+      }
+    }
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
+    {
+      switch (paramInt)
+      {
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        }
+        break;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        }
+      }
+      if (this.a.jdField_a_of_type_Biyn != null) {
+        this.a.jdField_a_of_type_Biyn.a(paramInt, paramArrayOfString);
       }
       return;
     }
-    this.jdField_a_of_type_Aagu.getLoadInfo().d(paramStGetFeedListRsp.livePageInfo.get());
-    paramString = paramStGetFeedListRsp.hotLive.get();
-    aagu localaagu = this.jdField_a_of_type_Aagu;
-    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localaagu.b(paramString, localStCommonExt, paramBoolean);
-      return;
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Biyn != null) {
+      this.a.jdField_a_of_type_Biyn.a(paramArrayOfString);
     }
   }
 }

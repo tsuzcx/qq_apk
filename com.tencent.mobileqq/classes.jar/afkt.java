@@ -1,25 +1,71 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-class afkt
-  implements Animation.AnimationListener
+public abstract class afkt
 {
-  afkt(afks paramafks) {}
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public afkt(DoodleView paramDoodleView)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.a.a.b.setVisibility(8);
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.a.a.c();
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a()
+  {
+    c();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    b();
+    return b(paramMotionEvent);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+    }
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public void c() {}
 }
 
 

@@ -1,19 +1,30 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qphone.base.util.QLog;
+
 public class mdd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
+  public mdd(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public mdd()
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean a()
-  {
-    long l = System.currentTimeMillis();
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Long + this.b > l);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.a, 1, "onGlobalLayout");
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.c();
+      return;
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

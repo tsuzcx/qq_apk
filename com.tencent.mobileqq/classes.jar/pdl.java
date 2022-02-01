@@ -1,35 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.Utils.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.Map;
 
 public class pdl
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public static void a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (a())
-    {
-      QLog.d("DynamicChannelUtils", 1, "dynamicChannelSwitch is on, prepare it.");
-      ThreadManager.getSubThreadHandler().postDelayed(new Utils.1(), 3000L);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bkwm.a((String)paramString.get("readinjoy_single_video_switch"));
     }
+    return true;
   }
   
-  public static boolean a()
+  public void onWipeConfig(int paramInt)
   {
-    Object localObject = Aladdin.getConfig(144);
-    if (localObject != null)
-    {
-      localObject = ((AladdinConfig)localObject).getString("dc_switch", "0");
-      QLog.d("DynamicChannelUtils", 1, new Object[] { "dcSwitch = ", localObject });
-    }
-    for (boolean bool = TextUtils.equals((CharSequence)localObject, "1");; bool = false)
-    {
-      QLog.d("DynamicChannelUtils", 1, new Object[] { "isDynamicChannelSwitchOn = ", Boolean.valueOf(bool) });
-      return bool;
-    }
+    super.onWipeConfig(paramInt);
+    bkwm.a(null);
   }
 }
 

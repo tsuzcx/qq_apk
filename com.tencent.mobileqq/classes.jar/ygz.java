@@ -1,12 +1,40 @@
-public abstract interface ygz
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+
+public abstract class ygz<T extends ygy>
 {
-  public abstract void b(boolean paramBoolean);
+  protected int a;
+  public final View a;
+  public T a;
   
-  public abstract boolean b();
+  protected ygz(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
+    }
+  }
   
-  public abstract void c(boolean paramBoolean);
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
   
-  public abstract void d();
+  public void a()
+  {
+    this.jdField_a_of_type_Ygy = null;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Ygy = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Ygy != null) && (this.jdField_a_of_type_Ygy.a());
+  }
 }
 
 

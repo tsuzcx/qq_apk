@@ -1,14 +1,7 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
-
 public class baeo
-  implements baev
 {
-  public baeo(ComponentCenter paramComponentCenter) {}
-  
-  public void a(baeh parambaeh)
-  {
-    parambaeh.c();
-  }
+  public static boolean a = true;
+  public static boolean b = true;
 }
 
 

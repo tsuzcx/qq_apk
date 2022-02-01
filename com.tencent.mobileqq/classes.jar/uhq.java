@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
 class uhq
-  implements View.OnClickListener
+  implements zop
 {
-  uhq(uhp paramuhp) {}
+  uhq(uhp paramuhp, ude paramude) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    uhk.a(this.jdField_a_of_type_Uhp.a, this.jdField_a_of_type_Ude.a, bool);
   }
 }
 

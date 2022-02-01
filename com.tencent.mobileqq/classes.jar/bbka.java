@@ -1,23 +1,18 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
 
-public class bbka
-  extends bbjz
+public final class bbka
+  implements Parcelable.Creator<FriendSingleInfo>
 {
-  public HashMap<String, String> a(String paramString)
+  public FriendSingleInfo a(Parcel paramParcel)
   {
-    if ("ShortVideo.Save".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      return paramString;
-    }
-    return null;
+    return new FriendSingleInfo(paramParcel);
+  }
+  
+  public FriendSingleInfo[] a(int paramInt)
+  {
+    return new FriendSingleInfo[paramInt];
   }
 }
 

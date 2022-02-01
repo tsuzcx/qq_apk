@@ -7,7 +7,7 @@ import com.tencent.smtt.export.external.DexLoader;
 public class TbsMediaFactory
 {
   private Context a = null;
-  private t b = null;
+  private v b = null;
   private DexLoader c = null;
   
   public TbsMediaFactory(Context paramContext)
@@ -26,8 +26,8 @@ public class TbsMediaFactory
       return;
       if (this.b == null)
       {
-        d.a(true).a(this.a, false, false, null);
-        this.b = d.a(true).a();
+        f.a(true).a(this.a, false, false, null);
+        this.b = f.a(true).a();
         if (this.b != null) {
           this.c = this.b.b();
         }
@@ -41,7 +41,7 @@ public class TbsMediaFactory
     if ((this.b == null) || (this.c == null)) {
       throw new RuntimeException("tbs core dex(s) did not loaded !!!");
     }
-    return new TbsMediaPlayer(new o(this.c, this.a));
+    return new TbsMediaPlayer(new q(this.c, this.a));
   }
 }
 

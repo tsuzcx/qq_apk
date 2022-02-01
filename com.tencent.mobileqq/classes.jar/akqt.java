@@ -1,17 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akqt
-  extends akqj
+  implements DialogInterface.OnClickListener
 {
-  public akqt(PhotoCropActivity paramPhotoCropActivity)
-  {
-    super(paramPhotoCropActivity);
-  }
+  public akqt(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
+    if (EditLocalVideoActivity.a(this.a)) {}
+    for (paramInt = -1;; paramInt = 0)
+    {
+      EditLocalVideoActivity.a(this.a).dismiss();
+      EditLocalVideoActivity.a(this.a, paramInt);
+      return;
+    }
   }
 }
 

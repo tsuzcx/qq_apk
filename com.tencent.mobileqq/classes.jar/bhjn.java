@@ -1,38 +1,42 @@
-import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
-final class bhjn
-  implements View.OnTouchListener
+public class bhjn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bhjn(TabDragAnimationView paramTabDragAnimationView) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        bhjl.b(false);
-        bhjl.a = f1;
-        bhjl.b = f2;
-        paramMotionEvent = Message.obtain();
-        paramMotionEvent.what = bhjq.a;
-        paramMotionEvent.obj = paramView;
-        bhjl.a().sendMessageDelayed(paramMotionEvent, 1000L);
-        return false;
-      } while ((bhjl.a()) || ((Math.abs(bhjl.a - f1) <= 20.0F) && (Math.abs(bhjl.b - f2) <= 20.0F)));
-      bhjl.b(true);
-      bhjl.a().removeMessages(bhjq.a);
-      return false;
+    if (TabDragAnimationView.a(this.a) != null) {
+      return TabDragAnimationView.a(this.a).onDoubleTap(paramMotionEvent);
     }
-    bhjl.a().removeMessages(bhjq.a);
-    return false;
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    super.onLongPress(paramMotionEvent);
+    if (TabDragAnimationView.a(this.a) != null) {
+      TabDragAnimationView.a(this.a).onLongClick(this.a);
+    }
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (TabDragAnimationView.a(this.a) != null) {
+      TabDragAnimationView.a(this.a).onSingleTapConfirmed(paramMotionEvent);
+    }
+    ViewParent localViewParent = this.a.getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

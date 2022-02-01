@@ -5,14 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import tle;
-import tln;
+import tqu;
+import trd;
 
 public class CommonAdBar
   extends FrameLayout
-  implements tle
+  implements tqu
 {
-  private tln a;
+  private trd a;
   
   public CommonAdBar(@NonNull Context paramContext)
   {
@@ -29,7 +29,7 @@ public class CommonAdBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public tln a()
+  public trd a()
   {
     return this.a;
   }
@@ -39,14 +39,14 @@ public class CommonAdBar
     removeAllViews();
   }
   
-  public void a(tln paramtln)
+  public void a(trd paramtrd)
   {
     if (this.a != null) {
       this.a.c();
     }
-    this.a = paramtln;
+    this.a = paramtrd;
     this.a.a(this);
-    addView(paramtln.a());
+    addView(paramtrd.a());
   }
   
   public void b()
@@ -56,7 +56,7 @@ public class CommonAdBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdBar
  * JD-Core Version:    0.7.0.1
  */

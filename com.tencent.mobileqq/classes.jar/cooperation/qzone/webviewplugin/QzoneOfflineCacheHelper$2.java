@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
-import auog;
-import bnkn;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZoneHttpDownloadUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,15 +19,15 @@ final class QzoneOfflineCacheHelper$2
     try
     {
       if (QLog.isDevelopLevel()) {
-        QLog.i("QzoneOfflineCacheHelper", 4, String.format("delay 10s,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+        QLog.i("QzoneOfflineCacheHelper", 4, String.format("delay 10s,url:%s ,path:%s", new Object[] { this.val$url, this.val$path }));
       }
-      ??? = new File(this.b);
-      boolean bool = bnkn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, (File)???, this.c, this.jdField_a_of_type_Int);
+      ??? = new File(this.val$path);
+      boolean bool = QZoneHttpDownloadUtil.download(this.val$appInterface, this.val$url, (File)???, this.val$currentWebPageDomain, this.val$tbsVersion);
       if (bool)
       {
-        QzoneOfflineCacheHelper.updateLruFileInNewThread(this.b);
+        QzoneOfflineCacheHelper.updateLruFileInNewThread(this.val$path);
         if (QLog.isDevelopLevel()) {
-          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download succ,path:%s", new Object[] { this.b }));
+          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download succ,path:%s", new Object[] { this.val$path }));
         }
       }
       for (;;)
@@ -36,7 +36,7 @@ final class QzoneOfflineCacheHelper$2
         {
           if (QzoneOfflineCacheHelper.access$200() != null)
           {
-            Object localObject2 = (ArrayList)QzoneOfflineCacheHelper.access$200().get(this.jdField_a_of_type_JavaLangString);
+            Object localObject2 = (ArrayList)QzoneOfflineCacheHelper.access$200().get(this.val$url);
             if (localObject2 != null)
             {
               localObject2 = ((ArrayList)localObject2).iterator();
@@ -46,7 +46,7 @@ final class QzoneOfflineCacheHelper$2
                 if (!(localObject4 instanceof QzoneOfflineCacheHelperCallBack)) {
                   continue;
                 }
-                ((QzoneOfflineCacheHelperCallBack)localObject4).onResultOfNativeRequest(bool, this.b);
+                ((QzoneOfflineCacheHelperCallBack)localObject4).onResultOfNativeRequest(bool, this.val$path);
               }
             }
           }
@@ -54,14 +54,14 @@ final class QzoneOfflineCacheHelper$2
         try
         {
           if (localException.exists()) {
-            auog.a(localException);
+            FileUtil.deleteFile(localException);
           }
           if (!QLog.isDevelopLevel()) {
             continue;
           }
-          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download fail,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download fail,url:%s ,path:%s", new Object[] { this.val$url, this.val$path }));
           continue;
-          QzoneOfflineCacheHelper.access$200().remove(this.jdField_a_of_type_JavaLangString);
+          QzoneOfflineCacheHelper.access$200().remove(this.val$url);
           return;
         }
         catch (Throwable localThrowable)

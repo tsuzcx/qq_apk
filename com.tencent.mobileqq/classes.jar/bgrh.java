@@ -1,75 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopFileData;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgrh
+class bgrh
+  implements nnv
 {
-  public static Map<Long, bgrh> a;
-  public long a;
-  public Map<String, TroopFileData> b = new HashMap();
+  bgrh(bgre parambgre, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
   
-  static
+  public void loaded(String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public bgrh(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public static bgrh a(long paramLong)
-  {
-    try
-    {
-      bgrh localbgrh2 = (bgrh)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      bgrh localbgrh1 = localbgrh2;
-      if (localbgrh2 == null)
-      {
-        localbgrh1 = new bgrh(paramLong);
-        jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localbgrh1);
-      }
-      return localbgrh1;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    finally {}
-  }
-  
-  public TroopFileData a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    TroopFileData localTroopFileData1 = null;
-    try
-    {
-      if (this.b != null) {
-        localTroopFileData1 = (TroopFileData)this.b.get(paramString);
-      }
-      TroopFileData localTroopFileData2 = localTroopFileData1;
-      if (localTroopFileData1 == null)
-      {
-        paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-        localTroopFileData2 = (TroopFileData)paramQQAppInterface.find(TroopFileData.class, paramString);
-        paramQQAppInterface.close();
-      }
-      return localTroopFileData2;
+    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
+      this.jdField_a_of_type_Bgre.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
     }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, TroopFileData paramTroopFileData)
-  {
-    try
-    {
-      if (this.b != null) {
-        this.b.put(paramTroopFileData.fileUrl, paramTroopFileData);
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
+      if (this.jdField_a_of_type_Bgre.a(2L, this.jdField_b_of_type_Long)) {
+        this.jdField_a_of_type_Bgre.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
       }
-      paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-      paramQQAppInterface.persist(paramTroopFileData);
-      paramQQAppInterface.close();
+    }
+    while ((!this.jdField_a_of_type_Bgre.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
       return;
     }
-    finally {}
+    this.jdField_a_of_type_Bgre.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
+    }
   }
 }
 

@@ -1,26 +1,13 @@
-import android.view.View;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agvm
-  implements bliz
+public class agvm
+  implements agut
 {
-  agvm(agvl paramagvl, List paramList, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      agvl.a(this.jdField_a_of_type_Agvl, this.jdField_a_of_type_JavaUtilList);
-      agsd.a(agvl.a(this.jdField_a_of_type_Agvl), this.jdField_a_of_type_JavaUtilList, 3);
-      continue;
-      this.jdField_a_of_type_Agvl.a(this.jdField_a_of_type_JavaUtilList, 0);
-      agsd.a(agvl.a(this.jdField_a_of_type_Agvl), this.jdField_a_of_type_JavaUtilList, 3);
-    }
+    paramagap.a(paramafce, paramagcc, paramString);
   }
 }
 

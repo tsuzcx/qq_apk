@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-
-class upt
-  extends OnPluginInstallListener.Stub
+public class upt
+  implements upr
 {
-  upt(ups paramups) {}
-  
-  public void onInstallBegin(String paramString)
+  public void a()
   {
-    ups.a = 1;
-    ups.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallBegin  STATE_PRELOAD_BEGIN sPreloadPluginState = " + ups.a);
+    uya.e("OnJumpListener", "[OnJumpListener.java][onJumpWSClient]");
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void b()
   {
-    ups.a = -1;
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallError  STATE_PRELOAD_ERR sPreloadPluginState = " + ups.a);
+    uya.e("OnJumpListener", "[OnJumpListener.java][onJumpMiniApp]");
   }
   
-  public void onInstallFinish(String paramString)
+  public void c()
   {
-    ups.a = 2;
-    ups.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallFinish  STATE_PRELOAD_FINISH sPreloadPluginState = " + ups.a);
+    uya.e("OnJumpListener", "[OnJumpListener.java][onJumpWebH5]");
+  }
+  
+  public void d()
+  {
+    uya.e("OnJumpListener", "[OnJumpListener.java][onDownloadWSApp]");
   }
 }
 

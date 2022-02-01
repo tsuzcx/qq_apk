@@ -1,20 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akzx
   implements View.OnClickListener
 {
-  public akzx(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public akzx(PhoneContactTabView paramPhoneContactTabView) {}
   
   public void onClick(View paramView)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    PhoneContactTabView.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

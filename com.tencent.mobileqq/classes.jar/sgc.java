@@ -1,9 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
 
-public abstract interface sgc
+public final class sgc
+  implements Parcelable.Creator<DiscoveryInfo>
 {
-  public abstract void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4);
+  public DiscoveryInfo a(Parcel paramParcel)
+  {
+    return new DiscoveryInfo(paramParcel);
+  }
+  
+  public DiscoveryInfo[] a(int paramInt)
+  {
+    return new DiscoveryInfo[paramInt];
+  }
 }
 
 

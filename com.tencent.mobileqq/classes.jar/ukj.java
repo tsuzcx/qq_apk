@@ -1,44 +1,31 @@
-import cooperation.qzone.util.QZLog;
+import UserGrowth.stNotificationRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.view.WeiShiNoticeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ukj
+  implements View.OnClickListener
 {
-  public static int a;
-  public static String a;
-  public static String b;
-  public static String c;
+  public ukj(WSRecommendFragment paramWSRecommendFragment) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "1522415138827987";
-    int j = a();
-    if (j == -1) {}
-    for (int i = 760;; i = j)
+    if (WSRecommendFragment.a(this.a) == null) {}
+    for (;;)
     {
-      jdField_a_of_type_Int = i;
-      QZLog.d("WeishiHeaderConst", 4, "appversion:" + j);
-      jdField_a_of_type_Int = 760;
-      b = "";
-      c = "";
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      int i = WSRecommendFragment.a(this.a).a();
+      String str1 = WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a));
+      String str2 = WSRecommendFragment.a(this.a).h5Url;
+      uya.c("WSRecommendFragment", "schemeUrl:" + str1 + ", h5Url:" + str2);
+      uyo.a(this.a.jdField_a_of_type_AndroidContentContext, str1, str2, "", i, this.a.jdField_a_of_type_Uyv);
+      uvr.a(112, i, WSRecommendFragment.a(this.a).cid);
+      uya.a("weishi-808", "notification jumpUrl" + WSRecommendFragment.a(this.a).jump_url);
+      this.a.b(false);
     }
-  }
-  
-  static int a()
-  {
-    String str = bmsw.a();
-    int i = str.indexOf(".");
-    int j = str.lastIndexOf(".");
-    if ((j <= i) || (j - i != 2)) {}
-    while (i <= 1) {
-      return -1;
-    }
-    try
-    {
-      i = Integer.parseInt(str.substring(i - 1, j + 2).replace(".", ""));
-      return i;
-    }
-    catch (Throwable localThrowable) {}
-    return -1;
   }
 }
 

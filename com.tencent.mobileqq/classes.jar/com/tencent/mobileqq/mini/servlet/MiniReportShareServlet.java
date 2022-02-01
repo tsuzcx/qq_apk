@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StReportShareRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhuf;
+import bgau;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -53,7 +53,7 @@ public class MiniReportShareServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_usr_time.ReportShare");
-      paramPacket.putSendData(bhuf.a((byte[])localObject1));
+      paramPacket.putSendData(bgau.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

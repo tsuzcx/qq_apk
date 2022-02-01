@@ -2,21 +2,21 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import arta;
-import bhmi;
+import aqmy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.automator.AsyncStep;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lbm;
+import lbe;
 
 public class QAVStep
   extends AsyncStep
 {
   public int a()
   {
-    String str1 = lbm.a();
+    String str1 = lbe.a();
     String str2 = File.separator + "config.xml";
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("qav_config_flag", 0);
     int i = localSharedPreferences.getInt("flag_delete", 0);
@@ -27,16 +27,16 @@ public class QAVStep
       }
       return 7;
     }
-    bhmi.a(str1 + 106);
-    bhmi.d(str1 + 132 + str2);
-    bhmi.d(str1 + 176 + str2);
-    bhmi.d(str1 + 216 + str2);
-    bhmi.a(str1 + 263);
-    bhmi.a(str1 + 270);
-    bhmi.d(str1 + 370 + str2);
-    bhmi.d(str1 + "beauty" + File.separator + "beauty_config.json");
-    bhmi.a(str1 + "signal_strength");
-    i = arta.a(BaseApplicationImpl.getContext());
+    FileUtils.deleteDirectory(str1 + 106);
+    FileUtils.deleteFile(str1 + 132 + str2);
+    FileUtils.deleteFile(str1 + 176 + str2);
+    FileUtils.deleteFile(str1 + 216 + str2);
+    FileUtils.deleteDirectory(str1 + 263);
+    FileUtils.deleteDirectory(str1 + 270);
+    FileUtils.deleteFile(str1 + 370 + str2);
+    FileUtils.deleteFile(str1 + "beauty" + File.separator + "beauty_config.json");
+    FileUtils.deleteDirectory(str1 + "signal_strength");
+    i = aqmy.a(BaseApplicationImpl.getContext());
     localSharedPreferences.edit().putInt("flag_delete", i).commit();
     return 7;
   }

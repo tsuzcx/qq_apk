@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import anvl;
-import bbvd;
-import bdmc;
+import ampt;
+import baoy;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,23 +15,23 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$6
   implements Runnable
 {
-  public ConfigHandler$6(anvl paramanvl, String paramString, bbvd parambbvd, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$6(ampt paramampt, String paramString, baoy parambaoy, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
     boolean bool = true;
     Object localObject1 = new File(this.this$0.app.getApplication().getFilesDir(), "rich_status.tmp");
     Object localObject2 = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.a(this.this$0.app, (String)localObject2, (File)localObject1);
+    int i = HttpDownloadUtil.downloadData(this.this$0.app, (String)localObject2, (File)localObject1);
     if (QLog.isColorLevel()) {
       QLog.w("Q.richstatus.xml", 2, "handleUpdateStatusActions download " + this.jdField_a_of_type_JavaLangString + " result " + i);
     }
     String str;
     if (i == 0) {
-      if (this.jdField_a_of_type_Bbvd.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
+      if (this.jdField_a_of_type_Baoy.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
       {
         this.this$0.notifyUI(7, true, Integer.valueOf(102));
-        localObject1 = bdmc.a(BaseApplication.getContext());
+        localObject1 = StatisticCollector.getInstance(BaseApplication.getContext());
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("result", String.valueOf(i));
         ((HashMap)localObject2).put("version", String.valueOf(this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer));
@@ -44,7 +44,7 @@ public class ConfigHandler$6
     }
     for (;;)
     {
-      ((bdmc)localObject1).a(str, "RichStatusAction", bool, 0L, 0L, (HashMap)localObject2, "");
+      ((StatisticCollector)localObject1).collectPerformance(str, "RichStatusAction", bool, 0L, 0L, (HashMap)localObject2, "");
       return;
       this.this$0.notifyUI(7, false, Integer.valueOf(-3));
       break;

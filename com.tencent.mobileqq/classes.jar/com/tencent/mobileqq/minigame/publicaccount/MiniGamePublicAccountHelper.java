@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import antf;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.app.AppConstants;
 import common.config.service.QzoneConfig;
 
 public class MiniGamePublicAccountHelper
@@ -21,7 +21,7 @@ public class MiniGamePublicAccountHelper
   public static boolean shouldOpenWebFragment(String paramString)
   {
     boolean bool = true;
-    if (!TextUtils.equals(antf.aW, paramString)) {
+    if (!TextUtils.equals(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, paramString)) {
       return false;
     }
     if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountEnableWeb", 0) == 1) {}

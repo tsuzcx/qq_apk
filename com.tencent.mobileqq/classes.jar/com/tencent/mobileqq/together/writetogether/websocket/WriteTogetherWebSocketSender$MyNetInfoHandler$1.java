@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.together.writetogether.websocket;
 
-import beqq;
-import bequ;
+import bdjk;
+import bdjo;
 import com.tencent.qphone.base.util.QLog;
 
 public class WriteTogetherWebSocketSender$MyNetInfoHandler$1
   implements Runnable
 {
-  public WriteTogetherWebSocketSender$MyNetInfoHandler$1(bequ parambequ) {}
+  public WriteTogetherWebSocketSender$MyNetInfoHandler$1(bdjo parambdjo) {}
   
   public void run()
   {

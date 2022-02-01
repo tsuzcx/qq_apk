@@ -1,36 +1,14 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class amje
-  implements amjs
+final class amje
+  implements amdy
 {
-  public amje(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  amje(amjg paramamjg, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, alsg paramalsg, int[] paramArrayOfInt) {}
   
-  public void a(boolean paramBoolean)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialCareSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
+    if (this.jdField_a_of_type_Amjg != null) {
+      this.jdField_a_of_type_Amjg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Alsg.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
     }
   }
 }

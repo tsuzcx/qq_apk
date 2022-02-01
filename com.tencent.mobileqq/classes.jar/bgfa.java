@@ -1,30 +1,23 @@
-import android.app.Activity;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class bgfa
-  implements bnsp
+  extends NativeGifImage
 {
-  public bgef a;
+  private int a = 1;
   
-  public bgfa(bgex parambgex, bgef parambgef)
+  public bgfa(File paramFile, boolean paramBoolean, float paramFloat, int paramInt)
   {
-    this.jdField_a_of_type_Bgef = parambgef;
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+    this.a = paramInt;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  public void executeNewTask()
   {
-    this.jdField_a_of_type_Bgef.g = 3;
-    this.jdField_a_of_type_Bgef.c(paramString);
-    ((Activity)bgex.a(this.jdField_a_of_type_Bgex)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Bgef.g = 2;
-    ((Activity)bgex.a(this.jdField_a_of_type_Bgex)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
+    if (this.mCurrentLoop == this.a) {
+      return;
+    }
+    super.executeNewTask();
   }
 }
 

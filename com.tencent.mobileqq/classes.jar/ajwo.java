@@ -1,146 +1,43 @@
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import java.util.Map;
+import mqq.app.NewIntent;
+import tencent.im.qqwallet.kua_kua_hb_srv.TopicMatchRequest;
 
-class ajwo
-  extends anuw
+public class ajwo
+  implements bkvz
 {
-  ajwo(ajwm paramajwm) {}
+  ajwo(ajwn paramajwn) {}
   
-  private void a(short paramShort1, short paramShort2)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    if ((paramShort1 == -23447) && (ajwm.a(this.a) != null))
-    {
-      FriendListHandler localFriendListHandler = (FriendListHandler)ajwm.a(this.a).a(1);
-      if (localFriendListHandler != null)
-      {
-        localFriendListHandler.notifyUI(113, true, null);
-        if (paramShort2 != 0) {
-          break label73;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CTEntryMng", 2, "switch state change to on, force to get service enable state");
-        }
-        localFriendListHandler.a(null, null, 6, null);
-      }
-    }
-    return;
-    label73:
-    this.a.b(false);
-  }
-  
-  private void a(short[] paramArrayOfShort, Map<Short, Short> paramMap)
-  {
-    String str;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      str = "";
-      i = 0;
-      if ((paramMap != null) && (paramArrayOfShort != null) && (i < paramArrayOfShort.length))
-      {
-        short s = paramArrayOfShort[i];
-        Short localShort = (Short)paramMap.get(Short.valueOf(s));
-        if (!QLog.isColorLevel()) {
-          break label124;
-        }
-        str = String.format(Locale.getDefault(), "%s, [id: %s, value: %s]", new Object[] { str, Short.valueOf(s), localShort });
-      }
-    }
-    label124:
-    for (;;)
-    {
-      i += 1;
-      break;
+    if (this.a.a.b()) {
       if (QLog.isColorLevel()) {
-        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo,  fail, log: %s", new Object[] { str }));
+        QLog.i("RedPacketKuaKuaFragment", 2, "ansyBack:getActivity() == null || getActivity().isFinishing()");
       }
+    }
+    while ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
       return;
     }
-  }
-  
-  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
-  {
     if (QLog.isColorLevel()) {
-      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+      QLog.i("RedPacketKuaKuaFragment", 2, "get getPskeyAsync success");
     }
-    String str;
-    int i;
-    boolean bool;
-    if (paramBoolean)
-    {
-      str = "";
-      i = 0;
-      paramBoolean = false;
-      if ((paramMap != null) && (paramArrayOfShort != null) && (i < paramArrayOfShort.length))
-      {
-        short s = paramArrayOfShort[i];
-        Short localShort = (Short)paramMap.get(Short.valueOf(s));
-        ajwt localajwt = ajwm.a(this.a, s);
-        bool = paramBoolean;
-        if (localajwt != null)
-        {
-          bool = paramBoolean;
-          if (localShort != null)
-          {
-            bool = paramBoolean;
-            if (localajwt.b != localShort.shortValue())
-            {
-              localajwt.b = localShort.shortValue();
-              bool = true;
-            }
-          }
-        }
-        if ((localajwt == null) || (!QLog.isColorLevel())) {
-          break label254;
-        }
-        str = String.format(Locale.getDefault(), "%s, [id: %s, value: %s]", new Object[] { str, Short.valueOf(s), localShort });
-      }
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    String str1 = RedPacketKuaKuaFragment.a(this.a.a).curFriendUin;
+    paramInt = akgc.a(this.a.a.getActivity().app, RedPacketKuaKuaFragment.a(this.a.a));
+    String str2 = this.a.a.getActivity().app.getCurrentUin();
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), ajuh.class);
+    localNewIntent.putExtra("cmd", "trpc.qqhb.kua_kua_hb_srv.KuaKuaHbSvc.TopicMatch");
+    paramVarArgs = this.a.a.a(paramVarArgs[0], str2, paramInt, str1);
+    if (paramVarArgs != null) {
+      localNewIntent.putExtra("data", bgau.a(paramVarArgs.toByteArray()));
     }
-    label254:
-    for (;;)
-    {
-      i += 1;
-      paramBoolean = bool;
-      break;
-      if (paramBoolean)
-      {
-        ajwm.b(this.a);
-        ajwm.a(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo, needUpdate: %s, log: %s", new Object[] { Boolean.valueOf(paramBoolean), str }));
-      }
-      return;
-      a(paramArrayOfShort, paramMap);
-      return;
-    }
-  }
-  
-  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
-  {
-    if (paramBoolean)
-    {
-      localajwt = ajwm.a(this.a, paramShort1);
-      if ((localajwt != null) && (localajwt.b != paramShort2))
-      {
-        localajwt.b = paramShort2;
-        ajwm.b(this.a);
-        ajwm.a(this.a);
-        a(paramShort1, paramShort2);
-      }
-      if ((localajwt != null) && (QLog.isColorLevel())) {
-        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo suc switch_id: %s, switch_value: %s", new Object[] { Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ajwt localajwt;
-      return;
-    }
-    QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo fail switch_id: %s, switch_value: %s", new Object[] { Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
+    localNewIntent.setObserver(new ajwp(this, l));
+    this.a.a.getActivity().app.startServlet(localNewIntent);
   }
 }
 

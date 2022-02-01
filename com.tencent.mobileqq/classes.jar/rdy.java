@@ -1,23 +1,13 @@
-import android.view.ViewGroup;
-import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import java.util.List;
 
-public abstract interface rdy
+public class rdy
+  implements Cloneable
 {
-  public abstract long a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
-  
-  public abstract void a(String paramString, ViewGroup paramViewGroup);
-  
-  public abstract void a(rdt paramrdt);
-  
-  public abstract void a(rdu paramrdu, rdw paramrdw);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public int a;
+  public long a;
+  public List<Long> a;
+  public int b;
+  public long b;
 }
 
 

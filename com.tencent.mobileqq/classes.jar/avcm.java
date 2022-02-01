@@ -1,20 +1,15 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-final class avcm
+class avcm
   implements DialogInterface.OnClickListener
 {
-  avcm(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
+  avcm(avcl paramavcl, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SDK_SHARE.ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
-    }
-    avcj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

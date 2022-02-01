@@ -1,9 +1,11 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+
 public class ahce
 {
   public int a;
-  public String a;
-  public int b;
-  public int c;
+  public Drawable a;
+  public RedDotImageView a;
 }
 
 

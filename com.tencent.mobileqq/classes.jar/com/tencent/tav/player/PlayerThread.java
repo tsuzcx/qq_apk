@@ -15,7 +15,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Surface;
 import com.tencent.tav.Utils;
 import com.tencent.tav.core.AudioCompositionDecoderTrack;
@@ -29,7 +28,6 @@ import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.Filter;
-import com.tencent.tav.decoder.IDecoder;
 import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.RenderContextParams;
@@ -169,11 +167,6 @@ public class PlayerThread
     }
   }
   
-  private void d(String paramString1, String paramString2)
-  {
-    Logger.d(paramString1, paramString2);
-  }
-  
   private long getCurrentUsTime()
   {
     return System.nanoTime() / 1000L;
@@ -231,36 +224,28 @@ public class PlayerThread
   
   private long getWaitTime(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l3 = this.frameDuration.getTimeUs();
-    long l4 = paramCMTime.getTimeUs();
-    long l1;
+    long l1 = this.frameDuration.getTimeUs();
+    long l2 = paramCMTime.getTimeUs();
     if ((paramBoolean1) || (paramBoolean2))
     {
-      Logger.e("PlayerThreadMain", "getWaitTime - 0 " + paramBoolean1 + "  |  " + paramBoolean2);
-      l1 = 0L;
+      Logger.d("PlayerThreadMain", "getWaitTime - 0 " + paramBoolean1 + "  |  " + paramBoolean2);
+      return 0L;
     }
-    long l5;
-    long l2;
-    do
-    {
-      return l1;
-      l5 = ((float)l3 / Math.abs(this.rate));
-      l2 = l5 - this.decoderConsumerTimeUs;
-      l1 = l2;
-    } while (!Logger.LOG_VERBOSE);
-    d("WaitTime", "getWaitTime--position-->" + l4 + " rate = " + this.rate + "--decoderConsumerTimeUs-->" + this.decoderConsumerTimeUs + "--frameDurationMs-->" + l3 + "--realTime-->" + l5 + "--nextFrameTime-->" + (l4 + l5) + "--sleepTime-->" + l2 + "  mStartTime = " + this.mStartTime);
-    return l2;
+    long l3 = ((float)l1 / Math.abs(this.rate));
+    long l4 = l3 - this.decoderConsumerTimeUs;
+    Logger.v("PlayerThreadMain", "getWaitTime--position-->" + l2 + " rate = " + this.rate + "--decoderConsumerTimeUs-->" + this.decoderConsumerTimeUs + "--frameDurationMs-->" + l1 + "--realTime-->" + l3 + "--nextFrameTime-->" + (l2 + l3) + "--sleepTime-->" + l4 + "  mStartTime = " + this.mStartTime);
+    return l4;
   }
   
   private void initDecoderTrack(Object paramObject)
   {
     if ((this.renderContext == null) && (this.mDisplayTarget != null)) {
       if ((this.renderContextParams == null) || (!(this.renderContextParams.getParam("share_context") instanceof EGLContext))) {
-        break label468;
+        break label446;
       }
     }
-    label459:
-    label468:
+    label437:
+    label446:
     Object localObject2;
     for (Object localObject1 = (EGLContext)this.renderContextParams.getParam("share_context");; localObject2 = null)
     {
@@ -282,7 +267,7 @@ public class PlayerThread
         initViewport();
         updateProgressPreNextAction(this.mPosition);
         if (this.vDecoderTrack == null) {
-          break label459;
+          break label437;
         }
       }
       for (;;)
@@ -300,12 +285,11 @@ public class PlayerThread
             readSample(-1);
           }
           onCompositionUpdate(paramObject, true);
-          d("PlayerThreadMain", "prepare: init codec-->" + Thread.currentThread().getName() + "--vDecoderTrack-->" + this.vDecoderTrack);
+          Logger.v("PlayerThreadMain", "prepare: init codec-->" + Thread.currentThread().getName() + "--vDecoderTrack-->" + this.vDecoderTrack);
         }
         catch (Exception localException)
         {
-          localException.printStackTrace();
-          d("PlayerThreadMain", "init composition cause exception: " + localException);
+          Logger.e("PlayerThreadMain", "init composition cause exception: ", localException);
           this.vDecoderTrack.release();
           this.vDecoderTrack = null;
           onCompositionUpdate(paramObject, false);
@@ -337,26 +321,39 @@ public class PlayerThread
   
   private void initViewport()
   {
-    if (this.renderSize != null) {}
-    for (CGSize localCGSize = this.renderSize; this.layoutMode == null; localCGSize = this.surfaceSize)
+    CGSize localCGSize;
+    if (this.renderSize != null)
     {
-      this.glViewportRect = CGMathFunctions.initGLViewportDefault(this.surfaceSize, localCGSize);
-      applyViewport();
-      return;
-    }
-    switch (PlayerThread.2.$SwitchMap$com$tencent$tav$core$composition$VideoComposition$RenderLayoutMode[this.layoutMode.ordinal()])
-    {
-    default: 
+      localCGSize = this.renderSize;
+      if (this.layoutMode != null) {
+        break label59;
+      }
       this.glViewportRect = CGMathFunctions.initGLViewportDefault(this.surfaceSize, localCGSize);
     }
     for (;;)
     {
       applyViewport();
+      this.mMainHandler.obtainMessage(3, this.glViewportRect).sendToTarget();
       return;
-      this.glViewportRect = CGMathFunctions.initGLViewportFit(this.surfaceSize, localCGSize);
-      continue;
-      this.glViewportRect = CGMathFunctions.initGLViewportFill(this.surfaceSize, localCGSize);
+      localCGSize = this.surfaceSize;
+      break;
+      label59:
+      initViewportByLayoutMode(localCGSize);
     }
+  }
+  
+  private void initViewportByLayoutMode(CGSize paramCGSize)
+  {
+    switch (PlayerThread.2.$SwitchMap$com$tencent$tav$core$composition$VideoComposition$RenderLayoutMode[this.layoutMode.ordinal()])
+    {
+    default: 
+      this.glViewportRect = CGMathFunctions.initGLViewportDefault(this.surfaceSize, paramCGSize);
+      return;
+    case 1: 
+      this.glViewportRect = CGMathFunctions.initGLViewportFit(this.surfaceSize, paramCGSize);
+      return;
+    }
+    this.glViewportRect = CGMathFunctions.initGLViewportFill(this.surfaceSize, paramCGSize);
   }
   
   private void isNeedEnsureLooper(int paramInt)
@@ -438,7 +435,7 @@ public class PlayerThread
       if (this.vDecoderTrack != null)
       {
         if (!this.mPosition.smallThan(this.vDecoderTrack.getDuration())) {
-          break label164;
+          break label163;
         }
         this.vDecoderTrack.seekTo(this.mPosition, false, true);
       }
@@ -450,9 +447,9 @@ public class PlayerThread
       this.mLooper = true;
       sendMessage(12, Integer.valueOf(2), "play");
       notifyStatus(IPlayer.PlayerStatus.PLAYING, "");
-      d("PlayerThreadMain", "playm() called start play-->" + this.mStatus);
+      Logger.v("PlayerThreadMain", "playm() called start play-->" + this.mStatus);
       return;
-      label164:
+      label163:
       this.vDecoderTrack.seekTo(CMTime.CMTimeZero, false, true);
     }
   }
@@ -499,7 +496,7 @@ public class PlayerThread
       }
     }
     label41:
-    for (CMTime localCMTime = this.mAudioThread.getCurrentPlayingTime();; localCMTime = CMTime.CMTimeInvalid)
+    for (CMTime localCMTime = this.mAudioThread.getCurrentPlayingState();; localCMTime = CMTime.CMTimeInvalid)
     {
       readSample(paramInt, localCMTime);
       return;
@@ -508,127 +505,331 @@ public class PlayerThread
     }
   }
   
+  /* Error */
   private void readSample(int paramInt, CMTime paramCMTime)
   {
-    if (this.vDecoderTrack == null)
-    {
-      syncAudioProgress();
-      return;
-    }
-    if (this.reportSession == null) {
-      this.reportSession = new PreviewReportSession();
-    }
-    long l1 = getCurrentUsTime() - this.startTimeUsMark;
-    try
-    {
-      l2 = this.frameDuration.divide(this.rate).getTimeUs();
-      if (l2 - l1 > 0L) {
-        Thread.sleep((l2 - l1) / 1000L);
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        try
-        {
-          CMTime localCMTime1;
-          this.renderContext.makeCurrent();
-          l1 = System.nanoTime();
-          paramCMTime = readSampleBuffer(paramInt, paramCMTime, localCMTime2);
-          long l2 = System.nanoTime();
-          l3 = System.nanoTime();
-          renderSampleBuffer(paramCMTime);
-          this.reportSession.tickPreview(l2 - l1, System.nanoTime() - l3);
-          paramCMTime = paramCMTime.getTime();
-        }
-        catch (Exception localException2)
-        {
-          paramCMTime = localThrowable;
-          localObject = localException2;
-        }
-        try
-        {
-          this.vDecoderTrack.asyncReadNextSample(paramCMTime.add(new CMTime(1L, paramCMTime.timeScale)));
-          this.decoderConsumerTimeUs = (getCurrentUsTime() - this.startTimeUsMark);
-          if (Logger.LOG_VERBOSE) {
-            d("PlayerThreadMain", "readSample() called with: messageId = [" + paramInt + "]--position-->" + paramCMTime + "--looper-->" + this.mLooper + " consumer = " + (System.currentTimeMillis() - this.startTimeUsMark));
-          }
-          if ((paramCMTime.getTimeUs() != IDecoder.SAMPLE_TIME_FINISH.getTimeUs()) && (paramCMTime.getTimeUs() != IDecoder.SAMPLE_TIME_ERROR.getTimeUs())) {
-            break label428;
-          }
-          if (Logger.LOG_VERBOSE) {
-            d("PlayerThreadMain", "readSample() called with: finish");
-          }
-          playerFinish();
-          return;
-        }
-        catch (Exception localException1)
-        {
-          boolean bool1;
-          break label404;
-        }
-        localThrowable = localThrowable;
-        localThrowable.printStackTrace();
-      }
-    }
-    this.startTimeUsMark = getCurrentUsTime();
-    isNeedEnsureLooper(paramInt);
-    localCMTime1 = CMTime.CMTimeInvalid;
-    CMTime localCMTime2 = this.vDecoderTrack.getCurrentSampleTime();
-    if (Logger.LOG_VERBOSE) {
-      d("PlayerThreadMain", "readSample[" + paramInt + "] lastPosition = " + localCMTime2 + " syncPlayingTime = " + paramCMTime);
-    }
-    if (paramInt == 2) {
-      syncAudioOtherMsg(2, localCMTime2);
-    }
-    label404:
-    do
-    {
-      long l3;
-      ((Exception)localObject).printStackTrace();
-    } while (!(localObject instanceof IllegalStateException));
-    notifyStatus(IPlayer.PlayerStatus.ERROR, "解码异常");
-    return;
-    label428:
-    if (5 == paramInt)
-    {
-      bool1 = true;
-      label436:
-      if (paramCMTime.getValue() < 0L) {
-        break label598;
-      }
-      this.mPosition = paramCMTime;
-      localObject = paramCMTime;
-      if (!bool1)
-      {
-        localObject = paramCMTime;
-        if (!this.mPlayHandler.hasMessages(5)) {
-          notifyProgressChange();
-        }
-      }
-    }
-    for (Object localObject = paramCMTime;; localObject = localCMTime2)
-    {
-      if (this.mLooper)
-      {
-        boolean bool2 = this.mPause;
-        this.decoderConsumerTimeUs = (getCurrentUsTime() - this.startTimeUsMark + 5000L);
-        scheduleNextWork(getWaitTime((CMTime)localObject, bool1, bool2));
-        this.mPause = false;
-      }
-      if (!Logger.LOG_VERBOSE) {
-        break;
-      }
-      d("PlayerThreadMain", "readSample end [" + paramInt + "]--looper-->" + this.mLooper + " consumer = " + (getCurrentUsTime() - this.startTimeUsMark));
-      return;
-      bool1 = false;
-      break label436;
-      label598:
-      if (paramCMTime.getTimeUs() == IDecoder.SAMPLE_TIME_UNSTART.getTimeUs()) {
-        this.vDecoderTrack.seekTo(CMTime.CMTimeZero, false, true);
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 170	com/tencent/tav/player/PlayerThread:vDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   4: ifnonnull +8 -> 12
+    //   7: aload_0
+    //   8: invokespecial 749	com/tencent/tav/player/PlayerThread:syncAudioProgress	()V
+    //   11: return
+    //   12: aload_0
+    //   13: getfield 751	com/tencent/tav/player/PlayerThread:reportSession	Lcom/tencent/tav/report/PreviewReportSession;
+    //   16: ifnonnull +14 -> 30
+    //   19: aload_0
+    //   20: new 753	com/tencent/tav/report/PreviewReportSession
+    //   23: dup
+    //   24: invokespecial 754	com/tencent/tav/report/PreviewReportSession:<init>	()V
+    //   27: putfield 751	com/tencent/tav/player/PlayerThread:reportSession	Lcom/tencent/tav/report/PreviewReportSession;
+    //   30: aload_0
+    //   31: invokespecial 166	com/tencent/tav/player/PlayerThread:getCurrentUsTime	()J
+    //   34: aload_0
+    //   35: getfield 168	com/tencent/tav/player/PlayerThread:startTimeUsMark	J
+    //   38: lsub
+    //   39: lstore_3
+    //   40: aload_0
+    //   41: getfield 158	com/tencent/tav/player/PlayerThread:frameDuration	Lcom/tencent/tav/coremedia/CMTime;
+    //   44: aload_0
+    //   45: getfield 162	com/tencent/tav/player/PlayerThread:rate	F
+    //   48: invokevirtual 758	com/tencent/tav/coremedia/CMTime:divide	(F)Lcom/tencent/tav/coremedia/CMTime;
+    //   51: invokevirtual 406	com/tencent/tav/coremedia/CMTime:getTimeUs	()J
+    //   54: lstore 5
+    //   56: lload 5
+    //   58: lload_3
+    //   59: lsub
+    //   60: lconst_0
+    //   61: lcmp
+    //   62: ifle +14 -> 76
+    //   65: lload 5
+    //   67: lload_3
+    //   68: lsub
+    //   69: ldc2_w 55
+    //   72: ldiv
+    //   73: invokestatic 762	java/lang/Thread:sleep	(J)V
+    //   76: aload_0
+    //   77: aload_0
+    //   78: invokespecial 166	com/tencent/tav/player/PlayerThread:getCurrentUsTime	()J
+    //   81: putfield 168	com/tencent/tav/player/PlayerThread:startTimeUsMark	J
+    //   84: aload_0
+    //   85: iload_1
+    //   86: invokespecial 764	com/tencent/tav/player/PlayerThread:isNeedEnsureLooper	(I)V
+    //   89: new 766	com/tencent/tav/coremedia/CMSampleState
+    //   92: dup
+    //   93: invokespecial 767	com/tencent/tav/coremedia/CMSampleState:<init>	()V
+    //   96: astore 11
+    //   98: aload_0
+    //   99: getfield 170	com/tencent/tav/player/PlayerThread:vDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   102: invokeinterface 770 1 0
+    //   107: astore 13
+    //   109: ldc 52
+    //   111: new 408	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 409	java/lang/StringBuilder:<init>	()V
+    //   118: ldc_w 772
+    //   121: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: iload_1
+    //   125: invokevirtual 717	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   128: ldc_w 774
+    //   131: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: aload 13
+    //   136: invokevirtual 567	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   139: ldc_w 776
+    //   142: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: aload_2
+    //   146: invokevirtual 567	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   149: invokevirtual 424	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: invokestatic 463	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: iload_1
+    //   156: iconst_2
+    //   157: if_icmpne +10 -> 167
+    //   160: aload_0
+    //   161: iconst_2
+    //   162: aload 13
+    //   164: invokespecial 207	com/tencent/tav/player/PlayerThread:syncAudioOtherMsg	(ILjava/lang/Object;)V
+    //   167: aload_0
+    //   168: getfield 210	com/tencent/tav/player/PlayerThread:renderContext	Lcom/tencent/tav/decoder/RenderContext;
+    //   171: invokevirtual 779	com/tencent/tav/decoder/RenderContext:makeCurrent	()V
+    //   174: invokestatic 314	java/lang/System:nanoTime	()J
+    //   177: lstore_3
+    //   178: aload_0
+    //   179: iload_1
+    //   180: aload_2
+    //   181: aload 13
+    //   183: invokespecial 783	com/tencent/tav/player/PlayerThread:readSampleBuffer	(ILcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   186: astore_2
+    //   187: invokestatic 314	java/lang/System:nanoTime	()J
+    //   190: lstore 5
+    //   192: invokestatic 314	java/lang/System:nanoTime	()J
+    //   195: lstore 7
+    //   197: aload_0
+    //   198: aload_2
+    //   199: invokespecial 787	com/tencent/tav/player/PlayerThread:renderSampleBuffer	(Lcom/tencent/tav/coremedia/CMSampleBuffer;)V
+    //   202: aload_0
+    //   203: getfield 751	com/tencent/tav/player/PlayerThread:reportSession	Lcom/tencent/tav/report/PreviewReportSession;
+    //   206: lload 5
+    //   208: lload_3
+    //   209: lsub
+    //   210: invokestatic 314	java/lang/System:nanoTime	()J
+    //   213: lload 7
+    //   215: lsub
+    //   216: invokevirtual 791	com/tencent/tav/report/PreviewReportSession:tickPreview	(JJ)V
+    //   219: aload_2
+    //   220: invokevirtual 797	com/tencent/tav/coremedia/CMSampleBuffer:getState	()Lcom/tencent/tav/coremedia/CMSampleState;
+    //   223: astore_2
+    //   224: aload_0
+    //   225: getfield 170	com/tencent/tav/player/PlayerThread:vDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   228: aload_2
+    //   229: invokevirtual 800	com/tencent/tav/coremedia/CMSampleState:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   232: new 148	com/tencent/tav/coremedia/CMTime
+    //   235: dup
+    //   236: lconst_1
+    //   237: aload_2
+    //   238: invokevirtual 800	com/tencent/tav/coremedia/CMSampleState:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   241: getfield 527	com/tencent/tav/coremedia/CMTime:timeScale	I
+    //   244: invokespecial 156	com/tencent/tav/coremedia/CMTime:<init>	(JI)V
+    //   247: invokevirtual 803	com/tencent/tav/coremedia/CMTime:add	(Lcom/tencent/tav/coremedia/CMTime;)Lcom/tencent/tav/coremedia/CMTime;
+    //   250: invokeinterface 806 2 0
+    //   255: aload_0
+    //   256: aload_0
+    //   257: invokespecial 166	com/tencent/tav/player/PlayerThread:getCurrentUsTime	()J
+    //   260: aload_0
+    //   261: getfield 168	com/tencent/tav/player/PlayerThread:startTimeUsMark	J
+    //   264: lsub
+    //   265: putfield 146	com/tencent/tav/player/PlayerThread:decoderConsumerTimeUs	J
+    //   268: ldc 52
+    //   270: new 408	java/lang/StringBuilder
+    //   273: dup
+    //   274: invokespecial 409	java/lang/StringBuilder:<init>	()V
+    //   277: ldc_w 808
+    //   280: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: iload_1
+    //   284: invokevirtual 717	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   287: ldc_w 810
+    //   290: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   293: aload_2
+    //   294: invokevirtual 567	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   297: ldc_w 812
+    //   300: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: aload_0
+    //   304: getfield 202	com/tencent/tav/player/PlayerThread:mLooper	Z
+    //   307: invokevirtual 418	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   310: ldc_w 814
+    //   313: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: invokestatic 817	java/lang/System:currentTimeMillis	()J
+    //   319: aload_0
+    //   320: getfield 168	com/tencent/tav/player/PlayerThread:startTimeUsMark	J
+    //   323: lsub
+    //   324: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   327: invokevirtual 424	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   330: invokestatic 463	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   333: aload_2
+    //   334: iconst_2
+    //   335: newarray long
+    //   337: dup
+    //   338: iconst_0
+    //   339: ldc2_w 818
+    //   342: lastore
+    //   343: dup
+    //   344: iconst_1
+    //   345: ldc2_w 820
+    //   348: lastore
+    //   349: invokevirtual 825	com/tencent/tav/coremedia/CMSampleState:stateMatchingTo	([J)Z
+    //   352: ifeq +59 -> 411
+    //   355: ldc 52
+    //   357: ldc_w 827
+    //   360: invokestatic 463	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   363: aload_0
+    //   364: invokespecial 829	com/tencent/tav/player/PlayerThread:playerFinish	()V
+    //   367: return
+    //   368: astore 11
+    //   370: aload 11
+    //   372: invokevirtual 830	java/lang/Throwable:printStackTrace	()V
+    //   375: goto -299 -> 76
+    //   378: astore 12
+    //   380: aload 11
+    //   382: astore_2
+    //   383: aload 12
+    //   385: astore 11
+    //   387: aload 11
+    //   389: invokevirtual 658	java/lang/Exception:printStackTrace	()V
+    //   392: aload 11
+    //   394: instanceof 832
+    //   397: ifeq -129 -> 268
+    //   400: aload_0
+    //   401: getstatic 835	com/tencent/tav/player/IPlayer$PlayerStatus:ERROR	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
+    //   404: ldc_w 837
+    //   407: invokespecial 689	com/tencent/tav/player/PlayerThread:notifyStatus	(Lcom/tencent/tav/player/IPlayer$PlayerStatus;Ljava/lang/String;)V
+    //   410: return
+    //   411: iconst_5
+    //   412: iload_1
+    //   413: if_icmpne +161 -> 574
+    //   416: iconst_1
+    //   417: istore 9
+    //   419: aload_2
+    //   420: invokevirtual 840	com/tencent/tav/coremedia/CMSampleState:getStateCode	()J
+    //   423: lconst_0
+    //   424: lcmp
+    //   425: iflt +155 -> 580
+    //   428: aload_0
+    //   429: aload_2
+    //   430: invokevirtual 800	com/tencent/tav/coremedia/CMSampleState:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   433: putfield 153	com/tencent/tav/player/PlayerThread:mPosition	Lcom/tencent/tav/coremedia/CMTime;
+    //   436: aload_2
+    //   437: astore 11
+    //   439: iload 9
+    //   441: ifne +24 -> 465
+    //   444: aload_2
+    //   445: astore 11
+    //   447: aload_0
+    //   448: getfield 325	com/tencent/tav/player/PlayerThread:mPlayHandler	Landroid/os/Handler;
+    //   451: iconst_5
+    //   452: invokevirtual 844	android/os/Handler:hasMessages	(I)Z
+    //   455: ifne +10 -> 465
+    //   458: aload_0
+    //   459: invokespecial 581	com/tencent/tav/player/PlayerThread:notifyProgressChange	()V
+    //   462: aload_2
+    //   463: astore 11
+    //   465: aload_0
+    //   466: getfield 202	com/tencent/tav/player/PlayerThread:mLooper	Z
+    //   469: ifeq +48 -> 517
+    //   472: aload_0
+    //   473: getfield 675	com/tencent/tav/player/PlayerThread:mPause	Z
+    //   476: istore 10
+    //   478: aload_0
+    //   479: aload_0
+    //   480: invokespecial 166	com/tencent/tav/player/PlayerThread:getCurrentUsTime	()J
+    //   483: aload_0
+    //   484: getfield 168	com/tencent/tav/player/PlayerThread:startTimeUsMark	J
+    //   487: lsub
+    //   488: ldc2_w 845
+    //   491: ladd
+    //   492: putfield 146	com/tencent/tav/player/PlayerThread:decoderConsumerTimeUs	J
+    //   495: aload_0
+    //   496: aload_0
+    //   497: aload 11
+    //   499: invokevirtual 800	com/tencent/tav/coremedia/CMSampleState:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   502: iload 9
+    //   504: iload 10
+    //   506: invokespecial 848	com/tencent/tav/player/PlayerThread:getWaitTime	(Lcom/tencent/tav/coremedia/CMTime;ZZ)J
+    //   509: invokespecial 851	com/tencent/tav/player/PlayerThread:scheduleNextWork	(J)V
+    //   512: aload_0
+    //   513: iconst_0
+    //   514: putfield 675	com/tencent/tav/player/PlayerThread:mPause	Z
+    //   517: ldc 52
+    //   519: new 408	java/lang/StringBuilder
+    //   522: dup
+    //   523: invokespecial 409	java/lang/StringBuilder:<init>	()V
+    //   526: ldc_w 853
+    //   529: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: iload_1
+    //   533: invokevirtual 717	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   536: ldc_w 855
+    //   539: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   542: aload_0
+    //   543: getfield 202	com/tencent/tav/player/PlayerThread:mLooper	Z
+    //   546: invokevirtual 418	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   549: ldc_w 814
+    //   552: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   555: aload_0
+    //   556: invokespecial 166	com/tencent/tav/player/PlayerThread:getCurrentUsTime	()J
+    //   559: aload_0
+    //   560: getfield 168	com/tencent/tav/player/PlayerThread:startTimeUsMark	J
+    //   563: lsub
+    //   564: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   567: invokevirtual 424	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   570: invokestatic 463	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   573: return
+    //   574: iconst_0
+    //   575: istore 9
+    //   577: goto -158 -> 419
+    //   580: aload_2
+    //   581: iconst_1
+    //   582: newarray long
+    //   584: dup
+    //   585: iconst_0
+    //   586: ldc2_w 856
+    //   589: lastore
+    //   590: invokevirtual 825	com/tencent/tav/coremedia/CMSampleState:stateMatchingTo	([J)Z
+    //   593: ifeq +18 -> 611
+    //   596: aload_0
+    //   597: getfield 170	com/tencent/tav/player/PlayerThread:vDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   600: getstatic 151	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   603: iconst_0
+    //   604: iconst_1
+    //   605: invokeinterface 544 4 0
+    //   610: pop
+    //   611: new 766	com/tencent/tav/coremedia/CMSampleState
+    //   614: dup
+    //   615: aload 13
+    //   617: invokespecial 859	com/tencent/tav/coremedia/CMSampleState:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   620: astore 11
+    //   622: goto -157 -> 465
+    //   625: astore 11
+    //   627: goto -240 -> 387
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	630	0	this	PlayerThread
+    //   0	630	1	paramInt	int
+    //   0	630	2	paramCMTime	CMTime
+    //   39	170	3	l1	long
+    //   54	153	5	l2	long
+    //   195	19	7	l3	long
+    //   417	159	9	bool1	boolean
+    //   476	29	10	bool2	boolean
+    //   96	1	11	localCMSampleState	com.tencent.tav.coremedia.CMSampleState
+    //   368	13	11	localThrowable	java.lang.Throwable
+    //   385	236	11	localObject	Object
+    //   625	1	11	localException1	Exception
+    //   378	6	12	localException2	Exception
+    //   107	509	13	localCMTime	CMTime
+    // Exception table:
+    //   from	to	target	type
+    //   40	56	368	java/lang/Throwable
+    //   65	76	368	java/lang/Throwable
+    //   167	224	378	java/lang/Exception
+    //   224	268	625	java/lang/Exception
   }
   
   @NonNull
@@ -640,28 +841,22 @@ public class PlayerThread
     CMTime localCMTime = this.frameDuration.multi(this.rate);
     if (paramCMTime2.smallThan(paramCMTime1.sub(localCMTime.multi(3.0F))))
     {
-      if (Logger.LOG_VERBOSE) {
-        Logger.d("PlayerThreadMain", "readSampleBuffer: sampleTime = // " + paramCMTime2.add(this.frameDuration));
-      }
+      Logger.v("PlayerThreadMain", "readSampleBuffer: sampleTime = // " + paramCMTime2.add(this.frameDuration));
       return this.vDecoderTrack.readSample(paramCMTime1.divide(localCMTime).multi(localCMTime));
     }
     if ((paramCMTime2.bigThan(paramCMTime1.add(localCMTime))) && (paramCMTime1.bigThan(CMTime.CMTimeZero)) && (this.mAudioThread.isFinished()))
     {
       syncAudioOtherMsg(2, paramCMTime2);
-      if (Logger.LOG_VERBOSE) {
-        Logger.d("PlayerThreadMain", "readSampleBuffer: sampleTime = /// " + paramCMTime2.add(localCMTime));
-      }
+      Logger.v("PlayerThreadMain", "readSampleBuffer: sampleTime = /// " + paramCMTime2.add(localCMTime));
       return this.vDecoderTrack.readSample(localCMTime);
     }
-    if (Logger.LOG_VERBOSE) {
-      Logger.d("PlayerThreadMain", "readSampleBuffer: sampleTime = " + paramCMTime2.add(localCMTime));
-    }
+    Logger.v("PlayerThreadMain", "readSampleBuffer: sampleTime = " + paramCMTime2.add(localCMTime));
     return this.vDecoderTrack.readSample(paramCMTime2.add(localCMTime));
   }
   
   private void release(Message paramMessage)
   {
-    Logger.e("PlayerThreadMain", "release player - " + this);
+    Logger.d("PlayerThreadMain", "release player - " + this);
     this.renderContext.makeCurrent();
     if ((paramMessage.obj instanceof PlayerMessage))
     {
@@ -704,20 +899,14 @@ public class PlayerThread
   
   private void removePendingMessage(int... arg1)
   {
+    StringBuilder localStringBuilder = new StringBuilder().append("handleMessage() called with: removeInt = [");
     Object localObject1;
-    if (Logger.LOG_VERBOSE)
+    if (???.length == 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("handleMessage() called with: removeInt = [");
-      if (???.length == 0)
-      {
-        localObject1 = "null";
-        d("PlayerThreadMain", localObject1 + "]");
-      }
-    }
-    else
-    {
+      localObject1 = "null";
+      Logger.v("PlayerThreadMain", localObject1 + "]");
       if (???.length != 0) {
-        break label129;
+        break label122;
       }
     }
     for (;;)
@@ -734,7 +923,7 @@ public class PlayerThread
         this.mPlayHandler.removeCallbacksAndMessages(null);
         this.mPlayHandler.sendEmptyMessage(850);
       }
-      label129:
+      label122:
       int j = ???.length;
       int i = 0;
       while (i < j)
@@ -748,9 +937,7 @@ public class PlayerThread
   
   private void renderSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
   {
-    if (Logger.LOG_VERBOSE) {
-      Logger.d("PlayerThreadMain", "renderSampleBuffer() called with: sampleBuffer = [" + paramCMSampleBuffer + "]");
-    }
+    Logger.v("PlayerThreadMain", "renderSampleBuffer() called with: sampleBuffer = [" + paramCMSampleBuffer + "]");
     TextureInfo localTextureInfo;
     if (paramCMSampleBuffer.getTextureInfo() != null)
     {
@@ -783,9 +970,7 @@ public class PlayerThread
     paramLong /= 1000L;
     if (paramLong > 0L)
     {
-      if (Logger.LOG_VERBOSE) {
-        Logger.d("scheduleNextWork", "waitTime" + paramLong);
-      }
+      Logger.v("scheduleNextWork", "waitTime" + paramLong);
       sendMessageDelay(12, paramLong, "schedule next");
       return;
     }
@@ -886,12 +1071,12 @@ public class PlayerThread
         notifyProgressChange();
       }
       if (!this.mAudioThread.isFinished()) {
-        break label63;
+        break label62;
       }
-      d("PlayerThreadMain", "processFrame() called with: finish");
+      Logger.v("PlayerThreadMain", "processFrame() called with: finish");
       playerFinish();
     }
-    label63:
+    label62:
     while (!this.mLooper) {
       return;
     }
@@ -918,6 +1103,7 @@ public class PlayerThread
   
   private void updateComposition(Object paramObject)
   {
+    Logger.i("PlayerThreadMain", "updateComposition() called with: obj = [" + paramObject + "]");
     if ((paramObject instanceof PlayerItem))
     {
       paramObject = (PlayerItem)paramObject;
@@ -986,26 +1172,23 @@ public class PlayerThread
     {
       localObject1 = null;
       if (localObject1 == null) {
-        break label650;
+        break label618;
       }
       localObject2 = ((PlayerMessage)localObject1).bizMsg1;
       if (paramMessage.what != 2) {
         syncAudioOtherMsg(paramMessage.what, paramMessage.obj);
       }
-      if (Logger.LOG_VERBOSE)
-      {
-        localStringBuilder = new StringBuilder().append("handleMessage() called with: msg = [").append(catLog(paramMessage.what)).append("]--obj-->").append(localObject2).append("--from-->");
-        if (localObject1 != null) {
-          break label140;
-        }
+      localStringBuilder = new StringBuilder().append("handleMessage() called with: msg = [").append(catLog(paramMessage.what)).append("]--obj-->").append(localObject2).append("--from-->");
+      if (localObject1 != null) {
+        break label133;
       }
     }
-    label140:
+    label133:
     for (Object localObject1 = localObject3;; localObject1 = ((PlayerMessage)localObject1).form)
     {
-      d("PlayerThreadMain", (String)localObject1);
+      Logger.v("PlayerThreadMain", (String)localObject1);
       if (this.mThread != null) {
-        break label150;
+        break label143;
       }
       return false;
       localObject1 = (PlayerMessage)paramMessage.obj;
@@ -1013,7 +1196,7 @@ public class PlayerThread
     }
     try
     {
-      label150:
+      label143:
       switch (paramMessage.what)
       {
       case 1: 
@@ -1022,44 +1205,43 @@ public class PlayerThread
     }
     catch (Exception paramMessage)
     {
-      paramMessage.printStackTrace();
-      d("PlayerThreadMain", "player error:" + Log.getStackTraceString(paramMessage));
+      Logger.e("PlayerThreadMain", "player error:", paramMessage);
       return false;
     }
     play();
-    break label656;
+    break label624;
     pause();
-    break label656;
-    label359:
+    break label624;
+    label327:
     boolean bool;
     for (;;)
     {
       stop(bool);
       break;
-      label367:
+      label335:
       bool = ((Boolean)localObject2).booleanValue();
     }
     seek((CMTime)localObject2);
     for (;;)
     {
-      label391:
+      label359:
       readSample(i);
-      label650:
-      label656:
+      label618:
+      label624:
       do
       {
         i = ((Integer)localObject2).intValue();
-        break label391;
+        break label359;
         seekPreSample();
-        break label656;
+        break label624;
         updateProperties();
-        break label656;
+        break label624;
         updateAllProperties();
-        break label656;
+        break label624;
         updateAudioClipsProperties();
-        break label656;
+        break label624;
         udpateAudioVolumeProperties();
-        break label656;
+        break label624;
         paramMessage = (UpdateCompositionMessage)localObject2;
         stop(true);
         releaseComposition();
@@ -1067,23 +1249,23 @@ public class PlayerThread
         {
           updateComposition(paramMessage.playerItem);
           prepare(paramMessage.updateListener);
-          break label656;
+          break label624;
           if ((localObject2 instanceof CGSize))
           {
             this.surfaceSize = ((CGSize)localObject2);
             initViewport();
-            break label656;
+            break label624;
             if ((localObject2 instanceof OnReadSnapShootListener))
             {
               this.onReadSnapShootListener = ((OnReadSnapShootListener)localObject2);
-              break label656;
+              break label624;
               if ((localObject2 instanceof OnGetTavExtraListener))
               {
                 this.onGetTavExtraListener = ((OnGetTavExtraListener)localObject2);
-                break label656;
+                break label624;
                 release(paramMessage);
-                break label656;
-                Logger.e("PlayerThreadMain", "quit: PlayerThreadMain " + this);
+                break label624;
+                Logger.i("PlayerThreadMain", "quit: PlayerThreadMain " + this);
                 removePendingMessage(new int[0]);
                 this.mThread.quit();
                 this.mThread = null;
@@ -1094,7 +1276,7 @@ public class PlayerThread
                 this.vDecoderTrack = null;
                 this.aDecoderTrack = null;
                 this.mPlayHandler.removeCallbacksAndMessages(null);
-                break label656;
+                break label624;
                 localObject2 = null;
                 break;
               }
@@ -1103,10 +1285,10 @@ public class PlayerThread
         }
         return true;
         if (localObject2 != null) {
-          break label367;
+          break label335;
         }
         bool = false;
-        break label359;
+        break label327;
       } while (localObject2 != null);
       int i = 0;
     }
@@ -1122,9 +1304,7 @@ public class PlayerThread
   
   public void sendMessage(int paramInt, Object paramObject, String paramString)
   {
-    if (Logger.LOG_VERBOSE) {
-      d("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], obj = [" + paramObject + "], from = [" + paramString + "]");
-    }
+    Logger.v("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], obj = [" + paramObject + "], from = [" + paramString + "]");
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(paramObject, paramString, System.currentTimeMillis())).sendToTarget();
     }
@@ -1132,9 +1312,7 @@ public class PlayerThread
   
   public void sendMessage(int paramInt, String paramString)
   {
-    if (Logger.LOG_VERBOSE) {
-      d("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], from = [" + paramString + "]");
-    }
+    Logger.v("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], from = [" + paramString + "]");
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(null, paramString, System.currentTimeMillis())).sendToTarget();
     }
@@ -1142,9 +1320,7 @@ public class PlayerThread
   
   public void sendMessageDelay(int paramInt, long paramLong, String paramString)
   {
-    if (Logger.LOG_VERBOSE) {
-      d("PlayerThreadMain", "sendMessageDelay() called with: what = [" + catLog(paramInt) + "], delay = [" + paramLong + "], from = [" + paramString + "]");
-    }
+    Logger.v("PlayerThreadMain", "sendMessageDelay() called with: what = [" + catLog(paramInt) + "], delay = [" + paramLong + "], from = [" + paramString + "]");
     if (this.mPlayHandler != null)
     {
       Message localMessage = new Message();

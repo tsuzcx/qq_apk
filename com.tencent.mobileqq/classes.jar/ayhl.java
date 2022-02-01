@@ -1,21 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.10.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ayhl
-  implements View.OnClickListener
+  extends aygp
 {
-  ayhl(ayhj paramayhj) {}
-  
-  public void onClick(View paramView)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    this.a.f(paramView);
-    new ayek().h("video").i("playpage_fw_click").a().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.10.1(this, (axup)this.a.a.getManager(106)), 16, null, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!nns.b(paramBaseChatPie.sessionInfo.curFriendUin)) {
+      a(paramBaseChatPie.sessionInfo.curType, 219);
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    if (!nns.b(paramBaseChatPie.sessionInfo.curFriendUin)) {
+      a(paramBaseChatPie.sessionInfo.curType, 211);
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 212);
+    a(paramBaseChatPie.sessionInfo.curType, 213);
   }
 }
 

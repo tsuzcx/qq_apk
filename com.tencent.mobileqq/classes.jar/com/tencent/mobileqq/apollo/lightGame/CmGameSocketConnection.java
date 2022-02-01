@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import anag;
-import anah;
-import anai;
+import alva;
+import alvb;
+import alvc;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.SystemClock;
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.io.OutputStream;
@@ -24,13 +24,13 @@ public class CmGameSocketConnection
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private anah jdField_a_of_type_Anah;
+  private alvb jdField_a_of_type_Alvb;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private CmGameSocketConnection.ReadRunnable jdField_a_of_type_ComTencentMobileqqApolloLightGameCmGameSocketConnection$ReadRunnable;
   private MsfSocketInputBuffer jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer;
   private OutputStream jdField_a_of_type_JavaIoOutputStream;
-  private WeakReference<anag> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<alva> jdField_a_of_type_JavaLangRefWeakReference;
   private Socket jdField_a_of_type_JavaNetSocket;
   private List<String> jdField_a_of_type_JavaUtilList;
   private ConcurrentLinkedQueue<byte[]> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
@@ -40,9 +40,9 @@ public class CmGameSocketConnection
   private int c;
   private int d;
   
-  public CmGameSocketConnection(anai paramanai)
+  public CmGameSocketConnection(alvc paramalvc)
   {
-    a(paramanai);
+    a(paramalvc);
     this.d = 32768;
   }
   
@@ -129,7 +129,7 @@ public class CmGameSocketConnection
       {
         for (;;)
         {
-          bool1 = bhnv.e(BaseApplicationImpl.getApplication().getApplicationContext());
+          bool1 = NetworkUtil.isNetSupportHw(BaseApplicationImpl.getApplication().getApplicationContext());
           QLog.d("CmGameConnection", 1, new Object[] { "[connect] hasNet=", Boolean.valueOf(bool1), ", exception=", localThrowable });
           String str = localThrowable.toString().toLowerCase();
           if (!bool1)
@@ -241,7 +241,7 @@ public class CmGameSocketConnection
     //   11: ifne +14 -> 25
     //   14: ldc 68
     //   16: iconst_1
-    //   17: ldc_w 298
+    //   17: ldc_w 299
     //   20: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: iconst_0
     //   24: ireturn
@@ -255,8 +255,8 @@ public class CmGameSocketConnection
     //   38: istore_1
     //   39: aload_0
     //   40: getfield 41	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   43: invokevirtual 302	java/util/concurrent/ConcurrentLinkedQueue:poll	()Ljava/lang/Object;
-    //   46: checkcast 304	[B
+    //   43: invokevirtual 303	java/util/concurrent/ConcurrentLinkedQueue:poll	()Ljava/lang/Object;
+    //   46: checkcast 305	[B
     //   49: astore 4
     //   51: aload 4
     //   53: ifnull +92 -> 145
@@ -279,12 +279,12 @@ public class CmGameSocketConnection
     //   80: aload_0
     //   81: getfield 168	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
     //   84: aload 4
-    //   86: invokevirtual 310	java/io/OutputStream:write	([B)V
+    //   86: invokevirtual 311	java/io/OutputStream:write	([B)V
     //   89: iload_3
     //   90: istore_2
     //   91: aload_0
     //   92: getfield 168	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
-    //   95: invokevirtual 313	java/io/OutputStream:flush	()V
+    //   95: invokevirtual 314	java/io/OutputStream:flush	()V
     //   98: aload 5
     //   100: monitorexit
     //   101: iconst_1
@@ -303,12 +303,12 @@ public class CmGameSocketConnection
     //   117: astore 4
     //   119: ldc 68
     //   121: iconst_1
-    //   122: ldc_w 315
+    //   122: ldc_w 316
     //   125: aload 4
-    //   127: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   127: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   130: aload_0
     //   131: iconst_1
-    //   132: invokevirtual 320	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:a	(Z)V
+    //   132: invokevirtual 321	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:a	(Z)V
     //   135: goto -32 -> 103
     //   138: astore 4
     //   140: iconst_1
@@ -348,7 +348,7 @@ public class CmGameSocketConnection
     // Byte code:
     //   0: ldc 68
     //   2: iconst_1
-    //   3: ldc_w 324
+    //   3: ldc_w 325
     //   6: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   9: aload_0
     //   10: getfield 36	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -356,7 +356,7 @@ public class CmGameSocketConnection
     //   16: ifne +14 -> 30
     //   19: ldc 68
     //   21: iconst_1
-    //   22: ldc_w 326
+    //   22: ldc_w 327
     //   25: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   28: iconst_0
     //   29: ireturn
@@ -365,13 +365,13 @@ public class CmGameSocketConnection
     //   34: ifnull +84 -> 118
     //   37: aload_0
     //   38: getfield 53	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   41: invokevirtual 330	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   44: checkcast 332	anag
+    //   41: invokevirtual 331	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   44: checkcast 333	alva
     //   47: astore_2
     //   48: aload_2
     //   49: ifnull +69 -> 118
     //   52: aload_2
-    //   53: invokeinterface 335 1 0
+    //   53: invokeinterface 336 1 0
     //   58: astore_3
     //   59: aload_3
     //   60: ifnull +58 -> 118
@@ -386,10 +386,10 @@ public class CmGameSocketConnection
     //   77: aload_0
     //   78: getfield 168	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
     //   81: aload_3
-    //   82: invokevirtual 310	java/io/OutputStream:write	([B)V
+    //   82: invokevirtual 311	java/io/OutputStream:write	([B)V
     //   85: aload_0
     //   86: getfield 168	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
-    //   89: invokevirtual 313	java/io/OutputStream:flush	()V
+    //   89: invokevirtual 314	java/io/OutputStream:flush	()V
     //   92: aload_2
     //   93: monitorexit
     //   94: goto +24 -> 118
@@ -401,9 +401,9 @@ public class CmGameSocketConnection
     //   102: astore_2
     //   103: ldc 68
     //   105: iconst_1
-    //   106: ldc_w 337
+    //   106: ldc_w 338
     //   109: aload_2
-    //   110: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   110: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   113: iconst_0
     //   114: istore_1
     //   115: goto +5 -> 120
@@ -441,8 +441,8 @@ public class CmGameSocketConnection
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     try
     {
-      if (this.jdField_a_of_type_Anah != null) {
-        this.jdField_a_of_type_Anah.removeCallbacksAndMessages(null);
+      if (this.jdField_a_of_type_Alvb != null) {
+        this.jdField_a_of_type_Alvb.removeCallbacksAndMessages(null);
       }
       if (this.jdField_a_of_type_JavaIoOutputStream != null)
       {
@@ -474,7 +474,7 @@ public class CmGameSocketConnection
     //   1: monitorenter
     //   2: ldc 68
     //   4: iconst_1
-    //   5: ldc_w 364
+    //   5: ldc_w 365
     //   8: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   11: aload_0
     //   12: getfield 36	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -482,38 +482,38 @@ public class CmGameSocketConnection
     //   18: ifeq +15 -> 33
     //   21: ldc 68
     //   23: iconst_1
-    //   24: ldc_w 366
-    //   27: invokestatic 345	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: ldc_w 367
+    //   27: invokestatic 346	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   30: aload_0
     //   31: monitorexit
     //   32: return
     //   33: aload_0
-    //   34: getfield 368	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   34: getfield 369	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
     //   37: ifnonnull +21 -> 58
     //   40: aload_0
-    //   41: ldc_w 370
+    //   41: ldc_w 371
     //   44: iconst_0
     //   45: invokestatic 190	com/tencent/mobileqq/app/ThreadManager:newFreeHandlerThread	(Ljava/lang/String;I)Landroid/os/HandlerThread;
-    //   48: putfield 368	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   48: putfield 369	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
     //   51: aload_0
-    //   52: getfield 368	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   52: getfield 369	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
     //   55: invokevirtual 197	android/os/HandlerThread:start	()V
     //   58: aload_0
-    //   59: getfield 347	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_Anah	Lanah;
+    //   59: getfield 348	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_Alvb	Lalvb;
     //   62: ifnonnull +22 -> 84
     //   65: aload_0
-    //   66: new 349	anah
+    //   66: new 350	alvb
     //   69: dup
     //   70: aload_0
-    //   71: getfield 368	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   71: getfield 369	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
     //   74: invokevirtual 203	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
     //   77: aload_0
-    //   78: invokespecial 373	anah:<init>	(Landroid/os/Looper;Lcom/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection;)V
-    //   81: putfield 347	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_Anah	Lanah;
+    //   78: invokespecial 374	alvb:<init>	(Landroid/os/Looper;Lcom/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection;)V
+    //   81: putfield 348	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_Alvb	Lalvb;
     //   84: aload_0
-    //   85: getfield 347	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_Anah	Lanah;
+    //   85: getfield 348	com/tencent/mobileqq/apollo/lightGame/CmGameSocketConnection:jdField_a_of_type_Alvb	Lalvb;
     //   88: iconst_1
-    //   89: invokevirtual 377	anah:sendEmptyMessage	(I)Z
+    //   89: invokevirtual 378	alvb:sendEmptyMessage	(I)Z
     //   92: pop
     //   93: goto -63 -> 30
     //   96: astore_1
@@ -533,20 +533,20 @@ public class CmGameSocketConnection
     //   84	93	96	finally
   }
   
-  public void a(anag paramanag)
+  public void a(alva paramalva)
   {
-    if (paramanag == null) {
+    if (paramalva == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanag);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalva);
   }
   
-  public void a(anai paramanai)
+  public void a(alvc paramalvc)
   {
-    this.jdField_a_of_type_JavaUtilList = paramanai.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Int = paramanai.jdField_a_of_type_Int;
-    this.c = paramanai.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = paramanai.c;
+    this.jdField_a_of_type_JavaUtilList = paramalvc.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Int = paramalvc.jdField_a_of_type_Int;
+    this.c = paramalvc.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = paramalvc.c;
   }
   
   public void a(boolean paramBoolean)
@@ -557,9 +557,9 @@ public class CmGameSocketConnection
       f();
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        anag localanag = (anag)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localanag != null) {
-          localanag.a(paramBoolean);
+        alva localalva = (alva)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localalva != null) {
+          localalva.a(paramBoolean);
         }
       }
       return;
@@ -580,8 +580,8 @@ public class CmGameSocketConnection
       QLog.w("CmGameConnection", 1, "[wakeup] failed, not connected");
       return;
     }
-    this.jdField_a_of_type_Anah.removeMessages(2);
-    this.jdField_a_of_type_Anah.sendEmptyMessage(2);
+    this.jdField_a_of_type_Alvb.removeMessages(2);
+    this.jdField_a_of_type_Alvb.sendEmptyMessage(2);
   }
   
   public void c()
@@ -589,9 +589,9 @@ public class CmGameSocketConnection
     QLog.d("CmGameConnection", 1, "[notifyConnSuccess]");
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      anag localanag = (anag)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanag != null) {
-        localanag.c();
+      alva localalva = (alva)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localalva != null) {
+        localalva.c();
       }
     }
   }
@@ -601,9 +601,9 @@ public class CmGameSocketConnection
     f();
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      anag localanag = (anag)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanag != null) {
-        localanag.d();
+      alva localalva = (alva)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localalva != null) {
+        localalva.d();
       }
     }
   }
@@ -616,8 +616,8 @@ public class CmGameSocketConnection
     try
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (this.jdField_a_of_type_Anah != null) {
-        this.jdField_a_of_type_Anah.removeCallbacksAndMessages(null);
+      if (this.jdField_a_of_type_Alvb != null) {
+        this.jdField_a_of_type_Alvb.removeCallbacksAndMessages(null);
       }
       if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
       {

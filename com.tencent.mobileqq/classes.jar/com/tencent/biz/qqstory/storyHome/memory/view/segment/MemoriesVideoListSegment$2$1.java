@@ -6,35 +6,35 @@ import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
 import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 import java.util.ArrayList;
-import xlj;
-import yjh;
-import yku;
-import ykw;
-import yuk;
-import yup;
+import wmu;
+import xks;
+import xmf;
+import xmh;
+import xvv;
+import xwa;
 
 public class MemoriesVideoListSegment$2$1
   implements Runnable
 {
-  public MemoriesVideoListSegment$2$1(ykw paramykw, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, QQUserUIItem paramQQUserUIItem) {}
+  public MemoriesVideoListSegment$2$1(xmh paramxmh, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, QQUserUIItem paramQQUserUIItem) {}
   
   public void run()
   {
-    Object localObject = new OpenPlayerBuilder(new MemoriesFeedPlayInfo(yku.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku).jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_Ykw.b, String.valueOf(yku.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku).hashCode()), this.b, yku.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku).b, 0), StoryMemoriesFragment.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku.jdField_a_of_type_Int));
-    ((OpenPlayerBuilder)localObject).a(yku.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku));
+    Object localObject = new OpenPlayerBuilder(new MemoriesFeedPlayInfo(xmf.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf).jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_Xmh.b, String.valueOf(xmf.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf).hashCode()), this.b, xmf.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf).b, 0), StoryMemoriesFragment.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf.jdField_a_of_type_Int));
+    ((OpenPlayerBuilder)localObject).a(xmf.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf));
     ((OpenPlayerBuilder)localObject).c();
-    xlj.a((Activity)yku.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku), ((OpenPlayerBuilder)localObject).a(), this.jdField_a_of_type_Ykw.jdField_a_of_type_AndroidViewView);
+    wmu.a((Activity)xmf.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf), ((OpenPlayerBuilder)localObject).a(), this.jdField_a_of_type_Xmh.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null)
     {
-      yuk.d("Q.qqstory.memories.MemoriesVideoListSegment", "userManager returns null with id %s", new Object[] { yku.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku).jdField_a_of_type_JavaLangString });
+      xvv.d("Q.qqstory.memories.MemoriesVideoListSegment", "userManager returns null with id %s", new Object[] { xmf.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf).jdField_a_of_type_JavaLangString });
       return;
     }
-    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Ykw.jdField_a_of_type_Yku.jdField_a_of_type_Int);
+    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Xmh.jdField_a_of_type_Xmf.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe()) {}
     for (localObject = "1";; localObject = "2")
     {
-      yup.a("memory", "clk_video", i, 0, new String[] { localObject, "", "", this.jdField_a_of_type_Ykw.b });
-      yuk.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Ykw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Ykw.b, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Ykw.jdField_a_of_type_Int), this.b });
+      xwa.a("memory", "clk_video", i, 0, new String[] { localObject, "", "", this.jdField_a_of_type_Xmh.b });
+      xvv.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Xmh.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Xmh.b, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Xmh.jdField_a_of_type_Int), this.b });
       return;
     }
   }

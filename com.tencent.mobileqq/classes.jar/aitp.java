@@ -1,12 +1,17 @@
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class aitp
+  extends RecyclerView.ViewHolder
 {
-  public int a = 0;
-  public String a;
-  public List<? extends aism> a;
-  public String b;
-  public List<? extends aism> b;
+  TextView a;
+  
+  aitp(View paramView)
+  {
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131379996));
+  }
 }
 
 

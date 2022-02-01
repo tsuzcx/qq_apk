@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
-public class bjdo
-  implements View.OnClickListener
+class bjdo
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener
 {
-  public bjdo(TabBarView paramTabBarView, int paramInt) {}
+  bjdo(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener) {}
   
-  public void onClick(View paramView)
+  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_Bjdj, paramInt1, paramInt2);
   }
 }
 

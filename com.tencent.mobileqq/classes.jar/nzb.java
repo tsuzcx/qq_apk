@@ -1,17 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nzb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  nzb(nyy paramnyy) {}
+  nzb(nyz paramnyz, JsResult paramJsResult) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

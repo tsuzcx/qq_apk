@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.form.textbox;
 
-import acvc;
+import abrl;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.canvas.views.form.AdFormError;
 import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
@@ -31,7 +31,7 @@ public class GdtFormItemTextBoxData
   {
     if (!isValid())
     {
-      acvc.d("GdtFormItemTextBoxData", "validate error");
+      abrl.d("GdtFormItemTextBoxData", "validate error");
       return new AdFormError(3, -1, null);
     }
     if ((this.required) && (TextUtils.isEmpty(getResult()))) {

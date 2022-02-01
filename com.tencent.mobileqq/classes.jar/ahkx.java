@@ -1,28 +1,26 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-abstract class ahkx<T extends aghc>
+class ahkx
+  implements bfft
 {
-  private T a;
+  ahkx(ahkw paramahkw) {}
   
-  private ahkx(ahgk paramahgk) {}
-  
-  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
-  
-  protected boolean a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    return true;
-  }
-  
-  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (this.a == null) {
-      this.a = a(paramChatMessage, paramBaseAdapter);
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.sessionInfo.curFriendUin)) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
+    {
+      paramString = (aftj)this.a.getHelper(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
     }
-    if (a()) {
-      this.b.a(this.a, paramBaseAdapter);
-    }
-    return this.a;
+    do
+    {
+      return;
+      paramString = (aftj)this.a.getHelper(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

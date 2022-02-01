@@ -1,24 +1,42 @@
-import android.os.IInterface;
-import cooperation.qzone.plugin.PluginRecord;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract interface bnfn
-  extends IInterface
+public class bnfn
 {
-  public abstract PluginRecord a(String paramString);
+  private List<bnfp> a = new LinkedList();
   
-  public abstract void a();
+  public static bnfn a()
+  {
+    return bnfq.a;
+  }
   
-  public abstract void a(bnds parambnds, int paramInt);
+  public void a()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bnfp)localIterator.next()).b();
+    }
+  }
   
-  public abstract boolean a();
+  public void a(boolean paramBoolean)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bnfp)localIterator.next()).a(paramBoolean);
+    }
+  }
   
-  public abstract boolean a(String paramString);
+  public boolean a(@NonNull bnfp parambnfp)
+  {
+    return this.a.add(parambnfp);
+  }
   
-  public abstract boolean a(String paramString, bndv parambndv, int paramInt);
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean c(String paramString);
+  public boolean b(@NonNull bnfp parambnfp)
+  {
+    return this.a.remove(parambnfp);
+  }
 }
 
 

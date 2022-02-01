@@ -1,24 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class awim
-  implements View.OnClickListener
 {
-  public awim(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
-    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(0) });
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public URLImageView b;
+  public URLImageView c;
 }
 
 

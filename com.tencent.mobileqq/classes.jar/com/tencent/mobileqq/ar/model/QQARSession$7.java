@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.model;
 
-import apnb;
-import apse;
+import aogo;
+import aolr;
 
 public class QQARSession$7
   implements Runnable
 {
-  public QQARSession$7(apse paramapse, apnb paramapnb, ArLBSActivity paramArLBSActivity) {}
+  public QQARSession$7(aolr paramaolr, aogo paramaogo, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    apse.a(this.this$0, this.jdField_a_of_type_Apnb, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    aolr.a(this.this$0, this.jdField_a_of_type_Aogo, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

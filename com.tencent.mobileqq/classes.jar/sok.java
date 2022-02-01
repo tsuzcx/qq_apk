@@ -1,26 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 public class sok
-  implements ssf
+  implements Handler.Callback
 {
-  private WeakReference<FastWebActivity> a;
+  private WeakReference<ReadInJoyXListView> a;
   
-  public sok(FastWebActivity paramFastWebActivity)
+  public sok(ReadInJoyXListView paramReadInJoyXListView)
   {
-    this.a = new WeakReference(paramFastWebActivity);
+    this.a = new WeakReference(paramReadInJoyXListView);
   }
   
-  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public boolean handleMessage(Message paramMessage)
   {
-    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
-    if (localFastWebActivity == null) {
-      return;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((ReadInJoyXListView)this.a.get()).i();
+      return true;
+    }
+    return true;
   }
 }
 

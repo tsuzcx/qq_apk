@@ -1,16 +1,26 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xku
-  implements Dispatcher.Event
+class xku
+  extends QQUIEventReceiver<xks, wdj>
 {
-  public final AnimationParam a;
-  public final String a;
-  
-  public xku(AnimationParam paramAnimationParam, String paramString)
+  public xku(@NonNull xks paramxks)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramxks);
+  }
+  
+  public void a(@NonNull xks paramxks, @NonNull wdj paramwdj)
+  {
+    xvv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramwdj.toString());
+    if (paramwdj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      xks.a(paramxks).a(paramwdj.jdField_a_of_type_JavaLangString, paramwdj.jdField_a_of_type_JavaUtilList);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wdj.class;
   }
 }
 

@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.widgets.TabLayout;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public class ojf
-  implements View.OnClickListener
+class ojf
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public ojf(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
+  ojf(ojc paramojc) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 4098) {
+      ojc.a(this.a).setOverScrollMode(0);
+    }
   }
 }
 

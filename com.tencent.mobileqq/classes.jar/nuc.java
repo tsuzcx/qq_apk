@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 class nuc
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  nuc(ntc paramntc, oag paramoag) {}
+  nuc(nua paramnua) {}
   
-  public void onClick(View paramView)
-  {
-    ntc.a(this.jdField_a_of_type_Ntc);
-    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

@@ -1,31 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.HashMap;
 
-class bady
-  implements Handler.Callback
+public class bady
+  extends badz
 {
-  bady(badw parambadw) {}
+  public int a;
+  public boolean a;
   
-  public boolean handleMessage(Message paramMessage)
+  public bady()
   {
-    if (paramMessage.what == 100)
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public HashMap<String, String> a(String paramString)
+  {
+    if ("RealShortVideo.Record".equals(paramString))
     {
-      paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-      if (badw.a(this.a) == null)
-      {
-        View localView = badw.a(this.a, badw.b(this.a), 5, 0, 5, 0);
-        if (localView != null) {
-          badw.a(this.a, new RedTouch(badw.a(this.a), localView).a(53).d(5).a());
-        }
-      }
-      if (badw.a(this.a) != null) {
-        badw.a(this.a).a(paramMessage);
-      }
+      paramString = new HashMap();
+      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
+      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
+      return paramString;
     }
-    return false;
+    return null;
   }
 }
 

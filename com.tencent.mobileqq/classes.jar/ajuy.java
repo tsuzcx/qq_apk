@@ -1,17 +1,16 @@
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
 public class ajuy
+  extends bgod
 {
-  public long a;
-  public boolean a;
+  ajuy(ajux paramajux) {}
   
-  public ajuy()
+  public void onDone(bgoe parambgoe)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 300000L;
-  }
-  
-  public String toString()
-  {
-    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
+    super.onDone(parambgoe);
+    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambgoe));
   }
 }
 

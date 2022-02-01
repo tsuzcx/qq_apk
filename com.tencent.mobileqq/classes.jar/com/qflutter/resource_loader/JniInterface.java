@@ -2,11 +2,12 @@ package com.qflutter.resource_loader;
 
 import android.graphics.Bitmap;
 import android.util.Log;
+import com.tencent.nativebmp.NativeBitmap;
 import java.nio.ByteBuffer;
 
 public class JniInterface
 {
-  static final String TAG = "SkinEngineJniInterface";
+  static final String TAG = "JniInterface";
   
   public static long getBitmapPixelDataMemoryPtr(Bitmap paramBitmap)
   {
@@ -15,7 +16,7 @@ public class JniInterface
     }
     try
     {
-      long l = nativeGetBitmapPixelDataMemoryPtr(paramBitmap);
+      long l = NativeBitmap.nativeGetBitmapPixelDataMemoryPtr(paramBitmap);
       return l;
     }
     catch (Throwable paramBitmap)
@@ -23,7 +24,7 @@ public class JniInterface
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getBitmapPixelDataMemoryPtr error:");
       localStringBuilder.append(paramBitmap.getMessage());
-      Log.e("SkinEngineJniInterface", localStringBuilder.toString());
+      Log.e("JniInterface", localStringBuilder.toString());
     }
     return 0L;
   }
@@ -35,7 +36,7 @@ public class JniInterface
     }
     try
     {
-      long l = nativeGetByteBufferPtr(paramByteBuffer);
+      long l = NativeBitmap.nativeGetByteBufferPtr(paramByteBuffer);
       return l;
     }
     catch (Throwable paramByteBuffer)
@@ -43,14 +44,10 @@ public class JniInterface
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getByteBufferPtr error:");
       localStringBuilder.append(paramByteBuffer.getMessage());
-      Log.e("SkinEngineJniInterface", localStringBuilder.toString());
+      Log.e("JniInterface", localStringBuilder.toString());
     }
     return 0L;
   }
-  
-  public static native long nativeGetBitmapPixelDataMemoryPtr(Bitmap paramBitmap);
-  
-  public static native long nativeGetByteBufferPtr(ByteBuffer paramByteBuffer);
 }
 
 

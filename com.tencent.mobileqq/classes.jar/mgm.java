@@ -1,50 +1,64 @@
+import android.content.res.Resources;
+import android.widget.Button;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class mgm
-  implements mss
+  extends lff
 {
-  public mgm(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mgm(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  private void b()
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localAVActivity != null) {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().ac) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ad))
-      {
-        bool = true;
-        VideoMsgTools.a(localAVActivity, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, true);
-        bdll.b(null, "CliOper", "", "", "0X8009E27", "0X8009E27", 0, 0, "", "", "", "");
-      }
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
+      return;
     }
-    while (!QLog.isColorLevel()) {
+    if (paramLong != this.a.jdField_a_of_type_Long)
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
+      this.a.b(paramInt2);
+      return;
+    }
+    if (paramInt3 == -5)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {
+        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
+          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+        }
+      }
       for (;;)
       {
+        QQToast.a(this.a, 2131692893, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131299076));
         return;
-        boolean bool = false;
+        this.a.jdField_a_of_type_Mgl.b.setVisibility(8);
       }
     }
-    QLog.e(this.a.d, 2, "startMembersListViewPage-->can not get activity");
+    QQToast.a(this.a, 2131692892, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131299076));
   }
   
-  public void a()
+  protected void c(long paramLong)
   {
-    long l = AudioHelper.b();
-    this.a.C(l);
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
+    super.c(paramLong);
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.d, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
     }
-    if ((paramInt2 == 7) && (paramBoolean)) {
-      b();
+    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
+      }
+      this.a.finish();
     }
   }
 }

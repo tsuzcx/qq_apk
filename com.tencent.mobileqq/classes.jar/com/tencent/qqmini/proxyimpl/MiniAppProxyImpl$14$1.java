@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkyc;
+import bjdy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MiniAppProxyImpl$14$1
   implements Runnable
 {
-  public MiniAppProxyImpl$14$1(bkyc parambkyc) {}
+  public MiniAppProxyImpl$14$1(bjdy parambjdy) {}
   
   public void run()
   {

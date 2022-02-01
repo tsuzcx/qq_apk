@@ -1,30 +1,51 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-class bahf
-  implements View.OnClickListener
+public class bahf
 {
-  bahf(bahb parambahb, String paramString, int paramInt, View paramView) {}
+  private static final String a = auns.class.getSimpleName();
   
-  public void onClick(View paramView)
+  public static void a(Throwable paramThrowable)
   {
-    if ((bbwn.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
+    Throwable localThrowable = new Throwable(paramThrowable);
+    try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
-      localBundle.putInt("from_type", 2);
-      if (bahb.e(this.jdField_a_of_type_Bahb) != null) {
-        SignTextEditFragment.a(bahb.f(this.jdField_a_of_type_Bahb), null, null, localBundle, -1);
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      azyk.a().c(bahb.j(this.jdField_a_of_type_Bahb));
-      bdll.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+      arrayOfField = Class.forName("java.lang.Throwable").getDeclaredFields();
+      j = arrayOfField.length;
+      i = 0;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Throwable paramThrowable)
+    {
+      for (;;)
+      {
+        Field[] arrayOfField;
+        int j;
+        int i;
+        Field localField;
+        label110:
+        QLog.e(a, 2, "addStackTag failed", paramThrowable);
+        continue;
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localField = arrayOfField[i];
+      if (!localField.getName().equals("detailMessage")) {
+        break label155;
+      }
+      localField.setAccessible(true);
+      if ((paramThrowable.getCause() == null) || (localThrowable.getCause() == null)) {
+        break label110;
+      }
+      localField.set(localThrowable.getCause(), "ShortVideoCatchedException:" + paramThrowable.getCause().getMessage());
+    }
+    for (;;)
+    {
+      bcdb.a(localThrowable, "ShortVideo Fail");
+      return;
+      localField.set(localThrowable, "ShortVideoCatchedException:" + paramThrowable.getMessage());
+    }
   }
 }
 

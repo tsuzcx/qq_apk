@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import apfq;
-import apoq;
-import apos;
+import anzc;
+import aoid;
+import aoif;
 
 public class ARTransferDoorLogicManager$2
   implements Runnable
 {
-  public ARTransferDoorLogicManager$2(apfq paramapfq) {}
+  public ARTransferDoorLogicManager$2(anzc paramanzc) {}
   
   public void run()
   {
-    if (apfq.a(this.this$0).a.a == 0) {
+    if (anzc.a(this.this$0).a.a == 0) {
       this.this$0.c(5);
     }
     for (;;)
     {
-      apfq.a(this.this$0, 0L);
+      anzc.a(this.this$0, 0L);
       return;
-      if (apfq.a(this.this$0).a.c == 0) {
+      if (anzc.a(this.this$0).a.c == 0) {
         this.this$0.e();
       }
     }

@@ -1,28 +1,22 @@
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
 public class bbye
+  extends bbyh
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public String b;
-  public String c;
-  
-  public bbye(int paramInt, String paramString1, String paramString2, String paramString3)
+  public bbye(TCProgressBar paramTCProgressBar)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(paramTCProgressBar);
   }
   
-  public bbye(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
+  public void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a.b.left = this.f;
+    this.a.b.right = (this.f + this.g);
+    this.a.a.setColor(this.a.m);
+    paramCanvas.drawRect(this.a.b, this.a.a);
+    super.a(paramCanvas);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
+import amsc;
 import android.support.v4.app.FragmentActivity;
-import anxu;
-import aysq;
-import bdll;
+import axfy;
+import bcef;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 public class FrameHelperActivity$1$1
   implements Runnable
 {
-  public FrameHelperActivity$1$1(anxu paramanxu) {}
+  public FrameHelperActivity$1$1(amsc paramamsc) {}
   
   public void run()
   {
@@ -17,20 +17,20 @@ public class FrameHelperActivity$1$1
     for (;;)
     {
       return;
-      Object localObject = (aysq)this.a.a.getActivity().app.getManager(160);
-      RedTouchItem localRedTouchItem1 = ((aysq)localObject).a(10015);
-      RedTouchItem localRedTouchItem2 = ((aysq)localObject).a(10016);
-      RedTouchItem localRedTouchItem3 = ((aysq)localObject).a(-7);
+      Object localObject = (axfy)this.a.a.getActivity().app.getManager(160);
+      RedTouchItem localRedTouchItem1 = ((axfy)localObject).a(10015);
+      RedTouchItem localRedTouchItem2 = ((axfy)localObject).a(10016);
+      RedTouchItem localRedTouchItem3 = ((axfy)localObject).a(-7);
       if ((localRedTouchItem3 != null) && (localRedTouchItem3.unReadFlag) && ((localRedTouchItem1 != null) || (localRedTouchItem2 != null)))
       {
-        int i = ((aysq)localObject).a();
+        int i = ((axfy)localObject).a();
         localObject = null;
         switch (i)
         {
         }
         while (localObject != null)
         {
-          bdll.b(this.a.a.getActivity().app, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+          bcef.b(this.a.a.getActivity().app, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
           return;
           localObject = "0X80073B1";
           continue;

@@ -1,18 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
-class azgp
-  implements View.OnClickListener
+public class azgp
+  extends RecyclerView.ViewHolder
 {
-  azgp(azgj paramazgj, AutoReplyText paramAutoReplyText) {}
+  public int a;
+  public View a;
   
-  public void onClick(View paramView)
+  public azgp(azgo paramazgo, int paramInt, View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-    this.jdField_a_of_type_Azgj.a(i);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
 }
 

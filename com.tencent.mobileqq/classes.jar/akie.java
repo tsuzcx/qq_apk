@@ -1,155 +1,55 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.1;
-import com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.BubblePopupWindow;
-import com.tencent.widget.XListView;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
-public class akie
-  extends ReportDialog
-  implements Handler.Callback
+class akie
+  implements View.OnClickListener
 {
-  protected int a;
-  akjl jdField_a_of_type_Akjl;
-  protected Context a;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  bjbs jdField_a_of_type_Bjbs;
-  protected blha a;
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected MessageRecord a;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  public XListView a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseMessageSearchDialog.2(this);
-  boolean jdField_a_of_type_Boolean = false;
+  akie(akho paramakho, azvi paramazvi, azvn paramazvn, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
-  public akie(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public void onClick(View paramView)
   {
-    super(paramContext, 16973834);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Blha = new blha(Looper.getMainLooper(), this);
-    requestWindowFeature(1);
-    getWindow().setSoftInputMode(2);
-    getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131559339);
-    paramContext = getWindow().getAttributes();
-    paramContext.x = 0;
-    paramContext.y = 0;
-    paramContext.width = -1;
-    paramContext.windowAnimations = 16973824;
-    paramContext.gravity = 51;
-    e();
-  }
-  
-  private void e()
-  {
-    View localView;
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation == 1))
+    this.jdField_a_of_type_Azvi.b("200001");
+    Object localObject;
+    if ((this.jdField_a_of_type_Azvn.d == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Azvn.d)))
     {
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      localView = findViewById(2131370341);
-      if (LiuHaiUtils.b(localActivity)) {
-        localView.post(new BaseMessageSearchDialog.1(this, localView, localActivity));
+      localObject = this.jdField_a_of_type_Azvn.c;
+      if (localObject == null)
+      {
+        localObject = "";
+        switch (this.jdField_a_of_type_Azvn.jdField_a_of_type_Int)
+        {
+        }
       }
     }
-    else
+    for (;;)
     {
+      this.jdField_a_of_type_Akho.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Azvn.jdField_a_of_type_JavaLangString, 3);
+      akho.a(this.jdField_a_of_type_Akho).removeMessages(9);
+      akho.a(this.jdField_a_of_type_Akho).sendEmptyMessage(9);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      localObject = ((String)localObject).replace(" ", "_");
+      break;
+      VipUtils.a(akho.a(this.jdField_a_of_type_Akho), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { localObject }));
+      continue;
+      VipUtils.b(akho.a(this.jdField_a_of_type_Akho), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { localObject }));
+      continue;
+      VipUtils.a(akho.a(this.jdField_a_of_type_Akho), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { localObject }));
+      continue;
+      VipUtils.b(akho.a(this.jdField_a_of_type_Akho), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { localObject }));
+      continue;
+      localObject = new Intent(akho.a(this.jdField_a_of_type_Akho), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Azvn.d);
+      akho.a(this.jdField_a_of_type_Akho).startActivity((Intent)localObject);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseMessageSearchDialog", 2, "has no Notch, setPaddingTop 0");
-    }
-    localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected void a() {}
-  
-  protected void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bjbs == null) {
-      this.jdField_a_of_type_Bjbs = new bjbs(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299011));
-    }
-    this.jdField_a_of_type_Bjbs.setCancelable(false);
-    this.jdField_a_of_type_Bjbs.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bjbs.c(paramInt);
-    this.jdField_a_of_type_Bjbs.show();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b()
-  {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-      this.jdField_a_of_type_Bjbs.dismiss();
-    }
-  }
-  
-  protected void c()
-  {
-    if (getContext().getResources().getConfiguration().orientation == 2) {
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1, 0L);
-    }
-  }
-  
-  protected void d()
-  {
-    if (isShowing())
-    {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-    }
-  }
-  
-  public void dismiss()
-  {
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    super.dismiss();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
   }
 }
 

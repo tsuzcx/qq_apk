@@ -1,19 +1,33 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import android.widget.EditText;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
-class mna
-  extends AccessibilityDelegateCompat
+public class mna
+  extends Handler
 {
-  mna(mmw parammmw) {}
+  WeakReference<EffectFilterTextPager> a;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public mna(EffectFilterTextPager paramEffectFilterTextPager)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramView = behh.e(((EditText)paramView).getText().toString());
-    paramAccessibilityNodeInfoCompat.setText(paramView);
-    paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
+    this.a = new WeakReference(paramEffectFilterTextPager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
+    if (localEffectFilterTextPager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      localEffectFilterTextPager.b();
+    }
   }
 }
 

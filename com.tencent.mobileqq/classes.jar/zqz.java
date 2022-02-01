@@ -1,39 +1,52 @@
-import java.io.File;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class zqz
-  extends zqh
+class zqz
+  implements bezd
 {
-  zqz(zqh paramzqh, String paramString, long paramLong) {}
+  zqz(zqq paramzqq) {}
   
-  public void onFailure(String paramString)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    yup.a("music_composite", "video_music_composite", 0, 1, new String[0]);
-    this.jdField_a_of_type_Zqh.onFailure(paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    if (QLog.isColorLevel()) {
+      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
     }
-    this.jdField_a_of_type_Zqh.onFinish(paramBoolean);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    this.jdField_a_of_type_Zqh.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    yup.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
-    if (bpty.c) {
-      bpty.g.a(1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("list");
+          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+          {
+            paramJSONObject = bebb.a(paramJSONObject.optJSONObject(0));
+            if (paramJSONObject != null)
+            {
+              this.a.jdField_a_of_type_Bebb = paramJSONObject;
+              this.a.d = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Bebb.a + ", img = " + this.a.jdField_a_of_type_Bebb.c + ", rl = " + this.a.jdField_a_of_type_Bebb.b);
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+            return;
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_Zqh.onSuccess(paramString);
-    yuk.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
   }
 }
 

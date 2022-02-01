@@ -1,26 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import java.util.Iterator;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asat
-  extends asbb
+  implements View.OnClickListener
 {
-  public asat(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  public asat(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
-      }
-    }
+    QfileRecentPicFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

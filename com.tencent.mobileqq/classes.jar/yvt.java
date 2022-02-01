@@ -1,28 +1,16 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class yvt
-  implements ThreadExcutor.IThreadListener
+  implements DialogInterface.OnDismissListener
 {
-  yvt(yvs paramyvs) {}
+  public yvt(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
-    if (bday.a().a == 1) {}
-    for (;;)
-    {
-      bbgf.h(i);
-      return;
-      i = 2;
-    }
+    this.a.h = false;
   }
-  
-  public void onPreRun() {}
 }
 
 

@@ -1,40 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pzc
-  implements ViewBase.OnClickListener
+class pzc
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  pzc(pyz parampyz, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public pzc(Context paramContext, ArticleInfo paramArticleInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = bnrf.a("kd_topic_recommend_card_jump_url");
-    if ((paramViewBase instanceof String)) {}
-    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
-      }
-      if (!TextUtils.isEmpty(paramViewBase))
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-          sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-        }
-        ozs.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      }
-      return;
-    }
+    String str = paa.g + bfuc.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
+    pay.a(pyz.a(this.jdField_a_of_type_Pyz), str);
+    pyz.a(this.jdField_a_of_type_Pyz, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

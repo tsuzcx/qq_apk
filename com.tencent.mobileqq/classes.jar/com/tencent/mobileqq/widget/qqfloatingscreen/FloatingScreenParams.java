@@ -37,16 +37,6 @@ public class FloatingScreenParams
     this.mCanMove = paramBoolean;
   }
   
-  private void setHeight(int paramInt)
-  {
-    this.mHeight = paramInt;
-  }
-  
-  private void setWidth(int paramInt)
-  {
-    this.mWidth = paramInt;
-  }
-  
   public FloatingScreenParams clone()
   {
     try
@@ -135,10 +125,10 @@ public class FloatingScreenParams
     Object localObject = BaseApplicationImpl.sApplication.getResources();
     if (localObject != null)
     {
-      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298420);
-      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298422);
-      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298421);
-      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298423);
+      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298485);
+      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298487);
+      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298486);
+      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298488);
     }
     this.mWidth = this.mScreenLonger;
     this.mHeight = ((int)(this.mWidth * this.mScreenRatio));
@@ -169,6 +159,11 @@ public class FloatingScreenParams
   public void setFloatingCenterY(int paramInt)
   {
     this.mFloatingCenterY = paramInt;
+  }
+  
+  public void setHeight(int paramInt)
+  {
+    this.mHeight = paramInt;
   }
   
   public void setScreenRatio(float paramFloat)
@@ -210,9 +205,14 @@ public class FloatingScreenParams
     setHeight(this.mSquareLength);
   }
   
-  void setShowPadding(boolean paramBoolean)
+  public void setShowPadding(boolean paramBoolean)
   {
     mShowPadding = paramBoolean;
+  }
+  
+  public void setWidth(int paramInt)
+  {
+    this.mWidth = paramInt;
   }
 }
 

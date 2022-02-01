@@ -1,27 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
 
-class rdv
-  implements rdw
+public final class rdv
+  implements Parcelable.Creator<RecommendFollowInfoTitle>
 {
-  rdv(rdu paramrdu, Bitmap[] paramArrayOfBitmap) {}
-  
-  public void a()
+  public RecommendFollowInfoTitle a(Parcel paramParcel)
   {
-    rdu.a(this.jdField_a_of_type_Rdu);
-    if (rdu.a(this.jdField_a_of_type_Rdu) <= 3)
+    boolean bool = true;
+    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
+    localRecommendFollowInfoTitle.title = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureTask", 2, "onCaptureFailed try angin tryCount:" + rdu.a(this.jdField_a_of_type_Rdu) + "  CaptureTask:" + this.jdField_a_of_type_Rdu);
-      }
-      this.jdField_a_of_type_Rdu.a(null);
+      localRecommendFollowInfoTitle.isAllFollowed = bool;
+      return localRecommendFollowInfoTitle;
+      bool = false;
     }
   }
   
-  public void a(Bitmap paramBitmap, rdu paramrdu)
+  public RecommendFollowInfoTitle[] a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = paramBitmap;
-    rdu.a(this.jdField_a_of_type_Rdu);
+    return new RecommendFollowInfoTitle[paramInt];
   }
 }
 

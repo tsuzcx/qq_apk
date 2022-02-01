@@ -1,9 +1,18 @@
 import android.view.View;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleFlowLayout;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface vsr
+public final class vsr
+  implements View.OnClickListener
 {
-  public abstract boolean a(View paramView, int paramInt, QCircleFlowLayout paramQCircleFlowLayout);
+  public vsr(EditText paramEditText) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.append("@");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

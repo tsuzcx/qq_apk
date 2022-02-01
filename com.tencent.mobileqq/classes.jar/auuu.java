@@ -1,30 +1,36 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 public class auuu
+  extends Handler
 {
-  public long a;
-  public long b;
+  auut a;
   
-  public auuu(long paramLong1, long paramLong2)
+  protected auuu(auut paramauut)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    this.a = paramauut;
   }
   
-  public static auuu a(Bundle paramBundle)
+  protected void a()
   {
-    if (paramBundle == null) {
-      return null;
+    this.a = null;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {
+      return;
     }
-    return new auuu(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
-    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
-    return localBundle;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (String)paramMessage.obj;
+      this.a.a(paramMessage);
+      return;
+    }
+    this.a.a();
   }
 }
 

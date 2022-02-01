@@ -1,28 +1,31 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 class bfds
-  implements View.OnClickListener
+  extends nmf
 {
-  bfds(bfdr parambfdr, int paramInt) {}
+  bfds(bfdm parambfdm, bfdu parambfdu) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_Bfdr.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", ((bfee)this.jdField_a_of_type_Bfdr.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).b);
-    this.jdField_a_of_type_Bfdr.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity((Intent)localObject);
-    if (this.jdField_a_of_type_Bfdr.jdField_a_of_type_Bfeg.c == 31) {}
-    for (localObject = "1";; localObject = "2")
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      bdll.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_tribe", 0, 0, this.jdField_a_of_type_Bfdr.jdField_a_of_type_Bfeg.d, ((bfee)this.jdField_a_of_type_Bfdr.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a + "", "", (String)localObject);
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bfdu.a(paramInt, paramBundle);
       return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
     }
   }
 }

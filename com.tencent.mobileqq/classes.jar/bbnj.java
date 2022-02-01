@@ -1,84 +1,15 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaMetadataRetriever;
+import com.tencent.mobileqq.data.MessageForTofuNicePics;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class bbnj
+  implements abxs
 {
-  private static String a = "MediaUtil";
-  
-  @TargetApi(10)
-  public static long a(String paramString)
+  public MessageRecord a(int paramInt)
   {
-    long l1 = 0L;
-    localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
-    {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
+    if (paramInt == -7011) {
+      return new MessageForTofuNicePics();
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      long l2;
-      yuk.c(a, "getVideoDuration path=" + paramString + " exists=" + zom.e(paramString), localRuntimeException);
-      localMediaMetadataRetriever.release();
-      return 0L;
-    }
-    catch (Error localError)
-    {
-      label32:
-      yuk.c(a, "getVideoDuration path=" + paramString + " exists=" + zom.e(paramString), localError);
-      localMediaMetadataRetriever.release();
-      return 0L;
-    }
-    try
-    {
-      l2 = Long.parseLong(paramString);
-      l1 = l2;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-      break label32;
-    }
-    localMediaMetadataRetriever.release();
-    return l1;
-  }
-  
-  @TargetApi(10)
-  public static Bitmap a(String paramString, int paramInt)
-  {
-    Object localObject = null;
-    if (!zom.e(paramString))
-    {
-      yuk.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
-      return null;
-    }
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    localMediaMetadataRetriever.setDataSource(paramString);
-    long l = paramInt * 1000;
-    try
-    {
-      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
-      localMediaMetadataRetriever.release();
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        yuk.c(a, "getFrameAtTime", paramString);
-        paramString = localObject;
-      }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    paramString1 = a(paramString1, 0);
-    if (paramString1 != null) {
-      zoc.a(paramString1, Bitmap.CompressFormat.JPEG, 80, paramString2);
-    }
+    return null;
   }
 }
 

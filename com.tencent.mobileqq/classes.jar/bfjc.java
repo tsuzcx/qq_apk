@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class bfjc
-  implements bfev
+  implements bcrz
 {
-  private bfjc(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bfjc(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, bcrz parambcrz) {}
   
-  public void a(bfex parambfex)
+  public void a()
   {
-    this.a.jdField_a_of_type_Bfex = parambfex;
-    this.a.jdField_a_of_type_Bfcn.b();
-    this.a.e(true);
-    bdll.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.q, "", "", "");
+    if (this.jdField_a_of_type_Bcrz != null) {
+      this.jdField_a_of_type_Bcrz.a();
+    }
   }
 }
 

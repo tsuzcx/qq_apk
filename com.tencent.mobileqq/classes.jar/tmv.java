@@ -1,47 +1,37 @@
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.PlayStartVideoRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class tmv
-  implements AladdinConfigHandler
+  implements sjr
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public tmv(VideoPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable) {}
+  
+  public void a(sjt paramsjt)
   {
-    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (paramInt1 == 200)
-      {
-        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
-          bnrf.a("sp_key_ad_soft_total_area", str2.trim());
-        }
-        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bnrf.a("sp_key_ad_soft_ad_max", str2.trim());
-        }
-        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bnrf.a("sp_key_ad_soft_kd_max", str2.trim());
+    if (QLog.isColorLevel()) {
+      QLog.d("Viola.VideoPlayManager", 2, "UUIDToUrlCallback Callback vid=" + paramsjt.jdField_b_of_type_JavaLangString + ", url=" + paramsjt.jdField_a_of_type_JavaLangString + ", isH265=" + paramsjt.jdField_a_of_type_Boolean + ", isHWCodec=" + paramsjt.jdField_b_of_type_Boolean + ", fileBitRate=" + paramsjt.c);
+    }
+    if ((VideoPlayManager.PlayStartVideoRunnable.a(this.a) != null) && (paramsjt.jdField_b_of_type_JavaLangString.equals(VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.jdField_a_of_type_JavaLangString))) {
+      if (TextUtils.isEmpty(paramsjt.jdField_a_of_type_JavaLangString)) {
+        if (VideoPlayManager.a(this.a.this$0) != null) {
+          VideoPlayManager.a(this.a.this$0).a(null, 202, 107, 0, "vid2url failed, get null", null);
         }
       }
     }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    if (paramInt == 200)
+    while (!QLog.isColorLevel())
     {
-      bnrf.a("sp_key_ad_soft_total_area", "0");
-      bnrf.a("sp_key_ad_soft_ad_max", "25");
-      bnrf.a("sp_key_ad_soft_kd_max", "25");
+      return;
+      if (paramsjt.jdField_a_of_type_Int == 1)
+      {
+        VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramsjt.jdField_b_of_type_JavaLangString, paramsjt.jdField_a_of_type_JavaLangString, 104, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramsjt.jdField_b_of_type_Boolean, true, false);
+        return;
+      }
+      VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramsjt.jdField_b_of_type_JavaLangString, paramsjt.jdField_a_of_type_JavaLangString, 101, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramsjt.jdField_b_of_type_Boolean, true, false);
+      return;
     }
+    QLog.d("Viola.VideoPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramsjt.jdField_b_of_type_JavaLangString + " url:" + paramsjt.jdField_a_of_type_JavaLangString);
   }
 }
 

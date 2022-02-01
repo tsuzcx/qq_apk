@@ -1,35 +1,24 @@
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.graphics.drawable.Drawable;
 
-class yna
-  extends wjd
+public class yna
 {
-  yna(ymx paramymx) {}
+  public static final int[] a;
+  public static final int[] b;
+  public int a;
+  public Drawable a;
+  public int b;
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  static
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
-    {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
-    }
-    do
-    {
-      return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
-      {
-        yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
-      }
-      if (paramStoryPushMsg.a == 17)
-      {
-        yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((wse)wth.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
-        return;
-      }
-    } while (paramStoryPushMsg.a != 16);
-    yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130846693, 2130846691, 2130846694, 2130846692, 2130846697, 2130846696, 2130846700, 2130846695, 2130846698 };
+  }
+  
+  public yna(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

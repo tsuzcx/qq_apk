@@ -1,36 +1,68 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msgsync.cmd0x100.Submsgtype0x8a.ReqBody;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
 public class adex
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("revokeMsg", 2, "recv 0x210_0x8a_8b onlinepush");
-    }
-    Submsgtype0x8a.ReqBody localReqBody = new Submsgtype0x8a.ReqBody();
-    try
-    {
-      localReqBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      bctg.a(paramQQAppInterface, localReqBody, 0L, false);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("revokeMsg", 2, "recv 0x210_0x8a_8b online msg, prase reqBody error");
-    }
-  }
+  public adex(EditActivity paramEditActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    this.a.b();
+    Object localObject1;
+    if (this.a.jdField_a_of_type_Int == 105)
+    {
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+      if (localObject1 != null)
+      {
+        localObject1 = localObject1.toString().trim();
+        if (((String)localObject1).length() != 0) {
+          break label78;
+        }
+        QQToast.a(this.a, this.a.getString(2131691798), 0).a();
+        break label179;
+      }
+    }
+    label179:
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label78:
+      if (EditActivity.a(this.a, (String)localObject1))
+      {
+        QQToast.a(this.a, this.a.getString(2131691799), 0).a();
+      }
+      else
+      {
+        Object localObject2 = (arba)this.a.app.getManager(149);
+        arbb localarbb = (arbb)this.a.app.getManager(103);
+        localObject2 = ((arba)localObject2).a();
+        if ((EditActivity.a(this.a) != -1) && (localObject2 != null))
+        {
+          localObject2 = ((List)localObject2).iterator();
+          if (((Iterator)localObject2).hasNext())
+          {
+            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject2).next();
+            if (EditActivity.a(this.a) != localCustomEmotionData.emoId) {
+              break;
+            }
+            EditActivity.c(this.a);
+            localarbb.a(localCustomEmotionData, (String)localObject1);
+            continue;
+            EditActivity.b(this.a);
+          }
+        }
+      }
+    }
   }
 }
 

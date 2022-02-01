@@ -58,7 +58,6 @@
           "view_type": "UIView",
           "view_id": "id_middle_body_container",
           "layout_type": "layout_relative",
-          "margin_bottom": "10",
           "default_visible":"YES",
           "height": {
               "type": "wrap_content"
@@ -71,17 +70,19 @@
                {
                    "view_type": "ReadInJoyMiddleBodyView",
                    "view_id": "id_middle_body_content",
-                   "padding_left": "12",
-                   "padding_right": "12",
+                   "margin_bottom": "10",
+                   "padding_left":"12",
+                   "padding_right":"12",
                    "height": {
-                       "type": "wrap_content"
+                     "type": "wrap_content"
                    },
                    "width": {
-                       "type": "relative",
-                       "value": "375"
+                     "type": "relative",
+                     "value": "375"
                    },
                    "attributes": {
-                       "setArticleModel:": "-1"
+                       "setArticleModel:": "-1",
+                       "setCornerUrls:": ["http://pub.idqqimg.com/pc/misc/files/20190731/a028a8dc813242798fea97e6d5e97bd7.png", "http://pub.idqqimg.com/pc/misc/files/20190731/2d50072506b64296a134f2e67e7b3908.png", "http://pub.idqqimg.com/pc/misc/files/20190731/8faadc88c8bd42d19777de82572656df.png", "http://pub.idqqimg.com/pc/misc/files/20190731/900ec8daa82e480382ccc52bd3f0ee0e.png"]
                    }
                },
                {
@@ -149,8 +150,8 @@
         "view_type":"UIView",
         "view_id":"id_flow_guide_separator",
         "default_visible":"NO",
-        "margin_left":"6",
-        "margin_right":"6",
+        "margin_left":"12",
+        "margin_right":"12",
         "margin_top":"0",
         "height":{
             "type":"absolutely","value":"0.5"
@@ -160,7 +161,6 @@
             "type": "match_parent"
         },
         "attributes":{
-            "setFrameString:":"-1",
             "setBackgroundColorString:":"#E5E5E5",
             "setAttatchInfo:":"$separatorShouldShould"
         }
@@ -169,7 +169,21 @@
         "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
       },
       {
-        "$includeComponet": "componet/separator.geojson"
+          "view_type": "container",
+          "default_visible": "YES",
+          "margin_top": "-10",
+          "height": {
+              "type": "wrap_content"
+          },
+          "width": {
+              "type": "relative",
+              "value": "375"
+          },
+          "subviews": [
+              {
+                  "$includeComponet": "componet/separator_normal_bottom.geojson"
+              }
+          ]
       }
     ]
   }

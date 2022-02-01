@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-class bepc
-  extends bepm<UserState>
+public class bepc
+  extends beon<benx>
 {
-  bepc(beoy parambeoy, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  public TextWatcher a;
+  public EditText a;
+  public TextView a;
   
-  public void a(UserState paramUserState)
+  public bepc(View paramView)
   {
-    super.a(paramUserState);
-    beoy.a(this.jdField_a_of_type_Beoy).b(this.jdField_a_of_type_JavaLangString);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378538));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365924));
   }
 }
 

@@ -1,17 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class rho
-  implements View.OnClickListener
+  implements bjoe
 {
-  public rho(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  public rho(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyDeliverUGCActivity.b(this.a, true);
+    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      rgz.c();
+      odq.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", pay.h(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.c(this.a);
+      rgz.d();
+    }
   }
 }
 

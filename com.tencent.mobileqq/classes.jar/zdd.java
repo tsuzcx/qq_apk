@@ -1,19 +1,24 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
 
 class zdd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends RecyclerView.ViewHolder
 {
-  private zdd(zcx paramzcx) {}
-  
-  public void onGlobalLayout()
+  public zdd(zdb paramzdb, View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
+    super(paramView);
+  }
+  
+  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  {
+    if ((this.itemView instanceof BlankRecommendItemView))
     {
-      this.a.dismiss();
-      return;
+      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
+      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.a());
+      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
     }
-    this.a.jdField_a_of_type_Zdb.a(this.a.a());
   }
 }
 

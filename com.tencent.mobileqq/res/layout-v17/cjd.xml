@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/n7v" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:layout_width="@dimen/bd8" android:layout_height="@dimen/bd7" android:scaleType="center" />
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/n7x" android:paddingTop="@dimen/bd9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd8" android:minHeight="@dimen/bd7" android:layout_marginStart="@dimen/bd8">
+            <FrameLayout android:id="@id/n7w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd6" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0" android:layout_marginStart="@dimen/bd6" android:layout_marginEnd="8.0dip" />
+            <FrameLayout android:id="@id/nfa" android:paddingTop="@dimen/bdb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginEnd="8.0dip">
+                <ViewStub android:layout_gravity="end|center|top" android:id="@id/jl7" android:visibility="gone" android:layout="@layout/cjg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ViewStub android:layout_gravity="end|center|top" android:id="@id/mk9" android:visibility="gone" android:layout="@layout/cjf" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <LinearLayout android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                    <TextView android:textAppearance="@style/zf" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                    <ImageView android:layout_gravity="center" android:id="@id/ia2" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="8.0dip" android:scaleType="centerInside" android:alpha="0.6" android:layout_marginStart="8.0dip" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/jow" android:background="?android:dividerHorizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/bd8" android:layout_marginStart="@dimen/bd8" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/jq7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd8" android:divider="?android:listDivider" android:showDividers="middle" android:dividerPadding="12.0dip" android:layout_marginStart="@dimen/bd8" />
+    </LinearLayout>
+</FrameLayout>

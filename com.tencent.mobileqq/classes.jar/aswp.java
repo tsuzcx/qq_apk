@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
-
-public class aswp
-  extends asxh
+public abstract interface aswp
 {
-  public ExtendFriendCampusVerifyTipsView.TipsType a;
-  
-  public aswp()
-  {
-    this.mType = 7;
-  }
+  public abstract void o();
 }
 
 

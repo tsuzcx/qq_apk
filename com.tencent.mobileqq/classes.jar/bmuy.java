@@ -1,11 +1,6 @@
-public class bmuy
+public abstract class bmuy
 {
-  public bmux a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public bmuy(bmuu parambmuu) {}
+  abstract void a(int paramInt, bmuz parambmuz);
 }
 
 

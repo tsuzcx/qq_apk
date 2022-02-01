@@ -1,56 +1,67 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.DcReportUtil.1;
+import com.tencent.mobileqq.statistics.DcReportUtil.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 
-public abstract class bcdf
-  extends bcfs
+public class bcdf
 {
-  protected QQAppInterface a;
-  protected FTSEntity a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected CharSequence b;
-  protected CharSequence c;
-  private CharSequence d;
+  private static AtomicLong a = new AtomicLong(0L);
   
-  public bcdf(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.d == null) {
-      this.d = bcni.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DcReportUtil", 2, "reportDCEvent tag or detail is null: " + paramString1 + ", " + paramString2);
+      }
+      return;
     }
-    return this.d;
+    if (paramQQAppInterface == null)
+    {
+      ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
+      return;
+    }
+    a(paramQQAppInterface, paramString1, paramString2, 1);
   }
   
-  public int c()
+  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    return 1;
+    if (paramString2 != null)
+    {
+      bcef localbcef = paramQQAppInterface.getReportController();
+      if (localbcef != null)
+      {
+        String str = paramString2;
+        if (paramString2.contains("${uin_unknown}")) {
+          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
+        }
+        localbcef.a(paramString1, str, paramInt);
+      }
+    }
   }
   
-  public CharSequence d()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    return null;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    String str = "${count_unknown}|" + paramString2;
+    paramString2 = str;
+    if (!paramBoolean)
+    {
+      long l = a.incrementAndGet();
+      paramString2 = "${report_seq_prefix}" + l + "|" + str;
+    }
+    if (paramQQAppInterface == null)
+    {
+      ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
+      return;
+    }
+    a(paramQQAppInterface, paramString1, paramString2, 1);
   }
-  
-  public abstract CharSequence e();
 }
 
 

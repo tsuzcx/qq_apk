@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
-import mqq.os.MqqHandler;
-
-public class bmdo
-  extends bmee
+public abstract interface bmdo
 {
-  bmdo(bmdn parambmdn) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

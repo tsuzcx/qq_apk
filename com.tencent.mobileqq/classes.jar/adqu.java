@@ -1,62 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adqu
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public adqu(AccountManageActivity paramAccountManageActivity) {}
+  public adqu(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    bdll.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
-    if (!azoz.a().a(this.a.app, this.a)) {}
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + bfxb.a(paramString2));
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    this.a.c();
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramInt3 == 0)
+    {
+      this.a.a();
+      return;
+    }
+    paramString1 = null;
+    if (paramErrMsg != null) {
+      paramString1 = paramErrMsg.getMessage();
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(this.a.getString(2131691842), paramString1);
+      if (!TextUtils.isEmpty(paramString1)) {
+        break label299;
+      }
+      paramString1 = this.a.getString(2131717688);
+    }
+    label299:
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bcef.a(this.a.app, "dc00898", "", LoginPhoneNumActivity.a(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.a(this.a), 0, "", "", paramString1, "");
       return;
-      AccountManageActivity.a(this.a, bdwt.a(this.a.app));
-      if (this.a.c)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
-        }
-      }
-      else
-      {
-        Object localObject = paramView.getTag();
-        if (localObject == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Switch_Account", 2, "switch a non-existing account");
-          }
-        }
-        else
-        {
-          int i = ((Integer)localObject).intValue();
-          localObject = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("Switch_Account", 2, "switch uin:" + ((SimpleAccount)localObject).getUin());
-          }
-          if ((localObject != null) && (!((SimpleAccount)localObject).getUin().equals(this.a.app.getCurrentAccountUin())))
-          {
-            bdll.b(this.a.app, "CliOper", "", "", "0X8009C05", "0X8009C05", 0, 0, "", "", "", "");
-            this.a.f();
-            this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)localObject);
-            AccountManageActivity.b(this.a, true);
-            AccountManageActivity.c(this.a, true);
-            bdll.b(this.a.app, "dc00898", "", "", "0X800AC38", "0X800AC38", 0, 0, "", "", "", "");
-            this.a.app.switchAccount((SimpleAccount)localObject, null);
-            bdws.a(this.a.app, this.a);
-          }
-          bhkd.b();
-        }
-      }
+      this.a.a(2131717688, 1);
+      break;
     }
   }
 }

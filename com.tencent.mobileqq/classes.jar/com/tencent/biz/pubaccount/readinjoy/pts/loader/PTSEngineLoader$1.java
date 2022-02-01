@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.qphone.base.util.QLog;
-import qgu;
+import qmv;
 
 public class PTSEngineLoader$1
   implements Runnable
 {
-  public PTSEngineLoader$1(qgu paramqgu) {}
+  public PTSEngineLoader$1(qmv paramqmv) {}
   
   public void run()
   {

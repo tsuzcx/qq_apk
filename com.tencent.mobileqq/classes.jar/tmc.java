@@ -1,41 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
-import java.util.regex.Pattern;
-import org.json.JSONObject;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.viola.reward.VKdRewardTaskVideoTimer;
 
 public class tmc
+  implements qzg
 {
-  public int a;
-  public String a;
-  public Pattern a;
-  public JSONObject a;
-  public String b = "";
-  public String c = "";
+  public tmc(VKdRewardTaskVideoTimer paramVKdRewardTaskVideoTimer, TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5) {}
   
-  public tmc(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      this.c = paramString3;
-    }
-    if (paramJSONObject != null) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    }
-    if (paramPattern != null) {
-      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
-    }
-  }
-  
-  public String toString()
-  {
-    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("完成任务需要的时间：" + qxs.a() / 1000 + "秒");
+    this.b.setText("该视频最大贡献时长：" + qxs.c() / 1000 + "秒");
+    this.c.setVisibility(8);
+    this.d.setText("已完成任务数：" + qxt.b().a() / qxs.b());
+    this.e.setText("累积时间：" + paramInt / 1000 + "秒");
   }
 }
 

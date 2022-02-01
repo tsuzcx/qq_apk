@@ -1,37 +1,21 @@
-import com.tencent.mobileqq.activity.bless.BlessTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-class ajao
-  extends biht
+public class ajao
 {
-  ajao(ajan paramajan, String paramString1, String paramString2) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public void onCancel(bihu parambihu)
-  {
-    ajan.a(this.jdField_a_of_type_Ajan).remove(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(bihu parambihu)
-  {
-    ajan.a(this.jdField_a_of_type_Ajan).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambihu.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
-      }
-      if ((this.b != null) && (ajan.a(this.jdField_a_of_type_Ajan) != null) && (this.b.equals(ajan.a(this.jdField_a_of_type_Ajan).starVideo))) {
-        ajan.b(this.jdField_a_of_type_Ajan);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      ajan.a(this.jdField_a_of_type_Ajan);
-      return;
-    }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + parambihu.b + " code=" + parambihu.a);
-  }
+  public ajao(ajan paramajan) {}
 }
 
 

@@ -1,17 +1,55 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class utg
-  implements AdExposureChecker.ExposureCallback
+public class utg
+  implements TVK_SDKMgr.InstallListener, usp
 {
-  utg(utf paramutf) {}
+  private usq a;
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public void a()
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    usw.a(utf.a(this.a), (usv)this.a.a());
+    TVK_SDKMgr.setOnLogListener(new uti(null));
+  }
+  
+  public void a(Context paramContext)
+  {
+    TVK_SDKMgr.setDebugEnable(true);
+    TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+  }
+  
+  public void a(Context paramContext, usq paramusq)
+  {
+    this.a = paramusq;
+    if (paramContext != null) {
+      TVK_SDKMgr.installPlugin(paramContext, this);
+    }
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    return TVK_SDKMgr.isInstalled(paramContext);
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.a(paramFloat);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
   }
 }
 

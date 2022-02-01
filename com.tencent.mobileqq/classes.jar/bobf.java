@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.data.MessageRecord;
+
 public abstract interface bobf
 {
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
+  public abstract MessageRecord a(bobi parambobi);
+  
+  public abstract MessageRecord a(bobp parambobp);
 }
 
 

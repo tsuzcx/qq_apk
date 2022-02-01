@@ -1,15 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-class nzm
-  implements bljd
+public class nzm
 {
-  nzm(nzl paramnzl) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void ak_()
+  public nzm(CustomWebView paramCustomWebView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
-    }
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

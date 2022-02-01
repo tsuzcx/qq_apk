@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.util.Log;
-import apcq;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -10,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class MapJsPlugin$4
-  extends apcq
+  extends SosoInterface.OnLocationListener
 {
   MapJsPlugin$4(MapJsPlugin paramMapJsPlugin, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, boolean paramBoolean5, boolean paramBoolean6, MapJsPlugin.OnLocationFinish paramOnLocationFinish, JsRuntime paramJsRuntime, String paramString2, int paramInt2)
   {
@@ -21,28 +21,28 @@ class MapJsPlugin$4
   {
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
+      paramSosoLbsInfo = paramSosoLbsInfo.mLocation;
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if ((this.val$isWgs84) && (paramSosoLbsInfo.c != 0.0D) && (paramSosoLbsInfo.d != 0.0D))
+        if ((this.val$isWgs84) && (paramSosoLbsInfo.mLat84 != 0.0D) && (paramSosoLbsInfo.mLon84 != 0.0D))
         {
-          localJSONObject.put("latitude", paramSosoLbsInfo.c);
-          localJSONObject.put("longitude", paramSosoLbsInfo.d);
+          localJSONObject.put("latitude", paramSosoLbsInfo.mLat84);
+          localJSONObject.put("longitude", paramSosoLbsInfo.mLon84);
         }
         for (;;)
         {
-          localJSONObject.put("speed", paramSosoLbsInfo.jdField_b_of_type_Float);
-          localJSONObject.put("accuracy", paramSosoLbsInfo.jdField_a_of_type_Float);
+          localJSONObject.put("speed", paramSosoLbsInfo.speed);
+          localJSONObject.put("accuracy", paramSosoLbsInfo.accuracy);
           if (this.val$needAltitude) {
-            localJSONObject.put("altitude", paramSosoLbsInfo.e);
+            localJSONObject.put("altitude", paramSosoLbsInfo.altitude);
           }
           localJSONObject.put("verticalAccuracy", 0.0D);
-          localJSONObject.put("horizontalAccuracy", paramSosoLbsInfo.jdField_a_of_type_Float);
+          localJSONObject.put("horizontalAccuracy", paramSosoLbsInfo.accuracy);
           this.val$onLocationFinish.onLocationFinishCallback(localJSONObject);
           return;
-          localJSONObject.put("latitude", paramSosoLbsInfo.jdField_a_of_type_Double);
-          localJSONObject.put("longitude", paramSosoLbsInfo.jdField_b_of_type_Double);
+          localJSONObject.put("latitude", paramSosoLbsInfo.mLat02);
+          localJSONObject.put("longitude", paramSosoLbsInfo.mLon02);
         }
         paramSosoLbsInfo = new JSONObject();
       }

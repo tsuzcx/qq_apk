@@ -1,15 +1,26 @@
-import UserGrowth.stFriendFeedReq;
-import UserGrowth.stFriendFeedRsp;
-
 public class uon
-  extends ukl<stFriendFeedRsp>
 {
-  public uon(String paramString)
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  
+  public uon(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super("FriendFeed", 10006);
-    stFriendFeedReq localstFriendFeedReq = new stFriendFeedReq();
-    localstFriendFeedReq.attachInfo = paramString;
-    this.a = localstFriendFeedReq;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

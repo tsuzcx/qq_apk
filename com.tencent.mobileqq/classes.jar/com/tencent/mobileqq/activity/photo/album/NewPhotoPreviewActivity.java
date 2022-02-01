@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import Override;
-import aktc;
-import akvk;
+import ajqs;
+import ajta;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Rect;
@@ -12,10 +12,10 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aquy;
-import bdll;
-import bjfr;
-import blkm;
+import apoh;
+import bcef;
+import bhlx;
+import bjpi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -27,13 +27,13 @@ import com.tencent.widget.DragView;
 import com.tencent.widget.HorizontalListView;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.util.ArrayList;
-import lzq;
+import lzb;
 
 public class NewPhotoPreviewActivity
   extends AbstractPhotoPreviewActivity
-  implements blkm
+  implements bjpi
 {
-  public aktc a;
+  public ajqs a;
   public View a;
   public BubblePopupWindow a;
   public DragView a;
@@ -56,7 +56,7 @@ public class NewPhotoPreviewActivity
     for (;;)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        bdll.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
+        bcef.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
       }
       this.mPhotoPreviewLogic.onBackPressed(true);
       return;
@@ -91,7 +91,7 @@ public class NewPhotoPreviewActivity
   protected void a()
   {
     int i = 0;
-    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365768));
+    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365800));
     this.jdField_a_of_type_ComTencentWidgetDragView.setGestureChangeListener(this);
     this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
     Rect localRect = (Rect)getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND");
@@ -166,15 +166,16 @@ public class NewPhotoPreviewActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public PhotoPreviewLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoPreviewLogic localPhotoPreviewLogic = akvk.a(i, this);
+    PhotoPreviewLogic localPhotoPreviewLogic = ajta.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPreviewActivity", 2, "generateLogic:" + localPhotoPreviewLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -190,7 +191,7 @@ public class NewPhotoPreviewActivity
   {
     super.hideMenuBar();
     if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
     }
   }
   
@@ -226,7 +227,7 @@ public class NewPhotoPreviewActivity
   public void onDestroy()
   {
     if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
     }
     super.onDestroy();
   }
@@ -234,9 +235,9 @@ public class NewPhotoPreviewActivity
   public void onPause()
   {
     super.onPause();
-    lzq.a(BaseApplicationImpl.getContext(), false);
-    bjfr.a(BaseApplicationImpl.getContext(), true);
-    aquy.a(BaseApplicationImpl.getContext(), 2, true);
+    lzb.a(BaseApplicationImpl.getContext(), false);
+    bhlx.a(BaseApplicationImpl.getContext(), true);
+    apoh.a(BaseApplicationImpl.getContext(), 2, true);
   }
 }
 

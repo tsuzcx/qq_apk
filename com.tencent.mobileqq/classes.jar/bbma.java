@@ -1,169 +1,205 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.opengl.EGL14;
-import android.opengl.EGLConfig;
-import android.opengl.EGLContext;
-import android.opengl.EGLDisplay;
-import android.opengl.EGLExt;
-import android.opengl.EGLSurface;
-import android.view.Surface;
+import com.tencent.av.VideoController;
+import com.tencent.av.hd_video_2.CmdS2CInviteReqBody;
+import com.tencent.av.hd_video_2.InviteTempSessionData;
+import com.tencent.av.hd_video_2.MsgBody;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
 
-@TargetApi(18)
-public final class bbma
+public class bbma
+  implements bbls
 {
-  private EGLConfig jdField_a_of_type_AndroidOpenglEGLConfig;
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
-  private EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
-  
-  public bbma(EGLContext paramEGLContext, int paramInt)
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY) {
-      throw new RuntimeException("EGL already set up");
-    }
-    EGLContext localEGLContext1 = paramEGLContext;
-    if (paramEGLContext == null)
+    String str;
+    hd_video_2.MsgBody localMsgBody;
+    int m;
+    int i1;
+    int i2;
+    int i;
+    int k;
+    int j;
+    if (paramBoolean)
     {
-      localEGLContext1 = EGL14.EGL_NO_CONTEXT;
-      QLog.e("EglCore", 2, "sharedContext == null");
+      str = String.valueOf(paramLong1);
+      localMsgBody = new hd_video_2.MsgBody();
+      m = -1;
+      i1 = 0;
+      i2 = 0;
+      i = 0;
+      k = i2;
+      j = m;
     }
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
-      throw new RuntimeException("unable to get EGL14 display");
-    }
-    paramEGLContext = new int[2];
-    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
-      throw new RuntimeException("unable to initialize EGL14");
-    }
-    if ((paramInt & 0x2) != 0)
-    {
-      paramEGLContext = a(paramInt, 3);
-      if (paramEGLContext != null)
+      try
       {
-        EGLContext localEGLContext2 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 3, 12344 }, 0);
-        if (EGL14.eglGetError() == 12288)
-        {
-          this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
-          this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext2;
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        k = i2;
+        j = m;
+        n = localMsgBody.msg_invite_body.uint32_new_business_flag.get();
+        k = i2;
+        j = n;
+        if (!localMsgBody.msg_invite_body.msg_temp_session.has()) {
+          continue;
         }
+        m = i1;
+        k = i2;
+        j = n;
+        if (localMsgBody.msg_invite_body.msg_temp_session.uint32_relationship_type.has())
+        {
+          k = i2;
+          j = n;
+          i1 = VideoController.a(localMsgBody.msg_invite_body.msg_temp_session.uint32_relationship_type.get(), false, 1);
+          if (i1 != -1) {
+            i = i1;
+          }
+          m = i;
+          k = i;
+          j = n;
+          if (QLog.isColorLevel())
+          {
+            k = i;
+            j = n;
+            QLog.d("shanezhaiSHARP", 2, "uinType" + i + " translateType:" + i1);
+            m = i;
+          }
+        }
+        j = n;
       }
-    }
-    if (this.jdField_a_of_type_AndroidOpenglEGLContext == EGL14.EGL_NO_CONTEXT)
-    {
-      paramEGLContext = a(paramInt, 2);
-      if (paramEGLContext == null) {
-        throw new RuntimeException("Unable to find a suitable EGLConfig");
+      catch (Exception paramArrayOfByte)
+      {
+        int n;
+        paramArrayOfByte.printStackTrace();
+        m = k;
+        continue;
       }
-      localEGLContext1 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 2, 12344 }, 0);
-      a("eglCreateContext");
-      this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
-      this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext1;
-    }
-    paramEGLContext = new int[1];
-    EGL14.eglQueryContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext, 12440, paramEGLContext, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("EglCore", 2, "EGLContext created, client version " + paramEGLContext[0]);
-    }
-  }
-  
-  private EGLConfig a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 3) {}
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    paramInt1 = arrayOfEGLConfig.length;
-    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, arrayOfEGLConfig, 0, paramInt1, arrayOfInt, 0))
-    {
+      if (-1 != j) {
+        break label366;
+      }
+      VideoMsgTools.a(paramMessageHandler.app, 0, 6, true, str, String.valueOf(paramLong2), false, null, false, new Object[] { paramMsg });
+      lbv.a(paramLong2, paramLong1, 208);
       if (QLog.isColorLevel()) {
-        QLog.w("EglCore", 2, "unable to find RGB8888 / " + paramInt2 + " EGLConfig");
+        QLog.d("shanezhaiSHARP", 2, "Discard video message because of time out " + paramLong3 + " s");
       }
-      return null;
+      return;
+      m = i1;
+      k = i2;
+      j = n;
+      if (QLog.isColorLevel())
+      {
+        k = i2;
+        j = n;
+        QLog.d("shanezhaiSHARP", 2, "msg_temp_session not include");
+        m = i1;
+      }
     }
-    return arrayOfEGLConfig[0];
-  }
-  
-  private void b(String paramString)
-  {
-    int i = EGL14.eglGetError();
-    if (i != 12288) {
-      QLog.e("EglCore", 2, new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i)), new Object[0]);
-    }
-  }
-  
-  public EGLSurface a(int paramInt1, int paramInt2)
-  {
-    EGLSurface localEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 }, 0);
-    b("eglCreatePbufferSurface");
-    if (localEGLSurface == null) {
-      throw new RuntimeException("surface was null");
-    }
-    return localEGLSurface;
-  }
-  
-  public EGLSurface a(Object paramObject)
-  {
-    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture))) {
-      throw new RuntimeException("invalid surface: " + paramObject);
-    }
-    paramObject = EGL14.eglCreateWindowSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, paramObject, new int[] { 12344 }, 0);
-    b("eglCreateWindowSurface");
-    if (paramObject == null) {
-      throw new RuntimeException("surface was null");
-    }
-    return paramObject;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY)
+    label366:
+    if (j == 0) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
-      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
-      EGL14.eglReleaseThread();
-      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
+      VideoMsgTools.a(paramMessageHandler.app, m, 6, paramBoolean, str, String.valueOf(paramLong1), false, null, false, new Object[] { paramMsg });
+      break;
     }
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
-    this.jdField_a_of_type_AndroidOpenglEGLConfig = null;
   }
   
-  public void a(EGLSurface paramEGLSurface)
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
   {
-    EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface);
-  }
-  
-  public void a(EGLSurface paramEGLSurface, long paramLong)
-  {
-    EGLExt.eglPresentationTimeANDROID(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramLong);
-  }
-  
-  void a(String paramString)
-  {
-    int i = EGL14.eglGetError();
-    if (i != 12288)
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("SharpVideoDecoder", 2, "<---decodeC2CMsgPkg_SharpVideo return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
+      }
+    }
+    long l1;
+    long l4;
+    long l2;
+    long l5;
+    byte[] arrayOfByte2;
+    boolean bool;
+    do
     {
-      new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
-      new StringBuilder().append("EGL14.eglGetCurrentContext() = ").append(EGL14.eglGetCurrentContext()).append(", mEGLContext = ").append(this.jdField_a_of_type_AndroidOpenglEGLContext).toString();
-      a();
+      long l3;
+      do
+      {
+        byte[] arrayOfByte1;
+        int i;
+        int j;
+        do
+        {
+          do
+          {
+            return;
+            l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+            l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+            l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+            l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+            ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
+            paramList = l4 + "-" + l3;
+            if (QLog.isColorLevel()) {
+              QLog.d("shanezhaiSHARP", 2, "<---decodeC2CMsgPkg_SharpVideo :  key:" + paramList);
+            }
+            if (!paramMessageHandler.app.getMsgCache().a(l2, paramList)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("shanezhaiSHARP", 2, "msg has been pulled");
+          return;
+          l3 = bbko.a();
+          l4 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
+          arrayOfByte1 = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+          l5 = l3 - l1;
+          arrayOfByte2 = new byte[4];
+          byte[] arrayOfByte3 = new byte[4];
+          System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, 4);
+          System.arraycopy(arrayOfByte1, 4, arrayOfByte3, 0, 4);
+          i = lcs.a(arrayOfByte2, 4);
+          j = arrayOfByte1.length - 8 - i;
+        } while (j < 0);
+        arrayOfByte2 = new byte[j];
+        System.arraycopy(arrayOfByte1, i + 8, arrayOfByte2, 0, j);
+        bool = lku.a(arrayOfByte2);
+        if (((parambbkm.jdField_a_of_type_Boolean) || (parambbkm.f)) && ((parambbkm.jdField_a_of_type_Long == parambbkm.b) && ((parambbkm.jdField_a_of_type_Long != parambbkm.b) || (bool)))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("SharpVideoDecoder", 2, "<---decodeC2CMsgPkg_SharpVideo return null:,isReaded:" + parambbkm.jdField_a_of_type_Boolean + "syncOther:" + parambbkm.f + ",isSharpRequest" + bool);
+      return;
+      if (bool)
+      {
+        paramMessageHandler.app.getMsgCache().a(l2, paramList, l3);
+        lbv.a(l4, l2, 215);
+      }
+      if (lld.c()) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("shanezhaiSHARP", 2, "Discard video message cause device not support");
+      }
+    } while (!bool);
+    lbv.a(l4, l2, 212);
+    return;
+    if (l5 >= 60L)
+    {
+      a(paramMessageHandler, paramMsg, l2, l4, l5, arrayOfByte2, bool);
+      return;
     }
-  }
-  
-  public boolean a(EGLSurface paramEGLSurface)
-  {
-    return EGL14.eglSwapBuffers(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface);
-  }
-  
-  public void b(EGLSurface paramEGLSurface)
-  {
-    if ((this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) && (QLog.isColorLevel())) {
-      QLog.d("EglCore", 2, "NOTE: makeCurrent w/o display");
+    if (bool) {
+      lbv.a(l4, l2, 211);
     }
-    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
-      throw new RuntimeException("eglMakeCurrent failed");
+    if (QLog.isColorLevel()) {
+      QLog.d("shanezhaiSHARP", 2, "===========handleSharpVideoMessageResp 1234========");
     }
+    paramMessageHandler.a(l4, arrayOfByte2, l2, (int)l1, bool);
   }
 }
 

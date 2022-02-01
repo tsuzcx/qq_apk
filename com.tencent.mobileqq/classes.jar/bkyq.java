@@ -1,6 +1,29 @@
-class bkyq
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
+
+public class bkyq
+  implements View.OnClickListener
 {
-  private static bkyl a = new bkyl("mini_sdk_client_module", null);
+  public bkyq(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!this.a.a)
+      {
+        this.a.setResult(0);
+        this.a.finish();
+      }
+    }
+  }
 }
 
 

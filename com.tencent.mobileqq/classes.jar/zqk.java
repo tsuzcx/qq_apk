@@ -1,47 +1,78 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 class zqk
-  extends zqh
+  extends bgod
 {
-  zqk(zqi paramzqi, zqq paramzqq, File paramFile) {}
+  zqk(zqj paramzqj, zqa paramzqa, ArrayList paramArrayList, long paramLong) {}
   
-  public void onFailure(String paramString)
+  public void onDone(bgoe parambgoe)
   {
-    this.jdField_a_of_type_Zqq.onFailure(paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_Zqi.b.size())
+    if (parambgoe.a == 0)
     {
-      File localFile = new File((String)this.jdField_a_of_type_Zqi.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
+      parambgoe = this.jdField_a_of_type_Zqj.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (parambgoe.hasNext()) {
+        if (!((File)parambgoe.next()).exists())
+        {
+          this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp.a(this.jdField_a_of_type_Zqj);
+          return;
+        }
       }
-      i += 1;
+      try
+      {
+        parambgoe = this.jdField_a_of_type_Zqa.b.iterator();
+        int i = 1;
+        while (parambgoe.hasNext())
+        {
+          String str = (String)parambgoe.next();
+          File localFile = new File(this.jdField_a_of_type_Zqj.a() + File.separator + "v_" + i + ".mp4");
+          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            ypi.a(new File(str), localFile);
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_Zqj.b();
+      }
+      catch (IOException parambgoe)
+      {
+        QLog.e(".troop.VideoCombineHelper", 1, parambgoe, new Object[0]);
+        this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp.a(this.jdField_a_of_type_Zqj);
+        this.jdField_a_of_type_Zqa.b = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp.b(this.jdField_a_of_type_Zqj);
+        this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqo = new zqb(this.jdField_a_of_type_Zqj.jdField_a_of_type_Zpq, this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp, this.jdField_a_of_type_Zqj.c, this.jdField_a_of_type_Zqa.b, this.jdField_a_of_type_Zqa.d, this.jdField_a_of_type_Zqa.c);
+        if (!VideoEnvironment.checkAVCodecLoadIsOK((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
+      for (;;)
+      {
+        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        return;
+        if (this.jdField_a_of_type_Zqa.a) {
+          this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp.b(this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqo);
+        } else {
+          this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp.a(this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqo);
+        }
+      }
     }
-    this.jdField_a_of_type_Zqi.b = new ArrayList();
-    this.jdField_a_of_type_Zqq.onFinish(paramBoolean);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Zqq.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Zqq.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Zqq.onSuccess(paramString);
+    this.jdField_a_of_type_Zqj.d = ("donwload failed!code = " + parambgoe.a + "errmsg = " + parambgoe.b);
+    this.jdField_a_of_type_Zqj.jdField_a_of_type_Zqp.a(this.jdField_a_of_type_Zqj);
   }
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/gur" />
-    <item android:state_pressed="false" android:drawable="@drawable/gur" />
-</selector>
+    <stroke android:width="1.5dip" android:color="#ffffffff" />
+    <solid android:color="@android:color/transparent" />
+</shape>

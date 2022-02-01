@@ -1,10 +1,8 @@
 package cooperation.liveroom;
 
 import android.support.annotation.Nullable;
-import bhlo;
-import bhnv;
-import bjrc;
-import bmgk;
+import bhwr;
+import bkkq;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -12,6 +10,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
 import java.lang.reflect.Constructor;
@@ -149,11 +149,11 @@ public class LiveRoomHelper
   @Nullable
   public static PluginInfo getPluginInfoInQQ()
   {
-    bmgk localbmgk = getPluginManagerInQQ();
-    if (localbmgk == null) {
+    bkkq localbkkq = getPluginManagerInQQ();
+    if (localbkkq == null) {
       return null;
     }
-    return localbmgk.a("LiveRoomPlugin.apk");
+    return localbkkq.a("LiveRoomPlugin.apk");
   }
   
   public static boolean getPluginInstalledInTool()
@@ -162,7 +162,7 @@ public class LiveRoomHelper
   }
   
   @Nullable
-  public static bmgk getPluginManagerInQQ()
+  public static bkkq getPluginManagerInQQ()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
@@ -173,7 +173,7 @@ public class LiveRoomHelper
         QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
         return null;
       }
-      return (bmgk)((QQAppInterface)localObject).getManager(27);
+      return (bkkq)((QQAppInterface)localObject).getManager(27);
     }
   }
   
@@ -211,7 +211,7 @@ public class LiveRoomHelper
       localJSONObject.put("platform", "androidqq");
       localJSONObject.put("platVersion", AppSetting.f());
       String str = "";
-      if ("com.tencent.mobileqq:tool".equals(bjrc.r())) {
+      if ("com.tencent.mobileqq:tool".equals(bhwr.r())) {
         str = getPluginVersionInTool();
       }
       for (;;)
@@ -220,11 +220,11 @@ public class LiveRoomHelper
         localJSONObject.put("from", paramString1);
         localJSONObject.put("action", paramString2);
         localJSONObject.put("result", paramString3);
-        localJSONObject.put("imei", bhlo.a());
-        localJSONObject.put("device", bhlo.i());
+        localJSONObject.put("imei", DeviceInfoUtil.getIMEI());
+        localJSONObject.put("device", DeviceInfoUtil.getModel());
         localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
-        localJSONObject.put("network", bhnv.b(BaseApplicationImpl.getContext()));
-        localJSONObject.put("os", bhlo.e());
+        localJSONObject.put("network", NetworkUtil.getNetworkType(BaseApplicationImpl.getContext()));
+        localJSONObject.put("os", DeviceInfoUtil.getDeviceOSVersion());
         reportJson.put(localJSONObject);
         return;
         PluginInfo localPluginInfo = getPluginInfoInQQ();

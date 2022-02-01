@@ -1,13 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class qcu
-  implements ViewBase.IBuilder
+class qcu
+  implements ViewBase.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qcu(qcq paramqcq, Container paramContainer) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    return new qct(paramVafContext);
+    paramViewBase = BaseApplicationImpl.getContext();
+    int i;
+    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
+      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (pxs.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
+        qcq.a(this.jdField_a_of_type_Qcq, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      }
+      return;
+      i = 0;
+      continue;
+      i = 1;
+    }
   }
 }
 

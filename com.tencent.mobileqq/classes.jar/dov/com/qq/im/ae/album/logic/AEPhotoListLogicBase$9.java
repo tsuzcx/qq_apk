@@ -1,15 +1,18 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bohl;
+import bllh;
+import bllm;
+import blmi;
+import mqq.util.WeakReference;
 
 public class AEPhotoListLogicBase$9
   implements Runnable
 {
-  public AEPhotoListLogicBase$9(bohl parambohl, String paramString, boolean paramBoolean) {}
+  public AEPhotoListLogicBase$9(blmi paramblmi) {}
   
   public void run()
   {
-    bohl.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    ((bllh)this.this$0.a.get()).a.notifyDataSetChanged();
   }
 }
 

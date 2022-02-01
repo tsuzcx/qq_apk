@@ -1,39 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-final class rpu
-  extends ClickableSpan
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicView$MyTopicViewHolder;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "titleText", "Landroid/widget/TextView;", "introView", "coverView", "Landroid/widget/ImageView;", "(Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/ImageView;)V", "getCoverView", "()Landroid/widget/ImageView;", "getIntroView", "()Landroid/widget/TextView;", "getTitleText", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rpu
+  extends rpk
 {
-  rpu(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
+  @NotNull
+  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  @NotNull
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  @NotNull
+  private final TextView b;
   
-  public void onClick(View paramView)
+  public rpu(@NotNull TextView paramTextView1, @NotNull TextView paramTextView2, @NotNull ImageView paramImageView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("big_brother_source_key", ozs.f(0));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
+    this.b = paramTextView2;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  @NotNull
+  public final ImageView a()
   {
-    paramTextPaint.setColor(Color.rgb(18, 183, 245));
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  @NotNull
+  public final TextView b()
+  {
+    return this.b;
   }
 }
 

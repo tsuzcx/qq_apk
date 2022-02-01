@@ -1,31 +1,25 @@
-import android.content.Intent;
-import com.tencent.biz.troop.TroopMemberApiService;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public class aask
-  extends WtloginListener
+class aask
 {
-  public aask(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<aasl> b;
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public aask(aasi paramaasi, View paramView, aasl paramaasl)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramaasl);
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public aasl a()
   {
-    if (paramInt2 == 0)
-    {
-      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+    return (aasl)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 

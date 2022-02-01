@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import rwf;
-import rzj;
+import sdj;
+import sgn;
 
 public class LitePlayer$6
   implements Runnable
 {
-  public LitePlayer$6(rzj paramrzj, rwf paramrwf) {}
+  public LitePlayer$6(sgn paramsgn, sdj paramsdj) {}
   
   public void run()
   {

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.armap.map;
 
-import agej;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,6 +10,7 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class RoundCorneredFrameLayout
   extends FrameLayout
@@ -30,7 +30,7 @@ public class RoundCorneredFrameLayout
   public RoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = agej.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = AIOUtils.dp2px(a(paramContext, paramAttributeSet), paramContext.getResources());
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }

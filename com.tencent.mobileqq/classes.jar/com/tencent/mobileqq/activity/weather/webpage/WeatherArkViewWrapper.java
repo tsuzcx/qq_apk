@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import agej;
-import amlk;
-import amlt;
-import amlu;
-import amma;
+import algh;
+import algq;
+import algr;
+import algx;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelStoreOwner;
@@ -24,13 +23,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anxh;
-import aqbx;
-import aqet;
-import axtv;
+import aoye;
+import awhc;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkAppInfo.Size;
 import com.tencent.ark.open.ArkView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import kotlin.Lazy;
@@ -46,12 +46,12 @@ import org.jetbrains.annotations.Nullable;
 public final class WeatherArkViewWrapper
   extends FrameLayout
 {
-  public static final amlt a;
+  public static final algq a;
   private byte jdField_a_of_type_Byte;
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private amma jdField_a_of_type_Amma;
+  private algx jdField_a_of_type_Algx;
   @NotNull
   private final MutableLiveData<MotionEvent> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
   private ArkViewImplement.LoadCallback jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback;
@@ -67,9 +67,9 @@ public final class WeatherArkViewWrapper
   
   static
   {
-    jdField_a_of_type_Amlt = new amlt(null);
-    aqet.a(true);
-    aqet.a();
+    jdField_a_of_type_Algq = new algq(null);
+    aoye.a(true);
+    aoye.a();
   }
   
   public WeatherArkViewWrapper(@NotNull Context paramContext)
@@ -93,7 +93,7 @@ public final class WeatherArkViewWrapper
     this.jdField_a_of_type_ComTencentArkOpenArkView.setSize(paramContext, paramContext, paramContext);
     this.jdField_a_of_type_ComTencentArkOpenArkView.setBorderType(0);
     addView((View)this.jdField_a_of_type_ComTencentArkOpenArkView);
-    setArkHeight(agej.a(310, getResources()));
+    setArkHeight(AIOUtils.dp2px(310, getResources()));
   }
   
   private final float a(float paramFloat)
@@ -115,14 +115,14 @@ public final class WeatherArkViewWrapper
     Object localObject = new FrameLayout.LayoutParams(-1, this.jdField_a_of_type_Int);
     ((FrameLayout.LayoutParams)localObject).gravity = 1;
     LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setId(2131381295);
+    localLinearLayout.setId(2131381013);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localLinearLayout.setBackgroundColor(-1);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setImageResource(2130839484);
+    ((ImageView)localObject).setImageResource(2130839519);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    int j = agej.a(170.0F, getResources()) - a();
+    int j = AIOUtils.dp2px(170.0F, getResources()) - a();
     int i = j;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = j + ImmersiveUtils.getStatusBarHeight(getContext());
@@ -131,11 +131,11 @@ public final class WeatherArkViewWrapper
     localLayoutParams.gravity = 1;
     localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setText(2131719294);
+    ((TextView)localObject).setText(2131719612);
     ((TextView)localObject).setTextSize(1, 15.0F);
     ((TextView)localObject).setTextColor(-16777216);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = agej.a(20.0F, getResources());
+    localLayoutParams.topMargin = AIOUtils.dp2px(20.0F, getResources());
     localLayoutParams.gravity = 1;
     localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
     return (View)localLinearLayout;
@@ -143,11 +143,11 @@ public final class WeatherArkViewWrapper
   
   private final void a()
   {
-    amma localamma = this.jdField_a_of_type_Amma;
-    if (localamma != null) {
-      localamma.a(1);
+    algx localalgx = this.jdField_a_of_type_Algx;
+    if (localalgx != null) {
+      localalgx.a(1);
     }
-    amlk.a().a(null, "new_ark_callup_success");
+    algh.a().a(null, "new_ark_callup_success");
   }
   
   private final void a(float paramFloat1, float paramFloat2)
@@ -215,27 +215,27 @@ public final class WeatherArkViewWrapper
   
   private final void b()
   {
-    amma localamma = this.jdField_a_of_type_Amma;
-    if (localamma != null) {
-      localamma.a(0);
+    algx localalgx = this.jdField_a_of_type_Algx;
+    if (localalgx != null) {
+      localalgx.a(0);
     }
   }
   
   private final void c()
   {
-    Object localObject = this.jdField_a_of_type_Amma;
+    Object localObject = this.jdField_a_of_type_Algx;
     if (localObject != null) {
-      ((amma)localObject).a(-1);
+      ((algx)localObject).a(-1);
     }
-    setArkHeight(agej.a(310, getResources()));
-    localObject = findViewById(2131381295);
+    setArkHeight(AIOUtils.dp2px(310, getResources()));
+    localObject = findViewById(2131381013);
     if (localObject == null) {
       localObject = a();
     }
     for (;;)
     {
       addView((View)localObject);
-      amlk.a().a(null, "new_ark_callup_fail");
+      algh.a().a(null, "new_ark_callup_fail");
       return;
       if ((((View)localObject).getParent() instanceof ViewGroup))
       {
@@ -263,7 +263,7 @@ public final class WeatherArkViewWrapper
   public final void a(@NotNull ViewModelStoreOwner paramViewModelStoreOwner)
   {
     Intrinsics.checkParameterIsNotNull(paramViewModelStoreOwner, "store");
-    this.jdField_a_of_type_Amma = ((amma)axtv.a(paramViewModelStoreOwner).get(amma.class));
+    this.jdField_a_of_type_Algx = ((algx)awhc.a(paramViewModelStoreOwner).get(algx.class));
   }
   
   public final void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
@@ -272,11 +272,11 @@ public final class WeatherArkViewWrapper
     Intrinsics.checkParameterIsNotNull(paramString2, "appView");
     Intrinsics.checkParameterIsNotNull(paramString3, "appVersion");
     Intrinsics.checkParameterIsNotNull(paramString4, "appMeta");
-    String str = aqbx.a();
+    String str = ArkAppCenterUtil.getCurrentAppConfig();
     if (QLog.isColorLevel()) {
       QLog.d("WeatherWebArkWrapper", 2, "initArkView appName: " + paramString1 + ", appView: " + paramString2 + ", appVersion: " + paramString3 + ", appMeta: " + paramString4 + ", appConfig: " + str);
     }
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback = ((ArkViewImplement.LoadCallback)new amlu(this));
+    this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback = ((ArkViewImplement.LoadCallback)new algr(this));
     this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramString1, paramString2, paramString3, paramString4, str, this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback);
   }
   
@@ -406,7 +406,7 @@ public final class WeatherArkViewWrapper
   
   public final void setArkFixScaleDensity()
   {
-    float f = anxh.a.density;
+    float f = FontSettingManager.systemMetrics.density;
     QLog.i("WeatherWebArkWrapper", 1, "setArkFixScaleDensity system: " + f);
     if (f > 0) {
       this.jdField_a_of_type_ComTencentArkOpenArkView.setScaleDensity(f);

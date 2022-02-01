@@ -3,21 +3,21 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import sup;
+import syp;
 
 public class ReadInJoyGlobalReporter$3
   implements Runnable
 {
-  public ReadInJoyGlobalReporter$3(sup paramsup) {}
+  public ReadInJoyGlobalReporter$3(syp paramsyp) {}
   
   public void run()
   {
     try
     {
-      if (sup.b(this.this$0) == 1)
+      if (syp.b(this.this$0) == 1)
       {
         BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.a);
-        sup.a(this.this$0, 0);
+        syp.a(this.this$0, 0);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener");
@@ -36,7 +36,7 @@ public class ReadInJoyGlobalReporter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter.3
  * JD-Core Version:    0.7.0.1
  */

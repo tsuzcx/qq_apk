@@ -1,11 +1,24 @@
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
 class umg
-  implements ukd
+  implements TextView.OnEditorActionListener
 {
-  umg(umd paramumd, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
+  umg(umb paramumb) {}
   
-  public void a(uko paramuko)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    umd.a(this.jdField_a_of_type_Umd, paramuko, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
+    }
+    if (umb.a(this.a) != null) {
+      umb.a(this.a).a();
+    }
+    return true;
   }
 }
 

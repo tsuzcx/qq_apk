@@ -12,7 +12,7 @@ import com.tencent.pts.core.lite.IPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import oox;
+import oqj;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,13 +20,13 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJChannelBannerView
   extends FrameLayout
 {
-  public static final oox a;
+  public static final oqj a;
   @NotNull
   private PTSItemView a;
   
   static
   {
-    jdField_a_of_type_Oox = new oox(null);
+    jdField_a_of_type_Oqj = new oqj(null);
   }
   
   public RIJChannelBannerView(@NotNull Context paramContext)

@@ -1,77 +1,99 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Color;
+import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
+import android.graphics.RectF;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class aqpl
-  extends RecyclerView.Adapter<aqpn>
 {
-  public aqpl(aqph paramaqph) {}
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  protected final View a;
   
-  public aqpn a(ViewGroup paramViewGroup, int paramInt)
+  public aqpl(View paramView)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558757, paramViewGroup, false);
-    return new aqpn(this.a, paramViewGroup);
+    if (paramView == null) {
+      throw new IllegalArgumentException("itemView may not be null");
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  @SuppressLint({"RecyclerView"})
-  public void a(aqpn paramaqpn, int paramInt)
+  private View a(View paramView, float paramFloat1, float paramFloat2)
   {
-    boolean bool = true;
-    aqon localaqon = (aqon)aqph.a(this.a).get(paramInt);
-    Object localObject = this.a.getContext();
-    ImageView localImageView = paramaqpn.jdField_a_of_type_AndroidWidgetImageView;
-    String str = localaqon.c;
-    if (localaqon.jdField_b_of_type_Int == 1)
+    RectF localRectF = new RectF();
+    int i = 0;
+    Object localObject = null;
+    Iterator localIterator = paramView.getTouchables().iterator();
+    View localView;
+    float f1;
+    if (localIterator.hasNext())
     {
-      bgqr.a((Context)localObject, localImageView, str, 19.0F, bool);
-      paramaqpn.jdField_a_of_type_AndroidWidgetTextView.setText(localaqon.jdField_b_of_type_JavaLangString);
-      paramaqpn.b.setText(localaqon.e);
-      if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        break label254;
+      localView = (View)localIterator.next();
+      f1 = localView.getX();
+      float f2 = localView.getY();
+      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
+      if (!localRectF.contains(paramFloat1, paramFloat2)) {
+        break label160;
       }
-      paramaqpn.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
-      label113:
-      if ((localaqon.a == null) || (localaqon.a.size() <= 0)) {
-        break label269;
+      if (localView.equals(paramView)) {
+        i = 1;
       }
-      localObject = new Paint();
-      ((Paint)localObject).setTextSize(bhtq.b(17.0F));
-      float f1 = bhtq.a();
-      float f2 = ((Paint)localObject).measureText(localaqon.jdField_b_of_type_JavaLangString);
-      float f3 = mvd.a(this.a.getContext(), 72.0F);
-      aqph.a(this.a, (int)(f1 - f2 - f3), paramaqpn.jdField_a_of_type_AndroidWidgetLinearLayout, localaqon.a);
     }
+    label160:
     for (;;)
     {
-      paramaqpn.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(mvd.a);
-      paramaqpn.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new aqpm(this, paramInt));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramaqpn, paramInt, getItemId(paramInt));
-      return;
-      bool = false;
       break;
-      label254:
-      paramaqpn.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF03081A"));
-      break label113;
-      label269:
-      paramaqpn.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      localObject = localView;
+      if ((localView instanceof ViewGroup))
+      {
+        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
+        continue;
+        if ((i != 0) && (localObject == null)) {
+          localObject = paramView;
+        }
+      }
+      else
+      {
+        return localObject;
+      }
+      return localObject;
     }
   }
   
-  public int getItemCount()
+  public int a()
   {
-    return aqph.a(this.a).size();
+    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+  }
+  
+  public View a(aqpx paramaqpx)
+  {
+    return a(this.jdField_a_of_type_AndroidViewView, paramaqpx.a(), paramaqpx.b());
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_AndroidViewView.getAlpha() * 255.0F));
+    int i = paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
+    this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
+    paramCanvas.restoreToCount(i);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
   }
 }
 

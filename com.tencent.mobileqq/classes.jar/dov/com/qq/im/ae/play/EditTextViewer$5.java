@@ -9,7 +9,7 @@ class EditTextViewer$5
   
   public void run()
   {
-    QQToast.a(this.this$0.getContext(), this.a, 1).a();
+    QQToast.a(this.this$0.getContext(), this.val$stringRes, 1).a();
   }
 }
 

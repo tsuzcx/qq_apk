@@ -1,62 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
 
 public class wgq
-  extends JobSegment<List<wgg>, List<wgg>>
+  extends vqm
 {
-  private wgu a;
+  public long a;
+  public List<qqstory_struct.UserSimpleInfo> a;
+  public long b;
   
-  public wgq(wgu paramwgu)
+  public wgq(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
   {
-    this.a = paramwgu;
+    super(paramRspGetFeedVisitor.result);
+    this.b = paramRspGetFeedVisitor.view_total_num.get();
+    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  protected void a(JobContext paramJobContext, List<wgg> paramList)
+  public String toString()
   {
-    int i = 1;
-    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
-    if (paramList.isEmpty())
-    {
-      notifyResult(paramList);
-      return;
-    }
-    paramJobContext = paramList.iterator();
-    while (paramJobContext.hasNext()) {
-      ((wgg)paramJobContext.next()).a(this.a);
-    }
-    wfv.a(paramList);
-    wfv localwfv = (wfv)wth.a(30);
-    wfn localwfn = localwfv.a();
-    paramJobContext = paramList;
-    if (!this.a.a())
-    {
-      paramJobContext = paramList;
-      if (paramList.size() > localwfn.a())
-      {
-        yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localwfn.a());
-        paramJobContext = paramList.subList(0, localwfn.a());
-      }
-    }
-    if (localwfv.a(paramJobContext, this.a.a()))
-    {
-      long l2;
-      for (long l1 = ((wgg)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
-      {
-        long l3 = ((wgg)paramJobContext.get(i)).e();
-        l2 = l1;
-        if (l3 > l1) {
-          l2 = l3;
-        }
-        i += 1;
-      }
-      this.a.a(((wgg)paramJobContext.get(0)).e());
-      notifyResult(paramJobContext);
-      return;
-    }
-    notifyError(new ErrorMessage(3, "save to db occur error!"));
+    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.qcall;
 
-import adak;
-import axfr;
-import baou;
+import abwz;
+import avsy;
+import azjc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PhoneContact;
 
@@ -25,7 +25,7 @@ class QCallDetailActivity$3
       return;
       if (QCallDetailActivity.a(this.this$0, QCallDetailActivity.a(this.this$0)))
       {
-        Object localObject = adak.q;
+        Object localObject = abwz.q;
         int m = localObject.length;
         int i = 0;
         int j = k;
@@ -41,12 +41,12 @@ class QCallDetailActivity$3
           if (j == 0) {
             break;
           }
-          localObject = (axfr)this.this$0.app.getManager(11);
+          localObject = (avsy)this.this$0.app.getManager(11);
           if (localObject != null) {
             break label142;
           }
         }
-        for (localObject = null;; localObject = ((axfr)localObject).c(QCallDetailActivity.a(this.this$0)))
+        for (localObject = null;; localObject = ((avsy)localObject).c(QCallDetailActivity.a(this.this$0)))
         {
           if (localObject == null) {
             break label159;

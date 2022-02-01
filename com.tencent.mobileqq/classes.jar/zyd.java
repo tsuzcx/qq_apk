@@ -1,31 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-class zyd
-  extends BroadcastReceiver
+public abstract interface zyd
 {
-  zyd(zyc paramzyc) {}
+  public abstract void a(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    }
-    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), zyc.a(this.a))))
-    {
-      if (zyc.a(this.a) != null) {
-        zyc.a(this.a).removeMessages(108);
-      }
-      if (zyc.a(this.a) != null) {
-        zyc.a(this.a).a();
-      }
-    }
-  }
+  public abstract void a(MediaPlayer paramMediaPlayer, VsMusicItemInfo paramVsMusicItemInfo);
 }
 
 

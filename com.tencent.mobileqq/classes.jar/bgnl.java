@@ -1,17 +1,6 @@
-public class bgnl
+public abstract interface bgnl
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  
-  public bgnl(int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(bgnk parambgnk);
 }
 
 

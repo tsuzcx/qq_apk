@@ -1,112 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.doutu.DoutuData;
+import java.util.HashMap;
 
-public class aqwc
-  extends arac<aqwd>
+class aqwc
+  implements URLDrawableDownListener
 {
-  private static boolean a;
-  private static boolean b;
+  aqwc(aqwb paramaqwb) {}
   
-  public static boolean a()
-  {
-    aqwd localaqwd = (aqwd)aran.a().a(579);
-    if ((localaqwd != null) && (!TextUtils.isEmpty(localaqwd.a))) {
-      a = "1".equals(localaqwd.a);
-    }
-    return a;
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  public static boolean b()
-  {
-    aqwd localaqwd = (aqwd)aran.a().a(579);
-    if ((localaqwd != null) && (!TextUtils.isEmpty(localaqwd.b))) {
-      b = "1".equals(localaqwd.b);
-    }
-    return b;
-  }
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  @NonNull
-  public aqwd a(int paramInt)
-  {
-    return new aqwd();
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public aqwd a(String paramString)
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    try
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof aqwd)))
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("IsImageImmersiveEnable");
-      localObject = ((JSONObject)localObject).optString("IsVideoImmersiveEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("ImmersiveConfProcessor", 2, "ImmersiveConfBean, isImgEnable:" + paramString + ", isVdoEnable:" + (String)localObject);
+      paramView = (aqwd)paramView;
+      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       }
-      paramString = new aqwd(paramString.trim(), ((String)localObject).trim());
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  @Nullable
-  public aqwd a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      aqwd localaqwd = a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImmersiveConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      if (this.a.a == null) {
+        this.a.a = new HashMap();
       }
-      return localaqwd;
-    }
-    return new aqwd();
-  }
-  
-  public void a(aqwd paramaqwd)
-  {
-    if (paramaqwd != null)
-    {
-      if (TextUtils.isEmpty(paramaqwd.a)) {
-        a = "1".equals(paramaqwd.a);
-      }
-      if (TextUtils.isEmpty(paramaqwd.b)) {
-        b = "1".equals(paramaqwd.b);
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
+        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
       }
     }
-  }
-  
-  public Class<aqwd> clazz()
-  {
-    return aqwd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 579;
   }
 }
 

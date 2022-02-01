@@ -1,66 +1,35 @@
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class sed
+class sed
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public int a;
-  public long a;
-  public View.OnClickListener a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  sed(sdy paramsdy) {}
   
-  public sed()
-  {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Int = -1;
-  }
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
   
-  public boolean equals(Object paramObject)
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof sed))
+    int i = paramSeekBar.getProgress();
+    int j = sdy.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + sdi.a(j));
+    }
+    if (j == 3) {
+      sdy.a(this.a).a(i * 1000, sdy.a(this.a));
+    }
+    for (;;)
     {
-      paramObject = (sed)paramObject;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
-      {
-        bool1 = bool2;
-        if (this.d == paramObject.d)
-        {
-          bool1 = bool2;
-          if (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int)
-          {
-            bool1 = bool2;
-            if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
-            {
-              bool1 = bool2;
-              if (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int)
-              {
-                bool1 = bool2;
-                if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString))
-                {
-                  bool1 = bool2;
-                  if (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString))
-                  {
-                    bool1 = bool2;
-                    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
-                      bool1 = true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      if (j == 5) {
+        sdy.a(this.a).c(i * 1000);
       }
     }
-    return bool1;
   }
 }
 

@@ -1,9 +1,12 @@
-import com.tencent.mobileqq.app.utils.NumberWheelView;
-import com.tencent.widget.VerticalGallery;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface apdq
+class apdq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
+  apdq(apdo paramapdo) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

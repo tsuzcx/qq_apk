@@ -1,16 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-final class rae
-  implements DialogInterface.OnDismissListener
-{
-  rae(DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.onDismiss(paramDialogInterface);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rae {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

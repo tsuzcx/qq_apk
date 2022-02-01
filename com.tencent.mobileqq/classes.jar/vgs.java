@@ -1,75 +1,47 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class vgs
+  implements PluginManagerUpdater
 {
-  private final List<vhb> jdField_a_of_type_JavaUtilList;
-  private final BlockingQueue<vhb> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private final vhe jdField_a_of_type_Vhe;
-  private final vhh<vhb> jdField_a_of_type_Vhh;
-  private final vhj jdField_a_of_type_Vhj;
-  private final BlockingQueue<vhb> b;
+  private File jdField_a_of_type_JavaIoFile;
+  private vgv jdField_a_of_type_Vgv;
   
-  public vgs(vhe paramvhe, vgp paramvgp, vgy paramvgy)
+  vgs(vgv paramvgv)
   {
-    this.jdField_a_of_type_Vhe = paramvhe;
-    this.jdField_a_of_type_Vhj = new vhj(paramvgp, new vhc(1L), paramvhe);
-    this.jdField_a_of_type_Vhj.a(paramvhe);
-    this.jdField_a_of_type_Vhh = new vhh(paramvgy);
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.b = new LinkedBlockingQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  List<vhb> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  void a()
-  {
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      Thread.yield();
-    }
-    vhb localvhb;
-    while (!this.b.isEmpty())
+    if (paramvgv != null)
     {
-      localvhb = (vhb)this.b.remove();
-      this.jdField_a_of_type_Vhh.b(localvhb);
-    }
-    while (!this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.isEmpty())
-    {
-      localvhb = (vhb)this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.remove();
-      this.jdField_a_of_type_Vhh.a(localvhb);
-    }
-    this.jdField_a_of_type_Vhj.a(this.jdField_a_of_type_Vhe.a());
-    this.jdField_a_of_type_Vhh.a(this.jdField_a_of_type_Vhj, this.jdField_a_of_type_JavaUtilList);
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
-      Thread.yield();
+      this.jdField_a_of_type_Vgv = paramvgv;
+      this.jdField_a_of_type_JavaIoFile = new File(this.jdField_a_of_type_Vgv.b());
     }
   }
   
-  public void a(List<vhb> paramList)
+  public vgv a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.addAll(paramList);
+    return this.jdField_a_of_type_Vgv;
   }
   
-  public void b()
+  public File getLatest()
   {
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      Thread.yield();
-    }
-    this.jdField_a_of_type_Vhh.a();
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.b.clear();
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
-      Thread.yield();
-    }
+    return this.jdField_a_of_type_JavaIoFile;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return ThreadManagerExecutor.getExecutorService(16).submit(new vgu(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return ThreadManagerExecutor.getExecutorService(16).submit(new vgt(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

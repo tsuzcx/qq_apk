@@ -1,46 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageForTroopFee;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ahvh
-  implements View.OnClickListener
+public class ahvh
+  implements EncodeVideoTask.ResultListener
 {
-  ahvh(ahvg paramahvg) {}
+  public ahvh(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void onEncodeSuccess(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
-    ahvi localahvi = (ahvi)agej.a(paramView);
-    Object localObject = (MessageForTroopFee)localahvi.a;
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", ((MessageForTroopFee)localObject).actionUrl);
-    paramView.getContext().startActivity(localIntent);
-    localObject = ((TroopManager)this.a.a.getManager(52)).b(localahvi.b);
-    int i;
-    if (localObject != null)
+    BlessSelectMemberActivity.a = ???;
+    synchronized (BlessSelectMemberActivity.a())
     {
-      if (!((TroopInfo)localObject).isTroopOwner(this.a.a.getCurrentAccountUin())) {
-        break label160;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      bdll.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localahvi.b, i + "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
       return;
-      label160:
-      if (((TroopInfo)localObject).isAdmin()) {
-        i = 1;
-      } else {
-        i = 2;
-      }
+    }
+  }
+  
+  public void onError(int paramInt)
+  {
+    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      this.a.finish();
+      return;
     }
   }
 }

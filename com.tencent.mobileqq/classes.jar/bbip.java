@@ -1,8 +1,16 @@
-import android.hardware.Camera;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface bbip
+class bbip
+  implements View.OnTouchListener
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  bbip(bbio parambbio) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

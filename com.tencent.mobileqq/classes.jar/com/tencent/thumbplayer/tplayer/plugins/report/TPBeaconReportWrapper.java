@@ -2,6 +2,8 @@ package com.tencent.thumbplayer.tplayer.plugins.report;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.thumbplayer.config.TPPlayerConfig;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,7 +60,9 @@ public class TPBeaconReportWrapper
   public static void init(Context paramContext)
   {
     TPLogUtil.i("TPBeaconReportWrapper", "Beacon sdk init.");
-    BeaconAdapter.setLogAble(false, false);
+    if ((!TextUtils.isEmpty(TPPlayerConfig.beacon_policy_host)) && (!TextUtils.isEmpty(TPPlayerConfig.beacon_log_host))) {
+      UserAction.setReportDomain(TPPlayerConfig.beacon_policy_host, TPPlayerConfig.beacon_log_host);
+    }
     BeaconAdapter.registerTunnel("00000GODBG3702Y1", "", "");
   }
   

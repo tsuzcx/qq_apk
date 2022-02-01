@@ -1,53 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.parallel.ParallelStream;
+import android.graphics.PointF;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.List;
 
 public class yfh
-  extends JobSegment<yfw, yfw>
+  implements ycq
 {
-  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
-  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
-  private yfw jdField_a_of_type_Yfw;
+  private yfh(DoodleLayout paramDoodleLayout) {}
   
-  private void a(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new yfp(this), paramString);
-    ylv localylv1;
-    ylv localylv2;
-    if (this.jdField_a_of_type_Yfw.a())
-    {
-      localylv1 = new ylv(paramString, 2, "", 0);
-      localylv2 = new ylv(paramString, 2, "", 1);
-    }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new yfn(this, 0), paramString).map(new yfn(this, 1), paramString).map(new yfl(this), localylv1).map(new yfl(this), localylv2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new yfn(this, -1), paramString).map(new yfl(this), localylv1))
-    {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new yfk(this));
-      return;
-      localylv1 = new ylv(paramString, 2, "");
+    this.a.d(3);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat == 1.0F) {
+      this.a.jdField_a_of_type_Ydv.a(this.a.a().a());
     }
   }
   
-  protected void a(JobContext paramJobContext, yfw paramyfw)
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3) {}
+  
+  public boolean a(ycr paramycr)
   {
-    if ((paramyfw == null) || (paramyfw.a == null) || (TextUtils.isEmpty(paramyfw.a.feedId)))
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) && (paramycr != null))
     {
-      yuk.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
-      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
-      return;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+      Object localObject;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
+        ((ygw)localObject).d = false;
+        if (!(localObject instanceof ycg)) {
+          break label124;
+        }
+        ycc localycc = this.a.a();
+        if (localycc != null) {
+          localycc.a.add((ycg)localObject);
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramycr);
+        paramycr.d = true;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+        return true;
+        label124:
+        if ((localObject instanceof ycr))
+        {
+          localObject = this.a.a();
+          if (localObject != null) {
+            ((ycp)localObject).d();
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-    this.jdField_a_of_type_Yfw = paramyfw;
-    a(paramyfw.a.feedId);
+    return false;
   }
   
-  public void onCancel()
-  {
-    super.onCancel();
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
-  }
+  public void b() {}
 }
 
 

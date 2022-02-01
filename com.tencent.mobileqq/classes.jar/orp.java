@@ -1,66 +1,21 @@
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
 
-public class orp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class orp
+  implements ViewBase.OnClickListener
 {
-  public int a;
-  public long a;
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
+  orp(ouc paramouc, ouo paramouo) {}
   
-  public orp(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
+  public final void onClick(ViewBase paramViewBase)
   {
-    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
-  }
-  
-  public orp(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    paramReadInJoyCommentComponentFragment = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramReadInJoyCommentComponentFragment = "";
+    paramViewBase = this.jdField_a_of_type_Ouc;
+    if (paramViewBase == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter");
     }
-    this.b = paramReadInJoyCommentComponentFragment;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bhlg.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-        break label79;
-      }
-      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
-      }
-      return;
-      label79:
-      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
-        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    int i = 0;
-    if (!TextUtils.isEmpty(this.b)) {
-      i = this.b.length();
-    }
-    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
+    ((osu)paramViewBase).a(this.jdField_a_of_type_Ouo, orx.a(this.jdField_a_of_type_Ouo, 0), 2);
   }
 }
 

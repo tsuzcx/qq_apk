@@ -1,12 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
-class aiih
-  implements DialogInterface.OnClickListener
+public class aiih
+  extends aiid
 {
-  aiih(aihy paramaihy) {}
+  public aiih(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, aiig paramaiig)
+  {
+    super(paramQQAppInterface, paramContext, paramXListView, paramaiig);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected aihx a()
+  {
+    return new aiic(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+  }
+  
+  protected void d()
+  {
+    super.d();
+    bcef.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+  }
+  
+  public void e()
+  {
+    super.e();
+    bcef.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+  }
 }
 
 

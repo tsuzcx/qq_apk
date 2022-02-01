@@ -1,26 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
 
 public class aluc
-  implements bliz
+  implements DialogInterface.OnClickListener
 {
-  public aluc(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aluc(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    alug.b("", "0X800656F", "0");
+    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", amip.Y);
+    this.a.startActivity(paramDialogInterface);
+    ApolloWebGameActivity.a(this.a);
   }
 }
 

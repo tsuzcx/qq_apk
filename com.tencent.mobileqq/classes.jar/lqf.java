@@ -1,32 +1,32 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import java.util.List;
-
 public class lqf
-  implements lpr
 {
-  protected final AVRedPacketManager a;
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
   
-  public lqf(VideoAppInterface paramVideoAppInterface)
+  public float a()
   {
-    this.a = ((AVRedPacketManager)paramVideoAppInterface.a(6));
+    return this.jdField_a_of_type_Float;
   }
   
-  public void a(lpp paramlpp, int paramInt1, int paramInt2, int paramInt3)
+  public int a()
   {
-    if (paramlpp == null) {}
-    while ((paramlpp.jdField_a_of_type_Int <= 0) || (!this.a.c())) {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat >= 0.0F) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bjmd.a(bool);
+      this.jdField_a_of_type_Float = paramFloat;
       return;
     }
-    if ((paramlpp.jdField_a_of_type_JavaUtilList != null) && (paramlpp.jdField_a_of_type_JavaUtilList.size() > 0) && (paramlpp.jdField_a_of_type_ArrayOfFloat != null) && (paramlpp.jdField_a_of_type_ArrayOfFloat.length > 0)) {
-      this.a.a(paramlpp.jdField_a_of_type_JavaUtilList, paramlpp.jdField_a_of_type_ArrayOfFloat);
-    }
-    this.a.a(paramInt1, paramInt2, paramInt3);
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return this.a.c();
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

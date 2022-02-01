@@ -1,12 +1,6 @@
-public abstract interface sdx
+public abstract class sdx
 {
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void setIsResume(boolean paramBoolean);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
 }
 
 

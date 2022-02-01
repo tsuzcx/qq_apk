@@ -1,24 +1,6 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class alvo
-  implements bdbl
+class alvo
 {
-  public alvo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
-    }
-    alwe.a(paramBoolean1);
-    if (paramBoolean1)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.g();
-  }
+  private static alvn a = new alvn("cm_game_client_module");
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.av.ui;
 
-import bdll;
-import mep;
+import bcef;
+import mdy;
 
 public class GLVideoView$3
   implements Runnable
 {
-  public GLVideoView$3(mep parammep, String paramString, StringBuilder paramStringBuilder) {}
+  public GLVideoView$3(mdy parammdy, String paramString, StringBuilder paramStringBuilder) {}
   
   public void run()
   {
-    bdll.b(null, "CliOper", "", "", "0X8009FCB", "0X8009FCB", 0, 0, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangStringBuilder.toString(), "");
+    bcef.b(null, "CliOper", "", "", "0X8009FCB", "0X8009FCB", 0, 0, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangStringBuilder.toString(), "");
   }
 }
 

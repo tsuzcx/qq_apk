@@ -1,33 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
 
-class mhu
-  implements DialogInterface.OnClickListener
+public class mhu
+  implements mlx
 {
-  mhu(mht parammht) {}
+  public mhu(QavOperationMenuView paramQavOperationMenuView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mhr.a(this.a.a, false);
-    if (paramInt == 1)
+    switch (paramInt1)
     {
-      bdll.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.a.c();
-      if (!mvd.a(mhr.a(this.a.a))) {
-        mhr.a(this.a.a).a(mhr.a(this.a.a));
-      }
-    }
-    while (paramInt != 0)
-    {
-      return;
-      mhr.a(this.a.a).b(mhr.a(this.a.a));
+    case 1: 
+    default: 
+    case 2: 
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(paramString, paramInt2, false);
       return;
     }
-    mhr.a(this.a.a, mhr.a(this.a.a).a().w);
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramInt2, true);
+    }
+    mrd.c(2131373427);
   }
 }
 

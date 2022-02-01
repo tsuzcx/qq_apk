@@ -1,57 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class wqv
-  extends wpu
+class wqv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  wqv(wqu paramwqu) {}
   
-  public wqv(wqa paramwqa, ShareGroupItem paramShareGroupItem)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramwqa);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
-    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
-  }
-  
-  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
-      super.a(paramView, paramCommentEntry, paramInt);
-    }
-    paramView = QQStoryContext.a().b();
-    blir localblir = blir.a(this.jdField_a_of_type_Wqa.a);
-    if (paramCommentEntry.authorUnionId.equals(paramView)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localblir.c(anzj.a(2131712806));
-        localblir.a(anzj.a(2131712800), 3);
-      }
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      localblir.d(anzj.a(2131712782));
-      localblir.a(new wpx(this, localblir, paramCommentEntry, paramInt));
-      localblir.show();
+      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       return;
-      localblir.c(anzj.a(2131712783));
-      break;
-      if ((this.b) && (this.jdField_a_of_type_Boolean))
-      {
-        localblir.c(anzj.a(2131712794));
-        localblir.a(anzj.a(2131712803), 3);
-        localblir.c(anzj.a(2131712810));
-      }
-      else
-      {
-        localblir.c(anzj.a(2131712793));
-        localblir.c(anzj.a(2131712801));
-      }
     }
+    this.a.a.setImageResource(2130850605);
   }
 }
 

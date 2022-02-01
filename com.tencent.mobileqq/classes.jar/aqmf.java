@@ -1,54 +1,111 @@
-import android.annotation.TargetApi;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Iterator;
+import java.util.List;
 
-@TargetApi(11)
 public class aqmf
 {
-  public float a;
+  public byte a;
   public int a;
-  public float b;
-  public float c;
-  public float d = 1.0F;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
+  public long a;
+  public LebaPluginInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
   
-  public aqmf(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public aqmf()
   {
-    this.e = paramFloat1;
-    this.f = paramFloat2;
-    this.g = paramFloat3;
-    this.h = paramFloat4;
-    this.jdField_a_of_type_Float = paramFloat5;
-    this.b = paramFloat6;
-    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 2147483647;
   }
   
-  public aqmf(int paramInt, float paramFloat1, float paramFloat2)
+  public static String a(List<aqmf> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    if (paramList == null) {
+      return " print lebaData == null";
+    }
+    if (paramList.isEmpty()) {
+      return " print lebaData.isEmpty()";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aqmf localaqmf = (aqmf)paramList.next();
+      if (localaqmf == null)
+      {
+        localStringBuilder.append("|item = null");
+      }
+      else
+      {
+        localStringBuilder.append("|item = ").append(localaqmf.jdField_a_of_type_Long).append("|").append(localaqmf.jdField_a_of_type_JavaLangString).append("|").append(localaqmf.jdField_b_of_type_JavaLangString).append("|").append(localaqmf.jdField_a_of_type_Int).append("|").append(localaqmf.jdField_a_of_type_Byte).append("|").append(localaqmf.jdField_b_of_type_Long).append("|").append(localaqmf.jdField_a_of_type_Boolean).append("|");
+        if (localaqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
+          localStringBuilder.append("info=null");
+        } else {
+          localStringBuilder.append(localaqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
+        }
+      }
+    }
+    return localStringBuilder.toString();
   }
   
-  public static aqmf a(float paramFloat1, float paramFloat2)
+  public void a()
   {
-    return new aqmf(1, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Byte = 0;
   }
   
-  public static aqmf a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public boolean a()
   {
-    return new aqmf(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+    return this.jdField_a_of_type_Byte == 0;
   }
   
-  public static aqmf b(float paramFloat1, float paramFloat2)
+  public void b()
   {
-    return new aqmf(0, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Byte = 1;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0);
+  }
+  
+  public boolean c()
+  {
+    return (!b()) || (this.jdField_b_of_type_Int == 2147483647);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this == paramObject);
+      if (!(paramObject instanceof aqmf)) {
+        break;
+      }
+      paramObject = (aqmf)paramObject;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmf
  * JD-Core Version:    0.7.0.1
  */

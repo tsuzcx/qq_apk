@@ -1,19 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class ampu
-  implements DialogInterface.OnClickListener
+public class ampu
 {
-  ampu(ampp paramampp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
-    }
-    bdll.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
-  }
+  public ampu(ampt paramampt) {}
 }
 
 

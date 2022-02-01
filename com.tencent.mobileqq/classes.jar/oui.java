@@ -1,17 +1,8 @@
-import java.util.List;
+import android.view.View;
 
-class oui
-  extends ovd
+public abstract interface oui
 {
-  oui(otv paramotv, boolean paramBoolean, List paramList)
-  {
-    super(paramotv, null);
-  }
-  
-  void a(ovg paramovg)
-  {
-    paramovg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.d(this.jdField_a_of_type_Otv), 2, 2);
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

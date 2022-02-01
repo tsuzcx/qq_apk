@@ -1,18 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
-
-@TargetApi(11)
-public class also
-  implements Animator.AnimatorListener
+public abstract interface also
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(int paramInt);
 }
 
 

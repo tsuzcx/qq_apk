@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-public final class yvg
-  implements Parcelable.Creator<EditLocalPhotoSource>
+public class yvg
+  implements DialogInterface.OnClickListener
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  public yvg(QRCardActivity paramQRCardActivity) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
-  {
-    return new EditLocalPhotoSource[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

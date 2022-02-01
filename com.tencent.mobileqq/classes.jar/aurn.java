@@ -1,212 +1,184 @@
-import android.app.Notification;
+import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nonnull;
+import mqq.app.MobileQQ;
 
-class aurn
-  extends Handler
-  implements auun
+public class aurn
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  Notification jdField_a_of_type_AndroidAppNotification;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  int b = 0;
-  int c = 0;
+  private static volatile String a;
   
-  public aurn(aurm paramaurm, Looper paramLooper, int paramInt, Bundle paramBundle, long paramLong)
+  public static int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramBundle.clone());
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidOsBundle.putInt("_notify_param_Id", this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    int i = 1;
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {}
+    do
     {
-      this.jdField_a_of_type_AndroidAppNotification = paramaurm.a(paramBundle);
-      return;
-    }
-    QLog.e(aurm.a, 1, "[UniformDL][" + paramLong + "]. notify runable, param is null");
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, NF");
-    paramBundle = Message.obtain();
-    paramBundle.what = 1;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    localBundle.putInt("_START_WAITING_", 0);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, sendMessage failed, NF");
-    }
-  }
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, NF");
-    if (paramBundle != null)
-    {
-      paramBundle = paramBundle.getBundle("_CB_USERDATA");
-      if ((paramBundle != null) && (paramBundle.getBoolean("tbs_new_report", false))) {
-        audj.a().a("stat_download_failed");
-      }
-    }
-    paramBundle = Message.obtain();
-    paramBundle.what = 5;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_ERR_CODE_", paramInt);
-    localBundle.putString("_FILE_ERR_STRING_", paramString);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, sendMessage failed, NF");
-    }
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    int i = aurm.a(this.jdField_a_of_type_Aurm);
-    String str1 = auuf.a(paramString);
-    if (str1 != null)
-    {
-      localObject = new aurl(str1, i);
-      if (paramBundle != null)
+      try
       {
-        paramBundle = paramBundle.getBundle("_CB_USERDATA");
-        if (paramBundle != null)
+        paramContext = new Intent();
+        paramContext.setAction("action_show_together_floating_windows");
+        paramContext.setPackage(MobileQQ.getContext().getPackageName());
+        paramContext.putExtra("com.tencent.mobileqq.webprocess.together.floating.data", paramWatchTogetherFloatingData);
+        paramContext.setComponent(new ComponentName(MobileQQ.getContext(), "com.tencent.mobileqq.webprocess.WebProcessReceiver"));
+        BaseApplicationImpl.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow main..., data=", paramWatchTogetherFloatingData.toString() });
+        }
+        i = 0;
+        return i;
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
         {
-          ((aurl)localObject).b = paramBundle.getString("_open_with_qq_browser_", "");
-          String str2 = paramBundle.getString("params_open_with_yyb", "");
-          if (!TextUtils.isEmpty(str2))
-          {
-            ((aurl)localObject).jdField_a_of_type_AndroidOsBundle.putString("params_open_with_yyb", str2);
-            atrz.b();
+          if (QLog.isColorLevel()) {
+            QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
           }
-          boolean bool = paramBundle.getBoolean("tbs_new_report", false);
-          ((aurl)localObject).jdField_a_of_type_AndroidOsBundle.putBoolean("tbs_new_report", bool);
-          if (bool) {
-            audj.a().a("stat_download_success");
-          }
-          aurm.a(this.jdField_a_of_type_Aurm, paramBundle);
         }
       }
-      aure.a().a((aurl)localObject);
-    }
-    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, NF");
-    paramBundle = Message.obtain();
-    paramBundle.what = 4;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("_FILE_PATH_", paramString);
-    ((Bundle)localObject).putLong("_FILE_SIZE_", paramLong);
-    ((Bundle)localObject).putInt("_NEW_N_ID_", i);
-    if (str1 != null) {
-      ((Bundle)localObject).putString("_PKG_NAME_", str1);
-    }
-    paramBundle.setData((Bundle)localObject);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, sendMessage failed, NF");
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
+      }
+    } while (aurt.a().a(paramContext, paramWatchTogetherFloatingData) == 0);
+    return 2;
   }
   
-  public void b(int paramInt, Bundle paramBundle)
+  public static Dialog a(Context paramContext)
   {
-    paramBundle = Message.obtain();
-    paramBundle.what = 2;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadProgress, sendMessage failed, NF");
+    if (paramContext == null) {
+      return null;
     }
+    bhlw.b();
+    paramContext = bfur.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690620), paramContext.getString(2131694201), new auro(paramContext), null);
+    paramContext.setCancelable(false);
+    return paramContext;
   }
   
-  public void c(int paramInt, Bundle paramBundle)
+  public static Dialog a(Context paramContext, Intent paramIntent)
   {
-    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, NF");
-    paramBundle = Message.obtain();
-    paramBundle.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, sendMessage failed, NF");
-    }
+    paramContext = bjnw.a(paramContext);
+    paramContext.b(2131716230);
+    paramContext.a(2131690772, 3);
+    paramContext.c(2131690620);
+    paramContext.a(new aurp(paramIntent, paramContext));
+    return paramContext;
   }
   
-  public void d(int paramInt, Bundle paramBundle)
+  public static void a()
   {
-    QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume progress=" + paramInt + ", NF ");
-    paramBundle = Message.obtain();
-    paramBundle.what = 7;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume, sendMessage failed, NF");
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = false;
-    super.handleMessage(paramMessage);
-    Object localObject = paramMessage.getData();
-    switch (paramMessage.what)
+    a = "";
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
     {
-    }
-    for (;;)
-    {
-      this.b = paramMessage.what;
+      Bundle localBundle = new Bundle();
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new aurs());
       return;
-      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_START, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_Aurm.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      int i = ((Bundle)localObject).getInt("_START_WAITING_");
-      localObject = aure.a();
-      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename");
-      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", "");
-      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize");
-      Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata");
-      int j = this.jdField_a_of_type_Int;
-      if (i == 1) {
-        bool = true;
-      }
-      ((aure)localObject).a(str1, str2, str3, l, localBundle, j, bool);
-      this.c = 1;
-      continue;
-      this.jdField_a_of_type_Aurm.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      if (2 != this.c) {
-        aure.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, false);
-      }
-      this.c = 2;
-      continue;
-      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_PAUSE, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_Aurm.c(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 3;
-      continue;
-      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_SUC, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_Aurm.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 4;
-      continue;
-      this.jdField_a_of_type_Aurm.d(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 5;
-      continue;
-      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_RESUME, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_Aurm.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      aure.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, true);
-      this.c = 7;
-      continue;
-      QLog.i(aurm.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_CLR, NF. NId = " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aurm.a(this.jdField_a_of_type_Int);
-      aure.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
     }
+    aurt.a().b();
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+    localIntent.putExtra("key_dialog_type", paramInt);
+    localIntent.putExtra("cur_uin", paramString);
+    localIntent.addFlags(805306368);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  {
+    if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getQQProcessName() == null)) {}
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return;
+      if (BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {
+        break;
+      }
+      bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
+      bool2 = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+      }
+    } while ((!bool1) && (!bool2));
+    a = "";
+    paramContext = new Bundle();
+    paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new aurr());
+    return;
+    aurt.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+  }
+  
+  public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "setIsWatchFloatingShow isShow=", Boolean.valueOf(paramBoolean1), " uin=", paramString, " sessionType=", Integer.valueOf(paramInt) });
+    }
+    if (!paramBoolean1) {}
+    for (a = "";; a = "2_" + paramString + "_" + paramInt)
+    {
+      if (7 == BaseApplicationImpl.sProcessId)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
+        localBundle.putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
+        localBundle.putString("BUNDLE_SET_KEY_UIN", paramString);
+        localBundle.putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
+        QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", localBundle, new aurq());
+      }
+      return;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return TextUtils.isEmpty(a);
+  }
+  
+  public static boolean a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramInt1 != 2) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool")) {
+          break;
+        }
+        a = null;
+      } while (!QLog.isColorLevel());
+      QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
+      return false;
+    } while ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId));
+    paramString = paramInt1 + "_" + paramString + "_" + paramInt2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "key=", paramString, " info=", a });
+    }
+    return TextUtils.equals(paramString, a);
+  }
+  
+  public static boolean b()
+  {
+    return a == null;
+  }
+  
+  public static boolean b(int paramInt1, String paramString, int paramInt2)
+  {
+    return TextUtils.equals(paramInt1 + "_" + paramString + "_" + paramInt2, a);
   }
 }
 

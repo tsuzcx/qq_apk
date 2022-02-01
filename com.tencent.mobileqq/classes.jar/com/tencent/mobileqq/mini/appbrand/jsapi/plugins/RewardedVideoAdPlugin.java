@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acon;
-import acrl;
-import acvb;
+import abkv;
+import abnu;
+import abrk;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -14,7 +14,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bkxw;
+import bjds;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.api.motivebrowsing.RewardedBrowsingCallbackReceiver;
@@ -62,10 +62,11 @@ public class RewardedVideoAdPlugin
   private static final Set<String> S_EVENT_MAP = new RewardedVideoAdPlugin.1();
   private static final String TAG = "[minigame] RewardedVideoAdPlugin";
   private static final HashMap<Integer, String> errCodeMsgMap = PluginConst.AdConst.CodeMsgMap;
-  private static HashMap<String, acrl> rewardedCallbackData;
+  private static HashMap<String, abnu> rewardedCallbackData;
   private GdtAd ad;
   private qq_ad_get.QQAdGetRsp.AdInfo adInfo;
   private GdtMotiveVideoPageData gdtMotiveVideoPageData;
+  private boolean hasClosedAd = true;
   private boolean hasShowGPToast;
   private JsRuntime mBaseAppBrandWebview;
   private boolean mIsOrientationLandscape;
@@ -161,7 +162,7 @@ public class RewardedVideoAdPlugin
     }
     try
     {
-      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
+      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
       return;
     }
     catch (Throwable paramString)
@@ -368,15 +369,16 @@ public class RewardedVideoAdPlugin
       QLog.d("[minigame] RewardedVideoAdPlugin", 1, new Object[] { "RewardedAd ActivityResultListener receive durationTime= ", Long.valueOf(l2), " elaspedTime=", Long.valueOf(l3), " profitable=", Boolean.valueOf(bool), " reportTime=", Integer.valueOf(paramInt1) });
       paramBundle = GameRuntimeLoaderManager.g().getBindRuntimeLoader(paramActivity);
       if (paramBundle == null) {
-        break label273;
+        break label278;
       }
     }
-    label273:
+    label278:
     for (paramBundle = paramBundle.getGameInfoManager().getMiniAppConfig();; paramBundle = null)
     {
       if (paramBundle != null) {
         paramBundle.gameAdsTotalTime = (paramInt1 + paramBundle.gameAdsTotalTime);
       }
+      this.hasClosedAd = true;
       try
       {
         paramBundle = new JSONObject();
@@ -534,12 +536,12 @@ public class RewardedVideoAdPlugin
     label447:
     label473:
     boolean bool2;
-    label501:
+    label508:
     Object localObject3;
     if (this.ad != null)
     {
-      if (this.gdtMotiveVideoPageData == null) {
-        break label792;
+      if ((this.gdtMotiveVideoPageData == null) || (!this.hasClosedAd)) {
+        break label804;
       }
       bool2 = true;
       handleShowAndInformJs(bool2, localJSONException);
@@ -548,47 +550,48 @@ public class RewardedVideoAdPlugin
         this.gdtMotiveVideoPageData.refId = "biz_src_miniapp";
         this.gdtMotiveVideoPageData.containerType = 1;
         if ((this.gdtMotiveVideoPageData.vSize != 185) && (this.gdtMotiveVideoPageData.vSize != 585)) {
-          break label706;
+          break label718;
         }
         localObject3 = new RewardedVideoAdPlugin.AdResultReceiver(new Handler(Looper.getMainLooper()), this, localJSONException, localActivity, paramString1, paramJsRuntime, paramInt, bool1);
-        label587:
+        label594:
         if (bool1)
         {
           localObject4 = GameRuntimeLoaderManager.g().getBindRuntimeLoader(localActivity);
           if (localObject4 == null) {
-            break label798;
+            break label810;
           }
         }
       }
     }
-    label792:
-    label798:
+    label804:
+    label810:
     for (Object localObject4 = ((GameRuntimeLoader)localObject4).getJsPluginEngine();; localObject4 = null)
     {
       if (localObject4 != null) {
         ((GameJsPluginEngine)localObject4).handleFocusLoss();
       }
-      this.gdtMotiveVideoPageData.antiSpamParams = bkxw.a(localActivity, this.gdtMotiveVideoPageData.adId + "", System.currentTimeMillis(), bool1, this.jsPluginEngine);
+      this.gdtMotiveVideoPageData.antiSpamParams = bjds.a(localActivity, this.gdtMotiveVideoPageData.adId + "", System.currentTimeMillis(), bool1, this.jsPluginEngine);
       GdtMotiveVideoFragment.a(localActivity, GdtMotiveVideoFragment.class, this.gdtMotiveVideoPageData, (ResultReceiver)localObject3);
       AdFrequencyLimit.setRewardVideoAdShowing(true);
       this.ad = null;
       this.adInfo = null;
       this.gdtMotiveVideoPageData = null;
+      this.hasClosedAd = false;
       break;
-      label706:
-      localObject3 = new acrl(this, (String)localObject3, new WeakReference(localActivity), paramString1, paramJsRuntime, paramInt, bool1);
-      localObject4 = ((acrl)localObject3).a();
+      label718:
+      localObject3 = new abnu(this, (String)localObject3, new WeakReference(localActivity), paramString1, paramJsRuntime, paramInt, bool1);
+      localObject4 = ((abnu)localObject3).a();
       if (rewardedCallbackData == null) {
         rewardedCallbackData = new HashMap();
       }
       this.gdtMotiveVideoPageData.motiveBrowsingKey = ((String)localObject4);
       rewardedCallbackData.put(localObject4, localObject3);
       localObject3 = null;
-      break label587;
+      break label594;
       handleShowAndInformJs(false, (String)localObject3);
       break;
       bool2 = false;
-      break label501;
+      break label508;
     }
   }
   
@@ -656,13 +659,13 @@ public class RewardedVideoAdPlugin
     if ((paramIntent != null) && (rewardedCallbackData != null))
     {
       String str = paramIntent.getStringExtra("KEY_MOTIVE_BROWSING");
-      acrl localacrl = (acrl)rewardedCallbackData.get(str);
-      if (localacrl != null)
+      abnu localabnu = (abnu)rewardedCallbackData.get(str);
+      if (localabnu != null)
       {
-        Activity localActivity = (Activity)localacrl.a().get();
+        Activity localActivity = (Activity)localabnu.a().get();
         rewardedCallbackData.remove(str);
-        onCloseAd(-1, paramIntent.getExtras(), localacrl.b(), localActivity, localacrl.c(), localacrl.a(), localacrl.a());
-        if (localacrl.a())
+        onCloseAd(-1, paramIntent.getExtras(), localabnu.b(), localActivity, localabnu.c(), localabnu.a(), localabnu.a());
+        if (localabnu.a())
         {
           paramIntent = GameRuntimeLoaderManager.g().getBindRuntimeLoader(localActivity);
           if (paramIntent == null) {

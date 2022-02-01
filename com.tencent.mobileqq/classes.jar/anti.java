@@ -1,42 +1,57 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class anti
-  extends BroadcastReceiver
+public class anti
+  extends anrh
 {
-  anti(anth paramanth) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public anti(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (!TextUtils.isEmpty(anth.a(this.a)))
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    for (;;)
     {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
-      }
-      if (i != 0) {
-        break label176;
-      }
-      if (anth.a(this.a) != null)
+      try
       {
-        paramContext = new Intent(anth.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", antf.aC);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", anth.a(this.a).getString(2131690559));
-        anth.a(this.a).startActivity(paramContext);
-        anth.a(this.a).finish();
+        if (TextUtils.isEmpty(str))
+        {
+          str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          QZoneHelper.forwardToUserHome((Activity)this.jdField_a_of_type_AndroidContentContext, QZoneHelper.UserInfo.getInstance(), str, 0, 0, 0);
+          return true;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QzoneOpenHomePageAction", 1, localException, new Object[0]);
+        return true;
       }
     }
-    return;
-    label176:
-    this.a.callJs(anth.a(this.a) + "(" + paramContext + ");");
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneOpenHomePageAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneOpenHomePageAction");
+    }
+    return false;
   }
 }
 

@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-public class qdh
-  implements ViewBase.IBuilder
+class qdh
+  implements prh
 {
-  public ViewBase build(VafContext paramVafContext)
+  qdh(qdf paramqdf, ViewBase paramViewBase) {}
+  
+  public void a(long paramLong)
   {
-    return new qdg(paramVafContext);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
+    }
   }
 }
 

@@ -1,12 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public final class bhts
-  implements DialogInterface.OnClickListener
+class bhts
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bhts(bhtr parambhtr, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    if ((bhtr.a(this.jdField_a_of_type_Bhtr) == null) || (this.jdField_a_of_type_Int >= bhtr.a(this.jdField_a_of_type_Bhtr).size()) || (this.jdField_a_of_type_Int < 0)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_Bhtr.a.a != null) && (bhtr.a(this.jdField_a_of_type_Bhtr).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bhtr.a) != null)) {
+        OpenCardContainer.a(this.jdField_a_of_type_Bhtr.a).a(((bhtu)bhtr.a(this.jdField_a_of_type_Bhtr).get(this.jdField_a_of_type_Int)).a);
+      }
+      bhtr.a(this.jdField_a_of_type_Bhtr).remove(bhtr.a(this.jdField_a_of_type_Bhtr).get(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Bhtr.notifyDataSetChanged();
+    }
   }
 }
 

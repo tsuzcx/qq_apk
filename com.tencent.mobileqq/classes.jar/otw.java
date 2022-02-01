@@ -1,14 +1,26 @@
-class otw
-  extends ovd
+public class otw
 {
-  otw(otv paramotv)
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  
+  public otw(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    super(paramotv, null);
+    this(paramString, paramLong, paramCharSequence, 0);
   }
   
-  void a(ovg paramovg)
+  public otw(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    paramovg.onCommentListLoad(1, true, this.a.a(), otv.a(this.a), 3, 3);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramString = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramString = "";
+    }
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

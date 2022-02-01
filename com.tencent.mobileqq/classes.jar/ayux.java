@@ -1,22 +1,109 @@
-import android.app.PendingIntent;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/DefaultJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayux
-  extends ayup
+public class ayux
 {
-  @NotNull
-  protected PendingIntent a(@NotNull ayut paramayut)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
-    return d(paramayut);
+    boolean bool = a(paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousRedPointUtils", 2, String.format("checkToCleanSettingMeRedPointGuide showRedPoint=%s", new Object[] { Boolean.valueOf(bool) }));
+    }
+    if ((bool) && (paramQQAppInterface != null))
+    {
+      Object localObject = paramQQAppInterface.getApp();
+      paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+      localObject = PreferenceManager.getDefaultSharedPreferences((Context)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("anonymous_setting_me_red_point_guide_" + paramQQAppInterface, false);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
   }
   
-  protected boolean a()
+  private static boolean a()
   {
-    return true;
+    boolean bool = "8.4.8".equals("8.4.8");
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousRedPointUtils", 2, String.format("checkRedPointValidVersion valid=%s", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    String str;
+    boolean bool1;
+    boolean bool2;
+    if ((paramQQAppInterface != null) && (a()))
+    {
+      BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+      str = paramQQAppInterface.getCurrentAccountUin();
+      paramQQAppInterface = (ayuv)paramQQAppInterface.getManager(384);
+      if (paramQQAppInterface != null)
+      {
+        bool1 = paramQQAppInterface.a();
+        if (bool1)
+        {
+          bool2 = PreferenceManager.getDefaultSharedPreferences(localBaseApplication).getBoolean("anonymous_setting_me_red_point_guide_" + str, true);
+          paramQQAppInterface = str;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AnonymousRedPointUtils", 2, String.format("showSettingMeRedPointGuide uin=%s enable=%s show=%s", new Object[] { paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      return bool2;
+      bool2 = false;
+      paramQQAppInterface = str;
+      continue;
+      bool1 = false;
+      break;
+      paramQQAppInterface = null;
+      bool2 = false;
+      bool1 = false;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      Object localObject = paramQQAppInterface.getApp();
+      paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+      localObject = PreferenceManager.getDefaultSharedPreferences((Context)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("anonymous_profile_red_point_guide_" + paramQQAppInterface, false);
+      ((SharedPreferences.Editor)localObject).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("AnonymousRedPointUtils", 2, String.format("cleanProfileRedPointGuide uin=%s", new Object[] { paramQQAppInterface }));
+      }
+    }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    BaseApplication localBaseApplication = null;
+    boolean bool;
+    if ((paramQQAppInterface != null) && (a()))
+    {
+      localBaseApplication = paramQQAppInterface.getApp();
+      paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+      bool = PreferenceManager.getDefaultSharedPreferences(localBaseApplication).getBoolean("anonymous_profile_red_point_guide_" + paramQQAppInterface, true);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AnonymousRedPointUtils", 2, String.format("showProfileRedPointGuide uin=%s show=%s", new Object[] { paramQQAppInterface, Boolean.valueOf(bool) }));
+      }
+      return bool;
+      bool = false;
+      paramQQAppInterface = localBaseApplication;
+    }
   }
 }
 

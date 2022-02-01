@@ -1,123 +1,78 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ywc
-  extends BaseAdapter
+  extends amrc
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<zaf> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
+  public ywc(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public ywc(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  protected void onGetFlyTicket(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = zft.b(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = zft.b(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
-  }
-  
-  public zaf a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (zaf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "onGetFlyTicket: " + paramBoolean);
     }
-    return null;
-  }
-  
-  public void a(List<zaf> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    zaf localzaf = new zaf();
-    this.jdField_a_of_type_JavaUtilList.add(localzaf);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ywd localywd;
-    View localView1;
-    if (paramView == null)
+    if (!paramBoolean)
     {
-      localywd = new ywd(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559316, null);
-      localywd.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131378824));
-      localywd.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131377300);
-      localView1.setTag(localywd);
+      this.a.a(paramInt);
+      return;
     }
-    zaf localzaf;
-    for (;;)
+    Object localObject = this.a.jdField_a_of_type_Amqx.a(this.a.jdField_c_of_type_JavaLangString, true);
+    if ((localObject != null) && ((localObject instanceof BitmapDrawable))) {
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localObject).getBitmap();
+    }
+    localObject = this.a.getSharedPreferences("qrcode", 0).edit();
+    ((SharedPreferences.Editor)localObject).putLong("discussionvalidtime" + this.a.jdField_c_of_type_JavaLangString, paramLong1);
+    ((SharedPreferences.Editor)localObject).putString("discussion" + this.a.jdField_c_of_type_JavaLangString, paramString2);
+    ((SharedPreferences.Editor)localObject).putString("discussionfullSig" + this.a.jdField_c_of_type_JavaLangString, paramString1);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.a.jdField_b_of_type_Long = paramLong1;
+    localObject = yyi.a(paramString2, -1);
+    if (localObject != null)
     {
-      localzaf = a(paramInt);
-      if (localzaf != null) {
-        break;
+      ((TextView)this.a.findViewById(2131373662)).setText(paramString2);
+      this.a.jdField_b_of_type_AndroidViewView.post(this.a.jdField_b_of_type_JavaLangRunnable);
+      this.a.d = paramString2;
+      this.a.e = paramString1;
+      this.a.jdField_a_of_type_Gr = ((gr)localObject);
+      this.a.h();
+      return;
+    }
+    this.a.i();
+  }
+  
+  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (paramBoolean1)
+    {
+      paramString = ((amqx)this.a.app.getBusinessHandler(6)).a(paramString, true);
+      if ((paramString instanceof BitmapDrawable)) {
+        this.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)paramString).getBitmap();
       }
-      EventCollector.getInstance().onListGetView(paramInt, localView1, paramViewGroup, getItemId(paramInt));
-      return localView1;
-      localywd = (ywd)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localzaf.jdField_a_of_type_Int + localzaf.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label272;
-      }
-      paramView = bhgm.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841487, this.b, this.jdField_a_of_type_Int);
-      label180:
-      localView2 = paramView;
-      if (paramView != null)
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null)
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localzaf.jdField_a_of_type_Int + localzaf.b, paramView);
-        localView2 = paramView;
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("B", -16777216);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("W", 16777215);
+        this.a.jdField_a_of_type_AndroidOsBundle.putParcelable("qrloc", new Rect(45, 76, 495, 526));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("head", 1);
       }
-    }
-    localywd.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0)
-    {
-      localywd.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131702683));
-      label252:
-      if (paramInt != this.c) {
-        break label329;
+      if (this.a.jdField_a_of_type_Gr == null) {
+        this.a.jdField_a_of_type_Gr = this.a.a(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_c_of_type_Int, -1);
       }
-      localywd.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      break;
-      label272:
-      paramView = bhgm.a(localzaf.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break label180;
-      localywd.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131702832) + localzaf.c);
-      break label252;
-      label329:
-      localywd.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      if (this.a.jdField_a_of_type_Gr != null) {
+        this.a.h();
+      }
     }
   }
 }

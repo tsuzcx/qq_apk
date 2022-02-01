@@ -1,56 +1,37 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.text.SpannableString;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
 
 public class bfzn
-  extends arac<bfzm>
 {
-  @NonNull
-  public bfzm a(int paramInt)
+  public static CharSequence a(Context paramContext, awqo paramawqo, String paramString)
   {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bfzm();
-  }
-  
-  @Nullable
-  public bfzm a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return bfzm.a(paramArrayOfaraj);
+    if ((paramawqo == null) || (TextUtils.isEmpty(paramawqo.a()))) {
+      return paramString;
     }
-    return null;
+    String str = "#" + paramawqo.a() + "#";
+    paramString = new SpannableString(str + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "topicName is " + str);
+    }
+    paramString.setSpan(new bfzo(paramContext, paramawqo), 0, str.length(), 33);
+    return paramString;
   }
   
-  public void a(bfzm parambfzm) {}
-  
-  public Class<bfzm> clazz()
+  public static CharSequence b(Context paramContext, awqo paramawqo, String paramString)
   {
-    return bfzm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 605;
+    if ((paramawqo == null) || (TextUtils.isEmpty(paramawqo.a()))) {
+      return paramString;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString).append("\n").append("#").append(paramawqo.a()).append("#");
+    SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "topicAndDescWithLine is " + localStringBuilder);
+    }
+    localSpannableString.setSpan(new bfzp(paramContext, paramawqo), paramString.length(), localStringBuilder.length(), 33);
+    return localSpannableString;
   }
 }
 

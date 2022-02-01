@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmjy
-  implements DialogInterface.OnDismissListener
+class bmjy
+  implements DialogInterface.OnClickListener
 {
-  public bmjy(DatalineBridgeActivity paramDatalineBridgeActivity) {}
+  bmjy(bmjw parambmjw) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

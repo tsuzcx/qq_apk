@@ -1,21 +1,6 @@
-import android.os.Bundle;
-
-public class bjit
-  extends bjis
+public abstract interface bjit
 {
-  public bjit(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    paramString1 = this.a.getBundle(paramString1);
-    if (paramString1 != null) {
-      return paramString1.getString(paramString2);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt, bjis parambjis, bjiu parambjiu);
 }
 
 

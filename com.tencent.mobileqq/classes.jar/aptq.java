@@ -1,27 +1,60 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aptq
-  implements Animator.AnimatorListener
+public abstract class aptq<T>
 {
-  aptq(aptp paramaptp) {}
+  public static final int DEFAULT = 1;
+  public static final int FAIL_CODE_ERROR = -2;
+  public static final int FAIL_CODE_REQ_TIMEOUT = -1;
+  public static final int MIGRATE = 0;
+  private static final String TAG = "IQConfigProcessor";
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract Class<T> clazz();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean isAccountRelated()
   {
-    if (aptp.a(this.a) != null) {
-      aptp.a(this.a).a();
+    return true;
+  }
+  
+  public abstract boolean isNeedCompressed();
+  
+  public abstract boolean isNeedStoreLargeFile();
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return false;
+  }
+  
+  @NonNull
+  public abstract T migrateOldOrDefaultContent(int paramInt);
+  
+  public abstract int migrateOldVersion();
+  
+  @Nullable
+  public abstract T onParsed(aptx[] paramArrayOfaptx);
+  
+  public abstract void onReqFailed(int paramInt);
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + type());
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int onSend(int paramInt)
+  {
+    return paramInt;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void onUpdate(T paramT);
+  
+  public abstract int type();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aptq
  * JD-Core Version:    0.7.0.1
  */

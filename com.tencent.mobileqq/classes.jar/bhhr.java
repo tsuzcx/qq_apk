@@ -1,13 +1,29 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bhhr
+public class bhhr
+  implements TencentMap.OnCameraChangeListener
 {
-  String a() default "";
+  public bhhr(QQMapView paramQQMapView) {}
+  
+  public void onCameraChange(CameraPosition paramCameraPosition)
+  {
+    if ((this.a.jdField_a_of_type_Bhhs != null) && (!this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Bhhs.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+    }
+  }
+  
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      QQMapView.a(this.a, paramCameraPosition);
+    }
+  }
 }
 
 

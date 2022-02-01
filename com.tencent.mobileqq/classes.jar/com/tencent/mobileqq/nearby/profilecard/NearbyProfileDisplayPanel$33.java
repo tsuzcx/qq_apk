@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aykx;
-import bdll;
+import awyf;
+import bcef;
 
 public class NearbyProfileDisplayPanel$33
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$33(aykx paramaykx, int paramInt) {}
+  public NearbyProfileDisplayPanel$33(awyf paramawyf, int paramInt) {}
   
   public void run()
   {
-    bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", aykx.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], aykx.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], 0, 0, "", "", "", "");
-    bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", awyf.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], awyf.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], 0, 0, "", "", "", "");
+    bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

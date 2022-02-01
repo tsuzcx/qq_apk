@@ -1,776 +1,267 @@
-import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class asks
+class asks
+  extends asjn
 {
-  public static String a(QQAppInterface paramQQAppInterface, bihu parambihu, boolean paramBoolean)
+  public asks(asji paramasji)
   {
-    ArrayList localArrayList = null;
-    if ((paramQQAppInterface == null) && (parambihu == null)) {}
-    EmoticonPackage localEmoticonPackage;
-    do
-    {
-      return null;
-      localObject = parambihu.a();
-      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    } while (localEmoticonPackage == null);
-    int i = ((Bundle)localObject).getInt("jsonType", askd.c);
-    File localFile = (File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString);
-    Object localObject = new aslf();
-    parambihu = localArrayList;
-    if (localFile != null)
-    {
-      if (localFile.exists()) {
-        parambihu = bhmi.a(localFile);
-      }
-    }
-    else
-    {
-      localArrayList = new ArrayList();
-      if (!paramBoolean) {
-        break label162;
-      }
-    }
-    label162:
-    for (paramQQAppInterface = a(paramQQAppInterface, localEmoticonPackage, i, parambihu, localArrayList);; paramQQAppInterface = a(paramQQAppInterface, localEmoticonPackage, i, parambihu, localArrayList, (aslf)localObject))
-    {
-      if ((QLog.isColorLevel()) && (paramQQAppInterface != null)) {
-        QLog.d("EmotionJsonUtils", 2, "handleJsonFileDownload : json parse result = " + paramQQAppInterface);
-      }
-      return paramQQAppInterface;
-      parambihu = null;
-      break;
-    }
+    super(paramasji);
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage, int paramInt, byte[] paramArrayOfByte, ArrayList<Emoticon> paramArrayList)
+  protected String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionJsonUtils", 2, "parseSmallJson: parseSmallJson start");
-    }
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseSmallJson: app is null");
-      }
-      return "app is null";
-    }
-    if (paramEmoticonPackage == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseSmallJson: ep is null");
-      }
-      return "ep is null";
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseSmallJson: data is null");
-      }
-      return "json data is null";
-    }
-    if (paramArrayList == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseSmallJson: params is null");
-      }
-      return "params is null";
-    }
-    paramQQAppInterface = (axfj)paramQQAppInterface.getManager(14);
-    try
-    {
-      paramArrayOfByte = new JSONObject(new String(paramArrayOfByte, "utf-8"));
-      long l = paramArrayOfByte.getLong("timestamp");
-      JSONObject localJSONObject = paramArrayOfByte.getJSONObject("data");
-      JSONArray localJSONArray1 = localJSONObject.getJSONArray("baseInfo");
-      JSONArray localJSONArray2 = localJSONObject.getJSONArray("operationInfo");
-      if ((localJSONArray1 != null) && (localJSONArray2 != null))
-      {
-        a(paramEmoticonPackage, paramInt, paramArrayList, paramQQAppInterface, paramArrayOfByte, l, localJSONObject, localJSONArray1, localJSONArray2);
-        return null;
-      }
-    }
-    catch (JSONException paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      paramArrayOfByte = paramQQAppInterface.toString();
-      QLog.e("EmotionJsonUtils", 1, "parseSmallJson: fail 01 RESULT_CODE_JSON_PARSE_FAIL  ep=" + paramEmoticonPackage.epId + " exception=" + paramQQAppInterface.toString());
-      return paramArrayOfByte;
-    }
-    catch (OutOfMemoryError paramQQAppInterface)
-    {
-      QLog.e("EmotionJsonUtils", 1, "parseSmallJson: fail OutOfMemoryError  exception=" + paramQQAppInterface.toString());
-      return null;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      paramArrayOfByte = paramQQAppInterface.toString();
-      QLog.e("EmotionJsonUtils", 1, "parseSmallJson: fail 02 RESULT_CODE_JSON_PARSE_FAIL  ep=" + paramEmoticonPackage.epId + " exception=" + paramQQAppInterface.toString());
-      return paramArrayOfByte;
-    }
-    return "parseSmallJson:json data is error";
+    return "StateWaitResultWhenPause";
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage, int paramInt, byte[] paramArrayOfByte, ArrayList<Emoticon> paramArrayList, aslf paramaslf)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionJsonUtils", 2, "parseJson : parseJson start");
-    }
-    Object localObject = a(paramQQAppInterface, paramEmoticonPackage, paramArrayOfByte, paramArrayList, paramaslf);
-    if (localObject != null) {
-      paramQQAppInterface = (QQAppInterface)localObject;
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      return paramQQAppInterface;
-      localObject = (axfj)paramQQAppInterface.getManager(14);
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(new String(paramArrayOfByte, "utf-8"));
-        String str = localJSONObject.getString("id");
-        paramQQAppInterface = localJSONObject.getString("name");
-        c(paramEmoticonPackage, localJSONObject);
-        paramArrayOfByte = a(paramEmoticonPackage, paramInt, (axfj)localObject, localJSONObject, str, paramQQAppInterface, "");
-        paramQQAppInterface = paramArrayOfByte;
-        if (paramArrayOfByte != null) {
-          continue;
-        }
-        if (paramEmoticonPackage.isAPNG == 2)
-        {
-          paramQQAppInterface = localJSONObject.optString("supportApngSize");
-          if (TextUtils.isEmpty(paramQQAppInterface)) {}
-        }
-        for (paramEmoticonPackage.supportSize = paramQQAppInterface;; paramEmoticonPackage.supportSize = localJSONObject.getJSONArray("supportSize").toString()) {
-          do
-          {
-            if ((localJSONObject != null) && (localJSONObject.has("commDiyText"))) {
-              paramEmoticonPackage.businessExtra = localJSONObject.getJSONArray("commDiyText").toString();
-            }
-            ((axfj)localObject).a(paramEmoticonPackage);
-            int i = ((axfj)localObject).a(str);
-            boolean bool = false;
-            if (asos.a(paramEmoticonPackage)) {
-              bool = true;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("EmotionJsonUtils", 2, "parseJson: ep = " + paramEmoticonPackage + " ,update :" + bool);
-            }
-            paramArrayOfByte = a(paramEmoticonPackage, paramInt, paramArrayList, paramaslf, (axfj)localObject, localJSONObject, str, i, bool);
-            paramQQAppInterface = paramArrayOfByte;
-            if (paramArrayOfByte != null) {
-              break;
-            }
-            return null;
-          } while ((localJSONObject == null) || (!localJSONObject.has("supportSize")));
-        }
-        return paramArrayOfByte;
-      }
-      catch (JSONException paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        paramArrayOfByte = paramQQAppInterface.toString();
-        QLog.e("EmotionJsonUtils", 1, "parseJson: PARSE_EMOTICON_JSON fail 01 RESULT_CODE_JSON_PARSE_FAIL  ep=" + paramEmoticonPackage.epId + " exception=" + paramQQAppInterface.toString());
-        return paramArrayOfByte;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        paramArrayOfByte = paramQQAppInterface.toString();
-        QLog.d("EmotionJsonUtils", 1, "parseJson: PARSE_EMOTICON_JSON fail 02 RESULT_CODE_JSON_PARSE_FAIL  ep=" + paramEmoticonPackage.epId + " exception=" + paramQQAppInterface.toString());
-      }
-    }
-  }
-  
-  protected static String a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage, byte[] paramArrayOfByte, ArrayList<Emoticon> paramArrayList, aslf paramaslf)
-  {
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseJson : ap is null");
-      }
-      return "app is null";
-    }
-    if (paramEmoticonPackage == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseJson : ep is null");
-      }
-      return "ep is null";
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseJson : json data is null");
-      }
-      return "json data is null";
-    }
-    if ((paramArrayList == null) || (paramaslf == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseJson : params is null");
-      }
-      return "params is null";
-    }
-    return null;
-  }
-  
-  protected static String a(EmoticonPackage paramEmoticonPackage, int paramInt, axfj paramaxfj, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
-  {
-    int i2 = 0;
-    int k = paramEmoticonPackage.extraFlags & 0x1;
-    if (paramJSONObject.has("isOriginal")) {}
-    for (int i = paramJSONObject.getInt("isOriginal");; i = 0)
-    {
-      if (paramJSONObject.optInt("isApng") == 1)
-      {
-        j = 2;
-        paramEmoticonPackage.isAPNG = j;
-        if (k != 0) {
-          break label368;
-        }
-        paramEmoticonPackage.extraFlags |= i;
-        label66:
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionJsonUtils", 2, "parseJson original = " + i + ", ep.extraFlags = " + paramEmoticonPackage.extraFlags);
-        }
-        if (paramJSONObject.has("mark")) {
-          paramString3 = paramJSONObject.getString("mark");
-        }
-        if (!paramJSONObject.has("type")) {
-          break label455;
-        }
-      }
-      label428:
-      label455:
-      for (int j = paramJSONObject.getInt("type");; j = 0)
-      {
-        if (paramJSONObject.has("feetype")) {}
-        for (k = paramJSONObject.getInt("feetype");; k = 0)
-        {
-          if (paramJSONObject.has("rscType")) {}
-          for (int m = paramJSONObject.getInt("rscType");; m = 0)
-          {
-            if (paramJSONObject.has("updateTime")) {}
-            for (int n = paramJSONObject.getInt("updateTime");; n = 0)
-            {
-              String str;
-              boolean bool;
-              if (paramJSONObject.has("ringtype"))
-              {
-                str = paramJSONObject.getString("ringtype");
-                if ("1".equals(str))
-                {
-                  i = 1;
-                  bool = true;
-                }
-              }
-              for (;;)
-              {
-                label243:
-                if ((paramJSONObject.has("type")) && (1 == j)) {}
-                for (int i1 = 3;; i1 = 0)
-                {
-                  if (paramJSONObject.has("downloadcount")) {
-                    i2 = paramJSONObject.getInt("downloadcount");
-                  }
-                  paramEmoticonPackage.epId = paramString1;
-                  paramEmoticonPackage.name = paramString2;
-                  paramEmoticonPackage.mark = paramString3;
-                  paramEmoticonPackage.type = j;
-                  paramEmoticonPackage.mobileFeetype = k;
-                  paramEmoticonPackage.hasSound = bool;
-                  paramEmoticonPackage.subType = i;
-                  paramEmoticonPackage.downloadCount = i2;
-                  paramEmoticonPackage.jobType = i1;
-                  a(paramEmoticonPackage, paramInt, paramaxfj, paramJSONObject, paramString1, m, j, n);
-                  a(paramEmoticonPackage, paramJSONObject);
-                  b(paramEmoticonPackage, paramJSONObject);
-                  return null;
-                  j = 0;
-                  break;
-                  label368:
-                  if (k <= 0) {
-                    break label66;
-                  }
-                  paramEmoticonPackage.extraFlags &= i;
-                  break label66;
-                  if ("2".equals(str)) {
-                    return "qFace are not supported";
-                  }
-                  if (!"4".equals(str)) {
-                    break label428;
-                  }
-                  i = 4;
-                  bool = false;
-                  break label243;
-                }
-                i = 0;
-                bool = false;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  protected static String a(EmoticonPackage paramEmoticonPackage, int paramInt1, ArrayList<Emoticon> paramArrayList, aslf paramaslf, axfj paramaxfj, JSONObject paramJSONObject, String paramString, int paramInt2, boolean paramBoolean)
-  {
-    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("imgs");
-    int n = localJSONArray1.length();
-    boolean bool = true;
-    int i = 0;
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    JSONObject localJSONObject;
-    String str1;
-    String str2;
-    int k;
-    int m;
-    String str3;
-    Object localObject;
-    if (j < n)
-    {
-      localJSONObject = localJSONArray1.getJSONObject(j);
-      str1 = localJSONObject.getString("id");
-      str2 = localJSONObject.getString("name");
-      k = 0;
-      m = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseJson: emotion.id:" + str1);
-      }
-      if (localJSONObject.has("wWidthInPhone")) {
-        k = localJSONObject.getInt("wWidthInPhone");
-      }
-      if (localJSONObject.has("wHeightInPhone")) {
-        m = localJSONObject.getInt("wHeightInPhone");
-      }
-      str3 = a(localJSONObject, str2);
-      localObject = "";
-      paramJSONObject = (JSONObject)localObject;
-      if (localJSONObject.has("diyText"))
-      {
-        JSONArray localJSONArray2 = localJSONObject.getJSONArray("diyText");
-        paramJSONObject = (JSONObject)localObject;
-        if (localJSONArray2 != null) {
-          paramJSONObject = localJSONArray2.toString();
-        }
-      }
-      localObject = paramaxfj.a(paramString, str1);
-      if (localObject == null) {
-        if (paramInt1 != askd.d)
-        {
-          localObject = new Emoticon();
-          ((Emoticon)localObject).eId = str1;
-          ((Emoticon)localObject).epId = paramString;
-          ((Emoticon)localObject).name = str2;
-          ((Emoticon)localObject).width = k;
-          ((Emoticon)localObject).height = m;
-          ((Emoticon)localObject).keywords = str3;
-          ((Emoticon)localObject).businessExtra = paramJSONObject;
-          bool = true;
-        }
-      }
-    }
-    label613:
-    for (;;)
-    {
-      if (localObject == null)
-      {
-        k = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("EmotionJsonUtils", 2, "emoticon json update, cannot find emoticon from epId: " + paramString);
-          k = i;
-        }
-        j += 1;
-        i = k;
-        break;
-        if ((!str1.equals(((Emoticon)localObject).eId)) || (!paramString.equals(((Emoticon)localObject).epId)) || (!str2.equals(((Emoticon)localObject).name)))
-        {
-          ((Emoticon)localObject).eId = str1;
-          ((Emoticon)localObject).epId = paramString;
-          if (!TextUtils.isEmpty(str2)) {
-            ((Emoticon)localObject).name = str2;
-          }
-          ((Emoticon)localObject).width = k;
-          ((Emoticon)localObject).height = m;
-          ((Emoticon)localObject).keywords = str3;
-          ((Emoticon)localObject).businessExtra = paramJSONObject;
-          bool = true;
-          continue;
-        }
-        bool = false;
-        if (!str3.equals(((Emoticon)localObject).keywords))
-        {
-          bool = true;
-          ((Emoticon)localObject).keywords = str3;
-        }
-        if (paramJSONObject.equals(((Emoticon)localObject).businessExtra)) {
-          break label613;
-        }
-        bool = true;
-        ((Emoticon)localObject).businessExtra = paramJSONObject;
-        continue;
-      }
-      paramJSONObject = a(paramEmoticonPackage, (Emoticon)localObject);
-      if (paramJSONObject != null) {
-        return paramJSONObject;
-      }
-      if (TextUtils.isEmpty(((Emoticon)localObject).encryptKey)) {
-        i = 1;
-      }
-      for (;;)
-      {
-        ((Emoticon)localObject).isSound = paramEmoticonPackage.hasSound;
-        a(paramEmoticonPackage, paramArrayList, paramInt2, paramBoolean, bool, localArrayList, localJSONObject, str1, str2, (Emoticon)localObject);
-        k = i;
-        break;
-        paramaxfj.b(localArrayList);
-        if (paramEmoticonPackage.newSoundEp) {
-          paramaxfj.a(paramEmoticonPackage);
-        }
-        if (i == 0) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          paramaslf.a = paramBoolean;
-          return null;
-        }
-      }
-    }
-  }
-  
-  private static String a(EmoticonPackage paramEmoticonPackage, Emoticon paramEmoticon)
-  {
-    if (paramEmoticonPackage.jobType == 0) {
-      paramEmoticon.jobType = 0;
-    }
-    for (;;)
-    {
-      return null;
-      if (paramEmoticonPackage.jobType == 1) {
-        return "qFace are not supported";
-      }
-      if (paramEmoticonPackage.jobType == 3) {
-        paramEmoticon.jobType = 2;
-      } else if (paramEmoticonPackage.jobType == 5) {
-        paramEmoticon.jobType = 4;
-      }
-    }
-  }
-  
-  private static String a(JSONObject paramJSONObject, String paramString)
-  {
-    if (paramJSONObject.has("keywords"))
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("keywords");
-      if (!TextUtils.isEmpty(paramString)) {
-        paramJSONObject.put(paramString);
-      }
-      return paramJSONObject.toString();
-    }
-    return "[" + paramString + "]";
-  }
-  
-  protected static void a(EmoticonPackage paramEmoticonPackage, int paramInt1, axfj paramaxfj, JSONObject paramJSONObject, String paramString, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (paramEmoticonPackage.copywritingType != axfi.a)
-    {
-      paramEmoticonPackage.extraFlags |= 0x4;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionJsonUtils", 2, "parseJson, ep.extraFlags = " + paramEmoticonPackage.extraFlags);
-      }
-    }
-    if ((paramJSONObject.has("type")) && (4 == paramInt3)) {
-      paramEmoticonPackage.jobType = 5;
-    }
-    paramEmoticonPackage.rscType = paramInt2;
-    if (paramInt1 != askd.d) {
-      paramEmoticonPackage.localVersion = paramInt4;
-    }
-    paramaxfj = paramaxfj.b(paramString);
-    if (paramaxfj != null)
-    {
-      paramEmoticonPackage.status = paramaxfj.status;
-      paramEmoticonPackage.valid = paramaxfj.valid;
-    }
-    if ((paramEmoticonPackage.mobileFeetype == 1) || ((paramString != null) && ("10278".equals(paramString))) || (paramEmoticonPackage.jobType == 1))
-    {
-      paramEmoticonPackage.wordingId = 1L;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    if (paramaxfj != null)
+    asji.b(this.jdField_a_of_type_Asji, 9, 10);
+    asji.c(this.jdField_a_of_type_Asji, 9, 15);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateWaitResultWhenRecv)");
+    this.jdField_a_of_type_Asjn = new askt(this.jdField_a_of_type_Asji);
+  }
+  
+  protected void a(int paramInt)
+  {
+    int i = 1;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      paramEmoticonPackage.wordingId = paramaxfj.wordingId;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
       return;
     }
-    paramEmoticonPackage.wordingId = -1L;
-  }
-  
-  protected static void a(EmoticonPackage paramEmoticonPackage, int paramInt1, ArrayList<Emoticon> paramArrayList, axfj paramaxfj, JSONArray paramJSONArray, int paramInt2, boolean paramBoolean)
-  {
-    int i = 0;
-    Object localObject;
-    String str1;
-    String str2;
-    String str4;
-    String str3;
-    if (i < paramInt2)
+    if (5 != paramInt)
     {
-      localObject = paramJSONArray.getJSONObject(i);
-      str1 = ((JSONObject)localObject).getString("id");
-      str2 = ((JSONObject)localObject).getString("name");
-      str4 = ((JSONObject)localObject).getString("character");
-      str3 = paramEmoticonPackage.epId;
-      localObject = paramaxfj.a(str3, str1);
-      if (localObject == null)
+      this.jdField_a_of_type_Asji.d();
+      switch (paramInt)
       {
-        if (paramInt1 == askd.d) {
-          break label362;
-        }
-        localObject = new Emoticon();
-        ((Emoticon)localObject).eId = str1;
-        ((Emoticon)localObject).epId = str3;
-        ((Emoticon)localObject).name = str2;
-        ((Emoticon)localObject).character = str4;
-        ((Emoticon)localObject).jobType = 3;
-        paramBoolean = true;
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
       }
     }
-    label362:
-    for (;;)
+    while (paramInt != 0)
     {
-      label121:
-      if (localObject == null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionJsonUtils", 2, "emoticon json update, cannot find emoticon from epId: " + str3);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((!str1.equals(((Emoticon)localObject).eId)) || (!str3.equals(((Emoticon)localObject).epId)) || (!str2.equals(((Emoticon)localObject).name)))
-        {
-          ((Emoticon)localObject).eId = str1;
-          ((Emoticon)localObject).epId = str3;
-          if (!TextUtils.isEmpty(str2)) {
-            ((Emoticon)localObject).name = str2;
-          }
-          if (!TextUtils.isEmpty(str4)) {
-            ((Emoticon)localObject).character = str4;
-          }
-          paramBoolean = true;
-          break label121;
-        }
-        paramBoolean = false;
-        break label121;
-        int j = 0;
-        if (asos.a(paramEmoticonPackage)) {
-          j = 1;
-        }
-        ((Emoticon)localObject).isSound = paramEmoticonPackage.hasSound;
-        paramArrayList.add(localObject);
-        if ((paramBoolean) && (j == 0)) {
-          paramaxfj.a((Emoticon)localObject);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionJsonUtils", 2, "parseSmallJson :emoticon eId[" + str1 + "]eName[" + str2 + "]");
-        }
-      }
+      this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
+      return;
+      this.jdField_a_of_type_Asji.d();
+      break label63;
+      asji.b(this.jdField_a_of_type_Asji, 10, 5);
+      asji.c(this.jdField_a_of_type_Asji, 10, 5);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateAcceptByPCWhenPause)");
+      this.jdField_a_of_type_Asjn = new asjl(this.jdField_a_of_type_Asji);
+      paramInt = i;
+      continue;
+      asji.b(this.jdField_a_of_type_Asji, 10, 6);
+      asji.c(this.jdField_a_of_type_Asji, 10, 6);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateRefuseByPCWhenPause)");
+      this.jdField_a_of_type_Asjn = new aske(this.jdField_a_of_type_Asji);
+      paramInt = i;
+      continue;
+      asji.b(this.jdField_a_of_type_Asji, 10, 8);
+      asji.c(this.jdField_a_of_type_Asji, 10, 8);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateSenderCancelSendWhenPause)");
+      this.jdField_a_of_type_Asjn = new askl(this.jdField_a_of_type_Asji);
+      paramInt = i;
+      continue;
+      asji.b(this.jdField_a_of_type_Asji, 10, 7);
+      asji.c(this.jdField_a_of_type_Asji, 10, 7);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateSaveToWeiYunByPCWhenPause)");
+      this.jdField_a_of_type_Asjn = new aski(this.jdField_a_of_type_Asji);
+      paramInt = i;
+      continue;
+      asji.a(this.jdField_a_of_type_Asji);
+      asji.b(this.jdField_a_of_type_Asji, 10, 11);
+      asji.c(this.jdField_a_of_type_Asji, 10, 14);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateUploadingWhenPause)");
+      this.jdField_a_of_type_Asjn = new asko(this.jdField_a_of_type_Asji);
+      paramInt = 0;
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if (a("onSenderUploadProgressNotify")) {
       return;
     }
+    this.jdField_a_of_type_Asji.c(true);
+    asji.a(this.jdField_a_of_type_Asji);
+    b(paramInt1, paramInt2);
+    asji.a(this.jdField_a_of_type_Asji, 10, 11);
+    asji.a(this.jdField_a_of_type_Asji, 10, 14, false);
+    a("StateUploadingWhenPause");
+    this.jdField_a_of_type_Asjn = new asko(this.jdField_a_of_type_Asji);
   }
   
-  protected static void a(EmoticonPackage paramEmoticonPackage, int paramInt, ArrayList<Emoticon> paramArrayList, axfj paramaxfj, JSONObject paramJSONObject1, long paramLong, JSONObject paramJSONObject2, JSONArray paramJSONArray1, JSONArray paramJSONArray2)
+  protected void a(int paramInt, String paramString)
   {
-    paramJSONArray1 = (JSONObject)paramJSONArray1.get(0);
-    paramJSONArray2 = (JSONObject)paramJSONArray2.get(0);
-    String str = paramJSONArray1.getString("name");
-    paramEmoticonPackage.isAPNG = (paramJSONArray1.optInt("isAPNG", 0) + 1);
-    if (paramEmoticonPackage.isAPNG == 2) {
-      paramEmoticonPackage.rscType = 2;
-    }
-    int j = paramEmoticonPackage.extraFlags & 0x1;
-    if (paramJSONArray1.has("isOriginal")) {}
-    for (int i = paramJSONArray1.getInt("isOriginal");; i = 0)
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (j == 0)
-      {
-        paramEmoticonPackage.extraFlags |= i;
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionJsonUtils", 2, "parseSmallJson original = " + i + ", ep.extraFlags = " + paramEmoticonPackage.extraFlags);
-        }
-        i = 6;
-        if (paramJSONObject1.has("type")) {
-          i = paramJSONObject1.getInt("type");
-        }
-        if (!paramJSONArray2.has("feeType")) {
-          break label388;
-        }
-      }
-      label388:
-      for (j = paramJSONArray2.getInt("feeType");; j = 0)
-      {
-        paramEmoticonPackage.localVersion = ((int)(paramLong / 1000L));
-        paramEmoticonPackage.name = str;
-        paramEmoticonPackage.mark = "";
-        paramEmoticonPackage.type = i;
-        paramEmoticonPackage.mobileFeetype = j;
-        paramEmoticonPackage.jobType = 4;
-        if ((paramEmoticonPackage.mobileFeetype == 1) || ((paramEmoticonPackage.epId != null) && ("10278".equals(paramEmoticonPackage.epId)))) {
-          paramEmoticonPackage.wordingId = 1L;
-        }
-        for (;;)
-        {
-          paramaxfj.a(paramEmoticonPackage);
-          if (QLog.isColorLevel()) {
-            QLog.d("EmotionJsonUtils", 2, "parseSmallJson: ep = " + paramEmoticonPackage);
-          }
-          paramJSONObject1 = paramJSONObject2.getJSONArray("itemInfo");
-          a(paramEmoticonPackage, paramInt, paramArrayList, paramaxfj, paramJSONObject1, paramJSONObject1.length(), true);
-          return;
-          if (j <= 0) {
-            break;
-          }
-          paramEmoticonPackage.extraFlags &= i;
-          break;
-          paramJSONObject1 = paramaxfj.b(paramEmoticonPackage.epId);
-          if (paramJSONObject1 != null) {
-            paramEmoticonPackage.wordingId = paramJSONObject1.wordingId;
-          } else {
-            paramEmoticonPackage.wordingId = -1L;
-          }
-        }
-      }
-    }
-  }
-  
-  private static void a(EmoticonPackage paramEmoticonPackage, ArrayList<Emoticon> paramArrayList1, int paramInt, boolean paramBoolean1, boolean paramBoolean2, ArrayList<Emoticon> paramArrayList2, JSONObject paramJSONObject, String paramString1, String paramString2, Emoticon paramEmoticon)
-  {
-    paramJSONObject = paramJSONObject.optJSONObject("voiceData");
-    if (paramJSONObject != null)
-    {
-      paramEmoticon.backColor = paramJSONObject.optString("backcolor", null);
-      paramEmoticon.volumeColor = paramJSONObject.optString("fontcolor", null);
-      paramJSONObject = paramJSONObject.optString("heightItems", null);
-      paramEmoticon.voicePrint = paramJSONObject;
-      if (!TextUtils.isEmpty(paramJSONObject))
-      {
-        paramEmoticon.voicePrintItems = paramEmoticon.parseSoundPrintString();
-        paramEmoticonPackage.newSoundEp = true;
-      }
-    }
-    paramArrayList1.add(paramEmoticon);
-    if (paramInt != -1)
-    {
-      paramEmoticon.extensionWidth = paramInt;
-      paramEmoticon.extensionHeight = paramInt;
-    }
-    if ((paramBoolean2) && (!paramBoolean1)) {
-      paramArrayList2.add(paramEmoticon);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionJsonUtils", 2, "paseJson: emoticon eId[" + paramString1 + "]eName[" + paramString2 + "]");
-    }
-  }
-  
-  protected static void a(EmoticonPackage paramEmoticonPackage, JSONObject paramJSONObject)
-  {
-    int i;
-    int j;
-    if ((paramJSONObject != null) && (paramJSONObject.has("operationInfo")))
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("operationInfo");
-      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-      {
-        i = 0;
-        j = paramJSONObject.length();
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-        if ((localJSONObject == null) || (!localJSONObject.has("platform")) || (!"3".equals(localJSONObject.getString("platform")))) {
-          break label116;
-        }
-        if (localJSONObject.has("minVersion"))
-        {
-          paramJSONObject = localJSONObject.getString("minVersion");
-          if (!TextUtils.isEmpty(paramJSONObject)) {
-            paramEmoticonPackage.minQQVersion = paramJSONObject;
-          }
-        }
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      label116:
-      i += 1;
     }
+    asji.a(this.jdField_a_of_type_Asji, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Asjn = new asjx(this.jdField_a_of_type_Asji);
   }
   
-  protected static void b(EmoticonPackage paramEmoticonPackage, JSONObject paramJSONObject)
+  protected void a(boolean paramBoolean)
   {
-    if ((paramJSONObject != null) && (paramJSONObject.has("childEmojiId")))
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      paramJSONObject = paramJSONObject.getString("childEmojiId");
-      if (!TextUtils.isEmpty(paramJSONObject))
-      {
-        paramJSONObject = paramJSONObject.split(",");
-        if ((paramJSONObject != null) && (paramJSONObject.length > 0))
-        {
-          paramJSONObject = paramJSONObject[0];
-          if (!TextUtils.isEmpty(paramJSONObject))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("EmotionJsonUtils", 2, "parseJson, child magic, id=" + paramJSONObject);
-            }
-            paramEmoticonPackage.childEpId = paramJSONObject;
-          }
-        }
-      }
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. onRecvOnLineFileResult entity is null");
+      return;
     }
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + " recv  success response of accept,  waiting the cmd of starting upload");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(1);
+    if (!this.jdField_a_of_type_Asji.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + " recvonlinefile result = false and no handle it. here waiting response of asking progress");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(false);
+    asji.b(this.jdField_a_of_type_Asji, 10, 10);
+    asji.c(this.jdField_a_of_type_Asji, 10, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateChangeToOffFailedWhenPause)");
+    this.jdField_a_of_type_Asjn = new asjr(this.jdField_a_of_type_Asji);
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]  recv failed!!");
   }
   
-  protected static void c(EmoticonPackage paramEmoticonPackage, JSONObject paramJSONObject)
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    Object localObject = paramJSONObject.optJSONObject("diversionConfig");
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionJsonUtils", 1, "diversionConfig = " + localObject);
-    }
-    if (localObject != null)
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      int i = ((JSONObject)localObject).optInt("diversionType");
-      paramJSONObject = ((JSONObject)localObject).optString("diversionName");
-      String str1 = ((JSONObject)localObject).optString("copywriting");
-      String str2 = ((JSONObject)localObject).optString("jumpUrl");
-      String str3 = ((JSONObject)localObject).optString("displayImg");
-      long l1 = ((JSONObject)localObject).optLong("beginTime");
-      long l2 = ((JSONObject)localObject).optLong("endTime");
-      String str4 = ((JSONObject)localObject).optString("wording");
-      localObject = ((JSONObject)localObject).optString("from");
-      paramEmoticonPackage.copywritingType = i;
-      paramEmoticonPackage.copywritingContent = str1;
-      paramEmoticonPackage.jumpUrl = str2;
-      paramEmoticonPackage.imageUrl = str3;
-      paramEmoticonPackage.diversionName = paramJSONObject;
-      paramEmoticonPackage.beginTime = l1;
-      paramEmoticonPackage.endTime = l2;
-      paramEmoticonPackage.buttonWording = str4;
-      paramEmoticonPackage.comeFom = ((String)localObject);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((aszt.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Asji.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    asji.b(this.jdField_a_of_type_Asji, 1, 3);
+    asji.c(this.jdField_a_of_type_Asji, 1, 3);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateUploadoneWhenPause)");
+    this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Asjn = new askr(this.jdField_a_of_type_Asji);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    asji.a(this.jdField_a_of_type_Asji, 10, 9, true);
+    a("StateCancelUploadWhenPause");
+    this.jdField_a_of_type_Asjn = new asjp(this.jdField_a_of_type_Asji);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (a("onAskSenderUpProgressResult")) {
+      return;
+    }
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + " recv  success response of ask progress,  waiting the notify of progress");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(2);
+    if (!this.jdField_a_of_type_Asji.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + " ask progress server result = false and no handle it. here waiting response of sender on recv");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(false);
+    asji.b(this.jdField_a_of_type_Asji, 10, 10);
+    asji.c(this.jdField_a_of_type_Asji, 10, 10);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateChangeToOffFailedWhenPause)");
+    this.jdField_a_of_type_Asjn = new asjr(this.jdField_a_of_type_Asji);
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. onSenderReplayComeOnRecv entity is null");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(true);
+    asji.a(this.jdField_a_of_type_Asji);
+    asji.b(this.jdField_a_of_type_Asji, 10, 11);
+    asji.c(this.jdField_a_of_type_Asji, 10, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateUploadingWhenPause)");
+    this.jdField_a_of_type_Asjn = new asko(this.jdField_a_of_type_Asji);
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + "onRecvButSenderReplayTimeOut entity is null");
+      return;
+    }
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + " you had recv the file, but sender replay time out!!!! recvCmdSucAndHadTryCount=" + this.jdField_a_of_type_Asji.jdField_a_of_type_Asjj.a);
+    this.jdField_a_of_type_Asji.c(1);
+    if (!this.jdField_a_of_type_Asji.e())
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + " sender replay time out and no handle it. here waiting response of asking progress");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(false);
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_Asjj.a < 9223372036854775807L)
+    {
+      asji.a(this.jdField_a_of_type_Asji, 10, 10, true);
+      a("StateChangeToOffFailedWhenPause");
+      this.jdField_a_of_type_Asjn = new asjr(this.jdField_a_of_type_Asji);
+      return;
+    }
+    asji.a(this.jdField_a_of_type_Asji, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Asjn = new asjx(this.jdField_a_of_type_Asji);
+  }
+  
+  protected void h()
+  {
+    if (a("onAskSenderUpProgressTimeOut")) {
+      return;
+    }
+    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + " you had recv the file, but ask progress time out!!!!!, recvCmdSucAndHadTryCount =" + this.jdField_a_of_type_Asji.jdField_a_of_type_Asjj.a);
+    this.jdField_a_of_type_Asji.c(2);
+    if (!this.jdField_a_of_type_Asji.e())
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Asjn.a() + " ask progress time out and no handle it. here waiting response of sender when recv");
+      return;
+    }
+    this.jdField_a_of_type_Asji.c(false);
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_Asjj.a < 9223372036854775807L)
+    {
+      asji.a(this.jdField_a_of_type_Asji, 10, 10, true);
+      a("StateChangeToOffFailedWhenPause");
+      this.jdField_a_of_type_Asjn = new asjr(this.jdField_a_of_type_Asji);
+      return;
+    }
+    asji.a(this.jdField_a_of_type_Asji, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Asjn = new asjx(this.jdField_a_of_type_Asji);
   }
 }
 

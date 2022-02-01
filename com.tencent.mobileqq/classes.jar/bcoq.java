@@ -1,21 +1,6 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-class bcoq
+public abstract interface bcoq
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  
-  public bcoq(bcop parambcop, Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559813, parambcop.b, false);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

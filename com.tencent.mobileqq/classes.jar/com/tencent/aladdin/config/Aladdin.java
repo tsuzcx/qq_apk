@@ -173,7 +173,7 @@ public class Aladdin
       sRequestHandler = Aladdin.InitParams.access$700(paramInitParams);
       sAppVersion = Aladdin.InitParams.access$800(paramInitParams);
       sLogger = Aladdin.InitParams.access$900(paramInitParams);
-      Log.i("Aladdin", "initialize: GitHash=4a875d8");
+      Log.i("Aladdin", "initialize: GitHash=2b7f180");
       DeviceInfoUtils.initDisplayParams(Aladdin.InitParams.access$200(paramInitParams));
       return;
       ROOT_DIR = Aladdin.InitParams.access$200(paramInitParams).getFilesDir().getAbsolutePath() + File.separator + "aladdin_configs";

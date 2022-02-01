@@ -1,6 +1,20 @@
-public abstract interface bmci
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+
+public class bmci
+  implements View.OnTouchListener
 {
-  public abstract bmcj a(bioy parambioy, bmcf parambmcf);
+  public bmci(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!AEPituCameraCaptureButtonLayout.a(this.a)) {
+      return this.a.a(paramView, paramMotionEvent);
+    }
+    return AEPituCameraCaptureButtonLayout.a(this.a, paramView, paramMotionEvent);
+  }
 }
 
 

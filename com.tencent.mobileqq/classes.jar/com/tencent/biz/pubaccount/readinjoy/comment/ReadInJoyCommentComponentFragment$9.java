@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import aizq;
+import ahua;
 
 class ReadInJoyCommentComponentFragment$9
   implements Runnable
 {
-  ReadInJoyCommentComponentFragment$9(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, aizq paramaizq) {}
+  ReadInJoyCommentComponentFragment$9(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, ahua paramahua) {}
   
   /* Error */
   public void run()
@@ -13,7 +13,7 @@ class ReadInJoyCommentComponentFragment$9
     // Byte code:
     //   0: aload_0
     //   1: getfield 14	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:this$0	Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;
-    //   4: invokestatic 28	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;)Laiyz;
+    //   4: invokestatic 28	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;)Lahtj;
     //   7: astore_1
     //   8: aload_1
     //   9: ifnull +26 -> 35
@@ -22,17 +22,17 @@ class ReadInJoyCommentComponentFragment$9
     //   16: invokestatic 31	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;)Z
     //   19: ifeq +16 -> 35
     //   22: aload_1
-    //   23: invokevirtual 36	aiyz:c	()V
+    //   23: invokevirtual 36	ahtj:c	()V
     //   26: aload_0
     //   27: getfield 14	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:this$0	Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;
     //   30: iconst_0
-    //   31: invokestatic 39	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;Z)Z
+    //   31: invokestatic 40	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:b	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;Z)Z
     //   34: pop
-    //   35: new 41	java/io/File
+    //   35: new 42	java/io/File
     //   38: dup
     //   39: aload_0
-    //   40: getfield 16	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:a	Laizq;
-    //   43: getfield 47	aizq:b	Ljava/lang/String;
+    //   40: getfield 16	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:a	Lahua;
+    //   43: getfield 47	ahua:b	Ljava/lang/String;
     //   46: invokespecial 50	java/io/File:<init>	(Ljava/lang/String;)V
     //   49: invokevirtual 54	java/io/File:toURI	()Ljava/net/URI;
     //   52: invokevirtual 60	java/net/URI:toURL	()Ljava/net/URL;
@@ -70,7 +70,7 @@ class ReadInJoyCommentComponentFragment$9
     //   121: aload_0
     //   122: getfield 14	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:this$0	Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;
     //   125: iconst_1
-    //   126: invokestatic 103	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:b	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;Z)Z
+    //   126: invokestatic 103	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;Z)Z
     //   129: pop
     //   130: aload_0
     //   131: getfield 14	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:this$0	Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;

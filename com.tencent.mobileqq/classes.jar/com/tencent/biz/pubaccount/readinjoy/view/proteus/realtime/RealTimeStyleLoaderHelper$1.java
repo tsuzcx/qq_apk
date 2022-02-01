@@ -4,12 +4,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import svn;
+import szn;
 
 public class RealTimeStyleLoaderHelper$1
   implements Runnable
 {
-  public RealTimeStyleLoaderHelper$1(svn paramsvn, List paramList) {}
+  public RealTimeStyleLoaderHelper$1(szn paramszn, List paramList) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class RealTimeStyleLoaderHelper$1
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        File localFile = new File(svn.a(this.this$0) + "/" + str);
+        File localFile = new File(szn.a(this.this$0) + "/" + str);
         if ((localFile.exists()) && (localFile.isFile()))
         {
           boolean bool = localFile.delete();
@@ -36,7 +36,7 @@ public class RealTimeStyleLoaderHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeStyleLoaderHelper.1
  * JD-Core Version:    0.7.0.1
  */

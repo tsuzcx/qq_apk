@@ -1,8 +1,17 @@
-public abstract interface asth
+class asth
+  implements asri
 {
-  public abstract void a(int paramInt);
+  asth(astb paramastb) {}
   
-  public abstract void a(asti paramasti);
+  public void a()
+  {
+    this.a.a(false, asyq.a(this.a.a.a()), this.a.c(), new asti(this));
+  }
+  
+  public void b()
+  {
+    this.a.v();
+  }
 }
 
 

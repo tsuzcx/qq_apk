@@ -1,48 +1,46 @@
 package com.tencent.biz.richframework.download;
 
-import aaad;
-import bhmi;
-import bhrw;
+import bfys;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Set;
-import zzz;
 
-public class RFWDownloader$1
+class RFWDownloader$1
   implements Runnable
 {
-  public RFWDownloader$1(zzz paramzzz, String paramString, aaad paramaaad) {}
+  RFWDownloader$1(RFWDownloader paramRFWDownloader, String paramString, RFWDownloader.GetFileListener paramGetFileListener) {}
   
   public void run()
   {
-    String str = this.this$0.b(this.jdField_a_of_type_JavaLangString);
+    String str = this.this$0.getUnZipPath(this.val$downloadUrl);
     File localFile = new File(str);
-    if (bhrw.a() == null)
+    if (bfys.a() == null)
     {
       QLog.i("RFWDownloader", 1, "getFile error, SdCardUtil.getSdCardDirectory() == null");
-      if (this.jdField_a_of_type_Aaad != null) {
-        this.jdField_a_of_type_Aaad.a(false, "");
+      if (this.val$downloadListener != null) {
+        this.val$downloadListener.onRspCallback(false, "");
       }
     }
-    if (this.this$0.a(this.jdField_a_of_type_JavaLangString))
+    if (this.this$0.isFileDownLoaded(this.val$downloadUrl))
     {
       QLog.i("RFWDownloader", 1, "getFile success, the file is exist path:" + str);
-      if (this.jdField_a_of_type_Aaad != null) {
-        this.jdField_a_of_type_Aaad.a(true, str);
+      if (this.val$downloadListener != null) {
+        this.val$downloadListener.onRspCallback(true, str);
       }
       return;
     }
-    if (this.jdField_a_of_type_Aaad != null) {
-      zzz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aaad);
+    if (this.val$downloadListener != null) {
+      RFWDownloader.access$000(this.this$0, this.val$downloadUrl, this.val$downloadListener);
     }
-    if (zzz.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString))
+    if (RFWDownloader.access$100(this.this$0).contains(this.val$downloadUrl))
     {
       QLog.i("RFWDownloader", 1, "getFile ..., file is downloading");
       return;
     }
-    bhmi.a(localFile);
+    FileUtils.deleteFile(localFile);
     QLog.i("RFWDownloader", 1, "getFile ..., start download");
-    zzz.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    RFWDownloader.access$200(this.this$0, this.val$downloadUrl);
   }
 }
 

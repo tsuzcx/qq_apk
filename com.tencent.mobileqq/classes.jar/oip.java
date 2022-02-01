@@ -1,22 +1,22 @@
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import org.json.JSONObject;
 
-class oip
-  implements sej
+final class oip
+  implements ViewFactory.FoundClickableViewListener
 {
-  private WeakReference<oio> a;
+  oip(String paramString, JSONObject paramJSONObject) {}
   
-  public oip(oio paramoio)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a = new WeakReference(paramoio);
-  }
-  
-  public void a()
-  {
-    oio localoio = (oio)this.a.get();
-    if ((localoio == null) || (!localoio.b())) {
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      paramViewBase.setOnClickListener(new oir(this));
       return;
     }
-    oio.a(localoio).sendEmptyMessage(1);
+    paramViewBase.setOnClickListener(new oiq(this));
   }
 }
 

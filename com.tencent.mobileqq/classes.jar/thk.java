@@ -1,7 +1,47 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.viola.ui.view.VRefreshLayout;
+import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$Companion;", "", "()V", "GET_RIJ_APP_TYPE", "", "GET_USER_INFO", "PUBLIC_ACCOUNT_NEW", "SHOW_RIJ_NATIVE_COMMENT_VIEW", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thk {}
+class thk
+  implements VRefreshLayout.onRefreshStateChangeListener
+{
+  thk(thj paramthj, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  
+  public void onRefreshMove(int paramInt)
+  {
+    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
+    if ((paramInt <= i) && (!thj.a(this.jdField_a_of_type_Thj)))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
+    }
+  }
+  
+  public void onStateEnd()
+  {
+    thj.a(this.jdField_a_of_type_Thj, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+  }
+  
+  public void onStateFinish(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+  }
+  
+  public void onStateIdel()
+  {
+    thj.a(this.jdField_a_of_type_Thj, false);
+  }
+  
+  public void onStatePulling() {}
+  
+  public void onStateRefreshing()
+  {
+    thj.a(this.jdField_a_of_type_Thj, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

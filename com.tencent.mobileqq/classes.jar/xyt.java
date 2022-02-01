@@ -1,29 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-public final class xyt
-  extends QQUIEventReceiver<xyd, ymj>
+public class xyt
+  implements DialogInterface.OnDismissListener
 {
-  public xyt(@NonNull xyd paramxyd)
-  {
-    super(paramxyd);
-  }
+  public xyt(EditVideoGuide paramEditVideoGuide) {}
   
-  public void a(@NonNull xyd paramxyd, @NonNull ymj paramymj)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramymj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxyd.a != null) && (TextUtils.equals(paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxyd.a.b)))
-    {
-      yuk.a(paramxyd.b, "refresh feed item , feed id :%s", paramxyd.a.b);
-      paramxyd.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ymj.class;
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_Xzd.a(14);
   }
 }
 

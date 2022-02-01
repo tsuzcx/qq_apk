@@ -1,200 +1,147 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.DrawerCoverUtil.1;
-import com.tencent.util.DrawerCoverUtil.3;
-import com.tencent.util.DrawerCoverUtil.4;
-import java.io.File;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.weiyun.transmission.db.JobDbManager;
+import com.tencent.weiyun.transmission.db.JobDbWrapper;
 
 public class blgu
 {
-  public static String a;
-  private static boolean a;
-  
-  public static VasQuickUpdateManager.CallBacker a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, String paramString, anyl paramanyl, boolean paramBoolean)
+  public static int a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "now is in drawer frame?" + paramBoolean);
+    JobDbWrapper localJobDbWrapper = JobDbManager.getInstance().openJobDb(true);
+    if (localJobDbWrapper == null) {
+      return 0;
     }
-    if (!a(paramQQAppInterface, paramCard))
-    {
-      ThreadManager.getUIHandler().post(new DrawerCoverUtil.1(paramRandomCoverView, paramString));
-      a();
-    }
-    for (;;)
-    {
-      return null;
-      if (!b(paramQQAppInterface, paramCard))
-      {
-        if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (azxy.a(paramCard.lCurrentStyleId)))
-        {
-          c(paramQQAppInterface, paramCard);
-          a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramanyl, paramBoolean);
-        }
-        else
-        {
-          ((bhzq)paramQQAppInterface.getManager(235)).a.a(paramQQAppInterface, "card." + paramCard.lCurrentBgId);
-          paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-          paramBaseActivity = new blgv(paramBaseActivity, paramCard, paramRandomCoverView, paramanyl, paramBoolean);
-          paramQQAppInterface.addWeakCallback(paramBaseActivity);
-          return paramBaseActivity;
-        }
-      }
-      else {
-        a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramanyl, paramBoolean);
-      }
-    }
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("valid_flag", Integer.valueOf(0));
+    int i = localJobDbWrapper.update("download", localContentValues, "uid=? AND state = 4", new String[] { paramString });
+    JobDbManager.getInstance().closeJobDb(localJobDbWrapper);
+    return i;
   }
   
-  public static void a()
+  private static blgt a(Cursor paramCursor)
   {
-    jdField_a_of_type_JavaLangString = null;
+    blgt localblgt = new blgt();
+    localblgt.jdField_a_of_type_Long = paramCursor.getLong(0);
+    localblgt.jdField_a_of_type_JavaLangString = paramCursor.getString(1);
+    localblgt.jdField_b_of_type_JavaLangString = paramCursor.getString(2);
+    localblgt.jdField_c_of_type_JavaLangString = paramCursor.getString(3);
+    localblgt.jdField_d_of_type_JavaLangString = paramCursor.getString(4);
+    localblgt.jdField_e_of_type_JavaLangString = paramCursor.getString(5);
+    localblgt.jdField_b_of_type_Long = paramCursor.getLong(6);
+    localblgt.f = paramCursor.getString(7);
+    localblgt.jdField_c_of_type_Long = paramCursor.getLong(8);
+    localblgt.g = paramCursor.getString(9);
+    localblgt.jdField_a_of_type_Int = paramCursor.getInt(10);
+    localblgt.jdField_b_of_type_Int = paramCursor.getInt(11);
+    localblgt.h = paramCursor.getString(12);
+    localblgt.jdField_d_of_type_Long = paramCursor.getLong(13);
+    localblgt.jdField_e_of_type_Long = paramCursor.getLong(14);
+    localblgt.i = paramCursor.getString(15);
+    localblgt.j = paramCursor.getString(16);
+    localblgt.k = paramCursor.getString(17);
+    localblgt.l = paramCursor.getString(18);
+    return localblgt;
   }
   
-  public static void a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, anyl paramanyl, boolean paramBoolean)
+  /* Error */
+  public static java.util.ArrayList<blgt> a(String paramString)
   {
-    long l = paramCard.lCurrentBgId;
-    Object localObject = (Boolean)azxs.a.get(Long.valueOf(l));
-    int i;
-    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
-    {
-      i = 1;
-      azxs.a.remove(Long.valueOf(l));
-    }
-    for (;;)
-    {
-      localObject = paramanyl.a(paramCard.strDrawerCardUrl);
-      a(paramCard.strDrawerCardUrl);
-      if ((localObject == null) || (i != 0))
-      {
-        if ((l == 160L) || (l == 1600L) || (azxy.a(paramCard.lCurrentStyleId))) {}
-        for (paramQQAppInterface = bhhz.a(paramBaseActivity, paramCard.strDrawerCardUrl);; paramQQAppInterface = azxs.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId))
-        {
-          localObject = new BitmapFactory.Options();
-          ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
-          localObject = bhgm.a(paramQQAppInterface, (BitmapFactory.Options)localObject);
-          if (localObject != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.profilecard.", 2, "[personal card] fileName:" + paramQQAppInterface + " bitmap:" + localObject);
-            }
-            ThreadManager.getUIHandler().post(new DrawerCoverUtil.3(paramBaseActivity, (Bitmap)localObject, paramRandomCoverView, paramBoolean, paramanyl, paramCard));
-          }
-          return;
-        }
-      }
-      ThreadManager.getUIHandler().post(new DrawerCoverUtil.4(paramRandomCoverView, (blqp)localObject, paramBoolean));
-      return;
-      i = 0;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Card paramCard)
-  {
-    anum localanum = (anum)paramQQAppInterface.a(2);
-    if (localanum == null) {}
-    do
-    {
-      return;
-      byte b = (byte)bhsi.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
-      byte[] arrayOfByte1 = null;
-      byte[] arrayOfByte2 = null;
-      if (0 == 0)
-      {
-        arrayOfByte1 = new byte[1];
-        arrayOfByte1[0] = 0;
-      }
-      if (0 == 0)
-      {
-        arrayOfByte2 = new byte[1];
-        arrayOfByte2[0] = 0;
-      }
-      long l = paramCard.feedPreviewTime;
-      localanum.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.c(), 0, l, (byte)1, 0L, 0L, arrayOfByte1, "", 0L | 1L | 0x4 | 0x8 | 0x200 | 0x10 | 0x20 | 0x400 | 0x800 | 0x2000, 10004, arrayOfByte2, b);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_JavaLangString != null;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, Card paramCard)
-  {
-    paramQQAppInterface = bhhz.a(paramQQAppInterface, paramCard.lCurrentStyleId, true);
-    boolean bool = bdgb.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "[check cardTemplate]lCurrentStyleId:" + paramCard.lCurrentStyleId + " backgroundUrl:" + paramCard.strDrawerCardUrl + " templateRet:" + paramCard.templateRet + " isSimpleUI:" + bool);
-    }
-    if (bool) {}
-    do
-    {
-      return false;
-      if (azxy.a(paramCard.lCurrentStyleId)) {
-        return true;
-      }
-    } while ((paramCard.lCurrentStyleId <= 0L) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramCard.strDrawerCardUrl)) || (paramCard.templateRet != 0));
-    return true;
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public static boolean b()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, Card paramCard)
-  {
-    if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (azxy.a(paramCard.lCurrentStyleId))) {
-      return bhhz.a(paramQQAppInterface.getApp(), paramCard.strDrawerCardUrl);
-    }
-    return new File(azxs.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId)).exists();
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface, Card paramCard)
-  {
-    Object localObject = new File(bhhz.a(paramQQAppInterface.getApplication(), paramCard.strDrawerCardUrl));
-    localObject = new bihu(paramCard.strDrawerCardUrl, (File)localObject);
-    ((bihu)localObject).f = "profileCardDownload";
-    ((bihu)localObject).e = "VIP_profilecard";
-    int i = bihw.a((bihu)localObject, paramQQAppInterface);
-    if (i == 0) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download error:" + i);
-    }
-    for (;;)
-    {
-      return false;
-      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download {" + paramCard.strDrawerCardUrl + "} error:" + i);
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: new 126	java/util/ArrayList
+    //   5: dup
+    //   6: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   9: astore_2
+    //   10: invokestatic 12	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   13: iconst_1
+    //   14: invokevirtual 16	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
+    //   17: astore_3
+    //   18: aload_3
+    //   19: ifnonnull +5 -> 24
+    //   22: aload_2
+    //   23: areturn
+    //   24: new 129	java/lang/StringBuilder
+    //   27: dup
+    //   28: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   31: ldc 132
+    //   33: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc 138
+    //   38: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: ldc 24
+    //   43: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: ldc 140
+    //   48: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: astore 4
+    //   53: aload_3
+    //   54: ldc 36
+    //   56: getstatic 145	blgv:a	[Ljava/lang/String;
+    //   59: aload 4
+    //   61: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: iconst_1
+    //   65: anewarray 40	java/lang/String
+    //   68: dup
+    //   69: iconst_0
+    //   70: aload_0
+    //   71: aastore
+    //   72: aconst_null
+    //   73: aconst_null
+    //   74: ldc 151
+    //   76: invokevirtual 155	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   79: astore_0
+    //   80: aload_0
+    //   81: ifnull +38 -> 119
+    //   84: aload_0
+    //   85: invokeinterface 159 1 0
+    //   90: ifeq +29 -> 119
+    //   93: aload_2
+    //   94: aload_0
+    //   95: invokestatic 161	blgu:a	(Landroid/database/Cursor;)Lblgt;
+    //   98: invokevirtual 165	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   101: pop
+    //   102: goto -18 -> 84
+    //   105: astore_1
+    //   106: aload_0
+    //   107: invokestatic 171	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   110: invokestatic 12	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   113: aload_3
+    //   114: invokevirtual 50	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
+    //   117: aload_2
+    //   118: areturn
+    //   119: aload_0
+    //   120: invokestatic 171	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   123: goto -13 -> 110
+    //   126: astore_0
+    //   127: aload_1
+    //   128: invokestatic 171	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   131: aload_0
+    //   132: athrow
+    //   133: astore_2
+    //   134: aload_0
+    //   135: astore_1
+    //   136: aload_2
+    //   137: astore_0
+    //   138: goto -11 -> 127
+    //   141: astore_0
+    //   142: aconst_null
+    //   143: astore_0
+    //   144: goto -38 -> 106
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	147	0	paramString	String
+    //   1	1	1	localObject1	Object
+    //   105	23	1	localThrowable	java.lang.Throwable
+    //   135	1	1	str	String
+    //   9	109	2	localArrayList	java.util.ArrayList
+    //   133	4	2	localObject2	Object
+    //   17	97	3	localJobDbWrapper	JobDbWrapper
+    //   51	9	4	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   84	102	105	java/lang/Throwable
+    //   24	80	126	finally
+    //   84	102	133	finally
+    //   24	80	141	java/lang/Throwable
   }
 }
 

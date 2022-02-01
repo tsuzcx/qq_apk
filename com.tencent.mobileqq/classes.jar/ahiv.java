@@ -1,17 +1,42 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
+import android.os.Message;
 
 class ahiv
-  extends ahkx
+  extends Handler
 {
-  ahiv(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahiv(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void handleMessage(Message paramMessage)
   {
-    return new ahbt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    switch (paramMessage.what)
+    {
+    case 5: 
+    case 8: 
+    default: 
+      return;
+    case 1: 
+      ahiu.a(this.a);
+      return;
+    case 2: 
+      ahiu.b(this.a);
+      return;
+    case 3: 
+      ahiu.c(this.a);
+      return;
+    case 4: 
+      ahiu.d(this.a);
+      return;
+    case 6: 
+      ahiu.a(this.a, paramMessage);
+      return;
+    case 9: 
+      ahiu.b(this.a, paramMessage);
+      return;
+    case 7: 
+      ahiu.e(this.a);
+      return;
+    }
+    ahiu.f(this.a);
   }
 }
 

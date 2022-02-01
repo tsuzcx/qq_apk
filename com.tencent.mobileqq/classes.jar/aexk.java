@@ -1,33 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aexk
-  implements View.OnTouchListener
+final class aexk
+  implements aeya
 {
-  public aexk(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, FrameLayout paramFrameLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      paramView = LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label57;
-      }
-    }
-    label57:
-    for (int i = 20200313;; i = 20200720)
-    {
-      paramView.removeMessages(i);
-      return false;
-      LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      break;
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 2);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

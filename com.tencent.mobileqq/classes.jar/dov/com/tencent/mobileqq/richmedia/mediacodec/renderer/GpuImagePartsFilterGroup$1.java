@@ -1,33 +1,33 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import brgb;
-import brgd;
-import brgm;
+import boab;
+import boad;
+import boag;
 
 public class GpuImagePartsFilterGroup$1
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$1(brgm parambrgm, int paramInt1, int paramInt2, int paramInt3) {}
+  public GpuImagePartsFilterGroup$1(boag paramboag, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    brgd localbrgd1 = null;
-    brgd localbrgd2 = brgm.a(this.this$0);
-    brgm.a(this.this$0, null);
-    if ((brgm.b(this.this$0) == null) || (brgm.b(this.this$0).getFilterType() != this.a))
+    boad localboad1 = null;
+    boad localboad2 = boag.a(this.this$0);
+    boag.a(this.this$0, null);
+    if ((boag.b(this.this$0) == null) || (boag.b(this.this$0).getFilterType() != this.a))
     {
-      localbrgd1 = brgm.b(this.this$0);
-      brgm.b(this.this$0, (brgd)brgb.a(this.a));
-      brgm.b(this.this$0).init();
-      brgm.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localboad1 = boag.b(this.this$0);
+      boag.b(this.this$0, (boad)boab.a(this.a));
+      boag.b(this.this$0).init();
+      boag.b(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
-    brgm.b(this.this$0).a(false, 0.0F);
-    brgm.a(this.this$0, 0.0F);
-    if (localbrgd2 != null) {
-      localbrgd2.destroy();
+    boag.b(this.this$0).a(false, 0.0F);
+    boag.a(this.this$0, 0.0F);
+    if (localboad2 != null) {
+      localboad2.destroy();
     }
-    if (localbrgd1 != null) {
-      localbrgd1.destroy();
+    if (localboad1 != null) {
+      localboad1.destroy();
     }
   }
 }

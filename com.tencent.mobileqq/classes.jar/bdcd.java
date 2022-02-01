@@ -1,21 +1,47 @@
-final class bdcd
-  extends bdcg
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
+
+class bdcd
+  implements Comparator<oidb_0xe61.BeancurdCubeInfoResult>
 {
-  public double a(int paramInt1, int paramInt2)
+  private final aezm jdField_a_of_type_Aezm;
+  private final avki<bdch, QQAppInterface> jdField_a_of_type_Avki;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public bdcd(QQAppInterface paramQQAppInterface, aezm paramaezm, avki<bdch, QQAppInterface> paramavki)
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aezm = paramaezm;
+    this.jdField_a_of_type_Avki = paramavki;
+  }
+  
+  private int a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult)
+  {
+    int i = bdcf.b((int)((oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get()).uint64_busi_id.get());
+    paramBeancurdCubeInfoResult = ((bdch)this.jdField_a_of_type_Avki.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)).a(i);
+    if (paramBeancurdCubeInfoResult != null) {
+      return paramBeancurdCubeInfoResult.a();
+    }
+    return 0;
+  }
+  
+  private boolean a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult)
+  {
+    return (paramBeancurdCubeInfoResult != null) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.has()) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.get() != null) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.uint64_busi_id.has());
+  }
+  
+  public int a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult1, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult2)
+  {
+    if ((a(paramBeancurdCubeInfoResult1)) && (a(paramBeancurdCubeInfoResult2)))
     {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
+      int i = a(paramBeancurdCubeInfoResult1);
+      int j = a(paramBeancurdCubeInfoResult2);
+      return this.jdField_a_of_type_Aezm.b(i) - this.jdField_a_of_type_Aezm.b(j);
     }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
-    }
-    return d2 / Math.log(2.0D);
+    return 0;
   }
 }
 

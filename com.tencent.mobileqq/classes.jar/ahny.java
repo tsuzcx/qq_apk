@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import org.json.JSONObject;
 
-public abstract interface ahny
+public abstract class ahny
 {
-  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
+  public abstract JSONObject a();
 }
 
 

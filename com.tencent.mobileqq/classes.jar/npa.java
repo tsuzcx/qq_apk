@@ -1,18 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class npa
-  implements aasd
+class npa
+  implements DialogInterface.OnCancelListener
 {
-  public npa(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  npa(noy paramnoy) {}
   
-  public void callback(Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("state");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
-    }
+    noy.a(this.a);
   }
 }
 

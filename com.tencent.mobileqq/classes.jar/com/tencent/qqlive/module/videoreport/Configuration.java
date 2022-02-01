@@ -18,6 +18,7 @@ public class Configuration
   private int mAudioReportHeartBeatInterval;
   private int mAudioTimePinInterval;
   private final long mClickReportInterval;
+  private Configuration.Builder mConfigBuilder;
   private boolean mDefaultDataCollectEnable;
   private boolean mDefaultReportEnable;
   private final double mElementExposureMinRate;
@@ -37,6 +38,7 @@ public class Configuration
   
   private Configuration(Configuration.Builder paramBuilder)
   {
+    this.mConfigBuilder = paramBuilder;
     this.mDefaultReportEnable = Configuration.Builder.access$000(paramBuilder);
     this.mDefaultDataCollectEnable = Configuration.Builder.access$100(paramBuilder);
     this.mVisitBackgroundTime = Configuration.Builder.access$200(paramBuilder);
@@ -127,6 +129,11 @@ public class Configuration
   public IFormatter getFormatter()
   {
     return this.mFormatter;
+  }
+  
+  public int getLazyInitType()
+  {
+    return Configuration.Builder.access$1600(this.mConfigBuilder);
   }
   
   public ILogger getLogger()

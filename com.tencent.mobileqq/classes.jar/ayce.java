@@ -1,39 +1,39 @@
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class ayce
-  implements ayeu
+  implements BusinessObserver
 {
-  public ayce(StoryPlayController paramStoryPlayController) {}
+  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp) {}
   
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void c(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int j = 1;
-    int i = 1;
-    if (paramInt1 != 100)
+    switch (paramInt)
     {
-      paramString1 = this.a.jdField_a_of_type_Ayet.a.a;
-      if (this.a.jdField_a_of_type_Ayet.c()) {}
-      for (;;)
-      {
-        ayel.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
-        return;
-        i = 2;
-      }
-    }
-    ayel.e();
-    paramString1 = StoryPlayController.a(this.a);
-    if (this.a.jdField_a_of_type_Ayet.c()) {}
-    for (paramInt1 = j;; paramInt1 = 2)
-    {
-      ayel.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean);
+      return;
+    case 2: 
+      b(paramBoolean);
+      return;
+    case 3: 
+      a((NewerGuidePlugin.RecommendedListResp)paramObject);
       return;
     }
+    c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayce
  * JD-Core Version:    0.7.0.1
  */

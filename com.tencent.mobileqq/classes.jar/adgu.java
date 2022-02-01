@@ -1,52 +1,27 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.MsgBody;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adgu
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xfb");
-    }
-    try
-    {
-      Object localObject = new NowPushMsgList.MsgBody();
-      if (paramadan.a(paramMsgType0x210))
-      {
-        ((NowPushMsgList.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
-        paramMsgType0x210 = ((NowPushMsgList.MsgBody)localObject).rpt_now_push_msg.get().iterator();
-        while (paramMsgType0x210.hasNext())
-        {
-          localObject = (NowPushMsgList.NowPushMsg)paramMsgType0x210.next();
-          ((ayvj)paramadan.a().getManager(266)).a((NowPushMsgList.NowPushMsg)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xfb " + ((NowPushMsgList.NowPushMsg)localObject).uint32_switch.get() + "  uint32_task_id " + ((NowPushMsgList.NowPushMsg)localObject).uint32_task_id.get() + "  uint32_type " + ((NowPushMsgList.NowPushMsg)localObject).uint32_type.get() + "  uint64_start_time " + ((NowPushMsgList.NowPushMsg)localObject).uint64_start_time.get() + "  uint64_end_time " + ((NowPushMsgList.NowPushMsg)localObject).uint64_end_time.get());
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception paramadan)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xfb], errInfo->" + paramadan.getMessage());
-    }
-  }
+  public adgu(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramadan, paramMsgType0x210);
-    return null;
+    if (this.a.app != null)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
+      localIntent.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

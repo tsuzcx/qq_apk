@@ -3,7 +3,7 @@ package com.tencent.mobileqq.tribe.fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bfdx;
+import bdml;
 
 class TribeVideoListPlayerFragment$26
   implements Runnable
@@ -12,8 +12,8 @@ class TribeVideoListPlayerFragment$26
   
   public void run()
   {
-    bfdx localbfdx = (bfdx)((View)this.this$0.a).getTag();
-    if (localbfdx == null) {
+    bdml localbdml = (bdml)((View)this.this$0.a).getTag();
+    if (localbdml == null) {
       return;
     }
     switch (TribeVideoListPlayerFragment.a(this.this$0).a)
@@ -21,19 +21,19 @@ class TribeVideoListPlayerFragment$26
     default: 
       return;
     case 0: 
-      localbfdx.j.setVisibility(0);
-      localbfdx.i.setVisibility(8);
-      localbfdx.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+      localbdml.j.setVisibility(0);
+      localbdml.i.setVisibility(8);
+      localbdml.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     case 1: 
-      localbfdx.f.setVisibility(0);
-      localbfdx.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
-      localbfdx.a.setVisibility(8);
+      localbdml.f.setVisibility(0);
+      localbdml.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
+      localbdml.a.setVisibility(8);
       return;
     }
-    localbfdx.h.setVisibility(0);
-    localbfdx.g.setVisibility(8);
-    localbfdx.d.setVisibility(8);
+    localbdml.h.setVisibility(0);
+    localbdml.g.setVisibility(8);
+    localbdml.d.setVisibility(8);
   }
 }
 

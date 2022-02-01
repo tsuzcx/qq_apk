@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-
 public class apte
-  implements DialogInterface.OnDismissListener
 {
-  public apte(ARScanEntryView paramARScanEntryView) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
-  }
+  public int a;
+  public String a = "";
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apte
  * JD-Core Version:    0.7.0.1
  */

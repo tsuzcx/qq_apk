@@ -1,27 +1,36 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class atfw
-  implements Animation.AnimationListener
+public abstract interface atfw
 {
-  public atfw(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
-  }
+  public abstract long a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract atfx a();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract BaseActivity a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
-import plz;
-import pma;
+import prl;
+import prm;
 
 class ComponentPGCShortContentBig$2
   implements Runnable
 {
-  ComponentPGCShortContentBig$2(ComponentPGCShortContentBig paramComponentPGCShortContentBig, plz paramplz) {}
+  ComponentPGCShortContentBig$2(ComponentPGCShortContentBig paramComponentPGCShortContentBig, prl paramprl) {}
   
   public void run()
   {
     if ((ComponentPGCShortContentBig.a(this.this$0) instanceof MediaVideoView)) {
-      ((MediaVideoView)ComponentPGCShortContentBig.a(this.this$0)).requestUrlByVid(pma.a(), this.a);
+      ((MediaVideoView)ComponentPGCShortContentBig.a(this.this$0)).requestUrlByVid(prm.a(), this.a);
     }
   }
 }

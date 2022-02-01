@@ -1,57 +1,238 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageConfig;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView.BarrageType;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageTrack.handleBarrageDataForLoop.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageTrack.placeBarrageInLine.1;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.RspBody;
-import tencent.im.oidb.cmd0x885.oidb_0x885.RspBody;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class tnw
-  extends nkq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack;", "", "()V", "bakBarrageData", "Ljava/util/ArrayDeque;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageInfo;", "barrageConfig", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageConfig;", "barrageData", "barrageLineCallback", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLineCallback;", "getBarrageLineCallback", "()Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLineCallback;", "setBarrageLineCallback", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLineCallback;)V", "handler", "Landroid/os/Handler;", "isFirstTimePlaceBarrage", "", "lines", "Ljava/util/ArrayList;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLine;", "Lkotlin/collections/ArrayList;", "canPlaceInThisLine", "index", "", "barrageType", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$BarrageType;", "checkPlaceLineIsValidate", "barrageLines", "", "findSuitableBarrageLines", "getIdleLineCount", "getPlaceLineCount", "handleBarrageDataForLoop", "", "init", "innerPlaceBarrageInLine", "barrageInfo", "notifyLineIdle", "placeBarrageInLine", "delay", "", "placeOneBarrageInLine", "reset", "tryPlaceBarragesInLine", "BarrageLine", "BarrageLineCallback", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tnw
 {
-  tnw(tnv paramtnv) {}
+  public static final tnz a;
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private BarrageConfig jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageConfig = new BarrageConfig();
+  private ArrayDeque<BarrageInfo> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
+  private final ArrayList<tnx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  @Nullable
+  private tny jdField_a_of_type_Tny;
+  private boolean jdField_a_of_type_Boolean = true;
+  private ArrayDeque<BarrageInfo> b = new ArrayDeque();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    for (boolean bool = true;; bool = false) {
-      try
-      {
-        paramBundle = new oidb_0x6cf.RspBody();
-        if (paramArrayOfByte != null) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        paramBundle = (oidb_0x885.RspBody)paramBundle.msg_ad_rsp.get();
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info.has = " + paramBundle.bytes_ad_user_info.has());
-        }
-        if ((paramBundle != null) && (paramBundle.bytes_ad_user_info.has()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info = " + paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-          paramArrayOfByte = this.a;
-          if (paramInt == 0)
-          {
-            paramArrayOfByte.notifyUI(1, bool, paramBundle.bytes_ad_user_info.get().toStringUtf8());
-            tny.a(null, true, "no error", paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-        }
-        else
-        {
-          tny.a(null, false, "error with errorcode: " + paramInt, null);
-          return;
-        }
+    jdField_a_of_type_Tnz = new tnz(null);
+  }
+  
+  private final int a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      if (!((tnx)localIterator.next()).a()) {
+        break label43;
       }
-      catch (Exception paramArrayOfByte)
+      i += 1;
+    }
+    label43:
+    for (;;)
+    {
+      break;
+      return i;
+    }
+  }
+  
+  private final int a(BarrageItemView.BarrageType paramBarrageType)
+  {
+    if (paramBarrageType == BarrageItemView.BarrageType.DOUBLE_LINE) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  private final List<tnx> a(BarrageItemView.BarrageType paramBarrageType)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (;;)
+    {
+      if (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(paramArrayOfByte));
+        tnx localtnx = (tnx)localIterator.next();
+        if ((localArrayList.isEmpty()) && (!a(localtnx.a(), paramBarrageType))) {
+          continue;
         }
-        return;
+        if (!localtnx.a()) {
+          break label129;
+        }
+        localArrayList.add(localtnx);
+      }
+      while (localArrayList.size() == a(paramBarrageType))
+      {
+        if (!a((List)localArrayList, paramBarrageType))
+        {
+          QLog.w("BarrageTrack", 1, "checkPlaceLineIsValidate not validate, barrageType:" + paramBarrageType);
+          localArrayList.clear();
+        }
+        return (List)localArrayList;
+        label129:
+        localArrayList.clear();
       }
     }
+  }
+  
+  private final void a(BarrageInfo paramBarrageInfo, long paramLong)
+  {
+    if (paramBarrageInfo == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)new BarrageTrack.placeBarrageInLine.1(this, paramBarrageInfo), paramLong);
+  }
+  
+  private final void a(BarrageInfo paramBarrageInfo, List<tnx> paramList)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      Iterator localIterator = paramList.iterator();
+      for (int i = 1; localIterator.hasNext(); i = 0)
+      {
+        tnx localtnx = (tnx)localIterator.next();
+        if (i == 0) {
+          ((StringBuilder)localObject).append(",");
+        }
+        ((StringBuilder)localObject).append(localtnx.a());
+      }
+      QLog.d("BarrageTrack", 2, "placeOneBarrageInLine barrageInfo:" + paramBarrageInfo.b + "    barrageLines:" + ((StringBuilder)localObject).toString());
+    }
+    Object localObject = paramList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((tnx)((Iterator)localObject).next()).a(false);
+    }
+    localObject = this.jdField_a_of_type_Tny;
+    if (localObject != null) {
+      ((tny)localObject).a(paramBarrageInfo, paramList);
+    }
+  }
+  
+  private final boolean a(int paramInt, BarrageItemView.BarrageType paramBarrageType)
+  {
+    return true;
+  }
+  
+  private final boolean a(BarrageInfo paramBarrageInfo)
+  {
+    List localList = a(BarrageItemView.a.a(paramBarrageInfo.b));
+    if (localList.isEmpty())
+    {
+      QLog.w("BarrageTrack", 2, "InnerPlaceBarrageInLine failed for no idle barrageLine.");
+      return false;
+    }
+    a(paramBarrageInfo, localList);
+    return true;
+  }
+  
+  private final boolean a(List<tnx> paramList, BarrageItemView.BarrageType paramBarrageType)
+  {
+    return a(paramBarrageType) == paramList.size();
+  }
+  
+  private final void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private final void d()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageConfig.a()) && (this.jdField_a_of_type_JavaUtilArrayDeque.size() < this.b.size()))
+    {
+      this.jdField_a_of_type_JavaUtilArrayDeque.addAll((Collection)this.b.clone());
+      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new BarrageTrack.handleBarrageDataForLoop.1(this));
+    }
+  }
+  
+  public final void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      j = ((Collection)this.jdField_a_of_type_JavaUtilArrayList).size();
+      i = 0;
+      while (i < j)
+      {
+        a((BarrageInfo)this.jdField_a_of_type_JavaUtilArrayDeque.poll(), i * 500L);
+        i += 1;
+      }
+    }
+    int j = a();
+    int i = 0;
+    while (i < j)
+    {
+      i += 1;
+      BarrageInfo localBarrageInfo = (BarrageInfo)this.jdField_a_of_type_JavaUtilArrayDeque.peek();
+      if (localBarrageInfo != null) {
+        if (a(localBarrageInfo)) {
+          this.jdField_a_of_type_JavaUtilArrayDeque.remove(localBarrageInfo);
+        }
+      }
+    }
+    this.jdField_a_of_type_Boolean = false;
+    d();
+  }
+  
+  public final void a(@NotNull BarrageConfig paramBarrageConfig, @NotNull List<? extends BarrageInfo> paramList)
+  {
+    int i = 0;
+    Intrinsics.checkParameterIsNotNull(paramBarrageConfig, "barrageConfig");
+    Intrinsics.checkParameterIsNotNull(paramList, "barrageData");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageConfig = paramBarrageConfig;
+    c();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    int m = BarrageItemView.a.a();
+    int n = DisplayUtil.dip2px((Context)BaseApplication.getContext(), paramBarrageConfig.b());
+    int i1 = paramBarrageConfig.a();
+    int k;
+    for (int j = 0; i < i1; j = k)
+    {
+      paramBarrageConfig = new tnx();
+      paramBarrageConfig.a(true);
+      paramBarrageConfig.a(i);
+      k = j;
+      if (i != 0) {
+        k = j + (m + n);
+      }
+      paramBarrageConfig.b(k);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramBarrageConfig);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
+    this.jdField_a_of_type_JavaUtilArrayDeque.addAll((Collection)paramList);
+    paramBarrageConfig = this.jdField_a_of_type_JavaUtilArrayDeque.clone();
+    Intrinsics.checkExpressionValueIsNotNull(paramBarrageConfig, "this.barrageData.clone()");
+    this.b = paramBarrageConfig;
+  }
+  
+  public final void a(@Nullable tny paramtny)
+  {
+    this.jdField_a_of_type_Tny = paramtny;
+  }
+  
+  public final void b()
+  {
+    a();
   }
 }
 

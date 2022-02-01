@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import pqi;
-import rbc;
+import pwc;
+import rid;
 
 public class ReadInJoyDraftboxFragment$1
   implements Runnable
@@ -11,7 +11,7 @@ public class ReadInJoyDraftboxFragment$1
   public void run()
   {
     if (ReadInJoyDraftboxFragment.a(this.this$0) != null) {
-      ReadInJoyDraftboxFragment.a(this.this$0).a(new rbc(this));
+      ReadInJoyDraftboxFragment.a(this.this$0).a(new rid(this));
     }
   }
 }

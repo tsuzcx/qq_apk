@@ -2,7 +2,6 @@ package com.tencent.tav.asset;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
@@ -93,7 +92,6 @@ public class MutableComposition
   @NonNull
   public List<MutableCompositionTrack> getTracks()
   {
-    Log.e("Asset", "getTracks finish, has track count: " + this.tracks);
     return this.tracks;
   }
   

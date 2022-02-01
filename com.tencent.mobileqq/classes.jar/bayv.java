@@ -1,47 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class bayv
-  extends Handler
+public class bayv
 {
-  public bayv(bayq parambayq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public String a;
   
-  public void handleMessage(Message paramMessage)
+  public bayv() {}
+  
+  public bayv(String paramString, int paramInt)
   {
-    try
-    {
-      switch (paramMessage.what)
-      {
-      case 1: 
-        bayq.a(this.a);
-        return;
-      }
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleMessage exception = " + paramMessage.getMessage());
-      return;
-    }
-    bayq.b(this.a);
-    return;
-    bayq.c(this.a);
-    return;
-    bayq.d(this.a);
-    return;
-    bayq.e(this.a);
-    return;
-    bayq.f(this.a);
-    return;
-    bayq.g(this.a);
-    return;
-    bayq.h(this.a);
-    return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

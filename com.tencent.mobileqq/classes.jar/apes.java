@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.ar.ARGlobalConfigService;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 
 public class apes
-  extends aplu
 {
-  public apes(ARGlobalConfigService paramARGlobalConfigService) {}
+  public final int a;
+  public final Rect a;
+  public final BitmapDrawable a;
   
-  public ARScanStarFaceConfigInfo a()
+  public apes(BitmapDrawable paramBitmapDrawable, int paramInt, Rect paramRect)
   {
-    return this.a.a.a();
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 

@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bhuw;
-import bhuy;
-
-public class HttpCommunicator$HttpCommunicatorHandler$1
+class HttpCommunicator$HttpCommunicatorHandler$1
   implements Runnable
 {
-  public HttpCommunicator$HttpCommunicatorHandler$1(bhuy parambhuy) {}
+  HttpCommunicator$HttpCommunicatorHandler$1(HttpCommunicator.HttpCommunicatorHandler paramHttpCommunicatorHandler) {}
   
   public void run()
   {
-    bhuw.c(this.a.a, true);
+    HttpCommunicator.access$600(this.this$1.this$0, true);
   }
 }
 

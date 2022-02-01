@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afos
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afos(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public afos(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bdll.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    AIOLongShotHelper.c(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DEC");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

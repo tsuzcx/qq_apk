@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.app.Activity;
-import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
-
 public class vwn
-  implements Animator.AnimatorListener
 {
-  public vwn(QCircleSlidBottomView paramQCircleSlidBottomView) {}
+  @ypm(a="unionID")
+  public String a;
+  @ypm(a="feedID")
+  public String b;
+  @ypm(a="vid")
+  public String c;
+  @ypm(a="fwReason")
+  public String d;
+  @ypm(a="isNewFw")
+  public String e;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean a()
   {
-    if (this.a.getContext() != null) {
-      uzg.a((Activity)this.a.getContext(), uzg.b(true));
-    }
-    if (QCircleSlidBottomView.a(this.a) != null) {
-      QCircleSlidBottomView.a(this.a).a();
-    }
+    return "1".equals(this.e);
   }
 }
 

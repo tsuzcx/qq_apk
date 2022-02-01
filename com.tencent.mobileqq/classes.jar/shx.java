@@ -1,16 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.graphics.Bitmap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class shx
-  extends pmr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureAndUpload$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class shx
+  implements shv
 {
-  public shx(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  shx(rqx paramrqx) {}
+  
+  public void a()
   {
-    super(paramString);
+    rqx localrqx = this.jdField_a_of_type_Rqx;
+    if (localrqx != null) {
+      localrqx.a(1, "");
+    }
   }
   
-  public void a(pmk parampmk)
+  public void a(@NotNull Bitmap paramBitmap)
   {
-    parampmk.c();
+    Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
+    shu.a(this.jdField_a_of_type_Shu, paramBitmap, this.jdField_a_of_type_Rqx);
   }
 }
 

@@ -1,35 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afki
-  extends WtloginObserver
+  implements ViewPager.OnPageChangeListener
 {
-  public afki(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public afki(TroopChatPie paramTroopChatPie) {}
   
-  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0) {
-      return;
-    }
-    RegisterQQNumberActivity.a(this.a);
-    paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    this.a.startActivity(paramString);
-    this.a.finish();
+    this.a.reportGiftPanelRedDot(paramInt);
   }
 }
 

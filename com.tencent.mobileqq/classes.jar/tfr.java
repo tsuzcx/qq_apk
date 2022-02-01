@@ -1,18 +1,6 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-
-public class tfr
-  extends tfp
+public abstract interface tfr<T>
 {
-  public tfr(BridgeModule paramBridgeModule)
-  {
-    super(paramBridgeModule);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    BridgeModule.access$600(this.a, paramInt2, paramIntent);
-  }
+  public abstract void a(tfq<T> paramtfq);
 }
 
 

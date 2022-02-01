@@ -1,21 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaal
-  extends QIPCModule
+  extends WebViewPlugin
 {
-  aaal(aaak paramaaak, String paramString)
+  private Handler a;
+  public boolean a;
+  
+  public aaal()
   {
-    super(paramString);
+    this.mPluginNameSpace = "JD_REPORT";
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
+    if (this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = ofw.a(paramString);
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    if (paramLong == 8L) {
+      a(paramString);
+    }
     return null;
   }
 }

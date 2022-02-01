@@ -1,41 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
 
 public class adrt
-  extends AccountObserver
+  extends vwu
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public adrt(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
+  public adrt(NearbyActivity paramNearbyActivity, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramString);
   }
   
-  public void onDeleteAccount(boolean paramBoolean)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity;
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      localObject = ((AccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
-      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        ((SharedPreferences)localObject).edit().remove("uin").commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("Switch_Account", 2, "delete Last_Login");
-        }
+      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
+      if (paramSosoLbsInfo == null) {
+        break label103;
       }
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
+    }
+    label103:
+    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.mLocation;; localSosoLocation = null)
+    {
+      QLog.d("nearby.heart_beat", 2, localSosoLocation);
+      if ((!this.a.isFinishing()) && (!this.a.c))
+      {
+        this.a.c = false;
+        this.a.a.a(1, paramSosoLbsInfo);
       }
       return;
     }

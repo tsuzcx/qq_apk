@@ -1,17 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class bkyy
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements View.OnTouchListener
 {
-  bkyy(bkyw parambkyw, RequestEvent paramRequestEvent) {}
+  bkyy(bkyx parambkyx) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    if (paramMotionEvent.getAction() == 1) {
+      bkyx.a(this.a);
     }
+    return true;
   }
 }
 

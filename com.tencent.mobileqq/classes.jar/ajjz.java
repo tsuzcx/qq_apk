@@ -1,13 +1,45 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajjz
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public static ajjs a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  {
+    int i = paramSessionInfo.curType;
+    Object localObject = null;
+    if (paramSessionInfo.isFromForward == 3) {
+      paramSessionInfo = new ajkc(paramContext, paramSessionInfo, paramQQAppInterface);
+    }
+    do
+    {
+      return paramSessionInfo;
+      switch (i)
+      {
+      default: 
+        paramContext = localObject;
+        paramSessionInfo = paramContext;
+      }
+    } while (!QLog.isColorLevel());
+    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
+    if (paramContext == null) {}
+    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
+    {
+      QLog.i("MiniPieFactory", 2, paramSessionInfo);
+      return paramContext;
+      paramContext = new ajka(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new ajkb(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new ajkf(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new ajke(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new ajkd(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+    }
+  }
 }
 
 

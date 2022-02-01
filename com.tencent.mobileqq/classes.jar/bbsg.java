@@ -1,34 +1,42 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
 public class bbsg
-  extends WebChromeClient
+  implements ImageReader.OnImageAvailableListener
 {
-  private bbsg(ActionUrlActivity paramActionUrlActivity) {}
+  public bbsg(Camera2Control paramCamera2Control) {}
   
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
+    try
+    {
+      bbsr.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      bbsq.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+        localByteBuffer.get(arrayOfByte);
+        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
+        {
+          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
+          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
+        }
+        paramImageReader.close();
+      }
+      return;
     }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    super.onProgressChanged(paramWebView, paramInt);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    this.a.setTitle(paramString);
-    this.a.a();
+    catch (Exception paramImageReader)
+    {
+      bbsr.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+    }
   }
 }
 

@@ -1,12 +1,157 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ahad
-  implements DialogInterface.OnClickListener
+public class ahad
+  extends amop
 {
-  ahad(ahab paramahab) {}
+  public ahad(AIOImageProviderService paramAIOImageProviderService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private void a(becp parambecp, MessageForTroopFile paramMessageForTroopFile)
+  {
+    if (FileUtils.fileExistsAndNotEmpty(parambecp.jdField_d_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 16, 1, parambecp.jdField_d_of_type_JavaLangString, false);
+    }
+    label157:
+    do
+    {
+      for (;;)
+      {
+        if (!FileUtils.fileExistsAndNotEmpty(parambecp.jdField_c_of_type_JavaLangString)) {
+          break label157;
+        }
+        this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 18, 1, parambecp.jdField_c_of_type_JavaLangString, false);
+        return;
+        if (parambecp.j != 0) {
+          localObject1 = "";
+        }
+        try
+        {
+          Object localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("errorType", "thumb_download");
+          ((JSONObject)localObject2).put("errorCode", parambecp.j);
+          localObject2 = ((JSONObject)localObject2).toString();
+          localObject1 = localObject2;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+        this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 18, 2, (String)localObject1, false);
+      }
+    } while (parambecp.j == 0);
+    Object localObject1 = "";
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("errorType", "thumb_download");
+      localJSONObject.put("errorCode", parambecp.j);
+      parambecp = localJSONObject.toString();
+      this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 18, 2, parambecp, false);
+      return;
+    }
+    catch (JSONException parambecp)
+    {
+      for (;;)
+      {
+        parambecp.printStackTrace();
+        parambecp = (becp)localObject1;
+      }
+    }
+  }
+  
+  private void b(becp parambecp, MessageForTroopFile paramMessageForTroopFile)
+  {
+    if (AIOImageProviderService.a(this.a, paramMessageForTroopFile)) {
+      if ((parambecp.b == 8) && (parambecp.jdField_c_of_type_Long > 0L))
+      {
+        int i = (int)((float)parambecp.jdField_d_of_type_Long / (float)parambecp.jdField_c_of_type_Long * 10000.0F);
+        this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 1, i, parambecp.jdField_c_of_type_Long, true);
+      }
+    }
+    label165:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (parambecp.b == 11)
+          {
+            if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramMessageForTroopFile.uniseq)))
+            {
+              Context localContext = BaseApplicationImpl.sApplication.getBaseContext();
+              if (localContext == null) {
+                break label165;
+              }
+              aszt.a(localContext, parambecp.a);
+            }
+            for (;;)
+            {
+              this.a.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramMessageForTroopFile.uniseq));
+              this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 1, 269484034, 1, parambecp.a, false);
+              return;
+              QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file save album].");
+            }
+          }
+        } while ((parambecp.b != 12) && (parambecp.b != 10));
+        this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 269484034, 2, parambecp.a, false);
+        return;
+        if (!paramMessageForTroopFile.isPause) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("TroopStatusDebug", 1, "troopFilemsg Pauseed, return! current Status:" + parambecp.b);
+      return;
+      if ((parambecp.b == 8) && (parambecp.jdField_c_of_type_Long > 0L))
+      {
+        this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 20, (int)(parambecp.jdField_d_of_type_Long * 10000L / parambecp.jdField_c_of_type_Long), paramMessageForTroopFile.fileSize, true);
+        return;
+      }
+      if (parambecp.b == 11)
+      {
+        this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 20, 1, parambecp.a, false);
+        return;
+      }
+    } while ((parambecp.b != 12) && (parambecp.b != 10));
+    this.a.jdField_a_of_type_Ahas.a(paramMessageForTroopFile.uniseq, 0, 20, 2, "TroopFileError", false);
+  }
+  
+  protected void a(Object paramObject)
+  {
+    becp localbecp = (becp)paramObject;
+    paramObject = null;
+    if (localbecp != null) {
+      paramObject = AIOImageProviderService.a(this.a, localbecp.e);
+    }
+    if ((localbecp == null) || (paramObject == null))
+    {
+      QLog.i("AIOImageProviderService", 2, "onTroopFileStatusUpdate: error, info[" + localbecp + "] troopFileMsg[" + paramObject + "]");
+      return;
+    }
+    if (!paramObject.url.equals(localbecp.e))
+    {
+      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, file info not match message. fileId[" + localbecp.e + "]");
+      return;
+    }
+    if (this.a.jdField_a_of_type_Ahas == null)
+    {
+      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, callback is null.");
+      return;
+    }
+    a(localbecp, paramObject);
+    b(localbecp, paramObject);
+  }
 }
 
 

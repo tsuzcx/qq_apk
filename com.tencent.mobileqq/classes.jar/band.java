@@ -1,16 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
-class band
+public class band
   implements DialogInterface.OnClickListener
 {
-  band(bamz parambamz, String paramString) {}
+  public band(SignTextEditFragment paramSignTextEditFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new bane(bamz.a(this.jdField_a_of_type_Bamz).jdField_a_of_type_AndroidContentContext, bamz.a(this.jdField_a_of_type_Bamz).a()).a(this.jdField_a_of_type_JavaLangString).a(bamz.a(this.jdField_a_of_type_Bamz).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(bamz.a(this.jdField_a_of_type_Bamz)).a();
-    bdll.b(bamz.a(this.jdField_a_of_type_Bamz).a(), "dc00898", "", "", "0X800A4BD", "0X800A4BD", 0, 0, "", "", "", "");
+    SignTextEditFragment.a(this.a, "");
+    paramDialogInterface.dismiss();
+    this.a.b.obtainMessage(6, null).sendToTarget();
   }
 }
 

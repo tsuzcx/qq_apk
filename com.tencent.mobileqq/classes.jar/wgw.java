@@ -1,61 +1,31 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class wgw
-  extends wgv<whd>
+  extends vqm
 {
-  public String a(AddressItem paramAddressItem)
-  {
-    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
-  }
+  public List<VideoCollectionItem> a = new ArrayList();
   
-  protected List<wgg> a(List<wgh> paramList)
+  public wgw(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
   {
-    Object localObject1 = new HashMap();
-    paramList = paramList.iterator();
-    Object localObject2;
-    while (paramList.hasNext())
+    super(paramRspCollectionViewCount.result);
+    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
+    if (paramRspCollectionViewCount != null)
     {
-      localObject2 = (wgh)paramList.next();
-      Object localObject3 = ((wgh)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
-      if (localObject3 != null)
+      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
+      while (paramRspCollectionViewCount.hasNext())
       {
-        localObject3 = a((AddressItem)localObject3);
-        if (((HashMap)localObject1).containsKey(localObject3))
-        {
-          ((List)((HashMap)localObject1).get(localObject3)).add(localObject2);
-        }
-        else
-        {
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(localObject2);
-          ((HashMap)localObject1).put(localObject3, localArrayList);
-        }
-      }
-      else
-      {
-        yuk.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((wgh)localObject2).jdField_a_of_type_JavaLangString);
+        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
+        this.a.add(localVideoCollectionItem);
       }
     }
-    paramList = new ArrayList();
-    localObject1 = ((HashMap)localObject1).entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (List)((Map.Entry)((Iterator)localObject1).next()).getValue();
-      if (((List)localObject2).size() >= a().b)
-      {
-        localObject2 = new wgg(a().a, (List)localObject2);
-        ((wgg)localObject2).a(this.a);
-        ((wgg)localObject2).a(a());
-        paramList.add(localObject2);
-      }
-    }
-    return paramList;
   }
 }
 

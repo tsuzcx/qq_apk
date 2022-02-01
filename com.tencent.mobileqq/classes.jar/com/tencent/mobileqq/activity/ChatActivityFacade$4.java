@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aaaz;
-import aean;
+import acvv;
+import com.tencent.biz.richframework.network.servlet.QzoneAioStoryFeedServlet;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
-import mrs;
+import mrb;
 
 public final class ChatActivityFacade$4
   implements Runnable
@@ -17,35 +17,35 @@ public final class ChatActivityFacade$4
   public void run()
   {
     NewIntent localNewIntent;
-    if (aean.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
+    if (acvv.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
     {
-      long l = aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      long l = acvv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       QLog.i("ChatActivityFacade.QZoneStoryFeeds", 1, "lastTime: " + l);
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), aaaz.class);
+      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneAioStoryFeedServlet.class);
       localNewIntent.putExtra("key_last_aio_story_create_time", l);
     }
     try
     {
-      localNewIntent.putExtra("key_friend_uid", mrs.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      aean.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      aean.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      localNewIntent.setObserver(aean.a());
+      localNewIntent.putExtra("key_friend_uid", mrb.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin));
+      acvv.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      acvv.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      localNewIntent.setObserver(acvv.a());
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
+      acvv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        QLog.e("ChatActivityFacade.QZoneStoryFeeds", 1, "Long.valueOf " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        QLog.e("ChatActivityFacade.QZoneStoryFeeds", 1, "Long.valueOf " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.4
  * JD-Core Version:    0.7.0.1
  */

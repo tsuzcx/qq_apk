@@ -3,6 +3,7 @@ package oicq.wlogin_sdk.request;
 import android.content.Context;
 import android.util.Log;
 import com.tencent.loginsecsdk.ProtocolDet;
+import com.tencent.secprotocol.t.ReportLogHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -71,7 +72,7 @@ public class k
   
   public int a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt2, int paramInt3, int paramInt4, long[] paramArrayOfLong, int paramInt5, long paramLong4, int paramInt6, int paramInt7, int paramInt8, int paramInt9, byte[] paramArrayOfByte4, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.x;
+    int k = t.x;
     Object localObject = t.b(this.x.h);
     ((async_context)localObject)._tgtgt_key = util.get_rand_16byte(t.C);
     byte[] arrayOfByte = ((async_context)localObject)._tgtgt_key;
@@ -81,21 +82,37 @@ public class k
     }
     for (;;)
     {
+      ReportLogHelper.startTimeTask();
+      ReportLogHelper.report(7, 0);
       int i = 0;
       for (;;)
       {
-        a(paramLong3, a(paramLong1, paramLong2, j, paramLong3, paramInt1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, arrayOfByte, paramInt2, null, null, paramInt3, paramInt4, paramArrayOfLong, paramInt5, paramLong4, paramInt6, paramInt7, paramInt8, paramInt9, paramArrayOfByte4, ((tlv_t104)localObject).get_data(), t.F, paramWUserSigInfo._domains, paramWUserSigInfo), this.y);
-        int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-        if (k != 0) {
-          return k;
+        a(paramLong3, a(paramLong1, paramLong2, k, paramLong3, paramInt1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, arrayOfByte, paramInt2, null, null, paramInt3, paramInt4, paramArrayOfLong, paramInt5, paramLong4, paramInt6, paramInt7, paramInt8, paramInt9, paramArrayOfByte4, ((tlv_t104)localObject).get_data(), t.F, paramWUserSigInfo._domains, paramWUserSigInfo), this.y);
+        int j = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+        if (j != 0)
+        {
+          ReportLogHelper.report(7, 2);
+          paramInt1 = j;
         }
-        k = b();
-        util.LOGI("retry num:" + i + " ret:" + k, "" + paramLong3);
-        if (k != 180) {
-          return k;
-        }
-        if (i >= 1) {
-          return k;
+        for (;;)
+        {
+          ReportLogHelper.report(7, 1);
+          ReportLogHelper.stopTimeTask();
+          return paramInt1;
+          j = b();
+          util.LOGI("retry num:" + i + " ret:" + j, "" + paramLong3);
+          if (j != 180)
+          {
+            ReportLogHelper.report(7, 3);
+            paramInt1 = j;
+          }
+          else
+          {
+            if (i < 1) {
+              break;
+            }
+            paramInt1 = j;
+          }
         }
         i += 1;
       }
@@ -104,7 +121,8 @@ public class k
   
   public int a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt2, int paramInt3, long[] paramArrayOfLong, int paramInt4, long paramLong4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, byte[] paramArrayOfByte4, WUserSigInfo paramWUserSigInfo)
   {
-    int m = t.x;
+    ReportLogHelper.report(6, 0);
+    int k = t.x;
     tlv_t104 localtlv_t104 = t.b(this.x.h)._t104;
     if (localtlv_t104 == null) {
       localtlv_t104 = new tlv_t104();
@@ -112,29 +130,38 @@ public class k
     for (;;)
     {
       paramArrayOfByte2 = c(paramArrayOfByte2);
-      int j;
-      if (paramArrayOfByte2 == null)
-      {
-        j = -1014;
-        return j;
+      if (paramArrayOfByte2 == null) {
+        return -1014;
       }
       int i = 0;
       for (;;)
       {
-        byte[] arrayOfByte = a(paramLong1, paramLong2, m, paramLong3, paramInt1, paramArrayOfByte1, null, null, null, 0, paramArrayOfByte2, paramArrayOfByte3, paramInt2, paramInt3, paramArrayOfLong, paramInt4, paramLong4, paramInt5, paramInt6, paramInt7, paramInt8, paramArrayOfByte4, localtlv_t104.get_data(), t.F, paramWUserSigInfo._domains, paramWUserSigInfo);
-        a(this.i, this.t, this.j, paramLong3, this.m, this.n, m, this.p, arrayOfByte);
-        int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-        j = k;
-        if (k != 0) {
-          break;
+        byte[] arrayOfByte = a(paramLong1, paramLong2, k, paramLong3, paramInt1, paramArrayOfByte1, null, null, null, 0, paramArrayOfByte2, paramArrayOfByte3, paramInt2, paramInt3, paramArrayOfLong, paramInt4, paramLong4, paramInt5, paramInt6, paramInt7, paramInt8, paramArrayOfByte4, localtlv_t104.get_data(), t.F, paramWUserSigInfo._domains, paramWUserSigInfo);
+        a(this.i, this.t, this.j, paramLong3, this.m, this.n, k, this.p, arrayOfByte);
+        int j = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+        if (j != 0)
+        {
+          ReportLogHelper.report(6, 2);
+          paramInt1 = j;
         }
-        j = b();
-        util.LOGI("retry num:" + i + " ret:" + j, "" + paramLong3);
-        if (j != 180) {
-          return j;
-        }
-        if (i >= 1) {
-          return j;
+        for (;;)
+        {
+          ReportLogHelper.report(6, 1);
+          return paramInt1;
+          j = b();
+          util.LOGI("retry num:" + i + " ret:" + j, "" + paramLong3);
+          if (j != 180)
+          {
+            ReportLogHelper.report(6, 3);
+            paramInt1 = j;
+          }
+          else
+          {
+            if (i < 1) {
+              break;
+            }
+            paramInt1 = j;
+          }
         }
         i += 1;
       }
@@ -614,7 +641,7 @@ public class k
       l1 = l2;
       l2 = l5;
       break label660;
-      localObject1 = new tlv_t177().get_tlv_177(1595837976L, "6.0.0.2435");
+      localObject1 = new tlv_t177().get_tlv_177(1598240784L, "6.0.0.2436");
       l5 = l1;
       l1 = l2;
       l2 = l5;
@@ -723,7 +750,7 @@ public class k
       l2 = l5;
       break label660;
       l2 = System.currentTimeMillis();
-      localObject1 = new tlv_t544().get_tlv_544(this.a, paramLong3, t.B.length, t.B, "6.0.0.2435".length(), "6.0.0.2435", this.u);
+      localObject1 = new tlv_t544().get_tlv_544(this.a, paramLong3, t.B.length, t.B, "6.0.0.2436".length(), "6.0.0.2436", this.u);
       l1 = System.currentTimeMillis();
       util.LOGI("tgt 0x544 cost:" + (l1 - l2), "" + paramLong3);
       break label660;

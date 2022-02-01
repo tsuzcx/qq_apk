@@ -1,14 +1,6 @@
-import java.util.Comparator;
-
-class ampq
-  implements Comparator<ajmf>
+public abstract interface ampq
 {
-  ampq(ampp paramampp) {}
-  
-  public int a(ajmf paramajmf1, ajmf paramajmf2)
-  {
-    return (int)(paramajmf2.a - paramajmf1.a);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

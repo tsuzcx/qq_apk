@@ -1,21 +1,57 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qqw
-  implements Animation.AnimationListener
+  extends qpk
 {
-  public qqw(ComponentSocialOperation paramComponentSocialOperation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public qqw(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    this.a.a.startAnimation(this.a.c);
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public qpk a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public qpk d()
+  {
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentHotSearch))) {
+      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_Qpj);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qpk e()
+  {
+    return this;
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Slt);
+    return this;
+  }
+  
+  public qpk o()
+  {
+    super.o();
+    return this;
+  }
 }
 
 

@@ -1,50 +1,50 @@
 package com.tencent.mobileqq.ocr;
 
 import android.content.Intent;
-import ayxr;
-import ayxs;
-import besx;
-import bevm;
+import axkz;
+import axla;
+import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
 
 public class OCRHandler$BaseOCRReqBigDataListener$1
   implements Runnable
 {
-  public OCRHandler$BaseOCRReqBigDataListener$1(ayxs paramayxs, bevm parambevm) {}
+  public OCRHandler$BaseOCRReqBigDataListener$1(axla paramaxla, NetResp paramNetResp) {}
   
   public void run()
   {
     int i = 0;
-    ayxr localayxr;
+    axkz localaxkz;
     Intent localIntent;
-    if ((this.jdField_a_of_type_Bevm == null) || (this.jdField_a_of_type_Bevm.jdField_a_of_type_Int != 0))
+    if ((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp == null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult != 0))
     {
-      if (this.jdField_a_of_type_Bevm == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp == null)
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), resp is null");
         }
-        besx.a().a(6, ayxs.a(this.jdField_a_of_type_Ayxs));
+        FMTSrvAddrProvider.getInstance().onFailed(6, axla.a(this.jdField_a_of_type_Axla));
         i = -10;
       }
     }
     else
     {
-      localayxr = this.jdField_a_of_type_Ayxs.a;
-      localIntent = ayxs.a(this.jdField_a_of_type_Ayxs);
-      if (this.jdField_a_of_type_Bevm == null) {
+      localaxkz = this.jdField_a_of_type_Axla.a;
+      localIntent = axla.a(this.jdField_a_of_type_Axla);
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp == null) {
         break label191;
       }
     }
     label191:
-    for (byte[] arrayOfByte = this.jdField_a_of_type_Bevm.jdField_a_of_type_ArrayOfByte;; arrayOfByte = null)
+    for (byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mRespData;; arrayOfByte = null)
     {
-      ayxr.a(localayxr, i, localIntent, arrayOfByte, ayxs.a(this.jdField_a_of_type_Ayxs));
+      axkz.a(localaxkz, i, localIntent, arrayOfByte, axla.a(this.jdField_a_of_type_Axla));
       return;
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), mResult=" + this.jdField_a_of_type_Bevm.jdField_a_of_type_Int + ",mErrCode=" + this.jdField_a_of_type_Bevm.b + ",mHttpCode=" + this.jdField_a_of_type_Bevm.c + ",mErrDesc=" + this.jdField_a_of_type_Bevm.jdField_a_of_type_JavaLangString);
+      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), mResult=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult + ",mErrCode=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrCode + ",mHttpCode=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mHttpCode + ",mErrDesc=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrDesc);
       break;
     }
   }

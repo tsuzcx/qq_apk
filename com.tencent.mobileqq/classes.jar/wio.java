@@ -1,22 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-public class wio
-  extends SimpleJob<Void>
+class wio
+  extends wht
 {
-  public wio(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
-  {
-    super(paramString);
-  }
+  wio(wif paramwif, wjn paramwjn) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean b()
   {
-    int i = wlt.a();
-    yuk.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    this.jdField_a_of_type_Wjn.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

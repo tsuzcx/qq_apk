@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aoip;
+import anca;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
@@ -11,13 +11,13 @@ class TroopAddFriendTipsHelper$3
   
   public void run()
   {
-    aoip localaoip = (aoip)TroopAddFriendTipsHelper.a(this.this$0).a(20);
+    anca localanca = (anca)TroopAddFriendTipsHelper.a(this.this$0).getBusinessHandler(20);
     if (this.jdField_a_of_type_Boolean)
     {
-      localaoip.a().c(this.jdField_a_of_type_JavaLangString);
+      localanca.a().c(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    localaoip.a().d(this.jdField_a_of_type_JavaLangString);
+    localanca.a().d(this.jdField_a_of_type_JavaLangString);
   }
 }
 

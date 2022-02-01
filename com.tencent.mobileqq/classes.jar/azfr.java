@@ -1,48 +1,19 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-
-class azfr
-  extends aoib
+public class azfr
 {
-  azfr(azfn paramazfn) {}
+  public long a;
+  public String a;
+  public long b;
   
-  protected void a(boolean paramBoolean, bdxd parambdxd)
+  public azfr(long paramLong1, long paramLong2, String paramString)
   {
-    if ((!paramBoolean) || (azfn.a(this.a) == null) || (azfn.a(this.a).isFinishing()) || (azfn.a(this.a) == null) || (parambdxd == null)) {
-      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      azfn.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void b(boolean paramBoolean, bdxd parambdxd)
+  public String a()
   {
-    if ((!paramBoolean) || (azfn.a(this.a) == null) || (azfn.a(this.a).isFinishing()) || (azfn.a(this.a) == null) || (parambdxd == null)) {
-      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      azfn.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void c(boolean paramBoolean, bdxd parambdxd)
-  {
-    if ((!paramBoolean) || (azfn.a(this.a) == null) || (azfn.a(this.a).isFinishing()) || (azfn.a(this.a) == null) || (parambdxd == null)) {
-      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      azfn.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    return String.format("[voiceIdx:%s, bTime:%s, eTime:%s]", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b) });
   }
 }
 

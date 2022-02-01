@@ -1,32 +1,26 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class auwz
+class auwz
+  implements ayeo
 {
-  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
-    }
-    boolean bool = avsm.a("com.tencent.mobileqq:tool");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("click_millis", SystemClock.elapsedRealtime());
-    localIntent.putExtra("preload_process", bool);
-    if (paramMap != null)
-    {
-      paramString = new BoostFlutterActivity.SerializableMap();
-      paramString.setMap(paramMap);
-      localIntent.putExtra("params", paramString);
-    }
-    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
+    return null;
   }
+  
+  public void onSend(ayep paramayep)
+  {
+    if (paramayep.a == 0)
+    {
+      paramayep = paramayep.c;
+      auwx.a().a(paramayep);
+      return;
+    }
+    auwx.a().a();
+  }
+  
+  public void updateMsg(ayep paramayep) {}
 }
 
 

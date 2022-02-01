@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
+import amtj;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForTroopPobing
@@ -14,7 +14,7 @@ public class MessageForTroopPobing
   
   public static String buildCompatibleText()
   {
-    return anzj.a(2131705504);
+    return amtj.a(2131705734);
   }
   
   public void doParse()
@@ -32,7 +32,7 @@ public class MessageForTroopPobing
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anzj.a(2131705463);
+      return amtj.a(2131705693);
     }
     return this.msg;
   }
@@ -51,7 +51,7 @@ public class MessageForTroopPobing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopPobing
  * JD-Core Version:    0.7.0.1
  */

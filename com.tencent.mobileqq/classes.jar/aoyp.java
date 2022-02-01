@@ -1,162 +1,103 @@
-import QQWalletPay.ReqCheckChangePwdAuth;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
-import org.json.JSONObject;
 
-public class aoyp
-  extends aoxg
+final class aoyp
+  implements ark.ApplicationCallback
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private aofr jdField_a_of_type_Aofr;
-  private aoys jdField_a_of_type_Aoys;
-  
-  public aoyp(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void AppCreate(ark.Application paramApplication)
   {
-    super(paramQQAppInterface, paramContext);
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
   }
   
-  private boolean C()
+  public void AppDestroy(ark.Application paramApplication)
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("uin")) {}
-    for (String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin"); !str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()); str = "")
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    aoys.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool1 = true;
+    int j;
+    int i;
+    boolean bool2;
+    if (localArkAppUrlChecker != null)
     {
-      d();
-      return false;
-    }
-    e();
-    return false;
-  }
-  
-  private void b(int paramInt)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.addCategory("android.intent.category.DEFAULT");
-    localIntent.setData(Uri.parse("midas://open_modify_status?status=" + paramInt));
-    if (this.jdField_a_of_type_AndroidContentContext.getPackageManager().queryIntentActivities(localIntent, 0).size() > 0) {
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-    ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).finish();
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidAppDialog = bhlq.a(this.jdField_a_of_type_AndroidContentContext, 2131692553, this.jdField_a_of_type_AndroidContentContext.getString(2131692540), 2131692542, 2131692541, new aoyq(this), new aoyr(this));
-    this.jdField_a_of_type_AndroidAppDialog.show();
-  }
-  
-  private void e()
-  {
-    Object localObject;
-    String str1;
-    label50:
-    String str2;
-    label75:
-    String str3;
-    label101:
-    String str4;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("packageName"))
-    {
-      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("packageName");
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("signareMode")) {
-        break label311;
+      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      i = 0;
+      if (j != 0) {
+        break label279;
       }
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("signareMode");
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("appid")) {
-        break label317;
+      bool1 = true;
+      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
+      boolean bool4 = ArkAppCenterUtil.isPublicAccount();
+      if ((!bool3) || (bool4)) {
+        break label285;
       }
-      str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("timeStamp")) {
-        break label323;
-      }
-      str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("timeStamp");
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("resetWordMode")) {
-        break label330;
-      }
-      str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("resetWordMode");
-      label127:
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("offerid")) {
-        break label337;
-      }
-    }
-    label311:
-    label317:
-    label323:
-    label330:
-    label337:
-    for (String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("offerid");; str5 = "")
-    {
+      bool2 = true;
+      label69:
       if (QLog.isColorLevel()) {
-        QLog.d("QwalletModifyPassAction", 2, "packageName : " + (String)localObject + " signatureMode :" + str1 + " appid : " + str2 + " timestamp : " + str3 + " resetWordMode : " + str4 + " offerId : " + str5);
+        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
       }
-      localObject = new ReqCheckChangePwdAuth((String)localObject, str1, str2, str3, str4, str5);
-      ((aofq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(42)).a((ReqCheckChangePwdAuth)localObject);
-      this.jdField_a_of_type_Aoys = new aoys(this, null);
-      this.jdField_a_of_type_Aofr = new aofr(this.jdField_a_of_type_Aoys);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aofr);
-      return;
-      localObject = "";
+      if (bool1) {
+        break label291;
+      }
+      i = 1;
+      if (bool2) {
+        break label291;
+      }
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", npn.b(paramString, new String[0]) });
+      bool1 = true;
+      i = 2;
+    }
+    label279:
+    label285:
+    label291:
+    for (;;)
+    {
+      aoys.a(paramApplication, paramString, j, i, "");
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", npn.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
+      return bool1;
+      bool1 = false;
       break;
-      str1 = "";
-      break label50;
-      str2 = "";
-      break label75;
-      str3 = "";
-      break label101;
-      str4 = "";
-      break label127;
+      bool2 = false;
+      break label69;
     }
   }
   
-  private void f()
+  public void OutputScriptError(String paramString1, String paramString2)
   {
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = true;
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
     {
-      localJSONObject.put("userId", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localJSONObject.put("viewTag", "pswManage");
-      if (!PayBridgeActivity.tenpay((Activity)this.jdField_a_of_type_AndroidContentContext, localJSONObject.toString(), 5, "")) {}
-      for (int i = 1;; i = 0)
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
       {
-        b(i);
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        }
+        aovl.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
         return;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      b(1);
     }
   }
   
-  public boolean a()
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
   {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QwalletModifyPassAction", 1, "doAction error: " + localException.getMessage());
-      a("QwalletModifyPassAction");
-    }
-    return false;
+    aopr.a(paramModuleRegister, paramApplication);
   }
 }
 

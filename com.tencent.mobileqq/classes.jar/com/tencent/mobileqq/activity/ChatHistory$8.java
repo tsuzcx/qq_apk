@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Message;
-import azor;
+import aybz;
 import com.tencent.mobileqq.data.MessageRecord;
 import mqq.os.MqqHandler;
 
@@ -17,8 +17,8 @@ class ChatHistory$8
       localStringBuilder = new StringBuilder();
     }
     int i = 0;
-    if (this.this$0.jdField_a_of_type_Azor != null) {
-      i = this.this$0.jdField_a_of_type_Azor.a(MessageRecord.getTableName(this.this$0.b, this.this$0.jdField_a_of_type_Int));
+    if (this.this$0.jdField_a_of_type_Aybz != null) {
+      i = this.this$0.jdField_a_of_type_Aybz.a(MessageRecord.getTableName(this.this$0.b, this.this$0.jdField_a_of_type_Int));
     }
     int j = ChatHistory.a(this.this$0.app, this.this$0.b, this.this$0.jdField_a_of_type_Int, localStringBuilder);
     Message localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(this.jdField_a_of_type_Int);
@@ -32,7 +32,7 @@ class ChatHistory$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.8
  * JD-Core Version:    0.7.0.1
  */

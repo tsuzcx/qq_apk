@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bgex;
-import bnsq;
+import beof;
+import bkxx;
 
 public class AudioItem$2
   implements Runnable
 {
-  public AudioItem$2(bgex parambgex, bnsq parambnsq) {}
+  public AudioItem$2(beof parambeof, bkxx parambkxx) {}
   
   public void run()
   {

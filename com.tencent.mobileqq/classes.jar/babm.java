@@ -1,35 +1,51 @@
-import QC.SuixintieCheckInfo;
-import QC.SuixintieCheckItem;
-import com.qq.taf.jce.JceInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class babm
 {
-  public static SuixintieCheckInfo a(String paramString)
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private babo jdField_a_of_type_Babo;
+  private babp jdField_a_of_type_Babp;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static babm a()
   {
-    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
-    localSuixintieCheckInfo.readFrom(new JceInputStream(bjhg.a(paramString, 0)));
-    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
-      return localSuixintieCheckInfo;
-    }
-    return null;
+    return babq.a();
   }
   
-  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
+  public int a(Context paramContext, babp parambabp)
   {
-    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
+    QLog.d("MicroMsg.LightSensor", 1, "SensorShower start");
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
-      while (paramSuixintieCheckInfo.hasNext())
-      {
-        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
-        if (localSuixintieCheckItem.appid == paramInt) {
-          return localSuixintieCheckItem;
-        }
-      }
+      QLog.d("MicroMsg.LightSensor", 1, "[SensorShower.start] light sensor has started");
+      return 2;
     }
-    return null;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getApplicationContext().getSystemService("sensor"));
+    paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(5);
+    if (paramContext != null)
+    {
+      this.jdField_a_of_type_Babo = new babo(this, null);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Babo, paramContext, 3);
+      this.jdField_a_of_type_Babp = parambabp;
+      return 0;
+    }
+    QLog.e("MicroMsg.LightSensor", 1, "[SensorShower.start] System do not have lightSensor");
+    return 1;
+  }
+  
+  public void a()
+  {
+    QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop");
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidHardwareSensorManager == null))
+    {
+      QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop mHasStarted is false or mSensorShower is null");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Babo);
   }
 }
 

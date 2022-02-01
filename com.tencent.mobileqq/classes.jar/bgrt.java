@@ -1,40 +1,69 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import java.io.File;
 
 public class bgrt
 {
-  public int a;
-  public long a;
-  public ByteStringMicro a;
-  public List<bfrs> a;
-  public Map<String, bfrs> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d = 0;
+  public static final int a = ListenChangeVoicePanel.a.length;
   
-  public bgrt(bgrn parambgrn, long paramLong)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    if (paramLong == 0L) {
-      this.c = 0;
-    }
-    for (;;)
+    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
+    new File(paramString).renameTo(new File(str));
+    return str;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    int i = paramString.lastIndexOf(".");
+    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    while (i < a)
     {
-      this.c = i;
-      return;
-      i = 3;
+      new File(a(paramString1, i)).delete();
+      i += 1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    String str = null;
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    paramString2 = str;
+    if (i < a)
+    {
+      str = a(paramString1, i);
+      if (i == paramInt) {
+        paramString2 = str;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        new File(str).delete();
+      }
+    }
+    if (paramString2 != null) {
+      new File(paramString2).renameTo(new File(paramString1));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    new File(paramString1).deleteOnExit();
+    new File(paramString2).deleteOnExit();
+    int i = 0;
+    while (i < a)
+    {
+      new File(a(paramString1, i)).deleteOnExit();
+      i += 1;
     }
   }
 }

@@ -1,40 +1,78 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqdt
-  implements CompoundButton.OnCheckedChangeListener
+  extends aptq<aqds>
 {
-  public aqdt(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  @NonNull
+  public aqds a(int paramInt)
   {
-    if (paramBoolean)
+    return new aqds();
+  }
+  
+  @Nullable
+  public aqds a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
     {
-      AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
+      aqds localaqds = aqds.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
       }
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(true);
+      return localaqds;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      AboutActivity.a(0);
-      this.a.c();
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
     }
+    return null;
+  }
+  
+  public void a(aqds paramaqds)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramaqds.toString());
+    }
+  }
+  
+  public Class<aqds> clazz()
+  {
+    return aqds.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 585;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdt
  * JD-Core Version:    0.7.0.1
  */

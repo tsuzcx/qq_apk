@@ -1,13 +1,6 @@
-public class lnv
+public abstract interface lnv
 {
-  public long a;
-  public long b;
-  
-  public lnv(long paramLong1, long paramLong2)
-  {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

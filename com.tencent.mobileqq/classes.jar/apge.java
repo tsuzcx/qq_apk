@@ -1,8 +1,8 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
 
 public abstract interface apge
 {
-  public abstract void a(PromotionConfigInfo paramPromotionConfigInfo);
+  public abstract void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem);
 }
 
 

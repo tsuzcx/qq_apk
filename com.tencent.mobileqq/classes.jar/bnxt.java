@@ -1,15 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bnxt
+public abstract interface bnxt
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public bnxs a;
+  public abstract void A();
   
-  public bnxt(bnxm parambnxm) {}
+  public abstract void B();
+  
+  public abstract void a();
+  
+  public abstract boolean g();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

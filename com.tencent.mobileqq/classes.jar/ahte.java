@@ -1,11 +1,28 @@
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ahte
-  implements bloq
 {
-  public ahte(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public static void a(BaseChatPie paramBaseChatPie)
+  {
+    if (paramBaseChatPie.mChatDrawer != null) {
+      paramBaseChatPie.mChatDrawer.c(false);
+    }
+    if (paramBaseChatPie.mApolloViewController != null) {
+      paramBaseChatPie.mApolloViewController.a(false);
+    }
+    paramBaseChatPie.hideAppShortcutBar();
+  }
   
-  public void a() {}
+  public static void b(BaseChatPie paramBaseChatPie)
+  {
+    if (paramBaseChatPie.mChatDrawer != null) {
+      paramBaseChatPie.mChatDrawer.c(true);
+    }
+    if (paramBaseChatPie.mApolloViewController != null) {
+      paramBaseChatPie.mApolloViewController.a(true);
+    }
+    paramBaseChatPie.resumeAppShorcutBar();
+  }
 }
 
 

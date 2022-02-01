@@ -1,44 +1,22 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class xfz
-  extends xho
+class xfz
+  implements xgc
 {
-  protected String a;
+  xfz(xfy paramxfy, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
   public void a()
   {
-    ShareGroupItem localShareGroupItem = ((ydc)wth.a(7)).a(this.a);
-    yaz localyaz = (yaz)wth.a(24);
-    yar localyar = localyaz.a(localShareGroupItem.headerUnionIdList);
-    if (localyar == null)
-    {
-      localyaz.a(localShareGroupItem.headerUnionIdList, new xga(this));
-      return;
-    }
-    a(localyar);
+    xvv.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    xfy.a(this.jdField_a_of_type_Xfy, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
   
-  protected void a(Error paramError)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
-    }
-    b(false);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
-    }
-  }
-  
-  protected void a(yar paramyar)
-  {
-    a("ShareGroupAvatarJob_sga", paramyar.a());
-    b(true);
+    xvv.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    xfy.a(this.jdField_a_of_type_Xfy).finish();
+    xfy.a(this.jdField_a_of_type_Xfy).overridePendingTransition(0, 0);
   }
 }
 

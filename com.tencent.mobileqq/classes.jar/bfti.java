@@ -1,78 +1,129 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import ActionMsg.MsgBody;
+import com.qq.taf.jce.HexUtil;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
+import java.nio.ByteBuffer;
 
 public class bfti
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  
-  public bfti() {}
-  
-  public bfti(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString)
+  public static MsgBody a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bfti(oidb_0x6c2.Player paramPlayer)
-  {
-    this.jdField_a_of_type_Long = paramPlayer.uint64_uin.get();
-    this.jdField_b_of_type_Long = paramPlayer.uint64_time.get();
-    this.jdField_a_of_type_Int = paramPlayer.int32_amount.get();
-    this.jdField_b_of_type_Int = paramPlayer.int32_index.get();
-    this.jdField_a_of_type_JavaLangString = paramPlayer.bytes_tips.get().toStringUtf8();
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
+    MsgBody localMsgBody = new MsgBody();
     try
     {
-      localJSONObject.put("uin", this.jdField_a_of_type_Long);
-      localJSONObject.put("time", this.jdField_b_of_type_Long);
-      localJSONObject.put("amount", this.jdField_a_of_type_Int);
-      localJSONObject.put("index", this.jdField_b_of_type_Int);
-      localJSONObject.put("tips", this.jdField_a_of_type_JavaLangString);
-      return localJSONObject.toString();
+      JceInputStream localJceInputStream = new JceInputStream(HexUtil.hexStr2Bytes(paramString));
+      localJceInputStream.setServerEncoding("utf-8");
+      localMsgBody.readFrom(localJceInputStream);
+      return localMsgBody;
     }
-    catch (JSONException localJSONException)
+    catch (Exception localException)
     {
-      for (;;)
+      QLog.w("ActionMsgUtil", 2, "decode error msg = " + paramString);
+      QLog.w("ActionMsgUtil", 2, localException.toString());
+      localMsgBody.msg = "";
+      localMsgBody.action = "";
+      localMsgBody.shareAppID = 0L;
+      localMsgBody.actMsgContentValue = "";
+    }
+    return localMsgBody;
+  }
+  
+  public static bftj a(byte[] paramArrayOfByte)
+  {
+    bftj localbftj = new bftj();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    for (;;)
+    {
+      try
       {
-        QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " toJson error. e=" + localJSONException);
+        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+        localbftj.jdField_a_of_type_Int = paramArrayOfByte.get();
+        if (paramArrayOfByte.get() != 0) {
+          continue;
+        }
+        i = -3004;
+        localbftj.b = i;
+        if (paramArrayOfByte.hasRemaining())
+        {
+          i = paramArrayOfByte.get();
+          byte[] arrayOfByte = new byte[paramArrayOfByte.getShort()];
+          paramArrayOfByte.get(arrayOfByte);
+          localbftj.c = i;
+          localbftj.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("ActionMsgUtil", 2, "decodeAppShareCookie succes appShareCookie.buissnessType =" + localbftj.jdField_a_of_type_Int + "appShareCookie.action" + localbftj.b + "appShareCookie.actionType" + localbftj.c + "appShareCookie.actionValue" + localbftj.jdField_a_of_type_JavaLangString);
+          }
+        }
       }
+      catch (Exception paramArrayOfByte)
+      {
+        int i;
+        paramArrayOfByte.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
+      }
+      return localbftj;
+      i = -3005;
     }
+    return localbftj;
   }
   
-  public void a(String paramString)
+  public static String a(String paramString1, String paramString2)
   {
-    paramString = new String(paramString);
-    try
+    return a(paramString1, paramString2, 0L, null);
+  }
+  
+  public static String a(String paramString1, String paramString2, long paramLong, String paramString3)
+  {
+    String str = paramString1;
+    if (paramString1 == null)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Long = paramString.optLong("uin");
-      this.jdField_b_of_type_Long = paramString.optLong("time");
-      this.jdField_a_of_type_Int = paramString.optInt("amount");
-      this.jdField_b_of_type_Int = paramString.optInt("index");
-      this.jdField_a_of_type_JavaLangString = paramString.optString("tips");
-      return;
+      str = "";
+      QLog.w("ActionMsgUtil", 2, "encode msg is null");
     }
-    catch (JSONException paramString)
+    paramString1 = paramString2;
+    if (paramString2 == null)
     {
-      QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " fromJson error. e=" + paramString);
+      paramString1 = "";
+      QLog.w("ActionMsgUtil", 2, "encode action is null");
     }
+    paramString2 = new MsgBody();
+    paramString2.msg = str;
+    paramString2.action = paramString1;
+    paramString2.shareAppID = paramLong;
+    paramString2.actMsgContentValue = paramString3;
+    paramString1 = new JceOutputStream();
+    paramString1.setServerEncoding("utf-8");
+    paramString2.writeTo(paramString1);
+    return HexUtil.bytes2HexStr(paramString1.toByteArray());
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == -3000) || (paramInt == -3004) || (paramInt == -3005);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == -2009) || (paramInt == -3012);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return paramInt == -2016;
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return paramInt == -2007;
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return paramInt == -2039;
   }
 }
 

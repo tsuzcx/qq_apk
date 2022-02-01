@@ -1,51 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aygd
-  extends Handler
+public final class aygd
+  implements DialogInterface.OnClickListener
 {
-  aygd(aygb paramaygb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Aygm != null)
-      {
-        int i = this.a.jdField_a_of_type_Aygm.a();
-        this.a.jdField_a_of_type_Aygk.a(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      return;
-      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Aygm.a());
-        }
-        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-        aygb.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
-        aygb.a(this.a).requestLayout();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

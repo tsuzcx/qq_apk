@@ -1,28 +1,14 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import java.util.ArrayList;
-
-public class ayam
-  implements aybd
+public final class ayam
 {
-  public ayam(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void a(long paramLong)
+  public ayam(int paramInt, long paramLong, String paramString)
   {
-    int i = 0;
-    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
-    {
-      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
-      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
-        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
-        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,6 +1,13 @@
-public abstract interface aszo
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
+
+final class aszo
+  implements Comparator<FileInfo>
 {
-  public abstract void b();
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  {
+    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+  }
 }
 
 

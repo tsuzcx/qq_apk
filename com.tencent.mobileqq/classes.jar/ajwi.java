@@ -1,84 +1,67 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.widget.FrameLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AlphaClickableRelativeLayout;
-import com.tencent.widget.XListView;
 
 public class ajwi
-  extends ajsk
+  extends BroadcastReceiver
 {
-  protected ajwk a;
-  protected FrameLayout a;
-  protected ImageView a;
-  protected TextView a;
-  private bduz a;
-  protected QQAppInterface a;
-  protected AlphaClickableRelativeLayout a;
-  protected XListView a;
+  public ajwi(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public ajwi(Activity paramActivity)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Bduz = new ajwj(this);
-    if ((paramActivity instanceof SplashActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
+    int i;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label79;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive action_recv_video_request");
+      }
+      i = 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("CTEntryController", 2, "CTEntryController create");
+    for (;;)
+    {
+      if (i != 0)
+      {
+        if ((!this.a.b) || (!this.a.c) || (this.a.a.getVisibility() != 0)) {
+          break label151;
+        }
+        this.a.a();
+      }
+      label79:
+      while (!this.a.d)
+      {
+        return;
+        if (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+          break label188;
+        }
+        paramContext = (TelephonyManager)this.a.getActivity().getSystemService("phone");
+        if (QLog.isColorLevel()) {
+          QLog.d("RedPacketKSongFragment", 2, "receive action_phone_state_changed|call_state_ringing" + paramContext.getCallState());
+        }
+        if (paramContext.getCallState() != 1) {
+          break label188;
+        }
+        i = 1;
+        break;
+      }
+      label151:
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive pause action");
+      }
+      this.a.b(amtj.a(2131712439));
+      return;
+      label188:
+      i = 0;
     }
   }
-  
-  public void a(ajwk paramajwk)
-  {
-    this.jdField_a_of_type_Ajwk = paramajwk;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131377786));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131376346));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376352));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131370668));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362203));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  protected boolean a()
-  {
-    boolean bool = bduy.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryController", 2, String.format("shouldShowRecommendEntry, isStudyMode: %s", new Object[] { Boolean.valueOf(bool) }));
-    }
-    return !bool;
-  }
-  
-  public void b()
-  {
-    super.b();
-    bduy.a(this.jdField_a_of_type_Bduz);
-  }
-  
-  public void d()
-  {
-    super.d();
-    bduy.b(this.jdField_a_of_type_Bduz);
-  }
-  
-  public void d(boolean paramBoolean) {}
 }
 
 

@@ -1,204 +1,33 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicLong;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class bdwf
-  implements bdwl
+class bdwf
+  implements View.OnTouchListener
 {
-  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private final File jdField_a_of_type_JavaIoFile;
-  private final String jdField_a_of_type_JavaLangString;
-  private Future<File> jdField_a_of_type_JavaUtilConcurrentFuture;
-  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(System.currentTimeMillis() - 180000L);
-  private final boolean jdField_a_of_type_Boolean;
-  private final File jdField_b_of_type_JavaIoFile;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String c;
-  private final String d;
-  private final String e;
+  bdwf(bdwe parambdwe) {}
   
-  public bdwf(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.e = paramString3;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences(String.format("%sShadowCdnPmUpdater", new Object[] { paramString1 }), 0);
-    this.jdField_b_of_type_JavaIoFile = new File(new File(paramContext.getFilesDir(), "ShadowCdnPmUpdater"), paramString1);
-    this.jdField_b_of_type_JavaIoFile.mkdirs();
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_b_of_type_JavaIoFile, paramString1 + this.e + "_pm.temp");
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = ("pm_name_" + paramString1 + "_" + paramString2 + "_" + this.e);
-    this.d = ("wasUpdate_" + paramString1 + "_" + this.e);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "https://downv6.qq.com/innovate/qq/pm/release/StudyRoomPluginManager.apk";
-    if (QLog.isColorLevel()) {
-      QLog.i("studyroom.CdnPmUpdater", 2, "use cdnupdater url = " + this.jdField_a_of_type_JavaLangString);
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
     }
-  }
-  
-  private void a(File paramFile)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.c, paramFile.getAbsolutePath()).apply();
-  }
-  
-  @SuppressLint({"ApplySharedPref"})
-  private void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.d, paramBoolean).commit();
-    if (QLog.isColorLevel()) {
-      QLog.i("studyroom.CdnPmUpdater", 2, "setWasUpdating:" + paramBoolean);
-    }
-  }
-  
-  private boolean b()
-  {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    File localFile = getLatest();
-    if (localFile == null) {}
     for (;;)
     {
-      return bool2;
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-      if (l <= 180000L)
+      return false;
+      if ((i == 3) || (i == 1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("studyroom.CdnPmUpdater", 2, "短时间内不重复检测interval==" + l);
-        }
-        return false;
-      }
-      try
-      {
-        localObject1 = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
-        if ((localObject1 instanceof HttpURLConnection)) {
-          break label148;
-        }
-        throw new Error(this.jdField_a_of_type_JavaLangString + anzj.a(2131700381));
-      }
-      finally
-      {
-        localObject1 = null;
-      }
-      label135:
-      if (localObject1 != null) {
-        ((HttpURLConnection)localObject1).disconnect();
-      }
-      throw localObject2;
-      label148:
-      Object localObject1 = (HttpURLConnection)localObject1;
-      try
-      {
-        if (((HttpURLConnection)localObject1).getResponseCode() != 200) {
-          throw new Error(anzj.a(2131700383) + 200 + anzj.a(2131700384) + ((HttpURLConnection)localObject1).getResponseCode());
-        }
-        l = localObject2.length();
-        int i = ((HttpURLConnection)localObject1).getContentLength();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-        if (l != i) {}
-        for (;;)
-        {
-          bool2 = bool1;
-          if (localObject1 == null) {
-            break;
-          }
-          ((HttpURLConnection)localObject1).disconnect();
-          return bool1;
-          bool1 = false;
-        }
-        break label135;
-      }
-      finally {}
-    }
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.d, false);
-  }
-  
-  public File a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("studyroom.CdnPmUpdater", 2, "start download ");
-    }
-    File localFile = new File(this.jdField_b_of_type_JavaIoFile, this.jdField_b_of_type_JavaLangString + "_" + Long.valueOf(new StringBuilder().append(System.currentTimeMillis()).append("").toString(), 36) + ".apk");
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    Exception[] arrayOfException = new Exception[1];
-    System.currentTimeMillis();
-    bdvv localbdvv = new bdvv();
-    localbdvv.a(BaseApplicationImpl.getContext());
-    localbdvv.a(this.jdField_a_of_type_JavaLangString, new bdwh(this, localFile, arrayOfException, localCountDownLatch));
-    localbdvv.a(bdvx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-    localCountDownLatch.await();
-    if (arrayOfException[0] == null)
-    {
-      localFile.setLastModified(localFile.lastModified() + 1000L);
-      a(localFile);
-      return localFile;
-    }
-    throw arrayOfException[0];
-  }
-  
-  public void a()
-  {
-    File localFile = getLatest();
-    if (localFile != null) {
-      localFile.delete();
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public File getLatest()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, null);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = new File((String)localObject);
-      if (((File)localObject).exists()) {
-        return localObject;
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
       }
     }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    throw new UnsupportedOperationException(anzj.a(2131700382));
-  }
-  
-  public Future<File> update()
-  {
-    a(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("studyroom.CdnPmUpdater", 2, "update");
-    }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentFuture.isDone()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("studyroom.CdnPmUpdater", 2, "上一次update还没结束，返回相同Future");
-      }
-      return this.jdField_a_of_type_JavaUtilConcurrentFuture;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = aoik.a(192).submit(new bdwg(this));
-    return this.jdField_a_of_type_JavaUtilConcurrentFuture;
-  }
-  
-  public boolean wasUpdating()
-  {
-    return c();
   }
 }
 

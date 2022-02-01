@@ -1,36 +1,37 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class urz
-  extends RecyclerView.OnScrollListener
+class urz
+  implements Handler.Callback
 {
-  public urz(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  urz(ury paramury) {}
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public boolean handleMessage(Message paramMessage)
   {
-    boolean bool2 = false;
-    if ((paramRecyclerView == null) || (paramRecyclerView.getChildCount() == 0)) {}
-    for (paramInt1 = 0;; paramInt1 = paramRecyclerView.getChildAt(0).getTop())
+    switch (paramMessage.what)
     {
-      paramRecyclerView = WSVerticalPageFragment.a(this.a);
-      boolean bool1 = bool2;
-      if (paramInt1 >= 0)
+    default: 
+    case 0: 
+    case 1: 
+      do
       {
-        bool1 = bool2;
-        if (WSVerticalPageFragment.a(this.a) != null)
+        do
         {
-          bool1 = bool2;
-          if (((uru)WSVerticalPageFragment.b(this.a)).a()) {
-            bool1 = true;
-          }
-        }
-      }
-      paramRecyclerView.setEnabled(bool1);
-      return;
+          return true;
+          ury.a(this.a, false);
+          ury.a(this.a).removeMessages(0);
+        } while (ury.a(this.a) == null);
+        ury.a(this.a).a(true);
+        return true;
+        ury.a(this.a, false);
+        ury.a(this.a).removeMessages(1);
+      } while (ury.a(this.a) == null);
+      ury.a(this.a).a(false);
+      return true;
     }
+    ury.a(this.a, true);
+    return true;
   }
 }
 

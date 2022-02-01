@@ -1,26 +1,46 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppActivity;
 
-public class azhd
+class azhd
   implements View.OnClickListener
 {
-  public azhd(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  azhd(azgy paramazgy, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onClick(View paramView)
   {
-    if (AutoReplyEditActivity.c(this.a)) {
-      AutoReplyEditActivity.a(this.a, false);
-    }
-    for (;;)
+    bcef.b(null, "dc00898", "", "", "0X800B44D", "0X800B44D", 0, 0, "", "", "", "");
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (AutoReplyEditActivity.d(this.a)) {
-        AutoReplyEditActivity.b(this.a, false);
-      } else {
-        AutoReplyEditActivity.a(this.a, true);
+      azge.a(azeu.a(), true);
+      azhh.a().a(true);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        bcef.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 1, 0, "", "", "", "");
+        this.jdField_a_of_type_Azgy.jdField_a_of_type_MqqAppAppActivity.requestPermissions(new azhe(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      }
+      if (!this.b)
+      {
+        bcef.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 2, 0, "", "", "", "");
+        FloatingScreenPermission.requestPermission(this.jdField_a_of_type_Azgy.jdField_a_of_type_MqqAppAppActivity);
+      }
+      this.jdField_a_of_type_Azgy.jdField_a_of_type_Int = -1;
+      if ((!this.b) && (this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Azgy.c = true;
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        azeu.a("HelloQQWake", "QQAssistantGuider cardHandler.setQQAssistantSwitch:" + localException.getMessage());
+        continue;
+        this.jdField_a_of_type_Azgy.dismiss();
       }
     }
   }

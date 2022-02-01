@@ -1,28 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
 public class azbn
-  extends Handler
+  implements View.OnClickListener
 {
-  public azbn(ScanOcrView paramScanOcrView) {}
+  public azbn(LSRecordPanel paramLSRecordPanel) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.a(paramMessage.arg1);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

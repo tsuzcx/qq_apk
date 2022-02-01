@@ -1,19 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
+import android.os.IInterface;
 
-public final class ayda
-  implements Parcelable.Creator<MedalInfo>
+public abstract interface ayda
+  extends IInterface
 {
-  public MedalInfo a(Parcel paramParcel)
-  {
-    return new MedalInfo(paramParcel);
-  }
+  public abstract int a();
   
-  public MedalInfo[] a(int paramInt)
-  {
-    return new MedalInfo[paramInt];
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract int[] a();
+  
+  public abstract boolean[] a();
 }
 
 

@@ -1,15 +1,24 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bkvt
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  implements View.OnClickListener
 {
-  bkvt(bkvm parambkvm, AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  bkvt(bkvr parambkvr) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bkvm);
+    if (bkvr.a(this.a))
+    {
+      if (bkvr.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bkvr.b(this.a) != null) {
+        bkvr.b(this.a).onClick(paramView);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

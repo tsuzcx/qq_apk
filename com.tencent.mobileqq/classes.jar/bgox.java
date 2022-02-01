@@ -1,71 +1,187 @@
-import android.os.Handler;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.13.1;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.os.Process;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.TMSManager.1;
+import com.tencent.mobileqq.vip.TMSManager.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bgox
-  implements bdyi
 {
-  bgox(bgot parambgot) {}
+  protected static final String[] a;
+  private bgom a;
   
-  public void a()
+  static
   {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) && (this.a.jdField_a_of_type_AndroidAppActivity == null) && (!bgot.jdField_a_of_type_JavaLangString.equals(this.a.jdField_b_of_type_JavaLangString))) {}
-    String str1;
-    List localList;
-    do
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "tmsdualcore", "tmsdualcore785", "tmsdualcore790", "tmsdualcore7901" };
+  }
+  
+  public static bgox a()
+  {
+    if (bgpb.a().jdField_a_of_type_Bgom == null) {}
+    synchronized (bgpb.a())
     {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
-        break;
+      if (bgpb.a().jdField_a_of_type_Bgom == null) {
+        bgpb.a().a();
       }
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString;
-      localList = (List)this.a.jdField_b_of_type_JavaUtilHashMap.get(str1);
-    } while ((bgth.a(localList)) || (localList == null));
-    if (localList != null) {}
+      return bgpb.a();
+    }
+  }
+  
+  public static bgoz a()
+  {
+    return bgpa.a();
+  }
+  
+  private void a()
+  {
+    int i = aqhy.c().a;
+    QLog.d("KC.TMSManager", 1, "KingCardConfig : " + i);
+    switch (i)
+    {
+    case 0: 
+    case 1: 
+    default: 
+      this.jdField_a_of_type_Bgom = new bgom();
+    }
     for (;;)
     {
-      try
-      {
-        Object localObject3 = (bgph)localList.remove(0);
-        if ((localObject3 instanceof MessageForDeliverGiftTips))
-        {
-          localObject3 = (MessageForDeliverGiftTips)localObject3;
-          String str2 = bgth.b((MessageForDeliverGiftTips)localObject3);
-          ((MessageForDeliverGiftTips)localObject3).hasFetchButFailed = false;
-          if (QLog.isColorLevel()) {
-            QLog.d("AIOAnimationControlManager", 2, "onMagicPlayEnd id:" + str2);
-          }
-          if (this.a.jdField_a_of_type_Bgpi != null) {
-            this.a.jdField_a_of_type_Bgpi.a(str1, str2);
-          }
-        }
-        if (localList.size() == 0) {
-          break label250;
-        }
-        Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new AIOAnimationControlManager.13.1(this));
-        return;
+      if (this.jdField_a_of_type_Bgom != null) {
+        b();
       }
-      finally {}
-      Object localObject2 = this.a.jdField_b_of_type_JavaLangString;
-      break;
-      label250:
-      this.a.jdField_a_of_type_Bgzd.a(null);
-      bgot.a(this.a, false);
-      localObject2 = ChatActivityUtils.a((String)localObject2, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      if ((bgot.jdField_a_of_type_Boolean) && (localObject2 != null) && (-1 == ((Integer)localObject2).intValue()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-        bgot.jdField_a_of_type_Boolean = false;
+      return;
+      if (a(BaseApplicationImpl.getApplication())) {
+        this.jdField_a_of_type_Bgom = new bgon();
+      } else if (bgom.c()) {
+        this.jdField_a_of_type_Bgom = new bgor();
       }
     }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    int i = Process.myPid();
+    String str = "";
+    Object localObject = (ActivityManager)paramContext.getSystemService("activity");
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    if (((Iterator)localObject).hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+      if (localRunningAppProcessInfo.pid != i) {
+        break label88;
+      }
+      str = localRunningAppProcessInfo.processName;
+    }
+    label88:
+    for (;;)
+    {
+      break;
+      return paramContext.getPackageName().equals(str);
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Bgom != null) {
+      this.jdField_a_of_type_Bgom.a(new TMSManager.2(this));
+    }
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_Bgom != null) && (this.jdField_a_of_type_Bgom.a())) {
+      this.jdField_a_of_type_Bgom.a(paramViewGroup);
+    }
+  }
+  
+  public void a(bgoy parambgoy, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Bgom != null) && (this.jdField_a_of_type_Bgom.a())) {
+      this.jdField_a_of_type_Bgom.a(parambgoy, paramBoolean);
+    }
+    while (parambgoy == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      ThreadManager.getUIHandler().post(new TMSManager.1(this, parambgoy));
+      return;
+    }
+    parambgoy.a(false, false, 0);
+  }
+  
+  /* Error */
+  public boolean a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 32	bgox:jdField_a_of_type_Bgom	Lbgom;
+    //   6: ifnull +21 -> 27
+    //   9: aload_0
+    //   10: getfield 32	bgox:jdField_a_of_type_Bgom	Lbgom;
+    //   13: invokevirtual 162	bgom:a	()Z
+    //   16: istore_1
+    //   17: iload_1
+    //   18: ifeq +9 -> 27
+    //   21: iconst_1
+    //   22: istore_1
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: iload_1
+    //   26: ireturn
+    //   27: iconst_0
+    //   28: istore_1
+    //   29: goto -6 -> 23
+    //   32: astore_2
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: aload_2
+    //   36: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	37	0	this	bgox
+    //   16	13	1	bool	boolean
+    //   32	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	32	finally
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    if ((this.jdField_a_of_type_Bgom != null) && (this.jdField_a_of_type_Bgom.a())) {
+      return this.jdField_a_of_type_Bgom.a(paramActivity);
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return bgoa.a() > 0;
+  }
+  
+  public boolean c()
+  {
+    if ((this.jdField_a_of_type_Bgom != null) && (this.jdField_a_of_type_Bgom.a())) {
+      return this.jdField_a_of_type_Bgom.b();
+    }
+    return false;
   }
 }
 

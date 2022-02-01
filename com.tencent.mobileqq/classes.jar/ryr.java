@@ -1,23 +1,43 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$initLottieView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationStart", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ryr
-  extends AnimatorListenerAdapter
+public class ryr
+  implements txo
 {
-  ryr(rym paramrym) {}
+  public ryr(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onAnimationStart(@Nullable Animator paramAnimator)
+  public void a()
   {
-    rym.b(this.a, true);
-    paramAnimator = rym.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.pauseAnimation();
+    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
+      if ((twq.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
+      {
+        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
+        if (localVideoInfo != null)
+        {
+          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
+          j = VideoFeedsRecommendFragment.a(this.a).c;
+          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
+          twf.a(this.a.getActivity(), 50, true);
+        }
+      }
     }
-    rym.b(this.a);
+    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
+    {
+      VideoInfo localVideoInfo;
+      int i;
+      int j;
+      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
+      do
+      {
+        return;
+      } while (VideoFeedsRecommendFragment.a(this.a) == null);
+      VideoFeedsRecommendFragment.a(this.a).c();
+      return;
+    }
+    VideoFeedsRecommendFragment.a(this.a).b(VideoFeedsRecommendFragment.a(this.a).a);
   }
 }
 

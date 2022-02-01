@@ -1,7 +1,4 @@
-public abstract interface xvr
-{
-  public abstract boolean a(xvo paramxvo, int paramInt1, int paramInt2);
-}
+public abstract interface xvr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

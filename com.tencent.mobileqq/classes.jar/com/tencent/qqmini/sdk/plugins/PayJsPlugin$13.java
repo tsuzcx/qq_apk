@@ -1,40 +1,58 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.IPayResultCallBack;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.PayResponse;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class PayJsPlugin$13
-  implements Runnable
+  implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$13(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, RequestEvent paramRequestEvent, Activity paramActivity, boolean paramBoolean) {}
+  PayJsPlugin$13(PayJsPlugin paramPayJsPlugin, RequestEvent paramRequestEvent) {}
   
-  public void run()
+  public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("payparmas_callback_sn", this.val$callbackSn);
-    localBundle.putString("payparmas_json", PayJsPlugin.access$1700(this.this$0, this.val$payJson));
-    localBundle.putInt("payparmas_paytype", 1);
-    localBundle.putLong("payparmas_h5_start", System.currentTimeMillis());
-    localBundle.putInt("payparmas_request_code", 6);
-    localBundle.putString("payparmas_sdk_pf", PayJsPlugin.access$1800(this.this$0, this.val$payJson));
-    PayProxy localPayProxy = (PayProxy)ProxyManager.get(PayProxy.class);
-    if (localPayProxy == null) {
-      PayJsPlugin.access$700(this.this$0, this.val$req, null, "not support pay");
-    }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      return;
-      localBundle = localPayProxy.midasPay(this.val$activity, PayJsPlugin.access$1700(this.this$0, this.val$payJson), new PayJsPlugin.13.1(this), localBundle);
-      if (localBundle != null) {}
-      for (int i = localBundle.getInt("retCode", 0); (localBundle != null) && (i != 0); i = 0)
+      localJSONObject.put("resultCode", paramPayResponse.getResultCode());
+      String str = paramPayResponse.getExtendInfo();
+      if ((!TextUtils.isEmpty(str)) && (JSONUtil.isJson(str))) {
+        localJSONObject.put("data", new JSONObject(str).optJSONObject("data"));
+      }
+      label58:
+      if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
+        PayJsPlugin.access$1600(this.this$0, this.val$req, localJSONObject);
+      }
+      for (;;)
       {
-        PayJsPlugin.access$700(this.this$0, this.val$req, null, "");
+        QMLog.i("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
         return;
+        if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
+        {
+          PayJsPlugin.access$000(this.this$0, this.val$req, localJSONObject);
+        }
+        else
+        {
+          str = paramPayResponse.getResultMsg();
+          PayJsPlugin.access$700(this.this$0, this.val$req, localJSONObject, str);
+        }
       }
     }
+    catch (JSONException localJSONException)
+    {
+      break label58;
+    }
+  }
+  
+  public void payNeedLogin()
+  {
+    QMLog.e("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
+    PayJsPlugin.access$700(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }
 

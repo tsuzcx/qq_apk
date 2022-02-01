@@ -1,11 +1,18 @@
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 final class alci
-  implements Comparator<alch>
+  implements DialogInterface.OnClickListener
 {
-  public int a(alch paramalch1, alch paramalch2)
+  alci(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramalch1.a - paramalch2.a;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    }
   }
 }
 

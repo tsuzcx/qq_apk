@@ -1,33 +1,29 @@
-import java.util.HashMap;
+import android.os.Parcel;
 
 public class bbjx
-  extends bbjz
 {
-  public long a = 0L;
-  public long b;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public bbjx()
+  public void a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Long = -1L;
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.c);
   }
   
-  public HashMap<String, String> a(String paramString)
+  public void b(Parcel paramParcel)
   {
-    if ("ShortVideo.FullscreenPreview".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_duration", this.a + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
-      return paramString;
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.c = paramParcel.readInt();
   }
 }
 

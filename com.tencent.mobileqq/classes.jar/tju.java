@@ -1,15 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager.1;
-import com.tencent.mobileqq.soload.LoadExtResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tju
-  implements bdgt
+final class tju
+  implements View.OnClickListener
 {
-  public tju(NativeVueLoaderManager.1 param1) {}
+  tju(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  public void onClick(View paramView)
   {
-    QLog.e("NativeVueLoaderManager", 1, "preload NativeVue: " + paramInt);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("timestamp", System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("BridgeModuleHelper", 1, "[setTitleClickListener]: " + localJSONException.getMessage());
+      }
+    }
   }
 }
 

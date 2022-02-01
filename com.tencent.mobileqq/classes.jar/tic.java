@@ -1,35 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class tic
-  implements VComponentAdapter.OnVideoViewMethodListener
+class tic
+  implements bjog
 {
-  public tic(VVideo paramVVideo) {}
+  tic(tia paramtia, String paramString) {}
   
-  public void OnMethodError(String paramString, JSONObject paramJSONObject)
+  public void onDismiss()
   {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramString);
-      localJSONObject.put("extra", paramJSONObject);
-      this.a.videoFireEvent("error", localJSONObject);
+      localJSONObject.put("index", -1);
+      localJSONObject.put("type", 1);
+      if (tia.a(this.jdField_a_of_type_Tia) != null) {
+        ((BridgeModule)tia.a(this.jdField_a_of_type_Tia).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      }
       return;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void OnMethodSuccess(String paramString, Object paramObject)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      VVideo.access$000(this.a, paramString, paramObject);
-    }
+    catch (JSONException localJSONException) {}
   }
 }
 

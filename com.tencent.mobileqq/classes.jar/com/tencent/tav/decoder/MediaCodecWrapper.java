@@ -37,8 +37,8 @@ class MediaCodecWrapper
     {
       this.mediaCodec.stop();
       label22:
-      this.mediaCodec.release();
-      this.mediaCodec = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
+      MediaCodecManager.releaseCodec(this.mediaCodec);
+      this.mediaCodec = MediaCodecManager.createDecoderByType(paramMediaFormat.getString("mime"));
       return;
     }
     catch (Exception localException)
@@ -60,11 +60,13 @@ class MediaCodecWrapper
     {
       try
       {
-        this.mediaCodec = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
+        Logger.i(this.TAG, "decoderConfigure() called with: inputFormat = [" + paramMediaFormat + "], outputSurface = [" + paramSurface + "]");
+        this.mediaCodec = MediaCodecManager.createDecoderByType(paramMediaFormat.getString("mime"));
         boolean bool;
         if (Build.VERSION.SDK_INT < 21)
         {
           this.mediaCodec.configure(paramMediaFormat, paramSurface, null, 0);
+          Logger.i(this.TAG, "decoderConfigure() called with: outputFormat = [" + this.mediaCodec.getOutputFormat() + "]");
           bool = true;
           return bool;
         }
@@ -79,6 +81,7 @@ class MediaCodecWrapper
             continue;
           }
           this.mediaCodec.configure(paramMediaFormat, paramSurface, null, 0);
+          Logger.i(this.TAG, "decoderConfigure() called with: outputFormat = [" + this.mediaCodec.getOutputFormat() + "]");
           bool = true;
         }
         catch (Exception localException)
@@ -90,7 +93,7 @@ class MediaCodecWrapper
         }
         if ((!((MediaCodec.CodecException)localException).isTransient()) && (!((MediaCodec.CodecException)localException).isRecoverable()))
         {
-          this.mediaCodec.release();
+          MediaCodecManager.releaseCodec(this.mediaCodec);
           throw localException;
         }
       }
@@ -106,8 +109,8 @@ class MediaCodecWrapper
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 56	com/tencent/tav/decoder/MediaCodecWrapper:mediaCodec	Landroid/media/MediaCodec;
-    //   6: ldc2_w 143
-    //   9: invokevirtual 147	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   6: ldc2_w 166
+    //   9: invokevirtual 170	android/media/MediaCodec:dequeueInputBuffer	(J)I
     //   12: istore_1
     //   13: aload_0
     //   14: monitorexit
@@ -116,28 +119,28 @@ class MediaCodecWrapper
     //   17: astore_2
     //   18: aload_0
     //   19: getfield 47	com/tencent/tav/decoder/MediaCodecWrapper:TAG	Ljava/lang/String;
-    //   22: ldc 148
+    //   22: ldc 171
     //   24: aload_2
-    //   25: invokestatic 151	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   25: invokestatic 174	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   28: aload_0
-    //   29: invokespecial 71	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
+    //   29: invokespecial 73	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
     //   32: ifeq +43 -> 75
     //   35: aload_2
-    //   36: instanceof 100
+    //   36: instanceof 105
     //   39: ifeq +36 -> 75
     //   42: aload_0
     //   43: aload_2
-    //   44: checkcast 100	android/media/MediaCodec$CodecException
-    //   47: invokespecial 153	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
+    //   44: checkcast 105	android/media/MediaCodec$CodecException
+    //   47: invokespecial 176	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
     //   50: aload_2
-    //   51: checkcast 100	android/media/MediaCodec$CodecException
-    //   54: invokevirtual 103	android/media/MediaCodec$CodecException:isTransient	()Z
+    //   51: checkcast 105	android/media/MediaCodec$CodecException
+    //   54: invokevirtual 108	android/media/MediaCodec$CodecException:isTransient	()Z
     //   57: ifeq +18 -> 75
     //   60: aload_0
     //   61: ldc2_w 10
-    //   64: invokevirtual 157	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
+    //   64: invokevirtual 180	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
     //   67: aload_0
-    //   68: invokevirtual 159	com/tencent/tav/decoder/MediaCodecWrapper:dequeueInputBuffer	()I
+    //   68: invokevirtual 182	com/tencent/tav/decoder/MediaCodecWrapper:dequeueInputBuffer	()I
     //   71: istore_1
     //   72: goto -59 -> 13
     //   75: aload_2
@@ -206,7 +209,7 @@ class MediaCodecWrapper
     //   2: aload_0
     //   3: getfield 56	com/tencent/tav/decoder/MediaCodecWrapper:mediaCodec	Landroid/media/MediaCodec;
     //   6: iload_1
-    //   7: invokestatic 178	com/tencent/tav/decoder/DecoderUtils:getInputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
+    //   7: invokestatic 201	com/tencent/tav/decoder/DecoderUtils:getInputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
     //   10: astore_2
     //   11: aload_0
     //   12: monitorexit
@@ -215,29 +218,29 @@ class MediaCodecWrapper
     //   15: astore_2
     //   16: aload_0
     //   17: getfield 47	com/tencent/tav/decoder/MediaCodecWrapper:TAG	Ljava/lang/String;
-    //   20: ldc 179
+    //   20: ldc 202
     //   22: aload_2
-    //   23: invokestatic 151	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   23: invokestatic 174	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   26: aload_0
-    //   27: invokespecial 71	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
+    //   27: invokespecial 73	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
     //   30: ifeq +44 -> 74
     //   33: aload_2
-    //   34: instanceof 100
+    //   34: instanceof 105
     //   37: ifeq +37 -> 74
     //   40: aload_0
     //   41: aload_2
-    //   42: checkcast 100	android/media/MediaCodec$CodecException
-    //   45: invokespecial 153	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
+    //   42: checkcast 105	android/media/MediaCodec$CodecException
+    //   45: invokespecial 176	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
     //   48: aload_2
-    //   49: checkcast 100	android/media/MediaCodec$CodecException
-    //   52: invokevirtual 103	android/media/MediaCodec$CodecException:isTransient	()Z
+    //   49: checkcast 105	android/media/MediaCodec$CodecException
+    //   52: invokevirtual 108	android/media/MediaCodec$CodecException:isTransient	()Z
     //   55: ifeq +19 -> 74
     //   58: aload_0
     //   59: ldc2_w 10
-    //   62: invokevirtual 157	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
+    //   62: invokevirtual 180	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
     //   65: aload_0
     //   66: iload_1
-    //   67: invokevirtual 181	com/tencent/tav/decoder/MediaCodecWrapper:getInputBuffer	(I)Ljava/nio/ByteBuffer;
+    //   67: invokevirtual 204	com/tencent/tav/decoder/MediaCodecWrapper:getInputBuffer	(I)Ljava/nio/ByteBuffer;
     //   70: astore_2
     //   71: goto -60 -> 11
     //   74: aload_2
@@ -276,7 +279,7 @@ class MediaCodecWrapper
     //   2: aload_0
     //   3: getfield 56	com/tencent/tav/decoder/MediaCodecWrapper:mediaCodec	Landroid/media/MediaCodec;
     //   6: iload_1
-    //   7: invokestatic 185	com/tencent/tav/decoder/DecoderUtils:getOutputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
+    //   7: invokestatic 208	com/tencent/tav/decoder/DecoderUtils:getOutputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
     //   10: astore_2
     //   11: aload_0
     //   12: monitorexit
@@ -285,29 +288,29 @@ class MediaCodecWrapper
     //   15: astore_2
     //   16: aload_0
     //   17: getfield 47	com/tencent/tav/decoder/MediaCodecWrapper:TAG	Ljava/lang/String;
-    //   20: ldc 186
+    //   20: ldc 209
     //   22: aload_2
-    //   23: invokestatic 151	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   23: invokestatic 174	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   26: aload_0
-    //   27: invokespecial 71	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
+    //   27: invokespecial 73	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
     //   30: ifeq +44 -> 74
     //   33: aload_2
-    //   34: instanceof 100
+    //   34: instanceof 105
     //   37: ifeq +37 -> 74
     //   40: aload_0
     //   41: aload_2
-    //   42: checkcast 100	android/media/MediaCodec$CodecException
-    //   45: invokespecial 153	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
+    //   42: checkcast 105	android/media/MediaCodec$CodecException
+    //   45: invokespecial 176	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
     //   48: aload_2
-    //   49: checkcast 100	android/media/MediaCodec$CodecException
-    //   52: invokevirtual 103	android/media/MediaCodec$CodecException:isTransient	()Z
+    //   49: checkcast 105	android/media/MediaCodec$CodecException
+    //   52: invokevirtual 108	android/media/MediaCodec$CodecException:isTransient	()Z
     //   55: ifeq +19 -> 74
     //   58: aload_0
     //   59: ldc2_w 10
-    //   62: invokevirtual 157	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
+    //   62: invokevirtual 180	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
     //   65: aload_0
     //   66: iload_1
-    //   67: invokevirtual 188	com/tencent/tav/decoder/MediaCodecWrapper:getOnputBuffer	(I)Ljava/nio/ByteBuffer;
+    //   67: invokevirtual 211	com/tencent/tav/decoder/MediaCodecWrapper:getOnputBuffer	(I)Ljava/nio/ByteBuffer;
     //   70: astore_2
     //   71: goto -60 -> 11
     //   74: aload_2
@@ -350,40 +353,40 @@ class MediaCodecWrapper
     //   8: iload_3
     //   9: lload 4
     //   11: iload 6
-    //   13: invokevirtual 192	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   13: invokevirtual 215	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
     //   16: aload_0
     //   17: monitorexit
     //   18: return
     //   19: astore 7
     //   21: aload_0
     //   22: getfield 47	com/tencent/tav/decoder/MediaCodecWrapper:TAG	Ljava/lang/String;
-    //   25: ldc 193
+    //   25: ldc 216
     //   27: aload 7
-    //   29: invokestatic 151	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   29: invokestatic 174	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   32: aload_0
-    //   33: invokespecial 71	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
+    //   33: invokespecial 73	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
     //   36: ifeq +49 -> 85
     //   39: aload 7
-    //   41: instanceof 100
+    //   41: instanceof 105
     //   44: ifeq +41 -> 85
     //   47: aload_0
     //   48: aload 7
-    //   50: checkcast 100	android/media/MediaCodec$CodecException
-    //   53: invokespecial 153	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
+    //   50: checkcast 105	android/media/MediaCodec$CodecException
+    //   53: invokespecial 176	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
     //   56: aload 7
-    //   58: checkcast 100	android/media/MediaCodec$CodecException
-    //   61: invokevirtual 103	android/media/MediaCodec$CodecException:isTransient	()Z
+    //   58: checkcast 105	android/media/MediaCodec$CodecException
+    //   61: invokevirtual 108	android/media/MediaCodec$CodecException:isTransient	()Z
     //   64: ifeq +21 -> 85
     //   67: aload_0
     //   68: ldc2_w 10
-    //   71: invokevirtual 157	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
+    //   71: invokevirtual 180	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
     //   74: aload_0
     //   75: iload_1
     //   76: iload_2
     //   77: iload_3
     //   78: lload 4
     //   80: iload 6
-    //   82: invokevirtual 194	com/tencent/tav/decoder/MediaCodecWrapper:queueInputBuffer	(IIIJI)V
+    //   82: invokevirtual 217	com/tencent/tav/decoder/MediaCodecWrapper:queueInputBuffer	(IIIJI)V
     //   85: aload 7
     //   87: athrow
     //   88: astore 7
@@ -415,9 +418,10 @@ class MediaCodecWrapper
   
   void release()
   {
-    if (this.mediaCodec != null) {
-      new MediaCodecWrapper.1(this).start();
+    if (this.mediaCodec == null) {
+      return;
     }
+    ThreadPool.execute(new MediaCodecWrapper.1(this));
   }
   
   /* Error */
@@ -430,43 +434,43 @@ class MediaCodecWrapper
     //   3: getfield 56	com/tencent/tav/decoder/MediaCodecWrapper:mediaCodec	Landroid/media/MediaCodec;
     //   6: iload_1
     //   7: iload_2
-    //   8: invokevirtual 206	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   8: invokevirtual 233	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
     //   11: iload_2
     //   12: ifeq +11 -> 23
     //   15: aload_0
     //   16: getfield 49	com/tencent/tav/decoder/MediaCodecWrapper:videoDecoder	Lcom/tencent/tav/decoder/VideoDecoder;
     //   19: iconst_1
-    //   20: putfield 212	com/tencent/tav/decoder/VideoDecoder:lastFrameValid	Z
+    //   20: putfield 239	com/tencent/tav/decoder/VideoDecoder:lastFrameValid	Z
     //   23: aload_0
     //   24: monitorexit
     //   25: return
     //   26: astore_3
     //   27: aload_0
     //   28: getfield 47	com/tencent/tav/decoder/MediaCodecWrapper:TAG	Ljava/lang/String;
-    //   31: ldc 213
+    //   31: ldc 240
     //   33: aload_3
-    //   34: invokestatic 151	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   34: invokestatic 174	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   37: aload_0
-    //   38: invokespecial 71	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
+    //   38: invokespecial 73	com/tencent/tav/decoder/MediaCodecWrapper:isLollipop	()Z
     //   41: ifeq +41 -> 82
     //   44: aload_3
-    //   45: instanceof 100
+    //   45: instanceof 105
     //   48: ifeq +34 -> 82
     //   51: aload_0
     //   52: aload_3
-    //   53: checkcast 100	android/media/MediaCodec$CodecException
-    //   56: invokespecial 153	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
+    //   53: checkcast 105	android/media/MediaCodec$CodecException
+    //   56: invokespecial 176	com/tencent/tav/decoder/MediaCodecWrapper:tryLogMediaCodecError	(Landroid/media/MediaCodec$CodecException;)V
     //   59: aload_3
-    //   60: checkcast 100	android/media/MediaCodec$CodecException
-    //   63: invokevirtual 103	android/media/MediaCodec$CodecException:isTransient	()Z
+    //   60: checkcast 105	android/media/MediaCodec$CodecException
+    //   63: invokevirtual 108	android/media/MediaCodec$CodecException:isTransient	()Z
     //   66: ifeq +16 -> 82
     //   69: aload_0
     //   70: ldc2_w 10
-    //   73: invokevirtual 157	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
+    //   73: invokevirtual 180	com/tencent/tav/decoder/MediaCodecWrapper:waitTime	(J)V
     //   76: aload_0
     //   77: iload_1
     //   78: iload_2
-    //   79: invokevirtual 214	com/tencent/tav/decoder/MediaCodecWrapper:releaseOutputBuffer	(IZ)V
+    //   79: invokevirtual 241	com/tencent/tav/decoder/MediaCodecWrapper:releaseOutputBuffer	(IZ)V
     //   82: aload_3
     //   83: athrow
     //   84: astore_3
@@ -504,7 +508,7 @@ class MediaCodecWrapper
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 49	com/tencent/tav/decoder/MediaCodecWrapper:videoDecoder	Lcom/tencent/tav/decoder/VideoDecoder;
-    //   6: getfield 218	com/tencent/tav/decoder/VideoDecoder:isReleased	Z
+    //   6: getfield 245	com/tencent/tav/decoder/VideoDecoder:isReleased	Z
     //   9: istore_3
     //   10: iload_3
     //   11: ifeq +6 -> 17
@@ -513,45 +517,43 @@ class MediaCodecWrapper
     //   16: return
     //   17: aload_0
     //   18: getfield 47	com/tencent/tav/decoder/MediaCodecWrapper:TAG	Ljava/lang/String;
-    //   21: ldc 219
-    //   23: iconst_0
-    //   24: anewarray 4	java/lang/Object
-    //   27: invokestatic 223	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   30: aload_0
-    //   31: aload_2
-    //   32: invokespecial 225	com/tencent/tav/decoder/MediaCodecWrapper:resetMediaCodec	(Landroid/media/MediaFormat;)V
-    //   35: aload_0
-    //   36: aload_2
-    //   37: aload_1
-    //   38: invokevirtual 227	com/tencent/tav/decoder/MediaCodecWrapper:decoderConfigure	(Landroid/media/MediaFormat;Landroid/view/Surface;)Z
-    //   41: pop
-    //   42: aload_0
-    //   43: aload_1
-    //   44: aload_2
-    //   45: invokevirtual 230	com/tencent/tav/decoder/MediaCodecWrapper:startDecoder	(Landroid/view/Surface;Landroid/media/MediaFormat;)V
-    //   48: goto -34 -> 14
-    //   51: astore_1
-    //   52: aload_1
-    //   53: invokevirtual 139	java/lang/Exception:printStackTrace	()V
-    //   56: goto -42 -> 14
-    //   59: astore_1
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
+    //   21: ldc 246
+    //   23: invokestatic 159	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: aload_0
+    //   27: aload_2
+    //   28: invokespecial 248	com/tencent/tav/decoder/MediaCodecWrapper:resetMediaCodec	(Landroid/media/MediaFormat;)V
+    //   31: aload_0
+    //   32: aload_2
+    //   33: aload_1
+    //   34: invokevirtual 250	com/tencent/tav/decoder/MediaCodecWrapper:decoderConfigure	(Landroid/media/MediaFormat;Landroid/view/Surface;)Z
+    //   37: pop
+    //   38: aload_0
+    //   39: aload_1
+    //   40: aload_2
+    //   41: invokevirtual 253	com/tencent/tav/decoder/MediaCodecWrapper:startDecoder	(Landroid/view/Surface;Landroid/media/MediaFormat;)V
+    //   44: goto -30 -> 14
+    //   47: astore_1
+    //   48: aload_1
+    //   49: invokevirtual 162	java/lang/Exception:printStackTrace	()V
+    //   52: goto -38 -> 14
+    //   55: astore_1
+    //   56: aload_0
+    //   57: monitorexit
+    //   58: aload_1
+    //   59: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	64	0	this	MediaCodecWrapper
-    //   0	64	1	paramSurface	Surface
-    //   0	64	2	paramMediaFormat	MediaFormat
+    //   0	60	0	this	MediaCodecWrapper
+    //   0	60	1	paramSurface	Surface
+    //   0	60	2	paramMediaFormat	MediaFormat
     //   9	2	3	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   30	48	51	java/lang/Exception
-    //   2	10	59	finally
-    //   17	30	59	finally
-    //   30	48	59	finally
-    //   52	56	59	finally
+    //   26	44	47	java/lang/Exception
+    //   2	10	55	finally
+    //   17	26	55	finally
+    //   26	44	55	finally
+    //   48	52	55	finally
   }
   
   void startDecoder(Surface paramSurface, MediaFormat paramMediaFormat)
@@ -565,7 +567,7 @@ class MediaCodecWrapper
       }
       catch (Exception localException)
       {
-        Logger.e(this.TAG, "start", localException);
+        Logger.e(this.TAG, "startDecoder: start", localException);
         if ((!isLollipop()) || (!(localException instanceof MediaCodec.CodecException))) {
           break;
         }

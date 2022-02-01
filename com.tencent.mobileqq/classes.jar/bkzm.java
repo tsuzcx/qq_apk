@@ -1,16 +1,16 @@
-import android.app.Activity;
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class bkzm
-  extends aqrh
+  implements blac
 {
-  bkzm(bkzk parambkzk, Activity paramActivity) {}
+  bkzm(bkzk parambkzk) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
+    bkzk.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      bkzx.a().a(bkzk.a(this.a));
     }
   }
 }

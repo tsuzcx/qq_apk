@@ -1,52 +1,87 @@
-import UserGrowth.stFriendFeed;
-import UserGrowth.stSimpleMetaFeed;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class uhm
+class uhm
+  implements BusinessObserver
 {
-  public static List<uho> a(stFriendFeed paramstFriendFeed)
+  uhm(uhk paramuhk, Intent paramIntent) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramstFriendFeed == null) {
-      return Collections.emptyList();
-    }
-    paramstFriendFeed = paramstFriendFeed.friendFeeds;
-    if ((paramstFriendFeed == null) || (paramstFriendFeed.size() == 0)) {
-      return Collections.emptyList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a((stSimpleMetaFeed)paramstFriendFeed.get(0)));
-    int i = 1;
-    while (i < paramstFriendFeed.size())
+    uhk.c(this.jdField_a_of_type_Uhk);
+    if (paramBoolean) {}
+    for (;;)
     {
-      Object localObject = (stSimpleMetaFeed)paramstFriendFeed.get(i);
-      uho localuho = (uho)localArrayList.get(localArrayList.size() - 1);
-      if (!localuho.a((stSimpleMetaFeed)localObject))
+      try
       {
-        a(localuho);
-        localObject = a((stSimpleMetaFeed)localObject);
-        ((uho)localObject).a(i);
-        localArrayList.add(localObject);
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
+        {
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = aadf.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
+        }
       }
-      i += 1;
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        uhk.a(this.jdField_a_of_type_Uhk).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = bchh.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareHelper", 2, "build struct msg fail");
+      }
+      return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
-    a((uho)localArrayList.get(localArrayList.size() - 1));
-    uep.a().c(localArrayList);
-    return localArrayList;
-  }
-  
-  private static uho a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    uho localuho = new uho();
-    localuho.a(paramstSimpleMetaFeed);
-    return localuho;
-  }
-  
-  private static void a(uho paramuho)
-  {
-    paramuho.a(uep.a().a().contains(paramuho.a()));
   }
 }
 

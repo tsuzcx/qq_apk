@@ -1,62 +1,68 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class mrz
 {
-  public static Drawable a(Resources paramResources, int paramInt)
+  public static String a()
   {
-    return a(paramResources, paramInt, 2131166000, true, 2130841966, 2131166003, null);
-  }
-  
-  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
-  {
-    Drawable localDrawable = paramResources.getDrawable(paramInt1);
-    Object localObject;
-    if (paramBoolean)
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
     {
-      localObject = muq.a(paramResources, paramInt1, paramInt2);
-      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      localDrawable = paramResources.getDrawable(paramInt3);
-      paramResources = muq.a(paramResources, paramInt3, paramInt4);
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramDrawable != null) {
-        break label138;
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[image download] getFilesDir is null");
       }
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
+      return "";
     }
-    for (;;)
+    return localFile.getParent() + "/qav/image_download/";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ImageUtil", 2, "[image early] trigger early download");
+    }
+    paramQQAppInterface = (aqxc)paramQQAppInterface.getManager(77);
+    if (paramQQAppInterface != null)
     {
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      return paramResources;
-      localObject = localDrawable;
-      break;
-      label138:
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
-      paramResources.setLayerInset(2, 0, 0, 0, 0);
+      paramQQAppInterface = (aqxz)paramQQAppInterface.a("qq.android.qav.image2");
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(false);
+      }
     }
   }
   
-  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
+  public static boolean a(String paramString)
   {
-    return a(paramResources, paramInt, 2131166000, paramBoolean, 2130841966, 2131166003, paramDrawable);
+    return new File(b(), paramString).exists();
   }
   
-  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
+  public static String b()
   {
-    return a(paramResources, paramInt, 2131166000, paramBoolean, 2130841966, 2131166003, null);
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[image early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/image_early/";
   }
   
-  public static Drawable b(Resources paramResources, int paramInt)
+  public static String c()
   {
-    Drawable localDrawable = paramResources.getDrawable(paramInt);
-    paramResources = muq.a(paramResources, paramInt, 2131166000);
-    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    return paramResources;
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[video early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/video_early/";
   }
 }
 

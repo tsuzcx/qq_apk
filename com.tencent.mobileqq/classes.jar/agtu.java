@@ -1,160 +1,39 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.2;
-import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.3;
-import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.4;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.ShakeWindowMsg;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageForVIPDonate;
+import com.tencent.mobileqq.data.VIPDonateMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agtu
-  implements agvc, aokn
+class agtu
+  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<MessageForShakeWindow> jdField_a_of_type_JavaUtilList;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  agtu(agtt paramagtt) {}
   
-  public agtu(BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
-    this.jdField_a_of_type_MqqOsMqqHandler = paramBaseChatPie.a();
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this);
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "startShakeAnim() is called,time is:" + System.currentTimeMillis());
-    }
-    b();
-    AIOShakeHelper.1 local1 = new AIOShakeHelper.1(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
-    if (localInputMethodManager.isActive()) {
-      localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(local1, 60L);
-        return;
-      }
-      local1.run();
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 3: 
-      d();
-      return;
-    }
-    e();
-  }
-  
-  public void a(MessageForShakeWindow paramMessageForShakeWindow)
-  {
-    if (paramMessageForShakeWindow == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramMessageForShakeWindow);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if ((!paramMessageRecord.isread) && ((paramMessageRecord instanceof MessageForShakeWindow)))
-    {
-      paramMessageRecord = (MessageForShakeWindow)paramMessageRecord;
-      paramMessageRecord.parse();
-      if ((paramMessageRecord.mShakeWindowMsg != null) && (paramMessageRecord.mShakeWindowMsg.onlineFlag == 1))
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        }
-        this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-      }
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13 };
-  }
-  
-  public void b()
-  {
-    ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView()).getChildAt(0).clearAnimation();
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.shakemsg", 2, "beforeVibrate() is called,time is:" + System.currentTimeMillis());
-      }
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new AIOShakeHelper.2(this));
-    }
-  }
-  
-  public void c()
-  {
-    MessageForShakeWindow localMessageForShakeWindow;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      localMessageForShakeWindow = (MessageForShakeWindow)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
-      if (!localMessageForShakeWindow.isSendFromLocal()) {
-        break label80;
-      }
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AIOShakeHelper.3(this, localMessageForShakeWindow), 20L);
-    }
+    if (this.a.a()) {}
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label80:
-      long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.shakemsg", 2, "time is:" + System.currentTimeMillis() + ",shmsgseq is:" + localMessageForShakeWindow.shmsgseq + ",msgUid is:" + localMessageForShakeWindow.msgUid + ",uniseq is:" + localMessageForShakeWindow.uniseq + ",onlineStatus is:" + l + ",userActiveStatus is:" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a);
+      Object localObject1 = (MessageForVIPDonate)((agtv)AIOUtils.getHolder(paramView)).a;
+      Object localObject2 = ((MessageForVIPDonate)localObject1).donateMsg;
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject2).jumpUrl)))
+      {
+        localObject1 = ((MessageForVIPDonate)localObject1).donateMsg.jumpUrl;
+        localObject2 = new Intent(agtt.a(this.a), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", (String)localObject1);
+        agtt.a(this.a).startActivity((Intent)localObject2);
       }
-      if ((l == 11L) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a == 0)) {
-        this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AIOShakeHelper.4(this, localMessageForShakeWindow), 20L);
+      else
+      {
+        QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
       }
     }
   }

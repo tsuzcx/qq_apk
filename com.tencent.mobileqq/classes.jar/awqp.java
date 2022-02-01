@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class awqp
-  implements DialogInterface.OnClickListener
+public final class awqp
+  implements Parcelable.Creator<VideoData>
 {
-  public awqp(LocationDialogUtil.11 param11) {}
+  public VideoData a(Parcel paramParcel)
+  {
+    return new VideoData(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public VideoData[] a(int paramInt)
+  {
+    return new VideoData[paramInt];
+  }
 }
 
 

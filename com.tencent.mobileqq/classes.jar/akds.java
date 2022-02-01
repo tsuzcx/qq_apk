@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
 public class akds
-  implements View.OnClickListener
+  implements akdv
 {
-  public akds(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public akds(DoodleLayout paramDoodleLayout) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.f = false;
-    this.a.u = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
     }
-    if (this.a.jdField_a_of_type_Akfe != null) {
-      this.a.jdField_a_of_type_Akfe.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
   }
 }
 

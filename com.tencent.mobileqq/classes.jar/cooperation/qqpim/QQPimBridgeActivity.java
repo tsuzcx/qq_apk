@@ -1,6 +1,7 @@
 package cooperation.qqpim;
 
 import Override;
+import amtj;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -12,13 +13,12 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.Window;
-import anzj;
-import bjbs;
-import blha;
-import bmns;
-import bmnt;
-import bmnu;
-import bmob;
+import bhht;
+import bjmp;
+import bkrz;
+import bksa;
+import bksb;
+import bksi;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -32,9 +32,9 @@ public class QQPimBridgeActivity
   implements Handler.Callback
 {
   public static long a;
-  private bjbs jdField_a_of_type_Bjbs;
-  private blha jdField_a_of_type_Blha;
-  bmob jdField_a_of_type_Bmob = new bmnt(this);
+  private bhht jdField_a_of_type_Bhht;
+  private bjmp jdField_a_of_type_Bjmp;
+  bksi jdField_a_of_type_Bksi = new bksa(this);
   private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
   
   public static boolean a(Context paramContext)
@@ -58,30 +58,31 @@ public class QQPimBridgeActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167247);
+    getWindow().setBackgroundDrawableResource(2131167276);
     if (System.currentTimeMillis() - jdField_a_of_type_Long < 800L)
     {
       finish();
       return true;
     }
-    this.jdField_a_of_type_Blha = new blha(this);
+    this.jdField_a_of_type_Bjmp = new bjmp(this);
     jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bjbs = new bjbs(this, super.getResources().getDimensionPixelSize(2131299011));
-    this.jdField_a_of_type_Bjbs.a(anzj.a(2131709497));
-    this.jdField_a_of_type_Bjbs.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bjbs.setOnDismissListener(new bmns(this));
+    this.jdField_a_of_type_Bhht = new bhht(this, super.getResources().getDimensionPixelSize(2131299076));
+    this.jdField_a_of_type_Bhht.a(amtj.a(2131709729));
+    this.jdField_a_of_type_Bhht.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bhht.setOnDismissListener(new bkrz(this));
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bmob);
+    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bksi);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
     return true;
   }
@@ -89,10 +90,10 @@ public class QQPimBridgeActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()))
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing()))
     {
-      this.jdField_a_of_type_Bjbs.dismiss();
-      this.jdField_a_of_type_Bjbs = null;
+      this.jdField_a_of_type_Bhht.dismiss();
+      this.jdField_a_of_type_Bhht = null;
     }
     sTopActivity = null;
   }
@@ -114,16 +115,16 @@ public class QQPimBridgeActivity
           do
           {
             return false;
-          } while ((isFinishing()) || (this.jdField_a_of_type_Bjbs == null));
-          this.jdField_a_of_type_Bjbs.a(anzj.a(2131709499));
-          this.jdField_a_of_type_Bjbs.show();
+          } while ((isFinishing()) || (this.jdField_a_of_type_Bhht == null));
+          this.jdField_a_of_type_Bhht.a(amtj.a(2131709731));
+          this.jdField_a_of_type_Bhht.show();
           return false;
         } while (isFinishing());
         int i = paramMessage.arg1;
-        int j = super.getResources().getDimensionPixelSize(2131299011);
-        paramMessage = anzj.a(2131709500);
+        int j = super.getResources().getDimensionPixelSize(2131299076);
+        paramMessage = amtj.a(2131709732);
         if (-4 == i) {
-          paramMessage = anzj.a(2131709501);
+          paramMessage = amtj.a(2131709733);
         }
         for (;;)
         {
@@ -131,27 +132,27 @@ public class QQPimBridgeActivity
           finish();
           return false;
           if ((-5 == i) || (-1 == i) || (-3 == i) || (-2 == i)) {
-            paramMessage = anzj.a(2131709496);
+            paramMessage = amtj.a(2131709728);
           } else if (-6 == i) {
-            paramMessage = anzj.a(2131709498);
+            paramMessage = amtj.a(2131709730);
           }
         }
       } while (isFinishing());
       localBundle = getIntent().getExtras();
-      if (bmnu.i.equals(localBundle.getString(bmnu.o)))
+      if (bksb.i.equals(localBundle.getString(bksb.o)))
       {
         paramMessage = localObject1;
         if (!a(getApplicationContext())) {
-          paramMessage = this.jdField_a_of_type_Bjbs;
+          paramMessage = this.jdField_a_of_type_Bhht;
         }
         QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
         finish();
         return false;
       }
-    } while (!bmnu.j.equals(localBundle.getString(bmnu.o)));
+    } while (!bksb.j.equals(localBundle.getString(bksb.o)));
     paramMessage = localObject2;
     if (!a(getApplicationContext())) {
-      paramMessage = this.jdField_a_of_type_Bjbs;
+      paramMessage = this.jdField_a_of_type_Bhht;
     }
     QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
     finish();

@@ -1,172 +1,41 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.business.AvGameConfProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class ardc
-  extends arac<nht>
+class ardc
+  implements amea
 {
-  private final List<ardd> a = new LinkedList();
+  ardc(arcu paramarcu, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public static nht a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    nht localnht = (nht)aran.a().a(642);
-    if (localnht != null) {
-      return localnht;
-    }
-    return new nht();
-  }
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameConfProcessor", 2, "[notifyListeners]:" + this.a.size());
-    }
-    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-    try
+    Bundle localBundle = new Bundle();
+    if (paramBoolean)
     {
-      synchronized (this.a)
-      {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
-        {
-          ardd localardd = (ardd)localIterator.next();
-          try
-          {
-            localardd.a(paramInt);
-          }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("AvGameConfProcessor", 1, localThrowable2, new Object[0]);
-          }
-        }
-      }
-      this.a.clear();
-    }
-    catch (Throwable localThrowable1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvGameConfProcessor", 1, localThrowable1, new Object[0]);
-      }
+      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
+      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
+      localBundle.putInt("apollo_result", 0);
+      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
+      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
+      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
+      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
+      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
+      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
+      localBundle.putBoolean("apollo_is_super_yellow", alnr.c());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    label162:
-  }
-  
-  @NonNull
-  public nht a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("AvGameConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new nht();
-  }
-  
-  @Nullable
-  public nht a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvGameConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
-      }
-      return nht.a(paramArrayOfaraj[0]);
-    }
-    return null;
-  }
-  
-  public void a(ardd paramardd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameConfProcessor", 2, "[getConfig]");
-    }
-    synchronized (this.a)
-    {
-      if (this.a.size() > 0)
-      {
-        this.a.add(paramardd);
-        return;
-      }
-      this.a.add(paramardd);
-      aran.a().a(new int[] { 642 });
-      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-      ThreadManager.getSubThreadHandler().postAtTime(new AvGameConfProcessor.1(this), this, SystemClock.uptimeMillis() + 10000L);
-      return;
-    }
-  }
-  
-  public void a(nht paramnht)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramnht == null) {
-        break label48;
-      }
-    }
-    label48:
-    for (paramnht = paramnht.toString();; paramnht = " empty")
-    {
-      QLog.d("AvGameConfProcessor", 2, paramnht);
-      a(0);
-      return;
-    }
-  }
-  
-  public Class clazz()
-  {
-    return nht.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("AvGameConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-    a(paramInt);
-  }
-  
-  public int type()
-  {
-    return 642;
+    localBundle.putInt("apollo_result", 1);
+    localBundle.putInt("apollo_audioId", paramInt);
+    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardc
  * JD-Core Version:    0.7.0.1
  */

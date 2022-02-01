@@ -1,34 +1,73 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqyc
-  implements bljo
+  extends aqxl
 {
-  public aqyc(TimeSelectView paramTimeSelectView) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aqyc(QQAppInterface paramQQAppInterface)
   {
-    TimeSelectView.a(this.a, paramView, 1);
-    TimeSelectView.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
+    super("qq.android.qav.video", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10049;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavVideoData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadVideoDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
+    }
+    try
     {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
+      FileUtils.uncompressZip(paramString, mrz.c(), false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void a(boolean paramBoolean)
+  {
+    QavVideoData localQavVideoData = (QavVideoData)a();
+    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
+    {
+      localQavVideoData.autoDownload = true;
+      aqxb.a(localQavVideoData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavVideoData)a()).autoDownload;
+  }
 }
 
 

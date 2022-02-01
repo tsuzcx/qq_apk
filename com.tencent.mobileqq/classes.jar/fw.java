@@ -1,90 +1,35 @@
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.ETTextView;
 import java.lang.ref.WeakReference;
 
 public class fw
-  extends Handler
 {
-  public fw(Looper paramLooper)
+  public int a;
+  public long a;
+  public Bitmap a;
+  public fn a;
+  public WeakReference<ETTextView> a;
+  public long b;
+  
+  public fw()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static fw a(ETTextView paramETTextView)
   {
-    int i;
-    ETEngine localETEngine;
-    Bitmap localBitmap;
-    switch (paramMessage.what)
-    {
-    default: 
-    case 2: 
-      do
-      {
-        return;
-        paramMessage = (fx)paramMessage.obj;
-      } while (paramMessage == null);
-      i = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      int j = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      if ((ETTextView.access$300() != null) && ((ETTextView.access$300().getWidth() < i) || (ETTextView.access$300().getHeight() < j)))
-      {
-        ETTextView.access$300().recycle();
-        ETTextView.access$302(null);
-      }
-      if (ETTextView.access$300() == null)
-      {
-        ETTextView.access$302(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-        localETEngine = ETEngine.getInstanceForAnimation();
-        ??? = paramMessage.jdField_a_of_type_Fo.a(localETEngine, false);
-        if (??? != null) {
-          ((ETDecoration)???).gotoFrame(paramMessage.jdField_a_of_type_Int);
-        }
-        paramMessage.jdField_a_of_type_Fo.a(localETEngine, ETTextView.access$300(), (ETDecoration)???, true);
-        if (??? != null) {
-          ((ETDecoration)???).deleteDescriptor();
-        }
-        localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-          break label308;
-        }
-      }
-      break;
+    if (ETTextView.access$600(paramETTextView) == null) {
+      return null;
     }
-    for (;;)
-    {
-      synchronized (ETTextView.access$400((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()))
-      {
-        if ((localBitmap.isRecycled()) || (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).mMsgId != paramMessage.jdField_a_of_type_Long)) {
-          break label303;
-        }
-        localBitmap.eraseColor(0);
-        localETEngine.native_cloneBitmap(ETTextView.access$300(), localBitmap);
-        i = 1;
-        if (i == 0) {
-          break;
-        }
-        ETTextView.access$500().obtainMessage(1, paramMessage).sendToTarget();
-        return;
-        ETTextView.access$300().eraseColor(0);
-      }
-      if (ETTextView.access$300() == null) {
-        break;
-      }
-      ETTextView.access$300().recycle();
-      ETTextView.access$302(null);
-      return;
-      label303:
-      i = 0;
-      continue;
-      label308:
-      i = 0;
-    }
+    fw localfw = new fw();
+    localfw.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramETTextView);
+    localfw.jdField_a_of_type_Long = paramETTextView.mMsgId;
+    localfw.jdField_a_of_type_Fn = paramETTextView.mLayout;
+    localfw.jdField_a_of_type_Int = ETTextView.access$600(paramETTextView).currentFrameIndex();
+    localfw.jdField_a_of_type_AndroidGraphicsBitmap = ETTextView.access$400(paramETTextView).a();
+    localfw.b = System.currentTimeMillis();
+    return localfw;
   }
 }
 

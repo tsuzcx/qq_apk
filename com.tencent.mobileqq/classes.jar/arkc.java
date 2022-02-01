@@ -1,72 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
 
 public class arkc
-  extends arac<arkb>
+  implements View.OnTouchListener
 {
-  @NonNull
-  public arkb a(int paramInt)
-  {
-    return new arkb();
-  }
+  public arkc(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
   
-  @Nullable
-  public arkb a(araj[] paramArrayOfaraj)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    if (paramMotionEvent.getAction() == 0)
     {
-      arkb localarkb = arkb.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidViewView.postInvalidate();
       }
-      return localarkb;
     }
-    return null;
-  }
-  
-  public void a(arkb paramarkb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramarkb.toString());
-    }
-  }
-  
-  public Class<arkb> clazz()
-  {
-    return arkb.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 158;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkc
  * JD-Core Version:    0.7.0.1
  */

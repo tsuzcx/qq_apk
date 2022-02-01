@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import axgg;
-import axgq;
+import avtn;
+import avtx;
 import java.util.List;
 
 public class MsgBackupController$5
   implements Runnable
 {
-  public MsgBackupController$5(axgg paramaxgg, List paramList, axgq paramaxgq) {}
+  public MsgBackupController$5(avtn paramavtn, List paramList, avtx paramavtx) {}
   
   public void run()
   {
-    axgg.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Axgq, axgg.b());
+    avtn.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Avtx, avtn.b());
   }
 }
 

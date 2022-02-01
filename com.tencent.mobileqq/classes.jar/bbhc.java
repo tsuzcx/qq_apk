@@ -1,10 +1,8 @@
+import android.view.View;
+
 public abstract interface bbhc
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract View a();
 }
 
 

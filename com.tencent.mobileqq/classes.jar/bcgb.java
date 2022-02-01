@@ -1,18 +1,11 @@
-public class bcgb
+public abstract class bcgb
 {
-  public int a;
-  public CharSequence a;
   public String a;
-  public boolean a;
-  public int b;
-  public CharSequence b;
   public String b;
-  public int c;
-  public CharSequence c;
   public String c;
-  public int d;
+  public String d;
   
-  public bcgb(bcga parambcga) {}
+  public abstract String a(int paramInt);
 }
 
 

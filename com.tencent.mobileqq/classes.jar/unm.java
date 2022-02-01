@@ -1,24 +1,16 @@
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class unm
-  implements bliz
+final class unm
+  implements DialogInterface.OnClickListener
 {
-  unm(unl paramunl) {}
+  unm(int paramInt1, int paramInt2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!nny.a(unl.a(this.a)))
-    {
-      bjuh.a().a(2131719373);
-      return;
-    }
-    unl.a(this.a).b(unl.a(this.a).id, 2);
-    unl.a(this.a).followStatus = 2;
-    unl.a(this.a).setVisibility(0);
-    unl.b(this.a).setVisibility(8);
-    uns.a("follow", unl.a(this.a) + 1, unl.a(this.a).id, unz.r);
+    paramDialogInterface.dismiss();
+    uvr.b(112, 2, 0);
+    uvi.a(117, this.a, this.b, null);
   }
 }
 

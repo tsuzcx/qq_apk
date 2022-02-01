@@ -1,34 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
-class asli
-  extends askr
+public final class asli
+  implements Parcelable.Creator<FavFileInfo>
 {
-  asli(aslh paramaslh) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public FavFileInfo a(Parcel paramParcel)
   {
-    super.a(paramEmoticonPackage, paramInt, paramBundle);
-    if ((paramEmoticonPackage != null) && (paramInt == 0))
-    {
-      paramBundle = paramBundle.getBundle("jsonReqParams");
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt(aslh.jdField_a_of_type_JavaLangString);
-        paramBundle = paramBundle.getString(aslh.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
-        }
-        boolean bool = this.a.jdField_a_of_type_Aslm.a(paramInt);
-        if (bool) {
-          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-        }
-      }
-    }
+    return new FavFileInfo(paramParcel);
+  }
+  
+  public FavFileInfo[] a(int paramInt)
+  {
+    return new FavFileInfo[paramInt];
   }
 }
 

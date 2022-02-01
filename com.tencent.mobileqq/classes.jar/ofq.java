@@ -1,91 +1,73 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp;
+import mqq.app.AppRuntime;
 
-class ofq
-  implements BusinessObserver
+public class ofq
+  extends aptq<ofp>
 {
-  ofq(ofp paramofp, oft paramoft) {}
+  @NonNull
+  public ofp a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        return ofp.a(bfyz.e(((QQAppInterface)localAppRuntime).getApplication()));
+      }
+    }
+    return new ofp();
+  }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  @Nullable
+  public ofp a(aptx[] paramArrayOfaptx)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("EcshopMinusViewChatPie", 2, "isSuccess: " + paramBoolean);
+      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
     }
-    if (paramInt != 1) {}
-    for (;;)
-    {
-      return;
-      qq_ad.QQAdGetRsp localQQAdGetRsp = new qq_ad.QQAdGetRsp();
-      try
-      {
-        localQQAdGetRsp.mergeFrom(paramBundle.getByteArray("data"));
-        if (localQQAdGetRsp.qgg_msgs.has())
-        {
-          paramBundle = localQQAdGetRsp.qgg_msgs.get();
-          if ((paramBundle != null) && (!paramBundle.isEmpty()))
-          {
-            paramBundle = paramBundle.iterator();
-            paramInt = 0;
-            while (paramBundle.hasNext())
-            {
-              String str = (String)paramBundle.next();
-              MessageForArkApp localMessageForArkApp = (MessageForArkApp)bcry.a(-5008);
-              localMessageForArkApp.msgtype = -5008;
-              ArkAppMessage localArkAppMessage = new ArkAppMessage();
-              localArkAppMessage.fromAppXml(str);
-              localMessageForArkApp.msgData = localArkAppMessage.toBytes();
-              localMessageForArkApp.parse();
-              if ((!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appName)) && (!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appView)))
-              {
-                ofp.a(this.jdField_a_of_type_Ofp).add(localMessageForArkApp);
-                localMessageForArkApp.time = System.currentTimeMillis();
-                if (paramInt == 0) {
-                  localMessageForArkApp.saveExtInfoToExtStr("add_title", "minus_view_title_second");
-                }
-              }
-              ogd.a().a.put(Long.valueOf(localMessageForArkApp.uniseq), localMessageForArkApp);
-              paramInt += 1;
-            }
-          }
-        }
-        paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramBundle instanceof QQAppInterface))
-        {
-          paramBundle = (oer)((QQAppInterface)paramBundle).a(139);
-          if (paramBundle != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("EcshopMinusViewChatPie", 2, "-----deleteRiskAd----");
-            }
-            paramBundle.a(localQQAdGetRsp);
-          }
-        }
-        if (this.jdField_a_of_type_Oft != null) {
-          this.jdField_a_of_type_Oft.a(ofp.a(this.jdField_a_of_type_Ofp));
-        }
-        if ((localQQAdGetRsp.qgg_prompt.has()) && (localQQAdGetRsp.qgg_prompt_id.has()))
-        {
-          ofz.a(localQQAdGetRsp.qgg_prompt.get(), localQQAdGetRsp.qgg_prompt_id.get());
-          return;
-        }
-      }
-      catch (Throwable paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return ofp.a(paramArrayOfaptx);
     }
+    return null;
+  }
+  
+  public void a(ofp paramofp)
+  {
+    paramofp.b();
+    paramofp.a();
+  }
+  
+  public Class<ofp> clazz()
+  {
+    return ofp.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return bfyz.m(((QQAppInterface)localAppRuntime).getApp());
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 32;
   }
 }
 

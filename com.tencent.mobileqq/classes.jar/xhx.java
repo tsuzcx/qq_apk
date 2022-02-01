@@ -1,11 +1,21 @@
-public class xhx
-  extends xhu
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class xhx
+  implements TextView.OnEditorActionListener
 {
-  public String a;
-  public boolean a;
-  public String c;
-  public String d;
-  public String e;
+  xhx(xhw paramxhw) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
+  }
 }
 
 

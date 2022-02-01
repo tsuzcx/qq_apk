@@ -1,25 +1,50 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
 public class bcxb
+  implements WtTicketPromise
 {
-  public azqh a;
+  private aqlb jdField_a_of_type_Aqlb;
+  private WeakReference<bcxa> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public String a()
+  public bcxb(bcxa parambcxa, aqlb paramaqlb)
   {
-    return null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcxa);
+    this.jdField_a_of_type_Aqlb = paramaqlb;
   }
   
-  protected void a(String paramString1, String paramString2)
+  public void Done(Ticket paramTicket)
   {
-    if (this.a == null) {
-      this.a = new azqh();
+    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    {
+      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
+      return;
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
-    azpw.b(this, paramString1, paramString2);
+    if (this.jdField_a_of_type_Aqlb != null) {
+      this.jdField_a_of_type_Aqlb.a(false);
+    }
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
   }
   
-  protected boolean a()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return false;
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
+    if (this.jdField_a_of_type_Aqlb != null) {
+      this.jdField_a_of_type_Aqlb.a(false);
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (this.jdField_a_of_type_Aqlb != null) {
+      this.jdField_a_of_type_Aqlb.a(false);
+    }
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
   }
 }
 

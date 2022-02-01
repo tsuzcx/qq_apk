@@ -1,34 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.widget.bounce.BounceViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bhkk
-  extends BroadcastReceiver
+public class bhkk
+  implements ViewPager.OnPageChangeListener
 {
-  public bhkk(BaseApplicationImpl paramBaseApplicationImpl) {}
+  private bhkk(BounceViewPager paramBounceViewPager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("_debug_Event_index", -1);
-      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
-      if ((i >= 0) && (i < 39))
-      {
-        AudioHelper.a[i] = j;
-        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
-      }
-    } while (i != 2);
-    AudioHelper.a(this.a.getApplicationContext());
+    if (paramInt == 0) {
+      BounceViewPager.a(this.a, 0.0F);
+    }
+    Iterator localIterator = BounceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bhkl)localIterator.next()).b(paramInt);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    this.a.a = paramInt1;
+    BounceViewPager.a(this.a, paramFloat);
+    this.a.a();
+    Iterator localIterator = BounceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bhkl)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    Iterator localIterator = BounceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bhkl)localIterator.next()).a(paramInt);
+    }
   }
 }
 

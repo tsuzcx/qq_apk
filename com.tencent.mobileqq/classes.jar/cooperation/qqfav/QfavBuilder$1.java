@@ -1,18 +1,18 @@
 package cooperation.qqfav;
 
 import android.content.Context;
-import bmko;
-import bmkq;
+import bkov;
+import bkox;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QfavBuilder$1
   implements Runnable
 {
-  public QfavBuilder$1(bmko parambmko, Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
+  public QfavBuilder$1(bkov parambkov, Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    bmkq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
+    bkox.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

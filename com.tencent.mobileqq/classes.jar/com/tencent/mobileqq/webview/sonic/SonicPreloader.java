@@ -2,10 +2,10 @@ package com.tencent.mobileqq.webview.sonic;
 
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bhnv;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -136,7 +136,7 @@ public class SonicPreloader
   
   public static boolean isWifiOrG3OrG4()
   {
-    int i = bhnv.a(BaseApplication.getContext());
+    int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
     if (QLog.isColorLevel()) {
       QLog.d("SonicPreload", 2, "isWifiOrG3OrG4 netType = " + i);
     }

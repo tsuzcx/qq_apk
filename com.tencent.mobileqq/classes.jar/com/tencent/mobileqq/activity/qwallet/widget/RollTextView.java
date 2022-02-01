@@ -85,10 +85,10 @@ public class RollTextView
     this.isRool = paramBoolean;
     if (paramBoolean)
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772208);
+      Animation localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772216);
       localAnimation.setFillAfter(true);
       setInAnimation(localAnimation);
-      localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772209);
+      localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772217);
       localAnimation.setFillAfter(true);
       setOutAnimation(localAnimation);
       return;

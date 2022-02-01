@@ -1,31 +1,82 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import android.support.annotation.Nullable;
 
 public class baff
-  implements View.OnClickListener
 {
-  public baff(AbsProfileHeaderView paramAbsProfileHeaderView, String paramString, int paramInt, View paramView) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    if ((bbwn.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
-      localBundle.putInt("from_type", 2);
-      if ((this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, localBundle, -1);
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      azyk.a().c(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      bdll.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+    return a(paramInt, null, 9729, 9729, 33071, 33071);
+  }
+  
+  public static int a(int paramInt, Bitmap paramBitmap)
+  {
+    return a(paramInt, paramBitmap, 9729, 9729, 33071, 33071);
+  }
+  
+  public static int a(int paramInt1, @Nullable Bitmap paramBitmap, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    a("glGenTextures");
+    GLES20.glBindTexture(paramInt1, arrayOfInt[0]);
+    a("glBindTexture " + arrayOfInt[0]);
+    GLES20.glTexParameterf(paramInt1, 10241, paramInt2);
+    GLES20.glTexParameterf(paramInt1, 10240, paramInt3);
+    GLES20.glTexParameteri(paramInt1, 10242, paramInt4);
+    GLES20.glTexParameteri(paramInt1, 10243, paramInt5);
+    if (paramBitmap != null) {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    a("glTexParameter");
+    return arrayOfInt[0];
+  }
+  
+  public static void a(int paramInt)
+  {
+    a(paramInt, null);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, @Nullable Bitmap paramBitmap, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    GLES20.glBindTexture(paramInt2, paramInt1);
+    a("glBindTexture " + paramInt1);
+    GLES20.glTexParameterf(paramInt2, 10241, paramInt3);
+    GLES20.glTexParameterf(paramInt2, 10240, paramInt4);
+    GLES20.glTexParameteri(paramInt2, 10242, paramInt5);
+    GLES20.glTexParameteri(paramInt2, 10243, paramInt6);
+    if (paramBitmap != null) {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+    }
+    a("glTexParameter");
+  }
+  
+  public static void a(int paramInt, @Nullable Bitmap paramBitmap)
+  {
+    a(paramInt, 3553, paramBitmap, 9729, 9729, 33071, 33071);
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      xvv.e("FlowEdit_GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+    }
+  }
+  
+  public static int[] a(int paramInt)
+  {
+    int[] arrayOfInt = new int[paramInt];
+    GLES20.glGenTextures(paramInt, arrayOfInt, 0);
+    a("glGenTextures");
+    return arrayOfInt;
+  }
+  
+  public static void b(int paramInt)
+  {
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    a("glDeleteTextures");
   }
 }
 

@@ -1,24 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class arza
-  implements CompoundButton.OnCheckedChangeListener
+final class arza
+  implements aszj
 {
-  public arza(DataReportSettingFragment paramDataReportSettingFragment) {}
+  arza(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (paramBoolean) {
-      arzx.a().c();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      arzx.a().d();
-    }
+    aszt.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
   }
 }
 

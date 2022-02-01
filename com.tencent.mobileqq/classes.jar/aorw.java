@@ -1,62 +1,61 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
+import eipc.EIPCResult;
 
 public class aorw
+  implements aosj
 {
-  private Signature a()
+  private String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    try
+    Object localObject = null;
+    String str = null;
+    SessionInfo localSessionInfo = aopk.a();
+    if (!TextUtils.isEmpty(paramString))
     {
-      Signature localSignature = Signature.getInstance("SHA256withRSA");
-      return localSignature;
+      if (localSessionInfo != null) {
+        str = ContactUtils.getNicknameInSession(paramQQAppInterface, localSessionInfo, paramString.equals(paramQQAppInterface.getCurrentUin()), paramString);
+      }
+      if (str != null)
+      {
+        localObject = str;
+        if (!TextUtils.equals(str, paramString)) {}
+      }
+      else
+      {
+        str = ContactUtils.getDateNickName(paramQQAppInterface, paramString);
+        localObject = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject = ContactUtils.getNick(paramQQAppInterface, paramString, 0);
+        }
+      }
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-    {
-      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "getSignature error : ", localNoSuchAlgorithmException.getMessage() });
-    }
-    return null;
+    return localObject;
   }
   
-  private boolean a(Signature paramSignature, Key paramKey)
+  public EIPCResult a(Bundle paramBundle)
   {
-    try
+    Object localObject = aori.a();
+    if (localObject == null)
     {
-      paramSignature.initVerify((PublicKey)paramKey);
-      return true;
+      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    catch (InvalidKeyException paramSignature)
+    paramBundle = a((QQAppInterface)localObject, paramBundle.getString("Uin", ((QQAppInterface)localObject).getCurrentAccountUin()));
+    localObject = new Bundle();
+    if (TextUtils.isEmpty(paramBundle))
     {
-      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "initForVerify error : ", paramSignature.getMessage() });
+      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, nickname is empty");
+      ((Bundle)localObject).putString("Nickname", "");
     }
-    return false;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte1, Key paramKey, byte[] paramArrayOfByte2)
-  {
-    Signature localSignature = a();
-    if (localSignature == null)
+    for (;;)
     {
-      QLog.e("RsaUsingShaAlgorithm", 1, "verifySignature fail");
-      return false;
+      return EIPCResult.createResult(0, (Bundle)localObject);
+      ((Bundle)localObject).putString("Nickname", paramBundle);
     }
-    if (!a(localSignature, paramKey))
-    {
-      QLog.e("RsaUsingShaAlgorithm", 1, "initForVerify fail");
-      return false;
-    }
-    try
-    {
-      localSignature.update(paramArrayOfByte2);
-      boolean bool = localSignature.verify(paramArrayOfByte1);
-      return bool;
-    }
-    catch (SignatureException paramArrayOfByte1) {}
-    return false;
   }
 }
 

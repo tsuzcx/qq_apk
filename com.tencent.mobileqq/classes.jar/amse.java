@@ -1,11 +1,42 @@
-class amse
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.redtouch.RedTouch;
+
+public class amse
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
+  public amse(FrameHelperActivity paramFrameHelperActivity) {}
   
-  amse(amsb paramamsb)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "0";
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (!bcqk.c(this.a.getActivity().app, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      return false;
+      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    return false;
+    FrameHelperActivity.b(this.a);
+    return false;
   }
 }
 

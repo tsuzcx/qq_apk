@@ -1,11 +1,15 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class ahli
-  extends aggl
+  implements Comparator<MessageRecord>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ahli(ahlf paramahlf) {}
   
-  ahli(ahlh paramahlh) {}
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
+  }
 }
 
 

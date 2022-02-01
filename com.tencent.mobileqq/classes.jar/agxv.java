@@ -1,75 +1,70 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.util.BinderWarpper;
 
-class agxv
-  extends avhb
+public class agxv
+  extends aagp
 {
-  agxv(agxr paramagxr) {}
+  ahas jdField_a_of_type_Ahas = new agxw(this);
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
+  public agxv(AIOGalleryActivity paramAIOGalleryActivity) {}
+  
+  public aafy a(Activity paramActivity, aagc paramaagc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
+    return new agzi(paramActivity, paramaagc, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahap, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+  }
+  
+  public aagc a(Activity paramActivity)
+  {
+    return new agzn(true);
+  }
+  
+  public aagd a(Activity paramActivity, aagc paramaagc)
+  {
+    agzn localagzn = (agzn)paramaagc;
+    localagzn.e = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
+    if (localagzn.e) {
+      bcef.b(null, "dc00899", "Grp_chatRecord", "", "chatRecor_pic", "pic_exp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, "", "", "");
     }
-    if ((this.a.jdField_a_of_type_Axmv != null) && (this.a.jdField_a_of_type_Axmv.a() == 1)) {
+    localagzn.d(4);
+    localagzn.a();
+    return new agzo(paramActivity, paramaagc, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahap, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahap == null)
+    {
+      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      if (localBinderWarpper == null) {
+        break label160;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahap = ahaq.a(localBinderWarpper.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Ahas);
       if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
+        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahap);
       }
     }
-    do
+    boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
+    super.a(paramActivity);
+    if (bool)
     {
-      return;
-      if (this.a.jdField_a_of_type_Axmv != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + agxr.a(this.a));
-      }
-    } while (agxr.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
-      try
-      {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
-        }
+      this.jdField_a_of_type_Boolean = paramActivity.getIntent().getBooleanExtra("extra.NO_FIRST_ENTER_ANIMATION", false);
+      super.a();
+      if ((this.jdField_a_of_type_Aagd != null) && ((this.jdField_a_of_type_Aagd instanceof agzo))) {
+        ((agzo)this.jdField_a_of_type_Aagd).p();
       }
     }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
-      }
-      paramObject = agxr.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      agxr.a(this.a).removeMessages(0);
-      agxr.a(this.a).sendMessage(paramObject);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Axmv.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
-    }
-    label272:
-    paramHashMap = agxr.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693090);
-    agxr.a(this.a).sendMessage(paramHashMap);
+    return;
+    label160:
+    throw new IllegalArgumentException("can't find Binder in Intent..");
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

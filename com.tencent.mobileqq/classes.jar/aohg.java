@@ -1,86 +1,277 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.ar.ARRecognition;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aohg
-  implements SensorEventListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  public int a;
+  public long a;
+  public aogr a;
+  public aogw a;
+  public aogy a;
+  public aohi a;
+  public aoho a;
+  public aoin a;
+  public aojw a;
+  public axnl a;
+  public TranslateResult a;
+  public String a;
+  public long b = 0L;
   
-  private void a(long paramLong)
+  public aohg()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Aogr = null;
   }
   
-  protected void a() {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public static aogo a(ArrayList<ARRecognition> paramArrayList, aohg paramaohg)
   {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
+    aogo localaogo = new aogo();
+    if (paramaohg == null) {
+      return localaogo;
+    }
+    aoac localaoac = ARRecognition.a(paramArrayList, paramaohg);
+    if (localaoac.jdField_a_of_type_Long == 1L)
     {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
+      paramArrayList = localaogo;
+      if (paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_Boolean) {
+        paramArrayList = paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_Aogo;
       }
-      a(l1);
     }
-    label66:
-    while (l2 <= 80L) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-      f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-    }
-    this.d += f1;
-    if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+    for (;;)
     {
-      if (QLog.isColorLevel())
+      QLog.i("AREngine_ARCloudRecogResult", 1, "getLBSLocationCheckResult. retCode = " + paramArrayList.jdField_a_of_type_Int);
+      return paramArrayList;
+      if (localaoac.jdField_a_of_type_Long == 2L)
       {
-        QLog.d("CIO_test", 2, "now[" + f2 + "," + f3 + "," + f4 + "]duration:" + l2 + " shake:" + f1);
-        QLog.d("CIO_test", 2, "last[" + this.jdField_a_of_type_Float + "," + this.b + "," + this.c + "]total_shake:" + f1);
+        paramArrayList = localaogo;
+        if (paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_Boolean) {
+          paramArrayList = paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_Aogo;
+        }
       }
-      a();
-      a(l1);
-      return;
+      else if (localaoac.jdField_a_of_type_Long == 128L)
+      {
+        paramArrayList = localaogo;
+        if (paramaohg.jdField_a_of_type_Aoin.jdField_a_of_type_Boolean) {
+          paramArrayList = paramaohg.jdField_a_of_type_Aoin.jdField_a_of_type_Aogo;
+        }
+      }
+      else
+      {
+        paramArrayList = localaogo;
+        if (localaoac.jdField_a_of_type_Long == 2048L)
+        {
+          paramArrayList = localaogo;
+          if (paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_Boolean) {
+            paramArrayList = paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_Aogo;
+          }
+        }
+      }
     }
-    if (this.jdField_a_of_type_Int < 10)
+  }
+  
+  public static ArLBSActivity a(ArrayList<ARRecognition> paramArrayList, aohg paramaohg)
+  {
+    Object localObject = null;
+    if (paramaohg == null) {
+      return null;
+    }
+    aoac localaoac = ARRecognition.a(paramArrayList, paramaohg);
+    if (localaoac.jdField_a_of_type_Long == 1L)
     {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Float = f2;
-      this.b = f3;
-      this.c = f4;
-      this.jdField_a_of_type_Long = l1;
-      return;
+      paramArrayList = localObject;
+      if (!paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_Boolean) {}
     }
-    a(l1);
+    for (;;)
+    {
+      try
+      {
+        paramaohg = aogq.a(new String(paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_ArrayOfAogs[0].jdField_a_of_type_ArrayOfByte, "utf-8"));
+        paramArrayList = localObject;
+        if (paramaohg != null) {
+          paramArrayList = paramaohg.a;
+        }
+        QLog.i("AREngine_ARCloudRecogResult", 1, "getLBSActivity. activity info = " + paramArrayList);
+        return paramArrayList;
+      }
+      catch (Exception paramArrayList)
+      {
+        QLog.i("AREngine_ARCloudRecogResult", 1, "parse json failed. error msg = " + paramArrayList.getMessage());
+        paramaohg = null;
+        continue;
+      }
+      if (localaoac.jdField_a_of_type_Long == 2L)
+      {
+        paramArrayList = localObject;
+        if (!paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        try
+        {
+          paramaohg = aogq.a(new String(paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_ArrayOfAogx[0].jdField_a_of_type_ArrayOfByte, "utf-8"));
+          paramArrayList = localObject;
+          if (paramaohg == null) {
+            continue;
+          }
+          paramArrayList = paramaohg.a;
+        }
+        catch (Exception paramArrayList)
+        {
+          for (;;)
+          {
+            QLog.i("AREngine_ARCloudRecogResult", 1, "parse json failed. error msg = " + paramArrayList.getMessage());
+            paramaohg = null;
+          }
+        }
+      }
+      if (localaoac.jdField_a_of_type_Long == 128L)
+      {
+        paramArrayList = localObject;
+        if (!paramaohg.jdField_a_of_type_Aoin.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        try
+        {
+          paramaohg = aogq.a(new String(paramaohg.jdField_a_of_type_Aoin.a(), "utf-8"));
+          paramArrayList = localObject;
+          if (paramaohg == null) {
+            continue;
+          }
+          paramArrayList = paramaohg.a;
+        }
+        catch (Exception paramArrayList)
+        {
+          for (;;)
+          {
+            QLog.i("AREngine_ARCloudRecogResult", 1, "parse json failed. error msg = " + paramArrayList.getMessage());
+            paramaohg = null;
+          }
+        }
+      }
+      paramArrayList = localObject;
+      if (localaoac.jdField_a_of_type_Long != 2048L) {
+        continue;
+      }
+      paramArrayList = localObject;
+      if (!paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_Boolean) {
+        continue;
+      }
+      try
+      {
+        paramaohg = aogq.a(new String(paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_ArrayOfAohp[0].jdField_a_of_type_ArrayOfByte, "utf-8"));
+        paramArrayList = localObject;
+        if (paramaohg == null) {
+          continue;
+        }
+        paramArrayList = paramaohg.a;
+      }
+      catch (Exception paramArrayList)
+      {
+        for (;;)
+        {
+          QLog.i("AREngine_ARCloudRecogResult", 1, "parse json failed. error msg = " + paramArrayList.getMessage());
+          paramaohg = null;
+        }
+      }
+    }
+  }
+  
+  public static String a(ArrayList<ARRecognition> paramArrayList, aohg paramaohg)
+  {
+    if (paramaohg == null) {
+      return "";
+    }
+    String str = "";
+    aoac localaoac = ARRecognition.a(paramArrayList, paramaohg);
+    if (localaoac.jdField_a_of_type_Long == 1L) {
+      paramArrayList = paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_ArrayOfAogs[0].jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      QLog.i("AREngine_ARCloudRecogResult", 1, "getImageId. imageId = " + paramArrayList);
+      return paramArrayList;
+      if (localaoac.jdField_a_of_type_Long == 2L)
+      {
+        paramArrayList = paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_ArrayOfAogx[0].jdField_a_of_type_JavaLangString;
+      }
+      else if (localaoac.jdField_a_of_type_Long == 2048L)
+      {
+        paramArrayList = paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_ArrayOfAohp[0].jdField_a_of_type_JavaLangString;
+      }
+      else
+      {
+        paramArrayList = str;
+        if (localaoac.jdField_a_of_type_Long == 128L) {
+          paramArrayList = paramaohg.jdField_a_of_type_Aoin.e;
+        }
+      }
+    }
+  }
+  
+  public static void a(ArrayList<ARRecognition> paramArrayList, aohg paramaohg, aogo paramaogo)
+  {
+    if (paramaohg == null) {}
+    do
+    {
+      return;
+      QLog.i("AREngine_ARCloudRecogResult", 1, "setLBSLocationCheckResult. retCode = " + paramaogo.jdField_a_of_type_Int);
+      paramArrayList = ARRecognition.a(paramArrayList, paramaohg);
+      if (paramArrayList.jdField_a_of_type_Long == 1L)
+      {
+        paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_Aogo = paramaogo;
+        return;
+      }
+      if (paramArrayList.jdField_a_of_type_Long == 2L)
+      {
+        paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_Aogo = paramaogo;
+        return;
+      }
+      if (paramArrayList.jdField_a_of_type_Long == 128L)
+      {
+        paramaohg.jdField_a_of_type_Aoin.jdField_a_of_type_Aogo = paramaogo;
+        return;
+      }
+    } while (paramArrayList.jdField_a_of_type_Long != 2048L);
+    paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_Aogo = paramaogo;
+  }
+  
+  public static boolean a(ArrayList<ARRecognition> paramArrayList, aohg paramaohg)
+  {
+    boolean bool = false;
+    if (paramaohg == null) {
+      return false;
+    }
+    paramArrayList = ARRecognition.a(paramArrayList, paramaohg);
+    if (paramArrayList.jdField_a_of_type_Long == 1L) {
+      bool = paramaohg.jdField_a_of_type_Aogr.jdField_a_of_type_Boolean;
+    }
+    for (;;)
+    {
+      QLog.i("AREngine_ARCloudRecogResult", 1, "isNeedUploadLBSLocation. isNeed = " + bool);
+      return bool;
+      if (paramArrayList.jdField_a_of_type_Long == 2L) {
+        bool = paramaohg.jdField_a_of_type_Aogw.jdField_a_of_type_Boolean;
+      } else if (paramArrayList.jdField_a_of_type_Long == 128L) {
+        bool = paramaohg.jdField_a_of_type_Aoin.jdField_a_of_type_Boolean;
+      } else if (paramArrayList.jdField_a_of_type_Long == 2048L) {
+        bool = paramaohg.jdField_a_of_type_Aoho.jdField_a_of_type_Boolean;
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "ARCloudRecogResult{, sessionId = " + this.jdField_a_of_type_JavaLangString + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.jdField_a_of_type_Int + ", markerResult = " + this.jdField_a_of_type_Aogr + ", objectClassifyResult = " + this.jdField_a_of_type_Aogw + ", faceResult = " + this.jdField_a_of_type_Aohi + ", ocrResult = " + this.jdField_a_of_type_Axnl + ", preOcrResult = " + this.jdField_a_of_type_Aogy + ", questionResult = " + this.jdField_a_of_type_Aojw + ", sceneRecogResult = " + this.jdField_a_of_type_Aoho + ", translateReslut = " + this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult + ", uin = " + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohg
  * JD-Core Version:    0.7.0.1
  */

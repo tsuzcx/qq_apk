@@ -1,46 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agva
-  implements agvc
+  implements agut
 {
-  private aiap jdField_a_of_type_Aiap;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  
-  public agva(BaseChatPie paramBaseChatPie)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private HongBaoPanel a()
-  {
-    if (this.jdField_a_of_type_Aiap == null) {
-      this.jdField_a_of_type_Aiap = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    }
-    return (HongBaoPanel)this.jdField_a_of_type_Aiap.b(10);
-  }
-  
-  private void a()
-  {
-    HongBaoPanel localHongBaoPanel = a();
-    if (localHongBaoPanel != null) {
-      localHongBaoPanel.onDestory();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13 };
+    paramagap.a(paramMessageRecord, paramagcc, paramString);
   }
 }
 

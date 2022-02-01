@@ -1,89 +1,88 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import org.json.JSONObject;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
+import com.tencent.widget.XPanelContainer;
 
 public class aowh
-  extends aoxg
+  extends RelativeLayout
 {
-  public aowh(QQAppInterface paramQQAppInterface, Context paramContext)
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  
+  public aowh(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramArkPanelPagerAdapter.a();
+    int m = paramArkPanelPagerAdapter.b();
+    int n = AIOUtils.dp2px(15.0F, getContext().getResources());
+    int i = 0;
+    while (i < m)
+    {
+      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
+      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
+      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
+      paramAttributeSet.leftMargin = AIOUtils.dp2px(20.0F, getContext().getResources());
+      paramAttributeSet.rightMargin = AIOUtils.dp2px(20.0F, getContext().getResources());
+      paramArkPanelPagerAdapter.setOrientation(0);
+      if (i == 0) {}
+      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
+      {
+        j = 0;
+        while (j < k)
+        {
+          Object localObject = new LinearLayout.LayoutParams(-1, -1);
+          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+          }
+          View localView = LayoutInflater.from(paramContext).inflate(2131558876, null);
+          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+          localObject = new aowi();
+          ((aowi)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368368));
+          ((aowi)localObject).b = ((ImageView)localView.findViewById(2131366809));
+          ((aowi)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378382));
+          localView.setTag(localObject);
+          j += 1;
+        }
+      }
+      addView(paramArkPanelPagerAdapter, paramAttributeSet);
+      i += 1;
+    }
+    setTag(Integer.valueOf(XPanelContainer.d));
   }
   
-  private boolean c(String paramString)
+  public void a()
   {
-    int k = 0;
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    int i = 0;
+    while (i < getChildCount())
     {
-      return true;
-      paramString = paramString.split("\\?");
-    } while ((paramString == null) || (paramString.length < 2));
-    long l1 = 0L;
-    paramString = paramString[1];
-    for (;;)
-    {
-      try
+      Object localObject = getChildAt(i);
+      if (localObject != null)
       {
-        Object localObject = new JSONObject(URLDecoder.decode(paramString.substring(paramString.indexOf('=') + 1), "UTF-8"));
-        int i = ((JSONObject)localObject).optInt("gameId");
-        j = k;
-        long l2;
-        paramString.printStackTrace();
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          l2 = ((JSONObject)localObject).optLong("roomId");
-          l1 = l2;
-          j = k;
-          paramString = ((JSONObject)localObject).optString("gameName");
-          l1 = l2;
-          j = k;
-          k = ((JSONObject)localObject).optInt("gameMode");
-          l1 = l2;
-          j = k;
-          localObject = ((JSONObject)localObject).optString("extendInfo");
-          l1 = l2;
-          j = k;
-          ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, l2, k, (String)localObject, 204, paramString);
-          j = k;
-          l1 = l2;
-          QLog.i("CMShowGameInviteAction", 1, "[gotoCmShowGame], gameId:" + i + ",roomId:" + l1 + ",gameMode:" + j);
-          return true;
+        localObject = (aowi)((View)localObject).getTag();
+        if ((localObject != null) && (((aowi)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
+          ((aowi)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
         }
-        catch (Exception paramString)
-        {
-          break label212;
-        }
-        paramString = paramString;
-        i = 0;
       }
-      label212:
-      QLog.w("CMShowGameInviteAction", 1, "[gotoCmShowGame], errInfo->" + paramString.getMessage());
+      i += 1;
     }
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    try
-    {
-      QLog.i("CMShowGameInviteAction", 1, "[cmshow.game_invite], source:" + this.jdField_a_of_type_JavaLangString);
-      boolean bool = c(this.jdField_a_of_type_JavaLangString);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("CMShowGameInviteAction", 1, "doAction error: " + localException.getMessage());
-      a("CMShowGameInviteAction");
-    }
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

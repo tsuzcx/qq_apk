@@ -1,20 +1,13 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
-
 public class yfj
 {
   public int a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
   
-  public yfj(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
+  public yfj(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = paramInt;
   }
+  
+  public void a() {}
 }
 
 

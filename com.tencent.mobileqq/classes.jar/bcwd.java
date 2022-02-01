@@ -1,93 +1,111 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Environment;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import java.io.File;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
-public class bcwd
+class bcwd
+  extends nyz
 {
-  public static long a;
-  public static final String a;
-  public static long b;
-  public static long c;
-  public static long d;
-  public static long e;
-  public static long f;
-  public static long g;
-  public static long h;
-  public static long i;
-  public static long j;
-  public static long k;
-  public static long l;
-  public static long m;
+  bcwd(bcwc parambcwc) {}
   
-  static
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/Tencent/com/tencent/mobileqq/debugDecodeShortVideo";
+    if (this.a.a != null) {
+      return this.a.a.getVideoLoadingProgressView();
+    }
+    return null;
   }
   
-  public static int a(int paramInt)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return 11;
-    case 1: 
-      return 9;
+    if (this.a.a != null) {
+      this.a.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
     }
-    return 10;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
+  public void onHideCustomView()
   {
-    if (paramInt2 == 1)
-    {
-      String str = PreferenceManager.getDefaultSharedPreferences(paramActivity).getString("camera_photo_path", "");
-      if ("".equals(str))
-      {
-        QLog.d("AIOShortVideoUtil", 1, "camera result null");
-        return;
-      }
-      if (paramSessionInfo.jdField_a_of_type_Int == 9501)
-      {
-        ChatActivityUtils.a(paramQQAppInterface, paramActivity, paramSessionInfo, 1, paramIntent, 1);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOShortVideoUtil", 2, "on camera result " + paramInt1);
-      }
-      paramActivity.getIntent().removeExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
-      paramIntent = EditPicActivity.a(paramActivity, str, true, true, true, true, false, 2, 99, 1);
-      paramIntent.putExtra("qq_sub_business_id", 109);
-      agej.a(paramIntent, null);
-      paramIntent.putExtra("camera_type", paramInt1);
-      if (bhjx.b(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-        paramIntent.putExtra("babyq_ability", ((antk)paramQQAppInterface.a(53)).a());
-      }
-      paramIntent.putExtra("key_activity_code", ChatActivityUtils.a(paramActivity));
-      paramIntent.putExtra("editpic_cameratype", 3);
-      paramActivity.startActivity(paramIntent);
-      return;
+    if (this.a.a != null) {
+      this.a.a.onHideCustomView();
     }
-    paramQQAppInterface = new Intent(paramActivity, SendVideoActivity.class);
-    paramIntent = PreferenceManager.getDefaultSharedPreferences(paramActivity).getString("camera_photo_path", "");
-    paramQQAppInterface.putExtra("file_send_path", paramIntent);
-    paramQQAppInterface.putExtra("file_send_size", new File(paramIntent).length());
-    paramQQAppInterface.putExtra("file_send_duration", ShortVideoUtils.a(paramIntent));
-    paramQQAppInterface.putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-    paramQQAppInterface.putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
-    paramQQAppInterface.putExtra("file_source", "camera");
-    paramQQAppInterface.putExtra("start_init_activity_after_sended", false);
-    paramActivity.startActivity(paramQQAppInterface);
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    if (this.a.a != null) {
+      this.a.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    }
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+  }
+  
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.onProgressChanged(paramWebView, paramInt);
+    }
+    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
+      paramWebView.getSettings().setLoadsImagesAutomatically(true);
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (this.a.a != null) {
+      this.a.a.onReceivedTitle(paramWebView, paramString);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.showCustomView(paramView, 10, paramCustomViewCallback);
+    }
+  }
+  
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    if ((paramValueCallback != null) && (this.a.a != null)) {
+      return this.a.a.onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    }
+    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.openFileChooser(paramValueCallback, paramString1, paramString2);
+    }
   }
 }
 

@@ -1,11 +1,43 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "", "onInstalledFailed", "", "errorCode", "", "onInstalledSuccessed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rzz
+public class rzz
+  extends bbjd
 {
-  public abstract void a();
+  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public abstract void a(int paramInt);
+  public rzz(VideoFeedsAppInterface paramVideoFeedsAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      super.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, saa.class);
+  }
 }
 
 

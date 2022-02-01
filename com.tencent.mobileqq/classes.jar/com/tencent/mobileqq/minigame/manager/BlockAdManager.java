@@ -9,11 +9,11 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import bhtq;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.minigame.data.BlockAdInfo;
 import com.tencent.mobileqq.minigame.widget.BlockAdView;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -92,7 +92,7 @@ public class BlockAdManager
   public float getDensity()
   {
     if (this.mGameDensity == -1.0F) {
-      this.mGameDensity = bhtq.a();
+      this.mGameDensity = ViewUtils.getDensity();
     }
     return this.mGameDensity;
   }
@@ -100,7 +100,7 @@ public class BlockAdManager
   public int getGameHeight()
   {
     if (this.mGameHeight == 0) {
-      this.mGameHeight = bhtq.b();
+      this.mGameHeight = ViewUtils.getScreenHeight();
     }
     return this.mGameHeight;
   }
@@ -108,7 +108,7 @@ public class BlockAdManager
   public int getGameWidth()
   {
     if (this.mGameWidth == 0) {
-      this.mGameWidth = bhtq.a();
+      this.mGameWidth = ViewUtils.getScreenWidth();
     }
     return this.mGameWidth;
   }
@@ -156,7 +156,7 @@ public class BlockAdManager
     }
     for (;;)
     {
-      QLog.i("BlockAdManager", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bhtq.a() + ", screenW = " + this.mGameWidth + ", screenH = " + this.mGameHeight);
+      QLog.i("BlockAdManager", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.getDensity() + ", screenW = " + this.mGameWidth + ", screenH = " + this.mGameHeight);
       return;
       if (this.mGameWidth > this.mGameHeight)
       {

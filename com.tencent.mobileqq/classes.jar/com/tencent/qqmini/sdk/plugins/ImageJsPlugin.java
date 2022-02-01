@@ -773,35 +773,67 @@ public class ImageJsPlugin
   @JsEvent({"saveImageToPhotosAlbum"})
   public void saveImageToPhotosAlbum(RequestEvent paramRequestEvent)
   {
-    try
+    for (;;)
     {
-      String str = new JSONObject(paramRequestEvent.jsonParams).optString("filePath", "");
-      if (!TextUtils.isEmpty(str))
+      try
       {
-        str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str);
-        Object localObject = new File(str);
-        localObject = ShortVideoUtil.getCameraPath() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-        if (FileUtils.saveVideoToAlbum(this.mMiniAppContext.getAttachedActivity(), str, (String)localObject))
+        Object localObject = new JSONObject(paramRequestEvent.jsonParams).optString("filePath", "");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramRequestEvent.ok();
+          String str3 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject);
+          File localFile = new File(str3);
+          String str2 = "";
+          localObject = str2;
+          if (!ImageUtil.isJpgFile(str3))
+          {
+            localObject = str2;
+            if (!ImageUtil.isPngFile(str3))
+            {
+              localObject = str2;
+              if (!ImageUtil.isWebpFile(str3))
+              {
+                localObject = new BitmapFactory.Options();
+                ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(str3, (BitmapFactory.Options)localObject);
+                localObject = ImageUtil.getType((BitmapFactory.Options)localObject);
+                if (TextUtils.isEmpty((CharSequence)localObject)) {
+                  break label285;
+                }
+                if (!((String)localObject).equals("unknown")) {
+                  continue;
+                }
+                break label285;
+              }
+            }
+          }
+          localObject = ShortVideoUtil.getCameraPath() + System.currentTimeMillis() / 1000L + "_" + localFile.getName() + (String)localObject;
+          if (FileUtils.saveVideoToAlbum(this.mMiniAppContext.getAttachedActivity(), str3, (String)localObject))
+          {
+            paramRequestEvent.ok();
+            return;
+            localObject = "." + (String)localObject;
+            continue;
+          }
+          paramRequestEvent.fail("save failed.");
           return;
         }
-        paramRequestEvent.fail("save failed.");
+      }
+      catch (Exception localException)
+      {
+        QMLog.e("ImageJsPlugin", paramRequestEvent.event + " error", localException);
+        paramRequestEvent.fail();
         return;
       }
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("ImageJsPlugin", paramRequestEvent.event + " error", localException);
-      paramRequestEvent.fail();
+      paramRequestEvent.fail("save failed.");
       return;
+      label285:
+      String str1 = "";
     }
-    paramRequestEvent.fail("save failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ImageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,12 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class vli
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  public vli(QCircleBaseAggregationFragment paramQCircleBaseAggregationFragment) {}
-  
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  public static Dispatcher a()
   {
-    if (paramvxq != null) {
-      QLog.d(QCircleBaseAggregationFragment.a, 4, "initViewData:getFeedListRequestRsp_" + this.a.a() + ",state:" + paramvxq.a());
-    }
-    this.a.a(paramvxq);
+    return Dispatchers.get(ThreadManager.getSubThreadLooper());
   }
 }
 

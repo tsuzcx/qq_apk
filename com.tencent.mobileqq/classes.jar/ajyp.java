@@ -1,16 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajyp
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  TextView a;
+  public ajyp(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
-  ajyp(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131380269));
+    if (KuaKuaHbFragment.a(this.a) != null) {
+      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.a(this.a).getText().toString());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

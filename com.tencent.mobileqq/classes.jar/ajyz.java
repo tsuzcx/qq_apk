@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class ajyz
-  implements DialogInterface.OnClickListener
+public class ajyz
+  extends ajzf
 {
-  ajyz(ajyt paramajyt, int paramInt) {}
+  public ajyz(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_Int);
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
   }
 }
 

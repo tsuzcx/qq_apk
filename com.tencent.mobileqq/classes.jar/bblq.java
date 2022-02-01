@@ -1,14 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.List;
 
 public class bblq
-  implements bbly
+  implements bblp
 {
-  public bblq(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  private abxo<bbls> jdField_a_of_type_Abxo = new abxp();
+  private abxq<Integer, bbls> jdField_a_of_type_Abxq = new abxr();
   
-  public void a()
+  public bbls a(Integer paramInteger)
   {
-    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+    return (bbls)this.jdField_a_of_type_Abxq.a(paramInteger);
+  }
+  
+  public List<bbls> a()
+  {
+    return this.jdField_a_of_type_Abxo.a();
+  }
+  
+  public void a(Class<? extends bbls> paramClass)
+  {
+    this.jdField_a_of_type_Abxo.a(paramClass);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends bbls> paramClass)
+  {
+    this.jdField_a_of_type_Abxq.a(paramInteger, paramClass);
   }
 }
 

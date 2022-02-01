@@ -1,47 +1,10 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-class bmkt
-  extends OnPluginInstallListener.Stub
+public abstract interface bmkt
 {
-  bmkt(bmks parambmks) {}
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
-    }
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
-    }
-    bmkq.a().set(true);
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
+  public abstract boolean a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmkt
  * JD-Core Version:    0.7.0.1
  */

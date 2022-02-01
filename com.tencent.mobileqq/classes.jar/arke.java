@@ -1,72 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
 public class arke
-  extends arac<arkd>
+  implements arpx
 {
-  @NonNull
-  public arkd a(int paramInt)
+  public arke(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  
+  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    return new arkd();
+    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
   }
   
-  @Nullable
-  public arkd a(araj[] paramArrayOfaraj)
+  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
-    {
-      arkd localarkd = arkd.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localarkd;
-    }
-    return null;
-  }
-  
-  public void a(arkd paramarkd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramarkd.toString());
-    }
-  }
-  
-  public Class<arkd> clazz()
-  {
-    return arkd.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 361;
+    aroj.a(ExtendFriendCampusFragment.a(this.a), false);
+    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arke
  * JD-Core Version:    0.7.0.1
  */

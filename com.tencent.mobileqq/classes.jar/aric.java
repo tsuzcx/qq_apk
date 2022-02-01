@@ -1,53 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aric
+public abstract interface aric
 {
-  public List<arie> a = new ArrayList();
+  public static final int a;
+  public static final int[] a;
+  public static final int[] b;
+  public static final int[] c = arid.a(jdField_a_of_type_ArrayOfInt, b);
+  public static final int[] d = { 0, 8, 7, 6 };
+  public static final int[] e = { -2611, -5427, -7983, -665107, -1190657, -2304513, -2826497 };
   
-  public static aric a(String paramString)
+  static
   {
-    aric localaric = new aric();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("QRCodeList"))
-      {
-        paramString = paramString.optJSONArray("QRCodeList");
-        Type localType = new arid().getClass().getGenericSuperclass();
-        localaric.a.addAll(awfy.a(paramString, localType));
-        if (localaric.a.size() > 0)
-        {
-          paramString = new arie();
-          paramString.jdField_a_of_type_JavaLangString = "default_bg";
-          paramString.c = 1;
-          paramString.jdField_b_of_type_Int = 0;
-          paramString.jdField_a_of_type_Int = 0;
-          paramString.jdField_b_of_type_JavaLangString = "";
-          localaric.a.add(paramString);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localaric.a.size());
-      }
-      return localaric;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    jdField_a_of_type_ArrayOfInt = new int[] { 0, 1 };
+    b = new int[] { 0, 1, 2 };
+    jdField_a_of_type_Int = arid.a(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aric
  * JD-Core Version:    0.7.0.1
  */

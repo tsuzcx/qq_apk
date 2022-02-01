@@ -1,11 +1,20 @@
-class aorr
+import android.os.Bundle;
+import java.util.ArrayList;
+
+final class aorr
+  extends aosq
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int b;
-  int c;
-  int d;
+  aorr(String paramString, long paramLong, ArrayList paramArrayList)
+  {
+    super(paramString, paramLong);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("Nickname", ""));
+    }
+  }
 }
 
 

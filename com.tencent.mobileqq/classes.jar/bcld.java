@@ -1,17 +1,15 @@
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-final class bcld
-  implements Comparator<bcfn>
+class bcld
+  extends aezf
 {
-  public int a(bcfn parambcfn1, bcfn parambcfn2)
-  {
-    int j = Long.signum(parambcfn2.b() - parambcfn1.b());
-    int i = j;
-    if (j == 0) {
-      i = bclc.a(parambcfn1, parambcfn2);
-    }
-    return i;
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

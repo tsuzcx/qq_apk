@@ -215,11 +215,11 @@ public class ParcelHelper
     //   278: aload 4
     //   280: astore_3
     //   281: aload_0
-    //   282: invokestatic 156	alrb:a	(Ljava/lang/Object;)Lalqz;
+    //   282: invokestatic 156	akos:a	(Ljava/lang/Object;)Lakoq;
     //   285: aload_0
     //   286: aload 4
     //   288: aload_1
-    //   289: invokevirtual 161	alqz:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
+    //   289: invokevirtual 161	akoq:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
     //   292: aload 4
     //   294: ifnull +8 -> 302
     //   297: aload 4
@@ -379,11 +379,11 @@ public class ParcelHelper
     //   49: aload_1
     //   50: astore_2
     //   51: aload_0
-    //   52: invokestatic 156	alrb:a	(Ljava/lang/Object;)Lalqz;
+    //   52: invokestatic 156	akos:a	(Ljava/lang/Object;)Lakoq;
     //   55: aload_0
     //   56: aload 4
     //   58: aload_1
-    //   59: invokevirtual 175	alqz:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
+    //   59: invokevirtual 175	akoq:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
     //   62: pop
     //   63: aload_1
     //   64: astore_2

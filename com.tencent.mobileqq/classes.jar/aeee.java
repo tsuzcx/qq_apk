@@ -1,37 +1,47 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class aeee
-  extends atpa
+  extends RecyclerView.Adapter<aeef>
 {
-  private aeee(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  aeec jdField_a_of_type_Aeec;
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public aeee(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public aeef a(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((bnyz.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
+    return new aeef(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559772, paramViewGroup, false), this.jdField_a_of_type_Aeec);
+  }
+  
+  public void a(aeec paramaeec)
+  {
+    this.jdField_a_of_type_Aeec = paramaeec;
+  }
+  
+  public void a(aeef paramaeef, int paramInt)
+  {
+    paramaeef.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt)) {
+      paramaeef.a.setSelected(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaeef, paramInt, getItemId(paramInt));
+      return;
+      paramaeef.a.setSelected(false);
     }
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  public int getItemCount()
   {
-    if ((bnyz.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryFIleActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.app.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bnyz.a(paramInt2)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

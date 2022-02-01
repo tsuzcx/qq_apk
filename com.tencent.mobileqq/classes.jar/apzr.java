@@ -1,43 +1,33 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class apzr
-  implements ArkViewImplement.LoadCallback
+public class apzr
 {
-  apzr(apzq paramapzq, aqcq paramaqcq, aqcm paramaqcm, int paramInt, agyv paramagyv) {}
+  private apzs jdField_a_of_type_Apzs;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public apzr()
   {
-    onLoadState(paramInt1);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Apzs = new apzs();
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public apzr(String paramString, apzs paramapzs)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Aqcq.a.setVisibility(0);
-      apzq.a(this.jdField_a_of_type_Apzq, this.jdField_a_of_type_Aqcm, this.jdField_a_of_type_Aqcq);
-      this.jdField_a_of_type_Aqcq.b.setVisibility(0);
-      this.jdField_a_of_type_Aqcm.a(this.jdField_a_of_type_Aqcq, this.jdField_a_of_type_Apzq);
-    }
-    for (;;)
-    {
-      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Apzq.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_Aqcm.a(this.jdField_a_of_type_Agyv, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Aqcq.a.setVisibility(8);
-      this.jdField_a_of_type_Aqcq.b.setVisibility(8);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Apzs = paramapzs;
+  }
+  
+  public apzs a()
+  {
+    return this.jdField_a_of_type_Apzs;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apzr
  * JD-Core Version:    0.7.0.1
  */

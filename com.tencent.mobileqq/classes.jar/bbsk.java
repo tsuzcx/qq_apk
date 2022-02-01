@@ -1,84 +1,40 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.HashSet;
+import android.os.Handler;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
 public class bbsk
+  extends SCameraCaptureProcessor.CaptureCallback
 {
-  private volatile long jdField_a_of_type_Long;
-  private bbsm jdField_a_of_type_Bbsm;
-  private String jdField_a_of_type_JavaLangString;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  public bbsk(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public bbsk(String paramString, bbsm parambbsm)
+  public void onError(int paramInt)
   {
-    paramString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bbsm = parambbsm;
+    bbsr.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
   }
   
-  public static File a()
+  public void onPictureAvailable(ByteBuffer paramByteBuffer)
   {
-    if (bhjr.a()) {
-      return new File(antf.ba + "status_ic");
-    }
-    return null;
-  }
-  
-  private boolean a(String paramString, File paramFile)
-  {
-    int i = HttpDownloadUtil.a(null, paramString, paramFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.img", 2, "download " + paramString + "result " + i);
-    }
-    paramFile = bdmc.a(BaseApplication.getContext());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("result", String.valueOf(i));
-    localHashMap.put("url", paramString);
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
+    bbsr.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
+    bbsq.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
     {
-      paramFile.a("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
-      if (i != 0) {
-        break;
-      }
-      return true;
+      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.get(arrayOfByte);
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
     }
-    return false;
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
   }
   
-  public Bitmap a(String paramString)
+  public void onShutter()
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(this.jdField_a_of_type_JavaLangString + paramString);
-  }
-  
-  public Bitmap a(String paramString1, String paramString2, String paramString3)
-  {
-    Bitmap localBitmap = a(paramString1);
-    if (localBitmap == null)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-        this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      }
-      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
-        }
-        this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
-        new bbsl(this, paramString1, paramString2, paramString3).execute((Void[])null);
-      }
-    }
-    return localBitmap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    bbsr.a(1, "[Camera2]samsungCapture onShutter!");
   }
 }
 

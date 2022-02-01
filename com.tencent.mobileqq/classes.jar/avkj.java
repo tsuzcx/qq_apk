@@ -1,26 +1,26 @@
-import android.annotation.SuppressLint;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-@SuppressLint({"NewApi"})
 public class avkj
-  extends ViewOutlineProvider
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  private List<avkk> a = Collections.synchronizedList(new ArrayList());
   
-  public void getOutline(View paramView, Outline paramOutline)
+  void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOutlineProvider", 1, "----->getOutline");
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((avkk)localIterator.next()).a(paramLong);
     }
-    paramView.getGlobalVisibleRect(new Rect());
-    paramOutline.setRoundRect(new Rect(this.c, this.a, this.d, this.b), 0.0F);
+  }
+  
+  void b(long paramLong)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((avkk)localIterator.next()).b(paramLong);
+    }
   }
 }
 

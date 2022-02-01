@@ -1,42 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class qpn
-  implements View.OnClickListener
+class qpn
+  implements bjrk
 {
-  public qpn(ComponentHeaderNewSocial paramComponentHeaderNewSocial, ArticleInfo paramArticleInfo) {}
+  qpn(qpk paramqpk) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Object localObject1 = "";
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("folder_status", ozs.d);
-      ((JSONObject)localObject2).put("feeds_source", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a));
-      ((JSONObject)localObject2).put("tab_source", ozs.d());
-      ((JSONObject)localObject2).put("kandian_mode", ozs.e());
-      ((JSONObject)localObject2).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCell", 2, "onAdComplain");
     }
-    catch (JSONException localJSONException)
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", ((pvc)this.a.jdField_a_of_type_JavaLangObject).a());
+      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
     }
-    ocd.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, "0X8007B63", "0X8007B63", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "", (String)localObject1, false);
-    localObject1 = oyu.f + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId;
-    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), (String)localObject1);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

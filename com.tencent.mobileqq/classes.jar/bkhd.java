@@ -1,45 +1,112 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Pattern;
+import mqq.app.ISecurityFileHelper;
 
 public class bkhd
-  extends anuw
+  implements ISecurityFileHelper
 {
-  public bkhd(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new bkhe(this);
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public String declareBusinessFileName()
   {
-    this.a.a();
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    return "QQComicOffline";
+  }
+  
+  public boolean doMigrate(File paramFile)
+  {
+    boolean bool2 = false;
+    File localFile1 = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/");
+    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    boolean bool1;
+    if ((arrayOfString == null) || (arrayOfString.length == 0))
     {
-      this.a.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
-      if (QidianProfileCardActivity.b(this.a)) {
-        this.a.a(this.a.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      bool1 = true;
+      return bool1;
+    }
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label220;
       }
+      Object localObject = arrayOfString[i];
+      File localFile2 = new File(localFile1, (String)localObject);
+      localObject = new File(paramFile.getAbsolutePath() + File.separator + (String)localObject + File.separator + declareBusinessFileName());
+      int k = FileUtils.quickMove(localFile2.getAbsolutePath(), ((File)localObject).getAbsolutePath());
+      QLog.d("VipComicSecurityFileHelper", 2, "doMigrate：" + declareBusinessFileName() + " result = " + k + " fromFile = " + localFile2.getAbsolutePath() + " targetFile = " + ((File)localObject).getAbsolutePath());
+      bool1 = bool2;
+      if (k != 0) {
+        break;
+      }
+      i += 1;
+    }
+    label220:
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    Object localObject = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    boolean bool;
+    StringBuilder localStringBuilder;
+    if ((localObject != null) && (localObject.length > 0))
+    {
+      bool = true;
+      localStringBuilder = new StringBuilder().append("needMigration: uinDirs.len=");
+      if (localObject != null) {
+        break label74;
+      }
+    }
+    label74:
+    for (localObject = Integer.valueOf(0);; localObject = localObject.length + " needMigration=" + bool)
+    {
+      QLog.i("VipComicSecurityFileHelper", 2, localObject);
+      return bool;
+      bool = false;
+      break;
     }
   }
   
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  public File oldBusinessDir(String paramString)
   {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Azxr != null) && (this.a.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
+    return new File(new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/"), paramString);
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    paramString = oldBusinessDir(paramString);
+    return (paramString.isDirectory()) && (paramString.exists());
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    long l2 = 0L;
+    String[] arrayOfString1 = new String[2];
+    File localFile = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/");
+    String[] arrayOfString2 = localFile.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
     {
-      this.a.c = paramBmqqAccountType.getAccountType();
-      this.a.b();
-      if (this.a.c == 1) {
-        this.a.jdField_a_of_type_Bkgt.b(this.a, paramBmqqAccountType);
+      int j = arrayOfString2.length;
+      int i = 0;
+      long l1 = 0L;
+      while (i < j)
+      {
+        String str = arrayOfString2[i];
+        l2 += FileUtils.getFileOrFolderSize(new File(localFile, str).getAbsolutePath());
+        l1 += FileUtils.getFileAmount(new File(localFile, str).getAbsolutePath());
+        i += 1;
       }
+      arrayOfString1[0] = Long.toString(l2);
+      arrayOfString1[1] = Long.toString(l1);
+      QLog.d("VipComicSecurityFileHelper", 2, "reportHistoryFileInfo:" + declareBusinessFileName() + " fileAmount = " + l1 + " fileSize = " + l2);
     }
-    else
-    {
-      return;
-    }
-    this.a.a();
+    return arrayOfString1;
   }
 }
 

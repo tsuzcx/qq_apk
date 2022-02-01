@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class bjsk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bjsk(DownloadNativeApi.1 param1) {}
+  public bjsk(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bjrz.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    bjsj.a(this.a.this$0).a(this.a.jdField_a_of_type_Bjso);
-    paramDialogInterface.dismiss();
+    if (PinnedFooterExpandableListView.a(this.b) != null) {
+      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

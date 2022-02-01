@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.adapter;
 
-import agej;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.PagerAdapter;
@@ -8,10 +7,11 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import bhtq;
-import bljm;
-import bpmh;
+import bmrc;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GridView;
 import dov.com.qq.im.capture.data.FilterCategory;
 import java.util.ArrayList;
@@ -20,16 +20,16 @@ public class TransitionProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = bhtq.b(0.0F);
+  public static final int b = ViewUtils.dpToPx(0.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
-  private bljm jdField_a_of_type_Bljm;
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
   private ArrayList<FilterCategory> jdField_a_of_type_JavaUtilArrayList;
   public int c;
   
   static
   {
-    jdField_a_of_type_Int = bhtq.b(7.0F);
+    jdField_a_of_type_Int = ViewUtils.dpToPx(7.0F);
   }
   
   public TransitionProviderPagerAdapter(Context paramContext, int paramInt)
@@ -47,17 +47,17 @@ public class TransitionProviderPagerAdapter
       while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
         GridView localGridView = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-        if ((localGridView != null) && ((localGridView.a() instanceof bpmh))) {
-          ((bpmh)localGridView.a()).b();
+        if ((localGridView != null) && ((localGridView.getAdapter() instanceof bmrc))) {
+          ((bmrc)localGridView.getAdapter()).b();
         }
         i += 1;
       }
     }
   }
   
-  public void a(bljm parambljm)
+  public void a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Bljm = parambljm;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
   }
   
   public void a(ArrayList<FilterCategory> paramArrayList)
@@ -73,8 +73,8 @@ public class TransitionProviderPagerAdapter
       while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
         GridView localGridView = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-        if ((localGridView != null) && ((localGridView.a() instanceof bpmh))) {
-          ((bpmh)localGridView.a()).a();
+        if ((localGridView != null) && ((localGridView.getAdapter() instanceof bmrc))) {
+          ((bmrc)localGridView.getAdapter()).a();
         }
         i += 1;
       }
@@ -109,12 +109,12 @@ public class TransitionProviderPagerAdapter
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + agej.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + AIOUtils.dp2px(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new bpmh(this.jdField_a_of_type_AndroidContentContext, this.c);
-      ((bpmh)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
+      localObject2 = new bmrc(this.jdField_a_of_type_AndroidContentContext, this.c);
+      ((bmrc)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bljm);
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
     }
     paramViewGroup.addView((View)localObject1, -1, -1);

@@ -1,14 +1,32 @@
-public abstract interface tjr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+final class tjr
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  tjr(JSONObject paramJSONObject, BridgeModule paramBridgeModule, String paramString) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("button", 1);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BridgeModuleHelper", 2, "showDialog error" + paramDialogInterface.getMessage());
+    }
+  }
 }
 
 

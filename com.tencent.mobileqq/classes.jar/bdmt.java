@@ -1,90 +1,64 @@
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.mobileqq.statistics.UnifiedMonitor.StackGetterJob;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 
 public class bdmt
+  extends bdmr
 {
-  public float a;
   public int a;
-  public long a;
-  public volatile UnifiedMonitor.StackGetterJob a;
-  public volatile String a;
-  public AbstractUnifiedMonitor.ThreadMonitorCallback a;
-  public boolean a;
-  public float b;
+  public qq_ad_get.QQAdGetRsp.AdInfo a;
   public int b;
-  public volatile long b;
-  public volatile boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 5;
-  public int f = 300;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
+  public boolean b;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public bdmt()
+  public bdmt(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public bdmt(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.i = paramInt4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((UnifiedMonitor.c()) && (paramInt != 9) && (this.jdField_a_of_type_Float > 0.0F))
-    {
-      this.jdField_a_of_type_Float = 1.0F;
-      this.jdField_b_of_type_Float = 1.0F;
-      this.jdField_b_of_type_Int = 2147483647;
+    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject)));
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("product_type");
+    JSONObject localJSONObject1 = paramJSONObject.optJSONObject("display_info");
+    JSONObject localJSONObject2 = localJSONObject1.optJSONObject("basic_info");
+    this.b = localJSONObject2.optString("img");
+    this.f = localJSONObject2.optString("txt");
+    localJSONObject2 = localJSONObject1.optJSONObject("video_info");
+    this.jdField_a_of_type_JavaLangString = localJSONObject2.optString("video_url");
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("https"))) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("https", "http");
     }
-    if (Math.random() <= this.jdField_a_of_type_Float) {}
+    this.jdField_a_of_type_Long = (localJSONObject2.optInt("media_duration") * 1000);
+    if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) {
+      if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_width.get() / this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_height.get() <= 0.75F) {
+        break label293;
+      }
+    }
+    label293:
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
+      localJSONObject1 = localJSONObject1.optJSONObject("advertiser_info");
+      this.d = localJSONObject1.optString("corporate_image_name");
+      this.e = localJSONObject1.optString("corporate_logo");
+      localJSONObject1 = paramJSONObject.optJSONObject("report_info");
+      this.h = localJSONObject1.optString("negative_feedback_url");
+      if (!TextUtils.isEmpty(this.h)) {
+        this.h = this.h.replace("__ACT_TYPE__", "2001");
+      }
+      this.i = localJSONObject1.optString("exposure_url");
+      this.g = paramJSONObject.optJSONObject("app_info").optString("app_package_name");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmt
  * JD-Core Version:    0.7.0.1
  */

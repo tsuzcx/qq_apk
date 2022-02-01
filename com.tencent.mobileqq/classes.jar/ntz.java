@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class ntz
-  implements View.OnClickListener
+final class ntz
+  implements BusinessObserver
 {
-  ntz(nty paramnty) {}
+  ntz(QQAppInterface paramQQAppInterface, boolean paramBoolean, amyh paramamyh) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.a(this.a.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = nty.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    {
+      if (this.jdField_a_of_type_Amyh != null) {
+        this.jdField_a_of_type_Amyh.onDynamicListGet(paramBoolean, paramInt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      }
+      return;
+    }
   }
 }
 

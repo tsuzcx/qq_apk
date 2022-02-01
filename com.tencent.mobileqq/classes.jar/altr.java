@@ -1,50 +1,23 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class altr
-  implements View.OnTouchListener
+  implements alyo
 {
-  public altr(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public altr(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (!this.a.l) {}
-    while (((!this.a.f) && (!this.a.c)) || (paramView.getId() != 2131366821)) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
+    if (!TextUtils.isEmpty(paramString2))
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
-      }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.e();
-      }
-      this.a.b.setText(null);
-      return false;
+      paramString1 = new Bundle();
+      paramString1.putInt("type", this.jdField_a_of_type_Int);
+      paramString1.putString("uin", paramString2);
+      paramString2 = new alts(this);
+      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
-    }
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    if (this.a.b != null) {
-      this.a.b.setText(2131692290);
-    }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
   }
 }
 

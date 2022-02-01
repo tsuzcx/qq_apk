@@ -1,19 +1,33 @@
-public abstract class uhn<T>
+import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
+public class uhn
+  implements pbq
 {
-  protected T a;
-  protected StringBuilder a;
+  public uhn(ReadInjoyWebShareHelper.4 param4) {}
   
-  public T a()
+  public void a(BaseResp paramBaseResp)
   {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-      return "";
+    boolean bool = true;
+    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
+      return;
     }
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      yyi.a(1, 2131718380);
+      bool = false;
+    }
+    while (this.a.a)
+    {
+      uhk.a(this.a.this$0, "we_chat", bool);
+      return;
+      yyi.a(2, 2131718398);
+      continue;
+      bool = false;
+    }
+    uhk.a(this.a.this$0, "we_chat_circle", bool);
   }
 }
 

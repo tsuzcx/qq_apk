@@ -347,7 +347,7 @@ public class HippyTKDImageView
     int i;
     if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString))))
     {
-      i = ResourceUtil.getColor(2131167213);
+      i = ResourceUtil.getColor(2131167242);
       if (this.mHippyTKDSkinHandler.getBackgroundColors() == null) {
         break label147;
       }

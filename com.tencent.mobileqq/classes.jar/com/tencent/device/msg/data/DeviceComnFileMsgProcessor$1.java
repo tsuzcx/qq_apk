@@ -1,6 +1,6 @@
 package com.tencent.device.msg.data;
 
-import abyz;
+import aavi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
@@ -9,17 +9,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DeviceComnFileMsgProcessor$1
   implements Runnable
 {
-  public DeviceComnFileMsgProcessor$1(abyz paramabyz, MessageForDeviceFile paramMessageForDeviceFile) {}
+  public DeviceComnFileMsgProcessor$1(aavi paramaavi, MessageForDeviceFile paramMessageForDeviceFile) {}
   
   public void run()
   {
-    if (abyz.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
+    if (aavi.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
     {
       this.a.nFileStatus = 23;
       this.a.serial();
-      abyz.a(this.this$0).a().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
-      abyz.a(this.this$0, this.a);
-      abyz.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
+      aavi.a(this.this$0).getMessageFacade().updateMsgContentByUniseq(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
+      aavi.a(this.this$0, this.a);
+      aavi.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
     }
   }
 }

@@ -1,14 +1,10 @@
-import com.tencent.biz.qqcircle.requests.QCircleBaseRequest;
+import java.util.HashMap;
+import java.util.Map;
 
-class vvc
-  implements aaav<Object>
+public class vvc
+  extends vko
 {
-  vvc(vvb paramvvb, vuz paramvuz, QCircleBaseRequest paramQCircleBaseRequest) {}
-  
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_Vuz.a(paramBoolean, paramLong, paramString, this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleBaseRequest, paramObject);
-  }
+  public Map<String, wei> a = new HashMap();
 }
 
 

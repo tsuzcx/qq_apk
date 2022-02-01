@@ -1,38 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
 
-class bbnw
-  implements bbob
+public final class bbnw
+  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
 {
-  bbnw(bbnv parambbnv) {}
-  
-  public void a(long paramLong)
+  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
   {
-    Iterator localIterator = bbnv.a(this.a).iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      bbnq localbbnq = (bbnq)localIterator.next();
-      if ((paramLong != localbbnq.jdField_a_of_type_Long) || (!bbnv.a(this.a).a(localbbnq.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
-        break label114;
-      }
-      this.a.a(paramLong);
-      bool = true;
-    }
-    label114:
-    for (;;)
-    {
-      break;
-      QLog.d(bbnv.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
-      return;
-    }
+    return new QZoneTitleTabManager.TabInfo(paramParcel);
   }
   
-  public void a(long paramLong, int paramInt)
+  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
   {
-    QLog.d(bbnv.a, 1, new Object[] { "notifyError uniseq:", Long.valueOf(paramLong), ", errCode:", Integer.valueOf(paramInt) });
-    this.a.a(paramLong);
+    return new QZoneTitleTabManager.TabInfo[paramInt];
   }
 }
 

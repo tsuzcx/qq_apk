@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agdd
-  implements View.OnClickListener
+class agdd
+  extends aghj
 {
-  public agdd(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
-  
-  public void onClick(View paramView)
+  agdd(agcw paramagcw)
   {
-    bdll.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agpc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

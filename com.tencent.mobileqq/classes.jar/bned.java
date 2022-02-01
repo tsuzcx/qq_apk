@@ -1,11 +1,4 @@
-public class bned
-{
-  public float a;
-  public int a;
-  private bnee jdField_a_of_type_Bnee;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
-}
+public abstract interface bned {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

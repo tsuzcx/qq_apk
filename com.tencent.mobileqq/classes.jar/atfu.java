@@ -1,75 +1,69 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import java.io.UnsupportedEncodingException;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.fileviewer.model.DocsExportFileModel.1.1;
+import com.tencent.mobileqq.filemanageraux.fileviewer.model.DocsExportFileModel.1.2;
+import mqq.os.MqqHandler;
 
 public class atfu
-  implements TextWatcher
+  extends bcuf
 {
-  public atfu(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  atfu(atft paramatft) {}
   
-  private int a(String paramString)
+  public void a(int paramInt)
   {
-    byte[] arrayOfByte = new byte[0];
-    try
-    {
-      paramString = paramString.getBytes("utf-8");
-      if (paramString.length % 3 == 0) {
-        return paramString.length / 3;
-      }
+    if ((atft.d(this.a) != null) && (paramInt <= 100)) {
+      atft.a(this.a).post(new DocsExportFileModel.1.2(this, paramInt));
     }
-    catch (UnsupportedEncodingException paramString)
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    atft.a(this.a, paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    atft.a(this.a, paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.a.b;
+    long l3 = this.a.b;
+    long l4 = this.a.a;
+    if (paramBoolean)
     {
-      for (;;)
+      if ((atft.a(this.a) != null) && (atft.b(this.a).getBoolean("isMiniProgram", false))) {
+        bcxh.a(atft.a(this.a), "0X800A4B3");
+      }
+      if (atft.a(this.a) != null)
       {
-        paramString.printStackTrace();
-        paramString = arrayOfByte;
+        atft.a(this.a).setFilePath(paramString1);
+        atft.a(this.a).fileSize = aszt.a(paramString1);
+        paramString1 = bcug.a(atft.a(this.a).nFileType);
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+        if ((localQQAppInterface != null) && (paramString2 != null)) {
+          bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009956", "0X8009956", 0, 1, l3 - l4 + "", l1 - l2 + "", paramString1, paramString2);
+        }
       }
-    }
-    return paramString.length / 3 + 1;
-  }
-  
-  private String a(String paramString)
-  {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
-        paramString = paramString.substring(0, i - 2);
-      } else {
-        paramString = paramString.substring(0, i - 1);
+      if (atft.a(this.a) != null)
+      {
+        atft.a(this.a).removeMessages(8001);
+        atft.a(this.a).removeMessages(8002);
+        atft.a(this.a).post(new DocsExportFileModel.1.1(this));
       }
+      return;
     }
-    return paramString;
+    paramString1 = amtj.a(2131702529);
+    atft.a(this.a, paramString1, paramString2);
   }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString();
-    if (a(paramEditable) > 32)
-    {
-      int i = this.a.a.getSelectionStart();
-      paramEditable = a(paramEditable);
-      this.a.a.setText(paramEditable);
-      if (i >= paramEditable.length()) {
-        this.a.a.setSelection(paramEditable.length());
-      }
-    }
-    if (this.a.h)
-    {
-      bdll.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
-      this.a.h = false;
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfu
  * JD-Core Version:    0.7.0.1
  */

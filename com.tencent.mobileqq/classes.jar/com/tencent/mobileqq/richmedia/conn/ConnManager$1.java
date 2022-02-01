@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import bbjk;
-import bbjl;
-import bbok;
-import bbol;
+import badf;
+import badg;
+import baif;
+import baig;
 
 public class ConnManager$1
   implements Runnable
 {
-  public ConnManager$1(bbjk parambbjk, bbol parambbol, long paramLong, bbjl parambbjl) {}
+  public ConnManager$1(badf parambadf, baig parambaig, long paramLong, badg parambadg) {}
   
   public void run()
   {
-    bbjk.a(this.this$0).b(12);
-    this.jdField_a_of_type_Bbol.notifyUI(1, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Bbjl.d), Integer.valueOf(2000), this.jdField_a_of_type_Bbjl });
-    this.jdField_a_of_type_Bbol.a(this.jdField_a_of_type_Long, true);
+    badf.a(this.this$0).b(12);
+    this.jdField_a_of_type_Baig.notifyUI(1, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Badg.d), Integer.valueOf(2000), this.jdField_a_of_type_Badg });
+    this.jdField_a_of_type_Baig.a(this.jdField_a_of_type_Long, true);
   }
 }
 

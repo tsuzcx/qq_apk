@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import bhsr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
+import awkr;
 
 class NearbyPeopleProfileActivity$22
   implements Runnable
@@ -13,26 +9,7 @@ class NearbyPeopleProfileActivity$22
   
   public void run()
   {
-    if (!bhsr.a(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
-      this.this$0.app.a(NearbyPeopleProfileActivity.a(this.this$0).uin, 200, false);
-    }
-    if (this.this$0.a > 0L) {
-      this.this$0.app.a(String.valueOf(this.this$0.a), 202, false);
-    }
-    EntityManager localEntityManager;
-    do
-    {
-      do
-      {
-        return;
-      } while (bhsr.a(NearbyPeopleProfileActivity.a(this.this$0).uin));
-      localEntityManager = this.this$0.app.a().createEntityManager();
-    } while (localEntityManager == null);
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });
-    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-      this.this$0.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
-    }
-    localEntityManager.close();
+    this.this$0.a.a(1);
   }
 }
 

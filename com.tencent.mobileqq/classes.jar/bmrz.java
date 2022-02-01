@@ -1,441 +1,387 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.Cryptor;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.pluginshare.TenCookie.1;
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
+import dov.com.qq.im.capture.data.CaptureSet.1;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
+import java.util.concurrent.CopyOnWriteArraySet;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
 public class bmrz
+  extends bmrm
+  implements bmrn
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = String.format("%s(\\w+)?=[%%\\w\\$\\(\\)\\[\\]\\*\\+\\.\\^\\|@#&-]*;", new Object[] { "qpay" });
-  private Map<String, List<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private String jdField_b_of_type_JavaLangString = String.format("%s(\\w+)?=", new Object[] { "qpay" });
-  private Map<String, String> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private String c = "(?i)domain=[\\w\\.]+;";
-  private String d = "(?i)expires=[\\w\\s:,]+;";
-  private String e = "";
+  float jdField_a_of_type_Float = 1.0F;
+  public long a;
+  public WeakReference<Activity> a;
+  private final CopyOnWriteArraySet<bmrm> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  public boolean a;
+  public ArrayList<bmrm> b = new ArrayList();
   
-  public static bmrz a()
+  public bmrz(Object paramObject)
   {
-    return bmsa.a;
+    super(paramObject);
   }
   
-  private String a()
+  public float a()
   {
-    return "qb_tenpay_cookies_" + this.e;
+    try
+    {
+      Iterator localIterator = this.b.iterator();
+      float f2;
+      float f3;
+      for (float f1 = 0.0F; localIterator.hasNext(); f1 += f3 * f2)
+      {
+        bmrm localbmrm = (bmrm)localIterator.next();
+        f2 = localbmrm.a();
+        if (QLog.isDevelopLevel()) {
+          QLog.i("QCombo", 2, "getProgress " + localbmrm.toString() + " progress =" + f2);
+        }
+        f3 = this.jdField_a_of_type_Float;
+      }
+      return f1;
+    }
+    catch (Exception localException) {}
+    return 0.0F;
   }
   
-  private String a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public int a()
   {
     int j = 0;
-    paramString2 = Pattern.compile(paramString2).matcher(paramString1);
-    if (paramString2.find())
+    int k = 1;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      if (paramBoolean) {}
-      for (int i = 0;; i = 1)
-      {
-        int k = paramString2.start();
-        if (paramString3 != null) {
-          j = paramString3.length();
-        }
-        return paramString1.substring(j + k, paramString2.end() - i);
-      }
+      localStringBuilder = new StringBuilder("getState = ");
+      localStringBuilder.append(toString());
+      localStringBuilder.append("  ");
     }
-    return null;
-  }
-  
-  private String a(String paramString, List<String> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    StringBuffer localStringBuffer = new StringBuffer("");
-    int i = paramList.size() - 1;
-    if (i >= 0)
-    {
-      String str1 = (String)paramList.get(i);
-      String str3 = a(str1, this.d, "expires=", false);
-      if (TextUtils.isEmpty(str3)) {}
-      for (;;)
-      {
-        i -= 1;
-        break;
-        long l = new Date(str3).getTime();
-        if (NetConnInfoCenter.getServerTimeMillis() > l)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("TenCookie", 2, "cookie time out curTime = " + NetConnInfoCenter.getServerTimeMillis() + " expire = " + l + " cookie = " + str1);
-          }
-          try
-          {
-            paramList.remove(i);
-          }
-          catch (IndexOutOfBoundsException localIndexOutOfBoundsException) {}
-        }
-        else
-        {
-          String str2 = a(localIndexOutOfBoundsException, this.jdField_a_of_type_JavaLangString, null, false);
-          if (str2 != null) {
-            localStringBuffer.append(str2 + ";");
-          }
-        }
-      }
-    }
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(localStringBuffer))) {
-      QLog.i("TenCookie", 2, paramString + " -> " + localStringBuffer.toString());
-    }
-    return localStringBuffer.toString();
-  }
-  
-  private List<String> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      localArrayList.add(paramJSONArray.getString(i));
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  private JSONArray a(List<String> paramList)
-  {
-    return new JSONArray(paramList);
-  }
-  
-  private void a(Context paramContext)
-  {
-    ThreadManager.post(new TenCookie.1(this, paramContext), 2, null, true);
-  }
-  
-  private void a(List<String> paramList, String paramString1, String paramString2)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
-    {
-      if (((String)paramList.get(i)).contains(paramString2))
-      {
-        QLog.i("TenCookie", 2, "replace cookie " + paramString2);
-        paramList.remove(i);
-      }
-      i -= 1;
-    }
-    paramList.add(paramString1);
-  }
-  
-  public static String c(String paramString)
-  {
-    return MD5.toMD5(MD5.toMD5(new StringBuilder().append(paramString).append("_").append(bhlo.a()).toString()) + "q$WaQ3#k").substring(8, 24);
-  }
-  
-  public String a(Context paramContext, String paramString1, String paramString2)
-  {
-    QLog.i("TenCookie", 2, "readTagCookie this = " + this);
-    if ((TextUtils.isEmpty(paramString2)) || (paramContext == null)) {
-      return null;
-    }
-    a(paramString1);
-    if (this.jdField_a_of_type_JavaUtilMap.size() <= 0) {}
-    String str1;
-    try
-    {
-      paramContext = paramContext.getSharedPreferences(a(), 4);
-      paramString1 = paramContext.getString("KEY_HOSTS", null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TenCookie", 2, "initialize cookie from share " + paramString1);
-      }
-      boolean bool = TextUtils.isEmpty(paramString1);
-      if (!bool) {
-        try
-        {
-          paramString1 = new JSONArray(paramString1);
-          int i = 0;
-          while (i < paramString1.length())
-          {
-            str1 = (String)paramString1.get(i);
-            String str2 = paramContext.getString(str1, null);
-            if (!TextUtils.isEmpty(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("TenCookie", 2, "initialize sdomain = " + str1 + " : " + str2);
-              }
-              this.jdField_a_of_type_JavaUtilMap.put(str1, a(new JSONArray(str2)));
-            }
-            i += 1;
-          }
-        }
-        catch (Exception paramContext)
-        {
-          paramContext.printStackTrace();
-        }
-      }
-      QLog.i("TenCookie", 2, "readTagCookie insCookie size = " + this.jdField_a_of_type_JavaUtilMap.size());
-      if (this.jdField_a_of_type_JavaUtilMap.size() <= 0) {
-        return "";
-      }
-    }
-    finally {}
-    paramContext = new StringBuffer("");
-    paramString1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (paramString1.hasNext())
-    {
-      str1 = (String)paramString1.next();
-      if ((paramString2.equals(str1)) || (paramString2.contains(str1)))
-      {
-        QLog.i("TenCookie", 2, "domain matched, append : " + str1);
-        str1 = a(paramString2, (List)this.jdField_a_of_type_JavaUtilMap.get(str1));
-        if (!TextUtils.isEmpty(str1)) {
-          paramContext.append(str1);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TenCookie", 2, paramString2 + " => " + paramContext.toString());
-    }
-    return paramContext.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(str);
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    paramString = String.valueOf(i);
-    int j = localStringBuilder.length();
-    int k = paramString.length();
-    i = 0;
-    while (i < 28 - j - k)
-    {
-      localStringBuilder.append("0");
-      i += 1;
-    }
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    String str = null;
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString1)) {
-      str = (String)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
-    }
-    this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
-    return str;
-  }
-  
-  public String a(String paramString1, String paramString2, SharedPreferences paramSharedPreferences)
-  {
-    String str2 = c(paramString1);
-    String str1 = paramSharedPreferences.getString(paramString2 + "_" + str2, "");
-    if (QLog.isColorLevel()) {
-      QLog.i("TenCookie", 2, "getEncryptUserValue,encryptValue:" + str1 + ",userKey:" + str2);
-    }
-    paramSharedPreferences = new Cryptor();
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-      try
-      {
-        paramString1 = str2.getBytes("ISO8859_1");
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        try
-        {
-          for (;;)
-          {
-            paramString2 = str1.getBytes("ISO8859_1");
-            paramString1 = paramSharedPreferences.decrypt(paramString2, paramString1);
-            if (paramString1 == null) {
-              break;
-            }
-            try
-            {
-              paramString2 = new String(paramString1, "ISO8859_1");
-              return paramString2;
-            }
-            catch (UnsupportedEncodingException paramString2)
-            {
-              return new String(paramString1);
-            }
-            paramString1 = paramString1;
-            paramString1 = str2.getBytes();
-          }
-        }
-        catch (UnsupportedEncodingException paramString2)
-        {
-          for (;;)
-          {
-            paramString2 = str1.getBytes();
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public String a(String paramString1, String paramString2, SharedPreferences paramSharedPreferences, String paramString3)
-  {
-    String str = c(paramString1);
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(str))) {
-      try
-      {
-        paramString1 = str.getBytes("ISO8859_1");
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        try
-        {
-          byte[] arrayOfByte = paramString3.getBytes("ISO8859_1");
-          paramString3 = arrayOfByte;
-          paramString3 = new Cryptor().encrypt(paramString3, paramString1);
-          if (paramString3 == null) {}
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            try
-            {
-              paramString1 = new String(paramString3, "ISO8859_1");
-              paramString3 = paramString1;
-              if (!TextUtils.isEmpty(paramString1))
-              {
-                paramSharedPreferences.edit().putString(paramString2 + "_" + str, paramString1).apply();
-                paramString3 = paramString1;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("TenCookie", 2, "putEncryptUserValue,encryptValue:" + paramString3);
-              }
-              return paramString3;
-              paramString1 = paramString1;
-              paramString1 = str.getBytes();
-              continue;
-              localUnsupportedEncodingException = localUnsupportedEncodingException;
-              paramString3 = paramString3.getBytes();
-            }
-            catch (UnsupportedEncodingException paramString1)
-            {
-              paramString1 = new String(paramString3);
-              continue;
-            }
-            paramString3 = null;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public void a(Context paramContext, String paramString, List<String> paramList)
-  {
-    if ((paramContext == null) || (paramList.size() <= 0)) {
-      return;
-    }
-    a(paramString);
-    int i = paramList.size() - 1;
     for (;;)
     {
-      if (i >= 0)
+      Iterator localIterator = this.b.iterator();
+      int i;
+      if (localIterator.hasNext())
       {
-        String str2 = (String)paramList.get(i);
-        QLog.i("TenCookie", 2, "writeTagCookie cookie = " + str2 + " uin = " + this.e);
-        String str3 = a(str2, this.jdField_b_of_type_JavaLangString, null, true);
-        String str1;
-        if (str3 != null)
+        bmrm localbmrm = (bmrm)localIterator.next();
+        i = localbmrm.a();
+        if (QLog.isColorLevel())
         {
-          str1 = a(str2, this.c, "domain=", false);
-          if (TextUtils.isEmpty(str1))
-          {
-            QLog.i("TenCookie", 2, str1 + "writeTagCookie domain error, abort...");
-            return;
-          }
-          QLog.i("TenCookie", 2, str1 + " <= " + str2);
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str1)) {
-            break label251;
-          }
-          paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(str1);
+          localStringBuilder.append(i);
+          localStringBuilder.append("|");
+          localStringBuilder.append(localbmrm.toString());
+          localStringBuilder.append("   ");
         }
-        try
+        if (i == 2)
         {
-          for (;;)
-          {
-            a(paramString, str2, str3);
-            this.jdField_a_of_type_JavaUtilMap.put(str1, paramString);
-            i -= 1;
+          i = 0;
+          j = 1;
+        }
+      }
+      for (;;)
+      {
+        label125:
+        if (QLog.isColorLevel()) {
+          QLog.i("QCombo", 2, localStringBuilder.toString());
+        }
+        if (j != 0)
+        {
+          b(2);
+          i = 2;
+        }
+        do
+        {
+          return i;
+          if (i != 1) {
             break;
-            label251:
-            paramString = new ArrayList();
           }
+          i = 1;
+          break label125;
+          if (i == 0) {
+            break label211;
+          }
+          if (this.jdField_a_of_type_Int != 1) {
+            b();
+          }
+          i = k;
+        } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 60000L);
+        b(2);
+        a(5);
+        return 2;
+        label211:
+        b(3);
+        return 3;
+        i = 0;
+      }
+      localStringBuilder = null;
+    }
+  }
+  
+  public int a(Activity paramActivity, int paramInt)
+  {
+    if ((this instanceof bmsh)) {
+      if (bmro.a((bmsh)this, paramInt))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QCombo", 2, "apply already" + toString());
         }
-        catch (Exception localException)
+        bnub.a().a((bmsh)this, paramActivity, paramInt);
+      }
+    }
+    label337:
+    do
+    {
+      Object localObject1;
+      Object localObject3;
+      do
+      {
+        do
         {
-          for (;;)
+          do
           {
-            localException.printStackTrace();
+            return 0;
+            localObject2 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject;
+            if ((localObject2 != null) && (paramInt == 0))
+            {
+              localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+              if ("back".equals(((QIMFilterCategoryItem)localObject2).g))
+              {
+                localObject2 = new Bundle();
+                ((Bundle)localObject2).putInt(bbuc.b, 2);
+                ((AppRuntime)localObject1).notifyObservers(bmrx.class, 970, true, (Bundle)localObject2);
+              }
+            }
+            else
+            {
+              localObject1 = bnub.a().a[paramInt];
+              if (localObject1 != null) {
+                ((bmsh)localObject1).a(paramActivity, paramInt);
+              }
+              bnub.a().a((bmsh)this, paramActivity, paramInt);
+              if (QLog.isColorLevel()) {
+                QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt);
+              }
+              localObject1 = new ArrayList();
+              localObject2 = this.b.iterator();
+            }
+            for (;;)
+            {
+              if (!((Iterator)localObject2).hasNext()) {
+                break label337;
+              }
+              localObject3 = (bmrm)((Iterator)localObject2).next();
+              if ((localObject3 instanceof bmro))
+              {
+                ((List)localObject1).add(((bmro)localObject3).a);
+                continue;
+                if ((!"front".equals(((QIMFilterCategoryItem)localObject2).g)) || (!bbua.c())) {
+                  break;
+                }
+                localObject2 = new Bundle();
+                ((Bundle)localObject2).putInt(bbuc.b, 1);
+                ((AppRuntime)localObject1).notifyObservers(bmrx.class, 970, true, (Bundle)localObject2);
+                break;
+              }
+              ((bmrm)localObject3).a(paramActivity, paramInt);
+            }
+          } while (!(this instanceof bmsh));
+          localObject2 = (bmrr)bmql.a(5);
+          if (localObject2.jdField_a_of_type_ArrayOfBmrv[paramInt].a()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt + " comboApplyFilterAborted");
+        return 0;
+        localObject2.jdField_a_of_type_ArrayOfBmrv[paramInt].a(null);
+        localObject3 = ((bmrr)localObject2).jdField_a_of_type_Bnuc;
+      } while (localObject3 == null);
+      Object localObject2 = ((bmrr)localObject2).a((bmsh)this, ((bnuc)localObject3).a(paramInt).c);
+      bnub.a().b((QIMFilterCategoryItem)localObject2, paramActivity, paramInt);
+      bnub.a().a((QIMFilterCategoryItem)localObject2, paramInt);
+      bmro.a(paramActivity, (List)localObject1, this, paramInt);
+    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) || (!((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).c()) || (paramInt == 1) || (paramInt == 3));
+    ((bmtm)bmql.a().c(8)).a(paramInt);
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    bmrr localbmrr = (bmrr)bmql.b(5);
+    if (localbmrr != null) {
+      localbmrr.a(this, paramInt);
+    }
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "unApply " + toString() + ", " + paramInt);
+    }
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((bmrm)localIterator.next()).a(paramActivity, paramInt);
+    }
+  }
+  
+  public void a(bmrm parambmrm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "onDownloadStart " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+    }
+  }
+  
+  public void a(bmrm parambmrm, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambmrm);
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "onDownloadError " + toString() + ":" + parambmrm.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+    {
+      b(2);
+      a(paramInt);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "download " + toString());
+    }
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
+    {
+      a(6);
+      return 2;
+    }
+    ThreadManager.getSubThreadHandler().post(new CaptureSet.1(this));
+    return 1;
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      return ((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).a;
+    }
+    return "unknown" + hashCode();
+  }
+  
+  public void b()
+  {
+    super.b();
+    bmrr localbmrr = (bmrr)bmql.b(5);
+    if (localbmrr != null) {
+      localbmrr.a(this);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b(bmrm parambmrm)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambmrm);
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "onDownloadSuccess= " + toString() + ":" + parambmrm.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        b(2);
+        a(4);
+      }
+    }
+    else {
+      return;
+    }
+    b(3);
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "onDownloadFinish= " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+    }
+    b();
+  }
+  
+  public int c()
+  {
+    Object localObject = this.b.iterator();
+    int j = 0;
+    int i = 0;
+    bmrm localbmrm;
+    if (((Iterator)localObject).hasNext())
+    {
+      localbmrm = (bmrm)((Iterator)localObject).next();
+      if (localbmrm.a() == 2)
+      {
+        localbmrm.a(this);
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbmrm);
+        localbmrm.b();
+        if (QLog.isColorLevel()) {
+          QLog.i("QCombo", 2, "download " + toString() + "  " + localbmrm.toString());
+        }
+        i = j;
+        j = 1;
+      }
+    }
+    for (;;)
+    {
+      int k = j;
+      j = i;
+      i = k;
+      break;
+      if (localbmrm.a() == 1)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbmrm);
+        localbmrm.a(this);
+        if (QLog.isColorLevel()) {
+          QLog.i("QCombo", 2, "downloading " + toString() + ":" + localbmrm.toString());
+        }
+        k = 1;
+        j = i;
+        i = k;
+        continue;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
+        {
+          b(1);
+          a();
+          localObject = (bmrr)bmql.b(5);
+          if (localObject != null) {
+            ((bmrr)localObject).b(this);
           }
         }
+        if ((i != 0) || (j != 0))
+        {
+          b(1);
+          return 1;
+        }
+        b(3);
+        b();
+        return 3;
+      }
+      else
+      {
+        k = i;
+        i = j;
+        j = k;
       }
     }
-    a(paramContext);
   }
   
-  public boolean a(String paramString)
+  public void c(bmrm parambmrm)
   {
-    try
-    {
-      if ((TextUtils.isEmpty(paramString)) || (this.e.equals(paramString))) {
-        return false;
-      }
-      this.e = paramString;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      QLog.i("TenCookie", 2, "change user...");
-      return true;
-    }
-    finally {}
-  }
-  
-  public String b(String paramString)
-  {
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) {
-      return (String)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    }
-    return null;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (paramString == null)
-    {
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return true;
-    }
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
-    {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString);
-      return true;
-    }
-    return false;
+    this.b.add(parambmrm);
+    this.jdField_a_of_type_Float = (1.0F / this.b.size());
   }
 }
 

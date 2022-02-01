@@ -1,30 +1,36 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.1;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class afps
-  implements biza
+  extends mya
 {
-  public afps(SubLoginActivity paramSubLoginActivity) {}
+  afps(afpr paramafpr) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (paramBoolean)
+    if ((paramString1 != null) && (afpr.a(this.a).curFriendUin.equals(paramString1)))
     {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+      paramString1 = (mxn)afpr.a(this.a).getManager(373);
+      if (paramString1 != null) {
+        paramString1.a(afpr.a(this.a).curFriendUin, 0, 1);
       }
-      SubLoginActivity.b(this.a).setVisibility(8);
-      return;
     }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+  }
+  
+  public void a(int paramInt, String paramString, myb parammyb)
+  {
+    ThreadManager.getUIHandler().post(new AVGameHelper.1.1(this, parammyb));
+  }
+  
+  public void b(int paramInt, String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (afpr.a(this.a).curFriendUin.equals(paramString2)) && (afpr.a(this.a) != null)) {
+      ThreadManager.getUIHandler().post(new AVGameHelper.1.2(this, paramInt));
+    }
   }
 }
 

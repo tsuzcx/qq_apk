@@ -1,27 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class aehj
-  implements Animation.AnimationListener
 {
-  public aehj(ContactBindedActivity paramContactBindedActivity) {}
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aehj(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

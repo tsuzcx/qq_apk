@@ -1,16 +1,23 @@
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nit
-  extends niy
+public class nit
+  extends BroadcastReceiver
 {
-  nit(nis paramnis) {}
+  public nit(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public boolean a(int paramInt, String paramString, mze parammze)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bkdp.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
-    nis.a(this.a).removeCallbacksAndMessages(null);
-    nis.a(this.a).sendEmptyMessage(2);
-    return true;
+    paramContext = paramIntent.getAction();
+    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "receive broadcast");
+    if ("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH".equals(paramContext))
+    {
+      nje.a().a("param_StepLoading", 0);
+      AvGameLoadingActivity.a(this.a, true, 0);
+    }
   }
 }
 

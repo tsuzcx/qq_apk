@@ -1,17 +1,20 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.URLThemeImageView;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-class bfpq
+final class bfpq
+  extends View.AccessibilityDelegate
 {
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public URLThemeImageView a;
-  public TextView b;
+  bfpq(CharSequence paramCharSequence, String paramString) {}
   
-  bfpq(bfpj parambfpj) {}
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

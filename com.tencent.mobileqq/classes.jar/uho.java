@@ -1,62 +1,51 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class uho
-  extends uhn<ArrayList<stSimpleMetaFeed>>
+  implements zop
 {
-  protected int a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public uho(ReadInjoyWebShareHelper.4 param4, Bitmap paramBitmap) {}
   
-  public uho()
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangObject = new ArrayList();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  }
-  
-  private boolean b(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    return ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (a() == 0)) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramstSimpleMetaFeed.poster_id));
-  }
-  
-  public int a()
-  {
-    return ((ArrayList)this.jdField_a_of_type_JavaLangObject).size();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean) {
-      uep.a().a(a());
+    int j = 0;
+    int i = 0;
+    int k = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("WebShareHelper", 2, "config = " + k);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((paramstSimpleMetaFeed == null) || (!b(paramstSimpleMetaFeed))) {
-      return false;
+    if (k == 0)
+    {
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
+      str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
+      str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
+      }
     }
-    this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
-    ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    paramBundle = WXShareHelper.getInstance();
+    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
+    String str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.shareWebPage(str1, str2, localBitmap, str3, str4, i);
+      return;
+    }
   }
 }
 

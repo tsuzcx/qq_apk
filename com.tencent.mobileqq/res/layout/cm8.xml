@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="48.0dip"
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.EllipsizeLayout android:gravity="right" android:layout_gravity="end|center" android:id="@id/dls" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/k9t" android:layout_width="48.0dip" android:layout_height="wrap_content" android:maxWidth="48.0dip" android:text="    " android:singleLine="true" />
-            <TextView android:textSize="9.0sp" android:textColor="@color/al3" android:id="@id/nti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="          " />
-        </LinearLayout>
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTiktokFollowBtn android:layout_gravity="center_vertical" android:id="@id/msl" android:layout_width="44.0dip" android:layout_height="20.0dip" android:layout_margin="8.0dip" android:src="@drawable/cjl" android:contentDescription="@string/pz7" />
-    </com.tencent.mobileqq.widget.EllipsizeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout android:layout_gravity="start" android:id="@id/mnq" android:clipChildren="false" android:layout_width="48.0dip" android:layout_height="48.0dip">
-        <FrameLayout android:layout_gravity="center" android:id="@id/mr9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/diz">
-            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/d46" android:focusable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-        </FrameLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/mr_" android:background="@drawable/g_p" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/g_o" />
-    </com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout>
-</merge>
+    <FrameLayout android:id="@id/mlo" android:background="@drawable/eef" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/mte" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/mlp" android:background="@drawable/eef" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/mtf" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/mlq" android:background="@drawable/eef" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="30.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/mtg" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+</FrameLayout>

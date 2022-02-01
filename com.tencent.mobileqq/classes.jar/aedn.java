@@ -1,77 +1,78 @@
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aedn
-  implements agjk, View.OnClickListener, blkc
+  extends bggc
 {
-  protected PointF a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public aedn(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public aedn(ChatHistory paramChatHistory)
+  protected void handlePendantAuth(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  void a(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131365352) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    paramObject = (Bundle)paramObject;
+    long l = paramObject.getLong("pendantId");
+    String str = paramObject.getString("uin");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    if ((l == -1L) || (str == null)) {
+      return;
+    }
+    if (paramBoolean)
     {
-      a(paramView);
-      return false;
+      amsw localamsw = (amsw)this.a.app.getManager(51);
+      ExtensionInfo localExtensionInfo = localamsw.a(str);
+      paramObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        paramObject = new ExtensionInfo();
+        paramObject.uin = str;
+      }
+      paramObject.pendantId = l;
+      paramObject.timestamp = System.currentTimeMillis();
+      localamsw.a(paramObject);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      this.a.finish();
+      return;
     }
-    bhuk localbhuk = new bhuk();
-    localbhuk.a(2131365352, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690639), 2130838934);
-    if (localbhuk.a() > 0)
+    int i = paramObject.getInt("result");
+    if (NetworkUtil.isNetSupport(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((aedo)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      int j = agej.a(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhkx.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbhuk, this);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
-      a(paramView);
-      return true;
+      paramObject = "4";
+      switch (i)
+      {
+      default: 
+        label225:
+        i = -1;
+      }
     }
-    a(paramView);
-    return false;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+      if ((i != -1) && (QLog.isColorLevel())) {
+        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
+      }
+      QQToast.a(this.a.app.getApp(), 1, amtj.a(2131712558), 0).a();
+      break;
+      paramObject = "3";
+      break label225;
+      i = 2131716359;
+      continue;
+      paramObject = "0";
+      i = 2131716360;
+      continue;
+      paramObject = "1";
+      i = 2131716361;
+      continue;
+      paramObject = "2";
+      i = -1;
     }
-    return false;
   }
 }
 

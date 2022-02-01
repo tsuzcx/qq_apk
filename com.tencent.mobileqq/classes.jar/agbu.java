@@ -1,41 +1,28 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class agbu
-  extends aole
+class agbu
+  implements DialogInterface.OnClickListener
 {
-  public agbu(ActivateFriendGrid paramActivateFriendGrid) {}
+  agbu(agbs paramagbs) {}
   
-  public void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+    if (!NetworkUtil.isNetworkAvailable(this.a.a.jdField_a_of_type_AndroidContentContext)) {
+      bhzt.a().a(2131691406);
+    }
+    do
+    {
       return;
-    }
-    int i = 0;
-    label23:
-    if (i < ActivateFriendGrid.a(this.a).size())
-    {
-      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
-        break label122;
-      }
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689517));
-    }
-    for (;;)
-    {
-      i += 1;
-      break label23;
-      break;
-      label122:
-      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
-      {
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689520));
-      }
-    }
+      paramDialogInterface = (aara)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(51);
+      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin), 0, 1, 0);
+      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin));
+    } while (paramDialogInterface == null);
+    abdm.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
   }
 }
 

@@ -1,0 +1,53 @@
+package com.tencent.mobileqq.activity.selectmember;
+
+import java.util.Comparator;
+
+public class ResultRecord$DefaultComparator
+  implements Comparator<ResultRecord>
+{
+  public int compare(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
+  {
+    int j = -1;
+    long l1;
+    long l2;
+    label17:
+    int i;
+    if (paramResultRecord1 == null)
+    {
+      l1 = 0L;
+      if (paramResultRecord2 != null) {
+        break label38;
+      }
+      l2 = 0L;
+      if (l1 != l2) {
+        break label47;
+      }
+      i = 0;
+    }
+    label38:
+    label47:
+    do
+    {
+      do
+      {
+        return i;
+        l1 = paramResultRecord1.lastChooseTime;
+        break;
+        l2 = paramResultRecord2.lastChooseTime;
+        break label17;
+        i = j;
+      } while (l1 == 0L);
+      if (l2 == 0L) {
+        return 1;
+      }
+      i = j;
+    } while (l1 < l2);
+    return 1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.selectmember.ResultRecord.DefaultComparator
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,25 +1,22 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayzh
-  extends OrientationEventListener
+public class ayzh
+  implements View.OnClickListener
 {
-  ayzh(ayzg paramayzg, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ayzh(VasProfileWZRYView paramVasProfileWZRYView, aymg paramaymg) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
-    {
-      return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
+    String str = bgev.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(VasProfileWZRYView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileWZRYView), str, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), String.valueOf(this.jdField_a_of_type_Aymg.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Aymg.a.lCurrentStyleId));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

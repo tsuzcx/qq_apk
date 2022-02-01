@@ -1,16 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
-import kotlin.Metadata;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onReceiveValue"}, k=3, mv={1, 1, 16})
-final class acqp<T>
-  implements ValueCallback<String>
+public class acqp
+  extends amrc
 {
-  public static final acqp a = new acqp();
+  public acqp(AddRequestActivity paramAddRequestActivity) {}
   
-  public final void a(String paramString)
+  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    QLog.i("GdtMotiveBrowsingDialog", 1, "handleMotiveBrowsingData EVENT_CALL_BACK_JS callback " + paramString);
+    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
+      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
+    }
+  }
+  
+  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
+    }
+  }
+  
+  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
+  {
+    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
+    }
   }
 }
 

@@ -1,11 +1,26 @@
-class ayph
-  implements bljb
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
+
+public class ayph
+  implements View.OnClickListener
 {
-  ayph(ayot paramayot) {}
+  public ayph(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    ayot.a(this.a, this.a.b, false);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(0);
+    StickyNotePublishFragment.a(this.a).requestFocus();
+    bjmm.a(StickyNotePublishFragment.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

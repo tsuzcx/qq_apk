@@ -1,44 +1,40 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class atog
-  extends auoi
+class atog
+  extends BroadcastReceiver
 {
-  public atog(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  atog(atoe paramatoe, String paramString) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    if ((atoe.a(this.jdField_a_of_type_Atoe) == null) || (atoe.a(this.jdField_a_of_type_Atoe).isFinishing()))
+    {
+      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive null == mActivity || mActivity.isFinishing()");
+      return;
+    }
+    atoe.a(this.jdField_a_of_type_Atoe);
+    atoe.a(this.jdField_a_of_type_Atoe).removeMessages(93);
+    atoe.a(this.jdField_a_of_type_Atoe).removeMessages(94);
+    paramContext = ((atph)atoe.a(this.jdField_a_of_type_Atoe).app.getManager(350)).a(this.jdField_a_of_type_JavaLangString);
+    if (paramContext == null)
+    {
+      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive b77Result == null");
+      return;
+    }
+    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive parseB77Result");
+    atoe.a(this.jdField_a_of_type_Atoe, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atog
  * JD-Core Version:    0.7.0.1
  */

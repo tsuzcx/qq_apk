@@ -1,132 +1,83 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.EPRecommendTask.1;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aska
+class aska
+  extends asjn
 {
-  public VasQuickUpdateManager.CallBacker a;
-  Runnable a;
-  public String a;
-  public WeakReference<QQAppInterface> a;
-  public String b;
-  
-  public aska(QQAppInterface paramQQAppInterface)
+  public aska(asji paramasji)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new EPRecommendTask.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new askb(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+    super(paramasji);
   }
   
-  public static awyj a(JSONObject paramJSONObject)
+  protected String a()
   {
-    JSONObject localJSONObject = null;
-    try
-    {
-      Object localObject = paramJSONObject.optJSONArray("emojiAioConfig");
-      if (localObject != null)
-      {
-        if (((JSONArray)localObject).length() == 0) {
-          return null;
-        }
-        paramJSONObject = new awyj();
-      }
-      label116:
-      return null;
+    return "StateLocalFailedWhenChangeToOff";
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (a("onSenderUploadException")) {
+      return;
     }
-    catch (Exception localException1)
-    {
-      try
-      {
-        localObject = (JSONObject)((JSONArray)localObject).get(0);
-        paramJSONObject.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("hide");
-        paramJSONObject.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("version");
-        paramJSONObject.c = ((JSONObject)localObject).optString("url");
-        localJSONObject = ((JSONObject)localObject).optJSONObject("gifUrl");
-        if (localJSONObject != null) {
-          paramJSONObject.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("imgUrl");
-        if (localObject != null) {
-          paramJSONObject.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("src");
-        }
-        return paramJSONObject;
-      }
-      catch (Exception localException2)
-      {
-        break label116;
-      }
-      localException1 = localException1;
-      paramJSONObject = localJSONObject;
-      localException1.printStackTrace();
-      return paramJSONObject;
+    asji.a(this.jdField_a_of_type_Asji, 11, 12, true);
+    a("StateExcepInvalidWhenChangeToOff");
+    this.jdField_a_of_type_Asjn = new asjw(this.jdField_a_of_type_Asji);
+  }
+  
+  protected void a(long paramLong)
+  {
+    b(paramLong);
+  }
+  
+  protected boolean a()
+  {
+    if (a("onRecvOnLineFile")) {
+      return false;
     }
+    asji.a(this.jdField_a_of_type_Asji, 9, 11);
+    asji.a(this.jdField_a_of_type_Asji, 9, 14, false);
+    a("StateUploadingWhenRecv");
+    this.jdField_a_of_type_Asjn = new askp(this.jdField_a_of_type_Asji);
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    return true;
   }
   
-  public aska a(String paramString1, String paramString2)
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    return this;
+    if (a("onSenderUploadCompleted")) {
+      return false;
+    }
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((aszt.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    asji.a(this.jdField_a_of_type_Asji, 11, 13, true);
+    a("StateUploadoneWhenChangeToOff");
+    this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Asjn = new askq(this.jdField_a_of_type_Asji);
+    return true;
   }
   
-  public void a()
+  protected void b()
   {
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+    if (a("onSenderCancelUpload")) {
+      return;
+    }
+    asji.a(this.jdField_a_of_type_Asji, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Asjn = new asjq(this.jdField_a_of_type_Asji);
   }
   
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramJSONObject = a(paramJSONObject);
-          if (paramJSONObject != null)
-          {
-            localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("mobileQQ", 0);
-            localSharedPreferences.edit().putInt("magic_promotion_hide", paramJSONObject.jdField_a_of_type_Int).commit();
-            if (QLog.isColorLevel()) {
-              QLog.d("EPRecommendTask", 2, "promotionInfo:[hide]:" + paramJSONObject.jdField_a_of_type_Int + ",[ver]:" + paramJSONObject.jdField_b_of_type_Int);
-            }
-            if (1 != paramJSONObject.jdField_a_of_type_Int) {
-              if ((TextUtils.isEmpty(paramJSONObject.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJSONObject.c)))
-              {
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("EPRecommendTask", 2, "promotionInfo: imgUrl = " + paramJSONObject.jdField_b_of_type_JavaLangString + " gifUrl = " + paramJSONObject.jdField_a_of_type_JavaLangString + " jumpUrl = " + paramJSONObject.c);
-              }
-            }
-          }
-        }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-          return;
-        }
-      }
-      localSharedPreferences.edit().putString("magic_promotion_jump_url", paramJSONObject.c).commit();
-      localSharedPreferences.edit().putString("magic_promotion_imgUrl", "https://gxh.vip.qq.com/xydata/" + paramJSONObject.jdField_b_of_type_JavaLangString).commit();
-      localSharedPreferences.edit().putString("magic_promotion_gifUrl", "https://gxh.vip.qq.com/xydata/" + paramJSONObject.jdField_a_of_type_JavaLangString).commit();
-    } while (localSharedPreferences.getInt("magic_promotion_old_ver_" + asde.a(), -1) >= paramJSONObject.jdField_b_of_type_Int);
-    localSharedPreferences.edit().putBoolean("magic_promotion_is_new_content_" + asde.a(), true).commit();
-    localSharedPreferences.edit().putInt("magic_promotion_old_ver_" + asde.a(), paramJSONObject.jdField_b_of_type_Int).commit();
-  }
+  protected void j() {}
 }
 
 

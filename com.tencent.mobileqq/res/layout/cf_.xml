@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/n1u" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/ee7" android:background="@drawable/bix" android:layout_width="65.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center" android:id="@id/kn0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nr8" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.5x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nqn" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.75x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nqp" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.0x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nq_" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.5x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nr7" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="2.0x" />
 </LinearLayout>

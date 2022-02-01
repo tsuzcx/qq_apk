@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.qwallet.emoj;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
-import beyr;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
 
 class EmojiFragment$TempListItem$2
-  extends beyr
+  extends URLDrawableHelper.Adapter
 {
   EmojiFragment$TempListItem$2(EmojiFragment.TempListItem paramTempListItem, EmojiFragment.TemplateInfo paramTemplateInfo) {}
   
@@ -15,7 +15,7 @@ class EmojiFragment$TempListItem$2
   {
     super.onLoadFialed(paramURLDrawable, paramThrowable);
     EmojiFragment.TempListItem.access$200(this.this$1).setImageDrawable(null);
-    EmojiFragment.TempListItem.access$300(this.this$1).setBackgroundDrawable(this.this$1.getResources().getDrawable(2130843495));
+    EmojiFragment.TempListItem.access$300(this.this$1).setBackgroundDrawable(this.this$1.getResources().getDrawable(2130843557));
     EmojiFragment.TempListItem.access$400(this.this$1).setVisibility(8);
   }
   

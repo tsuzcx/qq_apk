@@ -1,25 +1,10 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import com.tencent.tavcut.bean.TextEditorData;
 
-public class bmna
-  extends bjbs
+public abstract interface bmna
 {
-  public bmna(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public abstract void a();
   
-  public void onBackPressed()
-  {
-    if (this.a.a) {
-      super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
-  }
+  public abstract void a(TextEditorData paramTextEditorData);
 }
 
 

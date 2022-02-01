@@ -1,0 +1,205 @@
+package com.tencent.common.app;
+
+import bcef;
+import bkij;
+import bknf;
+import bkog;
+import bkox;
+import bkxa;
+import bkxm;
+import blew;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.buscard.BuscardHelper;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qzone.QZoneHelper;
+import cooperation.troop.NearbyVideoChatProxyActivity;
+import mqq.app.AppRuntime;
+
+public class AppInterfaceFactory
+{
+  public static AppRuntime getAppRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  {
+    Object localObject2 = null;
+    String str = paramBaseApplicationImpl.getPackageName();
+    Object localObject1;
+    if (str.equals(paramString)) {
+      localObject1 = new QQAppInterface(paramBaseApplicationImpl, paramString);
+    }
+    for (;;)
+    {
+      return localObject1;
+      localObject1 = localObject2;
+      if (paramString.equals(str + ":msf")) {
+        continue;
+      }
+      localObject1 = localObject2;
+      if (paramString.equals(str + ":notifypush")) {
+        continue;
+      }
+      if (paramString.equals(str + ":video")) {
+        return new VideoAppInterface(paramBaseApplicationImpl, "video");
+      }
+      if (paramString.equals(str + ":qzone"))
+      {
+        paramBaseApplicationImpl = QZoneHelper.createQZoneMainRuntime(paramBaseApplicationImpl, "qzone");
+        paramBaseApplicationImpl.setAsToolRuntime();
+        return paramBaseApplicationImpl;
+      }
+      if (paramString.equals(str + ":qzonevideo")) {
+        return QZoneHelper.createQZoneVideoAppInterface(paramBaseApplicationImpl, "qzonevideo");
+      }
+      if (paramString.equals(str + ":qzonelive")) {
+        return QZoneHelper.createQZoneLiveMainRuntime(paramBaseApplicationImpl, "qzonelive");
+      }
+      if (paramString.equals(str + ":picture")) {
+        return QZoneHelper.createQZonePictureAppInterface(paramBaseApplicationImpl, "picture");
+      }
+      if (paramString.equals(str + ":openSdk")) {
+        return new OpenSDKAppInterface(paramBaseApplicationImpl, "openSdk");
+      }
+      if (paramString.equals(str + ":photoedit"))
+      {
+        paramBaseApplicationImpl = new PluginRuntime();
+        bcef.a(paramBaseApplicationImpl);
+        return paramBaseApplicationImpl;
+      }
+      if (paramString.equals(str + ":zebra")) {
+        return new PluginRuntime();
+      }
+      if (paramString.equals(str + ":demoji"))
+      {
+        paramBaseApplicationImpl = new PluginRuntime();
+        bcef.a(paramBaseApplicationImpl);
+        return paramBaseApplicationImpl;
+      }
+      if (paramString.equals(str + ":map")) {
+        return new QQMapActivity.MapRuntime();
+      }
+      if (paramString.equals(str + ":weiyun"))
+      {
+        paramBaseApplicationImpl = blew.a(paramBaseApplicationImpl);
+        bcef.a(paramBaseApplicationImpl);
+        return paramBaseApplicationImpl;
+      }
+      if (paramString.equals(str + ":qwallet"))
+      {
+        paramBaseApplicationImpl = QWalletHelper.createQWalletAppInterface(paramBaseApplicationImpl, "qwallet");
+        localObject1 = paramBaseApplicationImpl;
+        if (paramBaseApplicationImpl == null) {
+          continue;
+        }
+        bcef.a((PluginRuntime)paramBaseApplicationImpl);
+        return paramBaseApplicationImpl;
+      }
+      if (paramString.equals(str + ":qqfav")) {
+        return bkox.a(paramBaseApplicationImpl);
+      }
+      if (paramString.equals(str + ":qlink")) {
+        return bknf.a(paramBaseApplicationImpl, "qlink");
+      }
+      if (paramString.equals(str + ":miniapp")) {
+        return new com.tencent.mobileqq.microapp.MiniAppInterface(paramBaseApplicationImpl, "miniapp");
+      }
+      if ((paramString.equals(str + ":mini")) || (paramString.equals(str + ":mini1")) || (paramString.equals(str + ":mini2")) || (paramString.equals(str + ":mini3")) || (paramString.equals(str + ":mini4")) || (paramString.equals(str + ":mini5")) || (paramString.equals(str + ":mini6")) || (paramString.equals(str + ":mini7")) || (paramString.equals(str + ":mini_internal"))) {
+        localObject1 = "mini";
+      }
+      try
+      {
+        paramString = paramString.substring(str.length() + 1);
+        return new com.tencent.mobileqq.mini.MiniAppInterface(paramBaseApplicationImpl, paramString);
+        localObject1 = localObject2;
+        if (paramString.equals(str + ":qqwifi")) {
+          continue;
+        }
+        localObject1 = localObject2;
+        if (paramString.equals(str + ":qqwifiditu")) {
+          continue;
+        }
+        if (paramString.equals(str + ":dataline")) {
+          return bkog.a(paramBaseApplicationImpl, "dataline");
+        }
+        if (paramString.equals(str + ":smartdevice")) {
+          return bkxa.a(paramBaseApplicationImpl, "smartdevice");
+        }
+        if (paramString.equals(str + ":buscard"))
+        {
+          paramBaseApplicationImpl = BuscardHelper.a(paramBaseApplicationImpl, "buscard");
+          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          return paramBaseApplicationImpl;
+        }
+        if (paramString.equals(str + ":hce")) {
+          return QWalletHelper.createVfcPluginAppInterface(paramBaseApplicationImpl, "hce");
+        }
+        localObject1 = localObject2;
+        if (paramString.equals(str + ":readinjoy")) {
+          continue;
+        }
+        if (paramString.equals(str + ":troopmemcard"))
+        {
+          paramBaseApplicationImpl = bkxm.a(paramBaseApplicationImpl, "troop_member_card_plugin.apk");
+          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          return paramBaseApplicationImpl;
+        }
+        if (paramString.equals(str + ":troopmanage"))
+        {
+          paramBaseApplicationImpl = bkxm.a(paramBaseApplicationImpl, "troop_manage_plugin.apk");
+          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          return paramBaseApplicationImpl;
+        }
+        if (paramString.equals(str + ":pluginbridge"))
+        {
+          paramBaseApplicationImpl = BridgeHelper.a(paramBaseApplicationImpl, "pluginbridge");
+          localObject1 = paramBaseApplicationImpl;
+          if (paramBaseApplicationImpl == null) {
+            continue;
+          }
+          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          return paramBaseApplicationImpl;
+        }
+        if (paramString.equals(str + ":groupvideo")) {
+          return bkij.a(paramBaseApplicationImpl, "groupvideo");
+        }
+        if (paramString.equals(str + ":tool"))
+        {
+          paramBaseApplicationImpl = new ToolAppRuntime();
+          paramBaseApplicationImpl.setAsToolRuntime();
+          return paramBaseApplicationImpl;
+        }
+        if (paramString.equals(str + ":peak"))
+        {
+          paramBaseApplicationImpl = new ToolRuntimePeak();
+          paramBaseApplicationImpl.setAsToolRuntime();
+          return paramBaseApplicationImpl;
+        }
+        if (paramString.equals(str + ":nearby_video")) {
+          return NearbyVideoChatProxyActivity.a(paramBaseApplicationImpl, "nearby_video");
+        }
+        if (paramString.equals(str + ":avgame")) {
+          return new AVGameAppInterface(paramBaseApplicationImpl, "avgame");
+        }
+        paramBaseApplicationImpl = new PluginRuntime();
+        bcef.a(paramBaseApplicationImpl);
+        return paramBaseApplicationImpl;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString = (String)localObject1;
+        }
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.common.app.AppInterfaceFactory
+ * JD-Core Version:    0.7.0.1
+ */

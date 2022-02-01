@@ -1,92 +1,51 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-public class pdp
-  extends pdz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdp
+  implements AladdinConfigHandler
 {
-  public pdp(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
+  public static final pdq a = new pdq(null);
   
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
+  @JvmStatic
+  public static final boolean a(int paramInt)
   {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.a(this.a)) {
-      return;
-    }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(true, true);
-      return;
-    }
-    ReadInJoyCGIDynamicChannelFragment.b(this.a).b();
+    return a.a(paramInt);
   }
   
-  public void a(int paramInt1, boolean paramBoolean, List<peg> paramList, int paramInt2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
   {
-    int i = 0;
-    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
-      return;
-    }
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a, paramInt1, paramList);
-    }
-    if (paramList != null) {
-      i = paramList.size();
-    }
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onHeaderRefreshed, channelID = ", Integer.valueOf(paramInt1), ", success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i), ", insertIndex = ", Integer.valueOf(paramInt2) });
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
-      return;
-    }
-    int i;
-    if (paramList != null)
+    try
     {
-      i = paramList.size();
-      if ((!paramBoolean1) || (i <= 0)) {
-        break label175;
+      paramString = pbt.a(paramString);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "configs");
+      paramString = paramString.entrySet().iterator();
+      while (paramString.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramString.next();
+        if ("from_source".equals(localEntry.getKey())) {
+          bkwm.a("viola_video_feeds_config", localEntry.getValue());
+        }
       }
+      return true;
     }
-    label175:
-    for (String str = String.format(this.a.getResources().getString(2131717000), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131716999))
+    catch (Exception paramString)
     {
-      ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
-      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-        ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      }
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
-      ReadInJoyCGIDynamicChannelFragment.d(this.a).a(true, true);
-      return;
-      i = 0;
-      break;
+      QLog.e("ViolaVideoFeedsConfigHandler", 1, "[ViolaVideoFeedsConfigHandler]: " + paramString.getMessage());
     }
   }
   
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  public void onWipeConfig(int paramInt)
   {
-    int i = 0;
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
-      return;
-    }
-    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
-      ReadInJoyCGIDynamicChannelFragment.e(this.a).a(true, paramBoolean2);
-    }
-    for (;;)
-    {
-      if (paramList != null) {
-        i = paramList.size();
-      }
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onLoadMoreData, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", size = ", Integer.valueOf(i), ", hasMore = ", Boolean.valueOf(paramBoolean2) });
-      return;
-      ReadInJoyCGIDynamicChannelFragment.f(this.a).a(false, true);
-    }
+    bkwm.a("viola_video_feeds_config", "");
   }
 }
 

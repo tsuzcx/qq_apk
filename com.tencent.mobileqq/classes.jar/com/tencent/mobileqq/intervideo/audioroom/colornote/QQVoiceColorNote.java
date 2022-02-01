@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.audioroom.colornote;
 
-import aqrv;
+import aple;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class QQVoiceColorNote
@@ -9,7 +9,7 @@ public class QQVoiceColorNote
   
   public QQVoiceColorNote(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.mColorNote = new aqrv().d(paramString1).b(paramString2).c(paramString3).a(17301504).a(paramString4).a();
+    this.mColorNote = new aple().d(paramString1).b(paramString2).c(paramString3).a(17301504).a(paramString4).a();
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import aaeo;
-import aaep;
-import aaeq;
 import java.util.List;
+import zbm;
+import zbn;
+import zbo;
 
 public class FollowedRecommendBannerModel$1$1
   implements Runnable
 {
-  public FollowedRecommendBannerModel$1$1(aaep paramaaep, List paramList, boolean paramBoolean) {}
+  public FollowedRecommendBannerModel$1$1(zbn paramzbn, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (aaeo.a(this.jdField_a_of_type_Aaep.a) != null) {
-      aaeo.a(this.jdField_a_of_type_Aaep.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    if (zbm.a(this.jdField_a_of_type_Zbn.a) != null) {
+      zbm.a(this.jdField_a_of_type_Zbn.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
     }
   }
 }

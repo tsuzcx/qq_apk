@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahxm;
-import ahxn;
+import agua;
+import agub;
 import com.tencent.mobileqq.data.MessageForText;
 
 public class WriteTogetherItemBuilder$1$1
   implements Runnable
 {
-  public WriteTogetherItemBuilder$1$1(ahxn paramahxn, MessageForText paramMessageForText) {}
+  public WriteTogetherItemBuilder$1$1(agub paramagub, MessageForText paramMessageForText) {}
   
   public void run()
   {
-    if (!ahxm.b(this.jdField_a_of_type_Ahxn.a)) {
-      ahxm.a(this.jdField_a_of_type_Ahxn.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText, 4);
+    if (!agua.b(this.jdField_a_of_type_Agub.a)) {
+      agua.a(this.jdField_a_of_type_Agub.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText, 4);
     }
-    ahxm.b(this.jdField_a_of_type_Ahxn.a, false);
-    ahxm.a(this.jdField_a_of_type_Ahxn.a, false);
+    agua.b(this.jdField_a_of_type_Agub.a, false);
+    agua.a(this.jdField_a_of_type_Agub.a, false);
   }
 }
 

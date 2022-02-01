@@ -7,23 +7,23 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import bbyb;
-import bcfr;
-import bcga;
-import bhlg;
-import bmkq;
-import bmtd;
-import bmtk;
+import barw;
+import bayt;
+import bazc;
+import bkox;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QzonePluginProxyActivity;
-import oix;
-import wnu;
+import okj;
+import vpl;
 
 public class LebaSearchTransparentJumpActivity
   extends IphoneTitleBarActivity
@@ -33,8 +33,9 @@ public class LebaSearchTransparentJumpActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -52,12 +53,12 @@ public class LebaSearchTransparentJumpActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bbyb localbbyb = (bbyb)this.app.getManager(222);
-    if (localbbyb.jdField_a_of_type_Bcfr != null) {
-      localbbyb.jdField_a_of_type_Bcfr = null;
+    barw localbarw = (barw)this.app.getManager(222);
+    if (localbarw.jdField_a_of_type_Bayt != null) {
+      localbarw.jdField_a_of_type_Bayt = null;
     }
-    if (localbbyb.jdField_a_of_type_Bcga != null) {
-      localbbyb.jdField_a_of_type_Bcga = null;
+    if (localbarw.jdField_a_of_type_Bazc != null) {
+      localbarw.jdField_a_of_type_Bazc = null;
     }
   }
   
@@ -73,32 +74,32 @@ public class LebaSearchTransparentJumpActivity
     {
       finish();
       return;
-      wnu.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
+      vpl.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
       continue;
       QWalletHelper.launchQWalletAct(this, this.app, true, false);
       continue;
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("newflag", true);
       ((Intent)localObject1).putExtra("refer", "schemeActiveFeeds");
-      QzonePluginProxyActivity.a((Intent)localObject1, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
+      QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject1, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
       ((Intent)localObject1).addFlags(805306368);
-      bmtd.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
+      QZoneHelper.forwardFromSearchToFriendFeed(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
-      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690559));
-      bmkq.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
+      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690599));
+      bkox.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
-      bmtk localbmtk = bmtk.a();
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       try
       {
         long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-        localbmtk.a = String.valueOf(l);
+        localUserInfo.qzone_uin = String.valueOf(l);
         String str = this.app.getCurrentNickname();
         localObject1 = str;
         if (TextUtils.isEmpty(str)) {
-          localObject1 = bhlg.h(this.app, String.valueOf(l));
+          localObject1 = ContactUtils.getAccountNickName(this.app, String.valueOf(l));
         }
-        localbmtk.b = ((String)localObject1);
-        bmtd.b(this, localbmtk, Long.valueOf(l), 0, false, -1);
+        localUserInfo.nickname = ((String)localObject1);
+        QZoneHelper.forwardFromSearchToPersonalAlbum(this, localUserInfo, Long.valueOf(l), 0, false, -1);
       }
       catch (Exception localException1)
       {
@@ -106,7 +107,7 @@ public class LebaSearchTransparentJumpActivity
         return;
       }
       int i = localException1.getIntExtra("tab_tab_index", 0);
-      oix.a(this.app, this, 1, i);
+      okj.a(this.app, this, 1, i);
       continue;
       Object localObject2 = new Intent(this, PhoneUnityBindInfoActivity.class);
       ((Intent)localObject2).putExtra("kSrouce", 18);
@@ -120,11 +121,11 @@ public class LebaSearchTransparentJumpActivity
       try
       {
         i = Integer.valueOf(localObject2[1]).intValue();
-        localObject2 = ((bbyb)this.app.getManager(222)).jdField_a_of_type_Bcfr;
+        localObject2 = ((barw)this.app.getManager(222)).jdField_a_of_type_Bayt;
         if (localObject2 != null)
         {
-          this.a.setTag(2131381110, Integer.valueOf(i));
-          ((bcfr)localObject2).a(this.a);
+          this.a.setTag(2131380832, Integer.valueOf(i));
+          ((bayt)localObject2).a(this.a);
         }
       }
       catch (Exception localException2)
@@ -141,7 +142,7 @@ public class LebaSearchTransparentJumpActivity
         QLog.d("kueenie", 2, "result model is null");
       }
       continue;
-      ((bbyb)this.app.getManager(222)).jdField_a_of_type_Bcga.a(this.a);
+      ((barw)this.app.getManager(222)).jdField_a_of_type_Bazc.a(this.a);
     }
   }
   

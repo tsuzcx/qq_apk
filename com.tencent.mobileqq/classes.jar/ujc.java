@@ -1,23 +1,16 @@
-import UserGrowth.stSchema;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
 
-public class ujc
-  extends uiv
+public abstract interface ujc<V extends uiz>
 {
-  public ujc(uix paramuix)
-  {
-    super(paramuix);
-  }
+  @UiThread
+  public abstract void a();
   
-  public boolean a(uix paramuix)
-  {
-    MiniAppLauncher.MiniAppLaunchListener localMiniAppLaunchListener = paramuix.a();
-    ueg.a(paramuix.a(), paramuix.a().miniAppSchema, new ujd(this, localMiniAppLaunchListener));
-    if (paramuix.a() != null) {
-      paramuix.a().b();
-    }
-    return true;
-  }
+  @UiThread
+  public abstract void a(@NonNull V paramV);
+  
+  @UiThread
+  public abstract void b();
 }
 
 

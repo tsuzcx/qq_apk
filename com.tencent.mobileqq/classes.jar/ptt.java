@@ -1,78 +1,107 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
 
-public class ptt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/AritcleInfoModuleUtils$CommonChannelDataHandle;", "", "()V", "handleNearbyCookie", "", "cookie", "Lcom/tencent/mobileqq/pb/PBBytesField;", "handleUGBackoffGroupInfos", "articleList", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "rulesData", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$BackOffGroupInfo;", "channelID", "", "parseArticleList", "req", "Lcom/tencent/qphone/base/remote/ToServiceMsg;", "refreshType", "recommendFlag", "rspChannel", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspChannelArticle;", "pbData", "Ltencent/im/oidb/articlesummary/articlesummary$ArticleSummary;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ptt
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public static final ptt a = new ptt();
+  
+  @Nullable
+  public final List<ArticleInfo> a(@NotNull ToServiceMsg paramToServiceMsg, int paramInt1, int paramInt2, int paramInt3, @NotNull oidb_cmd0x68b.RspChannelArticle paramRspChannelArticle, @NotNull PBRepeatMessageField<articlesummary.ArticleSummary> paramPBRepeatMessageField)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anzj.a(2131711850));
-      localJSONObject.put("id_gallery_cnt", localObject1);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject.put("id_gallery_img", localObject1);
-      localJSONObject.put("id_gallery_bg", new JSONObject());
+    Intrinsics.checkParameterIsNotNull(paramToServiceMsg, "req");
+    Intrinsics.checkParameterIsNotNull(paramRspChannelArticle, "rspChannel");
+    Intrinsics.checkParameterIsNotNull(paramPBRepeatMessageField, "pbData");
+    if ((!paramPBRepeatMessageField.has()) || (paramPBRepeatMessageField.get() == null)) {
+      return null;
     }
-    Object localObject2;
-    Object localObject3;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    List localList = qlh.a(paramRspChannelArticle, paramPBRepeatMessageField.get(), paramInt1, paramInt2, paramInt3);
+    if (pal.a()) {
+      pal.a().a(paramPBRepeatMessageField.get(), localList, paramInt1);
+    }
+    paramToServiceMsg = paramToServiceMsg.getAttributes().get("SubscriptionArticles");
+    if (((paramToServiceMsg instanceof List)) && (((List)paramToServiceMsg).size() > 0))
     {
-      localObject2 = sel.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
-        return localJSONObject;
+      if (localList == null) {
+        break label335;
       }
-      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
-      if (localObject1 == null)
+      paramInt1 = localList.size();
+      if (paramInt1 > 0)
       {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
-        if (localObject2 != null) {
-          break label280;
+        paramRspChannelArticle = StringCompanionObject.INSTANCE;
+        paramRspChannelArticle = new Object[2];
+        paramRspChannelArticle[0] = ((List)paramToServiceMsg).get(0);
+        paramRspChannelArticle[1] = Long.valueOf(((ArticleInfo)localList.get(0)).mArticleID);
+        paramRspChannelArticle = String.format("red point article (%d)  server's first article(%d)", Arrays.copyOf(paramRspChannelArticle, paramRspChannelArticle.length));
+        Intrinsics.checkExpressionValueIsNotNull(paramRspChannelArticle, "java.lang.String.format(format, *args)");
+        QLog.d("ArticleInfoModule", 1, paramRspChannelArticle);
+        if ((Intrinsics.areEqual(((List)paramToServiceMsg).get(0), Long.valueOf(((ArticleInfo)localList.get(0)).mArticleID)) ^ true))
+        {
+          paramPBRepeatMessageField = pay.a();
+          paramRspChannelArticle = ((List)paramToServiceMsg).get(0);
+          paramToServiceMsg = paramRspChannelArticle;
+          if (!(paramRspChannelArticle instanceof Long)) {
+            paramToServiceMsg = null;
+          }
+          paramToServiceMsg = (Long)paramToServiceMsg;
+          if (paramToServiceMsg == null) {
+            break label340;
+          }
         }
       }
-      label280:
-      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
-      {
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject3);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        puo.a(paramBaseArticleInfo, localJSONObject, true);
-        puo.l(paramBaseArticleInfo, localJSONObject);
-        puo.i(paramBaseArticleInfo, localJSONObject);
-        puo.a(localJSONObject);
-        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
-        puo.a(localJSONObject, paramBaseArticleInfo);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-      }
     }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+    label335:
+    label340:
+    for (long l = paramToServiceMsg.longValue();; l = -1L)
     {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label313:
-      localObject2 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label363;
-      }
-    }
-    label363:
-    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
-    {
-      localObject3 = ((URL)localObject1).getFile();
-      localObject1 = localObject2;
-      localObject2 = localObject3;
+      paramPBRepeatMessageField.a("red_article", l);
+      paramPBRepeatMessageField.a("feed_first_article", ((ArticleInfo)localList.get(0)).mArticleID);
+      odq.a(null, "0X8009650", "0X8009650", "", 0, 0, "", "", "", paramPBRepeatMessageField.toString(), false);
+      return localList;
+      paramInt1 = 0;
       break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label313;
+    }
+  }
+  
+  public final void a(@NotNull PBBytesField paramPBBytesField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "cookie");
+    paramPBBytesField = qlg.a(paramPBBytesField);
+    QLog.d("ArticleInfoModule", 1, "nearby cookie = " + paramPBBytesField);
+    if (!TextUtils.isEmpty((CharSequence)paramPBBytesField))
+    {
+      bkwm.a("sp_key_daily_dynamic_header_data", paramPBBytesField);
+      pkm.a().i(paramPBBytesField);
+      bkwm.a("readinjoy_nearby_people_last_refresh_cookie_sp_key", paramPBBytesField);
+      pcl.a(paramPBBytesField);
+    }
+  }
+  
+  public final void a(@Nullable List<? extends ArticleInfo> paramList, @NotNull PBRepeatMessageField<oidb_cmd0x68b.BackOffGroupInfo> paramPBRepeatMessageField, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBRepeatMessageField, "rulesData");
+    if ((paramPBRepeatMessageField.has()) && (paramPBRepeatMessageField.get() != null))
+    {
+      rbw localrbw = new rbw();
+      localrbw.b = paramList;
+      localrbw.jdField_a_of_type_JavaUtilList = paramPBRepeatMessageField.get();
+      localrbw.jdField_a_of_type_Int = paramInt;
+      rbp.a().a(localrbw, rbp.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,106 +1,84 @@
-import com.tencent.qidian.data.PubAccountNavigationMenu;
-import java.util.HashMap;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bkia
-  implements anui
+class bkia
+  implements INetEngine.INetEngineListener
 {
-  private static final String a;
-  public int a;
+  bkia(bkhz parambkhz, String paramString, bkhx parambkhx) {}
   
-  static
+  public void onResp(NetResp paramNetResp)
   {
-    jdField_a_of_type_JavaLangString = bkia.class.getName();
-  }
-  
-  public bkia()
-  {
-    this.jdField_a_of_type_Int = hashCode();
-  }
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, bkic parambkic) {}
-  
-  protected void a(boolean paramBoolean, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
-  
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void c(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void i(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void j(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void k(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1001: 
-      e(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1002: 
-      f(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1003: 
-      g(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1004: 
-      i(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1005: 
-      d(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1006: 
-      if (paramObject != null)
-      {
-        a(paramBoolean, (bkic)paramObject);
-        return;
-      }
-      a(paramBoolean, null);
-      return;
-    case 2001: 
-      a(paramBoolean);
-      return;
-    case 3001: 
-      a(paramBoolean, (PubAccountNavigationMenu)paramObject);
-      return;
-    case 1007: 
-      j(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1008: 
-      c(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1009: 
-      b(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1010: 
-      h(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1018: 
-      a(paramBoolean, (HashMap)paramObject);
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    if (this.jdField_a_of_type_Bkhz.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Bkhz.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
     }
-    k(paramBoolean, (HashMap)paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
+    }
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (!paramNetResp.exists()) {}
+    }
+    do
+    {
+      for (;;)
+      {
+        try
+        {
+          paramNetResp = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, paramNetResp, false);
+          bkhy.a(this.jdField_a_of_type_Bkhx.b);
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          if (this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib != null)
+          {
+            this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib.a(100);
+            this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib.a(0, "Download Complete!!!");
+          }
+          this.jdField_a_of_type_Bkhz.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        catch (Exception paramNetResp)
+        {
+          paramNetResp.printStackTrace();
+        }
+        int i = 0;
+      }
+    } while (this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib == null);
+    this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib.a(2, "");
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib != null) {
+        this.jdField_a_of_type_Bkhz.jdField_a_of_type_Bkib.a(i);
+      }
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkia
  * JD-Core Version:    0.7.0.1
  */

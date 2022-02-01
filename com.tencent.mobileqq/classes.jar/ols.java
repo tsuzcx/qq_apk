@@ -1,47 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ols
-  extends Handler
+  implements View.OnClickListener
 {
-  public ols(ReadInJoyUploadAvatarFragment paramReadInJoyUploadAvatarFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ols(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {
-      return;
-    }
-    Intent localIntent = localFragmentActivity.getIntent();
-    Bundle localBundle = new Bundle();
-    switch (paramMessage.what)
-    {
-    default: 
-      localBundle.putString("msg", anzj.a(2131711906));
-      localBundle.putInt("retCode", 3);
-      localIntent.putExtra("Bundle", localBundle);
-      localFragmentActivity.setResult(-1, localIntent);
-    }
-    for (;;)
-    {
-      localFragmentActivity.finish();
-      return;
-      localBundle.putString("url", (String)paramMessage.obj);
-      localBundle.putInt("retCode", 0);
-      localBundle.putString("msg", anzj.a(2131711965));
-      localIntent.putExtra("Bundle", localBundle);
-      localFragmentActivity.setResult(-1, localIntent);
-    }
+    this.a.a.a(true);
+    ThreadManager.executeOnSubThread(new ReadInJoyFollowActivity.1.1(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

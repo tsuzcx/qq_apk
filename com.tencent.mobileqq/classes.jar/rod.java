@@ -1,17 +1,35 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.ViolaVideoUpdateController.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
 
-class rod
-  implements View.OnTouchListener
+public class rod
 {
-  rod(rob paramrob, GestureDetector paramGestureDetector) {}
+  private long jdField_a_of_type_Long = 500L;
+  @NotNull
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
+  private Runnable b = new ViolaVideoUpdateController.1(this);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public rod(@NotNull Runnable paramRunnable, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return true;
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().post(this.b);
+  }
+  
+  public void b()
+  {
+    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.b);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

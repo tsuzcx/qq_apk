@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bbfy;
-import bojx;
+import baax;
+import bloc;
 
 public class FilterPagerViewStubHolder$2
   implements Runnable
 {
-  public FilterPagerViewStubHolder$2(bojx parambojx, bbfy parambbfy) {}
+  public FilterPagerViewStubHolder$2(bloc parambloc, baax parambaax) {}
   
   public void run()
   {
-    this.a.a(bojx.a(this.this$0));
+    this.a.a(bloc.a(this.this$0));
   }
 }
 

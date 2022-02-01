@@ -1,284 +1,68 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.media.MediaMuxer;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.nio.ByteBuffer;
+import java.util.List;
+import msf.msgcomm.msg_comm.ContentHead;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
+import tencent.im.msg.im_msg_body.RichText;
 
-@TargetApi(18)
 public class bbmj
+  implements bbls
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManagerV2.newFreeHandlerThread("HWAudioEncoder", 0);
-  bbml jdField_a_of_type_Bbml;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  
-  public bbmj()
+  private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new bbmk(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-  }
-  
-  private void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = new MediaFormat();
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setString("mime", "audio/mp4a-latm");
-    int i;
-    if (bdbt.o == 16)
-    {
-      i = 1;
-      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("channel-count", i);
-      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("sample-rate", this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", 2);
-      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", bdbt.n);
-      this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("max-input-size", AudioCapture.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
-      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      paramString = new File(this.jdField_a_of_type_JavaLangString);
-      if (!paramString.exists()) {
-        bhmi.c(paramString.getAbsolutePath());
-      }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-      this.jdField_b_of_type_Long = 0L;
-      if (bdbt.p != 2) {
-        break label239;
-      }
-    }
-    label239:
-    for (int j = 16;; j = 8)
-    {
-      this.jdField_a_of_type_Double = (i * (j * this.jdField_b_of_type_Int) / 8 / Math.pow(10.0D, 6.0D));
-      return;
-      i = 2;
-      break;
-    }
-  }
-  
-  private void d() {}
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    long l = SystemClock.elapsedRealtimeNanos();
-    a(new byte[0], l, true);
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-    }
-    if ((this.jdField_a_of_type_AndroidMediaMediaMuxer != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
-      if (QLog.isColorLevel()) {
-        QLog.d("HWAudioEncoder", 2, "MediaMuxer stop.");
-      }
-      if (this.jdField_a_of_type_Bbml != null) {
-        this.jdField_a_of_type_Bbml.h();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (this.jdField_a_of_type_Bbml != null) {
-        this.jdField_a_of_type_Bbml.i();
-      }
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(bbml parambbml)
-  {
-    this.jdField_a_of_type_Bbml = parambbml;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramString).sendToTarget();
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      paramLong = SystemClock.elapsedRealtimeNanos();
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new Object[] { paramArrayOfByte, Long.valueOf(paramLong) }).sendToTarget();
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
-  {
-    long l = System.currentTimeMillis();
-    int i = (int)(paramArrayOfByte.length / this.jdField_a_of_type_Double);
-    this.jdField_b_of_type_Long += i;
-    if (QLog.isColorLevel()) {
-      QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame audioData=%s mAudioDataSize=%s frameTime=%s mLastAudioFrameTime=%s timestampNanos=%s endOfStream=&s", new Object[] { Integer.valueOf(paramArrayOfByte.length), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(i), Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    }
-    i = 0;
-    Object localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-    int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame inputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
-    }
-    if (j >= 0)
-    {
-      localObject = localObject[j];
-      ((ByteBuffer)localObject).clear();
-      ((ByteBuffer)localObject).put(paramArrayOfByte);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(j, 0, paramArrayOfByte.length, this.jdField_b_of_type_Long, 0);
-      label205:
-      i = 0;
-      paramArrayOfByte = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-    }
-    label216:
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has())) {}
     do
     {
-      for (;;)
-      {
-        j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-        if (QLog.isColorLevel()) {
-          QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame outputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
-        }
-        if (j == -1)
-        {
-          if (!paramBoolean) {}
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-            }
-            return;
-            if (j != -1) {
-              break;
-            }
-            if (!paramBoolean) {
-              break label205;
-            }
-            j = i + 1;
-            i = j;
-            if (j <= 10) {
-              break;
-            }
-            break label205;
-            j = i + 1;
-            i = j;
-            if (j <= 10) {
-              break label216;
-            }
-          }
-        }
-        if (j == -2)
-        {
-          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-          this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-            this.jdField_a_of_type_Boolean = true;
-          }
-        }
-        else
-        {
-          if (j != -3) {
-            break label436;
-          }
-          paramArrayOfByte = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        }
-      }
-    } while (j < 0);
-    label281:
-    label436:
-    i = 0;
-    localObject = paramArrayOfByte[j];
-    if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0) {
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
-    }
-    if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0) && (this.jdField_a_of_type_Boolean))
-    {
-      ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-      ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-      if (QLog.isColorLevel()) {
-        QLog.d("HWAudioEncoder", 2, String.format("handleAudioFrame presentationTimeUs=%s", new Object[] { Long.valueOf(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs) }));
-      }
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs < this.jdField_a_of_type_Long) {
-        break label624;
-      }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, (ByteBuffer)localObject, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
-      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
+      return;
+      if (paramMsg.content_head.has()) {
         break;
       }
-      break label281;
-      label624:
-      QLog.e("HWAudioEncoder", 1, "handleAudioFrame audio timestamp revert? throw this frame.");
+    } while (!QLog.isColorLevel());
+    QLog.e("NormalBuddyDecoder", 2, "<---decodeC2CMessagePackage: msg doesn't has the contentHead.");
+    return;
+    Object localObject = (msg_comm.ContentHead)paramMsg.content_head.get();
+    if ((((msg_comm.ContentHead)localObject).auto_reply.has()) && (((msg_comm.ContentHead)localObject).auto_reply.get() == 1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
+    {
+      localObject = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder(128);
+        localStringBuilder.append("<---decodeC2CMsgPkg_Buddy:elems size:").append(((List)localObject).size()).append(" isAutoReply:").append(paramBoolean2);
+        QLog.d("NormalBuddyDecoder", 2, localStringBuilder.toString());
+      }
+      if (!paramBoolean2) {
+        break label303;
+      }
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+        break;
+      }
+      paramMessageHandler = BaseApplicationImpl.getApplication().getString(2131690220);
+      paramMsg = new bblb().a((List)localObject);
+      if (TextUtils.isEmpty(paramMsg)) {
+        break;
+      }
+      paramMessageHandler = paramMessageHandler + " " + paramMsg;
+      paramMsg = bbli.a(-10000);
+      paramMsg.msgtype = -10000;
+      paramMsg.msg = paramMessageHandler;
+      paramList.add(paramMsg);
+      return;
     }
+    label303:
+    bblf.a(paramMessageHandler, paramList, paramMsg, true, paramBoolean1, null);
   }
   
-  public void b()
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2).sendToTarget();
-    }
+    a(paramMessageHandler, paramList, paramMsg, parambbkm.e, parambbkm.b, parambbkm.a, parambbkm.d);
   }
 }
 

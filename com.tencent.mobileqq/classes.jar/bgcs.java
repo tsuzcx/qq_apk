@@ -1,40 +1,39 @@
-import android.os.CountDownTimer;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.qphone.base.util.QLog;
-
 public class bgcs
-  extends CountDownTimer
 {
-  public bgcs(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  
+  public void a(int paramInt)
   {
-    super(paramLong1, paramLong2);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onFinish()
+  public void a(String paramString)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.b())
-    {
-      this.a.d();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
-      {
-        bhpc localbhpc = bhlq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131696772).setNegativeButton(2131696808, new bgcu(this)).setPositiveButton(2131696800, new bgct(this));
-        localbhpc.setCancelable(false);
-        localbhpc.show();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onTick(long paramLong)
+  public boolean a()
   {
-    int i = (int)(paramLong / 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
-    }
-    if (i == 5) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131696764);
-    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

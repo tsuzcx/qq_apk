@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import qqcircle.QQCircleRight.SetCircleUnCareRsp;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Func1;
 
-class vdw
-  implements aaav<QQCircleRight.SetCircleUnCareRsp>
+public class vdw
+  implements Func1<Bitmap, Bitmap>
 {
-  vdw(vdv paramvdv) {}
+  public vdw(RoundImageView paramRoundImageView, Drawable paramDrawable) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.SetCircleUnCareRsp paramSetCircleUnCareRsp)
+  public Bitmap a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCirclePersonalTitleBar", 1, "black person: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    }
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      QQToast.a(this.a.a.a(), 2, 2131697168, 0).a();
-      this.a.a.a(vdr.a(this.a.a).id.get());
-      return;
-    }
-    QQToast.a(this.a.a.a(), 1, 2131697280, 0).a();
+    Canvas localCanvas = new Canvas(paramBitmap);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(localCanvas);
+    return paramBitmap;
   }
 }
 

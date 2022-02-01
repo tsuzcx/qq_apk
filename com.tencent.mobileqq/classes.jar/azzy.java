@@ -1,106 +1,99 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-public class azzy
+class azzy
+  implements INetEngine.INetEngineListener
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public Bitmap c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  azzy(azzx paramazzx, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
   
-  public azzy(int paramInt)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static azzy a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + paramNetResp.mHttpCode + " threadid=" + Thread.currentThread().getId());
+    }
+    File localFile = new File(azzx.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
+    if (!localFile.exists())
     {
-      return null;
-      try
+      if (QLog.isColorLevel()) {
+        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
+      }
+      aktv.a(0);
+      return;
+    }
+    Object localObject = "";
+    try
+    {
+      paramNetResp = FileUtils.calcMd5(localFile.getPath());
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramNetResp))) {}
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
       {
-        paramString = a(paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PraiseInfo", 2, "content:" + paramString);
-        }
-        paramString = new JSONObject(paramString);
-        azzy localazzy = new azzy(paramInt);
-        localazzy.jdField_a_of_type_JavaLangString = paramString.optString("name");
-        localazzy.jdField_b_of_type_JavaLangString = paramString.optString("text");
-        if (paramString.has("color"))
-        {
-          String str = paramString.optString("color").trim();
-          paramString = str;
-          if (str.startsWith("0x")) {
-            paramString = str.substring(2);
-          }
-        }
         try
         {
-          localazzy.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
-          return localazzy;
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PraiseInfo", 2, "color invalid");
-            }
+          npo.a(localFile, this.b);
+          paramNetResp = new File(this.c);
+          if (!paramNetResp.exists()) {
+            break label330;
           }
+          paramNetResp = azzx.a(paramNetResp);
+          localObject = azzx.a(null, paramNetResp, this.jdField_a_of_type_Azzx.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
+          if ((localObject != null) && (!((List)localObject).isEmpty())) {
+            break;
+          }
+          azzx.a(paramNetResp, "ptv_template_new.cfg");
+          if (QLog.isColorLevel()) {
+            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
+          }
+          aktv.a(-4);
+          return;
+          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
+          paramNetResp = (NetResp)localObject;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localUnsatisfiedLinkError.printStackTrace();
+          paramNetResp = (NetResp)localObject;
         }
-        return null;
+        catch (Exception paramNetResp)
+        {
+          aktv.a(-3);
+          bfyz.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          paramNetResp.printStackTrace();
+          continue;
+        }
+        aktv.a(-2);
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
-        return null;
+      azzx.a(paramNetResp, "ptv_template_new.cfg");
+      this.jdField_a_of_type_Azzx.c(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + paramNetResp);
       }
-      catch (IOException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
-      }
+      aktv.a(1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
+      return;
     }
+    label330:
+    if (QLog.isColorLevel()) {
+      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
+    }
+    bfyz.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
   }
   
-  private static String a(String paramString)
-  {
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      QLog.e("PraiseInfo", 1, paramString + " not exist!");
-    }
-    do
-    {
-      return null;
-      try
-      {
-        paramString = bhmi.b(localFile);
-        return paramString;
-      }
-      catch (OutOfMemoryError paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PraiseInfo", 2, paramString.getMessage());
-    return null;
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

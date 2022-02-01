@@ -1,46 +1,81 @@
-import android.graphics.PointF;
+import android.app.Activity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class apot
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public PointF[] a;
-  public int b;
-  public int c;
-  public int d = -1;
+  public apot(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  public apot()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
-    a();
-  }
-  
-  public apot(int paramInt)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = 0;
-    this.c = 0;
-    this.d = -1;
-  }
-  
-  public String toString()
-  {
-    if (this.b > 0) {}
-    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
-      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
+    int i = 0;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    ColorNote localColorNote;
+    if ((SwipePostTableLayout.a(this.a) != null) && (SwipePostTableLayout.a(this.a).getColorNote() != null)) {
+      localColorNote = SwipePostTableLayout.a(this.a).getColorNote();
+    }
+    for (boolean bool = SwipePostTableLayout.a(this.a).a(localColorNote.getServiceType(), localColorNote.getSubType());; bool = false)
+    {
+      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+      float f2 = paramMotionEvent1.getY();
+      float f3 = paramMotionEvent2.getY();
+      if ((f1 == 0.0F) || (!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      f2 = Math.abs((f2 - f3) / f1);
+      if ((SwipePostTableLayout.a(this.a) == null) || (SwipePostTableLayout.a(this.a).a())) {
+        i = 1;
+      }
+      if ((f1 < 0.0F) && (f2 < 0.5F))
+      {
+        if (!bool) {
+          break label276;
+        }
+        if (i == 0) {
+          break label254;
+        }
+        this.a.jdField_a_of_type_Apop.sendEmptyMessage(1);
+        this.a.postInvalidate();
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Apos != null) {
+          this.a.jdField_a_of_type_Apos.a();
+        }
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        label254:
+        SwipePostTableLayout.a(this.a, true);
+        SwipePostTableLayout.a(this.a).a();
+        break;
+        label276:
+        if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          this.a.c = true;
+          if (i != 0)
+          {
+            this.a.d();
+          }
+          else
+          {
+            SwipePostTableLayout.b(this.a, true);
+            SwipePostTableLayout.a(this.a).a();
+          }
+        }
+        else if (i != 0)
+        {
+          this.a.d();
+        }
+        else
+        {
+          SwipePostTableLayout.b(this.a, true);
+          SwipePostTableLayout.a(this.a).a();
+        }
+      }
     }
   }
 }

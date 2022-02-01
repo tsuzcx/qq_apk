@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import abet;
+import alvx;
+import java.util.HashMap;
+import java.util.Map;
 
 class QQGameFeedWebFragment$13
   implements Runnable
@@ -11,12 +12,12 @@ class QQGameFeedWebFragment$13
   
   public void run()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    localMessage.arg1 = -1;
-    localMessage.arg2 = QQGameFeedWebFragment.a(this.this$0);
-    QLog.e("GameWebPage", 2, "#### height:" + localMessage.arg2);
-    QQGameFeedWebFragment.a(this.this$0).sendMessage(localMessage);
+    QQGameFeedWebFragment.a(this.this$0, false, 0);
+    this.this$0.c();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(24), "1");
+    localHashMap.put(Integer.valueOf(4), "20");
+    abet.a(alvx.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
   }
 }
 

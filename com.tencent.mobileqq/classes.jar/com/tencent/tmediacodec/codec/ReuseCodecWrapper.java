@@ -31,13 +31,14 @@ import com.tencent.tmediacodec.util.ThreadManager;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,7 +51,7 @@ public abstract class ReuseCodecWrapper
   public static final int METHOD_DEQUEUE_OUTPUT_BUFFER = 1;
   public static final String TAG = "ReuseCodecWrapper";
   public static final int TRY_AGAIN_LATER_LIMIT = 100;
-  private static final HashMap<Surface, ReuseCodecWrapper> mSurfaceMap = new HashMap();
+  private static final Map<Surface, ReuseCodecWrapper> mSurfaceMap = new ConcurrentHashMap();
   private final ReuseHelper.AdaptationWorkaroundMode adaptationMode;
   public boolean adaptive;
   @Nullable
@@ -135,14 +136,14 @@ public abstract class ReuseCodecWrapper
     {
       localReuseCodecWrapper = (ReuseCodecWrapper)mSurfaceMap.get(paramSurface);
       if ((localReuseCodecWrapper == null) || (!localReuseCodecWrapper.isReleaseCalled())) {
-        break label156;
+        break label162;
       }
     }
-    label156:
+    label162:
     for (boolean bool = true;; bool = false)
     {
       if (LogUtils.isLogEnable()) {
-        LogUtils.e("ReuseCodecWrapper", this + ", surface:" + paramSurface + " has been used by " + localReuseCodecWrapper + " isReleaseCalled" + bool + ", ignore but we can release it...");
+        LogUtils.e("ReuseCodecWrapper", this + ", surface:" + paramSurface + " has been used by " + localReuseCodecWrapper + " isReleaseCalled:" + bool + ", ignore but we can release it...");
       }
       if (bool) {
         localReuseCodecWrapper.recycle();
@@ -556,7 +557,7 @@ public abstract class ReuseCodecWrapper
       LogUtils.d("ReuseCodecWrapper", this + ", removeSurfaceBinding toReleaseNameSet:" + paramSet1 + " toReleaseCodecSet:" + paramSet2);
     }
     Iterator localIterator = mSurfaceMap.entrySet().iterator();
-    label147:
+    label149:
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -565,7 +566,7 @@ public abstract class ReuseCodecWrapper
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
-          break label147;
+          break label149;
         }
         localIterator.remove();
         onSurfaceTextureUnbinding(str);

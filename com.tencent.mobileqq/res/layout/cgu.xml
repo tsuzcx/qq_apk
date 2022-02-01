@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/js9" android:background="@drawable/b6n" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip">
-        <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/jse" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="3.0">
-            <ImageView android:id="@id/toast_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:scaleType="fitXY" />
-            <TextView android:textSize="18.0sp" android:ellipsize="end" android:gravity="center" android:id="@id/jsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/x99" android:maxLines="1" android:singleLine="true" />
-        </LinearLayout>
-        <TextView android:gravity="center" android:id="@id/mhw" android:layout_width="20.0dip" android:layout_height="fill_parent" android:text="@string/x9_" android:layout_weight="1.0" />
+<RelativeLayout android:id="@id/miz" android:background="#b3ebedf5" android:paddingTop="68.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/mja" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:id="@id/mj0" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mj_" android:layout_width="fill_parent" android:layout_height="@dimen/j2" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/why" />
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mj8" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/mja">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/mj7" android:clickable="true" android:layout_width="wrap_content" android:layout_height="36.0dip" android:src="@drawable/grb" />
+        <android.support.v7.widget.RecyclerView android:id="@id/mj9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,48 +1,103 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.WtloginManager;
-import mqq.observer.WtloginObserver;
+import mqq.app.AppRuntime;
+import mqq.app.BuiltInServlet;
+import mqq.app.NewIntent;
 
 public class apyx
-  implements apyt
+  extends aptq<apyw>
 {
-  private WtloginObserver a;
-  
-  private void a(long paramLong1, long paramLong2, apza paramapza)
+  @NonNull
+  public apyw a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = apxv.a();
-    if (localQQAppInterface == null) {
-      paramapza.a(null, 0L, null, null);
-    }
-    if (this.a == null) {
-      this.a = new apyz(this, paramapza);
-    }
-    ((WtloginManager)localQQAppInterface.getManager(1)).getOpenKeyWithoutPasswd(localQQAppInterface.c(), paramLong1, paramLong2, this.a);
+    return new apyw();
   }
   
-  public void a(Bundle paramBundle, apyv paramapyv)
+  @Nullable
+  public apyw a(aptx[] paramArrayOfaptx)
   {
-    if (apxv.a() == null)
+    QLog.i("MultiChannelReportProcessor", 1, "[onParsed] config");
+    Object localObject = null;
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
     {
-      QLog.e("ArkApp.LoginHandler", 1, "LoginHandler.onCall, qq app is null");
-      paramapyv.a(EIPCResult.createResult(-102, new Bundle()));
+      localapyw = apyw.a(paramArrayOfaptx[0].a);
+      localObject = localapyw;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MultiChannelReportProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+        localObject = localapyw;
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      apyw localapyw;
+      return localObject;
+    }
+    QLog.d("MultiChannelReportProcessor", 2, "onParsed is null");
+    return null;
+  }
+  
+  public void a(apyw paramapyw)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {}
+    try
+    {
+      paramapyw = apyw.a(paramapyw);
+      QLog.i("MultiChannelReportProcessor", 1, "[onUpdate], strConfig = " + paramapyw);
+      NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), BuiltInServlet.class);
+      localNewIntent.putExtra("action", 2214);
+      localNewIntent.putExtra("manager_config", paramapyw);
+      localAppRuntime.startServlet(localNewIntent);
       return;
     }
-    long l1 = paramBundle.getLong("srcAppID", 0L);
-    long l2 = paramBundle.getLong("dstAppID", 0L);
-    if ((l1 == 0L) || (l2 == 0L))
+    catch (Throwable paramapyw)
     {
-      paramapyv.a(EIPCResult.createResult(0, new Bundle()));
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MultiChannelReportProcessor", 2, "update msf config, but throw t", paramapyw);
     }
-    a(l1, l2, new apyy(this, paramapyv));
+  }
+  
+  public Class<apyw> clazz()
+  {
+    return apyw.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("MultiChannelReportProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 640;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyx
  * JD-Core Version:    0.7.0.1
  */

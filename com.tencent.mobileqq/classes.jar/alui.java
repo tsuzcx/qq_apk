@@ -1,22 +1,22 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class alui
+public class alui
+  implements View.OnClickListener
 {
-  FlowActivity a;
+  public alui(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
   
-  public alui(FlowActivity paramFlowActivity)
+  public void onClick(View paramView)
   {
-    this.a = paramFlowActivity;
+    altl.a().a(null);
+    if (altl.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public Context a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a(ViewGroup paramViewGroup);
 }
 
 

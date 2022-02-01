@@ -1,23 +1,67 @@
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
-import com.tencent.mobileqq.activity.photo.album.preview.VideoPreviewPresent;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
 
-public class akwi
-  extends VideoPreviewPresent
+class akwi
+  implements GestureDetector.OnGestureListener
 {
-  public akwi(PreviewBean paramPreviewBean)
+  akwi(akwh paramakwh) {}
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    super(paramPreviewBean);
+    akwh.a(this.a).forceFinished(true);
+    return true;
   }
   
-  public BaseVideoView generateVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  public boolean onFling(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    paramVideoPlayParam.mSceneId = 105;
-    paramVideoPlayParam.mSceneName = bapi.a(105);
-    return (BaseVideoView)baph.b(paramContext, paramLong, paramVideoPlayParam, paramImageView);
+    synchronized (this.a)
+    {
+      akwh.a(this.a).fling((int)akwh.a(this.a), 0, (int)-paramFloat1, 0, (int)akwh.b(this.a), (int)akwh.c(this.a), 0, 0);
+      akwh.b(this.a);
+      return true;
+    }
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    do
+    {
+      synchronized (this.a)
+      {
+        akwh.a(this.a, akwh.a(this.a) + paramFloat1);
+        if (akwh.a(this.a) < akwh.b(this.a)) {
+          akwh.a(this.a, akwh.b(this.a));
+        }
+        if (akwh.a(this.a) > akwh.c(this.a)) {
+          akwh.a(this.a, akwh.c(this.a));
+        }
+        paramFloat1 = akwh.a(this.a);
+        paramFloat2 = akwh.d(this.a);
+        akwh.b(this.a, akwh.a(this.a));
+        if (akwh.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
+          return true;
+        }
+      }
+      akwh.a(this.a);
+      if (akwh.a(this.a) != null) {
+        akwh.a(this.a).a(akwh.a(this.a), akwh.b(this.a));
+      }
+      if (akwh.a(this.a) != null) {
+        akwh.a(this.a).invalidate();
+      }
+    } while (akwh.a(this.a) == null);
+    akwh.a(this.a).a(akwh.a(this.a), -akwh.a(this.a), akwh.e(this.a) - akwh.a(this.a));
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

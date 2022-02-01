@@ -1,22 +1,19 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class oae
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  public oae(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public oae(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onChange(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.onChange(paramBoolean);
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
-      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
-    }
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    ReadInJoyNativeAdFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

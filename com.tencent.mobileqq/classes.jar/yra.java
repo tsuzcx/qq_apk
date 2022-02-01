@@ -1,27 +1,23 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.database.DataSetObserver;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
 
 public class yra
-  implements zsr
+  extends DataSetObserver
 {
-  public void a(SegmentList paramSegmentList)
+  public yra(EmptySupportViewPager paramEmptySupportViewPager) {}
+  
+  public void onChanged()
   {
-    if (!(paramSegmentList instanceof MystoryListView)) {
-      throw new IllegalArgumentException("arg should match type!");
+    PagerAdapter localPagerAdapter = this.a.getAdapter();
+    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    {
+      this.a.a(8);
+      EmptySupportViewPager.a(this.a, 0);
+      return;
     }
-    paramSegmentList = (MystoryListView)paramSegmentList;
-    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-    Object localObject = paramSegmentList.jdField_a_of_type_Yqx;
-    boolean bool = paramSegmentList.a();
-    paramSegmentList.a(wnu.a(localActivity, 5));
-    paramSegmentList.a(new ysw(localActivity, (yqx)localObject));
-    paramSegmentList.a(new ysv(localActivity));
-    paramSegmentList.a(new ysm(localActivity));
-    localObject = new yrh(localActivity, localActivity, 10, (yqx)localObject, bool);
-    paramSegmentList.a((zsv)localObject);
-    paramSegmentList.a(new ytp(localActivity, "FeedSegment", anzj.a(2131705946) + win.a + "\n拍摄一段视频，分享眼前的世界", 2130846612, 2130846613));
-    ((yrh)localObject).e_(true);
+    this.a.a(0);
+    EmptySupportViewPager.b(this.a, 8);
   }
 }
 

@@ -1,41 +1,10 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-public class aoyy
-  extends aoxg
+public abstract interface aoyy
 {
-  public aoyy(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public abstract boolean needProcess(JSONObject paramJSONObject);
   
-  private boolean C()
-  {
-    WXMiniProgramHelper.a().a(this.a);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      if ((this.a.containsKey("user_name")) && (!bhsr.a((String)this.a.get("user_name"))))
-      {
-        boolean bool = C();
-        return bool;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QwalletToLaunchWXMiniAppAction", 1, "doAction error: " + localException.getMessage());
-      a("QwalletToLaunchWXMiniAppAction");
-    }
-    return false;
-  }
+  public abstract void process(JSONObject paramJSONObject, aoyz paramaoyz, Object paramObject);
 }
 
 

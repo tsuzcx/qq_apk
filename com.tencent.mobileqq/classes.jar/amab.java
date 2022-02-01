@@ -1,11 +1,19 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.view.SurfaceHolder;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
-public abstract interface amab
+class amab
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  amab(amaa paramamaa) {}
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    amaa.a(this.a, true);
+  }
 }
 
 

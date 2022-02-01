@@ -1,13 +1,17 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
-public abstract interface bnym
+public class bnym
+  implements View.OnTouchListener
 {
-  public abstract void onQueryCallback(ArrayList<WadlResult> paramArrayList);
+  public bnym(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
   
-  public abstract void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList);
-  
-  public abstract void onWadlTaskStatusChanged(WadlResult paramWadlResult);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramView, paramMotionEvent);
+  }
 }
 
 

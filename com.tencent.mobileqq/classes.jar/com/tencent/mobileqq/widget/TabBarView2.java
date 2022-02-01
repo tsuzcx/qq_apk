@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,8 +12,9 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import bdgb;
+import bbyp;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import java.util.List;
 
@@ -40,18 +40,18 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = agej.a(56.0F, getResources());
+    this.jdField_b_of_type_Int = AIOUtils.dp2px(56.0F, getResources());
     this.m = 16;
     boolean bool1 = ThemeUtil.isNowThemeIsDefaultCache(BaseApplicationImpl.getApplication().getRuntime(), true);
     int k = this.s;
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     int i;
     int j;
-    if (bdgb.a()) {
+    if (bbyp.a()) {
       if (bool2)
       {
-        i = 2131166452;
-        k = 2131167074;
+        i = 2131166471;
+        k = 2131167096;
         int n = 255;
         j = i;
         i = k;
@@ -76,32 +76,32 @@ public class TabBarView2
       this.t = paramContext.getDimensionPixelSize(4, this.t);
       this.u = paramContext.getDimensionPixelSize(3, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (bdgb.a()))
+      if (("1103".equals(ThemeUtil.curThemeId)) || (bbyp.a()))
       {
         this.r = getResources().getColor(j);
         this.s = k;
       }
       b();
       return;
-      i = 2131166451;
+      i = 2131166470;
       break;
       if (bool2)
       {
-        m = 2131165580;
-        i = 2131165579;
-        j = 2131165578;
+        m = 2131165588;
+        i = 2131165587;
+        j = 2131165586;
         k = 30;
       }
       else if (!bool1)
       {
-        i = 2131167074;
-        j = 2131166997;
+        i = 2131167096;
+        j = 2131167019;
       }
       else
       {
-        m = 2131165581;
-        i = 2131167074;
-        j = 2131165581;
+        m = 2131165589;
+        i = 2131167096;
+        j = 2131165589;
       }
     }
   }

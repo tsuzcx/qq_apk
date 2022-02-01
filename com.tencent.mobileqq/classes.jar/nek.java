@@ -1,20 +1,20 @@
-import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import android.view.View;
+import com.tencent.avgame.gameroom.stage.StageView;
 
-public abstract interface nek
+public class nek
+  implements nef
 {
-  public abstract void a(TPAudioFrameBuffer paramTPAudioFrameBuffer);
+  public nek(StageView paramStageView) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public void onClick(View paramView)
+  {
+    this.a.a().a();
+    bcef.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 1, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nek
  * JD-Core Version:    0.7.0.1
  */

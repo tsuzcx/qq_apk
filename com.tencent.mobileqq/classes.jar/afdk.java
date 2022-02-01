@@ -1,43 +1,44 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.widget.ListView;
 
-public class afdk
-  extends afdn
+public abstract class afdk
 {
-  private afdk(PortraitImageview paramPortraitImageview) {}
+  public int a;
+  public AIOAnimationConatiner a;
+  public ListView a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public afdk(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    if (this.a.a() > this.a.c()) {
-      this.a.a(this.a.c());
-    }
-    for (;;)
-    {
-      return true;
-      this.a.a(this.a.c() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public boolean a(int paramInt)
   {
-    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
-      return false;
-    }
-    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a(-paramFloat1, -paramFloat2);
-    this.a.setImageMatrix(this.a.a());
-    return true;
+    return false;
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(Object... paramVarArgs);
+  
+  public void b() {}
+  
+  public void b(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Afdl != null)
-    {
-      this.a.jdField_a_of_type_Afdl.a();
-      return false;
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(paramInt);
+  }
+  
+  public abstract void c();
+  
+  public void d()
+  {
+    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

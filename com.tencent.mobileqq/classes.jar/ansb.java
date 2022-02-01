@@ -1,64 +1,18 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import android.content.Context;
+import android.net.Uri;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
 
 public class ansb
-  implements ansl
+  extends anri
 {
-  public ansb(ApolloPanel paramApolloPanel) {}
-  
-  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    if (paramApolloPanelGuideView.a() == 0)
-    {
-      ApolloPanel.f(this.a);
-      if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
-      {
-        ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
-        ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690043), 5, null);
-      }
-    }
-    for (;;)
-    {
-      QLog.i("ApolloPanel", 1, "mGuideClickCallback onClose");
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "clk_panelnewuser_close", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b()), 0, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-      }
-    }
-  }
-  
-  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
-  {
-    if (paramApolloPanelGuideView.a() == 0)
-    {
-      ApolloPanel.f(this.a);
-      paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-      paramApolloPanelGuideView.a(new ansc(this, paramApolloPanelGuideView));
-      paramApolloPanelGuideView.b("guide_page", 1);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "exp_panelnewuser_open", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b()), ApolloPanel.b, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-    }
-    paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-    paramApolloPanelGuideView.a(new ansd(this, paramApolloPanelGuideView));
-    if (ApolloPanel.b == 0) {}
-    for (int i = 0;; i = 1)
-    {
-      paramApolloPanelGuideView.b("guide_open_cmshow", i);
-      return;
-    }
+    paramanrl = Uri.parse(paramString).getLastPathSegment();
+    paramQQAppInterface = new ansa(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "com.qqfav";
+    paramQQAppInterface.c = paramanrl;
+    return paramQQAppInterface;
   }
 }
 

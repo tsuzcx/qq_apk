@@ -1,57 +1,261 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aytl
+public class aytl
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  aytk jdField_a_of_type_Aytk;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
-  
-  void a()
+  public static void a(QQAppInterface paramQQAppInterface, aymg paramaymg)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    int i = 1;
+    int j = paramaymg.a.jdField_a_of_type_Int;
+    int k = paramaymg.a.h;
+    if (j == 0)
+    {
+      j = 1;
+      if (j == 0) {
+        break label137;
+      }
+      if (k != 8) {
+        break label70;
+      }
+    }
+    label137:
+    for (;;)
+    {
+      if (j == 0) {
+        break label250;
+      }
+      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X8007EB3", "0X8007EB3", i, 0, "", "", "", "");
+      return;
+      j = 0;
+      break;
+      label70:
+      if (k == 1)
+      {
+        i = 2;
+      }
+      else if (k == 107)
+      {
+        i = 3;
+      }
+      else if (k == 106)
+      {
+        i = 5;
+      }
+      else if (k == 7)
+      {
+        i = 6;
+      }
+      else if (k == 98)
+      {
+        i = 9;
+      }
+      else
+      {
+        i = 15;
+        continue;
+        if (k != 61) {
+          if (k == 1) {
+            i = 2;
+          } else if (k == 107) {
+            i = 3;
+          } else if (k == 106) {
+            i = 5;
+          } else if (k == 109) {
+            i = 6;
+          } else if (k == 59) {
+            i = 7;
+          } else if (k == 98) {
+            i = 9;
+          } else if (k == 88) {
+            i = 10;
+          } else if (k == 7) {
+            i = 11;
+          } else {
+            i = 15;
+          }
+        }
+      }
+    }
+    label250:
+    String str2 = paramaymg.a.jdField_a_of_type_JavaLangString;
+    String str1;
+    if (aytq.a(paramQQAppInterface, str2))
+    {
+      str1 = "1";
+      if (!ProfileActivity.AllInOne.b(paramaymg.a)) {
+        break label316;
+      }
+    }
+    label316:
+    for (paramaymg = "2";; paramaymg = "1")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str2, "0X8007EB4", "0X8007EB4", i, 0, str1, "", paramaymg, "");
+      return;
+      str1 = "2";
+      break;
+    }
   }
   
-  void a(View paramView1, View paramView2, int paramInt)
+  public static void b(QQAppInterface paramQQAppInterface, aymg paramaymg)
   {
-    this.jdField_a_of_type_Aytk.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Aytk.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    if (aytq.a(paramQQAppInterface, str)) {}
+    for (paramaymg = "1";; paramaymg = "2")
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B0B1", "0X800B0B1", 0, 0, paramaymg, "", "", "");
       return;
     }
   }
   
-  void a(aytk paramaytk)
+  public static void c(QQAppInterface paramQQAppInterface, aymg paramaymg)
   {
-    this.jdField_a_of_type_Aytk = paramaytk;
-    if (this.jdField_a_of_type_Aytk != null)
+    bcef.b(paramQQAppInterface, "dc00898", "", paramaymg.a.jdField_a_of_type_JavaLangString, "0X800B0B2", "0X800B0B2", 0, 0, "", "", "", "");
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    if (aytq.a(paramQQAppInterface, str)) {}
+    for (paramaymg = "1";; paramaymg = "2")
     {
-      paramaytk = this.jdField_a_of_type_Aytk.a();
-      paramaytk.setOnScrollListener(new ayto(this, null));
-      paramaytk.setOnTouchListener(new aytn(this, null));
-      paramaytk.setOnItemSelectedListener(new aytp(this, null));
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800A1C5", "0X800A1C5", 0, 0, paramaymg, "", "", "");
+      return;
     }
   }
   
-  void b()
+  public static void e(QQAppInterface paramQQAppInterface, aymg paramaymg)
   {
-    if (this.jdField_a_of_type_Aytk == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCardReport", 2, "reportTroopProfileCardGivePresentClick");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Aytk.a());
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    if (aytq.a(paramQQAppInterface, str)) {}
+    for (paramaymg = "1";; paramaymg = "2")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B102", "0X800B102", 0, 0, paramaymg, "", "", "");
+      return;
+    }
+  }
+  
+  public static void f(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    int i;
+    if (paramaymg.a.jdField_a_of_type_Int == 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label55;
+      }
+    }
+    label55:
+    for (paramaymg = "1";; paramaymg = "2")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B0BC", "0X800B0BC", 0, 0, paramaymg, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static void g(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    bcef.b(paramQQAppInterface, "dc00898", "", paramaymg.a.jdField_a_of_type_JavaLangString, "0X8008404", "0X8008404", 0, 0, "", "", "", "");
+  }
+  
+  public static void h(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    bcef.b(paramQQAppInterface, "dc00898", "", paramaymg.a.jdField_a_of_type_JavaLangString, "0X800B0B3", "0X800B0B3", 0, 0, "", "", "", "");
+  }
+  
+  public static void i(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    int i;
+    if (paramaymg.a.jdField_a_of_type_Int == 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label55;
+      }
+    }
+    label55:
+    for (paramaymg = "1";; paramaymg = "2")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B0B5", "0X800B0B5", 0, 0, paramaymg, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static void j(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    bcef.b(paramQQAppInterface, "dc00898", "", paramaymg.a.jdField_a_of_type_JavaLangString, "0X8007EB6", "0X8007EB6", 0, 0, "", "", "", "");
+  }
+  
+  public static void k(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    int i;
+    if (paramaymg.a.jdField_a_of_type_Int == 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label55;
+      }
+    }
+    label55:
+    for (paramaymg = "1";; paramaymg = "2")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B0B7", "0X800B0B7", 0, 0, paramaymg, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static void l(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    int i;
+    if (paramaymg.a.jdField_a_of_type_Int == 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label55;
+      }
+    }
+    label55:
+    for (paramaymg = "1";; paramaymg = "2")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B0B9", "0X800B0B9", 0, 0, paramaymg, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static void m(QQAppInterface paramQQAppInterface, aymg paramaymg)
+  {
+    String str = paramaymg.a.jdField_a_of_type_JavaLangString;
+    int i;
+    if (paramaymg.a.jdField_a_of_type_Int == 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label55;
+      }
+    }
+    label55:
+    for (paramaymg = "1";; paramaymg = "2")
+    {
+      bcef.b(paramQQAppInterface, "dc00898", "", str, "0X800B0BB", "0X800B0BB", 0, 0, paramaymg, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

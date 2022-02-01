@@ -1,17 +1,22 @@
-import com.tencent.open.model.CreateVirtualResult;
-import com.tencent.open.model.GetVirtualListResult;
+import android.view.ViewTreeObserver;
+import com.tencent.widget.DynamicGridView;
 
 public class bjpq
+  implements bjpz
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void a(boolean paramBoolean, int paramInt, bjpr parambjpr) {}
+  public bjpq(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
   
-  public void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt) {}
-  
-  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bjpr(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
+  }
 }
 
 

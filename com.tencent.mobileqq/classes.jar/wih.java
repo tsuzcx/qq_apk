@@ -1,22 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
-
-public class wih
-  extends SimpleJob<Void>
+class wih
+  extends wht
 {
-  wih(wia paramwia) {}
+  wih(wif paramwif, wjm paramwjm) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean b()
   {
-    paramJobContext = (wfv)wth.a(30);
-    paramVarArgs = paramJobContext.b();
-    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
-    return null;
+    this.jdField_a_of_type_Wjm.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

@@ -1,219 +1,321 @@
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.util.AndroidRuntimeException;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.1;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.ae.SessionWrap;
+import dov.com.qq.im.ae.download.AEResInfo;
+import dov.com.qq.im.ae.download.AEResUtil;
+import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class ynm
-  extends wjm<ymx, wmd>
 {
-  public ynm(ymx paramymx)
+  private Bundle a(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super(paramymx);
-  }
-  
-  private void a(@NonNull ymx paramymx, ynv paramynv, boolean paramBoolean, StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
-  {
-    Object localObject1 = paramynv.a().iterator();
-    int i = 0;
-    Object localObject2;
-    if (((Iterator)localObject1).hasNext())
+    paramBundle.putInt("capture_intent_mode", paramInt2);
+    if ((paramInt2 == 0) || (paramInt2 == 1))
     {
-      localObject2 = (StoryVideoItem)((Iterator)localObject1).next();
-      if (((StoryVideoItem)localObject2).equals(paramStoryVideoItem1))
-      {
-        yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "update new video %s", paramStoryVideoItem1);
-        if (paramStoryVideoItem2 == null) {
-          ((StoryVideoItem)localObject2).copy(paramStoryVideoItem1);
-        }
-      }
+      paramBundle.putInt("cameraDirection", paramInt1);
+      paramBundle.putInt("firsttab", paramInt3);
+      paramBundle.putInt("secondtab", paramInt4);
+      paramBundle.putString("itemid", paramString1);
+      paramBundle.putBoolean("qim_camera_open_specific", paramBoolean);
     }
-    label67:
-    for (i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        if (!paramBoolean) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          paramynv.a(paramStoryVideoItem1, paramBoolean);
-          yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "insert new video  %s", paramStoryVideoItem1);
-          paramStoryVideoItem2 = (ymk)wth.a(12);
-          localObject1 = ((VideoListFeedItem)paramynv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).getVideoInfo();
-          ((FeedVideoInfo)localObject1).mVideoItemList.clear();
-          ((FeedVideoInfo)localObject1).mVideoItemList.addAll(paramynv.a());
-          if (!((FeedVideoInfo)localObject1).mIsVideoEnd)
-          {
-            yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "mark feed %s is video pull finish", paramynv.a().feedId);
-            ((FeedVideoInfo)localObject1).mIsVideoEnd = true;
-            localObject2 = ((FeedVideoInfo)localObject1).mVideoItemList.iterator();
-            while (((Iterator)localObject2).hasNext()) {
-              if (!StoryVideoItem.isFakeVid(((StoryVideoItem)((Iterator)localObject2).next()).mVid)) {
-                ((FeedVideoInfo)localObject1).mIsVideoEnd = false;
-              }
-            }
-          }
-          paramStoryVideoItem2.a(0, ((FeedVideoInfo)localObject1).feedId, ((FeedVideoInfo)localObject1).mVideoSeq, ((FeedVideoInfo)localObject1).mVideoItemList, ((FeedVideoInfo)localObject1).mVideoNextCookie, ((FeedVideoInfo)localObject1).mIsVideoEnd, ((FeedVideoInfo)localObject1).mVideoPullType, true);
-          if (QLog.isDebugVersion()) {
-            yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "order before:%s", ymx.a(paramymx));
-          }
-          int j = paramymx.a().size();
-          i = 0;
-          while (j > i)
-          {
-            paramStoryVideoItem2 = (ynt)ymx.a(paramymx).get(i);
-            if ((!(paramStoryVideoItem2 instanceof ynp)) || (!((HotRecommendFeedItem)((ynp)paramStoryVideoItem2).a()).mIsTopLocation)) {
-              break;
-            }
-            i += 1;
-          }
-          paramynv.a(i, paramStoryVideoItem2);
-          yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "feed fake %s to suc:%s", new Object[] { ((StoryVideoItem)localObject2).mVid, paramStoryVideoItem2 });
-          paramStoryVideoItem2 = (ymk)wth.a(12);
-          localObject1 = ((VideoListFeedItem)paramynv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).getVideoInfo();
-          ((FeedVideoInfo)localObject1).mVideoItemList.clear();
-          ((FeedVideoInfo)localObject1).mVideoItemList.addAll(paramynv.a());
-          paramStoryVideoItem2.a(0, ((FeedVideoInfo)localObject1).feedId, ((FeedVideoInfo)localObject1).mVideoSeq, ((FeedVideoInfo)localObject1).mVideoItemList, ((FeedVideoInfo)localObject1).mVideoNextCookie, ((FeedVideoInfo)localObject1).mIsVideoEnd, ((FeedVideoInfo)localObject1).mVideoPullType, true);
-          break label67;
-          i += 1;
-          break;
-        }
-        ymx.a(paramymx).remove(paramynv);
-        ymx.a(paramymx).add(i, paramynv);
-        if (QLog.isDebugVersion()) {
-          yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "order after:%s", ymx.a(paramymx));
-        }
-        if ((paramStoryVideoItem1.mTagInfoBase != null) && ((paramynv instanceof ymm)))
-        {
-          paramStoryVideoItem2 = paramynv.d;
-          paramStoryVideoItem2.remove(paramStoryVideoItem1.mTagInfoBase);
-          if (paramStoryVideoItem2.size() <= 0) {
-            break label610;
-          }
-          paramStoryVideoItem2.add(0, paramStoryVideoItem1.mTagInfoBase);
-        }
-      }
-      for (;;)
-      {
-        yuk.d(this.TAG, "update tag list while publish , feedId :%s", new Object[] { paramynv.a().feedId });
-        ymx.a(paramymx).a(paramynv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId);
-        return;
-        label610:
-        paramStoryVideoItem2.add(paramStoryVideoItem1.mTagInfoBase);
-      }
-    }
-  }
-  
-  public void a(@NonNull ymx paramymx, @NonNull wmd paramwmd)
-  {
-    if (paramwmd.a())
-    {
-      yuk.b(this.TAG, "group video upload");
-      return;
-    }
-    Object localObject2;
-    label33:
-    Object localObject3;
-    Object localObject1;
-    if (paramwmd.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localObject2 = paramwmd.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (wmc)((Iterator)localObject2).next();
-        if (!(((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem))
-        {
-          znw.a("fake item type error", new Object[0]);
-        }
-        else
-        {
-          localObject1 = (ShareGroupItem)((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner();
-          if (ymx.a(paramymx, ((ShareGroupItem)localObject1).shareGroupId))
-          {
-            localObject1 = ymx.a(paramymx, ymx.a(paramymx), ((ShareGroupItem)localObject1).shareGroupId, ((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.date);
-            if (localObject1 != null) {
-              break label531;
-            }
-            if ((((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem))
-            {
-              localObject1 = new yns((ShareGroupFeedItem)((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-              ymx.a(paramymx).add(0, localObject1);
-            }
-            yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "create and add fake home feed %s", new Object[] { localObject1 });
-          }
-        }
-      }
-    }
-    label531:
     for (;;)
     {
-      if ((((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem != null) && ((localObject1 instanceof yns))) {
-        ((ynv)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = ((wmc)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem;
+      xvv.c("Q.qqstory.publish.StoryPublishLauncher", "initLaunchArgs captureMode=%s, tabType=%d, category=%d, itemId=%s, openSpecific=%b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, Boolean.valueOf(paramBoolean) });
+      return paramBundle;
+      if (paramInt2 == 3) {
+        paramBundle.putString("story_capture_album_id", paramString3);
       }
-      localObject3 = ((wmc)localObject3).jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        wmb localwmb = (wmb)((Iterator)localObject3).next();
-        a(paramymx, (ynv)localObject1, paramwmd.jdField_a_of_type_Boolean, localwmb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localwmb.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      }
-      break label33;
-      if ((!paramwmd.jdField_b_of_type_Boolean) || (!ymx.a(paramymx))) {
-        break;
-      }
-      if (paramwmd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem == null)
-      {
-        yuk.d(this.TAG, "null pointer for feed item");
-        return;
-      }
-      if (paramwmd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.getOwner() == null)
-      {
-        yuk.d(this.TAG, "null pointer for feed item user");
-        return;
-      }
-      yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramwmd);
-      yuk.b("Q.qqstory.home.data.HomeFeedPresenter", "home task state write temp:" + paramwmd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.hashCode());
-      localObject2 = ymx.a(paramymx, ymx.a(paramymx), paramwmd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new ymm(paramwmd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem);
-        int j = ymx.a(paramymx).size();
-        int i = 0;
-        while (j > i)
-        {
-          localObject2 = (ynt)ymx.a(paramymx).get(i);
-          if ((!(localObject2 instanceof ynp)) || (!((HotRecommendFeedItem)((ynp)localObject2).a()).mIsTopLocation)) {
-            break;
-          }
-          i += 1;
-        }
-        ymx.a(paramymx).add(i, localObject1);
-        yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "create and add fake home feed %s", new Object[] { localObject1 });
-      }
-      if (paramwmd.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
-      {
-        ((ymm)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = paramwmd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem;
-        ((ymm)localObject1).jdField_a_of_type_Boolean = false;
-      }
-      a(paramymx, (ynv)localObject1, paramwmd.jdField_a_of_type_Boolean, paramwmd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramwmd.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      return;
     }
   }
   
-  public Class acceptEventClass()
+  public static Bundle a(SessionWrap paramSessionWrap, String paramString, int paramInt1, int paramInt2)
   {
-    return wmd.class;
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ARG_SESSION_INFO", paramSessionWrap);
+    localBundle.putInt("edit_video_type", paramInt1);
+    localBundle.putInt("entrance_type", paramInt2);
+    localBundle.putString("ARG_AIO_CLASS", paramString);
+    if (paramInt1 == 10000) {
+      localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
+    }
+    localBundle.putBoolean("enable_local_video", false);
+    return localBundle;
   }
   
-  public void b(@NonNull ymx paramymx, @NonNull wmd paramwmd) {}
+  public static QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    throw new AndroidRuntimeException("mobile qq main process only");
+  }
+  
+  public static ynm a()
+  {
+    return new ynm();
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    int i = AEResUtil.getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE);
+    HashMap localHashMap;
+    if (i != 0)
+    {
+      ThreadManager.excute(new StoryPublishLauncher.1(this, paramBoolean), 128, null, false);
+      if ((paramBoolean) && (i == 1))
+      {
+        i = 1;
+        localHashMap = new HashMap();
+        if (!paramBoolean) {
+          break label185;
+        }
+        str = "1";
+        label55:
+        localHashMap.put("videoSoUsable", str);
+        if (i == 0) {
+          break label191;
+        }
+        str = "1";
+        label71:
+        localHashMap.put("videoAndFilterReady", str);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actShortVideoSoDownload", true, 0L, 0L, localHashMap, "");
+      }
+    }
+    else
+    {
+      i = AEResUtil.getAEResStatus(AEResInfo.AE_RES_ADDITIONAL_PACKAGE);
+      if (i != 0)
+      {
+        ThreadManager.excute(new StoryPublishLauncher.2(this), 128, null, false);
+        localHashMap = new HashMap();
+        if (i != 1) {
+          break label197;
+        }
+      }
+    }
+    label185:
+    label191:
+    label197:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("ptuSoReady", str);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actShortVideoPtuSoDownload", true, 0L, 0L, localHashMap, "");
+      QQStoryContext.a().b();
+      return;
+      i = 0;
+      break;
+      str = "0";
+      break label55;
+      str = "0";
+      break label71;
+    }
+  }
+  
+  private boolean a(Context paramContext)
+  {
+    boolean bool = false;
+    if (!babd.a())
+    {
+      xvv.b("Q.qqstory.publish.StoryPublishLauncher", "checkApiVersionDialog false");
+      bfur.a(paramContext, 230).setMessage(amtj.a(2131713589)).setPositiveButton(2131694201, new ynn(this)).show();
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    return bbxj.a(a(), BaseApplicationImpl.getContext());
+  }
+  
+  public void a(Activity paramActivity, Bundle paramBundle, int paramInt)
+  {
+    if (a().isVideoChatting())
+    {
+      bmbx.c("Q.qqstory.publish.StoryPublishLauncher", "【2131718468】");
+      QQToast.a(paramActivity, 0, 2131718468, 0).a();
+    }
+    while (a(paramActivity)) {
+      return;
+    }
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    boolean bool;
+    if (localBundle.getInt("entrance_type") == 104)
+    {
+      bool = body.a(a());
+      a(localBundle);
+      if (!bool) {
+        break label114;
+      }
+      bmbx.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
+      QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt);
+    }
+    for (;;)
+    {
+      a(bool);
+      return;
+      bool = blvv.a();
+      break;
+      label114:
+      bmbx.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
+      CaptureQmcfSoDownloadActivity.a(paramActivity, blhu.class.getName(), localBundle, paramInt, localBundle.getBoolean("resource_need_all_wait", false));
+    }
+  }
+  
+  public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt5)
+  {
+    a(paramActivity, a(paramBundle, paramInt1, paramInt2, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramBoolean), paramInt5);
+  }
+  
+  public void a(Context paramContext, Bundle paramBundle)
+  {
+    if (a().isVideoChatting())
+    {
+      bmbx.c("Q.qqstory.publish.StoryPublishLauncher", "【2131718468】");
+      QQToast.a(paramContext, 0, 2131718468, 0).a();
+    }
+    while (a(paramContext)) {
+      return;
+    }
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    boolean bool;
+    if (localBundle.getInt("entrance_type") == 104)
+    {
+      bool = body.a(a());
+      a(localBundle);
+      if (!bool) {
+        break label109;
+      }
+      bmbx.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
+      QIMCameraCaptureActivity.a(paramContext, localBundle);
+    }
+    for (;;)
+    {
+      a(bool);
+      return;
+      bool = blvv.a();
+      break;
+      label109:
+      bmbx.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
+      CaptureQmcfSoDownloadActivity.a(paramContext, blhu.class.getName(), localBundle, localBundle.getBoolean("resource_need_all_wait", false));
+    }
+  }
+  
+  public void a(@NonNull Bundle paramBundle)
+  {
+    if (!paramBundle.containsKey("entrance_type")) {
+      xvv.b("Q.qqstory.publish.StoryPublishLauncher", "do not has entrance type", new Throwable());
+    }
+    if (!paramBundle.containsKey("edit_video_type")) {
+      paramBundle.putInt("edit_video_type", 10002);
+    }
+    if (!paramBundle.containsKey("ability_flag")) {
+      paramBundle.putInt("ability_flag", 1);
+    }
+    if (!paramBundle.containsKey("enable_multi_fragment"))
+    {
+      paramBundle.putBoolean("enable_multi_fragment", true);
+      if (!paramBundle.containsKey("capture_max_duration")) {
+        paramBundle.putLong("capture_max_duration", 60000L);
+      }
+    }
+    if (!paramBundle.containsKey("capture_max_duration")) {
+      paramBundle.putLong("capture_max_duration", 10000L);
+    }
+    paramBundle.putBoolean("camera_peak_is_alive", blig.a(BaseApplicationImpl.getContext()));
+  }
+  
+  @Deprecated
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(Activity paramActivity, Bundle paramBundle, int paramInt)
+  {
+    boolean bool2 = true;
+    if (a().isVideoChatting())
+    {
+      QQToast.a(paramActivity, 0, 2131718468, 0).a();
+      bool2 = false;
+      return bool2;
+    }
+    if (a(paramActivity)) {
+      return false;
+    }
+    boolean bool1;
+    if ((paramBundle != null) && (paramBundle.getInt("entrance_type") == 104))
+    {
+      bool1 = body.a(a());
+      label63:
+      xvv.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(bool1), Boolean.valueOf(b()));
+      QQStoryContext.a().b();
+      if (paramBundle != null) {
+        break label134;
+      }
+      paramBundle = new Bundle();
+    }
+    label134:
+    for (;;)
+    {
+      a(paramBundle);
+      if (bool1) {
+        break;
+      }
+      CaptureQmcfSoDownloadActivity.a(paramActivity, blhu.class.getName(), paramBundle, paramInt, true, true);
+      return false;
+      bool1 = blvv.a();
+      break label63;
+    }
+  }
+  
+  public void b(Context paramContext, Bundle paramBundle)
+  {
+    if (a().isVideoChatting())
+    {
+      bmbx.c("Q.qqstory.publish.StoryPublishLauncher", "【2131718468】");
+      QQToast.a(paramContext, 0, 2131718468, 0).a();
+      QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: isVideoChatting");
+      return;
+    }
+    if (a(paramContext))
+    {
+      QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: not support short video");
+      return;
+    }
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    a(localBundle);
+    QIMCameraCaptureActivity.a(paramContext, localBundle);
+  }
 }
 
 

@@ -35,7 +35,7 @@ public abstract interface IEventListener
   
   public abstract void onDialogShow(Activity paramActivity, Dialog paramDialog);
   
-  public abstract void onDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean);
+  public abstract void onDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract void onFragmentDestroyView(FragmentCompat paramFragmentCompat);
   

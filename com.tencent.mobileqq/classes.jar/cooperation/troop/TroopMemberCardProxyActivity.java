@@ -6,10 +6,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bdll;
-import bmgk;
-import bmgt;
-import bnsk;
+import bcef;
+import bkkq;
+import bkkz;
+import bkxr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -19,12 +19,12 @@ public class TroopMemberCardProxyActivity
 {
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    paramQQAppInterface = new bnsk(paramQQAppInterface);
+    paramQQAppInterface = new bkxr(paramQQAppInterface);
     PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
     if (localPluginCommunicationHandler != null) {
       localPluginCommunicationHandler.register(paramQQAppInterface);
     }
-    paramQQAppInterface = new bmgt(1);
+    paramQQAppInterface = new bkkz(1);
     paramQQAppInterface.jdField_b_of_type_JavaLangString = paramString1;
     paramQQAppInterface.d = paramString2;
     paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString4;
@@ -38,15 +38,16 @@ public class TroopMemberCardProxyActivity
     paramQQAppInterface.jdField_b_of_type_Int = paramInt;
     paramQQAppInterface.c = 10000;
     paramQQAppInterface.f = null;
-    bmgk.a(paramActivity, paramQQAppInterface);
-    bdll.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
+    bkkq.a(paramActivity, paramQQAppInterface);
+    bcef.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

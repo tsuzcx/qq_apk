@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import ocd;
-import paa;
+import odq;
+import pbg;
 
 public final class ReadinjoyReportUtils$4
   implements Runnable
@@ -11,16 +11,16 @@ public final class ReadinjoyReportUtils$4
   
   public void run()
   {
-    paa localpaa = new paa();
+    pbg localpbg = new pbg();
     if (this.a.mUnreadNum > 0) {}
     for (int i = 1;; i = 0)
     {
-      localpaa.b("reddot_position", "" + (this.a.mPosition + 1));
+      localpbg.b("reddot_position", "" + (this.a.mPosition + 1));
       if (i != 0) {}
       for (String str = "1";; str = "0")
       {
-        localpaa.b("reddot_state", str);
-        ocd.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localpaa.a(), false);
+        localpbg.b("reddot_state", str);
+        odq.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localpbg.a(), false);
         return;
       }
     }
@@ -28,7 +28,7 @@ public final class ReadinjoyReportUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ReadinjoyReportUtils.4
  * JD-Core Version:    0.7.0.1
  */

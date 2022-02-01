@@ -1,17 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
 class ahie
-  extends ahkx
+  extends amsu
 {
-  ahie(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahie(ahia paramahia) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    return new ahxi(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ahia.a(this.a, paramBoolean, paramObject);
   }
 }
 

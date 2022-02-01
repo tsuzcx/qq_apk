@@ -1,27 +1,24 @@
-class llv
+import java.io.BufferedReader;
+
+public class llv
+  extends llu
 {
-  static final float[] a;
+  private float a;
+  private float b;
   
-  static
+  public float a()
   {
-    int k = 0;
-    a = new float[16384];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 16384) {
-        break;
-      }
-      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
-      i += 1;
+    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * llm.a();
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
-    while (j < 360)
-    {
-      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
-    }
+    this.jdField_a_of_type_Float = llr.a(paramBufferedReader, "lowMin");
+    this.b = llr.a(paramBufferedReader, "lowMax");
   }
 }
 

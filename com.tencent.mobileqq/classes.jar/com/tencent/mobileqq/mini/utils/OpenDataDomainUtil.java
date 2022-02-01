@@ -43,7 +43,7 @@ public class OpenDataDomainUtil
         if (this.mDomainWhiteList == null)
         {
           this.mDomainWhiteList = new ArrayList();
-          String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com");
+          String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la");
           if ((str1 != null) && (!str1.equals(this.mCurWhiteListConfig)))
           {
             QLog.i("[mini] http.openDataDomainValid", 1, "Default white domain:" + str1);

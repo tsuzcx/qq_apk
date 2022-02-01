@@ -10,87 +10,103 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bndc;
-import bndd;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PanoramaGuideAnimate
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bndc(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bndd jdField_a_of_type_Bndd;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private float b;
-  private float c = 1.0F;
+  private static final float ALPHA_RATE = 0.05F;
+  private static final int HANDLE_MSG_ALPHA = 292;
+  private static final int HANDLE_MSG_ROTATE = 291;
+  private static final int ORIENTATION_ANTI_CLOCK_WISE = 1;
+  private static final int ORIENTATION_CLOCK_WISE = 0;
+  private static final int ROTATE_ANGEL = 45;
+  private static final float ROTATE_RATE = 0.15F;
+  private static final int TRANSLATION_DISTANCE = 140;
+  private float alpha = 1.0F;
+  private Context context;
+  private int currentOrientation = 0;
+  private float currentRotate;
+  private float currentTranslation;
+  private Handler handler = new PanoramaGuideAnimate.1(this);
+  private ImageView imgPhone;
+  private PanoramaGuideAnimate.OnAnimateListener onAnimateListener;
+  private Timer timer;
+  private TimerTask timerTask;
+  private TextView tvToast;
   
   public PanoramaGuideAnimate(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public PanoramaGuideAnimate(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a()
+  private void init(Context paramContext)
   {
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new PanoramaGuideAnimate.2(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 800L, 1L);
+    this.context = paramContext;
   }
   
-  private void a(Context paramContext)
+  private void startTimer()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (this.timer != null) {
+      this.timer.cancel();
+    }
+    if (this.timerTask != null) {
+      this.timerTask.cancel();
+    }
+    this.timer = new Timer();
+    this.timerTask = new PanoramaGuideAnimate.2(this);
+    this.timer.schedule(this.timerTask, 800L, 1L);
   }
   
   @TargetApi(11)
-  public void a(int paramInt)
+  public void addView(int paramInt)
   {
     setOrientation(1);
     setGravity(1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847625);
+    this.imgPhone = new ImageView(this.context);
+    this.imgPhone.setImageResource(2130847535);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    addView(this.imgPhone, localLayoutParams);
+    this.tvToast = new TextView(this.context);
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131716668));
+      this.tvToast.setText(this.context.getResources().getString(2131716902));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
+      this.tvToast.setTextColor(-1);
+      this.tvToast.setTextSize(14.0F);
       localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setRotationY(0.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-      a();
+      addView(this.tvToast, localLayoutParams);
+      this.imgPhone.setRotationY(0.0F);
+      this.imgPhone.setTranslationX(0.0F);
+      startTimer();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131716669));
+      this.tvToast.setText(this.context.getResources().getString(2131716903));
     }
   }
   
-  public void setOnAnimateListener(bndd parambndd)
+  public void onPause()
   {
-    this.jdField_a_of_type_Bndd = parambndd;
+    if (this.timer != null) {
+      this.timer.cancel();
+    }
+    if (this.timerTask != null) {
+      this.timerTask.cancel();
+    }
+  }
+  
+  public void setOnAnimateListener(PanoramaGuideAnimate.OnAnimateListener paramOnAnimateListener)
+  {
+    this.onAnimateListener = paramOnAnimateListener;
   }
 }
 

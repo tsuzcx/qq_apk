@@ -1,40 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class qap
-  implements CustomMethodsRegister.CustomMethodInterface
+class qap
+  implements ViewBase.OnClickListener
 {
-  private Map<String, CustomMethodsRegister.CustomMethodInterface> a = new HashMap();
+  qap(qao paramqao, BaseArticleInfo paramBaseArticleInfo, pvc parampvc, ViewBase paramViewBase) {}
   
-  public qap()
+  public void onClick(ViewBase paramViewBase)
   {
-    a();
-  }
-  
-  private void a()
-  {
-    a("decodeEmotion", new qar(null));
-    a("HyperLinkClick", new qas(null));
-  }
-  
-  public void a(String paramString, CustomMethodsRegister.CustomMethodInterface paramCustomMethodInterface)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramCustomMethodInterface == null)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
       return;
     }
-    this.a.put(paramString, paramCustomMethodInterface);
-  }
-  
-  public Object invoke(String paramString, Object... paramVarArgs)
-  {
-    QLog.d("RIJProteusMethod", 1, "invoke,s=" + paramString);
-    if (this.a.containsKey(paramString)) {
-      return ((CustomMethodsRegister.CustomMethodInterface)this.a.get(paramString)).invoke(paramString, paramVarArgs);
+    QLog.i("BigImageVideoProteusItem", 1, "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances);
+    paramViewBase = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
+    QLog.i("BigImageVideoProteusItem", 1, "" + paramViewBase);
+    if ((paramViewBase.a != null) && (paramViewBase.a.a != 3)) {
+      rwv.a(this.jdField_a_of_type_Pvc.a().getContext(), paramViewBase.a);
     }
-    return null;
+    ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    pim.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
 }
 

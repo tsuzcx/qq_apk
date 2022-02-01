@@ -1,58 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.util.List;
-
 public class bcff
-  implements bcfq
+  extends bcfe
 {
-  protected int a;
-  private String a;
-  public List<bcfr> a;
+  public long c = 0L;
+  boolean e = false;
+  public int j = 80;
+  public int k = 70;
+  public int l = 5;
+  public int m;
   
-  public bcff(List<bcfr> paramList, String paramString, int paramInt)
+  public bcff(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return anzj.a(2131704288);
-  }
-  
-  public List<bcfr> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    bcjy.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
-    String str = bcni.b("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
-    str = bcni.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
-    str = "mqqapi://microapp/open?url=" + str;
-    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
+    this.l = (paramInt1 % 1000);
+    this.k = (paramInt1 / 1000 % 1000);
+    this.j = (paramInt1 / 1000 / 1000 % 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcff
  * JD-Core Version:    0.7.0.1
  */

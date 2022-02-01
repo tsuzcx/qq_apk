@@ -1,203 +1,111 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
+import mqq.app.MobileQQ;
 
-public class bgod
-  extends bgny
-  implements View.OnClickListener
+public abstract class bgod
 {
-  protected bgop a;
+  String wifiFlow;
+  String xgFlow;
   
-  public bgod(Context paramContext, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, TroopAppShortcutContainer paramTroopAppShortcutContainer, Bundle paramBundle)
+  public bgod() {}
+  
+  public bgod(String paramString1, String paramString2)
   {
-    super(paramContext, paramQQAppInterface, paramFragmentActivity, paramTroopAppShortcutContainer, paramBundle);
-    this.jdField_a_of_type_Bgop = new bgop();
+    this.wifiFlow = paramString1;
+    this.xgFlow = paramString2;
   }
   
-  private void a(View paramView)
+  private void reportErrorToMM(bgoe parambgoe)
   {
-    bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bgop.jdField_b_of_type_Long, this.jdField_a_of_type_Bgop.c, 1, 0);
-    bdll.b(null, "dc00898", "", String.valueOf(this.jdField_a_of_type_Long), "0X800AFBD", "0X800AFBD", 0, 0, String.valueOf(this.jdField_b_of_type_Long), String.valueOf(this.jdField_a_of_type_Bgop.jdField_b_of_type_Long), "", this.jdField_a_of_type_Bgop.jdField_e_of_type_JavaLangString);
-  }
-  
-  private void b(View paramView)
-  {
-    bdll.b(null, "dc00898", "", String.valueOf(this.jdField_a_of_type_Long), "0X800AFBE", "0X800AFBE", 0, 0, String.valueOf(this.jdField_b_of_type_Long), String.valueOf(this.jdField_a_of_type_Bgop.jdField_b_of_type_Long), "", this.jdField_a_of_type_Bgop.jdField_e_of_type_JavaLangString);
-    if (!bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131698528), 0).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("DownloadListener", 2, "-->report MM");
     }
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    paramView = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    String str1;
-    if (paramView != null)
+    if (parambgoe.a() != 3)
     {
-      str1 = paramView.getSkey(str2);
-      paramView = paramView.getPskey(str2, "qun.qq.com");
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      HashMap localHashMap = new HashMap();
-      localBundle.putString("bkn", "" + bguq.b(str1));
-      localBundle.putString("Cookie", "uin=o" + str2 + ";skey=" + str1 + ";p_uin=o" + str2 + ";p_skey=" + paramView);
-      localBundle.putString("gc", String.valueOf(this.jdField_a_of_type_Long));
-      localBundle.putString("append_appid", String.valueOf(this.jdField_a_of_type_Bgop.jdField_b_of_type_Long));
-      localBundle.putString("add_type", "1");
-      localBundle.putString("append_source", String.valueOf(this.jdField_a_of_type_Bgop.jdField_a_of_type_Long));
-      localBundle.putString("qqver", "8.4.5.4745");
-      localBundle.putString("platform", "2");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-      new bgpq("https://app.qun.qq.com/cgi-bin/api/inner_setunifiedapp", "POST", new bgoe(this, this.jdField_a_of_type_Bgop), 1000, null).a(localHashMap);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.e("DownloadListener", 2, "-->report MM:command=" + parambgoe.c + ",error code=" + parambgoe.jdField_a_of_type_Int + ",uin=" + parambgoe.jdField_a_of_type_Bgof.jdField_a_of_type_Long);
       }
-      QLog.d("AppsRecommendViewBuilder", 2, "onClickAdd mTroopUin:" + this.jdField_a_of_type_Long + " append_appid:" + this.jdField_a_of_type_Bgop.jdField_b_of_type_Long);
-      return;
-      paramView = null;
-      str1 = null;
+      bhvw.a().a(parambgoe.c, 100, parambgoe.jdField_a_of_type_Int, String.valueOf(parambgoe.jdField_a_of_type_Bgof.jdField_a_of_type_Long), parambgoe.jdField_a_of_type_Bgof.jdField_a_of_type_Int, amtj.a(2131702623), true);
     }
   }
   
-  public int a()
+  public void onCancel(bgoe parambgoe) {}
+  
+  public void onDone(bgoe parambgoe)
   {
-    return 3;
+    parambgoe.h = System.currentTimeMillis();
+    if (parambgoe.a((byte)1)) {
+      reportErrorToMM(parambgoe);
+    }
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onDoneFile(bgoe parambgoe) {}
+  
+  public void onNetMobile2None()
   {
-    boolean bool;
-    if (paramView == null)
-    {
-      paramView = new bgof();
-      Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559860, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131362822));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131362834));
-      paramView.b = ((TextView)((View)localObject).findViewById(2131362837));
-      paramView.c = ((TextView)((View)localObject).findViewById(2131362820));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131362813));
-      ((View)localObject).setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-      paramView.setClickable(true);
-      paramView.setOnClickListener(this);
-      localObject = this.jdField_a_of_type_AndroidContentContext;
-      ImageView localImageView = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      String str = this.jdField_a_of_type_Bgop.jdField_b_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Bgop.jdField_e_of_type_Int != 1) {
-        break label413;
-      }
-      bool = true;
-      label157:
-      bgqr.a((Context)localObject, localImageView, str, 48.0F, bool);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label419;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      label191:
-      if (this.jdField_a_of_type_Bgop.f <= 0) {
-        break label433;
-      }
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText(String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698531).replace("$COUNT", String.valueOf(this.jdField_a_of_type_Bgop.f)), new Object[0]));
-      localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setCornerRadius(6.0F);
-      ((GradientDrawable)localObject).setColor(-1315339);
-      paramViewGroup.b.setBackgroundDrawable((Drawable)localObject);
-      label286:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bgop.jdField_a_of_type_JavaLangString);
-      paramViewGroup.c.setText(this.jdField_a_of_type_Bgop.d);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label486;
-      }
-      if (!this.jdField_a_of_type_Bgop.jdField_a_of_type_Boolean) {
-        break label445;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTextColor(-5196865);
-      label349:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadListener", 2, "onNetMobile2None...");
     }
-    for (;;)
+  }
+  
+  public void onNetWifi2Mobile()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadListener", 2, "onNetWifi2Mobile...");
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadListener", 2, "onNetWifi2None...");
+    }
+  }
+  
+  public void onPause(bgoe parambgoe) {}
+  
+  public void onProgress(bgoe parambgoe) {}
+  
+  public boolean onStart(bgoe parambgoe)
+  {
+    parambgoe.g = System.currentTimeMillis();
+    return true;
+  }
+  
+  public void report(AppInterface paramAppInterface, long paramLong)
+  {
+    String[] arrayOfString;
+    if ((this.wifiFlow != null) && (this.xgFlow != null) && (paramAppInterface != null))
     {
-      if (this.jdField_a_of_type_Boolean)
+      arrayOfString = null;
+      int i = NetworkUtil.getSystemNetwork(paramAppInterface.getApplication().getApplicationContext());
+      if (i > 0)
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
-        paramView.setBackgroundColor(-16777216);
+        if (i != 1) {
+          break label134;
+        }
+        arrayOfString = new String[3];
+        arrayOfString[0] = this.wifiFlow;
+        arrayOfString[1] = "param_WIFIFlow";
+        arrayOfString[2] = "param_Flow";
       }
-      return paramView;
-      paramViewGroup = (bgof)paramView.getTag();
-      break;
-      label413:
-      bool = false;
-      break label157;
-      label419:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(0, PorterDuff.Mode.SRC_ATOP);
-      break label191;
-      label433:
-      paramViewGroup.b.setVisibility(8);
-      break label286;
-      label445:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16578534);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label349;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#ffffff"));
-      break label349;
-      label486:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_Bgop;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof bgop)) {
-      this.jdField_a_of_type_Bgop = ((bgop)paramObject);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((arrayOfString != null) && (paramLong > 0L))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("com.tencent.mobileqq.vip.DownloadListener", 2, "report | tags=" + arrayOfString + ",len=" + paramLong);
+        }
+        paramAppInterface.sendAppDataIncerment(paramAppInterface.getCurrentAccountUin(), arrayOfString, paramLong);
+      }
       return;
-      a(paramView);
-      continue;
-      b(paramView);
+      label134:
+      arrayOfString = new String[3];
+      arrayOfString[0] = this.xgFlow;
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
     }
   }
 }

@@ -6,43 +6,43 @@ import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgef;
-import bgex;
-import bgfa;
-import bgfb;
-import bgfd;
+import benn;
+import beof;
+import beoi;
+import beoj;
+import beol;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class AudioItem$AudioUploadCallback$1
   implements Runnable
 {
-  public AudioItem$AudioUploadCallback$1(bgfa parambgfa) {}
+  public AudioItem$AudioUploadCallback$1(beoi parambeoi) {}
   
   public void run()
   {
-    bgfb localbgfb;
-    if (this.a.jdField_a_of_type_Bgef.c < this.a.jdField_a_of_type_Bgex.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount())
+    beoj localbeoj;
+    if (this.a.jdField_a_of_type_Benn.c < this.a.jdField_a_of_type_Beof.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount())
     {
-      this.a.jdField_a_of_type_Bgex.jdField_a_of_type_Bgfd.a(this.a.jdField_a_of_type_Bgex.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bgef.c), true);
-      localbgfb = (bgfb)this.a.jdField_a_of_type_Bgex.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bgef.c);
-      if (localbgfb != null)
+      this.a.jdField_a_of_type_Beof.jdField_a_of_type_Beol.a(this.a.jdField_a_of_type_Beof.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Benn.c), true);
+      localbeoj = (beoj)this.a.jdField_a_of_type_Beof.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Benn.c);
+      if (localbeoj != null)
       {
-        if (!this.a.jdField_a_of_type_Bgef.a) {
+        if (!this.a.jdField_a_of_type_Benn.a) {
           break label171;
         }
-        AnimationDrawable localAnimationDrawable = (AnimationDrawable)bgex.a(this.a.jdField_a_of_type_Bgex).getResources().getDrawable(2130772273);
-        localbgfb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
+        AnimationDrawable localAnimationDrawable = (AnimationDrawable)beof.a(this.a.jdField_a_of_type_Beof).getResources().getDrawable(2130772271);
+        localbeoj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
         localAnimationDrawable.start();
       }
     }
     for (;;)
     {
-      localbgfb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localbgfb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localbgfb.c.setVisibility(4);
+      localbeoj.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbeoj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localbeoj.c.setVisibility(4);
       return;
       label171:
-      localbgfb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847037);
+      localbeoj.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846945);
     }
   }
 }

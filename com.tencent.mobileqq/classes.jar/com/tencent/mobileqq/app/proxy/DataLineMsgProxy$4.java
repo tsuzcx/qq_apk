@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.proxy;
 
-import apas;
+import anuv;
 
 public class DataLineMsgProxy$4
   implements Runnable
 {
-  public DataLineMsgProxy$4(apas paramapas, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public DataLineMsgProxy$4(anuv paramanuv, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {

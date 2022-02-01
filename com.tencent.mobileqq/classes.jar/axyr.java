@@ -1,29 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class axyr
-  implements biug<oidb_0x8e4.RspBody>
 {
-  public axyr(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  private volatile CameraPosition jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(CameraPosition paramCameraPosition)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.a = this.a.b;
-    }
-    for (;;)
-    {
-      this.a.a(true);
-      return;
-      paramRspBody = this.a;
-      GameRoomInviteActivity.a = null;
-      paramRspBody.b = null;
-    }
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = paramCameraPosition;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(10);
+    localStringBuilder.append("mLastCameraPosition:").append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition);
+    localStringBuilder.append(" mMapZoomKey:").append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

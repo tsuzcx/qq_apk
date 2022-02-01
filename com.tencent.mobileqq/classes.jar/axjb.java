@@ -1,4 +1,11 @@
-public class axjb {}
+import java.util.List;
+
+public abstract interface axjb
+{
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(List<axjf> paramList);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

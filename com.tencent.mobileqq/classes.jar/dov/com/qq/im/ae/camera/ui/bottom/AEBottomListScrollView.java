@@ -1,6 +1,5 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import abab;
 import android.content.Context;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
@@ -10,23 +9,26 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.View;
-import bolk;
-import bolx;
-import bomc;
-import bomd;
-import bome;
-import bomf;
-import boml;
-import bomn;
-import boqu;
+import blpq;
+import blqd;
+import blqi;
+import blqj;
+import blqk;
+import blql;
+import blqm;
+import blqs;
+import blqu;
+import blvb;
+import zwo;
 
 public class AEBottomListScrollView
   extends RecyclerView
 {
   private static final String jdField_a_of_type_JavaLangString = AEBottomListScrollView.class.getSimpleName();
-  private bolx jdField_a_of_type_Bolx;
-  private bomd jdField_a_of_type_Bomd;
-  private bome jdField_a_of_type_Bome;
+  private blqd jdField_a_of_type_Blqd;
+  private blqi jdField_a_of_type_Blqi;
+  private blqk jdField_a_of_type_Blqk;
+  private blql jdField_a_of_type_Blql;
   private boolean jdField_a_of_type_Boolean;
   
   public AEBottomListScrollView(Context paramContext)
@@ -49,24 +51,24 @@ public class AEBottomListScrollView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bomd == null) {
+    if (this.jdField_a_of_type_Blqk == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Bolx.b();
+    int i = this.jdField_a_of_type_Blqd.b();
     c(a(i), i);
   }
   
   private void a(float paramFloat, int paramInt1, int paramInt2, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
-    if (this.jdField_a_of_type_Bome != null) {
-      this.jdField_a_of_type_Bome.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
+    if (this.jdField_a_of_type_Blql != null) {
+      this.jdField_a_of_type_Blql.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
     }
   }
   
   private void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bome != null) {
-      this.jdField_a_of_type_Bome.c(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Blql != null) {
+      this.jdField_a_of_type_Blql.c(paramViewHolder, paramInt);
     }
   }
   
@@ -76,59 +78,72 @@ public class AEBottomListScrollView
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bolx = new bolx(getContext(), new bomf(this, null), new bomn());
-      setLayoutManager(this.jdField_a_of_type_Bolx);
+      this.jdField_a_of_type_Blqd = new blqd(getContext(), new blqm(this, null), new blqu());
+      setLayoutManager(this.jdField_a_of_type_Blqd);
       return;
     }
   }
   
   private void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bomd != null) {
-      this.jdField_a_of_type_Bomd.a(paramViewHolder, true);
+    if (this.jdField_a_of_type_Blqk != null) {
+      this.jdField_a_of_type_Blqk.a(paramViewHolder, true);
     }
-    if (this.jdField_a_of_type_Bome != null) {
-      this.jdField_a_of_type_Bome.b(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Blql != null) {
+      this.jdField_a_of_type_Blql.b(paramViewHolder, paramInt);
     }
   }
   
   private void c(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bomd != null) {
-      this.jdField_a_of_type_Bomd.a(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Blqk != null) {
+      this.jdField_a_of_type_Blqk.a(paramViewHolder, paramInt);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Bolx.b();
+    return this.jdField_a_of_type_Blqd.b();
   }
   
   @Nullable
   public RecyclerView.ViewHolder a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_Bolx.findViewByPosition(paramInt);
+    View localView = this.jdField_a_of_type_Blqd.findViewByPosition(paramInt);
     if (localView != null) {
       return getChildViewHolder(localView);
     }
     return null;
   }
   
-  public void a(int paramInt, boqu paramboqu)
+  public void a(int paramInt, blvb paramblvb)
   {
-    bolk localbolk = (bolk)a(this.jdField_a_of_type_Bolx.b());
-    if (localbolk != null) {
-      localbolk.a(4);
+    blpq localblpq = (blpq)a(this.jdField_a_of_type_Blqd.b());
+    if (localblpq != null) {
+      localblpq.a(4);
     }
-    localbolk = (bolk)a(paramInt);
-    if (localbolk != null)
+    localblpq = (blpq)a(paramInt);
+    if (localblpq != null)
     {
-      localbolk.b(paramboqu);
-      localbolk.a(3);
-      if ((paramboqu != null) && (paramboqu.e)) {
-        localbolk.a(2);
+      localblpq.b(paramblvb);
+      localblpq.a(3);
+      if ((paramblvb != null) && (paramblvb.e)) {
+        localblpq.a(2);
       }
+      if (this.jdField_a_of_type_Blqi != null)
+      {
+        if ((localblpq.a == null) || (!localblpq.a.jdField_a_of_type_Boolean)) {
+          break label103;
+        }
+        this.jdField_a_of_type_Blqi.a(true);
+      }
+    }
+    for (;;)
+    {
       scrollToPosition(paramInt);
+      return;
+      label103:
+      this.jdField_a_of_type_Blqi.a(false);
     }
   }
   
@@ -137,17 +152,22 @@ public class AEBottomListScrollView
     boolean bool = super.fling(paramInt1, paramInt2);
     if (bool)
     {
-      this.jdField_a_of_type_Bolx.a(paramInt1, paramInt2);
+      this.jdField_a_of_type_Blqd.a(paramInt1, paramInt2);
       return bool;
     }
-    this.jdField_a_of_type_Bolx.c();
+    this.jdField_a_of_type_Blqd.c();
     return bool;
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Bolx.a(null);
+    this.jdField_a_of_type_Blqd.a(null);
+  }
+  
+  public void setAEEditMaterialSelectedListener(@NonNull blqi paramblqi)
+  {
+    this.jdField_a_of_type_Blqi = paramblqi;
   }
   
   public void setClampTransformProgressAfter(@IntRange(from=1L) int paramInt)
@@ -155,29 +175,29 @@ public class AEBottomListScrollView
     if (paramInt <= 1) {
       throw new IllegalArgumentException("must be >= 1");
     }
-    this.jdField_a_of_type_Bolx.c(paramInt);
+    this.jdField_a_of_type_Blqd.c(paramInt);
   }
   
-  public void setItemTransformer(abab paramabab)
+  public void setItemTransformer(zwo paramzwo)
   {
-    this.jdField_a_of_type_Bolx.a(paramabab);
+    this.jdField_a_of_type_Blqd.a(paramzwo);
   }
   
   public void setItemTransitionTimeMillis(@IntRange(from=10L) int paramInt)
   {
-    this.jdField_a_of_type_Bolx.a(paramInt);
+    this.jdField_a_of_type_Blqd.a(paramInt);
   }
   
-  public void setLayoutCallback(bomc parambomc)
+  public void setLayoutCallback(blqj paramblqj)
   {
-    if (this.jdField_a_of_type_Bolx != null) {
-      this.jdField_a_of_type_Bolx.a(parambomc);
+    if (this.jdField_a_of_type_Blqd != null) {
+      this.jdField_a_of_type_Blqd.a(paramblqj);
     }
   }
   
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((paramLayoutManager instanceof bolx))
+    if ((paramLayoutManager instanceof blqd))
     {
       super.setLayoutManager(paramLayoutManager);
       return;
@@ -187,17 +207,17 @@ public class AEBottomListScrollView
   
   public void setOffscreenItems(int paramInt)
   {
-    this.jdField_a_of_type_Bolx.b(paramInt);
+    this.jdField_a_of_type_Blqd.b(paramInt);
   }
   
-  public void setOnItemChangedListener(@NonNull bomd<?> parambomd)
+  public void setOnItemChangedListener(@NonNull blqk<?> paramblqk)
   {
-    this.jdField_a_of_type_Bomd = parambomd;
+    this.jdField_a_of_type_Blqk = paramblqk;
   }
   
-  public void setOrientation(boml paramboml)
+  public void setOrientation(blqs paramblqs)
   {
-    this.jdField_a_of_type_Bolx.a(paramboml);
+    this.jdField_a_of_type_Blqd.a(paramblqs);
   }
   
   public void setOverScrollEnabled(boolean paramBoolean)
@@ -206,19 +226,19 @@ public class AEBottomListScrollView
     setOverScrollMode(2);
   }
   
-  public void setScrollStateChangeListener(@NonNull bome<?> parambome)
+  public void setScrollStateChangeListener(@NonNull blql<?> paramblql)
   {
-    this.jdField_a_of_type_Bome = parambome;
+    this.jdField_a_of_type_Blql = paramblql;
   }
   
   public void setSlideOnFling(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bolx.a(paramBoolean);
+    this.jdField_a_of_type_Blqd.a(paramBoolean);
   }
   
   public void setSlideOnFlingThreshold(int paramInt)
   {
-    this.jdField_a_of_type_Bolx.d(paramInt);
+    this.jdField_a_of_type_Blqd.d(paramInt);
   }
 }
 

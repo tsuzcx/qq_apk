@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.appinfo.data.AppDetail;
-import java.util.concurrent.Executor;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
 
-class atqz
-  implements atsg
+public class atqz
+  extends BroadcastReceiver
 {
-  atqz(atqy paramatqy) {}
+  public atqz(HotChatFragment paramHotChatFragment) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("FileManagerEngine<FileAssistant>", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName + "]");
-    aunu.a().execute(this.a.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void a(boolean paramBoolean, AppDetail paramAppDetail)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkPackageName = paramAppDetail.packageName;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName = paramAppDetail.appName;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkIconUrl = paramAppDetail.iconUrl;
+    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
+      this.a.a.refresh();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqz
  * JD-Core Version:    0.7.0.1
  */

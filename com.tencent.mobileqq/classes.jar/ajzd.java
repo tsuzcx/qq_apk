@@ -1,34 +1,71 @@
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
-class ajzd
-  implements ashj
+public class ajzd
+  extends Handler
 {
-  ajzd(ajyt paramajyt, int paramInt) {}
+  WeakReference<QzoneHbFragment> a;
   
-  public void a(float paramFloat, List<Integer> paramList)
+  public ajzd(QzoneHbFragment paramQzoneHbFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + ajyt.b(this.jdField_a_of_type_Ajyt));
-    }
-    if (!ajyt.b(this.jdField_a_of_type_Ajyt))
-    {
-      ajyt.b(this.jdField_a_of_type_Ajyt, paramList);
-      ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_Int, paramFloat);
-    }
+    this.a = new WeakReference(paramQzoneHbFragment);
   }
   
-  public void a(List<Integer> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + ajyt.b(this.jdField_a_of_type_Ajyt));
-    }
-    if (!ajyt.b(this.jdField_a_of_type_Ajyt))
+    QzoneHbFragment localQzoneHbFragment = (QzoneHbFragment)this.a.get();
+    if (localQzoneHbFragment == null) {}
+    do
     {
-      ajyt.a(this.jdField_a_of_type_Ajyt).removeMessages(11);
-      ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_Int, paramList);
-    }
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 102: 
+          default: 
+            return;
+          case 100: 
+            if (QLog.isColorLevel()) {
+              QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
+            }
+            break;
+          }
+        } while ((QzoneHbFragment.a(localQzoneHbFragment) == null) || (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment))));
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
+          }
+          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
+          QzoneHbFragment.a(localQzoneHbFragment).reset(d);
+          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
+          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
+          QzoneHbFragment.a(localQzoneHbFragment).roll();
+          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          paramMessage.printStackTrace();
+          return;
+        }
+      } while (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)));
+      QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
+      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
+      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
+      QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
   }
 }
 

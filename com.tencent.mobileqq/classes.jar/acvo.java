@@ -1,40 +1,29 @@
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.statistics.GdtReportForAntiSpam.1;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class acvo
+final class acvo
+  implements DialogInterface.OnClickListener
 {
-  public static void a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject;
-    if (paramJSONObject != null)
-    {
-      localJSONObject = paramJSONObject;
-      if (!JSONObject.NULL.equals(paramJSONObject)) {}
-    }
-    else
-    {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("ct", System.currentTimeMillis());
-      b(localJSONObject);
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      for (;;)
-      {
-        acvc.d("GdtReportForAntiSpam", "reportAntiSpamForClick", paramJSONObject);
-      }
-    }
-  }
+  acvo(QQAppInterface paramQQAppInterface, acxb paramacxb, long paramLong, Context paramContext, acxa paramacxa) {}
   
-  public static void b(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramJSONObject = paramJSONObject.toString().getBytes();
-    AdThreadManager.INSTANCE.post(new GdtReportForAntiSpam.1(paramJSONObject), 4);
+    awjw localawjw = (awjw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(66);
+    if (localawjw != null) {
+      localawjw.a((byte)0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNearbyProxy().a(true);
+    if (this.jdField_a_of_type_Acxb.a) {
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    }
+    this.jdField_a_of_type_Acxb.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_Acxb);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

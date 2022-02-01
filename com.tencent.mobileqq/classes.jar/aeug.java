@@ -1,26 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
 public class aeug
-  extends BroadcastReceiver
+  implements Comparator<aewb>
 {
-  public aeug(JumpActivity paramJumpActivity) {}
+  public aeug(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(aewb paramaewb1, aewb paramaewb2)
   {
-    if (!this.a.isFinishing())
-    {
-      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
-      this.a.finish();
+    long l = paramaewb2.a - paramaewb1.a;
+    if (l > 0L) {
+      return 1;
     }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeug
  * JD-Core Version:    0.7.0.1
  */

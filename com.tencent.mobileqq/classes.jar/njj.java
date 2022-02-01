@@ -1,26 +1,14 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
-
 public class njj
-  implements View.OnKeyListener
 {
-  public njj(PoiMapActivity paramPoiMapActivity) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public njj(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      if (!TextUtils.isEmpty(paramView)) {
-        this.a.a(paramView);
-      }
-      return true;
-    }
-    return false;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 

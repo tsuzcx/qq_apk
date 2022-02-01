@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
-import axwf;
-import aybf;
-import aybg;
-import aybo;
+import awjn;
+import awon;
+import awoo;
+import awow;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppService;
@@ -15,25 +15,25 @@ import mqq.app.AppService;
 public class ConnectNearbyProcService
   extends AppService
 {
-  private static aybo jdField_a_of_type_Aybo;
+  private static awow jdField_a_of_type_Awow;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private axwf jdField_a_of_type_Axwf;
-  private aybg jdField_a_of_type_Aybg = new aybf(this);
+  private awjn jdField_a_of_type_Awjn;
+  private awoo jdField_a_of_type_Awoo = new awon(this);
   
   public static Message a(Message paramMessage)
   {
-    if ((jdField_a_of_type_Aybo == null) || (paramMessage == null)) {
+    if ((jdField_a_of_type_Awow == null) || (paramMessage == null)) {
       return null;
     }
     try
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Aybo == null) {
+        if (jdField_a_of_type_Awow == null) {
           return null;
         }
       }
-      paramMessage = jdField_a_of_type_Aybo.a(paramMessage);
+      paramMessage = jdField_a_of_type_Awow.a(paramMessage);
     }
     catch (RemoteException paramMessage)
     {
@@ -48,7 +48,7 @@ public class ConnectNearbyProcService
     if ((this.app == null) || (!(this.app instanceof QQAppInterface))) {
       throw new IllegalArgumentException("not QQAppInterface. wrong.");
     }
-    this.jdField_a_of_type_Axwf = ((QQAppInterface)this.app).a();
+    this.jdField_a_of_type_Awjn = ((QQAppInterface)this.app).getNearbyProxy();
   }
   
   public static boolean a()
@@ -57,7 +57,7 @@ public class ConnectNearbyProcService
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Aybo != null)
+        if (jdField_a_of_type_Awow != null)
         {
           bool = true;
           return bool;
@@ -74,18 +74,18 @@ public class ConnectNearbyProcService
   
   public static Object[] a(int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_Aybo == null) {
+    if (jdField_a_of_type_Awow == null) {
       return null;
     }
     try
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Aybo == null) {
+        if (jdField_a_of_type_Awow == null) {
           return null;
         }
       }
-      paramVarArgs = jdField_a_of_type_Aybo.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
+      paramVarArgs = jdField_a_of_type_Awow.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
     }
     catch (RemoteException paramVarArgs)
     {
@@ -101,16 +101,16 @@ public class ConnectNearbyProcService
   
   private Message b(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Axwf != null) {
-      return this.jdField_a_of_type_Axwf.a(this, paramMessage);
+    if (this.jdField_a_of_type_Awjn != null) {
+      return this.jdField_a_of_type_Awjn.a(this, paramMessage);
     }
     return null;
   }
   
   private Object[] b(int paramInt, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Axwf != null) {
-      return this.jdField_a_of_type_Axwf.a(this, paramInt, paramVarArgs);
+    if (this.jdField_a_of_type_Awjn != null) {
+      return this.jdField_a_of_type_Awjn.a(this, paramInt, paramVarArgs);
     }
     return null;
   }
@@ -118,7 +118,7 @@ public class ConnectNearbyProcService
   public IBinder onBind(Intent paramIntent)
   {
     a();
-    return this.jdField_a_of_type_Aybg.asBinder();
+    return this.jdField_a_of_type_Awoo.asBinder();
   }
   
   public void onCreate()
@@ -130,11 +130,11 @@ public class ConnectNearbyProcService
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      jdField_a_of_type_Aybo = null;
+      jdField_a_of_type_Awow = null;
       if (QLog.isColorLevel()) {
         QLog.i("nearby_ipc_log_tag", 2, "ConnectNearbyProcService onUnbind.");
       }
-      this.jdField_a_of_type_Axwf = null;
+      this.jdField_a_of_type_Awjn = null;
       return super.onUnbind(paramIntent);
     }
   }

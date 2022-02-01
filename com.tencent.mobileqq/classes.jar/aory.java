@@ -1,58 +1,55 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.memory.QLogReporter.1;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
 public class aory
+  implements aosg
 {
-  private static volatile aory a;
-  public static final SimpleDateFormat a;
-  
-  static
+  private void a(QQAppInterface paramQQAppInterface, String paramString, aosb paramaosb)
   {
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
-  }
-  
-  public static aory a()
-  {
-    if (jdField_a_of_type_Aory == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aory == null) {
-        jdField_a_of_type_Aory = new aory();
-      }
-      return jdField_a_of_type_Aory;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (new GregorianCalendar().get(11) < 2) {}
-    SharedPreferences localSharedPreferences;
-    long l1;
-    Calendar localCalendar;
-    String str;
+    if (paramQQAppInterface == null) {}
+    TicketManager localTicketManager;
     do
     {
       return;
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
-      l1 = System.currentTimeMillis();
-      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
-      localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(l2);
-      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
-      localCalendar.setTimeInMillis(l1);
-    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
-    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
+      localTicketManager = (TicketManager)paramQQAppInterface.getManager(2);
+      str = localTicketManager.getPskey(paramQQAppInterface.getCurrentAccountUin(), paramString);
+      if (TextUtils.isEmpty(str)) {
+        break;
+      }
+    } while (paramaosb == null);
+    paramaosb.a(str);
+    return;
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = new aosa(this, localTicketManager, paramQQAppInterface, paramString, paramaosb);
+    localTicketManager.getPskey(str, 16L, new String[] { paramString }, paramQQAppInterface);
+  }
+  
+  public void a(Bundle paramBundle, aosi paramaosi)
+  {
+    QQAppInterface localQQAppInterface = aori.a();
+    if (localQQAppInterface == null)
+    {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, app interface is null");
+      paramaosi.a(EIPCResult.createResult(-102, new Bundle()));
+      return;
+    }
+    paramBundle = paramBundle.getString("domain", "");
+    if (TextUtils.isEmpty(paramBundle))
+    {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, domain is empty");
+      paramaosi.a(EIPCResult.createResult(0, new Bundle()));
+      return;
+    }
+    a(localQQAppInterface, paramBundle, new aorz(this, paramaosi));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aory
  * JD-Core Version:    0.7.0.1
  */

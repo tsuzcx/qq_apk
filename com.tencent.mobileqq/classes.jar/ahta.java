@@ -1,14 +1,18 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahta
-  implements PopupWindow.OnDismissListener
+class ahta
+  implements View.OnClickListener
 {
-  public ahta(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  ahta(ahsx paramahsx) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    StructingMsgItemBuilder.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

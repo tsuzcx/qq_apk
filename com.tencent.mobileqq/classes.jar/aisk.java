@@ -1,56 +1,28 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URL;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
 
-public abstract class aisk
-  implements aism
+public class aisk
+  implements View.OnTouchListener
 {
-  private boolean a;
+  public aisk(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
   
-  public URLDrawable.URLDrawableOptions a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return URLDrawable.URLDrawableOptions.obtain();
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    this.a = true;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean b()
-  {
-    return this.a;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    }
   }
 }
 

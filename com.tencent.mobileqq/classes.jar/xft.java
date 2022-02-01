@@ -1,37 +1,32 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class xft
-  extends xho
+  extends axku
 {
-  StoryVideoItem a;
-  public ybh a;
+  public xft(QQStoryMainController paramQQStoryMainController) {}
   
-  public xft(StoryVideoItem paramStoryVideoItem)
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    xue localxue;
+    do
     {
-      yuk.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
       return;
-    }
-    wur localwur = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
-    if (localwur != null)
-    {
-      this.jdField_a_of_type_Ybh = new ybe();
-      this.jdField_a_of_type_Ybh.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new xfu(this, localwur));
-      return;
-    }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+      }
+      paramObject = ((nmq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + nmq.a(paramObject));
+      }
+      localxue = (xue)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    } while (localxue == null);
+    localxue.a(paramObject);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
   }
-  
-  protected void a(Map<String, Object> paramMap) {}
 }
 
 

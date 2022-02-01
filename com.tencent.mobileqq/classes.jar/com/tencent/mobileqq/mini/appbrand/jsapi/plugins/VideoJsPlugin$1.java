@@ -13,7 +13,7 @@ final class VideoJsPlugin$1
 {
   public void run()
   {
-    Object localObject1 = QzoneVideoSoDownloadModule.a(new VideoJsPlugin.1.1(this));
+    Object localObject1 = QzoneVideoSoDownloadModule.getReceiverForSending(new VideoJsPlugin.1.1(this));
     Object localObject2 = new Bundle();
     ((Bundle)localObject2).putParcelable("key_download_result_receiver", (Parcelable)localObject1);
     localObject1 = QIPCClientHelper.getInstance().getClient().callServer("QzoneVideoSoDownloadModule", "action_download_avcodec", (Bundle)localObject2);

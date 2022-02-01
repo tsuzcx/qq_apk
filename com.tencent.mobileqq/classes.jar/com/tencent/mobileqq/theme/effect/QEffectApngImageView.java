@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import bejc;
+import bdby;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -21,20 +21,20 @@ import com.tencent.qq.effect.utils.QEffectUtils;
 public class QEffectApngImageView
   extends QEffectImageView
 {
-  private bejc a;
+  private bdby a;
   
   public QEffectApngImageView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public static bejc a(int[] paramArrayOfInt, String paramString)
+  public static bdby a(int[] paramArrayOfInt, String paramString)
   {
-    bejc localbejc = new bejc();
-    localbejc.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    localbejc.b = paramString;
-    localbejc.jdField_a_of_type_JavaLangString = paramString;
-    return localbejc;
+    bdby localbdby = new bdby();
+    localbdby.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    localbdby.b = paramString;
+    localbdby.jdField_a_of_type_JavaLangString = paramString;
+    return localbdby;
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
@@ -49,8 +49,8 @@ public class QEffectApngImageView
       return;
     }
     paramContext = paramQEffectView.getExtOptions(paramQEffectData.type);
-    if ((paramContext != null) && ((paramContext instanceof bejc))) {
-      this.a = ((bejc)paramQEffectView.getExtOptions(paramQEffectData.type));
+    if ((paramContext != null) && ((paramContext instanceof bdby))) {
+      this.a = ((bdby)paramQEffectView.getExtOptions(paramQEffectData.type));
     }
     for (;;)
     {
@@ -62,7 +62,7 @@ public class QEffectApngImageView
       }
       Log.e("QEffectApngImageView", " load apng is null" + paramQEffectData.repeat);
       return;
-      this.a = new bejc();
+      this.a = new bdby();
       this.a.jdField_a_of_type_JavaLangString = String.valueOf(paramQEffectData.effectId);
       this.a.b = String.valueOf(paramQEffectData.effectId);
       this.a.jdField_a_of_type_ArrayOfInt = new int[] { paramQEffectData.effectId };

@@ -1,12 +1,18 @@
-public abstract interface aphf
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
+
+public class aphf
+  implements AdapterView.OnItemLongClickListener
 {
-  public abstract void a();
+  public aphf(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.a.a();
+    return true;
+  }
 }
 
 

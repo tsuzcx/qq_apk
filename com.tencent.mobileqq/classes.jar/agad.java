@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class agad
-  implements DialogInterface.OnClickListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public agad(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  agad(afzw paramafzw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    this.a.l();
-    this.a.b(this.a.n);
-    if (VipUtils.b(this.a.app)) {}
-    for (paramDialogInterface = "4";; paramDialogInterface = "3")
+    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nnr.a(), paramDialogInterface, "1");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
+      }
+      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
     }
   }
 }

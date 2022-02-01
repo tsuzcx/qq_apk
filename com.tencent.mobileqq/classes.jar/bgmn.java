@@ -1,39 +1,76 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class bgmn
-  implements bliz
+public final class bgmn
+  implements BusinessObserver
 {
-  public bgmn(VisitorTroopCardFragment paramVisitorTroopCardFragment, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, new bjbv(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()));
-    }
-    if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()))
-    {
-      paramView = (aoip)this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-      if (paramView != null)
-      {
-        if ((VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) & 0x1) == 0)
-        {
-          VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) | 0x1);
-          paramView.l(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        }
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(0, 2131691903, 1000);
-      }
-    }
+    String str = "";
+    if (paramBoolean) {}
     for (;;)
     {
-      bgnh.a(21, new Object());
-      this.jdField_a_of_type_Blir.cancel();
+      try
+      {
+        Object localObject = paramBundle.getByteArray("extra_data");
+        if (localObject == null)
+        {
+          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
+          return;
+        }
+        paramBundle = new WebSSOAgent.UniSsoServerRsp();
+        paramBundle.mergeFrom((byte[])localObject);
+        QLog.i("SSOHttpUtils", 1, "report result:" + paramBundle.rspdata.get() + ",ret:" + paramBundle.ret.get());
+        if (0L == paramBundle.ret.get())
+        {
+          localObject = new NewIntent(BaseApplicationImpl.getApplication(), bgmu.class);
+          ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_update_lastreport_time");
+          ((NewIntent)localObject).putExtra("last_report_time", new Long(NetConnInfoCenter.getServerTimeMillis()));
+          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(bgmm.jdField_a_of_type_Boolean));
+          BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+          bgmm.jdField_a_of_type_Float = bgmm.jdField_a_of_type_Int - bgmm.b + bgmm.c;
+          localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            bgmm.jdField_a_of_type_JavaLangString = (String)localObject;
+          }
+          bgmm.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+          QLog.i("SSOHttpUtils", 1, "SSOHttpUtils do report success steps:" + bgmm.jdField_a_of_type_Float);
+        }
+        localObject = new JSONObject(paramBundle.rspdata.get());
+        paramBundle = str;
+        if (((JSONObject)localObject).has("svr_steps"))
+        {
+          paramInt = ((JSONObject)localObject).getInt("svr_steps");
+          QLog.e("SSOHttpUtils", 1, "step reset from server:" + paramInt);
+          paramBundle = new NewIntent(BaseApplicationImpl.getApplication(), bgmu.class);
+          paramBundle.putExtra("msf_cmd_type", "cmd_reset_step");
+          paramBundle.putExtra("server_step", paramInt);
+          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramBundle);
+          paramBundle = str;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("SSOHttpUtils", 1, "Parse response exception:" + paramBundle.getMessage());
+        paramBundle = str;
+        continue;
+      }
+      ThreadManager.post(new SSOHttpUtils.1.1(this, -1, paramBundle), 5, null, true);
       return;
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131691899, 1500);
-      continue;
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131694008, 1500);
+      QLog.i("SSOHttpUtils", 1, "SSO sent Failed!!" + paramBundle.toString());
+      paramBundle = paramBundle.toString();
     }
   }
 }

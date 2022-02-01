@@ -1,15 +1,35 @@
-import android.os.Environment;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ubq
+public class ubq
+  implements View.OnFocusChangeListener
 {
-  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
-  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
-  public static final String c = Environment.getExternalStorageDirectory() + File.separator + anzj.a(2131712465) + File.separator;
+  public ubq(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      SubscriptFeedsActivity.a(this.a);
+      long l = System.currentTimeMillis();
+      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
+      {
+        SubscriptFeedsActivity.a(this.a, l);
+        UniteSearchActivity.a(this.a, null, 12);
+        if (QLog.isColorLevel()) {
+          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubq
  * JD-Core Version:    0.7.0.1
  */

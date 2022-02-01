@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
 
-class aylq
-  implements DialogInterface.OnClickListener
+public final class aylq
+  implements Parcelable.Creator<PersonalityLabelZan>
 {
-  aylq(aykx paramaykx) {}
+  public PersonalityLabelZan a(Parcel paramParcel)
+  {
+    return new PersonalityLabelZan(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public PersonalityLabelZan[] a(int paramInt)
+  {
+    return new PersonalityLabelZan[paramInt];
+  }
 }
 
 

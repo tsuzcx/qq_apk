@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class amao
-  implements Comparable<amao>
+class amao
+  implements amjf
 {
-  public int a;
-  public long a;
-  public int b;
+  amao(amam paramamam, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
   
-  public amao(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(amao paramamao)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramamao.jdField_a_of_type_Long);
+    amam.a(this.jdField_a_of_type_Amam, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
   }
 }
 

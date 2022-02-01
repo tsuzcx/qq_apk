@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vip.lianghao.view;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import bijq;
-import bijx;
+import bgpz;
+import bgqg;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RegisterLiangHaoPayFailLayoutView
@@ -16,7 +16,7 @@ public class RegisterLiangHaoPayFailLayoutView
   implements View.OnClickListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private bijq jdField_a_of_type_Bijq;
+  private bgpz jdField_a_of_type_Bgpz;
   private LiangHaoView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView;
   
   public RegisterLiangHaoPayFailLayoutView(Context paramContext)
@@ -40,28 +40,28 @@ public class RegisterLiangHaoPayFailLayoutView
   private void a()
   {
     setOrientation(1);
-    int i = agej.a(27.5F, getResources());
+    int i = AIOUtils.dp2px(27.5F, getResources());
     setPadding(i, 0, i, 0);
-    LayoutInflater.from(getContext()).inflate(2131562012, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131369896));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369895);
+    LayoutInflater.from(getContext()).inflate(2131561889, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131369890));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369889);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bijq.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.a);
+    this.jdField_a_of_type_Bgpz.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setLiangHaoHelper(bijq parambijq)
+  public void setLiangHaoHelper(bgpz parambgpz)
   {
-    this.jdField_a_of_type_Bijq = parambijq;
+    this.jdField_a_of_type_Bgpz = parambgpz;
   }
   
-  public void setUin(bijx parambijx)
+  public void setUin(bgqg parambgqg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambijx);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambgqg);
   }
 }
 

@@ -1,8 +1,9 @@
-public abstract interface ausc
+class ausc
+  implements aurf
 {
-  public abstract void a(int paramInt, String paramString);
+  ausc(ausa paramausa) {}
   
-  public abstract void a(Object paramObject);
+  public void a(int paramInt, String paramString) {}
 }
 
 

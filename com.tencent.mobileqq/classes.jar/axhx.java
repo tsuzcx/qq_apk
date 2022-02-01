@@ -1,79 +1,75 @@
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-import java.util.List;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class axhx
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "fallbackJumpIntent", "jumpActionIntent", "jumpIntent", "jumpMsgTabIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class axhx
 {
-  public View a;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private axhy jdField_a_of_type_Axhy;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  
-  public axhx(axhw paramaxhw, View paramView, axhy paramaxhy)
+  private final PendingIntent e(axib paramaxib)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368984));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839096);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368913));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131368993));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(axhw.a(paramaxhw).getResources().getColor(2131166997));
-    this.jdField_a_of_type_Axhy = paramaxhy;
-    paramaxhw.a(this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-    paramView.setOnClickListener(this);
-    paramView.setTag(this);
+    BaseApplication localBaseApplication = BaseApplication.context;
+    Intent localIntent = new Intent((Context)localBaseApplication, SplashActivity.class);
+    localIntent.putExtra("tab_index", MainFragment.b);
+    localIntent.putExtra("fragment_id", 1);
+    localIntent.setFlags(335544320);
+    paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.jdField_d_of_type_Int, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "jumpPendingIntent");
+    return paramaxib;
   }
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  @NotNull
+  protected abstract PendingIntent a(@NotNull axib paramaxib);
+  
+  protected boolean a()
   {
-    if (this.jdField_a_of_type_Axhy != null)
-    {
-      int i = getAdapterPosition();
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBackup.BackupAndMigrateListAdapter", 2, "BackupAndMigrateItemHolder onCheckedChanged: " + i + ", isChecked = " + paramBoolean);
-      }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-      axhw.a(this.jdField_a_of_type_Axhw).setValueAt(i, Boolean.valueOf(paramBoolean));
-      this.jdField_a_of_type_Axhy.a(this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), (RecentBaseData)axhw.a(this.jdField_a_of_type_Axhw).get(i));
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    return false;
   }
   
-  public void onClick(View paramView)
+  @NotNull
+  public final PendingIntent b(@NotNull axib paramaxib)
   {
-    CheckBox localCheckBox;
-    if (this.jdField_a_of_type_Axhy != null)
-    {
-      bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (bool) {
-        break label39;
-      }
+    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    if (a()) {
+      return a(paramaxib);
     }
-    label39:
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    return c(paramaxib);
+  }
+  
+  @NotNull
+  public final PendingIntent c(@NotNull axib paramaxib)
+  {
+    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    if (Intrinsics.areEqual(paramaxib.jdField_d_of_type_JavaLangString, "")) {
+      return e(paramaxib);
     }
+    BaseApplication localBaseApplication = BaseApplication.context;
+    Intent localIntent = new Intent((Context)localBaseApplication, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramaxib.jdField_d_of_type_JavaLangString);
+    localIntent.addFlags(268435456);
+    axic.a(localIntent, paramaxib);
+    localIntent.putExtra("param_notifyid", paramaxib.jdField_d_of_type_Int);
+    paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.jdField_d_of_type_Int, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "jumpPendingIntent");
+    return paramaxib;
+  }
+  
+  @NotNull
+  public final PendingIntent d(@NotNull axib paramaxib)
+  {
+    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramaxib.jdField_d_of_type_JavaLangString));
+    localIntent.setFlags(268435456);
+    paramaxib = PendingIntent.getActivity((Context)BaseApplication.context, paramaxib.jdField_d_of_type_Int, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
+    return paramaxib;
   }
 }
 

@@ -9,18 +9,18 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.TextView;
-import bbsy;
-import bbsz;
-import bbwg;
-import bbwi;
-import bbwn;
-import bhml;
-import bizo;
-import bjdm;
+import bamt;
+import bamu;
+import baqb;
+import baqd;
+import baqi;
+import bhfp;
+import bhji;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
@@ -72,7 +72,7 @@ public class RichStatus
   public ArrayList<RichStatus.StickerInfo> mStickerInfos;
   public List<String> mUins;
   public ArrayList<String> plainText;
-  public HashMap<Integer, bbsz> sigZanInfo;
+  public HashMap<Integer, bamu> sigZanInfo;
   public int signType;
   public long time;
   public List<Pair<Integer, String>> topics = new ArrayList();
@@ -156,7 +156,7 @@ public class RichStatus
           break label118;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte));
+          QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
         }
       }
       for (;;)
@@ -182,7 +182,7 @@ public class RichStatus
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte));
+          QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
         }
       }
       n = i + 2;
@@ -243,7 +243,7 @@ public class RichStatus
         if (localByteBuffer.remaining() < 8)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte));
+            QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
           }
         }
         else
@@ -254,7 +254,7 @@ public class RichStatus
           if (localByteBuffer.remaining() < 8)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte));
+              QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
             }
           }
           else
@@ -265,7 +265,7 @@ public class RichStatus
             localRichStatus.feedsId = new String(paramArrayOfByte, n, j);
             if (QLog.isColorLevel())
             {
-              QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
+              QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
               continue;
               localRichStatus.tplId = localByteBuffer.getInt();
               continue;
@@ -329,7 +329,7 @@ public class RichStatus
         if (!QLog.isColorLevel()) {
           break label464;
         }
-        QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte));
+        QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
         break label464;
       }
       i = localByteBuffer.getInt();
@@ -348,7 +348,7 @@ public class RichStatus
         if (!QLog.isColorLevel()) {
           break label464;
         }
-        QLog.d("Q.richstatus.status", 2, bhml.a(paramArrayOfByte));
+        QLog.d("Q.richstatus.status", 2, HexUtil.bytes2HexStr(paramArrayOfByte));
         break label464;
       }
       i = j;
@@ -597,11 +597,14 @@ public class RichStatus
         i += 1;
       }
     }
-    i = 0;
-    while (i < this.locationPosition)
+    if (this.plainText != null)
     {
-      a(localByteBuffer, 3, (String)this.plainText.get(i));
-      i += 1;
+      i = 0;
+      while (i < this.locationPosition)
+      {
+        a(localByteBuffer, 3, (String)this.plainText.get(i));
+        i += 1;
+      }
     }
     a(localByteBuffer, 4, this.locationText);
     if (this.plainText != null) {}
@@ -702,15 +705,15 @@ public class RichStatus
       }
       try
       {
-        localObject2 = BitmapFactory.decodeResource(paramResources, 2130849591);
+        localObject2 = BitmapFactory.decodeResource(paramResources, 2130849503);
         if (localObject2 == null) {
           continue;
         }
         int i = (int)(0.9F * paramFloat + 0.5F);
         int j = ((Bitmap)localObject2).getWidth() * i / ((Bitmap)localObject2).getHeight();
-        paramResources = new bjdm(paramResources, (Bitmap)localObject2, false, true);
+        paramResources = new bhji(paramResources, (Bitmap)localObject2, false, true);
         paramResources.setBounds(0, 0, j, i);
-        paramResources = new bizo(paramResources, 0).a(-0.1F);
+        paramResources = new bhfp(paramResources, 0).a(-0.1F);
         if (paramCharSequence == null) {}
         for (i = 0;; i = paramCharSequence.length())
         {
@@ -751,15 +754,18 @@ public class RichStatus
         i += 1;
       }
     }
-    int i = 0;
-    while (i < this.locationPosition)
+    if (this.plainText != null)
     {
-      a(localStringBuilder, (String)this.plainText.get(i));
-      i += 1;
+      i = 0;
+      while (i < this.locationPosition)
+      {
+        a(localStringBuilder, (String)this.plainText.get(i));
+        i += 1;
+      }
     }
     if (this.plainText != null) {}
     int j;
-    for (i = this.plainText.size();; i = 0)
+    for (int i = this.plainText.size();; i = 0)
     {
       j = this.locationPosition;
       while (j < i)
@@ -875,7 +881,7 @@ public class RichStatus
   public void sortTopicPos()
   {
     if ((this.topicsPos != null) && (this.topicsPos.size() > 1)) {
-      Collections.sort(this.topicsPos, new bbsy(this));
+      Collections.sort(this.topicsPos, new bamt(this));
     }
   }
   
@@ -960,7 +966,7 @@ public class RichStatus
     }
   }
   
-  public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, bbwi parambbwi)
+  public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, baqd parambaqd)
   {
     String str1 = paramString;
     if (paramString == null) {
@@ -978,7 +984,7 @@ public class RichStatus
     {
       int k;
       String str2;
-      bbwg localbbwg;
+      baqb localbaqb;
       if (shouldShowAtHead())
       {
         j = 0;
@@ -991,20 +997,23 @@ public class RichStatus
             break;
             k = paramString.length();
             str2 = (String)((Pair)this.topics.get(j)).second;
-            localbbwg = new bbwg(parambbwi, bbwn.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
+            localbaqb = new baqb(parambaqd, baqi.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
             paramString.append(str2);
-            paramString.setSpan(localbbwg, k, str2.length() + k, 33);
+            paramString.setSpan(localbaqb, k, str2.length() + k, 33);
           }
         }
       }
-      int j = 0;
-      while (j < this.locationPosition)
+      if (this.plainText != null)
       {
-        a(paramString, (String)this.plainText.get(j));
-        j += 1;
+        j = 0;
+        while (j < this.locationPosition)
+        {
+          a(paramString, (String)this.plainText.get(j));
+          j += 1;
+        }
       }
       if (this.plainText != null) {}
-      for (j = this.plainText.size();; j = 0)
+      for (int j = this.plainText.size();; j = 0)
       {
         k = this.locationPosition;
         while (k < j)
@@ -1035,9 +1044,9 @@ public class RichStatus
           }
           return paramString;
         }
-        localbbwg = new bbwg(parambbwi, bbwn.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
+        localbaqb = new baqb(parambaqd, baqi.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
         paramString.insert(k, str2);
-        paramString.setSpan(localbbwg, k, str2.length() + k, 33);
+        paramString.setSpan(localbaqb, k, str2.length() + k, 33);
       }
     }
   }
@@ -1048,13 +1057,13 @@ public class RichStatus
   }
   
   @NotNull
-  public CharSequence toSpannableStringWithoutAction(bbwi parambbwi)
+  public CharSequence toSpannableStringWithoutAction(baqd parambaqd)
   {
     int k = 0;
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     int j;
     String str;
-    bbwg localbbwg;
+    baqb localbaqb;
     if (shouldShowAtHead())
     {
       i = 0;
@@ -1067,9 +1076,9 @@ public class RichStatus
           break;
           j = localSpannableStringBuilder.length();
           str = (String)((Pair)this.topics.get(i)).second;
-          localbbwg = new bbwg(parambbwi, bbwn.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
+          localbaqb = new baqb(parambaqd, baqi.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
           localSpannableStringBuilder.append(str);
-          localSpannableStringBuilder.setSpan(localbbwg, j, str.length() + j, 33);
+          localSpannableStringBuilder.setSpan(localbaqb, j, str.length() + j, 33);
         }
       }
     }
@@ -1107,9 +1116,9 @@ public class RichStatus
       if (j > localSpannableStringBuilder.length()) {
         return localSpannableStringBuilder;
       }
-      localbbwg = new bbwg(parambbwi, bbwn.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
+      localbaqb = new baqb(parambaqd, baqi.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
       localSpannableStringBuilder.insert(j, str);
-      localSpannableStringBuilder.setSpan(localbbwg, j, str.length() + j, 33);
+      localSpannableStringBuilder.setSpan(localbaqb, j, str.length() + j, 33);
     }
   }
   
@@ -1119,46 +1128,46 @@ public class RichStatus
     // Byte code:
     //   0: aload_0
     //   1: getfield 104	com/tencent/mobileqq/richstatus/RichStatus:topics	Ljava/util/List;
-    //   4: invokeinterface 388 1 0
+    //   4: invokeinterface 389 1 0
     //   9: aload_1
     //   10: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: ifne +132 -> 145
-    //   16: new 633	org/json/JSONArray
+    //   16: new 634	org/json/JSONArray
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 634	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 635	org/json/JSONArray:<init>	(Ljava/lang/String;)V
     //   24: astore 4
     //   26: iconst_0
     //   27: istore_2
     //   28: iload_2
     //   29: aload 4
-    //   31: invokevirtual 635	org/json/JSONArray:length	()I
+    //   31: invokevirtual 636	org/json/JSONArray:length	()I
     //   34: if_icmpge +111 -> 145
     //   37: aload 4
     //   39: iload_2
-    //   40: invokevirtual 636	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   43: checkcast 638	org/json/JSONObject
+    //   40: invokevirtual 637	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   43: checkcast 639	org/json/JSONObject
     //   46: astore 5
     //   48: aload 5
-    //   50: ldc_w 639
-    //   53: invokevirtual 642	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   50: ldc_w 640
+    //   53: invokevirtual 643	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   56: istore_3
     //   57: aload 5
-    //   59: ldc_w 644
-    //   62: invokevirtual 648	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   59: ldc_w 645
+    //   62: invokevirtual 649	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   65: astore 5
     //   67: aload 5
     //   69: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   72: ifne +26 -> 98
     //   75: aload_0
     //   76: getfield 104	com/tencent/mobileqq/richstatus/RichStatus:topics	Ljava/util/List;
-    //   79: new 352	com/tencent/util/Pair
+    //   79: new 353	com/tencent/util/Pair
     //   82: dup
     //   83: iload_3
-    //   84: invokestatic 358	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   84: invokestatic 359	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   87: aload 5
-    //   89: invokespecial 361	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   92: invokeinterface 364 2 0
+    //   89: invokespecial 362	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   92: invokeinterface 365 2 0
     //   97: pop
     //   98: iload_2
     //   99: iconst_1
@@ -1168,49 +1177,49 @@ public class RichStatus
     //   105: astore 4
     //   107: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   110: ifeq +35 -> 145
-    //   113: ldc 203
+    //   113: ldc 204
     //   115: iconst_2
     //   116: new 135	java/lang/StringBuilder
     //   119: dup
-    //   120: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   123: ldc_w 649
+    //   120: invokespecial 240	java/lang/StringBuilder:<init>	()V
+    //   123: ldc_w 650
     //   126: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: aload 4
-    //   131: invokevirtual 652	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   131: invokevirtual 653	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   134: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   140: aload 4
-    //   142: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   142: invokestatic 655	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   145: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   148: ifeq +23 -> 171
-    //   151: ldc 203
+    //   151: ldc 204
     //   153: iconst_2
-    //   154: ldc_w 656
+    //   154: ldc_w 657
     //   157: iconst_1
     //   158: anewarray 4	java/lang/Object
     //   161: dup
     //   162: iconst_0
     //   163: aload_1
     //   164: aastore
-    //   165: invokestatic 213	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   168: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   165: invokestatic 214	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   168: invokestatic 217	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   171: return
     //   172: astore 4
     //   174: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   177: ifeq -32 -> 145
-    //   180: ldc 203
+    //   180: ldc 204
     //   182: iconst_2
     //   183: new 135	java/lang/StringBuilder
     //   186: dup
-    //   187: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   190: ldc_w 649
+    //   187: invokespecial 240	java/lang/StringBuilder:<init>	()V
+    //   190: ldc_w 650
     //   193: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: aload 4
-    //   198: invokevirtual 657	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   198: invokevirtual 658	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   201: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   204: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   207: aload 4
-    //   209: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   209: invokestatic 655	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   212: goto -67 -> 145
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1236,44 +1245,44 @@ public class RichStatus
     // Byte code:
     //   0: aload_0
     //   1: getfield 106	com/tencent/mobileqq/richstatus/RichStatus:topicsPos	Ljava/util/List;
-    //   4: invokeinterface 388 1 0
+    //   4: invokeinterface 389 1 0
     //   9: aload_1
     //   10: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: ifne +127 -> 140
-    //   16: new 633	org/json/JSONArray
+    //   16: new 634	org/json/JSONArray
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 634	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 635	org/json/JSONArray:<init>	(Ljava/lang/String;)V
     //   24: astore 5
     //   26: iconst_0
     //   27: istore_2
     //   28: iload_2
     //   29: aload 5
-    //   31: invokevirtual 635	org/json/JSONArray:length	()I
+    //   31: invokevirtual 636	org/json/JSONArray:length	()I
     //   34: if_icmpge +106 -> 140
     //   37: aload 5
     //   39: iload_2
-    //   40: invokevirtual 636	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   43: checkcast 638	org/json/JSONObject
+    //   40: invokevirtual 637	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   43: checkcast 639	org/json/JSONObject
     //   46: astore 6
     //   48: aload 6
-    //   50: ldc_w 639
-    //   53: invokevirtual 642	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   50: ldc_w 640
+    //   53: invokevirtual 643	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   56: istore_3
     //   57: aload 6
-    //   59: ldc_w 660
-    //   62: invokevirtual 642	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   59: ldc_w 661
+    //   62: invokevirtual 643	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   65: istore 4
     //   67: aload_0
     //   68: getfield 106	com/tencent/mobileqq/richstatus/RichStatus:topicsPos	Ljava/util/List;
-    //   71: new 352	com/tencent/util/Pair
+    //   71: new 353	com/tencent/util/Pair
     //   74: dup
     //   75: iload_3
-    //   76: invokestatic 358	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   76: invokestatic 359	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   79: iload 4
-    //   81: invokestatic 358	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   84: invokespecial 361	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   87: invokeinterface 364 2 0
+    //   81: invokestatic 359	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   84: invokespecial 362	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   87: invokeinterface 365 2 0
     //   92: pop
     //   93: iload_2
     //   94: iconst_1
@@ -1283,49 +1292,49 @@ public class RichStatus
     //   100: astore 5
     //   102: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   105: ifeq +35 -> 140
-    //   108: ldc 203
+    //   108: ldc 204
     //   110: iconst_2
     //   111: new 135	java/lang/StringBuilder
     //   114: dup
-    //   115: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   118: ldc_w 661
+    //   115: invokespecial 240	java/lang/StringBuilder:<init>	()V
+    //   118: ldc_w 662
     //   121: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: aload 5
-    //   126: invokevirtual 652	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   126: invokevirtual 653	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   129: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   132: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   135: aload 5
-    //   137: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   137: invokestatic 655	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq +23 -> 166
-    //   146: ldc 203
+    //   146: ldc 204
     //   148: iconst_2
-    //   149: ldc_w 663
+    //   149: ldc_w 664
     //   152: iconst_1
     //   153: anewarray 4	java/lang/Object
     //   156: dup
     //   157: iconst_0
     //   158: aload_1
     //   159: aastore
-    //   160: invokestatic 213	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   163: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   160: invokestatic 214	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   163: invokestatic 217	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   166: return
     //   167: astore 5
     //   169: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   172: ifeq -32 -> 140
-    //   175: ldc 203
+    //   175: ldc 204
     //   177: iconst_2
     //   178: new 135	java/lang/StringBuilder
     //   181: dup
-    //   182: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   185: ldc_w 661
+    //   182: invokespecial 240	java/lang/StringBuilder:<init>	()V
+    //   185: ldc_w 662
     //   188: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: aload 5
-    //   193: invokevirtual 657	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   193: invokevirtual 658	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   196: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   199: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   202: aload 5
-    //   204: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   204: invokestatic 655	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   207: goto -67 -> 140
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1464,7 +1473,7 @@ public class RichStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatus
  * JD-Core Version:    0.7.0.1
  */

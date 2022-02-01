@@ -141,22 +141,22 @@ public class JsonUtils
     //   152: new 147	java/lang/StringBuilder
     //   155: dup
     //   156: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   159: astore 4
+    //   159: astore 6
     //   161: aload_1
     //   162: astore_3
     //   163: aload_0
     //   164: astore_2
     //   165: aload_1
     //   166: invokevirtual 152	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   169: astore 6
-    //   171: aload 6
+    //   169: astore 4
+    //   171: aload 4
     //   173: ifnull +18 -> 191
     //   176: aload_1
     //   177: astore_3
     //   178: aload_0
     //   179: astore_2
-    //   180: aload 4
-    //   182: aload 6
+    //   180: aload 6
+    //   182: aload 4
     //   184: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: pop
     //   188: goto -27 -> 161
@@ -164,7 +164,7 @@ public class JsonUtils
     //   192: astore_3
     //   193: aload_0
     //   194: astore_2
-    //   195: aload 4
+    //   195: aload 6
     //   197: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   200: astore 4
     //   202: aload 4
@@ -226,11 +226,11 @@ public class JsonUtils
     //   86	185	2	localObject1	Object
     //   84	182	3	str1	String
     //   77	11	4	localIOException1	java.io.IOException
-    //   159	44	4	localObject2	Object
+    //   169	34	4	str2	String
     //   275	1	4	localIOException2	java.io.IOException
     //   282	1	4	localIOException3	java.io.IOException
-    //   1	100	5	localObject3	Object
-    //   169	14	6	str2	String
+    //   1	100	5	localObject2	Object
+    //   159	37	6	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
     //   3	12	77	java/io/IOException

@@ -1,26 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
-class aipb
-  extends BroadcastReceiver
+public class aipb
+  extends amqk
 {
-  aipb(ainh paramainh) {}
+  public aipb(DeviceFragment paramDeviceFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void b()
   {
-    boolean bool = HwNetworkUtil.isNetworkAvailable(this.a.a);
-    if ((bool) && (ainh.d(this.a)))
-    {
-      nqw.a.a();
-      ainh.c(this.a, false);
-    }
-    while (bool) {
+    if (this.a.a == null) {
       return;
     }
-    nqw.a.a(this.a.c());
-    ainh.c(this.a, true);
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

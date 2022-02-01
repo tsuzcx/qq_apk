@@ -1,32 +1,29 @@
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 
 public class ytm
-  extends QQUIEventReceiver<ysw, wmd>
+  extends QQUIEventReceiver<StoryUserBadgeView, wcf>
 {
-  public ytm(@NonNull ysw paramysw)
+  public ytm(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    super(paramysw);
+    super(paramStoryUserBadgeView);
   }
   
-  public void a(@NonNull ysw paramysw, @NonNull wmd paramwmd)
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull wcf paramwcf)
   {
-    if (paramwmd.a())
-    {
-      yuk.b(this.TAG, "group video upload");
+    if (paramwcf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramwcf.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
       return;
     }
-    if (!paramwmd.b())
-    {
-      yuk.b(this.TAG, "ignore personal video");
-      return;
-    }
-    paramysw.a(paramwmd);
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
   }
   
   public Class acceptEventClass()
   {
-    return wmd.class;
+    return wcf.class;
   }
 }
 

@@ -1,29 +1,24 @@
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class aykb
-  implements bliz
+  extends RecyclerView.ViewHolder
 {
-  public aykb(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aykb(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      axxd.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
-      continue;
-      paramView = (axxj)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
-      if (paramView != null) {
-        paramView.a("", 0, false);
-      }
-    }
+    super(paramView);
+    this.itemView.setTag(this);
+    this.itemView.findViewById(2131361953).setOnClickListener(paramCustomCoverFragment);
+    this.itemView.findViewById(2131361962).setOnClickListener(paramCustomCoverFragment);
+    this.itemView.findViewById(2131361948).setOnClickListener(paramCustomCoverFragment);
+    CustomCoverFragment.a(paramCustomCoverFragment, this.itemView.findViewById(2131369650));
+    CustomCoverFragment.a(paramCustomCoverFragment).setVisibility(8);
+    CustomCoverFragment.a(paramCustomCoverFragment, (ImageView)this.itemView.findViewById(2131369185));
+    CustomCoverFragment.a(paramCustomCoverFragment).setOnClickListener(paramCustomCoverFragment.a);
+    AIOUtils.expandViewTouchDelegate(CustomCoverFragment.a(paramCustomCoverFragment), 0, 0, (int)(CustomCoverFragment.a(paramCustomCoverFragment) * 20.0F + 0.5F), (int)(CustomCoverFragment.b(paramCustomCoverFragment) * 20.0F + 0.5F));
   }
 }
 

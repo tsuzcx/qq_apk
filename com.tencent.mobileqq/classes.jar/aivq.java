@@ -1,26 +1,15 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.QQBlurView;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import mqq.os.MqqHandler;
 
-class aivq
-  implements View.OnAttachStateChangeListener
+public class aivq
+  extends ProxyObserver
 {
-  aivq(aivp paramaivp) {}
+  public aivq(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public void onProxySaveToDbFinished()
   {
-    if (aivp.a(this.a) != null) {
-      aivp.a(this.a).d();
-    }
-    if (aivp.a(this.a) != null)
-    {
-      aivp.a(this.a).c();
-      aivp.a(this.a, null);
-    }
-    aivp.a(this.a).removeOnAttachStateChangeListener(this);
+    this.a.a.sendEmptyMessage(41);
   }
 }
 

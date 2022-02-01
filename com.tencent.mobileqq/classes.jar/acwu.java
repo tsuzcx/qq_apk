@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.form.GdtFormView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acwu
-  implements View.OnClickListener
+public final class acwu
+  implements DialogInterface.OnClickListener
 {
-  public acwu(GdtFormView paramGdtFormView) {}
+  public acwu(acxa paramacxa) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (GdtFormView.a(this.a)) {
-      GdtFormView.a(this.a);
+    if (this.a != null) {
+      this.a.onCancel();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

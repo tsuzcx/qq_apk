@@ -1,24 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.tavcut.bean.TextEditorData;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
-class bmio
-  extends BroadcastReceiver
+public class bmio
+  implements bmna
 {
-  bmio(bmim parambmim) {}
+  public bmio(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (bmim.a(this.a) != null))
-    {
-      bmim.a(this.a).dismiss();
-      bmim.a(this.a, null);
-    }
+    this.a.b(true);
+  }
+  
+  public void a(TextEditorData paramTextEditorData)
+  {
+    this.a.a(true);
+    this.a.a = paramTextEditorData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmio
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.utils;
 
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import java.io.StringReader;
 import java.security.MessageDigest;
@@ -12,7 +13,18 @@ import org.xml.sax.InputSource;
 
 public class TPCommonUtils
 {
+  public static final int SDK_INT;
   private static final String TAG = "TPCommonUtils";
+  
+  static
+  {
+    if ((Build.VERSION.SDK_INT == 25) && (Build.VERSION.CODENAME.charAt(0) == 'O')) {}
+    for (int i = 26;; i = Build.VERSION.SDK_INT)
+    {
+      SDK_INT = i;
+      return;
+    }
+  }
   
   public static void assertTrue(boolean paramBoolean, String paramString)
   {

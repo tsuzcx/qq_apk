@@ -1,22 +1,19 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qjl
-  implements PopupWindow.OnDismissListener
+  implements View.OnClickListener
 {
-  qjl(qjh paramqjh, blms paramblms) {}
+  qjl(qjk paramqjk) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Blms.a(1.0F);
-    if (this.jdField_a_of_type_Qjh.a.b)
-    {
-      rvy localrvy = this.jdField_a_of_type_Qjh.a.a();
-      if (localrvy != null)
-      {
-        localrvy.c();
-        this.jdField_a_of_type_Qjh.a.b = false;
-      }
-    }
+    smd.a((Activity)qjk.a(this.a).getContext());
+    smd.a(2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

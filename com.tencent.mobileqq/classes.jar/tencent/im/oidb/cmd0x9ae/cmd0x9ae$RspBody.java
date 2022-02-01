@@ -15,11 +15,12 @@ public final class cmd0x9ae$RspBody
   public final PBBoolField bool_need_auth_tips = PBField.initBool(false);
   public final PBBytesField bytes_jwt = PBField.initBytes(ByteStringMicro.EMPTY);
   public cmd0x9ae.AuthTips msg_auth_tips = new cmd0x9ae.AuthTips();
+  public cmd0x9ae.SmallTips msg_small_tips = new cmd0x9ae.SmallTips();
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "bool_has_been_authenticated", "bool_need_auth_tips", "msg_auth_tips", "bytes_jwt" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), null, localByteStringMicro }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "bool_has_been_authenticated", "bool_need_auth_tips", "msg_auth_tips", "bytes_jwt", "msg_small_tips" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), null, localByteStringMicro, null }, RspBody.class);
   }
 }
 

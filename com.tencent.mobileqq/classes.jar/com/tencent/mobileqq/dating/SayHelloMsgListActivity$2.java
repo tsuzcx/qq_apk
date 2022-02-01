@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import axwo;
+import awjw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,12 +11,12 @@ class SayHelloMsgListActivity$2
   
   public void run()
   {
-    ((axwo)this.this$0.app.a(66)).a(this.a);
+    ((awjw)this.this$0.app.getBusinessHandler(66)).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.SayHelloMsgListActivity.2
  * JD-Core Version:    0.7.0.1
  */

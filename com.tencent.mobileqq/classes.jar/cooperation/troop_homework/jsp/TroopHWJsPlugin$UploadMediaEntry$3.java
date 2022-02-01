@@ -1,12 +1,12 @@
 package cooperation.troop_homework.jsp;
 
-import bnsq;
-import bnta;
+import bkxx;
+import bkyh;
 
 public class TroopHWJsPlugin$UploadMediaEntry$3
   implements Runnable
 {
-  public TroopHWJsPlugin$UploadMediaEntry$3(bnta parambnta) {}
+  public TroopHWJsPlugin$UploadMediaEntry$3(bkyh parambkyh) {}
   
   public void run()
   {

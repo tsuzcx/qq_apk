@@ -2,22 +2,22 @@ package com.tencent.av.widget.stageview;
 
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import bjcl;
-import mwl;
-import mwm;
+import bhim;
+import mvu;
+import mvv;
 
 public class StageEffectView$5$1
   implements Runnable
 {
-  public StageEffectView$5$1(mwl parammwl) {}
+  public StageEffectView$5$1(mvu parammvu) {}
   
   public void run()
   {
-    bjcl localbjcl = new bjcl(-90.0F, 0.0F, this.a.jdField_a_of_type_Float, this.a.b, 200.0F, false);
-    localbjcl.setDuration(500L);
-    localbjcl.setInterpolator(new DecelerateInterpolator());
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localbjcl);
-    localbjcl.setAnimationListener(new mwm(this));
+    bhim localbhim = new bhim(-90.0F, 0.0F, this.a.jdField_a_of_type_Float, this.a.b, 200.0F, false);
+    localbhim.setDuration(500L);
+    localbhim.setInterpolator(new DecelerateInterpolator());
+    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localbhim);
+    localbhim.setAnimationListener(new mvv(this));
   }
 }
 

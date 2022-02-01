@@ -1,15 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class oxg
-  implements blkc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentSinkHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxg
+  extends nmf
 {
-  public oxg(NativeCommentTextView paramNativeCommentTextView) {}
-  
-  public void a()
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167302));
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      this.a.a(paramArrayOfByte);
+      return;
+    }
+    this.a.a(paramInt, "Empty error message.");
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
+    {
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
+    }
   }
 }
 

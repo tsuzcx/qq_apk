@@ -1,57 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class tmj
+final class tmj
+  implements rnw
 {
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = tmj.class.getSimpleName();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  tmj(BridgeModule paramBridgeModule, long paramLong, String paramString) {}
   
-  public tmj(QQAppInterface paramQQAppInterface)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = ozs.a();
-    jdField_a_of_type_Int = 0;
-  }
-  
-  private int c()
-  {
-    int i = 0;
-    boolean bool = bnrf.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!bool) {
-      bnrf.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
+    if (!paramList.isEmpty()) {
+      tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Long, paramList, this.jdField_a_of_type_JavaLangString, 0, "");
     }
-    if (bool) {
-      i = ((Integer)bnrf.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
-    }
-    return i;
-  }
-  
-  public int a()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      int i = c();
-      jdField_a_of_type_Int += 1;
-      bnrf.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
-    }
-  }
-  
-  public int b()
-  {
-    return c();
+    QLog.i(tmd.jdField_a_of_type_JavaLangString, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
   }
 }
 

@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import pfd;
-import pon;
+import pkp;
+import ptv;
 
 public class ArticleInfoModule$52
   implements Runnable
 {
-  public ArticleInfoModule$52(pon parampon, List paramList1, List paramList2) {}
+  public ArticleInfoModule$52(ptv paramptv, List paramList1, List paramList2) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 2, "onTopicInfoListFetched: keywordList: " + this.a + " topicInfoList: " + this.b);
     }
-    pfd.a().a(this.a, this.b);
+    pkp.a().a(this.a, this.b);
   }
 }
 

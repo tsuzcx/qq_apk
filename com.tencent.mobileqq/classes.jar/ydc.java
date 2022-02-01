@@ -1,89 +1,37 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.ShareGroupEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.HashMap;
-import java.util.List;
-
 public class ydc
-  implements wsp
 {
-  protected HashMap<String, String> a;
-  private wir<String, ShareGroupItem> a;
+  private int jdField_a_of_type_Int;
+  private ycy jdField_a_of_type_Ycy = new ycx();
+  private int b;
   
-  public ydc()
+  public yda a()
   {
-    this.jdField_a_of_type_Wir = new wir(300);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return new yda(this, null);
   }
   
-  private QQStoryContext a()
+  public ydc a(int paramInt)
   {
-    return QQStoryContext.a();
-  }
-  
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public static boolean a(ShareGroupItem paramShareGroupItem)
-  {
-    if (paramShareGroupItem == null) {
-      return false;
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
     }
-    long l = paramShareGroupItem.groupUin;
-    return axan.a().a(QQStoryContext.a(), String.valueOf(l));
+    return this;
   }
   
-  public ShareGroupItem a(ShareGroupItem paramShareGroupItem)
+  public ydc a(ycy paramycy)
   {
-    paramShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Wir.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
-    ShareGroupEntry localShareGroupEntry = paramShareGroupItem.convertTo();
-    a().a().createEntityManager().persistOrReplace(localShareGroupEntry);
-    return paramShareGroupItem;
+    if (paramycy != null) {
+      this.jdField_a_of_type_Ycy = paramycy;
+    }
+    return this;
   }
   
-  public ShareGroupItem a(String paramString)
+  public ydc b(int paramInt)
   {
-    znw.a(paramString);
-    Object localObject = (ShareGroupItem)this.jdField_a_of_type_Wir.a(paramString);
-    if (localObject != null)
-    {
-      yuk.d("Q.qqstory.discover.ShareGroupManager", "read sg cc:%s, unionId:" + ((ShareGroupItem)localObject).headerUnionIdList, new Object[] { ((ShareGroupItem)localObject).shareGroupId });
-      return localObject;
+    if (paramInt > 0) {
+      this.b = paramInt;
     }
-    localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
-    {
-      yuk.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
-      return null;
-    }
-    localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
-    return (ShareGroupItem)this.jdField_a_of_type_Wir.a(paramString, (wiq)localObject);
+    return this;
   }
-  
-  public void a() {}
-  
-  public ShareGroupItem b(String paramString)
-  {
-    ShareGroupItem localShareGroupItem2 = a(paramString);
-    ShareGroupItem localShareGroupItem1 = localShareGroupItem2;
-    if (localShareGroupItem2 == null)
-    {
-      localShareGroupItem1 = new ShareGroupItem();
-      localShareGroupItem1.shareGroupId = paramString;
-      localShareGroupItem1.name = paramString;
-      localShareGroupItem1.ownerUnionId = QQStoryContext.a().b();
-      localShareGroupItem1.assertItem();
-      yuk.d("Q.qqstory.discover.ShareGroupManager", "create one fake groupItem:%s", new Object[] { localShareGroupItem1 });
-    }
-    return localShareGroupItem1;
-  }
-  
-  public void b() {}
 }
 
 

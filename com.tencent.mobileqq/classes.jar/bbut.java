@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bbut
-  implements bbvx
+public class bbut
 {
-  bbut(bbuo parambbuo) {}
+  int jdField_a_of_type_Int;
+  public bbuf a;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  bbuf jdField_b_of_type_Bbuf;
+  int c;
   
-  public void a(String paramString)
+  public bbut()
   {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
-    }
-    SignatureHistoryFragment.a(this.a.a, paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

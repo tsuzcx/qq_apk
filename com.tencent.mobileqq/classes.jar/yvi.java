@@ -1,24 +1,35 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-class yvi
-  implements zgr<Boolean, zgx>
+public class yvi
+  implements View.OnClickListener
 {
-  yvi(yvh paramyvh) {}
+  public yvi(QRCardActivity paramQRCardActivity) {}
   
-  public Void a(Boolean paramBoolean, zgx paramzgx)
+  public void onClick(View paramView)
   {
-    if (paramBoolean.booleanValue())
-    {
-      yuk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramzgx.b.size(), paramzgx.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof Integer)) {
+      if (((Integer)localObject).intValue() != 0) {
+        break label110;
+      }
     }
-    for (;;)
+    label110:
+    for (String str = (String)((TextView)paramView.findViewById(2131365073)).getText();; str = null)
     {
-      return null;
-      yuk.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramzgx.jdField_a_of_type_Int);
-      QQToast.a(this.a.a(), 1, anzj.a(2131702542) + paramzgx.jdField_a_of_type_Int, 1);
+      if (((Integer)localObject).intValue() == 1) {
+        this.a.a((String)this.a.a.d.get(this.a.h));
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+      }
     }
   }
 }

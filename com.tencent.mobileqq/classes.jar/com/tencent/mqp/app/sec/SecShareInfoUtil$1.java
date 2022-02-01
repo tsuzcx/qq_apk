@@ -1,15 +1,15 @@
 package com.tencent.mqp.app.sec;
 
-import bjiv;
+import bhoj;
 
 public class SecShareInfoUtil$1
   implements Runnable
 {
-  public SecShareInfoUtil$1(bjiv parambjiv) {}
+  public SecShareInfoUtil$1(bhoj parambhoj) {}
   
   public void run()
   {
-    bjiv.a(this.this$0);
+    bhoj.a(this.this$0);
   }
 }
 

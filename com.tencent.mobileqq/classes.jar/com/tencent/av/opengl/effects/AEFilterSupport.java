@@ -3,16 +3,16 @@ package com.tencent.av.opengl.effects;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import bbgg;
-import bhlo;
-import bork;
+import babd;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import llk;
-import low;
-import lox;
-import lpm;
-import mtl;
+import dov.com.qq.im.ae.download.AEResUtil;
+import lld;
+import loe;
+import lof;
+import lou;
+import msu;
 
 public class AEFilterSupport
 {
@@ -20,12 +20,10 @@ public class AEFilterSupport
   private static long jdField_a_of_type_Long;
   private static final Object jdField_a_of_type_JavaLangObject;
   private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static low jdField_a_of_type_Low;
-  private static final lox jdField_a_of_type_Lox = new lox(21, 4, 1.1F, 3.0F);
-  private static int jdField_b_of_type_Int = 0;
-  private static final lox jdField_b_of_type_Lox = new lox(21, 4, 1.4F, 2.7F);
-  private static int jdField_c_of_type_Int;
-  private static final lox jdField_c_of_type_Lox = new lox(27, 8, 1.8F, 5.0F);
+  private static loe jdField_a_of_type_Loe;
+  private static final lof jdField_a_of_type_Lof = new lof(21, 4, 1.1F, 2.7F);
+  private static int jdField_b_of_type_Int;
+  private static final lof jdField_b_of_type_Lof = new lof(27, 8, 1.8F, 5.0F);
   
   static
   {
@@ -34,50 +32,50 @@ public class AEFilterSupport
   
   public static int a()
   {
-    if (jdField_c_of_type_Int != 0) {
-      return jdField_c_of_type_Int;
+    if (jdField_b_of_type_Int != 0) {
+      return jdField_b_of_type_Int;
     }
-    String str1 = mtl.a("machineMiddleLine");
-    String str2 = mtl.a("machineHighLine");
-    jdField_b_of_type_Lox.a(str1);
-    jdField_c_of_type_Lox.a(str2);
-    low locallow = a();
-    if (jdField_c_of_type_Lox.a(locallow)) {
-      jdField_c_of_type_Int = 7;
+    String str1 = msu.a("machineMiddleLine");
+    String str2 = msu.a("machineHighLine");
+    jdField_a_of_type_Lof.a(str1);
+    jdField_b_of_type_Lof.a(str2);
+    loe localloe = a();
+    if (jdField_b_of_type_Lof.a(localloe)) {
+      jdField_b_of_type_Int = 7;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_c_of_type_Int), jdField_b_of_type_Lox, jdField_c_of_type_Lox, locallow, str1, str2 }));
+        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Lof, jdField_b_of_type_Lof, localloe, str1, str2 }));
       }
-      return jdField_c_of_type_Int;
-      if (jdField_b_of_type_Lox.a(locallow)) {
-        jdField_c_of_type_Int = 4;
+      return jdField_b_of_type_Int;
+      if (jdField_a_of_type_Lof.a(localloe)) {
+        jdField_b_of_type_Int = 4;
       } else {
-        jdField_c_of_type_Int = 3;
+        jdField_b_of_type_Int = 3;
       }
     }
   }
   
   @NonNull
-  public static low a()
+  public static loe a()
   {
-    if (jdField_a_of_type_Low == null)
+    if (jdField_a_of_type_Loe == null)
     {
-      low locallow = new low();
-      locallow.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-      locallow.jdField_b_of_type_Float = ((float)bhlo.d() / 1.073742E+009F);
-      locallow.jdField_b_of_type_Int = bhlo.b();
-      locallow.jdField_a_of_type_Float = ((float)llk.d() / 1048576.0F);
-      jdField_a_of_type_Low = locallow;
+      loe localloe = new loe();
+      localloe.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+      localloe.jdField_b_of_type_Float = ((float)DeviceInfoUtil.getSystemTotalMemory() / 1.073742E+009F);
+      localloe.jdField_b_of_type_Int = DeviceInfoUtil.getCpuNumber();
+      localloe.jdField_a_of_type_Float = ((float)lld.d() / 1048576.0F);
+      jdField_a_of_type_Loe = localloe;
     }
-    return jdField_a_of_type_Low;
+    return jdField_a_of_type_Loe;
   }
   
   public static boolean a(int paramInt)
   {
     boolean bool = true;
-    if (!lpm.b())
+    if (!lou.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isAEKitSoReady, not support AEKit.");
@@ -89,7 +87,7 @@ public class AEFilterSupport
       return bool;
       if (jdField_a_of_type_Int != 1)
       {
-        if (bork.a())
+        if (AEResUtil.isAEBaseSoReady())
         {
           jdField_a_of_type_Int = 1;
           return true;
@@ -116,7 +114,7 @@ public class AEFilterSupport
   
   private static void b()
   {
-    if (!lpm.b())
+    if (!lou.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo, not support AEKit.");
@@ -127,9 +125,9 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = bork.a();
+    boolean bool = AEResUtil.isAEBaseSoReady();
     if (!bool) {
-      bool = bbgg.a(false);
+      bool = babd.a(false);
     }
     for (;;)
     {

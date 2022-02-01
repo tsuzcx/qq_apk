@@ -1,7 +1,12 @@
-public class aghy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aghy
+  implements DialogInterface.OnClickListener
 {
-  public agia a;
-  public agia b;
+  aghy(aghv paramaghv) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

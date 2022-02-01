@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import ajzx;
+import aiux;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 public class ContentWrapView
   extends RelativeLayout
 {
-  private ajzx jdField_a_of_type_Ajzx;
+  private aiux jdField_a_of_type_Aiux;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   
   public ContentWrapView(Context paramContext)
@@ -32,13 +32,13 @@ public class ContentWrapView
   
   private void a()
   {
-    ajzx localajzx = this.jdField_a_of_type_Ajzx;
-    if (localajzx == null) {}
-    while (!localajzx.jdField_a_of_type_Boolean) {
+    aiux localaiux = this.jdField_a_of_type_Aiux;
+    if (localaiux == null) {}
+    while (!localaiux.jdField_a_of_type_Boolean) {
       return;
     }
-    ajzx.a(localajzx).setTranslate(localajzx.jdField_a_of_type_Float, localajzx.b);
-    localajzx.jdField_a_of_type_Boolean = false;
+    aiux.a(localaiux).setTranslate(localaiux.jdField_a_of_type_Float, localaiux.b);
+    localaiux.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
@@ -48,34 +48,34 @@ public class ContentWrapView
   
   public void draw(Canvas paramCanvas)
   {
-    ajzx localajzx = this.jdField_a_of_type_Ajzx;
-    if (localajzx != null)
+    aiux localaiux = this.jdField_a_of_type_Aiux;
+    if (localaiux != null)
     {
       a();
-      paramCanvas.concat(ajzx.a(localajzx));
+      paramCanvas.concat(aiux.a(localaiux));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_Ajzx == null) {
-      this.jdField_a_of_type_Ajzx = new ajzx();
+    if (this.jdField_a_of_type_Aiux == null) {
+      this.jdField_a_of_type_Aiux = new aiux();
     }
   }
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_Ajzx != null) {
-      return this.jdField_a_of_type_Ajzx.jdField_a_of_type_Float;
+    if (this.jdField_a_of_type_Aiux != null) {
+      return this.jdField_a_of_type_Aiux.jdField_a_of_type_Float;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_Ajzx != null) {
-      return this.jdField_a_of_type_Ajzx.b;
+    if (this.jdField_a_of_type_Aiux != null) {
+      return this.jdField_a_of_type_Aiux.b;
     }
     return 0.0F;
   }
@@ -83,11 +83,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    ajzx localajzx = this.jdField_a_of_type_Ajzx;
-    if (localajzx.jdField_a_of_type_Float != paramFloat)
+    aiux localaiux = this.jdField_a_of_type_Aiux;
+    if (localaiux.jdField_a_of_type_Float != paramFloat)
     {
-      localajzx.jdField_a_of_type_Float = paramFloat;
-      localajzx.jdField_a_of_type_Boolean = true;
+      localaiux.jdField_a_of_type_Float = paramFloat;
+      localaiux.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }
@@ -102,11 +102,11 @@ public class ContentWrapView
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    ajzx localajzx = this.jdField_a_of_type_Ajzx;
-    if (localajzx.b != paramFloat)
+    aiux localaiux = this.jdField_a_of_type_Aiux;
+    if (localaiux.b != paramFloat)
     {
-      localajzx.b = paramFloat;
-      localajzx.jdField_a_of_type_Boolean = true;
+      localaiux.b = paramFloat;
+      localaiux.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }

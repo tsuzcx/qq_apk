@@ -1,27 +1,83 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
 public class apyr
-  implements apyw
+  extends aptq<apyq>
 {
-  public EIPCResult a(Bundle paramBundle)
+  public static apyq a()
   {
-    paramBundle = apxv.a();
-    if (paramBundle == null)
-    {
-      QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+    return (apyq)apub.a().a(446);
+  }
+  
+  @NonNull
+  public apyq a(int paramInt)
+  {
+    return new apyq();
+  }
+  
+  @Nullable
+  public apyq a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return apyq.a(paramArrayOfaptx);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("Uin", paramBundle.getCurrentAccountUin());
-    return EIPCResult.createResult(0, localBundle);
+    return null;
+  }
+  
+  public void a(apyq paramapyq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramapyq.toString());
+    }
+    paramapyq = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramapyq instanceof QQAppInterface))
+    {
+      paramapyq = (MiniAppEntryHandler)((QQAppInterface)paramapyq).getBusinessHandler(149);
+      if (paramapyq != null) {
+        paramapyq.notifyUI(0, true, null);
+      }
+    }
+  }
+  
+  public Class<apyq> clazz()
+  {
+    return apyq.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 446;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyr
  * JD-Core Version:    0.7.0.1
  */

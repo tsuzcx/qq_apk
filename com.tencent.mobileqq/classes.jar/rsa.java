@@ -1,13 +1,22 @@
-public abstract interface rsa
-  extends rsp
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import java.lang.ref.WeakReference;
+
+class rsa
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(boolean paramBoolean);
+  rsa(rry paramrry) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    rry.a(this.a).a = false;
+    paramMediaPlayer = (rsb)rry.a(this.a).get();
+    if (paramMediaPlayer != null)
+    {
+      paramMediaPlayer.b(rry.a(this.a));
+      this.a.a(false, "ugc voice play");
+    }
+  }
 }
 
 

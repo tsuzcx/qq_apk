@@ -9,18 +9,18 @@ import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaMuxer;
 import android.view.Surface;
-import brjd;
-import brla;
-import brlb;
-import brlf;
-import brlg;
+import boco;
+import boej;
+import boek;
+import boen;
+import boeo;
+import com.tencent.av.mediacodec.AndroidCodec.BufferData;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-import log;
 
 class JBMR2VideoConverterImpl$Converter
   implements Runnable
@@ -28,24 +28,24 @@ class JBMR2VideoConverterImpl$Converter
   long jdField_a_of_type_Long = -1L;
   MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor = null;
   MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer = null;
-  brjd jdField_a_of_type_Brjd = null;
-  brla jdField_a_of_type_Brla = null;
-  brlb jdField_a_of_type_Brlb = null;
-  brlf jdField_a_of_type_Brlf = null;
+  boco jdField_a_of_type_Boco = null;
+  boej jdField_a_of_type_Boej = null;
+  boek jdField_a_of_type_Boek = null;
+  boen jdField_a_of_type_Boen = null;
   File jdField_a_of_type_JavaIoFile = null;
   boolean jdField_a_of_type_Boolean = true;
   long jdField_b_of_type_Long = -1L;
   MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor = null;
-  brjd jdField_b_of_type_Brjd = null;
+  boco jdField_b_of_type_Boco = null;
   boolean jdField_b_of_type_Boolean = true;
   long jdField_c_of_type_Long = -1L;
   boolean jdField_c_of_type_Boolean = false;
   boolean d;
   
-  public JBMR2VideoConverterImpl$Converter(JBMR2VideoConverterImpl paramJBMR2VideoConverterImpl, File paramFile, brlf parambrlf)
+  public JBMR2VideoConverterImpl$Converter(JBMR2VideoConverterImpl paramJBMR2VideoConverterImpl, File paramFile, boen paramboen)
   {
     this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Brlf = parambrlf;
+    this.jdField_a_of_type_Boen = paramboen;
   }
   
   int a(MediaExtractor paramMediaExtractor)
@@ -96,27 +96,27 @@ class JBMR2VideoConverterImpl$Converter
     return null;
   }
   
-  brjd a(MediaFormat paramMediaFormat, Surface paramSurface)
+  boco a(MediaFormat paramMediaFormat, Surface paramSurface)
   {
-    Object localObject = brjd.a(paramMediaFormat.getString("mime"), false);
+    Object localObject = boco.a(paramMediaFormat.getString("mime"), false);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       localObject = (MediaCodecInfo)((List)localObject).get(0);
-      brjd localbrjd = new brjd();
-      localbrjd.a(paramMediaFormat, ((MediaCodecInfo)localObject).getName(), paramSurface, null);
-      localbrjd.a();
-      return localbrjd;
+      boco localboco = new boco();
+      localboco.init(paramMediaFormat, ((MediaCodecInfo)localObject).getName(), paramSurface, null);
+      localboco.start();
+      return localboco;
     }
     return null;
   }
   
-  brjd a(MediaFormat paramMediaFormat, AtomicReference<Surface> paramAtomicReference)
+  boco a(MediaFormat paramMediaFormat, AtomicReference<Surface> paramAtomicReference)
   {
-    brjd localbrjd = new brjd();
-    localbrjd.a(paramMediaFormat, brjd.jdField_a_of_type_Int, null);
-    paramAtomicReference.set(localbrjd.a().createInputSurface());
-    localbrjd.a();
-    return localbrjd;
+    boco localboco = new boco();
+    localboco.init(paramMediaFormat, boco.ENC_CODEC, null);
+    paramAtomicReference.set(localboco.a().createInputSurface());
+    localboco.start();
+    return localboco;
   }
   
   protected void a()
@@ -124,21 +124,21 @@ class JBMR2VideoConverterImpl$Converter
     if (QLog.isColorLevel()) {
       QLog.d("JBMR2VideoConverterImpl", 2, "shutting down encoder, decoder");
     }
-    if (this.jdField_a_of_type_Brlb != null) {
-      this.jdField_a_of_type_Brlb.b();
+    if (this.jdField_a_of_type_Boek != null) {
+      this.jdField_a_of_type_Boek.b();
     }
-    if (this.jdField_a_of_type_Brla != null) {
-      this.jdField_a_of_type_Brla.b();
+    if (this.jdField_a_of_type_Boej != null) {
+      this.jdField_a_of_type_Boej.b();
     }
-    if (this.jdField_b_of_type_Brjd != null)
+    if (this.jdField_b_of_type_Boco != null)
     {
-      this.jdField_b_of_type_Brjd.c();
-      this.jdField_b_of_type_Brjd.d();
+      this.jdField_b_of_type_Boco.stop();
+      this.jdField_b_of_type_Boco.release();
     }
-    if (this.jdField_a_of_type_Brjd != null)
+    if (this.jdField_a_of_type_Boco != null)
     {
-      this.jdField_a_of_type_Brjd.c();
-      this.jdField_a_of_type_Brjd.d();
+      this.jdField_a_of_type_Boco.stop();
+      this.jdField_a_of_type_Boco.release();
     }
     if (this.jdField_a_of_type_AndroidMediaMediaMuxer != null)
     {
@@ -157,7 +157,7 @@ class JBMR2VideoConverterImpl$Converter
     }
   }
   
-  void a(MediaExtractor paramMediaExtractor1, MediaExtractor paramMediaExtractor2, brjd parambrjd1, brjd parambrjd2, MediaMuxer paramMediaMuxer, brla parambrla, brlb parambrlb)
+  void a(MediaExtractor paramMediaExtractor1, MediaExtractor paramMediaExtractor2, boco paramboco1, boco paramboco2, MediaMuxer paramMediaMuxer, boej paramboej, boek paramboek)
   {
     int i2 = 0;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(262144);
@@ -197,53 +197,53 @@ class JBMR2VideoConverterImpl$Converter
           k = 1;
           if (k != 0) {}
           if ((l2 < l1) && (l1 - l2 > 0L) && (k == 0) && (this.jdField_a_of_type_Boolean)) {
-            break label553;
+            break label555;
           }
           i4 = 1;
           if ((!this.jdField_b_of_type_Boolean) || (n != 0) || ((localMediaFormat1 != null) && (i2 == 0)) || (i4 == 0)) {
-            break label1121;
+            break label1123;
           }
-          localObject = parambrjd1.a();
+          localObject = paramboco1.getInputBuffer();
           if (localObject == null) {
-            break label1121;
+            break label1123;
           }
-          if (((log)localObject).jdField_a_of_type_Int != -1) {
-            break label559;
+          if (((AndroidCodec.BufferData)localObject).index != -1) {
+            break label561;
           }
           l5 = l3;
           if (!this.jdField_b_of_type_Boolean) {
-            break label1108;
+            break label1110;
           }
           l5 = l3;
           if (j != 0) {
-            break label1108;
+            break label1110;
           }
           if (localMediaFormat1 != null)
           {
             l5 = l3;
             if (i2 == 0) {
-              break label1108;
+              break label1110;
             }
           }
           l5 = l3;
           if (i4 == 0) {
-            break label1108;
+            break label1110;
           }
-          localObject = parambrjd1.b();
+          localObject = paramboco1.dequeueOutputBuffer();
           if (localObject != null) {
-            break label698;
+            break label700;
           }
           label287:
           if ((!this.jdField_b_of_type_Boolean) || (i != 0) || ((localMediaFormat1 != null) && (i2 == 0)) || (i4 == 0)) {
-            break label1105;
+            break label1107;
           }
-          localObject = parambrjd2.b();
+          localObject = paramboco2.dequeueOutputBuffer();
           if (localObject != null) {
-            break label925;
+            break label927;
           }
           label326:
           if ((i2 != 0) || ((this.jdField_a_of_type_Boolean) && (localMediaFormat2 == null)) || ((this.jdField_b_of_type_Boolean) && (localMediaFormat1 == null))) {
-            break label1130;
+            break label1132;
           }
           if (this.jdField_b_of_type_Boolean)
           {
@@ -253,13 +253,13 @@ class JBMR2VideoConverterImpl$Converter
             m = paramMediaMuxer.addTrack(localMediaFormat1);
           }
           if (!this.jdField_a_of_type_Boolean) {
-            break label1127;
+            break label1129;
           }
           if (QLog.isColorLevel()) {
             QLog.d("JBMR2VideoConverterImpl", 2, "muxer: adding audio track.");
           }
           i1 = paramMediaMuxer.addTrack(localMediaFormat2);
-          label415:
+          label416:
           if (QLog.isColorLevel()) {
             QLog.d("JBMR2VideoConverterImpl", 2, "muxer: starting");
           }
@@ -268,12 +268,12 @@ class JBMR2VideoConverterImpl$Converter
         }
       }
     }
-    label553:
-    label559:
-    label599:
-    label1121:
-    label1127:
-    label1130:
+    label555:
+    label561:
+    label601:
+    label1123:
+    label1129:
+    label1132:
     for (;;)
     {
       break;
@@ -302,7 +302,7 @@ class JBMR2VideoConverterImpl$Converter
       break label153;
       i4 = 0;
       break label186;
-      int i5 = paramMediaExtractor1.readSampleData(((log)localObject).jdField_a_of_type_JavaNioByteBuffer, 0);
+      int i5 = paramMediaExtractor1.readSampleData(((AndroidCodec.BufferData)localObject).buffer, 0);
       long l4 = paramMediaExtractor1.getSampleTime();
       if (this.jdField_c_of_type_Long > 0L) {
         if (l4 >= this.jdField_c_of_type_Long) {
@@ -313,18 +313,18 @@ class JBMR2VideoConverterImpl$Converter
       {
         if (i5 >= 0)
         {
-          int i6 = ((log)localObject).jdField_a_of_type_Int;
+          int i6 = ((AndroidCodec.BufferData)localObject).index;
           if (n != 0)
           {
             i3 = 4;
-            label619:
-            parambrjd1.a(i6, i5, l4, i3);
+            label621:
+            paramboco1.queueInputBuffer(i6, i5, l4, i3);
           }
         }
         else
         {
           if (paramMediaExtractor1.advance()) {
-            break label692;
+            break label694;
           }
         }
         for (i3 = 1;; i3 = 0)
@@ -336,27 +336,27 @@ class JBMR2VideoConverterImpl$Converter
           if (i3 == 0) {
             break;
           }
-          parambrjd1.a(((log)localObject).jdField_a_of_type_Int, 0, 0L, 4);
+          paramboco1.queueInputBuffer(((AndroidCodec.BufferData)localObject).index, 0, 0L, 4);
           n = i3;
           break;
           n = 0;
-          break label599;
+          break label601;
           i3 = paramMediaExtractor1.getSampleFlags();
-          break label619;
+          break label621;
         }
-        MediaCodec.BufferInfo localBufferInfo = ((log)localObject).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-        i5 = ((log)localObject).jdField_a_of_type_Int;
+        MediaCodec.BufferInfo localBufferInfo = ((AndroidCodec.BufferData)localObject).info;
+        i5 = ((AndroidCodec.BufferData)localObject).index;
         if ((i5 == -1) || (i5 == -3)) {
           break label287;
         }
         if (i5 == -2)
         {
-          parambrjd1.a().getOutputFormat();
+          paramboco1.a().getOutputFormat();
           break label287;
         }
         if ((localBufferInfo.flags & 0x2) != 0)
         {
-          parambrjd1.a(((log)localObject).jdField_a_of_type_Int);
+          paramboco1.releaseOutputBuffer(((AndroidCodec.BufferData)localObject).index);
           break label287;
         }
         i3 = 0;
@@ -368,19 +368,19 @@ class JBMR2VideoConverterImpl$Converter
         }
         else {
           if ((localBufferInfo.size == 0) || (i3 != 0)) {
-            break label919;
+            break label921;
           }
         }
         for (boolean bool = true;; bool = false)
         {
-          parambrjd1.a().releaseOutputBuffer(i5, bool);
+          paramboco1.a().releaseOutputBuffer(i5, bool);
           l4 = l3;
           if (bool)
           {
-            parambrlb.c();
-            parambrlb.d();
-            parambrla.a(localBufferInfo.presentationTimeUs * 1000L);
-            parambrla.a();
+            paramboek.c();
+            paramboek.d();
+            paramboej.a(localBufferInfo.presentationTimeUs * 1000L);
+            paramboej.a();
             l4 = l3;
             if (l3 < 0L) {
               l4 = localBufferInfo.presentationTimeUs;
@@ -388,17 +388,17 @@ class JBMR2VideoConverterImpl$Converter
           }
           l5 = l4;
           if ((localBufferInfo.flags & 0x4) == 0) {
-            break label1108;
+            break label1110;
           }
-          parambrjd2.a().signalEndOfInputStream();
+          paramboco2.a().signalEndOfInputStream();
           j = 1;
           l3 = l4;
           break;
           i3 = 0;
-          break label797;
+          break label799;
         }
-        localBufferInfo = ((log)localObject).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-        i3 = ((log)localObject).jdField_a_of_type_Int;
+        localBufferInfo = ((AndroidCodec.BufferData)localObject).info;
+        i3 = ((AndroidCodec.BufferData)localObject).index;
         if ((i3 == -1) || (i3 == -3)) {
           break label326;
         }
@@ -407,25 +407,25 @@ class JBMR2VideoConverterImpl$Converter
           if (m >= 0) {
             throw new IOException("video encoder changed its output format again?");
           }
-          localMediaFormat1 = parambrjd2.a().getOutputFormat();
+          localMediaFormat1 = paramboco2.a().getOutputFormat();
           break label326;
         }
         if ((localBufferInfo.flags & 0x2) != 0)
         {
-          parambrjd2.a(((log)localObject).jdField_a_of_type_Int);
+          paramboco2.releaseOutputBuffer(((AndroidCodec.BufferData)localObject).index);
           break label326;
         }
         if (localBufferInfo.size != 0)
         {
-          paramMediaMuxer.writeSampleData(m, ((log)localObject).jdField_a_of_type_JavaNioByteBuffer, localBufferInfo);
+          paramMediaMuxer.writeSampleData(m, ((AndroidCodec.BufferData)localObject).buffer, localBufferInfo);
           l1 = localBufferInfo.presentationTimeUs;
           float f = (float)(localBufferInfo.presentationTimeUs - l3) / (float)this.jdField_a_of_type_Long;
-          this.jdField_a_of_type_Brlf.a((int)(f * 10000.0F));
+          this.jdField_a_of_type_Boen.a((int)(f * 10000.0F));
         }
         if ((localBufferInfo.flags & 0x4) != 0) {
           i = 1;
         }
-        parambrjd2.a(((log)localObject).jdField_a_of_type_Int);
+        paramboco2.releaseOutputBuffer(((AndroidCodec.BufferData)localObject).index);
         break label326;
         break label326;
         l3 = l5;
@@ -434,11 +434,11 @@ class JBMR2VideoConverterImpl$Converter
       }
       break label233;
       break label153;
-      break label415;
+      break label416;
     }
   }
   
-  protected void a(File paramFile, brlf parambrlf)
+  protected void a(File paramFile, boen paramboen)
   {
     Object localObject1 = paramFile.getAbsolutePath();
     Object localObject2 = a("video/avc");
@@ -482,81 +482,81 @@ class JBMR2VideoConverterImpl$Converter
     int j = (int)paramFile[0];
     int i = (int)paramFile[1];
     this.jdField_a_of_type_Long = paramFile[3];
-    brlg localbrlg = parambrlf.a(j, i);
-    if ((localbrlg.jdField_a_of_type_Long >= 0L) && (localbrlg.jdField_b_of_type_Long > 0L) && (localbrlg.jdField_b_of_type_Long - localbrlg.jdField_a_of_type_Long >= 1000L))
+    boeo localboeo = paramboen.a(j, i);
+    if ((localboeo.jdField_a_of_type_Long >= 0L) && (localboeo.jdField_b_of_type_Long > 0L) && (localboeo.jdField_b_of_type_Long - localboeo.jdField_a_of_type_Long >= 1000L))
     {
-      this.jdField_c_of_type_Long = (localbrlg.jdField_b_of_type_Long * 1000L);
-      this.jdField_b_of_type_Long = (localbrlg.jdField_a_of_type_Long * 1000L);
+      this.jdField_c_of_type_Long = (localboeo.jdField_b_of_type_Long * 1000L);
+      this.jdField_b_of_type_Long = (localboeo.jdField_a_of_type_Long * 1000L);
       this.jdField_a_of_type_Long = (this.jdField_c_of_type_Long - this.jdField_b_of_type_Long);
       localMediaExtractor2.seekTo(this.jdField_b_of_type_Long, 2);
       localMediaExtractor1.seekTo(this.jdField_b_of_type_Long, 2);
     }
-    if (localbrlg.jdField_c_of_type_Boolean) {
+    if (localboeo.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_Boolean = false;
     }
-    if (localbrlg.jdField_d_of_type_Boolean) {
+    if (localboeo.jdField_d_of_type_Boolean) {
       this.jdField_c_of_type_Boolean = true;
     }
     int k;
     int m;
-    if ((!localbrlg.jdField_b_of_type_Boolean) && ((n == 90) || (n == 270)))
+    if ((!localboeo.jdField_b_of_type_Boolean) && ((n == 90) || (n == 270)))
     {
       localObject1 = null;
-      parambrlf = null;
+      paramboen = null;
       paramFile = null;
       if (!this.jdField_b_of_type_Boolean) {
         break label817;
       }
-      if ((localbrlg.h > 0) && (localbrlg.i > 0)) {
+      if ((localboeo.h > 0) && (localboeo.i > 0)) {
         break label780;
       }
-      k = Math.round(i * localbrlg.jdField_a_of_type_Float / 16.0F) * 16;
-      m = Math.round(j * localbrlg.jdField_a_of_type_Float / 16.0F) * 16;
+      k = Math.round(i * localboeo.jdField_a_of_type_Float / 16.0F) * 16;
+      m = Math.round(j * localboeo.jdField_a_of_type_Float / 16.0F) * 16;
       label462:
-      parambrlf = MediaFormat.createVideoFormat("video/avc", k, m);
-      parambrlf.setInteger("color-format", 2130708361);
-      parambrlf.setInteger("bitrate", localbrlg.jdField_a_of_type_Int);
-      parambrlf.setFloat("frame-rate", localbrlg.jdField_b_of_type_Int);
-      parambrlf.setInteger("i-frame-interval", localbrlg.jdField_c_of_type_Int);
-      if (localbrlg.jdField_a_of_type_Boolean)
+      paramboen = MediaFormat.createVideoFormat("video/avc", k, m);
+      paramboen.setInteger("color-format", 2130708361);
+      paramboen.setInteger("bitrate", localboeo.jdField_a_of_type_Int);
+      paramboen.setFloat("frame-rate", localboeo.jdField_b_of_type_Int);
+      paramboen.setInteger("i-frame-interval", localboeo.jdField_c_of_type_Int);
+      if (localboeo.jdField_a_of_type_Boolean)
       {
-        parambrlf.setInteger("profile", localbrlg.jdField_d_of_type_Int);
-        parambrlf.setInteger("level", localbrlg.e);
+        paramboen.setInteger("profile", localboeo.jdField_d_of_type_Int);
+        paramboen.setInteger("level", localboeo.e);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("JBMR2VideoConverterImpl", 2, "video format: " + parambrlf);
+        QLog.d("JBMR2VideoConverterImpl", 2, "video format: " + paramboen);
       }
       paramFile = new AtomicReference();
-      localObject2 = a(parambrlf, paramFile);
-      parambrlf = new brla((Surface)paramFile.get());
-      parambrlf.c();
-      paramFile = new brlb();
-      if ((localbrlg.h > 0) && (localbrlg.i > 0)) {
-        paramFile.a(k, m, i, j, localbrlg.f, localbrlg.g, localbrlg.h, localbrlg.i);
+      localObject2 = a(paramboen, paramFile);
+      paramboen = new boej((Surface)paramFile.get());
+      paramboen.c();
+      paramFile = new boek();
+      if ((localboeo.h > 0) && (localboeo.i > 0)) {
+        paramFile.a(k, m, i, j, localboeo.f, localboeo.g, localboeo.h, localboeo.i);
       }
       localObject1 = a((MediaFormat)localObject3, paramFile.a);
     }
     for (;;)
     {
-      localObject3 = new MediaMuxer(localbrlg.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 0);
-      if ((this.jdField_b_of_type_Boolean) && (localbrlg.jdField_b_of_type_Boolean)) {
+      localObject3 = new MediaMuxer(localboeo.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 0);
+      if ((this.jdField_b_of_type_Boolean) && (localboeo.jdField_b_of_type_Boolean)) {
         ((MediaMuxer)localObject3).setOrientationHint(n);
       }
       this.jdField_a_of_type_AndroidMediaMediaExtractor = localMediaExtractor2;
       this.jdField_b_of_type_AndroidMediaMediaExtractor = localMediaExtractor1;
-      this.jdField_a_of_type_Brjd = ((brjd)localObject1);
-      this.jdField_b_of_type_Brjd = ((brjd)localObject2);
+      this.jdField_a_of_type_Boco = ((boco)localObject1);
+      this.jdField_b_of_type_Boco = ((boco)localObject2);
       this.jdField_a_of_type_AndroidMediaMediaMuxer = ((MediaMuxer)localObject3);
-      this.jdField_a_of_type_Brla = parambrlf;
-      this.jdField_a_of_type_Brlb = paramFile;
+      this.jdField_a_of_type_Boej = paramboen;
+      this.jdField_a_of_type_Boek = paramFile;
       return;
       k = i;
       i = j;
       j = k;
       break;
       label780:
-      k = Math.round(localbrlg.h / 16) * 16;
-      m = Math.round(localbrlg.i / 16) * 16;
+      k = Math.round(localboeo.h / 16) * 16;
+      m = Math.round(localboeo.i / 16) * 16;
       break label462;
       label817:
       localObject2 = null;
@@ -620,13 +620,13 @@ class JBMR2VideoConverterImpl$Converter
   {
     try
     {
-      this.jdField_a_of_type_Brlf.a(0);
-      a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Brlf);
-      a(this.jdField_a_of_type_AndroidMediaMediaExtractor, this.jdField_b_of_type_AndroidMediaMediaExtractor, this.jdField_a_of_type_Brjd, this.jdField_b_of_type_Brjd, this.jdField_a_of_type_AndroidMediaMediaMuxer, this.jdField_a_of_type_Brla, this.jdField_a_of_type_Brlb);
+      this.jdField_a_of_type_Boen.a(0);
+      a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boen);
+      a(this.jdField_a_of_type_AndroidMediaMediaExtractor, this.jdField_b_of_type_AndroidMediaMediaExtractor, this.jdField_a_of_type_Boco, this.jdField_b_of_type_Boco, this.jdField_a_of_type_AndroidMediaMediaMuxer, this.jdField_a_of_type_Boej, this.jdField_a_of_type_Boek);
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
-        this.jdField_a_of_type_Brlf.b();
+        this.jdField_a_of_type_Boen.b();
       }
     }
     catch (Exception localException1)
@@ -637,14 +637,14 @@ class JBMR2VideoConverterImpl$Converter
         do
         {
           return;
-          this.jdField_a_of_type_Brlf.a(10000);
-          this.jdField_a_of_type_Brlf.a();
+          this.jdField_a_of_type_Boen.a(10000);
+          this.jdField_a_of_type_Boen.a();
           break;
           localException1 = localException1;
           if (QLog.isColorLevel()) {
             QLog.e("JBMR2VideoConverterImpl", 1, localException1.getMessage(), localException1);
           }
-          this.jdField_a_of_type_Brlf.a(localException1);
+          this.jdField_a_of_type_Boen.a(localException1);
           try
           {
             a();
@@ -653,7 +653,7 @@ class JBMR2VideoConverterImpl$Converter
           catch (Exception localException2)
           {
             localException2.printStackTrace();
-            this.jdField_a_of_type_Brlf.a(localException2);
+            this.jdField_a_of_type_Boen.a(localException2);
           }
         } while (!QLog.isColorLevel());
         QLog.d("JBMR2VideoConverterImpl", 2, "release Hw Resource error...");
@@ -665,7 +665,7 @@ class JBMR2VideoConverterImpl$Converter
         do
         {
           localException3.printStackTrace();
-          this.jdField_a_of_type_Brlf.a(localException3);
+          this.jdField_a_of_type_Boen.a(localException3);
         } while (!QLog.isColorLevel());
         QLog.d("JBMR2VideoConverterImpl", 2, "release Hw Resource error...");
         QLog.d("JBMR2VideoConverterImpl", 2, localException3.getMessage(), localException3);
@@ -683,7 +683,7 @@ class JBMR2VideoConverterImpl$Converter
       for (;;)
       {
         localException4.printStackTrace();
-        this.jdField_a_of_type_Brlf.a(localException4);
+        this.jdField_a_of_type_Boen.a(localException4);
         if (QLog.isColorLevel())
         {
           QLog.d("JBMR2VideoConverterImpl", 2, "release Hw Resource error...");

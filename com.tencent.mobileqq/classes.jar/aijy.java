@@ -1,18 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aijy
-  implements agee
+  implements View.OnClickListener
 {
-  aijy(aijm paramaijm) {}
+  aijy(aijs paramaijs) {}
   
-  public void a(aiwf paramaiwf)
+  public void onClick(View paramView)
   {
-    ((awpd)this.a.a(32)).a(1, paramaiwf);
-    ((agwp)this.a.a(43)).b(1, paramaiwf);
-  }
-  
-  public void b(aiwf paramaiwf)
-  {
-    ((awpd)this.a.a(32)).b(1, paramaiwf);
-    ((agwp)this.a.a(43)).a(1, paramaiwf);
+    if (paramView == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aijs.a(this.a, paramView);
+    }
   }
 }
 

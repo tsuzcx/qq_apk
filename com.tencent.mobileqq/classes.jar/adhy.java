@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.QQWalletMsg;
+import android.view.View;
 
-public class adhy
-  extends adic
+public abstract interface adhy
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public abstract void a(View paramView);
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
-  {
-    new bcrt().e(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.qqwallet_msg.has();
-  }
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 

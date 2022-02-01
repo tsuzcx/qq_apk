@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afjt
   implements DialogInterface.OnClickListener
 {
-  public afjt(RegisterActivity paramRegisterActivity) {}
+  public afjt(TroopChatPie paramTroopChatPie) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
+    this.a.finish();
   }
 }
 

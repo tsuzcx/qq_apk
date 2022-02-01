@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewStub;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aryp
-  implements DialogInterface.OnClickListener
+public class aryp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aryp(aryn paramaryn) {}
+  public aryp(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface.cancel();
-    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
-    this.a.a.startActivity(paramDialogInterface);
+    FileAssistantActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    FileAssistantActivity.a(this.a).requestLayout();
   }
 }
 

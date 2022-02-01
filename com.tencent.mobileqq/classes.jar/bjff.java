@@ -1,38 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnErrorListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener;
 
-public class bjff
-  implements Animator.AnimatorListener
+class bjff
+  implements IMediaPlayer.OnErrorListener
 {
-  public bjff(FloatingScreenContainer paramFloatingScreenContainer) {}
+  bjff(bjey parambjey, ReliableVideoPlayer.OnErrorListener paramOnErrorListener) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a).removeAllListeners();
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).b();
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener != null) {
+      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjey, paramInt1, paramInt2);
     }
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).a();
-    }
-    FloatingScreenContainer.a(this.a, true);
+    return false;
   }
 }
 

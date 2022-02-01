@@ -1,44 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.OpenAuthorityAccountView;
 import com.tencent.qphone.base.util.QLog;
 
-class bhsn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bhsn
+  implements View.OnLayoutChangeListener
 {
-  bhsn(bhsm parambhsm) {}
+  public bhsn(OpenAuthorityAccountView paramOpenAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
   
-  public void onGlobalLayout()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (!bhsm.a(this.a)) {}
+    paramInt1 = paramView.getHeight();
+    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenAuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
+    }
+    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    if (paramView == null) {
+      paramView = new RelativeLayout.LayoutParams(-1, -2);
+    }
     for (;;)
     {
+      paramView.addRule(12);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
       return;
-      Object localObject = new Rect();
-      bhsm.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-      int j = bhsm.a(this.a) - ((Rect)localObject).height();
-      bhsm.a(this.a, ((Rect)localObject).height());
-      if (j > bhsm.b(this.a) / 3) {}
-      for (int i = 1; i != 0; i = 0)
-      {
-        bhsm.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
-        }
-        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
-          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
-        }
-        if (bhsm.a(this.a) != null) {
-          bhsm.a(this.a).a(j, false);
-        }
-        this.a.a();
-        return;
-      }
+      paramView.height = -2;
     }
   }
 }

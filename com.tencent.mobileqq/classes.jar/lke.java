@@ -1,85 +1,112 @@
-import java.util.Comparator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.av.opengl.GraphicRenderMgr;
 
-public class lke
+public final class lke
 {
-  public static final Object a;
-  public static final Comparator<lke> a;
-  private static lke b;
-  private static int c;
-  public int a;
-  public begw a;
-  private lke a;
-  public int b;
+  protected String a;
   
-  static
+  public lke(String paramString)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilComparator = new lkf();
+    this.a = paramString;
   }
   
-  private lke(begw parambegw, int paramInt1, int paramInt2)
+  public int a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Begw = parambegw;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static lke a(begw parambegw, int paramInt1, int paramInt2)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      if (jdField_b_of_type_Lke != null)
+      return paramInt;
+      paramString = a(paramString);
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[0];
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      return paramString2;
+      paramString1 = a(paramString1);
+    } while ((paramString1 == null) || (paramString1.length <= 0));
+    return paramString1[0];
+  }
+  
+  public boolean a()
+  {
+    return TextUtils.isEmpty(this.a);
+  }
+  
+  public int[] a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    String[] arrayOfString;
+    int j;
+    int i;
+    try
+    {
+      localObject1 = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+      paramString = localObject2;
+      if (localObject1 != null)
       {
-        lke locallke = jdField_b_of_type_Lke;
-        jdField_b_of_type_Lke = locallke.jdField_a_of_type_Lke;
-        locallke.a(parambegw, paramInt1, paramInt2);
-        c -= 1;
-        return locallke;
+        if (((String)localObject1).equalsIgnoreCase("unknown")) {
+          paramString = localObject2;
+        }
       }
-      return new lke(parambegw, paramInt1, paramInt2);
+      else {
+        return paramString;
+      }
     }
-  }
-  
-  private void a(begw parambegw, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Lke = null;
-    this.jdField_a_of_type_Begw = parambegw;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static void a(List<lke> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
+    catch (UnsatisfiedLinkError paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          localObject1 = null;
+        }
+        arrayOfString = ((String)localObject1).split(",");
+        paramString = localObject2;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      localObject1 = new int[j];
+      i = 0;
+    }
     for (;;)
     {
-      return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
+      paramString = (String)localObject1;
+      if (i >= j) {
+        break;
+      }
+      try
       {
-        lke locallke = (lke)paramList.remove(i);
-        if (locallke != null) {
-          locallke.a();
+        localObject1[i] = Integer.parseInt(arrayOfString[i].trim());
+        i += 1;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          localObject1[i] = 0;
         }
-        i -= 1;
       }
     }
   }
   
-  public void a()
+  public String[] a(String paramString)
   {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (c < 50)
-      {
-        this.jdField_a_of_type_Lke = jdField_b_of_type_Lke;
-        jdField_b_of_type_Lke = this;
-        c += 1;
-      }
-      return;
+    paramString = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+    if ((paramString == null) || (paramString.equalsIgnoreCase("unknown"))) {
+      return null;
     }
+    return paramString.trim().split(",");
   }
 }
 

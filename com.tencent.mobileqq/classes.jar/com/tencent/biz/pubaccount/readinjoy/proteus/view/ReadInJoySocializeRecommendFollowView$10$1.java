@@ -6,40 +6,40 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import qcf;
-import qch;
-import qcp;
-import qwy;
-import qxt;
+import qid;
+import qif;
+import qin;
+import rdw;
+import rer;
 
 public class ReadInJoySocializeRecommendFollowView$10$1
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$10$1(qch paramqch, long paramLong, boolean paramBoolean) {}
+  public ReadInJoySocializeRecommendFollowView$10$1(qif paramqif, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoySocializeRecommendFollowView", 2, "onUpdateAfterAccountFollow uin = " + this.jdField_a_of_type_Long + " isFollow = " + this.jdField_a_of_type_Boolean);
     }
-    if ((qcf.a(this.jdField_a_of_type_Qch.a) != null) && (this.jdField_a_of_type_Long == qcf.a(this.jdField_a_of_type_Qch.a).mSocialFeedInfo.a.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Boolean) && (qcf.a(this.jdField_a_of_type_Qch.a).isShowRecommendList))
+    if ((qid.a(this.jdField_a_of_type_Qif.a) != null) && (this.jdField_a_of_type_Long == qid.a(this.jdField_a_of_type_Qif.a).mSocialFeedInfo.a.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Boolean) && (qid.a(this.jdField_a_of_type_Qif.a).isShowRecommendList))
     {
-      qcf.a(this.jdField_a_of_type_Qch.a, false);
-      qcf.a(this.jdField_a_of_type_Qch.a).isShowRecommendList = false;
+      qid.a(this.jdField_a_of_type_Qif.a, false);
+      qid.a(this.jdField_a_of_type_Qif.a).isShowRecommendList = false;
     }
-    if ((qcf.a(this.jdField_a_of_type_Qch.a) != null) && (qcf.a(this.jdField_a_of_type_Qch.a).mRecommendFollowInfos != null) && (qcf.a(this.jdField_a_of_type_Qch.a).mRecommendFollowInfos.a != null))
+    if ((qid.a(this.jdField_a_of_type_Qif.a) != null) && (qid.a(this.jdField_a_of_type_Qif.a).mRecommendFollowInfos != null) && (qid.a(this.jdField_a_of_type_Qif.a).mRecommendFollowInfos.a != null))
     {
-      Iterator localIterator = qcf.a(this.jdField_a_of_type_Qch.a).mRecommendFollowInfos.a.iterator();
+      Iterator localIterator = qid.a(this.jdField_a_of_type_Qif.a).mRecommendFollowInfos.a.iterator();
       while (localIterator.hasNext())
       {
         RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)localIterator.next();
         if (this.jdField_a_of_type_Long == localRecommendFollowInfo.uin)
         {
           localRecommendFollowInfo.isFollowed = this.jdField_a_of_type_Boolean;
-          qcf.a(this.jdField_a_of_type_Qch.a, localRecommendFollowInfo);
+          qid.a(this.jdField_a_of_type_Qif.a, localRecommendFollowInfo);
         }
       }
-      qcf.a(this.jdField_a_of_type_Qch.a).notifyDataSetChanged();
+      qid.a(this.jdField_a_of_type_Qif.a).notifyDataSetChanged();
     }
   }
 }

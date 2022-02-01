@@ -1,33 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class avuu
-  implements avux
+  implements DialogInterface.OnClickListener
 {
-  public avuu(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public avuu(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Avva != null))
-    {
-      this.a.jdField_a_of_type_Avva.a(0, paramView);
+    MsgBackupCompleteFragment.a(this.a);
+    if (MsgBackupCompleteFragment.a(this.a) == 1) {
+      avwr.a("0X800A253", 5);
+    }
+    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
       return;
     }
-    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Avva != null)) {
-      this.a.jdField_a_of_type_Avva.a(4, paramView);
-    }
-    for (;;)
-    {
-      QLog.d("HotVideoRelativeLayout", 2, "click base view");
-      return;
-      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Avva != null)) {
-        this.a.jdField_a_of_type_Avva.a(1, paramView);
-      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Avva != null)) {
-        this.a.jdField_a_of_type_Avva.a(2, paramView);
-      }
-    }
+    avwr.a("0X800A267", 2);
   }
 }
 

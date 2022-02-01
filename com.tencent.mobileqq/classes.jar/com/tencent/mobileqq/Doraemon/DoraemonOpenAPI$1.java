@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import adnn;
+import ackg;
 
 public final class DoraemonOpenAPI$1
   implements Runnable
 {
   public void run()
   {
-    adnn localadnn = adnn.a();
-    localadnn.a();
-    localadnn.b();
+    ackg localackg = ackg.a();
+    localackg.a();
+    localackg.b();
   }
 }
 

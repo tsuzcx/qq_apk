@@ -1,84 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.automator.SyncSteps.1;
-import com.tencent.biz.pubaccount.readinjoy.automator.SyncSteps.2;
-import java.util.Collections;
-import java.util.LinkedList;
-import org.jetbrains.annotations.NotNull;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class omt
-  extends omp
-  implements oms
+public class omt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList;
-  private final omp[] jdField_a_of_type_ArrayOfOmp;
+  public omt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public omt(@NotNull omo paramomo, @NotNull omp[] paramArrayOfomp)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramomo, false, "SyncSteps");
-    this.jdField_a_of_type_ArrayOfOmp = paramArrayOfomp;
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    int j = paramArrayOfomp.length;
-    j = paramArrayOfomp.length;
-    while (i < j)
+    String str2 = bkwm.a();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
     {
-      paramArrayOfomp[i].a(this);
-      i += 1;
-    }
-    Collections.addAll(this.jdField_a_of_type_JavaUtilLinkedList, paramArrayOfomp);
-  }
-  
-  public void a()
-  {
-    super.a();
-    omp[] arrayOfomp = this.jdField_a_of_type_ArrayOfOmp;
-    int j = arrayOfomp.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfomp[i].a();
-      i += 1;
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    Collections.addAll(this.jdField_a_of_type_JavaUtilLinkedList, this.jdField_a_of_type_ArrayOfOmp);
-    return true;
-  }
-  
-  public final void b()
-  {
-    if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-    {
-      Object localObject = (omp)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      if (((omp)localObject).a())
-      {
-        SyncSteps.1 local1 = new SyncSteps.1(this, (omp)localObject);
-        if (((omp)localObject).c())
-        {
-          local1.run();
-          return;
-        }
-        localObject = a().a();
-        if (localObject != null)
-        {
-          ((omr)localObject).a(local1);
-          return;
-        }
-        new Thread(local1).start();
-        return;
-      }
-      a().b(new SyncSteps.2(this, (omp)localObject));
+      odq.a(null, "CliOper", "", "", "0X800AFEB", "0X800AFEB", 0, 0, str2, str1, "", pay.f(), false);
+      bkwm.a((QQAppInterface)this.a.getAppInterface(), paramBoolean, new onb(this.a, paramBoolean));
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    d();
-  }
-  
-  public boolean b()
-  {
-    b();
-    return false;
   }
 }
 

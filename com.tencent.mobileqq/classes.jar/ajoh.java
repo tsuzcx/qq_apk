@@ -1,56 +1,37 @@
-import android.support.v4.util.SparseArrayCompat;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-public class ajoh<T>
+public class ajoh
 {
-  SparseArrayCompat<ajog<T>> a = new SparseArrayCompat();
+  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public int a()
+  public ajoh(PhotoCropActivity paramPhotoCropActivity)
   {
-    return this.a.size();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
   }
   
-  public int a(T paramT, int paramInt)
+  public void a()
   {
-    int i = this.a.size() - 1;
-    while (i >= 0)
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
     {
-      if (((ajog)this.a.valueAt(i)).a(paramT, paramInt)) {
-        return this.a.keyAt(i);
-      }
-      i -= 1;
-    }
-    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
-  }
-  
-  public ajog a(int paramInt)
-  {
-    return (ajog)this.a.get(paramInt);
-  }
-  
-  public ajoh<T> a(ajog<T> paramajog)
-  {
-    int i = this.a.size();
-    if (paramajog != null) {
-      this.a.put(i, paramajog);
-    }
-    return this;
-  }
-  
-  public void a(ajoo paramajoo, T paramT, int paramInt)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      ajog localajog = (ajog)this.a.valueAt(i);
-      if (localajog.a(paramT, paramInt))
+      bjnw localbjnw = (bjnw)bjon.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
       {
-        localajog.a(paramajoo, paramT, paramInt);
-        return;
+        localbjnw.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
+        i += 1;
       }
-      i += 1;
+      localbjnw.c(2131690620);
+      localbjnw.a(new ajoi(this, localbjnw));
+      localbjnw.show();
     }
-    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
 }
 

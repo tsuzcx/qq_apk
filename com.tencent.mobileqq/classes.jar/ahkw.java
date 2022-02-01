@@ -1,17 +1,416 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.robotchat.RobotChatPanelLayout;
+import com.tencent.mobileqq.robotchat.RobotChatTipLayout;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
 
-class ahkw
-  extends ahkx
+public class ahkw
+  extends afiw
+  implements Handler.Callback, baqk
 {
-  ahkw(ahgk paramahgk)
+  public RobotChatPanelLayout a;
+  private RobotChatTipLayout a;
+  private View b;
+  
+  public ahkw(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
-    super(paramahgk, null);
+    super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
   }
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  private boolean b()
   {
-    return new ahvd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    boolean bool1 = false;
+    int j = 0;
+    if (this.root.a() != 0)
+    {
+      int i = j;
+      if (this.root.a() == 2)
+      {
+        i = j;
+        if (this.mAudioPanel != null)
+        {
+          i = j;
+          if (this.mAudioPanel.a()) {
+            i = 1;
+          }
+        }
+      }
+      if (i == 0) {
+        this.root.a(true);
+      }
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (this.mAIOGiftPanelContainer != null)
+    {
+      bool2 = bool1;
+      if (this.mAIOGiftPanelContainer.a())
+      {
+        this.mAIOGiftPanelContainer.a();
+        bool2 = true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "checkConsumeBackEvent, comsumed:" + bool2);
+    }
+    return bool2;
+  }
+  
+  private void c()
+  {
+    if (bfyz.b(this.mContext, this.app.getCurrentUin(), this.sessionInfo.curFriendUin)) {}
+    while (!(this.mTipRoot instanceof ViewGroup)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout = new RobotChatTipLayout(this.mContext);
+    this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.a(this);
+    ((ViewGroup)this.mTipRoot).addView(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout, 0);
+  }
+  
+  private void d()
+  {
+    Object localObject = (ViewGroup)this.mTitleText.getParent();
+    this.mCustomTitleView.a();
+    localObject = (ImageView)this.mAIORootView.findViewById(2131378755);
+    if (localObject != null)
+    {
+      ((ImageView)localObject).setImageDrawable(baql.a(this.mContext));
+      ((ImageView)localObject).setVisibility(0);
+    }
+    localObject = (aftj)this.helperProvider.a(23);
+    if (localObject != null) {
+      ((aftj)localObject).a();
+    }
+    if (this.mArkController != null)
+    {
+      this.mArkController.b();
+      this.mArkController = null;
+    }
+  }
+  
+  public String a()
+  {
+    if (this.sessionInfo != null)
+    {
+      if (!TextUtils.isEmpty(this.sessionInfo.curFriendNick)) {
+        return this.sessionInfo.curFriendNick;
+      }
+      return this.sessionInfo.curFriendUin;
+    }
+    return null;
+  }
+  
+  public void a(RobotChatTipLayout paramRobotChatTipLayout)
+  {
+    bfyz.c(this.mContext, this.app.getCurrentUin(), this.sessionInfo.curFriendUin, true);
+    if ((this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout != null) && (this.mTipRoot != null) && ((this.mTipRoot instanceof ViewGroup)))
+    {
+      ((ViewGroup)this.mTipRoot).removeView(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout);
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.a();
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout = null;
+    }
+    bcef.b(this.app, "dc00898", "", "", "0X800A486", "0X800A486", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void adjustInputLayout(int paramInt)
+  {
+    super.adjustInputLayout(paramInt);
+    afsk localafsk = (afsk)getHelper(36);
+    if ((localafsk != null) && (localafsk.b())) {
+      localafsk.d();
+    }
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (paramEditable.length() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      super.afterTextChanged(paramEditable);
+      if (this.mInputStat == 0)
+      {
+        paramEditable = (afsk)getHelper(36);
+        if ((paramEditable != null) && (paramEditable.b())) {
+          paramEditable.a(bool);
+        }
+      }
+      return;
+    }
+  }
+  
+  public afnn createChatDrawer()
+  {
+    return null;
+  }
+  
+  public boolean doOnCreate(boolean paramBoolean)
+  {
+    return super.doOnCreate(paramBoolean);
+  }
+  
+  public void doOnCreate_initUI()
+  {
+    super.doOnCreate_initUI();
+    d();
+  }
+  
+  public void doOnDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "doOnDestroy:");
+    }
+    aftj localaftj = (aftj)this.helperProvider.a(23);
+    if (localaftj != null) {
+      localaftj.b();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout != null) && (this.mTipRoot != null))
+    {
+      ((ViewGroup)this.mTipRoot).removeView(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout);
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.a();
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout = null;
+    }
+    if ((this.b != null) && (this.b.getParent() != null))
+    {
+      ((ViewGroup)this.b.getParent()).removeView(this.b);
+      this.b = null;
+    }
+    super.doOnDestroy();
+  }
+  
+  public void doOnResume()
+  {
+    super.doOnResume();
+    afsk localafsk = (afsk)getHelper(36);
+    if ((localafsk != null) && (localafsk.b())) {
+      localafsk.a(getStatusTxtDartElseLight());
+    }
+  }
+  
+  public void doOnResume_updateUI()
+  {
+    super.doOnResume_updateUI();
+    afsk localafsk = (afsk)getHelper(36);
+    if ((localafsk != null) && (localafsk.b())) {
+      localafsk.a(this.mTitleBtnLeft);
+    }
+  }
+  
+  public void doPanelChanged(int paramInt1, int paramInt2)
+  {
+    super.doPanelChanged(paramInt1, paramInt2);
+    afsk localafsk = (afsk)getHelper(36);
+    if ((localafsk != null) && (localafsk.b())) {
+      localafsk.a(paramInt1, paramInt2);
+    }
+  }
+  
+  public boolean enableFullScreenInput()
+  {
+    return false;
+  }
+  
+  public void initHelper()
+  {
+    super.initHelper();
+    this.helperProvider.a(this);
+  }
+  
+  public void leftBackEvent(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "leftBackEvent begin:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "no confirm dialog");
+    }
+    super.leftBackEvent(paramBoolean);
+  }
+  
+  public boolean onBackEvent()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "onBackEvent begin");
+    }
+    if (b()) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "no confirm dialog");
+    }
+    return super.onBackEvent();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      super.onClick(paramView);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      afsk localafsk = (afsk)getHelper(36);
+      if ((localafsk != null) && (localafsk.b())) {
+        if (this.input.getText().length() <= 0)
+        {
+          localafsk.b(false);
+          bcef.b(this.app, "dc00898", "", "", "0X800A487", "0X800A487", 0, 0, "", "", "", "");
+        }
+        else
+        {
+          localafsk.b(true);
+        }
+      }
+    }
+  }
+  
+  public void onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    aftj localaftj = (aftj)this.helperProvider.a(23);
+    if ((localaftj != null) && (localaftj.a(paramMotionEvent, this.isJubaoMode))) {
+      return;
+    }
+    super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public void onPostThemeChanged()
+  {
+    super.onPostThemeChanged();
+    afsk localafsk = (afsk)getHelper(36);
+    if ((localafsk != null) && (localafsk.b())) {
+      localafsk.a(getStatusTxtDartElseLight());
+    }
+  }
+  
+  public void onShow_otherThings()
+  {
+    super.onShow_otherThings();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "onShow_otherThings:");
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, " onTextChanged:  start=" + paramInt1 + " before=" + paramInt2 + " count=" + paramInt3);
+    }
+    paramCharSequence = (aftj)getHelper(23);
+    if (paramCharSequence != null) {
+      paramCharSequence.b(this.input.getLineCount());
+    }
+  }
+  
+  public void openOptionActivity()
+  {
+    bezm.a(this.mContext, null, this.sessionInfo.curFriendUin);
+    bcef.b(null, "dc00898", "", "", "0X800A48B", "0X800A48B", 0, 0, "", "", "", "");
+  }
+  
+  public void setTag()
+  {
+    this.tag = "RobotChatPie";
+  }
+  
+  public void showZhituIcon() {}
+  
+  public void updateFriendNick()
+  {
+    super.updateFriendNick();
+    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.setRobotName(a());
+    }
+  }
+  
+  public void updateListUnRead(int paramInt)
+  {
+    super.updateListUnRead(paramInt);
+    aftj localaftj = (aftj)this.helperProvider.a(23);
+    if (localaftj != null) {
+      localaftj.a(paramInt, this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.mContent);
+    }
+  }
+  
+  public void updateSession(Intent paramIntent)
+  {
+    super.updateSession(paramIntent);
+    paramIntent = paramIntent.getBundleExtra("key_invoke_troop_robot_function");
+    aftj localaftj = (aftj)this.helperProvider.a(23);
+    if (localaftj != null) {
+      localaftj.a(paramIntent);
+    }
+  }
+  
+  public void updateSession_checkUpdateFooterView() {}
+  
+  public void updateSession_updateTitle(Intent paramIntent)
+  {
+    super.updateSession_updateTitle(paramIntent);
+    this.mTitleText.setOnClickListener(new ahky(this));
+  }
+  
+  public void updateSession_updateTitleBtnCall()
+  {
+    if (this.mTitleBtnCall != null)
+    {
+      this.mTitleBtnCall.setVisibility(4);
+      ThreadManager.post(new RobotChatPie.3(this), 5, null, false);
+    }
+  }
+  
+  public void updateSession_updateUI(Intent paramIntent)
+  {
+    super.updateSession_updateUI(paramIntent);
+    c();
+    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.setRobotName(a());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(this.sessionInfo.curFriendUin, a(), this, new ahkx(this));
+    }
+  }
+  
+  public void updateSpeakerPhoneLayout(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.speakerPhoneLayout != null) {
+      super.updateSpeakerPhoneLayout(paramBoolean1, paramBoolean2);
+    }
+    aftj localaftj;
+    do
+    {
+      return;
+      super.updateSpeakerPhoneLayout(paramBoolean1, paramBoolean2);
+      localaftj = (aftj)this.helperProvider.a(23);
+    } while (localaftj == null);
+    localaftj.a(this.speakerPhoneLayout);
   }
 }
 

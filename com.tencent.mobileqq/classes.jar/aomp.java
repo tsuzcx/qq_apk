@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.app.automator.step.GetSig;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class aomp
-  extends aocj
+  implements DialogInterface.OnClickListener
 {
-  private aomp(GetSig paramGetSig) {}
+  public aomp(ARScanEntryView paramARScanEntryView) {}
   
-  protected void j(boolean paramBoolean)
-  {
-    GetSig localGetSig = this.a;
-    if (paramBoolean) {}
-    for (int i = 7;; i = 6)
-    {
-      localGetSig.a(i);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomp
  * JD-Core Version:    0.7.0.1
  */

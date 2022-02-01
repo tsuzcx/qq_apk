@@ -1,44 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class apad
-  extends aoxg
+final class apad
+  implements INetEngine.IBreakDownFix
 {
-  public apad(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  private void d()
-  {
-    String str = b("buddyuin");
-    if (!str.isEmpty())
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      long l = Long.parseLong(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopOneWayAction", 2, "grayTip,openTroopWithCommonFriendsFragment:" + l);
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
       }
-      TroopWithCommonFriendsFragment.a(str);
-      TroopWithCommonFriendsFragment.a(this.a, 1);
-      bdll.b(null, "dc00898", "", "", "0X800AD20", "0X800AD20", 0, 0, "0", "0", "", "");
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      d();
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TroopOneWayAction", 1, "doAction error: " + localException.getMessage());
-      a("TroopOneWayAction");
-    }
-    return false;
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

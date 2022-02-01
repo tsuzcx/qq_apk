@@ -1,56 +1,31 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class bbxw<T extends View>
+public class bbxw
 {
-  protected int a;
-  public long a;
-  public boolean a;
+  private static boolean a;
   
-  public bbxw(int paramInt)
+  public static boolean a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static bbxw a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    switch (paramInt1)
-    {
-    case 2: 
-    case 4: 
-    case 5: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseSearchEntryModel", 2, "createSearchEntryModel, modelType = " + paramInt1 + ", tabType = " + paramInt2);
-      }
-      return null;
-    case 0: 
-      return new bbyf(paramInt2);
-    case 1: 
-    case 7: 
-      return new bbyy(paramInt1, paramInt2, paramBoolean);
-    case 3: 
-      return new bbxx(paramInt2, paramBoolean);
+    boolean bool = false;
+    if (a) {
+      return true;
     }
-    return new bcaa(paramInt2);
+    String str = bbxj.c();
+    if (str == null) {
+      return false;
+    }
+    if (!FileUtils.fileExists(str + "libObjectTracker.so")) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
+      }
+      a = bool;
+      return a;
+      bool = true;
+    }
   }
-  
-  public abstract T a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle);
-  
-  public void a() {}
-  
-  public void a(bcgy parambcgy) {}
-  
-  public void b() {}
-  
-  public void b(bcgy parambcgy) {}
-  
-  public void c() {}
 }
 
 

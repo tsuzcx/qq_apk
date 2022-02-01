@@ -1,14 +1,20 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class ahdi
 {
-  public int a;
-  public ahdj a;
-  public View a;
-  private Runnable a;
-  public int[] a;
-  public int b;
-  public int c;
+  public String a;
+  
+  public ahdi(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

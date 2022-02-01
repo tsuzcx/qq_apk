@@ -1,26 +1,15 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class yce
-  extends yjl
+class yce
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected final int a;
-  protected final String a;
+  yce(ycd paramycd) {}
   
-  public yce(String paramString1, int paramInt, String paramString2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected wzl a(String paramString, List<String> paramList)
-  {
-    return new xbr(paramString, paramList);
-  }
-  
-  protected wzm a()
-  {
-    return new ycf(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.g();
   }
 }
 

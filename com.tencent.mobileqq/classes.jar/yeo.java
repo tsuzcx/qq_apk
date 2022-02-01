@@ -1,23 +1,8 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-
-class yeo
-  implements yer
+public abstract interface yeo
 {
-  yeo(yen paramyen, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  public abstract void a();
   
-  public void a()
-  {
-    yuk.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    yen.a(this.jdField_a_of_type_Yen, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void b()
-  {
-    yuk.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    yen.a(this.jdField_a_of_type_Yen).finish();
-    yen.a(this.jdField_a_of_type_Yen).overridePendingTransition(0, 0);
-  }
+  public abstract void a(Runnable paramRunnable);
 }
 
 

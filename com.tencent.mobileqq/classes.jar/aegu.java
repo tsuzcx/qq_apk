@@ -1,33 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aegu
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aegu(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aegu(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt == 1)
+    int i = 1;
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.a.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      this.a.app.setTroopGeneralSettingVibrate(1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label78;
+      }
     }
-    while (paramInt != 0) {
+    for (;;)
+    {
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      this.a.app.setTroopGeneralSettingVibrate(0);
+      break;
+      label78:
+      i = 0;
     }
-    this.a.finish();
   }
 }
 

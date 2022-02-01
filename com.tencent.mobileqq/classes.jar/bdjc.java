@@ -1,11 +1,20 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.AIOUtils.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdjc
-  implements IMCoreProxyRoute.AIOUtils.Proxy
+class bdjc
+  extends bdji<UserState>
 {
-  public boolean getLogcatDBOperation()
+  bdjc(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    return agej.f;
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.a(this.a).a();
+    if (!bdiu.a(this.a).a()) {
+      bdiu.a(this.a).c();
+    }
   }
 }
 

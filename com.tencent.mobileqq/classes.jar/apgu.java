@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apgu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public apgu(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
+  public apgu(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
-    ARVideoRecordButtonView.a(this.a);
+    apgz localapgz = (apgz)paramView.getTag();
+    this.a.a(localapgz.jdField_a_of_type_JavaLangString, localapgz.b, localapgz.jdField_a_of_type_Boolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

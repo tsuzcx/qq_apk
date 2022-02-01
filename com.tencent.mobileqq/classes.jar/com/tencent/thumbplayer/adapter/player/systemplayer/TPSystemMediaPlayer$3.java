@@ -1,6 +1,5 @@
 package com.tencent.thumbplayer.adapter.player.systemplayer;
 
-import android.media.MediaPlayer;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorListener;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 
@@ -11,16 +10,15 @@ class TPSystemMediaPlayer$3
   
   public void run()
   {
-    if ((TPSystemMediaPlayer.access$300(this.this$0) != TPSystemMediaPlayer.PlayerState.PAUSED) && (TPSystemMediaPlayer.access$1000(this.this$0)))
+    if (TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.PREPARING)
     {
-      TPLogUtil.e(TPSystemMediaPlayer.access$400(this.this$0), "startCheckBufferTimeOutByInfo, buffer last too long");
-      TPSystemMediaPlayer.access$500(this.this$0).reset();
-      TPSystemMediaPlayer.access$500(this.this$0).release();
+      TPLogUtil.e(TPSystemMediaPlayer.access$500(this.this$0), "startCheckPrepareTimeoutTimer, post error");
       TPSystemMediaPlayer.access$302(this.this$0, TPSystemMediaPlayer.PlayerState.ERROR);
-      TPSystemMediaPlayer.access$1002(this.this$0, false);
-      TPSystemMediaPlayer.access$1100(this.this$0);
-      if (TPSystemMediaPlayer.access$700(this.this$0) != null) {
-        TPSystemMediaPlayer.access$700(this.this$0).onError(2001, TPSystemMediaPlayer.access$800(this.this$0, -110), 0L, 0L);
+      TPSystemMediaPlayer.access$600(this.this$0);
+      TPSystemMediaPlayer.access$700(this.this$0);
+      ITPPlayerBaseListener.IOnErrorListener localIOnErrorListener = TPSystemMediaPlayer.access$800(this.this$0);
+      if (localIOnErrorListener != null) {
+        localIOnErrorListener.onError(2001, TPSystemMediaPlayer.access$900(-110), 0L, 0L);
       }
     }
   }

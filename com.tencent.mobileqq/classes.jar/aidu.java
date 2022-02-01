@@ -1,241 +1,197 @@
-import android.os.Looper;
-import android.support.v4.util.ArrayMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder.1;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ContactMatch;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class aidu
+  extends aiea
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private ArrayMap<String, List<Object>> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  private ArrayMap<String, Boolean> b = new ArrayMap();
+  private aiej jdField_a_of_type_Aiej;
+  private amsw jdField_a_of_type_Amsw;
   
-  private int a(String paramString, int paramInt, List<Object> paramList)
+  public aidu(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
   {
-    a();
-    if ((paramString == null) || (paramInt <= 0) || (paramList == null)) {
-      return -1;
-    }
-    int i = 0;
-    while (i < paramList.size())
+    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
+    this.jdField_a_of_type_Amsw = ((amsw)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_Aiej = ((aiej)paramQQAppInterface.getManager(34));
+    this.jdField_a_of_type_Bjty = a(paramContext);
+    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297425);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    aidv localaidv;
+    Object localObject;
+    boolean bool;
+    label213:
+    StringBuilder localStringBuilder;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aidv)))
     {
-      Object localObject = paramList.get(i);
-      if (((localObject instanceof String)) && (((String)localObject).equals(paramString))) {
-        return i + paramInt;
+      localaidv = new aidv();
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561479, localaidv);
+      a(paramView, this.b);
+      localaidv.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361795));
+      localaidv.h = ((TextView)paramView.findViewById(2131371791));
+      localaidv.i = ((TextView)paramView.findViewById(2131376354));
+      localaidv.l = ((TextView)paramView.findViewById(2131362305));
+      localaidv.j = ((TextView)paramView.findViewById(2131377631));
+      localaidv.k = ((TextView)paramView.findViewById(2131376351));
+      localaidv.a = ((Button)paramView.findViewById(2131376341));
+      b(localaidv.jdField_f_of_type_AndroidWidgetImageView);
+      paramView.setTag(localaidv);
+      localaidv.g.setTag(localaidv);
+      localaidv.g.setOnClickListener(this);
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Aigo, localaidv, this);
+      localObject = localaidv.g;
+      if (this.jdField_a_of_type_Aigo.a()) {
+        break label495;
       }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  private void a(int paramInt, String paramString, List<Object> paramList)
-  {
-    a();
-    if ((paramString == null) || (paramInt < 0) || (paramList == null)) {}
-    do
-    {
-      return;
-      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
-    } while (paramString == null);
-    int i = paramString.size();
-    while ((i > 0) && (paramInt < paramList.size()))
-    {
-      paramList.remove(paramInt);
-      i -= 1;
-    }
-    paramInt = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (paramString.size() + paramInt);
-  }
-  
-  private void b(int paramInt, String paramString, List<Object> paramList)
-  {
-    a();
-    if ((paramString == null) || (paramInt < 0) || (paramList == null)) {}
-    do
-    {
-      return;
-      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
-    } while (paramString == null);
-    paramList.addAll(paramInt, paramString);
-    this.jdField_a_of_type_Int -= paramString.size();
-  }
-  
-  public int a()
-  {
-    a();
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<Object> a(String paramString)
-  {
-    a();
-    return (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new RuntimeException("This method must be called on UI thread");
-    }
-  }
-  
-  public void a(List<Object> paramList, int paramInt)
-  {
-    a();
-    if ((paramList == null) || (paramInt <= 0)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramList.size())
+      bool = true;
+      a((View)localObject, bool);
+      localObject = ((aigi)this.jdField_a_of_type_Aigo).a;
+      localStringBuilder = new StringBuilder(256);
+      if (TextUtils.isEmpty(((ContactMatch)localObject).name)) {
+        break label500;
+      }
+      localaidv.h.setVisibility(0);
+      localaidv.h.setText(((ContactMatch)localObject).name);
+      if (AppSetting.c) {
+        localStringBuilder.append(((ContactMatch)localObject).name);
+      }
+      label293:
+      a(localaidv.l, ((ContactMatch)localObject).gender, ((ContactMatch)localObject).age, localStringBuilder);
+      localaidv.i.setVisibility(8);
+      localaidv.j.setText(amtj.a(2131701653));
+      localaidv.j.setVisibility(0);
+      if (AppSetting.c) {
+        localStringBuilder.append(",来自手机通讯录");
+      }
+      if (!this.jdField_a_of_type_Amsw.a(((ContactMatch)localObject).unifiedCode, true)) {
+        break label513;
+      }
+      localaidv.a.setVisibility(8);
+      localaidv.k.setVisibility(0);
+      localaidv.k.setText(amtj.a(2131701650));
+      if (AppSetting.c)
       {
-        Object localObject = paramList.get(i);
-        if (((localObject instanceof String)) && (this.b.get((String)localObject) != null) && (!((Boolean)this.b.get((String)localObject)).booleanValue()) && (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) != null)) {
-          paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
-        }
-        i += 1;
+        localStringBuilder.append(",等待验证");
+        localaidv.k.setContentDescription(amtj.a(2131701654));
       }
     }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, List<Object> paramList)
-  {
-    a();
-    if ((paramList == null) || (paramInt <= 0)) {}
     for (;;)
     {
-      return;
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
-      Object localObject2 = null;
-      int i = 0;
-      Object localObject3;
-      if (i < paramList.size())
+      if (AppSetting.c) {
+        paramView.setContentDescription(localStringBuilder.toString());
+      }
+      localaidv.jdField_f_of_type_JavaLangString = ((ContactMatch)localObject).unifiedCode;
+      localaidv.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aifw.a(11, ((ContactMatch)localObject).unifiedCode));
+      return paramView;
+      localaidv = (aidv)paramView.getTag();
+      break;
+      label495:
+      bool = false;
+      break label213;
+      label500:
+      localaidv.h.setVisibility(8);
+      break label293;
+      label513:
+      localaidv.a.setVisibility(0);
+      localaidv.a.setText(amtj.a(2131689550));
+      localaidv.a.setTag(localObject);
+      localaidv.a.setOnClickListener(this);
+      localaidv.k.setVisibility(8);
+      if (AppSetting.c)
       {
-        localObject3 = paramList.get(i);
-        if ((localObject3 instanceof String))
+        localStringBuilder.append(",添加");
+        localaidv.a.setContentDescription(amtj.a(2131701651));
+      }
+    }
+  }
+  
+  protected void a()
+  {
+    ThreadManager.getSubThreadHandler().post(new ContactMatchBuilder.1(this));
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A72", "0X8006A72", 0, 0, "", "", "", "");
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      a(paramView);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject1 = paramView.getTag();
+      if ((localObject1 != null) && ((localObject1 instanceof aidv)))
+      {
+        Object localObject2 = ((aigi)this.jdField_a_of_type_Aigo).a;
+        if (localObject2 != null)
         {
-          localObject2 = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject3);
-          localObject1 = localObject2;
-          if (localObject2 == null)
+          if (((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).i()) {}
+          for (localObject1 = new ProfileActivity.AllInOne(((ContactMatch)localObject2).unifiedCode, 34);; localObject1 = new ProfileActivity.AllInOne(((ContactMatch)localObject2).unifiedCode, 29))
           {
-            localObject1 = new ArrayList();
-            this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put((String)localObject3, localObject1);
+            ((ProfileActivity.AllInOne)localObject1).h = ((ContactMatch)localObject2).name;
+            ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, (ProfileActivity.AllInOne)localObject1, 229);
+            this.jdField_a_of_type_Aiej.h();
+            break;
           }
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject2 = localObject1;
-          break;
-          localObject1 = localObject2;
-          if (localObject2 != null) {
-            if ((!(localObject3 instanceof aidw)) && (localObject3 != aicx.b) && (!(localObject3 instanceof asuo)))
+          localObject1 = paramView.getTag();
+          if ((localObject1 != null) && ((localObject1 instanceof ContactMatch))) {
+            if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
             {
-              localObject1 = localObject2;
-              if (localObject3 != asua.c) {}
+              QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692035), 0).b(c());
             }
             else
             {
-              ((List)localObject2).add(localObject3);
-              localObject1 = localObject2;
+              localObject1 = (ContactMatch)localObject1;
+              if (localObject1 != null)
+              {
+                localObject2 = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+                int i = 3006;
+                int j = 3;
+                if (!((PhoneContactManagerImp)localObject2).i())
+                {
+                  i = 3075;
+                  j = 1;
+                }
+                localObject1 = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 2, ((ContactMatch)localObject1).unifiedCode, "ContactMatchBuilder", i, j, ((ContactMatch)localObject1).name, null, null, amtj.a(2131701652), null);
+                ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject1, 229);
+              }
+              this.jdField_a_of_type_Aiej.h();
+              bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A71", "0X8006A71", 0, 0, "", "", "", "");
             }
           }
         }
       }
-      this.jdField_a_of_type_Int = 0;
-      if (!paramBoolean) {
-        break;
-      }
-      Object localObject1 = this.b.entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (Map.Entry)((Iterator)localObject1).next();
-        localObject2 = (String)((Map.Entry)localObject3).getKey();
-        localObject3 = (Boolean)((Map.Entry)localObject3).getValue();
-        if ((localObject3 != null) && (!((Boolean)localObject3).booleanValue())) {
-          a(a((String)localObject2, paramInt, paramList), (String)localObject2, paramList);
-        }
-      }
-    }
-    this.b.clear();
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    paramString = (Boolean)this.b.get(paramString);
-    if (paramString != null) {
-      return paramString.booleanValue();
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString, int paramInt, List<Object> paramList)
-  {
-    boolean bool2 = true;
-    a();
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString) == null) {
-      return false;
-    }
-    if (this.b.get(paramString) != null) {}
-    for (boolean bool1 = ((Boolean)this.b.get(paramString)).booleanValue();; bool1 = true)
-    {
-      ArrayMap localArrayMap = this.b;
-      if (!bool1)
-      {
-        localArrayMap.put(paramString, Boolean.valueOf(bool2));
-        paramInt = a(paramString, paramInt, paramList);
-        if (bool1) {
-          break label99;
-        }
-        b(paramInt, paramString, paramList);
-      }
-      for (;;)
-      {
-        return bool1;
-        bool2 = false;
-        break;
-        label99:
-        a(paramInt, paramString, paramList);
-      }
-    }
-  }
-  
-  public boolean a(List<Object> paramList, int paramInt)
-  {
-    a();
-    boolean bool2;
-    if ((this.b.isEmpty()) || (paramList == null))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    int i = 0;
-    boolean bool1 = false;
-    label29:
-    if (i < paramList.size())
-    {
-      Object localObject = paramList.get(i);
-      if ((!(localObject instanceof String)) || (this.b.get((String)localObject) == null) || (((Boolean)this.b.get((String)localObject)).booleanValue()) || (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) == null)) {
-        break label155;
-      }
-      paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
-      bool1 = true;
-    }
-    label155:
-    for (;;)
-    {
-      i += 1;
-      break label29;
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      this.b.clear();
-      return bool1;
     }
   }
 }

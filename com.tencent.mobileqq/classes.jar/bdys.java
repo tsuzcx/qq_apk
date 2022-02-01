@@ -1,6 +1,13 @@
-public abstract interface bdys
+import java.util.List;
+
+public class bdys
 {
-  public abstract int a();
+  public int a;
+  public List<Integer> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

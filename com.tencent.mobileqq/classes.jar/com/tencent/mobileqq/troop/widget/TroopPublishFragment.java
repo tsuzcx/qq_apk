@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import avgp;
+import attv;
 import com.tencent.mobileqq.fragment.BaseFragment;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements avgp
+  implements attv
 {
   public String a()
   {
@@ -16,7 +16,7 @@ public class TroopPublishFragment
   
   public void a(String paramString) {}
   
-  public void aO_() {}
+  public void az_() {}
   
   public String b()
   {

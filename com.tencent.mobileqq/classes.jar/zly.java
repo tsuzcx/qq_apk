@@ -1,19 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDelFeedRsp;
+import android.app.Activity;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class zly
-  implements zlz
+class zly
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDelFeedRsp>
 {
-  public void a(@NonNull ArrayList<zma> paramArrayList, @NonNull Context paramContext)
+  zly(zlv paramzlv) {}
+  
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDelFeedRsp paramStDelFeedRsp)
   {
-    int i = 0;
-    while (i < zma.a.length)
-    {
-      paramArrayList.add(new zma(paramContext.getResources().getDrawable(zma.b[i]), 0, zma.a[i]));
-      i += 1;
+    if (this.a.a == null) {
+      return;
     }
+    if ((!paramBoolean) || (paramLong != 0L))
+    {
+      QQToast.a(this.a.a, 1, amtj.a(2131713682), 0).a();
+      return;
+    }
+    SimpleEventBus.getInstance().dispatchEvent(new SubscribeFeedsEvent(zlv.a(this.a).a.id.get(), 3));
+    this.a.a.finish();
+    QQToast.a(this.a.a, amtj.a(2131713678), 0).a();
   }
 }
 

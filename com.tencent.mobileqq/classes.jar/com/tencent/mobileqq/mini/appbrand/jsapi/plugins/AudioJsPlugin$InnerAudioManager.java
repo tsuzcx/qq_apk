@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Handler;
-import bhsr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer;
 import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer.AudioPlayerListener;
 import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer.OnPreparedListener;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -134,7 +134,7 @@ class AudioJsPlugin$InnerAudioManager
       i = this.audioContext.optInt("startTime");
       bool = this.audioContext.optBoolean("loop");
       d = this.audioContext.optDouble("volume");
-      if (!bhsr.a(str)) {}
+      if (!StringUtil.isEmpty(str)) {}
     }
     else
     {

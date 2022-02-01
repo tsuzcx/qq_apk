@@ -1,23 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import java.io.File;
+import java.io.FileFilter;
 
-public final class bnlo
-  implements bngj
+class bnlo
+  implements FileFilter
 {
-  public bnlo(Handler paramHandler) {}
+  bnlo(bnln parambnln) {}
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public boolean accept(File paramFile)
   {
-    if ("cmd.uploadCommentVideo".equals(paramString))
-    {
-      paramString = new Message();
-      paramString.obj = paramBundle;
-      this.a.sendMessage(paramString);
-      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
-        bngf.a().b(this);
-      }
-    }
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
   }
 }
 

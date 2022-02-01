@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import bpwo;
+import bmzs;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class SpeedFlexibleRecyclerView
   extends RecyclerView
 {
-  private bpwo a;
+  private bmzs a;
   
   public SpeedFlexibleRecyclerView(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class SpeedFlexibleRecyclerView
   }
   
   @Nullable
-  public bpwo a()
+  public bmzs a()
   {
     return this.a;
   }
@@ -140,9 +140,9 @@ public class SpeedFlexibleRecyclerView
     }
   }
   
-  public void setOnFlingListener(@Nullable bpwo parambpwo)
+  public void setOnFlingListener(@Nullable bmzs parambmzs)
   {
-    this.a = parambpwo;
+    this.a = parambmzs;
   }
 }
 

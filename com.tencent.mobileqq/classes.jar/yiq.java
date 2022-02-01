@@ -1,44 +1,55 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import java.io.File;
 
 public class yiq
 {
-  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
-  
-  public yiq(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
+  public static final String a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
+    if (paramInt >= 86400000) {
+      return "unknow";
+    }
+    int i = (int)Math.floor(paramInt / 3600000);
+    int j = (int)Math.floor(paramInt % 3600000) / 60000;
+    if (paramBoolean) {}
+    for (paramInt = Math.round(paramInt % 60000 / 1000.0F); i > 0; paramInt = (int)Math.floor(paramInt % 60000 / 1000)) {
+      return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) });
+    }
+    return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
   }
   
-  public yiq(byte[] paramArrayOfByte)
+  public static final String a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new NullPointerException("MusicComposeDialog.createMusicFilePath() musicUrl is null");
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    File localFile = new File(vkm.f);
+    if ((!localFile.exists()) || (!localFile.isDirectory())) {
+      localFile.mkdirs();
     }
+    paramString = vkm.f + bjkz.a(paramString) + "." + ypi.c(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "createMusicFilePath destPath = " + paramString);
+    }
+    return paramString;
   }
   
-  public CardItem.CardVideoInfo a()
+  public static void a(BaseActivity paramBaseActivity, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
-        return null;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
+    paramInt = MusicProviderView.a(paramInt);
+    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s", new Object[] { DeviceInfoUtil.getIMEI(), "", Integer.valueOf(paramInt) }));
+    localIntent.putExtra("finish_animation_up_down", true);
+    paramBaseActivity.startActivityForResult(localIntent, 1000);
+    paramBaseActivity.overridePendingTransition(2130771979, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicUtils", 1, new Object[] { "music busType:", Integer.valueOf(paramInt) });
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 

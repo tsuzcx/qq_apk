@@ -1,61 +1,41 @@
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import java.io.File;
 
-public class arzg
-  extends BaseAdapter
+class arzg
+  implements bjoe
 {
-  public arzg(DataReportSettingFragment paramDataReportSettingFragment) {}
+  arzg(arzf paramarzf, FileInfo paramFileInfo, bjnw parambjnw) {}
   
-  public aryz a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return (aryz)this.a.a.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    arzk localarzk;
-    aryz localaryz;
-    if (paramView == null)
+    if ((!FileUtil.isFileExists(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (FileUtil.deleteFile(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
     {
-      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131559606, paramViewGroup, false);
-      localarzk = new arzk(this.a);
-      localarzk.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131368990));
-      localarzk.jdField_a_of_type_Arzh = new arzh(this.a);
-      localarzk.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(localarzk.jdField_a_of_type_Arzh);
-      localarzk.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnLongClickListener(localarzk.jdField_a_of_type_Arzh);
-      paramView.setTag(localarzk);
-      localaryz = a(paramInt);
-      localarzk.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(localaryz.jdField_a_of_type_Boolean);
-      if (!(localaryz instanceof asaa)) {
-        break label205;
-      }
-      localarzk.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localaryz.jdField_a_of_type_JavaLangString + " - " + ((asaa)localaryz).b);
+      aszt.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
+      this.jdField_a_of_type_Arzf.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
     }
-    for (;;)
+    try
     {
-      localarzk.jdField_a_of_type_Arzh.a = localaryz;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localarzk = (arzk)paramView.getTag();
-      break;
-      label205:
-      localarzk.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localaryz.jdField_a_of_type_JavaLangString);
+      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
+      this.jdField_a_of_type_Arzf.a.a.a.sendBroadcast(paramView);
+      label104:
+      this.jdField_a_of_type_Arzf.a.a.f();
+      if (this.jdField_a_of_type_Bjnw.isShowing()) {
+        this.jdField_a_of_type_Bjnw.dismiss();
+      }
+      return;
+      aszk.a(2131692124);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      break label104;
     }
   }
 }

@@ -1,14 +1,17 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface blrn
+class blrn
+  implements View.OnClickListener
 {
-  public abstract View a(int paramInt);
+  blrn(blrm paramblrm) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract void s();
+  public void onClick(View paramView)
+  {
+    blrm.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

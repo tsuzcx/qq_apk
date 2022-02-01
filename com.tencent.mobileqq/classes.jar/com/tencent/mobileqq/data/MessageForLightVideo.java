@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import agji;
+import afcb;
+import amtj;
 import android.text.TextUtils;
-import anzj;
-import bcrn;
-import bhmi;
+import bbkv;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class MessageForLightVideo
   extends MessageForShortVideo
-  implements agji
+  implements afcb
 {
   public static final int LIGHT_VIDEO_STATUS_MUTE_PLAY = 3;
   public static final int LIGHT_VIDEO_STATUS_PAUSE = 2;
@@ -29,7 +29,7 @@ public class MessageForLightVideo
   public void doParse()
   {
     super.doParse();
-    if ("1".equals(getExtInfoFromExtStr(bcrn.u)))
+    if ("1".equals(getExtInfoFromExtStr(bbkv.u)))
     {
       this.isLightVideoRead = true;
       return;
@@ -40,14 +40,14 @@ public class MessageForLightVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anzj.a(2131705466);
+      return amtj.a(2131705696);
     }
     return this.msg;
   }
   
   public boolean isAllReady()
   {
-    return (bhmi.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
+    return (FileUtils.fileExistsAndNotEmpty(ShortVideoUtils.getShortVideoSavePath(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
   }
   
   public boolean isStatusReady()
@@ -62,7 +62,7 @@ public class MessageForLightVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLightVideo
  * JD-Core Version:    0.7.0.1
  */

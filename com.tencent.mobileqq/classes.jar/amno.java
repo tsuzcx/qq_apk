@@ -1,8 +1,10 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.graphics.Bitmap;
 
 public abstract interface amno
 {
-  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
+  public abstract Bitmap a(int[] paramArrayOfInt, Bitmap paramBitmap, int paramInt1, int paramInt2);
+  
+  public abstract void a(amnp paramamnp, int paramInt);
 }
 
 

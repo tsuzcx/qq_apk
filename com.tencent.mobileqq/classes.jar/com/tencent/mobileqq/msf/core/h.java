@@ -1087,11 +1087,11 @@ public class h
     //   2000: pop
     //   2001: aload_0
     //   2002: getfield 99	com/tencent/mobileqq/msf/core/h:y	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2005: invokevirtual 246	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/ak;
+    //   2005: invokevirtual 246	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/al;
     //   2008: aload_2
     //   2009: aload 13
     //   2011: iload 4
-    //   2013: invokevirtual 541	com/tencent/mobileqq/msf/core/ak:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
+    //   2013: invokevirtual 541	com/tencent/mobileqq/msf/core/al:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
     //   2016: istore 9
     //   2018: iload 9
     //   2020: ifne +43 -> 2063

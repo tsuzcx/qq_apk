@@ -37,6 +37,8 @@ public abstract class TPBaseMediaCodecDecoder
   private MediaCodec.CryptoInfo mCryptoInfo = null;
   private HandlerThread mDecodeThread = null;
   private TPBaseMediaCodecDecoder.AsyncDecodeHandler mDecoderHandler = null;
+  protected int mDolbyVisionLevel = 0;
+  protected int mDolbyVisionProfile = 0;
   protected int mDrmType = -1;
   protected boolean mEnableAsyncMode = false;
   private boolean mEnableAudioPassThrough = false;
@@ -260,56 +262,73 @@ public abstract class TPBaseMediaCodecDecoder
   
   private boolean initMediaCodecInternal()
   {
-    try
+    label274:
+    String str;
+    for (;;)
     {
-      Object localObject = selectCodec(getMimeType());
-      if (localObject == null)
+      try
       {
-        TPNativeLog.printLog(3, getLogTag(), "initMediaCodec failed! no such codec by mime type: " + getMimeType());
+        Object localObject = selectCodec(getMimeType());
+        if (localObject == null)
+        {
+          TPNativeLog.printLog(3, getLogTag(), "initMediaCodec failed! no such codec by mime type: " + getMimeType());
+          return false;
+        }
+        if (getMimeType().equals("audio/vnd.dts"))
+        {
+          TPNativeLog.printLog(2, getLogTag(), "initMediaCodec current mime type:" + getMimeType() + " is audio dts, need set input timeout to 0!");
+          MEDIA_CODEC_INPUT_TIMEOUT_US = 0L;
+          MEDIA_CODEC_OUTPUT_TIMEOUT_US = 0L;
+        }
+        TPNativeLog.printLog(2, getLogTag(), "initMediaCodec mime:" + getMimeType() + " profile:" + this.mDolbyVisionProfile + " level:" + this.mDolbyVisionLevel + " mDrmType:" + this.mDrmType);
+        if (this.mDolbyVisionProfile <= 0) {
+          break label274;
+        }
+        if (2 == this.mDrmType)
+        {
+          bool = true;
+          localObject = TPUnitendCodecUtils.getDolbyVisionDecoderName(getMimeType(), this.mDolbyVisionProfile, this.mDolbyVisionLevel, bool);
+          TPNativeLog.printLog(2, getLogTag(), "initMediaCodec Dolby Vision codecName:" + (String)localObject);
+          if (localObject != null) {
+            break;
+          }
+          TPNativeLog.printLog(4, getLogTag(), "initMediaCodec failed, codecName is null.");
+          return false;
+        }
+      }
+      catch (Exception localException)
+      {
+        TPNativeLog.printLog(4, getLogTag(), getStackTrace(localException));
         return false;
       }
-      if (getMimeType().equals("audio/vnd.dts"))
-      {
-        TPNativeLog.printLog(2, getLogTag(), "initMediaCodec current mime type:" + getMimeType() + " is audio dts, need set input timeout to 0!");
-        MEDIA_CODEC_INPUT_TIMEOUT_US = 0L;
-        MEDIA_CODEC_OUTPUT_TIMEOUT_US = 0L;
+      bool = false;
+      continue;
+      if (2 == this.mDrmType) {
+        str = TPUnitendCodecUtils.getSecureDecoderName(getMimeType());
+      } else {
+        str = str.getName();
       }
-      TMediaCodec localTMediaCodec;
-      if (2 == this.mDrmType)
-      {
-        localObject = TPUnitendCodecUtils.getSecureDecoderName(getMimeType());
-        this.mCodec = TMediaCodec.createByCodecName((String)localObject);
-        localTMediaCodec = this.mCodec;
-        if ((!this.mEnableMediaCodecReuse) || (this.mEnableAsyncMode)) {
-          break label313;
-        }
-      }
-      label313:
-      for (boolean bool = true;; bool = false)
-      {
-        localTMediaCodec.setReuseEnable(bool);
-        this.mCodec.setCodecCallback(new TPBaseMediaCodecDecoder.1(this));
-        TPNativeLog.printLog(2, getLogTag(), "initMediaCodec codec name: " + (String)localObject);
-        if ((this.mEnableAsyncMode) && (Build.VERSION.SDK_INT >= 23))
-        {
-          TPNativeLog.printLog(2, getLogTag(), "MediaCodec EnableAsyncMode！");
-          this.mDecodeThread = new HandlerThread("MediaCodecThread");
-          this.mDecodeThread.start();
-          this.mDecoderHandler = new TPBaseMediaCodecDecoder.AsyncDecodeHandler(this, this.mDecodeThread.getLooper());
-          this.mCodec.setCallback(new TPBaseMediaCodecDecoder.BufferCallback(this, null), this.mDecoderHandler);
-        }
-        configCodec(this.mCodec);
-        this.mCodec.start();
-        this.mStarted = true;
-        return true;
-        localObject = ((MediaCodecInfo)localObject).getName();
-        break;
-      }
-      return false;
     }
-    catch (Exception localException)
+    this.mCodec = TMediaCodec.createByCodecName(str);
+    TMediaCodec localTMediaCodec = this.mCodec;
+    if ((this.mEnableMediaCodecReuse) && (!this.mEnableAsyncMode)) {}
+    for (boolean bool = true;; bool = false)
     {
-      TPNativeLog.printLog(4, getLogTag(), getStackTrace(localException));
+      localTMediaCodec.setReuseEnable(bool);
+      this.mCodec.setCodecCallback(new TPBaseMediaCodecDecoder.1(this));
+      TPNativeLog.printLog(2, getLogTag(), "initMediaCodec codec name: " + str);
+      if ((this.mEnableAsyncMode) && (Build.VERSION.SDK_INT >= 23))
+      {
+        TPNativeLog.printLog(2, getLogTag(), "MediaCodec EnableAsyncMode！");
+        this.mDecodeThread = new HandlerThread("MediaCodecThread");
+        this.mDecodeThread.start();
+        this.mDecoderHandler = new TPBaseMediaCodecDecoder.AsyncDecodeHandler(this, this.mDecodeThread.getLooper());
+        this.mCodec.setCallback(new TPBaseMediaCodecDecoder.BufferCallback(this, null), this.mDecoderHandler);
+      }
+      configCodec(this.mCodec);
+      this.mCodec.start();
+      this.mStarted = true;
+      return true;
     }
   }
   

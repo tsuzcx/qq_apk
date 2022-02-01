@@ -1,44 +1,139 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqConfig;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class amrk
-  implements Comparator<amrm>
+  implements Manager
 {
-  private int a(amrm paramamrm)
+  private EqqConfig jdField_a_of_type_ComTencentMobileqqDataEqqConfig;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private ConcurrentHashMap<String, EqqDetail> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  
+  public amrk(QQAppInterface paramQQAppInterface)
   {
-    if ((a(paramamrm) == 0L) || (paramamrm.jdField_a_of_type_Int == 4)) {
-      return paramamrm.jdField_a_of_type_Int + 3;
-    }
-    return paramamrm.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
   }
   
-  private long a(amrm paramamrm)
+  public EqqDetail a(String paramString)
   {
-    if ((paramamrm.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof TroopInfo)) {
-      return ((TroopInfo)paramamrm.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
+    if (TextUtils.isEmpty(paramString)) {}
+    while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      return null;
     }
-    if ((paramamrm.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof DiscussionInfo)) {
-      return ((DiscussionInfo)paramamrm.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
-    }
-    return 0L;
+    return (EqqDetail)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
   
-  public int a(amrm paramamrm1, amrm paramamrm2)
+  public String a()
   {
-    if ((paramamrm1 == null) && (paramamrm2 == null)) {
-      return 0;
+    String str2 = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig == null)
+    {
+      List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(EqqConfig.class);
+      String str1 = str2;
+      if (localList != null)
+      {
+        str1 = str2;
+        if (localList.size() >= 1)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig = ((EqqConfig)localList.get(0));
+          str1 = this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig.getData();
+        }
+      }
+      return str1;
     }
-    if (paramamrm1 == null) {
-      return -1;
+    return this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig.getData();
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.eqq", 2, "initEqqDetailCache() begin");
     }
-    if (paramamrm2 == null) {
-      return 1;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(EqqDetail.class, false, "followType=?", new String[] { "0" }, null, null, null, null);
+    if (localObject != null) {
+      i = ((List)localObject).size();
     }
-    if (a(paramamrm1) == a(paramamrm2)) {
-      return (int)(a(paramamrm2) - a(paramamrm1));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(i);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EqqDetail localEqqDetail = (EqqDetail)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localEqqDetail.uin, localEqqDetail);
+      }
     }
-    return a(paramamrm1) - a(paramamrm2);
+    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.eqq", 2, "initEqqDetailCache() end: " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    }
+  }
+  
+  public void a(EqqDetail paramEqqDetail)
+  {
+    if (paramEqqDetail == null) {}
+    do
+    {
+      return;
+      a(paramEqqDetail);
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+      }
+    } while (paramEqqDetail.followType != 0);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEqqDetail.uin, paramEqqDetail);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig == null) {
+      this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig = new EqqConfig(paramString);
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig);
+  }
+  
+  protected boolean a(Entity paramEntity)
+  {
+    boolean bool = false;
+    if (paramEntity.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      if (paramEntity.getStatus() == 1001) {
+        bool = true;
+      }
+    }
+    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return bool;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+  }
+  
+  public void b(EqqDetail paramEqqDetail)
+  {
+    if (paramEqqDetail == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramEqqDetail);
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramEqqDetail.uin);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    }
   }
 }
 

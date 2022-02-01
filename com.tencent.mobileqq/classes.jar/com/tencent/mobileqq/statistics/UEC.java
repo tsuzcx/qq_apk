@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
-import abiw;
+import aaff;
+import amvi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
@@ -12,18 +13,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.Fragment.IFragmentAttachCallback;
 import android.support.v4.app.Fragment.IFragmentLifecycleCallback;
 import android.support.v4.app.FragmentActivity;
-import anxh;
-import aobf;
-import bdmr;
-import bhsr;
+import bcfc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -204,7 +204,7 @@ public final class UEC
   private String b(String paramString)
   {
     String str;
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       str = "null";
     }
     int i;
@@ -241,7 +241,7 @@ public final class UEC
   private String c(String paramString)
   {
     String str;
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       str = "null";
     }
     int i;
@@ -284,7 +284,7 @@ public final class UEC
         }
       }
       paramObject.f = paramString3;
-      paramObject.e = "8.4.5";
+      paramObject.e = "8.4.8";
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, paramObject);
     }
     for (paramString1 = paramObject;; paramString1 = paramObject)
@@ -361,15 +361,15 @@ public final class UEC
         localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (localObject != null)
         {
-          bdmr localbdmr = (bdmr)((QQAppInterface)localObject).getManager(134);
-          if (localbdmr != null) {
-            localbdmr.a(paramArrayList);
+          bcfc localbcfc = (bcfc)((QQAppInterface)localObject).getManager(134);
+          if (localbcfc != null) {
+            localbcfc.a(paramArrayList);
           }
         }
       } while (localObject == null);
-      localObject = (bdmr)((QQAppInterface)localObject).getManager(158);
+      localObject = (bcfc)((QQAppInterface)localObject).getManager(158);
     } while (localObject == null);
-    ((bdmr)localObject).a(paramArrayList);
+    ((bcfc)localObject).a(paramArrayList);
   }
   
   public boolean a()
@@ -458,7 +458,7 @@ public final class UEC
     String str = c(paramActivity);
     a((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      abiw.b(paramActivity);
+      aaff.b(paramActivity);
     }
   }
   
@@ -472,7 +472,7 @@ public final class UEC
     String str = c(paramActivity);
     b((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      abiw.a(paramActivity);
+      aaff.a(paramActivity);
     }
   }
   
@@ -485,9 +485,9 @@ public final class UEC
       ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityStarted(paramActivity);
     }
     this.jdField_a_of_type_Int += 1;
-    aobf.b(paramActivity);
+    amvi.b(paramActivity);
     if (Build.VERSION.SDK_INT >= 26) {
-      anxh.a(paramActivity, true, false);
+      FontSettingManager.resetFontIfNeeded(paramActivity, true, false);
     }
   }
   

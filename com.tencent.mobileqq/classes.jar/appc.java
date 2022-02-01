@@ -1,17 +1,11 @@
-public class appc
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.List;
+
+public abstract interface appc
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
 }
 
 

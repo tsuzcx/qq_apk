@@ -1,19 +1,33 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sli
+public class sli
   implements View.OnClickListener
 {
-  sli(slh paramslh) {}
+  public sli(KandianProgressView paramKandianProgressView) {}
   
   public void onClick(View paramView)
   {
-    slh.a(true, -1, slh.a(this.a));
-    if (slh.a(this.a) != null) {
-      slh.a(this.a).onClick(paramView);
+    if (this.a.jdField_a_of_type_Slj == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131365396: 
+      case 2131365411: 
+        this.a.jdField_a_of_type_Slj.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        break;
+      case 2131376360: 
+      case 2131376368: 
+        this.a.jdField_a_of_type_Slj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

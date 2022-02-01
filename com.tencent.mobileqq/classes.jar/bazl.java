@@ -1,58 +1,73 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
-import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bazl
-  extends bbak<ReceiptMessageDetailFragment>
+  extends bazc
 {
-  public bazl(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public bayy a;
+  public boolean b;
+  
+  public bazl(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    super(paramReceiptMessageDetailFragment);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_g_of_type_Boolean = false;
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(String paramString)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
-      return;
-    }
     try
     {
-      paramBundle = new oidb_0x985.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_code.get();
-      if (paramInt == 0)
+      JSONObject localJSONObject = new JSONObject(paramString);
+      String str2 = localJSONObject.optString("appname");
+      String str1 = localJSONObject.optString("desc");
+      String str3 = localJSONObject.optString("appIcon");
+      String str4 = localJSONObject.optString("appid");
+      int i = localJSONObject.optInt("showMask", 0);
+      Object localObject = null;
+      paramString = (String)localObject;
+      if (localJSONObject.has("friendExtra"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
+        localJSONObject = localJSONObject.optJSONObject("friendExtra");
+        paramString = (String)localObject;
+        if (localJSONObject != null)
+        {
+          paramString = (String)localObject;
+          if (localJSONObject.has("displayText")) {
+            paramString = localJSONObject.optString("displayText");
+          }
         }
-        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
-        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
-        paramBundle = paramBundle.rpt_msg_unread_list.get();
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
-        paramInt = paramArrayOfByte.size();
-        int i = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
-        paramInt = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+      }
+      localObject = str1;
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = paramString + " | " + str1;
+      }
+      paramString = new MiniAppLocalSearchEntity(str4, str2, str3, (String)localObject, i);
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      this.a = new bayy((QQAppInterface)localObject, this.c, paramString, this.jdField_g_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) && (str2.equalsIgnoreCase(this.jdField_g_of_type_JavaLangString))) {}
+      for (this.b = true; localObject != null; this.b = false)
+      {
+        localObject = (MiniAppLocalSearchManager)((QQAppInterface)localObject).getManager(310);
+        if (localObject == null) {
+          break;
+        }
+        ((MiniAppLocalSearchManager)localObject).updateDataDbFromNetResult(paramString);
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
       return;
     }
-    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    catch (JSONException paramString)
+    {
+      QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
+    }
   }
 }
 

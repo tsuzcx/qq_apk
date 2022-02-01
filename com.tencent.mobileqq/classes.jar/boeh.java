@@ -1,32 +1,31 @@
-import dov.com.qq.im.ae.view.NoScrollViewPager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class boeh
-  implements bpbe
+  extends BroadcastReceiver
 {
   boeh(boeg paramboeg) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
+    if (paramIntent.getAction() == null) {}
+    do
     {
-      boeg.a(this.a).setCurrentItem(0, true);
-      boeg.a(this.a).d();
-      boeg.a(this.a).t();
-      bozr.a().aa();
-      return;
-    }
-    if (boeg.a(this.a))
-    {
-      boeg.a(this.a);
-      bozr.a().ab();
-      return;
-    }
-    boeg.b(this.a);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt != 1) || (boeg.a(this.a));
+      do
+      {
+        return;
+        paramContext = this.a.jdField_a_of_type_JavaLangString;
+        this.a.b();
+      } while ((this.a.jdField_a_of_type_Boei == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
+      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
+      {
+        this.a.a();
+        this.a.jdField_a_of_type_Boei.a(0, this.a.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
+    this.a.jdField_a_of_type_Boei.a(1, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

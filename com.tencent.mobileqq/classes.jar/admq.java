@@ -1,38 +1,29 @@
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.ResultObject;
-import com.tencent.mfsdk.reporter.ReporterMachine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class admq
-  implements Observer
+  implements View.OnClickListener
 {
-  public void update(Observable paramObservable, Object paramObject)
+  public admq(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = ((admp)paramObservable).a;
-    if ("t_held_thread".equals((String)((HashMap)localObject).get("key_type"))) {}
-    try
+    if (System.currentTimeMillis() - this.a.a < 2000L)
     {
-      paramObservable = new JSONObject();
-      paramObject = new JSONObject();
-      paramObject.put("fileObj1", ((HashMap)localObject).get("filePath"));
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("p_id", MagnifierSDK.b());
-      paramObservable.put("fileObj", paramObject);
-      paramObservable.put("clientinfo", localObject);
-      paramObservable.put("newplugin", 123);
-      ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, paramObservable, true, true, MagnifierSDK.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("StackObserver", 2, "report apm suc");
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception paramObservable)
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (HongbaoShowerActivity.a(this.a) == 0) {}
+    for (String str = "1";; str = "2")
     {
-      QLog.e("StackObserver", 1, "report apm fail", paramObservable);
+      bcef.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, str, "", "", "");
+      break;
     }
   }
 }

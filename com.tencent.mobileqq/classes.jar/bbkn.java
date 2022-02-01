@@ -1,63 +1,66 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import AccostSvc.ReqGetBlackList;
+import AccostSvc.ReqHeader;
+import AccostSvc.RespGetBlackList;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class bbkn
+  implements bbnm
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  protected int b;
-  protected int c;
-  protected int d = -1;
-  protected int e = -1;
+  public static String a;
+  private final QQAppInterface a;
   
-  public bbkn(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
+    jdField_a_of_type_JavaLangString = "GetBlackListItem";
   }
   
-  private int b(int paramInt)
+  public bbkn(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.eServiceID = 116;
+    Object localObject = new ReqHeader();
+    ((ReqHeader)localObject).shVersion = 0;
+    ((ReqHeader)localObject).lMID = bbla.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()));
+    ((ReqHeader)localObject).iAppID = AppSetting.a();
+    localObject = new ReqGetBlackList((ReqHeader)localObject, 0L, 1, 0);
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("AccostObj");
+    localUniPacket.setFuncName("CMD_GET_BlackList");
+    localUniPacket.put("ReqGetBlackList", localObject);
+    localReqItem.vecParam = localUniPacket.encode();
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 116) && (paramRespItem.cResult == 2))
     {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
+      Object localObject = new UniPacket();
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramRespItem.vecUpdate);
+      paramRespItem = (RespGetBlackList)((UniPacket)localObject).getByClass("RespGetBlackList", new RespGetBlackList());
+      localObject = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(0);
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg();
+      localFromServiceMsg.setMsgSuccess();
+      localFromServiceMsg.setServiceCmd("AccostSvc.ReqGetBlackList");
+      ((MessageHandler)localObject).a(null, localFromServiceMsg, paramRespItem);
     }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 3: 
-    case 4: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
   }
 }
 

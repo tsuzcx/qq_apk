@@ -1,31 +1,27 @@
 package cooperation.qzone.webviewplugin;
 
+import amtj;
 import android.app.Activity;
 import android.content.Context;
-import anzj;
-import bhlq;
-import bhpc;
-import bioy;
-import bnnx;
-import bnnz;
-import bnoa;
-import bnob;
+import bfur;
+import bgve;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class QzoneQunFeedJsPlugin$2$1
+class QzoneQunFeedJsPlugin$2$1
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$2$1(bnnz parambnnz) {}
+  QzoneQunFeedJsPlugin$2$1(QzoneQunFeedJsPlugin.2 param2) {}
   
   public void run()
   {
-    bnnx.a(this.a.jdField_a_of_type_Bnnx, this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    Activity localActivity = this.a.jdField_a_of_type_Bnnx.a.mRuntime.a();
-    if (bnnx.a(this.a.jdField_a_of_type_Bnnx) == null) {
-      bnnx.a(this.a.jdField_a_of_type_Bnnx, bhlq.a(localActivity, 230).setTitle(anzj.a(2131711158)).setMessage(anzj.a(2131711162)).setPositiveButton(anzj.a(2131711159), new bnob(this)).setNegativeButton(localActivity.getString(2131716807), new bnoa(this)));
+    QzoneQunFeedJsPlugin.access$102(this.this$1.this$0, this.this$1.val$args[0]);
+    Activity localActivity = this.this$1.this$0.parentPlugin.mRuntime.a();
+    if (QzoneQunFeedJsPlugin.access$200(this.this$1.this$0) == null) {
+      QzoneQunFeedJsPlugin.access$202(this.this$1.this$0, bfur.a(localActivity, 230).setTitle(amtj.a(2131711390)).setMessage(amtj.a(2131711394)).setPositiveButton(amtj.a(2131711391), new QzoneQunFeedJsPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717041), new QzoneQunFeedJsPlugin.2.1.1(this)));
     }
-    if (!bnnx.a(this.a.jdField_a_of_type_Bnnx).isShowing()) {
-      bnnx.a(this.a.jdField_a_of_type_Bnnx).show();
+    if (!QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).isShowing()) {
+      QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).show();
     }
   }
 }

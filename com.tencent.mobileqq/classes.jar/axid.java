@@ -1,36 +1,53 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
+import android.app.PendingIntent;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
 
-public class axid
-  implements bjey
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/AudioRoomScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "modifyAudioRoomScheme", "", "scheme", "needCustomJump", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class axid
+  extends axhx
 {
-  public axid(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
+  public static final axie a = new axie(null);
   
-  public void onItemSelect(View paramView, int paramInt)
+  private final String a(String paramString)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      axjn.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(axgj.c) });
-      axjd.a().c();
-      if (!TextUtils.isEmpty(this.a.a)) {
-        break label93;
-      }
-      this.a.a(this.a.getActivity());
-      if (this.a.b != 2) {
-        break label104;
-      }
-      axjk.a("0X800A282");
+    QLog.d("AudioRoomScheme", 2, "before modify scheme: " + paramString);
+    String str = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
+    paramString = str;
+    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"src_type", false, 2, null)) {
+      paramString = str + "&src_type=app";
     }
-    label93:
-    label104:
-    while (!axgj.c)
-    {
-      return;
-      this.a.onBackEvent();
-      break;
+    str = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null)) {
+      str = paramString + "&version=1";
     }
-    axjk.a("0X800A266", 4);
+    paramString = str;
+    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"fromid", false, 2, null)) {
+      paramString = str + "&fromid=10026";
+    }
+    str = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null)) {
+      str = paramString + "&roomtype=10001";
+    }
+    QLog.d("AudioRoomScheme", 2, "after modify: " + str);
+    return str;
+  }
+  
+  @NotNull
+  protected PendingIntent a(@NotNull axib paramaxib)
+  {
+    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    if (StringsKt.startsWith$default(paramaxib.d, "mqqapi://now/audioroom", false, 2, null)) {
+      paramaxib.d = a(paramaxib.d);
+    }
+    return d(paramaxib);
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

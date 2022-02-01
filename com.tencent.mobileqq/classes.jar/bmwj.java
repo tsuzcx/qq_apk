@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import android.graphics.RectF;
 
-public final class bmwj
-  implements Parcelable.Creator<QZoneCountUserInfo>
+public class bmwj
+  extends bmuy
 {
-  public QZoneCountUserInfo a(Parcel paramParcel)
+  private int a;
+  
+  public bmwj(int paramInt)
   {
-    return new QZoneCountUserInfo(paramParcel);
+    this.a = paramInt;
   }
   
-  public QZoneCountUserInfo[] a(int paramInt)
+  void a(int paramInt, bmuz parambmuz)
   {
-    return new QZoneCountUserInfo[paramInt];
+    RectF localRectF = parambmuz.a;
+    localRectF.top += this.a * paramInt;
+    parambmuz = parambmuz.a;
+    parambmuz.bottom += this.a * paramInt;
   }
 }
 

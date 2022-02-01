@@ -1,27 +1,41 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
 
-class ayzj
-  implements Camera.PreviewCallback
+public abstract class ayzj
 {
-  ayzj(ayzg paramayzg) {}
+  protected ayzl a;
+  protected QQAppInterface a;
   
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public ayzj(QQAppInterface paramQQAppInterface, ayzl paramayzl)
   {
-    if (paramArrayOfByte == null) {
-      return;
-    }
-    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!ayzg.a(this.a)))
-    {
-      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      if ((this.a.e != 1) && (System.currentTimeMillis() - ayzg.a(this.a) > this.a.c))
-      {
-        ayzg.a(this.a, System.currentTimeMillis());
-        ayzg.a(this.a, paramArrayOfByte);
-      }
-    }
-    ayzg.a(this.a).addCallbackBuffer(paramArrayOfByte);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ayzl = paramayzl;
   }
+  
+  public abstract String a();
+  
+  protected void a(ToServiceMsg paramToServiceMsg)
+  {
+    if (this.jdField_a_of_type_Ayzl != null)
+    {
+      paramToServiceMsg.addAttribute("processor_key", a());
+      this.jdField_a_of_type_Ayzl.sendPbReq(paramToServiceMsg);
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, oidb_0x5eb.UdcUinData paramUdcUinData) {}
+  
+  public boolean a(oidb_0x5eb.ReqBody paramReqBody)
+  {
+    return false;
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

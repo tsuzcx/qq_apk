@@ -1,23 +1,19 @@
-public class qrp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class qrp
+  implements View.OnClickListener
 {
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public int c = -2019;
-  public int d = -2019;
-  public int e = -2019;
+  qrp(qro paramqro) {}
   
-  public qrp(qrn paramqrn)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Int = -2019;
-  }
-  
-  public String toString()
-  {
-    return "\nFeedScrollStateInfo{feedID='" + this.jdField_a_of_type_JavaLangString + '\'' + ", viewHeight=" + this.jdField_a_of_type_Int + ", starTopOffset=" + this.jdField_b_of_type_Int + ", endTopOffset=" + this.c + ", startBottomOffset=" + this.d + ", endBottomOffset=" + this.e + ", enterAZSpeed=" + this.jdField_a_of_type_Double + ", enterAZTime=" + this.jdField_a_of_type_Long + ", exitAZTime=" + this.jdField_b_of_type_Long + "}";
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

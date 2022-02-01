@@ -1,19 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
 
-class qjz
-  implements View.OnClickListener
+public class qjz
+  implements View.OnTouchListener
 {
-  qjz(qjt paramqjt) {}
+  public qjz(NativeShareView paramNativeShareView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

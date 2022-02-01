@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.graphics.BitmapFactory.Options;
-import bdzu;
-import beuf;
-import bhlo;
-import bhmq;
+import bctl;
+import bfvo;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class TeamWorkForceShare$ImageRequestTask
   implements Runnable
 {
-  private bdzu jdField_a_of_type_Bdzu;
+  private bctl jdField_a_of_type_Bctl;
   private String jdField_a_of_type_JavaLangString;
   
-  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, bdzu parambdzu)
+  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, bctl parambctl)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bdzu = parambdzu;
+    this.jdField_a_of_type_Bctl = parambctl;
   }
   
   /* Error */
   private void a()
   {
     // Byte code:
-    //   0: new 28	beuf
+    //   0: new 28	com/tencent/mobileqq/transfile/HttpDownloader
     //   3: dup
-    //   4: invokespecial 29	beuf:<init>	()V
+    //   4: invokespecial 29	com/tencent/mobileqq/transfile/HttpDownloader:<init>	()V
     //   7: astore_3
-    //   8: new 31	bebk
+    //   8: new 31	bcvb
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 34	bebk:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
+    //   13: invokespecial 34	bcvb:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
     //   16: astore 4
     //   18: new 36	com/tencent/image/DownloadParams
     //   21: dup
@@ -52,7 +52,7 @@ public class TeamWorkForceShare$ImageRequestTask
     //   55: dup
     //   56: aload_0
     //   57: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   60: invokestatic 57	beqz:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   60: invokestatic 57	com/tencent/mobileqq/transfile/AbsDownloader:getFilePath	(Ljava/lang/String;)Ljava/lang/String;
     //   63: invokespecial 58	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   66: astore_2
     //   67: aload_2
@@ -61,16 +61,16 @@ public class TeamWorkForceShare$ImageRequestTask
     //   70: aload_2
     //   71: aload 5
     //   73: aload 4
-    //   75: invokevirtual 61	beuf:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   75: invokevirtual 62	com/tencent/mobileqq/transfile/HttpDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
     //   78: pop
     //   79: aload_2
     //   80: ifnull +7 -> 87
     //   83: aload_2
-    //   84: invokevirtual 64	java/io/FileOutputStream:close	()V
+    //   84: invokevirtual 65	java/io/FileOutputStream:close	()V
     //   87: return
     //   88: astore_1
     //   89: aload_1
-    //   90: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   90: invokevirtual 68	java/lang/Exception:printStackTrace	()V
     //   93: return
     //   94: astore_3
     //   95: aconst_null
@@ -78,39 +78,39 @@ public class TeamWorkForceShare$ImageRequestTask
     //   97: aload_2
     //   98: astore_1
     //   99: aload_3
-    //   100: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   100: invokevirtual 68	java/lang/Exception:printStackTrace	()V
     //   103: aload_2
     //   104: astore_1
-    //   105: invokestatic 72	com/tencent/mobileqq/teamwork/TeamWorkForceShare:a	()Ljava/lang/String;
+    //   105: invokestatic 73	com/tencent/mobileqq/teamwork/TeamWorkForceShare:a	()Ljava/lang/String;
     //   108: iconst_1
-    //   109: new 74	java/lang/StringBuilder
+    //   109: new 75	java/lang/StringBuilder
     //   112: dup
-    //   113: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   116: ldc 77
-    //   118: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   116: ldc 78
+    //   118: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   121: aload_3
-    //   122: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   125: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   122: invokevirtual 85	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   125: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   131: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   134: aload_2
     //   135: astore_1
     //   136: aload_0
     //   137: getfield 15	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare;
-    //   140: invokestatic 95	com/tencent/mobileqq/teamwork/TeamWorkForceShare:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare;)Landroid/app/Activity;
-    //   143: new 97	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask$2
+    //   140: invokestatic 97	com/tencent/mobileqq/teamwork/TeamWorkForceShare:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare;)Landroid/app/Activity;
+    //   143: new 99	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask$2
     //   146: dup
     //   147: aload_0
-    //   148: invokespecial 98	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask$2:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
-    //   151: invokevirtual 104	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   148: invokespecial 100	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask$2:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
+    //   151: invokevirtual 106	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
     //   154: aload_2
     //   155: ifnull -68 -> 87
     //   158: aload_2
-    //   159: invokevirtual 64	java/io/FileOutputStream:close	()V
+    //   159: invokevirtual 65	java/io/FileOutputStream:close	()V
     //   162: return
     //   163: astore_1
     //   164: aload_1
-    //   165: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   165: invokevirtual 68	java/lang/Exception:printStackTrace	()V
     //   168: return
     //   169: astore_2
     //   170: aconst_null
@@ -118,12 +118,12 @@ public class TeamWorkForceShare$ImageRequestTask
     //   172: aload_1
     //   173: ifnull +7 -> 180
     //   176: aload_1
-    //   177: invokevirtual 64	java/io/FileOutputStream:close	()V
+    //   177: invokevirtual 65	java/io/FileOutputStream:close	()V
     //   180: aload_2
     //   181: athrow
     //   182: astore_1
     //   183: aload_1
-    //   184: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   184: invokevirtual 68	java/lang/Exception:printStackTrace	()V
     //   187: goto -7 -> 180
     //   190: astore_2
     //   191: goto -19 -> 172
@@ -141,10 +141,10 @@ public class TeamWorkForceShare$ImageRequestTask
     //   66	93	2	localFileOutputStream3	java.io.FileOutputStream
     //   169	12	2	localObject2	Object
     //   190	1	2	localObject3	Object
-    //   7	63	3	localbeuf	beuf
+    //   7	63	3	localHttpDownloader	HttpDownloader
     //   94	28	3	localException4	java.lang.Exception
     //   194	1	3	localException5	java.lang.Exception
-    //   16	58	4	localbebk	bebk
+    //   16	58	4	localbcvb	bcvb
     //   25	47	5	localDownloadParams	com.tencent.image.DownloadParams
     // Exception table:
     //   from	to	target	type
@@ -166,7 +166,7 @@ public class TeamWorkForceShare$ImageRequestTask
     if (!paramBoolean) {
       return false;
     }
-    Object localObject2 = beuf.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = HttpDownloader.getFile(this.jdField_a_of_type_JavaLangString);
     if (localObject2 != null)
     {
       QLog.d(TeamWorkForceShare.a(), 1, "file exist");
@@ -174,14 +174,14 @@ public class TeamWorkForceShare$ImageRequestTask
       localOptions.inJustDecodeBounds = true;
       try
       {
-        bhmq.a(((File)localObject2).getAbsolutePath(), localOptions);
-        if (localOptions.outWidth > bhlo.i()) {
-          localOptions.inSampleSize = ((int)(bhlo.i() / localOptions.outWidth));
+        bfvo.a(((File)localObject2).getAbsolutePath(), localOptions);
+        if (localOptions.outWidth > DeviceInfoUtil.getPortraitWidth()) {
+          localOptions.inSampleSize = ((int)(DeviceInfoUtil.getPortraitWidth() / localOptions.outWidth));
         }
         localOptions.inJustDecodeBounds = false;
         try
         {
-          localObject2 = bhmq.a(((File)localObject2).getAbsolutePath(), localOptions);
+          localObject2 = bfvo.a(((File)localObject2).getAbsolutePath(), localOptions);
           localObject1 = localObject2;
         }
         catch (OutOfMemoryError localOutOfMemoryError1)
@@ -192,8 +192,8 @@ public class TeamWorkForceShare$ImageRequestTask
             QLog.d(TeamWorkForceShare.a(), 1, "oom, url = " + this.jdField_a_of_type_JavaLangString);
           }
         }
-        if (this.jdField_a_of_type_Bdzu != null) {
-          this.jdField_a_of_type_Bdzu.a(localObject1);
+        if (this.jdField_a_of_type_Bctl != null) {
+          this.jdField_a_of_type_Bctl.a(localObject1);
         }
         return true;
       }
@@ -208,8 +208,8 @@ public class TeamWorkForceShare$ImageRequestTask
     if (paramBoolean)
     {
       QLog.d(TeamWorkForceShare.a(), 1, "file not exist, url = " + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Bdzu != null) {
-        this.jdField_a_of_type_Bdzu.a(null);
+      if (this.jdField_a_of_type_Bctl != null) {
+        this.jdField_a_of_type_Bctl.a(null);
       }
     }
     return false;
@@ -224,7 +224,7 @@ public class TeamWorkForceShare$ImageRequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask
  * JD-Core Version:    0.7.0.1
  */

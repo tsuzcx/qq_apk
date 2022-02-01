@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aawm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import arnf;
-import bhwk;
-import bioy;
+import aqhd;
+import bgcv;
+import bgve;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
@@ -18,6 +17,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
+import zsz;
 
 public class GiftJsPlugin
   extends VasWebviewJsPluginV2
@@ -34,13 +34,13 @@ public class GiftJsPlugin
   
   public static void openGiftBrowser(Context paramContext, String paramString)
   {
-    String str1 = arnf.a().troopAioUrl;
+    String str1 = aqhd.a().troopAioUrl;
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {}
     for (int i = 1;; i = 0)
     {
-      String str2 = aawm.b(paramString);
+      String str2 = zsz.b(paramString);
       sTroopUin = paramString;
-      bhwk.a(paramContext, str1.replace("{troopUin}", paramString).replace("{themeMode}", i + "").replace("{uin}", str2));
+      bgcv.a(paramContext, str1.replace("{troopUin}", paramString).replace("{themeMode}", i + "").replace("{uin}", str2));
       return;
     }
   }
@@ -54,7 +54,7 @@ public class GiftJsPlugin
       paramMap = ((Intent)localObject).getStringExtra("member_nickname");
       localObject = ((Intent)localObject).getStringExtra("troop_uin");
       if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        aawm.b((String)localObject, paramString);
+        zsz.b((String)localObject, paramString);
       }
       localObject = new JSONObject();
       try
@@ -81,7 +81,7 @@ public class GiftJsPlugin
     sCallbackJs = paramString1;
     paramString2 = TroopMemberListActivity.a(BaseApplication.getContext(), paramString2, 14);
     paramString2.putExtra("param_is_pop_up_style", true);
-    paramString2.putExtra("custom_title_name", BaseApplication.getContext().getString(2131697068));
+    paramString2.putExtra("custom_title_name", BaseApplication.getContext().getString(2131697210));
     paramString2.setFlags(603979776);
     this.mRuntime.a().startActivityForResult(paramString2, 12006);
     AppInterface localAppInterface = this.mRuntime.a();

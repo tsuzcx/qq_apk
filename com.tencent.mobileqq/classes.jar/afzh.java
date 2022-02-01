@@ -1,48 +1,27 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afzh
-  extends anyu
+class afzh
+  extends ClickableSpan
 {
-  public afzh(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  afzh(afzd paramafzd) {}
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    if (!NetworkUtil.isNetSupport(this.a.a))
     {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+      QQToast.a(this.a.a, amtj.a(2131702358), 2000).a();
       return;
     }
-    this.a.a(2131717928, 1);
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(2131691311, 2);
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramBoolean1) && (paramBoolean3))
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+    paramView.putExtra("hide_more_button", true);
+    this.a.a.startActivity(paramView);
   }
 }
 

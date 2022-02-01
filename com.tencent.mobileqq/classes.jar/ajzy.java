@@ -1,80 +1,171 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.ref.WeakReference;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 public class ajzy
-  extends AsyncTask<String, Void, Boolean>
+  implements akal
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private long jdField_a_of_type_Long;
+  private WordChainHbFragment jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment;
+  List<String> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private List<String> b;
   
-  public ajzy(View paramView)
+  public ajzy(WordChainHbFragment paramWordChainHbFragment)
   {
-    if (paramView != null)
-    {
-      Context localContext = paramView.getContext();
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-      paramView.setDrawingCacheEnabled(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
-      ScreenCapture.setSnapFile(localContext, false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment = paramWordChainHbFragment;
   }
   
-  protected Boolean a(String... paramVarArgs)
+  private int a(String paramString)
   {
-    Boolean localBoolean = Boolean.FALSE;
-    if (isCancelled()) {}
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return localBoolean;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return 2147483647;
+        paramString = b(paramString);
+      } while (TextUtils.isEmpty(paramString));
+      paramString = paramString.split("-");
+    } while (paramString.length < 2);
+    try
+    {
+      int i = Integer.parseInt(paramString[1]);
+      return i;
     }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramVarArgs = new File(paramVarArgs[0]);
-    File localFile = paramVarArgs.getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    catch (Throwable paramString) {}
+    return 2147483647;
+  }
+  
+  private String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String[] arrayOfString = paramString.split("-");
+    int j;
+    int i;
+    if (arrayOfString.length >= 1)
+    {
+      j = 2147483647;
+      i = j;
     }
     try
     {
-      paramVarArgs = new FileOutputStream(paramVarArgs);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
-      paramVarArgs.flush();
-      paramVarArgs.close();
-      paramVarArgs = Boolean.TRUE;
-      return paramVarArgs;
+      if (arrayOfString.length >= 2) {
+        i = Integer.parseInt(arrayOfString[1]);
+      }
+      a(i);
+      this.jdField_a_of_type_JavaUtilList.add(paramString);
+      if (this.jdField_a_of_type_JavaUtilList.size() > 50) {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+      }
+      return arrayOfString[0];
+      return "";
     }
-    catch (IOException paramVarArgs)
+    catch (NumberFormatException localNumberFormatException)
     {
-      paramVarArgs.printStackTrace();
-    }
-    return localBoolean;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localView != null)
+      for (;;)
       {
-        if (paramBoolean.booleanValue()) {
-          ScreenCapture.setSnapFile(localView.getContext(), true);
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localView.setDrawingCacheEnabled(false);
-        localView.destroyDrawingCache();
+        i = j;
       }
     }
   }
   
-  protected void onCancelled() {}
+  private void a(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment.b())
+    {
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      if (Math.abs(l - this.jdField_a_of_type_Long) > 1000L)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment.a(String.format("该诗词可接龙最大次数是%d，请修改个数", new Object[] { Integer.valueOf(paramInt) }));
+      }
+    }
+  }
+  
+  private String b(String paramString)
+  {
+    paramString = paramString + "-";
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    String str;
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      if ((!TextUtils.isEmpty(str)) && (str.startsWith(paramString))) {
+        return str;
+      }
+    }
+    localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment.a(3).iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      if ((!TextUtils.isEmpty(str)) && (str.startsWith(paramString))) {
+        return str;
+      }
+    }
+    return null;
+  }
+  
+  public String a(List<String> paramList, boolean paramBoolean)
+  {
+    int i = paramList.size() - 1;
+    while (i >= 0)
+    {
+      String str = a((String)paramList.remove(i));
+      if (!TextUtils.isEmpty(str)) {
+        return str;
+      }
+      i -= 1;
+    }
+    if (paramBoolean)
+    {
+      if (this.b == null)
+      {
+        this.b = new ArrayList(7);
+        this.b.add("海上生明月-7");
+        this.b.add("沧海月明珠有泪-3");
+        this.b.add("忽如一夜春风来-15");
+        this.b.add("老夫聊发少年狂-15");
+        this.b.add("莫笑农家腊酒浑-7");
+        this.b.add("昔人已乘黄鹤去-7");
+      }
+      i = new Random().nextInt(this.b.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("ContinueChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.b.size());
+      }
+      return a((String)this.b.get(i));
+    }
+    return "";
+  }
+  
+  public void a(String paramString)
+  {
+    a(a(paramString));
+  }
+  
+  public boolean a(String paramString)
+  {
+    return !TextUtils.isEmpty(paramString);
+  }
+  
+  public InputFilter[] a(int paramInt)
+  {
+    if ((SystemUtil.isFlyme()) || (SystemUtil.isMeizu())) {}
+    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
+      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
+    }
+    return new InputFilter[0];
+  }
 }
 
 

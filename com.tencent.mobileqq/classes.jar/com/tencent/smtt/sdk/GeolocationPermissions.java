@@ -26,10 +26,10 @@ public class GeolocationPermissions
   
   public void allow(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().g(paramString);
+      localx.c().g(paramString);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().allow(paramString);
@@ -37,10 +37,10 @@ public class GeolocationPermissions
   
   public void clear(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().f(paramString);
+      localx.c().f(paramString);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().clear(paramString);
@@ -48,10 +48,10 @@ public class GeolocationPermissions
   
   public void clearAll()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().o();
+      localx.c().o();
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().clearAll();
@@ -59,10 +59,10 @@ public class GeolocationPermissions
   
   public void getAllowed(String paramString, ValueCallback<Boolean> paramValueCallback)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().c(paramString, paramValueCallback);
+      localx.c().c(paramString, paramValueCallback);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().getAllowed(paramString, paramValueCallback);
@@ -70,10 +70,10 @@ public class GeolocationPermissions
   
   public void getOrigins(ValueCallback<Set<String>> paramValueCallback)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().b(paramValueCallback);
+      localx.c().b(paramValueCallback);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().getOrigins(paramValueCallback);

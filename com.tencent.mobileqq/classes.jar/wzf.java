@@ -1,24 +1,36 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class wzf
-  extends wzd
+public final class wzf
+  extends QQUIEventReceiver<wyy, wbm>
 {
-  protected TextView c = (TextView)a(2131380438);
-  
-  public wzf(ViewGroup paramViewGroup, int paramInt)
+  public wzf(@NonNull wyy paramwyy)
   {
-    super(paramViewGroup, paramInt);
+    super(paramwyy);
   }
   
-  public void a(wvn paramwvn)
+  public void a(@NonNull wyy paramwyy, @NonNull wbm paramwbm)
   {
-    if (paramwvn.b > 99)
+    if ((paramwbm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbm.jdField_a_of_type_JavaUtilList != null) && (paramwyy.a != null))
     {
-      this.c.setText("99+");
-      return;
+      paramwbm = paramwbm.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwbm.hasNext())
+      {
+        vwa localvwa = (vwa)paramwbm.next();
+        if (TextUtils.equals(paramwyy.a.b, localvwa.a)) {
+          paramwyy.i();
+        }
+      }
     }
-    this.c.setText(String.valueOf(paramwvn.b));
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wbm.class;
   }
 }
 

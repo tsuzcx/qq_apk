@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import bese;
-import besg;
-
-public class C2CPttUploadProcessor$3$1
+class C2CPttUploadProcessor$3$1
   implements Runnable
 {
-  public C2CPttUploadProcessor$3$1(besg parambesg, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  C2CPttUploadProcessor$3$1(C2CPttUploadProcessor.3 param3, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Besg.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.this$1.this$0.reportDataFlow(this.val$upFlow_Wifi, this.val$dwFlow_Wifi, this.val$upFlow_Xg, this.val$dwFlow_Xg, 3);
   }
 }
 

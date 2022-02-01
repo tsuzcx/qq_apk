@@ -1,8 +1,6 @@
-import java.util.List;
-
 public abstract interface avzs
 {
-  public abstract void a(List<awam> paramList);
+  public abstract void a(int paramInt);
 }
 
 

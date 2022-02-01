@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import mqq.app.AppRuntime.Status;
+import android.view.MotionEvent;
 
-public class anyb
-  implements azgi
+public abstract interface anyb
 {
-  public anyb(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a(AppRuntime.Status paramStatus)
-  {
-    this.a.a("AccountPanel.OnlineStatusChangedListener");
-  }
+  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
 }
 
 

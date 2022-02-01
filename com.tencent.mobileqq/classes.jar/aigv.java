@@ -1,26 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import java.util.ArrayList;
 
 public class aigv
-  extends aigs
+  extends aigo
 {
-  public String b;
+  public ArrayList<aicz> a;
+  public boolean a;
   
-  public aigv(String paramString)
+  public aigv(ArrayList<aicz> paramArrayList, boolean paramBoolean)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null) {
-      this.b = paramRedPacketInfo.resPath;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.b);
+    return true;
   }
 }
 

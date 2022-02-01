@@ -1,10 +1,18 @@
-public abstract interface bemj
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+
+public class bemj
+  implements ysv
 {
-  public abstract void a();
+  public bemj(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public abstract void b();
+  public void a() {}
   
-  public abstract void c();
+  public boolean a(boolean paramBoolean)
+  {
+    this.a.b(this.a.a.getText().toString());
+    return true;
+  }
 }
 
 

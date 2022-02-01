@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import alib;
+import akfu;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bhse;
-import bhsr;
+import bfyv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
@@ -22,6 +21,7 @@ import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppException;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import java.util.LinkedList;
@@ -244,7 +244,7 @@ public final class a
       }
     }
     paramString2 = ((JSONObject)localObject2).toString();
-    bhse.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    bfyv.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -347,7 +347,7 @@ public final class a
   
   public void f()
   {
-    alib.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
+    akfu.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
@@ -406,7 +406,7 @@ public final class a
         if ((!com.tencent.mobileqq.microapp.a.c.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
           break label407;
         }
-        boolean bool = bhsr.a(paramString2);
+        boolean bool = StringUtil.isEmpty(paramString2);
         if (bool) {
           break label407;
         }

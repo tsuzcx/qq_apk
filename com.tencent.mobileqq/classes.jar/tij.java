@@ -1,38 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.PlayStartVideoRunnable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class tij
-  implements sct
+  implements TopGestureLayout.OnGestureListener
 {
-  public tij(VideoPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable) {}
+  public tij(BridgeModule paramBridgeModule, ViolaFragment paramViolaFragment) {}
   
-  public void a(scv paramscv)
+  public void flingLToR()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Viola.VideoPlayManager", 2, "UUIDToUrlCallback Callback vid=" + paramscv.jdField_b_of_type_JavaLangString + ", url=" + paramscv.jdField_a_of_type_JavaLangString + ", isH265=" + paramscv.jdField_a_of_type_Boolean + ", isHWCodec=" + paramscv.jdField_b_of_type_Boolean + ", fileBitRate=" + paramscv.c);
-    }
-    if ((VideoPlayManager.PlayStartVideoRunnable.a(this.a) != null) && (paramscv.jdField_b_of_type_JavaLangString.equals(VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.jdField_a_of_type_JavaLangString))) {
-      if (TextUtils.isEmpty(paramscv.jdField_a_of_type_JavaLangString)) {
-        if (VideoPlayManager.a(this.a.this$0) != null) {
-          VideoPlayManager.a(this.a.this$0).a(null, 202, 107, 0, "vid2url failed, get null", null);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
+    if ((BridgeModule.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule) != null) && (BridgeModule.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).b()))
     {
-      return;
-      if (paramscv.jdField_a_of_type_Int == 1)
-      {
-        VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramscv.jdField_b_of_type_JavaLangString, paramscv.jdField_a_of_type_JavaLangString, 104, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramscv.jdField_b_of_type_Boolean, true, false);
-        return;
-      }
-      VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramscv.jdField_b_of_type_JavaLangString, paramscv.jdField_a_of_type_JavaLangString, 101, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramscv.jdField_b_of_type_Boolean, true, false);
+      BridgeModule.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a();
       return;
     }
-    QLog.d("Viola.VideoPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramscv.jdField_b_of_type_JavaLangString + " url:" + paramscv.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.judgeIfNeedInterruptLToR();
   }
+  
+  public void flingRToL() {}
 }
 
 

@@ -1,31 +1,106 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.List;
 
 public class ran
-  implements szc
+  extends ral
 {
-  public ran(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void a(int paramInt)
+  public ran(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
-    }
+    super(paramAppInterface);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a(int paramInt)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    int i = -1;
+    try
     {
-      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
-      ocd.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", ozs.g(), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
-      }
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.delete(GuideData.class.getSimpleName(), "source=?", new String[] { String.valueOf(paramInt) });
+      return paramInt;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        paramInt = i;
+      } while (!QLog.isColorLevel());
+      QLog.e("ReadInJoyOperationManager", 2, localException, new Object[0]);
+    }
+    return -1;
+  }
+  
+  public BaseResData a(String paramString)
+  {
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "";
+    }
+    if ("operation_guide".equals(str1)) {}
+    for (paramString = GuideData.class;; paramString = null)
+    {
+      if (paramString == null) {}
+      do
+      {
+        return null;
+        String str2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+        paramString = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(paramString, paramString.getSimpleName(), true, "uin=? and showTime!=0 and business=?", new String[] { str2, str1 }, null, null, "showTime desc", "1");
+      } while ((paramString == null) || (paramString.size() <= 0));
+      return (BaseResData)paramString.get(0);
     }
   }
+  
+  public List<GuideData> a(String paramString1, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    int i = (int)(System.currentTimeMillis() / 1000L);
+    paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(GuideData.class, GuideData.class.getSimpleName(), true, "uin=? and showTime=? and business=? and endTime>? and id=?", new String[] { paramString1, "0", str, String.valueOf(i), paramString2 }, null, null, "seq desc", null);
+  }
+  
+  public void a(String paramString, BaseResData paramBaseResData)
+  {
+    paramBaseResData.isReady = true;
+    paramBaseResData.business = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramBaseResData);
+  }
+  
+  public void a(String[] paramArrayOfString) {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(GuideData.class);
+      return;
+    }
+    QLog.e("ReadInJoyOperationManager", 1, "[clearGuideDataInDatabase] entity manager is null");
+  }
+  
+  public void b(String paramString, BaseResData paramBaseResData)
+  {
+    paramBaseResData.showTime = ((int)(System.currentTimeMillis() / 1000L));
+    paramBaseResData.setStatus(1000);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramBaseResData);
+  }
+  
+  public boolean b(String paramString, BaseResData paramBaseResData)
+  {
+    return true;
+  }
+  
+  public boolean c(String paramString, BaseResData paramBaseResData)
+  {
+    return bcro.a(new File(a(paramString, paramBaseResData.id)));
+  }
+  
+  public void onDestroy() {}
 }
 
 

@@ -1,83 +1,63 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.open.adapter.OpenAppClient;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.manager.TicketManager;
 
-public class acyn
-  extends acyg
+class acyn
+  implements View.OnClickListener
 {
-  public acyn(GdtVideoImaxFragment paramGdtVideoImaxFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  acyn(acyf paramacyf, int paramInt, admx paramadmx, String paramString) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.onPageFinished(paramWebView, paramString);
-    acvc.b("AbsWebView", "onPageFinished:" + paramString);
-    GdtVideoImaxFragment.a(this.a, true);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    acvc.b("AbsWebView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    GdtVideoImaxFragment.a(this.a, false);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    acvc.b("AbsWebView", "onReceivedTitle: " + paramString);
-    GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    acvc.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    if ((this.jdField_a_of_type_Int == -3000) && ((this.jdField_a_of_type_Admx.a.istroop == 1001) || (this.jdField_a_of_type_Admx.a.istroop == 10002)))
+    {
+      localObject = PkgTools.Decodecgi(this.jdField_a_of_type_JavaLangString);
+      localObject = bfwg.a(this.jdField_a_of_type_Acyf.a.app, this.jdField_a_of_type_Acyf.a, (String)localObject);
+      if (localObject != null) {
+        ((bfvp)localObject).a();
+      }
+    }
     for (;;)
     {
-      return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
+        ChatActivityUtils.a(this.jdField_a_of_type_Acyf.a, this.jdField_a_of_type_Acyf.a.app, this.jdField_a_of_type_Admx.a.action, this.jdField_a_of_type_Admx.a.shareAppID, this.jdField_a_of_type_Admx.a.msgtype);
       }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); niz.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      else if (this.jdField_a_of_type_Int == -3005)
       {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
-        paramWebView.addFlags(268435456);
-        try
-        {
-          this.mContext.startActivity(paramWebView);
-          return true;
+        ChatActivityUtils.a(this.jdField_a_of_type_Acyf.a, this.jdField_a_of_type_Acyf.a.app, this.jdField_a_of_type_Admx.a.action, this.jdField_a_of_type_Admx.a.shareAppID, this.jdField_a_of_type_Admx.a.msgtype);
+      }
+      else if (this.jdField_a_of_type_Int == -3001)
+      {
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("schemaurl", this.jdField_a_of_type_JavaLangString);
+        String str = this.jdField_a_of_type_Acyf.a.app.getCurrentAccountUin();
+        ((Bundle)localObject).putString("uin", str);
+        ((Bundle)localObject).putString("vkey", ((TicketManager)this.jdField_a_of_type_Acyf.a.app.getManager(2)).getSkey(str));
+        OpenAppClient.a(this.jdField_a_of_type_Acyf.a, (Bundle)localObject);
+      }
+      else if (agjt.a(this.jdField_a_of_type_Admx.a))
+      {
+        AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_Admx.a, this.jdField_a_of_type_Acyf.a.a, aagn.a(paramView));
+      }
+      else
+      {
+        if ((this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003)) {
+          this.jdField_a_of_type_Admx.a.isInMixedMsg = true;
         }
-        catch (ActivityNotFoundException paramWebView)
-        {
-          acvc.d("AbsWebView", paramWebView.toString());
-          return true;
-        }
+        agjt.a(this.jdField_a_of_type_Acyf.a.app, paramView.getContext(), paramView, this.jdField_a_of_type_Admx.a, this.jdField_a_of_type_Acyf.a.a, false, true, true, null);
       }
     }
   }

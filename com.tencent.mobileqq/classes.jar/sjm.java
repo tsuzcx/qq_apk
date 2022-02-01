@@ -1,16 +1,48 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-class sjm
-  extends pmr
+public class sjm
+  extends AbsThirdDataSourceAdapter
 {
-  sjm(sjk paramsjk, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  int jdField_a_of_type_Int = 2;
+  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b = 0;
+  private int c = 0;
+  
+  public sjm(int paramInt)
   {
-    super(paramString);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(pmk parampmk)
+  public int getPlayType()
   {
-    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    return this.c;
+  }
+  
+  public int getStaus()
+  {
+    return this.b;
+  }
+  
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    this.b = 1;
+    paramOnPreparedCallback = sjo.a();
+    sjn localsjn = new sjn(this);
+    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
+      paramOnPreparedCallback.a(paramString, localsjn);
+    }
+    while (this.jdField_a_of_type_Int != 4) {
+      return;
+    }
+    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localsjn);
   }
 }
 

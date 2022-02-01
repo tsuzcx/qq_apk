@@ -1,133 +1,25 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.diy.ResData;
 
 public class avsm
+  implements bdbx
 {
-  public HashMap<String, String> a;
-  protected boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public avsm(ChatBackgroundManager paramChatBackgroundManager) {}
   
-  public avsm(String paramString1, String paramString2)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    this("default", paramString1, paramString2);
-  }
-  
-  protected avsm(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.d = paramString3;
-    c();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    if (paramInt2 == 4) {
+      BaseApplicationImpl.sImageCache.evictAll();
     }
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  protected String a()
-  {
-    return this.d + this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      d();
-    }
-    avsj.a(this);
-    this.jdField_a_of_type_Boolean = true;
-    if (!(this instanceof avsl)) {
-      avsj.e(this.d);
-    }
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_b_of_type_Boolean = true;
-    } while ((this instanceof avsl));
-    avsj.d(this.d);
-  }
-  
-  void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put("loss", "0");
-      this.jdField_a_of_type_JavaUtilHashMap.put("benefit", "0");
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    Object localObject2 = BaseApplicationImpl.getApplication();
-    HashMap localHashMap1 = new HashMap();
-    for (;;)
-    {
-      String str;
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localHashMap1.putAll(this.jdField_a_of_type_JavaUtilHashMap);
-        if (localObject2 != null)
-        {
-          ??? = ((BaseApplicationImpl)localObject2).getApplicationContext();
-          localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
-          if (localObject2 != null)
-          {
-            localObject2 = ((AppRuntime)localObject2).getAccount();
-            str = this.c;
-            if (!this.jdField_b_of_type_Boolean) {
-              break label98;
-            }
-            bdmc.a((Context)???).a((String)localObject2, str, true, 0L, 0L, localHashMap1, null);
-          }
-        }
-        c();
-        return;
-      }
-      label98:
-      bdmc.a((Context)???).a((String)localObject2, str, false, 0L, 0L, localHashMap2, null);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsm
  * JD-Core Version:    0.7.0.1
  */

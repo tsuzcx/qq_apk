@@ -15,7 +15,6 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bhsr;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
@@ -32,6 +31,7 @@ import com.tencent.mobileqq.microapp.widget.MiniAppTextArea;
 import com.tencent.mobileqq.microapp.widget.g;
 import com.tencent.mobileqq.microapp.widget.media.MiniAppCamera;
 import com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQMapView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -81,7 +81,7 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -407,7 +407,7 @@ public class WebviewContainer
     if (localLayoutParams == null) {
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
-    if ((bhsr.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
+    if ((StringUtil.isEmpty(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
     for (;;)
     {
       try
@@ -436,7 +436,7 @@ public class WebviewContainer
       this.componentLayout.addView((View)localObject1, paramJSONObject);
       return;
       paramString2 = this.appBrandRuntime.c.j(paramString2);
-      if (!bhsr.a(paramString2)) {
+      if (!StringUtil.isEmpty(paramString2)) {
         ((CoverImageView)localObject1).setImageBitmap(c.q(paramString2));
       }
     }
@@ -505,7 +505,7 @@ public class WebviewContainer
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
     localObject3 = paramJSONObject.optJSONObject("style");
-    if ((localObject3 != null) && (!bhsr.a(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
+    if ((localObject3 != null) && (!StringUtil.isEmpty(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
     {
       ((CoverView)localObject1).setBackgroundColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("bgColor"))));
       ((CoverView)localObject1).setScaleX(Float.parseFloat(((JSONObject)localObject3).optString("scaleX")));
@@ -519,7 +519,7 @@ public class WebviewContainer
     localObject3 = paramJSONObject.optJSONObject("label");
     if (localObject3 != null)
     {
-      if (!bhsr.a(((JSONObject)localObject3).optString("color"))) {
+      if (!StringUtil.isEmpty(((JSONObject)localObject3).optString("color"))) {
         ((CoverView)localObject1).setTextColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("color"))));
       }
       ((CoverView)localObject1).setTextSize(1, ((JSONObject)localObject3).optInt("fontSize"));
@@ -530,7 +530,7 @@ public class WebviewContainer
     }
     for (;;)
     {
-      if (!bhsr.a(((JSONObject)localObject3).optString("content"))) {
+      if (!StringUtil.isEmpty(((JSONObject)localObject3).optString("content"))) {
         ((CoverView)localObject1).setText(((JSONObject)localObject3).optString("content"));
       }
       if ("bold".equals(((JSONObject)localObject3).optString("fontWeight"))) {
@@ -810,7 +810,7 @@ public class WebviewContainer
   public void updateImageView(JSONObject paramJSONObject, int paramInt, String paramString, boolean paramBoolean)
   {
     CoverImageView localCoverImageView = (CoverImageView)this.imageViewSparseArray.get(paramInt);
-    if ((localCoverImageView == null) || ((bhsr.a(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
+    if ((localCoverImageView == null) || ((StringUtil.isEmpty(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
     for (;;)
     {
       try
@@ -838,7 +838,7 @@ public class WebviewContainer
       localCoverImageView.setLayoutParams(paramJSONObject);
       return;
       paramString = this.appBrandRuntime.c.j(paramString);
-      if (!bhsr.a(paramString)) {
+      if (!StringUtil.isEmpty(paramString)) {
         localCoverImageView.setImageBitmap(c.q(paramString));
       }
     }
@@ -900,7 +900,7 @@ public class WebviewContainer
         ((FrameLayout.LayoutParams)localObject).topMargin = paramInt;
       }
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bhsr.a(paramJSONObject))
+      if (!StringUtil.isEmpty(paramJSONObject))
       {
         localMiniAppVideoPlayer.a(paramJSONObject.replace("https:", "http:"));
         if (localMiniAppVideoPlayer.i) {

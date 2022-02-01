@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.haoliyou;
 
-import anzj;
-import avpn;
-import avpo;
-import bhlq;
-import bhpc;
+import amtj;
+import aucp;
+import aucq;
+import bfur;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class JefsClass$8
   implements Runnable
@@ -14,7 +14,7 @@ public class JefsClass$8
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
-      bhlq.a(localBaseActivity, 0, null, anzj.a(2131704768), localBaseActivity.getString(2131690580), localBaseActivity.getString(2131694098), new avpn(this), new avpo(this)).show();
+      bfur.a(localBaseActivity, 0, null, amtj.a(2131704998), localBaseActivity.getString(2131690620), localBaseActivity.getString(2131694201), new aucp(this), new aucq(this)).show();
     }
   }
 }

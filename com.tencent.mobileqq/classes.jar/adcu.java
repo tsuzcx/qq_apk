@@ -1,72 +1,26 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.s2c.msgtype0x210.submsgtype0x117.submsgtype0x117.MsgBody;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adcu
-  implements adci
+class adcu
+  extends amua
 {
-  private static void a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {}
-    Object localObject;
-    do
-    {
-      for (;;)
-      {
-        return;
-        localObject = new submsgtype0x117.MsgBody();
-        try
-        {
-          ((submsgtype0x117.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = ((submsgtype0x117.MsgBody)localObject).rpt_uint32_moudle_id.get();
-          l = ((submsgtype0x117.MsgBody)localObject).uint64_uin.get();
-          if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x117 音视频测试环境push,moudleIds==null || moudleIds.size()== 0");
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          long l;
-          for (;;)
-          {
-            paramArrayOfByte.printStackTrace();
-          }
-          localObject = new StringBuilder(anzj.a(2131706718));
-          ((StringBuilder)localObject).append(l);
-          paramArrayOfByte = paramArrayOfByte.iterator();
-          while (paramArrayOfByte.hasNext())
-          {
-            int i = ((Integer)paramArrayOfByte.next()).intValue();
-            if (i == 92) {
-              ((StringBuilder)localObject).append("|音视频");
-            } else if (i == 93) {
-              ((StringBuilder)localObject).append("|双人");
-            } else if (i == 94) {
-              ((StringBuilder)localObject).append("|多人");
-            }
-          }
-          ((StringBuilder)localObject).append("】");
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x117 音视频测试环境push" + ((StringBuilder)localObject).toString());
-  }
+  adcu(adct paramadct, BaseActivity paramBaseActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    a(paramMsgType0x210.vProtobuf);
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_Adct.a != null) && (this.jdField_a_of_type_Adct.a.isShowing())) {
+        this.jdField_a_of_type_Adct.a.dismiss();
+      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, amtj.a(2131701736), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      return;
+    }
+    if ((this.jdField_a_of_type_Adct.a != null) && (this.jdField_a_of_type_Adct.a.isShowing())) {
+      this.jdField_a_of_type_Adct.a.dismiss();
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, amtj.a(2131701737), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

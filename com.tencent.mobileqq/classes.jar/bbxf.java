@@ -1,12 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-public class bbxf
+class bbxf
 {
-  public ImageView a;
-  public TextView a;
-  public ShareActionSheetBuilder.ActionSheetItem a;
+  public int a = -1;
+  public boolean a;
+  public int b;
 }
 
 

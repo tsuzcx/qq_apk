@@ -1,30 +1,30 @@
 package com.tencent.open.base.img;
 
-import bjjo;
-import bjrc;
-import bjts;
-import bjtu;
-import bjtx;
-import bjuw;
-import bjux;
-import bjuy;
-import bjuz;
+import bhpc;
+import bhwr;
+import bhzh;
+import bhzj;
+import bhzm;
+import biai;
+import biaj;
+import biak;
+import bial;
 import java.io.File;
 
 public class ImageCache$UpdateTask
   implements Runnable
 {
-  protected bjux a;
+  protected biaj a;
   protected String a;
   protected String b;
   protected String c;
   
-  public ImageCache$UpdateTask(String paramString1, String paramString2, String paramString3, bjux parambjux)
+  public ImageCache$UpdateTask(String paramString1, String paramString2, String paramString3, biaj parambiaj)
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Bjux = parambjux;
+    this.jdField_a_of_type_Biaj = parambiaj;
   }
   
   public boolean equals(Object paramObject)
@@ -39,69 +39,69 @@ public class ImageCache$UpdateTask
   {
     for (;;)
     {
-      bjuz localbjuz;
+      bial localbial;
       try
       {
-        if (((!bjrc.a()) || (!bjts.b(bjjo.a().a()))) && (this.jdField_a_of_type_Bjux != null)) {
-          this.jdField_a_of_type_Bjux.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+        if (((!bhwr.a()) || (!bhzh.b(bhpc.a().a()))) && (this.jdField_a_of_type_Biaj != null)) {
+          this.jdField_a_of_type_Biaj.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
         }
-        Object localObject1 = bjrc.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bjtu.a(this.jdField_c_of_type_JavaLangString);
-        bjtx.c("downloadImage", "imgFilePath = " + (String)localObject1 + " | " + this.jdField_b_of_type_JavaLangString + " | " + bjtu.a(this.jdField_c_of_type_JavaLangString) + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
-        if ((new File((String)localObject1).exists()) && (this.jdField_a_of_type_Bjux != null))
+        Object localObject1 = bhwr.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bhzj.a(this.jdField_c_of_type_JavaLangString);
+        bhzm.c("downloadImage", "imgFilePath = " + (String)localObject1 + " | " + this.jdField_b_of_type_JavaLangString + " | " + bhzj.a(this.jdField_c_of_type_JavaLangString) + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+        if ((new File((String)localObject1).exists()) && (this.jdField_a_of_type_Biaj != null))
         {
-          this.jdField_a_of_type_Bjux.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, (String)localObject1);
-          this.jdField_a_of_type_Bjux = null;
+          this.jdField_a_of_type_Biaj.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, (String)localObject1);
+          this.jdField_a_of_type_Biaj = null;
         }
-        localbjuz = ImageCache.jdField_a_of_type_Bjuw.a(this.jdField_a_of_type_JavaLangString);
-        if (localbjuz == null)
+        localbial = ImageCache.jdField_a_of_type_Biai.a(this.jdField_a_of_type_JavaLangString);
+        if (localbial == null)
         {
-          bjtx.a("ImageCache", "image not in db. key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
-          localObject1 = new bjuz();
-          ((bjuz)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          ((bjuz)localObject1).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-          ((bjuz)localObject1).jdField_c_of_type_Long = 0L;
-          ((bjuz)localObject1).jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-          if (!bjuy.a((bjuz)localObject1)) {
+          bhzm.a("ImageCache", "image not in db. key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+          localObject1 = new bial();
+          ((bial)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          ((bial)localObject1).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+          ((bial)localObject1).jdField_c_of_type_Long = 0L;
+          ((bial)localObject1).jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+          if (!biak.a((bial)localObject1)) {
             break;
           }
-          bjtx.d("ImageCache", "download image succ. " + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-          ImageCache.jdField_a_of_type_Bjuw.a((bjuz)localObject1);
-          if (this.jdField_a_of_type_Bjux == null) {
+          bhzm.d("ImageCache", "download image succ. " + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+          ImageCache.jdField_a_of_type_Biai.a((bial)localObject1);
+          if (this.jdField_a_of_type_Biaj == null) {
             return;
           }
-          this.jdField_a_of_type_Bjux.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, bjrc.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bjtu.a(((bjuz)localObject1).jdField_b_of_type_JavaLangString));
+          this.jdField_a_of_type_Biaj.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, bhwr.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bhzj.a(((bial)localObject1).jdField_b_of_type_JavaLangString));
           return;
         }
-        localbjuz.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-        if (this.jdField_a_of_type_Bjux != null)
+        localbial.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        if (this.jdField_a_of_type_Biaj != null)
         {
-          bjtx.a("ImageCache", "file is deleted." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-          localbjuz.jdField_c_of_type_Long = 0L;
-          localObject1 = localbjuz;
+          bhzm.a("ImageCache", "file is deleted." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+          localbial.jdField_c_of_type_Long = 0L;
+          localObject1 = localbial;
           continue;
         }
         l = System.currentTimeMillis();
       }
       catch (Exception localException)
       {
-        bjtx.b("ImageCache", "Download img warning", localException);
+        bhzm.b("ImageCache", "Download img warning", localException);
         return;
       }
       long l;
-      Object localObject2 = localbjuz;
-      if (l > localbjuz.jdField_b_of_type_Long)
+      Object localObject2 = localbial;
+      if (l > localbial.jdField_b_of_type_Long)
       {
-        localObject2 = localbjuz;
-        if (l < localbjuz.jdField_a_of_type_Long + localbjuz.jdField_b_of_type_Long)
+        localObject2 = localbial;
+        if (l < localbial.jdField_a_of_type_Long + localbial.jdField_b_of_type_Long)
         {
-          bjtx.a("ImageCache", "currenttime=" + System.currentTimeMillis() + "\nmaxage+updatetime=" + localbjuz.jdField_a_of_type_Long + localbjuz.jdField_b_of_type_Long + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+          bhzm.a("ImageCache", "currenttime=" + System.currentTimeMillis() + "\nmaxage+updatetime=" + localbial.jdField_a_of_type_Long + localbial.jdField_b_of_type_Long + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
           return;
         }
       }
     }
-    bjtx.d("ImageCache", "download failed." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bjux != null) {
-      this.jdField_a_of_type_Bjux.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    bhzm.d("ImageCache", "download failed." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Biaj != null) {
+      this.jdField_a_of_type_Biaj.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
     }
   }
 }

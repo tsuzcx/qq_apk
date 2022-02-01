@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import rpt;
+import rwv;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   implements Runnable
@@ -16,9 +16,9 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   
   private boolean a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.n != paramBoolean))
+    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.q != paramBoolean))
     {
-      paramVideoInfo.n = paramBoolean;
+      paramVideoInfo.q = paramBoolean;
       return true;
     }
     return false;
@@ -28,7 +28,7 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = rpt.a(VideoFeedsRecommendFragment.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = rwv.a(VideoFeedsRecommendFragment.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFeedsRecommendFragment.a(this.this$0) == null) {
         return;
       }

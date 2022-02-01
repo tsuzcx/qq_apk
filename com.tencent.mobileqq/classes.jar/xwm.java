@@ -1,117 +1,197 @@
 import android.support.annotation.NonNull;
 import android.view.View;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.util.gifCoderWnsConfig;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
-public abstract class xwm
-  implements IEventReceiver
+public class xwm
+  extends xzb
+  implements View.OnClickListener
 {
-  private long a;
-  protected Map<Subscriber, String> a;
-  protected Set<xpd> a;
-  public xwj a;
+  protected double a;
+  protected final int a;
+  protected LinearLayout a;
+  protected SeekBar a;
+  protected TextView a;
   protected boolean a;
-  public boolean b;
+  protected int b;
+  protected TextView b;
+  protected int c;
+  protected int d = 50;
+  protected int e = -1;
+  protected int f;
+  protected int g;
   
-  public Map<Subscriber, String> a()
+  public xwm(@NonNull xzd paramxzd)
   {
-    return null;
+    super(paramxzd);
+    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
   }
   
-  public Set<xpd> a()
+  private void g()
   {
-    return null;
+    this.f = gifCoderWnsConfig.DEFAULT_GIF_MAX_DELAY;
+    this.g = (this.c * gifCoderWnsConfig.DEFAULT_GIF_MIN_MULTIPLE_DELAY);
+    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
+    }
   }
   
   public void a()
   {
-    Iterator localIterator;
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
+    super.a();
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+    NativeGifImage.QZONE_DELAY = -1;
+    this.jdField_b_of_type_Int = 50;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
+    }
+    g();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131377008));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377003));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131377004));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367584));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new xwn(this));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-        wjj.a().unRegisterSubscriber((Subscriber)localObject);
-      }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    default: 
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
     }
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+    if (this.e == -1)
     {
-      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (xpd)localIterator.next();
-        this.jdField_a_of_type_Xwj.b((xpd)localObject);
+      if (!this.jdField_a_of_type_Xzd.a.jdField_a_of_type_Boolean) {
+        break label193;
       }
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      paramInt = (int)this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.getDuration();
+      this.e = paramInt;
+      this.c = paramInt;
     }
-  }
-  
-  public final void a(@NonNull xwj paramxwj, int paramInt, @NonNull xqz paramxqz)
-  {
-    xwj.a(paramxwj, paramInt);
-    this.jdField_a_of_type_Xwj = paramxwj;
-    if (!this.jdField_a_of_type_Boolean)
+    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
     {
-      Object localObject1 = a();
-      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
-      {
-        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (Map.Entry)localIterator.next();
-          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
-          localObject2 = (String)((Map.Entry)localObject2).getValue();
-          wjj.a().registerSubscriber((String)localObject2, localSubscriber);
-        }
-        if (this.jdField_a_of_type_JavaUtilMap == null) {
-          this.jdField_a_of_type_JavaUtilMap = new HashMap();
-        }
-        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
+      g();
+      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
+      this.d = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
       }
-      localObject1 = a();
-      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
+      this.c = this.e;
+      this.jdField_b_of_type_Int = this.d;
+      return;
+      label193:
+      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+  }
+  
+  public void a(@NonNull yjh paramyjh)
+  {
+    if (this.e == -1) {
+      if (this.jdField_a_of_type_Xzd.a.jdField_a_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        paramyjh.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.getDuration());
+        paramyjh.a.c = this.jdField_a_of_type_Boolean;
+        if (QLog.isColorLevel()) {
+          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
         }
-        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
       }
-      this.jdField_a_of_type_Boolean = true;
     }
-    a(paramxwj.a, paramxqz);
+    do
+    {
+      return;
+      yjl localyjl = paramyjh.a;
+      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
+      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = gifCoderWnsConfig.DEFAULT_DELAY)
+      {
+        localyjl.jdField_b_of_type_Int = i;
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+      }
+      paramyjh.a.jdField_b_of_type_Int = this.e;
+      paramyjh.a.c = this.jdField_a_of_type_Boolean;
+      if (this.e < this.c)
+      {
+        LpReportInfo_pf00064.allReport(628, 5, 3);
+        return;
+      }
+    } while (this.e <= this.c);
+    LpReportInfo_pf00064.allReport(628, 5, 2);
   }
   
-  public final void a(xwn paramxwn, xqz paramxqz)
+  public boolean a()
   {
-    paramxwn.a();
-    b(paramxwn, paramxqz);
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return false;
+    boolean bool = false;
+    if (this.jdField_a_of_type_Xzd.jdField_b_of_type_Int == 21)
+    {
+      NativeGifImage.QZONE_DELAY = this.c;
+      if (this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+        this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.setDuration(NativeGifImage.QZONE_DELAY);
+      }
+      this.e = this.c;
+      this.d = this.jdField_b_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Xzd.a(0);
+      bool = true;
+      LpReportInfo_pf00064.allReport(628, 5, 4);
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    return true;
+    return bool;
   }
   
-  public abstract void b(xwn paramxwn, xqz paramxqz);
-  
-  public boolean isValidate()
+  public void d()
   {
-    return this.b;
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
+    }
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
+    NativeGifImage.QZONE_DELAY = -1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.jdField_a_of_type_Xzd.jdField_b_of_type_Int == 21)
+      {
+        this.jdField_a_of_type_Xzd.a(0);
+        continue;
+        a();
+      }
+    }
   }
 }
 

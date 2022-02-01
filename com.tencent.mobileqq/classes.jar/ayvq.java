@@ -1,33 +1,26 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
+import java.util.HashMap;
 
-public class ayvq
-  implements RecyclerView.OnItemTouchListener
+class ayvq
+  implements View.OnClickListener
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View jdField_a_of_type_AndroidViewView;
+  ayvq(ayvm paramayvm) {}
   
-  public ayvq(Context paramContext, ayvs paramayvs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ayvr(this, paramayvs));
+    QLog.d("ProfileCircleComponent", 4, "qqCircleWriteEntrance onClick");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("key_is_publish", "1");
+    localHashMap.put("key_jump_from", "5");
+    vgn.a(BaseApplicationImpl.getContext(), "openfolder", localHashMap);
+    QCircleLpReportDc05504.report("", 3, 2, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    this.jdField_a_of_type_AndroidViewView = paramRecyclerView.findChildViewUnder(paramMotionEvent.getX(), paramMotionEvent.getY());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    return false;
-  }
-  
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

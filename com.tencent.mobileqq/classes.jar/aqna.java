@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import mqq.app.QQPermissionCallback;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class aqna
-  implements QQPermissionCallback
+class aqna
+  implements TextWatcher
 {
-  public aqna(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  aqna(aqmz paramaqmz) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.denied();
-    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.grant();
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.a();
+    }
   }
 }
 

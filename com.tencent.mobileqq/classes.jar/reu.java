@@ -1,14 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
 
 public class reu
-  implements swr
 {
-  public reu(EditVideoFragment paramEditVideoFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void a(TopicInfo paramTopicInfo)
+  private static reu b(feeds_info.IconWordingInfo paramIconWordingInfo)
   {
-    ocd.a("0X800B24D", new paa().a("topic_id", Long.valueOf(paramTopicInfo.a())).a());
+    reu localreu = new reu();
+    localreu.jdField_a_of_type_Int = psy.a(paramIconWordingInfo.uint32_type);
+    if (paramIconWordingInfo.bytes_icon_url.has()) {
+      localreu.jdField_a_of_type_JavaLangString = paramIconWordingInfo.bytes_icon_url.get().toStringUtf8();
+    }
+    if (paramIconWordingInfo.bytes_wording.has()) {
+      localreu.jdField_b_of_type_JavaLangString = paramIconWordingInfo.bytes_wording.get().toStringUtf8();
+    }
+    if (paramIconWordingInfo.bytes_status_icon_url.has()) {
+      localreu.jdField_c_of_type_JavaLangString = paramIconWordingInfo.bytes_status_icon_url.get().toStringUtf8();
+    }
+    localreu.jdField_b_of_type_Int = psy.a(paramIconWordingInfo.uint32_status);
+    if (paramIconWordingInfo.bytes_status.has()) {
+      localreu.d = paramIconWordingInfo.bytes_status.get().toStringUtf8();
+    }
+    localreu.jdField_c_of_type_Int = psy.a(paramIconWordingInfo.uint32_icon_show_mode);
+    return localreu;
+  }
+  
+  public feeds_info.IconWordingInfo a()
+  {
+    feeds_info.IconWordingInfo localIconWordingInfo = new feeds_info.IconWordingInfo();
+    localIconWordingInfo.uint32_type.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localIconWordingInfo.uint32_status.set(this.jdField_b_of_type_Int);
+    localIconWordingInfo.uint32_icon_show_mode.set(this.jdField_c_of_type_Int);
+    if (!TextUtils.isEmpty(this.d)) {
+      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    return localIconWordingInfo;
   }
 }
 

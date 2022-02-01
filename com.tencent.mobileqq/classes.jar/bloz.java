@@ -1,38 +1,57 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import java.io.File;
 
 public class bloz
 {
-  public int a;
-  public Bitmap a;
-  public int b;
+  private static final String a = bloz.class.getSimpleName();
   
-  public bloz(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public static blve a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    a(paramInt1, paramInt2);
+    blve localblve = new blve();
+    localblve.d = "https://sqdd.myapp.com/myapp/qqteam/QIM/zhinenglvjingdonghua/AutoAISceneAni.zip";
+    localblve.f = "AutoAISceneAni";
+    localblve.e = "6f6632b8106fe070a560abcec6051f0d";
+    localblve.a = "AutoAISceneAni";
+    localblve.p = bljj.c;
+    localblve.q = bljj.b;
+    return localblve;
   }
   
-  public int a()
+  public static void a(blve paramblve)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      return 0;
+    try
+    {
+      File localFile = new File(paramblve.c());
+      if (!localFile.exists()) {
+        return;
+      }
+      npo.a(localFile, paramblve.b());
+      return;
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    catch (Exception paramblve) {}
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static blve b()
   {
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
-    this.b = (paramInt2 - j / 2);
+    blve localblve = new blve();
+    localblve.d = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/StorySticker/aiScreenAndroid/AISceneLoading.zip";
+    localblve.e = "da407ead2fb260d6b2570450f2e1bebd";
+    localblve.f = "AISceneLoading";
+    localblve.a = "AISceneLoading";
+    localblve.p = bljj.c;
+    localblve.q = bljj.b;
+    return localblve;
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public static blve c()
   {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
+    blve localblve = new blve();
+    localblve.d = "https://qd.myapp.com/myapp/qqteam/shenqidegongneng/AISceneGuide19082601Android.zip";
+    localblve.e = "dcb9d44eb8872db03a17fe57ce231a76";
+    localblve.f = "AISceneGuide";
+    localblve.a = "AISceneGuide";
+    localblve.p = bljj.c;
+    localblve.q = bljj.b;
+    return localblve;
   }
 }
 

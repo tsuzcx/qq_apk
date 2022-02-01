@@ -1,18 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
 class ahkk
-  extends ahkx
+  implements nnv
 {
-  ahkk(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahkk(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new ahlq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.listentogether.predownload;
 
-import awor;
-import awot;
-import bdmc;
-import bevm;
+import avbv;
+import avbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.NetResp;
 import java.util.HashMap;
 
 public class ListenTogetherResDownloader$2$1
   implements Runnable
 {
-  public ListenTogetherResDownloader$2$1(awot paramawot, bevm parambevm, boolean paramBoolean, MusicInfo paramMusicInfo) {}
+  public ListenTogetherResDownloader$2$1(avbx paramavbx, NetResp paramNetResp, boolean paramBoolean, MusicInfo paramMusicInfo) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("errCode", String.valueOf(this.jdField_a_of_type_Bevm.b));
-    localHashMap.put("result", String.valueOf(this.jdField_a_of_type_Bevm.a));
-    bdmc.a(BaseApplicationImpl.getContext()).a("", "listen_together_download_quality", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
-    ((ListenTogetherManager)awor.a(this.jdField_a_of_type_Awot.a).getManager(331)).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherDataMusicInfo);
+    localHashMap.put("errCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrCode));
+    localHashMap.put("result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "listen_together_download_quality", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
+    ((ListenTogetherManager)avbv.a(this.jdField_a_of_type_Avbx.a).getManager(331)).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherDataMusicInfo);
   }
 }
 

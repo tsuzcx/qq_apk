@@ -18,7 +18,7 @@ class TPReportManager$EventHandler
   private static final int MSG_CREATE_START = 999;
   private static final int MSG_DOWNLOAD_UPDATE = 1017;
   private static final int MSG_EARLY_ERROR = 2003;
-  private static final int MSG_EXIT_THREAD = 100;
+  private static final int MSG_FIRSTCLIP_OPEN = 1022;
   private static final int MSG_FIRST_PACKET = 1019;
   private static final int MSG_GET_CDN = 2000;
   private static final int MSG_HLS_PRIVATE_TAG = 1016;
@@ -79,9 +79,9 @@ class TPReportManager$EventHandler
     case 2002: 
     case 2003: 
     case 1019: 
+    case 1022: 
     case 1020: 
     case 1021: 
-    case 100: 
     case 3000: 
     case 1016: 
       do
@@ -139,7 +139,7 @@ class TPReportManager$EventHandler
         return;
         TPReportManager.access$2600(this.this$0, localMap);
         return;
-        TPReportManager.access$2700(this.this$0);
+        TPReportManager.access$2700(this.this$0, localMap);
         return;
         TPReportManager.access$2800(this.this$0);
         return;

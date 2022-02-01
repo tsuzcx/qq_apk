@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class afyx
-  implements Comparator<afyz>
+class afyx
+  implements bjoe
 {
-  private afyx(TroopTransferActivity paramTroopTransferActivity) {}
+  afyx(afyv paramafyv, MessageForDeviceFile paramMessageForDeviceFile, bjnw parambjnw) {}
   
-  public int a(afyz paramafyz1, afyz paramafyz2)
+  public void OnClick(View paramView, int paramInt)
   {
-    return paramafyz1.f.compareToIgnoreCase(paramafyz2.f);
+    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
+      ((aavk)this.jdField_a_of_type_Afyv.a.getBusinessHandler(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Afyv.b();
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.jdField_a_of_type_Afyv.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 

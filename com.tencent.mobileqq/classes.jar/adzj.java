@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.TextView;
 
 public class adzj
-  implements aifc
 {
-  public adzj(BaseChatPie paramBaseChatPie) {}
+  TextView a;
 }
 
 

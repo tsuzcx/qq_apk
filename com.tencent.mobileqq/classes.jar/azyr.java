@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import java.util.HashSet;
 
-public class azyr
-  implements DialogInterface.OnClickListener
+public abstract interface azyr
 {
-  public azyr(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.e();
-  }
+  public abstract void a(HashSet<String> paramHashSet);
 }
 
 

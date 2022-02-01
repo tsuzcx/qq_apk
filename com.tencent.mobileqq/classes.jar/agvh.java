@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agvh
-  extends awuv
+public class agvh
+  implements agut
 {
-  agvh(agvf paramagvf) {}
-  
-  public void a() {}
-  
-  public void a(awpk paramawpk)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if ((agvf.a(this.a) != null) && (agvf.a(this.a).equals(paramawpk)) && (agvf.a(this.a) == agvf.a(this.a).a().a())) {
-      agvf.a(this.a).a().a();
-    }
+    paramagap.a(paramMessageRecord, paramagcc);
   }
 }
 

@@ -1,12 +1,19 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
 class awus
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  awus(awuo paramawuo) {}
+  awus(awur paramawur) {}
   
-  public void onClick(View paramView) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.c();
+    awur.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
+  }
 }
 
 

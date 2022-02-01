@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.data;
 
-import boqr;
+import bluy;
 
 public class AEMaterialManager$1
   implements Runnable
 {
-  public AEMaterialManager$1(boqr paramboqr, boolean paramBoolean) {}
+  public AEMaterialManager$1(bluy parambluy, boolean paramBoolean) {}
   
   public void run()
   {
-    boqr.a(this.this$0, this.a);
+    bluy.a(this.this$0, this.a);
   }
 }
 

@@ -1,8 +1,22 @@
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.ark.ark.VariantWrapper;
 
-public abstract interface aoqd
+class aoqd
+  implements afwg
 {
-  public abstract void a(Friends[] paramArrayOfFriends, long paramLong, boolean paramBoolean);
+  aoqd(aoqa paramaoqa, long paramLong) {}
+  
+  public void a()
+  {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+  }
 }
 
 

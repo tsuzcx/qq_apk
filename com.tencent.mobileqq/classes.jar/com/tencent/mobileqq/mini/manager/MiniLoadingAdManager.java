@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout;
 import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.OnDismissListener;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
@@ -63,10 +63,10 @@ public class MiniLoadingAdManager
   
   private static void checkCacheFolder()
   {
-    if (bhmi.b(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
+    if (FileUtils.getFileOrFolderSize(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
     {
       QLog.d("MiniLoadingAdManager", 1, "checkCacheFolder size > maxAdCachedSize ");
-      bhmi.b(MiniAppFileManager.getLoadingAdCacheFolder());
+      FileUtils.deleteFilesInDirectory(MiniAppFileManager.getLoadingAdCacheFolder());
     }
   }
   

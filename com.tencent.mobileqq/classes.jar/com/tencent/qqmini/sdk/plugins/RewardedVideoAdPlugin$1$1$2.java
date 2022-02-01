@@ -9,7 +9,7 @@ class RewardedVideoAdPlugin$1$1$2
   
   public void run()
   {
-    MiniToast.makeText(RewardedVideoAdPlugin.access$1300(this.this$2.this$1.this$0), "当前版本暂不支持观看广告", 0).show();
+    MiniToast.makeText(RewardedVideoAdPlugin.access$1400(this.this$2.this$1.this$0), "当前版本暂不支持观看广告", 0).show();
   }
 }
 

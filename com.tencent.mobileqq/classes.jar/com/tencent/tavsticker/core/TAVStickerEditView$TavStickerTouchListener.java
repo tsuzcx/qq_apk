@@ -40,14 +40,14 @@ class TAVStickerEditView$TavStickerTouchListener
   
   private void handleActionDown(MotionEvent paramMotionEvent)
   {
-    if (TAVStickerEditView.access$200(this.this$0) != null) {
-      TAVStickerEditView.access$200(this.this$0).onTouchBegin(TAVStickerEditView.access$300(this.this$0), paramMotionEvent);
+    if (this.this$0.stickerEventListener != null) {
+      this.this$0.stickerEventListener.onTouchBegin(this.this$0.sticker, paramMotionEvent);
     }
     this.downPoint.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-    TAVStickerEditView.access$402(this.this$0, TAVStickerEditView.access$500(this.this$0));
-    TAVStickerEditView.access$602(this.this$0, TAVStickerEditView.access$700(this.this$0));
-    this.lastDownRotate = TAVStickerEditView.access$800(this.this$0);
-    this.lastDownScale = TAVStickerEditView.access$900(this.this$0);
+    this.this$0.positionX = this.this$0.getPositionX();
+    this.this$0.positionY = this.this$0.getPositionY();
+    this.lastDownRotate = this.this$0.rotate;
+    this.lastDownScale = this.this$0.scale;
     this.isClickSticker = true;
     if (this.isTouchInSingleZoomRotateRect)
     {
@@ -73,7 +73,7 @@ class TAVStickerEditView$TavStickerTouchListener
     for (;;)
     {
       if (this.operationMode != TAVStickerOperationMode.OP_NONE) {
-        TAVStickerEditView.access$1100(this.this$0, this.operationMode);
+        this.this$0.adjustLocation(this.operationMode);
       }
       return;
       if (1 == paramMotionEvent.getPointerCount())
@@ -95,11 +95,11 @@ class TAVStickerEditView$TavStickerTouchListener
           if (!this.isClickSticker) {
             this.operationMode = TAVStickerOperationMode.OP_DRAG;
           }
-          f2 = f2 + TAVStickerEditView.access$400(this.this$0) - this.downPoint.x;
-          f1 = f1 + TAVStickerEditView.access$600(this.this$0) - this.downPoint.y;
+          f2 = f2 + this.this$0.positionX - this.downPoint.x;
+          f1 = f1 + this.this$0.positionY - this.downPoint.y;
           paramMotionEvent = this.this$0.positionInterceptor(f2, f1);
           TLog.d(TAVStickerEditView.TAG, "handleActionMove -> curPositionX : " + f2 + ", realX : " + paramMotionEvent.x + ", curPositionY : " + f1 + ", realY : " + paramMotionEvent.y);
-          TAVStickerEditView.access$1000(this.this$0, paramMotionEvent.x, paramMotionEvent.y);
+          this.this$0.setPosition(paramMotionEvent.x, paramMotionEvent.y);
         }
       }
     }
@@ -116,10 +116,10 @@ class TAVStickerEditView$TavStickerTouchListener
   private void handleActionPointerUp(MotionEvent paramMotionEvent)
   {
     this.operationMode = TAVStickerOperationMode.OP_NONE;
-    TAVStickerEditView.access$402(this.this$0, TAVStickerEditView.access$500(this.this$0));
-    TAVStickerEditView.access$602(this.this$0, TAVStickerEditView.access$700(this.this$0));
-    this.lastDownRotate = TAVStickerEditView.access$800(this.this$0);
-    this.lastDownScale = TAVStickerEditView.access$900(this.this$0);
+    this.this$0.positionX = this.this$0.getPositionX();
+    this.this$0.positionY = this.this$0.getPositionY();
+    this.lastDownRotate = this.this$0.rotate;
+    this.lastDownScale = this.this$0.scale;
     if (paramMotionEvent.getPointerId(this.actionIndex) == 0) {
       this.downPoint.set(paramMotionEvent.getX(1), paramMotionEvent.getY(1));
     }
@@ -132,30 +132,30 @@ class TAVStickerEditView$TavStickerTouchListener
   private void handleActionUp(MotionEvent paramMotionEvent)
   {
     this.operationMode = TAVStickerOperationMode.OP_NONE;
-    if ((TAVStickerEditView.access$200(this.this$0) != null) && (checkClickInterval(paramMotionEvent)) && (this.isClickSticker) && (TAVStickerEditViewEventType.isHandleClick(this.this$0.eventType))) {
-      TAVStickerEditView.access$200(this.this$0).onStickerClick(TAVStickerEditView.access$300(this.this$0), paramMotionEvent);
+    if ((this.this$0.stickerEventListener != null) && (checkClickInterval(paramMotionEvent)) && (this.isClickSticker) && (TAVStickerEditViewEventType.isHandleClick(this.this$0.eventType))) {
+      this.this$0.stickerEventListener.onStickerClick(this.this$0.sticker, paramMotionEvent);
     }
-    if (TAVStickerEditView.access$200(this.this$0) != null) {
-      TAVStickerEditView.access$200(this.this$0).onTouchEnd(TAVStickerEditView.access$300(this.this$0), paramMotionEvent);
+    if (this.this$0.stickerEventListener != null) {
+      this.this$0.stickerEventListener.onTouchEnd(this.this$0.sticker, paramMotionEvent);
     }
   }
   
   private float handleScaleLimit(float paramFloat)
   {
     float f = paramFloat;
-    if (TAVStickerEditView.access$1200(this.this$0) > 0.0F)
+    if (this.this$0.scaleMin > 0.0F)
     {
       f = paramFloat;
-      if (paramFloat < TAVStickerEditView.access$1200(this.this$0)) {
-        f = TAVStickerEditView.access$1200(this.this$0);
+      if (paramFloat < this.this$0.scaleMin) {
+        f = this.this$0.scaleMin;
       }
     }
     paramFloat = f;
-    if (TAVStickerEditView.access$1300(this.this$0) > 0.0F)
+    if (this.this$0.scaleMax > 0.0F)
     {
       paramFloat = f;
-      if (f > TAVStickerEditView.access$1300(this.this$0)) {
-        paramFloat = TAVStickerEditView.access$1300(this.this$0);
+      if (f > this.this$0.scaleMax) {
+        paramFloat = this.this$0.scaleMax;
       }
     }
     return paramFloat;
@@ -169,7 +169,7 @@ class TAVStickerEditView$TavStickerTouchListener
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       this.isTouchInStickerRect = TAVStickerUtil.inQuadrangle(this.this$0.vertexPoints[0], this.this$0.vertexPoints[1], this.this$0.vertexPoints[2], this.this$0.vertexPoints[3], new PointF(f1, f2));
-      if ((TAVStickerEditView.access$100(this.this$0) == null) || (!TAVStickerEditView.access$100(this.this$0).contains(f1, f2))) {
+      if ((this.this$0.singleZoomRotateRect == null) || (!this.this$0.singleZoomRotateRect.contains(f1, f2))) {
         break label134;
       }
     }
@@ -202,7 +202,7 @@ class TAVStickerEditView$TavStickerTouchListener
     {
       f2 = this.this$0.rotateInterceptor(f1);
       TLog.d(TAVStickerEditView.TAG, "onHandleScaleAndRotate -> rotation : " + f1 + ", displayRotation : " + f2);
-      TAVStickerEditView.access$1400(this.this$0, f2);
+      this.this$0.setRotate(f2);
       if (this.twoPointDownDistance > 0.0F)
       {
         paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
@@ -210,7 +210,7 @@ class TAVStickerEditView$TavStickerTouchListener
         paramFloat1 = handleScaleLimit(paramFloat1 / this.twoPointDownDistance * paramFloat2);
         paramFloat2 = this.this$0.scaleInterceptor(paramFloat1);
         TLog.d(TAVStickerEditView.TAG, "onHandleScaleAndRotate -> curScale : " + paramFloat1 + ", displayScale : " + paramFloat2);
-        TAVStickerEditView.access$1500(this.this$0, paramFloat2);
+        this.this$0.setScale(paramFloat2);
       }
       return;
       f1 = f2;
@@ -223,7 +223,7 @@ class TAVStickerEditView$TavStickerTouchListener
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     this.actionIndex = paramMotionEvent.getActionIndex();
-    if ((!TAVStickerEditView.access$300(this.this$0).isEditable()) || (this.this$0.eventType == 0)) {
+    if ((!this.this$0.sticker.isEditable()) || (this.this$0.eventType == 0)) {
       return false;
     }
     if (isTouchInSticker(paramMotionEvent))

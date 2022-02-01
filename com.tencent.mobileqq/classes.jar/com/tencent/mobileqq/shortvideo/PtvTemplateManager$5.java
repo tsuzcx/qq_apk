@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcwk;
-import beum;
-import beuo;
-import bevn;
-import bhnv;
+import bbpv;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -33,20 +33,20 @@ public class PtvTemplateManager$5
       } while (!QLog.isColorLevel());
       QLog.i("PtvTemplateManager", 2, "preDownloadTemplates  null!");
       return;
-      beum localbeum = new beum();
-      localbeum.jdField_a_of_type_Beuq = new bcwk(this);
-      localbeum.jdField_a_of_type_JavaLangString = this.a.resurl;
-      localbeum.jdField_a_of_type_Int = 0;
-      localbeum.c = new File(PtvTemplateManager.a, this.a.name).getPath();
-      localbeum.b = bhnv.a(bevn.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbeum);
+      HttpNetReq localHttpNetReq = new HttpNetReq();
+      localHttpNetReq.mCallback = new bbpv(this);
+      localHttpNetReq.mReqUrl = this.a.resurl;
+      localHttpNetReq.mHttpMethod = 0;
+      localHttpNetReq.mOutPath = new File(PtvTemplateManager.a, this.a.name).getPath();
+      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      localQQAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
     } while (!QLog.isColorLevel());
     QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.resurl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,25 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rip {}
+public class rip
+  extends pkt
+{
+  public rip(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
+  
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  {
+    if (paramList.size() == 0)
+    {
+      ReadInJoyTopicSelectionFragment.a(this.a).clear();
+      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
+      this.a.a.clear();
+      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
+      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
+      pay.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

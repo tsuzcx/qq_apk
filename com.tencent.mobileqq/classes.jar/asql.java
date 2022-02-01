@@ -1,24 +1,86 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class asql
-  implements Animation.AnimationListener
+public abstract class asql
+  implements asqs
 {
-  public asql(FastImagePreviewLayout paramFastImagePreviewLayout) {}
+  private int jdField_a_of_type_Int = 0;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static asqs a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
-    }
-    this.a.removeAllViews();
+    return new asqd(paramQQAppInterface, paramFileManagerEntity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static asqs a(QQAppInterface paramQQAppInterface, WeiYunFileInfo paramWeiYunFileInfo)
+  {
+    return new asqg(paramQQAppInterface, paramWeiYunFileInfo);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static asqs a(FileInfo paramFileInfo)
+  {
+    return new asqe(paramFileInfo);
+  }
+  
+  public static asqs b(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  {
+    return new asqf(paramQQAppInterface, paramFileManagerEntity);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public String f()
+  {
+    return "";
+  }
+  
+  public String i()
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (c() > 0L)
+    {
+      str1 = str2;
+      if (c() != 3) {
+        if ((e() == null) || (e().length() <= 0)) {
+          break label92;
+        }
+      }
+    }
+    label92:
+    for (int i = 1;; i = 0)
+    {
+      str1 = str2;
+      if (i == 0) {
+        str1 = "" + BaseApplicationImpl.getContext().getString(2131692192) + aszt.a(c(), b());
+      }
+      return str1;
+    }
+  }
 }
 
 

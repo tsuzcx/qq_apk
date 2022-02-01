@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
 
 final class agev
-  implements agfh
+  implements aghk
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.a, 72);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    if (((MessageForPic)paramChatMessage).isMixed) {
+      return 24;
+    }
+    if (amtr.a(paramChatMessage)) {
+      return 42;
+    }
+    if (amrp.a(paramChatMessage)) {
+      return 66;
+    }
+    return 1;
   }
 }
 

@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-class ogt
-  implements View.OnClickListener
+public final class ogt
+  implements Parcelable.Creator<RecentShopParcel>
 {
-  ogt(ogs paramogs) {}
-  
-  public void onClick(View paramView)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    ((Activity)paramView.getContext()).onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new RecentShopParcel(paramParcel);
+  }
+  
+  public RecentShopParcel[] a(int paramInt)
+  {
+    return new RecentShopParcel[paramInt];
   }
 }
 

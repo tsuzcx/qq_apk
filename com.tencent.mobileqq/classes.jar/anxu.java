@@ -1,209 +1,54 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity.1.1;
+import android.support.annotation.NonNull;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
 
 public class anxu
-  implements almg
 {
-  public anxu(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a(int paramInt)
+  private static int a(int paramInt)
   {
-    int i = 0;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.recent", 4, "onDrawerStartMoving:: side = " + paramInt + " getActivity = " + this.a.getActivity() + " mDrawerBg= " + this.a.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramInt == 0) {
+      return 1;
     }
-    if (this.a.getActivity() == null) {
-      return;
+    if (paramInt == 1) {
+      return 0;
     }
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup != null) {
-      FrameHelperActivity.a(this.a, false);
-    }
-    almg[] arrayOfalmg = this.a.jdField_a_of_type_ArrayOfAlmg;
-    int j = arrayOfalmg.length;
-    while (i < j)
-    {
-      almg localalmg = arrayOfalmg[i];
-      if (localalmg != null) {
-        localalmg.a(paramInt);
-      }
-      i += 1;
-    }
-    this.a.d(true);
+    return 2;
   }
   
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    int i = 0;
-    if ((QLog.isDevelopLevel()) && (FrameHelperActivity.a(this.a)))
-    {
-      FrameHelperActivity.a(this.a, false);
-      QLog.i("Q.recent", 4, "onDrawerMoving:: side = " + paramInt + " getActivity = " + this.a.getActivity());
-    }
-    if (this.a.getActivity() == null) {
-      return;
-    }
-    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null) && (blgu.a()))
-    {
-      localObject1 = FrameHelperActivity.a(this.a).a(blgu.a);
-      if (localObject1 != null) {
-        ((blqp)localObject1).c();
-      }
-    }
-    if (Build.VERSION.SDK_INT >= 11) {}
-    Object localObject1 = this.a.jdField_a_of_type_ArrayOfAlmg;
-    int j = localObject1.length;
-    while (i < j)
-    {
-      Object localObject2 = localObject1[i];
-      if (localObject2 != null) {
-        localObject2.a(paramInt, paramFloat);
-      }
-      i += 1;
-    }
-    this.a.d(true);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    FrameHelperActivity.a(this.a, true);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.recent", 4, "onDrawerOpened:: side = " + paramInt1 + " getActivity = " + this.a.getActivity());
-    }
-    if (this.a.getActivity() == null) {
-      return;
-    }
-    FrameHelperActivity.b(this.a, true);
-    this.a.a(paramInt2, true, FrameHelperActivity.a(this.a));
-    Object localObject1 = this.a.getActivity().app;
+    paramInt = a(paramInt);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "[setDrawerBg(app)]from DrawerOpened");
+      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(14);
-    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null))
-    {
-      FrameHelperActivity.a(this.a).a();
-      if (blgu.a())
-      {
-        localObject1 = FrameHelperActivity.a(this.a).a(blgu.a);
-        if (localObject1 != null)
-        {
-          if (paramInt2 != 1) {
-            break label260;
-          }
-          ((blqp)localObject1).d();
-        }
-      }
+    paramQQAppInterface = (anxn)paramQQAppInterface.getBusinessHandler(148);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramString1, paramString2, paramInt);
     }
-    for (;;)
-    {
-      if (Build.VERSION.SDK_INT < 11) {}
-      localObject1 = this.a.jdField_a_of_type_ArrayOfAlmg;
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if (localObject2 != null) {
-          localObject2.a(paramInt1, paramInt2);
-        }
-        i += 1;
-      }
-      label260:
-      ((blqp)localObject1).a();
-    }
-    FrameHelperActivity.a(this.a);
-    this.a.d(true);
-    pfd.a().m();
-    this.a.m();
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  private static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.recent", 4, "onDrawerStartToggle:: side = " + paramInt + " open:" + paramBoolean + " getActivity = " + this.a.getActivity());
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountStateReporter", 2, new Object[] { "doPublicAccountFollowState { isFollow=", Boolean.valueOf(paramBoolean), " appType=", Integer.valueOf(paramInt1), " appid=", Long.valueOf(paramLong1), " puin=", Long.valueOf(paramLong2), " source=", Integer.valueOf(paramInt2), " }" });
     }
-    almg[] arrayOfalmg = this.a.jdField_a_of_type_ArrayOfAlmg;
-    int j = arrayOfalmg.length;
-    int i = 0;
-    while (i < j)
-    {
-      almg localalmg = arrayOfalmg[i];
-      if (localalmg != null) {
-        localalmg.a(paramInt, paramBoolean);
-      }
-      i += 1;
+    paramQQAppInterface = (anxn)paramQQAppInterface.getBusinessHandler(148);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramBoolean, paramInt1, paramLong1, paramLong2, paramInt2);
     }
-    if (paramBoolean) {
-      ThreadManager.post(new FrameHelperActivity.1.1(this), 5, null, true);
-    }
-    this.a.d(paramBoolean);
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.recent", 4, "onDrawerClosed:: side = " + paramInt1 + " getActivity = " + this.a.getActivity());
-    }
-    if (this.a.getActivity() == null) {
+    try
+    {
+      a(paramQQAppInterface, paramBoolean, -1, -1L, Long.parseLong(paramString), paramInt);
       return;
     }
-    FrameHelperActivity.b(this.a, false);
-    this.a.a(paramInt2, false, FrameHelperActivity.a(this.a));
-    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null))
+    catch (NumberFormatException paramQQAppInterface)
     {
-      FrameHelperActivity.a(this.a).b();
-      if (blgu.a())
-      {
-        localObject1 = FrameHelperActivity.a(this.a).a(blgu.a);
-        if (localObject1 != null) {
-          ((blqp)localObject1).b();
-        }
-      }
+      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
     }
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
-      }
-    }
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup != null) {
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380445)).setImageResource(0);
-    }
-    Object localObject1 = this.a.jdField_a_of_type_ArrayOfAlmg;
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject2 = localObject1[i];
-      if (localObject2 != null) {
-        localObject2.b(paramInt1, paramInt2);
-      }
-      i += 1;
-    }
-    this.a.d(false);
-    localObject1 = (QQAppInterface)ozs.a();
-    if (localObject1 != null) {
-      ((KandianMergeManager)((QQAppInterface)localObject1).getManager(162)).p();
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(17)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(17);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 100L);
   }
 }
 

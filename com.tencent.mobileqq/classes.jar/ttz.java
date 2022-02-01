@@ -1,68 +1,65 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
-public class ttz
-  implements ViewPager.OnPageChangeListener
+class ttz
+  implements bjrp
 {
-  public ttz(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  ttz(tty paramtty, int paramInt, VideoInfo paramVideoInfo) {}
   
-  private void a(int paramInt)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    if (paramInt == FolderBaseTabFragment.a)
+    int i = 0;
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-      if (ServiceAccountFolderActivityNew.a(this.a)) {}
-      for (str = "1";; str = "2")
+      QQToast.a(tty.a(this.jdField_a_of_type_Tty), 0, 2131694737, 0).a();
+      if (tty.a(this.jdField_a_of_type_Tty) != null) {
+        tty.a(this.jdField_a_of_type_Tty).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      }
+      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
+        break label359;
+      }
+    }
+    label356:
+    label359:
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    {
+      paramView = "";
+      paramInt = i;
+      if (paramInt < paramArrayList.size())
       {
-        abbe.b("auth_discover", "tofollow", 0, 0, new String[] { str });
-        bmzn.a().a("", "", "qq_live", "tab_page", "", 100, 1, System.currentTimeMillis(), "");
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label356;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
+          paramArrayList = obb.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(tty.a(this.jdField_a_of_type_Tty))) {
+            obb.a(new trn().a(tty.a(this.jdField_a_of_type_Tty)).a(obb.c).b(obb.R).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
+          }
+        }
+        else
+        {
+          return;
+        }
+        obb.a(new trn().a(tty.a(this.jdField_a_of_type_Tty)).a(obb.c).b(obb.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
         return;
       }
-    }
-    if (ServiceAccountFolderActivityNew.a(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      abbe.b("auth_follow", "todiscover", 0, 0, new String[] { str });
-      bmzn.a().a("", "", "qq_live", "find_page", "", 100, 1, System.currentTimeMillis(), "");
-      return;
-    }
-  }
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    aaec.a();
-    a(paramInt);
-    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
-    {
-      ServiceAccountFolderActivityNew.a(this.a).getChildAt(paramInt).performClick();
-      ServiceAccountFolderActivityNew.a(this.a, false);
-    }
-    ((FolderBaseTabFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt)).a(this.a, paramInt);
-    long l1;
-    long l2;
-    if (ServiceAccountFolderActivityNew.a(this.a) > 0L)
-    {
-      l1 = System.currentTimeMillis();
-      l2 = ServiceAccountFolderActivityNew.a(this.a);
-      if (ServiceAccountFolderActivityNew.a(this.a) != FolderBaseTabFragment.a) {
-        break label173;
-      }
-    }
-    label173:
-    for (String str = "auth_follow";; str = "auth_discover")
-    {
-      abbe.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
-      ServiceAccountFolderActivityNew.a(this.a, 0L);
-      ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
-      ServiceAccountFolderActivityNew.a(this.a, paramInt);
-      return;
     }
   }
 }

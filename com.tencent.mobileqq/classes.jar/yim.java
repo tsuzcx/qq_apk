@@ -1,25 +1,22 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
 
-class yim
-  implements blmh
+public class yim
+  implements vtx<vts>
 {
-  yim(yil paramyil, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, yii paramyii) {}
+  public yim(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(boolean paramBoolean, vts paramvts)
   {
-    if (paramInt == 4097)
+    xvv.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramvts != null))
     {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
-      }
-      yil.a(this.jdField_a_of_type_Yil).a.put("2_" + this.jdField_a_of_type_Yil.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Yii.a.get(paramInt)).mVid);
+      xvv.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramvts);
+      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramvts));
+      return;
     }
+    xvv.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
   }
 }
 

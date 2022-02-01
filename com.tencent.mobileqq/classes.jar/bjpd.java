@@ -1,16 +1,18 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.CirclePageIndicator.SavedState;
 
-public class bjpd
-  implements Comparator<Friend>
+public final class bjpd
+  implements Parcelable.Creator<CirclePageIndicator.SavedState>
 {
-  public bjpd(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
-  
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public CirclePageIndicator.SavedState a(Parcel paramParcel)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
+    return new CirclePageIndicator.SavedState(paramParcel, null);
+  }
+  
+  public CirclePageIndicator.SavedState[] a(int paramInt)
+  {
+    return new CirclePageIndicator.SavedState[paramInt];
   }
 }
 

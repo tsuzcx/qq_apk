@@ -1,68 +1,62 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardPresenter.5.1;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.Observable;
+import java.util.Observer;
+
 public class bewq
+  implements Observer
 {
-  public int a = 40000;
-  public int b = 30000;
-  public int c = 20000;
-  public int d = 20000;
-  public int e = 15000;
-  public int f = 10000;
-  private int g;
+  bewq(bewm parambewm) {}
   
-  public bewq() {}
-  
-  private bewq(bewq parambewq)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.a = parambewq.a;
-    this.b = parambewq.b;
-    this.c = parambewq.c;
-    this.d = parambewq.d;
-    this.e = parambewq.e;
-    this.f = parambewq.f;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    if ((bewm.a(this.a) == null) || (bewm.a(this.a) == null)) {}
+    do
     {
-    case 2: 
-    default: 
-      return this.a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.c;
-    }
-    return this.b;
-  }
-  
-  public bewq a()
-  {
-    return new bewq(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = (paramInt * 2000);
-  }
-  
-  public int b(int paramInt)
-  {
-    switch (paramInt)
+      do
+      {
+        return;
+      } while (!(paramObject instanceof bfed));
+      paramObservable = (bfed)paramObject;
+    } while (paramObservable.a != 1);
+    if (paramObservable.d == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-    case 2: 
-    default: 
-      return this.d + this.g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.f + this.g;
+      paramObservable = bewm.a(this.a);
+      bewm.a(this.a).a(bewm.a(this.a).troopUin);
+      if (bool)
+      {
+        bewm.a(this.a).hasSetNewTroopHead = true;
+        if (bewm.a(this.a).hasSetNewTroopName) {
+          bewm.a(this.a).isNewTroop = false;
+        }
+        if (bewm.a(this.a).isUseClassAvatar) {
+          bewm.a(this.a).isUseClassAvatar = false;
+        }
+        if ((paramObservable != null) && (paramObservable.a != null))
+        {
+          paramObservable.a.hasSetNewTroopHead = true;
+          paramObservable.a.isNewTroop = bewm.a(this.a).isNewTroop;
+          if (paramObservable.a.isUseClassAvatar()) {
+            paramObservable.a.setUseClassAvatar(false);
+          }
+          this.a.c();
+        }
+      }
+      if (!bewm.a(this.a).isResume()) {
+        break;
+      }
+      bewm.a(this.a).runOnUiThread(new VisitorTroopCardPresenter.5.1(this, bool));
+      return;
     }
-    return this.e + this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewq
  * JD-Core Version:    0.7.0.1
  */

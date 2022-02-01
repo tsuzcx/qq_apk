@@ -1,26 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-class sbz
-  extends sbh
+public abstract interface sbz
 {
-  sbz(sbi paramsbi) {}
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    sbi.a(this.a, false);
-    sbi.a(this.a, sbi.a(this.a), null, 0, "");
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
+  public abstract void a();
 }
 
 

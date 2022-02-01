@@ -4,7 +4,6 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bguq;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import common.config.service.QzoneConfig;
 import java.util.Iterator;
@@ -32,7 +32,7 @@ public class IliveEnterGroupHost
     QLog.i("IliveEnterGroupHost", 1, "IliveEnterGroupHost getAnchorGroupList uid = " + paramLong);
     SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(String.valueOf(paramLong), null);
     paramIliveHostCallback = new IliveEnterGroupHost.1(paramIliveHostCallback);
-    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramIliveHostCallback);
+    VSNetworkHelper.getInstance().sendRequest(localSubscribePersonalDetailRequest, paramIliveHostCallback);
   }
   
   public static int getWNSConfig(String paramString1, String paramString2, int paramInt)
@@ -100,7 +100,7 @@ public class IliveEnterGroupHost
     }
     paramString1 = TroopInfoActivity.a(paramString1, 4);
     paramString1.putInt("troop_info_from", 30);
-    bguq.a(BaseApplicationImpl.getContext(), paramString1, 2);
+    TroopUtils.openTroopInfoActivity(BaseApplicationImpl.getContext(), paramString1, 2);
     return;
   }
 }

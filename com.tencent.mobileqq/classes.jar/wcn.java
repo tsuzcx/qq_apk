@@ -1,23 +1,69 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class wcn
-  implements View.OnClickListener
+public class wcn
+  implements IEventReceiver
 {
-  wcn(wcm paramwcm) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private wco jdField_a_of_type_Wco;
+  private wcp jdField_a_of_type_Wcp;
+  private wcq jdField_a_of_type_Wcq;
   
-  public void onClick(View paramView)
+  public wcn(QQAppInterface paramQQAppInterface)
   {
-    QCirclePolymerizationBean localQCirclePolymerizationBean = new QCirclePolymerizationBean();
-    localQCirclePolymerizationBean.setTagInfo(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
-    localQCirclePolymerizationBean.setFromReportBean(this.a.jdField_a_of_type_Wcl.a.a().clone().setElementIdStr("portraitlist"));
-    localQCirclePolymerizationBean.setPolymerizationType(7);
-    localQCirclePolymerizationBean.setExt1From(3);
-    uyx.a(paramView.getContext(), localQCirclePolymerizationBean);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Wcp = new wcp(this);
+    this.jdField_a_of_type_Wcq = new wcq(this);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Wcp);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Wcq);
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Wco);
+    }
+    if (this.jdField_a_of_type_Wco != null) {
+      this.jdField_a_of_type_Wco.a();
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
+    }
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Wcp);
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Wcq);
+    this.jdField_a_of_type_Wco = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(wco paramwco)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramwco);
+    }
+    this.jdField_a_of_type_Wco = paramwco;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

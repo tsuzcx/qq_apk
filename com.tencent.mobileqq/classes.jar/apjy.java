@@ -1,8 +1,28 @@
-public abstract interface apjy
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class apjy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public apjy(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    Object localObject = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (localObject = ((Resources)localObject).getColorStateList(2131166350);; localObject = ((Resources)localObject).getColorStateList(2131166352))
+    {
+      localTextView.setTextColor((ColorStateList)localObject);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+  }
 }
 
 

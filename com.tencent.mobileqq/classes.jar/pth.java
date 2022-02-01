@@ -1,15 +1,12 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class pth
-  implements blmq
+final class pth
+  implements DialogInterface.OnClickListener
 {
-  pth(ptg paramptg) {}
-  
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ptf.a(this.a.jdField_a_of_type_Ptf, this.a.jdField_a_of_type_Skg, this.a.jdField_a_of_type_Ppu, paramInt, paramArrayList, paramObject);
+    paramDialogInterface.dismiss();
   }
 }
 

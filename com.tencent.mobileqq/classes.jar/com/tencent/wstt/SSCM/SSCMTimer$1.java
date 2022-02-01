@@ -1,8 +1,8 @@
 package com.tencent.wstt.SSCM;
 
-import blux;
-import bluy;
-import bluz;
+import bjyx;
+import bjyy;
+import bjyz;
 import java.util.TimerTask;
 
 public class SSCMTimer$1
@@ -12,34 +12,34 @@ public class SSCMTimer$1
   {
     long l;
     int i;
-    if (blux.a(this.this$0))
+    if (bjyx.a(this.this$0))
     {
-      l = Long.parseLong(bluz.a());
+      l = Long.parseLong(bjyz.a());
       if (l == -1L)
       {
-        blux.a(this.this$0, false);
+        bjyx.a(this.this$0, false);
         i = 0;
       }
     }
     for (;;)
     {
       if (i > 0) {
-        blux.a(this.this$0, 0);
+        bjyx.a(this.this$0, 0);
       }
       do
       {
         do
         {
           return;
-          i = (int)(l - blux.a(this.this$0));
-          blux.a(this.this$0, l);
+          i = (int)(l - bjyx.a(this.this$0));
+          bjyx.a(this.this$0, l);
           break;
-          blux.a(this.this$0, blux.a(this.this$0) + blux.b(this.this$0));
-        } while (blux.a(this.this$0) < 120000);
-        blux.b(this.this$0, 1);
+          bjyx.a(this.this$0, bjyx.a(this.this$0) + bjyx.b(this.this$0));
+        } while (bjyx.a(this.this$0) < 120000);
+        bjyx.b(this.this$0, 1);
         cancel();
-      } while (blux.a(this.this$0) == null);
-      blux.a(this.this$0).a(blux.a(this.this$0));
+      } while (bjyx.a(this.this$0) == null);
+      bjyx.a(this.this$0).a(bjyx.a(this.this$0));
       return;
       i = 0;
     }

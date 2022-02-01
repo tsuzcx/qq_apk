@@ -1,12 +1,10 @@
-public class bfzv<F, S>
+final class bfzv
+  implements bgaa<Number>
 {
-  public F a;
-  public S b;
-  
-  bfzv(F paramF, S paramS)
+  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
   {
-    this.a = paramF;
-    this.b = paramS;
+    float f = paramNumber1.floatValue();
+    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
   }
 }
 

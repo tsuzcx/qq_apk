@@ -1,115 +1,51 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
+import android.content.Intent;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class mjn
-  extends mjj
+  extends BroadcastReceiver
 {
-  private int a;
+  public mjn(VideoControlUI paramVideoControlUI) {}
   
-  public mjn(Context paramContext, VideoAppInterface paramVideoAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, paramVideoAppInterface);
-    this.jdField_a_of_type_Int = ((int)bhmg.a(paramContext, 100.0F));
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, mma> paramConcurrentHashMap)
-  {
-    paramRect2.set(paramRect1.left, paramRect1.top - paramInt, paramRect1.right, paramRect1.bottom - paramInt);
-  }
-  
-  public void a(lff paramlff, mep[] paramArrayOfmep, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-  }
-  
-  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    int n = 0;
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    while (paramArrayOfmep == null) {
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
       return;
     }
-    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299104);
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299101);
-    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299102);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299103);
-    if (paramInt5 == 0) {
-      i = m;
-    }
-    for (;;)
+    long l = mtt.a(paramIntent);
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    QLog.w(this.a.d, 1, "CameraAvailabilityReceiver, cameraId[" + paramContext + "], availability[" + i + "], mCameraAvailable[" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa + "], seq[" + l + "]");
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+    if (i == 0)
     {
-      int j;
-      int k;
-      switch (paramInt1)
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
+    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.entrySet().iterator();
+      do
       {
-      default: 
-        j = 0;
-        k = 0;
-        m = 0;
-        i = n;
-      }
-      for (;;)
-      {
-        paramArrayOfmep[1].b(m, k, j, i);
-        lir.b(i2, i1);
-        lir.a(m, k);
-        lir.a(paramInt1);
-        if (!QLog.isColorLevel()) {
+        if (!paramContext.hasNext()) {
           break;
         }
-        QLog.w("ScreenLayoutSliderWindow", 1, "setSmallVideoViewLayout, position[" + paramInt1 + "], width[" + paramInt2 + "], height[" + paramInt3 + "], layout[" + m + ", " + k + ", " + j + ", " + i + "], topOffset[" + paramInt4 + "], bottomOffset[" + paramInt5 + "], mGlSmallViewTopOffset[" + this.jdField_a_of_type_Int + "]");
-        return;
-        j = m + i1;
-        k = i + paramInt4;
-        i = k + i2;
-        continue;
-        m = paramInt2 - i1 - m;
-        j = m + i1;
-        k = i + paramInt4;
-        i = k + i2;
-        continue;
-        j = m + i1;
-        k = paramInt3 - i2 - i - paramInt5;
-        i = k + i2;
-        continue;
-        m = paramInt2 - i1 - m;
-        j = m + i1;
-        k = paramInt3 - i2 - i - paramInt5;
-        i = k + i2;
-      }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
     }
-  }
-  
-  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    paramArrayOfmep[0].a(0, 0, 0, 0);
-    paramArrayOfmep[0].b(0, 0, paramInt1, paramInt2);
-    paramArrayOfmep[0].d(-15197410);
-    paramArrayOfmep[1].a(3, 3, 3, 3);
-    paramArrayOfmep[1].d(-15197410);
-    a(paramArrayOfmep, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
-  }
-  
-  public boolean a()
-  {
-    mcx localmcx = new mcx(null);
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    for (i = 0;; i = -1)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8004), localmcx });
-      if (QLog.isDevelopLevel()) {
-        QLog.w("ScreenLayoutSliderWindow", 1, "canSwitchView, mBlock[" + localmcx.jdField_b_of_type_Boolean + "], mBlockName[" + localmcx.jdField_b_of_type_JavaLangString + "]");
-      }
+      VideoControlUI.a(this.a, l, i);
+      return;
     }
-    return !localmcx.jdField_b_of_type_Boolean;
   }
 }
 

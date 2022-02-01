@@ -13,6 +13,7 @@ import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
+import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
 import java.util.List;
 import java.util.Map;
 
@@ -92,6 +93,11 @@ public class VideoReport
   public static Map<String, Object> pageInfoForView(View paramView)
   {
     return VideoReportInner.getInstance().pageInfoForView(paramView);
+  }
+  
+  public static void pageLogicDestroy(Object paramObject)
+  {
+    VideoReportInner.getInstance().pageLogicDestroy(paramObject);
   }
   
   @Nullable
@@ -180,6 +186,11 @@ public class VideoReport
   public static void setDebugMode(boolean paramBoolean)
   {
     VideoReportInner.getInstance().setDebugMode(paramBoolean);
+  }
+  
+  public static void setDetectionInterceptor(IDetectionInterceptor paramIDetectionInterceptor)
+  {
+    VideoReportInner.getInstance().setDetectionInterceptor(paramIDetectionInterceptor);
   }
   
   public static void setDetectionMode(@DetectionMode int paramInt)

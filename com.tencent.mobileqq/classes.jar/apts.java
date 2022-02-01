@@ -1,14 +1,10 @@
-import javax.microedition.khronos.opengles.GL10;
-
-public abstract interface apts
+public abstract interface apts<Y>
 {
-  public abstract void a(GL10 paramGL10);
-  
-  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
+  public abstract void a(Y paramY);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apts
  * JD-Core Version:    0.7.0.1
  */

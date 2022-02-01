@@ -1,64 +1,28 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.common.app.AppInterface;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.NewIntent;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class wpe
-  extends SimpleJob
+  extends Subscriber.SingleEventSubscriberNoRefect<voc>
 {
-  public wpe(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wpa paramwpa)
+  woz a;
+  
+  public wpe(@NonNull woz paramwoz)
   {
-    super(paramString);
+    this.a = paramwoz;
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  protected void a(@NonNull voc paramvoc)
   {
-    for (;;)
-    {
-      NewIntent localNewIntent;
-      try
-      {
-        paramJobContext = this.jdField_a_of_type_Wpa.a();
-        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
-        AppInterface localAppInterface = QQStoryContext.a();
-        localNewIntent = new NewIntent(localAppInterface.getApp(), wpl.class);
-        localNewIntent.putExtra("storySeq", paramArrayOfObject);
-        localNewIntent.putExtra("cmd", this.jdField_a_of_type_Wpa.a());
-        localNewIntent.putExtra("data", paramJobContext);
-        localNewIntent.putExtra("start_time", System.currentTimeMillis());
-        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_Wpa.b())))
-        {
-          localNewIntent.putExtra("timeout", 10000L);
-          localNewIntent.putExtra("support_retry", true);
-          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_Wpa);
-          localAppInterface.startServlet(localNewIntent);
-          return null;
-        }
-      }
-      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
-      {
-        Bosses.get().scheduleJobDelayed(new wpf(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
-        return null;
-      }
-      if (this.jdField_a_of_type_Wpa.a > 0L) {
-        localNewIntent.putExtra("timeout", this.jdField_a_of_type_Wpa.a);
-      }
+    if ((paramvoc.b != null) && (paramvoc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      woz.a(this.a, paramvoc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramvoc.b.mVid, paramvoc.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
     }
   }
   
-  public int getJobType()
+  public Class acceptEventClass()
   {
-    return 16;
+    return voc.class;
   }
 }
 

@@ -1,19 +1,34 @@
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-final class qan
-  implements uyg
+public class qan
+  implements qdy
 {
-  qan(Runnable paramRunnable) {}
-  
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, suk paramsuk)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (this.a != null) {
-      this.a.run();
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pzq.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = parampvc.a();
+    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
+      qga.a(paramContainer, parampvc);
     }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

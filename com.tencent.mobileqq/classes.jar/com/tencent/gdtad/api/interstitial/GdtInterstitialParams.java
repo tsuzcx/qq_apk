@@ -1,21 +1,25 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acot;
-import acqf;
-import acvc;
+import ablb;
+import abmo;
+import abrl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
+import org.json.JSONObject;
 
 public class GdtInterstitialParams
-  extends acot
+  extends ablb
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new acqf();
+  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new abmo();
   public int a;
   public GdtHandler.Options a;
+  public JSONObject a;
   public boolean a;
   public int b = -2147483648;
   public int c = -2147483648;
@@ -31,17 +35,32 @@ public class GdtInterstitialParams
     this.jdField_a_of_type_Int = -2147483648;
     if (paramParcel == null)
     {
-      acvc.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
+      abrl.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.b = paramParcel.readInt();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
+    String str = paramParcel.readString();
+    if (!TextUtils.isEmpty(str)) {}
+    try
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str);
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
+      this.jdField_a_of_type_Int = paramParcel.readInt();
+      this.b = paramParcel.readInt();
+      if (paramParcel.readByte() != 0)
+      {
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        AdLog.e("GdtInterstitialParams", "GdtInterstitialParams(Parcel in)", localThrowable);
+        continue;
+        boolean bool = false;
+      }
     }
   }
   
@@ -73,17 +92,28 @@ public class GdtInterstitialParams
   {
     if (paramParcel == null)
     {
-      acvc.d("GdtInterstitialParams", "writeToParcel error");
+      abrl.d("GdtInterstitialParams", "writeToParcel error");
       return;
     }
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.b);
-    if (this.jdField_a_of_type_Boolean) {}
+    String str;
+    if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (!JSONObject.NULL.equals(this.jdField_a_of_type_OrgJsonJSONObject)))
+    {
+      str = this.jdField_a_of_type_OrgJsonJSONObject.toString();
+      paramParcel.writeString(str);
+      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
+      paramParcel.writeInt(this.jdField_a_of_type_Int);
+      paramParcel.writeInt(this.b);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label91;
+      }
+    }
+    label91:
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
       return;
+      str = null;
+      break;
     }
   }
 }

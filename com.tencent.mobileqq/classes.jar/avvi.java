@@ -1,14 +1,24 @@
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
-public abstract interface avvi
-  extends View.OnTouchListener
+public class avvi
+  implements bhle
 {
-  public abstract void a(View paramView, int paramInt);
+  public avvi(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public abstract void b(View paramView, int paramInt);
-  
-  public abstract void c(avub paramavub, int paramInt);
+  public void onItemSelect(View paramView, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (MsgBackupPCAuthFragment.a(this.a)) {
+        this.a.k();
+      }
+      this.a.onBackEvent();
+    }
+    while (paramInt != 2) {
+      return;
+    }
+  }
 }
 
 

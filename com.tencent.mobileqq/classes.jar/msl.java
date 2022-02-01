@@ -1,24 +1,37 @@
-public class msl
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
+
+class msl
+  extends PhoneStateListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  msl(msi parammsi) {}
   
-  public msl(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhoneStatusMonitor", 2, "onCallStateChanged, state[" + paramInt + "], isCalling[" + msi.a(this.a) + "]");
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      super.onCallStateChanged(paramInt, paramString);
+      return;
+      if (msi.a(this.a))
+      {
+        msi.a(this.a, false);
+        continue;
+        if (!msi.a(this.a)) {
+          msi.a(this.a, true);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     msl
  * JD-Core Version:    0.7.0.1
  */

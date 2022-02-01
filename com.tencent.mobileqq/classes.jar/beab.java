@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface beab
+class beab
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(PadInfo paramPadInfo);
+  beab(bdzw parambdzw) {}
   
-  public abstract void b(PadInfo paramPadInfo);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

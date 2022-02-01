@@ -1,29 +1,29 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaou;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
-import antf;
-import bhmi;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import mqq.app.MobileQQ;
+import zlp;
 
 public class SubscribeQRCodeShareHelper$5
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$5(aaou paramaaou) {}
+  public SubscribeQRCodeShareHelper$5(zlp paramzlp) {}
   
   public void run()
   {
     String str;
-    if ((aaou.a(this.this$0)) && (!aaou.a(this.this$0).isFinishing()))
+    if ((zlp.a(this.this$0)) && (!zlp.a(this.this$0).isFinishing()))
     {
-      localObject = aaou.a(this.this$0, aaou.a(this.this$0));
-      str = aaou.a(this.this$0, antf.bg);
-      if (!bhmi.d((String)localObject, str)) {
-        Toast.makeText(aaou.a(this.this$0), "save failed", 0).show();
+      localObject = zlp.a(this.this$0, zlp.a(this.this$0));
+      str = zlp.a(this.this$0, AppConstants.SDCARD_IMG_SAVE);
+      if (!FileUtils.copyFile((String)localObject, str)) {
+        Toast.makeText(zlp.a(this.this$0), "save failed", 0).show();
       }
     }
     else
@@ -32,9 +32,9 @@ public class SubscribeQRCodeShareHelper$5
     }
     Object localObject = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
     ((Intent)localObject).setData(Uri.fromFile(new File(str)));
-    aaou.a(this.this$0).sendBroadcast((Intent)localObject);
-    MobileQQ.sMobileQQ.onSendBroadcast(aaou.a(this.this$0), (Intent)localObject);
-    Toast.makeText(aaou.a(this.this$0), "save:" + str, 0).show();
+    zlp.a(this.this$0).sendBroadcast((Intent)localObject);
+    MobileQQ.sMobileQQ.onSendBroadcast(zlp.a(this.this$0), (Intent)localObject);
+    Toast.makeText(zlp.a(this.this$0), "save:" + str, 0).show();
   }
 }
 

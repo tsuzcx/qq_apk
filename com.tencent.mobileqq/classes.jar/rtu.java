@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.app.Activity;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.Settings.System;
 
 class rtu
-  implements DialogInterface.OnShowListener
+  extends ContentObserver
 {
-  rtu(rtr paramrtr) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  rtu(rtt paramrtt, Handler paramHandler)
   {
-    rsx.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    rsx.a(this.a.a).getWindow().clearFlags(8);
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean, Uri paramUri)
+  {
+    super.onChange(paramBoolean, paramUri);
+    int i = Settings.System.getInt(rtt.a(this.a).getContentResolver(), "screen_brightness", 125);
+    if ((rtt.a(this.a)) && (i > 0)) {
+      this.a.a(i / 255.0F);
+    }
   }
 }
 

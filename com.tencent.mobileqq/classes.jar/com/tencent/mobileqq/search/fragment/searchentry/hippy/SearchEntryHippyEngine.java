@@ -8,13 +8,14 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import bbzo;
+import bass;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.hippy.qq.app.TKDApiProvider;
 import com.tencent.hippy.qq.module.tkd.TKDAccountModule;
 import com.tencent.hippy.qq.module.tkd.TKDAccountModule.AccountInfo;
 import com.tencent.hippy.qq.view.tkd.listview.ResourceUtil;
@@ -22,6 +23,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler;
 import com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHistoryDataMethod;
 import com.tencent.mtt.hippy.common.HippyMap;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
@@ -37,8 +39,9 @@ public class SearchEntryHippyEngine
   
   public SearchEntryHippyEngine(@NonNull ViolaFragment paramViolaFragment, @NonNull SearchHotwordHandler paramSearchHotwordHandler, HippyQQEngine.HippyQQEngineListener paramHippyQQEngineListener)
   {
-    super(paramViolaFragment, "search");
+    super(paramViolaFragment, "search", paramViolaFragment.getUrl());
     this.hotwordHandler = paramSearchHotwordHandler;
+    this.providers.add(new TKDApiProvider());
     setJsBundleType("react");
     setComponentName("SearchPageView");
     setDebugMode(isHippyDebug());
@@ -56,7 +59,7 @@ public class SearchEntryHippyEngine
     localHippyMap1.pushString("history", RequestHistoryDataMethod.getHistoryListStr());
     localHippyMap1.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
     localHippyMap1.pushString("type", "homePage");
-    localHippyMap1.pushString("hint", ResourceUtil.getString(2131717766));
+    localHippyMap1.pushString("hint", ResourceUtil.getString(2131718004));
     localHippyMap1.pushString("data", SearchHippyEventEmitter.mapToJsonStr(SearchHotwordHandler.getHotwordDataMap(this.hotwordHandler, null)));
     HippyMap localHippyMap2 = new HippyMap();
     localHippyMap2.pushInt("skinMode", 0);
@@ -79,18 +82,14 @@ public class SearchEntryHippyEngine
     }
     AladdinConfig localAladdinConfig = Aladdin.getConfig(313);
     if (localAladdinConfig != null) {
-      if (localAladdinConfig.getIntegerFromString("SearchPage_HippySwitch", -1) == 1) {
-        bool = true;
-      }
+      if (localAladdinConfig.getIntegerFromString("SearchPage_HippySwitch", -1) != 1) {}
     }
-    for (int i = localAladdinConfig.getIntegerFromString("SearchPage_UIType", 0);; i = 0)
+    for (bool = true;; bool = false)
     {
-      if ((!bool) && (i != 5)) {
-        bbzo.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+      if (!bool) {
+        bass.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
       }
       return bool;
-      bool = false;
-      break;
     }
   }
   
@@ -111,7 +110,7 @@ public class SearchEntryHippyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchEntryHippyEngine
  * JD-Core Version:    0.7.0.1
  */

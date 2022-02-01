@@ -1,6 +1,6 @@
 package cooperation.ilive;
 
-import aodu;
+import amxv;
 
 class IliveLaunchFragment$4
   implements Runnable
@@ -9,7 +9,7 @@ class IliveLaunchFragment$4
   
   public void run()
   {
-    aodu.a(false);
+    amxv.a(false);
   }
 }
 

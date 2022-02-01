@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
 
-public class aqtw
-  implements Comparator<ColorNote>
+class aqtw
+  extends BroadcastReceiver
 {
-  public aqtw(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
+  aqtw(aqtu paramaqtu) {}
   
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (aqtx)aqtu.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
+    {
+      this.a.a();
+      aqtu.a(this.a).a(paramContext);
+    }
   }
 }
 

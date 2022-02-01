@@ -1,13 +1,43 @@
-class abeq
-  implements bgpi
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.qphone.base.util.QLog;
+
+final class abeq
+  extends BroadcastReceiver
 {
-  abeq(abep paramabep, String paramString) {}
-  
-  public void a(String paramString1, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bgot.jdField_a_of_type_JavaLangString.equals(paramString2)) {
-      this.jdField_a_of_type_Abep.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
+    boolean bool = false;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            bifn.c("GameCenterBroadcastReceiver", "mScreenOff = true");
+          }
+          GameCenterCheck.a();
+          return;
+        }
+        if (!"android.intent.action.BATTERY_CHANGED".equals(paramContext)) {
+          break;
+        }
+        abep.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+      } while (!QLog.isColorLevel());
+      bifn.c("GameCenterBroadcastReceiver", "battery cap= " + abep.a);
+      return;
+    } while ((!"android.intent.action.ACTION_POWER_CONNECTED".equals(paramContext)) && (!"android.intent.action.ACTION_POWER_DISCONNECTED".equals(paramContext)));
+    int i = paramIntent.getIntExtra("status", -1);
+    if ((i == 2) || (i == 5)) {
+      bool = true;
     }
+    abep.b = bool;
   }
 }
 

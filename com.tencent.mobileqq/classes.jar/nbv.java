@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class nbv
-  implements View.OnClickListener
+public abstract interface nbv
 {
-  nbv(nbt paramnbt) {}
+  public abstract void a();
   
-  public void onClick(View paramView) {}
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nbv
  * JD-Core Version:    0.7.0.1
  */

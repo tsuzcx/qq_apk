@@ -1,26 +1,26 @@
 package cooperation.liveroom;
 
-import biht;
-import bihu;
+import bgod;
+import bgoe;
 
 class LiveRoomDownloadManager$1
-  extends biht
+  extends bgod
 {
   LiveRoomDownloadManager$1(LiveRoomDownloadManager paramLiveRoomDownloadManager, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void onDone(bihu parambihu)
+  public void onDone(bgoe parambgoe)
   {
-    super.onDone(parambihu);
+    super.onDone(parambgoe);
     if (this.val$callback != null)
     {
-      if (parambihu.a() == 3) {
-        this.val$callback.onSuccess(parambihu.a(), parambihu.a);
+      if (parambgoe.a() == 3) {
+        this.val$callback.onSuccess(parambgoe.a(), parambgoe.a);
       }
     }
     else {
       return;
     }
-    this.val$callback.onFailure(parambihu.a(), parambihu.a);
+    this.val$callback.onFailure(parambgoe.a(), parambgoe.a);
   }
 }
 

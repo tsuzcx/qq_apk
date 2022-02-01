@@ -1,25 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ttr
-  implements DialogInterface.OnClickListener
 {
-  public ttr(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  public static HashSet<String> a = new HashSet();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a()
   {
-    switch (paramInt)
+    a.clear();
+  }
+  
+  public static void a(int paramInt, sdc paramsdc)
+  {
+    if (paramsdc == null) {}
+    sdg localsdg;
+    AdvertisementInfo localAdvertisementInfo;
+    do
     {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
-      return;
+      do
+      {
+        return;
+        localsdg = paramsdc.a();
+        paramsdc = paramsdc.a();
+      } while ((paramsdc == null) || (localsdg == null) || (!(localsdg.a instanceof AdvertisementInfo)));
+      localAdvertisementInfo = (AdvertisementInfo)localsdg.a;
+    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
+    a(paramsdc, localAdvertisementInfo, localsdg);
+  }
+  
+  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, sdg paramsdg)
+  {
+    if ((paramsdg == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
+    while ((!(paramsdg.a instanceof AdvertisementInfo)) || (!paramsdg.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
+      return false;
     }
-    paramDialogInterface.dismiss();
+    obb.a(new trn().a(paramActivity).a(obb.F).b(obb.N).a(paramAdvertisementInfo).a());
+    a.add(paramAdvertisementInfo.mAdTraceId);
+    return true;
   }
 }
 

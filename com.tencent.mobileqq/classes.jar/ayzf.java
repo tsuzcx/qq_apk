@@ -1,10 +1,20 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class ayzf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public List<ayzd> a;
-  public boolean a;
-  public List<azbd> b;
+  public ayzf(VasProfileTagView paramVasProfileTagView, VipTagView paramVipTagView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
+    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramValueAnimator.x, paramValueAnimator.y);
+  }
 }
 
 

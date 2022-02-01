@@ -14,7 +14,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import yut;
+import xwe;
 
 public class DanceMachineQQBrowserActivity
   extends QQTranslucentBrowserActivity
@@ -73,8 +73,9 @@ public class DanceMachineQQBrowserActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -93,7 +94,7 @@ public class DanceMachineQQBrowserActivity
   public void doOnResume()
   {
     getWindow().getDecorView().setSystemUiVisibility(2);
-    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new yut(this));
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new xwe(this));
   }
   
   public void finish()

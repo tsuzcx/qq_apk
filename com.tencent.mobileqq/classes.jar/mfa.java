@@ -1,59 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class mfa
-  extends lef
+  implements AdapterView.OnItemClickListener
 {
-  public mfa(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mfa(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  protected void a(long paramLong, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    long l = AudioHelper.b();
-    QLog.w(this.a.jdField_b_of_type_JavaLangString, 1, "onDestroyInviteUI, groupId[" + paramLong + "], reason[" + paramInt + "], mIsDoubleVideoMeeting[" + this.a.jdField_a_of_type_Boolean + "], mPeerUin[" + this.a.c + "], mGroupId[" + this.a.jdField_a_of_type_Long + "], seq[" + l + "]");
-    if (this.a.jdField_a_of_type_Boolean) {
-      if (TextUtils.equals(this.a.c, String.valueOf(paramLong)))
-      {
-        this.a.b("onDestroyInviteUI_DoubleVideoMeeting");
-        this.a.a(l, paramInt);
-      }
-    }
-    while ((this.a.jdField_a_of_type_Long != paramLong) && (0L != paramLong)) {
-      return;
-    }
-    this.a.b("onDestroyInviteUI");
-  }
-  
-  protected void a(long paramLong, String paramString)
-  {
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.finish();
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.finish();
-    }
-  }
-  
-  protected void d(long paramLong)
-  {
-    this.a.b("notifyCloseAllGroupVideoInviteMsgBox");
-    this.a.finish();
-  }
-  
-  protected void e(long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Long == paramLong)
+    if (this.a.jdField_a_of_type_Msb == null) {}
+    for (;;)
     {
-      this.a.b("notifyCloseGroupVideoInviteMsgBox");
-      this.a.finish();
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      mey localmey = (mey)paramView.getTag();
+      if (localmey == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
+        }
+      }
+      else if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2))) {
+        this.a.jdField_a_of_type_Msb.a(localmey.jdField_a_of_type_Long, localmey.jdField_a_of_type_Int, paramInt, true);
+      } else {
+        this.a.jdField_a_of_type_Msb.a(localmey.jdField_a_of_type_Long, localmey.jdField_a_of_type_Int, paramInt, false);
+      }
     }
   }
 }

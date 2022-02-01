@@ -1,6 +1,14 @@
-public abstract interface ppm
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
+public class ppm
+  implements pqe
 {
-  public abstract void a(int paramInt);
+  public ppm(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ReadInJoySelfFragment.a(this.a, this.a.getActivity());
+  }
 }
 
 

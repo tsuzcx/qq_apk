@@ -1,40 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class atew
-  implements Animator.AnimatorListener
+public abstract interface atew
 {
-  public atew(SignalBombAnimationView paramSignalBombAnimationView) {}
+  public abstract long a(NetResp paramNetResp, ateu paramateu);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((this.a.a != null) && (SignalBombAnimationView.a(this.a) != null))
-    {
-      SignalBombAnimationView.a(this.a).setVisibility(0);
-      SignalBombAnimationView.a(this.a).setImageDrawable(this.a.a);
-      this.a.a.start();
-      QLog.d("SignalBombAnimationView", 2, "mFireDrawable start");
-    }
-    paramAnimator = ObjectAnimator.ofFloat(SignalBombAnimationView.b(this.a), "alpha", new float[] { 1.0F, 1.0F });
-    paramAnimator.setDuration(480L);
-    paramAnimator.addListener(new atex(this));
-    paramAnimator.start();
-  }
+  public abstract void a(ateu paramateu);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void a(boolean paramBoolean, ateu paramateu);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong, ateu paramateu);
+  
+  public abstract void b(ateu paramateu);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atew
  * JD-Core Version:    0.7.0.1
  */

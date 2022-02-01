@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class ahkq
-  extends ahkx
+  extends BroadcastReceiver
 {
-  ahkq(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  private ahkq(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ahow(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      ahiu.a(this.a, 1);
+    }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    ahiu.a(this.a, 1);
   }
 }
 

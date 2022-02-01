@@ -1,23 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
 
-final class mon
-  implements mnx
+public class mon
 {
-  public void a(int paramInt)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
-    mol.a(false, paramInt);
-  }
+  public int a;
+  public int b;
   
-  public void a(String paramString)
+  public mon(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
-    mol.a(true, 0);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

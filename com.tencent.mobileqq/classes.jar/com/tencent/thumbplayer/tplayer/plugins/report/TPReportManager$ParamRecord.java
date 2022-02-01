@@ -17,10 +17,12 @@ class TPReportManager$ParamRecord
   int liveDelayMs = 0;
   int maxSpeed = 0;
   int playDurationMs = 0;
+  String spanId = "";
   long startBufferingTimeMs = 0L;
   long startPlayTimeMs = 0L;
   long startPrepareTimeMs = 0L;
   int totalSpeed = 0;
+  String tuid = "";
   
   private TPReportManager$ParamRecord(TPReportManager paramTPReportManager) {}
   
@@ -45,6 +47,8 @@ class TPReportManager$ParamRecord
     this.cdnUrl = "";
     this.cdnIp = "";
     this.cdnUip = "";
+    this.spanId = "";
+    this.tuid = "";
   }
 }
 

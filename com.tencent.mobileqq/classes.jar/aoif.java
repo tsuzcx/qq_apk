@@ -1,19 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.PointF;
 
-class aoif
-  extends beit
+public class aoif
 {
-  aoif(aoie paramaoie) {}
+  public int a;
+  public aoie a;
+  public int[] a;
+  public PointF[] a;
+  public int b;
+  public PointF[] b;
+  public int c;
+  public int d;
+  public int e = 80;
+  public int f = 8;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public boolean a(beio parambeio)
+  public aoif()
   {
-    String str = ThemeUtil.getCurrentThemeId();
-    if (!parambeio.a().equals(str)) {
-      QQToast.a(this.a.app.getApplication(), anzj.a(2131713715), 4000).a();
-    }
-    return false;
+    this.jdField_a_of_type_Int = -2;
+    this.jdField_b_of_type_Int = -2;
+    this.jdField_a_of_type_Aoie = new aoie();
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    this.jdField_b_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    this.jdField_a_of_type_ArrayOfInt = new int[1000];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -2;
+    this.jdField_b_of_type_Int = -2;
+    this.jdField_a_of_type_Aoie.b = 0.0F;
+    this.jdField_a_of_type_Aoie.c = 0.0F;
+    this.jdField_a_of_type_Aoie.jdField_a_of_type_Float = 0.0F;
+    this.c = 0;
+    this.d = 0;
+    this.f = 10;
+    this.g = 0;
+    this.h = 0;
+    this.i = 0;
+    this.j = 0;
+  }
+  
+  public String toString()
+  {
+    return "ARCircleResult{, state = " + this.jdField_a_of_type_Int + ", lastState = " + this.jdField_b_of_type_Int + ", pointCnt = " + this.c + ", lastPointCnt = " + this.d + ", genIdx = " + this.g + ", gesturePointCnt = " + this.h + ", stillPointCnt = " + this.i + ", goodPointCnt = " + this.j + ", circle(r,x,y,c) = (" + (int)this.jdField_a_of_type_Aoie.jdField_a_of_type_Float + "," + (int)this.jdField_a_of_type_Aoie.b + "," + (int)this.jdField_a_of_type_Aoie.c + "," + this.jdField_a_of_type_Aoie.jdField_a_of_type_Boolean + ")" + '}';
   }
 }
 

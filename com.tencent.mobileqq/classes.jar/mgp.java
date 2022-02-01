@@ -1,29 +1,54 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
 
-public class mgp
-  implements View.OnClickListener
+class mgp
+  implements Animator.AnimatorListener
 {
-  public mgp(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  mgp(mgn parammgn, int paramInt, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.h()) {}
+    int i = 4;
+    if (this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      i = this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+      if (this.jdField_a_of_type_Mgn.jdField_a_of_type_Boolean) {
+        break label173;
+      }
+      this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
+      QLog.w(this.jdField_a_of_type_Mgn.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationEnd, isShow[" + this.jdField_a_of_type_Mgn.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "], \nlastObjectAnimator[" + this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidAnimationObjectAnimator + "], \nanimation[" + paramAnimator + "]");
+      if (this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
+        this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      }
       return;
-      QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
-      mru.b(bhnv.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().D);
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq = true;
+      label173:
+      this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (this.jdField_a_of_type_Mgn.jdField_a_of_type_Mgq != null) {
+        this.jdField_a_of_type_Mgn.jdField_a_of_type_Mgq.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      }
     }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    int i = 4;
+    if (this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      i = this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+      this.jdField_a_of_type_Mgn.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    }
+    QLog.w(this.jdField_a_of_type_Mgn.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationStart, height[" + this.jdField_a_of_type_Int + "], isShow[" + this.jdField_a_of_type_Mgn.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

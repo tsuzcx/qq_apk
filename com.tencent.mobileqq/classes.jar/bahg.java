@@ -1,17 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap.CompressFormat;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.1;
+import java.nio.Buffer;
+import java.nio.IntBuffer;
 
-class bahg
-  implements View.OnClickListener
+public class bahg
 {
-  bahg(bahb parambahb, View paramView) {}
-  
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    azyk.a().c(bahb.k(this.jdField_a_of_type_Bahb));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramString + ".thumb.png";
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, bafx parambafx, bahi parambahi)
+  {
+    int[] arrayOfInt1 = new int[paramInt2 * paramInt3];
+    int[] arrayOfInt2 = new int[paramInt2 * paramInt3];
+    Object localObject1 = IntBuffer.wrap(arrayOfInt1);
+    ((IntBuffer)localObject1).position(0);
+    Object localObject2;
+    if (paramInt1 != 0)
+    {
+      localObject2 = new int[1];
+      GLES20.glGenFramebuffers(1, (int[])localObject2, 0);
+      GLES20.glBindFramebuffer(36160, localObject2[0]);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glDeleteFramebuffers(1, (int[])localObject2, 0);
+      localObject2[0] = 0;
+      localObject2 = parambafx.jdField_a_of_type_Bahh;
+      if (localObject2 == null) {
+        break label169;
+      }
+      parambafx = ((bahh)localObject2).jdField_a_of_type_JavaLangString;
+      localObject1 = ((bahh)localObject2).jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat;
+    }
+    for (paramInt1 = ((bahh)localObject2).jdField_a_of_type_Int;; paramInt1 = 100)
+    {
+      ThreadManager.executeOnFileThread(new ThumbnailUtil.1(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, parambafx, (Bitmap.CompressFormat)localObject1, paramInt1, parambahi));
+      return;
+      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
+      break;
+      label169:
+      parambafx = a(parambafx.jdField_a_of_type_JavaLangString);
+      localObject1 = Bitmap.CompressFormat.PNG;
+    }
   }
 }
 

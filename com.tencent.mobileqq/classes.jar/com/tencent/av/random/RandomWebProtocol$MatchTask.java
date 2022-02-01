@@ -6,26 +6,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ltf;
-import ltg;
-import ltl;
-import ltm;
-import lto;
-import ltp;
-import ltq;
+import lsn;
+import lso;
+import lst;
+import lsu;
+import lsw;
+import lsx;
+import lsy;
 
 class RandomWebProtocol$MatchTask
   extends Thread
 {
-  List<ltf> jdField_a_of_type_JavaUtilList = new ArrayList();
-  ltg jdField_a_of_type_Ltg;
-  ltl jdField_a_of_type_Ltl;
+  List<lsn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  lso jdField_a_of_type_Lso;
+  lst jdField_a_of_type_Lst;
   boolean jdField_a_of_type_Boolean = false;
   
-  RandomWebProtocol$MatchTask(RandomWebProtocol paramRandomWebProtocol, ltg paramltg)
+  RandomWebProtocol$MatchTask(RandomWebProtocol paramRandomWebProtocol, lso paramlso)
   {
     this.jdField_a_of_type_JavaUtilList.addAll(paramRandomWebProtocol.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Ltg = paramltg;
+    this.jdField_a_of_type_Lso = paramlso;
   }
   
   void a()
@@ -39,46 +39,46 @@ class RandomWebProtocol$MatchTask
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] quitMatch. result: " + paramInt);
     }
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ltl != null))
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Lst != null))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((ltf)localIterator.next()).a(paramInt, this.jdField_a_of_type_Ltl);
+        ((lsn)localIterator.next()).a(paramInt, this.jdField_a_of_type_Lst);
       }
     }
     a();
-    if (this.jdField_a_of_type_Ltg != null) {
-      RandomWebProtocol.a(this.this$0).remove(this.jdField_a_of_type_Ltg.d);
+    if (this.jdField_a_of_type_Lso != null) {
+      RandomWebProtocol.a(this.this$0).remove(this.jdField_a_of_type_Lso.d);
     }
   }
   
   public void run()
   {
-    this.jdField_a_of_type_Ltl = null;
+    this.jdField_a_of_type_Lst = null;
     if (QLog.isColorLevel()) {
-      QLog.d("RandomWebProtocol", 2, "[random room owner] realRequest.reqtype:" + this.jdField_a_of_type_Ltg.a);
+      QLog.d("RandomWebProtocol", 2, "[random room owner] realRequest.reqtype:" + this.jdField_a_of_type_Lso.a);
     }
-    if (this.jdField_a_of_type_Ltg != null)
+    if (this.jdField_a_of_type_Lso != null)
     {
-      if (1 != this.jdField_a_of_type_Ltg.a) {
+      if (1 != this.jdField_a_of_type_Lso.a) {
         break label106;
       }
-      this.jdField_a_of_type_Ltl = new ltm();
+      this.jdField_a_of_type_Lst = new lsu();
     }
-    while ((this.jdField_a_of_type_Ltg == null) || (this.jdField_a_of_type_Ltl == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Ltg.c)))
+    while ((this.jdField_a_of_type_Lso == null) || (this.jdField_a_of_type_Lst == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Lso.c)))
     {
       a(true, -2);
       return;
       label106:
-      if (2 == this.jdField_a_of_type_Ltg.a) {
-        this.jdField_a_of_type_Ltl = new lto(this.this$0);
-      } else if (3 == this.jdField_a_of_type_Ltg.a) {
-        this.jdField_a_of_type_Ltl = new ltp(this.this$0);
-      } else if ((4 == this.jdField_a_of_type_Ltg.a) || (5 == this.jdField_a_of_type_Ltg.a)) {
-        this.jdField_a_of_type_Ltl = new ltq(this.this$0);
+      if (2 == this.jdField_a_of_type_Lso.a) {
+        this.jdField_a_of_type_Lst = new lsw(this.this$0);
+      } else if (3 == this.jdField_a_of_type_Lso.a) {
+        this.jdField_a_of_type_Lst = new lsx(this.this$0);
+      } else if ((4 == this.jdField_a_of_type_Lso.a) || (5 == this.jdField_a_of_type_Lso.a)) {
+        this.jdField_a_of_type_Lst = new lsy(this.this$0);
       }
     }
-    String str1 = this.jdField_a_of_type_Ltg.a();
+    String str1 = this.jdField_a_of_type_Lso.a();
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] [random room owner][1v1] json post:" + str1);
     }
@@ -88,19 +88,19 @@ class RandomWebProtocol$MatchTask
       return;
     }
     long l = System.currentTimeMillis();
-    if (System.currentTimeMillis() - l < this.jdField_a_of_type_Ltl.c)
+    if (System.currentTimeMillis() - l < this.jdField_a_of_type_Lst.c)
     {
       if (this.jdField_a_of_type_Boolean)
       {
         a(false, -2);
         return;
       }
-      String str2 = RandomWebProtocol.a(this.jdField_a_of_type_Ltg.c, str1, null);
+      String str2 = RandomWebProtocol.a(this.jdField_a_of_type_Lso.c, str1, null);
       if (QLog.isColorLevel()) {
         QLog.d("RandomWebProtocol", 2, "[randomWeb][random room owner][1v1] json result:" + str2);
       }
-      this.jdField_a_of_type_Ltl.a(str2);
-      int i = this.jdField_a_of_type_Ltl.b;
+      this.jdField_a_of_type_Lst.a(str2);
+      int i = this.jdField_a_of_type_Lst.b;
       switch (i)
       {
       default: 
@@ -116,21 +116,21 @@ class RandomWebProtocol$MatchTask
         {
           try
           {
-            Thread.sleep(this.jdField_a_of_type_Ltl.d);
+            Thread.sleep(this.jdField_a_of_type_Lst.d);
           }
           catch (InterruptedException localInterruptedException)
           {
             localInterruptedException.printStackTrace();
           }
           break;
-          if (((this.jdField_a_of_type_Ltl instanceof ltm)) && (i == 1))
+          if (((this.jdField_a_of_type_Lst instanceof lsu)) && (i == 1))
           {
             a(true, 1);
             return;
           }
           a(true, 0);
           return;
-          if ((this.jdField_a_of_type_Ltl instanceof ltq)) {
+          if ((this.jdField_a_of_type_Lst instanceof lsy)) {
             i = 1;
           } else {
             i = 0;

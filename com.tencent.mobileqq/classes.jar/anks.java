@@ -1,23 +1,17 @@
-import java.io.File;
+import java.security.Key;
 
-class anks
-  implements anje
+public class anks
 {
-  anks(ankf paramankf, File paramFile, String paramString) {}
+  private Key a;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public anks(Key paramKey)
   {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + anzj.a(2131699423));
-        return;
-      }
-      this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + anzj.a(2131699399));
-      return;
-    }
-    this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + anzj.a(2131699420));
+    this.a = paramKey;
+  }
+  
+  public Key a()
+  {
+    return this.a;
   }
 }
 

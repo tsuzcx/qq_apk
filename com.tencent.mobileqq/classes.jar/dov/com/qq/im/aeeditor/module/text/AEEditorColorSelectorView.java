@@ -14,12 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bpam;
-import bphy;
-import bpjl;
-import bpjo;
-import bpjp;
-import bpkv;
+import bmbx;
+import bmku;
+import bmmh;
+import bmmk;
+import bmml;
+import bmnr;
 import com.microrapid.opencv.ImageMainColorData;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.tavsticker.utils.CollectionUtil;
@@ -30,7 +30,7 @@ import mqq.os.MqqHandler;
 
 public class AEEditorColorSelectorView
   extends FrameLayout
-  implements bpjp
+  implements bmml
 {
   public static final int a;
   public static final int b;
@@ -44,12 +44,12 @@ public class AEEditorColorSelectorView
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bpjl jdField_a_of_type_Bpjl;
-  private bpjp jdField_a_of_type_Bpjp;
+  private bmmh jdField_a_of_type_Bmmh;
+  private bmml jdField_a_of_type_Bmml;
   private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = true;
   private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bpjl jdField_b_of_type_Bpjl;
+  private bmmh jdField_b_of_type_Bmmh;
   private List<Float> jdField_b_of_type_JavaUtilList = new ArrayList();
   private List<Integer> jdField_c_of_type_JavaUtilList = new ArrayList();
   
@@ -67,7 +67,7 @@ public class AEEditorColorSelectorView
   public AEEditorColorSelectorView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560823, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560705, this, true);
     e();
     a(paramContext);
   }
@@ -79,14 +79,14 @@ public class AEEditorColorSelectorView
     int m;
     if (paramBoolean)
     {
-      j = 2131298973;
-      m = paramView.getResources().getDimensionPixelSize(2131298970);
+      j = 2131299038;
+      m = paramView.getResources().getDimensionPixelSize(2131299035);
       if (!paramBoolean) {
         break label85;
       }
     }
     label85:
-    for (int k = 0;; k = paramView.getResources().getDimensionPixelSize(2131298974))
+    for (int k = 0;; k = paramView.getResources().getDimensionPixelSize(2131299039))
     {
       k = m - k;
       localGradientDrawable.setColor(paramInt);
@@ -94,23 +94,23 @@ public class AEEditorColorSelectorView
       localGradientDrawable.setSize(k, k);
       localGradientDrawable.setShape(1);
       return localGradientDrawable;
-      j = 2131298974;
+      j = 2131299039;
       break;
     }
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131368759));
-    this.jdField_a_of_type_Bpjl = new bpjl("adapter_extract", this.jdField_a_of_type_JavaUtilList, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bpjl);
-    bpjo localbpjo = new bpjo(this, getContext(), 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localbpjo);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364736);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379640));
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364974));
-    this.jdField_b_of_type_Bpjl = new bpjl("adapter_fix", this.jdField_c_of_type_JavaUtilList, this);
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_b_of_type_Bpjl);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131368784));
+    this.jdField_a_of_type_Bmmh = new bmmh("adapter_extract", this.jdField_a_of_type_JavaUtilList, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bmmh);
+    bmmk localbmmk = new bmmk(this, getContext(), 0, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localbmmk);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364767);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379422));
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131365001));
+    this.jdField_b_of_type_Bmmh = new bmmh("adapter_fix", this.jdField_c_of_type_JavaUtilList, this);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_b_of_type_Bmmh);
     paramView = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
   }
@@ -148,7 +148,7 @@ public class AEEditorColorSelectorView
   
   public void a()
   {
-    bpam.a("AEEditorColorSelectorView", "[hideIntelligentRv]");
+    bmbx.a("AEEditorColorSelectorView", "[hideIntelligentRv]");
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -168,10 +168,10 @@ public class AEEditorColorSelectorView
           Integer localInteger = (Integer)localIterator.next();
           if ((localInteger != null) && (localInteger.intValue() == paramInteger.intValue()))
           {
-            this.jdField_b_of_type_Bpjl.a(-1);
-            this.jdField_b_of_type_Bpjl.notifyDataSetChanged();
-            this.jdField_a_of_type_Bpjl.a(j);
-            this.jdField_a_of_type_Bpjl.notifyDataSetChanged();
+            this.jdField_b_of_type_Bmmh.a(-1);
+            this.jdField_b_of_type_Bmmh.notifyDataSetChanged();
+            this.jdField_a_of_type_Bmmh.a(j);
+            this.jdField_a_of_type_Bmmh.notifyDataSetChanged();
             return;
           }
           j += 1;
@@ -184,38 +184,38 @@ public class AEEditorColorSelectorView
         if (((Integer)localIterator.next()).intValue() == paramInteger.intValue())
         {
           ThreadManager.getUIHandler().post(new AEEditorColorSelectorView.2(this, j));
-          this.jdField_b_of_type_Bpjl.a(j);
-          this.jdField_b_of_type_Bpjl.notifyDataSetChanged();
-          this.jdField_a_of_type_Bpjl.a(-1);
-          this.jdField_a_of_type_Bpjl.notifyDataSetChanged();
+          this.jdField_b_of_type_Bmmh.a(j);
+          this.jdField_b_of_type_Bmmh.notifyDataSetChanged();
+          this.jdField_a_of_type_Bmmh.a(-1);
+          this.jdField_a_of_type_Bmmh.notifyDataSetChanged();
           return;
         }
         j += 1;
       }
     }
-    this.jdField_a_of_type_Bpjl.a(-1);
-    this.jdField_a_of_type_Bpjl.notifyDataSetChanged();
-    this.jdField_b_of_type_Bpjl.a(-1);
-    this.jdField_b_of_type_Bpjl.notifyDataSetChanged();
+    this.jdField_a_of_type_Bmmh.a(-1);
+    this.jdField_a_of_type_Bmmh.notifyDataSetChanged();
+    this.jdField_b_of_type_Bmmh.a(-1);
+    this.jdField_b_of_type_Bmmh.notifyDataSetChanged();
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if ("adapter_extract".equals(paramString1)) {
-      this.jdField_b_of_type_Bpjl.a(-1);
+      this.jdField_b_of_type_Bmmh.a(-1);
     }
     for (;;)
     {
-      this.jdField_b_of_type_Bpjl.notifyDataSetChanged();
-      this.jdField_a_of_type_Bpjl.notifyDataSetChanged();
-      if (this.jdField_a_of_type_Bpjp != null) {
-        this.jdField_a_of_type_Bpjp.a(paramString1, paramInt1, paramInt2, paramString2);
+      this.jdField_b_of_type_Bmmh.notifyDataSetChanged();
+      this.jdField_a_of_type_Bmmh.notifyDataSetChanged();
+      if (this.jdField_a_of_type_Bmml != null) {
+        this.jdField_a_of_type_Bmml.a(paramString1, paramInt1, paramInt2, paramString2);
       }
       return;
       if ("adapter_fix".equals(paramString1))
       {
-        bphy.a(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView, paramInt2, true);
-        this.jdField_a_of_type_Bpjl.a(-1);
+        bmku.a(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView, paramInt2, true);
+        this.jdField_a_of_type_Bmmh.a(-1);
       }
     }
   }
@@ -242,14 +242,14 @@ public class AEEditorColorSelectorView
           if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0) {
             continue;
           }
-          this.jdField_a_of_type_Bpjl.notifyDataSetChanged();
+          this.jdField_a_of_type_Bmmh.notifyDataSetChanged();
           continue;
         }
         localImageMainColorData = (ImageMainColorData)paramList.get(j);
       }
       finally {}
       ImageMainColorData localImageMainColorData;
-      this.jdField_a_of_type_JavaUtilList.set(j, Integer.valueOf(bpkv.a(localImageMainColorData)));
+      this.jdField_a_of_type_JavaUtilList.set(j, Integer.valueOf(bmnr.a(localImageMainColorData)));
       this.jdField_b_of_type_JavaUtilList.set(j, Float.valueOf(localImageMainColorData.l));
       j += 1;
     }
@@ -274,10 +274,10 @@ public class AEEditorColorSelectorView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bpjl != null)
+    if (this.jdField_a_of_type_Bmmh != null)
     {
-      this.jdField_a_of_type_Bpjl.a(false);
-      this.jdField_a_of_type_Bpjl.notifyDataSetChanged();
+      this.jdField_a_of_type_Bmmh.a(false);
+      this.jdField_a_of_type_Bmmh.notifyDataSetChanged();
     }
   }
   
@@ -295,18 +295,18 @@ public class AEEditorColorSelectorView
     super.onFinishInflate();
   }
   
-  public void setColorSelectedListener(bpjp parambpjp)
+  public void setColorSelectedListener(bmml parambmml)
   {
-    this.jdField_a_of_type_Bpjp = parambpjp;
+    this.jdField_a_of_type_Bmml = parambmml;
   }
   
   public void setStickerId(String paramString)
   {
-    if (this.jdField_a_of_type_Bpjl != null) {
-      this.jdField_a_of_type_Bpjl.a(paramString);
+    if (this.jdField_a_of_type_Bmmh != null) {
+      this.jdField_a_of_type_Bmmh.a(paramString);
     }
-    if (this.jdField_b_of_type_Bpjl != null) {
-      this.jdField_b_of_type_Bpjl.a(paramString);
+    if (this.jdField_b_of_type_Bmmh != null) {
+      this.jdField_b_of_type_Bmmh.a(paramString);
     }
   }
 }

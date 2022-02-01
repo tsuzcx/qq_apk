@@ -1,47 +1,34 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.plugin.PluginInfo;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awja
-  implements aasd
+class awja
+  implements DialogInterface.OnClickListener
 {
-  public awja(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  awja(awiz paramawiz, boolean paramBoolean, String paramString1, awjh paramawjh, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 12;
-    if (paramBundle != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (paramBundle.getBoolean("isSuccess"))
-      {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
-        }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
+      this.jdField_a_of_type_Awiz.b();
+      if (!this.jdField_a_of_type_Awiz.a()) {
+        break label104;
       }
+      this.jdField_a_of_type_Awiz.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
+      this.jdField_a_of_type_Awjh.a(this.jdField_a_of_type_JavaLangString, false);
+      awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
     }
-    else {
-      return;
-    }
-    paramBundle = new JSONObject();
-    try
+    for (;;)
     {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
+      awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
       return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
+      this.jdField_a_of_type_Awiz.c();
+      break;
+      label104:
+      this.jdField_a_of_type_Awiz.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
+      awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
     }
   }
 }

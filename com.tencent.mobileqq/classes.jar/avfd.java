@@ -1,27 +1,43 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfd
-  extends apcq
+  implements View.OnClickListener
 {
-  public avfd(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public avfd(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt != 0)
+    int i = 2;
+    if (!NetworkUtil.isNetworkAvailable())
     {
-      QQToast.a(this.a.a, 1, anzj.a(2131706547), 1).a();
-      this.a.f();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693524, 0).a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
+    LocationRoom.Venue localVenue = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
     if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + localVenue);
     }
-    this.a.a(paramSosoLbsInfo);
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
+    for (;;)
+    {
+      bcef.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_picked_location", localVenue);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      break;
+      i = 1;
+    }
   }
 }
 

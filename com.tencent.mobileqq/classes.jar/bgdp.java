@@ -1,34 +1,10 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.SpannableString;
 
-public class bgdp
-  extends Handler
+class bgdp
 {
-  public bgdp(bgdn parambgdn, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    for (;;)
-    {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 2: 
-          return;
-        }
-      }
-      finally {}
-      paramMessage = paramMessage.getData();
-      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
-      this.a.a(0);
-    }
-  }
+  int jdField_a_of_type_Int;
+  SpannableString jdField_a_of_type_AndroidTextSpannableString;
+  int b;
 }
 
 

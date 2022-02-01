@@ -1,11 +1,44 @@
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+
 class ayhz
-  implements bljb
+  implements Animator.AnimatorListener
 {
-  ayhz(ayhj paramayhj) {}
+  ayhz(ayhx paramayhx, View paramView1, View paramView2) {}
   
-  public void onDismiss()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.b = false;
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-ayhx.a(this.jdField_a_of_type_Ayhx));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Ayhx.f)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-ayhx.a(this.jdField_a_of_type_Ayhx));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Ayhx.f)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (!this.jdField_a_of_type_Ayhx.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 

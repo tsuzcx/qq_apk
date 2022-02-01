@@ -1,24 +1,23 @@
-import VACDReport.ReportRsp;
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class alhu
-  implements BusinessObserver
+public class alhu
+  implements View.OnLayoutChangeListener
 {
   alhu(alhs paramalhs) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (paramBundle.containsKey("rsp")) {}
-    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
-    {
-      alhs.a(this.a, paramBundle);
-      return;
+    View localView = paramView.findViewById(2131365689);
+    TextView localTextView = (TextView)paramView.findViewById(2131365688);
+    paramInt1 = ((ImageView)paramView.findViewById(2131378038)).getRight() - localView.getWidth();
+    if (paramInt1 > 0) {
+      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
     }
   }
 }

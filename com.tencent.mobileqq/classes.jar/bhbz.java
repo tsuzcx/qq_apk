@@ -1,23 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
-
-class bhbz
-  implements DialogInterface.OnDismissListener
+public abstract interface bhbz
 {
-  bhbz(bhbx parambhbx) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
-    {
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
-      }
-    }
-  }
+  public abstract void a(bhby parambhby);
 }
 
 

@@ -1,26 +1,109 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class anrf
-  extends biht
+  extends anrh
 {
-  public anrf(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDone(bihu parambihu)
+  public anrf(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super.onDone(parambihu);
-    if (3 == parambihu.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private void d()
+  {
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("title");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = bkjx.a(1);
     }
+    ShoppingFragment.a(this.jdField_a_of_type_AndroidContentContext, str1);
+  }
+  
+  private void e()
+  {
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("rtmp");
+    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("source");
+    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("retain");
+    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("closejump");
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambihu.a());
+      try
+      {
+        str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("from");
+        if (str6 != null) {
+          continue;
+        }
+        i = 99;
       }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        String str6;
+        localNumberFormatException.printStackTrace();
+        QLog.e("IliveJumpAction", 1, "print exception: " + localNumberFormatException.getMessage());
+        int i = 99;
+        continue;
+        bool = false;
+        continue;
+        continue;
+      }
+      QLog.d("IliveJumpAction", 1, "scheme parsed from:" + i);
+      if (!TextUtils.isEmpty(str1)) {
+        continue;
+      }
+      str1 = "scheme";
+      try
+      {
+        if (TextUtils.isEmpty(str5)) {
+          continue;
+        }
+        int j = Integer.parseInt(str5);
+        if (j != 1) {
+          continue;
+        }
+        bool = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        boolean bool = false;
+        continue;
+        bool = false;
+        continue;
+      }
+      bkke.a(new bkjl(this.jdField_a_of_type_AndroidContentContext, str1, str2, str3, bool, null, str4, i));
       return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      i = Integer.parseInt(str6);
     }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    try
+    {
+      if ("watch".equals(this.c))
+      {
+        e();
+        return true;
+      }
+      if ("mqqapi://vaslive/myshopping".equals(this.c))
+      {
+        d();
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("IliveJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IliveJumpAction");
+      bool = false;
+    }
+    return bool;
   }
 }
 

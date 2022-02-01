@@ -1,82 +1,78 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.DrawableContainer.DrawableContainerState;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.view.View;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class wyq
-  extends RecyclerView.ItemDecoration
+  extends wrx
 {
-  static final Set<Integer> a;
-  protected int a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e;
+  public wyq(wyc paramwyc) {}
   
-  static
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+    Object localObject = this.a.a();
+    if ((localObject == null) || (!this.a.jdField_a_of_type_Wod.equals(localObject))) {}
+    do
+    {
+      return;
+      if (paramInt1 == this.a.hashCode())
+      {
+        xvv.b(this.a.b, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        if (localObject != null) {
+          ((VideoViewVideoHolder)localObject).c(false);
+        }
+        if (paramInt2 == -1) {
+          wld.a().a(paramIntent.getExtras());
+        }
+      }
+      if ((paramInt1 == 10002) && (paramInt2 == -1))
+      {
+        vns.b(this.a.b + " onActivityResult");
+        QQToast.a(this.a.b(), this.a.b().getString(2131718406), 1).a();
+      }
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (wyc.a(this.a) != null)) {
+        wyc.a(this.a).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+      }
+    } while (this.a.jdField_a_of_type_Wgz == null);
+    this.a.jdField_a_of_type_Wgz.a(paramInt1, paramInt2, paramIntent);
   }
   
-  public wyq(Context paramContext)
+  public void d()
   {
-    this.jdField_a_of_type_Int = agej.a(5.0F, paramContext.getResources());
-    this.b = agej.a(16.0F, paramContext.getResources());
-    this.c = agej.a(8.5F, paramContext.getResources());
-    this.d = agej.a(3.0F, paramContext.getResources());
-    this.e = agej.a(3.0F, paramContext.getResources());
+    super.d();
+    if ((LiuHaiUtils.a) && (!ScreenUtil.checkDeviceHasNavigationBar(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (wyc.a(this.a) - UIUtils.dip2px(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
+    {
+      Object localObject = wyc.a(this.a).getBackground();
+      if ((localObject instanceof StateListDrawable))
+      {
+        localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
+        if (localObject != null) {
+          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167342));
+        }
+      }
+    }
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void g()
   {
-    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
-    paramView = paramRecyclerView.getAdapter();
-    if ((k < 0) || (k >= paramView.getItemCount())) {
-      return;
+    super.g();
+    if (wyc.a(this.a) != null) {
+      wyc.a(this.a).a();
     }
-    int m = paramView.getItemViewType(k);
-    if (paramView.getItemCount() > k + 1)
-    {
-      int n = paramView.getItemViewType(k + 1);
-      int i = 0;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
-        i = 1;
-      }
-      int j = i;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
-        j = i + 1;
-      }
-      if (j == 1)
-      {
-        paramRect.right = this.d;
-        return;
-      }
-      if (j == 2)
-      {
-        paramRect.right = this.e;
-        return;
-      }
-    }
-    if (m == 2)
-    {
-      paramRect.right = this.b;
-      return;
-    }
-    if (k == paramState.getItemCount() - 1)
-    {
-      paramRect.right = this.c;
-      return;
-    }
-    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

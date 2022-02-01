@@ -1,49 +1,49 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class akng
+  extends AbsRecentStatus
 {
-  public static List<aknh> a;
+  private static int a = 15;
   
-  public static void a(JSONObject paramJSONObject)
+  public int[] declareStatus()
   {
-    int i = 2;
-    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
+    return new int[] { 8 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    String str;
+    do
     {
-      paramJSONObject = paramJSONObject.optJSONArray("entryList");
-      ArrayList localArrayList = new ArrayList();
-      if (paramJSONObject.length() > 2) {}
-      for (;;)
+      do
       {
-        int j = 0;
-        while (j < i)
-        {
-          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
-          aknh localaknh = new aknh();
-          localaknh.jdField_a_of_type_Int = localJSONObject.optInt("id");
-          Object localObject = localJSONObject.optJSONObject("image");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("src");
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localaknh.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
-            }
-          }
-          localaknh.c = localJSONObject.optString("name");
-          localaknh.d = localJSONObject.optString("desc");
-          localaknh.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
-          localaknh.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
-          localaknh.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
-          localArrayList.add(localaknh);
-          j += 1;
+        return false;
+        paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+        str = paramRecentBaseData.getRecentUserUin();
+        paramRecentBaseData.mStatus = 0;
+        if (paramRecentBaseData.getRecentUserType() != 1) {
+          break;
         }
-        i = paramJSONObject.length();
-      }
-      a = localArrayList;
-    }
+      } while (!avhg.b(paramIMCoreAppRuntime, str));
+      paramRecentBaseData.mStatus = 8;
+      return false;
+    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!avhg.a(paramIMCoreAppRuntime, str)));
+    paramRecentBaseData.mStatus = 8;
+    return false;
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

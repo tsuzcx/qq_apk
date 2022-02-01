@@ -5,8 +5,8 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import odl;
-import rpe;
+import oey;
+import rwg;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class VideoFeedsDiversionHandler$handleDiversionPriority$5
@@ -20,11 +20,11 @@ public final class VideoFeedsDiversionHandler$handleDiversionPriority$5
   
   public final void invoke()
   {
-    odl localodl1 = this.$videoInfo.a;
-    odl localodl2 = this.$videoInfo.b;
-    rpe.a(rpe.a, this.$videoInfo);
-    this.$videoInfo.a = localodl1;
-    this.$videoInfo.b = localodl2;
+    oey localoey1 = this.$videoInfo.a;
+    oey localoey2 = this.$videoInfo.b;
+    rwg.a(rwg.a, this.$videoInfo);
+    this.$videoInfo.a = localoey1;
+    this.$videoInfo.b = localoey2;
   }
 }
 

@@ -1,18 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aenk
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public aenk(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public aenk(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (FavEmosmManageActivity.a(this.a) != null) {
-      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
-    }
+    TroopMemberListActivity.b(this.a);
+    new bcek(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

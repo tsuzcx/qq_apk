@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.editvideo;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import oix;
+import okj;
 
 class EditVideoFragment$5
   implements Runnable
@@ -11,7 +11,7 @@ class EditVideoFragment$5
   
   public void run()
   {
-    Intent localIntent = oix.b(this.this$0.getActivity(), 0, 70);
+    Intent localIntent = okj.b(this.this$0.getActivity(), 0, 70);
     if (localIntent != null) {
       localIntent.putExtra("edit_video_jump_and_refresh", true);
     }

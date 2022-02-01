@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.automator;
 
+import amnw;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import antg;
-import anud;
-import anui;
-import aolm;
-import aolo;
-import bcuc;
+import anex;
+import anez;
+import bbnm;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.startup.step.StartService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 import mqq.app.Constants.Key;
 
 public class Automator
-  extends anud
+  extends BusinessHandler
   implements Runnable
 {
   private static ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
@@ -34,7 +34,7 @@ public class Automator
   public long a;
   public SharedPreferences a;
   private LinearGroup jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-  private HashMap<Integer, bcuc> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+  private HashMap<Integer, bbnm> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
   protected LinkedList<AsyncStep> a;
   public ConcurrentHashMap<String, Long> a;
   public boolean a;
@@ -111,7 +111,7 @@ public class Automator
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aolo.a(localLinearGroup, false);
+      return anez.a(localLinearGroup, false);
     }
     if (this.d) {
       return 1;
@@ -119,12 +119,12 @@ public class Automator
     return -1;
   }
   
-  public bcuc a(int paramInt)
+  public bbnm a(int paramInt)
   {
-    return (bcuc)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    return (bbnm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
   }
   
-  public HashMap<Integer, bcuc> a()
+  public HashMap<Integer, bbnm> a()
   {
     return this.jdField_a_of_type_JavaUtilHashMap;
   }
@@ -134,9 +134,9 @@ public class Automator
     notifyUI(0, true, null);
   }
   
-  public void a(int paramInt, bcuc parambcuc)
+  public void a(int paramInt, bbnm parambbnm)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambcuc);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambbnm);
   }
   
   @TargetApi(9)
@@ -156,7 +156,7 @@ public class Automator
         }
         if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
         {
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new aolm(null));
+          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new anex(null));
           if (Build.VERSION.SDK_INT > 8) {
             jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
           }
@@ -196,7 +196,7 @@ public class Automator
     label195:
     for (int i = 7;; i = 8)
     {
-      a(aolo.a(this, i + "}"));
+      a(anez.a(this, i + "}"));
       return;
     }
   }
@@ -244,7 +244,7 @@ public class Automator
     }
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aolo.a(localLinearGroup);
+      return anez.a(localLinearGroup);
     }
     return true;
   }
@@ -273,7 +273,7 @@ public class Automator
         if (!bool1) {
           continue;
         }
-        a(aolo.a(this, "{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}"));
+        a(anez.a(this, "{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}"));
         return;
       }
       finally {}
@@ -290,7 +290,7 @@ public class Automator
         this.c += 1;
         if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
         {
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new aolm(null));
+          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new anex(null));
           if (Build.VERSION.SDK_INT > 8) {
             jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
           }
@@ -306,7 +306,7 @@ public class Automator
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      if (aolo.a(localLinearGroup, true) != 0) {}
+      if (anez.a(localLinearGroup, true) != 0) {}
     }
     while (!this.d)
     {
@@ -318,14 +318,14 @@ public class Automator
   
   public void c()
   {
-    a(aolo.a(this, "{15,18,21,58,60,24}"));
+    a(anez.a(this, "{15,18,21,58,60,24}"));
   }
   
   public boolean c()
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aolo.b(localLinearGroup);
+      return anez.b(localLinearGroup);
     }
     return true;
   }
@@ -339,14 +339,14 @@ public class Automator
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aolo.c(localLinearGroup);
+      return anez.c(localLinearGroup);
     }
     return true;
   }
   
-  public Class<? extends anui> observerClass()
+  public Class<? extends BusinessObserver> observerClass()
   {
-    return antg.class;
+    return amnw.class;
   }
   
   public void onDestroy()
@@ -395,7 +395,7 @@ public class Automator
           this.d = true;
         }
         if (i != 0) {
-          aolo.a(this, "2").run();
+          anez.a(this, "2").run();
         }
         ??? = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
         if (??? != null) {

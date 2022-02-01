@@ -1,35 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 
-class bbyn
-  implements View.OnClickListener
+public class bbyn
+  extends bdbp
 {
-  bbyn(bbyl parambbyl) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public bbyn(bbyj parambbyj) {}
+  
+  public boolean a(int paramInt)
   {
-    bbyl localbbyl = this.a;
-    boolean bool;
-    if (!bbyl.a(this.a))
+    boolean bool2 = false;
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    switch (paramInt)
     {
-      bool = true;
-      bbyl.a(localbbyl, bool);
-      if (bbyl.a(this.a)) {
-        break label70;
-      }
-      bbyl.b(this.a);
+    case 3: 
+    default: 
+      paramInt = 3;
     }
     for (;;)
     {
-      bbzo.a(this.a.a, bbyl.a(this.a));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool = false;
-      break;
-      label70:
-      bbyl.c(this.a);
+      if (paramInt == 0)
+      {
+        if (!AppNetConnInfo.isNetSupport())
+        {
+          this.jdField_a_of_type_Bbyj.notifyUI(3, false, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Bbyj.jdField_a_of_type_Boolean), Integer.valueOf(6) });
+          bool1 = this.jdField_a_of_type_Bbyj.a(false, "211", bbyp.b(), true, bbyp.a(bbyp.c()));
+          if (!bool1) {
+            bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.a(this.jdField_a_of_type_Bbyj), -2147483648, bbyj.b(this.jdField_a_of_type_Bbyj), -2147483648, null, -2147483648);
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("postSwitch net_err revert theme bStartSwtich=%b", new Object[] { Boolean.valueOf(bool1) }));
+          return true;
+          paramInt = 0;
+          continue;
+          paramInt = 3;
+          continue;
+          paramInt = 1;
+          continue;
+        }
+        bbyj localbbyj = (bbyj)this.jdField_a_of_type_Bbyj.app.getBusinessHandler(154);
+        if (bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.a(this.jdField_a_of_type_Bbyj)) == 1) {}
+        for (boolean bool1 = true;; bool1 = false)
+        {
+          paramInt = bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.b(this.jdField_a_of_type_Bbyj));
+          if (bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.c(this.jdField_a_of_type_Bbyj)) == 1) {
+            bool2 = true;
+          }
+          try
+          {
+            long l = localbbyj.a(bool1, paramInt, this.jdField_a_of_type_Bbyj.jdField_a_of_type_Boolean, bool2);
+            bbyj.a(this.jdField_a_of_type_Bbyj).set(l);
+            return true;
+          }
+          catch (Exception localException)
+          {
+            return true;
+          }
+        }
+      }
     }
+    bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.a(this.jdField_a_of_type_Bbyj), -2147483648, bbyj.b(this.jdField_a_of_type_Bbyj), -2147483648, bbyj.c(this.jdField_a_of_type_Bbyj), -2147483648);
+    this.jdField_a_of_type_Bbyj.notifyUI(3, false, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.jdField_a_of_type_Bbyj.jdField_a_of_type_Boolean), Integer.valueOf(paramInt) });
+    return true;
   }
 }
 

@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akht
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akht(akha paramakha) {}
+  akht(akho paramakho, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)akho.a(this.jdField_a_of_type_Akho).getAppRuntime();
+    ((UpgradeTIMManager)localQQAppInterface.getManager(256)).a(akho.a(this.jdField_a_of_type_Akho), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.g);
+    bcef.b(localQQAppInterface, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

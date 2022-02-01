@@ -1,23 +1,17 @@
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import com.tencent.smtt.sdk.WebView;
 
-class aben
+public class aben
+  implements abfi
 {
-  aben(abem paramabem, String paramString) {}
+  public aben(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Abem.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    apch.a(new abeo(this, "webview"));
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
+    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
+    if (paramInt == 304) {
+      abfg.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
     }
   }
 }

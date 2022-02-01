@@ -1,24 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class asms
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  public asms(EmoticonGuideBubbleView paramEmoticonGuideBubbleView) {}
+  public asms(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonGuideBubbleView", 2, "removeFastImage fadeoutanimation ended");
-    }
-    this.a.removeAllViews();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

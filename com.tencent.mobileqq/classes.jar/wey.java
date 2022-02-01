@@ -1,6 +1,33 @@
-public abstract interface wey
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class wey
+  extends vql
 {
-  public abstract void a(float paramFloat);
+  public List<xnh> a = new ArrayList();
+  public boolean b;
+  
+  public wey(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
+  {
+    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
+    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
+    for (;;)
+    {
+      this.b = bool;
+      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
+      while (paramRspStoryFeedIdList.hasNext())
+      {
+        xnh localxnh = new xnh((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
+        this.a.add(localxnh);
+      }
+      bool = false;
+    }
+  }
 }
 
 

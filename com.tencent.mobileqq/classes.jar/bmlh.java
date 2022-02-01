@@ -1,37 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xd68.oidb_cmd0xd68.RspBody;
+import android.graphics.Color;
+import android.widget.FrameLayout;
+import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
 
 class bmlh
-  extends Handler
+  implements bmds
 {
-  bmlh(bmlg parambmlg, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bmlh(bmlf parambmlf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(float paramFloat)
   {
-    boolean bool = true;
-    int i = paramMessage.what;
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QfavFileForwardManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break;
-      }
-      return;
-      bool = false;
-    }
-    paramMessage = (oidb_cmd0xd68.RspBody)paramMessage.obj;
-    switch (i)
-    {
-    }
+    bmlf.a(this.a).setAlpha(1.0F - paramFloat);
+    bmlf.a(this.a).setBackgroundColor(Color.argb((int)(255.0F * paramFloat * 0.7F), 0, 0, 0));
   }
 }
 

@@ -1,6 +1,14 @@
-class artn
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+
+public class artn
+  extends asbj
 {
-  private static final artl a = new artl(null);
+  public artn(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  
+  protected void onDelClouldFileFaild(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  {
+    super.onDelClouldFileFaild(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+  }
 }
 
 

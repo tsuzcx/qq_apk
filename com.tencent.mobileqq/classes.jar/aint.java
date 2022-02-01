@@ -1,19 +1,13 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 class aint
-  implements obz
+  implements airh
 {
-  aint(ainh paramainh) {}
+  aint(ainq paramainq) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    this.a.ap = false;
-    this.a.bD();
-    this.a.bp();
-    aosd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131697572), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, true);
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

@@ -1,332 +1,512 @@
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils.1;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils.2;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils.3;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.5;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.SoftReference;
 
 public class ocd
+  extends WebViewFragment
 {
-  public static int a(QQAppInterface paramQQAppInterface, String paramString, AccountDetail paramAccountDetail)
-  {
-    if ((paramQQAppInterface == null) && (paramAccountDetail == null)) {}
-    Object localObject;
-    do
-    {
-      return 1;
-      localObject = paramAccountDetail;
-      if (paramAccountDetail == null)
-      {
-        paramQQAppInterface = (aody)paramQQAppInterface.getManager(56);
-        localObject = paramAccountDetail;
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = paramQQAppInterface.a(paramString);
-          localObject = paramQQAppInterface;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("PublicAccountReportUtils", 2, "getReportAccountType--> input accountdetail null");
-            localObject = paramQQAppInterface;
-          }
-        }
-      }
-    } while (localObject == null);
-    int i;
-    if (((AccountDetail)localObject).accountFlag < 0)
-    {
-      i = -9;
-      switch (i)
-      {
-      case -8: 
-      case -7: 
-      default: 
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      return i;
-      i = tzq.a(((AccountDetail)localObject).accountFlag);
-      break;
-      i = 3;
-      continue;
-      i = 4;
-      if (tzq.a(((AccountDetail)localObject).accountFlag2) == -8L)
-      {
-        i = 8;
-        continue;
-        i = 5;
-        continue;
-        i = 6;
-        continue;
-        i = 7;
-        continue;
-        i = 9;
-      }
-    }
-  }
+  private int jdField_a_of_type_Int = -1;
+  protected Bundle a;
+  protected String a;
+  private SoftReference<oci> jdField_a_of_type_JavaLangRefSoftReference;
+  protected boolean a;
+  protected boolean b = true;
+  protected boolean c;
+  protected boolean d;
+  protected boolean e;
   
   public static String a(String paramString)
   {
-    if (paramString == null) {
-      paramString = "";
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramString.startsWith("qqnews://")) {
+      localObject1 = "即将离开\"QQ\"\r\n打开" + "\"腾讯新闻\"";
     }
-    for (;;)
+    do
     {
-      try
+      do
       {
-        String str = URLEncoder.encode(paramString, "UTF-8");
-        return str;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-        return paramString;
-      }
-    }
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return localObject1;
+                        if ((paramString.startsWith("tenvideo://")) || (paramString.startsWith("tenvideo2://")) || (paramString.startsWith("tenvideo3://")) || (paramString.startsWith("tencent1004498506://"))) {
+                          return "即将离开\"QQ\"\r\n打开" + "\"腾讯视频\"";
+                        }
+                        if (paramString.startsWith("mttbrowser://")) {
+                          return "即将离开\"QQ\"\r\n打开" + "\"QQ浏览器\"";
+                        }
+                        if (paramString.startsWith("qnreading://")) {
+                          return "即将离开\"QQ\"\r\n打开" + "\"天天快报\"";
+                        }
+                        if ((paramString.startsWith("weishiandroidscheme://")) || (paramString.startsWith("weishi://"))) {
+                          return "即将离开\"QQ\"\r\n打开" + "\"微视\"";
+                        }
+                        if (paramString.startsWith("tnow://")) {
+                          return "即将离开\"QQ\"\r\n打开" + "\"NOW直播\"";
+                        }
+                        localObject1 = localObject2;
+                      } while (paramString.startsWith("sms://"));
+                      localObject1 = localObject2;
+                    } while (paramString.startsWith("tel://"));
+                    localObject1 = localObject2;
+                  } while (paramString.startsWith("tel://"));
+                  localObject1 = localObject2;
+                } while (paramString.startsWith("mailto://"));
+                localObject1 = localObject2;
+              } while (paramString.startsWith("file://"));
+              localObject1 = localObject2;
+            } while (paramString.startsWith("ftp://"));
+            localObject1 = localObject2;
+          } while (paramString.startsWith("mqqapi://"));
+          localObject1 = localObject2;
+        } while (paramString.startsWith("http://"));
+        localObject1 = localObject2;
+      } while (paramString.startsWith("https://"));
+      localObject1 = localObject2;
+    } while (paramString.indexOf("://") == -1);
+    return "即将离开\"QQ\"\r\n打开" + amtj.a(2131707894);
   }
   
-  public static void a(ArticleInfo paramArticleInfo)
+  private void a()
   {
-    Object localObject1 = "";
+    boolean bool2 = false;
+    this.jdField_a_of_type_AndroidOsBundle = this.intent.getExtras();
+    this.uin = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("uin_name");
+    this.uinType = this.jdField_a_of_type_AndroidOsBundle.getInt("uin_type");
+    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("openid");
+    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("token");
+    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("url");
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("WebLog_WebViewFragment", 2, "url not found, use \"\" default");
+      }
+      localObject1 = "";
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + npn.b((String)localObject1, new String[0]));
+    }
+    localObject2 = localObject1;
+    if (((String)localObject1).startsWith("http://browserApp.p.qq.com/"))
+    {
+      localObject2 = localObject1;
+      if (!((String)localObject1).contains("?")) {
+        localObject2 = (String)localObject1 + "?";
+      }
+      localObject2 = (String)localObject2 + "&openid=" + str1 + "&token=" + str2;
+      this.intent.putExtra("url", (String)localObject2);
+    }
+    localObject1 = Uri.parse((String)localObject2);
+    if ((localObject1 != null) && (((Uri)localObject1).isHierarchical()))
+    {
+      localObject1 = ((Uri)localObject1).getQueryParameter("_wv");
+      if (localObject1 == null) {}
+    }
     try
     {
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("folder_status", ozs.d);
-      ((JSONObject)localObject2).put("feeds_source", ozs.d(paramArticleInfo));
-      ((JSONObject)localObject2).put("rowkey", paramArticleInfo.innerUniqueID);
-      ((JSONObject)localObject2).put("feeds_type", "" + ozs.a(paramArticleInfo));
-      ((JSONObject)localObject2).put("kandian_mode", "" + ozs.e());
-      ((JSONObject)localObject2).put("tab_source", "" + ozs.d());
-      ((JSONObject)localObject2).put("topic_id", "" + paramArticleInfo.businessId);
-      ((JSONObject)localObject2).put("algorithm_id", "" + paramArticleInfo.mAlgorithmID);
-      ((JSONObject)localObject2).put("mark_type", "" + ozs.a(paramArticleInfo));
-      ((JSONObject)localObject2).put("channel_id", paramArticleInfo.mChannelID);
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
+      this.mUIStyle.mRulesFromUrl = Long.parseLong(((String)localObject1).trim());
+      this.mUIStyleHandler.mUIStyle.mRulesFromUrl = this.mUIStyle.mRulesFromUrl;
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("call_from");
+      this.intent.removeExtra("call_from");
+      this.publicUin = this.jdField_a_of_type_AndroidOsBundle.getString("puin");
+      this.msgid = this.jdField_a_of_type_AndroidOsBundle.getString("msg_id");
+      if (this.msgid == null) {
+        this.msgid = "";
+      }
+      if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("hide_operation_bar"))
+      {
+        bool1 = true;
+        this.b = bool1;
+        if ((!((String)localObject2).startsWith("http://s.p.qq.com/pub/msg")) && (!((String)localObject2).startsWith("http://s.p.qq.com/pub/show"))) {
+          break label672;
+        }
+        bool1 = true;
+        this.jdField_a_of_type_Boolean = bool1;
+        if (!this.jdField_a_of_type_AndroidOsBundle.containsKey("hide_operation_bar"))
+        {
+          if (this.jdField_a_of_type_Boolean) {
+            break label677;
+          }
+          bool1 = true;
+          this.b = bool1;
+          localObject1 = this.intent;
+          if (this.b) {
+            break label682;
+          }
+          bool1 = true;
+          ((Intent)localObject1).putExtra("hide_operation_bar", bool1);
+        }
+        localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("webStyle");
+        if ((localObject1 != null) && (((String)localObject1).equals("noBottomBar"))) {
+          this.b = false;
+        }
+        localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("disableshare");
+        if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("hideRightButton", false))
+        {
+          bool1 = bool2;
+          if (localObject1 != null)
+          {
+            bool1 = bool2;
+            if (!((String)localObject1).equals("true")) {}
+          }
+        }
+        else
+        {
+          bool1 = true;
+        }
+        this.c = bool1;
+        localObject1 = (bgww)this.mComponentsProvider.a(4);
+        if ((!this.c) && ((this.mUIStyle.mRulesFromUrl & 0x2378) == 9080L) && (!((bgww)localObject1).a())) {
+          this.c = true;
+        }
+        localObject1 = localObject2;
+        if (ugf.f((String)localObject2)) {
+          localObject1 = ugf.a((String)localObject2);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WebLog_WebViewFragment", 1, "initParams url = " + (String)localObject1);
+        }
+        this.intent.putExtra("url", (String)localObject1);
+      }
     }
-    catch (JSONException localJSONException)
+    catch (NumberFormatException localNumberFormatException)
     {
       for (;;)
       {
-        Object localObject2;
-        String str2;
-        localJSONException.printStackTrace();
-        continue;
-        String str1 = paramArticleInfo.mArticleID + "";
-      }
-    }
-    if ((sel.g(paramArticleInfo)) || (sel.i(paramArticleInfo)) || (sel.j(paramArticleInfo)) || (sel.k(paramArticleInfo)))
-    {
-      localObject2 = "0";
-      str2 = "0X8008201";
-      if (ubg.a(paramArticleInfo.mChannelID)) {
-        str2 = "0X8009362";
-      }
-      a(null, ozs.d(paramArticleInfo), str2, str2, 0, 0, String.valueOf(paramArticleInfo.mFeedId), (String)localObject2, "" + paramArticleInfo.mStrategyId, (String)localObject1, false);
-      return;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    int i = a(paramQQAppInterface, String.valueOf(paramString), null);
-    if ((i != 2) && (tzq.a(paramQQAppInterface, paramString) != -7)) {
-      a(null, paramString, "0X800827B", "0X800827B", 0, 0, "" + paramInt, "" + i, "", "", false);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    b(paramString3, paramString7);
-    paramString7 = b(paramString7);
-    paramString4 = a(paramString4);
-    paramString5 = a(paramString5);
-    paramString6 = a(paramString6);
-    paramString7 = a(paramString7);
-    bdll.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString1, paramString2.toUpperCase(), paramString3.toUpperCase(), paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
-  {
-    b(paramString3, paramString7);
-    paramString7 = b(paramString7);
-    if (paramBoolean)
-    {
-      a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
-      return;
-    }
-    bdll.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString1, paramString2.toUpperCase(), paramString3.toUpperCase(), paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    b(paramString5, paramString9);
-    paramString9 = b(paramString9);
-    paramString6 = a(paramString6);
-    paramString7 = a(paramString7);
-    paramString8 = a(paramString8);
-    paramString9 = a(paramString9);
-    bdll.b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-    bdll.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString3, paramString4.toUpperCase(), paramString5.toUpperCase(), paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean)
-  {
-    b(paramString5, paramString9);
-    paramString9 = b(paramString9);
-    if (paramBoolean)
-    {
-      a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-      return;
-    }
-    bdll.b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-    bdll.b(paramQQAppInterface, "dc01160", "Pb_account_lifeservice", paramString3, paramString4.toUpperCase(), paramString5.toUpperCase(), paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    a(localQQAppInterface, "", paramString1, paramString1, 0, 0, "", "", "", paramString2, false);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    paramString1 = "kandian_" + paramString1;
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("department", "publicaccount");
-    localHashMap.put("fromuin", str);
-    localHashMap.put("touin", paramString2);
-    localHashMap.put("d1", paramString3);
-    localHashMap.put("d2", paramString4);
-    localHashMap.put("d3", paramString5);
-    localHashMap.put("d4", paramString6);
-    bdmc.a(BaseApplication.getContext()).a(str, paramString1, true, 0L, 0L, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("reportPAinfoToLighthouse", 2, new Object[] { "reportPAinfoToLighthouse-->", "kandianT" + paramString1 + ", fromuin:" + str + ", touin:" + paramString2 + ", d1:" + paramString3 + ", d2:" + paramString4 + ", d3:" + paramString5 + ", d4:" + paramString6 });
-    }
-  }
-  
-  public static void a(List<MessageRecord> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      long l = System.currentTimeMillis() / 1000L;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if (localMessageRecord.istroop == 1008) {
-          if ((!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("public_account_send_flag"))) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"))) && (!TextUtils.equals(localMessageRecord.frienduin, localMessageRecord.selfuin))) {
-            ThreadManager.post(new PublicAccountReportUtils.3(localMessageRecord.frienduin, localMessageRecord.selfuin, localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"), localMessageRecord.time, l, localMessageRecord.getExtInfoFromExtStr("public_account_send_flag")), 5, null, false);
-          } else if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountReportUtils", 2, "reportPubAccMsg exception, public_account_send_flag null || public_account_msg_id null || ");
-          }
+        boolean bool1;
+        if (QLog.isDevelopLevel())
+        {
+          QLog.d("QQBrowser", 4, "sorry, i can not get rules from QQBrowser url, maybe have more than one '_wv' in the url");
+          continue;
+          bool1 = false;
+          continue;
+          label672:
+          bool1 = false;
+          continue;
+          label677:
+          bool1 = false;
+          continue;
+          label682:
+          bool1 = false;
         }
       }
     }
   }
   
-  private static void a(JSONObject paramJSONObject)
+  private void a(Bundle paramBundle)
   {
-    try
+    if ((this.mApp != null) && (!NetworkUtil.isNetSupport(this.mApp.getApplication()))) {
+      QQToast.a(this.mApp.getApplication(), 2131694062, 0).b(super.getTitleBarHeight());
+    }
+    if (!this.mUIStyleHandler.mUIStyle.isFullScreen)
     {
-      if (bihq.a() == 1) {}
-      for (String str = "1";; str = "0")
+      paramBundle = this.jdField_a_of_type_AndroidOsBundle.getString("assignBackText");
+      if (!TextUtils.isEmpty(paramBundle)) {
+        this.mSwiftTitleUI.leftView.setText(paramBundle);
+      }
+      if (this.c) {
+        break label206;
+      }
+      this.mSwiftTitleUI.rightViewText.setText("");
+      this.mSwiftTitleUI.rightViewImg.setImageResource(2130840333);
+      this.mSwiftTitleUI.rightViewImg.setContentDescription(super.getText(2131692442));
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Int == 1001)
       {
-        paramJSONObject.put("is_kind_card", str);
-        return;
+        this.mSwiftTitleUI.leftView.setVisibility(8);
+        this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+        this.mSwiftTitleUI.rightViewText.setText(amtj.a(2131707850));
+        this.mSwiftTitleUI.rightViewText.setOnClickListener(this);
+        this.mSwiftTitleUI.rightViewText.setVisibility(0);
       }
       return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("PublicAccountReportUtils", 1, "addKingCard error! msg=" + paramJSONObject);
+      label206:
+      this.mSwiftTitleUI.rightViewText.setVisibility(8);
+      this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+      int i = (int)bfvh.a(BaseApplicationImpl.getApplication(), 8.0F);
+      if (this.mSwiftTitleUI.centerContainer != null) {
+        ((RelativeLayout.LayoutParams)this.mSwiftTitleUI.centerContainer.getLayoutParams()).setMargins(i, 0, i, 0);
+      }
     }
   }
   
-  public static String b(String paramString)
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
+    Object localObject1 = getShareUrl();
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.mUrl;
     }
+    if (TextUtils.isEmpty(this.publicUin)) {
+      return;
+    }
+    localObject1 = "";
+    Object localObject3 = Uri.parse((String)localObject2);
     try
     {
-      Object localObject = new JSONObject(paramString);
-      ((JSONObject)localObject).put("version_standard", "8.4.5");
-      ((JSONObject)localObject).put("os_standard", "1");
-      ((JSONObject)localObject).put("user_mode", ozs.n());
-      if (uaf.a.a()) {}
-      for (int i = 1;; i = 0)
-      {
-        ((JSONObject)localObject).put("is_black_white_mode", i);
-        b((JSONObject)localObject);
-        a((JSONObject)localObject);
-        localObject = ((JSONObject)localObject).toString();
-        return localObject;
-      }
-      return paramString;
+      localObject3 = ((Uri)localObject3).getQueryParameter("article_id");
+      localObject1 = localObject3;
     }
     catch (Exception localException)
     {
-      QLog.e("PublicAccountReportUtils", 1, "addExtraInfo error! msg=" + localException);
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      bcef.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
     }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    localObject3 = localObject1;
+    if (localObject1 == null) {
+      localObject3 = "";
+    }
+    switch (paramInt)
     {
-      c(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramString6, paramString7, paramBoolean);
+    default: 
+    case 7: 
+      odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.publicUin, (String)localObject2, this.msgid, (String)localObject3, false);
       return;
     }
-    paramQQAppInterface = new Intent("READINJOY_VIDEO_DATA_REPORT_WITH_FANS_INFO");
-    paramQQAppInterface.putExtra("VIDEO_REPORT_TOUIN", paramString1);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_SUBACTION", paramString2);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_ACTION_NAME", paramString3);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_FROM_TYPE", paramInt1);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_RESULT", paramInt2);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_R2", paramString4);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_R3", paramString5);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_R4", paramString6);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_R5", paramString7);
-    paramQQAppInterface.putExtra("VIDEO_REPORT_SHOULD_ENCODE", paramBoolean);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
   }
   
-  public static void b(String paramString1, String paramString2)
+  void a(Context paramContext, Uri paramUri, String paramString)
   {
-    if ("0X8007625".equals(paramString1)) {
-      ThreadManager.executeOnSubThread(new PublicAccountReportUtils.2(paramString2));
+    Intent localIntent = new Intent("android.intent.action.VIEW", paramUri);
+    localIntent.addFlags(268435456);
+    try
+    {
+      ActivityInfo localActivityInfo = localIntent.resolveActivityInfo(getActivity().getPackageManager(), 0);
+      paramUri = "";
+      if (localActivityInfo != null) {
+        paramUri = localActivityInfo.packageName;
+      }
+      anbg.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
+      paramContext.startActivity(localIntent);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("WebLog_WebViewFragment", 1, "afterWebViewEngineHandleOverrideUrl error!", paramContext);
     }
   }
   
-  private static void b(JSONObject paramJSONObject) {}
-  
-  public static void c(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
+  public void a(Context paramContext, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4)
   {
-    ThreadManager.post(new PublicAccountReportUtils.1(paramString7, paramString1, paramQQAppInterface, paramString2, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramString6, paramBoolean), 5, null, true);
+    try
+    {
+      paramContext = bfur.a(paramContext, 230, null, paramString3, amtj.a(2131707892), amtj.a(2131707871), new ocg(this, paramContext, paramUri, paramString1, paramString4), new och(this, paramString4));
+      paramContext.show();
+      paramContext.setCancelable(false);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public void a(DialogInterface paramDialogInterface, boolean paramBoolean, String paramString)
+  {
+    paramDialogInterface.dismiss();
+    if (!paramBoolean) {
+      if (this.mApp != null) {
+        bcef.b(null, "dc01160", "Pb_account_lifeservice", this.mApp.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
+      }
+    }
+    while (this.mApp == null) {
+      return;
+    }
+    bcef.b(null, "dc01160", "Pb_account_lifeservice", this.mApp.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
+  }
+  
+  void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = this.publicUin;
+    }
+    if (str != null)
+    {
+      paramString = new Intent(super.getActivity(), AccountDetailActivity.class);
+      paramString.putExtra("uin", str);
+      paramString.putExtra("source", 111);
+      super.startActivity(paramString);
+    }
+  }
+  
+  public void activityFinish()
+  {
+    super.activityFinish();
+    if (this.jdField_a_of_type_Int == 1001) {
+      ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.5(this));
+    }
+  }
+  
+  public boolean afterWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString)
+  {
+    Uri localUri = Uri.parse(paramString);
+    String str = localUri.getScheme();
+    if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.mLastTouchTime < 1000L) || (this.authConfig.a(paramWebView.getUrl(), str).booleanValue())))
+    {
+      long l = System.currentTimeMillis();
+      boolean bool = ajuv.a().a(paramString, this);
+      QLog.i("WebLog_WebViewFragment", 1, "TryPayIntercept result:" + bool + " cost:" + (System.currentTimeMillis() - l) + " ms.");
+      if (!bool) {}
+    }
+    else
+    {
+      return true;
+    }
+    if ("2909288299".equalsIgnoreCase(this.publicUin))
+    {
+      paramString = a(paramString);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramWebView = paramWebView.getUrl();
+        a(getActivity(), paramWebView, localUri, "QQ", paramString, this.publicUin);
+        return true;
+      }
+    }
+    a(getActivity(), localUri, paramWebView.getUrl());
+    return true;
+  }
+  
+  public bgvt createComponentsProvider()
+  {
+    return new bgvt(this, 127, new ocf(this));
+  }
+  
+  public int doCreateLoopStep_Final(Bundle paramBundle)
+  {
+    int i = super.doCreateLoopStep_Final(paramBundle);
+    if ((this.intent.getIntExtra("reqType", -1) == 5) && (!this.mUIStyleHandler.mUIStyle.isFullScreen))
+    {
+      oce localoce = new oce(this);
+      this.mSwiftTitleUI.leftView.setOnClickListener(localoce);
+      this.mSwiftTitleUI.rightViewText.setText(2131691746);
+      this.mSwiftTitleUI.rightViewText.setOnClickListener(localoce);
+    }
+    a(paramBundle);
+    return i;
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
+  {
+    a();
+    return super.doOnCreate(paramBundle);
+  }
+  
+  public String getUAMark()
+  {
+    return "PA";
+  }
+  
+  public void initFinish()
+  {
+    if ((this.mUrl != null) && (this.mApp != null) && (this.authConfig != null) && (!TextUtils.isEmpty(this.publicUin)) && (!TextUtils.isEmpty(this.authConfig.a(this.mUrl)))) {
+      this.mUrl = Uri.parse(this.mUrl).buildUpon().appendQueryParameter("puin", this.publicUin).appendQueryParameter("uin", this.mApp.getAccount()).toString();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_JavaLangRefSoftReference != null)
+    {
+      oci localoci = (oci)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+      if (localoci != null)
+      {
+        localoci.a();
+        this.jdField_a_of_type_JavaLangRefSoftReference.clear();
+      }
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (paramInt == -8) {
+      yyi.a(1, 2131694770);
+    }
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")) && (!paramString.startsWith("file://"))) {
+      return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + npn.b(paramString, new String[0]));
+    }
+    Object localObject = paramWebView.getUrl();
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).startsWith("http://s.p.qq.com/pub/jump"))) {}
+    for (int i = 1; (this.b) || (!this.jdField_a_of_type_Boolean) || (i != 0); i = 0)
+    {
+      this.e = false;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).startsWith("https://www.urlshare.cn/")))
+      {
+        localObject = getActivity();
+        if ((localObject instanceof PublicAccountBrowser))
+        {
+          PublicAccountBrowser.b((PublicAccountBrowser)localObject, paramString);
+          PublicAccountBrowser.a((PublicAccountBrowser)localObject, paramString);
+        }
+      }
+      return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    }
+    if (!this.d)
+    {
+      paramWebView = new Intent(super.getActivity(), PublicAccountBrowser.class);
+      if (this.mApp != null) {
+        paramWebView.putExtra("uin", this.mApp.getCurrentAccountUin());
+      }
+      paramWebView.putExtra("url", paramString);
+      super.startActivity(paramWebView);
+      return true;
+    }
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

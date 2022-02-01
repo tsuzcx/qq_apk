@@ -1,25 +1,90 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class abfj
-  implements biqk
+public class abfj
 {
-  abfj(abff paramabff, long paramLong, String paramString) {}
+  private static AppInterface a;
   
-  public void onCheckOfflineFinish(int paramInt)
+  private static void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Abff.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_Abff.c + ", url: " + noe.b(this.jdField_a_of_type_JavaLangString, new String[0]));
-    }
-    this.jdField_a_of_type_Abff.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_Abff.mRuntime.a();
-    if (localCustomWebView != null)
+    String[] arrayOfString;
+    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
     {
-      localCustomWebView.loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
+      return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+  }
+  
+  public static void a(String paramString, long paramLong, short paramShort)
+  {
+    if (paramShort == 0) {
+      a(paramString, paramLong);
+    }
+    while (paramShort != 1) {
       return;
     }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
+    b(paramString, paramLong);
+  }
+  
+  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
+  {
+    if ((a == null) || (paramArrayOfString == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
+      }
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        String str = a.getCurrentAccountUin();
+        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  private static void b(String paramString, long paramLong)
+  {
+    String[] arrayOfString;
+    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+    {
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
+      return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterUploadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
+    }
   }
 }
 

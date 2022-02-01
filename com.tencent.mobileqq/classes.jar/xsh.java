@@ -1,41 +1,80 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-class xsh
-  implements xtk
+public class xsh
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  xsh(xsg paramxsg) {}
+  public int a;
+  public SparseArray<View> a;
+  public View a;
+  public Object a;
+  public String a;
+  public HashMap<String, Object> a;
+  public xqa a;
+  public int b;
+  public SparseArray<String> b;
+  public int c = -1;
   
-  public boolean a(xtg paramxtg, int paramInt, Object paramObject)
+  public xsh(View paramView)
   {
-    if (this.a.isCanceled()) {
-      return false;
-    }
-    yuk.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramxtg)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramView.setTag(this);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
     }
-    for (;;)
-    {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramxtg, paramInt, paramObject);
-      return false;
-      yuk.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      yuk.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      yuk.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
+    return localView1;
+  }
+  
+  public Object a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
+  }
+  
+  public void a(xqa paramxqa)
+  {
+    this.jdField_a_of_type_Xqa = paramxqa;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xqa != null) {
+      this.jdField_a_of_type_Xqa.a(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xqa != null) {
+      this.jdField_a_of_type_Xqa.b(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+    }
+    return true;
   }
 }
 

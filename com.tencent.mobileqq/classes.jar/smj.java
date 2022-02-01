@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public final class smj
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
+public abstract interface smj
 {
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
-  }
-  
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
-  }
+  public abstract boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

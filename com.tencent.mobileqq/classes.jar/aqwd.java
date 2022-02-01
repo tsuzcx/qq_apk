@@ -1,15 +1,15 @@
-public class aqwd
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.doutu.DoutuData;
+
+class aqwd
 {
-  public String a = "";
-  public String b = "";
-  
-  public aqwd() {}
-  
-  public aqwd(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  int jdField_a_of_type_Int;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
 }
 
 

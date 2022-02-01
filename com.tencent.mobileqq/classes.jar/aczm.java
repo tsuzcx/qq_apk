@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import java.util.LinkedHashSet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aczm
+class aczm
+  implements aszj
 {
-  public int a;
-  public long a;
-  public MessageForFoldMsg a;
-  public LinkedHashSet<String> a;
-  public boolean a;
-  public long b;
-  public MessageForFoldMsg b;
-  public boolean b;
+  aczm(aczk paramaczk, FileManagerEntity paramFileManagerEntity) {}
   
-  public aczm()
+  public void onNo() {}
+  
+  public void onYes()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-    this.jdField_b_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Aczk.a.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    }
+    amqd localamqd;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localamqd = (amqd)this.jdField_a_of_type_Aczk.a.a.getBusinessHandler(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localamqd.a(localArrayList));
+    aszk.a(2131692366);
+    return;
+    this.jdField_a_of_type_Aczk.a.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 

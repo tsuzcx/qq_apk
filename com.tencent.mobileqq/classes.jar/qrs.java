@@ -1,71 +1,164 @@
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.os.BatteryManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.provider.Settings.System;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qrs
+  extends qpk
 {
-  public static double a()
+  private static final String a;
+  
+  static
   {
-    double d = 1.0D;
-    if (Build.VERSION.SDK_INT >= 21) {
-      d = ((BatteryManager)BaseApplicationImpl.getApplication().getSystemService("batterymanager")).getIntProperty(4) / 100.0D;
-    }
-    Intent localIntent;
-    do
+    jdField_a_of_type_JavaLangString = qrs.class.getSimpleName();
+  }
+  
+  public qrs(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  {
+    super(paramContext, paramFaceDecoder, paramslt);
+  }
+  
+  private void a(LinearLayout paramLinearLayout, pvc parampvc)
+  {
+    if (parampvc.e() == 56)
     {
-      return d;
-      localIntent = new ContextWrapper(BaseApplicationImpl.getApplication().getApplicationContext()).registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-    } while (localIntent.getIntExtra("level", -1) * 1.0D / localIntent.getIntExtra("scale", -1) == 0.0D);
-    return localIntent.getIntExtra("scale", -1);
-  }
-  
-  public static double a(Context paramContext)
-  {
-    return Settings.System.getInt(paramContext.getContentResolver(), "screen_brightness", 255) * 1.0F / 255.0F;
-  }
-  
-  public static int a()
-  {
-    return bjjh.a(null);
-  }
-  
-  public static String a()
-  {
-    return Build.MODEL;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    return paramContext.widthPixels + "_" + paramContext.heightPixels;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = ((AudioManager)paramContext.getSystemService("audio")).isWiredHeadsetOn();
-    if (BluetoothAdapter.getDefaultAdapter().getProfileConnectionState(1) == 2) {}
-    for (int i = 1; (bool) || (i != 0); i = 0) {
-      return true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setDividerWidth(AIOUtils.dp2px(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setPadding(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 6.0F), 0, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 15.0F));
     }
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setClipToPadding(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setClipChildren(false);
+      paramLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setDividerWidth(AIOUtils.dp2px(1.5F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setPadding(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 8.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 12.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+    }
   }
   
-  public static double b(Context paramContext)
+  public static boolean a(int paramInt)
   {
-    paramContext = (AudioManager)paramContext.getSystemService("audio");
-    int i = paramContext.getStreamVolume(3);
-    int j = paramContext.getStreamMaxVolume(3);
-    return i * 1.0D / j;
+    return (paramInt == 9) || (paramInt == 10) || (paramInt == 11);
+  }
+  
+  private void b(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof ReadInJoyNewFeedsActivity)) {}
+    for (;;)
+    {
+      return;
+      if (bkwm.i()) {
+        try
+        {
+          ReadinjoyTabFrame localReadinjoyTabFrame = (ReadinjoyTabFrame)FrameHelperActivity.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext).a(ReadinjoyTabFrame.class);
+          if (localReadinjoyTabFrame != null)
+          {
+            localReadinjoyTabFrame.a(paramView);
+            return;
+          }
+        }
+        catch (Exception paramView)
+        {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "readinjoy tab add dispatch touch event view fail ! e : " + paramView);
+          paramView.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public qpk a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pvc)) && (((pvc)this.jdField_a_of_type_JavaLangObject).e() == 56))
+    {
+      if (((pvc)this.jdField_a_of_type_JavaLangObject).b() == 53) {
+        return b(this.jdField_a_of_type_Slt, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).u().n();
+      }
+      return b(this.jdField_a_of_type_Slt, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).u().n().l().m();
+    }
+    return b(this.jdField_a_of_type_Slt, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).u().n().l();
+  }
+  
+  public qpk d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric);
+    }
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pvc)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView != null))
+    {
+      localObject = ((pvc)this.jdField_a_of_type_JavaLangObject).a();
+      if ((((ArticleInfo)localObject).mPolymericInfo == null) || (!a(((ArticleInfo)localObject).mPolymericInfo.a))) {
+        break label193;
+      }
+      a(localLinearLayout, (pvc)this.jdField_a_of_type_JavaLangObject);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace);
+      }
+      a(localLinearLayout);
+      b(a());
+      return this;
+      label193:
+      localObject = new LinearLayout.LayoutParams(-1, -2);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 12.0F);
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setDividerWidth(AIOUtils.dp2px(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView, (ViewGroup.LayoutParams)localObject);
+    }
+  }
+  
+  public qpk e()
+  {
+    return this;
+  }
+  
+  public qpk o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
+  }
+  
+  public qpk p()
+  {
+    super.p();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.a(this.jdField_a_of_type_Qps);
+    }
+    return this;
   }
 }
 

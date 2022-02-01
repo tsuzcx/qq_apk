@@ -1,16 +1,15 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class bnqw
-  implements QzoneZipCacheHelperCallBack
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bnqw(bnqv parambnqv) {}
+  bnqw(bnqm parambnqm) {}
   
-  public void onResult(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bnqv.a(this.a, paramBoolean);
+    this.a.invalidateSelf();
   }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

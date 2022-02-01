@@ -1,26 +1,34 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
 class bkim
-  implements bliz
+  implements ServiceConnection
 {
-  bkim(bkil parambkil, Intent paramIntent, blir paramblir) {}
+  bkim(bkik parambkik) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
+    this.a.jdField_a_of_type_Lnp = lnq.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_Lnp != null) && (this.a.jdField_a_of_type_Bkil != null)) {
+      this.a.jdField_a_of_type_Bkil.a(this.a);
+    }
+    while (!QLog.isColorLevel()) {
       return;
-      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
-        bkik.a(this.jdField_a_of_type_Bkil.a, paramView);
-      }
     }
+    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    }
+    this.a.jdField_a_of_type_Lnp = null;
   }
 }
 

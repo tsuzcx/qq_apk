@@ -23,14 +23,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import bdep;
-import bnlc;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qzone.util.SystemUtil;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -167,8 +167,8 @@ public class DisplayUtil
     int j;
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      Rect localRect = bnlc.a(paramActivity.getWindow().getDecorView());
-      localRect.top = bnlc.a(paramActivity, paramActivity);
+      Rect localRect = SystemUtil.getDisplayCutoutSafeInsets(paramActivity.getWindow().getDecorView());
+      localRect.top = SystemUtil.getNotchHeight(paramActivity, paramActivity);
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       if (Build.VERSION.SDK_INT >= 17)
       {
@@ -338,7 +338,7 @@ public class DisplayUtil
       k = i;
       if (m != 0)
       {
-        j = bdep.c(BaseApplication.getContext());
+        j = ScreenUtil.getRealHeight(BaseApplication.getContext());
         k = 0;
       }
       i = j;

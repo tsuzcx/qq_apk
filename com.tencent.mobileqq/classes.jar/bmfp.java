@@ -1,12 +1,16 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
 public class bmfp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public String a;
-  public String b;
+  public bmfp(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public bmfp(String paramString1, String paramString2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    AEEditorAILoadingView.a(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

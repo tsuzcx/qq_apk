@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.data;
 
-import bfpr;
-import bfpu;
+import bdzb;
+import bdze;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class TroopAioKeywordTipManager$5
   implements Runnable
 {
-  public TroopAioKeywordTipManager$5(bfpr parambfpr, bfpu parambfpu, MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
+  public TroopAioKeywordTipManager$5(bdzb parambdzb, bdze parambdze, MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfpu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipInfo);
+    this.jdField_a_of_type_Bdze.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipInfo);
   }
 }
 

@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnom;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneUiJsPlugin$2
+class QzoneUiJsPlugin$2
   implements Runnable
 {
-  public QzoneUiJsPlugin$2(bnom parambnom, String paramString) {}
+  QzoneUiJsPlugin$2(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
   public void run()
   {
-    bngf.a().a().h(this.a);
+    RemoteHandleManager.getInstance().getSender().uploadVideoForH5(this.val$jsonString);
   }
 }
 

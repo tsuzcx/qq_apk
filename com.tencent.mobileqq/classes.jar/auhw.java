@@ -1,71 +1,25 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class auhw
+public class auhw
+  implements View.OnClickListener
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
+  public auhw(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public abstract Intent a();
-  
-  public SessionInfo a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public ChatMessage a()
-  {
-    return null;
-  }
-  
-  public void a(SessionInfo paramSessionInfo) {}
-  
-  public void a(ChatMessage paramChatMessage) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  boolean c()
-  {
-    return false;
-  }
-  
-  boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return this.b;
-  }
-  
-  public boolean f()
-  {
-    return this.c;
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.a(3, paramView);
+      QLog.d("HotVideoRelativeLayout", 2, "click mute view");
+    }
   }
 }
 

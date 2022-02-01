@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import bboi;
-import bboj;
-import beuw;
+import baid;
+import baie;
+import com.tencent.mobileqq.transfile.LightVideoUploadProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class VideoSend$2
   implements Runnable
 {
-  public VideoSend$2(bboj parambboj, bboi parambboi) {}
+  public VideoSend$2(baie parambaie, baid parambaid) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class VideoSend$2
       this.this$0.b.add(this.a);
       return;
     }
-    this.this$0.a.e(this.a);
+    this.this$0.a.addToSendQuene(this.a);
   }
 }
 

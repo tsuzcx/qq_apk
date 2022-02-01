@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhuf;
+import bgau;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
@@ -66,7 +66,7 @@ public class MiniAppUseUserAppServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.UseUserApp");
-      paramPacket.putSendData(bhuf.a((byte[])localObject1));
+      paramPacket.putSendData(bgau.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       if (QLog.isColorLevel()) {
         QLog.d("MiniAppSetUserAppTopServlet", 2, "onSend. intent: " + paramIntent.toString());

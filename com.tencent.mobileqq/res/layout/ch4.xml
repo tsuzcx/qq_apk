@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="14.0sp" android:textColor="#ff03081a" android:id="@id/mhq" android:paddingLeft="12.0dip" android:paddingTop="4.0dip" android:paddingRight="12.0dip" android:paddingBottom="4.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" />
-</FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/js9" android:background="@drawable/b6n" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip">
+        <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/jse" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="3.0">
+            <ImageView android:id="@id/toast_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:scaleType="fitXY" />
+            <TextView android:textSize="18.0sp" android:ellipsize="end" android:gravity="center" android:id="@id/jsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/xev" android:maxLines="1" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:gravity="center" android:id="@id/miw" android:layout_width="20.0dip" android:layout_height="fill_parent" android:text="@string/xew" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

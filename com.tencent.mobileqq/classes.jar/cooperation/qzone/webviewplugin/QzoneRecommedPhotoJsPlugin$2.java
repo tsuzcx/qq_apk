@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnog;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneRecommedPhotoJsPlugin$2
+class QzoneRecommedPhotoJsPlugin$2
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$2(bnog parambnog) {}
+  QzoneRecommedPhotoJsPlugin$2(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
   
   public void run()
   {
-    bngf.a().a().o();
+    RemoteHandleManager.getInstance().getSender().getRecommedPhoto();
   }
 }
 

@@ -1,33 +1,78 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pzn
-  implements ViewBase.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  sel jdField_a_of_type_Sel;
-  
-  public pzn(ArticleInfo paramArticleInfo, Context paramContext, sel paramsel)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sel = paramsel;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 4);
-    }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
     {
-      oxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Sel);
-      pzu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009441", "0X8009444");
-      return;
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 4);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + amtj.a(2131712082));
+      localJSONObject.put("id_gallery_cnt", localObject1);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
+      localJSONObject.put("id_gallery_img", localObject1);
+      localJSONObject.put("id_gallery_bg", new JSONObject());
+    }
+    Object localObject2;
+    Object localObject3;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    {
+      localObject2 = pek.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
+        return localJSONObject;
+      }
+      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
+      if (localObject1 == null)
+      {
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
+        if (localObject2 != null) {
+          break label280;
+        }
+      }
+      label280:
+      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
+      {
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
+        localJSONObject.put("id_multi_img_1", localObject3);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        qai.a(paramBaseArticleInfo, localJSONObject, true);
+        qai.n(paramBaseArticleInfo, localJSONObject);
+        qai.k(paramBaseArticleInfo, localJSONObject);
+        qai.a(localJSONObject);
+        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
+        qai.a(localJSONObject, paramBaseArticleInfo);
+        return localJSONObject;
+        localObject1 = ((JSONObject)localObject1).optString("picture");
+        break;
+      }
+    }
+    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+    {
+      localObject1 = paramBaseArticleInfo.mSinglePicture;
+      label313:
+      localObject2 = ((URL)localObject1).getFile();
+      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+        break label363;
+      }
+    }
+    label363:
+    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
+    {
+      localObject3 = ((URL)localObject1).getFile();
+      localObject1 = localObject2;
+      localObject2 = localObject3;
+      break;
+      localObject1 = paramBaseArticleInfo.mPictures[0];
+      break label313;
     }
   }
 }

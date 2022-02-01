@@ -1,17 +1,61 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
 
-class vst
-  implements aaav<FeedCloudRead.StGetBusiInfoRsp>
+public class vst
 {
-  vst(vss paramvss, QCircleGetTabListRequest paramQCircleGetTabListRequest, aadl paramaadl) {}
+  private static LruCache<String, CharSequence> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static vst jdField_a_of_type_Vst;
+  public String a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public vst()
   {
-    QLog.d("QCircleFolderPreLoaderTask", 1, "QCircleFolderPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if (this.jdField_a_of_type_Aadl != null) {
-      this.jdField_a_of_type_Aadl.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetBusiInfoRsp });
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static vst a()
+  {
+    if (jdField_a_of_type_Vst == null)
+    {
+      jdField_a_of_type_Vst = new vst();
+      jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(150);
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    return jdField_a_of_type_Vst;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    }
+  }
+  
+  public CharSequence a(String paramString)
+  {
+    return (CharSequence)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+  }
+  
+  public void a(CommentEntry paramCommentEntry)
+  {
+    if (paramCommentEntry == null) {
+      return;
+    }
+    paramCommentEntry = paramCommentEntry.feedId + paramCommentEntry.replyTime;
+    if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
+    {
+      jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
+      return;
+    }
+    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry)).intValue();
+    jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(i + 1));
+  }
+  
+  public void a(String paramString, CharSequence paramCharSequence)
+  {
+    if (a(paramString) == null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramCharSequence);
     }
   }
 }

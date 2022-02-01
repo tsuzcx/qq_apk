@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.api;
 
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import androidx.annotation.NonNull;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
@@ -51,6 +52,8 @@ public abstract interface ITPPlayer
   
   public abstract ITPPlayerProxy getPlayerProxy();
   
+  public abstract int getPlayerType();
+  
   public abstract TPProgramInfo[] getProgramInfo();
   
   public abstract long getPropertyLong(int paramInt);
@@ -87,6 +90,8 @@ public abstract interface ITPPlayer
   
   public abstract void setAudioGainRatio(float paramFloat);
   
+  public abstract void setAudioNormalizeVolumeParams(String paramString);
+  
   public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   public abstract void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor);
@@ -105,6 +110,8 @@ public abstract interface ITPPlayer
   
   public abstract void setOnAudioFrameOutputListener(ITPPlayerListener.IOnAudioFrameOutputListener paramIOnAudioFrameOutputListener);
   
+  public abstract void setOnAudioProcessFrameOutputListener(ITPPlayerListener.IOnAudioProcessFrameOutputListener paramIOnAudioProcessFrameOutputListener);
+  
   public abstract void setOnCompletionListener(ITPPlayerListener.IOnCompletionListener paramIOnCompletionListener);
   
   public abstract void setOnErrorListener(ITPPlayerListener.IOnErrorListener paramIOnErrorListener);
@@ -117,11 +124,15 @@ public abstract interface ITPPlayer
   
   public abstract void setOnSeekCompleteListener(ITPPlayerListener.IOnSeekCompleteListener paramIOnSeekCompleteListener);
   
+  public abstract void setOnStopAsyncCompleteListener(ITPPlayerListener.IOnStopAsyncCompleteListener paramIOnStopAsyncCompleteListener);
+  
   public abstract void setOnSubtitleDataListener(ITPPlayerListener.IOnSubtitleDataListener paramIOnSubtitleDataListener);
   
   public abstract void setOnSubtitleFrameOutListener(ITPPlayerListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener);
   
   public abstract void setOnVideoFrameOutListener(ITPPlayerListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener);
+  
+  public abstract void setOnVideoProcessFrameOutputListener(ITPPlayerListener.IOnVideoProcessFrameOutputListener paramIOnVideoProcessFrameOutputListener);
   
   public abstract void setOnVideoSizeChangedListener(ITPPlayerListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener);
   
@@ -133,11 +144,15 @@ public abstract interface ITPPlayer
   
   public abstract void setSurface(Surface paramSurface);
   
+  public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
+  
   public abstract void setVideoInfo(TPVideoInfo paramTPVideoInfo);
   
   public abstract void start();
   
   public abstract void stop();
+  
+  public abstract void stopAsync();
   
   public abstract void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo);
   

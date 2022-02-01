@@ -9,15 +9,15 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ozs;
-import pnr;
-import pon;
-import qiy;
+import pay;
+import psz;
+import ptv;
+import qpb;
 
 public class ArticleInfoModule$8
   implements Runnable
 {
-  public ArticleInfoModule$8(pon parampon, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
+  public ArticleInfoModule$8(ptv paramptv, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class ArticleInfoModule$8
       if (!this.jdField_a_of_type_Boolean) {
         break label705;
       }
-      localObject = (ConcurrentHashMap)pon.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject = (ConcurrentHashMap)ptv.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
       if (localObject != null) {
         break label817;
       }
@@ -50,7 +50,7 @@ public class ArticleInfoModule$8
         if (localIterator.hasNext())
         {
           ArticleInfo localArticleInfo = (ArticleInfo)localIterator.next();
-          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ozs.d(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName + " commentShareUrl : " + localArticleInfo.commentShareUrl);
+          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + pay.d(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName + " commentShareUrl : " + localArticleInfo.commentShareUrl);
           SocializeFeedsInfo localSocializeFeedsInfo;
           if (localArticleInfo.mSocialFeedInfo != null)
           {
@@ -63,7 +63,7 @@ public class ArticleInfoModule$8
           }
           for (;;)
           {
-            if ((ozs.o(localArticleInfo)) && (!((ConcurrentHashMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
+            if ((pay.o(localArticleInfo)) && (!((ConcurrentHashMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
               ((ConcurrentHashMap)localObject).put(Long.valueOf(localArticleInfo.mRecommendSeq), Boolean.valueOf(false));
             }
             i += 1;
@@ -77,7 +77,7 @@ public class ArticleInfoModule$8
           }
         }
         if (((ConcurrentHashMap)localObject).size() > 0) {
-          pon.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+          ptv.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
         }
       }
       localObject = new StringBuilder().append("handleRefreshChannel success=").append(this.jdField_a_of_type_Boolean).append(" channelId=").append(this.jdField_a_of_type_Int).append(" noMoreData=").append(this.jdField_b_of_type_Boolean).append(" beginRecommendSeq=").append(this.jdField_a_of_type_Long).append(" endRecommendSeq=").append(this.jdField_b_of_type_Long).append(" isInMsgTab : ");
@@ -90,17 +90,17 @@ public class ArticleInfoModule$8
         }
       }
       QLog.i("ArticleInfoModule", 1, bool2 + " isRefresh : " + bool1 + ", " + localStringBuilder.toString());
-      pnr.a(this.jdField_a_of_type_JavaUtilList);
+      psz.a(this.jdField_a_of_type_JavaUtilList);
       label705:
-      qiy.a().a(this.jdField_a_of_type_JavaUtilList);
+      qpb.a().a(this.jdField_a_of_type_JavaUtilList);
       this.this$0.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
       if (bool1)
       {
-        pon.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
-        pon.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+        ptv.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+        ptv.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
         return;
       }
-      pon.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+      ptv.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       return;
     }
   }

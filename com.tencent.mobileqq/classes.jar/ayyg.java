@@ -1,21 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.11.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayyg
-  implements ayzo
+class ayyg
+  implements DialogInterface.OnClickListener
 {
-  public ayyg(OCRResultActivity paramOCRResultActivity) {}
+  ayyg(ayyb paramayyb, String paramString, int paramInt) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(OCRResultActivity.a(this.a)))) {
-      return;
+    QLog.e("QVipProfileCard.AbsVasProfileHeaderComponent", 1, "set friend profile card click and aid=" + this.jdField_a_of_type_JavaLangString + " pay type=" + this.jdField_a_of_type_Int);
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 3: 
+    default: 
+      Toast.makeText(ayyb.o(this.jdField_a_of_type_Ayyb), 2131694699, 0).show();
     }
-    this.a.runOnUiThread(new OCRResultActivity.11.1(this, paramInt, paramOcrRecogResult));
+    for (;;)
+    {
+      bcef.b(ayyb.u(this.jdField_a_of_type_Ayyb), "dc00898", "", "", "", "0X800A4C2", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Ayyb.i();
+      return;
+      VipUtils.a(ayyb.i(this.jdField_a_of_type_Ayyb), 1, this.jdField_a_of_type_JavaLangString);
+      continue;
+      VipUtils.b(ayyb.j(this.jdField_a_of_type_Ayyb), 1, this.jdField_a_of_type_JavaLangString);
+      continue;
+      VipUtils.a(ayyb.k(this.jdField_a_of_type_Ayyb), false, 12, false, this.jdField_a_of_type_JavaLangString);
+      continue;
+      VipUtils.a(ayyb.l(this.jdField_a_of_type_Ayyb), true, 12, false, this.jdField_a_of_type_JavaLangString);
+      continue;
+      bgge.a(ayyb.m(this.jdField_a_of_type_Ayyb), this.jdField_a_of_type_JavaLangString, "SVHHZLH", 0, false, false);
+      continue;
+      bgge.a(ayyb.n(this.jdField_a_of_type_Ayyb), this.jdField_a_of_type_JavaLangString, "SVHHZLH", 12, false, false);
+    }
   }
 }
 

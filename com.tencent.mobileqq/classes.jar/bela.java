@@ -1,10 +1,13 @@
-final class bela
-  implements bekr
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
+public class bela
 {
-  public boolean a(String paramString)
-  {
-    return false;
-  }
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 

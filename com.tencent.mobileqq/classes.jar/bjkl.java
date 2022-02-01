@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-
-class bjkl
-  implements DialogInterface.OnClickListener
+public class bjkl
 {
-  bjkl(bjki parambjki) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bjkl()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 4;
   }
 }
 

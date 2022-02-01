@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aphq;
-import apib;
+import aobd;
+import aobo;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraRendererable$1
   implements Runnable
 {
-  public CameraRendererable$1(apib paramapib) {}
+  public CameraRendererable$1(aobo paramaobo) {}
   
   public void run()
   {
-    if (apib.a(this.this$0) != null) {}
+    if (aobo.a(this.this$0) != null) {}
     try
     {
-      apib.a(this.this$0).a();
+      aobo.a(this.this$0).a();
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ public class CameraRendererable$1
       {
         localException.printStackTrace();
       } while (!QLog.isColorLevel());
-      QLog.d(apib.a(), 2, "requestRender", localException);
+      QLog.d(aobo.a(), 2, "requestRender", localException);
     }
   }
 }

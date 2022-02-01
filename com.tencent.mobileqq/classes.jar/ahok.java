@@ -1,14 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ahok
-  extends vrh
+public class ahok
+  extends ahom
 {
-  ahok(ahoi paramahoi) {}
+  int a = 100;
   
-  public void a(int paramInt, vrd paramvrd)
+  public ahok(ahon paramahon)
   {
-    super.a(paramInt, paramvrd);
-    QLog.d("QCircleFeedItemBuilder", 1, paramvrd.a() + ", \nstate callback:" + paramInt);
+    super(paramahon);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("moneylimit"))) {}
+    try
+    {
+      this.a = paramJSONObject.getInt("moneylimit");
+      BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ HONGBAO_SCENESRECOMMEND_INFO", 4).edit().putInt("HONGBAO_SCENES_MONEY_LIMIT", this.a).apply();
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
   }
 }
 

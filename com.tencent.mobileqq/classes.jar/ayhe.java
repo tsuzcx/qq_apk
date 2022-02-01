@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public abstract interface ayhe
+public class ayhe
+  extends ayhc
 {
-  public abstract int a();
-  
-  public abstract void a();
-  
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  void b(BaseChatPie paramBaseChatPie)
+  {
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+  }
 }
 
 

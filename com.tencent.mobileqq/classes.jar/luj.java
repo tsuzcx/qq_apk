@@ -1,77 +1,41 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class luj
-  extends LinkMovementMethod
+  extends lun
 {
-  private static luj a;
-  public int a;
-  public int b = -7447805;
+  public int b;
   
   public luj()
   {
-    this.jdField_a_of_type_Int = -10864125;
+    this.jdField_b_of_type_Int = 667;
+    this.c = new luz[8];
+    this.jdField_b_of_type_Long = 1250L;
   }
   
-  static int a(TextView paramTextView, int paramInt1, int paramInt2)
+  public void a(long paramLong)
   {
-    paramTextView = paramTextView.getTag(paramInt1);
-    if ((paramTextView instanceof Integer)) {
-      paramInt2 = ((Integer)paramTextView).intValue();
+    super.a(paramLong);
+    long l = this.a;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
     }
-    return paramInt2;
+    a(i);
   }
   
-  public static MovementMethod a()
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    if (jdField_a_of_type_Luj == null) {
-      jdField_a_of_type_Luj = new luj();
-    }
-    return jdField_a_of_type_Luj;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    int i = 0;
+    while (i < this.c.length)
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
-      {
-        if (i == 1)
-        {
-          i = a(paramTextView, 2131378420, this.b);
-          localObject[0].onClick(paramTextView);
-          paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-        }
-        for (;;)
-        {
-          return true;
-          if (i == 0)
-          {
-            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131378419, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-          }
-        }
-      }
-      Selection.removeSelection(paramSpannable);
+      this.c[i] = new luz(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
+      i += 1;
     }
-    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
   }
 }
 

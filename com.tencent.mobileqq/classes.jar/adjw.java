@@ -1,9 +1,6 @@
-public abstract class adjw
+public abstract interface adjw
 {
-  public static int a;
-  public static String a = "https://zyjc.sec.qq.com/config?b=";
-  public static String b = "https://zyjc.sec.qq.com/reportFixer.php";
-  public static String c = "/sdcard/";
+  public abstract void a(adjx paramadjx);
 }
 
 

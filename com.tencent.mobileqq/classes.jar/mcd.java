@@ -1,82 +1,37 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.OrientationEventListener;
-import android.view.WindowManager;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public abstract class mcd
-  extends OrientationEventListener
+public class mcd
 {
-  int jdField_a_of_type_Int = -25;
-  protected Context a;
-  Configuration jdField_a_of_type_AndroidContentResConfiguration;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public mcd(Context paramContext, int paramInt)
+  mcd(int paramInt)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_Boolean = mtd.f(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public void onOrientationChanged(int paramInt)
+  public long a()
   {
-    if (paramInt == -1) {
-      this.jdField_a_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.e())) {
+      throw new IllegalArgumentException("seq未初始化:" + getClass().getSimpleName());
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Int = 0;
-      }
-    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt -= 90;
-      i = paramInt;
-      if (paramInt < 0) {
-        i = paramInt + 360;
-      }
-    }
-    if (this.b) {}
-    for (paramInt = lkw.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lkw.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
-    {
-      int j = paramInt;
-      if (paramInt > 360) {
-        j = paramInt % 360;
-      }
-      i -= j;
-      paramInt = i;
-      if (i < 0) {
-        paramInt = i + 360;
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt <= 314) && (paramInt >= 45)) {
-        break;
-      }
-      a(0, this.b);
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
       return;
     }
-    if ((paramInt > 44) && (paramInt < 135))
-    {
-      a(90, this.b);
-      return;
-    }
-    if ((paramInt > 134) && (paramInt < 225))
-    {
-      a(180, this.b);
-      return;
-    }
-    a(270, this.b);
+    paramVideoAppInterface.a(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this });
   }
 }
 

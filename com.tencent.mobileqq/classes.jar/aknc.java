@@ -1,44 +1,51 @@
-import android.animation.IntEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.menu.AbsMenuFlag;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class aknc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AbsMenuFlag
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-  private IntEvaluator jdField_a_of_type_AndroidAnimationIntEvaluator = new IntEvaluator();
-  
-  public aknc(AvatarPendantActivity paramAvatarPendantActivity, List paramList1, List paramList2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      return false;
+    }
+    paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+    paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
+    int i;
+    if ((((RecentUserBaseData)paramRecentBaseData).mUser.getType() == 1) && (!awhn.a(paramIMCoreAppRuntime, (RecentUser)((RecentUserBaseData)paramRecentBaseData).mUser)))
     {
-      paramValueAnimator = (View)this.jdField_a_of_type_JavaUtilList.get(i);
-      akne localakne = (akne)this.b.get(i);
-      ViewGroup.LayoutParams localLayoutParams = paramValueAnimator.getLayoutParams();
-      if (localakne.jdField_a_of_type_Int != localakne.b)
+      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(52);
+      int j = paramRecentBaseData.mMenuFlag;
+      if (paramIMCoreAppRuntime.b(((RecentUserBaseData)paramRecentBaseData).mUser.uin))
       {
-        FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)paramValueAnimator.getLayoutParams();
-        localLayoutParams1.topMargin = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakne.jdField_a_of_type_Int), Integer.valueOf(localakne.b)).intValue();
-        paramValueAnimator.setLayoutParams(localLayoutParams1);
+        i = 32;
+        label93:
+        paramRecentBaseData.mMenuFlag = (i | j);
       }
-      if (localakne.c != localakne.d) {
-        localLayoutParams.height = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakne.c), Integer.valueOf(localakne.d)).intValue();
+    }
+    for (;;)
+    {
+      paramRecentBaseData.mMenuFlag &= 0xF0FFFFFF;
+      if (((RecentUserBaseData)paramRecentBaseData).mUser.isHiddenChat != 1) {
+        break;
       }
-      if (localakne.e != localakne.f) {
-        localLayoutParams.width = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakne.e), Integer.valueOf(localakne.f)).intValue();
+      paramRecentBaseData.mMenuFlag |= 0x1000000;
+      return false;
+      i = 16;
+      break label93;
+      FriendsStatusUtil.a(paramIMCoreAppRuntime, (RecentUser)((RecentUserBaseData)paramRecentBaseData).mUser);
+      if ((((RecentUserBaseData)paramRecentBaseData).mUser.showUpTime == 0L) && (9223372036854775807L - ((RecentUserBaseData)paramRecentBaseData).mUser.lastmsgtime > 4L)) {
+        paramRecentBaseData.mMenuFlag |= 0x10;
+      } else {
+        paramRecentBaseData.mMenuFlag |= 0x20;
       }
-      paramValueAnimator.setLayoutParams(localLayoutParams);
-      paramValueAnimator.requestLayout();
-      i += 1;
     }
   }
 }

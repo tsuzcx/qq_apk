@@ -1,35 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class arch
-  extends arci
+public abstract interface arch
 {
-  private int a;
-  
-  public arch(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public Object a(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return null;
-      paramObject = (ArrayList)paramObject;
-      if (!(paramObject instanceof ArrayList))
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
-      }
-    } while ((this.a < 0) || (this.a >= paramObject.size()));
-    return paramObject.get(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arch
  * JD-Core Version:    0.7.0.1
  */

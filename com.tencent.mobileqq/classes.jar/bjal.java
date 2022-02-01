@@ -1,20 +1,14 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bjal
-  implements View.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  bjal(bjak parambjak) {}
+  bjal(bjae parambjae) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      bjak.a(this.a);
-      return true;
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

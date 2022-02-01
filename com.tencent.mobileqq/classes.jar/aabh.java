@@ -1,68 +1,78 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.MX3DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import java.io.File;
 
 public class aabh
+  implements bjoe
 {
-  public static Bitmap a(Resources paramResources, int paramInt, Integer paramInteger1, Integer paramInteger2)
-  {
-    Object localObject = paramResources.getDrawable(paramInt);
-    if ((localObject instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)localObject).getBitmap();
-    }
-    if ((localObject instanceof GradientDrawable))
-    {
-      paramResources = (GradientDrawable)localObject;
-      if (((Drawable)localObject).getIntrinsicWidth() > 0)
-      {
-        paramInt = ((Drawable)localObject).getIntrinsicWidth();
-        if (((Drawable)localObject).getIntrinsicHeight() <= 0) {
-          break label122;
-        }
-      }
-      label122:
-      for (int i = ((Drawable)localObject).getIntrinsicHeight();; i = paramInteger2.intValue())
-      {
-        paramInteger1 = Bitmap.createBitmap(paramInt, i, Bitmap.Config.ARGB_8888);
-        paramInteger2 = new Canvas(paramInteger1);
-        paramResources.setBounds(0, 0, paramInt, i);
-        paramResources.setStroke(1, -16777216);
-        paramResources.setFilterBitmap(true);
-        paramResources.draw(paramInteger2);
-        return paramInteger1;
-        paramInt = paramInteger1.intValue();
-        break;
-      }
-    }
-    if ((localObject instanceof ColorDrawable))
-    {
-      paramResources = (ColorDrawable)localObject;
-      localObject = Bitmap.createBitmap(paramInteger1.intValue(), paramInteger2.intValue(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramResources.setBounds(0, 0, paramInteger1.intValue(), paramInteger2.intValue());
-      paramResources.setFilterBitmap(true);
-      paramResources.draw(localCanvas);
-      return localObject;
-    }
-    return BitmapFactory.decodeResource(paramResources, paramInt).copy(Bitmap.Config.ARGB_8888, true);
-  }
+  public aabh(NewerGuidePlugin paramNewerGuidePlugin, Activity paramActivity, bjnw parambjnw) {}
   
-  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramContext = new TextView(paramContext);
-    paramContext.setTextSize(1, paramFloat);
-    paramContext.setTextColor(Color.parseColor(paramString1));
-    paramContext.setText(paramString2);
-    return paramContext;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bjnw.dismiss();
+        return;
+      }
+      catch (Exception paramView) {}
+      paramView = DynamicAvatarRecordActivity.class;
+      if (bbub.d(bbub.c)) {
+        paramView = MX3DynamicAvatarRecordActivity.class;
+      }
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, paramView);
+      paramView.putExtra("param_source", 1);
+      paramView.putExtra("param_from_newer_guide", true);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult(paramView, (byte)100);
+      continue;
+      paramView = bfrj.a();
+      paramInt = bfrj.b(this.jdField_a_of_type_AndroidAppActivity);
+      Object localObject = new Intent();
+      ((Intent)localObject).setClass(this.jdField_a_of_type_AndroidAppActivity, NewPhotoListActivity.class);
+      ((Intent)localObject).putExtra("enter_from", 50);
+      ((Intent)localObject).putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
+      ((Intent)localObject).putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      ((Intent)localObject).putExtra("Business_Origin", 100);
+      ((Intent)localObject).putExtra("BUSINESS_ORIGIN_NEW", 100);
+      ((Intent)localObject).putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+      ((Intent)localObject).putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
+      ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_MODE", true);
+      ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
+      ((Intent)localObject).putExtra("PhotoConst.TARGET_PATH", paramView);
+      ((Intent)localObject).putExtra("PhotoConst.CLIP_WIDTH", paramInt);
+      ((Intent)localObject).putExtra("PhotoConst.CLIP_HEIGHT", paramInt);
+      ((Intent)localObject).putExtra("PhotoConst.TARGET_WIDTH", 1080);
+      ((Intent)localObject).putExtra("PhotoConst.TARGET_HEIGHT", 1080);
+      ((Intent)localObject).putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
+      ((Intent)localObject).putExtra("PhotoConst.32_Bit_Config", true);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+      continue;
+      if (!ljo.b(BaseApplicationImpl.getContext()))
+      {
+        paramView = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "photo/");
+        localObject = new File(paramView);
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        paramView = new File(paramView + System.currentTimeMillis() + ".jpg");
+        localObject = new Intent();
+        NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, FileProvider7Helper.setSystemCapture(this.jdField_a_of_type_AndroidAppActivity, paramView, (Intent)localObject));
+        this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult((Intent)localObject, (byte)101);
+      }
+    }
   }
 }
 

@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
-
-public class asan
-  implements DialogInterface.OnClickListener
+class asan
 {
-  public asan(DatingUtil.1 param1) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  asan(asam paramasam) {}
 }
 
 

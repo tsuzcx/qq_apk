@@ -1,15 +1,14 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
 
-public class yuf
-  extends DataSetObserver
+public final class yuf
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  public yuf(TagFlowLayout paramTagFlowLayout) {}
-  
-  public void onChanged()
+  public yuf(int paramInt)
   {
-    super.onChanged();
-    this.a.a();
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
   }
 }
 

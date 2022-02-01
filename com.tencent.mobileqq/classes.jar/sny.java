@@ -1,39 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 
 public class sny
-  implements INetInfoHandler
+  extends Handler
 {
-  public sny(FastWebActivity paramFastWebActivity) {}
-  
-  public void onNetMobile2None()
+  public sny(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
   {
-    FastWebActivity.m(this.a);
+    super(paramLooper);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    FastWebActivity.m(this.a);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FastWebActivity.m(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FastWebActivity.m(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FastWebActivity.m(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    FastWebActivity.m(this.a);
+    super.handleMessage(paramMessage);
+    if (this.a.a != null)
+    {
+      if (paramMessage.obj != null) {
+        this.a.a.a((String)paramMessage.obj);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(null);
   }
 }
 

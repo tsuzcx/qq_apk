@@ -1,27 +1,53 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class xns
-  extends Subscriber.SingleEventSubscriberNoRefect<xbi>
+public final class xns
+  extends QQUIEventReceiver<xnp, vuc>
 {
-  xno a;
-  
-  public xns(@NonNull xno paramxno)
+  public xns(@NonNull xnp paramxnp)
   {
-    this.a = paramxno;
+    super(paramxnp);
   }
   
-  protected void a(@NonNull xbi paramxbi)
+  public void a(@NonNull xnp paramxnp, @NonNull vuc paramvuc)
   {
-    if (paramxbi.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramxbi.jdField_a_of_type_JavaLangString);
+    Iterator localIterator = paramxnp.a.iterator();
+    int j;
+    for (int i = 0; localIterator.hasNext(); i = j)
+    {
+      Object localObject = (xpe)localIterator.next();
+      j = i;
+      if ((localObject instanceof xnx))
+      {
+        j = i;
+        if (((xnx)localObject).b())
+        {
+          localObject = ((xnx)localObject).a().iterator();
+          for (;;)
+          {
+            j = i;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            if (((StoryVideoItem)((Iterator)localObject).next()).mVid.equals(paramvuc.a)) {
+              i = 1;
+            }
+          }
+        }
+      }
+    }
+    if (i != 0) {
+      paramxnp.a.clear();
     }
   }
   
   public Class acceptEventClass()
   {
-    return xbi.class;
+    return vuc.class;
   }
 }
 

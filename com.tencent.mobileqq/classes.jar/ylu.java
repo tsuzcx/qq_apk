@@ -1,38 +1,30 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-class ylu
-  implements yfe
+public class ylu
+  extends ylw
 {
-  ylu(ylt paramylt, JobContext paramJobContext, ylv paramylv) {}
+  public int a;
+  public long a;
+  public SlideItemInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  private boolean e;
   
-  public void a(yff paramyff)
+  public ylu() {}
+  
+  public ylu(long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, ylv paramylv, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      yuk.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_Ylv });
-      return;
-    }
-    ylt.a(this.jdField_a_of_type_Ylt);
-    yuk.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(ylt.b(this.jdField_a_of_type_Ylt)), paramyff);
-    if (paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ylt.a(this.jdField_a_of_type_Ylt).addAll(paramyff.jdField_a_of_type_JavaUtilList);
-      if ((!paramyff.jdField_a_of_type_Boolean) && (ylt.b(this.jdField_a_of_type_Ylt) < 10))
-      {
-        yuk.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(ylt.b(this.jdField_a_of_type_Ylt)));
-        ylt.a(this.jdField_a_of_type_Ylt).c();
-        return;
-      }
-      paramyff.jdField_a_of_type_JavaUtilList = ylt.a(this.jdField_a_of_type_Ylt);
-      yuk.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(ylt.a(this.jdField_a_of_type_Ylt).size()));
-      ylt.a(this.jdField_a_of_type_Ylt, paramyff);
-      return;
-    }
-    paramyff.jdField_a_of_type_JavaUtilList = ylt.a(this.jdField_a_of_type_Ylt);
-    yuk.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(ylt.a(this.jdField_a_of_type_Ylt).size()));
-    ylt.b(this.jdField_a_of_type_Ylt, paramyff);
+    this.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo = paramSlideItemInfo;
+    this.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
+    this.jdField_a_of_type_Ylv = paramylv;
+    this.e = paramBoolean;
   }
 }
 

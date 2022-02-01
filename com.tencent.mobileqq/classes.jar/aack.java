@@ -1,18 +1,21 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
 class aack
-  implements Observer<Object>
+  implements Animation.AnimationListener
 {
-  aack(aacj paramaacj) {}
+  aack(aach paramaach, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void onChanged(@Nullable Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (aacj.a(this.a) != null) {
-      aacj.a(this.a).setData(paramObject);
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,54 +1,23 @@
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SystemMsg;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-class adas
+public class adas
+  implements View.OnLayoutChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int c;
+  private boolean jdField_a_of_type_Boolean;
   
-  public adas(adan paramadan, MsgInfo paramMsgInfo, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
+  public adas(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public int a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public adas a()
-  {
-    this.jdField_a_of_type_Adan.a.a().a().a(3);
-    if (this.jdField_a_of_type_Int != 45)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Adan.a.a().a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, null);
-      this.jdField_b_of_type_Long = 9998L;
-      this.c = 32769;
-      this.jdField_b_of_type_Int = SystemMsg.getTroopSystemMsgType(this.jdField_a_of_type_Int);
+      Looper.myQueue().addIdleHandler(new adat(this));
+      this.jdField_a_of_type_Boolean = true;
     }
-    bdzi.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_Adan.a);
-    return this;
-  }
-  
-  public int b()
-  {
-    return this.c;
   }
 }
 

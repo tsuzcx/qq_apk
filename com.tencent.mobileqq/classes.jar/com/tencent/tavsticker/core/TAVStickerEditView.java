@@ -45,43 +45,43 @@ public class TAVStickerEditView
   private Region clipRegion = new Region();
   private Context context = null;
   private PointF convertPoint = new PointF();
-  private float correctedOriginalCenterX = 0.0F;
-  private float correctedOriginalCenterY = 0.0F;
-  protected int eventType = 15;
+  protected float correctedOriginalCenterX = 0.0F;
+  protected float correctedOriginalCenterY = 0.0F;
+  public int eventType = 15;
   private boolean isDrawMovieLimitRect = false;
-  private boolean isFirstDraw = true;
-  private boolean isNeedInitLocation = true;
+  protected boolean isFirstDraw = true;
+  protected boolean isNeedInitLocation = true;
   private boolean isShowDefaultBorder = true;
   private TAVStickerMode mode = TAVStickerMode.DEFAULT;
-  private int moveRegionHeight = 0;
-  private int moveRegionWidth = 0;
-  private int moveStartOffsetX = 0;
-  private int moveStartOffsetY = 0;
+  protected int moveRegionHeight = 0;
+  protected int moveRegionWidth = 0;
+  protected int moveStartOffsetX = 0;
+  protected int moveStartOffsetY = 0;
   private Paint movieRectPaint = null;
   protected float originalCenterX = 0.0F;
   protected float originalCenterY = 0.0F;
   private PointF[] originalVertexPoints = { new PointF(), new PointF(), new PointF(), new PointF() };
-  private PAGView pagView = null;
+  public PAGView pagView = null;
   private Path path = new Path();
-  private float positionX = 0.0F;
-  private float positionY = 0.0F;
+  public float positionX = 0.0F;
+  public float positionY = 0.0F;
   private RectF rectF = new RectF();
   private Region region = new Region();
-  private float rotate = 0.0F;
-  private float scale = 1.0F;
-  private float scaleMax = 0.0F;
-  private float scaleMin = 0.0F;
-  private RectF singleZoomRotateRect = null;
-  private TAVSticker sticker = null;
-  private int stickerContainerHeight = 0;
-  private int stickerContainerWidth = 0;
-  private ITAVStickerEventListener stickerEventListener = null;
+  public float rotate = 0.0F;
+  public float scale = 1.0F;
+  public float scaleMax = 0.0F;
+  public float scaleMin = 0.0F;
+  public RectF singleZoomRotateRect = null;
+  public TAVSticker sticker = null;
+  protected int stickerContainerHeight = 0;
+  protected int stickerContainerWidth = 0;
+  public ITAVStickerEventListener stickerEventListener = null;
   protected int stickerHeight = 0;
   protected Rect stickerMoveLimitRect = null;
-  private TAVStickerEditView.TavStickerTouchListener stickerTouchListener = null;
+  private View.OnTouchListener stickerTouchListener = null;
   protected int stickerWidth = 0;
   private List<View.OnTouchListener> touchListeners = new ArrayList();
-  protected PointF[] vertexPoints = { new PointF(), new PointF(), new PointF(), new PointF() };
+  public PointF[] vertexPoints = { new PointF(), new PointF(), new PointF(), new PointF() };
   
   public TAVStickerEditView(@NonNull Context paramContext, @NonNull TAVSticker paramTAVSticker)
   {
@@ -92,27 +92,6 @@ public class TAVStickerEditView
     this.context = paramContext;
     this.sticker = paramTAVSticker;
     init();
-  }
-  
-  private void adjustLocation(TAVStickerOperationMode paramTAVStickerOperationMode)
-  {
-    float f2 = 0.5F;
-    updateVertexPoints();
-    this.centerX = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).x;
-    this.centerY = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).y;
-    handleMoveLimit();
-    if (this.stickerContainerWidth != 0) {}
-    for (float f1 = this.centerX / this.stickerContainerWidth;; f1 = 0.5F)
-    {
-      if (this.stickerContainerHeight != 0) {
-        f2 = this.centerY / this.stickerContainerHeight;
-      }
-      this.sticker.setCenterX(f1).setCenterY(f2).setScale(this.scale).setRotate(this.rotate);
-      if (this.stickerEventListener != null) {
-        this.stickerEventListener.onDataChanged(this.sticker, paramTAVStickerOperationMode, this.centerX, this.centerY, this.scale, this.rotate);
-      }
-      return;
-    }
   }
   
   private PointF convertCoordinate(float paramFloat1, float paramFloat2)
@@ -145,7 +124,148 @@ public class TAVStickerEditView
     return this.convertPoint;
   }
   
-  private float getPositionX()
+  private void init()
+  {
+    initStickerData();
+    initPaint();
+    initPagView();
+    if (getLayoutParams() == null) {
+      setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    }
+    setWillNotDraw(false);
+    this.sticker.registerRenderer(this);
+    this.stickerTouchListener = getStickerTouchListener();
+    addOnTouchListener(this.stickerTouchListener);
+  }
+  
+  private void initLocationData()
+  {
+    this.vertexPoints[0].set(this.positionX, this.positionY);
+    this.vertexPoints[1].set(this.positionX + this.stickerWidth, this.positionY);
+    this.vertexPoints[2].set(this.positionX + this.stickerWidth, this.positionY + this.stickerHeight);
+    this.vertexPoints[3].set(this.positionX, this.positionY + this.stickerHeight);
+    this.originalVertexPoints[0] = this.vertexPoints[0];
+    this.originalVertexPoints[1] = this.vertexPoints[1];
+    this.originalVertexPoints[2] = this.vertexPoints[2];
+    this.originalVertexPoints[3] = this.vertexPoints[3];
+    this.centerX = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).x;
+    this.centerY = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).y;
+    this.originalCenterX = this.centerX;
+    this.originalCenterY = this.centerY;
+  }
+  
+  private void initMoveRectPaint()
+  {
+    this.movieRectPaint = new Paint();
+    this.movieRectPaint.setAntiAlias(true);
+    this.movieRectPaint.setStrokeWidth(this.sticker.getStrokeWidth());
+    this.movieRectPaint.setColor(-65536);
+    this.movieRectPaint.setStyle(Paint.Style.STROKE);
+  }
+  
+  private void initPagView()
+  {
+    this.pagView = new PAGView(this.context);
+    addView(this.pagView);
+    PAGFile localPAGFile = this.sticker.getPagFile();
+    if (localPAGFile != null)
+    {
+      TLog.d(TAG, "initPagView -> pagFile.width() : " + localPAGFile.width() + ", pagFile.height() : " + localPAGFile.height());
+      this.pagView.setFile(localPAGFile);
+    }
+    if (this.sticker.isAutoPlay()) {
+      play(0);
+    }
+  }
+  
+  private void initPaint()
+  {
+    this.borderPaint = new Paint();
+    this.borderPaint.setAntiAlias(true);
+    this.borderPaint.setStrokeWidth(this.sticker.getStrokeWidth());
+    this.borderPaint.setColor(this.sticker.getStrokeColor());
+  }
+  
+  private boolean isTouchInStickerEditView(int paramInt1, int paramInt2)
+  {
+    this.path.reset();
+    this.path.moveTo(this.vertexPoints[0].x, this.vertexPoints[0].y);
+    this.path.lineTo(this.vertexPoints[1].x, this.vertexPoints[1].y);
+    this.path.lineTo(this.vertexPoints[2].x, this.vertexPoints[2].y);
+    this.path.lineTo(this.vertexPoints[3].x, this.vertexPoints[3].y);
+    this.path.lineTo(this.vertexPoints[0].x, this.vertexPoints[0].y);
+    this.path.computeBounds(this.rectF, true);
+    this.clipRegion.set((int)this.rectF.left, (int)this.rectF.top, (int)this.rectF.right, (int)this.rectF.bottom);
+    this.region.setPath(this.path, this.clipRegion);
+    boolean bool = this.region.contains(paramInt1, paramInt2);
+    TLog.d(TAG, "isTouchInStickerEditView -> contains : " + bool);
+    return bool;
+  }
+  
+  public void addOnTouchListener(View.OnTouchListener paramOnTouchListener)
+  {
+    if (paramOnTouchListener == null) {
+      return;
+    }
+    this.touchListeners.add(paramOnTouchListener);
+  }
+  
+  public void adjustLocation(TAVStickerOperationMode paramTAVStickerOperationMode)
+  {
+    float f2 = 0.5F;
+    updateVertexPoints();
+    this.centerX = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).x;
+    this.centerY = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).y;
+    handleMoveLimit();
+    if (this.stickerContainerWidth != 0) {}
+    for (float f1 = this.centerX / this.stickerContainerWidth;; f1 = 0.5F)
+    {
+      if (this.stickerContainerHeight != 0) {
+        f2 = this.centerY / this.stickerContainerHeight;
+      }
+      updateStickerOnAdjustLocation(f1, f2);
+      if (this.stickerEventListener != null) {
+        this.stickerEventListener.onDataChanged(this.sticker, paramTAVStickerOperationMode, this.centerX, this.centerY, this.scale, this.rotate);
+      }
+      return;
+    }
+  }
+  
+  public long duration()
+  {
+    if (this.pagView != null) {
+      return this.pagView.duration() / 1000L;
+    }
+    return 0L;
+  }
+  
+  public boolean flush()
+  {
+    if (this.pagView != null) {
+      return this.pagView.flush();
+    }
+    return false;
+  }
+  
+  public boolean flush(boolean paramBoolean)
+  {
+    if (this.pagView != null) {
+      return this.pagView.flush(paramBoolean);
+    }
+    return false;
+  }
+  
+  public TAVStickerMode getMode()
+  {
+    return this.mode;
+  }
+  
+  public PointF[] getOriginalVertexPoints()
+  {
+    return this.originalVertexPoints;
+  }
+  
+  public float getPositionX()
   {
     if (this.pagView != null) {
       return this.pagView.getTranslationX();
@@ -153,7 +273,7 @@ public class TAVStickerEditView
     return 0.0F;
   }
   
-  private float getPositionY()
+  public float getPositionY()
   {
     if (this.pagView != null) {
       return this.pagView.getTranslationY();
@@ -161,7 +281,82 @@ public class TAVStickerEditView
     return 0.0F;
   }
   
-  private void handleMoveLimit()
+  public double getProgress()
+  {
+    if (this.pagView != null) {
+      return this.pagView.getProgress();
+    }
+    return 0.0D;
+  }
+  
+  public TAVSticker getSticker()
+  {
+    return this.sticker;
+  }
+  
+  protected View.OnTouchListener getStickerTouchListener()
+  {
+    return new TAVStickerEditView.TavStickerTouchListener(this, null);
+  }
+  
+  public void getUnderPointLayerItems(int paramInt1, int paramInt2, ITAVTouchStickerLayerListener paramITAVTouchStickerLayerListener)
+  {
+    if (paramITAVTouchStickerLayerListener == null) {}
+    ArrayList localArrayList;
+    PAGLayer[] arrayOfPAGLayer;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.pagView == null);
+      localObject = null;
+      if (!isTouchInStickerEditView(paramInt1, paramInt2)) {
+        break;
+      }
+      localArrayList = new ArrayList();
+      localObject = convertCoordinate(paramInt1, paramInt2);
+      arrayOfPAGLayer = this.pagView.getLayersUnderPoint(((PointF)localObject).x, ((PointF)localObject).y);
+    } while ((arrayOfPAGLayer == null) || (arrayOfPAGLayer.length <= 0));
+    paramInt2 = arrayOfPAGLayer.length;
+    paramInt1 = 0;
+    Object localObject = localArrayList;
+    if (paramInt1 < paramInt2)
+    {
+      localObject = arrayOfPAGLayer[paramInt1];
+      if (localObject == null) {}
+      for (;;)
+      {
+        paramInt1 += 1;
+        break;
+        int i = ((PAGLayer)localObject).editableIndex();
+        if (3 == ((PAGLayer)localObject).layerType())
+        {
+          localObject = this.sticker.getTavStickerTextItem(i);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
+        }
+        else if (5 == ((PAGLayer)localObject).layerType())
+        {
+          localObject = this.sticker.getTavStickerImageItem(i);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
+        }
+        else if (2 == ((PAGLayer)localObject).layerType())
+        {
+          localObject = this.sticker.getTavStickerSolidItem(i);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
+        }
+      }
+    }
+    paramITAVTouchStickerLayerListener.onTouchSticker(this.sticker, (List)localObject);
+  }
+  
+  protected void handleMoveLimit()
   {
     float f3 = this.centerX;
     float f5 = this.centerY;
@@ -310,273 +505,6 @@ public class TAVStickerEditView
     }
   }
   
-  private void init()
-  {
-    initStickerData();
-    initPaint();
-    initPagView();
-    if (getLayoutParams() == null) {
-      setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    }
-    setWillNotDraw(false);
-    this.sticker.registerRenderer(this);
-    this.stickerTouchListener = new TAVStickerEditView.TavStickerTouchListener(this, null);
-    addOnTouchListener(this.stickerTouchListener);
-  }
-  
-  private void initLocationData()
-  {
-    this.vertexPoints[0].set(this.positionX, this.positionY);
-    this.vertexPoints[1].set(this.positionX + this.stickerWidth, this.positionY);
-    this.vertexPoints[2].set(this.positionX + this.stickerWidth, this.positionY + this.stickerHeight);
-    this.vertexPoints[3].set(this.positionX, this.positionY + this.stickerHeight);
-    this.originalVertexPoints[0] = this.vertexPoints[0];
-    this.originalVertexPoints[1] = this.vertexPoints[1];
-    this.originalVertexPoints[2] = this.vertexPoints[2];
-    this.originalVertexPoints[3] = this.vertexPoints[3];
-    this.centerX = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).x;
-    this.centerY = TAVStickerUtil.getMiddlePoint(this.vertexPoints[0], this.vertexPoints[2]).y;
-    this.originalCenterX = this.centerX;
-    this.originalCenterY = this.centerY;
-  }
-  
-  private void initMoveRectPaint()
-  {
-    this.movieRectPaint = new Paint();
-    this.movieRectPaint.setAntiAlias(true);
-    this.movieRectPaint.setStrokeWidth(this.sticker.getStrokeWidth());
-    this.movieRectPaint.setColor(-65536);
-    this.movieRectPaint.setStyle(Paint.Style.STROKE);
-  }
-  
-  private void initPagView()
-  {
-    this.pagView = new PAGView(this.context);
-    addView(this.pagView);
-    PAGFile localPAGFile = this.sticker.getPagFile();
-    if (localPAGFile != null)
-    {
-      TLog.d(TAG, "initPagView -> pagFile.width() : " + localPAGFile.width() + ", pagFile.height() : " + localPAGFile.height());
-      this.pagView.setFile(localPAGFile);
-    }
-    if (this.sticker.isAutoPlay()) {
-      play(0);
-    }
-  }
-  
-  private void initPaint()
-  {
-    this.borderPaint = new Paint();
-    this.borderPaint.setAntiAlias(true);
-    this.borderPaint.setStrokeWidth(this.sticker.getStrokeWidth());
-    this.borderPaint.setColor(this.sticker.getStrokeColor());
-  }
-  
-  private void initScaleData()
-  {
-    this.scaleMax = this.sticker.getMaxScale();
-    if ((this.scaleMax < 0.0F) && (this.sticker.getWidth() > 0) && (this.sticker.getHeight() > 0)) {
-      this.scaleMax = (1.0F * Math.max(this.moveRegionWidth, this.moveRegionHeight) / Math.min(this.sticker.getWidth(), this.sticker.getHeight()));
-    }
-    if (TAVStickerMoveLimit.LIMIT_VERTEX == this.sticker.getStickerMoveLimit())
-    {
-      float f1 = Math.min(this.moveRegionWidth, this.moveRegionHeight);
-      float f2 = TAVStickerUtil.getDistance(this.vertexPoints[0], this.vertexPoints[2]);
-      if (f2 > 0.0F) {
-        this.scaleMax = Math.min(f1 / f2, this.scaleMax);
-      }
-    }
-    this.scaleMin = this.sticker.getMinScale();
-    if (this.scaleMin < 0.0F) {
-      this.scaleMin = 0.0F;
-    }
-    if ((this.scaleMin > 0.0F) && (this.scaleMax > 0.0F))
-    {
-      if (this.scale < this.scaleMin) {
-        this.scale = this.scaleMin;
-      }
-      if (this.scale > this.scaleMax) {
-        this.scale = this.scaleMax;
-      }
-    }
-  }
-  
-  private void initStickerData()
-  {
-    this.isShowDefaultBorder = this.sticker.isShowDefaultBorder();
-    this.scale = this.sticker.getScale();
-    if (this.scale <= 0.0F)
-    {
-      this.scale = 1.0F;
-      this.sticker.setScale(this.scale);
-    }
-    this.rotate = this.sticker.getRotate();
-  }
-  
-  private boolean isTouchInStickerEditView(int paramInt1, int paramInt2)
-  {
-    this.path.reset();
-    this.path.moveTo(this.vertexPoints[0].x, this.vertexPoints[0].y);
-    this.path.lineTo(this.vertexPoints[1].x, this.vertexPoints[1].y);
-    this.path.lineTo(this.vertexPoints[2].x, this.vertexPoints[2].y);
-    this.path.lineTo(this.vertexPoints[3].x, this.vertexPoints[3].y);
-    this.path.lineTo(this.vertexPoints[0].x, this.vertexPoints[0].y);
-    this.path.computeBounds(this.rectF, true);
-    this.clipRegion.set((int)this.rectF.left, (int)this.rectF.top, (int)this.rectF.right, (int)this.rectF.bottom);
-    this.region.setPath(this.path, this.clipRegion);
-    boolean bool = this.region.contains(paramInt1, paramInt2);
-    TLog.d(TAG, "isTouchInStickerEditView -> contains : " + bool);
-    return bool;
-  }
-  
-  private void setPosition(float paramFloat1, float paramFloat2)
-  {
-    if (this.pagView != null)
-    {
-      this.pagView.setTranslationX(paramFloat1);
-      this.pagView.setTranslationY(paramFloat2);
-    }
-  }
-  
-  private void setRotate(float paramFloat)
-  {
-    if (this.pagView != null) {
-      this.pagView.setRotation(paramFloat);
-    }
-    this.rotate = paramFloat;
-  }
-  
-  private void setScale(float paramFloat)
-  {
-    if (this.pagView != null)
-    {
-      this.pagView.setScaleX(paramFloat);
-      this.pagView.setScaleY(paramFloat);
-    }
-    this.scale = paramFloat;
-  }
-  
-  private void updateVertexPoints()
-  {
-    PointF[] arrayOfPointF = TAVStickerUtil.computeRectanglePoints(this.pagView.getMatrix(), this.stickerWidth, this.stickerHeight);
-    this.vertexPoints[0] = arrayOfPointF[0];
-    this.vertexPoints[1] = arrayOfPointF[1];
-    this.vertexPoints[2] = arrayOfPointF[2];
-    this.vertexPoints[3] = arrayOfPointF[3];
-  }
-  
-  public void addOnTouchListener(View.OnTouchListener paramOnTouchListener)
-  {
-    if (paramOnTouchListener == null) {
-      return;
-    }
-    this.touchListeners.add(paramOnTouchListener);
-  }
-  
-  public long duration()
-  {
-    if (this.pagView != null) {
-      return this.pagView.duration() / 1000L;
-    }
-    return 0L;
-  }
-  
-  public boolean flush()
-  {
-    if (this.pagView != null) {
-      return this.pagView.flush();
-    }
-    return false;
-  }
-  
-  public boolean flush(boolean paramBoolean)
-  {
-    if (this.pagView != null) {
-      return this.pagView.flush(paramBoolean);
-    }
-    return false;
-  }
-  
-  public TAVStickerMode getMode()
-  {
-    return this.mode;
-  }
-  
-  public PointF[] getOriginalVertexPoints()
-  {
-    return this.originalVertexPoints;
-  }
-  
-  public double getProgress()
-  {
-    if (this.pagView != null) {
-      return this.pagView.getProgress();
-    }
-    return 0.0D;
-  }
-  
-  public TAVSticker getSticker()
-  {
-    return this.sticker;
-  }
-  
-  public void getUnderPointLayerItems(int paramInt1, int paramInt2, ITAVTouchStickerLayerListener paramITAVTouchStickerLayerListener)
-  {
-    if (paramITAVTouchStickerLayerListener == null) {}
-    ArrayList localArrayList;
-    PAGLayer[] arrayOfPAGLayer;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.pagView == null);
-      localObject = null;
-      if (!isTouchInStickerEditView(paramInt1, paramInt2)) {
-        break;
-      }
-      localArrayList = new ArrayList();
-      localObject = convertCoordinate(paramInt1, paramInt2);
-      arrayOfPAGLayer = this.pagView.getLayersUnderPoint(((PointF)localObject).x, ((PointF)localObject).y);
-    } while ((arrayOfPAGLayer == null) || (arrayOfPAGLayer.length <= 0));
-    paramInt2 = arrayOfPAGLayer.length;
-    paramInt1 = 0;
-    Object localObject = localArrayList;
-    if (paramInt1 < paramInt2)
-    {
-      localObject = arrayOfPAGLayer[paramInt1];
-      if (localObject == null) {}
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        int i = ((PAGLayer)localObject).editableIndex();
-        if (3 == ((PAGLayer)localObject).layerType())
-        {
-          localObject = this.sticker.getTavStickerTextItem(i);
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
-        }
-        else if (5 == ((PAGLayer)localObject).layerType())
-        {
-          localObject = this.sticker.getTavStickerImageItem(i);
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
-        }
-        else if (2 == ((PAGLayer)localObject).layerType())
-        {
-          localObject = this.sticker.getTavStickerSolidItem(i);
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
-        }
-      }
-    }
-    paramITAVTouchStickerLayerListener.onTouchSticker(this.sticker, (List)localObject);
-  }
-  
   boolean handleTouchEvent(View paramView, MotionEvent paramMotionEvent)
   {
     int i = this.touchListeners.size() - 1;
@@ -621,6 +549,47 @@ public class TAVStickerEditView
     setScale(this.scale);
     setRotate(this.rotate);
     updateVertexPoints();
+  }
+  
+  protected void initScaleData()
+  {
+    this.scaleMax = this.sticker.getMaxScale();
+    if ((this.scaleMax < 0.0F) && (this.sticker.getWidth() > 0) && (this.sticker.getHeight() > 0)) {
+      this.scaleMax = (1.0F * Math.max(this.moveRegionWidth, this.moveRegionHeight) / Math.min(this.sticker.getWidth(), this.sticker.getHeight()));
+    }
+    if (TAVStickerMoveLimit.LIMIT_VERTEX == this.sticker.getStickerMoveLimit())
+    {
+      float f1 = Math.min(this.moveRegionWidth, this.moveRegionHeight);
+      float f2 = TAVStickerUtil.getDistance(this.vertexPoints[0], this.vertexPoints[2]);
+      if (f2 > 0.0F) {
+        this.scaleMax = Math.min(f1 / f2, this.scaleMax);
+      }
+    }
+    this.scaleMin = this.sticker.getMinScale();
+    if (this.scaleMin < 0.0F) {
+      this.scaleMin = 0.0F;
+    }
+    if ((this.scaleMin > 0.0F) && (this.scaleMax > 0.0F))
+    {
+      if (this.scale < this.scaleMin) {
+        this.scale = this.scaleMin;
+      }
+      if (this.scale > this.scaleMax) {
+        this.scale = this.scaleMax;
+      }
+    }
+  }
+  
+  protected void initStickerData()
+  {
+    this.isShowDefaultBorder = this.sticker.isShowDefaultBorder();
+    this.scale = this.sticker.getScale();
+    if (this.scale <= 0.0F)
+    {
+      this.scale = 1.0F;
+      this.sticker.setScale(this.scale);
+    }
+    this.rotate = this.sticker.getRotate();
   }
   
   boolean isNeedInitLocation()
@@ -717,7 +686,7 @@ public class TAVStickerEditView
     return paramFloat;
   }
   
-  protected float scaleInterceptor(float paramFloat)
+  public float scaleInterceptor(float paramFloat)
   {
     return paramFloat;
   }
@@ -791,11 +760,38 @@ public class TAVStickerEditView
     addOnTouchListener(paramOnTouchListener);
   }
   
+  public void setPosition(float paramFloat1, float paramFloat2)
+  {
+    if (this.pagView != null)
+    {
+      this.pagView.setTranslationX(paramFloat1);
+      this.pagView.setTranslationY(paramFloat2);
+    }
+  }
+  
   public void setProgress(double paramDouble)
   {
     if (this.pagView != null) {
       this.pagView.setProgress(paramDouble);
     }
+  }
+  
+  public void setRotate(float paramFloat)
+  {
+    if (this.pagView != null) {
+      this.pagView.setRotation(paramFloat);
+    }
+    this.rotate = paramFloat;
+  }
+  
+  protected void setScale(float paramFloat)
+  {
+    if (this.pagView != null)
+    {
+      this.pagView.setScaleX(paramFloat);
+      this.pagView.setScaleY(paramFloat);
+    }
+    this.scale = paramFloat;
   }
   
   public void setSingleZoomRotateRect(RectF paramRectF)
@@ -832,6 +828,20 @@ public class TAVStickerEditView
     this.moveStartOffsetY = 0;
     this.moveRegionWidth = this.stickerContainerWidth;
     this.moveRegionHeight = this.stickerContainerHeight;
+  }
+  
+  protected void updateStickerOnAdjustLocation(float paramFloat1, float paramFloat2)
+  {
+    this.sticker.setCenterX(paramFloat1).setCenterY(paramFloat2).setScale(this.scale).setRotate(this.rotate);
+  }
+  
+  protected void updateVertexPoints()
+  {
+    PointF[] arrayOfPointF = TAVStickerUtil.computeRectanglePoints(this.pagView.getMatrix(), this.stickerWidth, this.stickerHeight);
+    this.vertexPoints[0] = arrayOfPointF[0];
+    this.vertexPoints[1] = arrayOfPointF[1];
+    this.vertexPoints[2] = arrayOfPointF[2];
+    this.vertexPoints[3] = arrayOfPointF[3];
   }
 }
 

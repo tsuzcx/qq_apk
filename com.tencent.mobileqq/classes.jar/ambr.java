@@ -1,61 +1,32 @@
-import android.graphics.Color;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ambr
-  extends Animation
+public final class ambr
+  implements EIPCResultCallback
 {
-  private int jdField_a_of_type_Int;
-  private ambs jdField_a_of_type_Ambs;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public ambr(ambt paramambt) {}
   
-  public ambr(ArrayList<Integer> paramArrayList)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    a(paramArrayList);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ArrayList<Integer> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
-    }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    ambt localambt;
+    if (this.a != null)
+    {
+      localambt = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
     }
     for (;;)
     {
-      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
-      i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
-      }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Ambs == null) {
-        break;
-      }
-      this.jdField_a_of_type_Ambs.a(i);
+      localambt.a(bool);
       return;
+      label82:
+      bool = false;
     }
   }
 }

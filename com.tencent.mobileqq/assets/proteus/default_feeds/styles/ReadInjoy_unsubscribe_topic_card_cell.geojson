@@ -19,7 +19,7 @@
                 "view_type": "UIView",
                 "view_id": "id_topic_container",
                 "layout_type": "layout_relative",
-                "margin_left": "6",
+                "margin_left": "16",
                 "margin_top": "8",
                 "margin_bottom": "12",
                 "default_visible":"YES",
@@ -29,7 +29,7 @@
                 },
                 "width": {
                     "type": "relative",
-                    "value": "363"
+                    "value": "343"
                 },
                 "attributes": {
                 },
@@ -143,6 +143,74 @@
                                     "setEdgeDragCenterY:type:":["45", "relative"],
                                     "setScrollJumpUrl:":"cmd_unsubscribe_topic_card_cell_Drag",
                                     "setScrollInsetLeft:right:top:bottom:":["3","6","8","0"]
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_left_mask_left",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_left_mask_left",
+                                "default_visible": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_bottom_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_right_mask_left",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_right_mask_left",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_bottom_round_corner"
                                 }
                             }
                         ]
@@ -320,22 +388,6 @@
                         }
                     }
                 ]
-            },
-            {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "margin_left":"6",
-                "height":{
-                    "type":"absolutely","value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
-                },
-                "attributes":{
-                    "setFrameString:":"-1",
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
             }
         ]
     }

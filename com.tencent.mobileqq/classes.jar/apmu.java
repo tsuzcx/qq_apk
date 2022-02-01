@@ -1,28 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class apmu
-  implements apmj
+public class apmu
+  extends apmq
 {
-  apmu(apmt paramapmt) {}
-  
-  public void a(apnb paramapnb)
+  public void a(apmg paramapmg, int paramInt, boolean paramBoolean)
   {
-    apmt.f(this.a, false);
-    if (apmt.a(this.a)) {
-      return;
-    }
-    if (apmt.a(this.a) != null) {
-      apmt.a(this.a).removeMessages(2);
-    }
-    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramapnb.jdField_a_of_type_Int + ", imageId = " + paramapnb.jdField_a_of_type_JavaLangString);
-    if (apmt.a(this.a) != null)
-    {
-      apnt.a(this.a.a.recognitions, apmt.a(this.a), paramapnb);
-      apmt.a(this.a).a(0, apmt.a(this.a));
-    }
-    apmt.a(this.a, null);
+    super.a(paramapmg, paramInt, paramBoolean);
+    paramapmg.b.setBackgroundResource(2130839288);
   }
 }
 

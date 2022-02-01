@@ -1,93 +1,28 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class lzc
-  implements ShareActionSheet.OnItemClickListener
+final class lzc
+  implements Animation.AnimationListener
 {
-  long jdField_a_of_type_Long = 0L;
-  Context jdField_a_of_type_AndroidContentContext;
+  lzc(View paramView, boolean paramBoolean) {}
   
-  public lzc(lyw paramlyw, Context paramContext)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramAnimation.setVisibility(i);
+      return;
+    }
   }
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramShareActionSheet = this.jdField_a_of_type_AndroidContentContext;
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Lyw.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-        this.jdField_a_of_type_Lyw.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-      }
-    } while (this.jdField_a_of_type_Lyw.jdField_a_of_type_Lzb == null);
-    int i;
-    int j;
-    switch (paramActionSheetItem.action)
-    {
-    default: 
-      return;
-    case 1: 
-      i = 4;
-      this.jdField_a_of_type_Lyw.jdField_a_of_type_Int = i;
-      if ((i == 2) || (i == 3)) {
-        if (!WXShareHelper.a().a()) {
-          j = 2131719399;
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (j != -1)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(j), 0).a();
-        this.jdField_a_of_type_Lyw.a(this.jdField_a_of_type_Lyw.jdField_a_of_type_Int, this.jdField_a_of_type_Lyw.b, 3);
-        return;
-        i = 0;
-        break;
-        i = 72;
-        break;
-        i = 73;
-        break;
-        i = 1;
-        break;
-        i = 3;
-        break;
-        i = 2;
-        break;
-        i = 5;
-        break;
-        i = 7;
-        break;
-        i = 26;
-        break;
-        i = 6;
-        break;
-        if (WXShareHelper.a().b()) {
-          break label414;
-        }
-        j = 2131719400;
-        continue;
-      }
-      QLog.w("ShareChat", 1, "onItemClick, mChoosedChannel[" + this.jdField_a_of_type_Lyw.jdField_a_of_type_Int + "], position[], id[" + i + "], seq[" + this.jdField_a_of_type_Long + "], mChoosedLinkType[" + this.jdField_a_of_type_Lyw.b + "]");
-      if (this.jdField_a_of_type_Lyw.b == -1)
-      {
-        this.jdField_a_of_type_Lyw.c(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
-        return;
-      }
-      this.jdField_a_of_type_Lyw.a(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
-      return;
-      label414:
-      j = -1;
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

@@ -1,13 +1,78 @@
-import java.util.ArrayList;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class bgmd
-  implements bgki
+class bgmd
+  implements SensorEventListener
 {
-  public abstract void a(ArrayList<bgkm> paramArrayList, boolean paramBoolean);
+  bgmd(bgma parambgma) {}
   
-  public abstract boolean a();
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public abstract void d();
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    this.a.e = ("Current step data:" + String.valueOf(paramSensorEvent.values[0]));
+    QLog.d("HealthStepCounterPlugin", 1, "onSensorChanged:" + this.a.e);
+    if ((bgma.jdField_b_of_type_Int == 1) && (bgma.jdField_b_of_type_Boolean))
+    {
+      this.a.c = ((int)paramSensorEvent.values[0]);
+      bgma.jdField_b_of_type_Boolean = false;
+    }
+    if (bgma.jdField_b_of_type_Int == 3)
+    {
+      bgma.jdField_b_of_type_Int = 0;
+      this.a.d = ((int)paramSensorEvent.values[0]);
+    }
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      try
+      {
+        paramSensorEvent = new JSONObject();
+        paramSensorEvent.put("retCode", 0);
+        paramSensorEvent.put("step", this.a.d - this.a.c);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("source", "none");
+        paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, localJSONObject);
+        if (bgma.a)
+        {
+          this.a.mRuntime.a().loadUrl("javascript:" + paramSensorEvent);
+          QLog.d("HealthStepCounterPlugin", 1, "Steps detect:" + (this.a.d - this.a.c));
+          bgma.a = false;
+        }
+        bgma.jdField_b_of_type_Boolean = true;
+        return;
+      }
+      catch (Exception paramSensorEvent)
+      {
+        paramSensorEvent = new JSONObject();
+      }
+      try
+      {
+        paramSensorEvent.put("retCode", -1);
+        paramSensorEvent.put("step", 0);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("source", "none");
+        this.a.dispatchJsEvent("StepsDetect", paramSensorEvent, localJSONObject);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
+      }
+      catch (JSONException paramSensorEvent)
+      {
+        for (;;)
+        {
+          paramSensorEvent.printStackTrace();
+        }
+      }
+    }
+  }
 }
 
 

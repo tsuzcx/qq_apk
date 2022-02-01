@@ -1,32 +1,55 @@
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
 
-class alec
-  implements EIPCOnGetConnectionListener
+public class alec
+  extends Handler
 {
-  alec(aleb paramaleb) {}
+  public alec(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramEIPCConnection != null) {
-      aleb.a(this.a, paramEIPCConnection.procName);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 8193: 
+    case 8194: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (QQSpecialCareSettingActivity.a(this.a) == null)
+            {
+              QQSpecialCareSettingActivity.a(this.a, new bhht(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
+          try
+          {
+            QQSpecialCareSettingActivity.a(this.a).show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        return;
+      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
+      QQSpecialCareSettingActivity.a(this.a).dismiss();
+      QQSpecialCareSettingActivity.a(this.a, null);
+      return;
     }
-    aleb.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    if (QQSpecialCareSettingActivity.a(this.a) != null) {
+      QQSpecialCareSettingActivity.a(this.a).cancel();
     }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      aleb.a(this.a, paramEIPCConnection.procName);
-    }
-    aleb.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
-    }
+    QQSpecialCareSettingActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
   }
 }
 

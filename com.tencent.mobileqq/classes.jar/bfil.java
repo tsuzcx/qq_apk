@@ -1,110 +1,53 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.util.List;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.util.DisplayUtil;
+import org.json.JSONObject;
 
 public class bfil
-  implements bfer
+  implements View.OnTouchListener
 {
-  public bfil(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bfil(TroopGiftActionButton paramTroopGiftActionButton, TextView paramTextView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      break label37;
-    }
-    label37:
-    while ((paramInt1 <= 0) && (paramInt2 <= 0)) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_Bfex.b.length();
-    int k = this.a.jdField_a_of_type_Bfex.a.length();
-    int n = this.a.jdField_a_of_type_Bfex.c.length() + (j + k);
-    if ((paramInt1 < this.a.A.length() + n) && (paramInt2 < this.a.A.length() + n))
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        blgx.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
-        return;
+      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+      paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
+      paramMotionEvent.setDuration(100L);
+      paramMotionEvent.setAnimationListener(new bfim(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
+      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
+      Object localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setShape(1);
+      ((GradientDrawable)localObject).setCornerRadius(DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
+      ((GradientDrawable)localObject).setAlpha(192);
+      paramMotionEvent.setImageDrawable((Drawable)localObject);
+      localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
+      localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
+      ((ScaleAnimation)localObject).setDuration(150L);
+      ((ScaleAnimation)localObject).setAnimationListener(new bfin(this, paramMotionEvent));
+      paramMotionEvent.startAnimation((Animation)localObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
     }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.A.length() + n)
-      {
-        paramInt1 = paramInt2;
-        label203:
-        if (paramInt1 <= i) {
-          break label439;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-      paramInt1 = this.a.A.length() + n;
-      break label203;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.A.length() + n) {
-          label258:
-          if (paramInt1 <= i) {
-            break label434;
-          }
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-        return;
-        paramInt1 = this.a.A.length() + n;
-        break label258;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Bfex.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.A.length() + n)
-        {
-          j = n + this.a.A.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.A.length() + n)
-        {
-          paramInt1 = n + this.a.A.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
-            return;
-            i = paramInt1;
-          }
-          break;
-          paramInt1 = paramInt2;
-        }
-        label434:
-        i = paramInt1;
-      }
-      label439:
-      i = paramInt1;
-    }
+    return true;
   }
 }
 

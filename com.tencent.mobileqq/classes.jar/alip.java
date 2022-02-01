@@ -1,38 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.data.PhoneContact;
 
-final class alip
-  implements View.OnTouchListener
+public abstract interface alip
 {
-  private float b = 1.0F;
-  
-  alip(float paramFloat) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.b = paramView.getAlpha();
-      paramView.setAlpha(this.a);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        paramView.setAlpha(this.b);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!alil.a(paramView, i, j)) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
-  }
+  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
 }
 
 

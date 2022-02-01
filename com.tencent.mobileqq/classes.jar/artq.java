@@ -1,106 +1,106 @@
-import android.graphics.Canvas;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TreeSet;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
-public abstract class artq
+public class artq
+  implements RadioGroup.OnCheckedChangeListener
 {
-  protected int a;
-  protected artr a;
-  protected arul a;
-  protected final arvd a;
-  protected arvq a;
-  protected arvv a;
-  private ArrayList<arvg> a;
-  protected final List<aruc> a;
-  protected final TreeSet<aruc> a;
+  public artq(FMActivity paramFMActivity) {}
   
-  protected artq(arul paramarul, artr paramartr, Comparator<aruc> paramComparator, arvv paramarvv, arvq paramarvq)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.jdField_a_of_type_Arul = paramarul;
-    this.jdField_a_of_type_Artr = paramartr;
-    this.jdField_a_of_type_Arvv = paramarvv;
-    this.jdField_a_of_type_Arvq = paramarvq;
-    this.jdField_a_of_type_Arvd = new arvd(paramartr);
-    this.jdField_a_of_type_JavaUtilTreeSet = new TreeSet(paramComparator);
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    a();
-  }
-  
-  public static artq a(arul paramarul, artr paramartr, Comparator<aruc> paramComparator, arvv paramarvv, arvq paramarvq)
-  {
-    return new arub(paramarul, paramartr, paramComparator, paramarvv, paramarvq);
-  }
-  
-  private void a(Canvas paramCanvas, arul paramarul, long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramCanvas != null))
+    int i = 1;
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.a.g();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((arvg)localIterator.next()).a(paramCanvas, paramarul, paramLong);
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
+    }
+    if ((paramInt == 2131376027) && (this.a.jdField_b_of_type_AndroidWidgetRadioButton.isChecked()))
+    {
+      this.a.a().f();
+      FMActivity.b(this.a);
+      this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+      this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+      if (FMActivity.a(this.a)) {
+        this.a.d.setSelected(false);
+      }
+      this.a.i(false);
+      FMActivity.a(this.a, 1);
+      i = 0;
+    }
+    for (;;)
+    {
+      SharedPreferences.Editor localEditor = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      localEditor.putInt("last_select_tab_type", i);
+      localEditor.commit();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if ((paramInt == 2131370307) && (this.a.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().e();
+        FMActivity.c(this.a);
+        if ((this.a.i == 0) && (this.a.f)) {
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        }
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+        if (FMActivity.a(this.a)) {
+          this.a.d.setSelected(false);
+        }
+        this.a.i(false);
+        FMActivity.a(this.a, 2);
+      }
+      else if ((paramInt == 2131364661) && (this.a.jdField_c_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().d();
+        FMActivity.b(this.a, 2);
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        if (FMActivity.a(this.a)) {
+          this.a.d.setSelected(false);
+        }
+        this.a.i(false);
+        FMActivity.a(this.a, 0);
+        i = 2;
+      }
+      else if ((paramInt == 2131366338) && (this.a.d.isChecked()))
+      {
+        this.a.a().g();
+        FMActivity.d(this.a);
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.i(false);
+        FMActivity.a(this.a, 5);
+        bcef.b(this.a.app, "dc00898", "", "", "0X800AFA6", "0X800AFA6", 0, 0, "", "", "", "");
+        i = 1408041718;
+      }
+      else
+      {
+        i = -1;
       }
     }
   }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract aruc a(arvz paramarvz);
-  
-  public List<aruc> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a() {}
-  
-  public final void a(Canvas paramCanvas, long paramLong)
-  {
-    b(paramCanvas, paramLong);
-    a(paramCanvas, this.jdField_a_of_type_Arul, paramLong);
-  }
-  
-  protected void a(Canvas paramCanvas, aruc paramaruc)
-  {
-    arvc localarvc = this.jdField_a_of_type_Arul.a(paramaruc);
-    this.jdField_a_of_type_Arvd.a(paramCanvas, paramaruc, this.jdField_a_of_type_Arul, localarvc);
-    paramaruc.f();
-  }
-  
-  public void a(aruc paramaruc)
-  {
-    this.jdField_a_of_type_JavaUtilTreeSet.add(paramaruc);
-  }
-  
-  public abstract void b();
-  
-  public abstract void b(Canvas paramCanvas, long paramLong);
-  
-  public void b(aruc paramaruc)
-  {
-    paramaruc.c(true);
-    paramaruc.d(true);
-    float f = paramaruc.f();
-    artz.a(this.jdField_a_of_type_Arul, paramaruc);
-    paramaruc.c((paramaruc.f() + paramaruc.f()) / (f + paramaruc.f()));
-  }
-  
-  public abstract void c();
-  
-  public abstract void c(aruc paramaruc);
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public abstract void d(aruc paramaruc);
 }
 
 

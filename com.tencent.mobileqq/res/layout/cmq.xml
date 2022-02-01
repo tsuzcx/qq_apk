@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mu8" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/mu9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_alignParentTop="true" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/muc" android:layout_width="150.0dip" android:layout_height="30.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/alh" android:ellipsize="end" android:id="@id/muh" android:background="@drawable/bkn" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:paddingRight="6.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_above="@id/mua" />
-    <RelativeLayout android:id="@id/mua" android:background="@drawable/d0a" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/mu9">
-        <include layout="@layout/cu1" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/mub" android:background="@drawable/bkf" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mu9">
-        <include layout="@layout/cu2" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/ntw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ViewStub android:id="@id/mez" android:visibility="gone" android:layout="@layout/c_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krd" android:visibility="gone" android:layout="@layout/cmr" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krc" android:visibility="gone" android:layout="@layout/ab4" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" />
+</LinearLayout>

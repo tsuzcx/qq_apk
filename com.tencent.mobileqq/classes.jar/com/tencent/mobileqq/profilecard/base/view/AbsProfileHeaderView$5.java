@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profilecard.base.view;
 
+import amtj;
 import android.widget.TextView;
-import anzj;
-import azyk;
-import bdll;
-import bhkx;
-import bhuk;
+import aymz;
+import bcef;
+import bfue;
+import bgaz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.util.Pair;
@@ -34,7 +34,7 @@ class AbsProfileHeaderView$5
     label177:
     for (int i = ((Integer)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.get(0)).second).intValue();; i = 0)
     {
-      i = azyk.a().a(this.jdField_a_of_type_AndroidWidgetTextView, (String)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.get(0)).second, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, this.jdField_a_of_type_Int, (String)localObject, i);
+      i = aymz.a().a(this.jdField_a_of_type_AndroidWidgetTextView, (String)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.get(0)).second, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, this.jdField_a_of_type_Int, (String)localObject, i);
       if (i != -2147483648) {
         break label182;
       }
@@ -43,11 +43,11 @@ class AbsProfileHeaderView$5
       break;
     }
     label182:
-    Object localObject = new bhuk();
-    ((bhuk)localObject).a(0, anzj.a(2131707371), 0);
-    bhkx.a(this.jdField_a_of_type_AndroidWidgetTextView, 0 - i, 0, (bhuk)localObject);
-    azyk.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bdll.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
+    Object localObject = new bgaz();
+    ((bgaz)localObject).a(0, amtj.a(2131707603), 0);
+    bfue.a(this.jdField_a_of_type_AndroidWidgetTextView, 0 - i, 0, (bgaz)localObject);
+    aymz.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bcef.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
   }
 }
 

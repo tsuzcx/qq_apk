@@ -1,22 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.1;
-import mqq.app.QQPermissionCallback;
+import java.util.Comparator;
 
-public class awgu
-  implements QQPermissionCallback
+final class awgu
+  implements Comparator<String>
 {
-  public awgu(IdentificationApiPlugin.2.1 param1) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a(String paramString1, String paramString2)
   {
-    bhlq.a(awgr.a(this.a.jdField_a_of_type_Awgt.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
-    awgr.a(this.a.jdField_a_of_type_Awgt.a, paramArrayOfString);
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
+    }
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

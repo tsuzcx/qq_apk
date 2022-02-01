@@ -1,61 +1,24 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class yeb
-  implements yel
+class yeb
+  implements View.OnClickListener
 {
-  public yeb(QQStoryMainActivity paramQQStoryMainActivity) {}
+  yeb(ydv paramydv) {}
   
-  public View a()
+  public void onClick(View paramView)
   {
-    return QQStoryMainActivity.a(this.a);
-  }
-  
-  public ImageView a()
-  {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.startTitleProgress();
-      return;
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.mBusinessId == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
     }
-    this.a.stopTitleProgress();
+    xwb.a("0X80076C6");
+    xwb.b("0X80075DA");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QQStoryMainActivity.a(this.a, win.a, anzj.a(2131709826));
-      return;
-    }
-    a(win.a);
-  }
-  
-  public void c() {}
 }
 
 

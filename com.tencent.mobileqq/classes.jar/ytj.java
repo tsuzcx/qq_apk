@@ -1,17 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class ytj
-  implements yqe
+  extends QQUIEventReceiver<StoryNickNameView, wci>
 {
-  ytj(ysw paramysw) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public ytj(@NonNull StoryNickNameView paramStoryNickNameView)
   {
-    yuk.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
+    super(paramStoryNickNameView);
+  }
+  
+  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull wci paramwci)
+  {
+    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
+    do
+    {
+      return;
+      if ((paramwci.jdField_a_of_type_JavaUtilList == null) || (paramwci.jdField_a_of_type_JavaUtilList.size() == 0))
+      {
+        xvv.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
+        return;
+      }
+      if (TextUtils.equals(paramwci.b, "Q.qqstoryStoryNickNameView")) {
+        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramwci.jdField_a_of_type_JavaUtilList.get(0));
+      }
+    } while (!TextUtils.equals(paramwci.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
+    paramStoryNickNameView.a((QQUserUIItem)paramwci.jdField_a_of_type_JavaUtilList.get(0));
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wci.class;
   }
 }
 

@@ -5,13 +5,13 @@ import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 abstract class GameGrowthGuardianManager$GuardInstructionDialog
@@ -100,18 +100,18 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     if ((getContext() == null) || (getGuardInstruction() == null)) {
       return;
     }
-    bhpc localbhpc = bhlq.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
+    QQCustomDialog localQQCustomDialog = bfur.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
     if (getPositiveDialogAction() != null) {
-      localbhpc.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
+      localQQCustomDialog.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
     }
     if (getNegativeDialogAction() != null) {
-      localbhpc.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
+      localQQCustomDialog.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
     }
     GameGrowthGuardianManager.GuardInstructionDialog.2 local2 = new GameGrowthGuardianManager.GuardInstructionDialog.2(this);
-    localbhpc.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
-    localbhpc.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
-    localbhpc.setCancelable(false);
-    localbhpc.show();
+    localQQCustomDialog.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
+    localQQCustomDialog.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.show();
   }
   
   public Context getContext()

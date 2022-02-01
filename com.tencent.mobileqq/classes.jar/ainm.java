@@ -1,24 +1,11 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.15.1;
+import com.tencent.widget.SingleLineTextView;
 
 public class ainm
-  implements Animation.AnimationListener
+  extends allu
 {
-  ainm(ainh paramainh) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.t = 5;
-    ainh.c(this.a).post(new PublicAccountChatPie.15.1(this));
-    this.a.a.sendEmptyMessage(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public SingleLineTextView a;
+  public Object a;
+  public SingleLineTextView b;
 }
 
 

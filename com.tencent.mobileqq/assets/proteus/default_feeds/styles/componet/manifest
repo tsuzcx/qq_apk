@@ -4,13 +4,16 @@ QA_partner_header_for_none_img_cell.geojson
 RIJ_biu_big_video.geojson
 RIJ_biu_more_image.geojson
 RIJ_biu_small_image_article.geojson
+RIJ_bottom_mark.geojson
 RIJ_column_capsule.geojson
 RIJ_dislike_button.geojson
 RIJ_feeds_social_header.geojson
 RIJ_follow_mark.geojson
+RIJ_novel_social_header.geojson
+RIJ_novel_text.geojson
+RIJ_round_corner.geojson
 RIJ_social_header_padding_view.geojson
-ad_biu_small_image_pgc.geojson
-ad_biu_small_image_ugc.geojson
+RIJ_top_mark.geojson
 ad_download_star.geojson
 ad_tag_list.geojson
 android
@@ -29,11 +32,11 @@ img_biu_bottom.geojson
 info_bar.geojson
 jump_channel_bar.geojson
 label.geojson
-large_image_info_bar.geojson
 live_info_bottom_common_cell.geojson
 live_info_video_common_cell.geojson
 live_status_cell.geojson
 multi_video_tail.geojson
+novel_social_bottom_share.geojson
 pack_bottom.geojson
 pgc_big_content.geojson
 pgc_biu_comment_with_avatar.geojson
@@ -41,8 +44,9 @@ pgc_small_content.geojson
 pgc_video_content.geojson
 read_article.geojson
 separator.geojson
+separator_normal_bottom.geojson
+separator_special_bottom.geojson
 social_bottom.geojson
-social_bottom_share.geojson
 social_bottom_share_style_a.geojson
 social_header.geojson
 social_header_partner.geojson
@@ -53,4 +57,3 @@ super_topic_white.geojson
 topic_recommend_header.geojson
 topic_recommend_header_style2.geojson
 ugc_biu_comment_with_avatar.geojson
-video_set_header.geojson

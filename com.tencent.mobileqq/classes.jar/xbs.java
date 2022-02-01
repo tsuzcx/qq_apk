@@ -1,60 +1,72 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class xbs
-  extends wzl
-  implements woy<xdg, xew>
+  extends vlc
 {
-  protected String a;
-  protected List<String> a;
+  public xbs(QQStoryShieldActivity paramQQStoryShieldActivity) {}
   
-  public xbs(String paramString, List<String> paramList)
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
+      }
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
+      }
+    }
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
+      return;
+      paramBoolean = false;
+      break;
     }
   }
   
-  public void a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    xdg localxdg = new xdg();
-    localxdg.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    wow.a().a(localxdg, this);
-  }
-  
-  public void a(@NonNull xdg paramxdg, @Nullable xew paramxew, @NonNull ErrorMessage paramErrorMessage)
-  {
-    paramxdg = new xbt();
-    if ((paramxew == null) || (paramErrorMessage.isFail()))
-    {
-      c();
-      wjj.a().dispatch(paramxdg);
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Bhhw.b();
+    if (paramBoolean1) {
       return;
     }
-    b();
-    paramxew.jdField_a_of_type_JavaUtilList = ((wte)wth.a(5)).a(paramxew.jdField_a_of_type_JavaUtilList);
-    paramxdg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramxew = paramxew.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramxew.hasNext())
+    QQToast.a(this.a, 2131694314, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
     {
-      paramErrorMessage = (StoryVideoItem)paramxew.next();
-      paramErrorMessage = new ykj(paramErrorMessage.mVid, paramErrorMessage);
-      paramxdg.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
     }
-    wjj.a().dispatch(paramxdg);
-  }
-  
-  public String toString()
-  {
-    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    {
+      localSwitch.setChecked(paramBoolean1);
+      return;
+    }
   }
 }
 

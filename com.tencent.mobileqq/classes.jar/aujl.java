@@ -1,62 +1,77 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 class aujl
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
+  
   aujl(aujj paramaujj) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool1 = true;
-    switch (paramView.getId())
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
+      paramContext = aujj.a(this.jdField_a_of_type_Aujj).iterator();
+      while (paramContext.hasNext()) {
+        ((aujm)paramContext.next()).b(false);
+      }
+    }
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      paramContext = aujj.a(this.jdField_a_of_type_Aujj).iterator();
+      while (paramContext.hasNext()) {
+        ((aujm)paramContext.next()).b(true);
+      }
+    }
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      paramContext = aujj.a(this.jdField_a_of_type_Aujj).iterator();
+      while (paramContext.hasNext()) {
+        ((aujm)paramContext.next()).c(true);
+      }
+    }
+    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
+    {
+      paramContext = aujj.a(this.jdField_a_of_type_Aujj).iterator();
+      while (paramContext.hasNext()) {
+        ((aujm)paramContext.next()).c(false);
+      }
+    }
+    if ("VolumeBtnDown".equals(paramIntent.getAction()))
+    {
+      paramContext = aujj.a(this.jdField_a_of_type_Aujj).iterator();
+      while (paramContext.hasNext()) {
+        ((aujm)paramContext.next()).i();
+      }
+    }
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if (paramContext != null) {
+        break label294;
+      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (aujj.a(this.a) != null)
+      label294:
+      if (paramContext.equals("homekey"))
       {
-        boolean bool2 = aujj.a(this.a).isPlaying();
-        if (bool2)
+        paramContext = aujj.a(this.jdField_a_of_type_Aujj).iterator();
+        while (paramContext.hasNext())
         {
-          aujj.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-          aunh.a("0X8004BE5");
-          this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(aujj.a(this.a));
-          aujj.a(this.a);
-          label130:
-          localObject = this.a.jdField_a_of_type_Aukp;
-          if (bool2) {
-            break label171;
-          }
-        }
-        for (;;)
-        {
-          ((aukp)localObject).d(bool1);
-          break;
-          aujj.b(this.a);
-          aujj.c(this.a);
-          break label130;
-          label171:
-          bool1 = false;
-        }
-        Object localObject = this.a.jdField_a_of_type_Augj.b();
-        aujj.a(this.a, (ArrayList[])localObject);
-        String str = this.a.a() + "(" + auog.a(this.a.jdField_a_of_type_Augj.c()) + ")";
-        this.a.a((ArrayList[])localObject, str);
-        continue;
-        this.a.n();
-        continue;
-        int i = this.a.jdField_a_of_type_Augj.i();
-        int j = this.a.jdField_a_of_type_Augj.h();
-        if ((i == 6) && (j == 1) && (this.a.jdField_a_of_type_Augj.a() != null)) {
-          this.a.jdField_a_of_type_Augj.a().a();
+          ((aujm)paramContext.next()).h();
+          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
         }
       }
     }

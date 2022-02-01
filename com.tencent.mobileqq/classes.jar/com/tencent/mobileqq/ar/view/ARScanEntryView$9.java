@@ -1,42 +1,27 @@
 package com.tencent.mobileqq.ar.view;
 
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import aoci;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
 
 class ARScanEntryView$9
   implements Runnable
 {
-  ARScanEntryView$9(ARScanEntryView paramARScanEntryView, boolean paramBoolean) {}
+  ARScanEntryView$9(ARScanEntryView paramARScanEntryView, aoci paramaoci) {}
   
   public void run()
   {
-    int j = 0;
-    Object localObject = ARScanEntryView.a(this.this$0);
-    if (this.a)
+    ARScanEntryView.b(this.this$0, true);
+    ARScanEntryView.c(this.this$0);
+    ARScanEntryView.d(this.this$0);
+    ARScanEntryView.a(this.this$0, false);
+    if ((this.this$0.d) && (this.this$0.j))
     {
-      i = 0;
-      ((RelativeLayout)localObject).setVisibility(i);
-      if ((!this.a) || (ARScanEntryView.c(this.this$0)) || (ARScanEntryView.d(this.this$0))) {
-        break label79;
-      }
-      i = 1;
-      label53:
-      localObject = this.this$0.d;
-      if (i == 0) {
-        break label84;
-      }
-    }
-    label79:
-    label84:
-    for (int i = j;; i = 8)
-    {
-      ((TextView)localObject).setVisibility(i);
+      this.this$0.i();
       return;
-      i = 8;
-      break;
-      i = 0;
-      break label53;
     }
+    ARScanEntryView.a(this.this$0, this.a.a.a.a);
+    this.this$0.e = true;
   }
 }
 

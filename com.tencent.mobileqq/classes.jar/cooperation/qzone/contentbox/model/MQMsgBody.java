@@ -21,52 +21,7 @@ public class MQMsgBody
   public String title = "";
   public ArrayList<String> vecUserAvatar;
   
-  private static ArrayList<MQPhotoCell> a(ArrayList<PhotoCell> paramArrayList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        PhotoCell localPhotoCell = (PhotoCell)paramArrayList.next();
-        if (localPhotoCell != null) {
-          localArrayList.add(MQPhotoCell.readFrom(localPhotoCell));
-        }
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  private static ArrayList<MQPhotoCell> a(JSONArray paramJSONArray)
-  {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramJSONArray.length()) {
-        try
-        {
-          localArrayList.add(MQPhotoCell.parseFromJson(paramJSONArray.getJSONObject(i)));
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QZLog.e("QZoneMsgManager.MQMsgBody", "parseArrayList error", localException);
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private static JSONArray a(ArrayList<String> paramArrayList)
+  private static JSONArray convertAvatarToJsonArray(ArrayList<String> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return null;
@@ -79,7 +34,20 @@ public class MQMsgBody
     return localJSONArray;
   }
   
-  private static ArrayList<String> b(JSONArray paramJSONArray)
+  private static JSONArray convertPhotoCellToJsonArray(ArrayList<MQPhotoCell> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return null;
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      localJSONArray.put(((MQPhotoCell)paramArrayList.next()).convertToJson());
+    }
+    return localJSONArray;
+  }
+  
+  private static ArrayList<String> parseAvatarArrayList(JSONArray paramJSONArray)
   {
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
       return null;
@@ -106,19 +74,6 @@ public class MQMsgBody
     return localArrayList;
   }
   
-  private static JSONArray b(ArrayList<MQPhotoCell> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localJSONArray.put(((MQPhotoCell)paramArrayList.next()).convertToJson());
-    }
-    return localJSONArray;
-  }
-  
   public static MQMsgBody parseFromJson(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
@@ -130,8 +85,8 @@ public class MQMsgBody
       localMQMsgBody.mediaType = paramJSONObject.optInt("mediaType");
       localMQMsgBody.title = paramJSONObject.optString("title");
       localMQMsgBody.content = paramJSONObject.optString("content");
-      localMQMsgBody.photolist = a(paramJSONObject.optJSONArray("photolist"));
-      localMQMsgBody.vecUserAvatar = b(paramJSONObject.optJSONArray("vecUserAvatar"));
+      localMQMsgBody.photolist = parsePhotoCellArrayList(paramJSONObject.optJSONArray("photolist"));
+      localMQMsgBody.vecUserAvatar = parseAvatarArrayList(paramJSONObject.optJSONArray("vecUserAvatar"));
       localMQMsgBody.coverPicUrl = paramJSONObject.optString("coverPicUrl");
       localMQMsgBody.contentIcon = paramJSONObject.optString("contentIcon");
       return localMQMsgBody;
@@ -143,17 +98,62 @@ public class MQMsgBody
     return localMQMsgBody;
   }
   
+  private static ArrayList<MQPhotoCell> parsePhotoCellArrayList(JSONArray paramJSONArray)
+  {
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramJSONArray.length()) {
+        try
+        {
+          localArrayList.add(MQPhotoCell.parseFromJson(paramJSONArray.getJSONObject(i)));
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QZLog.e("QZoneMsgManager.MQMsgBody", "parseArrayList error", localException);
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
   public static MQMsgBody readFrom(MsgBody paramMsgBody)
   {
     MQMsgBody localMQMsgBody = new MQMsgBody();
     localMQMsgBody.mediaType = paramMsgBody.mediaType;
     localMQMsgBody.title = paramMsgBody.title;
     localMQMsgBody.content = paramMsgBody.content;
-    localMQMsgBody.photolist = a(paramMsgBody.vecPhotos);
+    localMQMsgBody.photolist = readFrom(paramMsgBody.vecPhotos);
     localMQMsgBody.vecUserAvatar = paramMsgBody.vecUserAvatar;
     localMQMsgBody.coverPicUrl = paramMsgBody.coverPicUrl;
     localMQMsgBody.contentIcon = paramMsgBody.contentIcon;
     return localMQMsgBody;
+  }
+  
+  private static ArrayList<MQPhotoCell> readFrom(ArrayList<PhotoCell> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        PhotoCell localPhotoCell = (PhotoCell)paramArrayList.next();
+        if (localPhotoCell != null) {
+          localArrayList.add(MQPhotoCell.readFrom(localPhotoCell));
+        }
+      }
+      return localArrayList;
+    }
+    return null;
   }
   
   public JSONObject convertToJson()
@@ -164,8 +164,8 @@ public class MQMsgBody
       localJSONObject.put("mediaType", this.mediaType);
       localJSONObject.put("title", this.title);
       localJSONObject.put("content", this.content);
-      localJSONObject.put("photolist", b(this.photolist));
-      localJSONObject.put("vecUserAvatar", a(this.vecUserAvatar));
+      localJSONObject.put("photolist", convertPhotoCellToJsonArray(this.photolist));
+      localJSONObject.put("vecUserAvatar", convertAvatarToJsonArray(this.vecUserAvatar));
       localJSONObject.put("coverPicUrl", this.coverPicUrl);
       localJSONObject.put("contentIcon", this.contentIcon);
       return localJSONObject;

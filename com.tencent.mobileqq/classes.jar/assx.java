@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class assx
-  implements View.OnClickListener
+public abstract interface assx
 {
-  public assx(RelatedEmoSlideBottomPanel paramRelatedEmoSlideBottomPanel) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onClick(View paramView)
-  {
-    RelatedEmoSlideBottomPanel.a(this.a, 1);
-    RelatedEmoSlideBottomPanel.a(this.a, this.a.getMeasuredHeight());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void ar_();
+  
+  public abstract void as_();
+  
+  public abstract void c();
 }
 
 

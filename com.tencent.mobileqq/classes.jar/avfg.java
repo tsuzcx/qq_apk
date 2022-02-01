@@ -1,55 +1,33 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
+import android.view.accessibility.AccessibilityManager;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class avfg
-  implements blop
+  implements View.OnHoverListener
 {
-  public avfg(NowLiveFragment paramNowLiveFragment) {}
+  public avfg(LocationPickFragment paramLocationPickFragment) {}
   
-  public void a(bloo parambloo)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (parambloo.a)
+    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
+    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
     {
-    default: 
-      return;
-    case 0: 
-      parambloo = this.a.getActivity().getIntent().getStringExtra("big_brother_source_key");
-      if (awcc.a())
+      if (paramView.requestFocus()) {
+        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
+      }
+      if (!LocationPickFragment.a(this.a).b())
       {
-        localObject = new Bundle();
-        if (!TextUtils.isEmpty(parambloo)) {
-          ((Bundle)localObject).putString("big_brother_source_key", parambloo);
-        }
-        awcc.b((Bundle)localObject);
-        return;
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
       }
-      localObject = "" + this.a.c;
-      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      if (!TextUtils.isEmpty(parambloo)) {
-        localIntent.putExtra("big_brother_source_key", parambloo);
-      }
-      localIntent.putExtra("reqType", 1);
-      this.a.startActivity(localIntent);
-      return;
-    case 1: 
-      parambloo = "" + this.a.d;
-      localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", parambloo);
-      ((Intent)localObject).putExtra("reqType", 1);
-      this.a.startActivity((Intent)localObject);
-      return;
+      bcef.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
     }
-    parambloo = "" + this.a.e;
-    Object localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", parambloo);
-    ((Intent)localObject).putExtra("reqType", 1);
-    ((Intent)localObject).putExtra("title", anzj.a(2131706549));
-    this.a.startActivity((Intent)localObject);
+    return false;
   }
 }
 

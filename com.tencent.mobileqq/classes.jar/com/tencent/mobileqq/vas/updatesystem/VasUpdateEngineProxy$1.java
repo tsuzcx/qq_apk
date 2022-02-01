@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.vas.updatesystem;
 
-import bidp;
-import bidq;
-import bidr;
+import bgka;
+import bgkb;
+import bgkc;
 import com.tencent.qphone.base.util.QLog;
 
 public class VasUpdateEngineProxy$1
   implements Runnable
 {
-  public VasUpdateEngineProxy$1(bidr parambidr) {}
+  public VasUpdateEngineProxy$1(bgkc parambgkc) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (bidq.a())
+    if (bgkb.a())
     {
-      bidr.a(this.this$0);
-      bidr.a(this.this$0).startUpdateAllItem();
+      bgkc.a(this.this$0);
+      bgkc.a(this.this$0).startUpdateAllItem();
     }
     for (;;)
     {
       QLog.e("VasUpdateEngineProxy", 1, "VasUpdate startUpdateAllItem current consume = " + (System.currentTimeMillis() - l));
       return;
-      bidr.a(this.this$0).startUpdateAllItem();
+      bgkc.a(this.this$0).startUpdateAllItem();
     }
   }
 }

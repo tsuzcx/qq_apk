@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import bdll;
+import bcef;
 import java.util.List;
 
 class SelectMemberActivity$19
@@ -10,7 +10,7 @@ class SelectMemberActivity$19
   
   public void run()
   {
-    bdll.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.a, String.valueOf(this.this$0.a().size()), "", "");
+    bcef.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.val$troopUin, String.valueOf(this.this$0.getResultUins().size()), "", "");
   }
 }
 

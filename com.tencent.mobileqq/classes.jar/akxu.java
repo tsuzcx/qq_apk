@@ -1,28 +1,47 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import tencent.im.qqwallet.QWalletPubAdReport.QueryReq;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class akxu
-  implements bmrs
+public class akxu
+  extends akyc
 {
-  akxu(akxs paramakxs, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, long paramLong) {}
+  protected final BaseChatPie a;
+  private int[] a;
   
-  public void a(int paramInt, String... paramVarArgs)
+  public akxu(BaseChatPie paramBaseChatPie)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  void a(bgaz parambgaz, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Integer localInteger = null;
+    if ((parambgaz != null) && (parambgaz.a() > 0))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+        break label107;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurrentAIOState() < 8)
+      {
+        if ((this.jdField_a_of_type_ArrayOfInt == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mInputBar != null))
+        {
+          this.jdField_a_of_type_ArrayOfInt = new int[2];
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mInputBar.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+        }
+        if (this.jdField_a_of_type_ArrayOfInt != null) {
+          break label93;
+        }
+      }
+    }
+    for (;;)
+    {
+      a(paramView, paramInt1, paramInt2, parambgaz, paramInt3, false, localInteger);
       return;
+      label93:
+      localInteger = Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletGdtAdManager", 2, "get getPskeyAsync success");
-    }
-    paramVarArgs = akxs.a(this.jdField_a_of_type_Akxs, paramVarArgs[0], this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), akwq.class);
-    localNewIntent.putExtra("cmd", "ReportSvc.Query");
-    localNewIntent.putExtra("data", bhuf.a(paramVarArgs.toByteArray()));
-    localNewIntent.setObserver(new akxv(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    label107:
+    a(paramView, paramInt1, paramInt2, parambgaz, paramInt3, false, null);
   }
 }
 

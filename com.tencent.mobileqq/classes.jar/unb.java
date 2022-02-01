@@ -1,36 +1,36 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import org.json.JSONObject;
 
 public class unb
-  extends umw<WSRedDotPushMsg, WSPushStrategyInfo>
+  extends umt
 {
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
+  public long a;
+  public boolean a;
   
-  public unb(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public unb(JSONObject paramJSONObject)
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    super(paramJSONObject);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public static unb a(JSONObject paramJSONObject)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Int == 2)
+    return new unb(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
     {
-      WSVerticalPageFragment.a(paramContext, "aio_new_msg", "direct", null, 0);
-      bool = true;
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
+      return;
     }
-    while (this.jdField_a_of_type_Int != 6) {
-      return bool;
-    }
-    ueg.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Umn);
-    return true;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 3600L;
+  }
+  
+  public String toString()
+  {
+    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

@@ -1,34 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Rect;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class blnd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private int b;
-  private int c;
+  public blnd(AECropperImageView paramAECropperImageView, float paramFloat) {}
   
-  private blnd(Bitmap paramBitmap, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-    if (paramBitmap != null)
-    {
-      this.b = paramBitmap.getScaledWidth(paramInt);
-      this.c = paramBitmap.getScaledHeight(paramInt);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    if (AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, paramValueAnimator) <= AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView)) {
       return;
     }
-    this.jdField_a_of_type_Int = 4;
-  }
-  
-  private void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    double d = Math.pow(AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView) / this.jdField_a_of_type_Float, 0.0500000007450581D);
+    paramValueAnimator.postScale((float)d, (float)d, AECropperImageView.b(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView), AECropperImageView.c(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
 }
 

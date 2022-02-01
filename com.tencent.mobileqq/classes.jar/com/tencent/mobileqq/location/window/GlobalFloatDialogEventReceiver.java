@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import awud;
+import avhj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GlobalFloatDialogEventReceiver
   extends BroadcastReceiver
 {
-  private awud a;
+  private avhj a;
   
   private void b()
   {
@@ -40,20 +40,20 @@ public class GlobalFloatDialogEventReceiver
     BaseApplicationImpl.context.unregisterReceiver(this);
   }
   
-  public void a(awud paramawud)
+  public void a(avhj paramavhj)
   {
-    this.a = paramawud;
-    paramawud = new IntentFilter();
-    paramawud.addAction("tencent.mobileqq.floatingscreen.statuschange");
-    paramawud.addAction("mqq.intent.action.QQ_BACKGROUND");
-    paramawud.addAction("mqq.intent.action.QQ_FOREGROUND");
-    paramawud.addAction("mqq.intent.action.ACCOUNT_CHANGED");
-    paramawud.addAction("mqq.intent.action.ACCOUNT_KICKED");
-    paramawud.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    paramawud.addAction("mqq.intent.action.FORCE_LOGOUT");
-    paramawud.addAction("mqq.intent.action.LOGOUT");
-    paramawud.addAction("android.intent.action.SCREEN_OFF");
-    BaseApplicationImpl.context.registerReceiver(this, paramawud);
+    this.a = paramavhj;
+    paramavhj = new IntentFilter();
+    paramavhj.addAction("tencent.mobileqq.floatingscreen.statuschange");
+    paramavhj.addAction("mqq.intent.action.QQ_BACKGROUND");
+    paramavhj.addAction("mqq.intent.action.QQ_FOREGROUND");
+    paramavhj.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    paramavhj.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    paramavhj.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    paramavhj.addAction("mqq.intent.action.FORCE_LOGOUT");
+    paramavhj.addAction("mqq.intent.action.LOGOUT");
+    paramavhj.addAction("android.intent.action.SCREEN_OFF");
+    BaseApplicationImpl.context.registerReceiver(this, paramavhj);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)

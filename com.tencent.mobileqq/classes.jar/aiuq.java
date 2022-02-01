@@ -1,70 +1,13 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.widget.ProgressBar;
 
 public class aiuq
-  implements aiwf
 {
-  private long jdField_a_of_type_Long = -1L;
-  private aiwh jdField_a_of_type_Aiwh;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public aiuq(aiwh paramaiwh, Context paramContext)
+  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aiwh = paramaiwh;
-  }
-  
-  public int a()
-  {
-    return 55;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558584, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362496));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aiur(this));
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
-      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
-    }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362494);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(paramDrawable);
-      }
-    }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 16;
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
+    localValueAnimator.addUpdateListener(new aiur(paramProgressBar));
+    return localValueAnimator;
   }
 }
 

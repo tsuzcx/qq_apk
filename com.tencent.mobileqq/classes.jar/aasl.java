@@ -1,22 +1,8 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class aasl
-  extends aoky
+public abstract interface aasl
 {
-  public aasl(TroopMemberApiService paramTroopMemberApiService) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
-  {
-    if (paramBoolean) {
-      this.a.a(147, paramBundle);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
-  }
+  public abstract void a(View paramView, aasm paramaasm);
 }
 
 

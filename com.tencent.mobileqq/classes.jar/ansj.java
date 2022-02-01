@@ -1,24 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ansj
+  extends anri
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<View.OnClickListener> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  
-  public ansj(View paramView, int paramInt1, String paramString, int paramInt2, View.OnClickListener paramOnClickListener)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    if (paramOnClickListener != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnClickListener);
+    paramQQAppInterface = new ansg(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qstory";
+    paramQQAppInterface.c = "opencontent";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,41 +1,26 @@
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class asaf
-  extends aogi
+  implements View.OnLongClickListener
 {
-  public asaf(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  public asaf(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): isSucc=" + paramBoolean);
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
     }
-    if ((!this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView == null) || (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
-    label141:
-    for (;;)
-    {
-      return;
-      int i = 0;
-      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).tabType != 7) {}
-      }
-      for (;;)
-      {
-        if (i < 0) {
-          break label141;
-        }
-        BaseMsgBoxActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(i));
-        return;
-        i += 1;
-        break;
-        i = -1;
-      }
-    }
+    paramView.setSelected(true);
+    bgaz localbgaz = new bgaz();
+    localbgaz.a(2131367097, paramView.getContext().getString(2131692448));
+    localbgaz.a(2131365376, paramView.getContext().getString(2131691363));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbgaz);
+    this.a.a = bfue.a(paramView, localbgaz, new asag(this, paramView), new asai(this, paramView));
+    return true;
   }
 }
 

@@ -30,12 +30,12 @@ public class RingAvatarView
   
   public void showStarRing()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130849477));
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130849389));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView
  * JD-Core Version:    0.7.0.1
  */

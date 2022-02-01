@@ -1,43 +1,41 @@
 package dov.com.qq.im.ae.camera.core;
 
-import alwd;
-import alyi;
-import boiw;
-import boja;
+import aktu;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 
-public class AECameraManager$3
+class AECameraManager$3
   implements Runnable
 {
-  public AECameraManager$3(boiw paramboiw, boja paramboja) {}
+  AECameraManager$3(AECameraManager paramAECameraManager, AECameraManager.CameraOpenCallback paramCameraOpenCallback) {}
   
   public void run()
   {
-    boiw.a(this.this$0, false);
-    alwd localalwd;
-    if (boiw.a(this.this$0) == 1)
+    boolean bool = true;
+    AECameraManager.access$100(this.this$0, false);
+    aktu localaktu;
+    if (AECameraManager.access$200(this.this$0) == 1)
     {
-      boiw.a(this.this$0, 2);
-      aluf.a = boiw.a(this.this$0);
-      if (boiw.a(this.this$0) != null)
+      AECameraManager.access$202(this.this$0, 2);
+      akrw.a = AECameraManager.access$200(this.this$0);
+      if (AECameraManager.access$300(this.this$0) != null)
       {
-        localalwd = boiw.a(this.this$0);
-        if (boiw.a(this.this$0) != 1) {
-          break label127;
+        localaktu = AECameraManager.access$300(this.this$0);
+        if (AECameraManager.access$200(this.this$0) != 1) {
+          break label120;
         }
       }
     }
-    label127:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localalwd.a(bool);
-      boiw.a(this.this$0, false);
-      QmcfManager.getInstance().setCameraMode(boiw.a(this.this$0));
-      alyi.a().a(true);
-      boiw.a(this.this$0, this.a);
+      localaktu.a(bool);
+      AECameraManager.access$402(this.this$0, false);
+      QmcfManager.getInstance().setCameraMode(AECameraManager.access$200(this.this$0));
+      AECameraManager.access$000(this.this$0, this.val$cameraOpenCallback);
       return;
-      boiw.a(this.this$0, 1);
+      AECameraManager.access$202(this.this$0, 1);
       break;
+      label120:
+      bool = false;
     }
   }
 }

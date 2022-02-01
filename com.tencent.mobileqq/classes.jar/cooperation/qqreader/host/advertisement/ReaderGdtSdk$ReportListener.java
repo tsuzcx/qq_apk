@@ -1,11 +1,11 @@
 package cooperation.qqreader.host.advertisement;
 
-import acvm;
+import abrw;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 public abstract class ReaderGdtSdk$ReportListener
-  implements acvm
+  implements abrw
 {
   private ReaderAdWrapper a;
   
@@ -16,7 +16,7 @@ public abstract class ReaderGdtSdk$ReportListener
   
   public final void reportImpression(View paramView)
   {
-    if (paramView.getTag(2131381107) == this.a.a()) {
+    if (paramView.getTag(2131380829) == this.a.a()) {
       reportImpression(paramView, this.a);
     }
   }

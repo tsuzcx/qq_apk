@@ -1,11 +1,8 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import android.view.View;
 
 public abstract interface bjwx
 {
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(List<DownloadInfo> paramList);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

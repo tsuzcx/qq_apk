@@ -1,25 +1,20 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
-class rvx
-  extends odq
+public class rvx
+  implements Animation.AnimationListener
 {
-  private rvx(rvs paramrvs) {}
+  public rvx(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    super.a(paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      rvs.a(this.a).addAll(rvs.a(this.a).a(paramBundle));
-      this.a.f();
-    }
+    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

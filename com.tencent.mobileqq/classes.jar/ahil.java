@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class ahil
-  extends ahkx
+  extends amsu
 {
-  ahil(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahil(ahik paramahik) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onAddFriend(String paramString)
   {
-    return new agyb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (this.a.sessionInfo.curFriendUin.equals(paramString))
+    {
+      Intent localIntent = this.a.mActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      ahik.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
+    }
   }
 }
 

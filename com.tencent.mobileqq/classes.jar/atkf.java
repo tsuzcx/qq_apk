@@ -1,59 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class atkf
-  implements View.OnClickListener
+class atkf
+  implements EIPCResultCallback
 {
-  public atkf(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  atkf(atke paramatke) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof atkr))
+    if (!paramEIPCResult.isSuccess())
     {
-      localObject = (atkr)paramView.getTag();
-      i = ((atkr)localObject).c;
-      localObject = (WeiYunFileInfo)((atkr)localObject).a;
-    }
-    for (;;)
-    {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
-      {
-        if ((paramView.getId() == 2131366604) && (QfileBaseCloudFileTabView.c(this.a))) {
-          bdll.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131366604) {
-          break label155;
-        }
-      }
-      label155:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!(localObject instanceof atjl)) {
-          break label160;
-        }
-        localObject = (WeiYunFileInfo)((atjl)paramView.getTag()).a;
-        i = -1;
-        break;
-      }
-      label160:
-      i = 0;
-      localObject = null;
+      QLog.d("QFlutter.launcher", 1, "install IPC fail");
+      atjz.b();
+      atke.a(this.a, 1, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkf
  * JD-Core Version:    0.7.0.1
  */

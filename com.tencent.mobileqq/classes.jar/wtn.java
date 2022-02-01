@@ -1,52 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.TrimmableManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class wtn
-  implements wsp
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private CopyOnWriteArraySet<wsq> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  vnf jdField_a_of_type_Vnf;
   
-  public wtn()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new wto());
-  }
+  private wtn(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  private void b(int paramInt)
+  public vnf a()
   {
-    yuk.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (this.jdField_a_of_type_Vnf == null) {
+      this.jdField_a_of_type_Vnf = new vnf();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((wsq)localIterator.next()).a(paramInt);
+    return this.jdField_a_of_type_Vnf;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Vnf != null) {
+      this.jdField_a_of_type_Vnf.a();
     }
-    System.gc();
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
-  }
-  
-  public void a(wsq paramwsq)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramwsq);
-  }
-  
-  public void b() {}
-  
-  public void b(wsq paramwsq)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramwsq);
   }
 }
 

@@ -1,65 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class qxo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$Transaction;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$ITransaction;", "task", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "(Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;)V", "recordTimeInMs", "", "Ljava/lang/Integer;", "commit", "", "key", "", "updateRecordTimeInMs", "timeInMs", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qxo
+  implements qxn
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private final RIJRewardTask jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask;
+  private Integer jdField_a_of_type_JavaLangInteger;
   
-  public static qxo a(feeds_info.AccountProfile paramAccountProfile)
+  public qxo(@NotNull RIJRewardTask paramRIJRewardTask)
   {
-    Object localObject;
-    if (paramAccountProfile == null) {
-      localObject = null;
-    }
-    qxo localqxo;
-    do
-    {
-      return localObject;
-      localqxo = new qxo();
-      localqxo.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
-      localqxo.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
-      if (paramAccountProfile.bytes_desc.has()) {
-        localqxo.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
-      }
-      if (paramAccountProfile.bytes_profile_photo_url.has()) {
-        localqxo.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
-      }
-      if (paramAccountProfile.bytes_nick.has()) {
-        localqxo.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
-      }
-      localObject = localqxo;
-    } while (!paramAccountProfile.bytes_home_page_url.has());
-    localqxo.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
-    return localqxo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask = paramRIJRewardTask;
   }
   
-  public feeds_info.AccountProfile a()
+  @NotNull
+  public qxn a(int paramInt)
   {
-    feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
-    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
-    return localAccountProfile;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask.a(paramInt);
+    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt);
+    return (qxn)this;
+  }
+  
+  public void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    qzl.a(paramString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask);
   }
 }
 

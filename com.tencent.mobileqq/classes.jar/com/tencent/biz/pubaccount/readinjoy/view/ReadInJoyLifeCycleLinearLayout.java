@@ -4,13 +4,13 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import qjh;
-import sdx;
-import sdz;
+import qpk;
+import slf;
+import slh;
 
 public class ReadInJoyLifeCycleLinearLayout
   extends LinearLayout
-  implements sdx
+  implements slf
 {
   private boolean a;
   
@@ -22,11 +22,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void a()
   {
     Object localObject = getTag();
-    if ((localObject instanceof qjh))
+    if ((localObject instanceof qpk))
     {
-      localObject = ((qjh)localObject).a();
-      if ((localObject instanceof sdz)) {
-        ((sdz)localObject).a();
+      localObject = ((qpk)localObject).a();
+      if ((localObject instanceof slh)) {
+        ((slh)localObject).a();
       }
     }
   }
@@ -39,11 +39,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void b()
   {
     Object localObject = getTag();
-    if ((localObject instanceof qjh))
+    if ((localObject instanceof qpk))
     {
-      localObject = ((qjh)localObject).a();
-      if ((localObject instanceof sdz)) {
-        ((sdz)localObject).b();
+      localObject = ((qpk)localObject).a();
+      if ((localObject instanceof slh)) {
+        ((slh)localObject).b();
       }
     }
   }
@@ -55,7 +55,7 @@ public class ReadInJoyLifeCycleLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout
  * JD-Core Version:    0.7.0.1
  */

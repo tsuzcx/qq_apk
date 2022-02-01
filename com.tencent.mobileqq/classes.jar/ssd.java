@@ -1,14 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import java.util.Map;
 
-final class ssd
-  implements ssg
+public class ssd
+  implements puy
 {
-  ssd(sse paramsse) {}
+  public ssd(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean, List<BaseData> paramList)
+  public void a(int paramInt, Map<Long, rcz> paramMap)
   {
-    this.a.a(paramList);
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).a(paramMap);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).notifyDataSetChanged();
+      }
+      FastWebActivity.q(this.a);
+    }
   }
 }
 

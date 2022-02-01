@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBasicInfo;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public final class bnat
-  implements Parcelable.Creator<WeishiBasicInfo>
+class bnat
+  implements EIPCOnGetConnectionListener
 {
-  public WeishiBasicInfo a(Parcel paramParcel)
+  bnat(bnar parambnar) {}
+  
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    return new WeishiBasicInfo(paramParcel);
+    if (paramEIPCConnection != null) {
+      bnar.a(this.a, paramEIPCConnection.procName);
+    }
+    bnar.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
+    }
   }
   
-  public WeishiBasicInfo[] a(int paramInt)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    return new WeishiBasicInfo[paramInt];
+    if (paramEIPCConnection != null) {
+      bnar.a(this.a, paramEIPCConnection.procName);
+    }
+    bnar.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bnar.a(this.a));
+    }
   }
 }
 

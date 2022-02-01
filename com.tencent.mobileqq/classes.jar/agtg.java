@@ -1,8 +1,7 @@
-public abstract interface agtg
+class agtg
+  extends aexg
 {
-  public abstract void a();
-  
-  public abstract void b();
+  agtg(agtf paramagtf) {}
 }
 
 

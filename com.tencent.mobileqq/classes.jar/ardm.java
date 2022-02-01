@@ -1,67 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
 
 public class ardm
-  extends arac<ardl>
+  implements alup
 {
-  @NonNull
-  public ardl a(int paramInt)
+  public ardm(MessengerService.IncomingHandler.4 param4) {}
+  
+  public void a()
   {
-    return new ardl().b("0");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 0);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
   }
   
-  @Nullable
-  public ardl a(araj[] paramArrayOfaraj)
+  public void a(int paramInt)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      ardl localardl = ardl.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localardl;
-    }
-    return null;
-  }
-  
-  public void a(ardl paramardl) {}
-  
-  public Class<ardl> clazz()
-  {
-    return ardl.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 452;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", paramInt);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardm
  * JD-Core Version:    0.7.0.1
  */

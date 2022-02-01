@@ -1,27 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class xxx
-  extends QQUIEventReceiver<xxn, xas>
+class xxx
+  implements yfx
 {
-  public xxx(@NonNull xxn paramxxn)
+  xxx(xxs paramxxs) {}
+  
+  public void a()
   {
-    super(paramxxn);
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    xxs.a(this.a);
   }
   
-  public void a(@NonNull xxn paramxxn, @NonNull xas paramxas)
+  public void a(String paramString)
   {
-    if (paramxas.a.isSuccess())
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    xzd localxzd = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
     {
-      yuk.a(paramxxn.b, "receive user info event. %s.", paramxas.toString());
-      paramxxn.i();
+      localxzd.a("download_face", 0, 0, new String[] { str, paramString });
+      xwb.b("0X80075DD");
+      if (!((ydh)vux.a(8)).a(paramString, true)) {
+        xvv.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
     }
   }
   
-  public Class acceptEventClass()
+  public void b(String paramString)
   {
-    return xas.class;
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

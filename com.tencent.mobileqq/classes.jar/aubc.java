@@ -1,32 +1,101 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.PayJsPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
-public abstract interface aubc
+public class aubc
+  extends bgsp
+  implements bgtk
 {
-  public abstract int a();
+  private static final String TAG = "QQGameWebViewBuilder";
   
-  public abstract long a();
+  public aubc(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  {
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
+  }
   
-  public abstract FileManagerEntity a();
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+    paramArrayList.add(new WadlWebViewJsPlugin());
+    paramArrayList.add(new aubd());
+    paramArrayList.add(new QWalletPayJsPlugin());
+    paramArrayList.add(new PayJsPlugin());
+    paramArrayList.add(new QWalletCommonJsPlugin());
+    paramArrayList.add(new QWalletBluetoothJsPlugin());
+    paramArrayList.add(new auui());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new autg());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+    paramArrayList.add(new bgnd());
+    paramArrayList.add(new QWalletMixJsPlugin());
+    paramArrayList.add(new aada());
+  }
   
-  public abstract String a();
+  public void buildBottomBar() {}
   
-  public abstract void a(Object paramObject, int paramInt);
+  public void buildContentView(Bundle paramBundle) {}
   
-  public abstract boolean a();
+  public void buildData() {}
   
-  public abstract void aE_();
+  public void buildLayout() {}
   
-  public abstract int b();
+  public void buildTitleBar() {}
   
-  public abstract void b();
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
   
-  public abstract int c();
+  public void onDestroy()
+  {
+    super.doOnDestroy();
+  }
   
-  public abstract void c();
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
   
-  public abstract void d();
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
   
-  public abstract void e();
+  public void onPause()
+  {
+    super.doOnPause();
+  }
+  
+  public void onResume()
+  {
+    super.doOnResume();
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

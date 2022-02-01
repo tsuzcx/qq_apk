@@ -1,23 +1,33 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
-
 public class bddp
 {
-  public static String a(Context paramContext)
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  
+  public bddp()
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public static String b(Context paramContext)
+  public String toString()
   {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
+    return "ClockInData{troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isHasClock=" + this.jdField_a_of_type_Boolean + ", needPlayClockAnim=" + this.jdField_b_of_type_Boolean + ", firstClockUin='" + this.jdField_b_of_type_JavaLangString + '\'' + ", firstClockDescText='" + this.c + '\'' + ", firstClockUserName='" + this.d + '\'' + ", noClockInBgLayerUrl='" + this.e + '\'' + ", noClockInLeftText='" + this.f + '\'' + ", noClockInRightText='" + this.g + '\'' + ", noClockInBtnText='" + this.h + '\'' + ", hasClockDescText='" + this.i + '\'' + ", selfClockTime=" + this.jdField_a_of_type_Long + ", clockRankDescText='" + this.j + '\'' + ", hasClockDaysText='" + this.k + '\'' + ", troopClockUrl='" + this.l + '\'' + ", scoreUrl='" + this.m + '\'' + ", hasClockBgUrl='" + this.n + '\'' + '}';
   }
 }
 

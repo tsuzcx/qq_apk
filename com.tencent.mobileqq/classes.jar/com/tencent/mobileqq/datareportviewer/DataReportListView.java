@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ListView;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class DataReportListView
   extends ListView
@@ -19,14 +19,14 @@ public class DataReportListView
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    if (getMeasuredHeight() > bhgr.a(getContext(), 100.0F)) {
-      setMeasuredDimension(paramInt1, bhgr.a(getContext(), 100.0F));
+    if (getMeasuredHeight() > DisplayUtil.dip2px(getContext(), 100.0F)) {
+      setMeasuredDimension(paramInt1, DisplayUtil.dip2px(getContext(), 100.0F));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 
-public class alse
-  extends BroadcastReceiver
+public abstract interface alse
 {
-  public alse(LoginView paramLoginView) {}
+  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, alsd paramalsd, long paramLong);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
-    LoginView.a(this.a, true);
-  }
+  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
+  
+  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  
+  public abstract void onGameCheckRetry(int paramInt);
+  
+  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
+  
+  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
+  
+  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
 }
 
 

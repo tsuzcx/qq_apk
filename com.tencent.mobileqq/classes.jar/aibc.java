@@ -1,22 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
 
 public class aibc
-  implements aumz
+  implements aiob
 {
-  public aibc(AIOFileVideoData paramAIOFileVideoData, Context paramContext, aksn paramaksn) {}
+  public aibc(TroopView paramTroopView) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Aksn.b();
-      this.jdField_a_of_type_Aksn.f();
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).a(paramInt1, paramInt2);
     }
+    if (paramInt1 >= paramInt2) {
+      if (!TroopView.a(this.a))
+      {
+        TroopView.a(this.a, true);
+        if (this.a.a != null) {
+          this.a.a.a(TroopView.a(this.a));
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!TroopView.a(this.a));
+      TroopView.a(this.a, false);
+    } while (this.a.a == null);
+    this.a.a.a(TroopView.a(this.a));
   }
-  
-  public void b() {}
 }
 
 

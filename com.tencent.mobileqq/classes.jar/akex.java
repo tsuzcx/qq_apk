@@ -1,21 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
 public class akex
-  implements View.OnTouchListener
 {
-  public akex(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public QQAppInterface a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(MessageForScribble paramMessageForScribble, String paramString, ayeo paramayeo)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mFileType = 262153;
+    localTransferRequest.mSelfUin = paramMessageForScribble.selfuin;
+    localTransferRequest.mPeerUin = paramMessageForScribble.frienduin;
+    localTransferRequest.mUinType = paramMessageForScribble.istroop;
+    localTransferRequest.mUniseq = paramMessageForScribble.uniseq;
+    localTransferRequest.mUpCallBack = paramayeo;
+    localTransferRequest.mLocalPath = paramString;
+    localTransferRequest.mRec = paramMessageForScribble;
+    paramMessageForScribble.fileUploadStatus = 3;
+    this.a.getTransFileController().transferAsync(localTransferRequest);
+    return true;
   }
 }
 

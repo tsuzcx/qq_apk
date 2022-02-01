@@ -1,24 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-final class bhol
-  extends aojs
+public abstract interface bhol
 {
-  bhol(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  public abstract bhom getCodec(String paramString);
   
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
-    if (paramBoolean) {
-      bhon.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-  }
+  public abstract int send(Object paramObject);
+  
+  public abstract void setNetTransportEventListener(String paramString, bhon parambhon);
 }
 
 

@@ -1,7 +1,17 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerController$Companion;", "", "()V", "DATA_SET_AVATAR_STATUS", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oon {}
+public class oon
+  implements bhhv
+{
+  public oon(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  
+  public void a()
+  {
+    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
+      this.a.finish();
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

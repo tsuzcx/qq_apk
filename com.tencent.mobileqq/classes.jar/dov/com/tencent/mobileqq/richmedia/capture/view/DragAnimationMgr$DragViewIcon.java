@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
 import android.view.ViewGroup;
-import brer;
+import bnyb;
 import com.tencent.qphone.base.util.QLog;
 
 public class DragAnimationMgr$DragViewIcon

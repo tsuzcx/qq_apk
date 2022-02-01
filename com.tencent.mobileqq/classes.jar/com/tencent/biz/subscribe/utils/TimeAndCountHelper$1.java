@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.utils;
 
-import aans;
-import aant;
 import android.content.Context;
 import java.util.TimerTask;
+import zkn;
+import zko;
 
 public class TimeAndCountHelper$1
   extends TimerTask
 {
-  public TimeAndCountHelper$1(aans paramaans, Context paramContext, String paramString, aant paramaant) {}
+  public TimeAndCountHelper$1(zkn paramzkn, Context paramContext, String paramString, zko paramzko) {}
   
   public void run()
   {
-    aans.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aant);
+    zkn.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zko);
   }
 }
 

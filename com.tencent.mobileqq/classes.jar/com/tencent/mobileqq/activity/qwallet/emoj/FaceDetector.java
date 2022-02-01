@@ -1,18 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import alil;
-import android.content.Context;
 import android.graphics.PointF;
 import android.text.TextUtils;
-import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import ltv;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 public class FaceDetector
 {
@@ -67,133 +59,6 @@ public class FaceDetector
       return new float[0];
     }
     return ((FaceInfo)this.faceInfos.get(paramInt)).angles;
-  }
-  
-  public List<QWalletFaceTracker.ExpressionInfo> parseExpressionConfigFromJson(Context paramContext, String paramString1, String paramString2)
-  {
-    try
-    {
-      paramContext = alil.b(paramString1);
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        paramContext = (JSONObject)new JSONTokener(paramContext).nextValue();
-        if (paramContext == null) {
-          break label470;
-        }
-      }
-    }
-    catch (JSONException paramString1)
-    {
-      try
-      {
-        paramString2 = paramContext.optJSONArray("expressionList");
-        if (paramString2 == null) {
-          break label470;
-        }
-        paramContext = new ArrayList();
-        i = 0;
-        paramString1 = paramContext;
-      }
-      catch (JSONException paramContext)
-      {
-        try
-        {
-          int i;
-          ltv localltv;
-          int j;
-          for (;;)
-          {
-            if (i >= paramString2.length()) {
-              break label464;
-            }
-            paramString1 = new QWalletFaceTracker.ExpressionInfo();
-            localltv = new ltv();
-            paramString1.expressionItem = localltv;
-            localObject = paramString2.getJSONObject(i);
-            paramString1.coolValue = ((JSONObject)localObject).optDouble("coolValue");
-            paramString1.perfectValue = ((JSONObject)localObject).optInt("perfectValue");
-            localltv.expressionID = ((JSONObject)localObject).optString("expressionID");
-            localJSONArray = ((JSONObject)localObject).optJSONArray("expressionFeat");
-            if (localJSONArray == null) {
-              break;
-            }
-            localltv.expressionFeat = new ArrayList();
-            j = 0;
-            while (j < localJSONArray.length() / 2)
-            {
-              localltv.expressionFeat.add(new PointF(localJSONArray.optInt(j * 2), localJSONArray.optInt(j * 2 + 1)));
-              j += 1;
-            }
-            paramContext = paramContext;
-            paramContext.printStackTrace();
-            paramContext = null;
-          }
-          JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("expressionAngle");
-          if ((localJSONArray != null) && (localJSONArray.length() == 3)) {
-            localltv.expressionAngle = convertJsonAngle2NormalAngle(new float[] { (float)localJSONArray.optDouble(0), (float)localJSONArray.optDouble(1), (float)localJSONArray.optDouble(2) });
-          }
-          localJSONArray = ((JSONObject)localObject).optJSONArray("expressionWeight");
-          if ((localJSONArray != null) && (localJSONArray.length() == 7))
-          {
-            localltv.expressionWeight = new double[7];
-            j = 0;
-          }
-          while (j < 7)
-          {
-            localltv.expressionWeight[j] = localJSONArray.optDouble(j);
-            j += 1;
-            continue;
-            localltv.expressionWeight = WEIGHT;
-          }
-          Object localObject = ((JSONObject)localObject).optJSONArray("expressionMaxNeedRefine");
-          if ((localObject != null) && (((JSONArray)localObject).length() == 3))
-          {
-            localltv.a = new int[3];
-            localltv.a[0] = ((JSONArray)localObject).optInt(0);
-            localltv.a[1] = ((JSONArray)localObject).optInt(1);
-            localltv.a[2] = ((JSONArray)localObject).optInt(2);
-          }
-          paramContext.add(paramString1);
-          i += 1;
-        }
-        catch (JSONException paramString1)
-        {
-          break label458;
-        }
-        paramString1 = paramString1;
-        paramContext = null;
-      }
-      label458:
-      paramString1.printStackTrace();
-      paramString1 = paramContext;
-    }
-    label464:
-    return paramString1;
-    label470:
-    return null;
-  }
-  
-  public void updatePointsAndAngles(QWalletFaceTracker.FaceStatus[] paramArrayOfFaceStatus)
-  {
-    this.faceInfos.clear();
-    if (paramArrayOfFaceStatus != null)
-    {
-      int i = 0;
-      while (i < paramArrayOfFaceStatus.length)
-      {
-        QWalletFaceTracker.FaceStatus localFaceStatus = paramArrayOfFaceStatus[i];
-        FaceInfo localFaceInfo = new FaceInfo();
-        localFaceInfo.points = YoutuPointsUtil.transformYTPointsToPtuPoints(localFaceStatus.xys);
-        localFaceInfo.angles[0] = ((float)(localFaceStatus.pitch * 3.141592653589793D / 180.0D) * -1.0F);
-        localFaceInfo.angles[1] = ((float)(localFaceStatus.yaw * 3.141592653589793D / 180.0D) * -1.0F);
-        localFaceInfo.angles[2] = ((float)(localFaceStatus.roll * 3.141592653589793D / 180.0D) * -1.0F);
-        localFaceInfo.pitch = localFaceStatus.pitch;
-        localFaceInfo.yaw = (-localFaceStatus.yaw);
-        localFaceInfo.roll = (-localFaceStatus.roll);
-        this.faceInfos.add(localFaceInfo);
-        i += 1;
-      }
-    }
   }
 }
 

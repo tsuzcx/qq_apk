@@ -1,10 +1,19 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface sye
+class sye
+  extends BroadcastReceiver
 {
-  public abstract void a(View paramView, int paramInt, long paramLong);
+  sye(sya paramsya) {}
   
-  public abstract void b(View paramView, int paramInt, long paramLong);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
+    this.a.b(false, -1, -1);
+  }
 }
 
 

@@ -1,30 +1,57 @@
-import android.content.Intent;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-class nex
-  implements EIPCResultCallback
+public class nex
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  nex(new paramnew, String paramString, int paramInt) {}
+  public nex(GuessSongStageView paramGuessSongStageView, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onGlobalLayout()
   {
-    if ((paramEIPCResult == null) || (!paramEIPCResult.isSuccess()))
+    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getPaddingRight();
+    if (QLog.isColorLevel())
     {
-      paramEIPCResult = new Intent("action_notify_av_game_room_changed");
-      paramEIPCResult.putExtra("action_key_room_id", this.jdField_a_of_type_JavaLangString);
-      paramEIPCResult.putExtra("action_key_status", this.jdField_a_of_type_Int);
-      new.a(this.jdField_a_of_type_New).getApp().sendBroadcast(paramEIPCResult);
-      QLog.d("AVGameClientQIPCModule", 2, "status change with broadcast " + this.jdField_a_of_type_Int + " " + this.jdField_a_of_type_JavaLangString);
+      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
+      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getWidth());
+      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips caluWidth  = " + i);
     }
+    ViewGroup.LayoutParams localLayoutParams;
+    if (i > 0)
+    {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      if (nju.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b) <= 1) {
+        break label282;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_New.a().b());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessSongStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
+      }
+    }
+    label282:
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_New.a().a());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    } while (!QLog.isColorLevel());
+    QLog.d("GuessSongStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nex
  * JD-Core Version:    0.7.0.1
  */

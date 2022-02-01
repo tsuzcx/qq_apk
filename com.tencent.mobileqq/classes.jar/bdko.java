@@ -1,11 +1,22 @@
-import java.text.SimpleDateFormat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bdko
-  extends ThreadLocal<SimpleDateFormat>
+public class bdko
+  implements View.OnClickListener
 {
-  protected SimpleDateFormat a()
+  public bdko(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  
+  public void onClick(View paramView)
   {
-    return new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
+    if (WriteTogetherEditorFragment.a(this.a).a() == CreatingState.TEMPLATE_SHOW_ENTRANCE)
+    {
+      bcef.b(null, "dc00898", "", "", "0X800B357", "0X800B357", 0, 0, "", "", "", "");
+      WriteTogetherEditorFragment.a(this.a).a(CreatingState.TEMPLATE_SHOW_LAYER);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

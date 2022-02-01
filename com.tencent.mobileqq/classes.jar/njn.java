@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class njn
-  implements bhtj<Integer>
+final class njn
+  implements QQPermissionCallback
 {
-  public njn(PoiMapActivity paramPoiMapActivity) {}
+  njn(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(bhtd<Integer> parambhtd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    parambhtd = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    parambhtd.bottomMargin = (this.a.o - paramInteger.intValue());
-    this.a.b.setLayoutParams(parambhtd);
+    QLog.w(njk.a, 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 0);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.w(njk.a, 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 1);
   }
 }
 

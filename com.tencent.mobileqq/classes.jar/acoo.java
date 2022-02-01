@@ -1,133 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.canvas.AdCanvas;
-import com.tencent.ad.tangram.canvas.AdCanvasJsonManager;
-import com.tencent.ad.tangram.offline.AdOffline;
-import com.tencent.ad.tangram.statistics.AdRelationTargetMatch;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtPreLoader.1;
-import com.tencent.gdtad.aditem.GdtPreLoader.2;
-import com.tencent.gdtad.aditem.GdtPreLoader.3;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
-public final class acoo
+public class acoo
+  implements View.OnFocusChangeListener
 {
-  private static volatile acoo a;
+  public acoo(AddAccountActivity paramAddAccountActivity) {}
   
-  public static acoo a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new acoo();
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
       }
-      return a;
     }
-    finally {}
-  }
-  
-  private void b(GdtAd paramGdtAd)
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if ((localBaseApplication == null) || (paramGdtAd == null) || (!paramGdtAd.isValid()))
-    {
-      acvc.d("GdtPreLoader", "dealAdReltargetMatch error params error");
-      return;
-    }
-    AdRelationTargetMatch.handle(new WeakReference(localBaseApplication), paramGdtAd);
-  }
-  
-  private void c(GdtAd paramGdtAd)
-  {
-    int i = 0;
-    AdCanvasJsonManager.getInstance().init(BaseApplicationImpl.getContext());
-    if (!AdCanvas.INSTANCE.isEnable(BaseApplicationImpl.getContext())) {}
-    do
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText) || (true != paramBoolean))
     {
       do
       {
         return;
-      } while ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (TextUtils.isEmpty(paramGdtAd.getCanvas())));
-      if ((paramGdtAd.isWebXiJing()) || (paramGdtAd.isAppXiJing()) || (paramGdtAd.isAppXiJingDefault())) {
-        i = 1;
-      }
-    } while (i == 0);
-    try
-    {
-      Object localObject = new JSONObject(paramGdtAd.getCanvas());
-      String str = ((JSONObject)localObject).optString("canvas_json_key");
-      localObject = ((JSONObject)localObject).optString("canvas_json_url");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramGdtAd, str, false))))
-      {
-        AdCanvasJsonManager.getInstance().preloadCanvasJson(paramGdtAd, str, (String)localObject);
-        return;
-      }
-    }
-    catch (JSONException paramGdtAd)
-    {
-      acvc.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error", paramGdtAd);
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
-    acvc.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error");
-  }
-  
-  private void d(GdtAd paramGdtAd)
-  {
-    if (!AdOffline.INSTANCE.isEnable(BaseApplicationImpl.getContext())) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramGdtAd == null) || (!paramGdtAd.isValid()) || ((!paramGdtAd.isAppXiJingOffline()) && (!paramGdtAd.isWebXiJingOffline())));
-      AdThreadManager.INSTANCE.post(new GdtPreLoader.2(this, paramGdtAd), 5);
-      AdCanvasJsonManager.getInstance().init(BaseApplicationImpl.getContext());
-    } while (!TextUtils.isEmpty(AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramGdtAd, paramGdtAd.getJSONKeyForXiJingOffline(), false)));
-    AdCanvasJsonManager.getInstance().preloadCanvasJson(paramGdtAd, paramGdtAd.getJSONKeyForXiJingOffline(), paramGdtAd.getJSONUrlForXiJingOffline());
-  }
-  
-  private void e(GdtAd paramGdtAd)
-  {
-    acvc.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: ad = [" + paramGdtAd + "]");
-    if (!paramGdtAd.isVideoSplice()) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.3(this, paramGdtAd));
-  }
-  
-  private void f(GdtAd paramGdtAd)
-  {
-    acwf.a().a(BaseApplicationImpl.getContext(), null);
-    if ((paramGdtAd != null) && (paramGdtAd.isInterstitial())) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = acqd.a().a(BaseApplicationImpl.getContext());
-      acvc.b("GdtPreLoader", String.format("preDownloadInterstitialAfterAdLoaded isInterstitial:%b isEnabled:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      if ((bool1) && (bool2)) {
-        acqg.a().b(BaseApplicationImpl.getContext());
-      }
-      return;
-    }
-  }
-  
-  public void a(GdtAd paramGdtAd)
-  {
-    acvc.b("GdtPreLoader", "preLoadAfterAdLoaded");
-    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.1(this, paramGdtAd));
-    e(paramGdtAd);
-    c(paramGdtAd);
-    d(paramGdtAd);
-    f(paramGdtAd);
-    b(paramGdtAd);
-    AdReporterForAnalysis.reportForPreload(BaseApplicationImpl.getContext(), paramGdtAd);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
   }
 }
 

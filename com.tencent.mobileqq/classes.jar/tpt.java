@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 
-final class tpt
-  implements DialogInterface.OnClickListener
+public class tpt
+  implements TextWatcher
 {
-  tpt(DialogInterface.OnClickListener paramOnClickListener) {}
+  public tpt(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
-    this.a.onClick(paramDialogInterface, paramInt);
+    if (paramCharSequence == null)
+    {
+      if (LimitWordCountEditText.a(this.a) != null) {
+        LimitWordCountEditText.a(this.a).a(0);
+      }
+      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
+      return;
+    }
+    if (LimitWordCountEditText.a(this.a) != null) {
+      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
+    }
+    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
   }
 }
 

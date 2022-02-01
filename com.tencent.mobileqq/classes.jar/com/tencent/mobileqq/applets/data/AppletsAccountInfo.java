@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.applets.data;
 
-import bhsr;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.utils.StringUtil;
 import tencent.im.oidb.qqconnect.Appinfo;
 
 public class AppletsAccountInfo
@@ -70,7 +70,7 @@ public class AppletsAccountInfo
   
   public String toString()
   {
-    String str = bhsr.e(String.valueOf(this.uin));
+    String str = StringUtil.getSimpleUinForPrint(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
     localStringBuilder.append(",shortUin:").append(str).append(",nick:").append(this.nick).append(",face_url:").append(this.faceUrl).append(",face_url_simple:").append(this.faceUrlSimple).append(",appInfo:").append(this.appInfo);
     return localStringBuilder.toString();

@@ -1,9 +1,12 @@
-import java.io.Reader;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class avhy
-  extends avhx
+class avhy
+  implements View.OnClickListener
 {
-  protected Reader a;
+  avhy(avhu paramavhu) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

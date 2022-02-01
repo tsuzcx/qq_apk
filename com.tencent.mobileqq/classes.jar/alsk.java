@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-
 public class alsk
-  implements DialogInterface.OnClickListener
 {
-  public alsk(LoginView paramLoginView) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alsk(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    bdll.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

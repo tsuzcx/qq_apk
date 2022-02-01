@@ -1,41 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiax
-  implements aiaq<View>
+class aiax
+  extends LbsManagerService.OnLocationChangeListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  
-  aiax(BaseChatPie paramBaseChatPie)
+  aiax(aiaw paramaiaw, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    super(paramString);
   }
   
-  public int a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return 37;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = ((agti)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(72)).a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public boolean a()
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
+    }
+    this.a.a.a.a.b(false);
   }
 }
 

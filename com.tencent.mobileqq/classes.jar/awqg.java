@@ -1,69 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
 
-public class awqg
+public final class awqg
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public awqg(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    b();
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.h = paramParcel.readInt();
+    localLocalMediaInfo.i = paramParcel.readInt();
+    localLocalMediaInfo.j = paramParcel.readInt();
+    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
+    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.g = paramParcel.readInt();
+    localLocalMediaInfo.f = paramParcel.readInt();
+    return localLocalMediaInfo;
   }
   
-  private void b()
+  public LocalMediaInfo[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    }
-  }
-  
-  private void c()
-  {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
-    bdll.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
-  }
-  
-  private void d()
-  {
-    agju.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
-    }
-    aiaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
-      return;
-    }
-    Object localObject = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aijc)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!((anyw)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
-    {
-      d();
-      return;
-    }
-    localObject = blir.a(this.jdField_a_of_type_AndroidContentContext);
-    ((blir)localObject).a(2131717882, 0);
-    ((blir)localObject).a(2131718151, 0);
-    ((blir)localObject).c(2131690580);
-    ((blir)localObject).a(new awqh(this, (blir)localObject));
-    ((blir)localObject).show();
+    return new LocalMediaInfo[0];
   }
 }
 

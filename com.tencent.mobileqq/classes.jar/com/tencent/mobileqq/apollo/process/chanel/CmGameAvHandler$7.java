@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import anbz;
+import alwt;
 
 public class CmGameAvHandler$7
   implements Runnable
 {
-  public CmGameAvHandler$7(anbz paramanbz) {}
+  public CmGameAvHandler$7(alwt paramalwt) {}
   
   public void run()
   {
-    anbz.a(this.this$0, true);
+    alwt.a(this.this$0, true);
   }
 }
 

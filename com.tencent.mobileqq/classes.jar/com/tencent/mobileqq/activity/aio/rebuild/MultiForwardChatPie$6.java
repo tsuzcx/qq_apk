@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aggs;
-import aimn;
+import aezn;
+import ahia;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 public class MultiForwardChatPie$6
   implements Runnable
 {
-  public MultiForwardChatPie$6(aimn paramaimn, CharSequence paramCharSequence) {}
+  public MultiForwardChatPie$6(ahia paramahia, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    aimn.a(this.this$0).setVisibility(8);
-    aimn.a(this.this$0).setVisibility(0);
-    aimn.a(this.this$0).setVisibility(0);
-    this.this$0.e.setText(this.this$0.h);
-    aimn.a(this.this$0).a(aimn.a(this.this$0), this.a);
-    this.this$0.F();
+    ahia.a(this.this$0).setVisibility(8);
+    ahia.a(this.this$0).setVisibility(0);
+    ahia.a(this.this$0).setVisibility(0);
+    this.this$0.mTitleText.setText(this.this$0.c);
+    ahia.a(this.this$0).a(ahia.a(this.this$0), this.a);
+    this.this$0.b();
   }
 }
 

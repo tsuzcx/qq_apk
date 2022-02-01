@@ -1,58 +1,29 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xae
+public final class xae
+  extends QQUIEventReceiver<wzo, xnu>
 {
-  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
-  
-  @Nullable
-  public static xdk a(String paramString, List<xdk> paramList)
+  public xae(@NonNull wzo paramwzo)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      xdk localxdk = (xdk)paramList.next();
-      if (paramString.equals(localxdk.a)) {
-        return localxdk;
-      }
-    }
-    return null;
+    super(paramwzo);
   }
   
-  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  public void a(@NonNull wzo paramwzo, @NonNull xnu paramxnu)
   {
-    yuk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
-    if (paramBoolean)
+    if ((paramxnu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwzo.a != null) && (TextUtils.equals(paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwzo.a.b)))
     {
-      localObject = paramList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)a.get(str);
-        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
-        {
-          ((Iterator)localObject).remove();
-          yuk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
-        }
-        else
-        {
-          a.put(str, Long.valueOf(System.currentTimeMillis()));
-        }
-      }
+      xvv.a(paramwzo.b, "refresh feed item , feed id :%s", paramwzo.a.b);
+      paramwzo.i();
     }
-    if (paramList.size() == 0) {
-      return;
-    }
-    yuk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
-    Object localObject = new xdj(paramList);
-    wow.a().a((wpa)localObject, new xaf(paramList));
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xnu.class;
   }
 }
 

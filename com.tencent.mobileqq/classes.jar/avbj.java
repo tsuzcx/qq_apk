@@ -1,24 +1,30 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
-public class avbj
-  implements Handler.Callback
+public abstract interface avbj
 {
-  public avbj(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public abstract int a();
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a.jdField_a_of_type_Bhpc != null) && (this.a.jdField_a_of_type_Bhpc.isShowing()) && (this.a.jdField_a_of_type_Avbr != null)) {
-      this.a.jdField_a_of_type_Avbr.a();
-    }
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract void a(avbg paramavbg);
+  
+  public abstract void a(avbh paramavbh);
+  
+  public abstract void a(avbi paramavbi);
+  
+  public abstract void a(avbk paramavbk);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(ISong paramISong);
+  
+  public abstract int b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

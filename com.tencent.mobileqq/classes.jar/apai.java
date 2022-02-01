@@ -1,20 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class apai
-  extends aoxh
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (paramString.startsWith("mqqapi://gamecenter/install"))
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
     {
-      paramQQAppInterface = new apah(paramQQAppInterface, paramContext);
-      paramQQAppInterface.a = paramString;
-      paramQQAppInterface.b = "gamecenter";
-      paramQQAppInterface.c = "install";
-      return paramQQAppInterface;
+      int i = 0;
+      while (i < paramArrayOfFloat1.length)
+      {
+        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
+        i += 1;
+      }
     }
-    return null;
+    return paramArrayOfFloat1;
   }
 }
 

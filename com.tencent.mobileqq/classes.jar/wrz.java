@@ -1,115 +1,109 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-@TargetApi(9)
 public class wrz
-  extends wsg<wsc>
+  extends wry
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private wvd jdField_a_of_type_Wvd = new wsa(this);
-  protected boolean a;
+  private wry a;
   
-  public wrz()
+  public Activity a()
   {
-    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
-    if (localBaseApplicationImpl == null) {
-      throw new IllegalArgumentException("Context should not be null");
+    return this.a.a();
+  }
+  
+  public OpenPlayerBuilder.Data a()
+  {
+    return this.a.a();
+  }
+  
+  public XViewPager a()
+  {
+    return this.a.a();
+  }
+  
+  public String a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public wod a()
+  {
+    return this.a.a();
+  }
+  
+  public wog a()
+  {
+    return this.a.a();
+  }
+  
+  public wrq a()
+  {
+    return this.a.a();
+  }
+  
+  public wry a()
+  {
+    return this.a;
+  }
+  
+  public wsj a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(vlc paramvlc)
+  {
+    this.a.a(paramvlc);
+  }
+  
+  public void a(wqo paramwqo)
+  {
+    this.a.a(paramwqo);
+  }
+  
+  public void a(wry paramwry)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
+    this.a = paramwry;
   }
   
-  public int a()
+  public void a(wsr paramwsr)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("longitude", 0);
+    this.a.a(paramwsr);
   }
   
-  public long a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("time", 0L);
+    return this.a.a();
   }
   
-  public String a()
+  public void b(vlc paramvlc)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("country", "");
+    this.a.b(paramvlc);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void b(wqo paramwqo)
   {
-    xcv localxcv = new xcv(1, paramInt1, paramInt2);
-    wow.a().a(localxcv, new wsb(this));
+    this.a.b(paramwqo);
   }
   
-  protected void a(String paramString, int paramInt)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, paramInt).apply();
-  }
-  
-  protected void a(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, paramLong).apply();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString1, paramString2).apply();
-  }
-  
-  protected void a(wuz paramwuz)
-  {
-    yuk.b("AddressDataProvider", "requestAddress.");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      yuk.d("AddressDataProvider", "is request address ing....");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    wva localwva = (wva)wth.a(9);
-    wuz localwuz = paramwuz;
-    if (paramwuz == null) {
-      localwuz = localwva.b();
-    }
-    if (localwuz != null)
-    {
-      a(localwuz.b, localwuz.a);
-      return;
-    }
-    localwva.a(this.jdField_a_of_type_Wvd);
-    localwva.c();
-  }
-  
-  public boolean a(wsc paramwsc)
-  {
-    return (paramwsc != null) && (!TextUtils.isEmpty(paramwsc.a)) && (!anzj.a(2131698794).equals(paramwsc.a));
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("latitude", 0);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("province", "");
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("city", "");
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("district", "");
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("street", "");
+    return this.a.b();
   }
 }
 

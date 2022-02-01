@@ -1,47 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class aipv
-  extends Handler
 {
-  public aipv(TroopChatPie paramTroopChatPie, Looper paramLooper)
+  public long a;
+  public boolean a;
+  
+  public aipv()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 300000L;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof bgsr));
-        this.a.a((bgsr)paramMessage);
-        return;
-        paramMessage = (PlusPanel)TroopChatPie.f(this.a).b(8);
-      } while (paramMessage == null);
-      paramMessage.a();
-      return;
-    }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
   }
 }
 

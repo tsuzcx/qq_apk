@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app.avgameshare;
 
 import android.app.Activity;
-import aong;
+import angs;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AVGameShareBase$4
   implements Runnable
 {
-  public AVGameShareBase$4(aong paramaong) {}
+  public AVGameShareBase$4(angs paramangs) {}
   
   public void run()
   {
     if ((this.this$0.a() != null) && (!this.this$0.a().isFinishing())) {
-      QQToast.a(this.this$0.a(), 2, this.this$0.a().getString(2131690246), 1).a();
+      QQToast.a(this.this$0.a(), 2, this.this$0.a().getString(2131690271), 1).a();
     }
   }
 }

@@ -1,11 +1,16 @@
-import android.graphics.Rect;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-final class bhtg
-  implements bhtk<Rect>
+class bhtg
+  implements DialogInterface.OnClickListener
 {
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  bhtg(bhtd parambhtd) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 

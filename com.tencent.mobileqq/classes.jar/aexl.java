@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aexl
-  extends ayxn
+final class aexl
+  implements aeya
 {
-  public aexl(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 74);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

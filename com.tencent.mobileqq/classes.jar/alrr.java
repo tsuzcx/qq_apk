@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 
-public class alrr
-  implements DialogInterface.OnDismissListener
+public abstract interface alrr
 {
-  public alrr(LoginView paramLoginView) {}
+  public abstract void exeJsOnEngine(String paramString);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    LoginView.g(this.a, false);
-    LoginView.h(this.a, false);
-    bdll.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
-  }
+  public abstract long getRenderThreadId();
+  
+  public abstract long getRuntimeState();
+  
+  public abstract boolean isJsRuntime();
+  
+  public abstract void runRenderTask(IApolloRunnableTask paramIApolloRunnableTask);
 }
 
 

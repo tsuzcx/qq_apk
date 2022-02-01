@@ -1,11 +1,38 @@
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class asrz
-  extends aslu
+class asrz
+  implements aszj
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
+  asrz(asry paramasry) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    int i = this.a.a.i();
+    int j = this.a.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 6) {
+      if (j == 0) {
+        localQQAppInterface.getOnlineFileSessionCenter().b(this.a.a.d());
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a.jdField_a_of_type_Assz != null) {
+        this.a.a.jdField_a_of_type_Assz.d();
+      }
+      return;
+      localQQAppInterface.getFileManagerEngine().a(this.a.a.d());
+      continue;
+      if (j == 0) {
+        localQQAppInterface.getOnlineFileSessionCenter().a(this.a.a.d());
+      } else {
+        localQQAppInterface.getFileManagerEngine().b(this.a.a.jdField_a_of_type_Asqs.a());
+      }
+    }
+  }
 }
 
 

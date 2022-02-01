@@ -1,331 +1,406 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Process;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableLoaderImpl.2;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableLoaderImpl.3;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableLoaderImpl.4;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Method;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadApi.1;
+import com.tencent.open.downloadnew.DownloadApi.10;
+import com.tencent.open.downloadnew.DownloadApi.11;
+import com.tencent.open.downloadnew.DownloadApi.12;
+import com.tencent.open.downloadnew.DownloadApi.2;
+import com.tencent.open.downloadnew.DownloadApi.3;
+import com.tencent.open.downloadnew.DownloadApi.4;
+import com.tencent.open.downloadnew.DownloadApi.5;
+import com.tencent.open.downloadnew.DownloadApi.6;
+import com.tencent.open.downloadnew.DownloadApi.7;
+import com.tencent.open.downloadnew.DownloadApi.8;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.TMAssistantGetAppDetailTool;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class bibs
-  implements bica
 {
-  private static int jdField_a_of_type_Int;
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
+  protected static ITMAssistantExchangeURLListenner a;
+  public static Object a;
+  public static final String a;
+  protected static ConcurrentHashMap<String, Integer> a;
   
-  private String a(File paramFile1, File paramFile2, String paramString)
+  static
   {
-    String str1 = paramFile1.getAbsolutePath();
-    String str2 = paramFile2.getAbsolutePath() + "_temp";
-    long l = IOUtil.getCRC32Value(paramFile1);
-    if (l == -1L) {
-      return "file not exists";
-    }
-    if (a(paramFile2, paramString, l))
-    {
-      bibq.a();
-      return "sucess";
-    }
-    try
-    {
-      if (new File(str2).exists()) {
-        bhmi.a(str2, false);
-      }
-      bhmi.d(str1, new File(str2, paramString).getAbsolutePath());
-      bhmi.a(str1, str2, false);
-      if (paramFile2.exists()) {
-        bhmi.a(paramFile2.getAbsolutePath(), false);
-      }
-      QLog.d("GLDrawable", 1, "unzip succ..." + new File(str1).length() + "..." + bjtz.a(str1));
-      if ((bhmi.c(str2, paramFile2.getAbsolutePath())) && (a(paramFile2, paramString, l))) {
-        return "sucess";
-      }
-      throw new IOException("unzip file error");
-    }
-    catch (Exception paramFile1) {}
-    try
-    {
-      if (paramFile2.exists()) {
-        bhmi.a(paramFile2.getAbsolutePath(), false);
-      }
-      QLog.e("GLDrawable", 1, new Object[] { "unzip error, libDir=" + paramFile2, " zipPath=" + str1, paramFile1 });
-      return "unzip " + paramFile1.getMessage();
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("GLDrawable", 1, new Object[] { "unzip error, libDir=" + paramFile2, " zipPath=" + str1, paramString });
-      }
-    }
+    jdField_a_of_type_JavaLangString = bibs.class.getName();
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner = new bibv();
   }
   
-  private void a(Context paramContext, String paramString, Runnable paramRunnable1, Runnable paramRunnable2)
+  public static int a()
   {
-    int i = 0;
-    try
-    {
-      int j;
-      do
-      {
-        if (bibq.a(paramContext))
-        {
-          paramRunnable1.run();
-          return;
-        }
-        if (i == 0) {
-          bibq.a();
-        }
-        j = i + 50;
-        Thread.sleep(50L);
-        i = j;
-      } while (j < 8000);
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        QLog.e("GLDrawable", 1, "", paramContext);
-      }
-    }
-    paramRunnable2.run();
+    return 3;
   }
   
-  private boolean a(File paramFile, String paramString, long paramLong)
+  public static int a(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail)
   {
-    boolean bool = true;
-    long l = IOUtil.getCRC32Value(new File(paramFile, paramString));
-    if (l == -1L) {
-      return false;
+    if ("biz_src_jc_update".equals(paramString)) {
+      bias.a("200", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(bibw.I));
     }
-    int i;
-    if (l == paramLong)
+    bhzm.a(jdField_a_of_type_JavaLangString, "doDownloadActionBySDK pParmas =" + paramBundle);
+    String str5 = paramBundle.getString(bibw.b);
+    String str6 = paramBundle.getString(bibw.j);
+    String str7 = paramBundle.getString(bibw.f);
+    int i = paramBundle.getInt(bibw.k);
+    String str8 = paramBundle.getString(bibw.i);
+    String str9 = paramBundle.getString(bibw.l);
+    paramBundle.getString(bibw.m);
+    String str4 = paramBundle.getString(bibw.D);
+    int j = paramBundle.getInt(bibw.H);
+    String str3 = paramBundle.getString(bibw.I);
+    boolean bool1 = paramBundle.getBoolean(bibw.o);
+    boolean bool2 = paramBundle.getBoolean(bibw.y, true);
+    boolean bool3 = paramBundle.getBoolean(bibw.jdField_h_of_type_JavaLangString, true);
+    boolean bool4 = paramBundle.getBoolean(bibw.x);
+    int k = paramBundle.getInt(bibw.C, 0);
+    boolean bool5 = paramBundle.getBoolean(bibw.J, false);
+    String str1 = paramBundle.getString("big_brother_ref_source_key", "");
+    String str2 = paramBundle.getInt("hideInstallSuccessPage", 0) + "";
+    switch (i)
     {
-      i = 1;
-      if ((i == 0) || (!new File(paramFile, "/lib/armeabi-v7a").exists()) || (!new File(paramFile, "/lib/arm64-v8a").exists()) || (!new File(paramFile, "/lib/x86").exists()) || (!new File(paramFile, "/lib/x86_64").exists())) {
-        break label116;
-      }
     }
     for (;;)
     {
-      return bool;
-      i = 0;
-      break;
-      label116:
-      bool = false;
-    }
-  }
-  
-  private void b(bicb parambicb)
-  {
-    if (parambicb == null) {
-      return;
-    }
-    if (bibw.a())
-    {
-      parambicb.b();
-      return;
-    }
-    parambicb.c();
-  }
-  
-  private void c(bicb parambicb)
-  {
-    if (!aroa.c().a()) {
-      return;
-    }
-    Object localObject = new bibu();
-    bibw.a((bicc)localObject);
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    String str = bibq.a(localBaseApplicationImpl);
-    GLDrawableLoaderImpl.3 local3 = new GLDrawableLoaderImpl.3(this, str, localBaseApplicationImpl, (bibu)localObject, parambicb);
-    localObject = new GLDrawableLoaderImpl.4(this, (bibu)localObject, parambicb);
-    if (parambicb != null) {
-      parambicb.a();
-    }
-    a(localBaseApplicationImpl, str, local3, (Runnable)localObject);
-  }
-  
-  private boolean c()
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return Process.is64Bit();
-    }
-    try
-    {
-      if (Build.VERSION.SDK_INT < 21) {
-        return false;
-      }
-      Object localObject1 = Class.forName("dalvik.system.VMRuntime");
-      if (localObject1 == null) {
-        return false;
-      }
-      Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
-      if (localObject2 == null) {
-        return false;
-      }
-      localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
-      if (localObject2 == null) {
-        return false;
-      }
-      localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
-      if (localObject1 == null) {
-        return false;
-      }
-      localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
-      if ((localObject1 instanceof Boolean))
+      return 0;
+      paramString = new DownloadInfo(str5, str6.trim(), str7, str9, str8, null, paramString, bool2);
+      paramString.g = i;
+      if (bool2)
       {
-        boolean bool = ((Boolean)localObject1).booleanValue();
-        return bool;
+        paramString.jdField_a_of_type_Boolean = bool3;
+        paramString.jdField_b_of_type_Boolean = bool4;
+        label341:
+        paramString.jdField_h_of_type_Int = k;
+        paramString.n = str4;
+        paramString.i = j;
+        paramString.o = str3;
+        paramString.jdField_d_of_type_Boolean = bool5;
+        paramString.jdField_d_of_type_Int = 0;
+      }
+      try
+      {
+        paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+        paramString.jdField_d_of_type_Long = paramBundle.getLong(bibw.G);
+        label398:
+        bhzm.c(jdField_a_of_type_JavaLangString, "doDownloadAction action == Downloader.ACTION_DOWNLOAD");
+        paramString.a("big_brother_ref_source_key", str1);
+        paramString.a("hideInstallSuccessPage", str2);
+        biby.a().a(paramString);
+        continue;
+        paramString.jdField_a_of_type_Boolean = false;
+        paramString.jdField_b_of_type_Boolean = true;
+        paramString.jdField_a_of_type_Int = 2;
+        break label341;
+        paramString = new DownloadInfo(str5, str6.trim(), str7, str9, str8, null, paramString, bool2);
+        paramString.g = i;
+        paramString.jdField_a_of_type_Boolean = bool3;
+        paramString.jdField_b_of_type_Boolean = bool4;
+        paramString.jdField_d_of_type_Int = 0;
+        paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+        paramString.o = str3;
+        if ((paramApkUpdateDetail != null) && (paramString.jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
+          paramString.jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
+        }
+        paramString.a("big_brother_ref_source_key", str1);
+        paramString.a("hideInstallSuccessPage", str2);
+        bool2 = biar.a(bhpc.a().a(), null).b("Common_QQ_Patch_Switch");
+        if (!bool1) {
+          biby.a().a(paramString);
+        }
+        for (;;)
+        {
+          bhzm.c(jdField_a_of_type_JavaLangString, "doDownloadAction action == Downloader.ACTION_UPDATE " + bool1);
+          break;
+          if (bool2) {
+            biby.a().a(paramString, paramApkUpdateDetail);
+          } else {
+            biby.a().a(paramString);
+          }
+        }
+        return biby.a().a(str5);
+        if (!bool2) {
+          continue;
+        }
+        bias.a("305", str8, str5, str3);
+        paramApkUpdateDetail = biby.a().a(str5);
+        paramString = paramApkUpdateDetail;
+        if (paramApkUpdateDetail == null)
+        {
+          paramString = new DownloadInfo();
+          paramString.jdField_c_of_type_JavaLangString = str5;
+          paramString.jdField_d_of_type_JavaLangString = str6.trim();
+          paramString.e = str7;
+          paramString.f = str9;
+          paramString.jdField_h_of_type_JavaLangString = str8;
+          paramString.j = paramBundle.getString(bibw.jdField_c_of_type_JavaLangString);
+          paramString.k = paramBundle.getString(bibw.jdField_d_of_type_JavaLangString);
+          paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+          paramString.jdField_c_of_type_Boolean = paramBundle.getBoolean(bibw.y, true);
+          paramString.jdField_h_of_type_Int = k;
+          paramString.n = str4;
+          paramString.jdField_d_of_type_Int = 0;
+          paramString.o = str3;
+        }
+        paramString.a("big_brother_ref_source_key", str1);
+        paramString.a("hideInstallSuccessPage", str2);
+        biby.a().c(paramString);
+        continue;
+        biby.a().a(str5, null, true);
+      }
+      catch (NumberFormatException paramBundle)
+      {
+        break label398;
       }
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public static void a(Activity paramActivity, Bundle paramBundle)
+  {
+    if ((paramBundle == null) || (paramActivity == null)) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new DownloadApi.2(paramActivity, paramBundle));
+  }
+  
+  public static void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  {
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(bhpc.a().a()) >= 6) {
+      paramBundle.putLong("OuterCall_DownloadApi_DoDownloadAction", System.currentTimeMillis());
+    }
+    if (paramString == "biz_src_jc_update") {
+      bias.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(bibw.I));
+    }
+    Object localObject = new Throwable().getStackTrace();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 1;
+    while (i < localObject.length)
     {
-      QLog.e("GLDrawable", 1, localThrowable, new Object[0]);
+      localStringBuilder.append(localObject[i].toString());
+      i += 1;
+    }
+    localObject = paramBundle.getString(bibw.b);
+    String str = paramBundle.getString(bibw.j);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      bhyn.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localStringBuilder.toString());
+    }
+    for (;;)
+    {
+      ThreadManager.getSubThreadHandler().post(new DownloadApi.1(paramBundle, paramString, paramInt, paramActivity, paramApkUpdateDetail));
+      return;
+      if (!TextUtils.isEmpty(str)) {
+        bhyn.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  public static void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new DownloadApi.3(paramBundle));
+  }
+  
+  public static void a(DownloadListener paramDownloadListener)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadApi.11(paramDownloadListener));
+  }
+  
+  public static void a(String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadApi.10(paramString));
+  }
+  
+  public static void a(String paramString, bicf parambicf)
+  {
+    if (paramString == null)
+    {
+      bhzm.a(jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia via == null");
+      return;
+    }
+    if (parambicf == null) {
+      bhzm.a(jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia listener == null");
+    }
+    ThreadManager.getSubThreadHandler().post(new DownloadApi.6(paramString, parambicf));
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    ThreadManager.excute(new DownloadApi.7(paramString1, paramString2, paramBoolean), 32, null, true);
+  }
+  
+  public static void a(List<DownloadInfo> paramList, bicf parambicf)
+  {
+    if (paramList == null)
+    {
+      bhzm.a(jdField_a_of_type_JavaLangString, "getQueryDownloadAction infos == null");
+      return;
+    }
+    if (parambicf == null) {
+      bhzm.a(jdField_a_of_type_JavaLangString, "getQueryDownloadAction listener == null");
+    }
+    ThreadManager.getSubThreadHandler().post(new DownloadApi.5(paramList, parambicf));
+  }
+  
+  public static boolean a(Bundle paramBundle)
+  {
+    if (paramBundle.getInt(bibw.k) == 5)
+    {
+      String str1 = paramBundle.getString(bibw.b);
+      String str2 = paramBundle.getString(bibw.j);
+      String str3 = paramBundle.getString(bibw.f);
+      String str4 = paramBundle.getString(bibw.i);
+      String str5 = paramBundle.getString(bibw.l);
+      bias.a("305", str4, str1, paramBundle.getString(bibw.I));
+      DownloadInfo localDownloadInfo = biby.a().a(str1);
+      if (localDownloadInfo == null)
+      {
+        localDownloadInfo = new DownloadInfo();
+        localDownloadInfo.jdField_c_of_type_JavaLangString = str1;
+        localDownloadInfo.jdField_d_of_type_JavaLangString = str2.trim();
+        localDownloadInfo.e = str3;
+        localDownloadInfo.f = str5;
+        localDownloadInfo.jdField_h_of_type_JavaLangString = str4;
+        localDownloadInfo.j = paramBundle.getString(bibw.jdField_c_of_type_JavaLangString);
+        localDownloadInfo.k = paramBundle.getString(bibw.jdField_d_of_type_JavaLangString);
+        localDownloadInfo.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+        localDownloadInfo.o = paramBundle.getString(bibw.I);
+        localDownloadInfo.a("hideInstallSuccessPage", paramBundle.getInt("hideInstallSuccessPage", 0) + "");
+      }
+      for (paramBundle = localDownloadInfo;; paramBundle = localDownloadInfo)
+      {
+        biby.a().c(paramBundle);
+        return true;
+        if (!TextUtils.isEmpty(str4)) {
+          localDownloadInfo.jdField_h_of_type_JavaLangString = str4;
+        }
+        localDownloadInfo.a("hideInstallSuccessPage", paramBundle.getInt("hideInstallSuccessPage", 0) + "");
+      }
     }
     return false;
   }
   
-  private boolean d()
+  public static boolean a(bibq parambibq)
   {
-    boolean bool1 = VideoEnvironment.c();
-    Object localObject = Build.CPU_ABI;
-    if ((localObject != null) && (!"".equals(localObject)) && ("x86".equalsIgnoreCase((String)localObject))) {
-      return true;
+    bhyo.a().a(parambibq);
+    return biby.a().a(parambibq);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = biby.a().a(paramString);
+    return (paramString != null) && (paramString.jdField_c_of_type_Int == 1);
+  }
+  
+  public static void b(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  {
+    bhzm.a(jdField_a_of_type_JavaLangString, "doDownloadActionByMyApp pParmas =" + paramBundle + " myAppConfig = " + paramInt);
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
+      paramBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
     }
-    boolean bool2 = bool1;
-    if (!bool1)
+    if ("biz_src_jc_update".equals(paramString)) {
+      bias.a("300", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(bibw.I));
+    }
+    Object localObject1;
+    if (paramBundle.getInt(bibw.e, -10) < 0)
     {
-      bool2 = bool1;
-      if (Build.VERSION.SDK_INT >= 21)
+      ??? = TMAssistantGetAppDetailTool.getInstance(jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner, bhpc.a().a());
+      localObject1 = paramBundle.getString(bibw.f);
+      Object localObject3 = paramBundle.getString(bibw.B);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject = Build.SUPPORTED_ABIS;
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
+        StringBuilder localStringBuilder = new StringBuilder((String)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
-          bool2 = bool1;
-          if (i >= j) {
-            break;
-          }
-          CharSequence localCharSequence = localObject[i];
-          bool2 = bool1;
-          if (!TextUtils.isEmpty(localCharSequence))
-          {
-            bool2 = bool1;
-            if (localCharSequence.toLowerCase().contains("x86")) {
-              bool2 = true;
-            }
-          }
-          i += 1;
-          bool1 = bool2;
+          localStringBuilder.append(";");
+          localStringBuilder.append((String)localObject3);
         }
+        localObject3 = new ArrayList();
+        ((ArrayList)localObject3).add(localStringBuilder.toString());
+        ((TMAssistantGetAppDetailTool)???).exchangeUrlsFromPackageNames((ArrayList)localObject3);
       }
     }
-    return bool2;
+    label288:
+    do
+    {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        try
+        {
+          jdField_a_of_type_JavaLangObject.wait(5000L);
+          if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+            break label288;
+          }
+          localObject1 = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject1);
+          if (localObject1 == null)
+          {
+            biby.a().b(bhpc.a().a().getString(2131694238));
+            return;
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
+      paramBundle.putInt(bibw.e, ((Integer)localObject1).intValue());
+      if (paramApkUpdateDetail != null)
+      {
+        paramBundle.putInt(bibw.t, paramApkUpdateDetail.patchsize);
+        paramBundle.putInt(bibw.u, paramApkUpdateDetail.newapksize);
+      }
+      if (paramInt == 1)
+      {
+        paramBundle.putString("source", paramString);
+        bicl.a().a(paramActivity, paramBundle, new bibt(paramBundle, paramString, paramApkUpdateDetail));
+        return;
+      }
+    } while ((paramInt != 2) && (paramInt != 0));
+    bicl.a().b(paramActivity, paramBundle, new bibu(paramBundle, paramString, paramApkUpdateDetail));
   }
   
-  public void a()
+  public static void b(Bundle paramBundle)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (paramBundle == null) {
       return;
     }
-    b = true;
-    ThreadManagerV2.executeOnSubThread(new GLDrawableLoaderImpl.2(this));
+    ThreadManager.executeOnSubThread(new DownloadApi.4(paramBundle));
   }
   
-  /* Error */
-  public void a(bicb parambicb)
+  public static void b(DownloadListener paramDownloadListener)
   {
-    // Byte code:
-    //   0: getstatic 184	bibs:jdField_a_of_type_Boolean	Z
-    //   3: ifeq +4 -> 7
-    //   6: return
-    //   7: iconst_1
-    //   8: putstatic 169	bibs:b	Z
-    //   11: invokestatic 315	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   14: invokestatic 318	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   17: if_acmpne +3 -> 20
-    //   20: getstatic 184	bibs:jdField_a_of_type_Boolean	Z
-    //   23: ifne +15 -> 38
-    //   26: invokestatic 174	bibw:a	()Z
-    //   29: ifne +9 -> 38
-    //   32: invokestatic 320	bibw:b	()Z
-    //   35: ifeq +13 -> 48
-    //   38: aload_0
-    //   39: aload_1
-    //   40: invokespecial 322	bibs:b	(Lbicb;)V
-    //   43: iconst_0
-    //   44: putstatic 169	bibs:b	Z
-    //   47: return
-    //   48: ldc 2
-    //   50: monitorenter
-    //   51: getstatic 184	bibs:jdField_a_of_type_Boolean	Z
-    //   54: ifne +15 -> 69
-    //   57: invokestatic 174	bibw:a	()Z
-    //   60: ifne +9 -> 69
-    //   63: invokestatic 320	bibw:b	()Z
-    //   66: ifeq +16 -> 82
-    //   69: aload_0
-    //   70: aload_1
-    //   71: invokespecial 322	bibs:b	(Lbicb;)V
-    //   74: ldc 2
-    //   76: monitorexit
-    //   77: iconst_0
-    //   78: putstatic 169	bibs:b	Z
-    //   81: return
-    //   82: aload_0
-    //   83: aload_1
-    //   84: invokespecial 324	bibs:c	(Lbicb;)V
-    //   87: ldc 2
-    //   89: monitorexit
-    //   90: iconst_0
-    //   91: putstatic 169	bibs:b	Z
-    //   94: return
-    //   95: astore_1
-    //   96: ldc 2
-    //   98: monitorexit
-    //   99: aload_1
-    //   100: athrow
-    //   101: astore_1
-    //   102: iconst_0
-    //   103: putstatic 169	bibs:b	Z
-    //   106: aload_1
-    //   107: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	108	0	this	bibs
-    //   0	108	1	parambicb	bicb
-    // Exception table:
-    //   from	to	target	type
-    //   51	69	95	finally
-    //   69	77	95	finally
-    //   82	90	95	finally
-    //   96	99	95	finally
-    //   11	20	101	finally
-    //   20	38	101	finally
-    //   38	43	101	finally
-    //   48	51	101	finally
-    //   99	101	101	finally
+    ThreadManager.getSubThreadHandler().post(new DownloadApi.12(paramDownloadListener));
   }
   
-  public boolean a()
+  public static void b(String paramString1, String paramString2, boolean paramBoolean)
   {
-    return jdField_a_of_type_Boolean;
+    ThreadManager.excute(new DownloadApi.8(paramString1, paramString2, paramBoolean), 32, null, true);
   }
   
-  public boolean b()
+  public static boolean b(bibq parambibq)
   {
-    return b;
+    bhyo.a().b(parambibq);
+    return biby.a().b(parambibq);
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString));
   }
 }
 

@@ -1,15 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import java.util.List;
 
-public class baet
-  implements baev
+public abstract interface baet
 {
-  public baet(ComponentCenter paramComponentCenter, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public abstract int a();
   
-  public void a(baeh parambaeh)
-  {
-    parambaeh.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
-  }
+  public abstract int a(List<baep> paramList);
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

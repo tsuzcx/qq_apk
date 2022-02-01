@@ -2,19 +2,18 @@ package cooperation.qzone;
 
 import android.widget.Button;
 import android.widget.RelativeLayout.LayoutParams;
-import bhmg;
-import bmuu;
+import bfvh;
 
-public class QzoneGiftFullScreenViewController$2
+class QzoneGiftFullScreenViewController$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$2(bmuu parambmuu) {}
+  QzoneGiftFullScreenViewController$2(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController) {}
   
   public void run()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.a.getLayoutParams();
-    localLayoutParams.rightMargin = ((int)bhmg.a(bmuu.a(this.this$0), 10.0F));
-    this.this$0.a.setLayoutParams(localLayoutParams);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.magicfaceReceiveStop.getLayoutParams();
+    localLayoutParams.rightMargin = ((int)bfvh.a(QzoneGiftFullScreenViewController.access$000(this.this$0), 10.0F));
+    this.this$0.magicfaceReceiveStop.setLayoutParams(localLayoutParams);
   }
 }
 

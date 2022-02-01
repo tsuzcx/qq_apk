@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aege
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aege(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aege(ShowReactiveActivity paramShowReactiveActivity, aqgz paramaqgz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatSettingForTroop.i(this.a);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Aqgz.c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

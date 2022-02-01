@@ -4,22 +4,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.text.TextUtils;
-import bmgk;
-import bmgt;
-import bndl;
-import bndr;
-import bnfk;
+import bkkq;
+import bkkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import cooperation.qzone.plugin.QZonePluginUtils;
 import java.io.File;
 
 public class QZoneLiveVideoPluginProxyService
   extends PluginProxyService
 {
-  public static void a(Context paramContext, String paramString1, Intent paramIntent, ServiceConnection paramServiceConnection, String paramString2)
+  public static final String PRELOAD_ACTION = "com.qzone.preloadLiveVideo";
+  
+  public static void bindService(Context paramContext, String paramString1, Intent paramIntent, ServiceConnection paramServiceConnection, String paramString2)
   {
     paramIntent.putExtra("useSkinEngine", -1);
-    Object localObject1 = bnfk.a();
+    Object localObject1 = QZonePluginUtils.getLoadQZoneLivePluginId();
     Object localObject2 = paramIntent.getAction();
     paramString2 = "";
     if ("com.qzone.preloadLiveVideo".equals(localObject2)) {
@@ -43,37 +45,37 @@ public class QZoneLiveVideoPluginProxyService
       if (!((String)localObject1).equals("qzone_live_video_plugin_hack.apk")) {
         break;
       }
-      localObject2 = new File(bnfk.a(paramContext), (String)localObject1);
+      localObject2 = new File(QZonePluginUtils.getPluginInstallDir(paramContext), (String)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "bindService 加载动态包:hackPluginID:" + (String)localObject1);
       }
     } while (!((File)localObject2).exists());
-    localObject2 = new bndr(0);
-    ((bndr)localObject2).b = "qzone_live_video_plugin_hack.apk";
-    ((bndr)localObject2).d = "QZoneLiveVideo";
-    ((bndr)localObject2).jdField_a_of_type_JavaLangString = paramString1;
-    ((bndr)localObject2).e = paramString2;
-    ((bndr)localObject2).jdField_a_of_type_AndroidContentIntent = paramIntent;
-    ((bndr)localObject2).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    ((bndr)localObject2).b = ((String)localObject1);
-    ((bndr)localObject2).d = "QZoneLiveVideo";
-    bndl.a(paramContext, (bndr)localObject2);
+    localObject2 = new IQZonePluginManager.PluginParams(0);
+    ((IQZonePluginManager.PluginParams)localObject2).mPluginID = "qzone_live_video_plugin_hack.apk";
+    ((IQZonePluginManager.PluginParams)localObject2).mPluginName = "QZoneLiveVideo";
+    ((IQZonePluginManager.PluginParams)localObject2).mUin = paramString1;
+    ((IQZonePluginManager.PluginParams)localObject2).mConponentName = paramString2;
+    ((IQZonePluginManager.PluginParams)localObject2).mIntent = paramIntent;
+    ((IQZonePluginManager.PluginParams)localObject2).mServiceConnection = paramServiceConnection;
+    ((IQZonePluginManager.PluginParams)localObject2).mPluginID = ((String)localObject1);
+    ((IQZonePluginManager.PluginParams)localObject2).mPluginName = "QZoneLiveVideo";
+    IQZonePluginManager.launchPluginService(paramContext, (IQZonePluginManager.PluginParams)localObject2);
     return;
     if (((String)localObject1).equals("qzone_live_video_plugin.apk"))
     {
-      localObject1 = new bmgt(0);
-      ((bmgt)localObject1).b = "qzone_live_video_plugin.apk";
-      ((bmgt)localObject1).d = "QZoneLiveVideo";
-      ((bmgt)localObject1).jdField_a_of_type_JavaLangString = paramString1;
-      ((bmgt)localObject1).e = paramString2;
-      ((bmgt)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
-      ((bmgt)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      ((bmgt)localObject1).b = "qzone_live_video_plugin.apk";
-      ((bmgt)localObject1).d = "QZoneLiveVideo";
+      localObject1 = new bkkz(0);
+      ((bkkz)localObject1).b = "qzone_live_video_plugin.apk";
+      ((bkkz)localObject1).d = "QZoneLiveVideo";
+      ((bkkz)localObject1).jdField_a_of_type_JavaLangString = paramString1;
+      ((bkkz)localObject1).e = paramString2;
+      ((bkkz)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
+      ((bkkz)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      ((bkkz)localObject1).b = "qzone_live_video_plugin.apk";
+      ((bkkz)localObject1).d = "QZoneLiveVideo";
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bmgk.c(paramContext, (bmgt)localObject1);
+      bkkq.c(paramContext, (bkkz)localObject1);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject1);

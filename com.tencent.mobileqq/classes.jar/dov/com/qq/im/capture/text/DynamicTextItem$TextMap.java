@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bpsl;
+import bmvr;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,12 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import org.json.JSONArray;
 
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextMap> CREATOR = new bpsl();
+  public static final Parcelable.Creator<TextMap> CREATOR = new bmvr();
   private Map<Integer, String> a = new HashMap();
   
   public DynamicTextItem$TextMap() {}
@@ -96,27 +95,6 @@ public class DynamicTextItem$TextMap
       i += 1;
     }
     return localArrayList;
-  }
-  
-  public JSONArray a()
-  {
-    try
-    {
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(a());
-      Iterator localIterator = this.a.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localJSONArray.put(localEntry.getKey());
-        localJSONArray.put(localEntry.getValue());
-      }
-      return localException;
-    }
-    catch (Exception localException)
-    {
-      return null;
-    }
   }
   
   public void a(int paramInt, @NonNull String paramString)

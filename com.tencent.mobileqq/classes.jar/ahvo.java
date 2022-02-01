@@ -1,17 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ahvo
-  implements View.OnTouchListener
+public final class ahvo
+  implements DialogInterface.OnClickListener
 {
-  ahvo(ahvl paramahvl, agjk paramagjk) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

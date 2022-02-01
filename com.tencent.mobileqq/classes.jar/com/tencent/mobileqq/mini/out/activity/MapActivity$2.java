@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.out.activity;
 
+import amtj;
 import android.graphics.Color;
-import anzj;
-import apcq;
-import bhpc;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class MapActivity$2
-  extends apcq
+  extends SosoInterface.OnLocationListener
 {
   MapActivity$2(MapActivity paramMapActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5)
   {
@@ -26,8 +26,8 @@ class MapActivity$2
     }
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
-      this.this$0.fromLatLng = new LatLng(paramSosoLbsInfo.a, paramSosoLbsInfo.b);
+      paramSosoLbsInfo = paramSosoLbsInfo.mLocation;
+      this.this$0.fromLatLng = new LatLng(paramSosoLbsInfo.mLat02, paramSosoLbsInfo.mLon02);
       if (this.val$bMove) {
         this.this$0.map.moveCamera(CameraUpdateFactory.newLatLng(this.this$0.fromLatLng));
       }
@@ -40,7 +40,7 @@ class MapActivity$2
       }
       return;
     }
-    this.this$0.dialog.setTitle(anzj.a(2131705341)).setMessage(anzj.a(2131705337)).setPositiveButton(anzj.a(2131705339), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(anzj.a(2131705338), Color.parseColor("#000000"), new MapActivity.2.1(this));
+    this.this$0.dialog.setTitle(amtj.a(2131705571)).setMessage(amtj.a(2131705567)).setPositiveButton(amtj.a(2131705569), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(amtj.a(2131705568), Color.parseColor("#000000"), new MapActivity.2.1(this));
     this.this$0.dialog.show();
   }
 }

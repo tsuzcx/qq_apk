@@ -1,28 +1,37 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
-import android.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.SoftReference;
-import java.util.Set;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
 public class bnqf
-  extends LruCache<Integer, BitmapDrawable>
+  implements Animator.AnimatorListener
 {
-  public bnqf(FastAnimationDrawable paramFastAnimationDrawable, int paramInt)
+  public bnqf(SlideBottomPanel paramSlideBottomPanel) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramInt);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.b = false;
+    this.a.e = false;
+    if (this.a.jdField_a_of_type_Bnpr != null) {
+      this.a.jdField_a_of_type_Bnpr.hidePanelFinish();
+    }
   }
   
-  protected void a(boolean paramBoolean, Integer paramInteger, BitmapDrawable paramBitmapDrawable1, BitmapDrawable paramBitmapDrawable2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      FastAnimationDrawable.a(this.a).add(new SoftReference(paramBitmapDrawable1.getBitmap()));
-      if (QLog.isColorLevel()) {
-        QLog.d("FastAnimationDrawable", 2, "remove key:" + paramInteger + " bitmap:" + paramBitmapDrawable1.getBitmap());
-      }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.b = false;
+    this.a.e = false;
+    if (this.a.jdField_a_of_type_Bnpr != null) {
+      this.a.jdField_a_of_type_Bnpr.hidePanelFinish();
     }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

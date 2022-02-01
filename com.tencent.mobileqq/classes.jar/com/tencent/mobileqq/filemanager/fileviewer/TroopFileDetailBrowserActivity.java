@@ -6,38 +6,38 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout.LayoutParams;
-import atpa;
-import atur;
-import aucn;
-import auef;
-import auen;
-import aueo;
-import aunj;
-import bdll;
-import bhnv;
+import asbj;
+import ashb;
+import asox;
+import asqp;
+import asqx;
+import asqy;
+import aszt;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public final class TroopFileDetailBrowserActivity
   extends FileBrowserActivity
-  implements auef
+  implements asqp
 {
-  protected atpa a;
+  protected asbj a;
   public ForwardFileInfo b;
   
   public TroopFileDetailBrowserActivity()
   {
-    this.jdField_a_of_type_Atpa = new auen(this);
+    this.jdField_a_of_type_Asbj = new asqx(this);
   }
   
   private int a(Context paramContext)
   {
-    if (!bhnv.g(paramContext)) {
+    if (!NetworkUtil.isNetworkAvailable(paramContext)) {
       return 2;
     }
-    if (bhnv.h(paramContext)) {
+    if (NetworkUtil.isWifiConnected(paramContext)) {
       return 0;
     }
     return 1;
@@ -46,34 +46,34 @@ public final class TroopFileDetailBrowserActivity
   protected boolean a(Intent paramIntent)
   {
     if (this.app != null) {
-      this.app.a().addObserver(this.jdField_a_of_type_Atpa);
+      this.app.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Asbj);
     }
-    aueo localaueo = new aueo(this.app);
-    if (!localaueo.a(paramIntent, this)) {}
+    asqy localasqy = new asqy(this.app);
+    if (!localasqy.a(paramIntent, this)) {}
     do
     {
       return false;
       this.b = ((ForwardFileInfo)super.getIntent().getParcelableExtra("fileinfo"));
-      if (this.jdField_a_of_type_Aucn == null)
+      if (this.jdField_a_of_type_Asox == null)
       {
-        this.jdField_a_of_type_Aucn = new aucn(this, this, localaueo.a(this));
-        this.jdField_a_of_type_Aucn.a(this.jdField_a_of_type_Aueg);
+        this.jdField_a_of_type_Asox = new asox(this, this, localasqy.a(this));
+        this.jdField_a_of_type_Asox.a(this.jdField_a_of_type_Asqq);
       }
       int i = paramIntent.getIntExtra("file_enter_file_browser_type", 0);
       paramIntent = paramIntent.getBundleExtra("file_browser_extra_params");
-      if (this.jdField_a_of_type_Aucn.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
+      if (this.jdField_a_of_type_Asox.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("FileBrowserActivity<FileAssistant>", 2, "error. can not create a fileviewer from FileBrowserManager");
     return false;
-    if (localaueo.a() == 1) {
-      bdll.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", aunj.b(aunj.a(this.b.d())));
+    if (localasqy.a() == 1) {
+      bcef.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", aszt.b(aszt.a(this.b.d())));
     }
     for (;;)
     {
       return true;
-      bdll.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", aunj.b(aunj.a(this.b.d())));
+      bcef.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", aszt.b(aszt.a(this.b.d())));
     }
   }
   
@@ -88,8 +88,9 @@ public final class TroopFileDetailBrowserActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -106,7 +107,7 @@ public final class TroopFileDetailBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.a().deleteObserver(this.jdField_a_of_type_Atpa);
+    this.app.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Asbj);
   }
   
   @Override
@@ -118,7 +119,7 @@ public final class TroopFileDetailBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

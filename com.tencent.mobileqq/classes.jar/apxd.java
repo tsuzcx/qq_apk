@@ -1,201 +1,110 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class apxd
-  implements apxf
+  extends aptq<apxe>
 {
-  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static boolean a;
+  private static boolean b;
+  
+  public static boolean a()
   {
-    bcqt localbcqt = new bcqt();
-    j = 268435456;
-    try
-    {
-      k = Integer.parseInt(paramString4);
-      if ((k & 0x4000000) != 67108864) {
-        break label99;
-      }
-      j = 335544320;
+    if (b) {
+      return a;
     }
-    catch (Exception paramString4)
-    {
-      for (;;)
-      {
-        int k;
-        int i;
-        continue;
-        j = 268435456;
-      }
+    b = true;
+    a = b();
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
     }
-    i = j;
-    if ((k & 0x20000000) == 536870912) {
-      i = j | 0x20000000;
-    }
-    j = i;
-    if ((k & 0x400000) == 4194304) {
-      j = i | 0x400000;
-    }
-    localbcqt.a(a(), paramContext, paramString1, paramString2, paramString3, j);
+    return a;
   }
   
-  private boolean a(Context paramContext, String paramString)
+  private static boolean b()
   {
-    boolean bool = false;
-    paramContext = paramContext.getPackageManager();
-    try
+    apxe localapxe2 = (apxe)apub.a().a(531);
+    apxe localapxe1 = localapxe2;
+    if (localapxe2 == null)
     {
-      paramContext = paramContext.getPackageInfo(paramString.trim(), 0);
-      if (paramContext != null) {
-        bool = true;
+      localapxe2 = new apxe();
+      localapxe1 = localapxe2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
+        localapxe1 = localapxe2;
       }
-      return bool;
     }
-    catch (Exception paramContext) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localapxe1);
+    }
+    return localapxe1.a();
+  }
+  
+  @NonNull
+  public apxe a(int paramInt)
+  {
+    return new apxe();
+  }
+  
+  @Nullable
+  public apxe a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaptx[0].a);
+      }
+      return apxe.a(paramArrayOfaptx[0].a);
+    }
+    return new apxe();
+  }
+  
+  public void a(apxe paramapxe)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramapxe);
+    }
+    if (paramapxe != null) {
+      a = paramapxe.a();
+    }
+  }
+  
+  public Class<apxe> clazz()
+  {
+    return apxe.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return false;
   }
   
-  private boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public boolean isNeedCompressed()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity == null) {
-      return false;
-    }
-    Object localObject1 = null;
-    String str1 = "platform=qq_m&current_uin=$OPID$&launchfrom=Ark&openid=$OPID$&atoken=$AT$&ptoken=$PT$" + "&big_brother_source_key=" + paramString3;
-    try
-    {
-      Object localObject2 = apxc.a(new JSONObject(paramString2));
-      Object localObject3 = ((Map)localObject2).get("url");
-      paramString2 = (String)localObject1;
-      if (localObject3 != null)
-      {
-        paramString2 = (String)localObject1;
-        if ((localObject3 instanceof String)) {
-          paramString2 = (String)localObject3;
-        }
-      }
-      try
-      {
-        localObject1 = ((Map)localObject2).get("data");
-        if ((localObject1 == null) || (!(localObject1 instanceof Map))) {
-          break label383;
-        }
-        localObject2 = (Map)localObject1;
-        localObject1 = new StringBuilder();
-        localObject2 = ((Map)localObject2).entrySet().iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          Object localObject4 = (Map.Entry)((Iterator)localObject2).next();
-          localObject3 = ((Map.Entry)localObject4).getKey();
-          localObject4 = ((Map.Entry)localObject4).getValue();
-          if ((localObject3 != null) && ((localObject3 instanceof String)) && (localObject4 != null))
-          {
-            ((StringBuilder)localObject1).append("&");
-            ((StringBuilder)localObject1).append(localObject3);
-            ((StringBuilder)localObject1).append("=");
-            ((StringBuilder)localObject1).append(localObject4.toString());
-          }
-        }
-        if (!QLog.isColorLevel()) {
-          break label256;
-        }
-      }
-      catch (JSONException localJSONException) {}
-    }
-    catch (JSONException paramString2)
-    {
-      for (;;)
-      {
-        paramString2 = null;
-      }
-    }
-    QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.jsonParseError");
-    label256:
-    if (!a(localBaseActivity, paramString4)) {
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString1 = new Intent(localBaseActivity, QQBrowserActivity.class);
-        paramString1.putExtra("url", paramString2);
-        ArkAppCenter.a(paramString1, paramString3);
-        paramString1.putExtra("fromArkAppDownload", true);
-        localBaseActivity.startActivity(paramString1);
-      }
-    }
-    for (;;)
-    {
-      return true;
-      String str2 = str1 + localJSONException;
-      str1 = str2;
-      break;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler, download url is empty");
-        continue;
-        a(localBaseActivity, paramString1, str1, paramString4, "0");
-      }
-    }
-  }
-  
-  protected QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
-  {
-    if (paramLong != 0L) {
-      return false;
-    }
-    paramString3 = BaseActivity.sTopActivity;
-    if (paramString3 == null) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if (paramJSONObject == null) {}
-    for (paramJSONObject = "biz_src_jc_ark";; paramJSONObject = paramJSONObject.optString("businessId", "biz_src_jc_ark"))
-    {
-      String str = BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).getString(paramString1, null);
-      if ((str == null) || (str.length() <= 0) || (!a(paramString3, str))) {
-        break;
-      }
-      a(paramString1, paramString2, paramJSONObject, str);
-      return true;
-    }
-    paramString3 = a();
-    if (paramString3 == null)
-    {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate.app is null.");
-      return false;
-    }
-    ((ArkAppCenter)paramString3.getManager(121)).a(paramString1, this, new apxe(this, paramString2, paramJSONObject));
     return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 531;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxd
  * JD-Core Version:    0.7.0.1
  */

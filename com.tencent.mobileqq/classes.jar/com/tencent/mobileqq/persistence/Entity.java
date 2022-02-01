@@ -76,7 +76,7 @@ public abstract class Entity
   
   protected void postwrite() {}
   
-  protected void prewrite() {}
+  public void prewrite() {}
   
   public void setId(long paramLong)
   {

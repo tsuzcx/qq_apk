@@ -1,36 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityAccountView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bhpk
+public class bhpk
   implements View.OnClickListener
 {
-  bhpk(bhpc parambhpc, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  public bhpk(AuthorityAccountView paramAuthorityAccountView) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpc, 1);
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof String))) {
+      this.a.b((String)localObject);
     }
-    try
-    {
-      if ((this.jdField_a_of_type_Bhpc.isShowing()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Bhpc.dismiss();
-      }
-      label45:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label45;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,9 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-final class bmxn
-  implements FilenameFilter
+public class bmxn
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return !paramString.endsWith("OldVersion.version");
-  }
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
 }
 
 

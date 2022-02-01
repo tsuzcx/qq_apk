@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahpl;
+import agly;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
 
 public class QQWalletMsgItemBuilder$1
   implements Runnable
 {
-  public QQWalletMsgItemBuilder$1(ahpl paramahpl, int paramInt) {}
+  public QQWalletMsgItemBuilder$1(agly paramagly, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QQWalletMsgItemBuilder$1
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(ahpl.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.a);
+      QLog.d(agly.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.a);
     }
     QWalletHelper.preloadQWallet(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "qwallet_red");
   }

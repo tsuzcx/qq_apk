@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amsx;
-import anns;
+import alnr;
+import amim;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigDataReport$1
@@ -14,7 +14,7 @@ public final class ApolloConfigDataReport$1
     if (this.a == null) {
       return;
     }
-    ((amsx)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new anns(this));
+    ((alnr)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new amim(this));
   }
 }
 

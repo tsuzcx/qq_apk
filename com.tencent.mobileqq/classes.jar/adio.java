@@ -1,47 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adio
-  implements adbw
+  implements ancv
 {
-  public int a()
-  {
-    return 10010;
-  }
+  public adio(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public boolean a()
+  public void a(Object paramObject)
   {
-    return true;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(167);
-    paramMessageRecord = paramQQAppInterface.a().l(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    if ((paramObject instanceof String))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送语音房临时会消息 有key------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8045;
   }
 }
 

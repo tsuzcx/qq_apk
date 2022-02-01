@@ -1,15 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class tft
-  extends BroadcastReceiver
+public class tft
+  implements View.OnClickListener
 {
-  tft(tfs paramtfs) {}
+  public tft(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    this.a.a(paramContext, paramIntent);
+    this.a.a(0, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

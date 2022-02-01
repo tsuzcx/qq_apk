@@ -11,6 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public class GetWatermarkDictRequest
   extends VSBaseRequest
 {
+  private static final String CMD = "LightAppSvc.qq_story_client.GetWatermarkDict";
   public static final String TAG = "Q.qqstory:GetWatermarkDictRequest";
   public final CLIENT.StGetWatermarkDictReq req = new CLIENT.StGetWatermarkDictReq();
   

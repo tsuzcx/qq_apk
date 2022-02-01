@@ -1,19 +1,17 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.TextView;
 
-class agry
-  extends agiq
+public class agry
+  extends aezf
 {
-  agry(agrx paramagrx, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-  }
+  public TextView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
   
-  public void k()
-  {
-    this.a.a(true);
-  }
+  public agry(agrx paramagrx) {}
 }
 
 

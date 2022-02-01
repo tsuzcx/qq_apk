@@ -1,22 +1,34 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
+
 public class aoge
-  implements anui
+  extends Handler
 {
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aoge(aogc paramaogc, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-    case 0: 
     default: 
       return;
-    case 1: 
-      a(paramBoolean, paramObject);
+    case 100: 
+      aoln.a().a(new ARCamera.ARCameraHandler.1(this));
+      removeMessages(100);
+      sendEmptyMessageDelayed(100, 3000L);
+      return;
+    case 101: 
+      aoln.a().a(new ARCamera.ARCameraHandler.2(this));
       return;
     }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    aoln.a().a(new ARCamera.ARCameraHandler.3(this));
   }
 }
 

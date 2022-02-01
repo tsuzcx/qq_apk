@@ -1,16 +1,67 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class yuo
-  extends wov
+  extends ValueAnimator
 {
-  public yuo(qqstory_service.RspMonitorValue paramRspMonitorValue)
+  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  private yuo(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    super(paramRspMonitorValue.result);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setObjectValues(new Object[] { new yur(paramFloat1, paramFloat2, paramFloat3), new yur(paramFloat4, paramFloat5, paramFloat6) });
+    setEvaluator(new yus(null));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new yup(this, a(paramView));
+    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
   }
   
-  public String toString()
+  private CircularRevealCompatLayout a(View paramView)
   {
-    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+    if ((paramView instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)paramView;
+    }
+    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)localViewGroup;
+    }
+    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = localViewGroup.indexOfChild(paramView);
+    localViewGroup.removeView(paramView);
+    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
+    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
+    return localCircularRevealCompatLayout;
+  }
+  
+  public static yuo a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    return new yuo(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
+    if ((localObject instanceof CircularRevealCompatLayout))
+    {
+      localObject = (CircularRevealCompatLayout)localObject;
+      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
+      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
+      int i = localViewGroup.indexOfChild((View)localObject);
+      localViewGroup.removeView((View)localObject);
+      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+    }
+  }
+  
+  public void removeAllUpdateListeners()
+  {
+    super.removeAllUpdateListeners();
+    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
   }
 }
 

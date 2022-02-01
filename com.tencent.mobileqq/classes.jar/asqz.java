@@ -1,15 +1,25 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
 class asqz
+  implements aspa
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  asqz(asqy paramasqy, BaseActivity paramBaseActivity) {}
   
-  private asqz(asqw paramasqw) {}
+  public asst a()
+  {
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_Asqy.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
+    {
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new astk(this.jdField_a_of_type_Asqy.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, asqy.a(this.jdField_a_of_type_Asqy));
+      }
+    }
+    return localObject1;
+  }
 }
 
 

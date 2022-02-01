@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
-import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
 
 public class bifu
-  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
+  implements DialogInterface.OnClickListener
 {
-  public bifu(PathTraceManager paramPathTraceManager) {}
+  public bifu(WadlJsBridgeCallBack.2 param2) {}
   
-  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PathTraceManager.a(this.a, paramPluginInterface);
+    paramDialogInterface.dismiss();
+    this.a.a.h = 1;
+    bldt.a().a(this.a.a);
   }
 }
 

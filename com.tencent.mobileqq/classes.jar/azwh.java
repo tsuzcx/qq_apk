@@ -1,29 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class azwh
-  extends BroadcastReceiver
+final class azwh
+  implements DialogInterface.OnClickListener
 {
-  public azwh(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
-      {
-        this.a.a = true;
-        PersonalityLabelGalleryActivity.a(this.a);
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

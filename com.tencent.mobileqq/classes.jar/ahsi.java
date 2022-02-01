@@ -1,16 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-
 public class ahsi
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahsi(SixCombolEffectView paramSixCombolEffectView) {}
+  String a = "";
+  String b = "";
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String a()
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    return this.b;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String b()
+  {
+    return this.a;
+  }
+  
+  public void b(String paramString)
+  {
+    this.a = paramString;
   }
 }
 

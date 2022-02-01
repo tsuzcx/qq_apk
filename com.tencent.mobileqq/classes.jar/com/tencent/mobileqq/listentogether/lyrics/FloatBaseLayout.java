@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import agej;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
@@ -8,7 +7,8 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import awnn;
+import avar;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -19,7 +19,7 @@ public class FloatBaseLayout
   public int a;
   WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  awnn jdField_a_of_type_Awnn;
+  avar jdField_a_of_type_Avar;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   public int b;
@@ -38,7 +38,7 @@ public class FloatBaseLayout
   
   private void a(Context paramContext)
   {
-    this.e = agej.a(3.0F, getResources());
+    this.e = AIOUtils.dp2px(3.0F, getResources());
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
@@ -106,20 +106,20 @@ public class FloatBaseLayout
     // Byte code:
     //   0: iconst_1
     //   1: istore_3
-    //   2: invokestatic 174	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +31 -> 36
-    //   8: ldc 90
+    //   8: ldc 91
     //   10: iconst_2
-    //   11: new 150	java/lang/StringBuilder
+    //   11: new 151	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 176
-    //   20: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 177
+    //   20: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_0
     //   24: getfield 22	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_Boolean	Z
-    //   27: invokevirtual 179	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 181	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: invokevirtual 180	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   36: aload_0
     //   37: monitorenter
     //   38: aload_0
@@ -134,11 +134,11 @@ public class FloatBaseLayout
     //   53: iconst_4
     //   54: if_icmpge +29 -> 83
     //   57: aload_0
-    //   58: getfield 61	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
+    //   58: getfield 62	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
     //   61: aload_0
     //   62: aload_0
-    //   63: getfield 68	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   66: invokeinterface 184 3 0
+    //   63: getfield 69	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
+    //   66: invokeinterface 185 3 0
     //   71: aload_0
     //   72: iconst_1
     //   73: putfield 22	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_Boolean	Z
@@ -158,23 +158,23 @@ public class FloatBaseLayout
     //   94: iconst_1
     //   95: iadd
     //   96: putfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   99: ldc 90
+    //   99: ldc 91
     //   101: iconst_1
-    //   102: new 150	java/lang/StringBuilder
+    //   102: new 151	java/lang/StringBuilder
     //   105: dup
-    //   106: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   109: ldc 186
-    //   111: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   109: ldc 187
+    //   111: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: aload_0
     //   115: getfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   118: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   121: ldc 191
-    //   123: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 190	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   121: ldc 192
+    //   123: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: aload 5
-    //   128: invokevirtual 161	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   131: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokestatic 169	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: invokevirtual 162	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   131: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   140: iconst_0
     //   141: istore_2
     //   142: goto -59 -> 83
@@ -186,27 +186,27 @@ public class FloatBaseLayout
     //   153: iload 4
     //   155: ifeq -72 -> 83
     //   158: aload_0
-    //   159: getfield 61	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
+    //   159: getfield 62	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
     //   162: aload_0
     //   163: aload_0
-    //   164: getfield 68	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   167: invokeinterface 148 3 0
+    //   164: getfield 69	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
+    //   167: invokeinterface 149 3 0
     //   172: iload_3
     //   173: istore_2
     //   174: goto -91 -> 83
     //   177: astore 5
-    //   179: ldc 90
+    //   179: ldc 91
     //   181: iconst_1
-    //   182: new 150	java/lang/StringBuilder
+    //   182: new 151	java/lang/StringBuilder
     //   185: dup
-    //   186: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   189: ldc 153
-    //   191: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   189: ldc 154
+    //   191: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   194: aload 5
-    //   196: invokevirtual 161	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   199: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 169	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   196: invokevirtual 162	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   199: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   205: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   208: iconst_0
     //   209: istore_2
     //   210: goto -127 -> 83
@@ -246,7 +246,7 @@ public class FloatBaseLayout
   
   public void b()
   {
-    this.jdField_a_of_type_Awnn = null;
+    this.jdField_a_of_type_Avar = null;
   }
   
   public boolean b()
@@ -325,16 +325,16 @@ public class FloatBaseLayout
           this.jdField_b_of_type_Boolean = true;
           c();
         }
-        if ((this.jdField_a_of_type_Awnn != null) && (this.jdField_b_of_type_Boolean)) {
-          this.jdField_a_of_type_Awnn.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+        if ((this.jdField_a_of_type_Avar != null) && (this.jdField_b_of_type_Boolean)) {
+          this.jdField_a_of_type_Avar.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
         }
         if (!this.jdField_b_of_type_Boolean) {
           bool1 = super.dispatchTouchEvent(paramMotionEvent);
         }
       }
     }
-    if ((this.jdField_a_of_type_Awnn != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_Awnn.a();
+    if ((this.jdField_a_of_type_Avar != null) && (this.jdField_b_of_type_Boolean)) {
+      this.jdField_a_of_type_Avar.a();
     }
     if (this.jdField_b_of_type_Boolean) {
       d();
@@ -362,9 +362,9 @@ public class FloatBaseLayout
     return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y;
   }
   
-  public void setFloatLayoutCallback(awnn paramawnn)
+  public void setFloatLayoutCallback(avar paramavar)
   {
-    this.jdField_a_of_type_Awnn = paramawnn;
+    this.jdField_a_of_type_Avar = paramavar;
   }
 }
 

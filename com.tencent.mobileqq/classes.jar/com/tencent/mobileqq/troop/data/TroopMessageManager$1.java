@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.data;
 
-import aoip;
-import bftl;
+import anca;
+import becw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
 public class TroopMessageManager$1
   implements Runnable
 {
-  public TroopMessageManager$1(bftl parambftl, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2) {}
+  public TroopMessageManager$1(becw parambecw, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    Object localObject = (aoip)bftl.a(this.this$0).a(20);
+    Object localObject = (anca)becw.a(this.this$0).getBusinessHandler(20);
     if (localObject != null)
     {
-      localObject = ((aoip)localObject).a();
+      localObject = ((anca)localObject).a();
       if (localObject != null) {
         ((TroopBatchAddFriendMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       }

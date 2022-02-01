@@ -1,57 +1,96 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.nio.ByteBuffer;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-final class anjb
-  extends biht
+public class anjb
+  extends anio
 {
-  anjb(String paramString, File paramFile, anjh paramanjh) {}
-  
-  public void onDone(bihu parambihu)
+  public anjb(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    super.onDone(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambihu.a());
-    }
-    if (3 == parambihu.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    while (this.jdField_a_of_type_Anjh == null)
+    super(paramQQAppInterface, paramFriendListHandler);
+  }
+  
+  private int a(ToServiceMsg paramToServiceMsg)
+  {
+    int i = 0;
+    try
     {
-      do
+      Object localObject = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
+      paramToServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+      ((ByteBuffer)localObject).get(paramToServiceMsg);
+      localObject = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramToServiceMsg);
+      int j = ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.get();
+      i = j;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "getServiceTypeFromToServiceMsg error:" + paramToServiceMsg.getMessage());
+    }
+    return i;
+    return 0;
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = a(paramToServiceMsg);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramToServiceMsg.extraData.getLong("uin"));
+    if (i == 147) {}
+    for (i = 72;; i = 71)
+    {
+      if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
       {
-        try
+        a(i, false, localBundle);
+        return;
+      }
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
         {
-          nof.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          if (this.jdField_a_of_type_Anjh != null) {
-            this.jdField_a_of_type_Anjh.a(true, 0);
-          }
+          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          long l = paramToServiceMsg.getInt();
+          paramToServiceMsg.getShort();
+          paramFromServiceMsg = new byte[4];
+          paramToServiceMsg.get(paramFromServiceMsg);
+          l = bftf.a(paramFromServiceMsg, 0);
+          int j = paramToServiceMsg.get();
+          localBundle.putLong("uin", l);
+          localBundle.putInt("safety_flag", j & 0x1F);
+          a(i, true, localBundle);
           return;
         }
-        catch (Exception parambihu)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambihu.getMessage());
-            }
-          }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handle_oidb_0x476 error:" + paramToServiceMsg.getMessage());
         }
-        catch (OutOfMemoryError parambihu)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambihu.getMessage());
-            }
-          }
-        }
-      } while (this.jdField_a_of_type_Anjh == null);
-      this.jdField_a_of_type_Anjh.a(false, 0);
-      return;
+        a(i, false, localBundle);
+        return;
+      }
     }
-    this.jdField_a_of_type_Anjh.a(false, 0);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return ("OidbSvc.0x476_146".equals(paramString)) || ("OidbSvc.0x476_147".equals(paramString));
   }
 }
 

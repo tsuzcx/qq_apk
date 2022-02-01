@@ -1,32 +1,65 @@
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.ArrayList;
+import android.content.Context;
+import android.media.AudioManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-class akvw
-  extends aktq
+public class akvw
 {
-  protected akvw(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public static long a;
+  public static Context a;
+  public static String a;
+  
+  static
   {
-    super(paramNewPhotoPreviewActivity);
+    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
+    jdField_a_of_type_Long = -1L;
   }
   
-  public void initData(Intent paramIntent)
+  public static void a()
   {
-    super.initData(paramIntent);
-    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694346);
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
-  public void initUI()
+  public static boolean a(long paramLong)
   {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akvx(this));
+    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
+    Object localObject;
+    do
+    {
+      return true;
+      localObject = akvx.a().a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
+      localObject = new File(jdField_a_of_type_JavaLangString);
+    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
+    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+    return false;
   }
   
-  public boolean needShowMultiPhoto()
+  public static void b()
   {
-    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

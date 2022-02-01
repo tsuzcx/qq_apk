@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agpn
-  implements agrf
+  implements bjta
 {
-  public agpn(DoodlePanel paramDoodlePanel) {}
+  public agpn(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a(agre paramagre)
-  {
-    this.a.a(paramagre);
-    paramagre = "" + paramagre.a + ";" + paramagre.b + ";" + paramagre.c;
-    bhjc.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramagre);
-  }
+  public void a() {}
 }
 
 

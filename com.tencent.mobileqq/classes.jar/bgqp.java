@@ -1,40 +1,17 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgqp
+class bgqp
+  implements View.OnClickListener
 {
-  public static bgqp[] a;
-  public String a;
+  bgqp(bgqo parambgqo) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfBgqp = new bgqp[] { new bgqp("BulkChatMessageConfig") };
-  }
-  
-  public bgqp(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  final JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString = new JSONObject();
-      }
-    }
-  }
-  
-  JSONObject a(JSONObject paramJSONObject)
-  {
-    return paramJSONObject;
+    bgqo.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

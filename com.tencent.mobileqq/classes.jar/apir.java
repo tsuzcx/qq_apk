@@ -1,141 +1,42 @@
-import android.content.Context;
-import android.opengl.Matrix;
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.locks.ReentrantLock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class apir
+class apir
+  implements View.OnTouchListener
 {
-  public static boolean a;
-  public static final float[] a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private apit jdField_a_of_type_Apit;
-  private aqgv jdField_a_of_type_Aqgv;
-  private aqgz jdField_a_of_type_Aqgz = new apis(this);
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private float[] c;
-  private float[] d = new float[4];
+  apir(apiq paramapiq) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-    boolean bool1;
-    if (!TextUtils.isEmpty(str))
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
     {
-      String[] arrayOfString = new String[1];
-      arrayOfString[0] = "";
-      int i = DeviceProfileManager.a(str, arrayOfString, new anwk());
-      if (i >= 1) {
-        if (Integer.valueOf(arrayOfString[0]).intValue() == 1)
-        {
-          bool1 = true;
-          QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool1);
-        }
-      }
+      apiq.a(this.a, paramMotionEvent.getY());
+      mum.a(paramView, 0.5F);
     }
     for (;;)
     {
-      if (!bool1)
+      bool = false;
+      do
       {
-        bool1 = bool2;
-        if (!b()) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break;
-      bool1 = false;
-    }
-  }
-  
-  private static boolean b()
-  {
-    return (Build.MODEL.equalsIgnoreCase("HRY-AL00T")) || (Build.MODEL.equalsIgnoreCase("SM-G955F")) || (Build.MODEL.equalsIgnoreCase("AQM-AL00")) || (Build.MODEL.equalsIgnoreCase("MI CC9 Pro"));
-  }
-  
-  public void a()
-  {
-    a(true);
-  }
-  
-  public void a(Context paramContext, apit paramapit)
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Apit = paramapit;
-    b();
-    jdField_a_of_type_Boolean = this.jdField_a_of_type_Aqgv.b();
-    appv.a().c(System.currentTimeMillis() - l);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aqgv == null) {
-      if (!a()) {
-        break label57;
+        return bool;
+        if (paramMotionEvent.getAction() != 1) {
+          break label101;
+        }
+        mum.a(paramView, 1.0F);
+        apiq.b(this.a, paramMotionEvent.getY());
+        if (apiq.a(this.a) - apiq.b(this.a) <= 50.0F) {
+          break;
+        }
+      } while (apiq.a(this.a) == null);
+      apiq.a(this.a).c();
+      return true;
+      label101:
+      if (paramMotionEvent.getAction() == 3) {
+        mum.a(paramView, 1.0F);
       }
     }
-    label57:
-    for (this.jdField_a_of_type_Aqgv = new aqgv(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_Aqgv = new aqgv(this.jdField_a_of_type_AndroidContentContext, 4))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorTrackManager", 2, "startupSensor");
-      }
-      this.jdField_a_of_type_Aqgv.a(this.jdField_a_of_type_Aqgz, 1);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SensorTrackManager", 2, "stopSensor");
-    }
-    if (this.jdField_a_of_type_Aqgv != null)
-    {
-      this.jdField_a_of_type_Aqgv.a();
-      this.jdField_a_of_type_Aqgv = null;
-    }
-  }
-  
-  public void d()
-  {
-    a(false);
-  }
-  
-  public void e()
-  {
-    c();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = null;
   }
 }
 

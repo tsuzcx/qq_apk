@@ -33,7 +33,7 @@ public class AEFaceTransform
   private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private PTFaceAttr faceAttr;
   private VideoFilterBase fillFilter = new VideoFilterBase(BaseFilter.getFragmentShader(0));
-  private final HashSet<BeautyRealConfig.TYPE> jsonType = new HashSet(Arrays.asList(new BeautyRealConfig.TYPE[] { BeautyRealConfig.TYPE.BASIC4, BeautyRealConfig.TYPE.BASIC3, BeautyRealConfig.TYPE.FACE_SHORTEN, BeautyRealConfig.TYPE.NOSE }));
+  private final HashSet<BeautyRealConfig.TYPE> jsonType = new HashSet(Arrays.asList(new BeautyRealConfig.TYPE[] { BeautyRealConfig.TYPE.BASIC3, BeautyRealConfig.TYPE.BASIC4, BeautyRealConfig.TYPE.BASIC5, BeautyRealConfig.TYPE.BASIC6, BeautyRealConfig.TYPE.BASIC7, BeautyRealConfig.TYPE.BASIC8, BeautyRealConfig.TYPE.FACE_SHORTEN, BeautyRealConfig.TYPE.NOSE }));
   private List<List<PointF>> mAllFacePoints = null;
   private BeautyParam mBeautyParam = new BeautyParam(BeautyParam.MeshType.PITU, true);
   private BeautyTransformList mBeautyTransformList = new BeautyTransformList();

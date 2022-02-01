@@ -1,24 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 class yxd
-  implements ValueAnimator.AnimatorUpdateListener
+  extends yxh
 {
-  yxd(yxb paramyxb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  yxd(yxc paramyxc) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    ScannerActivity.a(this.a.a).b();
   }
 }
 

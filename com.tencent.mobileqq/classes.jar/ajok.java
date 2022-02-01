@@ -1,20 +1,18 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-class ajok
-  implements View.OnClickListener
+public class ajok
+  implements View.OnLayoutChangeListener
 {
-  ajok(ajoi paramajoi, ajoo paramajoo) {}
+  public ajok(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_Ajoi.a != null)
-    {
-      int i = this.jdField_a_of_type_Ajoo.getAdapterPosition();
-      this.jdField_a_of_type_Ajoi.a.a(paramView, this.jdField_a_of_type_Ajoo, i);
+    if (((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(1001);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

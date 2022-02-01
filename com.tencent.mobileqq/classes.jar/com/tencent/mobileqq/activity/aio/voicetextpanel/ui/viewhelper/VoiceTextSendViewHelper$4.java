@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper;
 
-import aiym;
+import ahsx;
 import android.graphics.Rect;
 import android.view.TouchDelegate;
 import android.view.View;
@@ -9,17 +9,17 @@ import android.widget.CheckBox;
 public class VoiceTextSendViewHelper$4
   implements Runnable
 {
-  public VoiceTextSendViewHelper$4(aiym paramaiym, int paramInt, View paramView) {}
+  public VoiceTextSendViewHelper$4(ahsx paramahsx, int paramInt, View paramView) {}
   
   public void run()
   {
     Rect localRect = new Rect();
-    aiym.a(this.this$0).getHitRect(localRect);
+    ahsx.a(this.this$0).getHitRect(localRect);
     localRect.top -= this.jdField_a_of_type_Int;
     localRect.bottom += this.jdField_a_of_type_Int;
     localRect.left -= this.jdField_a_of_type_Int * 2;
     localRect.right += this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new TouchDelegate(localRect, aiym.a(this.this$0)));
+    this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new TouchDelegate(localRect, ahsx.a(this.this$0)));
   }
 }
 

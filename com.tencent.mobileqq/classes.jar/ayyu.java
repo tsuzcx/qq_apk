@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
 
 public class ayyu
-  extends avio
+  extends ayyv
 {
-  public ayyu(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  protected void a(boolean paramBoolean, avir paramavir)
+  public ayyu(VasProfileSimpleView paramVasProfileSimpleView, Animation paramAnimation)
   {
-    if (!OCRResultFragmentNew.a(this.a)) {
-      return;
-    }
-    OCRResultFragmentNew.b(this.a, false);
-    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramavir));
+    super(null);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

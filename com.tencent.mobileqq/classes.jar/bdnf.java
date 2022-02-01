@@ -1,22 +1,6 @@
-public abstract class bdnf
+public abstract interface bdnf
 {
-  public int a = 0;
-  public int b;
-  public long b;
-  public int c = 1;
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  
-  bdnf()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public abstract String a(int paramInt);
-  
-  public abstract String toString();
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

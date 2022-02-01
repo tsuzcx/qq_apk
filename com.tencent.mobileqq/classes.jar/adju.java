@@ -1,26 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adju
-  implements Parcelable.Creator<ToService>
+class adju
+  extends amsu
 {
-  public ToService a(Parcel paramParcel)
+  adju(adjt paramadjt) {}
+  
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    ToService localToService = new ToService();
-    localToService.jdField_a_of_type_Int = paramParcel.readInt();
-    localToService.b = paramParcel.readInt();
-    localToService.c = paramParcel.readInt();
-    localToService.d = paramParcel.readInt();
-    localToService.jdField_a_of_type_Long = paramParcel.readLong();
-    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localToService;
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
   }
   
-  public ToService[] a(int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new ToService[paramInt];
+    if (!this.a.b.equals(paramString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Adjx);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Adjx, false);
+      this.a.c(this.a.jdField_a_of_type_Adjx);
+      return;
+    }
+    this.a.jdField_a_of_type_Adjx.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Adjx);
   }
 }
 

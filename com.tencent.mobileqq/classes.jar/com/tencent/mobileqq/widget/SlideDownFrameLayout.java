@@ -10,11 +10,11 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.FrameLayout;
-import bhgr;
-import bjdg;
-import bjdh;
-import bjdi;
-import bjdj;
+import bhjc;
+import bhjd;
+import bhje;
+import bhjf;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class SlideDownFrameLayout
   extends FrameLayout
@@ -22,7 +22,7 @@ public class SlideDownFrameLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private bjdj jdField_a_of_type_Bjdj;
+  private bhjf jdField_a_of_type_Bhjf;
   private float b;
   
   public SlideDownFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -32,30 +32,30 @@ public class SlideDownFrameLayout
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bjdj == null) {
+    if (this.jdField_a_of_type_Bhjf == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bjdj.a().getY(), 0.0F });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bhjf.a().getY(), 0.0F });
     localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new bjdg(this));
+    localValueAnimator.addUpdateListener(new bhjc(this));
     localValueAnimator.start();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bjdj == null) {
+    if (this.jdField_a_of_type_Bhjf == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bjdj.a().getY(), this.jdField_a_of_type_Bjdj.a().getHeight() });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bhjf.a().getY(), this.jdField_a_of_type_Bhjf.a().getHeight() });
     localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new bjdh(this));
-    localValueAnimator.addListener(new bjdi(this));
+    localValueAnimator.addUpdateListener(new bhjd(this));
+    localValueAnimator.addListener(new bhje(this));
     localValueAnimator.start();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bjdj == null) {
+    if (this.jdField_a_of_type_Bhjf == null) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
     if (paramMotionEvent.getPointerCount() > 1) {
@@ -71,7 +71,7 @@ public class SlideDownFrameLayout
     if (i == 2)
     {
       float f = Math.abs(this.b - this.jdField_a_of_type_Float);
-      if ((this.jdField_a_of_type_Int == 0) && (f < bhgr.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Int == 0) && (f < DisplayUtil.dip2px(getContext(), 5.0F))) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
       f = this.b - this.jdField_a_of_type_Float;
@@ -79,7 +79,7 @@ public class SlideDownFrameLayout
       {
         if ((this.jdField_a_of_type_Int == 0) && (f > 0.0F))
         {
-          if (this.jdField_a_of_type_Bjdj.a())
+          if (this.jdField_a_of_type_Bhjf.a())
           {
             this.jdField_a_of_type_Float = this.b;
             this.jdField_a_of_type_Int = 1;
@@ -120,10 +120,10 @@ public class SlideDownFrameLayout
           break;
         }
       } while (this.jdField_a_of_type_Int != 1);
-      if (this.jdField_a_of_type_Bjdj != null)
+      if (this.jdField_a_of_type_Bhjf != null)
       {
-        this.jdField_a_of_type_Bjdj.a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
-        this.jdField_a_of_type_Bjdj.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_Bjdj.a().getHeight());
+        this.jdField_a_of_type_Bhjf.a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
+        this.jdField_a_of_type_Bhjf.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_Bhjf.a().getHeight());
       }
       if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
         this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
@@ -131,11 +131,11 @@ public class SlideDownFrameLayout
       this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
       return true;
     } while ((i != 1) && (i != 3));
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Bjdj != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Bhjf != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
     {
-      float f = this.jdField_a_of_type_Bjdj.a().getY();
+      float f = this.jdField_a_of_type_Bhjf.a().getY();
       this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      if ((f <= bhgr.a(getContext(), 100.0F)) && ((f <= bhgr.a(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
+      if ((f <= DisplayUtil.dip2px(getContext(), 100.0F)) && ((f <= DisplayUtil.dip2px(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
         break label262;
       }
       b();
@@ -154,9 +154,9 @@ public class SlideDownFrameLayout
     }
   }
   
-  public void setOnSlideListener(bjdj parambjdj)
+  public void setOnSlideListener(bhjf parambhjf)
   {
-    this.jdField_a_of_type_Bjdj = parambjdj;
+    this.jdField_a_of_type_Bhjf = parambhjf;
   }
 }
 

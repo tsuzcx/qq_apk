@@ -1,18 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-public class slz
-  implements ppz
+public abstract interface slz
 {
-  public slz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      ReadinjoyTabFrame.g(this.a);
-    }
-    QLog.d("ReadInJoyTabFrame", 2, "ugcAccountCreateResult result = " + paramInt);
-  }
+  public abstract void b();
+  
+  public abstract void b(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
 }
 
 

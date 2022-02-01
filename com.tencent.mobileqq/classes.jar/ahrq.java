@@ -1,26 +1,33 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahrq
-  implements View.OnClickListener
+class ahrq
+  implements aplj
 {
-  public ahrq(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, QQAppInterface paramQQAppInterface) {}
+  ahrq(ahro paramahro) {}
   
-  public void onClick(View paramView)
+  public void a(ColorNote paramColorNote)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 500L)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramColorNote == null) || (!aplm.d(paramColorNote))) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
-      bdcy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a);
-      alug.b("", "0X8008CEB");
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "color note add." + paramColorNote);
+    }
+    ahro.a(this.a, paramColorNote, 1001);
+    bcef.b(null, "dc00898", "", "", "0X800AE81", "0X800AE81", ahrr.a(paramColorNote).reportType, 0, "", "", "", "");
+  }
+  
+  public void b(ColorNote paramColorNote)
+  {
+    if ((paramColorNote == null) || (!aplm.d(paramColorNote))) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "color note del." + paramColorNote);
+    }
+    ahro.a(this.a, paramColorNote, 1002);
   }
 }
 

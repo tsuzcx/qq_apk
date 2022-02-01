@@ -1,22 +1,15 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
 
 public class zci
-  extends wip
+  implements zbv
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final zby a;
-  public final boolean a;
-  public final long b;
+  public zci(RecommendBannerViewNew paramRecommendBannerViewNew) {}
   
-  public zci(@NonNull zby paramzby, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Zby = paramzby;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    if (paramBoolean) {
+      RecommendBannerViewNew.a(this.a, paramInt);
+    }
   }
 }
 

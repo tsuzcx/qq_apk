@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 class alke
-  implements View.OnClickListener
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  alke(aljw paramaljw) {}
+  alke(aljz paramaljz) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(int paramInt)
   {
-    try
-    {
-      bhlq.a(aljw.a(this.a), 0, null, anzj.a(2131699830), 2131690580, 2131694098, new alkf(this), new alkg(this)).show();
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt != 4097) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + localThrowable.getMessage());
-      }
-    }
+    this.a.e();
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import bini;
-import binj;
-import bioy;
+import bgto;
+import bgtp;
+import bgve;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.appcommon.js.BaseInterface;
@@ -21,8 +21,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class OpenCenterPlugin
-  extends bini
-  implements binj
+  extends bgto
+  implements bgtp
 {
   private Map<String, BaseInterface> a;
   

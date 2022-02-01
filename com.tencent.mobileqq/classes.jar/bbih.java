@@ -1,15 +1,12 @@
-public class bbih
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bbih
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public boolean b = true;
+  bbih(bbie parambbie) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
-class bapl
-  implements bdgt
+public class bapl
+  implements View.OnLongClickListener
 {
-  bapl(bapk parambapk, LoadSoCallback paramLoadSoCallback) {}
+  public bapl(CommentsView paramCommentsView, baph parambaph, int paramInt) {}
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  public boolean onLongClick(View paramView)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "initSDKAsync, onLoadResult, resCode = " + paramInt);
-    }
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_Baph.a())
     {
-      this.jdField_a_of_type_Bapk.a = true;
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(true);
-      return;
+      if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+        CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
+      }
+      return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(false);
-    this.jdField_a_of_type_Bapk.a = false;
+    return false;
   }
 }
 

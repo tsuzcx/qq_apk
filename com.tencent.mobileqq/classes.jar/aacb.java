@@ -1,18 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class aacb
-  implements ValueAnimator.AnimatorUpdateListener
+class aacb
+  implements bjoe
 {
-  public aacb(RefreshHeaderView paramRefreshHeaderView, int paramInt) {}
+  aacb(aaca paramaaca) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setState(0);
+    this.a.a.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      aaca.a(this.a);
+      return;
+    case 1: 
+      aaca.b(this.a);
+      return;
+    case 2: 
+      aaca.c(this.a);
+      return;
     }
+    aaca.d(this.a);
   }
 }
 

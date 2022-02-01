@@ -1,16 +1,16 @@
 package com.tencent.device.msg.data;
 
-import abyv;
-import auna;
+import aave;
+import aszk;
 
 public class DevSingleStructMsgProcessor$1
   implements Runnable
 {
-  public DevSingleStructMsgProcessor$1(abyv paramabyv) {}
+  public DevSingleStructMsgProcessor$1(aave paramaave) {}
   
   public void run()
   {
-    auna.a(2131693371);
+    aszk.a(2131693466);
   }
 }
 

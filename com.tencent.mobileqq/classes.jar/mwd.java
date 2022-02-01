@@ -1,8 +1,14 @@
-import android.view.View;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public abstract interface mwd
+class mwd
+  implements FileFilter
 {
-  public abstract void a(View paramView);
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

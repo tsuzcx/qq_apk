@@ -9,8 +9,8 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.R.styleable;
-import swy;
-import swz;
+import tay;
+import taz;
 
 public class UCropView
   extends FrameLayout
@@ -26,9 +26,9 @@ public class UCropView
   public UCropView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131560384, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView = ((GestureCropImageView)findViewById(2131368434));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView = ((OverlayView)findViewById(2131381071));
+    LayoutInflater.from(paramContext).inflate(2131560392, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView = ((GestureCropImageView)findViewById(2131368459));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView = ((OverlayView)findViewById(2131380796));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.UCropView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView.a(paramContext);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView.a(paramContext);
@@ -38,8 +38,8 @@ public class UCropView
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView.setCropBoundsChangeListener(new swy(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView.setOverlayViewChangeListener(new swz(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropGestureCropImageView.setCropBoundsChangeListener(new tay(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropOverlayView.setOverlayViewChangeListener(new taz(this));
   }
   
   @NonNull
@@ -76,7 +76,7 @@ public class UCropView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView
  * JD-Core Version:    0.7.0.1
  */

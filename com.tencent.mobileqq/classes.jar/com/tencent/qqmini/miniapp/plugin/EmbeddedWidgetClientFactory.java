@@ -30,7 +30,7 @@ public class EmbeddedWidgetClientFactory
     }
     else
     {
-      QMLog.e("miniapp-embedded", "handleInsertEmbeddedWidgetEvent x5WidgetId is not exist");
+      QMLog.e("miniapp-embedded", "doEventByWidgetId x5WidgetId is not exist");
       return false;
     }
     return false;

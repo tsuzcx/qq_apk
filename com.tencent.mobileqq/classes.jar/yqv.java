@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-class yqv
-  implements yqe
+public class yqv
 {
-  yqv(yqj paramyqj) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
-  {
-    yuk.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  public String d;
+  String e;
+  public String f;
+  public String g;
 }
 
 

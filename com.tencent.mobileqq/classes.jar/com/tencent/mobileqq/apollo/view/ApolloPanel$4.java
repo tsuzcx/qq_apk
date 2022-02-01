@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import annx;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import amir;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionPackage;
 import java.util.Iterator;
@@ -14,14 +14,14 @@ class ApolloPanel$4
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a != null))
+    if ((this.this$0.a != null) && (this.this$0.a.app != null))
     {
-      annx localannx = (annx)this.this$0.a.a.getManager(155);
-      if (localannx != null)
+      amir localamir = (amir)this.this$0.a.app.getManager(155);
+      if (localamir != null)
       {
         Iterator localIterator = this.a.iterator();
         while (localIterator.hasNext()) {
-          localannx.a((ApolloActionPackage)localIterator.next());
+          localamir.a((ApolloActionPackage)localIterator.next());
         }
       }
     }

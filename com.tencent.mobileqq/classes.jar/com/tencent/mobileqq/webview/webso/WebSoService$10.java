@@ -5,34 +5,34 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bisk;
-import bism;
-import bitb;
+import bgym;
+import bgyo;
+import bgzd;
 
 final class WebSoService$10
   implements Runnable
 {
-  WebSoService$10(bisk parambisk, Uri paramUri, String paramString1, String paramString2, WebSoService.WebSoState paramWebSoState) {}
+  WebSoService$10(bgym parambgym, Uri paramUri, String paramString1, String paramString2, WebSoService.WebSoState paramWebSoState) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     Object localObject2 = "";
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Bisk != null)
+    if (this.jdField_a_of_type_Bgym != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Bisk.d != null)
+      if (this.jdField_a_of_type_Bgym.d != null)
       {
-        bitb.a(this.jdField_a_of_type_Bisk.d.getBytes(), bitb.b(this.jdField_a_of_type_AndroidNetUri));
-        localObject1 = bism.a(this.jdField_a_of_type_Bisk.d);
+        bgzd.a(this.jdField_a_of_type_Bgym.d.getBytes(), bgzd.b(this.jdField_a_of_type_AndroidNetUri));
+        localObject1 = bgyo.a(this.jdField_a_of_type_Bgym.d);
       }
     }
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidNetUri != null))
     {
       localObject2 = WebSoService.a().edit();
-      String str1 = String.valueOf(bitb.a());
-      String str2 = bitb.a(this.jdField_a_of_type_AndroidNetUri);
+      String str1 = String.valueOf(bgzd.a());
+      String str2 = bgzd.a(this.jdField_a_of_type_AndroidNetUri);
       ((SharedPreferences.Editor)localObject2).putString("eTag_" + str1 + str2, this.jdField_a_of_type_JavaLangString);
       ((SharedPreferences.Editor)localObject2).putString("pageVersion_" + str1 + str2, this.b);
       ((SharedPreferences.Editor)localObject2).putString("htmlSha1_" + str1 + str2, (String)localObject1);

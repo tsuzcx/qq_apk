@@ -63,12 +63,12 @@ public class HotSearchAdapter
     HotSearchAdapter.HotSearchViewHolder localHotSearchViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559411, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559413, paramViewGroup, false);
       localHotSearchViewHolder = new HotSearchAdapter.HotSearchViewHolder();
-      localHotSearchViewHolder.icon = ((ImageView)paramView.findViewById(2131371154));
-      localHotSearchViewHolder.ranking = ((ImageView)paramView.findViewById(2131371156));
-      localHotSearchViewHolder.name = ((TextView)paramView.findViewById(2131371158));
-      localHotSearchViewHolder.category = ((TextView)paramView.findViewById(2131371159));
+      localHotSearchViewHolder.icon = ((ImageView)paramView.findViewById(2131371123));
+      localHotSearchViewHolder.ranking = ((ImageView)paramView.findViewById(2131371125));
+      localHotSearchViewHolder.name = ((TextView)paramView.findViewById(2131371127));
+      localHotSearchViewHolder.category = ((TextView)paramView.findViewById(2131371128));
       paramView.setTag(localHotSearchViewHolder);
     }
     for (;;)

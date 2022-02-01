@@ -1,15 +1,26 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import cooperation.readinjoy.ReadInJoyHelper.1;
+import android.util.Property;
 
-public class bnrg
-  implements ArkAppMgr.IGetAppPathByNameCallback
+class bnrg
+  extends Property<bnrd, Float>
 {
-  public bnrg(ReadInJoyHelper.1 param1) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  bnrg(bnrd parambnrd, Class paramClass, String paramString)
   {
-    if (paramInt == 0) {}
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bnrd parambnrd)
+  {
+    if (parambnrd != null) {
+      return Float.valueOf(bnrd.a(parambnrd));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bnrd parambnrd, Float paramFloat)
+  {
+    if (parambnrd != null) {
+      bnrd.a(parambnrd, paramFloat.floatValue());
+    }
   }
 }
 

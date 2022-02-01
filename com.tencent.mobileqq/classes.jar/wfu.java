@@ -1,16 +1,11 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
-
 public class wfu
-  implements nmh
+  extends vqm
 {
-  public wfu(StoryAlbumResourceDownloader.3 param3) {}
+  public final byte[] a;
   
-  public void loaded(int paramInt, String paramString)
+  public wfu(byte[] paramArrayOfByte)
   {
-    wfr.a(this.a.this$0);
-    wfr.a(this.a.this$0, false);
-    wfr.a(this.a.this$0, false);
-    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+    this.a = paramArrayOfByte;
   }
 }
 

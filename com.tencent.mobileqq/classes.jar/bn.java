@@ -3,11 +3,13 @@ import com.dataline.activities.LiteActivity;
 import java.util.ArrayList;
 
 public class bn
-  implements aumz
+  implements aszj
 {
   public bn(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void a()
+  public void onNo() {}
+  
+  public void onYes()
   {
     Bundle localBundle;
     if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
@@ -23,8 +25,6 @@ public class bn
       new cj(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
     }
   }
-  
-  public void b() {}
 }
 
 

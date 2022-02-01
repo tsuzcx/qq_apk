@@ -1,15 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface.OnClickListener;
 
-public class aurk
+class aurk
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public String b;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  aurk(aure paramaure) {}
+  public aurk(aurh paramaurh, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+  }
 }
 
 

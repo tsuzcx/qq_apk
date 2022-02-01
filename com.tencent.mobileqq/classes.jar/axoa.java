@@ -1,30 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class axoa
-  extends MqqHandler
+  extends FlingGestureHandler
 {
-  public axoa(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  boolean a = true;
   
-  public void handleMessage(Message paramMessage)
+  public axoa(Activity paramActivity)
   {
-    switch (paramMessage.what)
-    {
+    super(paramActivity);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+    if (!b()) {
+      a();
     }
-    do
-    {
-      return;
-      MultiCardRecommendFragment.e(this.a);
-      sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
+  }
+  
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import aafm;
+import zck;
 
 public class TopRecommendBannerAdapter$1
   implements Runnable
 {
-  public TopRecommendBannerAdapter$1(aafm paramaafm) {}
+  public TopRecommendBannerAdapter$1(zck paramzck) {}
   
   public void run()
   {

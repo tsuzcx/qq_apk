@@ -2,21 +2,26 @@ package com.tencent.biz.pubaccount.readinjoy.comment.handler.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData.CommentLinkData;
+import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import own;
-import ozs;
+import org.jetbrains.annotations.Nullable;
+import oxn;
+import pay;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "articleId", "getArticleId", "()Ljava/lang/String;", "setArticleId", "(Ljava/lang/String;)V", "authorId", "", "getAuthorId", "()J", "getBusinessInfo", "setBusinessInfo", "getContentSrc", "()I", "setContentSrc", "(I)V", "reportScene", "getReportScene", "setReportScene", "rowKey", "getRowKey", "setRowKey", "src", "getSrc", "describeContents", "readFromParcel", "", "toString", "writeToParcel", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "articleId", "getArticleId", "()Ljava/lang/String;", "setArticleId", "(Ljava/lang/String;)V", "authorId", "", "getAuthorId", "()J", "getBusinessInfo", "setBusinessInfo", "getContentSrc", "()I", "setContentSrc", "(I)V", "linkDataList", "", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/BaseCommentData$CommentLinkData;", "getLinkDataList", "()Ljava/util/List;", "setLinkDataList", "(Ljava/util/List;)V", "reportScene", "getReportScene", "setReportScene", "rowKey", "getRowKey", "setRowKey", "src", "getSrc", "describeContents", "readFromParcel", "", "toString", "writeToParcel", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class SimpleCommentData
   implements Parcelable
 {
-  public static final own CREATOR = new own(null);
+  public static final oxn CREATOR = new oxn(null);
   private int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   @NotNull
   private String jdField_a_of_type_JavaLangString;
+  @Nullable
+  private List<BaseCommentData.CommentLinkData> jdField_a_of_type_JavaUtilList;
   private final int jdField_b_of_type_Int;
   @NotNull
   private String jdField_b_of_type_JavaLangString;
@@ -30,7 +35,7 @@ public class SimpleCommentData
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = ozs.a();
+    this.jdField_a_of_type_Long = pay.a();
     this.jdField_b_of_type_Int = 20;
   }
   
@@ -39,6 +44,12 @@ public class SimpleCommentData
   public final long a()
   {
     return this.jdField_a_of_type_Long;
+  }
+  
+  @Nullable
+  public final List<BaseCommentData.CommentLinkData> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(@NotNull Parcel paramParcel)
@@ -63,6 +74,11 @@ public class SimpleCommentData
       label49:
       str = "";
     }
+  }
+  
+  public final void a(@Nullable List<BaseCommentData.CommentLinkData> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
   public final int b()

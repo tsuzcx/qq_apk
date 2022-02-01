@@ -1,18 +1,130 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
-class axjz
-  implements DialogInterface.OnClickListener
+public class axjz
 {
-  axjz(axjo paramaxjo) {}
+  public static axjz a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static long a()
   {
-    if (this.a.g()) {
-      axjo.a(this.a).a(false, null, false);
+    AppInterface localAppInterface = a();
+    if (localAppInterface == null) {
+      return 0L;
     }
-    bdll.b(this.a.a, "CliOper", "", "", axjo.b, axjo.b, 1, 0, "", "", "", "");
+    return localAppInterface.getLongAccountUin();
+  }
+  
+  public static axjz a()
+  {
+    if (jdField_a_of_type_Axjz == null) {
+      jdField_a_of_type_Axjz = new axjz();
+    }
+    return jdField_a_of_type_Axjz;
+  }
+  
+  public static AppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    AppInterface localAppInterface = a();
+    if (localAppInterface == null) {
+      return "";
+    }
+    return localAppInterface.getCurrentAccountUin();
+  }
+  
+  public static TicketManager a()
+  {
+    AppInterface localAppInterface = a();
+    if (localAppInterface == null) {}
+    while (TextUtils.isEmpty(localAppInterface.getCurrentAccountUin())) {
+      return null;
+    }
+    return (TicketManager)localAppInterface.getManager(2);
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Axjz = null;
+  }
+  
+  public static String b()
+  {
+    Object localObject = a();
+    if (localObject == null) {
+      localObject = "";
+    }
+    String str;
+    do
+    {
+      return localObject;
+      str = ((TicketManager)localObject).getSkey(a());
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    return "";
+  }
+  
+  public static String c()
+  {
+    Object localObject = a();
+    if (localObject == null) {
+      localObject = "";
+    }
+    String str;
+    do
+    {
+      return localObject;
+      str = ((TicketManager)localObject).getA2(a());
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    return "";
+  }
+  
+  void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  void b(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public long c()
+  {
+    return this.b;
+  }
+  
+  public String d()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

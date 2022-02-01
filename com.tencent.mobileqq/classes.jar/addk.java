@@ -1,40 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.submsgtype0x136.Submsgtype0x136.MsgBody;
 
 public class addk
-  implements adci
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x136");
-    }
-    Submsgtype0x136.MsgBody localMsgBody = new Submsgtype0x136.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      if (localMsgBody.uint32_msg_type.get() == 0) {
-        ((aoip)paramQQAppInterface.a(20)).a(String.valueOf(localMsgBody.uint64_group_id.get()), 1, 0, null, 0);
-      }
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x136 " + paramQQAppInterface);
-    }
-  }
+  public addk(DialogActivity paramDialogActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

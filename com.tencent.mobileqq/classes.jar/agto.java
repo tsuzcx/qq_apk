@@ -1,26 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class agto
-  implements bliz
+public class agto
+  implements afym
 {
-  agto(agtj paramagtj, ChatMessage paramChatMessage, blir paramblir) {}
+  public agto(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      agtj.a(this.jdField_a_of_type_Agtj, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      bdll.b(agtj.a(this.jdField_a_of_type_Agtj), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, agtj.a(this.jdField_a_of_type_Agtj).a, "", "", "");
-      continue;
-      bdll.b(agtj.a(this.jdField_a_of_type_Agtj), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, agtj.a(this.jdField_a_of_type_Agtj).a, "", "", "");
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
+      }
     }
   }
 }

@@ -7,15 +7,15 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bdgx;
-import bdmc;
-import bhhb;
-import bjty;
-import bleb;
+import bbzm;
+import bfql;
+import bhzn;
+import bjkf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import llk;
-import mvd;
+import lld;
+import mum;
 
 public class AVSoUtils
   extends Step
@@ -35,7 +35,7 @@ public class AVSoUtils
   public static LoadExtResult a(String paramString)
   {
     long l1 = System.currentTimeMillis();
-    LoadExtResult localLoadExtResult = bdgx.a().a(paramString);
+    LoadExtResult localLoadExtResult = bbzm.a().a(paramString);
     long l2 = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder().append("loadAndDownloadSo. soName = ").append(paramString).append(", result = ").append(localLoadExtResult).append(", time len = ").append(l2 - l1).append(", so path = ");
     if (localLoadExtResult != null) {}
@@ -61,7 +61,7 @@ public class AVSoUtils
     if (!BaseApplicationImpl.isCurrentVersionFirstLaunch) {
       return;
     }
-    if (llk.f() <= 2) {}
+    if (lld.f() <= 2) {}
     for (int i = 1;; i = 0)
     {
       String str = b();
@@ -254,7 +254,7 @@ public class AVSoUtils
         bool3 = localFile.exists();
         localObject5 = str4;
         bool1 = bool3;
-        localObject6 = bjty.a(localFile);
+        localObject6 = bhzn.a(localFile);
         localObject5 = localObject6;
         bool1 = bool3;
         long l2 = localFile.length();
@@ -282,8 +282,8 @@ public class AVSoUtils
       ((HashMap)localObject6).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
       ((HashMap)localObject6).put("man", c(Build.MANUFACTURER));
       ((HashMap)localObject6).put("mod", c(Build.MODEL));
-      ((HashMap)localObject6).put("qq_ver", String.valueOf(mvd.b()));
-      bdmc.a(paramContext).a("", "AV_LOAD_SO_FAILED", false, 0L, 0L, (HashMap)localObject6, "");
+      ((HashMap)localObject6).put("qq_ver", String.valueOf(mum.a()));
+      StatisticCollector.getInstance(paramContext).collectPerformance("", "AV_LOAD_SO_FAILED", false, 0L, 0L, (HashMap)localObject6, "");
       QLog.w("AVModuleExtract", 1, "LoadExtractedSo end , result[" + paramBoolean + "], libName[" + paramString + "], seq[" + paramLong + "]");
       return paramBoolean;
     }
@@ -312,7 +312,7 @@ public class AVSoUtils
     File localFile = new File(paramString);
     try
     {
-      String str1 = bleb.a(localFile);
+      String str1 = bjkf.a(localFile);
       paramString = "[" + paramString + "], exists[" + localFile.exists();
       return paramString + "], md5[" + str1 + "]";
     }
@@ -340,7 +340,7 @@ public class AVSoUtils
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libVideoCtrl.so").toString()));
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libxplatform.so").toString()));
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libc++_shared.so").toString()));
-    str = bhhb.a(BaseApplicationImpl.sApplication);
+    str = bfql.a(BaseApplicationImpl.sApplication);
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libc++_shared.so").toString()));
   }
   
@@ -355,23 +355,23 @@ public class AVSoUtils
     //   6: iconst_0
     //   7: istore 12
     //   9: aload_2
-    //   10: ldc_w 410
+    //   10: ldc_w 412
     //   13: iconst_4
-    //   14: invokevirtual 414	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   14: invokevirtual 416	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   17: astore 33
     //   19: new 35	java/lang/StringBuilder
     //   22: dup
     //   23: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   26: invokestatic 419	com/tencent/common/config/AppSetting:g	()Ljava/lang/String;
+    //   26: invokestatic 421	com/tencent/common/config/AppSetting:g	()Ljava/lang/String;
     //   29: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokestatic 423	com/tencent/mobileqq/utils/SoLoadUtil:a	()Ljava/lang/String;
+    //   32: invokestatic 425	com/tencent/mobileqq/utils/SoLoadUtil:a	()Ljava/lang/String;
     //   35: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: astore 34
     //   43: new 35	java/lang/StringBuilder
     //   46: dup
     //   47: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   50: ldc_w 425
+    //   50: ldc_w 427
     //   53: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_3
     //   57: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -380,21 +380,21 @@ public class AVSoUtils
     //   65: new 35	java/lang/StringBuilder
     //   68: dup
     //   69: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 427
+    //   72: ldc_w 429
     //   75: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: invokestatic 423	com/tencent/mobileqq/utils/SoLoadUtil:a	()Ljava/lang/String;
+    //   78: invokestatic 425	com/tencent/mobileqq/utils/SoLoadUtil:a	()Ljava/lang/String;
     //   81: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   87: astore 36
     //   89: aload 33
     //   91: aload 35
     //   93: aload 36
-    //   95: invokeinterface 433 3 0
+    //   95: invokeinterface 435 3 0
     //   100: astore 15
     //   102: invokestatic 94	com/tencent/mobileqq/startup/step/AVSoUtils:b	()Ljava/lang/String;
     //   105: astore 37
     //   107: aload 37
-    //   109: invokestatic 439	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   109: invokestatic 441	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   112: istore 14
     //   114: new 188	java/io/File
     //   117: dup
@@ -414,27 +414,27 @@ public class AVSoUtils
     //   148: new 35	java/lang/StringBuilder
     //   151: dup
     //   152: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   155: ldc_w 441
+    //   155: ldc_w 443
     //   158: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: aload_3
     //   162: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc_w 443
+    //   165: ldc_w 445
     //   168: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: aload 15
     //   173: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: ldc_w 445
+    //   176: ldc_w 447
     //   179: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: aload 34
     //   184: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: ldc_w 447
+    //   187: ldc_w 449
     //   190: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   193: iload 4
     //   195: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   198: ldc_w 449
+    //   198: ldc_w 451
     //   201: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: iload 14
     //   206: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   209: ldc_w 451
+    //   209: ldc_w 453
     //   212: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   215: aload 32
     //   217: invokevirtual 193	java/io/File:exists	()Z
@@ -457,7 +457,7 @@ public class AVSoUtils
     //   256: ireturn
     //   257: aload 15
     //   259: aload 34
-    //   261: invokestatic 455	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   261: invokestatic 457	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   264: ifeq +17 -> 281
     //   267: aload 32
     //   269: invokevirtual 193	java/io/File:exists	()Z
@@ -465,7 +465,7 @@ public class AVSoUtils
     //   275: iconst_1
     //   276: istore 4
     //   278: goto -27 -> 251
-    //   281: invokestatic 460	android/os/SystemClock:uptimeMillis	()J
+    //   281: invokestatic 462	android/os/SystemClock:uptimeMillis	()J
     //   284: lstore 10
     //   286: aload 32
     //   288: invokevirtual 196	java/io/File:delete	()Z
@@ -477,10 +477,10 @@ public class AVSoUtils
     //   302: ifeq +362 -> 664
     //   305: aload_2
     //   306: aload 37
-    //   308: ldc_w 462
+    //   308: ldc_w 464
     //   311: aload_3
     //   312: invokestatic 238	com/tencent/mobileqq/startup/step/AVSoUtils:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   315: invokestatic 465	com/tencent/mobileqq/utils/SoLoadUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    //   315: invokestatic 467	com/tencent/mobileqq/utils/SoLoadUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
     //   318: istore 5
     //   320: aload 32
     //   322: invokevirtual 193	java/io/File:exists	()Z
@@ -497,10 +497,10 @@ public class AVSoUtils
     //   345: new 35	java/lang/StringBuilder
     //   348: dup
     //   349: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   352: ldc_w 467
+    //   352: ldc_w 469
     //   355: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   358: iload 5
-    //   360: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   360: invokevirtual 472	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   363: ldc 222
     //   365: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   368: lload_0
@@ -509,18 +509,18 @@ public class AVSoUtils
     //   374: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   377: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   380: invokestatic 210	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   383: invokestatic 460	android/os/SystemClock:uptimeMillis	()J
+    //   383: invokestatic 462	android/os/SystemClock:uptimeMillis	()J
     //   386: lstore 6
     //   388: ldc 62
     //   390: iconst_1
     //   391: new 35	java/lang/StringBuilder
     //   394: dup
     //   395: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   398: ldc_w 472
+    //   398: ldc_w 474
     //   401: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   404: aload_3
     //   405: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   408: ldc_w 474
+    //   408: ldc_w 476
     //   411: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   414: lload 6
     //   416: lload 10
@@ -546,36 +546,36 @@ public class AVSoUtils
     //   462: aload_2
     //   463: athrow
     //   464: aload 34
-    //   466: invokestatic 439	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   466: invokestatic 441	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   469: ifne +33 -> 502
     //   472: aload 34
     //   474: new 35	java/lang/StringBuilder
     //   477: dup
     //   478: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   481: ldc_w 476
+    //   481: ldc_w 478
     //   484: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   487: invokestatic 423	com/tencent/mobileqq/utils/SoLoadUtil:a	()Ljava/lang/String;
+    //   487: invokestatic 425	com/tencent/mobileqq/utils/SoLoadUtil:a	()Ljava/lang/String;
     //   490: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   493: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   496: invokestatic 455	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   496: invokestatic 457	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   499: ifeq +83 -> 582
     //   502: aload 33
-    //   504: invokeinterface 480 1 0
+    //   504: invokeinterface 482 1 0
     //   509: aload 35
     //   511: aload 36
-    //   513: invokeinterface 486 3 0
-    //   518: invokeinterface 489 1 0
+    //   513: invokeinterface 488 3 0
+    //   518: invokeinterface 491 1 0
     //   523: pop
     //   524: ldc 62
     //   526: iconst_1
     //   527: new 35	java/lang/StringBuilder
     //   530: dup
     //   531: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   534: ldc_w 491
+    //   534: ldc_w 493
     //   537: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   540: aload 35
     //   542: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: ldc_w 493
+    //   545: ldc_w 495
     //   548: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   551: aload 34
     //   553: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -591,11 +591,11 @@ public class AVSoUtils
     //   577: istore 4
     //   579: goto -196 -> 383
     //   582: aload 33
-    //   584: invokeinterface 480 1 0
+    //   584: invokeinterface 482 1 0
     //   589: aload 35
     //   591: aload 34
-    //   593: invokeinterface 486 3 0
-    //   598: invokeinterface 489 1 0
+    //   593: invokeinterface 488 3 0
+    //   598: invokeinterface 491 1 0
     //   603: pop
     //   604: goto -80 -> 524
     //   607: ldc 62
@@ -603,10 +603,10 @@ public class AVSoUtils
     //   610: new 35	java/lang/StringBuilder
     //   613: dup
     //   614: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   617: ldc_w 495
+    //   617: ldc_w 497
     //   620: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   623: iload 5
-    //   625: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   625: invokevirtual 472	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   628: ldc 246
     //   630: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   633: iconst_0
@@ -689,7 +689,7 @@ public class AVSoUtils
     //   784: aload 25
     //   786: astore 21
     //   788: aload 38
-    //   790: invokevirtual 498	java/io/File:mkdir	()Z
+    //   790: invokevirtual 500	java/io/File:mkdir	()Z
     //   793: istore 4
     //   795: iload 13
     //   797: istore 12
@@ -710,17 +710,17 @@ public class AVSoUtils
     //   828: aload 25
     //   830: astore 21
     //   832: aload_2
-    //   833: invokevirtual 502	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   833: invokevirtual 504	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   836: new 35	java/lang/StringBuilder
     //   839: dup
     //   840: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   843: invokestatic 503	com/tencent/mobileqq/startup/step/AVSoUtils:a	()Ljava/lang/String;
+    //   843: invokestatic 505	com/tencent/mobileqq/startup/step/AVSoUtils:a	()Ljava/lang/String;
     //   846: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   849: aload_3
     //   850: invokestatic 238	com/tencent/mobileqq/startup/step/AVSoUtils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   853: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   856: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   859: invokevirtual 509	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   859: invokevirtual 511	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   862: astore 15
     //   864: aload 27
     //   866: astore 16
@@ -740,7 +740,7 @@ public class AVSoUtils
     //   894: astore 17
     //   896: aload 25
     //   898: astore 21
-    //   900: new 511	java/io/FileOutputStream
+    //   900: new 513	java/io/FileOutputStream
     //   903: dup
     //   904: new 35	java/lang/StringBuilder
     //   907: dup
@@ -752,7 +752,7 @@ public class AVSoUtils
     //   920: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   923: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   926: iconst_1
-    //   927: invokespecial 514	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
+    //   927: invokespecial 516	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
     //   930: astore_2
     //   931: lconst_0
     //   932: lstore 6
@@ -792,7 +792,7 @@ public class AVSoUtils
     //   998: iconst_0
     //   999: aload 23
     //   1001: arraylength
-    //   1002: invokevirtual 520	java/io/InputStream:read	([BII)I
+    //   1002: invokevirtual 522	java/io/InputStream:read	([BII)I
     //   1005: istore 5
     //   1007: lload 6
     //   1009: lstore 8
@@ -815,7 +815,7 @@ public class AVSoUtils
     //   1040: aload 23
     //   1042: iconst_0
     //   1043: iload 5
-    //   1045: invokevirtual 526	java/io/OutputStream:write	([BII)V
+    //   1045: invokevirtual 528	java/io/OutputStream:write	([BII)V
     //   1048: lload 6
     //   1050: iload 5
     //   1052: i2l
@@ -836,19 +836,19 @@ public class AVSoUtils
     //   1079: aload 25
     //   1081: astore 21
     //   1083: aload_2
-    //   1084: invokevirtual 502	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   1084: invokevirtual 504	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   1087: new 35	java/lang/StringBuilder
     //   1090: dup
     //   1091: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1094: invokestatic 503	com/tencent/mobileqq/startup/step/AVSoUtils:a	()Ljava/lang/String;
+    //   1094: invokestatic 505	com/tencent/mobileqq/startup/step/AVSoUtils:a	()Ljava/lang/String;
     //   1097: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1100: aload_3
     //   1101: invokestatic 238	com/tencent/mobileqq/startup/step/AVSoUtils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1104: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1107: ldc_w 528
+    //   1107: ldc_w 530
     //   1110: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1113: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1116: invokevirtual 509	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   1116: invokevirtual 511	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   1119: astore 23
     //   1121: aload 27
     //   1123: astore 16
@@ -869,19 +869,19 @@ public class AVSoUtils
     //   1154: aload 25
     //   1156: astore 21
     //   1158: aload_2
-    //   1159: invokevirtual 502	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   1159: invokevirtual 504	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   1162: new 35	java/lang/StringBuilder
     //   1165: dup
     //   1166: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1169: invokestatic 503	com/tencent/mobileqq/startup/step/AVSoUtils:a	()Ljava/lang/String;
+    //   1169: invokestatic 505	com/tencent/mobileqq/startup/step/AVSoUtils:a	()Ljava/lang/String;
     //   1172: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1175: aload_3
     //   1176: invokestatic 238	com/tencent/mobileqq/startup/step/AVSoUtils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1179: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1182: ldc_w 530
+    //   1182: ldc_w 532
     //   1185: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1188: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1191: invokevirtual 509	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   1191: invokevirtual 511	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   1194: astore 16
     //   1196: aload 23
     //   1198: astore 15
@@ -905,7 +905,7 @@ public class AVSoUtils
     //   1234: iconst_0
     //   1235: aload 23
     //   1237: arraylength
-    //   1238: invokevirtual 520	java/io/InputStream:read	([BII)I
+    //   1238: invokevirtual 522	java/io/InputStream:read	([BII)I
     //   1241: istore 5
     //   1243: iload 5
     //   1245: iconst_m1
@@ -926,7 +926,7 @@ public class AVSoUtils
     //   1272: aload 23
     //   1274: iconst_0
     //   1275: iload 5
-    //   1277: invokevirtual 526	java/io/OutputStream:write	([BII)V
+    //   1277: invokevirtual 528	java/io/OutputStream:write	([BII)V
     //   1280: lload 8
     //   1282: iload 5
     //   1284: i2l
@@ -991,7 +991,7 @@ public class AVSoUtils
     //   1396: new 35	java/lang/StringBuilder
     //   1399: dup
     //   1400: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1403: ldc_w 532
+    //   1403: ldc_w 534
     //   1406: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1409: lload_0
     //   1410: invokevirtual 52	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -1006,17 +1006,17 @@ public class AVSoUtils
     //   1430: aload 17
     //   1432: ifnull +8 -> 1440
     //   1435: aload 17
-    //   1437: invokevirtual 535	java/io/OutputStream:close	()V
+    //   1437: invokevirtual 537	java/io/OutputStream:close	()V
     //   1440: aload 15
     //   1442: ifnull +8 -> 1450
     //   1445: aload 15
-    //   1447: invokevirtual 536	java/io/InputStream:close	()V
+    //   1447: invokevirtual 538	java/io/InputStream:close	()V
     //   1450: iload 12
     //   1452: istore 4
     //   1454: aload 16
     //   1456: ifnull -1073 -> 383
     //   1459: aload 16
-    //   1461: invokevirtual 536	java/io/InputStream:close	()V
+    //   1461: invokevirtual 538	java/io/InputStream:close	()V
     //   1464: iload 12
     //   1466: istore 4
     //   1468: goto -1085 -> 383
@@ -1037,7 +1037,7 @@ public class AVSoUtils
     //   1498: aload_2
     //   1499: astore 21
     //   1501: aload 34
-    //   1503: invokestatic 439	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1503: invokestatic 441	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1506: ifne +36 -> 1542
     //   1509: aload 16
     //   1511: astore 20
@@ -1052,8 +1052,8 @@ public class AVSoUtils
     //   1528: aload_2
     //   1529: astore 21
     //   1531: aload 34
-    //   1533: ldc_w 476
-    //   1536: invokestatic 455	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   1533: ldc_w 478
+    //   1536: invokestatic 457	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   1539: ifeq +130 -> 1669
     //   1542: aload 16
     //   1544: astore 20
@@ -1068,11 +1068,11 @@ public class AVSoUtils
     //   1561: aload_2
     //   1562: astore 21
     //   1564: aload 33
-    //   1566: invokeinterface 480 1 0
+    //   1566: invokeinterface 482 1 0
     //   1571: aload 35
     //   1573: aload 36
-    //   1575: invokeinterface 486 3 0
-    //   1580: invokeinterface 489 1 0
+    //   1575: invokeinterface 488 3 0
+    //   1580: invokeinterface 491 1 0
     //   1585: pop
     //   1586: aload 16
     //   1588: astore 20
@@ -1091,11 +1091,11 @@ public class AVSoUtils
     //   1611: new 35	java/lang/StringBuilder
     //   1614: dup
     //   1615: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1618: ldc_w 538
+    //   1618: ldc_w 540
     //   1621: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1624: aload 35
     //   1626: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1629: ldc_w 493
+    //   1629: ldc_w 495
     //   1632: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1635: aload 34
     //   1637: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1125,11 +1125,11 @@ public class AVSoUtils
     //   1688: aload_2
     //   1689: astore 21
     //   1691: aload 33
-    //   1693: invokeinterface 480 1 0
+    //   1693: invokeinterface 482 1 0
     //   1698: aload 35
     //   1700: aload 34
-    //   1702: invokeinterface 486 3 0
-    //   1707: invokeinterface 489 1 0
+    //   1702: invokeinterface 488 3 0
+    //   1707: invokeinterface 491 1 0
     //   1712: pop
     //   1713: goto -127 -> 1586
     //   1716: astore 17
@@ -1154,7 +1154,7 @@ public class AVSoUtils
     //   1750: new 35	java/lang/StringBuilder
     //   1753: dup
     //   1754: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1757: ldc_w 540
+    //   1757: ldc_w 542
     //   1760: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1763: lload_0
     //   1764: invokevirtual 52	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -1162,21 +1162,21 @@ public class AVSoUtils
     //   1769: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1772: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1775: aload 18
-    //   1777: invokestatic 359	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1777: invokestatic 361	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1780: aload_2
     //   1781: ifnull +7 -> 1788
     //   1784: aload_2
-    //   1785: invokevirtual 535	java/io/OutputStream:close	()V
+    //   1785: invokevirtual 537	java/io/OutputStream:close	()V
     //   1788: aload 15
     //   1790: ifnull +8 -> 1798
     //   1793: aload 15
-    //   1795: invokevirtual 536	java/io/InputStream:close	()V
+    //   1795: invokevirtual 538	java/io/InputStream:close	()V
     //   1798: iload 12
     //   1800: istore 4
     //   1802: aload 16
     //   1804: ifnull -1421 -> 383
     //   1807: aload 16
-    //   1809: invokevirtual 536	java/io/InputStream:close	()V
+    //   1809: invokevirtual 538	java/io/InputStream:close	()V
     //   1812: iload 12
     //   1814: istore 4
     //   1816: goto -1433 -> 383
@@ -1201,7 +1201,7 @@ public class AVSoUtils
     //   1852: new 35	java/lang/StringBuilder
     //   1855: dup
     //   1856: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1859: ldc_w 542
+    //   1859: ldc_w 544
     //   1862: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1865: lload_0
     //   1866: invokevirtual 52	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -1218,15 +1218,15 @@ public class AVSoUtils
     //   1891: aload 21
     //   1893: ifnull +8 -> 1901
     //   1896: aload 21
-    //   1898: invokevirtual 535	java/io/OutputStream:close	()V
+    //   1898: invokevirtual 537	java/io/OutputStream:close	()V
     //   1901: aload 17
     //   1903: ifnull +8 -> 1911
     //   1906: aload 17
-    //   1908: invokevirtual 536	java/io/InputStream:close	()V
+    //   1908: invokevirtual 538	java/io/InputStream:close	()V
     //   1911: aload 19
     //   1913: ifnull +8 -> 1921
     //   1916: aload 19
-    //   1918: invokevirtual 536	java/io/InputStream:close	()V
+    //   1918: invokevirtual 538	java/io/InputStream:close	()V
     //   1921: aload_2
     //   1922: athrow
     //   1923: ldc 62
@@ -1234,7 +1234,7 @@ public class AVSoUtils
     //   1926: new 35	java/lang/StringBuilder
     //   1929: dup
     //   1930: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   1933: ldc_w 544
+    //   1933: ldc_w 546
     //   1936: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1939: lload_0
     //   1940: invokevirtual 52	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;

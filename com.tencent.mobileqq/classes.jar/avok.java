@@ -1,31 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
 
-class avok
-  extends Handler
+public class avok
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  avok(avoj paramavoj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public avok(MedalGuideView paramMedalGuideView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)avoj.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    f = paramValueAnimator.getAnimatedFraction();
+    if ((!this.a.c) && (f >= 0.8857143F))
     {
-    default: 
-      return;
+      this.a.c = true;
+      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(4);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
+      }
     }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    if (f >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 

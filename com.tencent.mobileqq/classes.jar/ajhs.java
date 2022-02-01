@@ -1,6 +1,19 @@
-public abstract interface ajhs
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+
+class ajhs
+  implements View.OnTouchListener
 {
-  public abstract void a(String paramString);
+  ajhs(ajhm paramajhm) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

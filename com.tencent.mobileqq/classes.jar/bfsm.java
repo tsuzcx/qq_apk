@@ -1,15 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.theme.SkinnableNinePatchDrawable;
 
-class bfsm
-  implements DialogInterface.OnClickListener
+public class bfsm
 {
-  bfsm(bfsf parambfsf, bfrs parambfrs) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(Drawable paramDrawable)
   {
-    bgrn.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).c(this.jdField_a_of_type_Bfrs);
-    paramDialogInterface.dismiss();
+    if (paramDrawable == null) {}
+    do
+    {
+      return -1;
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return bftf.a(((BitmapDrawable)paramDrawable).getBitmap());
+      }
+      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+        return bftf.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
+      }
+    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
+    return bftf.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
+  }
+  
+  public static final Bitmap a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {}
+    do
+    {
+      return null;
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
+    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
   }
 }
 

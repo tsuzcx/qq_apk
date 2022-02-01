@@ -1,21 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class awca
-  extends anyu
+  implements awcc
 {
-  public awca(ShareToQQActivity paramShareToQQActivity) {}
+  QQAppInterface a;
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public awca(QQAppInterface paramQQAppInterface)
   {
-    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(awcs paramawcs, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awcd paramawcd) {}
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
     {
-      paramString = new Intent();
-      paramString.putExtra("isSuccess", paramBoolean2);
-      paramString.putExtra("isCancelShield", false);
-      this.a.setResult(-1, paramString);
+    default: 
+      return false;
     }
-    this.a.finish();
+    return true;
   }
 }
 

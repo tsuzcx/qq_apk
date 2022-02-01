@@ -1,17 +1,12 @@
-public class nnv
+public abstract interface nnv
 {
-  public final int a;
-  public final String a;
+  public abstract void loaded(String paramString, int paramInt);
   
-  private nnv(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void progress(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnv
  * JD-Core Version:    0.7.0.1
  */

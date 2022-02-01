@@ -1,17 +1,20 @@
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
 public class blnp
-  extends blpo
 {
   public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void a(SpannableString paramSpannableString)
+  public blnp(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
-    }
-    paramSpannableString.setSpan(new blno(this.a), this.b, this.c, 17);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramInt3;
   }
 }
 

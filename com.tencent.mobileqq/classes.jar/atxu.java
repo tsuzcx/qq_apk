@@ -1,29 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
-class atxu
-  extends atxd
+public class atxu
+  implements View.OnTouchListener
 {
-  public atxu(atwy paramatwy)
-  {
-    super(paramatwy);
-  }
+  public atxu(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  protected String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "StateRefuseByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atwy.b(this.jdField_a_of_type_Atwy, 11, 6);
-    atwy.c(this.jdField_a_of_type_Atwy, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Atxd = new atxt(this.jdField_a_of_type_Atwy);
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class azuf
-  implements Comparator<PortalManager.TimerConfig>
+public class azuf
+  extends andd
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  public azuf(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
-      return 1;
+    if (paramBoolean)
+    {
+      if (!this.a.isAdded())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
+        }
+        return;
+      }
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
+      return;
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
+    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
   }
 }
 

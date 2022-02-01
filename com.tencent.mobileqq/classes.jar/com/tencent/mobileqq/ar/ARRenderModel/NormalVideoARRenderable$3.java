@@ -2,26 +2,26 @@ package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
-import apil;
+import aoby;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class NormalVideoARRenderable$3
   implements Runnable
 {
-  public NormalVideoARRenderable$3(apil paramapil) {}
+  public NormalVideoARRenderable$3(aoby paramaoby) {}
   
   @TargetApi(11)
   public void run()
   {
     try
     {
-      apil.a(this.this$0).updateTexImage();
-      apil.a(this.this$0).getTransformMatrix(apil.a(this.this$0));
+      aoby.a(this.this$0).updateTexImage();
+      aoby.a(this.this$0).getTransformMatrix(aoby.a(this.this$0));
       if (ScanTorchActivity.h)
       {
-        apil localapil = this.this$0;
-        localapil.b += 1L;
+        aoby localaoby = this.this$0;
+        localaoby.b += 1L;
         if (this.this$0.b >= 30L)
         {
           this.this$0.b = 0L;

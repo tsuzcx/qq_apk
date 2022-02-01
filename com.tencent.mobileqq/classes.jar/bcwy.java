@@ -1,49 +1,30 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bcwy
+  extends bcwu
 {
-  public static void a(int paramInt)
+  public bcwy(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bcxa parambcxa)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("waite", "" + paramInt);
-    bdmc.a(VideoEnvironment.a()).a(null, "sv_waite_record_count", true, 0L, 0L, localHashMap, "");
+    super(paramQQAppInterface, paramChatMessage, parambcxa);
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  protected String a()
   {
-    a("sv_resource_download_base", paramInt1, paramInt2);
+    return ((MessageForFile)this.a).fileName;
   }
   
-  private static void a(String paramString, int paramInt1, int paramInt2)
+  protected void a(bcwv parambcwv)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("type", "" + paramInt1);
-    localHashMap.put("error", "" + paramInt2);
-    bdmc.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("cost", "" + paramLong);
-    bdmc.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    a("sv_resource_download_qzone", paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.i("BuddyFileAIOMsgTips", 1, "getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
+    }
+    ThreadManager.getUIHandler().post(new BuddyFileAIOMsgTips.1(this, parambcwv));
   }
 }
 

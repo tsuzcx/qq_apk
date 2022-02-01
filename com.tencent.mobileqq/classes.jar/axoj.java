@@ -1,17 +1,20 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class axoj
+  extends axog
 {
-  public Button a;
-  public ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  axoj(axoi paramaxoi) {}
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, axoc paramaxoc, axoe paramaxoe)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if ((paramView != null) && (((axoe)paramView.getTag()).a == paramaxoe.a)) {
+      return paramView;
+    }
+    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559812, null);
+    paramView.setTag(paramaxoe);
+    return paramView;
+  }
 }
 
 

@@ -1,15 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.os.Looper;
-import kotlin.jvm.functions.Function0;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bibx
-  implements Function0<Drawable>
+public final class bibx
+  implements Parcelable.Creator<DownloadInfo>
 {
-  bibx(bibw parambibw, bibv parambibv, Looper paramLooper, boolean paramBoolean) {}
-  
-  public Drawable a()
+  public DownloadInfo a(Parcel paramParcel)
   {
-    return this.jdField_a_of_type_Bibw.a(this.jdField_a_of_type_Bibv, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
+    return new DownloadInfo(paramParcel);
+  }
+  
+  public DownloadInfo[] a(int paramInt)
+  {
+    return new DownloadInfo[paramInt];
   }
 }
 

@@ -1,11 +1,49 @@
-public abstract interface baeh<VIEW, DATA>
-  extends baej
+import com.tencent.qphone.base.util.QLog;
+
+class baeh
+  implements bagj
 {
-  public abstract int a();
+  baeh(baeg parambaeg, int[] paramArrayOfInt) {}
   
-  public abstract String a();
+  public void onEncodeError(int paramInt, Throwable arg2)
+  {
+    String str;
+    if (??? != null) {
+      str = ???.getMessage();
+    }
+    for (;;)
+    {
+      xwa.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
+      xvv.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
+      baeg.a(this.jdField_a_of_type_Baeg, paramInt);
+      synchronized (baeg.a(this.jdField_a_of_type_Baeg))
+      {
+        baeg.a(this.jdField_a_of_type_Baeg, true);
+        baeg.a(this.jdField_a_of_type_Baeg).notifyAll();
+        return;
+        str = "UNKNOWN ERROR";
+      }
+    }
+  }
   
-  public abstract boolean a(DATA paramDATA);
+  public void onEncodeFinish(String arg1)
+  {
+    xwa.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
+    synchronized (baeg.a(this.jdField_a_of_type_Baeg))
+    {
+      baeg.a(this.jdField_a_of_type_Baeg, true);
+      baeg.a(this.jdField_a_of_type_Baeg).notifyAll();
+      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
+      return;
+    }
+  }
+  
+  public void onEncodeFrame() {}
+  
+  public void onEncodeStart()
+  {
+    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
+  }
 }
 
 

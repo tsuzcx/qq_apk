@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alth;
-import alzu;
-import alzy;
+import akqy;
+import akvw;
+import akwa;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -10,11 +10,11 @@ import android.media.MediaMetadataRetriever;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bnkc;
-import bnlv;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.PhotoUtils;
+import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.io.File;
 
 class EditLocalVideoActivity$18
@@ -55,13 +55,13 @@ class EditLocalVideoActivity$18
       label121:
       if (!EditLocalVideoActivity.a())
       {
-        i = alzy.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
+        i = akwa.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
         if (QLog.isColorLevel()) {
           QLog.d("EditLocalVideoActivity", 2, "init, status1=" + i + ", dstWidth=" + j + ", dstHeight=" + k);
         }
         if (i != 0)
         {
-          bnlv.a(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "2", null);
+          QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "2", null);
           EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1001);
           return;
         }
@@ -81,7 +81,7 @@ class EditLocalVideoActivity$18
       if (!EditLocalVideoActivity.a())
       {
         if (TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0))) {}
-        for (i = -999;; i = alzy.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
+        for (i = -999;; i = akwa.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
         {
           if (QLog.isColorLevel()) {
             QLog.d("EditLocalVideoActivity", 2, "init, status0=" + i);
@@ -89,7 +89,7 @@ class EditLocalVideoActivity$18
           if (i == 0) {
             break;
           }
-          bnlv.a(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "3", null);
+          QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "3", null);
           EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1000);
           return;
         }
@@ -107,13 +107,13 @@ class EditLocalVideoActivity$18
         }
         while (localBitmap != null)
         {
-          localObject = alzu.a + File.separator + System.currentTimeMillis() + ".jpg";
-          if (!bnkc.a(localBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 90, true)) {
+          localObject = akvw.a + File.separator + System.currentTimeMillis() + ".jpg";
+          if (!PhotoUtils.saveBitmapToFile(localBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 90, true)) {
             break;
           }
           EditLocalVideoActivity.a(this.this$0).obtainMessage(1102, localObject).sendToTarget();
           return;
-          localBitmap = alzy.a(0L, 1000L);
+          localBitmap = akwa.a(0L, 1000L);
         }
         return;
       }

@@ -1,23 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class nxa
-  extends AnimatorListenerAdapter
+class nxa
+  implements Comparator<Map.Entry<Long, Long>>
 {
-  public nxa(AdControlView paramAdControlView) {}
+  nxa(nwz paramnwz) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a(Map.Entry<Long, Long> paramEntry1, Map.Entry<Long, Long> paramEntry2)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.b = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.b = false;
-    this.a.setVisibility(4);
+    return ((Long)paramEntry1.getValue()).compareTo((Long)paramEntry2.getValue());
   }
 }
 

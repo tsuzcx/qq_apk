@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import amtj;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,9 +16,8 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import anzj;
-import bioy;
-import blhq;
+import bgve;
+import bjng;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
@@ -27,7 +27,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.buscard.BuscardHelper;
 import cooperation.buscard.BuscardProxyService;
-import niz;
+import nko;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +54,7 @@ public class BuscardJsPlugin
   public static final int MSG_UNINIT = 4;
   public static final String NAME_SPACE = "nfc";
   private static final String TAG = "BuscardJsPlugin";
-  private Handler mHandler = new blhq(this);
+  private Handler mHandler = new bjng(this);
   private Messenger mMessenger = new Messenger(this.mHandler);
   private Messenger mService;
   ResultReceiver resultReceiver = new BuscardJsPlugin.1(this, this.mHandler);
@@ -199,7 +199,7 @@ public class BuscardJsPlugin
                 }
                 localObject = new JSONObject();
                 ((JSONObject)localObject).put("retcode", -8);
-                ((JSONObject)localObject).put("retmsg", anzj.a(2131700152));
+                ((JSONObject)localObject).put("retmsg", amtj.a(2131700387));
                 callJs(paramBundle, new String[] { ((JSONObject)localObject).toString() });
                 return;
               }
@@ -273,7 +273,7 @@ public class BuscardJsPlugin
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label282;
       }
-      bool = niz.a().a((String)localObject2, "nfc.nfcInit");
+      bool = nko.a().a((String)localObject2, "nfc.nfcInit");
       localObject2 = Uri.parse((String)localObject2);
       if (!((Uri)localObject2).isHierarchical()) {
         break label276;

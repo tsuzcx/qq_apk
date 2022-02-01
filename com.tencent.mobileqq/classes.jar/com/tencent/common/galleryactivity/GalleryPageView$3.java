@@ -1,12 +1,12 @@
 package com.tencent.common.galleryactivity;
 
-import abkh;
+import aagq;
 import android.widget.TextView;
 
 public class GalleryPageView$3
   implements Runnable
 {
-  public GalleryPageView$3(abkh paramabkh) {}
+  public GalleryPageView$3(aagq paramaagq) {}
   
   public void run()
   {

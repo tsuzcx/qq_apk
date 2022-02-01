@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aean;
-import aimx;
-import anum;
-import anyw;
-import bhsr;
+import acvv;
+import ahik;
+import amov;
+import amsw;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class NearbyChatPie$1
   implements Runnable
 {
-  public NearbyChatPie$1(aimx paramaimx) {}
+  public NearbyChatPie$1(ahik paramahik) {}
   
   public void run()
   {
     try
     {
-      Card localCard = ((anyw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      Card localCard = ((amsw)this.this$0.app.getManager(51)).b(this.this$0.sessionInfo.curFriendUin);
       if (localCard == null)
       {
-        if (bhsr.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-          ((anum)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, 0);
+        if (StringUtil.verifyUin(this.this$0.sessionInfo.curFriendUin)) {
+          ((amov)this.this$0.app.getBusinessHandler(2)).a(this.this$0.app.getCurrentAccountUin(), this.this$0.sessionInfo.curFriendUin, (byte)1, 0);
         }
       }
       else if ((localCard != null) && (localCard.strCertificationInfo != null) && (!localCard.strCertificationInfo.equals("")))
       {
-        aean.f(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        acvv.f(this.this$0.app, this.this$0.sessionInfo);
         return;
       }
     }

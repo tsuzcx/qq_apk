@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bngf;
-import bngi;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import java.util.ArrayList;
 
 class QzoneWebMusicJsPlugin$8
@@ -11,7 +11,7 @@ class QzoneWebMusicJsPlugin$8
   
   public void run()
   {
-    bngf.a().a().a(QzoneWebMusicJsPlugin.access$200(this.this$0), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    RemoteHandleManager.getInstance().getSender().playMusicList(QzoneWebMusicJsPlugin.access$200(this.this$0), 2, this.val$_index, this.val$_songs);
   }
 }
 

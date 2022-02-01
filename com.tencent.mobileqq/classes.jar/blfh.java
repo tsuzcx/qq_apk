@@ -1,19 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
+import com.tencent.weiyun.utils.Singleton;
 
-public class blfh
-  implements blfo
+final class blfh
+  extends Singleton<blfg, Void>
 {
-  public blfh(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
-  
-  public void a(long paramLong)
+  protected blfg a(Void paramVoid)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
-    }
-    TraeAudioManager.b(paramLong, null, -1L, true);
-    this.a.c(paramLong);
+    return new blfg(null);
   }
 }
 

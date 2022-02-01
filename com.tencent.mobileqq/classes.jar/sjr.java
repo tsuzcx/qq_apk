@@ -1,15 +1,6 @@
-class sjr
-  extends pmr
+public abstract interface sjr
 {
-  sjr(sjq paramsjq, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(pmk parampmk)
-  {
-    parampmk.f();
-  }
+  public abstract void a(sjt paramsjt);
 }
 
 

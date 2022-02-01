@@ -1,0 +1,72 @@
+package com.tencent.mobileqq.transfile;
+
+public class ServerAddr
+{
+  public boolean isDomain;
+  public boolean isIpv6;
+  public String mIp;
+  public int port = 80;
+  
+  public String getServerUrl(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    if (paramString != null)
+    {
+      if (!this.isDomain) {
+        break label109;
+      }
+      if (!paramString.startsWith("http://")) {
+        break label72;
+      }
+      localObject1 = "http://" + this.mIp;
+    }
+    for (;;)
+    {
+      localObject1 = (String)localObject1 + "/";
+      return localObject1;
+      label72:
+      localObject1 = localObject2;
+      if (paramString.startsWith("https://")) {
+        localObject1 = "https://" + this.mIp;
+      }
+    }
+    label109:
+    if (paramString.startsWith("http://")) {
+      if ((this.isIpv6) && (!this.mIp.startsWith("["))) {
+        localObject1 = "http://[" + this.mIp + "]";
+      }
+    }
+    while (this.port != 80)
+    {
+      return (String)localObject1 + ":" + this.port + "/";
+      localObject1 = "http://" + this.mIp;
+      continue;
+      localObject1 = localObject3;
+      if (paramString.startsWith("https://")) {
+        if ((this.isIpv6) && (!this.mIp.startsWith("["))) {
+          localObject1 = "https://[" + this.mIp + "]";
+        } else {
+          localObject1 = "https://" + this.mIp;
+        }
+      }
+    }
+    return (String)localObject1 + "/";
+  }
+  
+  public void onFail() {}
+  
+  public void onSuccess() {}
+  
+  public String toString()
+  {
+    return this.mIp + ":" + this.port;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.transfile.ServerAddr
+ * JD-Core Version:    0.7.0.1
+ */

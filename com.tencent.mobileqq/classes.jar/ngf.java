@@ -1,79 +1,54 @@
 import android.text.TextUtils;
-import com.tencent.avgame.session.AVGameSession;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+import eipc.EIPClientConnectListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ngf
+class ngf
+  implements EIPCOnGetConnectionListener, EIPClientConnectListener
 {
-  private AVGameSession jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
-  private final Map<String, AVGameSession> jdField_a_of_type_JavaUtilMap = new HashMap(3);
+  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public AVGameSession a()
+  private ngf(ngd paramngd) {}
+  
+  public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
   }
   
-  public AVGameSession a(int paramInt, String paramString, boolean paramBoolean)
+  public void connectFailed()
   {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString))
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
+    QLog.i("AVGameClientQIPCModule", 1, "connectFailed");
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    QLog.i("AVGameClientQIPCModule", 1, "connectSuccess, server[" + paramEIPCConnection.procName + "]");
+  }
+  
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection == null) {}
+    do
     {
-      AVGameSession localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      localObject = localAVGameSession;
-      if (localAVGameSession == null)
-      {
-        localAVGameSession = new AVGameSession(paramInt, paramString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localAVGameSession);
-        if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
-        {
-          localObject = localAVGameSession;
-          if (!paramBoolean) {}
-        }
-        else
-        {
-          a(paramString);
-          localObject = localAVGameSession;
-        }
-      }
-    }
-    return localObject;
+      return;
+      QLog.i("AVGameClientQIPCModule", 1, "onConnectBind, [" + paramEIPCConnection.procName + "]");
+    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
   }
   
-  public AVGameSession a(String paramString)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    AVGameSession localAVGameSession = null;
-    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-      localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    return localAVGameSession;
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (!paramString.a))
+    if (paramEIPCConnection == null) {}
+    do
     {
-      if (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession != null) {
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
-      }
-      paramString.a = true;
-      this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = paramString;
-    }
-  }
-  
-  public AVGameSession b(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
-    {
-      paramString = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      if ((paramString != null) && (paramString == this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession))
-      {
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
-      }
-      return paramString;
-    }
-    return null;
+      return;
+      QLog.i("AVGameClientQIPCModule", 1, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
+    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
   }
 }
 

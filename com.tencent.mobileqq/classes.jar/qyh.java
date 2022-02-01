@@ -1,18 +1,18 @@
-public class qyh
+import android.widget.PopupWindow.OnDismissListener;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
+final class qyh
+  implements PopupWindow.OnDismissListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public qyi a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  qyh(qye paramqye) {}
   
-  public String toString()
+  public final void onDismiss()
   {
-    return "PGCPicInfo{picWidth=" + this.jdField_a_of_type_Int + ", picHeight=" + this.jdField_b_of_type_Int + ", picMd5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", picUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnailUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", isAnimation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Qyi + '}';
+    qyf localqyf = qye.a(this.a);
+    if (localqyf != null) {
+      localqyf.a(false);
+    }
   }
 }
 

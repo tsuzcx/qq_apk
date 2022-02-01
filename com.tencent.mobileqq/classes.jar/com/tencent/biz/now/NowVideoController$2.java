@@ -3,26 +3,26 @@ package com.tencent.biz.now;
 import android.view.View;
 import com.tencent.mobileqq.widget.PAVideoView;
 import com.tencent.widget.AbsListView;
-import nqq;
+import nrz;
 
 public class NowVideoController$2
   implements Runnable
 {
-  public NowVideoController$2(nqq paramnqq, int paramInt1, int paramInt2) {}
+  public NowVideoController$2(nrz paramnrz, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (nqq.a(this.this$0) == null) {}
+    if (nrz.a(this.this$0) == null) {}
     for (;;)
     {
       return;
       int i = this.a;
       while (i <= this.b)
       {
-        Object localObject = nqq.a(this.this$0).getChildAt(i - this.a);
+        Object localObject = nrz.a(this.this$0).getChildAt(i - this.a);
         if (localObject != null)
         {
-          localObject = (PAVideoView)((View)localObject).findViewById(2131378094);
+          localObject = (PAVideoView)((View)localObject).findViewById(2131377864);
           if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
             ((PAVideoView)localObject).e();
           }

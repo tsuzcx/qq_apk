@@ -1,27 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public class bhbf
-  implements View.OnTouchListener
+public abstract interface bhbf
 {
-  public bhbf(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
-  }
+  public abstract Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2);
 }
 
 

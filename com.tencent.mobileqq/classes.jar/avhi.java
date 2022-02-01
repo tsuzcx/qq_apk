@@ -1,61 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import java.util.List;
 
 public class avhi
-  extends RecyclerView.ViewHolder
+  implements TencentMap.OnMapLoadedCallback
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
-  private TextView b;
-  private TextView c;
+  public avhi(FloatMapWidget paramFloatMapWidget) {}
   
-  avhi(View paramView)
+  public void onMapLoaded()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368785));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368787));
-    this.b = ((TextView)paramView.findViewById(2131368790));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368783));
-    this.c = ((TextView)paramView.findViewById(2131368789));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368788));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368784);
-  }
-  
-  View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  public ThemeImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
-  }
-  
-  TextView b()
-  {
-    return this.c;
+    Object localObject = FloatMapWidget.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((avco)localObject).a() });
+    }
+    if (((avco)localObject).a() != null)
+    {
+      localObject = FloatMapWidget.b(this.a).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
+      }
+      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
+        break label136;
+      }
+      this.a.a(false, null);
+    }
+    for (;;)
+    {
+      FloatMapWidget.a(this.a, true);
+      FloatMapWidget.a(this.a);
+      return;
+      label136:
+      this.a.b();
+    }
   }
 }
 

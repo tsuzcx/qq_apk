@@ -1,27 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.hardware.Camera;
 
-public class bacu
-  implements Animation.AnimationListener
+public abstract interface bacu
 {
-  public bacu(VipTagView paramVipTagView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
-    }
-    VipTagView.a(this.a, false);
-    this.a.invalidate();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    VipTagView.a(this.a, 0.0F);
-  }
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 

@@ -1,91 +1,65 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.PowerManager;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 class mug
-  extends BroadcastReceiver
 {
-  mug(mud parammud) {}
+  private Map<String, muh> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public mug(String[] paramArrayOfString)
   {
-    String str = paramIntent.getAction();
-    boolean bool3;
-    boolean bool1;
-    int i;
-    if (str.equals("android.intent.action.SCREEN_ON"))
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    if (paramArrayOfString != null)
     {
-      bool3 = VideoController.a(paramContext);
-      if (Build.VERSION.SDK_INT < 20) {
-        break label437;
-      }
-      bool1 = ((PowerManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power")).isInteractive();
-      paramContext = ((WindowManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("window")).getDefaultDisplay();
-      if (paramContext == null) {
-        break label432;
-      }
-      i = paramContext.getState();
-    }
-    for (;;)
-    {
-      paramContext = this.a.jdField_a_of_type_JavaLangString;
-      paramIntent = new StringBuilder().append("ACTION_SCREEN_ON, mVideoController[");
-      boolean bool2;
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      int j = paramArrayOfString.length;
+      int i = 0;
+      if (i < j)
       {
-        bool2 = true;
-        QLog.d(paramContext, 1, bool2 + "], isInteractive[" + bool1 + "], nState[" + i + "], inKeyguardRestrictedInputMode[" + bool3 + "], mIsStarted[" + this.a.d + "]");
-        if (this.a.d)
+        String str = paramArrayOfString[i];
+        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
+          this.jdField_a_of_type_JavaUtilMap.put(str, new muh(this, 2130842286, amtj.a(2131714066), str));
+        }
+        for (;;)
         {
-          this.a.jdField_a_of_type_Int = 1;
-          mud.a(this.a, mud.a(this.a));
+          i += 1;
+          break;
+          if ("DEVICE_EARPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new muh(this, 2130842288, amtj.a(2131714067), str));
+          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new muh(this, 2130842291, amtj.a(2131714070), str));
+          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new muh(this, 2130842293, amtj.a(2131714068), str));
+          }
         }
       }
-      label313:
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            bool2 = false;
-            break;
-            if (!str.equals("android.intent.action.SCREEN_OFF")) {
-              break label313;
-            }
-            i = paramIntent.getIntExtra("why", 0);
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_SCREEN_OFF, why[" + i + "]");
-          } while (this.a.jdField_a_of_type_ComTencentAvVideoController == null);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a("backgroundReason", "4");
-          lcj.jdField_a_of_type_JavaLangString = "4";
-          return;
-          if (str.equals("android.intent.action.USER_PRESENT"))
-          {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_USER_PRESENT");
-            return;
-          }
-        } while (!str.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-        paramContext = paramIntent.getStringExtra("reason");
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
-      } while ((!"homekey".equalsIgnoreCase(paramContext)) || (!this.a.d));
-      this.a.jdField_a_of_type_Int = 1;
-      mud.a(this.a, mud.a(this.a));
-      return;
-      label432:
-      i = 2;
-      continue;
-      label437:
-      i = 2;
-      bool1 = true;
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap.size();
+  }
+  
+  public muh a(String paramString)
+  {
+    return (muh)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      muh localmuh = (muh)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
+      if (localmuh != null) {
+        localmuh.b = (amtj.a(2131714069) + paramString + "）");
+      }
+    }
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

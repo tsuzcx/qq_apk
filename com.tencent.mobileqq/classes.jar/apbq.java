@@ -1,32 +1,33 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
-class apbq
-  implements apbw
+public class apbq
+  extends BroadcastReceiver
 {
-  apbq(apbp paramapbp) {}
+  public apbq(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = paramRspBody.uint32_test_keep_silence_sec.get();
-    paramToServiceMsg = this.a;
-    if (l <= 0L) {}
-    for (boolean bool = true;; bool = false)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      apbp.a(paramToServiceMsg, bool);
-      if (l > 0L)
-      {
-        apbp.a(this.a).removeMessages(6);
-        apbp.a(this.a).sendEmptyMessageDelayed(6, l);
-        if (QLog.isColorLevel()) {
-          QLog.d("FrontBackReportManager", 2, "receive keep silence");
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
       }
-      return;
+      paramContext = BaseActivity2.findViewById(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366841);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      this.a.finish();
     }
   }
 }

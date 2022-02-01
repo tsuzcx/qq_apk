@@ -2,9 +2,9 @@ package cooperation.qzone.report.lp;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QUA;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -98,7 +98,7 @@ public class LpReportInfo_dc03950
       SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
       if (localSharedPreferences != null)
       {
-        if (localSharedPreferences.getInt("love_state_for_current_uin" + paramQQAppInterface.c(), 0) == 1) {
+        if (localSharedPreferences.getInt("love_state_for_current_uin" + paramQQAppInterface.getCurrentUin(), 0) == 1) {
           return "1";
         }
         return "2";
@@ -120,7 +120,7 @@ public class LpReportInfo_dc03950
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", bmsw.a());
+    LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import apgw;
-import apgz;
+import aoai;
+import aoal;
 
 public class ARVideoRecordUIControllerImpl$2
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$2(apgw paramapgw) {}
+  public ARVideoRecordUIControllerImpl$2(aoai paramaoai) {}
   
   public void run()
   {
-    if (apgw.a(this.this$0) != null)
+    if (aoai.a(this.this$0) != null)
     {
-      apgw.a(this.this$0).a(0);
-      apgw.a(this.this$0).b();
+      aoai.a(this.this$0).a(0);
+      aoai.a(this.this$0).b();
     }
   }
 }

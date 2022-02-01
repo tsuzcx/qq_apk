@@ -1,58 +1,49 @@
-import android.os.Bundle;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
-import com.tencent.qphone.base.util.QLog;
-
 public class luc
-  implements luf
+  extends ltz
 {
-  public luc(AVRedPacketManager paramAVRedPacketManager) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 2333L) && (paramLong < 2666L))
+    {
+      i = (int)(255L * (paramLong - 2333L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 2666L) - 2333.0F) / 333.0F;
     }
-    if (!AVRedPacketManager.a(this.a, true)) {}
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (paramInt != 1);
-      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
-        localBundle.putInt("gameState", 1);
-        localBundle.putInt("fromWho", 1);
-        localBundle.putInt("musicId", this.a.g);
-        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
-        this.a.jdField_a_of_type_Ltz.a();
-        this.a.a(1, localBundle);
-        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
-        this.a.a(false, 1021, AVRedPacketManager.c, null);
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
-    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
-    paramBoolean = mqr.b(AVRedPacketManager.a(this.a));
-    if (l >= AVRedPacketManager.f)
-    {
-      if (paramBoolean)
-      {
-        this.a.d();
-        return;
-      }
-      this.a.f();
+      a(i);
+      b(f1);
       return;
+      if ((paramLong >= 2666L) && (paramLong <= 3099L))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3099L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 3266L)
+          {
+            i = (int)(255L * (3266L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3099L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
+      }
     }
-    if (paramBoolean)
-    {
-      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
-      return;
-    }
-    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 

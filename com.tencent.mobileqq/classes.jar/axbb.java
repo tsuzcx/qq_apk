@@ -1,6 +1,19 @@
-public abstract interface axbb
+import android.text.Editable;
+import android.text.TextWatcher;
+
+class axbb
+  implements TextWatcher
 {
-  public abstract void g();
+  axbb(axax paramaxax) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    awkj.a(this.a.a, 30);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

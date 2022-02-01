@@ -28,18 +28,18 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import bhlo;
-import bhtq;
-import bjdr;
-import bjds;
-import bjdt;
-import bjdu;
-import bjdv;
+import bhjn;
+import bhjo;
+import bhjp;
+import bhjq;
+import bhjr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -48,7 +48,7 @@ import mqq.app.AppRuntime;
 public class TabDragAnimationView
   extends View
 {
-  private static final int jdField_g_of_type_Int = bhtq.b(2.0F);
+  private static final int jdField_g_of_type_Int = ViewUtils.dpToPx(2.0F);
   float jdField_a_of_type_Float = 0.0F;
   protected int a;
   public ValueAnimator a;
@@ -61,10 +61,10 @@ public class TabDragAnimationView
   private GestureDetector.OnDoubleTapListener jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private bjds jdField_a_of_type_Bjds;
-  private final bjdt jdField_a_of_type_Bjdt;
-  private final bjdu jdField_a_of_type_Bjdu;
-  private final bjdv jdField_a_of_type_Bjdv;
+  private bhjo jdField_a_of_type_Bhjo;
+  private final bhjp jdField_a_of_type_Bhjp;
+  private final bhjq jdField_a_of_type_Bhjq;
+  private final bhjr jdField_a_of_type_Bhjr;
   public URLDrawable a;
   private String jdField_a_of_type_JavaLangString = "TabDragAnimationView@" + Integer.toHexString(hashCode());
   public boolean a;
@@ -125,15 +125,15 @@ public class TabDragAnimationView
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "load xml attr, expected logo width=" + this.jdField_h_of_type_Int + ", expected logo height=" + this.jdField_i_of_type_Int);
       }
       paramAttributeSet.recycle();
-      this.jdField_a_of_type_Bjdv = new bjdv(this);
-      this.jdField_a_of_type_Bjdu = new bjdu(this);
-      this.jdField_a_of_type_Bjdt = new bjdt(this);
+      this.jdField_a_of_type_Bhjr = new bhjr(this);
+      this.jdField_a_of_type_Bhjq = new bhjq(this);
+      this.jdField_a_of_type_Bhjp = new bhjp(this);
       this.jdField_c_of_type_Boolean = ThemeUtil.isNowThemeIsAnimate();
       if ((Build.MODEL.contains("vivo")) || (Build.MANUFACTURER.contains("vivo"))) {
         bool = true;
       }
       this.jdField_g_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bjdr(this), this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bhjn(this), this.jdField_a_of_type_AndroidOsHandler);
       return;
     }
     finally
@@ -233,27 +233,27 @@ public class TabDragAnimationView
   public void a(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
-    //   0: new 337	java/io/FileOutputStream
+    //   0: new 338	java/io/FileOutputStream
     //   3: dup
     //   4: aload_2
-    //   5: invokespecial 340	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 341	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_3
     //   9: aload_3
     //   10: astore_2
     //   11: aload_1
-    //   12: getstatic 346	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   12: getstatic 347	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   15: bipush 90
     //   17: aload_3
-    //   18: invokevirtual 352	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   18: invokevirtual 353	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   21: pop
     //   22: aload_3
     //   23: ifnull +7 -> 30
     //   26: aload_3
-    //   27: invokevirtual 355	java/io/FileOutputStream:close	()V
+    //   27: invokevirtual 356	java/io/FileOutputStream:close	()V
     //   30: return
     //   31: astore_1
     //   32: aload_1
-    //   33: invokevirtual 358	java/io/IOException:printStackTrace	()V
+    //   33: invokevirtual 359	java/io/IOException:printStackTrace	()V
     //   36: return
     //   37: astore 4
     //   39: aconst_null
@@ -261,15 +261,15 @@ public class TabDragAnimationView
     //   41: aload_1
     //   42: astore_2
     //   43: aload 4
-    //   45: invokevirtual 359	java/lang/Exception:printStackTrace	()V
+    //   45: invokevirtual 360	java/lang/Exception:printStackTrace	()V
     //   48: aload_1
     //   49: ifnull -19 -> 30
     //   52: aload_1
-    //   53: invokevirtual 355	java/io/FileOutputStream:close	()V
+    //   53: invokevirtual 356	java/io/FileOutputStream:close	()V
     //   56: return
     //   57: astore_1
     //   58: aload_1
-    //   59: invokevirtual 358	java/io/IOException:printStackTrace	()V
+    //   59: invokevirtual 359	java/io/IOException:printStackTrace	()V
     //   62: return
     //   63: astore_1
     //   64: aconst_null
@@ -277,12 +277,12 @@ public class TabDragAnimationView
     //   66: aload_2
     //   67: ifnull +7 -> 74
     //   70: aload_2
-    //   71: invokevirtual 355	java/io/FileOutputStream:close	()V
+    //   71: invokevirtual 356	java/io/FileOutputStream:close	()V
     //   74: aload_1
     //   75: athrow
     //   76: astore_2
     //   77: aload_2
-    //   78: invokevirtual 358	java/io/IOException:printStackTrace	()V
+    //   78: invokevirtual 359	java/io/IOException:printStackTrace	()V
     //   81: goto -7 -> 74
     //   84: astore_1
     //   85: goto -19 -> 66
@@ -319,7 +319,7 @@ public class TabDragAnimationView
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bjdv.a();
+      this.jdField_a_of_type_Bhjr.a();
       f();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
@@ -340,13 +340,13 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bjdt);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bhjp);
     }
     this.jdField_d_of_type_Int = 1;
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bjdt);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bhjp);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -376,8 +376,8 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bjdt);
-      this.jdField_a_of_type_Bjdt.a();
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bhjp);
+      this.jdField_a_of_type_Bhjp.a();
       this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
     }
   }
@@ -387,12 +387,12 @@ public class TabDragAnimationView
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bjdv);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bhjr);
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bjdv);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bhjr);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -422,11 +422,11 @@ public class TabDragAnimationView
       if ((this.jdField_d_of_type_Int != 1) || (this.jdField_a_of_type_Boolean)) {
         break label659;
       }
-      if (((this.jdField_a_of_type_Bjdt.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bjdt.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+      if (((this.jdField_a_of_type_Bhjp.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bhjp.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
       {
         localDrawable2 = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
         label208:
-        if (((!this.jdField_a_of_type_Bjdt.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bjdt.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
+        if (((!this.jdField_a_of_type_Bhjp.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bhjp.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
           break label650;
         }
       }
@@ -436,8 +436,8 @@ public class TabDragAnimationView
     label650:
     for (Drawable localDrawable1 = a();; localDrawable1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
     {
-      if (this.jdField_a_of_type_Bjdt.jdField_a_of_type_Float != 1.0F) {
-        paramCanvas.scale(this.jdField_a_of_type_Bjdt.jdField_a_of_type_Float, this.jdField_a_of_type_Bjdt.jdField_a_of_type_Float, i6, i5);
+      if (this.jdField_a_of_type_Bhjp.jdField_a_of_type_Float != 1.0F) {
+        paramCanvas.scale(this.jdField_a_of_type_Bhjp.jdField_a_of_type_Float, this.jdField_a_of_type_Bhjp.jdField_a_of_type_Float, i6, i5);
       }
       if (localDrawable1 != null)
       {
@@ -674,7 +674,7 @@ public class TabDragAnimationView
     case 3: 
       if (this.jdField_g_of_type_Boolean)
       {
-        i6 = (int)(bhlo.j() - bhtq.a(14.0F));
+        i6 = (int)(DeviceInfoUtil.getPortraitHeight() - ViewUtils.dip2px(14.0F));
         if (this.jdField_e_of_type_Float > i6)
         {
           this.jdField_a_of_type_Float = 0.0F;
@@ -702,8 +702,8 @@ public class TabDragAnimationView
       if (((i6 >= i2) || (i7 <= i2)) && (f1 > 0.0F) && (f1 < i3) && (f2 > 0.0F) && (f2 < i4)) {}
       for (i1 = 1;; i1 = 0)
       {
-        if ((i1 == 0) && (this.jdField_a_of_type_Bjds != null)) {
-          this.jdField_a_of_type_Bjds.a();
+        if ((i1 == 0) && (this.jdField_a_of_type_Bhjo != null)) {
+          this.jdField_a_of_type_Bhjo.a();
         }
         if ((this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null) && (getParent() != null) && (i1 != 0))
         {
@@ -912,7 +912,7 @@ public class TabDragAnimationView
   public void setIconSize(int paramInt1, int paramInt2)
   {
     Drawable localDrawable;
-    if (((this.jdField_a_of_type_Bjdt.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bjdt.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+    if (((this.jdField_a_of_type_Bhjp.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bhjp.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
     {
       localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       if (paramInt2 < 0) {
@@ -952,9 +952,9 @@ public class TabDragAnimationView
     this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener = paramOnDoubleTapListener;
   }
   
-  public void setOnDragListener(bjds parambjds)
+  public void setOnDragListener(bhjo parambhjo)
   {
-    this.jdField_a_of_type_Bjds = parambjds;
+    this.jdField_a_of_type_Bhjo = parambhjo;
   }
   
   public void setOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)

@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity;
 
+import amat;
 import android.os.Handler;
 import android.os.Message;
-import anfz;
-import axan;
-import bcrg;
-import bguq;
+import avnu;
+import bbko;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -41,8 +42,8 @@ public class ChatSettingForTroop$ClearChatRecordTask
       localObject1 = localChatSettingForTroop.app;
       str = localChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
       localObject2 = new StringBuilder();
-      i = bguq.a((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
-      List localList = ((QQAppInterface)localObject1).a().b(str, 1);
+      i = TroopUtils.getMessageHistoryCont((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
+      List localList = ((QQAppInterface)localObject1).getMessageFacade().getMsgList(str, 1);
       if ((localList == null) || (localList.isEmpty())) {
         break label367;
       }
@@ -62,15 +63,15 @@ public class ChatSettingForTroop$ClearChatRecordTask
           long l2 = Long.parseLong(((StringBuilder)localObject2).toString());
           l1 = Math.max(l2, l1);
           if (l1 > 0L) {
-            ((QQAppInterface)localObject1).a().a(str, 1, l1);
+            ((QQAppInterface)localObject1).getMsgCache().a(str, 1, l1);
           }
           if (!((TroopManager)((QQAppInterface)localObject1).getManager(52)).b(str)) {
             break label325;
           }
           FriendsStatusUtil.a((QQAppInterface)localObject1, str, 1);
-          ((QQAppInterface)localObject1).a().a(str, 1, true, false);
-          ((QQAppInterface)localObject1).a().e(str, 1);
-          anfz.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
+          ((QQAppInterface)localObject1).getMessageFacade().clearHistory(str, 1, true, false);
+          ((QQAppInterface)localObject1).getMessageFacade().onCurrentMessageDeleted(str, 1);
+          amat.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
           localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
           Object localObject2 = ((MqqHandler)localObject1).obtainMessage(1017);
           ((Message)localObject2).obj = str;
@@ -92,8 +93,8 @@ public class ChatSettingForTroop$ClearChatRecordTask
         QLog.e("Q.chatopttroop", 2, "msg history clear,  IllegalStateException" + localIllegalStateException.toString());
         return;
         label325:
-        ((QQAppInterface)localObject1).a().a(localException, 1);
-        axan.a().b(localException, (QQAppInterface)localObject1);
+        ((QQAppInterface)localObject1).getMessageFacade().clearHistory(localException, 1);
+        avnu.a().b(localException, (QQAppInterface)localObject1);
         continue;
         if (QLog.isColorLevel())
         {
@@ -109,7 +110,7 @@ public class ChatSettingForTroop$ClearChatRecordTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask
  * JD-Core Version:    0.7.0.1
  */

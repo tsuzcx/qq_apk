@@ -1,22 +1,22 @@
 package cooperation.qqfav.ipc;
 
-import bmlx;
-import bmly;
-import bmlz;
+import bkqe;
+import bkqf;
+import bkqg;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QfavRemoteProxyForQQ$2$1
   extends Thread
 {
-  public QfavRemoteProxyForQQ$2$1(bmly parambmly) {}
+  public QfavRemoteProxyForQQ$2$1(bkqf parambkqf) {}
   
   public void run()
   {
     while (!this.a.a.a.isEmpty())
     {
-      bmlz localbmlz = (bmlz)this.a.a.a.poll();
-      if (localbmlz != null) {
-        bmlx.a(this.a.a, localbmlz);
+      bkqg localbkqg = (bkqg)this.a.a.a.poll();
+      if (localbkqg != null) {
+        bkqe.a(this.a.a, localbkqg);
       }
     }
   }

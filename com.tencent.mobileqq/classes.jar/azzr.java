@@ -1,54 +1,55 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
-import android.view.ViewParent;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class azzr
-  implements RecyclerView.OnItemTouchListener
+class azzr
+  implements azzt
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float b;
+  azzr(azzq paramazzq) {}
   
-  public azzr(LifeAchivementPanelView paramLifeAchivementPanelView) {}
-  
-  private boolean a(MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    return Math.abs(this.jdField_a_of_type_Float - f1) > Math.abs(this.b - f2);
-  }
-  
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        do
-        {
-          return false;
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          this.b = paramMotionEvent.getY();
-          this.jdField_a_of_type_Boolean = false;
-          return false;
-        } while (this.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_Boolean = true;
-      } while (!a(paramMotionEvent));
-      this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLifeAchivementPanelView.getParent().requestDisallowInterceptTouchEvent(true);
-      return false;
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLifeAchivementPanelView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      return;
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
+      if (!localPtvTemplateInfo.advertisement) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
+      }
+    } while (azzq.a(this.a) == null);
+    azzq.a(this.a).a(localPtvTemplateInfo);
+    return;
+    this.a.a(paramInt);
+    babc.jdField_b_of_type_JavaLangString = azzq.a(this.a).a + "";
+    babc.c = localPtvTemplateInfo.id;
+    babc.a = localPtvTemplateInfo.hasGesture();
+    boolean bool;
+    if (localPtvTemplateInfo.kind == 3)
+    {
+      bool = true;
+      babc.jdField_b_of_type_Boolean = bool;
+      if (bbuc.a().a != 1) {
+        break label228;
+      }
+    }
+    label228:
+    for (paramInt = i;; paramInt = 2)
+    {
+      babc.d(paramInt);
+      return;
+      bool = false;
+      break;
+    }
   }
-  
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

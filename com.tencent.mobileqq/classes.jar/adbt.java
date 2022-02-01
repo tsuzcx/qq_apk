@@ -1,9 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.UinPairMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface adbt
+class adbt
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(msg_comm.UinPairMsg paramUinPairMsg, String paramString, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface);
+  adbt(adbs paramadbs, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
+  }
 }
 
 

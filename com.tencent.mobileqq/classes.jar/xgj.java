@@ -1,79 +1,97 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.ViewParent;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class xgj
-  extends xgo
+  implements TextWatcher
 {
-  public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&type=" + "onedaylist" + "&feedid=%s&identify=%d";
-  private int[] a;
+  public int a;
+  public Context a;
+  public BubbleTextView a;
+  public String a;
+  public xnp a;
+  public boolean a;
+  private int b;
+  public String b;
+  private int c;
   
-  static
+  public xgj(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + wnu.a(2131698598);
+    if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
+      throw new IllegalArgumentException("illegal textWatcher source");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Xnp = ((xnp)vux.a(11));
   }
   
-  public xgj(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
+  public static void a(EditText paramEditText, Intent paramIntent)
   {
-    Object localObject = ((yme)wth.a(11)).a(paramString);
-    if (localObject == null) {
-      return;
-    }
-    wtt localwtt = (wtt)wth.a(2);
-    localObject = (QQUserUIItem)((FeedItem)localObject).getOwner();
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + anzj.a(2131703336) + win.jdField_a_of_type_JavaLangString);
-    this.e = (((QQUserUIItem)localObject).nickName + anzj.a(2131703335) + win.jdField_a_of_type_JavaLangString);
-    this.f = localwtt.a(((QQUserUIItem)localObject).getUnionId(), false);
-    int i;
-    if (((QQUserUIItem)localObject).isMe())
+    if (paramIntent == null) {}
+    do
     {
-      i = 0;
-      this.jdField_a_of_type_Int = i;
-      this.h = paramString;
-      this.jdField_d_of_type_Int = paramInt;
-      this.jdField_c_of_type_JavaLangString = ((QQUserUIItem)localObject).nickName;
-      this.g = ((QQUserUIItem)localObject).getUnionId();
-      this.k = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime);
-      paramStoryVideoItem = new SimpleDateFormat("M月d日").format(Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime));
-      this.i = (paramStoryVideoItem + " · " + this.jdField_d_of_type_Int + anzj.a(2131703338));
-      this.j = ("#" + win.jdField_a_of_type_JavaLangString + "# " + this.jdField_c_of_type_JavaLangString + anzj.a(2131703337) + win.jdField_a_of_type_JavaLangString + "（" + this.i + "）");
-      if (this.jdField_a_of_type_Int != 0) {
-        break label400;
+      return;
+      paramIntent = paramIntent.getStringExtra("at_video_text");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
+      }
+    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
+    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (this.c > 0)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
+      {
+        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
+        ViewParent localViewParent1 = localViewParent2;
+        if (localViewParent2 != null)
+        {
+          localViewParent1 = localViewParent2;
+          if (!(localViewParent2 instanceof RelativeLayout)) {
+            localViewParent1 = localViewParent2.getParent();
+          }
+        }
+        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
+          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
+        }
+        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
+      }
+      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
+      {
+        xwa.a("home_page", "send_at", 0, 0, new String[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
+        }
+        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
+          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_Xnp.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        }
       }
     }
-    label400:
-    for (paramInt = 8;; paramInt = 9)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label406;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 81, 82, 83, 84, 85, 45 };
-      return;
-      i = 1;
-      break;
-    }
-    label406:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 69, 70, 71, 72, 73, 45 };
   }
   
-  protected String a(int paramInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&type=onedaylist&feedid=%s&identify=%d&sharefromtype=%d", new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), this.h, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-    }
-    return String.format(b, new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), this.h, Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt3;
   }
   
-  public String a(String paramString, long paramLong)
-  {
-    String str = new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    return paramString + anzj.a(2131703331) + str;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

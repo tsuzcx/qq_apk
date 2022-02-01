@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-final class uqj
-  implements DialogInterface.OnDismissListener
+class uqj
+  implements upr
 {
-  uqj(upd paramupd) {}
+  uqj(uqi paramuqi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    uqi.b(this.a);
+    uqi.a(this.a, uqi.a(this.a), 1000003);
+  }
+  
+  public void b()
+  {
+    uqi.a(this.a, uqi.a(this.a), 1000007);
+  }
+  
+  public void c()
+  {
+    uqi.a(this.a, uqi.a(this.a), 1000004);
+  }
+  
+  public void d()
+  {
+    uqi.a(this.a, uqi.a(this.a), 1000002);
   }
 }
 

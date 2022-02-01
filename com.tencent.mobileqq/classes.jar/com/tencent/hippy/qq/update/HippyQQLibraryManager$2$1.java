@@ -12,11 +12,12 @@ class HippyQQLibraryManager$2$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Hippy", 2, "Hippy: SoLoadManager loadSequentially resCode=" + this.val$resCode);
+    if ((QLog.isColorLevel()) || (this.val$resCode != 0)) {
+      QLog.d("Hippy", 1, "Hippy: SoLoadManager loadSequentially resCode=" + this.val$resCode);
     }
     if (this.val$resCode == 0)
     {
+      this.this$1.this$0.updateSoVersions(this.val$loadExtResult);
       HippyQQLibraryManager.access$002(this.this$1.this$0, this.val$loadExtResult.getRelatedFilesFolder("hippybridge"));
       if (!TextUtils.isEmpty(HippyQQLibraryManager.access$000(this.this$1.this$0))) {
         HippyQQLibraryManager.access$100(this.this$1.this$0);
@@ -26,6 +27,7 @@ class HippyQQLibraryManager$2$1
     {
       HippyQQLibraryManager.access$300(this.this$1.this$0).clear();
       return;
+      QLog.d("Hippy", 2, "Hippy: SoLoadManager mCommonPackagePath empty");
       HippyQQLibraryManager.access$200(this.this$1.this$0, -10);
       continue;
       HippyQQLibraryManager.access$200(this.this$1.this$0, this.val$resCode);

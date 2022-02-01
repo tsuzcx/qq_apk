@@ -1,15 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 import java.util.List;
 
-public class oki
-  extends pfh
+class oki
+  extends pkt
 {
-  public oki(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  oki(okh paramokh) {}
   
-  public void a_(List<twi> paramList)
-  {
-    this.a.a(paramList);
-  }
+  public void a_(List<ucy> paramList) {}
 }
 
 

@@ -1,38 +1,38 @@
-import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.lang.ref.WeakReference;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class acnl
-  implements EIPCResultCallback
+public class acnl
+  implements View.OnTouchListener
 {
-  acnl(acnj paramacnj, WeakReference paramWeakReference, AdIPCManager.Params paramParams) {}
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new acnm(this);
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public acnl(AccountManageActivity paramAccountManageActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    boolean bool;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
+    }
+    if (i == 0)
     {
-      bool = true;
-      localResult.success = bool;
-      if (paramEIPCResult == null) {
-        break label83;
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
       }
     }
-    label83:
-    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
-    {
-      localResult.bundle = paramEIPCResult;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ((AdIPCManager.Callback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).onCallback(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params, localResult);
-      }
-      return;
-      bool = false;
-      break;
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
     }
+    return false;
   }
 }
 

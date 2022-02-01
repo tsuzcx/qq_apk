@@ -1,17 +1,17 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aqre;
-import bkxc;
+import apkn;
+import bjcs;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 
 public class ColorNotePlugin$2
   implements Runnable
 {
-  public ColorNotePlugin$2(bkxc parambkxc, aqre paramaqre, RequestEvent paramRequestEvent) {}
+  public ColorNotePlugin$2(bjcs parambjcs, apkn paramapkn, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqre.e();
+    this.jdField_a_of_type_Apkn.e();
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
   }
 }

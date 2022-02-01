@@ -1,44 +1,8 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-
-public class ajqe
-  extends bgrc
+public abstract interface ajqe
 {
-  public ajqe(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    while (this.a.jdField_a_of_type_Bjbs == null) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
-        localStructMsg.mergeFrom(paramBundle);
-        TroopNotifyAndRecommendView.a(this.a, 1, localStructMsg);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        do
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopNotifyAndRecommendView", 2, "structMsg merge error");
-          }
-        } while (this.a.jdField_a_of_type_Bjbs == null);
-        this.a.jdField_a_of_type_Bjbs.dismiss();
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696702), 0).b(this.a.a());
-        return;
-      }
-    }
-    this.a.jdField_a_of_type_Bjbs.dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696702), 0).b(this.a.a());
-  }
+  public abstract void b(long paramLong);
 }
 
 

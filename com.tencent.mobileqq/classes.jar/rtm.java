@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class rtm
-  extends sbh
+  implements URLDrawable.URLDrawableListener
 {
-  rtm(rsx paramrsx) {}
+  rtm(rtl paramrtl) {}
   
-  public int a()
-  {
-    return 3;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.a.c(paramString + "&sourcefrom=6");
+    if ((rtl.a(this.a) != null) && (rtl.a(this.a).getStatus() == 1) && ((rtl.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)rtl.a(this.a).getCurrDrawable();
+      rtl.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
-
-class bdgz
-  implements bdgt
+public abstract interface bdgz
 {
-  public long a;
-  public bdgt a;
-  public LoadParam a;
+  public abstract void a();
   
-  bdgz(bdgt parambdgt, long paramLong, LoadParam paramLoadParam)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bdgt = parambdgt;
-    this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam = paramLoadParam;
-  }
+  public abstract void a(int paramInt);
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
-  {
-    bdgx.a(paramInt, paramLoadExtResult, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bdgt, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

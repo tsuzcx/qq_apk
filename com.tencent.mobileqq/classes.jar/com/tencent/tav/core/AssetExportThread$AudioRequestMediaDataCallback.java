@@ -2,9 +2,9 @@ package com.tencent.tav.core;
 
 import android.os.Handler;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.decoder.VideoDecoder;
 import com.tencent.tav.decoder.logger.Logger;
 
 class AssetExportThread$AudioRequestMediaDataCallback
@@ -14,42 +14,44 @@ class AssetExportThread$AudioRequestMediaDataCallback
   
   private void onAudioRequestMediaData()
   {
+    Object localObject2;
     while ((!AssetExportThread.access$800(this.this$0)) && (!AssetExportThread.access$900(this.this$0))) {
-      if ((AssetExportThread.access$2700(this.this$0) != null) && (AssetExportThread.access$600(this.this$0).isReadyForMoreMediaData()))
+      if ((AssetExportThread.access$2600(this.this$0) != null) && (AssetExportThread.access$600(this.this$0).isReadyForMoreMediaData()))
       {
-        AssetExportThread.access$2700(this.this$0).duration();
-        localObject = AssetExportThread.access$2700(this.this$0).copyNextSampleBuffer();
-        if (((CMSampleBuffer)localObject).getTime().getTimeUs() < 0L) {
-          break label174;
+        AssetExportThread.access$2600(this.this$0).duration();
+        localObject1 = AssetExportThread.access$2600(this.this$0).copyNextSampleBuffer();
+        localObject2 = ((CMSampleBuffer)localObject1).getState();
+        if (((CMSampleState)localObject2).getStateCode() < 0L) {
+          break label176;
         }
-        ExportErrorStatus localExportErrorStatus = AssetExportThread.access$600(this.this$0).appendSampleBuffer((CMSampleBuffer)localObject);
-        if (localExportErrorStatus != null) {
-          AssetExportThread.access$2200(this.this$0, localExportErrorStatus);
+        localObject2 = AssetExportThread.access$600(this.this$0).appendSampleBuffer((CMSampleBuffer)localObject1);
+        if (localObject2 != null) {
+          AssetExportThread.access$2200(this.this$0, (ExportErrorStatus)localObject2);
         }
-        if (((CMSampleBuffer)localObject).getTime().getTimeUs() >= AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs()) {
+        if (((CMSampleBuffer)localObject1).getTime().getTimeUs() >= AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs()) {
           AssetExportThread.access$600(this.this$0).markAsFinished();
         }
       }
     }
-    label138:
-    Object localObject = this.this$0;
+    label140:
+    Object localObject1 = this.this$0;
     if (!AssetExportThread.access$900(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      AssetExportThread.access$2802((AssetExportThread)localObject, bool);
+      AssetExportThread.access$2702((AssetExportThread)localObject1, bool);
       AssetExportThread.access$1900(this.this$0).sendEmptyMessage(2);
       return;
-      label174:
-      if (((CMSampleBuffer)localObject).getTime() == VideoDecoder.SAMPLE_TIME_FINISH)
+      label176:
+      if (((CMSampleState)localObject2).getStateCode() == -1L)
       {
         AssetExportThread.access$600(this.this$0).markAsFinished();
-        break label138;
+        break label140;
       }
-      if (((CMSampleBuffer)localObject).getTime() == VideoDecoder.SAMPLE_TIME_TIMEOUT) {
+      if (((CMSampleState)localObject2).getStateCode() == -4L) {
         break;
       }
-      AssetExportThread.access$2500(this.this$0, (int)((CMSampleBuffer)localObject).getTime().getValue());
-      break label138;
+      AssetExportThread.access$2200(this.this$0, new ExportErrorStatus((CMSampleState)localObject2));
+      break label140;
     }
   }
   

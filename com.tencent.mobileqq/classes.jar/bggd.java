@@ -1,73 +1,73 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bggd
-  extends bgff
+  extends MSFServlet
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public bgga a;
-  bgge jdField_a_of_type_Bgge;
-  public bggg a;
-  
-  public bggd(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramView);
-    View localView1 = paramView.findViewById(2131369749);
-    View localView2 = paramView.findViewById(2131369696);
-    View localView3 = paramView.findViewById(2131369748);
-    this.jdField_a_of_type_Bggg = new bggg(localView1);
-    this.jdField_a_of_type_Bgga = new bgga(localView2);
-    this.jdField_a_of_type_Bgge = new bgge(localView3);
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    long l = 0L;
+    if (QLog.isColorLevel())
+    {
+      l = System.currentTimeMillis();
+      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      VasExtensionHandler localVasExtensionHandler = (VasExtensionHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(71);
+      if (localVasExtensionHandler != null) {
+        localVasExtensionHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      arrayOfByte = null;
+    }
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    switch (((bgei)this.jdField_a_of_type_Bgeg).jdField_a_of_type_Int)
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
     {
-    default: 
-      return;
-    case 2: 
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_Bgga.a(paramView, paramHWReciteItem, this);
-        return;
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
       }
-      this.jdField_a_of_type_Bggg.a(paramView, paramHWReciteItem, this);
-      return;
+      paramIntent = new byte[arrayOfByte.length + 4];
+      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
     }
-    this.jdField_a_of_type_Bgge.a(paramView, paramHWReciteItem, this);
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, bgei parambgei, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (parambgei.jdField_a_of_type_Int)
+    for (;;)
     {
-    default: 
-      this.jdField_a_of_type_Bggg.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bgga.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bgge.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    case 2: 
-      if (paramInt == 2)
-      {
-        parambgei.g = 0;
-        this.jdField_a_of_type_Bggg.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_Bgga.a(paramHWReciteItem, this, parambgei, paramInt);
-        this.jdField_a_of_type_Bgge.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
       }
-      parambgei.g = 3;
-      this.jdField_a_of_type_Bggg.a(paramHWReciteItem, this, parambgei, paramInt);
-      this.jdField_a_of_type_Bgga.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bgge.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
+      label117:
+      paramIntent = new byte[4];
+      PkgTools.DWord2Byte(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
     }
-    this.jdField_a_of_type_Bggg.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Bgga.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Bgge.a(paramHWReciteItem, this, parambgei, paramInt);
   }
 }
 

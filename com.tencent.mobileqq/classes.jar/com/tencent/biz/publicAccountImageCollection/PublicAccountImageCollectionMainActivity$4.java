@@ -1,9 +1,9 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import java.util.ArrayList;
-import oal;
-import ocd;
-import uyc;
+import obw;
+import odq;
+import vfz;
 
 class PublicAccountImageCollectionMainActivity$4
   implements Runnable
@@ -24,14 +24,14 @@ class PublicAccountImageCollectionMainActivity$4
     if ((PublicAccountImageCollectionMainActivity.a(this.this$0) != null) && (PublicAccountImageCollectionMainActivity.a(this.this$0).a != null)) {}
     for (int i = PublicAccountImageCollectionMainActivity.a(this.this$0).a.size();; i = 0)
     {
-      ocd.a(null, this.this$0.a, "0X8007B8A", "0X8007B8A", 0, 0, this.this$0.b, this.this$0.c, "" + PublicAccountImageCollectionMainActivity.b(this.this$0, PublicAccountImageCollectionMainActivity.a(this.this$0)), "" + i, false);
+      odq.a(null, this.this$0.a, "0X8007B8A", "0X8007B8A", 0, 0, this.this$0.b, this.this$0.c, "" + PublicAccountImageCollectionMainActivity.b(this.this$0, PublicAccountImageCollectionMainActivity.a(this.this$0)), "" + i, false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.4
  * JD-Core Version:    0.7.0.1
  */

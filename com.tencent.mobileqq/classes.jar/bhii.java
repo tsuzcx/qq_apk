@@ -1,48 +1,14 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
-final class bhii
-  implements URLDrawable.URLDrawableListener
+class bhii
 {
-  bhii(View paramView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, zps.a(BaseApplicationImpl.getContext(), 47.0F), zps.a(BaseApplicationImpl.getContext(), 14.0F));
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
+  int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhii
  * JD-Core Version:    0.7.0.1
  */

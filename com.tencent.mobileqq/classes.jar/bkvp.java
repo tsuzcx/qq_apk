@@ -1,15 +1,20 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bkvp
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements View.OnClickListener
 {
-  bkvp(bkvm parambkvm, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
+  bkvp(bkvo parambkvo) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bkvm);
+    bkvg.a(bkvo.a(this.a), bkvo.b(this.a), "5", "27", "", "3", "", "", "");
+    this.a.mUIStyleHandler.mHostFragment.webView.loadUrl("jsbridge://JSTittlebarAction/managerBtnSingleClick");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

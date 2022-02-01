@@ -1,20 +1,24 @@
-import java.util.HashMap;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
 class xgw
-  extends xfx
+  extends ParallelJobSegment<xng, xgt>
 {
-  xgw(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xht paramxht)
+  public xgw(xgs paramxgs)
   {
-    super(paramString1, paramString2, paramBoolean);
+    this(paramxgs, "RequestCommentListSegment");
   }
   
-  public boolean b()
+  public xgw(xgs paramxgs, String paramString)
   {
-    this.jdField_a_of_type_Xht.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_Xht.a, this.jdField_a_of_type_Xht.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
-    return true;
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, xng paramxng)
+  {
+    wee localwee = new wee();
+    localwee.a = paramxng;
+    vqn.a().a(localwee, new xgx(this, paramJobContext, paramxng));
   }
 }
 

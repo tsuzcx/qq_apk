@@ -1,20 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
 
 public class ajvw
-  extends amof
+  extends URLDrawableHelper.Adapter
 {
-  public ajvt a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public ajvw(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+    this.a.b();
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    super.onLoadSuccessed(paramURLDrawable);
+    this.a.d();
+  }
 }
 
 

@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class axzg
-  implements DialogInterface.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$bindTextView$2$1"}, k=3, mv={1, 1, 16})
+final class axzg
+  implements View.OnClickListener
 {
-  public axzg(GameRoomTransActivity paramGameRoomTransActivity) {}
+  axzg(axzc paramaxzc, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    this.a.finish();
+    axyg.a.a(this.jdField_a_of_type_Axzc.a(), "VAL_FROM_STATUS_MSG_TAB");
+    axvz.a("0X800AF45", 0, null, null, 14, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

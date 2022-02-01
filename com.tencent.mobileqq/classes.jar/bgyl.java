@@ -1,60 +1,92 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
-
 public class bgyl
-  extends BaseAdapter
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
-  
-  public bgyl(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, String... paramVarArgs)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt1).append('|');
+    localStringBuffer.append(paramInt2).append('|');
+    localStringBuffer.append(paramInt3).append('|');
+    localStringBuffer.append(paramInt4).append('|');
+    localStringBuffer.append(paramInt5).append('|');
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramInt6).append('|');
+    localStringBuffer.append(paramInt7).append('|');
+    localStringBuffer.append(paramInt8).append('|');
+    localStringBuffer.append(paramInt9).append('|');
+    localStringBuffer.append(paramInt10);
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+      paramString1 = new String[5];
+      System.arraycopy(paramVarArgs, 0, paramString1, 0, Math.min(5, paramVarArgs.length));
+      paramInt1 = 0;
+      if (paramInt1 < 5)
+      {
+        if (paramString1[paramInt1] == null) {
+          localStringBuffer.append("|");
+        }
+        for (;;)
+        {
+          paramInt1 += 1;
+          break;
+          localStringBuffer.append("|" + paramString1[paramInt1]);
+        }
+      }
     }
-    for (;;)
+    else
     {
-      String str = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
-      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
-      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
-      localWheelTextView.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      localStringBuffer.append('|').append('|').append('|').append('|').append('|');
     }
+    bcdf.a(null, "sendtdbank|b_sng_qqvip_qq_webview|qq_webview", localStringBuffer.toString(), true);
+  }
+  
+  public static void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, String paramString1, String paramString2, String paramString3)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramLong1).append('|');
+    localStringBuffer.append(paramLong2).append('|');
+    localStringBuffer.append(paramLong3).append('|');
+    localStringBuffer.append(paramLong4).append('|');
+    localStringBuffer.append(paramLong5).append('|');
+    localStringBuffer.append(paramLong6).append('|');
+    localStringBuffer.append(paramLong7).append('|');
+    localStringBuffer.append(paramLong8).append('|');
+    localStringBuffer.append(paramLong9).append('|');
+    localStringBuffer.append(paramLong10).append('|');
+    localStringBuffer.append(paramLong11).append('|');
+    localStringBuffer.append(paramLong12).append('|');
+    localStringBuffer.append(paramLong13).append('|');
+    localStringBuffer.append(paramLong14).append('|');
+    localStringBuffer.append(paramLong15).append('|');
+    localStringBuffer.append(paramLong16).append('|');
+    localStringBuffer.append(paramLong17).append('|');
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramString3).append('|');
+    bcdf.a(null, "dc00763", localStringBuffer.toString(), true);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, long paramLong, String paramString5, String paramString6, String paramString7, int paramInt2, int paramInt3, int paramInt4, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramString3).append('|');
+    localStringBuffer.append(paramString4).append('|');
+    localStringBuffer.append(paramInt1).append('|');
+    localStringBuffer.append(paramLong).append('|');
+    localStringBuffer.append(paramString5).append('|');
+    localStringBuffer.append(paramString6).append('|');
+    localStringBuffer.append(paramString7).append('|');
+    localStringBuffer.append(paramInt2).append('|');
+    localStringBuffer.append(paramInt3).append('|');
+    localStringBuffer.append(paramInt4).append('|');
+    localStringBuffer.append(paramString8).append('|');
+    localStringBuffer.append(paramString9).append('|');
+    localStringBuffer.append(paramString10).append('|');
+    localStringBuffer.append(paramString11).append('|');
+    localStringBuffer.append(paramString12);
+    bcdf.a(null, "dc01183", localStringBuffer.toString(), true);
   }
 }
 

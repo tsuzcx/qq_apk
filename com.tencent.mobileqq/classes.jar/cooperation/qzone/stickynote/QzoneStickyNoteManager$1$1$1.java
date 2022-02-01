@@ -1,8 +1,5 @@
 package cooperation.qzone.stickynote;
 
-import bniv;
-import bniw;
-
 class QzoneStickyNoteManager$1$1$1
   implements Runnable
 {
@@ -10,7 +7,7 @@ class QzoneStickyNoteManager$1$1$1
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Bniv.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.jdField_a_of_type_ComTencentWidgetListView, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard);
+    this.this$2.this$1.this$0.attach(this.this$2.this$1.val$app, this.this$2.this$1.val$activity, this.this$2.this$1.val$listView, this.this$2.this$1.val$card);
   }
 }
 

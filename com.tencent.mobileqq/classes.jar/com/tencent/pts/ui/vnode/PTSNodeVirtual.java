@@ -20,6 +20,7 @@ import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.PTSNodeStyle;
 import com.tencent.pts.ui.view.IView;
 import com.tencent.pts.utils.PTSLog;
+import com.tencent.pts.utils.PTSNodeVirtualUtil;
 import com.tencent.pts.utils.PTSReportUtil;
 import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
@@ -344,6 +345,7 @@ public abstract class PTSNodeVirtual<T extends View>
       if ((getView() instanceof IView)) {
         ((IView)getView()).onBindNodeInfo(paramPTSNodeInfo);
       }
+      PTSNodeVirtualUtil.onBindNodeInfoFinished(paramPTSNodeInfo.getUniqueID(), getView(), paramPTSNodeInfo.getContent(), paramPTSNodeInfo.getStyle(), paramPTSNodeInfo.getAttributes());
       PTSTimeCostUtil.end("[bindNodeInfo]-" + paramPTSNodeInfo.getUniqueID());
     }
   }

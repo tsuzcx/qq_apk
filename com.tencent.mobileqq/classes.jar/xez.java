@@ -1,60 +1,59 @@
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 
 public class xez
-  extends wov
 {
-  public List<StoryVideoItem> a = new ArrayList();
-  public int b;
-  public List<List<VideoUrlEntry>> b;
+  public ImageView a;
+  public StoryCoverView a;
   
-  public xez(qqstory_service.RspBatchGetVideoFullInfoList paramRspBatchGetVideoFullInfoList)
+  public xez(xey paramxey, View paramView)
   {
-    super(paramRspBatchGetVideoFullInfoList.result);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    Object localObject1 = paramRspBatchGetVideoFullInfoList.video_list.get();
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((Iterator)localObject1).next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
-        this.a.add(localStoryVideoItem);
-        Object localObject3 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
-        if (localObject3 != null)
-        {
-          localObject2 = new ArrayList(((List)localObject3).size());
-          localObject3 = ((List)localObject3).iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject3).next();
-            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-            localVideoUrlEntry.vid = localStoryVideoItem.mVid;
-            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-            ((List)localObject2).add(localVideoUrlEntry);
-          }
-          this.jdField_b_of_type_JavaUtilList.add(localObject2);
-        }
-      }
-    }
-    this.jdField_b_of_type_Int = paramRspBatchGetVideoFullInfoList.interact_status.get();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364317));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131380703));
   }
   
-  public String toString()
+  void a(xlu paramxlu, int paramInt)
   {
-    return "GetVideoBasicInfoListResponse{mVideoItemList=" + this.a + '}';
+    if (paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable(this.jdField_a_of_type_Xey.a.getResources().getDrawable(2130846526));
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(null, -1, null);
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(null, -1, -1L, -1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(paramInt));
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (!paramxlu.jdField_a_of_type_Boolean) {
+        break label186;
+      }
+      paramInt = 2130840530;
+      label78:
+      localImageView.setImageResource(paramInt);
+      if (!paramxlu.b) {
+        break label192;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(1.0F);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new xfa(this));
+      return;
+      if (TextUtils.isEmpty(paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl)) {
+        break;
+      }
+      xey.a(this.jdField_a_of_type_Xey, this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.jdField_a_of_type_AndroidWidgetImageView, paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
+      break;
+      label186:
+      paramInt = 2130840526;
+      break label78;
+      label192:
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(0.6F);
+    }
   }
 }
 

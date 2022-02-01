@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class wdj
-  implements View.OnClickListener
+public class wdj
+  extends vko
 {
-  wdj(wdg paramwdg) {}
+  public String a;
+  public List<xlu> a;
   
-  public void onClick(View paramView)
+  public wdj()
   {
-    if (this.a.a() != null)
-    {
-      this.a.a().a();
-      vtn.a(98, 2, this.a.a, this.a.b());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
   }
 }
 

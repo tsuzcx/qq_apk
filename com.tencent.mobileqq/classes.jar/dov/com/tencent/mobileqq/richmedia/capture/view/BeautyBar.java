@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import agej;
+import amtj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -13,12 +13,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import anzj;
-import brdy;
-import brdz;
-import brea;
-import breb;
+import bnxu;
+import bnxv;
+import bnxw;
+import bnxx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import mqq.app.AppRuntime;
 
 public class BeautyBar
@@ -28,13 +28,13 @@ public class BeautyBar
   public static long a;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new brdy(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bnxu(this);
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public SeekBar.OnSeekBarChangeListener a;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private breb jdField_a_of_type_Breb;
+  private bnxx jdField_a_of_type_Bnxx;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -47,19 +47,19 @@ public class BeautyBar
   public BeautyBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new brdz(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bnxv(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new brdz(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bnxv(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new brdz(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bnxv(this);
   }
   
   private void a()
@@ -68,13 +68,13 @@ public class BeautyBar
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131363408));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new brea(this));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845721);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363383));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new bnxw(this));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845600);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363410));
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = null;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
@@ -89,7 +89,7 @@ public class BeautyBar
     if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetSeekBar == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131699994) + paramInt + "%");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700229) + paramInt + "%");
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
     }
@@ -102,7 +102,7 @@ public class BeautyBar
       int m = this.jdField_a_of_type_AndroidWidgetSeekBar.getWidth();
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (i - k / 2 + (m - j) * paramInt / 100);
       if (paramInt < 50) {}
-      for (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin - (50.0F - paramInt) / 50.0F * agej.a(7.0F, getResources())));; this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin + (paramInt - 50.0F) / 50.0F * agej.a(5.0F, getResources()))))
+      for (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin - (50.0F - paramInt) / 50.0F * AIOUtils.dp2px(7.0F, getResources())));; this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin + (paramInt - 50.0F) / 50.0F * AIOUtils.dp2px(5.0F, getResources()))))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
         if ((paramBoolean) || (this.jdField_a_of_type_AndroidWidgetSeekBar.getVisibility() == 0)) {
@@ -120,9 +120,9 @@ public class BeautyBar
     a();
   }
   
-  public void setBeautyBarListener(breb parambreb)
+  public void setBeautyBarListener(bnxx parambnxx)
   {
-    this.jdField_a_of_type_Breb = parambreb;
+    this.jdField_a_of_type_Bnxx = parambnxx;
   }
 }
 

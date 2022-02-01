@@ -1,44 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aton
-  extends auoi
+  implements Handler.Callback
 {
-  public aton(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
+  public aton(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.a.jdField_a_of_type_Atov != null)) {
+      this.a.jdField_a_of_type_Atov.a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aton
  * JD-Core Version:    0.7.0.1
  */

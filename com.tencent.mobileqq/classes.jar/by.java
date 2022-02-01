@@ -2,6 +2,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.widget.FrameLayout.LayoutParams;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XEditTextEx;
@@ -18,7 +19,7 @@ public class by
   {
     LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
     ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
-    this.a.a.setPadding(agej.a(24.0F, this.a.app.getApplication().getResources()), agej.a(10.0F, this.a.app.getApplication().getResources()), agej.a(24.0F, this.a.app.getApplication().getResources()), 0);
+    this.a.a.setPadding(AIOUtils.dp2px(24.0F, this.a.app.getApplication().getResources()), AIOUtils.dp2px(10.0F, this.a.app.getApplication().getResources()), AIOUtils.dp2px(24.0F, this.a.app.getApplication().getResources()), 0);
     LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
   
@@ -28,7 +29,7 @@ public class by
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     by
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,18 @@
-public abstract interface tim
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+
+public class tim
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(til paramtil, int paramInt);
+  public tim(BridgeModule paramBridgeModule, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5) {}
   
-  public abstract void a(til paramtil, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(til paramtil, long paramLong);
-  
-  public abstract void a(til paramtil, boolean paramBoolean);
-  
-  public abstract void b(til paramtil);
-  
-  public abstract void b(til paramtil, int paramInt);
-  
-  public abstract void c(til paramtil);
-  
-  public abstract void d(til paramtil);
-  
-  public abstract void e(til paramtil);
-  
-  public abstract void f(til paramtil);
-  
-  public abstract void g(til paramtil);
-  
-  public abstract void h(til paramtil);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 11)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.reportVideoShareClick(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, -1, -1, true, this.jdField_a_of_type_Int, this.c, this.d, this.e);
+    }
+  }
 }
 
 

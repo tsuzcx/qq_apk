@@ -1,11 +1,42 @@
-class azkf
-  implements azjv
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class azkf
+  extends MSFServlet
 {
-  azkf(azkc paramazkc) {}
-  
-  public void a(boolean paramBoolean)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    azkc.a(this.a, paramBoolean);
+    if (paramFromServiceMsg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
+    {
+      azke localazke = new azke(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
+      byte[] arrayOfByte = localazke.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localazke.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

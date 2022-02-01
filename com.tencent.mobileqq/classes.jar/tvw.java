@@ -1,35 +1,37 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-class tvw
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil;", "", "()V", "initExperiment", "", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "initVideoGuide", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvw
 {
-  tvw(tvt paramtvt, tvs paramtvs, boolean paramBoolean) {}
+  public static final tvw a = new tvw();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private final void b(AdvertisementInfo paramAdvertisementInfo)
   {
-    switch (paramMotionEvent.getAction())
+    trw localtrw = paramAdvertisementInfo.adExperimentData;
+    paramAdvertisementInfo = paramAdvertisementInfo.mAdExtInfo;
+    if (!TextUtils.isEmpty((CharSequence)paramAdvertisementInfo))
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_Tvt.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.a.getResources().getColor(2131166074));
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Tvt.c.setBackgroundResource(2130843182);
-        return false;
+      Object localObject = new JSONObject(paramAdvertisementInfo).opt("video_guide");
+      paramAdvertisementInfo = localObject;
+      if (!(localObject instanceof JSONObject)) {
+        paramAdvertisementInfo = null;
       }
-      this.jdField_a_of_type_Tvt.c.setBackgroundResource(2130843183);
-      return false;
+      paramAdvertisementInfo = (JSONObject)paramAdvertisementInfo;
+      if (paramAdvertisementInfo != null) {
+        localtrw.a(new try(paramAdvertisementInfo.optInt("second_state_time", -1), paramAdvertisementInfo.optInt("third_state_time", -1)));
+      }
     }
-    this.jdField_a_of_type_Tvt.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.a.getResources().getColor(2131166073));
-    this.jdField_a_of_type_Tvt.c.setBackgroundResource(2130843191);
-    return false;
+  }
+  
+  public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo != null) {
+      a.b(paramAdvertisementInfo);
+    }
   }
 }
 

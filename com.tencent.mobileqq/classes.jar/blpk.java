@@ -1,19 +1,29 @@
-import android.text.DynamicLayout;
-import android.text.Layout.Alignment;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class blpk
-  extends DynamicLayout
+class blpk
+  implements Animation.AnimationListener
 {
-  public blpk(CharSequence paramCharSequence1, CharSequence paramCharSequence2, TextPaint paramTextPaint, int paramInt1, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt2)
+  blpk(blpb paramblpb, boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramCharSequence1, paramCharSequence2, paramTextPaint, paramInt1, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt2);
+    blpb.a(this.jdField_a_of_type_Blpb, false);
+    blpb.b(this.jdField_a_of_type_Blpb).setVisibility(8);
+    blpb.a(this.jdField_a_of_type_Blpb).setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (!blpb.a(this.jdField_a_of_type_Blpb).get())) {
+      blpb.a(this.jdField_a_of_type_Blpb, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public int getParagraphDirection(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return 1;
+    blpb.a(this.jdField_a_of_type_Blpb, true);
   }
 }
 

@@ -1,18 +1,17 @@
 package cooperation.qzone.share;
 
-import bnhg;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class QZoneShareActivity$5$1
+class QZoneShareActivity$5$1
   implements Runnable
 {
-  public QZoneShareActivity$5$1(bnhg parambnhg) {}
+  QZoneShareActivity$5$1(QZoneShareActivity.5 param5) {}
   
   public void run()
   {
-    this.a.a.k();
-    QQToast.a(this.a.a, 1, 2131693721, 1).a();
-    this.a.a.finish();
+    this.this$1.this$0.hideProgressDialog();
+    QQToast.a(this.this$1.this$0, 1, 2131693817, 1).a();
+    this.this$1.this$0.finish();
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.biz.troopgift;
 
-import aaxx;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -10,16 +9,17 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import zuk;
 
 public abstract class absMultiViewPager
   extends ViewPager
   implements AdapterView.OnItemClickListener
 {
-  protected aaxx a;
   protected ViewPager.OnPageChangeListener a;
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
   protected ArrayList<Object> a;
+  protected zuk a;
   protected ArrayList<View> b = new ArrayList();
   protected int d;
   
@@ -54,8 +54,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aaxx != null) {
-      this.jdField_a_of_type_Aaxx.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Zuk != null) {
+      this.jdField_a_of_type_Zuk.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -108,9 +108,9 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(aaxx paramaaxx)
+  public void setOnPagerSizeChangeListener(zuk paramzuk)
   {
-    this.jdField_a_of_type_Aaxx = paramaaxx;
+    this.jdField_a_of_type_Zuk = paramzuk;
   }
 }
 

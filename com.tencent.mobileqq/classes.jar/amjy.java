@@ -1,21 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-
-public class amjy
-  implements Animation.AnimationListener
+public abstract interface amjy
 {
-  public amjy(SpecailCareListActivity paramSpecailCareListActivity, amkn paramamkn) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Amkn.c.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,17 +1,38 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vsk
-  implements aazo
+  extends vsw
 {
-  vsk(vsj paramvsj, FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
+  vsk(vsj paramvsj) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((!vsj.a(this.jdField_a_of_type_Vsj)) && (!vsj.b(this.jdField_a_of_type_Vsj)) && (nny.a(vsj.a(this.jdField_a_of_type_Vsj))))
+    vrx localvrx;
+    int i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
     {
-      this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
-      vsj.a(this.jdField_a_of_type_Vsj, true);
+      localvrx = (vrx)this.a.a();
+      if (vsj.a(this.a) != 11) {
+        break label145;
+      }
+      i = 211;
+    }
+    for (;;)
+    {
+      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
+      i = xwa.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      xwa.a("home_page", "clk_like_more", xwa.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), xwa.a(localvrx.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label145:
+      if (vsj.a(this.a) == 12) {
+        i = 222;
+      } else {
+        i = 210;
+      }
     }
   }
 }

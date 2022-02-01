@@ -1,17 +1,12 @@
-import android.app.Activity;
-import android.content.Intent;
-
 public abstract interface aluh
 {
-  public abstract String a();
+  public abstract void a();
   
-  public abstract void a(Activity paramActivity);
+  public abstract void b();
   
-  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract void c();
   
-  public abstract void a(Activity paramActivity, Intent paramIntent);
-  
-  public abstract void c_(String paramString);
+  public abstract void d();
 }
 
 

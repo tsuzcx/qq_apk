@@ -1,83 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class aosq
+public abstract class aosq
+  implements aosh
 {
-  private static List<aosr> jdField_a_of_type_JavaUtilList = new ArrayList(32);
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public static void a()
+  public aosq(String paramString, long paramLong)
   {
-    synchronized (jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
-      {
-        aosr localaosr = (aosr)localIterator.next();
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", String.valueOf(localaosr.jdField_a_of_type_Int));
-        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-        localHashMap.put("msgType", String.valueOf(localaosr.b));
-        localHashMap.put("uinType", String.valueOf(localaosr.c));
-        bdmc.a(BaseApplication.getContext()).a(localaosr.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localaosr.jdField_a_of_type_Long, 0L, localHashMap, "");
-      }
-    }
-    aosr.a(jdField_a_of_type_JavaUtilList);
-    jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public Bundle a()
   {
-    if (!paramQQAppInterface.c().endsWith("7")) {
-      return;
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localBundle.putString("Uin", this.jdField_a_of_type_JavaLangString);
     }
-    paramQQAppInterface = new HashMap();
-    paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramQQAppInterface.put("uinType", String.valueOf(paramInt));
-    paramQQAppInterface.put("convUin", String.valueOf(paramString));
-    bdmc.a(BaseApplication.getContext()).a(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
+    localBundle.putLong("ViewHandle", this.jdField_a_of_type_Long);
+    return localBundle;
   }
   
-  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
+  public String a()
   {
-    if (!paramQQAppInterface.c().endsWith("77")) {}
-    long l;
-    do
-    {
-      return;
-      l = NetConnInfoCenter.getServerTime() - ???.time;
-    } while ((l < 30L) || ((paramQQAppInterface.b != 0L) && (???.time < paramQQAppInterface.b)));
-    if (???.time < paramQQAppInterface.jdField_a_of_type_Long) {}
-    for (int i = 1;; i = 2)
-    {
-      paramQQAppInterface = aosr.a(i, paramQQAppInterface.c(), l, ???.msgtype, ???.istroop);
-      synchronized (jdField_a_of_type_JavaUtilList)
-      {
-        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
-        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
-          a();
-        }
-        return;
-      }
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-      bdmc.a(BaseApplication.getContext()).a(null, paramString, true, paramLong, 0L, localHashMap, "");
-    }
+    return "QQ.GetNickname";
   }
 }
 

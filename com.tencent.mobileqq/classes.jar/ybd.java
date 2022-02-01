@@ -1,21 +1,6 @@
-import android.support.annotation.NonNull;
-
-public abstract class ybd
-  implements yau
+public abstract interface ybd
 {
-  protected void a(Error paramError) {}
-  
-  protected void a(yar paramyar) {}
-  
-  public final void a(@NonNull yas paramyas)
-  {
-    a(new yar(paramyas.a()));
-  }
-  
-  public final void b(@NonNull yas paramyas)
-  {
-    a(paramyas.a());
-  }
+  public abstract void a();
 }
 
 

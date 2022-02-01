@@ -1,24 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
 
 public class avdt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public avdt(DeleteFaceFragment paramDeleteFaceFragment) {}
+  public avdt(LocationDialogUtil.10 param10) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
+    if (avdr.a(this.a.a))
+    {
+      this.a.a.finish();
+      avdr.a("");
     }
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

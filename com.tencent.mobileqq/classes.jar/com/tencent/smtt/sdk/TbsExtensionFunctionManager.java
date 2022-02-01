@@ -186,7 +186,7 @@ public class TbsExtensionFunctionManager
         }
         TbsLog.i("TbsExtensionFunMana", "bugly init ,corePath is null");
         break;
-        localObject1 = n.a().q(paramContext);
+        localObject1 = p.a().q(paramContext);
         if (localObject1 == null) {
           TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is null");
         }
@@ -197,7 +197,7 @@ public class TbsExtensionFunctionManager
         }
       }
       label130:
-      Object localObject4 = n.a().q(paramContext);
+      Object localObject4 = p.a().q(paramContext);
       if (localObject4 == null)
       {
         TbsLog.i("TbsExtensionFunMana", "bugly init ,optDir is null");

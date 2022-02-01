@@ -1,19 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
 
-public class mpg
-  implements View.OnTouchListener
+class mpg
+  implements mqk
 {
-  public mpg(GuideHelper paramGuideHelper, long paramLong) {}
+  mpg(mpe parammpe) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(mqj parammqj)
   {
-    QLog.w("GuideHelper", 1, "onTouch to hide, seq[" + this.jdField_a_of_type_Long + "]");
-    GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long);
-    return false;
+    mpe localmpe = this.a;
+    if (parammqj.b == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localmpe.a(bool, parammqj.g, parammqj.c);
+      this.a.a = null;
+      mpe.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
+      return;
+    }
   }
 }
 

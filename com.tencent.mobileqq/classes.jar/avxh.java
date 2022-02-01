@@ -1,86 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import face.qqlogin.faceproto.Response;
-import java.io.File;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-class avxh
-  implements ITransactionCallback
+public class avxh
+  extends WebViewPlugin
 {
-  avxh(avxe paramavxe, File paramFile, EIPCResult paramEIPCResult, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    QLog.i("qqidentification_server", 1, "BDH.Upload fail  : result:" + paramInt);
-    avxe.a(this.jdField_a_of_type_Avxe);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, "", "", this.c + "", "");
-    this.jdField_a_of_type_EipcEIPCResult.code = -102;
-    paramArrayOfByte = new Bundle();
-    paramArrayOfByte.putInt("ret", 209);
-    paramArrayOfByte.putString("subError", "UPLOAD onFailed I=" + paramInt);
-    paramArrayOfByte.putString("errMsg", anzj.a(2131704601));
-    this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-    this.jdField_a_of_type_Avxe.callbackResult(avxe.a(this.jdField_a_of_type_Avxe), this.jdField_a_of_type_EipcEIPCResult);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    QLog.d("qqidentification_server", 1, "upload file success");
-    avxe.a(this.jdField_a_of_type_Avxe);
-    this.jdField_a_of_type_JavaIoFile.delete();
-    paramHashMap = new faceproto.Response();
-    for (;;)
-    {
-      try
-      {
-        paramHashMap.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = new Bundle();
-        i = paramHashMap.Ret.get();
-        paramArrayOfByte.putInt("ret", i);
-        str = paramHashMap.ErrMsg.get();
-        paramArrayOfByte.putString("errMsg", str);
-        paramArrayOfByte.putBoolean("needRetry", paramHashMap.NeedRetry.get());
-        QLog.d("qqidentification_server", 1, "retry: " + paramHashMap.NeedRetry.get() + " ret=" + i);
-        paramArrayOfByte.putString("idKey", paramHashMap.IDKey.get());
-        this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-        if (i != 0) {
-          continue;
-        }
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097ED", "0X80097ED", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", "");
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        int i;
-        String str;
-        QLog.e("qqidentification_server", 1, new Object[] { "parse bytes error : ", paramArrayOfByte.getMessage() });
-        this.jdField_a_of_type_EipcEIPCResult.code = -102;
-        paramArrayOfByte = new Bundle();
-        paramArrayOfByte.putString("subError", "InvalidProtocolBufferMicroException");
-        paramArrayOfByte.putInt("ret", 208);
-        paramArrayOfByte.putString("errMsg", anzj.a(2131704603));
-        this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", "");
-        continue;
-      }
-      this.jdField_a_of_type_Avxe.callbackResult(avxe.a(this.jdField_a_of_type_Avxe), this.jdField_a_of_type_EipcEIPCResult);
-      return;
-      QLog.e("qqidentification_server", 1, "request err: " + i + ", " + str);
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EE", "0X80097EE", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", i + "");
+    int i = 0;
+    if ((paramString2 == null) || (!"msgForward".equalsIgnoreCase(paramString2)) || (paramString3 == null)) {}
+    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!"showForwardToWXMsg".equalsIgnoreCase(paramString3)) || (paramVarArgs == null)) {
+      return false;
     }
+    if (paramVarArgs.length > 0) {
+      while (i < paramVarArgs.length)
+      {
+        QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
+        i += 1;
+      }
+    }
+    paramJsBridgeListener = "0";
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]).optString("rId");
+      paramJsBridgeListener = paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        long l;
+        QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
+      }
+    }
+    paramString1 = this.mRuntime.a();
+    l = paramJsBridgeListener.hashCode();
+    paramString2 = new Intent(paramString1, MultiForwardActivity.class);
+    paramString2.putExtra("chat_subType", 3);
+    paramString2.putExtra("uin", "0");
+    paramString2.putExtra("uintype", 1040);
+    paramString2.putExtra("multi_url", paramJsBridgeListener);
+    paramString2.putExtra("multi_uniseq", l);
+    paramString1.startActivity(paramString2);
+    paramString1.finish();
+    return true;
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

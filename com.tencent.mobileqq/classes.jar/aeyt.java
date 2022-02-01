@@ -1,26 +1,44 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aeyt
-  extends anyu
+  implements arel
 {
-  public aeyt(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public aeyt(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void a(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
+    String str = bgev.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if ((localViewParent instanceof ChatXListView)) {
+      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
     }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131693766), 0).b(this.a.getTitleBarHeight());
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
     }
     for (;;)
     {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.getCurrentUin(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
-      QQToast.a(this.a, 2, this.a.getString(2131693768), 0).b(this.a.getTitleBarHeight());
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
+      }
     }
   }
 }

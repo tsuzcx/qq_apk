@@ -1,34 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.NamePlateCfgInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
 
-public class aggn
-  implements View.OnClickListener
+final class aggn
+  implements aghk
 {
-  public aggn(BaseChatItemLayout paramBaseChatItemLayout) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof NamePlateCfgInfo)))
-    {
-      NamePlateCfgInfo localNamePlateCfgInfo = (NamePlateCfgInfo)paramView.getTag();
-      if ((localNamePlateCfgInfo.mVipType != 3) && (localNamePlateCfgInfo.mVipType != 259)) {
-        break label106;
-      }
-      VipUtils.a(BaseActivity.sTopActivity.app, this.a.getContext(), localNamePlateCfgInfo.mVipType, localNamePlateCfgInfo.mNamePlateId, "mios.p.cl.cztx_qlncmp");
+    if ((((MessageForStructing)paramChatMessage).structingMsg instanceof StructMsgSubImageVideo)) {
+      return 111;
     }
-    for (;;)
-    {
-      bdll.b(BaseActivity.sTopActivity.app, "dc00898", "", "", "qq_vip", "0X8009CAB", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label106:
-      VipUtils.b(BaseActivity.sTopActivity.app, this.a.getContext(), "mios.p.cl.cztx_qlncmp");
-    }
+    return 5;
   }
 }
 

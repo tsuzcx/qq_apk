@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acte
-  implements SDKInitListener
+public class acte
+  implements View.OnClickListener
 {
-  acte(acsz paramacsz) {}
+  public acte(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    QLog.i("VideoGdtGdtMvViewController", 1, "onSDKInited " + paramBoolean);
-    if (paramBoolean) {
-      acsz.a(this.a).sendEmptyMessage(3);
-    }
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

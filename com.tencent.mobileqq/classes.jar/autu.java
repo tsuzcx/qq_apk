@@ -1,84 +1,34 @@
-import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.1;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
 import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
-final class autu
-  implements UploadManager.IUploadStatusListener
+public class autu
+  implements aujz
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<autr> jdField_a_of_type_MqqUtilWeakReference;
+  autu(auts paramauts) {}
   
-  private autu(autr paramautr, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    if (paramautr == null) {}
-    for (paramautr = null;; paramautr = new WeakReference(paramautr))
+    QLog.e("IdentificationApiPlugin", 1, "getAppConf error, code : " + paramInt + " errorMsg : " + paramString);
+    if (auts.a(this.a) == null)
     {
-      this.jdField_a_of_type_MqqUtilWeakReference = paramautr;
-      this.jdField_a_of_type_JavaLangString = paramString;
+      QLog.e("IdentificationApiPlugin", 1, "getConfFailed, activity is null");
       return;
     }
+    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.2.2(this, paramString));
   }
   
-  public void onUploadJobAdded(String paramString, long paramLong) {}
-  
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void a(FaceDetectForThirdPartyManager.AppConf paramAppConf)
   {
-    autr localautr;
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
+    if (auts.a(this.a) == null)
     {
-      localautr = null;
-      if ((localautr != null) && (!autr.a(localautr))) {
-        break label39;
-      }
-    }
-    label39:
-    while (autr.a(localautr) == null)
-    {
+      QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
       return;
-      localautr = (autr)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      break;
     }
-    if (paramBoolean)
-    {
-      switch (paramStatusInfo.state)
-      {
-      default: 
-        label80:
-        paramString = null;
-      }
-      while (paramString != null)
-      {
-        autr.a(localautr).sendMessage(paramString);
-        return;
-        if (paramStatusInfo.errorCode == 1810002)
-        {
-          if (!QLog.isColorLevel()) {
-            break label80;
-          }
-          QLog.i("WeiyunShareProcessController<FileAssistant>", 2, "upload is canceled, for file:" + this.jdField_a_of_type_JavaLangString);
-          paramString = null;
-          continue;
-        }
-        paramString = new Message();
-        paramString.what = 3;
-        paramString.obj = new Object[] { Integer.valueOf(paramStatusInfo.errorCode), paramStatusInfo.errorMsg };
-        continue;
-        paramString = new Message();
-        paramString.what = 2;
-        paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
-      }
-    }
-    if (paramStatusInfo.totalSize <= 0L) {}
-    for (float f = 0.0F;; f = (float)paramStatusInfo.currSize / (float)paramStatusInfo.totalSize)
-    {
-      paramString = new Message();
-      paramString.what = 4;
-      paramString.obj = new Object[] { Float.valueOf(f) };
-      break;
-    }
+    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.2.1(this, paramAppConf));
   }
 }
 

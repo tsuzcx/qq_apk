@@ -1,165 +1,95 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class mra
-  extends mqc
 {
-  public mrb a;
-  public int b = 2;
-  public int c = 1;
-  public String g;
-  
-  mra(mpv parammpv)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    super(parammpv);
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    float f = paramInt;
+    localPaint.setAntiAlias(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-12434878);
+    localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    return localBitmap;
   }
   
-  public void a()
+  public static Drawable a(Context paramContext, int paramInt)
   {
-    QLog.w(this.i, 1, "SendRedBag, cancel");
-    Intent localIntent = new Intent("com.qwallet.report");
-    localIntent.setPackage(MobileQQ.getContext().getPackageName());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", "video");
-    localIntent.putExtra("type", 999);
-    localIntent.putExtra("params", localBundle);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getBaseContext().sendBroadcast(localIntent);
-    this.b = 4;
-    a("cancel");
+    BitmapDrawable localBitmapDrawable = null;
+    int i = mum.a(paramContext);
+    int j = mum.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
+      {
+        try
+        {
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
+    }
+    return null;
   }
   
-  void a(String paramString)
+  public static Drawable b(Context paramContext, int paramInt)
   {
-    mqq.a(this.c);
-    mqq.b(this.b);
-    if (this.b == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ltx.a(bool, paramString, String.valueOf(this.b));
-      if (this.jdField_a_of_type_Mrb != null)
-      {
-        this.jdField_a_of_type_Mrb.a(this);
-        this.jdField_a_of_type_Mrb = null;
-      }
-      return;
+    BitmapDrawable localBitmapDrawable = null;
+    int i = mum.a(paramContext);
+    int j = mum.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
     }
-  }
-  
-  public boolean a(int paramInt, Intent paramIntent)
-  {
-    boolean bool2 = false;
-    this.b = 3;
-    String str = this.i;
-    Object localObject = new StringBuilder().append("SendRedBag_onResult, resultCode[").append(paramInt).append("], intent[");
-    boolean bool1;
-    if (paramIntent != null)
-    {
-      bool1 = true;
-      QLog.w(str, 1, bool1 + "]");
-      if (paramIntent == null) {
-        break label260;
-      }
-      AudioHelper.a(anzj.a(2131712701), paramIntent.getExtras());
-      str = String.valueOf(paramIntent.getExtras().get("result"));
-      localObject = paramIntent.getStringExtra("retmsg");
-      paramIntent = paramIntent.getStringExtra("data");
-    }
-    for (;;)
-    {
-      try
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
       {
-        if (!TextUtils.isEmpty(paramIntent)) {
-          this.g = new JSONObject(paramIntent).getString("send_listid");
+        try
+        {
+          localOptions.inScaled = false;
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
         }
-        if ("-11001".equals(str)) {
-          this.b = 4;
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
         }
-        QLog.w(this.i, 1, "SendRedBag_onResult, result[" + str + "], data[" + paramIntent + "], retmsg[" + (String)localObject + "], send_listid[" + this.g + "], mErrorType[" + this.b + "]");
-        bool1 = "0".equals(str);
-        if (bool1) {
-          this.b = 0;
-        }
-        paramIntent = str;
-        a(paramIntent);
-        return bool1;
-        bool1 = false;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      label260:
-      paramIntent = "null";
-      bool1 = bool2;
+        catch (Exception paramContext) {}
+      } while (i > 720);
     }
-  }
-  
-  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, mrb parammrb)
-  {
-    this.b = 2;
-    long l1 = mqr.a(paramVideoAppInterface);
-    if (l1 == 0L) {
-      return false;
-    }
-    long l2 = a(paramVideoAppInterface);
-    if (l2 == 0L) {
-      return false;
-    }
-    if (paramActivity == null)
-    {
-      QLog.w(this.i, 1, "SendRedBag, Activity为空");
-      return false;
-    }
-    String str = a(paramVideoAppInterface);
-    paramVideoAppInterface = b(paramVideoAppInterface);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("recv_uin", l2);
-      localJSONObject.put("recv_name", paramVideoAppInterface);
-      localJSONObject.put("bus_type", 2);
-      localJSONObject.put("channel", "16384");
-      localJSONObject.put("total_num", "2");
-      Intent localIntent = new Intent(BaseApplication.getContext(), SendHbActivity.class);
-      localIntent.putExtra("userId", l1);
-      localIntent.putExtra("userName", str);
-      if (paramInt == 2)
-      {
-        localIntent.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket2");
-        localIntent.putExtra("come_from", 2);
-        localIntent.putExtra("extra_data", localJSONObject.toString());
-        localIntent.setFlags(536870912);
-        paramActivity.startActivityForResult(localIntent, 801);
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.i, 4, "SendRedBag, userId[" + l1 + "], userName[" + str + "], recv_name[" + paramVideoAppInterface + "], recv_uin[" + l2 + "], fromType[" + paramInt + "]");
-        }
-        this.jdField_a_of_type_Mrb = parammrb;
-        this.b = 1;
-        this.c = paramInt;
-        mqq.i();
-        return true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        continue;
-        localJSONException.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket1");
-      }
-    }
+    return null;
   }
 }
 

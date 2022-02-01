@@ -1,40 +1,67 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqck
+  extends aptq<aqcj>
 {
-  java.lang.ref.WeakReference<QQAppInterface> a;
-  
-  public aqck(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aqcj a(int paramInt)
   {
-    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+    return new aqcj();
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2, anui paramanui)
+  @Nullable
+  public aqcj a(aptx[] paramArrayOfaptx)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null)
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
-      return false;
+      aqcj localaqcj = aqcj.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localaqcj;
     }
-    return ((aqcd)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramanui);
+    return new aqcj();
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, anui paramanui)
+  public void a(aqcj paramaqcj) {}
+  
+  public Class<aqcj> clazz()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
-      return false;
-    }
-    return ((aqcd)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramanui);
+    return aqcj.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 490;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqck
  * JD-Core Version:    0.7.0.1
  */

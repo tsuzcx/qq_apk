@@ -1,18 +1,17 @@
-class bexg
-  extends aocj
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bexg
 {
-  bexg(bexd parambexd) {}
+  public View a;
+  public ImageView a;
+  TextView a;
+  public String a;
   
-  public void a(boolean paramBoolean, long paramLong, aock paramaock)
+  public bexg(View paramView)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramaock);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    this.a = paramView;
   }
 }
 

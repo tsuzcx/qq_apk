@@ -1,16 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.data.TroopFeedItem;
-
-public abstract class bgxe
+public class bgxe
 {
-  public bgxe(bgwy parambgwy) {}
-  
-  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
-  
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
-  {
-    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
-  }
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean;
+  String d;
 }
 
 

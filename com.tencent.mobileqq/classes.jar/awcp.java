@@ -1,59 +1,135 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
+import tencent.im.msg.im_msg_body.RichText;
 
 class awcp
-  implements admy
+  implements ayeo
 {
-  awcp(awcc paramawcc, WeakReference paramWeakReference, Bundle paramBundle) {}
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
+  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public awcp(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt, ArrayList<MessageRecord> paramArrayList, HashMap<String, String> paramHashMap)
   {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131702472), 0).a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public void onPermission(int paramInt)
+  private Bitmap a(Bitmap paramBitmap)
   {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131702473), 0).a();
+    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas localCanvas = new Canvas(localBitmap);
+    localCanvas.drawColor(-1);
+    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+    return localBitmap;
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    return null;
+  }
+  
+  public void onSend(ayep paramayep)
+  {
+    if (paramayep.jdField_a_of_type_Int == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "send real struct msg for weixin done, cost : " + (System.currentTimeMillis() - awcm.b()));
+      }
     }
-    try
+    for (;;)
     {
-      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
-      this.jdField_a_of_type_Awcc.b = paramJSONObject.optString("access_token");
-      this.jdField_a_of_type_Awcc.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
-      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Awcc.b);
-      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Awcc.jdField_a_of_type_JavaLangString);
-      awcc.a(this.jdField_a_of_type_Awcc);
-      this.jdField_a_of_type_Awcc.jdField_a_of_type_Awcz.a(this.jdField_a_of_type_AndroidOsBundle);
+      String str2;
+      Object localObject2;
+      long l;
+      try
+      {
+        String str1;
+        String str3;
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131693954), new Object[] { ContactUtils.getFriendName((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentUin()), ContactUtils.getFriendName((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString) });
+          str3 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
+          str2 = "https://mma.qq.com/jumpqq/forward2.html?rId=" + paramayep.c + "&fName=" + paramayep.d;
+          if (this.jdField_a_of_type_Int == 1)
+          {
+            i = 4;
+            localObject2 = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getFaceBitmap(i, this.jdField_a_of_type_JavaLangString, (byte)1, false, 0);
+            if (localObject2 != null) {
+              continue;
+            }
+          }
+        }
+        else
+        {
+          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131693955), new Object[] { ContactUtils.getNick((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+          continue;
+        }
+        if (this.jdField_a_of_type_Int != 3000) {
+          break label583;
+        }
+        i = 101;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "send to weixin icon != null  ");
+        }
+        Object localObject1 = localObject2;
+        if (this.jdField_a_of_type_Int == 3000) {
+          localObject1 = a((Bitmap)localObject2);
+        }
+        localObject2 = String.valueOf(System.currentTimeMillis());
+        WXShareHelper.getInstance().shareWebPageToWXFriend((String)localObject2, str1, (Bitmap)localObject1, str3, str2);
+        l = paramayep.c.hashCode();
+        paramayep = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (paramayep.hasNext())
+        {
+          ((MessageRecord)paramayep.next()).msgseq = l;
+          continue;
+        }
+        ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      }
+      catch (Exception paramayep)
+      {
+        paramayep.printStackTrace();
+        return;
+      }
+      awcm.a().a(this.jdField_a_of_type_JavaUtilHashMap, l, (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(0)).notifyUI(8031, false, Integer.valueOf(0));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MultiMsg_TAG", 2, "shareToWXFriend.transaction: " + (String)localObject2 + ", shareLink:" + str2);
       return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "upload multi msg pack failed, result.errStr=" + paramayep.b + ",result.errStr=" + paramayep.jdField_a_of_type_JavaLangString);
+      }
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(0)).notifyUI(8031, false, Integer.valueOf(5));
+      return;
+      label583:
+      int i = 1;
     }
   }
   
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public void updateMsg(ayep paramayep) {}
 }
 
 

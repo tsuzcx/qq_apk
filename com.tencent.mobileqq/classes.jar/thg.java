@@ -1,7 +1,35 @@
-import kotlin.Metadata;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.adapter.ILogAdapter;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/NowLiveBridgeInvokeHandler$Companion;", "", "()V", "NS_NOW_LIVE", "", "OPEN_ROOM", "PRE_LOAD", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thg {}
+public class thg
+  implements ILogAdapter
+{
+  public void callLog(String paramString1, int paramInt, String paramString2)
+  {
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString1, 2, paramString2);
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+        QLog.e(paramString1, 2, paramString2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.w(paramString1, 2, paramString2);
+  }
+  
+  public void onJSError(String paramString) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,19 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class nkx
-  extends aocj
+public class nkx
+  implements TencentMap.OnMapClickListener
 {
-  nkx(nku paramnku) {}
+  public nkx(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onMapClick(LatLng paramLatLng)
   {
-    if (105 == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
-      }
-      this.a.notifyUI(105, true, paramObject);
-    }
+    this.a.j();
   }
 }
 

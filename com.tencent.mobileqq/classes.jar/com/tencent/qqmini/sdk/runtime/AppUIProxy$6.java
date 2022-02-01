@@ -1,32 +1,29 @@
 package com.tencent.qqmini.sdk.runtime;
 
-import android.widget.ImageView;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.IPage;
-import com.tencent.qqmini.sdk.launcher.core.proxy.KingCardProxy;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.widget.CapsuleButton;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.sdk.R.id;
+import com.tencent.qqmini.sdk.action.AppStateEvent;
 
 class AppUIProxy$6
-  implements Runnable
+  implements View.OnClickListener
 {
   AppUIProxy$6(AppUIProxy paramAppUIProxy) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.mCurrRuntimeLoader != null) {}
-    for (BaseRuntime localBaseRuntime = this.this$0.mCurrRuntimeLoader.getRuntime(); (localBaseRuntime != null) && (localBaseRuntime.getPage() != null); localBaseRuntime = null)
+    if (paramView.getId() == R.id.btn_close)
     {
-      Object localObject = localBaseRuntime.getPage().getCapsuleButton();
-      if ((localObject instanceof CapsuleButton))
-      {
-        localObject = ((CapsuleButton)localObject).getMoreView();
-        ((KingCardProxy)ProxyManager.get(KingCardProxy.class)).showKingCardTips(localBaseRuntime, (ImageView)localObject);
-      }
-      return;
+      AppStateEvent.obtain(60).notifyRuntime(this.this$0.getRuntime());
+      this.this$0.quit();
     }
-    QMLog.i("minisdk-start_UIProxy", "page is null");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getId() != R.id.btn_more_menu) {}
+    }
   }
 }
 

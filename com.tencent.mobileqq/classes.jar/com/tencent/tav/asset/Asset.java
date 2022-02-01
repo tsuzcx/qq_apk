@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.graphics.Matrix;
 import android.media.MediaFormat;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
@@ -85,14 +84,14 @@ public abstract class Asset<Track extends AssetTrack>
     try
     {
       initMembers();
-      Logger.i("Asset", "tryInitMembers: try count = " + (3 - this.extractorRetryCount), new Object[0]);
+      Logger.v("Asset", "tryInitMembers: try count = " + (3 - this.extractorRetryCount));
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        Logger.e("Asset", "Asset: initMembers failed", localException);
+        Logger.e("Asset", "Asset: initMembers failed, path = " + getSourcePath(), localException);
         trySleep(100);
         tryInitMembers();
       }
@@ -150,7 +149,7 @@ public abstract class Asset<Track extends AssetTrack>
         }
       }
     }
-    Log.e("Asset", "Asset createTracks finish, has track count: " + this.tracks);
+    Logger.d("Asset", "Asset createTracks finish, has track count: " + this.tracks);
   }
   
   protected CMTime getAudioDuration()
@@ -242,7 +241,7 @@ public abstract class Asset<Track extends AssetTrack>
     //   6: ifnull +15 -> 21
     //   9: aload_0
     //   10: getfield 77	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   13: invokevirtual 282	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
+    //   13: invokevirtual 281	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
     //   16: astore_1
     //   17: aload_0
     //   18: monitorexit
@@ -283,7 +282,7 @@ public abstract class Asset<Track extends AssetTrack>
     //   9: aload_0
     //   10: getfield 77	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
     //   13: iload_1
-    //   14: invokevirtual 185	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   14: invokevirtual 188	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   17: astore_2
     //   18: aload_0
     //   19: monitorexit
@@ -310,7 +309,6 @@ public abstract class Asset<Track extends AssetTrack>
   
   public List<Track> getTracks()
   {
-    Log.e("Asset", "getTracks finish, has track count: " + this.tracks);
     return this.tracks;
   }
   

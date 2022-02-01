@@ -1,23 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
 
-class augv
+public class augv
   implements DialogInterface.OnClickListener
 {
-  augv(augr paramaugr) {}
+  public augv(HotPicPageView paramHotPicPageView, auhb paramauhb, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
-    this.a.a.removeObserver(augr.a(this.a));
-    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
-    localIntent.addFlags(67108864);
-    this.a.a.getApplication().startActivity(localIntent);
     paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Auhb, this.jdField_a_of_type_Int);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
   }
 }
 

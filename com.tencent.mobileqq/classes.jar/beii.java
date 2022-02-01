@@ -1,67 +1,60 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
-class beii
-  extends beit
+public class beii
+  extends GestureDetector.SimpleOnGestureListener
 {
-  beii(beih parambeih) {}
+  private beii(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public void a()
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (beih.a(this.a) == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)beih.a(this.a).get())
+    float f2 = 0.0F;
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    float f3 = this.a.jdField_a_of_type_Float - paramFloat1 / this.a.c;
+    float f4 = this.a.b;
+    float f5 = paramFloat2 / this.a.c;
+    float f1;
+    if ((paramFloat1 < 0.0F) && (this.a.a(0.0F) >= 0.0F))
     {
-      if (localActivity != null) {
-        this.a.jdField_a_of_type_Beiq.a(localActivity);
+      f1 = 0.0F;
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c > this.a.getHeight()) {
+        break label247;
       }
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    int i = 100;
-    if (paramLong2 <= 0L)
-    {
-      QLog.e("NightModeLogic", 1, "mThemeDownloadListener onDownloadProgress dwProgressMax <= 0");
-      i = 4;
-    }
-    if (paramLong1 <= paramLong2) {
-      i = (int)(100.0D * paramLong1 / paramLong2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NightModeLogic", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", allSize:" + paramLong2 + ", percent:" + i);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("percent", i);
-    localBundle.putInt("start_status", 3);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_status", 2);
-    if (paramInt == 0) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
+      paramFloat1 = (this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c;
     }
     for (;;)
     {
-      return super.a(paramInt);
-      this.a.jdField_a_of_type_Beiq.b();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4100);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, -2, 0, localBundle));
+      this.a.jdField_a_of_type_Float = f1;
+      this.a.b = paramFloat1;
+      this.a.invalidate();
+      return true;
+      f1 = f3;
+      if (paramFloat1 <= 0.0F) {
+        break;
+      }
+      f1 = f3;
+      if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) > this.a.getWidth()) {
+        break;
+      }
+      f1 = this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      break;
+      label247:
+      if (paramFloat2 < 0.0F)
+      {
+        paramFloat1 = f2;
+        if (this.a.b(0.0F) >= 0.0F) {}
+      }
+      else if ((paramFloat2 > 0.0F) && (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) <= this.a.getHeight()))
+      {
+        paramFloat1 = this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      }
+      else
+      {
+        paramFloat1 = f4 - f5;
+      }
     }
-  }
-  
-  public boolean a(beio parambeio)
-  {
-    this.a.jdField_a_of_type_Beiq.a();
-    return false;
   }
 }
 

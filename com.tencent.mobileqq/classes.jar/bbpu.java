@@ -1,26 +1,55 @@
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-class bbpu
-  extends MqqHandler
+public class bbpu
+  implements INetEngine.INetEngineListener
 {
-  bbpu(bbpt parambbpt) {}
+  public bbpu(PtvTemplateManager.15 param15) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onResp(NetResp paramNetResp)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + paramNetResp.mHttpCode);
+    }
+    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
+    if (this.a.a.doodleUsable) {}
+    try
     {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a.mContext, 2131718205, 0).a();
+      npo.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
+      if (paramNetResp.mResult == 0)
+      {
+        Object localObject = this.a.this$0.a();
+        if (localObject != null)
+        {
+          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(193);
+          if (((PreDownloadController)localObject).isEnable()) {
+            ((PreDownloadController)localObject).preDownloadSuccess(this.a.a.doodleUrl, paramNetResp.mTotalFileLen);
+          }
+        }
+      }
       return;
     }
-    paramMessage = (String)paramMessage.obj;
-    bhmq.a(this.a.a.mContext, paramMessage);
-    QQToast.a(this.a.a.mContext, 2, anzj.a(2131698943), 0).a();
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localIOException.printStackTrace();
+        }
+      }
+    }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

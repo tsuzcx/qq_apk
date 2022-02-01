@@ -1,21 +1,47 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-final class aucx
-  implements View.OnClickListener
+class aucx
+  implements audf
 {
-  aucx(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  aucx(aucw paramaucw, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(Uri paramUri)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, false);
+    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
+    this.jdField_a_of_type_Aucw.a.finish();
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
+    try
+    {
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Aucw.a(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 4)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Aucw.b(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Throwable paramString1)
+    {
+      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 3) {
+      this.jdField_a_of_type_Aucw.a(paramString1, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

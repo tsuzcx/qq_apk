@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import admj;
+import acjc;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 

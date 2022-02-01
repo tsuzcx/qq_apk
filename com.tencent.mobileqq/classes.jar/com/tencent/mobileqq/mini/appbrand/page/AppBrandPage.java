@@ -13,8 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqrn;
-import bhtq;
+import apkw;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -49,6 +48,7 @@ import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.TabBarView;
 import com.tencent.mobileqq.mini.widget.ToastView;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -93,12 +93,12 @@ public class AppBrandPage
   
   private int getDefaultNaviBarHeight()
   {
-    return bhtq.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
+    return ViewUtils.dpToPx(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
   }
   
   private int getDefaultTabBarHeight()
   {
-    return bhtq.b(54.0F);
+    return ViewUtils.dpToPx(54.0F);
   }
   
   private String getLoadedUrl(String paramString1, String paramString2)
@@ -256,14 +256,14 @@ public class AppBrandPage
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, DisplayUtil.getRealHeight(getContext())));
     this.centerLayout = new FrameLayout(getContext());
-    this.centerLayout.setId(2131365056);
+    this.centerLayout.setId(2131365083);
     this.centerLayout.setBackgroundColor(-1);
     this.tabView = new TabBarView(getContext());
-    this.tabView.setId(2131378341);
+    this.tabView.setId(2131378108);
     this.tabView.setOnTabItemClickListener(this.appBrandPageContainer);
     this.tabView.setVisibility(8);
     this.navBar = new NavigationBar(getContext());
-    this.navBar.setId(2131371669);
+    this.navBar.setId(2131371637);
     return localRelativeLayout;
   }
   
@@ -519,7 +519,7 @@ public class AppBrandPage
         {
           paramString1 = (AppBrandUI)this.appBrandRuntime.activity;
           localObject2 = paramString1.getFakeBrandUI().getAppUIProxy();
-          setServiceInfo((aqrn)localObject2);
+          setServiceInfo((apkw)localObject2);
           if ((localObject2 instanceof AppUIProxy)) {
             setPostTab(((AppUIProxy)localObject2).mPostTable);
           }

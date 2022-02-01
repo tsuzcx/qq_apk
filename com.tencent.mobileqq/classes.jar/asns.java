@@ -1,19 +1,11 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
 class asns
-  implements TextWatcher
 {
-  asns(asnp paramasnp) {}
+  int jdField_a_of_type_Int = 201;
+  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    this.a.a(paramEditable.toString());
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  asns(asnr paramasnr) {}
 }
 
 

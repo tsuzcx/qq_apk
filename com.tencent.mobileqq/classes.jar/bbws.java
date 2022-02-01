@@ -1,8 +1,24 @@
-import android.view.View;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
-public abstract interface bbws
+public class bbws
 {
-  public abstract void a(View paramView, int paramInt);
+  public static String a(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
+    }
+  }
+  
+  public static String b(Context paramContext)
+  {
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.getShortVideoSoLibName();
+    return paramContext + str;
+  }
 }
 
 

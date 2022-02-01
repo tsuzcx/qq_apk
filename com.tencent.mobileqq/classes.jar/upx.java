@@ -1,17 +1,22 @@
-import android.view.View;
+import UserGrowth.stSchema;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-final class upx
-  implements bliz
+public class upx
+  extends upq
 {
-  upx(bliz parambliz, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public upx(ups paramups)
   {
-    uqf.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
-    if (this.jdField_a_of_type_Bliz != null) {
-      this.jdField_a_of_type_Bliz.OnClick(paramView, paramInt);
+    super(paramups);
+  }
+  
+  public boolean a(ups paramups)
+  {
+    MiniAppLauncher.MiniAppLaunchListener localMiniAppLaunchListener = paramups.a();
+    ukw.a(paramups.a(), paramups.a().miniAppSchema, new upy(this, localMiniAppLaunchListener));
+    if (paramups.a() != null) {
+      paramups.a().b();
     }
-    this.jdField_a_of_type_Blir.dismiss();
+    return true;
   }
 }
 

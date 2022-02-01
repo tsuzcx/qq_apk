@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
-public class afyl
-  implements DialogInterface.OnClickListener
+class afyl
+  extends aexg
 {
-  public afyl(TroopTransferActivity paramTroopTransferActivity, bhpc parambhpc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bhpc.cancel();
-  }
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import amgx;
-import amgz;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class EncodeVideoTask$2$2
+class EncodeVideoTask$2$2
   implements Runnable
 {
-  public EncodeVideoTask$2$2(amgz paramamgz, int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong) {}
+  EncodeVideoTask$2$2(EncodeVideoTask.2 param2, int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amgz.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Long);
+    this.this$1.this$0.handleReportEvent(this.val$errorCode, this.val$publishVideoEntry, this.val$startMergeTime);
   }
 }
 

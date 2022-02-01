@@ -17,7 +17,7 @@ final class ApolloUtil$2
     {
       localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(20);
       if (localObject != null) {
-        ((QQMessageFacade)localObject).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+        ((QQMessageFacade)localObject).updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
       }
     }
   }

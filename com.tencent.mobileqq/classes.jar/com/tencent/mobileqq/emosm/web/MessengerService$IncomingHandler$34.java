@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.web;
 
-import amsx;
+import alnr;
+import amir;
 import android.os.Bundle;
-import annx;
-import asiw;
+import arcu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameRoamData;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$34
   implements Runnable
 {
-  public MessengerService$IncomingHandler$34(asiw paramasiw, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$34(arcu paramarcu, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -39,10 +39,10 @@ public class MessengerService$IncomingHandler$34
         if (QLog.isColorLevel()) {
           QLog.d("MessengerService$IncomingHandler", 2, "IPC_APOLLO_UPDATE_GAME_LIST, update game list");
         }
-        localObject2 = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-        ((annx)localObject2).c();
-        ((annx)localObject2).b((ArrayList)localObject1);
-        ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).e();
+        localObject2 = (amir)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+        ((amir)localObject2).c();
+        ((amir)localObject2).b((ArrayList)localObject1);
+        ((alnr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).e();
         localObject1 = new Bundle();
         ((Bundle)localObject1).putInt("result", 0);
         this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
@@ -62,7 +62,7 @@ public class MessengerService$IncomingHandler$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.34
  * JD-Core Version:    0.7.0.1
  */

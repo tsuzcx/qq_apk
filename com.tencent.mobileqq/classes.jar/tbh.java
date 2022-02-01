@@ -1,62 +1,25 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tbh
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Map<Character, Float> jdField_a_of_type_JavaUtilMap = new HashMap(256);
-  private float b;
+  public tbh(ChannelTopPositionView paramChannelTopPositionView) {}
   
-  public tbh(Paint paramPaint)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
-    a();
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  float a(char paramChar)
-  {
-    if (paramChar == 0) {
-      return 0.0F;
+    if (QLog.isColorLevel()) {
+      QLog.i("ChannelTopPositionView", 2, "onclick");
     }
-    Float localFloat = (Float)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar));
-    if (localFloat != null) {
-      return localFloat.floatValue();
+    if (ChannelTopPositionView.a(this.a) != null) {
+      PublicFragmentActivity.a(ChannelTopPositionView.a(this.a), ReadInJoySelectPositionFragment.class);
     }
-    float f = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(Character.toString(paramChar));
-    this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramChar), Float.valueOf(f));
-    return f;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.jdField_a_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top);
-    this.b = (-localFontMetrics.top);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public float b()
-  {
-    return this.b;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

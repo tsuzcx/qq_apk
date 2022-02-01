@@ -2,13 +2,12 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import blmk;
 
 class HorizontalListView$PerformClick
-  extends blmk
+  extends HorizontalListView.WindowRunnnable
   implements Runnable
 {
-  int a;
+  int mClickMotionPosition;
   
   private HorizontalListView$PerformClick(HorizontalListView paramHorizontalListView)
   {
@@ -31,8 +30,8 @@ class HorizontalListView$PerformClick
           return;
         } while (this.this$0.mDataChanged);
         localListAdapter = this.this$0.mAdapter;
-        i = this.a;
-      } while ((localListAdapter == null) || (i == -1) || (i >= localListAdapter.getCount()) || (!a()));
+        i = this.mClickMotionPosition;
+      } while ((localListAdapter == null) || (i == -1) || (i >= localListAdapter.getCount()) || (!sameWindow()));
       localView = this.this$0.getChildAt(i - this.this$0.getFirstVisiblePosition());
     } while (localView == null);
     this.this$0.performItemClick(localView, i, localListAdapter.getItemId(i));
@@ -40,7 +39,7 @@ class HorizontalListView$PerformClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.PerformClick
  * JD-Core Version:    0.7.0.1
  */

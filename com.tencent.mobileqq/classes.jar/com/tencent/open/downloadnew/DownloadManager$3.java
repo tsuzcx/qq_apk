@@ -1,11 +1,11 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bjjo;
-import bjva;
-import bjwq;
-import bjyc;
-import bjyd;
+import bhpc;
+import biam;
+import biby;
+import bidk;
+import bidl;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,28 +14,28 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManager$3
   implements Runnable
 {
-  public DownloadManager$3(bjwq parambjwq) {}
+  public DownloadManager$3(biby parambiby) {}
   
   public void run()
   {
-    Object localObject1 = bjva.b(bjjo.a().a());
+    Object localObject1 = biam.b(bhpc.a().a());
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      localObject1 = bjyc.a().a();
+      localObject1 = bidk.a().a();
       if (localObject1 != null)
       {
         Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
         while (localIterator.hasNext())
         {
-          bjyd localbjyd = (bjyd)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localbjyd != null)
+          bidl localbidl = (bidl)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localbidl != null)
           {
-            Object localObject2 = this.this$0.a(localbjyd.b);
+            Object localObject2 = this.this$0.a(localbidl.b);
             if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).d)))
             {
               localObject2 = this.this$0.a(((DownloadInfo)localObject2).d);
-              if ((localObject2 != null) && (4 != bjwq.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                bjyc.a().a(localbjyd.a);
+              if ((localObject2 != null) && (4 != biby.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                bidk.a().a(localbidl.a);
               }
             }
           }

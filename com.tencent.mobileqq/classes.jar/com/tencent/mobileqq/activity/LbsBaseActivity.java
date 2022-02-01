@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aevg;
-import aevh;
-import aevi;
+import adoi;
+import adoj;
+import adok;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import axws;
-import bhgq;
+import awka;
+import bfqb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -24,7 +24,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return axws.a(getAppInterface().getAccount());
+    return awka.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -34,15 +34,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new aevg(this, paramRunnable);
-    this.b = bhgq.a(this, 2131691781, a(), 2131691642, 2131691639, new aevh(this), new aevi(this));
+    paramRunnable = new adoi(this, paramRunnable);
+    this.b = bfqb.a(this, 2131691827, a(), 2131691686, 2131691683, new adoj(this), new adok(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131691779;
+    return 2131691825;
   }
   
   public void a()
@@ -64,15 +64,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	adkm:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	achg:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	adkm:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	achg:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	adkm:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	achg:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -105,8 +105,9 @@ public class LbsBaseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -139,7 +140,7 @@ public class LbsBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

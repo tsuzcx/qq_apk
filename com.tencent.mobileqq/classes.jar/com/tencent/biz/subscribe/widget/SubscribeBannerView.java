@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaos;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +12,12 @@ import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
+import zln;
 
 public class SubscribeBannerView
   extends BaseWidgetView
 {
-  private static int jdField_a_of_type_Int = ImmersiveUtils.a(20.0F);
+  private static int c = ImmersiveUtils.a(20.0F);
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private SubscribeBannerView.BannerAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter;
   private SubscribeBannerView.DotsIndicator jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator;
@@ -50,19 +50,16 @@ public class SubscribeBannerView
     if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter != null) {
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter.a().clear();
     }
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(null);
-    }
   }
   
   public void a(Context paramContext, View paramView)
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = new ViewPager(getContext());
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    paramContext.bottomMargin = jdField_a_of_type_Int;
+    paramContext.bottomMargin = c;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aaos(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new zln(this));
     ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     a((FrameLayout)paramView);
   }
@@ -81,7 +78,7 @@ public class SubscribeBannerView
   {
     if (getLayoutParams() != null)
     {
-      getLayoutParams().height = (jdField_a_of_type_Int + paramInt);
+      getLayoutParams().height = (c + paramInt);
       requestLayout();
     }
   }

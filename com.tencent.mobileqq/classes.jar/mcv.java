@@ -1,15 +1,21 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mcv
-  extends mcx
+  implements View.OnClickListener
 {
-  public int a = 0;
-  public int b = -1;
+  public mcv(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public mcv(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.a = paramInt;
+    QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.e();
+    this.a.a.a().aq = true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

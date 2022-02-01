@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-
 public class anrj
-  implements DialogInterface.OnClickListener
 {
-  public anrj(ApolloPanel paramApolloPanel) {}
+  private Class jdField_a_of_type_JavaLangClass;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anrj(String paramString, Class paramClass)
   {
-    this.a.n();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  public Class a()
+  {
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,26 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PictureUrl;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class bnan
-  implements Parcelable.Creator<PictureUrl>
+final class bnan
+  implements EIPCResultCallback
 {
-  public PictureUrl a(Parcel paramParcel)
-  {
-    PictureUrl localPictureUrl = new PictureUrl();
-    localPictureUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPictureUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    localPictureUrl.jdField_b_of_type_Int = paramParcel.readInt();
-    localPictureUrl.c = paramParcel.readInt();
-    localPictureUrl.jdField_a_of_type_Float = paramParcel.readFloat();
-    localPictureUrl.jdField_b_of_type_Float = paramParcel.readFloat();
-    localPictureUrl.d = paramParcel.readInt();
-    return localPictureUrl;
-  }
+  bnan(bnpz parambnpz) {}
   
-  public PictureUrl[] a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new PictureUrl[paramInt];
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramEIPCResult != null)
+    {
+      bool1 = bool2;
+      if (paramEIPCResult.data != null) {
+        bool1 = paramEIPCResult.data.getBoolean("key_result");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcController", 2, "cancelSendVideoOrPhoto result:" + bool1 + ", uinseq:" + this.a.a + ", status:" + this.a.b + ", progress:" + this.a.c);
+    }
   }
 }
 

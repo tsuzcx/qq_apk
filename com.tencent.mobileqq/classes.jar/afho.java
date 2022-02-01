@@ -1,34 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class afho
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public afho(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public afho(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.a.a(this.a.getString(2131690709));
-        this.a.a.d(2130849677);
-        this.a.a.b(false);
-      }
-      sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.a == null) || (!this.a.a.isShowing()));
-    this.a.a.cancel();
-    this.a.a.a(this.a.getString(2131690711));
-    this.a.a.c(true);
-    this.a.a.a(false);
-    this.a.a.b(true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    }
   }
 }
 

@@ -1,12 +1,8 @@
-import java.util.Comparator;
+import java.util.List;
 
-public final class axlk
-  implements Comparator<axlp>
+public abstract interface axlk
 {
-  public int a(axlp paramaxlp1, axlp paramaxlp2)
-  {
-    return paramaxlp1.a - paramaxlp2.a;
-  }
+  public abstract void a(List<axos> paramList);
 }
 
 

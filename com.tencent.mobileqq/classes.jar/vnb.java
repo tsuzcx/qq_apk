@@ -1,12 +1,6 @@
-class vnb
-  implements vno
+public abstract interface vnb
 {
-  vnb(vmw paramvmw) {}
-  
-  public void a()
-  {
-    vmw.a(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 

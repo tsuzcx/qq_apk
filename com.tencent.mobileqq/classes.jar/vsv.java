@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import qqcircle.TaskCenterReader.TaskListRsp;
-
-class vsv
-  implements aaav<TaskCenterReader.TaskListRsp>
+public abstract class vsv
 {
-  vsv(vsu paramvsu) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
-  {
-    if (paramTaskListRsp != null) {
-      vqo.a().a((ArrayList)paramTaskListRsp.taskRecords.get());
-    }
-  }
+  public abstract void a();
 }
 
 

@@ -1,28 +1,31 @@
-public class appu
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+class appu
+  implements aozx
 {
-  public int a;
-  public long a;
-  public beum a;
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "";
-  public String d;
+  appu(appt paramappt) {}
   
-  public appu()
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    paramString2 = (List)appt.a(this.a).get(paramString1);
+    if ((paramString2 != null) && (paramString2.size() > 0))
+    {
+      paramString2 = paramString2.iterator();
+      while (paramString2.hasNext())
+      {
+        appx localappx = (appx)paramString2.next();
+        if ((localappx != null) && (localappx.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localappx.jdField_a_of_type_Aqoi != null))
+        {
+          localappx.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
+          localappx.jdField_a_of_type_Aqoi.c(true);
+        }
+      }
+    }
+    appt.a(this.a).remove(paramString1);
   }
 }
 

@@ -1,114 +1,86 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class wge
-  extends wga
+  extends vqm
 {
-  public wge(int paramInt, wgu paramwgu)
+  public String a;
+  public ArrayList<StoryVideoItem> a;
+  public boolean a;
+  public String c;
+  
+  public wge(qqstory_service.RspFriendStoryFeedVideoList paramRspFriendStoryFeedVideoList)
   {
-    super(2);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = new wgz();
-    ((wgz)localObject).a(paramInt);
-    ((wgz)localObject).a(paramwgu);
-    a((wgv)localObject);
-    paramwgu = new wgy();
-    localObject = ((wfv)wth.a(30)).c();
-    if (localObject != null)
+    super(paramRspFriendStoryFeedVideoList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
+    this.c = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
+    if (paramRspFriendStoryFeedVideoList.is_end.get() == 1) {}
+    Object localObject1;
+    Object localObject2;
+    for (;;)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      this.jdField_a_of_type_Boolean = bool;
+      if (!paramRspFriendStoryFeedVideoList.share_group_video_info_list.has()) {
+        break;
+      }
+      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.share_group_video_info_list.get().iterator();
+      while (paramRspFriendStoryFeedVideoList.hasNext())
       {
-        whf localwhf = (whf)((Iterator)localObject).next();
-        switch (localwhf.a)
+        localObject1 = (qqstory_struct.ShareGroupVideoInfo)paramRspFriendStoryFeedVideoList.next();
+        localObject2 = new StoryVideoItem();
+        ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.ShareGroupVideoInfo)localObject1);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      }
+      bool = false;
+    }
+    if (paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.has())
+    {
+      localObject1 = (vvj)vux.a(2);
+      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.get().iterator();
+      while (paramRspFriendStoryFeedVideoList.hasNext())
+      {
+        localObject2 = (qqstory_struct.MultiRecommendItem)paramRspFriendStoryFeedVideoList.next();
+        if (((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.has())
         {
-        default: 
-          break;
-        case 2: 
-          paramwgu.a(localwhf);
-          break;
-        case 4: 
-          paramwgu.b(localwhf);
-          break;
-        case 3: 
-          paramwgu.c(localwhf);
+          String str = ((qqstory_struct.MultiRecommendItem)localObject2).feed_id.get().toStringUtf8();
+          Iterator localIterator = ((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.get().iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject3 = (qqstory_struct.FeedVideoInfo)localIterator.next();
+            StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+            localStoryVideoItem.convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject3);
+            localStoryVideoItem.mAttachedFeedId = str;
+            this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
+            localObject3 = new QQUserUIItem();
+            ((QQUserUIItem)localObject3).convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
+            localObject3 = ((vvj)localObject1).a((QQUserUIItem)localObject3);
+            localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject3).uid;
+            localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject3).getDisplayName();
+          }
         }
       }
     }
-    paramwgu.a(new whd());
-    a(paramwgu);
-  }
-  
-  private static boolean a(String paramString1, String paramString2)
-  {
-    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
-  }
-  
-  public static boolean a(@NonNull wgg paramwgg, int paramInt)
-  {
-    Object localObject = paramwgg.a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.feed_video_info_list.get().iterator();
+    while (paramRspFriendStoryFeedVideoList.hasNext())
     {
-      AddressItem localAddressItem = ((wgh)((List)localObject).get(0)).a;
-      localObject = ((wgh)((List)localObject).get(((List)localObject).size() - 1)).a;
-      if ((localAddressItem == null) || (localObject == null))
-      {
-        yuk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramwgg);
-        paramwgg.b = "";
-        return false;
-      }
-      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
-      {
-        paramwgg.b = localAddressItem.building;
-        return true;
-      }
-      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
-      {
-        paramwgg.b = localAddressItem.district;
-        return true;
-      }
-      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
-      {
-        paramwgg.b = localAddressItem.city;
-        return true;
-      }
-      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
-      {
-        paramwgg.b = localAddressItem.province;
-        return true;
-      }
-      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
-      {
-        paramwgg.b = localAddressItem.country;
-        return true;
-      }
+      localObject1 = (qqstory_struct.FeedVideoInfo)paramRspFriendStoryFeedVideoList.next();
+      localObject2 = new StoryVideoItem();
+      ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject1);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
     }
-    paramwgg.b = "";
-    return false;
   }
-  
-  protected List<wgh> a()
-  {
-    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = super.a().iterator();
-    while (localIterator.hasNext())
-    {
-      wgh localwgh = (wgh)localIterator.next();
-      if (localwgh.a != null) {
-        localArrayList.add(localwgh);
-      }
-    }
-    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
-    return localArrayList;
-  }
-  
-  protected void c(List<wgg> paramList) {}
 }
 
 

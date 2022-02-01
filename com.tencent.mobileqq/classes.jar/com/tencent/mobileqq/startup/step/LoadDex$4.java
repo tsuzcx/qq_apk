@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdjy;
-import bdna;
+import bccs;
+import bcfl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,8 +14,8 @@ class LoadDex$4
   {
     try
     {
-      QQAppInterface.a().a();
-      bdjy.b(30, this.this$0.mDirector, null).step();
+      QQAppInterface.getBatteryStats().a();
+      bccs.b(30, this.this$0.mDirector, null).step();
       return;
     }
     catch (Throwable localThrowable)

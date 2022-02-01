@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
 
-class awpg
-  implements DialogInterface.OnClickListener
+public class awpg
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  awpg(awpf paramawpf, bhpc parambhpc) {}
+  public awpg(SmallVideoFragment paramSmallVideoFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
+      this.a.a();
+    }
   }
 }
 

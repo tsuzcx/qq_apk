@@ -1,8 +1,21 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public abstract interface bimu
+public class bimu
+  implements bilx
 {
-  public abstract void a(Bundle paramBundle);
+  public bimu(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  
+  public void a(binj parambinj)
+  {
+    if (parambinj != null)
+    {
+      parambinj = parambinj.b;
+      if (!TextUtils.isEmpty(parambinj)) {
+        QidianProfileCardActivity.a(this.a, parambinj);
+      }
+    }
+  }
 }
 
 

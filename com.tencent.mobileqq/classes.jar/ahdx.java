@@ -1,24 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import java.util.List;
 
-public class ahdx
-  extends aggl
+class ahdx
+  extends amrj
 {
-  float jdField_a_of_type_Float;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  ImageView b;
-  public View c;
-  ImageView c;
+  ahdx(ahdt paramahdt) {}
   
-  public ahdx(ahdk paramahdk) {}
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a = argw.a(this.a.app).a(this.a.app, this.a.getCurFriendUin());
+      this.a.a(this.a.a);
+      if ((this.a.a != null) && (!this.a.a.isEmpty())) {
+        this.a.a(false);
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

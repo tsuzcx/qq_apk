@@ -1,36 +1,63 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.CameraFocusView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 
-class bodx
-  extends bbft
+public class bodx
 {
-  public bodx(bodw parambodw, CameraFocusView paramCameraFocusView)
+  private static float jdField_a_of_type_Float;
+  public static int a;
+  private static Context jdField_a_of_type_AndroidContentContext = ;
+  private static float b;
+  public static int b;
+  private static float c = 1.34F;
+  
+  static
   {
-    super(paramCameraFocusView);
+    jdField_a_of_type_Int = 320;
+    jdField_b_of_type_Int = 480;
+    WindowManager localWindowManager = (WindowManager)jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    jdField_a_of_type_Int = localWindowManager.getDefaultDisplay().getWidth();
+    jdField_b_of_type_Int = localWindowManager.getDefaultDisplay().getHeight();
+    jdField_b_of_type_Float = 1.1F;
   }
   
-  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  public static int a(float paramFloat)
   {
-    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
+    if (jdField_a_of_type_Float == 0.0F) {
+      jdField_a_of_type_Float = jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenUtil", 2, "[@] ScreenUtil.dip2px DENSITY = " + jdField_a_of_type_Float);
+    }
+    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  @TargetApi(13)
+  public static int a(Context paramContext)
   {
-    if (QLog.isColorLevel())
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    Point localPoint;
+    if (Build.VERSION.SDK_INT >= 13)
     {
-      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
-      QLog.d("GLGestureListener", 2, "view : (" + bodw.a(this.a).getLeft() + "," + bodw.a(this.a).getRight() + "," + bodw.a(this.a).getTop() + "," + bodw.a(this.a).getBottom() + ")");
+      localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
     }
-    if ((paramMotionEvent.getX() > bodw.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bodw.a(this.a).getTop()) || (paramMotionEvent.getY() > bodw.a(this.a).getBottom()))
-    {
-      QLog.d("GLGestureListener", 2, "touch out");
-      return false;
+    for (jdField_b_of_type_Int = localPoint.y;; jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight()) {
+      return jdField_b_of_type_Int;
     }
-    QLog.d("GLGestureListener", 2, "touch in");
-    return super.onTouchEvent(paramMotionEvent, paramBoolean);
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2)
+  {
+    float f = paramInt2 * 1.0F / paramInt1;
+    return (f > jdField_b_of_type_Float) && (f < c);
   }
 }
 

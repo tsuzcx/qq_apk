@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akyh;
+import ajvy;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 public class RedPacketEmojiFragment$4$1
   implements Runnable
 {
-  public RedPacketEmojiFragment$4$1(akyh paramakyh, int paramInt, PreloadManager.PathResult paramPathResult) {}
+  public RedPacketEmojiFragment$4$1(ajvy paramajvy, int paramInt, PreloadManager.PathResult paramPathResult) {}
   
   public void run()
   {
@@ -16,11 +16,11 @@ public class RedPacketEmojiFragment$4$1
     }
     if (this.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Akyh.a.b = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath;
-      this.jdField_a_of_type_Akyh.a.a();
+      this.jdField_a_of_type_Ajvy.a.b = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath;
+      this.jdField_a_of_type_Ajvy.a.a();
       return;
     }
-    this.jdField_a_of_type_Akyh.a.b();
+    this.jdField_a_of_type_Ajvy.a.b();
   }
 }
 

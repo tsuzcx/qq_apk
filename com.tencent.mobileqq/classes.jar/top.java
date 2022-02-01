@@ -1,38 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.18.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class top
-  implements pye
+  implements tox
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public top(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return pug.a(paramBaseArticleInfo);
-  }
+  public void a() {}
   
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  public void a(String paramString)
   {
-    paramContainer = paramContainer.getVirtualView();
-    if ((paramppu != null) && (paramppu.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramppu.a())))
-    {
-      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
-      if ((paramContainer != null) && ((paramContainer instanceof ttn))) {
-        ((ttn)paramContainer).a(paramppu);
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      ThreadManager.post(new ViolaBaseView.18.1(this, paramString), 8, null, true);
+    }
   }
 }
 

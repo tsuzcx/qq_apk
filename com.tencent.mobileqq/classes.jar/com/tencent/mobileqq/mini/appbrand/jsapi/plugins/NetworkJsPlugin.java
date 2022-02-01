@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
@@ -42,7 +42,7 @@ public class NetworkJsPlugin
   
   private String getCurrentType()
   {
-    switch (bhnv.a(BaseApplication.getContext().getApplicationContext()))
+    switch (NetworkUtil.getSystemNetwork(BaseApplication.getContext().getApplicationContext()))
     {
     default: 
       return "unknown";

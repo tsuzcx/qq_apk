@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import odn;
+import ofa;
 
 public class VideoPlayCountHandler$1
   implements Runnable
 {
-  public VideoPlayCountHandler$1(odn paramodn, String paramString1, String paramString2) {}
+  public VideoPlayCountHandler$1(ofa paramofa, String paramString1, String paramString2) {}
   
   public void run()
   {

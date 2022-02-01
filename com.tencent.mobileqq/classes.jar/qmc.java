@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
 
-class qmc
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/data/PTSLiteDataFactory;", "", "()V", "Companion", "IPTSLiteDataJson", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qmc
 {
-  qmc(qmb paramqmb) {}
+  private static final Map<Integer, qme> a;
+  public static final qmd a;
   
-  public void onClick(View paramView)
+  static
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_Qmd = new qmd(null);
+    jdField_a_of_type_JavaUtilMap = (Map)new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(58), new qma());
   }
 }
 

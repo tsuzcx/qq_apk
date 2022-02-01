@@ -1,36 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleProgressLoadingView;
-import com.tencent.biz.qqcircle.widgets.QCircleProgressLoadingView.ScaleXAnimationListener.1;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class wbg
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  private WeakReference<QCircleProgressLoadingView> a;
+  public int a;
+  public long a;
+  public String a;
   
-  public wbg(QCircleProgressLoadingView paramQCircleProgressLoadingView)
+  public wbg(wbd paramwbd, String paramString)
   {
-    this.a = new WeakReference(paramQCircleProgressLoadingView);
+    this.jdField_a_of_type_JavaLangString = "";
+    paramwbd = ((vuk)vux.a(19)).a(paramString);
+    if (paramwbd != null) {
+      a(paramwbd);
+    }
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
   {
-    if (this.a != null)
-    {
-      QCircleProgressLoadingView localQCircleProgressLoadingView = (QCircleProgressLoadingView)this.a.get();
-      if (localQCircleProgressLoadingView != null)
-      {
-        View localView = localQCircleProgressLoadingView.a();
-        if ((localView != null) && (localView.getLayoutParams() != null))
-        {
-          localView.getLayoutParams().width = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-          QCircleProgressLoadingView.a(localQCircleProgressLoadingView).post(new QCircleProgressLoadingView.ScaleXAnimationListener.1(this, localView));
-        }
-      }
-    }
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 

@@ -1,26 +1,58 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import android.graphics.Bitmap;
+import com.qflutter.qqface.data.QQFaceNativeData;
+import com.qflutter.qqface.data.QQFaceParam;
+import com.qflutter.qqface.loader.QQFaceInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 
-class atkj
-  implements aumz
+public class atkj
+  implements QQFaceInterface
 {
-  atkj(atkg paramatkg, WeiYunFileInfo paramWeiYunFileInfo) {}
+  private atkl jdField_a_of_type_Atkl = new atkl(BaseApplicationImpl.getContext());
+  private atko jdField_a_of_type_Atko = new atkk(this);
   
-  public void a()
+  public atkj()
   {
-    FileManagerEntity localFileManagerEntity = aunj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Atkg.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Atkg.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Atkg.a.a(localFileManagerEntity);
+    this.jdField_a_of_type_Atkl.a(this.jdField_a_of_type_Atko);
   }
   
-  public void b() {}
+  public void clearCache()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutterFace", 2, "clearCache");
+    }
+    this.jdField_a_of_type_Atkl.a();
+  }
+  
+  public QQFaceNativeData getFaceData(QQFaceParam paramQQFaceParam)
+  {
+    paramQQFaceParam = new atkh(paramQQFaceParam.faceType, paramQQFaceParam.account, paramQQFaceParam.faceShape);
+    paramQQFaceParam = this.jdField_a_of_type_Atkl.a(paramQQFaceParam);
+    QQFaceNativeData localQQFaceNativeData = new QQFaceNativeData();
+    localQQFaceNativeData.setBitmap((Bitmap)paramQQFaceParam.first);
+    localQQFaceNativeData.isDefaultFace = ((Boolean)paramQQFaceParam.second).booleanValue();
+    return localQQFaceNativeData;
+  }
+  
+  public String getLibPath()
+  {
+    String str = atjn.a("libqflutter-resource-loader.so");
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutterFace", 2, "getLibPath: " + str + ", isExist: " + FileUtil.isFileExists(str));
+    }
+    return str;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Atkl.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkj
  * JD-Core Version:    0.7.0.1
  */

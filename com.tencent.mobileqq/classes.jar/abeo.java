@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class abeo
-  extends apck
+public class abeo
+  implements abfi
 {
-  abeo(aben paramaben, String paramString)
-  {
-    super(paramString);
-  }
+  public abeo(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
-    }
-    abem.a(this.a.jdField_a_of_type_Abem, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
   }
 }
 

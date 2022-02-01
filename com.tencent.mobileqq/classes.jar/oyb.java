@@ -1,39 +1,9 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class oyb
-  implements INetInfoHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$OnLinkDeleteListener;", "", "onLinkDelete", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface oyb
 {
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(oxz.a());
-    oxz.a();
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(oxz.a());
-    oxz.a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
-    bjwq.a().a("101480433");
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
-    bjwq.a().a("101480433");
-  }
+  public abstract void c();
 }
 
 

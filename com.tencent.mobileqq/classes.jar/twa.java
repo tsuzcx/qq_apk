@@ -1,36 +1,20 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide;
+import kotlin.Metadata;
 
-class twa
-  extends tvm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "clickPos", "", "onAdGuideClick", "com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdVideo185UIStateUtil$onProgressUpdate$2$1"}, k=3, mv={1, 1, 16})
+final class twa
+  implements tzl
 {
-  twa(tvz paramtvz) {}
+  twa(ReadInJoyAdVideoGuide paramReadInJoyAdVideoGuide, AdvertisementInfo paramAdvertisementInfo, rti paramrti, sdg paramsdg) {}
   
-  protected void a(boolean paramBoolean, List<tvr> paramList)
+  public final void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendList isSuccess: " + paramBoolean + " | data: " + paramList + " | isShowRecommend: " + this.a.jdField_a_of_type_Boolean);
+    paramView = this.jdField_a_of_type_Rti;
+    if (paramView != null) {
+      paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Sdg.a);
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Boolean))
-    {
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label145;
-      }
-      this.a.a(paramList);
-      paramList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((paramList != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
-        paramList.sendEmptyMessage(1004);
-      }
-    }
-    label145:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SubscriptObserver", 2, "onGetRecommendList data is null or empty");
   }
 }
 

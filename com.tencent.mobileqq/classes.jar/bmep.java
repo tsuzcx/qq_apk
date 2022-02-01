@@ -1,34 +1,48 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll;
 
-class bmep
-  implements ServiceConnection
+public class bmep
+  extends Handler
 {
-  bmep(bmen parambmen) {}
+  int jdField_a_of_type_Int;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bmep(LyricViewScroll paramLyricViewScroll) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
+    switch (paramMessage.what)
+    {
     }
-    this.a.jdField_a_of_type_Loc = lod.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Loc != null) && (this.a.jdField_a_of_type_Bmeo != null)) {
-      this.a.jdField_a_of_type_Bmeo.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_Int != this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY()) {
+          break;
+        }
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
+          LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
+        }
+        Log.d("LyricViewScroll", "fling stop");
+        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll, false);
+        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(2, this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Int);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = false;
+      } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
+      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a();
       return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
-    }
-    this.a.jdField_a_of_type_Loc = null;
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY();
+      if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
+        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
+      }
+      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(1, 100L);
+      return;
+      this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = true;
+    } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
+    LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b();
   }
 }
 

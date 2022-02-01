@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import beve;
-
-public class MultiMsgUpProcessor$2
+class MultiMsgUpProcessor$2
   implements Runnable
 {
-  public MultiMsgUpProcessor$2(beve parambeve) {}
+  MultiMsgUpProcessor$2(MultiMsgUpProcessor paramMultiMsgUpProcessor) {}
   
   public void run()
   {
-    this.this$0.aN_();
+    this.this$0.start();
   }
 }
 

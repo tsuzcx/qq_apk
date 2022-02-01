@@ -1,45 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-class tdg
-  implements VRefreshLayout.onRefreshStateChangeListener
+public class tdg
+  implements tdh
 {
-  tdg(tdf paramtdf, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onRefreshMove(int paramInt)
+  public tdg(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
-    if ((paramInt <= i) && (!tdf.a(this.jdField_a_of_type_Tdf)))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
-    }
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void onStateEnd()
+  public void a(int paramInt1, int paramInt2)
   {
-    tdf.a(this.jdField_a_of_type_Tdf, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
-  }
-  
-  public void onStateFinish(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
-  }
-  
-  public void onStateIdel()
-  {
-    tdf.a(this.jdField_a_of_type_Tdf, false);
-  }
-  
-  public void onStatePulling() {}
-  
-  public void onStateRefreshing()
-  {
-    tdf.a(this.jdField_a_of_type_Tdf, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) + this.jdField_a_of_type_Int);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) + this.b);
   }
 }
 

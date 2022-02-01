@@ -1,22 +1,93 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupExtraEntity;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.io.File;
+import java.util.List;
 
-class avuc
-  implements Animation.AnimationListener
+public class avuc
 {
-  avuc(avub paramavub) {}
+  private avud a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public avuc(String paramString)
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
+    this.a = new avud(paramString);
+  }
+  
+  public static void a(String paramString)
+  {
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (Build.VERSION.SDK_INT >= 16)) {
+      SQLiteDatabase.deleteDatabase(paramString);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return this.a.a("msg");
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String a()
+  {
+    return this.a.name;
+  }
+  
+  public List<MsgBackupExtraEntity> a()
+  {
+    return this.a.a();
+  }
+  
+  public List<MsgBackupResEntity> a(int paramInt1, int paramInt2)
+  {
+    return this.a.b(paramInt1, paramInt2);
+  }
+  
+  public List<MsgBackupMsgEntity> a(long paramLong, int paramInt)
+  {
+    return this.a.a(paramLong, paramInt);
+  }
+  
+  public List<MsgBackupResEntity> a(long paramLong1, long paramLong2)
+  {
+    return this.a.a(paramLong1, paramLong2);
+  }
+  
+  public void a()
+  {
+    if (this.a.isOpen()) {
+      this.a.close();
+    }
+  }
+  
+  public void a(List<MsgBackupMsgEntity> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    this.a.b(paramList);
+  }
+  
+  public int b()
+  {
+    return this.a.b("res");
+  }
+  
+  public void b(List<MsgBackupResEntity> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    this.a.c(paramList);
+  }
+  
+  public void c(List<MsgBackupExtraEntity> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    this.a.a(paramList);
+  }
 }
 
 

@@ -1,26 +1,38 @@
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.IdiomRedPackMatchReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajuq
-  extends anuw
+class ajuq
+  implements akha
 {
-  private ajuq(FriendFragment paramFriendFragment) {}
+  ajuq(ajul paramajul, ajuk paramajuk, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void a(String paramString)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    int i = 1;
+    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
+    localIdiomRedPackMatchReq.grabUin = ajul.a(this.jdField_a_of_type_Ajul).getLongAccountUin();
+    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Ajuk.jdField_a_of_type_JavaLangString;
+    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
+    localIdiomRedPackMatchReq.hbIdiom = ajul.a(this.jdField_a_of_type_Ajul, this.jdField_a_of_type_Ajuk);
+    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Ajuk.c);
+    localIdiomRedPackMatchReq.sKey = paramString;
+    localIdiomRedPackMatchReq.appid = AppSetting.a();
+    localIdiomRedPackMatchReq.subchannel = this.jdField_a_of_type_Ajuk.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      localIdiomRedPackMatchReq.fromType = i;
+      localIdiomRedPackMatchReq.platform = 0;
+      localIdiomRedPackMatchReq.qqVersion = "8.4.8";
+      ajvh.a(localIdiomRedPackMatchReq, new ajur(this));
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 3000) {
+        i = 2;
+      } else {
+        i = 0;
       }
-      FriendFragment.a(this.a, 1400L, false);
     }
   }
 }

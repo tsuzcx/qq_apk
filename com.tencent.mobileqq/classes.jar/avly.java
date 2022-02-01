@@ -1,51 +1,92 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.gamecenter.protocol.GetArkTailRsp;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.magicface.DecoderUtil;
+import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.1;
+import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.2;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.util.WeakReference;
 
-final class avly
-  implements BusinessObserver
+public class avly
+  extends avlv
 {
-  avly(WeakReference paramWeakReference1, WeakReference paramWeakReference2, WeakReference paramWeakReference3, long paramLong1, long paramLong2, AIOImageData paramAIOImageData) {}
+  public Object a;
+  Runnable a;
+  public Object b;
+  Runnable b;
+  public volatile boolean b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public avly()
   {
-    paramBundle = (GetArkTailRsp)paramBundle.getSerializable("rsp");
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.1(this);
+    this.jdField_b_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.2(this);
     if (QLog.isColorLevel()) {
-      QLog.d("GameShare.Util", 2, "GetArkTailRspFromGallery:" + paramBoolean + "|" + paramBundle);
+      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
     }
-    if ((paramBoolean) && (paramBundle != null))
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
+  }
+  
+  public void a()
+  {
+    try
     {
-      Object localObject = (Context)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      TextView localTextView = (TextView)this.jdField_b_of_type_MqqUtilWeakReference.get();
-      aics localaics = (aics)this.c.get();
-      if (((localObject instanceof Activity)) && (!((Activity)localObject).isFinishing()) && (localTextView != null) && (localaics != null) && (localaics.a() != null) && (localaics.a().a != null) && (localaics.a().a.jdField_f_of_type_Long == this.jdField_a_of_type_Long) && (localaics.a().a.jdField_f_of_type_Int == this.jdField_b_of_type_Long))
-      {
-        localTextView.setText(paramBundle.desc);
-        localTextView.setTag(-1, paramBundle.jump_url);
-        localTextView.setTag(-2, Integer.valueOf(paramBundle.type));
-        localTextView.setTag(-3, Integer.valueOf(paramBundle.sub_type));
+      this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Avlr.b;
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        return;
       }
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("game_source_pic_txt", paramBundle.desc);
-      ((Bundle)localObject).putString("game_source_pic_url", paramBundle.jump_url);
-      ((Bundle)localObject).putInt("game_source_type_pic", paramBundle.type);
-      ((Bundle)localObject).putInt("game_source_subtype_pic", paramBundle.sub_type);
-      ((Bundle)localObject).putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long);
-      ((Bundle)localObject).putInt("is_troop", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g);
-      ((Bundle)localObject).putString("friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.l);
-      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "saveGalleryDataToMsg", (Bundle)localObject, null);
-      localObject = (StructMsgForImageShare)bdow.a((byte[])this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.a);
-      avlv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, (StructMsgForImageShare)localObject, paramBundle.desc, paramBundle.jump_url, paramBundle.type, paramBundle.sub_type, true);
-      avlv.a(((StructMsgForImageShare)localObject).mSourceAppid + "", paramBundle.sub_type, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData);
+      this.d = this.jdField_a_of_type_Avlr.jdField_a_of_type_ArrayOfByte;
+      if (this.d != null)
+      {
+        b();
+        if ((this.c != null) && (this.f != null))
+        {
+          new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
+          this.jdField_a_of_type_JavaLangRunnable.run();
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("MagicfaceXBigDecoder", 2, "Exception=" + localException.toString());
+      }
+    }
+  }
+  
+  void b()
+  {
+    try
+    {
+      this.c = new byte[921600];
+      this.f = new byte[921600];
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder release=");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+      label37:
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
+      super.c();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      break label37;
     }
   }
 }

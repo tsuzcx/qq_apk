@@ -1,64 +1,89 @@
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.open.agent.AgentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 class bjjr
-  implements bjzx
 {
-  bjjr(bjjq parambjjq) {}
+  private bjjs a;
   
-  public void a()
+  public bjjr(bjjs parambjjs)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, "preAuthWithRetry onSuccess");
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true);
+    this.a = parambjjs;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "preAuthWithRetry onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
-    if ((paramInt == 110530) || (paramInt == 1002))
+    label348:
+    try
     {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false);
+      localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localObject1 == null) {
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      Iterator localIterator1;
+      localException.printStackTrace();
+      return;
       return;
     }
-    if (paramInt == 110509)
+    finally
     {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b);
-      return;
+      if (this.a == null) {
+        break label348;
+      }
+      this.a.a();
     }
-    if (paramInt == 110513)
+    localObject1 = new bjkh((QQAppInterface)localObject1).a(1L);
+    if (localObject1 != null)
     {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, 0, "", "");
-      return;
-    }
-    if ((paramInt == 110537) || (paramInt == -10005))
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false, true);
-      return;
-    }
-    String str;
-    if (paramInt == -1) {
-      str = this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694160);
-    }
-    for (;;)
-    {
-      ForwardUtils.a(str, this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, new bjjs(this, paramInt, paramString));
-      return;
-      if (TextUtils.isEmpty(paramString)) {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694149), new Object[] { Integer.valueOf(paramInt) });
-      } else {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695831), new Object[] { paramString, Integer.valueOf(paramInt) });
+      localIterator1 = ((List)localObject1).iterator();
+      while (localIterator1.hasNext())
+      {
+        localObject1 = (bjkm)localIterator1.next();
+        if ((((bjkm)localObject1).b == paramInt) && (((bjkm)localObject1).a != null))
+        {
+          Iterator localIterator2 = ((bjkm)localObject1).a.iterator();
+          while (localIterator2.hasNext())
+          {
+            Object localObject3 = (bjkl)localIterator2.next();
+            if (!TextUtils.isEmpty(((bjkl)localObject3).i))
+            {
+              localObject1 = ((bjkl)localObject3).f;
+              if (!TextUtils.isEmpty(((bjkl)localObject3).g)) {
+                localObject1 = ((bjkl)localObject3).g;
+              }
+              if (localObject1 != null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("QQProtect.QSec", 2, String.format("ExtraInfo: %s path: %s", new Object[] { ((bjkl)localObject3).i, localObject1 }));
+                }
+                localObject3 = new JSONObject(((bjkl)localObject3).i);
+                int i = ((JSONObject)localObject3).getInt("id");
+                int j = ((JSONObject)localObject3).getInt("type");
+                int k = ((JSONObject)localObject3).getInt("flag");
+                int m = ((JSONObject)localObject3).getInt("mode");
+                localObject3 = ((JSONObject)localObject3).getString("ver");
+                if (this.a != null) {
+                  this.a.a((String)localObject1, (String)localObject3, i, j, k, m);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjjr
  * JD-Core Version:    0.7.0.1
  */

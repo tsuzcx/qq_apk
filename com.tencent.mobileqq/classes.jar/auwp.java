@@ -1,83 +1,66 @@
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_rsp;
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.tencent.mobileqq.flutter.container.QFlutterFragment;
-import io.flutter.embedding.android.FlutterView.RenderMode;
-import io.flutter.embedding.android.FlutterView.TransparencyMode;
-import io.flutter.embedding.engine.FlutterShellArgs;
-import java.io.Serializable;
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.ProtocolUtils;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class auwp
+  extends MSFServlet
 {
-  private FlutterView.RenderMode jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$RenderMode = FlutterView.RenderMode.surface;
-  private FlutterView.TransparencyMode jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$TransparencyMode = FlutterView.TransparencyMode.transparent;
-  private FlutterShellArgs jdField_a_of_type_IoFlutterEmbeddingEngineFlutterShellArgs;
-  private final Class<? extends QFlutterFragment> jdField_a_of_type_JavaLangClass = QFlutterFragment.class;
-  private String jdField_a_of_type_JavaLangString = "";
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  @NonNull
-  private Bundle a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterShellArgs != null) {
-      localBundle.putStringArray("initialization_args", this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterShellArgs.toArray());
+    Object localObject1 = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebShareServlet", 2, "onReceive, cmd=" + (String)localObject1);
     }
-    Object localObject = new BoostFlutterActivity.SerializableMap();
-    ((BoostFlutterActivity.SerializableMap)localObject).setMap(this.jdField_a_of_type_JavaUtilMap);
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putSerializable("params", (Serializable)localObject);
-    if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$RenderMode != null)
+    if ("SQQzoneSvc.getUrlInfo".equals(localObject1))
     {
-      localObject = this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$RenderMode.name();
-      localBundle.putString("flutterview_render_mode", (String)localObject);
-      if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$TransparencyMode == null) {
-        break label124;
+      Object localObject2 = paramFromServiceMsg.getWupBuffer();
+      localObject1 = new Bundle();
+      localObject2 = ProtocolUtils.decode((byte[])localObject2, "getUrlInfo");
+      if ((paramFromServiceMsg.isSuccess()) && ((localObject2 instanceof mobile_get_urlinfo_rsp)))
+      {
+        localObject2 = (mobile_get_urlinfo_rsp)localObject2;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebShareServlet", 2, "onReceive, mobile_get_urlinfo_rsp, ret=" + ((mobile_get_urlinfo_rsp)localObject2).ret + ", title=" + ((mobile_get_urlinfo_rsp)localObject2).title + ", summary=" + ((mobile_get_urlinfo_rsp)localObject2).summary + ", images=" + ((mobile_get_urlinfo_rsp)localObject2).images);
+        }
+        ((Bundle)localObject1).putInt("extra_ret", ((mobile_get_urlinfo_rsp)localObject2).ret);
+        ((Bundle)localObject1).putString("extra_title", ((mobile_get_urlinfo_rsp)localObject2).title);
+        ((Bundle)localObject1).putString("extra_summary", ((mobile_get_urlinfo_rsp)localObject2).summary);
+        ((Bundle)localObject1).putStringArrayList("extra_images", ((mobile_get_urlinfo_rsp)localObject2).images);
       }
-    }
-    label124:
-    for (localObject = this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$TransparencyMode.name();; localObject = FlutterView.TransparencyMode.transparent.name())
-    {
-      localBundle.putString("flutterview_transparency_mode", (String)localObject);
-      localBundle.putBoolean("destroy_engine_with_fragment", true);
-      return localBundle;
-      localObject = FlutterView.RenderMode.surface.name();
-      break;
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
     }
   }
   
-  public auwp a(@NonNull String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public auwp a(@NonNull Map paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    return this;
-  }
-  
-  @NonNull
-  public <T extends QFlutterFragment> T a()
-  {
-    try
+    String str = paramIntent.getStringExtra("extra_cmd");
+    if (QLog.isColorLevel()) {
+      QLog.d("WebShareServlet", 2, "onSend, cmd=" + str);
+    }
+    if ("SQQzoneSvc.getUrlInfo".equals(str))
     {
-      QFlutterFragment localQFlutterFragment = (QFlutterFragment)this.jdField_a_of_type_JavaLangClass.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      if (localQFlutterFragment == null) {
-        throw new RuntimeException("The NewFlutterFragment subclass sent in the constructor (" + this.jdField_a_of_type_JavaLangClass.getCanonicalName() + ") does not match the expected return type.");
+      paramIntent = paramIntent.getStringExtra("extra_url");
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareServlet", 2, "onSend, CMD_GET_URL_INFO, url=" + paramIntent);
       }
+      if (TextUtils.isEmpty(paramIntent)) {
+        break label116;
+      }
+      paramIntent = new auum(paramIntent).encode();
+      paramPacket.setSSOCommand("SQQzoneSvc.getUrlInfo");
+      paramPacket.putSendData(paramIntent);
     }
-    catch (Exception localException)
-    {
-      throw new RuntimeException("Could not instantiate NewFlutterFragment subclass (" + this.jdField_a_of_type_JavaLangClass.getName() + ")", localException);
+    label116:
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    localException.setArguments(a());
-    return localException;
+    QLog.e("WebShareServlet", 2, "onSend, url is null!!!");
   }
 }
 

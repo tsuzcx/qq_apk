@@ -1,72 +1,25 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class wqw
+class wqw
+  extends AnimatorListenerAdapter
 {
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  private static wqw jdField_a_of_type_Wqw;
+  wqw(wqu paramwqu) {}
   
-  public static wqw a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (jdField_a_of_type_Wqw == null)
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
+    }
+    for (;;)
     {
-      jdField_a_of_type_Wqw = new wqw();
-      jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      Iterator localIterator = ((wse)wth.a(17)).a().iterator();
-      while (localIterator.hasNext())
-      {
-        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-        {
-          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
-        }
-      }
+      this.a.a.setVisibility(8);
+      return;
+      this.a.a.setImageResource(2130850605);
     }
-    return jdField_a_of_type_Wqw;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return -1;
-    }
-    return paramString.intValue();
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Iterator localIterator = ((wse)wth.a(17)).a().iterator();
-    while (localIterator.hasNext())
-    {
-      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-      {
-        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
-      }
-    }
-    yuk.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
-  }
-  
-  public boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_Wqw = null;
   }
 }
 

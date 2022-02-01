@@ -1,16 +1,54 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class ayfi
-  implements View.OnTouchListener
+public abstract class ayfi
+  extends aptq<ayfj>
 {
-  public ayfi(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  protected abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @NonNull
+  public ayfj a(int paramInt)
   {
-    return paramMotionEvent.getAction() == 2;
+    return new ayfj();
+  }
+  
+  @Nullable
+  public ayfj a(aptx[] paramArrayOfaptx)
+  {
+    ayfj localayfj = new ayfj();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
+      ayfj.a(localayfj, paramArrayOfaptx[0].a);
+    }
+    return localayfj;
+  }
+  
+  public void a(ayfj paramayfj) {}
+  
+  public Class<ayfj> clazz()
+  {
+    return ayfj.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return a();
   }
 }
 

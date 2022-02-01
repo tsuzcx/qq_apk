@@ -1,12 +1,15 @@
-public abstract interface blkm
+import dov.com.qq.im.ae.camera.core.AECameraManager;
+
+class blkm
+  implements baaz
 {
-  public abstract void F();
+  blkm(bljy parambljy) {}
   
-  public abstract void G();
-  
-  public abstract void H();
-  
-  public abstract void a(float paramFloat);
+  public void a(int paramInt)
+  {
+    bmbx.a(this.a.jdField_a_of_type_JavaLangString, "onRequestZoom: " + paramInt);
+    this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.setZoom(paramInt);
+  }
 }
 
 

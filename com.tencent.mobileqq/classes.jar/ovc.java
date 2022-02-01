@@ -1,26 +1,23 @@
-import java.util.ArrayList;
+import org.jetbrains.annotations.Nullable;
 
 class ovc
-  extends ovd
+  implements oxs
 {
-  ovc(otv paramotv, int paramInt)
-  {
-    super(paramotv, null);
-  }
+  ovc(ouu paramouu) {}
   
-  void a(ovg paramovg)
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
   {
-    if (paramovg == null) {}
-    do
+    if (paramBoolean2) {
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramString2, paramInt3);
+    }
+    for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramovg.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
-        return;
+      if (!paramBoolean1) {
+        oxr.a(paramInt1);
       }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramovg.onCommentLoadMore(1, false, new ArrayList(), false, 2);
+      return;
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramInt3);
+    }
   }
 }
 

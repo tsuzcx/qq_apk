@@ -1,137 +1,105 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.minigame.utils.AppUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observer;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bibd
-  implements biaj, gf
 {
-  private float jdField_a_of_type_Float;
-  protected int a;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  protected biak a;
-  private ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-  private fz jdField_a_of_type_Fz = new bibf(this);
-  protected gc a;
-  private Observer jdField_a_of_type_JavaUtilObserver = new bibe(this);
-  protected AppRuntime a;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 1;
-  private int c = 1;
-  
-  public bibd(biai parambiai, AppRuntime paramAppRuntime, int paramInt)
+  public static int a()
   {
-    this.jdField_a_of_type_Biak = parambiai.a();
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-    gg.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
-  }
-  
-  protected gb a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)))
-    {
-      this.jdField_a_of_type_Gc = ((gc)this.jdField_a_of_type_MqqAppAppRuntime.getManager(42));
-      this.jdField_a_of_type_Gc.a(this);
-      return this.jdField_a_of_type_Gc.a(paramInt1, paramInt2, false, ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).c(), 0);
+    int j = biar.a(bhpc.a().a(), null).a("Common_BusinessReportMaxcount");
+    int i = j;
+    if (j == 0) {
+      i = 20;
     }
-    return null;
+    return i;
   }
   
-  public void a()
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_Biak.a().sendEmptyMessage(10003);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0)
+    int i;
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setFont(0, System.currentTimeMillis());
-      return;
-    }
-    this.jdField_a_of_type_Biak.a(paramInt1);
-    this.jdField_a_of_type_Int = paramInt2;
-    b();
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureFontAdapter", 2, "downloadDone type = " + paramInt);
-    }
-  }
-  
-  public void a(ETTextView paramETTextView, float paramFloat, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = paramETTextView;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Fz);
-  }
-  
-  protected void a(ETTextView paramETTextView, gb paramgb, float paramFloat)
-  {
-    if (paramgb.jdField_a_of_type_Int == 0)
-    {
-      paramETTextView.setFont(0, System.currentTimeMillis());
-      return;
-    }
-    if (paramgb.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
-    {
-      paramgb = paramgb.jdField_a_of_type_ComEtrumpMixlayoutETFont;
-      paramgb.setSize(paramFloat);
-    }
-    for (;;)
-    {
-      if ((paramETTextView.mFont == null) || (!paramgb.equals(paramETTextView.mFont))) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      i = biar.a(bhpc.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
+      paramInt = i;
+      if (i == 0) {
+        paramInt = 20;
       }
-      paramETTextView.shouldStartAnimation = this.jdField_a_of_type_Boolean;
-      paramgb.mAnimationId = this.jdField_a_of_type_Long;
-      paramETTextView.setFont(paramgb, this.jdField_a_of_type_Long);
-      paramETTextView.requestLayout();
-      return;
-      ETFont localETFont = new ETFont(paramgb.jdField_a_of_type_Int, paramgb.jdField_a_of_type_JavaLangString, paramFloat, paramgb.b, paramgb.jdField_a_of_type_AndroidGraphicsTypeface);
-      paramgb.jdField_a_of_type_ComEtrumpMixlayoutETFont = localETFont;
-      paramgb = localETFont;
     }
+    do
+    {
+      return paramInt;
+      i = biar.a(bhpc.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
+      paramInt = i;
+    } while (i != 0);
+    return 50;
   }
   
-  public void b()
+  public static int a(String paramString)
   {
-    if (AppUtil.isMainProcess()) {}
-    for (gb localgb = a(this.jdField_a_of_type_Biak.a(), this.jdField_a_of_type_Int);; localgb = gg.a().a(this.jdField_a_of_type_Biak.a(), this.jdField_a_of_type_Int))
-    {
-      QLog.i("SignatureFontAdapter", 1, "load " + localgb + " fontId:" + this.jdField_a_of_type_Biak.a());
-      if ((localgb != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)) {
-        a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localgb, this.jdField_a_of_type_Float);
-      }
-      return;
+    int j = biar.a(bhpc.a().a(), paramString).a("Common_BusinessReportFrequency");
+    int i = j;
+    if (j == 0) {
+      i = 100;
     }
+    return i;
   }
   
-  public void c()
+  public static long a()
   {
-    gg.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(null);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = null;
+    return bhpc.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
+  }
+  
+  protected static SharedPreferences a()
+  {
+    return bhpc.a().a().getSharedPreferences("reportConfig", 0);
+  }
+  
+  public static String a()
+  {
+    if (bhpc.a().a() == null) {
+      return "";
     }
-    if (this.jdField_a_of_type_Gc != null) {
-      this.jdField_a_of_type_Gc.b(this);
+    return a().getString("uin", "");
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (bhpc.a().a() == null) {
+      return;
     }
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putLong("lastTime", paramLong);
+    localEditor.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (bhpc.a().a() == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("uin", paramString);
+    localEditor.commit();
+  }
+  
+  public static int b()
+  {
+    int j = biar.a(bhpc.a().a(), null).a("Common_HttpRetryCount");
+    int i = j;
+    if (j == 0) {
+      i = 2;
+    }
+    return i;
+  }
+  
+  public static long b()
+  {
+    long l2 = biar.a(bhpc.a().a(), null).a("Common_BusinessReportTimeinterval");
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = 3600L;
+    }
+    return l1;
   }
 }
 

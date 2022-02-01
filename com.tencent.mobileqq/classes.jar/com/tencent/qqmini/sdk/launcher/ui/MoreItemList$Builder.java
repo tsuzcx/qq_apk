@@ -109,6 +109,21 @@ public class MoreItemList$Builder
     return this;
   }
   
+  public Builder addQQFavorite(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.id = 12;
+    localMoreItem.visible = this.mDisplaySettings.isShowQQFavorite;
+    localMoreItem.drawable = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "收藏";
+    }
+    localMoreItem.text = str;
+    this.mMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
   public Builder addRestart(String paramString, int paramInt)
   {
     MoreItem localMoreItem = new MoreItem();
@@ -229,18 +244,6 @@ public class MoreItemList$Builder
   
   public final MoreItemList build()
   {
-    if (!this.isShareQQPresent) {
-      addShareQQ("QQ", R.drawable.mini_sdk_channel_qq);
-    }
-    if (!this.isShareQZonePresent) {
-      addShareQzone("QQ空间", R.drawable.mini_sdk_channel_qzone);
-    }
-    if (!this.isShareWxFriendsPresent) {
-      addShareWxFriends("微信好友", R.drawable.mini_sdk_channel_wx_friend);
-    }
-    if (!this.isShareWxMomentsPresent) {
-      addShareWxMoments("微信朋友圈", R.drawable.mini_sdk_channel_wx_moment);
-    }
     if (!this.isAboutPresent) {
       addAbout("关于", R.drawable.mini_sdk_about);
     }
@@ -263,7 +266,7 @@ public class MoreItemList$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MoreItemList.Builder
  * JD-Core Version:    0.7.0.1
  */

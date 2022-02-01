@@ -1,20 +1,30 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wnz
+  extends wnr<HotRecommendFeedPlayInfo>
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
+  public wnz(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
   {
-    return wos.a(paramQQUserUIItem);
+    super(paramHotRecommendFeedPlayInfo);
   }
   
-  public static boolean a()
+  public xnh a(String paramString)
   {
-    return true;
+    paramString = new xnh(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    return paramString;
   }
   
-  public static String b(QQUserUIItem paramQQUserUIItem)
+  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
   {
-    return wos.b(paramQQUserUIItem);
+    ArrayList localArrayList = new ArrayList();
+    wns localwns = new wns(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new xnh(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localwns.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    localArrayList.add(localwns);
+    paramwoj.a(new ErrorMessage(), localArrayList, true);
   }
 }
 

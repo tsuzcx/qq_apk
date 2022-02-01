@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
+import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -10,19 +11,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anzj;
-import bhlq;
-import bhpc;
-import bjuh;
-import bmtd;
-import bmtk;
-import bngf;
-import bngi;
+import bfur;
+import bhzt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.cache.SDCardMountMonitorReceiver;
 import cooperation.qzone.model.PhotoInfo;
@@ -30,6 +28,8 @@ import cooperation.qzone.model.PhotoParam;
 import cooperation.qzone.model.PictureUrl;
 import cooperation.qzone.model.VideoInfo;
 import cooperation.qzone.model.VideoUrl;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import cooperation.qzone.util.NetworkState;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
@@ -54,7 +54,7 @@ public class TroopAlbumPlugin
   private Handler handler = new Handler();
   private long lastClickTime;
   Dialog mDownloadingDialog;
-  private bhpc openDialog;
+  private QQCustomDialog openDialog;
   private NativePlugin.JSContext troopAlbumJsContext;
   private BroadcastReceiver troopAlbumReceiver = new TroopAlbumPlugin.1(this);
   
@@ -71,14 +71,14 @@ public class TroopAlbumPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(paramActivity.getString(2131716812), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + anzj.a(2131713963);
+        str = String.format(paramActivity.getString(2131717046), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + amtj.a(2131714195);
       }
-      paramString = str + String.format(paramActivity.getString(2131716805), new Object[] { Integer.valueOf(paramInt2) });
-      bhlq.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131716810, new TroopAlbumPlugin.5(this)).show();
+      paramString = str + String.format(paramActivity.getString(2131717039), new Object[] { Integer.valueOf(paramInt2) });
+      bfur.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717044, new TroopAlbumPlugin.5(this)).show();
       return;
     }
-    bjuh.a().a(paramActivity.getString(2131716813) + paramString + anzj.a(2131713962));
+    bhzt.a().a(paramActivity.getString(2131717047) + paramString + amtj.a(2131714194));
   }
   
   private void handleChatAio(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -95,24 +95,24 @@ public class TroopAlbumPlugin
     Intent localIntent = new Intent();
     paramJSONObject = paramJSONObject.getJSONObject("data").toString();
     localIntent.putExtra("photos", paramJSONObject);
-    bngf.a().a(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
+    RemoteHandleManager.getInstance().addWebEventListener(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
     if (!isSdcardWorking())
     {
-      bjuh.a().a(anzj.a(2131713958));
+      bhzt.a().a(amtj.a(2131714190));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bjuh.a().a(anzj.a(2131713957));
+      bhzt.a().a(amtj.a(2131714189));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       paramJSContext = paramJSContext.getActivity();
-      bhlq.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131716809)).setMessage(paramJSContext.getString(2131716811)).setPositiveButton(paramJSContext.getString(2131716808), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131716807), new TroopAlbumPlugin.3(this)).show();
+      bfur.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717043)).setMessage(paramJSContext.getString(2131717045)).setPositiveButton(paramJSContext.getString(2131717042), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717041), new TroopAlbumPlugin.3(this)).show();
       return;
     }
-    bngf.a().a().d(paramJSONObject);
+    RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);
   }
   
   private void handleJumpCategoryAlbum(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -122,14 +122,14 @@ public class TroopAlbumPlugin
     paramJSONObject = paramJSONObject.optString("categoryId");
     paramJSContext = paramJSContext.getActivity();
     if (paramJSContext != null) {
-      bmtd.a(paramJSContext, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
+      QZoneHelper.forwardToCategoryAlbum(paramJSContext, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
     }
   }
   
   private void handleJumpToPublishBox(NativePlugin.JSContext paramJSContext)
   {
-    bmtk.a();
-    bmtd.a(paramJSContext.getActivity(), null, 0);
+    QZoneHelper.UserInfo.getInstance();
+    QZoneHelper.forwardToPublishBox(paramJSContext.getActivity(), null, 0);
   }
   
   private void handleJumpToQzone(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -138,12 +138,12 @@ public class TroopAlbumPlugin
     long l = paramJSONObject.optLong("uin");
     paramJSONObject.optString("nick");
     paramJSONObject = new Intent();
-    QzonePluginProxyActivity.a(paramJSONObject, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
+    QzonePluginProxyActivity.setActivityNameToIntent(paramJSONObject, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
     paramJSONObject.putExtra("qqid", l);
     paramJSONObject.putExtra("refer", REFER);
     paramJSONObject.setFlags(67108864);
     paramJSONObject.putExtra("autoShowTimeLine", false);
-    QzonePluginProxyActivity.a(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), paramJSONObject, 0);
+    QzonePluginProxyActivity.launchPluingActivityForResult(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), paramJSONObject, 0);
   }
   
   private void handleQunDidPickAlbum(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -154,10 +154,10 @@ public class TroopAlbumPlugin
       paramJSONObject = new Bundle();
       paramJSONObject.putInt("key_personal_album_enter_model", 0);
       paramJSONObject.putBoolean("key_pass_result_by_bundle", true);
-      bmtk localbmtk = bmtk.a();
-      localbmtk.jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+      localUserInfo.qzone_uin = BaseApplicationImpl.sApplication.getRuntime().getAccount();
       paramJSONObject.putBoolean("key_need_change_to_jpg", true);
-      bmtd.a(paramJSContext.getActivity(), localbmtk, paramJSONObject, 100);
+      QZoneHelper.forwardToPersonalAlbumSelect(paramJSContext.getActivity(), localUserInfo, paramJSONObject, 100);
       this.troopAlbumJsContext = paramJSContext;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_select");
@@ -213,40 +213,40 @@ public class TroopAlbumPlugin
     int n = ((JSONObject)localObject2).optInt("videoHeight");
     Object localObject1 = ((JSONObject)localObject2).optString("videoURL");
     String str = ((JSONObject)localObject2).optString("videoID");
-    localObject2 = bmtk.a();
-    ((bmtk)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject4);
+    localObject2 = QZoneHelper.UserInfo.getInstance();
+    ((QZoneHelper.UserInfo)localObject2).qzone_uin = ((String)localObject4);
     localObject4 = new Bundle();
     ArrayList localArrayList = new ArrayList();
     PhotoInfo localPhotoInfo = new PhotoInfo();
-    localPhotoInfo.d = ((String)localObject3);
-    localPhotoInfo.c = l;
-    localPhotoInfo.b = paramJSONObject;
-    localPhotoInfo.i = ((String)localObject5);
-    localPhotoInfo.t = i;
-    localPhotoInfo.q = j;
-    localPhotoInfo.a = new VideoInfo();
-    localPhotoInfo.a.jdField_a_of_type_JavaLangString = str;
+    localPhotoInfo.bigUrl = ((String)localObject3);
+    localPhotoInfo.uploaduin = l;
+    localPhotoInfo.albumId = paramJSONObject;
+    localPhotoInfo.lloc = ((String)localObject5);
+    localPhotoInfo.appid = i;
+    localPhotoInfo.videoflag = j;
+    localPhotoInfo.videodata = new VideoInfo();
+    localPhotoInfo.videodata.videoId = str;
     localObject5 = new PictureUrl();
-    ((PictureUrl)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject3);
-    localPhotoInfo.a.d = ((PictureUrl)localObject5);
+    ((PictureUrl)localObject5).url = ((String)localObject3);
+    localPhotoInfo.videodata.coverUrl = ((PictureUrl)localObject5);
     localObject3 = new VideoUrl();
-    ((VideoUrl)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-    localPhotoInfo.a.jdField_a_of_type_Long = k;
-    localPhotoInfo.a.jdField_a_of_type_JavaLangString = str;
-    localPhotoInfo.a.b = ((String)localObject1);
-    localPhotoInfo.a.jdField_a_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)localObject3);
-    localPhotoInfo.a.g = m;
-    localPhotoInfo.a.h = n;
-    localPhotoInfo.a.f = 5;
+    ((VideoUrl)localObject3).url = ((String)localObject1);
+    localPhotoInfo.videodata.originVideoSize = k;
+    localPhotoInfo.videodata.videoId = str;
+    localPhotoInfo.videodata.actionUrl = ((String)localObject1);
+    localPhotoInfo.videodata.videoUrl = ((VideoUrl)localObject3);
+    localPhotoInfo.videodata.width = m;
+    localPhotoInfo.videodata.height = n;
+    localPhotoInfo.videodata.videoStatus = 5;
     localArrayList.add(localPhotoInfo);
     localObject1 = new PhotoParam();
-    ((PhotoParam)localObject1).b = paramJSONObject;
-    ((PhotoParam)localObject1).g = paramJSONObject;
+    ((PhotoParam)localObject1).albumid = paramJSONObject;
+    ((PhotoParam)localObject1).cell_id = paramJSONObject;
     ((Bundle)localObject4).putSerializable("picturelist", localArrayList);
     ((Bundle)localObject4).putInt("curindex", 0);
     ((Bundle)localObject4).putInt("mode", 13);
     ((Bundle)localObject4).putBoolean("need_clear_cache", true);
-    bmtd.c(paramJSContext.getActivity(), (bmtk)localObject2, (Bundle)localObject4, 6);
+    QZoneHelper.forwardToPictureViewer(paramJSContext.getActivity(), (QZoneHelper.UserInfo)localObject2, (Bundle)localObject4, 6);
     this.lastClickTime = System.currentTimeMillis();
   }
   
@@ -262,7 +262,7 @@ public class TroopAlbumPlugin
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         QLog.d("TroopAlbumPlugin", 1, "handleUploadPhoto  init  mAlbumId is null!");
       }
-      bmtd.b(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
+      QZoneHelper.forwardMiniToTroopUploadPhoto(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
       this.troopAlbumJsContext = paramJSContext;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_upload");
@@ -273,7 +273,7 @@ public class TroopAlbumPlugin
   
   private boolean isSdcardWorking()
   {
-    return SDCardMountMonitorReceiver.a().b();
+    return SDCardMountMonitorReceiver.getInstance().isSDCardCanWrite();
   }
   
   public void onDestroy() {}

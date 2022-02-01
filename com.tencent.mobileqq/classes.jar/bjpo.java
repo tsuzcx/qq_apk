@@ -1,66 +1,90 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.TroopAbilityUtils.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.DynamicGridView;
 
 public class bjpo
+  implements AbsListView.OnScrollListener
 {
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
+  
+  public bjpo(DynamicGridView paramDynamicGridView) {}
+  
+  private void c()
   {
-    Object localObject = new StringBuilder().append("onThirdAppJoinAppFinished activity is null: ");
-    boolean bool;
-    if (paramActivity == null)
+    if ((this.d > 0) && (this.e == 0))
     {
-      bool = true;
-      QLog.i("TroopAbility.Utils", 1, bool);
-      if ((paramActivity != null) && (paramIntent != null) && (paramIntent.getExtras() != null)) {
-        break label59;
+      if ((!DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) || (!DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView))) {
+        break label42;
+      }
+      DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
+    label42:
+    while (!DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
+      return;
+    }
+    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+  }
+  
+  public void a()
+  {
+    if ((this.c != this.jdField_a_of_type_Int) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
       }
     }
-    label186:
-    for (;;)
+    label111:
+    for (int i = this.d;; i = this.b)
     {
-      return;
-      bool = false;
-      break;
-      label59:
-      paramIntent = paramIntent.getExtras();
-      if (paramIntent.getBoolean("fromThirdAppByOpenSDK"))
-      {
-        String str1 = paramIntent.getString("appid");
-        paramIntent.getString("app_name");
-        String str2 = paramIntent.getString("pkg_name");
-        int i = paramIntent.getInt("action");
-        if (i == 1)
-        {
-          paramIntent = "bindGroup";
-          localObject = anzj.a(2131713909);
-        }
-        for (;;)
-        {
-          if (paramActivity.isFinishing()) {
-            break label186;
-          }
-          ThreadManager.getUIHandler().postDelayed(new TroopAbilityUtils.1(paramActivity, paramBoolean, str1, paramIntent, str2, (String)localObject), 300L);
-          return;
-          if (i == 2)
-          {
-            paramIntent = "bindGroup";
-            localObject = anzj.a(2131713910);
-          }
-          else
-          {
-            if (i != 3) {
-              break;
-            }
-            paramIntent = "joinGroup";
-            localObject = anzj.a(2131713921);
-          }
-        }
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+        DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    this.e = paramInt;
+    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, paramInt);
+    c();
+    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }

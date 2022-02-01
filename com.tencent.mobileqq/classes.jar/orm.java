@@ -1,73 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-public class orm
-  implements asmr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class orm
+  implements ViewBase.OnClickListener
 {
-  public orm(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  orm(ouc paramouc, ouo paramouo) {}
   
-  public void a(asmu paramasmu)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if ((paramasmu instanceof asre))
-    {
-      paramasmu = (asre)paramasmu;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramasmu.a(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
-      return;
-    }
-    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramasmu, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+    this.jdField_a_of_type_Ouc.c(this.jdField_a_of_type_Ouo);
   }
-  
-  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
-  
-  public boolean a(asmu paramasmu)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(asmu paramasmu) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

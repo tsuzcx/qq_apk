@@ -1,85 +1,199 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import android.support.v4.os.TraceCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class bjxn
-  extends bjyb
+class bjxn
+  extends RecyclerView.OnScrollListener
+  implements View.OnTouchListener, bjxp
 {
-  bjxo jdField_a_of_type_Bjxo;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = -1;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private boolean jdField_c_of_type_Boolean;
+  private float d;
   
-  public bjxn(bjxd parambjxd, Activity paramActivity, bjxo parambjxo)
+  private bjxn(bjxh parambjxh) {}
+  
+  private void a()
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Bjxo = parambjxo;
+    boolean bool1 = true;
+    bjxh.a(this.jdField_a_of_type_Bjxh, true);
+    Object localObject;
+    int i;
+    if (bjxh.b(this.jdField_a_of_type_Bjxh))
+    {
+      boolean bool2 = this.jdField_a_of_type_Bjxh.c();
+      localObject = this.jdField_a_of_type_Bjxh;
+      if (!bool2) {
+        bjxh.a((bjxh)localObject, bool1);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: isRealIdle=" + bjxh.c(this.jdField_a_of_type_Bjxh));
+      }
+      if (bjxh.c(this.jdField_a_of_type_Bjxh)) {
+        bjxh.b(this.jdField_a_of_type_Bjxh, false);
+      }
+      localObject = this.jdField_a_of_type_Bjxh.a(bjxh.a(this.jdField_a_of_type_Bjxh));
+      if (localObject == null) {
+        break label178;
+      }
+      i = bjxh.a(this.jdField_a_of_type_Bjxh).getPosition((View)localObject);
+      label136:
+      if (bjxh.a(this.jdField_a_of_type_Bjxh, i, bjxh.a(this.jdField_a_of_type_Bjxh))) {
+        break label183;
+      }
+      bjxh.a(this.jdField_a_of_type_Bjxh, (View)localObject, this.jdField_b_of_type_Boolean);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      return;
+      bool1 = false;
+      break;
+      label178:
+      i = -1;
+      break label136;
+      label183:
+      if ((!bjxh.a(this.jdField_a_of_type_Bjxh)) && (!bjxh.b(this.jdField_a_of_type_Bjxh))) {
+        if (i > bjxh.a(this.jdField_a_of_type_Bjxh, bjxh.a(this.jdField_a_of_type_Bjxh))) {
+          bjxh.a(this.jdField_a_of_type_Bjxh);
+        } else if (i < bjxh.a(this.jdField_a_of_type_Bjxh)) {
+          bjxh.b(this.jdField_a_of_type_Bjxh);
+        }
+      }
+    }
   }
   
-  protected void a(Boolean paramBoolean)
+  private void a(int paramInt)
   {
-    a();
-    if (paramBoolean.booleanValue())
+    int i = -1;
+    bjxh.a(this.jdField_a_of_type_Bjxh, false);
+    View localView;
+    if ((paramInt == 0) || (paramInt == 2))
     {
-      if (bjya.a())
+      localView = this.jdField_a_of_type_Bjxh.a(bjxh.a(this.jdField_a_of_type_Bjxh));
+      if (localView == null) {
+        break label173;
+      }
+      this.jdField_b_of_type_Int = bjxh.a(this.jdField_a_of_type_Bjxh).getPosition(localView);
+    }
+    label173:
+    for (this.jdField_b_of_type_Int = bjxh.a(this.jdField_a_of_type_Bjxh, this.jdField_b_of_type_Int);; this.jdField_b_of_type_Int = -1)
+    {
+      if ((bjxh.b(this.jdField_a_of_type_Bjxh) != -1) && (bjxh.a(this.jdField_a_of_type_Bjxh).findViewByPosition(bjxh.b(this.jdField_a_of_type_Bjxh)) == null))
       {
-        this.jdField_a_of_type_Bjxd.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bjxd.jdField_b_of_type_Boolean = false;
-        long l = -1L;
-        switch (this.jdField_a_of_type_Bjxo.jdField_a_of_type_Int)
-        {
-        case 1: 
-        default: 
-          l = this.jdField_a_of_type_Bjxd.a(this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bjxo.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bjxo.jdField_b_of_type_Boolean);
+        if (QLog.isColorLevel()) {
+          QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: centerPosition has been recycler");
         }
-        for (;;)
-        {
-          this.jdField_a_of_type_Bjxd.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_Bjxd.jdField_b_of_type_Long = System.currentTimeMillis();
-          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle != null))
-          {
-            paramBoolean = bjvg.a(this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle.getString(bjwo.i), "NEWYYB");
-            bjvg.a("311", paramBoolean, this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle.getString(bjwo.b));
-            Context localContext = bjjo.a().a();
-            if (localContext != null) {
-              bjvg.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle.getString(bjwo.b));
-            }
-          }
-          if ((this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr != null) && (this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr.isShowing())) {
-            this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr.dismiss();
-          }
-          return;
-          this.jdField_a_of_type_Bjxd.e = true;
-          if (this.jdField_a_of_type_Bjxd.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
-          {
-            l = this.jdField_a_of_type_Bjxd.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Bjxd.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-          }
-          else
-          {
-            bjtx.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
-            continue;
-            l = this.jdField_a_of_type_Bjxd.b(this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bjxo.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bjxo.jdField_b_of_type_Boolean);
-            continue;
-            l = this.jdField_a_of_type_Bjxd.b(this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle);
-          }
+        this.jdField_b_of_type_Boolean = true;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("onScrollStateChanged: lastCenterView=");
+        paramInt = i;
+        if (localView != null) {
+          paramInt = bjxh.a(this.jdField_a_of_type_Bjxh).getPosition(localView);
         }
+        QLog.d("PagerSnapHelper", 2, paramInt);
       }
-      if (this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      this.jdField_a_of_type_Bjxd.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
       return;
     }
-    if (this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-    }
-    this.jdField_a_of_type_Bjxd.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
   }
   
-  protected void onCancelled()
+  public boolean a(float paramFloat1, float paramFloat2)
   {
-    super.onCancelled();
-    if (this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    if (bjxh.a(this.jdField_a_of_type_Bjxh) == null) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return false;
+      } while ((bjxh.a(this.jdField_a_of_type_Bjxh).getAdapter() == null) || (!bjxh.a(this.jdField_a_of_type_Bjxh)));
+      i = bjxh.a(this.jdField_a_of_type_Bjxh).getMinFlingVelocity();
+      j = this.jdField_b_of_type_Int;
+    } while ((Math.abs(paramFloat2) <= i) && (Math.abs(paramFloat1) <= i));
+    try
+    {
+      TraceCompat.beginSection("snapFromFling");
+      boolean bool = bjxh.a(this.jdField_a_of_type_Bjxh, bjxh.a(this.jdField_a_of_type_Bjxh), this.jdField_c_of_type_Float, this.d, paramFloat1, paramFloat2, j);
+      return bool;
+    }
+    finally
+    {
+      TraceCompat.endSection();
+    }
+  }
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: state=" + paramInt);
+    }
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      TraceCompat.beginSection("snap onIdle");
+      a();
+      TraceCompat.endSection();
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    TraceCompat.beginSection("snap onDragging");
+    a(i);
+    TraceCompat.endSection();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 != 0) || (paramInt2 != 0)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 2: 
+      do
+      {
+        return false;
+        this.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Float <= 0.0F) {
+          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+        }
+      } while (this.jdField_b_of_type_Float > 0.0F);
+      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+      return false;
+    }
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - paramMotionEvent.getX());
+    }
+    for (this.d = (this.jdField_b_of_type_Float - paramMotionEvent.getY());; this.d = 0.0F)
+    {
+      this.jdField_a_of_type_Float = 0.0F;
+      this.jdField_b_of_type_Float = 0.0F;
+      this.jdField_c_of_type_Boolean = false;
+      return false;
+      this.jdField_c_of_type_Float = 0.0F;
     }
   }
 }

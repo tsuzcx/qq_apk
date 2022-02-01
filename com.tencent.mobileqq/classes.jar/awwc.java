@@ -1,28 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awwc
-  implements awvz
+class awwc
+  implements View.OnClickListener
 {
   awwc(awwb paramawwb) {}
   
-  public void a(awvw paramawvw)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
-    }
-    awwb.a(this.a, paramawvw);
-  }
-  
-  public void a(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
-    }
-    if (awwb.a(this.a) != null) {
-      awwb.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    if (paramView == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (StartLiveTopicLabelListView.a(this.a.a) != null) {
+        StartLiveTopicLabelListView.a(this.a.a).a();
+      }
     }
   }
 }

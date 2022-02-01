@@ -1,24 +1,33 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class whf
-  extends whd
+  implements whe
 {
-  public int d = -1;
-  public int e = -1;
+  public void a() {}
   
-  public whf() {}
-  
-  public whf(wfq paramwfq)
+  public void a(int paramInt)
   {
-    super(paramwfq);
+    if (paramInt == 6) {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131690006, 0).a();
+    }
   }
   
-  public String toString()
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
-    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
-    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
-    localStringBuilder.append("] ");
-    return localStringBuilder.toString() + super.toString();
+    QQToast.a(BaseApplication.getContext(), amtj.a(2131706950), 0).a();
   }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 

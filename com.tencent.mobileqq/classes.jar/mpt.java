@@ -1,16 +1,20 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagConfig.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class mpt
-  extends lfl
+class mpt
+  extends mcc
 {
-  mpt(mpr parammpr) {}
+  mpt(mpp parammpp) {}
   
-  protected void a()
+  protected void b(mcg parammcg)
   {
-    ThreadManager.post(new AVRedBagConfig.2.1(this), 10, null, true);
-    this.a.a.b(this);
+    if (parammcg.jdField_b_of_type_Boolean) {
+      return;
+    }
+    parammcg.jdField_b_of_type_Boolean = this.a.a(false, 2);
+    if (parammcg.jdField_b_of_type_Boolean) {
+      parammcg.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
+    }
+    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammcg.jdField_b_of_type_Boolean + "]");
   }
 }
 

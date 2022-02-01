@@ -1,21 +1,27 @@
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class tui
-  implements Comparator<tua>
+  implements qdy
 {
-  public tui(tug paramtug) {}
-  
-  public int a(tua paramtua1, tua paramtua2)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    long l1 = paramtua1.a;
-    long l2 = paramtua2.a;
-    if (l2 > l1) {
-      return 1;
-    }
-    if (l2 < l1) {
-      return -1;
-    }
-    return 0;
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pzj.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

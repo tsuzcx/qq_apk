@@ -1,323 +1,519 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.selectable.CommonMenuWrapper.1;
-import com.tencent.widget.BubblePopupWindow;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.2;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.3;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.5;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amcb
-  implements amcn
+  implements ambe
 {
-  private static final int e = bhtq.b(72.0F);
-  private static final int f = bhtq.b(63.0F);
-  public int a;
-  private amcl jdField_a_of_type_Amcl;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  bhuk jdField_a_of_type_Bhuk;
-  private blkc jdField_a_of_type_Blkc;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  public int b;
-  private bhuk b;
-  private int jdField_c_of_type_Int;
-  private bhuk jdField_c_of_type_Bhuk;
-  private int d;
+  private ambh jdField_a_of_type_Ambh;
+  private amca jdField_a_of_type_Amca;
+  private amcg jdField_a_of_type_Amcg;
+  private amch jdField_a_of_type_Amch;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  private void c()
+  public amcb(amca paramamca, ambh paramambh, amcg paramamcg, amch paramamch)
   {
-    if (this.jdField_a_of_type_Amcl == null) {
-      throw new IllegalStateException("Delegate has not bound.");
-    }
+    this.jdField_a_of_type_Amca = paramamca;
+    this.jdField_a_of_type_Ambh = paramambh;
+    this.jdField_a_of_type_Amcg = paramamcg;
+    this.jdField_a_of_type_Amch = paramamch;
   }
   
-  public int a()
+  private boolean a(int paramInt1, int paramInt2)
   {
-    return this.jdField_c_of_type_Int;
+    if (this.jdField_a_of_type_Amca == null) {}
+    while (this.jdField_a_of_type_Amch.a(paramInt1, paramInt2) == null) {
+      return false;
+    }
+    return true;
   }
   
-  public amcc a(View paramView, BaseChatPie paramBaseChatPie)
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    int m = 0;
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationInWindow(arrayOfInt);
-    int n = arrayOfInt[1];
-    int i = arrayOfInt[1];
-    i = paramView.getHeight() + i;
-    paramView = paramBaseChatPie;
-    if (paramBaseChatPie == null)
+    try
     {
-      paramView = paramBaseChatPie;
-      if ((this instanceof ambt)) {
-        paramView = ((ambt)this).a;
-      }
-    }
-    int j;
-    int k;
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
-    {
-      paramView.a.getLocationInWindow(arrayOfInt);
-      j = arrayOfInt[1];
-      if (n + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
-        break label344;
-      }
-      if (i + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
-        break label221;
-      }
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int + 0 <= e + ImmersiveUtils.jdField_c_of_type_Int)) {
-        break label171;
-      }
-      i = this.jdField_a_of_type_Int + 0;
-      k = m;
-    }
-    for (;;)
-    {
-      return new amcc(i, k);
-      j = bhtq.b();
-      break;
-      label171:
-      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("taskId", paramInt2);
+      ((JSONObject)localObject).put("actionId", paramInt1);
+      ((JSONObject)localObject).put("stopAll", 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stopAction('").append(((JSONObject)localObject).toString()).append("');");
+      localObject = this.jdField_a_of_type_Amch.a(100);
+      if (localObject == null)
       {
-        i = this.jdField_a_of_type_Int + 0;
-        k = 1;
+        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+        return;
       }
-      else
-      {
-        i = e + ImmersiveUtils.jdField_c_of_type_Int;
-        k = m;
-        continue;
-        label221:
-        i += 0;
-        if (f + i > j) {
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + 0 > e + ImmersiveUtils.jdField_c_of_type_Int))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 0;
-          }
-        }
-        for (;;)
-        {
-          k = i;
-          i = j;
-          break;
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 1;
-          }
-          else
-          {
-            j = e + ImmersiveUtils.jdField_c_of_type_Int + f + 0;
-            i = 0;
-            continue;
-            k = 1;
-            j = i;
-            i = k;
-          }
-        }
-        label344:
-        i = j;
-        k = m;
-        if (n <= j)
-        {
-          i = n + 0;
-          k = m;
-        }
-      }
-    }
-  }
-  
-  @Nullable
-  public amcl a()
-  {
-    return this.jdField_a_of_type_Amcl;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(@Nullable amcl paramamcl)
-  {
-    this.jdField_a_of_type_Amcl = paramamcl;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    c();
-    bhuk localbhuk;
-    if (this.jdField_a_of_type_Amcl.c())
-    {
-      int i = this.jdField_a_of_type_Amcl.c();
-      int j = this.jdField_a_of_type_Amcl.b();
-      if (this.jdField_a_of_type_Amcl.a() == i - j) {
-        localbhuk = this.b;
-      }
-    }
-    for (;;)
-    {
-      a(localbhuk, paramView, paramInt1, paramInt2, paramInt3);
-      return;
-      if (this.jdField_c_of_type_Bhuk != null)
-      {
-        localbhuk = this.jdField_c_of_type_Bhuk;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Bhuk == null)
-        {
-          this.jdField_a_of_type_Bhuk = new bhuk();
-          this.jdField_a_of_type_Bhuk.a(2131365191, anzj.a(2131701151), 2130838930);
-          this.jdField_a_of_type_Bhuk.a(2131377264, anzj.a(2131701149), 2130838948);
-          this.jdField_a_of_type_Bhuk.a(2131367078, anzj.a(2131701153), 2130838939);
-          this.jdField_a_of_type_Bhuk.a(2131366320, anzj.a(2131701150), 2130838938);
-        }
-        localbhuk = this.jdField_a_of_type_Bhuk;
-        continue;
-        localbhuk = this.b;
-      }
-    }
-  }
-  
-  protected void a(View paramView, int paramInt1, int paramInt2, bhuk parambhuk, int paramInt3, boolean paramBoolean)
-  {
-    a(paramView, paramInt1, paramInt2, parambhuk, paramInt3, paramBoolean, null);
-  }
-  
-  protected void a(View paramView, int paramInt1, int paramInt2, bhuk parambhuk, int paramInt3, boolean paramBoolean, Activity paramActivity)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bhkx.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), parambhuk, this.jdField_a_of_type_AndroidViewView$OnClickListener, true));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
-    parambhuk = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      parambhuk.d(paramBoolean);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Blkc);
-      paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
-      this.jdField_c_of_type_Int = paramInt1;
-      this.d = paramInt2;
+      ((amby)localObject).a(localStringBuilder.toString());
+      this.jdField_a_of_type_Ambh.a(paramInt2);
       return;
     }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, bhuk parambhuk, boolean paramBoolean, int paramInt3)
-  {
-    a(paramView, paramInt1, paramInt2, parambhuk, paramBoolean, paramInt3, null);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, bhuk parambhuk, boolean paramBoolean, int paramInt3, Activity paramActivity)
-  {
-    this.b = parambhuk;
-    this.jdField_c_of_type_Bhuk = null;
-    a(paramView, paramInt1, paramInt2, parambhuk, paramInt3, paramBoolean, paramActivity);
-  }
-  
-  void a(bhuk parambhuk, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramView, paramInt1, paramInt2, parambhuk, paramInt3, false);
-  }
-  
-  public void a(bhuk parambhuk, boolean paramBoolean)
-  {
-    this.b = parambhuk;
-    this.jdField_c_of_type_Bhuk = null;
-    Object localObject;
-    int i;
-    if ((paramBoolean) && (parambhuk != null))
+    catch (Throwable localThrowable)
     {
-      localObject = parambhuk.a();
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        parambhuk = new ArrayList(Arrays.asList((Object[])localObject));
-        i = 0;
-        if (i >= localObject.length) {
-          break label171;
-        }
-        if (localObject[i].a() != 2131365191) {}
+      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showBubble e:" + localThrowable);
+    }
+  }
+  
+  public void a(amca paramamca, int paramInt, ambs paramambs, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_SpriteDrawerInfoBridge", 2, "[initSprite]");
+    }
+    if (paramamca == null)
+    {
+      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "[initSprite], context == null!!!!!!!!!!!!!!!!");
+      return;
+    }
+    amhk.a(paramamca.a());
+    amhk.a(paramamca.a(), 300);
+    if ((this.jdField_a_of_type_Amcg == null) || (!paramamca.a()))
+    {
+      amhk.a(paramamca.a(), 300, 160, new Object[] { "glview is not ready" });
+      return;
+    }
+    if (!a(100, -1))
+    {
+      QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "[initSprite], fail to load script.");
+      if (paramamca.jdField_e_of_type_Int == 1) {
+        ThreadManager.getUIHandler().post(new CmShowSpriteDrawerInfoBridge.5(this, paramamca));
+      }
+      amhk.a(paramamca.a(), 300, 200, new Object[] { "script no exit" });
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    IPCSpriteContext localIPCSpriteContext = paramamca.a();
+    if (paramBundle != null)
+    {
+      localIPCSpriteContext.d = paramBundle.getInt("SelfRotate");
+      localIPCSpriteContext.jdField_e_of_type_Int = paramBundle.getInt("FriendRotate");
+      QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "mSelfRotate:" + localIPCSpriteContext.d + " mFriendRotate:" + localIPCSpriteContext.jdField_e_of_type_Int);
+      if (!TextUtils.isEmpty(paramamca.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramamca.jdField_b_of_type_JavaLangString, Integer.valueOf(localIPCSpriteContext.d));
+      }
+      if (!TextUtils.isEmpty(paramamca.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramamca.jdField_a_of_type_JavaLangString, Integer.valueOf(localIPCSpriteContext.jdField_e_of_type_Int));
       }
     }
-    for (;;)
+    localBundle.putParcelable("IPCSpriteContext", localIPCSpriteContext);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_initavatar_js", localBundle, new amce(this, paramambs, paramInt, paramamca));
+  }
+  
+  public void a(amca paramamca, CmShowRenderView.PlayActionConfig paramPlayActionConfig)
+  {
+    int i = 1;
+    if ((paramamca == null) || (paramPlayActionConfig == null)) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    Object localObject1 = ambn.a(paramPlayActionConfig);
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject = new bhum();
-      ((bhum)localObject).a(2131377264);
-      ((bhum)localObject).a(anzj.a(2131701152));
-      ((bhum)localObject).b(2130838948);
-      parambhuk.add(i + 1, localObject);
-      this.jdField_c_of_type_Bhuk = new bhuk();
-      parambhuk = parambhuk.iterator();
+      QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "playAction cacheActionJs:" + (String)localObject1);
+      localObject2 = new SpriteTaskParam();
+      ((SpriteTaskParam)localObject2).f = paramPlayActionConfig.jdField_a_of_type_Int;
+      ((SpriteTaskParam)localObject2).jdField_e_of_type_Int = 1;
+      ((SpriteTaskParam)localObject2).h = 0;
+      ((SpriteTaskParam)localObject2).g = 6;
+      ((SpriteTaskParam)localObject2).jdField_a_of_type_Boolean = true;
+      if ((!TextUtils.isEmpty(paramamca.jdField_b_of_type_JavaLangString)) && (!paramamca.jdField_b_of_type_JavaLangString.equals(paramPlayActionConfig.jdField_a_of_type_JavaLangString)))
+      {
+        ((SpriteTaskParam)localObject2).jdField_b_of_type_JavaLangString = paramamca.jdField_b_of_type_JavaLangString;
+        ((SpriteTaskParam)localObject2).jdField_a_of_type_JavaLangString = paramamca.jdField_a_of_type_JavaLangString;
+        ((SpriteTaskParam)localObject2).jdField_a_of_type_Int = paramPlayActionConfig.jdField_b_of_type_Int;
+        ((SpriteTaskParam)localObject2).m = paramPlayActionConfig.jdField_c_of_type_Int;
+        ((SpriteTaskParam)localObject2).jdField_e_of_type_JavaLangString = ((String)localObject1);
+        if (!paramPlayActionConfig.jdField_a_of_type_Boolean) {
+          break label222;
+        }
+      }
       for (;;)
       {
-        if (parambhuk.hasNext())
-        {
-          localObject = (bhum)parambhuk.next();
-          this.jdField_c_of_type_Bhuk.a((bhum)localObject);
-          continue;
-          i += 1;
-          break;
-        }
+        ((SpriteTaskParam)localObject2).n = i;
+        ((SpriteTaskParam)localObject2).jdField_a_of_type_Ambe = this;
+        ((SpriteTaskParam)localObject2).jdField_a_of_type_AndroidOsBundle = paramPlayActionConfig.jdField_a_of_type_AndroidOsBundle;
+        a((SpriteTaskParam)localObject2);
+        return;
+        ((SpriteTaskParam)localObject2).jdField_b_of_type_JavaLangString = paramamca.jdField_a_of_type_JavaLangString;
+        ((SpriteTaskParam)localObject2).jdField_a_of_type_JavaLangString = paramamca.jdField_b_of_type_JavaLangString;
+        break;
+        label222:
+        i = 0;
       }
+    }
+    localObject1 = new Bundle();
+    Object localObject2 = paramamca.a();
+    if ((!TextUtils.isEmpty(paramamca.jdField_b_of_type_JavaLangString)) && (!paramamca.jdField_b_of_type_JavaLangString.equals(paramPlayActionConfig.jdField_a_of_type_JavaLangString)))
+    {
+      ((IPCSpriteContext)localObject2).jdField_a_of_type_JavaLangString = ((IPCSpriteContext)localObject2).jdField_b_of_type_JavaLangString;
+      ((IPCSpriteContext)localObject2).jdField_b_of_type_JavaLangString = paramPlayActionConfig.jdField_a_of_type_JavaLangString;
+    }
+    ((Bundle)localObject1).putParcelable("IPCSpriteContext", (Parcelable)localObject2);
+    ((Bundle)localObject1).putParcelable("PlayActionConfig", paramPlayActionConfig);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_play_action", (Bundle)localObject1, new amcc(this, l, paramPlayActionConfig));
+  }
+  
+  public void a(amca paramamca, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_SpriteDrawerInfoBridge", 2, "[initSprite]");
+    }
+    if ((this.jdField_a_of_type_Amcg == null) || (paramamca == null) || (!paramamca.a())) {
+      if (paramamca != null) {
+        amhk.a(paramamca.a(), 300, 160, new Object[] { "glview is not ready" });
+      }
+    }
+    do
+    {
       return;
-      label171:
-      i = 0;
+      if (a(100, -1)) {
+        break;
+      }
+      QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "[checkfDressChanged], fail to load script.");
+    } while (paramamca.jdField_e_of_type_Int != 1);
+    ThreadManager.getUIHandler().post(new CmShowSpriteDrawerInfoBridge.3(this, paramamca));
+    return;
+    Bundle localBundle = new Bundle();
+    IPCSpriteContext localIPCSpriteContext = paramamca.a();
+    String str1 = localIPCSpriteContext.jdField_b_of_type_JavaLangString;
+    String str2 = localIPCSpriteContext.jdField_a_of_type_JavaLangString;
+    Integer localInteger;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
+      if (localInteger != null) {
+        localIPCSpriteContext.jdField_e_of_type_Int = localInteger.intValue();
+      }
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+      if (localInteger != null) {
+        localIPCSpriteContext.d = localInteger.intValue();
+      }
+    }
+    localIPCSpriteContext.jdField_a_of_type_JavaLangString = paramString2;
+    localIPCSpriteContext.jdField_b_of_type_JavaLangString = paramString1;
+    localBundle.putParcelable("IPCSpriteContext", localIPCSpriteContext);
+    localIPCSpriteContext.jdField_a_of_type_JavaLangString = str2;
+    localIPCSpriteContext.jdField_b_of_type_JavaLangString = str1;
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_initavatar_js", localBundle, new amcd(this, paramamca));
+  }
+  
+  public void a(SpriteTaskParam paramSpriteTaskParam)
+  {
+    if (paramSpriteTaskParam == null) {
+      return;
+    }
+    ThreadManager.excute(new CmShowSpriteDrawerInfoBridge.2(this, paramSpriteTaskParam), 192, null, true);
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("uin", paramString);
+      paramString = new StringBuilder();
+      paramString.append("removeBubbleAccessory('").append(((JSONObject)localObject).toString()).append("');");
+      localObject = this.jdField_a_of_type_Amch.a(100);
+      if (localObject == null)
+      {
+        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+        return;
+      }
+      ((amby)localObject).a(paramString.toString());
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showBubble e:" + paramString);
     }
   }
   
-  public void a(blkc paramblkc)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Blkc = paramblkc;
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("uin", paramString);
+        if (paramInt == 1)
+        {
+          localObject1 = "2D";
+          ((JSONObject)localObject2).put("model", localObject1);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("changeSpriteModel('").append(((JSONObject)localObject2).toString()).append("');");
+          localObject2 = this.jdField_a_of_type_Amch.a(100);
+          if (localObject2 == null)
+          {
+            QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+            return;
+          }
+          ((amby)localObject2).a(((StringBuilder)localObject1).toString());
+          ambn.a(paramString, paramInt);
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "changeSpriteModel e:" + paramString);
+        return;
+      }
+      Object localObject1 = "3D";
+    }
   }
   
-  public boolean a()
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt3));
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("uin", paramString);
+      ((JSONObject)localObject).put("xPos", paramInt1);
+      ((JSONObject)localObject).put("yPos", paramInt2);
+      ((JSONObject)localObject).put("rotate", paramInt3);
+      paramString = new StringBuilder();
+      paramString.append("updateSpriteParam('").append(((JSONObject)localObject).toString()).append("');");
+      localObject = this.jdField_a_of_type_Amch.a(100);
+      if (localObject == null)
+      {
+        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+        return;
+      }
+      ((amby)localObject).a(paramString.toString());
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "updateAvatarParam e:" + paramString);
+    }
   }
   
-  public int b()
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    return this.d;
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("uin", paramString1);
+        localJSONObject.put("text", ambc.a(bfuc.encodeToString(paramString2.getBytes("utf-8"), 0)));
+        localJSONObject.put("direction", paramInt1);
+        paramString1 = "";
+        if (paramInt2 != 1) {
+          break label408;
+        }
+        Object localObject = amav.a(paramString2, 1);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "showBubble, 2d bubbleInfo=", localObject });
+        }
+        if (localObject == null) {
+          break label408;
+        }
+        paramString1 = (String)((Pair)localObject).first;
+        paramInt1 = ((Integer)((Pair)localObject).second).intValue();
+        localObject = paramString1;
+        if (TextUtils.isEmpty(paramString1))
+        {
+          ApolloUtil.b("本地无qzone气泡资源，请检查配置是否ok");
+          localObject = amav.a(paramString2, 0, 1);
+        }
+        localJSONObject.put("bubblePath2D", localObject);
+        if (paramInt1 != -1) {
+          localJSONObject.put("bubbleId2D", paramInt1);
+        }
+        paramString1 = "";
+        if (paramInt2 == 1)
+        {
+          localObject = amav.a(paramString2, 2);
+          if (QLog.isColorLevel()) {
+            QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "showBubble, 3d bubbleInfo=", localObject });
+          }
+          if (localObject != null)
+          {
+            paramString1 = (String)((Pair)localObject).first;
+            paramInt1 = ((Integer)((Pair)localObject).second).intValue();
+            localObject = paramString1;
+            if (TextUtils.isEmpty(paramString1)) {
+              localObject = amav.a(paramString2, 0, 2);
+            }
+            localJSONObject.put("bubblePath3D", localObject);
+            if (paramInt1 != -1) {
+              localJSONObject.put("bubbleId3D", paramInt1);
+            }
+            paramString1 = new StringBuilder();
+            paramString1.append("setBubbleAccessory('").append(localJSONObject.toString()).append("');");
+            paramString2 = this.jdField_a_of_type_Amch.a(100);
+            if (paramString2 == null)
+            {
+              QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+              return;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "showBubble, script=", paramString1.toString() });
+            }
+            paramString2.a(paramString1.toString());
+            return;
+          }
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showBubble e:" + paramString1);
+        return;
+      }
+      paramInt1 = -1;
+      continue;
+      label408:
+      paramInt1 = -1;
+    }
   }
   
-  public void b()
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new JSONObject();
+        ((JSONObject)localObject).put("uin", paramString);
+        if (paramBoolean)
+        {
+          i = 1;
+          ((JSONObject)localObject).put("showOrHide", i);
+          paramString = new StringBuilder();
+          paramString.append("showOrHideSprite('").append(((JSONObject)localObject).toString()).append("');");
+          localObject = this.jdField_a_of_type_Amch.a(100);
+          if (localObject == null)
+          {
+            QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+            return;
+          }
+          ((amby)localObject).a(paramString.toString());
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showOrHideAvatar e:" + paramString);
+        return;
+      }
+      int i = 2;
+    }
   }
   
-  public void b(int paramInt)
+  public void a(List<String> paramList, boolean paramBoolean)
   {
-    this.d = paramInt;
+    Object localObject;
+    try
+    {
+      localObject = new JSONObject();
+      if (paramList == null) {
+        break label172;
+      }
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localJSONArray.put((String)paramList.next());
+      }
+      ((JSONObject)localObject).put("uins", localJSONArray);
+    }
+    catch (Throwable paramList)
+    {
+      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "clearAvatar e:" + paramList);
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      ((JSONObject)localObject).put("isClearAll", i);
+      paramList = new StringBuilder();
+      paramList.append("clearSprite('").append(((JSONObject)localObject).toString()).append("');");
+      localObject = this.jdField_a_of_type_Amch.a(100);
+      if (localObject == null)
+      {
+        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+        return;
+      }
+      ((amby)localObject).a(paramList.toString());
+      return;
+      label172:
+      if (paramBoolean) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  public void b(SpriteTaskParam paramSpriteTaskParam)
+  {
+    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_Amcg == null) || (this.jdField_a_of_type_Amca == null) || (!this.jdField_a_of_type_Amca.a())) {
+      return;
+    }
+    Object localObject1 = this.jdField_a_of_type_Amcg;
+    amcg.a(paramSpriteTaskParam);
+    localObject1 = "";
+    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_e_of_type_JavaLangString)) {
+      localObject1 = paramSpriteTaskParam.jdField_e_of_type_JavaLangString;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    Object localObject3 = this.jdField_a_of_type_Amch.a(paramSpriteTaskParam.jdField_c_of_type_Int);
+    Object localObject2 = localObject3;
+    if (localObject3 == null)
+    {
+      QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "playAction CmShow_ get sdk basic script");
+      localObject3 = this.jdField_a_of_type_Amch.a(100);
+      localObject2 = localObject3;
+      if (localObject3 == null)
+      {
+        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+        paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
+    }
+    paramSpriteTaskParam.jdField_b_of_type_Int = 2;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("playAction('").append((String)localObject1).append("');");
+    localObject2.a(((StringBuilder)localObject3).toString());
+    localObject2.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
+    localObject2.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
+    localObject1 = ApolloUtil.a();
+    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      amge.a((QQAppInterface)localObject1, paramSpriteTaskParam, bool, paramSpriteTaskParam.jdField_b_of_type_Boolean);
+      return;
+    }
   }
 }
 

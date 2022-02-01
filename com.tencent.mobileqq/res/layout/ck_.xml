@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/enp" android:background="@drawable/dhx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gba" />
-    </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/gdy" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/avk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:id="@id/dxz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/wtn" android:layout_below="@id/avk" />
+</LinearLayout>

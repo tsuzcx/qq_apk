@@ -1,24 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-
-public class ayai
-  implements bliz
+public final class ayai
 {
-  public ayai(NearbyGuideActivity paramNearbyGuideActivity, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Blir.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
-  }
+  public static final int[] a = { 12 };
 }
 
 

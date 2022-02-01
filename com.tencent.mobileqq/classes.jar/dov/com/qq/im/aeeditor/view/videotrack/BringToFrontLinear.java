@@ -1,0 +1,54 @@
+package dov.com.qq.im.aeeditor.view.videotrack;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.LinearLayout;
+import bmpk;
+
+public class BringToFrontLinear
+  extends LinearLayout
+{
+  private bmpk a;
+  
+  public BringToFrontLinear(Context paramContext)
+  {
+    super(paramContext);
+    a();
+  }
+  
+  public BringToFrontLinear(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    a();
+  }
+  
+  public BringToFrontLinear(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    a();
+  }
+  
+  private void a()
+  {
+    setWillNotDraw(true);
+    setChildrenDrawingOrderEnabled(true);
+    this.a = new bmpk();
+  }
+  
+  public void bringChildToFront(View paramView)
+  {
+    this.a.a(this, paramView);
+  }
+  
+  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  {
+    return this.a.a(paramInt1, paramInt2);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     dov.com.qq.im.aeeditor.view.videotrack.BringToFrontLinear
+ * JD-Core Version:    0.7.0.1
+ */

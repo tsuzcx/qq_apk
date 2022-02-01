@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import xts;
-import yuk;
+import wvd;
+import xvv;
 
 public class StoryPlayerTVKWrapper$1
   implements Runnable
 {
-  public StoryPlayerTVKWrapper$1(xts paramxts, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public StoryPlayerTVKWrapper$1(wvd paramwvd, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
-    yuk.d("StoryPlayerTVKWrapper", ">> stop + release");
+    xvv.d("StoryPlayerTVKWrapper", ">> stop + release");
     this.a.stop();
     this.a.release();
   }

@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Point;
 
-public class bfzx
-  implements QQPermissionCallback
+final class bfzx
+  implements bgaa<Point>
 {
-  public bfzx(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    bhlq.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
-    blgx.a(this.a.getActivity());
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 

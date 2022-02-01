@@ -1,42 +1,24 @@
-import android.os.Bundle;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class attm
-  extends atpa
+public class attm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  attm(attl paramattl) {}
+  public attm(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = this.a.a(paramInt + "", paramString, paramLong2 + "");
-    FileManagerEntity localFileManagerEntity = attl.a(this.a).a().a(paramLong2, paramLong1, paramString, paramInt);
-    if ((localObject != null) && (localFileManagerEntity != null))
-    {
-      localObject = ((aulp)localObject).a();
-      if (localObject != null) {
-        ((aulo)localObject).a(0, paramInt, paramString, (int)(localFileManagerEntity.fProgress * 100.0F), new Bundle());
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    paramString2 = this.a.a(paramInt1 + "", paramString1, paramLong2 + "");
-    FileManagerEntity localFileManagerEntity = attl.a(this.a).a().a(paramLong2, paramLong1, paramString1, paramInt1);
-    QLog.i("FMObserver<FileAssistant>", 1, "offline file download is finish. isSuc[" + paramBoolean + "sessionId[" + paramLong2 + "]");
-    if ((paramString2 != null) && (localFileManagerEntity != null) && (paramString2.a() != null)) {
-      paramString2.a().a(paramBoolean, paramInt1, paramString1, new Bundle());
-    }
-    if (paramString2 != null) {
-      this.a.b(paramString2);
-    }
+    ((avnl)this.a.a.getManager(303)).a((short)-23168, paramBoolean, true);
+    bcef.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 6, 6, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attm
  * JD-Core Version:    0.7.0.1
  */

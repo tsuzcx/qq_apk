@@ -1,47 +1,15 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 class bebx
-  extends bebi
+  implements bhnm
 {
-  bebx(bebw parambebw) {}
+  bebx(bebp parambebp, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a(int paramInt)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if (paramTeamWorkFileImportInfo.e != bebw.a(this.a).uniseq) {
-      return;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
-    bebw.a(this.a).saveExtInfoToExtStr("errorString", bebw.a(this.a, paramTeamWorkFileImportInfo.f));
-    bebw.a(this.a).saveExtInfoToExtStr("retCode", String.valueOf(paramTeamWorkFileImportInfo.f));
-    bebw.a(this.a).a().a(bebw.a(this.a).frienduin, bebw.a(this.a).istroop, bebw.a(this.a).uniseq);
-    bebw.a(this.a).removeObserver(bebw.a(this.a));
-    bebw.a(this.a).a().a(bebw.a(this.a).frienduin, bebw.a(this.a).istroop, bebw.a(this.a).uniseq, "extStr", bebw.a(this.a).extStr);
-    bebw.a(this.a).a().a(bebw.a(this.a).frienduin, bebw.a(this.a).istroop, bebw.a(this.a).uniseq, 32768, -1);
-    QLog.i("TeamWorkSender", 1, bebw.a(this.a).uniseq + " import file faild");
-    bebw.a(this.a).a().a(true, 3, null);
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if (paramTeamWorkFileImportInfo.e != bebw.a(this.a).uniseq) {}
-    do
-    {
-      return;
-      bebw.a(this.a).removeObserver(bebw.a(this.a));
-      bebw.a(this.a).mMsgUrl = paramString;
-      bebw.a(this.a).structingMsg.mMsgUrl = paramString;
-      bebw.a(this.a).msgData = bebw.a(this.a).getBytes();
-      bebw.a(this.a).removeFlag(1);
-      bebw.a(this.a).removeFlag(2);
-      bebw.a(this.a).a().b(bebw.a(this.a), null, false);
-      QLog.i("TeamWorkSender", 1, "start import file success");
-    } while (!QLog.isColorLevel());
-    QLog.i("TeamWorkSender", 1, "msg uniseq : " + bebw.a(this.a).uniseq + " import success, url:" + paramString);
   }
 }
 

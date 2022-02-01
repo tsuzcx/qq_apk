@@ -1,26 +1,38 @@
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class asac
-  extends anyu
+class asac
+  implements aszj
 {
-  public asac(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  asac(asab paramasab, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
-  }
+  public void onNo() {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onYes()
   {
-    if (!this.a.a) {
-      return;
+    this.jdField_a_of_type_Asab.a.a.a().aa();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Asab.a).getOnlineFileSessionCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
+    amqd localamqd;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localamqd = (amqd)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Asab.a).getBusinessHandler(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localamqd.a(localArrayList));
+    aszk.a(2131692366);
+    return;
+    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Asab.a).getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

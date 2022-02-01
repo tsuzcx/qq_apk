@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asnp;
-
-public class EmoticonPanelExtendHelper$4
+class EmoticonPanelExtendHelper$4
   implements Runnable
 {
-  public EmoticonPanelExtendHelper$4(asnp paramasnp) {}
+  EmoticonPanelExtendHelper$4(EmoticonPanelExtendHelper paramEmoticonPanelExtendHelper) {}
   
   public void run()
   {
-    this.this$0.b(false);
-    this.this$0.a();
+    this.this$0.setUpdateViewAlphaDisEnable(false);
+    this.this$0.updateViewAlpha();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper.4
  * JD-Core Version:    0.7.0.1
  */

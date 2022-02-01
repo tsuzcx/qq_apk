@@ -11,8 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import osn;
-import oso;
+import otm;
+import otn;
 
 public class ReadInJoyCommentTopGestureLayout
   extends RelativeLayout
@@ -24,7 +24,7 @@ public class ReadInJoyCommentTopGestureLayout
   private View jdField_a_of_type_AndroidViewView;
   Scroller jdField_a_of_type_AndroidWidgetScroller;
   private ReadInJoyCommentListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView;
-  private oso jdField_a_of_type_Oso;
+  private otn jdField_a_of_type_Otn;
   private boolean jdField_a_of_type_Boolean = true;
   float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -66,11 +66,11 @@ public class ReadInJoyCommentTopGestureLayout
       }
       Object localObject = this.jdField_a_of_type_AndroidViewView;
       ThreadManager.getUIHandler().postDelayed(new ReadInJoyCommentTopGestureLayout.1(this, (View)localObject), 32L);
-      localObject = this.jdField_a_of_type_Oso;
+      localObject = this.jdField_a_of_type_Otn;
       if (this.jdField_a_of_type_Boolean) {}
       for (int i = 1;; i = 2)
       {
-        ((oso)localObject).a(i, j);
+        ((otn)localObject).a(i, j);
         return;
       }
     }
@@ -116,17 +116,17 @@ public class ReadInJoyCommentTopGestureLayout
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
     if (this.jdField_b_of_type_Int - localLayoutParams.height > 200)
     {
-      localObject = this.jdField_a_of_type_Oso;
+      localObject = this.jdField_a_of_type_Otn;
       if (this.jdField_a_of_type_Boolean) {}
       for (;;)
       {
-        ((oso)localObject).a(i, -1);
+        ((otn)localObject).a(i, -1);
         return;
         i = 2;
       }
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.height, this.jdField_b_of_type_Int });
-    localValueAnimator.addUpdateListener(new osn(this, localLayoutParams, (View)localObject));
+    localValueAnimator.addUpdateListener(new otm(this, localLayoutParams, (View)localObject));
     localValueAnimator.setDuration(120L);
     localValueAnimator.start();
   }
@@ -218,9 +218,9 @@ public class ReadInJoyCommentTopGestureLayout
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = paramReadInJoyCommentListView;
   }
   
-  public void setFirstLevelCommentContainer(oso paramoso, boolean paramBoolean)
+  public void setFirstLevelCommentContainer(otn paramotn, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Oso = paramoso;
+    this.jdField_a_of_type_Otn = paramotn;
     this.c = paramBoolean;
   }
   

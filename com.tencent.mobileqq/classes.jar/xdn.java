@@ -1,24 +1,44 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdn
-  extends wou
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xec>
 {
-  public List<ylw> a = new ArrayList();
-  
-  public xdn(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
+  public xdn(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
-    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspGroupStoryFeedIdList.hasNext())
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xec paramxec)
+  {
+    if (paramxec.a == 1)
     {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
-      this.a.add(new ylw(localFeedSeqInfo));
+      paramQQStoryShareGroupProfileActivity.g = true;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Xeb.a();
+      paramQQStoryShareGroupProfileActivity.b(true);
+      paramxec = paramQQStoryShareGroupProfileActivity.b;
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label82;
+      }
     }
+    label82:
+    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
+    {
+      xwa.a("share_story", "clk_rank", 0, 0, new String[] { paramxec, paramQQStoryShareGroupProfileActivity });
+      return;
+      if (paramxec.a != 0) {
+        break;
+      }
+      paramQQStoryShareGroupProfileActivity.g = false;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
+      break;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xec.class;
   }
 }
 

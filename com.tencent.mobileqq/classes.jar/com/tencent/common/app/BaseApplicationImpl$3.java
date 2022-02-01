@@ -1,6 +1,6 @@
 package com.tencent.common.app;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 class BaseApplicationImpl$3
@@ -11,9 +11,9 @@ class BaseApplicationImpl$3
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_retryIndex", Integer.toString(this.jdField_a_of_type_Int));
-    localHashMap.put("param_uin", this.jdField_a_of_type_JavaLangString);
-    bdmc.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_JavaLangString, "PcActiveSuccB", true, 0L, 0L, localHashMap, "", true);
+    localHashMap.put("param_retryIndex", Integer.toString(this.val$retryIndex));
+    localHashMap.put("param_uin", this.val$uin);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.val$uin, "PcActiveSuccB", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

@@ -1,21 +1,46 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bgjc
-  implements View.OnClickListener
+public class bgjc
+  extends bgit
 {
-  bgjc(bgjb parambgjb) {}
+  public static bgjc a;
+  private int a;
   
-  public void onClick(View paramView)
+  static
   {
-    Intent localIntent = new Intent(bgjb.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    bgjb.a(this.a).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_Bgjc = new bgjc();
+  }
+  
+  public void a(bgfl parambgfl)
+  {
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 2) {
+      download(null, 0, parambgfl, false);
+    }
+  }
+  
+  public long getBID()
+  {
+    return 3L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "tintconfig";
+  }
+  
+  public String getScid(int paramInt)
+  {
+    return getScidPrefix();
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "theme_mapping_config_android";
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return false;
   }
 }
 

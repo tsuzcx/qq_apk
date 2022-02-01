@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class ajkr
+  implements DialogInterface.OnClickListener
 {
-  public ThemeTabLayout a;
+  public ajkr(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcef.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+  }
 }
 
 

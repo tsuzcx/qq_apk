@@ -1,10 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public abstract interface bbhu
+class bbhu
 {
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  public View.OnClickListener a;
+  public View a;
+  public TextView a;
+  public URLImageView a;
   
-  public abstract void a(boolean paramBoolean);
+  public bbhu(bbht parambbht, Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbhv(this);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561411, parambbht.b, false);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368344));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365420));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
 }
 
 

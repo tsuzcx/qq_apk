@@ -1,22 +1,58 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bbhh
-  implements bdbl
+  extends bbhi
 {
-  public bbhh(CameraCaptureView paramCameraCaptureView) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public bbhh(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378707));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369845));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368367));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365198));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378202));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378015));
+    this.d = ((TextView)localView.findViewById(2131365445));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      CameraCaptureView.a(this.a, true);
-      return;
+      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166944));
+      }
+      if (this.d != null) {
+        this.d.setTextColor(this.d.getContext().getResources().getColor(2131166944));
+      }
     }
-    CameraCaptureView.a.g();
+    do
+    {
+      return;
+      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      }
+    } while (this.d == null);
+    this.d.setTextColor(Color.parseColor("#737373"));
   }
 }
 

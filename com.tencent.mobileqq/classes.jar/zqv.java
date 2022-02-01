@@ -1,34 +1,50 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-final class zqv
-  extends zqh
+class zqv
+  implements URLDrawable.URLDrawableListener
 {
-  zqv(zqh paramzqh, PublishVideoEntry paramPublishVideoEntry) {}
+  zqv(zqq paramzqq, DisplayMetrics paramDisplayMetrics) {}
   
-  public void onFailure(String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Zqh.onFailure(paramString);
-    if ((this.jdField_a_of_type_Zqh instanceof wmp)) {
-      ((wmp)this.jdField_a_of_type_Zqh).a(941004);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
+    this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Zqq.c = false;
   }
   
-  public void onStart()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
+    this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Zqq.c = false;
   }
   
-  public void onSuccess(String paramString)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    float f1 = paramURLDrawable.getIntrinsicHeight();
+    float f2 = paramURLDrawable.getIntrinsicWidth();
+    paramURLDrawable = this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    int i = 0;
+    if (f2 != 0.0F) {
+      if (f1 <= bfvh.a(this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
+        break label109;
+      }
+    }
+    label109:
+    for (i = (int)bfvh.a(this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - bfvh.a(this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
+    {
+      if (i > 0)
+      {
+        paramURLDrawable.height = i;
+        this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
+      }
+      return;
+    }
   }
 }
 

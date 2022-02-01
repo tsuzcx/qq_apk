@@ -1,17 +1,20 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class tfe
-  extends tfp
+  extends AnimatorListenerAdapter
 {
-  public tfe(BridgeModule paramBridgeModule)
+  public tfe(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramBridgeModule);
+    this.a.setClickable(true);
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    BridgeModule.access$1100(this.a, paramInt2, paramIntent);
+    this.a.setClickable(true);
   }
 }
 

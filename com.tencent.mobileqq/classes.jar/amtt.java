@@ -1,24 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class amtt
-  implements amtu
+final class amtt
+  implements DialogInterface.OnClickListener
 {
-  amtt(amts paramamts) {}
+  amtt(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((amts.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((amts.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == amts.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(amts.a(this.a).jdField_a_of_type_JavaLangString)) && (amts.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
-    }
+    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
   }
 }
 

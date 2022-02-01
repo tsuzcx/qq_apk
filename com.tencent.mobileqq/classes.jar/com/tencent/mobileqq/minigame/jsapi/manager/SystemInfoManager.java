@@ -87,7 +87,7 @@ public class SystemInfoManager
     //   42: pop
     //   43: aload_0
     //   44: invokespecial 131	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:isLandscape	()Z
-    //   47: ifeq +616 -> 663
+    //   47: ifeq +623 -> 670
     //   50: aload_0
     //   51: getfield 59	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenWidthPixels	I
     //   54: aload_0
@@ -152,11 +152,11 @@ public class SystemInfoManager
     //   153: istore_1
     //   154: aload_0
     //   155: getfield 149	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mIGameUI	Lcom/tencent/mobileqq/minigame/jsapi/callbacks/IGameUI;
-    //   158: ifnull +553 -> 711
+    //   158: ifnull +560 -> 718
     //   161: aload_0
     //   162: getfield 149	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mIGameUI	Lcom/tencent/mobileqq/minigame/jsapi/callbacks/IGameUI;
     //   165: invokeinterface 155 1 0
-    //   170: ifnull +541 -> 711
+    //   170: ifnull +548 -> 718
     //   173: aload_0
     //   174: getfield 149	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mIGameUI	Lcom/tencent/mobileqq/minigame/jsapi/callbacks/IGameUI;
     //   177: invokeinterface 155 1 0
@@ -178,276 +178,281 @@ public class SystemInfoManager
     //   211: f2i
     //   212: istore 5
     //   214: iload_2
-    //   215: ifeq +496 -> 711
+    //   215: ifeq +503 -> 718
     //   218: iload 5
-    //   220: ifeq +491 -> 711
+    //   220: ifeq +498 -> 718
     //   223: iload 5
     //   225: istore_1
     //   226: aload_0
     //   227: getfield 165	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mActivity	Landroid/app/Activity;
     //   230: aload_0
     //   231: getfield 165	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mActivity	Landroid/app/Activity;
-    //   234: invokestatic 171	bnlc:a	(Landroid/content/Context;Landroid/app/Activity;)I
-    //   237: istore 5
-    //   239: iload 5
-    //   241: istore_3
-    //   242: iload 5
-    //   244: ifne +6 -> 250
-    //   247: iload 4
-    //   249: istore_3
-    //   250: new 114	org/json/JSONObject
-    //   253: dup
-    //   254: invokespecial 115	org/json/JSONObject:<init>	()V
-    //   257: astore 7
-    //   259: aload 7
-    //   261: ldc 173
-    //   263: iconst_0
-    //   264: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   267: pop
-    //   268: aload 7
-    //   270: ldc 178
-    //   272: iload_3
-    //   273: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   276: pop
-    //   277: aload 7
-    //   279: ldc 180
-    //   281: iload_2
-    //   282: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   285: pop
-    //   286: aload 7
-    //   288: ldc 182
-    //   290: iload_1
-    //   291: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   294: pop
-    //   295: aload 7
-    //   297: ldc 184
-    //   299: iload_2
-    //   300: iconst_0
-    //   301: isub
-    //   302: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   305: pop
-    //   306: aload 7
-    //   308: ldc 186
-    //   310: iload_1
-    //   311: iload_3
-    //   312: isub
-    //   313: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   316: pop
-    //   317: aload 6
-    //   319: ldc 188
-    //   321: iload_2
-    //   322: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   325: pop
-    //   326: aload 6
-    //   328: ldc 190
-    //   330: iload_1
-    //   331: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   334: pop
-    //   335: aload 6
-    //   337: ldc 192
-    //   339: iload_2
-    //   340: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   343: pop
-    //   344: aload 6
-    //   346: ldc 194
-    //   348: iload_1
-    //   349: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   352: pop
-    //   353: aload 6
-    //   355: ldc 196
-    //   357: iload 4
-    //   359: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   362: pop
-    //   363: aload 6
-    //   365: ldc 198
-    //   367: ldc 200
-    //   369: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   372: pop
-    //   373: aload 6
-    //   375: ldc 202
-    //   377: new 204	java/lang/StringBuilder
-    //   380: dup
-    //   381: invokespecial 205	java/lang/StringBuilder:<init>	()V
-    //   384: ldc 207
-    //   386: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: getstatic 216	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
-    //   392: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   395: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   398: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   401: pop
-    //   402: aload 6
-    //   404: ldc 222
-    //   406: ldc 224
-    //   408: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   411: pop
-    //   412: aload 6
-    //   414: ldc 226
-    //   416: bipush 16
-    //   418: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   421: pop
-    //   422: aload 6
-    //   424: ldc 228
-    //   426: invokestatic 233	com/tencent/mobileqq/minigame/utils/DeviceUtil:getDeviceBenchmarkLevel	()I
-    //   429: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   432: pop
-    //   433: aload 6
-    //   435: ldc 235
-    //   437: invokestatic 240	bhlo:c	()Ljava/lang/String;
-    //   440: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   443: pop
-    //   444: aload 6
-    //   446: ldc 242
-    //   448: ldc 244
-    //   450: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   453: pop
-    //   454: aload 6
-    //   456: ldc 246
-    //   458: aload 7
-    //   460: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   463: pop
-    //   464: new 114	org/json/JSONObject
-    //   467: dup
-    //   468: invokespecial 115	org/json/JSONObject:<init>	()V
-    //   471: astore 7
-    //   473: aload_0
-    //   474: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
-    //   477: ldc 247
-    //   479: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
-    //   482: istore_2
-    //   483: invokestatic 256	dov/com/tencent/mobileqq/richmedia/capture/util/LiuHaiUtils:b	()Z
-    //   486: ifeq +220 -> 706
-    //   489: aload_0
-    //   490: invokespecial 131	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:isLandscape	()Z
-    //   493: ifne +213 -> 706
+    //   234: invokestatic 171	cooperation/qzone/util/SystemUtil:getNotchHeight	(Landroid/content/Context;Landroid/app/Activity;)I
+    //   237: i2f
+    //   238: aload_0
+    //   239: getfield 54	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mDensity	F
+    //   242: fdiv
+    //   243: f2i
+    //   244: istore 5
+    //   246: iload 5
+    //   248: istore_3
+    //   249: iload 5
+    //   251: ifne +6 -> 257
+    //   254: iload 4
+    //   256: istore_3
+    //   257: new 114	org/json/JSONObject
+    //   260: dup
+    //   261: invokespecial 115	org/json/JSONObject:<init>	()V
+    //   264: astore 7
+    //   266: aload 7
+    //   268: ldc 173
+    //   270: iconst_0
+    //   271: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   274: pop
+    //   275: aload 7
+    //   277: ldc 178
+    //   279: iload_3
+    //   280: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   283: pop
+    //   284: aload 7
+    //   286: ldc 180
+    //   288: iload_2
+    //   289: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   292: pop
+    //   293: aload 7
+    //   295: ldc 182
+    //   297: iload_1
+    //   298: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   301: pop
+    //   302: aload 7
+    //   304: ldc 184
+    //   306: iload_2
+    //   307: iconst_0
+    //   308: isub
+    //   309: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   312: pop
+    //   313: aload 7
+    //   315: ldc 186
+    //   317: iload_1
+    //   318: iload_3
+    //   319: isub
+    //   320: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   323: pop
+    //   324: aload 6
+    //   326: ldc 188
+    //   328: iload_2
+    //   329: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   332: pop
+    //   333: aload 6
+    //   335: ldc 190
+    //   337: iload_1
+    //   338: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   341: pop
+    //   342: aload 6
+    //   344: ldc 192
+    //   346: iload_2
+    //   347: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   350: pop
+    //   351: aload 6
+    //   353: ldc 194
+    //   355: iload_1
+    //   356: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   359: pop
+    //   360: aload 6
+    //   362: ldc 196
+    //   364: iload 4
+    //   366: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   369: pop
+    //   370: aload 6
+    //   372: ldc 198
+    //   374: ldc 200
+    //   376: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   379: pop
+    //   380: aload 6
+    //   382: ldc 202
+    //   384: new 204	java/lang/StringBuilder
+    //   387: dup
+    //   388: invokespecial 205	java/lang/StringBuilder:<init>	()V
+    //   391: ldc 207
+    //   393: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: getstatic 216	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
+    //   399: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   408: pop
+    //   409: aload 6
+    //   411: ldc 222
+    //   413: ldc 224
+    //   415: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   418: pop
+    //   419: aload 6
+    //   421: ldc 226
+    //   423: bipush 16
+    //   425: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   428: pop
+    //   429: aload 6
+    //   431: ldc 228
+    //   433: invokestatic 233	com/tencent/mobileqq/minigame/utils/DeviceUtil:getDeviceBenchmarkLevel	()I
+    //   436: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   439: pop
+    //   440: aload 6
+    //   442: ldc 235
+    //   444: invokestatic 240	com/tencent/mobileqq/utils/DeviceInfoUtil:getQQVersion	()Ljava/lang/String;
+    //   447: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   450: pop
+    //   451: aload 6
+    //   453: ldc 242
+    //   455: ldc 244
+    //   457: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   460: pop
+    //   461: aload 6
+    //   463: ldc 246
+    //   465: aload 7
+    //   467: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   470: pop
+    //   471: new 114	org/json/JSONObject
+    //   474: dup
+    //   475: invokespecial 115	org/json/JSONObject:<init>	()V
+    //   478: astore 7
+    //   480: aload_0
+    //   481: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
+    //   484: ldc 247
+    //   486: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
+    //   489: istore_2
+    //   490: invokestatic 256	dov/com/tencent/mobileqq/richmedia/capture/util/LiuHaiUtils:b	()Z
+    //   493: ifeq +220 -> 713
     //   496: aload_0
-    //   497: getfield 70	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mStatusBarHeight	I
-    //   500: istore_1
-    //   501: aload 7
-    //   503: ldc_w 258
-    //   506: iload_1
-    //   507: iload_2
-    //   508: iadd
-    //   509: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   512: pop
-    //   513: aload 7
-    //   515: ldc_w 260
-    //   518: aload_0
-    //   519: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
-    //   522: ldc_w 261
-    //   525: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
-    //   528: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   531: pop
-    //   532: aload 7
-    //   534: ldc_w 263
-    //   537: aload_0
-    //   538: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
-    //   541: ldc_w 264
-    //   544: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
-    //   547: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   550: pop
-    //   551: aload 7
-    //   553: ldc_w 266
-    //   556: aload_0
-    //   557: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
-    //   560: ldc_w 267
-    //   563: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
-    //   566: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   569: pop
-    //   570: aload 6
-    //   572: ldc_w 269
-    //   575: aload 7
-    //   577: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   580: pop
-    //   581: aload_0
-    //   582: aload 6
-    //   584: putfield 112	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mSystemInfo	Lorg/json/JSONObject;
-    //   587: invokestatic 275	com/tencent/mobileqq/minigame/utils/GameLog:getInstance	()Lcom/tencent/mobileqq/minigame/utils/GameLog;
-    //   590: ldc 11
-    //   592: new 204	java/lang/StringBuilder
-    //   595: dup
-    //   596: invokespecial 205	java/lang/StringBuilder:<init>	()V
-    //   599: ldc_w 277
-    //   602: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   605: aload_0
-    //   606: getfield 112	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mSystemInfo	Lorg/json/JSONObject;
-    //   609: invokevirtual 278	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   612: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   615: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   618: invokevirtual 282	com/tencent/mobileqq/minigame/utils/GameLog:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   621: pop
-    //   622: aload 6
-    //   624: areturn
-    //   625: astore 7
-    //   627: invokestatic 275	com/tencent/mobileqq/minigame/utils/GameLog:getInstance	()Lcom/tencent/mobileqq/minigame/utils/GameLog;
-    //   630: ldc 11
-    //   632: new 204	java/lang/StringBuilder
-    //   635: dup
-    //   636: invokespecial 205	java/lang/StringBuilder:<init>	()V
-    //   639: ldc_w 284
-    //   642: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   645: aload 7
-    //   647: invokevirtual 287	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   650: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   653: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   656: invokevirtual 290	com/tencent/mobileqq/minigame/utils/GameLog:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   659: pop
-    //   660: aload 6
-    //   662: areturn
-    //   663: aload_0
-    //   664: getfield 59	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenWidthPixels	I
-    //   667: aload_0
-    //   668: getfield 64	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenHeightPixels	I
-    //   671: invokestatic 140	java/lang/Math:max	(II)I
-    //   674: istore_2
-    //   675: aload_0
-    //   676: getfield 59	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenWidthPixels	I
-    //   679: aload_0
-    //   680: getfield 64	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenHeightPixels	I
-    //   683: invokestatic 137	java/lang/Math:min	(II)I
-    //   686: istore_1
-    //   687: goto -613 -> 74
-    //   690: astore 8
-    //   692: ldc 11
-    //   694: iconst_1
-    //   695: ldc_w 292
-    //   698: aload 8
-    //   700: invokestatic 297	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   703: goto -386 -> 317
-    //   706: iconst_0
-    //   707: istore_1
-    //   708: goto -207 -> 501
-    //   711: iload_1
-    //   712: istore_2
-    //   713: iload_3
+    //   497: invokespecial 131	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:isLandscape	()Z
+    //   500: ifne +213 -> 713
+    //   503: aload_0
+    //   504: getfield 70	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mStatusBarHeight	I
+    //   507: istore_1
+    //   508: aload 7
+    //   510: ldc_w 258
+    //   513: iload_1
+    //   514: iload_2
+    //   515: iadd
+    //   516: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   519: pop
+    //   520: aload 7
+    //   522: ldc_w 260
+    //   525: aload_0
+    //   526: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
+    //   529: ldc_w 261
+    //   532: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
+    //   535: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   538: pop
+    //   539: aload 7
+    //   541: ldc_w 263
+    //   544: aload_0
+    //   545: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
+    //   548: ldc_w 264
+    //   551: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
+    //   554: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   557: pop
+    //   558: aload 7
+    //   560: ldc_w 266
+    //   563: aload_0
+    //   564: getfield 41	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mAppContext	Landroid/content/Context;
+    //   567: ldc_w 267
+    //   570: invokestatic 251	com/tencent/mobileqq/mini/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
+    //   573: invokevirtual 176	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   576: pop
+    //   577: aload 6
+    //   579: ldc_w 269
+    //   582: aload 7
+    //   584: invokevirtual 124	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   587: pop
+    //   588: aload_0
+    //   589: aload 6
+    //   591: putfield 112	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mSystemInfo	Lorg/json/JSONObject;
+    //   594: invokestatic 275	com/tencent/mobileqq/minigame/utils/GameLog:getInstance	()Lcom/tencent/mobileqq/minigame/utils/GameLog;
+    //   597: ldc 11
+    //   599: new 204	java/lang/StringBuilder
+    //   602: dup
+    //   603: invokespecial 205	java/lang/StringBuilder:<init>	()V
+    //   606: ldc_w 277
+    //   609: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: aload_0
+    //   613: getfield 112	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mSystemInfo	Lorg/json/JSONObject;
+    //   616: invokevirtual 278	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   619: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   622: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   625: invokevirtual 282	com/tencent/mobileqq/minigame/utils/GameLog:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   628: pop
+    //   629: aload 6
+    //   631: areturn
+    //   632: astore 7
+    //   634: invokestatic 275	com/tencent/mobileqq/minigame/utils/GameLog:getInstance	()Lcom/tencent/mobileqq/minigame/utils/GameLog;
+    //   637: ldc 11
+    //   639: new 204	java/lang/StringBuilder
+    //   642: dup
+    //   643: invokespecial 205	java/lang/StringBuilder:<init>	()V
+    //   646: ldc_w 284
+    //   649: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   652: aload 7
+    //   654: invokevirtual 287	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   657: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   660: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   663: invokevirtual 290	com/tencent/mobileqq/minigame/utils/GameLog:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   666: pop
+    //   667: aload 6
+    //   669: areturn
+    //   670: aload_0
+    //   671: getfield 59	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenWidthPixels	I
+    //   674: aload_0
+    //   675: getfield 64	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenHeightPixels	I
+    //   678: invokestatic 140	java/lang/Math:max	(II)I
+    //   681: istore_2
+    //   682: aload_0
+    //   683: getfield 59	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenWidthPixels	I
+    //   686: aload_0
+    //   687: getfield 64	com/tencent/mobileqq/minigame/jsapi/manager/SystemInfoManager:mScreenHeightPixels	I
+    //   690: invokestatic 137	java/lang/Math:min	(II)I
+    //   693: istore_1
+    //   694: goto -620 -> 74
+    //   697: astore 8
+    //   699: ldc 11
+    //   701: iconst_1
+    //   702: ldc_w 292
+    //   705: aload 8
+    //   707: invokestatic 297	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   710: goto -386 -> 324
+    //   713: iconst_0
     //   714: istore_1
-    //   715: goto -489 -> 226
+    //   715: goto -207 -> 508
+    //   718: iload_1
+    //   719: istore_2
+    //   720: iload_3
+    //   721: istore_1
+    //   722: goto -496 -> 226
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	718	0	this	SystemInfoManager
-    //   73	642	1	i	int
-    //   61	652	2	j	int
-    //   82	632	3	k	int
-    //   129	229	4	m	int
-    //   212	31	5	n	int
-    //   19	642	6	localJSONObject1	JSONObject
-    //   257	319	7	localJSONObject2	JSONObject
-    //   625	21	7	localException	java.lang.Exception
-    //   690	9	8	localJSONException	org.json.JSONException
+    //   0	725	0	this	SystemInfoManager
+    //   73	649	1	i	int
+    //   61	659	2	j	int
+    //   82	639	3	k	int
+    //   129	236	4	m	int
+    //   212	38	5	n	int
+    //   19	649	6	localJSONObject1	JSONObject
+    //   264	319	7	localJSONObject2	JSONObject
+    //   632	21	7	localException	java.lang.Exception
+    //   697	9	8	localJSONException	org.json.JSONException
     // Exception table:
     //   from	to	target	type
-    //   21	74	625	java/lang/Exception
-    //   74	131	625	java/lang/Exception
-    //   133	140	625	java/lang/Exception
-    //   142	149	625	java/lang/Exception
-    //   154	214	625	java/lang/Exception
-    //   226	239	625	java/lang/Exception
-    //   250	259	625	java/lang/Exception
-    //   259	317	625	java/lang/Exception
-    //   317	501	625	java/lang/Exception
-    //   501	622	625	java/lang/Exception
-    //   663	687	625	java/lang/Exception
-    //   692	703	625	java/lang/Exception
-    //   259	317	690	org/json/JSONException
+    //   21	74	632	java/lang/Exception
+    //   74	131	632	java/lang/Exception
+    //   133	140	632	java/lang/Exception
+    //   142	149	632	java/lang/Exception
+    //   154	214	632	java/lang/Exception
+    //   226	246	632	java/lang/Exception
+    //   257	266	632	java/lang/Exception
+    //   266	324	632	java/lang/Exception
+    //   324	508	632	java/lang/Exception
+    //   508	629	632	java/lang/Exception
+    //   670	694	632	java/lang/Exception
+    //   699	710	632	java/lang/Exception
+    //   266	324	697	org/json/JSONException
   }
   
   public void setActivity(Activity paramActivity)

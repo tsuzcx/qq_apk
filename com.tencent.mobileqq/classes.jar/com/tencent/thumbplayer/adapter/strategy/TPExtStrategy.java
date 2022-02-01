@@ -1,57 +1,106 @@
 package com.tencent.thumbplayer.adapter.strategy;
 
+import android.text.TextUtils;
 import com.tencent.thumbplayer.adapter.TPPlaybackInfo;
+import com.tencent.thumbplayer.adapter.strategy.model.TPStrategyConfig;
 import com.tencent.thumbplayer.adapter.strategy.model.TPStrategyContext;
 import com.tencent.thumbplayer.utils.TPLogUtil;
-import java.util.ArrayDeque;
-import java.util.NoSuchElementException;
-import java.util.Queue;
 
 public class TPExtStrategy
-  implements ITPStrategy
+  extends TPBaseStrategy
 {
   private static final String TAG = "TPThumbPlayer[TPExtStrategy.java]";
-  private Queue<Integer> mPlayerList;
+  private int mCurId = 0;
+  private int[] mPlayerList;
   
-  public TPExtStrategy(Queue<Integer> paramQueue)
+  public TPExtStrategy(TPStrategyConfig paramTPStrategyConfig)
   {
-    this.mPlayerList = paramQueue;
-    if (this.mPlayerList == null) {
-      this.mPlayerList = new ArrayDeque();
+    super(paramTPStrategyConfig);
+    this.mPlayerList = paramTPStrategyConfig.getPlayerList();
+    if ((this.mPlayerList == null) || (this.mPlayerList.length == 0)) {
+      this.mPlayerList = new int[1];
     }
+  }
+  
+  private boolean isUseSoftDec(String paramString)
+  {
+    return (TextUtils.equals(paramString, "hd")) || (TextUtils.equals(paramString, "sd")) || (TextUtils.equals(paramString, "msd"));
   }
   
   public int[] strategyForDec()
   {
-    return new int[] { 102, 101 };
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = -1;
+    if (this.mCurId >= this.mPlayerList.length)
+    {
+      TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForDec error, decType:" + arrayOfInt[0]);
+      return arrayOfInt;
+    }
+    if ((this.mPlayerList[this.mCurId] == 1) || (this.mPlayerList[this.mCurId] == 2)) {
+      arrayOfInt[0] = 102;
+    }
+    for (;;)
+    {
+      TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForDec, decType:" + arrayOfInt[0]);
+      return arrayOfInt;
+      if (this.mPlayerList[this.mCurId] == 3) {
+        arrayOfInt[0] = 101;
+      }
+    }
   }
   
   public int strategyForOpen(TPPlaybackInfo paramTPPlaybackInfo)
   {
-    try
+    if (this.mPlayerList.length > this.mCurId) {}
+    for (int i = this.mPlayerList[this.mCurId];; i = 0)
     {
-      int i = ((Integer)this.mPlayerList.remove()).intValue();
-      return i;
+      int j;
+      if (i != 2)
+      {
+        j = i;
+        if (i != 3) {}
+      }
+      else
+      {
+        j = i;
+        if (!isThumbPlayerEnable(paramTPPlaybackInfo)) {
+          j = 0;
+        }
+      }
+      TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForOpen, playerType:" + j);
+      return j;
     }
-    catch (NoSuchElementException paramTPPlaybackInfo)
-    {
-      TPLogUtil.e("TPThumbPlayer[TPExtStrategy.java]", paramTPPlaybackInfo);
-    }
-    return 0;
   }
   
   public int strategyForRetry(TPPlaybackInfo paramTPPlaybackInfo, TPStrategyContext paramTPStrategyContext)
   {
-    try
-    {
-      int i = ((Integer)this.mPlayerList.remove()).intValue();
-      return i;
+    if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 0)) {
+      return strategyForOpen(paramTPPlaybackInfo);
     }
-    catch (NoSuchElementException paramTPPlaybackInfo)
+    if (this.mPlayerList.length - 1 > this.mCurId)
     {
-      TPLogUtil.e("TPThumbPlayer[TPExtStrategy.java]", paramTPPlaybackInfo);
+      paramTPStrategyContext = this.mPlayerList;
+      i = this.mCurId + 1;
+      this.mCurId = i;
     }
-    return 0;
+    for (int i = paramTPStrategyContext[i];; i = 0)
+    {
+      int j;
+      if (i != 2)
+      {
+        j = i;
+        if (i != 3) {}
+      }
+      else
+      {
+        j = i;
+        if (!isThumbPlayerEnable(paramTPPlaybackInfo)) {
+          j = 0;
+        }
+      }
+      TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForRetry, playerType:" + j);
+      return j;
+    }
   }
 }
 

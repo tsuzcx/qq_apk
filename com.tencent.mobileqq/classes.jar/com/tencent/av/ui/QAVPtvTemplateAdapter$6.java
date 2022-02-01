@@ -3,13 +3,13 @@ package com.tencent.av.ui;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import mhi;
-import mii;
+import mgr;
+import mhr;
 
 public class QAVPtvTemplateAdapter$6
   implements Runnable
 {
-  public QAVPtvTemplateAdapter$6(mhi parammhi, String paramString, boolean paramBoolean, long paramLong) {}
+  public QAVPtvTemplateAdapter$6(mgr parammgr, String paramString, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -19,11 +19,11 @@ public class QAVPtvTemplateAdapter$6
     Object localObject1;
     if (i < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject1 = (mii)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localObject1 != null) && (((mii)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+      localObject1 = (mhr)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localObject1 != null) && (((mhr)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
       {
-        ((mii)localObject1).b = false;
-        ((mii)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+        ((mhr)localObject1).b = false;
+        ((mhr)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
         j = i;
         if (i >= k)
         {
@@ -63,11 +63,11 @@ public class QAVPtvTemplateAdapter$6
         {
           localObject1 = localObject2;
           if (j != -1) {
-            localObject1 = (mii)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
+            localObject1 = (mhr)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
           }
         }
         if (localObject1 != null) {
-          this.this$0.a(this.jdField_a_of_type_Long, (mii)localObject1);
+          this.this$0.a(this.jdField_a_of_type_Long, (mhr)localObject1);
         }
       }
       return;

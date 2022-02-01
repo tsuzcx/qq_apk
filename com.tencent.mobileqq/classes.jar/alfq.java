@@ -1,26 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Collections;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
 import java.util.List;
 
-public class alfq
-  implements View.OnClickListener
+class alfq
+  implements alep
 {
-  public alfq(ChooseItemView paramChooseItemView) {}
+  alfq(alfo paramalfo, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
+    if (paramBoolean) {}
+    try
     {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a.a(ChooseItemView.b(this.a));
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Alfo.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
     }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

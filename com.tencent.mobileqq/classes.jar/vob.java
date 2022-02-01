@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
-import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
 
-public class vob
-  implements View.OnClickListener
+public final class vob
 {
-  public vob(QCircleAggregationFragment paramQCircleAggregationFragment) {}
+  public ShareGroupFeedItem a;
+  public VideoListFeedItem a;
+  public ArrayList<voa> a;
   
-  public void onClick(View paramView)
+  public vob()
   {
-    vtq.a("", 22, 13);
-    aaak.a().a(new QCircleSelectTabEvent(6));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

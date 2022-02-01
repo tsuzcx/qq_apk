@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import auog;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
@@ -730,7 +730,7 @@ public class AssetsUtil
     {
       paramContext = new File(paramString2);
       if (paramContext.exists()) {
-        auog.a(paramContext);
+        FileUtil.deleteFile(paramContext);
       }
       label242:
       return false;

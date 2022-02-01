@@ -1,11 +1,25 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richstatus.EditActivity;
 
-class baml
+public class baml
+  implements bamx
 {
-  public int a;
-  public final ArrayList<MessageForPtt> a = new ArrayList(100);
-  public final int b = 99;
+  public baml(EditActivity paramEditActivity) {}
+  
+  public void a(bhby parambhby)
+  {
+    if (EditActivity.a(this.a) == parambhby)
+    {
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).a(null);
+      }
+      EditActivity.a(this.a, null);
+    }
+  }
+  
+  public boolean a(bhby parambhby)
+  {
+    return parambhby != EditActivity.a(this.a);
+  }
 }
 
 

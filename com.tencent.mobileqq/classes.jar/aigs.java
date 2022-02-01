@@ -1,19 +1,9 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-
 public class aigs
+  extends aigo
 {
-  public String a;
-  
-  public aigs(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
-  
   public boolean a()
   {
-    return false;
+    return true;
   }
 }
 

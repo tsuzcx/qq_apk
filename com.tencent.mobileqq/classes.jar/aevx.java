@@ -1,22 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.34.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aevx
-  extends axuu
+  implements View.OnClickListener
 {
-  public aevx(Leba paramLeba) {}
+  public aevx(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
-    }
-    if (Leba.a(this.a) == null) {
-      return;
-    }
-    this.a.a.post(new Leba.34.1(this));
+    bcef.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

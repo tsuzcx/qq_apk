@@ -1,32 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.ArrayList;
 import java.util.List;
 
-class wdy
-  implements View.OnClickListener
+public class wdy
+  extends vqr<wfw>
 {
-  wdy(wdx paramwdx) {}
+  private static final String b = vpl.a("StorySvc.video_show_delete");
+  public String a;
   
-  public void onClick(View paramView)
+  public wdy(String paramString)
   {
-    Object localObject = new ArrayList();
-    ((List)localObject).add(vtt.a("ext1", this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get()));
-    vtn.a(16, 2, this.a.jdField_a_of_type_Wdw.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, (List)localObject, this.a.jdField_a_of_type_Wdw.a.b());
-    localObject = new QCirclePolymerizationBean();
-    ((QCirclePolymerizationBean)localObject).setTagInfo(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
-    ((QCirclePolymerizationBean)localObject).setSourceType(this.a.jdField_a_of_type_Wdw.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType);
-    ((QCirclePolymerizationBean)localObject).setFromReportBean(this.a.jdField_a_of_type_Wdw.a.a().clone().setElementIdStr("portraitlist"));
-    ((QCirclePolymerizationBean)localObject).setPolymerizationType(7);
-    ((QCirclePolymerizationBean)localObject).setExt1From(1);
-    uyx.a(paramView.getContext(), (QCirclePolymerizationBean)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return b;
+  }
+  
+  public wfw a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    try
+    {
+      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
+      return new wfw(localRspDeleteVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDeleteVideo.vid_list.addAll(localArrayList);
+    return localReqDeleteVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
   }
 }
 

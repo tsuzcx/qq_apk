@@ -1,20 +1,19 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
 
 public class aawx
-  implements aaxu
 {
-  public aawx(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(List<bgte> paramList)
-  {
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
-    long l = System.currentTimeMillis();
-    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
-  }
+  public int a;
+  public BluetoothGatt a;
+  public BluetoothGattCharacteristic a;
+  public BluetoothGattService a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public BluetoothGattCharacteristic b;
+  public int c;
+  public BluetoothGattCharacteristic c;
 }
 
 

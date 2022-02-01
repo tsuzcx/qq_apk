@@ -1,38 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
-class anfn
-  implements View.OnClickListener
+public class anfn
+  implements Comparator<File>
 {
-  anfn(anfj paramanfj) {}
+  public anfn(CleanCache paramCleanCache) {}
   
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((anfj.a(this.a).d()) || (anfj.b(this.a)))
-    {
-      anfj.b(this.a, false);
-      anfj.a(this.a).a();
-      anfj.c(this.a).setVisibility(8);
-      anfj.b(this.a).setVisibility(8);
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (anfj.a(this.a).c())
-      {
-        anfj.b(this.a, true);
-        anfj.a(this.a).b();
-        anfj.b(this.a).setVisibility(0);
-      }
+    if (l < 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfn
  * JD-Core Version:    0.7.0.1
  */

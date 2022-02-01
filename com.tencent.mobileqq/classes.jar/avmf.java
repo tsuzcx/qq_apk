@@ -1,19 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-
-final class avmf
-  implements aldq
+public abstract interface avmf
 {
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
-    }
-  }
+  public abstract void a();
 }
 
 

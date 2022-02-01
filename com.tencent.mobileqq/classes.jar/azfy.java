@@ -1,23 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
-class azfy
+public abstract interface azfy
 {
-  azfy(azfn paramazfn) {}
-  
-  @QQPermissionDenied(1)
-  public void denied()
-  {
-    bhlq.a(azfn.a(this.a), 2131697711, 2131697712).setOnDismissListener(new azfz(this));
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    ((azic)azfn.a(this.a).getManager(369)).a(9);
-    azfn.a(this.a).show();
-  }
+  public abstract void b();
 }
 
 

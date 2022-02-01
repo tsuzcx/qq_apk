@@ -1,208 +1,115 @@
-import android.os.Bundle;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetailActivity.9.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.PhoneInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.ReqBody;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class nwo
+  extends anxq
 {
-  private static nwo jdField_a_of_type_Nwo;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<nwf> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private qfo jdField_a_of_type_Qfo = qfo.a();
+  public nwo(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public static nwo a()
+  public int a()
   {
-    if (jdField_a_of_type_Nwo == null) {
-      jdField_a_of_type_Nwo = new nwo();
-    }
-    return jdField_a_of_type_Nwo;
+    return 4;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg)
+  public void a(Object paramObject)
   {
-    if (paramToServiceMsg != null)
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-      long l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("time_stamp", l);
-      this.jdField_a_of_type_Qfo.a(paramToServiceMsg);
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      }
+      paramObject = new JSONObject();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {}
     }
-  }
-  
-  public String a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "getTrueUin uin:" + paramString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      paramObject.put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      paramObject.put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name);
+      paramObject.put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
+      paramObject.put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedGrade);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      autn.a("follow", paramObject, localArrayList, null);
+      if (this.a.f)
       {
-        nwf localnwf = (nwf)localIterator.next();
-        if (localnwf.jdField_a_of_type_JavaLangString.equals(paramString))
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
         {
-          paramString = localnwf.jdField_a_of_type_Nwh.jdField_a_of_type_JavaLangString;
-          return paramString;
+          paramObject = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "mp_msg_sys_12", "scan_via", 0, 0, paramObject, "", "", this.a.jdField_g_of_type_JavaLangString);
         }
       }
-      return null;
-    }
-  }
-  
-  public nwf a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "getAdvertisementItem uin:" + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      else
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
+        this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
+        this.a.jdField_b_of_type_AndroidViewView.setEnabled(false);
+        this.a.I();
+        this.a.i();
+        this.a.z();
+        AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_AndroidContentIntent);
+        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
         {
-          nwf localnwf = (nwf)localIterator.next();
-          if (paramString.equals(localnwf.jdField_a_of_type_JavaLangString)) {
-            return localnwf;
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.e);
+          if (QLog.isColorLevel()) {
+            QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
           }
         }
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nwf)localIterator.next()).jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, int paramInt, nwf paramnwf)
-  {
-    if ((paramnwf == null) || (paramAppInterface == null)) {}
-    for (;;)
-    {
-      return;
-      oidb_cmd0x886.PhoneInfo localPhoneInfo = nwy.a();
-      try
-      {
-        l1 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
-        paramAppInterface = paramnwf.a(paramInt);
-        long l2 = NetConnInfoCenter.getServerTimeMillis();
-        String str = bjtz.d(l1 + paramnwf.c + paramInt + l2);
-        oidb_cmd0x886.ReqBody localReqBody = new oidb_cmd0x886.ReqBody();
-        localReqBody.uint64_uin.set(l1);
-        localReqBody.msg_phone_info.set(localPhoneInfo);
-        localReqBody.msg_ad_info.set(paramAppInterface);
-        localReqBody.uint64_client_time.set(l2);
-        localReqBody.bytes_uuid.set(ByteStringMicro.copyFromUtf8(str));
-        localReqBody.enum_ad_display.set(1);
-        a(qfq.a("OidbSvc.0x886", 2182, 0, localReqBody.toByteArray()));
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (this.a.jdField_g_of_type_Int == 50) {
+          AccountDetailActivity.a(this.a, 1);
         }
-        paramAppInterface = new StringBuilder("AdReport(");
-        paramAppInterface.append(paramInt).append(") msgID=").append(paramnwf.c);
-        QLog.d("AdvertisementRecentUserManager", 2, paramAppInterface.toString());
+        if ((this.a.h == 115) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+          ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(134247140, this.a.e, null, null, null, 0L, false);
+        }
+        if (this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("report_business_tvalue"))
+        {
+          int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("report_business_tvalue", -1);
+          paramObject = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("strp1");
+          if (i != -1) {
+            ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(i, this.a.e, paramObject, null, null, 0L, false);
+          }
+        }
         return;
       }
-      catch (Exception paramAppInterface)
-      {
-        for (;;)
-        {
-          long l1 = 0L;
-          paramAppInterface.printStackTrace();
-        }
-      }
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
-  {
-    if ((paramRecentUser != null) && (paramRecentUser.uin != null)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        nwf localnwf = a(paramRecentUser.uin);
-        if ((localnwf != null) && (NetConnInfoCenter.getServerTimeMillis() - localnwf.jdField_a_of_type_Long > 86400000L))
-        {
-          localObject1 = (ProxyManager)paramQQAppInterface.getManager(18);
-          if (localObject1 == null)
-          {
-            localObject1 = null;
-            if (localObject1 != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("AdvertisementRecentUserManager", 2, "deleteItem uin:" + paramRecentUser.uin);
-              }
-              alni.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
-              ((apaw)localObject1).delRecentUser(paramRecentUser);
-              alpb.b(paramQQAppInterface, localnwf.jdField_a_of_type_JavaLangString, 1008);
-              paramQQAppInterface.a().c(localnwf.jdField_a_of_type_JavaLangString, 1008);
-            }
-            ThreadManager.executeOnFileThread(new AdvertisementRecentUserManager.1(this, localnwf));
-          }
-        }
-        else
-        {
-          return;
-        }
-        Object localObject1 = ((ProxyManager)localObject1).a();
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "removeUinItem uin:" + paramString);
-    }
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    catch (JSONException paramObject)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      for (;;)
       {
-        nwf localnwf = (nwf)localIterator.next();
-        if (paramString.equals(localnwf.jdField_a_of_type_JavaLangString)) {
-          localArrayList.add(localnwf);
-        }
+        paramObject.printStackTrace();
+        continue;
+        paramObject = "";
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.removeAll(localArrayList);
   }
   
-  public void a(nwf paramnwf)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "putAdvertisementItem uin:" + paramnwf.jdField_a_of_type_JavaLangString);
+    this.a.d(2131694775);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.jdField_c_of_type_Int -= 1;
+    if (this.a.jdField_c_of_type_Int == 0) {
+      this.a.M();
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramnwf);
-      return;
-    }
+    this.a.jdField_b_of_type_AndroidViewView.postDelayed(new AccountDetailActivity.9.1(this), 1000L);
   }
 }
 

@@ -1,18 +1,47 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class lvm
-  extends lur
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  private static volatile lvm jdField_a_of_type_Lvm;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void a(long paramLong) {}
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private lvm()
   {
-    paramInt2 = this.b * paramInt1 / 750;
-    paramInt3 = this.c * paramInt1 / 750;
-    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
+    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
+    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
+    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
+  }
+  
+  public static lvm a()
+  {
+    if (jdField_a_of_type_Lvm == null) {}
+    try
+    {
+      if (jdField_a_of_type_Lvm == null) {
+        jdField_a_of_type_Lvm = new lvm();
+      }
+      return jdField_a_of_type_Lvm;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

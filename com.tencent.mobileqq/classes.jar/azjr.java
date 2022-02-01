@@ -1,56 +1,42 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.videoplatform.api.ILog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.util.WeakReference;
 
 public class azjr
-  extends apcq
+  implements ILog
 {
-  private static azkn jdField_a_of_type_Azkn = new azkn("weather", 1000, 3, 1);
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private WeakReference<azjt> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public azjr(int paramInt, Intent paramIntent, azjt paramazjt)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    super(0, true, true, 60000L, false, false, "official_location");
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramazjt);
+    QLog.d(paramString1, paramInt, paramString2);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void e(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. mCallback is null ");
-      }
-      return;
-    }
-    if ((paramSosoLbsInfo == null) || (paramInt != 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. errCode : " + paramInt);
-      }
-      ((azjt)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, 0.0D, 0.0D, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
-      return;
-    }
-    paramSosoLbsInfo = new LatLng(paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
-    if (QLog.isColorLevel()) {
-      QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish invoked. latLng : " + paramSosoLbsInfo + " errCode : " + paramInt);
-    }
-    try
-    {
-      jdField_a_of_type_Azkn.a(paramSosoLbsInfo, new azjs(this, paramSosoLbsInfo, paramInt));
-      return;
-    }
-    catch (Throwable paramSosoLbsInfo)
-    {
-      QLog.e("OnlineStatusWeatherLocationListener", 1, "getPoiWithLatLngError", paramSosoLbsInfo);
-    }
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void v(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
   }
 }
 

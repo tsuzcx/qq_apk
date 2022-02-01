@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.widget.media;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.util.Log;
-import bdax;
-import bhgm;
+import bbub;
+import bfpx;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
@@ -44,7 +44,7 @@ class MiniAppCamera$2$1
       this.this$1.val$callback.onGetPhoto(null);
       return;
     }
-    localObject2 = bhgm.a(this.val$data, 0, this.val$data.length);
+    localObject2 = bfpx.a(this.val$data, 0, this.val$data.length);
     i = ((Bitmap)localObject2).getWidth();
     j = ((Bitmap)localObject2).getHeight();
     localObject3 = new Matrix();
@@ -52,7 +52,7 @@ class MiniAppCamera$2$1
     float f4;
     float f2;
     float f5;
-    if (bdax.d(bdax.g))
+    if (bbub.d(bbub.g))
     {
       if (!this.this$1.this$0.isBackCameraNow) {
         break label682;

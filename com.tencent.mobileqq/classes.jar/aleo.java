@@ -1,18 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aleo
-  implements aldq
+public class aleo
 {
-  aleo(alee paramalee, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  static aleo a(JSONObject paramJSONObject)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_Alee.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    if (paramJSONObject == null) {
+      return new aleo();
+    }
+    aleo localaleo = new aleo();
+    try
+    {
+      localaleo.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localaleo.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
+      localaleo.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localaleo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
+      localaleo.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
+      localaleo.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
+      localaleo.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
+      localaleo.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
+      localaleo.g = paramJSONObject.getString("classifyName");
+      localaleo.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
+      localaleo.f = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localaleo.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
+      localaleo.h = paramJSONObject.getString("trialstartday");
+      localaleo.i = paramJSONObject.getString("trialendday");
+      return localaleo;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localaleo;
   }
 }
 

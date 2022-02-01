@@ -1,20 +1,15 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class aemf
-  extends aemy
+public class aemf
+  implements DialogInterface.OnClickListener
 {
-  aemf(aeme paramaeme, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramaeme.a, paramInt1, paramInt2);
-  }
+  public aemf(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aeme.a.a != null) {
-      this.jdField_a_of_type_Aeme.a.a.setText(this.jdField_a_of_type_JavaLangString);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

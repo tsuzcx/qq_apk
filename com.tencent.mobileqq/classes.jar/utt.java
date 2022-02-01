@@ -1,42 +1,20 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class utt
-  extends uuy
+class utt
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public utt(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    super(paramViewGroup, 2131560017, paramInt, paramWSVerticalPageFragment);
-  }
+  utt(utr paramutr) {}
   
-  public FrameLayout a()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a instanceof utq)) {
-      return ((utq)this.a).a();
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      uya.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      return;
     }
-    return null;
-  }
-  
-  public utq a(int paramInt)
-  {
-    return new uuz(a(), this);
-  }
-  
-  public void a() {}
-  
-  public void b() {}
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  public void c() {}
-  
-  protected boolean c()
-  {
-    return true;
   }
 }
 

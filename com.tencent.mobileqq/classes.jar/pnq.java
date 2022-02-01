@@ -1,137 +1,43 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import kotlin.Metadata;
-import kotlin.jvm.JvmName;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"toBoolean", "", "Lcom/tencent/mobileqq/pb/PBBoolField;", "toByteArrayOrNull", "", "Lcom/tencent/mobileqq/pb/PBBytesField;", "toEnum", "", "Lcom/tencent/mobileqq/pb/PBEnumField;", "toInt", "Lcom/tencent/mobileqq/pb/PBUInt32Field;", "defaultValue", "toLong", "", "Lcom/tencent/mobileqq/pb/PBUInt64Field;", "toPBListValue", "", "P", "Lcom/tencent/mobileqq/pb/MessageMicro;", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "toPBParseValue", "R", "pbParser", "Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "(Lcom/tencent/mobileqq/pb/MessageMicro;Ljava/lang/Object;Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;)Ljava/lang/Object;", "toPBValue", "(Lcom/tencent/mobileqq/pb/MessageMicro;Lcom/tencent/mobileqq/pb/MessageMicro;)Lcom/tencent/mobileqq/pb/MessageMicro;", "toString", "", "Lcom/tencent/mobileqq/pb/PBStringField;", "toStringOrNull", "toStringUtf8", "toStringUtf8OrNull", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-@JvmName(name="PBFieldUtils")
-public final class pnq
+public class pnq
+  implements tdr
 {
-  public static final int a(@NotNull PBEnumField paramPBEnumField)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBEnumField, "$this$toEnum");
-    if (paramPBEnumField.has()) {
-      return paramPBEnumField.get();
-    }
-    return 0;
-  }
+  public pnq(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field)
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
-    if (paramPBUInt32Field.has()) {
-      return paramPBUInt32Field.get();
-    }
-    return 0;
-  }
-  
-  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
-    if (paramPBUInt32Field.has()) {
-      paramInt = paramPBUInt32Field.get();
-    }
-    return paramInt;
-  }
-  
-  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
-    if (paramPBUInt64Field.has()) {
-      return paramPBUInt64Field.get();
-    }
-    return 0L;
-  }
-  
-  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field, long paramLong)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
-    if (paramPBUInt64Field.has()) {
-      paramLong = paramPBUInt64Field.get();
-    }
-    return paramLong;
-  }
-  
-  @Nullable
-  public static final <P extends MessageMicro<P>> P a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable P paramP)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBValue");
-    if (paramMessageMicro.has()) {
-      paramP = paramMessageMicro.get();
-    }
-    return paramP;
-  }
-  
-  @Nullable
-  public static final <P extends MessageMicro<P>, R> R a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable R paramR, @NotNull pno<P, R> parampno)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBParseValue");
-    Intrinsics.checkParameterIsNotNull(parampno, "pbParser");
-    if (paramMessageMicro.has())
+    this.a.a.a(paramBaseArticleInfo, paramInt);
+    JSONObject localJSONObject = ozb.a(this.a.getActivity(), this.a.a(), 3, paramInt, (ArticleInfo)paramBaseArticleInfo);
+    try
     {
-      paramMessageMicro = paramMessageMicro.get();
-      Intrinsics.checkExpressionValueIsNotNull(paramMessageMicro, "get()");
-      paramR = parampno.a(paramMessageMicro);
+      localJSONObject.put("card_type", 8);
+      ozd localozd = new ozd(paramBaseArticleInfo);
+      localozd.e = String.valueOf(paramBaseArticleInfo.mArticleID);
+      localozd.f = String.valueOf(paramBaseArticleInfo.mStrategyId);
+      localozd.g = localJSONObject.toString();
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localozd.a = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.a.a);
+      }
+      localozd.b = "0X8009A79";
+      localozd.c = "0X8009A79";
+      ozb.a(localozd);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.a.a());
+      localJSONObject.put("folder_status", pay.d);
+      localJSONObject.put("kandian_mode", pay.e());
+      localJSONObject.put("feeds_type", "" + pay.a(paramBaseArticleInfo));
+      localJSONObject.put("rowkey", uhv.a(paramBaseArticleInfo));
+      paramBaseArticleInfo = localJSONObject.toString();
+      odq.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", amtj.a(2131712250), paramBaseArticleInfo, false);
+      return;
     }
-    return paramR;
-  }
-  
-  @Nullable
-  public static final String a(@NotNull PBBytesField paramPBBytesField)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8OrNull");
-    if (paramPBBytesField.has()) {
-      return paramPBBytesField.get().toStringUtf8();
-    }
-    return null;
-  }
-  
-  @Nullable
-  public static final String a(@NotNull PBBytesField paramPBBytesField, @Nullable String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8");
-    if (paramPBBytesField.has()) {
-      paramString = paramPBBytesField.get().toStringUtf8();
-    }
-    return paramString;
-  }
-  
-  @Nullable
-  public static final String a(@NotNull PBStringField paramPBStringField)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBStringField, "$this$toStringOrNull");
-    if (paramPBStringField.has()) {
-      return paramPBStringField.get().toString();
-    }
-    return null;
-  }
-  
-  public static final boolean a(@NotNull PBBoolField paramPBBoolField)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBBoolField, "$this$toBoolean");
-    if (paramPBBoolField.has()) {
-      return paramPBBoolField.get();
-    }
-    return false;
-  }
-  
-  @Nullable
-  public static final byte[] a(@NotNull PBBytesField paramPBBytesField)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toByteArrayOrNull");
-    if (paramPBBytesField.has()) {
-      return paramPBBytesField.get().toByteArray();
-    }
-    return null;
+    catch (Exception paramBaseArticleInfo) {}
   }
 }
 

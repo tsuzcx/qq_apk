@@ -1,18 +1,48 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiqp
-  extends bebs
+  extends amyh
 {
-  public aiqp(TroopChatPie paramTroopChatPie) {}
+  public aiqp(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    becb.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
   }
   
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    becb.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (PublicAccountFragment.a(this.a))
+      {
+        if (PublicAccountFragment.a(this.a) != null) {
+          PublicAccountFragment.b(this.a).a(this.a.b(), true, null);
+        }
+        PublicAccountFragment.a(this.a, false);
+      }
+      this.a.i();
+    }
   }
 }
 

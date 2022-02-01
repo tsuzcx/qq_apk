@@ -1,24 +1,10 @@
-import java.util.Comparator;
-
-class bblx
-  implements Comparator<bbku>
+public class bblx
 {
-  bblx(bblv parambblv) {}
+  public boolean a;
   
-  public int a(bbku parambbku1, bbku parambbku2)
+  public bblx(bblw parambblw)
   {
-    if (parambbku2.b() > parambbku1.b()) {}
-    do
-    {
-      return -1;
-      if (parambbku2.b() < parambbku1.b()) {
-        return 1;
-      }
-    } while (parambbku2.a() > parambbku1.a());
-    if (parambbku2.a() == parambbku1.a()) {
-      return 0;
-    }
-    return 1;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

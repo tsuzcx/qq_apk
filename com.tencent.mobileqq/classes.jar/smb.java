@@ -1,23 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class smb
-  implements View.OnClickListener
+  implements rgw
 {
-  public smb(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public smb(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle, float paramFloat)
   {
-    ReadinjoyTabFrame.a(this.a, this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
-    if (BaseApplicationImpl.sProcessId != 9) {
-      bodt.a(BaseApplicationImpl.getContext());
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
     }
-    ozs.e("1");
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(Bundle paramBundle, int paramInt, float paramFloat)
+  {
+    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 200: 
+      this.a.jdField_a_of_type_Rgw.a(paramBundle, (int)paramFloat);
+      return;
+    case 202: 
+      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+      return;
+    }
+    rgs.b(paramBundle);
+  }
+  
+  public void a(Bundle paramBundle, String paramString)
+  {
+    paramString = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a();
+    pkm.a().b(true);
+    ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 

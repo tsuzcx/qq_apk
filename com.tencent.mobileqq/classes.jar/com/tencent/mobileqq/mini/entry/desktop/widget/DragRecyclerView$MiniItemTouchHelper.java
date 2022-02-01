@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
 import android.view.View;
-import blsg;
-import blsk;
+import bjwf;
+import bjwj;
 
 class DragRecyclerView$MiniItemTouchHelper
-  extends blsg
+  extends bjwf
 {
-  public DragRecyclerView$MiniItemTouchHelper(DragRecyclerView paramDragRecyclerView, blsk paramblsk)
+  public DragRecyclerView$MiniItemTouchHelper(DragRecyclerView paramDragRecyclerView, bjwj parambjwj)
   {
-    super(paramblsk);
+    super(parambjwj);
   }
   
   public void onChildViewDetachedFromWindow(View paramView) {}

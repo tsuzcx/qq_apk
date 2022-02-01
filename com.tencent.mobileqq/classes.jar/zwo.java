@@ -1,27 +1,8 @@
 import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-public class zwo
-  implements bliz
+public abstract interface zwo
 {
-  public zwo(QRDisplayActivity paramQRDisplayActivity, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      bdll.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB6", "0X800AEB6", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(7);
-      continue;
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(8);
-      bdll.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

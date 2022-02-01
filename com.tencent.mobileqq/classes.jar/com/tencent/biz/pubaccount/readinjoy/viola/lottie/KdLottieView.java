@@ -14,7 +14,7 @@ import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
-import tdo;
+import thx;
 
 public class KdLottieView
   extends DiniFlyAnimationView
@@ -36,7 +36,7 @@ public class KdLottieView
     localHttpRequset.paramMap = ((Map)localObject);
     localObject = ViolaSDKManager.getInstance().getHttpAdapter();
     if (localObject != null) {
-      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new tdo(this, paramString, paramIVLottieLoadListener), true);
+      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new thx(this, paramString, paramIVLottieLoadListener), true);
     }
   }
   
@@ -116,7 +116,7 @@ public class KdLottieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView
  * JD-Core Version:    0.7.0.1
  */

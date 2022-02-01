@@ -1,48 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
 
 class aujf
-  implements audo
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  aujf(aujd paramaujd) {}
+  aujf(auix paramauix) {}
   
-  public View a()
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Augj.a());
-  }
-  
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    aujd.a(this.a, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    if (this.a.jdField_a_of_type_Auef != null) {
-      return this.a.jdField_a_of_type_Auef.b();
-    }
-    return false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Aueg != null)) {
-      this.a.jdField_a_of_type_Aueg.a();
-    }
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_Augj.e() == 10) {
-        auem.a(this.a.jdField_a_of_type_Augj.c());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Augj.d(), this);
-      aujd.a(this.a, true);
-      aujd.a(this.a);
-      this.a.d = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
     }
   }
 }

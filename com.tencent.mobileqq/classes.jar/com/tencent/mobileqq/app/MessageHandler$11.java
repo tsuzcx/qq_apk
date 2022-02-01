@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import axjo;
-import bhmi;
+import avwv;
+import com.tencent.mobileqq.utils.FileUtils;
 
 class MessageHandler$11
   implements Runnable
@@ -10,7 +10,7 @@ class MessageHandler$11
   
   public void run()
   {
-    bhmi.a(axjo.a, true);
+    FileUtils.delete(avwv.a, true);
   }
 }
 

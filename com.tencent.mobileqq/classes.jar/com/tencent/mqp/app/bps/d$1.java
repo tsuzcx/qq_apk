@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.bps;
 
-import bjik;
+import bhny;
 
 public final class d$1
   implements Runnable

@@ -1,119 +1,162 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.biz.richframework.network.servlet.VSBaseServlet.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import org.json.JSONObject;
 
 public class aaba
-  extends MSFServlet
+  extends WebViewPlugin
 {
-  private static final long a = QzoneConfig.getInstance().getConfig("qqcircle", "secondary_vs_time_out_time", 20000);
+  beyh a = null;
   
-  private int a(InputStream paramInputStream, OutputStream paramOutputStream)
+  public aaba()
   {
-    long l = a(paramInputStream, paramOutputStream);
-    if (l > 2147483647L) {
-      return -1;
-    }
-    return (int)l;
+    this.mPluginNameSpace = "NearbyTroopsPlugin";
   }
   
-  private long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  protected void a(String paramString)
   {
-    byte[] arrayOfByte = new byte[4096];
-    int i;
-    for (long l = 0L;; l += i)
+    for (;;)
     {
-      i = paramInputStream.read(arrayOfByte);
-      if (-1 == i) {
-        break;
-      }
-      paramOutputStream.write(arrayOfByte, 0, i);
-    }
-    return l;
-  }
-  
-  private void a(VSBaseRequest paramVSBaseRequest)
-  {
-    if (paramVSBaseRequest.isEnableCache())
-    {
-      yuk.b("VSNetworkHelper| Protocol Cache", "start to response cache,CmdName:" + paramVSBaseRequest.getCmdName() + " Seq:" + paramVSBaseRequest.getCurrentSeq());
-      ThreadManagerV2.executeOnSubThread(new VSBaseServlet.1(this, paramVSBaseRequest));
-    }
-  }
-  
-  private byte[] a(InputStream paramInputStream)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    a(paramInputStream, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  @CallSuper
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Bundle localBundle = new Bundle();
-    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent.getSerializableExtra("key_request_data");
-    localBundle.putSerializable("key_request_data", localVSBaseRequest);
-    if (localVSBaseRequest == null)
-    {
-      QLog.e("VSNetworkHelper", 1, "onReceive. KEY_REQUEST_DATA is Null.");
-      return;
-    }
-    if (paramFromServiceMsg != null) {
       try
       {
-        long l = System.currentTimeMillis() - paramIntent.getLongExtra("key_send_timestamp", 0L);
-        if (VSNetworkHelper.b(localVSBaseRequest.getCmdName())) {
-          QLog.i("VSNetworkHelper", 2, "onReceive Info:CmdName:" + paramFromServiceMsg.getServiceCmd() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | seqNum:" + localVSBaseRequest.getCurrentSeq() + " | network cost:" + l);
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString);
         }
-        localBundle.putParcelable("key_response_msg", paramFromServiceMsg);
-        localBundle.putLong("key_send_timestamp", System.currentTimeMillis());
-        localBundle.putLong("key_network_time_cost", l);
-        VSNetworkHelper.a().onReceive(localVSBaseRequest.getContextHashCode(), paramFromServiceMsg.isSuccess(), localBundle);
-        return;
+        localActivity = this.mRuntime.a();
+        localIntent = new Intent();
+        try
+        {
+          paramString = new JSONObject(paramString).getJSONObject("data");
+          if (paramString == null) {
+            continue;
+          }
+          localIntent.putExtra("data", paramString.toString());
+          localActivity.setResult(-1, localIntent);
+          localActivity.finish();
+          return;
+        }
+        catch (Exception paramString)
+        {
+          if (!QLog.isColorLevel()) {
+            break label170;
+          }
+        }
+        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
       }
-      catch (Throwable paramIntent)
+      catch (Exception paramString)
       {
-        QLog.e("VSNetworkHelper", 2, new Object[] { Integer.valueOf(1), paramIntent + "onReceive error" });
-        VSNetworkHelper.a().onReceive(localVSBaseRequest.getContextHashCode(), false, localBundle);
+        Activity localActivity;
+        Intent localIntent;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
         return;
       }
+      localActivity.setResult(0, localIntent);
+      continue;
+      label170:
+      paramString = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("VSNetworkHelper", 2, "onReceive Info:FromServiceMsg is null !! CmdName:null | TraceId:" + localVSBaseRequest.getTraceId() + " | seqNum:" + localVSBaseRequest.getCurrentSeq());
-    }
-    VSNetworkHelper.a().onReceive(localVSBaseRequest.getContextHashCode(), false, localBundle);
   }
   
-  @CallSuper
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected void b(String paramString)
   {
-    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent.getSerializableExtra("key_request_data");
-    byte[] arrayOfByte2 = localVSBaseRequest.encode();
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (arrayOfByte2 == null) {
-      arrayOfByte1 = new byte[4];
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyTroopsPlugin", 2, "giftAnimation:" + paramString);
+      }
+      localActivity = this.mRuntime.a();
+      if (localActivity != null)
+      {
+        if (localActivity.isFinishing()) {
+          return;
+        }
+        localObject = new JSONObject(paramString);
+        i = ((JSONObject)localObject).optInt("id");
+        long l1 = ((JSONObject)localObject).optLong("senderUin", 0L);
+        long l2 = ((JSONObject)localObject).optLong("receiveUin", 0L);
+        paramString = ((JSONObject)localObject).optString("brief");
+        boolean bool = ((JSONObject)localObject).optBoolean("showClose", false);
+        String str1 = ((JSONObject)localObject).optString("senderAvatarURL");
+        String str2 = ((JSONObject)localObject).optString("receiverAvatarURL");
+        localObject = ((JSONObject)localObject).optString("callback");
+        localMessageForDeliverGiftTips = new MessageForDeliverGiftTips();
+        localMessageForDeliverGiftTips.animationPackageId = i;
+        localMessageForDeliverGiftTips.senderUin = l1;
+        localMessageForDeliverGiftTips.receiverUin = l2;
+        localMessageForDeliverGiftTips.showCloseBtn = bool;
+        localMessageForDeliverGiftTips.animationBrief = paramString;
+        localMessageForDeliverGiftTips.senderAvatarUrl = str1;
+        localMessageForDeliverGiftTips.receiveAvatarUrl = str2;
+        localMessageForDeliverGiftTips.frienduin = String.valueOf(10000L);
+        if (this.a == null)
+        {
+          callJs((String)localObject, new String[] { "{\"result\":10,\"message\":\"troopGiftManager is null\"}" });
+          return;
+        }
+      }
     }
-    if (VSNetworkHelper.b(localVSBaseRequest.getCmdName())) {
-      QLog.i("VSNetworkHelper", 2, "onSend Info:CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | SeqNum:" + localVSBaseRequest.getCurrentSeq() + " | request encode size:" + arrayOfByte1.length);
+    catch (Exception paramString)
+    {
+      Activity localActivity;
+      Object localObject;
+      int i;
+      MessageForDeliverGiftTips localMessageForDeliverGiftTips;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
+        return;
+        this.a.a(localActivity);
+        if (this.a.a(localMessageForDeliverGiftTips))
+        {
+          this.a.a = new aabb(this, (String)localObject);
+          callJs((String)localObject, new String[] { "{\"result\":0,\"id\":" + i + "}" });
+          return;
+        }
+        callJs((String)localObject, new String[] { "{\"result\":2}" });
+      }
     }
-    paramIntent.putExtra("key_send_timestamp", System.currentTimeMillis());
-    paramPacket.setSSOCommand(localVSBaseRequest.getCmdName());
-    paramPacket.putSendData(bhuf.a(arrayOfByte1));
-    paramPacket.setTimeout(a);
-    vts.a(600, localVSBaseRequest.getCmdName(), localVSBaseRequest.getTraceId(), 0L, 0);
-    a(localVSBaseRequest);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("NearbyTroopsPlugin".equals(paramString2))
+    {
+      if (("setSelectTypeResult".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        a(paramVarArgs[0]);
+        return true;
+      }
+      if (("giftAnimation".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        b(paramVarArgs[0]);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    AppInterface localAppInterface = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.a();
+    if ((localAppInterface == null) || (localActivity == null)) {
+      return;
+    }
+    this.a = ((beyh)localAppInterface.getManager(223));
+  }
+  
+  public void onDestroy()
+  {
+    if (this.a != null) {
+      this.a.d();
+    }
   }
 }
 

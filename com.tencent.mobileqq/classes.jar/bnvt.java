@@ -1,13 +1,34 @@
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import java.nio.ByteBuffer;
 
-class bnvt
-  implements bnwp
+public class bnvt
 {
-  bnvt(bnvs parambnvs) {}
-  
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public static ByteBuffer a(int paramInt1, int paramInt2)
   {
-    this.a.a(paramBoolean, paramGetAdsRsp);
+    try
+    {
+      if (bnvs.c)
+      {
+        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
+        bnvs.b = true;
+        ByteBuffer localByteBuffer2 = localByteBuffer1;
+        if (localByteBuffer1 == null)
+        {
+          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
+          bnvs.b = false;
+        }
+        return localByteBuffer2;
+      }
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        localObject = null;
+      }
+    }
   }
 }
 

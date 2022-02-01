@@ -1,244 +1,85 @@
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.RSACrypt;
-import oicq.wlogin_sdk.tools.util;
 
 public class bjov
-  extends SSOAccountObserver
+  extends Drawable
 {
-  public bjov(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private int jdField_b_of_type_Int;
+  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private int c;
+  private int d;
+  private int e;
+  private int f;
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public bjov(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onFailed--action = " + paramInt1 + ", ret = " + paramInt2 + ", ssoAccount = *" + bjqq.a(paramString));
-    this.a.f();
-    if (paramInt2 == -1000)
-    {
-      QuickLoginAuthorityActivity.a(this.a).a(this.a, this.a.getResources().getString(2131694160));
-      return;
+    this.jdField_a_of_type_Int = paramBitmap.getWidth();
+    this.jdField_b_of_type_Int = paramBitmap.getHeight();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.c <= 0) {
+      this.c = 1080;
     }
-    paramBundle = (ErrMsg)paramBundle.getParcelable("lastError");
-    if (paramBundle == null) {}
-    for (paramBundle = this.a.getString(2131694157);; paramBundle = paramBundle.getMessage())
+    if (this.d <= 0) {
+      this.d = 1920;
+    }
+    this.f = (this.d * this.jdField_a_of_type_Int / this.c);
+    if (this.jdField_b_of_type_Int > this.f) {
+      this.e = (this.jdField_b_of_type_Int - this.f);
+    }
+    if (QLog.isColorLevel())
     {
-      QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "ssoAccount failed, error: ", paramBundle });
-      QQToast.a(BaseApplicationImpl.getContext(), paramBundle + "(" + paramInt2 + ")", 0).a();
-      this.a.a(paramString);
-      return;
+      QLog.i("UserGuideWeiShiActivity", 2, "displayWidth" + paramInt1 + " displayHeight " + paramInt2);
+      QLog.i("UserGuideWeiShiActivity", 2, "mWidth" + this.jdField_a_of_type_Int + " mHeight " + this.jdField_b_of_type_Int);
+      QLog.i("UserGuideWeiShiActivity", 2, "mNewBitmMapHeight" + this.f + " mTop " + this.e);
     }
   }
   
-  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
+  public void draw(Canvas paramCanvas)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetA1WithA1--ret = " + paramInt1 + ", ssoAccount = *" + bjqq.a(paramString));
-    paramString = "" + QuickLoginAuthorityActivity.a(this.a).a(this.a.jdField_a_of_type_MqqManagerWtloginManager, paramString);
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    this.a.b = null;
-    paramString = new WloginSimpleInfo();
-    this.a.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(this.a.jdField_a_of_type_JavaLangString, paramString);
-    paramArrayOfByte = new RSACrypt(this.a).EncryptData(this.a.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-    paramString = (ErrMsg)paramBundle.getParcelable("errMsg");
-    paramBundle = this.a;
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (paramString == null) {}
-    for (paramString = "";; paramString = paramString.getMessage())
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.f);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.f;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
     {
-      paramBundle.a(paramInt1, paramArrayOfByte, str, paramString);
-      return;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
     }
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetTicketNoPasswd--ssoAccount = *" + bjqq.a(paramString));
-    this.a.b = null;
-    if ((this.a.jdField_a_of_type_AndroidOsBundle.containsKey("qrcode")) && (this.a.jdField_a_of_type_AndroidOsBundle.containsKey("schemacallback"))) {
-      QuickLoginAuthorityActivity.a(this.a);
-    }
-    while (!this.a.jdField_a_of_type_AndroidOsBundle.containsKey("p")) {
-      return;
-    }
-    arig localarig = (arig)aran.a().a(546);
-    paramBundle = "";
-    if (paramInt == 32) {
-      paramBundle = util.buf_to_string(paramArrayOfByte);
-    }
-    String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("p");
-    paramArrayOfByte = str1;
-    if (!TextUtils.isEmpty(str1))
-    {
-      paramArrayOfByte = str1;
-      if (!str1.endsWith("&")) {
-        paramArrayOfByte = str1 + "&";
-      }
-    }
-    paramString = "keyindex=19&clientuin=$CLIENTUIN$&clientkey=$CLIENTKEY$".replace("$CLIENTUIN$", paramString).replace("$CLIENTKEY$", paramBundle);
-    String str3 = paramArrayOfByte + paramString;
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(str3));
-    paramBundle = null;
-    str1 = null;
-    String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString("schemacallback");
-    paramString = str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (str2.startsWith("mttbrowser://")) {
-        paramString = "com.tencent.mtt";
-      }
-    }
-    else
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label813;
-      }
-      paramArrayOfByte = Uri.parse(paramArrayOfByte).getQueryParameter("pt_browser");
-      QLog.i("SSOAccountObserver", 1, "-->onGetTicketNoPasswd--schemacallback=" + str2 + ",pt_browser=" + paramArrayOfByte);
-      if ((TextUtils.isEmpty(paramArrayOfByte)) || (!"LieBaoFast".equals(paramArrayOfByte))) {
-        break label813;
-      }
-      paramString = "com.ijinshan.browser_fast";
-    }
-    label806:
-    label813:
-    for (;;)
-    {
-      for (;;)
-      {
-        paramInt = 0;
-        if (!TextUtils.isEmpty(paramString)) {}
-        try
-        {
-          paramArrayOfByte = this.a.getPackageManager().getPackageInfo(paramString, 0);
-          if (localarig.jdField_a_of_type_Int == 1)
-          {
-            paramBundle = (String)localarig.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-            if ((this.a.a(paramString, paramBundle)) && (paramArrayOfByte != null))
-            {
-              paramInt = 1;
-              if (paramInt != 0)
-              {
-                localIntent.setPackage(paramString);
-                localIntent.setData(Uri.parse(str3));
-              }
-              if ((localarig.b != 1) || (paramInt != 0)) {
-                break label754;
-              }
-              this.a.f();
-              QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131710115), 1).a();
-              paramArrayOfByte = new HashMap();
-              paramArrayOfByte.put("callback", str2);
-              if (paramInt == 0) {
-                break label806;
-              }
-              paramString = "1";
-              paramArrayOfByte.put("checkRes", paramString);
-              bdmc.a(BaseApplicationImpl.getContext()).a("", "kQuickLoginForBrowser", true, 0L, 0L, paramArrayOfByte, "");
-              return;
-              if (str2.startsWith("ucweb://"))
-              {
-                paramString = "com.UCMobile";
-                break;
-              }
-              if (str2.startsWith("bdbrowser://"))
-              {
-                paramString = "com.baidu.browser.apps";
-                break;
-              }
-              if (str2.startsWith("bdapp://"))
-              {
-                paramString = "com.baidu.searchbox";
-                break;
-              }
-              if (str2.startsWith("googlechrome://"))
-              {
-                paramString = "com.android.chrome";
-                break;
-              }
-              if (str2.startsWith("mzbrowser://"))
-              {
-                paramString = "com.android.browser";
-                break;
-              }
-              if (str2.startsWith("lb://"))
-              {
-                paramString = "com.ijinshan.browser_fast";
-                break;
-              }
-              if (str2.startsWith("qihoobrowser://"))
-              {
-                paramString = "com.qihoo.browser";
-                break;
-              }
-              if (str2.startsWith("browser2345://"))
-              {
-                paramString = "com.browser2345";
-                break;
-              }
-              paramString = str1;
-              if (!str2.startsWith("SogouMSE://")) {
-                break;
-              }
-              paramString = "sogou.mobile.explorer";
-            }
-          }
-        }
-        catch (PackageManager.NameNotFoundException paramArrayOfByte)
-        {
-          for (;;)
-          {
-            QLog.e("SSOAccountObserver", 1, "-->onGetTicketNoPasswd exception:" + paramArrayOfByte.getStackTrace().toString());
-            paramArrayOfByte = paramBundle;
-            continue;
-            paramInt = 0;
-            continue;
-            if (paramArrayOfByte != null)
-            {
-              paramInt = 1;
-            }
-            else
-            {
-              paramInt = 0;
-              continue;
-              try
-              {
-                label754:
-                this.a.startActivity(localIntent);
-                this.a.e();
-              }
-              catch (Exception paramString)
-              {
-                for (;;)
-                {
-                  QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "startActivity :" + paramString.getMessage());
-                }
-              }
-              paramString = "0";
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onUserCancel--action = " + paramInt + ", ssoAccount = *" + bjqq.a(paramString));
-    this.a.f();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
   }
 }
 

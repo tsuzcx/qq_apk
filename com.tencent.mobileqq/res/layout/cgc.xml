@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.stage.guesstext.GuessTextStageView android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/n9c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RoundedCornerImageViewNoPadding android:id="@id/n9b" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+</RelativeLayout>

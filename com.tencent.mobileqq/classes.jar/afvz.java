@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class afvz
-  implements View.OnClickListener
+class afvz
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public afvz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  afvz(afvy paramafvy) {}
   
-  public void onClick(View paramView)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBitmap != null)
+    {
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    }
   }
 }
 

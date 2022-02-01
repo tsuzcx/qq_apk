@@ -1,65 +1,53 @@
-public class bfvc
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class bfvc
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public int f;
-  public long f;
-  public int g;
-  public long g;
-  public int h;
-  public long h;
-  public int i = 0;
-  public int j;
+  bfvc(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public bfvc()
+  public void onClick(View paramView)
   {
-    this.jdField_h_of_type_Int = 0;
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
-    this.i = 0;
-    this.j = 0;
+    if (paramView.getId() == 2131365575) {}
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
+        }
+        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+          this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getId() == 2131365581)
+      {
+        if (this.b != null) {
+          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
+        }
+        try
+        {
+          if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+            this.jdField_a_of_type_AndroidAppDialog.dismiss();
+          }
+        }
+        catch (Exception localException1) {}
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfvc
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class PttAudioPlayView
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private boolean jdField_b_of_type_Boolean;
   private final int j = 12;
-  private int k = 2130838203;
+  private int k = 2130838228;
   
   public PttAudioPlayView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class PttAudioPlayView
   {
     super.a(paramInt);
     this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.k);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838204);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838229);
   }
   
   protected void a(Canvas paramCanvas)

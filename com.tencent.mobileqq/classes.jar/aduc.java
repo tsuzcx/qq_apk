@@ -1,73 +1,137 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity.24.1;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aduc
-  implements bliz
+  extends CardObserver
 {
-  public aduc(AddRequestActivity paramAddRequestActivity, blir paramblir) {}
+  public aduc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onGetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramInt)
+    super.onGetCareBarEnable(paramBoolean1, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.i("IphoneTitleBarActivity", 2, "onGetCareBarEnable: invoked.  barEnable: " + paramBoolean2);
+    }
+    NotifyPushSettingActivity.j(this.a).setChecked(paramBoolean2);
+  }
+  
+  public void onGetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
-    default: 
-      this.jdField_a_of_type_Blir.dismiss();
+      Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+      localMessage.what = 10003;
+      localMessage.obj = Boolean.valueOf(paramBoolean2);
+      NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+      QLog.i("CardObserver_onGetHelloLiveMessageState", 1, "Succeeded to Get hello live message State with Msg");
       return;
     }
-    if (bhnv.d(BaseApplication.getContext()))
+    QLog.i("CardObserver_onGetHelloLiveMessageState", 1, "Failed to Get  hello live message State with Msg");
+  }
+  
+  public void onGetPCActiveState(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
-      long l1 = bdzh.a().b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = bdzh.a().a(Long.valueOf(l1));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
-      {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
-        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
-        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
-        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
-        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
-        if ((paramView != null) && (1 < paramView.size()))
-        {
-          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.a().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131717902, 1000L, false);
-        }
+      Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+      localMessage.what = 10000;
+      localMessage.obj = Boolean.valueOf(paramBoolean2);
+      NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+      QLog.i("CardObserver_onGetPCActiveState", 1, "Succeeded to Get PC Active State with Msg");
+      return;
+    }
+    QLog.i("CardObserver_onGetPCActiveState", 1, "Failed to Get PC Active State with Msg");
+  }
+  
+  public void onSetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.onSetCareBarEnable(paramBoolean1, paramBoolean2);
+  }
+  
+  public void onSetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  {
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a, this.a.a, null, "qqsetting_hello_live_message", paramBoolean2);
+      QLog.i("CardObserver_onSetHelloLiveMessage", 1, "Set the hell live mesaage result " + paramBoolean1);
+      return;
+    }
+    Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+    localMessage.what = 10002;
+    localMessage.obj = paramString2;
+    NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+    QQToast.a(this.a, paramString1, 0).b(5);
+    QLog.i("SetHelloLiveMessage_Failure", 1, "Failed to HelloLiveMessage State " + paramString1);
+  }
+  
+  public void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
+    if (!"not_disturb_from_notify_push_setting_activity".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 4, "onSetNotDisturb NOT FROM THIS" + paramString2);
       }
     }
-    for (;;)
+    do
     {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
-      break;
-      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
-      if (paramView != null) {}
-      for (paramInt = paramView.size();; paramInt = -1)
+      return;
+      NotifyPushSettingActivity.a(this.a).set(false);
+      if (!paramBoolean)
       {
-        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
-        break;
+        ThreadManagerV2.getUIHandlerV2().post(new NotifyPushSettingActivity.24.1(this, paramString1));
+        return;
       }
-      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
-      continue;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131693965, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      paramString1 = this.a.app.getHandler(Conversation.class);
+    } while (paramString1 == null);
+    Conversation.a(paramString1, this.a);
+  }
+  
+  public void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  {
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a, this.a.a, null, "qqsetting_pcactive_key", paramBoolean2);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+      return;
     }
+    Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+    localMessage.what = 10001;
+    localMessage.obj = paramString2;
+    NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+    QQToast.a(this.a, paramString1, 0).b(5);
+    QLog.i("SetPCActiveState_Failure", 1, "Failed to set PC Active State " + paramString1);
+  }
+  
+  public void onSetShowPushNotice(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a, this.a.a, null, "qqsetting_show_push_message", paramBoolean2);
+      QLog.i("CardObserver_onSetShowPushNotice", 1, "Set show push notice");
+      if (paramBoolean2) {}
+      for (localObject = "0X8009520";; localObject = "0X800951F")
+      {
+        bcef.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 1, "", "", "", "");
+        return;
+      }
+    }
+    Object localObject = NotifyPushSettingActivity.a(this.a).obtainMessage();
+    ((Message)localObject).what = 10004;
+    ((Message)localObject).obj = Boolean.valueOf(paramBoolean2);
+    NotifyPushSettingActivity.a(this.a).sendMessage((Message)localObject);
+    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131718207), 0).b(5);
+    QLog.i("onSetShowPushNotice_Failure", 1, "Failed to set push notice");
   }
 }
 

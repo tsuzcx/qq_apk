@@ -1,24 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
-class lyp
-  implements DialogInterface.OnClickListener
+public class lyp
 {
-  lyp(lyo paramlyo, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected static int a(Context paramContext, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Lyo.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Lyo.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lyo.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Lyo.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyq(this));
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString, paramInt);
+  }
+  
+  protected static long a(Context paramContext, String paramString, long paramLong)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong(paramString, paramLong);
+  }
+  
+  protected static void a(Context paramContext, String paramString, int paramInt)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt(paramString, paramInt).commit();
+  }
+  
+  protected static void a(Context paramContext, String paramString, long paramLong)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString, paramLong).commit();
+  }
+  
+  protected static void a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putBoolean(paramString, paramBoolean).commit();
+  }
+  
+  protected static boolean a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString, paramBoolean);
   }
 }
 

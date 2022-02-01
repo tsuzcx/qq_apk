@@ -1,152 +1,16 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.widget.AbsListView;
 
-public class pfw
+class pfw
+  extends pse
 {
-  public static int a;
-  public static long a;
-  private static List<pgb> jdField_a_of_type_JavaUtilList;
-  private static Map<Integer, pgb> jdField_a_of_type_JavaUtilMap;
-  private static int b;
-  public static long b;
-  public static long c;
-  public static long d;
-  
-  static
+  pfw(pey parampey, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    jdField_a_of_type_Int = 2;
-    d();
+    super(paramString);
   }
   
-  public static void a()
+  public void a(prx paramprx)
   {
-    jdField_b_of_type_Int = -1;
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_b_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    case 3: 
-      jdField_b_of_type_Long = System.currentTimeMillis();
-      return;
-    case 25: 
-      c = System.currentTimeMillis();
-      return;
-    }
-    d = System.currentTimeMillis();
-  }
-  
-  public static void a(pgb parampgb)
-  {
-    if (parampgb == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (jdField_a_of_type_JavaUtilList.contains(parampgb)) {
-          continue;
-        }
-        jdField_a_of_type_JavaUtilList.add(parampgb);
-      }
-      finally {}
-    }
-  }
-  
-  private static boolean a()
-  {
-    if (jdField_b_of_type_Int > 0) {}
-    switch (jdField_b_of_type_Int)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      jdField_a_of_type_Int = 1;
-      pfs.e(System.currentTimeMillis());
-      if (a())
-      {
-        localObject1 = (pgb)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
-        if (localObject1 != null) {
-          ((pgb)localObject1).l();
-        }
-      }
-      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        pgb localpgb = (pgb)((Iterator)localObject1).next();
-        if (localpgb != null) {
-          localpgb.l();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public static void b(pgb parampgb)
-  {
-    if (parampgb != null) {}
-    try
-    {
-      jdField_a_of_type_JavaUtilList.remove(parampgb);
-      return;
-    }
-    finally
-    {
-      parampgb = finally;
-      throw parampgb;
-    }
-  }
-  
-  public static void c()
-  {
-    try
-    {
-      jdField_a_of_type_Int = 2;
-      if (a())
-      {
-        localObject1 = (pgb)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
-        if (localObject1 != null) {
-          ((pgb)localObject1).m();
-        }
-      }
-      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        pgb localpgb = (pgb)((Iterator)localObject1).next();
-        if (localpgb != null) {
-          localpgb.m();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  private static void d()
-  {
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), new pfx());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), new pfy());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(25), new pfz());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), new pga());
+    paramprx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

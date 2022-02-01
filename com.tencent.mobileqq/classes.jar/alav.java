@@ -1,15 +1,22 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 
 public class alav
-  extends albm
+  extends aliz
 {
-  public alav(ExclusiveHbFragment paramExclusiveHbFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    ExclusiveHbFragment.a(this.a);
-  }
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public TroopMemberInfo a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

@@ -10,20 +10,20 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import blsv;
-import blte;
-import bltq;
+import bjwv;
+import bjxe;
+import bjxq;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
-import ucj;
-import ucm;
-import ucq;
-import uml;
+import uiz;
+import ujc;
+import ujg;
+import uuf;
 
-public abstract class WSBaseHomeFragment<V extends ucj, P extends ucm<V>, M>
+public abstract class WSBaseHomeFragment<V extends uiz, P extends ujc<V>, M>
   extends WSBaseFragment<V, P>
-  implements uml<M>
+  implements uuf<M>
 {
   public Context a;
   protected View a;
@@ -55,17 +55,17 @@ public abstract class WSBaseHomeFragment<V extends ucj, P extends ucm<V>, M>
   private void b(View paramView)
   {
     if (this.jdField_b_of_type_Boolean) {
-      paramView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165343));
+      paramView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165351));
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368080);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131381508));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368111);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131381225));
     if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
     {
       paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
       if (paramView != null) {
         paramView.a(12);
       }
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new ucq(this));
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new ujg(this));
       paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
       if (a() != null) {
         paramView.setAdapter(a());
@@ -83,7 +83,7 @@ public abstract class WSBaseHomeFragment<V extends ucj, P extends ucm<V>, M>
   
   protected abstract RecyclerView.LayoutManager a();
   
-  protected abstract blsv a();
+  protected abstract bjwv a();
   
   public abstract void a();
   
@@ -137,7 +137,7 @@ public abstract class WSBaseHomeFragment<V extends ucj, P extends ucm<V>, M>
     {
       return 0;
     }
-    return ((bltq)localRecyclerViewWithHeaderFooter.getAdapter()).a();
+    return ((bjxq)localRecyclerViewWithHeaderFooter.getAdapter()).a();
   }
   
   public void c()
@@ -164,7 +164,7 @@ public abstract class WSBaseHomeFragment<V extends ucj, P extends ucm<V>, M>
       a(getArguments());
     }
     if (a() != -1) {}
-    for (this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560004, paramViewGroup, false))
+    for (this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560010, paramViewGroup, false))
     {
       paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -182,7 +182,7 @@ public abstract class WSBaseHomeFragment<V extends ucj, P extends ucm<V>, M>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment
  * JD-Core Version:    0.7.0.1
  */

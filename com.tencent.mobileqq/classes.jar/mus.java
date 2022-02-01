@@ -1,68 +1,352 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.utils.download.BaseDownloadAsyncTask.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioSession;
-import com.tencent.widget.AdapterView;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.params.HttpConnectionParams;
 
-class mus
-  implements bljm
+public class mus
+  extends AsyncTask<ArrayList<muv>, muv, Integer>
 {
-  mus(mur parammur, Button paramButton, long paramLong, blir paramblir) {}
+  private static final Handler jdField_a_of_type_AndroidOsHandler = new muu(null);
+  private String jdField_a_of_type_JavaLangString = mus.class.getSimpleName();
+  private HttpClient jdField_a_of_type_OrgApacheHttpClientHttpClient;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  private HttpGet a(muv parammuv, muw parammuw)
   {
-    if (mur.a(this.jdField_a_of_type_Mur) != null)
+    try
     {
-      paramAdapterView = (muy)mur.a(this.jdField_a_of_type_Mur).getItem(paramInt);
-      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Mur.a != null))
+      localObject = new HttpGet(parammuv.jdField_a_of_type_JavaLangString);
+      parammuw = (muw)localObject;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      for (;;)
       {
-        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
-          break label199;
+        Object localObject;
+        if (localIllegalArgumentException != null) {
+          parammuw.jdField_a_of_type_JavaLangString = localIllegalArgumentException.toString();
         }
-        mbb.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
-        }
-        bdll.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
+        parammuw = null;
+        continue;
+        parammuw.setHeader("Net-type", "gprs");
       }
     }
-    for (;;)
+    if (parammuw != null) {
+      if (NetworkUtil.isWifiConnected(BaseApplication.getContext()))
+      {
+        parammuw.setHeader("Net-type", "Wifi");
+        if (parammuv.jdField_a_of_type_JavaUtilHashMap == null) {
+          return parammuw;
+        }
+        parammuv = parammuv.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        while (parammuv.hasNext())
+        {
+          localObject = (Map.Entry)parammuv.next();
+          parammuw.addHeader((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
+        }
+      }
+    }
+    return parammuw;
+  }
+  
+  private boolean a(muw parammuw, HttpEntity paramHttpEntity, int paramInt)
+  {
+    byte[] arrayOfByte1 = new byte[paramInt];
+    try
     {
-      mur.a(this.jdField_a_of_type_Mur, true);
-      this.jdField_a_of_type_Mur.a.a(mtl.a());
-      this.jdField_a_of_type_Mur.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      label199:
-      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
+      paramHttpEntity = paramHttpEntity.getContent();
+      if (paramHttpEntity == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
-        }
-        bdll.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
+        i = 0;
+        if (paramHttpEntity == null) {}
       }
-      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
+    }
+    catch (IOException paramHttpEntity)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
+        for (;;)
+        {
+          paramHttpEntity.close();
+          if (i != paramInt) {
+            break;
+          }
+          bool = true;
+          if (!bool) {
+            break label235;
+          }
+          parammuw.jdField_a_of_type_ArrayOfByte = arrayOfByte1;
+          parammuw.jdField_a_of_type_Long = paramInt;
+          parammuw.jdField_a_of_type_Int = 0;
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "readContent done. isSucess = " + bool + ",length=" + paramInt);
+          }
+          return bool;
+          paramHttpEntity = paramHttpEntity;
+          parammuw.jdField_a_of_type_Int = 3;
+          if (paramHttpEntity != null) {
+            parammuw.jdField_a_of_type_JavaLangString = paramHttpEntity.toString();
+          }
+          paramHttpEntity = null;
         }
-        bdll.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
+        byte[] arrayOfByte2 = new byte[2048];
+        i = 0;
+        for (;;)
+        {
+          try
+          {
+            j = paramHttpEntity.read(arrayOfByte2);
+            if (j > 0) {}
+          }
+          catch (IOException localIOException)
+          {
+            parammuw.jdField_a_of_type_Int = 3;
+            if (localIOException != null) {
+              parammuw.jdField_a_of_type_JavaLangString = localIOException.toString();
+            }
+            int j = 0;
+            continue;
+            if (i + j > paramInt)
+            {
+              i += j;
+              break;
+            }
+            System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, j);
+            i += j;
+          }
+        }
       }
-      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
+      catch (IOException paramHttpEntity)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
+        for (;;)
+        {
+          int i;
+          paramHttpEntity.printStackTrace();
+          continue;
+          boolean bool = false;
+          continue;
+          label235:
+          parammuw.jdField_a_of_type_Int = 3;
+          if (i < paramInt) {
+            parammuw.jdField_a_of_type_JavaLangString = ("ContentLength " + paramInt + " but read " + i);
+          } else {
+            parammuw.jdField_a_of_type_JavaLangString = ("ContentLength " + paramInt + ",but read " + i);
+          }
         }
-        bdll.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
       }
     }
   }
+  
+  protected Integer a(ArrayList<muv>... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (paramVarArgs[0] == null)) {
+      return null;
+    }
+    Iterator localIterator = paramVarArgs[0].iterator();
+    muv localmuv;
+    while (localIterator.hasNext())
+    {
+      localmuv = (muv)localIterator.next();
+      localmuv.jdField_a_of_type_Muw = new muw();
+      localmuv.jdField_a_of_type_Muw.jdField_a_of_type_Int = -1;
+    }
+    if (eh.a() != null) {}
+    int m;
+    int i;
+    int j;
+    int k;
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_OrgApacheHttpClientHttpClient = eh.a(false, this.jdField_a_of_type_Boolean, 5000, 60000);
+      localIterator = paramVarArgs[0].iterator();
+      m = 5000;
+      i = 60000;
+      j = 0;
+      paramVarArgs = "";
+      if (localIterator.hasNext())
+      {
+        localmuv = (muv)localIterator.next();
+        k = m;
+        if (localmuv.jdField_b_of_type_Int != m)
+        {
+          k = localmuv.jdField_b_of_type_Int;
+          HttpConnectionParams.setConnectionTimeout(this.jdField_a_of_type_OrgApacheHttpClientHttpClient.getParams(), k);
+        }
+        m = i;
+        if (localmuv.c != i)
+        {
+          m = localmuv.c;
+          HttpConnectionParams.setSoTimeout(this.jdField_a_of_type_OrgApacheHttpClientHttpClient.getParams(), m);
+        }
+        i = localmuv.jdField_a_of_type_Int;
+        if (!isCancelled()) {
+          break;
+        }
+      }
+      if ((QLog.isColorLevel()) && (!paramVarArgs.equals(""))) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramVarArgs);
+      }
+      return Integer.valueOf(j);
+    }
+    long l1 = System.currentTimeMillis();
+    if (isCancelled()) {
+      n = i;
+    }
+    label272:
+    do
+    {
+      j += 1;
+      long l2 = System.currentTimeMillis();
+      localmuv.jdField_a_of_type_Muw.jdField_b_of_type_Long = (l2 - l1);
+      localmuv.jdField_a_of_type_Muw.jdField_b_of_type_Int = (localmuv.jdField_a_of_type_Int - n);
+      paramVarArgs = paramVarArgs + localmuv.toString() + ", ";
+      b(localmuv);
+      jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new mut(this, new muv[] { localmuv })).sendToTarget();
+      i = m;
+      m = k;
+      break;
+      n = i;
+    } while (a(this.jdField_a_of_type_OrgApacheHttpClientHttpClient, localmuv));
+    int n = 3;
+    for (;;)
+    {
+      try
+      {
+        Thread.sleep(1000L);
+        if (n > 0)
+        {
+          bool = NetworkUtil.isNetworkAvailable(BaseApplication.getContext());
+          if (!bool) {
+            break label452;
+          }
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        continue;
+        i = n;
+      }
+      n = i - 1;
+      if (i <= 0) {
+        break label272;
+      }
+      break;
+      label452:
+      n -= 1;
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    if (this.jdField_a_of_type_OrgApacheHttpClientHttpClient != null)
+    {
+      ThreadManager.excute(new BaseDownloadAsyncTask.1(this, this.jdField_a_of_type_OrgApacheHttpClientHttpClient), 16, null, false);
+      this.jdField_a_of_type_OrgApacheHttpClientHttpClient = null;
+    }
+  }
+  
+  public void a(muv parammuv) {}
+  
+  protected boolean a(HttpClient paramHttpClient, muv parammuv)
+  {
+    muw localmuw = parammuv.jdField_a_of_type_Muw;
+    localmuw.jdField_a_of_type_Int = -2;
+    HttpGet localHttpGet = a(parammuv, localmuw);
+    if (localHttpGet == null) {}
+    for (;;)
+    {
+      return localmuw.jdField_a_of_type_Boolean;
+      parammuv = null;
+      try
+      {
+        paramHttpClient = paramHttpClient.execute(localHttpGet);
+        if (paramHttpClient == null) {
+          return false;
+        }
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          paramHttpClient = parammuv;
+          if (localIOException != null)
+          {
+            localmuw.jdField_a_of_type_JavaLangString = localIOException.toString();
+            paramHttpClient = parammuv;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          paramHttpClient = parammuv;
+          if (localException != null)
+          {
+            localmuw.jdField_a_of_type_JavaLangString = localException.toString();
+            paramHttpClient = parammuv;
+          }
+        }
+        parammuv = paramHttpClient.getEntity();
+        if (parammuv == null)
+        {
+          localmuw.jdField_a_of_type_Int = 2;
+        }
+        else
+        {
+          paramHttpClient = paramHttpClient.getStatusLine();
+          int i = paramHttpClient.getStatusCode();
+          int j = (int)parammuv.getContentLength();
+          if ((i == 200) || (i == 206)) {
+            if (j <= 0)
+            {
+              localmuw.jdField_a_of_type_Int = 2;
+              localmuw.jdField_a_of_type_JavaLangString = ("invalid contentLength " + j);
+              label192:
+              if (localmuw.jdField_a_of_type_Boolean) {
+                continue;
+              }
+            }
+          }
+          try
+          {
+            parammuv.getContent().close();
+          }
+          catch (IOException paramHttpClient)
+          {
+            continue;
+            localmuw.jdField_a_of_type_Boolean = a(localmuw, parammuv, j);
+            break label192;
+            localmuw.jdField_a_of_type_Int = 2;
+            localmuw.jdField_a_of_type_JavaLangString = paramHttpClient.getReasonPhrase();
+            break label192;
+          }
+          catch (Exception paramHttpClient) {}
+        }
+      }
+    }
+  }
+  
+  public void b(muv parammuv) {}
 }
 
 

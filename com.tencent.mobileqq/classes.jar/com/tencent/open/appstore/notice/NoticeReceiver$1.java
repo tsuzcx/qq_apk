@@ -1,11 +1,11 @@
 package com.tencent.open.appstore.notice;
 
 import android.content.Context;
-import bjsz;
-import bjto;
-import bjtx;
-import bjva;
-import bjyg;
+import bhyo;
+import bhzd;
+import bhzm;
+import biam;
+import bido;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 
@@ -16,33 +16,33 @@ class NoticeReceiver$1
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = bjsz.a().b(this.jdField_a_of_type_JavaLangString);
+    DownloadInfo localDownloadInfo = bhyo.a().b(this.jdField_a_of_type_JavaLangString);
     if (localDownloadInfo == null) {
-      bjtx.b("NoticeReceiver", "downloadInfo is null.");
+      bhzm.b("NoticeReceiver", "downloadInfo is null.");
     }
     do
     {
       return;
-      if ((bjyg.b + "." + this.b).equals(this.c))
+      if ((bido.b + "." + this.b).equals(this.c))
       {
-        bjsz.a().a(this.jdField_a_of_type_JavaLangString);
+        bhyo.a().a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      if ((bjyg.jdField_a_of_type_JavaLangString + "." + this.b).equals(this.c))
+      if ((bido.jdField_a_of_type_JavaLangString + "." + this.b).equals(this.c))
       {
-        bjsz.a().b(localDownloadInfo);
+        bhyo.a().b(localDownloadInfo);
         return;
       }
-      if ((bjyg.c + "." + this.b).equals(this.c))
+      if ((bido.c + "." + this.b).equals(this.c))
       {
-        bjsz.a().b(localDownloadInfo);
+        bhyo.a().b(localDownloadInfo);
         return;
       }
-    } while (!(bjyg.d + "." + this.b).equals(this.c));
-    bjva.a(this.jdField_a_of_type_AndroidContentContext, bjsz.a().a(localDownloadInfo.b), localDownloadInfo.m, localDownloadInfo.a("big_brother_ref_source_key"), localDownloadInfo.a("hideInstallSuccessPage"));
+    } while (!(bido.d + "." + this.b).equals(this.c));
+    biam.a(this.jdField_a_of_type_AndroidContentContext, bhyo.a().a(localDownloadInfo.b), localDownloadInfo.m, localDownloadInfo.a("big_brother_ref_source_key"), localDownloadInfo.a("hideInstallSuccessPage"));
     localDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-    bjsz.a().a(localDownloadInfo, true);
-    bjto.c(localDownloadInfo);
+    bhyo.a().a(localDownloadInfo, true);
+    bhzd.c(localDownloadInfo);
   }
 }
 

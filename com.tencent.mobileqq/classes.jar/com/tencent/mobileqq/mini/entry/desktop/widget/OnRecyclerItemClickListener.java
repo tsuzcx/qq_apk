@@ -4,18 +4,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnItemTouchListener;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.MotionEvent;
-import blsb;
+import bjwa;
 
 public abstract class OnRecyclerItemClickListener
   implements RecyclerView.OnItemTouchListener
 {
-  private blsb mGestureDetector;
+  private bjwa mGestureDetector;
   private DragRecyclerView recyclerView;
   
   public OnRecyclerItemClickListener(DragRecyclerView paramDragRecyclerView)
   {
     this.recyclerView = paramDragRecyclerView;
-    this.mGestureDetector = new blsb(paramDragRecyclerView.getContext(), new OnRecyclerItemClickListener.ItemTouchHelperGestureListener(this, null));
+    this.mGestureDetector = new bjwa(paramDragRecyclerView.getContext(), new OnRecyclerItemClickListener.ItemTouchHelperGestureListener(this, null));
   }
   
   public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)

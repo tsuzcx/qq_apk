@@ -1,41 +1,41 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import agju;
+import afcm;
 import android.app.Activity;
-import bhmi;
-import bhmq;
-import born;
-import bqcp;
-import bqcr;
-import bqgk;
-import bqhs;
+import bfvo;
+import blvr;
+import bnct;
+import bncv;
+import bnee;
+import bnew;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class EditPicSave$2$1
   implements Runnable
 {
-  public EditPicSave$2$1(bqcr parambqcr, String paramString) {}
+  public EditPicSave$2$1(bncv parambncv, String paramString) {}
   
   public void run()
   {
     try
     {
-      if (born.e(this.jdField_a_of_type_Bqcr.a.jdField_a_of_type_Bqhs.getActivity().getIntent()))
+      if (blvr.e(this.jdField_a_of_type_Bncv.a.jdField_a_of_type_Bnew.getActivity().getIntent()))
       {
-        bqcp.a(this.jdField_a_of_type_Bqcr.a, MiniAppFileManager.getInstance().getTmpPathFromOut(this.jdField_a_of_type_JavaLangString, bqcp.a(this.jdField_a_of_type_Bqcr.a, this.jdField_a_of_type_Bqcr.a.jdField_a_of_type_Bqhs.a())));
-        bhmi.a(new File(this.jdField_a_of_type_JavaLangString), new File(bqcp.a(this.jdField_a_of_type_Bqcr.a)));
+        bnct.a(this.jdField_a_of_type_Bncv.a, MiniAppFileManager.getInstance().getTmpPathFromOut(this.jdField_a_of_type_JavaLangString, bnct.a(this.jdField_a_of_type_Bncv.a, this.jdField_a_of_type_Bncv.a.jdField_a_of_type_Bnew.a())));
+        FileUtils.copyFile(new File(this.jdField_a_of_type_JavaLangString), new File(bnct.a(this.jdField_a_of_type_Bncv.a)));
         return;
       }
-      bqcp.a(this.jdField_a_of_type_Bqcr.a, agju.a());
-      File localFile = new File(bqcp.a(this.jdField_a_of_type_Bqcr.a));
-      if (bhmi.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
+      bnct.a(this.jdField_a_of_type_Bncv.a, afcm.a());
+      File localFile = new File(bnct.a(this.jdField_a_of_type_Bncv.a));
+      if (FileUtils.copyFile(new File(this.jdField_a_of_type_JavaLangString), localFile))
       {
-        if (this.jdField_a_of_type_Bqcr.a.jdField_a_of_type_Bqgk.a.a() == 14) {
-          bqcp.a(this.jdField_a_of_type_Bqcr.a, true);
+        if (this.jdField_a_of_type_Bncv.a.jdField_a_of_type_Bnee.a.a() == 14) {
+          bnct.a(this.jdField_a_of_type_Bncv.a, true);
         }
-        bhmq.a(this.jdField_a_of_type_Bqcr.a.jdField_a_of_type_Bqhs.getActivity(), localFile);
+        bfvo.a(this.jdField_a_of_type_Bncv.a.jdField_a_of_type_Bnew.getActivity(), localFile);
         return;
       }
     }

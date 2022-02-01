@@ -1,20 +1,65 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-class urp
-  implements View.OnClickListener
+public class urp
+  implements INetInfoHandler
 {
-  urp(uro paramuro) {}
+  private WeakReference<WSPlayerManager> a;
   
-  public void onClick(View paramView)
+  public urp(WSPlayerManager paramWSPlayerManager)
   {
-    if (uro.a(this.a).getActivity() != null) {
-      uro.a(this.a).getActivity().doOnBackPressed();
+    this.a = new WeakReference(paramWSPlayerManager);
+  }
+  
+  private void a()
+  {
+    WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
+    if ((localWSPlayerManager != null) && (localWSPlayerManager.a() != null))
+    {
+      urt localurt = localWSPlayerManager.a();
+      if ((!localWSPlayerManager.f()) && (!localWSPlayerManager.e())) {
+        break label48;
+      }
+      localWSPlayerManager.b(localurt, false);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label48:
+    while (!localWSPlayerManager.g()) {
+      return;
+    }
+    localWSPlayerManager.a();
+  }
+  
+  public void onNetMobile2None()
+  {
+    uya.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    uya.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    uya.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    uya.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    uya.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    uya.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
   }
 }
 

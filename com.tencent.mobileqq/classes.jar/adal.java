@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-final class adal
-  implements Comparator<MessageRecord>
+public class adal
+  implements DialogInterface.OnClickListener
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public adal(ChatSettingActivity paramChatSettingActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
-      return 1;
-    }
-    return -1;
+    paramDialogInterface.dismiss();
   }
 }
 

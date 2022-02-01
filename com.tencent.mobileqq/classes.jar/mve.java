@@ -1,23 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-public class mve
-  implements View.OnTouchListener
+public abstract interface mve
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      mvd.a(paramView, 0.5F);
-      continue;
-      mvd.a(paramView, 1.0F);
-    }
-  }
+  public abstract void a(int paramInt, long paramLong, String paramString1, String paramString2);
 }
 
 

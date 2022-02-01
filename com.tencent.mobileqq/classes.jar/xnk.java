@@ -1,22 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-class xnk
-  implements woy<xcy, xcz>
+public class xnk
+  extends way
 {
-  xnk(xnj paramxnj, xmy paramxmy) {}
+  public List<String> a = new ArrayList();
   
-  public void a(@NonNull xcy paramxcy, @Nullable xcz paramxcz, @NonNull ErrorMessage paramErrorMessage)
+  public xnk(ErrorMessage paramErrorMessage)
   {
-    if ((paramErrorMessage.isFail()) || (paramxcz == null))
-    {
-      yuk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Xmy.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Xnj.a.a(paramxcz.jdField_a_of_type_JavaUtilList, paramxcz.jdField_a_of_type_JavaLangString, paramxcz.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Xmy.a(paramErrorMessage, xmg.b(paramxcz.jdField_a_of_type_JavaUtilList), paramxcz.jdField_a_of_type_Boolean);
+    super(paramErrorMessage);
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + '}';
   }
 }
 

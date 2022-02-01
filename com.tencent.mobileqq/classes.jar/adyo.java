@@ -1,20 +1,29 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.ServiceProtocolSerializable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class adyo
-  implements DialogInterface.OnClickListener
 {
-  public adyo(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(FaceDetectForThirdPartyManager.AppConf paramAppConf, String paramString)
   {
-    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
-    this.a.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    if ((paramAppConf == null) || (paramAppConf.serviceProtocols.isEmpty()))
+    {
+      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", appConf.serviceProtocols.isEmpty, not save" });
+      ForwardUtils.report(null, paramString, 1, new String[0]);
+      return;
+    }
+    paramAppConf = (FaceDetectForThirdPartyManager.ServiceProtocolSerializable)paramAppConf.serviceProtocols.get(0);
+    if ((TextUtils.isEmpty(paramAppConf.name)) || (TextUtils.isEmpty(paramAppConf.url)))
+    {
+      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", sp.name || sp.url empty, not save" });
+      ForwardUtils.report(null, paramString, 1, new String[0]);
+      return;
+    }
+    QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", auto save" });
+    ForwardUtils.report(null, paramString, 2, new String[0]);
   }
 }
 

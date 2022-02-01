@@ -1,41 +1,23 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-import java.util.Random;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
 
 public class rqu
-  extends rqw
+  extends pkt
 {
-  private float i;
+  public rqu(SelectVideoTabFragment paramSelectVideoTabFragment) {}
   
-  public rqu(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
+  public void h(int paramInt)
   {
-    super(paramLikeExplosionView);
-    b();
-  }
-  
-  public rqu(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, int paramInt)
-  {
-    super(paramLikeExplosionView);
-    double d = Math.toRadians(paramInt);
-    this.e = ((float)Math.cos(d));
-    this.f = ((float)Math.sin(d));
-    a();
-    b();
-  }
-  
-  private void b()
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setColor(Color.parseColor("#E6FF4222"));
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setStyle(Paint.Style.FILL);
-    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * agej.a(10.0F, this.a.getResources()) + agej.a(4.5F, this.a.getResources()));
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    paramCanvas.drawCircle(this.c, this.d, this.i, VideoFeedsLikeAnimate.LikeExplosionView.a(this.a));
+    super.h(paramInt);
+    if ((SelectVideoTabFragment.a(this.a) != null) && (paramInt != 0) && (!SelectVideoTabFragment.a(this.a).isEmpty()))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_column_id", paramInt);
+      localIntent.putExtra("arg_callback", SelectVideoTabFragment.a(this.a));
+      SelectVideoTabFragment.a(this.a).setResult(3, localIntent);
+      SelectVideoTabFragment.a(this.a).finish();
+    }
   }
 }
 

@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class okr
-  implements qum
+  implements View.OnClickListener
 {
-  public okr(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public okr(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public void onClick(View paramView)
   {
-    this.a.a(paramInt, paramString, paramBaseResData);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

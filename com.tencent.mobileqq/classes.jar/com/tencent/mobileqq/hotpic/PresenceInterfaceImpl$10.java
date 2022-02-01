@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.app.Dialog;
-import avvj;
-import avvk;
-import bhlq;
-import bhpc;
+import auij;
+import auik;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class PresenceInterfaceImpl$10
   implements Runnable
 {
-  public PresenceInterfaceImpl$10(avvj paramavvj, String paramString) {}
+  public PresenceInterfaceImpl$10(auij paramauij, String paramString) {}
   
   public void run()
   {
-    bhpc localbhpc = bhlq.a(this.this$0.a, 232, null, this.a, new avvk(this), null);
+    QQCustomDialog localQQCustomDialog = bfur.a(this.this$0.a, 232, null, this.a, new auik(this), null);
     try
     {
-      localbhpc.show();
+      localQQCustomDialog.show();
       return;
     }
     catch (Exception localException)

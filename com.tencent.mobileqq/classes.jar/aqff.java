@@ -1,181 +1,186 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
-import com.tencent.ark.ArkViewImplement.InputCallback;
-import com.tencent.ark.open.ArkView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.BubblePopupWindow;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqff
-  implements ArkViewImplement.InputCallback
+public class aqff
+  implements apts<String>
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  private ImageView b;
-  private ImageView c;
+  public String a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  public boolean p;
   
-  private void a(View paramView)
+  public aqff()
   {
-    if (paramView != null)
-    {
-      paramView.clearAnimation();
-      paramView.setVisibility(8);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2)
+  private void a(JSONObject paramJSONObject)
   {
-    if (paramView != null)
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no troop");
+    }
+    do
     {
-      paramView.setVisibility(0);
-      paramView.animate().x(paramInt1).y(paramInt2).setDuration(0L).start();
-    }
-  }
-  
-  public void onFocusChanged(View paramView, boolean paramBoolean)
-  {
-    ArkView localArkView = (ArkView)paramView;
-    paramView = (ViewGroup)paramView.getParent();
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-    }
-    if (paramView == null) {
       return;
-    }
-    if (paramBoolean)
-    {
-      Object localObject2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838664);
-      Object localObject1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838663);
-      localArkView.setInputSetSelectHolderSize(((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
-      localArkView.setInputSetCaretHolderSize(((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-      if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+      try
       {
-        this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(localArkView.getContext());
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject2);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(-1.0F);
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        paramView.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localArkView);
+        paramJSONObject = paramJSONObject.getJSONObject("videopreview");
+        if (paramJSONObject == null)
+        {
+          QLog.e("QFileCommonConfigBean", 1, "parse Troop Json |type: 396no videoPreview");
+          return;
+        }
       }
-      if (this.b == null)
+      catch (JSONException paramJSONObject)
       {
-        this.b = new ImageView(localArkView.getContext());
-        this.b.setBackgroundDrawable((Drawable)localObject2);
-        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-        paramView.addView(this.b, (ViewGroup.LayoutParams)localObject2);
-        this.b.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localArkView);
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+        return;
       }
-      if (this.c == null)
-      {
-        this.c = new ImageView(localArkView.getContext());
-        this.c.setBackgroundDrawable((Drawable)localObject1);
-        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-        paramView.addView(this.c, (ViewGroup.LayoutParams)localObject1);
-        this.c.setVisibility(8);
-        this.c.setOnTouchListener(localArkView);
+      this.m = paramJSONObject.getBoolean("switch");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview = " + this.m);
       }
-    }
-    a(this.jdField_a_of_type_AndroidWidgetImageView);
-    a(this.b);
-    a(this.c);
+      this.n = paramJSONObject.getBoolean("svip");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for SVIP = " + this.n);
+      }
+      this.o = paramJSONObject.getBoolean("yearsvip");
+    } while (!QLog.isColorLevel());
+    QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for YearSVIP = " + this.n);
   }
   
-  public void onHideMenu(View paramView)
+  private void b(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-  }
-  
-  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    ArkView localArkView = (ArkView)paramView;
-    paramView = (ViewGroup)paramView.getParent();
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-    }
-    if (paramView == null) {
-      return;
-    }
-    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4)))
-    {
-      int j = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      int i = j;
-      if (j <= 0) {
-        i = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838664).getIntrinsicWidth();
-      }
-      a(this.jdField_a_of_type_AndroidWidgetImageView, localArkView.getLeft() + paramInt1 - i, localArkView.getTop() + paramInt2);
-      if ((paramInt3 <= 0) || (paramInt4 <= 0) || ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4))) {
-        break label245;
-      }
-      a(this.b, localArkView.getLeft() + paramInt3, localArkView.getTop() + paramInt4);
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no httpsJson");
     }
     for (;;)
     {
-      if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
-        break label256;
-      }
-      paramInt2 = this.c.getWidth();
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 0) {
-        paramInt1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838663).getIntrinsicWidth();
-      }
-      a(this.c, localArkView.getLeft() + paramInt3 - paramInt1 / 2, localArkView.getTop() + paramInt4);
       return;
-      a(this.jdField_a_of_type_AndroidWidgetImageView);
-      break;
-      label245:
-      a(this.b);
+      try
+      {
+        this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("c2c_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_up = " + this.jdField_a_of_type_Boolean);
+        }
+        this.b = paramJSONObject.getBoolean("c2c_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_down = " + this.b);
+        }
+        this.c = paramJSONObject.getBoolean("c2czip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2czip_down = " + this.c);
+        }
+        this.d = paramJSONObject.getBoolean("c2c_thumb");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_thumb = " + this.d);
+        }
+        this.e = paramJSONObject.getBoolean("disc_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_up = " + this.e);
+        }
+        this.f = paramJSONObject.getBoolean("disc_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_down = " + this.f);
+        }
+        this.g = paramJSONObject.getBoolean("disczip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disczip_down = " + this.g);
+        }
+        this.h = paramJSONObject.getBoolean("disc_thumb");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_thumb = " + this.h);
+        }
+        this.i = paramJSONObject.getBoolean("troop_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_up = " + this.i);
+        }
+        this.j = paramJSONObject.getBoolean("troop_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_down = " + this.j);
+        }
+        this.k = paramJSONObject.getBoolean("troopzip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troopzip_down = " + this.k);
+        }
+        this.l = paramJSONObject.getBoolean("troop_thumb");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_thumb = " + this.l);
+          return;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+      }
     }
-    label256:
-    a(this.c);
   }
   
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void c(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    bhuk localbhuk = new bhuk();
-    if (paramInt4 == 2)
-    {
-      localbhuk.a(0, anzj.a(2131699627));
-      localbhuk.a(1, anzj.a(2131699622));
-      localbhuk.a(2, anzj.a(2131699628));
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no mediaPlatformJson");
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhkx.a(paramView, paramInt1, paramInt2, paramInt3 + BaseApplicationImpl.getApplication().getResources().getDrawable(2130838663).getIntrinsicHeight(), localbhuk, new aqfg(this, paramInt4, (ArkViewImplement.ArkViewInterface)paramView));
       return;
-      if (paramInt4 == 1)
+      try
       {
-        localbhuk.a(0, anzj.a(2131699621));
-        localbhuk.a(1, anzj.a(2131699623));
-        localbhuk.a(2, anzj.a(2131699624));
+        this.p = paramJSONObject.getBoolean("EnableAQQ");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QFileCommonConfigBean", 2, "enableFileMediaPlatform = " + this.p);
+          return;
+        }
       }
-      else
+      catch (JSONException paramJSONObject)
       {
-        localbhuk.a(0, anzj.a(2131699626));
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
       }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396configContent is empty");
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      b(paramString.getJSONObject("https"));
+      a(paramString.getJSONObject("troop"));
+      c(paramString.getJSONObject("UseMediaPlatform"));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileCommonConfigBean", 1, paramString, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqff
  * JD-Core Version:    0.7.0.1
  */

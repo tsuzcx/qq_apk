@@ -1,125 +1,137 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
 import java.io.File;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class amhf
 {
-  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
+  private static amhf jdField_a_of_type_Amhf;
+  amhe jdField_a_of_type_Amhe;
+  amhg jdField_a_of_type_Amhg = new amhg();
+  amhi jdField_a_of_type_Amhi;
+  
+  static amhf a()
   {
-    int i = 0;
-    if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
-      i = -1;
+    if (jdField_a_of_type_Amhf == null) {
+      jdField_a_of_type_Amhf = new amhf();
     }
+    return jdField_a_of_type_Amhf;
+  }
+  
+  static SharedPreferences a()
+  {
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.tmg_opensdk", 4);
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
+      }
+      localObject = "";
+    }
+    String str;
+    File localFile;
     do
     {
-      for (;;)
-      {
-        return i;
-        double d = paramPublishVideoEntry.recordTime / 1000.0D;
-        int j = paramPublishVideoEntry.videoMaxrate;
-        try
-        {
-          j = bnlk.a(new String[] { "-threads", "1", "-ss", "0.0", "-accurate_seek", "-i", paramString1, "-t", String.valueOf(d), "-vf", "null", "-metadata:s", "rotate=0", "-acodec", "aac", "-vcodec", "libx264", "-movflags", "faststart", "-preset", "veryfast", "-tune", "psnr", "-profile:v", "high", "-level", "3.0", "-b:v", String.valueOf(j), "-y", paramString2 });
-          return j;
-        }
-        catch (Exception paramString1)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: ", paramString1);
-            return 0;
-          }
-        }
-        catch (Error paramString1) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: error", paramString1);
-    return 0;
+      return localObject;
+      str = ((File)localObject).getParent() + "/txlib/tmg/";
+      localFile = new File(str);
+      localObject = str;
+    } while (localFile.exists());
+    localFile.mkdirs();
+    return str;
   }
   
-  public static amhg a(String paramString)
+  public static String a(amhe paramamhe)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        Object localObject = new File(paramString);
-        amhg localamhg = new amhg();
-        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-        {
-          String str = a((File)localObject);
-          localObject = b((File)localObject);
-          if (TextUtils.isEmpty(str)) {
-            return null;
-          }
-          localamhg.a = str;
-          localamhg.b = ((String)localObject);
-          localamhg.c = paramString;
-          return localamhg;
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("EncodeVideoUtil", 2, "getVideoInfoByPath error", paramString);
-        }
-      }
-    }
-    return null;
+    return a() + "tmg_sdk_" + paramamhe.a + "_" + paramamhe.b + ".zip";
   }
   
-  @NonNull
-  private static String a(File paramFile)
+  public static void a()
   {
-    paramFile = paramFile.listFiles();
-    if ((paramFile != null) && (paramFile.length > 0))
+    ArrayList localArrayList = FileUtils.getChildFiles(a());
+    if (localArrayList != null)
     {
-      int j = paramFile.length;
       int i = 0;
-      while (i < j)
+      while (i < localArrayList.size())
       {
-        Object localObject = paramFile[i];
-        if (localObject.getName().endsWith(".mp4")) {
-          return localObject.getAbsolutePath();
-        }
+        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
         i += 1;
       }
     }
-    return null;
   }
   
-  public static String a(String paramString)
+  static void a(String paramString)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      paramString = ShortVideoUtils.a(new File(paramString).getParentFile());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
-    }
-    return null;
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("tmg_opensdk_download_md5", paramString);
+    localEditor.commit();
   }
   
-  @NonNull
-  private static String b(File paramFile)
+  static String b()
   {
-    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
-    if ((paramFile.exists()) && (paramFile.isDirectory()))
-    {
-      paramFile = paramFile.listFiles();
-      if ((paramFile != null) && (paramFile.length > 0)) {
-        return paramFile[0].getAbsolutePath();
+    return a().getString("tmg_opensdk_download_md5", null);
+  }
+  
+  public static boolean b(amhe paramamhe)
+  {
+    String str1 = paramamhe.b;
+    paramamhe = a(paramamhe);
+    String str2 = b();
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
       }
     }
-    return null;
+    do
+    {
+      return false;
+      if (FileUtils.fileExists(paramamhe)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramamhe }));
+    return false;
+    a();
+    return true;
+  }
+  
+  boolean a(amhe paramamhe)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
+    }
+    this.jdField_a_of_type_Amhe = paramamhe;
+    return this.jdField_a_of_type_Amhg.a(paramamhe, this.jdField_a_of_type_Amhi);
+  }
+  
+  boolean a(amhe paramamhe, amhi paramamhi)
+  {
+    this.jdField_a_of_type_Amhi = paramamhi;
+    return a(paramamhe);
   }
 }
 

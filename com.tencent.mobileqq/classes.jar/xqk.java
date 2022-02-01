@@ -1,10 +1,10 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class xqk
-  extends wip
+public abstract interface xqk<T>
 {
-  public ArrayList<String> a;
-  public boolean a = true;
+  public abstract void a(ErrorMessage paramErrorMessage);
+  
+  public abstract void a(T paramT);
 }
 
 

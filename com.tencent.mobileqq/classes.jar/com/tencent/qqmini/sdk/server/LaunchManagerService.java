@@ -49,13 +49,18 @@ public class LaunchManagerService
   private final LinkedList<MiniProcessorConfig> mInternalProcessConfig = new LinkedList();
   private final IBinder mServiceBinder = new LaunchManagerService.ServiceBinder(this);
   
+  private void checkMiniAppInfoCache()
+  {
+    ThreadManager.getSubThreadHandler().post(new LaunchManagerService.4(this));
+  }
+  
   @SuppressLint({"WrongConstant"})
   private void doStartMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    Intent localIntent;
     for (;;)
     {
       Object localObject;
+      Intent localIntent;
       int i;
       try
       {
@@ -74,7 +79,7 @@ public class LaunchManagerService
           localIntent.putExtra("startDuration", System.currentTimeMillis());
           localObject = EngineManager.g();
           if (paramMiniAppInfo.engineType != 1) {
-            break label307;
+            break label360;
           }
           i = 2;
           localIntent.putExtra("engineChannel", ((EngineManager)localObject).getChannelForType(i));
@@ -82,9 +87,10 @@ public class LaunchManagerService
             localIntent.putExtras(paramBundle);
           }
           if (paramActivity == null) {
-            break;
+            break label366;
           }
           paramActivity.startActivity(localIntent);
+          QMLog.i("minisdk-start_LaunchManagerService", "---startApp----  appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name + " intent:" + localIntent);
           return;
         }
       }
@@ -101,18 +107,22 @@ public class LaunchManagerService
       {
         localIntent.putExtra("start_mode", 2);
         continue;
-        label307:
+        label360:
         i = 3;
+        continue;
+        label366:
+        if (paramResultReceiver != null)
+        {
+          paramActivity = new Bundle();
+          paramActivity.putParcelable("LAUNCH_ACTIVITY_INTENT", localIntent);
+          paramResultReceiver.send(1, paramActivity);
+        }
+        else
+        {
+          this.mContext.startActivity(localIntent);
+        }
       }
     }
-    if (paramResultReceiver != null)
-    {
-      paramActivity = new Bundle();
-      paramActivity.putParcelable("LAUNCH_ACTIVITY_INTENT", localIntent);
-      paramResultReceiver.send(1, paramActivity);
-      return;
-    }
-    this.mContext.startActivity(localIntent);
   }
   
   @NonNull
@@ -180,25 +190,25 @@ public class LaunchManagerService
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 343	com/tencent/qqmini/sdk/utils/QUAUtil:isQQMainApp	()Z
+    //   2: invokestatic 366	com/tencent/qqmini/sdk/utils/QUAUtil:isQQMainApp	()Z
     //   5: istore_1
     //   6: iload_1
     //   7: ifeq +6 -> 13
     //   10: aload_0
     //   11: monitorexit
     //   12: return
-    //   13: invokestatic 348	com/tencent/qqmini/sdk/manager/BaseLibManager:g	()Lcom/tencent/qqmini/sdk/manager/BaseLibManager;
-    //   16: new 350	com/tencent/qqmini/sdk/server/LaunchManagerService$3
+    //   13: invokestatic 371	com/tencent/qqmini/sdk/manager/BaseLibManager:g	()Lcom/tencent/qqmini/sdk/manager/BaseLibManager;
+    //   16: new 373	com/tencent/qqmini/sdk/server/LaunchManagerService$3
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 351	com/tencent/qqmini/sdk/server/LaunchManagerService$3:<init>	(Lcom/tencent/qqmini/sdk/server/LaunchManagerService;)V
-    //   24: invokevirtual 354	com/tencent/qqmini/sdk/manager/BaseLibManager:updateBaseLib	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
+    //   21: invokespecial 374	com/tencent/qqmini/sdk/server/LaunchManagerService$3:<init>	(Lcom/tencent/qqmini/sdk/server/LaunchManagerService;)V
+    //   24: invokevirtual 377	com/tencent/qqmini/sdk/manager/BaseLibManager:updateBaseLib	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
     //   27: goto -17 -> 10
     //   30: astore_2
     //   31: ldc 8
-    //   33: ldc_w 356
+    //   33: ldc_w 379
     //   36: aload_2
-    //   37: invokestatic 258	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   37: invokestatic 283	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   40: goto -30 -> 10
     //   43: astore_2
     //   44: aload_0
@@ -237,6 +247,7 @@ public class LaunchManagerService
     this.mContext = paramContext;
     this.mAppLaunchStrategy = new AppLaunchStrategy(this.mContext, this.mAppProcessConfig, this.mInternalProcessConfig);
     this.mGameLaunchStrategy = new GameLaunchStrategy(this.mContext, this.mGameProcessConfig, GameLaunchConfig.fromWnsConfig(), new LaunchManagerService.GameProcessPreloader(this, null), ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion());
+    checkMiniAppInfoCache();
   }
   
   public void onAppBackground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle)
@@ -332,7 +343,7 @@ public class LaunchManagerService
         if ((localMiniProcessorConfig != null) && (!TextUtils.isEmpty(localMiniProcessorConfig.processName)))
         {
           QMLog.i("minisdk-start_LaunchManagerService", "registerProcessInfo " + localMiniProcessorConfig);
-          switch (LaunchManagerService.4.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[localMiniProcessorConfig.processType.ordinal()])
+          switch (LaunchManagerService.5.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[localMiniProcessorConfig.processType.ordinal()])
           {
           default: 
             break;
@@ -410,10 +421,10 @@ public class LaunchManagerService
     {
       paramActivity = String.valueOf(paramMiniAppInfo.launchParam.scene);
       if (paramMiniAppInfo.via == null) {
-        break label217;
+        break label218;
       }
     }
-    label217:
+    label218:
     for (paramBundle = paramMiniAppInfo.via;; paramBundle = "")
     {
       paramResultReceiver.useUserApp(paramMiniAppInfo.appId, paramMiniAppInfo.verType, 0, paramActivity, paramBundle, null, new LaunchManagerService.1(this));

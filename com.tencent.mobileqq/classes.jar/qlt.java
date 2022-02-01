@@ -1,56 +1,69 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qlt
-  extends qjh
 {
-  public qlt(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  private static qlt jdField_a_of_type_Qlt;
+  private final List<qlu> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public qjh a()
+  public static qlt a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().h();
-  }
-  
-  public qjh d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pqk)) && (ozs.s(((pqk)this.jdField_a_of_type_JavaLangObject).a()))) {
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(agej.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-    }
-    for (;;)
+    if (jdField_a_of_type_Qlt == null) {}
+    try
     {
-      if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentBig))) {
-        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qjg);
+      if (jdField_a_of_type_Qlt == null) {
+        jdField_a_of_type_Qlt = new qlt();
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      }
-      a(localLinearLayout);
-      return this;
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(agej.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+      return jdField_a_of_type_Qlt;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
     }
   }
   
-  public qjh e()
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    return null;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((qlu)localIterator.next()).a(paramInt, paramList, paramLong);
+      }
+    }
   }
   
-  public qjh g()
+  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Qjg = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((qlu)localIterator.next()).a(paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
+      }
+    }
+  }
+  
+  public void a(qlu paramqlu)
+  {
+    if (paramqlu == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramqlu)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramqlu);
+      }
+      return;
+    }
   }
 }
 

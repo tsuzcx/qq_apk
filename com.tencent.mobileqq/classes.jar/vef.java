@@ -1,16 +1,18 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vef
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
+  implements View.OnClickListener
 {
   vef(vee paramvee) {}
   
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  public void onClick(View paramView)
   {
-    vee.a(this.a, paramvxq);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

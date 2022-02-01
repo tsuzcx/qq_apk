@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 public final class ArMapUtil$2
@@ -30,7 +30,7 @@ public final class ArMapUtil$2
     {
       localHashMap.put("isFelxMapClick", str);
       localHashMap.put("operatorMapCount", String.valueOf(this.jdField_a_of_type_Int));
-      bdmc.a(BaseApplicationImpl.getContext()).a("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
       return;
       str = "0";
       break;

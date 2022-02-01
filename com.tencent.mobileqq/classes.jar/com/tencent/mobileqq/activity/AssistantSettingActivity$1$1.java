@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import adus;
-import advs;
-import anzj;
+import acrl;
+import acss;
+import amtj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,14 +10,14 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class AssistantSettingActivity$1$1
   implements Runnable
 {
-  public AssistantSettingActivity$1$1(adus paramadus, boolean paramBoolean) {}
+  public AssistantSettingActivity$1$1(acrl paramacrl, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adus.a.a.notifyDataSetChanged();
-    BaseApplication localBaseApplication = this.jdField_a_of_type_Adus.a.app.getApp();
+    this.jdField_a_of_type_Acrl.a.a.notifyDataSetChanged();
+    BaseApplication localBaseApplication = this.jdField_a_of_type_Acrl.a.app.getApp();
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = anzj.a(2131699689);; str = anzj.a(2131699685))
+    for (String str = amtj.a(2131699924);; str = amtj.a(2131699920))
     {
       QQToast.a(localBaseApplication, str, 0).a();
       return;

@@ -1,19 +1,78 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.io.File;
 
-class vnr
-  implements View.OnClickListener
+public class vnr
+  extends vni
 {
-  vnr(vnp paramvnp) {}
-  
-  public void onClick(View paramView)
+  public vnr(@NonNull String[] paramArrayOfString)
   {
-    if (this.a.a() != null) {
-      this.a.a().finish();
+    super(paramArrayOfString);
+  }
+  
+  protected void a(String[] paramArrayOfString, vnj paramvnj)
+  {
+    int k = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i < k)
+      {
+        paramvnj = new File(paramArrayOfString[i]).listFiles();
+        if (paramvnj == null)
+        {
+          i += 1;
+        }
+        else
+        {
+          int m = paramvnj.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile = paramvnj[j];
+              if (a(localFile)) {
+                a(localFile);
+              }
+              j += 1;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                xvv.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected boolean a(File paramFile)
+  {
+    if (!paramFile.isDirectory()) {}
+    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+      return false;
+    }
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label60;
+      }
+      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
   }
 }
 

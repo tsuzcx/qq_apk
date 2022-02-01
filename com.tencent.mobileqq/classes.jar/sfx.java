@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.startGuideAnimate.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class sfx
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$startGuideAnimate$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sfx
+  extends AnimatorListenerAdapter
 {
-  sfx(sel paramsel, String paramString, pmz parampmz) {}
-  
-  public void onClick(View paramView)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    ocd.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-    pms.b(this.jdField_a_of_type_Pmz.f);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (sfq.a(this.a.this$0)) {
+      return;
+    }
+    if (sfq.a(this.a.this$0) >= 1)
+    {
+      sfq.a(this.a.this$0);
+      return;
+    }
+    paramAnimator = this.a.this$0;
+    sfq.a(paramAnimator, sfq.a(paramAnimator) + 1);
+    sfq.c(this.a.this$0);
   }
 }
 

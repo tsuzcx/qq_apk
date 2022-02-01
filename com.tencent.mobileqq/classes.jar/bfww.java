@@ -1,136 +1,131 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 public class bfww
 {
-  protected int a;
-  protected long a;
-  aavm a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
-  
-  protected bfww(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  public static Parcel a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Aavm = new bfwx(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    return localParcel;
   }
   
-  public static bfww a(long paramLong, TroopFileTransferManager.Item paramItem)
+  /* Error */
+  public static <T> T a(byte[] paramArrayOfByte, android.os.Parcelable.Creator<T> paramCreator)
   {
-    if (paramLong == 0L)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item.id=null");
-      return null;
-    }
-    if (paramItem.ForwardTroopuin == 0L)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. ForwardTroopuin=0");
-      return null;
-    }
-    if (paramItem.BusId != 25)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. BusId err:" + paramItem.BusId);
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.ForwardPath))
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "get2WeiyunForwarder. ForwardPath=null");
-      return null;
-    }
-    return new bfww(paramLong, paramItem, 1);
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aload_0
+    //   3: invokestatic 28	bfww:a	([B)Landroid/os/Parcel;
+    //   6: astore_0
+    //   7: aload_0
+    //   8: astore_2
+    //   9: aload_1
+    //   10: aload_0
+    //   11: invokeinterface 34 2 0
+    //   16: astore_1
+    //   17: aload_1
+    //   18: astore_2
+    //   19: aload_2
+    //   20: astore_1
+    //   21: aload_0
+    //   22: ifnull +9 -> 31
+    //   25: aload_0
+    //   26: invokevirtual 38	android/os/Parcel:recycle	()V
+    //   29: aload_2
+    //   30: astore_1
+    //   31: aload_1
+    //   32: areturn
+    //   33: astore_1
+    //   34: aconst_null
+    //   35: astore_0
+    //   36: aload_0
+    //   37: astore_2
+    //   38: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   41: ifeq +16 -> 57
+    //   44: aload_0
+    //   45: astore_2
+    //   46: ldc 46
+    //   48: iconst_2
+    //   49: aload_1
+    //   50: invokevirtual 50	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   53: aload_1
+    //   54: invokestatic 54	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   57: aload_3
+    //   58: astore_1
+    //   59: aload_0
+    //   60: ifnull -29 -> 31
+    //   63: aload_0
+    //   64: invokevirtual 38	android/os/Parcel:recycle	()V
+    //   67: aconst_null
+    //   68: areturn
+    //   69: astore_1
+    //   70: aconst_null
+    //   71: astore_0
+    //   72: aload_0
+    //   73: astore_2
+    //   74: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   77: ifeq +16 -> 93
+    //   80: aload_0
+    //   81: astore_2
+    //   82: ldc 46
+    //   84: iconst_2
+    //   85: aload_1
+    //   86: invokevirtual 55	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   89: aload_1
+    //   90: invokestatic 54	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   93: aload_3
+    //   94: astore_1
+    //   95: aload_0
+    //   96: ifnull -65 -> 31
+    //   99: aload_0
+    //   100: invokevirtual 38	android/os/Parcel:recycle	()V
+    //   103: aconst_null
+    //   104: areturn
+    //   105: astore_0
+    //   106: aconst_null
+    //   107: astore_2
+    //   108: aload_2
+    //   109: ifnull +7 -> 116
+    //   112: aload_2
+    //   113: invokevirtual 38	android/os/Parcel:recycle	()V
+    //   116: aload_0
+    //   117: athrow
+    //   118: astore_0
+    //   119: goto -11 -> 108
+    //   122: astore_1
+    //   123: goto -51 -> 72
+    //   126: astore_1
+    //   127: goto -91 -> 36
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	130	0	paramArrayOfByte	byte[]
+    //   0	130	1	paramCreator	android.os.Parcelable.Creator<T>
+    //   8	105	2	localObject1	Object
+    //   1	93	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	33	java/lang/Exception
+    //   2	7	69	java/lang/OutOfMemoryError
+    //   2	7	105	finally
+    //   9	17	118	finally
+    //   38	44	118	finally
+    //   46	57	118	finally
+    //   74	80	118	finally
+    //   82	93	118	finally
+    //   9	17	122	java/lang/OutOfMemoryError
+    //   9	17	126	java/lang/Exception
   }
   
-  private final void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  public static byte[] a(Parcelable paramParcelable)
   {
-    paramInt2 = 601;
-    if (!paramBoolean)
-    {
-      bnyz.a(-1);
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult isSuccess:false ");
-      paramString1 = new bgrk(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 601);
-      bfva.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-      return;
-    }
-    bfvr.c("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult retCode:" + paramInt1 + " sClientWording:" + paramString3);
-    bnyz.a(paramInt1);
-    if (paramInt1 != 0)
-    {
-      switch (paramInt1)
-      {
-      default: 
-        paramInt1 = paramInt2;
-      }
-      for (;;)
-      {
-        paramString1 = new bgrk(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, paramInt1, paramString3);
-        bfva.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-        return;
-        paramInt1 = 202;
-        continue;
-        paramInt1 = 702;
-        continue;
-        paramInt1 = 703;
-        continue;
-        paramInt1 = 702;
-        continue;
-        paramInt1 = 701;
-        continue;
-        paramInt1 = 705;
-        continue;
-        paramInt1 = paramInt2;
-        if (!TextUtils.isEmpty(paramString3)) {
-          paramInt1 = 704;
-        }
-      }
-    }
-    paramString1 = new bgrk(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 602);
-    bfva.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-  }
-  
-  private int b()
-  {
-    QQAppInterface localQQAppInterface = bfvp.a();
-    if (localQQAppInterface == null)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun app=null");
-      return -1;
-    }
-    bfvr.c("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath);
-    aauw.a(localQQAppInterface, true, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Aavm);
-    return 0;
-  }
-  
-  public int a()
-  {
-    if (1 == this.jdField_a_of_type_Int) {
-      return b();
-    }
-    return -1;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
+    Parcel localParcel = Parcel.obtain();
+    paramParcelable.writeToParcel(localParcel, 0);
+    paramParcelable = localParcel.marshall();
+    localParcel.recycle();
+    return paramParcelable;
   }
 }
 

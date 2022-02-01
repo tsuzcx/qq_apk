@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnom;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneUiJsPlugin$3
+class QzoneUiJsPlugin$3
   implements Runnable
 {
-  public QzoneUiJsPlugin$3(bnom parambnom, String paramString) {}
+  QzoneUiJsPlugin$3(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
   public void run()
   {
-    bngf.a().a().f(this.a);
+    RemoteHandleManager.getInstance().getSender().getFakeFeedVideoCover(this.val$timestamp);
   }
 }
 

@@ -1,14 +1,16 @@
-final class pfx
-  implements pgb
+import java.util.Map;
+
+class pfx
+  extends pse
 {
-  public void l()
+  pfx(pey parampey, String paramString, Map paramMap)
   {
-    pfs.a().a(null, false);
+    super(paramString);
   }
   
-  public void m()
+  public void a(prx paramprx)
   {
-    pfs.a().a(false);
+    paramprx.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

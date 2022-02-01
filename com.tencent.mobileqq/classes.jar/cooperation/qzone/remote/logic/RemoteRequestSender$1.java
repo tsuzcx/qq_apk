@@ -1,17 +1,15 @@
 package cooperation.qzone.remote.logic;
 
 import android.os.Bundle;
-import bngf;
-import bngi;
 
-public class RemoteRequestSender$1
+class RemoteRequestSender$1
   implements Runnable
 {
-  public RemoteRequestSender$1(bngi parambngi, Bundle paramBundle) {}
+  RemoteRequestSender$1(RemoteRequestSender paramRemoteRequestSender, Bundle paramBundle) {}
   
   public void run()
   {
-    bngi.a(this.this$0).a("cmd.gdtreport.webview", this.a, false);
+    RemoteRequestSender.access$000(this.this$0).sendData("cmd.gdtreport.webview", this.val$bundle, false);
   }
 }
 

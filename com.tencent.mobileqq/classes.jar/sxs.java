@@ -1,22 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class sxs
-  extends AnimatorListenerAdapter
+class sxs
+  extends BroadcastReceiver
 {
-  public sxs(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  sxs(sxp paramsxp) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReadInJoyDynamicGridView.b(this.a, false);
-    ReadInJoyDynamicGridView.a(this.a);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyDynamicGridView.b(this.a, true);
-    ReadInJoyDynamicGridView.a(this.a);
+    this.a.g();
   }
 }
 

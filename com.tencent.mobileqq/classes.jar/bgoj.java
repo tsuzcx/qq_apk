@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-class bgoj
-  implements View.OnClickListener
+public abstract interface bgoj
 {
-  bgoj(bgoi parambgoi) {}
+  public abstract int a(boolean paramBoolean, String paramString);
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract bgoe a(String paramString);
+  
+  public abstract void a(bgoe parambgoe, bgod parambgod, Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 

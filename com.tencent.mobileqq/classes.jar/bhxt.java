@@ -1,115 +1,114 @@
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.CustomOnlineStatusManager.1;
-import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.1;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import com.tencent.open.downloadnew.DownloadInfo;
 import mqq.os.MqqHandler;
 
 public class bhxt
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "";
-  private final ArrayList<WeakReference<Runnable>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private int b = 30000;
-  private int c = -1;
-  
-  public static bhxt a()
+  public static int a(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail)
   {
-    return bhxu.a();
-  }
-  
-  private final void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CustomOnlineStatusManager", 4, "resetOnEnableToggle");
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  private void b()
-  {
-    ThreadManager.getUIHandler().post(new CustomOnlineStatusManager.1(this));
-  }
-  
-  public final String a()
-  {
-    if (a())
+    bhzm.a("DownloadJSApi", "doDownloadActionBySDK pParmas =" + paramBundle);
+    String str3 = paramBundle.getString(bibw.b);
+    String str4 = paramBundle.getString(bibw.j);
+    String str5 = paramBundle.getString(bibw.f);
+    int i = paramBundle.getInt(bibw.k);
+    String str6 = paramBundle.getString(bibw.i);
+    String str7 = paramBundle.getString(bibw.l);
+    paramBundle.getString(bibw.m);
+    String str2 = paramBundle.getString(bibw.D);
+    int j = paramBundle.getInt(bibw.H);
+    String str1 = paramBundle.getString(bibw.I);
+    boolean bool1 = paramBundle.getBoolean(bibw.o);
+    boolean bool2 = paramBundle.getBoolean(bibw.y, true);
+    boolean bool3 = paramBundle.getBoolean(bibw.h, true);
+    boolean bool4 = paramBundle.getBoolean(bibw.x);
+    int k = paramBundle.getInt(bibw.C, 0);
+    boolean bool5 = paramBundle.getBoolean(bibw.J, false);
+    switch (i)
     {
-      long l = System.currentTimeMillis();
-      if (Math.abs(this.jdField_a_of_type_Long - l) > this.b)
+    }
+    for (;;)
+    {
+      return 0;
+      paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
+      paramString.g = i;
+      if (bool2)
       {
-        this.jdField_a_of_type_Long = l;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("CustomOnlineStatusManager", 4, "sync owner status");
-        }
-        bhxv.a();
+        paramString.jdField_a_of_type_Boolean = bool3;
+        paramString.jdField_b_of_type_Boolean = bool4;
       }
-      if (bhxv.a(this.jdField_a_of_type_Int)) {
-        return this.jdField_a_of_type_JavaLangString;
-      }
-    }
-    return "";
-  }
-  
-  public final void a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
-  {
-    this.jdField_a_of_type_Int = bhxv.b(paramCustomOnlineStatusMsg);
-    this.jdField_a_of_type_JavaLangString = bhxv.a(paramCustomOnlineStatusMsg);
-    this.b = bhxv.a(paramCustomOnlineStatusMsg);
-    b();
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramRunnable));
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-  }
-  
-  public final boolean a()
-  {
-    int j = this.c;
-    armg localarmg = (armg)aran.a().a(479);
-    if ((localarmg == null) || (localarmg.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      this.c = i;
-      if (j != this.c) {
-        a();
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("CustomOnlineStatusManager", 4, "featureEnable = " + this.c);
-      }
-      if (this.c != 1) {
+      for (;;)
+      {
+        paramString.h = k;
+        paramString.n = str2;
+        paramString.i = j;
+        paramString.o = str1;
+        paramString.jdField_d_of_type_Boolean = bool5;
+        paramString.jdField_d_of_type_Int = 0;
+        paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+        bhzm.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_DOWNLOAD");
+        bhxo.a().a(paramString);
         break;
+        paramString.jdField_a_of_type_Boolean = false;
+        paramString.jdField_b_of_type_Boolean = true;
+        paramString.jdField_a_of_type_Int = 2;
       }
-      return true;
+      paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
+      paramString.g = i;
+      paramString.jdField_a_of_type_Boolean = bool3;
+      paramString.jdField_b_of_type_Boolean = bool4;
+      paramString.jdField_d_of_type_Int = 0;
+      paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+      paramString.o = str1;
+      if ((paramApkUpdateDetail != null) && (paramString.jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
+        paramString.jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
+      }
+      bool2 = biar.a(bhpc.a().a(), null).b("Common_QQ_Patch_Switch");
+      if (!bool1) {
+        bhxo.a().a(paramString);
+      }
+      for (;;)
+      {
+        bhzm.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_UPDATE " + bool1);
+        break;
+        if (bool2) {
+          bhxo.a().a(paramString, paramApkUpdateDetail);
+        } else {
+          bhxo.a().a(paramString);
+        }
+      }
+      bhxo.a().a(str3);
+      continue;
+      if (bool2)
+      {
+        bias.a("305", str6, str3, str1);
+        bhxo.a().a(str3, str5);
+        continue;
+        bhxo.a().b(str3);
+        continue;
+        paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
+        paramString.g = i;
+        paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
+        paramString.jdField_b_of_type_Boolean = bool4;
+        bhxo.a().a(paramString);
+      }
     }
-    return false;
   }
   
-  public boolean a(String paramString)
+  public static void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
   {
-    if (paramString != null)
-    {
-      paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString != null) {
-        return Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b;
-      }
-    }
-    return true;
+    ThreadManager.getSubThreadHandler().post(new DownloadJSApi.1(paramBundle, paramString, paramInt, paramActivity, paramApkUpdateDetail));
+  }
+  
+  private static void c(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  {
+    new Handler(Looper.getMainLooper()).post(new DownloadJSApi.2(paramBundle, paramActivity, paramString, paramApkUpdateDetail, paramInt));
   }
 }
 

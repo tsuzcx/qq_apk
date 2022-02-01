@@ -1,27 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public final class bdlc
+class bdlc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean a;
+  bdlc(bdlb parambdlb) {}
   
-  private void a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
-      }
-    }
-    try
-    {
-      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 

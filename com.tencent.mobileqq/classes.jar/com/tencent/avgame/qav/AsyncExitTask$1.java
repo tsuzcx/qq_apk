@@ -4,7 +4,7 @@ import android.os.Build;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.qphone.base.util.QLog;
-import ngb;
+import nhj;
 
 public final class AsyncExitTask$1
   implements Runnable
@@ -13,7 +13,7 @@ public final class AsyncExitTask$1
   {
     long l = SystemClock.elapsedRealtime();
     DeviceProfileManager.a();
-    ngb.a(true);
+    nhj.a(true);
     if (QLog.isColorLevel()) {
       QLog.i("AsyncExitTask", 2, "checkAndPreloadDpcMng, cost[" + (SystemClock.elapsedRealtime() - l) + "], model[" + Build.MODEL + "]");
     }

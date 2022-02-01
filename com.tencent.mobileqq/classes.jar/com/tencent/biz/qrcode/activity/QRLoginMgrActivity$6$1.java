@@ -2,36 +2,36 @@ package com.tencent.biz.qrcode.activity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import zxn;
-import zyl;
-import zyr;
+import ywy;
+import yxw;
+import yyc;
 
 public class QRLoginMgrActivity$6$1
   implements Runnable
 {
-  public QRLoginMgrActivity$6$1(zxn paramzxn, ArrayList paramArrayList) {}
+  public QRLoginMgrActivity$6$1(ywy paramywy, ArrayList paramArrayList) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      this.jdField_a_of_type_Zxn.a.finish();
+      this.jdField_a_of_type_Ywy.a.finish();
     }
     do
     {
       return;
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Zxn.a) != -1L)
+      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Ywy.a) != -1L)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          zyr localzyr = (zyr)localIterator.next();
-          if (localzyr.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Zxn.a)) {
-            localzyr.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Zxn.a);
+          yyc localyyc = (yyc)localIterator.next();
+          if (localyyc.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Ywy.a)) {
+            localyyc.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Ywy.a);
           }
         }
       }
-    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Zxn.a) == null);
-    QRLoginMgrActivity.a(this.jdField_a_of_type_Zxn.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Ywy.a) == null);
+    QRLoginMgrActivity.a(this.jdField_a_of_type_Ywy.a).a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

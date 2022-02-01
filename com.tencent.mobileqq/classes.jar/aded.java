@@ -1,28 +1,77 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x63.submsgtype0x63.MsgBody;
+import android.content.Intent;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aded
-  implements adci
+  extends MqqHandler
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "Get crm voip push from handleC2COnlinePushMsg0x210Resp");
-    }
-    bdll.b(paramQQAppInterface, "CliOper", "", "", "VoipService.ivrPush", "VoipService.ivrPush", 0, 0, "", "", "", "");
-    new submsgtype0x63.MsgBody();
-    new lxz(BaseApplication.getContext()).a(new adee(paramMsgType0x210));
-  }
+  public aded(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void handleMessage(Message paramMessage)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    switch (paramMessage.what)
+    {
+    }
+    label424:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramMessage);
+          this.a.finish();
+          return;
+        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+        DiscussionInfoCardActivity.a(this.a).dismiss();
+        return;
+        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
+            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+          }
+        }
+        else
+        {
+          paramMessage = (ArrayList)paramMessage.obj;
+          int i = paramMessage.size();
+          DiscussionInfoCardActivity.a(this.a).setText(amtj.a(2131702475) + i + amtj.a(2131702476));
+          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+          DiscussionInfoCardActivity.a(this.a, paramMessage);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
+            break label424;
+          }
+          DiscussionInfoCardActivity.a(this.a, new adee(this.a));
+          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+        }
+        for (;;)
+        {
+          removeMessages(0);
+          return;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131693984));
+          if (!AppSetting.c) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(amtj.a(2131702481) + this.a.getString(2131693984) + amtj.a(2131702473));
+          break;
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      } while (DiscussionInfoCardActivity.a(this.a) != 0);
+      paramMessage = (String)paramMessage.obj;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+    this.a.finish();
   }
 }
 

@@ -1,60 +1,27 @@
-import android.view.View.MeasureSpec;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aiyd
-  implements aixt
+  implements bjoe
 {
-  public aiyd(VoiceTextPanel paramVoiceTextPanel) {}
+  public aiyd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bjnw parambjnw) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    VoiceTextPanel.a(this.a).an();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (VoiceTextPanel.a(this.a).b() != 0)
+    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    if ((paramView == null) || (paramView.isEmpty())) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceTextPanel", 2, "onActionDown but mHeader cannot see");
-      }
       return;
-    }
-    VoiceTextPanel.a(this.a, true);
-    this.a.measure(View.MeasureSpec.makeMeasureSpec(this.a.getRight() - this.a.getLeft(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt - this.a.getTop(), 1073741824));
-    this.a.layout(this.a.getLeft(), this.a.getTop(), this.a.getRight(), paramInt);
-    VoiceTextPanel.a(this.a).a(this.a.getLeft(), this.a.getTop(), this.a.getRight(), this.a.getBottom(), paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextPanel", 2, "enterEditState");
-    }
-    VoiceTextPanel.a(this.a).a();
-    VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, this.a.getHeight(), this.a.getTop());
-    VoiceTextPanel.a(this.a).aB();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, paramInt3);
-    VoiceTextPanel.a(this.a).b();
-  }
-  
-  public void b()
-  {
-    VoiceTextPanel.a(this.a).a(true);
-    VoiceTextPanel.a(this.a, false);
-    VoiceTextPanel.a(this.a).b();
-  }
-  
-  public void c()
-  {
-    VoiceTextPanel.a(this.a).a(false);
-    VoiceTextPanel.a(this.a, false);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(paramView);
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new aiye(this));
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
+    } while (!this.jdField_a_of_type_Bjnw.isShowing());
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

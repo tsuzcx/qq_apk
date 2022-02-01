@@ -1,51 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdd
-  extends wpa<xet>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbs>
 {
-  private final String a;
-  public List<String> a;
-  
-  public xdd()
+  public xdd(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_JavaLangString = wnu.a("StorySvc.get_share_group_info");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String a()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbs paramwbs)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwbs.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if ((paramwbs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbs.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramwbs.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      }
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwbs.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwbs);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
-    try
-    {
-      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
-      return new xet(localRspGetShareGroupInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqGetShareGroupInfo.share_group_id_list.add(str);
-    }
-    return localReqGetShareGroupInfo.toByteArray();
+    return wbs.class;
   }
 }
 

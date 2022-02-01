@@ -1,14 +1,18 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import kotlin.Metadata;
 
-class sfu
-  implements ProteusParserWithHotReload.IHotReloadChangedObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
+final class sfu
+  implements View.OnTouchListener
 {
-  sfu(sel paramsel) {}
+  sfu(sfq paramsfq) {}
   
-  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.notifyDataSetChanged();
+    sfq.a(this.a);
+    return true;
   }
 }
 

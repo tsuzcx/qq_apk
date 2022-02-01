@@ -1,13 +1,14 @@
-public class lhp
+import android.graphics.drawable.Drawable;
+
+public abstract interface lhp
 {
-  int a;
-  int b;
+  public abstract void a(int paramInt);
   
-  public lhp(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(Drawable paramDrawable, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt);
 }
 
 

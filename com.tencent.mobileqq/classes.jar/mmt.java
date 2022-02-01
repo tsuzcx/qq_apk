@@ -1,63 +1,29 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.beauty.BeautyBaseView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+import mqq.util.WeakReference;
 
-public class mmt
-  extends PagerAdapter
+class mmt
+  implements Observer
 {
-  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final WeakReference<mmp> a;
   
-  public mmt(List<BeautyBaseView> paramList)
+  mmt(mmp parammmp)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Collection localCollection;
-    if (localCollection != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
-    }
+    this.a = new WeakReference(parammmp);
   }
   
-  public BeautyBaseView a(int paramInt)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
+    paramObservable = (Object[])paramObject;
+    switch (((Integer)paramObservable[0]).intValue())
     {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
     }
-    return localObject1;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if ((paramViewGroup != null) && ((paramObject instanceof BeautyBaseView))) {
-      paramViewGroup.removeView((BeautyBaseView)paramObject);
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    BeautyBaseView localBeautyBaseView = a(paramInt);
-    if ((paramViewGroup != null) && (localBeautyBaseView != null)) {
-      paramViewGroup.addView(localBeautyBaseView);
-    }
-    return localBeautyBaseView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    do
+    {
+      return;
+      paramObject = (mmp)this.a.get();
+    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
+    paramObject.a();
   }
 }
 

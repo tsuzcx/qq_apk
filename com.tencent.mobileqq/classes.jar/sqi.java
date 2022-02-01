@@ -1,78 +1,31 @@
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.widget.AbsListView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.BubblePopupWindow;
 
 public class sqi
-  implements spj, spo
+  implements View.OnClickListener
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private pph jdField_a_of_type_Pph = new sqj(this);
+  public sqi(ReadinjoyTabbar paramReadinjoyTabbar) {}
   
-  public int a(BaseData paramBaseData)
+  public void onClick(View paramView)
   {
-    return 16;
-  }
-  
-  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
+      ReadinjoyTabbar.a(this.a).a();
+      label49:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramBaseData.b;
-    }
-    paramViewGroup = (ProteusBookData)paramBaseData;
-    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramViewGroup.a);
-    paramViewGroup = localContainer;
-    if (localContainer == null) {
-      paramViewGroup = new View(paramContext);
-    }
-    return new sqk(paramViewGroup, paramBaseData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.r == 18;
-  }
-  
-  public void b()
-  {
-    if (jdField_a_of_type_Boolean)
+    catch (Exception localException)
     {
-      jdField_a_of_type_Boolean = false;
-      ppe localppe = pfa.a().a();
-      if (localppe != null) {
-        localppe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Pph, false);
-      }
+      break label49;
     }
   }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    ppe localppe = pfa.a().a();
-    if (localppe != null) {
-      localppe.a(this.jdField_a_of_type_Pph);
-    }
-  }
-  
-  public void e() {}
 }
 
 

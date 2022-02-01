@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import bjbs;
+import bhht;
 import com.tencent.qphone.base.util.QLog;
 
 class NewReportPlugin$4$2

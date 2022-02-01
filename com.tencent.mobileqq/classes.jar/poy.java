@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class poy
-  implements Comparator<TabChannelCoverInfo>
+  implements pqe
 {
-  public poy(ChannelCoverInfoModule.4 param4) {}
+  public poy(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
+  public void a()
   {
-    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
+    tgc.a(this.a.a.getContext(), "viola测试页面", "https://kandian.qq.com/viola/bundle_home.js?v_bid=3256&statusColor=1", null);
   }
 }
 

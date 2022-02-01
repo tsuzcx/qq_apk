@@ -1,19 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bjnx
-  implements ValueAnimator.AnimatorUpdateListener
+class bjnx
+  implements View.OnClickListener
 {
-  public bjnx(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  bjnx(bjnw parambjnw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
-  }
+  public void onClick(View paramView) {}
 }
 
 

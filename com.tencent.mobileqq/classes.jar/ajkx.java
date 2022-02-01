@@ -1,9 +1,20 @@
-import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import mqq.app.QQPermissionCallback;
 
 public class ajkx
+  implements QQPermissionCallback
 {
-  public LinearLayout a;
-  public LinearLayout b;
+  public ajkx(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AvatarPendantActivity.e(this.a);
+  }
 }
 
 

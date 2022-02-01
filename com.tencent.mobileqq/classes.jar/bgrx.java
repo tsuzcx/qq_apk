@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
-public class bgrx
-  implements FilenameFilter
+class bgrx
+  implements MediaPlayer.OnCompletionListener
 {
-  public bgrx(TroopFileTransferManager.1 param1) {}
+  bgrx(bgrw parambgrw) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramString == null) {
-      return false;
+    if (bgrw.a(this.a)) {
+      this.a.a.start();
     }
-    return paramString.startsWith("[Thumb]");
+    for (;;)
+    {
+      if (bgrw.a(this.a) != null) {
+        bgrw.a(this.a).onCall(7, "");
+      }
+      return;
+      bgrw.a(this.a, false);
+      if (bgrw.a(this.a) != null) {
+        bgrw.a(this.a).onCompletion(this.a.a);
+      }
+    }
   }
 }
 

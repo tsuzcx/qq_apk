@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 class amft
-  implements View.OnClickListener
 {
-  amft(amfr paramamfr) {}
+  public int a;
+  public String a;
+  public List<amfr> a;
+  public List<amfq> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public amft()
   {
-    amfr.a(this.a).onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
+    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", mCGIConfigs=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

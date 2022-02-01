@@ -1,52 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-class bldo
+public abstract class bldo
+  extends Binder
+  implements bldn
 {
-  protected boolean a;
-  
-  private bldo(bldg parambldg) {}
-  
-  public void a()
+  public bldo()
   {
-    if (this.a) {
-      bldg.a(this.b).a();
-    }
+    attachInterface(this, "cooperation.wadl.ipc.IWadlServiceCallBack");
   }
   
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static bldn a(IBinder paramIBinder)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    blcz localblcz2;
-    do
-    {
-      return;
-      localblcz2 = bldg.a(this.b).a(paramInt1);
-    } while ((localblcz2 != null) && (paramString1.equals(localblcz2.jdField_b_of_type_JavaLangString)) && (paramString2.equals(localblcz2.jdField_a_of_type_JavaLangString)) && (paramInt2 == localblcz2.jdField_b_of_type_Int) && (paramInt3 == localblcz2.c));
-    blcz localblcz1;
-    if (localblcz2 == null) {
-      localblcz1 = new blcz();
+    if (paramIBinder == null) {
+      return null;
     }
-    for (;;)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof bldn))) {
+      return (bldn)localIInterface;
+    }
+    return new bldp(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      localblcz1.jdField_a_of_type_Int = paramInt1;
-      localblcz1.jdField_b_of_type_Int = paramInt2;
-      localblcz1.c = paramInt3;
-      localblcz1.jdField_b_of_type_JavaLangString = paramString1;
-      localblcz1.jdField_a_of_type_JavaLangString = paramString2;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QSec", 2, String.format("Add lost lib: %d,%d,%d,%s", new Object[] { Integer.valueOf(localblcz1.jdField_a_of_type_Int), Integer.valueOf(localblcz1.jdField_b_of_type_Int), Integer.valueOf(localblcz1.c), localblcz1.jdField_b_of_type_JavaLangString }));
-      }
-      bldg.a(this.b).a(localblcz1, false);
-      this.a = true;
-      return;
-      bldg.a(this.b).a(paramInt1, false);
-      localblcz1 = localblcz2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
-        localblcz1 = localblcz2;
-      }
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.wadl.ipc.IWadlServiceCallBack");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlServiceCallBack");
+    paramParcel2 = paramParcel1.readString();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel2, paramParcel1);
+      return true;
     }
   }
 }

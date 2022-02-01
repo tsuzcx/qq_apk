@@ -1,199 +1,45 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ark;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aqbx
 {
-  public static int a;
-  public static DisplayMetrics a;
-  public static boolean a;
-  public static int b;
-  public static int c;
-  public static int d;
-  private static int e;
+  @ausx(a="isStatusBarWhite")
+  public int a;
+  @ausx(a="bkgURL")
+  public String a;
+  @ausx(a="isNavBarWhite")
+  public int b;
+  @ausx(a="logoColor")
+  public String b;
+  @ausx(a="needShowLogo")
+  public int c = 1;
   
-  static
+  public aqbx()
   {
-    jdField_a_of_type_Int = BaseChatItemLayout.e;
-    b = BaseChatItemLayout.f;
-    c = BaseChatItemLayout.jdField_d_of_type_Int;
-    jdField_d_of_type_Int = BaseChatItemLayout.jdField_d_of_type_Int;
-    a(1);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public static float a()
+  public boolean a()
   {
-    return BaseChatItemLayout.jdField_d_of_type_Float;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public static String a()
+  public boolean b()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        localJSONObject2 = new JSONObject();
-        if (!bdgb.b()) {
-          continue;
-        }
-        localJSONObject2.put("mode", "concise");
-        localJSONObject2.put("themeId", ThemeUtil.getCurrentThemeId());
-        localJSONObject1.put("theme", localJSONObject2);
-      }
-      catch (JSONException localJSONException)
-      {
-        JSONObject localJSONObject2;
-        QLog.e("ArkApp.ArkAppCenterUtil", 1, "Exception=", localJSONException);
-        continue;
-      }
-      return localJSONObject1.toString();
-      localJSONObject2.put("mode", "default");
-    }
+    return this.jdField_b_of_type_Int == 1;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public boolean c()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppCenterUtil", 2, "AAShare.CopyFileToCache appName is null or local path is null");
-      }
-      paramString1 = null;
-    }
-    String str;
-    do
-    {
-      return paramString1;
-      str = ArkEnvironmentManager.getInstance().getAppResPath(paramString1);
-      int i = (int)(Math.random() * 10.0D);
-      paramString1 = String.format("share_%d_%02d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i) });
-      str = str + "/" + paramString1;
-      paramString1 = "res:" + paramString1;
-    } while (bhmi.d(paramString2, str));
-    return "";
+    return this.c == 1;
   }
   
-  public static void a()
+  public String toString()
   {
-    String str = a();
-    QLog.d("ArkApp.ArkAppCenterUtil", 1, new Object[] { "onThemeChanged.appconfig=", str });
-    try
-    {
-      ark.arkApplicationSetConfig(null, str);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      QLog.e("ArkApp.ArkAppCenterUtil", 1, "onThemeChanged.ark so not load.e=", localUnsatisfiedLinkError);
-    }
-  }
-  
-  private static void a(int paramInt)
-  {
-    DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-    int i = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    jdField_d_of_type_Int = i;
-    if (jdField_a_of_type_AndroidUtilDisplayMetrics == null) {
-      jdField_a_of_type_AndroidUtilDisplayMetrics = localDisplayMetrics;
-    }
-    QLog.e("ArkApp.ArkAppCenterUtil", 1, new Object[] { "ArkFold.checkArkSize model=", Build.MODEL, ",screenWidth=", Integer.valueOf(i), ",sDisplayWith=", Integer.valueOf(c), ",scene=", Integer.valueOf(paramInt) });
-    if ((i >= 1536) && (c != 840))
-    {
-      jdField_a_of_type_Boolean = true;
-      c = 840;
-      jdField_a_of_type_Int = (int)(c - 108.0F * a());
-      b = jdField_a_of_type_Int - BaseChatItemLayout.j - BaseChatItemLayout.k;
-      QLog.e("ArkApp.ArkAppCenterUtil", 1, new Object[] { "ArkFold.checkArkSize handle fold screen sChatBubbleMaxWidth=", Integer.valueOf(jdField_a_of_type_Int), ",sDisplayWith=", Integer.valueOf(c), ",sChatTextViewMaxWidth=", Integer.valueOf(b) });
-    }
-  }
-  
-  public static void a(Configuration paramConfiguration)
-  {
-    if (paramConfiguration.screenWidthDp != e)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "ArkFold.BaseChatePie.onConfigurationChanged.mOldScreenDp=", Integer.valueOf(e), ",newScreenDp=", Integer.valueOf(paramConfiguration.screenWidthDp) });
-      }
-      e = paramConfiguration.screenWidthDp;
-      a(2);
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download start,appName: ", paramString1, ",appView=", paramString2 });
-    }
-    ArkAppMgr.getInstance().getAppPathByName(paramString1, paramString2, "0.0.0.1", null, new aqby());
-  }
-  
-  public static void a(String paramString, Context paramContext)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "ArkApp.ArkAppCenterUtil";
-    }
-    try
-    {
-      DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-      paramString = new StringBuilder("print density info:");
-      paramString.append("\n model=").append(Build.MODEL).append(", ver=").append(Build.VERSION.RELEASE).append(",SDK=").append(Build.VERSION.SDK_INT).append("\n BaseChatItemLayout.density=").append(BaseChatItemLayout.jdField_d_of_type_Float).append("\n application density=").append(localDisplayMetrics.density).append("-").append(localDisplayMetrics.scaledDensity);
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getResources().getDisplayMetrics();
-        paramString.append("\n activity density=").append(paramContext.density).append("-").append(paramContext.scaledDensity);
-      }
-      QLog.i(str, 1, paramString.toString());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ArkApp.ArkAppCenterUtil", 1, "printScaleInfo Exception:", paramString);
-    }
-  }
-  
-  public static boolean a()
-  {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject != null)
-      {
-        localObject = ((ChatFragment)localObject).a();
-        if ((localObject != null) && ((localObject instanceof ainh))) {
-          return true;
-        }
-      }
-    }
-    return false;
+    return "QrCodeList{bkgURL = " + this.jdField_a_of_type_JavaLangString + ", isStatusBarWhite = " + this.jdField_a_of_type_Int + ", isNavBarWhite = " + this.jdField_b_of_type_Int + ", logoColor = " + this.jdField_b_of_type_JavaLangString + ", needShowLogo = " + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbx
  * JD-Core Version:    0.7.0.1
  */

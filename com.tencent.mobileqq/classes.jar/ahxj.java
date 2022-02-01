@@ -1,33 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForVideo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
 class ahxj
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   ahxj(ahxi paramahxi) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (!ahxi.a(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (llk.c())
-      {
-        Object localObject = (aghd)agej.a(paramView);
-        if (localObject != null)
-        {
-          localObject = (MessageForVideo)((aghd)localObject).a;
-          ahxi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (MessageForVideo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-          if (((MessageForVideo)localObject).istroop == 1044) {
-            bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
-          }
-        }
-      }
-    }
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 

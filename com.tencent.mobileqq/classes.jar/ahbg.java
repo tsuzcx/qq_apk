@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class ahbg
-  implements beye
+public class ahbg
+  implements DialogInterface.OnClickListener
 {
-  ahbg(ahbe paramahbe) {}
+  public ahbg(PhotoListPanel paramPhotoListPanel) {}
   
-  public void a(ArrayList<MessageRecord> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 

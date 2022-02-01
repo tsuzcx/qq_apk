@@ -1,29 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
+import java.util.Comparator;
 
-public abstract interface vjg
+class vjg
+  implements Comparator<vil>
 {
-  public abstract View a();
+  vjg(vje paramvje) {}
   
-  public abstract void a(TextCell paramTextCell);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void invalidate();
-  
-  public abstract boolean isPressed();
-  
-  public abstract void postInvalidate();
-  
-  public abstract void requestLayout();
-  
-  public abstract void setLongClickTrig(boolean paramBoolean);
-  
-  public abstract void setPressed(boolean paramBoolean);
+  public int a(vil paramvil1, vil paramvil2)
+  {
+    if (paramvil1.f() == paramvil2.f()) {
+      return 0;
+    }
+    if (paramvil1.f() > paramvil2.f()) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

@@ -12,16 +12,17 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bilm;
-import biln;
-import bilp;
-import bilq;
+import bgrv;
+import bgrw;
+import bgry;
+import bgrz;
+import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bilm
+  implements TextureView.SurfaceTextureListener, bgrv
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -29,9 +30,10 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  protected biln mVPNGRenderer;
+  public bgrw mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
+  protected boolean playOnSubThread;
   
   public VPNGImageView(Context paramContext)
   {
@@ -53,6 +55,16 @@ public class VPNGImageView
     addView(this.mPreImageView, -1, -1);
   }
   
+  private void playRender()
+  {
+    if (!this.playOnSubThread)
+    {
+      this.mVPNGRenderer.h();
+      return;
+    }
+    ThreadManager.excute(new VPNGImageView.1(this), 128, null, true);
+  }
+  
   public int getRenderHeight()
   {
     return this.mHeight;
@@ -63,7 +75,7 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public biln getVPNGRenderer()
+  public bgrw getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
@@ -73,14 +85,14 @@ public class VPNGImageView
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bilp.a().a(this.mVPNGRenderer);
+      bgry.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
   
   public void onDrawBegin()
   {
-    post(new VPNGImageView.1(this));
+    post(new VPNGImageView.2(this));
   }
   
   public void onPause()
@@ -104,13 +116,13 @@ public class VPNGImageView
     }
   }
   
-  public void onSetRenderer(biln parambiln)
+  public void onSetRenderer(bgrw parambgrw)
   {
-    this.mVPNGRenderer = parambiln;
+    this.mVPNGRenderer = parambgrw;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
-      this.mVPNGRenderer.h();
+      playRender();
     }
   }
   
@@ -118,7 +130,7 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bilp.a().a(this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = bgry.a().a(this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -129,7 +141,7 @@ public class VPNGImageView
     {
       this.mVPNGRenderer.a(paramInt1, paramInt2);
       this.mVPNGRenderer.a(paramSurfaceTexture);
-      this.mVPNGRenderer.h();
+      playRender();
     }
     this.mTextureView.setAlpha(0.0F);
   }
@@ -156,12 +168,17 @@ public class VPNGImageView
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
     String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bilq.a(paramString, str))) {
+    if ((!new File(str).exists()) && (bgrz.a(paramString, str))) {
       setVideo(str, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.mPreImageView.setImageBitmap(paramOptions);
     this.mPreImageView.setVisibility(0);
+  }
+  
+  public void setPlayOnSubThread(boolean paramBoolean)
+  {
+    this.playOnSubThread = paramBoolean;
   }
   
   public void setVideo(String paramString, boolean paramBoolean)
@@ -175,7 +192,7 @@ public class VPNGImageView
     for (int i = 1;; i = 0)
     {
       if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bilp.a().a(this, this.mWidth, this.mHeight);
+        this.mVPNGRenderer = bgry.a().a(this, this.mWidth, this.mHeight);
       }
       if (this.mVPNGRenderer != null)
       {
@@ -184,7 +201,7 @@ public class VPNGImageView
         if (i != 0)
         {
           this.mVPNGRenderer.a(true);
-          this.mVPNGRenderer.h();
+          playRender();
         }
       }
       this.mVideoPath = paramString;

@@ -1,11 +1,23 @@
-public class bhbd
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
+
+class bhbd
+  extends Handler
 {
-  public int a = 1;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  bhbd(bhbc parambhbc, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - bhbc.a(this.a).getHeight(), true);
+    }
+    super.handleMessage(paramMessage);
+  }
 }
 
 

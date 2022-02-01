@@ -1,29 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
 
 public class bmmk
-  extends bmme
+  extends LinearLayoutManager
 {
-  public bmmk(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, bmmg parambmmg, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  public bmmk(AEEditorColorSelectorView paramAEEditorColorSelectorView, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    super(paramActivity, parambmmg, paramInt1, paramInt2, paramAppRuntime);
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public void onClick(View paramView)
+  public boolean canScrollHorizontally()
   {
-    if (LocationDetailActivity.a(this.a))
-    {
-      bmlc.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
-      }
-    }
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

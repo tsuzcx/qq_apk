@@ -1,21 +1,11 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
-
 class beov
-  extends beow
+  implements bhfe
 {
-  public beov(EditorState paramEditorState, List<EditorState> paramList)
-  {
-    super(paramEditorState, paramList, localList);
-  }
+  beov(beou parambeou) {}
   
-  public void a(EditorState paramEditorState)
+  public void a(String paramString)
   {
-    super.a(paramEditorState);
-    beoh.a(this.jdField_a_of_type_Beoh).a(false, false);
-    beoh.a(this.jdField_a_of_type_Beoh).b(false);
-    QQToast.a(beoh.a(this.jdField_a_of_type_Beoh), this.jdField_a_of_type_JavaLangString, 0).a();
+    this.a.a();
   }
 }
 

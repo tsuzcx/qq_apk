@@ -1,24 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
-import com.tencent.qphone.base.util.QLog;
-
-public class tcb
-  implements tcf
+public abstract interface tcb
 {
-  public tcb(ViolaAccessHelper.2 param2) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

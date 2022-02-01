@@ -1,26 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import java.io.File;
+import java.io.FileFilter;
 
-public class ydi
-  implements DialogInterface.OnClickListener
+class ydi
+  implements FileFilter
 {
-  public ydi(StoryPickerFragment paramStoryPickerFragment) {}
+  ydi(ydh paramydh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
-    this.a.getActivity().setResult(-1, paramDialogInterface);
-    this.a.getActivity().finish();
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 

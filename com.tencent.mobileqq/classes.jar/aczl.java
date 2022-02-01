@@ -1,32 +1,35 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class aczl
+class aczl
+  implements aszj
 {
-  public adab a;
-  public anyw a;
-  public apaw a;
-  public axfw a;
-  public Map<String, RecentUser> a;
-  public Map<String, MessageRecord> b = new HashMap();
-  public Map<String, MessageRecord> c = new HashMap();
-  public Map<String, MessageRecord> d = new HashMap();
-  public Map<String, MessageRecord> e = new HashMap();
-  public Map<String, List<MessageRecord>> f = new HashMap();
-  public Map<String, List<MessageRecord>> g = new HashMap();
+  aczl(aczk paramaczk, FileManagerEntity paramFileManagerEntity) {}
   
-  public aczl(QQAppInterface paramQQAppInterface)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Anyw = ((anyw)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_Axfw = ((axfw)paramQQAppInterface.getManager(37));
-    this.jdField_a_of_type_Apaw = paramQQAppInterface.a().a();
-    this.jdField_a_of_type_Adab = paramQQAppInterface.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Aczk.a.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    }
+    amqd localamqd;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localamqd = (amqd)this.jdField_a_of_type_Aczk.a.a.getBusinessHandler(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localamqd.a(localArrayList));
+    aszk.a(2131692366);
+    return;
+    this.jdField_a_of_type_Aczk.a.a.getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

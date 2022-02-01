@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.web;
 
+import amir;
 import android.os.Bundle;
-import annx;
-import asiw;
+import arcu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloFavActionData;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$25
   implements Runnable
 {
-  public MessengerService$IncomingHandler$25(asiw paramasiw, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$25(arcu paramarcu, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class MessengerService$IncomingHandler$25
     int i;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localObject = ((annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).d();
+      localObject = ((amir)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).d();
       localJSONObject1 = new JSONObject();
       localJSONArray = new JSONArray();
       if (localObject != null) {
@@ -65,7 +65,7 @@ public class MessengerService$IncomingHandler$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.25
  * JD-Core Version:    0.7.0.1
  */

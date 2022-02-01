@@ -1,32 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import aiyz;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import orn;
+import osm;
 
 public class ReadInJoyCommentComponentFragment$8$1
   implements Runnable
 {
-  public ReadInJoyCommentComponentFragment$8$1(orn paramorn) {}
+  public ReadInJoyCommentComponentFragment$8$1(osm paramosm) {}
   
   public void run()
   {
-    aiyz localaiyz = ReadInJoyCommentComponentFragment.a(this.a.a);
-    if ((localaiyz != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
-    {
-      localaiyz.c();
-      ReadInJoyCommentComponentFragment.a(this.a.a, false);
-      this.a.a.f.setSelected(false);
-    }
+    ReadInJoyCommentComponentFragment.b(this.a.a);
     this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ReadInJoyDeliverUGCActivity.a(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData));
     this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     ReadInJoyCommentComponentFragment.a(this.a.a);
     if (this.a.a.jdField_a_of_type_Boolean)
     {
-      this.a.a.g.setImageResource(2130842801);
-      ReadInJoyCommentComponentFragment.b(this.a.a, true);
+      this.a.a.g.setImageResource(2130842854);
+      ReadInJoyCommentComponentFragment.a(this.a.a, true);
     }
   }
 }

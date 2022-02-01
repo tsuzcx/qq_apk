@@ -1,6 +1,16 @@
-public abstract interface aixl
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+
+class aixl
+  implements awdb
 {
-  public abstract void a(long paramLong, boolean paramBoolean);
+  aixl(aixk paramaixk) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Awdi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Awdi.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
+  }
 }
 
 

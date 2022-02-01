@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihy;
+import ahek;
+import amtj;
 import android.widget.TextView;
-import anzj;
 
 public class CmGameChatPie$7
   implements Runnable
 {
-  public CmGameChatPie$7(aihy paramaihy) {}
+  public CmGameChatPie$7(ahek paramahek) {}
   
   public void run()
   {
-    this.this$0.f.setText(anzj.a(2131718346));
+    this.this$0.mSubTilteText.setText(amtj.a(2131718588));
   }
 }
 

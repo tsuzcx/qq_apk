@@ -1,8 +1,14 @@
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-public abstract interface ppq
+public class ppq
+  implements pqe
 {
-  public abstract void a(int paramInt, Map<Long, qwb> paramMap);
+  public ppq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ReadInJoySelfFragment.m(this.a);
+  }
 }
 
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import biod;
-import biox;
-import bioy;
-import bioz;
-import bipn;
-import bipt;
+import bguj;
+import bgvd;
+import bgve;
+import bgvf;
+import bgvt;
+import bgvz;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,7 +18,7 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import noe;
+import npn;
 import org.json.JSONObject;
 
 public class WebViewPlugin
@@ -44,7 +44,7 @@ public class WebViewPlugin
   public boolean isDestroy;
   public HashMap<String, JsBridgeListener> mOpenApiListeners;
   public String mPluginNameSpace = "";
-  public bioy mRuntime;
+  public bgve mRuntime;
   public long pluginEventFlag;
   
   public static JSONObject getJsonFromJSBridge(String paramString)
@@ -68,7 +68,7 @@ public class WebViewPlugin
   
   public static String toJsScript(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    return "window.mqq && mqq.execEventCallback && mqq.execEventCallback(" + noe.a(paramString) + "," + String.valueOf(paramJSONObject1) + "," + String.valueOf(paramJSONObject2) + ");";
+    return "window.mqq && mqq.execEventCallback && mqq.execEventCallback(" + npn.a(paramString) + "," + String.valueOf(paramJSONObject1) + "," + String.valueOf(paramJSONObject2) + ");";
   }
   
   public void addOpenApiListenerIfNeeded(String paramString, JsBridgeListener paramJsBridgeListener)
@@ -187,8 +187,8 @@ public class WebViewPlugin
       if (localWebViewFragment != null) {
         return localWebViewFragment.getComponentProvider().a(paramInt);
       }
-      if ((this.mRuntime.a() instanceof bipt)) {
-        return ((bipt)this.mRuntime.a()).getComponentProvider().a(paramInt);
+      if ((this.mRuntime.a() instanceof bgvz)) {
+        return ((bgvz)this.mRuntime.a()).getComponentProvider().a(paramInt);
       }
     }
     return null;
@@ -197,8 +197,8 @@ public class WebViewPlugin
   public int getRequestCode(byte paramByte)
   {
     if (this.mRuntime != null) {}
-    for (biod localbiod = this.mRuntime.a(this.mRuntime.a()); (localbiod instanceof bioz); localbiod = null) {
-      return ((bioz)localbiod).switchRequestCode(this, paramByte);
+    for (bguj localbguj = this.mRuntime.a(this.mRuntime.a()); (localbguj instanceof bgvf); localbguj = null) {
+      return ((bgvf)localbguj).switchRequestCode(this, paramByte);
     }
     if (QLog.isDevelopLevel()) {
       QLog.d(this.TAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
@@ -229,7 +229,7 @@ public class WebViewPlugin
   final void initRuntime(Activity paramActivity, AppInterface paramAppInterface)
   {
     if (this.inited.compareAndSet(false, true)) {
-      this.mRuntime = new bioy(paramActivity, paramAppInterface);
+      this.mRuntime = new bgve(paramActivity, paramAppInterface);
     }
   }
   
@@ -260,7 +260,7 @@ public class WebViewPlugin
   
   public void postPluginAsyncTask(Runnable paramRunnable)
   {
-    ThreadManager.post(paramRunnable, 5, new biox(this), false);
+    ThreadManager.post(paramRunnable, 5, new bgvd(this), false);
   }
   
   public WebViewPlugin setHandler(Handler paramHandler)
@@ -268,37 +268,37 @@ public class WebViewPlugin
     return this;
   }
   
-  public void setWebUiInterface(biod parambiod)
+  public void setWebUiInterface(bguj parambguj)
   {
-    if (parambiod != null) {
-      this.mRuntime.a(parambiod);
+    if (parambguj != null) {
+      this.mRuntime.a(parambguj);
     }
   }
   
   public void startActivityForResult(Intent paramIntent, byte paramByte)
   {
     Activity localActivity = null;
-    biod localbiod;
+    bguj localbguj;
     if (this.mRuntime != null)
     {
-      localbiod = this.mRuntime.a(this.mRuntime.a());
+      localbguj = this.mRuntime.a(this.mRuntime.a());
       if (this.mRuntime != null) {
         localActivity = this.mRuntime.a();
       }
-      if (!(localbiod instanceof bioz)) {
+      if (!(localbguj instanceof bgvf)) {
         break label67;
       }
-      ((bioz)localbiod).pluginStartActivityForResult(this, paramIntent, paramByte);
+      ((bgvf)localbguj).pluginStartActivityForResult(this, paramIntent, paramByte);
     }
     label67:
     do
     {
       return;
-      localbiod = null;
+      localbguj = null;
       break;
-      if ((localActivity instanceof bioz))
+      if ((localActivity instanceof bgvf))
       {
-        ((bioz)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
+        ((bgvf)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
         return;
       }
     } while (!QLog.isDevelopLevel());

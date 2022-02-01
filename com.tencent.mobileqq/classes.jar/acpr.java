@@ -1,76 +1,41 @@
-import android.content.Context;
-import android.graphics.Color;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class acpr
-  extends LinearLayout
-  implements acpm
+public class acpr
+  extends binf
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private acpo jdField_a_of_type_Acpo;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private int b = -2147483648;
+  public acpr(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public acpr(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    super(paramContext);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      acvc.d("GdtBannerViewWithPictureText", "constructor");
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.a(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          }
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      String str;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
       return;
     }
-    setOrientation(0);
-    setGravity(16);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Acpo = new acpo(paramContext, paramString1);
-    this.jdField_a_of_type_Acpo.setId(2131367431);
-    addView(this.jdField_a_of_type_Acpo);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367434);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public void a(Context paramContext) {}
-  
-  public View b()
-  {
-    return null;
-  }
-  
-  public void b(Context paramContext) {}
-  
-  public void c(Context paramContext) {}
-  
-  public void setSize(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0) || (this.jdField_a_of_type_Acpo == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
-    {
-      acvc.d("GdtBannerViewWithPictureText", "setSize error");
-      return;
-    }
-    acpq localacpq = new acpq(getContext(), paramInt1, paramInt2);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(Double.valueOf(1.0D * (paramInt2 - localacpq.b * 2) / this.b * this.jdField_a_of_type_Int + localacpq.b * 2).intValue(), paramInt2);
-    this.jdField_a_of_type_Acpo.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_Acpo.setPadding(localacpq.b, localacpq.b, localacpq.b, localacpq.b);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.leftMargin = localacpq.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localacpq.d);
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby;
 
+import amsw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anyw;
-import axwf;
-import axws;
-import ayuo;
+import awjn;
+import awka;
+import axhw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -22,14 +22,14 @@ public final class NearbyProxy$9
   
   public void run()
   {
-    Object localObject2 = (anyw)this.a.getManager(51);
-    Object localObject1 = ((anyw)localObject2).c(this.a.getCurrentAccountUin());
+    Object localObject2 = (amsw)this.a.getManager(51);
+    Object localObject1 = ((amsw)localObject2).c(this.a.getCurrentAccountUin());
     if ((localObject1 != null) && (((Card)localObject1).iVoteIncrement > 0))
     {
       ((Card)localObject1).iVoteIncrement = 0;
-      ((anyw)localObject2).a((Card)localObject1);
+      ((amsw)localObject2).a((Card)localObject1);
     }
-    localObject2 = this.a.a().createEntityManager();
+    localObject2 = this.a.getEntityManagerFactory().createEntityManager();
     NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject2).find(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
     if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.likeCountInc > 0))
     {
@@ -42,12 +42,12 @@ public final class NearbyProxy$9
     if (localObject1 == null)
     {
       l = 0L;
-      axws.a((String)localObject2, l, 0);
+      awka.a((String)localObject2, l, 0);
       this.a.getApp().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("profilecard_host_last_newvote_animation_num", 0).commit();
       if (!ConnectNearbyProcService.a()) {
         break label211;
       }
-      axwf.a(this.a.a(), 4117);
+      awjn.a(this.a.getNearbyProxy(), 4117);
     }
     label211:
     do
@@ -55,10 +55,10 @@ public final class NearbyProxy$9
       return;
       l = ((Card)localObject1).lVoteCount;
       break;
-      localObject1 = ayuo.a(this.a);
+      localObject1 = axhw.a(this.a);
     } while (localObject1 == null);
     ((NearbyMyTabCard)localObject1).newLikeNum = 0;
-    ayuo.a(this.a, (NearbyMyTabCard)localObject1);
+    axhw.a(this.a, (NearbyMyTabCard)localObject1);
   }
 }
 

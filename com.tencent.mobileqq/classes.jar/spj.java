@@ -1,14 +1,20 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface spj
+class spj
+  implements View.OnClickListener
 {
-  public abstract int a(BaseData paramBaseData);
+  spj(spi paramspi) {}
   
-  public abstract spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
-  
-  public abstract boolean a(BaseData paramBaseData);
+  public void onClick(View paramView)
+  {
+    spi.a(true, -1, spi.a(this.a));
+    if (spi.a(this.a) != null) {
+      spi.a(this.a).onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

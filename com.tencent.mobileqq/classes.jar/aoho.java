@@ -1,62 +1,81 @@
 public class aoho
-  implements anui
+  extends aohh
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public String a;
+  public aohp[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  protected void h(boolean paramBoolean, Object paramObject) {}
-  
-  protected void i(boolean paramBoolean, Object paramObject) {}
-  
-  protected void j(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aoho()
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAohp = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(aoho paramaoho)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramaoho != null)
     {
-    case 4: 
-    default: 
-      return;
-    case 7: 
-      b(paramBoolean, paramObject);
-      return;
-    case 5: 
-      c(paramBoolean, paramObject);
-      return;
-    case 6: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 8: 
-      e(paramBoolean, paramObject);
-      return;
-    case 9: 
-      f(paramBoolean, paramObject);
-      return;
-    case 10: 
-      g(paramBoolean, paramObject);
-      return;
-    case 11: 
-      h(paramBoolean, paramObject);
-      return;
-    case 12: 
-      i(paramBoolean, paramObject);
-      return;
+      bool1 = bool2;
+      if (paramaoho.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramaoho.b == 0)
+        {
+          bool1 = bool2;
+          if (paramaoho.jdField_a_of_type_ArrayOfAohp != null)
+          {
+            bool1 = bool2;
+            if (paramaoho.jdField_a_of_type_ArrayOfAohp[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramaoho.jdField_a_of_type_ArrayOfAohp[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
     }
-    j(paramBoolean, paramObject);
+    return bool1;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAohp[0].a;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfAohp != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfAohp.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAohp[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

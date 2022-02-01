@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.server.launch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build.VERSION;
 import android.support.annotation.VisibleForTesting;
 import com.tencent.qqmini.sdk.launcher.MiniProcessorConfig;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
@@ -55,7 +56,7 @@ public final class GameLaunchStrategy$Companion
     Intrinsics.checkParameterIsNotNull(paramRunningProcessInfo, "process");
     Intrinsics.checkParameterIsNotNull(paramAppIdentity, "appId");
     paramContext = new Intent(paramContext, paramRunningProcessInfo.getConfig().appUIClass);
-    if (paramGameLaunchConfig.getEnableMultiInstance())
+    if (Build.VERSION.SDK_INT >= 21)
     {
       paramContext.addFlags(524288);
       paramContext.addFlags(8192);

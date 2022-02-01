@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import bczy;
+import bbtd;
 
 class NewPreFlowCamera$3
   implements Runnable
@@ -9,7 +9,7 @@ class NewPreFlowCamera$3
   
   public void run()
   {
-    bczy.a().b();
+    bbtd.a().b();
   }
 }
 

@@ -1,10 +1,18 @@
-public abstract interface axlt
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class axlt
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public axlt(OCRResultActivity paramOCRResultActivity) {}
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
-  
-  public abstract void b(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.a.doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

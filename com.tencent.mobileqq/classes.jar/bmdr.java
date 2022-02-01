@@ -1,17 +1,19 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout;
+import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
+import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
 
-class bmdr
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public class bmdr
+  implements View.OnClickListener
 {
-  bmdr(bmdn parambmdn) {}
+  public bmdr(MoreLyricLayout paramMoreLyricLayout) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
-    }
+    MoreLyricLayout.a(this.a).setPanelState(AESlidingUpPanelLayout.PanelState.COLLAPSED);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,36 +1,66 @@
-public class blhl<T>
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.utils.ILog;
+
+public final class blhl
+  implements ILog
 {
-  private long jdField_a_of_type_Long;
-  private blhm<T> jdField_a_of_type_Blhm;
-  private long b;
+  private static blhl a;
   
-  private blhl(blhm<T> paramblhm)
+  public static blhl a()
   {
-    this.jdField_a_of_type_Blhm = paramblhm;
-  }
-  
-  public static <T> blhl<T> a(blhm<T> paramblhm)
-  {
-    return new blhl(paramblhm);
-  }
-  
-  public blhl<T> a(long paramLong)
-  {
-    this.b = paramLong;
-    return this;
-  }
-  
-  public blhl<T> a(T paramT)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > this.b)
-    {
-      this.jdField_a_of_type_Long = l;
-      if (this.jdField_a_of_type_Blhm != null) {
-        this.jdField_a_of_type_Blhm.a(paramT);
-      }
+    if (a == null) {
+      a = new blhl();
     }
-    return this;
+    return a;
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 2, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    d(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    e(paramString1, paramString2);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    i(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2) {}
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable) {}
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    w(paramString1, paramString2);
   }
 }
 

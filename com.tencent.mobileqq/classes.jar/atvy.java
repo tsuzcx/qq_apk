@@ -1,402 +1,306 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.2;
-import com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.4;
-import com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.6;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory.Options;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 
 public class atvy
 {
-  static int jdField_a_of_type_Int = 1;
-  private atwj jdField_a_of_type_Atwj = new atvz(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  Map<String, atwc> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private boolean jdField_a_of_type_Boolean = true;
-  private Map<String, atwg> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean = true;
-  
-  public atvy(QQAppInterface paramQQAppInterface)
+  public static Bitmap a(String paramString, BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private atwc a(String paramString1, String paramString2, Signature[] paramArrayOfSignature, long paramLong, atwf paramatwf, atwj paramatwj)
-  {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] createCheckTask fail. filePath is null");
-      return null;
-    }
-    if (TextUtils.isEmpty(paramString2))
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] createCheckTask fail. pkgName is null");
-      return null;
-    }
-    if (paramLong == 0L)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] createCheckTask fail. fileSize is 0");
-      return null;
-    }
-    if (paramatwf == null)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] createCheckTask fail. fileBusiInfo is null");
-      return null;
-    }
-    if (paramatwj == null)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] createCheckTask fail. safeCheckerProxy is null");
-      return null;
-    }
-    return new atwc(this, paramString1, paramString2, paramArrayOfSignature, paramLong, paramatwf, paramatwj);
-  }
-  
-  private atwg a(String paramString)
-  {
+    Object localObject2 = null;
     try
     {
-      paramString = (atwg)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] remTask size:" + this.jdField_a_of_type_JavaUtilMap.size() + " filePath:" + paramString);
-  }
-  
-  private void a(String paramString, atwc paramatwc)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramatwc);
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] addTask size:" + this.jdField_a_of_type_JavaUtilMap.size() + " filePath:" + paramString);
-  }
-  
-  private void a(String paramString, atwg paramatwg)
-  {
-    label149:
-    for (;;)
-    {
-      try
+      Bitmap localBitmap = SafeBitmapFactory.safeDecode(paramString, paramOptions);
+      localObject2 = localBitmap;
+      if (localBitmap == null)
       {
-        if (this.jdField_b_of_type_JavaUtilMap.size() > 50)
+        localObject2 = localBitmap;
+        if (paramInt1 < paramInt2)
         {
-          long l = 9223372036854775807L;
-          String str = "";
-          Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
-          if (localIterator.hasNext())
-          {
-            Map.Entry localEntry = (Map.Entry)localIterator.next();
-            if (((atwg)localEntry.getValue()).jdField_b_of_type_Long >= l) {
-              break label149;
-            }
-            l = ((atwg)localEntry.getValue()).jdField_b_of_type_Long;
-            str = (String)localEntry.getKey();
-            break label149;
-          }
-          if (!TextUtils.isEmpty(str)) {
-            this.jdField_b_of_type_JavaUtilMap.remove(str);
-          }
+          paramOptions.inSampleSize *= 2;
+          localObject2 = a(paramString, paramOptions, paramInt1 + 1, paramInt2);
         }
-        this.jdField_b_of_type_JavaUtilMap.put(paramString, paramatwg);
-        return;
       }
-      finally {}
+      return localObject2;
     }
-  }
-  
-  private void a(String paramString, atwh paramatwh)
-  {
-    paramString = (atwc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      paramString.a(paramatwh);
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
-  private boolean a(String paramString, atwf paramatwf, atwh paramatwh)
-  {
-    if (5 != aunj.a(paramString)) {
-      return false;
-    }
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] startCheckLocalApk. filePath=" + paramString + " binfo:" + paramatwf.toString());
-    if (a(paramString))
-    {
-      QLog.w("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] startCheckLocalApk. is checking");
-      a(paramString, paramatwh);
-      return true;
-    }
-    if (!auog.a(paramString))
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] startCheckLocalApk. file not exists");
-      return false;
-    }
-    long l = aunj.a(paramString);
-    String str = "";
-    Signature[] arrayOfSignature = null;
-    try
-    {
-      PackageInfo localPackageInfo = BaseApplicationImpl.getContext().getBaseContext().getPackageManager().getPackageArchiveInfo(paramString, 64);
-      if (localPackageInfo != null) {
-        arrayOfSignature = localPackageInfo.signatures;
-      }
-      if (localPackageInfo != null) {
-        str = localPackageInfo.packageName;
-      }
-      paramatwf = a(paramString, str, arrayOfSignature, l, paramatwf, this.jdField_a_of_type_Atwj);
-      if (paramatwf == null) {
-        return false;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] startCheckLocalApk. exception:" + paramString.toString());
-      return false;
-    }
-    paramatwf.a(paramatwh);
-    a(paramString, paramatwf);
-    paramatwf.a();
-    return true;
-  }
-  
-  private boolean a(String paramString, atwi paramatwi)
-  {
-    atwg localatwg = a(paramString);
-    if ((localatwg != null) && (localatwg.jdField_a_of_type_ArrayOfByte != null) && (localatwg.jdField_b_of_type_ArrayOfByte != null))
-    {
-      if (auog.a(paramString) == localatwg.jdField_a_of_type_Long)
-      {
-        paramatwi.a(true, localatwg);
-        return true;
-      }
-      b(paramString);
-    }
-    c();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new MMApkFileSafeChecker.6(this, paramString, paramatwi));
-    return true;
-  }
-  
-  private void b(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    atwf localatwf = new atwf(this, null);
-    localatwf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localatwf.jdField_a_of_type_Int = 2;
-    localatwf.c = String.valueOf(paramLong);
-    localatwf.e = paramItem.FilePath;
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] checkLocalApk. Item.Id=" + paramItem.getId() + " binfo:" + localatwf.toString());
-    a(paramItem.LocalFile, localatwf, new atwb(this, paramItem, paramLong));
-  }
-  
-  private void b(FileManagerEntity paramFileManagerEntity)
-  {
-    atwf localatwf = new atwf(this, null);
-    localatwf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localatwf.jdField_a_of_type_Int = 1;
-    if ((paramFileManagerEntity.peerType == 0) || (paramFileManagerEntity.peerType == 3) || (paramFileManagerEntity.peerType == 1000))
-    {
-      localatwf.b = paramFileManagerEntity.peerUin;
-      localatwf.d = paramFileManagerEntity.Uuid;
-      QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] interCheckLocalApk. nSessionId=" + paramFileManagerEntity.nSessionId + " binfo:" + localatwf.toString());
-      a(paramFileManagerEntity.strFilePath, localatwf, new atwa(this, paramFileManagerEntity));
-      return;
-    }
-    QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] interCheckLocalApk err. is no buddy apk");
-  }
-  
-  private void b(String paramString)
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-      QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] start DigestGet pool");
-    }
-    try
-    {
-      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-      localThreadPoolParams.priority = 5;
-      localThreadPoolParams.poolThreadName = "FileDigestGetPool";
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] start DigestGet pool exception:" + localException.toString());
-    }
-  }
-  
-  private boolean c()
-  {
-    atsh localatsh = (atsh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
-    if (localatsh != null) {
-      return localatsh.i();
-    }
-    return false;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor != null) {
-      QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] close DigestGet pool");
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilConcurrentExecutor instanceof ExecutorService)) {
-        ((ExecutorService)this.jdField_a_of_type_JavaUtilConcurrentExecutor).shutdown();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = null;
-      return;
-    }
-    catch (Exception localException)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
       for (;;)
       {
-        QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] close DigestGet pool exception:" + localException.toString());
+        Object localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("PicOrcUtils", 2, "retry:" + paramInt1 + ", sampleSize:" + paramOptions.inSampleSize);
+          localObject1 = localObject2;
+        }
       }
     }
   }
   
-  private void e()
+  /* Error */
+  public static String a(Bitmap paramBitmap, String paramString, int[] paramArrayOfInt)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: iconst_3
+    //   4: newarray int
+    //   6: astore 7
+    //   8: aload 7
+    //   10: dup
+    //   11: iconst_0
+    //   12: bipush 60
+    //   14: iastore
+    //   15: dup
+    //   16: iconst_1
+    //   17: bipush 40
+    //   19: iastore
+    //   20: dup
+    //   21: iconst_2
+    //   22: bipush 20
+    //   24: iastore
+    //   25: pop
+    //   26: new 62	java/io/ByteArrayOutputStream
+    //   29: dup
+    //   30: invokespecial 63	java/io/ByteArrayOutputStream:<init>	()V
+    //   33: astore 6
+    //   35: iconst_0
+    //   36: istore 4
+    //   38: iconst_0
+    //   39: istore_3
+    //   40: iload_3
+    //   41: aload 7
+    //   43: arraylength
+    //   44: if_icmpge +30 -> 74
+    //   47: aload_0
+    //   48: aload 6
+    //   50: aload 7
+    //   52: iload_3
+    //   53: iaload
+    //   54: invokestatic 66	atvy:a	(Landroid/graphics/Bitmap;Ljava/io/ByteArrayOutputStream;I)Z
+    //   57: istore 4
+    //   59: iload 4
+    //   61: ifeq +54 -> 115
+    //   64: aload 6
+    //   66: invokevirtual 70	java/io/ByteArrayOutputStream:size	()I
+    //   69: ldc 71
+    //   71: if_icmpge +44 -> 115
+    //   74: iload_3
+    //   75: aload 7
+    //   77: arraylength
+    //   78: if_icmplt +13 -> 91
+    //   81: aload_0
+    //   82: aload 6
+    //   84: bipush 10
+    //   86: invokestatic 66	atvy:a	(Landroid/graphics/Bitmap;Ljava/io/ByteArrayOutputStream;I)Z
+    //   89: istore 4
+    //   91: iload 4
+    //   93: ifne +29 -> 122
+    //   96: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   99: ifeq +14 -> 113
+    //   102: ldc 2
+    //   104: invokevirtual 76	java/lang/Class:getName	()Ljava/lang/String;
+    //   107: iconst_2
+    //   108: ldc 78
+    //   110: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   113: aconst_null
+    //   114: areturn
+    //   115: iload_3
+    //   116: iconst_1
+    //   117: iadd
+    //   118: istore_3
+    //   119: goto -79 -> 40
+    //   122: aload_2
+    //   123: iconst_0
+    //   124: aload_0
+    //   125: invokevirtual 86	android/graphics/Bitmap:getWidth	()I
+    //   128: iastore
+    //   129: aload_2
+    //   130: iconst_1
+    //   131: aload_0
+    //   132: invokevirtual 89	android/graphics/Bitmap:getHeight	()I
+    //   135: iastore
+    //   136: new 91	java/io/File
+    //   139: dup
+    //   140: aload_1
+    //   141: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   144: invokevirtual 95	java/io/File:getName	()Ljava/lang/String;
+    //   147: iconst_0
+    //   148: invokestatic 100	axmx:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   151: astore_2
+    //   152: new 102	java/io/FileOutputStream
+    //   155: dup
+    //   156: new 91	java/io/File
+    //   159: dup
+    //   160: aload_2
+    //   161: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   164: invokespecial 105	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   167: astore_1
+    //   168: aload_1
+    //   169: aload 6
+    //   171: invokevirtual 109	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   174: invokevirtual 113	java/io/FileOutputStream:write	([B)V
+    //   177: aload_1
+    //   178: invokevirtual 116	java/io/FileOutputStream:flush	()V
+    //   181: aload_2
+    //   182: astore_0
+    //   183: aload_1
+    //   184: ifnull +9 -> 193
+    //   187: aload_1
+    //   188: invokevirtual 119	java/io/FileOutputStream:close	()V
+    //   191: aload_2
+    //   192: astore_0
+    //   193: aload_0
+    //   194: areturn
+    //   195: astore_0
+    //   196: aload_0
+    //   197: invokevirtual 122	java/lang/Exception:printStackTrace	()V
+    //   200: aload_2
+    //   201: astore_0
+    //   202: goto -9 -> 193
+    //   205: astore_0
+    //   206: aconst_null
+    //   207: astore_0
+    //   208: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq +14 -> 225
+    //   214: ldc 2
+    //   216: invokevirtual 76	java/lang/Class:getName	()Ljava/lang/String;
+    //   219: iconst_2
+    //   220: ldc 124
+    //   222: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   225: aload_0
+    //   226: ifnull +62 -> 288
+    //   229: aload_0
+    //   230: invokevirtual 119	java/io/FileOutputStream:close	()V
+    //   233: aconst_null
+    //   234: astore_0
+    //   235: goto -42 -> 193
+    //   238: astore_0
+    //   239: aload_0
+    //   240: invokevirtual 122	java/lang/Exception:printStackTrace	()V
+    //   243: aconst_null
+    //   244: astore_0
+    //   245: goto -52 -> 193
+    //   248: astore_0
+    //   249: aload 5
+    //   251: astore_1
+    //   252: aload_1
+    //   253: ifnull +7 -> 260
+    //   256: aload_1
+    //   257: invokevirtual 119	java/io/FileOutputStream:close	()V
+    //   260: aload_0
+    //   261: athrow
+    //   262: astore_1
+    //   263: aload_1
+    //   264: invokevirtual 122	java/lang/Exception:printStackTrace	()V
+    //   267: goto -7 -> 260
+    //   270: astore_0
+    //   271: goto -19 -> 252
+    //   274: astore_2
+    //   275: aload_0
+    //   276: astore_1
+    //   277: aload_2
+    //   278: astore_0
+    //   279: goto -27 -> 252
+    //   282: astore_0
+    //   283: aload_1
+    //   284: astore_0
+    //   285: goto -77 -> 208
+    //   288: aconst_null
+    //   289: astore_0
+    //   290: goto -97 -> 193
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	293	0	paramBitmap	Bitmap
+    //   0	293	1	paramString	String
+    //   0	293	2	paramArrayOfInt	int[]
+    //   39	80	3	i	int
+    //   36	56	4	bool	boolean
+    //   1	249	5	localObject	Object
+    //   33	137	6	localByteArrayOutputStream	ByteArrayOutputStream
+    //   6	70	7	arrayOfInt	int[]
+    // Exception table:
+    //   from	to	target	type
+    //   187	191	195	java/lang/Exception
+    //   152	168	205	java/lang/Exception
+    //   229	233	238	java/lang/Exception
+    //   152	168	248	finally
+    //   256	260	262	java/lang/Exception
+    //   168	181	270	finally
+    //   208	225	274	finally
+    //   168	181	282	java/lang/Exception
+  }
+  
+  public static String a(String paramString)
+  {
+    System.currentTimeMillis();
+    try
+    {
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      paramString = str1;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        paramString = new File(paramString);
+        if (!paramString.exists()) {
+          break label56;
+        }
+        try
+        {
+          String str2 = bjkf.a(paramString);
+          paramString = str2;
+          if (str2 != null) {
+            continue;
+          }
+          return "";
+        }
+        catch (IOException paramString)
+        {
+          return "";
+        }
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return paramString;
+    label56:
+    return "";
+  }
+  
+  private static boolean a(Bitmap paramBitmap, ByteArrayOutputStream paramByteArrayOutputStream, int paramInt)
   {
     try
     {
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return;
+      paramByteArrayOutputStream.reset();
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, paramByteArrayOutputStream);
+      return true;
     }
-    finally
+    catch (Exception paramBitmap)
     {
-      localObject = finally;
-      throw localObject;
+      if (QLog.isColorLevel()) {
+        QLog.e(atvy.class.getName(), 2, "doCompress Exception:", paramBitmap);
+      }
+      paramByteArrayOutputStream.reset();
+      return false;
     }
-  }
-  
-  public void a()
-  {
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] init.");
-    try
+    catch (OutOfMemoryError paramBitmap)
     {
-      bhjw.a();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.e(atvy.class.getName(), 2, "doCompress OutOfMemoryError:", paramBitmap);
+      }
+      paramByteArrayOutputStream.reset();
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] initTuringSdk exception." + localThrowable.toString());
-    }
-  }
-  
-  public void a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if (!c()) {
-      return;
-    }
-    if (paramItem == null)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] checkLocalApk err. troopFileItem=null");
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new MMApkFileSafeChecker.4(this, paramLong, paramItem));
-      return;
-    }
-    b(paramLong, paramItem);
-  }
-  
-  public void a(FileManagerEntity paramFileManagerEntity)
-  {
-    if (!c()) {
-      return;
-    }
-    if (paramFileManagerEntity == null)
-    {
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] checkLocalApk err. entity=null");
-      return;
-    }
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] checkLocalApk. entity.nSessionId=" + paramFileManagerEntity.nSessionId);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new MMApkFileSafeChecker.2(this, paramFileManagerEntity));
-      return;
-    }
-    b(paramFileManagerEntity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    QLog.w("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] release.");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((atwc)localIterator.next()).c();
-    }
-    d();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    e();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    return false;
   }
 }
 

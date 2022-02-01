@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import bhln;
+import bfuq;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class HotChatFlashPicActivity$2
@@ -10,7 +10,7 @@ class HotChatFlashPicActivity$2
   
   public void run()
   {
-    bhln.b(this.a, HotChatFlashPicActivity.c(this.this$0));
+    bfuq.b(this.a, HotChatFlashPicActivity.c(this.this$0));
     HotChatFlashPicActivity.b(this.this$0, true);
     if (!HotChatFlashPicActivity.a(this.this$0).get()) {
       HotChatFlashPicActivity.b(this.this$0, this.a);
@@ -20,7 +20,7 @@ class HotChatFlashPicActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.2
  * JD-Core Version:    0.7.0.1
  */

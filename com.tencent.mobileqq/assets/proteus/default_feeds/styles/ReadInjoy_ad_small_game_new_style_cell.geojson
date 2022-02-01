@@ -22,14 +22,14 @@
                 "view_type": "container",
                 "layout_type": "layout_relative",
                 "margin_top": "12",
-                "margin_left": "6",
+                "margin_left": "12",
                 "height": {
                     "type": "relative",
                     "value": "84"
                 },
                 "width": {
                     "type": "relative",
-                    "value": "363"
+                    "value": "351"
                 },
                 "subviews": [
                     {
@@ -44,7 +44,7 @@
                         },
                         "width": {
                             "type": "relative",
-                            "value": "363"
+                            "value": "351"
                         },
                         "subviews": [
                             {
@@ -59,13 +59,15 @@
                                     "type": "match_parent"
                                 },
                                 "event_type": "cmd_large_img_click",
-                                "attributes": {
-                                    "setFrameString:": "-1",
+                                "attributes":{
                                     "setImageWithURLString:lineup:": [
                                         "$background_img_url",
                                         "-1"
                                     ]
                                 }
+                            },
+                            {
+                                "$includeComponet": "componet/RIJ_round_corner.geojson"
                             }
                         ]
                     },
@@ -73,17 +75,17 @@
                         "view_type": "ReadInjoyAsynImageView",
                         "view_id": "id_left_big_img",
                         "align_parent_left": "YES",
+                        "align_parent_bottom": "YES",
                         "margin_left": "8",
                         "height": {
                             "type": "relative",
-                            "value": "84"
+                            "value": "82"
                         },
                         "width": {
                             "type": "relative",
                             "value": "90"
                         },
-                        "attributes": {
-                            "setFrameString:": "-1",
+                        "attributes":{
                             "setImageWithURLString:lineup:": [
                                 "$left_big_img_url",
                                 "-1"
@@ -103,8 +105,7 @@
                             "type": "relative",
                             "value": "160"
                         },
-                        "attributes": {
-                            "setFrameString:": "-1",
+                        "attributes":{
                             "setText:": "$game_title",
                             "setTextColorString:": "#242424",
                             "setBoldFontSizeString:": "17",
@@ -125,8 +126,7 @@
                             "type": "relative",
                             "value": "168"
                         },
-                        "attributes": {
-                            "setFrameString:": "-1",
+                        "attributes":{
                             "setText:": "$game_desc",
                             "setTextColorString:": "#8F8F8F",
                             "setFontSizeString:": "12",
@@ -149,8 +149,7 @@
                         "width": {
                             "type": "wrap_content"
                         },
-                        "attributes": {
-                            "setFrameString:": "-1",
+                        "attributes":{
                             "setText:": "$game_btn_text",
                             "setTextAlignmentString:": "1",
                             "setTextColorString:": "#FFFFFF",
@@ -169,7 +168,7 @@
                 "$includeComponet": "componet/column_bar.geojson"
             },
             {
-                "$includeComponet": "componet/large_image_info_bar.geojson"
+                "$includeComponet": "componet/info_bar.geojson"
             },
             {
                 "view_type": "UIView",
@@ -184,8 +183,7 @@
                     "type": "relative",
                     "value": "359"
                 },
-                "attributes": {
-                    "setFrameString:": "-1",
+                "attributes":{
                     "setBackgroundColorString:": "#E5E5E5"
                 }
             },
@@ -209,5 +207,6 @@
                 }
             }
         ]
-    }
+    },
+    "min_version": "8.4.1"
 }

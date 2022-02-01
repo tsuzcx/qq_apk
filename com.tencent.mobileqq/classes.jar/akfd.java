@@ -1,36 +1,193 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.AnimationEndClearListener.1;
+import android.text.TextUtils;
+import android.view.WindowManager;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class akfd
-  implements Animation.AnimationListener
+  implements beyv
 {
-  public int a;
-  public View a;
+  public WindowManager a;
+  public SpecifyGiftView a;
+  public MessageForQQWalletMsg a;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public akfd(MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.postDelayed(new ChatHistoryTroopMemberFragment.AnimationEndClearListener.1(this), 0L);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = paramMessageForQQWalletMsg;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    if (paramMessageRecord != null)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+      paramMessageRecord.saveExtInfoToExtStr("specify_redpack_is_reply", "1");
+      akgd.a(paramQQAppInterface, paramMessageRecord);
     }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForQQWalletMsg == null)) {
+      return false;
+    }
+    boolean bool = a(paramMessageForQQWalletMsg, paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "tryScheduleSpecifyAnim isValidAnim=" + bool);
+    }
+    if (bool)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+      ((beyh)paramQQAppInterface.getManager(223)).a(new akfd(paramMessageForQQWalletMsg), false);
+      return true;
     }
+    return false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      try
+      {
+        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("specify_redpack_is_reply"));
+        if (i == 1) {
+          return true;
+        }
+      }
+      catch (Throwable paramMessageRecord)
+      {
+        for (;;)
+        {
+          int i = 0;
+        }
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  public static boolean a(Object paramObject, QQAppInterface paramQQAppInterface)
+  {
+    if (!(paramObject instanceof MessageForQQWalletMsg)) {
+      return false;
+    }
+    paramObject = (MessageForQQWalletMsg)paramObject;
+    int i = paramObject.messageType;
+    if ((i == 7) || (i == 8) || (i == 11) || (i == 12))
+    {
+      if (TextUtils.isEmpty(paramObject.mQQWalletRedPacketMsg.body.feedId)) {
+        return false;
+      }
+      if (paramObject.isRedPackExpired()) {
+        return false;
+      }
+      if ((!akcv.a().a()) && (!paramQQAppInterface.getCurrentUin().equals(paramObject.senderuin)))
+      {
+        if (paramObject.mQQWalletRedPacketMsg.specifyUinList == null) {
+          break label176;
+        }
+        paramObject = paramObject.mQQWalletRedPacketMsg.specifyUinList.iterator();
+        Long localLong;
+        do
+        {
+          if (!paramObject.hasNext()) {
+            break;
+          }
+          localLong = (Long)paramObject.next();
+        } while (!paramQQAppInterface.getCurrentUin().equals(localLong + ""));
+      }
+    }
+    label176:
+    for (i = 1;; i = 0)
+    {
+      return i != 0;
+      return false;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView.removeAllViews();
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView = null;
+      this.jdField_a_of_type_AndroidViewWindowManager = null;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(".troop.send_gift", 2, "closeRedPackGiftAnimation exception ", localException);
+        }
+      }
+    }
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie, bcrz parambcrz)
+  {
+    akgd.a(akgd.a(), "212", "only.animation.show");
+    String str = akfb.a() + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId + ".zip";
+    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+    paramBaseChatPie = new WeakReference(paramBaseChatPie);
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim start");
+    }
+    parambcrz = new akfe(this, parambcrz);
+    this.jdField_a_of_type_JavaLangRunnable = new SpecifyRedPacketAnimMsg.2(this, parambcrz);
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+    PreloadManager.a().c(str, new akff(this, localWeakReference, parambcrz, paramBaseChatPie));
+  }
+  
+  public String getFriendUin()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin;
+  }
+  
+  public int getLimitType()
+  {
+    return 1;
+  }
+  
+  public long getSenderUin()
+  {
+    try
+    {
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public long getShmsgseq()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.shmsgseq;
+  }
+  
+  public boolean isReaded()
+  {
+    return false;
   }
 }
 

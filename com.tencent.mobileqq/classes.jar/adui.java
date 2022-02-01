@@ -1,73 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adui
-  extends ClickableSpan
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public Bundle a;
-  public String a;
+  public adui(NotifyPushSettingActivity paramNotifyPushSettingActivity, amov paramamov) {}
   
-  public adui(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView != null) {}
-    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
-      return;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getString(2131716377), "qqsetting_special_care_bar", paramBoolean);
+    this.jdField_a_of_type_Amov.c(paramBoolean);
+    bjnm.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("IphoneTitleBarActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
     }
-    Object localObject;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      bguq.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
-      return;
-    case 2: 
-      try
-      {
-        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
-        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        paramView.startActivity((Intent)localObject);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
-      ((ProfileActivity.AllInOne)localObject).h = 109;
-      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
-      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

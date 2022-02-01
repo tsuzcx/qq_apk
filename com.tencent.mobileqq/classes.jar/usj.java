@@ -1,65 +1,43 @@
-import UserGrowth.stGetCollectionRsp;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.List;
-
-public class usj
+public abstract class usj<U, V>
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public static usj a()
+  public abstract U a();
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    return usl.a();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  private void a(uko paramuko, usf paramusf)
+  public void a(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    if (!paramuko.a())
-    {
-      uqf.d("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] failed code:" + paramuko.jdField_a_of_type_Int + ", msg:" + paramuko.jdField_a_of_type_JavaLangString);
-      if (paramusf != null) {
-        paramusf.a(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!(paramuko.jdField_a_of_type_JavaLangObject instanceof stGetCollectionRsp)) {
-          break;
-        }
-        paramuko = (stGetCollectionRsp)paramuko.jdField_a_of_type_JavaLangObject;
-        this.jdField_a_of_type_JavaLangString = paramuko.attachInfo;
-        this.jdField_a_of_type_Boolean = paramuko.isFinished;
-        paramuko = paramuko.feedList;
-        paramuko = WSVerticalDataManager.a().a(paramuko);
-        uqf.e("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] itemDataList size:" + paramuko.size() + ", mIsFinished:" + this.jdField_a_of_type_Boolean);
-      } while (paramusf == null);
-      paramusf.a(paramuko, false, false, null);
-      return;
-      uqf.d("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-    } while (paramusf == null);
-    paramusf.a(paramuko.b, paramuko.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract U b();
   
-  public void a(String paramString, int paramInt, usf paramusf)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      uqf.e("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] finished!");
-      return;
-    }
-    paramusf = new usk(this, paramusf);
-    paramString = new uko(new upc(paramString, this.jdField_a_of_type_JavaLangString, paramInt), null, paramusf, 4011);
-    ukh.a().a(paramString);
-  }
+  public abstract V c();
+  
+  public abstract V d();
 }
 
 

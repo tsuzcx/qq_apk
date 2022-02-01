@@ -1,64 +1,89 @@
-import android.widget.ImageView;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Set;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcju
-  extends bcia
+  extends bcgx
 {
-  private Set<String> b;
-  
-  public bcju(aoof paramaoof, bcie parambcie, Set<String> paramSet1, Set<String> paramSet2)
+  private LinearLayout a(Context paramContext)
   {
-    super(paramaoof, parambcie, paramSet1);
-    this.b = paramSet2;
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = AIOUtils.dp2px(12.0F, paramContext.getResources());
+    localLinearLayout.setPadding(i, i, i, i);
+    localLinearLayout.setLayoutParams(localLayoutParams);
+    return localLinearLayout;
   }
   
-  public void b(bcfr parambcfr, bcnz parambcnz)
+  protected int b()
   {
-    super.b(parambcfr, parambcnz);
-    if (parambcnz.c() != null)
+    return 22;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Iterator localIterator;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      localObject = parambcfr.b();
-      if ((this.b != null) && (this.b.contains(localObject))) {
-        parambcnz.c().setText(anzj.a(2131712604));
-      }
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    boolean bool = bgpy.b((QQAppInterface)localObject, parambcfr.b());
-    if ((localObject instanceof QQAppInterface))
-    {
-      if (!(parambcnz instanceof bcnt)) {
-        break label165;
-      }
-      ((bcnt)parambcnz).a(bool);
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
     for (;;)
     {
-      if (parambcnz.a() != null)
+      if (!localIterator.hasNext()) {
+        return paramView;
+      }
+      Object localObject1 = (bcgw)localIterator.next();
+      Object localObject2 = ((bcgw)localObject1).jdField_a_of_type_JavaLangString;
+      ((bcgw)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ("title".equals(localObject2))
       {
-        if ((!(parambcfr instanceof bcem)) && (!(parambcfr instanceof bcdz)) && (!(parambcfr instanceof bceh))) {
-          break;
+        localObject2 = (StructMsgItemTitle)localObject1;
+        ((StructMsgItemTitle)localObject2).a(a(), this.p);
+        localObject1 = (TextView)((bcgw)localObject1).a(paramContext, null, paramBundle);
+        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject1).setMaxLines(2);
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
+          ((TextView)localObject1).setTextSize(18.0F);
         }
-        if (parambcnz.c() != null) {
-          parambcnz.c().setVisibility(8);
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
+          ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
         }
-        parambcnz.a().setVisibility(0);
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        ((LinearLayout.LayoutParams)localObject2).rightMargin = AIOUtils.dp2px(12.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        continue;
+        paramView = a(paramContext);
+        break;
       }
-      return;
-      label165:
-      if ((parambcnz instanceof bcpq)) {
-        ((bcpq)parambcnz).a(bool);
+      if ("picture".equals(localObject2))
+      {
+        localObject1 = ((bcgw)localObject1).a(paramContext, null, paramBundle);
+        int i = AIOUtils.dp2px(50.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
       }
     }
-    if (parambcnz.c() != null) {
-      parambcnz.c().setVisibility(0);
-    }
-    parambcnz.a().setVisibility(8);
+    return paramView;
   }
   
-  public void d(bcfr parambcfr, bcnz parambcnz) {}
+  public String b()
+  {
+    return "layout22";
+  }
 }
 
 

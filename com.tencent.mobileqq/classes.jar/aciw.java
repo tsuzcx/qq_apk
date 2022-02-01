@@ -1,8 +1,12 @@
 public class aciw
+  extends achx
 {
-  public String a;
-  public String b;
-  public String c;
+  protected void b() {}
+  
+  public String c()
+  {
+    return "ceilingvalue";
+  }
 }
 
 

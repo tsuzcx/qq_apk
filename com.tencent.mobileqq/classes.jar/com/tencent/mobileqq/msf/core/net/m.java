@@ -352,7 +352,7 @@ public class m
     //   270: invokevirtual 555	com/tencent/mobileqq/msf/core/d:toString	()Ljava/lang/String;
     //   273: aastore
     //   274: invokestatic 559	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   277: invokestatic 564	com/tencent/mobileqq/msf/core/ap:a	(Ljava/lang/String;)V
+    //   277: invokestatic 564	com/tencent/mobileqq/msf/core/aq:a	(Ljava/lang/String;)V
     //   280: aload 15
     //   282: astore 12
     //   284: lload 6
@@ -3074,7 +3074,7 @@ public class m
     //   530: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
     //   533: invokevirtual 1039	com/tencent/mobileqq/msf/core/net/h:close	()V
     //   536: aload_1
-    //   537: invokestatic 1042	com/tencent/mobileqq/msf/core/an:a	(Lcom/tencent/qphone/base/a;)V
+    //   537: invokestatic 1042	com/tencent/mobileqq/msf/core/ao:a	(Lcom/tencent/qphone/base/a;)V
     //   540: aload_0
     //   541: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   544: invokevirtual 1046	com/tencent/mobileqq/msf/core/MsfCore:getStandyModeManager	()Lcom/tencent/mobileqq/msf/core/d/a;

@@ -1,117 +1,33 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebPageData;", "", "event", "", "jsFunction", "", "jsParams", "bgUrl", "arkLoadState", "arkHeight", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V", "getArkHeight", "()I", "getArkLoadState", "getBgUrl", "()Ljava/lang/String;", "getEvent", "getJsFunction", "getJsParams", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ammk
+public class ammk
+  implements View.OnClickListener
 {
-  public static final amml a;
-  private final int jdField_a_of_type_Int;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final int jdField_b_of_type_Int;
-  @NotNull
-  private final String jdField_b_of_type_JavaLangString;
-  private final int jdField_c_of_type_Int;
-  @NotNull
-  private final String jdField_c_of_type_JavaLangString;
+  public ammk(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, Bundle paramBundle, int paramInt, String paramString1, String paramString2) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Amml = new amml(null);
-  }
-  
-  public ammk(int paramInt1, @NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @NotNull
-  public final String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public final int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  @NotNull
-  public final String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof ammk))
-      {
-        paramObject = (ammk)paramObject;
-        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) || (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) || (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int)) {}
-      }
+    amlu localamlu = new amlu();
+    localamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
+    localamlu.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("pkgId");
+    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null) {
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localamlu);
     }
-    else {
-      return true;
+    ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int k = 0;
-    int m = this.jdField_a_of_type_Int;
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i;
-    if (str != null)
-    {
-      i = str.hashCode();
-      str = this.jdField_b_of_type_JavaLangString;
-      if (str == null) {
-        break label98;
-      }
-    }
-    label98:
-    for (int j = str.hashCode();; j = 0)
-    {
-      str = this.jdField_c_of_type_JavaLangString;
-      if (str != null) {
-        k = str.hashCode();
-      }
-      return (((j + (i + m * 31) * 31) * 31 + k) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_c_of_type_Int;
-      i = 0;
-      break;
-    }
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "WebPageData(event=" + this.jdField_a_of_type_Int + ", jsFunction=" + this.jdField_a_of_type_JavaLangString + ", jsParams=" + this.jdField_b_of_type_JavaLangString + ", bgUrl=" + this.jdField_c_of_type_JavaLangString + ", arkLoadState=" + this.jdField_b_of_type_Int + ", arkHeight=" + this.jdField_c_of_type_Int + ")";
+    alnr.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

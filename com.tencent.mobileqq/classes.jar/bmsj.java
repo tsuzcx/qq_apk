@@ -1,10 +1,23 @@
-public abstract interface bmsj
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.FilterCategory;
+
+public final class bmsj
+  implements Parcelable.Creator<FilterCategory>
 {
-  public abstract void a(Throwable paramThrowable);
+  public FilterCategory a(Parcel paramParcel)
+  {
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmsj
  * JD-Core Version:    0.7.0.1
  */

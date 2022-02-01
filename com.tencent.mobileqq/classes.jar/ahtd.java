@@ -1,62 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPttPlayView;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-class ahtd
-  implements BusinessObserver
+public class ahtd
 {
-  ahtd(ahtc paramahtc, String paramString) {}
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VoiceTextPttPlayView jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
-          localSubscribeResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            i = 1;
-            paramInt = 1;
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      try
-      {
-        StructingMsgItemBuilder.a(this.jdField_a_of_type_Ahtc.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahtc.jdField_a_of_type_AndroidAppActivity);
-        bdll.b(this.jdField_a_of_type_Ahtc.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramInt = i;
-        }
-      }
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahtc.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahtc.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahtc.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahtc.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahtc.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahtc.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahtc.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahtc.jdField_a_of_type_AndroidAppActivity);
-      label236:
-      paramInt = 0;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public void a(VoiceTextPanel paramVoiceTextPanel)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVoiceTextPanel.findViewById(2131377091));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131380996));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView = ((VoiceTextPttPlayView)paramVoiceTextPanel.findViewById(2131377584));
+  }
+  
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, int paramInt, VoiceTextPanel paramVoiceTextPanel)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.setDuration(paramInt, paramString, paramRecorderParam, paramVoiceTextPanel);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.a();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.b();
     }
   }
 }

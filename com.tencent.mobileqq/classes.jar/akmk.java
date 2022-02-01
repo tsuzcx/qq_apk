@@ -1,16 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.10.1;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class akmk
-  extends aokd
+final class akmk
+  implements Animation.AnimationListener
 {
-  public akmk(AvatarPendantActivity paramAvatarPendantActivity) {}
+  akmk(View paramView, Animation paramAnimation) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.runOnUiThread(new AvatarPendantActivity.10.1(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

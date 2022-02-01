@@ -1,17 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
-import kotlin.Metadata;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
-public final class acrb
-  implements DialogInterface.OnDismissListener
+public class acrb
+  extends ClickableSpan
 {
-  public acrb(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
+  public int a;
+  public Bundle a;
+  public String a;
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public acrb(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
   {
-    GdtMotiveBrowsingFragment.a(this.a).b();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView != null) {}
+    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
+      return;
+    }
+    Object localObject;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      TroopUtils.openTroopInfoActivity(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
+      return;
+    case 2: 
+      try
+      {
+        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
+        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        paramView.startActivity((Intent)localObject);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+      ((ProfileActivity.AllInOne)localObject).h = 109;
+      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

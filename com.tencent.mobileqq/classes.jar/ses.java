@@ -1,58 +1,84 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeController.VolumeReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
-class ses
-  implements sga
+public class ses
+  extends BroadcastReceiver
 {
-  ses(sel paramsel) {}
+  private ses(seo paramseo) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    BaseArticleInfo localBaseArticleInfo;
-    if (paramView.getId() == 2131367679) {
-      localBaseArticleInfo = ((pne)paramView.getTag()).a;
-    }
-    rwc localrwc;
-    for (Object localObject = ((pne)paramView.getTag()).b.innerUniqueID;; localObject = ((pne)paramView.getTag()).a.innerUniqueID)
+    if ((BaseApplicationImpl.getApplication().getRuntime().isBackgroundStop) || (BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)) {}
+    do
     {
-      localrwc = sel.a(localBaseArticleInfo);
-      localrwc.n = ((String)localObject);
-      localrwc.l = odr.b();
-      if ((this.a.jdField_a_of_type_Rvy != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Rvy.b()))) {
-        localrwc.m = this.a.jdField_a_of_type_Rvy.b();
-      }
-      localObject = new int[2];
-      paramView.getLocationOnScreen((int[])localObject);
-      localrwc.h = localObject[0];
-      localrwc.i = localObject[1];
-      localrwc.j = paramView.getWidth();
-      localrwc.k = paramView.getHeight();
-      if (!localBaseArticleInfo.isVideoItemForCommonUrlJump()) {
-        break;
-      }
-      ozs.d(this.a.jdField_a_of_type_AndroidAppActivity, localBaseArticleInfo.mVideoAdsJumpUrl);
-      this.a.b(localrwc, localBaseArticleInfo);
-      return;
-      localBaseArticleInfo = ((pne)paramView.getTag()).b;
-    }
-    if (localBaseArticleInfo.isVideoItemForWeishiJump())
-    {
-      if (zqd.a(this.a.jdField_a_of_type_AndroidAppActivity)) {
-        ucd.a(this.a.jdField_a_of_type_AndroidAppActivity, "video_type_videopublic");
-      }
       for (;;)
       {
-        this.a.b(localrwc, localBaseArticleInfo);
         return;
-        QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, -1, 2131717123, 0).b(this.a.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
-        ucd.b(this.a.jdField_a_of_type_AndroidAppActivity, "video_type_videopublic");
+        if (seo.a(this.a) == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoVolumeController", 2, "VolumeReceiver onReceive null");
+          }
+        }
+        else if (seo.b(this.a)) {
+          if (seo.c(this.a))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoVolumeController", 2, "dynamicPauseReceive true");
+            }
+          }
+          else
+          {
+            int i;
+            try
+            {
+              if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
+                break;
+              }
+              i = seo.a(this.a).getStreamVolume(3);
+              if (QLog.isColorLevel()) {
+                QLog.d("VideoVolumeController", 2, "volume change:" + i);
+              }
+              if (seo.d(this.a))
+              {
+                QLog.d("VideoVolumeController", 2, "volume change shield ");
+                return;
+              }
+            }
+            catch (Exception paramContext)
+            {
+              QLog.d("VideoVolumeController", 1, "VolumeReceiver", paramContext);
+              return;
+            }
+            paramContext = seo.a(this.a).iterator();
+            while (paramContext.hasNext()) {
+              ((sep)paramContext.next()).onSystemVolumeChanged(i);
+            }
+          }
+        }
       }
+    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
+    boolean bool = seo.a(this.a).isWiredHeadsetOn();
+    if (seo.e(this.a))
+    {
+      seo.a(this.a, false);
+      return;
     }
-    this.a.a(localrwc, localBaseArticleInfo);
+    seo.b(this.a, true);
+    paramContext = seo.a(this.a).iterator();
+    while (paramContext.hasNext()) {
+      ((sep)paramContext.next()).onHeadsetStateChanged(bool);
+    }
+    seo.a(this.a).postDelayed(new VideoVolumeController.VolumeReceiver.1(this), 200L);
   }
 }
 

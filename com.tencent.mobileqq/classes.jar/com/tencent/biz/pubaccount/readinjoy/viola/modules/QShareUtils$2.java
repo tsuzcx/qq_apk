@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.graphics.BitmapFactory;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import nnr;
-import tfv;
+import tjz;
 
 public class QShareUtils$2
   implements Runnable
 {
-  public QShareUtils$2(tfv paramtfv, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
+  public QShareUtils$2(tjz paramtjz, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      Object localObject = nnr.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject != null)
       {
         localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
@@ -41,7 +41,7 @@ public class QShareUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.QShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

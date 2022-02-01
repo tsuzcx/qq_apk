@@ -1,39 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import cooperation.qzone.contentbox.BaseMsgView;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
 public class bmxu
-  extends Handler
 {
-  private WeakReference<BaseMsgView> a;
+  public float a;
+  public long a;
+  public View a;
+  public String a;
+  public float b;
+  public long b;
   
-  public bmxu(BaseMsgView paramBaseMsgView)
+  public bmxu(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    this.a = new WeakReference(paramBaseMsgView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
-    if (localBaseMsgView == null) {}
-    ViewPager localViewPager;
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        localBaseMsgView.a(paramMessage);
-        return;
-      }
-      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
-    } while (localViewPager == null);
-    int i = paramMessage.arg1;
-    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
-    localBaseMsgView.a();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

@@ -1,16 +1,11 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class akwd
-  implements DialogInterface.OnClickListener
+public abstract interface akwd
 {
-  akwd(akwb paramakwb) {}
+  public abstract void a(MediaPlayer paramMediaPlayer);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    akwa.a(this.a.a).dismiss();
-  }
+  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
 }
 
 

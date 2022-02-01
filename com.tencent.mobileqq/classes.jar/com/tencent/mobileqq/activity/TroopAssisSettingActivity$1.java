@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
-import axan;
+import avnu;
 
 class TroopAssisSettingActivity$1
   implements Runnable
@@ -10,13 +10,13 @@ class TroopAssisSettingActivity$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilMap = axan.a().a(this.this$0.app, this.this$0.jdField_a_of_type_JavaUtilList);
+    this.this$0.jdField_a_of_type_JavaUtilMap = avnu.a().a(this.this$0.app, this.this$0.jdField_a_of_type_JavaUtilList);
     this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssisSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

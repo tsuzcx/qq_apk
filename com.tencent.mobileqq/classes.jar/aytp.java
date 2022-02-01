@@ -1,30 +1,17 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-
 class aytp
-  implements bljo
 {
-  private aytp(aytl paramaytl) {}
+  final String a;
+  final String b;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  aytp(String paramString1, String paramString2)
   {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    bljo localbljo = this.a.jdField_a_of_type_Aytk.a();
-    if (localbljo != null) {
-      localbljo.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView)
+  public String toString()
   {
-    bljo localbljo = this.a.jdField_a_of_type_Aytk.a();
-    if (localbljo != null) {
-      localbljo.onNothingSelected(paramAdapterView);
-    }
+    return String.format("CopyItem{mMenuTitle=%s mCopyContent=%s}", new Object[] { this.a, this.b });
   }
 }
 

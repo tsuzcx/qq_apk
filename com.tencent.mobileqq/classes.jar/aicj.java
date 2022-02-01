@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
 
-class aicj
-  implements DialogInterface.OnClickListener
+public final class aicj
+  implements Parcelable.Creator<AddFriendBlockedInfo>
 {
-  aicj(aibr paramaibr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public AddFriendBlockedInfo a(Parcel paramParcel)
   {
-    if ((this.a.a != null) && (!this.a.a.c())) {
-      this.a.a.f();
-    }
+    return new AddFriendBlockedInfo(paramParcel);
+  }
+  
+  public AddFriendBlockedInfo[] a(int paramInt)
+  {
+    return new AddFriendBlockedInfo[paramInt];
   }
 }
 

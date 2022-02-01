@@ -1,30 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
-import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bkzt
-  implements MiniProgramShareUtils.OnShareListener
+public class bkzt
+  extends BaseJsModule
 {
-  bkzt(bkzs parambkzs, InnerShareData paramInnerShareData) {}
+  public bkzt(bkzr parambkzr) {}
   
-  public void onShared(boolean paramBoolean1, boolean paramBoolean2)
+  public String getModuleName()
   {
-    InnerShareData localInnerShareData;
-    Activity localActivity;
-    if (paramBoolean1)
+    return "VipQGModel";
+  }
+  
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
     {
-      localInnerShareData = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData;
-      localActivity = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity;
-      if (!paramBoolean2) {
-        break label35;
-      }
+      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
+      this.a.a("getDeviceSize", new float[] { ViewUtils.getScreenWidth(), ViewUtils.getScreenHeight() });
+      return true;
     }
-    label35:
-    for (int i = 0;; i = 1)
-    {
-      localInnerShareData.notifyShareResult(localActivity, i, true);
-      return;
-    }
+    return false;
   }
 }
 

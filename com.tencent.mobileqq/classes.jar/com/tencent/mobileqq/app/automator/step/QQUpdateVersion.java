@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aczu;
-import adab;
-import adak;
+import abwe;
+import abwp;
+import abwz;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import antf;
-import bcry;
+import bbli;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -32,16 +32,16 @@ public class QQUpdateVersion
     int j;
     Object localObject3;
     Object localObject1;
-    if (i < adak.c.length)
+    if (i < abwz.c.length)
     {
-      str = adak.c[i];
-      j = adak.u[i];
-      localObject3 = this.a.app.a().b(str, j);
-      localObject1 = antf.aj;
-      if ((adak.a(j) != 1001) && (adak.a(j) != 10002)) {
+      str = abwz.c[i];
+      j = abwz.u[i];
+      localObject3 = this.a.app.getMessageFacade().getMsgList(str, j);
+      localObject1 = AppConstants.LBS_SAY_HELLO_LIST_UIN;
+      if ((abwz.a(j) != 1001) && (abwz.a(j) != 10002)) {
         break label85;
       }
-      localObject1 = antf.aj;
+      localObject1 = AppConstants.LBS_SAY_HELLO_LIST_UIN;
     }
     for (;;)
     {
@@ -49,8 +49,8 @@ public class QQUpdateVersion
       {
         return;
         label85:
-        if (adak.a(j) == 1010) {
-          localObject1 = antf.ak;
+        if (abwz.a(j) == 1010) {
+          localObject1 = AppConstants.DATE_SAY_HELLO_LIST_UIN;
         }
       }
       else
@@ -62,7 +62,7 @@ public class QQUpdateVersion
         while (localIterator.hasNext())
         {
           localObject3 = (MessageRecord)localIterator.next();
-          if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (adak.d((MessageRecord)localObject3)))
+          if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (abwz.d((MessageRecord)localObject3)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("QQUpdateVersion", 2, "doMergeSayHelloBox oneWay=" + ((MessageRecord)localObject3).getBaseInfoString());
@@ -76,29 +76,29 @@ public class QQUpdateVersion
         label469:
         for (;;)
         {
-          this.a.app.a().a().a(str, j, ((MessageRecord)localObject3).senderuin, ((MessageRecord)localObject3).selfuin, false);
+          this.a.app.getMessageFacade().getC2CMessageManager().a(str, j, ((MessageRecord)localObject3).senderuin, ((MessageRecord)localObject3).selfuin, false);
           ((MessageRecord)localObject3).frienduin = ((String)localObject1);
           ((MessageRecord)localObject3).setStatus(1000);
           localArrayList.add(localObject3);
           break label123;
           if (localArrayList.size() > 0) {
-            this.a.app.a().c(localArrayList);
+            this.a.app.getMessageFacade().addMessageStore(localArrayList);
           }
           if (localObject2 != null)
           {
-            this.a.app.a().a(str, j, localObject2.frienduin, localObject2.selfuin);
-            localObject3 = bcry.a(localObject2.msgtype);
+            this.a.app.getMessageFacade().removeMsgFromMsgBox(str, j, localObject2.frienduin, localObject2.selfuin);
+            localObject3 = bbli.a(localObject2.msgtype);
             MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject3, localObject2);
             ((MessageRecord)localObject3).senderuin = ((String)localObject1);
             ((MessageRecord)localObject3).frienduin = str;
             ((MessageRecord)localObject3).istroop = j;
             localObject1 = new ArrayList();
             ((List)localObject1).add(localObject3);
-            this.a.app.a().c((List)localObject1);
-            this.a.app.a().b(str, j);
-            this.a.app.a().a().a((MessageRecord)localObject3, true, 2);
-            this.a.app.a().a().a(localObject2, true, 2);
-            this.a.app.a().a(localObject3);
+            this.a.app.getMessageFacade().addMessageStore((List)localObject1);
+            this.a.app.getConversationFacade().b(str, j);
+            this.a.app.getMessageFacade().getC2CMessageManager().a((MessageRecord)localObject3, true, 2);
+            this.a.app.getMessageFacade().getC2CMessageManager().a(localObject2, true, 2);
+            this.a.app.getMessageFacade().setChangeAndNotify(localObject3);
           }
           i += 1;
           break;
@@ -109,7 +109,7 @@ public class QQUpdateVersion
   
   private void d()
   {
-    Object localObject = this.a.app.a().b(antf.ak, 1010);
+    Object localObject = this.a.app.getMessageFacade().getMsgList(AppConstants.DATE_SAY_HELLO_LIST_UIN, 1010);
     MessageRecord localMessageRecord;
     if (localObject != null)
     {
@@ -117,17 +117,17 @@ public class QQUpdateVersion
       while (((Iterator)localObject).hasNext())
       {
         localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        this.a.app.a().a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
+        this.a.app.getMessageFacade().getC2CMessageManager().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
       }
     }
-    localObject = this.a.app.a().b(antf.ab, 1010);
+    localObject = this.a.app.getMessageFacade().getMsgList(AppConstants.DATE_UIN, 1010);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        this.a.app.a().a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
+        this.a.app.getMessageFacade().getC2CMessageManager().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
       }
     }
   }
@@ -145,7 +145,7 @@ public class QQUpdateVersion
     }
     try
     {
-      String[] arrayOfString = "8.4.5".split("\\.");
+      String[] arrayOfString = "8.4.8".split("\\.");
       if ((arrayOfString != null) && (arrayOfString.length >= 2))
       {
         int i = Integer.parseInt(arrayOfString[0]);
@@ -163,13 +163,13 @@ public class QQUpdateVersion
         {
           d();
           localSharedPreferences.edit().putBoolean("qq_update_6.5.5", false).commit();
-          if (!"8.4.5".equals(str))
+          if (!"8.4.8".equals(str))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { str, "8.4.5" }));
+              QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { str, "8.4.8" }));
             }
             this.a.app.getApp().getSharedPreferences("loginwelcome_" + this.a.app.getCurrentAccountUin(), 0).edit().putBoolean("request_state", true).commit();
-            localSharedPreferences.edit().putString("qq_update_version", "8.4.5").commit();
+            localSharedPreferences.edit().putString("qq_update_version", "8.4.8").commit();
           }
           return 7;
           localException1 = localException1;

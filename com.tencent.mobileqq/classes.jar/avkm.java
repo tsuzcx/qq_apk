@@ -1,127 +1,242 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.1.1;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import com.tencent.mobileqq.lyric.widget.LyricView;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.10;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.2;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.3;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.4;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.5;
+import com.tencent.mobileqq.lyric.widget.LyricViewController.9;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
 public class avkm
-  extends bhzs
 {
-  public avkm(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public int a;
+  public long a;
+  public avjt a;
+  protected avkj a;
+  private avkp jdField_a_of_type_Avkp = new avkn(this);
+  protected TimerTaskManager.TimerTaskRunnable a;
+  protected TimerTaskManager a;
+  public LyricViewInternal a;
+  private LyricViewScroll jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll;
+  protected final String a;
+  protected volatile boolean a;
+  public int b;
+  public volatile boolean b;
+  private volatile int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  protected void onGetGameCenterPubAccountFeeds(boolean paramBoolean, Object paramObject)
+  public avkm(LyricView paramLyricView)
   {
-    super.onGetGameCenterPubAccountFeeds(paramBoolean, paramObject);
-    Object localObject2;
-    long l;
-    Object localObject1;
-    String str1;
-    if ((paramBoolean) && (paramObject != null))
+    this.jdField_a_of_type_JavaLangString = ("task_name_lyric_draw_" + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager = avjy.a();
+    this.jdField_a_of_type_Avkj = new avkj();
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = new LyricViewController.2(this);
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Avkp);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Avjt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a();
+    avjt localavjt = this.jdField_a_of_type_Avjt;
+    if ((localavjt == null) || (localavjt.a()) || (this.jdField_a_of_type_Boolean))
     {
-      localObject2 = (Object[])paramObject;
-      l = ((Long)localObject2[0]).longValue();
-      localObject1 = (String)localObject2[5];
-      str1 = (String)localObject2[6];
-      paramBoolean = ((Boolean)localObject2[1]).booleanValue();
-      paramObject = (List)localObject2[2];
-      JSONObject localJSONObject = (JSONObject)localObject2[3];
-      if (localJSONObject != null)
-      {
-        avmc.a = localJSONObject.optInt("video_count");
-        avmc.b = localJSONObject.optInt("video_time") * 1000;
-        avmc.c = localJSONObject.optInt("layer_duration") * 1000;
-        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("game_center_sp", 0);
-        String str2 = "sp_key_game_center_feeds_float_condition" + QQGamePubAccountFragment.a(this.a).getCurrentAccountUin();
-        localSharedPreferences.edit().putString(str2, localJSONObject.toString()).commit();
+      if (this.jdField_a_of_type_Boolean) {
+        Log.d("ModuleController", "onRefresh -> is scrolling");
       }
-      localObject2 = (FeedsItemData.TopCardInfo)localObject2[4];
-      if (paramBoolean) {
-        if (paramObject.size() == 0)
-        {
-          acik.a(anbd.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-        }
-      }
-    }
-    for (;;)
-    {
-      QQGamePubAccountFragment.a(this.a, false);
       return;
-      localObject1 = (List)QQGamePubAccountFragment.a(this.a).get(Long.valueOf(l));
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        ((List)localObject1).addAll(paramObject);
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), localObject1);
-      }
-      for (;;)
-      {
-        i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
-        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
-          break;
-        }
-        QQGamePubAccountFragment.a(this.a).c();
-        QQGamePubAccountFragment.a(this.a).a(paramObject);
-        break;
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
-      }
-      QQGamePubAccountFragment.b(this.a).put(Long.valueOf(l), localObject2);
-      int i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
-      if (paramObject.size() == 0) {
-        if (localObject2 == null)
-        {
-          this.a.a(true);
-          label495:
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), avmd.b);
-          acik.a(anbd.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
-        }
-      }
-      for (;;)
-      {
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
-        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
-          break;
-        }
-        QQGamePubAccountFragment.a(this.a).a(paramObject, (FeedsItemData.TopCardInfo)localObject2);
-        ThreadManagerV2.getUIHandlerV2().post(new QQGamePubAccountFragment.1.1(this, (FeedsItemData.TopCardInfo)localObject2));
-        break;
-        this.a.a(false);
-        break label495;
-        QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), avmd.a);
-        QQGamePubAccountFragment.a(this.a).a(false, false);
-      }
-      if (paramObject != null)
-      {
-        localObject1 = (Object[])paramObject;
-        l = ((Long)localObject1[0]).longValue();
-        paramObject = (String)localObject1[5];
-        localObject1 = (String)localObject1[6];
-        acik.a(anbd.a(), "769", "205353", (String)localObject1, "76901", "1", "160", new String[] { paramObject, "", "20" });
-        QLog.e("QQGamePubAccountFragment", 1, "[onGetGameCenterPubAccountFeeds] get feeds fail.");
-        i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
-        if ((i < QQGamePubAccountFragment.a(this.a).size()) && (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq == l))
-        {
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), avmd.b);
-          this.a.a(false);
-        }
-      }
-      if (this.a.getActivity() != null) {
-        QQToast.a(this.a.getActivity(), anzj.a(2131709180), 0).a();
+    }
+    int j = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    int i = j;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      i = j;
+      if (j >= this.jdField_b_of_type_Int) {
+        i = this.jdField_b_of_type_Int;
       }
     }
+    this.jdField_c_of_type_Int = i;
+    a(localavjt.a(i), i);
+  }
+  
+  public void a()
+  {
+    Log.d("ModuleController", "start");
+    avjy.a().post(new LyricViewController.4(this));
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString, 100L, 100L, this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable);
+    this.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt)
+  {
+    Log.d("ModuleController", "seek " + paramInt);
+    avjy.a().post(new LyricViewController.5(this, paramInt));
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.getWindowToken() != null)) {
+      ThreadManager.getUIHandler().post(new LyricViewController.9(this, paramInt1, paramInt2));
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getWindowToken() != null)) {
+      ThreadManager.getUIHandler().post(new LyricViewController.10(this));
+    }
+  }
+  
+  public void a(avjt paramavjt1, avjt paramavjt2, avjt paramavjt3)
+  {
+    Log.v("ModuleController", "setLyric begin");
+    avjy.a().post(new LyricViewController.3(this, paramavjt3, paramavjt1, paramavjt2));
+  }
+  
+  public void a(LyricView paramLyricView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Avkp);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    Log.d("ModuleController", "stop");
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+  }
+  
+  protected void b(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if ((this.jdField_a_of_type_Avjt != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b(paramInt);
+      if ((this.jdField_a_of_type_Avjt == null) || (this.jdField_a_of_type_Avjt.a())) {
+        Log.w("ModuleController", "onScrollStop -> scroll without measured lyric");
+      }
+    }
+    else
+    {
+      return;
+    }
+    Log.d("ModuleController", "onScrollStop -> scroll to lineNo：" + paramInt);
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Avjt.a.size()))
+    {
+      if (this.jdField_a_of_type_Avjt.a.get(paramInt) == null)
+      {
+        Log.w("ModuleController", "onScrollStop -> current sentence is null");
+        return;
+      }
+      long l2 = ((avjv)this.jdField_a_of_type_Avjt.a.get(paramInt)).jdField_a_of_type_Long;
+      Log.d("ModuleController", "onScrollStop -> start time of current sentence：" + l2);
+      long l1 = l2;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
+          break label303;
+        }
+        l1 = this.jdField_a_of_type_Int;
+      }
+      for (;;)
+      {
+        Log.d("ModuleController", "onScrollStop -> correct start time：" + l1);
+        l2 = l1;
+        if (l1 < 0L) {
+          l2 = 0L;
+        }
+        l1 = (l2 / 10L + 1L) * 10L;
+        Log.d("ModuleController", "onScrollStop -> output time：" + l1);
+        this.jdField_a_of_type_Avkj.a(l1);
+        if ((this.jdField_c_of_type_Boolean) || (!this.d)) {
+          break;
+        }
+        a((int)l1);
+        return;
+        label303:
+        l1 = l2;
+        if (this.jdField_b_of_type_Int >= 0)
+        {
+          l1 = l2;
+          if (l2 > this.jdField_b_of_type_Int) {
+            l1 = this.jdField_b_of_type_Int;
+          }
+        }
+      }
+    }
+    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_c_of_type_Boolean = false;
+  }
+  
+  protected void c(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Avjt != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(paramInt);
+      if ((this.jdField_a_of_type_Avjt == null) || (this.jdField_a_of_type_Avjt.a())) {
+        Log.w("ModuleController", "onScrolling -> scroll without measured lyric");
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Avjt.a.size()))
+    {
+      if (this.jdField_a_of_type_Avjt.a.get(paramInt) == null)
+      {
+        Log.w("ModuleController", "onScrollStop -> current sentence is null");
+        return;
+      }
+      long l2 = ((avjv)this.jdField_a_of_type_Avjt.a.get(paramInt)).jdField_a_of_type_Long;
+      long l1 = l2;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
+          break label178;
+        }
+        l1 = this.jdField_a_of_type_Int;
+      }
+      for (;;)
+      {
+        l2 = l1;
+        if (l1 < 0L) {
+          l2 = 0L;
+        }
+        l1 = l2 / 10L;
+        this.jdField_a_of_type_Avkj.b((l1 + 1L) * 10L);
+        return;
+        label178:
+        l1 = l2;
+        if (this.jdField_b_of_type_Int >= 0)
+        {
+          l1 = l2;
+          if (l2 > this.jdField_b_of_type_Int) {
+            l1 = this.jdField_b_of_type_Int;
+          }
+        }
+      }
+    }
+    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
   }
 }
 

@@ -1,12 +1,8 @@
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 
 public abstract interface tdn
 {
-  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
 }
 
 

@@ -1,95 +1,121 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class asya
-  extends asvt
 {
-  public asya(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  private asyc jdField_a_of_type_Asyc;
+  private asyd jdField_a_of_type_Asyd;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ChatMessage a;
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public asya(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendProfileEdit", 2, String.format("ExtendFriendEditFragment onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((paramBoolean) && (paramInt == 2) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
-    {
-      asvi localasvi = (asvi)this.a.getActivity().app.getManager(264);
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.jdField_a_of_type_Long = localasvi.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_Asyc = asyc.a(paramQQAppInterface, paramChatMessage);
   }
   
-  protected void a(boolean paramBoolean, asxh paramasxh, int paramInt)
+  public long a()
   {
-    if ((paramBoolean) && (paramasxh != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a(ExtendFriendEditFragment.a(this.a).app, paramasxh);
+    if (this.jdField_a_of_type_Asyc != null) {
+      return this.jdField_a_of_type_Asyc.a();
     }
+    return 0L;
   }
   
-  protected void a(boolean paramBoolean, Card paramCard)
+  public asxz a()
   {
-    super.a(paramBoolean, paramCard);
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Asyc != null) {
+      return this.jdField_a_of_type_Asyc.a();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Asyc != null) {
+      return this.jdField_a_of_type_Asyc.b();
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Asyc != null) {}
+    for (boolean bool = this.jdField_a_of_type_Asyc.a();; bool = false)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo = new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramCard);
-      if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.b)))
+      if (!bool)
       {
-        ExtendFriendEditFragment.a(this.a, true);
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
-      }
-    }
-    for (;;)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      return;
-      ExtendFriendEditFragment.a(this.a, false);
-      break;
-      QQToast.a(ExtendFriendEditFragment.a(this.a), "获取校园扩列信息失败", 0).a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof Bundle)))
-    {
-      paramObject = (Bundle)paramObject;
-      String str1 = paramObject.getString("name");
-      String str2 = paramObject.getString("schoolid");
-      int i = paramObject.getInt("category");
-      int j = paramObject.getInt("idx");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d = str1;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c = str2;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h = i;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.jdField_a_of_type_Long = -1L;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g = j;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    super.c(paramBoolean);
-    if (paramBoolean)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      ExtendFriendEditFragment.a(this.a).setResult(8193);
-      if (ExtendFriendEditFragment.a(this.a) != null) {
-        ExtendFriendEditFragment.a(this.a).finish();
+        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileDownload: start fail");
+        if (this.jdField_a_of_type_Asyd != null) {
+          this.jdField_a_of_type_Asyd.a(false);
+        }
       }
       return;
     }
-    ExtendFriendEditFragment.a(this.a).dismiss();
+  }
+  
+  public void a(asyd paramasyd)
+  {
+    this.jdField_a_of_type_Asyd = paramasyd;
+    if (this.jdField_a_of_type_Asyc != null) {
+      this.jdField_a_of_type_Asyc.a(this.jdField_a_of_type_Asyd);
+    }
+  }
+  
+  public void a(String paramString, asyb paramasyb)
+  {
+    if (!FileUtils.fileExistsAndNotEmpty(paramString))
+    {
+      if (paramasyb != null) {
+        paramasyb.a(-1, "file is not exist");
+      }
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new QFileMultiSaveReq.1(this, paramString, paramasyb));
+  }
+  
+  public boolean a()
+  {
+    return FileUtils.fileExistsAndNotEmpty(b());
+  }
+  
+  public String b()
+  {
+    String str = "";
+    if (this.jdField_a_of_type_Asyc != null) {
+      str = this.jdField_a_of_type_Asyc.a();
+    }
+    return str;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Asyc != null) {}
+    for (boolean bool = this.jdField_a_of_type_Asyc.b();; bool = false)
+    {
+      if (!bool)
+      {
+        QLog.i("QFileMultiSaveReq<QFile>", 1, "doFileStopDownload: pause fail");
+        if (this.jdField_a_of_type_Asyd != null) {
+          this.jdField_a_of_type_Asyd.b(false);
+        }
+      }
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Asyc != null) {
+      this.jdField_a_of_type_Asyc.c();
+    }
+    return false;
   }
 }
 

@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bbig
+class bbig
+  implements View.OnClickListener
 {
-  public abstract void a(QQFilterRenderManager.ChainBuilder paramChainBuilder);
+  bbig(bbie parambbie) {}
   
-  public abstract void m();
+  public void onClick(View paramView) {}
 }
 
 

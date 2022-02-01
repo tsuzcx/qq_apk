@@ -1,72 +1,57 @@
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+
 public class avov
+  extends Animation
 {
-  avow a;
+  private final float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
   
-  public avov(int paramInt)
+  public avov(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    this.a = new avow(paramInt);
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static String a(int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "graytip";
-    case 2: 
-      return "nor_text";
-    case 3: 
-      return "url";
-    case 4: 
-      return "qq";
-    case 5: 
-      return "img";
-    case 6: 
-      return "dialog";
-    case 7: 
-      return "title";
-    case 8: 
-      return "alter";
-    case 9: 
-      return "btn";
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
     }
-    return "item";
-  }
-  
-  public static String b(int paramInt)
-  {
-    switch (paramInt)
+    for (;;)
     {
-    default: 
-      return "";
-    case 1: 
-      return "align";
-    case 2: 
-      return "text";
-    case 3: 
-      return "size";
-    case 4: 
-      return "jump";
-    case 5: 
-      return "color";
-    case 6: 
-      return "uin";
-    case 7: 
-      return "name";
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
+      return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
-    return "src";
   }
   
-  public avow a()
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return avow.a(this.a, 0);
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
   }
 }
 

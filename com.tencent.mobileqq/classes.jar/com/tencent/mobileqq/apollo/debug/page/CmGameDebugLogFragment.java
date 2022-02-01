@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import amxt;
-import amyb;
-import anbd;
+import alsn;
+import alsv;
+import alvx;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bhgr;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogPagerAdapter;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.ArrayList;
@@ -29,17 +29,17 @@ public class CmGameDebugLogFragment
   TabLayoutCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat;
   ViewPagerCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat;
   private CmGameDebugLogPagerAdapter jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter;
-  private List<amyb> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<alsv> jdField_a_of_type_JavaUtilList = new ArrayList();
   TextView b;
   
-  private amyb a(int paramInt)
+  private alsv a(int paramInt)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      amyb localamyb = (amyb)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localamyb.a() == paramInt) {
-        return localamyb;
+      alsv localalsv = (alsv)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localalsv.a() == paramInt) {
+        return localalsv;
       }
       i += 1;
     }
@@ -50,20 +50,20 @@ public class CmGameDebugLogFragment
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < amxt.b.length)
+    while (i < alsn.b.length)
     {
-      amyb localamyb = a(getActivity(), i);
-      this.jdField_a_of_type_JavaUtilList.add(localamyb);
-      localArrayList.add(amxt.b[i]);
+      alsv localalsv = a(getActivity(), i);
+      this.jdField_a_of_type_JavaUtilList.add(localalsv);
+      localArrayList.add(alsn.b[i]);
       i += 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter = new CmGameDebugLogPagerAdapter(this.jdField_a_of_type_JavaUtilList, localArrayList);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter);
   }
   
-  public amyb a(Context paramContext, int paramInt)
+  public alsv a(Context paramContext, int paramInt)
   {
-    return new amyb(paramContext, paramInt);
+    return new alsv(paramContext, paramInt);
   }
   
   public void a(int paramInt)
@@ -73,17 +73,17 @@ public class CmGameDebugLogFragment
       paramInt = 0;
       while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
       {
-        ((amyb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(true);
+        ((alsv)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(true);
         paramInt += 1;
       }
     }
-    amyb localamyb = a(paramInt);
-    if (localamyb != null) {
-      localamyb.a(false);
+    alsv localalsv = a(paramInt);
+    if (localalsv != null) {
+      localalsv.a(false);
     }
-    localamyb = a(0);
-    if (localamyb != null) {
-      localamyb.a(false);
+    localalsv = a(0);
+    if (localalsv != null) {
+      localalsv.a(false);
     }
   }
   
@@ -96,10 +96,10 @@ public class CmGameDebugLogFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      amxt localamxt = anbd.a();
-      if (localamxt != null)
+      alsn localalsn = alvx.a();
+      if (localalsn != null)
       {
-        localamxt.a(true);
+        localalsn.a(true);
         continue;
         a();
       }
@@ -113,15 +113,15 @@ public class CmGameDebugLogFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558900, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramLayoutInflater.findViewById(2131364641));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramLayoutInflater.findViewById(2131364642));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364637));
-    this.b = ((TextView)paramLayoutInflater.findViewById(2131364638));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558908, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramLayoutInflater.findViewById(2131364672));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramLayoutInflater.findViewById(2131364673));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364668));
+    this.b = ((TextView)paramLayoutInflater.findViewById(2131364669));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextColors(-16777216, -16777216);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(bhgr.a(BaseApplicationImpl.getApplication(), 1.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(DisplayUtil.dip2px(BaseApplicationImpl.getApplication(), 1.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorColor(Color.parseColor("#6090e3"));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setupWithViewPager(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat);
     b();

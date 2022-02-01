@@ -1,33 +1,49 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auhe
-  implements View.OnClickListener
+public class auhe
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  auhe(auha paramauha, int paramInt) {}
+  auii a;
+  public ImageView d;
+  
+  public auhe(HotPicPageView paramHotPicPageView, View paramView, auii paramauii)
+  {
+    super(paramView);
+    if (paramauii != null)
+    {
+      this.a = paramauii;
+      this.d = ((ImageView)paramView.findViewById(2131368198));
+      this.d.setTag("HotPicControlTag");
+      this.itemView.setOnClickListener(this);
+      this.itemView.setOnLongClickListener(this);
+      this.itemView.setOnTouchListener(paramauii);
+    }
+  }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Auha.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label86;
-      }
-      bdll.b(null, "dc00898", "", "", "0X800A745", "0X800A745", auoo.c(this.jdField_a_of_type_Auha.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Auha.a.d()) {
-        this.jdField_a_of_type_Auha.a.b();
-      }
+    if (this.a != null) {
+      this.a.a(paramView, getPosition());
     }
-    for (;;)
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    boolean bool = false;
+    if (this.a != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label86:
-      if (this.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_Auha.a.g();
-      }
+      this.a.b(paramView, getPosition());
+      bool = true;
     }
+    return bool;
   }
 }
 

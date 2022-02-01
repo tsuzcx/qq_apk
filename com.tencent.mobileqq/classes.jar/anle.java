@@ -1,470 +1,91 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import IMMsgBodyPack.SlaveMasterMsg;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.util.LRULinkedHashMap;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import org.json.JSONObject;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
+import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
+import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
 
 public class anle
+  extends abvx
 {
-  private static anle jdField_a_of_type_Anle;
-  private static boolean jdField_a_of_type_Boolean;
-  private ankt jdField_a_of_type_Ankt = new ankt(this);
-  private final LRULinkedHashMap<String, anlg> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(128);
-  
-  private anle()
+  public anle(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).getBoolean("sp_key_disable_thunder_cache", false);
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  private anlc a(CustomWebView paramCustomWebView)
+  private void a(MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, SlaveMasterMsg paramSlaveMasterMsg)
   {
-    if (paramCustomWebView == null) {
-      return null;
-    }
-    paramCustomWebView = paramCustomWebView.getPluginEngine();
-    if (paramCustomWebView != null)
-    {
-      paramCustomWebView = paramCustomWebView.a("apollo");
-      if ((paramCustomWebView != null) && ((paramCustomWebView instanceof ApolloJsPlugin))) {
-        return ((ApolloJsPlugin)paramCustomWebView).getIntercepter();
-      }
-    }
-    return null;
-  }
-  
-  public static anle a()
-  {
+    Object localObject1 = new SubMsgType0x4.MsgBody();
     try
     {
-      if (jdField_a_of_type_Anle == null) {
-        jdField_a_of_type_Anle = new anle();
-      }
-      anle localanle = jdField_a_of_type_Anle;
-      return localanle;
-    }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread isInstanceCreated():" + a());
-    }
-    if (!a()) {
-      ThreadManager.postImmediately(new ApolloWebDataHandler.1(), null, true);
-    }
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Anle != null;
-  }
-  
-  private String b(String paramString)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      if (this.jdField_a_of_type_Ankt == null) {
-        return "";
-      }
-      str = this.jdField_a_of_type_Ankt.a(paramString);
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("apollo_client_ApolloWebDataHandler", 2, "getMD5FromDb pageId:" + paramString + " md5:" + str);
-    return str;
-  }
-  
-  public WebResourceResponse a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_Ankt == null) {
-      return null;
-    }
-    if ((paramString1.contains("http://cmshow.qq.com/get_thunder_data?cmd=")) || (paramString1.contains("https://cmshow.qq.com/get_thunder_data?cmd=")))
-    {
-      Object localObject = "http://cmshow.qq.com/get_thunder_data?cmd=";
-      if (paramString1.contains("https://cmshow.qq.com/get_thunder_data?cmd=")) {
-        localObject = "https://cmshow.qq.com/get_thunder_data?cmd=";
-      }
-      paramString1 = paramString1.substring(((String)localObject).length());
-      if (!this.jdField_a_of_type_Ankt.a(paramString2, paramString1))
+      localObject2 = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject1).mergeFrom(paramSlaveMasterMsg.vOrigMsg);
+      if (!((SubMsgType0x4.MsgBody)localObject2).msg_not_online_file.has())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource false, apolloClientId:" + paramString2 + " cmd:" + paramString1 + ",mSSOConfig.isValidCmd:false");
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has not NotOnlineFile");
         }
-        return null;
-      }
-      paramString2 = ankt.a(paramString2, paramString1);
-      localObject = (anlg)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString2);
-      if (localObject != null) {
-        if (anlg.a((anlg)localObject))
-        {
-          if (((anlg)localObject).a(paramString1))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid true, webSSOTask=" + localObject);
-            }
-            if (anlg.a((anlg)localObject) != null)
-            {
-              anlg.a((anlg)localObject).c = System.currentTimeMillis();
-              anlg.a((anlg)localObject).d = System.currentTimeMillis();
-            }
-            paramString1 = new WebResourceResponse("text/plain", "utf-8", anke.a(anlg.a((anlg)localObject).toString()));
-            this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(paramString2);
-            return paramString1;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid false,webSSOTask:" + localObject);
-          }
-          this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(paramString2);
-        }
-      }
-      for (;;)
-      {
-        return new WebResourceResponse("text/plain", "utf-8", new anli(null, null, null));
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, has webSSOTask = false");
-        }
+        return;
       }
     }
-    return null;
-  }
-  
-  public String a(String paramString)
-  {
-    try
+    catch (InvalidProtocolBufferMicroException paramMessageHandler)
     {
-      paramString = Uri.parse(paramString);
-      if (paramString.isHierarchical())
-      {
-        paramString = paramString.getQueryParameter("thunder_id");
-        return paramString;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("apollo_client_ApolloWebDataHandler", 2, paramString.getMessage());
-    }
-    return null;
-  }
-  
-  public List<ankw> a(String paramString)
-  {
-    if (this.jdField_a_of_type_Ankt != null) {
-      return this.jdField_a_of_type_Ankt.a(paramString);
-    }
-    return null;
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, AppInterface paramAppInterface, anlh paramanlh)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_Ankt == null)) {}
-    for (;;)
-    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramMessageHandler);
       return;
-      if (!bhnv.g(paramContext))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "preLoadSSOCmd false, NetworkUtil.isNetworkAvailable:false");
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_Ankt.a(paramAppInterface);
-        Object localObject1 = this.jdField_a_of_type_Ankt.a(paramString1);
-        if ((localObject1 == null) || (((Set)localObject1).isEmpty()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " cmds is null or empty");
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " print all task:" + this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap);
-          }
-          localObject1 = ((Set)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            Object localObject2 = (String)((Iterator)localObject1).next();
-            String str = ankt.a(paramString1, (String)localObject2);
-            anlg localanlg = (anlg)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
-            if ((localanlg != null) && (localanlg.a((String)localObject2)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " mPreloadSSOCmds.has WebSSOTask:" + localanlg);
-              }
-            }
-            else
-            {
-              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str);
-              localanlg = new anlg(paramanlh, str, (String)localObject2);
-              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localanlg);
-              localObject2 = this.jdField_a_of_type_Ankt.a(paramString2, paramString1, (String)localObject2, paramAppInterface);
-              if (QLog.isColorLevel()) {
-                QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " create new WebSSOTask, requestJson" + localObject2);
-              }
-              if (localObject2 != null) {
-                localanlg.a(paramContext, paramString2, (JSONObject)localObject2, paramAppInterface);
-              }
-            }
-          }
-        }
-      }
     }
+    im_msg_body.NotOnlineFile localNotOnlineFile = (im_msg_body.NotOnlineFile)((SubMsgType0x4.MsgBody)localObject2).msg_not_online_file.get();
+    localObject1 = null;
+    if (((SubMsgType0x4.MsgBody)localObject2).file_image_info.has()) {
+      localObject1 = (hummer_resv_21.FileImgInfo)((SubMsgType0x4.MsgBody)localObject2).file_image_info.get();
+    }
+    Object localObject2 = new ArrayList();
+    msg_comm.Msg localMsg = new msg_comm.Msg();
+    localMsg.msg_head.msg_uid.set(paramMsgInfo.lMsgUid);
+    localMsg.msg_head.msg_time.set(paramMsgInfo.uRealMsgTime);
+    localMsg.msg_head.from_uin.set(paramSlaveMasterMsg.lFromUin);
+    localMsg.msg_head.msg_seq.set((int)paramSlaveMasterMsg.uSeq);
+    paramMessageHandler.app.getFileTransferHandler().a(paramMessageHandler, (List)localObject2, localMsg, localNotOnlineFile, String.valueOf(paramSlaveMasterMsg.lToUin), true, false, -100L, -1, (hummer_resv_21.FileImgInfo)localObject1);
   }
   
-  public boolean a(String paramString)
+  private boolean a(MsgInfo paramMsgInfo)
   {
-    if (ApolloUtil.a()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "isApolloClientId, ApolloUtil.isApolloProxyEnable() return");
-    }
-    do
+    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
+    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
+    localSlaveMasterMsg.readFrom(localJceInputStream);
+    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
     {
-      do
-      {
-        return false;
-      } while (TextUtils.isEmpty(paramString));
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "isApolloClientId, apolloClientId:" + paramString);
-      }
-    } while (this.jdField_a_of_type_Ankt == null);
-    return this.jdField_a_of_type_Ankt.a(paramString);
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (jdField_a_of_type_Boolean) {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "verifyCache, sDisableCache:" + jdField_a_of_type_Boolean);
-      }
+      a(this.a.getMsgHandler(), paramMsgInfo, localSlaveMasterMsg);
+      return true;
     }
-    String str;
-    do
-    {
-      do
-      {
-        return false;
-      } while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)));
-      str = anke.b(paramString2);
-      paramString1 = b(paramString1);
-      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(str)) && (str.toUpperCase().equals(paramString1.toUpperCase()))) {
-        return true;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("apollo_client_ApolloWebDataHandler", 2, "verifyMd5 false:" + paramString1 + " contentMd5:" + str + ",configMd5:" + paramString1 + " html.length:" + paramString2.length());
     return false;
   }
   
-  public boolean a(String paramString1, String paramString2, AppInterface paramAppInterface, WebViewPlugin paramWebViewPlugin)
+  public abxj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramWebViewPlugin == null))
+    boolean bool = false;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, url=" + paramString1 + " plugin:" + paramWebViewPlugin + " app:" + paramAppInterface + " requestStr:" + paramString2);
-      }
-      return false;
-    }
-    if (!bhnv.g(BaseApplicationImpl.getContext()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, NetworkUtil.isNetworkAvailable:false");
-      }
-      return false;
-    }
-    if ((paramWebViewPlugin.mRuntime == null) || (paramWebViewPlugin.mRuntime.a() == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, plugin.mRuntime.getWebView() is null");
-      }
-      return false;
-    }
-    if (this.jdField_a_of_type_Ankt == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, mSSOConfig is null");
-      }
-      return false;
     }
     for (;;)
     {
-      try
-      {
-        String str3 = a().a(paramString1);
-        if (TextUtils.isEmpty(str3))
-        {
-          if (!QLog.isColorLevel()) {
-            break label735;
-          }
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, url is:" + paramString1 + " no need preload");
-          break label735;
-        }
-        anlc localanlc = a(paramWebViewPlugin.mRuntime.a());
-        if (localanlc == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break label737;
-          }
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, apolloSession is null");
-          break label737;
-        }
-        JSONObject localJSONObject = new JSONObject(paramString2);
-        String str1 = localJSONObject.getString("callback");
-        if (TextUtils.isEmpty(str1)) {
-          return false;
-        }
-        String str2 = localJSONObject.getString("cmd");
-        if (!this.jdField_a_of_type_Ankt.a(str3, str2))
-        {
-          if (!QLog.isColorLevel()) {
-            break label739;
-          }
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, apolloClientId:" + str3 + " cmd:" + str2 + ",mSSOConfig.isValidCmd:false");
-          break label739;
-        }
-        str3 = ankt.a(str3, str2);
-        paramString2 = (anlg)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str3);
-        if (paramString2 != null)
-        {
-          if (anlg.a(paramString2))
-          {
-            if (paramString2.a(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, webSSOTask.isValid true, mResultJson=" + paramString2);
-              }
-              if (anlg.a(paramString2) != null)
-              {
-                anlg.a(paramString2).c = System.currentTimeMillis();
-                anlg.a(paramString2).d = System.currentTimeMillis();
-              }
-              paramWebViewPlugin.callJs(str1, new String[] { anlg.a(paramString2).toString() });
-              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str3);
-              return true;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, webSSOTask.isValid false,webSSOTask:" + paramString2);
-            }
-            i = 1;
-            this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str3);
-            if (i == 0) {
-              break label741;
-            }
-            if (localanlc != null)
-            {
-              paramString2 = localanlc.a();
-              paramString2.c = System.currentTimeMillis();
-              paramString2 = new anlg(paramString2, str3, str2);
-              paramString2.a(new anlf(this, str1, paramWebViewPlugin));
-              if (paramWebViewPlugin.mRuntime != null) {
-                paramString2.a(paramWebViewPlugin.mRuntime.a(), paramString1, localJSONObject, paramAppInterface);
-              }
-              this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str3, paramString2);
-              break label741;
-            }
-          }
-          else
-          {
-            if (anlg.a(paramString2) != null) {
-              anlg.a(paramString2).c = System.currentTimeMillis();
-            }
-            paramString2.a(new anlf(this, str1, paramWebViewPlugin));
-            if (!QLog.isColorLevel()) {
-              break label729;
-            }
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, has webSSOTask = true, but webSSOTask.mReceivedSSO:false, wait notify!");
-            i = 0;
-            continue;
-          }
-        }
-        else
-        {
-          if (!QLog.isColorLevel()) {
-            break label743;
-          }
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, has webSSOTask = false,create webSSOTask!");
-          break label743;
-        }
-        paramString2 = new anlh();
-        continue;
-        i = 0;
+      return new abxj(null, bool);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
+        bool = a(paramMsgInfo);
+      } else {
+        a(getClass().getName(), paramInt);
       }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return false;
-      }
-      label729:
-      continue;
-      label735:
-      return false;
-      label737:
-      return false;
-      label739:
-      return false;
-      label741:
-      return true;
-      label743:
-      int i = 1;
     }
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_Boolean = true;
-    BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).edit().putBoolean("sp_key_disable_thunder_cache", true).commit();
-  }
-  
-  public boolean b(String paramString)
-  {
-    return (paramString.contains("http://cmshow.qq.com/get_thunder_data?cmd=")) || (paramString.contains("https://cmshow.qq.com/get_thunder_data?cmd="));
-  }
-  
-  public boolean b(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    int i = paramString1.indexOf("?");
-    String str = paramString1;
-    if (i != -1) {
-      str = paramString1.substring(0, i);
-    }
-    anke.a(anke.d(anke.e(str)), paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "saveHtml url:" + str + " html.length:" + paramString2.length());
-    }
-    return true;
-  }
-  
-  public void c()
-  {
-    jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).edit().putBoolean("sp_key_disable_thunder_cache", false).commit();
   }
 }
 

@@ -1,203 +1,63 @@
-import android.content.Context;
+import android.app.Dialog;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.analysis.AdABTest;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForInterstitial;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialManager.1;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-public final class acqd
+public class acqd
+  implements View.OnClickListener
 {
-  private static volatile acqd jdField_a_of_type_Acqd;
-  private volatile acpv jdField_a_of_type_Acpv;
-  private acqe jdField_a_of_type_Acqe = new acqe();
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-  private Map<String, WeakReference<GdtInterstitialFragment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public acqd(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  private acqd(acpv paramacpv)
+  public void onClick(View paramView)
   {
-    AdThreadManager.INSTANCE.post(new GdtInterstitialManager.1(this), 0);
-    this.jdField_a_of_type_Acpv = paramacpv;
-  }
-  
-  public static acqd a()
-  {
-    if (jdField_a_of_type_Acqd == null) {}
-    try
+    if (this.a.a != null)
     {
-      if (jdField_a_of_type_Acqd == null)
-      {
-        acpv localacpv = new acpv();
-        localacpv.a = "com.tencent.tangram.interstitial";
-        localacpv.b = "Index";
-        localacpv.c = "1.0.0.1";
-        jdField_a_of_type_Acqd = new acqd(localacpv);
-      }
-      return jdField_a_of_type_Acqd;
+      this.a.getWindow().setSoftInputMode(2);
+      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.a(this.a).clearFocus();
     }
-    finally {}
-  }
-  
-  public long a(Context paramContext)
-  {
-    long l = 10000L;
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext == null) {}
+    Object localObject = AddFriendVerifyActivity.a(this.a).getText().toString();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (!this.a.isFinishing())
+      {
+        localObject = new nnd(this.a);
+        ((nnd)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699002));
+        ((nnd)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846066);
+        ((nnd)localObject).a();
+      }
+    }
     for (;;)
     {
-      acvc.b("GdtInterstitialManager", String.format("getTimeoutMillis %d", new Object[] { Long.valueOf(l) }));
-      return l;
-      if (paramContext.settingsForInterstitial.timeoutMillis > 0) {
-        l = paramContext.settingsForInterstitial.timeoutMillis;
-      }
-    }
-  }
-  
-  public acpv a()
-  {
-    return this.jdField_a_of_type_Acpv;
-  }
-  
-  public acqe a()
-  {
-    return this.jdField_a_of_type_Acqe;
-  }
-  
-  public GdtAppReceiver a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  }
-  
-  public WeakReference<GdtInterstitialFragment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return null;
-    }
-    return (WeakReference)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    acvc.b("GdtInterstitialManager", String.format("init %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    if (this.jdField_a_of_type_Boolean) {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    synchronized (jdField_a_of_type_Acqd)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    AdIPCManager.INSTANCE.register("ipc_interstitial_close", new acqc());
-    AdIPCManager.INSTANCE.register("ipc_interstitial_predownload", new acqj());
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext == null) {}
-    for (boolean bool = false;; bool = paramContext.settingsForInterstitial.enablePreDownload)
-    {
-      acvc.b("GdtInterstitialManager", String.format("isPreDownloadEnabled %b", new Object[] { Boolean.valueOf(bool) }));
-      return bool;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      acvc.b("GdtInterstitialManager", String.format("unregister %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
-      return bool;
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      if (((String)localObject).length() > 90)
       {
-        bool = false;
+        localObject = new ReportDialog(this.a, 2131755826);
+        ((Dialog)localObject).setContentView(2131562728);
+        ((TextView)((Dialog)localObject).findViewById(2131365552)).setText(this.a.getString(2131690992));
+        ((ProgressBar)((Dialog)localObject).findViewById(2131367022)).setVisibility(8);
+        ((ImageView)((Dialog)localObject).findViewById(2131380190)).setImageResource(2130839632);
+        ((Dialog)localObject).show();
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        bool = true;
-      }
-    }
-  }
-  
-  public boolean a(String paramString, WeakReference<GdtInterstitialFragment> paramWeakReference)
-  {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      acvc.b("GdtInterstitialManager", String.format("register %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
-      return bool;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        bool = false;
-      } else if (paramWeakReference != null)
-      {
-        if (paramWeakReference.get() == null)
-        {
-          bool = false;
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, paramWeakReference);
-          bool = true;
-        }
-      }
-      else {
-        bool = false;
-      }
-    }
-  }
-  
-  public boolean b(Context paramContext)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    boolean bool;
-    if (localObject == null) {
-      bool = false;
-    }
-    for (;;)
-    {
-      acvc.b("GdtInterstitialManager", String.format("canShowOnMainProcess %b", new Object[] { Boolean.valueOf(bool) }));
-      return bool;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if (localObject == null)
-      {
-        bool = false;
-      }
-      else
-      {
-        localObject = ((AppRuntime)localObject).getAccount();
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          bool = false;
-        }
-        else
-        {
-          paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-          if (paramContext == null) {
-            bool = false;
-          } else {
-            bool = AdABTest.isABTestByUIN((String)localObject, paramContext.settingsForInterstitial.abTestForProcess);
-          }
+        this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
+        if (NetworkUtil.isNetSupport(this.a)) {
+          AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), 2000);
+        } else {
+          QQToast.a(this.a, 1, 2131694064, 0).b(this.a.getTitleBarHeight());
         }
       }
     }

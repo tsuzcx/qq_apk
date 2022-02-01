@@ -2,22 +2,22 @@ package com.tencent.av.utils;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import msz;
+import msi;
 
 public class PhoneStatusMonitor$3
   implements Runnable
 {
-  public PhoneStatusMonitor$3(msz parammsz) {}
+  public PhoneStatusMonitor$3(msi parammsi) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "checkEndCallTask, calling[" + msz.a(this.this$0) + "], tillEnd[" + msz.a(this.this$0).get() + "]");
+      QLog.i("PhoneStatusMonitor", 2, "checkEndCallTask, calling[" + msi.a(this.this$0) + "], tillEnd[" + msi.a(this.this$0).get() + "]");
     }
-    if (!msz.a(this.this$0)) {
+    if (!msi.a(this.this$0)) {
       this.this$0.d();
     }
-    while (!msz.a(this.this$0).get()) {
+    while (!msi.a(this.this$0).get()) {
       return;
     }
     this.this$0.c();

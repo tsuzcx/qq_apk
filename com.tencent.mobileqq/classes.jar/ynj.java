@@ -1,44 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class ynj
-  extends wjm<ymx, ynr>
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public ynj(ymx paramymx)
-  {
-    super(paramymx);
-  }
+  public ynj(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void a(@NonNull ymx paramymx, @NonNull ynr paramynr)
+  public void onScrollStateChanged(int paramInt)
   {
-    Object localObject = paramynr.a;
-    paramynr = paramymx.a(((ynt)localObject).a.feedId);
-    if (paramynr == null)
+    xvv.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((ynt)localObject).a.feedId });
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
       return;
     }
-    if ((!(localObject instanceof ynv)) || (!(paramynr instanceof ynv)))
-    {
-      yuk.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
-      return;
-    }
-    localObject = (ynv)localObject;
-    paramynr = (ynv)paramynr;
-    paramynr.a = ((ynv)localObject).a;
-    paramynr.a(((ynv)localObject).b(), false);
-    paramynr.b(((ynv)localObject).c(), false);
-    paramynr.c(((ynv)localObject).a(), false);
-    ymx.a(paramymx).b(paramynr.a.feedId);
-    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramynr);
+    this.a.c();
   }
-  
-  public Class acceptEventClass()
-  {
-    return ynr.class;
-  }
-  
-  public void b(@NonNull ymx paramymx, @NonNull ynr paramynr) {}
 }
 
 

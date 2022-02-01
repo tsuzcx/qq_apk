@@ -1,22 +1,29 @@
-public class vhc
+import android.text.TextUtils;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+
+final class vhc
+  implements VSDispatchObserver.onVSRspCallBack<FeedCloudRead.StGetMainPageRsp>
 {
-  private long a;
-  private long b;
-  
-  public vhc(long paramLong)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    this.b = paramLong;
-    this.a = this.b;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public vhc a()
-  {
-    return new vhc(this.b);
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      if (paramStGetMainPageRsp == null) {
+        break label54;
+      }
+      vhb.a((FeedCloudMeta.StUser)paramStGetMainPageRsp.user.get());
+      if (TextUtils.isEmpty(vhb.c().nick.get())) {
+        QLog.w("QCircleHostGlobalInfo", 1, "qCircle get nick empty");
+      }
+    }
+    return;
+    label54:
+    QLog.w("QCircleHostGlobalInfo", 1, "getPuinUser empty");
   }
 }
 

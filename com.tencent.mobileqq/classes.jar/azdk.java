@@ -1,16 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.atomic.AtomicLong;
 
 class azdk
-  implements View.OnClickListener
+  implements azfz
 {
-  azdk(azdh paramazdh, azdw paramazdw) {}
+  azdk(azdj paramazdj) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    this.jdField_a_of_type_Azdw.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 1920000;
+  }
+  
+  public void a(long paramLong)
+  {
+    azeu.a("AudioNewController", "onRecordFinish, Duration:" + paramLong + ", CacheSize:" + azdj.a(this.a).a());
+    if (paramLong > 0L) {
+      azdj.a(this.a).set(paramLong);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    azeu.a("AudioNewController", paramString);
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (paramLong > 0L) {
+      azdj.a(this.a).set(paramLong);
+    }
+    int i = azdj.a(this.a, paramArrayOfByte);
+    azdj.a(this.a, azdj.a(this.a), i);
+  }
+  
+  public int b()
+  {
+    return 60000;
+  }
+  
+  public void b(long paramLong)
+  {
+    azeu.a("AudioNewController", "IRecordEventListener, onRecordStart:" + paramLong);
+    azdj.b(this.a, azdj.a(this.a), b());
   }
 }
 

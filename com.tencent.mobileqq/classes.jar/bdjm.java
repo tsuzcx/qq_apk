@@ -1,30 +1,58 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.WriteTogetherDecodeFactory;
+import mqq.app.AppRuntime;
+import okio.ByteString;
 
 public class bdjm
-  implements IRecordConfig
 {
-  public bdjm(RecordTracer paramRecordTracer) {}
+  private static final String jdField_a_of_type_JavaLangString = "WriteTogether." + bdjm.class.getSimpleName();
+  private WriteTogetherDecodeFactory jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgWriteTogetherDecodeFactory = new WriteTogetherDecodeFactory();
   
-  public int getCachedEventSize()
+  private void b(String paramString)
   {
-    return 0;
+    String[] arrayOfString = paramString.split("\n");
+    int i = 0;
+    if (i < arrayOfString.length)
+    {
+      WriteTogetherDecodeFactory localWriteTogetherDecodeFactory = this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgWriteTogetherDecodeFactory;
+      String str = arrayOfString[i];
+      if (i + 1 < arrayOfString.length)
+      {
+        paramString = arrayOfString[(i + 1)];
+        label40:
+        paramString = localWriteTogetherDecodeFactory.decode(str, paramString);
+        if (paramString != null) {
+          break label65;
+        }
+      }
+      for (;;)
+      {
+        i += 2;
+        break;
+        paramString = null;
+        break label40;
+        label65:
+        a(paramString);
+      }
+    }
   }
   
-  public String getTitleBarId()
+  void a(BaseWriteTogetherMsg paramBaseWriteTogetherMsg)
   {
-    return "com.tencent.mobileqq:id/ivTitleName";
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((bdgj)((QQAppInterface)localAppRuntime).getManager(377)).a(paramBaseWriteTogetherMsg);
+    }
   }
   
-  public boolean isEnableRelease()
+  public void a(String paramString)
   {
-    return true;
+    b(paramString);
   }
   
-  public boolean isFilterUGC()
-  {
-    return false;
-  }
+  public void a(ByteString paramByteString) {}
 }
 
 

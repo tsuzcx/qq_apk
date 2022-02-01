@@ -1,29 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import java.util.Comparator;
 
-class atxb
-  extends atxd
+final class atxb
+  implements Comparator<PadFaceAd>
 {
-  public atxb(atwy paramatwy)
+  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
   {
-    super(paramatwy);
-  }
-  
-  protected String a()
-  {
-    return "StateAcceptByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
+      return -1;
     }
-    atwy.b(this.jdField_a_of_type_Atwy, 11, 5);
-    atwy.c(this.jdField_a_of_type_Atwy, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Atxd = new atxa(this.jdField_a_of_type_Atwy);
+    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
+      return 0;
+    }
+    return 1;
   }
 }
 

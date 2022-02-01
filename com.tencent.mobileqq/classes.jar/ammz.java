@@ -1,35 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-class ammz
-  implements View.OnClickListener
+public class ammz
 {
-  ammz(ammy paramammy, aknh paramaknh, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = 3;
+  public int e;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_Aknh.b);
-    localIntent.putExtra("isShowAd", false);
-    this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    if ((this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
-      ((AvatarPendantActivity)this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext).a = -1L;
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bdll.b(this.jdField_a_of_type_Ammy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gameId:").append(this.jdField_a_of_type_Int).append(",roomId:").append(this.jdField_a_of_type_Long).append(",actionId:").append(this.jdField_b_of_type_Int).append(",gameName:").append(this.jdField_b_of_type_JavaLangString).append(",wording:").append(",imgType:");
+      QLog.d("ApolloPanel", 2, localStringBuilder.toString());
     }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.d = 3;
   }
 }
 

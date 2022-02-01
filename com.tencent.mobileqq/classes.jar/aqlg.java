@@ -1,50 +1,78 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
 
-public class aqlg
-  extends QQLruCache<Integer, aqkt>
+public final class aqlg
+  extends aptq<aqlf>
 {
-  public aqlg(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
+  public static aqlf a()
   {
-    super(paramInt1, paramInt2, paramInt3);
+    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
+    return (aqlf)apub.a().a(559);
   }
   
-  public void a()
+  public static boolean a(String paramString)
   {
-    Map localMap = snapshot();
-    if (localMap != null)
-    {
-      Iterator localIterator = localMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((aqkt)localIterator.next()).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
-      }
-    }
+    aqlf localaqlf = a();
+    return (localaqlf != null) && (localaqlf.a()) && (localaqlf.a(paramString));
   }
   
-  protected void a(boolean paramBoolean, Integer paramInteger, aqkt paramaqkt1, aqkt paramaqkt2)
+  @NonNull
+  public aqlf a(int paramInt)
   {
-    super.entryRemoved(paramBoolean, paramInteger, paramaqkt1, paramaqkt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
-    }
-    paramaqkt1.a();
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    return new aqlf();
   }
   
-  public boolean a(int paramInt)
+  @Nullable
+  public aqlf a(aptx[] paramArrayOfaptx)
   {
-    return get(Integer.valueOf(paramInt)) != null;
+    return aqlf.a(paramArrayOfaptx);
+  }
+  
+  public void a(aqlf paramaqlf)
+  {
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
+  }
+  
+  public Class<aqlf> clazz()
+  {
+    return aqlf.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 559;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlg
  * JD-Core Version:    0.7.0.1
  */

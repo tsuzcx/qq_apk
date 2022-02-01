@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amsx;
+import alnr;
 import android.util.SparseIntArray;
-import asfa;
-import axfj;
-import bdll;
-import begd;
-import behh;
+import aqyy;
+import avsq;
+import bcef;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -16,27 +16,28 @@ import java.lang.ref.WeakReference;
 public class ReportWorker
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<EmoticonMainPanel> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String TAG = "ReportWorker";
+  private QQAppInterface mAppInterface;
+  private int mCurType;
+  private boolean mIsForward;
+  private String mMsg;
+  private WeakReference<EmoticonMainPanel> mPanelReference;
   
   public ReportWorker(String paramString, boolean paramBoolean, EmoticonMainPanel paramEmoticonMainPanel, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEmoticonMainPanel);
-    this.jdField_a_of_type_Int = paramInt;
+    this.mMsg = paramString;
+    this.mIsForward = paramBoolean;
+    this.mAppInterface = paramQQAppInterface;
+    this.mPanelReference = new WeakReference(paramEmoticonMainPanel);
+    this.mCurType = paramInt;
   }
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
+    if ((this.mMsg == null) || ("".equals(this.mMsg))) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder(this.mMsg);
     int i = 0;
     label35:
     int j;
@@ -48,7 +49,7 @@ public class ReportWorker
         break label592;
       }
       k = localStringBuilder.charAt(i + 1);
-      if ((k >= begd.jdField_a_of_type_Int) && (250 != k)) {
+      if ((k >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) && (250 != k)) {
         break label245;
       }
       if (250 != k) {
@@ -59,11 +60,11 @@ public class ReportWorker
     label702:
     for (;;)
     {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
-      if (behh.a(k)) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.jdField_a_of_type_Int), 0, new String[] { String.valueOf(k), String.valueOf(amsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) });
+      bcef.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
+      if (TextUtils.isApolloEmoticon(k)) {
+        VipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(alnr.a(this.mAppInterface)) });
       }
-      axfj.b("0", 1);
+      avsq.b("0", 1);
       j = i;
       if (QLog.isColorLevel())
       {
@@ -101,7 +102,7 @@ public class ReportWorker
           }
         }
       }
-      localObject = asfa.a((char[])localObject);
+      localObject = aqyy.a((char[])localObject);
       if ((localObject != null) && (localObject.length == 2))
       {
         k = localObject[0];
@@ -111,19 +112,19 @@ public class ReportWorker
       {
         int n = -1;
         int m = n;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+        if (this.mPanelReference != null)
         {
           m = n;
-          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-            m = ((EmoticonMainPanel)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(Integer.toString(k));
+          if (this.mPanelReference.get() != null) {
+            m = ((EmoticonMainPanel)this.mPanelReference.get()).getEmoticonTab(Integer.toString(k));
           }
         }
         String str = Integer.toString(m);
-        if (this.jdField_a_of_type_Boolean) {}
+        if (this.mIsForward) {}
         for (localObject = "0X800588C";; localObject = "0X80057AF")
         {
-          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
-          axfj.b("0", 5);
+          bcef.b(this.mAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
+          avsq.b("0", 5);
           if (QLog.isColorLevel()) {
             QLog.d("ReportWorker", 2, "report small emoticon send amount, epId:" + k + ",eId:" + j + ",tabOrder:" + str);
           }
@@ -131,13 +132,13 @@ public class ReportWorker
           break;
         }
         label592:
-        k = begd.jdField_a_of_type_AndroidUtilSparseIntArray.get(j, -1);
+        k = EmotcationConstants.EMOJI_MAP.get(j, -1);
         j = i;
         if (k < 0) {
           break;
         }
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
-        axfj.b("0", 1);
+        bcef.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
+        avsq.b("0", 1);
         j = i;
         if (!QLog.isColorLevel()) {
           break;
@@ -153,7 +154,7 @@ public class ReportWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ReportWorker
  * JD-Core Version:    0.7.0.1
  */

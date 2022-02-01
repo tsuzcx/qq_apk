@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar.videodrawable;
 
-import akrx;
+import ajpv;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
@@ -8,12 +8,12 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import aqis;
-import aqit;
-import bdmc;
+import apcd;
+import apce;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -31,12 +31,12 @@ public class VideoDrawableHandler
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  aqit jdField_a_of_type_Aqit;
+  apce jdField_a_of_type_Apce;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   final Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
   LinkedList<VideoDrawableHandler.DecodeFrameTask> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  Vector<WeakReference<aqis>> jdField_a_of_type_JavaUtilVector = new Vector();
+  Vector<WeakReference<apcd>> jdField_a_of_type_JavaUtilVector = new Vector();
   boolean jdField_a_of_type_Boolean = true;
   Bitmap b;
   private Bitmap c;
@@ -48,10 +48,10 @@ public class VideoDrawableHandler
     jdField_c_of_type_Int = 4;
   }
   
-  public VideoDrawableHandler(AppInterface paramAppInterface, aqit paramaqit)
+  public VideoDrawableHandler(AppInterface paramAppInterface, apce paramapce)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Aqit = paramaqit;
+    this.jdField_a_of_type_Apce = paramapce;
   }
   
   /* Error */
@@ -750,7 +750,7 @@ public class VideoDrawableHandler
             for (;;)
             {
               Object localObject4;
-              bdmc localbdmc;
+              StatisticCollector localStatisticCollector;
               String str;
               Object localObject2;
               if (QLog.isColorLevel()) {
@@ -798,16 +798,16 @@ public class VideoDrawableHandler
             else
             {
               localObject4 = new HashMap();
-              ((HashMap)localObject4).put("param_DeviceType", akrx.a() + "");
+              ((HashMap)localObject4).put("param_DeviceType", ajpv.a() + "");
               ((HashMap)localObject4).put("param_ErrorArbitary", k + "");
               ((HashMap)localObject4).put("param_ErrorKey", i + "");
-              localbdmc = bdmc.a(BaseApplicationImpl.getContext());
+              localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
               str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
               bool1 = bool2;
               if (localObject1 != null) {
                 bool1 = true;
               }
-              localbdmc.a(str, "CMD_EXTRACT_FRAME", bool1, j, m, (HashMap)localObject4, "");
+              localStatisticCollector.collectPerformance(str, "CMD_EXTRACT_FRAME", bool1, j, m, (HashMap)localObject4, "");
               return localObject1;
             }
           }
@@ -827,7 +827,7 @@ public class VideoDrawableHandler
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilVector.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((aqis)localWeakReference.get()).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        ((apcd)localWeakReference.get()).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
       i += 1;
     }
@@ -847,12 +847,12 @@ public class VideoDrawableHandler
     }
   }
   
-  public void a(aqis paramaqis)
+  public void a(apcd paramapcd)
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(paramaqis)) {
-        this.jdField_a_of_type_JavaUtilVector.add(new WeakReference(paramaqis));
+      if (!this.jdField_a_of_type_JavaUtilVector.contains(paramapcd)) {
+        this.jdField_a_of_type_JavaUtilVector.add(new WeakReference(paramapcd));
       }
       return;
     }

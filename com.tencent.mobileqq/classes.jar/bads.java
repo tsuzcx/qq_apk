@@ -1,91 +1,33 @@
-import android.os.Bundle;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
+import java.util.HashMap;
 
 public class bads
-  extends badc<FrameLayout>
+  extends badu
 {
-  private long jdField_a_of_type_Long;
-  private baic jdField_a_of_type_Baic;
+  public long a = 0L;
+  public long b;
   
-  public bads(baei parambaei, azxr paramazxr)
+  public bads()
   {
-    super(parambaei, paramazxr);
+    this.jdField_b_of_type_Long = -1L;
   }
   
-  private void a()
+  public HashMap<String, String> a(String paramString)
   {
-    if (this.jdField_a_of_type_Baic == null)
+    if ("ShortVideo.FullscreenPreview".equals(paramString))
     {
-      this.jdField_a_of_type_Baic = ((baic)baeg.a(1003, this.jdField_a_of_type_Baei, (azxr)this.b));
-      this.jdField_a_of_type_Baic.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_Baic.g();
-      a(this.jdField_a_of_type_Baic);
-      this.jdField_a_of_type_Long = ((azxr)this.b).jdField_a_of_type_Long;
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_duration", this.a + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
+      return paramString;
     }
-  }
-  
-  private boolean b(azxr paramazxr)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramazxr != null) {
-      if (this.jdField_a_of_type_Baic != null)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_Long == paramazxr.jdField_a_of_type_Long) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Baic != null)
-    {
-      b(this.jdField_a_of_type_Baic);
-      this.jdField_a_of_type_Baic.h();
-      this.jdField_a_of_type_Baic = null;
-      this.jdField_a_of_type_Long = 0L;
-    }
-  }
-  
-  public int a()
-  {
-    return 104;
-  }
-  
-  public String a()
-  {
-    return "ProfileBgContainer";
-  }
-  
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    a();
-  }
-  
-  public boolean a(azxr paramazxr)
-  {
-    int i = 0;
-    if (b(paramazxr))
-    {
-      i();
-      a();
-      i = 1;
-    }
-    return i | super.a(paramazxr);
-  }
-  
-  public void f()
-  {
-    i();
-    super.f();
+    return null;
   }
 }
 

@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ktx" android:layout_width="fill_parent" android:layout_height="69.0dip">
-        <TextView android:textSize="16.0dip" android:textColor="#ff262626" android:id="@id/ku7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/x5o" />
-        <TextView android:textSize="13.0dip" android:textColor="#ff737373" android:id="@id/ku2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/x5p" android:layout_below="@id/ku7" android:layout_alignLeft="@id/ku7" />
-        <ImageView android:id="@id/ku3" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g9d" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
-    <RelativeLayout android:id="@id/mob" android:layout_width="fill_parent" android:layout_height="69.0dip">
-        <TextView android:textSize="16.0dip" android:textColor="#ff262626" android:id="@id/moe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/x7b" />
-        <TextView android:textSize="13.0dip" android:textColor="#ff737373" android:id="@id/moc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/x7c" android:layout_below="@id/moe" android:layout_alignLeft="@id/moe" />
-        <ImageView android:id="@id/mod" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g9d" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mie" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/cancel" />
-</LinearLayout>
+    <FrameLayout android:id="@id/nsi" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/nsj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/nsn" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gir" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/nsk" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gcf" android:layout_centerInParent="true" />
+    <ProgressBar android:id="@id/nsg" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
+    <TextView android:textSize="16.0dip" android:textColor="#e6ffffff" android:id="@id/nsl" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_below="@id/nsk" android:layout_centerHorizontal="true" />
+</RelativeLayout>

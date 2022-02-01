@@ -1,63 +1,72 @@
-import android.content.Intent;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bmbn
+class bmbn
 {
-  public int a;
-  public long a;
-  public Intent a;
-  public bmbm a;
-  public String a;
-  HashMap<String, Boolean> a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  public boolean f;
-  public String g;
-  public boolean g;
-  public String h;
-  public boolean h;
-  public boolean i = false;
+  private static final SharedPreferences a = BaseApplicationImpl.getApplication().getSharedPreferences("ae_camera_multi_process_sp", 4);
   
-  public bmbn()
+  static int a(@NonNull String paramString, int paramInt)
   {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.VipComicMainTabActivity";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Bmbm = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentIntent = new Intent();
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_h_of_type_JavaLangString = "";
+    return a.getInt(paramString, paramInt);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  static long a(@NonNull String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+    return a.getLong(paramString, paramLong);
   }
   
-  public boolean a(String paramString)
+  @Nullable
+  static String a(@NonNull String paramString1, String paramString2)
   {
-    return (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) && (((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).booleanValue());
+    return a.getString(paramString1, paramString2);
+  }
+  
+  static void a(@NonNull String paramString)
+  {
+    SharedPreferences.Editor localEditor = a.edit();
+    localEditor.remove(paramString);
+    localEditor.apply();
+  }
+  
+  static void a(@NonNull String paramString, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = a.edit();
+    localEditor.putInt(paramString, paramInt);
+    localEditor.apply();
+  }
+  
+  static void a(@NonNull String paramString, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = a.edit();
+    localEditor.putLong(paramString, paramLong);
+    localEditor.apply();
+  }
+  
+  static void a(@NonNull String paramString1, String paramString2)
+  {
+    SharedPreferences.Editor localEditor = a.edit();
+    localEditor.putString(paramString1, paramString2);
+    localEditor.apply();
+  }
+  
+  static void a(@NonNull String paramString, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = a.edit();
+    localEditor.putBoolean(paramString, paramBoolean);
+    localEditor.apply();
+  }
+  
+  static boolean a(@NonNull String paramString)
+  {
+    return a.contains(paramString);
+  }
+  
+  static boolean a(@NonNull String paramString, boolean paramBoolean)
+  {
+    return a.getBoolean(paramString, paramBoolean);
   }
 }
 

@@ -1,44 +1,60 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class agce
+class agce
+  extends ClickableSpan
 {
-  public static long a(long paramLong)
+  public final String a;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  
+  agce(agap paramagap, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
-    localCalendar.setTimeInMillis(paramLong);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis();
+    this.jdField_a_of_type_JavaLangString = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public static String a(long paramLong, String paramString)
+  public void onClick(View paramView)
   {
-    try
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if ((paramView == null) || (localObject == null)) {}
+    long l;
+    do
     {
-      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
-      return paramString;
+      do
+      {
+        return;
+      } while (!(localObject instanceof Activity));
+      if (!NetworkUtil.isNetSupport((Context)localObject))
+      {
+        QQToast.a((Context)localObject, 2131692035, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299076));
+        return;
+      }
+      l = System.currentTimeMillis();
+      if ((agap.a(this.jdField_a_of_type_Agap) == 0L) || (l <= agap.a(this.jdField_a_of_type_Agap)) || (l - agap.a(this.jdField_a_of_type_Agap) > 800L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+    return;
+    agap.a(this.jdField_a_of_type_Agap, l);
+    localObject = bfwg.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
+    if (localObject != null) {
+      ((bfvp)localObject).a();
     }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return a(paramLong, "yyyy-MM-dd");
-  }
-  
-  private static boolean a(long paramLong, String paramString)
-  {
-    Date localDate = new Date(paramLong);
-    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
-    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
+    bcef.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, axhv.a(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
   }
 }
 

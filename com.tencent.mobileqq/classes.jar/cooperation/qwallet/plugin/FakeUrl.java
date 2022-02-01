@@ -10,10 +10,10 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bhpc;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,7 +32,7 @@ public class FakeUrl
   public FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
   protected FakeUrl.FakeListener fl;
   private DialogInterface.OnClickListener lListener = new FakeUrl.1(this);
-  private bhpc mDialog;
+  private QQCustomDialog mDialog;
   private boolean mIsCloseAfterClickUrl = true;
   private DialogInterface.OnClickListener rListener = new FakeUrl.2(this);
   
@@ -93,7 +93,7 @@ public class FakeUrl
     return paramString;
   }
   
-  public bhpc getDialog()
+  public QQCustomDialog getDialog()
   {
     return this.mDialog;
   }
@@ -125,7 +125,7 @@ public class FakeUrl
           }
           SpannableString localSpannableString = new SpannableString(str1);
           localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
-          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165783)), 0, str1.length(), 33);
+          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165793)), 0, str1.length(), 33);
           localSpannableStringBuilder.append(localSpannableString);
           m = 1;
           i = j;
@@ -179,8 +179,8 @@ public class FakeUrl
     if (TextUtils.isEmpty(paramFakeListener)) {}
     for (paramString = null;; paramString = this.lListener)
     {
-      this.mDialog = new bhpc(this.context, 2131755824);
-      this.mDialog.setContentView(2131559008);
+      this.mDialog = new QQCustomDialog(this.context, 2131755826);
+      this.mDialog.setContentView(2131559016);
       this.mDialog.setTitle(paramJSONObject.optString("title", null));
       this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
       this.mDialog.setNegativeButton(paramFakeListener, paramString);

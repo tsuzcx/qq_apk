@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-class auge
-  implements View.OnClickListener
+public final class auge
+  implements Parcelable.Creator<HotPicData>
 {
-  auge(aufz paramaufz, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onClick(View paramView)
+  public HotPicData a(Parcel paramParcel)
   {
-    bdll.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    auoo.a(this.jdField_a_of_type_Aufz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aufz.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new HotPicData(paramParcel);
+  }
+  
+  public HotPicData[] a(int paramInt)
+  {
+    return new HotPicData[paramInt];
   }
 }
 

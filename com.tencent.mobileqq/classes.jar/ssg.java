@@ -1,9 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ssg
+public class ssg
+  implements apos
 {
-  public abstract void a(boolean paramBoolean, List<BaseData> paramList);
+  public ssg(FastWebActivity paramFastWebActivity) {}
+  
+  public void a()
+  {
+    FastWebActivity.b(this.a, true);
+    QLog.d("FastWebActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    if (FastWebActivity.a(this.a) == 0L)
+    {
+      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
+      QLog.d("FastWebActivity", 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
+    }
+  }
 }
 
 

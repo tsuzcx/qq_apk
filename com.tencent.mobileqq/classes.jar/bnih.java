@@ -1,77 +1,39 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.1;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.2;
+import mqq.os.MqqHandler;
 
 public class bnih
-  extends bnik
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  protected int a;
-  protected long a;
-  protected boolean a;
+  private bnih(bnhv parambnhv) {}
   
-  public bnih(long paramLong, int paramInt, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Long = 30000L;
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_a_of_type_Boolean = true;
-    a(paramLong);
-    a(paramInt);
-    a(paramBoolean);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(Collector paramCollector)
-  {
-    int i;
-    int j;
-    label30:
-    int k;
-    if (paramCollector.a().a() > 0)
+    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
+    if (this.a.b < 0)
     {
-      i = 1;
-      if (System.currentTimeMillis() - paramCollector.a() <= this.jdField_a_of_type_Long) {
-        break label89;
+      if (QLog.isColorLevel()) {
+        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
       }
-      j = 1;
-      if (paramCollector.a().a() < this.jdField_a_of_type_Int) {
-        break label94;
-      }
-      k = 1;
-      label47:
-      if ((!this.jdField_a_of_type_Boolean) || (!paramCollector.a())) {
-        break label100;
-      }
+      this.a.b = i;
+      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.1(this));
     }
-    label89:
-    label94:
-    label100:
-    for (int m = 1;; m = 0)
-    {
-      if ((i == 0) || ((j == 0) && (k == 0) && (m == 0))) {
-        break label106;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label30;
-      k = 0;
-      break label47;
+    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
+      return;
     }
-    label106:
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
+    }
+    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    this.a.b = i;
+    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.2(this));
   }
 }
 

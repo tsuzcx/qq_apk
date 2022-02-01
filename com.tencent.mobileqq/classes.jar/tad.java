@@ -1,33 +1,33 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import java.lang.ref.WeakReference;
 
 public class tad
-  extends bhpc
+  extends Handler
 {
-  AnimationTextView a;
+  private WeakReference<ReadInJoySkinAnimManager> a;
   
-  public tad(Context paramContext, int paramInt)
+  public tad(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
   {
-    super(paramContext, paramInt);
-    a();
+    this.a = new WeakReference(paramReadInJoySkinAnimManager);
   }
   
-  private void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.a = ((AnimationTextView)findViewById(2131377227));
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a != null) {
-      this.a.setText(paramString);
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
+    if (localReadInJoySkinAnimManager == null) {
+      return;
     }
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
+      return;
+    }
+    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 

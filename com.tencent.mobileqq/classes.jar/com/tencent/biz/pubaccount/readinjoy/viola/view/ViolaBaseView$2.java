@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import tbz;
-import tjg;
+import tgc;
+import toq;
 
 public class ViolaBaseView$2
   implements Runnable
@@ -18,7 +18,7 @@ public class ViolaBaseView$2
         QLog.e(ViolaBaseView.a(), 2, "ThreadManager 执行");
       }
       long l = System.currentTimeMillis();
-      tbz.a(this.a, ViolaBaseView.a(this.this$0), ViolaBaseView.a(this.this$0), new tjg(this, l));
+      tgc.a(this.a, ViolaBaseView.a(this.this$0), ViolaBaseView.a(this.this$0), new toq(this, l));
       return;
     }
     catch (Exception localException)
@@ -30,7 +30,7 @@ public class ViolaBaseView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ppo;
+import puw;
 
 public class FollowListInfoModule$3
   implements Runnable
 {
-  public FollowListInfoModule$3(ppo paramppo, int paramInt) {}
+  public FollowListInfoModule$3(puw parampuw, int paramInt) {}
   
   public void run()
   {
-    ppo.a(this.this$0, this.a, ppo.a(this.this$0));
+    puw.a(this.this$0, this.a, puw.a(this.this$0));
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import bjey;
+import bhle;
 
 class MiniGamePublicAccountWebFragment$6
-  implements bjey
+  implements bhle
 {
   MiniGamePublicAccountWebFragment$6(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment) {}
   
@@ -14,12 +14,12 @@ class MiniGamePublicAccountWebFragment$6
   public void onItemSelect(View paramView, int paramInt)
   {
     if (paramInt == 5) {
-      MiniGamePublicAccountWebFragment.access$1300(this.this$0);
+      MiniGamePublicAccountWebFragment.access$1500(this.this$0);
     }
     while (paramInt != 1) {
       return;
     }
-    MiniGamePublicAccountWebFragment.access$1400(this.this$0);
+    MiniGamePublicAccountWebFragment.access$1600(this.this$0);
     this.this$0.getActivity().finish();
   }
 }

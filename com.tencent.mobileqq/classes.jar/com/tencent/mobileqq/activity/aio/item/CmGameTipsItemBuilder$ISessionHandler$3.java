@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahbn;
-import ahbs;
+import afxz;
+import afye;
 
 public class CmGameTipsItemBuilder$ISessionHandler$3
   implements Runnable
 {
-  public CmGameTipsItemBuilder$ISessionHandler$3(ahbs paramahbs, ahbn paramahbn) {}
+  public CmGameTipsItemBuilder$ISessionHandler$3(afye paramafye, afxz paramafxz) {}
   
   public void run()
   {
-    ahbn.a(this.a);
+    afxz.a(this.a);
   }
 }
 

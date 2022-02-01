@@ -1,8 +1,10 @@
-public abstract interface axgd
+public class axgd
 {
-  public abstract void a(int paramInt, axgp paramaxgp, Object paramObject);
-  
-  public abstract void a(axgp paramaxgp, Object paramObject);
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

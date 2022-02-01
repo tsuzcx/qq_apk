@@ -1,27 +1,23 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import java.util.UUID;
 
 class begm
-  extends bego
+  extends zrz
 {
-  private begw a;
+  begm(begl parambegl) {}
   
-  begm(@NonNull String paramString, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    super(2, paramString);
-    this.a = new begw(paramInt1, paramInt2, 1);
-  }
-  
-  float a(@NonNull Paint paramPaint)
-  {
-    float f = this.a.a().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    if (paramBundle.getLong("troopUin") != begl.a(this.a)) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    if (!paramBoolean) {
+      befc.a("TroopFileToTroopForwarder", befc.a, "[" + begl.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
     }
-    return f;
+    begl.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

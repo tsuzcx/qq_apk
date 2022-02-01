@@ -1,55 +1,17 @@
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import java.util.List;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aggf
+class aggf
+  extends aghj
 {
-  public float a;
-  public int a;
-  public RelativeLayout.LayoutParams a;
-  public List<Long> a;
-  public boolean a;
-  public int b;
-  public RelativeLayout.LayoutParams b;
-  public boolean b;
-  public int c;
-  public RelativeLayout.LayoutParams c;
-  public boolean c;
-  public int d;
-  public RelativeLayout.LayoutParams d;
-  public boolean d;
-  public int e;
-  public RelativeLayout.LayoutParams e;
-  public int f;
-  public RelativeLayout.LayoutParams f;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
-  public int j = 0;
-  public int k = 0;
-  public int l = 0;
-  public int m = 0;
-  
-  public aggf(BaseBubbleBuilder paramBaseBubbleBuilder)
+  aggf(agcw paramagcw)
   {
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    this.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afyz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import sdf;
-import sdg;
+import skn;
+import sko;
 
 public class CaptureOperateTouchLayout$IndicatorTouchListener$2
   implements Runnable
 {
-  public CaptureOperateTouchLayout$IndicatorTouchListener$2(sdg paramsdg) {}
+  public CaptureOperateTouchLayout$IndicatorTouchListener$2(sko paramsko) {}
   
   public void run()
   {
-    sdg.a(this.a).b();
+    sko.a(this.a).b();
   }
 }
 

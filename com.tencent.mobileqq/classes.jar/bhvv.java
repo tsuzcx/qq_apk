@@ -1,24 +1,8 @@
-final class bhvv
-  implements bhvx
+public class bhvv
 {
-  private boolean a(float[] paramArrayOfFloat)
+  public static String a(String paramString1, String paramString2)
   {
-    return paramArrayOfFloat[2] <= 0.05F;
-  }
-  
-  private boolean b(float[] paramArrayOfFloat)
-  {
-    return paramArrayOfFloat[2] >= 0.95F;
-  }
-  
-  private boolean c(float[] paramArrayOfFloat)
-  {
-    return (paramArrayOfFloat[0] >= 10.0F) && (paramArrayOfFloat[0] <= 37.0F) && (paramArrayOfFloat[1] <= 0.82F);
-  }
-  
-  public boolean a(int paramInt, float[] paramArrayOfFloat)
-  {
-    return (!b(paramArrayOfFloat)) && (!a(paramArrayOfFloat)) && (!c(paramArrayOfFloat));
+    return String.format("https://q.qlogo.cn/qqapp/%s/%s/%d", new Object[] { paramString1, paramString2, Short.valueOf(100) });
   }
 }
 

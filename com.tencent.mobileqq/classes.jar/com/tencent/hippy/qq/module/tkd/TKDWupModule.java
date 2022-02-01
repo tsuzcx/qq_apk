@@ -1,12 +1,12 @@
 package com.tencent.hippy.qq.module.tkd;
 
+import andr;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import aokg;
-import aoki;
-import bhkv;
+import andt;
+import bfuc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -25,7 +25,7 @@ public class TKDWupModule
   private static final String TAG = "HippyQQWupModule";
   protected QQAppInterface app = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   protected BroadcastReceiver mAccountChangedReceiver = new TKDWupModule.2(this);
-  protected aoki mUniteSearchObserver = new TKDWupModule.1(this);
+  protected andt mUniteSearchObserver = new TKDWupModule.1(this);
   private Integer requestId = Integer.valueOf(0);
   private TKDWupModule.HippyWupCallbackManager wupCallbackManager = new TKDWupModule.HippyWupCallbackManager();
   
@@ -73,14 +73,14 @@ public class TKDWupModule
     if (localObject == null) {
       paramHippyMap = "";
     }
-    paramHippyMap = bhkv.decode(paramHippyMap, 0);
+    paramHippyMap = bfuc.decode(paramHippyMap, 0);
     Object localObject = new TKDWupUniPacket();
     ((TKDWupUniPacket)localObject).setServantName(str1);
     ((TKDWupUniPacket)localObject).setFuncName(str2);
     ((TKDWupUniPacket)localObject).setEncodeName("UTF-8");
     ((TKDWupUniPacket)localObject).setRequestId(this.requestId.intValue());
     ((TKDWupUniPacket)localObject).putRawRequestData(str3, str4, paramHippyMap);
-    new aokg((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(((TKDWupUniPacket)localObject).encode(), this.wupCallbackManager, this.requestId);
+    new andr((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(((TKDWupUniPacket)localObject).encode(), this.wupCallbackManager, this.requestId);
   }
   
   public void destroy()

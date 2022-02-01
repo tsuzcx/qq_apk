@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
-
 public class aluj
 {
-  public static <T extends alui> T a(FlowActivity paramFlowActivity, int paramInt)
+  public String a;
+  public String b;
+  public String c;
+  
+  public aluj(String paramString1, String paramString2, String paramString3)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new aluk(paramFlowActivity);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

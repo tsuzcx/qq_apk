@@ -1,42 +1,78 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.biz.pubaccount.readinjoy.KandianUGStatisticUtils.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ohk
 {
-  private static ExecutorService a;
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public static ohh a()
   {
-    paramString1 = paramString1.replace("ARTICLE_ID", paramString2).replace("USER_QQ", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin()).replace("ACTION_TYPE", paramString3);
-    Log.d("DE_KUAIB", paramString2 + "|" + paramString3);
-    return paramString1;
+    ohh localohh2 = ohj.a();
+    ohh localohh1 = localohh2;
+    if (localohh2 == null) {
+      localohh1 = new ohh();
+    }
+    return localohh1;
   }
   
-  public static void a(String paramString)
+  public static ohi a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ohi localohi = (ohi)((Iterator)localObject).next();
+        if (localohi.jdField_a_of_type_Int == paramInt) {
+          return localohi;
+        }
+      }
     }
-    if (a == null) {
-      a = Executors.newFixedThreadPool(1);
-    }
-    a.execute(new KandianUGStatisticUtils.1(paramString));
+    return new ohi();
   }
   
-  public static String b(String paramString1, String paramString2, String paramString3)
+  public static boolean a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
+    return a(ohj.a());
+  }
+  
+  public static boolean a(ohh paramohh)
+  {
+    return a(paramohh, 1, 1);
+  }
+  
+  public static boolean a(ohh paramohh, int paramInt1, int paramInt2)
+  {
+    if ((paramohh == null) || (paramohh.jdField_a_of_type_JavaUtilArrayList == null) || (paramohh.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      return false;
     }
-    if (paramString1.contains("?")) {
-      return paramString1 + "&acttype=" + paramString2 + "&subpos=" + paramString3;
+    paramohh = paramohh.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramohh.hasNext())
+    {
+      ohi localohi = (ohi)paramohh.next();
+      if ((localohi.b == paramInt1) && (localohi.jdField_a_of_type_Int == paramInt2)) {
+        return true;
+      }
     }
-    return paramString1 + "?acttype=" + paramString2 + "&subpos=" + paramString3;
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    ohh localohh = a();
+    if (localohh == null) {}
+    for (String str = "false";; str = localohh.jdField_a_of_type_Int + "")
+    {
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localohh != null) {
+        break;
+      }
+      return false;
+    }
+    if (localohh.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

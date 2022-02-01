@@ -1,22 +1,118 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
-final class bhlx
-  implements DialogInterface.OnClickListener
+public class bhlx
 {
-  bhlx(Activity paramActivity) {}
+  private static int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @Deprecated
+  public static void a(Context paramContext)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
     }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_curr_window_status", 104);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_curr_window_status", 104);
+    localIntent.putExtra("param_busitype", paramInt);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_concern_floating_type", paramInt2);
+    localIntent.putExtra("param_curr_window_status", 104);
+    localIntent.putExtra("param_busitype", paramInt1);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  @Deprecated
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean) });
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    if (paramBoolean) {}
+    for (int i = 103;; i = 102)
+    {
+      localIntent.putExtra("param_curr_window_status", i);
+      paramContext.sendBroadcast(localIntent);
+      return;
+    }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean), " ,busiType:", Integer.valueOf(paramInt) });
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    if (paramBoolean) {}
+    for (int i = 103;; i = 102)
+    {
+      localIntent.putExtra("param_curr_window_status", i);
+      localIntent.putExtra("param_busitype", paramInt);
+      paramContext.sendBroadcast(localIntent);
+      return;
+    }
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean), " ,busiType:", Integer.valueOf(paramInt1) });
+    }
+    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
+    localIntent.setPackage(paramContext.getPackageName());
+    localIntent.putExtra("param_concern_floating_type", paramInt2);
+    if (paramBoolean) {}
+    for (paramInt2 = 103;; paramInt2 = 102)
+    {
+      localIntent.putExtra("param_curr_window_status", paramInt2);
+      localIntent.putExtra("param_busitype", paramInt1);
+      paramContext.sendBroadcast(localIntent);
+      return;
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (a == 0)
+    {
+      if ((Build.VERSION.SDK_INT < 26) || (Build.VERSION.SDK_INT >= 28) || (!LiuHaiUtils.b(paramContext))) {
+        break label56;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatingScreenUtils", 2, "AndroidO With Notch in Screen.");
+      }
+    }
+    label56:
+    for (a = 1; a == 1; a = 2) {
+      return true;
+    }
+    return false;
   }
 }
 

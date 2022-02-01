@@ -1,12 +1,8 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bhbr
+public abstract interface bhbr
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

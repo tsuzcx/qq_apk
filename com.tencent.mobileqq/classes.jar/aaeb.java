@@ -1,25 +1,49 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.biz.richframework.widget.BaseVideoView;
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.text.QQText;
 
 public class aaeb
-  implements aaza
+  extends QQText
 {
-  public aaeb(BaseVideoView paramBaseVideoView, SeekBar paramSeekBar) {}
+  public String a;
+  public String b;
   
-  public void a()
+  public aaeb(CharSequence paramCharSequence, int paramInt)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = -1001;
-    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    localMessage.arg2 = ((int)this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a().getDurationMs());
-    localMessage.obj = Boolean.valueOf(false);
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a()) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a(this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress());
+    super(paramCharSequence, paramInt);
+  }
+  
+  public void onURLLinkClicked(View paramView, String paramString)
+  {
+    Context localContext = paramView.getContext();
+    Intent localIntent = new Intent(localContext, PublicAccountBrowser.class);
+    localIntent.putExtra("uin", this.a);
+    int i = paramString.lastIndexOf("#");
+    if (i > 0) {}
+    for (paramView = paramString.substring(i);; paramView = null)
+    {
+      String str2 = URLUtil.guessUrl(paramString);
+      String str1 = str2;
+      if (paramView != null) {
+        str1 = str2 + paramView;
+      }
+      localIntent.putExtra("url", str1);
+      localIntent.putExtra("assignBackText", localContext.getResources().getString(2131690599));
+      localIntent.putExtra("puin", this.b);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("fromAio", true);
+      localIntent.putExtra("fromPublicAccount", true);
+      localIntent.putExtra("articalChannelId", 1);
+      localIntent.putExtra("big_brother_source_key", ugf.b(this.b));
+      ugf.a(localIntent, paramString);
+      localContext.startActivity(localIntent);
+      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, str1, "", "", "");
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a().sendMessage(localMessage);
   }
 }
 

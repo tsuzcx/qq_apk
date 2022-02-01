@@ -1,68 +1,47 @@
-import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraDevice.StateCallback;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.util.concurrent.Semaphore;
 
 public class bbse
-  extends PagerAdapter
+  extends CameraDevice.StateCallback
 {
-  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public bbse(Camera2Control paramCamera2Control, long paramLong) {}
   
-  private bbse(ActionListActivity paramActionListActivity) {}
-  
-  public void a()
+  public void onDisconnected(@NonNull CameraDevice paramCameraDevice)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bbva localbbva = (bbva)localIterator.next();
-        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
-        localGridView.setNumColumns(3);
-        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        localGridView.setSelector(new ColorDrawable(0));
-        localGridView.setScrollingCacheEnabled(false);
-        localGridView.setAdapter(new bbsd(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localbbva.jdField_a_of_type_JavaUtilArrayList));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
-      }
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      System.gc();
-      super.notifyDataSetChanged();
+    bbsr.a(2, "[Camera2]openCamera2 onDisconnected!");
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-105);
     }
   }
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void onError(@NonNull CameraDevice paramCameraDevice, int paramInt)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    bbsr.a(2, "[Camera2]openCamera2 onError, error:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-102);
+    }
   }
   
-  public int getCount()
+  public void onOpened(@NonNull CameraDevice paramCameraDevice)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramViewGroup.addView(localGridView);
-    return localGridView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    bbsr.a(1, "[Camera2]openCamera2 onOpen, cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, paramCameraDevice);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, true);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
   }
 }
 

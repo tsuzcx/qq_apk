@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
 public class zfq
-  extends zdi
+  implements zfn
 {
-  public zfq(ElasticImageView paramElasticImageView) {}
-  
-  public void a(ValueAnimator paramValueAnimator)
+  public void a(View paramView)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    yuk.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    if (this.a.isShowing()) {
+      zfp.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
+    }
   }
 }
 

@@ -1,23 +1,6 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-
-class pxt
-  extends ComponentPGCShortContentBig
+public abstract interface pxt
 {
-  pxt(pxl parampxl, Context paramContext, ArticleInfo paramArticleInfo)
-  {
-    super(paramContext);
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
-    }
-    return super.a();
-  }
+  public abstract void x_();
 }
 
 

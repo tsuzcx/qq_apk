@@ -1,51 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-
-public class pfp
-  implements Handler.Callback
+class pfp
+  extends pse
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final pfq jdField_a_of_type_Pfq;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  
-  public pfp(pfq parampfq)
+  pfp(pey parampey, String paramString)
   {
-    this.jdField_a_of_type_Pfq = parampfq;
-    this.jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this);
+    super(paramString);
   }
   
-  public void a(Bundle paramBundle)
+  public void a(prx paramprx)
   {
-    this.b = false;
-    do
-    {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Pfq.a(paramBundle))
-        {
-        }
-      }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (!this.b) {
-      a(paramMessage.getData());
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangObject = paramprx.a();
   }
 }
 

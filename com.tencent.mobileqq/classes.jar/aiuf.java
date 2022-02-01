@@ -1,16 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForStructing;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiuf
-  implements aiuh
+class aiuf
+  implements DialogInterface.OnClickListener
 {
-  public void a(MessageForStructing paramMessageForStructing, aggl paramaggl, View paramView, boolean paramBoolean)
+  aiuf(aitt paramaitt, boolean paramBoolean, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
-    for (int i = 2130838326;; i = 2130838310)
+    bcef.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, aitt.a(this.jdField_a_of_type_Aitt), "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue(), false);
+    }
+    for (;;)
     {
-      paramView.setBackgroundResource(i);
+      this.jdField_a_of_type_Aitt.f();
       return;
+      aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue(), false, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

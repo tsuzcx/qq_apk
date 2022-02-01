@@ -1,33 +1,43 @@
-import com.qq.taf.jce.HexUtil;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-public class bfbx
-  extends bfbw
+class bfbx
+  extends amop
 {
-  public int a;
-  public String a;
-  public ArrayList<bewy> a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  public ArrayList<bewy> b = new ArrayList();
-  public String c;
+  bfbx(bfbw parambfbw) {}
   
-  public bfbx()
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mUkey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" mIpv6List:").append(this.b.toString());
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    return localStringBuilder.toString();
+    if (this.a.a == null) {}
+    for (;;)
+    {
+      return;
+      paramObject = (becp)paramObject;
+      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
+      {
+        long l = paramObject.jdField_b_of_type_Long;
+        Iterator localIterator = this.a.a.getMessageFacade().getAIOList(String.valueOf(l), 1).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
+          {
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
+              this.a.a.getMessageFacade().removeMsgByUniseq(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
+              this.a.a.getMessageFacade().removeMsgByUniseq(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

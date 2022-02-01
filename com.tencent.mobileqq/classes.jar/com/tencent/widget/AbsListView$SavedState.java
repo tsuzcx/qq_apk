@@ -5,49 +5,48 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.SparseBooleanArray;
 import android.view.View.BaseSavedState;
-import blgz;
-import blik;
+import bjmo;
 
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new blik();
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = -1L;
-  SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
-  blgz<Integer> jdField_a_of_type_Blgz;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  public int b;
-  long b;
-  int c;
-  int d;
+  public static final Parcelable.Creator<SavedState> CREATOR = new AbsListView.SavedState.1();
+  bjmo<Integer> checkIdState;
+  SparseBooleanArray checkState;
+  int checkedItemCount;
+  String filter;
+  long firstId;
+  int height;
+  boolean inActionMode;
+  public int position;
+  long selectedId = -1L;
+  int viewTop;
   
   private AbsListView$SavedState(Parcel paramParcel)
   {
     super(paramParcel);
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.selectedId = paramParcel.readLong();
+    this.firstId = paramParcel.readLong();
+    this.viewTop = paramParcel.readInt();
+    this.position = paramParcel.readInt();
+    this.height = paramParcel.readInt();
+    this.filter = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.d = paramParcel.readInt();
-      this.jdField_a_of_type_AndroidUtilSparseBooleanArray = paramParcel.readSparseBooleanArray();
+      this.inActionMode = bool;
+      this.checkedItemCount = paramParcel.readInt();
+      this.checkState = paramParcel.readSparseBooleanArray();
       int j = paramParcel.readInt();
       if (j <= 0) {
         break;
       }
-      this.jdField_a_of_type_Blgz = new blgz();
+      this.checkIdState = new bjmo();
       while (i < j)
       {
         long l = paramParcel.readLong();
         int k = paramParcel.readInt();
-        this.jdField_a_of_type_Blgz.a(l, Integer.valueOf(k));
+        this.checkIdState.a(l, Integer.valueOf(k));
         i += 1;
       }
     }
@@ -60,37 +59,37 @@ public class AbsListView$SavedState
   
   public String toString()
   {
-    return "AbsListView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " selectedId=" + this.jdField_a_of_type_Long + " firstId=" + this.jdField_b_of_type_Long + " viewTop=" + this.jdField_a_of_type_Int + " position=" + this.jdField_b_of_type_Int + " height=" + this.c + " filter=" + this.jdField_a_of_type_JavaLangString + " checkState=" + this.jdField_a_of_type_AndroidUtilSparseBooleanArray + "}";
+    return "AbsListView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " selectedId=" + this.selectedId + " firstId=" + this.firstId + " viewTop=" + this.viewTop + " position=" + this.position + " height=" + this.height + " filter=" + this.filter + " checkState=" + this.checkState + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 0;
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.c);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
+    paramParcel.writeLong(this.selectedId);
+    paramParcel.writeLong(this.firstId);
+    paramParcel.writeInt(this.viewTop);
+    paramParcel.writeInt(this.position);
+    paramParcel.writeInt(this.height);
+    paramParcel.writeString(this.filter);
+    if (this.inActionMode)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.d);
-      paramParcel.writeSparseBooleanArray(this.jdField_a_of_type_AndroidUtilSparseBooleanArray);
-      if (this.jdField_a_of_type_Blgz == null) {
+      paramParcel.writeInt(this.checkedItemCount);
+      paramParcel.writeSparseBooleanArray(this.checkState);
+      if (this.checkIdState == null) {
         break label154;
       }
     }
     label154:
-    for (paramInt = this.jdField_a_of_type_Blgz.a();; paramInt = 0)
+    for (paramInt = this.checkIdState.a();; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       while (i < paramInt)
       {
-        paramParcel.writeLong(this.jdField_a_of_type_Blgz.a(i));
-        paramParcel.writeInt(((Integer)this.jdField_a_of_type_Blgz.a(i)).intValue());
+        paramParcel.writeLong(this.checkIdState.a(i));
+        paramParcel.writeInt(((Integer)this.checkIdState.a(i)).intValue());
         i += 1;
       }
       paramInt = 0;

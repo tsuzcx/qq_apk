@@ -1,28 +1,19 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class aghz
+class aghz
+  implements bhba
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  aghz(aghv paramaghv) {}
   
-  public boolean a()
+  public void a(View paramView)
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
-    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("grayTipType:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    if (auyo.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      return;
+    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

@@ -32,26 +32,15 @@ public class MQMsg
   public String user_avatar = "";
   public String user_nick = "";
   
-  private static MQMsg a(NewMQMsg paramNewMQMsg)
+  private static JSONObject convertToJson(Map<String, String> paramMap)
   {
-    MQMsg localMQMsg = new MQMsg();
-    localMQMsg.msgType = paramNewMQMsg.msgType;
-    localMQMsg.title = paramNewMQMsg.title;
-    localMQMsg.pushTime = paramNewMQMsg.pushTime;
-    localMQMsg.user_avatar = paramNewMQMsg.userAvatar;
-    localMQMsg.user_nick = paramNewMQMsg.nick;
-    localMQMsg.promot = paramNewMQMsg.promot;
-    localMQMsg.msgBody = MQMsgBody.readFrom(paramNewMQMsg.msgBody);
-    localMQMsg.msgInteractData = MQMsgInteractData.readFrom(paramNewMQMsg.msgInteractData);
-    localMQMsg.jumpUrlToDetail = paramNewMQMsg.jumpUrlToDetail;
-    localMQMsg.bottomCell = MQBottomCell.readFrom(paramNewMQMsg.bottomCell);
-    localMQMsg.expand = paramNewMQMsg.mpExtent;
-    localMQMsg.mqUserPersonalData = MQUserPersonalData.readFrom(paramNewMQMsg.userPersonalData);
-    localMQMsg.feeds = paramNewMQMsg.all_feeds_data;
-    return localMQMsg;
+    if ((paramMap == null) || (paramMap.size() == 0)) {
+      return null;
+    }
+    return new JSONObject(paramMap);
   }
   
-  private static Map<String, String> a(JSONObject paramJSONObject)
+  private static Map<String, String> parseExpand(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       return null;
@@ -64,14 +53,6 @@ public class MQMsg
       localHashMap.put(str, paramJSONObject.optString(str));
     }
     return localHashMap;
-  }
-  
-  private static JSONObject a(Map<String, String> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0)) {
-      return null;
-    }
-    return new JSONObject(paramMap);
   }
   
   public static MQMsg parseFromJson(JSONObject paramJSONObject)
@@ -92,7 +73,7 @@ public class MQMsg
       localMQMsg.msgInteractData = MQMsgInteractData.parseFromJson(paramJSONObject.optJSONObject("msgInteractData"));
       localMQMsg.jumpUrlToDetail = paramJSONObject.optString("jumpUrlToDetail");
       localMQMsg.bottomCell = MQBottomCell.parseFromJson(paramJSONObject.optJSONObject("bottomCell"));
-      localMQMsg.expand = a(paramJSONObject.optJSONObject("expand"));
+      localMQMsg.expand = parseExpand(paramJSONObject.optJSONObject("expand"));
       localMQMsg.mqUserPersonalData = MQUserPersonalData.parseFromJson(paramJSONObject.optJSONObject("mqUserPersonalData"));
       localMQMsg.uniKey = paramJSONObject.optString("uniKey");
       localMQMsg.eventTitle = paramJSONObject.optString("eventTitle");
@@ -103,6 +84,25 @@ public class MQMsg
     {
       QZLog.e("QZoneMsgManager.MQMsg", "parseFromJson error", paramJSONObject);
     }
+    return localMQMsg;
+  }
+  
+  private static MQMsg readFrom(NewMQMsg paramNewMQMsg)
+  {
+    MQMsg localMQMsg = new MQMsg();
+    localMQMsg.msgType = paramNewMQMsg.msgType;
+    localMQMsg.title = paramNewMQMsg.title;
+    localMQMsg.pushTime = paramNewMQMsg.pushTime;
+    localMQMsg.user_avatar = paramNewMQMsg.userAvatar;
+    localMQMsg.user_nick = paramNewMQMsg.nick;
+    localMQMsg.promot = paramNewMQMsg.promot;
+    localMQMsg.msgBody = MQMsgBody.readFrom(paramNewMQMsg.msgBody);
+    localMQMsg.msgInteractData = MQMsgInteractData.readFrom(paramNewMQMsg.msgInteractData);
+    localMQMsg.jumpUrlToDetail = paramNewMQMsg.jumpUrlToDetail;
+    localMQMsg.bottomCell = MQBottomCell.readFrom(paramNewMQMsg.bottomCell);
+    localMQMsg.expand = paramNewMQMsg.mpExtent;
+    localMQMsg.mqUserPersonalData = MQUserPersonalData.readFrom(paramNewMQMsg.userPersonalData);
+    localMQMsg.feeds = paramNewMQMsg.all_feeds_data;
     return localMQMsg;
   }
   
@@ -117,7 +117,7 @@ public class MQMsg
     {
       NewMQMsg localNewMQMsg = (NewMQMsg)paramArrayList.next();
       if (localNewMQMsg != null) {
-        localArrayList.add(a(localNewMQMsg));
+        localArrayList.add(readFrom(localNewMQMsg));
       }
     }
     return localArrayList;
@@ -138,7 +138,7 @@ public class MQMsg
       localJSONObject.put("msgInteractData", this.msgInteractData.convertToJson());
       localJSONObject.put("jumpUrlToDetail", this.jumpUrlToDetail);
       localJSONObject.put("bottomCell", this.bottomCell.convertToJson());
-      localJSONObject.put("expand", a(this.expand));
+      localJSONObject.put("expand", convertToJson(this.expand));
       if (this.mqUserPersonalData == null) {}
       for (Object localObject = this.mqUserPersonalData;; localObject = this.mqUserPersonalData.convertToJson())
       {

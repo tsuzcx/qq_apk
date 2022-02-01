@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import anld;
+import amfx;
 
 public class ApolloUrlInterceptor$PreloadCGITask$1
   implements Runnable
 {
-  public ApolloUrlInterceptor$PreloadCGITask$1(anld paramanld) {}
+  public ApolloUrlInterceptor$PreloadCGITask$1(amfx paramamfx) {}
   
   public void run()
   {
-    anld.a(this.a);
+    amfx.a(this.a);
   }
 }
 

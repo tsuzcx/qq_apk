@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgot;
-import bgpd;
+import beyh;
+import beyr;
 
 public class AIOAnimationControlManager$7$2
   implements Runnable
 {
-  public AIOAnimationControlManager$7$2(bgpd parambgpd) {}
+  public AIOAnimationControlManager$7$2(beyr parambeyr) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Bgot.a = 1;
-    this.a.jdField_a_of_type_Bgot.a(this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Beyh.a = 1;
+    this.a.jdField_a_of_type_Beyh.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 

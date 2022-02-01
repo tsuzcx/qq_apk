@@ -1,43 +1,64 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.Window;
 
 public class mup
+  extends bjnw
 {
-  public static int a(View paramView, int paramInt)
+  public static boolean a;
+  boolean b = false;
+  
+  protected mup(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramView = paramView.getTag(paramInt);
-    if (paramView == null) {
-      return 2147483647;
-    }
-    if ((paramView instanceof Integer)) {
-      return ((Integer)paramView).intValue();
-    }
-    a("getInt", paramInt, paramView);
-    return 2147483647;
+    super(paramContext, paramBoolean1, paramBoolean2);
   }
   
-  public static String a(View paramView, int paramInt)
+  public static mup a(Context paramContext)
   {
-    paramView = paramView.getTag(paramInt);
-    if (paramView == null) {
-      return null;
-    }
-    if ((paramView instanceof String)) {
-      return (String)paramView;
-    }
-    a("getStr", paramInt, paramView);
-    return null;
+    paramContext = new mup(paramContext, false, false);
+    paramContext.getWindow().setWindowAnimations(2131755228);
+    return paramContext;
   }
   
-  static void a(String paramString, int paramInt, Object paramObject)
+  public static boolean a()
   {
-    if (AudioHelper.e())
+    return a;
+  }
+  
+  public void dismiss()
+  {
+    a = false;
+    this.b = false;
+    super.dismiss();
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    if (this.b)
     {
-      paramString = paramString + anzj.a(2131713529) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
-      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
-      throw new ClassCastException(paramString);
+      a = false;
+      this.b = false;
     }
+    super.onDetachedFromWindow();
+  }
+  
+  public void onStop()
+  {
+    if (this.b)
+    {
+      a = false;
+      this.b = false;
+    }
+    super.onStop();
+  }
+  
+  public void show()
+  {
+    if (a == true) {
+      return;
+    }
+    a = true;
+    this.b = true;
+    super.show();
   }
 }
 

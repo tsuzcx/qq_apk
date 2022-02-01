@@ -1,24 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import friendlist.GetOnlineInfoResp;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ztz
-  extends anyu
+  implements View.OnClickListener
 {
-  public ztz(StoryQIMBadgeView paramStoryQIMBadgeView) {}
+  public ztz(TroopGiftPanel paramTroopGiftPanel) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void onClick(View paramView)
   {
-    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
-    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
-    while ((!paramBoolean) || (!bhjx.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

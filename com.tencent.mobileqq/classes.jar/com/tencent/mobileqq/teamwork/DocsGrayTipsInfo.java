@@ -3,14 +3,14 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdzw;
-import beai;
+import bctn;
+import bctz;
 import com.tencent.qphone.base.util.QLog;
 
 public class DocsGrayTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DocsGrayTipsInfo> CREATOR = new bdzw();
+  public static final Parcelable.Creator<DocsGrayTipsInfo> CREATOR = new bctn();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -70,7 +70,7 @@ public class DocsGrayTipsInfo
     }
     catch (Exception localException)
     {
-      QLog.e(beai.i, 1, "get height light area exception = " + localException.toString());
+      QLog.e(bctz.i, 1, "get height light area exception = " + localException.toString());
     }
     return arrayOfInt;
   }
@@ -111,7 +111,7 @@ public class DocsGrayTipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.DocsGrayTipsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import mqq.os.MqqHandler;
-
 public class aoac
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
-    }
-  }
+  public long a;
+  public boolean a;
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public aoac(long paramLong, boolean paramBoolean)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a();
-    paramString = (RecentUser)paramQQAppInterface.findRecentUser(paramString, 1);
-    if (paramString != null) {
-      paramQQAppInterface.delRecentUser(paramString);
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,12 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class bfdu
-  implements View.OnClickListener
+public abstract interface bfdu
 {
-  bfdu(bfdt parambfdt) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(int paramInt, cmd0x934.RspBody paramRspBody);
 }
 
 

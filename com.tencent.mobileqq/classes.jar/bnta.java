@@ -1,37 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.util.QZLog;
 
-public class bnta
+class bnta
+  implements View.OnClickListener
 {
-  public int a;
-  public Bitmap a;
-  public bnsp a;
-  public bnsq a;
-  public bnsz a;
-  String jdField_a_of_type_JavaLangString;
-  public AtomicBoolean a;
-  public boolean a;
-  public int b;
-  public String b;
+  bnta(bnsz parambnsz) {}
   
-  public bnta(TroopHWJsPlugin paramTroopHWJsPlugin)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Bnsp = new bntb(this);
-  }
-  
-  public void a()
-  {
-    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.2(this), null, false);
-  }
-  
-  public void b()
-  {
-    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.3(this), null, false);
+    QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
+    this.a.a.a(9);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

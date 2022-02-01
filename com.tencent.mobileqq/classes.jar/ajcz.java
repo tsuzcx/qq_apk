@@ -1,17 +1,20 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.widget.SwipListView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
-class ajcz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class ajcz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  ajcz(ajcy paramajcy) {}
+  public ajcz(Conversation paramConversation) {}
   
-  public void onGlobalLayout()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    }
+    Conversation.o(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

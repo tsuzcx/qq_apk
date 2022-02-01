@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class occ
-  implements DialogInterface.OnDismissListener
 {
-  public occ(PublicAccountMenuBar paramPublicAccountMenuBar) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    PublicAccountMenuBar.a(this.a, false);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public oca a;
 }
 
 

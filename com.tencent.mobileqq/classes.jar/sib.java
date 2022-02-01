@@ -1,17 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 
 public class sib
-  extends pmr
 {
-  public sib(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  public static void a(sic paramsic)
   {
-    super(paramString);
-  }
-  
-  public void a(pmk parampmk)
-  {
-    parampmk.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    VideoReport.reportEvent(sic.a(paramsic), paramsic.a());
   }
 }
 

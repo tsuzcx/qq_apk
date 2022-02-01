@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import agej;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,17 +9,18 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Adapter;
-import bljl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.AdapterView;
-import shi;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import smu;
 
 public class ReadInJoyFlowLayout
   extends AdapterView
 {
   private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = agej.a(8.0F, getResources());
+  private final int jdField_a_of_type_Int = AIOUtils.dp2px(8.0F, getResources());
   private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private bljl jdField_a_of_type_Bljl = new shi(this);
+  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new smu(this);
   private float b;
   
   public ReadInJoyFlowLayout(Context paramContext)
@@ -363,14 +363,14 @@ public class ReadInJoyFlowLayout
   
   public void setAdapter(Adapter paramAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_Bljl != null)) {
-      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Bljl);
+    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver != null)) {
+      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver);
     }
     this.jdField_a_of_type_AndroidWidgetAdapter = paramAdapter;
     if (this.jdField_a_of_type_AndroidWidgetAdapter != null)
     {
       this.mItemCount = this.jdField_a_of_type_AndroidWidgetAdapter.getCount();
-      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_Bljl);
+      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver);
       a();
     }
   }
@@ -398,7 +398,7 @@ public class ReadInJoyFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout
  * JD-Core Version:    0.7.0.1
  */

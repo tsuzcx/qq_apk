@@ -1,15 +1,10 @@
-import android.view.animation.Animation;
-
-class aqgd
-  extends blgm
+public class aqgd
 {
-  aqgd(aqgb paramaqgb) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public boolean a = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqgd
  * JD-Core Version:    0.7.0.1
  */

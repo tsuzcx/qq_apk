@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import apfq;
-import bdll;
+import anzc;
+import bcef;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$9
   implements Runnable
 {
-  public ARTransferDoorLogicManager$9(apfq paramapfq) {}
+  public ARTransferDoorLogicManager$9(anzc paramanzc) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView == null) {}
+    if (this.this$0.a == null) {}
     for (;;)
     {
       return;
-      if (this.this$0.jdField_a_of_type_Int == 2)
+      if (this.this$0.g == 2)
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.d(true);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b(2);
+        this.this$0.a.d(true);
+        this.this$0.a.b(2);
       }
-      while (apfq.b(this.this$0))
+      while (anzc.b(this.this$0))
       {
-        bdll.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, apfq.a(this.this$0), "0", "0", "");
-        apfq.b(this.this$0, false);
+        bcef.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, anzc.a(this.this$0), "0", "0", "");
+        anzc.b(this.this$0, false);
         return;
         this.this$0.a(false, "");
       }

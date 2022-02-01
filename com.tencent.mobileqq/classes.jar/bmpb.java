@@ -1,319 +1,35 @@
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import cooperation.qqreader.QRReaderPageProxyActivity;
-import cooperation.qqreader.host.ChannelIdHelper;
-import cooperation.qqreader.js.JsCallParams;
-import cooperation.qqreader.proxy.ReaderJsPluginProxy;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class bmpb
+  extends bmpd
 {
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmoq jdField_a_of_type_Bmoq = new bmpc(this);
-  private bmpg jdField_a_of_type_Bmpg;
-  private JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  private int jdField_a_of_type_Int = 30;
+  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("mm:ss", Locale.US);
   
-  public bmpb(Activity paramActivity)
+  public bmpb(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    super(paramFloat);
   }
   
-  private Intent a(Activity paramActivity)
+  public float a(long paramLong)
   {
-    Intent localIntent = new Intent(paramActivity, QRReaderPageProxyActivity.class);
-    localIntent.putExtra("useSkinEngine", false);
-    localIntent.putExtra("userQqResources", 2);
-    localIntent.putExtras(paramActivity.getIntent());
-    localIntent.putExtra("readerDpcConfig", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name(), "0|0|0|0|0|0"));
-    return localIntent;
+    long l = paramLong / 1000L;
+    return (float)(l * this.jdField_a_of_type_Int) / this.jdField_a_of_type_Float + (float)(paramLong - 1000L * l) / (1000.0F / this.jdField_a_of_type_Int) / this.jdField_a_of_type_Float;
   }
   
-  private Intent a(Activity paramActivity, Bundle paramBundle)
+  public long a(float paramFloat)
   {
-    boolean bool = false;
-    String str1 = paramBundle.getString("readtype");
-    int i = -1;
-    if (!TextUtils.isEmpty(str1)) {
-      i = Integer.valueOf(str1).intValue();
-    }
-    switch (i)
-    {
-    case 17: 
-    case 18: 
-    case 19: 
-    case 21: 
-    case 22: 
-    case 23: 
-    case 28: 
-    case 29: 
-    case 30: 
-    default: 
-      paramActivity = null;
-    }
-    for (;;)
-    {
-      paramBundle = paramActivity;
-      if (paramActivity == null)
-      {
-        paramBundle = new Intent();
-        paramBundle.setClass(this.jdField_a_of_type_AndroidAppActivity, ReaderHomePageActivity.class);
-        paramBundle.putExtras(bmok.a(paramBundle, 1));
-      }
-      paramBundle.putExtra("params_remote_connect_at_launch", true);
-      return paramBundle;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("id"));
-      paramActivity.putExtra("ChannelSrc2", paramBundle.getString("group_code"));
-      if (!TextUtils.equals(paramBundle.getString("stay"), "1")) {
-        bool = true;
-      }
-      paramActivity.putExtra("is_return_to_home_page", bool);
-      continue;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("book_new_id"));
-      paramActivity.putExtra("is_from_conversation", paramBundle.getBoolean("is_from_conversation", false));
-      continue;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("bid"));
-      paramActivity.putExtra("com.qqreader.pureader.CHAPTER_ID", paramBundle.getString("cid"));
-      if (!TextUtils.equals(paramBundle.getString("stay"), "1")) {}
-      for (bool = true;; bool = false)
-      {
-        paramActivity.putExtra("is_return_to_home_page", bool);
-        paramActivity.putExtra("is_from_conversation", paramBundle.getBoolean("is_from_conversation", false));
-        if (paramBundle.getBoolean("recent_note", false)) {
-          ChannelIdHelper.setChannelId("100336");
-        }
-        paramActivity.setFlags(67108864);
-        break;
-      }
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("bid"));
-      paramActivity.putExtra("com.qqreader.pureader.CHAPTER_ID", paramBundle.getString("cid"));
-      paramActivity.putExtra("com.qqreader.pureader.IN_BOOKSHELF", paramBundle.getString("inBookShelf"));
-      ChannelIdHelper.setChannelId(paramBundle);
-      paramActivity.setFlags(67108864);
-      continue;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.FILE_PATH", paramBundle.getString("com.qqreader.pureader.FILE_PATH"));
-      paramActivity.putExtra("com.qqreader.pureader.EXTRA_KEY_IS_LOCAL", true);
-      ChannelIdHelper.setChannelId(paramBundle);
-      continue;
-      if (!paramBundle.getBoolean("is_from_qreader_shortcut", false))
-      {
-        paramActivity = null;
-      }
-      else
-      {
-        if (!paramBundle.getBoolean("cityshortcut")) {
-          break;
-        }
-        paramBundle = new Intent();
-        paramBundle.setClass(paramActivity, ReaderHomePageActivity.class);
-        paramBundle.putExtras(bmok.a(paramBundle, 1));
-        paramBundle.putExtra("is_from_qreader_shortcut", true);
-        paramActivity = paramBundle;
-      }
-    }
-    long l1 = paramBundle.getLong("book_id");
-    long l2 = paramBundle.getLong("book_new_id");
-    str1 = bhlo.a(paramActivity).a;
-    String str2 = bmrb.a(paramActivity);
-    if (l2 != 0L) {}
-    for (paramBundle = String.valueOf(l2);; paramBundle = "")
-    {
-      bmqz.a(str1, str2, "2198", paramBundle, "2", "");
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", String.valueOf(l2));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", String.valueOf(l1));
-      paramActivity.putExtra("is_return_to_home_page", true);
-      paramActivity.putExtra("is_from_qreader_shortcut", true);
-      paramActivity.setFlags(67108864);
-      break;
-    }
+    return Math.round(this.jdField_a_of_type_Float * paramFloat * 1000.0F / this.jdField_a_of_type_Int);
   }
   
-  private View a()
+  public String a(long paramLong)
   {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localImageView.setBackgroundColor(-1);
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localRelativeLayout.addView(localImageView);
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-    localTextView.setText(2131693404);
-    localTextView.setTextColor(-16777216);
-    localTextView.setGravity(17);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(13);
-    localTextView.setPadding(0, bhgr.a(this.jdField_a_of_type_AndroidAppActivity, 120.0F), 0, 0);
-    localRelativeLayout.addView(localTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
-    bmpj.a().a(this.jdField_a_of_type_AndroidAppActivity, localImageView);
-    return localRelativeLayout;
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    boolean bool = bmqg.a();
-    bmqw.e("ReaderSplashImpl", "jumpToPlugin: isUseShadow = " + bool);
-    if (bool)
-    {
-      bmqg.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, "com.qqreader.pureader.SSReaderActivity", new bmpe(this));
-      return;
+    int i = Math.round((float)(paramLong % 1000L) / (1000.0F / this.jdField_a_of_type_Int));
+    if ((i == this.jdField_a_of_type_Int) || (i == 0)) {
+      return this.jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
     }
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    bmop.a().a(this.jdField_a_of_type_Bmoq);
-    a(a());
-  }
-  
-  private void a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-    {
-      bmqw.a("ReaderSplashImpl", "showLoadingView: mContentView == null");
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView);
-  }
-  
-  private void a(JsCallParams paramJsCallParams)
-  {
-    if (bmop.a().a())
-    {
-      ReaderJsPluginProxy localReaderJsPluginProxy = bmop.a().a(new bmpd(this));
-      if (localReaderJsPluginProxy != null) {
-        localReaderJsPluginProxy.call(paramJsCallParams.a(), paramJsCallParams.b(), paramJsCallParams.c(), paramJsCallParams.a());
-      }
-      for (;;)
-      {
-        d();
-        return;
-        bmqw.a("ReaderSplashImpl", "checkPluginForHandleSpecialJsCall: plugin is ready but jsPluginProxy is null");
-      }
-    }
-    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = paramJsCallParams;
-    bmop.a().a(this.jdField_a_of_type_Bmoq);
-    a(a());
-  }
-  
-  private void b(@NonNull Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {
-      bmqw.a("ReaderSplashImpl", "doJump: activity is null");
-    }
-    Intent localIntent;
-    do
-    {
-      return;
-      if (paramBundle.getBoolean("is_from_qreader_shortcut")) {
-        paramBundle.putString("readtype", String.valueOf(26));
-      }
-      localIntent = a(this.jdField_a_of_type_AndroidAppActivity, paramBundle);
-    } while (localIntent == null);
-    localIntent.putExtra("launch_by_splash", true);
-    localIntent.putExtra("login_interval", bmrb.a(BaseApplicationImpl.getApplication()));
-    if (localIntent.getStringExtra("ChannelSrc2") == null) {
-      localIntent.putExtra("ChannelSrc2", paramBundle.getString("ChannelSrc2"));
-    }
-    if ((localIntent.getComponent() != null) && ("cooperation.qqreader.ui.ReaderHomePageActivity".equals(localIntent.getComponent().getClassName())))
-    {
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-      d();
-      return;
-    }
-    localIntent.putExtra("is_from_splash_activity", true);
-    localIntent.putExtra("com.qqreader.pureader.START_TIME", System.currentTimeMillis());
-    a(localIntent);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidContentIntent == null)
-    {
-      bmqw.a("ReaderSplashImpl", "handlePendingJumpPluginIntent: mPendingJumpPluginIntent == null");
-      return;
-    }
-    if ((this.jdField_a_of_type_AndroidAppActivity.isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())))
-    {
-      bmqw.b("ReaderSplashImpl", "handlePendingJumpPluginIntent: activity is destroyed");
-      return;
-    }
-    bmok.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, "com.qqreader.pureader.SSReaderActivity", new bmpf(this));
-    this.jdField_a_of_type_AndroidContentIntent = null;
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a()
-  {
-    bmqw.d("ReaderSplashImpl", "onCreate");
-    Object localObject = new IntentFilter();
-    ((IntentFilter)localObject).addAction("cooperation.qqreader.start_reader_act_completed");
-    if (this.jdField_a_of_type_Bmpg == null)
-    {
-      this.jdField_a_of_type_Bmpg = new bmpg(this, null);
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bmpg, (IntentFilter)localObject);
-    }
-    localObject = (JsCallParams)this.jdField_a_of_type_AndroidOsBundle.getParcelable("splash_pending_js_param");
-    if (localObject != null)
-    {
-      a((JsCallParams)localObject);
-      return;
-    }
-    b(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void a(@NonNull Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(@NonNull ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bmpg != null)
-    {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bmpg);
-      this.jdField_a_of_type_Bmpg = null;
-    }
+    return i + "f";
   }
 }
 

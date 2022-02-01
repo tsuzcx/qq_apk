@@ -1,21 +1,20 @@
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aevo
-  implements ViewSwitcher.ViewFactory
+  implements View.OnClickListener
 {
-  public aevo(Leba paramLeba) {}
+  public aevo(ReminderListFragment paramReminderListFragment) {}
   
-  public View makeView()
+  public void onClick(View paramView)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

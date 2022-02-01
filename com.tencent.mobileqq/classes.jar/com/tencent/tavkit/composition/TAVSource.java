@@ -42,7 +42,7 @@ public class TAVSource
   
   public String toString()
   {
-    return "TAVSource{asset=" + this.asset + ", videoComposition=" + this.videoComposition + ", audioMix=" + this.audioMix + '}';
+    return "TAVSource{\nasset=" + this.asset + "\nvideoComposition=" + this.videoComposition + "\naudioMix=" + this.audioMix + '}';
   }
 }
 

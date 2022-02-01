@@ -1,24 +1,16 @@
-import com.tencent.biz.pubaccount.QualityReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class ocr
+  implements DialogInterface.OnClickListener
 {
-  public static void a(qwv paramqwv)
-  {
-    ThreadManager.excute(new QualityReporter.1(paramqwv), 16, null, true);
-  }
+  public ocr(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), ocj.class);
-    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
-    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
-    localNewIntent.setObserver(new ocs(localNewIntent));
-    ozs.a().startServlet(localNewIntent);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

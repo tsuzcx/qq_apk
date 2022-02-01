@@ -1,17 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stCallInfo;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class uxi
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public uxi(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static void a(Activity paramActivity, uxm paramuxm)
   {
-    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    stCallInfo localstCallInfo = umu.a().a();
+    if ((localstCallInfo != null) && (localstCallInfo.switch_call_live))
+    {
+      uya.e("OuterInterceptManager", "stGlobalConfig.callinfo: " + localstCallInfo);
+      if (paramuxm != null) {
+        paramuxm.b();
+      }
+      b(paramActivity, paramuxm);
+    }
+    while (paramuxm == null) {
+      return;
+    }
+    paramuxm.a();
+  }
+  
+  private static void b(Activity paramActivity, uxm paramuxm)
+  {
+    ThreadManager.getUIHandler().post(new OuterInterceptManager.1(paramActivity, paramuxm));
   }
 }
 

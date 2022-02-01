@@ -1,20 +1,133 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusMoveCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.AFMoveCallbackForward.1;
-
-@TargetApi(16)
 public class aqqb
-  implements Camera.AutoFocusMoveCallback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqps jdField_a_of_type_Aqps;
-  private final aqpx jdField_a_of_type_Aqpx;
+  public static final int a;
+  private static aqoy jdField_a_of_type_Aqoy;
+  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   
-  public void onAutoFocusMoving(boolean paramBoolean, Camera paramCamera)
+  static
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFMoveCallbackForward.1(this, paramBoolean));
+    if (aqnj.a().a().a()) {}
+    for (int i = 4;; i = 3)
+    {
+      jdField_a_of_type_Int = i;
+      jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+      return;
+    }
+  }
+  
+  public static void a(aqoy paramaqoy)
+  {
+    jdField_a_of_type_Aqoy = paramaqoy;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Aqoy != null)) {
+      jdField_a_of_type_Aqoy.a(paramString1, paramString2);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Aqoy != null)) {
+      jdField_a_of_type_Aqoy.a(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Aqoy != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aqoy.a(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Aqoy != null)) {
+      jdField_a_of_type_Aqoy.b(paramString1, paramString2);
+    }
+  }
+  
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Aqoy != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aqoy.b(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Aqoy != null)) {
+      jdField_a_of_type_Aqoy.c(paramString1, paramString2);
+    }
+  }
+  
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Aqoy != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aqoy.c(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 2) && (jdField_a_of_type_Aqoy != null)) {
+      jdField_a_of_type_Aqoy.d(paramString1, paramString2);
+    }
+  }
+  
+  public static void d(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Aqoy != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aqoy.e(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Aqoy != null)) {
+      jdField_a_of_type_Aqoy.e(paramString1, paramString2);
+    }
   }
 }
 

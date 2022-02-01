@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import alpb;
+import akms;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pqx;
-import tzq;
+import pwr;
+import ugf;
 
 public class SubscriptionInfoModule$6
   implements Runnable
 {
-  public SubscriptionInfoModule$6(pqx parampqx, String paramString) {}
+  public SubscriptionInfoModule$6(pwr parampwr, String paramString) {}
   
   public void run()
   {
-    int i = tzq.b((QQAppInterface)this.this$0.a, this.a);
-    alpb.b((QQAppInterface)this.this$0.a, this.a, i);
-    ((QQAppInterface)this.this$0.a).a().c(this.a, 1008);
+    int i = ugf.b((QQAppInterface)this.this$0.a, this.a);
+    akms.b((QQAppInterface)this.this$0.a, this.a, i);
+    ((QQAppInterface)this.this$0.a).getMessageFacade().setReaded(this.a, 1008);
   }
 }
 

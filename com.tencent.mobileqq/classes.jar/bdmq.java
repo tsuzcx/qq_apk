@@ -1,27 +1,24 @@
-import android.os.FileObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.QQPermissionCallback;
 
 class bdmq
-  extends FileObserver
+  implements QQPermissionCallback
 {
-  public bdmq(String paramString, int paramInt)
+  bdmq(bdmp parambdmp) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramString, paramInt);
+    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
   }
   
-  public void onEvent(int paramInt, String arg2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
-    synchronized (bdmp.a())
-    {
-      notifyAll();
-      return;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmq
  * JD-Core Version:    0.7.0.1
  */

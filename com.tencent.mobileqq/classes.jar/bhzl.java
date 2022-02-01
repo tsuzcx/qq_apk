@@ -1,34 +1,53 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.widget.EditText;
 
-public final class bhzl
-  implements URLDrawable.URLDrawableListener
+public class bhzl
+  implements InputFilter
 {
-  public bhzl(int[] paramArrayOfInt) {}
+  protected int a;
+  protected EditText a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bhzl(EditText paramEditText, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
-    }
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
+    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
+    paramInt4 = this.jdField_a_of_type_Int - bhzp.a(paramSpanned.toString());
+    paramInt3 = bhzp.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    if (paramInt4 <= 0) {
+      return "";
     }
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
-      ApngImage.playByTag(this.a[0]);
+    if (paramInt4 >= paramInt3) {
+      return null;
     }
+    paramInt3 = paramInt1;
+    if (paramInt3 < paramInt2)
+    {
+      int j;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
+        j = bhzp.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      }
+      for (int i = 2;; i = 1)
+      {
+        paramInt4 -= j;
+        if (paramInt4 < 0) {
+          break label161;
+        }
+        paramInt3 = i + paramInt3;
+        break;
+        j = bhzp.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+      }
+    }
+    label161:
+    if (paramInt3 == paramInt1) {
+      return "";
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

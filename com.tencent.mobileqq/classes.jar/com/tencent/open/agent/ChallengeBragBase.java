@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import bjlw;
-import bjlx;
-import bjtx;
-import bjus;
-import bjvb;
-import bjzn;
+import bhrk;
+import bhrl;
+import bhzm;
+import biae;
+import bian;
+import biex;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -52,7 +52,7 @@ public abstract class ChallengeBragBase
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690821), true);
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690861), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", this.jdField_c_of_type_JavaLangString);
@@ -74,7 +74,7 @@ public abstract class ChallengeBragBase
       }
       localBundle.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
     } while (this.n == null);
-    new bjus(this.n, "GET", new bjlw(this)).a(localBundle);
+    new biae(this.n, "GET", new bhrk(this)).a(localBundle);
   }
   
   protected boolean a()
@@ -108,7 +108,7 @@ public abstract class ChallengeBragBase
     }
     catch (Exception localException)
     {
-      bjtx.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
+      bhzm.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
       c();
       return false;
     }
@@ -118,8 +118,8 @@ public abstract class ChallengeBragBase
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("source")) {
       this.k = this.jdField_a_of_type_AndroidOsBundle.getString("source");
     }
-    this.n = bjzn.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
-    this.o = bjzn.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
+    this.n = biex.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
+    this.o = biex.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
     return true;
   }
   
@@ -127,8 +127,8 @@ public abstract class ChallengeBragBase
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", bjvb.jdField_c_of_type_JavaLangString);
-    bjtx.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bjvb.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key_error_msg", bian.jdField_c_of_type_JavaLangString);
+    bhzm.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bian.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -138,7 +138,7 @@ public abstract class ChallengeBragBase
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + this.jdField_a_of_type_AndroidOsBundle.get(str).toString() + " ");
       }
-      bjtx.e("qqBaseActivity", "params=" + localStringBuilder.toString());
+      bhzm.e("qqBaseActivity", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
@@ -154,8 +154,9 @@ public abstract class ChallengeBragBase
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -183,7 +184,7 @@ public abstract class ChallengeBragBase
       localBundle.putString("sendmsg", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       localBundle.putString("imgurl", this.j);
       localBundle.putString("receiver", this.h);
-      i1 = 2131690840;
+      i1 = 2131690880;
       if ("action_brag".equals(this.p))
       {
         localBundle.putString("typeid", "52");
@@ -195,7 +196,7 @@ public abstract class ChallengeBragBase
           localBundle.putString("pf", this.l);
         }
         this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(i1), true);
-        new bjus(this.o, "POST", new bjlx(this)).a(localBundle);
+        new biae(this.o, "POST", new bhrl(this)).a(localBundle);
       }
     }
     for (;;)
@@ -206,7 +207,7 @@ public abstract class ChallengeBragBase
         break;
       }
       localBundle.putString("typeid", "53");
-      i1 = 2131690841;
+      i1 = 2131690881;
       break;
       if (paramView == this.jdField_c_of_type_AndroidWidgetTextView)
       {

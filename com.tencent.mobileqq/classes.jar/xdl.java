@@ -1,69 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-public class xdl
-  extends wpa<xey>
+class xdl
+  extends whf
 {
-  private static final String jdField_a_of_type_JavaLangString = wnu.a("StorySvc.get_label_list");
-  private final boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  private final int d;
+  xdl(xdk paramxdk) {}
   
-  public xdl(int paramInt1, long paramLong, String paramString, int paramInt2)
+  public void a()
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
+    super.a();
+    xdk.a(this.a).jdField_a_of_type_Wgz = null;
   }
   
-  public xdl(String paramString, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
-    try
-    {
-      localRspGetTagList.mergeFrom(paramArrayOfByte);
-      return new xey(localRspGetTagList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetTagList.music_type.set(this.c);
-      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
-    }
-    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
-    localReqGetTagList.size.set(this.d);
-    return localReqGetTagList.toByteArray();
+    super.a(paramInt);
+    xwa.a("share_story", "day_suc", 0, paramInt, new String[] { xdk.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

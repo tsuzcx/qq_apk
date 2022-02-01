@@ -1,12 +1,23 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class aswt
+  implements bjoe
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public String b;
-  public String c;
+  public aswt(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bjnw parambjnw) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    bcua.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    this.jdField_a_of_type_Bjnw.dismiss();
+  }
 }
 
 

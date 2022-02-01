@@ -1,40 +1,35 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.ArrayList;
+import java.util.List;
 
-class bbey
-  implements beuq
+public class bbey
+  extends bbfd
 {
-  bbey(bbew parambbew, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
-  
-  public void onResp(bevm parambevm)
+  public bbey(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambevm.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bbew.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      nof.a(new File(bbew.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), bbew.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Bbew.a != null) {
-        this.jdField_a_of_type_Bbew.a.a();
-      }
-      return;
-    }
-    catch (IOException parambevm)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          parambevm.printStackTrace();
-        }
-      }
-    }
+    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public bays a(List<bayt> paramList, String paramString)
+  {
+    return null;
+  }
+  
+  public List<bays> a(bbfs parambbfs)
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = -1;
+    if (parambbfs.jdField_a_of_type_AndroidOsBundle == null) {
+      parambbfs.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    }
+    ArrayList localArrayList = new ArrayList();
+    parambbfs = new bayi(parambbfs.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
+    localArrayList.add(new baya(parambbfs));
+    localArrayList.add(parambbfs);
+    bbgj.a(0);
+    return localArrayList;
+  }
 }
 
 

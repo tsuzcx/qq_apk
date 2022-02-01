@@ -1,37 +1,46 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
-class rwi
-  implements Handler.Callback
+public class rwi
+  extends ofd
 {
-  rwi(rwh paramrwh) {}
+  private rwi(rwh paramrwh) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    if (paramBundle.getBoolean("is_from_first_recommend_video"))
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          rwh.a(this.a, false);
-          rwh.a(this.a).removeMessages(0);
-        } while (rwh.a(this.a) == null);
-        rwh.a(this.a).a(true);
-        return true;
-        rwh.a(this.a, false);
-        rwh.a(this.a).removeMessages(1);
-      } while (rwh.a(this.a) == null);
-      rwh.a(this.a).a(false);
-      return true;
+      VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
+      if (localEntranceDownloadInfo == null) {
+        break label32;
+      }
+      rwh.a(this.a, localEntranceDownloadInfo);
     }
-    rwh.a(this.a, true);
-    return true;
+    for (;;)
+    {
+      return;
+      label32:
+      rwh.a(this.a, paramBundle.getString("VALUE_COOKIE"));
+      if (paramBoolean)
+      {
+        paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+        if ((paramBundle != null) && (paramBundle.size() > 0))
+        {
+          paramBundle = (VideoInfo)paramBundle.get(0);
+          rwh.a(this.a, paramBundle);
+        }
+      }
+      while (paramBundle != null)
+      {
+        ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramBundle), 5, null, true);
+        return;
+        paramBundle = null;
+      }
+    }
   }
 }
 

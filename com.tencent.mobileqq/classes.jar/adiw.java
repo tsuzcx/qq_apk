@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.Dis;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adiw
-  implements adbw
+  extends aycd
 {
-  public int a()
-  {
-    return 3000;
-  }
+  public adiw(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean a()
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.Dis();
-    paramQQAppInterface.dis_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.dis.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 3008;
+    super.b(paramBoolean, paramInt);
+    if ((this.a.g) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
+    }
+    this.a.g = false;
   }
 }
 

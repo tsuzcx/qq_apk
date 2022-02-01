@@ -1,17 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class ayfe
-  implements View.OnClickListener
+public abstract class ayfe
+  extends aptq<ayfg>
 {
-  public ayfe(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  abstract int a();
   
-  public void onClick(View paramView)
+  @NonNull
+  public ayfg a(int paramInt)
   {
-    ShortVideoCommentsView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ayfg();
+  }
+  
+  @Nullable
+  public ayfg a(aptx[] paramArrayOfaptx)
+  {
+    ayfg localayfg = new ayfg();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
+      ayfg.a(localayfg, paramArrayOfaptx[0].a);
+    }
+    return localayfg;
+  }
+  
+  public void a(ayfg paramayfg) {}
+  
+  public Class<ayfg> clazz()
+  {
+    return ayfg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return a();
   }
 }
 

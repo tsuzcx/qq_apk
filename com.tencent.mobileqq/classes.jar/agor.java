@@ -1,23 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agor
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agor(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
+  public agor(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
-      }
-      this.a.finish();
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

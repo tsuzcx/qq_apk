@@ -1,34 +1,91 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qg.sdk.log.IQLog;
 
-class biky
-  implements nmg
+public class biky
+  implements IQLog
 {
-  biky(bikv parambikv, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
-  
-  public void loaded(String paramString, int paramInt)
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
-      this.jdField_a_of_type_Bikv.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-    }
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
-      if (this.jdField_a_of_type_Bikv.a(2L, this.jdField_b_of_type_Long)) {
-        this.jdField_a_of_type_Bikv.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
-      }
-    }
-    while ((!this.jdField_a_of_type_Bikv.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Bikv.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+    return String.format(null, paramString, paramVarArgs);
   }
   
-  public void progress(int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
-    }
+    xvv.c(paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    xvv.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    xvv.b(paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    xvv.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    xvv.b(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    xvv.e(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    xvv.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    xvv.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    xvv.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    xvv.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    xvv.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    xvv.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    xvv.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    xvv.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    xvv.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    xvv.b(paramString, "", paramThrowable);
   }
 }
 

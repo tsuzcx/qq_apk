@@ -1,33 +1,62 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.XListView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentHotChatCenterItem;
+import com.tencent.mobileqq.activity.recent.data.RecentItemActivateFriendsData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsgBox;
+import com.tencent.mobileqq.activity.recent.data.RecentItemContactsGuideData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemDiscussionMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemEcShopAssitant;
+import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemMsgBox;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine;
+import com.tencent.mobileqq.activity.recent.data.RecentItemQCallData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRouterDataLine;
+import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemSubAccount;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTencentDocsAssistantData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistant;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification;
+import com.tencent.mobileqq.activity.recent.data.SendBlessRecentItemData;
 
-class akjv
-  implements bljn
+final class akjv
+  extends SparseArray<Class<? extends RecentBaseData>>
 {
-  akjv(akjn paramakjn) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  akjv()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(akjn.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
-    }
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
-    if (paramAdapterView == this.a.jdField_a_of_type_Akjm)
-    {
-      this.a.jdField_a_of_type_Akjl = ((akjl)this.a.jdField_a_of_type_Akjm.getItem(paramInt));
-      paramView.setSelected(true);
-      paramAdapterView = new bhuk();
-      paramAdapterView.a(2131365191, anzj.a(2131705554), 2130838930);
-      paramAdapterView.a(2131367078, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692400), 2130838939);
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhkx.a(paramView, paramAdapterView, akjn.a(this.a), new akjw(this, paramView));
-    }
-    while (paramAdapterView != this.a.jdField_a_of_type_Akjx) {
-      return true;
-    }
-    return true;
+    put(5000, RecentItemTroopAssistant.class);
+    put(5001, RecentHotChatCenterItem.class);
+    put(6000, RecentItemPcDataLine.class);
+    put(6003, RecentItemPcDataLine.class);
+    put(6002, RecentItemRouterDataLine.class);
+    put(7000, RecentItemSubAccount.class);
+    put(1009, RecentItemMsgBox.class);
+    put(1001, RecentItemMsgBox.class);
+    put(1010, RecentItemMsgBox.class);
+    put(10002, RecentItemMsgBox.class);
+    put(10005, RecentItemImaxADData.class);
+    put(1, RecentItemTroopMsgData.class);
+    put(6004, RecentItemTencentDocsAssistantData.class);
+    put(3000, RecentItemDiscussionMsgData.class);
+    put(9000, RecentItemTroopNotification.class);
+    put(4001, RecentItemTroopNotification.class);
+    put(9003, SendBlessRecentItemData.class);
+    put(8112, RecentItemMayKnowFriendVerticalListData.class);
+    put(8113, RecentItemRecommendTroopData.class);
+    put(7230, RecentItemServiceAccountFolderData.class);
+    put(7120, RecentItemEcShopAssitant.class);
+    put(8, RecentItemQCallData.class);
+    put(1031, RecentItemChatMsgData.class);
+    put(1032, RecentItemConfessMsgBox.class);
+    put(1033, RecentItemConfessMsgBox.class);
+    put(1034, RecentItemConfessMsgBox.class);
+    put(9002, RecentItemActivateFriendsData.class);
+    put(1038, RecentItemAppletsFolderData.class);
+    put(8114, RecentItemContactsGuideData.class);
   }
 }
 

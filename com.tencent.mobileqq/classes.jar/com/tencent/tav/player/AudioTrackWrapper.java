@@ -86,7 +86,7 @@ public class AudioTrackWrapper
       }
       catch (Exception localException)
       {
-        Logger.e("AudioTrackWrapper", localException);
+        Logger.e("AudioTrackWrapper", "flush: ", localException);
       }
     }
   }

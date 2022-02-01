@@ -1,18 +1,69 @@
-public abstract interface avgp
+import android.graphics.Point;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
+
+public class avgp
+  implements TencentMapGestureListener
 {
-  public abstract String a();
+  private boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public abstract void a(int paramInt);
+  public avgp(MapWidget paramMapWidget) {}
   
-  public abstract void a(String paramString);
+  public boolean onDoubleTap(float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
   
-  public abstract void aO_();
+  public boolean onDown(float paramFloat1, float paramFloat2)
+  {
+    this.b = true;
+    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
+    }
+    return false;
+  }
   
-  public abstract String b();
+  public boolean onFling(float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
   
-  public abstract void b();
+  public boolean onLongPress(float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
   
-  public abstract void b(String paramString);
+  public void onMapStable()
+  {
+    if ((this.b) && (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getCameraPosition().target);
+    }
+    this.b = false;
+  }
+  
+  public boolean onScroll(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return false;
+  }
+  
+  public boolean onSingleTap(float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean onUp(float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      bcef.b(null, "CliOper", "", "", "0X800A772", "0X800A772", 0, 0, "", "0", "0", "");
+      this.jdField_a_of_type_Boolean = false;
+    }
+    return false;
+  }
 }
 
 

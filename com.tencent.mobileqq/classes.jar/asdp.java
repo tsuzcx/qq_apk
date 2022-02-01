@@ -1,192 +1,125 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.FaceScanNativeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.cs.cmd0x345.cmd0x345.RspBody.SubCmd0x3RspBody;
 
-public class asdp
-  extends asdn
+class asdp
 {
-  private int a;
-  private boolean d;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private String jdField_a_of_type_JavaLangString;
+  private cmd0x345.RspBody.SubCmd0x3RspBody jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody;
+  private short jdField_a_of_type_Short;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  public asdp(QQAppInterface paramQQAppInterface)
+  public asdp(asdm paramasdm, long paramLong, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, short paramShort, String paramString6, Bundle paramBundle, cmd0x345.RspBody.SubCmd0x3RspBody paramSubCmd0x3RspBody)
   {
-    super("qq.android.ar.face.so_v8.4.1_32", paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "FaceScanNativeSoDownloadHandler construct,STR_RES_NAME = qq.android.ar.face.so_v8.4.1_32,AppSetting.IS_CPU_64_BIT = false");
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Short = paramShort;
+    this.f = paramString6;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody = paramSubCmd0x3RspBody;
   }
   
   public int a()
   {
-    return 10061;
+    return this.jdField_a_of_type_Int;
   }
   
-  public Class<? extends XmlData> a()
+  public long a()
   {
-    return FaceScanNativeSoData.class;
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public asdp a()
+  {
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_host.has()) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_host.get();
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.uint32_port.has()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.uint32_port.get();
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_check_sum.has()) {
+      this.b = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_check_sum.get();
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_cookie.has()) {
+      this.c = ("FTN5K=" + this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_cookie.get());
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.int32_ret_code.has()) {
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.int32_ret_code.get();
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_ret_msg.has()) {
+      this.d = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_ret_msg.get();
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_suggest_file_name.has())
+    {
+      this.e = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_suggest_file_name.get();
+      this.e = aszt.a(this.e);
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_https_domain.has())
+    {
+      String str = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_https_domain.get();
+      this.jdField_a_of_type_AndroidOsBundle.putString("strHttpsDomain", str);
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.uint32_https_port.has()) {
+      this.jdField_a_of_type_Short = ((short)this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.uint32_https_port.get());
+    }
+    if (this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_dns.has()) {
+      this.f = this.jdField_a_of_type_TencentImCsCmd0x345Cmd0x345$RspBody$SubCmd0x3RspBody.str_dns.get();
+    }
+    return this;
   }
   
   public String a()
   {
-    return null;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public short a()
   {
-    super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    apjx.a(1, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      apjx.a(1, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download success: " + paramString);
-    }
-    int i = apka.a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
-    }
-    if (i != 0)
-    {
-      g();
-      f();
-      apjx.a(1, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      apjx.a(1, true);
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "so", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "so");
-      bdmc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download restart userClick" + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return this.jdField_a_of_type_Short;
   }
   
   public String b()
   {
-    return "prd";
+    return this.b;
   }
   
-  public void b()
+  public String c()
   {
-    boolean bool = auog.a(new File(apka.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
+    return this.c;
   }
   
-  public void b(XmlData paramXmlData)
+  public String d()
   {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download begin");
-    }
+    return this.d;
   }
   
-  public boolean b()
+  public String e()
   {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanNativeSoDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
+    return this.e;
   }
   
-  public boolean e()
+  public String f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
-    }
-    if (!this.d)
-    {
-      if (!apjx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceScanNativeSoDownloadHandler", 2, "pre download config disable ");
-        }
-        return false;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break label115;
-      }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanNativeSoDownloadHandler", 2, "downloadResource later " + bool);
-      }
-      if (bool) {
-        break;
-      }
-      return super.e();
-    }
-  }
-  
-  public void f()
-  {
-    BaseApplicationImpl.sApplication.getSharedPreferences("face_scan_sp", 4).edit().putInt("face_scan_native_so_version", b()).apply();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    asdd.a(a(), new String[0]);
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asdp
  * JD-Core Version:    0.7.0.1
  */

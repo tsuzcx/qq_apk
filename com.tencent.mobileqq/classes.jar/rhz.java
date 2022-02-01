@@ -1,15 +1,19 @@
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rhz
-  extends amof
+  implements View.OnClickListener
 {
-  public View a;
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public rhz(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    ReadInJoyDeliverVideoActivity.b(this.a, true);
+    ReadInJoyDeliverVideoActivity.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

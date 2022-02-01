@@ -9,21 +9,21 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nnw;
-import ozs;
-import rmj;
+import npg;
+import pay;
+import rtl;
 
 public class TopicShareHelper$6
   implements Runnable
 {
-  public TopicShareHelper$6(rmj paramrmj, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
+  public TopicShareHelper$6(rtl paramrtl, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nnw.a(rmj.a(this.this$0), this.jdField_a_of_type_JavaLangString, null);
+    String str = npg.a(rtl.a(this.this$0), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina path:" + str);
     }
@@ -35,10 +35,10 @@ public class TopicShareHelper$6
       localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
     }
     localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    if (rmj.a(this.this$0) != null) {}
-    for (int i = rmj.a(this.this$0).mChannelID;; i = 0)
+    if (rtl.a(this.this$0) != null) {}
+    for (int i = rtl.a(this.this$0).mChannelID;; i = 0)
     {
-      localIntent.putExtra("big_brother_source_key", ozs.f(i));
+      localIntent.putExtra("big_brother_source_key", pay.f(i));
       FileProvider7Helper.intentCompatForN(this.jdField_a_of_type_AndroidAppActivity, localIntent);
       this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
       this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new TopicShareHelper.6.1(this));

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import amwx;
-import anbv;
+import alrr;
+import alwp;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -12,18 +12,18 @@ class ApolloCmdChannel$PlayMusicTask
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   private final String jdField_a_of_type_JavaLangString;
-  private WeakReference<amwx> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<alrr> jdField_a_of_type_JavaLangRefWeakReference;
   private final int jdField_b_of_type_Int;
-  private WeakReference<anbv> jdField_b_of_type_JavaLangRefWeakReference;
+  private WeakReference<alwp> jdField_b_of_type_JavaLangRefWeakReference;
   private final int jdField_c_of_type_Int;
   private WeakReference<ApolloCmdChannel> jdField_c_of_type_JavaLangRefWeakReference;
   private int d;
   
-  ApolloCmdChannel$PlayMusicTask(int paramInt1, ApolloCmdChannel paramApolloCmdChannel, amwx paramamwx, anbv paramanbv, long paramLong, int paramInt2, int paramInt3, String paramString, float paramFloat, int paramInt4)
+  ApolloCmdChannel$PlayMusicTask(int paramInt1, ApolloCmdChannel paramApolloCmdChannel, alrr paramalrr, alwp paramalwp, long paramLong, int paramInt2, int paramInt3, String paramString, float paramFloat, int paramInt4)
   {
     this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloCmdChannel);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamwx);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramanbv);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalrr);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramalwp);
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_b_of_type_Int = paramInt3;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -36,12 +36,12 @@ class ApolloCmdChannel$PlayMusicTask
   public void run()
   {
     ApolloCmdChannel localApolloCmdChannel = (ApolloCmdChannel)this.jdField_c_of_type_JavaLangRefWeakReference.get();
-    amwx localamwx = (amwx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    anbv localanbv = (anbv)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((localApolloCmdChannel == null) || (localanbv == null) || (localamwx == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+    alrr localalrr = (alrr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    alwp localalwp = (alwp)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if ((localApolloCmdChannel == null) || (localalwp == null) || (localalrr == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    localanbv.a(localamwx, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
+    localalwp.a(localalrr, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
   }
 }
 

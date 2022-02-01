@@ -1,13 +1,14 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.os.SystemClock;
 
-class lll
-  implements FileFilter
+public class lll
 {
-  public boolean accept(File paramFile)
+  public float a;
+  public long a;
+  
+  public lll(llk paramllk, float paramFloat)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
 }
 

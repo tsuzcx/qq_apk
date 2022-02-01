@@ -1,56 +1,34 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import java.util.Locale;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1.2.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class afpq
-  implements bliz
+  implements Animation.AnimationListener
 {
-  public afpq(SubLoginActivity paramSubLoginActivity) {}
+  public afpq(AIOShakeHelper.1 param1) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    if (paramInt == 0)
-    {
-      bdll.a(this.a.app, "dc00898", "", "", "0X800B290", "0X800B290", 0, 0, "", "", "", "");
-      paramView = null;
-      if (SubLoginActivity.a(this.a) != null) {
-        paramView = SubLoginActivity.a(this.a).getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label265;
-      }
+    afpo.a(this.a.this$0).post(new AIOShakeHelper.1.2.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
     }
-    label265:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
-      {
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.a.dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          bdll.a(this.a.app, "dc00898", "", "", "0X800AFDF", "0X800AFDF", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("isSubaccount", true);
-          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-          paramView.putExtra("entrance", SubLoginActivity.class.getName());
-          this.a.startActivity(paramView);
-        }
-      }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
   }
 }

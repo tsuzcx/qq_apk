@@ -1,27 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.LoadingAvatarProgressView;
 
 public class aiai
-  implements Handler.Callback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aiai(PEPanel paramPEPanel) {}
+  public aiai(LoadingAvatarProgressView paramLoadingAvatarProgressView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    PEPanel.a(this.a).setVisibility(0);
-    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    paramMessage.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(paramMessage);
-    return true;
+    LoadingAvatarProgressView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue() * LoadingAvatarProgressView.a(this.a));
+    this.a.invalidate();
   }
 }
 

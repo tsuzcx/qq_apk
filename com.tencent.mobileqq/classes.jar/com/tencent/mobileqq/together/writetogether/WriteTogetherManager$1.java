@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.together.writetogether;
 
-import bemm;
-import bemr;
+import bdge;
+import bdgj;
 import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
 
 public class WriteTogetherManager$1
   implements Runnable
 {
-  public WriteTogetherManager$1(bemr parambemr, bemm parambemm, BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject) {}
+  public WriteTogetherManager$1(bdgj parambdgj, bdge parambdge, BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bemm.a(this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgBaseWriteTogetherMsg$Type, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Bdge.a(this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgBaseWriteTogetherMsg$Type, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

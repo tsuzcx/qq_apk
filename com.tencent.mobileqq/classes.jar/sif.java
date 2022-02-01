@@ -1,18 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 public class sif
-  extends pmr
 {
-  public sif(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a()
   {
-    super(paramString);
+    return -1;
   }
   
-  public void a(pmk parampmk)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
+  
+  public int b()
   {
-    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    return 3;
+  }
+  
+  public int c()
+  {
+    return -1;
   }
 }
 

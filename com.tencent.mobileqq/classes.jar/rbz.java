@@ -1,65 +1,31 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class rbz
-  implements TextWatcher
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater$Companion;", "", "()V", "mapping", "", "", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "getUpdater", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rbz
 {
-  private int jdField_a_of_type_Int;
-  
-  public rbz(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  @JvmStatic
+  @Nullable
+  public final rby a(@NotNull BaseArticleInfo paramBaseArticleInfo)
   {
-    int k = paramEditable.length();
-    int i;
-    int j;
-    label24:
-    Drawable[] arrayOfDrawable;
-    if (this.jdField_a_of_type_Int > 0)
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
+    Map localMap = rby.a();
+    paramBaseArticleInfo = paramBaseArticleInfo.mSocialFeedInfo;
+    if (paramBaseArticleInfo != null)
     {
-      i = 1;
-      if (k <= 0) {
-        break label120;
-      }
-      j = 1;
-      if ((j ^ i) != 0)
-      {
-        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
-        if (k <= 0) {
-          break label125;
-        }
-        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839544);
-      }
+      paramBaseArticleInfo = paramBaseArticleInfo.a;
+      if (paramBaseArticleInfo == null) {}
     }
-    for (;;)
-    {
-      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      this.jdField_a_of_type_Int = k;
-      if (paramEditable.length() <= 0) {
-        break label133;
-      }
-      pfa.a().g(paramEditable.toString());
-      return;
-      i = 0;
-      break;
-      label120:
-      j = 0;
-      break label24;
-      label125:
-      arrayOfDrawable[2] = null;
+    for (paramBaseArticleInfo = Integer.valueOf(paramBaseArticleInfo.a);; paramBaseArticleInfo = null) {
+      return (rby)localMap.get(paramBaseArticleInfo);
     }
-    label133:
-    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

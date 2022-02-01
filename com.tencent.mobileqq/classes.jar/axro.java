@@ -1,17 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class axro
-  extends BroadcastReceiver
+  implements OnCompositionLoadedListener
 {
-  axro(axrl paramaxrl) {}
+  axro(axrn paramaxrn, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      axrl.a(this.a);
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setImageAssetDelegate(new axrp(this));
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    axrn.a(this.jdField_a_of_type_Axrn).setImageDrawable(localLottieDrawable);
+    axrn.a(this.jdField_a_of_type_Axrn, localLottieDrawable);
   }
 }
 

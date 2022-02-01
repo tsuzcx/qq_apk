@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-public class aqrt
+public final class aqrt
+  implements Parcelable.Creator<QQPhotoInfo>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
-  
-  private aqrt(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.d = paramInt3;
+    return new QQPhotoInfo(paramParcel, null);
   }
   
-  public void a(int paramInt)
+  public QQPhotoInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return new QQPhotoInfo[paramInt];
   }
 }
 

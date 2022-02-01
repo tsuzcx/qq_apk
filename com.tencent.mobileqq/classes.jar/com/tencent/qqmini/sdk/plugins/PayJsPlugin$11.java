@@ -24,7 +24,7 @@ class PayJsPlugin$11
       }
       for (;;)
       {
-        QMLog.i("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        QMLog.i("PayJsPlugin", "handleMidasMonthCardPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
         return;
         if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
         {
@@ -45,7 +45,7 @@ class PayJsPlugin$11
   
   public void payNeedLogin()
   {
-    QMLog.e("PayJsPlugin", "handleMidasGoodsPay payNeedLogin");
+    QMLog.e("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
     PayJsPlugin.access$700(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }

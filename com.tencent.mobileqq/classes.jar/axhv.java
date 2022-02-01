@@ -1,55 +1,179 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import java.util.Calendar;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageForNearbyRecommenderTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class axhv
-  implements aqxz
 {
-  private axhv(MsgBackupDateFragment paramMsgBackupDateFragment) {}
-  
-  public int a()
+  public static void a(Context paramContext, String paramString, List<Object> paramList)
   {
-    return 3;
+    if (paramList == null) {
+      return;
+    }
+    FileUtils.writeObjectList(paramString + "v5.8.nbr", new Object[] { paramList });
   }
   
-  public int a(int paramInt)
+  public static void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramBundle == null) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
     {
-    default: 
-      return 0;
-    case 0: 
-      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
-    case 1: 
-      return 12;
+      return;
+      SharedPreferences.Editor localEditor = paramAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).edit();
+      i = paramBundle.getInt("key_login_pull_interval", -1);
+      if (i != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_login_pull_interval", i);
+      }
+      j = paramBundle.getInt("key_msgbox_pull_interval", -1);
+      if (j != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_msgbox_pull_interval", j);
+      }
+      k = paramBundle.getInt("key_expiretime", -1);
+      if (k != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_expiretime", k);
+      }
+      l1 = paramBundle.getLong("key_login_pull_time", 0L);
+      if (l1 != 0L) {
+        localEditor.putLong(paramAppInterface.getCurrentAccountUin() + "_" + "key_login_pull_time", l1);
+      }
+      l2 = paramBundle.getLong("key_msgbox_pull_time", 0L);
+      if (l2 != 0L) {
+        localEditor.putLong(paramAppInterface.getCurrentAccountUin() + "_" + "key_msgbox_pull_time", l2);
+      }
+      String str = paramBundle.getString("key_nearbyrecommender_title");
+      if (!TextUtils.isEmpty(str)) {
+        localEditor.putString("key_nearbyrecommender_title", str);
+      }
+      int m = paramBundle.getInt("key_nearbyrecommender_reasontype", -1);
+      if (m != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_reasontype", m);
+      }
+      paramBundle = paramBundle.getString("key_nearbyrecommender_uins");
+      if (!"".equals(paramBundle)) {
+        localEditor.putString(paramAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_uins", paramBundle);
+      }
+      localEditor.commit();
+    } while (!QLog.isColorLevel());
+    QLog.d("NearbyRecommenderUtils", 2, "updateConfigs--->login_pull_interval=" + i + ",msgbox_pull_interval=" + j + ",expiretime=" + k + ",login_pull_time=" + l1 + ",msgbox_pull_time=" + l2);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime");
     }
-    Calendar localCalendar = Calendar.getInstance();
-    if (MsgBackupDateFragment.b(this.a) == 1)
+    if (a(paramQQAppInterface))
     {
-      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
-      localCalendar.set(5, 1);
-    }
-    for (;;)
-    {
-      return localCalendar.getActualMaximum(5);
-      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
-      localCalendar.set(5, 1);
+      int i = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getInt("key_expiretime", 172800);
+      long l3 = System.currentTimeMillis();
+      long l2 = 0L;
+      Object localObject = paramQQAppInterface.getApplication().getFileStreamPath(paramQQAppInterface.getCurrentAccountUin() + "v5.8.nbr");
+      long l1 = l2;
+      if (localObject != null)
+      {
+        l1 = l2;
+        if (((File)localObject).exists()) {
+          l1 = ((File)localObject).lastModified();
+        }
+      }
+      if (i <= Math.abs(l3 - l1) / 1000L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime-->expire true");
+        }
+        paramQQAppInterface = paramQQAppInterface.getMessageFacade();
+        localObject = paramQQAppInterface.getMsgList(AppConstants.LBS_HELLO_UIN, 1001).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+          if (localMessageRecord.msgtype == -4011) {
+            paramQQAppInterface.removeMsgByMessageRecord(localMessageRecord, true);
+          }
+        }
+      }
     }
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return MsgBackupDateFragment.d(this.a) + paramInt2 + anzj.a(2131705814);
-    case 1: 
-      return paramInt2 + 1 + anzj.a(2131705797);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "addNearbyRecommenderMsg");
     }
-    return paramInt2 + 1 + anzj.a(2131705813);
+    MessageForNearbyRecommenderTips localMessageForNearbyRecommenderTips = (MessageForNearbyRecommenderTips)bbli.a(-4011);
+    long l = bbko.a();
+    localMessageForNearbyRecommenderTips.init(paramQQAppInterface.getCurrentAccountUin(), AppConstants.LBS_NEARBY_RECOMMEND_UIN, AppConstants.LBS_NEARBY_RECOMMEND_UIN, "", l, -4011, 1001, l);
+    localMessageForNearbyRecommenderTips.isread = true;
+    abwz.a(localMessageForNearbyRecommenderTips, false);
+    localMessageForNearbyRecommenderTips.readFlag = false;
+    localMessageForNearbyRecommenderTips.strBrief = paramString;
+    localMessageForNearbyRecommenderTips.uRecommendTime = paramLong;
+    localMessageForNearbyRecommenderTips.serial();
+    paramQQAppInterface.getMessageFacade().addMessage(localMessageForNearbyRecommenderTips, localMessageForNearbyRecommenderTips.selfuin);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bftf.a(paramString3));
+    }
+    long l = bbko.a();
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)bbli.a(-5007);
+    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, l, -5007, paramInt, l);
+    localMessageForGrayTips.isread = paramBoolean2;
+    if ((!paramBoolean1) || (!amwh.a(paramQQAppInterface, localMessageForGrayTips, false))) {
+      paramQQAppInterface.getMessageFacade().addMessage(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade().getMsgList(AppConstants.LBS_HELLO_UIN, 1001);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    {
+      paramQQAppInterface = paramQQAppInterface.iterator();
+      MessageRecord localMessageRecord;
+      do
+      {
+        if (!paramQQAppInterface.hasNext()) {
+          break;
+        }
+        localMessageRecord = (MessageRecord)paramQQAppInterface.next();
+      } while ((localMessageRecord.msgtype != -4011) || (((MessageForNearbyRecommenderTips)localMessageRecord).readFlag));
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyRecommenderUtils", 2, "checkUnreadMsgForNearbyRecommender,resut=" + bool);
+      }
+      return bool;
+    }
+  }
+  
+  public static String[] a(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
+    int i = localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_reasontype", 0);
+    paramQQAppInterface = localSharedPreferences.getString(paramQQAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_uins", "");
+    return new String[] { Integer.toString(i), paramQQAppInterface };
   }
 }
 

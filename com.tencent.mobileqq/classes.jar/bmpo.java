@@ -1,33 +1,22 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
 
-class bmpo
-  extends bmqd
+public class bmpo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bmpo(bmpn parambmpn) {}
+  public bmpo(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod, int paramInt1, int paramInt2) {}
   
-  public void a(@NonNull bmqc parambmqc)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    parambmqc = parambmqc.a();
-    if (parambmqc == null) {
-      bmqw.a("ReaderUrlConfigDataHelper", "Response json is null");
-    }
-    do
-    {
-      return;
-      if (parambmqc.length() == 0)
-      {
-        bmqw.a("ReaderUrlConfigDataHelper", "后台数据异常");
-        return;
-      }
-    } while (!bmpn.a(this.a, parambmqc));
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bmpn.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_URL_CONFIG_DATA" + str, parambmqc.toString()).apply();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).d(i);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).scrollTo(this.jdField_a_of_type_Int + VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.b - i), 0);
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView;
+    int j = this.jdField_a_of_type_Int;
+    paramValueAnimator.scrollTo(VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.b - i) + j, 0);
   }
 }
 

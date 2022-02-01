@@ -1,42 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class xoc
-  implements View.OnClickListener
+class xoc
+  implements vqp<wdr, wds>
 {
-  xoc(xoa paramxoa) {}
+  xoc(xnz paramxnz, JobContext paramJobContext, xnm paramxnm) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull wdr paramwdr, @Nullable wds arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    String str1;
-    if ((xoa.a(this.a) != null) && (xoa.a(this.a).a()))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      xoa.a(this.a).c();
-      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
-      if (!this.a.a()) {
-        break label116;
-      }
-      str1 = "2";
-      label64:
-      if (!this.a.b()) {
-        break label122;
+      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
+      return;
+    }
+    if (??? == null)
+    {
+      paramErrorMessage = new wds(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Xnz)
+      {
+        xnz.a(this.jdField_a_of_type_Xnz, paramErrorMessage);
+        xnz.a(this.jdField_a_of_type_Xnz).remove(paramwdr);
+        xnz.a(this.jdField_a_of_type_Xnz, this.jdField_a_of_type_Xnm);
+        return;
       }
     }
-    label116:
-    label122:
-    for (String str2 = "2";; str2 = "1")
+    if (paramErrorMessage.isFail()) {
+      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
+    }
+    vuj localvuj = (vuj)vux.a(15);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
     {
-      yup.a("play_video", "close_reply", 0, 1, new String[] { str1, str2 });
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a();
-      break;
-      str1 = "1";
-      break label64;
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (wdt)localIterator.next();
+      localvuj.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
     }
   }
 }

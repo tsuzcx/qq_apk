@@ -24,10 +24,10 @@ class SearchRecommendAdapter$PlayingViewHolder
   public SearchRecommendAdapter$PlayingViewHolder(View paramView)
   {
     super(paramView);
-    this.icon = ((ImageView)paramView.findViewById(2131371154));
-    this.ranking = ((ImageView)paramView.findViewById(2131371156));
-    this.name = ((TextView)paramView.findViewById(2131371158));
-    this.category = ((TextView)paramView.findViewById(2131371159));
+    this.icon = ((ImageView)paramView.findViewById(2131371123));
+    this.ranking = ((ImageView)paramView.findViewById(2131371125));
+    this.name = ((TextView)paramView.findViewById(2131371127));
+    this.category = ((TextView)paramView.findViewById(2131371128));
   }
   
   public void update(SearchInfo paramSearchInfo, Activity paramActivity, int paramInt)
@@ -36,25 +36,25 @@ class SearchRecommendAdapter$PlayingViewHolder
     this.icon.setImageDrawable(MiniAppUtils.getIcon(this.itemView.getContext(), localMiniAppInfo.iconUrl, false, 0, 32));
     this.name.setText(localMiniAppInfo.name);
     this.category.setText(paramSearchInfo.getCategoryDesc());
-    int i = paramSearchInfo.getPosition();
-    if (i > 2) {
+    paramInt = paramSearchInfo.getPosition();
+    if (paramInt > 2) {
       this.ranking.setVisibility(8);
     }
     for (;;)
     {
-      this.itemView.setOnClickListener(new SearchRecommendAdapter.PlayingViewHolder.1(this, paramActivity, localMiniAppInfo, paramInt));
+      this.itemView.setOnClickListener(new SearchRecommendAdapter.PlayingViewHolder.1(this, paramActivity, localMiniAppInfo));
       paramSearchInfo = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(322);
       paramActivity = new MiniAppConfig(localMiniAppInfo);
-      paramActivity.launchParam.scene = paramInt;
-      paramSearchInfo.addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData(paramActivity, "page_view", "expo"));
+      paramActivity.launchParam.scene = 3024;
+      paramSearchInfo.addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData(paramActivity, "desktop", "expo"));
       return;
       this.ranking.setVisibility(0);
-      if (i == 0) {
-        this.ranking.setImageResource(2130840984);
-      } else if (i == 1) {
-        this.ranking.setImageResource(2130840985);
-      } else if (i == 2) {
-        this.ranking.setImageResource(2130840986);
+      if (paramInt == 0) {
+        this.ranking.setImageResource(2130841020);
+      } else if (paramInt == 1) {
+        this.ranking.setImageResource(2130841021);
+      } else if (paramInt == 2) {
+        this.ranking.setImageResource(2130841022);
       }
     }
   }

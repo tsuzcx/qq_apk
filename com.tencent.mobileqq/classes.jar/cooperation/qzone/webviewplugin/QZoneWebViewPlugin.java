@@ -1,0 +1,231 @@
+package cooperation.qzone.webviewplugin;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import bgtp;
+import bgve;
+import bgvf;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QzoneStringMatcher;
+import cooperation.qzone.webviewplugin.famous.QzoneFamousShareJsPlugin;
+import cooperation.qzone.webviewplugin.famous.QzoneHomePageJsPlugin;
+import cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin;
+import cooperation.qzone.webviewplugin.ugcsetting.QzoneUgcSettingJsPlugin;
+import java.util.Map;
+import org.json.JSONObject;
+
+public class QZoneWebViewPlugin
+  extends WebViewPlugin
+  implements bgtp
+{
+  public static final int RESULT_OK = -1;
+  private static final String TAG = "QZoneWebViewPlugin";
+  private QzoneInternalWebViewPlugin[] insidePlugins;
+  private boolean needClearHistory;
+  
+  public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, bgve parambgve, int paramInt)
+  {
+    parambgve = parambgve.a(parambgve.a());
+    int i = paramInt;
+    if ((parambgve instanceof bgvf)) {
+      i = ((bgvf)parambgve).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
+    }
+    return i;
+  }
+  
+  private boolean handleBanUrlOrScheme(String paramString)
+  {
+    try
+    {
+      Object localObject = this.mRuntime.a().getIntent();
+      if ((localObject != null) && (((Intent)localObject).getBooleanExtra("fromQZone", false))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        CustomWebView localCustomWebView = this.mRuntime.a();
+        localObject = null;
+        if (localCustomWebView != null) {
+          localObject = localCustomWebView.getUrl();
+        }
+        bool = QzoneStringMatcher.needIgoreUrl((String)localObject, paramString, bool);
+        if (!bool) {
+          break;
+        }
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QZoneWebViewPlugin", 1, "handleBanUrlOrScheme error", paramString);
+    }
+  }
+  
+  private void initInsidePlugins()
+  {
+    int i = 0;
+    if ((this.insidePlugins == null) || (this.insidePlugins.length == 0))
+    {
+      this.insidePlugins = new QzoneInternalWebViewPlugin[] { new QZonePublishSecretShuoShuoH5Plugin(), new QzoneUgcSettingJsPlugin(), new QzoneVipPaymentJsPlugin(), new QzoneBlogJsPlugin(), new QzonePersonalizeJsPlugin(), new QzoneMoodPlugin(), new QzoneDeviceTagJsPlugin(), new QZoneFeedActionJsPlugin(), new QzoneDynamicAlbumPlugin(), new QzonePhotoWallPlugin(), new QZoneGiftFullScreenJsPlugin(), new QZonePassivePraiseJsPlugin(), new QzoneQunFeedJsPlugin(), new QzoneAlbumSelectJSPlugin(), new QzoneAlbumJsPlugin(), new QzoneReactMessageDeliverPlugin(), new QZoneLiveJsPlugin(), new QzoneVideoTabJsPlugin(), new QzoneFamousShareJsPlugin(), new QZoneEventTagJsPlugin(), new QzoneSettingJsPlugin(), new QzoneBasicJsPlugin(), new QzoneInterActiveVideoPlugin(), new QzoneUiJsPlugin(), new QZoneDNSAnalyzeJsPlugin(), new QzoneUploadPlugin(), new QzoneSoundPlugin(), new QZoneRedPocketGiftJsPlugin(), new QZoneSharePictureJsPlugin(), new QzoneCommonJsPlugin(), new QzoneBannerJsPlugin(), new QZonePublishVoiceShuoShuoH5Plugin(), new QzoneWanbaJsPlugin(), new QzoneHomePageJsPlugin(), new QzoneRecommedPhotoJsPlugin(), new QzoneUserHomePageJsPlugin(), new QZoneCategoryAlbumPlugin(), new QzoneNuanProfileJsPlugin(), new QZoneECLiveJsPlugin(), new AdvFloatVideoJsPlugin() };
+      QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
+      int j = arrayOfQzoneInternalWebViewPlugin.length;
+      while (i < j)
+      {
+        arrayOfQzoneInternalWebViewPlugin[i].initRuntime(this);
+        i += 1;
+      }
+    }
+  }
+  
+  public void callJs(String paramString, String... paramVarArgs)
+  {
+    super.callJs(paramString, paramVarArgs);
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return new String[] { "Qzone", "qzDynamicAlbum", "QZImagePicker", "qzlive", "qqexplive", "qzui", "QzoneUpload", "QzoneAudio", "Qzone", "checkin" };
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    initInsidePlugins();
+    QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
+    int j = arrayOfQzoneInternalWebViewPlugin.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = arrayOfQzoneInternalWebViewPlugin[i].handleEvent(paramString, paramLong);
+      if (localObject != null) {
+        return localObject;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 8589934601L) && (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/sendGift/index.html")) || (paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/gift/mall.html"))))
+    {
+      paramString = new Intent();
+      this.mRuntime.a().setResult(0, paramString);
+      this.mRuntime.a().finish();
+    }
+    label116:
+    do
+    {
+      return true;
+      initInsidePlugins();
+      QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
+      int j = arrayOfQzoneInternalWebViewPlugin.length;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label116;
+        }
+        if (arrayOfQzoneInternalWebViewPlugin[i].handleEvent(paramString, paramLong, paramMap)) {
+          break;
+        }
+        i += 1;
+      }
+      if ((paramLong == 8589934594L) && (this.needClearHistory))
+      {
+        paramMap = null;
+        if (this.mRuntime != null) {
+          paramMap = this.mRuntime.a();
+        }
+        if (paramMap != null) {
+          paramMap.clearHistory();
+        }
+        this.needClearHistory = false;
+      }
+    } while ((1024L == paramLong) && (handleBanUrlOrScheme(paramString)));
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) && (!paramString2.equals("qzDynamicAlbum")) && (!paramString2.equals("QZImagePicker")) && (!paramString2.equals("qzlive")) && (!paramString2.equals("qzui")) && (!paramString2.equals("QzoneUpload")) && (!paramString2.equals("QzoneAudio")) && (!paramString2.equals("qqexplive")) && (!paramString2.equals("checkin"))) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneWebViewPlugin", 2, "handleJsRequest pkgName: " + paramString2 + ",method: " + paramString3);
+    }
+    initInsidePlugins();
+    QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
+    int j = arrayOfQzoneInternalWebViewPlugin.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfQzoneInternalWebViewPlugin[i].handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs)) {
+        return true;
+      }
+      i += 1;
+    }
+    return QZoneWebViewJsHandleLogic.disPatchMethod(this, this.mRuntime, paramString3, paramVarArgs);
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    initInsidePlugins();
+    Object localObject = this.insidePlugins;
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject[i].onActivityResult(paramIntent, paramByte, paramInt);
+      i += 1;
+    }
+    switch (paramByte)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramInt != -1);
+      this.mRuntime.a().finish();
+      return;
+    } while (paramInt != -1);
+    try
+    {
+      localObject = paramIntent.getStringExtra("uin");
+      paramIntent = paramIntent.getStringExtra("cellid");
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("id", paramIntent);
+      localJSONObject.put("uin", localObject);
+      dispatchJsEvent("deleteMessageSuccess", localJSONObject, new JSONObject());
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      paramIntent.printStackTrace();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    initInsidePlugins();
+    QzoneInternalWebViewPlugin[] arrayOfQzoneInternalWebViewPlugin = this.insidePlugins;
+    int j = arrayOfQzoneInternalWebViewPlugin.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfQzoneInternalWebViewPlugin[i].onDestroy();
+      i += 1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewPlugin
+ * JD-Core Version:    0.7.0.1
+ */

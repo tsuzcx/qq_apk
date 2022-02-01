@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import amap;
+import akwr;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import bday;
-import bdbb;
-import bdbg;
+import bbuc;
+import bbuf;
+import bbuk;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraPreview;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import java.io.File;
@@ -73,12 +73,12 @@ public class CameraCover
     int i = this.a.getLeft();
     int j = this.a.getTop();
     localRect2.offset(-i, -j);
-    bday localbday;
+    bbuc localbbuc;
     if (localRect1.equals(localRect2))
     {
-      localbday = bday.a();
+      localbbuc = bbuc.a();
       localRect2 = a(paramInt, localRect1, localRect2);
-      if (localbday.b() % 180 != 90) {
+      if (localbbuc.b() % 180 != 90) {
         break label266;
       }
       paramInt = localRect1.height();
@@ -89,7 +89,7 @@ public class CameraCover
     }
     label266:
     label275:
-    for (i = paramRect.width();; i = localbday.b().a)
+    for (i = paramRect.width();; i = localbbuc.b().a)
     {
       float f = i / paramInt;
       localRect2.left = ((int)(localRect2.left * f));
@@ -116,12 +116,12 @@ public class CameraCover
     }
   }
   
-  public void a(File paramFile, amap paramamap, int paramInt, boolean paramBoolean)
+  public void a(File paramFile, akwr paramakwr, int paramInt, boolean paramBoolean)
   {
-    a(paramFile, paramamap, paramInt, paramBoolean, 0, -1, -1);
+    a(paramFile, paramakwr, paramInt, paramBoolean, 0, -1, -1);
   }
   
-  public void a(File paramFile, amap paramamap, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
+  public void a(File paramFile, akwr paramakwr, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
   {
     Object localObject = null;
     if (this.a == null) {}
@@ -144,7 +144,7 @@ public class CameraCover
         if (localObject == null) {
           break label122;
         }
-        ((PreviewContext)localObject).mCamera.a(paramFile, localRect, paramamap, paramInt1, paramBoolean, paramInt2, 0);
+        ((PreviewContext)localObject).mCamera.a(paramFile, localRect, paramakwr, paramInt1, paramBoolean, paramInt2, 0);
         return;
         localRect = a(null, paramInt1);
         break;

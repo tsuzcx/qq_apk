@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import atzd;
-import bedg;
-import bedi;
+import asln;
+import bcwx;
+import bcwz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ public class BuddyFileDataLineMsgTips$1
 {
   public void run()
   {
-    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_JavaLangString);
+    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(this.this$0.jdField_a_of_type_JavaLangString);
     if ((localList == null) || (localList.size() == 0))
     {
       if (QLog.isColorLevel()) {
@@ -28,7 +28,7 @@ public class BuddyFileDataLineMsgTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileDataLineMsgTips.1
  * JD-Core Version:    0.7.0.1
  */

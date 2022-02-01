@@ -1,9 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class bfbj
+  implements bfbi
 {
-  public List<bfbw> a = new ArrayList();
+  public boolean a(bebc parambebc)
+  {
+    if (parambebc.b) {
+      return false;
+    }
+    switch (parambebc.e)
+    {
+    }
+    return true;
+  }
 }
 
 

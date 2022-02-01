@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import anzj;
-import bhlq;
-import bhpc;
-import rav;
+import amtj;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import rhw;
 
 public class ReadInJoyDeliverVideoActivity$3
   implements Runnable
@@ -15,7 +15,7 @@ public class ReadInJoyDeliverVideoActivity$3
     if (ReadInJoyDeliverVideoActivity.b(this.this$0)) {
       return;
     }
-    bhlq.a(this.this$0, 233, anzj.a(2131711784), this.this$0.getString(2131717096), new rav(this), null).show();
+    bfur.a(this.this$0, 233, amtj.a(2131712016), this.this$0.getString(2131717333), new rhw(this), null).show();
   }
 }
 

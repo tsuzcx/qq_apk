@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bndz;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 public class PluginRecord
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<PluginRecord> CREATOR = new bndz();
+  public static final Parcelable.Creator<PluginRecord> CREATOR = new PluginRecord.1();
   public static final String LIVE_PLUGIN_ID = "qzone_live_video_plugin_hack.apk";
   public static final String QZONE_LIVE_FULL_PROCESS_NAME = "com.tencent.mobileqq:qzonelive";
   public static final String QZONE_VIDEO_VERTICAL_LAYER_FULL_PROCESS_NAME = "com.tencent.mobileqq:qzone";
@@ -45,7 +44,7 @@ public class PluginRecord
   
   public PluginRecord() {}
   
-  public PluginRecord(Parcel paramParcel)
+  protected PluginRecord(Parcel paramParcel)
   {
     this.state = paramParcel.readInt();
     this.progress = paramParcel.readFloat();
@@ -96,7 +95,7 @@ public class PluginRecord
     return paramString1.equals(paramString2);
   }
   
-  public PluginRecord clone()
+  protected PluginRecord clone()
   {
     return new PluginRecord(this);
   }

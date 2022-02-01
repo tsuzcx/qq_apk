@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -19,21 +18,22 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhez;
-import bhny;
+import bfol;
+import bfwv;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.MalformedURLException;
 import java.net.URL;
-import nzj;
-import nzq;
+import oau;
+import obb;
 import org.json.JSONObject;
-import tss;
+import tzl;
 
 public class ReadInJoyAdVideoGuide
   extends RelativeLayout
@@ -47,7 +47,7 @@ public class ReadInJoyAdVideoGuide
   private ReadInJoyAdStarBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private String jdField_a_of_type_JavaLangString;
-  private tss jdField_a_of_type_Tss;
+  private tzl jdField_a_of_type_Tzl;
   public boolean a;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
@@ -81,10 +81,10 @@ public class ReadInJoyAdVideoGuide
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (bhny.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (bfwv.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (nzj.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (oau.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 5;
       }
       return 2;
@@ -99,15 +99,15 @@ public class ReadInJoyAdVideoGuide
     default: 
       return "";
     case 4: 
-      return getResources().getText(2131717150).toString();
+      return getResources().getText(2131717387).toString();
     case 2: 
-      return getResources().getText(2131717147).toString();
+      return getResources().getText(2131717384).toString();
     case 3: 
-      return getResources().getText(2131717148).toString();
+      return getResources().getText(2131717385).toString();
     case 5: 
       return "立即安装";
     }
-    return getResources().getText(2131717202).toString();
+    return getResources().getText(2131717435).toString();
   }
   
   private void a(float paramFloat)
@@ -126,7 +126,7 @@ public class ReadInJoyAdVideoGuide
   
   private void a(Context paramContext)
   {
-    inflate(paramContext, 2131560053, this);
+    inflate(paramContext, 2131560059, this);
     setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     d();
   }
@@ -139,14 +139,14 @@ public class ReadInJoyAdVideoGuide
     {
       localResources = getResources();
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = agej.a(60.0F, localResources);
-      localURLDrawableOptions.mRequestHeight = agej.a(60.0F, localResources);
+      localURLDrawableOptions.mRequestWidth = AIOUtils.dp2px(60.0F, localResources);
+      localURLDrawableOptions.mRequestHeight = AIOUtils.dp2px(60.0F, localResources);
     }
     try
     {
       paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
-      paramString.setTag(bhez.b(agej.a(60.0F, localResources), agej.a(60.0F, localResources), agej.a(12.0F, localResources)));
-      paramString.setDecodeHandler(bhez.j);
+      paramString.setTag(bfol.b(AIOUtils.dp2px(60.0F, localResources), AIOUtils.dp2px(60.0F, localResources), AIOUtils.dp2px(12.0F, localResources)));
+      paramString.setDecodeHandler(bfol.j);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       return;
     }
@@ -176,11 +176,11 @@ public class ReadInJoyAdVideoGuide
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376933));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365008));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362822));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362834));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363786));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376687));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365035));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362830));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362842));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363815));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131362104);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar = ((ReadInJoyAdStarBar)findViewById(2131362111));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
@@ -194,20 +194,20 @@ public class ReadInJoyAdVideoGuide
   private void e()
   {
     Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = agej.a(48.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = agej.a(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.dp2px(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.dp2px(48.0F, getContext().getResources());
     this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).topMargin = agej.a(4.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.dp2px(4.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = agej.a(62.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = agej.a(22.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.dp2px(62.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.dp2px(22.0F, getContext().getResources());
     this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(11.0F);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setColor(Color.parseColor("#00CAFC"));
-    ((GradientDrawable)localObject).setCornerRadius(agej.a(12.0F, getContext().getResources()));
+    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(12.0F, getContext().getResources()));
     this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
   }
   
@@ -216,7 +216,7 @@ public class ReadInJoyAdVideoGuide
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).width = agej.a(130.0F, getContext().getResources());
+    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.dp2px(130.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setGradientType(0);
@@ -265,14 +265,14 @@ public class ReadInJoyAdVideoGuide
   
   public void onClick(View paramView)
   {
-    int i = nzq.aC;
+    int i = obb.aD;
     switch (paramView.getId())
     {
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Tss != null) {
-        this.jdField_a_of_type_Tss.a(paramView, i);
+      if (this.jdField_a_of_type_Tzl != null) {
+        this.jdField_a_of_type_Tzl.a(paramView, i);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyAdVideoGuide", 2, "onClick:" + i);
@@ -281,34 +281,34 @@ public class ReadInJoyAdVideoGuide
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        i = nzq.aE;
+        i = obb.aF;
       }
       else
       {
-        i = nzq.ay;
+        i = obb.az;
         continue;
         if (this.jdField_a_of_type_Boolean)
         {
-          i = nzq.aF;
+          i = obb.aG;
         }
         else
         {
-          i = nzq.az;
+          i = obb.aA;
           continue;
           if (this.jdField_a_of_type_Boolean)
           {
-            i = nzq.aH;
+            i = obb.aI;
           }
           else
           {
-            i = nzq.aA;
+            i = obb.aB;
             continue;
-            i = nzq.aB;
+            i = obb.aC;
             continue;
             if (this.jdField_a_of_type_Boolean) {
-              i = nzq.aG;
+              i = obb.aH;
             } else {
-              i = nzq.aI;
+              i = obb.aJ;
             }
           }
         }
@@ -325,9 +325,9 @@ public class ReadInJoyAdVideoGuide
     c();
   }
   
-  public void setAdGuideClickListener(tss paramtss)
+  public void setAdGuideClickListener(tzl paramtzl)
   {
-    this.jdField_a_of_type_Tss = paramtss;
+    this.jdField_a_of_type_Tzl = paramtzl;
   }
   
   public void setAppInfo(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -389,7 +389,7 @@ public class ReadInJoyAdVideoGuide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide
  * JD-Core Version:    0.7.0.1
  */

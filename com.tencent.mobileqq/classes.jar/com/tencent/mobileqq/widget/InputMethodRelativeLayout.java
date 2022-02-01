@@ -6,15 +6,15 @@ import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
-import biyz;
-import biza;
+import bhfb;
+import bhfc;
 
 public class InputMethodRelativeLayout
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new biyz(this);
-  public biza a;
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bhfb(this);
+  public bhfc a;
   private boolean jdField_a_of_type_Boolean;
   
   public InputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -36,9 +36,9 @@ public class InputMethodRelativeLayout
     return localRect.bottom - localRect.top;
   }
   
-  public void setOnSizeChangedListenner(biza parambiza)
+  public void setOnSizeChangedListenner(bhfc parambhfc)
   {
-    this.jdField_a_of_type_Biza = parambiza;
+    this.jdField_a_of_type_Bhfc = parambhfc;
   }
 }
 

@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class aprz
-  implements Parcelable.Creator<ArWebInfo>
+class aprz
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
-  
-  public ArWebInfo[] a(int paramInt)
-  {
-    return new ArWebInfo[paramInt];
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

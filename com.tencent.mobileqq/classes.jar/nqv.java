@@ -1,12 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nqv
-  implements ahzu
+class nqv
+  implements BusinessObserver
 {
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  nqv(nqt paramnqt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    nqw.a.a(paramMessageRecord);
+    if (this.a.a) {
+      return;
+    }
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nqt.a(this.a);
+      return;
+    }
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          nqt.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        nqt.a(this.a);
+        return;
+      }
+      paramBundle = nqt.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    nqt.a(this.a, paramBundle);
   }
 }
 

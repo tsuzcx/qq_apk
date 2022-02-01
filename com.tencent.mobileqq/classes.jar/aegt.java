@@ -1,36 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aegt
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aegt(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aegt(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) {}
-    for (;;)
+    if (NotifyPushSettingActivity.a())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setChecked(false);
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131717796), "qqsetting_notify_showcontent_key", paramBoolean);
+      if (!paramBoolean) {
+        break label132;
+      }
+    }
+    label132:
+    for (int i = 1;; i = 0)
+    {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      Object localObject = (bgqm)this.a.app.getManager(109);
-      if (localObject != null) {
-        ((bgqm)localObject).a(true, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      if (paramBoolean)
+      {
+        SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(0);
+        break;
       }
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin;
-      bgqr.a(2, Long.parseLong((String)localObject), this.a.app, this.a.getApplicationContext(), (BaseActivity)this.a.getActivity());
-      long l = Long.parseLong((String)localObject);
-      localObject = ((bgks)this.a.app.getManager(355)).a(Long.valueOf(l));
-      if (localObject != null) {
-        ((bgkr)localObject).c(0);
-      }
-      bdll.b(null, "dc00898", "", "", "0X800AFC5", "0X800AFC5", 0, 0, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt), "", "", "");
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      break;
     }
   }
 }

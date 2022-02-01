@@ -1,13 +1,19 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
 
-public abstract interface amcm
+public final class amcm
+  implements Parcelable.Creator<IPCSpriteContext>
 {
-  public abstract void a();
+  public IPCSpriteContext a(Parcel paramParcel)
+  {
+    return new IPCSpriteContext(paramParcel);
+  }
   
-  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
-  
-  public abstract boolean a();
+  public IPCSpriteContext[] a(int paramInt)
+  {
+    return new IPCSpriteContext[paramInt];
+  }
 }
 
 

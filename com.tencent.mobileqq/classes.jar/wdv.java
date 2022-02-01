@@ -1,4 +1,55 @@
-class wdv {}
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
+public class wdv
+  extends vqm
+{
+  public HashSet<String> a;
+  public List<xpe> a;
+  
+  public wdv(ErrorMessage paramErrorMessage)
+  {
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
+  
+  public wdv(qqstory_service.RspStoryFeed paramRspStoryFeed)
+  {
+    super(paramRspStoryFeed.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    paramRspStoryFeed = paramRspStoryFeed.feed_list.get().iterator();
+    while (paramRspStoryFeed.hasNext())
+    {
+      qqstory_struct.StoryFeed localStoryFeed = (qqstory_struct.StoryFeed)paramRspStoryFeed.next();
+      int i = localStoryFeed.type.get();
+      xpe localxpe = xpe.a(i);
+      if (localxpe == null)
+      {
+        xvv.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "目前没有这个类型的Feed=" + i);
+      }
+      else if (localxpe.a(localStoryFeed))
+      {
+        if (localxpe.a() != null) {
+          this.jdField_a_of_type_JavaUtilHashSet.add(localxpe.a().feedId);
+        }
+        if ((!(localxpe instanceof xpd)) || (!xbw.a((ShareGroupFeedItem)((xpd)localxpe).a()))) {
+          this.jdField_a_of_type_JavaUtilList.add(localxpe);
+        }
+      }
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

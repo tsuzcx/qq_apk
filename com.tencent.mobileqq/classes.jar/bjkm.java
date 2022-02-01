@@ -1,19 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
-class bjkm
-  implements DialogInterface.OnClickListener
+public class bjkm
 {
-  bjkm(bjki parambjki, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, JSONObject paramJSONObject) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<bjkl> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<bjkl> b;
+  public boolean b;
+  public long c;
+  public String c;
+  public List<bjkl> c;
+  public boolean c;
+  public long d;
+  public String d = "";
+  public long e;
+  public String e = "";
+  public long f;
+  public String f;
+  public long g;
+  public String g;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bjkm()
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Bjki.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 6;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 6;
   }
 }
 

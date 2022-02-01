@@ -1,45 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.2;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.3;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.4;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.5;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.6;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.7;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.8;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.9;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.8.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DeviceBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tgx
-  extends tgo
+public class tgx
+  implements tpb
 {
-  public static final tgy a = new tgy(null);
-  
-  public tgx(@NotNull BridgeModule paramBridgeModule)
-  {
-    super(paramBridgeModule);
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "device";
-  }
+  public tgx(ViolaFragment paramViolaFragment) {}
   
   public void a()
   {
-    a("getDeviceInfo", (Function2)new DeviceBridgeInvokeHandler.register.1(this));
-    a("getNetworkInfo", (Function2)new DeviceBridgeInvokeHandler.register.2(this));
-    a("getNetType", (Function2)new DeviceBridgeInvokeHandler.register.3(this));
-    a("getClientInfo", (Function2)new DeviceBridgeInvokeHandler.register.4(this));
-    a("getCUKingStatus", (Function2)new DeviceBridgeInvokeHandler.register.5(this));
-    a("getGdtInfo", (Function2)new DeviceBridgeInvokeHandler.register.6(this));
-    a("getRecommendFlag", (Function2)new DeviceBridgeInvokeHandler.register.7(this));
-    a("isMobileQQ", (Function2)new DeviceBridgeInvokeHandler.register.8(this));
-    a("getNetworkType", (Function2)new DeviceBridgeInvokeHandler.register.9(this));
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
+    {
+      new Handler(localLooper).postDelayed(new ViolaFragment.8.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
+      }
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
+    }
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import gc;
+import gb;
 
 class TextPreviewSettingActivity$4
   implements Runnable
@@ -25,7 +25,7 @@ class TextPreviewSettingActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,28 @@ package com.tencent.biz.qqstory.playvideo;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import xlo;
-import xlp;
-import xlu;
-import xlv;
+import wmz;
+import wna;
+import wnf;
+import wng;
 
 public class TVKPreloader$1$1
   implements Runnable
 {
-  public TVKPreloader$1$1(xlp paramxlp, xlu paramxlu) {}
+  public TVKPreloader$1$1(wna paramwna, wnf paramwnf) {}
   
   public void run()
   {
-    Iterator localIterator = xlo.a().iterator();
+    Iterator localIterator = wmz.a().iterator();
     while (localIterator.hasNext()) {
-      ((xlv)localIterator.next()).b(this.a);
+      ((wng)localIterator.next()).b(this.a);
     }
-    xlo.a(true);
+    wmz.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1
  * JD-Core Version:    0.7.0.1
  */

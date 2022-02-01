@@ -1,42 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayoutNew;
 
-class bnyt
-  implements EIPClientConnectListener
+public class bnyt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bnyt(bnyr parambnyr, long paramLong) {}
+  public bnyt(QIMCameraCaptureButtonLayoutNew paramQIMCameraCaptureButtonLayoutNew) {}
   
-  public void connectFailed()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bnyr.a(this.jdField_a_of_type_Bnyr, false);
-    bnyr.b(this.jdField_a_of_type_Bnyr, false);
-    synchronized (bnyr.a(this.jdField_a_of_type_Bnyr))
-    {
-      bnyr.a(this.jdField_a_of_type_Bnyr).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bnyr.a(this.jdField_a_of_type_Bnyr));
-      }
-      return;
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      bnyr.a(this.jdField_a_of_type_Bnyr, ???.procName);
-    }
-    bnyr.a(this.jdField_a_of_type_Bnyr, true);
-    bnyr.b(this.jdField_a_of_type_Bnyr, false);
-    synchronized (bnyr.a(this.jdField_a_of_type_Bnyr))
-    {
-      bnyr.a(this.jdField_a_of_type_Bnyr).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bnyr.a(this.jdField_a_of_type_Bnyr) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

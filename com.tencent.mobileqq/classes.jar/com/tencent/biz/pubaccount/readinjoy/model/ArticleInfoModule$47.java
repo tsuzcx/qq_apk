@@ -8,39 +8,39 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import ozs;
-import pon;
-import qwo;
-import qwp;
-import qwr;
+import pay;
+import ptv;
+import rdm;
+import rdn;
+import rdp;
 import tencent.im.oidb.cmd0xa6e.oidb_cmd0xa6e.TopicInfo;
 
 public class ArticleInfoModule$47
   implements Runnable
 {
-  public ArticleInfoModule$47(pon parampon, int paramInt, Set paramSet, List paramList) {}
+  public ArticleInfoModule$47(ptv paramptv, int paramInt, Set paramSet, List paramList) {}
   
   public void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)pon.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)ptv.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
     Iterator localIterator1 = this.jdField_a_of_type_JavaUtilSet.iterator();
     while (localIterator1.hasNext())
     {
       ArticleInfo localArticleInfo = (ArticleInfo)localConcurrentHashMap.get(Long.valueOf(((Long)localIterator1.next()).longValue()));
-      if ((localArticleInfo != null) && (ozs.o(localArticleInfo)) && (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null))
+      if ((localArticleInfo != null) && (pay.o(localArticleInfo)) && (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null))
       {
         Iterator localIterator2 = localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator2.hasNext())
         {
-          qwp localqwp = (qwp)localIterator2.next();
-          if (localqwp.a != null)
+          rdn localrdn = (rdn)localIterator2.next();
+          if (localrdn.a != null)
           {
             Iterator localIterator3 = this.jdField_a_of_type_JavaUtilList.iterator();
             while (localIterator3.hasNext())
             {
               oidb_cmd0xa6e.TopicInfo localTopicInfo = (oidb_cmd0xa6e.TopicInfo)localIterator3.next();
-              if (localqwp.a.b == localTopicInfo.uint64_topic_id.get()) {
-                localqwp.a.jdField_a_of_type_Int = localTopicInfo.uint32_pv.get();
+              if (localrdn.a.b == localTopicInfo.uint64_topic_id.get()) {
+                localrdn.a.jdField_a_of_type_Int = localTopicInfo.uint32_pv.get();
               }
             }
           }

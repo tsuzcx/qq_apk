@@ -3,6 +3,7 @@ package com.tencent.thumbplayer.adapter;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
@@ -21,6 +22,7 @@ public class TPPlaybackParams
 {
   private static final String TAG = "TPPlaybackParams";
   private float mAudioGainRatio;
+  private String mAudioNormalizeVolumeParams;
   private Map<String, TPPlaybackParams.AudioTrackAttribute> mAudioTrackSources = new HashMap(0);
   private TPPlayerDataSource mDataSource = new TPPlayerDataSource();
   private TPPlaybackParams.LoopbackAttribute mLoopback;
@@ -29,7 +31,7 @@ public class TPPlaybackParams
   private ArrayList<TPPlaybackParams.SelectTrackAttribute> mSelectTrackAttributes = new ArrayList();
   private float mSpeedRatio;
   private Map<String, TPPlaybackParams.SubtitleAttribute> mSubtitleSources = new HashMap(0);
-  private Surface mSurface;
+  private Object mSurfaceObj;
   private TPProgramInfo mTpProgramInfo;
   private Map<Integer, TPTrackInfo> mTpSelectedTypeTrackInfoMap = new HashMap(0);
   private ArrayList<TPTrackInfo> mTpTrackInfoList = new ArrayList();
@@ -129,6 +131,11 @@ public class TPPlaybackParams
     return this.mAudioGainRatio;
   }
   
+  public String audioNormalizeVolumeParams()
+  {
+    return this.mAudioNormalizeVolumeParams;
+  }
+  
   public List<TPPlaybackParams.AudioTrackAttribute> audioTrackSources()
   {
     ArrayList localArrayList = new ArrayList(this.mAudioTrackSources.size());
@@ -195,9 +202,10 @@ public class TPPlaybackParams
     this.mAudioTrackSources.clear();
     this.mOutputMute = false;
     this.mAudioGainRatio = 1.0F;
+    this.mAudioNormalizeVolumeParams = "";
     this.mSpeedRatio = 1.0F;
     this.mTpSelectedTypeTrackInfoMap.clear();
-    this.mSurface = null;
+    this.mSurfaceObj = null;
     this.mOptionalParams.clear();
     this.mDataSource = new TPPlayerDataSource();
     this.mLoopback = null;
@@ -210,6 +218,11 @@ public class TPPlaybackParams
   public void setAudioGainRatio(float paramFloat)
   {
     this.mAudioGainRatio = paramFloat;
+  }
+  
+  public void setAudioNormalizeVolumeParams(String paramString)
+  {
+    this.mAudioNormalizeVolumeParams = paramString;
   }
   
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
@@ -304,7 +317,12 @@ public class TPPlaybackParams
   
   public void setSurface(Surface paramSurface)
   {
-    this.mSurface = paramSurface;
+    this.mSurfaceObj = paramSurface;
+  }
+  
+  public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mSurfaceObj = paramSurfaceHolder;
   }
   
   public float speedRatio()
@@ -336,9 +354,9 @@ public class TPPlaybackParams
     return bool1;
   }
   
-  public Surface surface()
+  public Object surface()
   {
-    return this.mSurface;
+    return this.mSurfaceObj;
   }
   
   public boolean validDataSource()

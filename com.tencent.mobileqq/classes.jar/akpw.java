@@ -1,22 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class akpw
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public akpw(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public akpw(LoginView.4 param4) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.b) {
-      bdll.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    this.a.finish();
-    bhkd.anim(this.a, true, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.this$0.c.setVisibility(0);
+    this.a.this$0.c.clearAnimation();
+    this.a.this$0.c.setAnimation(null);
+    this.a.this$0.a.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

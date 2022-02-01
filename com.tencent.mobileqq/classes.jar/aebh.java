@@ -1,17 +1,22 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class aebh
-  implements bhor
+class aebh
+  implements QQPermissionCallback
 {
-  public aebh(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  aebh(aebg paramaebg, QQSettingMe paramQQSettingMe) {}
   
-  public void a(String paramString, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.g();
   }
 }
 

@@ -27,7 +27,7 @@ public class RoundTextView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RoundTextView);
-    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167302);
+    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167337);
     paramContext.recycle();
   }
   

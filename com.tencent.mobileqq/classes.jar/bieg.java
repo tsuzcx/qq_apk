@@ -1,12 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-
-public class bieg
+public abstract class bieg
 {
-  public static boolean a(Context paramContext)
-  {
-    return bmfx.a(paramContext, VipWallpaperService.class.getName());
-  }
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

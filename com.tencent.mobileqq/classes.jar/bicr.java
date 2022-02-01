@@ -1,46 +1,18 @@
-public class bicr
-  extends bici
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+class bicr
+  extends BroadcastReceiver
 {
-  public static bicr a;
-  private int a;
+  bicr(bicl parambicl) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_Bicr = new bicr();
-  }
-  
-  public void a(bhza parambhza)
-  {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    if (i < 2) {
-      download(null, 0, parambhza, false);
+    bhzm.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.f();
     }
-  }
-  
-  public long getBID()
-  {
-    return 3L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "tintconfig";
-  }
-  
-  public String getScid(int paramInt)
-  {
-    return getScidPrefix();
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "theme_mapping_config_android";
-  }
-  
-  protected boolean isZip_KeepZip()
-  {
-    return false;
   }
 }
 

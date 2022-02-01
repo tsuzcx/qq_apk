@@ -1,32 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class xdt
-  extends wpa<xfe>
 {
-  public String a()
+  public int a;
+  public long a;
+  public String a;
+  
+  public xdt(xdq paramxdq, String paramString)
   {
-    return wnu.a("StorySvc.video_apply_authkey");
+    this.jdField_a_of_type_JavaLangString = "";
+    paramxdq = ((vuk)vux.a(19)).a(paramString);
+    if (paramxdq != null) {
+      a(paramxdq);
+    }
   }
   
-  public xfe a(byte[] paramArrayOfByte)
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
   {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
-    try
-    {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new xfe(localRspAuthKey);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new byte[0];
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 

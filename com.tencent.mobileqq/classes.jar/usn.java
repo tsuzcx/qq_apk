@@ -1,12 +1,14 @@
-class usn
-  implements ukd
+public abstract interface usn<U, V>
 {
-  usn(usm paramusm, usf paramusf) {}
+  public abstract void a();
   
-  public void a(uko paramuko)
-  {
-    usm.a(this.jdField_a_of_type_Usm, paramuko, this.jdField_a_of_type_Usf);
-  }
+  public abstract void a(usj<U, V> paramusj);
+  
+  public abstract void a(uso paramuso);
+  
+  public abstract boolean a(usj<U, V> paramusj);
+  
+  public abstract void b();
 }
 
 

@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.transfile;
 
-import beqz;
-import besv;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
-public class AbsDownloader$1
+class AbsDownloader$1
   implements Runnable
 {
-  public AbsDownloader$1(beqz parambeqz, besv parambesv) {}
+  AbsDownloader$1(AbsDownloader paramAbsDownloader, DiskCache.Editor paramEditor) {}
   
   public void run()
   {
     try
     {
-      this.a.a();
+      this.val$editor.commit();
       return;
     }
     catch (IOException localIOException)
@@ -22,8 +20,8 @@ public class AbsDownloader$1
       do
       {
         QLog.e("AbsDownloader", 2, localIOException.getMessage());
-      } while (this.a == null);
-      this.a.a(false);
+      } while (this.val$editor == null);
+      this.val$editor.abort(false);
     }
   }
 }

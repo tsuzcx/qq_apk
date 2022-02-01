@@ -1,106 +1,245 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.RSACrypt;
+import oicq.wlogin_sdk.tools.util;
 
 public class bhuk
+  extends SSOAccountObserver
 {
-  String a;
-  public List<bhum> a;
+  public bhuk(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public bhuk()
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public bhuk a()
-  {
-    bhuk localbhuk = new bhuk();
-    localbhuk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbhuk.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localbhuk;
-  }
-  
-  public bhum a(int paramInt)
-  {
-    return (bhum)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  @Deprecated
-  public void a(int paramInt, String paramString)
-  {
-    bhum localbhum = new bhum();
-    localbhum.jdField_a_of_type_Int = paramInt;
-    localbhum.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList.add(localbhum);
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    bhum localbhum = new bhum();
-    localbhum.jdField_a_of_type_Int = paramInt1;
-    localbhum.jdField_a_of_type_JavaLangString = paramString;
-    localbhum.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilList.add(localbhum);
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    bhum localbhum = new bhum();
-    localbhum.jdField_a_of_type_Int = paramInt1;
-    localbhum.jdField_a_of_type_JavaLangString = paramString;
-    localbhum.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilList.add(paramInt3, localbhum);
-  }
-  
-  public void a(bhum parambhum)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambhum);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bhum[] a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onFailed--action = " + paramInt1 + ", ret = " + paramInt2 + ", ssoAccount = *" + bhwf.a(paramString));
+    this.a.f();
+    if (paramInt2 == -1000)
     {
-      bhum[] arrayOfbhum = new bhum[this.jdField_a_of_type_JavaUtilList.size()];
-      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbhum);
-      return arrayOfbhum;
+      QuickLoginAuthorityActivity.a(this.a).a(this.a, this.a.getResources().getString(2131694263));
+      return;
     }
-    return null;
+    paramBundle = (ErrMsg)paramBundle.getParcelable("lastError");
+    if (paramBundle == null) {}
+    for (paramBundle = this.a.getString(2131694260);; paramBundle = paramBundle.getMessage())
+    {
+      QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "ssoAccount failed, error: ", paramBundle });
+      QQToast.a(BaseApplicationImpl.getContext(), paramBundle + "(" + paramInt2 + ")", 0).a();
+      this.a.a(paramString);
+      return;
+    }
   }
   
-  public String toString()
+  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetA1WithA1--ret = " + paramInt1 + ", ssoAccount = *" + bhwf.a(paramString));
+    paramString = "" + QuickLoginAuthorityActivity.a(this.a).a(this.a.jdField_a_of_type_MqqManagerWtloginManager, paramString);
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    this.a.b = null;
+    paramString = new WloginSimpleInfo();
+    this.a.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(this.a.jdField_a_of_type_JavaLangString, paramString);
+    paramArrayOfByte = new RSACrypt(this.a).EncryptData(this.a.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    paramString = (ErrMsg)paramBundle.getParcelable("errMsg");
+    paramBundle = this.a;
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (paramString == null) {}
+    for (paramString = "";; paramString = paramString.getMessage())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        bhum localbhum = (bhum)localIterator.next();
-        localStringBuilder.append(" " + localbhum.jdField_a_of_type_JavaLangString + "\n");
+      paramBundle.a(paramInt1, paramArrayOfByte, str, paramString);
+      return;
+    }
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetTicketNoPasswd--ssoAccount = *" + bhwf.a(paramString));
+    this.a.b = null;
+    if ((this.a.jdField_a_of_type_AndroidOsBundle.containsKey("qrcode")) && (this.a.jdField_a_of_type_AndroidOsBundle.containsKey("schemacallback"))) {
+      QuickLoginAuthorityActivity.a(this.a);
+    }
+    while (!this.a.jdField_a_of_type_AndroidOsBundle.containsKey("p")) {
+      return;
+    }
+    aqbz localaqbz = (aqbz)apub.a().a(546);
+    paramBundle = "";
+    if (paramInt == 32) {
+      paramBundle = util.buf_to_string(paramArrayOfByte);
+    }
+    String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("p");
+    paramArrayOfByte = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      paramArrayOfByte = str1;
+      if (!str1.endsWith("&")) {
+        paramArrayOfByte = str1 + "&";
       }
     }
-    return localStringBuilder.toString();
+    paramString = "keyindex=19&clientuin=$CLIENTUIN$&clientkey=$CLIENTKEY$".replace("$CLIENTUIN$", paramString).replace("$CLIENTKEY$", paramBundle);
+    String str3 = paramArrayOfByte + paramString;
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(str3));
+    paramBundle = null;
+    str1 = null;
+    String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString("schemacallback");
+    paramString = str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (str2.startsWith("mttbrowser://")) {
+        paramString = "com.tencent.mtt";
+      }
+    }
+    else
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        break label813;
+      }
+      paramArrayOfByte = Uri.parse(paramArrayOfByte).getQueryParameter("pt_browser");
+      QLog.i("SSOAccountObserver", 1, "-->onGetTicketNoPasswd--schemacallback=" + str2 + ",pt_browser=" + paramArrayOfByte);
+      if ((TextUtils.isEmpty(paramArrayOfByte)) || (!"LieBaoFast".equals(paramArrayOfByte))) {
+        break label813;
+      }
+      paramString = "com.ijinshan.browser_fast";
+    }
+    label806:
+    label813:
+    for (;;)
+    {
+      for (;;)
+      {
+        paramInt = 0;
+        if (!TextUtils.isEmpty(paramString)) {}
+        try
+        {
+          paramArrayOfByte = this.a.getPackageManager().getPackageInfo(paramString, 0);
+          if (localaqbz.jdField_a_of_type_Int == 1)
+          {
+            paramBundle = (String)localaqbz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+            if ((this.a.a(paramString, paramBundle)) && (paramArrayOfByte != null))
+            {
+              paramInt = 1;
+              if (paramInt != 0)
+              {
+                localIntent.setPackage(paramString);
+                localIntent.setData(Uri.parse(str3));
+              }
+              if ((localaqbz.b != 1) || (paramInt != 0)) {
+                break label754;
+              }
+              this.a.f();
+              QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131710347), 1).a();
+              paramArrayOfByte = new HashMap();
+              paramArrayOfByte.put("callback", str2);
+              if (paramInt == 0) {
+                break label806;
+              }
+              paramString = "1";
+              paramArrayOfByte.put("checkRes", paramString);
+              StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "kQuickLoginForBrowser", true, 0L, 0L, paramArrayOfByte, "");
+              return;
+              if (str2.startsWith("ucweb://"))
+              {
+                paramString = "com.UCMobile";
+                break;
+              }
+              if (str2.startsWith("bdbrowser://"))
+              {
+                paramString = "com.baidu.browser.apps";
+                break;
+              }
+              if (str2.startsWith("bdapp://"))
+              {
+                paramString = "com.baidu.searchbox";
+                break;
+              }
+              if (str2.startsWith("googlechrome://"))
+              {
+                paramString = "com.android.chrome";
+                break;
+              }
+              if (str2.startsWith("mzbrowser://"))
+              {
+                paramString = "com.android.browser";
+                break;
+              }
+              if (str2.startsWith("lb://"))
+              {
+                paramString = "com.ijinshan.browser_fast";
+                break;
+              }
+              if (str2.startsWith("qihoobrowser://"))
+              {
+                paramString = "com.qihoo.browser";
+                break;
+              }
+              if (str2.startsWith("browser2345://"))
+              {
+                paramString = "com.browser2345";
+                break;
+              }
+              paramString = str1;
+              if (!str2.startsWith("SogouMSE://")) {
+                break;
+              }
+              paramString = "sogou.mobile.explorer";
+            }
+          }
+        }
+        catch (PackageManager.NameNotFoundException paramArrayOfByte)
+        {
+          for (;;)
+          {
+            QLog.e("SSOAccountObserver", 1, "-->onGetTicketNoPasswd exception:" + paramArrayOfByte.getStackTrace().toString());
+            paramArrayOfByte = paramBundle;
+            continue;
+            paramInt = 0;
+            continue;
+            if (paramArrayOfByte != null)
+            {
+              paramInt = 1;
+            }
+            else
+            {
+              paramInt = 0;
+              continue;
+              try
+              {
+                label754:
+                this.a.startActivity(localIntent);
+                this.a.e();
+              }
+              catch (Exception paramString)
+              {
+                for (;;)
+                {
+                  QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "startActivity :" + paramString.getMessage());
+                }
+              }
+              paramString = "0";
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onUserCancel--action = " + paramInt + ", ssoAccount = *" + bhwf.a(paramString));
+    this.a.f();
   }
 }
 

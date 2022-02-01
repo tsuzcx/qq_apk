@@ -1,54 +1,21 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerFactory;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "()V", "createMediaPlayer", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "videoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "createPlayerVideoView", "context", "Landroid/content/Context;", "isUseTextureView", "", "createPreloader", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "obtainMediaPlayer", "token", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sah
-  implements rzv
+class sah
+  implements DialogInterface.OnCancelListener
 {
-  public static final sah a = new sah();
+  sah(sab paramsab) {}
   
-  @Nullable
-  public rzt a(@NotNull String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "token");
-    paramString = SuperPlayerFactory.obtainMediaPlayer(paramString);
-    if (paramString != null) {
-      return (rzt)new sag(paramString);
+    sab.a(this.a, "mShareActionSheet cancle button OnClick");
+    if (sab.a(this.a) != null) {
+      sab.a(this.a).c();
     }
-    return null;
-  }
-  
-  @NotNull
-  public rzt a(@Nullable sab paramsab)
-  {
-    if (bapg.a()) {
-      return (rzt)new sag(SuperPlayerFactory.createMediaPlayer((Context)BaseApplicationImpl.getContext(), 104, null));
-    }
-    return (rzt)new sag(null);
-  }
-  
-  @NotNull
-  public rzw a()
-  {
-    if (bapg.a()) {
-      return (rzw)new sai(SuperPlayerFactory.createPreDownloader((Context)BaseApplicationImpl.getContext(), 104));
-    }
-    return (rzw)new sai(null);
-  }
-  
-  @NotNull
-  public sab a(@NotNull Context paramContext, boolean paramBoolean)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    if (bapg.a()) {
-      return (sab)new sak(SuperPlayerFactory.createPlayerVideoView(paramContext));
-    }
-    return (sab)new sak(null);
+    paramDialogInterface = sab.a(this.a);
+    sab.a(this.a, paramDialogInterface, String.valueOf(pay.a()), paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
   }
 }
 

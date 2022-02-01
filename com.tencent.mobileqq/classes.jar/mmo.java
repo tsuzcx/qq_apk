@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface mmo
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
 }
 
 

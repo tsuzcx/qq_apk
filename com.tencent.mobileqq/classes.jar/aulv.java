@@ -1,99 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public class aulv
-  extends auls
+public final class aulv
+  implements PluginManagerUpdater
 {
-  private MessageForTroopFile a;
+  private final File a;
   
-  public aulv(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public aulv(String paramString)
   {
-    super(paramQQAppInterface, paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile = ((MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
   }
   
-  public long a()
+  public File getLatest()
   {
-    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localbftf == null) {
-      return 0L;
+    if (this.a.exists()) {
+      return this.a;
     }
-    return localbftf.c;
+    return null;
   }
   
-  public aulp a()
+  public Future<Boolean> isAvailable(File paramFile)
   {
-    aulu localaulu = new aulu(bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile));
-    localaulu.a(new aulw(this));
-    return localaulu;
+    return ThreadManagerExecutor.getExecutorService(16).submit(new aulx(this, paramFile));
   }
   
-  public String a()
+  public Future<File> update()
   {
-    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localbftf != null) {
-      return localbftf.jdField_a_of_type_JavaLangString;
-    }
-    return "";
+    return ThreadManagerExecutor.getExecutorService(16).submit(new aulw(this));
   }
   
-  public boolean a()
+  public boolean wasUpdating()
   {
-    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    if (localbftf == null)
-    {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
-      return false;
-    }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "] fileId[" + localbftf.e + "]");
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
-    localTroopFileTransferManager.a(localbftf.e, localbftf.g, localbftf.c, localbftf.h);
-    if ((localbftf.b == 10) || (localbftf.b == 9)) {
-      if (localbftf.jdField_a_of_type_JavaUtilUUID != null) {
-        localTroopFileTransferManager.c(localbftf.jdField_a_of_type_JavaUtilUUID);
-      }
-    }
-    for (;;)
-    {
-      return true;
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : resumeDownload error, infoId is null");
-      return false;
-      if (localbftf.b != 7) {
-        break;
-      }
-      localTroopFileTransferManager.a(localbftf.e, localbftf.g, localbftf.c, localbftf.h);
-    }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : can not handle file info status[" + localbftf.b + ",download error");
     return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq;
-  }
-  
-  public boolean b()
-  {
-    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localbftf == null) {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "stopDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
-    }
-    while ((localbftf.b != 8) && (localbftf.b != 9) && (localbftf.b != 10)) {
-      return false;
-    }
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).d(localbftf.jdField_a_of_type_JavaUtilUUID);
-    return true;
-  }
-  
-  public boolean c()
-  {
-    bftf localbftf = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    return (localbftf != null) && (localbftf.b == 8);
   }
 }
 

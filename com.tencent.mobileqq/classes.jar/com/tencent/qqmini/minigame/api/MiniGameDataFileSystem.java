@@ -10,7 +10,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/api/MiniGameDataFileSystem;", "Lcom/tencent/mobileqq/triton/filesystem/GameDataFileSystem;", "info", "Lcom/tencent/qqmini/sdk/launcher/model/ApkgBaseInfo;", "(Lcom/tencent/qqmini/sdk/launcher/model/ApkgBaseInfo;)V", "fileManager", "Lcom/tencent/qqmini/sdk/core/manager/MiniAppFileManager;", "kotlin.jvm.PlatformType", "getFile", "Ljava/io/File;", "pathInGame", "", "getFilePathInGame", "file", "newTempFile", "Lcom/tencent/mobileqq/triton/filesystem/TemporaryFile;", "hash", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/api/MiniGameDataFileSystem;", "Lcom/tencent/mobileqq/triton/filesystem/GameDataFileSystem;", "info", "Lcom/tencent/qqmini/sdk/launcher/model/ApkgBaseInfo;", "(Lcom/tencent/qqmini/sdk/launcher/model/ApkgBaseInfo;)V", "fileManager", "Lcom/tencent/qqmini/sdk/core/manager/MiniAppFileManager;", "kotlin.jvm.PlatformType", "getFile", "Ljava/io/File;", "pathInGame", "", "getFilePathInGame", "file", "newTempFile", "Lcom/tencent/mobileqq/triton/filesystem/TemporaryFile;", "hash", "suffix", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
 public final class MiniGameDataFileSystem
   implements GameDataFileSystem
 {
@@ -38,12 +38,12 @@ public final class MiniGameDataFileSystem
   }
   
   @NotNull
-  public TemporaryFile newTempFile(@Nullable String paramString)
+  public TemporaryFile newTempFile(@Nullable String paramString1, @Nullable String paramString2)
   {
-    paramString = new File(this.fileManager.getTmpPath(null));
-    String str = this.fileManager.getWxFilePathByExistLocalPath(paramString.getAbsolutePath());
-    Intrinsics.checkExpressionValueIsNotNull(str, "scheme");
-    return new TemporaryFile(paramString, str);
+    paramString1 = new File(this.fileManager.getTmpPath(paramString2));
+    paramString2 = this.fileManager.getWxFilePathByExistLocalPath(paramString1.getAbsolutePath());
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "scheme");
+    return new TemporaryFile(paramString1, paramString2);
   }
 }
 

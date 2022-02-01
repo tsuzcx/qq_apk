@@ -1,10 +1,16 @@
-public abstract interface acpy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+
+public class acpy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(acpv paramacpv);
+  public acpy(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public abstract void a(acpv paramacpv, int paramInt);
-  
-  public abstract void a(acpv paramacpv, int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

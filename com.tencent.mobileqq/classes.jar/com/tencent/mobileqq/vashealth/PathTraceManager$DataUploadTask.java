@@ -2,9 +2,8 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import awjk;
-import bdmc;
-import bifz;
+import auwo;
+import bgmk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +45,7 @@ public class PathTraceManager$DataUploadTask
       HashMap localHashMap = new HashMap();
       localHashMap.put("type", paramInt + "");
       String str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getCurrentAccountUin();
-      bdmc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp()).a(str, "QQSportUpload", paramBoolean, System.currentTimeMillis(), 0L, localHashMap, "", false);
+      StatisticCollector.getInstance(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp()).collectPerformance(str, "QQSportUpload", paramBoolean, System.currentTimeMillis(), 0L, localHashMap, "", false);
     }
   }
   
@@ -155,13 +155,13 @@ public class PathTraceManager$DataUploadTask
           localJSONObject.put("message", "gzip failed");
           return;
         }
-        localObject2 = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), awjk.class);
+        localObject2 = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), auwo.class);
         ((NewIntent)localObject2).putExtra("extra_cmd", this.b);
         localOrbitReq.num.set(0);
         ((NewIntent)localObject2).putExtra("extra_data", (byte[])localObject1);
         localOrbitReq.tracePath.clear();
         ((NewIntent)localObject2).putExtra("extra_timeout", 15000);
-        ((NewIntent)localObject2).setObserver(new bifz(this, localJSONObject, localList, localThrowable, localSharedPreferences, localOrbitReq));
+        ((NewIntent)localObject2).setObserver(new bgmk(this, localJSONObject, localList, localThrowable, localSharedPreferences, localOrbitReq));
         BaseApplicationImpl.sApplication.getRuntime().startServlet((NewIntent)localObject2);
         return;
         label965:

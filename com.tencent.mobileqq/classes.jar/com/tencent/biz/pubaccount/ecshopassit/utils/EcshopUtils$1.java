@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.ecshopassit.utils;
 
-import acoo;
-import adab;
-import bdol;
+import abkw;
+import abwp;
+import bcgw;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import oek;
-import ofz;
+import ofx;
+import ohm;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public final class EcshopUtils$1
   implements Runnable
 {
-  public EcshopUtils$1(QQAppInterface paramQQAppInterface) {}
+  public EcshopUtils$1(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public final class EcshopUtils$1
     {
       try
       {
-        localObject1 = this.a;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
         if (localObject1 == null) {
           return;
         }
@@ -40,39 +40,39 @@ public final class EcshopUtils$1
       }
       finally
       {
-        if (this.a.a() == null) {
-          break label290;
+        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() == null)) {
+          break label339;
         }
-        this.a.a().a("3046055438", 1008, false);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, 1008, false);
       }
-      i = this.a.a().a("3046055438", 1008);
+      i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
       if (i != 0) {
         break;
       }
-    } while (this.a.a() == null);
-    this.a.a().a("3046055438", 1008, false);
+    } while ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() == null));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, 1008, false);
     return;
-    localObject1 = this.a.a().b("3046055438", 1008);
-    localObject3 = ofz.a((MessageRecord)localObject1);
-    if ((localObject3 != null) && (((bdol)localObject3).c != 100))
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.jdField_a_of_type_JavaLangString, 1008);
+    localObject3 = ohm.a((MessageRecord)localObject1);
+    if ((localObject3 != null) && (((bcgw)localObject3).c != 100))
     {
-      localObject1 = oek.a((MessageRecord)localObject1);
+      localObject1 = ofx.a((MessageRecord)localObject1);
       if (localObject1 != null) {
-        acoo.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+        abkw.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
       }
     }
-    while (this.a.a() != null)
+    while ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() != null))
     {
-      this.a.a().a("3046055438", 1008, false);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, 1008, false);
       return;
       if ((localObject1 instanceof MessageForArkApp))
       {
-        localObject3 = ofz.a((MessageRecord)localObject1);
+        localObject3 = ohm.a((MessageRecord)localObject1);
         if ((localObject3 != null) && (String.valueOf(1).equals(((JSONObject)localObject3).optString("action_type"))))
         {
-          localObject1 = oek.a((MessageRecord)localObject1);
+          localObject1 = ofx.a((MessageRecord)localObject1);
           if (localObject1 != null) {
-            acoo.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+            abkw.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
           }
         }
       }

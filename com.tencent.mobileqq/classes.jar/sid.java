@@ -1,17 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sid
-  extends pmr
 {
-  public sid(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  private JSONObject a;
+  
+  public sid(String paramString)
   {
-    super(paramString);
+    try
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.a = new JSONObject();
+        return;
+      }
+      this.a = new JSONObject(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void a(pmk parampmk)
+  public sid(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    parampmk.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    this.a = new JSONObject();
+    ofe.a(paramString1, paramString2, paramString3, paramString4, this.a);
+  }
+  
+  public sid(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramString1);
+    ofe.a(paramString2, paramString3, paramString4, paramString5, this.a);
+  }
+  
+  public String a()
+  {
+    return this.a.toString();
+  }
+  
+  protected void a(String paramString, Object paramObject)
+  {
+    try
+    {
+      this.a.put(paramString, paramObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

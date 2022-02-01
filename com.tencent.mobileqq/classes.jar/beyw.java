@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.net.URL;
-
-class beyw
-  implements bezb
+public abstract interface beyw
 {
-  beyw(beyv parambeyv) {}
-  
-  public Bitmap getBitmap(URL paramURL)
-  {
-    return ShortVideoUtils.a(null, paramURL.getPath());
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

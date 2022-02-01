@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import acov;
+import abld;
 import com.tencent.qphone.base.util.QLog;
 
 class AppBoxPlugin$MiniAppBox$1

@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ItemDecoration;
 import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
-import zps;
 
 public class EmojiFragment$TempGridItemLayoutDecoration
   extends RecyclerView.ItemDecoration
@@ -44,7 +44,7 @@ public class EmojiFragment$TempGridItemLayoutDecoration
         i = 1;
       }
       if (i == 0) {
-        paramRect.top = zps.a(this.mContext, 11.0F);
+        paramRect.top = UIUtils.dip2px(this.mContext, 11.0F);
       }
       return;
       if (k % this.mNumColumns == m - 1)

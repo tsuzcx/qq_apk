@@ -28,23 +28,11 @@ public class StoryImageToastView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public StoryImageToastView a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramInt);
-    return this;
-  }
-  
-  public StoryImageToastView a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    return this;
-  }
-  
   protected void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560974, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379124));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379120));
+    LayoutInflater.from(paramContext).inflate(2131560850, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378892));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378888));
   }
 }
 

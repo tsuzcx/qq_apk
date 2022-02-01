@@ -1,27 +1,38 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class lno
-  extends lef
 {
-  public lno(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  protected void a(long paramLong, ArrayList<lcv> paramArrayList, int paramInt1, int paramInt2)
+  public lno()
   {
-    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public boolean equals(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
+    if ((paramObject != null) && ((paramObject instanceof lno)))
+    {
+      paramObject = (lno)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
+      }
     }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    GaInviteLockActivity.a(this.a, paramInt);
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 

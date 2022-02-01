@@ -1,213 +1,208 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.component.network.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.vip.manager.MonitorManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tribe.async.async.JobContext;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.IOException;
 
 public class bnpj
+  extends bnph<bnot, bnot>
 {
-  public static String a()
+  private final String a;
+  
+  public bnpj()
   {
-    Object localObject1 = "";
-    Object localObject2 = a(null);
-    if (localObject2 != null)
-    {
-      ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
-      Object localObject3 = new File((String)localObject2);
-      localObject2 = localObject1;
-      if (((File)localObject3).isDirectory())
-      {
-        localObject3 = ((File)localObject3).listFiles();
-        int j = localObject3.length;
-        int i = 0;
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (i >= j) {
-            break;
-          }
-          Object localObject4 = localObject3[i];
-          localObject2 = localObject1;
-          if (localObject4.isDirectory()) {
-            localObject2 = (String)localObject1 + localObject4.getName() + ",";
-          }
-          i += 1;
-          localObject1 = localObject2;
-        }
-      }
-      if (((String)localObject2).length() > 0) {
-        return ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
-      }
-      return "";
-    }
-    return "";
+    this(null);
   }
   
-  public static String a(Context paramContext)
+  public bnpj(String paramString)
   {
-    return a("avatar");
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static String a(String paramString)
+  protected void a(JobContext paramJobContext, bnot parambnot)
   {
-    Object localObject = bnpk.a();
-    if (localObject == null) {
-      localObject = null;
-    }
-    String str;
-    do
+    paramJobContext = null;
+    int i = 0;
+    Object localObject3 = parambnot.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty((CharSequence)localObject3))
     {
-      return localObject;
-      str = ((File)localObject).getAbsolutePath();
-      localObject = str;
-    } while (TextUtils.isEmpty(paramString));
-    paramString = new File(str + File.separator + paramString);
-    try
-    {
-      if (paramString.isFile()) {
-        FileUtils.delete(paramString);
-      }
-      if (!paramString.exists()) {
-        paramString.mkdirs();
-      }
-      return paramString.getAbsolutePath();
-    }
-    finally {}
-  }
-  
-  public static void a(bioy parambioy, String... paramVarArgs)
-  {
-    j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleSetFacadeFinish");
-    }
-    if ((parambioy.a() == null) || (parambioy.a() == null)) {
+      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
       return;
     }
-    LocalMultiProcConfig.putInt4Uin("key_personalize_prefix_19", 0, Long.valueOf(parambioy.a().getCurrentAccountUin()).longValue());
-    Intent localIntent = new Intent("action_facade_js2qzone");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", "setAvatar");
-    localIntent.putExtras(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "actionString: " + localIntent.getAction());
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.b, ".jpg");
     }
-    bmtd.a(parambioy.a(), bmtk.a(), localIntent);
-    i = j;
-    if (paramVarArgs != null)
+    String str3 = parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath;
+    String str2 = parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath;
+    String str4 = parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getStringExtra("dynamic_Sticker_image_path", null);
+    String str1 = parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getStringExtra("pl_pic", null);
+    if ((str3 != null) || (str2 != null) || (str4 != null))
     {
-      i = j;
-      if (paramVarArgs.length >= 1)
+      try
       {
-        i = j;
-        if (TextUtils.isEmpty(paramVarArgs[0])) {}
+        localObject3 = BitmapFactory.decodeFile((String)localObject3);
+        if (localObject3 != null) {
+          break label213;
+        }
+        super.notifyError(new ErrorMessage(-1, amtj.a(2131705676)));
+        return;
       }
+      catch (OutOfMemoryError paramJobContext)
+      {
+        xvv.e("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed : " + paramJobContext);
+      }
+      if (i == 0) {
+        break label715;
+      }
+      ypi.a(new File(parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath), new File(QQStoryTakeVideoCloseAnimationActivity.jdField_a_of_type_JavaLangString));
+      super.notifyResult(parambnot);
+      return;
+      label213:
+      localObject1 = paramJobContext;
+      if (str4 == null) {}
     }
     for (;;)
     {
       try
       {
-        i = new JSONObject(paramVarArgs[0]).optInt("need_jump");
-        if (i != 1) {
-          continue;
+        localObject1 = yoy.a(str4);
+        paramJobContext = (JobContext)localObject1;
+        if (localObject1 != null)
+        {
+          paramJobContext = (JobContext)localObject1;
+          if (str3 != null) {
+            paramJobContext = (JobContext)localObject1;
+          }
         }
-        i = j;
       }
-      catch (Exception paramVarArgs)
+      catch (OutOfMemoryError localIOException)
       {
-        QLog.e("QZoneFacadeJsHandleLogic", 1, paramVarArgs.getMessage());
-        MonitorManager.a().a(15, 4, " parse json error " + paramVarArgs.getStackTrace(), false);
-        i = j;
-        continue;
+        try
+        {
+          localObject1 = yoy.a(str3, null);
+          paramJobContext = (JobContext)localObject1;
+          xvv.d("Q.qqstory.publish.edit.MergeThumbSegment", "unSerializeBitmapFromFile success %s", new Object[] { str3 });
+          paramJobContext = (JobContext)localObject1;
+          localObject1 = paramJobContext;
+          if (paramJobContext == null)
+          {
+            localObject1 = paramJobContext;
+            if (str2 == null) {}
+          }
+        }
+        catch (IOException localIOException)
+        {
+          try
+          {
+            localObject1 = yoy.a(str2);
+            if ((localObject1 == null) || (!(parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || (!parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false))) {
+              break label736;
+            }
+            paramJobContext = bnou.a((Bitmap)localObject1, -90);
+            if (paramJobContext == null) {
+              break label736;
+            }
+            if (paramJobContext == null) {
+              break label742;
+            }
+            localObject1 = yoy.b((Bitmap)localObject3, paramJobContext);
+            paramJobContext.recycle();
+            ((Bitmap)localObject3).recycle();
+            paramJobContext = (JobContext)localObject1;
+            localObject1 = paramJobContext;
+            if (paramJobContext != null)
+            {
+              localObject1 = paramJobContext;
+              if (str1 == null) {}
+            }
+            try
+            {
+              localObject3 = BitmapFactory.decodeFile(str1);
+              if (localObject3 == null) {
+                break label733;
+              }
+              localObject1 = yoy.b(paramJobContext, (Bitmap)localObject3);
+              if (localObject1 == null) {
+                break label733;
+              }
+              paramJobContext.recycle();
+              ((Bitmap)localObject3).recycle();
+              paramJobContext = (JobContext)localObject1;
+              localObject1 = paramJobContext;
+            }
+            catch (OutOfMemoryError localOutOfMemoryError3)
+            {
+              JobContext localJobContext1;
+              JobContext localJobContext2;
+              xvv.c("Q.qqstory.publish.edit.MergeThumbSegment", "decode " + str1 + " failed", localOutOfMemoryError3);
+              localJobContext3 = paramJobContext;
+              continue;
+              ypi.a(vkm.e);
+              boolean bool = yoy.a(localJobContext3, (String)localObject2);
+              if (localJobContext3 == null) {
+                break label588;
+              }
+              localJobContext3.recycle();
+              if (!bool) {
+                break label632;
+              }
+              parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject2);
+              xvv.b("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image success : " + (String)localObject2);
+              i = 1;
+              continue;
+              xvv.d("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed");
+              i = 0;
+              continue;
+            }
+            if (localObject1 == null)
+            {
+              i = 0;
+              break;
+              localOutOfMemoryError1 = localOutOfMemoryError1;
+              xvv.c("Q.qqstory.publish.edit.MergeThumbSegment", "decode " + str2 + " failed", localOutOfMemoryError1);
+              localJobContext1 = paramJobContext;
+              continue;
+              localIOException = localIOException;
+              xvv.c("Q.qqstory.publish.edit.MergeThumbSegment", "unSerializeBitmapFromFile failed", localIOException);
+            }
+          }
+          catch (OutOfMemoryError localOutOfMemoryError2)
+          {
+            xvv.c("Q.qqstory.publish.edit.MergeThumbSegment", "decode " + str2 + " failed", localOutOfMemoryError2);
+            localJobContext2 = paramJobContext;
+            continue;
+          }
+        }
       }
-      if (i == 0) {
+      JobContext localJobContext3;
+      label588:
+      label632:
+      xvv.a("Q.qqstory.publish.edit.MergeThumbSegment", "use thumb image as merged image, copy to target destination = %s", localObject2);
+      if (ypi.a(new File((String)localObject3), new File((String)localObject2)))
+      {
+        parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject2);
+        i = 1;
         break;
       }
-      parambioy.a().finish();
+      xvv.d("Q.qqstory.publish.edit.MergeThumbSegment", "copy failed, original = %s, target = %s", new Object[] { localObject3, localObject2 });
+      break;
+      label715:
+      super.notifyError(new ErrorMessage(-1, amtj.a(2131705679)));
       return;
-      i = 0;
-    }
-  }
-  
-  public static void b(bioy parambioy, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleDownloadFacadeFinish");
-    }
-    String str1 = "";
-    Object localObject3 = "";
-    str2 = "";
-    localObject4 = str2;
-    Object localObject2 = localObject3;
-    Object localObject1 = str1;
-    if (paramVarArgs != null)
-    {
-      localObject4 = str2;
-      localObject2 = localObject3;
-      localObject1 = str1;
-      if (paramVarArgs.length > 0)
-      {
-        localObject2 = localObject3;
-        localObject1 = str1;
-      }
-    }
-    try
-    {
-      localObject4 = new JSONObject(paramVarArgs[0]);
-      localObject2 = localObject3;
-      localObject1 = str1;
-      paramVarArgs = ((JSONObject)localObject4).getString("avatarID");
-      localObject2 = localObject3;
-      localObject1 = paramVarArgs;
-      localObject3 = ((JSONObject)localObject4).getString("avatarUrl");
-      localObject2 = localObject3;
-      localObject1 = paramVarArgs;
-      localObject4 = ((JSONObject)localObject4).getString("type");
-      localObject1 = paramVarArgs;
-      localObject2 = localObject3;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      for (;;)
-      {
-        paramVarArgs.printStackTrace();
-        localObject4 = str2;
-      }
-    }
-    if ((!TextUtils.isEmpty(localObject2)) && (parambioy.a() != null))
-    {
-      paramVarArgs = new Intent("action_facade_js2qzone");
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("avatarId", (String)localObject1);
-      ((Bundle)localObject3).putString("avatarUrl", localObject2);
-      ((Bundle)localObject3).putString("type", (String)localObject4);
-      ((Bundle)localObject3).putString("cmd", "downloadAvatar");
-      paramVarArgs.putExtras((Bundle)localObject3);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFacadeJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
-      }
-      bmtd.a(parambioy.a(), bmtk.a(), paramVarArgs);
-    }
-  }
-  
-  public static void c(bioy parambioy, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleCheckDownloadedIdList");
-    }
-    paramVarArgs = a();
-    parambioy = parambioy.a();
-    if (parambioy != null) {
-      parambioy.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"idlist\",data:\"" + paramVarArgs + "\"});");
+      label733:
+      continue;
+      label736:
+      paramJobContext = localJobContext3;
+      continue;
+      label742:
+      paramJobContext = (JobContext)localObject3;
     }
   }
 }

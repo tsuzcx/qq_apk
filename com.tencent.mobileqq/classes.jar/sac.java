@@ -1,15 +1,29 @@
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerHelper;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sac
+class sac
+  implements DialogInterface.OnDismissListener
 {
-  private static int a;
-  public static final sad a;
+  sac(sab paramsab) {}
   
-  static
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_Sad = new sad(null);
-    jdField_a_of_type_Int = -1;
+    paramDialogInterface = this.a;
+    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (!sab.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      sab.a(paramDialogInterface, bool);
+      if ((sab.a(this.a) != null) && (sab.a(this.a).b()) && (sab.b(this.a)) && (sab.a(this.a))) {
+        sab.a(this.a).c();
+      }
+      if (sab.a(this.a) != null) {
+        sab.a(this.a).f();
+      }
+      sab.a(this.a, false);
+      return;
+    }
   }
 }
 

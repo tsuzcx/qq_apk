@@ -1,19 +1,42 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URLEncoder;
 
-class aikb
+public class aikb
   implements View.OnClickListener
 {
-  aikb(aijm paramaijm) {}
+  public aikb(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
   public void onClick(View paramView)
   {
-    if (!azhq.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView)) {
-      bhxv.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
+    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidAppActivity))
+    {
+      QQToast.a(this.a, 1, this.a.getString(2131691965), 0).b(this.a.getTitleBarHeight());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str1 = ((TextView)paramView).getText().toString();
+    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", "https://qqweb.qq.com/m/relativegroup/index.html?_bid=165&_wv=4194304&source=qun_tag&keyword=" + URLEncoder.encode(str1));
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    this.a.startActivity((Intent)localObject);
+    localObject = this.a.app;
+    String str2 = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (str1 = "0";; str1 = "1")
+    {
+      bcef.b((QQAppInterface)localObject, "P_CliOper", "Grp_join", "", "person_data", "Clk_quntag", 0, 0, str2, str1, "", "");
+      break;
+    }
   }
 }
 

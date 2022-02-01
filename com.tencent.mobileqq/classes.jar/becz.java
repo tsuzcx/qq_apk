@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class becz
-  implements DialogInterface.OnClickListener
+class becz
+  implements Comparator<MessageRecord>
 {
-  public becz(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  becz(becy parambecy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+  }
 }
 
 

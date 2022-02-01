@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
-public class bcma
-  extends bcmb
+class bcma
+  implements bcmr
 {
-  public bcma(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
+  bcma(bclz parambclz, CountdownTextView paramCountdownTextView) {}
+  
+  public void a()
   {
-    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
+    this.jdField_a_of_type_Bclz.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Bclz.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bclz.a(this.jdField_a_of_type_Bclz, 0L));
   }
   
-  protected bcfq a(List<bcfr> paramList, String paramString)
+  public void a(long paramLong)
   {
-    return new bcff(paramList, paramString, GroupSearchEngine.a(this.a));
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bclz.a(this.jdField_a_of_type_Bclz, paramLong));
+    this.jdField_a_of_type_Bclz.jdField_d_of_type_Long = paramLong;
   }
 }
 

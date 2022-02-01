@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.colornote.list;
 
-import aqth;
-import aqti;
+import apmq;
+import apmr;
 
 public class DefaultItemBuilder$1$1$1
   implements Runnable
 {
-  public DefaultItemBuilder$1$1$1(aqti paramaqti) {}
+  public DefaultItemBuilder$1$1$1(apmr paramapmr) {}
   
   public void run()
   {
     if (!this.a.a.jdField_a_of_type_Boolean) {
-      aqth.a(this.a.a.this$0, this.a.a.jdField_a_of_type_Aqsx);
+      apmq.a(this.a.a.this$0, this.a.a.jdField_a_of_type_Apmg);
     }
   }
 }

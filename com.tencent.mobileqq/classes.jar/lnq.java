@@ -1,25 +1,72 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
+import android.app.Notification;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class lnq
-  implements mix
+public abstract class lnq
+  extends Binder
+  implements lnp
 {
-  public lnq(GaInviteLockActivity paramGaInviteLockActivity) {}
-  
-  public void a(boolean paramBoolean)
+  public static lnp a(IBinder paramIBinder)
   {
-    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
-      return;
+    if (paramIBinder == null) {
+      return null;
     }
-    if ((this.a.a.e) || (this.a.a.l())) {
-      this.a.e();
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+    if ((localIInterface != null) && ((localIInterface instanceof lnp))) {
+      return (lnp)localIInterface;
     }
-    for (;;)
+    return new lnr(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      bdll.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
-      return;
-      this.a.d();
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      a(lwd.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      a(paramParcel1.createByteArray());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      boolean bool;
+      if (paramParcel1.readInt() != 0)
+      {
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label168;
+        }
+      }
+      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+        bool = false;
+        break;
+      }
+    case 4: 
+      label168:
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
+    paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+    a();
+    return true;
   }
 }
 

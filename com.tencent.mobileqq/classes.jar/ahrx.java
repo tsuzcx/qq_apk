@@ -1,38 +1,64 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.content.Context;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import java.util.Calendar;
+import java.util.Date;
 
-public class ahrx
-  extends aggl
+class ahrx
+  implements aprs
 {
-  public ImageView a;
-  public TextView a;
-  public CropBubbleVideoView a;
-  public MessageProgressView a;
-  public ImageView b;
-  public int e;
-  public int f;
+  ahrx(ahru paramahru) {}
   
-  public ahrx(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
-  
-  public void a()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    return 2;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = bhjz.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
-        }
+    default: 
+      return 1;
+    case 0: 
+      if (this.a.c >= 23) {
+        return 365;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
-      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
+      return 366;
+    }
+    if ((ahru.a(this.a).a(0) == 0) && (this.a.c < 23)) {
+      return this.a.a();
+    }
+    return 24;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      localObject = "";
+      return localObject;
+    case 0: 
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setFirstDayOfWeek(1);
+      if (this.a.c < 23) {}
+      for (paramInt1 = paramInt2;; paramInt1 = paramInt2 + 1)
+      {
+        localCalendar.add(6, paramInt1);
+        localObject = this.a.a(paramInt2, localCalendar);
+        String str = "" + (String)localObject;
+        localObject = str;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 1, str + " day_of_week " + localCalendar.get(7) + "\n" + localCalendar.getTime().toString());
+        return str;
+      }
+    }
+    if ((ahru.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
+    for (Object localObject = this.a.a(paramInt2);; localObject = paramInt2 + this.a.a.getString(2131694174)) {
+      return "" + (String)localObject;
     }
   }
 }

@@ -1,72 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
 
-public class asee
-  extends asdn
+public abstract class asee
+  extends asec
 {
-  public asee(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.qav.video", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10049;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bhmi.a(paramString, msq.c(), false);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      asdd.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3);
 }
 
 

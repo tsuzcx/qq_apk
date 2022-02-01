@@ -1,34 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class lpl
-  extends ljl
+public class lpl
 {
-  lpl(lpk paramlpk) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c = 0;
+  int d = 0;
   
-  private void b(long paramLong)
+  void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
   {
-    Message localMessage = this.a.a.obtainMessage(4);
-    localMessage.obj = Long.valueOf(paramLong);
-    localMessage.sendToTarget();
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    QLog.w("EffectCtrlBase", 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
-    if (paramBoolean) {
-      b(paramLong);
+    StringBuilder localStringBuilder;
+    if ((paramArrayOfByte == null) || (this.jdField_a_of_type_Int == 0) || (this.b == 0) || (this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.d != paramInt4) || (this.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Boolean != paramBoolean)) {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("onProcessFrame, data[");
+        if (paramArrayOfByte == null) {
+          break label294;
+        }
+      }
     }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    long l = AudioHelper.b();
-    QLog.w("EffectCtrlBase", 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
-    if (paramBoolean) {
-      b(l);
+    label294:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("ProcessFrameInfo", 1, bool + "], frameIndex[" + paramLong2 + "], width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.b + "->" + paramInt2 + "], format[" + this.c + "->" + paramInt3 + "], angle[" + this.d + "->" + paramInt4 + "], FPS[" + this.jdField_a_of_type_Long + "->" + paramLong1 + "], isFront[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.d = paramInt4;
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
     }
   }
 }

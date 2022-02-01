@@ -1,25 +1,52 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class bbgd
-  implements bhtj<Float>
+public class bbgd
 {
-  bbgd(View paramView) {}
+  static bbgd jdField_a_of_type_Bbgd;
+  public String a;
+  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
   
-  @TargetApi(11)
-  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  bbgd()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  public static bbgd a()
+  {
+    try
     {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
+      if (jdField_a_of_type_Bbgd == null) {
+        jdField_a_of_type_Bbgd = new bbgd();
+      }
+      bbgd localbbgd = jdField_a_of_type_Bbgd;
+      return localbbgd;
     }
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 

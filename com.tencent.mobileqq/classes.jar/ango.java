@@ -1,14 +1,7 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-
-public abstract interface ango
-{
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong);
-  
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt);
-}
+public class ango {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ango
  * JD-Core Version:    0.7.0.1
  */

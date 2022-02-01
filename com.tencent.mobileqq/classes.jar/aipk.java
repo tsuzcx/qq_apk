@@ -1,26 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 class aipk
-  implements bgwh
+  implements Comparator<ainj>
 {
-  aipk(aipj paramaipj) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public int a(ainj paramainj1, ainj paramainj2)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    paramainj1 = (Friends)paramainj1.a;
+    paramainj2 = (Friends)paramainj2.a;
+    int i = a(paramainj1);
+    int j = a(paramainj2);
+    if (i == j) {
+      return ampx.a(paramainj1.mComparePartInt, paramainj1.mCompareSpell, paramainj2.mComparePartInt, paramainj2.mCompareSpell);
+    }
+    return i - j;
+  }
+  
+  public int a(Friends paramFriends)
+  {
+    int i = 16384;
+    int k = ContactUtils.getFriendStatus(paramFriends.detalStatusFlag, paramFriends.iTermType);
+    int j;
+    if ((k != 6) && (k != 0))
     {
-      paramString = (agwy)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
+      j = 65536;
+      label32:
+      if (!bbyp.b()) {
+        break label100;
       }
     }
-    do
+    for (;;)
     {
-      return;
-      paramString = (agwy)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        return j | i | (int)paramFriends.getLastLoginType();
+        j = 131072;
+        break label32;
+        label100:
+        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB)) {
+          i = 0;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+          i = 4096;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
+          i = 8192;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
+          i = 12288;
+        }
+        break;
+      }
+    }
+    return j | i | 0x1;
+    return j | i | 0x2;
+    return j | i | 0x3;
   }
 }
 

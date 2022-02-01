@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
-import rnu;
-import rsc;
+import ruw;
+import rzf;
 
 public class VideoFeedsRecommendFragment$PlayRecommendObserver$1
   implements Runnable
 {
-  public VideoFeedsRecommendFragment$PlayRecommendObserver$1(rsc paramrsc, VideoInfo paramVideoInfo) {}
+  public VideoFeedsRecommendFragment$PlayRecommendObserver$1(rzf paramrzf, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Rsc.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Rzf.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
   }
 }
 

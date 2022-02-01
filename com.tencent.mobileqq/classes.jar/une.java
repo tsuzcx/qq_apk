@@ -1,23 +1,6 @@
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-
-public abstract interface une
-  extends ucm<unf>
+final class une
 {
-  public abstract long a();
-  
-  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
+  private static final unc a = new unc(null);
 }
 
 

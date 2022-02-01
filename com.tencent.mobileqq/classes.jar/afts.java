@@ -1,82 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xe83.oidb_0xe83.RspBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
 public class afts
-  extends aojs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public afts(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  public afts(IntimateScoreCardView paramIntimateScoreCardView) {}
   
-  protected void a(oidb_0xe83.RspBody paramRspBody, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramRspBody.group_id.has())
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 0.5F)
     {
-      paramRspBody = String.valueOf(paramRspBody.group_id.get());
-      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
-        break label119;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    label119:
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
-      }
-      this.a.d();
-      paramRspBody = this.a.a(1101236949L);
-    } while (paramRspBody == null);
-    this.a.a(paramRspBody);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
-    }
-    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.a.d();
-          } while (!paramBoolean);
-          localObject = (TroopManager)this.a.app.getManager(52);
-        } while (localObject == null);
-        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
-      } while (localObject == null);
-      paramLong = ((TroopInfo)localObject).troopCreditLevel;
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
-      }
-    } while (paramLong == 2L);
-    if (paramLong == 1L)
-    {
-      localObject = bhlq.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131718699)).setMessage(anzj.a(2131714262));
-      ((bhpc)localObject).setPositiveButton(2131696883, new aftt(this));
-      ((bhpc)localObject).setNegativeButton("", null);
-      ((bhpc)localObject).setCancelable(false);
-      ((bhpc)localObject).show();
+      IntimateScoreCardView.a(this.a).setAlpha(1.0F - f * 2.0F);
       return;
     }
-    Object localObject = bhlq.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131718699)).setMessage(anzj.a(2131714263));
-    ((bhpc)localObject).setPositiveButton(2131696883, new aftu(this));
-    ((bhpc)localObject).setNegativeButton("", null);
-    ((bhpc)localObject).setCancelable(false);
-    ((bhpc)localObject).show();
+    IntimateScoreCardView.a(this.a).setAlpha(f * 2.0F - 1.0F);
   }
 }
 

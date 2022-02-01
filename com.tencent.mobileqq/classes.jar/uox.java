@@ -1,13 +1,17 @@
-import NS_KING_INTERFACE.stPostFeedDingReq;
-import NS_KING_INTERFACE.stPostFeedDingRsp;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class uox
-  extends ukl<stPostFeedDingRsp>
+class uox
+  implements View.OnTouchListener
 {
-  public uox(String paramString, int paramInt)
+  uox(uou paramuou) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super("PostFeedDing");
-    this.a = new stPostFeedDingReq(paramString, null, paramInt);
+    uou.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

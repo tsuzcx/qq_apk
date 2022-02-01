@@ -1,14 +1,32 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
 class xur
-  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
+  extends vlc
 {
-  xur(xuk paramxuk) {}
+  xur(xuh paramxuh) {}
   
-  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    yuk.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    if ((xuh.a(this.a) == null) || (xuh.a(this.a).a == null))
+    {
+      xvv.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
+    }
+    String str = xuh.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      xvv.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
+    }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new xrq[] { new xrl(xqt.a(str)), (xrq)this.a.b.a(), new xrk(new xus(this, str)) });
   }
 }
 

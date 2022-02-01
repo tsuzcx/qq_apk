@@ -79,7 +79,7 @@ public class util
   public static final int ASYN_SMSLOGIN_VERIFY = 13;
   public static final int ASYN_TRANSPORT = 9;
   public static final int ASYN_TRANSPORT_MSF = 10;
-  public static final long BUILD_TIME = 1595837976L;
+  public static final long BUILD_TIME = 1598240784L;
   public static final int D = 2;
   private static SimpleDateFormat DAYFORMAT;
   public static final int E_A1_DECRYPT = -1014;
@@ -130,9 +130,9 @@ public class util
   public static int MAX_NAME_LEN = 0;
   @SuppressLint({"NewApi"})
   private static int MODE_MULTI_PROCESS = 0;
-  public static final String SDK_VERSION = "6.0.0.2435";
+  public static final String SDK_VERSION = "6.0.0.2436";
   public static final int SSO_VERSION = 12;
-  public static final long SVN_VER = 2435L;
+  public static final long SVN_VER = 2436L;
   public static final int S_BABYLH_EXPIRED = 116;
   public static final int S_GET_IMAGE = 2;
   public static final int S_GET_SMS = 160;
@@ -1909,7 +1909,7 @@ public class util
   
   public static String getSvnVersion()
   {
-    return "[2435]";
+    return "[2436]";
   }
   
   public static String getThreadId()
@@ -2643,7 +2643,7 @@ public class util
   
   public static String get_release_time()
   {
-    return "2020/07/27 16:19:36";
+    return "2020/08/24 11:46:24";
   }
   
   public static byte[] get_rsa_privkey(Context paramContext)

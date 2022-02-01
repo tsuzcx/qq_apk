@@ -1,49 +1,61 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class avfb
-  implements ayul
+  implements bnpr
 {
-  public avfb(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public avfb(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3, ImageView paramImageView, View paramView4) {}
   
-  public boolean a()
+  public void cancelAnimator() {}
+  
+  public void displayPanel() {}
+  
+  public void displayPanelFinish()
   {
-    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(false);
+    }
+    bcef.b(null, "CliOper", "", "", "0X800A95F", "0X800A95F", LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b(), 0, "", "0", "0", "");
+    this.b.setVisibility(8);
+    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693515));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849588);
+    }
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public void fadeBackground(float paramFloat)
   {
+    if (paramFloat < 0.0F) {
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
+      QLog.d("LocationPickFragment", 2, "[panel] fadeBackground: invoked. alpha: " + paramFloat);
     }
-    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(str)) {
-      localJSONObject = new JSONObject();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(Math.round(0.7F * paramFloat * 255.0F), 0, 0, 0));
+  }
+  
+  public void hidePanel()
+  {
+    LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+  }
+  
+  public void hidePanelFinish()
+  {
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(true);
     }
-    try
-    {
-      localJSONObject.put("status", paramInt1);
-      localJSONObject.put("direction", paramInt2);
-      localJSONObject.put("height", paramInt3);
-      if (this.a.jdField_a_of_type_Avfc != null) {
-        this.a.jdField_a_of_type_Avfc.mWebview.callJs(str, new String[] { localJSONObject.toString() });
-      }
-      return false;
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setDisplayFromType(2);
+    this.d.requestFocus();
+    this.b.setVisibility(0);
+    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693513));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849587);
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
-    }
-    return false;
   }
 }
 

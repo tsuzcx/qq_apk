@@ -1,8 +1,19 @@
-import android.graphics.Typeface;
+import java.util.List;
 
-public abstract interface vii
+public class vii
+  extends vif
 {
-  public abstract void a(Typeface paramTypeface);
+  public vii(vjj paramvjj)
+  {
+    super(paramvjj.a);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramvjj.c);
+    vjl localvjl = new vjl();
+    localvjl.a(paramvjj);
+    a(localvjl);
+  }
+  
+  protected void c(List<vil> paramList) {}
 }
 
 

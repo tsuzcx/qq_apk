@@ -1,14 +1,33 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
 import com.tencent.qphone.base.util.QLog;
 
-public class acif
-  implements acja
+class acif
+  extends acic
 {
-  public acif(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
-  
-  public void a(int paramInt, String paramString)
+  public HookMethodCallback a()
   {
-    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
+    return BatteryMonitor.getInstance().getWakeLockHook();
+  }
+  
+  public void a()
+  {
+    try
+    {
+      JavaHookBridge.findAndHookMethod(PowerManager.class, "newWakeLock", new Object[] { Integer.TYPE, String.class, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { Long.TYPE, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "release", new Object[] { Integer.TYPE, this });
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
+    }
   }
 }
 

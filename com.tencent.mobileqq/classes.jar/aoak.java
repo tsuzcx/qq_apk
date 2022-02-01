@@ -1,4 +1,7 @@
-public abstract interface aoak {}
+class aoak
+{
+  private static final aoai a = new aoai(null);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

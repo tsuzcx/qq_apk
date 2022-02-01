@@ -14,12 +14,12 @@ class GameGrowthGuardianManager$GuardInstructionDialogOpenUrl
   
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131690580, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.2(this));
+    return new GameGrowthGuardianManager.DialogAction(2131690620, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.2(this));
   }
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131693360, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131693455, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.1(this));
   }
 }
 

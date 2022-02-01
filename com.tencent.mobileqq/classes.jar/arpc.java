@@ -1,35 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.File;
 
-public class arpc
+public abstract interface arpc
+  extends bgat
 {
-  public static int a = 1;
-  public static int b = 2;
-  public int c = b;
+  public abstract void a(File paramFile);
   
-  private static arpc b(String paramString)
-  {
-    arpc localarpc = new arpc();
-    try
-    {
-      localarpc.c = new JSONObject(paramString).optInt("action", b);
-      return localarpc;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
-    }
-    return localarpc;
-  }
+  public abstract void c(boolean paramBoolean);
   
-  public boolean a()
-  {
-    return this.c == a;
-  }
+  public abstract void f(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpc
  * JD-Core Version:    0.7.0.1
  */

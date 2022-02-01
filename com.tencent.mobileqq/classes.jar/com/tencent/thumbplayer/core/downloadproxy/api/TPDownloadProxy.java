@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager;
-import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPProxyAdapterManager;
 import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLFileSystem;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
@@ -44,25 +43,28 @@ public class TPDownloadProxy
   
   public String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject1 = TPProxyAdapterManager.getInstance().getProxyClipUrl(paramInt1, paramInt2);
-    Object localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (!TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
+    String str1 = "";
+    String str2 = str1;
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      str2 = str1;
     }
     try
     {
-      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, paramInt2, paramInt3));
-      localObject1 = localObject2;
-      TPDownloadProxyNative.getInstance().startDownload(paramInt1);
-      return localObject2;
+      str1 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, paramInt2, paramInt3));
+      str2 = str1;
+      if (paramInt3 != 2)
+      {
+        str2 = str1;
+        TPDownloadProxyNative.getInstance().startDownload(paramInt1);
+        str2 = str1;
+      }
+      return str2;
     }
     catch (Throwable localThrowable)
     {
       TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "getClipPlayUrl failed, error:" + localThrowable.toString());
     }
-    return localObject1;
+    return str2;
   }
   
   public String getPlayErrorCodeStr(int paramInt)
@@ -83,25 +85,28 @@ public class TPDownloadProxy
   
   public String getPlayUrl(int paramInt1, int paramInt2)
   {
-    Object localObject1 = TPProxyAdapterManager.getInstance().getProxyClipUrl(paramInt1, 1);
-    Object localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (!TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
+    String str1 = "";
+    String str2 = str1;
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      str2 = str1;
     }
     try
     {
-      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, 1, paramInt2));
-      localObject1 = localObject2;
-      TPDownloadProxyNative.getInstance().startDownload(paramInt1);
-      return localObject2;
+      str1 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, 1, paramInt2));
+      str2 = str1;
+      if (paramInt2 != 2)
+      {
+        str2 = str1;
+        TPDownloadProxyNative.getInstance().startDownload(paramInt1);
+        str2 = str1;
+      }
+      return str2;
     }
     catch (Throwable localThrowable)
     {
       TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "getPlayUrl failed, error:" + localThrowable.toString());
     }
-    return localObject1;
+    return str2;
   }
   
   public int init(Context paramContext, TPDLProxyInitParam paramTPDLProxyInitParam)
@@ -468,52 +473,33 @@ public class TPDownloadProxy
     int k = -1;
     int j = paramTPDownloadParam.getDlType();
     int i = j;
-    String str1;
-    String str2;
-    if (paramTPDownloadParam.isOffline())
-    {
+    if (paramTPDownloadParam.isOffline()) {
       i = j + 300;
-      str1 = paramTPDownloadParam.getVid();
-      str2 = paramTPDownloadParam.getPlayDefinition();
-      if ((str1.isEmpty()) || (str2.isEmpty())) {
-        j = -1;
-      }
     }
-    do
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded())
     {
-      do
-      {
-        return j;
-        if (TPDownloadProxyFactory.isReadyForDownload()) {
-          break;
-        }
-        i = TPProxyAdapterManager.getInstance().startOnlineOrOfflinePlay(3, "", str1, str2, false, false, 0, null, paramTPDownloadParam.getOfflinePlayExtraInfo());
-        j = i;
-      } while (i <= 0);
-      TPListenerManager.getInstance().setProxyPlayListener(i, paramITPPlayListener);
-      return i;
       j = k;
-    } while (!TPDownloadProxyNative.getInstance().isNativeLoaded());
-    j = k;
-    label282:
-    for (;;)
-    {
       try
       {
-        if ((!paramTPDownloadParam.isAdaptive()) || (i != 3)) {
-          break label282;
+        if ((paramTPDownloadParam.isAdaptive()) && (i == 3)) {
+          i += 400;
         }
-        i += 400;
-        j = k;
-        k = TPDownloadProxyNative.getInstance().createDownloadTask(this.mServiceType, paramString, i, paramTPDownloadParam.getClipCount());
-        j = k;
-        if (TextUtils.isEmpty(paramTPDownloadParam.getKeyid()))
+        for (;;)
         {
           j = k;
-          TPDownloadProxyNative.getInstance().setClipInfo(k, paramTPDownloadParam.getClipNo(), paramString, i, paramTPDownloadParam.getCdnUrls(), paramTPDownloadParam.getSavaPath(), paramTPDownloadParam.getExtraJsonInfo());
+          k = TPDownloadProxyNative.getInstance().createDownloadTask(this.mServiceType, paramString, i, paramTPDownloadParam.getClipCount());
           j = k;
-          TPListenerManager.getInstance().setPlayListener(k, paramITPPlayListener);
-          return k;
+          if (TextUtils.isEmpty(paramTPDownloadParam.getKeyid())) {}
+          for (;;)
+          {
+            j = k;
+            TPDownloadProxyNative.getInstance().setClipInfo(k, paramTPDownloadParam.getClipNo(), paramString, i, paramTPDownloadParam.getCdnUrls(), paramTPDownloadParam.getSavaPath(), paramTPDownloadParam.getExtraJsonInfo());
+            j = k;
+            TPListenerManager.getInstance().setPlayListener(k, paramITPPlayListener);
+            return k;
+            j = k;
+            paramString = paramTPDownloadParam.getKeyid();
+          }
         }
       }
       catch (Throwable paramString)
@@ -521,9 +507,8 @@ public class TPDownloadProxy
         TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "startPlay failed, error:" + paramString.toString());
         return j;
       }
-      j = k;
-      paramString = paramTPDownloadParam.getKeyid();
     }
+    return -1;
   }
   
   public int startPreload(String paramString, TPDownloadParam paramTPDownloadParam, ITPPreLoadListener paramITPPreLoadListener)
@@ -599,12 +584,9 @@ public class TPDownloadProxy
   public void stopPlay(int paramInt)
   {
     if (paramInt <= 0) {}
-    do
-    {
+    while (!TPDownloadProxyNative.getInstance().isNativeLoaded()) {
       return;
-      TPProxyAdapterManager.getInstance().stopPlay(paramInt);
-      TPListenerManager.getInstance().removeProxyPlayListener(paramInt);
-    } while (!TPDownloadProxyNative.getInstance().isNativeLoaded());
+    }
     try
     {
       TPDownloadProxyNative.getInstance().stopDownload(paramInt);

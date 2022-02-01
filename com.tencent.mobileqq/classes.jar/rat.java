@@ -1,32 +1,22 @@
-import android.os.Bundle;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class rat
-  extends pfh
+  implements BusinessObserver
 {
-  public rat(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt) {}
   
-  public void a(int paramInt, qwk paramqwk)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
+    switch (paramInt)
     {
-      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramqwk.h);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramqwk.g);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramqwk.jdField_d_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramqwk.f);
-      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramqwk.jdField_a_of_type_Long);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramqwk.c);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramqwk.jdField_b_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramqwk.e);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramqwk.jdField_d_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramqwk.jdField_a_of_type_Int + "");
-      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramqwk.jdField_a_of_type_JavaLangString + "#");
-      ReadInJoyDeliverVideoActivity.a(this.a, paramqwk.jdField_b_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a, true);
-      ReadInJoyDeliverVideoActivity.a(this.a, paramqwk.h);
+    default: 
+      return;
     }
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, (oidb_0x5bd.SkinInfo)paramObject[0], (oidb_0x5bd.GuideInfo)paramObject[1], (oidb_0x5bd.GuideInfo)paramObject[2], (oidb_0x5bd.RefreshInfo)paramObject[3], ((Integer)paramObject[4]).intValue());
   }
 }
 

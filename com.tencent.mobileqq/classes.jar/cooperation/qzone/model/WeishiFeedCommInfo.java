@@ -3,12 +3,11 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnav;
 
 public class WeishiFeedCommInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiFeedCommInfo> CREATOR = new bnav();
+  public static final Parcelable.Creator<WeishiFeedCommInfo> CREATOR = new WeishiFeedCommInfo.1();
   public int appid;
   public String cellId;
   public String curlikekey;
@@ -35,7 +34,7 @@ public class WeishiFeedCommInfo
     this.feedskey = paramString4;
   }
   
-  public WeishiFeedCommInfo(Parcel paramParcel)
+  protected WeishiFeedCommInfo(Parcel paramParcel)
   {
     this.appid = paramParcel.readInt();
     this.ugckey = paramParcel.readString();

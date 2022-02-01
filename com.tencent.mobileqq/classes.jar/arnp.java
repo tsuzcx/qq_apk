@@ -1,42 +1,75 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class arnp
 {
-  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private int a;
+  private int b;
   
-  public String a()
+  public static arnp a(aptx paramaptx)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    arnp localarnp = new arnp();
+    if (paramaptx != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramaptx.jdField_a_of_type_Int + " content->" + paramaptx.jdField_a_of_type_JavaLangString);
+      }
+      try
+      {
+        paramaptx = paramaptx.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramaptx))
+        {
+          paramaptx = new JSONObject(paramaptx);
+          localarnp.a(paramaptx.optInt("business_switch", 0));
+          localarnp.b(paramaptx.optInt("showInRecentView", 0));
+          return localarnp;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
+          return localarnp;
+        }
+      }
+      catch (JSONException paramaptx)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramaptx.toString());
+        }
+      }
+    }
+    return localarnp;
   }
   
-  public void a(String paramString)
+  void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public void b(boolean paramBoolean)
+  void b(int paramInt)
   {
-    this.b = paramBoolean;
+    this.b = paramInt;
   }
   
   public boolean b()
   {
-    return this.b;
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnp
  * JD-Core Version:    0.7.0.1
  */

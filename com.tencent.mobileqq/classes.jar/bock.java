@@ -1,10 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-final class bock
-  implements DialogInterface.OnDismissListener
+public class bock
 {
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public boolean b;
+  public int c;
 }
 
 

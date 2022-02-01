@@ -1,94 +1,34 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class avft
-  extends BaseAdapter
+class avft
+  extends andd
 {
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  public List<String> a;
+  avft(avfq paramavfq) {}
   
-  public avft(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
+  protected void onPassiveExit(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getActivity().getLayoutInflater();
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (paramList == null)
+    super.onPassiveExit(paramString, paramInt);
+    if ((avfq.a(this.a).a() == 1) && (avfq.a(this.a).a().equals(paramString)))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        notifyDataSetChanged();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
       }
-      return;
+      if (avfq.a(this.a) != null)
+      {
+        avfq.a(this.a).finish();
+        QQToast.a(avfq.a(this.a), 2131692906, 1).a();
+      }
+      avfq.a(avfq.a(this.a), 1, paramString);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
   }
   
-  public int getCount()
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559125, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
-      paramView = new avfv(this);
-      paramView.a = ((URLImageView)localView.findViewById(2131365933));
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = beyq.a;
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = beyq.a;
-      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = azru.a((String)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
-      localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-      paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      paramView.a.setImageDrawable((Drawable)localObject2);
-      localObject2 = paramView.a;
-      paramView.a.setOnClickListener(new avfu(this, (String)localObject1, (View)localObject2));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject1 = (avfv)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject1;
+    super.onTroopManagerSuccess(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
+      avfq.a(avfq.a(this.a), 1, paramString);
     }
   }
 }

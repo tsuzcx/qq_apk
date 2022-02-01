@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
-public class airz
-  implements airx
+class airz
+  extends aliz
 {
-  airz(airy paramairy) {}
-  
-  public void a()
-  {
-    airy.a(this.a, airy.a(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.1.1(this));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
-    }
-    airy.b(this.a, airy.a(this.a));
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

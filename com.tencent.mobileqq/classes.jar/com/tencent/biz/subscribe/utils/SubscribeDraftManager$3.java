@@ -1,34 +1,34 @@
 package com.tencent.biz.subscribe.utils;
 
-import aanf;
-import aanj;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.util.JsonBinder;
 import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
 import com.tencent.util.Pair;
-import txh;
+import zka;
+import zke;
 
 public class SubscribeDraftManager$3
   implements Runnable
 {
   public void run()
   {
-    Object localObject = aanf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = zka.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localObject != null)
     {
-      localObject = aanf.a(this.this$0, (String)((Pair)localObject).second);
+      localObject = zka.a(this.this$0, (String)((Pair)localObject).second);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label90;
       }
-      localObject = (SubscribeDraftBean)txh.a().a((String)localObject, SubscribeDraftBean.class);
-      if ((localObject != null) && (this.jdField_a_of_type_Aanj != null)) {
-        this.jdField_a_of_type_Aanj.a(5, true, this.b, new Object[] { localObject });
+      localObject = (SubscribeDraftBean)JsonBinder.getInstance().fromJson((String)localObject, SubscribeDraftBean.class);
+      if ((localObject != null) && (this.jdField_a_of_type_Zke != null)) {
+        this.jdField_a_of_type_Zke.a(5, true, this.b, new Object[] { localObject });
       }
     }
     label90:
-    while (this.jdField_a_of_type_Aanj == null) {
+    while (this.jdField_a_of_type_Zke == null) {
       return;
     }
-    this.jdField_a_of_type_Aanj.a(5, false, this.b, null);
+    this.jdField_a_of_type_Zke.a(5, false, this.b, null);
   }
 }
 

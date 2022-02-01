@@ -1,27 +1,57 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class xnr
-  extends Subscriber.SingleEventSubscriberNoRefect<wsm>
+class xnr
+  implements vqp<wdu, vqm>
 {
-  xno a;
+  xnr(xnp paramxnp) {}
   
-  public xnr(@NonNull xno paramxno)
+  public void a(@NonNull wdu paramwdu, @Nullable vqm paramvqm, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = paramxno;
-  }
-  
-  protected void a(@NonNull wsm paramwsm)
-  {
-    if (paramwsm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramwsm.jdField_a_of_type_JavaLangString);
+    paramvqm = (wdv)paramvqm;
+    int j = paramErrorMessage.errorCode;
+    int k = paramwdu.b.size();
+    if (paramvqm == null) {}
+    for (int i = 0;; i = paramvqm.jdField_a_of_type_JavaUtilList.size())
+    {
+      xvv.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec , error :%d , req size :%d , resp size :%d , list :%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), paramwdu.b });
+      if ((!paramErrorMessage.isFail()) && (paramvqm != null)) {
+        break;
+      }
+      paramwdu = paramwdu.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwdu.hasNext())
+      {
+        paramvqm = (xnh)paramwdu.next();
+        xnp.a().remove(paramvqm.a);
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wsm.class;
+    if (paramwdu.jdField_a_of_type_JavaUtilList.size() != paramvqm.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramErrorMessage = new ArrayList();
+      paramwdu = paramwdu.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwdu.hasNext())
+      {
+        xnh localxnh = (xnh)paramwdu.next();
+        if (!paramvqm.jdField_a_of_type_JavaUtilHashSet.contains(localxnh.a))
+        {
+          paramErrorMessage.add(localxnh.a);
+          xnp.a().remove(localxnh.a);
+        }
+      }
+      xvv.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec warning , some feed not return ! %s", new Object[] { paramErrorMessage });
+    }
+    paramwdu = paramvqm.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramwdu.hasNext())
+    {
+      paramvqm = (xpe)paramwdu.next();
+      this.a.a(paramvqm.a());
+    }
   }
 }
 

@@ -1,26 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ClipDrawable;
-import com.tencent.av.ui.QavPanel;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class mip
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Animation
 {
-  public mip(QavPanel paramQavPanel) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (QavPanel.c(this.a))
+    if (paramFloat < 0.5F) {}
+    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
     {
-      if (this.a.a != null) {
-        this.a.a.setLevel(i);
-      }
-      if (QavPanel.d(this.a))
-      {
-        QavPanel.a(this.a).a(i);
-        QavPanel.a(this.a).b(i);
-      }
+      paramTransformation.setAlpha(f);
+      super.applyTransformation(paramFloat, paramTransformation);
+      return;
     }
   }
 }

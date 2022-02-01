@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Environment;
-import bmxh;
-import bmxs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -17,58 +15,116 @@ import java.util.List;
 public class SDCardMountMonitorReceiver
   extends BroadcastReceiver
 {
-  private static SDCardMountMonitorReceiver jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver;
-  private List<bmxs> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  private static SDCardMountMonitorReceiver mInstance;
+  private boolean canWrite;
+  private boolean isMountRead;
+  private boolean isWriteRead;
+  private boolean mIsRegisteReceiver;
+  private boolean mIsSDCardMount;
+  private List<SDCardMountMonitorReceiver.SDCardMountStateListener> observers = new ArrayList();
   
-  public static SDCardMountMonitorReceiver a()
+  public static SDCardMountMonitorReceiver getInstance()
   {
-    if (jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver == null) {
-      jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver = new SDCardMountMonitorReceiver();
+    if (mInstance == null) {
+      mInstance = new SDCardMountMonitorReceiver();
     }
-    return jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver;
+    return mInstance;
   }
   
-  private void a(boolean paramBoolean)
+  private boolean isCanWrite()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      bmxs[] arrayOfbmxs = new bmxs[this.jdField_a_of_type_JavaUtilList.size()];
-      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbmxs);
-      if (arrayOfbmxs != null)
-      {
-        int j = arrayOfbmxs.length;
-        int i = 0;
-        if (i < j)
-        {
-          arrayOfbmxs[i].a(paramBoolean);
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private boolean c()
-  {
-    if (!this.d) {
-      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!bmxh.c(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
+    if (!this.isWriteRead) {
+      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!CacheManager.isStorageReallyCanwrite(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
         break label45;
       }
     }
     label45:
     for (boolean bool = true;; bool = false)
     {
-      this.c = bool;
-      this.d = true;
-      return this.c;
+      this.canWrite = bool;
+      this.isWriteRead = true;
+      return this.canWrite;
     }
   }
   
-  public void a()
+  private void notifyObservers(boolean paramBoolean)
+  {
+    synchronized (this.observers)
+    {
+      SDCardMountMonitorReceiver.SDCardMountStateListener[] arrayOfSDCardMountStateListener = new SDCardMountMonitorReceiver.SDCardMountStateListener[this.observers.size()];
+      this.observers.toArray(arrayOfSDCardMountStateListener);
+      if (arrayOfSDCardMountStateListener != null)
+      {
+        int j = arrayOfSDCardMountStateListener.length;
+        int i = 0;
+        if (i < j)
+        {
+          arrayOfSDCardMountStateListener[i].onSDCardMountStateChange(paramBoolean);
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void addListener(SDCardMountMonitorReceiver.SDCardMountStateListener paramSDCardMountStateListener)
+  {
+    if (paramSDCardMountStateListener == null) {
+      return;
+    }
+    synchronized (this.observers)
+    {
+      if (!this.observers.contains(paramSDCardMountStateListener)) {
+        this.observers.add(paramSDCardMountStateListener);
+      }
+      return;
+    }
+  }
+  
+  public boolean isSDCardCanWrite()
+  {
+    return (isSDCardMount()) && (isCanWrite());
+  }
+  
+  public boolean isSDCardMount()
+  {
+    if (!this.isMountRead) {}
+    try
+    {
+      this.mIsSDCardMount = "mounted".equals(Environment.getExternalStorageState());
+      this.isMountRead = true;
+      return this.mIsSDCardMount;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.w("CacheManager", 2, "getExternalStorageState error:" + localException.getMessage());
+      }
+    }
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    this.mIsSDCardMount = "mounted".equals(Environment.getExternalStorageState());
+    if (this.mIsSDCardMount) {
+      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!CacheManager.isStorageReallyCanwrite(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
+        break label109;
+      }
+    }
+    label109:
+    for (boolean bool = true;; bool = false)
+    {
+      this.canWrite = bool;
+      this.isWriteRead = true;
+      this.isMountRead = true;
+      CacheManager.onStorageMountChange();
+      notifyObservers(this.mIsSDCardMount);
+      QLog.i("CacheManager", 1, "SDCardMountMonitorReceiver onReceive mIsSDCardMount:" + this.mIsSDCardMount + ",canWrite" + this.canWrite);
+      return;
+    }
+  }
+  
+  public void registerReceiver()
   {
     try
     {
@@ -80,7 +136,7 @@ public class SDCardMountMonitorReceiver
       localIntentFilter.addAction("android.intent.action.MEDIA_UNMOUNTED");
       localIntentFilter.addDataScheme("file");
       BaseApplicationImpl.getContext().registerReceiver(this, localIntentFilter);
-      this.jdField_a_of_type_Boolean = true;
+      this.mIsRegisteReceiver = true;
       return;
     }
     catch (Exception localException)
@@ -92,70 +148,21 @@ public class SDCardMountMonitorReceiver
     }
   }
   
-  public void a(bmxs parambmxs)
+  public void removeListener(SDCardMountMonitorReceiver.SDCardMountStateListener paramSDCardMountStateListener)
   {
-    if (parambmxs == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.observers)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambmxs)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambmxs);
-      }
+      this.observers.remove(paramSDCardMountStateListener);
       return;
     }
   }
   
-  public boolean a()
+  public void unregisterReceiver()
   {
-    if (!this.e) {}
-    try
+    if ((mInstance != null) && (mInstance.mIsRegisteReceiver == true))
     {
-      this.b = "mounted".equals(Environment.getExternalStorageState());
-      this.e = true;
-      return this.b;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.w("CacheManager", 2, "getExternalStorageState error:" + localException.getMessage());
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if ((jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver != null) && (jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver.jdField_a_of_type_Boolean == true))
-    {
-      BaseApplicationImpl.getContext().unregisterReceiver(jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver);
-      jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean b()
-  {
-    return (a()) && (c());
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    this.b = "mounted".equals(Environment.getExternalStorageState());
-    if (this.b) {
-      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!bmxh.c(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
-        break label109;
-      }
-    }
-    label109:
-    for (boolean bool = true;; bool = false)
-    {
-      this.c = bool;
-      this.d = true;
-      this.e = true;
-      bmxh.a();
-      a(this.b);
-      QLog.i("CacheManager", 1, "SDCardMountMonitorReceiver onReceive mIsSDCardMount:" + this.b + ",canWrite" + this.c);
-      return;
+      BaseApplicationImpl.getContext().unregisterReceiver(mInstance);
+      mInstance.mIsRegisteReceiver = false;
     }
   }
 }

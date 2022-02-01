@@ -1,20 +1,45 @@
-public abstract interface xfo
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class xfo
 {
-  public abstract void a();
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(int paramInt);
+  public xfo(String paramString)
+  {
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((vuq)vux.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+    }
+  }
   
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
+  public String toString()
+  {
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
+  }
 }
 
 

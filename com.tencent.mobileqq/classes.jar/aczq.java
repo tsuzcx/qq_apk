@@ -1,8 +1,16 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
-public abstract interface aczq
+public class aczq
+  implements DialogInterface.OnClickListener
 {
-  public abstract ToServiceMsg a();
+  public aczq(ChatHistoryImageView paramChatHistoryImageView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.k();
+  }
 }
 
 

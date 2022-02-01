@@ -1,58 +1,26 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
 class bcxr
-  implements bcxw
+  implements URLDrawable.DownloadListener
 {
-  bcxo jdField_a_of_type_Bcxo;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
-  boolean c = true;
-  boolean d = true;
+  bcxr(bcxq parambcxq, String paramString) {}
   
-  public bcxr(String paramString, bcxo parambcxo)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcxo = parambcxo;
-  }
-  
-  public void B_()
-  {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onNetWorkNone...", null);
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.b) && (this.d)) {
-      bcxo.a(this.jdField_a_of_type_Bcxo);
-    }
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
+    if (!bcxq.a(this.jdField_a_of_type_Bcxq).contains(this.jdField_a_of_type_JavaLangString))
     {
-      a();
-      return;
-      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
-        this.b = true;
-      } else if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
-        this.c = true;
-      } else if (paramString1.startsWith("new_qq_android_native_object_tracking_")) {
-        this.d = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
       }
+      bcxq.a(this.jdField_a_of_type_Bcxq).add(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-  }
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

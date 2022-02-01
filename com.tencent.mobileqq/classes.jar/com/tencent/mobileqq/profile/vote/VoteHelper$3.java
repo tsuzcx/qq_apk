@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profile.vote;
 
-import bacz;
+import ayro;
 
 public class VoteHelper$3
   implements Runnable
 {
-  public VoteHelper$3(bacz parambacz, String paramString, int paramInt, boolean paramBoolean) {}
+  public VoteHelper$3(ayro paramayro, String paramString, int paramInt, boolean paramBoolean) {}
   
   /* Error */
   public void run()
@@ -17,65 +17,65 @@ public class VoteHelper$3
     //   7: invokevirtual 37	java/lang/Long:longValue	()J
     //   10: lstore_2
     //   11: aload_0
-    //   12: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   15: getfield 42	bacz:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   18: invokevirtual 47	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   21: invokevirtual 53	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   12: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   15: getfield 42	ayro:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   18: invokevirtual 48	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
+    //   21: invokevirtual 54	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   24: astore 7
     //   26: aload 7
-    //   28: ldc 55
-    //   30: ldc 57
+    //   28: ldc 56
+    //   30: ldc 58
     //   32: iconst_2
-    //   33: anewarray 59	java/lang/String
+    //   33: anewarray 60	java/lang/String
     //   36: dup
     //   37: iconst_0
     //   38: lload_2
-    //   39: invokestatic 63	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   39: invokestatic 64	java/lang/Long:toString	(J)Ljava/lang/String;
     //   42: aastore
     //   43: dup
     //   44: iconst_1
     //   45: iconst_3
-    //   46: invokestatic 68	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   46: invokestatic 69	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   49: aastore
-    //   50: invokevirtual 74	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   53: checkcast 55	com/tencent/mobileqq/data/CardProfile
+    //   50: invokevirtual 75	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   53: checkcast 56	com/tencent/mobileqq/data/CardProfile
     //   56: astore 8
     //   58: aload 8
     //   60: ifnull +421 -> 481
     //   63: iconst_1
     //   64: istore 4
-    //   66: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   69: ifeq +53 -> 122
-    //   72: ldc 82
+    //   72: ldc 83
     //   74: iconst_2
-    //   75: new 84	java/lang/StringBuilder
+    //   75: new 85	java/lang/StringBuilder
     //   78: dup
-    //   79: invokespecial 85	java/lang/StringBuilder:<init>	()V
-    //   82: ldc 87
-    //   84: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   82: ldc 88
+    //   84: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: aload_0
     //   88: getfield 18	com/tencent/mobileqq/profile/vote/VoteHelper$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   91: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: ldc 93
-    //   96: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: ldc 94
+    //   96: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload_0
     //   100: getfield 20	com/tencent/mobileqq/profile/vote/VoteHelper$3:jdField_a_of_type_Int	I
-    //   103: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   106: ldc 98
-    //   108: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   106: ldc 99
+    //   108: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: iload 4
-    //   113: invokevirtual 101	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   116: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokestatic 108	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   113: invokevirtual 102	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   116: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: invokestatic 109	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   122: aload_0
-    //   123: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   126: getfield 111	bacz:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   123: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   126: getfield 112	ayro:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   129: lload_2
-    //   130: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   133: invokeinterface 120 2 0
-    //   138: checkcast 122	com/tencent/util/Pair
+    //   130: invokestatic 115	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   133: invokeinterface 121 2 0
+    //   138: checkcast 123	com/tencent/util/Pair
     //   141: astore 9
-    //   143: getstatic 125	bacz:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   143: getstatic 126	ayro:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   146: astore 6
     //   148: aload 6
     //   150: monitorenter
@@ -83,59 +83,59 @@ public class VoteHelper$3
     //   152: istore_1
     //   153: iload_1
     //   154: aload_0
-    //   155: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   158: getfield 128	bacz:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
-    //   161: getfield 134	com/tencent/mobileqq/activity/VisitorsActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   164: invokevirtual 140	java/util/ArrayList:size	()I
+    //   155: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   158: getfield 129	ayro:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
+    //   161: getfield 135	com/tencent/mobileqq/activity/VisitorsActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   164: invokevirtual 141	java/util/ArrayList:size	()I
     //   167: if_icmpge +384 -> 551
     //   170: aload_0
-    //   171: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   174: getfield 128	bacz:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
-    //   177: getfield 134	com/tencent/mobileqq/activity/VisitorsActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   171: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   174: getfield 129	ayro:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
+    //   177: getfield 135	com/tencent/mobileqq/activity/VisitorsActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   180: iload_1
-    //   181: invokevirtual 143	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   184: checkcast 55	com/tencent/mobileqq/data/CardProfile
+    //   181: invokevirtual 144	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   184: checkcast 56	com/tencent/mobileqq/data/CardProfile
     //   187: astore 5
     //   189: aload 5
     //   191: ifnull +296 -> 487
     //   194: aload 5
-    //   196: getfield 147	com/tencent/mobileqq/data/CardProfile:lEctID	J
+    //   196: getfield 148	com/tencent/mobileqq/data/CardProfile:lEctID	J
     //   199: lload_2
     //   200: lcmp
     //   201: ifne +286 -> 487
     //   204: aload 5
     //   206: ifnull +339 -> 545
     //   209: aload 5
-    //   211: invokevirtual 151	com/tencent/mobileqq/data/CardProfile:clone	()Lcom/tencent/mobileqq/data/CardProfile;
+    //   211: invokevirtual 152	com/tencent/mobileqq/data/CardProfile:clone	()Lcom/tencent/mobileqq/data/CardProfile;
     //   214: astore 5
     //   216: aload 9
     //   218: ifnull +49 -> 267
     //   221: aload 5
     //   223: aload 5
-    //   225: getfield 154	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
+    //   225: getfield 155	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
     //   228: aload 9
-    //   230: getfield 157	com/tencent/util/Pair:second	Ljava/lang/Object;
-    //   233: checkcast 159	java/util/concurrent/atomic/AtomicInteger
-    //   236: invokevirtual 161	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   230: getfield 158	com/tencent/util/Pair:second	Ljava/lang/Object;
+    //   233: checkcast 160	java/util/concurrent/atomic/AtomicInteger
+    //   236: invokevirtual 162	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   239: i2l
     //   240: ladd
-    //   241: putfield 154	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
+    //   241: putfield 155	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
     //   244: aload 5
     //   246: aload 5
-    //   248: getfield 164	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
+    //   248: getfield 165	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
     //   251: aload 9
-    //   253: getfield 157	com/tencent/util/Pair:second	Ljava/lang/Object;
-    //   256: checkcast 159	java/util/concurrent/atomic/AtomicInteger
-    //   259: invokevirtual 161	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   253: getfield 158	com/tencent/util/Pair:second	Ljava/lang/Object;
+    //   256: checkcast 160	java/util/concurrent/atomic/AtomicInteger
+    //   259: invokevirtual 162	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   262: i2l
     //   263: lsub
-    //   264: putfield 164	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
+    //   264: putfield 165	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
     //   267: aload 5
     //   269: aload 5
-    //   271: getfield 164	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
+    //   271: getfield 165	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
     //   274: l2i
     //   275: i2s
-    //   276: putfield 168	com/tencent/mobileqq/data/CardProfile:bVoteCnt	S
+    //   276: putfield 169	com/tencent/mobileqq/data/CardProfile:bVoteCnt	S
     //   279: aload 6
     //   281: monitorexit
     //   282: aload 5
@@ -143,37 +143,37 @@ public class VoteHelper$3
     //   287: iload 4
     //   289: ifeq +44 -> 333
     //   292: aload 8
-    //   294: getfield 164	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
+    //   294: getfield 165	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
     //   297: aload 5
-    //   299: getfield 164	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
+    //   299: getfield 165	com/tencent/mobileqq/data/CardProfile:bTodayVotedCnt	J
     //   302: lcmp
     //   303: ifne +30 -> 333
     //   306: aload 8
-    //   308: getfield 154	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
+    //   308: getfield 155	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
     //   311: aload 5
-    //   313: getfield 154	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
+    //   313: getfield 155	com/tencent/mobileqq/data/CardProfile:bAvailableCnt	J
     //   316: lcmp
     //   317: ifne +16 -> 333
     //   320: aload 8
-    //   322: getfield 168	com/tencent/mobileqq/data/CardProfile:bVoteCnt	S
+    //   322: getfield 169	com/tencent/mobileqq/data/CardProfile:bVoteCnt	S
     //   325: aload 5
-    //   327: getfield 168	com/tencent/mobileqq/data/CardProfile:bVoteCnt	S
+    //   327: getfield 169	com/tencent/mobileqq/data/CardProfile:bVoteCnt	S
     //   330: if_icmpeq +21 -> 351
     //   333: aload 5
-    //   335: invokevirtual 171	com/tencent/mobileqq/data/CardProfile:getStatus	()I
+    //   335: invokevirtual 172	com/tencent/mobileqq/data/CardProfile:getStatus	()I
     //   338: sipush 1000
     //   341: if_icmpne +161 -> 502
     //   344: aload 7
     //   346: aload 5
-    //   348: invokevirtual 175	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   348: invokevirtual 176	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   351: aload_0
     //   352: getfield 22	com/tencent/mobileqq/profile/vote/VoteHelper$3:jdField_a_of_type_Boolean	Z
     //   355: ifeq +158 -> 513
     //   358: aload_0
-    //   359: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   362: getfield 177	bacz:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   359: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   362: getfield 178	ayro:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   365: astore 5
-    //   367: getstatic 179	bacz:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
+    //   367: getstatic 180	ayro:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
     //   370: astore 6
     //   372: aload 6
     //   374: monitorenter
@@ -181,11 +181,11 @@ public class VoteHelper$3
     //   376: istore_1
     //   377: iload_1
     //   378: aload 5
-    //   380: invokevirtual 140	java/util/ArrayList:size	()I
+    //   380: invokevirtual 141	java/util/ArrayList:size	()I
     //   383: if_icmpge +157 -> 540
     //   386: aload 5
     //   388: iload_1
-    //   389: invokevirtual 143	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   389: invokevirtual 144	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   392: checkcast 29	java/lang/Long
     //   395: invokevirtual 37	java/lang/Long:longValue	()J
     //   398: lload_2
@@ -197,35 +197,35 @@ public class VoteHelper$3
     //   406: ifeq +13 -> 419
     //   409: aload 5
     //   411: lload_2
-    //   412: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   415: invokevirtual 183	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   412: invokestatic 115	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   415: invokevirtual 184	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   418: pop
     //   419: aload 6
     //   421: monitorexit
     //   422: iload_1
     //   423: ifeq +57 -> 480
-    //   426: new 136	java/util/ArrayList
+    //   426: new 137	java/util/ArrayList
     //   429: dup
-    //   430: invokespecial 184	java/util/ArrayList:<init>	()V
+    //   430: invokespecial 185	java/util/ArrayList:<init>	()V
     //   433: astore 5
     //   435: aload 5
     //   437: aload_0
-    //   438: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   441: getfield 177	bacz:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   444: invokeinterface 190 2 0
+    //   438: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   441: getfield 178	ayro:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   444: invokeinterface 191 2 0
     //   449: pop
     //   450: aload 5
     //   452: aload_0
-    //   453: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   456: getfield 191	bacz:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   459: invokeinterface 190 2 0
+    //   453: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   456: getfield 192	ayro:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   459: invokeinterface 191 2 0
     //   464: pop
     //   465: aload_0
-    //   466: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   469: getfield 128	bacz:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
-    //   472: getfield 194	com/tencent/mobileqq/activity/VisitorsActivity:a	Lanum;
+    //   466: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   469: getfield 129	ayro:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
+    //   472: getfield 195	com/tencent/mobileqq/activity/VisitorsActivity:a	Lamov;
     //   475: aload 5
-    //   477: invokevirtual 199	anum:b	(Ljava/util/List;)V
+    //   477: invokevirtual 200	amov:b	(Ljava/util/List;)V
     //   480: return
     //   481: iconst_0
     //   482: istore 4
@@ -242,12 +242,12 @@ public class VoteHelper$3
     //   501: athrow
     //   502: aload 7
     //   504: aload 5
-    //   506: invokevirtual 203	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   506: invokevirtual 204	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   509: pop
     //   510: goto -159 -> 351
     //   513: aload_0
-    //   514: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lbacz;
-    //   517: getfield 191	bacz:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   514: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Layro;
+    //   517: getfield 192	ayro:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   520: astore 5
     //   522: goto -155 -> 367
     //   525: iload_1

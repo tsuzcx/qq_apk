@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aiyz;
+import ahtj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -12,7 +12,7 @@ class AfterSyncMsg$4
   public void run()
   {
     if (this.this$0.a.app.getApplication() != null) {
-      aiyz.a(this.this$0.a.app).a(this.this$0.a.app);
+      ahtj.a(this.this$0.a.app).a(this.this$0.a.app);
     }
   }
 }

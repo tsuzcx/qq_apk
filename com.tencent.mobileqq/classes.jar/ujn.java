@@ -1,38 +1,61 @@
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
 
-class ujn
-  extends ClickableSpan
+public class ujn<V extends uiz, P extends ujc<V>>
+  implements ujb
 {
-  private int jdField_a_of_type_Int;
-  private stSchema jdField_a_of_type_UserGrowthStSchema;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private uja<V, P> a;
   
-  ujn(stSimpleMetaFeed paramstSimpleMetaFeed, stSchema paramstSchema, int paramInt)
+  public ujn(uja<V, P> paramuja)
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
-    this.jdField_a_of_type_UserGrowthStSchema = paramstSchema;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramuja == null) {
+      throw new NullPointerException("IWSDelegateCallback is null!");
+    }
+    this.a = paramuja;
   }
   
-  private void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  private V a()
   {
-    uns.a("friend", this.jdField_a_of_type_Int, String.valueOf(paramInt), paramstSimpleMetaFeed);
+    uiz localuiz = this.a.a();
+    if (localuiz == null) {
+      throw new NullPointerException("View returned from getMvpView() is null");
+    }
+    return localuiz;
   }
   
-  public void onClick(@androidx.annotation.NonNull View paramView)
+  private P a()
   {
-    uqf.a("WSFriendLikeUtil", "schema = " + this.jdField_a_of_type_UserGrowthStSchema.toString());
-    new uje(BaseApplicationImpl.context).a(this.jdField_a_of_type_UserGrowthStSchema).a(new ujo(this)).a();
+    ujc localujc = this.a.b();
+    if (localujc == null) {
+      throw new NullPointerException("Presenter returned from getPresenter() is null");
+    }
+    return localujc;
   }
   
-  public void updateDrawState(@android.support.annotation.NonNull TextPaint paramTextPaint)
+  public void a()
   {
-    paramTextPaint.setUnderlineText(false);
+    a().a();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    ujc localujc = this.a.b();
+    paramBundle = localujc;
+    if (localujc == null) {
+      paramBundle = this.a.a();
+    }
+    this.a.a(paramBundle);
+  }
+  
+  public void a(View paramView, @Nullable Bundle paramBundle)
+  {
+    a().a(a());
+  }
+  
+  public void b()
+  {
+    a().b();
   }
 }
 

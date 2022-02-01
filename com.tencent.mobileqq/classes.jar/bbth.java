@@ -1,21 +1,85 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bbth
-  implements DialogInterface.OnClickListener
+class bbth
+  implements INetEngine.INetEngineListener
 {
-  public bbth(SignTextEditFragment paramSignTextEditFragment) {}
+  bbth(bbtg parambbtg, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResp(NetResp paramNetResp)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new RichStatus(null);
-    paramDialogInterface.copyFrom(this.a.a);
-    this.a.b.obtainMessage(6, paramDialogInterface).sendToTarget();
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    if (this.jdField_a_of_type_Bbtg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Bbtg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
+    }
+    int i;
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (paramNetResp.exists())
+      {
+        try
+        {
+          String str = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
+          bbtf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          bbtf.a(-1);
+          this.jdField_a_of_type_Bbtg.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        paramNetResp.delete();
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        bbtf.a(100 / this.jdField_a_of_type_Bbtg.jdField_a_of_type_Int + this.jdField_a_of_type_Bbtg.b);
+        paramNetResp = this.jdField_a_of_type_Bbtg;
+        paramNetResp.b += 100 / this.jdField_a_of_type_Bbtg.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Bbtg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Bbtg.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      i = 0;
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      bbtf.a(i / this.jdField_a_of_type_Bbtg.jdField_a_of_type_Int + this.jdField_a_of_type_Bbtg.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
 }
 

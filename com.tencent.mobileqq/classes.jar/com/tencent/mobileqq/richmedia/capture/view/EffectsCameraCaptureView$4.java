@@ -10,8 +10,8 @@ class EffectsCameraCaptureView$4
   
   public void run()
   {
-    if ((this.this$0.j) && (this.this$0.k)) {
-      this.this$0.a.getBusinessOperation().updateSharpFace(this.a);
+    if (this.this$0.a != null) {
+      this.this$0.a.getBusinessOperation().setUpCosmeticsAlpha(this.a);
     }
   }
 }

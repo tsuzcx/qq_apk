@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adlv(MemoryDumpHelper.1 param1) {}
+  public adlv(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    adlu.a(this.a.this$0);
-    adlu.a(this.a.this$0, false, null, this.a.b, this.a.a, false);
-    adlu.b(this.a.this$0);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

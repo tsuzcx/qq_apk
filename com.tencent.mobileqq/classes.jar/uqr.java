@@ -1,14 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
-final class uqr
-  implements DialogInterface.OnCancelListener
+public class uqr
+  implements IMiniMsgUnreadCallback
 {
-  uqr(upd paramupd) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void destroy()
   {
-    uqi.b(this.a);
+    uya.a("AIOLog", 1, "MiniMsgUser destroy");
+  }
+  
+  public void hide()
+  {
+    uya.a("AIOLog", 1, "MiniMsgUser hide");
+  }
+  
+  public void hideUnread()
+  {
+    uya.a("AIOLog", 1, "MiniMsgUser hideUnread");
+  }
+  
+  public boolean show(int paramInt)
+  {
+    uya.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
+    return false;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  {
+    uya.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    uya.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
   }
 }
 

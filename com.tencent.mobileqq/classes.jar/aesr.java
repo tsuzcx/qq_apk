@@ -1,21 +1,29 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
 public class aesr
-  extends anyu
+  extends ayqg
 {
-  public aesr(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public aesr(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 1001: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
       return;
     }
-    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 

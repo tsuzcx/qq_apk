@@ -1,50 +1,36 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aibh
-  extends BroadcastReceiver
+  implements aios
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  public aibh(TroopView paramTroopView) {}
   
-  public aibh(Activity paramActivity)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      if (!a(paramContext)) {
-        this.jdField_a_of_type_Boolean = bool;
-      }
+    int i = TroopView.a(this.a).getCurrentItem();
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
     }
-    for (;;)
+    Object localObject = TroopView.a(this.a).a(i, false);
+    if (localObject != null)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      localObject = (AddContactViewPagerTroopFragment)localObject;
+      aiak localaiak = (aiak)this.a.a.get(i);
+      if ((paramInt >= 0) && (paramInt < localaiak.jdField_a_of_type_JavaUtilArrayList.size()))
       {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = false;
-      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = true;
+        localaiak.b = paramInt;
+        aial localaial = (aial)localaiak.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        ((AddContactViewPagerTroopFragment)localObject).a(localaial.b, localaial.jdField_a_of_type_JavaLangString);
+        bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_clk", 0, 0, localaial.jdField_a_of_type_JavaLangString, localaiak.jdField_a_of_type_JavaLangString, "", "");
       }
     }
+    return 0;
   }
 }
 

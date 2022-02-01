@@ -9,7 +9,7 @@ class AEVideoShelfEditFragment$9
   
   public void run()
   {
-    AEVideoShelfEditFragment.a(this.this$0, this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    AEVideoShelfEditFragment.access$1700(this.this$0, this.val$imageViewer, this.val$finalBmp);
   }
 }
 

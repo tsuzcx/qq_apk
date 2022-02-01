@@ -1,13 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class tsd
-  implements ViewBase.IBuilder
+  implements tpb
 {
-  public ViewBase build(VafContext paramVafContext)
+  public tsd(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
+  
+  public void a()
   {
-    return new try(paramVafContext);
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.2(this), 200L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "reloadPage success!");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.1(this), 1000L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadinjoyAdMiniGameFragment", 2, "reloadPage error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (pch.a())) {
+      pkp.a().l();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "reloadPage process,process code=" + paramInt);
+    }
   }
 }
 

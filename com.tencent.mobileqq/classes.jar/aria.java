@@ -1,112 +1,156 @@
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import eipc.EIPCClient;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aria
+  extends WebViewPlugin
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  public int d = -1;
-  public int e;
-  public int f;
-  
   public aria()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.mPluginNameSpace = "extendFriend";
   }
   
-  public static aria a(JSONObject paramJSONObject)
+  private void a(String paramString)
   {
-    aria localaria = new aria();
-    if (paramJSONObject == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return localaria;
-          paramJSONObject = paramJSONObject.optJSONObject("emoticon_guide_config");
-        } while (paramJSONObject == null);
-        if (QLog.isColorLevel()) {
-          QLog.i("QQSysAndEmojiConfProcessor", 2, "parse GuideConfBean: ");
-        }
-        if (paramJSONObject.has("emoticon_guide_url")) {
-          localaria.jdField_a_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_night_url")) {
-          localaria.jdField_b_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_night_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid")) {
-          localaria.c = paramJSONObject.optInt("emoticon_guide_serverid", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid_type")) {
-          localaria.d = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_width")) {
-          localaria.e = paramJSONObject.optInt("emoticon_guide_width", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_height")) {
-          localaria.f = paramJSONObject.optInt("emoticon_guide_height", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_open")) {
-          localaria.jdField_a_of_type_Int = paramJSONObject.optInt("emoticon_guide_open", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_version")) {
-          localaria.jdField_b_of_type_Int = paramJSONObject.optInt("emoticon_guide_version", 0);
-        }
-      } while (!paramJSONObject.has("emoticon_guide_invalid_time"));
-      paramJSONObject = paramJSONObject.optString("emoticon_guide_invalid_time", null);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
     try
     {
-      localaria.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramJSONObject).getTime();
-      return localaria;
+      Object localObject = new JSONObject(paramString);
+      int i = ((JSONObject)localObject).optInt("category");
+      String str1 = ((JSONObject)localObject).optString("name");
+      String str2 = ((JSONObject)localObject).optString("schoolid");
+      int j = ((JSONObject)localObject).optInt("idx");
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("name", str1);
+      ((Bundle)localObject).putInt("category", i);
+      ((Bundle)localObject).putString("schoolid", str2);
+      ((Bundle)localObject).putInt("idx", j);
+      if (QLog.isColorLevel()) {
+        QLog.i("ExtendFriendWebViewPlugin", 2, "onNotifyUpdateSchoolInfo result=" + paramString);
+      }
+      QIPCClientHelper.getInstance().getClient().callServer("ExtendFriendQIPCModule", "notifyUpdateSchoolInfo", (Bundle)localObject);
+      RemoteHandleManager.getInstance().getSender().updateSchoolinfo((Bundle)localObject, this.mRuntime.a().getCurrentAccountUin());
+      return;
     }
-    catch (Exception paramJSONObject)
+    catch (JSONException paramString)
     {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse invalidTime failed!", paramJSONObject);
+      QLog.i("ExtendFriendWebViewPlugin", 1, "onNotifyUpdateSchoolInfo exception", paramString);
     }
-    return localaria;
   }
   
-  boolean a()
+  private void b(String paramString)
   {
-    int i = bhsi.c("key_emoticon_guide_version");
-    if (this.jdField_b_of_type_Int > i)
+    try
     {
-      bhsi.a("key_emoticon_guide_version", Integer.valueOf(this.jdField_b_of_type_Int));
-      bhsi.a("key_show_emoticon_guide", Boolean.valueOf(true));
-      return true;
+      int i = new JSONObject(paramString).optInt("certificateResult");
+      paramString = new Bundle();
+      if (i == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramString.putBoolean("key_result", bool);
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendWebViewPlugin", 2, "onNotifyCampusFriendCertificateResult result=" + i);
+        }
+        QIPCClientHelper.getInstance().getClient().callServer("ExtendFriendQIPCModule", "notifyCampusFriendCertificateResult", paramString);
+        return;
+      }
+      return;
     }
-    return false;
+    catch (JSONException paramString)
+    {
+      QLog.i("ExtendFriendWebViewPlugin", 1, "onNotifyCampusFriendCertificateResult exception", paramString);
+    }
   }
   
-  public boolean b()
+  private void c(String paramString)
+  {
+    try
+    {
+      int i = new JSONObject(paramString).optInt("uploadResult");
+      paramString = new Bundle();
+      if (i == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramString.putBoolean("key_result", bool);
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendWebViewPlugin", 2, "onNotifyUploadSutudentIDResult result=" + i);
+        }
+        QIPCClientHelper.getInstance().getClient().callServer("ExtendFriendQIPCModule", "notifyUploadSutudentIDResult", paramString);
+        return;
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.i("ExtendFriendWebViewPlugin", 1, "onNotifyUploadSutudentIDResult exception", paramString);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQSysAndEmojiConfProcessor", 2, "currentTimeMillis: " + System.currentTimeMillis() + " mInvalidTime: " + this.jdField_a_of_type_Long);
+      QLog.i("ExtendFriendWebViewPlugin", 2, "handleJsRequest url is: " + paramString1 + " method: " + paramString3 + " pkgName: " + paramString2 + " args: " + paramVarArgs);
     }
-    return (this.jdField_a_of_type_Int == 1) && (System.currentTimeMillis() < this.jdField_a_of_type_Long);
-  }
-  
-  public String toString()
-  {
-    return "{mOpen=" + this.jdField_a_of_type_Int + ", mDrawableUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNightDrawableUrl=" + this.jdField_b_of_type_JavaLangString + ", mServerId=" + this.c + ", mEmoType=" + this.d + ", mInvalidTime=" + this.jdField_a_of_type_Long + '}';
+    if (!"extendFriend".equals(paramString2)) {}
+    do
+    {
+      return false;
+      if ("answerResult".equals(paramString3))
+      {
+        paramJsBridgeListener = this.mRuntime.a().getCurrentAccountUin();
+        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+          arhi.a(paramJsBridgeListener, false);
+        }
+        return true;
+      }
+      if ("notifyCampusFriendCertificateResult".equals(paramString3))
+      {
+        if (paramVarArgs.length >= 1)
+        {
+          b(paramVarArgs[0]);
+          RemoteHandleManager.getInstance().getSender().updateSchoolCertificate(paramVarArgs[0], "notifyCampusFriendCertificateResult", this.mRuntime.a().getCurrentAccountUin());
+        }
+        for (;;)
+        {
+          return true;
+          QLog.i("ExtendFriendWebViewPlugin", 1, "NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT arg error");
+        }
+      }
+      if ("notifyUploadSutudentIDResult".equals(paramString3))
+      {
+        if (paramVarArgs.length >= 1)
+        {
+          c(paramVarArgs[0]);
+          RemoteHandleManager.getInstance().getSender().updateSchoolCertificate(paramVarArgs[0], "notifyUploadSutudentIDResult", this.mRuntime.a().getCurrentAccountUin());
+        }
+        for (;;)
+        {
+          return true;
+          QLog.i("ExtendFriendWebViewPlugin", 1, "ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT arg error");
+        }
+      }
+    } while (!"notifyUpdateSchoolInfo".equals(paramString3));
+    if (paramVarArgs.length >= 1) {
+      a(paramVarArgs[0]);
+    }
+    for (;;)
+    {
+      return true;
+      QLog.i("ExtendFriendWebViewPlugin", 1, "ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT arg error");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aria
  * JD-Core Version:    0.7.0.1
  */

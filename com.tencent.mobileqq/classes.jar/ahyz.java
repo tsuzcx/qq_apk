@@ -1,14 +1,23 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class ahyz
-  implements ahyf
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.a(paramahfq.b, paramMessageRecord);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public AccountSearchPb.record a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public TextView b;
+  public String b;
+  public int c;
+  public TextView c;
+  public TextView d;
 }
 
 

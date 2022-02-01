@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount.readinjoy.guidingchannel;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
-import sel;
+import slt;
 
 public final class ReadInJoyChannelGuidingManager$1
   implements Runnable
 {
-  public ReadInJoyChannelGuidingManager$1(ReadInJoyXListView paramReadInJoyXListView, sel paramsel) {}
+  public ReadInJoyChannelGuidingManager$1(ReadInJoyXListView paramReadInJoyXListView, slt paramslt) {}
   
   public void run()
   {
     View localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount());
     if (localView != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.performItemClick(localView, 0, this.jdField_a_of_type_Sel.getItemId(0));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.performItemClick(localView, 0, this.jdField_a_of_type_Slt.getItemId(0));
       return;
     }
     QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle] view is null, open failed.");

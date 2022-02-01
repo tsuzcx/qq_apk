@@ -1,11 +1,13 @@
-import android.view.View;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bfdq
-  extends bfdp
+class bfdq
+  implements bfdu
 {
-  bfdq(View paramView)
+  bfdq(bfdm parambfdm, String paramString) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    super(paramView);
+    if (paramInt == 0) {}
   }
 }
 

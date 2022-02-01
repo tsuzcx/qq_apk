@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aktn;
-import akvn;
+import ajrd;
+import ajtd;
 import android.content.Intent;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
@@ -13,22 +13,22 @@ import java.util.ArrayList;
 public class PhotoPreviewLogicAIO$2
   implements Runnable
 {
-  public PhotoPreviewLogicAIO$2(akvn paramakvn, boolean paramBoolean, Intent paramIntent, Pair paramPair, int paramInt, String paramString1, String paramString2) {}
+  public PhotoPreviewLogicAIO$2(ajtd paramajtd, boolean paramBoolean, Intent paramIntent, Pair paramPair, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first, akvn.a(this.this$0).b, akvn.a(this.this$0).currentQualityType, true);
+      PhotoUtils.sendPhoto(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first, ajtd.a(this.this$0).b, ajtd.a(this.this$0).currentQualityType, true);
       ((NewPhotoPreviewActivity)this.this$0.mActivity).setResult(-1);
       ((NewPhotoPreviewActivity)this.this$0.mActivity).finish();
     }
     for (;;)
     {
-      bdll.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      bcwu.b = System.currentTimeMillis();
+      bcef.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      bbqf.b = System.currentTimeMillis();
       return;
-      PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first, akvn.b(this.this$0).currentQualityType, akvn.b(this.this$0).jdField_a_of_type_Boolean);
+      PhotoUtils.sendPhoto(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first, ajtd.b(this.this$0).currentQualityType, ajtd.b(this.this$0).jdField_a_of_type_Boolean);
     }
   }
 }

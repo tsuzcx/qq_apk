@@ -1,27 +1,33 @@
+import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class pcb
-  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = pan.a(paramString);
-    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
-      bnrf.a((String)paramString.get("readinjoy_single_video_switch"));
+    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAd_feeds")) {
+        bkwm.a("ad_feeds_proteus_offline_bid", str2);
+      }
     }
     return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    super.onWipeConfig(paramInt);
-    bnrf.a(null);
+    bkwm.a("ad_feeds_proteus_offline_bid", "0");
   }
 }
 

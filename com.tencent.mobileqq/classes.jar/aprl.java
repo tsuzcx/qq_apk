@@ -1,42 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aprl
+  implements View.OnClickListener
 {
-  public static aprj a(aprm paramaprm, int paramInt)
-  {
-    if (paramaprm == null) {
-      throw new RuntimeException("params can not be null!");
-    }
-    Object localObject;
-    switch (paramaprm.jdField_a_of_type_Int)
-    {
-    default: 
-      localObject = new apro(paramInt);
-    }
-    for (;;)
-    {
-      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramaprm.toString());
-      return localObject;
-      localObject = new aprd(paramInt);
-      continue;
-      localObject = new aprq(paramInt);
-      continue;
-      localObject = new aprh(paramInt);
-      continue;
-      localObject = new apri(paramInt);
-      continue;
-      if (TextUtils.isEmpty(paramaprm.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      localObject = new apre(paramInt, paramaprm.jdField_a_of_type_JavaLangString);
-    }
-    throw new RuntimeException("fragmentShader can not be empty!");
-  }
+  public aprl(TimeSelectView paramTimeSelectView) {}
   
-  public static aprm a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aprm(paramInt);
+    if (TimeSelectView.a(this.a) != null) {
+      TimeSelectView.a(this.a).a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

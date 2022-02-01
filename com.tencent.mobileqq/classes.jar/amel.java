@@ -1,11 +1,10 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class amel
-  extends anyu
+public abstract interface amel
 {
-  public amel(SelectMemberActivity paramSelectMemberActivity) {}
+  public abstract void a(int paramInt);
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 

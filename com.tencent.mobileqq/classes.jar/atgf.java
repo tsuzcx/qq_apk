@@ -1,19 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class atgf
-  implements DialogInterface.OnClickListener
+public class atgf
 {
-  atgf(atgd paramatgd) {}
+  private final byte jdField_a_of_type_Byte = 0;
+  private final int jdField_a_of_type_Int = 20;
+  private final String jdField_a_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
+  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
+  private final byte jdField_b_of_type_Byte = 0;
+  private final String jdField_b_of_type_JavaLangString = "random";
+  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
+  private final byte jdField_c_of_type_Byte = 1;
+  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
+  private final byte jdField_d_of_type_Byte = 0;
+  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
+  private final byte[] e = "qlinkwillthebestfunction".getBytes();
+  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
+  private final byte[] g = "whowillbethenextbigtiger".getBytes();
+  private final byte[] h = "whenwillwefindmahang_370".getBytes();
+  private final byte[] i = "whenwillchinagetworldcap".getBytes();
+  private byte[] j;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atgf()
   {
-    atgd.a(this.a).dismiss();
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {}
+    for (paramString = paramString.getBytes();; paramString = null)
+    {
+      this.j = paramString;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgf
  * JD-Core Version:    0.7.0.1
  */

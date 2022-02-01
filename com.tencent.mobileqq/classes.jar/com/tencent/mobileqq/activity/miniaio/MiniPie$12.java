@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aklt;
+import ajjs;
 import com.tencent.widget.XEditTextEx;
 
 public class MiniPie$12
   implements Runnable
 {
-  public MiniPie$12(aklt paramaklt) {}
+  public MiniPie$12(ajjs paramajjs) {}
   
   public void run()
   {

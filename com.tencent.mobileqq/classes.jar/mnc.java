@@ -1,30 +1,31 @@
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
-class mnc
-  implements mnf
+public class mnc
+  implements Animation.AnimationListener
 {
-  mnc(mmw parammmw) {}
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public mnc(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
   {
-    if (paramBoolean)
-    {
-      if (!this.a.c()) {
-        break label23;
-      }
-      this.a.f();
-    }
-    for (;;)
-    {
-      return false;
-      label23:
-      if (this.a.b()) {
-        this.a.e();
-      } else if (mmw.a(this.a) != null) {
-        mmw.a(this.a).a(paramMotionEvent);
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lba.f("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

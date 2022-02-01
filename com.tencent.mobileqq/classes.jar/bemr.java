@@ -1,104 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.together.writetogether.WriteTogetherManager.1;
-import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.Set;
 
 public class bemr
-  implements beml, Manager
+  implements AdapterView.OnItemClickListener
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WriteTogetherWebSocketSender jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender;
-  private CopyOnWriteArrayList<bemm> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private CopyOnWriteArrayList<bemm> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private MqqHandler jdField_b_of_type_MqqOsMqqHandler;
+  public bemr(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
   
-  public bemr(QQAppInterface paramQQAppInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender = new WriteTogetherWebSocketSender(new beqq());
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
-    this.jdField_b_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
-  }
-  
-  private void a(bemm parambemm, BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject, MqqHandler paramMqqHandler)
-  {
-    paramMqqHandler.post(new WriteTogetherManager.1(this, parambemm, paramType, paramBoolean, paramObject));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender.b();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender.a(paramInt);
-  }
-  
-  public void a(bemm parambemm)
-  {
-    a(parambemm, false);
-  }
-  
-  public void a(bemm parambemm, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    }
+    for (;;)
     {
-      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambemm);
+      this.a.jdField_a_of_type_Bemt.notifyDataSetChanged();
+      this.a.e();
       return;
+      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambemm);
-  }
-  
-  public void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender.a(paramBaseToWriteTogetherMsg);
-  }
-  
-  public void a(BaseWriteTogetherMsg paramBaseWriteTogetherMsg)
-  {
-    BaseWriteTogetherMsg.Type localType = paramBaseWriteTogetherMsg.getType();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      a((bemm)localIterator.next(), localType, true, paramBaseWriteTogetherMsg, this.jdField_a_of_type_MqqOsMqqHandler);
-    }
-    localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      a((bemm)localIterator.next(), localType, true, paramBaseWriteTogetherMsg, this.jdField_b_of_type_MqqOsMqqHandler);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramInt);
-  }
-  
-  public void b(bemm parambemm)
-  {
-    b(parambemm, false);
-  }
-  
-  public void b(bemm parambemm, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambemm);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambemm);
-  }
-  
-  public void onDestroy()
-  {
-    a();
   }
 }
 

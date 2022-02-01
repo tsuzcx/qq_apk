@@ -1,25 +1,23 @@
 package cooperation.qzone.stickynote;
 
 import android.os.Handler;
-import bmww;
-import bniv;
-import bniw;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.api.QZoneApiProxy;
 
-public class QzoneStickyNoteManager$1$1
+class QzoneStickyNoteManager$1$1
   implements Runnable
 {
-  public QzoneStickyNoteManager$1$1(bniw parambniw) {}
+  QzoneStickyNoteManager$1$1(QzoneStickyNoteManager.1 param1) {}
   
   public void run()
   {
     try
     {
-      QzonePluginProxyActivity.a(this.a.jdField_a_of_type_AndroidAppActivity);
-      boolean bool = bmww.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((bmww.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (bool)) {
-        bniv.a(this.a.jdField_a_of_type_Bniv).post(new QzoneStickyNoteManager.1.1.1(this));
+      QzonePluginProxyActivity.getQZonePluginClassLoader(this.this$1.val$activity);
+      boolean bool = QZoneApiProxy.initServlet(this.this$1.val$activity, this.this$1.val$app);
+      if ((QZoneApiProxy.initEnv(this.this$1.val$activity, this.this$1.val$app)) && (bool)) {
+        QzoneStickyNoteManager.access$000(this.this$1.this$0).post(new QzoneStickyNoteManager.1.1.1(this));
       }
       return;
     }

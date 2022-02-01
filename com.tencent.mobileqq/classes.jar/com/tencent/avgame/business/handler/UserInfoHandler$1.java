@@ -2,19 +2,19 @@ package com.tencent.avgame.business.handler;
 
 import java.util.HashMap;
 import java.util.List;
-import mxo;
+import mxz;
 
 public class UserInfoHandler$1
   implements Runnable
 {
-  public UserInfoHandler$1(mxo parammxo, HashMap paramHashMap, List paramList1, List paramList2) {}
+  public UserInfoHandler$1(mxz parammxz, HashMap paramHashMap, List paramList1, List paramList2) {}
   
   public void run()
   {
-    mxo.a(this.this$0, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_JavaUtilList, this.b);
+    mxz.a(this.this$0, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_JavaUtilList, this.b);
     this.this$0.notifyUI(2, true, new Object[] { Integer.valueOf(0), this.jdField_a_of_type_JavaUtilHashMap });
     if (this.b.size() > 0) {
-      mxo.a(this.this$0, 0, this.b);
+      mxz.a(this.this$0, 0, this.b);
     }
   }
 }

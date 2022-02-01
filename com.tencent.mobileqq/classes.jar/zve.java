@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.PopupMenu.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zve
-  implements ValueAnimator.AnimatorUpdateListener
+public class zve
+  implements View.OnClickListener
 {
-  zve(zvd paramzvd, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  zve(zvd paramzvd, String paramString, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (zvg)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+    if (this.jdField_a_of_type_Zvd.a != null) {
+      this.jdField_a_of_type_Zvd.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    }
+    paramView.post(new PopupMenu.1.1(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

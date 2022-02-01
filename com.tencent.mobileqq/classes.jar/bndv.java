@@ -1,15 +1,20 @@
-import android.os.IInterface;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface bndv
-  extends IInterface
+class bndv
+  extends QQUIEventReceiver<bndn, bnhp>
 {
-  public abstract void a(String paramString);
+  public bndv(@NonNull bndn parambndn)
+  {
+    super(parambndn);
+  }
   
-  public abstract void a(String paramString, float paramFloat, long paramLong);
+  public void a(@NonNull bndn parambndn, @NonNull bnhp parambnhp) {}
   
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(String paramString);
+  public Class acceptEventClass()
+  {
+    return bnhp.class;
+  }
 }
 
 

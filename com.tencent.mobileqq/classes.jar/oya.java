@@ -1,38 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oya
-  implements pco
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$LinkAdatper$ViewHolder;", "", "root", "Landroid/view/View;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$LinkAdatper;Landroid/view/View;)V", "vDelete", "getVDelete", "()Landroid/view/View;", "vDescription", "Landroid/widget/TextView;", "getVDescription", "()Landroid/widget/TextView;", "vIcon", "Lcom/tencent/biz/pubaccount/readinjoy/proteus/view/impl/NativeReadInjoyImageView;", "getVIcon", "()Lcom/tencent/biz/pubaccount/readinjoy/proteus/view/impl/NativeReadInjoyImageView;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+final class oya
 {
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  @NotNull
+  private final View jdField_a_of_type_AndroidViewView;
+  @NotNull
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  @NotNull
+  private final NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
+  
+  public oya(View paramView)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onDownloadStateChanged] url=" + paramString1 + " savedPath=" + paramString2 + " errorCode=" + paramInt2 + " errorMsg=" + paramString3);
-    if (!TextUtils.equals(paramString1, oxz.a(ozs.a(), "sp_key_kb_download_url"))) {
-      return;
-    }
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 4: 
-      long l = System.currentTimeMillis() - oxz.a();
-      QLog.d("KBPreDownloadUtils", 2, "[onDownloadFinish] cost=" + l + "ms, info=" + paramString1);
-      paramString3 = BaseApplicationImpl.getApplication();
-      if (paramString3 != null)
-      {
-        oxz.a(paramString3, paramString2);
-        oxz.a(true, l, 0);
-        oxz.a(paramString1, paramString2);
-        pcq.a().b(oxz.a());
-        return;
-      }
-      QLog.e("KBPreDownloadUtils", 1, "[onDownloadStateChanged] return since context is null");
-      return;
-    }
-    QLog.e("KBPreDownloadUtils", 1, "[onDownloadError] errorCode=" + paramInt2 + ", errorMsg=" + paramString3);
-    oxz.a(false, System.currentTimeMillis() - oxz.a(), paramInt2);
-    pcq.a().b(oxz.a());
+    paramView = localObject.findViewById(2131368236);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.icon)");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)paramView);
+    paramView = localObject.findViewById(2131365445);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.description)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+    paramView = localObject.findViewById(2131365396);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.delete)");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  @NotNull
+  public final View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  @NotNull
+  public final NativeReadInjoyImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
   }
 }
 

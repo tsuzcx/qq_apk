@@ -1,20 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class awxh
-  extends Handler
+  implements apbf
 {
-  public awxh(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
+  public awxh(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.requestLayout();
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

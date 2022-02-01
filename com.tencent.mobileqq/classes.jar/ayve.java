@@ -1,47 +1,55 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.now.NowQQLiveFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayve
-  implements bjey
+class ayve
+  implements View.OnClickListener
 {
-  public ayve(NowQQLiveFragment paramNowQQLiveFragment) {}
+  ayve(ayvd paramayvd, ayup paramayup, ayvi paramayvi) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (4 == paramInt)
+    switch (paramView.getId())
     {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", ayvd.a);
-      this.a.getActivity().startActivity(paramView);
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (5 == paramInt)
+      AnonymousView.a(this.jdField_a_of_type_Ayvd.a);
+      int i = (int)this.jdField_a_of_type_Ayup.e;
+      ayup localayup = this.jdField_a_of_type_Ayup;
+      long l;
+      if (this.jdField_a_of_type_Ayup.jdField_b_of_type_Boolean)
       {
-        paramView = new Intent();
-        Bundle localBundle = new Bundle();
-        paramView.setComponent(new ComponentName(this.a.getActivity(), ChatActivity.class));
-        localBundle.putString("uin", ayvd.a);
-        localBundle.putInt("uintype", 1008);
-        localBundle.putString("uinname", anzj.a(2131694061));
-        paramView.putExtras(localBundle);
-        paramView.setFlags(67108864);
-        paramView.putExtra("isforceRequestDetail", false);
-        paramView.putExtra("jump_from", 2);
-        this.a.getActivity().startActivity(paramView);
-        ayxc.a();
-        ayxc.b();
-        return;
+        l = i - 1;
+        label104:
+        localayup.e = l;
+        ayuy.a(this.jdField_a_of_type_Ayvd.a.a, this.jdField_a_of_type_Ayup);
+        localayup = this.jdField_a_of_type_Ayup;
+        if (this.jdField_a_of_type_Ayup.jdField_b_of_type_Boolean) {
+          break label199;
+        }
       }
-    } while (1 != paramInt);
-    NowQQLiveFragment.a(this.a);
+      label199:
+      for (boolean bool = true;; bool = false)
+      {
+        localayup.jdField_b_of_type_Boolean = bool;
+        ayvd.a(this.jdField_a_of_type_Ayvd, this.jdField_a_of_type_Ayup.jdField_b_of_type_Boolean, this.jdField_a_of_type_Ayvi.d, this.jdField_a_of_type_Ayvi.g, this.jdField_a_of_type_Ayup.e);
+        break;
+        l = i + 1;
+        break label104;
+      }
+      AnonymousView.a(this.jdField_a_of_type_Ayvd.a);
+      ayod.a(paramView);
+      ayuy.a((BaseActivity)AnonymousView.a(this.jdField_a_of_type_Ayvd.a), AnonymousView.a(this.jdField_a_of_type_Ayvd.a), this.jdField_a_of_type_Ayup.a, this.jdField_a_of_type_Ayup.jdField_b_of_type_Long);
+      continue;
+      AnonymousView.a(this.jdField_a_of_type_Ayvd.a);
+      ayod.a(paramView);
+      ayuy.a((BaseActivity)AnonymousView.b(this.jdField_a_of_type_Ayvd.a), AnonymousView.a(this.jdField_a_of_type_Ayvd.a), this.jdField_a_of_type_Ayup.a, "", 8, this.jdField_a_of_type_Ayup.jdField_b_of_type_Long);
+    }
   }
 }
 

@@ -1,108 +1,158 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class qgr
+  extends TextBase
 {
-  public static String a(BaseArticleInfo paramBaseArticleInfo)
+  private NativeCommentView a;
+  
+  public qgr(VafContext paramVafContext)
   {
-    if (paramBaseArticleInfo == null) {
-      return "null";
-    }
-    return " title = " + paramBaseArticleInfo.mTitle + ", rowKey = " + paramBaseArticleInfo.innerUniqueID + ", pageName = " + paramBaseArticleInfo.ptsLitePageName;
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.mLineSpaceExtra = Utils.rp2px(5.0D);
+    this.a = new NativeCommentView(paramVafContext.getContext());
+    this.a.setTextColor(-654311424);
   }
   
-  public static <T extends BaseArticleInfo> void a(T paramT)
+  public void a(pvc parampvc)
   {
-    if ((paramT == null) || (paramT.ptsComposer == null)) {
-      return;
-    }
-    paramT.ptsComposer.destroy();
-    paramT.ptsComposer = null;
-    QLog.i("PTSPreLayoutHandler", 1, "[destroy] succeed, " + a(paramT));
+    this.a.setModel(parampvc);
   }
   
-  private static void a(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  public int getComMeasuredHeight()
   {
-    if ((paramBaseArticleInfo == null) || (TextUtils.isEmpty(paramString))) {
-      QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] articleInfo is null or frameTreeJson is empty.");
-    }
-    do
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.setTextSize(0, this.mTextSize);
+    this.a.setLineSpacing(this.mLineSpaceExtra, 1.0F);
+    this.a.setIncludeFontPadding(false);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    return super.setAttribute(paramInt, paramObject);
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
     {
-      return;
-      if (paramString.contains("pts:round-corner-card"))
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1172: 
+      try
       {
-        QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsRoundCornerCard = true, articleInfo = " + a(paramBaseArticleInfo));
-        paramBaseArticleInfo.ptsRoundCornerCard = true;
+        this.a.setPreBlankNum(Integer.valueOf(paramString).intValue());
+        return true;
       }
-    } while (!paramString.contains("pts:special-card"));
-    QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsSpecialCard = true, articleInfo = " + a(paramBaseArticleInfo));
-    paramBaseArticleInfo.ptsSpecialCard = true;
-  }
-  
-  public static void a(List<? extends BaseArticleInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] articleInfoList is empty.");
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1173: 
+      try
+      {
+        this.a.setPreAccountUin(Long.parseLong(paramString));
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1174: 
+      try
+      {
+        this.a.a("1".equals(paramString));
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1188: 
+      try
+      {
+        paramInt = Color.parseColor(paramString);
+        this.a.setTextColor(paramInt);
+        QLog.d("ArticleCommentView", 1, "setEmotionFontColor: " + paramInt);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1187: 
+      try
+      {
+        this.mTextSize = Utils.dp2px(Integer.valueOf(paramString).intValue());
+        QLog.d("ArticleCommentView", 1, "setEmotionFontSize: " + this.mTextSize);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1189: 
+      try
+      {
+        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
+        QLog.d("ArticleCommentView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
     }
-    for (;;)
+    try
     {
-      return;
-      if (!qhv.a().a())
-      {
-        QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] pts lite master switch disabled.");
-        return;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
-        if (!qgg.a(localBaseArticleInfo))
-        {
-          QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], articleInfo is not valid.");
-        }
-        else
-        {
-          String str1 = localBaseArticleInfo.ptsLitePageName;
-          String str2 = qib.a().a("default_feeds", str1);
-          if (TextUtils.isEmpty(str2))
-          {
-            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], frameTreeJson is empty.");
-          }
-          else
-          {
-            localBaseArticleInfo.ptsComposer = PTSComposer.buildComposer(str1, str2, localBaseArticleInfo.ptsItemData.getJSONData(), null, localBaseArticleInfo.ptsUpdateDataListener);
-            a(localBaseArticleInfo, str2);
-            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] succeed, " + a(localBaseArticleInfo));
-          }
-        }
-      }
+      paramInt = Color.parseColor(paramString);
+      this.a.setLinkedTextColor(paramInt);
+      QLog.d("ArticleCommentView", 1, "ArticleCommentView | setLinkTextColor: " + paramInt);
+      return true;
     }
-  }
-  
-  public static void b(List<? extends BaseArticleInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      QLog.i("PTSPreLayoutHandler", 1, "[destroy] articleInfoList is null.");
-    }
-    for (;;)
+    catch (Exception paramString)
     {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
-        if (!qgg.a(localBaseArticleInfo)) {
-          QLog.i("PTSPreLayoutHandler", 1, "[destroy], articleInfo is not valid.");
-        } else {
-          a(localBaseArticleInfo);
-        }
-      }
+      QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
     }
+    return false;
   }
 }
 

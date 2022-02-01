@@ -1,97 +1,52 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.ViewParent;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class yey
-  implements TextWatcher
+  implements yga
 {
-  public int a;
-  public Context a;
-  public BubbleTextView a;
-  public String a;
-  public yme a;
-  public boolean a;
-  private int b;
-  public String b;
-  private int c;
+  private yey(DoodleLayout paramDoodleLayout) {}
   
-  public yey(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  private void a()
   {
-    if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
-      throw new IllegalArgumentException("illegal textWatcher source");
+    this.a.a(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+    this.a.a(false);
+    this.a.b(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView });
+    this.a.setDoodleGLViewVisibility(0);
+    this.a.c(0);
+    this.a.d(0);
+  }
+  
+  public void a(ydd paramydd, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    xvv.a("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s ", paramydd, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
+    a();
+    yck localyck = new yck(paramFloat1, paramFloat2 + this.a.a(), paramFloat3, 0.0F, 0.0F, 0.0F, paramydd.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramydd.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 3))
+    {
+      LpReportInfo_pf00064.allReport(615, 6);
+      LpReportInfo_pf00064.allReport(615, 4, 2);
     }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Yme = ((yme)wth.a(11));
-  }
-  
-  public static void a(EditText paramEditText, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    do
+    if (this.a.a().a(paramydd.jdField_a_of_type_JavaLangString, paramydd.b, paramydd.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localyck))
     {
-      return;
-      paramIntent = paramIntent.getStringExtra("at_video_text");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
-      }
-    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
-    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (this.c > 0)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
-      {
-        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
-        ViewParent localViewParent1 = localViewParent2;
-        if (localViewParent2 != null)
-        {
-          localViewParent1 = localViewParent2;
-          if (!(localViewParent2 instanceof RelativeLayout)) {
-            localViewParent1 = localViewParent2.getParent();
-          }
-        }
-        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
-          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
-      }
-      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
-      {
-        yup.a("home_page", "send_at", 0, 0, new String[0]);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
-        }
-        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
-          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_Yme.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
-        }
-      }
+      DoodleLayout.a("clk_oneface");
+      xwb.a("0X80076CA");
+      xwb.b("0X80075DF");
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(ygc paramygc)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
+    xvv.b("DoodleLayout", "onLocationFaceSelected, pictureUrl:" + paramygc.d);
+    a();
+    this.a.a(paramygc);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 3) {
+      LpReportInfo_pf00064.report(615, 6);
+    }
+    xwb.b("0X80075E3");
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

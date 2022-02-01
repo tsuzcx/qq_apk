@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import bojx;
-import bokv;
+import bloc;
+import blpb;
 
 public class VideoStoryAIScenePart$23
   implements Runnable
 {
-  public VideoStoryAIScenePart$23(bokv parambokv) {}
+  public VideoStoryAIScenePart$23(blpb paramblpb) {}
   
   public void run()
   {
-    if ((bokv.f(this.this$0) != null) && (bokv.a(this.this$0) != null)) {
-      bokv.a(this.this$0).a(bokv.a(this.this$0));
+    if ((blpb.f(this.this$0) != null) && (blpb.a(this.this$0) != null)) {
+      blpb.a(this.this$0).a(blpb.a(this.this$0));
     }
   }
 }

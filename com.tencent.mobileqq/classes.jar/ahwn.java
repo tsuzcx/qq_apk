@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+
 public abstract interface ahwn
 {
-  public abstract void a(int paramInt);
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

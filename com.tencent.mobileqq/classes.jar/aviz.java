@@ -1,42 +1,72 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class aviz
-  implements View.OnClickListener
+public class aviz
+  extends CardObserver
 {
-  aviz(aviu paramaviu, String paramString1, String paramString2) {}
+  public aviz(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public void onClick(View paramView)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    HashMap localHashMap = new HashMap();
-    acik.a(localHashMap, this.jdField_a_of_type_JavaLangString);
-    localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    localHashMap.put(Integer.valueOf(10), "1");
-    localHashMap.put(Integer.valueOf(12), this.b);
-    Intent localIntent = new Intent(aviu.a(this.jdField_a_of_type_Aviu), QQBrowserActivity.class);
-    if (TextUtils.isEmpty(this.b))
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onCardDownload isSuccess=%s data=%s", new Object[] { Boolean.valueOf(paramBoolean), paramObject }));
+    }
+    if ((LoginWelcomeManager.a(this.a) == null) || ((paramBoolean) && (paramObject != null))) {}
+    for (;;)
     {
-      localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
-      localHashMap.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuezq");
+      try
+      {
+        Object localObject = LoginWelcomeManager.a(this.a).getBundle("request");
+        String str = ((Bundle)localObject).getString("uin");
+        long l1 = Long.parseLong(LoginWelcomeManager.a(this.a).getCurrentAccountUin());
+        long l2 = Long.parseLong(str);
+        localObject = ((Bundle)localObject).getString("authSig");
+        LoginWelcomeManager.a(this.a).addObserver(this.a.a);
+        anca localanca = (anca)LoginWelcomeManager.a(this.a).getBusinessHandler(20);
+        paramObject = localanca.a((Card)paramObject);
+        localanca.a(str, paramObject, 1, null, (String)localObject, localanca.a(paramObject, l1, l2), null);
+        LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("LoginWelcomeManager", 1, "onCardDownload fail.", paramObject);
+        continue;
+      }
+      this.a.b();
+    }
+  }
+  
+  public void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
+  {
+    paramInt = 1;
+    QLog.d("LoginWelcomeManager", 1, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
+      if (LoginWelcomeManager.a(this.a) != null)
+      {
+        paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+        if (paramString != null) {
+          if (!paramBoolean) {
+            break label130;
+          }
+        }
+      }
     }
     for (;;)
     {
-      acik.a(anbd.a(), "769", "205711", this.jdField_a_of_type_Aviu.a().gameAppId, "76905", "1", "160", localHashMap);
-      aviu.a(this.jdField_a_of_type_Aviu).startActivity(localIntent);
-      aviu.a(this.jdField_a_of_type_Aviu).dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramString.putInt("result", paramInt);
+      paramString.putString("path", LoginWelcomeManager.a(this.a));
+      LoginWelcomeManager.a(this.a, null);
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
       return;
-      localIntent.putExtra("url", this.b);
-      localHashMap.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuebl");
+      label130:
+      paramInt = 0;
     }
   }
 }

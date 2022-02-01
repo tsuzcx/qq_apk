@@ -1,19 +1,20 @@
-import android.os.Handler;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zmz
-  extends aocj
+public class zmz
+  implements View.OnClickListener
 {
-  zmz(zmx paramzmx) {}
+  public zmz(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void a(boolean paramBoolean, long paramLong, aock paramaock)
+  public void onClick(View paramView)
   {
-    paramaock = this.a.a;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 5)
-    {
-      paramaock.sendEmptyMessage(i);
-      return;
+    if (ServiceFolderFollowPBHeadView.a(this.a) != null) {
+      ServiceFolderFollowPBHeadView.a(this.a).setCurrentItem(1, true);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

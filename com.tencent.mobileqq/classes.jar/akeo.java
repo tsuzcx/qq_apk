@@ -1,21 +1,33 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class akeo
-  implements View.OnClickListener
+  implements akdt
 {
-  public akeo(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Dialog paramDialog) {}
+  public akeo(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a);
+    DrawRedpacketPannelPreviewFragment.d(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.d(this.a).setText(amtj.a(2131702666));
   }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
+    }
+    DrawRedpacketPannelPreviewFragment.c(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 

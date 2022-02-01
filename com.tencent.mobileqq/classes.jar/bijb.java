@@ -1,30 +1,40 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 public class bijb
-  extends beyr
 {
-  private WeakReference<View> a;
-  
-  public bijb(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    this.a = new WeakReference(paramView);
+    QLog.e("AVLOG_" + paramString1, 1, paramString2);
   }
   
-  public static void a(URLDrawable paramURLDrawable, View paramView)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (paramURLDrawable.getStatus() != 1) {
-      paramURLDrawable.setURLDrawableListener(new bijb(paramView));
-    }
+    QLog.e("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void b(String paramString1, String paramString2)
   {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.invalidate();
-    }
+    QLog.w("AVLOG_" + paramString1, 1, paramString2);
+  }
+  
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.d("AVLOG_" + paramString1, 2, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.i("AVLOG_" + paramString1, 1, paramString2);
   }
 }
 

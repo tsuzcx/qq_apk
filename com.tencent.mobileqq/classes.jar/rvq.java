@@ -1,15 +1,22 @@
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.view.animation.Animation;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class rvq
-  extends blgm
+public class rvq
+  extends rvl
 {
-  rvq(rvo paramrvo) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131370286);
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131370292);
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131370296);
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public rvq(View paramView, int paramInt)
   {
-    this.a.a.q.setVisibility(8);
+    super(paramView, paramInt);
   }
+  
+  public void a(ruw paramruw, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
 }
 
 

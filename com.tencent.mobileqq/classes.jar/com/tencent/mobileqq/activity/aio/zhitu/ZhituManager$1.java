@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aiyz;
+import ahtj;
 import android.os.Looper;
 
 public class ZhituManager$1
   implements Runnable
 {
-  public ZhituManager$1(aiyz paramaiyz) {}
+  public ZhituManager$1(ahtj paramahtj) {}
   
   public void run()
   {
-    aiyz.a(this.this$0, Looper.myQueue());
+    ahtj.a(this.this$0, Looper.myQueue());
   }
 }
 

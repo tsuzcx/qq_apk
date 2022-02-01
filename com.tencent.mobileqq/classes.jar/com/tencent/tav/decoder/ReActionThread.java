@@ -20,9 +20,7 @@ public abstract class ReActionThread
     try
     {
       notifyAll();
-      if (Logger.LOG_VERBOSE) {
-        Logger.d("ReActionThread", "action: " + this + " " + hashCode());
-      }
+      Logger.v("ReActionThread", "action: " + this + " " + hashCode());
       return;
     }
     finally {}
@@ -51,8 +49,8 @@ public abstract class ReActionThread
     //   22: aload_0
     //   23: monitorenter
     //   24: aload_0
-    //   25: ldc2_w 66
-    //   28: invokevirtual 71	java/lang/Object:wait	(J)V
+    //   25: ldc2_w 63
+    //   28: invokevirtual 68	java/lang/Object:wait	(J)V
     //   31: aload_0
     //   32: monitorexit
     //   33: aload_0
@@ -75,7 +73,7 @@ public abstract class ReActionThread
     //   50: athrow
     //   51: astore_1
     //   52: aload_1
-    //   53: invokevirtual 74	java/lang/InterruptedException:printStackTrace	()V
+    //   53: invokevirtual 71	java/lang/InterruptedException:printStackTrace	()V
     //   56: goto -23 -> 33
     // Local variable table:
     //   start	length	slot	name	signature
@@ -104,20 +102,20 @@ public abstract class ReActionThread
   {
     // Byte code:
     //   0: ldc 8
-    //   2: new 34	java/lang/StringBuilder
+    //   2: new 29	java/lang/StringBuilder
     //   5: dup
-    //   6: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   9: ldc 77
-    //   11: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6: invokespecial 31	java/lang/StringBuilder:<init>	()V
+    //   9: ldc 74
+    //   11: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: aload_0
-    //   15: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   18: ldc 47
-    //   20: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   18: ldc 42
+    //   20: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_0
-    //   24: invokevirtual 51	java/lang/Object:hashCode	()I
-    //   27: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 62	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: invokevirtual 46	java/lang/Object:hashCode	()I
+    //   27: invokevirtual 49	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 77	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   36: aload_0
     //   37: getfield 17	com/tencent/tav/decoder/ReActionThread:release	Z
     //   40: ifne +76 -> 116
@@ -131,7 +129,7 @@ public abstract class ReActionThread
     //   58: monitorenter
     //   59: aload_0
     //   60: ldc2_w 78
-    //   63: invokevirtual 71	java/lang/Object:wait	(J)V
+    //   63: invokevirtual 68	java/lang/Object:wait	(J)V
     //   66: aload_0
     //   67: monitorexit
     //   68: goto -25 -> 43
@@ -142,7 +140,7 @@ public abstract class ReActionThread
     //   75: athrow
     //   76: astore_1
     //   77: aload_1
-    //   78: invokevirtual 74	java/lang/InterruptedException:printStackTrace	()V
+    //   78: invokevirtual 71	java/lang/InterruptedException:printStackTrace	()V
     //   81: goto -15 -> 66
     //   84: aload_0
     //   85: iconst_0
@@ -165,20 +163,20 @@ public abstract class ReActionThread
     //   114: aload_1
     //   115: athrow
     //   116: ldc 8
-    //   118: new 34	java/lang/StringBuilder
+    //   118: new 29	java/lang/StringBuilder
     //   121: dup
-    //   122: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   122: invokespecial 31	java/lang/StringBuilder:<init>	()V
     //   125: ldc 83
-    //   127: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   130: aload_0
-    //   131: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   134: ldc 47
-    //   136: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   134: ldc 42
+    //   136: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   139: aload_0
-    //   140: invokevirtual 51	java/lang/Object:hashCode	()I
-    //   143: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   146: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 62	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   140: invokevirtual 46	java/lang/Object:hashCode	()I
+    //   143: invokevirtual 49	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokestatic 77	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   152: return
     // Local variable table:
     //   start	length	slot	name	signature

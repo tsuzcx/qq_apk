@@ -1,17 +1,29 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
-class utj
-  implements View.OnTouchListener
+public class utj
+  implements usr
 {
-  utj(uth paramuth) {}
+  private IVideoViewBase a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public utj(IVideoViewBase paramIVideoViewBase)
   {
-    uth.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    this.a = paramIVideoViewBase;
+  }
+  
+  public View a()
+  {
+    if ((this.a instanceof View)) {
+      return (View)this.a;
+    }
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.setFixedSize(paramInt1, paramInt2);
+    }
   }
 }
 

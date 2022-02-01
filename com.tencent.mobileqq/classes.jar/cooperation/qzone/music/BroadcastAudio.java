@@ -3,7 +3,6 @@ package cooperation.qzone.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnbc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 public class BroadcastAudio
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastAudio> CREATOR = new bnbc();
+  public static final Parcelable.Creator<BroadcastAudio> CREATOR = new BroadcastAudio.1();
   public BroadcastUrl masterUrl;
   public ArrayList<BroadcastUrl> slaveUrl;
   

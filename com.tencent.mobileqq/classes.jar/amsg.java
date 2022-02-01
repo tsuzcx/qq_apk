@@ -1,42 +1,17 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-class amsg
-  extends Handler
+public class amsg
+  implements amym
 {
-  amsg(amsf paramamsf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public amsg(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (paramMessage.what == amsf.a(this.a))
-    {
-      QLog.d(amsf.a(this.a), 4, "Receive Message!");
-      this.a.a();
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
     }
-    for (;;)
-    {
-      try
-      {
-        bdll.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == amsf.b(this.a))
-      {
-        QLog.d(amsf.a(this.a), 4, "Receive Message!");
-        try
-        {
-          bdll.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
-    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

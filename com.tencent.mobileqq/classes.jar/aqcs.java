@@ -1,13 +1,7 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
-
-final class aqcs
-  implements ark.PlayerStubFactory
+public class aqcs
 {
-  public ark.PlayerStub CreateStub()
-  {
-    return new aqcr();
-  }
+  public int a;
+  public String a = "";
 }
 
 

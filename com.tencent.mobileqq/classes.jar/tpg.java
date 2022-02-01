@@ -1,20 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager;
+import com.tencent.nativevue.NativeVueLogAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.utils.ViolaUtils;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "clickPos", "", "onAdGuideClick", "com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdVideo185UIStateUtil$onProgressUpdate$2$1"}, k=3, mv={1, 1, 16})
-final class tpg
-  implements tss
+public class tpg
+  implements NativeVueLogAdapter
 {
-  tpg(ReadInJoyAdVideoGuide paramReadInJoyAdVideoGuide, AdvertisementInfo paramAdvertisementInfo, rmg paramrmg, rwc paramrwc) {}
-  
-  public final void a(View paramView, int paramInt)
+  public void logD(String paramString)
   {
-    paramView = this.jdField_a_of_type_Rmg;
-    if (paramView != null) {
-      paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Rwc.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeVueLoaderManager", 2, "[NativeVue Debug]: " + paramString);
     }
+  }
+  
+  public void logE(String paramString)
+  {
+    QLog.e("NativeVueLoaderManager", 1, "[NativeVue Error]: " + paramString);
+  }
+  
+  public void onNativeVueError(String paramString)
+  {
+    ViolaUtils.reportNVError(paramString, NativeVueLoaderManager.a().a());
   }
 }
 

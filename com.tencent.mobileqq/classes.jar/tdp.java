@@ -1,21 +1,17 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class tdp
-  implements OnCompositionLoadedListener
+  implements View.OnClickListener
 {
   tdp(tdo paramtdo) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onClick(View paramView)
   {
-    if (paramLottieComposition != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.setImageAssetsFolder(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.setComposition(paramLottieComposition);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.playAnimation();
-    }
+    tdo.a(this.a).a(tdo.a(this.a), tdo.a(this.a));
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

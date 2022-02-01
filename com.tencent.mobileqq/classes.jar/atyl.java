@@ -1,17 +1,16 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class atyl
-  implements bmlr
+  extends abwx
 {
-  atyl(atyk paramatyk) {}
-  
-  public boolean a(int paramInt, Bundle paramBundle)
+  public atyl(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager, abww paramabww)
   {
-    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
-    return true;
+    super(paramQQAppInterface, paramProxyManager, paramabww);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgProxy", 2, "TinyIdMsgProxy() called with: _app = [" + paramQQAppInterface + "], pm = [" + paramProxyManager + "], msgPool = [" + paramabww + "]");
+    }
   }
 }
 

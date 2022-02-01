@@ -1,55 +1,45 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adev
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgType0x210 paramMsgType0x210)
+  public adev(EditActivity paramEditActivity) {}
+  
+  public void onClick(View paramView)
   {
-    SubMsgType0x87.MsgBody localMsgBody = new SubMsgType0x87.MsgBody();
+    EditActivity localEditActivity = this.a;
+    boolean bool;
+    if (!EditActivity.a(this.a))
+    {
+      bool = true;
+      EditActivity.a(localEditActivity, bool);
+      if (!EditActivity.a(this.a)) {
+        break label86;
+      }
+      this.a.b();
+      EditActivity.a(this.a).setImageResource(2130838108);
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(0);
+      }
+    }
     for (;;)
     {
-      try
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        if (localMsgBody.uint64_friend_msg_type_flag.has())
-        {
-          if (localMsgBody.uint64_friend_msg_type_flag.get() != 1L) {
-            break label100;
-          }
-          i = 1;
-          if (i != 0) {
-            paramMessageHandler.a().a(2);
-          }
-        }
-        if (localMsgBody.rpt_msg_msg_notify.has()) {
-          ajji.a(paramQQAppInterface, localMsgBody);
-        }
-        return;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+      label86:
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(4);
       }
-      catch (Throwable paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PortalManager", 2, "", paramQQAppInterface);
-        }
-        throw new RuntimeException(paramQQAppInterface);
-      }
-      label100:
-      int i = 0;
+      EditActivity.a(this.a).setImageResource(2130847816);
+      this.a.a();
     }
-  }
-  
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan.a(), paramadan.a().a(), paramMsgType0x210);
-    return null;
   }
 }
 

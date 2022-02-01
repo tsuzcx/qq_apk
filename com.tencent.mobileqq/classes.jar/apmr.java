@@ -1,34 +1,31 @@
+import android.graphics.PorterDuff.Mode;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class apmr
-  extends Handler
+  implements OnCompositionLoadedListener
 {
-  public apmr(apmp paramapmp, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public apmr(DefaultItemBuilder.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    switch (paramMessage.what)
+    if (paramLottieComposition == null)
     {
-    default: 
-      return;
-    case 100: 
-      apsa.a().a(new ARCamera.ARCameraHandler.1(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
-      return;
-    case 101: 
-      apsa.a().a(new ARCamera.ARCameraHandler.2(this));
+      QLog.e("DefaultItemBuilder", 1, "getLottieDrawable onCompositionLoaded failed");
       return;
     }
-    apsa.a().a(new ARCamera.ARCameraHandler.3(this));
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    localLottieDrawable.setColorFilter(-16777216, PorterDuff.Mode.MULTIPLY);
+    this.a.a.a = localLottieDrawable;
+    ThreadManagerV2.getUIHandlerV2().post(new DefaultItemBuilder.1.1.1(this));
   }
 }
 

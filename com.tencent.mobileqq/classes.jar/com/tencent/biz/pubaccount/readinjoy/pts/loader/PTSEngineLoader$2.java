@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import qgu;
-import qic;
+import qmv;
+import qof;
 
 public class PTSEngineLoader$2
   implements Runnable
 {
-  public PTSEngineLoader$2(qgu paramqgu) {}
+  public PTSEngineLoader$2(qmv paramqmv) {}
   
   public void run()
   {
-    if (!qic.a.c()) {
+    if (!qof.a.c()) {
       return;
     }
-    qgu.a(this.this$0);
-    qgu.b(this.this$0);
+    qmv.a(this.this$0);
+    qmv.b(this.this$0);
   }
 }
 

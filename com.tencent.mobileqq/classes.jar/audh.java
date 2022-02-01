@@ -1,31 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-final class audh
-  implements View.OnClickListener
+class audh
+  implements bjve
 {
-  audh(auef paramauef, FileManagerEntity paramFileManagerEntity) {}
+  audh(audg paramaudg) {}
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    try
-    {
-      auni localauni = new auni();
-      localauni.b = "file_forward";
-      localauni.a = 9;
-      aunh.a(this.jdField_a_of_type_Auef.a().getCurrentAccountUin(), localauni);
-      auoo.a(this.jdField_a_of_type_Auef.a(), this.jdField_a_of_type_Auef.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      label61:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label61;
-    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    this.a.a = true;
+    return false;
   }
 }
 

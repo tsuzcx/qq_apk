@@ -14,12 +14,13 @@ import java.util.List;
 public class TAVVideoConfiguration
   implements Cloneable
 {
+  public static CGRect DEFAULT_VIDEO_FRAME = SOURCE_SIZE;
   public static final CGRect FIX_RENDER_SIZE = new CGRect();
   public static final CGRect SOURCE_SIZE = new CGRect();
   private TAVVideoConfiguration.TAVVideoConfigurationContentMode contentMode = TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit;
   private List<TAVVideoEffect> effects = new ArrayList();
   @Nullable
-  private CGRect frame = SOURCE_SIZE;
+  private CGRect frame = DEFAULT_VIDEO_FRAME;
   private int preferRotation = 0;
   private Matrix transform = new Matrix();
   

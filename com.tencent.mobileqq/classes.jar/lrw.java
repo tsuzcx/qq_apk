@@ -1,274 +1,121 @@
-import android.graphics.Rect;
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.WeakHashMap;
+import android.content.Context;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
-public abstract class lrw
+public class lrw
 {
-  private static ThreadLocal<Class<lrw>> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private static WeakHashMap<lrw, Object> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  protected int a;
-  protected lqt a;
-  protected int[] a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e = -1;
-  protected int f = -1;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
+  private int jdField_a_of_type_Int;
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final lrx jdField_a_of_type_Lrx;
+  private final boolean jdField_a_of_type_Boolean;
+  private final lrx b;
   
-  protected lrw()
+  public lrw(Context paramContext)
   {
-    this(null, 0);
+    this(paramContext, null);
   }
   
-  protected lrw(lqt arg1, int paramInt)
+  public lrw(Context paramContext, Interpolator paramInterpolator)
   {
-    a(???);
-    this.b = paramInt;
-    this.jdField_a_of_type_Int = 0;
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
-    {
-      jdField_a_of_type_JavaUtilWeakHashMap.put(this, null);
-      return;
-    }
+    this(paramContext, paramInterpolator, true);
   }
   
-  public static void c()
+  public lrw(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
   {
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      if (localIterator.hasNext()) {
-        ((lrw)localIterator.next()).b();
-      }
-    }
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Lrx = new lrx();
+    this.b = new lrx();
+    lrx.a(paramContext);
   }
   
-  public static void d()
+  public final int a()
   {
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      if (localIterator.hasNext())
-      {
-        lrw locallrw = (lrw)localIterator.next();
-        locallrw.b = 0;
-        locallrw.a(null);
-      }
-    }
-  }
-  
-  public static boolean d()
-  {
-    return jdField_a_of_type_JavaLangThreadLocal.get() != null;
-  }
-  
-  private void e()
-  {
-    lqt locallqt = this.jdField_a_of_type_Lqt;
-    if ((locallqt != null) && (this.jdField_a_of_type_ArrayOfInt != null))
-    {
-      locallqt.a(this);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
-    this.b = 0;
-    a(null);
-  }
-  
-  public int a()
-  {
-    return this.i;
-  }
-  
-  public Rect a()
-  {
-    return new Rect(this.c, this.d, this.c + this.e, this.d + this.f);
-  }
-  
-  protected TextureProgram a()
-  {
-    return lrs.a(this.jdField_a_of_type_Int);
+    return lrx.a(this.jdField_a_of_type_Lrx);
   }
   
   public void a()
   {
-    e();
+    this.jdField_a_of_type_Lrx.a();
+    this.b.a();
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.i = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Lrx.a(paramInt1, paramInt3, paramInt5);
+    this.b.a(paramInt2, paramInt4, paramInt5);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    this.g = paramInt1;
-    this.h = paramInt2;
-    if (((this.g > 4096) || (this.h > 4096)) && (QLog.isColorLevel())) {
-      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h) }), new Exception());
-    }
-    if (this.e == -1)
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      this.e = paramInt1;
-      this.f = paramInt2;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.f = paramInt4;
-  }
-  
-  protected void a(lqt paramlqt)
-  {
-    this.jdField_a_of_type_Lqt = paramlqt;
-  }
-  
-  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramlqt.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public abstract boolean a(lqt paramlqt);
-  
-  public byte[] a()
-  {
-    return null;
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public int[] a(lqt paramlqt)
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public lru[] a(lqt paramlqt)
-  {
-    int k = 0;
-    TextureProgram localTextureProgram = a();
-    GLES20.glUseProgram(localTextureProgram.a());
-    lsv.a();
-    if ((!b()) || (paramlqt.a() < 0.95F)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      lqu.a(bool);
-      if (!a(paramlqt)) {
-        break;
-      }
-      int[] arrayOfInt = a();
-      while (k < arrayOfInt.length)
+      float f1 = lrx.a(this.jdField_a_of_type_Lrx);
+      float f2 = lrx.a(this.b);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
       {
-        GLES20.glActiveTexture(33984 + k);
-        lsv.a();
-        GLES20.glBindTexture(g(), arrayOfInt[k]);
-        lsv.a();
-        GLES20.glUniform1i(localTextureProgram.a()[(k + 4)].jdField_a_of_type_Int, k);
-        lsv.a();
-        k += 1;
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
       }
     }
-    GLES20.glUniform1f(localTextureProgram.a()[2].jdField_a_of_type_Int, paramlqt.a());
-    lsv.a();
-    return localTextureProgram.a();
-  }
-  
-  public int b()
-  {
-    return this.j;
-  }
-  
-  public void b()
-  {
-    e();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.j = paramInt;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-  }
-  
-  public abstract boolean b();
-  
-  public byte[] b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.e;
-  }
-  
-  public boolean c()
-  {
-    return this.b == 1;
-  }
-  
-  public int d()
-  {
-    return this.f;
-  }
-  
-  public int e()
-  {
-    return this.g;
-  }
-  
-  public int f()
-  {
-    return this.h;
-  }
-  
-  protected void finalize()
-  {
-    try
+    for (;;)
     {
-      jdField_a_of_type_JavaLangThreadLocal.set(lrw.class);
-      a();
-      jdField_a_of_type_JavaLangThreadLocal.set(null);
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Lrx.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
       return;
     }
-    finally
-    {
-      super.finalize();
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    lrx.a(this.jdField_a_of_type_Lrx, lrx.a(this.b, paramBoolean));
+  }
+  
+  public final boolean a()
+  {
+    return (lrx.a(this.jdField_a_of_type_Lrx)) && (lrx.a(this.b));
+  }
+  
+  public final int b()
+  {
+    return lrx.b(this.jdField_a_of_type_Lrx);
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return false;
     }
-  }
-  
-  public abstract int g();
-  
-  public int h()
-  {
-    return 0;
-  }
-  
-  public int i()
-  {
-    return 0;
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - lrx.a(this.jdField_a_of_type_Lrx);
+      int i = lrx.c(this.jdField_a_of_type_Lrx);
+      if (l < i)
+      {
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = lry.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
+        {
+          this.jdField_a_of_type_Lrx.a(f);
+          this.b.a(f);
+          break;
+        }
+      }
+      a();
+      continue;
+      if ((!lrx.a(this.jdField_a_of_type_Lrx)) && (!this.jdField_a_of_type_Lrx.b()) && (!this.jdField_a_of_type_Lrx.a())) {
+        this.jdField_a_of_type_Lrx.a();
+      }
+      if ((!lrx.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
+        this.b.a();
+      }
+    }
   }
 }
 

@@ -1,90 +1,341 @@
-import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntC2SFailedRsp;
-import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntHead;
-import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntRspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import ColorNick.QC.readItemInfoReq;
+import ColorNick.QC.readItemInfoRsp;
+import GROUP.MessageRemindReq;
+import GROUP.MessageRemindRsp;
+import MQQ.GetRoamToastReq;
+import MQQ.GetRoamToastRsp;
+import ProfileLogic.QC.readUserInfoReq;
+import ProfileLogic.QC.readUserInfoRsp;
+import ProfileLogic.QC.setUserFlagReq;
+import ProfileLogic.QC.setUserFlagRsp;
+import ProfileLogic.QC.setUserProfileReq;
+import ProfileLogic.QC.setUserProfileRsp;
+import QC.BubbleRecommendReq;
+import QC.BubbleRecommendRsp;
+import QC.FaceReq;
+import QC.FaceRsp;
+import QC.FontRecommendReq;
+import QC.FontRecommendRsp;
+import QC.SetFontBubbleReq;
+import QC.SetFontBubbleRsp;
+import QC.UniGetRsp;
+import QC.UniLoginCheckReq;
+import QC.UniLoginCheckRsp;
+import QC.UniSetRsp;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bbjp
+  extends aafe
 {
-  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer)
+  private static int jdField_a_of_type_Int;
+  private static ConcurrentHashMap<String, bgol> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
   {
-    byte[] arrayOfByte = new byte[paramMsfSocketInputBuffer.getBufferlen()];
-    System.arraycopy(paramMsfSocketInputBuffer.getBuffer(), 0, arrayOfByte, 0, arrayOfByte.length);
-    a(arrayOfByte);
+    if (paramFromServiceMsg == null) {
+      return null;
+    }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = paramToServiceMsg.getByClass("rsp", paramT);
+      return paramToServiceMsg;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.e("VasService", 1, "decodeWUP: ", paramToServiceMsg);
+    }
+    return null;
   }
   
-  public boolean a(byte[] paramArrayOfByte)
+  public static void a(bgol parambgol, String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length > 60))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PeakAudioTransHandler", 2, "decodeS2CData data error");
-      }
-      return false;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, parambgol);
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasService", 2, "decode: cmd=" + paramToServiceMsg.getServiceCmd());
     }
-    Object localObject = null;
-    for (;;)
+    UniPacket localUniPacket = new UniPacket(true);
+    try
     {
-      try
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramFromServiceMsg.getWupBuffer());
+      if (paramToServiceMsg.getServiceCmd().equals("FriendClone.CloneAuthStatus"))
       {
-        for (;;)
+        int i = ((Integer)localUniPacket.getByClass("", Integer.valueOf(-1))).intValue();
+        paramFromServiceMsg = new ArrayList();
+        int j = paramToServiceMsg.extraData.getInt("operation", -1);
+        paramFromServiceMsg.add(Integer.valueOf(i));
+        paramFromServiceMsg.add(Integer.valueOf(j));
+        if (j == 257)
         {
-          paramArrayOfByte = lfw.a(paramArrayOfByte);
-          localObject = paramArrayOfByte.a;
-          paramArrayOfByte = paramArrayOfByte.b;
-          AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
-          try
-          {
-            localObject = (AudioTransClientTransInfo.IntHead)localIntHead.mergeFrom((byte[])localObject);
-            if (!((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.has()) {
-              break label353;
-            }
-            i = ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get();
-            if (((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.has())
-            {
-              j = ((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.get();
-              long l = 0L;
-              if (((AudioTransClientTransInfo.IntHead)localObject).str_session_id.has()) {
-                l = Long.valueOf(((AudioTransClientTransInfo.IntHead)localObject).str_session_id.get()).longValue();
-              }
-              QLog.d("SubTitleProtocoDataCodec", 2, "onReceive result:" + i + " sessionid:" + l + " bodyType:" + j);
-              paramArrayOfByte = (AudioTransClientTransInfo.IntRspBody)new AudioTransClientTransInfo.IntRspBody().mergeFrom(paramArrayOfByte);
-              if (i == 0)
-              {
-                if ((j != 10) || (!QLog.isColorLevel())) {
-                  break;
-                }
-                QLog.d("PeakAudioTransHandler", 2, "decodeS2CData INT_C2S_HEART_BEAT_RSP heartbeat !");
-                return false;
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            paramArrayOfByte.printStackTrace();
-            QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData exception = " + paramArrayOfByte.getMessage(), paramArrayOfByte);
-            return false;
+          boolean bool = ((Boolean)localUniPacket.getByClass("bOpenAuth", new Boolean(false))).booleanValue();
+          paramFromServiceMsg.add(Boolean.valueOf(bool));
+          if (QLog.isColorLevel()) {
+            QLog.d("VasService", 2, "decode: ret=" + i + " openAuth=" + bool + " funName=" + localUniPacket.getFuncName());
           }
         }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("VasService", 2, "decode: ret=" + i + " funName=" + localUniPacket.getFuncName());
+        }
       }
-      catch (OutOfMemoryError paramArrayOfByte)
-      {
-        QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData OOM!!");
-        paramArrayOfByte = (byte[])localObject;
-        continue;
-        paramArrayOfByte = (AudioTransClientTransInfo.IntC2SFailedRsp)paramArrayOfByte.msg_failed_rsp.get();
-        QLog.d("SubTitleProtocoDataCodec", 2, "create session rsp fail msg: " + ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get() + " uint32_errcode = " + paramArrayOfByte.uint32_errcode.get() + " str_errmsg = " + paramArrayOfByte.str_errmsg.get());
-        return false;
-      }
-      int j = 0;
-      continue;
-      label353:
-      int i = 0;
     }
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.e("VasService", 1, "decode error: ", paramToServiceMsg);
+      return null;
+    }
+    if (paramToServiceMsg.getServiceCmd().equals("groupnick.readitem"))
+    {
+      paramFromServiceMsg = (readItemInfoRsp)localUniPacket.getByClass("stRsp", new readItemInfoRsp());
+      paramToServiceMsg = paramFromServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("VasService", 2, "decode: ret =  funName = " + localUniPacket.getFuncName() + " infoRsp = " + paramFromServiceMsg.toString());
+        return paramFromServiceMsg;
+      }
+    }
+    else
+    {
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.readUserInfo")) {
+        return (readUserInfoRsp)localUniPacket.getByClass("stRsp", new readUserInfoRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserProfile")) {
+        return (setUserProfileRsp)localUniPacket.getByClass("stRsp", new setUserProfileRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserFlag")) {
+        return (setUserFlagRsp)localUniPacket.getByClass("stRsp", new setUserFlagRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo")) {
+        return (MessageRemindRsp)localUniPacket.getByClass("stRsp", new MessageRemindRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend")) {
+        return (FontRecommendRsp)localUniPacket.getByClass("rsp", new FontRecommendRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend")) {
+        return (BubbleRecommendRsp)localUniPacket.getByClass("rsp", new BubbleRecommendRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble")) {
+        return (SetFontBubbleRsp)localUniPacket.getByClass("rsp", new SetFontBubbleRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast")) {
+        return (GetRoamToastRsp)localUniPacket.getByClass("stRsp", new GetRoamToastRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("Face.setFace")) {
+        return (FaceRsp)localUniPacket.getByClass("rsp", new FaceRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("QCUniBusinessLogin.check")) {
+        return (UniLoginCheckRsp)localUniPacket.getByClass("rsp", new UniLoginCheckRsp());
+      }
+      if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd())) {
+        return a(paramToServiceMsg, paramFromServiceMsg, new UniSetRsp());
+      }
+      if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd())) {
+        return a(paramToServiceMsg, paramFromServiceMsg, new UniGetRsp());
+      }
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(bgol.a(paramToServiceMsg)))
+      {
+        paramToServiceMsg = ((bgol)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(bgol.a(paramToServiceMsg))).a(paramToServiceMsg, paramFromServiceMsg, localUniPacket);
+        return paramToServiceMsg;
+      }
+      return null;
+      paramToServiceMsg = paramFromServiceMsg;
+    }
+    return paramToServiceMsg;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasService", 2, "encodeReqMsg: cmd=" + paramToServiceMsg.getServiceCmd());
+    }
+    boolean bool;
+    if (paramToServiceMsg.getServiceCmd().equals("FriendClone.CloneAuthStatus"))
+    {
+      i = paramToServiceMsg.extraData.getInt("operation", -1);
+      if (i == 257)
+      {
+        paramUniPacket.setFuncName("getCloneAuthStatus");
+        paramUniPacket.setServantName("MQQ.FriendCloneServer.FriendCloneObj");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        localObject = paramToServiceMsg.extraData.getString("uUin");
+        bool = paramToServiceMsg.extraData.getBoolean("bOpenAuth", false);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          break label153;
+        }
+        QLog.e("VasService", 2, "encodeReqMsg: uin is empty");
+      }
+    }
+    label153:
+    do
+    {
+      do
+      {
+        return false;
+      } while (i != 258);
+      paramUniPacket.setFuncName("setCloneAuthStatus");
+      break;
+      paramUniPacket.put("uUin", Long.valueOf(Long.parseLong((String)localObject)));
+      paramUniPacket.put("bOpenAuth", Boolean.valueOf(bool));
+      if (QLog.isColorLevel()) {
+        QLog.d("VasService", 2, "encodeReqMsg: svName=" + paramUniPacket.getServantName() + " funName=" + paramUniPacket.getFuncName() + " uin=" + paramUniPacket.getByClass("uUin", new Long(1L)) + " openAuth=" + paramUniPacket.getByClass("bOpenAuth", new Boolean(false)));
+      }
+      return true;
+      if (paramToServiceMsg.getServiceCmd().equals("groupnick.readitem"))
+      {
+        paramUniPacket.setFuncName("readItemInfo");
+        paramUniPacket.put("stReq", (readItemInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
+        paramUniPacket.setServantName("QC.readGroupNickServer.readGroupNickObj");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.readUserInfo"))
+      {
+        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
+        paramUniPacket.setFuncName("ReadUserProfile");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (readUserInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserProfile"))
+      {
+        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
+        paramUniPacket.setFuncName("SetUserProfile");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (setUserProfileReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserFlag"))
+      {
+        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
+        paramUniPacket.setFuncName("SetUserFlag");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (setUserFlagReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo"))
+      {
+        paramUniPacket.setServantName("GROUP.GroupCareServer.GroupCareObj");
+        paramUniPacket.setFuncName("getMessageRemindInfo");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (MessageRemindReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend"))
+      {
+        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
+        paramUniPacket.setFuncName("getFontRecommend");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (FontRecommendReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend"))
+      {
+        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
+        paramUniPacket.setFuncName("getBubbleRecommend");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (BubbleRecommendReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("QCUniBusinessLogin.check"))
+      {
+        paramUniPacket.setServantName("QC.UniBusinessLoginServer.UniBusinessLoginObj");
+        paramUniPacket.setFuncName("UniLoginCheck");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (UniLoginCheckReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble"))
+      {
+        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
+        paramUniPacket.setFuncName("setFontBubble");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (SetFontBubbleReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast"))
+      {
+        paramUniPacket.setServantName("MQQ.RoamWrapServer.RoamWrapObj");
+        paramUniPacket.setFuncName("GetRoamToast");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (GetRoamToastReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("Face.setFace"))
+      {
+        paramUniPacket.setServantName("QC.FaceServer.FaceObj");
+        paramUniPacket.setFuncName("setFace");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (FaceReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
+        paramUniPacket.setFuncName("uniSet");
+        paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
+        return true;
+      }
+      if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
+        paramUniPacket.setFuncName("uniGet");
+        paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
+        return true;
+      }
+    } while (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(bgol.a(paramToServiceMsg)));
+    Object localObject = (bgol)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(bgol.a(paramToServiceMsg));
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    ((bgol)localObject).a(paramToServiceMsg, paramUniPacket, i);
+    return true;
+  }
+  
+  public String[] a()
+  {
+    return bbjo.a;
   }
 }
 

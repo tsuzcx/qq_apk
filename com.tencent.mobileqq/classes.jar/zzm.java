@@ -1,30 +1,20 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class zzm
-  extends zzu
+  extends BroadcastReceiver
 {
-  zzm(zzl paramzzl, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
-  {
-    super(null);
-  }
+  zzm(zzf paramzzf) {}
   
-  public void onAnimationEnd(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    ViewCompat.setAlpha(paramView, 1.0F);
-    this.jdField_a_of_type_Zzl.dispatchRemoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    zzl.d(this.jdField_a_of_type_Zzl).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    zzl.a(this.jdField_a_of_type_Zzl);
-  }
-  
-  public void onAnimationStart(View paramView)
-  {
-    this.jdField_a_of_type_Zzl.dispatchRemoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    {
+      zzf.a(this.a, paramIntent);
+      zzf.d(this.a);
+      zzf.c(this.a);
+    }
   }
 }
 

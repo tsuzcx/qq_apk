@@ -3,43 +3,34 @@ package cooperation.qzone.album;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmwr;
 import java.util.HashMap;
 import java.util.Map;
 
 public class QzonePhotoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new bmwr();
-  public int a;
-  public long a;
-  public String a;
-  public Map<Integer, String> a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
+  public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new QzonePhotoInfo.1();
+  public String mAlbumId = "";
+  public int mBigHeight;
+  public String mBigUrl = "";
+  public int mBigWidth;
+  public long mShootTime;
+  public Map<Integer, String> mShouzhang_extend_map = new HashMap();
+  public long mUploadTime;
+  public String mlloc = "";
   
-  public QzonePhotoInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public QzonePhotoInfo() {}
   
-  public QzonePhotoInfo(Parcel paramParcel)
+  protected QzonePhotoInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(Map.class.getClassLoader());
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
+    this.mAlbumId = paramParcel.readString();
+    this.mBigUrl = paramParcel.readString();
+    this.mBigWidth = paramParcel.readInt();
+    this.mBigHeight = paramParcel.readInt();
+    this.mlloc = paramParcel.readString();
+    this.mShouzhang_extend_map = paramParcel.readHashMap(Map.class.getClassLoader());
+    this.mShootTime = paramParcel.readLong();
+    this.mUploadTime = paramParcel.readLong();
   }
   
   public int describeContents()
@@ -49,14 +40,14 @@ public class QzonePhotoInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.c);
-    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilMap);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
+    paramParcel.writeString(this.mAlbumId);
+    paramParcel.writeString(this.mBigUrl);
+    paramParcel.writeInt(this.mBigWidth);
+    paramParcel.writeInt(this.mBigHeight);
+    paramParcel.writeString(this.mlloc);
+    paramParcel.writeMap(this.mShouzhang_extend_map);
+    paramParcel.writeLong(this.mShootTime);
+    paramParcel.writeLong(this.mUploadTime);
   }
 }
 

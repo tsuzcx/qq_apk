@@ -1,21 +1,23 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdpb
-  implements View.OnLongClickListener
+class bdpb
+  extends BroadcastReceiver
 {
-  public bdpb(StructMsgForGeneralShare paramStructMsgForGeneralShare, agjk paramagjk) {}
+  bdpb(bdpa parambdpa) {}
   
-  public boolean onLongClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    bdol localbdol = (bdol)paramView.getTag();
-    if (!TextUtils.isEmpty(localbdol.aa)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localbdol.aa).intValue();
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
+    {
+      this.a.a = true;
+      this.a.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
+      }
     }
-    return this.jdField_a_of_type_Agjk.onLongClick(paramView);
   }
 }
 

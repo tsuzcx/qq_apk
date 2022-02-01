@@ -1,18 +1,37 @@
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
+
 public class omu
+  implements bhhv
 {
-  public static int a()
-  {
-    return ((Integer)bnrf.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
-  }
+  public omu(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public static void a()
+  public void a()
   {
-    bnrf.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bnrf.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
-  }
-  
-  public static int b()
-  {
-    return ((Integer)bnrf.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
+    {
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
+      }
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
+      }
+    }
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((Switch)localObject).setChecked(bool1);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

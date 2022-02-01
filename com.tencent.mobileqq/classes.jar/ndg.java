@@ -1,27 +1,30 @@
-import com.tencent.avgame.gameroom.stage.StageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class ndg
-  implements nbb
+  implements View.OnTouchListener
 {
-  public ndg(StageView paramStageView) {}
+  public ndg(GameListView paramGameListView) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StageView", 2, "onLoad " + paramLottieDrawable);
-    }
-    if (paramLottieDrawable != null)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      this.a.b = paramLottieDrawable;
-      this.a.b.addAnimatorListener(new ndh(this));
+    }
+    for (;;)
+    {
+      return false;
+      this.a.setPreparePressImage();
+      continue;
+      this.a.setPrepareNorImage();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndg
  * JD-Core Version:    0.7.0.1
  */

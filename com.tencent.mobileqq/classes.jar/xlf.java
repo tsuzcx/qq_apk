@@ -1,17 +1,16 @@
-import android.content.Context;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import java.util.List;
 
-class xlf
-  implements MessageQueue.IdleHandler
+public class xlf
+  extends vko
 {
-  xlf(xla paramxla) {}
+  public List<MomeriesYearNode> a;
+  public boolean a;
   
-  public boolean queueIdle()
+  public xlf(xlc paramxlc, ErrorMessage paramErrorMessage)
   {
-    yuk.b("Q.qqstory.playernew.StoryPlayerImpl", "initSdk");
-    TVK_SDKMgr.initSdk(xla.a(this.a).a().getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    return false;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
 }
 

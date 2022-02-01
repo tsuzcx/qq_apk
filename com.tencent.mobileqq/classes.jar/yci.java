@@ -1,26 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class yci
+class yci
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public long a;
-  public String a;
+  yci(ycg paramycg) {}
   
-  public yci(ycf paramycf, String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramycf = ((wsu)wth.a(19)).a(paramString);
-    if (paramycf != null) {
-      a(paramycf);
-    }
+    xvv.b("FaceLayer", "scaleAnimator cancel!");
   }
   
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    xvv.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    xvv.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt;
 
-import balm;
+import azbm;
 import com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView;
 
 public class LSRecordPanel$2$1
   implements Runnable
 {
-  public LSRecordPanel$2$1(balm parambalm) {}
+  public LSRecordPanel$2$1(azbm paramazbm) {}
   
   public void run()
   {

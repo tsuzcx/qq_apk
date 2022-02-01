@@ -1,19 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.download.AEResInfo;
+import java.lang.ref.WeakReference;
 
-public final class lxg
-  implements Parcelable.Creator<LBSInfo>
+public class lxg
+  implements blvp
 {
-  public LBSInfo a(Parcel paramParcel)
+  final WeakReference<QQServiceForAV> a;
+  
+  lxg(QQServiceForAV paramQQServiceForAV)
   {
-    return new LBSInfo(paramParcel);
+    this.a = new WeakReference(paramQQServiceForAV);
   }
   
-  public LBSInfo[] a(int paramInt)
+  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    return new LBSInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramAEResInfo.index + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
+    }
+    paramString = (QQServiceForAV)this.a.get();
+    if (paramString != null)
+    {
+      paramString = (QQAppInterface)paramString.a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
+      localIntent.putExtra("packageIdx", paramAEResInfo.index);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt);
+      paramString.getApp().sendBroadcast(localIntent);
+    }
   }
+  
+  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2) {}
 }
 
 

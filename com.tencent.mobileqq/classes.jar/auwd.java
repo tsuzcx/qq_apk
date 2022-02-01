@@ -1,47 +1,76 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class auwd
-  implements MethodChannel.MethodCallHandler
+public class auwd
+  implements MiniMsgUser.IMiniMsgActionCallback
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public auwd(UiApiPlugin paramUiApiPlugin) {}
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public void onFromMiniAIOToAIO()
   {
-    String str = paramMethodCall.method;
-    if ("reportException".equals(str))
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "onFromMiniAIOToAIO ");
+    }
+    JSONObject localJSONObject = new JSONObject();
+    this.a.a("fromMiniAIOToAIO", localJSONObject);
+  }
+  
+  public void onGoToConversation()
+  {
+    try
     {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("category"), (String)paramMethodCall.argument("errorType"), (String)paramMethodCall.argument("errorMsg"), (String)paramMethodCall.argument("stack"), (HashMap)paramMethodCall.argument("extraInfo"), paramResult);
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "onGoToConversation ");
+      }
+      JSONObject localJSONObject = new JSONObject();
+      this.a.a("returnMsgList", localJSONObject);
       return;
     }
-    if ("recordPageView".equals(str))
+    catch (Exception localException)
     {
-      a((String)paramMethodCall.argument("pagePath"), paramResult);
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
+  }
+  
+  public void onOpenMiniAIOCallback()
+  {
+    WebViewFragment localWebViewFragment = this.a.mRuntime.a();
+    Object localObject1 = localWebViewFragment.mKeyWording;
+    if (TextUtils.isEmpty(localWebViewFragment.mKeyWording)) {
+      localObject1 = localWebViewFragment.webView.getTitle();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = localObject1;
+      if (!"‎".equals(localObject1)) {}
+    }
+    else
+    {
+      localObject2 = amtj.a(2131714861);
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
+    Object localObject2 = this.a.a.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.generateGoToConversation((Bundle)localObject1);
+    bgyb.a(((MiniMsgUserParam)localObject2).backConversationIntent);
+    try
+    {
+      localObject1 = new JSONObject();
+      this.a.a("entryClicked", (JSONObject)localObject1);
       return;
     }
-    if ("reportScrollPerfomance".equals(str))
+    catch (Exception localException)
     {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("FPS"), (Double)paramMethodCall.argument("dropRate"), paramResult);
-      return;
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
     }
-    if ("reportPageLoadTime".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("loadTime"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
   }
 }
 

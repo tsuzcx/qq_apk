@@ -1,343 +1,196 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.friendlist.receiver.MakeFriendReceiver.1;
-import com.tencent.mobileqq.app.friendlist.receiver.MakeFriendReceiver.2;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.AddFriendResp;
-import friendlist.DelFriendResp;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.friend.AddContactVerifyInfo.AddFriendVerifyInfo;
-import tencent.im.oidb.cmd0x829.oidb_0x829.AddFrdInfo;
-import tencent.im.oidb.cmd0x829.oidb_0x829.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoqq
-  extends aoqf
+  implements aoqs
 {
-  public aoqq(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
-  
-  private void a(FromServiceMsg paramFromServiceMsg, DelFriendResp paramDelFriendResp)
-  {
-    if (paramDelFriendResp.errorCode != 0)
+    bbkb localbbkb = new bbkb();
+    j = 268435456;
+    try
     {
-      a(15, false, null);
-      return;
-    }
-    paramFromServiceMsg = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    if (paramFromServiceMsg != null) {
-      paramFromServiceMsg.b();
-    }
-    ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).d(String.valueOf(paramDelFriendResp.deluin));
-    bbcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDelFriendResp.deluin + "");
-    bejn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDelFriendResp.deluin + "");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(String.valueOf(paramDelFriendResp.deluin), true);
-    paramFromServiceMsg = (axup)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106);
-    if (paramFromServiceMsg != null) {
-      paramFromServiceMsg.d.put("" + paramDelFriendResp.deluin, Integer.valueOf(1));
-    }
-    a(15, true, Long.valueOf(paramDelFriendResp.deluin));
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean)
-  {
-    int j = paramToServiceMsg.extraData.getInt("bType");
-    String str = String.valueOf(paramToServiceMsg.extraData.getLong("lToMID"));
-    int k = paramToServiceMsg.extraData.getByte("bGroupId");
-    int i = j;
-    if (j == 1) {
-      i = 2;
-    }
-    if (i == 0)
-    {
-      paramToServiceMsg.extraData.getString("strNickName");
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(str, k, 3999, null, false, false, -1L);
-    }
-    paramToServiceMsg = str + "_answer_added_" + paramToServiceMsg.extraData.getLong("infotime", 0L) + paramToServiceMsg.extraData.getLong("dbid", 0L);
-    bhlf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramToServiceMsg, i);
-    a(10, true, new Object[] { str, Integer.valueOf(i) });
-  }
-  
-  private void a(AddFriendResp paramAddFriendResp, ToServiceMsg paramToServiceMsg)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putAll(paramToServiceMsg.extraData);
-    if (paramAddFriendResp == null) {
-      a(11, false, localBundle);
-    }
-    Object localObject;
-    for (;;)
-    {
-      return;
-      localBundle.putInt("resultCode", paramAddFriendResp.result);
-      localBundle.putString("ErrorString", paramAddFriendResp.ErrorString);
-      if (paramAddFriendResp.verify != null)
-      {
-        localObject = new AddContactVerifyInfo.AddFriendVerifyInfo();
-        try
-        {
-          ((AddContactVerifyInfo.AddFriendVerifyInfo)localObject).mergeFrom(paramAddFriendResp.verify);
-          if (((AddContactVerifyInfo.AddFriendVerifyInfo)localObject).str_url.has())
-          {
-            String str1 = ((AddContactVerifyInfo.AddFriendVerifyInfo)localObject).str_url.get();
-            if (!TextUtils.isEmpty(str1))
-            {
-              localBundle.putString("security_check_url", str1);
-              localBundle.putString("security_check_buffer", ((AddContactVerifyInfo.AddFriendVerifyInfo)localObject).str_verify_info.get());
-              a(120, true, localBundle);
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleAddFriend, needSecCheck");
-              return;
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("FriendListHandler.BaseHandlerReceiver", 1, "handleAddFriend, ", localException);
-          }
-        }
+      k = Integer.parseInt(paramString4);
+      if ((k & 0x4000000) != 67108864) {
+        break label99;
       }
+      j = 335544320;
     }
-    if (paramAddFriendResp.result == 0)
+    catch (Exception paramString4)
     {
-      paramToServiceMsg = paramToServiceMsg.extraData;
-      boolean bool1 = paramToServiceMsg.getBoolean("auto_send", false);
-      int j = paramToServiceMsg.getInt("source_id");
-      localObject = paramToServiceMsg.getString("uin");
-      int k = paramToServiceMsg.getInt("friend_setting");
-      boolean bool2 = paramToServiceMsg.getBoolean("contact_bothway");
-      String str2 = paramToServiceMsg.getString("remark");
-      int i;
-      if ((bool1) && (AutoRemarkActivity.a(paramAddFriendResp.adduinsetting, j, bool2))) {
-        i = 1;
-      }
       for (;;)
       {
-        if ((bool1) && (i != 0) && (paramAddFriendResp.adduin != 0L)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(String.valueOf(paramAddFriendResp.adduin), paramAddFriendResp.myfriendgroupid, j, paramToServiceMsg.getString("src_name"), true, false, -1L);
-        }
-        try
-        {
-          for (;;)
-          {
-            ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a().a((String)localObject);
-            if (QLog.isColorLevel())
-            {
-              paramToServiceMsg = new StringBuilder();
-              paramToServiceMsg.append("$handleAddFriend|autoSend=").append(bool1).append(",uin").append(paramAddFriendResp.adduin).append(",sourceId=").append(j).append(",beBothWay=").append(bool2).append(",successDirectly=").append(AutoRemarkActivity.a(paramAddFriendResp.adduinsetting, j, bool2));
-              QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
-            }
-            localBundle.putByteArray("sig", paramAddFriendResp.sig);
-            localBundle.putString("result_uin", String.valueOf(paramAddFriendResp.adduin));
-            if ((!bool1) || (i == 0)) {
-              break label529;
-            }
-            bool1 = true;
-            localBundle.putBoolean("addDirect", bool1);
-            a(11, true, localBundle);
-            return;
-            i = 0;
-            break;
-            if (brlp.a(j)) {
-              ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a((String)localObject, k, str2);
-            }
-          }
-        }
-        catch (Throwable paramToServiceMsg)
-        {
-          for (;;)
-          {
-            paramToServiceMsg.printStackTrace();
-            continue;
-            label529:
-            bool1 = false;
-          }
-        }
+        int k;
+        int i;
+        continue;
+        j = 268435456;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "ErrorString" + paramAddFriendResp.ErrorString + "resultCode" + paramAddFriendResp.result);
+    i = j;
+    if ((k & 0x20000000) == 536870912) {
+      i = j | 0x20000000;
     }
-    a(11, true, localBundle);
+    j = i;
+    if ((k & 0x400000) == 4194304) {
+      j = i | 0x400000;
+    }
+    localbbkb.a(a(), paramContext, paramString1, paramString2, paramString3, j);
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private boolean a(Context paramContext, String paramString)
   {
-    if ((QLog.isColorLevel()) && (paramFromServiceMsg != null)) {
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleBatchAddPhoneFriend sso resp: " + paramFromServiceMsg + ", data: " + paramObject);
-    }
-    boolean bool2;
-    oidb_0x829.RspBody localRspBody;
-    ArrayList localArrayList1;
-    int j;
-    ArrayList localArrayList2;
-    String str;
-    int k;
-    int m;
-    PhoneContactManagerImp localPhoneContactManagerImp;
-    boolean bool1;
-    int i;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    boolean bool = false;
+    paramContext = paramContext.getPackageManager();
+    try
     {
-      bool2 = true;
-      localRspBody = new oidb_0x829.RspBody();
-      localArrayList1 = (ArrayList)paramToServiceMsg.extraData.getSerializable("phones");
-      j = Integer.valueOf(paramToServiceMsg.extraData.getInt("package", -1)).intValue();
-      localArrayList2 = (ArrayList)paramToServiceMsg.extraData.getSerializable("resultList");
-      str = paramToServiceMsg.extraData.getString("verifyMsg");
-      k = Integer.valueOf(paramToServiceMsg.extraData.getInt("sourceId")).intValue();
-      m = j * 30;
-      localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-      bool1 = bool2;
-      if (bool2)
+      paramContext = paramContext.getPackageInfo(paramString.trim(), 0);
+      if (paramContext != null) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Exception paramContext) {}
+    return false;
+  }
+  
+  private boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      return false;
+    }
+    Object localObject1 = null;
+    String str1 = "platform=qq_m&current_uin=$OPID$&launchfrom=Ark&openid=$OPID$&atoken=$AT$&ptoken=$PT$" + "&big_brother_source_key=" + paramString3;
+    try
+    {
+      Object localObject2 = aoqp.a(new JSONObject(paramString2));
+      Object localObject3 = ((Map)localObject2).get("url");
+      paramString2 = (String)localObject1;
+      if (localObject3 != null)
       {
-        FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-        paramToServiceMsg = FriendListHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        if (paramToServiceMsg == null) {
-          break label480;
+        paramString2 = (String)localObject1;
+        if ((localObject3 instanceof String)) {
+          paramString2 = (String)localObject3;
         }
-        i = paramToServiceMsg.uint32_result.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleBatchAddPhoneFriend oidb result code: " + i);
+      }
+      try
+      {
+        localObject1 = ((Map)localObject2).get("data");
+        if ((localObject1 == null) || (!(localObject1 instanceof Map))) {
+          break label383;
         }
-        if (i != 0) {
-          break label448;
+        localObject2 = (Map)localObject1;
+        localObject1 = new StringBuilder();
+        localObject2 = ((Map)localObject2).entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Object localObject4 = (Map.Entry)((Iterator)localObject2).next();
+          localObject3 = ((Map.Entry)localObject4).getKey();
+          localObject4 = ((Map.Entry)localObject4).getValue();
+          if ((localObject3 != null) && ((localObject3 instanceof String)) && (localObject4 != null))
+          {
+            ((StringBuilder)localObject1).append("&");
+            ((StringBuilder)localObject1).append(localObject3);
+            ((StringBuilder)localObject1).append("=");
+            ((StringBuilder)localObject1).append(localObject4.toString());
+          }
         }
-        bool2 = true;
-        label249:
-        bool1 = bool2;
-        if (!bool2) {}
+        if (!QLog.isColorLevel()) {
+          break label256;
+        }
+      }
+      catch (JSONException localJSONException) {}
+    }
+    catch (JSONException paramString2)
+    {
+      for (;;)
+      {
+        paramString2 = null;
+      }
+    }
+    QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.jsonParseError");
+    label256:
+    if (!a(localBaseActivity, paramString4)) {
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = new Intent(localBaseActivity, QQBrowserActivity.class);
+        paramString1.putExtra("url", paramString2);
+        ArkAppCenter.a(paramString1, paramString3);
+        paramString1.putExtra("fromArkAppDownload", true);
+        localBaseActivity.startActivity(paramString1);
       }
     }
     for (;;)
     {
-      try
-      {
-        localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        bool1 = bool2;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        label448:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleBatchAddPhoneFriend RspBody mergeFrom failed.");
-        bool1 = false;
-        paramToServiceMsg.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleBatchAddPhoneFriend isSuccess: " + bool1);
-      }
-      if (!bool1) {
-        break label559;
-      }
-      if (!localRspBody.rpt_add_frd_info.has()) {
-        break label486;
-      }
-      i = 0;
-      if (i >= localRspBody.rpt_add_frd_info.size()) {
-        break label486;
-      }
-      paramToServiceMsg = (oidb_0x829.AddFrdInfo)localRspBody.rpt_add_frd_info.get(i);
-      paramFromServiceMsg = new FriendListHandler.AddBatchPhoneFriendResult();
-      paramFromServiceMsg.mobile = paramToServiceMsg.bytes_mobile.get().toStringUtf8();
-      paramFromServiceMsg.remark = paramToServiceMsg.bytes_remark.get().toStringUtf8();
-      paramFromServiceMsg.allowType = paramToServiceMsg.uint32_allow_type.get();
-      paramFromServiceMsg.sendReqFlag = paramToServiceMsg.uint32_send_req_flag.get();
-      paramFromServiceMsg.sendResult = paramToServiceMsg.uint32_send_result.get();
-      localArrayList2.add(paramFromServiceMsg);
-      i += 1;
-      continue;
-      bool2 = false;
+      return true;
+      String str2 = str1 + localJSONException;
+      str1 = str2;
       break;
-      bool2 = false;
-      break label249;
-      label480:
-      bool1 = false;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler, download url is empty");
+        continue;
+        a(localBaseActivity, paramString1, str1, paramString4, "0");
+      }
     }
-    label486:
-    if ((j != -1) && (localArrayList1 != null) && (localArrayList2 != null) && (m < localArrayList1.size()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new MakeFriendReceiver.1(this, localArrayList1, str, j, k, localArrayList2));
-      return;
-    }
-    localPhoneContactManagerImp.a(localArrayList1, localArrayList2, k);
-    a(110, true, localArrayList2);
-    return;
-    label559:
-    if ((j != -1) && (localArrayList1 != null) && (localArrayList2 != null) && (m < localArrayList1.size()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new MakeFriendReceiver.2(this, localArrayList1, str, j, k, localArrayList2));
-      return;
-    }
-    if ((localArrayList2 != null) && (localArrayList2.size() > 0))
-    {
-      localPhoneContactManagerImp.a(localArrayList1, localArrayList2, k);
-      a(110, true, localArrayList2);
-      return;
-    }
-    a(110, false, null);
   }
   
-  public boolean a(String paramString)
+  protected QQAppInterface a()
   {
-    return ("friendlist.addFriend".equals(paramString)) || ("friendlist.delFriend".equals(paramString)) || ("BumpSvc.ReqComfirmContactFriend".equals(paramString)) || ("OidbSvc.0x829_1".equals(paramString));
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
   }
   
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("friendlist.addFriend".equals(str)) {
-      a((AddFriendResp)paramObject, paramToServiceMsg);
+    if (paramLong != 0L) {
+      return false;
     }
-    do
+    paramString3 = BaseActivity.sTopActivity;
+    if (paramString3 == null) {
+      return false;
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if (paramJSONObject == null) {}
+    for (paramJSONObject = "biz_src_jc_ark";; paramJSONObject = paramJSONObject.optString("businessId", "biz_src_jc_ark"))
     {
-      return;
-      if ("friendlist.delFriend".equals(str))
-      {
-        if (paramObject != null)
-        {
-          a(paramFromServiceMsg, (DelFriendResp)paramObject);
-          return;
-        }
-        a(15, false, null);
-        return;
+      String str = BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).getString(paramString1, null);
+      if ((str == null) || (str.length() <= 0) || (!a(paramString3, str))) {
+        break;
       }
-      if ("BumpSvc.ReqComfirmContactFriend".equals(str))
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          a(paramToServiceMsg, true);
-          return;
-        }
-        a(10, false, null);
-        return;
-      }
-    } while (!"OidbSvc.0x829_1".equals(str));
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      a(paramString1, paramString2, paramJSONObject, str);
+      return true;
+    }
+    paramString3 = a();
+    if (paramString3 == null)
+    {
+      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate.app is null.");
+      return false;
+    }
+    ((ArkAppCenter)paramString3.getManager(121)).a(paramString1, this, new aoqr(this, paramString2, paramJSONObject));
+    return true;
   }
 }
 

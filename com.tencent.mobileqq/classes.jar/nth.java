@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class nth
-  implements DialogInterface.OnDismissListener
 {
-  nth(ntc paramntc) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.f = false;
-  }
+  nth(nst paramnst) {}
 }
 
 

@@ -1,82 +1,87 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.RemoteException;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import cooperation.groupvideo.GVideoProxyService;
 
 public class bkik
-  extends WebViewPlugin
 {
-  private BroadcastReceiver a = new bkil(this);
+  bkil jdField_a_of_type_Bkil = null;
+  bkim jdField_a_of_type_Bkim = new bkim(this);
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  lnp jdField_a_of_type_Lnp = null;
   
-  private void a(Bundle paramBundle)
+  public bkik(AppInterface paramAppInterface)
   {
-    if ((paramBundle != null) && (!paramBundle.isEmpty()))
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Lnp == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null");
+      }
+    }
+    do
     {
-      paramBundle = asev.a("ipc_qidian_video_chat", "", 0, paramBundle);
-      asjw.a().a(paramBundle);
+      return 0;
+      try
+      {
+        paramInt = this.jdField_a_of_type_Lnp.a(paramLong, paramInt);
+        return paramInt;
+      }
+      catch (RemoteException localRemoteException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("GroupVideoRemoteManager", 2, "RemoteException", localRemoteException);
+    return 0;
+  }
+  
+  public void a()
+  {
+    bkij.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Bkim);
+    this.jdField_a_of_type_Lnp = null;
+    this.jdField_a_of_type_Bkil = null;
+  }
+  
+  public void a(bkil parambkil)
+  {
+    this.jdField_a_of_type_Bkil = parambkil;
+    if (this.jdField_a_of_type_Lnp == null) {
+      bkij.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, GVideoProxyService.class, this.jdField_a_of_type_Bkim, "com.gvideo.com.tencent.av.service.GVServiceForQQ");
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(byte[] paramArrayOfByte)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianWpaWebviewPlugin", 2, paramString2 + paramString3 + paramVarArgs[0]);
+    if (this.jdField_a_of_type_Lnp == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null");
+      }
     }
-    boolean bool1 = bool2;
-    if (paramString2.equals("qidian"))
+    do
     {
-      bool1 = bool2;
-      if (!paramString3.equals("videochat")) {}
-    }
+      return;
+      try
+      {
+        this.jdField_a_of_type_Lnp.a(paramArrayOfByte);
+        return;
+      }
+      catch (RemoteException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("GroupVideoRemoteManager", 2, "RemoteException", paramArrayOfByte);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Lnp != null) {}
     try
     {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.optString("request_type");
-      paramString1 = paramString3.optString("uin");
-      paramString2 = paramString3.optString("sigt");
-      paramString3 = paramString3.optString("nickname");
-      paramVarArgs = new Bundle();
-      paramVarArgs.putString("request_type", paramJsBridgeListener);
-      paramVarArgs.putString("uin", paramString1);
-      paramVarArgs.putString("sigt", paramString2);
-      paramVarArgs.putString("nickname", paramString3);
-      a(paramVarArgs);
-      bool1 = true;
+      this.jdField_a_of_type_Lnp.a();
+      return;
     }
-    catch (Exception paramJsBridgeListener)
+    catch (RemoteException localRemoteException)
     {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianWpaWebviewPlugin", 2, "handleJsRequest ", paramJsBridgeListener);
-    }
-    return bool1;
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null)
-    {
-      IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qidian.openactionsheet");
-      localActivity.registerReceiver(this.a, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-    }
-    super.onCreate();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null) {
-      localActivity.unregisterReceiver(this.a);
+      localRemoteException.printStackTrace();
     }
   }
 }

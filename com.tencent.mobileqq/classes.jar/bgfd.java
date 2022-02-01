@@ -1,18 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.vas.PendantInfo;
 
-public abstract interface bgfd
+public class bgfd
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public String a;
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
-  
-  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
+  public bgfd(PendantInfo paramPendantInfo, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

@@ -65,7 +65,7 @@ class SegmentDecoderThread
     for (;;)
     {
       this.filter.setDesTextureInfo((TextureInfo)???);
-      Logger.e("SegmentDecoderThread", "decoder:==========|=|========= " + localCMSampleBuffer.getTime() + "  " + localCMSampleBuffer.isNewFrame() + "  ");
+      Logger.d("SegmentDecoderThread", "decoder:==========|=|========= " + localCMSampleBuffer.getTime() + "  " + localCMSampleBuffer.isNewFrame() + "  ");
       this.filter.clearBufferBuffer(-16777216);
       this.filter.applyFilter(localCMSampleBuffer.getTextureInfo(), localCMSampleBuffer.getTextureInfo().getTextureMatrix());
       CMTime localCMTime2 = localCMSampleBuffer.getTime();
@@ -96,7 +96,7 @@ class SegmentDecoderThread
       {
         this.cancel = false;
         CacheSegment localCacheSegment = paramDecoderSegmentMsg.segment;
-        Logger.e("SegmentDecoderThread", "decoder:------------------- " + paramDecoderSegmentMsg.segment.segmentTimeRange.getStart() + "  -  " + paramDecoderSegmentMsg.segment.segmentTimeRange.getEnd());
+        Logger.d("SegmentDecoderThread", "decoder:------------------- " + paramDecoderSegmentMsg.segment.segmentTimeRange.getStart() + "  -  " + paramDecoderSegmentMsg.segment.segmentTimeRange.getEnd());
         localObject3 = localCacheSegment.segmentTimeRange.getStart();
         Object localObject2 = localCacheSegment.segmentTimeRange.getEnd();
         ??? = localCacheSegment.segmentTimeRange.getDuration();
@@ -115,19 +115,19 @@ class SegmentDecoderThread
           localObject2 = CMTime.CMTimeZero;
         }
         ??? = new CMTimeRange((CMTime)localObject2, (CMTime)???);
-        Logger.e("SegmentDecoderThread", "decoder2:------------------- " + ((CMTimeRange)???).getStart() + "  -  " + ((CMTimeRange)???).getEnd());
+        Logger.d("SegmentDecoderThread", "decoder2:------------------- " + ((CMTimeRange)???).getStart() + "  -  " + ((CMTimeRange)???).getEnd());
         if ((((CMTimeRange)???).getStart() != CMTime.CMTimeInvalid) && (this.cachedVideoDecoderTrack != null) && (this.context != null))
         {
           this.context.makeCurrent();
           this.decoderTrack.seekTo(((CMTimeRange)???).getStart(), false, false);
           localObject2 = this.decoderTrack.readSample(((CMTimeRange)???).getStart());
-          Logger.e("SegmentDecoderThread", "decoder: readFirst " + ((CMSampleBuffer)localObject2).getTime() + " cancel = " + this.cancel + "  - " + ((CMTimeRange)???).getEnd());
+          Logger.d("SegmentDecoderThread", "decoder: readFirst " + ((CMSampleBuffer)localObject2).getTime() + " cancel = " + this.cancel + "  - " + ((CMTimeRange)???).getEnd());
           if ((!((CMSampleBuffer)localObject2).getTime().smallThan(CMTime.CMTimeZero)) && (!this.cancel) && (((CMSampleBuffer)localObject2).getTime().smallThan(((CMTimeRange)???).getEnd())))
           {
             localObject3 = new CacheFrame();
             ((CacheFrame)localObject3).texturePool = this.texturePool;
             ((CacheFrame)localObject3).frameTime = ((CMSampleBuffer)localObject2).getTime();
-            Logger.e("SegmentDecoderThread", "decoder:==================== frame.frameTime = " + ((CacheFrame)localObject3).frameTime + "  " + ((CMSampleBuffer)localObject2).getTextureInfo());
+            Logger.d("SegmentDecoderThread", "decoder:==================== frame.frameTime = " + ((CacheFrame)localObject3).frameTime + "  " + ((CMSampleBuffer)localObject2).getTextureInfo());
             if (this.cachedVideoDecoderTrack.revert) {
               ((CacheFrame)localObject3).frameTime = this.decoderTrack.getDuration().sub(((CMSampleBuffer)localObject2).getTime());
             }
@@ -141,7 +141,7 @@ class SegmentDecoderThread
               ((RenderContext)localObject5).makeCurrent();
               localObject5 = this.texturePool.popTexture(3553, ((RenderContext)localObject5).width(), ((RenderContext)localObject5).height());
               this.filter.setDesTextureInfo((TextureInfo)localObject5);
-              Logger.e("SegmentDecoderThread", "decoder:==================== " + ((CMSampleBuffer)localObject2).getTime() + "  " + ((CMSampleBuffer)localObject2).isNewFrame() + "  " + ((CacheFrame)localObject3).frameTime);
+              Logger.d("SegmentDecoderThread", "decoder:==================== " + ((CMSampleBuffer)localObject2).getTime() + "  " + ((CMSampleBuffer)localObject2).isNewFrame() + "  " + ((CacheFrame)localObject3).frameTime);
               this.filter.clearBufferBuffer(-16777216);
               this.filter.applyFilter(((CMSampleBuffer)localObject2).getTextureInfo(), ((CMSampleBuffer)localObject2).getTextureInfo().getTextureMatrix());
               ((CacheFrame)localObject3).sampleBuffer = new CMSampleBuffer(((CacheFrame)localObject3).frameTime, (TextureInfo)localObject5, ((CMSampleBuffer)localObject2).isNewFrame());

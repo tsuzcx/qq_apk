@@ -1,71 +1,31 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class azxd
-  implements AdapterView.OnItemClickListener
 {
-  azxd(azxc paramazxc) {}
+  public azxe a;
+  public azxg a;
+  public azxh a;
+  public List<String> a;
+  public List<azxf> b = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public azxd()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
-    }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719399;
-      }
-    }
-    for (;;)
-    {
-      if (i != -1) {
-        zyx.a(1, i);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label233;
-        }
-        i = 2131719400;
-        break;
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          zyx.a(1, 2131698265);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_Azxf.a(true);
-          switch ((int)paramLong)
-          {
-          default: 
-            break;
-          case 0: 
-            ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
-            break;
-          case 1: 
-            ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
-            break;
-          case 2: 
-          case 3: 
-            ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
-          }
-        }
-      }
-      label233:
-      i = -1;
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("baseProfile").append("=").append(this.jdField_a_of_type_Azxe).append("|\n");
+    localStringBuilder.append("personalLabels").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|\n");
+    localStringBuilder.append("qZoneInfo").append("=").append(this.jdField_a_of_type_Azxg).append("|\n");
+    localStringBuilder.append("nicePics").append("=").append(Arrays.toString(this.b.toArray())).append("|\n");
+    localStringBuilder.append("sign").append("=").append(this.jdField_a_of_type_Azxh).append("|\n");
+    return localStringBuilder.toString();
   }
 }
 

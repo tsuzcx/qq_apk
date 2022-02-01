@@ -1,12 +1,26 @@
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class apgp
+  extends ContentObserver
 {
-  public int a;
-  public long a;
-  
-  public apgp(long paramLong, int paramInt)
+  public apgp(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    }
+    if (BusinessCardEditActivity.a(this.a))
+    {
+      this.a.a(2131698048, 2);
+      BusinessCardEditActivity.a(this.a, false);
+    }
   }
 }
 

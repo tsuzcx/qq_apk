@@ -1,21 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class tod
-  implements acyt
+class tod
+  implements View.OnLayoutChangeListener
 {
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  tod(toc paramtoc) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramLong == 8589934598L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
-      }
-      paramString = new Bundle();
-      aasb.a().a(140, paramString);
-    }
-    return false;
+    paramView.removeOnLayoutChangeListener(this);
+    paramView.setTranslationX(toc.a(this.a)[0]);
+    paramView.setTranslationY(toc.a(this.a)[1]);
   }
 }
 

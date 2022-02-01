@@ -1,15 +1,36 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.widget.FrameLayout;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class mqx
-  implements View.OnTouchListener
+public class mqx
+  extends ReportDialog
 {
-  mqx(mqt parammqt) {}
+  public mqx(Context paramContext, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  void a()
   {
-    return true;
+    super.getWindow().setGravity(17);
+    super.setContentView(2131559790);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      b();
+    }
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131373568);
+    localFrameLayout.setOnClickListener(new mqy(this));
+    if (paramView != null) {
+      localFrameLayout.addView(paramView);
+    }
+  }
+  
+  void b()
+  {
+    findViewById(2131373567).setOnClickListener(new mqz(this));
   }
 }
 

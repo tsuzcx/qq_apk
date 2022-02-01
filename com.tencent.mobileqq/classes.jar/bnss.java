@@ -1,119 +1,160 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.io.File;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QZoneClickReport.ReportInfo;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bnss
-  implements ITMAssistantDownloadClientListener
+public class bnss
+  extends bnee
 {
-  bnss(bnsr parambnsr) {}
+  public Activity a;
+  public View a;
+  public QzoneVerticalVideoTopicInfo a;
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
+  public String d;
+  public int e = -1;
+  public String e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  private int h;
+  public boolean h;
+  public boolean i;
+  public boolean j = true;
+  public boolean k = true;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  public boolean p;
+  public boolean q;
+  public boolean r;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public bnss(Activity paramActivity)
   {
-    paramTMAssistantDownloadClient = (bnst)bnsr.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int j = 6;
-    String str = "";
-    Object localObject;
-    int i;
-    if (paramInt1 == 4)
-    {
-      str = (String)bnsr.b(this.a).get(paramString1);
-      localObject = "";
-      try
-      {
-        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null) {
-          break label153;
-        }
-        paramTMAssistantDownloadClient = null;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        for (;;)
-        {
-          QLog.e(bnsr.a, 2, paramTMAssistantDownloadClient.toString());
-          paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject;
-          continue;
-          QLog.e(bnsr.a, 2, "file renameTo faild frompath:" + paramTMAssistantDownloadClient + " topath:" + str);
-          i = 0;
-        }
-        QLog.e(bnsr.a, 2, "file not exist path:" + paramTMAssistantDownloadClient);
-      }
-      if (!TextUtils.isEmpty(paramTMAssistantDownloadClient))
-      {
-        localObject = new File(paramTMAssistantDownloadClient);
-        if (((File)localObject).exists()) {
-          if (((File)localObject).renameTo(new File(str)))
-          {
-            i = 1;
-            if (i != 0) {
-              break label265;
-            }
-            paramTMAssistantDownloadClient = (bnst)bnsr.a(this.a).get(paramString1);
-            if (paramTMAssistantDownloadClient != null) {
-              paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
-            }
-            bnsr.a(this.a).remove(paramString1);
-            bnsr.b(this.a).remove(paramString1);
-          }
-        }
-      }
-    }
-    label153:
-    do
-    {
-      return;
-      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
-      break;
-      for (;;)
-      {
-        i = 0;
-        break;
-        QLog.e(bnsr.a, 2, "currentPath is null");
-      }
-      paramTMAssistantDownloadClient = (bnst)bnsr.a(this.a).get(paramString1);
-    } while (paramTMAssistantDownloadClient == null);
-    label265:
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 0;
-    }
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_f_of_type_Boolean = true;
+    this.jdField_h_of_type_Boolean = true;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_h_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    if (paramActivity.getIntent().getIntExtra("qqstory_slide_show_scene", -1) == 22) {}
     for (;;)
     {
-      paramTMAssistantDownloadClient.a(paramString1, paramInt1, paramInt2, paramString2, str);
+      this.q = bool;
+      this.jdField_h_of_type_Int = paramActivity.getIntent().getIntExtra("qqstory_slide_show_entrance", -1);
       return;
-      paramInt1 = 2;
-      continue;
-      bnsr.a(this.a).remove(paramString1);
-      bnsr.b(this.a).remove(paramString1);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 3;
-      bnsr.a(this.a).remove(paramString1);
-      bnsr.b(this.a).remove(paramString1);
-      continue;
-      paramInt1 = 4;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 5;
-      bnsr.a(this.a).remove(paramString1);
-      bnsr.b(this.a).remove(paramString1);
+      bool = false;
     }
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  private bntj a()
+  {
+    Iterator localIterator = a().iterator();
+    while (localIterator.hasNext())
+    {
+      bnec localbnec = (bnec)localIterator.next();
+      if ((localbnec instanceof bntj)) {
+        return (bntj)localbnec;
+      }
+    }
+    return null;
+  }
+  
+  static void b(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
+    localReportInfo.actionType = paramString1;
+    localReportInfo.subactionType = paramString2;
+    localReportInfo.reserves = paramString3;
+    QZoneClickReport.report(QQStoryContext.a().a(), localReportInfo, paramBoolean);
+  }
+  
+  public void a()
+  {
+    b("608", "1", "0", true);
+    if ((!this.l) && (this.g > 0)) {
+      CodecParam.mMaxrate /= this.g;
+    }
+    super.a();
+  }
+  
+  public void a(Context paramContext)
+  {
+    super.a(paramContext);
+  }
+  
+  public void a(bnew parambnew, EditVideoParams paramEditVideoParams)
+  {
+    super.a(parambnew, paramEditVideoParams);
+    if ((paramEditVideoParams != null) && (paramEditVideoParams.a != null) && ((this.jdField_h_of_type_Int == 17) || (this.jdField_h_of_type_Int == 18)))
+    {
+      parambnew = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131717020);
+      paramEditVideoParams.a.putString("extra_publish_text", parambnew);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    b(paramString1, paramString2, paramString3, paramBoolean);
+  }
+  
+  protected void a(List<bnec> paramList)
+  {
+    if ((!this.q) || ((this.jdField_h_of_type_Int != 14) && (this.jdField_h_of_type_Int != 19))) {
+      paramList.add(new bnsg(this));
+    }
+    if (this.q) {
+      paramList.add(new bnem(this));
+    }
+    if ((this.m) && (!this.q)) {
+      paramList.add(new bntl(this, this.jdField_a_of_type_AndroidAppActivity));
+    }
+    if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo != null) {
+      paramList.add(new bntf(this, this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo));
+    }
+    paramList.add(new bntj(this));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.l();
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    bntj localbntj = a();
+    if (localbntj != null) {
+      localbntj.a(paramInt, null);
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    c(3005);
+  }
 }
 
 

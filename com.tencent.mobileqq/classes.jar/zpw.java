@@ -1,48 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.image.URLDrawable;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
 class zpw
+  extends zql
 {
-  public static ConcurrentHashMap<zpu, Boolean> a;
-  private static volatile zpw a;
-  
-  static
+  zpw(zpq paramzpq, zpy paramzpy, String paramString)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    super(paramzpq);
   }
   
-  public static zpw a()
+  public void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Zpw == null) {}
-    try
+    if (QLog.isColorLevel())
     {
-      if (jdField_a_of_type_Zpw == null) {
-        jdField_a_of_type_Zpw = new zpw();
-      }
-      return jdField_a_of_type_Zpw;
+      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Zpq.a));
+      this.jdField_a_of_type_Zpq.a = System.currentTimeMillis();
     }
-    finally {}
-  }
-  
-  public static void a(URLDrawable paramURLDrawable, String paramString)
-  {
-    paramString = new zpu(a(), paramURLDrawable, paramString);
-    paramURLDrawable.setDownloadListener(paramString);
-    paramURLDrawable.setURLDrawableListener(paramString);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public void a(@NonNull zpu paramzpu)
-  {
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramzpu);
-    yuk.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
-    if (!bool) {
-      bdkh.a(zpn.a(anzj.a(2131714647), null), "Story.UIUtils.monitor " + paramzpu.toString());
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Zpy.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
     }
-    paramzpu.a.setDownloadListener(null);
-    paramzpu.a.setURLDrawableListener(null);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramzpu);
   }
 }
 

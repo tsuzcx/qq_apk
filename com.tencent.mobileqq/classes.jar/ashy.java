@@ -1,207 +1,370 @@
-import android.os.Environment;
-import android.view.View;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.io.File;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class ashy
+  implements asih, IHttpCommunicatorListener
 {
-  private int jdField_a_of_type_Int;
-  File jdField_a_of_type_JavaIoFile = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
-  StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private asig jdField_a_of_type_Asig;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final int jdField_b_of_type_Int;
+  private final long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private final byte[] jdField_b_of_type_ArrayOfByte;
   
-  public ashy(DragSortListView paramDragSortListView)
+  private ashy(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, String paramString3)
   {
-    if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramString1);
+    this.jdField_b_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramString2);
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString3;
+  }
+  
+  public static ashy a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, String paramString3)
+  {
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strCheckSum is null");
+      }
+      return null;
+    }
+    if (paramString1.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strCheckSum is empty");
+      }
+      return null;
+    }
+    if (paramString2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strSHA is null");
+      }
+      return null;
+    }
+    if (paramString2.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strSHA is empty");
+      }
+      return null;
+    }
+    return new ashy(paramQQAppInterface, paramLong1, paramInt1, paramInt2, paramString1, paramString2, paramLong2, paramBoolean, paramString3);
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
+    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
     try
     {
-      this.jdField_a_of_type_JavaIoFile.createNewFile();
+      localDataInputStream.skip(4L);
+      if (localDataInputStream.readInt() != 0) {
+        this.jdField_a_of_type_Asig.a(9001, "httpServer retCode!=0");
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        int i;
+        long l1;
+        long l2;
+        localIOException.printStackTrace();
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "unPackageData exception:" + localIOException.toString());
+        this.jdField_a_of_type_Asig.a(9001, "httpServer flag!=0 flag!=1");
+        try
+        {
+          paramArrayOfByte.close();
+          localDataInputStream.close();
+          return;
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          return;
+        }
+        this.jdField_a_of_type_Asig.a(9001, "httpServer flag!=0 flag!=1");
+      }
+    }
+    finally
+    {
+      try
+      {
+        paramArrayOfByte.close();
+        localDataInputStream.close();
+        throw localObject;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        break label232;
+      }
+    }
+    try
+    {
+      paramArrayOfByte.close();
+      localDataInputStream.close();
       return;
     }
-    catch (IOException paramDragSortListView) {}
+    catch (Exception paramArrayOfByte) {}
+    localDataInputStream.skip(8L);
+    i = localDataInputStream.readByte();
+    if (i == 0)
+    {
+      i = localDataInputStream.readInt();
+      l1 = localDataInputStream.readInt();
+      l2 = i;
+      this.jdField_a_of_type_Asig.a(l1 << 32 | l2, null);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte.close();
+        localDataInputStream.close();
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return;
+      }
+      if (i != 1) {
+        break;
+      }
+      this.jdField_a_of_type_Asig.b();
+    }
+    label232:
+  }
+  
+  private byte[] a(long paramLong, byte[] paramArrayOfByte)
+  {
+    int i = this.jdField_a_of_type_ArrayOfByte.length + 2 + 2 + this.jdField_b_of_type_ArrayOfByte.length + 20 + paramArrayOfByte.length;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(i + 16);
+    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
+    try
+    {
+      localDataOutputStream.writeInt(-1412589450);
+      localDataOutputStream.writeInt(1007);
+      localDataOutputStream.writeInt(0);
+      localDataOutputStream.writeInt(i);
+      localDataOutputStream.writeShort(this.jdField_a_of_type_ArrayOfByte.length);
+      localDataOutputStream.write(this.jdField_a_of_type_ArrayOfByte);
+      localDataOutputStream.writeShort(this.jdField_b_of_type_ArrayOfByte.length);
+      localDataOutputStream.write(this.jdField_b_of_type_ArrayOfByte);
+      localDataOutputStream.writeInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
+      localDataOutputStream.writeInt((int)(paramLong & 0xFFFFFFFF));
+      localDataOutputStream.writeInt(paramArrayOfByte.length);
+      localDataOutputStream.writeInt((int)(this.jdField_b_of_type_Long >> 32));
+      localDataOutputStream.writeInt((int)(paramLong >> 32));
+      localDataOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      label255:
+      return paramArrayOfByte;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte = paramArrayOfByte;
+      paramArrayOfByte.printStackTrace();
+      QLog.e("FtnHttpUploader<FileAssistant>", 1, "packageData exception:" + paramArrayOfByte.toString());
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        return null;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return null;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException1)
+      {
+        break label255;
+      }
+    }
+  }
+  
+  protected HttpCommunicator a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVStates>\n");
-    this.b = 0;
     this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
+    {
+      a().cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+    }
   }
   
-  public void b()
+  public void a(asig paramasig)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    this.jdField_a_of_type_Asig = paramasig;
+  }
+  
+  public boolean a(String paramString, long paramLong, byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = a(paramLong, paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "sendData packageData return null");
+      }
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = new HttpMsg(paramString, paramArrayOfByte, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setInstanceFollowRedirects(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("cache-control", "no-cache");
+    paramArrayOfByte = "gprs";
+    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {
+      paramArrayOfByte = "wifi";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Net-type", paramArrayOfByte);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestMethod("POST");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setPriority(1);
+    if (this.jdField_a_of_type_Asig != null) {
+      this.jdField_a_of_type_Asig.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.fileType = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.busiType = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.msgId = String.valueOf(this.jdField_a_of_type_Long);
+    paramArrayOfByte = "";
+    if (paramString != null) {
+      paramArrayOfByte = paramString.toLowerCase();
+    }
+    if ((this.jdField_b_of_type_Boolean) && (paramArrayOfByte.startsWith("https")))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.mIsHttps = true;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.mIsHostIP = asib.a(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.mReqHost = this.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.timeoutParam = aszt.a();
+    a().sendMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    return true;
+  }
+  
+  public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.e("##########", 2, "nSessionID[" + String.valueOf(this.jdField_a_of_type_Long) + "]已经结束,返回");
+      }
+    }
     do
     {
       return;
-      this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVState>\n");
-      int j = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildCount();
-      int k = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getFirstVisiblePosition();
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Positions>");
-      int i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(k + i).append(",");
-        i += 1;
+      if (paramHttpMsg1 == this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg) {
+        break;
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</Positions>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Tops>");
-      i = 0;
-      while (i < j)
+      if ((paramHttpMsg1 != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null))
       {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop()).append(",");
-        i += 1;
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+        return;
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</Tops>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <Bottoms>");
-      i = 0;
-      while (i < j)
+      if (paramHttpMsg1 != null)
       {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getBottom()).append(",");
-        i += 1;
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "]");
+        return;
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</Bottoms>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FirstExpPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c).append("</FirstExpPos>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FirstExpBlankHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c) - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c)).append("</FirstExpBlankHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SecondExpPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d).append("</SecondExpPos>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SecondExpBlankHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d) - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d)).append("</SecondExpBlankHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SrcPos>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e).append("</SrcPos>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <SrcHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.i + this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getDividerHeight()).append("</SrcHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <ViewHeight>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeight()).append("</ViewHeight>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <LastY>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.l).append("</LastY>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <FloatY>").append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Int).append("</FloatY>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("    <ShuffleEdges>");
-      i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(k + i, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop())).append(",");
-        i += 1;
+    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg == null);
+    QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+    return;
+    if (paramHttpMsg2.getResponseCode() == 200) {
+      if (paramHttpMsg2.getResponseProperty("User-ReturnCode") == null) {
+        break label390;
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</ShuffleEdges>\n");
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVState>\n");
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int <= 1000);
-    c();
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  /* Error */
-  public void c()
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: getfield 58	ashy:jdField_a_of_type_Boolean	Z
-    //   6: ifne +4 -> 10
-    //   9: return
-    //   10: aload_0
-    //   11: getfield 56	ashy:b	I
-    //   14: ifne +119 -> 133
-    //   17: new 176	java/io/FileWriter
-    //   20: dup
-    //   21: aload_0
-    //   22: getfield 40	ashy:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   25: iload_1
-    //   26: invokespecial 179	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   29: astore_2
-    //   30: aload_2
-    //   31: aload_0
-    //   32: getfield 25	ashy:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   35: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokevirtual 187	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: getfield 25	ashy:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   45: iconst_0
-    //   46: aload_0
-    //   47: getfield 25	ashy:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   50: invokevirtual 190	java/lang/StringBuilder:length	()I
-    //   53: invokevirtual 194	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload_2
-    //   58: invokevirtual 197	java/io/FileWriter:flush	()V
-    //   61: aload_0
-    //   62: aload_0
-    //   63: getfield 56	ashy:b	I
-    //   66: iconst_1
-    //   67: iadd
-    //   68: putfield 56	ashy:b	I
-    //   71: aload_2
-    //   72: ifnull -63 -> 9
-    //   75: aload_2
-    //   76: invokevirtual 200	java/io/FileWriter:close	()V
-    //   79: return
-    //   80: astore_2
-    //   81: aload_2
-    //   82: invokevirtual 203	java/io/IOException:printStackTrace	()V
-    //   85: return
-    //   86: astore_2
-    //   87: aconst_null
-    //   88: astore_2
-    //   89: aload_2
-    //   90: ifnull -81 -> 9
-    //   93: aload_2
-    //   94: invokevirtual 200	java/io/FileWriter:close	()V
-    //   97: return
-    //   98: astore_2
-    //   99: aload_2
-    //   100: invokevirtual 203	java/io/IOException:printStackTrace	()V
-    //   103: return
-    //   104: astore_3
-    //   105: aconst_null
-    //   106: astore_2
-    //   107: aload_2
-    //   108: ifnull +7 -> 115
-    //   111: aload_2
-    //   112: invokevirtual 200	java/io/FileWriter:close	()V
-    //   115: aload_3
-    //   116: athrow
-    //   117: astore_2
-    //   118: aload_2
-    //   119: invokevirtual 203	java/io/IOException:printStackTrace	()V
-    //   122: goto -7 -> 115
-    //   125: astore_3
-    //   126: goto -19 -> 107
-    //   129: astore_3
-    //   130: goto -41 -> 89
-    //   133: iconst_1
-    //   134: istore_1
-    //   135: goto -118 -> 17
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	138	0	this	ashy
-    //   1	134	1	bool	boolean
-    //   29	47	2	localFileWriter	java.io.FileWriter
-    //   80	2	2	localIOException1	IOException
-    //   86	1	2	localIOException2	IOException
-    //   88	6	2	localObject1	Object
-    //   98	2	2	localIOException3	IOException
-    //   106	6	2	localObject2	Object
-    //   117	2	2	localIOException4	IOException
-    //   104	12	3	localObject3	Object
-    //   125	1	3	localObject4	Object
-    //   129	1	3	localIOException5	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   75	79	80	java/io/IOException
-    //   17	30	86	java/io/IOException
-    //   93	97	98	java/io/IOException
-    //   17	30	104	finally
-    //   111	115	117	java/io/IOException
-    //   30	71	125	finally
-    //   30	71	129	java/io/IOException
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVStates>\n");
-      c();
-      this.jdField_a_of_type_Boolean = false;
     }
+    label390:
+    for (long l = Long.parseLong(paramHttpMsg2.getResponseProperty("User-ReturnCode"));; l = 0L)
+    {
+      if (0L != l)
+      {
+        this.jdField_a_of_type_Asig.a(paramHttpMsg2.errCode, paramHttpMsg2.getErrorString(), paramHttpMsg2.rawRespHeader);
+        return;
+      }
+      a(paramHttpMsg2.getRecvData());
+      return;
+      QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],decode but response Code [" + paramHttpMsg2.getResponseCode() + "] is not 200");
+      return;
+    }
+  }
+  
+  public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (paramHttpMsg2 != null)
+    {
+      this.jdField_a_of_type_Asig.a(paramHttpMsg2.errCode, paramHttpMsg2.getErrorString(), paramHttpMsg2.rawRespHeader);
+      return;
+    }
+    this.jdField_a_of_type_Asig.a(0, "null", "null");
+  }
+  
+  public void handleRedirect(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Asig.a(paramString);
+  }
+  
+  public void onFlowEvent(HttpMsg paramHttpMsg)
+  {
+    int i;
+    int j;
+    int k;
+    if (paramHttpMsg != null)
+    {
+      i = paramHttpMsg.fileType;
+      j = paramHttpMsg.busiType;
+      k = paramHttpMsg.netType;
+      if (!"POST".equals(paramHttpMsg.getRequestMethod())) {
+        break label66;
+      }
+    }
+    label66:
+    for (boolean bool = true; (this.jdField_a_of_type_Asig != null) && (this.jdField_a_of_type_Asig.a(i, j, k, bool, paramHttpMsg.flow)); bool = false) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), bool, k, i, j, paramHttpMsg.flow);
+  }
+  
+  public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  {
+    return true;
   }
 }
 

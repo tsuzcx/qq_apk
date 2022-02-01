@@ -2,7 +2,7 @@ package com.tencent.av.compat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bdll;
+import bcef;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.MultiIncomingCallsActivity;
@@ -10,11 +10,11 @@ import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lcb;
-import ldc;
-import lff;
-import mrl;
-import mtn;
+import lbu;
+import lcw;
+import lez;
+import mqu;
+import msw;
 
 class InviteUIChecker$CheckTask
   implements Runnable
@@ -36,17 +36,17 @@ class InviteUIChecker$CheckTask
     long l1 = paramIntent.getLongExtra("discussId", 0L);
     int i = paramIntent.getIntExtra("relationType", 0);
     long l2 = paramIntent.getLongExtra("friendUin", 0L);
-    paramIntent = lcb.a(i, String.valueOf(l1), new int[0]);
-    Object localObject = lcb.a().c(paramIntent);
-    if ((localObject != null) && (((lff)localObject).j()))
+    paramIntent = lbu.a(i, String.valueOf(l1), new int[0]);
+    Object localObject = lbu.a().c(paramIntent);
+    if ((localObject != null) && (((lez)localObject).j()))
     {
-      i = ((lff)localObject).j;
-      String str = ((lff)localObject).f;
+      i = ((lez)localObject).j;
+      String str = ((lez)localObject).f;
       Bitmap localBitmap = paramVideoAppInterface.a(i, String.valueOf(l1), str, true, true);
-      localObject = paramVideoAppInterface.getDisplayName(mrl.c(((lff)localObject).F), String.valueOf(l2), String.valueOf(((lff)localObject).s));
+      localObject = paramVideoAppInterface.getDisplayName(mqu.c(((lez)localObject).F), String.valueOf(l2), String.valueOf(((lez)localObject).s));
       str = paramVideoAppInterface.getDisplayName(i, String.valueOf(l1), str);
-      mtn.a(paramVideoAppInterface).a(true, paramIntent, (String)localObject, localBitmap, String.valueOf(l1), 61, i, 3, str);
-      ldc.a();
+      msw.a(paramVideoAppInterface).a(true, paramIntent, (String)localObject, localBitmap, String.valueOf(l1), 61, i, 3, str);
+      lcw.a();
     }
     if (QLog.isColorLevel()) {
       QLog.i("InviteUIChecker", 2, "showInviteNotifyForGroup session[" + paramIntent + "]");
@@ -61,20 +61,20 @@ class InviteUIChecker$CheckTask
     String str;
     Object localObject2;
     Object localObject3;
-    if (mrl.b(i))
+    if (mqu.b(i))
     {
       long l1 = paramIntent.getLongExtra("discussId", 0L);
       j = paramIntent.getIntExtra("relationType", 0);
       long l2 = paramIntent.getLongExtra("friendUin", 0L);
-      localObject1 = lcb.a(j, String.valueOf(l1), new int[0]);
-      paramIntent = lcb.a().c((String)localObject1);
+      localObject1 = lbu.a(j, String.valueOf(l1), new int[0]);
+      paramIntent = lbu.a().c((String)localObject1);
       if ((paramIntent != null) && (paramIntent.j()))
       {
         str = paramIntent.f;
         localObject2 = paramVideoAppInterface.a(i, String.valueOf(l1), str, true, true);
-        localObject3 = paramVideoAppInterface.getDisplayName(mrl.c(paramIntent.F), String.valueOf(l2), String.valueOf(paramIntent.s));
+        localObject3 = paramVideoAppInterface.getDisplayName(mqu.c(paramIntent.F), String.valueOf(l2), String.valueOf(paramIntent.s));
         str = paramVideoAppInterface.getDisplayName(i, String.valueOf(l1), str);
-        mtn.a(paramVideoAppInterface).a(paramIntent.c, (String)localObject3, (Bitmap)localObject2, String.valueOf(l1), 57, i, 3, str);
+        msw.a(paramVideoAppInterface).a(paramIntent.c, (String)localObject3, (Bitmap)localObject2, String.valueOf(l1), 57, i, 3, str);
       }
     }
     for (;;)
@@ -87,34 +87,34 @@ class InviteUIChecker$CheckTask
       j = paramIntent.getIntExtra("relationType", 0);
       boolean bool = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
       if (bool) {}
-      for (paramIntent = lcb.a(100, (String)localObject2, new int[0]);; paramIntent = lcb.a(3, (String)localObject2, new int[0]))
+      for (paramIntent = lbu.a(100, (String)localObject2, new int[0]);; paramIntent = lbu.a(3, (String)localObject2, new int[0]))
       {
-        localObject3 = lcb.a().c(paramIntent);
+        localObject3 = lbu.a().c(paramIntent);
         localObject1 = paramIntent;
         if (localObject3 == null) {
           break;
         }
         localObject1 = paramIntent;
-        if (!((lff)localObject3).j()) {
+        if (!((lez)localObject3).j()) {
           break;
         }
         localObject1 = paramIntent;
         if (j != 3) {
           break;
         }
-        str = ((lff)localObject3).f;
+        str = ((lez)localObject3).f;
         localObject1 = paramVideoAppInterface.a(i, (String)localObject2, str, true, true);
         localObject2 = paramVideoAppInterface.getDisplayName(i, (String)localObject2, str);
-        paramVideoAppInterface = mtn.a(paramVideoAppInterface);
-        if ((((lff)localObject3).S) || (bool)) {
+        paramVideoAppInterface = msw.a(paramVideoAppInterface);
+        if ((((lez)localObject3).S) || (bool)) {
           break label367;
         }
-        paramVideoAppInterface.a(((lff)localObject3).c, (String)localObject2, (Bitmap)localObject1, null, 56, i, 2);
+        paramVideoAppInterface.a(((lez)localObject3).c, (String)localObject2, (Bitmap)localObject1, null, 56, i, 2);
         localObject1 = paramIntent;
         break;
       }
       label367:
-      paramVideoAppInterface.a(((lff)localObject3).c, (String)localObject2, (Bitmap)localObject1, null, 55, i, 1);
+      paramVideoAppInterface.a(((lez)localObject3).c, (String)localObject2, (Bitmap)localObject1, null, 55, i, 1);
       localObject1 = paramIntent;
     }
   }
@@ -126,16 +126,16 @@ class InviteUIChecker$CheckTask
     Bitmap localBitmap;
     if (paramIntent.getBooleanExtra("isDoubleVideoMeeting", false))
     {
-      paramIntent = lcb.a(100, str1, new int[0]);
-      lff locallff = lcb.a().c(paramIntent);
-      if ((locallff != null) && (locallff.j()) && (i == 3))
+      paramIntent = lbu.a(100, str1, new int[0]);
+      lez locallez = lbu.a().c(paramIntent);
+      if ((locallez != null) && (locallez.j()) && (i == 3))
       {
-        i = locallff.j;
-        String str2 = locallff.f;
+        i = locallez.j;
+        String str2 = locallez.f;
         localBitmap = paramVideoAppInterface.a(i, str1, str2, true, true);
         str1 = paramVideoAppInterface.getDisplayName(i, str1, str2);
-        paramVideoAppInterface = mtn.a(paramVideoAppInterface);
-        if (!locallff.S) {
+        paramVideoAppInterface = msw.a(paramVideoAppInterface);
+        if (!locallez.S) {
           break label183;
         }
         paramVideoAppInterface.a(true, paramIntent, str1, localBitmap, null, 45, i, 1, null);
@@ -143,12 +143,12 @@ class InviteUIChecker$CheckTask
     }
     for (;;)
     {
-      ldc.a();
+      lcw.a();
       if (QLog.isColorLevel()) {
         QLog.i("InviteUIChecker", 2, "showInviteNotifyForDouble sessionId[" + paramIntent + "]");
       }
       return;
-      paramIntent = lcb.a(3, str1, new int[0]);
+      paramIntent = lbu.a(3, str1, new int[0]);
       break;
       label183:
       paramVideoAppInterface.a(true, paramIntent, str1, localBitmap, null, 40, i, 2, null);
@@ -170,7 +170,7 @@ class InviteUIChecker$CheckTask
         if (VideoInviteActivity.class.getName().equals(this.jdField_a_of_type_JavaLangString))
         {
           c(localVideoAppInterface, this.jdField_a_of_type_AndroidContentIntent);
-          bdll.b(null, "dc00898", "", "", "0X800A2C4", "0X800A2C4", 0, 0, "", "", "", "");
+          bcef.b(null, "dc00898", "", "", "0X800A2C4", "0X800A2C4", 0, 0, "", "", "", "");
           if (!QLog.isColorLevel()) {
             break;
           }

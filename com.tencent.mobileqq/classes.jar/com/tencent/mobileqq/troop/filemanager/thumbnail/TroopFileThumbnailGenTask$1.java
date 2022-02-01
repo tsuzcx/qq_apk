@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bfvr;
-import bhmi;
+import befc;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.FileUtils;
 
 class TroopFileThumbnailGenTask$1
   implements Runnable
@@ -13,7 +13,7 @@ class TroopFileThumbnailGenTask$1
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveEnd. but had stop");
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveEnd. but had stop");
       return;
     }
     if (!this.jdField_a_of_type_Boolean)
@@ -24,13 +24,13 @@ class TroopFileThumbnailGenTask$1
     this.this$0.e = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
     if (this.this$0.e.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
     {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc thumbpath is same.");
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc thumbpath is same.");
       this.this$0.a(true, true);
       return;
     }
-    bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc copy file.");
+    befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc copy file.");
     this.this$0.d = (this.this$0.e + ".ttmp");
-    bhmi.d(this.jdField_a_of_type_JavaLangString, this.this$0.d);
+    FileUtils.copyFile(this.jdField_a_of_type_JavaLangString, this.this$0.d);
     this.this$0.a(false, true);
   }
 }

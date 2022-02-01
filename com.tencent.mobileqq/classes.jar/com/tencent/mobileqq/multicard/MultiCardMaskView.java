@@ -9,12 +9,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class MultiCardMaskView
   extends View
 {
-  private float jdField_a_of_type_Float = bhtq.b(12.0F);
+  private float jdField_a_of_type_Float = ViewUtils.dpToPx(12.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private boolean jdField_a_of_type_Boolean = true;

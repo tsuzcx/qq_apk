@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aser;
-import asev;
-import bioy;
+import aqyp;
+import aqyt;
+import bgve;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -43,7 +43,7 @@ public class VipFunctionJsPlugin
     localBundle.putInt("fromeType", paramInt1);
     localBundle.putInt("result", paramInt2);
     localBundle.putStringArray("reserves", paramArrayOfString);
-    sendRemoteReq(asev.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(aqyt.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private void reportToClientTo644(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String[] paramArrayOfString)

@@ -1,14 +1,34 @@
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.Button;
+
 public class bnsz
+  extends bnct
 {
-  public String a;
-  public String b;
-  public String c;
+  private View a;
   
-  public bnsz(String paramString1, String paramString2, String paramString3)
+  public bnsz(@NonNull bnee parambnee)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(parambnee);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.a = a(2131375223);
+    ((Button)a(2131366886)).setOnClickListener(new bnta(this));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    super.a(paramInt, paramObject);
+    paramObject = this.a;
+    if ((paramInt == 0) || (paramInt == 4)) {}
+    for (paramInt = 0;; paramInt = 8)
+    {
+      paramObject.setVisibility(paramInt);
+      return;
+    }
   }
 }
 

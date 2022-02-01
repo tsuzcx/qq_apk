@@ -1,16 +1,20 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.io.File;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
 class agzd
-  implements adku
+  implements DialogInterface.OnClickListener
 {
-  agzd(agzb paramagzb) {}
+  agzd(agzc paramagzc, File paramFile) {}
   
-  public void a(int paramInt, abjd paramabjd) {}
-  
-  public void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    agzb.a("onLowMemory");
-    agzb.a().sendMessage(agzb.a().obtainMessage(5));
+    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Agzc.a.a, paramDialogInterface, true));
   }
 }
 

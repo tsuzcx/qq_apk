@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class mek
-  implements View.OnClickListener
+  extends lff
 {
-  public mek(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mek(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    if (TextUtils.equals(this.a.c, paramString))
+    {
+      this.a.b("VideoObserver_onClose");
+      this.a.a(paramLong, paramInt);
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
+    }
   }
 }
 

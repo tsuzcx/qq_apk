@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class bcmu
-  extends bclc
+public abstract interface bcmu
 {
-  private Comparator<bcfn> a = new bcmv(this);
+  public abstract void a(MessageForPtt paramMessageForPtt);
   
-  public bcmu(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
-  {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-  }
+  public abstract void a(MessageForPtt paramMessageForPtt, boolean paramBoolean);
   
-  public Comparator<bcfn> a()
-  {
-    return this.a;
-  }
+  public abstract void b(MessageForPtt paramMessageForPtt);
 }
 
 

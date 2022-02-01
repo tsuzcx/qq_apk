@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.model;
 
-import augp;
-import autg;
-import auth;
+import assz;
+import atfo;
+import atfp;
 
 public class DeviceFileModel$1$1
   implements Runnable
 {
-  public DeviceFileModel$1$1(auth paramauth) {}
+  public DeviceFileModel$1$1(atfp paramatfp) {}
   
   public void run()
   {
-    if (autg.g(this.a.a) != null) {
-      autg.h(this.a.a).f();
+    if (atfo.g(this.a.a) != null) {
+      atfo.h(this.a.a).f();
     }
   }
 }

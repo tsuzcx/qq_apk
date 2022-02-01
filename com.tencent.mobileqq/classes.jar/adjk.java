@@ -1,34 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.PubGroupTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adjk
-  implements adbw
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 1020;
-  }
+  public adjk(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.PubGroupTmp();
-    paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.pub_group_tmp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 6009;
+    if (paramView.getId() == 2131365376)
+    {
+      adjx localadjx = this.a.jdField_a_of_type_Adjv.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (localadjx != null))
+      {
+        bjnw localbjnw = (bjnw)bjon.a(this.a, null);
+        localbjnw.a(2131693014, 3);
+        localbjnw.c(2131690620);
+        localbjnw.a(new adjl(this, localadjx, localbjnw));
+        localbjnw.show();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

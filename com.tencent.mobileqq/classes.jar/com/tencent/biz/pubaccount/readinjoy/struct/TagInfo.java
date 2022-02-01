@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qys;
+import rfr;
 
 public class TagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TagInfo> CREATOR = new qys();
+  public static final Parcelable.Creator<TagInfo> CREATOR = new rfr();
   private final double jdField_a_of_type_Double;
   private final long jdField_a_of_type_Long;
   private final String jdField_a_of_type_JavaLangString;

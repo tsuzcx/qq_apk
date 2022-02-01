@@ -1,26 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import android.opengl.GLES20;
 
 public class aokq
-  implements DialogInterface.OnClickListener
+  extends aokw
 {
-  public aokq(VideoBroadcastReceiver paramVideoBroadcastReceiver, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aokq(int paramInt)
   {
-    mru.e(false, false);
-    if (this.jdField_a_of_type_Int == 3000)
-    {
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
-      VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, this.d);
+    super(paramInt);
+    this.e = "uniform float uA;\nuniform float uD;\n";
+    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
+  }
+  
+  protected void a()
+  {
+    this.a = GLES20.glGetUniformLocation(this.d, "uA");
+    aola.a("glGetAttribLocation uA");
+    this.b = GLES20.glGetUniformLocation(this.d, "uD");
+    aola.a("glGetAttribLocation uD");
+  }
+  
+  protected void a(aokz paramaokz)
+  {
+    if (paramaokz == null) {
+      return;
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mru.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause);
+    GLES20.glUniform1f(this.a, paramaokz.d);
+    GLES20.glUniform1f(this.b, paramaokz.e);
   }
 }
 

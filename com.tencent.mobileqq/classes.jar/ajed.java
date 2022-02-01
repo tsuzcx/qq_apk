@@ -1,10 +1,25 @@
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-public abstract interface ajed
+public class ajed
+  implements View.OnTouchListener
 {
-  public abstract void a();
-  
-  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getActionMasked())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      FrameHelperActivity.c(false);
+      return false;
+    }
+    FrameHelperActivity.c(true);
+    return false;
+  }
 }
 
 

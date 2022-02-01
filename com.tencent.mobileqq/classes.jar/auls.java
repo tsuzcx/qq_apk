@@ -1,56 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public abstract class auls
+class auls
+  implements Callable<File>
 {
-  protected ault a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  auls(aulr paramaulr) {}
   
-  public auls(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public File a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public static auls a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null)
+    try
     {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
-      return null;
+      boolean bool = aulr.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      if (aulr.a(this.a) != null) {
+        aulr.a(this.a).a();
+      }
+      return localFile;
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new aulm(paramQQAppInterface, paramChatMessage);
+    finally
+    {
+      aulr.a(this.a, false);
     }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new aulv(paramQQAppInterface, paramChatMessage);
-    }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
   }
-  
-  public abstract long a();
-  
-  public abstract aulp a();
-  
-  public abstract String a();
-  
-  public void a(ault paramault)
-  {
-    this.jdField_a_of_type_Ault = paramault;
-  }
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 

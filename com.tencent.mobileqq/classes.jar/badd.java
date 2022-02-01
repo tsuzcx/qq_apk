@@ -1,157 +1,49 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SingleLineTextView;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public abstract class badd
-  extends badc<View>
+class badd
 {
-  protected badl a;
-  protected baiy a;
-  protected bjaz a;
+  private final Drawable a;
+  private final Drawable b;
   
-  public badd(baei parambaei, azxr paramazxr)
+  badd(Context paramContext)
   {
-    super(parambaei, paramazxr);
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837561);
+    this.b = paramContext.getDrawable(2130837565);
   }
   
-  private void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5, azxy paramazxy)
+  private Drawable a(Drawable paramDrawable)
   {
-    azxy.a(paramView1, "background", paramazxy, "commonItemTopBorderBackground");
-    azxy.a(paramTextView, "color", paramazxy, "commonItemContentColor");
-    azxy.a(paramView2, "color", paramazxy, "commonItemContentColor");
-    azxy.a(paramImageView, "src", paramazxy, "commonItemMoreSrc");
-    if (paramImageView != null)
-    {
-      paramView1 = paramImageView.getLayoutParams();
-      paramView1.width = -2;
-      paramView1.height = -2;
-      paramImageView.setLayoutParams(paramView1);
-    }
-    if (paramView3 != null)
-    {
-      paramView3.setBackgroundResource(0);
-      paramView3.setVisibility(8);
-    }
-    if (paramView4 != null) {
-      paramView4.setBackgroundResource(0);
-    }
-    if (paramView5 != null) {
-      paramView5.setBackgroundResource(0);
-    }
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
   }
   
-  private void b(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  private Drawable b(Drawable paramDrawable)
   {
-    if (paramView1 != null) {
-      paramView1.setBackgroundResource(2130839442);
-    }
-    this.jdField_a_of_type_Baiy.a(paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
   }
   
-  private void c(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    if (paramView1 != null) {
-      paramView1.setBackgroundResource(2130839442);
-    }
-    if (paramTextView != null) {
-      paramTextView.setTextColor(localResources.getColorStateList(2131166990));
-    }
-    if ((paramView2 instanceof TextView)) {
-      ((TextView)paramView2).setTextColor(localResources.getColorStateList(2131167070));
-    }
-    for (;;)
-    {
-      if (paramImageView != null)
-      {
-        paramImageView.setImageResource(2130839281);
-        paramView1 = paramImageView.getLayoutParams();
-        paramView1.width = -2;
-        paramView1.height = -2;
-        paramImageView.setLayoutParams(paramView1);
-      }
-      if (paramView3 != null)
-      {
-        paramView3.setBackgroundResource(0);
-        paramView3.setVisibility(8);
-      }
-      if (paramView4 != null) {
-        paramView4.setBackgroundResource(0);
-      }
-      if (paramView5 != null) {
-        paramView5.setBackgroundResource(0);
-      }
-      return;
-      if ((paramView2 instanceof SingleLineTextView)) {
-        ((SingleLineTextView)paramView2).setTextColor(localResources.getColorStateList(2131167070));
-      }
-    }
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
   }
   
-  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView)
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    a(paramView1, paramTextView, paramView2, paramImageView, null, null, null);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
-  
-  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
-  {
-    try
-    {
-      azxy localazxy = ((azxr)this.b).jdField_a_of_type_Azxy;
-      if ((localazxy != null) && (localazxy.a != null) && (!localazxy.a.isEmpty()))
-      {
-        a(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5, localazxy);
-        return;
-      }
-      if (azxy.a(((azxr)this.b).jdField_a_of_type_Long))
-      {
-        b(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
-        return;
-      }
-    }
-    catch (Exception paramView1)
-    {
-      QLog.e("AbsProfileContentComponent", 1, "updateItemTheme fail.", paramView1);
-      return;
-    }
-    c(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
-  }
-  
-  protected void a(TextView paramTextView, View paramView)
-  {
-    a(null, paramTextView, paramView, null, null, null, null);
-  }
-  
-  protected void a(TextView paramTextView, View paramView, ImageView paramImageView)
-  {
-    a(null, paramTextView, paramView, paramImageView, null, null, null);
-  }
-  
-  public void a(badl parambadl, bjaz parambjaz, baiy parambaiy)
-  {
-    this.jdField_a_of_type_Badl = parambadl;
-    this.jdField_a_of_type_Bjaz = parambjaz;
-    this.jdField_a_of_type_Baiy = parambaiy;
-  }
-  
-  protected void a(ProfileContentTitleView paramProfileContentTitleView, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (FrameLayout localFrameLayout = paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetFrameLayout;; localFrameLayout = null)
-    {
-      a(paramProfileContentTitleView.jdField_b_of_type_AndroidViewViewGroup, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetTextView, null, paramProfileContentTitleView.jdField_b_of_type_AndroidWidgetImageView, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetImageView, paramProfileContentTitleView.c, localFrameLayout);
-      return;
-    }
-  }
-  
-  public abstract String a_();
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.qidian.controller;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import avpd;
-import bkib;
+import aucf;
+import bing;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class QidianHandler$1
   implements Runnable
 {
-  public QidianHandler$1(bkib parambkib, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
+  public QidianHandler$1(bing parambing, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class QidianHandler$1
       int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getInt("uinType");
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = this.this$0.app.a().b((String)localObject, i, l);
+        localObject = this.this$0.app.getMessageFacade().queryMsgItemByUniseq((String)localObject, i, l);
         if ((localObject != null) && ((localObject instanceof MessageForUniteGrayTip)))
         {
           localObject = (MessageForUniteGrayTip)localObject;
@@ -43,7 +43,7 @@ public class QidianHandler$1
     catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(bkib.a(), 2, "handleBlockBulkMsg ", localException);
+      QLog.d(bing.a(), 2, "handleBlockBulkMsg ", localException);
     }
   }
 }

@@ -1,12 +1,16 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
+
 public class awko
+  extends AccountObserver
 {
-  public int a;
-  public int b;
+  awko(awkn paramawkn) {}
   
-  public awko(int paramInt1, int paramInt2)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
   }
 }
 

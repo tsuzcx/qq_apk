@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import baad;
-import baaf;
+import ayos;
+import ayou;
 
 public class ProfileMusicBoxController$2
   implements Runnable
 {
-  public ProfileMusicBoxController$2(baad parambaad) {}
+  public ProfileMusicBoxController$2(ayos paramayos) {}
   
   public void run()
   {
-    if (baad.a(this.this$0) != null) {
-      baad.a(this.this$0).a(2);
+    if (ayos.a(this.this$0) != null) {
+      ayos.a(this.this$0).a(2);
     }
     this.this$0.j();
   }

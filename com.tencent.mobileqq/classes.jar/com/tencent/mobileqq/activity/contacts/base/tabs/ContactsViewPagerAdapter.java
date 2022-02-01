@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajtb;
-import ajth;
-import ajti;
-import ajtj;
-import ajtw;
+import ainy;
+import aioe;
+import aiof;
+import aiog;
+import aiot;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.SparseArray;
@@ -15,18 +15,18 @@ import java.util.ArrayList;
 
 public class ContactsViewPagerAdapter
   extends CustomFragmentStatePagerAdapter
-  implements ajth
+  implements aioe
 {
   protected int a;
-  protected ajti a;
+  protected aiof a;
   protected SparseArray<ContactsBaseFragment> a;
   protected BaseActivity a;
   protected QQAppInterface a;
-  protected ArrayList<ajtw> a;
+  protected ArrayList<aiot> a;
   protected int b;
-  protected ArrayList<ajtb> b;
+  protected ArrayList<ainy> b;
   
-  public ContactsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<ajtw> paramArrayList)
+  public ContactsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<aiot> paramArrayList)
   {
     super(paramFragmentManager);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -45,7 +45,7 @@ public class ContactsViewPagerAdapter
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (((ajtw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
+      if (((aiot)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
         return i;
       }
       i += 1;
@@ -53,10 +53,10 @@ public class ContactsViewPagerAdapter
     return -1;
   }
   
-  protected ajtw a(int paramInt)
+  protected aiot a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (ajtw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return (aiot)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
     return null;
   }
@@ -76,36 +76,36 @@ public class ContactsViewPagerAdapter
   
   public ContactsBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    ajtw localajtw = a(paramInt);
+    aiot localaiot = a(paramInt);
     Object localObject = null;
-    if (localajtw != null)
+    if (localaiot != null)
     {
-      ContactsBaseFragment localContactsBaseFragment = a(localajtw.c);
+      ContactsBaseFragment localContactsBaseFragment = a(localaiot.c);
       localObject = localContactsBaseFragment;
       if (localContactsBaseFragment == null)
       {
         localObject = localContactsBaseFragment;
         if (paramBoolean)
         {
-          localObject = ajtj.a(localajtw.c);
+          localObject = aiog.a(localaiot.c);
           ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
           ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           ((ContactsBaseFragment)localObject).a(this);
-          ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Ajti);
+          ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Aiof);
           ((ContactsBaseFragment)localObject).e(paramInt);
-          if ((localObject instanceof ajtb)) {
-            this.jdField_b_of_type_JavaUtilArrayList.add((ajtb)localObject);
+          if ((localObject instanceof ainy)) {
+            this.jdField_b_of_type_JavaUtilArrayList.add((ainy)localObject);
           }
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(localajtw.c, localObject);
-          QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getFragment ..... create " + paramInt + "  " + localajtw.c);
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(localaiot.c, localObject);
+          QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getFragment ..... create " + paramInt + "  " + localaiot.c);
         }
       }
     }
     if (localObject != null) {
-      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getFragment ..... pos:" + paramInt + "  id:" + ((ContactsBaseFragment)localObject).a() + "  isDetached: " + ((ContactsBaseFragment)localObject).isDetached() + " contactsViewPager:" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131364996) + "  isAdd: " + ((ContactsBaseFragment)localObject).isAdded() + " " + localObject);
+      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getFragment ..... pos:" + paramInt + "  id:" + ((ContactsBaseFragment)localObject).a() + "  isDetached: " + ((ContactsBaseFragment)localObject).isDetached() + " contactsViewPager:" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131365023) + "  isAdd: " + ((ContactsBaseFragment)localObject).isAdded() + " " + localObject);
     }
-    if ((localObject != null) && ((localObject instanceof ajtb)) && (this.jdField_b_of_type_Int > 0)) {
-      ((ajtb)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    if ((localObject != null) && ((localObject instanceof ainy)) && (this.jdField_b_of_type_Int > 0)) {
+      ((ainy)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     }
     return localObject;
   }
@@ -118,7 +118,7 @@ public class ContactsViewPagerAdapter
       Object localObject = a(i);
       if (localObject != null)
       {
-        localObject = a(((ajtw)localObject).c);
+        localObject = a(((aiot)localObject).c);
         if (localObject != null) {
           ((ContactsBaseFragment)localObject).g();
         }
@@ -152,7 +152,7 @@ public class ContactsViewPagerAdapter
     int i = 0;
     while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
     {
-      ((ajtb)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a(paramInt1, paramInt2);
+      ((ainy)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a(paramInt1, paramInt2);
       i += 1;
     }
     this.jdField_a_of_type_Int = paramInt1;
@@ -170,9 +170,9 @@ public class ContactsViewPagerAdapter
     }
   }
   
-  public void a(ajti paramajti)
+  public void a(aiof paramaiof)
   {
-    this.jdField_a_of_type_Ajti = paramajti;
+    this.jdField_a_of_type_Aiof = paramaiof;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -186,7 +186,7 @@ public class ContactsViewPagerAdapter
         Object localObject = a(i);
         if (localObject != null)
         {
-          localObject = a(((ajtw)localObject).c);
+          localObject = a(((aiot)localObject).c);
           if (localObject != null)
           {
             ((ContactsBaseFragment)localObject).a(paramQQAppInterface);
@@ -198,7 +198,7 @@ public class ContactsViewPagerAdapter
     }
   }
   
-  public void a(ArrayList<ajtw> paramArrayList)
+  public void a(ArrayList<aiot> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
@@ -220,7 +220,7 @@ public class ContactsViewPagerAdapter
       Object localObject = a(i);
       if (localObject != null)
       {
-        localObject = a(((ajtw)localObject).c);
+        localObject = a(((aiot)localObject).c);
         if (localObject != null) {
           ((ContactsBaseFragment)localObject).e(paramBoolean);
         }
@@ -280,7 +280,7 @@ public class ContactsViewPagerAdapter
     }
     ContactsBaseFragment localContactsBaseFragment = a(paramInt, false);
     if (localContactsBaseFragment != null) {
-      localContactsBaseFragment.ap_();
+      localContactsBaseFragment.af_();
     }
   }
   

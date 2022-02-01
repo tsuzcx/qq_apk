@@ -1,22 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aykt
-  implements View.OnClickListener
+  extends amsu
 {
-  public aykt(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aykt(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
-    {
-      this.a.b.dismiss();
-      this.a.b = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    {
+      PersonalityLabelGalleryActivity.a(this.a, ContactUtils.getFriendNick(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
+      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
+        PersonalityLabelGalleryActivity.d(this.a);
+      }
+    }
   }
 }
 

@@ -1,23 +1,8 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class aewl
-  extends aoge
+public abstract interface aewl
 {
-  public aewl(LebaListMgrActivity paramLebaListMgrActivity) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
-    }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = akgr.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
-  }
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

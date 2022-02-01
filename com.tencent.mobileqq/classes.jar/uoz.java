@@ -1,13 +1,31 @@
-import UserGrowth.stRedDotReq;
-import UserGrowth.stRedDotRsp;
+import UserGrowth.stFeed;
+import UserGrowth.stMagicBrand;
+import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaFeed;
 
-public class uoz
-  extends ukl<stRedDotRsp>
+class uoz
+  implements ved
 {
-  public uoz()
+  uoz(uou paramuou) {}
+  
+  public void a(Object paramObject)
   {
-    super("RedDot", 10001);
-    this.a = new stRedDotReq(111, 1, null);
+    if (uyo.b()) {}
+    while (!(paramObject instanceof stSchema)) {
+      return;
+    }
+    uxr.a(uou.a(this.a).a(), (stSchema)paramObject, 700, uou.a(this.a), "bottom_label");
+    uou.a(this.a, "bottom_label", 2);
+  }
+  
+  public void b(Object paramObject)
+  {
+    if (uyo.b()) {}
+    while ((!(paramObject instanceof stSchema)) || (uou.a(this.a).feed == null) || (uou.a(this.a).feed.magicBrand == null)) {
+      return;
+    }
+    uxr.a(uou.a(this.a).a(), (stSchema)paramObject, 700, uou.a(this.a), "bottom_label");
+    uou.a(this.a, "bottom_label", uou.a(this.a).feed.magicBrand.type);
   }
 }
 

@@ -1,30 +1,58 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-final class npq
-  implements BusinessObserver
+public class npq
+  extends WebViewPlugin
 {
-  npq(QQAppInterface paramQQAppInterface, nps paramnps) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public npq()
   {
-    if ((paramBoolean) && (paramBundle != null))
+    this.mPluginNameSpace = "coupon";
+  }
+  
+  public void a(String paramString)
+  {
+    Activity localActivity = this.mRuntime.a();
+    int i;
+    if ((localActivity instanceof CouponActivity))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      localObject = (CouponActivity)localActivity;
+      i = ((CouponActivity)localObject).a;
+      if ((i & 0x8) != 0)
       {
-        npo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nps);
-        return;
+        paramString = new Intent();
+        paramString.putExtra("toPage", 2);
+        ((CouponActivity)localObject).setResult(-1, paramString);
+        ((CouponActivity)localObject).superFinish();
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
-      }
-      this.jdField_a_of_type_Nps.a("");
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_Nps.a("");
+    Object localObject = new Intent(localActivity, CouponActivity.class);
+    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((Intent)localObject).putExtra("jsonParams", paramString);
+    }
+    localActivity.startActivity((Intent)localObject);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("coupon".equals(paramString2))
+    {
+      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        paramJsBridgeListener.a(null);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

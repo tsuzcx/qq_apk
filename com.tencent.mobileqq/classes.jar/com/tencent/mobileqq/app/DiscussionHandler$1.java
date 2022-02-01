@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import anwo;
+import amqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class DiscussionHandler$1
   implements Runnable
 {
-  public DiscussionHandler$1(anwo paramanwo, String paramString) {}
+  public DiscussionHandler$1(amqx paramamqx, String paramString) {}
   
   public void run()
   {

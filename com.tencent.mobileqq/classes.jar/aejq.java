@@ -1,60 +1,36 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class aejq
-  extends beyf
+  extends Handler
 {
-  final WeakReference<Conversation> a;
-  
-  public aejq(Conversation paramConversation)
+  public aejq(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
+    super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    int j = 0;
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation == null) {}
-    do
+    paramMessage = this.a.findViewById(2131378570);
+    if (paramMessage != null) {}
+    try
     {
-      bete localbete;
-      int k;
-      int i;
-      do
+      paramMessage.setBackgroundResource(2130850507);
+      bcef.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
       {
-        do
-        {
-          return;
-          localbete = (bete)paramMessage.obj;
-        } while ((Conversation.a(localConversation) == null) || (localbete == null) || (TextUtils.isEmpty(localbete.p)));
-        k = paramMessage.what;
-        if (localbete.b != 1)
-        {
-          i = j;
-          if (localbete.b != 2) {}
-        }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localbete.b != 2) && (!localConversation.f))));
-      localConversation.a(8, localbete.p, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
+      }
+    }
   }
 }
 

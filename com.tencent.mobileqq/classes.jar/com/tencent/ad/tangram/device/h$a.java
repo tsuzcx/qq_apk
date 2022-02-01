@@ -16,7 +16,6 @@ public final class h$a
   public volatile String i_h;
   public volatile String m_0_h;
   public volatile String m_1_h;
-  public volatile String m_a_h;
   public volatile String m_h;
   public volatile String s_i_h;
   
@@ -38,14 +37,12 @@ public final class h$a
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (parama == null) {
-      bool2 = bool1;
-    }
+    if (parama == null) {}
     do
     {
       do
       {
-        return bool2;
+        return bool1;
         bool1 = bool2;
         if (!TextUtils.isEmpty(parama.d_i_h))
         {
@@ -137,28 +134,18 @@ public final class h$a
           }
         }
         bool2 = bool1;
-        if (!TextUtils.isEmpty(parama.m_a_h))
+        if (!TextUtils.isEmpty(parama.a_i_h))
         {
           bool2 = bool1;
-          if (!TextUtils.equals(this.m_a_h, parama.m_a_h))
+          if (!TextUtils.equals(this.a_i_h, parama.a_i_h))
           {
-            this.m_a_h = parama.m_a_h;
+            this.a_i_h = parama.a_i_h;
             bool2 = true;
           }
         }
         bool1 = bool2;
-        if (!TextUtils.isEmpty(parama.a_i_h))
-        {
-          bool1 = bool2;
-          if (!TextUtils.equals(this.a_i_h, parama.a_i_h))
-          {
-            this.a_i_h = parama.a_i_h;
-            bool1 = true;
-          }
-        }
-        bool2 = bool1;
       } while (TextUtils.isEmpty(parama.s_i_h));
-      bool2 = bool1;
+      bool1 = bool2;
     } while (TextUtils.equals(this.s_i_h, parama.s_i_h));
     this.s_i_h = parama.s_i_h;
     return true;

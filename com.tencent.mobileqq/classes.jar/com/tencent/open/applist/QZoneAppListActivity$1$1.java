@@ -1,17 +1,17 @@
 package com.tencent.open.applist;
 
+import amtj;
 import android.widget.TextView;
-import anzj;
-import bjsp;
+import bhye;
 
 public class QZoneAppListActivity$1$1
   implements Runnable
 {
-  public QZoneAppListActivity$1$1(bjsp parambjsp) {}
+  public QZoneAppListActivity$1$1(bhye parambhye) {}
   
   public void run()
   {
-    QZoneAppListActivity.a(this.a.a).setText(anzj.a(2131710481));
+    QZoneAppListActivity.a(this.a.a).setText(amtj.a(2131710713));
   }
 }
 

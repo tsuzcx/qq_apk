@@ -1,8 +1,22 @@
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
+
 public class mcw
-  extends mcx
+  implements mho
 {
-  public int a;
-  public boolean a;
+  public mcw(DoubleVideoMeetingCtrlUI.4 param4) {}
+  
+  public void a()
+  {
+    this.a.this$0.j = true;
+    this.a.this$0.M();
+  }
+  
+  public void b()
+  {
+    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
+    this.a.this$0.j = false;
+  }
 }
 
 

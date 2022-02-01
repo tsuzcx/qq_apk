@@ -1,45 +1,18 @@
-import java.util.Calendar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aynx
-  implements aqxz
+  implements View.OnClickListener
 {
-  aynx(aynp paramaynp) {}
+  aynx(aynw paramaynw, int paramInt) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    if (this.jdField_a_of_type_Aynw.a != null) {
+      this.jdField_a_of_type_Aynw.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + anzj.a(2131706143);
-    case 1: 
-      return paramInt2 + 1 + anzj.a(2131706246);
-    }
-    return paramInt2 + 1 + anzj.a(2131706228);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

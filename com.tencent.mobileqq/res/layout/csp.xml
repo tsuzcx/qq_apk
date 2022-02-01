@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/mro" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" />
-</RelativeLayout>

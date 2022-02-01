@@ -1,71 +1,80 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
 public class pqw
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  private static pqw jdField_a_of_type_Pqw;
-  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
+  private WeakReference<ReadInjoyIMAXAdFragment> a;
   
-  public static pqw a()
+  public pqw(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
   {
-    if (jdField_a_of_type_Pqw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pqw == null) {
-        jdField_a_of_type_Pqw = new pqw();
-      }
-      return jdField_a_of_type_Pqw;
-    }
-    finally {}
+    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
   }
   
-  public void a(List<Integer> paramList)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        int i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-      }
     }
+    ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 9);
+    ReadInjoyIMAXAdFragment.d = true;
+    paramTVK_IMediaPlayer.i();
+    ReadInjoyIMAXAdFragment.c(paramTVK_IMediaPlayer);
   }
   
-  public void b(List<Integer> paramList)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
     {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoyIMAXAdFragment", 2, "error msg = " + paramString);
+      }
+      ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.i();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramSurfaceHolder == null) {
       return;
-      ArrayList localArrayList = new ArrayList();
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-      int i = 0;
-      while (i < j)
-      {
-        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-        if ((!ozs.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
-          localArrayList.add(Integer.valueOf(k));
-        }
-        i += 1;
-      }
-      paramList = localArrayList.iterator();
-      while (paramList.hasNext())
-      {
-        i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-      }
     }
+    paramSurfaceHolder.c();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
+    }
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer);
   }
 }
 

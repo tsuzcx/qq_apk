@@ -1,24 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
 public class aikc
-  implements View.OnClickListener
+  extends Handler
 {
-  aikc(aijm paramaijm) {}
+  public aikc(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (aijm.a(this.a).getVisibility() == 0) {
-      ThreadManager.post(new FriendChatPie.6.1(this), 5, null, false);
+    switch (paramMessage.what)
+    {
     }
-    agej.n = true;
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    agju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

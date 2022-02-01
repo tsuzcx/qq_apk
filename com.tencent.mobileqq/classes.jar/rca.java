@@ -1,18 +1,85 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 
-public class rca
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterArticleOnePic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rca
+  extends rby
 {
-  public rca(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void onClick(View paramView)
+  protected void a()
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject2 = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      ((SocializeFeedsInfo)localObject1).a = 1;
+    }
+    Object localObject3 = a();
+    localObject1 = a();
+    if (localObject1 != null)
+    {
+      localObject1 = ((rex)localObject1).a;
+      if (localObject1 == null) {}
+    }
+    for (localObject1 = ((ren)localObject1).b;; localObject1 = null)
+    {
+      ((BaseArticleInfo)localObject3).mTitle = ((String)localObject1);
+      localObject1 = a();
+      if (localObject1 != null) {
+        ((rfe)localObject1).a = true;
+      }
+      try
+      {
+        localObject3 = a();
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((rex)localObject3).a;
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject3 = ((ren)localObject3).a;
+            localObject1 = localObject2;
+            if (localObject3 != null)
+            {
+              localObject3 = (articlesummary.PGCPicInfo)((ArrayList)localObject3).get(0);
+              localObject1 = localObject2;
+              if (localObject3 != null)
+              {
+                localObject3 = ((articlesummary.PGCPicInfo)localObject3).bytes_pic_url;
+                localObject1 = localObject2;
+                if (localObject3 != null)
+                {
+                  localObject3 = ((PBBytesField)localObject3).get();
+                  localObject1 = localObject2;
+                  if (localObject3 != null) {
+                    localObject1 = ((ByteStringMicro)localObject3).toStringUtf8();
+                  }
+                }
+              }
+            }
+          }
+        }
+        if (localObject1 != null) {
+          a().mSinglePicture = new URL((String)localObject1);
+        }
+        return;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        return;
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        localIndexOutOfBoundsException.printStackTrace();
+      }
+    }
   }
 }
 

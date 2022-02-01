@@ -2,10 +2,10 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import Wallet.AuthCodeItem;
 import Wallet.AuthCodeRsp;
-import bhmi;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ class QWalletCommonJsPlugin$2
       int i;
       try
       {
-        Object localObject1 = bhmi.a(this.val$cacheFileName);
+        Object localObject1 = FileUtils.readFile(this.val$cacheFileName);
         if (localObject1 == null)
         {
           QWalletCommonJsPlugin.access$000(this.this$0);
@@ -56,7 +56,7 @@ class QWalletCommonJsPlugin$2
       }
       Object localObject2 = new JceOutputStream();
       localException.writeTo((JceOutputStream)localObject2);
-      bhmi.a(((JceOutputStream)localObject2).toByteArray(), this.val$cacheFileName);
+      FileUtils.writeFile(((JceOutputStream)localObject2).toByteArray(), this.val$cacheFileName);
       return;
       label245:
       i += 1;

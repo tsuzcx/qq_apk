@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import anzj;
-import aykx;
-import ayld;
-import ayle;
+import amtj;
+import awyf;
+import awyl;
+import awym;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class NearbyProfileDisplayPanel$16$1$1
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$16$1$1(ayle paramayle) {}
+  public NearbyProfileDisplayPanel$16$1$1(awym paramawym) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.a, 2, anzj.a(2131706253), 0).a();
+    QQToast.a(this.a.a.a.a, 2, amtj.a(2131706483), 0).a();
   }
 }
 

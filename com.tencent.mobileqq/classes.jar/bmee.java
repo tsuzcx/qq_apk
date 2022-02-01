@@ -1,8 +1,8 @@
-public abstract class bmee
+public abstract interface bmee
 {
-  public abstract void a(int paramInt);
+  public abstract void a(long paramLong);
   
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(long paramLong1, long paramLong2);
 }
 
 

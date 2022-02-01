@@ -1,16 +1,11 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View;
 
-public class ahqq
-  extends aggl
+public abstract interface ahqq
+  extends ahqu
 {
-  public RelativeLayout a;
-  public DoodleMsgLayout a;
-  public MessageProgressView a;
+  public abstract int a();
   
-  public ahqq(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public abstract View a(Object... paramVarArgs);
 }
 
 

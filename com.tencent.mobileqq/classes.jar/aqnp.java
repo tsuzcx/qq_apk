@@ -1,100 +1,104 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.os.HandlerThread;
 
 public class aqnp
-  implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
-  public boolean b;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private final aqpm jdField_a_of_type_Aqpm = new aqpm();
   
-  public aqnp(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
+  public int a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = 0;
+    return this.jdField_a_of_type_Aqpm.a();
   }
   
-  public aqnp(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
+  public Bitmap a(aqoa paramaqoa, aqoj paramaqoj)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    int j = 1;
-    boolean bool;
-    label69:
-    int i;
-    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bool = this.jdField_b_of_type_Boolean;
-        this.jdField_b_of_type_Boolean = bool;
-      }
+    if (paramaqoa == null) {
+      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
     }
-    else
+    try
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
-        break label155;
-      }
-      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
-      i = paramEditable.length();
-      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
-        break label197;
-      }
-      i = paramEditable.getBytes().length;
-    }
-    for (;;)
-    {
-      if (i > this.jdField_a_of_type_Int)
+      if (paramaqoa.f())
       {
+        Object localObject2 = paramaqoa.a();
+        Object localObject1;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_Aqpm.a((int)paramaqoa.f(), (int)paramaqoa.g());
+        }
         for (;;)
         {
-          if (i <= this.jdField_a_of_type_Int) {
-            break label177;
-          }
-          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
-          if (j != 0)
-          {
-            i = paramEditable.getBytes().length;
-            continue;
-            bool = true;
+          paramaqoa.a((Bitmap)localObject1);
+          if (localObject1 != null) {
             break;
-            label155:
-            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-            break label69;
           }
-          i = paramEditable.length();
+          return null;
+          if (((Bitmap)localObject2).getWidth() >= (int)paramaqoa.f())
+          {
+            localObject1 = localObject2;
+            if (((Bitmap)localObject2).getHeight() >= (int)paramaqoa.g()) {}
+          }
+          else
+          {
+            this.jdField_a_of_type_Aqpm.a((Bitmap)localObject2);
+            localObject1 = this.jdField_a_of_type_Aqpm.a((int)paramaqoa.f(), (int)paramaqoa.g());
+          }
         }
-        label177:
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
+        localObject2 = paramaqoa.a();
+        if (localObject2 == null)
+        {
+          localObject2 = new Canvas((Bitmap)localObject1);
+          paramaqoa.a((Canvas)localObject2);
+        }
+        for (;;)
+        {
+          ((Bitmap)localObject1).eraseColor(0);
+          paramaqoa.c(false);
+          paramaqoj.a(paramaqoa).a((Canvas)localObject2, paramaqoa, paramaqoj, aqoj.a().g(), aqoj.a().c());
+          return localObject1;
+          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
+        }
       }
-      return;
-      label197:
-      j = 0;
+      paramaqoa = paramaqoa.a();
     }
+    finally {}
+    return paramaqoa;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
+      return;
+    }
+    if (aqqa.b())
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_Aqpm.a(paramBitmap);
+  }
+  
+  public void a(aqoa paramaqoa, aqoj paramaqoj) {}
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Aqpm.c();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aqpm.a();
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Aqpm.b();
+  }
 }
 
 

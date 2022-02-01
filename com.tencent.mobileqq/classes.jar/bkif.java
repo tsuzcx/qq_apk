@@ -1,41 +1,37 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
 public class bkif
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  
-  public bkif() {}
-  
-  public bkif(mobileqq_qidian.GroupItem paramGroupItem)
+  public bkif(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
   {
-    a(paramGroupItem);
+    super(paramLooper);
   }
   
-  public mobileqq_qidian.GroupItem a()
+  public void dispatchMessage(Message paramMessage)
   {
-    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
-    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
-    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
-    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
-    return localGroupItem;
-  }
-  
-  public void a(mobileqq_qidian.GroupItem paramGroupItem)
-  {
-    if (paramGroupItem.uint64_groupid.has()) {
-      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
-    }
-    if (paramGroupItem.uint32_group_level.has()) {
-      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
-    }
-    if (paramGroupItem.str_group_name.has()) {
-      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
-    }
+    if (paramMessage == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        GVideoPluginInstallerActivity.a(this.a);
+        return;
+      }
+    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
+    this.a.a.setText((String)paramMessage.obj);
+    return;
+    GVideoPluginInstallerActivity.b(this.a);
+    return;
+    this.a.finish();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
+import amud;
 import android.text.TextUtils;
-import aoad;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
@@ -9,12 +9,12 @@ import com.tencent.qphone.base.util.QLog;
 public class HotChatShare$3
   implements Runnable
 {
-  public HotChatShare$3(aoad paramaoad) {}
+  public HotChatShare$3(amud paramamud) {}
   
   public void run()
   {
     Object localObject = "stranger_" + String.valueOf(200) + "_" + this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin;
-    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a((String)localObject);
+    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSettingFromDb((String)localObject);
     if ((localObject != null) && (!TextUtils.isEmpty(((Setting)localObject).url))) {
       this.this$0.b = (((Setting)localObject).url + "140");
     }
@@ -36,7 +36,7 @@ public class HotChatShare$3
       {
         this.this$0.jdField_a_of_type_Int = 3;
         continue;
-        ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin, 200, (byte)1, (byte)3);
+        ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getStrangerHead(this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin, 200, (byte)1, (byte)3);
       }
     }
   }

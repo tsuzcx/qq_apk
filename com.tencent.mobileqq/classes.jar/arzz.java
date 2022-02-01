@@ -1,23 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arzz
-  extends BroadcastReceiver
+public class arzz
+  implements View.OnClickListener
 {
-  arzz(arzx paramarzx) {}
+  public arzz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (asaa)arzx.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
+    if (paramView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+    }
+    for (;;)
     {
-      this.a.a();
-      arzx.a(this.a).a(paramContext);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
+      if (localFileManagerEntity != null)
+      {
+        if (this.a.jdField_a_of_type_Arvv != null) {
+          this.a.jdField_a_of_type_Arvv.a(null);
+        }
+        this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
+        if (QfileBaseRecentFileTabView.m(this.a).getFileManagerEngine().b(this.a.jdField_a_of_type_Long)) {
+          this.a.a(localFileManagerEntity);
+        }
+      }
+      this.a.jdField_a_of_type_Arvv.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.g();
     }
   }
 }

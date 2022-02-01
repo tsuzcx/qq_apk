@@ -1,19 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.together.writetogether.view.SavingAnimView;
+import java.util.Comparator;
 
-public class bepx
-  implements Animator.AnimatorListener
+class bepx
+  implements Comparator<beqa>
 {
-  public bepx(SavingAnimView paramSavingAnimView) {}
+  bepx(bepw parambepw) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public int a(beqa parambeqa1, beqa parambeqa2)
+  {
+    if (parambeqa1.b < parambeqa2.b) {
+      return -1;
+    }
+    if (parambeqa1.b > parambeqa2.b) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

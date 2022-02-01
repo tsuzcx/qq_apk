@@ -1,12 +1,23 @@
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.QQTextProxy.Proxy;
-import com.tencent.mobileqq.text.AbsQQText;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public final class bdil
-  implements RecentRoute.QQTextProxy.Proxy
+class bdil
+  extends bdji<EditorState>
 {
-  public AbsQQText generalQQText(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  bdil(bdid parambdid, EditorState paramEditorState, List paramList)
   {
-    return new begp(paramCharSequence, paramInt1, paramInt2);
+    super(paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    bdid.a(this.a).a(true, false);
+    bdid.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

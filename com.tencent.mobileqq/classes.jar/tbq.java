@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class tbq
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public tbq(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  public tbq(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a(0, 2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.invalidate();
   }
 }
 

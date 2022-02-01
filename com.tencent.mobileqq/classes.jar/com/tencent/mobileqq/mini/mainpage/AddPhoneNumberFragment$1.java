@@ -12,7 +12,7 @@ class AddPhoneNumberFragment$1
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131371107) && (this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()))
+    if ((paramView.getId() == 2131371076) && (this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()))
     {
       this.this$0.getActivity().setResult(0);
       this.this$0.getActivity().finish();

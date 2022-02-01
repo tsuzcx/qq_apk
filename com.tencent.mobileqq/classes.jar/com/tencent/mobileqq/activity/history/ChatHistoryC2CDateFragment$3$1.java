@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import akbc;
-import aocm;
+import aiwc;
+import amwo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -15,13 +15,13 @@ import mqq.os.MqqHandler;
 public class ChatHistoryC2CDateFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CDateFragment$3$1(akbc paramakbc) {}
+  public ChatHistoryC2CDateFragment$3$1(aiwc paramaiwc) {}
   
   public void run()
   {
     if ((ChatHistoryC2CDateFragment.a(this.a.a) != null) && (this.a.a.b != null))
     {
-      this.a.a.b.a().transSaveToDatabase();
+      this.a.a.b.getProxyManager().transSaveToDatabase();
       Object localObject = Calendar.getInstance();
       ((Calendar)localObject).setTimeInMillis(ChatHistoryC2CDateFragment.a(this.a.a).getTimeInMillis());
       ((Calendar)localObject).add(5, 1);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apih;
+import aobu;
 
 public class Interactive3DRenderable$2
   implements Runnable

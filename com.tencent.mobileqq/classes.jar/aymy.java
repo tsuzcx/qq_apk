@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
-class aymy
-  implements DialogInterface.OnClickListener
+public class aymy
 {
-  aymy(aymj paramaymj) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a()
   {
-    this.a.d(true);
-    bdll.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    paramString = paramString.split(" ");
+    if ((paramString != null) && (paramString.length == 2))
+    {
+      this.b = paramString[0];
+      this.a = paramString[1];
+      return;
+    }
+    this.b = "";
+    this.a = "";
   }
 }
 

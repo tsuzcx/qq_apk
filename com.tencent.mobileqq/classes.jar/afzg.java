@@ -1,43 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afzg
-  extends anuw
+class afzg
+  extends ClickableSpan
 {
-  public afzg(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  afzg(afzd paramafzd) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {
+    if (!NetworkUtil.isNetSupport(this.a.a))
+    {
+      QQToast.a(this.a.a, amtj.a(2131702359), 2000).a();
       return;
     }
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        afzm localafzm;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localafzm = (afzm)localIterator.next();
-        } while ((localafzm.a == null) || (!(localafzm.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localafzm.a).uin)));
-      }
-      for (int i = 1; i != 0; i = 0)
-      {
-        UncommonlyUsedContactsActivity.a(this.a);
-        this.a.jdField_a_of_type_Afzk.notifyDataSetChanged();
-        return;
-      }
-      break;
-    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

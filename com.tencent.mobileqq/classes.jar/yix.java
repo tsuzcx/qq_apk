@@ -1,46 +1,93 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class yix
-  extends yly<ymt>
+  extends yja
 {
-  public yix(@Nullable ymc paramymc)
+  private final int b;
+  private boolean c;
+  private boolean d;
+  
+  public yix(Context paramContext, String paramString, int paramInt)
   {
-    super(paramymc);
+    super(paramContext, paramString, -1);
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    this.b = i;
   }
   
-  protected JobSegment<ymb, ymt> a()
+  public int a()
   {
-    return new ymo();
+    return 1;
   }
   
-  protected JobSegment<Integer, ymb> a(yma paramyma)
+  public int a(int paramInt)
   {
-    return new yiy(paramyma);
+    return 4;
   }
   
-  protected ymt a()
+  public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    yme localyme = (yme)wth.a(11);
-    List localList = localyme.c();
-    ymt localymt = new ymt(new ErrorMessage());
-    localymt.jdField_b_of_type_JavaUtilList = localyme.b(localList);
-    localymt.jdField_b_of_type_Boolean = true;
-    localymt.a = localymt.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localymt;
+    paramViewGroup = new RelativeLayout(this.a);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
+    paramViewGroup.setBackgroundResource(2130850015);
+    paramInt = -2170912;
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+      paramInt = -16444373;
+    }
+    View localView = new View(this.a);
+    Object localObject = new RelativeLayout.LayoutParams(-1, UIUtils.dip2px(this.a, 1.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(10);
+    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localView.setBackgroundColor(paramInt);
+    localObject = new View(this.a);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, UIUtils.dip2px(this.a, 1.0F));
+    localLayoutParams.addRule(12);
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    ((View)localObject).setBackgroundColor(paramInt);
+    paramViewGroup.addView(localView);
+    paramViewGroup.addView((View)localObject);
+    return paramViewGroup;
   }
   
-  protected ymt a(ErrorMessage paramErrorMessage)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView)
   {
-    return new ymt(paramErrorMessage);
+    View localView = ((ViewGroup)paramView).getChildAt(0);
+    paramView = ((ViewGroup)paramView).getChildAt(1);
+    if (this.c) {
+      localView.setVisibility(0);
+    }
+    while (this.d)
+    {
+      paramView.setVisibility(0);
+      return;
+      localView.setVisibility(4);
+    }
+    paramView.setVisibility(4);
   }
   
-  protected void a(List<String> paramList, boolean paramBoolean)
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ((yme)wth.a(11)).c(paramList, paramBoolean);
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
   }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

@@ -1,28 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class mhv
-  implements DialogInterface.OnClickListener
+public class mhv
+  implements View.OnClickListener
 {
-  mhv(mht parammht) {}
+  public mhv(QavPanel paramQavPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.a.a(true);
     }
-    this.a.a.c();
-    mhr.a(this.a.a, false);
-    if (paramInt == 1)
-    {
-      bdll.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
-      mhr.a(this.a.a);
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    mhr.a(this.a.a, mhr.a(this.a.a).a().w);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

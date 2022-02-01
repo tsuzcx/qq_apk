@@ -1,118 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public class annc
-  implements anng
+class annc
+  implements PermissionMonitor.Listener
 {
-  public QQAppInterface a()
+  static
   {
-    if (BaseApplicationImpl.sProcessId == 1)
+    if (!anmw.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        return (QQAppInterface)localAppRuntime;
-      }
-    }
-    return null;
-  }
-  
-  public List<TraceData> a()
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return localQQAppInterface.a().createEntityManager().query(TraceData.class);
-  }
-  
-  public boolean a(List<TraceData> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    EntityTransaction localEntityTransaction;
-    TraceData localTraceData;
-    try
-    {
-      localObject = a();
-      if (localObject == null) {
-        return false;
-      }
-      localObject = ((QQAppInterface)localObject).a().createEntityManager();
-      localEntityTransaction = ((EntityManager)localObject).getTransaction();
-      localEntityTransaction.begin();
-      paramList = paramList.iterator();
-      for (;;)
-      {
-        if (paramList.hasNext())
-        {
-          localTraceData = (TraceData)paramList.next();
-          if (localTraceData.getStatus() == 1000)
-          {
-            ((EntityManager)localObject).persistOrReplace(localTraceData);
-            continue;
-            return true;
-          }
-        }
-      }
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      ((EntityManager)localObject).update(localTraceData);
-      break;
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-      ((EntityManager)localObject).close();
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
   }
   
-  public boolean b(List<TraceData> paramList)
+  annc(anmw paramanmw) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
+    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
+    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 2)) {
+      return;
     }
-    Object localObject;
-    EntityTransaction localEntityTransaction;
-    try
-    {
-      localObject = a();
-      if (localObject == null) {
-        return false;
-      }
-      localObject = ((QQAppInterface)localObject).a().createEntityManager();
-      localEntityTransaction = ((EntityManager)localObject).getTransaction();
-      localEntityTransaction.begin();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ((EntityManager)localObject).remove((TraceData)paramList.next());
-        continue;
-        return true;
-      }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
+      throw new AssertionError();
     }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Integer.class)) {
+      throw new AssertionError();
     }
-    for (;;)
-    {
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-      ((EntityManager)localObject).close();
-    }
+    ShadowParcel.b((int)anmw.a(this.jdField_a_of_type_Anmw), ((Integer)paramArrayOfObject[1]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

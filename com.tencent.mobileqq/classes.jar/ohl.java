@@ -1,135 +1,133 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-public abstract class ohl
+public class ohl
 {
-  int jdField_a_of_type_Int;
-  protected Activity a;
-  protected Map<Integer, Set<Long>> a;
-  smg jdField_a_of_type_Smg;
-  protected Map<Integer, Boolean> b = new HashMap();
-  protected Map<Integer, Map<Long, qvp>> c = new HashMap();
-  protected Map<Integer, qvp> d = new HashMap();
-  
-  protected ohl()
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  protected ohl(Activity paramActivity)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public ViewGroup a()
-  {
-    return null;
-  }
-  
-  public Map<Long, qvp> a(Integer paramInteger)
-  {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    paramInteger = (Map)this.c.get(paramInteger);
-    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
-      localConcurrentHashMap.putAll(paramInteger);
+    if (StringUtil.isEmpty(paramString)) {
+      paramQQAppInterface = "";
     }
-    return localConcurrentHashMap;
-  }
-  
-  public Set<Long> a(Integer paramInteger)
-  {
-    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
-    Object localObject = localSet;
-    if (localSet == null)
+    for (;;)
     {
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
+      return paramQQAppInterface;
+      paramQQAppInterface = a(paramQQAppInterface);
+      if (paramQQAppInterface == null) {
+        return "";
+      }
+      paramString = paramQQAppInterface.optString(paramString);
+      if (StringUtil.isEmpty(paramString)) {
+        return "";
+      }
+      paramQQAppInterface = paramString;
+      try
+      {
+        if (!"qqshop".equals(Uri.parse(paramString).getScheme())) {
+          return "";
+        }
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
+      }
     }
-    return localObject;
+    return paramString;
   }
   
-  public rvy a()
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    return null;
-  }
-  
-  public rwr a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    bnrf.e(true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(ViewGroup paramViewGroup) {}
-  
-  public void a(smg paramsmg, int paramInt)
-  {
-    this.jdField_a_of_type_Smg = paramsmg;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public boolean a(Integer paramInteger)
-  {
-    paramInteger = (Boolean)this.b.get(paramInteger);
-    if (paramInteger != null) {
-      return paramInteger.booleanValue();
+    paramQQAppInterface = a(paramQQAppInterface);
+    if (paramQQAppInterface == null) {
+      return "";
     }
-    return false;
-  }
-  
-  public Map<Long, qvp> b(Integer paramInteger)
-  {
-    Map localMap = (Map)this.c.get(paramInteger);
-    Object localObject = localMap;
-    if (localMap == null)
+    try
     {
-      localObject = new ConcurrentHashMap();
-      this.c.put(paramInteger, localObject);
+      Iterator localIterator = paramQQAppInterface.keys();
+      while (localIterator.hasNext())
+      {
+        Uri localUri = Uri.parse(paramQQAppInterface.optString((String)localIterator.next()));
+        if ((localUri != null) && (localUri.getHost() != null) && (localUri.getHost().equals(paramString1)))
+        {
+          paramQQAppInterface = localUri.getQueryParameter(paramString2);
+          return paramQQAppInterface;
+        }
+      }
     }
-    return localObject;
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
+    }
+    return "";
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public static String a(String paramString)
   {
-    bnrf.e(false);
+    if (StringUtil.isEmpty(paramString)) {
+      return "";
+    }
+    try
+    {
+      paramString = Uri.parse(paramString).getHost();
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramString, new Object[0]);
+    }
+    return "";
   }
   
-  public void e() {}
+  public static String a(String paramString1, String paramString2)
+  {
+    if (StringUtil.isEmpty(paramString1)) {
+      return "";
+    }
+    try
+    {
+      paramString1 = Uri.parse(paramString1).getQueryParameter(paramString2);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramString1, new Object[0]);
+    }
+    return "";
+  }
   
-  public void f() {}
+  private static JSONObject a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (ajyg)paramQQAppInterface.getManager(245);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.a("qqshop") != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQShopFakeUrlHelper", 2, " getQQShopConfig: " + paramQQAppInterface.a("qqshop"));
+      }
+      return paramQQAppInterface.a("qqshop");
+    }
+    return null;
+  }
   
-  public void g() {}
-  
-  public void h() {}
-  
-  public void k() {}
-  
-  public void o() {}
+  public static String b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = a(paramQQAppInterface, paramString);
+    if (StringUtil.isEmpty(paramQQAppInterface)) {
+      return "";
+    }
+    try
+    {
+      paramQQAppInterface = Uri.parse(paramQQAppInterface).getHost();
+      return paramQQAppInterface;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
+    }
+    return "";
+  }
 }
 
 

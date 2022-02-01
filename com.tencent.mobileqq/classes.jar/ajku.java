@@ -1,36 +1,17 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
 
 public class ajku
-  extends ajjr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ajku(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
-  {
-    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
-  }
+  public ajku(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
   
-  public View a(int paramInt, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ajkv localajkv;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ajkv)))
-    {
-      localajkv = new ajkv();
-      paramView = LayoutInflater.from(this.a).inflate(2131561374, null);
-      paramView.setTag(localajkv);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(this);
-      return paramView;
-      localajkv = (ajkv)paramView.getTag();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
   }
-  
-  public void onClick(View paramView) {}
 }
 
 

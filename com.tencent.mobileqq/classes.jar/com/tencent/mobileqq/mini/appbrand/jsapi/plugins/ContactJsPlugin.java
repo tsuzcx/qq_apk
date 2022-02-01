@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.util.ApiUtil;
@@ -86,17 +86,17 @@ public class ContactJsPlugin
         if (!TextUtils.isEmpty(str23))
         {
           paramString2.putExtra("phone", str23);
-          paramString2.putExtra("phone_type", anzj.a(2131701385));
+          paramString2.putExtra("phone_type", amtj.a(2131701620));
         }
         if (!TextUtils.isEmpty(str28))
         {
           paramString2.putExtra("secondary_phone", str28);
-          paramString2.putExtra("secondary_phone_type", anzj.a(2131701386));
+          paramString2.putExtra("secondary_phone_type", amtj.a(2131701621));
         }
         if (!TextUtils.isEmpty(str26))
         {
           paramString2.putExtra("tertiary_phone", str26);
-          paramString2.putExtra("tertiary_phone_type", anzj.a(2131701389));
+          paramString2.putExtra("tertiary_phone_type", amtj.a(2131701624));
         }
         paramString2.putExtra("notes", str22);
         paramString2.putExtra("company", str24);
@@ -108,7 +108,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
           ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701382));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701617));
           ((ContentValues)localObject).put("data1", str21);
           paramString1.add(localObject);
         }
@@ -124,7 +124,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
           ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701381));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701616));
           ((ContentValues)localObject).put("data1", str19);
           paramString1.add(localObject);
         }
@@ -133,7 +133,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
           ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701388));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701623));
           ((ContentValues)localObject).put("data1", str18);
           paramString1.add(localObject);
         }
@@ -142,7 +142,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/postal-address_v2");
           ((ContentValues)localObject).put("data2", Integer.valueOf(1));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701379));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701614));
           ((ContentValues)localObject).put("data1", str13 + " " + str14 + " " + str15 + " " + str16 + " " + str17);
           paramString1.add(localObject);
         }
@@ -151,7 +151,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/postal-address_v2");
           ((ContentValues)localObject).put("data2", Integer.valueOf(2));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701387));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701622));
           ((ContentValues)localObject).put("data1", str7 + " " + str8 + " " + str9 + " " + str10 + " " + str11);
           paramString1.add(localObject);
         }
@@ -160,7 +160,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/postal-address_v2");
           ((ContentValues)localObject).put("data2", Integer.valueOf(1));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701391));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701626));
           ((ContentValues)localObject).put("data1", str3 + " " + str4 + " " + str5 + " " + str6 + " " + str12);
           paramString1.add(localObject);
         }
@@ -169,7 +169,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/website");
           ((ContentValues)localObject).put("data2", Integer.valueOf(2));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701383));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701618));
           ((ContentValues)localObject).put("data1", str2);
           paramString1.add(localObject);
         }
@@ -178,7 +178,7 @@ public class ContactJsPlugin
           localObject = new ContentValues();
           ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/nickname");
           ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", anzj.a(2131701390));
+          ((ContentValues)localObject).put("data3", amtj.a(2131701625));
           ((ContentValues)localObject).put("data1", str1);
           paramString1.add(localObject);
         }

@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class ufu
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  ufu(ufr paramufr) {}
+  ufu(ufd paramufd, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    uqf.a("comment", "onClick hide comment");
-    ufr.a(this.a);
-    uhf.a().a(new WSCommentShowEvent(false));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramEIPCResult.data != null)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
+      this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
+    }
   }
 }
 

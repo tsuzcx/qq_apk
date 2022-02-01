@@ -1,20 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ajcq
-  implements ValueAnimator.AnimatorUpdateListener
+public class ajcq
+  extends amua
 {
-  ajcq(ajcn paramajcn) {}
+  public ajcq(Conversation paramConversation) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
   }
 }
 

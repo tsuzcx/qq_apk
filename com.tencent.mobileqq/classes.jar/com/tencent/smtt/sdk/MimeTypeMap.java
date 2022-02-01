@@ -6,9 +6,9 @@ public class MimeTypeMap
   
   public static String getFileExtensionFromUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().h(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().h(paramString);
     }
     return android.webkit.MimeTypeMap.getFileExtensionFromUrl(paramString);
   }
@@ -28,36 +28,36 @@ public class MimeTypeMap
   
   public String getExtensionFromMimeType(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().l(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().l(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().getExtensionFromMimeType(paramString);
   }
   
   public String getMimeTypeFromExtension(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().j(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().j(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramString);
   }
   
   public boolean hasExtension(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().k(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().k(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().hasExtension(paramString);
   }
   
   public boolean hasMimeType(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().i(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().i(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().hasMimeType(paramString);
   }

@@ -1,28 +1,28 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bolg;
-import boli;
-import bolk;
-import boqu;
+import blpm;
+import blpo;
+import blpq;
+import blvb;
 import java.util.Map;
 
 public class AEBottomListAdapter$4$3
   implements Runnable
 {
-  public AEBottomListAdapter$4$3(boli paramboli, boqu paramboqu, int paramInt) {}
+  public AEBottomListAdapter$4$3(blpo paramblpo, blvb paramblvb, int paramInt) {}
   
   public void run()
   {
-    if (bolg.a(this.jdField_a_of_type_Boli.a).get(this.jdField_a_of_type_Boqu.a) != null)
+    if (blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a) != null)
     {
-      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_Boqu.e) && (this.jdField_a_of_type_Boqu.f)) {
-        ((bolk)bolg.a(this.jdField_a_of_type_Boli.a).get(this.jdField_a_of_type_Boqu.a)).a(1);
+      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_Blvb.e) && (this.jdField_a_of_type_Blvb.f)) {
+        ((blpq)blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a)).a(1);
       }
     }
     else {
       return;
     }
-    ((bolk)bolg.a(this.jdField_a_of_type_Boli.a).get(this.jdField_a_of_type_Boqu.a)).a(2);
+    ((blpq)blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a)).a(2);
   }
 }
 

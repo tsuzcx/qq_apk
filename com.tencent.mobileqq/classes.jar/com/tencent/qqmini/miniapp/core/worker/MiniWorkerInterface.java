@@ -34,9 +34,9 @@ public class MiniWorkerInterface
   }
   
   @JavascriptInterface
-  public void postMsgToWorker(Object paramObject, String paramString)
+  public void postMsgToWorker(int paramInt, String paramString)
   {
-    QMLog.i("minisdk-worker", "WORKER|postMsgToWorker --> obj = " + paramObject + "data = " + paramString);
+    QMLog.i("minisdk-worker", "WORKER|postMsgToWorker --> obj = " + paramInt + "data = " + paramString);
     if (this.mMiniAppContext != null) {
       WorkerAction.obtain(this.mMiniAppContext).postMsgToWorker(paramString);
     }

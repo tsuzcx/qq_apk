@@ -19,7 +19,7 @@
             <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="wrap_content" android:layout_height="fill_parent" android:divider="@drawable/ek" android:showDividers="middle">
                 <FrameLayout android:id="@id/ahq" android:layout_width="wrap_content" android:layout_height="fill_parent">
                     <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/ahw" android:background="@drawable/el" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:scaleType="centerCrop" />
-                    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/mgz" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:layout_marginLeft="@dimen/n1" android:layout_marginRight="@dimen/n1">
+                    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/mhx" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:layout_marginLeft="@dimen/n1" android:layout_marginRight="@dimen/n1">
                         <com.tencent.image.URLImageView android:id="@id/afc" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:scaleType="centerCrop" />
                         <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/uy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
                     </FrameLayout>

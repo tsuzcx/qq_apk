@@ -1,51 +1,94 @@
-import android.support.annotation.NonNull;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class qoc
+public class qoc
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<smv> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private JSONObject a;
   
-  public qob a()
+  public qoc()
   {
-    return new qob(this, null);
+    this.a = new JSONObject();
+    a();
   }
   
-  public qoc a(int paramInt)
+  public qoc(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public qoc a(@NonNull String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public qoc a(@NonNull List<smv> paramList)
-  {
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
-      ((smv)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        this.a = new JSONObject(paramString);
+        a();
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PTSReport", 1, "e = " + paramString);
+        this.a = new JSONObject();
+        a();
+        return;
+      }
     }
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    return this;
+    this.a = new JSONObject();
+    a();
   }
   
-  public qoc b(@NonNull String paramString)
+  private void a()
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    for (;;)
+    {
+      try
+      {
+        this.a.put("os", "1");
+        this.a.put("version", "8.4.8");
+        this.a.put("pts_engine_version", qmv.a().a());
+        this.a.put("pts_app_version", qmt.a().a());
+        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
+        JSONObject localJSONObject = this.a;
+        if (!TextUtils.isEmpty(Build.BRAND))
+        {
+          String str1 = Build.BRAND;
+          localJSONObject.put("device_brand", str1);
+          localJSONObject = this.a;
+          if (!TextUtils.isEmpty(Build.MODEL))
+          {
+            str1 = Build.MODEL;
+            localJSONObject.put("device_model", str1);
+            this.a.put("is_debug", "0");
+            return;
+          }
+          str1 = "";
+          continue;
+        }
+        String str2 = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
+        return;
+      }
+    }
   }
   
-  public qoc b(@NonNull List<URL> paramList)
+  public String a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this.a.toString();
+  }
+  
+  public qoc a(String paramString1, String paramString2)
+  {
+    try
+    {
+      this.a.put(paramString1, paramString2);
+      return this;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
+    }
     return this;
   }
 }

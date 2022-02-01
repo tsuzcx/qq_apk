@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 
-class baea
-  implements View.OnClickListener
+public class baea
 {
-  baea(badw parambadw) {}
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  static String jdField_a_of_type_JavaLangString = "DataCollector";
+  Handler jdField_a_of_type_AndroidOsHandler = new baeb(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public boolean a;
   
-  public void onClick(View paramView)
+  static
   {
-    badw.c(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
+    jdField_a_of_type_AndroidOsHandlerThread.start();
   }
+  
+  public baea(Context paramContext)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  }
+  
+  static Looper a()
+  {
+    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
+  }
+  
+  protected void a(Message paramMessage) {}
 }
 
 

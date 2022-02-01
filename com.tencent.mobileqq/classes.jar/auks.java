@@ -1,24 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.LinearLayout;
+import android.support.annotation.RequiresApi;
+import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class auks
-  implements ValueAnimator.AnimatorUpdateListener
+@RequiresApi(api=18)
+public class auks
+  implements aujq
 {
-  auks(aukp paramaukp) {}
+  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private ykr jdField_a_of_type_Ykr;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    if (Build.VERSION.SDK_INT >= 11)
+    if (QLog.isColorLevel()) {
+      QLog.d("identification_yuv", 2, "uninit..");
+    }
+    try
     {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((aukp.a(this.a).getVisibility() == 0) && (Math.abs(aukp.a(this.a).getAlpha() - f) >= 0.02F)) {
-        aukp.a(this.a).setAlpha(f);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
       }
-      if ((aukp.a(this.a).getVisibility() == 0) && (Math.abs(aukp.a(this.a).getAlpha() - f) >= 0.02F)) {
-        aukp.a(this.a).setAlpha(f);
-      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(ykv paramykv)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Ykr != null) {
+      this.jdField_a_of_type_Ykr.a(paramykv);
     }
   }
 }

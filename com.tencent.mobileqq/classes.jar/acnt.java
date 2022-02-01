@@ -1,35 +1,22 @@
-import com.tencent.ad.tangram.log.AdLogAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
 
-public final class acnt
-  implements AdLogAdapter
+public class acnt
+  implements DialogInterface.OnClickListener
 {
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
+  public acnt(AccountManageActivity paramAccountManageActivity) {}
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2, paramThrowable);
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
+    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    this.a.startActivity(paramDialogInterface);
+    bcef.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 

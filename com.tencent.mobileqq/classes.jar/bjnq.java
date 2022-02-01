@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.view.MotionEvent;
+import com.tencent.widget.ARMapHongBaoListView;
 
-class bjnq
-  implements DialogInterface.OnClickListener
+public abstract interface bjnq
 {
-  bjnq(bjnp parambjnp) {}
+  public abstract int getMode();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
-  }
+  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
+  
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
+  
+  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
+  
+  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
 }
 
 

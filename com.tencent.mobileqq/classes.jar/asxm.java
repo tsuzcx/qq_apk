@@ -1,56 +1,43 @@
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
 import java.util.List;
 
-public class asxm
+class asxm
+  implements bhnm
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<asxh> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
+  asxm(asxj paramasxj, List paramList, asdg paramasdg, asxo paramasxo) {}
   
-  public asxm()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramObject != null)
+    if (paramInt == 2)
     {
-      bool1 = bool2;
-      if ((paramObject instanceof asxm))
+      aszk.d(asxj.a(this.jdField_a_of_type_Asxj).getString(2131692493));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        paramObject = (asxm)paramObject;
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_JavaLangString != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-            bool1 = true;
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Asdg.a(localFileManagerEntity.getFilePath(), "", asxj.a(this.jdField_a_of_type_Asxj).getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Asdg.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
           }
         }
       }
+      if (this.jdField_a_of_type_Asxo != null) {
+        this.jdField_a_of_type_Asxo.a(4, 0);
+      }
     }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
-    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    while (this.jdField_a_of_type_Asxo == null)
+    {
+      Iterator localIterator;
+      FileManagerEntity localFileManagerEntity;
+      return;
+    }
+    this.jdField_a_of_type_Asxo.a(4, 1);
   }
 }
 

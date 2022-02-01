@@ -13,12 +13,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhnv;
-import bjbs;
-import bnrt;
+import bhht;
+import bkxa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
@@ -33,32 +33,33 @@ public class SmartDevicePluginDownloadActivity
   protected Button a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  bjbs jdField_a_of_type_Bjbs = null;
+  bhht jdField_a_of_type_Bhht = null;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bjbs == null)
+    if (this.jdField_a_of_type_Bhht == null)
     {
-      this.jdField_a_of_type_Bjbs = new bjbs(this, super.getResources().getDimensionPixelSize(2131299011));
-      this.jdField_a_of_type_Bjbs.c(2131691668);
+      this.jdField_a_of_type_Bhht = new bhht(this, super.getResources().getDimensionPixelSize(2131299076));
+      this.jdField_a_of_type_Bhht.c(2131691713);
     }
-    this.jdField_a_of_type_Bjbs.show();
+    this.jdField_a_of_type_Bhht.show();
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()))
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing()))
     {
-      this.jdField_a_of_type_Bjbs.cancel();
-      this.jdField_a_of_type_Bjbs = null;
+      this.jdField_a_of_type_Bhht.cancel();
+      this.jdField_a_of_type_Bhht = null;
     }
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -68,19 +69,19 @@ public class SmartDevicePluginDownloadActivity
     if (getIntent().getBooleanExtra("KEY_OPENAV_RECEIVE", false))
     {
       paramBundle = getIntent();
-      bnrt.a().a(this, this.app, this.app.getAccount(), paramBundle, "com.tencent.device.activities.openav.OpenAVActivity", -1, null, SmartDevicePluginProxyActivity.class);
+      bkxa.a().a(this, this.app, this.app.getAccount(), paramBundle, "com.tencent.device.activities.openav.OpenAVActivity", -1, null, SmartDevicePluginProxyActivity.class);
       finish();
       return false;
     }
-    super.setContentView(2131559074);
-    super.setTitle(2131691214);
-    bnrt.a().addObserver(this);
-    this.leftView.setText(2131690384);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365470));
+    super.setContentView(2131559082);
+    super.setTitle(2131691253);
+    bkxa.a().addObserver(this);
+    this.leftView.setText(2131690424);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365502));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365467));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371450));
-    if (!bhnv.h(this.app.getApp())) {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365499));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371418));
+    if (!NetworkUtil.isWifiConnected(this.app.getApp())) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
     return true;
@@ -89,20 +90,20 @@ public class SmartDevicePluginDownloadActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bnrt.a().deleteObserver(this);
+    bkxa.a().deleteObserver(this);
   }
   
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    if (!bnrt.a().a(this.app))
+    if (!bkxa.a().a(this.app))
     {
       a();
-      bnrt.a().a();
+      bkxa.a().a();
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("nickname", this.app.getCurrentNickname());
-    localIntent.putExtra("bitmap", this.app.a(this.app.getCurrentAccountUin(), (byte)2, false));
+    localIntent.putExtra("bitmap", this.app.getFaceBitmap(this.app.getCurrentAccountUin(), (byte)2, false));
     localIntent.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
     String str1 = "com.tencent.device.activities.DeviceSearchActivity";
     str2 = str1;
@@ -144,7 +145,7 @@ public class SmartDevicePluginDownloadActivity
         Object localObject = str2;
       }
     }
-    bnrt.a().a(this, this.app, this.app.getAccount(), localIntent, (String)localObject, 0, null, SmartDevicePluginProxyActivity.class);
+    bkxa.a().a(this, this.app, this.app.getAccount(), localIntent, (String)localObject, 0, null, SmartDevicePluginProxyActivity.class);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -166,7 +167,7 @@ public class SmartDevicePluginDownloadActivity
       b();
       if (paramObservable.intValue() != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691660);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691704);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       }
     }

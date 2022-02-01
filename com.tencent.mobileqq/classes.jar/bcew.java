@@ -1,75 +1,130 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class bcew
-  implements bcfq
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<bcfr> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  public static bcew a;
+  private String a;
+  public Map<String, Boolean> a;
+  public Map<String, Boolean> b = new ConcurrentHashMap();
   
-  public bcew(ajfc paramajfc, List<bcfr> paramList, String paramString, boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    jdField_a_of_type_Bcew = new bcew("qzone");
   }
   
-  public int a()
+  public bcew(String paramString)
   {
-    return 1;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaLangString = ("StatisticHitRateCollector_" + paramString);
   }
   
-  public String a()
+  public static bcew a()
   {
-    return anzj.a(2131704245);
+    return jdField_a_of_type_Bcew;
   }
   
-  public List<bcfr> a()
+  public static String a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    bcni.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject2 = "https://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = (String)localObject2 + "&show_tab=hot";
+    AppRuntime localAppRuntime = null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      localAppRuntime = localBaseApplicationImpl.getRuntime();
     }
+    if (localAppRuntime == null) {
+      return "0";
+    }
+    if (localAppRuntime.getAccount() == null) {
+      return "0";
+    }
+    return localAppRuntime.getAccount();
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, "actQZLoadHitRateRed");
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    {
+      localBoolean = (Boolean)this.b.get(paramString2);
+      if ((localBoolean != null) && (localBoolean.booleanValue()))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd sucess action = " + paramString2 + " , hit = true, uin = " + paramString1);
+        }
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, null, null);
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
+        this.b.remove(paramString2);
+      }
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "preloadMark preloadAction = " + paramString + " , flag = " + paramBoolean);
     }
-    localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("uin", ((BaseActivity)paramView.getContext()).app.getCurrentAccountUin());
-    ((Intent)localObject2).putExtra("portraitOnly", true);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    paramView.getContext().startActivity((Intent)localObject2);
+    if (paramBoolean) {
+      b(a(), paramString);
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(false));
+    this.b.put(paramString, Boolean.valueOf(true));
   }
   
-  public String b()
+  public void b(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    a(paramString, "actQZLoadHitRateLeba");
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (paramString2 != null)
+    {
+      Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+      if ((localBoolean == null) || (!localBoolean.booleanValue()))
+      {
+        localBoolean = (Boolean)this.b.get(paramString2);
+        if ((localBoolean != null) && (localBoolean.booleanValue()))
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd action = " + paramString2 + " , hit = false, uin = " + paramString1);
+          }
+          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, false, 0L, 0L, null, null);
+          this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
+          this.b.remove(paramString2);
+        }
+      }
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    a(paramString, "actQZLoadHitRateProfile");
+  }
+  
+  public void d(String paramString)
+  {
+    Iterator localIterator = new ArrayList(this.b.keySet()).iterator();
+    while (localIterator.hasNext()) {
+      b(paramString, (String)localIterator.next());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcew
  * JD-Core Version:    0.7.0.1
  */

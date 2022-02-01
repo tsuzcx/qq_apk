@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.Context;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.widget.XListView;
 
-public class ajhu
-  extends apcq
+class ajhu
+  implements AdapterView.OnItemLongClickListener
 {
-  public ajhu(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ajhu(ajhm paramajhm) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
+      QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
     }
-    PublicView.a(this.a, true);
-    PublicView.a(this.a, paramSosoLbsInfo);
+    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+    if (paramAdapterView == this.a.jdField_a_of_type_Ajhl)
+    {
+      this.a.jdField_a_of_type_Ajhk = ((ajhk)this.a.jdField_a_of_type_Ajhl.getItem(paramInt));
+      paramView.setSelected(true);
+      paramAdapterView = new bgaz();
+      paramAdapterView.a(2131365216, amtj.a(2131705784), 2130838962);
+      paramAdapterView.a(2131367094, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692448), 2130838971);
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bfue.a(paramView, paramAdapterView, ajhm.a(this.a), new ajhv(this, paramView));
+    }
+    while (paramAdapterView != this.a.jdField_a_of_type_Ajhw) {
+      return true;
+    }
+    return true;
   }
 }
 

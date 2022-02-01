@@ -1,100 +1,50 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class bdyo
-  extends bdyp
-  implements bdxj<bdyp>, bdyq
+public final class bdyo
 {
-  public List<bdxf> b = new ArrayList();
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public int d;
   
-  public bdyo(SpriteGLView paramSpriteGLView)
+  public static long a(int paramInt, long paramLong1, long paramLong2)
   {
-    this.a = paramSpriteGLView;
-  }
-  
-  public <N extends bdxf> N a(String paramString)
-  {
-    int i = 0;
-    while (i < this.b.size())
-    {
-      bdyp localbdyp = (bdyp)this.b.get(i);
-      if (paramString.equals(localbdyp.jdField_a_of_type_JavaLangString)) {
-        return localbdyp;
-      }
-      if ((localbdyp instanceof bdyo)) {
-        return ((bdyo)localbdyp).a(paramString);
-      }
-      i += 1;
+    if (a(paramInt)) {
+      return paramLong1;
     }
-    return null;
+    return paramLong2;
   }
   
-  public List<bdxf> a()
+  public static bdyo a(int paramInt1, long paramLong, int paramInt2)
   {
-    return this.b;
+    bdyo localbdyo = new bdyo();
+    localbdyo.jdField_a_of_type_Int = bdyn.jdField_a_of_type_Int;
+    a(paramInt1, paramLong, localbdyo);
+    localbdyo.c = paramInt1;
+    localbdyo.d = paramInt2;
+    return localbdyo;
   }
   
-  public void a()
+  public static void a(int paramInt, long paramLong, bdyo parambdyo)
   {
-    super.a();
-    int i = 0;
-    while (i < this.b.size())
+    if (a(paramInt))
     {
-      ((bdyp)this.b.get(i)).a();
-      i += 1;
-    }
-    this.b.clear();
-  }
-  
-  public void a(bdyp parambdyp)
-  {
-    if (parambdyp.jdField_a_of_type_Bdxj == null)
-    {
-      this.b.add(parambdyp);
-      parambdyp.jdField_a_of_type_Bdxj = this;
+      parambdyo.jdField_a_of_type_Long = paramLong;
       return;
     }
-    new RuntimeException("the node had another parent");
+    parambdyo.b = paramLong;
   }
   
-  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
+  private static boolean a(int paramInt)
   {
-    Object[] arrayOfObject = this.b.toArray();
-    int i = arrayOfObject.length - 1;
-    while (i >= 0)
-    {
-      if (((arrayOfObject[i] instanceof bdyq)) && (((bdyq)arrayOfObject[i]).a(paramMotionEvent, paramInt1, paramInt2))) {
-        return true;
-      }
-      i -= 1;
-    }
-    return false;
+    return (paramInt == 1) || (paramInt == 22) || (paramInt == 17) || (paramInt == 100) || (paramInt == 11) || (paramInt == 10);
   }
   
-  protected void aK_()
+  public long a()
   {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      bdxf localbdxf = (bdxf)localIterator.next();
-      if ((localbdxf instanceof bdyr)) {
-        ((bdyr)localbdxf).aK_();
-      }
-    }
-  }
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
-  {
-    super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    int i = 0;
-    while (i < this.b.size())
-    {
-      ((bdyp)this.b.get(i)).c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-      i += 1;
-    }
+    return a(this.c, this.jdField_a_of_type_Long, this.b);
   }
 }
 

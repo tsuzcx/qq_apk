@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class beph
-  extends bepm<UserState>
+public class beph
+  extends beou
 {
-  beph(beoy parambeoy, UserState paramUserState, List paramList)
+  public beph(View paramView)
   {
-    super(paramUserState, paramList);
+    super(paramView);
   }
   
-  public void a(UserState paramUserState)
+  protected void a()
   {
-    beoy.a(this.a);
+    this.a.setVisibility(4);
+    this.c.setVisibility(0);
+    this.b.setVisibility(4);
   }
 }
 

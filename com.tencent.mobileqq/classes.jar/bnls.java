@@ -1,16 +1,48 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.lang.ref.Reference;
+import java.lang.ref.ReferenceQueue;
+import java.util.HashMap;
 
-public class bnls
+public class bnls<K, V>
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
+  private HashMap<K, bnls<K, V>.bnlt> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  @Nullable
+  public V a(K paramK)
   {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
+    {
+      paramK = (bnlt)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+      if (paramK.get() != null) {
+        return paramK.get();
+      }
     }
-    return QzoneVerticalVideoGpuProxyActivity.class;
+    return null;
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      if (localReference == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(((bnlt)localReference).a());
+    }
+  }
+  
+  public void a(@NonNull K paramK, @NonNull V paramV)
+  {
+    if ((paramK == null) || (paramV == null)) {
+      throw new IllegalArgumentException("key-value cannot be null");
+    }
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bnlt)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bnlt(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import rzo;
+import sgs;
 
 public class ReadInjoyPlayer$4
   implements Runnable
 {
-  public ReadInjoyPlayer$4(rzo paramrzo) {}
+  public ReadInjoyPlayer$4(sgs paramsgs) {}
   
   public void run()
   {
-    rzo.a(this.this$0);
+    sgs.a(this.this$0);
   }
 }
 

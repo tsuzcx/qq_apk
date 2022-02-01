@@ -1,36 +1,16 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView;
 
 public class ahsm
-  implements TypeEvaluator<PointF>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+  public ahsm(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
   
-  public ahsm(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0];
-    paramPointF2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1];
-    PointF localPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
-    if (paramFloat <= 1.0F)
-    {
-      float f1 = 1.0F - paramFloat;
-      float f2 = (float)(paramPointF1.x * Math.pow(f1, 2.0D) + 2.0F * paramPointF2.x * paramFloat * f1 + localPointF.x * Math.pow(paramFloat, 2.0D));
-      double d1 = paramPointF1.y;
-      double d2 = Math.pow(f1, 2.0D);
-      return new PointF(f2, (float)(2.0F * paramPointF2.y * paramFloat * f1 + d1 * d2 + localPointF.y * Math.pow(paramFloat, 2.0D)));
-    }
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
-  }
-  
-  public void a(PointF... paramVarArgs)
-  {
-    if (paramVarArgs.length != 3) {
-      throw new IllegalArgumentException(anzj.a(2131713057));
-    }
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

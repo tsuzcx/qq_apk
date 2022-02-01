@@ -1,58 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-class rtq
-  extends sbh
+public class rtq
 {
-  rtq(rsx paramrsx) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
   
-  public int a()
+  public String toString()
   {
-    return 5;
-  }
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    Object localObject = null;
-    paramActionSheetItem = localObject;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
-      if (!TextUtils.isEmpty(paramVideoInfo.j))
-      {
-        paramString = paramVideoInfo.j;
-        paramInt = 0;
-        if (paramVideoInfo.a == 6) {
-          paramInt = 1;
-        }
-        paramVideoInfo = "https://post.mp.qq.com/jubao/index?_wv=3&puin=" + paramString + "&uin_type=" + paramInt + "&url=" + paramActionSheetItem + "&type=4&key=" + paramVideoInfo.g;
-        rsx.a(this.a, "click jubao btn, reportUrl:" + paramVideoInfo);
-        rsx.a(this.a).b(rsx.b(this.a));
-        paramString = new Intent(rsx.a(this.a), QQBrowserActivity.class);
-        paramString.putExtra("url", paramVideoInfo);
-        paramString.putExtra("hide_more_button", true);
-        rsx.a(this.a).startActivity(paramString);
-        return;
-      }
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
-      {
-        rsx.a(this.a, "encode url failed, because UTF-8 is unknown");
-        paramActionSheetItem = localObject;
-        continue;
-        paramString = "0";
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mCurIndexDiff: ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mPreIndexDiff: ").append(this.c);
+    localStringBuilder.append(", mTimeInterval: ").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mIsPull: ").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

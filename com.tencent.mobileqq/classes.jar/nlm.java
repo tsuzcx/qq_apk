@@ -1,10 +1,19 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.PoiMapActivity;
+
 public class nlm
+  implements View.OnTouchListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public nlm(PoiMapActivity paramPoiMapActivity, InputMethodManager paramInputMethodManager) {}
   
-  public nlm(nlj paramnlj) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

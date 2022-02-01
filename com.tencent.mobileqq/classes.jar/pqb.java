@@ -1,6 +1,19 @@
-public abstract interface pqb
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
+public class pqb
+  implements pqe
 {
-  public abstract void a(int paramInt);
+  public pqb(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    odq.a(null, "CliOper", "", "", "0X8007DB5", "0X8007DB5", 0, 0, "", "", "", pay.c(ReadInJoySelfFragment.b(this.a)), false);
+    pay.a(this.a.a.getContext(), 2);
+    odq.a(null, "CliOper", "", "", "0X80080F1", "0X80080F1", 0, 0, "", "", "", pay.c(ReadInJoySelfFragment.a(this.a).c()), false);
+    ReadInJoySelfFragment.a(this.a).q();
+  }
 }
 
 

@@ -1,139 +1,46 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class axuf
+public final class axuf
+  implements EmoticonCallback
 {
-  public static HashSet a = new HashSet();
+  public axuf(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public static axue a(AppInterface paramAppInterface)
+  public void delete()
   {
-    axue localaxue = new axue();
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    localaxue.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
-    localaxue.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
-    localaxue.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
-    localaxue.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
-    localaxue.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
-    localaxue.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getConfig config.expireTime=" + localaxue.jdField_a_of_type_Boolean + "  config.isShowList=" + localaxue.jdField_b_of_type_Boolean + "  config.expireTime=" + localaxue.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + localaxue.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + localaxue.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + localaxue.c);
-    }
-    return localaxue;
+    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
   }
   
-  public static String a(int paramInt, String... paramVarArgs)
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
-    }
-    return paramVarArgs[paramInt];
+    return false;
   }
   
-  public static void a(AppInterface paramAppInterface, axue paramaxue)
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
   {
+    if (paramEmoticonInfo != null) {}
     try
     {
-      String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).edit().putBoolean("isShowCard", paramaxue.jdField_a_of_type_Boolean).putBoolean("isShowList", paramaxue.jdField_b_of_type_Boolean).putLong("expireTime", paramaxue.jdField_a_of_type_Long).putString("entranceJumpUrl", paramaxue.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramaxue.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramaxue.c).commit();
-      if (QLog.isColorLevel()) {
-        QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.saveConfig config.expireTime=" + paramaxue.jdField_a_of_type_Boolean + "  config.isShowList=" + paramaxue.jdField_b_of_type_Boolean + "  config.expireTime=" + paramaxue.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + paramaxue.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + paramaxue.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + paramaxue.c);
-      }
+      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
       return;
     }
-    finally
-    {
-      paramAppInterface = finally;
-      throw paramAppInterface;
-    }
+    catch (Throwable paramEmoticonInfo) {}
   }
   
-  public static void a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    str = "has_insert_face_score_msg_" + paramString;
-    paramAppInterface.edit().putBoolean(str, true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.setHasInsertMsgFlag uin=" + paramString);
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "setFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString + " flag=" + paramBoolean);
-    }
-    if (paramMessageRecord == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (TextUtils.isEmpty(paramMessageRecord.extStr))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put(paramString, paramBoolean);
-          paramMessageRecord.extStr = localJSONObject.toString();
-          paramMessageRecord.extLong |= 0x1;
-          return;
-        }
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-        return;
-      }
-      JSONObject localJSONObject = new JSONObject(paramMessageRecord.extStr);
-      localJSONObject.put(paramString, paramBoolean);
-      paramMessageRecord.extStr = localJSONObject.toString();
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String... paramVarArgs)
-  {
-    bdll.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    boolean bool = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).getBoolean("has_insert_face_score_msg_" + paramString, false);
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getHasInsertMsgFlag uin=" + paramString + "  flag=" + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord, String paramString)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "getFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString);
-    }
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if ((paramMessageRecord.extStr != null) && ((paramMessageRecord.extLong & 0x1) == 1) && (paramMessageRecord.extStr.contains(paramString)) && (paramMessageRecord.getExtInfoFromExtStr(paramString).equals("true"))) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q..troop.faceScore.FaceScoreUtils", 2, "isFaceScoreGrayTips, ret=" + bool + ", mr=" + paramMessageRecord);
-      }
-      return bool;
-      bool = false;
-    }
-  }
+  public void setting() {}
 }
 
 

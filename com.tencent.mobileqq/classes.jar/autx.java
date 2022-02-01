@@ -1,49 +1,74 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomHelper;
+import cooperation.liveroom.LiveRoomProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class autx
+  extends WebViewPlugin
 {
-  private final byte jdField_a_of_type_Byte = 0;
-  private final int jdField_a_of_type_Int = 20;
-  private final String jdField_a_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
-  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
-  private final byte jdField_b_of_type_Byte = 0;
-  private final String jdField_b_of_type_JavaLangString = "random";
-  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
-  private final byte jdField_c_of_type_Byte = 1;
-  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
-  private final byte jdField_d_of_type_Byte = 0;
-  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
-  private final byte[] e = "qlinkwillthebestfunction".getBytes();
-  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
-  private final byte[] g = "whowillbethenextbigtiger".getBytes();
-  private final byte[] h = "whenwillwefindmahang_370".getBytes();
-  private final byte[] i = "whenwillchinagetworldcap".getBytes();
-  private byte[] j;
-  
   public autx()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
+    this.mPluginNameSpace = "gflivesdk";
   }
   
-  public void a(String paramString)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (paramString != null) {}
-    for (paramString = paramString.getBytes();; paramString = null)
-    {
-      this.j = paramString;
-      return;
+    if ("openView".equals(paramString3)) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
+        }
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramString2 = paramString1.optString("viewType");
+        paramJsBridgeListener = paramString1.optString("callback");
+        if ("activity".equals(paramString2))
+        {
+          paramString1 = paramString1.optString("url");
+          paramString2 = this.mRuntime.a();
+          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
+          {
+            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
+            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
+          }
+        }
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
     }
+    for (;;)
+    {
+      return false;
+      if ("checkSDKInstalled".equals(paramString3))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
+            break;
+          }
+          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
+    }
+    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new auty(this, paramJsBridgeListener));
+    return true;
   }
 }
 

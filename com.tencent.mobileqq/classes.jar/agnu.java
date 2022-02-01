@@ -1,21 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class agnu
-  implements ValueAnimator.AnimatorUpdateListener
+public class agnu
+  extends aezf
 {
-  agnu(agnt paramagnt) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public VideoProgressView a;
+  public CropBubbleVideoView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public agnu(agnj paramagnj) {}
+  
+  public void a()
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (agnt.a(this.a) != null) {
-      agnt.a(this.a).setAlpha((float)d);
-    }
-    if (agnt.a(this.a) != null) {
-      agnt.a(this.a).setAlpha((float)d * 2.0F);
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    {
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bfth.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          agnj.a(this.jdField_a_of_type_Agnj, localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      agnj.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
     }
   }
 }

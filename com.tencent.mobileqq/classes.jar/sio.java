@@ -1,18 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sio
-  extends anyu
+class sio
+  extends sif
 {
-  public sio(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  sio(sig paramsig) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
     {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.p();
+      sig.a(this.a).a(paramBaseArticleInfo.qzoneShareUrl);
+      return;
     }
+    sig.a(this.a).a(paramString + "&sourcefrom=6");
+  }
+  
+  public int c()
+  {
+    return 6;
   }
 }
 

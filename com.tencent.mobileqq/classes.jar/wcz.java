@@ -1,93 +1,104 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StImage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStorySubmitPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStorySubmitPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
-public abstract class wcz
-  extends wcw
+public class wcz
+  implements vqp<wdw<qqstory_service.ReqStorySubmitPollData>, wfu>
 {
-  public FrameLayout a;
-  public ImageView a;
-  public SeekBar a;
-  public TextView a;
-  public QCirclePaiTongKuanIconView a;
-  public URLImageView a;
-  public vup a;
-  public View b;
-  public ImageView b;
+  public static final String a;
+  public int a;
+  public String b;
+  public String c;
   
-  protected void a(FeedCloudMeta.StFeed paramStFeed)
+  static
   {
-    Object localObject = uyn.a(paramStFeed.id.get());
-    paramStFeed = paramStFeed.cover.picUrl.get();
-    if (localObject != null) {
-      paramStFeed = ((FeedCloudMeta.StFeed)localObject).cover.picUrl.get();
-    }
-    for (;;)
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.submit_poll_data");
+  }
+  
+  wcz(String paramString1, String paramString2, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    xvv.a("Q.qqstory.pollData.SendVidPollDataHandler", "sendRequest() feed=%s, poll=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int));
+    Object localObject = new qqstory_service.ReqStorySubmitPollData();
+    ((qqstory_service.ReqStorySubmitPollData)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    ((qqstory_service.ReqStorySubmitPollData)localObject).poll_data.set(this.jdField_a_of_type_Int);
+    localObject = new wdw(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
+    vqn.a().a((vqr)localObject, this);
+  }
+  
+  public static void a(@Nullable String paramString1, String paramString2, int paramInt)
+  {
+    new wcz(paramString1, paramString2, paramInt).a();
+  }
+  
+  public void a(@NonNull wdw<qqstory_service.ReqStorySubmitPollData> paramwdw, @Nullable wfu paramwfu, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isFail()) || (paramwfu == null))
     {
-      localObject = "";
-      if ((this.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131373939) instanceof String)) {
-        localObject = (String)this.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131373939);
-      }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setTag(2131373939, paramStFeed);
-      if (!((String)localObject).equals(paramStFeed))
-      {
-        paramStFeed = new vrd().a(paramStFeed).a(this.jdField_a_of_type_ComTencentImageURLImageView).b(false).a(true).c(this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width).b(this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height);
-        QCircleFeedPicLoader.a().a(paramStFeed, new wda(this));
-      }
+      xvv.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request Error:%s", paramErrorMessage);
       return;
     }
-  }
-  
-  public void a(Object paramObject1, Object paramObject2)
-  {
-    if (((paramObject1 instanceof RecyclerView.ViewHolder)) && ((paramObject2 instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Vup != null)) {
-      this.jdField_a_of_type_Vup.a((RecyclerView.ViewHolder)paramObject1, (FeedCloudMeta.StFeed)paramObject2);
-    }
-  }
-  
-  public void a(vup paramvup)
-  {
-    this.jdField_a_of_type_Vup = paramvup;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    float f2 = 0.8F;
-    Object localObject;
-    if (this.b != null)
+    paramwdw = new qqstory_service.RspStorySubmitPollData();
+    StoryVideoItem localStoryVideoItem;
+    try
     {
-      localObject = this.b;
-      if (paramBoolean)
+      paramwdw.mergeFrom(paramwfu.a);
+      paramwfu = new wda();
+      paramwfu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramwdw.result.error_code.get(), paramwdw.result.error_desc.get().toStringUtf8());
+      paramwfu.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      paramwfu.jdField_b_of_type_JavaLangString = this.c;
+      paramwfu.jdField_a_of_type_Int = paramwdw.comment_id.get();
+      paramwfu.jdField_a_of_type_Long = paramwdw.fake_id.get();
+      paramwfu.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      paramwfu.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramwdw.video_poll_result.get());
+      int j = paramwfu.jdField_a_of_type_JavaUtilArrayList.size();
+      paramErrorMessage = (vuu)vux.a(5);
+      localStoryVideoItem = paramErrorMessage.a(this.c);
+      xvv.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(paramwfu.jdField_b_of_type_Int));
+      if ((localStoryVideoItem == null) || (j <= 0)) {
+        break label302;
+      }
+      if ((localStoryVideoItem.mPollNumbers == null) || (localStoryVideoItem.mPollNumbers.length != j)) {
+        localStoryVideoItem.mPollNumbers = new int[j];
+      }
+      int i = 0;
+      while (i < j)
       {
-        f1 = 0.8F;
-        ((ImageView)localObject).setAlpha(f1);
+        localStoryVideoItem.mPollNumbers[i] = ((Integer)paramwdw.video_poll_result.get(i)).intValue();
+        i += 1;
       }
+      localStoryVideoItem.mPollResult = this.jdField_a_of_type_Int;
     }
-    else if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    catch (InvalidProtocolBufferMicroException paramwdw)
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!paramBoolean) {
-        break label60;
-      }
-    }
-    label60:
-    for (float f1 = f2;; f1 = 1.0F)
-    {
-      ((TextView)localObject).setAlpha(f1);
+      paramwdw.printStackTrace();
+      xvv.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request parse Error:%s", paramwdw);
       return;
-      f1 = 1.0F;
-      break;
     }
+    paramErrorMessage.a(localStoryVideoItem);
+    label302:
+    vli.a().dispatch(paramwfu);
+    yqh.a(QQStoryContext.a());
   }
 }
 

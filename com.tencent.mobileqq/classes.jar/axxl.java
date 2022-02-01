@@ -1,13 +1,16 @@
 import com.tencent.qphone.base.util.QLog;
 
 class axxl
-  implements aydl
+  implements axwq
 {
-  axxl(axxj paramaxxj) {}
+  axxl(axxk paramaxxk) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(axyl paramaxyl)
   {
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("VehicleMovementDetector", 2, "[status][vehicle] onLocationChanged: " + paramaxyl);
+    }
+    this.a.a(paramaxyl);
   }
 }
 

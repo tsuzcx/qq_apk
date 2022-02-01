@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.activity;
 
+import amtj;
 import android.os.Handler;
 import android.os.Message;
-import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -32,7 +32,7 @@ class LoadingFragment$11
         QQToast.a(localBaseApplication, 1, str, 1).a();
         this.this$0.uiHandler.postDelayed(new LoadingFragment.11.1(this), 1000L);
         return;
-        str = anzj.a(2131705146);
+        str = amtj.a(2131705376);
       }
       return;
     }

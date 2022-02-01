@@ -2,13 +2,13 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Activity;
 import android.os.Build.VERSION;
-import bqcu;
-import bqhs;
+import bncy;
+import bnew;
 
 public class EditProviderPart$3
   implements Runnable
 {
-  public EditProviderPart$3(bqcu parambqcu) {}
+  public EditProviderPart$3(bncy parambncy) {}
   
   public void run()
   {

@@ -1,54 +1,117 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class xci
-  extends wpa<xeg>
+class xci
+  extends Drawable
 {
-  private static final String b = wnu.a("StorySvc.video_show_delete");
-  public String a;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
+  private xcd jdField_a_of_type_Xcd;
+  private xcf jdField_a_of_type_Xcf = new xcj(this);
+  private Drawable b;
   
-  public xci(String paramString)
+  xci(@NonNull xcd paramxcd, @NonNull Drawable paramDrawable)
   {
-    this.a = paramString;
-  }
-  
-  public String a()
-  {
-    return b;
-  }
-  
-  public xeg a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
-    try
-    {
-      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
-      return new xeg(localRspDeleteVideo);
+    this.jdField_a_of_type_Xcd = paramxcd;
+    this.jdField_a_of_type_Xcd.a(this.jdField_a_of_type_Xcf);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = paramDrawable;
+    paramxcd = this.jdField_a_of_type_Xcd.a();
+    if (paramxcd != null) {
+      a(paramxcd);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  private void a(@NonNull Drawable paramDrawable)
+  {
+    xcb.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
+    if (paramDrawable != this.b)
     {
-      paramArrayOfByte.printStackTrace();
+      paramDrawable.setBounds(getBounds());
+      paramDrawable.setVisible(isVisible(), true);
+      paramDrawable.setState(getState());
+      paramDrawable.setLevel(getLevel());
+      paramDrawable.setCallback(getCallback());
+      if (Build.VERSION.SDK_INT >= 19) {
+        paramDrawable.setAlpha(getAlpha());
+      }
+      Drawable localDrawable = this.b;
+      this.b = paramDrawable;
+      if (localDrawable != null) {
+        localDrawable.setCallback(null);
+      }
+      invalidateSelf();
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
-    localReqDeleteVideo.vid_list.addAll(localArrayList);
-    return localReqDeleteVideo.toByteArray();
+    this.b.draw(paramCanvas);
+    this.jdField_a_of_type_Xcd.b();
   }
   
-  public String toString()
+  public int getOpacity()
   {
-    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
+    return this.b.getOpacity();
+  }
+  
+  public boolean getPadding(@NonNull Rect paramRect)
+  {
+    return this.b.getPadding(paramRect);
+  }
+  
+  @NonNull
+  public Drawable mutate()
+  {
+    this.b.mutate();
+    return super.mutate();
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    super.onBoundsChange(paramRect);
+    this.b.setBounds(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    this.b.setLevel(paramInt);
+    return true;
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    this.b.setState(paramArrayOfInt);
+    return true;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.b.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
+  {
+    super.setColorFilter(paramInt, paramMode);
+    this.b.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  {
+    this.b.setColorFilter(paramColorFilter);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
+    this.b.setVisible(paramBoolean1, paramBoolean2);
+    return bool;
   }
 }
 

@@ -1,139 +1,162 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View.OnTouchListener;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
+import android.widget.WrapperListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.widget.ListView;
 
 public class axgs
-  implements axge
 {
-  public axgs() {}
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
+  ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  axgt jdField_a_of_type_Axgt;
+  AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+  final AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
+  AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
+  boolean jdField_a_of_type_Boolean;
   
-  public axgs(QQAppInterface paramQQAppInterface)
+  public axgs(AbsListView paramAbsListView)
   {
-    this();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
+    this.jdField_a_of_type_AndroidWidgetListAdapter = null;
+    this.jdField_a_of_type_Axgt = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = null;
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = null;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = null;
   }
   
-  public static axis a(MsgBackupResEntity paramMsgBackupResEntity)
+  View.OnTouchListener a()
   {
-    switch (paramMsgBackupResEntity.msgType)
+    return this.jdField_a_of_type_AndroidViewView$OnTouchListener;
+  }
+  
+  ListAdapter a()
+  {
+    ListAdapter localListAdapter2 = (ListAdapter)this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
+    ListAdapter localListAdapter1 = localListAdapter2;
+    if ((localListAdapter2 instanceof WrapperListAdapter)) {
+      localListAdapter1 = ((WrapperListAdapter)localListAdapter2).getWrappedAdapter();
+    }
+    return localListAdapter1;
+  }
+  
+  public ListAdapter a(ListAdapter paramListAdapter)
+  {
+    return a(this.jdField_a_of_type_Axgt, paramListAdapter);
+  }
+  
+  ListAdapter a(axgt paramaxgt, ListAdapter paramListAdapter)
+  {
+    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    Object localObject = paramListAdapter;
+    if (paramaxgt != null)
     {
-    default: 
-      return null;
-    case 1: 
-      return new axiv(paramMsgBackupResEntity);
-    case 2: 
-      return new axja(paramMsgBackupResEntity);
+      localObject = paramListAdapter;
+      if (paramListAdapter != null) {
+        localObject = new axgp(paramaxgt, (BaseAdapter)paramListAdapter);
+      }
     }
-    return new axix(paramMsgBackupResEntity);
+    return localObject;
   }
   
-  public static axiy a(MessageRecord paramMessageRecord)
+  AbsListView.OnScrollListener a()
   {
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      return new axiu((MessageForPic)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      return new axiz((MessageForShortVideo)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForPtt)) {
-      return new axiw((MessageForPtt)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForMarketFace)) {
-      return new axiq(paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return new axit((MessageForMixedMsg)paramMessageRecord);
-    }
-    return null;
+    return this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   }
   
-  public axgr a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  AbsListView a()
   {
-    paramMessageRecord = a(paramMsgBackupResEntity);
-    if (paramMessageRecord != null) {
-      return paramMessageRecord.a();
+    return this.jdField_a_of_type_ComTencentWidgetAbsListView;
+  }
+  
+  AdapterView.OnItemSelectedListener a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Axgt != null) {
+      this.jdField_a_of_type_Axgt.b();
     }
-    return new axgr();
   }
   
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  public void a(View.OnTouchListener paramOnTouchListener)
   {
-    return null;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
   }
   
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  @TargetApi(11)
+  void a(ListAdapter paramListAdapter)
   {
-    paramMessageRecord = a(paramMessageRecord);
-    if (paramMessageRecord != null)
+    if (Build.VERSION.SDK_INT >= 11) {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.setAdapter(paramListAdapter);
+    }
+    while (!(this.jdField_a_of_type_ComTencentWidgetAbsListView instanceof ListView)) {
+      return;
+    }
+    ((ListView)this.jdField_a_of_type_ComTencentWidgetAbsListView).setAdapter(paramListAdapter);
+  }
+  
+  public void a(axgt paramaxgt)
+  {
+    if (this.jdField_a_of_type_Axgt != null)
     {
-      paramMessageRecord.a();
-      Object localObject = paramMessageRecord.a();
-      if (QLog.isColorLevel()) {
-        paramMessageRecord.a("onExport");
-      }
-      if (localObject != null)
-      {
-        paramList.addAll((Collection)localObject);
-        if (QLog.isColorLevel())
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            localObject = (MsgBackupResEntity)paramList.next();
-            if (QLog.isColorLevel()) {
-              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_Axgt.a(null);
+      this.jdField_a_of_type_Axgt = null;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (paramaxgt != null)
+    {
+      paramaxgt.a(this);
+      a(a(paramaxgt, this.jdField_a_of_type_AndroidWidgetListAdapter));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Axgt = paramaxgt;
+      this.jdField_a_of_type_Boolean = false;
+      b();
+      return;
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
+      a(this.jdField_a_of_type_AndroidWidgetListAdapter);
     }
   }
   
-  public boolean a(MessageRecord paramMessageRecord)
+  public void a(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = a(paramMessageRecord);
-      if (paramMessageRecord != null) {
-        return paramMessageRecord.a();
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    return false;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
+  public void a(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = paramOnItemSelectedListener;
   }
   
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  public boolean a()
   {
-    axiy localaxiy = a(paramMessageRecord);
-    if (localaxiy != null)
-    {
-      if (QLog.isColorLevel()) {
-        localaxiy.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
-      }
-      localaxiy.b();
-      if (paramList != null)
-      {
-        paramMessageRecord = paramList.iterator();
-        while (paramMessageRecord.hasNext())
-        {
-          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
-          if (paramList != null) {
-            paramList.a();
-          }
-        }
-      }
+    return this.jdField_a_of_type_Axgt != null;
+  }
+  
+  public void b()
+  {
+    if ((a()) && (this.jdField_a_of_type_AndroidWidgetListAdapter != null)) {
+      this.jdField_a_of_type_Axgt.a();
     }
   }
 }

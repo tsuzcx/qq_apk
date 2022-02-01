@@ -1,1127 +1,1075 @@
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountDataManager.1;
-import com.tencent.mobileqq.app.PublicAccountDataManager.2;
-import com.tencent.mobileqq.app.PublicAccountDataManager.4;
-import com.tencent.mobileqq.app.PublicAccountDataManager.5;
-import com.tencent.mobileqq.app.PublicAccountDataManager.6;
-import com.tencent.mobileqq.app.PublicAccountDataManager.7;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.animation.LinearInterpolator;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
 
 public class aody
-  implements Manager
+  extends ScanningData
 {
-  private static final LinkedList<aoea> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private static volatile boolean jdField_c_of_type_Boolean;
-  private int jdField_a_of_type_Int = 50;
-  private LruCache<String, AccountDetail> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  private aoea jdField_a_of_type_Aoea;
-  public QQAppInterface a;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ConcurrentHashMap<String, PublicAccountInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  public boolean a;
-  ArrayList<Entity> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_b_of_type_Boolean;
-  ArrayList<PublicRecommendAccountInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  private AnimatorSet jdField_A_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_A_of_type_AndroidAnimationObjectAnimator;
+  private ObjectAnimator B;
+  private ObjectAnimator C;
+  private ObjectAnimator D;
+  private ObjectAnimator E;
+  private ObjectAnimator F;
+  private ObjectAnimator G;
+  private ObjectAnimator H;
+  private ObjectAnimator I;
+  private ObjectAnimator J;
+  private ObjectAnimator K;
+  private ObjectAnimator L;
+  private ObjectAnimator M;
+  private ObjectAnimator N;
+  private ObjectAnimator O;
+  private ObjectAnimator P;
+  private ObjectAnimator Q;
+  private ObjectAnimator R;
+  private ObjectAnimator S;
+  private ObjectAnimator T;
+  private ObjectAnimator U;
+  private ObjectAnimator V;
+  private ObjectAnimator W;
+  private ObjectAnimator X;
+  private ObjectAnimator Y;
+  private ObjectAnimator Z;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
+  private ObjectAnimator aa;
+  private ObjectAnimator ab;
+  private ObjectAnimator ac;
+  private ObjectAnimator ad;
+  private ObjectAnimator ae;
+  private ObjectAnimator af;
+  private ObjectAnimator ag;
+  private ObjectAnimator ah;
+  private ObjectAnimator ai;
+  private ObjectAnimator aj;
+  private ObjectAnimator ak;
+  private ObjectAnimator al;
+  private ObjectAnimator am;
+  private ObjectAnimator an;
+  private ObjectAnimator ao;
+  private ObjectAnimator ap;
+  private ObjectAnimator aq;
+  private AnimatorSet jdField_b_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_b_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_c_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_c_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_d_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_d_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_e_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_e_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_f_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_f_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_g_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_g_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_h_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_h_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_i_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_i_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_j_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_j_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_k_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_k_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_l_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_l_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_m_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_m_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_n_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_n_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_o_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_o_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_p_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_p_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_q_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_q_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_r_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_r_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_s_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_s_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_t_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_t_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_u_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_u_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_v_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_v_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_w_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_w_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_x_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_x_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_y_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_y_of_type_AndroidAnimationObjectAnimator;
+  private AnimatorSet jdField_z_of_type_AndroidAnimationAnimatorSet;
+  private ObjectAnimator jdField_z_of_type_AndroidAnimationObjectAnimator;
   
-  public aody(QQAppInterface paramQQAppInterface)
+  public aody(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountDataManager.1(this), 10L);
+    super(paramContext);
+    E();
+    a();
   }
   
-  private void a(int paramInt)
+  private void E()
   {
-    QLog.d("Q.contacttab.pub", 2, "doGetKandianSubscribeAccountInfo " + paramInt);
-    ThreadManager.executeOnSubThread(new PublicAccountDataManager.5(this));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  private static void a(aoea paramaoea)
-  {
-    LinkedList localLinkedList = jdField_a_of_type_JavaUtilLinkedList;
-    if (paramaoea != null) {}
-    try
-    {
-      jdField_a_of_type_JavaUtilLinkedList.add(paramaoea);
-      return;
-    }
-    finally {}
-  }
-  
-  public static void b()
-  {
-    if (!jdField_c_of_type_Boolean) {
-      g();
-    }
-    jdField_c_of_type_Boolean = true;
-  }
-  
-  private static boolean b(aoea paramaoea)
-  {
-    localLinkedList = jdField_a_of_type_JavaUtilLinkedList;
-    if (paramaoea != null) {}
-    try
-    {
-      boolean bool = jdField_a_of_type_JavaUtilLinkedList.remove(paramaoea);
-      return bool;
-    }
-    finally {}
-    return false;
-  }
-  
-  private static void g()
-  {
-    ThreadManager.executeOnSubThread(new PublicAccountDataManager.2());
-  }
-  
-  private void h()
-  {
-    if (jdField_c_of_type_Boolean)
-    {
-      a(1);
-      return;
-    }
-    this.jdField_a_of_type_Aoea = new aodz(this);
-    a(this.jdField_a_of_type_Aoea);
-    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountDataManager.4(this), 10000L);
-  }
-  
-  public AccountDetail a(String paramString)
-  {
-    AccountDetail localAccountDetail = null;
-    Object localObject = localAccountDetail;
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache != null)
-    {
-      localObject = localAccountDetail;
-      if (paramString != null)
-      {
-        localAccountDetail = (AccountDetail)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-        localObject = localAccountDetail;
-        if (localAccountDetail == null)
-        {
-          localObject = localAccountDetail;
-          if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)
-          {
-            paramString = (AccountDetail)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(AccountDetail.class, paramString);
-            localObject = paramString;
-            if (paramString != null)
-            {
-              this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString.uin, paramString);
-              localObject = paramString;
-            }
-          }
-        }
-      }
-    }
-    return localObject;
-  }
-  
-  public PublicAccountInfo a(String paramString)
-  {
-    return (PublicAccountInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public PublicAccountInfo a(String paramString, boolean paramBoolean)
-  {
-    PublicAccountInfo localPublicAccountInfo = null;
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (paramString != null))
-    {
-      localPublicAccountInfo = (PublicAccountInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localObject = localPublicAccountInfo;
-      if (localPublicAccountInfo == null)
-      {
-        localObject = localPublicAccountInfo;
-        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)
-        {
-          paramString = (PublicAccountInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(PublicAccountInfo.class, paramString);
-          localObject = paramString;
-          if (paramString != null)
-          {
-            localObject = paramString;
-            if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-            {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.getUin(), paramString);
-              localObject = paramString;
-            }
-          }
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return localObject;
-        localObject = localPublicAccountInfo;
-      } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null);
-      localObject = localPublicAccountInfo;
-    } while (!paramBoolean);
-    return (PublicAccountInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(PublicAccountInfo.class, paramString);
-  }
-  
-  public ArrayList<Entity> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public List<PublicAccountInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      return localArrayList;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add((PublicAccountInfo)((Map.Entry)localIterator.next()).getValue());
-    }
-    return localArrayList;
-  }
-  
-  /* Error */
-  public List<PublicAccountInfo> a(List<PublicAccountInfo> paramList, long paramLong)
-  {
-    // Byte code:
-    //   0: new 41	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 42	java/util/ArrayList:<init>	()V
-    //   7: astore 6
-    //   9: aload_1
-    //   10: ifnonnull +6 -> 16
-    //   13: aload 6
-    //   15: areturn
-    //   16: aload_0
-    //   17: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   20: ifnonnull +14 -> 34
-    //   23: aload_0
-    //   24: new 186	java/util/concurrent/ConcurrentHashMap
-    //   27: dup
-    //   28: invokespecial 229	java/util/concurrent/ConcurrentHashMap:<init>	()V
-    //   31: putfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   34: aconst_null
-    //   35: astore 4
-    //   37: aload_0
-    //   38: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   41: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   44: astore 5
-    //   46: aload 5
-    //   48: astore 4
-    //   50: aload 4
-    //   52: invokevirtual 238	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   55: aload_1
-    //   56: ifnull +77 -> 133
-    //   59: aload_1
-    //   60: invokeinterface 244 1 0
-    //   65: ifle +68 -> 133
-    //   68: aload_1
-    //   69: invokeinterface 245 1 0
-    //   74: astore_1
-    //   75: aload_1
-    //   76: invokeinterface 214 1 0
-    //   81: ifeq +52 -> 133
-    //   84: aload_1
-    //   85: invokeinterface 218 1 0
-    //   90: checkcast 189	com/tencent/mobileqq/data/PublicAccountInfo
-    //   93: astore 5
-    //   95: aload_0
-    //   96: aload 5
-    //   98: invokevirtual 248	aody:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   101: pop
-    //   102: aload_0
-    //   103: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   106: aload 5
-    //   108: invokevirtual 193	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
-    //   111: aload 5
-    //   113: invokevirtual 194	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   116: pop
-    //   117: goto -42 -> 75
-    //   120: astore_1
-    //   121: aload 4
-    //   123: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   126: aload_0
-    //   127: invokevirtual 253	aody:c	()V
-    //   130: aload 6
-    //   132: areturn
-    //   133: aload_0
-    //   134: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   137: invokevirtual 202	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   140: invokeinterface 208 1 0
-    //   145: astore_1
-    //   146: aload_1
-    //   147: invokeinterface 214 1 0
-    //   152: ifeq +78 -> 230
-    //   155: aload_1
-    //   156: invokeinterface 218 1 0
-    //   161: checkcast 220	java/util/Map$Entry
-    //   164: invokeinterface 223 1 0
-    //   169: checkcast 189	com/tencent/mobileqq/data/PublicAccountInfo
-    //   172: astore 5
-    //   174: aload 5
-    //   176: getfield 256	com/tencent/mobileqq/data/PublicAccountInfo:extendType	I
-    //   179: iconst_2
-    //   180: if_icmpne -34 -> 146
-    //   183: aload 5
-    //   185: getfield 260	com/tencent/mobileqq/data/PublicAccountInfo:dateTime	J
-    //   188: lload_2
-    //   189: lcmp
-    //   190: ifge -44 -> 146
-    //   193: aload_1
-    //   194: invokeinterface 262 1 0
-    //   199: aload_0
-    //   200: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   203: aload 5
-    //   205: invokevirtual 264	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   208: pop
-    //   209: aload 6
-    //   211: aload 5
-    //   213: invokeinterface 265 2 0
-    //   218: pop
-    //   219: goto -73 -> 146
-    //   222: astore_1
-    //   223: aload 4
-    //   225: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   228: aload_1
-    //   229: athrow
-    //   230: aload 4
-    //   232: invokevirtual 268	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   235: aload 4
-    //   237: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   240: goto -114 -> 126
-    //   243: astore_1
-    //   244: aconst_null
-    //   245: astore 4
-    //   247: goto -24 -> 223
-    //   250: astore_1
-    //   251: goto -130 -> 121
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	254	0	this	aody
-    //   0	254	1	paramList	List<PublicAccountInfo>
-    //   0	254	2	paramLong	long
-    //   35	211	4	localObject1	Object
-    //   44	168	5	localObject2	Object
-    //   7	203	6	localArrayList	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   50	55	120	java/lang/Exception
-    //   59	75	120	java/lang/Exception
-    //   75	117	120	java/lang/Exception
-    //   133	146	120	java/lang/Exception
-    //   146	219	120	java/lang/Exception
-    //   230	235	120	java/lang/Exception
-    //   50	55	222	finally
-    //   59	75	222	finally
-    //   75	117	222	finally
-    //   133	146	222	finally
-    //   146	219	222	finally
-    //   230	235	222	finally
-    //   37	46	243	finally
-    //   37	46	250	java/lang/Exception
-  }
-  
-  /* Error */
-  public List<PublicAccountInfo> a(List<PublicAccountInfo> paramList, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   4: ifnonnull +28 -> 32
-    //   7: aload_1
-    //   8: ifnull +140 -> 148
-    //   11: aload_1
-    //   12: invokeinterface 244 1 0
-    //   17: istore 6
-    //   19: aload_0
-    //   20: new 186	java/util/concurrent/ConcurrentHashMap
-    //   23: dup
-    //   24: iload 6
-    //   26: invokespecial 272	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
-    //   29: putfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   32: new 41	java/util/ArrayList
-    //   35: dup
-    //   36: invokespecial 42	java/util/ArrayList:<init>	()V
-    //   39: astore 9
-    //   41: aconst_null
-    //   42: astore 7
-    //   44: aload_0
-    //   45: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   48: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   51: astore 8
-    //   53: aload 8
-    //   55: astore 7
-    //   57: aload 7
-    //   59: invokevirtual 238	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   62: aload_1
-    //   63: ifnull +133 -> 196
-    //   66: aload_1
-    //   67: invokeinterface 244 1 0
-    //   72: ifle +124 -> 196
-    //   75: aload_1
-    //   76: invokeinterface 245 1 0
-    //   81: astore_1
-    //   82: aload_1
-    //   83: invokeinterface 214 1 0
-    //   88: ifeq +108 -> 196
-    //   91: aload_1
-    //   92: invokeinterface 218 1 0
-    //   97: checkcast 189	com/tencent/mobileqq/data/PublicAccountInfo
-    //   100: astore 8
-    //   102: aload_0
-    //   103: aload 8
-    //   105: invokevirtual 248	aody:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   108: pop
-    //   109: aload 8
-    //   111: invokevirtual 275	com/tencent/mobileqq/data/PublicAccountInfo:isNeedShow	()Z
-    //   114: ifeq +40 -> 154
-    //   117: aload_0
-    //   118: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   121: aload 8
-    //   123: invokevirtual 193	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
-    //   126: aload 8
-    //   128: invokevirtual 194	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   131: pop
-    //   132: goto -50 -> 82
-    //   135: astore_1
-    //   136: aload 7
-    //   138: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   141: aload_0
-    //   142: invokevirtual 253	aody:c	()V
-    //   145: aload 9
-    //   147: areturn
-    //   148: iconst_0
-    //   149: istore 6
-    //   151: goto -132 -> 19
-    //   154: aload_0
-    //   155: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   158: aload 8
-    //   160: invokevirtual 193	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
-    //   163: invokevirtual 277	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   166: pop
-    //   167: aload 8
-    //   169: invokevirtual 280	com/tencent/mobileqq/data/PublicAccountInfo:isVisible	()Z
-    //   172: ifne -90 -> 82
-    //   175: aload 9
-    //   177: aload 8
-    //   179: invokeinterface 265 2 0
-    //   184: pop
-    //   185: goto -103 -> 82
-    //   188: astore_1
-    //   189: aload 7
-    //   191: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   194: aload_1
-    //   195: athrow
-    //   196: iload 4
-    //   198: ifne +96 -> 294
-    //   201: iload 5
-    //   203: ifeq +91 -> 294
-    //   206: aload_0
-    //   207: getfield 184	aody:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   210: invokevirtual 202	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   213: invokeinterface 208 1 0
-    //   218: astore_1
-    //   219: aload_1
-    //   220: invokeinterface 214 1 0
-    //   225: ifeq +69 -> 294
-    //   228: aload_1
-    //   229: invokeinterface 218 1 0
-    //   234: checkcast 220	java/util/Map$Entry
-    //   237: invokeinterface 223 1 0
-    //   242: checkcast 189	com/tencent/mobileqq/data/PublicAccountInfo
-    //   245: astore 8
-    //   247: aload 8
-    //   249: getfield 256	com/tencent/mobileqq/data/PublicAccountInfo:extendType	I
-    //   252: ifne -33 -> 219
-    //   255: aload 8
-    //   257: getfield 260	com/tencent/mobileqq/data/PublicAccountInfo:dateTime	J
-    //   260: lload_2
-    //   261: lcmp
-    //   262: ifge -43 -> 219
-    //   265: aload_1
-    //   266: invokeinterface 262 1 0
-    //   271: aload_0
-    //   272: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   275: aload 8
-    //   277: invokevirtual 264	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   280: pop
-    //   281: aload 9
-    //   283: aload 8
-    //   285: invokeinterface 265 2 0
-    //   290: pop
-    //   291: goto -72 -> 219
-    //   294: aload 7
-    //   296: invokevirtual 268	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   299: aload 7
-    //   301: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   304: goto -163 -> 141
-    //   307: astore_1
-    //   308: aconst_null
-    //   309: astore 7
-    //   311: goto -122 -> 189
-    //   314: astore_1
-    //   315: goto -179 -> 136
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	318	0	this	aody
-    //   0	318	1	paramList	List<PublicAccountInfo>
-    //   0	318	2	paramLong	long
-    //   0	318	4	paramBoolean1	boolean
-    //   0	318	5	paramBoolean2	boolean
-    //   17	133	6	i	int
-    //   42	268	7	localObject1	Object
-    //   51	233	8	localObject2	Object
-    //   39	243	9	localArrayList	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   57	62	135	java/lang/Exception
-    //   66	82	135	java/lang/Exception
-    //   82	132	135	java/lang/Exception
-    //   154	185	135	java/lang/Exception
-    //   206	219	135	java/lang/Exception
-    //   219	291	135	java/lang/Exception
-    //   294	299	135	java/lang/Exception
-    //   57	62	188	finally
-    //   66	82	188	finally
-    //   82	132	188	finally
-    //   154	185	188	finally
-    //   206	219	188	finally
-    //   219	291	188	finally
-    //   294	299	188	finally
-    //   44	53	307	finally
-    //   44	53	314	java/lang/Exception
-  }
-  
-  /* Error */
   public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 283	aody:jdField_a_of_type_Boolean	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: invokevirtual 285	aody:d	()V
-    //   18: aload_0
-    //   19: invokevirtual 253	aody:c	()V
-    //   22: aload_0
-    //   23: invokevirtual 288	aody:f	()V
-    //   26: aload_0
-    //   27: invokevirtual 291	aody:e	()V
-    //   30: aload_0
-    //   31: iconst_1
-    //   32: putfield 283	aody:jdField_a_of_type_Boolean	Z
-    //   35: invokestatic 296	twk:a	()Ltwk;
-    //   38: aload_0
-    //   39: getfield 68	aody:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   42: aload_0
-    //   43: invokevirtual 298	aody:a	()Ljava/util/List;
-    //   46: invokevirtual 301	twk:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
-    //   49: invokestatic 306	tug:a	()Ltug;
-    //   52: aload_0
-    //   53: getfield 68	aody:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   56: invokevirtual 308	tug:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   59: aload_0
-    //   60: getfield 68	aody:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   63: bipush 88
-    //   65: invokevirtual 312	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   68: checkcast 314	oek
-    //   71: astore_2
-    //   72: aload_2
-    //   73: ifnull +11 -> 84
-    //   76: aload_2
-    //   77: aconst_null
-    //   78: ldc_w 316
-    //   81: invokevirtual 319	oek:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: aload_0
-    //   85: invokespecial 321	aody:h	()V
-    //   88: goto -77 -> 11
-    //   91: astore_2
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_2
-    //   95: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	this	aody
-    //   6	2	1	bool	boolean
-    //   71	6	2	localoek	oek
-    //   91	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	91	finally
-    //   14	72	91	finally
-    //   76	84	91	finally
-    //   84	88	91	finally
+    d();
+    e();
+    f();
+    g();
+    h();
+    i();
+    j();
+    k();
+    l();
   }
   
-  public void a(AccountDetail paramAccountDetail)
+  public void a(boolean paramBoolean)
   {
-    if (paramAccountDetail == null) {}
-    do
+    this.jdField_h_of_type_Boolean = true;
+    m();
+    n();
+    o();
+    p();
+    q();
+    r();
+    s();
+    t();
+    u();
+  }
+  
+  public void b()
+  {
+    super.b();
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_c_of_type_Boolean))
     {
-      return;
-      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramAccountDetail.uin, paramAccountDetail);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.contacttab.pub", 2, "mAccountDetailCache size: " + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size() + " cacheCount()" + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.cacheCount() + "  maxSize=" + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.maxSize() + "  putCount:" + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.putCount() + "  createCount:" + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.createCount() + "  missed:" + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.missCount());
-    QLog.d("Q.contacttab.pub", 2, "save account detail info, puin : " + paramAccountDetail.uin);
-  }
-  
-  public void a(PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramPublicAccountInfo == null) {
+      this.jdField_i_of_type_Float = ViewUtils.dip2px(5.0F);
       return;
     }
-    QLog.d("Q.contacttab.pub", 2, "save PublicAccountInfo, puin : " + paramPublicAccountInfo.getUin());
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
-    ThreadManager.executeOnSubThread(new PublicAccountDataManager.6(this, paramPublicAccountInfo));
-    if (paramPublicAccountInfo.isNeedShow()) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramPublicAccountInfo.getUin(), paramPublicAccountInfo);
-    }
-    for (;;)
-    {
-      c();
-      return;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramPublicAccountInfo.getUin(), paramPublicAccountInfo);
-    }
+    this.jdField_i_of_type_Float = ViewUtils.dip2px(1.5F);
   }
   
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(this.jdField_a_of_type_Int);
-    }
-    AccountDetail localAccountDetail = a(paramString);
-    if (localAccountDetail != null)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localAccountDetail);
-    }
-  }
-  
-  public void a(ArrayList<MessageRecord> paramArrayList, QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = new ArrayList();
-    if (paramArrayList.size() > 0) {
-      paramArrayList = paramArrayList.iterator();
-    }
-    for (;;)
-    {
-      MessageRecord localMessageRecord;
-      if (paramArrayList.hasNext()) {
-        localMessageRecord = (MessageRecord)paramArrayList.next();
-      }
-      try
-      {
-        long l = Long.parseLong(localMessageRecord.senderuin);
-        if (((l == 9954L) && (localMessageRecord.istroop == 7220)) || (localMessageRecord.istroop != 1008) || (((ArrayList)localObject).contains(Long.valueOf(l)))) {
-          continue;
-        }
-        ((ArrayList)localObject).add(Long.valueOf(l));
-      }
-      catch (NumberFormatException localNumberFormatException) {}
-      paramArrayList = ((ArrayList)localObject).iterator();
-      while (paramArrayList.hasNext())
-      {
-        localObject = (Long)paramArrayList.next();
-        if ((b(((Long)localObject).toString()) == null) && (a(((Long)localObject).toString()) == null) && ((this.jdField_a_of_type_JavaUtilHashMap.get(localObject) == null) || ((this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) && (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).longValue() > 120000L))))
-        {
-          tzq.a(paramQQAppInterface, BaseApplication.getContext(), null, ((Long)localObject).toString());
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject, Long.valueOf(System.currentTimeMillis()));
-        }
-      }
-      return;
-    }
-  }
-  
-  /* Error */
-  public void a(List<PublicRecommendAccountInfo> paramList)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnull +88 -> 89
-    //   4: aload_1
-    //   5: invokeinterface 244 1 0
-    //   10: ifle +79 -> 89
-    //   13: aconst_null
-    //   14: astore_2
-    //   15: aload_0
-    //   16: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   19: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   22: astore_3
-    //   23: aload_3
-    //   24: astore_2
-    //   25: aload_2
-    //   26: invokevirtual 238	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   29: aload_0
-    //   30: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   33: ldc_w 430
-    //   36: invokevirtual 434	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;)Ljava/util/List;
-    //   39: astore_3
-    //   40: aload_3
-    //   41: ifnull +49 -> 90
-    //   44: aload_3
-    //   45: invokeinterface 245 1 0
-    //   50: astore_3
-    //   51: aload_3
-    //   52: invokeinterface 214 1 0
-    //   57: ifeq +33 -> 90
-    //   60: aload_3
-    //   61: invokeinterface 218 1 0
-    //   66: checkcast 430	com/tencent/mobileqq/data/PublicRecommendAccountInfo
-    //   69: astore 4
-    //   71: aload_0
-    //   72: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   75: aload 4
-    //   77: invokevirtual 264	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   80: pop
-    //   81: goto -30 -> 51
-    //   84: astore_1
-    //   85: aload_2
-    //   86: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   89: return
-    //   90: aload_1
-    //   91: invokeinterface 245 1 0
-    //   96: astore_3
-    //   97: aload_3
-    //   98: invokeinterface 214 1 0
-    //   103: ifeq +33 -> 136
-    //   106: aload_3
-    //   107: invokeinterface 218 1 0
-    //   112: checkcast 430	com/tencent/mobileqq/data/PublicRecommendAccountInfo
-    //   115: astore 4
-    //   117: aload_0
-    //   118: getfield 66	aody:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   121: aload 4
-    //   123: invokevirtual 438	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   126: goto -29 -> 97
-    //   129: astore_1
-    //   130: aload_2
-    //   131: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   134: aload_1
-    //   135: athrow
-    //   136: aload_0
-    //   137: getfield 48	aody:jdField_c_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   140: ifnull +3 -> 143
-    //   143: aload_0
-    //   144: aload_1
-    //   145: checkcast 41	java/util/ArrayList
-    //   148: putfield 48	aody:jdField_c_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   151: aload_2
-    //   152: invokevirtual 268	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   155: aload_2
-    //   156: invokevirtual 251	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   159: return
-    //   160: astore_1
-    //   161: aconst_null
-    //   162: astore_2
-    //   163: goto -33 -> 130
-    //   166: astore_1
-    //   167: goto -82 -> 85
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	170	0	this	aody
-    //   0	170	1	paramList	List<PublicRecommendAccountInfo>
-    //   14	149	2	localObject1	Object
-    //   22	85	3	localObject2	Object
-    //   69	53	4	localPublicRecommendAccountInfo	PublicRecommendAccountInfo
-    // Exception table:
-    //   from	to	target	type
-    //   25	40	84	java/lang/Exception
-    //   44	51	84	java/lang/Exception
-    //   51	81	84	java/lang/Exception
-    //   90	97	84	java/lang/Exception
-    //   97	126	84	java/lang/Exception
-    //   136	143	84	java/lang/Exception
-    //   143	155	84	java/lang/Exception
-    //   25	40	129	finally
-    //   44	51	129	finally
-    //   51	81	129	finally
-    //   90	97	129	finally
-    //   97	126	129	finally
-    //   136	143	129	finally
-    //   143	155	129	finally
-    //   15	23	160	finally
-    //   15	23	166	java/lang/Exception
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean a(SessionInfo paramSessionInfo)
-  {
-    paramSessionInfo = b(paramSessionInfo.a);
-    return (paramSessionInfo != null) && (tzq.a(paramSessionInfo.accountFlag2) == -10L);
-  }
-  
-  public boolean a(Entity paramEntity)
-  {
-    boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      if (paramEntity.getStatus() == 1001) {
-        bool = true;
-      }
-    }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-      return bool;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
-  }
-  
-  public boolean a(Long paramLong)
-  {
-    return a(paramLong, false);
-  }
-  
-  public boolean a(Long paramLong, boolean paramBoolean)
-  {
-    List localList = a();
-    int j = localList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (((PublicAccountInfo)localList.get(i)).uin == paramLong.longValue()) {
-        return true;
-      }
-      i += 1;
-    }
-    if (paramBoolean) {}
-    for (paramLong = b(String.valueOf(paramLong)); (paramLong != null) && (paramLong.followType == 1); paramLong = a(String.valueOf(paramLong))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    label62:
-    for (;;)
-    {
-      return false;
-      PublicAccountInfo localPublicAccountInfo = b(paramString);
-      if (localPublicAccountInfo != null) {}
-      for (long l = localPublicAccountInfo.accountFlag2;; l = paramString.accountFlag2)
-      {
-        if ((l & 0x100) == 0L) {
-          break label62;
-        }
-        return true;
-        paramString = a(paramString.toString());
-        if (paramString == null) {
-          break;
-        }
-      }
-    }
-  }
-  
-  public AccountDetail b(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache != null)
-    {
-      localObject1 = localObject2;
-      if (paramString != null) {
-        localObject1 = (AccountDetail)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-      }
-    }
-    if (localObject1 != null) {
-      ThreadManager.executeOnSubThread(new PublicAccountDataManager.7(this, paramString));
-    }
-    return localObject1;
-  }
-  
-  public PublicAccountInfo b(String paramString)
-  {
-    return a(paramString, false);
-  }
-  
-  public ArrayList<Entity> b()
-  {
-    return this.jdField_b_of_type_JavaUtilArrayList;
-  }
-  
-  public void b(AccountDetail paramAccountDetail)
-  {
-    if (paramAccountDetail == null) {
-      return;
-    }
-    a(paramAccountDetail.uin);
-  }
-  
-  public void b(PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramPublicAccountInfo == null) {
-      return;
-    }
-    b(paramPublicAccountInfo.getUin());
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
-    PublicAccountInfo localPublicAccountInfo = b(paramString);
-    if (localPublicAccountInfo != null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localPublicAccountInfo);
-    }
-    c();
-  }
-  
-  public PublicAccountInfo c(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      localObject1 = localObject2;
-      if (paramString != null) {
-        localObject1 = (PublicAccountInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      }
-    }
-    return localObject1;
-  }
-  
-  public ArrayList<PublicRecommendAccountInfo> c()
-  {
-    return this.jdField_c_of_type_JavaUtilArrayList;
-  }
-  
+  @TargetApi(11)
   public void c()
   {
-    ArrayList localArrayList2;
-    ArrayList localArrayList3;
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.contacttab.pub", 2, "buildPublicAccountUI begin");
-        }
-        this.jdField_b_of_type_Boolean = true;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-          break label258;
-        }
-        int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-        ArrayList localArrayList1 = new ArrayList(i);
-        localArrayList2 = new ArrayList(i);
-        localArrayList3 = new ArrayList(i);
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        Entity localEntity = (Entity)localIterator.next();
-        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localEntity;
-        if ((localPublicAccountInfo.mCompareSpell == null) || (localPublicAccountInfo.mCompareSpell.length() == 0)) {
-          anvp.a(localPublicAccountInfo);
-        }
-        if (localPublicAccountInfo.hasIvrAbility()) {
-          localArrayList2.add(localEntity);
-        } else {
-          localArrayList3.add(localEntity);
-        }
-      }
-      finally {}
+    if ((this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
     }
-    if (localArrayList2.size() > 0)
-    {
-      if (localArrayList2.size() > 1) {
-        Collections.sort(localArrayList2, anvp.a);
-      }
-      localList.addAll(localArrayList2);
+    if ((this.jdField_b_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_b_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet.end();
     }
-    if (localArrayList3.size() > 0)
-    {
-      if (localArrayList3.size() > 1) {
-        Collections.sort(localArrayList3, anvp.a);
-      }
-      localList.addAll(localArrayList3);
+    if ((this.jdField_c_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_c_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_c_of_type_AndroidAnimationAnimatorSet.end();
     }
-    this.jdField_a_of_type_JavaUtilArrayList = localList;
-    if (localList.size() > 1) {
-      Collections.sort(localList, anvp.a);
+    if ((this.jdField_d_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_d_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_d_of_type_AndroidAnimationAnimatorSet.end();
     }
-    this.jdField_b_of_type_JavaUtilArrayList = localList;
-    bcnb.a().jdField_a_of_type_Boolean = true;
-    label258:
-    this.jdField_b_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.pub", 2, "buildPublicAccountUI end: " + this.jdField_a_of_type_JavaUtilArrayList.size());
+    if ((this.jdField_e_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_e_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_e_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_f_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_f_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_f_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_g_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_g_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_g_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_h_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_h_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_h_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_i_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_i_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_i_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_j_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_j_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_j_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_k_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_k_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_k_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_l_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_l_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_l_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_m_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_m_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_m_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_n_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_n_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_n_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_o_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_o_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_o_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_p_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_p_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_p_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_q_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_q_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_q_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_r_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_r_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_r_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_s_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_s_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_s_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_t_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_t_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_t_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_u_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_u_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_u_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_v_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_v_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_v_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_w_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_w_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_w_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_x_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_x_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_x_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_y_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_y_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_y_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_z_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_z_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_z_of_type_AndroidAnimationAnimatorSet.end();
+    }
+    if ((this.jdField_A_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_A_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      this.jdField_A_of_type_AndroidAnimationAnimatorSet.end();
     }
   }
   
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
-    if (b(paramString) != null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      c();
-    }
-  }
-  
+  @TargetApi(11)
   public void d()
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.pub", 2, "initPublicAccountCache begin");
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCScale", new float[] { 0.0F, 1.04F });
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(200L);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PublicAccountInfo.class, false, "showFlag=?", new String[] { String.valueOf(1) }, null, null, null, null);
-    if (localObject2 != null) {}
+    if (this.jdField_b_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_b_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCScale", new float[] { 1.04F, 1.0F });
+      this.jdField_b_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_b_of_type_AndroidAnimationObjectAnimator.setDuration(66L);
+    }
+    if (this.jdField_c_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_c_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCScale", new float[] { 1.0F, 1.02F });
+      this.jdField_c_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_c_of_type_AndroidAnimationObjectAnimator.setDuration(66L);
+    }
+    if (this.jdField_d_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_d_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCScale", new float[] { 1.02F, 1.0F });
+      this.jdField_d_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_d_of_type_AndroidAnimationObjectAnimator.setDuration(66L);
+    }
+    if (this.jdField_e_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_e_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCScale", new float[] { 1.0F, 1.0F });
+      this.jdField_e_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_e_of_type_AndroidAnimationObjectAnimator.setDuration(1268L);
+    }
+    if (this.jdField_f_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_f_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCScale", new float[] { 1.0F, 0.9F });
+      this.jdField_f_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_f_of_type_AndroidAnimationObjectAnimator.setDuration(334L);
+    }
     ArrayList localArrayList;
-    for (int i = ((List)localObject2).size();; i = 0)
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(i);
-      if (localObject2 == null) {
-        break label319;
-      }
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
       localArrayList = new ArrayList();
-      long l = NetConnInfoCenter.getServerTimeMillis();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject2).next();
-        if (localPublicAccountInfo.isNeedShow())
-        {
-          if ((!tzq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!TextUtils.equals(localPublicAccountInfo.getUin(), antf.ay))) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localPublicAccountInfo.getUin(), localPublicAccountInfo);
-          }
-        }
-        else
-        {
-          if ((localPublicAccountInfo.mCompareSpell == null) || (localPublicAccountInfo.mCompareSpell.length() == 0))
-          {
-            anvp.a(localPublicAccountInfo);
-            localArrayList.add(localPublicAccountInfo);
-          }
-          if (localPublicAccountInfo.lastAIOReadTime <= 0L)
-          {
-            if (localArrayList.contains(localPublicAccountInfo)) {
-              localArrayList.remove(localPublicAccountInfo);
-            }
-            localPublicAccountInfo.lastAIOReadTime = l;
-            localArrayList.add(localPublicAccountInfo);
-          }
-        }
-      }
+      localArrayList.add(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_b_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_c_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_d_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_e_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_f_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
     }
-    if (localArrayList.size() > 0)
+    if (this.jdField_g_of_type_AndroidAnimationObjectAnimator == null)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-      ((EntityTransaction)localObject2).begin();
-      i = j;
+      this.jdField_g_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCAlpha", new float[] { 0.0F, 1.0F });
+      this.jdField_g_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_g_of_type_AndroidAnimationObjectAnimator.setDuration(200L);
     }
-    try
+    if (this.jdField_h_of_type_AndroidAnimationObjectAnimator == null)
     {
-      while (i < localArrayList.size())
-      {
-        a((Entity)localArrayList.get(i));
-        i += 1;
-      }
-      ((EntityTransaction)localObject2).commit();
+      this.jdField_h_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCAlpha", new float[] { 1.0F, 1.0F });
+      this.jdField_h_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_h_of_type_AndroidAnimationObjectAnimator.setDuration(2600L);
     }
-    catch (Exception localException)
+    if (this.jdField_i_of_type_AndroidAnimationObjectAnimator == null)
     {
-      for (;;)
-      {
-        ((EntityTransaction)localObject2).end();
-      }
+      this.jdField_i_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCAlpha", new float[] { 1.0F, 0.9F });
+      this.jdField_i_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_i_of_type_AndroidAnimationObjectAnimator.setDuration(866L);
     }
-    finally
+    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet == null)
     {
-      ((EntityTransaction)localObject2).end();
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_g_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_h_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_i_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
     }
-    localArrayList.clear();
-    label319:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.pub", 2, "initPublicAccountCache end: " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    if (this.jdField_j_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_j_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCRotate", new float[] { 0.0F, 360.0F });
+      this.jdField_j_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_j_of_type_AndroidAnimationObjectAnimator.setDuration(866L);
+    }
+    if (this.jdField_k_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_k_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCRotate", new float[] { 360.0F, 720.0F });
+      this.jdField_k_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_k_of_type_AndroidAnimationObjectAnimator.setDuration(334L);
+    }
+    if (this.jdField_l_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_l_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCRotate", new float[] { 720.0F, 720.0F });
+      this.jdField_l_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_l_of_type_AndroidAnimationObjectAnimator.setDuration(800L);
+    }
+    if (this.jdField_m_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_m_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCRotate", new float[] { 720.0F, 360.0F });
+      this.jdField_m_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_m_of_type_AndroidAnimationObjectAnimator.setDuration(12000L);
+      this.jdField_m_of_type_AndroidAnimationObjectAnimator.setRepeatCount(-1);
+    }
+    if (this.jdField_c_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_c_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_j_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_k_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_l_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_m_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_c_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_c_of_type_AndroidAnimationAnimatorSet.setStartDelay(800L);
+    }
+    if (this.jdField_n_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "maskScale", new float[] { 0.0F, 1.0F });
+      this.jdField_n_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_n_of_type_AndroidAnimationObjectAnimator.setDuration(134L);
+    }
+    if (this.jdField_o_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_o_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "maskScale", new float[] { 1.0F, 0.0F });
+      this.jdField_o_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_o_of_type_AndroidAnimationObjectAnimator.setDuration(400L);
+    }
+    if (this.jdField_d_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_d_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_n_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_o_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_d_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_d_of_type_AndroidAnimationAnimatorSet.setStartDelay(1866L);
+    }
+    if (this.jdField_p_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_p_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofObject(this, "bCColor", new ArgbEvaluator(), new Object[] { Integer.valueOf(Color.argb(255, 30, 255, 236)), Integer.valueOf(-1), Integer.valueOf(-1) });
+      this.jdField_p_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_p_of_type_AndroidAnimationObjectAnimator.setDuration(334L);
+    }
+    if (this.jdField_e_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_e_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_e_of_type_AndroidAnimationAnimatorSet.play(this.jdField_p_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_e_of_type_AndroidAnimationAnimatorSet.setStartDelay(1666L);
+    }
+    if (this.jdField_q_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_q_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bTAlpha", new float[] { 0.0F, 1.0F });
+      this.jdField_q_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_q_of_type_AndroidAnimationObjectAnimator.setDuration(200L);
+    }
+    if (this.jdField_r_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_r_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bTAlpha", new float[] { 1.0F, 1.0F });
+      this.jdField_r_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_r_of_type_AndroidAnimationObjectAnimator.setDuration(2600L);
+    }
+    if (this.jdField_s_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_s_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bTAlpha", new float[] { 1.0F, 0.9F });
+      this.jdField_s_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_s_of_type_AndroidAnimationObjectAnimator.setDuration(866L);
+    }
+    if (this.jdField_f_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_f_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_q_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_r_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_s_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_f_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
     }
   }
   
+  @TargetApi(11)
   public void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.pub", 2, "initAccountDetailCache begin");
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(AccountDetail.class);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(this.jdField_a_of_type_Int);
-    if (localObject != null)
+    if (this.jdField_t_of_type_AndroidAnimationObjectAnimator == null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        AccountDetail localAccountDetail = (AccountDetail)((Iterator)localObject).next();
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localAccountDetail.uin, localAccountDetail);
-      }
+      this.jdField_t_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCScale", new float[] { 0.0F, 1.04F });
+      this.jdField_t_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_t_of_type_AndroidAnimationObjectAnimator.setDuration(200L);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.pub", 2, "initAccountDetailCache end: " + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size());
+    if (this.jdField_u_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_u_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCScale", new float[] { 1.04F, 1.0F });
+      this.jdField_u_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_u_of_type_AndroidAnimationObjectAnimator.setDuration(66L);
+    }
+    if (this.jdField_v_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_v_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCScale", new float[] { 1.0F, 1.02F });
+      this.jdField_v_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_v_of_type_AndroidAnimationObjectAnimator.setDuration(66L);
+    }
+    if (this.jdField_w_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_w_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCScale", new float[] { 1.02F, 1.0F });
+      this.jdField_w_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_w_of_type_AndroidAnimationObjectAnimator.setDuration(66L);
+    }
+    if (this.jdField_x_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_x_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCScale", new float[] { 1.0F, 1.0F });
+      this.jdField_x_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_x_of_type_AndroidAnimationObjectAnimator.setDuration(1234L);
+    }
+    if (this.jdField_y_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_y_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCScale", new float[] { 1.0F, 0.9F });
+      this.jdField_y_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_y_of_type_AndroidAnimationObjectAnimator.setDuration(334L);
+    }
+    ArrayList localArrayList;
+    if (this.jdField_g_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_g_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_t_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_u_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_v_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_w_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_x_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_y_of_type_AndroidAnimationObjectAnimator);
+      this.jdField_g_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_g_of_type_AndroidAnimationAnimatorSet.setStartDelay(34L);
+    }
+    if (this.jdField_z_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_z_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCAlpha", new float[] { 0.0F, 1.0F });
+      this.jdField_z_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_z_of_type_AndroidAnimationObjectAnimator.setDuration(200L);
+    }
+    if (this.jdField_A_of_type_AndroidAnimationObjectAnimator == null)
+    {
+      this.jdField_A_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "oCAlpha", new float[] { 1.0F, 1.0F });
+      this.jdField_A_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_A_of_type_AndroidAnimationObjectAnimator.setDuration(2566L);
+    }
+    if (this.B == null)
+    {
+      this.B = ObjectAnimator.ofFloat(this, "oCAlpha", new float[] { 1.0F, 0.0F });
+      this.B.setInterpolator(new LinearInterpolator());
+      this.B.setDuration(866L);
+    }
+    if (this.jdField_h_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_h_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_z_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.jdField_A_of_type_AndroidAnimationObjectAnimator);
+      localArrayList.add(this.B);
+      this.jdField_h_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_h_of_type_AndroidAnimationAnimatorSet.setStartDelay(34L);
+    }
+    if (this.C == null)
+    {
+      this.C = ObjectAnimator.ofFloat(this, "oCRotate", new float[] { 0.0F, -180.0F });
+      this.C.setInterpolator(new LinearInterpolator());
+      this.C.setDuration(866L);
+    }
+    if (this.D == null)
+    {
+      this.D = ObjectAnimator.ofFloat(this, "oCRotate", new float[] { -180.0F, -540.0F });
+      this.D.setInterpolator(new LinearInterpolator());
+      this.D.setDuration(334L);
+    }
+    if (this.E == null)
+    {
+      this.E = ObjectAnimator.ofFloat(this, "oCRotate", new float[] { -540.0F, -540.0F });
+      this.E.setInterpolator(new LinearInterpolator());
+      this.E.setDuration(800L);
+    }
+    if (this.F == null)
+    {
+      this.F = ObjectAnimator.ofFloat(this, "oCRotate", new float[] { -540.0F, -180.0F });
+      this.F.setInterpolator(new LinearInterpolator());
+      this.F.setDuration(6000L);
+      this.F.setRepeatCount(-1);
+    }
+    if (this.jdField_i_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_i_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.C);
+      localArrayList.add(this.D);
+      localArrayList.add(this.E);
+      localArrayList.add(this.F);
+      this.jdField_i_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_i_of_type_AndroidAnimationAnimatorSet.setStartDelay(800L);
     }
   }
   
+  @TargetApi(11)
   public void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.pub", 2, "initPublicRecommendAccountCache begin");
+    if (this.G == null)
+    {
+      this.G = ObjectAnimator.ofFloat(this, "iBCScale", new float[] { 0.0F, 1.04F });
+      this.G.setInterpolator(new LinearInterpolator());
+      this.G.setDuration(200L);
     }
-    this.jdField_c_of_type_JavaUtilArrayList = ((ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PublicRecommendAccountInfo.class));
-    if ((QLog.isColorLevel()) && (this.jdField_c_of_type_JavaUtilArrayList != null)) {
-      QLog.d("Q.contacttab.pub", 2, "initPublicRecommendAccountCache end: " + this.jdField_c_of_type_JavaUtilArrayList.size());
+    if (this.H == null)
+    {
+      this.H = ObjectAnimator.ofFloat(this, "iBCScale", new float[] { 1.04F, 1.0F });
+      this.H.setInterpolator(new LinearInterpolator());
+      this.H.setDuration(66L);
+    }
+    if (this.I == null)
+    {
+      this.I = ObjectAnimator.ofFloat(this, "iBCScale", new float[] { 1.0F, 1.02F });
+      this.I.setInterpolator(new LinearInterpolator());
+      this.I.setDuration(66L);
+    }
+    if (this.J == null)
+    {
+      this.J = ObjectAnimator.ofFloat(this, "iBCScale", new float[] { 1.02F, 1.0F });
+      this.J.setInterpolator(new LinearInterpolator());
+      this.J.setDuration(66L);
+    }
+    if (this.K == null)
+    {
+      this.K = ObjectAnimator.ofFloat(this, "iBCScale", new float[] { 1.0F, 1.0F });
+      this.K.setInterpolator(new LinearInterpolator());
+      this.K.setDuration(1202L);
+    }
+    if (this.L == null)
+    {
+      this.L = ObjectAnimator.ofFloat(this, "iBCScale", new float[] { 1.0F, 0.9F });
+      this.L.setInterpolator(new LinearInterpolator());
+      this.L.setDuration(334L);
+    }
+    ArrayList localArrayList;
+    if (this.jdField_j_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_j_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.G);
+      localArrayList.add(this.H);
+      localArrayList.add(this.I);
+      localArrayList.add(this.J);
+      localArrayList.add(this.K);
+      localArrayList.add(this.L);
+      this.jdField_j_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_j_of_type_AndroidAnimationAnimatorSet.setStartDelay(66L);
+    }
+    if (this.M == null)
+    {
+      this.M = ObjectAnimator.ofFloat(this, "iBCAlpha", new float[] { 0.0F, 1.0F });
+      this.M.setInterpolator(new LinearInterpolator());
+      this.M.setDuration(200L);
+    }
+    if (this.N == null)
+    {
+      this.N = ObjectAnimator.ofFloat(this, "iBCAlpha", new float[] { 1.0F, 1.0F });
+      this.N.setInterpolator(new LinearInterpolator());
+      this.N.setDuration(2534L);
+    }
+    if (this.O == null)
+    {
+      this.O = ObjectAnimator.ofFloat(this, "iBCAlpha", new float[] { 1.0F, 0.8F });
+      this.O.setInterpolator(new LinearInterpolator());
+      this.O.setDuration(866L);
+    }
+    if (this.jdField_k_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_k_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.M);
+      localArrayList.add(this.N);
+      localArrayList.add(this.O);
+      this.jdField_k_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_k_of_type_AndroidAnimationAnimatorSet.setStartDelay(66L);
+    }
+    if (this.P == null)
+    {
+      this.P = ObjectAnimator.ofFloat(this, "iBCRotate", new float[] { 0.0F, -90.0F });
+      this.P.setInterpolator(new LinearInterpolator());
+      this.P.setDuration(866L);
+    }
+    if (this.Q == null)
+    {
+      this.Q = ObjectAnimator.ofFloat(this, "iBCRotate", new float[] { -90.0F, -450.0F });
+      this.Q.setInterpolator(new LinearInterpolator());
+      this.Q.setDuration(334L);
+    }
+    if (this.R == null)
+    {
+      this.R = ObjectAnimator.ofFloat(this, "iBCRotate", new float[] { -450.0F, -450.0F });
+      this.R.setInterpolator(new LinearInterpolator());
+      this.R.setDuration(800L);
+    }
+    if (this.S == null)
+    {
+      this.S = ObjectAnimator.ofFloat(this, "iBCRotate", new float[] { -450.0F, -90.0F });
+      this.S.setInterpolator(new LinearInterpolator());
+      this.S.setDuration(6000L);
+      this.S.setRepeatCount(-1);
+    }
+    if (this.jdField_l_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_l_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.P);
+      localArrayList.add(this.Q);
+      localArrayList.add(this.R);
+      localArrayList.add(this.S);
+      this.jdField_l_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_l_of_type_AndroidAnimationAnimatorSet.setStartDelay(800L);
+    }
+    if (this.T == null)
+    {
+      this.T = ObjectAnimator.ofFloat(this, "iSCAlpha", new float[] { 0.0F, 1.0F });
+      this.T.setInterpolator(new LinearInterpolator());
+      this.T.setDuration(200L);
+    }
+    if (this.U == null)
+    {
+      this.U = ObjectAnimator.ofFloat(this, "iSCAlpha", new float[] { 1.0F, 1.0F });
+      this.U.setInterpolator(new LinearInterpolator());
+      this.U.setDuration(2534L);
+    }
+    if (this.V == null)
+    {
+      this.V = ObjectAnimator.ofFloat(this, "iSCAlpha", new float[] { 1.0F, 0.8F });
+      this.V.setInterpolator(new LinearInterpolator());
+      this.V.setDuration(866L);
+    }
+    if (this.jdField_m_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_m_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.T);
+      localArrayList.add(this.U);
+      localArrayList.add(this.V);
+      this.jdField_m_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_m_of_type_AndroidAnimationAnimatorSet.setStartDelay(66L);
     }
   }
   
-  public void onDestroy()
+  @TargetApi(11)
+  public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    if (this.W == null)
+    {
+      this.W = ObjectAnimator.ofFloat(this, "tCScale", new float[] { 1.0F, 1.0F });
+      this.W.setInterpolator(new LinearInterpolator());
+      this.W.setDuration(1666L);
+    }
+    if (this.X == null)
+    {
+      this.X = ObjectAnimator.ofFloat(this, "tCScale", new float[] { 1.0F, 0.9F });
+      this.X.setInterpolator(new LinearInterpolator());
+      this.X.setDuration(334L);
+    }
+    ArrayList localArrayList;
+    if (this.jdField_n_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_n_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.W);
+      localArrayList.add(this.X);
+      this.jdField_n_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+    }
+    if (this.Y == null)
+    {
+      this.Y = ObjectAnimator.ofFloat(this, "tCAlpha", new float[] { 0.0F, 1.0F });
+      this.Y.setInterpolator(new LinearInterpolator());
+      this.Y.setDuration(200L);
+    }
+    if (this.Z == null)
+    {
+      this.Z = ObjectAnimator.ofFloat(this, "tCAlpha", new float[] { 1.0F, 1.0F });
+      this.Z.setInterpolator(new LinearInterpolator());
+      this.Z.setDuration(1566L);
+    }
+    if (this.aa == null)
+    {
+      this.aa = ObjectAnimator.ofFloat(this, "tCAlpha", new float[] { 1.0F, 0.0F });
+      this.aa.setInterpolator(new LinearInterpolator());
+      this.aa.setDuration(866L);
+    }
+    if (this.jdField_o_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_o_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.Y);
+      localArrayList.add(this.Z);
+      localArrayList.add(this.aa);
+      this.jdField_o_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_o_of_type_AndroidAnimationAnimatorSet.setStartDelay(34L);
+    }
+  }
+  
+  @TargetApi(11)
+  public void h()
+  {
+    if (this.ab == null)
+    {
+      this.ab = ObjectAnimator.ofFloat(this, "sCScale", new float[] { 1.0F, 1.0F });
+      this.ab.setInterpolator(new LinearInterpolator());
+      this.ab.setDuration(1666L);
+    }
+    if (this.ac == null)
+    {
+      this.ac = ObjectAnimator.ofFloat(this, "sCScale", new float[] { 1.0F, 0.9F });
+      this.ac.setInterpolator(new LinearInterpolator());
+      this.ac.setDuration(334L);
+    }
+    if (this.jdField_p_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_p_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.ab);
+      localArrayList.add(this.ac);
+      this.jdField_p_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+    }
+    if (this.ad == null)
+    {
+      this.ad = ObjectAnimator.ofFloat(this, "sCRotate", new float[] { 0.0F, 45.0F });
+      this.ad.setInterpolator(new LinearInterpolator());
+      this.ad.setDuration(8000L);
+      this.ad.setRepeatCount(-1);
+    }
+    if (this.jdField_q_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_q_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_q_of_type_AndroidAnimationAnimatorSet.play(this.ad);
+    }
+    if (this.ae == null)
+    {
+      this.ae = ObjectAnimator.ofFloat(this, "sCAlpha", new float[] { 0.0F, 1.0F });
+      this.ae.setInterpolator(new LinearInterpolator());
+      this.ae.setDuration(200L);
+    }
+    if (this.jdField_r_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_r_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_r_of_type_AndroidAnimationAnimatorSet.play(this.ae);
+      this.jdField_r_of_type_AndroidAnimationAnimatorSet.setStartDelay(66L);
+    }
+  }
+  
+  @TargetApi(11)
+  public void i()
+  {
+    if (this.af == null)
+    {
+      this.af = ObjectAnimator.ofFloat(this, "sDScale", new float[] { 1.0F, 1.0F });
+      this.af.setInterpolator(new LinearInterpolator());
+      this.af.setDuration(1666L);
+    }
+    if (this.ag == null)
+    {
+      this.ag = ObjectAnimator.ofFloat(this, "sDScale", new float[] { 1.0F, 0.9F });
+      this.ag.setInterpolator(new LinearInterpolator());
+      this.ag.setDuration(334L);
+    }
+    ArrayList localArrayList;
+    if (this.jdField_s_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_s_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.af);
+      localArrayList.add(this.ag);
+      this.jdField_s_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+    }
+    if (this.ah == null)
+    {
+      this.ah = ObjectAnimator.ofFloat(this, "sDAlpha", new float[] { 0.0F, 1.0F });
+      this.ah.setInterpolator(new LinearInterpolator());
+      this.ah.setDuration(200L);
+    }
+    if (this.ai == null)
+    {
+      this.ai = ObjectAnimator.ofFloat(this, "sDAlpha", new float[] { 1.0F, 1.0F });
+      this.ai.setInterpolator(new LinearInterpolator());
+      this.ai.setDuration(1566L);
+    }
+    if (this.aj == null)
+    {
+      this.aj = ObjectAnimator.ofFloat(this, "sDAlpha", new float[] { 1.0F, 0.6F });
+      this.aj.setInterpolator(new LinearInterpolator());
+      this.aj.setDuration(866L);
+    }
+    if (this.jdField_t_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_t_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.ah);
+      localArrayList.add(this.ai);
+      localArrayList.add(this.aj);
+      this.jdField_t_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+      this.jdField_t_of_type_AndroidAnimationAnimatorSet.setStartDelay(34L);
+    }
+  }
+  
+  @TargetApi(11)
+  public void j()
+  {
+    if (this.ak == null)
+    {
+      this.ak = ObjectAnimator.ofFloat(this, "fNCHAlpha", new float[] { 0.0F, 1.0F });
+      this.ak.setInterpolator(new LinearInterpolator());
+      this.ak.setDuration(320L);
+    }
+    if (this.jdField_u_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_u_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_u_of_type_AndroidAnimationAnimatorSet.play(this.ak);
+      this.jdField_u_of_type_AndroidAnimationAnimatorSet.setStartDelay(2000L);
+    }
+    if (this.al == null)
+    {
+      this.al = ObjectAnimator.ofFloat(this, "fLAlpha", new float[] { 0.0F, 1.0F });
+      this.al.setInterpolator(new LinearInterpolator());
+      this.al.setDuration(200L);
+    }
+    if (this.jdField_v_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_v_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_v_of_type_AndroidAnimationAnimatorSet.play(this.al);
+      this.jdField_v_of_type_AndroidAnimationAnimatorSet.setStartDelay(1900L);
+    }
+  }
+  
+  @TargetApi(11)
+  public void k()
+  {
+    if (this.am == null)
+    {
+      this.am = ObjectAnimator.ofFloat(this, "fCPositionY", new float[] { -ViewUtils.dip2px(25.0F), 0.0F });
+      this.am.setInterpolator(new LinearInterpolator());
+      this.am.setDuration(280L);
+    }
+    if (this.jdField_w_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_w_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_w_of_type_AndroidAnimationAnimatorSet.play(this.am);
+      this.jdField_w_of_type_AndroidAnimationAnimatorSet.setStartDelay(2200L);
+    }
+    if (this.an == null)
+    {
+      this.an = ObjectAnimator.ofFloat(this, "fCAlpha", new float[] { 0.0F, 1.0F });
+      this.an.setInterpolator(new LinearInterpolator());
+      this.an.setDuration(280L);
+    }
+    if (this.jdField_x_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_x_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_x_of_type_AndroidAnimationAnimatorSet.play(this.an);
+      this.jdField_x_of_type_AndroidAnimationAnimatorSet.setStartDelay(2200L);
+    }
+  }
+  
+  @TargetApi(11)
+  public void l()
+  {
+    if (this.ao == null)
+    {
+      this.ao = ObjectAnimator.ofFloat(this, "fPAlpha", new float[] { 0.0F, 1.0F });
+      this.ao.setInterpolator(new LinearInterpolator());
+      this.ao.setDuration(280L);
+    }
+    if (this.jdField_y_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_y_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_y_of_type_AndroidAnimationAnimatorSet.play(this.ao);
+      this.jdField_y_of_type_AndroidAnimationAnimatorSet.setStartDelay(2200L);
+    }
+    if (this.ap == null)
+    {
+      this.ap = ObjectAnimator.ofFloat(this, "fPOutCircleAlpha", new float[] { 1.0F, 0.0F, 0.0F });
+      this.ap.setInterpolator(new LinearInterpolator());
+      this.ap.setDuration(1500L);
+      this.ap.setRepeatCount(-1);
+    }
+    if (this.jdField_z_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_z_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_z_of_type_AndroidAnimationAnimatorSet.play(this.ap);
+      this.jdField_z_of_type_AndroidAnimationAnimatorSet.setStartDelay(2200L);
+    }
+    if (this.aq == null)
+    {
+      this.aq = ObjectAnimator.ofFloat(this, "fPOutCircleScale", new float[] { 1.0F, 1.3F, 1.3F });
+      this.aq.setInterpolator(new LinearInterpolator());
+      this.aq.setRepeatCount(-1);
+      this.aq.setDuration(1500L);
+    }
+    if (this.jdField_A_of_type_AndroidAnimationAnimatorSet == null)
+    {
+      this.jdField_A_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_A_of_type_AndroidAnimationAnimatorSet.play(this.aq);
+      this.jdField_A_of_type_AndroidAnimationAnimatorSet.setStartDelay(2200L);
+    }
+  }
+  
+  @TargetApi(11)
+  public void m()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_c_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_c_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_d_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_d_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_e_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_e_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_f_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_f_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void n()
+  {
+    if (this.jdField_g_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_g_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_h_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_h_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_i_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_i_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void o()
+  {
+    if (this.jdField_j_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_j_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_k_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_k_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_l_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_l_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_m_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_m_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void p()
+  {
+    if (this.jdField_n_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_n_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_o_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_o_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void q()
+  {
+    if (this.jdField_p_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_p_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_q_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_q_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_r_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_r_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void r()
+  {
+    if (this.jdField_s_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_s_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_t_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_t_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void s()
+  {
+    if (this.jdField_u_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_u_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_v_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_v_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void t()
+  {
+    if (this.jdField_w_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_w_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_x_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_x_of_type_AndroidAnimationAnimatorSet.start();
+    }
+  }
+  
+  @TargetApi(11)
+  public void u()
+  {
+    if (this.jdField_y_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_y_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_z_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_z_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if (this.jdField_A_of_type_AndroidAnimationAnimatorSet != null) {
+      this.jdField_A_of_type_AndroidAnimationAnimatorSet.start();
     }
   }
 }

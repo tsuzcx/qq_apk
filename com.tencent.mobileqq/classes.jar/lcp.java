@@ -1,14 +1,36 @@
-import com.tencent.av.VideoController;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class lcp
-  implements Comparator<lcv>
 {
-  public lcp(VideoController paramVideoController) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public boolean d;
+  public int e = -1;
+  public boolean e;
+  public int f = 0;
+  public boolean f;
+  public boolean g;
+  public boolean h = true;
   
-  public int a(lcv paramlcv1, lcv paramlcv2)
+  public lcp()
   {
-    return (int)(paramlcv1.d - paramlcv2.d);
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_c_of_type_Long = 2000L;
   }
 }
 

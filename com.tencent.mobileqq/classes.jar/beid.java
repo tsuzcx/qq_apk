@@ -1,13 +1,59 @@
-class beid
-  extends bdga
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
+
+public class beid
+  extends vqr
 {
-  beid(beic parambeic) {}
+  beic jdField_a_of_type_Beic;
+  String jdField_a_of_type_JavaLangString;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public beid(beic parambeic, String paramString)
   {
-    if (beic.a(this.a) != null) {
-      this.a.b(beic.a(this.a));
+    this.jdField_a_of_type_Beic = parambeic;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    return "HwSvc.check_homework";
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
+    try
+    {
+      localErrorInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new vqm(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
+      return paramArrayOfByte;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
+    }
+    return new vqm(-99, "decodeResponse error:" + paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
+    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
+    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Beic.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Beic.jdField_b_of_type_JavaLangString));
+    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Beic.jdField_a_of_type_Long);
+    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Beic.jdField_b_of_type_Long);
+    localReqCheckHomework.uin.set(this.jdField_a_of_type_Beic.c);
+    localReqCheckHomework.pics.add(localYoutuPicInfo);
+    return localReqCheckHomework.toByteArray();
   }
 }
 

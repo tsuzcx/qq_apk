@@ -1,34 +1,23 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 
-class pdu
-  implements View.OnClickListener
+public class pdu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  pdu(pdt parampdt) {}
+  public pdu(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = ((pdv)paramView.getTag()).getAdapterPosition() - pdt.a(this.a).c();
-    int j = this.a.getItemViewType(i);
-    ArticleInfo localArticleInfo = (ArticleInfo)pdt.a(this.a, i);
-    if (localArticleInfo == null) {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
-      this.a.a(i, paramView);
-      localArticleInfo.invalidateProteusTemplateBean();
-      ozs.a = localArticleInfo;
-      pfa.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
-      this.a.notifyItemChanged(i);
-      ozs.b(pdt.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
     }
   }
 }

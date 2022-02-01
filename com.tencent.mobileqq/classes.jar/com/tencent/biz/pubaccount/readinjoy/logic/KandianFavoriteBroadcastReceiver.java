@@ -9,23 +9,23 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import poa;
+import pti;
 import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
 
 public class KandianFavoriteBroadcastReceiver
   extends BroadcastReceiver
 {
   public static final String a;
-  private poa a;
+  private pti a;
   
   static
   {
     jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + KandianFavoriteBroadcastReceiver.class.getSimpleName();
   }
   
-  public KandianFavoriteBroadcastReceiver(poa parampoa)
+  public KandianFavoriteBroadcastReceiver(pti parampti)
   {
-    this.jdField_a_of_type_Poa = parampoa;
+    this.jdField_a_of_type_Pti = parampti;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -49,9 +49,9 @@ public class KandianFavoriteBroadcastReceiver
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "BroadcastReceiver.onReceive  operation == " + i + " rowkey=" + paramIntent + " cid=" + paramContext);
           }
-          if (this.jdField_a_of_type_Poa != null)
+          if (this.jdField_a_of_type_Pti != null)
           {
-            this.jdField_a_of_type_Poa.a(bool, paramIntent, i, paramContext);
+            this.jdField_a_of_type_Pti.a(bool, paramIntent, i, paramContext);
             return;
           }
         }

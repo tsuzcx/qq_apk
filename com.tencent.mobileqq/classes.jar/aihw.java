@@ -1,68 +1,96 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Color;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Label;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.RecommendPerson;
 
-class aihw
-  extends aocj
+public class aihw
 {
-  aihw(aihh paramaihh) {}
+  public int a;
+  public String a;
+  public ArrayList<RecommendLabel> a;
+  public int b;
+  public String b;
+  public String c;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public static aihw a(oidb_0xe3b.RecommendPerson paramRecommendPerson)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    int j = -1;
+    aihw localaihw = new aihw();
+    localaihw.jdField_a_of_type_JavaLangString = String.valueOf(paramRecommendPerson.uint64_uin.get());
+    Object localObject;
+    label74:
+    int i;
+    label98:
+    oidb_0xe3b.Label localLabel;
+    label173:
+    RecommendLabel localRecommendLabel;
+    if (paramRecommendPerson.bytes_title.has())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessChatPie", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      localObject = paramRecommendPerson.bytes_title.get().toStringUtf8();
+      localaihw.jdField_b_of_type_JavaLangString = ((String)localObject);
+      if (!paramRecommendPerson.bytes_reason.has()) {
+        break label404;
       }
-      return;
+      localObject = paramRecommendPerson.bytes_reason.get().toStringUtf8();
+      localaihw.c = ((String)localObject);
+      if (!paramRecommendPerson.uint32_age.has()) {
+        break label410;
+      }
+      i = paramRecommendPerson.uint32_age.get();
+      localaihw.jdField_a_of_type_Int = i;
+      i = j;
+      if (paramRecommendPerson.uint32_gender.has()) {
+        i = paramRecommendPerson.uint32_gender.get();
+      }
+      localaihw.jdField_b_of_type_Int = i;
+      if (!paramRecommendPerson.rpt_msg_label.has()) {
+        break label421;
+      }
+      paramRecommendPerson = paramRecommendPerson.rpt_msg_label.get();
+      localaihw.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRecommendPerson.size());
+      localObject = paramRecommendPerson.iterator();
+      if (!((Iterator)localObject).hasNext()) {
+        break label421;
+      }
+      localLabel = (oidb_0xe3b.Label)((Iterator)localObject).next();
+      localRecommendLabel = new RecommendLabel();
+      if (!localLabel.bytes_name.has()) {
+        break label415;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    if ((QLog.isColorLevel()) && (paramInt1 == 1024)) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "errorCode" + paramInt2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-    }
-    this.a.f(196608);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    label404:
+    label410:
+    label415:
+    for (paramRecommendPerson = localLabel.bytes_name.get().toStringUtf8();; paramRecommendPerson = "")
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
+      localRecommendLabel.bytes_name = paramRecommendPerson;
+      localRecommendLabel.uint32_label_type = localLabel.uint32_label_type.get();
+      if (localLabel.text_color.has()) {
+        localRecommendLabel.text_color = Color.rgb(((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_b.get());
       }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.t = true;
-    this.a.a(262144, null, paramLong);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
+      if (localLabel.edging_color.has()) {
+        localRecommendLabel.edging_color = Color.rgb(((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_b.get());
       }
+      localaihw.jdField_a_of_type_JavaUtilArrayList.add(localRecommendLabel);
+      break label173;
+      localObject = "";
+      break;
+      localObject = "";
+      break label74;
+      i = -1;
+      break label98;
     }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.f(65536);
+    label421:
+    return localaihw;
   }
 }
 

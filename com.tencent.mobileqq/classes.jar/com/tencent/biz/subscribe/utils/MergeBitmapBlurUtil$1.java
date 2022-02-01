@@ -1,15 +1,15 @@
 package com.tencent.biz.subscribe.utils;
 
-import aamz;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
-import bhld;
+import bfuj;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import zju;
 
 public final class MergeBitmapBlurUtil$1
   implements Runnable
@@ -20,10 +20,10 @@ public final class MergeBitmapBlurUtil$1
   {
     try
     {
-      Object localObject = bhld.a(this.jdField_a_of_type_JavaLangString);
+      Object localObject = bfuj.a(this.jdField_a_of_type_JavaLangString);
       if (localObject != null)
       {
-        aamz.a((Bitmap)localObject, this.jdField_a_of_type_AndroidWidgetImageView);
+        zju.a((Bitmap)localObject, this.jdField_a_of_type_AndroidWidgetImageView);
         return;
       }
       localObject = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
@@ -34,7 +34,7 @@ public final class MergeBitmapBlurUtil$1
       Bitmap localBitmap = BitmapFactory.decodeStream(localBufferedInputStream);
       localBufferedInputStream.close();
       ((InputStream)localObject).close();
-      aamz.a(this.jdField_a_of_type_JavaLangString, localBitmap, this.jdField_a_of_type_AndroidWidgetImageView);
+      zju.a(this.jdField_a_of_type_JavaLangString, localBitmap, this.jdField_a_of_type_AndroidWidgetImageView);
       return;
     }
     catch (Exception localException)

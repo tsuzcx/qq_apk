@@ -1,14 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
 
-class xvz
-  implements MediaPlayer.OnPreparedListener
+public class xvz
+  extends vqm
 {
-  xvz(xvy paramxvy, xvt paramxvt) {}
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public xvz(qqstory_service.RspMonitorValue paramRspMonitorValue)
   {
-    this.jdField_a_of_type_Xvt.a_(this.jdField_a_of_type_Xvy);
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

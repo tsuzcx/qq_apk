@@ -1,32 +1,20 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajyu
-  extends AsyncTask<Void, Void, ArrayList<String>>
+public class ajyu
+  implements View.OnClickListener
 {
-  ajyu(ajyt paramajyt, List paramList) {}
+  public ajyu(LingHbFragment paramLingHbFragment) {}
   
-  protected ArrayList<String> a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Ajyt.a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  protected void a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      QLog.e("SDKEmotionSettingManager", 1, " openSetEmotion error pathList = " + paramArrayList);
-      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false, "");
-      ajyt.a(this.jdField_a_of_type_Ajyt);
-      return;
-    }
-    int i = paramArrayList.size();
-    bdll.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
-    ajyt.a(this.jdField_a_of_type_Ajyt).clear();
-    ajyt.a(this.jdField_a_of_type_Ajyt).addAll(paramArrayList);
-    this.jdField_a_of_type_Ajyt.a(paramArrayList);
+    this.a.c.clearFocus();
+    LingHbFragment.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

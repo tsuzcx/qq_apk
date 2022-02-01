@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class ojy
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ojy(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public ojy(ReadInJoyNaviController.2 param2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyChannelActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ojv.a(this.a.this$0, true);
+    ojv.a(this.a.this$0).setAlpha(0.0F);
+    ojv.a(this.a.this$0).removeView(ojv.a(this.a.this$0));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

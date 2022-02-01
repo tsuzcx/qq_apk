@@ -1,9 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import cooperation.wadl.ipc.WadlResult;
 
-public abstract interface aooq
+public class aooq
+  implements aoox
 {
-  public abstract void a(boolean paramBoolean, FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  aooq(aool paramaool) {}
+  
+  public void a(WadlResult paramWadlResult)
+  {
+    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+  }
 }
 
 

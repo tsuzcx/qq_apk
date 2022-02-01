@@ -10,7 +10,9 @@ class EffectsCameraCaptureView$6
   
   public void run()
   {
-    this.this$0.a.getBusinessOperation().handleDanceGameAudioResume();
+    this.this$0.a.getBusinessOperation().stopEffectsAudio();
+    this.this$0.q();
+    this.this$0.a.getBusinessOperation().handleDanceGameAudioPause();
   }
 }
 

@@ -1,83 +1,85 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
-import com.tencent.component.network.module.report.ImageDownloadReporter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
 class bnep
-  implements Downloader.DownloadListener
+  extends SimpleObserver<bnot>
 {
-  bneq jdField_a_of_type_Bneq;
+  bnep(bneo parambneo, bnot parambnot) {}
   
-  public bnep(bnen parambnen, bneq parambneq)
+  public void a(bnot parambnot)
   {
-    this.jdField_a_of_type_Bneq = parambneq;
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 1, "plugin download canceled, url=" + paramString);
+    super.onNext(parambnot);
+    this.jdField_a_of_type_Bneo.a(5);
+    parambnot = this.jdField_a_of_type_Bnot.a;
+    xvv.b("EditVideoSave", "publishParam = " + parambnot);
+    Intent localIntent;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.getActivity() != null)
+    {
+      localIntent = this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.getActivity().getIntent();
+      if (localIntent == null) {
+        break label292;
+      }
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
     }
-    paramString = Message.obtain(this.jdField_a_of_type_Bnen.a, 2);
-    paramString.obj = this.jdField_a_of_type_Bneq;
-    paramString.sendToTarget();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramString = Message.obtain(this.jdField_a_of_type_Bnen.a, 3);
-    paramString.obj = this.jdField_a_of_type_Bneq;
-    paramString.arg1 = -9999;
-    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
     for (;;)
     {
-      try
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.a(), parambnot.b, i, j, this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnee.a.a());
+      boolean bool;
+      if (parambnot.e != 0)
       {
-        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
-        paramString.arg1 = paramDownloadResult.retCode;
-        if (!AppNetConnInfo.isNetSupport()) {
-          continue;
+        bool = true;
+        localIntent.putExtra("video_edit_flag", bool);
+        bneo.a(this.jdField_a_of_type_Bneo, parambnot.b);
+        if (this.jdField_a_of_type_Bneo.jdField_a_of_type_Int != 19) {
+          break label260;
         }
-        i = 1;
-        paramString.arg2 = i;
-        QLog.w("QZonePluginManger", 1, "plugin download failed, code=" + paramDownloadResult.retCode + ", arg2=" + paramString.arg2);
+        localIntent.putExtra("requestCode", 222);
+        this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.getActivity().startActivityForResult(localIntent, 222);
       }
-      catch (Exception paramDownloadResult)
+      for (;;)
       {
-        int i;
-        QLog.w("QZonePluginManger", 1, "onDownloadFailed", paramDownloadResult);
-        continue;
+        this.jdField_a_of_type_Bneo.jdField_a_of_type_Float = 5.0F;
+        this.jdField_a_of_type_Bneo.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bneo.b = (7000.0F / (float)parambnot.a * 4.0F);
+        this.jdField_a_of_type_Bneo.b();
+        return;
+        bool = false;
+        break;
+        label260:
+        localIntent.putExtra("requestCode", 111);
+        this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.getActivity().startActivityForResult(localIntent, 111);
       }
-      paramString.sendToTarget();
-      return;
+      label292:
       i = 0;
+      j = 0;
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void onCancel()
   {
-    bnen.a(this.jdField_a_of_type_Bnen, (int)(100.0F * paramFloat));
-    paramString = Message.obtain(this.jdField_a_of_type_Bnen.a, 5);
-    bneq.a(this.jdField_a_of_type_Bneq).progress = paramFloat;
-    paramString.obj = this.jdField_a_of_type_Bneq;
-    paramString.sendToTarget();
+    super.onCancel();
+    xvv.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnee.a(0);
+    this.jdField_a_of_type_Bneo.c();
+    QQToast.a(this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.a(), amtj.a(2131702912), 0).a();
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void onError(@NonNull Error paramError)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, downloaded path:" + paramDownloadResult.getPath());
-      paramString = bnfk.e(bnen.a(this.jdField_a_of_type_Bnen), bneq.a(this.jdField_a_of_type_Bneq));
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, saved path:" + paramString + ", exsit:" + paramString.exists());
-    }
-    paramString = Message.obtain(this.jdField_a_of_type_Bnen.a, 4);
-    paramString.obj = this.jdField_a_of_type_Bneq;
-    paramString.sendToTarget();
+    super.onError(paramError);
+    xvv.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnee.a(0);
+    QQToast.a(this.jdField_a_of_type_Bneo.jdField_a_of_type_Bnew.a(), 1, amtj.a(2131702875) + paramError, 0).a();
+    this.jdField_a_of_type_Bneo.c();
   }
 }
 

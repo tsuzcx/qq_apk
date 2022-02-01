@@ -1,65 +1,22 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAdLoader.1;
-import com.tencent.gdtad.aditem.GdtAdLoader.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.lang.ref.WeakReference;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acoh
+  implements View.OnClickListener
 {
-  private acoj jdField_a_of_type_Acoj;
-  private WeakReference<acoi> jdField_a_of_type_JavaLangRefWeakReference;
+  public acoh(AccountManageActivity paramAccountManageActivity) {}
   
-  public acoh(acoj paramacoj, WeakReference<acoi> paramWeakReference)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Acoj = paramacoj;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
-  
-  private void a()
-  {
-    new Handler(Looper.getMainLooper()).post(new GdtAdLoader.2(this));
-  }
-  
-  private void b(WeakReference<Context> paramWeakReference)
-  {
-    if ((this.jdField_a_of_type_Acoj == null) || (this.jdField_a_of_type_Acoj.a == null))
-    {
-      acvc.d("GdtAdLoader", "reportForAnalysis error");
-      return;
-    }
-    int i = 0;
-    label27:
-    if (i < this.jdField_a_of_type_Acoj.a.position_info.size()) {
-      if (paramWeakReference == null) {
-        break label90;
-      }
-    }
-    label90:
-    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForLoadAd(localContext, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_Acoj.a.position_info.get(i)).pos_id.get());
-      i += 1;
-      break label27;
-      break;
-    }
-  }
-  
-  public acoj a()
-  {
-    return this.jdField_a_of_type_Acoj;
-  }
-  
-  public void a(WeakReference<Context> paramWeakReference)
-  {
-    ThreadManager.post(new GdtAdLoader.1(this, paramWeakReference), 5, null, true);
-    b(paramWeakReference);
+    Intent localIntent = new Intent();
+    PublicFragmentActivity.a(this.a, localIntent, AccountOnlineStateActivity.class, 0);
+    axvf.a(this.a.app);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

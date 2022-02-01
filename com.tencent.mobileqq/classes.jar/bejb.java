@@ -1,9 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.theme.diy.ResData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bejb
+class bejb
+  implements View.OnClickListener
 {
-  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
+  bejb(beiz parambeiz, CheckBox paramCheckBox) {}
+  
+  public void onClick(View paramView)
+  {
+    CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+  }
 }
 
 

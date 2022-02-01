@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.freshnews;
 
+import amtj;
 import android.widget.ImageView;
-import anzj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
 
@@ -13,9 +13,9 @@ class QQInputView$4
   public void run()
   {
     QQInputView.a(this.this$0).setVisibility(0);
-    QQInputView.a(this.this$0).setImageResource(2130847907);
+    QQInputView.a(this.this$0).setImageResource(2130847817);
     if (AppSetting.c) {
-      QQInputView.a(this.this$0).setContentDescription(anzj.a(2131709274));
+      QQInputView.a(this.this$0).setContentDescription(amtj.a(2131709506));
     }
   }
 }

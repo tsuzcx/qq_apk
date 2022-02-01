@@ -1,103 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class afiu
-  extends aohf
+class afiu
+  implements DialogInterface.OnClickListener
 {
-  public afiu(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  afiu(afit paramafit, String paramString) {}
   
-  protected void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SecSvcObserver", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    ((amrb)this.jdField_a_of_type_Afit.a.app.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Afit.a.app.getProxyManager().a();
+    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.delRecentUser(localRecentUser);
     }
-    boolean bool1;
-    if (paramObject == null)
-    {
-      bool1 = true;
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if ((paramObject instanceof ajnf)) {
-          bool2 = ((ajnf)paramObject).b;
-        }
-      }
-      paramObject = this.a.findViewById(2131374536);
-      if (paramObject != null)
-      {
-        if (!bool2) {
-          break label190;
-        }
-        paramObject.setVisibility(0);
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label138;
-        }
-        this.a.a(true);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      bool1 = false;
-      break;
-      label138:
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        this.a.a(false);
-      }
-      else
-      {
-        paramObject = (ajng)this.a.app.getManager(102);
-        QQSettingSettingActivity.a(this.a, true, paramObject.a);
-        continue;
-        label190:
-        paramObject.setVisibility(8);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    boolean bool = true;
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      if (paramBoolean)
-      {
-        paramString = this.a;
-        if (paramInt == 1) {}
-        for (paramBoolean = bool;; paramBoolean = false)
-        {
-          QQSettingSettingActivity.a(paramString, paramBoolean);
-          return;
-        }
-      }
-    } while (!this.a.isResume());
-    paramString = this.a.getString(2131691848);
-    QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SecSvcObserver", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
-    }
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
-    } while (!this.a.isResume());
-    paramBundle = this.a;
-    paramBundle.jdField_a_of_type_Int -= 1;
+    this.jdField_a_of_type_Afit.a.finish();
   }
 }
 

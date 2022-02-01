@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.soload.LoadOptions;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bdgp
+final class bdgp
+  implements DialogInterface.OnClickListener
 {
-  private LoadOptions a = new LoadOptions();
+  bdgp(QQCustomDialog paramQQCustomDialog, bdgq parambdgq) {}
   
-  bdgp a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x1;
-      return this;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFFE;
-    return this;
-  }
-  
-  public LoadOptions a()
-  {
-    return this.a;
+    if (this.jdField_a_of_type_Bdgq != null) {
+      this.jdField_a_of_type_Bdgq.a(paramInt);
+    }
   }
 }
 

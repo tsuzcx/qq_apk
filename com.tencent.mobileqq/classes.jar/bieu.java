@@ -1,23 +1,21 @@
-import android.graphics.Canvas;
-import android.view.SurfaceHolder;
-
 public class bieu
-  extends bies
 {
-  public bieu(SurfaceHolder paramSurfaceHolder)
-  {
-    super(paramSurfaceHolder);
-  }
-  
-  Canvas a(SurfaceHolder paramSurfaceHolder)
-  {
-    return paramSurfaceHolder.lockHardwareCanvas();
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
 }
 
 

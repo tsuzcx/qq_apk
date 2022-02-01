@@ -1,23 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
-class qla
-  implements View.OnTouchListener
+public abstract interface qla
 {
-  qla(qkv paramqkv, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
-  }
+  public abstract void a();
 }
 
 

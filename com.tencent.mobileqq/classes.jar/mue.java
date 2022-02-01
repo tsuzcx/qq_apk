@@ -1,115 +1,105 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class mue
-  implements SensorEventListener
+  extends BaseAdapter
 {
-  long jdField_a_of_type_Long = 0L;
-  long b = 0L;
+  private int jdField_a_of_type_Int;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  mug jdField_a_of_type_Mug;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  mue(mud parammud) {}
-  
-  String a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  mue(Context paramContext, @NonNull mug parammug)
   {
-    return " x[" + paramFloat1 + "], y[" + paramFloat2 + "], z[" + paramFloat3 + "], acc[" + paramFloat4 + "], mIsMoving[" + mud.b(this.jdField_a_of_type_Mud) + "], mEnbaleProximiy[" + mud.c(this.jdField_a_of_type_Mud) + "], mIsAppOnForeground[" + mud.d(this.jdField_a_of_type_Mud) + "], mIsStarted[" + this.jdField_a_of_type_Mud.d + "], mPowerkeyStatu[" + this.jdField_a_of_type_Mud.jdField_a_of_type_Int + "], mlongDistense[" + mud.a(this.jdField_a_of_type_Mud) + "]";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Mug = parammug;
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammug.a();
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(int paramInt)
   {
-    if (paramSensorEvent.sensor.getType() != 1) {
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(Context paramContext, @NonNull mug parammug)
+  {
+    if (paramContext != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     }
-    long l = System.currentTimeMillis();
-    boolean bool6 = mud.b(this.jdField_a_of_type_Mud);
-    float f1 = paramSensorEvent.values[0];
-    float f2 = paramSensorEvent.values[1];
-    float f3 = paramSensorEvent.values[2];
-    float f4 = f1 * f1 + f2 * f2 + f3 * f3;
-    label94:
-    boolean bool1;
-    if ((f4 < 77.0F) || (f4 > 106.0F))
-    {
-      this.b = l;
-      mud.b(this.jdField_a_of_type_Mud, true);
-      if (this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController == null) {
-        break label571;
-      }
-      paramSensorEvent = this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (paramSensorEvent == null) {
-        break label571;
-      }
-      if (paramSensorEvent.d != 3) {
-        break label465;
-      }
-      bool1 = true;
-    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammug.a();
+    this.jdField_a_of_type_Mug = parammug;
+    notifyDataSetInvalidated();
+  }
+  
+  public void a(String paramString)
+  {
+    int j = getCount();
+    int i = 0;
     for (;;)
     {
-      label130:
-      boolean bool4 = false;
-      boolean bool5 = false;
-      boolean bool2;
-      boolean bool3;
-      if ((bool1) && (mud.c(this.jdField_a_of_type_Mud)) && (mud.d(this.jdField_a_of_type_Mud)) && (!mud.a(this.jdField_a_of_type_Mud)) && (this.jdField_a_of_type_Mud.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Mud.jdField_a_of_type_Int != 3))
+      if (i < j)
       {
-        bool2 = bool5;
-        bool3 = bool4;
-        if (mud.b(this.jdField_a_of_type_Mud))
-        {
-          bool3 = true;
-          bool2 = bool5;
+        muh localmuh = (muh)getItem(i);
+        if ((localmuh != null) && (localmuh.jdField_a_of_type_JavaLangString != null) && (localmuh.jdField_a_of_type_JavaLangString.equals(paramString))) {
+          a(i);
         }
       }
-      for (;;)
+      else
       {
-        if ((QLog.isDevelopLevel()) && ((bool6 != mud.b(this.jdField_a_of_type_Mud)) || (l - this.jdField_a_of_type_Long > 1000L)))
-        {
-          QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 4, "onSensorChanged, bAudio[" + mud.e(this.jdField_a_of_type_Mud) + "->" + bool1 + "], IsMoving[" + bool6 + "->" + mud.b(this.jdField_a_of_type_Mud) + "], bOnScreen[" + bool2 + "], bOffScreen[" + bool3 + "]," + a(f1, f2, f3, f4));
-          this.jdField_a_of_type_Long = l;
-        }
-        mud.c(this.jdField_a_of_type_Mud, bool1);
-        if (!bool2) {
-          break label507;
-        }
-        if (!this.jdField_a_of_type_Mud.d) {
-          break;
-        }
-        QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock[false], when[AccelerationSensorEventListener]," + a(f1, f2, f3, f4));
-        this.jdField_a_of_type_Mud.a(false, false);
         return;
-        if (l - this.b <= 300L) {
-          break label94;
-        }
-        mud.b(this.jdField_a_of_type_Mud, false);
-        break label94;
-        label465:
-        if (!paramSensorEvent.S) {
-          break label571;
-        }
-        bool1 = true;
-        break label130;
-        bool2 = bool5;
-        bool3 = bool4;
-        if (this.jdField_a_of_type_Mud.jdField_a_of_type_Int != 2)
-        {
-          bool2 = true;
-          bool3 = bool4;
+      }
+      i += 1;
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Mug != null) {
+      return this.jdField_a_of_type_Mug.a();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_Mug.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (muh)getItem(paramInt);
+    if (localObject != null) {
+      if (paramView == null)
+      {
+        paramView = new muf((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((muh)localObject).jdField_a_of_type_Int, ((muh)localObject).b);
+        localObject = (muf)paramView;
+        if (paramInt != this.jdField_a_of_type_Int) {
+          break label123;
         }
       }
-      label507:
-      if ((!bool3) || (this.jdField_a_of_type_Mud.d)) {
-        break;
-      }
-      QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock[true], when[AccelerationSensorEventListener]" + a(f1, f2, f3, f4));
-      this.jdField_a_of_type_Mud.a(true, false);
-      return;
-      label571:
-      bool1 = false;
+    }
+    label123:
+    for (boolean bool = true;; bool = false)
+    {
+      ((muf)localObject).a(bool);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      ((muf)paramView).a(((muh)localObject).b);
+      paramView.setContentDescription(((muh)localObject).b);
+      ((muf)paramView).a(((muh)localObject).jdField_a_of_type_Int);
+      break;
     }
   }
 }

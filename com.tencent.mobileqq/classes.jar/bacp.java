@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
+
 public abstract interface bacp
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a();
+  
+  public abstract void a(QQFilterRenderManager.ChainBuilder paramChainBuilder);
 }
 
 

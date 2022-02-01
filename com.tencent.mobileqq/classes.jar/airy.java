@@ -1,210 +1,40 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class airy
+class airy
+  implements AbsListView.OnScrollListener
 {
-  private airx jdField_a_of_type_Airx = new airz(this);
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<aisb>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private airx jdField_b_of_type_Airx = new aisa(this);
-  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<aisb>> jdField_b_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_b_of_type_Boolean;
+  airy(airx paramairx) {}
   
-  public static airy a()
-  {
-    return aisc.a();
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView.getParent() == null) {
-      return;
-    }
-    ((ViewGroup)paramView.getParent()).removeView(paramView);
-  }
-  
-  private void a(ViewGroup paramViewGroup, View paramView)
-  {
-    new RelativeLayout.LayoutParams(-1, -1);
-    if (paramView.getParent() != null) {
-      if (paramView.getParent() != paramViewGroup)
-      {
-        ((ViewGroup)paramView.getParent()).removeView(paramView);
-        paramViewGroup.addView(paramView);
-      }
-    }
-    for (;;)
-    {
-      paramView.bringToFront();
-      return;
-      paramViewGroup.addView(paramView);
-    }
-  }
-  
-  private void a(List<WeakReference<aisb>> paramList)
-  {
-    try
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        aisb localaisb = (aisb)((WeakReference)paramList.next()).get();
-        if (localaisb != null) {
-          localaisb.a();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  private void b(List<WeakReference<aisb>> paramList)
-  {
-    Iterator localIterator = new ArrayList(paramList).iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      aisb localaisb = (aisb)localWeakReference.get();
-      if (localaisb != null) {
-        localaisb.b();
-      } else {
-        paramList.remove(localWeakReference);
-      }
-    }
-  }
-  
-  public StickerBubbleAnimationView a(Context paramContext)
-  {
-    paramContext = d(paramContext);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
-      }
-      a(paramContext);
-      this.jdField_b_of_type_Boolean = false;
-    }
-    return paramContext;
-  }
-  
-  public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Context paramContext)
-  {
-    paramContext = d(paramContext);
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
-      }
-      a(paramViewGroup, paramContext);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    return paramContext;
-  }
-  
-  public void a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "cleanView");
+      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      b(this.jdField_a_of_type_AndroidContentContext);
+    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 24, 0, 1);
+      }
     }
-    if (this.jdField_b_of_type_Boolean) {
-      a(this.jdField_a_of_type_AndroidContentContext);
+    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 24, 0, 1);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
   }
   
-  public void a(aisb paramaisb)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramaisb));
+    if (paramInt != 0) {
       return;
     }
-    finally
-    {
-      paramaisb = finally;
-      throw paramaisb;
-    }
-  }
-  
-  public StickerBubbleAnimationView b(Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
-      }
-      a(paramContext);
-      this.jdField_a_of_type_Boolean = false;
-    }
-    return paramContext;
-  }
-  
-  public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
-      }
-      a(paramViewGroup, paramContext);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return paramContext;
-  }
-  
-  public void b(aisb paramaisb)
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramaisb));
-      return;
-    }
-    finally
-    {
-      paramaisb = finally;
-      throw paramaisb;
-    }
-  }
-  
-  public StickerBubbleAnimationView c(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131378022);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_Airx);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  }
-  
-  public StickerBubbleAnimationView d(Context paramContext)
-  {
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
-    {
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131378022);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_Airx);
-    }
-    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+    this.a.f();
   }
 }
 

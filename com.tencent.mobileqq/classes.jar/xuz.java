@@ -1,13 +1,36 @@
-import java.nio.ByteBuffer;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class xuz
+  extends ysg
 {
-  public long a;
-  public ByteBuffer a;
+  private final String a;
   
-  xuz(int paramInt)
+  public xuz(Context paramContext, String paramString)
   {
-    this.a = ByteBuffer.allocate(paramInt);
+    super(paramContext);
+    this.a = paramString;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 

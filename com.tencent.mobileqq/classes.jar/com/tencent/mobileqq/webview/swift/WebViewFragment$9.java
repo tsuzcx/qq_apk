@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift;
 
 import com.tencent.biz.pubaccount.util.PreloadManager;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 class WebViewFragment$9
   implements Runnable
@@ -13,15 +13,15 @@ class WebViewFragment$9
   {
     try
     {
-      URL localURL = new URL(this.this$0.mUrl);
-      if (PreloadManager.a().a(localURL.getHost())) {
+      URI localURI = new URI(this.this$0.mUrl);
+      if (PreloadManager.a().a(localURI.getHost())) {
         this.this$0.enableSwipeBackForHost(true);
       }
       return;
     }
-    catch (MalformedURLException localMalformedURLException)
+    catch (URISyntaxException localURISyntaxException)
     {
-      localMalformedURLException.printStackTrace();
+      localURISyntaxException.printStackTrace();
     }
   }
 }

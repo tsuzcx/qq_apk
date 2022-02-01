@@ -1,26 +1,19 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class ajrl
-  extends anua
+class ajrl
+  implements aszj
 {
-  public ajrl(TroopView paramTroopView) {}
+  ajrl(ajrk paramajrk) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onNo()
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.a()) {
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694174);
-    }
-    QQToast.a(this.a.a(), 1, paramString1, 0).a();
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
+  }
+  
+  public void onYes()
+  {
+    this.a.a.d();
   }
 }
 

@@ -7,8 +7,8 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewStub;
-import bhsi;
-import bkdz;
+import bfyz;
+import bijk;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.QavPanel;
@@ -16,12 +16,12 @@ import com.tencent.av.ui.VideoControlUI;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lff;
-import mpg;
-import mph;
-import mpi;
-import mpm;
-import mrx;
+import lez;
+import mop;
+import moq;
+import mor;
+import mov;
+import mrg;
 
 public class GuideHelper
 {
@@ -32,7 +32,7 @@ public class GuideHelper
   private final int jdField_a_of_type_Int = 2;
   private Context jdField_a_of_type_AndroidContentContext;
   GuideHelper.DelayTryShowRunnable jdField_a_of_type_ComTencentAvUiGuideGuideHelper$DelayTryShowRunnable;
-  public mpm a;
+  public mov a;
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   
@@ -44,7 +44,7 @@ public class GuideHelper
   
   public GuideHelper()
   {
-    this.jdField_a_of_type_Mpm = new mpm();
+    this.jdField_a_of_type_Mov = new mov();
   }
   
   private int a(long paramLong, Context paramContext)
@@ -68,7 +68,7 @@ public class GuideHelper
   static long a(Context paramContext)
   {
     if (jdField_a_of_type_Long == -1L) {
-      jdField_a_of_type_Long = bhsi.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
+      jdField_a_of_type_Long = bfyz.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
     }
     return jdField_a_of_type_Long;
   }
@@ -101,7 +101,7 @@ public class GuideHelper
       QLog.w("GuideHelper", 1, "tryShow, initTipsView false, had_show[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
       return;
     }
-    if ((this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) && (i == 0))
+    if ((this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) && (i == 0))
     {
       QLog.w("GuideHelper", 1, "tryShow, loadedLottieDrawable, seq[" + paramLong + "]");
       return;
@@ -112,9 +112,9 @@ public class GuideHelper
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Mpm.a(true);
-    mrx.a();
-    bkdz.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
+    this.jdField_a_of_type_Mov.a(true);
+    mrg.a();
+    bijk.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
     if (i == 0)
     {
       a(paramContext, paramLong);
@@ -126,7 +126,7 @@ public class GuideHelper
   static void a(Context paramContext, long paramLong)
   {
     jdField_a_of_type_Long = System.currentTimeMillis();
-    paramContext = bhsi.a(paramContext).edit();
+    paramContext = bfyz.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_gesture_had_show", jdField_a_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -138,11 +138,11 @@ public class GuideHelper
     if (a(paramContext) == 0L)
     {
       paramContext = (AVActivity)paramContext;
-      lff locallff = VideoController.a().a();
-      if ((locallff == null) || (paramContext.a == null)) {
+      lez locallez = VideoController.a().a();
+      if ((locallez == null) || (paramContext.a == null)) {
         return true;
       }
-      boolean bool3 = locallff.t();
+      boolean bool3 = locallez.t();
       boolean bool4 = paramContext.a.i();
       boolean bool5 = paramContext.a.a().b(0);
       boolean bool2 = paramContext.a.d(paramLong);
@@ -167,24 +167,24 @@ public class GuideHelper
       if (paramInt == 0)
       {
         i = 1;
-        if (this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewView == null)
+        if (this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewView == null)
         {
-          if (this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewViewStub == null)
+          if (this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewViewStub == null)
           {
-            this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131373381));
-            if (this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewViewStub != null) {
-              this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewViewStub.inflate();
+            this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131373297));
+            if (this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewViewStub != null) {
+              this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewViewStub.inflate();
             }
           }
-          this.jdField_a_of_type_Mpm.b = localAVActivity.findViewById(2131373542);
-          this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mpm.b.findViewById(2131373624);
+          this.jdField_a_of_type_Mov.b = localAVActivity.findViewById(2131373458);
+          this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mov.b.findViewById(2131373540);
         }
-        this.jdField_a_of_type_Mpm.b.setOnTouchListener(new mpg(this, paramLong));
+        this.jdField_a_of_type_Mov.b.setOnTouchListener(new mop(this, paramLong));
         if (i == 0) {
           break label246;
         }
-        if (this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) {
-          new mpi().a(paramLong, paramContext, jdField_a_of_type_JavaLangString, new mph(this, paramLong, paramContext, paramInt));
+        if (this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) {
+          new mor().a(paramLong, paramContext, jdField_a_of_type_JavaLangString, new moq(this, paramLong, paramContext, paramInt));
         }
       }
       for (;;)
@@ -196,10 +196,10 @@ public class GuideHelper
         i = 0;
         break;
         label246:
-        paramContext = this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewView.getLayoutParams();
+        paramContext = this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewView.getLayoutParams();
         paramContext.width = -2;
         paramContext.height = -2;
-        this.jdField_a_of_type_Mpm.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130842036));
+        this.jdField_a_of_type_Mov.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130842078));
       }
     }
   }
@@ -217,13 +217,13 @@ public class GuideHelper
       if (!bool1)
       {
         paramContext = (AVActivity)paramContext;
-        lff locallff = VideoController.a().a();
-        if ((locallff == null) || (paramContext.a == null))
+        lez locallez = VideoController.a().a();
+        if ((locallez == null) || (paramContext.a == null))
         {
           return true;
           bool1 = false;
         }
-        else if (!locallff.d())
+        else if (!locallez.d())
         {
           i = 1;
           bool1 = paramContext.a.i();
@@ -253,20 +253,20 @@ public class GuideHelper
   private static long b(Context paramContext)
   {
     if (jdField_b_of_type_Long == -1L) {
-      jdField_b_of_type_Long = bhsi.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
+      jdField_b_of_type_Long = bfyz.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
     }
     return jdField_b_of_type_Long;
   }
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_Mpm.a(false);
+    this.jdField_a_of_type_Mov.a(false);
   }
   
   private static void b(Context paramContext, long paramLong)
   {
     jdField_b_of_type_Long = System.currentTimeMillis();
-    paramContext = bhsi.a(paramContext).edit();
+    paramContext = bfyz.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_textchat_had_show2", jdField_b_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -281,14 +281,14 @@ public class GuideHelper
   public void a(long paramLong)
   {
     b(paramLong);
-    if ((this.jdField_a_of_type_Mpm != null) && (this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null))
+    if (this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
     {
-      this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-      this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.clearComposition();
-      this.jdField_a_of_type_Mpm.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(null);
+      this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
+      this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.clearComposition();
+      this.jdField_a_of_type_Mov.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(null);
     }
-    this.jdField_a_of_type_Mpm.a();
+    this.jdField_a_of_type_Mov.a();
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
   }

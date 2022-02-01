@@ -1,20 +1,9 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import kotlin.Metadata;
 
-class rtx
-  extends sbh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$IVideoColumnBannerAction;", "", "onJumpToColumnPlay", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rtx
 {
-  rtx(rsx paramrsx) {}
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    this.a.a.d(paramString);
-  }
+  public abstract void a();
 }
 
 

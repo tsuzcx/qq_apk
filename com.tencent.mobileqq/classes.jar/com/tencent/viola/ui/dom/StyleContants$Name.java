@@ -45,6 +45,8 @@ public abstract interface StyleContants$Name
   public static final String FLEX = "flex";
   public static final String FLEX_DIRECTION = "flexDirection";
   public static final String FLEX_WRAP = "flexWrap";
+  public static final String FLOATBOTTOM = "floatBottom";
+  public static final String FLOATCENTER = "floatCenter";
   public static final String FONTSIZE = "fontSize";
   public static final String FONT_FAMILY = "fontFamily";
   public static final String FONT_SIZE = "fontSize";

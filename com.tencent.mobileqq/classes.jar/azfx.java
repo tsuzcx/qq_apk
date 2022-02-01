@@ -1,44 +1,8 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-
-class azfx
-  extends azik
+public abstract interface azfx
 {
-  azfx(azfn paramazfn) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    super.a(paramBoolean, paramBundle);
-    if ((!azfn.a(this.a)) || (paramBundle == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(azfn.a(this.a)) });
-      }
-    }
-    boolean bool;
-    do
-    {
-      return;
-      bool = paramBundle.getBoolean("param_need_switch_online_status", false);
-      if ((!paramBoolean) || (paramBundle == null)) {
-        break;
-      }
-      i = paramBundle.getInt("StatusId", 0);
-      azfn.a(this.a, AppRuntime.Status.online, i, false);
-    } while (bool);
-    QQToast.a(azfn.a(this.a).getApp(), 2, 2131691178, 1).a();
-    this.a.c();
-    return;
-    if (bool) {}
-    for (int i = 2131697725;; i = 2131691179)
-    {
-      QQToast.a(azfn.a(this.a), 1, i, 1).a();
-      this.a.c();
-      return;
-    }
-  }
+  public abstract void b();
 }
 
 

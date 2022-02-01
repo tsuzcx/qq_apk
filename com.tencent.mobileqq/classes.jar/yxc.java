@@ -1,28 +1,45 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class yxc
-  extends AnimatorListenerAdapter
+public class yxc
+  implements aaeh
 {
-  yxc(yxb paramyxb, View paramView) {}
+  public yxc(ScannerActivity paramScannerActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    yuk.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    ScannerActivity.a(this.a).setVisibility(8);
+    QQCustomDialog localQQCustomDialog = bfur.a(this.a, 230);
+    if (paramInt == 2) {
+      localQQCustomDialog.setMessage(2131717806);
+    }
+    for (;;)
+    {
+      yxd localyxd = new yxd(this);
+      localQQCustomDialog.setPositiveButton(2131694201, localyxd);
+      localQQCustomDialog.setOnCancelListener(localyxd);
+      localQQCustomDialog.show();
+      return;
+      localQQCustomDialog.setMessage(2131717815);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    yuk.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    yuk.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    String str = "QR_CODE";
+    if (ScannerActivity.a(this.a) != null) {
+      str = ScannerActivity.a(this.a).a();
+    }
+    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
   }
 }
 

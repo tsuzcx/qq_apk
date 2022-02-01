@@ -1,16 +1,28 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.dom.style.FlexNode.MeasureFunction;
+import kotlin.Metadata;
 
-class tnm
-  implements ViewFactory.FoundClickableViewListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageDomObject;", "Lcom/tencent/viola/ui/dom/DomObject;", "()V", "forceHeight", "", "getForceHeight", "()F", "setForceHeight", "(F)V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tnm
+  extends DomObject
 {
-  tnm(tnl paramtnl, BaseData paramBaseData, Context paramContext) {}
+  public static final tnn a;
+  private float a;
   
-  public void onFound(ViewBase paramViewBase)
+  static
   {
-    paramViewBase.setOnClickListener(new tnn(this));
+    jdField_a_of_type_Tnn = new tnn(null);
+  }
+  
+  public tnm()
+  {
+    this.jdField_a_of_type_Float = -1.0F;
+    setMeasureFunction((FlexNode.MeasureFunction)new tno(this));
+  }
+  
+  public final void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

@@ -1,50 +1,33 @@
-import android.os.Handler;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auag
-  extends bcbi<bcfr, bcnz>
+  implements View.OnClickListener
 {
-  public auag(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
+  public auag(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
   
-  protected bcil<bcfr, bcnz> a(int paramInt)
+  public void onClick(View paramView)
   {
-    auam localauam = new auam();
-    localauam.a(new auah(this));
-    return localauam;
-  }
-  
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new auap(paramViewGroup);
-  }
-  
-  public void a(List<bcfr> paramList)
-  {
-    super.a(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
-      return;
+      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject, 0);
+      localObject = atzc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
+      abet.a(alvx.a(), "769", "205019", (String)localObject, "76901", "1", "160", new String[] { atzc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
+      ((VasExtensionHandler)alvx.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
     }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
-  }
-  
-  public void a(List<bcfr> paramList, boolean paramBoolean)
-  {
-    super.a(paramList, paramBoolean);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

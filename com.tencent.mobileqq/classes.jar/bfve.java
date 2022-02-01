@@ -1,32 +1,19 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfve
+final class bfve
+  implements View.OnClickListener
 {
-  static long a;
-  public int a;
-  public Bundle a;
-  public bfvf a;
-  public String a;
-  public nkq a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
-  public int f = 1;
+  bfve(QQCustomDialog paramQQCustomDialog) {}
   
-  public bfve()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    long l = jdField_a_of_type_Long + 1L;
-    jdField_a_of_type_Long = l;
-    this.jdField_b_of_type_Long = l;
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

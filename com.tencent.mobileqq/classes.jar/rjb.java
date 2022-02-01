@@ -1,25 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import org.jetbrains.annotations.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SlidingUpDialog$sliding$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rjb
-  implements Animator.AnimatorListener
+public class rjb
+  implements View.OnClickListener
 {
-  rjb(Function0 paramFunction0) {}
+  public rjb(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
-  
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.invoke();
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
-  
-  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import aaek;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bdgb;
-import bduy;
-import bmfq;
-import bmfx;
+import bbyp;
+import bcoo;
+import bkjx;
+import bkke;
 import com.tencent.qphone.base.util.QLog;
+import zbi;
 
 class QQSettingMe$21
   implements Runnable
@@ -20,15 +20,15 @@ class QQSettingMe$21
     String str = "";
     Object localObject2 = "";
     Object localObject1;
-    if ((bmfx.d()) && (!bduy.a()))
+    if ((bkke.d()) && (!bcoo.a()))
     {
-      str = bmfq.a(1);
+      str = bkjx.a(1);
       localObject1 = localObject2;
-      if (!aaek.a())
+      if (!zbi.a())
       {
         localObject1 = localObject2;
-        if (!bdgb.a()) {
-          localObject1 = bmfq.a(2);
+        if (!bbyp.a()) {
+          localObject1 = bkjx.a(2);
         }
       }
     }
@@ -51,7 +51,7 @@ class QQSettingMe$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.21
  * JD-Core Version:    0.7.0.1
  */

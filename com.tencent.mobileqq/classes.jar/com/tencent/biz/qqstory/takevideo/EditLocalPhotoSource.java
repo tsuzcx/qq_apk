@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import yvg;
+import xwr;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new yvg();
+  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new xwr();
   public final LocalMediaInfo a;
   public final String a;
   
@@ -25,29 +25,13 @@ public class EditLocalPhotoSource
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    paramString = b();
+    paramString = checkParam();
     if (paramString != null) {
       throw new IllegalArgumentException(paramString);
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-  }
-  
-  public String b()
+  public String checkParam()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -64,6 +48,22 @@ public class EditLocalPhotoSource
   public int describeContents()
   {
     return 0;
+  }
+  
+  public int getHeight()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+  }
+  
+  @NonNull
+  public String getSourcePath()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int getWidth()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -1,14 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 
-public abstract interface bjcv
+public class bjcv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
+  public bjcv(ColorNotePlugin.1 param1) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    this.a.a.fail();
+  }
 }
 
 

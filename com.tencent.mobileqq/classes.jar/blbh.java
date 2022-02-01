@@ -1,29 +1,42 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QzoneExternalRequest;
 
-final class blbh
-  extends nkq
+class blbh
+  extends QzoneExternalRequest
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  blbh(blbg paramblbg, Intent paramIntent) {}
+  
+  public String getCmdString()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
-    try
+    return "SweetQzoneService.sweet_pair_byebye";
+  }
+  
+  public JceStruct getReq()
+  {
+    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
-      }
-      return;
+      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l1;
+      localsweet_req_comm.uin = l1;
+      localsweet_req_comm.loveuin = l2;
+      localsweet_req_comm.qua = QUA.getQUA3();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    return localsweet_pair_byebye_req;
+  }
+  
+  public String uniKey()
+  {
+    return "sweet_pair_byebye";
   }
 }
 

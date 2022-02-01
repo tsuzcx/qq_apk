@@ -1,19 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
 
-public class stj
-  implements blmh
-{
-  public stj(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if ((ReadInJoyDiandianHeaderController.b(this.a)) && (paramInt == 4097)) {
-      ocd.a(null, "", "0X8009BA4", "0X8009BA4", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator$Companion;", "", "()V", "TAG", "", "fontScale", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class stj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

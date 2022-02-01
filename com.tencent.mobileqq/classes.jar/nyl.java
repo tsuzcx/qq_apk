@@ -1,27 +1,23 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class nyl
-  implements ViewPager.PageTransformer
+  extends AnimatorListenerAdapter
 {
-  private nyl(VerticleViewPager paramVerticleViewPager) {}
+  public nyl(AdControlView paramAdControlView) {}
   
-  public void transformPage(View paramView, float paramFloat)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramFloat < -1.0F)
-    {
-      paramView.setAlpha(0.0F);
-      return;
-    }
-    if (paramFloat <= 1.0F)
-    {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
-      return;
-    }
-    paramView.setAlpha(0.0F);
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 

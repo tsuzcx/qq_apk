@@ -1,10 +1,10 @@
 package com.tencent.tav.decoder.decodecache;
 
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.DecoderTrackSegment;
-import com.tencent.tav.decoder.IDecoder;
 import com.tencent.tav.decoder.IDecoder.DecodeType;
 import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.IDecoderTrack.SurfaceCreator;
@@ -21,7 +21,7 @@ public class CachedVideoDecoderTrack
 {
   private static final String TAG = "CachedVideoTrack";
   private CacheSegment currentFrameSegment;
-  private CMTime lastSampleTime = CMTime.CMTimeInvalid;
+  private CMSampleState lastSampleState = new CMSampleState();
   final Object nextFrameDecoderLock = new Object();
   private CacheSegment nextFrameSegment;
   RenderContext renderContext;
@@ -86,26 +86,26 @@ public class CachedVideoDecoderTrack
       {
         ??? = new StringBuilder().append("readSample: hint nextFrameSegment ");
         if ((((CacheFrame)localObject4).sampleBuffer == null) || (((CacheFrame)localObject4).sampleBuffer.getTextureInfo() == null)) {
-          break label753;
+          break label770;
         }
         bool = true;
         localObject3 = ???.append(bool).append("  ");
         if (((CacheFrame)localObject4).sampleBuffer == null) {
-          break label758;
+          break label775;
         }
       }
     }
-    label753:
-    label758:
+    label770:
+    label775:
     for (??? = Boolean.valueOf(((CacheFrame)localObject4).sampleBuffer.isNewFrame());; ??? = "null")
     {
-      Logger.e("CachedVideoTrack", ??? + " time = " + ((CacheFrame)localObject4).realFrameTime + "  " + ((CacheFrame)localObject4).frameTime);
+      Logger.v("CachedVideoTrack", ??? + " time = " + ((CacheFrame)localObject4).realFrameTime + "  " + ((CacheFrame)localObject4).frameTime);
       this.nextFrameSegment = new CacheSegment(new CMTimeRange(this.currentFrameSegment.getLastFrameTime(), getFrameDuration().multi(this.segmentSize)));
       this.segmentDecoder.decoderSegment(this.nextFrameSegment, null);
-      this.lastSampleTime = ((CacheFrame)localObject4).frameTime;
+      this.lastSampleState = new CMSampleState(((CacheFrame)localObject4).frameTime);
       ??? = ((CacheFrame)localObject4).sampleBuffer;
       return ???;
-      Logger.e("CachedVideoTrack", "readSample: hint nextFrameSegment frame == null " + this.nextFrameSegment.cacheFrameList.size() + "  " + this.currentFrameSegment.cacheFrameList.size());
+      Logger.w("CachedVideoTrack", "readSample: hint nextFrameSegment frame == null " + this.nextFrameSegment.cacheFrameList.size() + "  " + this.currentFrameSegment.cacheFrameList.size());
       this.segmentDecoder.cancel = true;
       for (;;)
       {
@@ -124,12 +124,12 @@ public class CachedVideoDecoderTrack
           }
           if (this.nextFrameSegment.cacheFrameList.size() == 0)
           {
-            return new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
+            return new CMSampleBuffer(CMSampleState.fromError(-1L));
             localObject4 = new StringBuilder().append("readSample: hint nextFrameSegment --- ");
             if (this.nextFrameSegment == null) {}
             for (??? = "";; ??? = this.nextFrameSegment.segmentTimeRange)
             {
-              Logger.e("CachedVideoTrack", ??? + "  " + ???);
+              Logger.w("CachedVideoTrack", ??? + "  " + ???);
               break;
             }
             ??? = finally;
@@ -160,7 +160,7 @@ public class CachedVideoDecoderTrack
         if ((this.currentFrameSegment != null) && (this.currentFrameSegment.cacheFrameList.size() > 0))
         {
           ??? = (CacheFrame)this.currentFrameSegment.cacheFrameList.get(0);
-          this.lastSampleTime = ???.frameTime;
+          this.lastSampleState = new CMSampleState(???.frameTime);
           return ???.sampleBuffer;
         }
       }
@@ -179,7 +179,7 @@ public class CachedVideoDecoderTrack
   
   public CMTime getCurrentSampleTime()
   {
-    return this.lastSampleTime;
+    return this.lastSampleState.getTime();
   }
   
   public CMTime getDuration()
@@ -204,13 +204,13 @@ public class CachedVideoDecoderTrack
   
   public CMSampleBuffer readSample()
   {
-    if (this.lastSampleTime == CMTime.CMTimeInvalid) {
+    if (this.lastSampleState.isInvalid()) {
       return readSample(CMTime.CMTimeZero);
     }
-    if (this.lastSampleTime.smallThan(CMTime.CMTimeZero)) {
-      return new CMSampleBuffer(this.lastSampleTime);
+    if (this.lastSampleState.getTime().smallThan(CMTime.CMTimeZero)) {
+      return new CMSampleBuffer(this.lastSampleState);
     }
-    return readSample(this.lastSampleTime.add(getFrameDuration()));
+    return readSample(this.lastSampleState.getTime().add(getFrameDuration()));
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
@@ -218,13 +218,13 @@ public class CachedVideoDecoderTrack
     if (paramCMTime.smallThan(CMTime.CMTimeZero)) {
       return readSample();
     }
-    Logger.e("CachedVideoTrack", "readSample: targetTime = " + paramCMTime);
+    Logger.v("CachedVideoTrack", "readSample: targetTime = " + paramCMTime);
     if (this.currentFrameSegment != null)
     {
       localObject = this.currentFrameSegment.popFrame(paramCMTime);
       if (localObject != null)
       {
-        this.lastSampleTime = ((CacheFrame)localObject).frameTime;
+        this.lastSampleState = new CMSampleState(((CacheFrame)localObject).frameTime);
         paramCMTime = new StringBuilder().append("readSample: hint currentSegment ");
         boolean bool;
         StringBuilder localStringBuilder;
@@ -233,13 +233,13 @@ public class CachedVideoDecoderTrack
           bool = true;
           localStringBuilder = paramCMTime.append(bool).append("  ");
           if (((CacheFrame)localObject).sampleBuffer == null) {
-            break label179;
+            break label186;
           }
         }
-        label179:
+        label186:
         for (paramCMTime = Boolean.valueOf(((CacheFrame)localObject).sampleBuffer.isNewFrame());; paramCMTime = "null")
         {
-          Logger.e("CachedVideoTrack", paramCMTime + " time = " + ((CacheFrame)localObject).realFrameTime + "  " + ((CacheFrame)localObject).frameTime);
+          Logger.v("CachedVideoTrack", paramCMTime + " time = " + ((CacheFrame)localObject).realFrameTime + "  " + ((CacheFrame)localObject).frameTime);
           return ((CacheFrame)localObject).sampleBuffer;
           bool = false;
           break;
@@ -248,22 +248,22 @@ public class CachedVideoDecoderTrack
     }
     if (!paramCMTime.smallThan(getDuration()))
     {
-      this.lastSampleTime = IDecoder.SAMPLE_TIME_FINISH;
-      return new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
+      this.lastSampleState = CMSampleState.fromError(-1L);
+      return new CMSampleBuffer(CMSampleState.fromError(-1L));
     }
     Object localObject = decoderSegment(paramCMTime);
     if (localObject != null)
     {
-      Logger.e("CachedVideoTrack", "readSample: hint currentSegment - " + ((CMSampleBuffer)localObject).getTime());
+      Logger.v("CachedVideoTrack", "readSample: hint currentSegment - " + ((CMSampleBuffer)localObject).getTime());
       return localObject;
     }
     if (paramCMTime.bigThan(getDuration()))
     {
-      this.lastSampleTime = IDecoder.SAMPLE_TIME_FINISH;
-      return new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
+      this.lastSampleState = CMSampleState.fromError(-1L);
+      return new CMSampleBuffer(CMSampleState.fromError(-1L));
     }
-    this.lastSampleTime = IDecoder.SAMPLE_TIME_ERROR;
-    return new CMSampleBuffer(IDecoder.SAMPLE_TIME_ERROR);
+    this.lastSampleState = CMSampleState.fromError(-3L);
+    return new CMSampleBuffer(CMSampleState.fromError(-3L));
   }
   
   public void release()
@@ -288,11 +288,11 @@ public class CachedVideoDecoderTrack
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
     CMSampleBuffer localCMSampleBuffer = null;
-    Logger.e("CachedVideoTrack", "seekTo: PlayerThreadMain " + paramCMTime);
+    Logger.v("CachedVideoTrack", "seekTo: PlayerThreadMain " + paramCMTime);
     int i;
     if (paramCMTime.bigThan(getFrameDuration()))
     {
-      this.lastSampleTime = paramCMTime.sub(getFrameDuration());
+      this.lastSampleState = new CMSampleState(paramCMTime.sub(getFrameDuration()));
       if (this.currentFrameSegment != null)
       {
         this.currentFrameSegment.clear();
@@ -307,26 +307,26 @@ public class CachedVideoDecoderTrack
       {
         long l = paramCMTime.getTimeUs() / getFrameDuration().getTimeUs();
         if (paramCMTime.getTimeUs() % getFrameDuration().getTimeUs() <= 0L) {
-          break label184;
+          break label201;
         }
         i = 1;
-        label127:
+        label134:
         localCMSampleBuffer = decoderFrame(new CMTime((float)((l + i) * getFrameDuration().getTimeUs()) / 1000000.0F));
         if (localCMSampleBuffer != null) {
-          break label190;
+          break label207;
         }
       }
     }
-    label184:
-    label190:
-    for (paramCMTime = IDecoder.SAMPLE_TIME_FINISH;; paramCMTime = localCMSampleBuffer.getTime())
+    label201:
+    label207:
+    for (paramCMTime = CMSampleState.fromError(-1L);; paramCMTime = localCMSampleBuffer.getState())
     {
-      this.lastSampleTime = paramCMTime;
+      this.lastSampleState = paramCMTime;
       return localCMSampleBuffer;
-      this.lastSampleTime = paramCMTime;
+      this.lastSampleState = new CMSampleState(paramCMTime);
       break;
       i = 0;
-      break label127;
+      break label134;
     }
   }
   

@@ -1,170 +1,79 @@
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.util.SparseIntArray;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import java.lang.ref.WeakReference;
 
-public class akjl
+class akjl
+  implements akjm
 {
-  public static String a;
-  public MessageRecord a;
+  private akjo jdField_a_of_type_Akjo;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public akjl(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public akjl(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageItem", 2, "MessageItem, messageRecord.senderuin = " + paramMessageRecord.senderuin);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public static String a(CharSequence paramCharSequence)
+  public void a(@Nullable akjo paramakjo)
   {
-    paramCharSequence = new StringBuilder(paramCharSequence);
-    int k = paramCharSequence.length();
-    int i = 0;
-    if (i < paramCharSequence.length())
+    this.jdField_a_of_type_Akjo = paramakjo;
+  }
+  
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Akjo == null) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      int m = paramCharSequence.codePointAt(i);
-      int j;
-      if ((m == 20) && (i < k - 1))
-      {
-        j = i;
-        if (paramCharSequence.charAt(i + 1) < begd.jdField_a_of_type_Int)
-        {
-          paramCharSequence.replace(i, i + 2, "\001\001");
-          j = i + 1;
-        }
-      }
-      for (;;)
-      {
-        i = j + 1;
-        break;
-        j = i;
-        if (begd.jdField_a_of_type_AndroidUtilSparseIntArray.get(m, -1) >= 0) {
-          if ((m > 65535) && (k >= i + 2))
-          {
-            paramCharSequence.replace(i, i + 2, "\001\001");
-            j = i;
-          }
-          else
-          {
-            paramCharSequence.replace(i, i + 1, "\001");
-            j = i;
-          }
-        }
-      }
-    }
-    return paramCharSequence.toString();
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    akho.a(localQQAppInterface, this.jdField_a_of_type_Akjo);
   }
   
-  public static void a(String paramString)
+  public void onEnter()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageItem", 2, "setKeyword, keyword = " + paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
     }
-    if ((paramString != null) && (paramString.length() > 0)) {
-      jdField_a_of_type_JavaLangString = paramString.toLowerCase(Locale.US);
-    }
-  }
-  
-  public SpannableString a(String paramString)
-  {
-    int i = a(paramString).toLowerCase(Locale.US).indexOf(jdField_a_of_type_JavaLangString);
-    if (i > 20)
+    Intent localIntent;
+    if (BaseActivity.sTopActivity != null)
     {
-      int j = i - 20;
-      int k = paramString.codePointAt(j - 1);
-      if (k != 20)
-      {
-        i = j;
-        if (begd.jdField_a_of_type_AndroidUtilSparseIntArray.get(k, -1) >= 0)
-        {
-          i = j;
-          if (k <= 65535) {}
-        }
-      }
-      else
-      {
-        i = j + 1;
-      }
-      StringBuilder localStringBuilder = new StringBuilder(paramString.length());
-      localStringBuilder.append("...");
-      localStringBuilder.append(paramString.substring(i));
-      paramString = new SpannableString(localStringBuilder.toString());
-      paramString.setSpan("...", 0, "...".length(), 33);
-      return paramString;
-    }
-    return new SpannableString(paramString);
-  }
-  
-  public CharSequence a(String paramString, int paramInt)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    paramString = new begp(a(paramString), 3, 16);
-    a(paramString, paramInt);
-    return paramString;
-  }
-  
-  public String a(long paramLong)
-  {
-    return bhsw.a(1000L * paramLong, true, "yyyy-MM-dd");
-  }
-  
-  public void a(Spannable paramSpannable, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    String str = a(paramSpannable.toString()).toString().toLowerCase(Locale.US);
-    int m = jdField_a_of_type_JavaLangString.length();
-    String[] arrayOfString = (String[])paramSpannable.getSpans(0, paramSpannable.length(), String.class);
-    if (arrayOfString != null)
-    {
-      int n = arrayOfString.length;
-      int k = 0;
-      for (;;)
-      {
-        i = j;
-        if (k >= n) {
-          break;
-        }
-        if ("...".equals(arrayOfString[k])) {
-          j = "...".length();
-        }
-        k += 1;
-      }
-    }
-    j = str.indexOf(jdField_a_of_type_JavaLangString, i);
-    if ((j >= 0) && (j < str.length()))
-    {
-      i = j + m;
-      paramSpannable.setSpan(new ForegroundColorSpan(paramInt), j, i, 33);
-      j = i;
+      localIntent = new Intent();
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      localIntent.addFlags(268435456);
     }
     for (;;)
     {
-      if (j >= 0)
+      try
       {
-        i = j;
-        if (j < str.length()) {
-          break;
-        }
+        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
+        akho.a(localQQAppInterface, this.jdField_a_of_type_Akjo);
+        return;
       }
-      return;
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localClassNotFoundException.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
     }
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uniseq = ").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localStringBuilder.append(", msg = ").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg);
-    return localStringBuilder.toString();
-  }
+  public void onOverride() {}
 }
 
 

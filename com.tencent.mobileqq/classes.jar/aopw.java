@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public abstract interface aopw
+public class aopw
+  implements abkq
 {
-  public abstract void a(FullMessageSearchResult paramFullMessageSearchResult);
+  public aopw(ArkAppNotifyCenter.GdtNotify.3 param3) {}
+  
+  public void onResponse(abkp paramabkp)
+  {
+    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramabkp));
+  }
 }
 
 

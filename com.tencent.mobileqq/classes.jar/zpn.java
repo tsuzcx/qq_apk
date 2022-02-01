@@ -1,25 +1,42 @@
-public class zpn
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+
+class zpn
+  implements bbrg
 {
-  public static Throwable a(String paramString)
+  zpn(zpm paramzpm) {}
+  
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    return new NullPointerException(paramString);
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    {
+      if (paramInt == 0) {
+        break label152;
+      }
+      VideoEnvironment.LogDownLoad("TroopMemberApiService", amtj.a(2131714570) + paramInt + "]", null);
+      ShortVideoResourceManager.a(amtj.a(2131714624));
+      bbqi.a(2, paramInt);
+      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    }
+    for (;;)
+    {
+      VideoEnvironment.LogDownLoad("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      this.a.jdField_a_of_type_Zpf.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
+      this.a.jdField_a_of_type_Zpf.a.b = false;
+      return;
+      label152:
+      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+    }
   }
   
-  public static Throwable a(String paramString, Throwable paramThrowable)
+  public void onNetWorkNone()
   {
-    if (paramThrowable == null) {
-      return new IllegalStateException(paramString);
-    }
-    return new IllegalStateException(paramString, paramThrowable);
+    this.a.jdField_a_of_type_Zpf.a.b = false;
   }
   
-  public static Throwable b(String paramString, Throwable paramThrowable)
-  {
-    if (paramThrowable == null) {
-      return new Throwable(paramString);
-    }
-    return new Throwable(paramString, paramThrowable);
-  }
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

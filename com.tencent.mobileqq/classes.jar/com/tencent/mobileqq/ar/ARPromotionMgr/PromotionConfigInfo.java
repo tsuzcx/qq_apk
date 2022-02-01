@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
 import android.text.TextUtils;
-import apfj;
-import apfo;
-import apfz;
-import apga;
-import apgf;
-import apgj;
-import apnd;
-import appx;
-import bhui;
+import anyv;
+import anza;
+import anzl;
+import anzm;
+import anzr;
+import anzv;
+import aogq;
+import aojk;
+import bgax;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 import com.tencent.mobileqq.ar.model.ArModelResource;
@@ -32,7 +32,7 @@ import org.json.JSONObject;
 public class PromotionConfigInfo
   extends ConfigInfo
 {
-  public static final String TAG = apgj.jdField_a_of_type_JavaLangString;
+  public static final String TAG = anzv.jdField_a_of_type_JavaLangString;
   public static final int zipIndex_0 = 0;
   public static final int zipIndex_1 = 1;
   public static final int zipIndex_2 = 2;
@@ -41,12 +41,12 @@ public class PromotionConfigInfo
   public long config364Version;
   ArCloudConfigInfo mArCloudConfigInfo = null;
   public boolean mainswitch = false;
-  public TreeMap<String, apfz> operationInfos = new TreeMap();
+  public TreeMap<String, anzl> operationInfos = new TreeMap();
   public boolean showInTopView;
   public boolean showOnce;
   String version = "-1";
   
-  static boolean set364ZipItem(ArCloudConfigInfo paramArCloudConfigInfo, apfz paramapfz)
+  static boolean set364ZipItem(ArCloudConfigInfo paramArCloudConfigInfo, anzl paramanzl)
   {
     int k = 0;
     int j = 0;
@@ -55,56 +55,56 @@ public class PromotionConfigInfo
       QLog.w(TAG, 1, "setZipItem，没有364信息");
       return false;
     }
-    apfz.a(paramapfz, paramArCloudConfigInfo);
+    anzl.a(paramanzl, paramArCloudConfigInfo);
     int i = k;
-    apga localapga;
-    if (paramArCloudConfigInfo.jdField_a_of_type_Apfo != null)
+    anzm localanzm;
+    if (paramArCloudConfigInfo.jdField_a_of_type_Anza != null)
     {
       i = k;
-      if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Apfo.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Anza.jdField_a_of_type_JavaLangString))
       {
         i = k;
-        if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Apfo.jdField_b_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Anza.jdField_b_of_type_JavaLangString))
         {
           i = j;
-          if (paramArCloudConfigInfo.jdField_a_of_type_Apfo.jdField_a_of_type_Int == 1) {
+          if (paramArCloudConfigInfo.jdField_a_of_type_Anza.jdField_a_of_type_Int == 1) {
             i = 1;
           }
-          localapga = new apga(paramapfz.jdField_a_of_type_JavaLangString, 1);
-          localapga.jdField_b_of_type_Int = i;
-          localapga.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Apfo.jdField_a_of_type_JavaLangString;
-          localapga.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Apfo.jdField_b_of_type_JavaLangString;
-          localapga.c = (apfj.b() + localapga.jdField_b_of_type_JavaLangString + ".zip");
-          localapga.d = (apfj.b() + localapga.jdField_b_of_type_JavaLangString + File.separator);
-          apfz.a(paramapfz).put(Integer.valueOf(localapga.jdField_a_of_type_Int), localapga);
+          localanzm = new anzm(paramanzl.jdField_a_of_type_JavaLangString, 1);
+          localanzm.jdField_b_of_type_Int = i;
+          localanzm.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Anza.jdField_a_of_type_JavaLangString;
+          localanzm.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Anza.jdField_b_of_type_JavaLangString;
+          localanzm.c = (anyv.b() + localanzm.jdField_b_of_type_JavaLangString + ".zip");
+          localanzm.d = (anyv.b() + localanzm.jdField_b_of_type_JavaLangString + File.separator);
+          anzl.a(paramanzl).put(Integer.valueOf(localanzm.jdField_a_of_type_Int), localanzm);
         }
       }
     }
     if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString)))
     {
-      localapga = new apga(paramapfz.jdField_a_of_type_JavaLangString, 2);
-      localapga.jdField_b_of_type_Int = i;
-      localapga.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-      localapga.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-      localapga.c = (apfj.a() + localapga.jdField_b_of_type_JavaLangString + apfj.jdField_a_of_type_JavaLangString);
-      localapga.d = (apfj.a() + localapga.jdField_b_of_type_JavaLangString + File.separator);
-      apfz.a(paramapfz).put(Integer.valueOf(localapga.jdField_a_of_type_Int), localapga);
+      localanzm = new anzm(paramanzl.jdField_a_of_type_JavaLangString, 2);
+      localanzm.jdField_b_of_type_Int = i;
+      localanzm.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
+      localanzm.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
+      localanzm.c = (anyv.a() + localanzm.jdField_b_of_type_JavaLangString + anyv.jdField_a_of_type_JavaLangString);
+      localanzm.d = (anyv.a() + localanzm.jdField_b_of_type_JavaLangString + File.separator);
+      anzl.a(paramanzl).put(Integer.valueOf(localanzm.jdField_a_of_type_Int), localanzm);
     }
     return true;
   }
   
-  public apfz getActivityItem()
+  public anzl getActivityItem()
   {
-    apfz localapfz = getItem(this.activityid);
-    if ((localapfz != null) && (apgj.a(localapfz.jdField_a_of_type_Long, localapfz.jdField_b_of_type_Long))) {
-      return localapfz;
+    anzl localanzl = getItem(this.activityid);
+    if ((localanzl != null) && (anzv.a(localanzl.jdField_a_of_type_Long, localanzl.jdField_b_of_type_Long))) {
+      return localanzl;
     }
     return null;
   }
   
-  public apfz getItem(String paramString)
+  public anzl getItem(String paramString)
   {
-    return (apfz)this.operationInfos.get(paramString);
+    return (anzl)this.operationInfos.get(paramString);
   }
   
   int loadResConfig()
@@ -120,15 +120,15 @@ public class PromotionConfigInfo
       do
       {
         return i;
-        j = bhui.a(this.mUin);
-        str = bhui.a(this.mUin);
+        j = bgax.a(this.mUin);
+        str = bgax.a(this.mUin);
         if (str != null) {
           break;
         }
       } while (!AudioHelper.f());
       QLog.w(TAG, 1, "loadResConfig, 没有json");
       return -1;
-      this.mArCloudConfigInfo = apnd.a(str);
+      this.mArCloudConfigInfo = aogq.a(str);
       if (this.mArCloudConfigInfo != null) {
         break;
       }
@@ -142,9 +142,9 @@ public class PromotionConfigInfo
     this.mArCloudConfigInfo.d = 8;
     this.mArCloudConfigInfo.c = 2;
     this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = new ArFeatureInfo();
-    this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d = (appx.a() + "ar_cloud_marker_model/" + this.mArCloudConfigInfo.d + File.separator);
-    if (this.mArCloudConfigInfo.jdField_a_of_type_Apfo != null) {
-      this.mArCloudConfigInfo.jdField_a_of_type_Apfo.jdField_a_of_type_Boolean = true;
+    this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d = (aojk.a() + "ar_cloud_marker_model/" + this.mArCloudConfigInfo.d + File.separator);
+    if (this.mArCloudConfigInfo.jdField_a_of_type_Anza != null) {
+      this.mArCloudConfigInfo.jdField_a_of_type_Anza.jdField_a_of_type_Boolean = true;
     }
     this.config364Version = j;
     return j;
@@ -180,13 +180,13 @@ public class PromotionConfigInfo
           if (i < paramJSONObject.length())
           {
             JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-            apfz localapfz = new apfz();
-            localapfz.jdField_a_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
-            localapfz.jdField_b_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
-            localapfz.c = Integer.valueOf(localJSONObject.getString("recoglizeMask")).intValue();
-            localapfz.jdField_a_of_type_JavaLangString = localJSONObject.getString("id");
-            localapfz.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-            localapfz.jdField_a_of_type_Boolean = localJSONObject.optBoolean("need364");
+            anzl localanzl = new anzl();
+            localanzl.jdField_a_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
+            localanzl.jdField_b_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
+            localanzl.c = Integer.valueOf(localJSONObject.getString("recoglizeMask")).intValue();
+            localanzl.jdField_a_of_type_JavaLangString = localJSONObject.getString("id");
+            localanzl.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
+            localanzl.jdField_a_of_type_Boolean = localJSONObject.optBoolean("need364");
             int j = 1;
             for (;;)
             {
@@ -198,22 +198,23 @@ public class PromotionConfigInfo
               }
               else
               {
-                localObject = new apga(localapfz.jdField_a_of_type_JavaLangString, 0);
-                ((apga)localObject).jdField_a_of_type_JavaLangString = localJSONObject.getString("urlEntry");
-                ((apga)localObject).jdField_b_of_type_JavaLangString = localJSONObject.getString("md5Entry");
-                ((apga)localObject).c = apgf.a(((apga)localObject).e, 0, ((apga)localObject).jdField_b_of_type_JavaLangString);
-                ((apga)localObject).d = apgf.b(((apga)localObject).e, 0, ((apga)localObject).jdField_b_of_type_JavaLangString);
-                apfz.a(localapfz).put(Integer.valueOf(((apga)localObject).jdField_a_of_type_Int), localObject);
-                if (localapfz.jdField_a_of_type_Boolean)
+                localObject = new anzm(localanzl.jdField_a_of_type_JavaLangString, 0);
+                ((anzm)localObject).jdField_a_of_type_JavaLangString = localJSONObject.getString("urlEntry");
+                ((anzm)localObject).jdField_b_of_type_JavaLangString = localJSONObject.getString("md5Entry");
+                ((anzm)localObject).c = anzr.a(((anzm)localObject).e, 0, ((anzm)localObject).jdField_b_of_type_JavaLangString);
+                ((anzm)localObject).d = anzr.b(((anzm)localObject).e, 0, ((anzm)localObject).jdField_b_of_type_JavaLangString);
+                aojk.a(((anzm)localObject).d + ".nomedia");
+                anzl.a(localanzl).put(Integer.valueOf(((anzm)localObject).jdField_a_of_type_Int), localObject);
+                if (localanzl.jdField_a_of_type_Boolean)
                 {
                   loadResConfig();
-                  set364ZipItem(this.mArCloudConfigInfo, localapfz);
+                  set364ZipItem(this.mArCloudConfigInfo, localanzl);
                 }
-                this.operationInfos.put(localapfz.jdField_a_of_type_JavaLangString, localapfz);
+                this.operationInfos.put(localanzl.jdField_a_of_type_JavaLangString, localanzl);
                 i += 1;
                 break;
               }
-              localapfz.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
+              localanzl.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
               j += 1;
             }
           }
@@ -232,9 +233,9 @@ public class PromotionConfigInfo
   public String toString()
   {
     Iterator localIterator = this.operationInfos.values().iterator();
-    apfz localapfz;
-    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localapfz) {
-      localapfz = (apfz)localIterator.next();
+    anzl localanzl;
+    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localanzl) {
+      localanzl = (anzl)localIterator.next();
     }
     return "task_id[" + this.task_id + "], _parseRet[" + this._parseRet + "], mUin[" + this.mUin + "], version[" + this.version + "], enable[" + this.mainswitch + "], activityid[" + this.activityid + "], config364Version[" + this.config364Version + "], Items[" + str + "\n]";
   }

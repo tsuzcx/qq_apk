@@ -1,39 +1,32 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class anuf
-  extends SparseArray<Class<? extends anud>>
+public class anuf
+  extends anri
 {
-  anuf(int paramInt)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    super(paramInt);
-    put(0, MessageHandler.class);
-    put(0, MessageHandler.class);
-    put(1, FriendListHandler.class);
-    put(2, anum.class);
-    put(5, aogo.class);
-    put(10, aogj.class);
-    put(11, PublicAccountHandler.class);
-    put(13, aogu.class);
-    put(14, aoie.class);
-    put(17, aohz.class);
-    put(20, aoip.class);
-    put(31, aogd.class);
-    put(43, nku.class);
-    put(87, aogf.class);
-    put(76, aofs.class);
-    put(84, awvo.class);
-    put(88, ofe.class);
-    put(103, biaa.class);
-    put(107, bitz.class);
-    put(115, apcx.class);
-    put(122, bebl.class);
-    put(127, asvg.class);
-    put(148, apeb.class);
-    put(173, apbv.class);
-    put(174, azll.class);
+    paramQQAppInterface = new anue(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "commonBuddyGroup";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {}
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramContext = paramContext[1].split("&");
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
   }
 }
 

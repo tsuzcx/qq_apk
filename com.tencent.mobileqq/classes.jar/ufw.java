@@ -1,15 +1,13 @@
-import UserGrowth.stSimpleMetaComment;
-import UserGrowth.stSimpleMetaReply;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
 
-class ufw
-  implements aaic
+public class ufw
+  implements DialogInterface.OnClickListener
 {
-  ufw(ufr paramufr, stSimpleMetaComment paramstSimpleMetaComment, boolean paramBoolean, stSimpleMetaReply paramstSimpleMetaReply) {}
+  public ufw(PublicAccountH5AbilityPlugin.7 param7) {}
   
-  public void a()
-  {
-    ufr.a(this.jdField_a_of_type_Ufr, this.jdField_a_of_type_UserGrowthStSimpleMetaComment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_UserGrowthStSimpleMetaReply);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,17 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ywt
-  implements View.OnTouchListener
+class ywt
+  implements DialogInterface.OnClickListener
 {
-  public ywt(EditVideoFilter paramEditVideoFilter) {}
+  ywt(yws paramyws) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a.a(paramMotionEvent);
+    ((amzy)this.a.a.app.getBusinessHandler(10)).a(true);
+    bcef.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
   }
 }
 

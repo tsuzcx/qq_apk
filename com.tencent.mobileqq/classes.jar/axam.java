@@ -1,105 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
 
-public class axam
-  implements Manager
+class axam
+  implements DialogInterface.OnClickListener
 {
-  public static String a;
-  private QQAppInterface a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  axam(awzr paramawzr) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "TimUpgradeHongdianManager";
-  }
-  
-  public axam(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    try
+    if (paramInt == 1)
     {
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_upgrade_hongdian_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
-      localEditor.putBoolean("tim_upgrade_hongdian_switch", false);
-      localEditor.putString("tim_upgrade_hongdian_title", null);
-      localEditor.putString("tim_upgrade_hongdian_sub_title", null);
-      localEditor.putString("tim_upgrade_hongdian_url", null);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "clearHondianSP done");
+      if (this.a.jdField_a_of_type_Axdh != null) {
+        this.a.jdField_a_of_type_Axdh.a(2);
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "clearHondianSP " + localException.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    for (;;)
-    {
-      try
+      if (awzr.a(this.a) != null)
       {
-        SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_upgrade_hongdian_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-        this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("tim_upgrade_hongdian_switch", false);
-        this.b = localSharedPreferences.getString("tim_upgrade_hongdian_title", null);
-        this.c = localSharedPreferences.getString("tim_upgrade_hongdian_sub_title", null);
-        this.d = localSharedPreferences.getString("tim_upgrade_hongdian_url", null);
-        long l2 = System.currentTimeMillis();
-        boolean bool2;
-        if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
-        {
-          bool1 = TextUtils.isEmpty(this.d);
-          if (!bool1)
-          {
-            bool1 = true;
-            bool2 = bool1;
-          }
+        if (!this.a.n) {
+          break label88;
         }
-        boolean bool1 = false;
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "checkIfShowTimHongdian , switchKey = " + this.jdField_a_of_type_Boolean + ", mTitle = " + this.b + ", mSubTitle =" + this.c + ", url=" + this.d + ", sp time cost = " + (l2 - l1) + ", ifShow= " + bool1);
-            bool2 = bool1;
-          }
-          return bool2;
-        }
-        catch (Exception localException2)
-        {
-          continue;
-        }
-        localException1 = localException1;
-        bool1 = false;
-        bool2 = bool1;
-        if (QLog.isColorLevel())
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "checkIfShowTimHongdian " + localException1.toString());
-          return bool1;
-        }
+        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, awzr.a(this.a).uin, "", "yes", "android");
       }
     }
+    label88:
+    do
+    {
+      do
+      {
+        return;
+        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, awzr.a(this.a).uin, "", "yes", "android");
+        return;
+      } while (paramInt != 0);
+      if (this.a.jdField_a_of_type_Axdh != null) {
+        this.a.jdField_a_of_type_Axdh.a(10);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698120);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+      }
+      this.a.jdField_a_of_type_Int = 2;
+    } while (awzr.a(this.a) == null);
+    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, awzr.a(this.a).uin, "", "yes", "android");
   }
-  
-  public void onDestroy() {}
 }
 
 

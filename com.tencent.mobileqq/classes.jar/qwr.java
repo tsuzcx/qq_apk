@@ -1,26 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qwr
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public qwr(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  protected Object clone()
+  public void onClick(View paramView)
   {
-    try
-    {
-      qwr localqwr = (qwr)super.clone();
-      return localqwr;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
+    pyr.a(2, this.jdField_a_of_type_JavaLangString);
+    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

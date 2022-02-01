@@ -1,18 +1,21 @@
-import android.graphics.Paint;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class aizx
+  implements View.OnTouchListener
 {
-  public final Paint a;
-  public final float[] a;
-  public final String[] a;
-  public final Paint b;
+  public aizx(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public aizx(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
-    this.b = paramPaint2;
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 

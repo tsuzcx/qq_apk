@@ -1,47 +1,66 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bach
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  private long jdField_a_of_type_Long;
+  public int a;
   
-  public bach(QzonePhotoView paramQzonePhotoView) {}
+  public bach(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      if ((paramView != null) && ((paramView.getTag() instanceof azvr)))
-      {
-        Object localObject = (azvr)paramView.getTag();
-        if (localObject != null)
-        {
-          int i = ((azvr)localObject).a;
-          localObject = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
-          switch (i)
-          {
-          default: 
-            break;
-          case 25: 
-            bdll.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
-            if (QLog.isColorLevel()) {
-              QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
-            }
-            QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
-          }
-        }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int == paramInt) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
       }
     }
+    Object localObject;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
+      }
+      akrx.a("", "0X8007804", "", "", "", "");
+      this.jdField_a_of_type_Int = paramInt;
+      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
+      if (localView != null)
+      {
+        localObject = (Runnable)localView.getTag();
+        if (localObject != null)
+        {
+          localView.removeCallbacks((Runnable)localObject);
+          localView.setTag(null);
+        }
+        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
+      }
+      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
+      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
+      if (localView != null)
+      {
+        localView.removeCallbacks((Runnable)localView.getTag());
+        localView.clearAnimation();
+      }
+    } while (localObject == null);
+    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
+    ((View)localObject).clearAnimation();
   }
 }
 

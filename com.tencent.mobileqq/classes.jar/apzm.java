@@ -1,67 +1,87 @@
-class apzm
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public class apzm
+  extends aptq<apzl>
 {
-  private double jdField_a_of_type_Double;
-  private long jdField_a_of_type_Long;
-  private long b;
-  private long c;
-  
-  public apzm(long paramLong1, long paramLong2)
+  public static boolean a()
   {
-    this.b = paramLong2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Double = paramLong1;
-    this.c = System.currentTimeMillis();
+    apzl localapzl = (apzl)apub.a().a(613);
+    if (localapzl != null) {}
+    for (boolean bool = localapzl.a();; bool = false)
+    {
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
+      return bool;
+    }
   }
   
-  public boolean a()
+  @NonNull
+  public apzl a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long == -1L) {
-      return true;
-    }
-    if (this.b > 0L)
+    return new apzl();
+  }
+  
+  @Nullable
+  public apzl a(aptx[] paramArrayOfaptx)
+  {
+    int i = 0;
+    if (paramArrayOfaptx == null) {}
+    for (;;)
     {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Double = Math.min(this.jdField_a_of_type_Double + (l - this.c) * this.jdField_a_of_type_Long / this.b, this.jdField_a_of_type_Long);
-      this.c = l;
-      if (this.jdField_a_of_type_Double >= 1.0D)
-      {
-        this.jdField_a_of_type_Double -= 1.0D;
-        return true;
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
+        break;
       }
+      new apzl();
+      return apzl.a(paramArrayOfaptx);
+      i = paramArrayOfaptx.length;
     }
+    return null;
+  }
+  
+  public void a(apzl paramapzl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramapzl.toString());
+    }
+  }
+  
+  public Class<apzl> clazz()
+  {
+    return apzl.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
   }
   
-  public boolean equals(Object paramObject)
+  public int migrateOldVersion()
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (apzm)paramObject;
-      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
-        return false;
-      }
-    } while (this.b == paramObject.b);
-    return false;
+    return 0;
   }
   
-  public int hashCode()
-  {
-    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + (int)(this.b ^ this.b >>> 32);
-  }
+  public void onReqFailed(int paramInt) {}
   
-  public String toString()
+  public int type()
   {
-    return String.format("TokenBucket:mTimes:%d,mPeriod:%d,mTokenCount:%f,mLastTimestamp:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), Double.valueOf(this.jdField_a_of_type_Double), Long.valueOf(this.c) });
+    return 613;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apzm
  * JD-Core Version:    0.7.0.1
  */

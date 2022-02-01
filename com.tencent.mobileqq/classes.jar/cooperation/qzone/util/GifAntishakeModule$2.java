@@ -1,36 +1,35 @@
 package cooperation.qzone.util;
 
 import android.graphics.Bitmap;
-import bnjm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
-public class GifAntishakeModule$2
+class GifAntishakeModule$2
   implements Runnable
 {
-  public GifAntishakeModule$2(bnjm parambnjm, ArrayList paramArrayList, int paramInt1, CountDownLatch paramCountDownLatch, Bitmap paramBitmap, int paramInt2, boolean[] paramArrayOfBoolean) {}
+  GifAntishakeModule$2(GifAntishakeModule paramGifAntishakeModule, ArrayList paramArrayList, int paramInt1, CountDownLatch paramCountDownLatch, Bitmap paramBitmap, int paramInt2, boolean[] paramArrayOfBoolean) {}
   
   public void run()
   {
-    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    Bitmap localBitmap = (Bitmap)this.val$bitmapArrayList.get(this.val$num);
     if (localBitmap == null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      this.val$countDownLatch.countDown();
       return;
     }
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.val$num != 0)
     {
       long l = System.currentTimeMillis();
-      int i = bnjm.a(bnjm.a(this.jdField_a_of_type_AndroidGraphicsBitmap), bnjm.a(localBitmap));
+      int i = GifAntishakeModule.getDistance(GifAntishakeModule.getDhash(this.val$flag), GifAntishakeModule.getDhash(localBitmap));
       if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "DHash: 第一帧与第" + (this.jdField_a_of_type_Int + 1) + "帧的相似度为 dif=" + i + " now:" + (System.currentTimeMillis() - l));
+        QLog.d("QzoneVision", 2, "DHash: 第一帧与第" + (this.val$num + 1) + "帧的相似度为 dif=" + i + " now:" + (System.currentTimeMillis() - l));
       }
-      if ((localBitmap.getWidth() == this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (localBitmap.getHeight() == this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) && (bnjm.a(this.this$0, this.b, i))) {
-        this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = true;
+      if ((localBitmap.getWidth() == this.val$flag.getWidth()) && (localBitmap.getHeight() == this.val$flag.getHeight()) && (GifAntishakeModule.access$300(this.this$0, this.val$totalFrameNum, i))) {
+        this.val$simResult[this.val$num] = true;
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.val$countDownLatch.countDown();
   }
 }
 

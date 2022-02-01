@@ -1,66 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-
-public class zhe
+public abstract interface zhe
 {
-  protected BroadcastReceiver a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private zhh jdField_a_of_type_Zhh;
-  private boolean jdField_a_of_type_Boolean;
+  public abstract void a();
   
-  public zhe(Context paramContext, zhh paramzhh, Handler paramHandler)
-  {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zhf(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Zhh = paramzhh;
-    paramContext = new IntentFilter("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    paramContext.addAction("action_music_start");
-    paramContext.addAction("action_music_refresh_list");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramContext);
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "songMid not exist");
-      }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697599));
-      return;
-    }
-    if (!bhnv.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "Net not Support");
-      }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697604));
-      return;
-    }
-    if (bhnv.b(this.jdField_a_of_type_AndroidContentContext)) {
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697603));
-    }
-    ((QIMMusicConfigManager)bplq.a(2)).a(paramString, this.jdField_a_of_type_Boolean, new zhg(this));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    paramObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramObject);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-  }
+  public abstract void a(int paramInt);
 }
 
 

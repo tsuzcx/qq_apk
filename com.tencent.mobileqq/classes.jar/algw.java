@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class algw
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class algw
 {
-  public algw(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  private boolean a = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void a(@NotNull String paramString)
   {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
+    Intrinsics.checkParameterIsNotNull(paramString, "configText");
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherPreloadWebPageConfigProcessor", 2, paramString);
     }
+    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
+    try
+    {
+      if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.a = bool;
+        return;
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("WeatherPreloadWebPageConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public final boolean a()
+  {
+    return this.a;
   }
 }
 

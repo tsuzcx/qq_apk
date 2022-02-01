@@ -1,26 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class yad
-  extends nkq
+  implements bhhk
 {
-  yad(yab paramyab, boolean paramBoolean) {}
+  yad(yaa paramyaa) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
+  
+  public void onProgressCompleted(bhhi parambhhi)
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(2, bool);
-        this.a.a(0, this.a.a.getString(2131718978));
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
     }
-    ((wjb)this.a.a.app.getManager(181)).a(this.b);
   }
 }
 

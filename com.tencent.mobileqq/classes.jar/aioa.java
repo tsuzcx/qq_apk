@@ -1,21 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30.1;
+import android.view.View;
 
-public class aioa
-  implements Animation.AnimationListener
+public abstract interface aioa
 {
-  aioa(ainh paramainh) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    ainh.d(this.a).post(new PublicAccountChatPie.30.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract View a();
 }
 
 

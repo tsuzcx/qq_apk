@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
-
 public final class aqoe
-  implements Parcelable.Creator<CardOCRInfo>
+  implements Comparable<aqoe>
 {
-  public CardOCRInfo a(Parcel paramParcel)
+  public long a;
+  public final aqod a;
+  
+  public int a(aqoe paramaqoe)
   {
-    return new CardOCRInfo(paramParcel);
+    if (paramaqoe == null) {}
+    do
+    {
+      return 1;
+      if (this.a > paramaqoe.a) {
+        return -1;
+      }
+    } while (this.a < paramaqoe.a);
+    return 0;
   }
   
-  public CardOCRInfo[] a(int paramInt)
+  public String toString()
   {
-    return new CardOCRInfo[paramInt];
+    return "mRemainTime:" + this.a;
   }
 }
 

@@ -1,8 +1,16 @@
-import NS_KING_PUBLIC.stAuth;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-public abstract interface bmfo
+public class bmfo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth);
+  public bmfo(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+  }
 }
 
 

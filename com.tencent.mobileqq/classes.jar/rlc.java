@@ -1,33 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
 
-public class rlc
+class rlc
+  extends Handler
 {
-  public static void a(ReadInJoyUserInfo paramReadInJoyUserInfo, NativeReadInjoyImageView paramNativeReadInjoyImageView)
+  rlc(rlb paramrlb) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (paramReadInJoyUserInfo == null) {
-      QLog.d("ReadInJoyVIconHelper", 2, "[setVIconWithUserInfo], userInfo is null.");
-    }
-    do
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      do
-      {
-        return;
-      } while (paramNativeReadInjoyImageView == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("ReadInJoyVIconHelper", 2, "[refreshVIcon], userInfo = " + paramReadInJoyUserInfo);
-      }
-      if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
-      {
-        paramNativeReadInjoyImageView.setVisibility(0);
-        paramNativeReadInjoyImageView.setImageSrc(paramReadInJoyUserInfo.smallIconUrl);
-        return;
-      }
-    } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
-    paramNativeReadInjoyImageView.setVisibility(0);
-    paramNativeReadInjoyImageView.setImageSrc(paramReadInJoyUserInfo.largeIconUrl);
+    default: 
+      return;
+    }
+    rlb.a(this.a);
   }
 }
 

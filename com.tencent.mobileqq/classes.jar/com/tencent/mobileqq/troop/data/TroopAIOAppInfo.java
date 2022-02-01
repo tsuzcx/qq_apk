@@ -23,6 +23,7 @@ public class TroopAIOAppInfo
   public String hashVal;
   public String iconPress;
   public String iconUrl;
+  public String iconYouth;
   public int identifyMask = 31;
   public boolean isCommon;
   public boolean isGray;

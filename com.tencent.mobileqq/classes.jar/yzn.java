@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-
 public class yzn
-  implements xvr
 {
-  public yzn(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public Object a;
+  public boolean a;
   
-  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
+  public yzn(Object paramObject)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public yzn(Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

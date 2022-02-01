@@ -1,67 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.Dex2Oat;
+import android.widget.TextView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class bmhn
-  implements DialogInterface.OnClickListener
+public class bmhn
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bmgr jdField_a_of_type_Bmgr;
-  bmgt jdField_a_of_type_Bmgt;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   
-  private bmhn(bmhk parambmhk, bmgr parambmgr, boolean paramBoolean1, Context paramContext, bmgt parambmgt, boolean paramBoolean2, String paramString)
+  private String a()
   {
-    this.jdField_a_of_type_Bmgr = parambmgr;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bmgt = parambmgt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("调试信息：\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str) + "\n");
+    }
+    return localStringBuilder.toString();
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
   {
     int i = 0;
-    switch (paramInt)
+    while (i < paramArrayOfString.length / 2)
     {
-    default: 
-      return;
-    case -1: 
-      bmhk.a(this.jdField_a_of_type_Bmhk, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmgt, this.jdField_a_of_type_Bmgr);
-      return;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramArrayOfString[(i * 2)], paramArrayOfString[(i * 2 + 1)]);
+      i += 1;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      bmhk.a(this.jdField_a_of_type_Bmhk, paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmgt, this.jdField_a_of_type_Bmgr);
-      return;
-      paramInt = i;
-      if (this.b)
-      {
-        if (bmhk.a())
-        {
-          boolean bool = Dex2Oat.a(this.jdField_a_of_type_JavaLangString);
-          if (bool) {}
-          for (i = 4;; i = 2)
-          {
-            paramInt = i;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("plugin_tag", 2, "dialog needOTA :" + bool);
-            paramInt = i;
-            break;
-          }
-        }
-        paramInt = 2;
-      }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
     }
   }
 }

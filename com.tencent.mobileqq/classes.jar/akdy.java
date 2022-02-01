@@ -1,22 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class akdy
-  implements View.OnTouchListener
+class akdy
+  implements akfa
 {
-  public akdy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  akdy(akdw paramakdw, akea paramakea) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.y();
-      paramView = this.a.o;
-      this.a.a("Clk_find", paramView, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
     }
-    return true;
+    if (paramBoolean) {
+      akdw.a(this.jdField_a_of_type_Akdw, akdw.a(this.jdField_a_of_type_Akdw), this.jdField_a_of_type_Akea, akdw.b(this.jdField_a_of_type_Akdw));
+    }
+    while (this.jdField_a_of_type_Akea == null) {
+      return;
+    }
+    this.jdField_a_of_type_Akea.a(false);
   }
 }
 

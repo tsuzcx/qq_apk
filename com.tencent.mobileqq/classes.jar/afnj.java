@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
-
 public class afnj
-  implements aebz
 {
-  public afnj(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public int a;
+  TItemViewHolder jdField_a_of_type_JavaLangObject;
   
-  public void a()
+  public afnj(int paramInt, TItemViewHolder paramTItemViewHolder)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    this.jdField_a_of_type_Int = paramTItemViewHolder;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 

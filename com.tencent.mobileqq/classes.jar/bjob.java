@@ -1,10 +1,21 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.widget.ActionSheet.7;
+
 public class bjob
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  public bjob(ActionSheet.7 param7) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.this$0.e();
+    bjnw.a(this.a.this$0, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

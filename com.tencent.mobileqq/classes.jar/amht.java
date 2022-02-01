@@ -1,15 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 public class amht
-  implements DialogInterface.OnClickListener
 {
-  public amht(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString, Bundle paramBundle)
   {
-    this.a.finish();
+    if (paramBundle == null) {}
+    int i;
+    do
+    {
+      String str;
+      for (;;)
+      {
+        return;
+        try
+        {
+          if (amho.a())
+          {
+            i = paramBundle.getInt("featureId");
+            str = paramBundle.getString("featureKey");
+            if ("action_begin_trace".equals(paramString))
+            {
+              amho.a().a(i, str, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("TraceReport", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+      if ("action_end_trace".equals(paramString))
+      {
+        amho.a().b(i, str, paramBundle);
+        return;
+      }
+      if ("action_report_span".equals(paramString))
+      {
+        amho.a().c(i, str, paramBundle);
+        return;
+      }
+      if ("action_update_trace".equals(paramString))
+      {
+        amho.a().a(i, paramBundle);
+        return;
+      }
+    } while (!"action_enable_trace".equals(paramString));
+    boolean bool = paramBundle.getBoolean("enable");
+    amho.a().a(i, bool);
   }
 }
 

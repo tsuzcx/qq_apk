@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import ajry;
+import aimv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedHashMap;
 
 public class AlphabetFriendAdapter$4
   implements Runnable
 {
-  public AlphabetFriendAdapter$4(ajry paramajry, Object[] paramArrayOfObject) {}
+  public AlphabetFriendAdapter$4(aimv paramaimv, Object[] paramArrayOfObject) {}
   
   public void run()
   {
@@ -17,9 +17,9 @@ public class AlphabetFriendAdapter$4
     this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)this.a[0]);
     this.this$0.jdField_a_of_type_ArrayOfInt = ((int[])this.a[1]);
     this.this$0.jdField_a_of_type_ArrayOfJavaLangString = ((String[])this.a[2]);
-    ajry.b(this.this$0);
+    aimv.b(this.this$0);
     this.this$0.c();
-    ajry.c(this.this$0);
+    aimv.c(this.this$0);
   }
 }
 

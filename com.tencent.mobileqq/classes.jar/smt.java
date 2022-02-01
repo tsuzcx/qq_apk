@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class smt
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnLongClickListener
 {
-  public smt(SlideActiveAnimController paramSlideActiveAnimController) {}
+  public smt(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onLongClick(View paramView)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    return false;
   }
 }
 

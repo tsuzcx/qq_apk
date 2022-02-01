@@ -1,18 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class zhl
-  implements DialogInterface.OnClickListener
+class zhl
+  implements TextView.OnEditorActionListener
 {
-  public zhl(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  zhl(zhf paramzhf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.g();
-    paramDialogInterface.dismiss();
-    this.a.dismiss();
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
+    }
+    if (zhf.a(this.a) != null) {
+      zhf.a(this.a).a();
+    }
+    return true;
   }
 }
 

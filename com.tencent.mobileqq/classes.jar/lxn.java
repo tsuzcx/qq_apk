@@ -1,12 +1,18 @@
-class lxn
-  implements bmeo
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+
+public final class lxn
+  implements Parcelable.Creator<RecvGVideoLevelInfo>
 {
-  lxn(lxm paramlxm) {}
-  
-  public void a(bmen parambmen)
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    parambmen.b();
-    parambmen.a();
+    return new RecvGVideoLevelInfo(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 

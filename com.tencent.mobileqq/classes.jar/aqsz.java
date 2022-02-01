@@ -1,27 +1,18 @@
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aqsz
+public class aqsz
   implements View.OnClickListener
 {
-  aqsz(aqsy paramaqsy) {}
+  public aqsz(DataReportSettingFragment paramDataReportSettingFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((aqsy.a(this.a) != null) && (aqsy.a(this.a).getVisibility() == 0) && (aqsy.a(this.a).hasFocus())) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aqsy.a(this.a);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("start_from", 1);
-      ColorNoteSettingFragment.a(aqsy.a(this.a), ColorNoteSettingFragment.class, localBundle);
-      bdll.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
-    }
+    bfur.a(this.a.getActivity(), 0, 2131559610, amtj.a(2131701913), "", amtj.a(2131701908), amtj.a(2131701914), new aqta(this), new aqtb(this)).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

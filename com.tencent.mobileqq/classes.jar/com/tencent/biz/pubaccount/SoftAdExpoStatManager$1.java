@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount;
 
-import bhjc;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import oct;
+import oeg;
 
 public class SoftAdExpoStatManager$1
   implements Runnable
 {
-  public SoftAdExpoStatManager$1(oct paramoct, Map paramMap) {}
+  public SoftAdExpoStatManager$1(oeg paramoeg, Map paramMap) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class SoftAdExpoStatManager$1
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localStringBuilder.append((String)localEntry.getKey()).append("&&").append(localEntry.getValue()).append(",,");
     }
-    bhjc.a(oct.a(this.this$0), oct.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
+    SharePreferenceUtils.set(oeg.a(this.this$0), oeg.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 

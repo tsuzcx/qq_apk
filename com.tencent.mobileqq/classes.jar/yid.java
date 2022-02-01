@@ -1,27 +1,44 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
 class yid
-  extends xfp
+  implements bgrj
 {
-  yid(yic paramyic) {}
+  private String jdField_a_of_type_JavaLangString;
+  private yir jdField_a_of_type_Yir;
   
-  public void a()
+  yid(yir paramyir, String paramString)
   {
-    super.a();
-    yic.a(this.a, null);
+    this.jdField_a_of_type_Yir = paramyir;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(int paramInt)
+  public void onError() {}
+  
+  public void onPlayEnd()
   {
-    super.a(paramInt);
-    yup.a("home_page", "suc_share", 2, paramInt, new String[] { yup.b(yic.a(this.a).a) + "", yup.a(yic.a(this.a).a) + "", yic.a(this.a).a.feedId });
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Yir.c)).concat(".pcm"));
+    if (((File)localObject).exists())
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      FileUtils.copyFile((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
+      if (yib.a() != null)
+      {
+        localObject = yib.a().obtainMessage(10);
+        ((Message)localObject).obj = this.jdField_a_of_type_Yir;
+        yib.a().sendMessage((Message)localObject);
+      }
+    }
   }
   
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    yup.a("home_page", "share_chanel", 2, paramInt, new String[] { yup.b(yic.a(this.a).a) + "", yup.a(yic.a(this.a).a) + "", yic.a(this.a).a.feedId });
-  }
+  public void onPlayStop() {}
+  
+  public void onSlicePlayed(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

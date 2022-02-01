@@ -1,40 +1,77 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.util.Base64;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.activity.QQIdentiferLegacyActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class acuk
-  implements View.OnClickListener
+  extends axkv
 {
-  public acuk(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  public acuk(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void getTmpKeySuccess(String paramString1, String paramString2)
   {
-    GdtInterstitialFragmentForJS.a(this.a).a = 1;
-    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
-    String str;
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
-    {
-      str = "ad is not loaded";
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    }
+    Intent localIntent = new Intent(this.a, QQIdentiferLegacyActivity.class);
+    localIntent.putExtra("platformAppId", 101810106);
+    localIntent.putExtra("srcAppId", 101810106);
+    localIntent.putExtra("srcOpenId", paramString1);
+    localIntent.putExtra("key", paramString2);
+    localIntent.putExtra("method", "setFaceData");
+    localIntent.putExtra("serviceType", 2);
+    this.a.startActivityForResult(localIntent, 21);
+    AuthDevVerifyCodeActivity.a(this.a).setClickable(false);
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e("Q.devlock.AuthDevVerifyCodeActivity", 1, "set face data onRecvVerifyCode error, code : " + this.a.b + " ");
+    if (paramInt != -1) {}
     for (;;)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.a(paramString2, 1);
       return;
-      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
-        str = "ad is loading";
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
-        str = GdtInterstitialFragmentForJS.a(this.a).a();
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
-        str = "正在打开插屏";
-      } else {
-        str = "打开插屏错误";
-      }
+      paramString2 = this.a.getString(2131716113);
     }
+  }
+  
+  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "Set face data onRecvVerifyCode");
+    }
+    AuthDevVerifyCodeActivity.b(this.a).setVisibility(0);
+    int i = 60;
+    if (paramRspBody.uint32_resend_interval.get() > 0) {
+      i = paramRspBody.uint32_resend_interval.get();
+    }
+    AuthDevVerifyCodeActivity.a(this.a, i);
+  }
+  
+  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = ");
+    }
+    if (this.a.isFinishing())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
+      }
+      return;
+    }
+    this.a.c();
+    AuthDevVerifyCodeActivity.a(this.a);
+    paramRspBody = Base64.encodeToString(paramRspBody.toByteArray(), 11);
+    bbon.a(101810106, this.a.getCurrentAccountUin(), "sms", paramRspBody, AuthDevVerifyCodeActivity.a(this.a));
   }
 }
 

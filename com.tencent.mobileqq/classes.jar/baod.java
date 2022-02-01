@@ -1,30 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
-final class baod
-  implements bliz
+public class baod
+  extends Editable.Factory
 {
-  baod(blir paramblir, int[] paramArrayOfInt, String paramString, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  public baod(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
-    {
-    default: 
-      return;
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    if ((!bhvl.a) && (bhvi.a().a())) {
-      bhvi.a().a(paramView);
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    long l = bcrg.a();
-    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
+    return new QQTextBuilder(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
   }
 }
 

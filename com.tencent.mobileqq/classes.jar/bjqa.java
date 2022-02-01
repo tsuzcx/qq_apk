@@ -1,305 +1,241 @@
-import android.content.ContentValues;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 
 public class bjqa
-  extends bjvw
 {
-  public static final bjvx<bjqa> a;
-  public int a;
-  public String a;
-  public List<Friend> a;
-  public int b;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private float jdField_c_of_type_Float;
+  private final int jdField_c_of_type_Int = 300;
+  private float jdField_d_of_type_Float;
+  private final int jdField_d_of_type_Int;
+  private float jdField_e_of_type_Float;
+  private int jdField_e_of_type_Int = 0;
+  private float f;
+  private float g;
+  private float h;
+  private float i;
+  private float j;
+  private float k;
+  private float l;
+  private float m;
+  private float n;
   
-  static
+  public bjqa(Context paramContext)
   {
-    jdField_a_of_type_Bjvx = new bjqb();
+    paramContext = paramContext.getResources();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841507);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130841508);
+    this.jdField_d_of_type_Int = ((int)(paramContext.getDisplayMetrics().density * 300.0F + 0.5F));
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
   }
   
-  public bjqa()
+  private void c()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
+    float f1 = Math.min((float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) / this.m, 1.0F);
+    float f2 = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1);
+    this.jdField_a_of_type_Float = (this.jdField_e_of_type_Float + (this.f - this.jdField_e_of_type_Float) * f2);
+    this.jdField_b_of_type_Float = (this.g + (this.h - this.g) * f2);
+    this.jdField_c_of_type_Float = (this.i + (this.j - this.i) * f2);
+    this.jdField_d_of_type_Float = (this.k + (this.l - this.k) * f2);
+    if (f1 >= 0.999F) {}
+    switch (this.jdField_e_of_type_Int)
+    {
+    default: 
+      return;
+    case 2: 
+      this.jdField_e_of_type_Int = 3;
+      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+      this.m = 1000.0F;
+      this.jdField_e_of_type_Float = this.jdField_a_of_type_Float;
+      this.g = this.jdField_b_of_type_Float;
+      this.i = this.jdField_c_of_type_Float;
+      this.k = this.jdField_d_of_type_Float;
+      this.f = 0.0F;
+      this.h = 0.0F;
+      this.j = 0.0F;
+      this.l = 0.0F;
+      return;
+    case 1: 
+      this.jdField_e_of_type_Int = 4;
+      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+      this.m = 1000.0F;
+      this.jdField_e_of_type_Float = this.jdField_a_of_type_Float;
+      this.g = this.jdField_b_of_type_Float;
+      this.i = this.jdField_c_of_type_Float;
+      this.k = this.jdField_d_of_type_Float;
+      this.f = 0.0F;
+      this.h = 0.0F;
+      this.j = 0.0F;
+      this.l = 0.0F;
+      return;
+    case 4: 
+      if (this.l != 0.0F) {}
+      for (f1 = 1.0F / (this.l * this.l);; f1 = 3.4028235E+38F)
+      {
+        float f3 = this.g;
+        this.jdField_b_of_type_Float = (f1 * (f2 * (this.h - this.g)) + f3);
+        this.jdField_e_of_type_Int = 3;
+        return;
+      }
+    }
+    this.jdField_e_of_type_Int = 0;
   }
   
-  public static final List<bjqa> a(JSONObject paramJSONObject)
+  public void a()
   {
-    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
-    int k = paramJSONObject.optInt("app_tid", -1);
-    int m = paramJSONObject.optInt("app_rid", -1);
-    int n = localJSONArray1.length();
-    ArrayList localArrayList1 = new ArrayList(n);
-    int i = 0;
-    while (i < n)
-    {
-      JSONObject localJSONObject = localJSONArray1.getJSONObject(i);
-      JSONArray localJSONArray2 = localJSONObject.getJSONArray("data");
-      int i1 = localJSONArray2.length();
-      ArrayList localArrayList2 = new ArrayList(i1);
-      int j = 0;
-      if (j < i1)
-      {
-        Object localObject = localJSONArray2.getJSONObject(j);
-        String str = ((JSONObject)localObject).getString("data");
-        if (((JSONObject)localObject).has("nick"))
-        {
-          paramJSONObject = ((JSONObject)localObject).getString("nick");
-          label129:
-          if (!((JSONObject)localObject).has("label")) {
-            break label216;
-          }
-        }
-        label216:
-        for (localObject = ((JSONObject)localObject).getString("label");; localObject = null)
-        {
-          Friend localFriend = new Friend();
-          localFriend.jdField_a_of_type_JavaLangString = str;
-          localFriend.jdField_b_of_type_JavaLangString = bjud.a(paramJSONObject);
-          localFriend.jdField_c_of_type_JavaLangString = bjud.a((String)localObject);
-          localFriend.jdField_b_of_type_Int = m;
-          localFriend.jdField_c_of_type_Int = k;
-          localArrayList2.add(localFriend);
-          j += 1;
-          break;
-          paramJSONObject = null;
-          break label129;
-        }
-      }
-      paramJSONObject = new bjqa();
-      paramJSONObject.jdField_a_of_type_Int = i;
-      paramJSONObject.jdField_a_of_type_JavaLangString = bjud.a(localJSONObject.getString("label"));
-      paramJSONObject.jdField_a_of_type_JavaUtilList = localArrayList2;
-      localArrayList1.add(paramJSONObject);
-      i += 1;
-    }
-    return localArrayList1;
+    this.jdField_e_of_type_Int = 0;
   }
   
-  public static final List<bjqa> b(JSONObject paramJSONObject)
+  public void a(float paramFloat)
   {
-    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("data");
-    int m = localJSONArray1.length();
-    int n = paramJSONObject.optInt("app_tid", -1);
-    int i1 = paramJSONObject.optInt("app_rid", -1);
-    ArrayList localArrayList1 = new ArrayList(m + 3);
-    ArrayList localArrayList2 = new ArrayList();
-    bjqa localbjqa = new bjqa();
-    localbjqa.jdField_a_of_type_Int = 0;
-    localbjqa.jdField_a_of_type_JavaLangString = anzj.a(2131703766);
-    localbjqa.jdField_a_of_type_JavaUtilList = localArrayList2;
-    localArrayList1.add(localbjqa);
-    int j = 0;
-    int i = 1;
-    while (j < m)
-    {
-      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
-      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("friends");
-      int i2 = localJSONArray2.length();
-      ArrayList localArrayList3 = new ArrayList(i2);
-      int k = 0;
-      while (k < i2)
-      {
-        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
-        if (localJSONObject2.getInt("unabled") == 1)
-        {
-          k += 1;
-        }
-        else
-        {
-          String str2 = localJSONObject2.getString("openid");
-          if (localJSONObject2.has("nickname"))
-          {
-            localObject = localJSONObject2.getString("nickname");
-            label202:
-            if (!localJSONObject2.has("remark")) {
-              break label307;
-            }
-          }
-          label307:
-          for (String str1 = localJSONObject2.getString("remark");; str1 = null)
-          {
-            Friend localFriend = new Friend();
-            localFriend.jdField_a_of_type_JavaLangString = str2;
-            localFriend.jdField_b_of_type_JavaLangString = bjud.a((String)localObject);
-            localFriend.jdField_c_of_type_JavaLangString = bjud.a(str1);
-            if (localJSONObject2.getInt("specified") == 1)
-            {
-              localFriend.jdField_b_of_type_Int = i1;
-              localFriend.jdField_c_of_type_Int = n;
-              localArrayList2.add(localFriend);
-            }
-            localArrayList3.add(localFriend);
-            break;
-            localObject = null;
-            break label202;
-          }
-        }
-      }
-      Object localObject = new bjqa();
-      ((bjqa)localObject).jdField_a_of_type_Int = i;
-      ((bjqa)localObject).jdField_a_of_type_JavaLangString = bjud.a(localJSONObject1.getString("groupname"));
-      ((bjqa)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
-      localArrayList1.add(localObject);
-      j += 1;
-      i += 1;
+    long l1 = AnimationUtils.currentAnimationTimeMillis();
+    if ((this.jdField_e_of_type_Int == 4) && ((float)(l1 - this.jdField_a_of_type_Long) < this.m)) {
+      return;
     }
-    if (paramJSONObject.getInt("only") == 1)
-    {
-      paramJSONObject = new ArrayList(1);
-      paramJSONObject.add(localbjqa);
-      return paramJSONObject;
+    if (this.jdField_e_of_type_Int != 1) {
+      this.jdField_d_of_type_Float = 1.0F;
     }
-    if (localArrayList2.size() == 0)
+    this.jdField_e_of_type_Int = 1;
+    this.jdField_a_of_type_Long = l1;
+    this.m = 167.0F;
+    this.n += paramFloat;
+    float f1 = Math.abs(this.n);
+    float f2 = Math.max(0.6F, Math.min(f1, 0.8F));
+    this.jdField_e_of_type_Float = f2;
+    this.jdField_a_of_type_Float = f2;
+    f1 = Math.max(0.5F, Math.min(f1 * 7.0F, 1.0F));
+    this.g = f1;
+    this.jdField_b_of_type_Float = f1;
+    f1 = Math.min(0.8F, this.jdField_c_of_type_Float + Math.abs(paramFloat) * 1.1F);
+    this.i = f1;
+    this.jdField_c_of_type_Float = f1;
+    f2 = Math.abs(paramFloat);
+    f1 = f2;
+    if (paramFloat > 0.0F)
     {
-      localArrayList1.remove(0);
-      i = 0;
-      while (i < localArrayList1.size())
-      {
-        paramJSONObject = (bjqa)localArrayList1.get(i);
-        paramJSONObject.jdField_a_of_type_Int -= 1;
-        i += 1;
+      f1 = f2;
+      if (this.n < 0.0F) {
+        f1 = -f2;
       }
     }
-    return localArrayList1;
+    if (this.n == 0.0F) {
+      this.jdField_d_of_type_Float = 0.0F;
+    }
+    paramFloat = Math.min(4.0F, Math.max(0.0F, f1 * 7.0F + this.jdField_d_of_type_Float));
+    this.k = paramFloat;
+    this.jdField_d_of_type_Float = paramFloat;
+    this.f = this.jdField_a_of_type_Float;
+    this.h = this.jdField_b_of_type_Float;
+    this.j = this.jdField_c_of_type_Float;
+    this.l = this.jdField_d_of_type_Float;
   }
   
-  public static final List<bjqa> c(JSONObject paramJSONObject)
+  public void a(int paramInt)
   {
-    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
-    int m = localJSONArray1.length();
-    int n = paramJSONObject.optInt("app_tid", -1);
-    int i1 = paramJSONObject.optInt("app_rid", -1);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    bjqa localbjqa2 = new bjqa();
-    localbjqa2.jdField_a_of_type_Int = 0;
-    localbjqa2.jdField_a_of_type_JavaLangString = anzj.a(2131703765);
-    localbjqa2.jdField_a_of_type_JavaUtilList = localArrayList2;
-    localArrayList1.add(localbjqa2);
-    int i = 0;
-    bjqa localbjqa1 = null;
-    int j = 1;
-    if (i < m)
+    this.jdField_e_of_type_Int = 2;
+    paramInt = Math.max(100, Math.abs(paramInt));
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.m = (0.1F + paramInt * 0.03F);
+    this.jdField_e_of_type_Float = 0.0F;
+    this.g = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.i = 0.5F;
+    this.k = 0.0F;
+    this.f = Math.max(0, Math.min(paramInt * 8, 1));
+    this.h = Math.max(0.5F, Math.min(paramInt * 8, 1.0F));
+    this.l = Math.min(0.025F + paramInt / 100 * paramInt * 0.00015F, 1.75F);
+    this.j = Math.max(this.i, Math.min(paramInt * 16 * 1.0E-005F, 0.8F));
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_e_of_type_Int == 0;
+  }
+  
+  public boolean a(Canvas paramCanvas)
+  {
+    boolean bool = false;
+    c();
+    int i1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    int i2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    int i3 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha((int)(Math.max(0.0F, Math.min(this.jdField_c_of_type_Float, 1.0F)) * 255.0F));
+    i2 = (int)Math.min(i2 * this.jdField_d_of_type_Float * i2 / i3 * 0.6F, i2 * 4.0F);
+    if (this.jdField_a_of_type_Int < this.jdField_d_of_type_Int)
     {
-      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(i);
-      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("data");
-      int i2 = localJSONArray2.length();
-      ArrayList localArrayList3 = new ArrayList();
-      int k = 0;
-      Object localObject;
-      if (k < i2)
-      {
-        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
-        String str2 = localJSONObject2.getString("data");
-        if (localJSONObject2.has("nick"))
-        {
-          localObject = localJSONObject2.getString("nick");
-          label181:
-          if (!localJSONObject2.has("label")) {
-            break label294;
-          }
-        }
-        label294:
-        for (String str1 = localJSONObject2.getString("label");; str1 = null)
-        {
-          Friend localFriend = new Friend();
-          localFriend.jdField_a_of_type_JavaLangString = str2;
-          localFriend.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localFriend.jdField_c_of_type_JavaLangString = str1;
-          if ((localJSONObject2.getInt("specified") == 1) && (!localArrayList2.contains(localFriend)))
-          {
-            localFriend.jdField_b_of_type_Int = i1;
-            localFriend.jdField_c_of_type_Int = n;
-            localArrayList2.add(localFriend);
-          }
-          localArrayList3.add(localFriend);
-          k += 1;
-          break;
-          localObject = null;
-          break label181;
-        }
+      i3 = (this.jdField_a_of_type_Int - this.jdField_d_of_type_Int) / 2;
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(i3, 0, this.jdField_a_of_type_Int - i3, i2);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha((int)(Math.max(0.0F, Math.min(this.jdField_a_of_type_Float, 1.0F)) * 255.0F));
+      i1 = (int)(i1 * this.jdField_b_of_type_Float);
+      if (this.jdField_a_of_type_Int >= this.jdField_d_of_type_Int) {
+        break label249;
       }
-      if (anzj.a(2131703764).equals(localJSONObject1.getString("label")))
-      {
-        localbjqa1 = new bjqa();
-        localbjqa1.jdField_a_of_type_Int = 0;
-        localbjqa1.jdField_a_of_type_JavaLangString = bjud.a(localJSONObject1.getString("label"));
-        localbjqa1.jdField_a_of_type_JavaUtilList = localArrayList3;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = new bjqa();
-        ((bjqa)localObject).jdField_a_of_type_Int = j;
-        ((bjqa)localObject).jdField_a_of_type_JavaLangString = bjud.a(localJSONObject1.getString("label"));
-        ((bjqa)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
-        localArrayList1.add(localObject);
-        j += 1;
-      }
-    }
-    if (paramJSONObject.getInt("only") == 1)
-    {
-      paramJSONObject = new ArrayList();
-      paramJSONObject.add(localbjqa2);
-      return paramJSONObject;
-    }
-    if (localArrayList2.size() == 0)
-    {
-      if ((localbjqa1 == null) || (localbjqa1.jdField_a_of_type_JavaUtilList == null) || (localbjqa1.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label493;
-      }
-      localArrayList1.remove(0);
-      localArrayList1.add(0, localbjqa1);
+      i2 = (this.jdField_a_of_type_Int - this.jdField_d_of_type_Int) / 2;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i2, 0, this.jdField_a_of_type_Int - i2, i1);
     }
     for (;;)
     {
-      return localArrayList1;
-      label493:
-      localArrayList1.remove(0);
-      i = 0;
-      while (i < localArrayList1.size())
-      {
-        paramJSONObject = (bjqa)localArrayList1.get(i);
-        paramJSONObject.jdField_a_of_type_Int -= 1;
-        i += 1;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      if (this.jdField_e_of_type_Int != 0) {
+        bool = true;
       }
+      return bool;
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, i2);
+      break;
+      label249:
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, i1);
     }
   }
   
-  public void a(Parcel paramParcel)
+  public void b()
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Friend.CREATOR);
-  }
-  
-  public void b(Parcel paramParcel)
-  {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void writeTo(ContentValues paramContentValues)
-  {
-    Parcel localParcel = Parcel.obtain();
-    b(localParcel);
-    byte[] arrayOfByte = localParcel.marshall();
-    localParcel.recycle();
-    paramContentValues.put("data", arrayOfByte);
-    paramContentValues.put("groupId", Integer.valueOf(this.jdField_a_of_type_Int));
+    this.n = 0.0F;
+    if ((this.jdField_e_of_type_Int != 1) && (this.jdField_e_of_type_Int != 4)) {
+      return;
+    }
+    this.jdField_e_of_type_Int = 3;
+    this.jdField_e_of_type_Float = this.jdField_a_of_type_Float;
+    this.g = this.jdField_b_of_type_Float;
+    this.i = this.jdField_c_of_type_Float;
+    this.k = this.jdField_d_of_type_Float;
+    this.f = 0.0F;
+    this.h = 0.0F;
+    this.j = 0.0F;
+    this.l = 0.0F;
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.m = 1000.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import yvs;
+import xxd;
 
 public class EditPicSave$4
   implements Runnable
 {
-  public EditPicSave$4(yvs paramyvs) {}
+  public EditPicSave$4(xxd paramxxd) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    yvs localyvs = this.this$0;
-    localyvs.jdField_a_of_type_Int += this.this$0.b;
+    xxd localxxd = this.this$0;
+    localxxd.jdField_a_of_type_Int += this.this$0.b;
     if (this.this$0.jdField_a_of_type_Int > 99)
     {
       this.this$0.jdField_a_of_type_Int = 99;
@@ -21,7 +21,7 @@ public class EditPicSave$4
       return;
     }
     this.this$0.a(this.this$0.jdField_a_of_type_Int);
-    this.this$0.f();
+    this.this$0.g();
   }
 }
 

@@ -208,13 +208,17 @@ public class BubbleImageView
         this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
       }
       if (!this.jdField_i_of_type_Boolean) {
-        break label328;
+        break label337;
       }
     }
-    if (this.jdField_a_of_type_AndroidGraphicsComposeShader == null) {
-      this.jdField_a_of_type_AndroidGraphicsComposeShader = new ComposeShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader, a(), PorterDuff.Mode.SRC_OVER);
+    if (this.jdField_a_of_type_AndroidGraphicsComposeShader == null)
+    {
+      Shader localShader = a();
+      if (localShader != null) {
+        this.jdField_a_of_type_AndroidGraphicsComposeShader = new ComposeShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader, localShader, PorterDuff.Mode.SRC_OVER);
+      }
     }
-    label328:
+    label337:
     for (this.jdField_a_of_type_AndroidGraphicsShader = this.jdField_a_of_type_AndroidGraphicsComposeShader;; this.jdField_a_of_type_AndroidGraphicsShader = this.jdField_a_of_type_AndroidGraphicsBitmapShader)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsShader);

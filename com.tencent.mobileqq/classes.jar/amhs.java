@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amhs
-  implements DialogInterface.OnClickListener
+final class amhs
+  implements EIPCResultCallback
 {
-  public amhs(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCallback(EIPCResult paramEIPCResult) {}
 }
 
 

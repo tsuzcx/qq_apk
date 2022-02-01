@@ -2,18 +2,18 @@ package dov.com.qq.im.ae.camera.ui.dashboard;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import bonf;
-import bonl;
+import blrm;
+import blrs;
 import eipc.EIPCResult;
 
 public class AEVideoStoryDashboardPart$6$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$6$1(bonl parambonl, EIPCResult paramEIPCResult) {}
+  public AEVideoStoryDashboardPart$6$1(blrs paramblrs, EIPCResult paramEIPCResult) {}
   
   public void run()
   {
-    bonf.a(this.jdField_a_of_type_Bonl.a).setText(this.jdField_a_of_type_EipcEIPCResult.data.getString("KEY_ENV_INFO"));
+    blrm.a(this.jdField_a_of_type_Blrs.a).setText(this.jdField_a_of_type_EipcEIPCResult.data.getString("KEY_ENV_INFO"));
   }
 }
 

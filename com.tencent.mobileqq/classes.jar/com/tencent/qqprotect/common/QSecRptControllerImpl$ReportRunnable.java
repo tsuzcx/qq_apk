@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.common;
 
-import blbg;
-import blbk;
+import bjhk;
+import bjho;
 import com.tencent.ims.SafeReport.LogItem;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -16,7 +16,7 @@ import java.util.Vector;
 class QSecRptControllerImpl$ReportRunnable
   implements Runnable
 {
-  private Vector<blbk> a = new Vector();
+  private Vector<bjho> a = new Vector();
   
   private QSecRptControllerImpl$ReportRunnable(QSecRptControllerImpl paramQSecRptControllerImpl) {}
   
@@ -38,7 +38,7 @@ class QSecRptControllerImpl$ReportRunnable
         int j = 0;
         if (localIterator.hasNext())
         {
-          Object localObject3 = (blbk)localIterator.next();
+          Object localObject3 = (bjho)localIterator.next();
           if (localObject3 == null) {
             continue;
           }
@@ -46,10 +46,10 @@ class QSecRptControllerImpl$ReportRunnable
           if (localObject2 == null) {
             localObject1 = new SafeReport.ReqBody();
           }
-          String str = blbg.a(blbg.a(((blbk)localObject3).jdField_a_of_type_Int));
+          String str = bjhk.a(bjhk.a(((bjho)localObject3).jdField_a_of_type_Int));
           localObject2 = new SafeReport.LogItem();
-          ((SafeReport.LogItem)localObject2).uint32_rpt_id.set(((blbk)localObject3).jdField_a_of_type_Int);
-          localObject3 = str + "," + ((blbk)localObject3).b + "," + ((blbk)localObject3).jdField_a_of_type_JavaLangString;
+          ((SafeReport.LogItem)localObject2).uint32_rpt_id.set(((bjho)localObject3).jdField_a_of_type_Int);
+          localObject3 = str + "," + ((bjho)localObject3).b + "," + ((bjho)localObject3).jdField_a_of_type_JavaLangString;
           ((SafeReport.LogItem)localObject2).bytes_rpt_data.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
           ((SafeReport.ReqBody)localObject1).LogItem_reportdata.add((MessageMicro)localObject2);
           j += 1;

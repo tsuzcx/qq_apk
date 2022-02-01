@@ -1,6 +1,23 @@
-public abstract interface vya
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class vya
+  implements amqq
 {
-  public abstract void a();
+  vya(vxx paramvxx) {}
+  
+  public void onDpcPullFinished(boolean paramBoolean)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null) {
+        ((vkz)((QQAppInterface)localObject).getBusinessHandler(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
+      }
+      return;
+    }
+  }
 }
 
 

@@ -1,30 +1,45 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class xki
-  extends GestureDetector.SimpleOnGestureListener
+  extends xnj<xoe>
 {
-  public xki(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public xki(@Nullable xnn paramxnn)
   {
-    return true;
+    super(paramxnn);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected JobSegment<xnm, xoe> a()
   {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-    }
-    return false;
+    return new xnz();
+  }
+  
+  protected JobSegment<Integer, xnm> a(xnl paramxnl)
+  {
+    return new xkj(paramxnl);
+  }
+  
+  protected xoe a()
+  {
+    xnp localxnp = (xnp)vux.a(11);
+    List localList = localxnp.c();
+    xoe localxoe = new xoe(new ErrorMessage());
+    localxoe.jdField_b_of_type_JavaUtilList = localxnp.b(localList);
+    localxoe.jdField_b_of_type_Boolean = true;
+    localxoe.a = localxoe.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localxoe;
+  }
+  
+  protected xoe a(ErrorMessage paramErrorMessage)
+  {
+    return new xoe(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((xnp)vux.a(11)).c(paramList, paramBoolean);
   }
 }
 

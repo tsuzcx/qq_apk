@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import anbd;
-import anct;
-import ande;
+import alvx;
+import alxn;
+import alxy;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
@@ -19,13 +19,13 @@ public final class CmGameToolCmdChannel$5
     CmGameStartChecker.StartCheckParam localStartCheckParam;
     try
     {
-      ande localande = anbd.a(this.jdField_a_of_type_Int);
-      if ((localande == null) || (localande.a() == null))
+      alxy localalxy = alvx.a(this.jdField_a_of_type_Int);
+      if ((localalxy == null) || (localalxy.a() == null))
       {
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, "cmd:" + this.jdField_a_of_type_JavaLangString + "cmGameLauncher == null || cmGameLauncher.getCheckParam() == null");
         return;
       }
-      localStartCheckParam = localande.a();
+      localStartCheckParam = localalxy.a();
       if (TextUtils.isEmpty(localStartCheckParam.mTempAIOUin))
       {
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, "cmd:" + this.jdField_a_of_type_JavaLangString + "startCheckParam.mTempAIOUin is empty");
@@ -42,7 +42,7 @@ public final class CmGameToolCmdChannel$5
     localJSONObject.put("nickName", localStartCheckParam.mTempAIONickName);
     localJSONObject.put("robotOpenId", localStartCheckParam.mRobotOpenId);
     localJSONObject.put("gameId", this.jdField_a_of_type_Int);
-    anct.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString(), false, null, this.jdField_a_of_type_Int);
+    alxn.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString(), false, null, this.jdField_a_of_type_Int);
     Activity localActivity = localException.a();
     if (localActivity != null) {
       localActivity.finish();

@@ -1,108 +1,59 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import mqq.manager.Manager;
 
 public class aqug
+  implements Manager
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private aqrf jdField_a_of_type_Aqrf;
-  private aqrn jdField_a_of_type_Aqrn;
+  public static long a;
+  public static long b;
+  public static long c;
+  private byte jdField_a_of_type_Byte;
+  private int jdField_a_of_type_Int;
+  protected NearbyAppInterface a;
+  protected EntityManager a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public aqug(Context paramContext)
+  public aqug(NearbyAppInterface paramNearbyAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aqrf = new aqrf();
-    this.jdField_a_of_type_Aqrf.a(new aqrh());
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramNearbyAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = -2147483648;
   }
   
-  private ColorNote b()
+  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.jdField_a_of_type_Aqrn != null) {
-      return this.jdField_a_of_type_Aqrn.getColorNote();
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    return null;
-  }
-  
-  public aqrn a()
-  {
-    return this.jdField_a_of_type_Aqrn;
-  }
-  
-  public ColorNote a()
-  {
-    if (this.jdField_a_of_type_Aqrn != null) {
-      return this.jdField_a_of_type_Aqrn.getColorNote();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    ColorNote localColorNote = b();
-    if (localColorNote != null)
+    if (!awkj.c())
     {
-      this.jdField_a_of_type_Aqrf.a(localColorNote.parseBundle());
-      if (localColorNote.getServiceType() != 16973824) {
-        bdll.b(null, "dc00898", "", "", "0X800A743", "0X800A743", aqrd.a(this.jdField_a_of_type_Aqrn.getColorNote().mServiceType), 0, "", "", "", "");
-      }
+      awka.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
+      awka.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
+      awka.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
+      return;
     }
+    jdField_a_of_type_Long = paramLong1;
+    b = paramLong2;
+    c = paramLong3;
   }
   
-  public void a(View paramView)
+  public void onDestroy()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(aqrh paramaqrh)
-  {
-    this.jdField_a_of_type_Aqrf.a(paramaqrh);
-  }
-  
-  public void a(aqrn paramaqrn)
-  {
-    this.jdField_a_of_type_Aqrn = paramaqrn;
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    this.jdField_a_of_type_Aqrf.a(paramColorNote);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Aqrf.a();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aqrn != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {}
+    try
     {
-      ColorNote localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
-      if (localColorNote != null)
-      {
-        this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType());
-        bdll.b(null, "dc00898", "", "", "0X800A748", "0X800A748", aqrd.a(this.jdField_a_of_type_Aqrn.getColorNote().mServiceType), 0, "", "", "", "");
-      }
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+      return;
     }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Aqrn != null)
+    catch (Exception localException)
     {
-      ColorNote localColorNote = this.jdField_a_of_type_Aqrn.getColorNote();
-      if (localColorNote != null) {
-        return this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType());
-      }
+      localException.printStackTrace();
     }
-    return false;
-  }
-  
-  public void c()
-  {
-    aqsd.a(this.jdField_a_of_type_AndroidContentContext);
-    bdll.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 2, 0, "", "", "", "");
   }
 }
 

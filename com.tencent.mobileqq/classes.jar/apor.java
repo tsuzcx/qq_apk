@@ -1,14 +1,15 @@
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+
 public class apor
+  implements apoj
 {
-  public float a;
-  public boolean a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public apor(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  public apor()
+  public void onServiceSyncSucc(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = true;
+    QLog.d("SwipePostTableLayout", 1, "result: " + paramBoolean);
+    this.a.j();
   }
 }
 

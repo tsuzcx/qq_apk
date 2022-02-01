@@ -1,32 +1,148 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class yiy
-  extends JobSegment<Integer, ymb>
+public class yiy
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener, yjb
 {
-  private yma a;
+  private int jdField_a_of_type_Int;
+  private List<yja> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public yiy(@NonNull yma paramyma)
+  public yiy(@NonNull List<yja> paramList)
   {
-    this.a = paramyma;
+    if (paramList.isEmpty()) {
+      xvv.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    a();
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((yja)paramList.next()).a(this);
+    }
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  @NonNull
+  private yiz a(int paramInt)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((ymb)localObject).a.size() > 0) || (((ymb)localObject).b))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int j;
+    for (int i = 0; localIterator.hasNext(); i = j)
     {
-      yuk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
+      yja localyja = (yja)localIterator.next();
+      j = localyja.a() + i;
+      if (paramInt <= j - 1) {
+        return new yiz(localyja, paramInt - i);
+      }
     }
-    localObject = new xcy();
-    ((xcy)localObject).a = this.a.a();
-    ((xcy)localObject).b = QQStoryContext.a().b();
-    wow.a().a((wpa)localObject, new yiz(this, paramJobContext, paramInteger));
+    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
+  }
+  
+  private void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((yja)localIterator.next()).a() + i) {}
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  @Nullable
+  public yja a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      yja localyja = (yja)localIterator.next();
+      if (localyja.a) {
+        return localyja;
+      }
+    }
+    return null;
+  }
+  
+  public void a(yja paramyja)
+  {
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    yiz localyiz = a(paramInt);
+    return localyiz.jdField_a_of_type_Yja.a(localyiz.jdField_a_of_type_Int);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    yiz localyiz = a(paramInt);
+    yja localyja = localyiz.jdField_a_of_type_Yja;
+    int i = localyiz.jdField_a_of_type_Int;
+    if (paramView == null) {
+      paramView = localyja.a(i, paramViewGroup);
+    }
+    for (;;)
+    {
+      localyja.a(i, paramView);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 5;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    a();
+    super.notifyDataSetChanged();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Object localObject = a(paramInt);
+    yja localyja1 = ((yiz)localObject).jdField_a_of_type_Yja;
+    localyja1.a(((yiz)localObject).jdField_a_of_type_Int);
+    if ((localyja1 instanceof yix)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      localyja1.b(true);
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        yja localyja2 = (yja)((Iterator)localObject).next();
+        if (localyja2 != localyja1)
+        {
+          localyja2.b(false);
+          localyja2.a(false);
+        }
+      }
+      notifyDataSetChanged();
+    }
   }
 }
 

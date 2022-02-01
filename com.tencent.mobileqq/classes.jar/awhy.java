@@ -1,25 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class awhy
+final class awhy
+  implements DialogInterface.OnClickListener
 {
-  awhy(awhv paramawhv, String paramString) {}
-  
-  @QQPermissionDenied(1)
-  public void denied()
-  {
-    this.jdField_a_of_type_Awhv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    apch.a(new awhz(this, "webview"));
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_Awhv.TAG, 2, "SosoInterface.startLocation");
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

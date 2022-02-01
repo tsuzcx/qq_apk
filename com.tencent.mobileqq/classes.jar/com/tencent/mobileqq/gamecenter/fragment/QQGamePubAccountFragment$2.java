@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aviu;
+import atwa;
 
 class QQGamePubAccountFragment$2
   implements Runnable

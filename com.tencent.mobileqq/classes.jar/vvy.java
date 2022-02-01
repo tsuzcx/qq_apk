@@ -1,27 +1,43 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-final class vvy
-  implements DialogInterface.OnClickListener
+public class vvy
+  extends vqr<vvz>
 {
-  vvy(Context paramContext) {}
+  @NonNull
+  public final String a;
+  public final int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vvy(@NonNull String paramString)
   {
-    vvw.a(false);
-    if (paramInt == 1)
-    {
-      paramDialogInterface = uyk.a();
-      if (paramDialogInterface != null)
-      {
-        paramDialogInterface = paramDialogInterface.a();
-        uyx.a(this.a, paramDialogInterface, null, -1);
-      }
-      vtq.a("", 53, 2, 0);
-      return;
-    }
-    vtq.a("", 53, 3, 0);
+    this(paramString, 20);
+  }
+  
+  public vvy(@NonNull String paramString, int paramInt)
+  {
+    this.a = paramString;
+    this.c = paramInt;
+  }
+  
+  public String a()
+  {
+    return vpl.a("StorySvc.video_filter_list");
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    return new vvz(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
+    localReqGetFilterList.count.set(this.c);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGetFilterList.toByteArray();
   }
 }
 

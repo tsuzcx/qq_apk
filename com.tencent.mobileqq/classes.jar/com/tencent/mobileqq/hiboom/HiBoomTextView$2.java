@@ -14,7 +14,7 @@ class HiBoomTextView$2
   public void run()
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a(HiBoomTextView.a(this.this$0).jdField_a_of_type_JavaLangString, HiBoomTextView.a(this.this$0).jdField_a_of_type_Int, HiBoomTextView.a(this.this$0).uniseq, "extStr", HiBoomTextView.a(this.this$0).extStr);
+      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getMessageFacade().updateMsgFieldByUniseq(HiBoomTextView.a(this.this$0).curFriendUin, HiBoomTextView.a(this.this$0).curType, HiBoomTextView.a(this.this$0).uniseq, "extStr", HiBoomTextView.a(this.this$0).extStr);
     }
   }
 }

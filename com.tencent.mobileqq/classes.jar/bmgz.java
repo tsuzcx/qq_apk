@@ -1,12 +1,19 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
-class bmgz
-  implements FilenameFilter
+public class bmgz
+  implements View.OnClickListener
 {
-  public boolean accept(File paramFile, String paramString)
+  public bmgz(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  
+  public void onClick(View paramView)
   {
-    return paramString.endsWith(this.a);
+    if (AEEditorMvClipMenu.a(this.a) != null) {
+      AEEditorMvClipMenu.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,70 +1,22 @@
-import android.graphics.PointF;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class zdk
-  implements zbg
+  implements zcs
 {
-  public zdk(DoodleEditView paramDoodleEditView) {}
+  public zdk(DetailBaseBlock.3.1 param1) {}
   
-  public void a(zfw paramzfw)
+  public void a()
   {
-    if ((paramzfw instanceof zbj))
-    {
-      paramzfw = (zbh)DoodleEditView.a(this.a).a("TextLayer");
-      if (paramzfw != null) {
-        paramzfw.a();
-      }
-    }
-    this.a.a.b();
+    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
   }
   
-  public void a(zfw paramzfw, int paramInt1, int paramInt2)
+  public void b()
   {
-    if ((paramzfw instanceof zbj))
-    {
-      yuk.b("DoodleEditView", "click the TextItem:" + paramzfw);
-      paramzfw = (zbh)DoodleEditView.a(this.a).a("TextLayer");
-      this.a.a.b();
-      if ((paramzfw != null) && (paramzfw.a != null))
-      {
-        paramzfw.d();
-        paramzfw.a.a();
-      }
-    }
-    zat localzat;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramzfw instanceof zax));
-        yuk.b("DoodleEditView", "click the FaceAndTextItem:" + paramzfw);
-        paramzfw.d = false;
-        localzat = (zat)DoodleEditView.a(this.a).a("FaceLayer");
-        zax localzax = (zax)paramzfw;
-        if (localzat != null) {
-          localzat.jdField_a_of_type_JavaUtilList.add(localzax);
-        }
-        this.a.a.b();
-        this.a.setVisibility(8);
-      } while (DoodleEditView.a(this.a) == null);
-      if (!(paramzfw instanceof zau)) {
-        break;
-      }
-    } while ((localzat == null) || (localzat.jdField_a_of_type_Zba == null));
-    localzat.jdField_a_of_type_Zba.a((zau)paramzfw);
-    return;
-    DoodleEditView.a(this.a).a(paramzfw);
-  }
-  
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
-  {
-    if (DoodleEditView.a(this.a) != null) {
-      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
+    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }

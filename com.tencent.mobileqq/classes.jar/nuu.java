@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class nuu
-  implements nsb
+class nuu
+  implements DialogInterface.OnDismissListener
 {
-  public nuu(AccountDetailActivity paramAccountDetailActivity) {}
+  nuu(num paramnum) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(this.a.a);
+    this.a.f = false;
   }
 }
 

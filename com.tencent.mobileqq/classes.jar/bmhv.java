@@ -1,36 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.microrapid.opencv.ImageMainColorData;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.util.Comparator;
 
 public class bmhv
-  extends RemoteCommand
+  implements Comparator<ImageMainColorData>
 {
-  private QQAppInterface a;
+  public bmhv(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public bmhv(QQAppInterface paramQQAppInterface)
+  public int a(ImageMainColorData paramImageMainColorData1, ImageMainColorData paramImageMainColorData2)
   {
-    super("common.get_qq_app_interface_data");
-    this.a = paramQQAppInterface;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    int i = paramBundle.getInt("param_data_type", 0);
-    paramOnInvokeFinishLinstener = new Bundle();
-    switch (i)
-    {
-    default: 
-      return paramOnInvokeFinishLinstener;
-    case 1: 
-      paramBundle = paramBundle.getString("param_uin");
-      paramOnInvokeFinishLinstener.putString("result_key", bhlg.h(this.a, paramBundle));
-      return paramOnInvokeFinishLinstener;
+    int i = 0;
+    if (paramImageMainColorData1.area > paramImageMainColorData2.area) {
+      i = -1;
     }
-    String str = paramBundle.getString("param_uin");
-    boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
-    paramOnInvokeFinishLinstener.putString("result_key", bhlg.b(this.a, str, bool));
-    return paramOnInvokeFinishLinstener;
+    while (paramImageMainColorData1.area >= paramImageMainColorData2.area) {
+      return i;
+    }
+    return 1;
   }
 }
 

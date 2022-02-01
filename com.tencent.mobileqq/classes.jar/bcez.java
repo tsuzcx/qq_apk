@@ -1,78 +1,72 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-public class bcez
-  extends bcgz
+class bcez
 {
   public long a;
   public String a;
-  public boolean a;
+  public long b;
   public String b;
-  public String c = "xiaoweiba";
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k = "8.4.8.4810";
+  public String l = "AND";
   
-  public bcez(String paramString1, String paramString2, long paramLong)
+  public bcez()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Long = AppSetting.a();
+    this.jdField_a_of_type_JavaLangString = DeviceInfoUtil.getIMEI();
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void a(boolean paramBoolean)
+  public String a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(View paramView)
-  {
-    QQAppInterface localQQAppInterface;
-    Object localObject;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = bhni.a(localQQAppInterface, paramView.getContext(), this.b);
-      if (localObject == null) {
-        break label173;
-      }
-      ((bhmr)localObject).a();
-    }
-    for (;;)
-    {
-      paramView = new JSONObject();
-      try
-      {
-        paramView.put("project", bcjy.a());
-        paramView.put("event_src", "client");
-        paramView.put("get_src", "web");
-        bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_tail").obj1(this.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(bcjy.a(UniteSearchActivity.d)).ver7(paramView.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbzx.jdField_a_of_type_Long));
-        return;
-        label173:
-        if ((!this.b.startsWith("http://")) && (!this.b.startsWith("https://"))) {
-          continue;
-        }
-        paramView = paramView.getContext();
-        localObject = new Intent(paramView, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", this.b);
-        paramView.startActivity((Intent)localObject);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("Q.uniteSearch.SearchResultGroupModelImpl", 2, "e = " + localJSONException);
-        }
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('|');
+    return localStringBuilder.toString();
   }
 }
 

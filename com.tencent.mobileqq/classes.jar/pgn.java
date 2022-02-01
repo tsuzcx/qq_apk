@@ -1,82 +1,66 @@
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertModule$ReqParams;", "", "()V", "channelId", "", "getChannelId", "()J", "setChannelId", "(J)V", "followPuin", "", "getFollowPuin", "()Ljava/lang/String;", "setFollowPuin", "(Ljava/lang/String;)V", "lastClickArticleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "getLastClickArticleInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "setLastClickArticleInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)V", "reqRecommendFlag", "", "getReqRecommendFlag", "()I", "setReqRecommendFlag", "(I)V", "updateTimes", "getUpdateTimes", "setUpdateTimes", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pgn
+public class pgn
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  @Nullable
-  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 1;
+  private bjrb jdField_a_of_type_Bjrb;
+  private bjrh jdField_a_of_type_Bjrh;
+  private tch jdField_a_of_type_Tch;
   
-  public final int a()
+  public bjrb a(Context paramContext)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public final BaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public final void a(@Nullable BaseArticleInfo paramBaseArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-  }
-  
-  public final void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public final int b()
-  {
-    return this.b;
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("channelId = ").append(this.jdField_a_of_type_Long).append(", followPuin = ").append(this.jdField_a_of_type_JavaLangString).append(", updateTimes = ").append(this.jdField_a_of_type_Int).append(", reqRecommendFlag = ").append(this.b).append(", lastClickArticleInfo = ");
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localObject != null) {}
-    for (localObject = pgo.a.a((BaseArticleInfo)localObject);; localObject = null) {
-      return (String)localObject + ' ';
+    if (this.jdField_a_of_type_Bjrb == null) {
+      this.jdField_a_of_type_Bjrb = new bjrb(paramContext);
     }
+    return this.jdField_a_of_type_Bjrb;
+  }
+  
+  public bjrh a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Bjrh == null) {
+      this.jdField_a_of_type_Bjrh = new bjrh(paramContext);
+    }
+    return this.jdField_a_of_type_Bjrh;
+  }
+  
+  public tch a(Activity paramActivity, slt paramslt)
+  {
+    if (this.jdField_a_of_type_Tch == null) {
+      this.jdField_a_of_type_Tch = new tch(paramActivity, paramslt);
+    }
+    return this.jdField_a_of_type_Tch;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bjrb = null;
+    this.jdField_a_of_type_Bjrh = null;
+  }
+  
+  public void a(View paramView, skb paramskb, BaseArticleInfo paramBaseArticleInfo, ped paramped)
+  {
+    int i = paramskb.a;
+    paramskb = new pgo(this, i, paramped, paramskb, paramBaseArticleInfo);
+    if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+    {
+      if ((this.jdField_a_of_type_Bjrb != null) && (this.jdField_a_of_type_Bjrb.isShowing())) {
+        this.jdField_a_of_type_Bjrb.dismiss();
+      }
+      this.jdField_a_of_type_Bjrh.a(i, paramped.a().b(), pay.a(paramBaseArticleInfo), ((AdvertisementInfo)paramBaseArticleInfo).mAdDislikeInfos);
+      this.jdField_a_of_type_Bjrh.a(paramView, paramskb);
+      this.jdField_a_of_type_Bjrh.a(new pgq(this, paramped, paramBaseArticleInfo));
+      this.jdField_a_of_type_Bjrh.setOnDismissListener(new pgr(this, paramped));
+      return;
+    }
+    if ((this.jdField_a_of_type_Bjrh != null) && (this.jdField_a_of_type_Bjrh.isShowing())) {
+      this.jdField_a_of_type_Bjrh.dismiss();
+    }
+    this.jdField_a_of_type_Bjrb.a(i, paramped.a().b(), pay.a(paramBaseArticleInfo), paramBaseArticleInfo.mDislikeInfos, paramBaseArticleInfo.innerUniqueID);
+    this.jdField_a_of_type_Bjrb.a(paramView, paramskb);
+    this.jdField_a_of_type_Bjrb.setOnDismissListener(new pgs(this, paramped));
   }
 }
 

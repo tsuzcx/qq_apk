@@ -11,6 +11,7 @@ public class MiniAppConst$RUNTIME_STATE_MSG
   public static final int RUNTIME_MSG_GAME_DESTROY = 64;
   public static final int RUNTIME_MSG_GAME_LAUNCH = 63;
   public static final int RUNTIME_MSG_HIDE_INPUT = 70;
+  public static final int RUNTIME_MSG_JS_ERROR = 71;
   public static final int RUNTIME_MSG_LAUNCH_FAIL = 12;
   public static final int RUNTIME_MSG_LAUNCH_TIMEOUT = 13;
   public static final int RUNTIME_MSG_LOADED = 4;

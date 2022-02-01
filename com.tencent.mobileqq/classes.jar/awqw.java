@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class awqw
-  implements DialogInterface.OnClickListener
+class awqw
+  extends nme
 {
-  public awqw(LocationDialogUtil.4 param4) {}
+  awqw(awqu paramawqu, awrb paramawrb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    bdll.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
+    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
+    if (this.jdField_a_of_type_Awrb != null) {
+      this.jdField_a_of_type_Awrb.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

@@ -1,64 +1,69 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public class astz
-  extends askr
+class astz
+  implements asri
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private asre jdField_a_of_type_Asre;
-  private bjbs jdField_a_of_type_Bjbs;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  astz(astk paramastk) {}
   
-  public astz(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, asre paramasre, SessionInfo paramSessionInfo, bjbs parambjbs)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Asre = paramasre;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Bjbs = parambjbs;
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOEmotionFragment", 2, "onJsonComplete:" + paramEmoticonPackage.epId + " ,currEpid:" + this.jdField_a_of_type_Asre.a.epId);
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Asqs.a();
+    becp localbecp = this.a.a(localFileManagerEntity);
+    if ((TextUtils.isEmpty(astk.a(this.a))) && (localbecp.a != null)) {
+      astk.a(this.a, localbecp.a.toString());
     }
-    if (this.jdField_a_of_type_Int == 32) {
-      if ((paramInt == 0) && (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Asre.a.epId))) {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, bool);
+    bebp localbebp = new bebp(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if ((localbecp.b == 10) || (localbecp.b == 9)) {
+      if (localbecp.a != null)
+      {
+        localbebp.b(localbecp.a);
+        localFileManagerEntity.status = 2;
       }
     }
     do
     {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : resumeDownload error, infoId is null");
       return;
-      bool = false;
-      break;
-      if (paramInt != 0) {
-        break label233;
+      if (localbecp.b == 7)
+      {
+        if (localFileManagerEntity.isZipInnerFile) {
+          localbebp.a(localFileManagerEntity);
+        }
+        for (;;)
+        {
+          localFileManagerEntity.status = 2;
+          return;
+          localbebp.a(localFileManagerEntity.strTroopFilePath, localbecp.g, localbecp.c, localbecp.h);
+        }
       }
-    } while (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Asre.a.epId));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-    ahlt.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Asre, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bjbs, true);
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.obtainMessage(1000);
-    paramBundle.obj = paramEmoticonPackage.name;
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.sendMessage(paramBundle);
-    return;
-    label233:
-    ahlt.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Asre, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bjbs, true);
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : can not handle file info status,download error");
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a.jdField_a_of_type_Asqs.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.a((FileManagerEntity)localObject);
+    if ((TextUtils.isEmpty(astk.a(this.a))) && (((becp)localObject).a != null)) {
+      astk.a(this.a, ((becp)localObject).a.toString());
+    }
+    if (!TextUtils.isEmpty(astk.a(this.a)))
+    {
+      localTroopFileTransferManager.d(UUID.fromString(astk.a(this.a)));
+      if (ataw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        this.a.a("0x8009D61", null);
+      }
+    }
+    astk.a(this.a, (becp)localObject);
   }
 }
 

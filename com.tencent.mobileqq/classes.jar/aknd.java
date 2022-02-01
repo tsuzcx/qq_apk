@@ -1,27 +1,50 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class aknd
-  implements Animator.AnimatorListener
+  extends AbsRecentStatus
 {
-  public aknd(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private static int a = 8;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public int[] declareStatus()
   {
-    this.a.e = AvatarPendantActivity.c;
+    return new int[] { 0, 10 };
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    this.a.e = AvatarPendantActivity.a;
+    return paramRecentBaseData.getRecentUserType() == 1;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
   {
-    this.a.e = AvatarPendantActivity.d;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    for (paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;; paramIMCoreAppRuntime = null)
+    {
+      if ((paramIMCoreAppRuntime == null) || (paramRecentBaseData == null)) {}
+      String str;
+      do
+      {
+        int i;
+        do
+        {
+          return false;
+          i = paramRecentBaseData.getRecentUserType();
+          str = paramRecentBaseData.getRecentUserUin();
+        } while ((i != 1) || ((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus != 10)));
+        paramRecentBaseData.mStatus = 0;
+        paramIMCoreAppRuntime = (mxn)paramIMCoreAppRuntime.getManager(373);
+      } while ((paramIMCoreAppRuntime == null) || (!paramIMCoreAppRuntime.b(str)));
+      paramRecentBaseData.mStatus = 10;
+      return false;
+    }
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

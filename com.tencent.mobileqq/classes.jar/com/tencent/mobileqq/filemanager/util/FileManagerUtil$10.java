@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.graphics.Bitmap;
-import auog;
 import com.tencent.qphone.base.util.QLog;
 import ff;
 import java.io.FileNotFoundException;
@@ -14,7 +13,7 @@ public final class FileManagerUtil$10
   
   public void run()
   {
-    if (auog.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (FileUtil.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString)) {}
     Bitmap localBitmap;
     do
     {
@@ -23,7 +22,7 @@ public final class FileManagerUtil$10
     } while (localBitmap == null);
     try
     {
-      auog.a(localBitmap, this.jdField_a_of_type_JavaLangString);
+      FileUtil.writeBitmapToFile(localBitmap, this.jdField_a_of_type_JavaLangString);
       localBitmap.recycle();
       int i = ff.a(this.jdField_b_of_type_JavaLangString);
       ff.a(this.jdField_a_of_type_JavaLangString, i);
@@ -50,7 +49,7 @@ public final class FileManagerUtil$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.10
  * JD-Core Version:    0.7.0.1
  */

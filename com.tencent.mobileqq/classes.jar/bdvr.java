@@ -1,103 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class bdvr
-  extends arac<bdvq>
+final class bdvr
+  implements DialogInterface.OnClickListener
 {
-  public static bdvq a()
-  {
-    return (bdvq)aran.a().a(612);
-  }
+  bdvr(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public static void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aran.a().a(new int[] { 612 });
-  }
-  
-  @NonNull
-  public bdvq a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new bdvq();
-  }
-  
-  @Nullable
-  public bdvq a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[onParsed]");
-    }
-    bdvq localbdvq = new bdvq();
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    paramDialogInterface = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
+    if ((NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null))
     {
-      paramArrayOfaraj = paramArrayOfaraj[0];
-      if ((paramArrayOfaraj == null) || (TextUtils.isEmpty(paramArrayOfaraj.a))) {}
+      paramDialogInterface.l(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    try
+    if (paramDialogInterface != null)
     {
-      localbdvq.a = new JSONObject(paramArrayOfaraj.a);
-      return localbdvq;
+      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131694108), 0).a();
+      return;
     }
-    catch (JSONException paramArrayOfaraj)
-    {
-      QLog.e("StudyRoomConfProcessor", 4, paramArrayOfaraj, new Object[0]);
-    }
-    return localbdvq;
-  }
-  
-  public void a(bdvq parambdvq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[onUpdate] newConf:" + parambdvq);
-    }
-  }
-  
-  public Class<bdvq> clazz()
-  {
-    return bdvq.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[get migrateOldVersion]");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
-    }
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + a());
-    }
-  }
-  
-  public int type()
-  {
-    return 612;
+    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131691945), 0).a();
   }
 }
 

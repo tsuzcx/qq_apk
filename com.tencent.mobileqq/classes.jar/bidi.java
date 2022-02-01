@@ -1,89 +1,67 @@
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.YybHandleUtil.1;
+import java.io.File;
+import java.text.DecimalFormat;
+import mqq.os.MqqHandler;
 
 public class bidi
-  extends bimg
-  implements bine
 {
-  public bidi(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  public static String a = "YybHandleUtil";
+  public static String b = "APK/MobileAssistant_main.apk";
+  public static String c = "yyb.apk";
+  public static final String d = amtj.a(2131716039);
+  
+  public static String a(int paramInt)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
+    if (paramInt < 0) {
+      return null;
+    }
+    float f2 = paramInt;
+    paramInt = 0;
+    float f1;
+    String str2;
+    String str1;
+    if (f2 / 1048576.0F > 1.0F)
+    {
+      f1 = f2 / 1048576.0F;
+      paramInt = 2;
+      str2 = new DecimalFormat("#.#").format(f1);
+      if (paramInt != 2) {
+        break label92;
+      }
+      str1 = "MB";
+    }
+    for (;;)
+    {
+      return str2 + str1;
+      f1 = f2;
+      if (f2 / 1024.0F <= 1.0F) {
+        break;
+      }
+      f1 = f2 / 1024.0F;
+      paramInt = 1;
+      break;
+      label92:
+      if (paramInt == 1) {
+        str1 = "KB";
+      } else {
+        str1 = "B";
+      }
+    }
   }
   
-  public void a()
+  public static void a()
   {
-    super.doOnDestroy();
+    bhzm.c(a, "---deleteYYBApkPackage--");
+    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
   }
   
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  public static boolean a()
   {
-    super.bindJavaScript(paramArrayList);
-    paramArrayList.add(new WadlWebViewJsPlugin());
-    paramArrayList.add(new avod());
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new awhh());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new awgf());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bigs());
-    paramArrayList.add(new QWalletMixJsPlugin());
-    paramArrayList.add(new abgp());
+    String str = bhpc.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
+    return biam.a(bhpc.a().a(), str);
   }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 

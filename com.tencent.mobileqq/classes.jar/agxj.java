@@ -1,12 +1,16 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class agxj
+class agxj
+  implements ahbo
 {
-  public static View a(Context paramContext)
+  agxj(agxg paramagxg) {}
+  
+  public void a()
   {
-    return LayoutInflater.from(paramContext).inflate(2131559271, null);
+    if (agxg.a(this.a).receiptMode) {
+      agxg.a(this.a).switchReceiptMode();
+    }
+    agxg.a(this.a).b(agxg.a(this.a).hashCode());
   }
 }
 

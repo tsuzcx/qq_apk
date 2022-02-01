@@ -1,111 +1,95 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public class bmln
-  extends bcfs
+  extends RecyclerView.Adapter<bmlp>
 {
-  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(bcni.b());
-  public int a;
-  public long a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  private final int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bmlq jdField_a_of_type_Bmlq;
+  private List<bmlo> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Set<bmlp> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
   
-  public CharSequence a()
+  public bmln(@NonNull Context paramContext, @Nullable bmlq parambmlq)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence == null) && (this.jdField_b_of_type_JavaLangString != null))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bmlq = parambmlq;
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296347);
+    this.jdField_a_of_type_Boolean = bmby.a();
+  }
+  
+  @NonNull
+  public bmlp a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bmlp(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558550, paramViewGroup, false), this.jdField_a_of_type_Bmlq, this.jdField_a_of_type_Int);
+  }
+  
+  public List<bmlo> a()
+  {
+    return new LinkedList(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void a()
+  {
+    if (CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilSet)) {}
+    for (;;)
     {
-      begp localbegp = new begp(this.jdField_b_of_type_JavaLangString, 3, 20);
-      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int)) {
-        localbegp.setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 33);
-      }
-      this.jdField_a_of_type_JavaLangCharSequence = localbegp;
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
-    bmkq.a(localBaseActivity, localBaseActivity.getAppRuntime().getAccount(), this.jdField_a_of_type_Long);
-    bcni.a(this.jdField_a_of_type_JavaLangString, 60, 0, paramView);
-    if ((localBaseActivity instanceof UniteSearchActivity)) {
-      bcni.a("all_result", "clk_collect", new String[] { "" + this.jdField_a_of_type_JavaLangString });
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_c_of_type_Long == 0L) {
-      return null;
-    }
-    return "" + this.jdField_c_of_type_Long;
-  }
-  
-  public int c()
-  {
-    switch (this.e)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    }
-    return 101;
-  }
-  
-  public CharSequence c()
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if (this.jdField_c_of_type_JavaLangString != null)
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        localSpannableStringBuilder.append("来自: ").append(this.jdField_c_of_type_JavaLangString).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int + 4, this.jdField_c_of_type_Int + 4, 33);
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext()) {
+        ((bmlp)localIterator.next()).a();
       }
     }
-    else {
-      return localSpannableStringBuilder;
-    }
-    return localSpannableStringBuilder.append("来自: ").append(bcni.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 30));
   }
   
-  public CharSequence d()
+  public void a(bmlp parambmlp)
   {
-    return null;
+    super.onViewAttachedToWindow(parambmlp);
+    this.jdField_a_of_type_JavaUtilSet.add(parambmlp);
+  }
+  
+  public void a(@NonNull bmlp parambmlp, int paramInt)
+  {
+    parambmlp.a((bmlo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_JavaUtilList.size());
+    EventCollector.getInstance().onRecyclerBindViewHolder(parambmlp, paramInt, getItemId(paramInt));
+  }
+  
+  public void a(@NonNull List<bmlo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilSet != null) {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+  }
+  
+  public void b(bmlp parambmlp)
+  {
+    super.onViewDetachedFromWindow(parambmlp);
+    this.jdField_a_of_type_JavaUtilSet.remove(parambmlp);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

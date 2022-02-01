@@ -73,18 +73,18 @@ public class PermissionListAdapter
     AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = getItem(paramInt);
     FormSwitchItem localFormSwitchItem;
     boolean bool;
-    label37:
+    label50:
     String str;
     if (localAuthorizeInfo != null) {
       if ((paramView instanceof FormSwitchItem))
       {
         localFormSwitchItem = (FormSwitchItem)paramView;
+        localFormSwitchItem.a().setTag(localAuthorizeInfo.scopeName);
         if (localAuthorizeInfo.authFlag != 2) {
           break label127;
         }
         bool = true;
         localFormSwitchItem.setChecked(bool);
-        localFormSwitchItem.a().setTag(localAuthorizeInfo.scopeName);
         str = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
         if (str == null) {
           break label133;
@@ -102,7 +102,7 @@ public class PermissionListAdapter
       break;
       label127:
       bool = false;
-      break label37;
+      break label50;
       label133:
       str = localAuthorizeInfo.scopeName;
       break label78;

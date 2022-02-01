@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bojx;
-import braf;
+import bloc;
+import bnug;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class FilterPagerViewStubHolder$4
   implements Runnable
 {
-  public FilterPagerViewStubHolder$4(bojx parambojx, braf parambraf) {}
+  public FilterPagerViewStubHolder$4(bloc parambloc, bnug parambnug) {}
   
   public void run()
   {
-    bojx.a(this.this$0).setSecleteCallBack(this.a);
+    bloc.a(this.this$0).setSecleteCallBack(this.a);
   }
 }
 

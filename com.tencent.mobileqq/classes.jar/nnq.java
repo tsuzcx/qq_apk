@@ -1,21 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
-final class nnq
-  implements HostnameVerifier
+public class nnq
+  implements BusinessObserver
 {
-  nnq(URL paramURL) {}
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
-    if (bool) {
-      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    return bool;
+    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
   }
 }
 

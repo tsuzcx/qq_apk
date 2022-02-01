@@ -1,12 +1,69 @@
-import android.os.IInterface;
-import com.tencent.av.service.LBSInfo;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public abstract interface lxd
-  extends IInterface
+public class lxd
+  extends amsu
 {
-  public abstract void a(int paramInt, String paramString);
+  public lxd(QQServiceForAV paramQQServiceForAV) {}
   
-  public abstract void a(boolean paramBoolean, LBSInfo paramLBSInfo);
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
+    localIntent.putExtra("uin", paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (this.a.b.contains(paramString)) {
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+    }
+    this.a.b.remove(paramString);
+    if (this.a.b()) {
+      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amsu);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    Intent localIntent;
+    if ((paramBoolean) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
+      localIntent.putExtra("uin", paramString);
+      localObject = (amsw)QQServiceForAV.m(this.a).getManager(51);
+      if (localObject == null) {
+        break label205;
+      }
+      localObject = ((amsw)localObject).e(paramString);
+      if (localObject == null) {
+        break label205;
+      }
+    }
+    label205:
+    for (Object localObject = ContactUtils.getFriendName((Friends)localObject);; localObject = paramString)
+    {
+      localIntent.putExtra("nick", (String)localObject);
+      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
+      if (this.a.b()) {
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amsu);
+      }
+      return;
+    }
+  }
 }
 
 

@@ -1,22 +1,55 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public class plg
-  implements Animation.AnimationListener
+class plg
 {
-  public plg(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
+  private List<oidb_cmd0x80a.AttributeList> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public plg(List<oidb_cmd0x80a.AttributeList> paramList)
   {
-    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    Object localObject;
+    if (localObject != null) {
+      this.jdField_a_of_type_JavaUtilList = localObject;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public List<oidb_cmd0x80a.AttributeList> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public plg a(int paramInt, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2))
+    {
+      QLog.d("CommonAttrBulder", 1, "attr value is Empty ! id : " + paramInt + ", name : " + paramString1);
+      return this;
+    }
+    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+    localAttributeList.att_id.set(paramInt);
+    localAttributeList.att_name.set(paramString1);
+    localAttributeList.att_value.set(paramString2);
+    this.jdField_a_of_type_JavaUtilList.add(localAttributeList);
+    return this;
+  }
+  
+  public plg a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    return a(paramInt, paramString, plu.a(paramBoolean, "1", "0"));
+  }
+  
+  public plg a(oidb_cmd0x80a.AttributeList paramAttributeList)
+  {
+    if (paramAttributeList != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramAttributeList);
+    }
+    return this;
+  }
 }
 
 

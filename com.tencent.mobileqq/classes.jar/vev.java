@@ -1,22 +1,32 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
+import com.tencent.qphone.base.util.QLog;
 
 class vev
-  implements Observer<vxq<QQCirclePrivateMsgShow.StGetPMSettingRsp>>
+  extends anxq
 {
-  vev(veu paramveu) {}
+  vev(veq paramveq) {}
   
-  public void a(@Nullable vxq<QQCirclePrivateMsgShow.StGetPMSettingRsp> paramvxq)
+  public int a()
   {
-    if ((paramvxq != null) && (paramvxq.a() == 3)) {
-      veu.a(this.a, (QQCirclePrivateMsgShow.StGetPMSettingRsp)paramvxq.a());
-    }
-    while ((paramvxq == null) || (paramvxq.a() != 4)) {
-      return;
-    }
-    veu.a(this.a, paramvxq.a(), paramvxq.a());
+    return 0;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+    }
+    this.a.a = true;
+    veq.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    veq.a(this.a, 2131694775);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

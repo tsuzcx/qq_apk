@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
@@ -20,8 +20,8 @@ import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import oaf;
-import oag;
+import obq;
+import obr;
 import org.json.JSONObject;
 
 public class AccountDetail
@@ -46,11 +46,11 @@ public class AccountDetail
   @notColumn
   public String configBackgroundImg = "";
   @notColumn
-  public List<oaf> customConfigAttrs;
+  public List<obq> customConfigAttrs;
   public String displayNumber = "";
   public int followType;
   @notColumn
-  public List<oaf> fullscreenConfigAttrs;
+  public List<obq> fullscreenConfigAttrs;
   public int groupId;
   public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
   public boolean isAgreeSyncLbs;
@@ -65,16 +65,16 @@ public class AccountDetail
   public int mShowMsgFlag = -1;
   @notColumn
   public mobileqq_mp.GetPublicAccountMenuResponse menuButtonResp;
-  public String name = anzj.a(2131698654);
+  public String name = amtj.a(2131698889);
   public List<mobileqq_mp.ConfigGroupInfo> newGroupInfoList;
   @notColumn
-  public List<oaf> paConfigAttrs;
+  public List<obq> paConfigAttrs;
   public byte[] protocol839Data;
   public int protocolVersion = 0;
   public int seqno;
   public int sharedFollowerCount;
   public int showFlag;
-  public String summary = anzj.a(2131698657);
+  public String summary = amtj.a(2131698892);
   @unique
   public String uin;
   @notColumn
@@ -308,29 +308,29 @@ public class AccountDetail
     int j;
     while (localIterator.hasNext())
     {
-      Object localObject = (oaf)localIterator.next();
-      if ((((oaf)localObject).jdField_a_of_type_Int != 1) && (((oaf)localObject).jdField_a_of_type_JavaUtilList != null))
+      Object localObject = (obq)localIterator.next();
+      if ((((obq)localObject).jdField_a_of_type_Int != 1) && (((obq)localObject).jdField_a_of_type_JavaUtilList != null))
       {
-        localObject = ((oaf)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        localObject = ((obq)localObject).jdField_a_of_type_JavaUtilList.iterator();
         j = i;
         for (;;)
         {
           if (((Iterator)localObject).hasNext())
           {
-            oag localoag = (oag)((Iterator)localObject).next();
+            obr localobr = (obr)((Iterator)localObject).next();
             i = j;
-            if (localoag.jdField_a_of_type_Int == 2)
+            if (localobr.jdField_a_of_type_Int == 2)
             {
               i = j;
-              if (localoag.e == 3) {
+              if (localobr.e == 3) {
                 this.isSyncLbs = true;
               }
             }
-            switch (localoag.d)
+            switch (localobr.d)
             {
             default: 
               if (QLog.isColorLevel()) {
-                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localoag.d);
+                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localobr.d);
               }
               i = 1;
               label191:
@@ -390,17 +390,17 @@ public class AccountDetail
       int i = 0;
       while (localIterator.hasNext())
       {
-        Object localObject = (oaf)localIterator.next();
-        if ((((oaf)localObject).jdField_a_of_type_Int != 1) && (((oaf)localObject).jdField_a_of_type_JavaUtilList != null))
+        Object localObject = (obq)localIterator.next();
+        if ((((obq)localObject).jdField_a_of_type_Int != 1) && (((obq)localObject).jdField_a_of_type_JavaUtilList != null))
         {
-          localObject = ((oaf)localObject).jdField_a_of_type_JavaUtilList.iterator();
+          localObject = ((obq)localObject).jdField_a_of_type_JavaUtilList.iterator();
           for (;;)
           {
             if (((Iterator)localObject).hasNext())
             {
-              oag localoag = (oag)((Iterator)localObject).next();
-              if (localoag.e == 5) {
-                if (localoag.d == 1)
+              obr localobr = (obr)((Iterator)localObject).next();
+              if (localobr.e == 5) {
+                if (localobr.d == 1)
                 {
                   i = 1;
                   this.mShowMsgFlag = i;
@@ -436,9 +436,9 @@ public class AccountDetail
       this.configBackgroundColor = localJSONObject.optString("background_color");
       this.certifiedEnterprise = localJSONObject.optString("certified_enterprise");
       this.certifiedWeixin = localJSONObject.optString("certified_weixin");
-      this.paConfigAttrs = oaf.a(localJSONObject.optJSONArray("config_arr"));
-      this.customConfigAttrs = oaf.a(localJSONObject.optJSONArray("custom_arr"));
-      this.fullscreenConfigAttrs = oaf.a(localJSONObject.optJSONArray("fullscreen_arr"));
+      this.paConfigAttrs = obq.a(localJSONObject.optJSONArray("config_arr"));
+      this.customConfigAttrs = obq.a(localJSONObject.optJSONArray("custom_arr"));
+      this.fullscreenConfigAttrs = obq.a(localJSONObject.optJSONArray("fullscreen_arr"));
       this.cardStyle = localJSONObject.optInt("card_style");
       return;
     }

@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import android.graphics.Bitmap;
 
-public class bcru
+public abstract interface bcru
 {
-  public MessageForReplyText.SourceMsgInfo a;
-  public MessageForText.AtTroopMemberInfo a;
-  public String a;
-  public byte[] a;
-  public String b;
-  
-  public bcru(bcrt parambcrt) {}
+  public abstract Bitmap a(bcrb parambcrb, String paramString1, String paramString2);
 }
 
 

@@ -1,15 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.1;
 
 public class onc
-  implements bjbu
+  implements DialogInterface.OnCancelListener
 {
-  public onc(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public onc(ReadInJoyUploadAvatarFragment.1 param1) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
-      this.a.finish();
-    }
+    paramDialogInterface = this.a.a.getIntent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", amtj.a(2131712202));
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.a.setResult(-1, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

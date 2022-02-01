@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aeqv;
-import aeqz;
+import adjt;
+import adjx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
@@ -10,11 +10,11 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class FriendProfileImageAvatar$1
   implements Runnable
 {
-  public FriendProfileImageAvatar$1(aeqv paramaeqv, aeqz paramaeqz) {}
+  public FriendProfileImageAvatar$1(adjt paramadjt, adjx paramadjx) {}
   
   public void run()
   {
-    localEntityManager = this.this$0.a.a().createEntityManager();
+    localEntityManager = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (localEntityManager != null) {}
     try
     {
@@ -24,7 +24,7 @@ public class FriendProfileImageAvatar$1
         localSetting.headImgTimestamp = 0L;
         localSetting.updateTimestamp = 0L;
         localEntityManager.update(localSetting);
-        this.this$0.a.a(localSetting);
+        this.this$0.a.updateSettingTableCache(localSetting);
       }
     }
     catch (Exception localException)
@@ -38,12 +38,12 @@ public class FriendProfileImageAvatar$1
     {
       localEntityManager.close();
     }
-    this.this$0.a.e(this.this$0.b);
+    this.this$0.a.refreshFace(this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.1
  * JD-Core Version:    0.7.0.1
  */

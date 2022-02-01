@@ -1,31 +1,42 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import java.lang.ref.WeakReference;
 
-public class bmts
-  extends bndw
+class bmts
+  implements bmuj
 {
-  public bmts(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  private float jdField_a_of_type_Float;
+  private WeakReference<bmtq> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public bmts(bmtq parambmtq)
   {
-    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = this.a.a.obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
-    {
-      this.a.a.sendMessage(paramString);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmtq);
   }
   
-  public void b(String paramString) {}
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public void a(float paramFloat, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, bnli parambnli)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Float = 1.0F;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+        ((bmtq)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Float = 0.0F;
+    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    ((bmtq)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
+  }
 }
 
 

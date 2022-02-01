@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import nnr;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,7 +106,7 @@ public class JSONUtils
         a(paramJSONObject, (Bundle)localObject);
       }
     }
-    localObject = nnr.a((Bundle)localObject);
+    localObject = HttpUtil.encodeUrl((Bundle)localObject);
     StringBuilder localStringBuilder = new StringBuilder().append(paramString);
     if (paramString.contains("?")) {}
     for (paramJSONObject = "&";; paramJSONObject = "?")

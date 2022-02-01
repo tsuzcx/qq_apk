@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.ad.tangram.canvas.views.form.AdFormError;
-import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class acxg
-  implements View.OnFocusChangeListener
+class acxg
+  implements DialogInterface.OnCancelListener
 {
-  public acxg(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  acxg(acxf paramacxf) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()))
-    {
-      acvc.b("GdtFormItemTextBoxView", "onFocusChange error");
-      return;
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    if (paramBoolean)
-    {
-      paramView = new AdFormError(2, -1, this.a.a().title.text);
-      paramView.index = GdtFormItemTextBoxView.a(this.a);
-      GdtFormItemTextBoxView.a(this.a, paramView);
-      return;
-    }
-    GdtFormItemTextBoxView.a(this.a);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

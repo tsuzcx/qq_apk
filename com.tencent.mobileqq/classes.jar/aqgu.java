@@ -1,14 +1,16 @@
-public abstract interface aqgu
+public class aqgu
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public boolean a;
+  public boolean b;
   
-  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject);
-  
-  public abstract void b();
+  public String toString()
+  {
+    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqgu
  * JD-Core Version:    0.7.0.1
  */

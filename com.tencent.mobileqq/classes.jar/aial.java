@@ -1,21 +1,7 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-
 public class aial
-  implements View.OnLongClickListener
 {
-  public aial(PanelIconLinearLayout paramPanelIconLinearLayout) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    paramView = ((agsv)this.a.a.a(62)).a;
-    if (paramView != null) {
-      paramView.a(1);
-    }
-    return true;
-  }
+  public String a;
+  public String b;
 }
 
 

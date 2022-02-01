@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
 import android.graphics.PointF;
-import apfq;
-import apoq;
-import apos;
-import apse;
+import anzc;
+import aoid;
+import aoif;
+import aolr;
 import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -12,39 +12,39 @@ import java.lang.ref.WeakReference;
 public class ARTransferDoorLogicManager$1
   implements Runnable
 {
-  public ARTransferDoorLogicManager$1(apfq paramapfq, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ARTransferDoorLogicManager$1(anzc paramanzc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
     int i = 0;
     if (i < 2)
     {
-      if (apfq.a(this.this$0).a.g <= apfq.a(this.this$0).a.e - 1) {
+      if (anzc.a(this.this$0).a.g <= anzc.a(this.this$0).a.e - 1) {
         break label106;
       }
-      apfq.a(this.this$0, true);
+      anzc.a(this.this$0, true);
     }
     label106:
-    while (apfq.a(this.this$0) == true)
+    while (anzc.a(this.this$0) == true)
     {
-      if ((!apfq.a(this.this$0)) && (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ((apse)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this, apfq.a(this.this$0));
+      if ((!anzc.a(this.this$0)) && (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((aolr)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).b(this, anzc.a(this.this$0));
       }
       return;
     }
-    Object localObject = apfq.a(this.this$0).a.b[apfq.a(this.this$0).a.g];
+    Object localObject = anzc.a(this.this$0).a.b[anzc.a(this.this$0).a.g];
     localObject = ARLocalGestureCircleRecog.a(this.a, this.b, this.c, this.d, (PointF)localObject);
     int j = (int)((PointF)localObject).x;
     int k = (int)((PointF)localObject).y;
-    int m = apfq.a(this.this$0).a.a[apfq.a(this.this$0).a.g];
+    int m = anzc.a(this.this$0).a.a[anzc.a(this.this$0).a.g];
     localObject = this.this$0;
-    if (apfq.a(this.this$0).a.g == 0) {}
+    if (anzc.a(this.this$0).a.g == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ((apfq)localObject).a(new int[] { j }, new int[] { k }, new int[] { m }, bool);
-      localObject = apfq.a(this.this$0).a;
-      ((apos)localObject).g += 1;
-      QLog.i(apfq.jdField_a_of_type_JavaLangString, 1, "DrawCircle. mDrawCirclePuase = " + apfq.a(this.this$0) + ", genIdx = " + apfq.a(this.this$0).a.g);
+      ((anzc)localObject).a(new int[] { j }, new int[] { k }, new int[] { m }, bool);
+      localObject = anzc.a(this.this$0).a;
+      ((aoif)localObject).g += 1;
+      QLog.i(anzc.jdField_a_of_type_JavaLangString, 1, "DrawCircle. mDrawCirclePuase = " + anzc.a(this.this$0) + ", genIdx = " + anzc.a(this.this$0).a.g);
       i += 1;
       break;
     }

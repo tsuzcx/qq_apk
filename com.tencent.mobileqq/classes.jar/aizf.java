@@ -1,68 +1,108 @@
-import android.os.Bundle;
+import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.2;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class aizf
-  implements beuq
+public class aizf
+  implements bjoe
 {
-  private Handler a;
+  public aizf(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  aizf(Handler paramHandler)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onResp(bevm parambevm)
-  {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = parambevm.jdField_a_of_type_Bevl;
-    this.a.sendMessage((Message)localObject);
-    Bundle localBundle = (Bundle)parambevm.jdField_a_of_type_Bevl.a();
-    localObject = localBundle.getString("ReqUniqueKey");
-    int i = localBundle.getInt("IdxInRes");
-    if (QLog.isColorLevel())
+    if ((!ChatHistoryTroopMemberFragment.c(this.a)) && (paramInt >= 5)) {}
+    for (int i = paramInt + 1;; i = paramInt)
     {
-      long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, aiyz.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + parambevm.jdField_a_of_type_Long + " file.path = " + parambevm.jdField_a_of_type_Bevl.c + " resp.result = " + parambevm.jdField_a_of_type_Int + " take time: " + Long.toString(System.currentTimeMillis() - l)));
-    }
-    if (parambevm.jdField_a_of_type_Int == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, aiyz.a((String)localObject, "OnResp", i, "result downloading, "));
+      if (this.a.h) {
+        if (paramInt == 0) {
+          this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.1(this), 320L);
+        }
       }
-      return;
-    }
-    if (parambevm.jdField_a_of_type_Int == 0)
-    {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      aiyz.a(parambevm.jdField_a_of_type_Bevl.c);
-      if (localZhituImgResponse != null)
+      for (;;)
       {
-        parambevm = this.a.obtainMessage(3);
-        parambevm.obj = localBundle;
-        this.a.sendMessage(parambevm);
+        if ((this.a.jdField_a_of_type_Bjnw != null) && (this.a.jdField_a_of_type_Bjnw.isShowing())) {
+          this.a.jdField_a_of_type_Bjnw.dismiss();
+        }
         return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.history.BaseFragment", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.c);
+          continue;
+          if (this.a.jdField_d_of_type_Int == 9) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.f = true;
+              this.a.u = "";
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              if (this.a.jdField_a_of_type_Ajae != null) {
+                this.a.jdField_a_of_type_Ajae.a();
+              }
+              bcef.b(this.a.getActivity().app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.c, this.a.o, "", "");
+              break;
+            }
+          } else {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.A();
+              break;
+            case 1: 
+              if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+              {
+                paramView = new Intent(this.a.getActivity(), SelectMemberActivity.class);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("group_uin", this.a.c);
+                paramView.putExtra("param_groupcode", this.a.jdField_b_of_type_JavaLangString);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("param_subtype", 4);
+                paramView.putExtra("param_entrance", 30);
+                paramView.putExtra("param_max", 30);
+                paramView.putExtra("param_exit_animation", 3);
+                this.a.startActivity(paramView);
+                this.a.getActivity().overridePendingTransition(2130771997, 0);
+                bcef.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.c, "", "", "");
+              }
+              break;
+            case 2: 
+              this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.2(this), 320L);
+              break;
+            case 3: 
+              this.a.g = true;
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              ChatHistoryTroopMemberFragment.a(this.a);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131369070));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(amtj.a(2131700761));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new aizg(this));
+              if (this.a.jdField_a_of_type_Ajae != null) {
+                this.a.jdField_a_of_type_Ajae.a();
+              }
+              paramView = this.a.o;
+              this.a.a("Clk_del", paramView, "");
+            }
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, aiyz.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
-      }
-      parambevm = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      parambevm.obj = localBundle;
-    }
-    for (;;)
-    {
-      break;
-      localObject = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", parambevm.b);
-      ((Message)localObject).obj = localBundle;
-      parambevm = (bevm)localObject;
     }
   }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

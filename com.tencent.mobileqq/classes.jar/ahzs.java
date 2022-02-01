@@ -1,82 +1,55 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Set;
 
-public class ahzs
+class ahzs
+  extends RecyclerView.ViewHolder
+  implements Animator.AnimatorListener, View.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private ahzu[] jdField_a_of_type_ArrayOfAhzu = { new agse(), new ahzt(), new bems(), new nqv() };
-  private int b = -1;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
   
-  private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
+  public ahzs(ahzq paramahzq, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOMessageRecordExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
-    }
-    if (paramInt >= 0)
-    {
-      paramListView = paramListView.getAdapter();
-      if ((paramListView != null) && (paramInt < paramListView.getCount()))
-      {
-        paramListView = paramListView.getItem(paramInt);
-        if ((paramListView instanceof MessageRecord))
-        {
-          paramListView = (MessageRecord)paramListView;
-          ahzu[] arrayOfahzu = this.jdField_a_of_type_ArrayOfAhzu;
-          int i = arrayOfahzu.length;
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            arrayOfahzu[paramInt].a(paramQQAppInterface, paramListView);
-            paramInt += 1;
-          }
-        }
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376717));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ListView paramListView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int j = paramListView.mFirstPosition;
-    int k = paramListView.getChildCount();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOMessageRecordExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
-    }
-    int i = j;
-    while (i < j + k)
-    {
-      a(paramQQAppInterface, paramListView, i);
-      i += 1;
-    }
-    this.jdField_a_of_type_Int = paramListView.mFirstPosition;
-    this.b = paramListView.getChildCount();
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    ahzq.a(this.jdField_a_of_type_Ahzq).add(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void b(QQAppInterface paramQQAppInterface, ListView paramListView)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onClick(View paramView)
   {
-    int j = paramListView.mFirstPosition;
-    int k = paramListView.getChildCount();
-    if ((j == this.jdField_a_of_type_Int) && (this.b == k)) {
-      return;
-    }
-    int i = -1;
-    if (j < this.jdField_a_of_type_Int) {
-      i = j;
+    switch (paramView.getId())
+    {
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOMessageRecordExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
-      }
-      this.jdField_a_of_type_Int = j;
-      this.b = k;
-      a(paramQQAppInterface, paramListView, i);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (j + k > this.jdField_a_of_type_Int + this.b) {
-        i = j + k - 1;
-      }
+      ahzq.a(this.jdField_a_of_type_Ahzq, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

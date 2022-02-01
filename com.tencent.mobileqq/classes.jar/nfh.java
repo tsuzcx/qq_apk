@@ -1,26 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.avgame.ipc.MapParcelable;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class nfh
-  implements Parcelable.Creator<MapParcelable>
+class nfh
+  implements DialogInterface.OnClickListener
 {
-  public MapParcelable a(Parcel paramParcel)
-  {
-    MapParcelable localMapParcelable = new MapParcelable();
-    localMapParcelable.a = paramParcel.readHashMap(HashMap.class.getClassLoader());
-    return localMapParcelable;
-  }
+  nfh(nff paramnff, long paramLong) {}
   
-  public MapParcelable[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MapParcelable[paramInt];
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Nff.a()) {}
+    do
+    {
+      return;
+      paramDialogInterface = this.jdField_a_of_type_Nff.a();
+      QLog.w(this.jdField_a_of_type_Nff.a, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "], activity[" + paramDialogInterface + "]");
+    } while (paramDialogInterface == null);
+    njh.a(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfh
  * JD-Core Version:    0.7.0.1
  */

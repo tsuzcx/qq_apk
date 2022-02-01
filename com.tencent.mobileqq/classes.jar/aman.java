@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aman
-  implements Comparable<aman>
+class aman
+  implements amjf
 {
-  public int a;
-  public long a;
-  public int b;
+  aman(amam paramamam, boolean paramBoolean) {}
   
-  public aman(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(aman paramaman)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramaman.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Amam.a(this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
   }
 }
 

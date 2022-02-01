@@ -1,7 +1,6 @@
 package cooperation.qzone.util;
 
 import android.util.Log;
-import bnkf;
 import com.tencent.qphone.base.util.QLog;
 
 public class QZLog
@@ -45,16 +44,16 @@ public class QZLog
       d(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    bnkf localbnkf = bnkf.a();
+    QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbnkf.a(paramVarArgs[paramInt]);
+      localLogBuilder.append(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.d(paramString, j, localbnkf.toString(), paramThrowable);
-    localbnkf.a();
+    QLog.d(paramString, j, localLogBuilder.toString(), paramThrowable);
+    localLogBuilder.recycle();
   }
   
   public static void d(String paramString, int paramInt, Object... paramVarArgs)
@@ -75,16 +74,16 @@ public class QZLog
       QLog.e(paramString, j, paramVarArgs[0].toString(), paramThrowable);
       return;
     }
-    bnkf localbnkf = bnkf.a();
+    QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbnkf.a(paramVarArgs[paramInt]);
+      localLogBuilder.append(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.e(paramString, j, localbnkf.toString(), paramThrowable);
-    localbnkf.a();
+    QLog.e(paramString, j, localLogBuilder.toString(), paramThrowable);
+    localLogBuilder.recycle();
   }
   
   public static void e(String paramString, int paramInt, Object... paramVarArgs)
@@ -138,16 +137,16 @@ public class QZLog
       i(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    bnkf localbnkf = bnkf.a();
+    QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbnkf.a(paramVarArgs[paramInt]);
+      localLogBuilder.append(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.i(paramString, j, localbnkf.toString(), paramThrowable);
-    localbnkf.a();
+    QLog.i(paramString, j, localLogBuilder.toString(), paramThrowable);
+    localLogBuilder.recycle();
   }
   
   public static void i(String paramString, int paramInt, Object... paramVarArgs)
@@ -209,16 +208,16 @@ public class QZLog
       QLog.w(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    bnkf localbnkf = bnkf.a();
+    QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localbnkf.a(paramVarArgs[paramInt]);
+      localLogBuilder.append(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.w(paramString, j, localbnkf.toString(), paramThrowable);
-    localbnkf.a();
+    QLog.w(paramString, j, localLogBuilder.toString(), paramThrowable);
+    localLogBuilder.recycle();
   }
   
   public static void w(String paramString, int paramInt, Object... paramVarArgs)

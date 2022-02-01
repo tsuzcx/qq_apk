@@ -1,22 +1,30 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 class ahgr
-  extends ahkx
+  extends BroadcastReceiver
 {
-  ahgr(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahgr(ahgc paramahgc) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ahsp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    paramIntent.getStringExtra("peerUin");
+    paramIntent.getIntExtra("sessionType", -1);
+    paramContext = paramIntent.getStringExtra("sessionId");
+    if (TextUtils.isEmpty(paramContext)) {}
+    while (!paramContext.startsWith("10-")) {
+      return;
+    }
+    this.a.jdField_a_of_type_Awkz.c();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onBind enter room setSoundDisable");
+    }
+    this.a.jdField_a_of_type_Awkz.a(false);
   }
 }
 

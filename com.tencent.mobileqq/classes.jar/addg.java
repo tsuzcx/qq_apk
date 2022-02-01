@@ -1,38 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController;
 
 public class addg
-  implements adci
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    beki localbeki = ((bejx)paramQQAppInterface.getManager(339)).a(4);
-    byte[] arrayOfByte;
-    long l1;
-    long l2;
-    if (localbeki != null)
-    {
-      arrayOfByte = paramMsgType0x210.vProtobuf;
-      l1 = paramMsgInfo.shMsgSeq;
-      l2 = paramMsgInfo.uRealMsgTime;
-      if (paramMsgType0x210.uSubMsgType != 295L) {
-        break label70;
-      }
-    }
-    label70:
-    for (boolean bool = false;; bool = true)
-    {
-      localbeki.a(paramQQAppInterface, arrayOfByte, l1, l2, bool);
-      return;
-    }
-  }
+  public addg(DialogActivity paramDialogActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    paramDialogInterface = this.a.app.getTransFileController();
+    paramDialogInterface.resumeLastRawSend();
+    paramDialogInterface.resumeLastShortVideoTransfer();
+    this.a.finish();
   }
 }
 

@@ -6,7 +6,7 @@ import UserGrowth.stReportItem;
 import UserGrowth.stSimpleMetaFeed;
 import UserGrowth.stVideoTag;
 import android.text.TextUtils;
-import bdkh;
+import bcdb;
 import com.google.gson.Gson;
 import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel;
@@ -20,13 +20,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import uno;
-import unq;
-import unt;
-import unu;
-import uqf;
-import uqt;
-import usv;
+import uvi;
+import uvk;
+import uvn;
+import uvo;
+import uya;
+import uyo;
+import vaq;
 
 public class WSPublicAccReport
 {
@@ -40,7 +40,7 @@ public class WSPublicAccReport
   public static final String SOP_NAME_VIDEO_PLAY = "fullscreen_videoplay";
   private static volatile WSPublicAccReport instance;
   private String mPushId;
-  private unt mRecommendFullScreenInfo;
+  private uvn mRecommendFullScreenInfo;
   private String mSessionId;
   private String mSessionStamp;
   private Map<String, Long> pageVisitTimeMap = new HashMap();
@@ -54,7 +54,7 @@ public class WSPublicAccReport
   
   private void baseActionReport(String paramString1, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, String paramString3, String paramString4)
   {
-    new WSStatisticsReporter.Builder().addParams(paramMap1).addExtParams(paramMap2).setSceneFrom("QQ_official_account").setSopName(paramString2).setTestId(paramString4).setPushId(this.mPushId).setOperationId(paramString3).setFlush(true).setImmediatelyUpload(uqt.c()).build(paramString1).report();
+    new WSStatisticsReporter.Builder().addParams(paramMap1).addExtParams(paramMap2).setSceneFrom("QQ_official_account").setSopName(paramString2).setTestId(paramString4).setPushId(this.mPushId).setOperationId(paramString3).setFlush(true).setImmediatelyUpload(uyo.c()).build(paramString1).report();
   }
   
   private String getFeedOpVideoType(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -76,7 +76,7 @@ public class WSPublicAccReport
     localHashMap.put("type", String.valueOf(paramstReportItem.video_type));
     localHashMap.put("opvideo_type", getFeedOpVideoType(paramstSimpleMetaFeed));
     localHashMap.put("material_type", getFeedOpVideoType(paramstSimpleMetaFeed));
-    localHashMap.put("cover_type", uqt.a(paramstSimpleMetaFeed));
+    localHashMap.put("cover_type", uyo.a(paramstSimpleMetaFeed));
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.videoTag != null)) {}
     for (paramstSimpleMetaFeed = String.valueOf(paramstSimpleMetaFeed.videoTag.tagId);; paramstSimpleMetaFeed = "")
     {
@@ -103,14 +103,14 @@ public class WSPublicAccReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", uqt.b());
+    localHashMap.put("row_key", uyo.b());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
     localHashMap.put("click_to", String.valueOf(paramInt2));
     localHashMap.put("app_live_time", String.valueOf(paramLong));
     localHashMap.put("operation_or_not", String.valueOf(paramInt3));
-    baseActionReport("gzh_action", "", localHashMap, paramMap, "", uqt.a(1));
+    baseActionReport("gzh_action", "", localHashMap, paramMap, "", uyo.a(1));
   }
   
   private void reportPageVisited(String paramString, int paramInt, long paramLong)
@@ -126,8 +126,8 @@ public class WSPublicAccReport
     this.mRecommendFullScreenInfo = null;
     this.mPushId = "";
     this.pageVisitTimeMap.clear();
-    uqt.d("");
-    uoa.a = false;
+    uyo.d("");
+    uvu.a = false;
   }
   
   private void setSessionId(String paramString)
@@ -158,14 +158,14 @@ public class WSPublicAccReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", uqt.b());
+    localHashMap.put("row_key", uyo.b());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
     localHashMap.put("click_to", String.valueOf(paramInt2));
     localHashMap.put("app_live_time", String.valueOf(paramLong));
     localHashMap.put("operation_or_not", String.valueOf(paramInt3));
-    new WSStatisticsReporter.Builder().addParams(localHashMap).setSceneFrom("weishi_share_trendstab").setSopName("").setTestId(uqt.a(6)).setPushId(this.mPushId).setOperationId("").setFlush(true).setImmediatelyUpload(uqt.c()).build("gzh_action").report();
+    new WSStatisticsReporter.Builder().addParams(localHashMap).setSceneFrom("weishi_share_trendstab").setSopName("").setTestId(uyo.a(6)).setPushId(this.mPushId).setOperationId("").setFlush(true).setImmediatelyUpload(uyo.c()).build("gzh_action").report();
   }
   
   public void backgroundPublicAccReport()
@@ -189,7 +189,7 @@ public class WSPublicAccReport
     for (;;)
     {
       publicAccActionReport("2", 0, "", "", 0, l, paramInt, null);
-      unq.a(paramInt);
+      uvk.a(paramInt);
       reset();
       return;
       if (this.publicAccEnterTime > 0L) {
@@ -235,7 +235,7 @@ public class WSPublicAccReport
       }
     }
     paramWSRedDotPushMsg = str1;
-    if (uqt.a(uqt.a())) {
+    if (uyo.a(uyo.a())) {
       paramWSRedDotPushMsg = "1";
     }
     if (paramInt == 3) {
@@ -243,7 +243,7 @@ public class WSPublicAccReport
     }
     for (;;)
     {
-      publicAccActionReport("1", uqt.a(), (String)localObject, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
+      publicAccActionReport("1", uyo.a(), (String)localObject, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
       return;
       label218:
       paramWSRedDotPushMsg = String.valueOf(0);
@@ -301,7 +301,7 @@ public class WSPublicAccReport
     if (paramInt != 0) {
       localHashMap.put("action_id", String.valueOf(paramInt));
     }
-    localHashMap.put("global_key", unu.a().a(paramstSimpleMetaFeed.traceId));
+    localHashMap.put("global_key", uvo.a().a(paramstSimpleMetaFeed.traceId));
     for (;;)
     {
       try
@@ -315,7 +315,7 @@ public class WSPublicAccReport
       catch (Exception localException)
       {
         String str;
-        bdkh.a(localException);
+        bcdb.a(localException);
         continue;
       }
       baseActionReport(paramString1, "feeds", localHashMap, getFeedsItemReportExtMap(paramstSimpleMetaFeed, paramstReportItem), "", paramString2);
@@ -343,7 +343,7 @@ public class WSPublicAccReport
     {
       str = paramstSimpleMetaFeed.id;
       localObject = paramstSimpleMetaFeed.poster_id;
-      localHashMap.put("global_key", unu.a().a(paramstSimpleMetaFeed.traceId));
+      localHashMap.put("global_key", uvo.a().a(paramstSimpleMetaFeed.traceId));
       if (paramstSimpleMetaFeed.map_ext == null) {
         break label154;
       }
@@ -366,10 +366,10 @@ public class WSPublicAccReport
     return getFeedsBaseParams(paramString, paramInt, null);
   }
   
-  public unt getRecommendFullScreenInfo()
+  public uvn getRecommendFullScreenInfo()
   {
     if (this.mRecommendFullScreenInfo == null) {
-      this.mRecommendFullScreenInfo = new unt(this);
+      this.mRecommendFullScreenInfo = new uvn(this);
     }
     return this.mRecommendFullScreenInfo;
   }
@@ -430,10 +430,10 @@ public class WSPublicAccReport
   public void reportClickRichBlockPop(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     if (TextUtils.equals(paramString2, "feeds")) {}
-    for (String str = uqt.a(1);; str = uqt.a(2))
+    for (String str = uyo.a(1);; str = uyo.a(2))
     {
       Map localMap = getFeedsBaseParamsWithoutFeed("popup", paramInt1);
-      localMap.put("global_key", unu.a().a(paramString1));
+      localMap.put("global_key", uvo.a().a(paramString1));
       baseActionReport("gzh_click", paramString2, localMap, null, String.valueOf(paramInt2), str);
       return;
     }
@@ -441,18 +441,18 @@ public class WSPublicAccReport
   
   public void reportDownload(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    String str = uqt.a(1);
+    String str = uyo.a(1);
     HashMap localHashMap = new HashMap();
     localHashMap.put("position", String.valueOf(paramInt1));
     localHashMap.put("event_type", String.valueOf(paramInt2));
     localHashMap.put("dl_status", String.valueOf(paramInt3));
     localHashMap.put("dl_method", String.valueOf(paramInt4));
     localHashMap.put("install_status", String.valueOf(paramInt5));
-    uqf.c("beacon-download", paramInt1 + " - " + paramInt2 + " - " + paramInt3 + " - " + paramInt4 + " - " + paramInt5);
+    uya.c("beacon-download", paramInt1 + " - " + paramInt2 + " - " + paramInt3 + " - " + paramInt4 + " - " + paramInt5);
     baseActionReport("gzh_download", "", localHashMap, null, "", str);
   }
   
-  public void reportEnterVerticalVideo(List<usv> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
+  public void reportEnterVerticalVideo(List<vaq> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("trigger_type", String.valueOf(paramInt1));
@@ -466,17 +466,17 @@ public class WSPublicAccReport
       if ((paramList == null) || (paramList.size() <= 0)) {
         break label236;
       }
-      if (!(((usv)paramList.get(0)).a() instanceof stSimpleMetaFeed)) {
+      if (!(((vaq)paramList.get(0)).a() instanceof stSimpleMetaFeed)) {
         break label214;
       }
       localObject = new StringBuilder();
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
-        usv localusv = (usv)localIterator.next();
-        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localusv.a()).id))
+        vaq localvaq = (vaq)localIterator.next();
+        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localvaq.a()).id))
         {
-          ((StringBuilder)localObject).append(((stSimpleMetaFeed)localusv.a()).id);
+          ((StringBuilder)localObject).append(((stSimpleMetaFeed)localvaq.a()).id);
           ((StringBuilder)localObject).append("_");
         }
       }
@@ -501,10 +501,10 @@ public class WSPublicAccReport
   public void reportExposeRichBlockPop(int paramInt, String paramString1, String paramString2)
   {
     if (TextUtils.equals(paramString2, "feeds")) {}
-    for (String str = uqt.a(1);; str = uqt.a(2))
+    for (String str = uyo.a(1);; str = uyo.a(2))
     {
       Map localMap = getFeedsBaseParamsWithoutFeed("popup", 0);
-      localMap.put("global_key", unu.a().a(paramString1));
+      localMap.put("global_key", uvo.a().a(paramString1));
       baseActionReport("gzh_exposure", paramString2, localMap, null, String.valueOf(paramInt), str);
       return;
     }
@@ -520,9 +520,9 @@ public class WSPublicAccReport
         Object localObject2 = (Map.Entry)paramHashMap.next();
         Object localObject1 = (Integer)((Map.Entry)localObject2).getKey();
         localObject2 = (stSimpleMetaFeed)((Map.Entry)localObject2).getValue();
-        localObject1 = uno.a((stSimpleMetaFeed)localObject2, ((Integer)localObject1).intValue());
+        localObject1 = uvi.a((stSimpleMetaFeed)localObject2, ((Integer)localObject1).intValue());
         if ((((stReportItem)localObject1).video_type != 1) && (((stReportItem)localObject1).video_type != 6)) {
-          feedsItemReport("gzh_exposure", uqt.a(1), (stSimpleMetaFeed)localObject2, (stReportItem)localObject1, 0);
+          feedsItemReport("gzh_exposure", uyo.a(1), (stSimpleMetaFeed)localObject2, (stReportItem)localObject1, 0);
         }
       }
     }
@@ -540,9 +540,9 @@ public class WSPublicAccReport
   
   public void reportMsgEntry(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
-    String str = uqt.a(4);
+    String str = uyo.a(4);
     Map localMap = getFeedsBaseParamsWithoutFeed("msg_extry", paramInt2);
-    localMap.put("global_key", unu.a().a(paramString2));
+    localMap.put("global_key", uvo.a().a(paramString2));
     paramString2 = new HashMap();
     paramString2.put("type", String.valueOf(paramInt1));
     baseActionReport(paramString1, "feeds", localMap, paramString2, String.valueOf(paramInt3), str);
@@ -555,7 +555,7 @@ public class WSPublicAccReport
   
   public void reportOperationCard(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    String str = uqt.a(1);
+    String str = uyo.a(1);
     Map localMap = getFeedsBaseParams("opcard", paramInt, paramstSimpleMetaFeed);
     Object localObject;
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.h5_op_info != null))
@@ -617,18 +617,18 @@ public class WSPublicAccReport
     localHashMap.put("feeds_list_type", String.valueOf(paramInt2));
     localHashMap.put("preload_count", String.valueOf(paramInt3));
     baseActionReport("gzh_exposure", "feeds", getFeedsBaseParams("feeds_data", 0, paramstSimpleMetaFeed), localHashMap, "");
-    unq.a(paramstSimpleMetaFeed, localHashMap);
+    uvk.a(paramstSimpleMetaFeed, localHashMap);
   }
   
   public void reportPublicAccDetailClick()
   {
-    String str = uqt.a(1);
+    String str = uyo.a(1);
     baseActionReport("gzh_click", "feeds", getFeedsBaseParamsWithoutFeed("wesee_info", 1000001), null, "", str);
   }
   
   public void reportPublisher(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    String str = uqt.a(10004);
+    String str = uyo.a(10004);
     baseActionReport(paramString1, paramString2, getFeedsBaseParamsWithoutFeed(paramString3, paramInt), null, "", str);
   }
   
@@ -662,7 +662,7 @@ public class WSPublicAccReport
     }
     for (;;)
     {
-      new WSStatisticsReporter.Builder().addParams(getFeedsBaseParamsWithoutFeed("videoplay_update", 0)).setSceneFrom(str).setSopName("fullscreen_videoplay").setTestId(uqt.a(1)).setPushId(this.mPushId).setFlush(true).setImmediatelyUpload(uqt.c()).build("gzh_exposure").report();
+      new WSStatisticsReporter.Builder().addParams(getFeedsBaseParamsWithoutFeed("videoplay_update", 0)).setSceneFrom(str).setSopName("fullscreen_videoplay").setTestId(uyo.a(1)).setPushId(this.mPushId).setFlush(true).setImmediatelyUpload(uyo.c()).build("gzh_exposure").report();
       return;
       if (paramInt == 6) {
         str = "weishi_share_trendstab";
@@ -672,7 +672,7 @@ public class WSPublicAccReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport
  * JD-Core Version:    0.7.0.1
  */

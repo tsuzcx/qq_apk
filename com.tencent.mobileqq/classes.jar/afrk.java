@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afrk
-  extends aojs
+class afrk
+  implements DialogInterface.OnClickListener
 {
-  public afrk(TroopAssistantActivity paramTroopAssistantActivity) {}
+  afrk(afri paramafri, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
     }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    axan.a().b(paramString, this.a.app);
-    this.a.c();
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.c();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.a.c();
   }
 }
 

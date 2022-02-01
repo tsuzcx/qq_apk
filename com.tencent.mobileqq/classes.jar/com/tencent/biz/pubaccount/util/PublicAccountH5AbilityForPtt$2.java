@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.util;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.widget.QQToast;
-import tyl;
+import ufa;
 
 public class PublicAccountH5AbilityForPtt$2
   implements Runnable
 {
-  public PublicAccountH5AbilityForPtt$2(tyl paramtyl) {}
+  public PublicAccountH5AbilityForPtt$2(ufa paramufa) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a, anzj.a(2131707689), 0).a();
+    QQToast.a(this.this$0.a, amtj.a(2131707921), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.2
  * JD-Core Version:    0.7.0.1
  */

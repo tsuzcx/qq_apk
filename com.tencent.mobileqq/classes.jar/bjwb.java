@@ -1,6 +1,8 @@
-public abstract interface bjwb
+import android.view.MotionEvent;
+
+abstract interface bjwb
 {
-  public abstract void a(bjwa parambjwa);
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

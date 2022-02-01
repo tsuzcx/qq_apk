@@ -1,27 +1,26 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.mobileqq.widget.QQToast;
-import qqcircle.QQCircleRight.SetCircleUnCareRsp;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class vfk
-  implements aaav<QQCircleRight.SetCircleUnCareRsp>
+public class vfk
+  implements URLDrawable.URLDrawableListener
 {
-  vfk(vfi paramvfi, boolean paramBoolean) {}
+  public vfk(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, URLDrawable paramURLDrawable) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.SetCircleUnCareRsp paramSetCircleUnCareRsp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleSharePart", 1, "uncare person: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    }
-    if ((paramBoolean) && (paramLong == 0L))
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        QQToast.a(this.jdField_a_of_type_Vfi.a(), 2, 2131697195, 0).a();
-      }
-      aaak.a().a(new QCircleFeedEvent("", 6));
-      return;
+      paramURLDrawable = (RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a = paramURLDrawable.getBitmap();
     }
-    QQToast.a(this.jdField_a_of_type_Vfi.a(), 1, 2131697280, 0).a();
   }
 }
 

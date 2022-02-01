@@ -1,50 +1,76 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class wdx
-  extends RecyclerView.ViewHolder
+public class wdx
+  extends vqr<wfv>
 {
-  public RelativeLayout a;
-  public TextView a;
-  public FeedCloudMeta.StTagInfo a;
+  public String a;
+  public List<vwe> a;
+  public boolean a;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public wdx(wdw paramwdw, View paramView)
+  public wdx()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369610));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369608));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, int paramInt)
+  public String a()
   {
-    if (paramStTagInfo != null)
+    return vpl.a("StorySvc.convert_uid_and_union_id");
+  }
+  
+  public wfv a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    try
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
-      paramStTagInfo = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      if (paramInt != 0) {
-        break label93;
-      }
-      paramStTagInfo.setMargins(bdep.a(12.0F), 0, 0, 0);
+      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
+      return new wfv(localRspConvertUinAndUnionId);
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramStTagInfo);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(bdep.a(5.0F), 0, bdep.a(5.0F), 0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new wdy(this));
-      return;
-      label93:
-      if (paramInt == this.jdField_a_of_type_Wdw.a.size() - 1) {
-        paramStTagInfo.setMargins(bdep.a(5.0F), 0, bdep.a(38.0F), 0);
-      } else {
-        paramStTagInfo.setMargins(bdep.a(5.0F), 0, 0, 0);
+      xvv.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    int j = 1;
+    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
+    localReqConvertUinAndUnionId.convert_from.set(this.c);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      vwe localvwe = (vwe)((Iterator)localObject).next();
+      localReqConvertUinAndUnionId.user_id_list.add(localvwe.a());
+    }
+    localObject = localReqConvertUinAndUnionId.need_medal;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      ((PBUInt32Field)localObject).set(i);
+      localObject = localReqConvertUinAndUnionId.need_grade_speed;
+      if (!this.b) {
+        break label121;
       }
+    }
+    label121:
+    for (int i = j;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      return localReqConvertUinAndUnionId.toByteArray();
+      i = 0;
+      break;
     }
   }
 }

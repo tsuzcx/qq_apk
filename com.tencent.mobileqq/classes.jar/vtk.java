@@ -1,17 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc010001.1;
+import org.json.JSONObject;
 
 public class vtk
 {
-  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt4)
-  {
-    vtw.a().a().post(new QCircleLpReportDc010001.1(paramInt1, paramInt2, paramInt3, paramString1, paramString2, paramString3, paramString4, paramInt4));
-  }
-  
-  private static int b()
-  {
-    return 10001;
-  }
+  public int a;
+  public String a = "";
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

@@ -2,25 +2,25 @@ package com.tencent.mobileqq.nearby.now;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import axup;
-import ayek;
-import bdlq;
+import awhw;
+import awrs;
+import bcek;
 
 class SmallVideoFragment$3
   implements Runnable
 {
-  SmallVideoFragment$3(SmallVideoFragment paramSmallVideoFragment, long paramLong, axup paramaxup) {}
+  SmallVideoFragment$3(SmallVideoFragment paramSmallVideoFragment, long paramLong, awhw paramawhw) {}
   
   public void run()
   {
-    bdlq localbdlq = new bdlq(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_time").e(ayek.d);
+    bcek localbcek = new bcek(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_time").e(awrs.d);
     String str2 = this.jdField_a_of_type_Long + "";
-    int i = this.jdField_a_of_type_Axup.b();
-    String str3 = ayek.a;
-    if (TextUtils.equals(ayek.a, "2")) {}
-    for (String str1 = ayek.c;; str1 = "")
+    int i = this.jdField_a_of_type_Awhw.b();
+    String str3 = awrs.a;
+    if (TextUtils.equals(awrs.a, "2")) {}
+    for (String str1 = awrs.c;; str1 = "")
     {
-      localbdlq.a(new String[] { str2, String.valueOf(i), str3, str1 }).a();
+      localbcek.a(new String[] { str2, String.valueOf(i), str3, str1 }).a();
       return;
     }
   }

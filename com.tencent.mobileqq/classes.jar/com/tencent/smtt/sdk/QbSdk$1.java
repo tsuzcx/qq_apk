@@ -30,7 +30,7 @@ final class QbSdk$1
       QbSdk.a(TbsExtensionFunctionManager.getInstance().canUseFunction(this.b, "disable_unpreinit.txt"));
       if (QbSdk.j)
       {
-        paramMessage = v.a().c();
+        paramMessage = x.a().c();
         if (paramMessage != null) {
           paramMessage.a(this.b);
         }

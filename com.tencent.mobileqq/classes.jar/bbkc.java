@@ -1,50 +1,22 @@
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbkc
-  extends bbke
+class bbkc
+  extends Handler
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  bbkc(bbkb parambbkb) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if ("actStreamingVideoPlay".equalsIgnoreCase(paramString))
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 0)
     {
-      paramString = new HashMap();
-      paramString.put("StreamingVideoSupport", String.valueOf(this.jdField_a_of_type_Boolean));
-      paramString.put("FirstBufferTime", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("PlayProgress", String.valueOf(this.b));
-      paramString.put("LoadProgress", String.valueOf(this.c));
-      paramString.put("FileDuration", String.valueOf(this.d));
-      paramString.put("FileLen", String.valueOf(this.e));
-      paramString.put("param_seekTimes", String.valueOf(this.f));
-      paramString.put("PlayResult", String.valueOf(this.g));
-      paramString.put("param_playTimeCost", String.valueOf(this.jdField_a_of_type_Long));
-      return paramString;
+      bbkb.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
+      }
     }
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("supportProgressive ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("playReadyTime ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("exitPlayProgress ").append(this.b);
-    localStringBuilder.append("exitCacheProgress ").append(this.c);
-    localStringBuilder.append("durationTime ").append(this.d);
-    localStringBuilder.append("fileSize ").append(this.e);
-    localStringBuilder.append("seekTimes ").append(this.f);
-    localStringBuilder.append("playResult ").append(this.g);
-    localStringBuilder.append("playTimeCost").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
   }
 }
 

@@ -1,36 +1,22 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class ajvv
-  implements View.OnClickListener
+public class ajvv
+  implements OnCompositionLoadedListener
 {
-  ajvv(ajvu paramajvu) {}
+  public ajvv(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str1 = (String)paramView.getTag(-1);
-      String str2 = (String)paramView.getTag(-2);
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str1 + ", name = " + str2);
-        }
-      }
-      else {
-        nok.a(PublicAccountFragment.a(this.a.a), PublicAccountFragment.b(this.a.a), str2, str1, "IvrEnterpriseDetailEngineFalse");
-      }
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.a.d.setImageDrawable(localLottieDrawable);
   }
 }
 

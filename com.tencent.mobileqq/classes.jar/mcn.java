@@ -1,99 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavPanel;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class mcn
-  extends anwt
+  implements Animation.AnimationListener
 {
-  public mcn(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity) {}
+  public mcn(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, isSuccess[" + paramBoolean + "], errorCode[" + paramInt + "], validTime[" + paramLong1 + "], sigUrl[" + paramString1 + "], shortUrl[" + paramString2 + "], discussionUin[" + paramLong2 + "], mDiscID[" + this.a.h + "]");
-    if (paramBoolean)
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
+    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
     {
-      if (!TextUtils.isEmpty(this.a.h))
-      {
-        this.a.jdField_a_of_type_Mco = new mco(this.a);
-        paramString1 = new ArrayList();
-        mvm localmvm = new mvm();
-        localmvm.jdField_a_of_type_JavaLangString = ("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/createConfCallback?feedkey=" + this.a.b);
-        this.a.d = paramString2.substring("https://url.cn/".length(), paramString2.length() - "#flyticket".length());
-        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, mTicket[" + this.a.d + "]");
-        localmvm.jdField_a_of_type_JavaLangString = (localmvm.jdField_a_of_type_JavaLangString + "&ret=0&ticket=" + this.a.d);
-        paramString1.add(localmvm);
-        this.a.jdField_a_of_type_Mco.execute(new ArrayList[] { paramString1 });
-      }
-      return;
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
     }
-    this.a.jdField_a_of_type_Anwo.c(paramLong2);
-    this.a.a(1, paramInt);
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if (paramAnimation != null) {
+      paramAnimation.g(this.jdField_a_of_type_Long);
+    }
   }
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onJoinDiscussionByFlyTicket, isSuccess[" + paramBoolean + "], discussUin[" + paramLong + "], errorCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
-    if (paramBoolean)
-    {
-      this.a.h = String.valueOf(paramLong);
-      if (!TextUtils.isEmpty(this.a.h)) {
-        ((anwo)this.a.app.a(6)).a(paramLong);
-      }
-      return;
-    }
-    this.a.a(1, paramInt);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "DiscussObserver.onUpdate, type[" + paramInt + "], isSuccess[" + paramBoolean + "], mDiscID[" + this.a.h + "]");
-    if (paramInt == 1001)
-    {
-      AudioHelper.b("获取讨论组资料_rsp");
-      if ((paramObject instanceof ArrayList))
-      {
-        paramObject = (ArrayList)paramObject;
-        paramObject = new Object[] { String.valueOf(paramObject.get(0)), paramObject.get(1) };
-        str = (String)paramObject[0];
-        ((Boolean)paramObject[1]).booleanValue();
-        if ((this.a.h.equals(str)) && (paramBoolean))
-        {
-          this.a.c();
-          this.a.a(this.a.h, this.a.c);
-        }
-        this.a.finish();
-      }
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if (paramAnimation != null) {
+      paramAnimation.g(this.jdField_a_of_type_Long);
     }
-    while (1014 != paramInt) {
-      for (;;)
-      {
-        String str;
-        return;
-        paramObject = (Object[])paramObject;
-      }
-    }
-    AudioHelper.b("通过签名加入讨论组_rsp");
-    paramObject = (Long[])paramObject;
-    long l = paramObject[1].longValue();
-    paramInt = paramObject[0].intValue();
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "NOTIFY_TYPE_JOIN_DISCUSSION_BY_FLYY_TICKET, discussUin[" + l + "], errCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
-    if (paramInt == 0)
-    {
-      if (TextUtils.equals(String.valueOf(l), this.a.h))
-      {
-        this.a.c();
-        AudioHelper.b(anzj.a(2131701293));
-        ((anwo)this.a.app.a(6)).a(l);
-        return;
-      }
-      this.a.finish();
-      return;
-    }
-    this.a.finish();
-    this.a.a(1, paramInt);
   }
 }
 

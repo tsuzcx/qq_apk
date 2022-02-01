@@ -1,11 +1,28 @@
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
 
-public class ajsp
-  extends amra
+class ajsp
+  implements XMPCoreUtil.XMPCoreJarLoadListener
 {
-  public SingleLineTextView a;
-  public Object a;
-  public SingleLineTextView b;
+  ajsp(ajsn paramajsn, LocalMediaInfo paramLocalMediaInfo) {}
+  
+  public void loadState(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
+      {
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+  }
 }
 
 

@@ -1,14 +1,16 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class yrl
-  implements bljb
+  implements View.OnClickListener
 {
-  yrl(yrh paramyrh, int paramInt) {}
+  yrl(yrj paramyrj) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    ynt localynt = (ynt)this.jdField_a_of_type_Yrh.a.a().get(this.jdField_a_of_type_Int);
-    yrh.a(this.jdField_a_of_type_Yrh, localynt, "clk_hide");
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

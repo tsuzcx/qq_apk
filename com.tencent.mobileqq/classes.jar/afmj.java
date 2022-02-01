@@ -1,20 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afmj
-  implements DialogInterface.OnClickListener
+final class afmj
+  implements afmf<afmi>
 {
-  afmj(afmg paramafmg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afmi a(afmc paramafmc)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Bhpc.cancel();
-      this.a.b = true;
-      afmg.a(this.a);
-      this.a.b();
-    }
+    return new afmi(paramafmc);
   }
 }
 

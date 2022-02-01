@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pushdialog;
 
-import bamz;
-import bana;
+import azcz;
+import azda;
 import java.util.List;
 
 public class AIOPushDialogHelper$1$1
   implements Runnable
 {
-  public AIOPushDialogHelper$1$1(bana parambana, List paramList) {}
+  public AIOPushDialogHelper$1$1(azda paramazda, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bana.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
+    this.jdField_a_of_type_Azda.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
   }
 }
 

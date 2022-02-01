@@ -1,7 +1,7 @@
 package com.tencent.device.qfind;
 
-import acai;
-import acar;
+import aawr;
+import aaxa;
 import android.bluetooth.BluetoothDevice;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,46 +11,46 @@ import mqq.os.MqqHandler;
 public class QFindBLEScanMgr$3$1
   implements Runnable
 {
-  public QFindBLEScanMgr$3$1(acar paramacar, BluetoothDevice paramBluetoothDevice, byte[] paramArrayOfByte) {}
+  public QFindBLEScanMgr$3$1(aaxa paramaaxa, BluetoothDevice paramBluetoothDevice, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    acai localacai = new acai();
-    localacai.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getName();
-    localacai.b = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getAddress();
-    localacai.jdField_a_of_type_Boolean = false;
-    acai.a(this.jdField_a_of_type_ArrayOfByte, localacai);
-    if ((localacai.jdField_a_of_type_JavaUtilList != null) && (localacai.jdField_a_of_type_JavaUtilList.contains("0000feba-0000-1000-8000-00805f9b34fb")))
+    aawr localaawr = new aawr();
+    localaawr.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getName();
+    localaawr.b = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getAddress();
+    localaawr.jdField_a_of_type_Boolean = false;
+    aawr.a(this.jdField_a_of_type_ArrayOfByte, localaawr);
+    if ((localaawr.jdField_a_of_type_JavaUtilList != null) && (localaawr.jdField_a_of_type_JavaUtilList.contains("0000feba-0000-1000-8000-00805f9b34fb")))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QFindBLE_ex", 2, "onLeScan name=" + localacai.jdField_a_of_type_JavaLangString + " pid:" + localacai.jdField_a_of_type_Int + " address:" + localacai.b + " ; blePeerInfo.ble_id = " + localacai.c);
+        QLog.i("QFindBLE_ex", 2, "onLeScan name=" + localaawr.jdField_a_of_type_JavaLangString + " pid:" + localaawr.jdField_a_of_type_Int + " address:" + localaawr.b + " ; blePeerInfo.ble_id = " + localaawr.c);
       }
-      if ((localacai.jdField_a_of_type_Int == 0) || (localacai.jdField_a_of_type_ArrayOfByte == null) || (!this.jdField_a_of_type_Acar.a.b.contains(new Long(localacai.jdField_a_of_type_Int)))) {}
+      if ((localaawr.jdField_a_of_type_Int == 0) || (localaawr.jdField_a_of_type_ArrayOfByte == null) || (!this.jdField_a_of_type_Aaxa.a.b.contains(new Long(localaawr.jdField_a_of_type_Int)))) {}
     }
     for (;;)
     {
       try
       {
-        QFindBLEScanMgr.b(this.jdField_a_of_type_Acar.a);
-        boolean bool1 = QFindBLEScanMgr.a(this.jdField_a_of_type_Acar.a, localacai);
-        bool2 = QFindBLEScanMgr.a(this.jdField_a_of_type_Acar.a, localacai, bool1);
+        QFindBLEScanMgr.b(this.jdField_a_of_type_Aaxa.a);
+        boolean bool1 = QFindBLEScanMgr.a(this.jdField_a_of_type_Aaxa.a, localaawr);
+        bool2 = QFindBLEScanMgr.a(this.jdField_a_of_type_Aaxa.a, localaawr, bool1);
         if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE_ex", 2, "onLeScan blePeerInfo.ble_id = " + localacai.c + " ; needReportLoc = " + bool1 + " ; needReport = " + bool2);
+          QLog.i("QFindBLE_ex", 2, "onLeScan blePeerInfo.ble_id = " + localaawr.c + " ; needReportLoc = " + bool1 + " ; needReport = " + bool2);
         }
         if ((!bool2) || (!bool1)) {
           continue;
         }
-        QFindBLEScanMgr.a(this.jdField_a_of_type_Acar.a, localacai.jdField_a_of_type_Int, localacai.a());
+        QFindBLEScanMgr.a(this.jdField_a_of_type_Aaxa.a, localaawr.jdField_a_of_type_Int, localaawr.a());
       }
       catch (Exception localException)
       {
         boolean bool2;
         continue;
       }
-      this.jdField_a_of_type_Acar.a.a.postDelayed(new QFindBLEScanMgr.3.1.1(this), this.jdField_a_of_type_Acar.a.i);
+      this.jdField_a_of_type_Aaxa.a.a.postDelayed(new QFindBLEScanMgr.3.1.1(this), this.jdField_a_of_type_Aaxa.a.i);
       return;
       if (bool2) {
-        QFindBLEScanMgr.a(this.jdField_a_of_type_Acar.a, localacai, null, false);
+        QFindBLEScanMgr.a(this.jdField_a_of_type_Aaxa.a, localaawr, null, false);
       }
     }
   }

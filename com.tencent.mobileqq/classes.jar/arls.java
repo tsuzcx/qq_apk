@@ -1,107 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
 public class arls
-  extends arac<arlr>
+  extends RecyclerView.AdapterDataObserver
 {
-  @NonNull
-  public arlr a(int paramInt)
-  {
-    return new arlr();
-  }
+  public arls(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  @Nullable
-  public arlr a(araj[] paramArrayOfaraj)
+  public void onChanged()
   {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaraj != null) {
-      try
-      {
-        if (paramArrayOfaraj.length > 0)
-        {
-          paramArrayOfaraj = (arlr)arax.a(paramArrayOfaraj[0].a, arlr.class);
-          return paramArrayOfaraj;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaraj)
-      {
-        QLog.e("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaraj.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  public void a(arlr paramarlr)
-  {
-    if (paramarlr != null)
+    if (this.a.jdField_a_of_type_Arme.a() == 0)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
-    }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramarlr.a)) {
-          paramarlr.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_groupfile_excitingdownload", paramarlr.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramarlr.a + "]");
-        localObject = (atsh)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atsh)localObject).a(paramarlr);
-        }
-      }
+      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Armf);
       return;
     }
-  }
-  
-  public Class<arlr> clazz()
-  {
-    return arlr.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public int type()
-  {
-    return 555;
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Armf);
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Armf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,219 +1,246 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.os.SystemClock;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISPlayerDownloader;
-import com.tencent.superplayer.api.ISPlayerPreDownloader;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.smtt.sdk.CookieManager;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcxh
-  extends bcxf
 {
-  ISPlayerDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader;
-  ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-  private ArrayList<bcxk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static String a;
+  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public bcxh(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[2];
   }
   
-  private void b(bcxn parambcxn)
+  public static long a(String paramString)
   {
-    if ((parambcxn == null) || (parambcxn.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)) {
-      return;
+    paramString = (Long)jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    if (paramString != null) {
+      return SystemClock.elapsedRealtime() - paramString.longValue();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "downFullVideo, uniseq = " + parambcxn.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if (!VideoPlaySDKManager.getInstance().isSDKReady()) {
-      VideoPlaySDKManager.getInstance().initSDKAsync(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new bcxi(this, parambcxn));
-    }
-    c(parambcxn);
+    return 0L;
   }
   
-  private void c(bcxn parambcxn)
+  public static String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "startFullDownload, uniseq = " + parambcxn.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader = SuperPlayerFactory.createDownloader(BaseApplicationImpl.getContext(), 101);
-    Object localObject = ShortVideoUtils.a(parambcxn.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    int i;
-    if ((parambcxn.jdField_a_of_type_ArrayOfJavaLangString != null) && (parambcxn.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = paramString.hashCode() + "_" + System.currentTimeMillis())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      String[] arrayOfString = parambcxn.jdField_a_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(arrayOfString[i]);
-        localStringBuilder.append(";");
-        i += 1;
-      }
-      localObject = SuperPlayerFactory.createVideoInfoForUrl(localStringBuilder.toString(), 101, parambcxn.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5() + parambcxn.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, (String)localObject);
-      i = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.startOfflineDownload((SuperPlayerVideoInfo)localObject, new bcxj(this, parambcxn));
-      if (i <= 0) {
-        break label216;
-      }
-      parambcxn.f = i;
-    }
-    label216:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("ShortVideoPreDownloader", 2, "downFullVideo, mVideoUrls is null");
-      return;
-    }
-    QLog.e("ShortVideoPreDownloader", 2, " downFullVideo error preLoadId = " + i);
-  }
-  
-  bcxn a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      bcxn localbcxn1 = a(this.jdField_a_of_type_JavaUtilList);
-      if (localbcxn1 != null)
-      {
-        a("getShortVideoRequest", "get a short video request from AIORequests");
-        return localbcxn1;
-      }
-      synchronized (this.b)
-      {
-        localbcxn1 = a(this.b);
-        if (localbcxn1 != null)
-        {
-          a("getShortVideoRequest", "get a short video request from C2CRequests");
-          return localbcxn1;
-        }
-      }
-    }
-    synchronized (this.c)
-    {
-      bcxn localbcxn2 = a(this.c);
-      if (localbcxn2 != null)
-      {
-        a("getShortVideoRequest", "get a short video request from DiscussionRequests");
-        return localbcxn2;
-      }
-    }
-    synchronized (this.d)
-    {
-      bcxn localbcxn3 = a(this.d);
-      if (localbcxn3 != null)
-      {
-        a("getShortVideoRequest", "get a short video request from GroupRequests");
-        return localbcxn3;
-      }
-    }
-    a("getShortVideoRequest", "cannot get any request");
-    return null;
-  }
-  
-  bcxn a(List<bcxn> paramList)
-  {
-    int i = paramList.size();
-    if (i <= 0) {
-      return null;
-    }
-    bcxn localbcxn;
-    if (VideoPlaySDKManager.getInstance().isSDKReady())
-    {
-      localbcxn = (bcxn)paramList.get(i - 1);
-      paramList.remove(i - 1);
-      a("getRequestBySDKStatus", "sdk installed");
-      paramList = localbcxn;
-      return paramList;
-    }
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      localbcxn = (bcxn)localIterator.next();
-      if (localbcxn.jdField_a_of_type_Bcwx.jdField_a_of_type_Int != 0) {
-        paramList.remove(localbcxn);
-      }
-    }
-    for (paramList = localbcxn;; paramList = null)
-    {
-      a("getRequestBySDKStatus", "get a short video request");
-      break;
+      jdField_a_of_type_JavaLangString = paramString;
+      QLog.d("TenDocLogReportHelper", 2, "init trace id: " + jdField_a_of_type_JavaLangString);
+      return jdField_a_of_type_JavaLangString;
     }
   }
   
-  public void a(axpw paramaxpw)
+  public static String a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "downloadLongVideoForSave.");
+    String str;
+    if (paramString1 == null) {
+      str = null;
     }
-    if ((paramaxpw == null) || (paramaxpw.a == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoPreDownloader", 2, "downloadLongVideoForSave, null param error.");
-      }
-      return;
-    }
-    c(paramaxpw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-    Object localObject = paramaxpw.a.jdField_a_of_type_Bcwx.c;
-    long l = paramaxpw.a.jdField_a_of_type_Bcwx.jdField_a_of_type_Long;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, l);
-    if ((localObject != null) && ((localObject instanceof berj))) {
-      ((berj)localObject).a();
-    }
-    a(paramaxpw.a);
-  }
-  
-  protected void a(bcxn parambcxn)
-  {
-    super.a(parambcxn);
-    if (parambcxn.jdField_a_of_type_Bcwx.jdField_a_of_type_Int == 0)
-    {
-      agid localagid = agid.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localagid != null)
-      {
-        parambcxn = new bcxk(this, parambcxn);
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambcxn);
-        localagid.a(parambcxn.a, parambcxn);
-      }
-    }
-  }
-  
-  public void b(axpw paramaxpw)
-  {
-    if ((paramaxpw == null) || (paramaxpw.a == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoPreDownloader", 2, "cancelDownVideoForSave, null param error.");
-      }
-    }
+    Uri localUri;
     do
     {
-      return;
-      c(paramaxpw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      bhvc localbhvc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramaxpw.a.jdField_a_of_type_Bcwx.c, paramaxpw.a.jdField_a_of_type_Bcwx.jdField_a_of_type_Long);
-      if ((localbhvc instanceof berj)) {
-        ((berj)localbhvc).a();
-      }
-    } while ((this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader == null) || (paramaxpw.a.f <= 0));
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.stopOfflineDownload(paramaxpw.a.f);
+      return str;
+      localUri = Uri.parse(paramString1);
+      str = paramString1;
+    } while (!TextUtils.isEmpty(localUri.getQueryParameter("xiaolv_wy_tdoc_tid")));
+    QLog.d("TenDocLogReportHelper", 2, "trace url: " + paramString1 + ",traceId: " + paramString2);
+    paramString1 = localUri.buildUpon();
+    paramString1.appendQueryParameter("xiaolv_wy_tdoc_tid", paramString2);
+    return paramString1.toString();
   }
   
-  public void onDestroy()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader != null)
-    {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.destory();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = null;
+    bcef.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    a(jdField_a_of_type_ArrayOfJavaLangString, paramString1, paramString3, paramString4, paramString5);
+    bcef.b(paramQQAppInterface, "dc00898", "", "", paramString2, paramString2, 0, 0, "", "", jdField_a_of_type_ArrayOfJavaLangString[0], jdField_a_of_type_ArrayOfJavaLangString[1]);
+    if (QLog.isColorLevel()) {
+      QLog.d("TenDocLogReportHelper", 2, "reportTDW: traceId=" + paramString1 + " T=" + paramString2 + " value=" + paramString3 + " extra1=" + paramString4 + " extra2=" + paramString5);
     }
+  }
+  
+  public static void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    if (paramTeamWorkFileImportInfo == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramTeamWorkFileImportInfo.k))
+    {
+      paramTeamWorkFileImportInfo.k = a(paramTeamWorkFileImportInfo.b);
+      return;
+    }
+    QLog.d("TenDocLogReportHelper", 2, "has setted trace Id: " + paramTeamWorkFileImportInfo.k);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    QLog.d(paramString1, 2, "tencentdoc log:" + paramString2 + " - " + paramString3);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    QLog.d(paramString1, 2, "tencentdoc log:" + paramString2 + " - " + paramString3 + " - " + paramString4);
+  }
+  
+  private static void a(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    try
+    {
+      jdField_a_of_type_OrgJsonJSONObject.put("trace", paramString1);
+      jdField_a_of_type_OrgJsonJSONObject.put("value", paramString2);
+      jdField_a_of_type_OrgJsonJSONObject.put("extra1", paramString3);
+      jdField_a_of_type_OrgJsonJSONObject.put("extra2", paramString4);
+      paramString1 = jdField_a_of_type_OrgJsonJSONObject.toString();
+      int i = paramString1.length();
+      int j = i / 2;
+      paramArrayOfString[0] = paramString1.substring(0, j);
+      paramArrayOfString[1] = paramString1.substring(j, i);
+      return;
+    }
+    catch (JSONException paramArrayOfString)
+    {
+      QLog.e("TenDocLogReportHelper", 2, "report fail", paramArrayOfString);
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (!paramString.contains("docs.qq.com"))
+      {
+        bool1 = bool2;
+        if (!paramString.contains("docx.qq.com")) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static String b(String paramString)
+  {
+    if (paramString == null) {
+      paramString = null;
+    }
+    Uri localUri;
+    do
+    {
+      return paramString;
+      localUri = Uri.parse(paramString);
+    } while (!TextUtils.isEmpty(localUri.getQueryParameter("showDiscuss")));
+    paramString = localUri.buildUpon();
+    paramString.appendQueryParameter("showDiscuss", "true");
+    return paramString.toString();
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3)
+  {
+    String str;
+    if (a(paramString1))
+    {
+      str = "ps_key:" + b(paramString1);
+      paramString1 = c(paramString1);
+      if (TextUtils.isEmpty(paramString1)) {
+        a(paramString2, paramString3, str);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(paramString2, paramString3, str, paramString1);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (a(paramString1))
+    {
+      paramString1 = c(paramString1);
+      if (TextUtils.isEmpty(paramString1)) {
+        a(paramString2, paramString3, paramString4);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(paramString2, paramString3, paramString4, paramString1);
+  }
+  
+  private static boolean b(String paramString)
+  {
+    paramString = CookieManager.getInstance().getCookie(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split(";");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String[] arrayOfString = paramString[i];
+        if ((arrayOfString != null) && (arrayOfString.contains("p_skey")))
+        {
+          arrayOfString = arrayOfString.split("=");
+          if ((arrayOfString.length > 1) && (!TextUtils.isEmpty(arrayOfString[1]))) {
+            return true;
+          }
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
+  
+  public static String c(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return Uri.parse(paramString).getQueryParameter("xiaolv_wy_tdoc_tid");
+  }
+  
+  public static String d(String paramString)
+  {
+    String str = c(paramString);
+    if (!TextUtils.isEmpty(str)) {}
+    int i;
+    do
+    {
+      return str;
+      i = paramString.indexOf("?");
+      str = paramString;
+    } while (i == -1);
+    return paramString.substring(0, i);
   }
 }
 

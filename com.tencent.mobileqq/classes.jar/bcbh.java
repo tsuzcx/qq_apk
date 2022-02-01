@@ -1,11 +1,23 @@
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfoStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.HotChatManagerProxy.Proxy;
 
-public class bcbh
+public final class bcbh
+  implements RecentRoute.HotChatManagerProxy.Proxy
 {
-  public volatile long a;
-  public volatile String a;
-  
-  public bcbh(UniteSearchActivity paramUniteSearchActivity) {}
+  public HotChatInfoStub getHotCatInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
+    {
+      paramIMCoreAppRuntime = (HotChatManager)paramIMCoreAppRuntime.getManager(60);
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(paramString);
+      }
+    }
+    return null;
+  }
 }
 
 

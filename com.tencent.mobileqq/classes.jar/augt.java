@@ -1,14 +1,4 @@
-class augt
-  implements atip
-{
-  augt(augr paramaugr) {}
-  
-  public void a(long paramLong)
-  {
-    augr.a(this.a, paramLong);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augt

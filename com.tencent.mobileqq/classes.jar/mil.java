@@ -1,29 +1,15 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mil
-  implements mmo
+class mil
+  implements yxp
 {
-  public mil(QavOperationMenuView paramQavOperationMenuView) {}
+  mil(mik parammik, Activity paramActivity, long paramLong) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a()
   {
-    switch (paramInt1)
-    {
-    case 1: 
-    default: 
-    case 2: 
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(paramString, paramInt2, false);
-      return;
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramInt2, true);
-    }
-    mru.c(2131373511);
+    this.jdField_a_of_type_Mik.b(this.jdField_a_of_type_AndroidAppActivity);
+    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 

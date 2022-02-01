@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public final class aplj
-  implements Parcelable.Creator<ArCloudConfigInfo>
+public abstract interface aplj
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
-  {
-    return new ArCloudConfigInfo(paramParcel);
-  }
+  public abstract void a(ColorNote paramColorNote);
   
-  public ArCloudConfigInfo[] a(int paramInt)
-  {
-    return new ArCloudConfigInfo[paramInt];
-  }
+  public abstract void b(ColorNote paramColorNote);
 }
 
 

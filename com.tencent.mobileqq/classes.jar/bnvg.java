@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-
-public final class bnvg
-  implements Parcelable.Creator<AlumBasicData>
+public abstract interface bnvg
 {
-  public AlumBasicData a(Parcel paramParcel)
-  {
-    return new AlumBasicData(paramParcel);
-  }
-  
-  public AlumBasicData[] a(int paramInt)
-  {
-    return new AlumBasicData[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

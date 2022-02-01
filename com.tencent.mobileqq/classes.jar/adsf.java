@@ -1,31 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class adsf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adsf(AddAccountActivity paramAddAccountActivity) {}
+  public adsf(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    bcef.a(this.a.app, "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.b(this.a), "");
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface != null) {
+      if (paramDialogInterface.getBooleanExtra("keyFromLoginView", false))
+      {
+        bcef.a(this.a.app, "dc00898", "", "", "0X800B293", "0X800B293", 0, 0, "", "", NotificationActivity.a(this.a), "");
+        paramInt = 2098;
+      }
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
-    libsafeedit.clearPassBuffer();
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.c(this.a))) {
+        MiniAppLauncher.startMiniApp(this.a, NotificationActivity.c(this.a), paramInt, null);
+      }
+      for (;;)
+      {
+        this.a.finish();
+        return;
+        if (!paramDialogInterface.getBooleanExtra("keyFromAddAccount", false)) {
+          break label197;
+        }
+        bcef.a(this.a.app, "dc00898", "", "", "0X800B295", "0X800B295", 0, 0, "", "", NotificationActivity.a(this.a), "");
+        paramInt = 2119;
+        break;
+        QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
+      }
+      label197:
+      paramInt = 2098;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsf
  * JD-Core Version:    0.7.0.1
  */

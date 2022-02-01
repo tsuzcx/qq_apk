@@ -1,6 +1,6 @@
 package com.tencent.util.pm;
 
-import bhpc;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class PackageUtil$4
   implements Runnable

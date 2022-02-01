@@ -1,37 +1,34 @@
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.statistics.ReportControllerImpl;
 
 public class bcei
-  extends bceg
+  extends anus
 {
-  public bcei(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public bcei(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    super(paramQQAppInterface, paramInt, paramString1, paramString2, paramString3, paramString4);
+    super(paramQQAppInterface, paramProxyManager);
   }
   
-  public void a(View paramView)
+  protected void a()
   {
-    super.a(paramView);
-    if (!bcni.a(this.b)) {
-      bcni.a(paramView, this);
-    }
-    if (SearchConfigManager.needSeparate) {
-      bcni.a("search", "contact", "contacts", 0, 0, new String[] { bcni.a(this.b) });
+    bcef localbcef = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getReportController();
+    if ((localbcef != null) && ((localbcef instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localbcef).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
     }
   }
   
-  public CharSequence c()
+  protected void b()
   {
-    if (bcni.a(this.b)) {
-      return anzj.a(2131701466);
+    bcef localbcef = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getReportController();
+    if ((localbcef != null) && ((localbcef instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localbcef).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
     }
-    return anzj.a(2131701433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcei
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
+import amtj;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
 
 public class WSHomeFragment$1
@@ -11,7 +11,7 @@ public class WSHomeFragment$1
   
   public void run()
   {
-    String str = anzj.a(2131705715) + TaskMonitorManager.g().getMemeryUsage() + "%";
+    String str = amtj.a(2131705945) + TaskMonitorManager.g().getMemeryUsage() + "%";
     if (WSHomeFragment.a(this.this$0) != null) {
       WSHomeFragment.a(this.this$0).setText(str);
     }
@@ -20,7 +20,7 @@ public class WSHomeFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.1
  * JD-Core Version:    0.7.0.1
  */

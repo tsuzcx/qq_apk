@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
 
-public final class bhri
-  implements Parcelable.Creator<QQRecorder.RecorderParam>
+public class bhri
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
-  {
-    return new QQRecorder.RecorderParam(paramParcel);
-  }
+  public bhri(CardContainer paramCardContainer) {}
   
-  public QQRecorder.RecorderParam[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new QQRecorder.RecorderParam[paramInt];
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.setLayoutParams(paramValueAnimator);
+    this.a.requestLayout();
   }
 }
 

@@ -1,6 +1,9 @@
 package com.tencent.tavcut.bean;
 
+import java.io.Serializable;
+
 public class CropConfig
+  implements Serializable, Cloneable
 {
   private float height;
   private float width;
@@ -13,6 +16,11 @@ public class CropConfig
     this.y = paramFloat2;
     this.width = paramFloat3;
     this.height = paramFloat4;
+  }
+  
+  public CropConfig clone()
+  {
+    return new CropConfig(this.x, this.y, this.width, this.height);
   }
   
   public float getHeight()

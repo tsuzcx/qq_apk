@@ -1,20 +1,7 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class anfv
-  implements anjh
-{
-  anfv(anfs paramanfs, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Anfs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.b);
-    }
-  }
-}
+public class anfv {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfv
  * JD-Core Version:    0.7.0.1
  */

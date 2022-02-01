@@ -1,41 +1,8 @@
-import java.util.HashMap;
+import android.view.View;
 
-public class mvm
+public abstract interface mvm
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public mvn a;
-  public int b;
-  public int c = 60000;
-  
-  public mvm()
-  {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 5000;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
-    if (this.jdField_a_of_type_Mvn != null)
-    {
-      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_Boolean);
-      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_Long);
-      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_Int);
-      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mvn.jdField_b_of_type_Int);
-      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mvn.jdField_b_of_type_Long).append("ms");
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append(",mResult = null");
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

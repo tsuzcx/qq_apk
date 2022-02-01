@@ -1,35 +1,50 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class ajtn
-  implements Handler.Callback
+class ajtn
+  implements View.OnClickListener
 {
-  public ajtn(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  ajtn(ajtm paramajtm) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
-    {
-      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
+    Intent localIntent = new Intent();
+    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
+    if ((ajtm.a(this.a).selectedPhotoList == null) || (ajtm.b(this.a).selectedPhotoList.size() == 0)) {
+      if ((ajtm.a(this.a).paths != null) && (i != -1))
       {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+        ArrayList localArrayList = new ArrayList();
+        String str = (String)ajtm.b(this.a).paths.get(i);
+        if (TextUtils.isEmpty(str)) {
+          break label182;
         }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+        localArrayList.add(str);
+        localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
+        bcef.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
       }
     }
-    else {
-      return false;
+    for (;;)
+    {
+      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, localIntent);
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label182:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
+        continue;
+        localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", ajtm.c(this.a).selectedPhotoList);
+        bcef.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(ajtm.d(this.a).selectedPhotoList.size()), "", "", "");
+      }
     }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-    }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
-    return false;
   }
 }
 

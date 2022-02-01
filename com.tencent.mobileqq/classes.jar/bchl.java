@@ -1,24 +1,16 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class bchl
-  extends bchk
+  implements View.OnTouchListener
 {
-  bcfq a(ajfc paramajfc, List<bcfr> paramList, String paramString1, boolean paramBoolean, String paramString2)
-  {
-    bcnh.a(70);
-    return new bces(paramajfc, paramList, paramString1);
-  }
+  public bchl(StructMsgForGeneralShare paramStructMsgForGeneralShare, afce paramafce) {}
   
-  bcfr a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return null;
-  }
-  
-  bcfr a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new bcet(paramrecord, paramString, paramCharSequence);
+    return this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
   }
 }
 

@@ -1,8 +1,8 @@
 package cooperation.qqfav;
 
 import android.content.Intent;
-import bmgk;
-import bmgt;
+import bkkq;
+import bkkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import mqq.app.AppRuntime;
 
@@ -11,13 +11,13 @@ public class QfavPluginProxyReceiver
 {
   public static void a(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    bmgt localbmgt = new bmgt(0);
-    localbmgt.b = "qqfav.apk";
-    localbmgt.d = "qqfav.apk";
-    localbmgt.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbmgt.e = "com.qqfav.ipc.QfavPluginReceiver";
-    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    bmgk.b(paramAppRuntime.getApplication(), localbmgt);
+    bkkz localbkkz = new bkkz(0);
+    localbkkz.b = "qqfav.apk";
+    localbkkz.d = "qqfav.apk";
+    localbkkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbkkz.e = "com.qqfav.ipc.QfavPluginReceiver";
+    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    bkkq.b(paramAppRuntime.getApplication(), localbkkz);
   }
 }
 

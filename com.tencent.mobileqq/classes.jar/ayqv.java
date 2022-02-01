@@ -1,95 +1,55 @@
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
 
 public class ayqv
+  implements AdapterViewPagerAdapter.AdapterViewFactory
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ayqg jdField_a_of_type_Ayqg;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ayqg b;
-  private ayqg c;
-  private ayqg d;
-  private ayqg e;
+  public ayqv(QzonePhotoView paramQzonePhotoView) {}
   
-  public ayqv(QQAppInterface paramQQAppInterface, Context paramContext)
+  public AdapterView create(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a()
-  {
-    return 5;
-  }
-  
-  public int a(aysk paramaysk)
-  {
-    if ((paramaysk instanceof aysj)) {
-      return 0;
-    }
-    if ((paramaysk instanceof aysn)) {
-      return 1;
-    }
-    if ((paramaysk instanceof aysl)) {
-      return 2;
-    }
-    if ((paramaysk instanceof aysh)) {
-      return 3;
-    }
-    if ((paramaysk instanceof ayso)) {
-      return 4;
-    }
-    return -1;
-  }
-  
-  public ayqg a(int paramInt)
-  {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Ayqg != null) {
-        localObject = this.jdField_a_of_type_Ayqg;
-      }
-    }
     do
     {
-      return localObject;
-      localObject = new ayqt(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Ayqg = ((ayqg)localObject);
-      return localObject;
-      if (paramInt == 1)
+      try
       {
-        if (this.b != null) {
-          return this.b;
-        }
-        localObject = new aysd(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.b = ((ayqg)localObject);
-        return localObject;
+        paramContext = new GridView(paramContext);
+        ViewPager.LayoutParams localLayoutParams;
+        Context localContext = paramContext;
       }
-      if (paramInt == 2)
+      catch (OutOfMemoryError localOutOfMemoryError1)
       {
-        if (this.c != null) {
-          return this.c;
+        try
+        {
+          paramContext.setNumColumns(4);
+          paramContext.setFadingEdgeLength(0);
+          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setStretchMode(2);
+          paramContext.setScrollingCacheEnabled(false);
+          paramContext.setSelector(2131167276);
+          localLayoutParams = new ViewPager.LayoutParams();
+          localLayoutParams.gravity = 17;
+          localLayoutParams.height = -2;
+          localLayoutParams.width = -1;
+          paramContext.setLayoutParams(localLayoutParams);
+          localContext = paramContext;
+          return localContext;
         }
-        localObject = new aysa(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.c = ((ayqg)localObject);
-        return localObject;
-      }
-      if (paramInt == 3)
-      {
-        if (this.d != null) {
-          return this.d;
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          continue;
         }
-        localObject = new ayqo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.d = ((ayqg)localObject);
-        return localObject;
+        localOutOfMemoryError1 = localOutOfMemoryError1;
+        paramContext = null;
       }
-    } while (paramInt != 4);
-    if (this.e != null) {
-      return this.e;
-    }
-    localObject = new aysf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.e = ((ayqg)localObject);
-    return localObject;
+    } while (!QLog.isColorLevel());
+    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
+    return paramContext;
   }
 }
 

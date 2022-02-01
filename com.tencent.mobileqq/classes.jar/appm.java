@@ -1,34 +1,14 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-
-class appm
-  implements apqg
+public class appm
 {
-  appm(appj paramappj, appn paramappn, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public String a = "";
+  public String b = "";
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Appn != null) {
-      this.jdField_a_of_type_Appn.f();
-    }
-  }
+  public appm() {}
   
-  public void a(int paramInt)
+  public appm(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Appn != null) {
-      this.jdField_a_of_type_Appn.c(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Appn != null) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Appn != null) {
-      this.jdField_a_of_type_Appn.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

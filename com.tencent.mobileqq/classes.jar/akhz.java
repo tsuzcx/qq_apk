@@ -1,36 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akhz
-  extends ayxl
+  implements View.OnClickListener
 {
-  akhz(akha paramakha) {}
+  akhz(akho paramakho, TipsBar paramTipsBar) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
+    if (!FileUtil.isFileExists(asqh.a().b()))
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      return;
-    case 1: 
-      this.a.g();
-      return;
-    case 4: 
-      this.a.g();
-      return;
+      asqh.a().c();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
     }
-    this.a.g();
-    this.a.e();
-    this.a.f();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+      localForwardFileInfo.b(10008);
+      Intent localIntent = new Intent(akho.a(this.jdField_a_of_type_Akho), FileBrowserActivity.class);
+      localIntent.putExtra("fileinfo", localForwardFileInfo);
+      akho.a(this.jdField_a_of_type_Akho).startActivity(localIntent);
+      aszr.a("0X8004BFE");
+      bcef.a(akho.a(this.jdField_a_of_type_Akho).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 2, 0, "", "", "", "");
+    }
   }
 }
 

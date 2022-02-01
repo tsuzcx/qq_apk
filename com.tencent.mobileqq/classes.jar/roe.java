@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import java.util.List;
 
-class roe
-  implements View.OnClickListener
+public class roe
+  extends pkt
 {
-  roe(rob paramrob, VideoInfo paramVideoInfo) {}
+  public roe(FollowingListFragment paramFollowingListFragment) {}
   
-  public void onClick(View paramView)
+  public void b(boolean paramBoolean1, List<rcz> paramList, long paramLong, boolean paramBoolean2)
   {
-    AdvertisementInfo localAdvertisementInfo = tqm.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-    tqa.a(localAdvertisementInfo, 2005, rnu.a(this.jdField_a_of_type_Rob.a));
-    rnu.a(this.jdField_a_of_type_Rob.a, rob.a(this.jdField_a_of_type_Rob), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, localAdvertisementInfo, 2005);
-    EventCollector.getInstance().onViewClicked(paramView);
+    FollowingListFragment.a(this.a, paramList);
+    if (FollowingListFragment.a(this.a) != null) {
+      FollowingListFragment.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

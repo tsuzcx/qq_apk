@@ -1,27 +1,109 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.util.QZLog;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class bnxj
-  extends BroadcastReceiver
+public class bnxj
+  implements boen
 {
-  bnxj(bnxi parambnxi) {}
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public Throwable a;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bnxj(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    try
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-      paramContext = paramIntent.getAction();
-      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
-      this.a.a(paramIntent);
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString == null) {}
       return;
     }
-    catch (Exception paramContext)
+  }
+  
+  public boeo a(int paramInt1, int paramInt2)
+  {
+    int j = 1280;
+    int i = 30;
+    boeo localboeo = new boeo();
+    Object localObject;
+    if (paramInt1 <= paramInt2)
     {
-      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      localboeo.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      if (paramInt2 < 1280) {
+        break label278;
+      }
+      localObject = "720p";
+      paramInt1 = j;
+      label70:
+      if (paramInt2 >= paramInt1) {
+        break label307;
+      }
+    }
+    label278:
+    label307:
+    for (localboeo.jdField_a_of_type_Int = ((int)(819200 * 1.0D / paramInt1 * paramInt2));; localboeo.jdField_a_of_type_Int = 819200)
+    {
+      localboeo.jdField_a_of_type_Float = (paramInt1 / paramInt2);
+      paramInt2 = i;
+      if (this.jdField_b_of_type_Int <= 30) {
+        paramInt2 = this.jdField_b_of_type_Int;
+      }
+      localboeo.jdField_b_of_type_Int = paramInt2;
+      localboeo.jdField_b_of_type_Boolean = a();
+      localboeo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localboeo.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localboeo.jdField_b_of_type_Boolean + ", scaleRate=" + localboeo.jdField_a_of_type_Float + ", videoBitRate=" + localboeo.jdField_a_of_type_Int + ", videoFrameRate=" + localboeo.jdField_b_of_type_Int + ", beginTime=" + localboeo.jdField_a_of_type_Long + ", endTime=" + localboeo.jdField_b_of_type_Long + ",quality:" + (String)localObject + ",videoLongestEdge=" + paramInt1);
+      }
+      return localboeo;
+      paramInt2 = paramInt1;
+      break;
+      if (paramInt2 >= 960)
+      {
+        localObject = "540p";
+        paramInt1 = 960;
+        break label70;
+      }
+      paramInt1 = 640;
+      localObject = "480p";
+      break label70;
     }
   }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Throwable paramThrowable)
+  {
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
+  }
+  
+  public void b() {}
 }
 
 

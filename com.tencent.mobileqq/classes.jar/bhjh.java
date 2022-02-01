@@ -1,20 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
-final class bhjh
-  implements DownloadParams.DecodeHandler
+public abstract interface bhjh
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    if ((paramDownloadParams != null) && (paramDownloadParams.reqWidth >= 0) && (paramDownloadParams.reqHeight >= 0)) {
-      return bhjg.a(paramBitmap, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
-    }
-    return bhjg.a(paramBitmap);
-  }
+  public abstract void a();
 }
 
 

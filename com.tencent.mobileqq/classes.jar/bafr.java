@@ -1,22 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qphone.base.util.QLog;
-
 class bafr
-  extends anuw
+  implements baem
 {
   bafr(bafq parambafq) {}
   
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void a(int paramInt, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileAccountLevelComponent", 2, String.format("onGetAllowSeeLoginDays isSuccess=%s isAllow=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    if ((paramBoolean1) && (TextUtils.equals(paramString, ((azxr)bafq.a(this.a)).a.a)))
-    {
-      bafq.a(this.a, paramBoolean2);
-      this.a.a();
-    }
+    xvv.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void b(long paramLong)
+  {
+    xvv.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
+  }
+  
+  public void g()
+  {
+    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
+  }
+  
+  public void j()
+  {
+    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
+  }
+  
+  public void k()
+  {
+    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
+  }
+  
+  public void l()
+  {
+    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
   }
 }
 

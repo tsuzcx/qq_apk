@@ -1,15 +1,23 @@
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.AECircleCaptureProgressView;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
 
-class bmch
-  implements bmcf
+public class bmch
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bmch(bmcg parambmcg) {}
+  public bmch(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      bmcg.a(this.a, paramString1, new String[] { paramString2 });
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (!AEPituCameraCaptureButtonLayout.a(this.a))
+    {
+      this.a.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setCenterScaleValue(f);
+      return;
     }
+    this.a.jdField_a_of_type_DovComQqImAeViewAECircleCaptureProgressView.setCenterScaleValue(f);
   }
 }
 

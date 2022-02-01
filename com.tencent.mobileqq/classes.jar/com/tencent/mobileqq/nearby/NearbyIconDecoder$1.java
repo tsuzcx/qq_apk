@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.nearby;
 
 import android.graphics.Bitmap;
-import axvf;
-import bhhf;
+import awin;
+import bfqp;
 import java.util.Iterator;
 import java.util.List;
 
 public class NearbyIconDecoder$1
   implements Runnable
 {
-  public NearbyIconDecoder$1(axvf paramaxvf, String paramString, Bitmap paramBitmap) {}
+  public NearbyIconDecoder$1(awin paramawin, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class NearbyIconDecoder$1
         int j = Integer.parseInt(arrayOfString[2]);
         Iterator localIterator = this.this$0.a.iterator();
         while (localIterator.hasNext()) {
-          ((bhhf)localIterator.next()).a(i, arrayOfString[1], j, this.jdField_a_of_type_AndroidGraphicsBitmap);
+          ((bfqp)localIterator.next()).a(i, arrayOfString[1], j, this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
       }
       return;

@@ -10,29 +10,29 @@ import com.tencent.util.Pair;
 import java.util.HashMap;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nzq;
-import tlx;
-import tmk;
-import tmp;
-import tns;
+import obb;
+import trn;
+import tsf;
+import tsk;
+import ttp;
 
 public class VideoFeedsGameAdComManager$3
   implements Runnable
 {
-  public VideoFeedsGameAdComManager$3(tmk paramtmk) {}
+  public VideoFeedsGameAdComManager$3(tsf paramtsf) {}
   
   public void run()
   {
-    if ((tmk.a(this.this$0) != null) && (!TextUtils.isEmpty(tmk.a(this.this$0).d)) && (tmk.a(this.this$0).u != null)) {
+    if ((tsf.a(this.this$0) != null) && (!TextUtils.isEmpty(tsf.a(this.this$0).d)) && (tsf.a(this.this$0).u != null)) {
       try
       {
         Object localObject = new HashMap();
-        ((HashMap)localObject).put("vid", tmk.a(this.this$0));
-        nzq.a(new tlx().a(tmk.a(this.this$0)).a(nzq.A).b(nzq.af).c(nzq.as).a(tmk.a(this.this$0)).d(nzq.a(null, tmk.a(this.this$0).mRowKey, tmk.b(this.this$0), tmk.a(this.this$0).s, tmk.a(this.this$0).d, (HashMap)localObject)).e(tns.a(tmk.a(this.this$0).a, nzq.G)).a());
-        localObject = tns.a(tmk.a(this.this$0).d);
-        if (((tmk.a(this.this$0) instanceof Activity)) && (((Pair)localObject).first != null) && (((List)((Pair)localObject).first).size() > 0))
+        ((HashMap)localObject).put("vid", tsf.a(this.this$0));
+        obb.a(new trn().a(tsf.a(this.this$0)).a(obb.A).b(obb.af).c(obb.as).a(tsf.a(this.this$0)).d(obb.a(null, tsf.a(this.this$0).mRowKey, tsf.b(this.this$0), tsf.a(this.this$0).s, tsf.a(this.this$0).d, (HashMap)localObject)).e(ttp.a(tsf.a(this.this$0).a, obb.G)).a());
+        localObject = ttp.a(tsf.a(this.this$0).d);
+        if (((tsf.a(this.this$0) instanceof Activity)) && (((Pair)localObject).first != null) && (((List)((Pair)localObject).first).size() > 0))
         {
-          Activity localActivity = tmk.a(this.this$0);
+          Activity localActivity = tsf.a(this.this$0);
           localActivity.runOnUiThread(new VideoFeedsGameAdComManager.3.1(this, localActivity, (Pair)localObject));
           return;
         }
@@ -41,14 +41,14 @@ public class VideoFeedsGameAdComManager$3
       }
       catch (Exception localException)
       {
-        QLog.e(tmk.a(), 2, localException.getMessage());
+        QLog.e(tsf.a(), 2, localException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3
  * JD-Core Version:    0.7.0.1
  */

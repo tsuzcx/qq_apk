@@ -2,13 +2,13 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bnrf;
+import bkwm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.RecentUser;
-import ozs;
+import pay;
 
 @Deprecated
 public class RecentItemKandianMergeData
@@ -21,10 +21,10 @@ public class RecentItemKandianMergeData
   public RecentItemKandianMergeData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    if (bnrf.F(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
+    if (bkwm.C(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
     for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
     {
-      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167102);
+      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167124);
       return;
     }
   }
@@ -39,14 +39,14 @@ public class RecentItemKandianMergeData
   
   public long getFaceExtraFlag()
   {
-    Object localObject = (QQAppInterface)ozs.a();
+    Object localObject = (QQAppInterface)pay.a();
     if (localObject == null) {
       return super.getFaceExtraFlag();
     }
-    localObject = ((QQAppInterface)localObject).a();
+    localObject = ((QQAppInterface)localObject).getMessageFacade();
     if (localObject != null)
     {
-      localObject = ((QQMessageFacade)localObject).b(this.mUser.uin, this.mUser.getType());
+      localObject = ((QQMessageFacade)localObject).getLastMsgForMsgTab(this.mUser.uin, this.mUser.getType());
       if (localObject == null) {
         return super.getFaceExtraFlag();
       }
@@ -57,7 +57,7 @@ public class RecentItemKandianMergeData
           ((MessageForStructing)localObject).parse();
         }
       }
-      ozs.e = ozs.a();
+      pay.e = pay.a();
     }
     return super.getFaceExtraFlag();
   }

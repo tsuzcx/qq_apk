@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.app.Activity;
 import android.content.res.Resources;
-import anzj;
-import bjbs;
+import bhht;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -36,7 +36,7 @@ class DataJsPlugin$31$1$1
     {
       this.this$2.val$loadingDialog.dismiss();
       if (i == 0) {
-        QQToast.a(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity, 1, anzj.a(2131701642), 1).b(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131299011));
+        QQToast.a(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity, 1, amtj.a(2131701877), 1).b(this.this$2.this$1.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131299076));
       }
       if (i == 0) {
         break;

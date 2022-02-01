@@ -7,7 +7,7 @@ class AEVideoShelfEditFragment$13
   
   public void run()
   {
-    AEVideoShelfEditFragment.f(this.this$0);
+    AEVideoShelfEditFragment.access$2600(this.this$0);
   }
 }
 

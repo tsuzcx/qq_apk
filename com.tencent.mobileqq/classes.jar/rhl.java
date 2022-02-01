@@ -1,21 +1,22 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import java.util.List;
 
 public class rhl
-  implements View.OnKeyListener
+  implements AdapterView.OnItemLongClickListener
 {
-  public rhl(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  public rhl(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
-      ReadInJoySelectMemberFragment.a(this.a).a();
+    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
+      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
     }
-    return false;
+    ReadInJoyDeliverUGCActivity.a(this.a, false);
+    return true;
   }
 }
 

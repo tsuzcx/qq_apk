@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.aio.intimate;
 
-import agej;
-import agxg;
-import agxh;
-import agxi;
+import afts;
+import aftt;
+import aftu;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,12 +25,13 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import areb;
-import arec;
-import avgx;
-import bdll;
+import apxr;
+import apxs;
+import atud;
+import bcef;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.mobileqq.data.IntimateInfo.IntimateScoreCardInfo;
@@ -52,7 +52,7 @@ public class IntimateScoreCardView
 {
   public static String a;
   private int jdField_a_of_type_Int;
-  private agxi jdField_a_of_type_Agxi;
+  private aftu jdField_a_of_type_Aftu;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   public Context a;
   private View jdField_a_of_type_AndroidViewView;
@@ -108,9 +108,9 @@ public class IntimateScoreCardView
       do
       {
         return;
-        localObject = (avgx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(323);
+        localObject = (atud)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(323);
       } while (localObject == null);
-      str2 = ((avgx)localObject).a(this.jdField_a_of_type_Int, paramBoolean);
+      str2 = ((atud)localObject).a(this.jdField_a_of_type_Int, paramBoolean);
     } while (TextUtils.isEmpty(str2));
     Object localObject = new File(str2).getParent();
     if (((String)localObject).endsWith("/")) {}
@@ -139,10 +139,10 @@ public class IntimateScoreCardView
     Object localObject;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo != null))
     {
-      localObject = arec.a();
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 1)) {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < ((areb)localObject).jdField_a_of_type_Int) {
-          break label150;
+      localObject = apxs.a();
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 26) || (this.jdField_a_of_type_Int == 1)) {
+        if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < ((apxr)localObject).jdField_a_of_type_Int) {
+          break label159;
         }
       }
     }
@@ -158,8 +158,8 @@ public class IntimateScoreCardView
         QLog.d((String)localObject, 2, i);
       }
       return bool;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < ((areb)localObject).jdField_c_of_type_Int) {
-        label150:
+      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < ((apxr)localObject).jdField_c_of_type_Int) {
+        label159:
         bool = false;
       }
     }
@@ -180,20 +180,20 @@ public class IntimateScoreCardView
   private void f()
   {
     this.jdField_a_of_type_Boolean = true;
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559278, this, true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131377082));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377081));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377076));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131377080));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView = ((TickerView)localView.findViewById(2131377079));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559284, this, true);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376833));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376832));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376827));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376831));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView = ((TickerView)localView.findViewById(2131376830));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setCharacterLists(new String[] { "9876543210" });
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setAnimationDuration(2000L);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)localView.findViewById(2131377078));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377083));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377077));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131377075));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)localView.findViewById(2131376829));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376834));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376828));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131376826));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368792);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368817);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
   }
@@ -236,22 +236,22 @@ public class IntimateScoreCardView
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setText(String.valueOf(k));
       removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
       postDelayed(this.jdField_b_of_type_JavaLangRunnable, 2500L);
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 1)) {
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 26) || (this.jdField_a_of_type_Int == 1)) {
         if (k <= j) {
-          break label194;
+          break label203;
         }
       }
     }
     for (;;)
     {
       a(bool);
-      if (this.jdField_a_of_type_Agxi != null) {
-        this.jdField_a_of_type_Agxi.l();
+      if (this.jdField_a_of_type_Aftu != null) {
+        this.jdField_a_of_type_Aftu.l();
       }
       return;
       i = 2;
       break;
-      label194:
+      label203:
       bool = false;
     }
   }
@@ -274,13 +274,13 @@ public class IntimateScoreCardView
     do
     {
       return;
-      if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 1))
+      if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 26) && (this.jdField_a_of_type_Int != 1))
       {
         k();
         return;
       }
-      areb localareb = arec.a();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore >= localareb.jdField_b_of_type_Int) || (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < localareb.jdField_a_of_type_Int))
+      apxr localapxr = apxs.a();
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore >= localapxr.jdField_b_of_type_Int) || (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.currentScore < localapxr.jdField_a_of_type_Int))
       {
         k();
         return;
@@ -292,8 +292,8 @@ public class IntimateScoreCardView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new agxg(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new agxh(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new afts(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aftt(this));
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
@@ -371,7 +371,7 @@ public class IntimateScoreCardView
   public void e()
   {
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Agxi = null;
+    this.jdField_a_of_type_Aftu = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     if (!this.jdField_a_of_type_Boolean) {
       return;
@@ -425,14 +425,14 @@ public class IntimateScoreCardView
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Agxi != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo != null)) {
-        this.jdField_a_of_type_Agxi.a(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo.buttonUrl);
+      if ((this.jdField_a_of_type_Aftu != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo != null)) {
+        this.jdField_a_of_type_Aftu.a(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo.buttonUrl);
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bdll.b(null, "dc00898", "", "", "0X800AE5B", "0X800AE5B", this.jdField_c_of_type_Int, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800AE5B", "0X800AE5B", this.jdField_c_of_type_Int, 0, "", "", "", "");
       continue;
-      bdll.b(null, "dc00898", "", "", "0X800AE5C", "0X800AE5C", this.jdField_c_of_type_Int, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800AE5C", "0X800AE5C", this.jdField_c_of_type_Int, 0, "", "", "", "");
     }
   }
   
@@ -450,8 +450,8 @@ public class IntimateScoreCardView
       }
       else
       {
-        int i = agej.a(75.0F, getResources());
-        int j = agej.a(90.0F, getResources());
+        int i = AIOUtils.dp2px(75.0F, getResources());
+        int j = AIOUtils.dp2px(90.0F, getResources());
         Rect localRect = paramLottieComposition.getBounds();
         float f1 = i / localRect.width();
         float f2 = j / localRect.height();
@@ -497,9 +497,9 @@ public class IntimateScoreCardView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void setCallBack(agxi paramagxi)
+  public void setCallBack(aftu paramaftu)
   {
-    this.jdField_a_of_type_Agxi = paramagxi;
+    this.jdField_a_of_type_Aftu = paramaftu;
   }
   
   public void setCurrentShowType(int paramInt)
@@ -546,11 +546,11 @@ public class IntimateScoreCardView
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo.typeDescribe);
       this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo.levelDescribe);
       this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$IntimateScoreCardInfo.buttonDescribe);
-      i = 2131165722;
+      i = 2131165732;
       if (paramInt != 3) {
-        break label358;
+        break label372;
       }
-      i = 2131165719;
+      i = 2131165727;
     }
     for (;;)
     {
@@ -563,11 +563,16 @@ public class IntimateScoreCardView
         break;
       }
       this.d = true;
-      bdll.b(null, "dc00898", "", "", "0X800AE5A", "0X800AE5A", this.jdField_c_of_type_Int, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800AE5A", "0X800AE5A", this.jdField_c_of_type_Int, 0, "", "", "", "");
       return;
       if (paramInt == 2)
       {
         this.jdField_c_of_type_Int = 2;
+        break label100;
+      }
+      if (paramInt == 26)
+      {
+        this.jdField_c_of_type_Int = 5;
         break label100;
       }
       if (paramInt == 3)
@@ -577,11 +582,13 @@ public class IntimateScoreCardView
       }
       this.jdField_c_of_type_Int = 4;
       break label100;
-      label358:
+      label372:
       if (paramInt == 2) {
-        i = 2131165717;
+        i = 2131165725;
+      } else if (paramInt == 26) {
+        i = 2131165731;
       } else if (paramInt == 1) {
-        i = 2131165721;
+        i = 2131165729;
       }
     }
   }

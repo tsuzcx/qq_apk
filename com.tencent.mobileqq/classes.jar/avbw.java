@@ -1,19 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import java.io.File;
+import java.util.Comparator;
 
-public class avbw
-  implements DialogInterface.OnDismissListener
+final class avbw
+  implements Comparator<File>
 {
-  public avbw(ForwardSdkShareOption paramForwardSdkShareOption) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
+    if (paramFile1.lastModified() < paramFile2.lastModified()) {
+      return -1;
     }
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return 1;
+    }
+    return 0;
   }
 }
 

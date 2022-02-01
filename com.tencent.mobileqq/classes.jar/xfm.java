@@ -1,36 +1,61 @@
-class xfm
-  implements xid
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+
+public class xfm
+  implements xfw
 {
-  xfm(xfj paramxfj) {}
+  public xfm(QQStoryMainActivity paramQQStoryMainActivity) {}
+  
+  public View a()
+  {
+    return QQStoryMainActivity.a(this.a);
+  }
+  
+  public ImageView a()
+  {
+    return this.a.rightViewImg;
+  }
+  
+  public TextView a()
+  {
+    return this.a.rightViewText;
+  }
   
   public void a()
   {
-    if (xfj.a(this.a) != null) {
-      xfj.a(this.a).c();
-    }
+    this.a.onBackEvent();
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    xfj.a(this.a).a(paramInt);
-    if (xfj.a(this.a) != null) {
-      xfj.a(this.a).b(paramInt);
-    }
+    QQStoryMainActivity.a(this.a, paramString);
   }
   
-  public void b()
+  public void a(boolean paramBoolean)
   {
-    if (xfj.a(this.a) != null) {
-      xfj.a(this.a).d();
+    if (paramBoolean)
+    {
+      this.a.startTitleProgress();
+      return;
     }
+    this.a.stopTitleProgress();
   }
   
-  public void c()
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
   {
-    if (xfj.a(this.a) != null) {
-      xfj.a(this.a).d(-1);
+    if (paramBoolean)
+    {
+      QQStoryMainActivity.a(this.a, vkm.a, amtj.a(2131710058));
+      return;
     }
+    a(vkm.a);
   }
+  
+  public void c() {}
 }
 
 

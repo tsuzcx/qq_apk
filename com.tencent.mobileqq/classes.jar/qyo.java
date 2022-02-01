@@ -1,18 +1,53 @@
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
 
-public final class qyo
-  implements Parcelable.Creator<SocializeFeedsInfo.UGCVoiceInfo>
+public abstract class qyo
+  extends Binder
+  implements qyn
 {
-  public SocializeFeedsInfo.UGCVoiceInfo a(Parcel paramParcel)
+  public qyo()
   {
-    return new SocializeFeedsInfo.UGCVoiceInfo(paramParcel);
+    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
   }
   
-  public SocializeFeedsInfo.UGCVoiceInfo[] a(int paramInt)
+  public static qyn a(IBinder paramIBinder)
   {
-    return new SocializeFeedsInfo.UGCVoiceInfo[paramInt];
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof qyn))) {
+      return (qyn)localIInterface;
+    }
+    return new qyp(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null) {}
+    for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
+    {
+      paramParcel2.writeStrongBinder(paramParcel1);
+      return true;
+    }
   }
 }
 

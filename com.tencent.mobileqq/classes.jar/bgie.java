@@ -1,33 +1,28 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import java.util.List;
 
-public class bgie
-  extends bghr
+class bgie
+  implements bgim
 {
-  public bgie(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 18;
-  }
+  bgie(bgic parambgic) {}
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a()
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696637), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    List localList = bgic.a(this.a);
+    int i = 0;
+    try
+    {
+      while (i < bgic.a(this.a).size())
+      {
+        ((bgim)bgic.a(this.a).get(i)).a();
+        i += 1;
+      }
+      bgic.a(this.a).clear();
+      return;
     }
-    return null;
+    finally {}
   }
   
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
+  public void b() {}
 }
 
 

@@ -1,14 +1,13 @@
-import android.os.Handler;
+import mqq.os.MqqHandler;
 
 class ains
-  implements oby
+  implements airh
 {
-  ains(ainh paramainh) {}
+  ains(ainq paramainq) {}
   
   public void a()
   {
-    ainh.b(this.a, false);
-    this.a.a.sendEmptyMessage(1);
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

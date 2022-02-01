@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
+import com.tencent.qphone.base.util.QLog;
 
-class bepk
-  extends bepm<UserState>
+public final class bepk
+  implements bkxw
 {
-  bepk(beoy parambeoy, UserState paramUserState, List paramList)
+  public benq a;
+  
+  public bepk(HWReciteItem paramHWReciteItem, benq parambenq)
   {
-    super(paramUserState, paramList);
+    this.jdField_a_of_type_Benq = parambenq;
   }
   
-  public void a(UserState paramUserState)
+  public void a(int paramInt)
   {
-    beoy.a(this.a).a();
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Benq.b);
+    }
+    this.jdField_a_of_type_Benq.b(paramString);
+    this.jdField_a_of_type_Benq.g = 3;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
+    }
+    this.jdField_a_of_type_Benq.g = 2;
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
   }
 }
 

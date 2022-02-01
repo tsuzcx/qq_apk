@@ -1,35 +1,94 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
 class awoy
-  implements awmn
+  implements awow
 {
-  awoy(awow paramawow) {}
+  private IBinder a;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  awoy(IBinder paramIBinder)
   {
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.a.jdField_a_of_type_Awpc.jdField_a_of_type_Int, this.a.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString, paramBoolean);
-    bdll.b(null, "dc00899", this.a.jdField_a_of_type_Awpb.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Awpb.b, "", this.a.jdField_a_of_type_Awpb.jdField_a_of_type_Int + "", "");
-    String str2;
-    String str3;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Awpc.c))
+    this.a = paramIBinder;
+  }
+  
+  public Message a(Message paramMessage)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
     {
-      str2 = this.a.jdField_a_of_type_Awpb.jdField_a_of_type_JavaLangString;
-      str3 = this.a.jdField_a_of_type_Awpb.b;
-      if (!paramBoolean) {
-        break label185;
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramMessage != null)
+        {
+          localParcel1.writeInt(1);
+          paramMessage.writeToParcel(localParcel1, 0);
+          this.a.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
+            return paramMessage;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramMessage = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
     }
-    label185:
-    for (String str1 = "1";; str1 = "0")
+  }
+  
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
     {
-      bdll.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
-      return;
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramBasicTypeDataParcel != null)
+        {
+          localParcel1.writeInt(1);
+          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
+          this.a.transact(1, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
+            return paramBasicTypeDataParcel;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramBasicTypeDataParcel = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
     }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

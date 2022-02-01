@@ -1,43 +1,17 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class tag
-  implements ViewPager.OnPageChangeListener
+class tag
+  implements OnCompositionLoadedListener
 {
-  private tag(ViewPagerCompat paramViewPagerCompat) {}
+  tag(taf paramtaf, Runnable paramRunnable) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
+    RefreshAnimView.a(this.jdField_a_of_type_Taf.a, paramLottieComposition);
+    if (paramLottieComposition != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

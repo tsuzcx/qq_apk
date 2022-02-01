@@ -1,27 +1,17 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import java.util.Comparator;
 
-public class blrh
-  implements View.OnSystemUiVisibilityChangeListener
+final class blrh
+  implements Comparator<blrj>
 {
-  public blrh(XPanelContainer paramXPanelContainer) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  public int a(blrj paramblrj1, blrj paramblrj2)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      if (XPanelContainer.b != bool)
-      {
-        XPanelContainer.a(this.a, true);
-        XPanelContainer.b = bool;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
-      }
-      return;
+    if (paramblrj1.a) {
+      return 1;
     }
+    if (paramblrj2.a) {
+      return -1;
+    }
+    return 0;
   }
 }
 

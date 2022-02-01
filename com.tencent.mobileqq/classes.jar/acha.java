@@ -1,174 +1,149 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.net.URLDecoder;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class acha
-  extends WebViewPlugin
 {
-  public acha()
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  
+  public acha() {}
+  
+  public acha(SharedPreferences paramSharedPreferences, String paramString)
   {
-    this.mPluginNameSpace = "QQConnect";
+    String str1 = a("ver", paramString);
+    String str2 = a("system", paramString);
+    String str3 = a("driver", paramString);
+    String str4 = a("url", paramString);
+    String str5 = a("type", paramString);
+    String str6 = a("status", paramString);
+    String str7 = a("previousPatch", paramString);
+    String str8 = a("enabled", paramString);
+    this.b = paramSharedPreferences.getString(str1, "");
+    this.c = paramSharedPreferences.getString(str2, "");
+    this.d = paramSharedPreferences.getString(str3, "");
+    this.e = paramSharedPreferences.getString(str4, "");
+    this.f = paramSharedPreferences.getString(str5, "");
+    this.g = paramSharedPreferences.getString(str6, "");
+    this.k = paramSharedPreferences.getString(str7, "").trim();
+    this.a = paramString;
+    this.h = paramSharedPreferences.getString(str8, "").trim();
   }
   
-  private HashMap<String, String> a(String paramString)
+  public static acha a(JSONObject paramJSONObject)
   {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    acha localacha = new acha();
+    try
     {
-      return localHashMap;
-      paramString = URLDecoder.decode(paramString).split("&");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i].split("=");
-        if (arrayOfString.length > 1) {
-          localHashMap.put(arrayOfString[0], arrayOfString[1]);
-        }
-        i += 1;
-      }
+      localacha.a = paramJSONObject.getString("name").trim();
+      localacha.b = paramJSONObject.getString("ver").trim();
+      localacha.c = paramJSONObject.getString("system").trim();
+      localacha.d = paramJSONObject.getString("driver").trim();
+      localacha.e = paramJSONObject.getString("url").trim();
+      localacha.f = paramJSONObject.getString("type").trim();
+      localacha.h = paramJSONObject.getString("enabled").trim();
+      localacha.k = paramJSONObject.optString("previousPatch", "").trim();
+      return localacha;
     }
+    catch (Exception paramJSONObject)
+    {
+      acgp.a("PatchInfo", "Parse PatchInfo from JSON exception " + paramJSONObject);
+    }
+    return null;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private String a(String paramString1, String paramString2)
   {
-    paramJsBridgeListener = null;
-    if (!"QQConnect".equals(paramString2)) {
-      return false;
-    }
-    if ("goShare".equals(paramString3))
-    {
-      bjtx.c(this.TAG, "goshare");
-      String str1;
-      String str2;
-      int i;
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString3 = paramJsBridgeListener.getString("din");
-        paramString2 = a(paramJsBridgeListener.getString("args"));
-        paramVarArgs = (String)paramString2.get("uin");
-        str1 = (String)paramString2.get("sn");
-        str2 = (String)paramString2.get("pid");
-        i = paramJsBridgeListener.optInt("public_device", 0);
-        if ((i != 0) && ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))))
-        {
-          bjuh.a().a(this.mRuntime.a().getString(2131719165));
-          return true;
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        bjuh.a().a(this.mRuntime.a().getString(2131690179));
-        return true;
-      }
-      paramString2 = this.mRuntime.a();
-      paramJsBridgeListener = paramString2;
-      if ((paramString2 instanceof BasePluginActivity)) {
-        paramJsBridgeListener = ((BasePluginActivity)paramString2).getOutActivity();
-      }
-      paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
-      if (i != 0)
-      {
-        paramJsBridgeListener.putExtra("DevicePID", str2);
-        paramJsBridgeListener.putExtra("DeviceSN", str1);
-        paramJsBridgeListener.putExtra("DeviceToken", "");
-        paramJsBridgeListener.putExtra("public_device", i);
-      }
-      for (;;)
-      {
-        paramJsBridgeListener.putExtra("from", "share");
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
-        this.mRuntime.a().finish();
-        return true;
-        paramJsBridgeListener.putExtra("troop_uin", paramString3);
-        paramJsBridgeListener.putExtra("uin", paramVarArgs);
-        paramJsBridgeListener.putExtra("url", paramString1);
-      }
-    }
-    if ("doReport".equals(paramString3)) {}
+    return paramString1 + "_" + paramString2;
+  }
+  
+  public JSONObject a()
+  {
     try
     {
-      bjtx.c(this.TAG, "doReport");
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      achd.a(null, paramJsBridgeListener.optString("actionName"), paramJsBridgeListener.optInt("fromType"), paramJsBridgeListener.optInt("actionResult"), paramJsBridgeListener.optInt("ext2"));
-      return true;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("name", this.a);
+      localJSONObject.put("ver", this.b);
+      localJSONObject.put("system", this.c);
+      localJSONObject.put("driver", this.d);
+      localJSONObject.put("url", this.e);
+      localJSONObject.put("type", this.f);
+      localJSONObject.put("enabled", this.h);
+      localJSONObject.put("previousPatch", this.k);
+      return localJSONObject;
     }
-    catch (JSONException paramJsBridgeListener)
+    catch (JSONException localJSONException)
     {
-      break label649;
+      acgp.a("PatchInfo", "Get JSON String failed " + localJSONException);
     }
-    if ("goBind".equals(paramString3)) {}
-    label649:
-    try
-    {
-      bjtx.c(this.TAG, "qrUrl");
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("url");
-      boolean bool = TextUtils.isEmpty(paramString1);
-      if (bool) {}
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      label428:
-      break label649;
-    }
-    try
-    {
-      paramString1 = new String(bhkv.decode(paramString1, 0));
-      paramJsBridgeListener = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      break label428;
-    }
-    if (!TextUtils.isEmpty(paramJsBridgeListener))
-    {
-      paramString2 = this.mRuntime.a();
-      paramString1 = paramString2;
-      if ((paramString2 instanceof BasePluginActivity)) {
-        paramString1 = ((BasePluginActivity)paramString2).getOutActivity();
-      }
-      paramString1 = new Intent(paramString1, DevicePluginDownloadActivity.class);
-      paramString1.putExtra("qrurl", paramJsBridgeListener);
-      paramString1.putExtra("entrance", 1);
-      paramString1.putExtra("from", "connect");
-      this.mRuntime.a().startActivity(paramString1);
-    }
-    this.mRuntime.a().finish();
-    return true;
-    if ("jumpPublicDevice".equals(paramString3)) {
-      try
-      {
-        bjtx.c(this.TAG, "METHOD_JUMP_PUBLICDEVICE");
-        paramString2 = new JSONObject(paramVarArgs[0]).optString("actionUrl");
-        if (TextUtils.isEmpty(paramString2)) {
-          return true;
-        }
-        paramString1 = this.mRuntime.a();
-        paramJsBridgeListener = paramString1;
-        if ((paramString1 instanceof BasePluginActivity)) {
-          paramJsBridgeListener = ((BasePluginActivity)paramString1).getOutActivity();
-        }
-        paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
-        paramJsBridgeListener.putExtra("url", paramString2);
-        paramJsBridgeListener.putExtra("jumpPublicDevice", true);
-        paramJsBridgeListener.putExtra("from", "share");
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
-        this.mRuntime.a().finish();
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener) {}
-    }
-    return false;
+    return new JSONObject();
+  }
+  
+  public void a(SharedPreferences.Editor paramEditor)
+  {
+    String str1 = a("ver", this.a);
+    String str2 = a("system", this.a);
+    String str3 = a("driver", this.a);
+    String str4 = a("url", this.a);
+    String str5 = a("type", this.a);
+    String str6 = a("status", this.a);
+    String str7 = a("previousPatch", this.a);
+    String str8 = a("enabled", this.a);
+    paramEditor.remove(str1);
+    paramEditor.remove(str2);
+    paramEditor.remove(str3);
+    paramEditor.remove(str4);
+    paramEditor.remove(str5);
+    paramEditor.remove(str6);
+    paramEditor.remove(str7);
+    paramEditor.remove(str8);
+    paramEditor.commit();
+  }
+  
+  public boolean a()
+  {
+    return this.h.equals("true");
+  }
+  
+  public void b(SharedPreferences.Editor paramEditor)
+  {
+    String str1 = a("ver", this.a);
+    String str2 = a("system", this.a);
+    String str3 = a("driver", this.a);
+    String str4 = a("url", this.a);
+    String str5 = a("type", this.a);
+    String str6 = a("status", this.a);
+    String str7 = a("previousPatch", this.a);
+    String str8 = a("enabled", this.a);
+    paramEditor.putString(str1, this.b);
+    paramEditor.putString(str2, this.c);
+    paramEditor.putString(str3, this.d);
+    paramEditor.putString(str4, this.e);
+    paramEditor.putString(str5, this.f);
+    paramEditor.putString(str6, this.g);
+    paramEditor.putString(str7, this.k);
+    paramEditor.putString(str8, this.h);
+    paramEditor.commit();
+  }
+  
+  public boolean b()
+  {
+    return achc.a(this.c);
+  }
+  
+  public String toString()
+  {
+    return "I'm Patch " + this.a + "," + this.h + "," + this.f + "," + this.e + "," + this.j + "," + this.k + "," + this.i + "," + this.g;
   }
 }
 

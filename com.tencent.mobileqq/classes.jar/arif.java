@@ -1,91 +1,92 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import java.io.File;
 
 public class arif
-  extends arac<aric>
+  extends RecyclerView.ViewHolder
+  implements View.OnTouchListener
 {
-  @NonNull
-  public static aric a()
+  private int jdField_a_of_type_Int;
+  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private armg jdField_a_of_type_Armg;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private int b;
+  
+  public arif(View paramView, RecyclerView paramRecyclerView, int paramInt1, armg paramarmg, int paramInt2)
   {
-    aric localaric2 = (aric)aran.a().a(630);
-    aric localaric1 = localaric2;
-    if (localaric2 == null)
+    super(paramView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378367));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Armg = paramarmg;
+    paramView.setOnTouchListener(this);
+  }
+  
+  public void a(arif paramarif, arjk paramarjk, int paramInt)
+  {
+    paramarjk = paramarif.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    paramarjk.height = (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight() - this.jdField_a_of_type_Int);
+    if ((paramarjk instanceof RecyclerView.LayoutParams)) {
+      ((RecyclerView.LayoutParams)paramarjk).topMargin = this.jdField_a_of_type_Int;
+    }
+    paramarjk = URLDrawable.URLDrawableOptions.obtain();
+    paramarjk.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    paramarjk.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    paramarjk = aror.a("expand_square_blank.png");
+    if (new File(paramarjk).exists())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QrCodeDisplay.ConfProcessor", 2, "loadConfig(): bean is null then new QrCodeConfBean()");
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+      paramarjk = aror.a(paramarjk, localOptions);
+      paramarif.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramarjk));
+    }
+    if (paramInt == 1) {
+      if (this.b == 0) {
+        paramInt = 2131698172;
       }
-      localaric1 = new aric();
     }
-    return localaric1;
-  }
-  
-  @NonNull
-  public aric a(int paramInt)
-  {
-    return new aric();
-  }
-  
-  @Nullable
-  public aric a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0))
+    for (;;)
     {
-      QLog.d("QrCodeDisplay.ConfProcessor", 1, "QrCodeDisplayConfProcessor onParsed, confFiles is null empty");
-      return null;
-    }
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "QrCodeDisplayConfProcessor onParsed, content:" + paramArrayOfaraj);
-    }
-    return aric.a(paramArrayOfaraj);
-  }
-  
-  public void a(aric paramaric)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "onUpdate " + paramaric.toString());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+      return;
+      paramInt = 2131698168;
+      continue;
+      if (this.b == 0) {
+        paramInt = 2131698171;
+      } else {
+        paramInt = 2131698167;
+      }
     }
   }
   
-  public Class<aric> clazz()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return aric.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    if ((this.jdField_a_of_type_Armg != null) && (paramMotionEvent.getAction() == 0)) {
+      this.jdField_a_of_type_Armg.d();
+    }
     return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 630;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arif
  * JD-Core Version:    0.7.0.1
  */

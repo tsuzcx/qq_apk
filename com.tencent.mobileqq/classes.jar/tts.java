@@ -1,30 +1,61 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
+import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
 
 public class tts
-  implements View.OnKeyListener
+  extends BusinessHandler
 {
-  private tts(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  public static long a = 1800L;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public tts(QQAppInterface paramQQAppInterface)
   {
-    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
-    {
-      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
-      if (paramKeyEvent != null) {
-        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
-      }
-      ReadInJoyNewSearchActivity.a(this.a, paramView);
-      this.a.a(paramView);
-    }
-    return false;
+    super(paramQQAppInterface);
   }
+  
+  public void a()
+  {
+    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
+    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
+    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
+    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
+      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
+    }
+    try
+    {
+      localAdReqInfo.int32_req_type.set(3);
+      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
+      localReqAdvertisePara.msg_phone_info.set(tvv.a());
+      localReqBody.req_advertise_para.set(localReqAdvertisePara);
+      nmb.a(this.app, new ttt(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
+        }
+      }
+    }
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return ttu.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

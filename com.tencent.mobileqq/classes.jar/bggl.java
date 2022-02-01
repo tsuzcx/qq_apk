@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import eipc.EIPCResult;
 
-class bggl
-  implements aojm
+public class bggl
+  extends QIPCModule
 {
-  bggl(bggj parambggj, String paramString1, String paramString2, bggm parambggm) {}
+  private static bggl a;
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public bggl(String paramString)
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Bggj.a(paramTroopMemberInfo.honorList);
+    super(paramString);
+  }
+  
+  public static bggl a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bggl("VasMonitorIPCModule");
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
+      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
     }
-    if (this.jdField_a_of_type_Bggm != null) {
-      this.jdField_a_of_type_Bggm.a(localList);
+    if (paramBundle == null) {
+      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
     }
+    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
+      return null;
+    }
+    bggk.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    return null;
   }
 }
 

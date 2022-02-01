@@ -10,7 +10,7 @@ class RMVideoStateMgr$1
   
   public void run()
   {
-    Toast.makeText(VideoEnvironment.a(), "" + this.a, 0).show();
+    Toast.makeText(VideoEnvironment.getContext(), "" + this.a, 0).show();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import alil;
+import akgd;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,7 +35,7 @@ public final class a
     String str = a(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (a)alil.a(str);
+      paramQQAppInterface = (a)akgd.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new a();

@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
 
-public class bmkx
+public abstract interface bmkx
 {
-  public ChatMessage a;
-  public String a;
-  
-  public bmkx(ChatMessage paramChatMessage, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
 }
 
 

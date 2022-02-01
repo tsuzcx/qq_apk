@@ -13,16 +13,16 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class TriangleView
   extends View
 {
-  private int a;
-  private int b;
+  private int direction;
+  private int drawColor;
   
   public TriangleView(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
     BaseApplicationImpl.getApplication();
-    this.b = BaseApplicationImpl.getContext().getResources().getColor(2131165538);
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.drawColor = BaseApplicationImpl.getContext().getResources().getColor(2131165546);
+    this.direction = paramInt1;
+    this.drawColor = paramInt2;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -31,12 +31,12 @@ public class TriangleView
     paramCanvas.drawColor(0);
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
-    localPaint.setColor(this.b);
+    localPaint.setColor(this.drawColor);
     localPaint.setStyle(Paint.Style.FILL);
     Path localPath = new Path();
     int i = getMeasuredWidth();
     int j = getMeasuredHeight();
-    if (this.a == 1)
+    if (this.direction == 1)
     {
       localPath.moveTo(i / 2, 0.0F);
       localPath.lineTo(i, j);

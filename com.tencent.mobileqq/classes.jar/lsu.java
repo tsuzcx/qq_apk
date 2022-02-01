@@ -1,60 +1,62 @@
+import android.graphics.Bitmap;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class lsu
+  extends lst
 {
-  private int jdField_a_of_type_Int;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[8];
+  public Bitmap a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public int f;
+  public String f;
+  int g;
+  int h;
   
-  public int a()
+  public lsu()
   {
-    this.jdField_a_of_type_Int -= 1;
-    return this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int];
+    this.jdField_f_of_type_Int = -1;
   }
   
-  public void a()
+  void a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_ArrayOfInt.length != 8) {
-      this.jdField_a_of_type_ArrayOfInt = new int[8];
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == this.jdField_a_of_type_Int)
+    super.a(paramString);
+    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      arrayOfInt = new int[this.jdField_a_of_type_Int + this.jdField_a_of_type_Int];
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      if (this.jdField_b_of_type_Int != 0) {
+        break label205;
+      }
+      this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
+      this.c = HexUtil.hexString2String(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
+      this.d = HexUtil.hexString2String(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
+      this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
+      if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
+        break label164;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("RandomWebProtocol", 2, "[1v1] parse method is oldproto");
+      }
+      this.jdField_b_of_type_JavaLangString = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null));
+      this.jdField_a_of_type_ArrayOfByte = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
     }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    arrayOfInt[i] = paramInt;
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public int[] a(int[] paramArrayOfInt)
-  {
-    int[] arrayOfInt;
-    if (paramArrayOfInt != null)
+    label164:
+    label205:
+    while (this.jdField_b_of_type_Int != 1)
     {
-      arrayOfInt = paramArrayOfInt;
-      if (paramArrayOfInt.length >= this.jdField_a_of_type_Int) {}
+      return;
+      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), HexUtil.hexStr2Bytes(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
+      this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
+      return;
     }
-    else
-    {
-      arrayOfInt = new int[this.jdField_a_of_type_Int];
-    }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
-    return arrayOfInt;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);
+    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("uniqkey", null);
   }
 }
 

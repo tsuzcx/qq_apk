@@ -1,21 +1,15 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-
-class trj
-  implements tro
+public class trj
 {
-  trj(trg paramtrg) {}
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public trj() {}
+  
+  public trj(boolean paramBoolean)
   {
-    String str = trg.c(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
-    {
-      trg.c(this.a, paramGiftServiceBean);
-      trg.c(this.a).setText(paramGiftServiceBean.t);
-    }
-    trg.a(this.a);
+    this.a = paramBoolean;
   }
 }
 

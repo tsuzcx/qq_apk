@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import zyx;
+import yyi;
 
 class QRDisplayActivity$22
   implements Runnable
@@ -11,7 +11,7 @@ class QRDisplayActivity$22
   
   public void run()
   {
-    String str = zyx.a(this.this$0, this.a, this.this$0.b);
+    String str = yyi.a(this.this$0, this.a, this.this$0.b);
     ThreadManager.getUIHandler().post(new QRDisplayActivity.22.1(this, str));
   }
 }

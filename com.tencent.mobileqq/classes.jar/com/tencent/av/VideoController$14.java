@@ -1,20 +1,16 @@
 package com.tencent.av;
 
-import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
-import lff;
-import mtn;
+import lez;
 
 class VideoController$14
   implements Runnable
 {
-  VideoController$14(VideoController paramVideoController) {}
+  VideoController$14(VideoController paramVideoController, lez paramlez) {}
   
   public void run()
   {
-    String str = this.this$0.a.getDisplayName(this.this$0.a().j, String.valueOf(this.this$0.a().g), null);
-    Bitmap localBitmap = this.this$0.a.a(this.this$0.a().j, String.valueOf(this.this$0.a().g), null, true, true);
-    mtn.a(this.this$0.a).a(this.this$0.a().c, str, localBitmap, String.valueOf(this.this$0.a().g), 44, this.this$0.a().j, this.this$0.a().d);
+    this.this$0.a.a(new Object[] { Integer.valueOf(33), this.a.d, Boolean.valueOf(false) });
   }
 }
 

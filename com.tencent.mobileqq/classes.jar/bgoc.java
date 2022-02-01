@@ -1,6 +1,6 @@
-public class bgoc
+public abstract interface bgoc
 {
-  public bgoa a;
+  public abstract void callback(int paramInt);
 }
 
 

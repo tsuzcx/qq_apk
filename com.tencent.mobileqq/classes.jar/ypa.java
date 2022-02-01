@@ -1,25 +1,8 @@
-import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.Dispatcher.Command;
 
 public class ypa
-  implements IEventReceiver
-{
-  protected yoj a;
-  
-  public yoj a()
-  {
-    return this.a;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    yuk.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
-  }
-  
-  public boolean isValidate()
-  {
-    return false;
-  }
-}
+  implements Dispatcher.Command
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

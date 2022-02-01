@@ -5,7 +5,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import born;
+import blvr;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -67,13 +67,13 @@ public class LaunchCameraPlugin
       }
       QLog.d("LaunchCameraPlugin", 1, "data: " + localJSONObject.toString());
       paramJSONObject = "";
-      i = born.a.a();
+      i = blvr.a.a();
       str = "";
       if (localJSONObject.has("appId")) {
         paramJSONObject = localJSONObject.getString("appId");
       }
       if (localJSONObject.has("from")) {
-        i = born.a(localJSONObject.getString("from")).a();
+        i = blvr.a(localJSONObject.getString("from")).a();
       }
       if (localJSONObject.has("widgetid")) {
         str = localJSONObject.getString("widgetid");

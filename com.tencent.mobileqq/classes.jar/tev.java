@@ -1,16 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class tev
-  implements rgw
+public class tev
+  extends AnimatorListenerAdapter
 {
-  tev(tet paramtet, UgcVideo paramUgcVideo, String paramString) {}
+  public tev(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    BridgeModule.access$1700(this.jdField_a_of_type_Tet.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.columnId, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ThreadManager.getUIHandler().postDelayed(new ColorBandVideoEntranceButton.3.1(this), 500L);
   }
 }
 

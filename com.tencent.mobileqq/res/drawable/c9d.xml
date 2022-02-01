@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#4d03081a" />
-    <size android:height="6.0dip" android:width="6.0dip" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/hd1" />
+    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/hd2" />
+    <item android:state_focused="true" android:state_enabled="true" android:drawable="@drawable/hd2" />
+    <item android:state_enabled="true" android:drawable="@drawable/hd2" />
+</selector>

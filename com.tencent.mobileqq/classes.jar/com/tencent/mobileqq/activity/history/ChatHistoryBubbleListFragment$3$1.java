@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajbn;
+import ahvx;
+import amtj;
 import android.view.View;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ class ChatHistoryBubbleListFragment$3$1
       }
       return;
     }
-    ajbn localajbn = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn;
+    ahvx localahvx = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx;
     List localList = this.jdField_a_of_type_JavaUtilList;
     boolean bool;
     label115:
@@ -35,11 +35,11 @@ class ChatHistoryBubbleListFragment$3$1
     if (this.jdField_a_of_type_JavaUtilList.size() < 20)
     {
       bool = true;
-      m = localajbn.b(localList, bool);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.getCount() > 0)
+      m = localahvx.b(localList, bool);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.getCount() > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_b_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.getCount() - 1)).shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_b_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.getCount() - 1)).shmsgseq;
       }
       if ((m == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
         break label419;
@@ -52,9 +52,9 @@ class ChatHistoryBubbleListFragment$3$1
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700537));
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.c);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ajbn.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700772));
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.c);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment$3.this$0.jdField_a_of_type_Ahvx.notifyDataSetChanged();
       if (i == 0) {
         break;
       }

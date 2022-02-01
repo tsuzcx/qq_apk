@@ -1,19 +1,9 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajei
-  implements View.OnClickListener
+public abstract interface ajei
 {
-  public ajei(SearchBaseActivity paramSearchBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

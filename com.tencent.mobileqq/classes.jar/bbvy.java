@@ -1,75 +1,131 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbvy
-  extends bbvz
 {
-  public int a;
-  public long a;
-  TextView a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  private static int jdField_a_of_type_Int;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static long[] jdField_a_of_type_ArrayOfLong = new long[20];
+  private static int jdField_b_of_type_Int;
+  private static volatile boolean jdField_b_of_type_Boolean;
+  private static long[] jdField_b_of_type_ArrayOfLong = new long[20];
+  private static int jdField_c_of_type_Int;
+  private static long[] jdField_c_of_type_ArrayOfLong = new long[20];
+  private static int jdField_d_of_type_Int;
+  private static long[] jdField_d_of_type_ArrayOfLong = new long[20];
   
-  public bbvy(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
+  public static void a()
   {
-    super(paramContext, paramAppInterface, paramView, paramString);
-    this.e = 2;
-    this.i = 2130846135;
-    VasWebviewUtil.reportCommercialDrainage(paramAppInterface.getCurrentAccountUin(), "signature_aio", "show", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    if ((jdField_c_of_type_Int == 20) && (!jdField_a_of_type_Boolean))
+    {
+      if (!jdField_b_of_type_Boolean) {}
+      for (int i = 1;; i = 0)
+      {
+        jdField_b_of_type_Boolean = true;
+        jdField_a_of_type_Boolean = true;
+        l = 0L;
+        j = 0;
+        while (j < jdField_c_of_type_Int)
+        {
+          l += jdField_c_of_type_ArrayOfLong[j];
+          d1 = jdField_c_of_type_ArrayOfLong[j] / 1000.0D;
+          QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[FrameBuffer]temp=" + d1 + "ms framefpsOnce=" + 1000.0D / d1);
+          j += 1;
+        }
+      }
+      double d1 = l / 1000.0D / 20.0D;
+      if (QLog.isColorLevel()) {
+        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[FrameBuffer]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
+      }
+      if (i != 0) {
+        bbvw.a("sv_preprocess_frame_buffer", d1);
+      }
+      long l = 0L;
+      int j = 0;
+      while (j < jdField_d_of_type_Int)
+      {
+        l += jdField_d_of_type_ArrayOfLong[j];
+        d1 = jdField_d_of_type_ArrayOfLong[j] / 1000.0D;
+        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[ClipVideo]temp=" + d1 + "ms ClipVideoFpsOnce=" + 1000.0D / d1);
+        j += 1;
+      }
+      d1 = l / 1000.0D / 20.0D;
+      if (QLog.isColorLevel()) {
+        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[ClipVideo]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
+      }
+      if (i != 0) {
+        bbvw.a("sv_preprocess_clip_video", d1);
+      }
+      l = 0L;
+      j = 0;
+      while (j < 20)
+      {
+        d1 = (jdField_b_of_type_ArrayOfLong[j] - jdField_a_of_type_ArrayOfLong[j]) / 1000.0D;
+        l = (l + d1);
+        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]temp=" + d1 + "ms InputfpsOnce=" + 1000.0D / d1);
+        j += 1;
+      }
+      d1 = l / 20L;
+      QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Process=" + 1000.0D / d1);
+      if (i != 0) {
+        bbvw.a("sv_preprocess_total_time", d1);
+      }
+      d1 = (jdField_b_of_type_ArrayOfLong[19] - jdField_a_of_type_ArrayOfLong[0]) / 1000.0D / 20.0D;
+      if (QLog.isColorLevel()) {
+        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Camera=" + 1000.0D / d1);
+      }
+    }
   }
   
-  protected int a()
+  public static void a(long paramLong)
   {
-    return 3;
+    if (jdField_a_of_type_Int < 20)
+    {
+      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
+      int i = jdField_a_of_type_Int;
+      jdField_a_of_type_Int = i + 1;
+      arrayOfLong[i] = paramLong;
+    }
   }
   
-  public View a(RichStatus paramRichStatus)
+  public static void b()
   {
-    paramRichStatus = super.a(paramRichStatus);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMsgId = this.jdField_a_of_type_Long;
-    l();
-    return paramRichStatus;
+    jdField_a_of_type_Int = 0;
+    jdField_b_of_type_Int = 0;
+    jdField_c_of_type_Int = 0;
+    jdField_a_of_type_Boolean = false;
   }
   
-  protected void a()
+  public static void b(long paramLong)
   {
-    this.h = agej.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166448);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    int i = agej.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Object localObject = new FrameLayout.LayoutParams(-1, i);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setYOffset(i + agej.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    i = (int)(bdep.jdField_a_of_type_Int * 0.11F);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.a(i);
-    localObject = (ViewGroup.MarginLayoutParams)this.b.getLayoutParams();
-    localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((ViewGroup.MarginLayoutParams)localObject).topMargin = agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    if (jdField_b_of_type_Int < 20)
+    {
+      long[] arrayOfLong = jdField_b_of_type_ArrayOfLong;
+      int i = jdField_b_of_type_Int;
+      jdField_b_of_type_Int = i + 1;
+      arrayOfLong[i] = paramLong;
+    }
   }
   
-  protected boolean a()
+  public static void c(long paramLong)
   {
-    return true;
+    if (jdField_c_of_type_Int < 20)
+    {
+      long[] arrayOfLong = jdField_c_of_type_ArrayOfLong;
+      int i = jdField_c_of_type_Int;
+      jdField_c_of_type_Int = i + 1;
+      arrayOfLong[i] = paramLong;
+    }
+  }
+  
+  public static void d(long paramLong)
+  {
+    if (jdField_d_of_type_Int < 20)
+    {
+      long[] arrayOfLong = jdField_d_of_type_ArrayOfLong;
+      int i = jdField_d_of_type_Int;
+      jdField_d_of_type_Int = i + 1;
+      arrayOfLong[i] = paramLong;
+    }
   }
 }
 

@@ -1,27 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewTreeObserver.OnDrawListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.1.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import java.util.ArrayList;
+import java.util.List;
 
-public class rnv
-  implements ViewTreeObserver.OnDrawListener
+class rnv
+  implements rnx
 {
-  int jdField_a_of_type_Int = 0;
+  rnv(rno paramrno, long paramLong, rnw paramrnw) {}
   
-  rnv(rnu paramrnu, rrm paramrrm) {}
-  
-  public void onDraw()
+  public void a()
   {
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      rnu.a(this.jdField_a_of_type_Rnu).getWindow().getDecorView().post(new VideoFeedsAdapter.1.1(this, this));
-      if (this.jdField_a_of_type_Rrm == rnu.a(this.jdField_a_of_type_Rnu).jdField_a_of_type_Rrm) {
-        rnu.a(this.jdField_a_of_type_Rnu).a(this.jdField_a_of_type_Rrm, false);
-      }
-    }
+    List localList = rno.a(this.jdField_a_of_type_Rno, this.jdField_a_of_type_Long, rno.a(this.jdField_a_of_type_Rno));
+    this.jdField_a_of_type_Rnw.a(localList);
+    rno.b(this.jdField_a_of_type_Rno).remove(this);
   }
 }
 

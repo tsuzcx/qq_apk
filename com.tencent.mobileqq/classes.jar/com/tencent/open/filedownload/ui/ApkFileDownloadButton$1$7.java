@@ -1,11 +1,11 @@
 package com.tencent.open.filedownload.ui;
 
-import bjyv;
+import bied;
 
 public class ApkFileDownloadButton$1$7
   implements Runnable
 {
-  public ApkFileDownloadButton$1$7(bjyv parambjyv) {}
+  public ApkFileDownloadButton$1$7(bied parambied) {}
   
   public void run()
   {

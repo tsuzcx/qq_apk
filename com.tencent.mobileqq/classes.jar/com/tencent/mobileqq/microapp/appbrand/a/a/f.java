@@ -8,13 +8,13 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import bhsr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.page.WebViewEventListener;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import com.tencent.mobileqq.microapp.widget.d;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -141,7 +141,7 @@ public final class f
       if (localBaseActivity != null)
       {
         str = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-        if (bhsr.a(str)) {
+        if (StringUtil.isEmpty(str)) {
           break label228;
         }
         if (localBaseActivity.checkSelfPermission(str) != 0) {

@@ -11,7 +11,7 @@
     </LinearLayout>
     <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/b9w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/g03" />
     <FrameLayout android:id="@id/fcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/emoticon_aio_panel" />
         <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/aom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/ffj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>

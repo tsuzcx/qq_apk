@@ -1,76 +1,99 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoef
-  implements bcuc
+class aoef
+  implements ServiceConnection
 {
-  public aoef(PublicAccountHandler paramPublicAccountHandler) {}
+  aoef(aoee paramaoee) {}
   
-  public int a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 0;
-    localReqItem.eServiceID = 102;
-    boolean bool = tyi.c();
-    long l1 = PublicAccountHandler.a(this.a, bool);
-    long l2 = PublicAccountHandler.b(this.a, bool);
-    Object localObject2 = PublicAccountHandler.a(this.a);
-    if (bool)
-    {
-      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
-      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bhjx.a(l1));
-      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bhjx.a(1L));
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
-      }
-      localObject2 = new PROTOCAL.StQWebReq();
-      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
-      ((PROTOCAL.StQWebReq)localObject2).qua.set(bmsw.a());
-      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(bmsv.a().c());
-      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
-      localObject1 = aalx.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
-      }
-      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
-      }
-      localReqItem.vecParam = bhuf.a((byte[])localObject1);
-      return localReqItem;
+    this.a.jdField_a_of_type_Aofa = aofb.a(paramIBinder);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onServiceConnected configManager=" + this.a.jdField_a_of_type_Aofa);
     }
-    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
-    localReqItem.vecParam = bhuf.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
-    return localReqItem;
+    if (this.a.jdField_a_of_type_Aofa != null) {}
+    try
+    {
+      this.a.jdField_a_of_type_Aofa.a(this.a.jdField_a_of_type_Aofm);
+      this.a.jdField_a_of_type_Aofa.a(this.a.jdField_a_of_type_Aofd);
+      this.a.jdField_a_of_type_Aofa.a(aoee.a(this.a));
+      this.a.jdField_a_of_type_Aofa.a(this.a.jdField_a_of_type_Aofj);
+      if (aoee.a(this.a) != -1) {
+        this.a.jdField_a_of_type_Aofa.c(aoee.a(this.a));
+      }
+      if (aoee.a(this.a) != null) {
+        aoee.a(this.a).sendEmptyMessage(0);
+      }
+      if (this.a.c)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = this.a.a();
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (aoee.a(this.a) != null))
+        {
+          paramComponentName = Message.obtain();
+          paramComponentName.what = 1;
+          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+          aoee.a(this.a).sendMessage(paramComponentName);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = this.a.a();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (aoee.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 2;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+        aoee.a(this.a).sendMessage(paramComponentName);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = this.a.a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (aoee.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 9;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+        aoee.a(this.a).sendMessage(paramComponentName);
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "registerArCallback: " + paramComponentName.getMessage());
+        }
+      }
+    }
   }
   
-  public void a(RespItem paramRespItem)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
-      this.a.b();
+    if (this.a.jdField_a_of_type_Aofa != null) {}
+    try
+    {
+      this.a.jdField_a_of_type_Aofa.b(this.a.jdField_a_of_type_Aofm);
+      this.a.jdField_a_of_type_Aofa.b(this.a.jdField_a_of_type_Aofd);
+      this.a.jdField_a_of_type_Aofa.b(aoee.a(this.a));
+      this.a.jdField_a_of_type_Aofa.b(this.a.jdField_a_of_type_Aofj);
+      this.a.jdField_a_of_type_Aofa = null;
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "unregisterCallback: " + paramComponentName.getMessage());
+        }
+      }
     }
   }
 }

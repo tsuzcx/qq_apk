@@ -3,6 +3,7 @@ package com.tencent.weseevideo.editor.sticker.constant;
 public class WsStickerConstant$StickerType
 {
   public static final String STICKER_ART_TEXT = "sticker_art_text";
+  public static final String STICKER_BLUR = "blur";
   public static final String STICKER_COMMON = "sticker_common";
   public static final String STICKER_FEN_WEI = "sticker_fen_wei";
   public static final String STICKER_FREE_VIDEO_END = "sticker_free_video_end";

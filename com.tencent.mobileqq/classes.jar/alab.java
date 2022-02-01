@@ -1,25 +1,64 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alab
-  implements PopupWindow.OnDismissListener
+class alab
+  implements View.OnClickListener
 {
-  public alab(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  alab(alaa paramalaa) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (alae.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
+    if (paramView.getId() == 2131365619) {}
+    alaf localalaf;
+    for (;;)
     {
-      alae.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localalaf = (alaf)paramView.getTag();
+      if ((localalaf != null) && (localalaf.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localalaf.jdField_a_of_type_ComTencentMobileqqDataPhoneContact != null))
+      {
+        PhoneContact localPhoneContact = localalaf.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+        if (localalaf.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+        {
+          if (localalaf.jdField_a_of_type_JavaLangString.startsWith("+")) {}
+          for (boolean bool = this.a.a.a.onListViewItemClick(localalaf.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.onListViewItemClick(localalaf.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
+          {
+            localalaf.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+            if (!AppSetting.c) {
+              break;
+            }
+            if (!localalaf.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+              break label266;
+            }
+            if (!localalaf.jdField_a_of_type_Boolean) {
+              break label225;
+            }
+            paramView.setContentDescription(localalaf.b.getText() + this.a.a.a.getString(2131718095));
+            break;
+          }
+          label225:
+          paramView.setContentDescription(localalaf.b.getText().toString() + amtj.a(2131707108));
+        }
+      }
     }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      alil.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    label266:
+    if (localalaf.jdField_a_of_type_Boolean) {}
+    for (int i = this.a.a.a.getCheckPhoneNumberResId(localalaf.jdField_a_of_type_JavaLangString);; i = 0)
+    {
+      if ((localalaf.jdField_a_of_type_Boolean) && (i != 0))
+      {
+        paramView.setContentDescription(localalaf.b.getText() + this.a.a.a.getString(i));
+        break;
+      }
+      paramView.setContentDescription(localalaf.b.getText().toString() + amtj.a(2131707105));
+      break;
     }
   }
 }

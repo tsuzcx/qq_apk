@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.hiboom;
 
-import agej;
-import aiyz;
-import ajtv;
+import ahtj;
+import aios;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -27,24 +26,24 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import auvu;
-import auvv;
-import avqq;
-import avrc;
-import avrl;
-import avrs;
-import avsc;
-import avsd;
-import avse;
-import bdgb;
-import bdll;
-import bhgr;
-import bhsi;
-import bhyk;
+import atic;
+import atid;
+import auds;
+import auee;
+import auen;
+import aueu;
+import aufe;
+import auff;
+import aufg;
+import bbyp;
+import bcef;
+import bfyz;
+import bgev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
 import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -52,6 +51,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.mobileqq.flashchat.FlashChatPanelView;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQViewPager;
@@ -67,14 +67,14 @@ import mqq.os.MqqHandler;
 
 public class RichTextPanel
   extends RelativeLayout
-  implements ajtv, ViewPager.OnPageChangeListener, View.OnClickListener, auvu, avrs
+  implements aios, ViewPager.OnPageChangeListener, View.OnClickListener, atic, aueu
 {
   public static int a;
-  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = new avsd(this);
+  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = new auff(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private avse jdField_a_of_type_Avse;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private aufg jdField_a_of_type_Aufg;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private SimpleSlidingIndicator jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator;
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   private ArrayList<RichTextPanelView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -133,7 +133,7 @@ public class RichTextPanel
     {
       return bool1;
       String str = "had_show_fontbubble_guide_" + this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getPreferences();
       bool2 = localSharedPreferences.getBoolean(str, false);
       localSharedPreferences.edit().putBoolean(str, true).commit();
     } while (!bool2);
@@ -142,15 +142,15 @@ public class RichTextPanel
   
   private void d(boolean paramBoolean)
   {
-    int m = 2131166997;
+    int m = 2131167019;
     boolean bool1;
     boolean bool2;
     boolean bool3;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator != null)
     {
-      bool1 = ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      bool1 = ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, true);
       bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-      bool3 = bdgb.a();
+      bool3 = bbyp.a();
       if ((paramBoolean) || (this.jdField_c_of_type_Boolean != bool1) || (this.jdField_d_of_type_Boolean != bool2) || (this.jdField_e_of_type_Boolean != bool3)) {}
     }
     else
@@ -163,8 +163,8 @@ public class RichTextPanel
     if (bool3) {
       if (bool2)
       {
-        i = 2131166452;
-        k = 2131167074;
+        i = 2131166471;
+        k = 2131167096;
         int n = 255;
         j = i;
         i = k;
@@ -177,32 +177,32 @@ public class RichTextPanel
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(m, i, j);
       if (this.jdField_a_of_type_AndroidWidgetButton != null)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130838393));
-        this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167153));
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130838418));
+        this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167176));
       }
       this.jdField_c_of_type_Boolean = bool1;
       this.jdField_d_of_type_Boolean = bool2;
       this.jdField_e_of_type_Boolean = bool3;
       return;
-      i = 2131166451;
+      i = 2131166470;
       break;
       if (bool2)
       {
-        m = 2131165580;
-        i = 2131165579;
-        j = 2131165578;
+        m = 2131165588;
+        i = 2131165587;
+        j = 2131165586;
         k = 30;
       }
       else if (!bool1)
       {
-        i = 2131167074;
-        j = 2131166997;
+        i = 2131167096;
+        j = 2131167019;
       }
       else
       {
-        m = 2131165581;
-        i = 2131167074;
-        j = 2131165581;
+        m = 2131165589;
+        i = 2131167096;
+        j = 2131165589;
       }
     }
   }
@@ -218,8 +218,8 @@ public class RichTextPanel
         return;
       } while (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty());
       this.jdField_c_of_type_JavaUtilArrayList.clear();
-      Object localObject1 = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217);
-      Object localObject2 = auvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      Object localObject1 = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(217);
+      Object localObject2 = atid.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app);
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       localObject2 = ((ArrayList)localObject2).iterator();
@@ -236,25 +236,25 @@ public class RichTextPanel
             this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
             this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(1));
             localArrayList1.add(((RichTextPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-            localArrayList2.add(Integer.valueOf(2131376632));
+            localArrayList2.add(Integer.valueOf(2131376397));
           }
         }
         else if (i == 2)
         {
-          if (avrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a())
+          if (auen.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a())
           {
             this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
             this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(2));
             localArrayList1.add(((RichTextPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-            localArrayList2.add(Integer.valueOf(2131376635));
+            localArrayList2.add(Integer.valueOf(2131376400));
           }
         }
-        else if ((i == 0) && (aiyz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).c()))
+        else if ((i == 0) && (ahtj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp()).c()))
         {
           this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
           this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(0));
           localArrayList1.add(((RichTextPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-          localArrayList2.add(Integer.valueOf(2131376639));
+          localArrayList2.add(Integer.valueOf(2131376404));
         }
         else
         {
@@ -264,7 +264,7 @@ public class RichTextPanel
             this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(i));
             localArrayList1.add(((RichTextPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
             if (i == 3) {}
-            for (i = 2131376633;; i = 2131376630)
+            for (i = 2131376398;; i = 2131376395)
             {
               localArrayList2.add(Integer.valueOf(i));
               break;
@@ -275,7 +275,7 @@ public class RichTextPanel
             this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
             this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(5));
             localArrayList1.add(((RichTextPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-            localArrayList2.add(Integer.valueOf(2131376631));
+            localArrayList2.add(Integer.valueOf(2131376396));
           }
         }
       }
@@ -303,7 +303,7 @@ public class RichTextPanel
       if (j != -1) {
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e(j);
       }
-      i = auvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaUtilArrayList);
+      i = atid.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_b_of_type_JavaUtilArrayList);
       if (i >= this.jdField_c_of_type_JavaUtilArrayList.size()) {
         break;
       }
@@ -324,6 +324,9 @@ public class RichTextPanel
       }
       return 0;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+      return 0;
+    }
     int i;
     RichTextPanelView localRichTextPanelView;
     String str;
@@ -342,17 +345,17 @@ public class RichTextPanel
           str = null;
           localRichTextPanelView.a(true);
           if (!(localRichTextPanelView instanceof HiBoomPanelView)) {
-            break label605;
+            break label614;
           }
           str = "0X80094D4";
-          label172:
+          label181:
           if (!TextUtils.isEmpty(str)) {
-            bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+            bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
           }
-          if (((localRichTextPanelView instanceof EmoticonHotPicSearchPanelView)) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null))
+          if (((localRichTextPanelView instanceof EmoticonHotPicSearchPanelView)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input != null))
           {
-            str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-            bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AE34", "0X800AE34", 0, 0, "", "", str, "");
+            str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.getText().toString();
+            bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "dc00898", "", "", "0X800AE34", "0X800AE34", 0, 0, "", "", str, "");
             ((EmoticonHotPicSearchPanelView)localRichTextPanelView).b();
           }
         }
@@ -360,23 +363,23 @@ public class RichTextPanel
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         }
         i = 0;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-          i = auvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).a();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
+          i = atid.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp()).a();
         }
         if (((localRichTextPanelView instanceof ZhituPanelView)) && (i == 1)) {
           this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         }
         if ((!(localRichTextPanelView instanceof ZhituPanelView)) || (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() != 8)) {
-          break label661;
+          break label670;
         }
         a(this.jdField_a_of_type_AndroidWidgetButton, 2130772011);
         if (i != 1) {
           this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         }
       }
-      label409:
+      label418:
       if (paramInt < 0) {
-        break label694;
+        break label703;
       }
     }
     for (;;)
@@ -387,43 +390,43 @@ public class RichTextPanel
       }
       if ((this.jdField_b_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()) && (this.jdField_a_of_type_Boolean) && ((this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int) instanceof HiBoomPanelView)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("isHiBoomFirstShow", false).commit();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getPreferences().edit().putBoolean("isHiBoomFirstShow", false).commit();
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.f(this.jdField_b_of_type_Int);
       }
       if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_b_of_type_Int < this.jdField_b_of_type_JavaUtilArrayList.size()))
       {
         paramInt = ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).intValue();
-        bhsi.aa(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt);
+        bfyz.aa(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getApp(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentAccountUin(), paramInt);
       }
       return 0;
       i = 1;
       break;
-      label605:
+      label614:
       if ((localRichTextPanelView instanceof ZhituPanelView))
       {
         str = "0X80094D2";
-        break label172;
+        break label181;
       }
       if ((localRichTextPanelView instanceof FlashChatPanelView))
       {
         str = "0X80094D3";
-        break label172;
+        break label181;
       }
       if (!(localRichTextPanelView instanceof FontBubblePanelView)) {
-        break label172;
+        break label181;
       }
       str = "";
       ((FontBubblePanelView)localRichTextPanelView).a();
-      break label172;
-      label661:
+      break label181;
+      label670:
       if (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() != 0) {
-        break label409;
+        break label418;
       }
       a(this.jdField_a_of_type_AndroidWidgetButton, 2130772012);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      break label409;
-      label694:
+      break label418;
+      label703:
       paramInt = 0;
     }
   }
@@ -443,9 +446,9 @@ public class RichTextPanel
   
   public void a(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Avse = new avse(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this);
-    Drawable localDrawable = getResources().getDrawable(2130850268);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_Aufg = new aufg(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this);
+    Drawable localDrawable = getResources().getDrawable(2130850189);
     Object localObject = null;
     if ((localDrawable instanceof BitmapDrawable))
     {
@@ -461,57 +464,57 @@ public class RichTextPanel
     for (;;)
     {
       setBackgroundDrawable((Drawable)localObject);
-      this.jdField_e_of_type_Int = agej.a(250.0F, getResources());
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getBoolean("isHiBoomFirstShow", true);
-      localObject = new avsc(this, getContext());
-      ((RelativeLayout)localObject).setId(2131376638);
-      RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, bhgr.a(getContext(), 40.0F));
+      this.jdField_e_of_type_Int = AIOUtils.dp2px(250.0F, getResources());
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getPreferences().getBoolean("isHiBoomFirstShow", true);
+      localObject = new aufe(this, getContext());
+      ((RelativeLayout)localObject).setId(2131376403);
+      RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 40.0F));
       localLayoutParams1.addRule(12, -1);
       ((RelativeLayout)localObject).setBackgroundDrawable(localDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator = ((SimpleSlidingIndicator)View.inflate(getContext(), 2131558627, null));
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setId(2131376637);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator = ((SimpleSlidingIndicator)View.inflate(getContext(), 2131558630, null));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setId(2131376402);
       d(true);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setOnTabListener(this);
-      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, bhgr.a(getContext(), 40.0F));
-      localLayoutParams2.addRule(0, 2131377314);
+      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 40.0F));
+      localLayoutParams2.addRule(0, 2131377065);
       ((RelativeLayout)localObject).addView(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator, localLayoutParams2);
       this.jdField_a_of_type_AndroidWidgetButton = new Button(getContext());
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131377314);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130838393));
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getResources().getString(2131719417));
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167153));
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getResources().getString(2131719417));
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131377065);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130838418));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getResources().getString(2131719741));
+      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167176));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getResources().getString(2131719741));
       this.jdField_a_of_type_AndroidWidgetButton.setTextSize(2, 14.0F);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      localLayoutParams2 = new RelativeLayout.LayoutParams(bhgr.a(getContext(), 60.0F), bhgr.a(getContext(), 40.0F));
+      localLayoutParams2 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 60.0F), DisplayUtil.dip2px(getContext(), 40.0F));
       localLayoutParams2.addRule(11);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams2);
       addView((View)localObject, localLayoutParams1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = new QQViewPager(getContext());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setId(2131376636);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setId(2131376401);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setBackgroundDrawable(localDrawable);
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setFocusable(true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setFocusableInTouchMode(true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.a(true);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131376638);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.requestParentDisallowInterecptTouchEvent(true);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131376403);
       addView(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131367004);
+      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131367018);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new ZhituPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Avse, this.jdField_a_of_type_AndroidWidgetButton));
-      this.jdField_a_of_type_JavaUtilArrayList.add(new FlashChatPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Avse));
-      this.jdField_a_of_type_JavaUtilArrayList.add(new HiBoomPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Avse));
-      this.jdField_a_of_type_JavaUtilArrayList.add(new FontBubblePanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Avse, new avrc()));
-      this.jdField_a_of_type_JavaUtilArrayList.add(new FontBubblePanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Avse, new avqq()));
-      this.jdField_a_of_type_JavaUtilArrayList.add(new EmoticonHotPicSearchPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Avse));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ZhituPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Aufg, this.jdField_a_of_type_AndroidWidgetButton));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new FlashChatPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Aufg));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new HiBoomPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Aufg));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new FontBubblePanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Aufg, new auee()));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new FontBubblePanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Aufg, new auds()));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new EmoticonHotPicSearchPanelView(getContext(), paramBaseChatPie, this.jdField_a_of_type_Aufg));
       return;
       if (!(localDrawable instanceof SkinnableBitmapDrawable)) {
         break;
@@ -567,8 +570,8 @@ public class RichTextPanel
     String str;
     if (paramBoolean)
     {
-      ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).f(avrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()));
-      avrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this);
+      ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(71)).f(auen.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.getText().toString()));
+      auen.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this);
       str = null;
       if (!(localObject instanceof HiBoomPanelView)) {
         break label236;
@@ -580,8 +583,8 @@ public class RichTextPanel
     {
       if (!TextUtils.isEmpty(str))
       {
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "InputFunc", "EnterFunc", "", 1, 0, 0, "", "", (String)localObject);
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentUin(), "InputFunc", "EnterFunc", "", 1, 0, 0, "", "", (String)localObject);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
@@ -625,13 +628,13 @@ public class RichTextPanel
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Avse.a(paramBoolean);
+    this.jdField_a_of_type_Aufg.a(paramBoolean);
     ((EmoticonHotPicSearchPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(5)).b(paramBoolean);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Avse.a();
+    this.jdField_a_of_type_Aufg.a();
     ((EmoticonHotPicSearchPanelView)this.jdField_a_of_type_JavaUtilArrayList.get(5)).a();
   }
   
@@ -644,7 +647,7 @@ public class RichTextPanel
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      Object localObject = bhyk.a(getContext(), "font", "mvip.gexinghua.mobile.font.client_tab_store") + "&haibao=1";
+      Object localObject = bgev.a(getContext(), "font", "mvip.gexinghua.mobile.font.client_tab_store") + "&haibao=1";
       if (QLog.isColorLevel()) {
         QLog.d("RichTextPanel", 2, "enter hiboom mall url = " + (String)localObject);
       }
@@ -652,9 +655,9 @@ public class RichTextPanel
       continue;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       continue;
-      localObject = aiyz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((localObject != null) && (((aiyz)localObject).a != null)) {
-        ((aiyz)localObject).a.b();
+      localObject = ahtj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app);
+      if ((localObject != null) && (((ahtj)localObject).a != null)) {
+        ((ahtj)localObject).a.b();
       }
     }
   }
@@ -663,7 +666,7 @@ public class RichTextPanel
   {
     super.onDetachedFromWindow();
     if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Avse.b();
+      this.jdField_a_of_type_Aufg.b();
     }
     this.jdField_b_of_type_Boolean = false;
   }
@@ -671,7 +674,7 @@ public class RichTextPanel
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Avse.a()) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
+    if ((this.jdField_a_of_type_Aufg.a()) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
       if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
         break label180;
       }

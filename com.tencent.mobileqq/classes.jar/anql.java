@@ -1,82 +1,53 @@
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.view.ApolloGameProcessBar;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class anql
-  extends bhpc
+  extends anrh
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ApolloGameProcessBar jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar;
-  
-  public anql(Context paramContext)
+  public anql(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramContext, 2131755202);
-    a(paramContext);
+    super(paramQQAppInterface, paramContext);
   }
   
-  @TargetApi(16)
-  private void a(Context paramContext)
+  public boolean a()
   {
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    Object localObject = new FrameLayout.LayoutParams(-2, -2, 17);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar = new ApolloGameProcessBar(paramContext, 2130838617, 2130838619);
-    localObject = new LinearLayout.LayoutParams(agej.a(80.0F, paramContext.getResources()), agej.a(80.0F, paramContext.getResources()));
-    ((LinearLayout.LayoutParams)localObject).setMargins(agej.a(60.5F, paramContext.getResources()), 0, agej.a(60.5F, paramContext.getResources()), 0);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar);
-    localObject = new TextView(paramContext);
-    ((TextView)localObject).setText(anzj.a(2131699304));
-    ((TextView)localObject).setTextSize(16.0F);
-    ((TextView)localObject).setTextColor(Color.parseColor("#ababab"));
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, agej.a(10.0F, paramContext.getResources()), 0, 0);
-    localLayoutParams.gravity = 1;
-    ((TextView)localObject).setLayoutParams(localLayoutParams);
-    localLinearLayout.addView((View)localObject);
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(paramContext);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131699295));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextSize(14.0F);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackground(paramContext.getResources().getDrawable(2130838618));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new anqm(this));
-    localObject = new LinearLayout.LayoutParams(agej.a(100.0F, paramContext.getResources()), agej.a(30.0F, paramContext.getResources()));
-    ((LinearLayout.LayoutParams)localObject).setMargins(0, agej.a(35.0F, paramContext.getResources()), 0, 0);
-    ((LinearLayout.LayoutParams)localObject).gravity = 1;
-    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetButton);
-    getWindow().setDimAmount(0.85F);
-    getWindow().setGravity(17);
-    setContentView(localLinearLayout);
-    setCanceledOnTouchOutside(false);
-    setCancelable(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new anqn(this));
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+    try
+    {
+      boolean bool = g_();
+      return bool;
     }
+    catch (Exception localException)
+    {
+      QLog.e("ContactAddAction", 1, "doAction error: " + localException.getMessage());
+      a("ContactAddAction");
+    }
+    return false;
   }
   
-  public void setProgress(int paramInt)
+  public boolean g_()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setProgress(paramInt);
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
+    localIntent.setFlags(67108864);
+    int j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("des_type"));
+    int i = j;
+    if (j != 0)
+    {
+      i = j;
+      if (j != 1)
+      {
+        i = j;
+        if (j != 2) {
+          i = 0;
+        }
+      }
     }
+    localIntent.putExtra("tab_index_key", i);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    return true;
   }
 }
 

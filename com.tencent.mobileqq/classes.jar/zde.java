@@ -1,19 +1,195 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
+import com.tencent.biz.subscribe.bizdapters.CommodityAdapter.2;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.util.ArrayUtils;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
 
-@TargetApi(11)
 public class zde
+  extends zag
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, zdh paramzdh)
+  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  
+  public zde(Bundle paramBundle)
   {
-    float f = (paramFloat2 - paramFloat1) / 5.0F;
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
-    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new zdf(paramzdh));
-    localValueAnimator.addListener(new zdg(paramzdh, localValueAnimator));
-    localValueAnimator.setDuration(paramLong);
-    return localValueAnimator;
+    super(paramBundle);
+  }
+  
+  private FrameLayout a()
+  {
+    FrameLayout localFrameLayout = a(null);
+    Object localObject = (FrameLayout.LayoutParams)localFrameLayout.getLayoutParams();
+    ((FrameLayout.LayoutParams)localObject).width = -1;
+    ((FrameLayout.LayoutParams)localObject).height = -2;
+    ((FrameLayout.LayoutParams)localObject).bottomMargin = ImmersiveUtils.a(30.0F);
+    ((FrameLayout.LayoutParams)localObject).topMargin = ImmersiveUtils.a(20.0F);
+    ((FrameLayout.LayoutParams)localObject).leftMargin = ImmersiveUtils.a(16.0F);
+    ((FrameLayout.LayoutParams)localObject).rightMargin = ImmersiveUtils.a(16.0F);
+    localFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = new ImageView(a());
+    ((ImageView)localObject).setLayoutParams(new FrameLayout.LayoutParams(-1, ImmersiveUtils.a(1.0F)));
+    ((ImageView)localObject).setBackgroundColor(Color.parseColor("#D8D8D8"));
+    localFrameLayout.addView((View)localObject);
+    return localFrameLayout;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public zah a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new CommodityItemView(paramViewGroup.getContext());
+    paramViewGroup.setCurrentFeed(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    return new zah(paramViewGroup);
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    Object localObject2 = paramStFeed.poster;
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    LinearLayout localLinearLayout;
+    zdf localzdf;
+    Object localObject1;
+    if ((((CertifiedAccountMeta.StUser)localObject2).youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)((CertifiedAccountMeta.StUser)localObject2).youZhan.get(0)).goodNum.get() > 0))
+    {
+      paramStFeed = new FrameLayout.LayoutParams(-2, -2);
+      paramStFeed.gravity = 21;
+      paramStFeed.rightMargin = ImmersiveUtils.a(14.0F);
+      localLinearLayout = new LinearLayout(a());
+      localLinearLayout.setOrientation(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localLinearLayout, paramStFeed);
+      localzdf = new zdf(this, (CertifiedAccountMeta.StUser)localObject2);
+      zxp.a(((CertifiedAccountMeta.StUser)localObject2).id.get(), "auth_" + zlv.a(a()), "exp_shop", 0, 0, new String[0]);
+      localObject1 = a();
+      if (!zbi.a(((CertifiedAccountMeta.StUser)localObject2).attr.get())) {
+        break label337;
+      }
+    }
+    label337:
+    for (paramStFeed = amtj.a(2131701367);; paramStFeed = ((CertifiedAccountMeta.StUser)localObject2).nick.get())
+    {
+      paramStFeed = yzh.a((Context)localObject1, 13.5F, "#878B99", String.format("%s", new Object[] { paramStFeed }));
+      paramStFeed.setMaxLines(1);
+      paramStFeed.setMaxWidth(ImmersiveUtils.a(150.0F));
+      paramStFeed.setGravity(5);
+      paramStFeed.setEllipsize(TextUtils.TruncateAt.END);
+      paramStFeed.setOnClickListener(localzdf);
+      localLinearLayout.addView(paramStFeed, new LinearLayout.LayoutParams(-2, -2));
+      paramStFeed = yzh.a(a(), 13.5F, "#878B99", "的小店");
+      localObject1 = new LinearLayout.LayoutParams(-2, -2);
+      paramStFeed.setCompoundDrawablePadding(ImmersiveUtils.a(2.0F));
+      localObject2 = a().getResources().getDrawable(2130839316);
+      ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
+      paramStFeed.setCompoundDrawables(null, null, (Drawable)localObject2, null);
+      paramStFeed.setOnClickListener(localzdf);
+      localLinearLayout.addView(paramStFeed, (ViewGroup.LayoutParams)localObject1);
+      return;
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    paramBundle = yzh.a(a(), 16.0F, "#222222", amtj.a(2131700633));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 3;
+    localLayoutParams.leftMargin = ImmersiveUtils.a(14.0F);
+    paramBundle.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = a(paramBundle);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (!ArrayUtils.isOutOfArrayIndex(paramInt, a()))
+    {
+      ((CommodityItemView)paramViewHolder.itemView).setData(a().get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).setExtraTypeInfo(a());
+    }
+  }
+  
+  public void a(HorizontalRvInnerView paramHorizontalRvInnerView)
+  {
+    if (((a().a(0) instanceof zdg)) && (((zdg)a().a(0)).a() != null)) {
+      ((zdg)a().a(0)).a().a(paramHorizontalRvInnerView);
+    }
+  }
+  
+  public void a(String paramString, yzn paramyzn)
+  {
+    super.a(paramString, paramyzn);
+    if ((paramString.equals("share_key_subscribe_feeds_update")) && (paramyzn.a != null))
+    {
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = ((CertifiedAccountMeta.StFeed)paramyzn.a);
+      if (a() != null) {
+        a().post(new CommodityAdapter.2(this));
+      }
+    }
+  }
+  
+  public void a(yzu paramyzu) {}
+  
+  public int c()
+  {
+    return a().size();
+  }
+  
+  public int getItemCount()
+  {
+    if (a().size() > 0) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 100001;
+    case 0: 
+      return 100000;
+    }
+    return 100002;
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.onCreateViewHolder(paramViewGroup, paramInt);
+    case 100000: 
+      return new yzt(this, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    }
+    return new yzt(this, a());
   }
 }
 

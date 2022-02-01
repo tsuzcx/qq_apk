@@ -1,78 +1,80 @@
-import android.annotation.TargetApi;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.InflateException;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.16.1;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.16.2;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.16.3;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bmhy
-  extends ReportDialog
+  implements bmfk
 {
-  public bmhy(Context paramContext, String paramString)
-  {
-    super(paramContext, 2131755827);
-    a(paramContext, paramString);
-  }
+  public bmhy(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  @TargetApi(14)
-  private void a(Context paramContext, String paramString)
+  public void a(int paramInt, bmgl parambmgl)
   {
-    super.requestWindowFeature(1);
-    Object localObject1 = LayoutInflater.from(paramContext);
-    View localView = ((LayoutInflater)localObject1).inflate(2131558978, null);
-    try
+    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.16.1(this, parambmgl));
+    }
+    if (paramInt == 0)
     {
-      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561939, (ViewGroup)localView, false);
-      localObject1 = (RelativeLayout)localView.findViewById(2131379050);
-      Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131376731);
-      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject2 = (TextView)localView.findViewById(2131369042);
-      IphoneTitleBarActivity.setLayerType((View)localObject2);
-      if (localObject2 != null) {
-        ((TextView)localObject2).setText(anzj.a(2131707160));
+      bmbx.b("AEEditorImageEditFragment", "onAIFilterApplySuccess");
+      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.16.3(this));
+      if (AEEditorImageEditFragment.a(this.a) != null) {
+        break label105;
       }
-      localObject3 = (TextView)localView.findViewById(2131369088);
-      IphoneTitleBarActivity.setLayerType((View)localObject2);
-      if (localObject3 != null) {
-        ((TextView)localObject3).setText(paramString);
-      }
-      super.setContentView((View)localObject1);
-      paramString = getWindow();
-      localObject1 = paramString.getAttributes();
-      ((WindowManager.LayoutParams)localObject1).width = -1;
-      ((WindowManager.LayoutParams)localObject1).height = -1;
-      paramString.setAttributes((WindowManager.LayoutParams)localObject1);
-      if (ImmersiveUtils.isSupporImmersive() == 1)
+    }
+    label105:
+    bmgu localbmgu;
+    do
+    {
+      do
       {
-        paramString.addFlags(67108864);
-        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131167048)).init();
-        localView.setFitsSystemWindows(true);
-        localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramContext), 0, 0);
+        return;
+        bmbx.b("AEEditorImageEditFragment", "onAIFilterAppliedFailed:" + paramInt);
+        ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.16.2(this));
+        break;
+      } while (parambmgl == null);
+      AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.b(this.a).get(AEEditorImageEditFragment.a(this.a)), parambmgl);
+      AEEditorImageEditFragment.a(this.a).put(String.valueOf(AEEditorImageEditFragment.a(this.a)), this.a.a(parambmgl));
+      localbmgu = (bmgu)parambmgl;
+    } while (localbmgu == null);
+    AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), parambmgl);
+    AEEditorImageEditFragment.a(this.a).resetAEKitModelForAI(AEEditorImageEditFragment.a(this.a), localbmgu.jdField_b_of_type_JavaLangString, localbmgu.jdField_a_of_type_Float, localbmgu.jdField_a_of_type_JavaUtilHashMap, (int)(localbmgu.c * 100.0F), localbmgu.jdField_b_of_type_Float);
+    this.a.a(new String[] { "智能滤镜label", localbmgu.jdField_a_of_type_JavaLangString, "智能滤镜errCode", String.valueOf(paramInt) });
+    parambmgl = "none";
+    Iterator localIterator = NewEnhanceCategories.newEnhanceTypes.iterator();
+    if (localIterator.hasNext())
+    {
+      NewEnhanceCategories localNewEnhanceCategories = (NewEnhanceCategories)localIterator.next();
+      if (!localNewEnhanceCategories.serverLabel.equals(localbmgu.jdField_a_of_type_JavaLangString)) {
+        break label423;
       }
+      parambmgl = localNewEnhanceCategories.filterType;
+    }
+    label423:
+    for (;;)
+    {
+      break;
+      bmbg.a().a().jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), "effect_aieffect_" + parambmgl);
+      bmbg.a().a().b.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), Float.valueOf(-1.0F));
+      AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), "effect_aieffect");
       return;
     }
-    catch (InflateException paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
-      }
-      super.setContentView(2131561939);
-      getWindow().setFeatureInt(7, 2131558976);
+  }
+  
+  public void aD_()
+  {
+    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+      this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.a();
     }
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, "资源下载中，请稍后再试", 0).a();
   }
 }
 

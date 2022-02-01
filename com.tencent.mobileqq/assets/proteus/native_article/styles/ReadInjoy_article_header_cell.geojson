@@ -40,8 +40,7 @@
                         "attributes":{
                             "setRingUrl:": "$ringUrl",
                             "setLiveStatusUrl:": "$liveStatusUrl",
-                            "loadAvatarByUin:": "$avatar_uin",
-                            "setFrameString:": "-1"
+                            "loadAvatarByUin:": "$avatar_uin"
                         }
                     },
                     {
@@ -71,7 +70,6 @@
                                     "type": "wrap_content"
                                 },
                                 "attributes": {
-                                    "setFrameString:": "-1",
                                     "setText:": "$nickname_text",
                                     "setTextColorString:": "#262626",
                                     "setFontSizeString:": "16",
@@ -90,7 +88,6 @@
                                     "type": "wrap_content"
                                 },
                                 "attributes": {
-                                    "setFrameString:": "-1",
                                     "setText:": "$timestamp_text",
                                     "setTextColorString:": "#737373",
                                     "setFontSizeString:": "12",
@@ -112,7 +109,6 @@
                                     "value": "120"
                                 },
                                 "attributes": {
-                                    "setFrameString:": "-1",
                                     "setText:": "$authorizeDesc",
                                     "setTextColorString:": "#737373",
                                     "setFontSizeString:": "12",

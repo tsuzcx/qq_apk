@@ -1,26 +1,20 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class bbhs
-  extends BroadcastReceiver
+class bbhs
 {
-  private bbhs(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public View a;
+  public TextView a;
+  public URLImageView a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbhs(bbhr parambbhr, Context paramContext)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      bbfg.a().b();
-      bbfg.a().a(new bbht(this));
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559815, parambbhr.b, false);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368344));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365420));
   }
 }
 

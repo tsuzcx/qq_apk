@@ -1,10 +1,30 @@
-import com.tencent.mobileqq.activity.leba.QzoneFrame;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class akgu
+class akgu
+  implements mng
 {
-  public akgu(QzoneFrame paramQzoneFrame) {}
+  akgu(akgt paramakgt) {}
   
-  public abstract void a(int paramInt);
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
+    }
+  }
 }
 
 

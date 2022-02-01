@@ -1,14 +1,14 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class adeq
-  implements adci
+  implements Comparator<adeo>
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  private adeq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  
+  public int a(adeo paramadeo1, adeo paramadeo2)
   {
-    bcto.a(paramMsgInfo.shMsgSeq, paramMsgInfo.shMsgType, paramadan.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    return paramadeo1.c.compareToIgnoreCase(paramadeo2.c);
   }
 }
 

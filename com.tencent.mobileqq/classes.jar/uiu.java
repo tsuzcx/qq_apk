@@ -1,27 +1,13 @@
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class uiu<T>
-  extends blsy<T>
+final class uiu
+  implements DialogInterface.OnClickListener
 {
-  public ukp a;
-  public ukz a;
-  public uld a;
-  
-  public uiu(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  public abstract ViewGroup a();
-  
-  public boolean b()
-  {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.b());
-  }
-  
-  public boolean c()
-  {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.c());
+    paramDialogInterface.dismiss();
+    biby.a().a(uit.a());
   }
 }
 

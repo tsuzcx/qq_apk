@@ -1,0 +1,86 @@
+package cooperation.qzone;
+
+import android.app.Activity;
+import android.content.IntentFilter;
+import android.view.KeyEvent;
+import cooperation.qzone.util.QZLog;
+
+public class WatchActivityManager
+{
+  public static String TAG = "WatchActivityManager";
+  private Activity activity;
+  private boolean mActivityStopped;
+  private boolean mPressHomeKey;
+  private boolean mPressMenuKey;
+  private boolean mPressScreenOff;
+  public WatchActivityManager.ScreenKeyReceiver mScreenReceiver = new WatchActivityManager.ScreenKeyReceiver(this, null);
+  
+  private void registKeyReceiver()
+  {
+    if (this.activity != null)
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.activity.registerReceiver(this.mScreenReceiver, localIntentFilter);
+    }
+  }
+  
+  private void resetKeyFlag()
+  {
+    this.mPressScreenOff = false;
+    this.mPressHomeKey = false;
+    this.mPressMenuKey = false;
+    this.mActivityStopped = false;
+  }
+  
+  private void unRegistKeyReceiver()
+  {
+    if (this.activity != null) {
+      this.activity.unregisterReceiver(this.mScreenReceiver);
+    }
+  }
+  
+  public boolean hasJump()
+  {
+    QZLog.i(TAG, 4, "ljh, mActivityStopped = " + this.mActivityStopped + ", mPressScreenOff = " + this.mPressScreenOff + ", mPressMenuKey = " + this.mPressMenuKey + ", mPressHomeKey = " + this.mPressHomeKey);
+    return (this.mActivityStopped) && (!this.mPressScreenOff) && (!this.mPressMenuKey) && (!this.mPressHomeKey);
+  }
+  
+  public void onCreate(Activity paramActivity)
+  {
+    this.activity = paramActivity;
+    registKeyReceiver();
+  }
+  
+  public void onDestroy()
+  {
+    unRegistKeyReceiver();
+  }
+  
+  public void onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.mPressMenuKey = true;
+  }
+  
+  public void onResume()
+  {
+    resetKeyFlag();
+  }
+  
+  public void onStop()
+  {
+    this.mActivityStopped = true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     cooperation.qzone.WatchActivityManager
+ * JD-Core Version:    0.7.0.1
+ */

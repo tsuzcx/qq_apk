@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 import java.util.Iterator;
 import java.util.List;
-import pon;
+import ptv;
 
 public class ArticleInfoModule$27
   implements Runnable
 {
-  public ArticleInfoModule$27(pon parampon, List paramList) {}
+  public ArticleInfoModule$27(ptv paramptv, List paramList) {}
   
   public void run()
   {

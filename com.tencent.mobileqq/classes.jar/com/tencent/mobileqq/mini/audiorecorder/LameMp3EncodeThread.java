@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.audiorecorder;
 
+import amtj;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anzj;
-import axeu;
+import avsb;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -36,7 +36,7 @@ public class LameMp3EncodeThread
   
   public LameMp3EncodeThread(LameMp3Recorder paramLameMp3Recorder, Handler paramHandler)
   {
-    super(anzj.a(2131704888));
+    super(amtj.a(2131705118));
     this.mp3Player = paramLameMp3Recorder;
     this.mMainHandler = paramHandler;
     start();
@@ -66,12 +66,12 @@ public class LameMp3EncodeThread
   
   private void loadLameMp3So()
   {
-    this.mNativeLoaded = axeu.a().c();
+    this.mNativeLoaded = avsb.a().c();
     QLog.e("[miniapp]-LameMp3Native", 1, "mNativeLoaded : " + this.mNativeLoaded);
     if (!this.mNativeLoaded) {}
     try
     {
-      this.mNativeLoaded = axeu.a().b();
+      this.mNativeLoaded = avsb.a().b();
       if (this.mNativeLoaded) {}
     }
     catch (Throwable localThrowable1)
@@ -247,7 +247,7 @@ public class LameMp3EncodeThread
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      this.mMainHandler.sendMessage(LameMp3Recorder.generatePlayErrMsg(anzj.a(2131704885)));
+      this.mMainHandler.sendMessage(LameMp3Recorder.generatePlayErrMsg(amtj.a(2131705115)));
       stopPlay();
     }
     return false;
@@ -308,7 +308,7 @@ public class LameMp3EncodeThread
     //   53: aload_0
     //   54: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   57: ldc_w 308
-    //   60: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   60: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   63: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   66: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   69: pop
@@ -329,7 +329,7 @@ public class LameMp3EncodeThread
     //   100: aload_0
     //   101: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   104: ldc_w 323
-    //   107: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   107: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   110: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   113: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   116: pop
@@ -380,7 +380,7 @@ public class LameMp3EncodeThread
     //   202: aload_0
     //   203: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   206: ldc_w 339
-    //   209: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   209: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   212: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   215: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   218: pop
@@ -392,7 +392,7 @@ public class LameMp3EncodeThread
     //   229: aload_0
     //   230: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   233: ldc_w 340
-    //   236: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   236: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   239: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   242: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   245: pop
@@ -404,7 +404,7 @@ public class LameMp3EncodeThread
     //   256: aload_0
     //   257: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   260: ldc_w 341
-    //   263: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   263: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   266: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   269: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   272: pop
@@ -473,7 +473,7 @@ public class LameMp3EncodeThread
     //   399: aload_0
     //   400: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   403: ldc_w 357
-    //   406: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   406: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   409: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   412: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   415: pop
@@ -506,7 +506,7 @@ public class LameMp3EncodeThread
     //   464: aload_0
     //   465: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   468: ldc_w 367
-    //   471: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   471: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   474: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   477: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   480: pop
@@ -541,7 +541,7 @@ public class LameMp3EncodeThread
     //   535: aload_0
     //   536: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   539: ldc_w 378
-    //   542: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   542: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   545: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   548: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   551: pop
@@ -594,7 +594,7 @@ public class LameMp3EncodeThread
     //   648: aload_0
     //   649: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   652: ldc_w 399
-    //   655: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   655: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   658: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   661: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   664: pop
@@ -736,7 +736,7 @@ public class LameMp3EncodeThread
     //   915: aload_0
     //   916: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   919: ldc_w 400
-    //   922: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   922: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   925: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   928: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   931: pop
@@ -748,7 +748,7 @@ public class LameMp3EncodeThread
     //   944: aload_0
     //   945: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   948: ldc_w 401
-    //   951: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   951: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   954: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   957: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   960: pop
@@ -774,7 +774,7 @@ public class LameMp3EncodeThread
     //   1001: aload_0
     //   1002: getfield 80	com/tencent/mobileqq/mini/audiorecorder/LameMp3EncodeThread:mMainHandler	Landroid/os/Handler;
     //   1005: ldc_w 402
-    //   1008: invokestatic 51	anzj:a	(I)Ljava/lang/String;
+    //   1008: invokestatic 51	amtj:a	(I)Ljava/lang/String;
     //   1011: invokestatic 311	com/tencent/mobileqq/mini/audiorecorder/LameMp3Recorder:generateRecordErrMsg	(Ljava/lang/String;)Landroid/os/Message;
     //   1014: invokevirtual 195	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   1017: pop

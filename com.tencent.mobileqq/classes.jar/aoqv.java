@@ -1,39 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
-import friendlist.FriendInfo;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.TranslucentActivity;
+import org.json.JSONObject;
 
 public class aoqv
+  implements aoqs
 {
-  QQAppInterface a;
-  
-  public aoqv(QQAppInterface paramQQAppInterface)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a() {}
-  
-  public void a(Friends paramFriends, FriendInfo paramFriendInfo)
-  {
-    paramFriends = ((anyw)this.a.getManager(51)).e(paramFriends.uin);
-    if (paramFriends != null)
+    if (paramLong != 0L) {}
+    do
     {
-      amsx localamsx = (amsx)this.a.getManager(153);
-      ApolloBaseInfo localApolloBaseInfo = localamsx.b(paramFriends.uin);
-      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime))
-      {
-        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
-        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
-        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
-        localApolloBaseInfo.apolloSignStr = "";
-        localamsx.a(localApolloBaseInfo);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "handleGetFriendDetailInfo, update apollo info uin=" + paramFriends.uin + "apollo status: " + paramFriendInfo.cApolloFlag + ", apollo svr TS: " + paramFriendInfo.uApolloTimestamp + ", sign TS: " + paramFriendInfo.uApolloSignTime);
-        }
+      return false;
+      paramJSONObject = BaseActivity.sTopActivity;
+    } while (paramJSONObject == null);
+    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
+    paramString3.addFlags(268435456);
+    QzonePluginProxyActivity.setActivityNameToIntent(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
+    paramString3.setAction("action_js2qzone");
+    paramString3.putExtra("cmd", "Schema");
+    paramString2 = paramString1;
+    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
+    {
+      paramString2 = paramString1;
+      if (!paramString1.contains("from")) {
+        paramString2 = paramString1 + "&from=aio";
       }
     }
+    paramString3.putExtra("schema", "mqzone://" + paramString2);
+    paramString3.putExtra("from", 2);
+    paramJSONObject.startActivity(paramString3);
+    return true;
   }
 }
 

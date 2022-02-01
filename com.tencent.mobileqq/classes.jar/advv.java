@@ -1,150 +1,96 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class advv
-  extends anyu
+  extends aycd
 {
-  public advv(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public advv(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  private void a(String paramString, ArrayList<bdwr> paramArrayList, ammv paramammv)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo  uin = " + paramString);
-    }
-    Iterator localIterator = paramArrayList.iterator();
-    boolean bool1 = false;
-    bdwr localbdwr;
-    if (localIterator.hasNext())
+    PhoneUnityBindInfoActivity.c(this.a);
+    int i;
+    if (paramBoolean)
     {
-      localbdwr = (bdwr)localIterator.next();
-      if ((localbdwr.jdField_a_of_type_Int == 2) && (localbdwr.jdField_a_of_type_JavaLangObject != null) && ((localbdwr.jdField_a_of_type_JavaLangObject instanceof ArrayList)))
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
       {
-        paramArrayList = ((ArrayList)localbdwr.jdField_a_of_type_JavaLangObject).iterator();
-        do
-        {
-          bool2 = bool1;
-          if (!paramArrayList.hasNext()) {
-            break;
-          }
-        } while (!paramString.equals(((SubAccountInfo)((bdwr)paramArrayList.next()).jdField_a_of_type_JavaLangObject).subuin));
-        String str = bhlg.c(this.a.app, paramString, true);
-        paramArrayList = str;
-        if (TextUtils.isEmpty(str)) {
-          paramArrayList = paramString;
-        }
-        boolean bool2 = bool1;
-        if (!paramArrayList.equals(localbdwr.jdField_a_of_type_JavaLangString))
-        {
-          localbdwr.jdField_a_of_type_JavaLangString = paramArrayList;
-          bool2 = true;
-        }
-        bool1 = bool2;
+        this.a.i();
+        this.a.a(false);
       }
     }
     for (;;)
     {
-      break;
-      if ((localbdwr.jdField_a_of_type_Int == 6) && (localbdwr.jdField_a_of_type_JavaLangObject != null) && ((localbdwr.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)))
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      if (i == 107)
       {
-        paramArrayList = (SimpleAccount)localbdwr.jdField_a_of_type_JavaLangObject;
-        if (paramString.equals(paramArrayList.getUin()))
+        paramBundle = this.a.a.getString("country_code");
+        byte[] arrayOfByte = this.a.a(3);
+        if (arrayOfByte != null)
         {
-          paramArrayList = bdwt.a(this.a.app, paramArrayList);
-          if (!paramArrayList.equals(localbdwr.jdField_a_of_type_JavaLangString))
-          {
-            localbdwr.jdField_a_of_type_JavaLangString = paramArrayList;
-            bool1 = true;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo needUpdate = " + bool1);
-            }
-            if (bool1) {
-              paramammv.notifyDataSetInvalidated();
-            }
-            return;
+          PhoneUnityBindInfoActivity.a(this.a).b(paramBundle, arrayOfByte, 0, true, false);
+          PhoneUnityBindInfoActivity.b(this.a, 2131718142, 1000L, true);
+        }
+        for (;;)
+        {
+          bcef.b(this.a.app, "dc00898", "", "", "0X800B31D", "0X800B31D", 0, 0, "2", "", "", "");
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.e("PhoneUnityBindInfoActivity", 2, "sendBindMobileEncrypt contact vaskey is null.");
           }
         }
+      }
+      if (i == 106)
+      {
+        this.a.a();
+        bcef.b(this.a.app, "dc00898", "", "", "0X800B31D", "0X800B31D", 0, 0, "1", "", "", "");
+      }
+      else if (i == 227)
+      {
+        this.a.j();
+        this.a.a(false);
+      }
+      else if (i == 226)
+      {
+        this.a.k();
+        this.a.a(false);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneUnityBindInfoActivity", 2, "bind error " + i);
+        }
+        PhoneUnityBindInfoActivity.b(this.a, a(i));
+        this.a.a(false);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneUnityBindInfoActivity", 2, "onBindMobile failed");
+        }
+        PhoneUnityBindInfoActivity.c(this.a, 2131717686);
+        this.a.a(false);
       }
     }
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    int k = 0;
-    int i = 0;
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
+    PhoneUnityBindInfoActivity.d(this.a);
+    if (paramBoolean) {
+      this.a.i();
     }
-    Iterator localIterator;
-    label54:
-    boolean bool;
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramBoolean = false;
-      bool = paramBoolean;
-      if (!localIterator.hasNext()) {
-        break label95;
-      }
-      if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
-        break label248;
-      }
-      paramBoolean = true;
-    }
-    label95:
-    label248:
     for (;;)
     {
-      break label54;
-      bool = false;
-      int j = k;
-      if (this.a.jdField_b_of_type_JavaUtilArrayList != null)
-      {
-        j = k;
-        if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
-        {
-          localIterator = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
-          for (;;)
-          {
-            j = i;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            if (TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
-              i = 1;
-            }
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
-      }
-      if (bool) {
-        this.a.jdField_b_of_type_Ammv.notifyDataSetInvalidated();
-      }
-      if (j == 0) {
-        break;
-      }
-      this.a.jdField_a_of_type_Ammv.notifyDataSetInvalidated();
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
       return;
+      PhoneUnityBindInfoActivity.d(this.a, 2131717686);
+      this.a.a(false);
     }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
-    }
-    a(paramString, this.a.d, this.a.jdField_b_of_type_Ammv);
-    a(paramString, this.a.c, this.a.jdField_a_of_type_Ammv);
   }
 }
 

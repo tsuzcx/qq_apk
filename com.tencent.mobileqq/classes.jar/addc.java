@@ -1,41 +1,91 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x120.SubMsgType0x120.MsgBody;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class addc
-  implements adci
+  extends WtloginObserver
 {
-  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
+  public addc(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  
+  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x120,");
+    if (QLog.isColorLevel())
+    {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
+      if (paramArrayOfByte2 == null) {}
     }
     try
     {
-      SubMsgType0x120.MsgBody localMsgBody = new SubMsgType0x120.MsgBody();
-      if (paramadan.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        VipUtils.a(paramadan.a(), localMsgBody);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x120, handle0x210_0x120push");
-        }
+      paramString = new String(paramArrayOfByte2, "utf-8");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
+      this.a.c();
+      if (DevlockQuickLoginActivity.a(this.a)) {
+        return;
       }
-      return;
     }
-    catch (Exception paramadan)
+    catch (Exception paramString)
     {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x120], errInfo->" + paramadan.getMessage());
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getApplicationContext(), 2, 2131691901, 0).b(DevlockQuickLoginActivity.a(this.a));
+        DevlockQuickLoginActivity.a(this.a);
+        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
+        return;
+      }
+      if (paramInt == 21)
+      {
+        paramString = this.a.getString(2131691898);
+        paramArrayOfByte1 = this.a.getString(2131718670);
+        this.a.a(null, paramString, paramArrayOfByte1, new addd(this));
+        return;
+      }
+      paramString = DevlockQuickLoginActivity.a(this.a, 2131691899);
+      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
     }
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onException(String paramString, int paramInt)
   {
-    a(paramadan, paramMsgType0x210);
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
+    }
+    this.a.c();
+    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131691900), 0).b(DevlockQuickLoginActivity.d(this.a));
+  }
+  
+  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (DevlockQuickLoginActivity.b(this.a))
+    {
+      this.a.c();
+      return;
+    }
+    if (paramInt == 0)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.c();
+    if (paramInt == 21)
+    {
+      paramString = this.a.getString(2131691898);
+      paramArrayOfByte1 = this.a.getString(2131718670);
+      this.a.a(null, paramString, paramArrayOfByte1, new adde(this));
+      return;
+    }
+    paramString = this.a.getString(2131691899);
+    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

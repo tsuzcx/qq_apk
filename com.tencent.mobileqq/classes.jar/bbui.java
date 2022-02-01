@@ -1,20 +1,20 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
 
 public class bbui
-  extends Editable.Factory
 {
-  public bbui(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public Handler a;
+  public bbuj a;
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public bbui(Handler paramHandler, bbuj parambbuj)
   {
-    if ((paramCharSequence instanceof begz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new begz(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Bbuj = parambbuj;
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
   }
 }
 

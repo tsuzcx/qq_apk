@@ -1,77 +1,233 @@
-import java.nio.ByteBuffer;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Locale;
 
-class bfqi
+public class bfqi
+  implements Handler.Callback
 {
-  public final int a;
-  public final long a;
-  public final byte[] a;
-  public final int b;
-  public final long b;
-  public final byte[] b;
-  public final long c;
-  public final long d;
-  public final long e;
+  private long jdField_a_of_type_Long;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final bfqj jdField_a_of_type_Bfqj;
+  private final LinkedList<bfqk> jdField_a_of_type_JavaUtilLinkedList;
+  private final LinkedList<bfqk> b;
   
-  public bfqi(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
+  public bfqi(bfqj parambfqj)
   {
-    this.jdField_a_of_type_Int = 304;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_Int = 20;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
+    this.jdField_a_of_type_Bfqj = parambfqj;
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.b = new LinkedList();
+    this.jdField_a_of_type_AndroidOsHandler = new bjng(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public void a(ByteBuffer paramByteBuffer)
+  private void a(bfqk parambfqk)
   {
-    paramByteBuffer.putShort((short)(this.jdField_a_of_type_Int & 0xFFFF));
-    byte[] arrayOfByte;
-    if (this.jdField_a_of_type_ArrayOfByte.length == this.jdField_a_of_type_Int) {
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (!parambfqk.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("FetchInfoListManager", 2, StringUtil.makeLogMsg(new Object[] { "addToNeedFetchInfoListInner() ", parambfqk.toString(), "非法请求" }));
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if ((!this.jdField_a_of_type_JavaUtilLinkedList.contains(parambfqk)) && (!this.b.contains(parambfqk))) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("FetchInfoListManager", 4, StringUtil.makeLogMsg(new Object[] { "addToNeedFetchInfoListInner()", parambfqk.toString(), "已经在队列中了" }));
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FetchInfoListManager", 4, StringUtil.makeLogMsg(new Object[] { "addToNeedFetchInfoListInner()", parambfqk.toString() }));
+      }
+      this.jdField_a_of_type_JavaUtilLinkedList.addFirst(parambfqk);
+    } while (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1));
+    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    if ((l < 0L) || (l > 2000L))
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300L);
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FetchInfoListManager", 4, "doFetchInfo fetch list is empty!");
+      }
     }
     for (;;)
     {
-      paramByteBuffer.put(arrayOfByte, 0, this.jdField_a_of_type_Int);
-      paramByteBuffer.putShort((short)(this.jdField_b_of_type_Int & 0xFFFF));
-      if (this.jdField_b_of_type_ArrayOfByte.length == this.jdField_b_of_type_Int) {
-        arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-      }
-      for (;;)
+      return;
+      bfqk localbfqk;
+      do
       {
-        paramByteBuffer.put(arrayOfByte, 0, this.jdField_b_of_type_Int);
-        paramByteBuffer.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.e & 0xFFFFFFFF));
-        return;
-        arrayOfByte = new byte[this.jdField_a_of_type_Int];
-        if (this.jdField_a_of_type_ArrayOfByte.length > this.jdField_a_of_type_Int) {}
-        for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_ArrayOfByte.length)
-        {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-          while (i < this.jdField_a_of_type_Int)
-          {
-            arrayOfByte[i] = 0;
-            i += 1;
-          }
+        localbfqk = (bfqk)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      } while ((localbfqk == null) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()));
+      if (localbfqk == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FetchInfoListManager", 4, "doFetchInfo req is null !");
         }
-        arrayOfByte = new byte[this.jdField_b_of_type_Int];
-        if (this.jdField_b_of_type_ArrayOfByte.length > this.jdField_b_of_type_Int) {}
-        for (i = this.jdField_b_of_type_Int;; i = this.jdField_b_of_type_ArrayOfByte.length)
+      }
+      else
+      {
+        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        if (QLog.isColorLevel()) {
+          QLog.d("FetchInfoListManager", 2, String.format(Locale.getDefault(), "doFetchInfo type:%d  key: %s time:%d", new Object[] { Integer.valueOf(localbfqk.jdField_a_of_type_Int), localbfqk.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) }));
+        }
+        if (localbfqk.jdField_a_of_type_Int == 1)
         {
-          System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-          while (i < this.jdField_b_of_type_Int)
+          ArrayList localArrayList = new ArrayList();
+          b(localbfqk);
+          localArrayList.add(localbfqk);
+          int i = Math.min(this.jdField_a_of_type_JavaUtilLinkedList.size(), 20) - 1;
+          while (i >= 0)
           {
-            arrayOfByte[i] = 0;
-            i += 1;
+            localbfqk = (bfqk)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
+            if ((localbfqk != null) && (localbfqk.jdField_a_of_type_Int == 1))
+            {
+              this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
+              b(localbfqk);
+              localArrayList.add(localbfqk);
+            }
+            i -= 1;
           }
+          this.jdField_a_of_type_Bfqj.a(1, localArrayList);
+        }
+        while (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+          return;
+          b(localbfqk);
+          this.jdField_a_of_type_Bfqj.a(localbfqk);
         }
       }
     }
+  }
+  
+  private void b(bfqk parambfqk)
+  {
+    if ((parambfqk != null) && (!this.b.contains(parambfqk)))
+    {
+      parambfqk.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.b.add(parambfqk);
+      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 30000L);
+      }
+    }
+  }
+  
+  private void c()
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder(200);
+      localStringBuilder.append("dealTimeOut  size:").append(this.b.size()).append(" {");
+    }
+    for (;;)
+    {
+      long l4 = SystemClock.elapsedRealtime();
+      int i = this.b.size() - 1;
+      long l1 = 30000L;
+      if (i >= 0)
+      {
+        bfqk localbfqk = (bfqk)this.b.get(i);
+        long l2;
+        if (localbfqk == null)
+        {
+          this.b.remove(localbfqk);
+          l2 = l1;
+        }
+        for (;;)
+        {
+          i -= 1;
+          l1 = l2;
+          break;
+          long l3 = l4 - localbfqk.jdField_a_of_type_Long;
+          if ((l3 < 0L) || (l3 >= 30000L))
+          {
+            this.b.remove(localbfqk);
+            l2 = l1;
+            if (localStringBuilder != null)
+            {
+              localStringBuilder.append(", [").append(localbfqk.jdField_a_of_type_Int).append(",").append(localbfqk.jdField_a_of_type_JavaLangString).append("]");
+              l2 = l1;
+            }
+          }
+          else
+          {
+            l2 = l1;
+            if (l3 < l1) {
+              l2 = l3;
+            }
+          }
+        }
+      }
+      if (!this.b.isEmpty()) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, Math.max(1000L, l1));
+      }
+      if ((QLog.isDevelopLevel()) && (localStringBuilder != null))
+      {
+        localStringBuilder.append("}");
+        localStringBuilder.append(" isEmpty: ").append(this.b.isEmpty());
+        QLog.d("FetchInfoListManager", 4, localStringBuilder.toString());
+      }
+      return;
+      localStringBuilder = null;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.b.clear();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FetchInfoListManager", 4, "clear");
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, Object paramObject, Bundle paramBundle)
+  {
+    paramString2 = new bfqk(paramInt, paramString1, paramString2, paramObject, paramBundle);
+    paramString2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramString2);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString2);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FetchInfoListManager", 4, String.format(Locale.getDefault(), "addToNeedFetchInfoList [%d, %s]", new Object[] { Integer.valueOf(paramInt), paramString1 }));
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 3) {
+      if ((paramMessage.obj instanceof bfqk)) {
+        a((bfqk)paramMessage.obj);
+      }
+    }
+    do
+    {
+      return true;
+      if (paramMessage.what == 1)
+      {
+        b();
+        return true;
+      }
+    } while (paramMessage.what != 2);
+    c();
+    return true;
   }
 }
 

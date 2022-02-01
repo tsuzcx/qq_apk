@@ -1,26 +1,11 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
 class awul
-  implements INetInfoHandler
+  implements wxe
 {
-  awul(awuj paramawuj) {}
+  awul(awuh paramawuh, awtz paramawtz) {}
   
-  public void onNetMobile2None()
+  public void a_(wwz paramwwz)
   {
-    awuj.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    awuj.a(this.a);
+    this.jdField_a_of_type_Awtz.a(this.jdField_a_of_type_Awuh);
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -12,8 +12,8 @@ final class PerfTracer$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long));
-    bdmc.a(BaseApplication.getContext()).a(null, "QzoneTracePref", true, 0L, 0L, localHashMap, null, true);
+    localHashMap.put(this.val$tag, String.valueOf(this.val$time));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "QzoneTracePref", true, 0L, 0L, localHashMap, null, true);
   }
 }
 

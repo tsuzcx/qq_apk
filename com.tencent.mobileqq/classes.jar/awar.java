@@ -1,71 +1,80 @@
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
 
 public class awar
 {
-  public static int a(Context paramContext)
+  public float a;
+  public int a;
+  public ViewGroup.LayoutParams a;
+  public awac a;
+  public MultiCardCustomLayout a;
+  public MultiCardRootLayout a;
+  public float b;
+  public int b;
+  public int c;
+  
+  public awar(MultiCardFragment paramMultiCardFragment, MultiCardRootLayout paramMultiCardRootLayout, MultiCardCustomLayout paramMultiCardCustomLayout, awac paramawac, awae paramawae)
   {
-    switch (b(paramContext))
-    {
-    case 0: 
-    default: 
-      return -1;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = paramMultiCardRootLayout;
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = paramMultiCardCustomLayout;
+    this.jdField_a_of_type_Awac = paramawac;
+    if (this.jdField_a_of_type_Awac != null) {
+      this.jdField_a_of_type_Awac.a(paramawae);
     }
-    return 0;
   }
   
-  public static int b(Context paramContext)
+  public void a()
   {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {
-      return 0;
-    }
-    paramContext = paramContext.getActiveNetworkInfo();
-    if ((paramContext == null) || (!paramContext.isConnected())) {
-      return 0;
-    }
-    switch (paramContext.getType())
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
     {
-    default: 
-      return -1;
-    case 1: 
-      return 1;
-    case 9: 
-      return 5;
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(false);
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleX();
+      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleY();
     }
-    switch (paramContext.getSubtype())
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
     {
-    case 16: 
-    default: 
-      return -1;
-    case 1: 
-    case 2: 
-    case 4: 
-    case 7: 
-    case 11: 
-      return 2;
-    case 3: 
-    case 5: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 14: 
-    case 15: 
-    case 17: 
-      return 3;
+      this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLayoutParams();
+      Object localObject = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLocationOnScreen((int[])localObject);
+      this.jdField_b_of_type_Int = localObject[0];
+      this.c = localObject[1];
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.findViewById(2131371504);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Int = ((View)localObject).getVisibility();
+        ((View)localObject).setVisibility(8);
+      }
     }
-    return 4;
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+    }
+    if (this.jdField_a_of_type_Awac != null) {
+      this.jdField_a_of_type_Awac.b(0);
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null))
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleX(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleY(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.addView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout, 0);
+    }
+    if (this.jdField_a_of_type_Awac != null) {
+      this.jdField_a_of_type_Awac.b(1);
+    }
   }
 }
 

@@ -1,6 +1,71 @@
-public abstract interface agag
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.ViewAnimation;
+import com.tencent.qphone.base.util.QLog;
+
+class agag
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  agag(afzw paramafzw, agaj paramagaj, MessageForPoke paramMessageForPoke) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    int i = 1;
+    super.onAnimationEnd(paramAnimator);
+    afzw.f = false;
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+    if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (this.jdField_a_of_type_Agaj.b == afzw.b()) && (!(this.jdField_a_of_type_Afzw.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryActivity)) && (!afzw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Agaj.c.setVisibility(0);
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isPlayed) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.setPlayed(this.jdField_a_of_type_Afzw.b);
+    }
+    if (!agkg.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId))
+    {
+      if (ambc.a(this.jdField_a_of_type_Afzw.b).d == 1) {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        amat.a(this.jdField_a_of_type_Afzw.b, "vas_poke", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
+        }
+      }
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    afzw.f = true;
+    if (agkg.a()) {
+      HapticManager.a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId), 2);
+    }
+    agkc.a().a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend());
+    if (this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
+      this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) {
+      this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(false);
+    }
+    for (;;)
+    {
+      agkg.a(this.jdField_a_of_type_Afzw.b, this.jdField_a_of_type_Afzw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
+      return;
+      this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(true);
+    }
+  }
 }
 
 

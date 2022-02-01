@@ -1,5 +1,6 @@
 package com.tencent.weseevideo.model;
 
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.template.MediaTemplateModel;
 import com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel;
 import com.tencent.weseevideo.model.template.movie.MovieMediaTemplateModel;
@@ -20,6 +21,9 @@ public class WSTemplateManager
       localMediaTemplateModel.setAutomaticMediaTemplateModel(localAutomaticMediaTemplateModel);
       localAutomaticMediaTemplateModel.setTemplateDir(paramString1);
       localAutomaticMediaTemplateModel.setTemplateFileName(paramString2);
+      if (!"1".equals(paramMediaModel.getMediaEffectModel().getParam("FRAME_PARAMS_KEY_IS_ON"))) {
+        localAutomaticMediaTemplateModel.setImagePagAssetDir("pag");
+      }
       localAutomaticMediaTemplateModel.setSwitchToTemplateByUser(paramBoolean);
       paramMediaModel.setMediaTemplateModel(localMediaTemplateModel);
       return;

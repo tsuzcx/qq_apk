@@ -1,79 +1,97 @@
-import android.os.Build;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.net.Uri;
+import java.nio.ByteBuffer;
+import java.util.Map;
 
 public class wwr
-  extends wpa
 {
-  static final String a;
-  static boolean b;
-  public boolean a;
-  public String b;
-  public int c;
-  public String c;
+  private MediaExtractor a;
   
-  static
+  public wwr()
   {
-    jdField_a_of_type_JavaLangString = wnu.a("StoryTabSvc.startpage_feeds_list_725");
+    a();
   }
   
-  public String a()
+  public final int a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return this.a.getTrackCount();
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
-    try
-    {
-      localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
-      return new wws(localRspMsgTabNodeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    return this.a.readSampleData(paramByteBuffer, paramInt);
   }
   
-  protected byte[] a()
+  public long a()
   {
-    if (jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_c_of_type_JavaLangString = null;
-    }
-    qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqMsgTabNodeList.version.set(4);
-    Long localLong = zos.a();
-    if (localLong != null) {
-      localReqMsgTabNodeList.adcode.set(localLong.longValue());
-    }
-    localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
-    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
-    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
-    return localReqMsgTabNodeList.toByteArray();
+    return this.a.getSampleTime();
   }
   
-  public String toString()
+  @TargetApi(16)
+  public MediaFormat a(int paramInt)
   {
-    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
+    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
+    if (localMediaFormat.getString("mime").startsWith("video/")) {
+      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
+    }
+    return localMediaFormat;
+  }
+  
+  @TargetApi(16)
+  protected void a()
+  {
+    if (this.a != null) {
+      this.a.release();
+    }
+    this.a = new MediaExtractor();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.selectTrack(paramInt);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.a.seekTo(paramLong, paramInt);
+  }
+  
+  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  {
+    this.a.setDataSource(paramContext, paramUri, paramMap);
+  }
+  
+  public boolean a()
+  {
+    return this.a.advance();
+  }
+  
+  public int b()
+  {
+    return this.a.getSampleTrackIndex();
+  }
+  
+  public long b()
+  {
+    return this.a.getCachedDuration();
+  }
+  
+  public void b()
+  {
+    this.a.release();
+  }
+  
+  public boolean b()
+  {
+    return this.a.hasCacheReachedEndOfStream();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

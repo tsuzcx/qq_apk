@@ -1,59 +1,53 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x96.submsgtype0x96.MsgBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adfd
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor receive 0x96 push message ");
-    }
-    submsgtype0x96.MsgBody localMsgBody = new submsgtype0x96.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramMsgType0x210 = new Intent("tencent.qqcomic.push.msg");
-      if (localMsgBody.uint32_push_type.has()) {
-        switch (localMsgBody.uint32_push_type.get())
-        {
-        case 0: 
-          paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
-          for (;;)
-          {
-            paramMsgType0x210.putExtra("msg", localMsgBody.string_push_msg.get());
-            paramQQAppInterface.getApp().sendBroadcast(paramMsgType0x210);
-            return;
-            paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
-          }
-        }
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (QLog.isColorLevel())
-      {
-        QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor mergeFrom 0x96 exception ");
-        return;
-        paramMsgType0x210.setAction("tencent.qqcomic.show.egg");
-        continue;
-        paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
-      }
-    }
-  }
+  public adfd(EditInfoActivity paramEditInfoActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    EditInfoActivity localEditInfoActivity = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      localEditInfoActivity.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label137;
+      }
+      this.a.b();
+      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838108);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702765));
+      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+      label137:
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847816);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702755));
+      this.a.a();
+    }
   }
 }
 

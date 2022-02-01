@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.os.Handler;
 import android.os.Looper;
-import aunt;
+import atad;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 public final class FileManagerUtil$20
   implements Runnable
 {
-  public FileManagerUtil$20(FileManagerEntity paramFileManagerEntity, aunt paramaunt, QQAppInterface paramQQAppInterface) {}
+  public FileManagerUtil$20(FileManagerEntity paramFileManagerEntity, atad paramatad, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
       QLog.w("CHECK_FILE_EXISTED", 1, "checkFileExisted: entity is null");
-      if (this.jdField_a_of_type_Aunt != null) {
-        this.jdField_a_of_type_Aunt.a(false);
+      if (this.jdField_a_of_type_Atad != null) {
+        this.jdField_a_of_type_Atad.a(false);
       }
     }
     do
@@ -33,7 +33,7 @@ public final class FileManagerUtil$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.20
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
 class bfco
-  implements ValueAnimator.AnimatorUpdateListener
+  extends nmc
 {
-  bfco(bfcn parambfcn) {}
+  bfco(bfci parambfci, bfch parambfch) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), i, 0, 0);
+    paramBundle = new oidb_0x962.RspBody();
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Bfch != null) {
+        this.jdField_a_of_type_Bfch.a(paramInt, paramBundle);
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(".troop.send_gift", 2, "send_oidb_0x962. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+        }
+      }
+    }
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.biz.subscribe.utils;
 
-import aanf;
-import aanj;
 import android.text.TextUtils;
 import com.tencent.util.Pair;
+import zka;
+import zke;
 
 public class SubscribeDraftManager$5
   implements Runnable
 {
-  public SubscribeDraftManager$5(aanf paramaanf, String paramString1, String paramString2, aanj paramaanj) {}
+  public SubscribeDraftManager$5(zka paramzka, String paramString1, String paramString2, zke paramzke) {}
   
   public void run()
   {
-    Object localObject = aanf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = zka.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localObject != null)
     {
-      localObject = aanf.a(this.this$0, (String)((Pair)localObject).first);
+      localObject = zka.a(this.this$0, (String)((Pair)localObject).first);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label74;
       }
-      if (this.jdField_a_of_type_Aanj != null) {
-        this.jdField_a_of_type_Aanj.a(6, true, this.b, new Object[] { localObject });
+      if (this.jdField_a_of_type_Zke != null) {
+        this.jdField_a_of_type_Zke.a(6, true, this.b, new Object[] { localObject });
       }
     }
     label74:
-    while (this.jdField_a_of_type_Aanj == null) {
+    while (this.jdField_a_of_type_Zke == null) {
       return;
     }
-    this.jdField_a_of_type_Aanj.a(6, false, this.b, null);
+    this.jdField_a_of_type_Zke.a(6, false, this.b, null);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.qqdaily;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import apby;
+import anwb;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
@@ -11,7 +11,7 @@ import com.tencent.ark.open.ArkView;
 public class WrappedArkView
   extends ArkView
 {
-  private apby jdField_a_of_type_Apby;
+  private anwb jdField_a_of_type_Anwb;
   ArkViewImplement.LoadCallback jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback;
   private String jdField_a_of_type_JavaLangString;
   private String b;
@@ -41,8 +41,8 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoadFailed");
     }
-    if (this.jdField_a_of_type_Apby != null) {
-      this.jdField_a_of_type_Apby.a(paramString, paramInt, paramBoolean, this.mViewImpl.getViewModel());
+    if (this.jdField_a_of_type_Anwb != null) {
+      this.jdField_a_of_type_Anwb.a(paramString, paramInt, paramBoolean, this.mViewImpl.getViewModel());
     }
   }
   
@@ -52,8 +52,8 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoadSuccess");
     }
-    if (this.jdField_a_of_type_Apby != null) {
-      this.jdField_a_of_type_Apby.b();
+    if (this.jdField_a_of_type_Anwb != null) {
+      this.jdField_a_of_type_Anwb.b();
     }
   }
   
@@ -63,14 +63,14 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoading");
     }
-    if (this.jdField_a_of_type_Apby != null) {
-      this.jdField_a_of_type_Apby.a();
+    if (this.jdField_a_of_type_Anwb != null) {
+      this.jdField_a_of_type_Anwb.a();
     }
   }
   
-  public void setOnLoadListener(apby paramapby)
+  public void setOnLoadListener(anwb paramanwb)
   {
-    this.jdField_a_of_type_Apby = paramapby;
+    this.jdField_a_of_type_Anwb = paramanwb;
   }
 }
 

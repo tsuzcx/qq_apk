@@ -1,208 +1,30 @@
-import android.content.BroadcastReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.webview.controller.BaseTranslucentController.2;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class bnxi
+  implements DialogInterface.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bnxj(this);
-  protected Handler a;
-  protected QQBrowserActivity a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  public bnxi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public bnxi(QQBrowserActivity paramQQBrowserActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        QZLog.i("BaseTranslucentControll", "registerBroadcast");
-        IntentFilter localIntentFilter = new IntentFilter();
-        String[] arrayOfString = a();
-        if (arrayOfString != null)
-        {
-          int j = arrayOfString.length;
-          int i = 0;
-          while (i < j)
-          {
-            localIntentFilter.addAction(arrayOfString[i]);
-            i += 1;
-          }
-        }
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          continue;
-        }
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
-          return;
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
-      }
-    }
-  }
-  
-  private void g()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        QZLog.i("BaseTranslucentControll", "removeBroadcast");
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception localException2)
-    {
-      QZLog.e("BaseTranslucentControll", "removeBroadcast error", localException2);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(false);
-    f();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
-  }
-  
-  public void a(Intent paramIntent) {}
-  
-  protected void a(View paramView)
-  {
-    if (!this.b)
-    {
-      this.b = true;
-      QZLog.i("BaseTranslucentControll", "setAlpha(1)");
-      if (paramView != null) {
-        paramView.setAlpha(1.0F);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a() != null)
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a().getWebView();
-          if (paramView != null)
-          {
-            Object localObject = paramView.getTag(2131375961);
-            if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
-              break label119;
-            }
-            i = 1;
-            paramView.setTag(2131375958, Boolean.TRUE);
-            if (i != 0)
-            {
-              QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
-              bnns.a(paramView);
-              return;
-            }
-            QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
-            return;
-          }
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
-      }
-      return;
-      label119:
-      int i = 0;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131365060);
-    if (localView == null) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
-      {
-        localView.setAlpha(0.0F);
-        this.b = false;
-        QZLog.i("BaseTranslucentControll", "setAlpha(0)");
-        return;
-      }
-      QZLog.i("BaseTranslucentControll", "isLoadSuccess = true，setAlpha(1)");
-      a(localView);
-      return;
-    }
-    QZLog.i("BaseTranslucentControll", "isLoadSuccess = false，setAlpha(1)");
-    a(localView);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return null;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    g();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void e()
-  {
-    a(true);
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.d);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.b);
+    localIntent.putExtra("file_source", this.a.c);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
 }
 

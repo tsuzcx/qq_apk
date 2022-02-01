@@ -1,147 +1,68 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 
 public class aqwu
-  implements aqxz
+  extends BitmapDrawable
 {
-  public aqwu(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private float jdField_a_of_type_Float = 1920.0F;
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int b;
+  private int c;
   
-  public int a()
+  public aqwu(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 1;
-    int i;
-    if (this.a.i == 0) {
-      i = 2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
-      }
-      return i;
-      i = j;
-      if (this.a.i != 3) {
-        if (this.a.i != 1)
-        {
-          i = j;
-          if (this.a.i != 2) {}
-        }
-        else
-        {
-          i = this.a.h;
-        }
-      }
-    }
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    super.setGravity(17);
   }
   
-  public int a(int paramInt)
+  public void draw(Canvas paramCanvas)
   {
-    int j = 0;
-    int i;
-    if (this.a.i == 0) {
-      i = anve.b.length - 17;
-    }
-    for (;;)
+    if (this.c >>> 24 != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      if (this.a.i == 3)
-      {
-        i = anve.c.length;
-      }
-      else if (this.a.i != 1)
-      {
-        i = j;
-        if (this.a.i != 2) {}
-      }
-      else
-      {
-        i = j;
-        if (paramInt < this.a.h)
-        {
-          i = j;
-          if (paramInt >= 0)
-          {
-            i = j;
-            if (this.a.a[paramInt] != null) {
-              i = ((List)this.a.a[paramInt]).size();
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+    super.draw(paramCanvas);
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public int getIntrinsicHeight()
   {
-    int i;
-    String str;
-    if (this.a.i == 0)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < anve.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      paramInt2 = ConditionSearchFriendActivity.b(this.a, i);
-      str = anve.b[paramInt2];
-      paramInt2 = i;
+    if (this.b > 0) {
+      return this.b;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
-      }
-      return str;
-      if (this.a.i == 3)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < anve.c.length) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        str = anve.c[i];
-        paramInt2 = i;
-      }
-      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
-        {
-          str = ConditionSearchFriendActivity.a();
-          paramInt2 = i;
-        }
-        else
-        {
-          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
-          paramInt2 = i;
-        }
-      }
-      else
-      {
-        str = "";
-      }
+    return super.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
     }
+    return super.getIntrinsicWidth();
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    }
+    super.setAlpha(paramInt);
+  }
+  
+  public void setTargetDensity(int paramInt)
+  {
+    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    super.setTargetDensity(paramInt);
   }
 }
 

@@ -1,25 +1,28 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.List;
+
 public class xhv
-  extends xhu
+  extends way
 {
+  public FeedVideoInfo a;
   public String a;
-  public int b = 0;
-  public int c = 16296448;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 1;
-  public String e;
-  public String f = win.a;
-  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
-  public String h;
-  public String i = "";
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n = "";
-  public String o;
-  public String p;
+  public List<StoryVideoItem> a;
+  public String b;
+  
+  public xhv(ErrorMessage paramErrorMessage, String paramString)
+  {
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
+  }
 }
 
 

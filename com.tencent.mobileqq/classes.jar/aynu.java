@@ -1,19 +1,9 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 
-class aynu
-  implements TextWatcher
+public class aynu
 {
-  aynu(aynp paramaynp) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    axxb.a(this.a.e, 90);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static final String a = VFSAssistantUtils.getSDKPrivatePath(new StringBuilder().append(AppConstants.SDCARD_PATH).append(".profilecard/").toString()) + "diyCardFonts/";
 }
 
 

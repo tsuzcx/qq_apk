@@ -1,23 +1,63 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class azxj
-  implements Comparator<Rect>
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  private int jdField_a_of_type_Int;
+  private azxl jdField_a_of_type_Azxl;
+  private azxm jdField_a_of_type_Azxm = new azxk(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public azxj(TagCloudView paramTagCloudView, Point paramPoint)
+  public azxj(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHelper", 0, String.format("OneWayFriendHelper app=%s curType=%s friendUin=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt), paramString }));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Azxm);
   }
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  private void a(String paramString, boolean paramBoolean)
   {
-    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
-    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
-    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+    }
+    if (this.jdField_a_of_type_Azxl != null) {
+      this.jdField_a_of_type_Azxl.a(paramString, paramBoolean);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+    return (paramInt == 0) && (!paramQQAppInterface.b(paramString));
+  }
+  
+  public void a()
+  {
+    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString))
+    {
+      azxi localazxi = (azxi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(179);
+      if (localazxi != null) {
+        localazxi.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
+      }
+      return;
+    }
+    a(this.jdField_a_of_type_JavaLangString, false);
+  }
+  
+  public void a(azxl paramazxl)
+  {
+    this.jdField_a_of_type_Azxl = paramazxl;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Azxl = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Azxm);
   }
 }
 

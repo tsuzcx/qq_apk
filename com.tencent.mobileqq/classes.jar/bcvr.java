@@ -1,89 +1,78 @@
-import QMF_PROTOCAL.QmfDownstream;
-import QzoneCombine.ClientOnlineNotfiyRsp;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.WNSStream;
-import java.io.IOException;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.WeakReference;
 
-public class bcvr
-  extends MSFServlet
+class bcvr
+  implements ShareActionSheet.OnItemClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  private ShareActionSheet.OnItemClickListener jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener;
+  private WeakReference<QQBrowserActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<WebView> b;
+  
+  bcvr(QQBrowserActivity paramQQBrowserActivity, WebView paramWebView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, ShareActionSheet.OnItemClickListener paramOnItemClickListener)
   {
-    if (paramFromServiceMsg == null) {
-      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
-    }
-    for (;;)
-    {
-      return;
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label192;
-      }
-      Object localObject = new WNSStream();
-      paramFromServiceMsg = bhuf.b(paramFromServiceMsg.getWupBuffer());
-      try
-      {
-        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
-        if (paramFromServiceMsg != null)
-        {
-          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bmah.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
-          if (paramFromServiceMsg != null)
-          {
-            localObject = paramFromServiceMsg.AttachInfo;
-            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
-            localObject = bhml.a((byte[])localObject);
-            paramIntent = paramIntent.getStringExtra("key_uin");
-            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
-            }
-            if (Build.VERSION.SDK_INT >= 9)
-            {
-              paramFromServiceMsg.apply();
-              return;
-            }
-          }
-        }
-      }
-      catch (IOException paramIntent)
-      {
-        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
-        return;
-      }
-    }
-    paramFromServiceMsg.commit();
-    return;
-    label192:
-    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQBrowserActivity);
+    this.b = new WeakReference(paramWebView);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener = paramOnItemClickListener;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
-    paramIntent = paramIntent.getStringExtra("key_uin");
-    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
-    byte[] arrayOfByte = bhml.a(paramIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
+    QLog.w("TeamWorkShareActionSheetBuilder", 1, "inner on item click");
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener.onItemClick(paramActionSheetItem, paramShareActionSheet);
     }
-    bmse localbmse = new bmse(l, arrayOfByte);
-    arrayOfByte = localbmse.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {}
+    do
     {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbmse.uniKey());
-      paramIntent = new byte[4];
+      return;
+      QLog.w("TeamWorkShareActionSheetBuilder", 1, "info exist");
+    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+    QLog.w("TeamWorkShareActionSheetBuilder", 1, "from online preview");
+    int i = paramActionSheetItem.action;
+    if ((i == 1) || (i == 2) || (i == 9) || (i == 10))
+    {
+      paramActionSheetItem = (WebView)this.b.get();
+      if (paramActionSheetItem == null) {
+        break label216;
+      }
     }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbmse.uniKey());
-    paramPacket.putSendData(paramIntent);
+    label216:
+    for (paramActionSheetItem = paramActionSheetItem.getUrl();; paramActionSheetItem = "")
+    {
+      bcvs.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, paramActionSheetItem, "0X8009F34");
+      paramActionSheetItem = (QQBrowserActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramActionSheetItem == null) {
+        break;
+      }
+      if (i == 1)
+      {
+        bcvs.a(paramActionSheetItem.getIntent(), "0X800A16F");
+        return;
+      }
+      if ((i == 2) || (i == 9) || (i == 10) || (i == 3) || (i == 12))
+      {
+        bcvs.a(paramActionSheetItem.getIntent(), "0X800A16E");
+        return;
+      }
+      if (i == 6)
+      {
+        bcvs.a(paramActionSheetItem.getIntent(), "0X800A170");
+        return;
+      }
+      if (i != 5) {
+        break;
+      }
+      bcvs.a(paramActionSheetItem.getIntent(), "0X800A171");
+      return;
+    }
   }
 }
 

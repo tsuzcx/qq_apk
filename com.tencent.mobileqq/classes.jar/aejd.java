@@ -1,28 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class aejd
-  implements bliz
+  implements apge
 {
-  public aejd(Conversation paramConversation) {}
+  public aejd(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    switch (paramInt)
+    apfz.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = bgdk.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Blir.e();
+      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
-      }
-      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).h();
     }
+    this.a.jdField_a_of_type_JavaLangCharSequence = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.i = 0;
   }
 }
 

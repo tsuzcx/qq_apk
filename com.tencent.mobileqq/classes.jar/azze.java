@@ -1,116 +1,38 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class azze
+class azze
+  extends Handler
 {
-  public static String a(Context paramContext)
+  public azze(Looper paramLooper)
   {
-    return bhhz.c(paramContext) + "wzryTemplate/";
+    super(paramLooper);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, VasQuickUpdateManager.CallBacker paramCallBacker)
+  public void handleMessage(Message paramMessage)
   {
-    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    paramQQAppInterface.addCallBacker(paramCallBacker);
-    paramQQAppInterface.downloadItem(15L, "cardWZ.zip", "ProfileCard");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (paramInt == 0) {
-      if ("cardWZ.zip".equals(paramString1))
-      {
-        paramQQAppInterface = a(paramQQAppInterface.getApp()) + "xydata.json";
-        azzb.a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete, parseConfig " + paramQQAppInterface);
-        }
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    azzi.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      azzi.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
       return;
     }
-    QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete failed, errorCode = " + paramInt);
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return (paramLong == azxy.i) || (paramLong == azxy.j);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    if ("cardWZ.zip".equals(paramString))
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
     {
-      String str = a(paramContext);
-      paramContext = new File(str, "xydata.json");
-      if (azzb.jdField_a_of_type_Azzb == null) {
-        azzb.a(paramContext.getAbsolutePath());
-      }
-      if (azzb.jdField_a_of_type_Azzb != null)
-      {
-        paramContext = new File(str, "logo.png");
-        paramString = new File(str, "bgImage.jpg");
-        Object localObject = new File(str, "shimmer_mask.png");
-        File localFile1 = new File(str, "logo_bg.png");
-        File localFile2 = new File(str, "font_chs.tff");
-        File localFile3 = new File(str, "font_num.tff");
-        File localFile4 = new File(str, "addIcon.png");
-        int i;
-        if ((paramContext.exists()) && (paramString.exists()) && (((File)localObject).exists()) && (localFile1.exists()) && (localFile2.exists()) && (localFile3.exists()) && (localFile4.exists()))
-        {
-          bool1 = true;
-          localObject = azzb.jdField_a_of_type_Azzb;
-          if (((azzb)localObject).jdField_a_of_type_AndroidUtilSparseArray == null) {
-            break label338;
-          }
-          i = 0;
-          label207:
-          bool2 = bool1;
-          if (i >= ((azzb)localObject).jdField_a_of_type_AndroidUtilSparseArray.size()) {
-            break label341;
-          }
-          paramContext = (azzc)((azzb)localObject).jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-          bool2 = bool1;
-          if (paramContext.a != null)
-          {
-            bool2 = bool1;
-            if (!TextUtils.isEmpty(paramContext.a.a))
-            {
-              paramString = paramContext.a.a;
-              paramContext = paramString;
-              if (paramString.contains("/")) {
-                paramContext = paramString.substring(paramString.lastIndexOf("/"));
-              }
-              paramContext = new File(str, paramContext);
-              if ((!bool1) || (!paramContext.exists())) {
-                break label333;
-              }
-            }
-          }
-        }
-        label333:
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          bool2 = bool1;
-          i += 1;
-          bool1 = bool2;
-          break label207;
-          bool1 = false;
-          break;
-        }
-      }
+    default: 
+      return;
     }
-    label338:
-    boolean bool2 = false;
-    label341:
-    return bool2;
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    azzi.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 

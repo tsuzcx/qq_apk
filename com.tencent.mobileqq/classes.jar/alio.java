@@ -1,23 +1,27 @@
-import Wallet.ReportHBGameRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-final class alio
-  implements BusinessObserver
+public class alio
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public LinkedHashMap<String, List<PhoneContact>> a;
+  public List<PhoneContact> a;
+  public int[] a;
+  public String[] a;
+  public List<PhoneContact> b = new ArrayList();
+  
+  public alio()
   {
-    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ArrayOfInt = new int[0];
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alio
  * JD-Core Version:    0.7.0.1
  */

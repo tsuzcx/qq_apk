@@ -1,67 +1,21 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.biz.richframework.part.block.BlockContainer;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
-public class aacl
-  extends aacn
+class aacl
+  implements Animation.AnimationListener
 {
-  public aacl(Bundle paramBundle)
+  aacl(aach paramaach, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramBundle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  private void a()
-  {
-    setDatas(new ArrayList());
-    setShareData("share_key_subscribe_user", new aabn(new ExtraTypeInfo()));
-    notifyLoadingComplete(true);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public aaco a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return null;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
-  
-  public void a(HorizontalRvInnerView paramHorizontalRvInnerView)
-  {
-    paramHorizontalRvInnerView.setOrientation(1);
-  }
-  
-  protected void handleBlockChange(aabp paramaabp, int paramInt)
-  {
-    super.handleBlockChange(paramaabp, paramInt);
-  }
-  
-  public boolean isEnableRefresh()
-  {
-    return false;
-  }
-  
-  public void loadData(aabu paramaabu)
-  {
-    if ((paramaabu.d()) || (paramaabu.c())) {
-      a();
-    }
-  }
-  
-  public void onInitBlock(Bundle paramBundle)
-  {
-    getBlockContainer().setEnableRefresh(true);
-    addFloatView(new Button(getContext()));
-    getBlockContainer().a();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

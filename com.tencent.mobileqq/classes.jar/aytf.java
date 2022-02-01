@@ -1,24 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
 
-class aytf
-  implements Callback
+public class aytf
+  implements aytk
 {
-  aytf(ayte paramayte) {}
+  public aytf(ComponentCenter paramComponentCenter) {}
   
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void a(aysw paramaysw)
   {
-    QLog.e("TurtleReportCenter", 4, paramIOException, new Object[0]);
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    if ((paramResponse != null) && (paramResponse.code() == 200)) {
-      QLog.i("TurtleReportCenter", 4, "data report success.");
-    }
+    paramaysw.e();
   }
 }
 

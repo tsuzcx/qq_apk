@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.avgameshare;
 
 import android.graphics.Bitmap;
-import aonm;
-import bdll;
-import bjbs;
+import angy;
+import bcef;
+import bhht;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -11,22 +11,22 @@ import java.util.Map;
 public class AVGameShareResultPic$2
   implements Runnable
 {
-  public AVGameShareResultPic$2(aonm paramaonm, Map paramMap, int paramInt) {}
+  public AVGameShareResultPic$2(angy paramangy, Map paramMap, int paramInt) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Bjbs != null) && (this.this$0.jdField_a_of_type_Bjbs.isShowing())) {
-      this.this$0.jdField_a_of_type_Bjbs.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bhht != null) && (this.this$0.jdField_a_of_type_Bhht.isShowing())) {
+      this.this$0.jdField_a_of_type_Bhht.dismiss();
     }
     this.this$0.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     Object localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str = aonm.a(this.this$0);
+    WXShareHelper localWXShareHelper = WXShareHelper.getInstance();
+    String str = angy.a(this.this$0);
     int i;
     if (this.jdField_a_of_type_Int == 9)
     {
       i = 0;
-      localWXShareHelper.a(str, (Bitmap)localObject, i, false, this.this$0.jdField_a_of_type_JavaLangString);
+      localWXShareHelper.shareImageToWX(str, (Bitmap)localObject, i, false, this.this$0.jdField_a_of_type_JavaLangString);
       QLog.d("AVGameShareResultPic", 1, "shareToWeChat success");
       if (this.jdField_a_of_type_Int != 9) {
         break label150;
@@ -35,7 +35,7 @@ public class AVGameShareResultPic$2
     label150:
     for (localObject = "3";; localObject = "4")
     {
-      bdll.b(null, "dc00898", "", "", "0X800B064", "0X800B064", 0, 0, (String)localObject, "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800B064", "0X800B064", 0, 0, (String)localObject, "", "", "");
       return;
       i = 1;
       break;

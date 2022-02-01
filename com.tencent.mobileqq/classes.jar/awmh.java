@@ -1,37 +1,28 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class awmh
-  implements EIPCResultCallback
+  implements View.OnClickListener
 {
-  awmh(awmg paramawmg) {}
+  awmh(awmg paramawmg, int paramInt, bhab parambhab) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(awmg.a(this.a))) {
-      localJSONObject = new JSONObject();
-    }
     try
     {
-      if (paramEIPCResult.data.getBoolean("result")) {}
-      for (;;)
-      {
-        localJSONObject.put("result", i);
-        this.a.callJs(awmg.a(this.a), new String[] { localJSONObject.toString() });
-        return;
-        i = 1;
-      }
+      long l = Long.parseLong(((awmf)this.jdField_a_of_type_Awmg.a.a.get(this.jdField_a_of_type_Int)).a);
+      this.jdField_a_of_type_Bhab.a(this.jdField_a_of_type_Awmg.a.b, l, null);
+      this.jdField_a_of_type_Awmg.a.a("invite_page", "kick_out");
+      label62:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (JSONException paramEIPCResult)
+    catch (Exception localException)
     {
-      paramEIPCResult.printStackTrace();
+      break label62;
     }
   }
 }

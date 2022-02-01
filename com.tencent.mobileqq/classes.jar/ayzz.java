@@ -1,39 +1,49 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingObserver;", "Lcom/tencent/mobileqq/app/BusinessObserver;", "()V", "handleGetCardDisplaySettingNotify", "", "isSuccess", "", "data", "", "handleSetCardDisplaySettingNotify", "onGetCardDisplaySetting", "uin", "", "card", "Lcom/tencent/mobileqq/data/Card;", "onSetCardDisplaySetting", "items", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "Lkotlin/collections/ArrayList;", "onUpdate", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class ayzz
-  implements ayzl
+  implements BusinessObserver
 {
-  public ayzz(ScanOcrActivity paramScanOcrActivity) {}
+  public static final azaa a = new azaa(null);
   
-  public void a()
+  private final void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    if ((paramObject instanceof Object[])) {
+      a(paramBoolean, (String)((Object[])paramObject)[0], (Card)((Object[])paramObject)[1]);
     }
   }
   
-  public void b(boolean paramBoolean) {}
+  private final void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof Object[])) {
+      a(paramBoolean, (String)((Object[])paramObject)[0], (Card)((Object[])paramObject)[1], (ArrayList)((Object[])paramObject)[2]);
+    }
+  }
   
-  public void c(boolean paramBoolean) {}
+  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Card paramCard) {}
+  
+  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Card paramCard, @Nullable ArrayList<ReqSetSettingItem> paramArrayList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, @NotNull Object paramObject)
+  {
+    Intrinsics.checkParameterIsNotNull(paramObject, "data");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    }
+    b(paramBoolean, paramObject);
+  }
 }
 
 

@@ -1,30 +1,126 @@
+import UserGrowth.stLinkStragegyArgs;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.util.DateUtils;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-final class uyb
-  implements bjig
+public class uyb
 {
-  uyb(String paramString) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  private static int a()
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
+    if (!a(b(), c(), 0)) {
+      return 0;
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
+  }
+  
+  public static stLinkStragegyArgs a()
+  {
+    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
+    localstLinkStragegyArgs.hasInstalledWeish = yqu.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    localstLinkStragegyArgs.todayClickCount = b();
+    localstLinkStragegyArgs.todayEnterCount = a();
+    localstLinkStragegyArgs.todayLastLinkId = c();
+    return localstLinkStragegyArgs;
+  }
+  
+  public static void a()
+  {
+    a(b(), c());
+  }
+  
+  public static void a(int paramInt)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
+  }
+  
+  private static boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
+    boolean bool = DateUtils.isSameDay(System.currentTimeMillis(), l);
+    if (!bool) {
+      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
+    }
+    return bool;
+  }
+  
+  private static int b()
+  {
+    if (!a(d(), e(), 0)) {
+      return 0;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
+  }
+  
+  private static String b()
+  {
+    return "key_open_recommend_page_count_" + h();
+  }
+  
+  public static void b()
+  {
+    a(d(), e());
+  }
+  
+  private static int c()
+  {
+    if (!a(f(), g(), -1)) {
+      return -1;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
+  }
+  
+  private static String c()
+  {
+    return "key_open_recommend_page_time_" + h();
+  }
+  
+  private static String d()
+  {
+    return "key_click_recommend_card_count_" + h();
+  }
+  
+  private static String e()
+  {
+    return "key_click_recommend_card_time_" + h();
+  }
+  
+  private static String f()
+  {
+    return "key_last_link_type_" + h();
+  }
+  
+  private static String g()
+  {
+    return "key_last_link_time_" + h();
+  }
+  
+  private static String h()
+  {
+    String str2 = "";
+    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String str1 = str2;
+    if (localAppRuntime != null)
     {
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
+      str1 = str2;
+      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
+        str1 = bhzn.a(localAppRuntime.getAccount());
+      }
     }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      zyx.a(2, 2131718157);
-    }
+    return str1 + "_" + str3;
   }
 }
 

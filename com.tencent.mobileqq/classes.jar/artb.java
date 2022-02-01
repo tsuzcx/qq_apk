@@ -1,111 +1,52 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.copyprompt.CopyPromptHelper.4;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class artb
-  implements agvc, View.OnClickListener
+  implements Animation.AnimationListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new artc(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CopyPromptHelper.4(this);
+  public artb(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public artb(BaseChatPie paramBaseChatPie)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
   }
   
-  private View a(String paramString)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559592, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, false);
-    ((TextView)localView.findViewById(2131373081)).setText(new begp(paramString, 3, 16));
-    paramString = new RelativeLayout.LayoutParams(-2, -2);
-    paramString.addRule(9);
-    paramString.addRule(2, 2131368726);
-    paramString.leftMargin = agej.a(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
-    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364389)).addView(localView, paramString);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800B22B", "0X800B22B", 0, 0, "", "", "", "");
-    return localView;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  private boolean a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364480).getVisibility() == 0;
-  }
-  
-  private void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(320);
-    if ((localObject instanceof artf))
+    if (Face2FaceFriendBubbleView.a(this.a) == 1)
     {
-      localObject = ((artf)localObject).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("CopyPromptHelper", 2, "handlePrompt content : " + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
+      return;
+      if (Face2FaceFriendBubbleView.a(this.a) == 2)
       {
-        a();
-        this.jdField_a_of_type_AndroidViewView = a((String)localObject);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-        nkr[] arrayOfnkr = new nkr[1];
-        arrayOfnkr[0] = new nkr(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, new artd(this, arrayOfnkr));
-        if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new arte(this, (String)localObject));
-        }
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840127);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840128);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840129);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
       }
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      return;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13 };
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!a()) {
-      b();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,170 +1,157 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
 public class boch
 {
-  private static volatile long jdField_a_of_type_Long;
-  private static bhpc jdField_a_of_type_Bhpc;
-  private static bocl jdField_a_of_type_Bocl = new bocl(Looper.getMainLooper());
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "TroopFileDetailBrowserActivity", "FMActivity", "FileBrowserActivity", "ChatHistoryFileActivity", "FileAssistantActivity" };
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  long[] jdField_a_of_type_ArrayOfLong = new long[3];
+  int jdField_b_of_type_Int = 0;
+  public long b;
+  long[] jdField_b_of_type_ArrayOfLong = new long[3];
+  int c;
+  public long c;
+  int d;
+  public long d;
+  long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public long p;
+  long q = 9223372036854775807L;
+  long r = 0L;
+  long s = 9223372036854775807L;
+  long t = 0L;
   
-  public static void a()
+  public boch(SVHwEncoder.HwEncode paramHwEncode)
   {
-    Message localMessage = jdField_a_of_type_Bocl.obtainMessage();
-    localMessage.what = 3001;
-    jdField_a_of_type_Bocl.sendMessage(localMessage);
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  public static void a(Activity paramActivity, int paramInt)
+  public long a()
   {
-    if (a(paramInt)) {
-      b(paramActivity, paramInt);
-    }
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long;
   }
   
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  public void a()
   {
-    StringBuffer localStringBuffer = new StringBuffer("https://jump.weiyun.com?from=3092");
-    if (paramString != null) {
-      localStringBuffer.append("&aid=").append(paramString);
-    }
-    paramString = new Intent();
-    paramString.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
-    paramString.putExtra("url", localStringBuffer.toString());
-    if (paramBoolean)
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Int < 3))
     {
-      paramActivity.startActivityForResult(paramString, 2000);
+      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      i1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i1 + 1);
+      arrayOfLong[i1] = System.currentTimeMillis();
+    }
+    while (this.jdField_b_of_type_Int >= 3) {
       return;
     }
-    paramActivity.startActivity(paramString);
+    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+    int i1 = this.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = (i1 + 1);
+    arrayOfLong[i1] = System.currentTimeMillis();
   }
   
-  private static boolean a()
+  public long b()
   {
-    if (jdField_a_of_type_Long == 0L) {}
-    long l;
+    if (this.jdField_c_of_type_Int < 3) {
+      return 0L;
+    }
+    return this.jdField_a_of_type_ArrayOfLong[0];
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_c_of_type_Int < 3))
+    {
+      this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = (System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
+      this.jdField_c_of_type_Int += 1;
+      if (this.jdField_c_of_type_Int == 3)
+      {
+        this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:cnt20=" + this.jdField_a_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_a_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_a_of_type_ArrayOfLong[2]);
+        this.jdField_a_of_type_ArrayOfLong[0] = ((this.jdField_a_of_type_ArrayOfLong[0] + this.jdField_a_of_type_ArrayOfLong[1] + this.jdField_a_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
+        this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "videoEncodeTime:timeout=" + this.jdField_a_of_type_ArrayOfLong[0]);
+      }
+    }
     do
     {
-      return true;
-      l = SystemClock.uptimeMillis();
-    } while (jdField_a_of_type_Long + 4000L < l);
-    return false;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (c(paramInt)) || (b(paramInt));
-  }
-  
-  private static boolean a(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (paramActivity != null)
-    {
-      paramActivity = paramActivity.getClass().getName();
-      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      do
       {
-        String str = arrayOfString[i];
-        if ((!TextUtils.isEmpty(paramActivity)) && (paramActivity.contains(str))) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
+        return;
+      } while (this.jdField_d_of_type_Int >= 3);
+      this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int] = (System.currentTimeMillis() - this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int]);
+      this.jdField_d_of_type_Int += 1;
+    } while (this.jdField_d_of_type_Int != 3);
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:cnt20=" + this.jdField_b_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_b_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_b_of_type_ArrayOfLong[2]);
+    this.jdField_b_of_type_ArrayOfLong[0] = ((this.jdField_b_of_type_ArrayOfLong[0] + this.jdField_b_of_type_ArrayOfLong[1] + this.jdField_b_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("hw_video_time_used_msg", "audioEncodeTime:timeout=" + this.jdField_b_of_type_ArrayOfLong[0]);
+  }
+  
+  public long c()
+  {
+    if (this.jdField_d_of_type_Int < 3) {
+      return 0L;
     }
+    return this.jdField_b_of_type_ArrayOfLong[0];
   }
   
-  public static void b(Activity paramActivity, int paramInt)
+  public void c(boolean paramBoolean)
   {
-    QLog.d("OpenWeiyunVipHelper", 2, "showLimitDialog");
-    jdField_a_of_type_Bocl.removeMessages(3000);
-    Message localMessage = jdField_a_of_type_Bocl.obtainMessage();
-    localMessage.what = 3000;
-    localMessage.obj = paramActivity;
-    localMessage.arg1 = paramInt;
-    jdField_a_of_type_Bocl.sendMessageDelayed(localMessage, 1000L);
-  }
-  
-  public static void b(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    paramString = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString });
-    Intent localIntent = new Intent();
-    localIntent.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
+    long l1 = a();
     if (paramBoolean)
     {
-      paramActivity.startActivityForResult(localIntent, 2000);
-      return;
-    }
-    paramActivity.startActivity(localIntent);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 1053) || (paramInt == 22081);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == 1127) || (paramInt == 22000);
-  }
-  
-  private static void d(Activity paramActivity, int paramInt)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()) || (paramActivity != BaseActivity.sTopActivity))
-    {
-      paramActivity = BaseActivity.sTopActivity;
-      if ((paramActivity != null) && (!paramActivity.isFinishing()) && (a(paramActivity))) {
-        break label44;
+      if (l1 > this.r) {
+        this.r = l1;
+      }
+      if (l1 < this.q) {
+        this.q = l1;
       }
     }
-    label44:
-    while (((jdField_a_of_type_Bhpc != null) && (jdField_a_of_type_Bhpc.isShowing())) || (!a()))
+    do
     {
       return;
-      break;
-    }
-    String str1;
-    if (b(paramInt))
-    {
-      str1 = BaseApplicationImpl.getContext().getString(2131692370);
-      if (!b(paramInt)) {
-        break label161;
+      if (l1 > this.t) {
+        this.t = l1;
       }
-    }
-    label161:
-    for (String str2 = BaseApplicationImpl.getContext().getString(2131692363);; str2 = BaseApplicationImpl.getContext().getString(2131692366))
-    {
-      jdField_a_of_type_Bhpc = bhlq.a(paramActivity, 230, str1, str2, 2131692368, 2131692369, new boci(paramInt, paramActivity), new bocj());
-      jdField_a_of_type_Bhpc.setOnDismissListener(new bock());
-      jdField_a_of_type_Bhpc.show();
-      return;
-      str1 = BaseApplicationImpl.getContext().getString(2131692371);
-      break;
-    }
+    } while (l1 >= this.s);
+    this.s = l1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mThumbGen=").append(this.l).append(" ");
+    localStringBuilder.append("mThumbGenFunc=").append(this.m).append(" ");
+    localStringBuilder.append("mMuxerCreate=").append(this.n).append(" ");
+    localStringBuilder.append("mMuxerAdd=").append(this.o).append(" ");
+    localStringBuilder.append("mMuxerStart=").append(this.p).append(" ");
+    localStringBuilder.append("mWriteVideoMax=").append(this.r).append(" ");
+    localStringBuilder.append("mWriteVideoMIn=").append(this.q).append(" ");
+    localStringBuilder.append("mWriteAudioMax=").append(this.t).append(" ");
+    localStringBuilder.append("mWriteAudioMIn=").append(this.s).append(" ");
+    localStringBuilder.append("vConfig=").append(this.jdField_b_of_type_Long).append(" ");
+    localStringBuilder.append("vInit=").append(this.jdField_c_of_type_Long).append(" ");
+    localStringBuilder.append("vStart=").append(this.jdField_d_of_type_Long).append(" ");
+    localStringBuilder.append("vStop=").append(this.e).append(" ");
+    localStringBuilder.append("vRelease=").append(this.f).append(" ");
+    localStringBuilder.append("aConfig=").append(this.g).append(" ");
+    localStringBuilder.append("aInit=").append(this.h).append(" ");
+    localStringBuilder.append("aStart=").append(this.i).append(" ");
+    localStringBuilder.append("aStop=").append(this.j).append(" ");
+    localStringBuilder.append("aRelease=").append(this.k).append(" ");
+    return localStringBuilder.toString();
   }
 }
 

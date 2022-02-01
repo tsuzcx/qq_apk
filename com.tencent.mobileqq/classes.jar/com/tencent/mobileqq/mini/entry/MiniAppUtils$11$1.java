@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.entry;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import apeb;
-import arfd;
+import anxn;
+import apyt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -40,18 +40,18 @@ class MiniAppUtils$11$1
         {
           return;
         } while (!(localAppRuntime instanceof QQAppInterface));
-        paramBoolean = arfd.e();
+        paramBoolean = apyt.e();
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppUtils", 2, "updatePullDownEntryListData, check needClearPublicAccountRedDot: " + paramBoolean);
         }
         if (paramBoolean)
         {
-          paramJSONObject = (apeb)((QQAppInterface)localAppRuntime).a(148);
+          paramJSONObject = (anxn)((QQAppInterface)localAppRuntime).getBusinessHandler(148);
           if (paramJSONObject != null) {
             paramJSONObject.a(this.this$0.val$appConfig.config.appId);
           }
         }
-        if (!arfd.c()) {
+        if (!apyt.c()) {
           break;
         }
         paramJSONObject = (DesktopDataManager)localAppRuntime.getManager(336);

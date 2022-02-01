@@ -1,29 +1,23 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.image.URLImageView;
+import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import java.io.File;
 
 public class pih
-  extends pij
+  implements OnCompositionLoadedListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public pih(ReadInJoyLottieDrawable.4 param4) {}
   
-  pih(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    super(paramReadInJoyPicWaterFallFragment, paramView);
-    this.b = ((URLImageView)paramView.findViewById(2131365145));
-    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362662));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
-    agej.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362004));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378936));
-    paramView.setOnClickListener(new pii(this, paramReadInJoyPicWaterFallFragment));
+    if (paramLottieComposition != null)
+    {
+      pid.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
+      pid.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 

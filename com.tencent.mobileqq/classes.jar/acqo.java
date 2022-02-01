@@ -1,20 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$Companion;", "", "()V", "TAG", "", "startMotiveBrowsingDialog", "", "activity", "Landroid/app/Activity;", "data", "Lcom/tencent/gdtad/api/motivevideo/GdtMotiveVideoPageData;", "intent", "Landroid/content/Intent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acqo
+public class acqo
+  extends CardObserver
 {
-  public final void a(@NotNull Activity paramActivity, @NotNull GdtMotiveVideoPageData paramGdtMotiveVideoPageData, @NotNull Intent paramIntent)
+  public acqo(AddRequestActivity paramAddRequestActivity) {}
+  
+  public void onImpeach(boolean paramBoolean, String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Intrinsics.checkParameterIsNotNull(paramGdtMotiveVideoPageData, "data");
-    Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
-    paramActivity.runOnUiThread((Runnable)new GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1(paramActivity, paramGdtMotiveVideoPageData, paramIntent));
+    if (!this.a.a.equals(paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.a(2130839630, this.a.getString(2131690643));
+      return;
+    }
+    this.a.a(2130839615, this.a.getString(2131690641));
   }
 }
 

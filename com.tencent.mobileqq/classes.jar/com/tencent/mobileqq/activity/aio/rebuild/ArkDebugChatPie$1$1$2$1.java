@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihb;
-import aihc;
-import anzj;
+import ahdr;
+import ahds;
+import amtj;
 import com.tencent.ark.ArkDebugger;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.widget.QQToast;
@@ -15,7 +15,7 @@ class ArkDebugChatPie$1$1$2$1
   public void run()
   {
     ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.c());
-    QQToast.a(this.a.a.a.this$0.a, anzj.a(2131699583), 0).a();
+    QQToast.a(this.a.a.a.this$0.mContext, amtj.a(2131699818), 0).a();
   }
 }
 

@@ -1,40 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class ayie
-  implements aydt
+  extends bjmc
 {
-  ayie(ayhj paramayhj) {}
+  ayie(ayhx paramayhx) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        this.a.a(paramArrayOfByte);
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

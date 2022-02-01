@@ -28,10 +28,10 @@ public class HongBaoJumpLayout
   
   public void a()
   {
-    this.a = getResources().getDimensionPixelOffset(2131298151);
-    this.b = getResources().getDimensionPixelOffset(2131298150);
-    this.c = getResources().getDimensionPixelOffset(2131298148);
-    this.d = getResources().getDimensionPixelOffset(2131298149);
+    this.a = getResources().getDimensionPixelOffset(2131298216);
+    this.b = getResources().getDimensionPixelOffset(2131298215);
+    this.c = getResources().getDimensionPixelOffset(2131298213);
+    this.d = getResources().getDimensionPixelOffset(2131298214);
   }
   
   public void draw(Canvas paramCanvas)

@@ -1,15 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.util.Map;
 
-class njd
-  implements DialogInterface.OnDismissListener
+public class njd
 {
-  njd(njc paramnjc) {}
+  public static final String[] a = { "qqvgame.RoomManager-RoomInfoGet", "qqvgame.GameManager-SelectGame", "qqvgame.GameList-GetGameList", "qqvgame.RoomManager-RoomLeave", "qqvgame.RoomManager-RoomUserStatusChange", "qqvgame.UserHeartBeat-UserHeartBeat", "qqvgame.Share-GetShareLink", "qqvgame.GameList-GetQuestionClass", "qqvgame.ActivityCenter-GetActivitys", "qqvgame.ActivityCenter-SyncShareGame", "qqvgame.StrangerMatch-AddMatchRoom", "qqvgame.StrangerMatch-DelMatchRoom" };
+  public static final String[] b = { "qqvgame.GameManager-StartGame", "qqvgame.QuestionManager-GetQuestion", "qqvgame.GameRanking-GetRankingList", "qqvgame.QuestionManager-AnswerQuestion" };
+  public static final String[] c = { "OnlinePush.ReqPush" };
+  public static final String[] d = { "OidbSvc.0x5eb_20002" };
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(Map<String, int[]> paramMap)
   {
-    this.a.jdField_a_of_type_Njf.c();
-    this.a.jdField_a_of_type_Long = 0L;
+    if (paramMap == null) {}
+    for (;;)
+    {
+      return;
+      String[] arrayOfString = b;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramMap.put(arrayOfString[i], new int[] { 3 });
+        i += 1;
+      }
+      arrayOfString = a;
+      j = arrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        paramMap.put(arrayOfString[i], new int[] { 1 });
+        i += 1;
+      }
+      arrayOfString = c;
+      j = arrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        paramMap.put(arrayOfString[i], new int[] { 4 });
+        i += 1;
+      }
+      arrayOfString = d;
+      j = arrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        paramMap.put(arrayOfString[i], new int[] { 2 });
+        i += 1;
+      }
+    }
   }
 }
 

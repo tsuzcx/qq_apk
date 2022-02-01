@@ -1,25 +1,50 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import MWIFI.SCGet3rdCloudCheck;
+import android.content.Context;
+import android.os.Message;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class bhnc
-  implements View.OnClickListener
+final class bhnc
+  extends bhnn
 {
-  bhnc(bhmr parambhmr) {}
+  bhnc(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, anel paramanel) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((bhmr.a(this.a) != null) && (bhmr.a(this.a).isShowing())) {
-      bhmr.a(this.a).dismiss();
+    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anel);
     }
-    bhmr.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
+    }
+    if (paramSCGet3rdCloudCheck != null)
+    {
+      if (paramSCGet3rdCloudCheck.delayHour > 24) {
+        bhnr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localMessage.obj = paramSCGet3rdCloudCheck;
+        localMqqHandler.sendMessage(localMessage);
+        bhnb.b(this.jdField_a_of_type_AndroidContentContext, 398677);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnc
  * JD-Core Version:    0.7.0.1
  */

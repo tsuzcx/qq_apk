@@ -1,6 +1,5 @@
 package com.tencent.avgame.ui;
 
-import agej;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -11,6 +10,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -80,7 +80,7 @@ public class CasualTips
         QLog.e("CasualTips", 2, "setNextTip mContext is null");
         return;
       }
-      int k = agej.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int k = AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       int m = localObject1.length;
       int i = 0;
       int j = 0;

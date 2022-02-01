@@ -1,59 +1,87 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class adpq
-  implements adpm
+class adpq
 {
-  adpn jdField_a_of_type_Adpn;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private static int jdField_a_of_type_Int;
+  private static adpq jdField_a_of_type_Adpq;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  FaceDrawable jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable;
+  String jdField_a_of_type_JavaLangString;
+  volatile boolean jdField_a_of_type_Boolean;
+  private adpq b;
   
-  private void a()
+  static adpq a()
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      try
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Adpq != null)
       {
-        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
-        {
-          IntentFilter localIntentFilter = new IntentFilter();
-          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
-          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
-          adpr localadpr = new adpr(this);
-          BaseApplicationImpl.getContext().registerReceiver(localadpr, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localadpr;
-        }
-        return;
+        adpq localadpq = jdField_a_of_type_Adpq;
+        jdField_a_of_type_Adpq = localadpq.b;
+        localadpq.b = null;
+        jdField_a_of_type_Int -= 1;
+        return localadpq;
       }
-      finally {}
+      return new adpq();
     }
   }
   
-  public void a(adpn paramadpn)
+  static adpq a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Adpn = paramadpn;
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "obtain FacePlayInfo:", paramString });
+    }
+    adpq localadpq = a();
+    localadpq.jdField_a_of_type_JavaLangString = paramString;
+    FaceDrawable localFaceDrawable = localadpq.a();
+    if (localFaceDrawable != null) {
+      localFaceDrawable.cancel();
+    }
+    localadpq.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable = FaceDrawable.getUserFaceDrawable(paramQQAppInterface, String.valueOf(paramString), (byte)4);
+    localadpq.jdField_a_of_type_Boolean = false;
+    return localadpq;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  FaceDrawable a()
   {
-    a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key", paramString1);
-    localBundle.putInt("type", paramInt);
-    localBundle.putString("appid", paramString2);
-    adne.a(2, localBundle, null);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  void a()
   {
-    a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key", paramString1);
-    localBundle.putInt("type", paramInt);
-    localBundle.putString("appid", paramString2);
-    localBundle.putString("api", paramString3);
-    adne.a(3, localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "recycle FacePlayInfo:", this.jdField_a_of_type_JavaLangString });
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ??? = a();
+    if (??? != null) {
+      ((FaceDrawable)???).cancel();
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Int < 3)
+      {
+        this.b = jdField_a_of_type_Adpq;
+        jdField_a_of_type_Adpq = this;
+      }
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  boolean a(String paramString)
+  {
+    return (!this.jdField_a_of_type_Boolean) && (paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -1,69 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class auzp
-  implements azrg
+final class auzp
+  implements DialogInterface.OnClickListener
 {
-  auzp(auzo paramauzo) {}
+  auzp(BaseChatPie paramBaseChatPie, int paramInt, String paramString) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
-  }
-  
-  public void a(azrh paramazrh)
-  {
-    if ((paramazrh != null) && (QLog.isColorLevel())) {
-      QLog.d(auzo.a(), 2, "requestNormalShare updateMsg info =" + paramazrh);
-    }
-  }
-  
-  public void b(azrh paramazrh)
-  {
-    String str = auzo.a(this.a).getString("uin");
-    HashMap localHashMap = new HashMap();
-    if (auzo.a(this.a))
+    boolean bool1 = false;
+    boolean bool2 = true;
+    if (paramInt == 1)
     {
-      localObject = "1";
-      localHashMap.put("param_time_out", localObject);
-      if (str != null) {
-        break label125;
+      if (auzn.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)) {
+        auzn.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 3, false, null);
       }
-    }
-    label125:
-    for (Object localObject = "";; localObject = str)
-    {
-      avcw.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", (String)localObject, localHashMap, ForwardUtils.a(paramazrh));
-      QLog.d(auzo.a(), 1, new Object[] { "requestNormalShare onSend result =", paramazrh, ", isTimeOut=", Boolean.valueOf(auzo.a(this.a)) });
-      if (!auzo.a(this.a)) {
-        break label132;
+      paramDialogInterface.dismiss();
+      if (this.jdField_a_of_type_Int == 1) {
+        bool1 = true;
       }
-      return;
-      localObject = "0";
-      break;
+      auzn.a(bool1, "clk_joinframe_join", this.jdField_a_of_type_JavaLangString);
     }
-    label132:
-    if (ForwardUtils.a(paramazrh))
+    while (paramInt != 0) {
+      return;
+    }
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (bool1 = bool2;; bool1 = false)
     {
-      paramazrh = (String[])paramazrh.jdField_a_of_type_JavaLangObject;
-      QLog.i(auzo.a(), 1, "requestNormalShare onSend urls=" + paramazrh[0] + " ," + paramazrh[1]);
-      auzo.a(this.a, paramazrh[0], paramazrh[1]);
+      auzn.a(bool1, "clk_joinframe_cancel", this.jdField_a_of_type_JavaLangString);
       return;
     }
-    int i = paramazrh.b;
-    boolean bool = ForwardUtils.a(auzo.a(this.a));
-    localObject = (String[])paramazrh.jdField_a_of_type_JavaLangObject;
-    QLog.e(auzo.a(), 1, new Object[] { "requestNormalShare onSend error result.result : ", Integer.valueOf(paramazrh.jdField_a_of_type_Int), ", errCode=" + i + ", hasSDPermission=" + bool });
-    if ((i == 9402) && (!bool) && (localObject != null) && (localObject.length == 2))
-    {
-      auzo.a(this.a, localObject[0], localObject[1]);
-      return;
-    }
-    auzo.a(this.a);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import aggs;
-import aipm;
+import aezn;
+import ahkz;
+import amsw;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anyw;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -65,7 +65,7 @@ public class KplRoleInfo
   {
     String str = paramQQAppInterface.getPreferences().getString("key_kpl_nick_table" + paramQQAppInterface.getCurrentAccountUin(), null);
     if (QLog.isColorLevel()) {
-      QLog.d("KplMessage", 2, "getKplVerifyMsg uin=" + paramQQAppInterface.c() + " kpl_verify_msg=" + str);
+      QLog.d("KplMessage", 2, "getKplVerifyMsg uin=" + paramQQAppInterface.getCurrentUin() + " kpl_verify_msg=" + str);
     }
     return str;
   }
@@ -108,20 +108,20 @@ public class KplRoleInfo
   public static boolean isKplPie(BaseChatPie paramBaseChatPie)
   {
     boolean bool;
-    if (aipm.a(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, false) != null) {
+    if (ahkz.a(paramBaseChatPie.mContext, paramBaseChatPie.sessionInfo.curType, false, false) != null) {
       bool = true;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("KplMessage", 2, "isKplPie=" + bool + " friendUin=" + paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        QLog.d("KplMessage", 2, "isKplPie=" + bool + " friendUin=" + paramBaseChatPie.sessionInfo.curFriendUin);
       }
       return bool;
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1022)
+      if (paramBaseChatPie.sessionInfo.curType == 1022)
       {
-        List localList = paramBaseChatPie.jdField_a_of_type_Aggs.a();
-        anyw localanyw = (anyw)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        if ((localList != null) && (localList.size() > 0) && (!localanyw.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
+        List localList = paramBaseChatPie.listAdapter.a();
+        amsw localamsw = (amsw)paramBaseChatPie.app.getManager(51);
+        if ((localList != null) && (localList.size() > 0) && (!localamsw.b(paramBaseChatPie.sessionInfo.curFriendUin)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
         {
           bool = true;
           continue;
@@ -134,7 +134,7 @@ public class KplRoleInfo
   public static boolean isKplSession(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
     boolean bool;
-    if (aipm.a(paramContext, paramInt, false, false) != null) {
+    if (ahkz.a(paramContext, paramInt, false, false) != null) {
       bool = true;
     }
     for (;;)
@@ -143,8 +143,8 @@ public class KplRoleInfo
         QLog.d("KplMessage", 2, "isKplSession=" + bool + " friendUin=" + paramString + " sessionType=" + paramInt);
       }
       return bool;
-      paramContext = paramQQAppInterface.a().a(paramString, paramInt);
-      paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+      paramContext = paramQQAppInterface.getMessageFacade().getAIOList(paramString, paramInt);
+      paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
       if ((paramContext != null) && (paramContext.size() > 0) && (!paramQQAppInterface.b(paramString)) && (!TextUtils.isEmpty(((ChatMessage)paramContext.get(paramContext.size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {
         bool = true;
       } else {
@@ -228,7 +228,7 @@ public class KplRoleInfo
     {
       paramQQAppInterface.getPreferences().edit().putString("key_kpl_nick_table" + paramQQAppInterface.getCurrentAccountUin(), paramString).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("KplMessage", 2, "saveKplVerifyMsg uin=" + paramQQAppInterface.c() + " kpl_verify_msg=" + paramString);
+        QLog.d("KplMessage", 2, "saveKplVerifyMsg uin=" + paramQQAppInterface.getCurrentUin() + " kpl_verify_msg=" + paramString);
       }
     }
   }

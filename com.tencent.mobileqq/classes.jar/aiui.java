@@ -1,29 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class aiui
-  implements aiuh
+class aiui
+  implements QQPermissionCallback
 {
-  public void a(MessageForStructing paramMessageForStructing, aggl paramaggl, View paramView, boolean paramBoolean)
+  aiui(aitt paramaitt) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i;
-    if (paramMessageForStructing.isSend()) {
-      if (paramBoolean) {
-        i = 2130850005;
-      }
-    }
-    for (;;)
-    {
-      agej.a(paramaggl.a, i);
-      return;
-      i = 2130850006;
-      continue;
-      if (paramBoolean) {
-        i = 2130849829;
-      } else {
-        i = 2130849830;
-      }
-    }
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
+    bfur.a(aitt.a(this.a), new aiuj(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
+    aitt.a(this.a, aitt.b(this.a));
   }
 }
 

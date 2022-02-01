@@ -3,12 +3,12 @@ package com.tencent.biz.qrcode.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zyi;
+import yxt;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScannerParams> CREATOR = new zyi();
+  public static final Parcelable.Creator<ScannerParams> CREATOR = new yxt();
   public int a;
   public String a;
   public boolean a;

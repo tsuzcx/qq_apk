@@ -1,75 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class ards
-  extends arac<ardr>
+class ards
+  extends WtloginObserver
 {
-  @NonNull
-  public ardr a(int paramInt)
-  {
-    return new ardr();
-  }
+  ards(arcu paramarcu, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  @Nullable
-  public ardr a(araj[] paramArrayOfaraj)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    boolean bool2 = true;
+    paramWUserSigInfo = new Bundle();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      ardr localardr = ardr.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaraj[0].a);
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label90;
       }
-      return localardr;
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label96;
+      }
     }
-    return new ardr();
-  }
-  
-  public void a(ardr paramardr)
-  {
-    bhsi.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramardr.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramardr);
+    label90:
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("allow_set", bool1);
+      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool1 = false;
+      break;
     }
-  }
-  
-  public Class<ardr> clazz()
-  {
-    return ardr.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 453;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ards
  * JD-Core Version:    0.7.0.1
  */

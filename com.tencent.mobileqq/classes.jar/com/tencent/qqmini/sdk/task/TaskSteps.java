@@ -7,8 +7,9 @@ import java.util.List;
 import kotlin.Metadata;
 import kotlin.collections.CollectionsKt;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/sdk/task/TaskSteps;", "", "containerTask", "Lcom/tencent/qqmini/sdk/task/BaseTask;", "subTasks", "", "(Lcom/tencent/qqmini/sdk/task/BaseTask;Ljava/util/List;)V", "currentStep", "getCurrentStep", "()Lcom/tencent/qqmini/sdk/task/BaseTask;", "currentStepIndex", "", "isExecuting", "", "()Z", "executeNextStep", "", "getStepExecutionStatics", "Lcom/tencent/qqmini/sdk/task/TaskExecutionStatics;", "onStepDone", "task", "start", "lib_minisdk_internalRelease"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/sdk/task/TaskSteps;", "", "containerTask", "Lcom/tencent/qqmini/sdk/task/BaseTask;", "subTasks", "", "(Lcom/tencent/qqmini/sdk/task/BaseTask;Ljava/util/List;)V", "currentStep", "getCurrentStep", "()Lcom/tencent/qqmini/sdk/task/BaseTask;", "currentStepIndex", "", "currentStepOrNull", "getCurrentStepOrNull", "isExecuting", "", "()Z", "executeNextStep", "", "getStepExecutionStatics", "Lcom/tencent/qqmini/sdk/task/TaskExecutionStatics;", "onStepDone", "task", "start", "lib_minisdk_internalRelease"}, k=1, mv={1, 1, 16})
 public final class TaskSteps
 {
   private final BaseTask containerTask;
@@ -52,6 +53,18 @@ public final class TaskSteps
   @NotNull
   public final BaseTask getCurrentStep()
   {
+    return (BaseTask)this.subTasks.get(this.currentStepIndex);
+  }
+  
+  @Nullable
+  public final BaseTask getCurrentStepOrNull()
+  {
+    int i = ((Collection)this.subTasks).size();
+    int j = this.currentStepIndex;
+    if (j < 0) {}
+    while (i <= j) {
+      return null;
+    }
     return (BaseTask)this.subTasks.get(this.currentStepIndex);
   }
   

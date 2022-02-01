@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alsu;
+import akql;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class EditLocalVideoActivity$12$1
   implements Runnable
 {
-  public EditLocalVideoActivity$12$1(alsu paramalsu) {}
+  public EditLocalVideoActivity$12$1(akql paramakql) {}
   
   public void run()
   {

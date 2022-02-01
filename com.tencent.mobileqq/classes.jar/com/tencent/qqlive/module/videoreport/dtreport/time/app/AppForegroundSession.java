@@ -3,9 +3,11 @@ package com.tencent.qqlive.module.videoreport.dtreport.time.app;
 import android.os.SystemClock;
 import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.IEventDynamicParams;
+import com.tencent.qqlive.module.videoreport.detection.DetectInterceptorsMonitor;
 import com.tencent.qqlive.module.videoreport.dtreport.time.base.HeartBeatProcessor;
 import com.tencent.qqlive.module.videoreport.dtreport.time.base.ITimeProcessor;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
+import com.tencent.qqlive.module.videoreport.report.AppEventReporter;
 import com.tencent.qqlive.module.videoreport.report.FinalDataTarget;
 import com.tencent.qqlive.module.videoreport.report.PageReporter;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
@@ -27,11 +29,14 @@ public class AppForegroundSession
   private long mForegroundDuration;
   private long mHeartBeatInterval = VideoReportInner.getInstance().getConfiguration().getAppTimeReportHeartBeatInterval() * 1000;
   private String mHeartBeatTaskKey;
+  private long mInterceptDuration = 0L;
+  private DetectInterceptorsMonitor mInterceptorMonitor;
   private int mProcessorState = -1;
   private long mTimePinInterval = VideoReportInner.getInstance().getConfiguration().getAppTimeReportTimePinInterval() * 1000;
   
-  public AppForegroundSession()
+  public AppForegroundSession(DetectInterceptorsMonitor paramDetectInterceptorsMonitor)
   {
+    this.mInterceptorMonitor = paramDetectInterceptorsMonitor;
     initHeartBeatProcessor();
     reset();
   }
@@ -73,6 +78,8 @@ public class AppForegroundSession
     localFinalData.put("dt_app_heartbeat_interval", Long.valueOf(getHeartBeatInterval() / 1000L));
     localFinalData.put("dt_app_file_interval", Long.valueOf(getTimePinInterval() / 1000L));
     localFinalData.put("dt_app_sessionid", getAppSessionId());
+    localFinalData.put("dt_activity_name", AppEventReporter.getInstance().getActivityName());
+    localFinalData.put("dt_active_info", AppEventReporter.getInstance().getActiveInfo());
     IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
     if (localIEventDynamicParams != null) {
       localIEventDynamicParams.setEventDynamicParams("appin", localFinalData.getEventParams());
@@ -82,17 +89,27 @@ public class AppForegroundSession
   
   private void reportAppOut(boolean paramBoolean)
   {
+    long l1 = SystemClock.uptimeMillis() - this.mAppStartTime;
+    long l2 = this.mInterceptorMonitor.getInterceptDuration();
+    long l3 = this.mInterceptDuration;
+    this.mInterceptorMonitor.onAppOut(false);
+    Object localObject = this.mInterceptorMonitor.getInterceptActivities();
+    this.mInterceptorMonitor.clearInterceptActivities();
     FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
     localFinalData.setEventKey("appout");
-    localFinalData.put("lvtm", Long.valueOf(SystemClock.uptimeMillis() - this.mAppStartTime));
+    localFinalData.put("lvtm", Long.valueOf(l1));
+    localFinalData.put("dt_white_lvtm", Long.valueOf(l3 + (l1 - l2)));
+    localFinalData.put("dt_activity_blacklist", localObject);
     localFinalData.put("dt_app_stoptime", Long.valueOf(System.currentTimeMillis()));
     localFinalData.put("dt_sys_elapsed_realtime", Long.valueOf(SystemClock.elapsedRealtime()));
     localFinalData.put("dt_app_sessionid", getAppSessionId());
     localFinalData.put("dt_app_foreground_duration", Long.valueOf(getForegroundDuration()));
     localFinalData.put("cur_pg", PageReporter.getInstance().getCurPageReportInfo());
-    IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
-    if (localIEventDynamicParams != null) {
-      localIEventDynamicParams.setEventDynamicParams("appout", localFinalData.getEventParams());
+    localFinalData.put("dt_activity_name", AppEventReporter.getInstance().getActivityName());
+    localFinalData.put("dt_active_info", AppEventReporter.getInstance().getActiveInfo());
+    localObject = VideoReportInner.getInstance().getEventDynamicParams();
+    if (localObject != null) {
+      ((IEventDynamicParams)localObject).setEventDynamicParams("appout", localFinalData.getEventParams());
     }
     if (paramBoolean)
     {
@@ -191,6 +208,8 @@ public class AppForegroundSession
       }
       this.mProcessorState = 0;
       this.mAppStartTime = SystemClock.uptimeMillis();
+      this.mInterceptorMonitor.onAppIn();
+      this.mInterceptDuration = this.mInterceptorMonitor.getInterceptDuration();
       this.mHeartBeatTaskKey = TimerTaskManager.getInstance().addUIThreadTimerTask(new AppForegroundSession.1(this), this.mHeartBeatInterval, this.mHeartBeatInterval);
       this.mCurrentHeartBeatProcessor.start();
       reportAppIn();
@@ -223,8 +242,11 @@ public class AppForegroundSession
   {
     try
     {
-      stop();
-      reportAppOut(paramBoolean);
+      if (this.mProcessorState == 0)
+      {
+        stop();
+        reportAppOut(paramBoolean);
+      }
       return;
     }
     finally

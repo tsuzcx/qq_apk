@@ -1,35 +1,32 @@
-import android.util.SparseIntArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adch
-  implements adcg
+  implements View.OnClickListener
 {
-  private final SparseIntArray a = new SparseIntArray();
+  public adch(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public int a(int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    switch (paramView.getId())
     {
-      paramInt = this.a.get(paramInt, 1);
-      return paramInt;
+    case 2131378510: 
+    default: 
+      this.a.a = 0;
     }
-    finally
+    for (;;)
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      this.a.put(paramInt1, paramInt2);
+      this.a.a(this.a.a);
+      bcef.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      this.a.a = 1;
+      continue;
+      this.a.a = 2;
+      continue;
+      this.a.a = 3;
     }
   }
 }

@@ -19,13 +19,13 @@ final class MiniAppController$9
     {
       paramBundle = this.val$listener;
       if (paramInt != 0) {
-        break label33;
+        break label39;
       }
     }
-    label33:
+    label39:
     for (boolean bool = true;; bool = false)
     {
-      paramBundle.onLaunchResult(bool, null);
+      paramBundle.onLaunchResult(bool, new Bundle());
       return;
     }
   }

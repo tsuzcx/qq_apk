@@ -1,36 +1,32 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import android.content.Context;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
-public class ajgy
-  implements ajtv
+class ajgy
+  implements AdapterView.OnItemLongClickListener
 {
-  public ajgy(TroopView paramTroopView) {}
+  ajgy(ajgq paramajgq) {}
   
-  public int a(int paramInt, boolean paramBoolean)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = TroopView.a(this.a).getCurrentItem();
     if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
+      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
     }
-    Object localObject = TroopView.a(this.a).a(i, false);
-    if (localObject != null)
+    if ((this.a.jdField_a_of_type_Ajgo.getCount() <= 0) || (paramInt <= 0)) {}
+    do
     {
-      localObject = (AddContactViewPagerTroopFragment)localObject;
-      ajgb localajgb = (ajgb)this.a.a.get(i);
-      if ((paramInt >= 0) && (paramInt < localajgb.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localajgb.b = paramInt;
-        ajgc localajgc = (ajgc)localajgb.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        ((AddContactViewPagerTroopFragment)localObject).a(localajgc.b, localajgc.jdField_a_of_type_JavaLangString);
-        bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_clk", 0, 0, localajgc.jdField_a_of_type_JavaLangString, localajgb.jdField_a_of_type_JavaLangString, "", "");
-      }
-    }
-    return 0;
+      return true;
+      paramAdapterView = (ajhk)this.a.jdField_a_of_type_Ajgo.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_Ajhk = paramAdapterView;
+    paramView.setSelected(true);
+    paramAdapterView = new bgaz();
+    paramAdapterView.a(2131365216, amtj.a(2131700431), 2130838962);
+    paramAdapterView.a(2131367094, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692448), 2130838971);
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bfue.a(paramView, paramAdapterView, ajgq.a(this.a), new ajgz(this, paramView));
+    return true;
   }
 }
 

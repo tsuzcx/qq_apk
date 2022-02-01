@@ -3,11 +3,20 @@ package cooperation.qzone.report;
 class QzoneReportManager$ProcessRunner
   implements Runnable
 {
+  String mData;
+  int mType;
+  
+  public QzoneReportManager$ProcessRunner(QzoneReportManager paramQzoneReportManager, int paramInt, String paramString)
+  {
+    this.mType = paramInt;
+    this.mData = paramString;
+  }
+  
   public void run()
   {
     QzoneReportManager localQzoneReportManager = this.this$0;
-    localQzoneReportManager.a -= 1;
-    QzoneReportManager.a(this.this$0);
+    localQzoneReportManager.mRunningTaskNum -= 1;
+    QzoneReportManager.access$000(this.this$0);
   }
 }
 

@@ -1,32 +1,83 @@
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogView.1;
+import com.tencent.mobileqq.util.DisplayUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class alsv
-  implements View.OnClickListener
 {
-  public alsv(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  private int jdField_a_of_type_Int;
+  private alsx jdField_a_of_type_Alsx;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   
-  public void onClick(View paramView)
+  public alsv(Context paramContext, int paramInt)
   {
-    if (EditLocalVideoActivity.a(this.a).isPlaying())
-    {
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).pause();
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private List<alsw> a()
+  {
+    alsn localalsn = alvx.a();
+    if (localalsn != null) {
+      return localalsn.a(this.jdField_a_of_type_Int);
     }
-    for (;;)
+    return new ArrayList();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public View a()
+  {
+    View localView = b();
+    a(localView);
+    return localView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new CmGameDebugLogView.1(this));
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364671));
+    paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+    this.jdField_a_of_type_Alsx = new alsx(this.jdField_a_of_type_AndroidContentContext, a());
+    paramView = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 32.0F)));
+    this.jdField_a_of_type_Alsx.a(paramView);
+    paramView.setId(2131362756);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Alsx);
+    a();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Alsx != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      EditLocalVideoActivity.b(this.a, true);
-      EditLocalVideoActivity.b(this.a).setVisibility(8);
-      EditLocalVideoActivity.a(this.a).start();
-      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      if (paramBoolean) {
+        a();
+      }
+      this.jdField_a_of_type_Alsx.a(a());
+      this.jdField_a_of_type_Alsx.notifyDataSetChanged();
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(this.jdField_a_of_type_Alsx.getItemCount() - 1);
     }
+  }
+  
+  public View b()
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558909, null);
   }
 }
 

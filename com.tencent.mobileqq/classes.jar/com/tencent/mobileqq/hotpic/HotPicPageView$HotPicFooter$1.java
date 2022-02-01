@@ -2,17 +2,17 @@ package com.tencent.mobileqq.hotpic;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import avua;
+import auha;
 
 public class HotPicPageView$HotPicFooter$1
   implements Runnable
 {
-  public HotPicPageView$HotPicFooter$1(avua paramavua, RecyclerView.ViewHolder paramViewHolder) {}
+  public HotPicPageView$HotPicFooter$1(auha paramauha, RecyclerView.ViewHolder paramViewHolder) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131368172).setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131368171).setVisibility(8);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131368201).setVisibility(0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131368200).setVisibility(8);
   }
 }
 

@@ -1,26 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
-class akuy
-  extends RecyclerView.OnScrollListener
+public class akuy
+  implements Animation.AnimationListener
 {
-  akuy(akux paramakux) {}
+  private int jdField_a_of_type_Int;
+  private akuz jdField_a_of_type_Akuz;
   
-  public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
+  public akuy(VideoFilterViewPager paramVideoFilterViewPager, akuz paramakuz, int paramInt)
   {
-    if ((akux.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (akux.a(this.a).selectedMediaInfoHashMap != null)) {
-      akux.a(this.a);
-    }
-    if (paramInt == 0)
-    {
-      adlb.a().a("list_photo", false);
-      return;
-    }
-    adlb.a().a("list_photo");
+    this.jdField_a_of_type_Akuz = paramakuz;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Akuz != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Akuz.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

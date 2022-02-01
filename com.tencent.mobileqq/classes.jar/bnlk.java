@@ -1,142 +1,90 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
-import cooperation.qzone.util.QZLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.io.InterruptedIOException;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
+import org.json.JSONArray;
 
 public class bnlk
+  extends bnle
 {
-  private static ConcurrentHashMap<String, Process> a = new ConcurrentHashMap(8, 0.75F, 2);
+  public List<bnll> a;
+  public boolean b;
+  public String f;
   
-  public static int a(String paramString, String[] paramArrayOfString)
+  public bnlk(@NonNull String paramString)
   {
-    label263:
-    try
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static List<bnll> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
     {
-      a(new File(a()));
-      Object localObject = new ArrayList();
-      ((ArrayList)localObject).add(a());
-      ((ArrayList)localObject).addAll(Arrays.asList(paramArrayOfString));
-      ((ArrayList)localObject).add(b());
-      paramArrayOfString = new ProcessBuilder((List)localObject).redirectErrorStream(true).start();
-      if (!TextUtils.isEmpty(paramString)) {
-        a.put(paramString, paramArrayOfString);
-      }
-      localObject = new BufferedReader(new InputStreamReader(paramArrayOfString.getInputStream()));
-      while (((BufferedReader)localObject).readLine() != null) {}
-      j = paramArrayOfString.waitFor();
-      i = j;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        a.remove(paramString);
-        i = j;
-      }
+      localArrayList.add(new bnll(paramJSONArray.getJSONObject(i)));
+      i += 1;
     }
-    catch (InterruptedIOException paramArrayOfString)
+    return localArrayList;
+  }
+  
+  public bnll a(String paramString)
+  {
+    if ((!StringUtil.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
     {
-      for (;;)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        QZLog.i("QZoneVideoCompressor", "process is terminated. key=" + paramString);
-        j = 0;
-        i = j;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          a.remove(paramString);
-          i = j;
+        bnll localbnll = (bnll)localIterator.next();
+        if (paramString.equals(localbnll.f)) {
+          return localbnll;
         }
       }
     }
-    catch (Throwable paramArrayOfString)
-    {
-      for (;;)
-      {
-        int j = -1111;
-        QZLog.e("QZoneVideoCompressor", "trimByFFmpeg", paramArrayOfString);
-        int i = j;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          a.remove(paramString);
-          i = j;
-        }
-      }
-    }
-    finally
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        break label263;
-      }
-      a.remove(paramString);
-    }
-    QZLog.i("QZoneVideoCompressor", 1, "trimByFFmpeg ret=" + i);
-    return i;
+    return null;
   }
   
-  public static int a(String[] paramArrayOfString)
+  public String a()
   {
-    return a(null, paramArrayOfString);
+    return "LocationFacePackage";
   }
   
-  private static String a()
+  public String a(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + str;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bnll)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
     }
+    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
   }
   
-  public static void a(String paramString)
+  public int b()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QZLog.w("QZoneVideoCompressor", "cancel: key is empty!");
-      return;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    if (!a.containsKey(paramString))
-    {
-      QZLog.w("QZoneVideoCompressor", "cancel: process not exists or finished. key=" + paramString);
-      return;
-    }
-    Process localProcess = (Process)a.remove(paramString);
-    if (localProcess == null)
-    {
-      QZLog.w("QZoneVideoCompressor", "cancel: process == null. key=" + paramString);
-      return;
-    }
-    QZLog.i("QZoneVideoCompressor", "cancel: killProcess. key=" + paramString);
-    localProcess.destroy();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  private static boolean a(File paramFile)
+  public String b(int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bnll)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
-    return false;
+    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
   }
   
-  private static String b()
+  public String toString()
   {
-    return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + VideoEnvironment.a();
+    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isLocating=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

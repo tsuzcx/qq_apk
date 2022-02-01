@@ -1,14 +1,14 @@
-final class pga
-  implements pgb
+class pga
+  extends pse
 {
-  public void l()
+  pga(pey parampey, String paramString)
   {
-    ubg.a(2, true, System.currentTimeMillis(), 0, 0, false);
+    super(paramString);
   }
   
-  public void m()
+  public void a(prx paramprx)
   {
-    ubg.a(2, false, pfw.d, 0, 0, false);
+    paramprx.d();
   }
 }
 

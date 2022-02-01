@@ -1,145 +1,81 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
-import android.os.SystemClock;
-import com.tencent.av.doodle.MySurfaceView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.io.BufferedReader;
 
 public class lls
-  extends llw
+  extends llu
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Queue<llt> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private static float[] b;
+  float[] a;
+  private float[] c = { 1.0F, 1.0F, 1.0F };
+  
+  static
+  {
+    jdField_b_of_type_ArrayOfFloat = new float[4];
+  }
   
   public lls()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void a()
+  public void a(BufferedReader paramBufferedReader)
   {
-    this.jdField_a_of_type_JavaUtilQueue.offer(new llt(this, this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength()));
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    float f4 = 0.01111111F * this.c;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f4);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    int i;
-    if ((this.jdField_a_of_type_Long != -1L) && (paramMySurfaceView.jdField_a_of_type_Long - this.jdField_a_of_type_Long > 1200L))
-    {
-      i = (int)(255L - (paramMySurfaceView.jdField_a_of_type_Long - this.jdField_a_of_type_Long - 1200L) * 255L / 800L);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(null);
-      if (this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength() <= 0.0F) {
-        break label259;
-      }
-      i = 1;
-      label128:
-      if (i == 0) {
-        break label265;
-      }
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    long l;
-    Object localObject1;
-    llt localllt;
-    Object localObject2;
-    label259:
-    label265:
-    float f2;
-    float f1;
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilQueue.size() > 0))
-      {
-        l = SystemClock.elapsedRealtime() - 500L;
-        localObject1 = null;
-        paramMySurfaceView = null;
-        localllt = (llt)((LinkedList)this.jdField_a_of_type_JavaUtilQueue).getLast();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
-        for (;;)
-        {
-          localObject2 = paramMySurfaceView;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          paramMySurfaceView = (llt)localIterator.next();
-          localObject2 = paramMySurfaceView;
-          if (paramMySurfaceView.jdField_a_of_type_Long - l >= 0L) {
-            break;
-          }
-          localObject1 = paramMySurfaceView;
-        }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
-        break;
-        i = 0;
-        break label128;
-        paramCanvas.drawPoint(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.jdField_a_of_type_AndroidGraphicsPaint);
-        continue;
-        f2 = localllt.jdField_a_of_type_Float;
-        if (localObject2 == null) {
-          break label683;
-        }
-        if ((localObject1 != null) && (localObject1 != localObject2)) {
-          f1 = (((llt)localObject1).jdField_a_of_type_Float * (float)(((llt)localObject2).jdField_a_of_type_Long - l) + ((llt)localObject2).jdField_a_of_type_Float * (float)(l - ((llt)localObject1).jdField_a_of_type_Long)) / (float)(((llt)localObject2).jdField_a_of_type_Long - ((llt)localObject1).jdField_a_of_type_Long);
-        }
-      }
-    }
-    for (;;)
-    {
-      float f3 = 0.01481482F * this.c * (float)(localllt.jdField_a_of_type_Long - l) / 500.0F;
-      f4 /= 2.0F;
-      paramMySurfaceView = new float[2];
-      localObject1 = new float[2];
-      localObject2 = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      ((Path)localObject2).setFillType(Path.FillType.WINDING);
-      float f5 = f2 - f1;
-      float f6 = (f3 - f4) / f5;
-      i = this.e;
-      i = this.e;
-      float f7 = 0.005555556F * this.c;
-      for (;;)
-      {
-        if (f1 <= localllt.jdField_a_of_type_Float)
-        {
-          this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f1, paramMySurfaceView, (float[])localObject1);
-          float f8 = (f2 - f1) / f5;
-          int j = llr.a(new int[] { i, -1 }, 1.0F - f8);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(j);
-          paramCanvas.drawCircle(paramMySurfaceView[0], paramMySurfaceView[1], f3 - (f2 - f1) * f6, this.jdField_a_of_type_AndroidGraphicsPaint);
-          f1 += f7;
-          continue;
-          f1 = ((llt)localObject2).jdField_a_of_type_Float;
-          break;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "doDrawDoodle, mScreenWidth[" + this.c + "], maxRadius[" + f3 + "], minRadius[" + f4 + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + ", " + this.jdField_a_of_type_AndroidGraphicsPointF.y + "], startAnimationPathPointDistance[" + f7 + "]");
-      }
       return;
-      label683:
-      f1 = 0.0F;
+      this.c = new float[llr.a(paramBufferedReader, "colorsCount")];
+      int i = 0;
+      while (i < this.c.length)
+      {
+        this.c[i] = llr.a(paramBufferedReader, "colors" + i);
+        i += 1;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[llr.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_a_of_type_ArrayOfFloat[i] = llr.a(paramBufferedReader, "timeline" + i);
+        i += 1;
+      }
+    }
+  }
+  
+  public float[] a(float paramFloat)
+  {
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    int k = arrayOfFloat.length;
+    int i = 1;
+    int j = 0;
+    if (i < k) {
+      if (arrayOfFloat[i] <= paramFloat) {}
+    }
+    for (;;)
+    {
+      float f4 = arrayOfFloat[j];
+      j *= 3;
+      float f1 = this.c[j];
+      float f2 = this.c[(j + 1)];
+      float f3 = this.c[(j + 2)];
+      if (i == -1)
+      {
+        jdField_b_of_type_ArrayOfFloat[0] = f1;
+        jdField_b_of_type_ArrayOfFloat[1] = f2;
+        jdField_b_of_type_ArrayOfFloat[2] = f3;
+        return jdField_b_of_type_ArrayOfFloat;
+        j = i;
+        i += 1;
+        break;
+      }
+      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
+      i *= 3;
+      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
+      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
+      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
+      return jdField_b_of_type_ArrayOfFloat;
+      i = -1;
     }
   }
 }

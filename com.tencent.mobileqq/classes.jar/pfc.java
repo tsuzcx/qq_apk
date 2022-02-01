@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-
 class pfc
-  implements qzs<TabChannelCoverInfo>
+  extends pse
 {
-  pfc(pfa parampfa) {}
-  
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  pfc(pey parampey, String paramString)
   {
-    return (paramTabChannelCoverInfo != null) && (paramTabChannelCoverInfo.reason != 4);
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.c();
   }
 }
 

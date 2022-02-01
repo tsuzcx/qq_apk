@@ -1,39 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ohj
-  extends Handler
+  extends aptq<ohh>
 {
-  private WeakReference<ohf> a;
-  
-  public ohj(ohf paramohf)
+  public static ohh a()
   {
-    this.a = new WeakReference(paramohf);
+    return (ohh)apub.a().a(593);
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public ohh a(int paramInt)
   {
-    ohf localohf = (ohf)this.a.get();
-    if (localohf == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          ohf.a(localohf);
-          return;
-        }
-      } while (ohf.a(localohf) == null);
-      ohf.a(localohf).a(ohf.a(localohf));
-      return;
-    } while (ohf.a(localohf) == null);
-    ohf.a(localohf).b();
+    return new ohh();
+  }
+  
+  @Nullable
+  public ohh a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
+      return new ohh();
+    }
+    return ohh.a(paramArrayOfaptx[0].a);
+  }
+  
+  public void a(ohh paramohh) {}
+  
+  public Class<ohh> clazz()
+  {
+    return ohh.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 593;
   }
 }
 

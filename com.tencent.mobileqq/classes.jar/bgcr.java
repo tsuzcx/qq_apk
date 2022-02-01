@@ -1,42 +1,27 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.os.Handler;
+import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
+import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.ApngQueuePlayer.RepeatListener.1;
 
 public class bgcr
-  implements INetInfoHandler
+  implements ApngDrawable.OnPlayRepeatListener
 {
-  public bgcr(ReciteRecordLayout paramReciteRecordLayout) {}
+  private int a;
   
-  public void onNetMobile2None()
+  bgcr(bgcn parambgcn) {}
+  
+  public void a(ApngImage paramApngImage)
   {
-    this.a.b.cancel();
-    this.a.b.start();
+    this.jdField_a_of_type_Int = paramApngImage.apngLoop;
+    paramApngImage.setOnPlayRepeatListener(this);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void onPlayRepeat(int paramInt)
   {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.b.cancel();
-    this.a.b.start();
+    if (paramInt == this.jdField_a_of_type_Int) {
+      ThreadManagerV2.getUIHandlerV2().post(new ApngQueuePlayer.RepeatListener.1(this));
+    }
   }
 }
 

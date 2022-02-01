@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.content.Context;
-import bhlo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class GameRuntimeLoaderManager
   private static final String TAG = "GameRuntimeLoaderManager";
   private static volatile GameRuntimeLoaderManager sInstance;
   private volatile boolean mHasRuntimeLoaderObtained;
-  private int mPerfLevel = bhlo.f();
+  private int mPerfLevel = DeviceInfoUtil.getPerfLevel();
   private ConcurrentMap<Context, GameRuntimeLoader> mRuntimeLoaderMap;
   private ConcurrentLinkedQueue<GameRuntimeLoader> mRuntimeLoaders;
   

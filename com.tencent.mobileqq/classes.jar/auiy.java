@@ -1,38 +1,26 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 class auiy
-  implements bljm
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  auiy(auiv paramauiv) {}
+  auiy(auix paramauix) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    paramAdapterView = this.a;
-    boolean bool;
-    if (!auiv.a(this.a))
-    {
-      bool = true;
-      auiv.a(paramAdapterView, bool);
-      if (this.a.jdField_a_of_type_Aueg != null) {
-        this.a.jdField_a_of_type_Aueg.a(auiv.a(this.a));
-      }
-      if (!auiv.a(this.a)) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_Aukh.a(false);
-      this.a.jdField_a_of_type_Aukh.b(false);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Aukh.e(auiv.a(this.a));
-      return;
-      bool = false;
-      break;
-      label110:
-      this.a.jdField_a_of_type_Aukh.a(true);
-      this.a.h();
-    }
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+  }
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    this.a.a = true;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
   }
 }
 

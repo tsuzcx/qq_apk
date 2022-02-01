@@ -1,9 +1,27 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$IPushNotifyDialogCallback;", "", "resultCallback", "", "buttonId", "", "result", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface qii
+class qii
+  implements pwy
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  qii(qid paramqid, RecommendFollowInfo paramRecommendFollowInfo) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      qid.a(this.jdField_a_of_type_Qid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      qid.a(this.jdField_a_of_type_Qid).notifyDataSetChanged();
+      return;
+    }
+    QQToast.a(qid.c(this.jdField_a_of_type_Qid).getContext(), 1, 2131717436, 0).a();
+  }
 }
 
 

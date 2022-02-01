@@ -3,20 +3,20 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import biqa;
-import blir;
+import bgwg;
+import bjnw;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import java.io.File;
-import nnw;
-import noe;
-import zxx;
+import npg;
+import npn;
+import yxi;
 
 public class SwiftBrowserLongClickHandler$4
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$4(biqa parambiqa, String paramString) {}
+  public SwiftBrowserLongClickHandler$4(bgwg parambgwg, String paramString) {}
   
   public void run()
   {
@@ -31,10 +31,10 @@ public class SwiftBrowserLongClickHandler$4
     {
       ((Bundle)???).putString("Cookie", str);
       if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserLongClickHandler", 2, "Get cookie: " + noe.c(str, new String[0]) + " from " + noe.b(this.a, new String[0]));
+        QLog.d("SwiftBrowserLongClickHandler", 2, "Get cookie: " + npn.c(str, new String[0]) + " from " + npn.b(this.a, new String[0]));
       }
     }
-    ??? = nnw.a(BaseApplication.getContext(), this.a, (Bundle)???);
+    ??? = npg.a(BaseApplication.getContext(), this.a, (Bundle)???);
     this.this$0.jdField_b_of_type_JavaLangString = ((String)???);
     if (QLog.isColorLevel()) {
       QLog.d("SwiftBrowserLongClickHandler", 2, "saveImage filepath = " + this.this$0.jdField_b_of_type_JavaLangString);
@@ -61,7 +61,7 @@ public class SwiftBrowserLongClickHandler$4
         this.this$0.c((String)???);
         return;
       }
-      int i = zxx.a(Uri.parse("file://" + new File((String)???).getAbsolutePath()), this.this$0.jdField_a_of_type_AndroidAppActivity, 3);
+      int i = yxi.a(Uri.parse("file://" + new File((String)???).getAbsolutePath()), this.this$0.jdField_a_of_type_AndroidAppActivity, 3);
       if (i <= 0) {
         continue;
       }
@@ -69,7 +69,7 @@ public class SwiftBrowserLongClickHandler$4
       {
         this.this$0.jdField_c_of_type_JavaLangString = this.this$0.jdField_b_of_type_JavaLangString;
         this.this$0.jdField_c_of_type_Int = i;
-        if (!this.this$0.jdField_a_of_type_Blir.isShowing()) {
+        if (!this.this$0.jdField_a_of_type_Bjnw.isShowing()) {
           continue;
         }
         this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SwiftBrowserLongClickHandler.4.3(this, i));

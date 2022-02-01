@@ -1,12 +1,12 @@
 package com.tencent.biz;
 
-import bjbs;
-import njc;
+import bhht;
+import nkr;
 
 public class JoinGroupHandler$2
   implements Runnable
 {
-  public JoinGroupHandler$2(njc paramnjc) {}
+  public JoinGroupHandler$2(nkr paramnkr) {}
   
   public void run()
   {

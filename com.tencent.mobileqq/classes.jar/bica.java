@@ -1,12 +1,19 @@
-public abstract interface bica
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadManager.17;
+
+public class bica
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public bica(DownloadManager.17 param17) {}
   
-  public abstract void a(bicb parambicb);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bibw.r, false);
+    bibs.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -73,11 +73,11 @@ public class TPReportParams$CommonParams
     paramITPReportProperties.put("p2pver", this.p2pVersionString);
     paramITPReportProperties.put("appver", this.appVersionString);
     paramITPReportProperties.put("playerver", this.playerVersionString);
-    paramITPReportProperties.put("playertype", this.playTypeInt);
+    paramITPReportProperties.put("playertype", this.playerTypeInt);
     paramITPReportProperties.put("confid", this.configIdInt);
     paramITPReportProperties.put("cdnid", this.cdnIdInt);
     paramITPReportProperties.put("scenesid", this.scenesId);
-    paramITPReportProperties.put("playtype", this.playerTypeInt);
+    paramITPReportProperties.put("playtype", this.playTypeInt);
     paramITPReportProperties.put("dltype", this.downloadTypeInt);
     paramITPReportProperties.put("vid", this.vidString);
     paramITPReportProperties.put("definition", this.mediaResolutionString);

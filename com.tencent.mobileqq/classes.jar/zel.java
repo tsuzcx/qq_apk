@@ -1,8 +1,32 @@
-import android.view.MotionEvent;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class zel
+class zel
+  implements View.OnClickListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  zel(zei paramzei) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a() != null)
+    {
+      CertifiedAccountMeta.StFeed localStFeed = this.a.a().a();
+      if (localStFeed == null) {
+        break label41;
+      }
+      this.a.d(localStFeed);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label41:
+      QQToast.a(zei.a(this.a), 1, amtj.a(2131713685), 0).a();
+    }
+  }
 }
 
 

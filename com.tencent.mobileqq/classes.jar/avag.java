@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1;
 
 public class avag
-  implements View.OnTouchListener
+  implements aweo
 {
-  public avag(ForwardPhotoOption paramForwardPhotoOption) {}
+  public avag(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    return true;
+    this.a.getActivity().runOnUiThread(new ListenTogetherPlayFragment.1.1(this, paramString, paramInt1, paramInt2));
   }
 }
 

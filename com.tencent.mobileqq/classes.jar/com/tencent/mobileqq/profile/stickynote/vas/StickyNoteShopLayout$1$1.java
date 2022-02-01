@@ -2,19 +2,19 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.view.View;
-import baba;
-import babd;
+import aypp;
+import ayps;
 
 public class StickyNoteShopLayout$1$1
   implements Runnable
 {
-  public StickyNoteShopLayout$1$1(baba parambaba, GetSuixintieSigFontRsp paramGetSuixintieSigFontRsp) {}
+  public StickyNoteShopLayout$1$1(aypp paramaypp, GetSuixintieSigFontRsp paramGetSuixintieSigFontRsp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Baba.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131379806).setVisibility(8);
-    this.jdField_a_of_type_Baba.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131368396).setVisibility(8);
-    StickyNoteShopLayout.a(this.jdField_a_of_type_Baba.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, this.jdField_a_of_type_Baba.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aypp.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131379587).setVisibility(8);
+    this.jdField_a_of_type_Aypp.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131368420).setVisibility(8);
+    StickyNoteShopLayout.a(this.jdField_a_of_type_Aypp.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, this.jdField_a_of_type_Aypp.jdField_a_of_type_Boolean);
   }
 }
 

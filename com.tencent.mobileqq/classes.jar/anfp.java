@@ -1,48 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
-public abstract interface anfp
+public class anfp
+  implements Comparator<File>
 {
-  public abstract int a();
+  public anfp(CleanCache paramCleanCache) {}
   
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(Context paramContext, AppInterface paramAppInterface);
-  
-  public abstract void a(anfo paramanfo);
-  
-  public abstract void a(anfo paramanfo, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void b(anfo paramanfo);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public int a(File paramFile1, File paramFile2)
+  {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfp
  * JD-Core Version:    0.7.0.1
  */

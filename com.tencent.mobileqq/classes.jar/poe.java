@@ -1,11 +1,32 @@
-class poe
-  implements ppm
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+
+public class poe
+  extends RecyclerView.ItemDecoration
 {
-  poe(pod parampod) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(int paramInt)
+  public poe(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
   {
-    poc.a(this.a.a, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
+    {
+      paramRect.left = (this.jdField_a_of_type_Int * 2);
+      paramRect.right = this.jdField_a_of_type_Int;
+      return;
+    }
+    paramRect.left = (this.jdField_a_of_type_Int / 2);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

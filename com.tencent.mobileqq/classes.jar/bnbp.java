@@ -1,14 +1,10 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.app.Activity;
 
-public class bnbp
-  implements bnbt
+public abstract interface bnbp
 {
-  public bnbp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public abstract Activity a();
   
-  public void a()
-  {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 

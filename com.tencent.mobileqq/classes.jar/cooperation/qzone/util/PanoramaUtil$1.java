@@ -2,25 +2,24 @@ package cooperation.qzone.util;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdmc;
-import bnjz;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public class PanoramaUtil$1
+class PanoramaUtil$1
   implements Runnable
 {
-  public PanoramaUtil$1(bnjz parambnjz, String paramString1, String paramString2, int paramInt) {}
+  PanoramaUtil$1(PanoramaUtil paramPanoramaUtil, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.val$matValue != null) && (!TextUtils.isEmpty(this.val$matValue)))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put(this.b, this.jdField_a_of_type_JavaLangString);
+      localHashMap.put(this.val$matKey, this.val$matValue);
       Context localContext = BaseApplication.getContext();
       if (localContext != null) {
-        bdmc.a(localContext).a(null, "qzone_panorama", true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
+        StatisticCollector.getInstance(localContext).collectPerformance(null, "qzone_panorama", true, this.val$time, 0L, localHashMap, null);
       }
     }
   }

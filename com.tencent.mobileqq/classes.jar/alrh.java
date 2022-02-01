@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
-public abstract interface alrh
+public class alrh
+  implements Comparator<alrk>
 {
-  public abstract void a();
+  public alrh(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
+  public int a(alrk paramalrk1, alrk paramalrk2)
+  {
+    return paramalrk1.a() - paramalrk2.a();
+  }
 }
 
 

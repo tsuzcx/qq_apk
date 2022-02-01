@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import ampp;
+import alkj;
 
 class NewFriendMoreSysMsgAdapter$10$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewFriendMoreSysMsgAdapter$10$1
   
   public void run()
   {
-    ampp.c(this.a.this$0);
+    alkj.c(this.a.this$0);
   }
 }
 

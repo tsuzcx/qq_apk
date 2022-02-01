@@ -1,13 +1,31 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public class aupm
-  implements bjhv
+class aupm
+  implements aurg
 {
-  public aupm(QfileEditBottomBar paramQfileEditBottomBar) {}
+  aupm(aupc paramaupc) {}
   
-  public void a(int paramInt)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    QfileEditBottomBar.a(this.a);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 101);
+    NowLive.sendServerPushMessage(aupc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 102);
+    NowLive.sendServerPushMessage(aupc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 103);
+    NowLive.sendServerPushMessage(aupc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
 }
 

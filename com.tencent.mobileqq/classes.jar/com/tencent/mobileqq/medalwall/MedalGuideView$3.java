@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.medalwall;
 
-import bdll;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class MedalGuideView$3
@@ -10,7 +10,7 @@ class MedalGuideView$3
   
   public void run()
   {
-    bdll.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.e, 0, "", "", "", "");
+    bcef.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.e, 0, "", "", "", "");
   }
 }
 

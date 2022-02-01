@@ -1,25 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class wpc
-  extends SimpleJob<Void>
+  extends Subscriber.SingleEventSubscriberNoRefect<vuc>
 {
-  public wpc(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
+  woz a;
+  
+  public wpc(@NonNull woz paramwoz)
   {
-    super(paramString);
+    this.a = paramwoz;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void a(@NonNull vuc paramvuc)
   {
-    paramJobContext = ((wta)wth.a(10)).a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.a.a(paramJobContext);
+    if (paramvuc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramvuc.jdField_a_of_type_JavaLangString);
     }
-    return null;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vuc.class;
   }
 }
 

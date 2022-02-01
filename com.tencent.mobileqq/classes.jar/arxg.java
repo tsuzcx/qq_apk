@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arxg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public arxg(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, aiim paramaiim) {}
+  public arxg(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ((aqym)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
-    this.jdField_a_of_type_Aiim.a(0, aqyl.h, 0);
+    QfileCloudFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

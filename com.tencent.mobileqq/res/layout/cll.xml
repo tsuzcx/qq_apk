@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/nk6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-2.5dip" android:layout_marginTop="-2.5dip" android:layout_marginRight="-2.5dip" android:layout_marginBottom="-2.5dip" />
-    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/a2o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5dip" android:layout_marginTop="3.5dip" android:layout_marginRight="3.5dip" android:layout_marginBottom="3.5dip" />
-    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:layout_gravity="bottom|center|right" android:id="@id/ms1" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/mzn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5dip" android:layout_marginTop="3.5dip" android:layout_marginRight="3.5dip" android:layout_marginBottom="3.5dip" />
-</merge>
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_horizontal" android:id="@id/myf" android:layout_width="197.0dip" android:layout_height="@dimen/n_" />
+    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/nr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:maxWidth="200.0dip" />
+</LinearLayout>

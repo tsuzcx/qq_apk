@@ -1,11 +1,17 @@
-import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 
-abstract interface znz
+public class znz
+  implements View.OnTouchListener
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
+  public znz(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

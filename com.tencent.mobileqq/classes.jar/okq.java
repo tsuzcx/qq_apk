@@ -1,19 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class okq
-  implements nmg
+  extends SwiftBrowserUIStyleHandler
 {
-  public okq(ReadInJoyNewFeedsActivity.2 param2) {}
+  okq(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void initWebViewInContentView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
+    super.initWebViewInContentView();
+    if ((this.mComponentContext.a() != null) && (this.a.jdField_a_of_type_Boolean) && (this.a.webView != null) && (this.webviewWrapper != null))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.a));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841683);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.webviewWrapper.addView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+      if (IPluginAdapterProxy.getProxy().isNightMode())
+      {
+        this.webviewWrapper.setBackgroundColor(-6710887);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841684);
+      }
     }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

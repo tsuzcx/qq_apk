@@ -1,41 +1,49 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import android.text.TextUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class apwa
-  implements DialogInterface.OnClickListener
+class apwa
 {
-  public apwa(ArkAppModuleBase.APIAuthority.1 param1, bhpc parambhpc, Activity paramActivity) {}
+  private static volatile apwa a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static apwa a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apwc != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apwc.b();
-    }
-    if (this.jdField_a_of_type_Bhpc.isShowing()) {}
+    if (a == null) {}
     try
     {
-      this.jdField_a_of_type_Bhpc.dismiss();
-      label39:
-      apvy.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 2);
-      paramDialogInterface = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131690104), 2131718195, 2131718195, new bhme(), null);
-      try
-      {
-        paramDialogInterface.show();
-        return;
+      if (a == null) {
+        a = new apwa();
       }
-      catch (Exception paramDialogInterface) {}
+      return a;
     }
-    catch (Exception paramDialogInterface)
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      break label39;
-    }
+      return null;
+      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(1);
+  }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apwa
  * JD-Core Version:    0.7.0.1
  */

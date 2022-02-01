@@ -1,8 +1,18 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-public abstract interface bmvx
+class bmvx
+  implements bmvq
 {
-  public abstract void callback(int paramInt, Bundle paramBundle);
+  bmvx(bmvw parambmvw) {}
+  
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
+  {
+    if (paramInt == 0) {
+      return bfby.b(paramString);
+    }
+    return "";
+  }
 }
 
 

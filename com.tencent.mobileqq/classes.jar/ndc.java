@@ -1,34 +1,26 @@
-import android.graphics.RectF;
-import android.view.View;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
+import com.tencent.avgame.gameroom.gamelist.GameListView.1;
 
-public abstract interface ndc
+public class ndc
+  implements DialogInterface.OnClickListener
 {
-  public abstract RectF a();
+  public ndc(GameListView.1 param1) {}
   
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(mze parammze);
-  
-  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(mze parammze);
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B49B", "0X800B49B", 0, 0, "", "", "", "");
+    this.a.this$0.a.a(false, 1);
+    ((Activity)this.a.this$0.getContext()).finish();
+    mzl.a().a().a().b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndc
  * JD-Core Version:    0.7.0.1
  */

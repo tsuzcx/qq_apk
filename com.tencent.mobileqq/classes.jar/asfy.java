@@ -1,261 +1,232 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoRoamingManager.2;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.1;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.2;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.3;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.4;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
 
 public class asfy
-  extends aseu<CameraEmotionData>
 {
-  private anul jdField_a_of_type_Anul = new asfz(this);
-  HashMap<CameraEmotionData, asgb> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
-  volatile String b;
-  private volatile String c;
+  static String jdField_a_of_type_JavaLangString = "QQFavProxy<FileAssistant>";
+  static String b = "FavFileS ";
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, asfz> jdField_a_of_type_JavaUtilHashMap;
+  private HashSet<asga> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
   public asfy(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anul);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected int a()
+  private void b(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
   {
-    return 70;
-  }
-  
-  public long a(String paramString)
-  {
-    long l = 0L;
-    try
+    Object localObject = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append(b).append("onGettedFileList. reqTimeStamp:").append(paramLong).append(" size:");
+    int i;
+    if (paramList != null)
     {
-      paramString = new File(paramString);
-      if (paramString.exists()) {
-        l = paramString.length();
+      i = paramList.size();
+      QLog.i((String)localObject, 1, i);
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        if (paramBundle == null) {
+          break label257;
+        }
       }
-      return l;
     }
-    catch (Exception paramString)
+    label257:
+    for (boolean bool = paramBundle.getBoolean("fecth_operate_end");; bool = true)
     {
-      paramString.printStackTrace();
+      localObject = (asfz)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      if (localObject == null) {}
+      do
+      {
+        return;
+        i = 0;
+        break;
+        if (((asfz)localObject).jdField_a_of_type_JavaUtilList == null) {
+          ((asfz)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
+        }
+        if (bool)
+        {
+          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+          if (paramList != null) {
+            ((asfz)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+          }
+          if (paramBundle != null) {
+            ((asfz)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+          }
+          ((asfz)localObject).a(0, ((asfz)localObject).jdField_a_of_type_JavaUtilList, paramBundle);
+          return;
+        }
+        QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onGettedFileList. fav is getting and waiting");
+        if (paramList != null) {
+          ((asfz)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+        }
+      } while (paramBundle == null);
+      ((asfz)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+      return;
+    }
+  }
+  
+  public long a(long paramLong, List<FavFileInfo> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      asfz localasfz = (asfz)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      if (paramList != null) {
+        paramList.addAll(localasfz.jdField_a_of_type_JavaUtilList);
+      }
+      if (localasfz != null) {
+        return localasfz.jdField_a_of_type_Long;
+      }
     }
     return 0L;
   }
   
-  public alxc a(String paramString)
+  public void a(long paramLong)
   {
-    int j = 0;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    label53:
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "cancelGetFileList. reqTimeStamp:" + paramLong);
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileDownloaded. favId:" + paramLong + " strSavePath:" + paramString + "lz:" + this.jdField_a_of_type_JavaUtilHashSet.size());
+    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {}
     for (;;)
     {
-      try
+      return;
+      Object localObject = Looper.getMainLooper();
+      if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        BitmapFactory.decodeFile(paramString, localOptions);
-        int i = localOptions.outHeight;
-        int k;
-        QLog.e("CameraEmoRoamingManager", 1, "getImageSize has exception", paramString);
+        new Handler((Looper)localObject).post(new QQFavProxy.4(this, paramLong, paramString));
+        return;
       }
-      catch (Exception paramString)
+      localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((asga)((Iterator)localObject).next()).a(paramLong, paramString);
+      }
+    }
+  }
+  
+  public void a(long paramLong, String paramString, int paramInt)
+  {
+    int i = 0;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileThumbUpdated. favId:" + paramLong + " strThumbPath:" + paramString + " format:" + paramInt + " lz:" + this.jdField_a_of_type_JavaUtilHashSet.size());
+    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {}
+    for (;;)
+    {
+      return;
+      if (paramInt == 64) {}
+      for (;;)
       {
-        try
-        {
-          k = localOptions.outWidth;
-          j = k;
-          return new alxc(j, i);
+        localObject = Looper.getMainLooper();
+        if (Thread.currentThread() == ((Looper)localObject).getThread()) {
+          break;
         }
-        catch (Exception paramString)
-        {
-          break label53;
+        new Handler((Looper)localObject).post(new QQFavProxy.3(this, paramLong, i, paramString));
+        return;
+        if (paramInt == 128) {
+          i = 1;
+        } else if (paramInt == 320) {
+          i = 2;
         }
-        paramString = paramString;
-        i = 0;
+      }
+      Object localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((asga)((Iterator)localObject).next()).a(paramLong, i, paramString);
       }
     }
   }
   
-  protected anvt<CameraEmotionData> a()
+  public void a(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
   {
-    return (anuj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(160);
+    new Handler(Looper.getMainLooper()).post(new QQFavProxy.1(this, paramLong, paramList, paramBundle));
   }
   
-  protected ases<CameraEmotionData> a()
+  public void a(long paramLong, boolean paramBoolean, Bundle paramBundle, asfz paramasfz)
   {
-    return (asgf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333);
-  }
-  
-  public String a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_c_of_type_JavaLangString = bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "camera_emo_list_version");
-      this.jdField_a_of_type_Boolean = true;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "getFileList. lastTimestamp:" + paramLong);
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
-  {
-    asgb localasgb = (asgb)this.jdField_a_of_type_JavaUtilHashMap.get(paramCameraEmotionData);
-    if (localasgb != null)
-    {
-      localasgb.a(paramInt, paramCameraEmotionData);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramCameraEmotionData);
+    if (paramasfz != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramasfz);
     }
+    bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramLong, Boolean.valueOf(paramBoolean), paramBundle);
   }
   
-  public void a(CameraEmotionData paramCameraEmotionData)
+  public void a(asga paramasga)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.d("CameraEmoRoamingManager", 1, "realUploadCustomEmoticon start, app is null");
-      a(100, paramCameraEmotionData);
+    if (paramasga == null) {
       return;
     }
-    if (!bhnv.d(BaseApplication.getContext()))
-    {
-      QLog.d("CameraEmoRoamingManager", 1, "realUploadCustomEmoticon start, net not support");
-      a(12, paramCameraEmotionData);
-      return;
-    }
-    QLog.d("CameraEmoRoamingManager", 1, "realUploadCustomEmoticon start");
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_b_of_type_Int = 24;
-    localbeyg.jdField_c_of_type_Int = 70;
-    localbeyg.jdField_a_of_type_JavaLangString = "camera_emo_upload";
-    localbeyg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbeyg.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.jdField_a_of_type_Long = paramCameraEmotionData.emoId;
-    localbeyg.i = paramCameraEmotionData.emoPath;
-    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
-    localCommFileExtReq.uint32_action_type.set(0);
-    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramCameraEmotionData.resid.getBytes()));
-    localbeyg.jdField_a_of_type_ArrayOfByte = localCommFileExtReq.toByteArray();
-    paramCameraEmotionData = new asga(this, ThreadManagerV2.getSubThreadLooper(), paramCameraEmotionData);
-    paramCameraEmotionData.addFilter(new Class[] { berh.class });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramCameraEmotionData);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
+    this.jdField_a_of_type_JavaUtilHashSet.add(paramasga);
   }
   
-  public void a(CameraEmotionData paramCameraEmotionData, asgb paramasgb)
+  public void a(FavFileInfo paramFavFileInfo, int paramInt)
   {
-    if (bhsr.a(paramCameraEmotionData.emoPath))
+    int i = 64;
+    if (paramInt == 0) {}
+    for (;;)
     {
-      QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo error, path is null");
-      paramasgb.a(10, paramCameraEmotionData);
+      QLog.i(jdField_a_of_type_JavaLangString, 1, b + "downloadThumb. favId:" + paramFavFileInfo.jdField_a_of_type_Long + " format:" + i);
+      bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramFavFileInfo, i);
       return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo, app is null");
-      paramasgb.a(100, paramCameraEmotionData);
-      return;
-    }
-    long l = a(paramCameraEmotionData.emoPath);
-    alxc localalxc = a(paramCameraEmotionData.emoPath);
-    if ((bhsr.a(paramCameraEmotionData.md5)) || (l == 0L) || (localalxc.b() == 0) || (localalxc.a() == 0))
-    {
-      QLog.d("CameraEmoRoamingManager", 1, new Object[] { "uploadCameraEmo params error, md5:", paramCameraEmotionData.md5, " size:", Long.valueOf(l), " width:", Integer.valueOf(localalxc.a()), " height:", Integer.valueOf(localalxc.b()) });
-      paramasgb.a(14, paramCameraEmotionData);
-      return;
-    }
-    QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo start");
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramCameraEmotionData, paramasgb);
-    ((anuj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(160)).a(paramCameraEmotionData, localalxc.a(), localalxc.b(), l);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "camera_emo_list_version", paramString);
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "";; str = "has_value")
-    {
-      this.jdField_b_of_type_JavaLangString = str;
-      bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "camera_emo_guide_tag", this.jdField_b_of_type_JavaLangString);
-      bhsi.a("camera_emo_guide_again_tag", Boolean.valueOf(paramBoolean));
-      return;
-    }
-  }
-  
-  public void b(CameraEmotionData paramCameraEmotionData)
-  {
-    paramCameraEmotionData.increaseClickNum();
-    a().b(paramCameraEmotionData);
-  }
-  
-  public boolean b()
-  {
-    if ((this.jdField_b_of_type_JavaLangString == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-    {
-      this.jdField_b_of_type_JavaLangString = bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "camera_emo_guide_tag");
-      if (this.jdField_b_of_type_JavaLangString == null) {
-        this.jdField_b_of_type_JavaLangString = "";
+      if (paramInt == 1) {
+        i = 128;
+      } else if (paramInt == 2) {
+        i = 320;
+      } else if (paramInt == 3) {
+        i = 640;
+      } else if (paramInt == 4) {
+        i = 1024;
       }
     }
-    return ((bhsr.a(this.jdField_b_of_type_JavaLangString)) || (((Boolean)bhsi.a("camera_emo_guide_again_tag", Boolean.valueOf(true))).booleanValue())) && (c());
   }
   
-  public void c()
+  public void a(List<FavFileInfo> paramList, String paramString, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    anuj localanuj;
-    do
-    {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "sendFavFiles. size:" + paramList.size() + " strToUin:" + paramString + " toUinType:" + paramInt);
+    bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, paramString, paramInt);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = "";
+    if (paramBundle != null) {
+      str = paramBundle.getString("delete_favids");
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileListRefreshed. bSuc:" + paramBoolean + " delFavIds:" + str);
+    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {
       return;
-      localanuj = (anuj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(160);
-    } while (localanuj == null);
-    ThreadManager.post(new CameraEmoRoamingManager.2(this, (asgf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333), localanuj), 5, null, true);
-  }
-  
-  public void c(CameraEmotionData paramCameraEmotionData)
-  {
-    paramCameraEmotionData.increaseExposeNum();
-    a().b(paramCameraEmotionData);
-  }
-  
-  public boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 21;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if ((this.jdField_a_of_type_Anul != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anul);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      a(15, (CameraEmotionData)((Map.Entry)localIterator.next()).getKey());
+    new Handler(Looper.getMainLooper()).post(new QQFavProxy.2(this, paramBoolean, paramBundle));
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "refreshList.");
+    return bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramBundle);
+  }
+  
+  public void b(asga paramasga)
+  {
+    if (paramasga == null) {
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_JavaUtilHashSet.remove(paramasga);
   }
 }
 

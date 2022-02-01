@@ -1,22 +1,9 @@
-public class arbv
-  extends arbu
-{
-  private arcm a;
-  
-  arbv(String paramString, arcm paramarcm)
-  {
-    super(paramString);
-    this.a = paramarcm;
-  }
-  
-  public arcm a()
-  {
-    return this.a;
-  }
-}
+public abstract interface arbv
+  extends arbt, arbx, arcb
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbv
  * JD-Core Version:    0.7.0.1
  */

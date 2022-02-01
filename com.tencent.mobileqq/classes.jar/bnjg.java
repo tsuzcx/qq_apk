@@ -1,32 +1,15 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class bnjg
-  implements ModuleDownloadListener
+public class bnjg
+  implements bnkc
 {
-  bnjg(bnje parambnje) {}
+  public bnjg(DoodleLayout paramDoodleLayout) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a()
   {
-    if (!paramString.equals("pictureMarkerSo.zip")) {}
-    do
-    {
-      return;
-      localObject = bnje.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    } while (!paramString.exists());
-    Object localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    if (this.a.a != null) {
+      this.a.a.aH_();
     }
-    bnjl.b(paramString, (File)localObject);
   }
 }
 

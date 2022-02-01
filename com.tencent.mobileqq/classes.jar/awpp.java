@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import java.util.HashMap;
 
-public abstract interface awpp
+public class awpp
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(awpk paramawpk, int paramInt);
+  public awpp(StoryPlayController paramStoryPlayController, awti paramawti, HashMap paramHashMap) {}
   
-  public abstract void a(awpk paramawpk, int paramInt1, int paramInt2);
-  
-  public abstract void a(awpk paramawpk, LocationRoom.Venue paramVenue, List<awpi> paramList);
-  
-  public abstract void b(awpk paramawpk, int paramInt);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_Awti.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.b();
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Awti.jdField_a_of_type_Int)) != null) {
+        ((awtt)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Awti.jdField_a_of_type_Int))).h();
+      }
+    }
+    StoryPlayController.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController, null);
+  }
 }
 
 

@@ -1,33 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agvz
-  implements View.OnClickListener
+  implements agut
 {
-  agvz(agvx paramagvx) {}
-  
-  public void onClick(View paramView)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    try
-    {
-      bdll.b(agvx.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
-      agvx.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
-      this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + localThrowable);
-      }
-    }
+    paramagap.c(paramagcc, paramString);
   }
 }
 

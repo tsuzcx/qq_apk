@@ -1,37 +1,12 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
-
 public class bdfk
 {
-  bdfn a;
+  public bdef a;
+  public String a;
   
-  public bdfk()
+  bdfk(String paramString, bdef parambdef)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.a != null) {
-      return this.a.a();
-    }
-    return false;
-  }
-  
-  public boolean a(File paramFile, bdfl parambdfl, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, parambdfl, paramBoolean);
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return (this.a != null) && (this.a.b());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bdef = parambdef;
   }
 }
 

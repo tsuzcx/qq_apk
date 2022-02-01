@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import ulc;
-import uqf;
+import urw;
+import uya;
 
 class WSPlayerManager$3
   implements Runnable
@@ -13,11 +13,11 @@ class WSPlayerManager$3
     if (WSPlayerManager.a(this.this$0) != null)
     {
       WSPlayerManager.a(this.this$0).b();
-      uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] subThread videoPlayer.start!");
+      uya.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] subThread videoPlayer.start!");
       if ((!WSPlayerManager.d(this.this$0)) && (WSPlayerManager.a(this.this$0) != null))
       {
         WSPlayerManager.a(this.this$0).c();
-        uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] activity become onPause after videoPlayer.start(), so we need to pause it!");
+        uya.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] activity become onPause after videoPlayer.start(), so we need to pause it!");
       }
       WSPlayerManager.a(this.this$0);
     }
@@ -25,7 +25,7 @@ class WSPlayerManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.3
  * JD-Core Version:    0.7.0.1
  */

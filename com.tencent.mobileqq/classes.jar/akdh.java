@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akdh
-  implements bgrl
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  public akdh(ChooseItemView paramChooseItemView) {}
   
-  public akdh(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

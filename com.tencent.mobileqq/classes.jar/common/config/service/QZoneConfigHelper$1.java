@@ -1,16 +1,14 @@
 package common.config.service;
 
-import bmab;
-
-public final class QZoneConfigHelper$1
+final class QZoneConfigHelper$1
   implements Runnable
 {
-  public QZoneConfigHelper$1(bmab parambmab) {}
+  QZoneConfigHelper$1(QZoneConfigHelper.LoadIntConfigCallback paramLoadIntConfigCallback) {}
   
   public void run()
   {
     int i = QzoneConfig.getInstance().getConfig("PhotoView", "ShowOPDelay", 0);
-    this.a.a(i * 1000);
+    this.val$l.onGetResult(i * 1000);
   }
 }
 

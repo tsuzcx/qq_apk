@@ -16,7 +16,7 @@ class QuicResDownload$MyRunnable
       QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
       if (localQQAppInterface != null)
       {
-        VideoEnvironment.a("QuicResDownload", "start download quic res", null);
+        VideoEnvironment.LogDownLoad("QuicResDownload", "start download quic res", null);
         QuicResDownload.a(new QuicResDownload(localQQAppInterface));
       }
     }

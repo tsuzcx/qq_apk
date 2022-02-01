@@ -1,33 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.qphone.base.util.QLog;
-
 public class sgk
-  implements sgg
 {
-  public sgk(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
-  
-  public void a()
+  public static boolean a(int paramInt)
   {
-    if (ozk.a(ozk.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-      if ((this.a.c == 0) && ((!ubg.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-    } while ((ubg.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
-    this.a.a(4);
-    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
+    return (paramInt == 1) || (paramInt == 3) || (paramInt == 7);
   }
 }
 

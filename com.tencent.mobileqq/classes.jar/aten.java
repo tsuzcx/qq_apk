@@ -1,23 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import java.util.concurrent.ConcurrentHashMap;
 
-class aten
-  implements Animation.AnimationListener
+public class aten
 {
-  aten(atem paramatem) {}
+  private static aten jdField_a_of_type_Aten;
+  public static String a;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new ateo(this, "Module_WeiyunDownloadService");
+  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static aten a()
   {
-    this.a.a.c();
+    if (jdField_a_of_type_Aten == null) {}
+    try
+    {
+      jdField_a_of_type_Aten = new aten();
+      return jdField_a_of_type_Aten;
+    }
+    finally {}
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  private QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aten
  * JD-Core Version:    0.7.0.1
  */

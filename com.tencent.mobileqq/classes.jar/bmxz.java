@@ -1,34 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
 
 public class bmxz
-  implements VipResourcesListener
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<ImageView> b;
+  public bmxz(AdvancedProviderView paramAdvancedProviderView) {}
   
-  public bmxz(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
-    this.b = new WeakReference(paramImageView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onFailed() {}
-  
-  public void onLoaded(Drawable paramDrawable)
-  {
-    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramDrawable != null) && (localHandler != null)) {
-      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
+    List localList = boaz.a().a();
+    if (localList.size() > 0) {
+      yqu.a(this.a.a, localList.get(0));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

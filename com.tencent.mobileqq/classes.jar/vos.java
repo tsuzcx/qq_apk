@@ -1,32 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.launchbean.QCircleLayerBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
 class vos
-  implements View.OnClickListener
+  implements ayeo
 {
-  vos(voq paramvoq) {}
+  vos(vor paramvor) {}
   
-  public void onClick(View paramView)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    boolean bool = false;
-    QCircleLayerBean localQCircleLayerBean = voq.a(this.a, false);
-    if (localQCircleLayerBean != null)
-    {
-      vtq.a("", 17, 3);
-      localQCircleLayerBean.setFromReportBean(this.a.a().clone().setElementIdStr("portraitlist"));
-      if (QzoneConfig.getInstance().getConfig("qqcircle", "qqcircle_push_feeddetail_recom", 0) == 0) {
-        bool = true;
-      }
-      localQCircleLayerBean.setSingleFeed(bool);
-      uyx.a(paramView.getContext(), localQCircleLayerBean);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
   }
+  
+  public void onSend(ayep paramayep)
+  {
+    if (paramayep.jdField_b_of_type_Int == 0)
+    {
+      this.a.jdField_b_of_type_JavaLangString = paramayep.jdField_b_of_type_JavaLangString;
+      this.a.b();
+      vor.a(this.a, new ErrorMessage());
+      return;
+    }
+    if ((paramayep.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.a.getAndIncrement() < 2))
+    {
+      vor.a(this.a);
+      xvv.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
+      return;
+    }
+    paramayep = new ErrorMessage(paramayep.jdField_b_of_type_Int, paramayep.a);
+    paramayep.extraMsg = "upload";
+    vor.a(this.a, paramayep);
+  }
+  
+  public void updateMsg(ayep paramayep) {}
 }
 
 

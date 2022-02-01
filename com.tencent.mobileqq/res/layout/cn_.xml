@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mjx" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.utils.QCircleSlidBottomView android:orientation="vertical" android:id="@id/nbp" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mju" app:qcircleBottomPaddingHeight="42.0dip" app:qcircleControllerHeight="68.0dip" app:qcircleControllerImgWidth="56.0dip" app:qcircleIsFixPanelHeight="true" app:qcircleShowRate="0.5" app:qcircleTopHeight="50.0dip">
-        <FrameLayout android:id="@id/nbm" android:background="@drawable/duq" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/nbn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="77.0dip" />
-            <ImageView android:layout_gravity="center_horizontal" android:id="@id/nbq" android:layout_width="56.0dip" android:layout_height="16.0dip" android:layout_marginTop="7.0dip" android:src="@drawable/a4w" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-            <include android:id="@id/mjz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" layout="@layout/cna" />
-            <include android:id="@id/b42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="180.0dip" layout="@layout/eu" />
-        </FrameLayout>
-    </com.tencent.biz.qqcircle.utils.QCircleSlidBottomView>
-    <include android:id="@id/mju" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/cn9" />
-    <com.tencent.biz.qqcircle.widgets.QCircleRocketView android:id="@id/mjw" android:layout_width="115.0dip" android:layout_height="210.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="-22.0dip" android:layout_above="@id/mju" android:layout_alignParentRight="true" />
+<RelativeLayout android:paddingTop="6.0dip" android:layout_width="275.0dip" android:layout_height="422.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/nct" android:background="@drawable/drg" android:layout_width="fill_parent" android:layout_height="386.0dip" android:layout_marginTop="35.0dip">
+        <TextView android:textSize="24.0dip" android:textColor="@color/yw" android:gravity="center" android:id="@id/npy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="47.0dip" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/aaw" android:id="@id/nr3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/npy" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/my1" android:layout_width="220.0dip" android:layout_height="220.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/nr3" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/aaw" android:gravity="center" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/my1" android:layout_centerHorizontal="true" />
+        <TextView android:gravity="center" android:id="@id/nc2" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="16.0dip" android:layout_toLeftOf="@id/kbr" android:layout_below="@id/my1" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="80.0dip" android:layout_height="35.0dip" android:src="@drawable/e6v" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/mxu" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_centerHorizontal="true" />
 </RelativeLayout>

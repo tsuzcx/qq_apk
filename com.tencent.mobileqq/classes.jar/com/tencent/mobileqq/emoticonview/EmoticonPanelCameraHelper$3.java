@@ -1,33 +1,31 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asnf;
-import aspt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class EmoticonPanelCameraHelper$3
+class EmoticonPanelCameraHelper$3
   implements Runnable
 {
-  public EmoticonPanelCameraHelper$3(asnf paramasnf) {}
+  EmoticonPanelCameraHelper$3(EmoticonPanelCameraHelper paramEmoticonPanelCameraHelper) {}
   
   public void run()
   {
-    List localList = this.this$0.a.b;
+    List localList = this.this$0.mPanelController.panelDataList;
     int i;
-    aspt localaspt;
+    EmotionPanelInfo localEmotionPanelInfo;
     if (localList != null)
     {
       i = 0;
       if (i < localList.size())
       {
-        localaspt = (aspt)localList.get(i);
-        if ((localaspt == null) || (localaspt.a != 11)) {}
+        localEmotionPanelInfo = (EmotionPanelInfo)localList.get(i);
+        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.type != 11)) {}
       }
     }
     for (;;)
     {
-      if ((localaspt != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localaspt);
+      if ((localEmotionPanelInfo != null) && (this.this$0.mPanelController.pageAdapter != null)) {
+        this.this$0.mPanelController.pageAdapter.refreshListViewAdapter(localEmotionPanelInfo);
       }
       while (!QLog.isColorLevel())
       {
@@ -37,13 +35,13 @@ public class EmoticonPanelCameraHelper$3
       }
       QLog.d("EmoticonPanelCameraHelper", 2, "updateCameraEmoticonPanel cameraInfo can not find");
       return;
-      localaspt = null;
+      localEmotionPanelInfo = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelCameraHelper.3
  * JD-Core Version:    0.7.0.1
  */

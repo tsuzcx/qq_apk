@@ -1,19 +1,67 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class bbhi
-  implements bdbl
+  extends bbir
 {
-  public bbhi(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
+  public RelativeLayout b;
+  public SquareImageView b;
+  public ImageView c;
+  public SquareImageView c;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public bbhi(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
+    this.jdField_c_of_type_Int = paramInt;
+    paramViewGroup.getResources();
+    LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, null, false), new LinearLayout.LayoutParams(-1, -2));
+    localLinearLayout.setBackgroundResource(2130850155);
+    localLinearLayout.setClickable(true);
+    localLinearLayout.setFocusable(true);
+    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+    a();
+  }
+  
+  protected void a()
+  {
+    super.a();
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376573));
+    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368424));
     }
-    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369276));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369207));
+    this.e = ((TextView)paramView.findViewById(2131379863));
+    this.f = ((TextView)paramView.findViewById(2131379808));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131376427));
+    this.g = ((TextView)paramView.findViewById(2131376428));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      this.f.setTextColor(this.f.getContext().getResources().getColor(2131166945));
+      this.g.setTextColor(this.g.getContext().getResources().getColor(2131166945));
+      return;
+    }
+    this.f.setTextColor(this.f.getContext().getResources().getColor(2131167337));
+    this.g.setTextColor(this.g.getContext().getResources().getColor(2131167337));
   }
 }
 

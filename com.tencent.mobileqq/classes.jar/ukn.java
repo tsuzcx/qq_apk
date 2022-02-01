@@ -1,64 +1,24 @@
-import android.content.Intent;
-import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ukn
-  extends MSFServlet
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent == null) {
-      Log.e("weishi", "***onReceive request is null");
-    }
-    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
-      return;
-    }
-    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
-  }
+  public ukn(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null)
-    {
-      Log.e("weishi", "onSend request is null");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if ((paramIntent instanceof WeishiIntent))
-        {
-          uko localuko = ((WeishiIntent)paramIntent).a;
-          ukl localukl = localuko.a;
-          byte[] arrayOfByte2 = localukl.encode();
-          byte[] arrayOfByte1 = arrayOfByte2;
-          if (arrayOfByte2 == null)
-          {
-            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localuko.a.uniKey());
-            arrayOfByte1 = new byte[4];
-          }
-          paramPacket.setTimeout(30000L);
-          Log.e("timeout", "timeout:30000");
-          paramPacket.setSSOCommand("SQQzoneSvc." + localuko.a.c());
-          Log.i("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localuko.a.c());
-          localukl.d = arrayOfByte1.length;
-          paramPacket.putSendData(arrayOfByte1);
-          Log.i("weishi-Servlet", "onSend request cmd=" + localuko.a.uniKey() + " is correct");
-          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
-          return;
-        }
-      }
-      catch (Exception paramIntent)
-      {
-        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
-        return;
-      }
-      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
-    }
+    WSRecommendFragment.a(this.a).b();
+    ((uuy)this.a.b()).a(true, true, "");
+    ((uuy)this.a.b()).a("");
+    WSRecommendFragment.a(this.a).setVisibility(8);
+    this.a.c();
+    uvi.a(136, 1, null);
+    uvr.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

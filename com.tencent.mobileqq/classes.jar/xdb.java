@@ -1,30 +1,73 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class xdb
-  extends wov
+  extends vll<QQStoryShareGroupProfileActivity, vsd>
 {
-  public List<MomeriesYearNode> a = new ArrayList();
-  
-  public xdb() {}
-  
-  public xdb(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
+  public xdb(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super(paramRspProfileYearNodeList.result);
-    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
-    while (paramRspProfileYearNodeList.hasNext())
-    {
-      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
-      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
-      localMomeriesYearNode.convertFrom(localYearNodeInfo);
-      this.a.add(localMomeriesYearNode);
-    }
+    super(paramQQStoryShareGroupProfileActivity);
   }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vsd paramvsd)
+  {
+    if ((paramvsd.b != 3) || (paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
+    ArrayList localArrayList;
+    label68:
+    do
+    {
+      return;
+      int i;
+      xeb localxeb;
+      HotSortVideoEntry localHotSortVideoEntry;
+      if (paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
+      {
+        i = 1;
+        localxeb = paramQQStoryShareGroupProfileActivity.a.a;
+        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
+        localArrayList = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
+        } while (!localHotSortVideoEntry.feedId.equals(paramvsd.jdField_a_of_type_JavaLangString));
+        if (i == 0) {
+          break label164;
+        }
+      }
+      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
+      {
+        localHotSortVideoEntry.likeCount = j;
+        if (localHotSortVideoEntry.likeCount < 0) {
+          localHotSortVideoEntry.likeCount = 0;
+        }
+        localxeb.a(localHotSortVideoEntry);
+        localArrayList.add(localHotSortVideoEntry);
+        break label68;
+        i = 0;
+        break;
+      }
+    } while (localArrayList.size() <= 0);
+    label164:
+    ((vue)vux.a(25)).a(localArrayList);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vsd.class;
+  }
+  
+  public void b(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vsd paramvsd) {}
 }
 
 

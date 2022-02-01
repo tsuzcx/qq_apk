@@ -1,9 +1,13 @@
+import java.io.File;
+
 public class bmda
 {
-  public int a = -1;
-  public long a;
-  public bmcz a;
-  public long b;
+  public static final String a = bljv.a + File.separator + "ae_editor";
+  public static final String b = a + File.separator + "resources";
+  public static final String c = a + File.separator + "generated_images";
+  public static final String d = a + File.separator + "generated_videos";
+  public static final String e = a + File.separator + "generated_videos" + File.separator + "cover";
+  public static final String f = a + File.separator + "effect";
 }
 
 

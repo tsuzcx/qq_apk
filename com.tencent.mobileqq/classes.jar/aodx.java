@@ -1,34 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import mqq.app.Foreground;
-
-public class aodx
+public abstract interface aodx
 {
-  public static String a()
-  {
-    Activity localActivity = Foreground.getTopActivity();
-    String str;
-    if (localActivity != null)
-    {
-      str = localActivity.getClass().getName();
-      if ((localActivity instanceof SplashActivity))
-      {
-        if (SplashActivity.a == 1) {
-          return str + "_" + ((SplashActivity)localActivity).a();
-        }
-        return str + "_ChatFragment";
-      }
-    }
-    else
-    {
-      return "Null";
-    }
-    return str;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodx
  * JD-Core Version:    0.7.0.1
  */

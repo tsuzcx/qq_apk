@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class akvt
-  implements View.OnClickListener
+public class akvt
 {
-  akvt(akvs paramakvs) {}
+  public int a;
+  akvu jdField_a_of_type_Akvu = new akvu(this.jdField_a_of_type_Akvs);
+  String jdField_a_of_type_JavaLangString;
+  public AtomicInteger a;
+  volatile boolean jdField_a_of_type_Boolean;
+  public int b;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public akvt(akvs paramakvs)
   {
-    AIOLongShotHelper.a(this.a.mActivity, (String)akvs.a(this.a).selectedPhotoList.get(0), new akvu(this));
-    AIOLongShotHelper.a("0X8009DEE");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   }
 }
 

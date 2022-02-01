@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.pendant;
 
-import lgr;
+import lgl;
 
 public class PendantItem
-  extends lgr
+  extends lgl
 {
   public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;

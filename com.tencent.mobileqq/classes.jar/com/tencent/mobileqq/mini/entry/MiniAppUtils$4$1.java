@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import bisp;
+import bgyr;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUtils$4$1
   implements Runnable
 {
-  MiniAppUtils$4$1(MiniAppUtils.4 param4, bisp parambisp) {}
+  MiniAppUtils$4$1(MiniAppUtils.4 param4, bgyr parambgyr) {}
   
   public void run()
   {

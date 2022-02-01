@@ -6,6 +6,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public class BookShelfUpdateRequest
   extends ProtoBufRequest
 {
+  public static final String CMD_STRING = "LightAppSvc.mini_book_shelf.UpdateBookShelfReadTime";
+  public static final String KEY_RESULT_DATA = "key_result_data";
   public static final String TAG = "BookShelfUpdateRequest";
   private MiniBookShelf.StUpdateBookShelfReadTimeReq req = new MiniBookShelf.StUpdateBookShelfReadTimeReq();
   
@@ -26,6 +28,11 @@ public class BookShelfUpdateRequest
     return "UpdateBookShelfReadTime";
   }
   
+  public String getCmdString()
+  {
+    return "LightAppSvc.mini_book_shelf.UpdateBookShelfReadTime";
+  }
+  
   protected String getModule()
   {
     return "mini_book_shelf";
@@ -41,82 +48,82 @@ public class BookShelfUpdateRequest
     //   5: astore_1
     //   6: aload_1
     //   7: areturn
-    //   8: new 57	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp
+    //   8: new 64	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp
     //   11: dup
-    //   12: invokespecial 58	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp:<init>	()V
+    //   12: invokespecial 65	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp:<init>	()V
     //   15: astore_3
     //   16: aload_3
     //   17: aload_1
-    //   18: invokevirtual 62	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   18: invokevirtual 69	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   21: pop
     //   22: aload_3
-    //   23: getfield 66	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp:updateInfo	LNS_MINI_BOOK_SHELF/MiniBookShelf$Information;
-    //   26: invokevirtual 72	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   29: checkcast 68	NS_MINI_BOOK_SHELF/MiniBookShelf$Information
+    //   23: getfield 73	NS_MINI_BOOK_SHELF/MiniBookShelf$StUpdateBookShelfReadTimeRsp:updateInfo	LNS_MINI_BOOK_SHELF/MiniBookShelf$Information;
+    //   26: invokevirtual 79	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   29: checkcast 75	NS_MINI_BOOK_SHELF/MiniBookShelf$Information
     //   32: astore_3
     //   33: aload_2
     //   34: astore_1
     //   35: aload_3
     //   36: ifnull -30 -> 6
-    //   39: new 74	org/json/JSONObject
+    //   39: new 81	org/json/JSONObject
     //   42: dup
-    //   43: invokespecial 75	org/json/JSONObject:<init>	()V
+    //   43: invokespecial 82	org/json/JSONObject:<init>	()V
     //   46: astore_1
     //   47: aload_1
-    //   48: ldc 77
+    //   48: ldc 84
     //   50: aload_3
-    //   51: getfield 78	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:contentId	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   54: invokevirtual 80	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   57: invokevirtual 84	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   51: getfield 85	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:contentId	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   54: invokevirtual 87	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   57: invokevirtual 91	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   60: pop
     //   61: aload_1
-    //   62: ldc 86
+    //   62: ldc 93
     //   64: aload_3
-    //   65: getfield 89	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   68: invokevirtual 94	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   71: invokestatic 100	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   74: invokevirtual 84	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   65: getfield 96	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   68: invokevirtual 101	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   71: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   74: invokevirtual 91	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   77: pop
     //   78: aload_1
-    //   79: ldc 102
+    //   79: ldc 109
     //   81: aload_3
-    //   82: getfield 104	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   85: invokevirtual 80	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   88: invokevirtual 84	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   82: getfield 111	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   85: invokevirtual 87	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   88: invokevirtual 91	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   91: pop
     //   92: aload_1
-    //   93: ldc 106
+    //   93: ldc 113
     //   95: aload_3
-    //   96: getfield 110	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:existStatus	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   99: invokevirtual 113	com/tencent/mobileqq/pb/PBEnumField:get	()I
-    //   102: invokestatic 100	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   105: invokevirtual 84	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   96: getfield 117	NS_MINI_BOOK_SHELF/MiniBookShelf$Information:existStatus	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   99: invokevirtual 120	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   102: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   105: invokevirtual 91	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   108: pop
     //   109: aload_2
-    //   110: ldc 115
+    //   110: ldc 11
     //   112: aload_1
-    //   113: invokevirtual 84	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   113: invokevirtual 91	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   116: pop
     //   117: aload_2
     //   118: areturn
     //   119: astore_1
-    //   120: ldc 8
-    //   122: new 117	java/lang/StringBuilder
+    //   120: ldc 14
+    //   122: new 122	java/lang/StringBuilder
     //   125: dup
-    //   126: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   129: ldc 120
-    //   131: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   129: ldc 125
+    //   131: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: aload_1
-    //   135: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokestatic 136	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   141: invokestatic 141	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: aconst_null
     //   145: areturn
     //   146: astore_3
-    //   147: ldc 8
-    //   149: ldc 138
+    //   147: ldc 14
+    //   149: ldc 143
     //   151: aload_3
-    //   152: invokestatic 142	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   152: invokestatic 147	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   155: goto -46 -> 109
     // Local variable table:
     //   start	length	slot	name	signature

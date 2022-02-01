@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import akam;
-import anfz;
-import azor;
+import aivm;
+import amat;
+import aybz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -12,20 +12,20 @@ import com.tencent.qphone.base.util.QLog;
 public class ChatHistoryBubbleListFragment$5$1
   implements Runnable
 {
-  public ChatHistoryBubbleListFragment$5$1(akam paramakam) {}
+  public ChatHistoryBubbleListFragment$5$1(aivm paramaivm) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("chatHistory.troop.msgList", 2, "do delete uniseq=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq + ",id=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
     }
-    azor localazor = (azor)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.getManager(201);
-    if (localazor != null) {
-      localazor.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    aybz localaybz = (aybz)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.getManager(201);
+    if (localaybz != null) {
+      localaybz.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.getMessageFacade().removeMsgByMessageRecord(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
     if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo)) {
-      anfz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a, "chat_history_start_del_msg");
+      amat.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a, "chat_history_start_del_msg");
     }
   }
 }

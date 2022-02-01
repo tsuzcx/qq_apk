@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import lyw;
+import lyh;
 
 public class ShareChat$SharePanel$6
   implements Runnable
 {
-  public ShareChat$SharePanel$6(lyw paramlyw, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
+  public ShareChat$SharePanel$6(lyh paramlyh, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ShareChat$SharePanel$6
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, (byte)3, false, false);
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, (byte)3, false, false);
         this.jdField_a_of_type_AndroidContentIntent.putExtra("face", localBitmap);
       }
       this.jdField_a_of_type_AndroidContentContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);

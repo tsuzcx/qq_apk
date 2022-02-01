@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import axup;
+import awhw;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -266,7 +266,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
     }
     if (this.sexTypes != null)
     {
-      paramInt1 = ((axup)paramQQAppInterface.getManager(106)).a(paramInt2);
+      paramInt1 = ((awhw)paramQQAppInterface.getManager(106)).a(paramInt2);
       if (!this.sexTypes.contains(Integer.valueOf(paramInt1))) {
         return false;
       }

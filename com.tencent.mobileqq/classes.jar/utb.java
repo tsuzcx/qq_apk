@@ -1,17 +1,29 @@
 import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
+import com.tencent.superplayer.view.ISPlayerVideoView;
 
-class utb
-  implements AdExposureChecker.ExposureCallback
+public class utb
+  implements usr
 {
-  utb(uta paramuta) {}
+  private ISPlayerVideoView a;
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public utb(ISPlayerVideoView paramISPlayerVideoView)
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    usw.a(uta.a(this.a), (usv)this.a.a());
+    this.a = paramISPlayerVideoView;
+  }
+  
+  public View a()
+  {
+    if ((this.a instanceof View)) {
+      return (View)this.a;
+    }
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.setFixedSize(paramInt1, paramInt2);
+    }
   }
 }
 

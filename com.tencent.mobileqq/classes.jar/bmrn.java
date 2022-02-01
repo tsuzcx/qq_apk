@@ -1,48 +1,10 @@
-import android.content.Context;
-import android.view.View.OnClickListener;
-
-public class bmrn
+public abstract interface bmrn
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = true;
-  private String d;
+  public abstract void a(bmrm parambmrm);
   
-  public bmrn(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public abstract void a(bmrm parambmrm, int paramInt);
   
-  public bmrk a()
-  {
-    return new bmrk(this, null);
-  }
-  
-  public bmrn a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bmrn a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.d = paramString;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public bmrn b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
+  public abstract void b(bmrm parambmrm);
 }
 
 

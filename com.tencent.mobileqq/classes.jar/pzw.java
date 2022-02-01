@@ -1,46 +1,75 @@
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pzw
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  
-  public pzw(ArticleInfo paramArticleInfo, Context paramContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    String str;
-    do
+    JSONObject localJSONObject2 = new JSONObject();
+    JSONObject localJSONObject1 = localJSONObject2;
+    if (paramBaseArticleInfo != null)
     {
-      return;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnTopicCapsuleClickListener", 2, "business url is " + str);
+      localJSONObject1 = localJSONObject2;
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.smallGameData))
+      {
+        localJSONObject1 = new JSONObject(paramBaseArticleInfo.smallGameData);
+        a(localJSONObject1, paramBaseArticleInfo);
       }
-    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-    localIntent.putExtra("url", str);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    ocd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    }
+    return localJSONObject1;
   }
   
-  public void onClick(ViewBase paramViewBase)
+  private static JSONObject a(JSONObject paramJSONObject, BaseArticleInfo paramBaseArticleInfo)
   {
-    a();
+    for (;;)
+    {
+      int j;
+      try
+      {
+        paramBaseArticleInfo = new JSONArray();
+        int k = paramJSONObject.optInt("card_size");
+        int i = 1;
+        if (i <= k)
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_collection_cell");
+          localJSONObject.put("game_icon", paramJSONObject.optString("game_icon" + i));
+          localJSONObject.put("game_title", paramJSONObject.optString("game_title" + i));
+          localJSONObject.put("game_type_label", paramJSONObject.optString("game_type_label" + i));
+          localJSONObject.put("game_type_label_color", paramJSONObject.optString("game_type_label" + i + "_color"));
+          localJSONObject.put("game_gray_label", paramJSONObject.optString(new StringBuilder().append("game_blue_label").append(i).toString()) + paramJSONObject.optString(new StringBuilder().append("game_gray_label").append(i).toString()));
+          localJSONObject.put("game_button_label", paramJSONObject.optString("game_button_label" + i));
+          j = 1;
+          if (j <= 3)
+          {
+            String str = paramJSONObject.optString("avator_icon" + i + "_" + j);
+            if (!TextUtils.isEmpty(str)) {
+              localJSONObject.put("avator_icon_" + j, str);
+            }
+          }
+          else
+          {
+            paramBaseArticleInfo.put(localJSONObject);
+            paramJSONObject.put("datas", paramBaseArticleInfo);
+            i += 1;
+          }
+        }
+        else
+        {
+          return paramJSONObject;
+        }
+      }
+      catch (Exception paramBaseArticleInfo)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInjoyAdHorizSmallGameCell", 2, "ex.error" + paramBaseArticleInfo.getMessage());
+        }
+      }
+      j += 1;
+    }
   }
 }
 

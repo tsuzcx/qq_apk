@@ -1,9 +1,19 @@
-import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ayuh
+class ayuh
+  implements View.OnClickListener
 {
-  public abstract void a(Dialog paramDialog, View paramView, ayug paramayug);
+  ayuh(ayuf paramayuf, TextView paramTextView, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    bgge.a(paramView.getContext(), bgga.b(this.jdField_a_of_type_Int), bgga.c(this.jdField_a_of_type_Int), 3, false, true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

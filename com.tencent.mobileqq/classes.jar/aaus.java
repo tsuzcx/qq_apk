@@ -1,50 +1,31 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aaus
-  implements TextWatcher
+class aaus
+  implements bjoe
 {
-  public aaus(MoveFileActivity paramMoveFileActivity, EditText paramEditText, abhn paramabhn) {}
+  aaus(aaur paramaaur, MessageForShortVideo paramMessageForShortVideo, agnu paramagnu, bjnw parambjnw) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    TextView localTextView = this.jdField_a_of_type_Abhn.getBtnight();
-    if (bgsk.b(paramEditable))
+    switch (paramInt)
     {
-      localTextView.setEnabled(false);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165613));
-      return;
     }
-    localTextView.setEnabled(true);
-    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165608));
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 > 0)
+    for (;;)
     {
-      paramCharSequence = paramCharSequence.toString();
-      String str = bgsk.b(paramCharSequence);
-      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
-        break label57;
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.jdField_a_of_type_Aaur.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (this.jdField_a_of_type_Agnu != null) && (this.jdField_a_of_type_Agnu.a != null))
+      {
+        this.jdField_a_of_type_Agnu.a.setFailedIconVisable(false, this.jdField_a_of_type_Aaur);
+        aaur.a(this.jdField_a_of_type_Aaur, this.jdField_a_of_type_Agnu, ShortVideoUtils.getDisplayProgress(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10), true);
       }
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
     }
-    label57:
-    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
   }
 }
 

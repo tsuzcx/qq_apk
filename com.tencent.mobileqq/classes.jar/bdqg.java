@@ -1,79 +1,21 @@
-import com.tencent.mm.vfs.VFSFileInputStream;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class bdqg
+  implements AdapterView.OnItemLongClickListener
 {
-  public static AbsStructMsg a(String paramString)
-  {
-    paramString = new ByteArrayInputStream(paramString.getBytes());
-    bdqd localbdqd = new bdqd();
-    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-    try
-    {
-      localSAXParserFactory.newSAXParser().parse(paramString, localbdqd);
-      paramString.close();
-      paramString = localbdqd.a();
-      return paramString;
-    }
-    catch (ParserConfigurationException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-      }
-      return null;
-    }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-  }
+  public bdqg(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  public static String a(String paramString)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      paramString = new VFSFileInputStream(paramString);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramString.read(arrayOfByte, 0, 1024);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
+    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
+      TroopAvatarWallPreviewActivity.c(this.a.a.this$0);
     }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return "";
-    }
-    return paramString;
+    return true;
   }
 }
 

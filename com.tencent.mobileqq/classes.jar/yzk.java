@@ -1,11 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class yzk
-  implements bbmh
+class yzk
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public yzk(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
+  yzk(yzj paramyzj) {}
   
-  public void a() {}
+  public int getSpanSize(int paramInt)
+  {
+    paramInt = yzj.a(this.a, paramInt);
+    yzp localyzp = this.a.a(paramInt);
+    if (localyzp != null) {
+      return localyzp.c(localyzp.a(paramInt));
+    }
+    return ((GridLayoutManager)yzj.a(this.a)).getSpanCount();
+  }
 }
 
 

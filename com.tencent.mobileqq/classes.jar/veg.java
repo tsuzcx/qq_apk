@@ -1,15 +1,18 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
 class veg
-  implements Observer<vxq<QQCircleFeedBase.StFeedListBusiRspData>>
+  extends View.AccessibilityDelegate
 {
   veg(vee paramvee) {}
   
-  public void a(@Nullable vxq<QQCircleFeedBase.StFeedListBusiRspData> paramvxq)
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    vee.b(this.a, paramvxq);
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

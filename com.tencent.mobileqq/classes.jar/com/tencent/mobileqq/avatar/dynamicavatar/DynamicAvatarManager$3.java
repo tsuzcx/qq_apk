@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
 import android.text.TextUtils;
-import aonz;
-import aqhr;
-import aqhz;
-import aqib;
-import aqin;
+import anhl;
+import apbc;
+import apbk;
+import apbm;
+import apby;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.DynamicAvatar;
 import com.tencent.mobileqq.data.Setting;
@@ -15,26 +15,26 @@ import java.util.ArrayList;
 public class DynamicAvatarManager$3
   implements Runnable
 {
-  public DynamicAvatarManager$3(aqib paramaqib, aonz paramaonz, String paramString) {}
+  public DynamicAvatarManager$3(apbm paramapbm, anhl paramanhl, String paramString) {}
   
   public void run()
   {
     synchronized (this.this$0.c)
     {
-      bool1 = this.this$0.c.contains(this.jdField_a_of_type_Aonz.jdField_b_of_type_MqqUtilWeakReference);
+      bool1 = this.this$0.c.contains(this.jdField_a_of_type_Anhl.jdField_b_of_type_MqqUtilWeakReference);
       if (bool1)
       {
-        if (aonz.jdField_b_of_type_Boolean) {}
+        if (anhl.jdField_b_of_type_Boolean) {}
         synchronized (this.this$0.c)
         {
-          this.this$0.c.remove(this.jdField_a_of_type_Aonz.jdField_b_of_type_MqqUtilWeakReference);
+          this.this$0.c.remove(this.jdField_a_of_type_Anhl.jdField_b_of_type_MqqUtilWeakReference);
           synchronized (this.this$0.d)
           {
-            if (!this.this$0.d.contains(this.jdField_a_of_type_Aonz.jdField_b_of_type_MqqUtilWeakReference)) {
-              this.this$0.d.add(this.this$0.d.size(), this.jdField_a_of_type_Aonz.jdField_b_of_type_MqqUtilWeakReference);
+            if (!this.this$0.d.contains(this.jdField_a_of_type_Anhl.jdField_b_of_type_MqqUtilWeakReference)) {
+              this.this$0.d.add(this.this$0.d.size(), this.jdField_a_of_type_Anhl.jdField_b_of_type_MqqUtilWeakReference);
             }
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_Aonz.jdField_b_of_type_JavaLangString)) {
-              if (!this.jdField_a_of_type_Aonz.g) {
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_Anhl.jdField_b_of_type_JavaLangString)) {
+              if (!this.jdField_a_of_type_Anhl.g) {
                 break label678;
               }
             }
@@ -45,13 +45,13 @@ public class DynamicAvatarManager$3
     DynamicAvatar localDynamicAvatar;
     try
     {
-      ??? = this.this$0.a(this.jdField_a_of_type_Aonz.jdField_c_of_type_Int, this.jdField_a_of_type_Aonz.jdField_a_of_type_JavaLangString);
-      if ((??? != null) && ((this.jdField_a_of_type_Aonz.e == 1) || (this.jdField_a_of_type_Aonz.e == 0))) {
-        if (this.jdField_a_of_type_Aonz.e == 0) {
-          if (!aqib.a(this.this$0).i)
+      ??? = this.this$0.a(this.jdField_a_of_type_Anhl.jdField_c_of_type_Int, this.jdField_a_of_type_Anhl.jdField_a_of_type_JavaLangString);
+      if ((??? != null) && ((this.jdField_a_of_type_Anhl.e == 1) || (this.jdField_a_of_type_Anhl.e == 0))) {
+        if (this.jdField_a_of_type_Anhl.e == 0) {
+          if (!apbm.a(this.this$0).i)
           {
             bool1 = true;
-            if ((!bool1) || (!aqin.a(System.currentTimeMillis(), ((DynamicAvatar)???).playTimeStamp))) {
+            if ((!bool1) || (!apby.a(System.currentTimeMillis(), ((DynamicAvatar)???).playTimeStamp))) {
               break label402;
             }
             bool2 = true;
@@ -71,7 +71,7 @@ public class DynamicAvatarManager$3
       {
         for (;;)
         {
-          this.this$0.c.remove(this.jdField_a_of_type_Aonz.jdField_b_of_type_MqqUtilWeakReference);
+          this.this$0.c.remove(this.jdField_a_of_type_Anhl.jdField_b_of_type_MqqUtilWeakReference);
           return;
           localObject3 = finally;
           throw localObject3;
@@ -87,7 +87,7 @@ public class DynamicAvatarManager$3
           continue;
           bool1 = false;
           continue;
-          if (!aqib.a(this.this$0).j) {
+          if (!apbm.a(this.this$0).j) {
             bool1 = true;
           } else {
             bool1 = false;
@@ -98,35 +98,35 @@ public class DynamicAvatarManager$3
       }
     }
     label414:
-    Setting localSetting = aqib.a(this.this$0, this.jdField_a_of_type_Aonz.jdField_c_of_type_Int, this.jdField_a_of_type_Aonz.jdField_a_of_type_JavaLangString);
-    boolean bool1 = aqib.a(this.this$0, localDynamicAvatar, localSetting, this.jdField_a_of_type_Aonz.jdField_b_of_type_Int);
+    Setting localSetting = apbm.a(this.this$0, this.jdField_a_of_type_Anhl.jdField_c_of_type_Int, this.jdField_a_of_type_Anhl.jdField_a_of_type_JavaLangString);
+    boolean bool1 = apbm.a(this.this$0, localDynamicAvatar, localSetting, this.jdField_a_of_type_Anhl.jdField_b_of_type_Int);
     if (QLog.isColorLevel()) {
       QLog.i("Q.dynamicAvatar", 2, "execute loadDynamicAvatarInfo runnable. isNeed2GetDynamicAvatarInfo: " + bool1);
     }
-    if ((bool1) || (this.jdField_a_of_type_Aonz.g)) {
+    if ((bool1) || (this.jdField_a_of_type_Anhl.g)) {
       try
       {
-        ((aqhz)aqib.a(this.this$0).getBusinessHandler(97)).a(Long.valueOf(this.jdField_a_of_type_Aonz.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aonz.jdField_c_of_type_Int, this.jdField_a_of_type_Aonz.jdField_b_of_type_Int, this.jdField_a_of_type_Aonz.d, this.jdField_a_of_type_Aonz.jdField_c_of_type_Boolean);
+        ((apbk)apbm.a(this.this$0).getBusinessHandler(97)).a(Long.valueOf(this.jdField_a_of_type_Anhl.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Anhl.jdField_c_of_type_Int, this.jdField_a_of_type_Anhl.jdField_b_of_type_Int, this.jdField_a_of_type_Anhl.d, this.jdField_a_of_type_Anhl.jdField_c_of_type_Boolean);
         return;
       }
       catch (Exception localException)
       {
         synchronized (this.this$0.c)
         {
-          this.this$0.c.remove(this.jdField_a_of_type_Aonz.jdField_b_of_type_MqqUtilWeakReference);
+          this.this$0.c.remove(this.jdField_a_of_type_Anhl.jdField_b_of_type_MqqUtilWeakReference);
           return;
         }
       }
     }
-    String str = aqib.a(this.jdField_a_of_type_Aonz.jdField_b_of_type_Int, this.jdField_a_of_type_Aonz.d, (DynamicAvatar)???);
-    ??? = aqib.a(this.jdField_a_of_type_Aonz.jdField_b_of_type_Int, 640, (DynamicAvatar)???);
+    String str = apbm.a(this.jdField_a_of_type_Anhl.jdField_b_of_type_Int, this.jdField_a_of_type_Anhl.d, (DynamicAvatar)???);
+    ??? = apbm.a(this.jdField_a_of_type_Anhl.jdField_b_of_type_Int, 640, (DynamicAvatar)???);
     if (QLog.isColorLevel()) {
       QLog.i("Q.dynamicAvatar", 2, "execute loadDynamicAvatarInfo runnable. url : " + str);
     }
-    aqib.a(this.this$0, this.jdField_a_of_type_JavaLangString, str, (String)???);
+    apbm.a(this.this$0, this.jdField_a_of_type_JavaLangString, str, (String)???);
     return;
     label678:
-    aqib.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aonz.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aonz.jdField_c_of_type_JavaLangString);
+    apbm.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anhl.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anhl.jdField_c_of_type_JavaLangString);
   }
 }
 

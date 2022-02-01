@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import bbku;
+import baep;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 class Mp4FlowReEncoder$HandleFrameListRunable
   implements Runnable
 {
-  private List<bbku> a = new ArrayList();
+  private List<baep> a = new ArrayList();
   
-  public Mp4FlowReEncoder$HandleFrameListRunable(List<bbku> paramList)
+  public Mp4FlowReEncoder$HandleFrameListRunable(List<baep> paramList)
   {
     Collection localCollection;
     this.a.addAll(localCollection);

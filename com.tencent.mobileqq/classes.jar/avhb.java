@@ -1,104 +1,37 @@
-import com.tencent.mobileqq.data.IntimateInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class avhb
-  implements anui
+  implements Animator.AnimatorListener
 {
-  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajpy> paramArrayList) {}
+  public avhb(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  protected void a(boolean paramBoolean, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramInt)
-    {
+    PoiSlideBottomPanel.h(this.a, false);
+    PoiSlideBottomPanel.i(this.a, false);
+    PoiSlideBottomPanel.j(this.a, false);
+    if (PoiSlideBottomPanel.k(this.a) != null) {
+      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
-                    return;
-                  }
-                  a(false, "", null);
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
-                    return;
-                  }
-                  a(paramBoolean, "", false);
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
-                    return;
-                  }
-                  a(false, "");
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-                    return;
-                  }
-                  a(false, "", -1, -1, -1);
-                  return;
-                  if ((paramBoolean) && ((paramObject instanceof Object[])))
-                  {
-                    a(paramBoolean, (Object[])paramObject);
-                    return;
-                  }
-                  a(false, null);
-                  return;
-                } while (!(paramObject instanceof Object[]));
-                paramObject = (Object[])paramObject;
-              } while (paramObject.length < 2);
-              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
-              return;
-            } while (!(paramObject instanceof Object[]));
-            paramObject = (Object[])paramObject;
-          } while (paramObject.length < 1);
-          a(paramBoolean, ((Long)paramObject[0]).longValue());
-          return;
-        } while (!(paramObject instanceof Object[]));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.e(this.a, false);
+    PoiSlideBottomPanel.f(this.a, false);
+    PoiSlideBottomPanel.g(this.a, false);
+    if (PoiSlideBottomPanel.i(this.a) != null) {
+      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.d(this.a, true);
   }
 }
 

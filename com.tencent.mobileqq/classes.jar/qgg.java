@@ -1,191 +1,101 @@
 import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteItemViewBuilder.2;
-import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLitePlayableCardView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.net.URL;
+import java.util.Map;
 
 public class qgg
 {
-  private static int jdField_a_of_type_Int = 147;
-  private static int jdField_b_of_type_Int = jdField_a_of_type_Int;
-  private static HashMap<String, Integer> c = new HashMap();
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IPTSLiteEventListener jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private qgl jdField_a_of_type_Qgl;
-  private qgo jdField_a_of_type_Qgo;
-  private sel jdField_a_of_type_Sel;
-  private HashMap<String, ArticleInfo> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  
-  public qgg(Context paramContext, sel paramsel)
+  private static String a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sel = paramsel;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    c();
-    b();
-  }
-  
-  public static int a()
-  {
-    if (jdField_b_of_type_Int > jdField_a_of_type_Int) {
-      return jdField_b_of_type_Int - jdField_a_of_type_Int + 1;
-    }
-    return 0;
-  }
-  
-  public static int a(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo == null) || (paramArticleInfo.ptsItemData == null) || (TextUtils.isEmpty(paramArticleInfo.ptsLitePageName))) {
-      return jdField_a_of_type_Int;
-    }
-    paramArticleInfo = (Integer)c.get(paramArticleInfo.ptsLitePageName);
-    if (paramArticleInfo != null) {
-      return paramArticleInfo.intValue();
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  private void a(PTSItemData paramPTSItemData)
-  {
-    ThreadManager.executeOnSubThread(new PTSLiteItemViewBuilder.2(this, paramPTSItemData));
-  }
-  
-  private void a(String paramString1, HashMap<String, String> paramHashMap, View paramView, String paramString2)
-  {
-    paramView = new StringBuilder();
-    paramView.append("identifier = ").append(paramString1).append("\n");
-    if (paramHashMap != null)
+    paramString = bfwg.a(pay.a(), BaseApplicationImpl.getContext(), paramString);
+    if (paramString != null)
     {
-      paramString1 = paramHashMap.entrySet().iterator();
-      while (paramString1.hasNext())
+      paramString = paramString.a;
+      if (paramString != null)
       {
-        paramHashMap = (Map.Entry)paramString1.next();
-        paramView.append("dataSet [ ").append((String)paramHashMap.getKey()).append(" ] =").append((String)paramHashMap.getValue()).append("\n");
+        paramString = (String)paramString.get("target");
+        if (!TextUtils.isEmpty(paramString)) {
+          return paramString;
+        }
       }
     }
-    QLog.i("PTSLiteItemViewBuilder", 1, paramString2 + ", " + paramView.toString());
+    return null;
   }
   
-  public static boolean a(int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    return (paramInt >= jdField_a_of_type_Int) && (paramInt <= jdField_b_of_type_Int);
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {}
-    do
-    {
-      return true;
-      if (!a(paramArticleInfo)) {
-        break;
-      }
-    } while (a(paramArticleInfo) == jdField_a_of_type_Int);
-    return false;
-    return false;
-  }
-  
-  public static <T extends BaseArticleInfo> boolean a(T paramT)
-  {
-    return (paramT != null) && (paramT.mFeedType == 29) && (!TextUtils.isEmpty(paramT.ptsLitePageName)) && (paramT.ptsItemData != null);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Qgo = new qgq().a(this.jdField_a_of_type_Sel).a(this.jdField_a_of_type_JavaUtilHashMap).b(this.jdField_b_of_type_JavaUtilHashMap).a();
-    this.jdField_a_of_type_Qgl = new qgm().a(this.jdField_a_of_type_Sel).a(this.jdField_a_of_type_JavaUtilHashMap).b(this.jdField_b_of_type_JavaUtilHashMap).a();
-    this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener = new qgh(this);
-  }
-  
-  private void c()
-  {
-    c.clear();
-    Object localObject = qib.a().a("default_feeds");
-    if (localObject == null)
-    {
-      QLog.i("PTSLiteItemViewBuilder", 1, "[initViewTypeCount], pageNameList is null.");
-      return;
-    }
-    jdField_a_of_type_Int = this.jdField_a_of_type_Sel.a().a() + 147;
-    int i = jdField_a_of_type_Int;
-    localObject = new ArrayList((Collection)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      int j = i + 1;
-      i = j;
-      if (!c.containsKey(str))
-      {
-        c.put(str, Integer.valueOf(j));
-        QLog.i("PTSLiteItemViewBuilder", 1, "[initViewTypeCount], pageName = " + str + ", viewType = " + j);
-        i = j;
-      }
-    }
-    jdField_b_of_type_Int = i;
-    QLog.i("PTSLiteItemViewBuilder", 1, "[initViewType], type_pts_lite_gone = " + jdField_a_of_type_Int + ", type_pts_lite_end = " + jdField_b_of_type_Int);
-  }
-  
-  public View a(View paramView, ArticleInfo paramArticleInfo, int paramInt, pqk parampqk)
-  {
-    if (paramArticleInfo == null)
-    {
-      QLog.e("PTSLiteItemViewBuilder", 1, "[getView], articleInfo is null.");
-      return paramView;
-    }
-    PTSItemData localPTSItemData = paramArticleInfo.ptsItemData;
-    PTSComposer localPTSComposer = paramArticleInfo.ptsComposer;
-    if ((localPTSItemData != null) && (localPTSComposer != null)) {
-      if ((paramView instanceof PTSLitePlayableCardView))
-      {
-        paramView = (PTSLitePlayableCardView)paramView;
-        localPTSComposer.layoutToView(paramView.a(), this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener);
-        qht.a.a(paramView.a());
-        qht.a.a(parampqk, paramView, this.jdField_a_of_type_Sel);
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramArticleInfo.innerUniqueID, Integer.valueOf(paramInt));
-        this.jdField_b_of_type_JavaUtilHashMap.put(paramArticleInfo.innerUniqueID, paramArticleInfo);
-        a(localPTSItemData);
-      }
-    }
+    QLog.d("PGCShortContentUtils", 1, "getJumpType: " + paramString1 + " recommendType: " + paramString2);
+    if (TextUtils.isEmpty(paramString1)) {}
     for (;;)
     {
-      paramView.setTag(2131369503, this.jdField_a_of_type_Sel.a());
-      return paramView;
-      paramView = new PTSLitePlayableCardView(this.jdField_a_of_type_AndroidContentContext);
-      break;
-      QLog.e("PTSLiteItemViewBuilder", 1, "[getView] error, ptsItemData is null or ptsComposer is null, hide the itemView, " + qgr.a(paramArticleInfo));
-      paramView = new PTSLitePlayableCardView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setVisibility(8);
+      QLog.d("PGCShortContentUtils", 1, "getJumpType result is: " + paramString2);
+      return paramString2;
+      paramString2 = a(paramString1);
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        if (a(paramString1)) {
+          paramString2 = "6";
+        }
+      }
+      else if ((paramString1.startsWith("http:")) || (paramString1.startsWith("https:"))) {
+        paramString2 = paramString1;
+      } else {
+        paramString2 = "-1";
+      }
     }
   }
   
-  public void a()
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    int i = this.jdField_a_of_type_Sel.a();
-    QLog.i("PTSLiteItemViewBuilder", 1, "[destroy] channelId = " + i);
-    if ((i == 41505) || (i == 41697))
+    a(paramContext, paramArticleInfo, false);
+  }
+  
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    QLog.d("PGCShortContentUtils", 1, "redirectToOtherPage " + paramArticleInfo + " isComment: " + paramBoolean);
+    if (paramArticleInfo == null)
     {
-      qgr.b(pfa.a().b(Integer.valueOf(41505)));
-      qgr.b(pfa.a().b(Integer.valueOf(41697)));
+      QLog.d("PGCShortContentUtils", 1, "articleInfo is null");
       return;
     }
-    qgr.b(pfa.a().b(Integer.valueOf(i)));
+    if (paramArticleInfo.isCardJumpUrlAvailable == 1)
+    {
+      paramArticleInfo.clickJumpTarget = a(paramArticleInfo.getCardJumpUrl(), "-1");
+      pay.d(paramContext, paramArticleInfo.getCardJumpUrl());
+      return;
+    }
+    paramArticleInfo.clickJumpTarget = a(paa.e, "-1");
+    pay.a(paramContext, paramArticleInfo, paramBoolean);
+  }
+  
+  public static void a(KandianUrlImageView paramKandianUrlImageView, Context paramContext, URL paramURL1, URL paramURL2, Runnable paramRunnable)
+  {
+    if ((paramKandianUrlImageView == null) || ((paramURL2 != null) && (paramURL1 != null) && (paramURL2.hashCode() == paramURL1.hashCode()) && (paramKandianUrlImageView.mController != null) && (paramKandianUrlImageView.mController.a != null))) {
+      return;
+    }
+    paramKandianUrlImageView.setPublicAccountImageDownListener(new qgh(paramRunnable));
+    pai.a(paramKandianUrlImageView, paramURL2, paramContext);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = bfwg.a(pay.a(), BaseApplicationImpl.getContext(), paramString);
+      if (localObject != null)
+      {
+        localObject = ((bfvp)localObject).a;
+        if ((localObject != null) && ("6".equals((String)((Map)localObject).get("target"))) && (((Map)localObject).containsKey("v_url_base64"))) {
+          return true;
+        }
+      }
+      return tgc.b(tgc.b(paramString));
+    }
+    return false;
   }
 }
 

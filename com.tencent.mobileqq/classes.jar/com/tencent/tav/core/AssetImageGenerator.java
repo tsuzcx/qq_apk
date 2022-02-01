@@ -35,6 +35,7 @@ public class AssetImageGenerator
   private boolean appliesPreferredTrackTransform;
   protected Asset asset;
   protected AssetExtension assetExtension;
+  private boolean forceUseFbo = false;
   @NonNull
   private final AssetImageGenerator.ImageGeneratorThread generatorThread;
   private long generatorThreadId = -1L;
@@ -98,7 +99,7 @@ public class AssetImageGenerator
   {
     RenderContext localRenderContext = initRenderContext();
     paramCMTime = getCmSampleBuffer(paramCMTime, localRenderContext);
-    if (!localRenderContext.isPBufferEnable()) {
+    if ((this.forceUseFbo) || (!localRenderContext.isPBufferEnable())) {
       return bitmapFromFBO(localRenderContext, paramCMTime);
     }
     return readBitmap(renderToMaximumSizeBox(localRenderContext, paramCMTime));
@@ -293,9 +294,14 @@ public class AssetImageGenerator
   
   public void release()
   {
+    release(false);
+  }
+  
+  public void release(boolean paramBoolean)
+  {
     if (Thread.currentThread().getId() != this.generatorThreadId)
     {
-      AssetImageGenerator.ImageGeneratorThread.access$200(this.generatorThread);
+      AssetImageGenerator.ImageGeneratorThread.access$200(this.generatorThread, paramBoolean);
       this.videoComposition = null;
       return;
     }
@@ -311,6 +317,11 @@ public class AssetImageGenerator
   public void setAppliesPreferredTrackTransform(boolean paramBoolean)
   {
     this.appliesPreferredTrackTransform = paramBoolean;
+  }
+  
+  public void setForceUseFbo(boolean paramBoolean)
+  {
+    this.forceUseFbo = paramBoolean;
   }
   
   public void setMaximumSize(CGSize paramCGSize)

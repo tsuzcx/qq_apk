@@ -5,102 +5,85 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import boqq;
-import boqu;
-import bown;
-import bozv;
-import bpam;
+import blux;
+import blvb;
+import bmas;
+import bmbg;
+import bmbx;
 import java.util.LinkedList;
 import java.util.List;
 
 public class PlayViewPagerAdapter
   extends PagerAdapter
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bown jdField_a_of_type_Bown;
-  private AEPlayShowPageView jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView;
-  private List<boqq> jdField_a_of_type_JavaUtilList;
+  public static final String DEFAULT_TAB_ID = "-1";
+  private AEPlayShowPageView currentPageView;
+  private int lastPos = -1;
+  private List<blux> mCategoryList;
+  private Context mContext;
+  private bmas mPartManager;
   
-  public PlayViewPagerAdapter(@NonNull Context paramContext, @NonNull bown parambown, @NonNull List<boqq> paramList)
+  public PlayViewPagerAdapter(@NonNull Context paramContext, @NonNull bmas parambmas, @NonNull List<blux> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bown = parambown;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.mContext = paramContext;
+    this.mPartManager = parambmas;
+    this.mCategoryList = paramList;
   }
   
-  private int a(int paramInt)
+  private int getLayoutType(int paramInt)
   {
-    boqq localboqq = (boqq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localboqq == null) {
+    blux localblux = (blux)this.mCategoryList.get(paramInt);
+    if (localblux == null) {
       return 2;
     }
-    return localboqq.b;
+    return localblux.b;
   }
   
-  private String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return ((boqq)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
-    }
-    return "-1";
-  }
-  
-  private List<boqu> a(int paramInt)
+  private List<blvb> getMaterialList(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.mCategoryList != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > paramInt) {
-        localObject1 = (boqq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (this.mCategoryList.size() > paramInt) {
+        localObject1 = (blux)this.mCategoryList.get(paramInt);
       }
     }
-    if ((localObject1 == null) || (((boqq)localObject1).jdField_a_of_type_JavaUtilList == null)) {
+    if ((localObject1 == null) || (((blux)localObject1).jdField_a_of_type_JavaUtilList == null)) {
       return new LinkedList();
     }
-    return ((boqq)localObject1).jdField_a_of_type_JavaUtilList;
+    return ((blux)localObject1).jdField_a_of_type_JavaUtilList;
   }
   
-  public AEPlayShowPageView a()
+  private String getMaterialTabId(int paramInt)
   {
-    return this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Int <= 0) {
-      return "-1";
+    if ((this.mCategoryList != null) && (this.mCategoryList.size() > paramInt)) {
+      return ((blux)this.mCategoryList.get(paramInt)).jdField_a_of_type_JavaLangString;
     }
-    return a(this.jdField_a_of_type_Int);
-  }
-  
-  public List<boqq> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(List<boqq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return "-1";
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     if ((paramObject instanceof AEPlayShowPageView)) {
-      ((AEPlayShowPageView)paramObject).c();
+      ((AEPlayShowPageView)paramObject).onDestroy();
     }
-    bpam.a("AEPlayShowPart", "page destroy.......");
+    bmbx.a("AEPlayShowPart", "page destroy.......");
     paramViewGroup.removeView((View)paramObject);
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    if (this.mCategoryList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.mCategoryList.size();
+  }
+  
+  public AEPlayShowPageView getCurrentPageView()
+  {
+    return this.currentPageView;
   }
   
   public int getItemPosition(Object paramObject)
@@ -108,9 +91,22 @@ public class PlayViewPagerAdapter
     return -2;
   }
   
+  public String getLastMaterialTabId()
+  {
+    if (this.lastPos <= 0) {
+      return "-1";
+    }
+    return getMaterialTabId(this.lastPos);
+  }
+  
+  public List<blux> getmCategoryList()
+  {
+    return this.mCategoryList;
+  }
+  
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AEPlayShowPageView localAEPlayShowPageView = new AEPlayShowPageView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bown, a(paramInt), a(paramInt));
+    AEPlayShowPageView localAEPlayShowPageView = new AEPlayShowPageView(this.mContext, this.mPartManager, getLayoutType(paramInt), getMaterialList(paramInt));
     paramViewGroup.addView(localAEPlayShowPageView);
     return localAEPlayShowPageView;
   }
@@ -120,26 +116,31 @@ public class PlayViewPagerAdapter
     return paramView == paramObject;
   }
   
+  public void setCategoryList(List<blux> paramList)
+  {
+    this.mCategoryList = paramList;
+  }
+  
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     super.setPrimaryItem(paramViewGroup, paramInt, paramObject);
     if ((paramObject instanceof AEPlayShowPageView)) {
-      this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView = ((AEPlayShowPageView)paramObject);
+      this.currentPageView = ((AEPlayShowPageView)paramObject);
     }
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.lastPos != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
+      this.lastPos = paramInt;
+      if ((this.mCategoryList != null) && (this.mCategoryList.size() > paramInt))
       {
-        paramViewGroup = (boqq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramViewGroup = (blux)this.mCategoryList.get(paramInt);
         if (paramViewGroup != null) {
-          bozv.a().g(paramViewGroup.jdField_a_of_type_JavaLangString + "");
+          bmbg.a().g(paramViewGroup.jdField_a_of_type_JavaLangString + "");
         }
       }
       if ((paramObject instanceof AEPlayShowPageView))
       {
-        this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView.post(new PlayViewPagerAdapter.1(this, paramInt));
-        this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView.a();
+        this.currentPageView.post(new PlayViewPagerAdapter.1(this, paramInt));
+        this.currentPageView.initDownloadObservers();
       }
     }
   }

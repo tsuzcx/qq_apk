@@ -1,19 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akhy
-  extends apce
+  implements DialogInterface.OnClickListener
 {
-  akhy(akha paramakha) {}
+  akhy(akhw paramakhw) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,21 +1,106 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tbv
-  implements Animation.AnimationListener
+public abstract class tbv<T>
+  extends tbu<T>
 {
-  public tbv(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
+  protected Context a;
+  protected List<T> a;
+  protected int b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected tbv(Context paramContext, int paramInt)
   {
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  private void c(List<T> paramList)
+  {
+    a(paramList);
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a()
+  {
+    return this.b;
+  }
+  
+  protected Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public List<T> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt, T paramT)
+  {
+    a(paramT);
+    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
+    notifyDataSetChanged();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt < getCount())
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < getCount())
+    {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void b(T paramT)
+  {
+    a(paramT);
+    this.jdField_a_of_type_JavaUtilList.add(paramT);
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<T> paramList)
+  {
+    c();
+    c(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
 }
 
 

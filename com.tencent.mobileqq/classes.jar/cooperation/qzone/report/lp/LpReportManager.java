@@ -3,11 +3,11 @@ package cooperation.qzone.report.lp;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bngr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.report.wmd.WMDReportManager;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import java.io.File;
@@ -306,7 +306,7 @@ public class LpReportManager
     }
     for (;;)
     {
-      bngr.a().a();
+      WMDReportManager.getInstance().reportImediately();
       return;
       QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
       continue;

@@ -1,17 +1,13 @@
-import android.opengl.GLES20;
+import java.util.Collections;
 
-public class lrt
-  extends lru
+class lrt
+  implements lrr
 {
-  public lrt(String paramString)
-  {
-    super(paramString);
-  }
+  lrt(lrs paramlrs) {}
   
-  public void a(int paramInt)
+  public void a(lrp paramlrp, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
-    lsv.a();
+    Collections.sort(lrs.a(this.a), lrs.a(this.a));
   }
 }
 

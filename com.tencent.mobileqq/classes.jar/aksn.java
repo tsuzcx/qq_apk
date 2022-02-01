@@ -1,130 +1,72 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class aksn
-  extends aksk
+  implements SeekBar.OnSeekBarChangeListener
 {
-  protected int a;
-  protected akso a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ImageView b;
+  public aksn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public aksn()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.b = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    this.a.c = paramInt;
+    if (paramBoolean) {
+      NewFlowCameraActivity.a(this.a, this.a.c, false);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      b(8);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    float f = this.a.c / 100.0F;
+    if (f != this.a.jdField_a_of_type_Float)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366123));
+      this.a.jdField_a_of_type_Float = f;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a(false, this.a.jdField_a_of_type_Float, this.a.c);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+    if (paramBoolean) {
+      NewFlowCameraActivity.a(this.a).setContentDescription(amtj.a(2131706591) + this.a.c + "%");
     }
   }
   
-  public void a(akso paramakso)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_Akso = paramakso;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372961));
-    this.b = ((ImageView)paramView.findViewById(2131372960));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372962));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    if (this.a.jdField_a_of_type_Bjmp != null) {
+      this.a.jdField_a_of_type_Bjmp.removeMessages(1011);
+    }
+    if (this.a.e != null) {
+      this.a.e.setVisibility(0);
     }
   }
   
-  public boolean a()
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    }
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (this.b == null) {
+    if (this.a.jdField_a_of_type_Float >= 0.0F)
+    {
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localSharedPreferences.edit().putFloat("beauty_radius" + str, this.a.jdField_a_of_type_Float);
+      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, this.a.jdField_a_of_type_Float);
+      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
+      localSharedPreferences.edit().commit();
       if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
+        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + this.a.jdField_a_of_type_Float + " mBeautyProcess=" + paramSeekBar.getProgress());
       }
-    }
-    do
-    {
-      do
+      if (this.a.jdField_a_of_type_Bjmp != null)
       {
-        return false;
-        if (this.b.getVisibility() != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
-        }
-      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
+        this.a.jdField_a_of_type_Bjmp.removeMessages(1011);
+        this.a.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1011, NewFlowCameraActivity.jdField_a_of_type_Long);
       }
-      return true;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
-    return false;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.b != null)
-    {
-      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
-        this.b.setVisibility(8);
+      if (this.a.e != null) {
+        this.a.e.setVisibility(4);
       }
     }
-    else {
-      return;
-    }
-    this.b.setVisibility(paramInt);
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.navigatebar;
 
-import bgiw;
+import bese;
 
 public class TroopAioNavigateBarManager$1
   implements Runnable
 {
-  public TroopAioNavigateBarManager$1(bgiw parambgiw) {}
+  public TroopAioNavigateBarManager$1(bese parambese) {}
   
   public void run()
   {

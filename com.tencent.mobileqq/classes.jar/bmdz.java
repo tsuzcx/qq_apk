@@ -1,10 +1,12 @@
-import com.tencent.mfsdk.MagnifierSDK;
+import android.os.Handler;
+import android.os.Looper;
 
-public class bmdz
+final class bmdz
+  extends bmeb<Handler, Void>
 {
-  public static String a()
+  protected Handler a(Void paramVoid)
   {
-    return MagnifierSDK.a().a().b();
+    return new Handler(Looper.getMainLooper());
   }
 }
 

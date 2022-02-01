@@ -1,15 +1,9 @@
-import android.view.View;
+import android.widget.TextView;
 
-public class bdwo
-  implements bdwn
+class bdwo
 {
-  public void a(Throwable paramThrowable) {}
-  
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public int a;
+  public TextView a;
 }
 
 

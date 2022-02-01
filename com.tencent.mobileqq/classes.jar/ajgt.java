@@ -1,34 +1,17 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajgt
-  implements ajte
+class ajgt
+  implements View.OnClickListener
 {
-  public ajgt(TroopView paramTroopView) {}
+  ajgt(ajgq paramajgq) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (TroopView.a(this.a) != null) {
-      TroopView.a(this.a).a(paramInt1, paramInt2);
-    }
-    if (paramInt1 >= paramInt2) {
-      if (!TroopView.a(this.a))
-      {
-        TroopView.a(this.a, true);
-        if (this.a.a != null) {
-          this.a.a.a(TroopView.a(this.a));
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!TroopView.a(this.a));
-      TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

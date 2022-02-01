@@ -1,17 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-public class sjn
-  extends anyu
+class sjn
+  implements sjr
 {
-  public sjn(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  sjn(sjm paramsjm) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(sjt paramsjt)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    sjm.a(this.a, 2);
+    sjm localsjm = this.a;
+    String str;
+    if (paramsjt.jdField_a_of_type_JavaLangString == null)
     {
-      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
+      str = "";
+      sjm.a(localsjm, str);
+      if (paramsjt.jdField_a_of_type_Int != 1) {
+        break label78;
+      }
+      sjm.b(this.a, 1);
+    }
+    for (;;)
+    {
+      if (sjm.a(this.a) != null) {
+        sjm.a(this.a).onPrepared();
+      }
+      return;
+      str = paramsjt.jdField_a_of_type_JavaLangString;
+      break;
+      label78:
+      sjm.b(this.a, 0);
     }
   }
 }

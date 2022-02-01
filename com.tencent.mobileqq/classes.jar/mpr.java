@@ -1,39 +1,16 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mpr
-  extends mrc
+class mpr
+  implements View.OnClickListener
 {
-  public lwo a;
-  public mpu a;
+  mpr(mpp parammpp) {}
   
-  mpr(mpv parammpv)
+  public void onClick(View paramView)
   {
-    super(parammpv);
-    this.jdField_a_of_type_Lwo = new mps(this);
-  }
-  
-  void a()
-  {
-    mpt localmpt = new mpt(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmpt);
-  }
-  
-  public void a(mpu parammpu)
-  {
-    mpv localmpv = a();
-    if (localmpv == null) {
-      return;
-    }
-    localmpv.a(parammpu);
-  }
-  
-  public void b(mpu parammpu)
-  {
-    mpv localmpv = a();
-    if (localmpv == null) {
-      return;
-    }
-    localmpv.b(parammpu);
+    this.a.a(false, 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

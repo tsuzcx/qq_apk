@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class bgun
-  extends bguw
+  implements View.OnLayoutChangeListener
 {
-  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
+  
+  public bgun(WebViewFragment paramWebViewFragment) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED)) {
-      this.a = ((TroopUploadingThread)bguv.a(paramClass));
+    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
+    paramView.getWindowVisibleDisplayFrame(this.b);
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView == null) {
+        break label100;
+      }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView.getPluginEngine();
+      if (paramView != null)
+      {
+        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
+        if (paramInt1 >= -100) {
+          break label105;
+        }
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934614L, null);
+      }
     }
-    if (this.a == null) {}
-    do
+    label100:
+    label105:
+    while (paramInt1 <= 100)
     {
       return;
-      this.a.a(paramArrayList, paramHashMap, paramList, this);
-    } while (this.a.isAlive());
-    this.a.start();
+      paramView = null;
+      break;
+    }
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934613L, null);
   }
 }
 

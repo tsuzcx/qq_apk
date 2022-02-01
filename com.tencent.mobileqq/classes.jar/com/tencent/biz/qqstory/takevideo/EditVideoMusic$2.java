@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import yxt;
-import yzd;
-import zlk;
-import zll;
+import xzd;
+import yam;
+import ymk;
+import yml;
 
 class EditVideoMusic$2
   implements Runnable
@@ -16,20 +16,20 @@ class EditVideoMusic$2
     if ((!this.this$0.c) && (this.this$0.d))
     {
       this.this$0.c = true;
-      localObject = this.this$0.a(yzd.class);
+      localObject = this.this$0.a(yam.class);
       if (localObject == null) {
         break label145;
       }
     }
     label145:
-    for (Object localObject = ((yzd)localObject).a(this.this$0.a.a());; localObject = null)
+    for (Object localObject = ((yam)localObject).a(this.this$0.a.a());; localObject = null)
     {
       boolean bool2 = false;
       boolean bool1 = bool2;
       if (localObject != null)
       {
         bool1 = bool2;
-        if (((zlk)localObject).a.a == 1) {
+        if (((ymk)localObject).a.a == 1) {
           bool1 = true;
         }
       }

@@ -1,18 +1,87 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amkz
-  implements aqgm
+  extends amnk
 {
-  public amkz(SessionClearFragment paramSessionClearFragment) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public amkz(Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    super(null, paramContext);
+    this.c = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.f = 4;
+  }
+  
+  public amlu a(String paramString)
+  {
+    return new amlx(paramString);
+  }
+  
+  public View a()
+  {
+    switch (this.b)
+    {
+    default: 
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setDivider(null);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setVerticalScrollBarEnabled(true);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setEdgeEffectEnabled(false);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setSelector(2130850608);
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView;
+    case 4: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558676, null);
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setDivider(null);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setVerticalScrollBarEnabled(true);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setEdgeEffectEnabled(false);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setSelector(2130850608);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView;
+  }
+  
+  public ArrayList<amlu> a(int paramInt)
+  {
+    if ((this.b != 0) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    do
+    {
+      return null;
+      i = a();
+    } while ((paramInt < 0) || (paramInt >= i) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null));
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getFirstVisiblePosition() * this.f;
+    int i = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getLastVisiblePosition();
+    int j = this.f;
+    ArrayList localArrayList = new ArrayList();
+    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= (i + 1) * j - 1))
+    {
+      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramInt += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    c(paramView);
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    super.a(paramBaseChatPie);
+    if (this.jdField_a_of_type_Amnd != null) {
+      this.jdField_a_of_type_Amnd.a(paramBaseChatPie);
+    }
   }
 }
 

@@ -1,8 +1,15 @@
-import android.view.View;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public abstract interface abwc
+class abwc
+  implements Comparator<MessageRecord>
 {
-  public abstract void a(View paramView, abwd paramabwd);
+  abwc(abwa paramabwa) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+  }
 }
 
 

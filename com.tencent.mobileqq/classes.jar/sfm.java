@@ -1,24 +1,106 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class sfm
-  implements blih
+public class sfm
 {
-  sfm(sel paramsel) {}
+  private static sfm a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  private int a(String paramString)
   {
-    switch (paramInt)
+    return Math.round(((Float)bkwm.a(a(paramString), Float.valueOf(0.0F))).floatValue());
+  }
+  
+  private String a(String paramString)
+  {
+    return paramString + "_watch_length";
+  }
+  
+  public static sfm a()
+  {
+    if (a == null) {}
+    try
     {
-    case 1: 
-    case 2: 
-    default: 
+      if (a == null) {
+        a = new sfm();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  private boolean a(String paramString)
+  {
+    return Aladdin.getConfig(298).getIntegerFromString(paramString, 0) == 1;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    int k = a(paramString);
+    int j = Aladdin.getConfig(298).getIntegerFromString("default_predownload_count", 4);
+    int m = Aladdin.getConfig(298).getIntegerFromString("max_predownload_count", 4);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoPreloadStrategyConoller", 2, "getForwardPredownloadCount: enable:true, prediction=" + k + ", curPosition=" + paramInt + ", maxPreloadCount = " + m + ", defaultPreloadCount=" + j);
+    }
+    int i = j;
+    if (k > paramInt)
+    {
+      i = j;
+      if (a("watch_length_predict_enable")) {
+        i = Math.min(k - paramInt, m);
+      }
+    }
+    return i;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    float f = ((Float)bkwm.a(a(paramString), Float.valueOf(0.0F))).floatValue();
+    if (f > 0.0F) {}
+    for (f = f * 0.5F + paramInt * 0.5F;; f = paramInt)
+    {
+      bkwm.a(paramString + "_watch_length", Float.valueOf(f));
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPreloadStrategyConoller", 2, "reoprt: currentPredition=" + f);
+      }
       return;
     }
-    this.a.g();
-    sel.b(this.a);
-    this.a.h();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    long l1 = sfc.a().a();
+    float f = Aladdin.getConfig(298).getFloatFromString("bitrate_weight", 2.0F);
+    int i = Aladdin.getConfig(298).getIntegerFromString("idle_bandwith_threshold", 1500);
+    long l2 = ((float)l1 - paramInt / 8 * f);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoPreloadStrategyConoller", 2, "checkPreloadEnable: bandwidth=" + l1 + ", birate=" + paramInt + ", weight=" + f + ", idleBandwidth=" + l2 + ", idleThreshold=" + i + ", enable=" + a("idle_preload_limit_enable"));
+    }
+    if ((l1 <= 50L) || (paramInt <= 0) || (!a("idle_preload_limit_enable"))) {
+      return NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext());
+    }
+    return l2 > i;
+  }
+  
+  public boolean a(sdj paramsdj)
+  {
+    int j = 0;
+    int i = j;
+    if (paramsdj != null)
+    {
+      i = j;
+      if (paramsdj.b() > 0L) {
+        i = paramsdj.a;
+      }
+    }
+    return a(i);
   }
 }
 

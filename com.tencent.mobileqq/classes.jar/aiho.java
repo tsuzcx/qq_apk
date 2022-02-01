@@ -1,34 +1,79 @@
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.qidian.data.BmqqAccountType;
+import android.util.Xml;
+import java.io.ByteArrayInputStream;
+import org.xmlpull.v1.XmlPullParser;
 
-class aiho
-  extends anuw
+public class aiho
 {
-  aiho(aihh paramaihh) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
   
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  public aiho()
   {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    aihh.a(this.a);
-    this.a.bo();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_Bkgt.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!aihh.a(this.a)))
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public static aiho a(String paramString)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
     {
-      aihh.a(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
+      aiho localaiho = new aiho();
+      XmlPullParser localXmlPullParser = Xml.newPullParser();
+      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      for (int i = 0;; i = localXmlPullParser.next())
+      {
+        localObject = localaiho;
+        if (i == 1) {
+          break;
+        }
+        if ((i == 2) && (localXmlPullParser.getName().equalsIgnoreCase("banner")))
+        {
+          int j = localXmlPullParser.getAttributeCount();
+          i = 0;
+          if (i < j)
+          {
+            paramString = localXmlPullParser.getAttributeName(i);
+            if ("text".equals(paramString)) {
+              localaiho.jdField_b_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              if ("url".equals(paramString)) {
+                localaiho.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+              } else if ("dayNum".equals(paramString)) {
+                localaiho.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("dayIntervalNum".equals(paramString)) {
+                localaiho.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("totalNum".equals(paramString)) {
+                localaiho.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("loginNum".equals(paramString)) {
+                localaiho.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("banner".equals(paramString)) {
+                localaiho.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+              } else if ("setEntry".equals(paramString)) {
+                localaiho.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+              }
+            }
+          }
+        }
+      }
     }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
-      aihh.b(this.a);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = nok.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    }
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return "MobileUnityBannerData [url=" + this.jdField_a_of_type_JavaLangString + ", text=" + this.jdField_b_of_type_JavaLangString + ", dayNum=" + this.jdField_a_of_type_Int + ", dayIntervalNum=" + this.jdField_b_of_type_Int + ", totalNum=" + this.c + ", loginNum = " + this.e + ", version=" + this.d + "]";
   }
 }
 

@@ -1,89 +1,53 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.meta.SceneMeta;
+import com.tencent.qapmsdk.resource.ResourceListener;
+import com.tencent.qapmsdk.resource.ResourceMonitor;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class acjb
+  extends achx
+  implements achs, ResourceListener
 {
-  private static AppInterface a;
-  
-  private static void a(String paramString, long paramLong)
+  public void a(String paramString)
   {
-    String[] arrayOfString;
-    if (bhnv.b(BaseApplication.getContext()) == 1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
-      arrayOfString[1] = "param_WIFIFlow";
-      arrayOfString[2] = "param_Flow";
-    }
-    for (;;)
-    {
-      a(paramString, arrayOfString, paramLong);
-      return;
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
+    if (e()) {
+      QAPM.beginScene(paramString, QAPM.ModeResource);
     }
   }
   
-  public static void a(String paramString, long paramLong, short paramShort)
+  protected void b()
   {
-    if (paramShort == 0) {
-      a(paramString, paramLong);
-    }
-    while (paramShort != 1) {
-      return;
-    }
-    b(paramString, paramLong);
+    ResourceMonitor.setPublicMode(true);
+    ResourceMonitor.setResourceListener(this);
   }
   
-  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
+  public void b(String paramString)
   {
-    if ((a == null) || (paramArrayOfString == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
-      }
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        String str = a.getCurrentAccountUin();
-        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+    if (e()) {
+      QAPM.endScene(paramString, QAPM.ModeResource);
     }
   }
   
-  private static void b(String paramString, long paramLong)
+  public String c()
   {
-    String[] arrayOfString;
-    if (bhnv.b(BaseApplication.getContext()) == 1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
-      arrayOfString[1] = "param_WIFIFlow";
-      arrayOfString[2] = "param_Flow";
+    return "resource";
+  }
+  
+  public void onMetaGet(SceneMeta paramSceneMeta)
+  {
+    double d = 100.0D * paramSceneMeta.cpu;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramSceneMeta.stage + " " + d + " " + paramSceneMeta.memory + " " + paramSceneMeta.duration);
     }
-    for (;;)
-    {
-      a(paramString, arrayOfString, paramLong);
-      return;
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_XGGameCenterUploadFlow";
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cpuUsage", String.valueOf(d));
+    localHashMap.put("memory", String.valueOf(paramSceneMeta.memory));
+    localHashMap.put("scene", String.valueOf(paramSceneMeta.stage));
+    localHashMap.put("duration", String.valueOf(paramSceneMeta.duration));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "actScenePerf", true, 0L, 0L, localHashMap, "");
   }
 }
 

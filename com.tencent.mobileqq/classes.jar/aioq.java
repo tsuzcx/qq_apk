@@ -1,27 +1,41 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
 
-class aioq
-  extends oep
+public class aioq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aioq(ainh paramainh) {}
+  public aioq(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onGlobalLayout()
   {
-    if ((paramBoolean) && (ainh.a(this.a).getVisibility() != 0))
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
     {
-      if (mbh.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      this.a.b(this.a.e);
+      this.a.c(this.a.e);
+      View localView = this.a.a.getChildAt(this.a.e);
+      if (localView != null)
       {
-        ainh.b(this.a).setVisibility(0);
-        ainh.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130847091, 2130847092);
+        this.a.h = localView.getLeft();
+        if (localView.getMeasuredWidth() == 0)
+        {
+          this.a.h = (SimpleSlidingIndicator.a(this.a) + (SimpleSlidingIndicator.b(this.a) + SimpleSlidingIndicator.c(this.a)) * this.a.e);
+          if (QLog.isColorLevel()) {
+            QLog.i("SimpleSlidingIndicator", 2, "onGlobalLayout, x[" + this.a.h + "], size[" + this.a.a.getChildCount() + "], left[" + localView.getLeft() + "], width[" + localView.getMeasuredWidth() + "], pos[" + this.a.e + "], CPlr" + SimpleSlidingIndicator.a(this.a) + "]");
+          }
+        }
+        this.a.invalidate();
       }
-    }
-    else {
       return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    ainh.d(this.a).setVisibility(8);
   }
 }
 

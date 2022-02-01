@@ -1,13 +1,13 @@
 package com.tencent.open.base.img;
 
 import android.text.TextUtils;
-import bjjo;
-import bjrc;
-import bjtu;
-import bjtx;
-import bjtz;
-import bjuw;
-import bjux;
+import bhpc;
+import bhwr;
+import bhzj;
+import bhzm;
+import biai;
+import biaj;
+import com.tencent.open.base.MD5Utils;
 import java.io.File;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ImageCache
 {
-  protected static bjuw a;
+  protected static biai a;
   public static final String a;
   protected static ThreadPoolExecutor a;
   protected static final String b = File.separator + "tencent" + File.separator + "qzone" + File.separator + "ImgCache2" + File.separator;
@@ -26,11 +26,11 @@ public class ImageCache
     jdField_a_of_type_JavaLangString = File.separator + "tencent" + File.separator + "qzone" + File.separator + ".AppCenterImgCache" + File.separator;
     try
     {
-      File localFile = new File(bjrc.e() + b);
+      File localFile = new File(bhwr.e() + b);
       if (localFile.exists()) {
-        localFile.renameTo(new File(bjrc.e() + jdField_a_of_type_JavaLangString));
+        localFile.renameTo(new File(bhwr.e() + jdField_a_of_type_JavaLangString));
       }
-      jdField_a_of_type_Bjuw = new bjuw(bjjo.a().a());
+      jdField_a_of_type_Biai = new biai(bhpc.a().a());
       jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 5, 120L, TimeUnit.SECONDS, new ArrayBlockingQueue(100));
       return;
     }
@@ -45,7 +45,7 @@ public class ImageCache
   
   public static String a(String paramString1, String paramString2)
   {
-    return bjrc.e() + jdField_a_of_type_JavaLangString + paramString1 + File.separator + bjtu.a(paramString2);
+    return bhwr.e() + jdField_a_of_type_JavaLangString + paramString1 + File.separator + bhzj.a(paramString2);
   }
   
   protected static void a(ImageCache.UpdateTask paramUpdateTask)
@@ -53,12 +53,12 @@ public class ImageCache
     try
     {
       if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(paramUpdateTask)) {
-        bjtx.a("ImageCache", "download task already exist, return. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
+        bhzm.a("ImageCache", "download task already exist, return. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
       }
       for (;;)
       {
         return;
-        bjtx.a("ImageCache", "add download task to queue. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
+        bhzm.a("ImageCache", "add download task to queue. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
         jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramUpdateTask);
       }
     }
@@ -66,9 +66,9 @@ public class ImageCache
     {
       for (;;)
       {
-        bjtx.c("ImageCache", "execute>>> ", localException);
-        if (paramUpdateTask.jdField_a_of_type_Bjux != null) {
-          paramUpdateTask.jdField_a_of_type_Bjux.b(paramUpdateTask.jdField_a_of_type_JavaLangString, paramUpdateTask.b, paramUpdateTask.c);
+        bhzm.c("ImageCache", "execute>>> ", localException);
+        if (paramUpdateTask.jdField_a_of_type_Biaj != null) {
+          paramUpdateTask.jdField_a_of_type_Biaj.b(paramUpdateTask.jdField_a_of_type_JavaLangString, paramUpdateTask.b, paramUpdateTask.c);
         }
       }
     }
@@ -84,21 +84,21 @@ public class ImageCache
     }
     catch (Exception paramString)
     {
-      bjtx.c("ImageCache", "-->delete image file failed.", paramString);
+      bhzm.c("ImageCache", "-->delete image file failed.", paramString);
     }
   }
   
-  public static void a(String paramString1, String paramString2, bjux parambjux)
+  public static void a(String paramString1, String paramString2, biaj parambiaj)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    a(bjtz.b(paramString2), paramString1, paramString2, parambjux);
+    a(MD5Utils.encodeHexStr(paramString2), paramString1, paramString2, parambiaj);
   }
   
-  protected static void a(String paramString1, String paramString2, String paramString3, bjux parambjux)
+  protected static void a(String paramString1, String paramString2, String paramString3, biaj parambiaj)
   {
-    a(new ImageCache.UpdateTask(paramString1, paramString2, paramString3, parambjux));
+    a(new ImageCache.UpdateTask(paramString1, paramString2, paramString3, parambiaj));
   }
 }
 

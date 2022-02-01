@@ -1,20 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
 
-class rxu
-  implements Animation.AnimationListener
+public class rxu
+  extends AnimatorListenerAdapter
 {
-  rxu(rxt paramrxt) {}
+  public rxu(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    rxt.a(this.a).startAnimation(rxt.a(this.a));
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
+  }
 }
 
 

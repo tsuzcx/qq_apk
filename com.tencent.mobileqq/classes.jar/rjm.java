@@ -1,30 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.Spanned;
+import java.util.Comparator;
 
-class rjm
-  implements rjd<qzp>
+public class rjm
+  implements Comparator<Object>
 {
-  rjm(rjj paramrjj) {}
+  private Spanned a;
   
-  public boolean a(qzp paramqzp)
+  public rjm(Spanned paramSpanned)
   {
-    try
-    {
-      paramqzp = new File(paramqzp.b);
-      if (paramqzp.isFile())
-      {
-        boolean bool = paramqzp.exists();
-        if (bool) {
-          return true;
-        }
-      }
-      return false;
+    this.a = paramSpanned;
+  }
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i > j) {
+      return 1;
     }
-    catch (Throwable paramqzp)
-    {
-      QLog.e("RIJUGC.SelectVideoPresenter", 1, "SelectVideoPresenter check error, file not found", paramqzp);
+    if (i < j) {
+      return -1;
     }
-    return false;
+    return 0;
   }
 }
 

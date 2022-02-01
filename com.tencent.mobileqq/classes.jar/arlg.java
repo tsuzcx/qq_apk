@@ -1,42 +1,54 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.Switch;
 
-public class arlg
-  implements arae<String>
+class arlg
+  extends nme
 {
-  public String a;
-  public boolean a;
+  arlg(arlf paramarlf, boolean paramBoolean) {}
   
-  public arlg()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "{}";
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, "onParse: but configContent is null!");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
+    boolean bool = true;
+    if (paramInt != 0)
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("dialogSwitch")) {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
+      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
+      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
+      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
+      if (!this.b) {}
+      for (bool = true;; bool = false)
+      {
+        paramArrayOfByte.setChecked(bool);
+        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
+        return;
       }
-      return;
     }
-    catch (JSONException paramString)
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
+    }
+    paramArrayOfByte = (arjk)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
+    if (!this.b) {}
+    for (;;)
     {
-      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+      paramArrayOfByte.mVipHide = bool;
+      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
+      paramArrayOfByte = this.a.a.getActivity();
+      if (paramArrayOfByte == null) {
+        break;
+      }
+      paramArrayOfByte.setResult(8193);
+      return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlg
  * JD-Core Version:    0.7.0.1
  */

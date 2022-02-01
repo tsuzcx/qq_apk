@@ -1,45 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class pek
-  extends bbap
 {
-  public pek(KandianMergeManager paramKandianMergeManager) {}
-  
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  public static String a(String paramString, Map<String, Object> paramMap)
   {
-    if (!"kandian_num_red_pnt_buffer".equals(paramString)) {}
-    while ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramString = ((NumRedMsg.NumMsgBusi)paramList.get(paramList.size() - 1)).str_ext.get();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramList = KandianMsgBoxRedPntInfo.createFromJSON(paramString);
-      if ((paramList == null) || (paramList.mMsgCnt <= 0) || ((KandianMergeManager.a(this.a) != null) && (paramList.mSeq <= KandianMergeManager.a(this.a).mSeq)))
+    JSONObject localJSONObject;
+    if ((paramMap != null) && (paramMap.size() > 0)) {
+      try
       {
-        QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.a(this.a), "new : ", paramList });
-        return;
+        localJSONObject = new JSONObject(paramString);
+        paramMap = paramMap.entrySet().iterator();
+        while (paramMap.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
+          return paramString;
+        }
       }
-      if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 1) == 2) {
-        break label183;
+      catch (Exception paramMap)
+      {
+        QLog.e("RIJR5JsonManager", 1, paramMap.getMessage());
       }
-      this.a.a(paramList);
     }
-    for (;;)
+    paramMap = localJSONObject.toString();
+    return paramMap;
+  }
+  
+  public static JSONArray a(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1);
+    if ((paramString1 == null) || (paramString1.length() <= 0)) {
+      paramString1 = null;
+    }
+    do
     {
-      QLog.d("KandianMergeManager", 1, "handlerRedPntCenterNotify | num red pnt buffer : " + paramString);
-      return;
-      label183:
-      pfa.a().j(1);
+      return paramString1;
+      paramString2 = paramString1.optJSONArray(paramString2);
+      if (paramString2 == null) {
+        break;
+      }
+      paramString1 = paramString2;
+    } while (paramString2.length() > 0);
+    return null;
+  }
+  
+  public static JSONObject a(String paramString)
+  {
+    try
+    {
+      paramString = (JSONObject)new JSONTokener(paramString).nextValue();
+      return paramString;
     }
+    catch (Exception paramString) {}
+    return null;
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.hippy.qq.app;
 
+import com.tencent.hippy.qq.utils.HippyReporter;
 import com.tencent.mtt.hippy.adapter.exception.HippyExceptionHandlerAdapter;
 import com.tencent.mtt.hippy.common.HippyJsException;
 import com.tencent.qphone.base.util.QLog;
@@ -14,31 +15,17 @@ class HippyQQEngine$3
   public void handleJsException(HippyJsException paramHippyJsException)
   {
     if (QLog.isColorLevel()) {
-      if (paramHippyJsException == null) {
-        break label41;
-      }
+      QLog.d("Hippy", 2, "Hippy: handleJsException:" + paramHippyJsException);
     }
-    label41:
-    for (paramHippyJsException = paramHippyJsException.getMessage();; paramHippyJsException = "")
-    {
-      QLog.d("Hippy", 2, "Hippy: handleJsException msg=" + paramHippyJsException);
-      return;
-    }
+    HippyReporter.getInstance().reportException(HippyQQEngine.access$100(this.this$0), this.this$0.mModuleVersion, 1, paramHippyJsException);
   }
   
   public void handleNativeException(Exception paramException, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      if (paramException == null) {
-        break label41;
-      }
+      QLog.d("Hippy", 2, "Hippy: handleNativeException haveCaught:" + paramBoolean + " exception:" + paramException);
     }
-    label41:
-    for (paramException = paramException.getMessage();; paramException = "")
-    {
-      QLog.d("Hippy", 2, "Hippy: handleNativeException msg=" + paramException);
-      return;
-    }
+    HippyReporter.getInstance().reportException(HippyQQEngine.access$100(this.this$0), this.this$0.mModuleVersion, 2, paramException);
   }
 }
 

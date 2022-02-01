@@ -1,68 +1,31 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class xpv
-  extends AbsVideoInfoWidget
+  implements URLDrawable.URLDrawableListener
 {
-  private xpx a = new xpx(this);
-  private boolean e;
+  public xpv(AutoPlayImageView paramAutoPlayImageView) {}
   
-  public xpv(ViewGroup paramViewGroup)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super(paramViewGroup);
+    if (AutoPlayImageView.a(this.a) == 2) {
+      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
+      }
+    }
+    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      return;
+    }
+    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
   }
-  
-  public String a()
-  {
-    return "LoadingMoreWidget";
-  }
-  
-  public xpx a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new xpw(this), "");
-  }
-  
-  public void a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return this.e;
-  }
-  
-  public int b()
-  {
-    return 2131561895;
-  }
-  
-  public void d()
-  {
-    this.e = true;
-    i();
-    yuk.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
-  }
-  
-  public void e()
-  {
-    this.e = false;
-    k();
-    yuk.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
-  }
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

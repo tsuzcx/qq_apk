@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import aldq;
+import akbj;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 import java.io.File;
 
 final class e
-  implements aldq
+  implements akbj
 {
   e(d paramd, String paramString) {}
   

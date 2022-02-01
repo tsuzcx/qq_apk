@@ -1,96 +1,140 @@
-import android.view.LayoutInflater;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bcjb
-  implements bcil<bcfp, bcny>
+  extends bcgw
 {
-  private aoof jdField_a_of_type_Aoof;
-  private bcjf jdField_a_of_type_Bcjf;
-  boolean jdField_a_of_type_Boolean;
+  public boolean a;
+  public int o;
   
-  public bcjb(aoof paramaoof, boolean paramBoolean)
+  public bcjb()
   {
-    this.jdField_a_of_type_Aoof = paramaoof;
-    this.jdField_a_of_type_Bcjf = new bcjf(paramaoof, paramBoolean);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = "hr";
+    this.jdField_a_of_type_Int = 9;
   }
   
-  public void a(bcfp parambcfp, bcny parambcny)
+  @TargetApi(11)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    bcfq localbcfq = (bcfq)parambcfp;
-    bcpk localbcpk = (bcpk)parambcny;
-    int i = localbcfq.a();
-    LinearLayout localLinearLayout = localbcpk.a();
-    ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    if (localLinearLayout != null)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      List localList = localbcfq.a();
-      if ((localList != null) && (!localList.isEmpty()))
+      paramBundle = paramView;
+      if (paramView == null) {
+        paramBundle = new View(paramContext);
+      }
+      if (this.o == 0) {
+        paramBundle.setBackgroundColor(-2170912);
+      }
+      do
       {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), i);
-        i = 0;
-        if (i < k)
+        do
         {
-          bcfr localbcfr = (bcfr)localList.get(i);
-          View localView;
-          label142:
-          int m;
-          int n;
-          if (this.jdField_a_of_type_Boolean)
+          return paramBundle;
+        } while (this.o != 1);
+        paramBundle.setBackgroundResource(2130847392);
+      } while (Build.VERSION.SDK_INT < 11);
+      paramBundle.setLayerType(1, null);
+      return paramBundle;
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return "Hr";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    if (this.jdField_a_of_type_Int > 4)
+    {
+      String str = paramObjectInput.readUTF();
+      if ((str != null) && (str.toLowerCase().equals("true"))) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    if (this.jdField_a_of_type_Int >= 9) {
+      this.o = paramObjectInput.readInt();
+    }
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "true";; str = "false")
+    {
+      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeInt(this.o);
+      return;
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "hr");
+    if (this.jdField_a_of_type_Int > 4) {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label76;
+      }
+    }
+    label76:
+    for (String str = "true";; str = "false")
+    {
+      paramXmlSerializer.attribute(null, "hidden", str);
+      if (this.jdField_a_of_type_Int >= 9) {
+        paramXmlSerializer.attribute(null, "style", String.valueOf(this.o));
+      }
+      paramXmlSerializer.endTag(null, "hr");
+      return;
+    }
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    if (parambcin == null) {}
+    for (;;)
+    {
+      return true;
+      if (this.jdField_a_of_type_Int > 4)
+      {
+        String str = parambcin.a("hidden");
+        if ((str != null) && (str.toLowerCase().equals("true"))) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+      }
+      if (this.jdField_a_of_type_Int >= 9)
+      {
+        parambcin = parambcin.a("style");
+        if (!TextUtils.isEmpty(parambcin)) {
+          try
           {
-            localView = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562880, null);
-            parambcfp = new bcnv(localView);
-            localView.setTag(2131381109, localbcfr);
-            localView.setTag(2131381115, parambcfp);
-            localView.setTag(2131381110, Integer.valueOf(i));
-            localView.setTag(2131381108, Integer.valueOf(localList.size()));
-            localView.setTag(2131381111, this.jdField_a_of_type_Bcjf);
-            bcnl.a(localbcfr, k, i);
-            m = localbcfr.a();
-            n = localbcfr.b();
-            if (!(localbcfr instanceof bcfs)) {
-              break label334;
+            this.o = Integer.parseInt(parambcin);
+            if (QLog.isColorLevel())
+            {
+              QLog.i("StructMsg", 2, "type=" + this.o);
+              return true;
             }
           }
-          label334:
-          for (int j = ((bcfs)localbcfr).u;; j = 0)
+          catch (NumberFormatException parambcin)
           {
-            bcnl.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            if (this.jdField_a_of_type_Bcjf.a() != null) {
-              this.jdField_a_of_type_Bcjf.a().a((bcfp)localList.get(i), parambcfp);
+            if (QLog.isColorLevel()) {
+              QLog.e("StructMsg", 2, "", parambcin);
             }
-            i += 1;
-            break;
-            localView = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562879, null);
-            parambcfp = new bcpp(localView);
-            break label142;
           }
         }
       }
     }
-    parambcfp = localbcfq.a();
-    if ((parambcfp == null) || (parambcfp.isEmpty()))
-    {
-      if (parambcny.b() != null) {
-        parambcny.b().setVisibility(8);
-      }
-      localbcpk.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localbcpk.jdField_a_of_type_AndroidViewView.setTag(2131381110, Integer.valueOf(-1));
-      localbcpk.jdField_a_of_type_AndroidWidgetTextView.setText(localbcfq.b());
-      localbcpk.b.setText(anzj.a(2131712528));
-      localbcpk.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846042);
-      localbcpk.jdField_a_of_type_AndroidViewView.setOnClickListener(new bcjc(this, localbcfq));
-      return;
-    }
-    localbcpk.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    return false;
   }
 }
 

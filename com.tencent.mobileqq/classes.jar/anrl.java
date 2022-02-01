@@ -1,42 +1,94 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class anrl
-  implements DialogInterface.OnClickListener
 {
-  public anrl(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
+  private static String jdField_a_of_type_JavaLangString = "JumpParserResult";
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anrl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
-    {
-      paramDialogInterface = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
-      }
-      String str = new JSONObject(this.c).getString("packageId");
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    paramString2 = paramString3;
+    if (paramString3 == null) {
+      paramString2 = "";
+    }
+    paramString3 = paramString4;
+    if (paramString4 == null) {
+      paramString3 = "";
+    }
+    this.b = str;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.f = paramString5;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
       return;
     }
-    catch (JSONException paramDialogInterface)
-    {
-      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public String b()
+  {
+    return this.c;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.c = str;
+  }
+  
+  public String c()
+  {
+    return this.d;
+  }
+  
+  public void c(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.d = str;
+  }
+  
+  public String d()
+  {
+    return this.f;
   }
 }
 

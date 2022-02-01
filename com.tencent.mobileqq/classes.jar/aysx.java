@@ -1,10 +1,15 @@
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aysx
+public abstract interface aysx
+  extends aysy
 {
-  public int a;
-  public aysx a;
-  public List<aysx> a;
+  public abstract aysw a(int paramInt);
+  
+  public abstract void a(aysw paramaysw);
+  
+  public abstract void a(BaseActivity paramBaseActivity);
+  
+  public abstract void b(aysw paramaysw);
 }
 
 

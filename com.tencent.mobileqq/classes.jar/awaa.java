@@ -1,467 +1,250 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.google.gson.JsonObject;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.4;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.7;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import mqq.manager.Manager;
-import mqq.manager.TicketManager;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class awaa
-  implements awed, Manager
 {
-  private static UpgradeablePluginManager jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginmanagerUpgradeablePluginManager = new UpgradeablePluginManager(awbg.a(BaseApplicationImpl.getContext()), "group_video", awaj.a());
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final avzo jdField_a_of_type_Avzo = new avzo();
-  private bjbs jdField_a_of_type_Bjbs;
-  private volatile QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new awaf(this);
-  private volatile boolean jdField_a_of_type_Boolean;
+  public QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<avzx> jdField_a_of_type_JavaUtilList;
+  private Map<String, avzw> jdField_a_of_type_JavaUtilMap;
+  private Map<String, String> b;
   
-  public awaa(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
-    awde.a().a(paramQQAppInterface);
-    this.jdField_a_of_type_Avzo.a(paramQQAppInterface);
-  }
-  
-  private static int a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("prefs_key_gvideo_entry_" + paramString, 0);
-  }
-  
-  private awah a(String paramString1, String paramString2, String paramString3)
-  {
-    awah localawah = new awah(null);
-    if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals("0")))
-    {
-      localawah.jdField_a_of_type_Int = 0;
-      localawah.jdField_a_of_type_JavaLangString = paramString2;
-      return localawah;
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals("0")))
-    {
-      localawah.jdField_a_of_type_Int = 2;
-      localawah.jdField_a_of_type_JavaLangString = paramString1;
-      return localawah;
-    }
-    if ((!TextUtils.isEmpty(paramString3)) && (!paramString3.equals("0")))
-    {
-      localawah.jdField_a_of_type_Int = 1;
-      localawah.jdField_a_of_type_JavaLangString = paramString3;
-      return localawah;
-    }
-    localawah.jdField_a_of_type_JavaLangString = "0";
-    localawah.jdField_a_of_type_Int = 0;
-    QLog.e("GroupVideoManager", 2, "房间号没有给");
-    return localawah;
-  }
-  
-  private static String a(AppInterface paramAppInterface)
-  {
-    TicketManager localTicketManager = (TicketManager)paramAppInterface.getManager(2);
-    if ((localTicketManager != null) && (!TextUtils.isEmpty(paramAppInterface.getAccount()))) {
-      return localTicketManager.getSkey(paramAppInterface.getAccount());
-    }
-    QLog.e("GroupVideoManager", 1, "get sKey error");
-    return "";
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Bjbs != null)
-    {
-      this.jdField_a_of_type_Bjbs.dismiss();
-      Context localContext2 = this.jdField_a_of_type_Bjbs.getContext();
-      Context localContext1 = localContext2;
-      if ((localContext2 instanceof ContextWrapper)) {
-        localContext1 = ((ContextWrapper)localContext2).getBaseContext();
-      }
-      if ((localContext1 instanceof JumpActivity)) {
-        ((Activity)localContext1).finish();
-      }
-      this.jdField_a_of_type_Bjbs = null;
-    }
-  }
-  
-  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
-  {
-    Object localObject = new Intent(paramContext, HuayangLoadbackgroudActivity.class);
-    ((Intent)localObject).putExtra("isPreload", true);
-    ((Intent)localObject).setFlags(268435456);
-    paramContext.startActivity((Intent)localObject);
-    if ((paramContext instanceof Activity)) {
-      ((Activity)paramContext).overridePendingTransition(0, 0);
-    }
-    localObject = (awcc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(306);
-    localObject = new Intent(paramContext, ODLoadingActivity.class);
-    ((Intent)localObject).putExtra("bizType", "GVideo");
-    ((Intent)localObject).putExtra("plugin_id", "Od");
-    ((Intent)localObject).putExtra("appid", "1104763709");
-    ((Intent)localObject).putExtra("authtype", 1);
-    ((Intent)localObject).putExtra("isGroupCode", paramInt);
-    ((Intent)localObject).putExtra("roomCodeType", paramInt);
-    ((Intent)localObject).putExtra("uin", paramString1);
-    ((Intent)localObject).putExtra("roomid", Long.valueOf(paramString2));
-    ((Intent)localObject).putExtra("fromId", paramString3);
-    ((Intent)localObject).putExtra("extra", paramString5);
-    ((Intent)localObject).putExtra("ts_click_millisecond", System.currentTimeMillis());
-    ((Intent)localObject).putExtra("openType", paramString4);
-    ((Intent)localObject).putExtra("show_status_bar", true);
-    ((Intent)localObject).setFlags(268435456);
     try
     {
-      PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString("prefs_key_gvideo_roominfo_entry_" + paramString1, ((Intent)localObject).toUri(4)).commit();
-      paramContext.startActivity((Intent)localObject);
-      if ((paramContext instanceof Activity)) {
-        ((Activity)paramContext).overridePendingTransition(0, 0);
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        return 0;
       }
-      return;
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      return i;
     }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        QLog.e("GroupVideoManager", 2, paramString1.getMessage());
-      }
-    }
+    finally {}
   }
   
-  private void a(Bundle paramBundle, awef paramawef)
+  public avzw a(int paramInt)
   {
-    this.jdField_a_of_type_Avzo.a(paramBundle, paramawef);
-  }
-  
-  private void a(awai paramawai, awef paramawef)
-  {
-    this.jdField_a_of_type_Avzo.a(paramawef);
-    QLog.i("GroupVideoManager", 2, "receive watchTogetherParam: " + paramawai.toString());
-    paramawef = new JsonObject();
-    paramawef.addProperty("isTogetherWatch", Boolean.valueOf(true));
-    paramawef.addProperty("fromGroupId", Long.valueOf(Long.parseLong(paramawai.g)));
-    paramawef.addProperty("fromGroupOwnerUin", Long.valueOf(Long.parseLong(paramawai.h)));
-    paramawef.addProperty("fromGroupName", bhlg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramawai.g, false));
-    paramawef.addProperty("sKey", a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    awah localawah = a(paramawai.jdField_b_of_type_JavaLangString, paramawai.d, paramawai.c);
-    a(paramawai.jdField_a_of_type_AndroidContentContext, paramawai.jdField_a_of_type_JavaLangString, localawah.jdField_a_of_type_JavaLangString, paramawai.e, paramawai.f, localawah.jdField_a_of_type_Int, paramawef.toString());
-  }
-  
-  public static void a(String paramString, awag paramawag)
-  {
-    ThreadManager.executeOnFileThread(new GroupVideoManager.7(paramString, paramawag));
-  }
-  
-  private void b(Bundle paramBundle, long paramLong)
-  {
-    if (paramBundle != null) {}
-    for (;;)
-    {
-      paramBundle.putString("bizType", "GVideo");
-      paramBundle.putString("plugin_id", "Od");
-      paramBundle.putString("appid", "1104763709");
-      paramBundle.putInt("authtype", 1);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        paramBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      }
-      paramBundle.putBoolean("preload", true);
-      ExecutorService localExecutorService = aoik.a(192);
-      localExecutorService.submit(new GroupVideoManager.3(this, localExecutorService.submit(new awac(this)), paramLong, paramBundle));
-      return;
-      paramBundle = new Bundle();
-    }
-  }
-  
-  public aweg a()
-  {
-    return this.jdField_a_of_type_Avzo.a();
-  }
-  
-  public void a(Context paramContext)
-  {
-    awaj.a(paramContext, "com.tencent.od").a();
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    AVNotifyCenter localAVNotifyCenter = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    Object localObject;
-    if (paramInt == 1)
-    {
-      localObject = paramString1;
-      if (!localAVNotifyCenter.a(paramContext, (String)localObject)) {
-        break label69;
-      }
-      QLog.i("GroupVideoManager", 1, "openNewGroupVideoLoadPage, blocked, roomCode[" + paramString1 + "]");
-    }
-    for (;;)
-    {
-      return;
-      localObject = "0";
-      break;
-      label69:
-      localObject = new Intent(paramContext, HuayangLoadbackgroudActivity.class);
-      ((Intent)localObject).putExtra("isPreload", true);
-      ((Intent)localObject).setFlags(268435456);
-      paramContext.startActivity((Intent)localObject);
-      if ((paramContext instanceof Activity)) {
-        ((Activity)paramContext).overridePendingTransition(0, 0);
-      }
-      localObject = (awcc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(306);
-      localObject = new Intent(paramContext, ODLoadingActivity.class);
-      ((Intent)localObject).putExtra("bizType", "GVideo");
-      ((Intent)localObject).putExtra("plugin_id", "Od");
-      ((Intent)localObject).putExtra("appid", "1104763709");
-      ((Intent)localObject).putExtra("authtype", 1);
-      ((Intent)localObject).putExtra("roomCodeType", paramInt);
-      ((Intent)localObject).putExtra("uin", paramString2);
-      ((Intent)localObject).putExtra("roomid", Long.valueOf(paramString1));
-      ((Intent)localObject).putExtra("fromId", paramString4);
-      ((Intent)localObject).putExtra("openType", paramString6);
-      ((Intent)localObject).putExtra("action", paramString3);
-      ((Intent)localObject).putExtra("backType", paramString5);
-      ((Intent)localObject).putExtra("extra", paramString7);
-      ((Intent)localObject).putExtra("ts_click_millisecond", System.currentTimeMillis());
-      ((Intent)localObject).putExtra("show_status_bar", true);
-      ((Intent)localObject).setFlags(268435456);
-      try
-      {
-        PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString("prefs_key_gvideo_roominfo_entry_" + paramString2, ((Intent)localObject).toUri(4)).commit();
-        paramContext.startActivity((Intent)localObject);
-        if (!(paramContext instanceof Activity)) {
-          continue;
-        }
-        ((Activity)paramContext).overridePendingTransition(0, 0);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("GroupVideoManager", 2, paramString1.getMessage());
-        }
-      }
-    }
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, awal paramawal)
-  {
-    awaj.a(paramContext, "com.tencent.od").a("group_video", "openGroupvideo", paramString1, paramString2, paramInt, paramString3, paramString4, paramString5, paramString6, paramString7, paramawal);
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    JsonObject localJsonObject = new JsonObject();
-    localJsonObject.addProperty("sKey", a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    a(paramContext, paramString1, paramString2, paramString3, paramString4, 1, localJsonObject.toString());
-  }
-  
-  public void a(Bundle paramBundle, long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while (!bhnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      return;
-    }
-    QLog.e("GroupVideoManager", 2, "preload in wifi");
-    b(paramBundle, paramLong);
-  }
-  
-  public void a(ConfigurationService.Config paramConfig)
-  {
-    if (paramConfig == null) {}
-    Object localObject;
-    do
-    {
-      int i;
-      int j;
-      do
-      {
-        return;
-        localObject = paramConfig.msg_content_list.get();
-        i = paramConfig.version.get();
-        j = a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        if (QLog.isColorLevel()) {
-          QLog.i("GroupVideoManager", 2, "handleDynamicConfig, version=" + i + ", oldversion=" + j);
-        }
-      } while (i <= j);
-      localObject = ((List)localObject).iterator();
-    } while (!((Iterator)localObject).hasNext());
-    paramConfig = (ConfigurationService.Content)((Iterator)localObject).next();
-    if (paramConfig.compress.get() == 1)
-    {
-      paramConfig = azet.a(paramConfig.content.get().toByteArray());
-      if (paramConfig == null) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        paramConfig = new String(paramConfig, "UTF-8");
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("GroupVideoManager", 2, "handleDynamicConfig, contentStr=" + paramConfig);
-      }
-      catch (UnsupportedEncodingException paramConfig)
-      {
-        QLog.e("GroupVideoManager", 1, "handleDynamicConfig new String error, e=" + paramConfig.toString());
-      }
-      paramConfig = "";
-      continue;
-      paramConfig = paramConfig.content.get().toStringUtf8();
-    }
-  }
-  
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    long l1 = 0L;
     try
     {
-      long l2 = Long.parseLong(paramNewTogetherRoomMessageData.g);
-      l1 = l2;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+      if ((this.jdField_a_of_type_JavaUtilMap == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+        return null;
+      }
+      avzx localavzx = (avzx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localavzx != null)
       {
-        QLog.e("GroupVideoManager", 2, "fromId not long");
+        avzw localavzw = (avzw)this.jdField_a_of_type_JavaUtilMap.get(localavzx.a());
+        if ((localavzw != null) && (TextUtils.isEmpty(localavzw.b()))) {
+          localavzw.a((String)this.b.get(localavzx.a()));
+        }
+        return localavzw;
       }
     }
-    QLog.i("GroupVideoManager", 2, "receive preload message: " + paramNewTogetherRoomMessageData.toString());
-    b(null, l1);
+    finally {}
+    return null;
   }
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, awef paramawef)
+  public avzx a(int paramInt)
   {
-    paramBundle = new awai(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    paramBundle.e(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString);
-    paramBundle.f(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
-    paramBundle.d(paramNewTogetherRoomMessageData.g);
-    paramBundle.a(String.valueOf(paramNewTogetherRoomMessageData.jdField_a_of_type_Long));
-    paramBundle.b(paramNewTogetherRoomMessageData.c);
-    paramBundle.c(String.valueOf(paramNewTogetherRoomMessageData.jdField_b_of_type_Int));
-    a(paramBundle, paramawef);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while (!bhnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      return;
-    }
-    msd.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new awab(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject1;
-    Object localObject2;
-    do
+    try
     {
-      do
+      if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilList.size())) {
+        return null;
+      }
+      avzx localavzx = (avzx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return localavzx;
+    }
+    finally {}
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = (String)this.b.get(paramString);
+      return paramString;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public ArrayList<Long> a(int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 16	awaa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   6: ifnull +24 -> 30
+    //   9: aload_0
+    //   10: getfield 16	awaa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   13: invokeinterface 21 1 0
+    //   18: iload_1
+    //   19: if_icmple +11 -> 30
+    //   22: iload_1
+    //   23: iflt +7 -> 30
+    //   26: iload_2
+    //   27: ifgt +7 -> 34
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: aconst_null
+    //   33: areturn
+    //   34: iload_2
+    //   35: istore_3
+    //   36: iload_1
+    //   37: iload_2
+    //   38: iadd
+    //   39: aload_0
+    //   40: getfield 16	awaa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   43: invokeinterface 21 1 0
+    //   48: if_icmple +15 -> 63
+    //   51: aload_0
+    //   52: getfield 16	awaa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   55: invokeinterface 21 1 0
+    //   60: iload_1
+    //   61: isub
+    //   62: istore_3
+    //   63: new 65	java/util/ArrayList
+    //   66: dup
+    //   67: invokespecial 69	java/util/ArrayList:<init>	()V
+    //   70: astore 4
+    //   72: iload_1
+    //   73: istore_2
+    //   74: iload_2
+    //   75: iload_1
+    //   76: iload_3
+    //   77: iadd
+    //   78: if_icmpge +45 -> 123
+    //   81: aload_0
+    //   82: getfield 16	awaa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   85: iload_2
+    //   86: invokeinterface 29 2 0
+    //   91: checkcast 31	avzx
+    //   94: invokevirtual 34	avzx:a	()Ljava/lang/String;
+    //   97: astore 5
+    //   99: aload 4
+    //   101: aload 5
+    //   103: invokestatic 75	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   106: invokevirtual 79	java/lang/Long:longValue	()J
+    //   109: invokestatic 82	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   112: invokevirtual 86	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   115: pop
+    //   116: iload_2
+    //   117: iconst_1
+    //   118: iadd
+    //   119: istore_2
+    //   120: goto -46 -> 74
+    //   123: aload_0
+    //   124: monitorexit
+    //   125: aload 4
+    //   127: areturn
+    //   128: astore 4
+    //   130: aload_0
+    //   131: monitorexit
+    //   132: aload 4
+    //   134: athrow
+    //   135: astore 5
+    //   137: goto -21 -> 116
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	140	0	this	awaa
+    //   0	140	1	paramInt1	int
+    //   0	140	2	paramInt2	int
+    //   35	43	3	i	int
+    //   70	56	4	localArrayList	ArrayList
+    //   128	5	4	localObject	Object
+    //   97	5	5	str	String
+    //   135	1	5	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	22	128	finally
+    //   30	32	128	finally
+    //   36	63	128	finally
+    //   63	72	128	finally
+    //   81	99	128	finally
+    //   99	116	128	finally
+    //   123	125	128	finally
+    //   130	132	128	finally
+    //   99	116	135	java/lang/Exception
+  }
+  
+  public List<avzx> a(List<Long> paramList)
+  {
+    if (paramList != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        do
-        {
-          do
-          {
-            return;
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-          } while (localObject1 == null);
-          localObject2 = ((apaw)localObject1).getRecentList(false);
-        } while ((localObject2 == null) || (((List)localObject2).size() <= 0));
-        localObject1 = new ArrayList();
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          RecentUser localRecentUser = (RecentUser)((Iterator)localObject2).next();
-          if (localRecentUser.getType() == 1) {
-            try
-            {
-              ((List)localObject1).add(Long.valueOf(Long.parseLong(localRecentUser.uin)));
-            }
-            catch (NumberFormatException localNumberFormatException) {}
-          }
-        }
-        localObject2 = new GroupVideoManager.4(this, paramBoolean);
-        if (((List)localObject1).size() <= 0) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject2);
-        this.jdField_a_of_type_Int = 0;
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      localObject2 = (aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    } while (localObject2 == null);
-    ((aoip)localObject2).a((List)localObject1, new awae(this));
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "updateGroupVideoStateList try count:" + this.jdField_a_of_type_Int);
+        String str = String.valueOf((Long)paramList.next());
+        localArrayList.add(new avzx(str, ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, str)));
+      }
+      return localArrayList;
     }
-    if ((this.jdField_a_of_type_Int < 8) && (paramBoolean))
+    return null;
+  }
+  
+  public Map<String, avzw> a(Map<Long, IntimateInfo> paramMap)
+  {
+    if (paramMap != null)
     {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)localObject2, 1000L);
+      HashMap localHashMap = new HashMap();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localHashMap.put(String.valueOf(localEntry.getKey()), new avzw((IntimateInfo)localEntry.getValue()));
+      }
+      return localHashMap;
+    }
+    return null;
+  }
+  
+  public void a(List<avzx> paramList, Map<String, avzw> paramMap, Map<String, String> paramMap1)
+  {
+    if (paramList != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (paramMap != null) {
+        this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
+      }
+      if (paramMap1 != null) {
+        this.b.putAll(paramMap1);
+      }
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    finally {}
   }
   
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, awef paramawef)
+  public Map<String, String> b(Map<Long, String> paramMap)
   {
-    a(paramBundle, paramawef);
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "onDestroy");
+    if (paramMap != null)
+    {
+      HashMap localHashMap = new HashMap();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localHashMap.put(String.valueOf(localEntry.getKey()), localEntry.getValue());
+      }
+      return localHashMap;
     }
-    a();
-    AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    msd.a().b();
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    this.jdField_a_of_type_Avzo.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    awde.a();
+    return null;
   }
 }
 

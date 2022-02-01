@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.multicard;
 
+import amsw;
+import anca;
+import andd;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,32 +16,29 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import anyw;
-import aoip;
-import aojs;
-import aoof;
-import aoog;
-import axnw;
-import axnx;
-import axny;
-import axnz;
-import axoa;
-import axob;
-import axoh;
-import axoi;
-import axoj;
-import axol;
-import axom;
-import axoo;
-import axor;
-import axos;
-import bhlg;
-import bhmq;
+import awbd;
+import awbe;
+import awbf;
+import awbg;
+import awbh;
+import awbi;
+import awbo;
+import awbp;
+import awbq;
+import awbs;
+import awbt;
+import awbv;
+import awby;
+import awbz;
+import bfvo;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.HashMap;
@@ -50,37 +50,37 @@ import mqq.os.MqqHandler;
 public class MultiCardRecommendFragment
   extends PublicBaseFragment
 {
+  private amsw jdField_a_of_type_Amsw;
+  andd jdField_a_of_type_Andd = new awbg(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private anyw jdField_a_of_type_Anyw;
-  aojs jdField_a_of_type_Aojs = new axnz(this);
-  private aoof jdField_a_of_type_Aoof;
-  aoog jdField_a_of_type_Aoog = new axnx(this);
-  private axoh jdField_a_of_type_Axoh;
-  axos jdField_a_of_type_Axos = new axny(this);
+  private awbo jdField_a_of_type_Awbo;
+  awbz jdField_a_of_type_Awbz = new awbf(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener = new awbe(this);
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   private String jdField_a_of_type_JavaLangString;
   public MqqHandler a;
   private String b;
   
   public MultiCardRecommendFragment()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new axoa(this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new awbh(this);
   }
   
   private Object a(String paramString, boolean paramBoolean, Bitmap paramBitmap)
   {
     Object localObject1;
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Axoh == null) || (this.jdField_a_of_type_Axoh.a == null))
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Awbo == null) || (this.jdField_a_of_type_Awbo.a == null))
     {
       localObject1 = null;
       return localObject1;
     }
-    Object[] arrayOfObject = this.jdField_a_of_type_Axoh.a.keySet().toArray();
+    Object[] arrayOfObject = this.jdField_a_of_type_Awbo.a.keySet().toArray();
     int j = 0;
     int i = 0;
     label55:
-    if (j < this.jdField_a_of_type_Axoh.a.size())
+    if (j < this.jdField_a_of_type_Awbo.a.size())
     {
       if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(j) == null) {
         return null;
@@ -94,7 +94,7 @@ public class MultiCardRecommendFragment
     label357:
     for (;;)
     {
-      List localList = (List)this.jdField_a_of_type_Axoh.a.get(Integer.valueOf(i));
+      List localList = (List)this.jdField_a_of_type_Awbo.a.get(Integer.valueOf(i));
       RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(j));
       if (localViewHolder != null)
       {
@@ -109,36 +109,36 @@ public class MultiCardRecommendFragment
             if (!paramBoolean) {
               break;
             }
-            if (!(localViewHolder instanceof axoi)) {
+            if (!(localViewHolder instanceof awbp)) {
               break label286;
             }
-            localObject2 = (axoj)((axoi)localViewHolder).b.get(k);
+            localObject2 = (awbq)((awbp)localViewHolder).b.get(k);
             localObject1 = localObject2;
             if (paramBitmap == null) {
               break;
             }
             localObject1 = localObject2;
-            if (((axoj)localObject2).jdField_a_of_type_AndroidWidgetImageView == null) {
+            if (((awbq)localObject2).jdField_a_of_type_AndroidWidgetImageView == null) {
               break;
             }
-            ((axoj)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+            ((awbq)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
           }
           for (;;)
           {
             k += 1;
             break label166;
-            if ((localViewHolder instanceof axol))
+            if ((localViewHolder instanceof awbs))
             {
-              localObject2 = (axom)((axol)localViewHolder).b.get(k);
+              localObject2 = (awbt)((awbs)localViewHolder).b.get(k);
               localObject1 = localObject2;
               if (paramBitmap == null) {
                 break;
               }
               localObject1 = localObject2;
-              if (((axom)localObject2).jdField_a_of_type_AndroidWidgetImageView == null) {
+              if (((awbt)localObject2).jdField_a_of_type_AndroidWidgetImageView == null) {
                 break;
               }
-              ((axom)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+              ((awbt)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
             }
           }
         }
@@ -151,35 +151,35 @@ public class MultiCardRecommendFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376886));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376891));
-    this.jdField_a_of_type_Axoh = new axoh(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376642));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376647));
+    this.jdField_a_of_type_Awbo = new awbo(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     paramView = new LinearLayoutManager(getActivity());
     paramView.setOrientation(1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    paramView = new axob(this, null);
+    paramView = new awbi(this, null);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Axoh);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new axnw(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Axos);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
-    this.jdField_a_of_type_Aoof = new aoof(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this.jdField_a_of_type_Aoog);
-    this.jdField_a_of_type_Anyw = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
-    paramView = (axor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(347);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awbo);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new awbd(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Awbz);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener);
+    this.jdField_a_of_type_Amsw = ((amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
+    paramView = (awby)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(347);
     if (paramView != null) {
       paramView.a(this.jdField_a_of_type_JavaLangString, 11, null);
     }
-    ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(false, this.jdField_a_of_type_JavaLangString + "", "0", 9);
+    ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20)).a(false, this.jdField_a_of_type_JavaLangString + "", "0", 9);
   }
   
   private void a(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Axoh == null) || (this.jdField_a_of_type_Axoh.a == null)) {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Awbo == null) || (this.jdField_a_of_type_Awbo.a == null)) {
       return;
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.putAll(this.jdField_a_of_type_Axoh.a);
+    localHashMap.putAll(this.jdField_a_of_type_Awbo.a);
     Object[] arrayOfObject = localHashMap.keySet().toArray();
     int j = 0;
     int i = 0;
@@ -205,7 +205,7 @@ public class MultiCardRecommendFragment
         k += 1;
       }
       if (localList.size() == 0) {
-        this.jdField_a_of_type_Axoh.a.remove(Integer.valueOf(i));
+        this.jdField_a_of_type_Awbo.a.remove(Integer.valueOf(i));
       }
       j += 1;
       break label66;
@@ -215,35 +215,35 @@ public class MultiCardRecommendFragment
   
   private boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Anyw.d(paramString);
+    return this.jdField_a_of_type_Amsw.d(paramString);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aoof != null) {
-      this.jdField_a_of_type_Aoof.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
     }
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Aoof != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
     {
-      this.jdField_a_of_type_Aoof.a();
-      this.jdField_a_of_type_Aoof.c();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
     }
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Axoh == null) || (this.jdField_a_of_type_Axoh.a == null)) {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) || (this.jdField_a_of_type_Awbo == null) || (this.jdField_a_of_type_Awbo.a == null)) {
       return;
     }
-    Object[] arrayOfObject = this.jdField_a_of_type_Axoh.a.keySet().toArray();
+    Object[] arrayOfObject = this.jdField_a_of_type_Awbo.a.keySet().toArray();
     int j = 0;
     int i = 0;
     label48:
-    if ((j < this.jdField_a_of_type_Axoh.a.size()) && (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(j) != null))
+    if ((j < this.jdField_a_of_type_Awbo.a.size()) && (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(j) != null))
     {
       if ((arrayOfObject[j] == null) || (!(arrayOfObject[j] instanceof Integer))) {
         break label356;
@@ -253,7 +253,7 @@ public class MultiCardRecommendFragment
     label356:
     for (;;)
     {
-      List localList = (List)this.jdField_a_of_type_Axoh.a.get(Integer.valueOf(i));
+      List localList = (List)this.jdField_a_of_type_Awbo.a.get(Integer.valueOf(i));
       RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(j));
       if (localViewHolder != null)
       {
@@ -262,14 +262,14 @@ public class MultiCardRecommendFragment
         {
           Object localObject1;
           Object localObject2;
-          if ((localViewHolder instanceof axoi))
+          if ((localViewHolder instanceof awbp))
           {
-            localObject1 = (axoi)localViewHolder;
-            if ((((axoi)localObject1).b != null) && (k < ((axoi)localObject1).b.size()))
+            localObject1 = (awbp)localViewHolder;
+            if ((((awbp)localObject1).b != null) && (k < ((awbp)localObject1).b.size()))
             {
-              localObject2 = (axoj)((axoi)localObject1).b.get(k);
-              if (((axoj)localObject2).jdField_a_of_type_AndroidWidgetImageView != null) {
-                ((axoj)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(((RecommendPerson)((axoi)localObject1).a.get(k)).uin));
+              localObject2 = (awbq)((awbp)localObject1).b.get(k);
+              if (((awbq)localObject2).jdField_a_of_type_AndroidWidgetImageView != null) {
+                ((awbq)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(((RecommendPerson)((awbp)localObject1).a.get(k)).uin));
               }
             }
           }
@@ -277,14 +277,14 @@ public class MultiCardRecommendFragment
           {
             k += 1;
             break;
-            if ((localViewHolder instanceof axol))
+            if ((localViewHolder instanceof awbs))
             {
-              localObject1 = (axol)localViewHolder;
-              if ((((axol)localObject1).b != null) && (k < ((axol)localObject1).b.size()))
+              localObject1 = (awbs)localViewHolder;
+              if ((((awbs)localObject1).b != null) && (k < ((awbs)localObject1).b.size()))
               {
-                localObject2 = (axom)((axol)localObject1).b.get(k);
-                if (((axom)localObject2).jdField_a_of_type_AndroidWidgetImageView != null) {
-                  ((axom)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(((RecommendPerson)((axol)localObject1).a.get(k)).uin));
+                localObject2 = (awbt)((awbs)localObject1).b.get(k);
+                if (((awbt)localObject2).jdField_a_of_type_AndroidWidgetImageView != null) {
+                  ((awbt)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(((RecommendPerson)((awbs)localObject1).a.get(k)).uin));
                 }
               }
             }
@@ -299,9 +299,9 @@ public class MultiCardRecommendFragment
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Axoh != null) && (this.jdField_a_of_type_Axoh.a != null))
+    if ((this.jdField_a_of_type_Awbo != null) && (this.jdField_a_of_type_Awbo.a != null))
     {
-      if (this.jdField_a_of_type_Axoh.a.size() == 0)
+      if (this.jdField_a_of_type_Awbo.a.size() == 0)
       {
         this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -312,16 +312,16 @@ public class MultiCardRecommendFragment
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    Map localMap = this.jdField_a_of_type_Axoh.a;
-    this.jdField_a_of_type_Axoh = new axoh(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Axoh.a = localMap;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Axoh);
-    this.jdField_a_of_type_Axoh.notifyDataSetChanged();
+    Map localMap = this.jdField_a_of_type_Awbo.a;
+    this.jdField_a_of_type_Awbo = new awbo(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Awbo.a = localMap;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awbo);
+    this.jdField_a_of_type_Awbo.notifyDataSetChanged();
   }
   
   private void f()
   {
-    if ((this.jdField_a_of_type_Axoh == null) || (this.jdField_a_of_type_Axoh.a == null)) {}
+    if ((this.jdField_a_of_type_Awbo == null) || (this.jdField_a_of_type_Awbo.a == null)) {}
     for (;;)
     {
       return;
@@ -331,15 +331,15 @@ public class MultiCardRecommendFragment
         localObject = (LinearLayoutManager)localObject;
         int j = ((LinearLayoutManager)localObject).findLastCompletelyVisibleItemPosition();
         int i = ((LinearLayoutManager)localObject).findFirstCompletelyVisibleItemPosition();
-        localObject = this.jdField_a_of_type_Axoh.a.keySet().toArray();
+        localObject = this.jdField_a_of_type_Awbo.a.keySet().toArray();
         while (i <= j)
         {
-          if ((i >= 0) && (i < this.jdField_a_of_type_Axoh.a.size()) && (localObject[i] != null) && ((localObject[i] instanceof Integer)))
+          if ((i >= 0) && (i < this.jdField_a_of_type_Awbo.a.size()) && (localObject[i] != null) && ((localObject[i] instanceof Integer)))
           {
             int k = ((Integer)localObject[i]).intValue();
-            List localList = (List)this.jdField_a_of_type_Axoh.a.get(Integer.valueOf(k));
+            List localList = (List)this.jdField_a_of_type_Awbo.a.get(Integer.valueOf(k));
             if ((localList != null) && (localList.size() > 0)) {
-              axoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecommendPerson)localList.get(0)).cardTypeID, i, localList);
+              awbv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecommendPerson)localList.get(0)).cardTypeID, i, localList);
             }
           }
           i += 1;
@@ -367,54 +367,54 @@ public class MultiCardRecommendFragment
   
   public Bitmap a(String paramString)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_Aoof.a(1, paramString);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, paramString);
     if (QLog.isColorLevel()) {
       QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "getFaceBitmap（） uin =  " + paramString + " bitmap =" + localBitmap);
     }
     if (localBitmap != null) {
       return localBitmap;
     }
-    if (!this.jdField_a_of_type_Aoof.a())
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing())
     {
-      this.jdField_a_of_type_Aoof.a(paramString, 1, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, 1, true);
       if (QLog.isColorLevel()) {
         QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "requestDecodeFace（） uin =  " + paramString);
       }
     }
-    return bhmq.a();
+    return bfvo.a();
   }
   
   public void a()
   {
     Object localObject;
-    if ((!TextUtils.isEmpty(this.b)) && ((a(this.b)) || (this.jdField_a_of_type_Anyw.b(this.b))))
+    if ((!TextUtils.isEmpty(this.b)) && ((a(this.b)) || (this.jdField_a_of_type_Amsw.b(this.b))))
     {
       localObject = a(this.b, true, null);
       if (localObject != null)
       {
-        if (!(localObject instanceof axoj)) {
+        if (!(localObject instanceof awbq)) {
           break label126;
         }
-        localObject = (axoj)localObject;
-        if ((localObject != null) && (((axoj)localObject).jdField_a_of_type_AndroidWidgetButton != null)) {
-          ((axoj)localObject).jdField_a_of_type_AndroidWidgetButton.setText(2131718158);
+        localObject = (awbq)localObject;
+        if ((localObject != null) && (((awbq)localObject).jdField_a_of_type_AndroidWidgetButton != null)) {
+          ((awbq)localObject).jdField_a_of_type_AndroidWidgetButton.setText(2131718399);
         }
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(2, 1200L);
-      localObject = (axor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(347);
+      localObject = (awby)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(347);
       if (localObject != null) {
-        ((axor)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
+        ((awby)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
       }
       return;
       label126:
-      if ((localObject instanceof axom))
+      if ((localObject instanceof awbt))
       {
-        localObject = (axom)localObject;
-        if ((localObject != null) && (((axom)localObject).jdField_a_of_type_AndroidWidgetButton != null)) {
-          ((axom)localObject).jdField_a_of_type_AndroidWidgetButton.setText(2131718158);
+        localObject = (awbt)localObject;
+        if ((localObject != null) && (((awbt)localObject).jdField_a_of_type_AndroidWidgetButton != null)) {
+          ((awbt)localObject).jdField_a_of_type_AndroidWidgetButton.setText(2131718399);
         }
       }
     }
@@ -432,7 +432,7 @@ public class MultiCardRecommendFragment
     paramViewHolder.l = a(paramRecommendPerson);
     paramViewHolder.h = 122;
     ProfileActivity.a(getActivity(), paramViewHolder, 110);
-    axoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramRecommendPerson);
+    awbv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramRecommendPerson);
   }
   
   public void b(RecyclerView.ViewHolder paramViewHolder, RecommendPerson paramRecommendPerson)
@@ -442,9 +442,9 @@ public class MultiCardRecommendFragment
     {
       this.b = paramRecommendPerson.uin;
       int j = a(paramRecommendPerson);
-      paramViewHolder = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramRecommendPerson.uin);
-      startActivityForResult(AddFriendLogicActivity.a(getActivity(), 1, paramRecommendPerson.uin, this.jdField_a_of_type_JavaLangString, 3004, j, paramViewHolder, null, null, getString(2131689551), null), 111);
-      axoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, 1, paramRecommendPerson);
+      paramViewHolder = ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramRecommendPerson.uin);
+      startActivityForResult(AddFriendLogicActivity.a(getActivity(), 1, paramRecommendPerson.uin, this.jdField_a_of_type_JavaLangString, 3004, j, paramViewHolder, null, null, getString(2131689550), null), 111);
+      awbv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, 1, paramRecommendPerson);
       return;
     }
   }
@@ -468,7 +468,7 @@ public class MultiCardRecommendFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131563063, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562944, paramViewGroup, false);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -477,16 +477,16 @@ public class MultiCardRecommendFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Axos);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
-    this.jdField_a_of_type_Aoof.a(null);
-    this.jdField_a_of_type_Aoof.d();
-    this.jdField_a_of_type_Anyw = null;
-    this.jdField_a_of_type_Axoh.a();
-    this.jdField_a_of_type_Axoh = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Awbz);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(null);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+    this.jdField_a_of_type_Amsw = null;
+    this.jdField_a_of_type_Awbo.a();
+    this.jdField_a_of_type_Awbo = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Axos = null;
-    this.jdField_a_of_type_Aojs = null;
+    this.jdField_a_of_type_Awbz = null;
+    this.jdField_a_of_type_Andd = null;
   }
   
   public void onResume()

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import aaak;
-import aaej;
-import acwb;
-import acwc;
-import acwd;
 import android.content.Intent;
-import bmtd;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import java.util.Arrays;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import zbh;
 
 public class QQPublicAccountNativePlugin
   implements NativePlugin
@@ -33,7 +33,7 @@ public class QQPublicAccountNativePlugin
   {
     boolean bool = true;
     if (paramJSContext != null) {
-      aaak.a().a(paramJSContext);
+      SimpleEventBus.getInstance().registerCurrentJsContext(paramJSContext);
     }
     for (;;)
     {
@@ -58,7 +58,7 @@ public class QQPublicAccountNativePlugin
           }
           ((Intent)localObject).putExtra("has_shop", bool);
           ((Intent)localObject).addFlags(268435456);
-          bmtd.a(paramJSContext.getActivity(), (Intent)localObject, 0);
+          QZoneHelper.forwardToQQPublicAccountPublishPage(paramJSContext.getActivity(), (Intent)localObject, 0);
           paramJSContext.evaluateCallback(true, null, "");
           return;
         }
@@ -72,8 +72,8 @@ public class QQPublicAccountNativePlugin
           i = paramJSONObject.optInt("type");
           String str = paramJSONObject.optString("feedid");
           long l = paramJSONObject.optLong("createtime");
-          paramJSONObject = aaej.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
-          aaej.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          paramJSONObject = zbh.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
+          zbh.a(paramJSContext.getActivity(), paramJSONObject, 9001);
           return;
         }
       }
@@ -89,18 +89,18 @@ public class QQPublicAccountNativePlugin
         if (paramJSONObject != null)
         {
           paramJSONObject = paramJSONObject.optString("uin");
-          aaej.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          zbh.a(paramJSContext.getActivity(), paramJSONObject, 9001);
         }
       }
       else if ("qsubscribe_getdeviceinfo".equals(localObject))
       {
-        paramJSONObject = new acwc();
-        paramJSONObject.a = "1b0ad2";
-        paramJSONObject = acwb.a(BaseApplication.getContext(), paramJSONObject);
-        if ((paramJSONObject != null) && (paramJSONObject.a != null))
+        paramJSONObject = new GdtDeviceInfoHelper.Params();
+        paramJSONObject.businessIdForAidTicketAndTaidTicket = "1b0ad2";
+        paramJSONObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), paramJSONObject);
+        if ((paramJSONObject != null) && (paramJSONObject.deviceInfo != null))
         {
           localObject = new vac_adv_get.VacFeedsAdvMetaReq();
-          ((vac_adv_get.VacFeedsAdvMetaReq)localObject).device_info.set(paramJSONObject.a);
+          ((vac_adv_get.VacFeedsAdvMetaReq)localObject).device_info.set(paramJSONObject.deviceInfo);
           paramJSONObject = Arrays.toString(((vac_adv_get.VacFeedsAdvMetaReq)localObject).toByteArray());
           localObject = new JSONObject();
           ((JSONObject)localObject).put("deviceinfo", paramJSONObject);

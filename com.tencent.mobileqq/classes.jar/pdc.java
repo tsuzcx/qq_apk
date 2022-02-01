@@ -1,62 +1,65 @@
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pdc
+  implements AladdinConfigHandler
 {
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<pdd> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<String, String> b = new HashMap();
+  private static final Set<String> a = ;
   
-  public int a()
+  public static Set<String> a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    String str = ooy.e();
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "getNativeFeedsAlladinKey | operationBarAladdinKey : " + str);
+    if ((a != null) && (!TextUtils.isEmpty(str))) {
+      a.add(str);
+    }
+    return a;
   }
   
-  public String a(int paramInt, String paramString)
+  private static Set<String> b()
   {
-    String str2 = "";
-    pdd localpdd = a(paramInt);
-    String str1 = str2;
-    if (localpdd != null)
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bkwm.a("native_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
+    }
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
     {
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramString))
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
       {
-        if (!"style_ID".equalsIgnoreCase(paramString)) {
-          break label46;
-        }
-        str1 = localpdd.jdField_a_of_type_JavaLangString;
+        String str2 = (String)paramString.get(str1);
+        QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+        bkwm.a("native_feeds_aladdin_keys", str2);
       }
     }
-    return str1;
-    label46:
-    return (String)localpdd.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return true;
   }
   
-  public String a(String paramString)
+  public void onWipeConfig(int paramInt)
   {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public pdd a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (pdd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-    }
-    return localObject1;
-  }
-  
-  public String b(String paramString)
-  {
-    return (String)this.b.get(paramString);
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

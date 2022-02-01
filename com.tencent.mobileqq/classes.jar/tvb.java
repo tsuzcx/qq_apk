@@ -1,28 +1,13 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import kotlin.Metadata;
 
-public class tvb
-  implements nmg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ResNetChangeInterface;", "", "on4GtoWifi", "", "onNoneTo4G", "onNoneToWifi", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface tvb
 {
-  public tvb(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public abstract void b();
   
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
-    }
-    this.a.app.getApplication();
-    int i = bhnv.a(MobileQQ.getContext());
-    paramString = new HashMap();
-    paramString.put("network", "" + i);
-    paramString.put("status_code", "" + paramInt);
-    bdmc.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
-  }
+  public abstract void c();
   
-  public void progress(int paramInt) {}
+  public abstract void d();
 }
 
 

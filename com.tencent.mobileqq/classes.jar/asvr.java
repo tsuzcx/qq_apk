@@ -1,47 +1,19 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
-public class asvr
+class asvr
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, asvs> a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public List<String> b = new ArrayList();
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m = 2;
-  public String m;
-  public int n = 50;
-  public int o = 1;
-  public int p = 1;
+  asvr(asvn paramasvn, String paramString) {}
   
-  public asvr()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    bfyi.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.jdField_a_of_type_Asvn.a);
+    aqgi.c().c.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

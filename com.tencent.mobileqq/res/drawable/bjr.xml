@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip android:gravity="bottom" android:drawable="@drawable/evz" android:clipOrientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate android:fromDegrees="45.0" android:pivotX="134.99756%" android:pivotY="14.999998%">
+            <shape android:shape="rectangle">
+                <size android:height="11.0dip" android:width="11.0dip" />
+                <solid android:color="#ffffffff" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

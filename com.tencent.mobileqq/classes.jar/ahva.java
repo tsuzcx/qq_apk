@@ -1,33 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-class ahva
-  extends ahvb
+public class ahva
+  extends anaz
 {
-  ahva(ahux paramahux) {}
+  public ahva(BlessResultActivity paramBlessResultActivity) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
     }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-  }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    if ((paramBoolean) && (paramInt == bbwb.a)) {
+      bfur.a(this.a.getActivity(), 0, null, this.a.getString(2131718471), 2131718473, 2131718472, new ahvb(this), new ahvc(this)).show();
     }
-    this.jdField_a_of_type_Ahux.a(this.jdField_a_of_type_Ahvc, this.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_Ahux.a(this.jdField_a_of_type_Ahvc, this.jdField_a_of_type_Long);
   }
 }
 

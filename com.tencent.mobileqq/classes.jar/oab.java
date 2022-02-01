@@ -1,57 +1,55 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class oab
-  implements INetInfoHandler
 {
-  public oab(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public void onNetMobile2None()
+  public static oab a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from mobile to none");
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
+    try
+    {
+      oab localoab = new oab();
+      paramString = new JSONObject(paramString);
+      localoab.jdField_a_of_type_Int = paramString.optInt("bannerType");
+      localoab.jdField_a_of_type_JavaLangString = paramString.optString("iconUrl");
+      localoab.jdField_b_of_type_JavaLangString = paramString.optString("abstractText");
+      localoab.jdField_b_of_type_Int = paramString.optInt("jumpType");
+      localoab.c = paramString.optString("linkUrl");
+      localoab.d = paramString.optString("appid");
+      localoab.e = paramString.optString("scheme");
+      localoab.f = paramString.optString("packagename");
+      localoab.g = paramString.optString("androidDownloadUrl");
+      localoab.h = paramString.optString("iOSDownloadUrl");
+      localoab.i = paramString.optString("appName");
+      localoab.j = paramString.optString("apkUrl");
+      return localoab;
+    }
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to mobile");
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    while (((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) || ((this.jdField_a_of_type_Int == 1) && ((TextUtils.isEmpty(this.f)) || (TextUtils.isEmpty(this.j))))) {
+      return false;
     }
-    ReadInJoyNativeAdAppVideoView.a(this.a).removeCallbacks(this.a.b);
-    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to wifi");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from wifi to none");
-    }
-    ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this.a.b, 1000L);
+    return true;
   }
 }
 

@@ -1,10 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bhlo;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import com.tencent.common.config.AppSetting;
-import org.json.JSONObject;
 
 class TaskManager$15
   implements JSContext.Callback
@@ -13,13 +10,12 @@ class TaskManager$15
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    paramJSContext = new JSONObject();
-    paramJSContext.put("platform", "Android");
-    paramJSContext.put("sys_version", bhlo.e());
-    paramJSContext.put("qq_version", bhlo.c());
-    paramJSContext.put("framework_version", String.valueOf(TaskManager.scriptVersion));
-    paramJSContext.putOpt("app_id", Integer.valueOf(AppSetting.a()));
-    return paramJSContext.toString();
+    if (paramInt == 1)
+    {
+      paramJSContext = (String)paramArrayOfObject[0];
+      this.this$0.accept(paramJSContext);
+    }
+    return Integer.valueOf(0);
   }
 }
 

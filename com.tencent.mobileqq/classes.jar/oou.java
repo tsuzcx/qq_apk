@@ -1,7 +1,51 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$Companion;", "", "()V", "ACTION_NAME_HORIZONTAL_AVATAR_CARD_CLICK", "", "ACTION_NAME_HORIZONTAL_AVATAR_CARD_EXPOSURE", "ACTION_NAME_HORIZONTAL_AVATAR_ITEM_CLICK", "ACTION_NAME_HORIZONTAL_AVATAR_ITEM_EXPOSURE", "KEY_CHANNEL_ID", "KEY_IS_LIVE", "KEY_IS_UPDATE", "KEY_PUIN", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oou {}
+public class oou
+  extends BaseAdapter
+{
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public oou(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (Object localObject = new oov(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; localObject = (oov)paramView.getTag())
+    {
+      ((oov)localObject).a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
+      localObject = ((oov)localObject).a();
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

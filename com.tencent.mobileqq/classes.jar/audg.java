@@ -1,24 +1,72 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-final class audg
-  implements View.OnClickListener
+public class audg
+  implements afrc
 {
-  audg(Activity paramActivity, String paramString) {}
+  private bjve jdField_a_of_type_Bjve = new audh(this);
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public audg(BaseChatPie paramBaseChatPie)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity)) {
-      aunj.a(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public static audg a(BaseChatPie paramBaseChatPie)
+  {
+    return (audg)paramBaseChatPie.getHelper(6);
+  }
+  
+  private void b(XEditTextEx paramXEditTextEx)
+  {
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramXEditTextEx.b(this.jdField_a_of_type_Bjve);
       return;
-      aunj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
+    catch (Throwable paramXEditTextEx) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 3) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
+    }
+    do
+    {
+      return;
+      if (paramInt == 13)
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
+        return;
+      }
+    } while (paramInt != 5);
+    bjnm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
+  }
+  
+  public void a(XEditTextEx paramXEditTextEx)
+  {
+    try
+    {
+      paramXEditTextEx.a(this.jdField_a_of_type_Bjve);
+      return;
+    }
+    catch (Throwable paramXEditTextEx)
+    {
+      paramXEditTextEx.printStackTrace();
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13, 5 };
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt >= 30) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

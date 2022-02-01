@@ -1,17 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopSign;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ahjq
-  implements ahky
+class ahjq
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahjq(ahiu paramahiu) {}
+  
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
-      return 71;
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.mInputBar != null) {
+      this.a.mInputBar.setVisibility(0);
     }
-    return 84;
+    if (this.a.mFakeInput != null) {
+      this.a.mFakeInput.setVisibility(0);
+    }
+    if (this.a.mFakeUpInput != null) {
+      this.a.mFakeUpInput.setVisibility(0);
+    }
+    this.a.handleNightMask();
+    if (this.a.jdField_a_of_type_Ocw.b(this.a.getCurFriendUin()) != 0) {
+      bcef.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.sessionInfo.curFriendUin, "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

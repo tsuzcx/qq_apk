@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia;
 
-import bbel;
+import azzn;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class RichmediaService$IncomingHandler$1
   implements Runnable
 {
-  public RichmediaService$IncomingHandler$1(bbel parambbel) {}
+  public RichmediaService$IncomingHandler$1(azzn paramazzn) {}
   
   public void run()
   {

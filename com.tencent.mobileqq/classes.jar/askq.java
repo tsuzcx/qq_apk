@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-
-public abstract class askq
+class askq
+  extends asjv
 {
-  public void a(EmoticonPackage paramEmoticonPackage) {}
+  public askq(asji paramasji)
+  {
+    super(paramasji);
+  }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
+  }
 }
 
 

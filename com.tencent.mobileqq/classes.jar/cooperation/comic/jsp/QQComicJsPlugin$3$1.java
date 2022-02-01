@@ -1,6 +1,6 @@
 package cooperation.comic.jsp;
 
-import bmcg;
+import bkgd;
 
 class QQComicJsPlugin$3$1
   implements Runnable

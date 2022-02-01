@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
 import com.tencent.mobileqq.utils.AudioHelper;
-import mbu;
+import mbd;
 
 public class AVActivity$MyControlUIObserver$5
   implements Runnable
 {
-  public AVActivity$MyControlUIObserver$5(mbu parammbu) {}
+  public AVActivity$MyControlUIObserver$5(mbd parammbd) {}
   
   public void run()
   {

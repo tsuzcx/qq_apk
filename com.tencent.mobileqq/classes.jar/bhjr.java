@@ -1,136 +1,64 @@
-import android.os.Build;
-import android.os.Environment;
-import android.os.StatFs;
-import android.text.TextUtils;
-import java.io.File;
-import java.lang.reflect.Method;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
-public class bhjr
+public final class bhjr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a;
-  static boolean a;
-  static boolean b;
+  float jdField_a_of_type_Float = 0.0F;
+  private final TabDragAnimationView jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView;
+  float b = 0.0F;
+  private float c;
+  private float d;
+  private float e;
+  private float f;
   
-  static
+  public bhjr(TabDragAnimationView paramTabDragAnimationView)
   {
-    jdField_a_of_type_JavaLangString = "SystemUtil";
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
   }
   
-  public static long a()
+  public void a()
   {
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
-    }
-    catch (Exception localException) {}
-    return 0L;
+    this.c = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c;
+    this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Float;
+    this.e = (this.c - this.jdField_a_of_type_Float);
+    this.f = (this.jdField_d_of_type_Float - this.b);
   }
   
-  public static String a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((f2 < 0.1F) && (this.jdField_a_of_type_Float == 0.0F) && (this.b == 0.0F))
     {
-      Class localClass = Class.forName("android.os.SystemProperties");
-      paramString = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString, null });
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    boolean bool2 = true;
-    jdField_a_of_type_Boolean = true;
-    boolean bool1 = bool2;
-    if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
-    {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
-        if (TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
-          break label50;
-        }
-      }
-    }
-    label50:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      b = bool1;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+      paramValueAnimator.cancel();
+      paramValueAnimator.removeUpdateListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a = null;
       return;
     }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool1 = false;
-    try
+    float f1;
+    if (f2 < 0.1F)
     {
-      boolean bool2 = Environment.getExternalStorageState().equals("mounted");
-      if (bool2) {
-        bool1 = true;
+      f1 = this.e;
+      if (f2 >= 0.1F) {
+        break label126;
       }
-      return bool1;
     }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static long b()
-  {
-    try
+    label126:
+    for (f2 = this.f;; f2 = this.f * (1.0F - f2))
     {
-      StatFs localStatFs = new StatFs("/data/data/com.tencent.mobileqq/files/");
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(this.c - f1, this.jdField_d_of_type_Float - f2, false);
+      return;
+      f1 = this.e * (1.0F - f2);
+      break;
     }
-    catch (Exception localException) {}
-    return 0L;
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return b;
-    }
-    a();
-    return b;
-  }
-  
-  public static boolean c()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean d()
-  {
-    boolean bool = false;
-    try
-    {
-      Method localMethod = Build.class.getMethod("hasSmartBar", new Class[0]);
-      if (localMethod != null) {
-        bool = true;
-      }
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static boolean e()
-  {
-    return (!TextUtils.isEmpty(a("ro.meizu.product.model"))) || ("meizu".equalsIgnoreCase(Build.BRAND)) || ("22c4185e".equalsIgnoreCase(Build.BRAND));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjr
  * JD-Core Version:    0.7.0.1
  */

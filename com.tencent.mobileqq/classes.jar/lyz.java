@@ -1,20 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
-class lyz
-  implements DialogInterface.OnDismissListener
+public class lyz
+  extends lyu
 {
-  lyz(lyw paramlyw) {}
+  protected static int a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lzb + "]");
-    }
-    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lzb != null)) {
-      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
-    }
+    jdField_a_of_type_Int = 3;
+  }
+  
+  public lyz(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
+    this.i = 2131559776;
+    this.j = paramContext.getResources().getDimensionPixelSize(2131297903);
+    this.k = paramContext.getResources().getDimensionPixelSize(2131297902);
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
+    super.a();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    super.a(paramBoolean, jdField_a_of_type_Int);
   }
 }
 

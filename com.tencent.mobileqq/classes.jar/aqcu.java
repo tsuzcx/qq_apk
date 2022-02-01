@@ -1,85 +1,99 @@
 import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelList.AppDetail;
-import com.tencent.ark.ArkAppPanelList.RespBody;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqcu
-  implements anui
 {
-  public aqcu(ArkMessageServerLogic.1 param1) {}
+  private aqcv[] a = new aqcv[0];
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static aqcu a(String paramString)
   {
-    if ((paramBoolean) && (paramObject != null))
+    int i = 0;
+    aqcu localaqcu = new aqcu();
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
+      }
+    }
+    for (;;)
     {
-      localObject1 = new ArkAppPanelList.RespBody();
+      return localaqcu;
       try
       {
-        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
-        localArrayList = new ArrayList();
-        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        paramString = new JSONObject(paramString).getJSONArray("array");
+        if ((paramString != null) && (paramString.length() > 0))
         {
-          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
-          if ((paramObject == null) || (paramObject.size() <= 0)) {
-            break label234;
-          }
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
+          localaqcu.a = new aqcv[paramString.length()];
+          while (i < paramString.length())
           {
-            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
-            if (localObject2 != null)
-            {
-              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
-              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
-              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
-              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-              {
-                localArrayList.add(new aqce((String)localObject1, str, (String)localObject2));
-                continue;
-                return;
-              }
-            }
+            aqcv localaqcv = aqcv.a(paramString.getJSONObject(i));
+            localaqcu.a[i] = localaqcv;
+            i += 1;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localaqcu);
+            return localaqcu;
           }
         }
       }
-      catch (InvalidProtocolBufferMicroException paramObject)
+      catch (JSONException paramString)
       {
-        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
-        if (this.a.a != null) {
-          this.a.a.b(null);
-        }
+        paramString.printStackTrace();
       }
     }
-    label234:
-    while (this.a.a == null)
+    return localaqcu;
+  }
+  
+  public aqcv a(int paramInt)
+  {
+    Object localObject;
+    if ((this.a == null) || (this.a.length <= 0))
     {
-      ArrayList localArrayList;
-      do
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Object localObject2;
-          String str;
-          paramObject = null;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(localArrayList);
-      return;
+      localObject = null;
+      return localObject;
     }
-    this.a.a.b(null);
+    aqcv[] arrayOfaqcv = this.a;
+    int j = arrayOfaqcv.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label64;
+      }
+      aqcv localaqcv = arrayOfaqcv[i];
+      localObject = localaqcv;
+      if (localaqcv.a == paramInt) {
+        break;
+      }
+      i += 1;
+    }
+    label64:
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
+    if ((this.a != null) && (this.a.length > 0))
+    {
+      aqcv[] arrayOfaqcv = this.a;
+      int j = arrayOfaqcv.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(arrayOfaqcv[i]).append(" ");
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqcu
  * JD-Core Version:    0.7.0.1
  */

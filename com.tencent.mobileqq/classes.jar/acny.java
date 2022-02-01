@@ -1,20 +1,15 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.util.Pair;
 
 class acny
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements DialogInterface.OnClickListener
 {
-  acny(acnx paramacnx, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
+  acny(acnx paramacnx, bcqk parambcqk, Pair paramPair) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    acvc.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
+    this.jdField_a_of_type_Bcqk.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 

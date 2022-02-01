@@ -1,21 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Activity;
+import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class yrq
-  extends SimpleJob<Object>
+  implements Animation.AnimationListener
 {
-  yrq(yrh paramyrh, String paramString1, String paramString2)
+  yrq(yro paramyro, Context paramContext) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramString1);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
+        this.jdField_a_of_type_Yro.dismiss();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Yro.dismiss();
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    yrh.a(this.jdField_a_of_type_Yrh).a(this.jdField_a_of_type_JavaLangString);
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

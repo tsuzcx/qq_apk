@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.app.Activity;
-import azhq;
-import azig;
+import axuy;
+import axvo;
 import java.util.ArrayList;
 
 class OnlineStatusPanel$1
@@ -30,7 +30,7 @@ class OnlineStatusPanel$1
       label98:
       localArrayList2 = OnlineStatusPanel.a(this.this$0).b();
       continue;
-      localArrayList1 = azhq.a().a();
+      localArrayList1 = axuy.a().a();
       localArrayList2 = this.this$0.a.a;
     }
   }

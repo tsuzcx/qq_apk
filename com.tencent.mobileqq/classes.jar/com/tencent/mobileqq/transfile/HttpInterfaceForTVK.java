@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import beuj;
-
 public abstract class HttpInterfaceForTVK
 {
   public static int downLoadFileSync(String paramString1, String paramString2)
   {
-    return new beuj().a(paramString1, paramString2);
+    return new HttpInterfaceForTVKImp().downLoadSync(paramString1, paramString2);
   }
 }
 

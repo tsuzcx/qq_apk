@@ -1,45 +1,38 @@
-import android.os.SystemClock;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class xrd
-  implements AbsListView.OnScrollListener
+public class xrd
+  extends vqr<xre>
 {
-  xrd(xrb paramxrb) {}
+  public static final String a = vpl.a("StorySvc.get_user_base_info");
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public String a()
   {
-    if (SystemClock.uptimeMillis() - xrb.a(this.a) < 500L) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        xrb.a(this.a, SystemClock.uptimeMillis());
-      } while (!(this.a.jdField_a_of_type_Xms instanceof xng));
-      i = paramInt1 + paramInt2;
-      ((xng)this.a.jdField_a_of_type_Xms).a = i;
-    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
-    this.a.jdField_a_of_type_Xpp.a();
-    yuk.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Xms.toString());
+    return a;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public xre a(byte[] paramArrayOfByte)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if (paramInt == 0) {
-      xrb.a(this.a, false);
-    }
-    for (;;)
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
     {
-      if ((paramInt == 0) && (xrb.a(this.a))) {
-        this.a.d();
-      }
-      return;
-      xrb.a(this.a, true);
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new xre(localRspGetUserSelfInfo);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        xvv.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 

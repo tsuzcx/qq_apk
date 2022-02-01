@@ -1,147 +1,110 @@
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Locale;
+import mqq.manager.TicketManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aaak
+  extends WebViewPlugin
 {
-  private static final aaak jdField_a_of_type_Aaak = new aaak();
-  public static String a;
-  public static String b = "ACTION_PRAISED_UPDATE";
-  public static String c = "ACTION_DRAFT_SYSTEM_CHANGE";
-  private WeakReference<NativePlugin.JSContext> jdField_a_of_type_JavaLangRefWeakReference;
-  private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<aaam>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  static
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    jdField_a_of_type_JavaLangString = "SUBSCRIBE_IPC_MODULE";
-  }
-  
-  private aaak()
-  {
-    if (BaseApplicationImpl.sProcessId == 1) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountRelease", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if (!"accountRelease".equals(paramString2)) {
+      return false;
+    }
+    if ("onReleaseSuccess".equals(paramString3))
     {
-      if (i != 0) {
-        QIPCServerHelper.getInstance().register(new aaal(this, "SUBSCRIBE_IPC_MODULE"));
-      }
-      return;
-      i = 0;
-    }
-  }
-  
-  public static aaak a()
-  {
-    return jdField_a_of_type_Aaak;
-  }
-  
-  private void a(PraisedUpdateEvents paramPraisedUpdateEvents)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feedid", paramPraisedUpdateEvents.mTargetFeedId);
-      localJSONObject.put("likestatus", paramPraisedUpdateEvents.mPraisedStatus);
-      paramPraisedUpdateEvents = new JSONObject();
-      paramPraisedUpdateEvents.put("data", localJSONObject);
-      ((NativePlugin.JSContext)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs("onSubscribeDoLikeUpdateEvent", paramPraisedUpdateEvents);
-      QLog.d("SimpleEventBus", 2, "notifyMiniProgram onSubscribeDoLikeUpdateEvent success ");
-      return;
-    }
-    catch (JSONException paramPraisedUpdateEvents)
-    {
-      paramPraisedUpdateEvents.printStackTrace();
-    }
-  }
-  
-  private void a(String paramString, aaam paramaaam)
-  {
-    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
-    if (localConcurrentHashMap2 == null) {
-      localConcurrentHashMap1 = new ConcurrentHashMap();
-    }
-    localConcurrentHashMap1.put(Integer.valueOf(paramaaam.hashCode()), new WeakReference(paramaaam));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localConcurrentHashMap1);
-    QLog.d("SimpleEventBus", 2, "registerReceiver event Name:" + paramString + ",key：[" + paramaaam.getClass().getSimpleName() + ":" + paramaaam.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
-  }
-  
-  private void b(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((paramSimpleBaseEvent instanceof PraisedUpdateEvents))) {
-      a((PraisedUpdateEvents)paramSimpleBaseEvent);
-    }
-  }
-  
-  private void b(String paramString, aaam paramaaam)
-  {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localConcurrentHashMap == null) {
-      return;
-    }
-    localConcurrentHashMap.remove(Integer.valueOf(paramaaam.hashCode()));
-    if (localConcurrentHashMap.size() == 0) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
-    QLog.d("SimpleEventBus", 2, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramaaam.getClass().getSimpleName() + ":" + paramaaam.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
-  }
-  
-  public void a(aaam paramaaam)
-  {
-    if (paramaaam == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramaaam.getEventClass().iterator();
-      while (localIterator.hasNext()) {
-        a(((Class)localIterator.next()).getName(), paramaaam);
-      }
-    }
-  }
-  
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    Object localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramSimpleBaseEvent.getClass().getName());
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      b(paramSimpleBaseEvent);
-      localObject = ((ConcurrentHashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
+      paramJsBridgeListener = this.mRuntime.a();
+      if (paramJsBridgeListener != null)
       {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((aaam)localWeakReference.get()).onReceiveEvent(paramSimpleBaseEvent);
+        paramJsBridgeListener.setResult(-1, null);
+        paramJsBridgeListener.finish();
+      }
+    }
+    while (!"getToken".equals(paramString3)) {
+      for (;;)
+      {
+        return false;
+        QLog.d("AccountRelease", 1, "release success, activity == null");
+      }
+    }
+    paramJsBridgeListener = this.mRuntime.a();
+    paramString1 = this.mRuntime.a();
+    boolean bool = false;
+    if (paramString1 != null) {
+      bool = paramString1.getIntent().getBooleanExtra("is_release_account", false);
+    }
+    for (;;)
+    {
+      if ((bool) && (paramJsBridgeListener != null))
+      {
+        paramString1 = (TicketManager)paramJsBridgeListener.getManager(2);
+        paramJsBridgeListener = paramJsBridgeListener.getCurrentAccountUin();
+        paramString1 = paramString1.getA2(paramJsBridgeListener);
+        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString1)))
+        {
+          paramString1 = HexUtil.hexStr2Bytes(paramString1);
+          long l = Long.valueOf(paramJsBridgeListener).longValue();
+          paramJsBridgeListener = new byte[76];
+          paramJsBridgeListener[3] = ((byte)(int)(0xFF & l));
+          paramJsBridgeListener[2] = ((byte)(int)(l >>> 8 & 0xFF));
+          paramJsBridgeListener[1] = ((byte)(int)(l >>> 16 & 0xFF));
+          paramJsBridgeListener[0] = ((byte)(int)(l >>> 24 & 0xFF));
+          int i = 0;
+          for (;;)
+          {
+            if (i < paramString1.length)
+            {
+              paramJsBridgeListener[(i + 4)] = paramString1[i];
+              i += 1;
+              continue;
+              QLog.d("AccountRelease", 1, "getToken, activity == null");
+              break;
+            }
+          }
+          paramJsBridgeListener = MD5Utils.encodeHexStr(paramJsBridgeListener);
+          if (QLog.isColorLevel()) {
+            QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
+          }
+          paramString1 = new JSONObject();
         }
       }
     }
-  }
-  
-  public void a(NativePlugin.JSContext paramJSContext)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramJSContext);
-  }
-  
-  public void b(aaam paramaaam)
-  {
-    if ((paramaaam == null) || (paramaaam.getEventClass() == null)) {}
     for (;;)
     {
-      return;
-      Iterator localIterator = paramaaam.getEventClass().iterator();
-      while (localIterator.hasNext()) {
-        b(((Class)localIterator.next()).getName(), paramaaam);
+      try
+      {
+        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+          break label465;
+        }
+        paramString1.put("token", "");
+        callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramString1.toString() });
       }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+      }
+      break;
+      QLog.d("AccountRelease", 1, "uin or a2 is empty, uin:" + paramJsBridgeListener + ",a2:" + paramString1);
+      for (;;)
+      {
+        paramJsBridgeListener = "";
+        break;
+        QLog.d("AccountRelease", 1, "getToken, app == null or flag: " + bool);
+      }
+      label465:
+      paramString1.put("token", paramJsBridgeListener);
     }
   }
 }

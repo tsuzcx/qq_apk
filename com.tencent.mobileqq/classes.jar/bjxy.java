@@ -1,182 +1,65 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class bjxy
-  implements DownloadListener
+  extends RecyclerView.OnScrollListener
 {
-  protected static bjxy a;
-  protected Handler a;
+  public bjxy(XRecyclerView paramXRecyclerView) {}
   
-  protected bjxy()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public static bjxy a()
-  {
-    if (jdField_a_of_type_Bjxy == null) {
-      jdField_a_of_type_Bjxy = new bjxy();
+    int i = 0;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (XRecyclerView.c(this.a) == 2)) {
+      this.a.a();
     }
-    return jdField_a_of_type_Bjxy;
-  }
-  
-  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    int j = paramRecyclerView.getChildCount();
+    boolean bool;
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
     {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("pro", paramInt2);
-      localJSONObject.put("ismyapp", paramInt3);
-      localJSONObject.put("errorMsg", paramString3);
-      localJSONObject.put("errorCode", paramInt4);
-      localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      i = paramRecyclerView.getItemCount();
+      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
+      int k = XRecyclerView.a(this.a).a();
+      if (i - j <= paramRecyclerView[0] + k)
       {
-        bjtx.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
+        }
+        if (bool) {
+          XRecyclerView.a(this.a).b(true);
+        }
       }
     }
-  }
-  
-  protected String a(String paramString1, int paramInt, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt);
-      localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        bjtx.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    bjvd localbjvd = bjvd.a();
     for (;;)
     {
-      int i;
-      try
+      XRecyclerView.c(this.a, paramInt);
+      return;
+      bool = false;
+      break;
+      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
       {
-        int j = localbjvd.a().size();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = (bjvc)localbjvd.a().get(i);
-          WebView localWebView = ((bjvc)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((bjvc)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              bjtx.a("WebViewDownloadListener", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((bjvc)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
-          }
+        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + XRecyclerView.a(this.a).a()) {
+          i = 1;
         }
-        else
-        {
-          return;
+        if (i != 0) {
+          XRecyclerView.a(this.a).b(true);
         }
       }
-      catch (Exception paramString)
-      {
-        bjtx.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
     }
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    a(a(paramString1, 6, paramString2));
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList != null)
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put(((DownloadInfo)paramList.next()).a());
-      }
-      a(localJSONArray.toString());
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 13, paramString2));
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 9, paramString2));
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    XRecyclerView.a(this.a, XRecyclerView.a(this.a) + paramInt1);
+    XRecyclerView.b(this.a, XRecyclerView.b(this.a) + paramInt2);
   }
 }
 

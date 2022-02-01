@@ -1,8 +1,8 @@
 package cooperation.ilive;
 
 import android.os.Bundle;
-import bmfg;
-import bmqw;
+import bkjd;
+import bkvd;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
@@ -12,7 +12,7 @@ public class IlivePluginManagerClient$1
 {
   public void run()
   {
-    bmqw.d("IlivePluginManagerClient", "launchPlugin");
+    bkvd.d("IlivePluginManagerClient", "launchPlugin");
     Object localObject = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "download_reader_plugin", new Bundle());
     StringBuilder localStringBuilder;
     if ((localObject == null) || (!((EIPCResult)localObject).isSuccess()))
@@ -25,8 +25,8 @@ public class IlivePluginManagerClient$1
     label82:
     for (localObject = "null";; localObject = ((EIPCResult)localObject).e.toString())
     {
-      bmqw.a("IlivePluginManagerClient", (String)localObject);
-      bmfg.a(this.this$0, 0L);
+      bkvd.a("IlivePluginManagerClient", (String)localObject);
+      bkjd.a(this.this$0, 0L);
       return;
     }
   }

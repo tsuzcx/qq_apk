@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajtm;
-import ajtn;
-import ajto;
-import ajtp;
-import ajtv;
+import aioj;
+import aiok;
+import aiol;
+import aiom;
+import aios;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler.Callback;
@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import blha;
+import bjmp;
 
 public class SimpleCheckableSlidingIndicator
   extends SimpleSlidingIndicator
@@ -21,10 +21,10 @@ public class SimpleCheckableSlidingIndicator
   public static int b = 1;
   public static int c = 2;
   public static int d = 1;
-  ajto jdField_a_of_type_Ajto;
-  private ajtp jdField_a_of_type_Ajtp;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ajtn(this);
-  private blha jdField_a_of_type_Blha;
+  aiol jdField_a_of_type_Aiol;
+  private aiom jdField_a_of_type_Aiom;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aiok(this);
+  private bjmp jdField_a_of_type_Bjmp;
   private int i = -9999999;
   private int j = jdField_a_of_type_Int;
   
@@ -53,7 +53,7 @@ public class SimpleCheckableSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new ajtm(this));
+        ((ValueAnimator)localObject).addUpdateListener(new aioj(this));
         ((ValueAnimator)localObject).start();
       }
       while (localView == null) {
@@ -78,12 +78,12 @@ public class SimpleCheckableSlidingIndicator
       if (paramBoolean1)
       {
         a();
-        if ((this.jdField_a_of_type_Ajtv != null) && (paramInt >= 0)) {
-          this.jdField_a_of_type_Ajtv.a(paramInt, paramBoolean2);
+        if ((this.jdField_a_of_type_Aios != null) && (paramInt >= 0)) {
+          this.jdField_a_of_type_Aios.a(paramInt, paramBoolean2);
         }
       }
     }
-    while ((this.e != paramInt) || (this.jdField_a_of_type_Ajto == null) || (paramInt < 0)) {
+    while ((this.e != paramInt) || (this.jdField_a_of_type_Aiol == null) || (paramInt < 0)) {
       for (;;)
       {
         return;
@@ -94,7 +94,7 @@ public class SimpleCheckableSlidingIndicator
         invalidate();
       }
     }
-    this.jdField_a_of_type_Ajto.a(paramInt);
+    this.jdField_a_of_type_Aiol.a(paramInt);
   }
   
   public int[] a()
@@ -116,31 +116,31 @@ public class SimpleCheckableSlidingIndicator
     {
       return super.onTouchEvent(paramMotionEvent);
       this.j = b;
-      if (this.jdField_a_of_type_Ajtp != null) {
-        this.jdField_a_of_type_Ajtp.a(this.j);
+      if (this.jdField_a_of_type_Aiom != null) {
+        this.jdField_a_of_type_Aiom.a(this.j);
       }
-      if (this.jdField_a_of_type_Blha != null)
+      if (this.jdField_a_of_type_Bjmp != null)
       {
-        this.jdField_a_of_type_Blha.removeMessages(d);
+        this.jdField_a_of_type_Bjmp.removeMessages(d);
         continue;
-        if (this.jdField_a_of_type_Blha != null) {
-          this.jdField_a_of_type_Blha.sendEmptyMessage(d);
+        if (this.jdField_a_of_type_Bjmp != null) {
+          this.jdField_a_of_type_Bjmp.sendEmptyMessage(d);
         }
       }
     }
   }
   
-  public void setOnRepeatClickListener(ajto paramajto)
+  public void setOnRepeatClickListener(aiol paramaiol)
   {
-    this.jdField_a_of_type_Ajto = paramajto;
+    this.jdField_a_of_type_Aiol = paramaiol;
   }
   
-  public void setScrollViewListener(ajtp paramajtp)
+  public void setScrollViewListener(aiom paramaiom)
   {
-    if (this.jdField_a_of_type_Blha == null) {
-      this.jdField_a_of_type_Blha = new blha(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    if (this.jdField_a_of_type_Bjmp == null) {
+      this.jdField_a_of_type_Bjmp = new bjmp(this.jdField_a_of_type_AndroidOsHandler$Callback);
     }
-    this.jdField_a_of_type_Ajtp = paramajtp;
+    this.jdField_a_of_type_Aiom = paramaiom;
   }
 }
 

@@ -1,6 +1,28 @@
-abstract interface uio
+import java.util.List;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
+
+public class uio
+  implements pln
 {
-  public abstract udq a();
+  private static uio a = new uio();
+  
+  public static void a()
+  {
+    pli.a(a);
+  }
+  
+  public static void a(int paramInt) {}
+  
+  public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
+  
+  public static void b()
+  {
+    pli.b(a);
+  }
+  
+  public void l() {}
+  
+  public void m() {}
 }
 
 

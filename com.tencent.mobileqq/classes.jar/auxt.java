@@ -1,16 +1,83 @@
-import android.app.Activity;
-import com.tencent.mobileqq.forward.ForwardArkMsgOption;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class auxt
-  implements apwf
 {
-  public auxt(ForwardArkMsgOption paramForwardArkMsgOption) {}
-  
-  public void a(boolean paramBoolean)
+  public static int a(int paramInt)
   {
-    if (!paramBoolean) {
-      this.a.a.finish();
+    if (paramInt == 1) {
+      return 1;
     }
+    return 2;
+  }
+  
+  public static int a(RedTouch paramRedTouch)
+  {
+    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
+    List localList;
+    do
+    {
+      return 0;
+      localList = paramRedTouch.a();
+    } while ((localList == null) || (localList.isEmpty()));
+    int i = paramRedTouch.a();
+    if (i == 16) {
+      return 9;
+    }
+    if (i == 17) {
+      return 10;
+    }
+    paramRedTouch = localList.iterator();
+    while (paramRedTouch.hasNext())
+    {
+      i = ((BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next()).red_type.get();
+      if (i == 0) {
+        return 1;
+      }
+      if (i == 5) {
+        return 2;
+      }
+      if (i == 11) {
+        return 3;
+      }
+    }
+    return 3;
+  }
+  
+  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
+      return 0;
+    }
+    if (paramRedTypeInfo.red_type.get() == 0) {
+      return 1;
+    }
+    if (paramRedTypeInfo.red_type.get() == 5) {
+      return 2;
+    }
+    return 3;
+  }
+  
+  public static bcfp a(String paramString)
+  {
+    bcfp localbcfp = new bcfp();
+    localbcfp.i = "trends_tab";
+    localbcfp.j = "trends_plugin";
+    localbcfp.k = paramString;
+    return localbcfp;
+  }
+  
+  public static int b(RedTouch paramRedTouch)
+  {
+    if (paramRedTouch == null) {}
+    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
+      return 0;
+    }
+    return 1;
   }
 }
 

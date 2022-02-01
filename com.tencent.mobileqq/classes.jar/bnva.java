@@ -1,25 +1,35 @@
-import android.content.Context;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bnva
-  extends ApolloLottieAnim
 {
-  private Downloader a;
+  private bnvb jdField_a_of_type_Bnvb;
+  private ConcurrentHashMap<Integer, bnve> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public bnva(QQAppInterface paramQQAppInterface, Context paramContext)
+  public bnve a(int paramInt)
   {
-    super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+    return (bnve)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void a(bnve parambnve)
   {
-    this.jdField_a_of_type_Int = 1;
-    paramString3 = new bnvb(this, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
+    if (QLog.isColorLevel()) {
+      QLog.d("FrameAdapter", 2, "addFrame, index=" + parambnve.a);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(parambnve.a), parambnve);
+    if (this.jdField_a_of_type_Bnvb != null) {
+      this.jdField_a_of_type_Bnvb.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

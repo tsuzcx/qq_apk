@@ -1,33 +1,31 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xmv
+  extends QQUIEventReceiver<StoryMessageListActivity, vvh>
 {
-  @Nullable
-  public String a;
-  public xms a;
-  @Nullable
-  public xmt a;
-  @Nullable
-  public String b;
-  
-  public xmv(@Nullable xms paramxms, @Nullable String paramString1, @Nullable String paramString2)
+  public xmv(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.jdField_a_of_type_Xms = paramxms;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramStoryMessageListActivity);
   }
   
-  public xmv(xmv paramxmv)
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull vvh paramvvh)
   {
-    this.jdField_a_of_type_Xms = paramxmv.jdField_a_of_type_Xms;
-    this.jdField_a_of_type_JavaLangString = paramxmv.jdField_a_of_type_JavaLangString;
-    this.b = paramxmv.b;
-    this.jdField_a_of_type_Xmt = paramxmv.jdField_a_of_type_Xmt;
+    if (paramvvh.a.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
+      }
+      paramStoryMessageListActivity.g();
+    }
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Xms + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
+    return vvh.class;
   }
 }
 

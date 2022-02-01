@@ -1,27 +1,10 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
 
-public class avfz
-  implements RadioGroup.OnCheckedChangeListener
+class avfz
 {
-  public avfz(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
-  {
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      bdgb.a(0);
-      continue;
-      bdgb.a(1);
-    }
-  }
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

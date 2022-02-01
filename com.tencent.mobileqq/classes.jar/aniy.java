@@ -1,70 +1,270 @@
+import GeneralSettings.RespGetSettings;
+import GeneralSettings.RespSetSettings;
+import GeneralSettings.Setting;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class aniy
-  extends biht
+public class aniy
+  extends anio
 {
-  aniy(File paramFile, amsx paramamsx, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, anjf paramanjf, String paramString, List paramList) {}
-  
-  public void onDone(bihu parambihu)
+  public aniy(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    boolean bool = true;
-    super.onDone(parambihu);
-    if (3 == parambihu.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    super(paramQQAppInterface, paramFriendListHandler);
+  }
+  
+  private Map<String, Integer> a(ArrayList<Setting> paramArrayList)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramArrayList != null)
+    {
+      int i = 0;
+      if (i < paramArrayList.size())
+      {
+        Setting localSetting = (Setting)paramArrayList.get(i);
+        Object localObject = localSetting.Path;
+        if ((localObject == null) || (((String)localObject).length() == 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((String)localObject).split("\\.");
+          if ((localObject != null) && (localObject.length != 0)) {
+            localHashMap.put(localObject[(localObject.length - 1)], Integer.valueOf(Integer.parseInt(localSetting.Value)));
+          }
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, RespGetSettings paramRespGetSettings)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "handleGetGeneralSettingAll cmd=" + paramFromServiceMsg.getMsfCommand() + " resp.isSucc=" + paramFromServiceMsg.isSuccess() + " resultCode=" + paramFromServiceMsg.getResultCode());
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      int k = paramToServiceMsg.extraData.getInt("Revision");
+      int j = paramToServiceMsg.extraData.getInt("respRevision", -1);
+      boolean bool = paramToServiceMsg.extraData.getBoolean("needTroopSettings");
+      long l = paramToServiceMsg.extraData.getLong("Offset");
+      paramToServiceMsg = (ArrayList)paramToServiceMsg.extraData.getSerializable("Paths");
+      if (paramRespGetSettings == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RoamSetting", 2, "handlerGetGeneralSettingAll, data == null");
+        }
+        this.a.endGetAllGeneralSettings(false, true);
+        a(35, false, new Object[] { Boolean.valueOf(true) });
+        return;
+      }
+      if ((paramRespGetSettings.Settings == null) || (paramRespGetSettings.Settings.size() == 0))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder().append("handlerGetGeneralSettingAll, data.Settings=");
+          if (paramRespGetSettings.Settings != null) {
+            break label275;
+          }
+        }
+        label275:
+        for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramRespGetSettings.Settings.size()))
+        {
+          QLog.d("RoamSetting", 2, paramToServiceMsg);
+          bfun.a().a(paramRespGetSettings.Revision, this.a);
+          this.a.endGetAllGeneralSettings(true, true);
+          a(35, true, new Object[] { Boolean.valueOf(true) });
+          return;
+        }
+      }
+      if ((j != -1) && (j < paramRespGetSettings.Revision))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RoamSetting", 2, "respRevision != data.Revision, load settings again, respRev=" + j + " data.Rev=" + paramRespGetSettings.Revision);
+        }
+        this.a.endGetAllGeneralSettings(false, false);
+        this.a.getAllGeneralSettings(bool);
+        a(35, true, new Object[] { Boolean.valueOf(false) });
+        return;
+      }
+      int i = j;
+      if (j == -1) {
+        i = paramRespGetSettings.Revision;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder().append("oldRevision=").append(k).append(" lastRespRevision=").append(i).append(" total=").append(paramRespGetSettings.Total).append(" offset=").append(l).append(" data.settings.size=");
+        if (paramRespGetSettings.Settings != null) {
+          break label567;
+        }
+      }
+      label567:
+      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramRespGetSettings.Settings.size()))
+      {
+        QLog.d("RoamSetting", 2, paramToServiceMsg);
+        bfun.a().a(paramRespGetSettings.Settings, this.a);
+        l += paramRespGetSettings.Settings.size();
+        if (paramRespGetSettings.Total <= l) {
+          break;
+        }
+        ((bfyq)this.a.getManager(31)).a(k, l, i, bool, null);
+        a(35, true, new Object[] { Boolean.valueOf(false) });
+        return;
+      }
+      bfun.a().a(paramRespGetSettings.Revision, this.a);
+      this.a.endGetAllGeneralSettings(true, true);
+      a(35, true, new Object[] { Boolean.valueOf(true) });
+      return;
+    }
+    this.a.endGetAllGeneralSettings(false, true);
+    a(35, false, new Object[] { Boolean.valueOf(true) });
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, RespSetSettings paramRespSetSettings)
+  {
+    ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("Settings");
+    int i = paramToServiceMsg.extraData.getInt("localRevision");
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("handlerUploadRoamSettingNewValue isSuccess = ").append(paramFromServiceMsg.isSuccess()).append(" reqLocalRevision=").append(i).append(" data.Revision=");
+      if (paramRespSetSettings == null)
+      {
+        paramToServiceMsg = "null";
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg);
+      }
+    }
+    else
+    {
+      if (!paramFromServiceMsg.isSuccess()) {
+        break label195;
+      }
+      if (paramRespSetSettings == null) {
+        break label219;
+      }
+      if (i + 1 != paramRespSetSettings.Revision) {
+        break label180;
+      }
+      bfun.a().a(localArrayList, this.a);
+      bfun.a().a(paramRespSetSettings.Revision, this.a);
+      this.a.onUploadRomingSettingsFinish(true, false);
+      bool = true;
     }
     for (;;)
     {
-      try
+      if (localArrayList == null)
       {
-        nof.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-        aniv.a(this.jdField_a_of_type_Amsx, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
-          break label413;
+        if (QLog.isColorLevel()) {
+          QLog.d("RoamSetting", 2, "handlerUploadRoamSettingNewValue  settings is null.");
         }
-        if (this.jdField_a_of_type_Anjf != null)
-        {
-          parambihu = this.jdField_a_of_type_Anjf;
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
-            bool = false;
-          }
-          parambihu.a(bool, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          }
-        }
-        this.jdField_a_of_type_JavaIoFile.delete();
         return;
-      }
-      catch (Exception parambihu)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambihu.getMessage());
+        paramToServiceMsg = Integer.valueOf(paramRespSetSettings.Revision);
+        break;
+        label180:
+        this.a.onUploadRomingSettingsFinish(true, true);
+        bool = true;
+        continue;
+        label195:
+        this.a.onUploadRomingSettingsFinish(false, false);
+        bool = false;
         continue;
       }
-      catch (OutOfMemoryError parambihu)
+      a(localArrayList, bool);
+      return;
+      label219:
+      bool = true;
+    }
+  }
+  
+  private void a(ArrayList<Setting> paramArrayList, boolean paramBoolean)
+  {
+    Map localMap = a(paramArrayList);
+    bfyq localbfyq = (bfyq)this.a.getManager(31);
+    paramArrayList = paramArrayList.iterator();
+    boolean bool = false;
+    while (paramArrayList.hasNext())
+    {
+      Object localObject = (Setting)paramArrayList.next();
+      if (((Setting)localObject).Path != null)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (((Setting)localObject).Path.startsWith("message.group.policy.")) {
+          if ((!bool) && ((paramBoolean) || ((!paramBoolean) && (localbfyq.a()))))
+          {
+            localObject = localMap.keySet().iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              String str = (String)((Iterator)localObject).next();
+              Boolean localBoolean = (Boolean)localbfyq.c.get(str);
+              if ((localBoolean != null) && (localBoolean.booleanValue())) {
+                localbfyq.c.put(str, Boolean.valueOf(false));
+              }
+            }
+            a(38, paramBoolean, localMap);
+            bool = true;
+          }
         }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambihu.getMessage());
-        continue;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambihu.a());
-      continue;
-      label413:
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
+        for (;;)
+        {
+          break;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("RoamSetting", 2, "handleUploadRoamsSettingNewValue not notifyUI, path=" + ((Setting)localObject).Path + " value=" + ((Setting)localObject).Value + " hasNotifyTroop=" + bool + "uploadSuccess=" + paramBoolean + " enableRetry=" + localbfyq.a());
+            continue;
+            if (((Setting)localObject).Path.startsWith("message.ring.switch")) {
+              a(paramBoolean, localMap, localbfyq, (Setting)localObject, 43, "handleUploadRoamsSettingNewValue");
+            } else if (((Setting)localObject).Path.startsWith("message.vibrate.switch")) {
+              a(paramBoolean, localMap, localbfyq, (Setting)localObject, 44, "handleUploadRoamsSettingNewValue");
+            } else if (((Setting)localObject).Path.startsWith("sync.c2c_message")) {
+              a(paramBoolean, localMap, localbfyq, (Setting)localObject, 47, "handleUploadRoamsSettingNewValue");
+            } else if (((Setting)localObject).Path.startsWith("message.group.ring")) {
+              a(paramBoolean, localMap, localbfyq, (Setting)localObject, 41, "handleUploadRoamsSettingNewValue");
+            } else if (((Setting)localObject).Path.startsWith("message.group.vibrate")) {
+              a(paramBoolean, localMap, localbfyq, (Setting)localObject, 42, "handleUploadRoamsSettingNewValue");
+            } else if (((Setting)localObject).Path.startsWith("message.ring.care")) {
+              a(paramBoolean, localMap, localbfyq, (Setting)localObject, 78, "handleUploadRoamsSettingNewValue ");
+            }
+          }
+        }
       }
     }
+  }
+  
+  private void a(boolean paramBoolean, Map<String, Integer> paramMap, bfyq parambfyq, Setting paramSetting, int paramInt, String paramString)
+  {
+    if ((paramBoolean) || ((!paramBoolean) && (parambfyq.a()))) {
+      a(paramInt, paramBoolean, paramMap);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RoamSetting", 2, "-->" + paramString + " not notifyUI, path=" + paramSetting.Path + " value=" + paramSetting.Value + "uploadSuccess=" + paramBoolean + " enableRetry=" + parambfyq.a());
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("ProfileService.ReqGetSettings".equals(str)) {
+      a(paramToServiceMsg, paramFromServiceMsg, (RespGetSettings)paramObject);
+    }
+    while (!"ProfileService.ReqSetSettings".equals(str)) {
+      return;
+    }
+    a(paramToServiceMsg, paramFromServiceMsg, (RespSetSettings)paramObject);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return ("ProfileService.ReqGetSettings".equals(paramString)) || ("ProfileService.ReqSetSettings".equals(paramString));
   }
 }
 

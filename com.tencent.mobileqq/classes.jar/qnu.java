@@ -1,19 +1,44 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils;
+import com.tencent.pts.utils.PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class qnu
-  implements View.OnClickListener
+final class qnu
+  implements PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo
 {
-  public qnu(ComponentComment paramComponentComment, String paramString, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  public void onBindNodeInfoFinished(String paramString1, View paramView, String paramString2, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
-    psx.a(1, ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramView == null) || (paramMap2 == null)) {
+      QLog.i("PTSHelper", 1, "[onBindNodeInfoFinished] view is null or attributes is empty.");
+    }
+    for (;;)
+    {
+      return;
+      paramString1 = paramMap2.get("dt:element-id");
+      paramString2 = paramMap2.get("dt:params");
+      if (QLog.isColorLevel()) {
+        QLog.i("PTSHelper", 1, "[onBindNodeInfoFinished] elementId = " + paramString1 + ", params = " + paramString2);
+      }
+      if (paramString1 != null) {}
+      try
+      {
+        VideoReport.setElementId(paramView, (String)paramString1);
+        if (paramString2 != null)
+        {
+          paramString1 = JsonUtils.covertJsonObjectToMap(new JSONObject((String)paramString2));
+          VideoReport.setElementParams(paramView, new pil().a(paramString1).a());
+          qnr.a(paramString1);
+          return;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("PTSHelper", 1, "[onBindNodeInfoFinished] e = " + paramString1);
+      }
+    }
   }
 }
 

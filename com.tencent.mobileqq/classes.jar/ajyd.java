@@ -1,42 +1,89 @@
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajyd
-  extends RecyclerView.OnScrollListener
 {
-  public ajyd(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
-    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
-    if ((str != null) && (paramInt2 != 0))
-    {
-      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
-      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
-      EmoticonGroupStoreFragment.a(this.a).setText(str);
+    int i = paramInt;
+    if (paramJSONObject != null) {
+      i = 0;
     }
-    if (paramInt2 < 0)
+    try
     {
-      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
-      if (paramRecyclerView != null)
+      while (i < paramVarArgs.length - 1)
       {
-        float f = paramRecyclerView.getY();
-        if ((paramInt1 == 0) && (0.0F == f))
-        {
-          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
-          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
-          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
-        }
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
       }
+      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
+      return i;
     }
+    catch (Throwable paramJSONObject) {}
+    return paramInt;
+  }
+  
+  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  {
+    String str = paramString;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
+      return str;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramString;
+  }
+  
+  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONArray localJSONArray = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONArray;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONObject localJSONObject = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONObject;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
   }
 }
 

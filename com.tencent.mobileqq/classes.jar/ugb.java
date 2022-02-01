@@ -1,15 +1,14 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import org.json.JSONObject;
 
-public class ugb
+class ugb
+  implements tiu
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  ugb(ufd paramufd) {}
+  
+  public void a(String paramString, JSONObject paramJSONObject)
+  {
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+  }
 }
 
 

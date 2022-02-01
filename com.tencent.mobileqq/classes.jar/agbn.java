@@ -1,36 +1,23 @@
-import Wallet.AcsMsg;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agbn
-  implements Handler.Callback
+class agbn
+  implements bjoe
 {
-  public agbn(ActivateFriendActivity paramActivateFriendActivity) {}
+  agbn(agbj paramagbj, bjnw parambjnw) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Bjnw.dismiss();
+    switch (paramInt)
     {
+    default: 
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null)
-      {
-        ActivateFriendActivity.a(this.a).e();
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        ActivateFriendActivity.a(this.a, (ArrayList)paramMessage.getSerializable("models"), (List)paramMessage.getSerializable("list"), paramMessage.getInt("count"));
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        this.a.a((AcsMsg)paramMessage.getSerializable("acsMsg"));
-      }
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agbj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, true, true, null, null);
+    bcef.b(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

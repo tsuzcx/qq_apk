@@ -1,69 +1,63 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.res.Resources;
+import android.widget.TextView;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 import org.json.JSONObject;
 
-class bkut
-  implements EIPCResultCallback
+public class bkut
+  extends bkuk
 {
-  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+  public bkut(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  bkut(bkus parambkus, RequestEvent paramRequestEvent)
+  public void a(bkuj parambkuj)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
-  }
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SetAvatarNativePlugin", 2, "onCallback, result=" + paramEIPCResult);
-    }
-    if (paramEIPCResult == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SetAvatarNativePlugin", 2, "onCallback, result.isSuccess=" + paramEIPCResult.isSuccess());
-        }
-        paramEIPCResult = paramEIPCResult.data;
-        if (paramEIPCResult != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SetAvatarNativePlugin", 2, "onCallback, data is null");
-      return;
-      localObject = paramEIPCResult.getString("param_action");
-      if (QLog.isColorLevel()) {
-        QLog.d("SetAvatarNativePlugin", 2, "onCallback, action=" + (String)localObject);
-      }
-    } while (!"set_avatar".equals(localObject));
-    int i = paramEIPCResult.getInt("param_result_code", -1);
-    paramEIPCResult = paramEIPCResult.getString("param_result_desc", "null");
-    if (QLog.isColorLevel()) {
-      QLog.d("SetAvatarNativePlugin", 2, "onCallback, errCode=" + i + ", errDesc=" + paramEIPCResult);
-    }
-    Object localObject = new JSONObject();
+    JSONObject localJSONObject = parambkuj.a();
+    if (localJSONObject == null) {}
     try
     {
-      ((JSONObject)localObject).put("param_result_code", i);
-      ((JSONObject)localObject).put("param_result_desc", paramEIPCResult);
-      label222:
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok((JSONObject)localObject);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail((JSONObject)localObject, paramEIPCResult);
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
       return;
     }
-    catch (Exception localException)
+    catch (Exception parambkuj)
     {
-      break label222;
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + parambkuj.getMessage());
+      return;
     }
+    int i = localJSONObject.getInt("ret");
+    parambkuj = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + parambkuj);
+      return;
+    }
+    i = localJSONObject.optInt("gray_level", 0);
+    int j = localJSONObject.optInt("updateStatus", 0);
+    int k = localJSONObject.optInt("updateStatus", 0);
+    int m = localJSONObject.optInt("remainMaxTime", 0);
+    bkvb.a(ForceUserUpdateActivity.a(this.a), i);
+    bkvb.b(ForceUserUpdateActivity.a(this.a), j);
+    bkvb.c(ForceUserUpdateActivity.a(this.a), k);
+    bkvb.d(ForceUserUpdateActivity.a(this.a), m);
+    bkvd.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
+    if (j == 1)
+    {
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    if (j == 2)
+    {
+      ForceUserUpdateActivity.a(this.a, k);
+      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131716144, new Object[] { Integer.valueOf(m) }));
+      return;
+    }
+    ForceUserUpdateActivity.d(this.a);
+    bkvb.b(ForceUserUpdateActivity.a(this.a), 2);
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
   }
 }
 

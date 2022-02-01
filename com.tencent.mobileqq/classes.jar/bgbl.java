@@ -1,6 +1,12 @@
 public abstract interface bgbl
 {
-  public abstract void b(boolean paramBoolean, int paramInt);
+  public abstract bgbm a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(bgbm parambgbm, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(bgbn parambgbn, bgbm parambgbm, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(bgbm parambgbm, float paramFloat1, float paramFloat2);
 }
 
 

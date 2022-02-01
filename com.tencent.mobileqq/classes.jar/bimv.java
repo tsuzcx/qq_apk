@@ -1,64 +1,49 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.QidianProfileCardActivity;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bimv
-  extends WebViewPlugin
+  extends URLDrawableDownListener.Adapter
 {
-  public bimv()
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<URLImageView> jdField_a_of_type_JavaLangRefWeakReference = null;
+  boolean jdField_a_of_type_Boolean = true;
+  WeakReference<QQAppInterface> b = null;
+  WeakReference<Drawable> c = null;
+  WeakReference<QidianProfileCardActivity> d = null;
+  
+  public bimv(QidianProfileCardActivity paramQidianProfileCardActivity, QQAppInterface paramQQAppInterface, URLImageView paramURLImageView, String paramString, Drawable paramDrawable, boolean paramBoolean)
   {
-    this.mPluginNameSpace = "forceHttps";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramDrawable);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = new WeakReference(paramQidianProfileCardActivity);
   }
   
-  private boolean a(String paramString)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    boolean bool2 = false;
-    niz localniz = niz.a();
-    boolean bool1 = bool2;
-    if (localniz.e(paramString))
+    super.onLoadSuccessed(paramView, paramURLDrawable);
+    paramView = (URLImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.d.get();
+    if ((paramView != null) && (localQQAppInterface != null) && (localQidianProfileCardActivity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      bool1 = bool2;
-      if (!localniz.f(paramString)) {
-        bool1 = true;
+      paramURLDrawable = new BitmapDrawable(QidianProfileCardActivity.a(localQQAppInterface, paramURLDrawable, this.jdField_a_of_type_Boolean));
+      if (this.jdField_a_of_type_Boolean) {
+        localQidianProfileCardActivity.b.put(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
       }
+      paramView.setImageDrawable(paramURLDrawable);
     }
-    return bool1;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    if (!niz.a().d()) {
-      return false;
-    }
-    if (("http".equals(paramString2)) && (a(paramString1)))
-    {
-      paramString2 = this.mRuntime.a();
-      if ((paramString2 != null) && (paramString2.mStatistics != null)) {
-        paramString2.mStatistics.C = true;
-      }
-      paramString2 = "https" + paramString1.substring("http".length());
-      CustomWebView localCustomWebView = this.mRuntime.a();
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("need switch url=").append(noe.b(paramString1, new String[0]));
-        if (localCustomWebView != null) {
-          break label155;
-        }
-      }
-      label155:
-      for (paramString1 = ", view==null";; paramString1 = "")
-      {
-        QLog.i("forceHttps", 2, paramString1);
-        if (localCustomWebView == null) {
-          break;
-        }
-        localCustomWebView.loadUrl(paramString2);
-        return true;
-      }
-    }
-    return false;
   }
 }
 

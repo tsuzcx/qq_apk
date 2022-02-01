@@ -1,85 +1,103 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vbt
-  implements vwd
+public class vbt
+  extends ukz<vaq>
 {
-  vbt(vbr paramvbr, FeedCloudMeta.StComment paramStComment) {}
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View b;
   
-  private void a(boolean paramBoolean, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  public vbt(Context paramContext, vct paramvct)
   {
-    vud localvud;
-    Object localObject;
-    if (vbr.a(this.jdField_a_of_type_Vbr))
-    {
-      vtr.a(vbr.a(this.jdField_a_of_type_Vbr), 3, vbr.a(this.jdField_a_of_type_Vbr), this.jdField_a_of_type_Vbr.a());
-      localvud = vud.a();
-      vuf localvuf = new vuf().a("commentbox");
-      if (!paramBoolean) {
-        break label200;
-      }
-      localObject = "comment";
-      label62:
-      localvuf = localvuf.b((String)localObject).a(vbr.a(this.jdField_a_of_type_Vbr).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
-      QCircleReportBean localQCircleReportBean = this.jdField_a_of_type_Vbr.a().clone();
-      if (vbr.a(this.jdField_a_of_type_Vbr).jdField_a_of_type_JavaLangString != null) {
-        break label207;
-      }
-      localObject = this.jdField_a_of_type_Vbr.a().getModuleIdStr();
-      label121:
-      localObject = localvuf.a(localQCircleReportBean.setModuleIdStr((String)localObject)).a(this.jdField_a_of_type_Vbr.c());
-      if (!paramBoolean) {
-        break label222;
-      }
+    super(paramContext);
+    if (paramvct != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvct.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
     }
-    label200:
-    label207:
-    label222:
-    for (paramStComment = paramStComment.postUser.id.get();; paramStComment = paramStReply.id.get())
+  }
+  
+  private boolean b()
+  {
+    return (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.cid));
+  }
+  
+  private boolean c()
+  {
+    return (this.b != null) && (this.b.getVisibility() == 0) && (!a());
+  }
+  
+  private void g()
+  {
+    uyz.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  protected void a()
+  {
+    vaq localvaq = (vaq)a();
+    if ((localvaq != null) && ((localvaq.a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localvaq.a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return (a() != null) && (((vaq)a()).a());
+  }
+  
+  protected int b()
+  {
+    return 2131560028;
+  }
+  
+  protected void b()
+  {
+    if (b())
     {
-      localvud.a(((vuf)localObject).c(paramStComment));
+      this.b.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.name);
+      if (a())
+      {
+        this.b.setBackgroundColor(uxr.a(2131165742));
+        return;
+      }
+      this.b.setBackgroundColor(uxr.a(2131165362));
       return;
-      vtn.a(vbr.a(this.jdField_a_of_type_Vbr), 3, vbr.a(this.jdField_a_of_type_Vbr), this.jdField_a_of_type_Vbr.b());
-      break;
-      localObject = "reply";
-      break label62;
-      localObject = vbr.a(this.jdField_a_of_type_Vbr).jdField_a_of_type_JavaLangString;
-      break label121;
     }
+    this.b.setVisibility(8);
   }
   
-  public void a(FeedCloudMeta.StComment paramStComment)
+  protected void c() {}
+  
+  protected void e()
   {
-    if (vbr.a(this.jdField_a_of_type_Vbr) != null)
-    {
-      vbr.a(this.jdField_a_of_type_Vbr).a(paramStComment);
-      vbr.a(this.jdField_a_of_type_Vbr);
-    }
-    if (vbr.a(this.jdField_a_of_type_Vbr) != null)
-    {
-      QLog.d("QCircleCommentPanelPart", 1, "mNeedShowCommentList1");
-      vbr.a(this.jdField_a_of_type_Vbr).a().scrollToPosition(0);
-    }
-    a(true, paramStComment, null);
+    this.b = a(2131380407);
+    this.b.setOnClickListener(new vbu(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380408));
   }
   
-  public void a(FeedCloudMeta.StReply paramStReply)
+  public void f()
   {
-    if (vbr.a(this.jdField_a_of_type_Vbr) != null)
+    if (!c())
     {
-      int i = vbr.a(this.jdField_a_of_type_Vbr, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
-      vbr.a(this.jdField_a_of_type_Vbr).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), paramStReply);
-      if ((i != -1) && (vbr.a(this.jdField_a_of_type_Vbr) != null)) {
-        vbr.a(this.jdField_a_of_type_Vbr).a().scrollBy(0, i);
-      }
+      uya.d("AbsWsUIGroup", "fail to meet the requirement of playing collection animation");
+      return;
     }
-    a(false, null, paramStReply);
+    if (a() != null) {
+      ((vaq)a()).a(true);
+    }
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.b, "backgroundColor", new int[] { -2147483648, -2139470081 });
+    localObjectAnimator.addListener(new vbv(this));
+    localObjectAnimator.setDuration(500L);
+    localObjectAnimator.setEvaluator(new ArgbEvaluator());
+    localObjectAnimator.start();
   }
 }
 

@@ -1,21 +1,26 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class tlo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$getUserInfo$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyUserInfoModule$RefreshUserInfoCallBack;", "onLoadUserInfoFailed", "", "uin", "", "errMsg", "onLoadUserInfoSucceed", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ReadInJoyUserInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tlo
+  implements pwf
 {
-  public static tln a(Context paramContext, AdData paramAdData)
+  tlo(String paramString1, tlm paramtlm, String paramString2) {}
+  
+  public void onLoadUserInfoFailed(@NotNull String paramString1, @NotNull String paramString2)
   {
-    if ((paramContext == null) || (paramAdData == null)) {
-      return null;
-    }
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).g())) {
-      return new tlf(paramContext, 2);
-    }
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).f())) {
-      return new tlj(paramContext, 1);
-    }
-    return null;
+    Intrinsics.checkParameterIsNotNull(paramString1, "uin");
+    Intrinsics.checkParameterIsNotNull(paramString2, "errMsg");
+    this.jdField_a_of_type_Tlm.a(this.jdField_a_of_type_JavaLangString, ufd.a(paramString2));
+  }
+  
+  public void onLoadUserInfoSucceed(@NotNull String paramString, @NotNull ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    Intrinsics.checkParameterIsNotNull(paramReadInJoyUserInfo, "userInfo");
+    this.jdField_a_of_type_Tlm.a(this.jdField_a_of_type_JavaLangString, ufd.a(paramReadInJoyUserInfo));
   }
 }
 

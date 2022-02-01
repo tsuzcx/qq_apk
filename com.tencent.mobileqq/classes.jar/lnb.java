@@ -1,21 +1,20 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
 
 public class lnb
+  implements acwz
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public lnb(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   
-  public lnb(AVNotifyCenter paramAVNotifyCenter) {}
-  
-  public String toString()
+  public void a(int paramInt1, int paramInt2)
   {
-    return "relationId[" + this.jdField_a_of_type_Long + "], isOffLine[" + this.jdField_a_of_type_Boolean + "], avType[" + this.jdField_a_of_type_Int + "]";
+    this.a.g = paramInt1;
+    this.a.h = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lnb
  * JD-Core Version:    0.7.0.1
  */

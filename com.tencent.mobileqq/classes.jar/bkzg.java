@@ -1,16 +1,22 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnSeekCompleteListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuSplashManager.TianShuGetSplashCallback.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import mqq.os.MqqHandler;
 
-class bkzg
-  implements IMediaPlayer.OnSeekCompleteListener
+public class bkzg
+  implements blbv
 {
-  bkzg(bkzb parambkzb, ReliableVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  public String a;
   
-  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
+  public bkzg(bkzf parambkzf, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bkzb);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  {
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuSplashManager.TianShuGetSplashCallback.1(this, paramGetAdsRsp), 500L);
     }
   }
 }

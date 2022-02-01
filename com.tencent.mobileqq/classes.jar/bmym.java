@@ -1,6 +1,14 @@
-public abstract interface bmym
+import dov.com.qq.im.capture.view.MusicProviderView;
+
+public class bmym
+  extends bmtc
 {
-  public abstract void a(String paramString, int paramInt);
+  public bmym(MusicProviderView paramMusicProviderView) {}
+  
+  public void b()
+  {
+    this.a.a(false);
+  }
 }
 
 

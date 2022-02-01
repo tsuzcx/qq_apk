@@ -1,24 +1,16 @@
-import android.app.Activity;
-import android.database.ContentObserver;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.Settings.System;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
 
-class rms
-  extends ContentObserver
+public class rms
+  implements DialogInterface.OnClickListener
 {
-  rms(rmr paramrmr, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public rms(EditColumnFragment paramEditColumnFragment) {}
   
-  public void onChange(boolean paramBoolean, Uri paramUri)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onChange(paramBoolean, paramUri);
-    int i = Settings.System.getInt(rmr.a(this.a).getContentResolver(), "screen_brightness", 125);
-    if ((rmr.a(this.a)) && (i > 0)) {
-      this.a.a(i / 255.0F);
-    }
+    this.a.a(false);
+    this.a.i();
   }
 }
 

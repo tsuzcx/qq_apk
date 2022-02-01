@@ -1,22 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class alxp
-  implements wsh<wsc>
+final class alxp
+  implements EIPCResultCallback
 {
-  public alxp(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  alxp(long paramLong) {}
   
-  public void a(boolean paramBoolean, wsc paramwsc)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    yuk.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
-    if ((paramBoolean) && (paramwsc != null))
-    {
-      yuk.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramwsc);
-      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramwsc));
-      return;
-    }
-    yuk.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    alvx.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
   }
 }
 

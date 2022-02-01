@@ -1,62 +1,57 @@
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bcim
-  extends bcjf
+  extends bcgw
 {
-  public bcim(aoof paramaoof)
+  public int o;
+  
+  public bcim()
   {
-    super(paramaoof);
+    this.a = "voice";
   }
   
-  protected bcik<bcfr, bcnz> a(aoof paramaoof)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    return new bcin(paramaoof);
+    return null;
   }
   
-  public void a(bcfp parambcfp, bcny parambcny)
+  public String a()
   {
-    Object localObject = (bcfq)parambcfp;
-    parambcfp = ((bcob)parambcny).a();
-    if (parambcfp != null)
-    {
-      List localList = ((bcfq)localObject).a();
-      if (localList != null)
-      {
-        parambcfp.removeAllViews();
-        int k = Math.min(localList.size(), ((bcfq)localObject).a());
-        int i = 0;
-        if (i < k)
-        {
-          localObject = (bcfr)localList.get(i);
-          View localView = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562883, null);
-          bcoc localbcoc = new bcoc(localView);
-          localView.setTag(2131381109, localObject);
-          localView.setTag(2131381115, localbcoc);
-          localView.setTag(2131381110, Integer.valueOf(i));
-          localView.setTag(2131381108, Integer.valueOf(localList.size()));
-          localView.setTag(2131381111, this.a);
-          bcnl.a((bcfr)localObject, k, i);
-          int m = ((bcfr)localObject).a();
-          int n = ((bcfr)localObject).b();
-          if ((localObject instanceof bcfs)) {}
-          for (int j = ((bcfs)localObject).u;; j = 0)
-          {
-            bcnl.a(m, n, localView, j);
-            parambcfp.addView(localView);
-            this.a.a((bcfp)localObject, localbcoc);
-            i += 1;
-            break;
-          }
-        }
-      }
+    return null;
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.o = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.o);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "voice");
+    paramXmlSerializer.attribute(null, "length", String.valueOf(this.o));
+    paramXmlSerializer.endTag(null, "voice");
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    parambcin = parambcin.a("length");
+    if (!TextUtils.isEmpty(parambcin)) {
+      this.o = Integer.parseInt(parambcin);
     }
-    if (parambcny.b() != null) {
-      parambcny.b().setVisibility(8);
-    }
+    return true;
   }
 }
 

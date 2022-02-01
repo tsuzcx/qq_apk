@@ -1,11 +1,11 @@
 package cooperation.vip.webview.controller;
 
-import bnxi;
+import blco;
 
 public class BaseTranslucentController$2
   implements Runnable
 {
-  public BaseTranslucentController$2(bnxi parambnxi) {}
+  public BaseTranslucentController$2(blco paramblco) {}
   
   public void run()
   {

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.splashad;
 
 import android.text.TextUtils;
-import bhlo;
-import bjtz;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -53,12 +53,12 @@ public final class SplashADUtil$1
         if (!((String)localObject3).contains("__APP__")) {
           continue;
         }
-        localObject2 = ((String)localObject3).replace("__APP__", bjtz.b("android_qq_splash"));
-        localObject3 = bhlo.a();
+        localObject2 = ((String)localObject3).replace("__APP__", MD5Utils.encodeHexStr("android_qq_splash"));
+        localObject3 = DeviceInfoUtil.getIMEI();
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           continue;
         }
-        bjtz.b((String)localObject3);
+        MD5Utils.encodeHexStr((String)localObject3);
         localObject3 = localObject2;
         if (!((String)localObject2).contains("__OS__")) {
           continue;

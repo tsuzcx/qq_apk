@@ -1,178 +1,161 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import javax.annotation.Nullable;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class awec
-  implements bekm
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  private QQAppInterface a;
+  public awec(QQPlayerService paramQQPlayerService) {}
   
-  public awec(QQAppInterface paramQQAppInterface)
+  /* Error */
+  public void onAudioFocusChange(int paramInt)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    bejx localbejx = (bejx)this.a.getManager(339);
-    if (paramInt == 4) {
-      bdll.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_join_suc", 0, 1, paramString, "", "", "");
-    }
-    do
-    {
-      return;
-      if (paramInt == 9)
-      {
-        bdll.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark_suc", 0, 1, paramString, "", "", "");
-        return;
-      }
-      if (paramInt == 1)
-      {
-        localbejx.a("sing_tab", "clk_join_suc", 0, paramString);
-        return;
-      }
-    } while (paramInt != 8);
-    localbejx.a("sing_tab", "clk_setsing_suc", 0, paramString);
-  }
-  
-  private boolean a(boolean paramBoolean, Bundle paramBundle, String paramString, Context paramContext, int paramInt)
-  {
-    if ((!paramBoolean) || (paramInt <= 0)) {
-      return true;
-    }
-    paramString = ((awdv)this.a.getManager(348)).a(Long.parseLong(paramString), paramInt, true);
-    if (TextUtils.isEmpty(paramString))
-    {
-      Toast.makeText(paramContext, "加载中，请稍后再试。", 1).show();
-      return false;
-    }
-    paramBundle.putString("TOGETHER_BUNDLE_KEY_C2C_FRIEND_OPENID", paramString);
-    return true;
-  }
-  
-  public int a()
-  {
-    return 9;
-  }
-  
-  public int a(int paramInt1, String paramString, Context paramContext, int paramInt2, Map<String, bekj> paramMap, Bundle paramBundle)
-  {
-    a(paramString, paramInt2);
-    Object localObject = "4_" + paramInt1 + "_" + paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + (String)localObject + " from=" + paramInt2);
-    }
-    int i;
-    if (paramInt1 == 2) {
-      i = 2080;
-    }
-    while (((paramInt2 == 4) || (paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 8)) && (paramMap != null) && (paramMap.get(localObject) != null))
-    {
-      paramMap = (SingTogetherSession)paramMap.get(localObject);
-      if (!TextUtils.isEmpty(paramMap.b))
-      {
-        MiniAppLauncher.startMiniApp(paramContext, paramMap.b, i, null);
-        return 1;
-        i = 2081;
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA is empty");
-      }
-    }
-    if (TextUtils.isEmpty(""))
-    {
-      localObject = ((arjb)aran.a().a(551)).a(4);
-      if ((localObject != null) && (((arjc)localObject).c != 1))
-      {
-        bool = TextUtils.isEmpty(((arjc)localObject).a);
-        if (bool)
-        {
-          paramMap = "mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc";
-          if (!bool) {
-            break label299;
-          }
-          paramInt2 = 2;
-          label261:
-          if (paramInt1 != 2) {
-            break label309;
-          }
-        }
-        label299:
-        label309:
-        for (bool = true;; bool = false)
-        {
-          if (a(bool, paramBundle, paramString, paramContext, ((arjc)localObject).d)) {
-            break label315;
-          }
-          return 0;
-          paramMap = ((arjc)localObject).a;
-          break;
-          paramInt2 = ((arjc)localObject).b;
-          break label261;
-        }
-        label315:
-        bekk.a(this.a, paramInt2, paramMap, null, paramBundle, paramInt1);
-        return 2;
-      }
-      if (paramInt1 == 2) {}
-      for (boolean bool = true; !a(bool, paramBundle, paramString, paramContext, 1109995692); bool = false) {
-        return 0;
-      }
-      if (paramInt1 == 1) {}
-      for (paramString = bekk.a("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle);; paramString = bekk.b("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle))
-      {
-        MiniAppLauncher.startMiniApp(paramContext, paramString, i, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + paramString);
-        }
-        return 3;
-      }
-    }
-    return -1;
-  }
-  
-  public bhpc a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "一起K歌";
-  }
-  
-  public void a() {}
-  
-  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, bekj> paramMap, @Nullable Bundle paramBundle) {}
-  
-  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt) {}
-  
-  public void a(bekj parambekj, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
-  
-  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bekj> paramMap, @Nullable Bundle paramBundle)
-  {
-    a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
-    return false;
-  }
-  
-  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, bekj> paramMap, @Nullable Bundle paramBundle)
-  {
-    return true;
-  }
-  
-  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bekj> paramMap, @Nullable Bundle paramBundle)
-  {
-    a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
-    return false;
+    // Byte code:
+    //   0: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +28 -> 31
+    //   6: ldc 28
+    //   8: iconst_2
+    //   9: new 30	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 31	java/lang/StringBuilder:<init>	()V
+    //   16: ldc 33
+    //   18: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: iload_1
+    //   22: invokevirtual 40	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   31: aload_0
+    //   32: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   35: astore_2
+    //   36: aload_2
+    //   37: monitorenter
+    //   38: iload_1
+    //   39: tableswitch	default:+33 -> 72, -3:+132->171, -2:+36->75, -1:+36->75, 0:+33->72, 1:+174->213
+    //   73: monitorexit
+    //   74: return
+    //   75: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   78: ifnull +26 -> 104
+    //   81: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   84: invokevirtual 58	android/media/MediaPlayer:isPlaying	()Z
+    //   87: ifeq +17 -> 104
+    //   90: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   93: invokevirtual 61	android/media/MediaPlayer:pause	()V
+    //   96: aload_0
+    //   97: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   100: iconst_3
+    //   101: invokestatic 64	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   104: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   107: ifeq +11 -> 118
+    //   110: ldc 28
+    //   112: iconst_2
+    //   113: ldc 66
+    //   115: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: aload_0
+    //   119: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   122: iconst_0
+    //   123: putfield 69	com/tencent/mobileqq/music/QQPlayerService:a	Z
+    //   126: goto -54 -> 72
+    //   129: astore_3
+    //   130: aload_2
+    //   131: monitorexit
+    //   132: aload_3
+    //   133: athrow
+    //   134: astore_2
+    //   135: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   138: ifeq +174 -> 312
+    //   141: ldc 28
+    //   143: iconst_2
+    //   144: new 30	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 31	java/lang/StringBuilder:<init>	()V
+    //   151: ldc 71
+    //   153: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: aload_2
+    //   157: invokevirtual 74	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   160: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   166: aload_2
+    //   167: invokestatic 77	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   170: return
+    //   171: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   174: ifnull +22 -> 196
+    //   177: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   180: invokevirtual 58	android/media/MediaPlayer:isPlaying	()Z
+    //   183: ifeq +13 -> 196
+    //   186: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   189: ldc 78
+    //   191: ldc 78
+    //   193: invokevirtual 82	android/media/MediaPlayer:setVolume	(FF)V
+    //   196: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   199: ifeq -127 -> 72
+    //   202: ldc 28
+    //   204: iconst_2
+    //   205: ldc 84
+    //   207: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   210: goto -138 -> 72
+    //   213: invokestatic 88	com/tencent/mobileqq/music/QQPlayerService:h	()I
+    //   216: iconst_3
+    //   217: if_icmpne +43 -> 260
+    //   220: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   223: ifnull +37 -> 260
+    //   226: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   229: invokevirtual 58	android/media/MediaPlayer:isPlaying	()Z
+    //   232: ifne +28 -> 260
+    //   235: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   238: fconst_1
+    //   239: fconst_1
+    //   240: invokevirtual 82	android/media/MediaPlayer:setVolume	(FF)V
+    //   243: aload_0
+    //   244: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   247: invokestatic 91	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;)Z
+    //   250: ifeq +35 -> 285
+    //   253: aload_0
+    //   254: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   257: invokevirtual 93	com/tencent/mobileqq/music/QQPlayerService:a	()V
+    //   260: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   263: ifeq +11 -> 274
+    //   266: ldc 28
+    //   268: iconst_2
+    //   269: ldc 95
+    //   271: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   274: aload_0
+    //   275: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   278: iconst_1
+    //   279: putfield 69	com/tencent/mobileqq/music/QQPlayerService:a	Z
+    //   282: goto -210 -> 72
+    //   285: aload_0
+    //   286: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   289: invokestatic 98	com/tencent/mobileqq/music/QQPlayerService:b	(Lcom/tencent/mobileqq/music/QQPlayerService;)Z
+    //   292: ifne -32 -> 260
+    //   295: invokestatic 53	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   298: invokevirtual 101	android/media/MediaPlayer:start	()V
+    //   301: aload_0
+    //   302: getfield 12	awec:a	Lcom/tencent/mobileqq/music/QQPlayerService;
+    //   305: iconst_2
+    //   306: invokestatic 64	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   309: goto -49 -> 260
+    //   312: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	313	0	this	awec
+    //   0	313	1	paramInt	int
+    //   35	96	2	localQQPlayerService	QQPlayerService
+    //   134	33	2	localException	java.lang.Exception
+    //   129	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   72	74	129	finally
+    //   75	104	129	finally
+    //   104	118	129	finally
+    //   118	126	129	finally
+    //   130	132	129	finally
+    //   171	196	129	finally
+    //   196	210	129	finally
+    //   213	260	129	finally
+    //   260	274	129	finally
+    //   274	282	129	finally
+    //   285	309	129	finally
+    //   31	38	134	java/lang/Exception
+    //   132	134	134	java/lang/Exception
   }
 }
 

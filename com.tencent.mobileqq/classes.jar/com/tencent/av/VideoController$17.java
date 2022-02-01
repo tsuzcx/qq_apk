@@ -1,20 +1,19 @@
 package com.tencent.av;
 
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import lff;
+import lez;
+import mua;
 
 class VideoController$17
   implements Runnable
 {
-  VideoController$17(VideoController paramVideoController) {}
+  VideoController$17(VideoController paramVideoController, long paramLong) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "mDoubleVideoMeetingSwitchMulti timeOut ");
-    }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(this.this$0.a().g), Boolean.valueOf(true) });
+    this.this$0.jdField_a_of_type_Mua.b(this.a);
+    mua localmua = this.this$0.jdField_a_of_type_Mua;
+    mua.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    this.this$0.b(this.this$0.a().d, 50);
   }
 }
 

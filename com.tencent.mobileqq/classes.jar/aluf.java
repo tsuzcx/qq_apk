@@ -1,98 +1,34 @@
-import java.io.File;
-import java.util.Calendar;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract class aluf
+public class aluf
+  implements View.OnLayoutChangeListener
 {
-  public static float a;
-  public static int a;
-  public static int b = 3;
-  public static int c = 2;
-  public static int d = 1;
+  public aluf(ApolloWebViewFragment paramApolloWebViewFragment) {}
   
-  static
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    jdField_a_of_type_Float = 0.75F;
-    jdField_a_of_type_Int = 2;
-  }
-  
-  public static String a()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder(alwf.b);
-    localStringBuilder.append("IMG");
-    localStringBuilder.append(localCalendar.get(1));
-    int i = localCalendar.get(2) + 1;
-    if (i < 10)
+    paramView = this.a.getHostActivity();
+    if (paramView == null) {}
+    do
     {
-      localObject = "0" + i;
-      localStringBuilder.append(localObject);
-      i = localCalendar.get(5);
-      if (i >= 10) {
-        break label300;
-      }
-      localObject = "0" + i;
-      label108:
-      localStringBuilder.append(localObject);
-      i = localCalendar.get(11);
-      if (i >= 10) {
-        break label308;
-      }
-      localObject = "0" + i;
-      label148:
-      localStringBuilder.append(localObject);
-      i = localCalendar.get(12);
-      if (i >= 10) {
-        break label316;
-      }
-      localObject = "0" + i;
-      label188:
-      localStringBuilder.append(localObject);
-      i = localCalendar.get(13);
-      if (i >= 10) {
-        break label324;
-      }
-    }
-    label300:
-    label308:
-    label316:
-    label324:
-    for (Object localObject = "0" + i;; localObject = Integer.valueOf(i))
-    {
-      localStringBuilder.append(localObject);
-      if (new File(localStringBuilder.toString() + ".jpg").exists()) {
-        break label332;
-      }
-      return localStringBuilder.toString() + ".jpg";
-      localObject = Integer.valueOf(i);
-      break;
-      localObject = Integer.valueOf(i);
-      break label108;
-      localObject = Integer.valueOf(i);
-      break label148;
-      localObject = Integer.valueOf(i);
-      break label188;
-    }
-    label332:
-    localObject = new StringBuilder(localStringBuilder);
-    int j = localStringBuilder.length();
-    i = 1;
-    for (;;)
-    {
-      if (i < 2147483647)
+      do
       {
-        ((StringBuilder)localObject).append('(');
-        ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(')');
-        ((StringBuilder)localObject).append(".jpg");
-        if (new File(((StringBuilder)localObject).toString()).exists()) {}
-      }
-      else
-      {
-        return ((StringBuilder)localObject).toString();
-      }
-      ((StringBuilder)localObject).delete(j, ((StringBuilder)localObject).length());
-      i += 1;
-    }
+        return;
+        paramView = paramView.findViewById(16908290);
+      } while (paramView == null);
+      paramView.getWindowVisibleDisplayFrame(ApolloWebViewFragment.a(this.a));
+      paramInt1 = ApolloWebViewFragment.a(this.a).right - ApolloWebViewFragment.a(this.a).left;
+      paramInt2 = ApolloWebViewFragment.a(this.a).bottom - ApolloWebViewFragment.a(this.a).top;
+    } while ((ApolloWebViewFragment.a(this.a) == paramInt1) && (ApolloWebViewFragment.b(this.a) == paramInt2));
+    ThreadManager.getUIHandler().post(this.a.a);
+    ApolloWebViewFragment.a(this.a, paramInt1);
+    ApolloWebViewFragment.b(this.a, paramInt2);
   }
 }
 

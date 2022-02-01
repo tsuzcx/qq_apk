@@ -1,18 +1,23 @@
+import com.tencent.mobileqq.app.BusinessObserver;
+
 public class bcng
+  implements BusinessObserver
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public String toString()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return "source = " + this.jdField_c_of_type_JavaLangString + " editDistance = " + this.d + " matchDegree = " + this.jdField_c_of_type_Int;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    }
+    b(paramBoolean, ((Boolean)paramObject).booleanValue());
   }
 }
 

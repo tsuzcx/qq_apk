@@ -1,23 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class nqn
+  implements SoundPool.OnLoadCompleteListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  String b;
+  public nqn(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  nqn(nql paramnql)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

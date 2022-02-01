@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException;
 
 public class pkb
-  implements pks
+  extends BroadcastReceiver
 {
-  public pkb(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public pkb(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReadInJoySelfFragment.j(this.a);
+    TaskException.reportCrash(paramIntent.getBooleanExtra("isNativeCrashed", false), paramIntent.getStringExtra("crashType"), paramIntent.getStringExtra("crashAddress"), paramIntent.getStringExtra("crashStack"), paramIntent.getIntExtra("native_SICODE", 0), paramIntent.getLongExtra("crashTime", 0L));
   }
 }
 

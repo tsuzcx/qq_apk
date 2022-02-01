@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
-public class okn
-  implements nmg
+class okn
+  extends aqyp
 {
-  public okn(ReadInJoyNewFeedsActivity.2 param2) {}
+  okn(okm paramokm) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onBindedToClient()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
-    }
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
   
-  public void progress(int paramInt) {}
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

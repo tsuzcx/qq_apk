@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.singtogether;
 
-import awdv;
+import auqv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -11,11 +11,11 @@ import java.util.List;
 public class FetchOpenIdManager$1
   implements Runnable
 {
-  public FetchOpenIdManager$1(awdv paramawdv, QQAppInterface paramQQAppInterface) {}
+  public FetchOpenIdManager$1(auqv paramauqv, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.a.a().createEntityManager();
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
     Object localObject = localEntityManager.query(OpenIdItem.class, false, null, null, null, null, null, null);
     if ((localObject != null) && (((List)localObject).size() > 0)) {
       localObject = ((List)localObject).iterator();
@@ -23,14 +23,14 @@ public class FetchOpenIdManager$1
     while (((Iterator)localObject).hasNext())
     {
       OpenIdItem localOpenIdItem = (OpenIdItem)((Iterator)localObject).next();
-      awdv.a(this.this$0, localOpenIdItem.appId, localOpenIdItem.uin, localOpenIdItem.openId);
-      awdv.a(this.this$0, localOpenIdItem, false);
+      auqv.a(this.this$0, localOpenIdItem.appId, localOpenIdItem.uin, localOpenIdItem.openId);
+      auqv.a(this.this$0, localOpenIdItem, false);
       continue;
       if (QLog.isColorLevel()) {
         QLog.d("FetchOpenIdManager", 2, "initOpenIdFromDB size is 0");
       }
     }
-    awdv.a(this.this$0, 1);
+    auqv.a(this.this$0, 1);
     localEntityManager.close();
   }
 }

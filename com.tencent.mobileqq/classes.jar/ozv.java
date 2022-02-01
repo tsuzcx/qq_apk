@@ -1,23 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.1;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.2;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ozv
-  implements blop
+class ozv
+  implements ViewBase.OnClickListener
 {
-  ozv(BaseActivity paramBaseActivity) {}
+  ozv(ozu paramozu, int paramInt, ViewBase paramViewBase) {}
   
-  public void a(bloo parambloo)
+  public void onClick(ViewBase paramViewBase)
   {
-    switch (parambloo.a)
+    try
     {
-    default: 
-      return;
-    case 0: 
-      skt.a(this.a, new ReadInJoyUtils.16.1(this));
+      ozl.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ozu.jdField_a_of_type_Int, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_a_of_type_Ozu.jdField_a_of_type_Slt, this.jdField_a_of_type_Ozu.jdField_a_of_type_Pvc, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
       return;
     }
-    skt.a(this.a, new ReadInJoyUtils.16.2(this));
+    catch (Exception paramViewBase)
+    {
+      QLog.d("ProteusSupportUtil", 1, "invokeListener error! cmd=" + this.jdField_a_of_type_Int + " msg=" + paramViewBase);
+    }
   }
 }
 

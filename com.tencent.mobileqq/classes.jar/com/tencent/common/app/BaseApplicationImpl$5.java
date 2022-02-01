@@ -9,7 +9,7 @@ class BaseApplicationImpl$5
   
   public void run()
   {
-    this.this$0.doSendBroadcast(this.a);
+    this.this$0.doSendBroadcast(this.val$i);
   }
 }
 

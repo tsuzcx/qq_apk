@@ -1,42 +1,32 @@
 package dov.com.qq.im;
 
 import android.app.Activity;
-import android.view.WindowManager.BadTokenException;
-import bhpc;
-import bocn;
-import bqai;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import bfvo;
+import blhu;
+import blid;
+import bnbp;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class QIMCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMCameraCaptureUnit$2(bocn parambocn, String paramString) {}
+  public QIMCameraCaptureUnit$2(blhu paramblhu) {}
   
   public void run()
   {
-    Activity localActivity = this.this$0.a.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
     try
     {
-      this.this$0.z();
-      if (!bocn.a(this.this$0).isShowing())
-      {
-        bocn.a(this.this$0).setCancelable(false);
-        bocn.a(this.this$0).show();
+      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = blid.a(this.this$0.jdField_a_of_type_Bnbp.a(), true);
+      if ((this.this$0.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+        this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.b(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, ViewUtils.dip2px(3.0F), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
       }
-      QLog.e("QIMCameraCaptureUnit", 2, "onCameraStarted error = " + this.a);
+      this.this$0.jdField_a_of_type_Bnbp.a().runOnUiThread(new QIMCameraCaptureUnit.2.1(this));
       return;
     }
-    catch (WindowManager.BadTokenException localBadTokenException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QIMCameraCaptureUnit", 2, "", localBadTokenException);
-        }
-      }
+      localException.printStackTrace();
     }
   }
 }

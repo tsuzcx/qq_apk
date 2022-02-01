@@ -1,29 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class afgy
-  implements View.OnClickListener
+class afgy
+  implements Animator.AnimatorListener
 {
-  public afgy(QQMapActivity paramQQMapActivity) {}
+  afgy(afgw paramafgw, LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (!bhnv.d(this.a)) {
-      this.a.x();
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationCancel drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
     }
-    for (;;)
-    {
-      abhr.a("see_streetview");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (bhnv.a(this.a)) {
-        this.a.p();
-      } else {
-        bhlq.a(this.a, 230).setTitle(this.a.getString(2131689974)).setMessage(2131694155).setPositiveButton(2131690913, new afha(this)).setNegativeButton(2131690580, new afgz(this)).show();
-      }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationEnd drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
     }
+    afgw.a(this.jdField_a_of_type_Afgw, paramAnimator, this.jdField_a_of_type_Int);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationStart drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    }
+    if ((afhb.a(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getSpeed() > 0.0F)) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.reverseAnimationSpeed();
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.invalidateDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
   }
 }
 

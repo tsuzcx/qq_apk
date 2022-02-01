@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aktn;
-import aktq;
+import ajrd;
+import ajrg;
 import android.content.Intent;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import java.util.ArrayList;
 
 public class PhotoPreviewLogicDefault$5
   implements Runnable
 {
-  public PhotoPreviewLogicDefault$5(aktq paramaktq, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
+  public PhotoPreviewLogicDefault$5(ajrg paramajrg, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.a.b, this.this$0.mPhotoCommonData.currentQualityType, true);
+      PhotoUtils.sendPhoto(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.a.b, this.this$0.mPhotoCommonData.currentQualityType, true);
       ((NewPhotoPreviewActivity)this.this$0.mActivity).setResult(-1);
       ((NewPhotoPreviewActivity)this.this$0.mActivity).finish();
     }
     for (;;)
     {
-      bdll.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      bcwu.b = System.currentTimeMillis();
+      bcef.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      bbqf.b = System.currentTimeMillis();
       return;
-      PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
+      PhotoUtils.sendPhoto(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
     }
   }
 }

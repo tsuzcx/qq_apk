@@ -6,6 +6,7 @@ import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
@@ -43,6 +44,7 @@ public class TPPlayerInternal
   private static final int MSG_DOWN_LOAD_PROTOCOL_UPDATE = 75;
   private static final int MSG_DOWN_LOAD_STATUS_UPDATE = 74;
   private static final int MSG_DOWN_LOAD_STRING_GET_PLAY_INFO = 84;
+  private static final int MSG_GET_PLAYER_TYPE = 40;
   private static final int MSG_GET_PROGRAMINFO = 33;
   private static final int MSG_GET_PROPERTY_LONG = 27;
   private static final int MSG_GET_PROPERTY_STRING = 28;
@@ -51,13 +53,16 @@ public class TPPlayerInternal
   private static final int MSG_GET_VIDEO_WIDTH = 21;
   private static final int MSG_INDEX = 0;
   private static final int MSG_PAUSE = 12;
+  private static final int MSG_PAUSE_DOWNLOAD = 41;
   private static final int MSG_PREPARE_ASYNC = 10;
   private static final int MSG_RELEASE = 15;
   private static final int MSG_RESET = 14;
+  private static final int MSG_RESUME_DOWNLOAD = 42;
   private static final int MSG_SEEK_TO = 16;
   private static final int MSG_SELECT_PROGRAM = 32;
   private static final int MSG_SELECT_TRACK = 8;
   private static final int MSG_SET_AUDIO_GAIN_RATIO = 18;
+  private static final int MSG_SET_AUDIO_NORMALIZE_VOLUME_PARAMS = 38;
   private static final int MSG_SET_DATA_SOURCE = 5;
   private static final int MSG_SET_LOOPBACK = 35;
   private static final int MSG_SET_LOOPBACK_WITH_PARAM = 20;
@@ -65,9 +70,11 @@ public class TPPlayerInternal
   private static final int MSG_SET_PLAYER_PARAMS = 1;
   private static final int MSG_SET_SPEED_RATIO = 19;
   private static final int MSG_SET_SURFACE = 4;
+  private static final int MSG_SET_SURFACE_HOLDER = 39;
   private static final int MSG_SET_VIDEO_INFO = 29;
   private static final int MSG_START = 11;
   private static final int MSG_STOP = 13;
+  private static final int MSG_STOP_ASYNC = 37;
   private static final int MSG_SWITCH_DEF = 31;
   private static final int MSG_UPDATE_VIDEO_INFO = 34;
   private static final String TAG = "TPThumbPlayer[TPPlayerInternal.java]";
@@ -76,6 +83,7 @@ public class TPPlayerInternal
   private Object mLongPlayinfo;
   private Looper mLooper;
   private Object mPlayBackResult;
+  private int mPlayerTypeResult;
   private TPThreadSwitchCommons.TPProgramInfoResult mProgramInfoResult;
   private long mPropertyLongResult;
   private String mPropertyStringResult;
@@ -115,6 +123,8 @@ public class TPPlayerInternal
       this.mPropertyStringResult = this.mTPSwitchThreadListener.handleGetPropertyString(paramInt2);
       continue;
       this.mProgramInfoResult.programInfos = this.mTPSwitchThreadListener.handleGetProgramInfo();
+      continue;
+      this.mPlayerTypeResult = this.mTPSwitchThreadListener.handleGetPlayerType();
     }
   }
   
@@ -132,12 +142,6 @@ public class TPPlayerInternal
     case 25: 
     case 26: 
     case 34: 
-    case 37: 
-    case 38: 
-    case 39: 
-    case 40: 
-    case 41: 
-    case 42: 
     case 43: 
     case 44: 
     case 45: 
@@ -172,6 +176,7 @@ public class TPPlayerInternal
     default: 
     case 1: 
     case 4: 
+    case 39: 
     case 5: 
     case 29: 
     case 30: 
@@ -182,12 +187,16 @@ public class TPPlayerInternal
     case 10: 
     case 11: 
     case 12: 
+    case 41: 
+    case 42: 
     case 13: 
+    case 37: 
     case 14: 
     case 15: 
     case 16: 
     case 17: 
     case 18: 
+    case 38: 
     case 19: 
     case 20: 
     case 35: 
@@ -204,6 +213,8 @@ public class TPPlayerInternal
               this.mTPSwitchThreadListener.handleSetPlayerOptionParams((TPOptionalParam)paramMessage.obj);
               return;
               this.mTPSwitchThreadListener.handleSetSurface((Surface)paramMessage.obj);
+              return;
+              this.mTPSwitchThreadListener.handleSetSurfaceHolder((SurfaceHolder)paramMessage.obj);
               return;
               this.mTPSwitchThreadListener.handleSetDataSource((TPThreadSwitchCommons.TPDataSourceParams)paramMessage.obj);
               return;
@@ -229,8 +240,14 @@ public class TPPlayerInternal
           return;
           this.mTPSwitchThreadListener.handlePause();
           return;
+          this.mTPSwitchThreadListener.handlePauseDownload();
+          return;
+          this.mTPSwitchThreadListener.handleResumeDownload();
+          return;
           this.mTPSwitchThreadListener.handleStop();
           unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+          return;
+          this.mTPSwitchThreadListener.handleStopAsync();
           return;
           this.mTPSwitchThreadListener.handleReset();
           unWriteLockAndConditionIfFromEventHandler(paramBoolean);
@@ -244,6 +261,8 @@ public class TPPlayerInternal
           this.mTPSwitchThreadListener.handleSetOutputMute(((Boolean)paramMessage.obj).booleanValue());
           return;
           this.mTPSwitchThreadListener.handleSetAudioGainRatio(((Float)paramMessage.obj).floatValue());
+          return;
+          this.mTPSwitchThreadListener.handleSetAudioNormalizeVolumeParams((String)paramMessage.obj);
           return;
           this.mTPSwitchThreadListener.handleSetPlaySpeedRatio(((Float)paramMessage.obj).floatValue());
           return;
@@ -271,6 +290,7 @@ public class TPPlayerInternal
     case 27: 
     case 28: 
     case 33: 
+    case 40: 
       handleCommonGetMessage(paramMessage.what, paramMessage.arg1, paramBoolean);
       return;
     case 70: 
@@ -391,12 +411,7 @@ public class TPPlayerInternal
     case 25: 
     case 26: 
     case 34: 
-    case 37: 
-    case 38: 
-    case 39: 
     case 40: 
-    case 41: 
-    case 42: 
     case 43: 
     case 44: 
     case 45: 
@@ -433,6 +448,8 @@ public class TPPlayerInternal
       return "[tpPlayer] -> set player params";
     case 4: 
       return "[tpPlayer] -> set surface";
+    case 39: 
+      return "[tpPlayer] -> set surfaceHolder";
     case 5: 
       return "[tpPlayer] -> set data source";
     case 6: 
@@ -449,6 +466,10 @@ public class TPPlayerInternal
       return "[tpPlayer] -> start";
     case 12: 
       return "[tpPlayer] -> pause";
+    case 41: 
+      return "[tpPlayer] -> pauseDownload";
+    case 42: 
+      return "[tpPlayer] -> resumeDownload";
     case 13: 
       return "[tpPlayer] -> stop";
     case 14: 
@@ -461,6 +482,8 @@ public class TPPlayerInternal
       return "[tpPlayer] -> set output mute";
     case 18: 
       return "[tpPlayer] -> set audio gain ratio";
+    case 38: 
+      return "[tpPlayer] -> set audio normalize volume params";
     case 19: 
       return "[tpPlayer] -> set speed ratio";
     case 35: 
@@ -487,8 +510,10 @@ public class TPPlayerInternal
       return "[tpPlayer] -> get program";
     case 20: 
       return "[tpPlayer] -> set loopback with param";
+    case 73: 
+      return "[tpPlayer] -> cdn info update";
     }
-    return "[tpPlayer] -> cdn info update";
+    return "[tpPlayer] -> stopAsync";
   }
   
   private void readLockIfNeed()
@@ -706,6 +731,17 @@ public class TPPlayerInternal
     return 0L;
   }
   
+  int getPlayerType()
+  {
+    writeLockIfNeed();
+    this.mPlayerTypeResult = 0;
+    TPLogUtil.i("TPThumbPlayer[TPPlayerInternal.java]", "api call : get player type");
+    internalMessage(40, 0, 0, null, false, false, 0L);
+    internalWLockWait("get player type", 500L);
+    unWriteLockIfNeed();
+    return this.mPlayerTypeResult;
+  }
+  
   TPProgramInfo[] getProgramInfo()
   {
     writeLockIfNeed();
@@ -842,6 +878,11 @@ public class TPPlayerInternal
     internalMessage(12, 0, 0, null, false, false, 0L);
   }
   
+  void pauseDownload()
+  {
+    internalMessage(41, 0, 0, null, false, false, 0L);
+  }
+  
   void prepareAsync()
   {
     internalMessage(10, 0, 0, null, false, false, 0L);
@@ -863,6 +904,11 @@ public class TPPlayerInternal
     internalMessage(14, 0, 0, null, false, false, 0L);
     internalWLockWait("reset", 500L);
     unWriteLockIfNeed();
+  }
+  
+  void resumeDownload()
+  {
+    internalMessage(42, 0, 0, null, false, false, 0L);
   }
   
   void seekTo(int paramInt)
@@ -888,6 +934,11 @@ public class TPPlayerInternal
   void setAudioGainRatio(float paramFloat)
   {
     internalMessage(18, 0, 0, Float.valueOf(paramFloat), false, true, 0L);
+  }
+  
+  void setAudioNormalizeVolumeParams(String paramString)
+  {
+    internalMessage(38, 0, 0, paramString, false, true, 0L);
   }
   
   void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
@@ -953,6 +1004,11 @@ public class TPPlayerInternal
     internalMessage(4, 0, 0, paramSurface, false, false, 0L);
   }
   
+  void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
+  {
+    internalMessage(39, 0, 0, paramSurfaceHolder, false, false, 0L);
+  }
+  
   public void setVideoInfo(TPVideoInfo paramTPVideoInfo)
   {
     internalMessage(29, 0, 0, paramTPVideoInfo, true, false, 0L);
@@ -970,6 +1026,12 @@ public class TPPlayerInternal
     internalMessage(13, 0, 0, null, false, false, 0L);
     internalWLockWait("stop", 500L);
     unWriteLockIfNeed();
+  }
+  
+  void stopAsync()
+  {
+    TPLogUtil.i("TPThumbPlayer[TPPlayerInternal.java]", "api call : stopAsync");
+    internalMessage(37, 0, 0, null, false, false, 0L);
   }
   
   void switchDefinition(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)

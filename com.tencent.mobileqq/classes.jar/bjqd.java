@@ -1,59 +1,63 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import com.tencent.open.base.img.ImageCache;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import java.util.ArrayList;
 
 public class bjqd
 {
-  protected static bjqd a;
-  protected static byte[] a;
-  protected LruCache<String, Bitmap> a;
+  private static ArrayList<bjqd> a;
+  public int a;
+  public bjqe a;
+  public ExpandableListConnector.GroupMetadata a;
   
   static
   {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   }
   
-  protected bjqd()
+  private static bjqd a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(50);
-  }
-  
-  public static bjqd a()
-  {
-    if (jdField_a_of_type_Bjqd == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      if (jdField_a_of_type_Bjqd == null) {
-        jdField_a_of_type_Bjqd = new bjqd();
+      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localbjqd = (bjqd)jdField_a_of_type_JavaUtilArrayList.remove(0);
+        localbjqd.b();
+        return localbjqd;
       }
-      return jdField_a_of_type_Bjqd;
+      bjqd localbjqd = new bjqd();
+      return localbjqd;
     }
   }
   
-  public Bitmap a(String arg1)
+  public static bjqd a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
-    Object localObject1 = bjtz.b(???);
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      localObject1 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject1);
-      return localObject1;
-    }
+    bjqd localbjqd = a();
+    localbjqd.jdField_a_of_type_Bjqe = bjqe.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localbjqd.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
+    localbjqd.jdField_a_of_type_Int = paramInt5;
+    return localbjqd;
   }
   
-  public void a(String paramString)
+  private void b()
   {
-    String str = bjtz.b(paramString);
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    this.jdField_a_of_type_Bjqe = null;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(str);
-      ImageCache.a(paramString);
+      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        jdField_a_of_type_JavaUtilArrayList.add(this);
+      }
       return;
     }
   }
   
-  public void a(String paramString, bjqf parambjqf)
+  public boolean a()
   {
-    ImageCache.a("app", paramString, new bjqe(this, parambjqf, paramString));
+    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
   }
 }
 

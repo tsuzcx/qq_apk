@@ -1,20 +1,37 @@
-import UserGrowth.stFollowFeedsReq;
-import UserGrowth.stFollowFeedsRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class uom
-  extends ukl<stFollowFeedsRsp>
+class uom
+  implements uot
 {
-  public uom(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
+  uom(uok paramuok) {}
+  
+  public void a()
   {
-    super("FollowFeeds", paramInt);
-    stFollowFeedsReq localstFollowFeedsReq = new stFollowFeedsReq();
-    localstFollowFeedsReq.attatch_info = paramString1;
-    localstFollowFeedsReq.is_refresh = paramBoolean2;
-    localstFollowFeedsReq.is_first = paramBoolean1;
-    localstFollowFeedsReq.push_info = paramString2;
-    localstFollowFeedsReq.scene = paramInt;
-    this.a = localstFollowFeedsReq;
-    uqf.d("FollowRequest", localstFollowFeedsReq.toString());
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131719689, 0).a();
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = TroopInfoActivity.a(paramString1, paramString2, 60006);
+    TroopUtils.openTroopInfoActivity(uok.a(this.a), paramString1, 2);
+  }
+  
+  public boolean a()
+  {
+    return (uok.a(this.a) != null) && (uok.a(this.a).isShowing());
+  }
+  
+  public void b()
+  {
+    uok.a(this.a);
+  }
+  
+  public void c()
+  {
+    uok.b(this.a);
   }
 }
 

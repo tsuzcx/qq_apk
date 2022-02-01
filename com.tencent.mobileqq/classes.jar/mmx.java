@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.database.DataSetObserver;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
 class mmx
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  mmx(mmw parammmw) {}
+  mmx(mmw parammmw, EffectCycleViewPager paramEffectCycleViewPager) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    mmw.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Mmw.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Mmw.notifyDataSetChanged();
   }
 }
 

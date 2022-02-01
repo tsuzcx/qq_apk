@@ -1,29 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.Activity;
+import com.tencent.avgame.app.AVGameAppInterface;
 
-class nbw
-  implements View.OnTouchListener
+public abstract interface nbw
 {
-  nbw(nbt paramnbt) {}
+  public abstract Activity a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(AVGameAppInterface paramAVGameAppInterface, long paramLong, String paramString1, int paramInt, String paramString2, String paramString3);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(naf paramnaf);
+  
+  public abstract void b(naf paramnaf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nbw
  * JD-Core Version:    0.7.0.1
  */

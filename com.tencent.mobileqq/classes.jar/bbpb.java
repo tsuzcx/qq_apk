@@ -1,40 +1,91 @@
+import QMF_PROTOCAL.QmfDownstream;
+import QzoneCombine.ClientOnlineNotfiyRsp;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import cooperation.qzone.ClientOnlineRequest;
+import cooperation.qzone.WNSStream;
+import java.io.IOException;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bbpb
-  implements IBrowserLog
+  extends MSFServlet
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (isColorLevel()) {
-      QLog.d(paramString1, paramInt, paramString2);
+    if (paramFromServiceMsg == null) {
+      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
     }
+    for (;;)
+    {
+      return;
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label192;
+      }
+      Object localObject = new WNSStream();
+      paramFromServiceMsg = bgau.b(paramFromServiceMsg.getWupBuffer());
+      try
+      {
+        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bkec.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
+          if (paramFromServiceMsg != null)
+          {
+            localObject = paramFromServiceMsg.AttachInfo;
+            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
+            localObject = HexUtil.bytes2HexStr((byte[])localObject);
+            paramIntent = paramIntent.getStringExtra("key_uin");
+            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
+            }
+            if (Build.VERSION.SDK_INT >= 9)
+            {
+              paramFromServiceMsg.apply();
+              return;
+            }
+          }
+        }
+      }
+      catch (IOException paramIntent)
+      {
+        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
+        return;
+      }
+    }
+    paramFromServiceMsg.commit();
+    return;
+    label192:
+    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
   }
   
-  public void e(String paramString1, int paramInt, String paramString2)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (isColorLevel()) {
-      QLog.e(paramString1, paramInt, paramString2);
+    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
+    paramIntent = paramIntent.getStringExtra("key_uin");
+    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
+    byte[] arrayOfByte = HexUtil.hexStr2Bytes(paramIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
     }
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.i(paramString1, paramInt, paramString2);
+    ClientOnlineRequest localClientOnlineRequest = new ClientOnlineRequest(l, arrayOfByte);
+    arrayOfByte = localClientOnlineRequest.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localClientOnlineRequest.uniKey());
+      paramIntent = new byte[4];
     }
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.w(paramString1, paramInt, paramString2);
-    }
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localClientOnlineRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

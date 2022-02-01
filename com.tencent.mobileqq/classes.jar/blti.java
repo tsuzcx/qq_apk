@@ -1,72 +1,31 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
 class blti
-  extends RecyclerView.AdapterDataObserver
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  blti(blth paramblth) {}
+  blti(bltd parambltd) {}
   
-  private void a(int paramInt1, int paramInt2)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    View localView = this.a.a(blth.a(this.a));
-    if (localView != null) {}
-    for (int i = blth.a(this.a).getPosition(localView);; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PagerSnapHelper", 2, "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + blth.b(this.a) + ", currentPosition=" + i);
-      }
-      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
-      {
-        bltk.a(blth.a(this.a), true);
-        blth.a(this.a).addOnLayoutChangeListener(blth.a(this.a));
-        blth.a(this.a).requestLayout();
-      }
+    if (paramRatio == null) {
       return;
     }
-  }
-  
-  public void onChanged()
-  {
-    a(0, blth.a(this.a).getItemCount());
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    if (paramObject == null) {
-      onItemRangeChanged(paramInt1, paramInt2);
+    bmby.a();
+    Object localObject = bloe.a(paramRatio);
+    bltd.a(this.a, (bmcd)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).setAction("ae_editor_bottom_tab_change_style");
+    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.FULL) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((Intent)localObject).putExtra("is_full_screen_capture", bool);
+      bltd.a(this.a).a().sendBroadcast((Intent)localObject);
+      return;
     }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= blth.b(this.a)) {
-      blth.b(this.a, blth.b(this.a) + paramInt2);
-    }
-    a(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 == blth.b(this.a)) {
-      blth.b(this.a, paramInt2);
-    }
-    a(paramInt1, paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= blth.b(this.a)) {
-      blth.b(this.a, blth.b(this.a) - paramInt2);
-    }
-    a(paramInt1, paramInt2);
   }
 }
 

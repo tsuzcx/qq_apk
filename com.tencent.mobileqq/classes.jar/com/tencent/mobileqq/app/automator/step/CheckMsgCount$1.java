@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aost;
+import anlo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -11,7 +11,7 @@ class CheckMsgCount$1
   
   public void run()
   {
-    this.this$0.a.app.a().c();
+    this.this$0.a.app.getMultiMessageProxy().c();
   }
 }
 

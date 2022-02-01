@@ -1,187 +1,463 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMetadataRetriever;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.1;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.2;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
+import java.util.concurrent.TimeoutException;
 
+@TargetApi(16)
 public class yhu
-  extends zsv<yfw>
-  implements View.OnClickListener
+  extends Handler
 {
-  public static final String KEY = "BannerProfileSegment";
-  private yfg jdField_a_of_type_Yfg;
-  private yfw jdField_a_of_type_Yfw;
-  private yqw jdField_a_of_type_Yqw;
-  
-  public yhu(Activity paramActivity)
+  public yhu(yht paramyht, Looper paramLooper)
   {
-    super(paramActivity);
+    super(paramLooper);
   }
   
-  public int a()
+  private void a(yhv paramyhv)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Yfw != null) && (this.jdField_a_of_type_Yfw.g())) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
-  {
-    if (!this.jdField_a_of_type_Yfw.g()) {
-      throw new IllegalStateException("bind view failed because it's not a banner feed.");
-    }
-    if (this.jdField_a_of_type_Yfw.a() == null)
-    {
-      yuk.e("Q.qqstory.detail.BannerProfileSegment", "bind banner view failed because it's invalidate date.");
-      return paramyqw.a();
-    }
-    paramViewGroup = this.jdField_a_of_type_Yfw.a();
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramyqw.a(2131374575);
-    ImageView localImageView1 = (ImageView)paramyqw.a(2131374562);
-    TextView localTextView1 = (TextView)paramyqw.a(2131374563);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramyqw.a(2131374565);
-    TextView localTextView2 = (TextView)paramyqw.a(2131374601);
-    TextView localTextView3 = (TextView)paramyqw.a(2131374559);
-    ImageView localImageView2 = (ImageView)paramyqw.a(2131374558);
-    TextView localTextView4 = (TextView)paramyqw.a(2131374566);
-    StoryQIMBadgeView localStoryQIMBadgeView = (StoryQIMBadgeView)paramyqw.a(2131374166);
-    localRelativeLayout.setOnClickListener(this);
-    zps.b(localImageView1, paramViewGroup.getOwner().headUrl, 68, 68, bhmq.a(1), "QQStory_main");
-    localStoryQIMBadgeView.a(paramViewGroup.getOwner());
-    localTextView1.setText(paramViewGroup.getOwner().getName());
-    localStoryUserBadgeView.setUnionID(paramViewGroup.getOwner().getUnionId(), 2);
-    if (TextUtils.isEmpty(paramViewGroup.blurb))
-    {
-      localTextView2.setVisibility(8);
-      if (!TextUtils.isEmpty(paramViewGroup.content)) {
-        break label417;
-      }
-      localTextView4.setVisibility(8);
-      label245:
-      if (QQStoryContext.a())
-      {
-        localTextView3.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
-        localTextView3.setBackgroundResource(2130846546);
-      }
-      if (!ykf.a(paramViewGroup.getOwner())) {
-        break label435;
-      }
-      localTextView3.setVisibility(0);
-      localTextView3.setOnClickListener(this);
-    }
+    int i = 0;
+    yhy localyhy = new yhy();
+    localyhy.jdField_a_of_type_Yhv = paramyhv;
+    localyhy.jdField_b_of_type_Long = (bahe.a(paramyhv.jdField_a_of_type_JavaLangString) * 1000L);
     for (;;)
     {
-      float f = paramViewGroup.coverHeight * 1.0F / paramViewGroup.coverWidth;
-      paramInt = zps.a(this.jdField_a_of_type_AndroidContentContext) - zps.a(this.jdField_a_of_type_AndroidContentContext, 15.0F) * 2;
-      int i = (int)(f * paramInt);
-      localImageView2.getLayoutParams().width = paramInt;
-      localImageView2.getLayoutParams().height = i;
-      zps.a(localImageView2, paramViewGroup.coverUrl, paramInt / 2, i / 2, 10, zps.b, "QQStory_main");
-      localImageView2.setOnClickListener(this);
-      localTextView4.setOnClickListener(this);
-      return paramyqw.a();
-      localTextView2.setText(paramViewGroup.blurb);
-      localTextView2.setVisibility(0);
-      break;
-      label417:
-      localTextView4.setVisibility(0);
-      localTextView4.setText(paramViewGroup.content);
-      break label245;
-      label435:
-      localTextView3.setVisibility(8);
-      localTextView3.setOnClickListener(null);
-    }
-  }
-  
-  public String a()
-  {
-    return "BannerProfileSegment";
-  }
-  
-  public yqw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Yqw = new yqw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561695, paramViewGroup, false));
-    return this.jdField_a_of_type_Yqw;
-  }
-  
-  public void a(yfg paramyfg)
-  {
-    this.jdField_a_of_type_Yfg = paramyfg;
-  }
-  
-  public void a(yfw paramyfw)
-  {
-    yuk.a("Q.qqstory.detail.BannerProfileSegment", "set data: detail feed item = %s.", paramyfw);
-    this.jdField_a_of_type_Yfw = paramyfw;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Yqw == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Yqw.a().getMeasuredHeight();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      wnu.a(this.jdField_a_of_type_AndroidContentContext, 4, this.jdField_a_of_type_Yfw.a.ownerId);
-      yup.a("home_page", "clk_head_nick", yup.a(this.jdField_a_of_type_Yfw.a), 0, new String[] { String.valueOf(yup.b(this.jdField_a_of_type_Yfw.a)), "2", this.jdField_a_of_type_Yfw.a.feedId, "" });
-      continue;
-      ((wja)xiz.a().a(98)).a(1, this.jdField_a_of_type_Yfw.a.ownerId, 0, 13);
-      this.jdField_a_of_type_Yfw.a().getOwner().isSubscribe = 1;
-      paramView.setVisibility(4);
-      yup.a("home_page", "follow_recom", 0, 0, new String[] { "3", "2", this.jdField_a_of_type_Yfw.a().getOwner().getUnionId(), this.jdField_a_of_type_Yfw.a().feedId });
-      continue;
-      yuk.a("Q.qqstory.detail.BannerProfileSegment", "click banner feed and jump to %s", this.jdField_a_of_type_Yfw.a().schema);
-      if (this.jdField_a_of_type_Yfw.a().schema.startsWith("mqqapi:"))
+      MediaExtractor localMediaExtractor;
+      int k;
+      try
       {
-        QQStoryContext.a();
-        bhni.a((QQAppInterface)QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yfw.a().schema).a();
-      }
-      else if (!zot.a(this.jdField_a_of_type_AndroidContentContext))
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, anzj.a(2131699844), 0).a();
-      }
-      else
-      {
-        Object localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Yfw.a().schema);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        continue;
-        localObject = (String)paramView.getTag();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          localIntent.putExtra("url", (String)localObject);
-          this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        localObject1 = new File(paramyhv.jdField_a_of_type_JavaLangString);
+        if (!((File)localObject1).canRead()) {
+          throw new FileNotFoundException("Unable to read " + localObject1);
         }
       }
+      catch (Exception paramyhv)
+      {
+        paramyhv = paramyhv;
+        Log.e("MediaCodecThumbnailGen", "startCaptureThumbnails Error!", paramyhv);
+        if (!(paramyhv instanceof IllegalArgumentException)) {
+          break label548;
+        }
+        localyhy.jdField_a_of_type_Int = 100;
+        xvv.c("MediaCodecThumbnailGen", "Error when generate thumbnail", paramyhv);
+        obtainMessage(4, localyhy).sendToTarget();
+        return;
+        localMediaExtractor = new MediaExtractor();
+        localMediaExtractor.setDataSource(((File)localObject1).toString());
+        k = yhs.a(localMediaExtractor);
+        if (k < 0) {
+          throw new RuntimeException("No video track found in " + localObject1);
+        }
+      }
+      finally {}
+      localMediaExtractor.selectTrack(k);
+      int j = paramyhv.jdField_b_of_type_Int;
+      Object localObject1 = new long[paramyhv.d];
+      long[] arrayOfLong = new long[paramyhv.d];
+      while (i < paramyhv.d)
+      {
+        localMediaExtractor.seekTo(j * 1000L, 0);
+        arrayOfLong[i] = (j * 1000L);
+        localObject1[i] = localMediaExtractor.getSampleTime();
+        j += paramyhv.c;
+        i += 1;
+      }
+      localMediaExtractor.seekTo(localObject1[0], 0);
+      MediaFormat localMediaFormat = localMediaExtractor.getTrackFormat(k);
+      boolean bool = localMediaFormat.containsKey("rotation-degrees");
+      if (bool) {}
+      try
+      {
+        localyhy.jdField_b_of_type_Int = localMediaFormat.getInteger("rotation-degrees");
+        label318:
+        i = localMediaFormat.getInteger("height");
+        j = localMediaFormat.getInteger("width");
+        Log.d("MediaCodecThumbnailGen", "Video size is " + j + "x" + i);
+        float f = paramyhv.jdField_a_of_type_Int * 1.0F / Math.max(i, j);
+        paramyhv = new yhz((int)(j * f), (int)(i * f));
+        Object localObject2 = MediaCodec.createDecoderByType(localMediaFormat.getString("mime"));
+        ((MediaCodec)localObject2).configure(localMediaFormat, paramyhv.a(), null, 0);
+        ((MediaCodec)localObject2).start();
+        localyhy.jdField_a_of_type_AndroidMediaMediaExtractor = localMediaExtractor;
+        localyhy.jdField_a_of_type_Yhz = paramyhv;
+        localyhy.jdField_a_of_type_AndroidMediaMediaCodec = ((MediaCodec)localObject2);
+        localyhy.c = k;
+        localyhy.jdField_a_of_type_Int = 0;
+        localyhy.d = 0;
+        localyhy.jdField_a_of_type_ArrayOfLong = ((long[])localObject1);
+        localyhy.jdField_b_of_type_ArrayOfLong = arrayOfLong;
+        obtainMessage(2, localyhy).sendToTarget();
+        return;
+        localObject2 = new MediaMetadataRetriever();
+        ((MediaMetadataRetriever)localObject2).setDataSource(localyhy.jdField_a_of_type_Yhv.jdField_a_of_type_JavaLangString);
+        String str = ((MediaMetadataRetriever)localObject2).extractMetadata(24);
+        try
+        {
+          localyhy.jdField_b_of_type_Int = Integer.parseInt(str);
+          label540:
+          ((MediaMetadataRetriever)localObject2).release();
+          break label318;
+          label548:
+          if ((paramyhv instanceof RuntimeException))
+          {
+            localyhy.jdField_a_of_type_Int = 101;
+            continue;
+          }
+          localyhy.jdField_a_of_type_Int = -1;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          break label540;
+        }
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        break label318;
+      }
+    }
+  }
+  
+  private void a(yhy paramyhy)
+  {
+    Log.e("MediaCodecThumbnailGen", "finishCapture");
+    boolean bool = true;
+    if (paramyhy.jdField_a_of_type_Int != 0) {
+      bool = false;
+    }
+    if (paramyhy.jdField_a_of_type_Yhz != null)
+    {
+      paramyhy.jdField_a_of_type_Yhz.a();
+      paramyhy.jdField_a_of_type_Yhz = null;
+    }
+    if (paramyhy.jdField_a_of_type_AndroidMediaMediaCodec != null)
+    {
+      paramyhy.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      paramyhy.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      paramyhy.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    }
+    if (paramyhy.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+    {
+      paramyhy.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      paramyhy.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+    }
+    yhx localyhx = new yhx();
+    localyhx.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramyhy.jdField_a_of_type_JavaUtilArrayList);
+    localyhx.b = Collections.unmodifiableList(paramyhy.jdField_b_of_type_JavaUtilArrayList);
+    localyhx.jdField_a_of_type_Int = paramyhy.jdField_a_of_type_Int;
+    this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.1(this, paramyhy, bool, localyhx));
+  }
+  
+  private void a(yhy paramyhy, boolean paramBoolean)
+  {
+    Object localObject1 = paramyhy.jdField_a_of_type_Yhz;
+    yhv localyhv = paramyhy.jdField_a_of_type_Yhv;
+    int k = paramyhy.d;
+    ArrayList localArrayList1 = paramyhy.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList2 = paramyhy.jdField_b_of_type_JavaUtilArrayList;
+    label576:
+    label579:
+    for (;;)
+    {
+      try
+      {
+        ((yhz)localObject1).c();
+        ((yhz)localObject1).d();
+        ((yhz)localObject1).a(false);
+        yhw localyhw = new yhw();
+        localObject1 = ((yhz)localObject1).a();
+        if (localObject1 == null) {
+          break label576;
+        }
+        int j = paramyhy.jdField_b_of_type_Int;
+        int i;
+        if ((paramyhy.jdField_b_of_type_Int % 180 <= 0) || (((Bitmap)localObject1).getWidth() >= ((Bitmap)localObject1).getHeight()))
+        {
+          i = j;
+          if (paramyhy.jdField_b_of_type_Int % 180 == 0)
+          {
+            i = j;
+            if (((Bitmap)localObject1).getWidth() <= ((Bitmap)localObject1).getHeight()) {}
+          }
+        }
+        else
+        {
+          i = j;
+          if (localyhv.jdField_a_of_type_Boolean) {
+            i = j + 90;
+          }
+        }
+        if (i > 0)
+        {
+          Object localObject2 = UIUtils.rotateBitmap((Bitmap)localObject1, i);
+          ((Bitmap)localObject1).recycle();
+          localObject1 = localObject2;
+          if (!paramBoolean) {
+            break label579;
+          }
+          localObject2 = new File(localyhv.jdField_b_of_type_JavaLangString, String.format(Locale.getDefault(), a(k), new Object[0]));
+          try
+          {
+            BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream((File)localObject2));
+            float f2;
+            float f1;
+            localObject1 = paramyhy.jdField_b_of_type_ArrayOfLong;
+          }
+          finally
+          {
+            try
+            {
+              ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 80, localBufferedOutputStream);
+              if (localBufferedOutputStream == null) {}
+            }
+            finally
+            {
+              continue;
+            }
+            try
+            {
+              localBufferedOutputStream.close();
+              localyhw.jdField_a_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
+              xvv.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() add: " + ((File)localObject2).getPath());
+              localyhw.jdField_a_of_type_Int = paramyhy.d;
+              localyhw.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
+              f2 = 0.0F;
+              f1 = f2;
+              if (localyhv.jdField_b_of_type_Boolean)
+              {
+                f1 = f2;
+                if (paramyhy.d == 0)
+                {
+                  f1 = yht.a(this.a, (Bitmap)localObject1);
+                  xvv.c("MediaCodecThumbnailGen", "blackRegionPrecent = " + f1);
+                  localyhw.jdField_a_of_type_Long = paramyhy.jdField_b_of_type_ArrayOfLong[paramyhy.d];
+                }
+              }
+              if ((f1 >= 0.9F) && (localyhw.jdField_a_of_type_Long <= 500000L) && (localyhw.jdField_a_of_type_Long + 100000L <= paramyhy.jdField_b_of_type_Long)) {
+                continue;
+              }
+              localArrayList1.add(localyhw.jdField_a_of_type_JavaLangString);
+              localArrayList2.add(localObject1);
+              this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.2(this, paramyhy, localyhw));
+              paramyhy.d += 1;
+              obtainMessage(2, paramyhy).sendToTarget();
+              return;
+            }
+            catch (IOException localIOException)
+            {
+              xvv.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() error ", localIOException);
+            }
+            localObject3 = finally;
+            localBufferedOutputStream = null;
+            if (localBufferedOutputStream != null) {
+              localBufferedOutputStream.close();
+            }
+          }
+          i = paramyhy.d;
+          localObject1[i] += 50000L;
+          obtainMessage(2, paramyhy).sendToTarget();
+          return;
+        }
+      }
+      catch (TimeoutException localTimeoutException)
+      {
+        sendMessageDelayed(obtainMessage(3, paramyhy), 100L);
+        Log.e("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() timeout delay 100ms");
+        return;
+      }
+      continue;
+    }
+  }
+  
+  private void b(yhy paramyhy)
+  {
+    MediaExtractor localMediaExtractor = paramyhy.jdField_a_of_type_AndroidMediaMediaExtractor;
+    MediaCodec localMediaCodec = paramyhy.jdField_a_of_type_AndroidMediaMediaCodec;
+    yhv localyhv = paramyhy.jdField_a_of_type_Yhv;
+    long[] arrayOfLong1 = paramyhy.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong2 = paramyhy.jdField_b_of_type_ArrayOfLong;
+    int i1 = paramyhy.c;
+    int i2 = paramyhy.d;
+    long l1 = localMediaExtractor.getSampleTime();
+    ByteBuffer[] arrayOfByteBuffer = localMediaCodec.getInputBuffers();
+    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+    int j = 0;
+    int i = 0;
+    int k = 0;
+    int n;
+    int m;
+    long l2;
+    label237:
+    boolean bool;
+    for (;;)
+    {
+      label667:
+      label681:
+      if ((i == 0) && (i2 < localyhv.d))
+      {
+        if ((paramyhy.jdField_a_of_type_Long != arrayOfLong1[i2]) && (l1 < arrayOfLong1[i2]))
+        {
+          Log.e("MediaCodecThumbnailGen", "SeekTo: " + arrayOfLong1[i2]);
+          localMediaExtractor.seekTo(arrayOfLong1[i2], 0);
+          paramyhy.jdField_a_of_type_Long = arrayOfLong1[i2];
+          localMediaCodec.flush();
+        }
+        n = k;
+        m = j;
+        l2 = l1;
+        if (k == 0)
+        {
+          m = localMediaCodec.dequeueInputBuffer(-1L);
+          if (m < 0) {
+            break label453;
+          }
+          n = localMediaExtractor.readSampleData(arrayOfByteBuffer[m], 0);
+          if (n >= 0) {
+            break label302;
+          }
+          localMediaCodec.queueInputBuffer(m, 0, 0, 0L, 4);
+          k = 1;
+          Log.d("MediaCodecThumbnailGen", "sent input EOS");
+          l2 = l1;
+          m = j;
+          n = k;
+        }
+        for (;;)
+        {
+          k = n;
+          j = m;
+          l1 = l2;
+          if (i != 0) {
+            break;
+          }
+          j = localMediaCodec.dequeueOutputBuffer(localBufferInfo, 10000L);
+          if (j != -1) {
+            break label476;
+          }
+          Log.d("MediaCodecThumbnailGen", "no output from decoder available");
+          k = n;
+          j = m;
+          l1 = l2;
+          break;
+          label302:
+          if (localMediaExtractor.getSampleTrackIndex() != i1) {
+            Log.w("MediaCodecThumbnailGen", "WEIRD: got sample from track " + localMediaExtractor.getSampleTrackIndex() + ", expected " + i1);
+          }
+          localMediaCodec.queueInputBuffer(m, 0, n, localMediaExtractor.getSampleTime(), 0);
+          Log.d("MediaCodecThumbnailGen", "submitted frame " + j + " to dec, size=" + n);
+          l1 = localMediaExtractor.getSampleTime();
+          Log.d("MediaCodecThumbnailGen", "extractor sample time = " + l1);
+          localMediaExtractor.advance();
+          j += 1;
+          break label237;
+          label453:
+          Log.d("MediaCodecThumbnailGen", "input buffer not available");
+          n = k;
+          m = j;
+          l2 = l1;
+        }
+        label476:
+        if (j == -3)
+        {
+          Log.d("MediaCodecThumbnailGen", "decoder output buffers changed");
+          k = n;
+          j = m;
+          l1 = l2;
+        }
+        else if (j == -2)
+        {
+          MediaFormat localMediaFormat = localMediaCodec.getOutputFormat();
+          Log.d("MediaCodecThumbnailGen", "decoder output format changed: " + localMediaFormat);
+          k = n;
+          j = m;
+          l1 = l2;
+        }
+        else if (j < 0)
+        {
+          bjmd.a("unexpected result from decoder.dequeueOutputBuffer: " + j);
+          k = n;
+          j = m;
+          l1 = l2;
+        }
+        else
+        {
+          Log.d("MediaCodecThumbnailGen", "surface decoder given buffer " + j + " (size=" + localBufferInfo.size + ")");
+          if ((localBufferInfo.flags & 0x4) != 0)
+          {
+            Log.d("MediaCodecThumbnailGen", "output EOS");
+            i = 1;
+            if (l2 > arrayOfLong2[i2])
+            {
+              bool = true;
+              localMediaCodec.releaseOutputBuffer(j, bool);
+              if (!bool) {
+                break label753;
+              }
+              Log.d("MediaCodecThumbnailGen", "awaiting decode of time: " + l2);
+            }
+          }
+        }
+      }
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        obtainMessage(4, paramyhy).sendToTarget();
+        return;
+        bool = false;
+        break label681;
+      }
+      obtainMessage(3, paramyhy).sendToTarget();
+      return;
+      label753:
+      k = n;
+      j = m;
+      l1 = l2;
+      break;
+      break label667;
+    }
+  }
+  
+  public String a(int paramInt)
+  {
+    return String.format(Locale.getDefault(), "thumbnail-%d.jpg", new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      a((yhv)paramMessage.obj);
+      continue;
+      b((yhy)paramMessage.obj);
+      continue;
+      a((yhy)paramMessage.obj, true);
+      continue;
+      a((yhy)paramMessage.obj);
     }
   }
 }

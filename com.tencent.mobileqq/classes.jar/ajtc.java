@@ -1,146 +1,38 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
+import android.content.Intent;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetPinnedHeaderListView;
-import com.tencent.mobileqq.activity.contacts.friend.ContactsFPSPinnedHeaderExpandableListView;
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment.ContactsPinnedHeaderExpandableListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
-public class ajtc
+class ajtc
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-  private ajtd jdField_a_of_type_Ajtd;
+  ajtc(ajtb paramajtb) {}
   
-  private View a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ajtd == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Ajtd.a();
-  }
-  
-  private boolean a(android.widget.AdapterView paramAdapterView)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAdapterView != null)
+    if (ajtb.a(this.a))
     {
-      bool1 = bool2;
-      if (paramAdapterView.getFirstVisiblePosition() == 0)
-      {
-        paramAdapterView = paramAdapterView.getChildAt(0);
-        if (paramAdapterView != null)
-        {
-          bool1 = bool2;
-          if (paramAdapterView.getTop() != 0) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
+      QLog.d("PhotoPreviewLogicAEPlay", 2, "need more pic.");
+      ajtb.a(this.a, String.format(((NewPhotoPreviewActivity)this.a.mActivity).getString(2131689741), new Object[] { Integer.valueOf(ajtb.a(this.a).maxSelectNum) }));
     }
-    return bool1;
-  }
-  
-  private boolean a(ScrollView paramScrollView)
-  {
-    return (paramScrollView == null) || (paramScrollView.getScrollY() <= 0);
-  }
-  
-  private boolean a(com.tencent.widget.AdapterView paramAdapterView)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAdapterView != null)
+    for (;;)
     {
-      bool1 = bool2;
-      if (paramAdapterView.getFirstVisiblePosition() == 0)
-      {
-        paramAdapterView = paramAdapterView.getChildAt(0);
-        if (paramAdapterView != null)
-        {
-          bool1 = bool2;
-          if (paramAdapterView.getTop() != 0) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    View localView = a();
-    if ((localView instanceof android.widget.AbsListView)) {
-      ((android.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
-    }
-    do
-    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((localView instanceof com.tencent.widget.AbsListView))
-      {
-        ((com.tencent.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
-        return;
-      }
-      if ((localView instanceof ScrollView))
-      {
-        ((ScrollView)localView).fling(paramInt1);
-        return;
-      }
-    } while (!(localView instanceof WebView));
-    ((WebView)localView).flingScroll(0, paramInt1);
-  }
-  
-  public void a(ajtd paramajtd)
-  {
-    this.jdField_a_of_type_Ajtd = paramajtd;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView = a();
-    if (localView != null)
-    {
-      if (!(localView instanceof ContactsFPSPinnedHeaderExpandableListView)) {
-        break label25;
-      }
-      ((ContactsFPSPinnedHeaderExpandableListView)localView).setChildViewCanAction(paramBoolean);
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+      Intent localIntent = new Intent();
+      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", ajtb.b(this.a).selectedPhotoList);
+      localIntent.putExtra("pic_choose_in_node_id", ((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+      localIntent.putExtra("pic_result_back_type", 0);
+      AETemplateInfoFragment.sendPickedPhotosToMe(this.a.mActivity, localIntent);
+      bmbc.a().W();
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
     }
-    label25:
-    do
-    {
-      return;
-      if ((localView instanceof TroopFragment.ContactsPinnedHeaderExpandableListView))
-      {
-        ((TroopFragment.ContactsPinnedHeaderExpandableListView)localView).setChildViewCanAction(paramBoolean);
-        return;
-      }
-    } while (!(localView instanceof AlphabetPinnedHeaderListView));
-    ((AlphabetPinnedHeaderListView)localView).setChildViewCanAction(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    View localView = a();
-    if (localView == null) {
-      return true;
-    }
-    if ((localView instanceof com.tencent.widget.AdapterView)) {
-      return a((com.tencent.widget.AdapterView)localView);
-    }
-    if ((localView instanceof android.widget.AdapterView)) {
-      return a((android.widget.AdapterView)localView);
-    }
-    if ((localView instanceof ScrollView)) {
-      return a((ScrollView)localView);
-    }
-    return true;
   }
 }
 

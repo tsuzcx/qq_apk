@@ -1,61 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aoxj
+  implements View.OnClickListener
 {
-  public static aoxh a(aoxk paramaoxk, ArrayList<aoxi> paramArrayList)
+  public aoxj(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramaoxk != null) && (paramArrayList != null)) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (paramaoxk.d() != null) {
-          break label134;
-        }
-        QLog.e("JumpParserFactory", 1, "createJumpParser error: param is null");
-        return null;
-      }
-      catch (Exception paramaoxk)
-      {
-        aoxi localaoxi;
-        QLog.e("JumpParserFactory", 1, "createJumpParser error: " + paramaoxk.getMessage());
-        return null;
-      }
-      if (i < paramArrayList.size())
-      {
-        localaoxi = (aoxi)paramArrayList.get(i);
-        if (!paramaoxk.d().startsWith(localaoxi.a())) {
-          break label141;
-        }
-        paramaoxk = localaoxi.a();
-        if (paramaoxk != null)
-        {
-          paramaoxk = paramaoxk.newInstance();
-          if ((paramaoxk instanceof aoxh)) {
-            paramaoxk = (aoxh)paramaoxk;
-          } else {
-            QLog.e("JumpParserFactory", 1, "createJumpParser error: not extends JumpParserBase");
-          }
-        }
-        else
-        {
-          paramaoxk = null;
-        }
-      }
-      else
-      {
-        paramaoxk = null;
-        continue;
-        label134:
-        i = 0;
-        continue;
-      }
-      return paramaoxk;
-      label141:
-      i += 1;
+    bjnw localbjnw = (bjnw)bjon.a(BaseActivity.sTopActivity, null);
+    localbjnw.a(BaseActivity.sTopActivity.getString(2131690132));
+    localbjnw.a(2131690131, 3);
+    localbjnw.c(2131690130);
+    localbjnw.setOnDismissListener(new aoxk(this, localbjnw));
+    localbjnw.a(new aoxl(this, localbjnw));
+    if (!localbjnw.isShowing()) {
+      localbjnw.show();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

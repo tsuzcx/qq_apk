@@ -1,22 +1,15 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-class roz
-  implements Animation.AnimationListener
+public class roz
+  extends aliz
 {
-  roz(roy paramroy) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (roy.a(this.a) != null) {
-      roy.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a;
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

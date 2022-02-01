@@ -1,88 +1,66 @@
+import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class npu
-  implements anui
+final class npu
+  implements BusinessObserver
 {
-  npu(npt paramnpt) {}
+  npu(Context paramContext, QQAppInterface paramQQAppInterface, bhht parambhht, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      }
     }
     for (;;)
     {
-      return;
-      paramObject = (Bundle)paramObject;
-      if (paramObject == null) {
-        continue;
-      }
-      paramInt = paramObject.getInt("reqCode");
-      if (paramInt == 10000)
+      try
       {
-        str1 = paramObject.getString("name");
-        String str2 = paramObject.getString("callback");
-        String str3 = paramObject.getString("msg");
-        long l = paramObject.getLong("uiResId");
-        this.a.a = str2;
-        npt.a(this.a, 1, l, str1, str3);
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          npt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+          npt.a(this.jdField_a_of_type_Bhht);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
+          }
+          npt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
+          npt.a(this.jdField_a_of_type_Bhht);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        npt.a(this.jdField_a_of_type_Bhht);
         return;
       }
-      if (paramInt != 10002) {
-        continue;
-      }
-      paramBoolean = paramObject.getBoolean("isOpen");
-      String str1 = paramObject.getString("callback");
-      boolean bool = paramObject.getBoolean("has");
-      paramObject = new JSONObject();
-      if (bool) {
-        if (paramBoolean) {
-          paramInt = 1;
-        }
-      }
-      try
-      {
-        label153:
-        paramObject.put("isOpen", paramInt);
-        while (!TextUtils.isEmpty(str1))
-        {
-          this.a.callJs(str1, new String[] { paramObject.toString() });
-          return;
-          paramInt = 0;
-          break label153;
-          paramObject.put("isOpen", 1);
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
-      paramObject = new JSONObject();
-      if (paramBoolean) {}
-      try
-      {
-        paramObject.put("userOption", 1);
-        while (!TextUtils.isEmpty(this.a.a))
-        {
-          this.a.callJs(this.a.a, new String[] { paramObject.toString() });
-          this.a.a = null;
-          return;
-          paramObject.put("userOption", 0);
-        }
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
-      }
+      npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
     }
   }
 }

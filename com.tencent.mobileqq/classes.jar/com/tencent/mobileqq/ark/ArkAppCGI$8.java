@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ark;
 
-import aqay;
-import aqbk;
-import beum;
-import beuo;
+import aoul;
+import aoux;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
 import mqq.app.MobileQQ;
-import nny;
 
 public class ArkAppCGI$8
   implements Runnable
 {
-  public ArkAppCGI$8(aqay paramaqay, QQAppInterface paramQQAppInterface, aqbk paramaqbk, beum parambeum) {}
+  public ArkAppCGI$8(aoul paramaoul, QQAppInterface paramQQAppInterface, aoux paramaoux, HttpNetReq paramHttpNetReq) {}
   
   public void run()
   {
-    if ((aqay.a(this.this$0) == null) || (!nny.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    if ((aoul.a(this.this$0) == null) || (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      aqay.a(this.this$0, this.jdField_a_of_type_Aqbk, false, null);
+      aoul.a(this.this$0, this.jdField_a_of_type_Aoux, false, null);
       return;
     }
-    aqay.a(this.this$0).a(this.jdField_a_of_type_Beum);
+    aoul.a(this.this$0).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

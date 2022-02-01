@@ -1,43 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
 
-public class ori
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ori
+  implements ViewBase.OnClickListener
 {
-  public ori(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  ori(ouo paramouo, ouc paramouc) {}
   
-  public void onClick(View paramView)
+  public final void onClick(ViewBase paramViewBase)
   {
-    switch (paramView.getId())
+    if (this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
     {
+      paramViewBase = new osa(this.jdField_a_of_type_Ouo).a().a();
+      odq.a(null, oto.a(this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X8009010", "0X8009010", 0, 0, String.valueOf(this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, paramViewBase, false);
     }
-    for (;;)
+    if ((this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.b)
-      {
-        ReadInJoyCommentComponentFragment.a(this.a, false);
+      paramViewBase = this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+      if (paramViewBase == null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData");
       }
-      else
+      if (((CommentData)paramViewBase).subCommentNum > 0)
       {
-        ReadInJoyCommentComponentFragment.a(this.a, true);
-        continue;
-        ReadInJoyCommentComponentFragment.b(this.a);
-        continue;
-        ReadInJoyCommentComponentFragment.b(this.a);
-        if (ReadInJoyCommentComponentFragment.a(this.a) != null)
+        if ((this.jdField_a_of_type_Ouc instanceof osu))
         {
-          if (ReadInJoyCommentComponentFragment.c(this.a) >= ReadInJoyCommentComponentFragment.a(this.a).length) {
-            ReadInJoyCommentComponentFragment.a(this.a, 0);
+          paramViewBase = this.jdField_a_of_type_Ouc;
+          if (paramViewBase == null) {
+            throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter");
           }
-          this.a.c.setText(ReadInJoyCommentComponentFragment.a(this.a)[ReadInJoyCommentComponentFragment.c(this.a)]);
+          ((osu)paramViewBase).a(this.jdField_a_of_type_Ouo, orx.a(this.jdField_a_of_type_Ouo, -1), 1);
         }
+        return;
       }
     }
+    this.jdField_a_of_type_Ouc.a(this.jdField_a_of_type_Ouo);
   }
 }
 

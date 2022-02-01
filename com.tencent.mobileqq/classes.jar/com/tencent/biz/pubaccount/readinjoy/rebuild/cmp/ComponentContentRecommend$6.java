@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import pfa;
+import pkm;
 
 class ComponentContentRecommend$6
   implements Runnable
@@ -10,12 +10,12 @@ class ComponentContentRecommend$6
   
   public void run()
   {
-    pfa localpfa = pfa.a();
+    pkm localpkm = pkm.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localpfa.b(l, i);
+      localpkm.c(l, i);
       return;
     }
   }

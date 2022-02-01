@@ -1,51 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class aduo
-  implements ahag
+  implements DialogInterface.OnClickListener
 {
-  public aduo(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public aduo(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
-    }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
-    {
-      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Agyw;
-      if (localObject != null)
-      {
-        if ((!((agyw)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((ImageView)localObject).setVisibility(i);
-      return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
-    }
+    this.a.finish();
   }
-  
-  public void b() {}
 }
 
 

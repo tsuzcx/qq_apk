@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-class beox
-  extends bepm<EditorState>
+public class beox
+  implements View.OnClickListener
 {
-  public beox(EditorState paramEditorState, List<EditorState> paramList)
-  {
-    super(paramList, localList);
-  }
+  beox(beow parambeow) {}
   
-  public void a(EditorState paramEditorState)
+  public void onClick(View paramView)
   {
-    beoh.a(this.c).b(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
+    if (!paramView.hasFocus())
+    {
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

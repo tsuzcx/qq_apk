@@ -1,42 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afuz
-  extends nkq
+  implements View.OnClickListener
 {
-  public afuz(TroopMemberListActivity.20 param20) {}
+  public afuz(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    Object localObject = (afvb)AIOUtils.getHolder(paramView);
+    alnr localalnr = (alnr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+    localObject = (MessageForApollo)((afvb)localObject).a;
+    if (localObject == null) {
+      QLog.e("ApolloItemBuilder", 1, "errInfo->mr is null.");
+    }
+    for (;;)
     {
-      for (;;)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ApolloActionData localApolloActionData = ((amir)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(((MessageForApollo)localObject).mApolloMessage.id);
+      if (localApolloActionData == null)
       {
-        return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.this$0);
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
+        QLog.e("ApolloItemBuilder", 1, "ApolloActionData is null.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+      else
+      {
+        CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(localApolloActionData.gameId, ((MessageForApollo)localObject).isSend(), "message", 0L, 1, 0, 0, 0, "", 333001, localApolloActionData.gameName);
+        localStartCheckParam.version = localalnr.a(localApolloActionData.gameId);
+        localStartCheckParam.disableMinGame = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloItemBuilder", 2, "game tail click: " + localStartCheckParam.toString());
+        }
+        ApolloGameUtil.a(this.a.jdField_a_of_type_AndroidContentContext, localStartCheckParam);
+        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_actiontail_clk", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { Integer.toString(((MessageForApollo)localObject).mApolloMessage.id), Integer.toString(localApolloActionData.gameId) });
+      }
+    }
   }
 }
 

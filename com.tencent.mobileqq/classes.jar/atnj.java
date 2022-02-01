@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
 
 public class atnj
-  implements View.OnClickListener
+  implements atlm
 {
-  public atnj(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public atnj(ForwardPhotoOption paramForwardPhotoOption) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QfileLocalFilePicTabView.a(this.a, paramView, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnj
  * JD-Core Version:    0.7.0.1
  */

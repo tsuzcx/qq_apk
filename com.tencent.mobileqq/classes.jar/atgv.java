@@ -1,42 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.os.Bundle;
 
-public class atgv
-  implements Animation.AnimationListener
+public abstract interface atgv
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public atgv(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void b(int paramInt, Bundle paramBundle);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void c(int paramInt, Bundle paramBundle);
+  
+  public abstract void d(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgv
  * JD-Core Version:    0.7.0.1
  */

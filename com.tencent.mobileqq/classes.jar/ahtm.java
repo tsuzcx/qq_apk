@@ -1,18 +1,15 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import android.os.MessageQueue.IdleHandler;
 
-public class ahtm
-  extends aggl
+class ahtm
+  implements MessageQueue.IdleHandler
 {
-  public RelativeLayout a;
-  public SessionInfo a;
-  public MessageProgressTextView a;
-  public boolean a;
-  public RelativeLayout b;
-  public View c;
-  public RelativeLayout c;
+  ahtm(ahtj paramahtj) {}
+  
+  public boolean queueIdle()
+  {
+    ahtj.a(this.a, true);
+    return true;
+  }
 }
 
 

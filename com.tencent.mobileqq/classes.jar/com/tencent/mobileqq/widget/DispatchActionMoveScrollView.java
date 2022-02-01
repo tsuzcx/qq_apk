@@ -9,7 +9,7 @@ import android.widget.ScrollView;
 public class DispatchActionMoveScrollView
   extends ScrollView
 {
-  public boolean a;
+  public boolean dispatchActionMove;
   
   public DispatchActionMoveScrollView(Context paramContext)
   {
@@ -28,7 +28,7 @@ public class DispatchActionMoveScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a) {
+    if (this.dispatchActionMove) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);

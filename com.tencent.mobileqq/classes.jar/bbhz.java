@@ -1,26 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
 
 public class bbhz
-  extends Animation
+  extends bbhi
 {
-  public bbhz(CircleBarView paramCircleBarView) {}
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public bbhz(ViewGroup paramViewGroup, int paramInt)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
-    }
-    this.a.postInvalidate();
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131376950));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369869));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376469));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368890));
   }
 }
 

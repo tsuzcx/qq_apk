@@ -1,14 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class agtm
-  implements DialogInterface.OnClickListener
+public class agtm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agtm(agtj paramagtj) {}
+  public agtm(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface.dismiss();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
+    }
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    {
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+      return;
+      paramValueAnimator.leftMargin = i;
+    }
   }
 }
 

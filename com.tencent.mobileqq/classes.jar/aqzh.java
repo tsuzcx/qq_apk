@@ -1,25 +1,19 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import mqq.app.QQPermissionCallback;
 
 class aqzh
-  implements Comparator<Rect>
+  implements QQPermissionCallback
 {
-  aqzh(aqzf paramaqzf) {}
+  aqzh(aqzb paramaqzb) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return 1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return -1;
-    }
-    return 0;
+    bfur.a(this.a.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aqzb.b(this.a);
+    bcef.b(aqzb.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,13 +1,35 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public abstract interface anng
+class anng
+  implements PermissionMonitor.Listener
 {
-  public abstract List<TraceData> a();
+  static
+  {
+    if (!anmw.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
   
-  public abstract boolean a(List<TraceData> paramList);
+  anng(anmw paramanmw) {}
   
-  public abstract boolean b(List<TraceData> paramList);
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
+    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 3)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1] != anmw.a(this.jdField_a_of_type_Anmw))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)anmw.a(this.jdField_a_of_type_Anmw), (String)paramArrayOfObject[2]);
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+  }
 }
 
 

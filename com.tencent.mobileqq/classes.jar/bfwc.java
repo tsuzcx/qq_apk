@@ -1,43 +1,41 @@
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 public class bfwc
-  implements Callable<List<bbzf>>
+  extends amsu
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final bfvp b;
   
-  public bfwc(bfwb parambfwb, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public bfwc(bfvp parambfvp1, bfvp parambfvp2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = parambfvp2;
   }
   
-  public List<bbzf> a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    long l = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    if (bbzf.E == this.jdField_a_of_type_Long)
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilHashtable == null) || (!this.a.jdField_a_of_type_JavaUtilHashtable.containsKey(paramString))) {}
+    do
     {
-      this.jdField_a_of_type_Bfwb.a = this.jdField_a_of_type_Bfwb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true);
-      localArrayList.addAll(this.jdField_a_of_type_Bfwb.a);
-      this.jdField_a_of_type_Bfwb.b = this.jdField_a_of_type_Bfwb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "CallableForSearchData time = " + (System.currentTimeMillis() - l));
-    }
-    return localArrayList;
+      return;
+      this.a.jdField_a_of_type_JavaUtilHashtable.remove(paramString);
+      if (this.a.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bfwc);
+      }
+      Object localObject = Uri.parse(bfvp.a(this.a) + "&uin=" + paramString);
+      localObject = new Intent((String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"), (Uri)localObject);
+      this.a.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+    } while (!QLog.isColorLevel());
+    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + (String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfwc
  * JD-Core Version:    0.7.0.1
  */

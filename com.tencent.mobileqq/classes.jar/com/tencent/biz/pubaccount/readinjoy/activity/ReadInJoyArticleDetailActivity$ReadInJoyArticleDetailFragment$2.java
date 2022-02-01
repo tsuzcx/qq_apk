@@ -4,9 +4,9 @@ import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
-import birg;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import ojd;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import okp;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   implements Runnable
@@ -15,14 +15,14 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   
   public void run()
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.mUIStyleHandler.c != null)) {
-      this.this$0.mUIStyleHandler.c.setBackgroundColor(-1);
+    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.mUIStyleHandler.webviewWrapper != null)) {
+      this.this$0.mUIStyleHandler.webviewWrapper.setBackgroundColor(-1);
     }
     if (this.this$0.a != null)
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new ojd(this));
+        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new okp(this));
         this.this$0.a.animate().start();
       }
     }

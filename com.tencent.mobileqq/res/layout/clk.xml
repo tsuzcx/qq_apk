@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nsw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/nnx" android:layout_width="12.0dip" android:layout_height="12.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/nny" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/nnz" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/no0" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/no1" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-</LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/nsf" android:visibility="gone" android:layout_width="175.0dip" android:layout_height="40.0dip" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/nsv" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignRight="@id/nsx" android:layout_alignParentLeft="true" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/nsy" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/dtu" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/nsx" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="打开看看" android:singleLine="true" android:layout_toRightOf="@id/nsy" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
 public class bfji
+  implements bcrz
 {
-  protected ImageView a;
-  protected TextView a;
-  protected ImageView b;
-  protected TextView b;
+  public bfji(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bcrz parambcrz) {}
   
-  protected bfji(bfjh parambfjh) {}
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bfjj(this));
+  }
 }
 
 

@@ -8,8 +8,8 @@ import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import nwo;
-import tyi;
+import nxz;
+import uex;
 
 public class RecentItemPublicAccountADFolderData
   extends RecentItemPublicAccountChatMsgData
@@ -21,7 +21,7 @@ public class RecentItemPublicAccountADFolderData
   {
     super(paramRecentUser);
     this.mUnreadFlag = 1;
-    this.trueUin = nwo.a().a(paramRecentUser.uin);
+    this.trueUin = nxz.a().a(paramRecentUser.uin);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -30,10 +30,10 @@ public class RecentItemPublicAccountADFolderData
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    paramQQAppInterface = paramQQAppInterface.a();
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = paramQQAppInterface.a(this.mUser.uin, this.mUser.getType());
+      paramQQAppInterface = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
       if (paramQQAppInterface != null)
       {
         paramQQAppInterface.getExtInfoFromExtStr("recent_list_advertisement_message_uin");
@@ -46,7 +46,7 @@ public class RecentItemPublicAccountADFolderData
     if (this.mUnreadNum > 0) {
       this.mUnreadNum = 1;
     }
-    if (tyi.a) {}
+    if (uex.a) {}
     for (this.mMenuFlag |= 0x1;; this.mMenuFlag &= 0xFFFFFFFE)
     {
       if (AppSetting.c)

@@ -1,128 +1,52 @@
-import android.graphics.drawable.Animatable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class afnv
-  extends RecyclerView.Adapter<afnt>
+  extends aptq<afnw>
 {
-  private int jdField_a_of_type_Int;
-  List<afnu> jdField_a_of_type_JavaUtilList;
-  
-  public afnv(List<afnu> paramList)
+  @NonNull
+  public afnw a(int paramInt)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-    this.jdField_a_of_type_Int = bdgb.c();
+    return new afnw();
   }
   
-  private void a(int paramInt)
+  @Nullable
+  public afnw a(aptx[] paramArrayOfaptx)
   {
-    afnu localafnu = a(paramInt);
-    if (localafnu != null) {
-      if (localafnu.jdField_a_of_type_Boolean) {
-        break label44;
-      }
+    afnw localafnw = new afnw();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
+      afnw.a(localafnw, paramArrayOfaptx[0].a);
     }
-    label44:
-    for (boolean bool = true;; bool = false)
-    {
-      if (a(localafnu, paramInt, bool)) {
-        afnr.a(this.jdField_a_of_type_Afnr).a(localafnu.jdField_a_of_type_Int);
-      }
-      return;
-    }
+    return localafnw;
   }
   
-  public afnt a(ViewGroup paramViewGroup, int paramInt)
+  public void a(afnw paramafnw) {}
+  
+  public Class<afnw> clazz()
   {
-    paramViewGroup = afnr.a(this.jdField_a_of_type_Afnr).getLayoutInflater().inflate(2131562923, paramViewGroup, false);
-    return new afnt(this.jdField_a_of_type_Afnr, paramViewGroup);
+    return afnw.class;
   }
   
-  public afnu a(int paramInt)
+  public boolean isNeedCompressed()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (afnu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    return true;
   }
   
-  public void a(afnt paramafnt, int paramInt)
+  public boolean isNeedStoreLargeFile()
   {
-    afnu localafnu = a(paramInt);
-    if (localafnu == null)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramafnt, paramInt, getItemId(paramInt));
-      return;
-    }
-    if (localafnu.jdField_a_of_type_Boolean)
-    {
-      paramafnt.b.setVisibility(0);
-      ViewCompat.setAccessibilityDelegate(paramafnt.jdField_a_of_type_ComTencentImageURLImageView, new afnw(this));
-      label54:
-      afnr.a(this.jdField_a_of_type_Afnr, paramafnt.jdField_a_of_type_ComTencentImageURLImageView, localafnu);
-      if (!localafnu.b) {
-        break label142;
-      }
-      paramafnt.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((Animatable)paramafnt.jdField_a_of_type_AndroidViewView.getBackground()).start();
-    }
-    for (;;)
-    {
-      paramafnt.itemView.setOnClickListener(new afny(this, paramInt));
-      break;
-      paramafnt.b.setVisibility(8);
-      ViewCompat.setAccessibilityDelegate(paramafnt.jdField_a_of_type_ComTencentImageURLImageView, new afnx(this));
-      break label54;
-      label142:
-      paramafnt.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((Animatable)paramafnt.jdField_a_of_type_AndroidViewView.getBackground()).stop();
-    }
+    return false;
   }
   
-  public void a(List<afnu> paramList)
+  public int migrateOldVersion()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return 0;
   }
   
-  public boolean a(afnu paramafnu, int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Int == paramInt)
-    {
-      notifyItemChanged(paramInt);
-      return false;
-    }
-    paramafnu.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramafnu.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Int >= 0) {
-        break label46;
-      }
-    }
-    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
-    {
-      notifyItemChanged(paramInt);
-      return true;
-      label46:
-      paramafnu = a(this.jdField_a_of_type_Int);
-      if (paramafnu != null)
-      {
-        paramafnu.jdField_a_of_type_Boolean = false;
-        paramafnu.b = false;
-        notifyItemChanged(this.jdField_a_of_type_Int);
-      }
-    }
-  }
+  public void onReqFailed(int paramInt) {}
   
-  public int getItemCount()
+  public int type()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return 592;
   }
 }
 

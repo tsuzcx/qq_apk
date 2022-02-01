@@ -1,35 +1,24 @@
-import android.view.SurfaceView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhjk
+  implements View.OnClickListener
 {
-  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public bhjk(TabBarView paramTabBarView, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramSurfaceView == null)
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {}
+    for (;;)
     {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
     }
-    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
-    {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
-      return;
-    }
-    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
-    {
-      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
-      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
-      paramSurfaceView.setLayoutParams(localLayoutParams);
-      return;
-    }
-    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
-    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
-    paramSurfaceView.setLayoutParams(localLayoutParams);
   }
 }
 

@@ -5,12 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class MaxHeightRecyclerView
   extends RecyclerView
 {
-  private static final int a = bhtq.b(300.0F);
+  private static final int a = ViewUtils.dpToPx(300.0F);
   
   public MaxHeightRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -29,7 +29,7 @@ public class MaxHeightRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView
  * JD-Core Version:    0.7.0.1
  */

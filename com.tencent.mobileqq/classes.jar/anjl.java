@@ -1,91 +1,210 @@
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.Manager;
 
-class anjl
-  implements amwb
+public class anjl
+  implements Manager
 {
-  private WeakReference<anji> a;
+  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ConcurrentHashMap<String, anjq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public anjl(anji paramanji)
+  public anjl(QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(paramanji);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = anjo.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public static anjl a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onCompleteRender, roleName=", paramString });
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    return (anjl)paramQQAppInterface.getManager(277);
+  }
+  
+  anjq a(String paramString, int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      return;
-      if (this.a != null)
+      anjq localanjq2 = (anjq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      anjq localanjq1 = localanjq2;
+      if (localanjq2 == null)
       {
-        anji localanji = (anji)this.a.get();
-        ApolloWebAvatarParam localApolloWebAvatarParam;
-        if (localanji != null)
+        localanjq1 = new anjq();
+        localanjq1.jdField_a_of_type_JavaLangString = paramString;
+        localanjq1.jdField_a_of_type_Int = paramInt;
+      }
+      return localanjq1;
+    }
+  }
+  
+  public ArrayList<anjq> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("KeyHiddenChatList", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(";");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        int j = localObject.length;
+        int i = 0;
+        for (;;)
         {
-          localApolloWebAvatarParam = anji.a(localanji);
-          if ((localApolloWebAvatarParam != null) && (paramString.equals(localApolloWebAvatarParam.apolloId)) && (localanji.b != null))
+          if (i < j)
           {
-            anji.b(localanji);
-            anji.a(localanji).removeMessages(24);
-            localanji.b.stopLoopDelayed(1000L);
-            if (!TextUtils.isEmpty(anji.a(localanji)))
+            String[] arrayOfString = localObject[i].split("\\|");
+            if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
+            try
             {
-              if (!anji.a(localanji)) {
-                break label173;
-              }
-              if ((anji.a(localanji) == 1) && (localanji.a != null)) {
-                localanji.a.b();
+              anjq localanjq = new anjq();
+              localanjq.jdField_a_of_type_JavaLangString = arrayOfString[0];
+              localanjq.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
+              localArrayList.add(localanjq);
+              i += 1;
+            }
+            catch (Throwable localThrowable)
+            {
+              for (;;)
+              {
+                QLog.e("tag_hidden_chat", 2, localThrowable, new Object[0]);
               }
             }
-          }
-        }
-        while ((localanji != null) && (localanji.b != null))
-        {
-          return;
-          label173:
-          if (anji.a(localanji) == 1)
-          {
-            if (localanji.a != null) {
-              localanji.a.a(true);
-            }
-          }
-          else {
-            localanji.b.getRenderImpl().a(1, localApolloWebAvatarParam.apolloId, "Bubble");
           }
         }
       }
     }
+    return localArrayList;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onStartRender, roleName=", paramString });
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    anji localanji;
-    ApolloWebAvatarParam localApolloWebAvatarParam;
-    do
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
     {
-      do
+      anjq localanjq = (anjq)localIterator.next();
+      localStringBuilder.append(localanjq.jdField_a_of_type_JavaLangString).append("|").append(localanjq.jdField_a_of_type_Int).append(";");
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    if (!localSharedPreferences.getBoolean("FirstSetHidden", false))
+    {
+      localSharedPreferences.edit().putBoolean("FirstSetHidden", true).commit();
+      bfur.a(paramActivity, 230, paramActivity.getString(2131695832), paramActivity.getString(2131695830), paramActivity.getString(2131718436), paramActivity.getString(2131695831), new anjm(this, paramActivity), new bfvf()).show();
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
+    }
+  }
+  
+  void a(anjq paramanjq)
+  {
+    if ((paramanjq == null) || (TextUtils.isEmpty(paramanjq.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramanjq.jdField_a_of_type_JavaLangString, paramanjq);
+      a();
+      return;
+    }
+  }
+  
+  void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      a();
+      return;
+    }
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramString))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(a(paramString, paramInt));
+      return;
+    }
+    a(paramString);
+  }
+  
+  boolean a()
+  {
+    for (;;)
+    {
+      try
       {
-        do
+        Object localObject1 = a();
+        if (QLog.isColorLevel())
         {
-          return;
-        } while (this.a == null);
-        localanji = (anji)this.a.get();
-      } while (localanji == null);
-      localApolloWebAvatarParam = anji.a(localanji);
-    } while ((localApolloWebAvatarParam == null) || (!paramString.equals(localApolloWebAvatarParam.apolloId)));
-    anji.a(localanji);
+          if (localObject1 != null)
+          {
+            i = ((List)localObject1).size();
+            QLog.d("tag_hidden_chat", 2, new Object[] { "doInitAllHidden(), dataList.size is ", Integer.valueOf(i) });
+          }
+        }
+        else
+        {
+          if (localObject1 == null) {
+            break label158;
+          }
+          synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+            localObject1 = ((List)localObject1).iterator();
+            if (!((Iterator)localObject1).hasNext()) {
+              break;
+            }
+            anjq localanjq = (anjq)((Iterator)localObject1).next();
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localanjq.jdField_a_of_type_JavaLangString, localanjq);
+          }
+        }
+        int i = 0;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("tag_hidden_chat", 2, "doInitAllHidden exception:" + localException.getMessage());
+        }
+        return false;
+      }
+    }
+    label158:
+    return true;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      a();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

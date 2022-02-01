@@ -19,7 +19,7 @@ import android.webkit.WebResourceRequest;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.i;
-import com.tencent.smtt.utils.m;
+import com.tencent.smtt.utils.n;
 
 @SuppressLint({"NewApi", "Override"})
 class SystemWebViewClient
@@ -63,10 +63,10 @@ class SystemWebViewClient
   {
     if (c == null)
     {
-      localObject = m.a();
+      localObject = n.a();
       if (localObject != null)
       {
-        ((m)localObject).a(true);
+        ((n)localObject).a(true);
         c = Boolean.toString(true);
       }
     }

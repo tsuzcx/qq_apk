@@ -1,43 +1,38 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.SingleLineTextView;
 
-public class bgai
-  implements bgpp
+public final class bgai
+  implements URLDrawable.URLDrawableListener
 {
-  public bgai(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public bgai(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.o();
-    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
-    {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramInt == 0)
-      {
-        QQToast.a(this.a.getActivity(), 2131696767, 0).a();
-        paramJSONObject = agej.a(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
-        paramJSONObject.addFlags(268435456);
-        paramJSONObject.putExtra("uin", this.a.b);
-        paramJSONObject.putExtra("uintype", 1);
-        this.a.getActivity().startActivity(paramJSONObject);
-        this.a.getActivity().overridePendingTransition(2130771990, 2130772304);
+    if (this.jdField_a_of_type_Boolean) {
+      if (paramURLDrawable.getCurrDrawable() != null) {
+        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
       }
     }
-    else
+    for (;;)
     {
+      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(AIOUtils.dp2px(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
       return;
+      if (paramURLDrawable.getCurrDrawable() != null) {
+        paramURLDrawable.getCurrDrawable().setColorFilter(null);
+      }
     }
-    if (paramInt == 111000)
-    {
-      QQToast.a(this.a.getActivity(), 2131696766, 0).a();
-      return;
-    }
-    QQToast.a(this.a.getActivity(), 2131696826, 0).a();
   }
 }
 

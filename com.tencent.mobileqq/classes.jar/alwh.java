@@ -1,24 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import org.json.JSONObject;
 
 class alwh
-  implements Handler.Callback
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  alwh(alwg paramalwg) {}
+  alwh(alwf paramalwf, JSONObject paramJSONObject, alxf paramalxf) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (alwg.a(this.a) != null) {
-        alwg.a(this.a).j();
-      }
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      alwf.a(this.jdField_a_of_type_Alwf, this.jdField_a_of_type_Alxf, this.jdField_a_of_type_OrgJsonJSONObject);
     }
   }
 }

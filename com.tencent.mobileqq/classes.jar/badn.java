@@ -1,52 +1,101 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.base.component.ProfileHeaderBaseComponent.1.1;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.mobileqq.profilecard.base.view.ProfileBaseView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class badn
-  implements aero
+class badn
+  extends badz
 {
-  badn(badm parambadm) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "receiver";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private String d;
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).a();
-  }
+  public badn(int paramInt, String paramString) {}
   
-  public void a(byte[] paramArrayOfByte)
+  private void a()
   {
-    if (paramArrayOfByte != null)
+    if (!this.jdField_b_of_type_Boolean)
     {
-      ((azxr)badm.a(this.a)).a.updateCoverData(paramArrayOfByte);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView instanceof ProfileBaseView)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a((azxr)badm.b(this.a), false);
+      this.jdField_b_of_type_Int += 1;
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      if (this.jdField_b_of_type_Int > 1) {
+        this.jdField_a_of_type_Boolean = true;
       }
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = 0;
     }
   }
   
-  public void b(byte[] paramArrayOfByte)
+  private void b()
   {
-    if (paramArrayOfByte != null) {
-      if ((badm.c(this.a) != null) && (((azxr)badm.d(this.a)).a != null))
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_b_of_type_Boolean = false;
+    }
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
+      this.jdField_a_of_type_Int = 1;
+    }
+  }
+  
+  public HashMap<String, String> a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (this.jdField_b_of_type_Int <= 0)
+    {
+      localObject1 = localObject2;
+      if (QLog.isDevelopLevel())
       {
-        if (((azxr)badm.e(this.a)).a.checkCoverUrl(paramArrayOfByte)) {
-          ((azxr)badm.f(this.a)).a.updateCoverData(paramArrayOfByte);
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView instanceof ProfileBaseView)) {
-          ((ProfileBaseView)this.a.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView).a((azxr)badm.g(this.a), false);
-        }
-        ThreadManager.excute(new ProfileHeaderBaseComponent.1.1(this), 32, null, false);
+        QLog.i(baea.jdField_a_of_type_JavaLangString, 4, "View count is 0!");
+        localObject1 = localObject2;
       }
     }
-    for (;;)
+    do
     {
-      bdll.b(badm.b(this.a), "dc00898", "", "", "0X8007EC2", "0X8007EC2", 0, 0, "", "", "", "");
-      return;
-      this.a.jdField_a_of_type_Badl.a();
-    }
+      do
+      {
+        do
+        {
+          return localObject1;
+          if (!"Pic.AioPreview".equals(paramString)) {
+            break;
+          }
+          paramString = new HashMap();
+          paramString.put("stay_seconds", String.valueOf(this.jdField_a_of_type_Long));
+          paramString.put("gesture_double_click", String.valueOf(this.jdField_a_of_type_Int));
+          paramString.put("view_count", String.valueOf(this.jdField_b_of_type_Int));
+          paramString.put("send_type", this.jdField_a_of_type_JavaLangString);
+          if (this.jdField_a_of_type_Boolean) {
+            paramString.put("view_again", "1");
+          }
+          if (this.jdField_b_of_type_JavaLangString != null) {
+            paramString.put("size_type", this.jdField_b_of_type_JavaLangString);
+          }
+          localObject1 = paramString;
+        } while (this.jdField_c_of_type_JavaLangString == null);
+        paramString.put("format_type", this.jdField_c_of_type_JavaLangString);
+        return paramString;
+        localObject1 = localObject2;
+      } while (!"Pic.AioPreview.Preload".equals(paramString));
+      localObject1 = localObject2;
+    } while (this.d == null);
+    paramString = new HashMap();
+    paramString.put("preload_status", String.valueOf(this.jdField_c_of_type_Boolean));
+    paramString.put("preload_fail_filetype", this.d);
+    return paramString;
   }
 }
 

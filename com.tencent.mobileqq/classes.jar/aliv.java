@@ -1,36 +1,61 @@
-public class aliv
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aliv
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
+  aliv(alis paramalis) {}
   
-  public aliv(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.f = paramFloat3;
-    this.d = paramFloat5;
-    this.h = paramFloat5;
-    this.e = paramFloat7;
-    this.j = paramFloat7;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.g = paramFloat4;
-    this.i = paramFloat6;
-    this.k = paramFloat8;
-    this.jdField_c_of_type_Int = paramInt2;
+    ((SlideDetectListView)alis.a(this.a)).resetSlideStatus();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).hideDirectly();
+    }
+    localObject = paramView.getTag();
+    if (!(localObject instanceof DiscussionInfo)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      DiscussionInfo localDiscussionInfo = (DiscussionInfo)localObject;
+      if (NetworkUtil.getSystemNetwork(alis.a(this.a)) == 0)
+      {
+        localObject = (BaseActivity)alis.a(this.a);
+        QQToast.a((Context)localObject, 2131695597, 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      }
+      else if ((!localDiscussionInfo.hasCollect) && (((amrb)this.a.a.getManager(53)).a() >= 80))
+      {
+        localObject = (BaseActivity)alis.a(this.a);
+        QQToast.a((Context)localObject, alis.a(this.a).getString(2131695596, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      }
+      else
+      {
+        amqx localamqx = (amqx)this.a.a.getBusinessHandler(6);
+        if (localDiscussionInfo.hasCollect) {}
+        for (localObject = "0X8006898";; localObject = "0X8006897")
+        {
+          bcef.b(this.a.a, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+          if (!localDiscussionInfo.hasCollect) {
+            break label269;
+          }
+          localamqx.e(Long.valueOf(localDiscussionInfo.uin).longValue());
+          break;
+        }
+        label269:
+        localamqx.d(Long.valueOf(localDiscussionInfo.uin).longValue());
+      }
+    }
   }
 }
 

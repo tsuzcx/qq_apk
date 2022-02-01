@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/o2x" android:background="@color/br" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:background="@drawable/di5" android:layout_width="260.0dip" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:layout_centerHorizontal="true">
-        <LinearLayout android:orientation="vertical" android:id="@id/o2q" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.image.URLImageView android:id="@id/o2n" android:layout_width="fill_parent" android:layout_height="300.0dip" android:src="@drawable/d7y" android:scaleType="centerCrop" />
-            <TextView android:textSize="@dimen/ayn" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/o3c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n2" android:layout_marginTop="@dimen/mw" android:layout_marginRight="@dimen/n2" />
-            <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/o2r" android:background="@drawable/di6" android:layout_width="218.0dip" android:layout_height="37.0dip" android:layout_marginTop="@dimen/mw" android:layout_marginBottom="@dimen/n2">
-                <TextView android:textSize="@dimen/ayl" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/o3d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/h_m" android:drawablePadding="@dimen/nd" />
-            </LinearLayout>
-        </LinearLayout>
-        <ImageView android:layout_gravity="center|right|top" android:id="@id/o2o" android:padding="@dimen/nd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h50" />
-    </FrameLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/ns6" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gcf" />
+</FrameLayout>

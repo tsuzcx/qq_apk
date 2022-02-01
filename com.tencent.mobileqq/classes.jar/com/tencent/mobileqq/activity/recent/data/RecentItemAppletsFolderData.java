@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
-import aljo;
-import alok;
+import abwp;
+import akhg;
+import akmb;
 import android.content.Context;
 import android.text.TextUtils;
-import bhlg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemAppletsFolderData
@@ -56,20 +56,20 @@ public class RecentItemAppletsFolderData
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = bhlg.j(paramQQAppInterface, this.mUser.uin);
+      this.mTitleName = ContactUtils.getFriendDisplayName(paramQQAppInterface, this.mUser.uin);
     }
     QQMessageFacade.Message localMessage = null;
-    Object localObject1 = paramQQAppInterface.a();
+    Object localObject1 = paramQQAppInterface.getMessageFacade();
     if (localObject1 != null) {
-      localMessage = ((QQMessageFacade)localObject1).a(this.mUser.uin, this.mUser.getType());
+      localMessage = ((QQMessageFacade)localObject1).getLastMessage(this.mUser.uin, this.mUser.getType());
     }
-    localObject1 = (aljo)paramQQAppInterface.getManager(315);
-    if (alok.a(paramQQAppInterface)) {}
+    localObject1 = (akhg)paramQQAppInterface.getManager(315);
+    if (akmb.a(paramQQAppInterface)) {}
     try
     {
-      ((aljo)localObject1).a();
+      ((akhg)localObject1).a();
       label97:
-      Object localObject2 = ((aljo)localObject1).a(this.mUser.uin);
+      Object localObject2 = ((akhg)localObject1).a(this.mUser.uin);
       if (localObject2 != null)
       {
         QLog.d("RecentItemAppletsFolderData", 2, "account not null nick:" + ((AppletsAccountInfo)localObject2).nick);
@@ -79,13 +79,13 @@ public class RecentItemAppletsFolderData
         if (localMessage == null) {
           break label321;
         }
-        localObject2 = paramQQAppInterface.a();
+        localObject2 = paramQQAppInterface.getConversationFacade();
         if (localObject2 == null) {
           break label305;
         }
-        this.mUnreadNum = ((adab)localObject2).a(localMessage.frienduin, this.mUser.getType());
+        this.mUnreadNum = ((abwp)localObject2).a(localMessage.frienduin, this.mUser.getType());
         label207:
-        if (((aljo)localObject1).a(localMessage, this.mUser) != 2) {
+        if (((akhg)localObject1).a(localMessage, this.mUser) != 2) {
           break label313;
         }
         this.mUnreadFlag = 1;

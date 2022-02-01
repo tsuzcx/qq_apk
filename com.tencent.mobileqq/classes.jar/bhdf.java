@@ -1,30 +1,22 @@
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
 public class bhdf
+  extends Handler
 {
-  public float a;
-  public int a;
-  public String a;
-  public String b;
-  
-  public bhdf(bhde parambhde, String paramString, float paramFloat)
+  public bhdf(DraggableGridView paramDraggableGridView, Looper paramLooper)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    super(paramLooper);
   }
   
-  public JSONArray a()
+  public void handleMessage(Message paramMessage)
   {
-    JSONArray localJSONArray = new JSONArray();
-    try
-    {
-      localJSONArray.put(this.b);
-      localJSONArray.put(this.jdField_a_of_type_Float);
-      return localJSONArray;
-    }
-    catch (JSONException localJSONException) {}
-    return localJSONArray;
+    DraggableGridView.c(this.a, paramMessage.arg1);
+    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
+    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
   }
 }
 

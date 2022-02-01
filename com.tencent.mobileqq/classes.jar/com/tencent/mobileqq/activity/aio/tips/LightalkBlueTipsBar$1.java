@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aivm;
-import aivn;
+import ahpx;
+import ahpy;
 
 public class LightalkBlueTipsBar$1
   implements Runnable
 {
-  public LightalkBlueTipsBar$1(aivm paramaivm) {}
+  public LightalkBlueTipsBar$1(ahpx paramahpx) {}
   
   public void run()
   {
-    aivn localaivn = aivn.a();
-    if (localaivn != null)
+    ahpy localahpy = ahpy.a();
+    if (localahpy != null)
     {
-      this.this$0.a = localaivn.d;
-      this.this$0.b = localaivn.e;
+      this.this$0.a = localahpy.d;
+      this.this$0.b = localahpy.e;
     }
   }
 }

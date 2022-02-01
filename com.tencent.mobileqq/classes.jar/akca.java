@@ -1,21 +1,25 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class akca
-  extends ViewPager.SimpleOnPageChangeListener
+public class akca
+  implements akbe
 {
-  akca(akbz paramakbz) {}
+  public akca(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
   {
-    if (paramInt == 1) {
-      this.a.b = this.a.a.getCurrentItem();
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    akbz.a(this.a, paramInt);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("id", paramString1);
+    localBundle.putInt("result", paramInt);
+    localBundle.putString("path", paramString2);
+    localBundle.putSerializable("res_info", paramResourceInfo);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

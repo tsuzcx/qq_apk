@@ -7,13 +7,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.AdFrequencyLimit;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -29,6 +26,7 @@ import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.MiniLoadManager;
 import com.tencent.qqmini.sdk.manager.MiniLoadingAdManager;
+import com.tencent.qqmini.sdk.manager.PreloadResource;
 import com.tencent.qqmini.sdk.report.MiniAppStartState;
 
 @MiniKeep
@@ -37,15 +35,15 @@ public class AppUIProxy
 {
   private boolean fromFackStart = false;
   private AppUIProxy.DebugLayout mDebugLayout;
-  private TextView mDebugText;
   private EngineChannel mEngineChannel;
+  private View.OnClickListener mLoadingClickListener = new AppUIProxy.6(this);
   private AppUIProxy.LoadingUI mLoadingUI;
   private final AppRuntimeEventCenter.RuntimeStateObserver mObserver = new AppUIProxy.1(this);
   
   private void showKingcardTip()
   {
     QMLog.i("minisdk-start_UIProxy", "showKingcardTip");
-    this.mMainHandler.post(new AppUIProxy.6(this));
+    this.mMainHandler.post(new AppUIProxy.5(this));
   }
   
   public void disableBreak()
@@ -86,7 +84,8 @@ public class AppUIProxy
     if (this.mLoadingUI == null) {
       return;
     }
-    this.mMainHandler.post(new AppUIProxy.4(this));
+    this.mLoadingUI.setCustomClickListener(null);
+    this.mMainHandler.post(new AppUIProxy.3(this));
     AdFrequencyLimit.setOnStartTime(System.currentTimeMillis());
     MiniLoadingAdManager.getInstance().preloadLoadingAd(this.mActivity, getMiniAppInfo());
   }
@@ -94,23 +93,7 @@ public class AppUIProxy
   public void onAttachActivity(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
   {
     super.onAttachActivity(paramActivity, paramBundle, paramViewGroup);
-    this.mLoadingUI = new AppUIProxy.LoadingUI(this, paramActivity.getApplicationContext());
-    this.mDebugLayout = new AppUIProxy.DebugLayout(this, paramActivity.getApplicationContext());
-    this.mDebugLayout.setBackgroundColor(-822083584);
-    this.mDebugText = new TextView(paramActivity.getApplicationContext());
-    this.mDebugText.setTextColor(-1);
-    this.mDebugText.setTextSize(30.0F);
-    paramActivity = new FrameLayout.LayoutParams(-2, -2);
-    paramActivity.gravity = 17;
-    this.mDebugLayout.addView(this.mDebugText, paramActivity);
-    this.mDebugLayout.setVisibility(4);
-    if (this.mDebugLayout.getParent() != null) {
-      ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
-    }
-    this.mDebugText.setText("调试断点中...");
-    paramViewGroup.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
-    this.mDebugLayout.setVisibility(4);
-    ThreadManager.executeOnNetworkIOThreadPool(new AppUIProxy.2(this));
+    this.mLoadingUI = PreloadResource.g().getAppLoadingUI(paramActivity);
   }
   
   public void onIntentUpdate(Intent paramIntent)
@@ -175,7 +158,7 @@ public class AppUIProxy
         paramString = (String)localObject1;
         ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(this.mActivity, (Intent)localObject2);
         paramString = (String)localObject1;
-        AppBrandTask.runTaskOnUiThreadDelay(new AppUIProxy.3(this), 1500L);
+        AppBrandTask.runTaskOnUiThreadDelay(new AppUIProxy.2(this), 1500L);
         return;
       }
       catch (Throwable localThrowable)
@@ -194,7 +177,7 @@ public class AppUIProxy
       if (this.mCurrRuntimeLoader.dismissLoadingAfterLoaded()) {
         break label104;
       }
-      this.mCurrRuntimeLoader.addRuntimeStateObserver(new AppUIProxy.5(this));
+      this.mCurrRuntimeLoader.addRuntimeStateObserver(new AppUIProxy.4(this));
     }
     for (;;)
     {
@@ -283,6 +266,7 @@ public class AppUIProxy
       return;
     }
     this.mLoadingUI.initData(paramMiniAppInfo);
+    this.mLoadingUI.setCustomClickListener(this.mLoadingClickListener);
     if (this.mLoadingUI.getVisibility() != 0) {
       this.mLoadingUI.setVisibility(0);
     }

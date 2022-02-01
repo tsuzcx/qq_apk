@@ -1,20 +1,20 @@
 package dov.com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import bqsr;
-import bqsu;
-import bqsv;
-import bqsw;
-import bqsy;
+import bnnz;
+import bnoc;
+import bnod;
+import bnoe;
+import bnog;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$2
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$2(bqsu parambqsu, bqsy parambqsy, bqsw parambqsw) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$2(bnoc parambnoc, bnog parambnog, bnoe parambnoe) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bqsy.a.a != null) {
-      this.jdField_a_of_type_Bqsy.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Bqsw);
+    if (this.jdField_a_of_type_Bnog.a.a != null) {
+      this.jdField_a_of_type_Bnog.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Bnoe);
     }
   }
 }

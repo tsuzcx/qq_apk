@@ -1,109 +1,142 @@
-import android.os.Message;
-import com.tencent.common.config.AppSetting;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.C2CPttDownloadProcessor;
-import com.tencent.mobileqq.transfile.GroupPttDownloadProcessor;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
 public class beth
-  implements bhvc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private beyf jdField_a_of_type_Beyf = new beti(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  public static int a;
+  public static boolean a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private beti jdField_a_of_type_Beti;
+  private int b = 1;
+  private int c;
   
-  public beth(long paramLong1, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong2, int paramInt2)
+  public beth(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString5;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramString4;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Beyf.addFilter(new Class[] { berv.class, besa.class, GroupPttDownloadProcessor.class, C2CPttDownloadProcessor.class });
-    paramQQAppInterface.a().a(this.jdField_a_of_type_Beyf);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  private void b()
+  public static int a(Activity paramActivity)
   {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long);
-    Message localMessage = new Message();
-    localMessage.what = 1005;
-    bete localbete = new bete(this.jdField_b_of_type_JavaLangString, this.c, 0);
-    localbete.jdField_b_of_type_Int = 1;
-    localbete.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-    localMessage.obj = localbete;
-    localMessage.arg1 = 0;
-    berp.a(localMessage, beth.class, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.e, this.d, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int);
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long);
-    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002) || (this.jdField_a_of_type_Int == 3000))
-    {
-      if (this.jdField_a_of_type_Int == 1001) {}
-      for (long l = AppSetting.c;; l = bezh.b())
-      {
-        int i = (int)l;
-        if (new File(this.c).length() > i)
-        {
-          bhmq.a(-1L, this.jdField_a_of_type_Int, true, "group_compress", "ForwardImageProcessor.uploadImage");
-          this.c = bhmq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.c, i);
-        }
-        if (bhmq.a(null, this.c, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
-          break;
-        }
-        return;
-      }
+    paramActivity = paramActivity.getWindow().getDecorView();
+    int i = paramActivity.getHeight();
+    if (a(paramActivity) > i * 3 / 4) {
+      return 2;
     }
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localbeyg.c = this.jdField_b_of_type_JavaLangString;
-    localbeyg.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbeyg.jdField_b_of_type_Int = 1;
-    localbeyg.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.e = 1009;
-    localbeyg.i = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
+    return 1;
   }
   
+  public static int a(View paramView)
+  {
+    Rect localRect = new Rect();
+    paramView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
+    jdField_a_of_type_Boolean = a(paramActivity);
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    }
+    return localRect.top == 0;
+  }
+  
+  @RequiresApi(api=16)
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Beyf);
+    if (Build.VERSION.SDK_INT < 16) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      this.b = 1;
+      this.jdField_a_of_type_Beti = null;
+      this.c = 0;
+      return;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
   
-  public void a(bhva parambhva1, bhva parambhva2) {}
-  
-  public void a(String paramString) {}
-  
-  public boolean a(bhva parambhva1, bhva parambhva2, int paramInt)
+  public void a(View paramView)
   {
-    return false;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void b(bhva parambhva1, bhva parambhva2) {}
+  public void a(beti parambeti)
+  {
+    if (parambeti != null) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
+    }
+    this.b = 1;
+    this.jdField_a_of_type_Beti = parambeti;
+    this.c = 0;
+  }
+  
+  public void onGlobalLayout()
+  {
+    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localView == null) {}
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return;
+      i = localView.getHeight();
+      j = a(localView);
+      k = i - j;
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+        if ((m != this.c) && (this.jdField_a_of_type_Beti != null)) {
+          this.jdField_a_of_type_Beti.b(this.b, j, this.c);
+        }
+        this.c = m;
+      }
+    } while (j == this.c);
+    if (k > i / 4)
+    {
+      this.b = 1;
+      if (this.jdField_a_of_type_Beti != null) {
+        this.jdField_a_of_type_Beti.a(this.b, j, k);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
+      }
+      this.c = j;
+      return;
+      if (k < i * 3 / 4)
+      {
+        this.b = 2;
+        if (this.jdField_a_of_type_Beti != null) {
+          this.jdField_a_of_type_Beti.a(this.b, j, k);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beth
  * JD-Core Version:    0.7.0.1
  */

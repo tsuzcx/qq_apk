@@ -1,139 +1,55 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AccountManageActivity.25.1;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.observer.SubAccountObserver;
 
 public class adrc
-  extends anyu
+  extends SubAccountObserver
 {
-  public adrc(AccountManageActivity paramAccountManageActivity) {}
+  public adrc(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  void a(String paramString, int paramInt)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    this.a.runOnUiThread(new AccountManageActivity.25.1(this, paramString, paramInt));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
+    }
+    if (TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12005");
+      paramString1.put("fail_step", "getKeyEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
+      this.a.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
+      }
+      this.a.a(2131718697, 0);
+    }
+    do
     {
       return;
-      int i;
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12006");
+      paramString1.put("fail_step", "getKeyNotEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
       }
-      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
       }
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    Object localObject3 = (bdxc)this.a.app.getManager(61);
-    Object localObject1 = "";
-    int i = ((bdxc)localObject3).a();
-    label67:
-    label124:
-    Object localObject2;
-    if (i == 0)
-    {
-      AccountManageActivity.a(this.a).setVisibility(8);
-      AccountManageActivity.b(this.a).setVisibility(8);
-      if (AppSetting.c) {
-        AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject1);
+      paramString1 = (bcqq)this.a.app.getManager(28);
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, LoginVerifyCodeActivity.b(this.a));
       }
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-        break label566;
-      }
-      i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      if (j >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-        break label569;
-      }
-      if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
-      {
-        localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131371647);
-        localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131361856);
-        ((TextView)localObject1).setText(bhlg.h(this.a.app, paramString));
-        ((TextView)localObject2).setText(paramString);
-        a(paramString, j);
-      }
-    }
-    else if (i == 1)
-    {
-      localObject3 = ((bdxc)localObject3).a("sub.uin.default");
-      if (localObject3 == null) {
-        break label571;
-      }
-      localObject2 = bhlg.c(this.a.app, ((SubAccountInfo)localObject3).subuin, false);
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        if (!TextUtils.isEmpty(((SubAccountInfo)localObject3).subname))
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).equals(((SubAccountInfo)localObject3).subname)) {}
-        }
-        else
-        {
-          ((SubAccountInfo)localObject3).subname = ((String)localObject2);
-          this.a.a(AccountManageActivity.b(this.a), ((SubAccountInfo)localObject3).subuin);
-          AccountManageActivity.b(this.a).setVisibility(0);
-          AccountManageActivity.a(this.a).setVisibility(8);
-          localObject1 = localObject2;
-          if (AppSetting.c) {
-            AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
-          }
-        }
-      }
-    }
-    label566:
-    label569:
-    label571:
-    for (localObject1 = localObject2;; localObject1 = "")
-    {
-      break label67;
-      localObject2 = i + anzj.a(2131698665);
-      localObject3 = ((bdxc)localObject3).a();
-      localObject1 = localObject2;
-      if (((ArrayList)localObject3).size() != 2) {
-        break label67;
-      }
-      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(0));
-      AccountManageActivity.b(this.a).setVisibility(0);
-      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(1));
-      AccountManageActivity.a(this.a).setVisibility(0);
-      localObject1 = localObject2;
-      break label67;
-      j += 1;
-      break label124;
-      i = 0;
-      break label124;
-      break;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
   }
 }
 

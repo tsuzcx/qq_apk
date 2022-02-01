@@ -1,90 +1,75 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AccountNotMatchException;
 import mqq.os.MqqHandler;
 
-public class bchi
-  implements Manager
+public final class bchi
+  implements View.OnClickListener
 {
-  private bchd jdField_a_of_type_Bchd = new bchd("Cahce_");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public bchi(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public ArrayList<bchg> a(String paramString)
-  {
-    if (this.jdField_a_of_type_Bchd != null)
+    Object localObject2 = paramView.findViewById(2131377871);
+    if (localObject2 == null) {}
+    for (;;)
     {
-      paramString = this.jdField_a_of_type_Bchd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      if ((paramString != null) && (paramString.size() > 10))
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject1 = ((View)localObject2).getTag(2131377871);
+      Object localObject3;
+      if ((localObject1 != null) && ((localObject1 instanceof StructMsgForAudioShare)))
       {
-        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
-        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
-        return localArrayList;
+        localObject1 = (StructMsgForAudioShare)localObject1;
+        localObject3 = paramView.getTag();
+        if ((localObject3 != null) && ((localObject3 instanceof agpx)))
+        {
+          localObject3 = (agpx)localObject3;
+          localObject2 = ((View)localObject2).getContext();
+        }
       }
-      return paramString;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bchd != null)
-    {
-      this.jdField_a_of_type_Bchd.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QLog.d("MostUsedSearchResultManager", 2, "init");
-      return;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
-    for (String str = paramString2;; str = paramString1)
-    {
-      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
-      int i = bchc.a(paramInt);
-      if (!a(i)) {
-        break;
+      try
+      {
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
+        if (((StructMsgForAudioShare)localObject1).msgId > 0L)
+        {
+          bcef.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((StructMsgForAudioShare)localObject1).uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(((StructMsgForAudioShare)localObject1).msgId), "");
+          ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForAudioShare.1.1(this, (StructMsgForAudioShare)localObject1, localQQAppInterface), 0L);
+          AbsShareMsg.doReport(localQQAppInterface, (AbsShareMsg)localObject1);
+          if (localQQAppInterface == null) {
+            continue;
+          }
+          npn.a(localQQAppInterface, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, npn.a(((agpx)localObject3).a.curType));
+          MediaPlayerManager.a(localQQAppInterface).a(true);
+        }
       }
-      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
-      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
-      return;
-      paramString2 = "";
+      catch (AccountNotMatchException localAccountNotMatchException)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("StructMsg", 4, localAccountNotMatchException.getStackTrace().toString());
+          }
+        }
+      }
+      bcef.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StructMsgForAudioShare)localObject1).mMsgServiceID + "", "", "", "");
+      bcef.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "2", ForwardUtils.toTypeSimple(((StructMsgForAudioShare)localObject1).uinType), ((StructMsgForAudioShare)localObject1).mContentTitle, String.valueOf(((StructMsgForAudioShare)localObject1).mSourceAppid));
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, new Object[] { "音乐分享内容点击=", "0X800A630", ", mContentTitle=" + ((StructMsgForAudioShare)localObject1).mContentTitle, ", uinType=", ForwardUtils.toTypeSimple(((StructMsgForAudioShare)localObject1).uinType) });
+      }
+      StructMsgForAudioShare.onClickEvent((Context)localObject2, (StructMsgForAudioShare)localObject1);
     }
-  }
-  
-  boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bchd != null) {
-      this.jdField_a_of_type_Bchd.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    b();
-    this.jdField_a_of_type_Bchd = null;
-    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 

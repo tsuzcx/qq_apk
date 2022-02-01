@@ -1,17 +1,37 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
 
-final class bhrm
-  implements View.OnClickListener
+public class bhrm
+  implements InputFilter
 {
-  bhrm(Dialog paramDialog) {}
+  public bhrm(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
   
-  public void onClick(View paramView)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramInt3 = 12 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
+    {
+      CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
+      return "";
+    }
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
+    }
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
+        return "";
+      }
+    }
+    CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

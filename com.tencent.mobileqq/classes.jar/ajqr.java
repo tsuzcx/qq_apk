@@ -1,55 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.SwipListView;
-import java.util.ArrayList;
-import java.util.List;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
+import mqq.app.AppRuntime;
 
 public class ajqr
-  implements View.OnClickListener
+  extends axkw
 {
-  public ajqr(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ajqr(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetQZoneAlbumListNum(boolean paramBoolean, Bundle paramBundle)
   {
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "todo_tab_clk", 0, 0, "", "", "", "");
-    ajqw.b(false);
-    this.a.a(false, 1);
-    TroopNotifyAndRecommendView.a(this.a).setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(0);
-    if (this.a.jdField_c_of_type_Int != 1)
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      }
-      this.a.setType(1);
-      this.a.a(true);
-      ArrayList localArrayList = new ArrayList();
-      this.a.jdField_a_of_type_Ajpe.b(localArrayList);
-      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
-      this.a.jdField_a_of_type_Ajpe.a(ajqw.b());
-      this.a.jdField_a_of_type_Ajpe.a = 0;
-      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      ((ajrc)this.a.mPhotoListLogic.mOtherCommonData).a = ((get_albumlist_num_rsp)paramBundle).album_num;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.a.setType(0);
-      this.a.a(false);
-      this.a.jdField_a_of_type_Ajpe.a(ajqw.c());
-      this.a.jdField_a_of_type_Ajpe.a = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_c_of_type_JavaUtilList != null) && (this.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
-        this.a.jdField_a_of_type_Ajpe.b(this.a.jdField_c_of_type_JavaUtilList);
-      }
-      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
-    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a);
   }
 }
 

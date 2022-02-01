@@ -1,25 +1,38 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
-class bcic
-  implements View.OnClickListener
+public class bcic
+  extends Animation
 {
-  bcic(bcia parambcia, bcfr parambcfr) {}
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void onClick(View paramView)
+  public bcic(ViewGroup paramViewGroup)
   {
-    Object localObject = paramView.getContext();
-    String str = this.jdField_a_of_type_Bcfr.b();
-    if ((localObject instanceof BaseActivity))
-    {
-      bcni.a("all_result", "clk_result_join", new String[0]);
-      localObject = (BaseActivity)localObject;
-      bcia.a(this.jdField_a_of_type_Bcia, (Activity)localObject, str);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
+    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramViewGroup.height = 0;
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

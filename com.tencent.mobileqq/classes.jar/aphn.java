@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
 public final class aphn
-  implements Parcelable.Creator<ARRelationShipAIOMsg>
+  implements Parcelable.Creator<BusinessCard>
 {
-  public ARRelationShipAIOMsg a(Parcel paramParcel)
+  public BusinessCard a(Parcel paramParcel)
   {
-    return new ARRelationShipAIOMsg(paramParcel);
+    return new BusinessCard(paramParcel);
   }
   
-  public ARRelationShipAIOMsg[] a(int paramInt)
+  public BusinessCard[] a(int paramInt)
   {
-    return new ARRelationShipAIOMsg[paramInt];
+    return new BusinessCard[paramInt];
   }
 }
 

@@ -28,7 +28,6 @@ import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqmini.sdk.R.drawable;
 import com.tencent.qqmini.sdk.R.id;
-import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.AppMode;
@@ -44,6 +43,7 @@ public class AppUIProxy$LoadingUI
 {
   int iconSize = DisplayUtil.dip2px(getContext(), 60.0F);
   private boolean isForeground = false;
+  private View.OnClickListener mClickListener;
   private ImageView mCloseView;
   private LinearLayout mDeveloperInfoContainer;
   private TextView mDeveloperInfoDesc;
@@ -57,19 +57,19 @@ public class AppUIProxy$LoadingUI
   private RelativeLayout rightContainer;
   Handler uiHandler;
   
-  public AppUIProxy$LoadingUI(AppUIProxy paramAppUIProxy, Context paramContext)
+  public AppUIProxy$LoadingUI(Context paramContext)
   {
     super(paramContext);
     init();
   }
   
-  public AppUIProxy$LoadingUI(AppUIProxy paramAppUIProxy, Context paramContext, AttributeSet paramAttributeSet)
+  public AppUIProxy$LoadingUI(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     init();
   }
   
-  public AppUIProxy$LoadingUI(AppUIProxy paramAppUIProxy, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppUIProxy$LoadingUI(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     init();
@@ -253,18 +253,13 @@ public class AppUIProxy$LoadingUI
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.btn_close)
-    {
+    if (paramView.getId() == R.id.btn_close) {
       MiniReportManager.reportEventType(this.miniAppInfo, 1026, "1");
-      AppStateEvent.obtain(60).notifyRuntime(this.this$0.getRuntime());
-      this.this$0.quit();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() != R.id.btn_more_menu) {}
+    if (this.mClickListener != null) {
+      this.mClickListener.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onResume()
@@ -324,6 +319,11 @@ public class AppUIProxy$LoadingUI
       return;
     }
     setSlideOutAnimation();
+  }
+  
+  public void setCustomClickListener(View.OnClickListener paramOnClickListener)
+  {
+    this.mClickListener = paramOnClickListener;
   }
 }
 

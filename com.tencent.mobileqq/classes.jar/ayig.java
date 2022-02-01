@@ -1,40 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
 import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 class ayig
-  extends AnimatorListenerAdapter
+  implements Animator.AnimatorListener
 {
-  ayig(ayhj paramayhj) {}
+  ayig(ayhx paramayhx, View paramView) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.c = false;
+    this.jdField_a_of_type_Ayhx.l();
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c = false;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366969).setVisibility(8);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366943).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366968).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366978).setVisibility(8);
+    this.jdField_a_of_type_Ayhx.l();
   }
   
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.c = true;
-    int i = this.a.jdField_b_of_type_Int;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366967).setBackgroundResource(2130845437);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366967).getBackground().setColorFilter(new LightingColorFilter(-16777216, i));
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366966).setBackgroundColor(0);
+    if (this.jdField_a_of_type_Ayhx.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 

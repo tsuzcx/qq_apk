@@ -1,59 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qhv
+  implements ViewBase.IBuilder
 {
-  private static volatile qhv jdField_a_of_type_Qhv;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
-  
-  public static qhv a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (jdField_a_of_type_Qhv == null) {}
-    try
-    {
-      if (jdField_a_of_type_Qhv == null) {
-        jdField_a_of_type_Qhv = new qhv();
-      }
-      return jdField_a_of_type_Qhv;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-    qhq.c();
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  private boolean d()
-  {
-    return this.b;
-  }
-  
-  void a()
-  {
-    b();
-    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
-    ThreadManager.getFileThreadHandler().post(local1);
-  }
-  
-  public boolean a()
-  {
-    return (d()) && (qha.a().a());
-  }
-  
-  @Deprecated
-  public boolean b()
-  {
-    return (c()) && (qha.a().a());
+    return new qhs(paramVafContext);
   }
 }
 

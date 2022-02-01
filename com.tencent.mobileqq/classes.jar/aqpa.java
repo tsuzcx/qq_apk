@@ -1,16 +1,37 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class aqpa
-  implements aqpg
+public abstract class aqpa<D extends aqoa>
 {
-  aqpa(aqoz paramaqoz, BaseChatPie paramBaseChatPie) {}
+  private ArrayList<aqpf> a;
   
-  public void a(int paramInt, aqon paramaqon)
+  private void c(Canvas paramCanvas, D paramD, aqoj paramaqoj, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Aqoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, paramaqon, false);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B32D", "0X800B32D", aqpc.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, paramaqon.a, paramInt + "", "", "");
+    if (this.a != null)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((aqpf)localIterator.next()).a(paramCanvas, paramD, paramaqoj, paramFloat1, paramFloat2);
+      }
+    }
   }
+  
+  public abstract aqpy a(D paramD);
+  
+  public void a() {}
+  
+  public final void a(Canvas paramCanvas, D paramD, aqoj paramaqoj, float paramFloat1, float paramFloat2)
+  {
+    b(paramCanvas, paramD, paramaqoj, paramFloat1, paramFloat2);
+    c(paramCanvas, paramD, paramaqoj, paramFloat1, paramFloat2);
+  }
+  
+  public void a(D paramD) {}
+  
+  public abstract boolean a(aqoa paramaqoa);
+  
+  public abstract void b(Canvas paramCanvas, D paramD, aqoj paramaqoj, float paramFloat1, float paramFloat2);
 }
 
 

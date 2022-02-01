@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anfr;
-import anga;
-import angr;
-import anqe;
+import amal;
+import amau;
+import ambl;
+import amky;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class ApolloDrawerInfoViewListener$2
   implements Runnable
 {
-  public ApolloDrawerInfoViewListener$2(anqe paramanqe, boolean paramBoolean, Object paramObject) {}
+  public ApolloDrawerInfoViewListener$2(amky paramamky, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ public class ApolloDrawerInfoViewListener$2
     {
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
       {
-        if (anqe.a(this.this$0).get() == null) {
+        if (amky.a(this.this$0).get() == null) {
           return;
         }
         Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
         {
-          Object localObject1 = (angr)anqe.a(this.this$0).get();
-          anfr localanfr = ((angr)localObject1).a();
-          localObject1 = ((angr)localObject1).a();
-          if ((localanfr != null) && (localObject1 != null))
+          Object localObject1 = (ambl)amky.a(this.this$0).get();
+          amal localamal = ((ambl)localObject1).a();
+          localObject1 = ((ambl)localObject1).a();
+          if ((localamal != null) && (localObject1 != null))
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
               String str = (String)((Iterator)localObject2).next();
-              if (str.equals(((anga)localObject1).b)) {
-                localanfr.a(str, true);
+              if (str.equals(((amau)localObject1).b)) {
+                localamal.a(str, true);
               }
             }
           }

@@ -1,21 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.app.Activity;
+import android.view.View;
 
-public class npd
-  extends Handler
+class npd
+  implements bjoe
 {
-  public npd(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  npd(noy paramnoy, Activity paramActivity, String paramString, bjnw parambjnw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
+    switch (paramInt)
+    {
     }
-    while (paramMessage.what != 291) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
+      noy.c(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
-    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 

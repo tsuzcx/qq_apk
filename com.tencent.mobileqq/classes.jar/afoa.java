@@ -1,27 +1,147 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class afoa
-  extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int;
+  private static afoa jdField_a_of_type_Afoa;
+  private SparseArray<afnz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public afoa(afnr paramafnr, int paramInt)
+  private afnz a(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
+    while (i >= 0)
+    {
+      afnz localafnz = (afnz)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localafnz != null) && (localafnz.a(paramLong, paramBoolean))) {
+        return localafnz;
+      }
+      i -= 1;
+    }
+    return null;
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public static afoa a()
   {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
-    if (paramRecyclerView.getChildPosition(paramView) != 0) {
-      paramRect.right = this.jdField_a_of_type_Int;
+    if (jdField_a_of_type_Afoa == null) {}
+    try
+    {
+      if (jdField_a_of_type_Afoa == null) {
+        jdField_a_of_type_Afoa = new afoa();
+      }
+      return jdField_a_of_type_Afoa;
     }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
+    }
+    afnz localafnz = (afnz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localafnz != null) {
+      localafnz.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
+  {
+    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
+  }
+  
+  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
+        }
+      }
+    }
+    if (paramInt1 == 1) {}
+    for (paramList = new afog();; paramList = new afob())
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
+    }
+    afnz localafnz = a(paramLong, false);
+    if ((localafnz != null) && (localafnz.a(paramQQAppInterface, paramLong))) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localafnz.a);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    afnz localafnz = (afnz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localafnz != null) {
+      localafnz.a(paramQQAppInterface, paramLong);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      afnz localafnz = a(paramMessageRecord.uniseq, true);
+      if (localafnz != null) {
+        localafnz.a(paramQQAppInterface, paramMessageRecord);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
+  {
+    if (paramList != null) {
+      try
+      {
+        if (paramList.size() > 0)
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext()) {
+            a(paramQQAppInterface, (MessageRecord)paramList.next());
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
+  {
+    try
+    {
+      ((afnz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
+      return;
+    }
+    finally {}
   }
 }
 

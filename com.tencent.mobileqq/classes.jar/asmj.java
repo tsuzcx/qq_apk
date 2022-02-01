@@ -1,44 +1,75 @@
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
-class asmj
-  implements URLDrawableDownListener
+public class asmj
+  implements bbhb
 {
-  asmj(asmh paramasmh, asmg paramasmg, URLImageView paramURLImageView, ImageView paramImageView) {}
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public asmj() {}
+  
+  public asmj(ViewGroup paramViewGroup)
   {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmg.toString());
-    asmh.a(this.jdField_a_of_type_Asmh, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_Int = 2131562762;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public View a()
   {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmg.toString());
-    asmh.a(this.jdField_a_of_type_Asmh, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public View a(String paramString)
   {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Asmg.toString());
-    asmh.a(this.jdField_a_of_type_Asmh, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    return null;
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public ImageView a()
   {
-    asmh.a(this.jdField_a_of_type_Asmh, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    return null;
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public TextView a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Asmg.toString());
-    }
-    asmh.a(this.jdField_a_of_type_Asmh, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368344));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378707));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365445));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378783).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

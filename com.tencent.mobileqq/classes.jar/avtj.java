@@ -1,27 +1,9 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import java.util.List;
 
-public class avtj
-  implements Animator.AnimatorListener
+public abstract interface avtj
 {
-  public avtj(HotPicMainPanel paramHotPicMainPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    this.a.b.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(List<RecentBaseData> paramList);
 }
 
 

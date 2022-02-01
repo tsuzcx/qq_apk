@@ -5,21 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bojc;
-import bpam;
+import bmbx;
 
 public class AEEditorGenerateBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bojc jdField_a_of_type_Bojc;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String TAG = "AEEditorGenerateBroadcastReceiver";
+  private AEEditorGenerateBroadcastReceiver.AEEditorGenerateListener mAETavSessionStatusListener;
+  private boolean mReceiverActive;
   
-  public AEEditorGenerateBroadcastReceiver(bojc parambojc)
+  public AEEditorGenerateBroadcastReceiver(AEEditorGenerateBroadcastReceiver.AEEditorGenerateListener paramAEEditorGenerateListener)
   {
-    this.jdField_a_of_type_Bojc = parambojc;
+    this.mAETavSessionStatusListener = paramAEEditorGenerateListener;
   }
   
-  private IntentFilter a()
+  private IntentFilter getBroadcastIntentFilter()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("AEEDITOR_GENERATE_STATUS_ERROR");
@@ -28,32 +28,24 @@ public class AEEditorGenerateBroadcastReceiver
     return localIntentFilter;
   }
   
-  public void a(@NonNull Context paramContext)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext.registerReceiver(this, a());
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bpam.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
+      bmbx.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
     }
     String str1;
     String str2;
     String str3;
     String str4;
+    int i;
     String str5;
     String str6;
     String str7;
     do
     {
       float f;
-      int i;
+      int j;
       do
       {
         return;
@@ -61,31 +53,50 @@ public class AEEditorGenerateBroadcastReceiver
         str2 = paramIntent.getStringExtra("generate_materialname");
         str3 = paramIntent.getStringExtra("generate_filterid");
         str4 = paramIntent.getStringExtra("generate_scheme");
+        i = paramIntent.getIntExtra("generate_show_circle_take_same", 0);
         str5 = paramIntent.getStringExtra("generate_mission");
         str6 = paramIntent.getStringExtra("generate_path");
         str7 = paramIntent.getStringExtra("generate_thumb_ptah");
         f = paramIntent.getFloatExtra("generate_progress", 0.0F);
-        i = paramIntent.getIntExtra("generate_errorcode", 0);
+        j = paramIntent.getIntExtra("generate_errorcode", 0);
         paramIntent = paramIntent.getStringExtra("generate_source_path");
-        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
-        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
-        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
-        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
-        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
-        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + i);
-      } while (this.jdField_a_of_type_Bojc == null);
+        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
+        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
+        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
+        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
+        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
+        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + j);
+      } while (this.mAETavSessionStatusListener == null);
       if ("AEEDITOR_GENERATE_STATUS_ERROR".equals(paramContext))
       {
-        this.jdField_a_of_type_Bojc.a(str5, i);
+        this.mAETavSessionStatusListener.onAETavSessionExportError(str5, j);
         return;
       }
       if ("AEEDITOR_GENERATE_STATUS_DOWNLOADING".equals(paramContext))
       {
-        this.jdField_a_of_type_Bojc.a(str5, f);
+        this.mAETavSessionStatusListener.onAETavSessionExporting(str5, f);
         return;
       }
     } while (!"AEEDITOR_GENERATE_STATUS_READY".equals(paramContext));
-    this.jdField_a_of_type_Bojc.a(paramIntent, str1, str2, str3, str4, str5, str6, str7);
+    this.mAETavSessionStatusListener.onAETavSessionExportCompleted(paramIntent, str1, str2, str3, str4, i, str5, str6, str7);
+  }
+  
+  public void registerSelf(@NonNull Context paramContext)
+  {
+    if ((!this.mReceiverActive) && (paramContext != null))
+    {
+      paramContext.registerReceiver(this, getBroadcastIntentFilter());
+      this.mReceiverActive = true;
+    }
+  }
+  
+  public void unRegisterSelf(@NonNull Context paramContext)
+  {
+    if ((this.mReceiverActive) && (paramContext != null))
+    {
+      paramContext.unregisterReceiver(this);
+      this.mReceiverActive = false;
+    }
   }
 }
 

@@ -1,31 +1,99 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
 public class yos
 {
-  public static ThreadLocal<StringBuilder> a = new yot();
-  
-  public static String a(Object... paramVarArgs)
+  public static <T> T a(T paramT)
   {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (paramVarArgs.length > 0)
+    if (paramT == null) {
+      xvv.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
+    }
+    return paramT;
+  }
+  
+  public static String a(int paramInt)
+  {
+    for (;;)
     {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      try
       {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject.toString());
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label87;
         }
-        i += 1;
+        i = localObject.length;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append("\n" + localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label87:
+        paramInt = 2;
       }
     }
-    return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
   }
+  
+  public static void a() {}
+  
+  public static <T> void a(T paramT)
+  {
+    if (paramT == null)
+    {
+      paramT = yqj.a("StoryAssertUtils Exception!");
+      bcdb.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
+      xvv.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    xvv.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    if (paramVarArgs.length == 0) {}
+    for (;;)
+    {
+      xvv.e("Q.qqstory.AssertUtils", paramString);
+      return;
+      paramString = String.format(paramString, paramVarArgs);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      xvv.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
+    }
+  }
+  
+  public static void a(boolean paramBoolean, @NonNull String paramString)
+  {
+    if (paramBoolean) {
+      return;
+    }
+    xvv.e("Q.qqstory.AssertUtils", paramString);
+  }
+  
+  public static void b() {}
 }
 
 

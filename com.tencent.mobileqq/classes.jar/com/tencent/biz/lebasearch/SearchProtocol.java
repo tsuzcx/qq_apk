@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.RequestBody;
 import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.RootSearcherRequest;
@@ -13,38 +14,37 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import mqq.app.NewIntent;
-import nkl;
-import nnr;
-import nqd;
-import nqe;
-import nqf;
+import nma;
+import nrm;
+import nrn;
+import nro;
 
 public class SearchProtocol
 {
-  public static void a(AppInterface paramAppInterface, Context paramContext, nqf paramnqf)
+  public static void a(AppInterface paramAppInterface, Context paramContext, nro paramnro)
   {
-    if ((paramAppInterface == null) || (paramnqf == null)) {
+    if ((paramAppInterface == null) || (paramnro == null)) {
       return;
     }
-    paramContext = new nqd(Looper.getMainLooper(), paramnqf);
-    if (nnr.a() == 0)
+    paramContext = new nrm(Looper.getMainLooper(), paramnro);
+    if (HttpUtil.getNetWorkType() == 0)
     {
       paramAppInterface = paramContext.obtainMessage();
       paramAppInterface.arg1 = -1;
       paramContext.sendMessage(paramAppInterface);
       return;
     }
-    paramnqf = new NewIntent(paramAppInterface.getApp(), nkl.class);
-    paramnqf.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
+    paramnro = new NewIntent(paramAppInterface.getApp(), nma.class);
+    paramnro.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
     mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
     localRequestBody.cmd.set(1);
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
-    paramnqf.putExtra("data", localRequestBody.toByteArray());
-    paramnqf.setObserver(new nqe(paramContext));
-    paramAppInterface.startServlet(paramnqf);
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.8"));
+    paramnro.putExtra("data", localRequestBody.toByteArray());
+    paramnro.setObserver(new nrn(paramContext));
+    paramAppInterface.startServlet(paramnro);
   }
   
   private static int b(String paramString)

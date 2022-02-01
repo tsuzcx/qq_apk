@@ -1,6 +1,16 @@
-public abstract interface aucq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
+
+public class aucq
+  implements DialogInterface.OnClickListener
 {
-  public abstract augj a();
+  public aucq(JefsClass.8 param8) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

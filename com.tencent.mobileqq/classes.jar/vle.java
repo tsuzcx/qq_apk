@@ -1,234 +1,231 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.FutureListener;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobControlHandler;
+import com.tribe.async.async.JobController;
+import com.tribe.async.async.JobController.CancelCommand;
+import com.tribe.async.async.LightWeightExecutor;
+import com.tribe.async.async.MonitorThreadPoolExecutor.ThreadPoolMonitorListener;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import qqcircle.QQCircleBase.UserCircleInfo;
-import qqcircle.QQCircleFeedBase.StPolyLike;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
 
 public class vle
+  implements Boss, MonitorThreadPoolExecutor.ThreadPoolMonitorListener
 {
-  private static volatile vle jdField_a_of_type_Vle;
-  private int jdField_a_of_type_Int = uyn.a();
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private List<QQCircleFeedBase.StTabInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ConcurrentHashMap<String, vlf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = QzoneConfig.getQQCircleEnableFolderPageCache();
-  private final long jdField_b_of_type_Long = QzoneConfig.getQQCircleFolderPageCacheLifeCycle() * 1000;
-  private List<QQCircleFeedBase.StPolyLike> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private List<QQCircleBase.UserCircleInfo> c = new ArrayList();
-  private List<QQCircleBase.UserCircleInfo> d = new ArrayList();
+  private static final int jdField_a_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private static final int jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private static final int jdField_c_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final JobController jdField_a_of_type_ComTribeAsyncAsyncJobController;
+  private final LightWeightExecutor jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+  private final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new vlg("StoryBoss.NetworkExecutor", 128, jdField_c_of_type_Int, null);
+  private final Executor[] jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor = new Executor[3];
+  private long jdField_b_of_type_Long;
+  private final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new vlg("StoryBoss.CpuExecutor", 16, jdField_a_of_type_Int, null);
+  private final Executor jdField_c_of_type_JavaUtilConcurrentExecutor = new vlg("StoryBoss.FileExecutor", 64, jdField_b_of_type_Int, null);
   
-  public static vle a()
+  public vle(Context paramContext)
   {
-    if (jdField_a_of_type_Vle == null) {}
-    try
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[2] = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor = new LightWeightExecutor(vli.a().getDefaultLooper(), 100);
+    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.setMonitorListener(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(vli.a().getDefaultLooper());
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobController = new JobController(this);
+    vli.a().registerSubscriber("root_group", this.jdField_a_of_type_ComTribeAsyncAsyncJobController);
+  }
+  
+  @NonNull
+  private <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, int paramInt1, int paramInt2, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    paramJob = prepareWorker(paramJob, paramInt2, paramFutureListener, paramParams);
+    paramJob.addFutureListener(new vlf(this, paramJob));
+    if (paramInt1 == 0)
     {
-      if (jdField_a_of_type_Vle == null) {
-        jdField_a_of_type_Vle = new vle();
+      vli.a().dispatch(paramJob);
+      return paramJob;
+    }
+    vli.a().dispatchDelayed(paramJob, paramInt1);
+    return paramJob;
+  }
+  
+  public <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    paramJob = prepareWorker(paramJob, paramJob.getJobType(), paramFutureListener, paramParams);
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobController.getDefaultHandler().handleExecute(this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor, paramJob);
+    if (paramJob != null) {
+      xvv.b("StoryBoss", "work hash code:" + paramJob.hashCode());
+    }
+    return paramJob;
+  }
+  
+  public <Result> void cancelJob(Future<Result> paramFuture, boolean paramBoolean)
+  {
+    if ((paramFuture instanceof Worker)) {
+      vli.a().cancelDispatch("", (Worker)paramFuture);
+    }
+    vli.a().dispatch(new JobController.CancelCommand(paramFuture, paramBoolean));
+  }
+  
+  @NonNull
+  public Executor getExecutor(int paramInt)
+  {
+    Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    switch (paramInt)
+    {
+    default: 
+      return localExecutor;
+    case 2: 
+      return this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    case 4: 
+      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    case 8: 
+      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+  }
+  
+  @NonNull
+  public Executor[] getExecutors()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor;
+  }
+  
+  @NonNull
+  public JobController getJobController()
+  {
+    return this.jdField_a_of_type_ComTribeAsyncAsyncJobController;
+  }
+  
+  @NonNull
+  public Executor getLightWeightExecutor()
+  {
+    return this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+  }
+  
+  public void onQueueExceedLimit(String paramString, int paramInt)
+  {
+    xvv.e("StoryBoss", paramString + " onQueueExceedLimit, size = " + paramInt);
+    if (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long > 7200000L) {
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    }
+  }
+  
+  public void onWorkerExceedTime(String paramString, List<Runnable> paramList, int paramInt)
+  {
+    Iterator localIterator = paramList.iterator();
+    if (localIterator.hasNext())
+    {
+      Runnable localRunnable = (Runnable)localIterator.next();
+      paramList = localRunnable.getClass().getSimpleName();
+      if (!(localRunnable instanceof Worker)) {
+        break label116;
       }
-      return jdField_a_of_type_Vle;
+      paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
     }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if ((this.jdField_a_of_type_Boolean) && (l1 - l2 <= this.jdField_b_of_type_Long)) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static void b()
-  {
-    QLog.d("QCircleFolderCacheHelper", 1, "releaseInstance");
-    if (jdField_a_of_type_Vle != null) {
-      try
-      {
-        if (jdField_a_of_type_Vle != null) {
-          jdField_a_of_type_Vle = null;
-        }
-        return;
+    label116:
+    for (;;)
+    {
+      xvv.e("StoryBoss", paramString + " onWorkerExceedTime, runnable = " + paramList);
+      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= 7200000L) {
+        break;
       }
-      finally {}
-    }
-  }
-  
-  private void c()
-  {
-    QLog.d("QCircleFolderCacheHelper", 1, "clearTabCache");
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.c.clear();
-    this.d.clear();
-  }
-  
-  private void d()
-  {
-    QLog.d("QCircleFolderCacheHelper", 1, "clearPageCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a()
-  {
-    c();
-    d();
-  }
-  
-  public void a(int paramInt, vxm paramvxm)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "saveTabInfoCache() disable tab info cache,direct return!");
-      return;
-    }
-    c();
-    this.jdField_a_of_type_Int = paramInt;
-    if ((paramvxm != null) && (!paramvxm.a().isEmpty()))
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramvxm.a());
-      this.jdField_b_of_type_JavaUtilList.addAll(paramvxm.b());
-      this.c.addAll(paramvxm.c());
-      this.d.addAll(paramvxm.d());
-    }
-    int i;
-    label120:
-    StringBuilder localStringBuilder;
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      i = 1;
-      if (i == 0) {
-        break label171;
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localStringBuilder = new StringBuilder().append("saveTabInfoCache ");
-      if (i == 0) {
-        break label179;
-      }
-    }
-    label171:
-    label179:
-    for (paramvxm = "success";; paramvxm = "fail")
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, paramvxm + ",currentShowTabType:" + paramInt);
-      return;
-      i = 0;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
       break;
-      this.jdField_a_of_type_Long = 0L;
-      break label120;
-    }
-  }
-  
-  public void a(vwy paramvwy, int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "savePageCache fail,disable page cache,direct return!");
       return;
     }
-    QLog.d("QCircleFolderCacheHelper", 1, "savePageCache,pos:" + paramInt1 + ",top:" + paramInt2);
-    int j = 0;
-    int i = j;
-    if (paramvwy != null)
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob)
+  {
+    return a(paramJob, null, null);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob, @Nullable Params paramParams)
+  {
+    return a(paramJob, null, paramParams);
+  }
+  
+  public void postLightWeightJob(Runnable paramRunnable, int paramInt)
+  {
+    if (paramInt == 0)
     {
-      paramvwy = vlf.a(paramvwy, paramInt1, paramInt2);
-      i = j;
-      if (paramvwy != null)
-      {
-        String str = vlf.a(paramvwy).tabName.get();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramvwy);
-        QLog.d("QCircleFolderCacheHelper", 1, "savePageCache success！tapid:" + str);
-        i = 1;
-      }
-    }
-    if (i != 0)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.execute(paramRunnable);
       return;
     }
-    QLog.d("QCircleFolderCacheHelper", 1, "savePageCache failed!");
-    this.jdField_a_of_type_Long = 0L;
-    d();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramInt);
   }
   
-  public boolean a(vwy paramvwy)
+  @NonNull
+  public <Params, Progress, Result> Worker<Progress, Result> prepareWorker(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    QLog.d("QCircleFolderCacheHelper", 1, "readPageCache");
-    if (a())
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "readPageCache fail,checkCacheAlive cache not alive");
-      a();
-      return false;
+    yos.a(paramJob);
+    paramJob.setJobType(paramInt);
+    paramJob.setParams(paramParams);
+    paramParams = new Worker(paramJob);
+    if (paramFutureListener != null) {
+      paramParams.addFutureListener(paramFutureListener);
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "readPageCache fail,page cache is null");
-      a();
-      return false;
-    }
-    if (paramvwy != null)
-    {
-      Object localObject = paramvwy.a();
-      if (localObject != null)
-      {
-        localObject = ((QQCircleFeedBase.StTabInfo)localObject).tabName.get();
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject))
-        {
-          vlf localvlf = (vlf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-          if (localvlf != null)
-          {
-            if ((vlf.a(localvlf) <= 1) && (vlf.b(localvlf) == 0))
-            {
-              QLog.d("QCircleFolderCacheHelper", 1, "readPageCache fail,user not scroll yet!Don't use cache");
-              return false;
-            }
-            paramvwy.a(vlf.a(localvlf), vlf.a(localvlf), vlf.a(localvlf), vlf.a(localvlf), vlf.b(localvlf), vlf.a(localvlf));
-            if (paramvwy.a(vlf.a(localvlf), vlf.b(localvlf)))
-            {
-              QLog.d("QCircleFolderCacheHelper", 1, "readPageCache success！tapid:" + (String)localObject + ",pos:" + vlf.a(localvlf) + ",top:" + vlf.b(localvlf));
-              return true;
-            }
-          }
-        }
-      }
-    }
-    QLog.d("QCircleFolderCacheHelper", 1, "readPageCache fail,page cache is null or init error");
-    return false;
+    paramJob.onPost();
+    return paramParams;
   }
   
-  public boolean a(vxm paramvxm)
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob)
   {
-    QLog.d("QCircleFolderCacheHelper", 1, "readTabInfoCache");
-    if (a())
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "readTabInfoCache fail,checkCacheAlive cache not alive");
-      a();
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "readTabInfoCache fail,tabInfo cache is null");
-      a();
-      return false;
-    }
-    if (paramvxm != null)
-    {
-      paramvxm.a(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.c, this.d);
-      if (paramvxm.a(this.jdField_a_of_type_Int))
-      {
-        QLog.d("QCircleFolderCacheHelper", 1, "readTabInfoCache success");
-        return true;
-      }
-    }
-    QLog.d("QCircleFolderCacheHelper", 1, "readTabInfoCache fail,model is null or init error");
-    return false;
+    return a(paramJob, 0, paramJob.getJobType(), null, null);
   }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob, @Nullable Params paramParams)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), null, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), null, null);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), null, paramParams);
+  }
+  
+  public void shutdown() {}
 }
 
 

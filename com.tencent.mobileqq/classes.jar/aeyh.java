@@ -1,39 +1,49 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
-
 public class aeyh
-  implements View.OnLongClickListener
 {
-  public aeyh(MainFragment paramMainFragment) {}
+  public int a;
+  bfts jdField_a_of_type_Bfts;
+  volatile boolean jdField_a_of_type_Boolean;
   
-  public boolean onLongClick(View paramView)
+  public aeyh(bfts parambfts, int paramInt)
   {
-    if (this.a.a() == MainFragment.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
-      }
-      long l = SystemClock.uptimeMillis() - MainFragment.a(this.a);
-      if ((MainFragment.a(this.a) > 0L) && (l < 1000L))
-      {
-        QLog.d("MainFragment", 1, "Mainfragment onLongClick interval = [" + l + "], not start multi aio");
-        return false;
-      }
-      paramView = (Conversation)this.a.a(Conversation.class);
-      if (paramView != null)
-      {
-        paramView = paramView.a().a();
-        if (paramView != null) {
-          axky.a(this.a.getActivity(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
-        }
-      }
+    this(parambfts, paramInt, false);
+  }
+  
+  public aeyh(bfts parambfts, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bfts = parambfts;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bfts a()
+  {
+    return this.jdField_a_of_type_Bfts;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = false;
     }
-    return true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(aeyh paramaeyh)
+  {
+    if ((paramaeyh == null) || (this.jdField_a_of_type_Bfts == null)) {
+      return false;
+    }
+    return this.jdField_a_of_type_Bfts.equals(paramaeyh.jdField_a_of_type_Bfts);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import aumo;
-import aumu;
+import asyy;
+import asze;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,17 +15,17 @@ public class FMSettings$2
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.this$0.a.keySet().iterator();
     Object localObject;
-    for (long l = 0L; localIterator.hasNext(); l = aumo.a(this.this$0, (String)localObject, localArrayList) + l)
+    for (long l = 0L; localIterator.hasNext(); l = asyy.a(this.this$0, (String)localObject, localArrayList) + l)
     {
       localObject = (String)localIterator.next();
-      localObject = (aumu)this.this$0.a.get(localObject);
-      localObject = aumo.c(this.this$0, ((aumu)localObject).b + ((aumu)localObject).c);
+      localObject = (asze)this.this$0.a.get(localObject);
+      localObject = asyy.c(this.this$0, ((asze)localObject).b + ((asze)localObject).c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.FMSettings.2
  * JD-Core Version:    0.7.0.1
  */

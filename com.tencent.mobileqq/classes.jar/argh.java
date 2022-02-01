@@ -1,103 +1,176 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.List;
 
 public class argh
-  extends arac<argf>
+  extends BaseAdapter
+  implements URLDrawableDownListener
 {
-  public static argf b(int paramInt)
+  protected Context a;
+  protected Handler a;
+  protected argg a;
+  public List<argg> a;
+  
+  public argh(Context paramContext, Handler paramHandler, argg paramargg)
   {
-    argf localargf = (argf)aran.a().a(paramInt);
-    if (localargf != null) {
-      return localargf;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Argg = paramargg;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    float f1 = paramInt1 / i;
+    float f2 = paramInt2 / j;
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(f1, f2);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+  }
+  
+  public int a(argg paramargg)
+  {
+    return paramargg.a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public argg a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (argg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return new argf();
+    return this.jdField_a_of_type_Argg;
   }
   
-  @NonNull
-  public argf a(int paramInt)
+  public Long a(int paramInt)
   {
-    return new argf();
+    return Long.valueOf(a(paramInt).a());
   }
   
-  @Nullable
-  public argf a(araj[] paramArrayOfaraj)
+  public List<argg> a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaraj != null)
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(List<argg> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt).a(this.jdField_a_of_type_Argg);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 1;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaraj.length > 0)
+      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
+      Object localObject;
+      Drawable localDrawable;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        localObject1 = paramArrayOfaraj[0].a;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label125;
+        localObject = (argg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localDrawable = ((argg)localObject).a(this.jdField_a_of_type_AndroidContentContext);
+        if ((((argg)localObject).a()) || (!((argg)localObject).b())) {
+          break label221;
         }
-        QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] type=" + type() + ", content = " + (String)localObject1);
+        ((URLImageView)paramView).setURLDrawableDownListener(this);
+        label110:
+        if ((!(localDrawable instanceof avks)) || (((avks)localDrawable).a() == null)) {
+          break label232;
+        }
+        int i = AIOUtils.dp2px(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localObject = a(((avks)localDrawable).a(), i, i);
+        ((ImageView)paramView).setImageBitmap((Bitmap)localObject);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localObject = this.jdField_a_of_type_Argg;
+        break;
+        label221:
+        ((URLImageView)paramView).setURLDrawableDownListener(null);
+        break label110;
+        label232:
+        ((ImageView)paramView).setImageDrawable(localDrawable);
       }
     }
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
     try
     {
-      paramArrayOfaraj = (argg)arax.a(localObject1, argg.class);
-      localObject1 = new argf((String)localObject1, paramArrayOfaraj);
-      return localObject1;
+      File localFile = paramURLDrawable.getFileInLocal();
+      if (localFile == null) {
+        break label74;
+      }
+      i = bfvo.c(localFile.getAbsolutePath());
     }
-    catch (QStorageInstantiateException paramArrayOfaraj)
+    catch (Exception localException)
     {
       for (;;)
       {
-        QLog.i("OpenSdkSwitchProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfaraj);
-        paramArrayOfaraj = null;
+        localException.printStackTrace();
+        label74:
+        int i = 0;
       }
     }
-    label125:
-    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + type());
-    return null;
-  }
-  
-  public void a(argf paramargf)
-  {
-    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onUpdate] type=" + type() + ", content = " + paramargf.a());
-  }
-  
-  public Class<argf> clazz()
-  {
-    return argf.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 467;
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
+    }
+    AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argh
  * JD-Core Version:    0.7.0.1
  */

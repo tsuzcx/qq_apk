@@ -1,13 +1,16 @@
-import android.graphics.drawable.AnimationDrawable;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.graphics.RectF;
 
-public class bnqx
+public abstract interface bnqx
 {
-  public QzoneZipCacheHelperCallBack mCallBack;
+  public abstract void a(int paramInt);
   
-  public void onLoadedFailed() {}
+  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
   
-  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
+  public abstract void a(int paramInt, RectF paramRectF);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

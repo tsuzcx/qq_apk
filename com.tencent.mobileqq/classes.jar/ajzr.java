@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
 
-final class ajzr
-  implements ValueAnimator.AnimatorUpdateListener
+class ajzr
+  implements nmh
 {
-  ajzr(ProgressBar paramProgressBar) {}
+  ajzr(ajzq paramajzq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (this.a != null) {
-      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if (paramBoolean)
+    {
+      WordChainHbFragment.a(this.a.a, 8);
+      return;
     }
+    WordChainHbFragment.a(this.a.a, 0);
   }
 }
 

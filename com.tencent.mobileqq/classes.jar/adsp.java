@@ -1,34 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adsp
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public adsp(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public adsp(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    try
     {
+      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+      if (this.jdField_a_of_type_Boolean != bool) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      }
+      label39:
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
     }
-    do
+    catch (Exception paramDialogInterface)
     {
-      return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    return false;
+      break label39;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsp
  * JD-Core Version:    0.7.0.1
  */

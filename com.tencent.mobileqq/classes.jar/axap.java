@@ -1,60 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axap
+class axap
+  implements View.OnClickListener
 {
-  private static axap a;
+  axap(awzr paramawzr) {}
   
-  public static axap a()
+  public void onClick(View paramView)
   {
-    if (a == null) {
-      a = new axap();
-    }
-    return a;
-  }
-  
-  public static void a()
-  {
-    if (a != null) {
-      a = null;
-    }
-  }
-  
-  public void a(EntityManager paramEntityManager, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
-  }
-  
-  public void a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-    localTroopRemindSettingData.troopUin = paramString;
-    localTroopRemindSettingData.isOpenState = 1;
-    paramQQAppInterface.persistOrReplace(localTroopRemindSettingData);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
-  }
-  
-  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramString = (TroopRemindSettingData)paramQQAppInterface.a().createEntityManager().find(TroopRemindSettingData.class, paramString);
-    return (paramString != null) && (paramString.isOpenState == 0);
-  }
-  
-  public void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
+    awzr.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import adla;
+import achu;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -11,11 +11,11 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.Pair;
-import bdmc;
-import bhje;
-import bhlo;
+import bfsn;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -28,39 +28,40 @@ import java.util.regex.Pattern;
 class MemoryManager$AlertMemoryRunner
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int actionType;
+  private QQAppInterface app;
+  private Context context;
+  boolean isNeedSend;
   
   public MemoryManager$AlertMemoryRunner(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    if (MemoryManager.a() == null)
+    this.app = paramQQAppInterface;
+    this.context = paramContext;
+    this.actionType = paramInt;
+    if (MemoryManager.access$000() == null)
     {
-      MemoryManager.a(new ArrayList());
-      MemoryManager.a().add("com.android.browser");
-      MemoryManager.a().add("com.android.email");
-      MemoryManager.a().add("com.sec.android.app.readershub");
+      MemoryManager.access$002(new ArrayList());
+      MemoryManager.access$000().add("com.android.browser");
+      MemoryManager.access$000().add("com.android.email");
+      MemoryManager.access$000().add("com.sec.android.app.readershub");
     }
-    if (MemoryManager.b() == null)
+    if (MemoryManager.access$100() == null)
     {
-      MemoryManager.b(new ArrayList());
+      MemoryManager.access$102(new ArrayList());
       paramQQAppInterface = Pattern.compile("^com.*.android.*");
-      MemoryManager.b().add(paramQQAppInterface);
+      MemoryManager.access$100().add(paramQQAppInterface);
     }
-    if (MemoryManager.c() == null)
+    if (MemoryManager.access$200() == null)
     {
-      MemoryManager.c(new ArrayList());
-      MemoryManager.c().add("system");
-      MemoryManager.c().add("com.android.");
-      MemoryManager.c().add("com.google.process.");
-      MemoryManager.c().add("android.process.");
+      MemoryManager.access$202(new ArrayList());
+      MemoryManager.access$200().add("system");
+      MemoryManager.access$200().add("com.android.");
+      MemoryManager.access$200().add("com.google.process.");
+      MemoryManager.access$200().add("android.process.");
     }
   }
   
-  private boolean a(String paramString)
+  private boolean isSystemApplication(String paramString)
   {
     boolean bool2 = false;
     boolean bool1;
@@ -72,20 +73,20 @@ class MemoryManager$AlertMemoryRunner
     int i = 0;
     for (;;)
     {
-      if (i >= MemoryManager.a().size()) {
+      if (i >= MemoryManager.access$000().size()) {
         break label56;
       }
       bool1 = bool2;
-      if (paramString.equals(MemoryManager.a().get(i))) {
+      if (paramString.equals(MemoryManager.access$000().get(i))) {
         break;
       }
       i += 1;
     }
     label56:
     i = 0;
-    while (i < MemoryManager.b().size())
+    while (i < MemoryManager.access$100().size())
     {
-      if (((Pattern)MemoryManager.b().get(i)).matcher(paramString).find()) {
+      if (((Pattern)MemoryManager.access$100().get(i)).matcher(paramString).find()) {
         return true;
       }
       i += 1;
@@ -94,10 +95,10 @@ class MemoryManager$AlertMemoryRunner
     for (;;)
     {
       bool1 = bool2;
-      if (i >= MemoryManager.c().size()) {
+      if (i >= MemoryManager.access$200().size()) {
         break;
       }
-      if (paramString.startsWith((String)MemoryManager.c().get(i))) {
+      if (paramString.startsWith((String)MemoryManager.access$200().get(i))) {
         return true;
       }
       i += 1;
@@ -112,11 +113,11 @@ class MemoryManager$AlertMemoryRunner
       long l3;
       try
       {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l;
+        boolean bool = this.app.isReleased;
         if (bool) {
           return;
         }
-        int i = this.jdField_a_of_type_Int;
+        int i = this.actionType;
         switch (i)
         {
         default: 
@@ -129,11 +130,11 @@ class MemoryManager$AlertMemoryRunner
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.e("Q.Memory.MemoryManager", 2, "AlertMemoryRunner exception, actionType=" + this.jdField_a_of_type_Int, localThrowable);
+        QLog.e("Q.Memory.MemoryManager", 2, "AlertMemoryRunner exception, actionType=" + this.actionType, localThrowable);
         localThrowable.printStackTrace();
         return;
-        l1 = bhlo.e();
-        l2 = bhlo.d();
+        l1 = DeviceInfoUtil.getSystemAvaialbeMemory();
+        l2 = DeviceInfoUtil.getSystemTotalMemory();
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -143,7 +144,7 @@ class MemoryManager$AlertMemoryRunner
           continue;
         }
         return;
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("MemoryManagerMemoryStat", 0);
+        Object localObject1 = this.app.getApp().getSharedPreferences("MemoryManagerMemoryStat", 0);
         l4 = ((SharedPreferences)localObject1).getLong("lastClearTime", 0L);
         long l5 = System.currentTimeMillis();
         if (l5 >= l4) {
@@ -153,57 +154,57 @@ class MemoryManager$AlertMemoryRunner
         ((SharedPreferences.Editor)localObject1).putLong("lastClearTime", l5);
         ((SharedPreferences.Editor)localObject1).commit();
         return;
-        MemoryManager.a().a(l3, l1);
+        MemoryManager.getInstance().reportLow(l3, l1);
         l4 = l5 - l4;
         l5 = MagnifierSDK.a().a().jdField_a_of_type_Long;
         if (l4 >= l5) {
           continue;
         }
         return;
-        MemoryManager.a().b(l3, l1);
+        MemoryManager.getInstance().reportClear(l3, l1);
         localObject4 = new ArrayList();
-        Iterator localIterator = ((ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+        Iterator localIterator = ((ActivityManager)this.context.getSystemService("activity")).getRunningAppProcesses().iterator();
         if (!localIterator.hasNext()) {
-          break label646;
+          break label647;
         }
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
         String str = localRunningAppProcessInfo.processName;
-        if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0))) || (a(str))) {
+        if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0))) || (isSystemApplication(str))) {
           continue;
         }
-        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(bhlo.a(localRunningAppProcessInfo.pid))));
+        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(DeviceInfoUtil.getApplicationMemory(localRunningAppProcessInfo.pid))));
         continue;
       }
       finally
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
+        this.app = null;
+        this.context = null;
       }
-      long l1 = bhlo.e();
-      long l2 = bhlo.d();
+      long l1 = DeviceInfoUtil.getSystemAvaialbeMemory();
+      long l2 = DeviceInfoUtil.getSystemTotalMemory();
       if (QLog.isColorLevel()) {
         QLog.d("Q.Memory.MemoryManager", 2, "check memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
       }
       l2 = l2 * MagnifierSDK.a().a().jdField_a_of_type_Int / 100L;
       if (l1 >= l2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
+        this.app = null;
+        this.context = null;
         return;
       }
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, NotificationActivity.class);
+      localIntent = new Intent(this.context, NotificationActivity.class);
       localIntent.putExtra("type", 10);
       localIntent.setFlags(872415232);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.context.startActivity(localIntent);
       continue;
       long l4;
-      label646:
-      bhje.a((ArrayList)localObject4);
-      Object localObject4 = (ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity");
+      label647:
+      bfsn.a((ArrayList)localObject4);
+      Object localObject4 = (ActivityManager)this.context.getSystemService("activity");
       Object localObject3 = localObject2.edit();
       ((SharedPreferences.Editor)localObject3).putLong("lastClearTime", System.currentTimeMillis());
       ((SharedPreferences.Editor)localObject3).commit();
-      localObject3 = bdmc.a(BaseApplication.getContext());
+      localObject3 = StatisticCollector.getInstance(BaseApplication.getContext());
       localObject4 = new HashMap();
       ((HashMap)localObject4).put("osVersion", Build.VERSION.RELEASE);
       ((HashMap)localObject4).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
@@ -211,7 +212,7 @@ class MemoryManager$AlertMemoryRunner
       ((HashMap)localObject4).put("totalMemSize", String.valueOf(l2));
       ((HashMap)localObject4).put("warningMemSize", String.valueOf(l3));
       ((HashMap)localObject4).put("time", String.valueOf(l4 / 60000L));
-      ((bdmc)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
+      ((StatisticCollector)localObject3).collectPerformance("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
     }
   }
 }

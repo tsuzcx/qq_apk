@@ -1,30 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class qyx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClient$RIJServiceConnection;", "Landroid/content/ServiceConnection;", "()V", "onServiceConnected", "", "name", "Landroid/content/ComponentName;", "service", "Landroid/os/IBinder;", "onServiceDisconnected", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+final class qyx
+  implements ServiceConnection
 {
-  public String a;
-  public String b;
-  
-  public static qyx a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  public void onServiceConnected(@NotNull ComponentName paramComponentName, @NotNull IBinder paramIBinder)
   {
-    qyx localqyx = new qyx();
-    localqyx.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
-    localqyx.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
-    return localqyx;
+    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
+    Intrinsics.checkParameterIsNotNull(paramIBinder, "service");
+    qyw.a(qyw.a, qyo.a(paramIBinder));
+    QLog.d("RIJAidlClient", 1, "onServiceConnected: " + paramComponentName);
   }
   
-  public oidb_cmd0xbc9.MoreChannelItem a()
+  public void onServiceDisconnected(@NotNull ComponentName paramComponentName)
   {
-    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
-    if (!TextUtils.isEmpty(this.a))
-    {
-      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
-      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    return localMoreChannelItem;
+    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
+    qyw.a(qyw.a, (qyn)null);
+    QLog.d("RIJAidlClient", 1, "onServiceDisconnected: " + paramComponentName);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.download;
 
-import aqeg;
+import aoxr;
 
 public class ArkDownloadController$1
   implements Runnable
 {
-  public ArkDownloadController$1(aqeg paramaqeg, String paramString) {}
+  public ArkDownloadController$1(aoxr paramaoxr, String paramString) {}
   
   public void run()
   {
-    aqeg.a(this.this$0, this.a);
+    aoxr.a(this.this$0, this.a);
   }
 }
 

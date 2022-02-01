@@ -6,8 +6,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bmgk;
-import bmgt;
+import bkkq;
+import bkkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -22,18 +22,18 @@ public class QQIndividualityProxyActivity
     QQIndividualityPluginProxyService.a();
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    bmgt localbmgt = new bmgt(1);
-    localbmgt.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
-    localbmgt.d = PluginInfo.m;
-    localbmgt.jdField_a_of_type_JavaLangString = paramString1;
-    localbmgt.e = paramString2;
-    localbmgt.jdField_a_of_type_JavaLangClass = paramClass;
-    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbmgt.jdField_b_of_type_Int = paramInt;
-    localbmgt.c = 30000;
-    localbmgt.f = null;
-    localbmgt.jdField_b_of_type_Boolean = false;
-    bmgk.a(paramActivity, localbmgt);
+    bkkz localbkkz = new bkkz(1);
+    localbkkz.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
+    localbkkz.d = PluginInfo.m;
+    localbkkz.jdField_a_of_type_JavaLangString = paramString1;
+    localbkkz.e = paramString2;
+    localbkkz.jdField_a_of_type_JavaLangClass = paramClass;
+    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbkkz.jdField_b_of_type_Int = paramInt;
+    localbkkz.c = 30000;
+    localbkkz.f = null;
+    localbkkz.jdField_b_of_type_Boolean = false;
+    bkkq.a(paramActivity, localbkkz);
     if ((paramString2.equals("com.qqindividuality.activity.QQIndividualitySignatureActivity")) && ((paramActivity instanceof QQIndividualityBridgeActivity)) && (paramDialog != null)) {
       paramActivity.finish();
     }
@@ -46,8 +46,9 @@ public class QQIndividualityProxyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

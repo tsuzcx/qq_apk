@@ -1,22 +1,40 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.app.Activity;
+import android.graphics.Color;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class oqz
-  implements ViewFactory.FoundClickableViewListener
+  implements ViewBase.OnClickListener
 {
-  oqz(Container paramContainer, otd paramotd, otp paramotp) {}
+  oqz(ViewBase paramViewBase, ouc paramouc, ouo paramouo) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
-      return;
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+    paramViewBase = (ViewBase)localObject;
+    if (!(localObject instanceof oxv)) {
+      paramViewBase = null;
     }
-    SparseArray localSparseArray = new SparseArray();
-    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    opc.a.a(i, localSparseArray).a(i, localSparseArray).a(i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otd, this.jdField_a_of_type_Otp, paramViewBase);
+    paramViewBase = (oxv)paramViewBase;
+    if (paramViewBase != null)
+    {
+      paramViewBase = paramViewBase.getNativeView();
+      if (paramViewBase != null) {
+        paramViewBase.setBackgroundColor(Color.parseColor("#DBE5EF"));
+      }
+    }
+    paramViewBase = this.jdField_a_of_type_Ouc;
+    if (paramViewBase != null)
+    {
+      localObject = (Activity)this.jdField_a_of_type_Ouc.a;
+      ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+      Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
+      paramViewBase.a((Activity)localObject, localViewBase.getNativeView(), this.jdField_a_of_type_Ouo, (bjoy)new ora(this));
+    }
   }
 }
 

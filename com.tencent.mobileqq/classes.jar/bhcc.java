@@ -1,21 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
 
-class bhcc
-  implements bhcf
+public class bhcc
 {
-  bhcc(bhbx parambhbx) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      bhbx.f(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131714565), 0).a();
-  }
+  public int a;
+  public View.OnClickListener a;
+  public String a = "";
+  public int b;
 }
 
 

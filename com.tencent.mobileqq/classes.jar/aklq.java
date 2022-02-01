@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.URLThemeImageView;
 
 public class aklq
-  implements DialogInterface.OnCancelListener
+  extends akln
 {
-  public aklq(MiniMsgTabFragment paramMiniMsgTabFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    MiniMsgTabFragment.a(this.a, -1, null);
-  }
+  public View a;
+  public TextView a;
+  public DragTextView a;
+  public URLThemeImageView a;
+  public TextView b;
+  public URLThemeImageView b;
+  public TextView c;
+  public TextView d;
 }
 
 

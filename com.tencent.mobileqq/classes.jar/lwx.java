@@ -1,22 +1,18 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.av.service.RecvGVideoLevelInfo;
-import com.tencent.av.service.RecvMsg;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface lwx
-  extends IInterface
+public class lwx
+  extends amwl
 {
-  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
+  public lwx(QQServiceForAV paramQQServiceForAV) {}
   
-  public abstract void a(RecvMsg paramRecvMsg);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
+  protected void onUpdateTroopList()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface != null) {
+      new bkik(localQQAppInterface).a(new lwy(this));
+    }
+  }
 }
 
 

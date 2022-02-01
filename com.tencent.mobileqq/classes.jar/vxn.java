@@ -1,18 +1,18 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import com.tribe.async.reactive.StreamFunction;
 
 class vxn
-  implements aaav<FeedCloudRead.StGetBusiInfoRsp>
+  extends StreamFunction<vxd, vxd>
 {
-  vxn(vxm paramvxm, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  vxn(vxi paramvxi) {}
+  
+  protected void a(vxd paramvxd)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
-    this.jdField_a_of_type_Vxm.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    xvv.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramvxd.a);
+    notifyResult(paramvxd);
   }
 }
 

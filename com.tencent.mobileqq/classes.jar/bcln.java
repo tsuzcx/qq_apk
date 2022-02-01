@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bcln
-  extends bcmb
+class bcln
+  implements DialogInterface.OnClickListener
 {
-  public bcln(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
-  }
+  bcln(bclk parambclk) {}
   
-  public bcfq a(List<bcfr> paramList, String paramString)
-  {
-    return new bcfi(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

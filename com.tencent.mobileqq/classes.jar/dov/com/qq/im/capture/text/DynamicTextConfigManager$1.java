@@ -1,23 +1,23 @@
 package dov.com.qq.im.capture.text;
 
-import bpsf;
-import bpsg;
-import bpsi;
+import bmvl;
+import bmvm;
+import bmvo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 class DynamicTextConfigManager$1
   implements Runnable
 {
-  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bpsi parambpsi) {}
+  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bmvo parambmvo) {}
   
   public void run()
   {
     Iterator localIterator = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      bpsf localbpsf = (bpsf)localIterator.next();
-      DynamicTextConfigManager.a(this.this$0).a(localbpsf, this.jdField_a_of_type_Bpsi);
+      bmvl localbmvl = (bmvl)localIterator.next();
+      DynamicTextConfigManager.a(this.this$0).a(localbmvl, this.jdField_a_of_type_Bmvo);
     }
   }
 }

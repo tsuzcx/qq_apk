@@ -1,22 +1,25 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-class mdq
-  implements ViewTreeObserver.OnPreDrawListener
+public class mdq
+  implements View.OnTouchListener
 {
-  mdq(mdp parammdp, TextView paramTextView) {}
+  public mdq(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public boolean onPreDraw()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_Mdp.a.a().a().av = true;
-    mvd.a(this.jdField_a_of_type_Mdp.a);
-    QLog.d("qav_face_guide", 1, "onPreDraw");
-    return false;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

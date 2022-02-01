@@ -27,6 +27,7 @@ public class QUAUtil
   private static volatile String mWebViewUA = "";
   private static volatile String requestUA;
   private static String[] sLoginTypeList = { "anonymous", "wechat", "qq", "qqwtlogin", "other" };
+  private static volatile String sSimpleDeviceInfo;
   private static volatile String systemUA;
   
   public static String getApplicationName(Context paramContext)
@@ -62,12 +63,12 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.7.0";
+    return "1.8.0";
   }
   
   public static String getQUA()
   {
-    return "V1_AND_MINISDK_1.7.0_0_RELEASE_B";
+    return "V1_AND_MINISDK_1.8.0_0_RELEASE_B";
   }
   
   public static String getRequestUA()
@@ -80,6 +81,9 @@ public class QUAUtil
   
   public static String getSimpleDeviceInfo(Context paramContext)
   {
+    if (!TextUtils.isEmpty(sSimpleDeviceInfo)) {
+      return sSimpleDeviceInfo;
+    }
     if (paramContext == null) {
       return "";
     }
@@ -97,7 +101,8 @@ public class QUAUtil
     ((StringBuilder)localObject).append("cf=").append(DeviceUtil.getCpuFrequency()).append('&');
     ((StringBuilder)localObject).append("cc=").append(DeviceUtil.getCpuNumber()).append('&');
     ((StringBuilder)localObject).append("qqversion=").append(localMiniAppProxy.getAppVersion());
-    return ((StringBuilder)localObject).toString();
+    sSimpleDeviceInfo = ((StringBuilder)localObject).toString();
+    return sSimpleDeviceInfo;
   }
   
   public static String getSystemUA()

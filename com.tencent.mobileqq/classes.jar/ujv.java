@@ -1,33 +1,11 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
 
-class ujv
-  extends ujw
+public class ujv
+  implements bfqf
 {
-  ujv(uju paramuju) {}
-  
-  public void hide()
+  public void onInfo(long paramLong, double paramDouble)
   {
-    super.hide();
-    if (uju.a(this.a) != null)
-    {
-      uju.a(this.a).setVisibility(4);
-      uju.a(this.a, 0);
-    }
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    super.updateUnreadCount(paramInt, paramBoolean);
-    if (paramInt == 0) {
-      uju.a(this.a, 0);
-    }
-    while ((paramInt <= uju.a(this.a)) || (uju.a(this.a) == null)) {
-      return;
-    }
-    if (uju.a(this.a)) {
-      uju.a(this.a).setVisibility(0);
-    }
-    uju.a(this.a, paramInt);
+    WSHomeFragment.a(this.a, paramDouble);
   }
 }
 

@@ -1,23 +1,22 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
-class avxo
-  implements EIPCResultCallback
+public class avxo
+  extends AnimatorListenerAdapter
 {
-  avxo(avxn paramavxn) {}
+  public avxo(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    avxn.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      avxn.a(this.a).a(2, paramEIPCResult.data);
-      return;
-    }
-    avxn.a(this.a).a(1, paramEIPCResult.data);
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.e(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.e(this.a);
   }
 }
 

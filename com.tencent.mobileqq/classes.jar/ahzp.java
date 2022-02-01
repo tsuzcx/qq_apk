@@ -1,14 +1,6 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class ahzp
-  implements ahyf
+public abstract interface ahzp
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.f(paramahfq, paramString);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

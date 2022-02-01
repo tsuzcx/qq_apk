@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.upgrade;
 
+import ampt;
 import android.text.TextUtils;
-import anvl;
-import bcrg;
-import bhdl;
-import bhdu;
-import bhea;
+import bbko;
+import bfmx;
+import bfng;
+import bfnm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -16,11 +16,11 @@ import protocol.KQQConfig.UpgradeInfo;
 public class UpgradeController$1
   implements Runnable
 {
-  public UpgradeController$1(bhdu parambhdu, boolean paramBoolean) {}
+  public UpgradeController$1(bfng parambfng, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((bhdu.a(this.this$0) == null) || (bhdu.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (bhdu.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {}
+    if ((bfng.a(this.this$0) == null) || (bfng.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (bfng.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {}
     Object localObject;
     do
     {
@@ -37,35 +37,35 @@ public class UpgradeController$1
                 do
                 {
                   return;
-                  if (!bhdu.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e.equals("1")) {
+                  if (!bfng.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e.equals("1")) {
                     break;
                   }
                 } while (!QLog.isColorLevel());
                 QLog.d("UpgradeController", 2, "showUpgradeTip config do not allow to tip");
                 return;
-                if (bcrg.a() >= bhdu.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.b / 1000L) {
+                if (bbko.a() >= bfng.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.b / 1000L) {
                   break;
                 }
               } while (!QLog.isColorLevel());
               QLog.d("UpgradeController", 2, "showUpgradeTip want to tip but is not time to show");
               return;
-              localObject = (QQAppInterface)bhdu.a(this.this$0).getRuntime();
+              localObject = (QQAppInterface)bfng.a(this.this$0).getRuntime();
             } while (localObject == null);
             if ((this.this$0.a() != 4) || (!this.this$0.b())) {
               break;
             }
-          } while ((bhdu.a(this.this$0) == null) || (TextUtils.isEmpty(bhdu.a(this.this$0).l)));
-          bhdu.a(this.this$0, true);
-          localObject = new File(bhdu.a(this.this$0).l);
+          } while ((bfng.a(this.this$0) == null) || (TextUtils.isEmpty(bfng.a(this.this$0).l)));
+          bfng.a(this.this$0, true);
+          localObject = new File(bfng.a(this.this$0).l);
         } while (!((File)localObject).exists());
         ((File)localObject).delete();
       } while (!QLog.isColorLevel());
       QLog.d("UpgradeController", 2, "showUpgradeTip the jacked apk has been removed.");
       return;
-      bhea.a((QQAppInterface)localObject);
-      if (!anvl.b((QQAppInterface)localObject))
+      bfnm.a((QQAppInterface)localObject);
+      if (!ampt.b((QQAppInterface)localObject))
       {
-        bool = bhdu.a(this.this$0, (QQAppInterface)localObject);
+        bool = bfng.a(this.this$0, (QQAppInterface)localObject);
         if (QLog.isColorLevel()) {
           QLog.d("UpgradeController", 2, String.format("showUpgradeTip not wifi download needDialog=%s showDialog=%s", new Object[] { Boolean.valueOf(this.a), Boolean.valueOf(bool) }));
         }
@@ -77,8 +77,8 @@ public class UpgradeController$1
         this.this$0.a((QQAppInterface)localObject);
         return;
       }
-    } while ((bhdu.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (bhdu.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType != 1));
-    boolean bool = bhdu.a(this.this$0, (QQAppInterface)localObject);
+    } while ((bfng.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (bfng.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType != 1));
+    boolean bool = bfng.a(this.this$0, (QQAppInterface)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeController", 2, String.format("showUpgradeTip wifi download showDialog=%s", new Object[] { Boolean.valueOf(bool) }));
     }

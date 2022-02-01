@@ -1,43 +1,36 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.List;
 
 public class xca
+  extends JobSegment<List<Bitmap>, Bitmap>
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
   
-  public xca()
+  public xca(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean equals(Object paramObject)
+  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
   {
-    if (this == paramObject) {}
-    do
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (xca)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
+      return;
     }
-    return 0;
+    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
+    paramList = bfrl.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
+    xcb.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
+    notifyResult(paramList);
   }
 }
 

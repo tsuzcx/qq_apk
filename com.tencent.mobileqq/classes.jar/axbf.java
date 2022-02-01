@@ -1,26 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import java.util.Calendar;
 
-public class axbf
-  implements ValueAnimator.AnimatorUpdateListener
+class axbf
+  implements apri
 {
-  public axbf(MedalGuideView paramMedalGuideView) {}
+  axbf(axax paramaxax) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    MedalGuideView.a(this.a, f);
-    if (this.a.a != null)
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      this.a.a.a(f);
-      if (f <= 0.05F) {
-        this.a.a.b();
-      }
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
     }
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + amtj.a(2131706373);
+    case 1: 
+      return paramInt2 + 1 + amtj.a(2131706476);
     }
+    return paramInt2 + 1 + amtj.a(2131706458);
   }
 }
 

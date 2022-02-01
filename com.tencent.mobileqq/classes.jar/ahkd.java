@@ -1,17 +1,27 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 class ahkd
-  extends ahkx
+  extends ogc
 {
-  ahkd(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahkd(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    return new ahab(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((paramBoolean) && (ahiu.a(this.a).getVisibility() != 0))
+    {
+      if (maq.a().a(this.a.app.getCurrentAccountUin()))
+      {
+        ahiu.b(this.a).setVisibility(0);
+        ahiu.c(this.a).setOnClickListener(this.a);
+        this.a.mCustomTitleView.setRight2Icon(2130846999, 2130847000);
+      }
+    }
+    else {
+      return;
+    }
+    ahiu.d(this.a).setVisibility(8);
   }
 }
 

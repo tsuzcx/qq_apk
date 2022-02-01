@@ -5,13 +5,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import androidx.annotation.UiThread;
-import bhkv;
-import bkdz;
+import bfuc;
+import bijk;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -23,24 +24,24 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import ocd;
+import odq;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oyu;
-import ozs;
-import ppu;
-import pql;
-import qno;
-import qxt;
-import rlc;
-import sel;
+import paa;
+import pay;
+import pgb;
+import pvc;
+import pwf;
+import qtr;
+import rer;
+import rsc;
 import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
-import ubg;
+import uhv;
 
 public class NativeAvatarView
   extends RingAvatarView
-  implements IView, pql
+  implements IView, pwf
 {
   public static final String TAG = "NativeAvatarView";
   private ReadInJoyHeadImageView avatar;
@@ -55,7 +56,7 @@ public class NativeAvatarView
   private NativeReadInjoyImageView liveStatus;
   private Drawable liveStatusPlaceHolder = new ColorDrawable(0);
   private String liveStatusUrl;
-  private qno mCtxt = new qno();
+  private qtr mCtxt = new qtr();
   private long refreshMinInterval = 1000L;
   private long uin;
   private ReadInJoyUserInfo userInfo;
@@ -66,6 +67,17 @@ public class NativeAvatarView
     initView(paramContext);
   }
   
+  public NativeAvatarView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    initView(paramContext);
+  }
+  
+  private boolean canRefreshInTimeLimit()
+  {
+    return System.currentTimeMillis() - this.lastRefreshTime > this.refreshMinInterval;
+  }
+  
   private void doReport(String paramString)
   {
     Object localObject2 = this.mCtxt.a.a();
@@ -73,30 +85,30 @@ public class NativeAvatarView
       return;
     }
     Object localObject1 = "1";
-    if (sel.g((BaseArticleInfo)localObject2))
+    if (pgb.g((BaseArticleInfo)localObject2))
     {
       localObject1 = "3";
-      String str = ozs.a((String)localObject1, (ArticleInfo)localObject2, this.uin);
-      if (!ubg.a(((ArticleInfo)localObject2).mChannelID)) {
+      String str = pay.a((String)localObject1, (ArticleInfo)localObject2, this.uin);
+      if (!uhv.a(((ArticleInfo)localObject2).mChannelID)) {
         break label213;
       }
       localObject1 = "0X800935C";
       label55:
-      ocd.a(null, String.valueOf(this.uin), (String)localObject1, (String)localObject1, 0, 0, String.valueOf(((ArticleInfo)localObject2).mFeedId), String.valueOf(((ArticleInfo)localObject2).mArticleID), "" + ((ArticleInfo)localObject2).mStrategyId, str, false);
+      odq.a(null, String.valueOf(this.uin), (String)localObject1, (String)localObject1, 0, 0, String.valueOf(((ArticleInfo)localObject2).mFeedId), String.valueOf(((ArticleInfo)localObject2).mArticleID), "" + ((ArticleInfo)localObject2).mStrategyId, str, false);
     }
     for (;;)
     {
       try
       {
-        localObject1 = ozs.a();
+        localObject1 = pay.a();
         ((JSONObject)localObject1).put("feeds_source", paramString);
-        ((JSONObject)localObject1).put("kandian_mode", ozs.e());
-        localObject2 = ozs.e(this.mCtxt.a.a());
-        if (!ubg.a(this.mCtxt.a.e())) {
+        ((JSONObject)localObject1).put("kandian_mode", pay.e());
+        localObject2 = pay.e(this.mCtxt.a.a());
+        if (!uhv.a(this.mCtxt.a.e())) {
           break label219;
         }
         paramString = "0X8009357";
-        ocd.a(null, "CliOper", "", "", paramString, paramString, 0, 0, (String)localObject2, "", "", ((JSONObject)localObject1).toString(), false);
+        odq.a(null, "CliOper", "", "", paramString, paramString, 0, 0, (String)localObject2, "", "", ((JSONObject)localObject1).toString(), false);
         return;
       }
       catch (JSONException paramString)
@@ -104,7 +116,7 @@ public class NativeAvatarView
         paramString.printStackTrace();
         return;
       }
-      if (!sel.a((ArticleInfo)localObject2)) {
+      if (!pgb.a((ArticleInfo)localObject2)) {
         break;
       }
       localObject1 = "4";
@@ -128,22 +140,22 @@ public class NativeAvatarView
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560079, this);
-    this.background = ((ImageView)paramContext.findViewById(2131363243));
-    this.background.setImageResource(2130849477);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560085, this);
+    this.background = ((ImageView)paramContext.findViewById(2131363274));
+    this.background.setImageResource(2130849389);
     this.background.setScaleType(ImageView.ScaleType.FIT_CENTER);
     this.background.setVisibility(8);
-    this.liveRing = ((NativeReadInjoyImageView)paramContext.findViewById(2131376710));
+    this.liveRing = ((NativeReadInjoyImageView)paramContext.findViewById(2131376479));
     this.liveRing.setScaleType(ImageView.ScaleType.FIT_CENTER);
     this.liveRing.setImagePlaceHolder(this.liveRingPlaceHolder);
     this.liveRing.setVisibility(8);
-    this.avatar = ((ReadInJoyHeadImageView)paramContext.findViewById(2131363109));
+    this.avatar = ((ReadInJoyHeadImageView)paramContext.findViewById(2131363126));
     this.avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.iconV = ((NativeReadInjoyImageView)paramContext.findViewById(2131368263));
-    this.iconV.setImageResource(2130842847);
+    this.iconV = ((NativeReadInjoyImageView)paramContext.findViewById(2131368287));
+    this.iconV.setImageResource(2130842901);
     this.iconV.setVisibility(8);
     this.iconV.setImagePlaceHolder(this.iconVPlaceHolder);
-    this.liveStatus = ((NativeReadInjoyImageView)paramContext.findViewById(2131370100));
+    this.liveStatus = ((NativeReadInjoyImageView)paramContext.findViewById(2131370097));
     this.liveStatus.setImagePlaceHolder(this.liveStatusPlaceHolder);
     this.liveStatus.setVisibility(8);
     setLayerType(1, null);
@@ -225,15 +237,15 @@ public class NativeAvatarView
     this.liveStatus.setVisibility(8);
   }
   
-  public void bindStarStyle(ppu paramppu)
+  public void bindStarStyle(pvc parampvc)
   {
-    if (paramppu == null) {}
+    if (parampvc == null) {}
     do
     {
       return;
-      paramppu = paramppu.a();
-    } while ((paramppu == null) || (paramppu.mSocialFeedInfo == null) || (paramppu.mSocialFeedInfo.a == null));
-    if (paramppu.mSocialFeedInfo.a.a())
+      parampvc = parampvc.a();
+    } while ((parampvc == null) || (parampvc.mSocialFeedInfo == null) || (parampvc.mSocialFeedInfo.a == null));
+    if (parampvc.mSocialFeedInfo.a.a())
     {
       this.background.setVisibility(0);
       return;
@@ -276,20 +288,20 @@ public class NativeAvatarView
     String str;
     if ((this.mCtxt.a != null) && (this.mCtxt.a.a() != null))
     {
-      ozs.a = this.mCtxt.a.a();
+      pay.a = this.mCtxt.a.a();
       if (this.mCtxt.a.a() != 34) {
         break label119;
       }
-      str = oyu.k + bhkv.encodeToString(String.valueOf(this.uin).getBytes(), 2);
-      ozs.a(getContext(), str);
+      str = paa.k + bfuc.encodeToString(String.valueOf(this.uin).getBytes(), 2);
+      pay.a(getContext(), str);
     }
     for (;;)
     {
-      doReport(ozs.d(this.mCtxt.a.a()));
+      doReport(pay.d(this.mCtxt.a.a()));
       return;
       label119:
-      str = oyu.g + bhkv.encodeToString(String.valueOf(this.uin).getBytes(), 2);
-      ozs.a(getContext(), str);
+      str = paa.g + bfuc.encodeToString(String.valueOf(this.uin).getBytes(), 2);
+      pay.a(getContext(), str);
     }
   }
   
@@ -305,14 +317,11 @@ public class NativeAvatarView
     if (paramReadInJoyUserInfo != null) {
       this.isLive = paramReadInJoyUserInfo.isLiving();
     }
-    bkdz.a().post(new NativeAvatarView.1(this));
+    bijk.a().post(new NativeAvatarView.1(this));
   }
   
   public void refresh(boolean paramBoolean)
   {
-    if (System.currentTimeMillis() - this.lastRefreshTime <= this.refreshMinInterval) {
-      return;
-    }
     this.lastRefreshTime = System.currentTimeMillis();
     this.avatar.setHeadImgByUin(this.uin, paramBoolean, this);
   }
@@ -326,30 +335,33 @@ public class NativeAvatarView
   public void setLiveRingUrl(String paramString)
   {
     this.liveRingUrl = paramString;
-    bkdz.a().post(new NativeAvatarView.2(this));
+    bijk.a().post(new NativeAvatarView.2(this));
   }
   
   public void setLiveStatusUrl(String paramString)
   {
     this.liveStatusUrl = paramString;
-    bkdz.a().post(new NativeAvatarView.3(this));
+    bijk.a().post(new NativeAvatarView.3(this));
   }
   
-  public void setModel(ppu paramppu)
+  public void setModel(pvc parampvc)
   {
-    setModel(paramppu, true);
+    setModel(parampvc, true);
   }
   
-  public void setModel(ppu paramppu, boolean paramBoolean)
+  public void setModel(pvc parampvc, boolean paramBoolean)
   {
-    this.mCtxt.a(paramppu);
-    if (paramppu != null) {
+    this.mCtxt.a(parampvc);
+    if ((parampvc != null) && (canRefreshInTimeLimit())) {
       refresh(paramBoolean);
     }
   }
   
   public void setUin(long paramLong)
   {
+    if ((!canRefreshInTimeLimit()) && (paramLong == this.uin)) {
+      return;
+    }
     this.uin = paramLong;
     refresh(true);
   }
@@ -372,7 +384,7 @@ public class NativeAvatarView
     {
       return;
     }
-    this.iconV.setImageResource(2130842847);
+    this.iconV.setImageResource(2130842901);
     if (localArticleInfo.isAccountShown) {
       setIConVUrl(getIConVUrl(localArticleInfo));
     }
@@ -380,7 +392,7 @@ public class NativeAvatarView
     {
       bindStarStyle(this.mCtxt.a);
       label101:
-      rlc.a(this.userInfo, this.iconV);
+      rsc.a(this.userInfo, this.iconV);
       return;
       if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null)) {
         setIConVType(localArticleInfo);

@@ -1,18 +1,60 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.Comparator;
 
-public final class apli
-  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
+class apli
+  implements Comparator<ColorNote>
 {
-  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
-  {
-    return new ARScanStarFaceConfigInfo(paramParcel);
-  }
+  apli(aplh paramaplh) {}
   
-  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    return new ARScanStarFaceConfigInfo[paramInt];
+    int j = 0;
+    int k = 1;
+    boolean bool1 = aplm.c(paramColorNote1);
+    boolean bool2 = aplm.c(paramColorNote2);
+    int i;
+    if ((bool1) && (bool2)) {
+      i = aplh.a(this.a, paramColorNote1, paramColorNote2);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return i;
+          if (bool1) {
+            return -1;
+          }
+          i = k;
+        } while (bool2);
+        bool1 = aplm.b(paramColorNote1);
+        bool2 = aplm.b(paramColorNote2);
+        if ((bool1) && (bool2)) {
+          return aplh.a(this.a, paramColorNote1, paramColorNote2);
+        }
+        if (bool1) {
+          return -1;
+        }
+        i = k;
+      } while (bool2);
+      if (paramColorNote1.getServiceType() == 16973824) {}
+      for (i = 1;; i = 0)
+      {
+        if (paramColorNote2.getServiceType() == 16973824) {
+          j = 1;
+        }
+        if ((i == 0) || (j == 0)) {
+          break;
+        }
+        return aplh.a(this.a, paramColorNote1, paramColorNote2);
+      }
+      if (i != 0) {
+        return -1;
+      }
+      i = k;
+    } while (j != 0);
+    return aplh.a(this.a, paramColorNote1, paramColorNote2);
   }
 }
 

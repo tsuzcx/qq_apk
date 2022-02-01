@@ -1,24 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 
-final class bgua
-  extends ClickableSpan
+class bgua
+  implements bfzz<Integer>
 {
-  bgua(String paramString, MessageRecord paramMessageRecord) {}
+  bgua(bgtw parambgtw, View paramView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    axkb.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    if (!this.jdField_a_of_type_Bgtw.mUIStyle.mIsAnimating) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Bgtw.mUIStyle.mCurrentAlpha = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Bgtw.mUIStyle.mCurrentAlpha != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bgtw.mUIStyle.mIsAnimating = false;
   }
 }
 

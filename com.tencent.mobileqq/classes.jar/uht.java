@@ -1,80 +1,102 @@
-import UserGrowth.stFeed;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class uht
-  extends RecyclerView.Adapter<uhw>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<uhv> jdField_a_of_type_JavaUtilList;
-  private uhz jdField_a_of_type_Uhz;
+  public static String a;
+  private List<uhu> a;
   
-  public uht(Context paramContext, List<uhv> paramList, uhz paramuhz)
+  static
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Uhz = paramuhz;
+    jdField_a_of_type_JavaLangString = "ReadinjoyH5ElementManager";
   }
   
-  private void a(uhv paramuhv, int paramInt)
+  public uht()
   {
-    stFeed localstFeed;
-    HashMap localHashMap;
-    String str;
-    if (this.jdField_a_of_type_Uhz != null)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      localstFeed = this.jdField_a_of_type_Uhz.a();
-      localHashMap = new HashMap();
-      localHashMap.put("qq_group_num", paramuhv.c);
-      str = unz.a;
-      if (localstFeed == null) {
-        break label66;
+      return;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        uhu localuhu = (uhu)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localuhu != null) && (paramString.equals(localuhu.jdField_a_of_type_JavaLangString)))
+        {
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+          return;
+        }
+        i += 1;
       }
     }
-    label66:
-    for (paramuhv = localstFeed.feed;; paramuhv = null)
-    {
-      uns.a("qqgroup_add", paramInt + 1, str, localHashMap, paramuhv);
+  }
+  
+  public void a(String paramString, Rect paramRect)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (a(paramString))) {
       return;
     }
+    uhu localuhu = new uhu();
+    localuhu.jdField_a_of_type_JavaLangString = paramString;
+    localuhu.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_JavaUtilList.add(localuhu);
   }
   
-  public uhw a(ViewGroup paramViewGroup, int paramInt)
+  public boolean a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560012, paramViewGroup, false);
-    ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-    localLayoutParams.height = ((int)paramViewGroup.getContext().getResources().getDimension(2131296549));
-    localView.setLayoutParams(localLayoutParams);
-    return new uhw(localView);
+    return this.jdField_a_of_type_JavaUtilList.isEmpty();
   }
   
-  public void a(uhw paramuhw, int paramInt)
+  public boolean a(Point paramPoint)
   {
-    uhv localuhv = (uhv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    uqt.a(this.jdField_a_of_type_AndroidContentContext, paramuhw.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, localuhv.a());
-    paramuhw.jdField_a_of_type_AndroidWidgetTextView.setText(localuhv.b());
-    paramuhw.b.setOnClickListener(new uhu(this, localuhv, paramInt));
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramuhw, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "pt.x = " + paramPoint.x + "  pt.y=" + paramPoint.y);
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        uhu localuhu = (uhu)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localuhu != null) && (localuhu.jdField_a_of_type_AndroidGraphicsRect != null) && (localuhu.jdField_a_of_type_AndroidGraphicsRect.contains(paramPoint.x, paramPoint.y))) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        uhu localuhu = (uhu)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localuhu != null) && (paramString.equals(localuhu.jdField_a_of_type_JavaLangString))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

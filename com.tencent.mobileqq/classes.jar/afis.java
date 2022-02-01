@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
 
-public class afis
-  extends anuw
+class afis
+  extends aubs
 {
-  public afis(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  afis(afim paramafim) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a()
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.mTipsMgr.a(this.a.a, new Object[0]);
     }
   }
   
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void b()
   {
-    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      if (paramBoolean1) {
-        this.a.a(this.a.app.getCurrentAccountUin());
-      }
-      return;
+    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.a.a();
     }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+  }
+  
+  protected void c()
+  {
+    if ((((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
+      this.a.mTipsMgr.a();
     }
-    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

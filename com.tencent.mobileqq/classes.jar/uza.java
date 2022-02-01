@@ -1,24 +1,29 @@
-import android.os.CountDownTimer;
-import android.widget.PopupWindow;
+import UserGrowth.stSimpleMetaFeed;
 
-class uza
-  extends CountDownTimer
+final class uza
+  implements upr
 {
-  uza(uyy paramuyy, long paramLong1, long paramLong2)
+  uza(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  
+  public void a()
   {
-    super(paramLong1, paramLong2);
+    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003);
   }
   
-  public void onFinish()
+  public void b()
   {
-    if (uyy.a(this.a) != null)
-    {
-      uyy.a(this.a).dismiss();
-      uyy.a(this.a, null);
-    }
+    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000007);
   }
   
-  public void onTick(long paramLong) {}
+  public void c()
+  {
+    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004);
+  }
+  
+  public void d()
+  {
+    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002);
+  }
 }
 
 

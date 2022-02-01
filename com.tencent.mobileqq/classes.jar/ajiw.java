@@ -1,50 +1,69 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
-import com.tencent.widget.SimpleTextView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
+import com.tencent.mobileqq.data.MessageForScribble;
 
-class ajiw
-  extends blpy
+public class ajiw
+  extends agqd
 {
-  ajiw(ajis paramajis, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public ajiw(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
   
-  public View a(int paramInt, Object paramObject, blpx paramblpx, View.OnClickListener paramOnClickListener)
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf, int paramInt1, int paramInt2)
   {
-    paramblpx = super.a(paramInt, paramObject, paramblpx, paramOnClickListener);
-    if ((paramblpx instanceof SimpleTextView)) {
-      paramblpx.setTag(paramObject);
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaezf, paramInt1, paramInt2);
+    paramContext = (agql)paramaezf;
+    if (paramContext.d != null)
+    {
+      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
+        break label109;
+      }
+      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
+        break label95;
+      }
+      paramContext.d.setText(amtj.a(2131705958));
     }
-    return paramblpx;
-  }
-  
-  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
-  {
-    int i = 0;
-    if ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0)) {}
     for (;;)
     {
-      return;
-      paramInt = i;
-      if (paramArrayOfblpx.length < 0)
-      {
-        paramInt = i;
-        if (!(paramObject instanceof ConnectsExplorationBanner))
-        {
-          paramArrayOfblpx[0].b = 0;
-          paramArrayOfblpx[0].a = 0;
-          paramInt = 1;
-        }
+      if (paramContext.b != null) {
+        paramContext.b.setVisibility(8);
       }
-      while (paramInt < paramArrayOfblpx.length)
-      {
-        paramArrayOfblpx[paramInt].b = -1;
-        paramArrayOfblpx[paramInt].a = -1;
-        paramInt += 1;
+      if (paramContext.c != null) {
+        paramContext.c.setVisibility(8);
+      }
+      return;
+      label95:
+      paramContext.d.setText(paramChatMessage.msg);
+      continue;
+      label109:
+      if ((paramChatMessage instanceof MessageForScribble)) {
+        paramContext.d.setText(amtj.a(2131705957));
+      } else {
+        paramContext.d.setText(amtj.a(2131705959));
       }
     }
+  }
+  
+  public void b(View paramView)
+  {
+    super.b(paramView);
+  }
+  
+  protected boolean d()
+  {
+    return false;
   }
 }
 

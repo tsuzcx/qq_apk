@@ -1,27 +1,39 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import java.util.LinkedList;
+import java.util.List;
 
-class yfn
-  extends ParallelJobSegment<String, yfj>
+public class yfn
+  extends yfj
 {
-  public int a;
+  public Path a;
+  List<Integer> a;
+  public int b;
+  List<Integer> b;
+  public int c;
   
-  public yfn(yfh paramyfh, int paramInt)
+  public yfn(Path paramPath, int paramInt)
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_b_of_type_JavaUtilList = new LinkedList();
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public yfn(yfj paramyfj, float paramFloat)
   {
-    ygb localygb = new ygb();
-    localygb.jdField_a_of_type_JavaLangString = paramString;
-    localygb.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localygb.c = this.jdField_a_of_type_Int;
+    super(paramyfj.jdField_a_of_type_Int);
+    if ((paramyfj instanceof yfn))
+    {
+      paramyfj = (yfn)paramyfj;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramyfj.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramyfj.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = paramyfj.jdField_b_of_type_Int;
+      this.c = ((int)(paramyfj.c * paramFloat));
     }
-    wow.a().a(localygb, new yfo(this, paramJobContext, paramString));
   }
 }
 

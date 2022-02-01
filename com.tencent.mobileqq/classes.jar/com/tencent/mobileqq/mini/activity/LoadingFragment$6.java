@@ -21,7 +21,7 @@ class LoadingFragment$6
   {
     if (paramBoolean)
     {
-      paramBundle = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+      paramBundle = StorageUtil.getPreference().getString("version", "1.19.0.00043");
       if ((LoadingFragment.access$000(this.this$0) != null) && (LoadingFragment.access$000(this.this$0).config != null) && ((TextUtils.isEmpty(paramBundle)) || (BaseLibInfo.needUpdateVersion(LoadingFragment.access$000(this.this$0).config.baselibMiniVersion, paramBundle))))
       {
         AppBrandTask.runTaskOnUiThread(new LoadingFragment.6.1(this));

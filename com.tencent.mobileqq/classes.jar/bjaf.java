@@ -1,59 +1,84 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.PhotoWallView;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bjaf
-  extends anus
+class bjaf
+  extends BroadcastReceiver
 {
-  private WeakReference<PhotoWallView> a;
+  bjaf(bjae parambjae) {}
   
-  public bjaf(PhotoWallView paramPhotoWallView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new WeakReference(paramPhotoWallView);
-  }
-  
-  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
-  {
-    if (this.a != null) {}
-    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
+    if ("troop_upload".equals(paramIntent.getAction())) {
+      if (bjae.a(this.a).getAttachedActivity() == null) {
+        QMLog.e("TroopAlbumPlugin", "Failed to handle troop_upload, activity is null");
+      }
+    }
+    while (!"troop_select".equals(paramIntent.getAction()))
     {
-      if (localPhotoWallView == null) {
-        return;
-      }
-      if (paramInt != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
-        }
-        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
-      }
-      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        paramInt += 1;
-      }
-      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        bdll.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
-      }
-      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
       return;
+      paramContext = bjae.b(this.a).getAttachedActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).edit();
+      localObject = new JSONObject();
+      i = paramIntent.getIntExtra("count", 0);
+      boolean bool = paramIntent.getBooleanExtra("fail", false);
+      for (;;)
+      {
+        try
+        {
+          ((JSONObject)localObject).put("count", i);
+          ((JSONObject)localObject).put("isFail", bool);
+          if (QLog.isColorLevel()) {
+            QLog.w("TroopAlbumPlugin", 2, "troopAlbumReceiver" + i + ",isfail" + bool);
+          }
+          if (!bool) {
+            continue;
+          }
+          paramContext.putBoolean("is_exit_fail_misson", true).apply();
+        }
+        catch (JSONException paramIntent)
+        {
+          paramIntent.printStackTrace();
+          continue;
+        }
+        bjae.a(this.a, "groupAlbum_onGroupAlbumUpload", ((JSONObject)localObject).toString());
+        if (i != 0) {
+          break;
+        }
+        paramContext.putBoolean("is_exit_fail_misson", false).apply();
+        bjae.c(this.a).getAttachedActivity().unregisterReceiver(bjae.a(this.a));
+        bjae.a(this.a, null);
+        return;
+        paramContext.putBoolean("is_exit_fail_misson", false).apply();
+      }
+    }
+    QLog.w("TroopAlbumPlugin", 2, "troop_select recive");
+    paramContext = paramIntent.getStringExtra("key_selected_albuminfo.id");
+    Object localObject = paramIntent.getStringExtra("key_selected_albuminfo.name");
+    String str = paramIntent.getStringExtra("key_selected_albuminfo.cover");
+    int i = paramIntent.getIntExtra("key_selected_albuminfo.permission", 0);
+    paramIntent = new StringBuilder();
+    paramIntent.append("{albumid:\"").append(paramContext).append("\",albumname:\"").append((String)localObject).append("\",albumcover:\"").append(str).append("\",albumpermission:").append(i).append("}");
+    try
+    {
+      paramContext = new JSONObject(paramIntent.toString());
+      bjae.a(this.a).ok(paramContext);
+      bjae.d(this.a).getAttachedActivity().unregisterReceiver(bjae.a(this.a));
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
     }
   }
 }

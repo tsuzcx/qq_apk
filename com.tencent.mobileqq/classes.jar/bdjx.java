@@ -1,22 +1,14 @@
-import android.widget.ImageView;
-
-public final class bdjx
-  implements bdhm
+public abstract interface bdjx
 {
-  public bdjx(ImageView paramImageView1, ImageView paramImageView2) {}
+  public abstract void c(boolean paramBoolean);
   
-  public void a()
-  {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
-    }
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjx
  * JD-Core Version:    0.7.0.1
  */

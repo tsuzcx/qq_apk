@@ -14,8 +14,9 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
-import auwq;
+import atjj;
 import com.idlefish.flutterboost.FlutterBoost;
+import com.idlefish.flutterboost.XPlatformPlugin;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
 import com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate;
 import com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate.Host;
@@ -27,7 +28,6 @@ import io.flutter.embedding.android.FlutterView.TransparencyMode;
 import io.flutter.embedding.android.SplashScreen;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
-import io.flutter.plugin.platform.PlatformPlugin;
 import java.util.Map;
 
 public class QFlutterFragment
@@ -206,12 +206,9 @@ public class QFlutterFragment
   }
   
   @Nullable
-  public PlatformPlugin providePlatformPlugin(@Nullable Activity paramActivity, @NonNull FlutterEngine paramFlutterEngine)
+  public XPlatformPlugin providePlatformPlugin(@NonNull FlutterEngine paramFlutterEngine)
   {
-    if (paramActivity != null) {
-      return new PlatformPlugin(getActivity(), paramFlutterEngine.getPlatformChannel());
-    }
-    return null;
+    return new XPlatformPlugin(paramFlutterEngine.getPlatformChannel());
   }
   
   @Nullable
@@ -220,7 +217,7 @@ public class QFlutterFragment
     if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen != null) {
       return this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen;
     }
-    return new auwq(null);
+    return new atjj(null);
   }
   
   public boolean shouldAttachEngineToActivity()

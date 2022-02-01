@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsDelMsgRsp;
-import agci;
-import agcs;
+import aevc;
+import aevm;
 import android.os.Bundle;
 
 public class ReminderCardItemPage$2$1
   implements Runnable
 {
-  public ReminderCardItemPage$2$1(agcs paramagcs, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public ReminderCardItemPage$2$1(aevm paramaevm, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ReminderCardItemPage$2$1
       }
       localAcsDelMsgRsp = (AcsDelMsgRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
       if (localAcsDelMsgRsp == null) {
-        agci.a(ReminderCardItemPage.a(this.jdField_a_of_type_Agcs.a), -1);
+        aevc.a(ReminderCardItemPage.a(this.jdField_a_of_type_Aevm.a), -1);
       }
     }
     else
@@ -28,15 +28,15 @@ public class ReminderCardItemPage$2$1
       return;
     }
     int i = localAcsDelMsgRsp.ret_code;
-    agci.a(ReminderCardItemPage.a(this.jdField_a_of_type_Agcs.a), i);
+    aevc.a(ReminderCardItemPage.a(this.jdField_a_of_type_Aevm.a), i);
     return;
     label69:
-    agci.a(ReminderCardItemPage.a(this.jdField_a_of_type_Agcs.a), -1);
+    aevc.a(ReminderCardItemPage.a(this.jdField_a_of_type_Aevm.a), -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1
  * JD-Core Version:    0.7.0.1
  */

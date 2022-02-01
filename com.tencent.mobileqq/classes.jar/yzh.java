@@ -1,63 +1,68 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
 
-class yzh
-  extends SimpleObserver<zih>
+public class yzh
 {
-  yzh(yzg paramyzg, zih paramzih) {}
-  
-  public void a(zih paramzih)
+  public static Bitmap a(Resources paramResources, int paramInt, Integer paramInteger1, Integer paramInteger2)
   {
-    super.onNext(paramzih);
-    this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.b();
-    this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.getActivity().overridePendingTransition(0, 0);
-    this.jdField_a_of_type_Yzg.o();
-    this.jdField_a_of_type_Yzg.jdField_b_of_type_Boolean = false;
-    Iterator localIterator = this.jdField_a_of_type_Yzg.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((yxr)localIterator.next()).b(paramzih);
+    Object localObject = paramResources.getDrawable(paramInt);
+    if ((localObject instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)localObject).getBitmap();
     }
-    this.jdField_a_of_type_Yzg.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.b();
-    paramzih = (yyf)this.jdField_a_of_type_Yzg.a(yyf.class);
-    if (paramzih != null) {
-      paramzih.k();
-    }
-    if (this.jdField_a_of_type_Yzg.jdField_b_of_type_JavaUtilList.isEmpty())
+    if ((localObject instanceof GradientDrawable))
     {
-      paramzih = this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.getActivity();
-      if (paramzih != null)
+      paramResources = (GradientDrawable)localObject;
+      if (((Drawable)localObject).getIntrinsicWidth() > 0)
       {
-        ((EditWebVideoActivity)paramzih).d(anzj.a(2131702866));
-        yzg.a(this.jdField_a_of_type_Yzg, paramzih, this.jdField_a_of_type_Yzg.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a, this.jdField_a_of_type_Zih.a);
+        paramInt = ((Drawable)localObject).getIntrinsicWidth();
+        if (((Drawable)localObject).getIntrinsicHeight() <= 0) {
+          break label122;
+        }
       }
-      return;
+      label122:
+      for (int i = ((Drawable)localObject).getIntrinsicHeight();; i = paramInteger2.intValue())
+      {
+        paramInteger1 = Bitmap.createBitmap(paramInt, i, Bitmap.Config.ARGB_8888);
+        paramInteger2 = new Canvas(paramInteger1);
+        paramResources.setBounds(0, 0, paramInt, i);
+        paramResources.setStroke(1, -16777216);
+        paramResources.setFilterBitmap(true);
+        paramResources.draw(paramInteger2);
+        return paramInteger1;
+        paramInt = paramInteger1.intValue();
+        break;
+      }
     }
-    QQToast.a(this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.a(), anzj.a(2131702865), 0).a();
-    this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.getActivity().finish();
+    if ((localObject instanceof ColorDrawable))
+    {
+      paramResources = (ColorDrawable)localObject;
+      localObject = Bitmap.createBitmap(paramInteger1.intValue(), paramInteger2.intValue(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramResources.setBounds(0, 0, paramInteger1.intValue(), paramInteger2.intValue());
+      paramResources.setFilterBitmap(true);
+      paramResources.draw(localCanvas);
+      return localObject;
+    }
+    return BitmapFactory.decodeResource(paramResources, paramInt).copy(Bitmap.Config.ARGB_8888, true);
   }
   
-  public void onCancel()
+  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
   {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.jdField_a_of_type_Yzg.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
-    }
-    QQToast.a(this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.a(), anzj.a(2131702869), 0).a();
-    this.jdField_a_of_type_Yzg.jdField_a_of_type_Yze.getActivity().finish();
+    paramContext = new TextView(paramContext);
+    paramContext.setTextSize(1, paramFloat);
+    paramContext.setTextColor(Color.parseColor(paramString1));
+    paramContext.setText(paramString2);
+    return paramContext;
   }
 }
 

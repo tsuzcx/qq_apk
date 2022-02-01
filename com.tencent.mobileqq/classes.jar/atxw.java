@@ -1,163 +1,145 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.view.GameArkView;
+import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class atxw
-  extends atxd
+public class atxw
+  extends PagerAdapter
 {
-  public atxw(atwy paramatwy)
-  {
-    super(paramatwy);
-  }
+  private atxw(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  protected String a()
+  private void a(RelativeLayout paramRelativeLayout, MessageRecord paramMessageRecord)
   {
-    return "StateRequest";
-  }
-  
-  protected void a(int paramInt)
-  {
-    int i = 1;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    if (paramMessageRecord != null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
-      return;
+      TextView localTextView = new TextView(this.a.getActivity());
+      localTextView.setTextColor(-1);
+      localTextView.setTextSize(1, 10.0F);
+      localTextView.setBackgroundColor(Color.parseColor("#4D000000"));
+      localTextView.setText(bfzl.a(this.a.getActivity(), 3, paramMessageRecord.time * 1000L));
+      localTextView.setPadding(12, 0, 12, 0);
+      localTextView.setId(2131378618);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+      paramMessageRecord = localLayoutParams;
+      if (localLayoutParams == null) {
+        paramMessageRecord = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(15.0F, this.a.getResources()));
+      }
+      localTextView.setGravity(17);
+      paramMessageRecord.addRule(14);
+      paramMessageRecord.addRule(10);
+      localTextView.bringToFront();
+      paramRelativeLayout.addView(localTextView, paramMessageRecord);
     }
-    if (5 != paramInt)
+  }
+  
+  public atzp a(int paramInt)
+  {
+    if (QQGamePubAccountFragment.a(this.a).isEmpty())
     {
-      this.jdField_a_of_type_Atwy.d();
-      switch (paramInt)
+      synchronized (QQGamePubAccountFragment.b)
       {
-      default: 
-        label63:
-        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
-        paramInt = 0;
+        if ((QQGamePubAccountFragment.a(this.a) != null) && (QQGamePubAccountFragment.a(this.a).size() > 0))
+        {
+          Iterator localIterator = QQGamePubAccountFragment.a(this.a).iterator();
+          if (localIterator.hasNext())
+          {
+            atzp localatzp = auab.a((MessageRecord)localIterator.next(), this.a.getActivity());
+            QQGamePubAccountFragment.a(this.a).add(localatzp);
+          }
+        }
+      }
+      if ((this.a.isAdded()) && (this.a.getActivity() != null) && (!this.a.getActivity().isFinishing())) {
+        QQGamePubAccountFragment.a(this.a).add(new MoreMsgHeaderView(this.a.getActivity()));
       }
     }
-    while (paramInt != 0)
-    {
-      this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
-      return;
-      this.jdField_a_of_type_Atwy.b();
-      break label63;
-      atwy.a(this.jdField_a_of_type_Atwy, 11, 5, true);
-      a("StateAcceptByPC");
-      this.jdField_a_of_type_Atxd = new atxa(this.jdField_a_of_type_Atwy);
-      paramInt = i;
-      continue;
-      atwy.a(this.jdField_a_of_type_Atwy, 11, 6, true);
-      a("StateRefuseByPC");
-      this.jdField_a_of_type_Atxd = new atxt(this.jdField_a_of_type_Atwy);
-      paramInt = i;
-      continue;
-      atwy.a(this.jdField_a_of_type_Atwy, 11, 8, true);
-      a("StateSenderCancelSend");
-      this.jdField_a_of_type_Atxd = new atya(this.jdField_a_of_type_Atwy);
-      paramInt = i;
-      continue;
-      atwy.a(this.jdField_a_of_type_Atwy, 11, 7, true);
-      a("StateSaveToWeiYunByPC");
-      this.jdField_a_of_type_Atxd = new atxx(this.jdField_a_of_type_Atwy);
-      paramInt = i;
-      continue;
-      atwy.a(this.jdField_a_of_type_Atwy);
-      atwy.a(this.jdField_a_of_type_Atwy, 11, 11);
-      atwy.a(this.jdField_a_of_type_Atwy, 11, 14, false);
-      a("StateUploadingWhenChangeToOff");
-      this.jdField_a_of_type_Atxd = new atyd(this.jdField_a_of_type_Atwy);
-      paramInt = 0;
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size()) {
+      return (atzp)QQGamePubAccountFragment.a(this.a).get(paramInt);
     }
+    return null;
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    atwy.a(this.jdField_a_of_type_Atwy);
-    b(paramInt1, paramInt2);
-    atwy.a(this.jdField_a_of_type_Atwy, 11, 11);
-    atwy.a(this.jdField_a_of_type_Atwy, 11, 14, false);
-    a("StateUploadingWhenChangeToOff");
-    this.jdField_a_of_type_Atxd = new atyd(this.jdField_a_of_type_Atwy);
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  protected void a(int paramInt, String paramString)
+  public int getCount()
   {
-    super.a(paramInt, paramString);
+    return QQGamePubAccountFragment.a(this.a).size() + 1;
   }
   
-  protected boolean a()
+  public int getItemPosition(Object paramObject)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    atwy.b(this.jdField_a_of_type_Atwy, 9, 10);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "start send recv cmd.... [" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Atwz.a + "-" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Atwz.b + "]");
-    boolean bool = this.jdField_a_of_type_Atwy.a(localFileManagerEntity.peerUin, localFileManagerEntity.nOLfileSessionId);
-    if (bool)
-    {
-      atwy.c(this.jdField_a_of_type_Atwy, 9, 15);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateWaitResultWhenRecv)");
-      this.jdField_a_of_type_Atxd = new atyj(this.jdField_a_of_type_Atwy);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 10, null, 6, null);
-      return bool;
-      atwy.c(this.jdField_a_of_type_Atwy, 9, 10);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateChangeToOffFailedWhenRecv)");
-      this.jdField_a_of_type_Atxd = new atxi(this.jdField_a_of_type_Atwy);
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]  failure to send recv cmd!!! ");
-    }
+    return -2;
   }
   
-  protected boolean a(int paramInt, String paramString, long paramLong)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    QLog.d("QQGamePubAccountFragment", 4, "---->instantiateItem");
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size()) {}
+    RelativeLayout localRelativeLayout;
+    for (MessageRecord localMessageRecord = (MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt);; localMessageRecord = null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      atzp localatzp = a(paramInt);
+      if (localatzp == null)
+      {
+        QLog.d("QQGamePubAccountFragment", 4, "headView is null");
+        return null;
+      }
+      localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
+      if (((View)localatzp).getParent() != null) {
+        ((ViewGroup)((View)localatzp).getParent()).removeView((View)localatzp);
+      }
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams.addRule(13, ((View)localatzp).getId());
+      localRelativeLayout.addView((View)localatzp, localLayoutParams);
+      a(localRelativeLayout, localMessageRecord);
+      paramViewGroup.addView(localRelativeLayout, localLayoutParams);
+      int i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
+      if (localMessageRecord != null) {
+        localatzp.a(localMessageRecord, this.a.getActivity());
+      }
+      if (paramInt != i) {
+        break;
+      }
+      try
+      {
+        QQGamePubAccountFragment.a(this.a, localatzp);
+        if (this.a.a(QQGamePubAccountFragment.a(this.a)))
+        {
+          ((GameArkView)QQGamePubAccountFragment.a(this.a)).setPrePause(false);
+          atyb.a().a((GameArkView)QQGamePubAccountFragment.a(this.a));
+        }
+        else
+        {
+          atyb.a().a(null);
+        }
+      }
+      catch (Throwable paramViewGroup)
+      {
+        QLog.d("QQGamePubAccountFragment", 4, "--->instantiateItem init video ark fail:" + paramViewGroup.getMessage());
+      }
     }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((aunj.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    localFileManagerEntity.setCloudType(1);
-    atwy.a(this.jdField_a_of_type_Atwy, 1, -1, true);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Atxd = new atxp(this.jdField_a_of_type_Atwy);
-    return true;
+    return localRelativeLayout;
   }
   
-  protected void b()
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atwy.a(this.jdField_a_of_type_Atwy, 11, 9, true);
-    this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 5, null);
-    a("StateCancelUploadWhenRecv");
-    this.jdField_a_of_type_Atxd = new atxg(this.jdField_a_of_type_Atwy);
-  }
-  
-  protected void g()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. onCheckIsTooLongSession entity is null");
-      return;
-    }
-    atwy.a(this.jdField_a_of_type_Atwy, 9, 12, true);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateExcepInvalidWhenRecv)");
-    this.jdField_a_of_type_Atxd = new atxo(this.jdField_a_of_type_Atwy);
+    return paramView == paramObject;
   }
 }
 

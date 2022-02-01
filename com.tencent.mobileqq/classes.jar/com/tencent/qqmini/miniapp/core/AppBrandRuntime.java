@@ -25,7 +25,8 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MapProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
 import com.tencent.qqmini.sdk.utils.SaveCaptureImageUitl;
-import com.tencent.qqmini.sdk.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.widget.media.IVideoPlayerUIImpl;
+import com.tencent.qqmini.sdk.widget.media.MiniAppVideoController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -104,8 +105,8 @@ public class AppBrandRuntime
       localView = ((PageWebviewContainer)localObject).findViewWithTag("MiniAppVideoPlayer");
       localObject = ((PageWebviewContainer)localObject).findViewWithTag("MiniAppMapTag");
       localEmbeddedWidgetClientFactory = localAppBrandPage.getRootContainer().getCurrentX5EmbeddedWidgetClientFactory();
-      if ((localView instanceof MiniAppVideoPlayer)) {
-        ((MiniAppVideoPlayer)localView).captureImage(new AppBrandRuntime.2(this, localFrameLayout, paramCallback, localView));
+      if ((localView instanceof IVideoPlayerUIImpl)) {
+        ((IVideoPlayerUIImpl)localView).getController().captureImage(new AppBrandRuntime.2(this, localFrameLayout, paramCallback, localView));
       }
     }
     while (paramCallback == null)

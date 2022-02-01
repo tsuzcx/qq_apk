@@ -1,212 +1,129 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessReporter.1;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.2;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.RspBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class oej
+  extends BusinessHandler
 {
-  private static List<List<String>> a;
-  private static List<Map<String, Integer>> b;
+  public static final String a = oej.class.getSimpleName();
   
-  public static void a()
+  public oej(AppInterface paramAppInterface)
   {
-    if ((b != null) || (a != null)) {}
-    do
+    super(paramAppInterface);
+  }
+  
+  private void b(int paramInt, boolean paramBoolean, String paramString)
+  {
+    Object localObject = new oidb_0xd4b.ReqBody();
+    oidb_0xd4b.SubscribeVideoColumnReq localSubscribeVideoColumnReq = new oidb_0xd4b.SubscribeVideoColumnReq();
+    localSubscribeVideoColumnReq.uint32_video_column_id.set(paramInt);
+    PBUInt32Field localPBUInt32Field = localSubscribeVideoColumnReq.uint32_oper_type;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
+      localPBUInt32Field.set(i);
+      ((oidb_0xd4b.ReqBody)localObject).msg_subscribe_video_column_req.set(localSubscribeVideoColumnReq);
+      localObject = super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, ((oidb_0xd4b.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("columnId", Integer.valueOf(paramInt));
+      ((ToServiceMsg)localObject).addAttribute("columnIconUrl", paramString);
+      ((ToServiceMsg)localObject).addAttribute("isSubscribe", Boolean.valueOf(paramBoolean));
+      super.sendPbReq((ToServiceMsg)localObject);
       return;
-      b = new ArrayList();
-      a = new ArrayList();
-      localObject1 = new File(oek.f);
-    } while ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()));
-    Object localObject1 = bhmi.a((File)localObject1);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean, String paramString)
+  {
+    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt, paramBoolean, paramString), 16, null, true);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool3 = false;
+    int i;
+    if (paramToServiceMsg.getAttribute("columnId") != null) {
+      i = ((Integer)paramToServiceMsg.getAttribute("columnId")).intValue();
+    }
     for (;;)
     {
-      int i;
+      String str;
+      label46:
+      boolean bool1;
+      if (paramToServiceMsg.getAttribute("columnIconUrl") != null)
+      {
+        str = (String)paramToServiceMsg.getAttribute("columnIconUrl");
+        if (paramToServiceMsg.getAttribute("isSubscribe") == null) {
+          break label303;
+        }
+        bool1 = ((Boolean)paramToServiceMsg.getAttribute("isSubscribe")).booleanValue();
+        label69:
+        boolean bool2 = bool3;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          bool2 = bool3;
+          if (paramObject != null) {
+            bool2 = true;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(a, 2, "onReceive() isSuccess = " + bool2);
+        }
+        if (bool2) {
+          paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        }
+      }
       try
       {
-        localObject1 = new JSONArray((String)localObject1);
-        i = 0;
-        if (i >= ((JSONArray)localObject1).length()) {
-          break;
+        oidb_0xd4b.RspBody localRspBody = new oidb_0xd4b.RspBody();
+        qlk.a(paramFromServiceMsg, paramObject, localRspBody);
+        int j = ((oidb_0xd4b.SubscribeVideoColumnRsp)((oidb_0xd4b.RspBody)localRspBody.get()).msg_subscribe_video_column_rsp.get()).uint32_guide_type.get();
+        QLog.i(a, 1, "onReceive() " + j);
+        ThreadManager.getUIHandler().post(new VideoColumnSubscribeHandler.2(this, j, bool1, str, i));
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg.uint32_result.has()) {
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
+          }
         }
-        Object localObject2 = ((JSONArray)localObject1).getJSONObject(0);
-        if (((JSONObject)localObject2).getInt("repflag") != 0)
+        label303:
+        while (!QLog.isColorLevel())
         {
-          Object localObject3 = new ArrayList();
-          HashMap localHashMap = new HashMap();
-          JSONArray localJSONArray = ((JSONObject)localObject2).getJSONArray("entrance");
-          int j = 0;
-          if (j < localJSONArray.length())
-          {
-            ((List)localObject3).add(localJSONArray.getString(j));
-            j += 1;
-            continue;
-          }
-          a.add(localObject3);
-          localObject2 = ((JSONObject)localObject2).getJSONArray("report");
-          j = 0;
-          if (j < ((JSONArray)localObject2).length())
-          {
-            localObject3 = ((JSONArray)localObject2).getJSONObject(j);
-            localHashMap.put(((JSONObject)localObject3).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject3).getInt("tvalue")));
-            j += 1;
-            continue;
-          }
-          b.add(localHashMap);
+          return;
+          i = 0;
+          break;
+          str = "";
+          break label46;
+          bool1 = false;
+          break label69;
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("BusinessReporter", 1, "parse report json error:" + localException);
+        QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
         return;
       }
-      i += 1;
-    }
-  }
-  
-  public static void a(CustomWebView paramCustomWebView)
-  {
-    String str;
-    WebViewPlugin localWebViewPlugin;
-    if ((paramCustomWebView != null) && (paramCustomWebView.getPluginEngine() != null))
-    {
-      str = paramCustomWebView.getUrl();
-      paramCustomWebView = paramCustomWebView.getPluginEngine();
-      localWebViewPlugin = paramCustomWebView.a("JD_REPORT");
-      if (localWebViewPlugin != null) {
-        break label75;
-      }
-      if (a()) {
-        break label54;
-      }
-      ThreadManager.post(new BusinessReporter.1(str, paramCustomWebView), 5, null, true);
-    }
-    label54:
-    while (!a(str)) {
-      return;
-    }
-    paramCustomWebView.a(new String[] { "JD_REPORT" });
-    return;
-    label75:
-    ((abea)localWebViewPlugin).b(str);
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((!(paramAppInterface instanceof BrowserAppInterface)) || (TextUtils.isEmpty(paramString1)) || (b == null)) {}
-    String str;
-    do
-    {
-      return;
-      str = Uri.parse(paramString2).getHost();
-    } while (TextUtils.isEmpty(str));
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    Object localObject1 = null;
-    Object localObject2 = localObject1;
-    if (i < a.size())
-    {
-      localObject2 = ((List)a.get(i)).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        if (str.contains((String)((Iterator)localObject2).next())) {
-          localObject1 = (Map)b.get(i);
-        }
-      }
-    }
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0)
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        localObject2 = localObject1;
-        if ((localObject2 == null) || (((Map)localObject2).isEmpty())) {
-          break;
-        }
-        localObject1 = ((Map)localObject2).entrySet().iterator();
+        while (!QLog.isColorLevel()) {}
+        QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
       }
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label346;
-        }
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        str = (String)((Map.Entry)localObject2).getKey();
-        i = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
-        if (!TextUtils.isEmpty(str))
-        {
-          if (paramString1.startsWith("https://" + str))
-          {
-            localObject2 = (ofe)paramAppInterface.getBusinessHandler(0);
-            if (localObject2 == null) {
-              break label339;
-            }
-            ((ofe)localObject2).a(i, null, paramString2, null, null, 0L, false);
-            return;
-            i += 1;
-            break;
-          }
-          localStringBuilder.setLength(0);
-          if (paramString1.startsWith("https://" + str))
-          {
-            localObject2 = (ofe)paramAppInterface.getBusinessHandler(0);
-            if (localObject2 != null)
-            {
-              ((ofe)localObject2).a(i, null, paramString2, null, null, 0L, false);
-              return;
-            }
-          }
-          label339:
-          localStringBuilder.setLength(0);
-        }
-      }
-      label346:
-      break;
     }
-  }
-  
-  public static boolean a()
-  {
-    return a != null;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((a == null) || (a.isEmpty()) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    paramString = Uri.parse(paramString).getHost();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator2;
-    do
-    {
-      Iterator localIterator1 = a.iterator();
-      while (!localIterator2.hasNext())
-      {
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        localIterator2 = ((List)localIterator1.next()).iterator();
-      }
-    } while (!paramString.contains((String)localIterator2.next()));
-    return true;
-    return false;
   }
 }
 

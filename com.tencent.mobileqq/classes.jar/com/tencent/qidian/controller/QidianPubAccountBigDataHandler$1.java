@@ -1,15 +1,15 @@
 package com.tencent.qidian.controller;
 
-import bkid;
+import bini;
 
 public class QidianPubAccountBigDataHandler$1
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$1(bkid parambkid) {}
+  public QidianPubAccountBigDataHandler$1(bini parambini) {}
   
   public void run()
   {
-    bkid.a(this.this$0);
+    bini.a(this.this$0);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.pts.ui.vnode;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.pts.utils.PTSNodeVirtualUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PTSNodeVirtual$1
@@ -12,6 +13,7 @@ class PTSNodeVirtual$1
   public void onClick(View paramView)
   {
     PTSNodeVirtual.access$000(this.this$0);
+    PTSNodeVirtualUtil.onViewClicked(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

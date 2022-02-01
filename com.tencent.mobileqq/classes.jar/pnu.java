@@ -1,74 +1,73 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-public class pnu
+class pnu
+  implements View.OnClickListener
 {
-  public static pnu a;
-  private long jdField_a_of_type_Long;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public pnv a;
-  public pnw a;
-  public boolean a;
+  pnu(pnt parampnt, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  private pnu()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pnv = new pnv();
-    this.jdField_a_of_type_Pnw = new pnw();
-    if (a(BaseApplicationImpl.getApplication().getRuntime()))
+    Object localObject1 = this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
+    Object localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_Boolean = true;
-      a(BaseApplicationImpl.getApplication().getRuntime(), false);
-    }
-  }
-  
-  public static pnu a()
-  {
-    if (jdField_a_of_type_Pnu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pnu == null) {
-        jdField_a_of_type_Pnu = new pnu();
+      localObject2 = this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = new Intent(this.jdField_a_of_type_Pnt.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject1).putExtra("url", (String)localObject2);
+        this.jdField_a_of_type_Pnt.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
       }
-      return jdField_a_of_type_Pnu;
     }
-    finally {}
-  }
-  
-  private void a(long paramLong)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Pnt.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ReadInJoyPicWaterFallFragment.c);
+      pkm.a().a(this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID, System.currentTimeMillis());
+      localObject1 = ozb.a(this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 16, this.jdField_a_of_type_Pnt.a(), (ArticleInfo)this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      try
+      {
+        ((JSONObject)localObject1).put("card_type", 12);
+        localObject2 = new ozd(this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+        ((ozd)localObject2).e = String.valueOf(this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+        ((ozd)localObject2).f = String.valueOf(this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+        ((ozd)localObject2).g = ((JSONObject)localObject1).toString();
+        if (this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
+          ((ozd)localObject2).a = String.valueOf(this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
+        }
+        ((ozd)localObject2).b = "0X8008E2F";
+        ((ozd)localObject2).c = "0X8008E2F";
+        ozb.a((ozd)localObject2);
+        ReadInJoyPicWaterFallFragment.a((ArticleInfo)this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pnt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 1009);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localObject = bnrf.a((AppRuntime)localObject, true, true);
-    } while (localObject == null);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
-    bnrf.a((SharedPreferences.Editor)localObject, true);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    paramAppRuntime = bnrf.a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null) {
-      return;
+      localObject2 = new Intent(this.jdField_a_of_type_Pnt.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      this.jdField_a_of_type_Pnt.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
     }
-    paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
-    bnrf.a(paramAppRuntime, true);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = bnrf.a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getBoolean("simple_force_report_once", false);
   }
 }
 

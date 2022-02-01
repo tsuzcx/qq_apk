@@ -32,8 +32,8 @@ public class AppMainService
   
   public void onCreate()
   {
-    QMLog.i("AppMainService", "AppMainService Service onCreate~~~");
     MiniSDK.init(getApplicationContext());
+    QMLog.i("AppMainService", "AppMainService Service onCreate~~~");
     super.onCreate();
   }
   

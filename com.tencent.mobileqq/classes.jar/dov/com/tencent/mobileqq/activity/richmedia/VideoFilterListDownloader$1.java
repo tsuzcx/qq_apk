@@ -1,32 +1,32 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
 import android.os.Bundle;
-import beum;
-import beuo;
-import bqzv;
-import brdl;
+import bntx;
+import bnxl;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import lbk;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import lbc;
 
 public class VideoFilterListDownloader$1
   implements Runnable
 {
-  public VideoFilterListDownloader$1(bqzv parambqzv, FilterDesc paramFilterDesc) {}
+  public VideoFilterListDownloader$1(bntx parambntx, FilterDesc paramFilterDesc) {}
   
   public void run()
   {
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_Beuq = this.this$0.a;
-    localbeum.jdField_a_of_type_JavaLangString = this.a.resurl;
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.c = (brdl.b + this.a.name + ".zip");
-    localbeum.a(this.a);
-    localbeum.jdField_a_of_type_Beur = this.this$0;
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = this.this$0.a;
+    localHttpNetReq.mReqUrl = this.a.resurl;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = (bnxl.b + this.a.name + ".zip");
+    localHttpNetReq.setUserData(this.a);
+    localHttpNetReq.mFailedListener = this.this$0;
     if (this.a.bundle == null) {
       this.a.bundle = new Bundle();
     }
     this.a.bundle.putLong("requestStartTime", System.currentTimeMillis());
-    lbk.a().a(localbeum);
+    lbc.a().sendReq(localHttpNetReq);
   }
 }
 

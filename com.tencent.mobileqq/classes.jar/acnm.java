@@ -1,108 +1,97 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import eipc.EIPCResult;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acnm
-  extends QIPCModule
+class acnm
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static volatile acnm a;
+  acnm(acnl paramacnl) {}
   
-  private acnm(String paramString)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super(paramString);
-  }
-  
-  public static acnm a()
-  {
-    if (a == null) {}
-    try
+    ViewGroup.LayoutParams localLayoutParams;
+    if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c) && (this.a.jdField_a_of_type_AndroidViewView != null))
     {
-      if (a == null) {
-        a = new acnm("gdt_ipc_async_module_client_to_server");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult != null) {}
-    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
-    {
-      acvc.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
-      super.callbackResult(paramInt, paramEIPCResult);
-      return;
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
-    String str1;
-    String str2;
-    if (localParams != null)
-    {
-      str1 = localParams.getAction();
-      if (localParams == null) {
-        break label73;
-      }
-      str2 = localParams.getToProcessName();
-      label34:
-      acvc.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCall action:%s to:%s", new Object[] { str1, str2 }));
-      if (!TextUtils.isEmpty(paramString)) {
-        break label79;
-      }
-    }
-    label73:
-    label79:
-    do
-    {
-      do
+      paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131377244);
+      if (paramMotionEvent1 != null)
       {
-        return null;
-        str1 = null;
-        break;
-        str2 = null;
-        break label34;
-      } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
-      str1 = AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext());
-      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
-      if (!TextUtils.equals(str1, localParams.getToProcessName())) {
-        break label206;
-      }
-    } while (paramString == null);
-    paramString = paramString.handle(localParams);
-    paramBundle = new EIPCResult();
-    int i;
-    if ((paramString != null) && (paramString.success))
-    {
-      i = 0;
-      paramBundle.code = i;
-      if (paramString == null) {
-        break label201;
+        if (paramMotionEvent1.getVisibility() == 0) {
+          break label446;
+        }
+        if (AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "hide previous selectedAccountView");
+          }
+          paramMotionEvent2 = AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+          if ((paramMotionEvent2 instanceof ShaderAnimLayout)) {
+            ((ShaderAnimLayout)paramMotionEvent2).hideIgnoreVisible();
+          }
+          AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).a();
+          paramMotionEvent2 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+          localLayoutParams = paramMotionEvent2.getLayoutParams();
+          if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+            break label395;
+          }
+          localLayoutParams.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - AccountManageActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) * 40.0F));
+          paramMotionEvent2.setLayoutParams(localLayoutParams);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountManage", 2, "show current selectedAccountView");
+        }
+        ((ShaderAnimLayout)paramMotionEvent1).showIgnoreVisible();
+        AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, (RotateSwitchImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365398));
+        AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).b();
+        paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+        paramMotionEvent2 = paramMotionEvent1.getLayoutParams();
+        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+          break label414;
+        }
       }
     }
-    label201:
-    for (paramString = paramString.bundle;; paramString = null)
+    label395:
+    label414:
+    for (paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - 75.0F * AccountManageActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity)));; paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - 35.0F * AccountManageActivity.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity))))
     {
-      paramBundle.data = paramString;
-      callbackResult(paramInt, paramBundle);
-      return null;
-      i = -102;
+      paramMotionEvent1.setLayoutParams(paramMotionEvent2);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = true;
+      this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+      return true;
+      localLayoutParams.width = ((int)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
       break;
     }
-    label206:
-    QIPCServerHelper.getInstance().callClient(localParams.getToProcessName(), "gdt_ipc_module_server_to_client", localParams.getAction(), paramBundle, new acnn(this, localParams, paramInt));
-    return null;
+    label446:
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "hide current selectedAccountView");
+    }
+    ((ShaderAnimLayout)paramMotionEvent1).hideIgnoreVisible();
+    if (AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) != null)
+    {
+      AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).a();
+      paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+      paramMotionEvent2 = paramMotionEvent1.getLayoutParams();
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+        break label626;
+      }
+    }
+    label626:
+    for (paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - AccountManageActivity.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) * 40.0F));; paramMotionEvent2.width = ((int)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity)))
+    {
+      paramMotionEvent1.setLayoutParams(paramMotionEvent2);
+      AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, null);
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = true;
+      this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+      return true;
+    }
   }
 }
 

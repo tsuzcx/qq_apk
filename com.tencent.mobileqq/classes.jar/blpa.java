@@ -1,46 +1,18 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.widget.RangeButtonView;
-
 public class blpa
 {
-  public float a;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  String jdField_a_of_type_JavaLangString;
+  public double a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public blpa(String paramString, float paramFloat)
+  public blpa()
   {
-    this(paramString, paramFloat, null);
-  }
-  
-  public blpa(String paramString, float paramFloat, Point paramPoint)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return (int)RangeButtonView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint, blox paramblox)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPoint == null) {
-      return;
-    }
-    paramPaint.setTextSize(this.jdField_a_of_type_Float);
-    int i = paramPaint.getColor();
-    paramPaint.setColor(paramblox.a);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramPaint);
-    paramPaint.setColor(i);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131714841);
+    this.jdField_b_of_type_JavaLangString = amtj.a(2131714843);
+    this.jdField_a_of_type_Double = 0.8D;
   }
 }
 

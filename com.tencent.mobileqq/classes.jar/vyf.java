@@ -1,21 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class vyf
-  implements View.OnClickListener
+  extends vqr<vyg>
 {
-  public vyf(QCircleCommentListView paramQCircleCommentListView) {}
+  static final String a = vpl.a("StorySvc.msgtab_node_click");
+  public long b;
+  public String b;
+  public int c;
   
-  public void onClick(View paramView)
+  public String a()
   {
-    if (QCircleCommentListView.a(this.a) != null) {
-      QCircleCommentListView.a(this.a).setClickable(false);
+    return a;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    try
+    {
+      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
+      return new vyg(localRspMsgTabNodeWatched);
     }
-    QCircleCommentListView.a(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqMsgTabNodeWatched.node_type.set(this.c);
+    localReqMsgTabNodeWatched.operation.set(3);
+    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 

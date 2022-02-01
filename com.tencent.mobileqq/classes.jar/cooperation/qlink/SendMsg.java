@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmjx;
+import bkoe;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bmjx();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new bkoe();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;

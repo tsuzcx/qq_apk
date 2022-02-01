@@ -1,56 +1,28 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import org.json.JSONObject;
 
-public abstract class sxu<T>
-  extends BaseAdapter
-  implements sxw
+class sxu
+  implements URLDrawableDownListener
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  sxu(sxp paramsxp) {}
   
-  protected void a(T paramT)
-  {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramT, Integer.valueOf(i));
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  protected void a(List<T> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  protected void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public T getItem(int paramInt)
-  {
-    return null;
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  public final long getItemId(int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-    }
-    return paramInt;
-  }
-  
-  public final boolean hasStableIds()
-  {
-    return true;
+    AbstractGifImage.resumeAll();
+    sxp.a(this.a).setVisibility(0);
+    this.a.a("0X800920C", new JSONObject());
   }
 }
 

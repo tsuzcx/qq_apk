@@ -1,702 +1,439 @@
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.ecshopassit.RecentItemEcShop;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification;
-import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.apollo.ApolloGameArkHandler.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
-import com.tencent.mobileqq.mini.report.MiniAppBusiReport;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-import java.util.ArrayList;
+import com.tencent.util.LRULinkedHashMap;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
-import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class alnl
-  extends alnt
 {
-  protected int a;
-  private List<String> a;
-  protected boolean a;
+  public static final LRULinkedHashMap<String, String> a;
+  private WeakReference<QQAppInterface> a;
   
-  public alnl()
+  static
   {
-    this.jdField_a_of_type_Int = 2131562814;
+    jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(50);
   }
   
-  @Nullable
-  private alnm a(View paramView, RecentBaseData paramRecentBaseData)
+  public alnl(QQAppInterface paramQQAppInterface)
   {
-    Object localObject;
-    if ((paramView == null) || (paramRecentBaseData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "bindView|param invalidate");
-      }
-      localObject = null;
-      return localObject;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  private String a(MessageForApollo paramMessageForApollo)
+  {
+    if ((a() == null) || (paramMessageForApollo == null)) {
+      return "com.tencent.cmshow";
     }
-    if ((paramView.getTag() instanceof alnm)) {}
-    for (paramRecentBaseData = (alnm)paramView.getTag();; paramRecentBaseData = null)
+    if (paramMessageForApollo.istroop == 1036) {
+      return "com.tencent.cmgame.social";
+    }
+    if (paramMessageForApollo.isHasOwnArk())
     {
-      localObject = paramRecentBaseData;
-      if (paramRecentBaseData != null) {
-        break;
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+        QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "[getArkAppName], msg.gameId:", Integer.valueOf(paramMessageForApollo.gameId), " hasOwnArk." });
       }
+      return "com.tencent.cmshow." + paramMessageForApollo.gameId;
+    }
+    return "com.tencent.cmshow";
+  }
+  
+  private JSONArray a(List<Long> paramList, int paramInt, String paramString)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
       return null;
     }
-  }
-  
-  private void a(alnm paramalnm, Context paramContext)
-  {
-    if ((paramalnm == null) || (paramalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("RecentEfficientItemBuilder", 2, "decorateVanishHalo: failed.  exception: holder icon is null. ");
-      }
-    }
-    do
-    {
-      RelativeLayout.LayoutParams localLayoutParams;
-      do
-      {
-        return;
-        localLayoutParams = (RelativeLayout.LayoutParams)paramalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getLayoutParams();
-      } while (localLayoutParams == null);
-      int i = (int)paramContext.getResources().getDimension(2131297379);
-      localLayoutParams.height = i;
-      localLayoutParams.width = i;
-      localLayoutParams.setMargins((int)mvd.a(paramContext, 16.0F), localLayoutParams.topMargin, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
-      if (paramalnm.jdField_b_of_type_AndroidWidgetImageView != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("RecentEfficientItemBuilder", 2, "decorateVanishHalo: failed.  exception: holder story halo is null. ");
-    return;
-    paramalnm.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  private void a(alnm paramalnm, Context paramContext, RecentItemChatMsgData paramRecentItemChatMsgData, int paramInt)
-  {
-    if ((paramalnm == null) || (paramRecentItemChatMsgData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RecentEfficientItemBuilder", 2, "decorateHaloResource: failed.  exception:  holder: " + paramalnm + " msgItem: " + paramRecentItemChatMsgData);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentEfficientItemBuilder", 2, "decorateHaloResource: invoked. Message:  msgItem.haloState : " + paramRecentItemChatMsgData.haloState + " msgItem.getRecentUserUin() : " + paramRecentItemChatMsgData.getRecentUserUin());
-    }
-    paramalnm.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramalnm.jdField_b_of_type_AndroidWidgetImageView.setImageResource(paramInt);
-    paramRecentItemChatMsgData = (RelativeLayout.LayoutParams)paramalnm.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramRecentItemChatMsgData.setMargins((int)paramContext.getResources().getDimension(2131297129), paramRecentItemChatMsgData.topMargin, paramRecentItemChatMsgData.rightMargin, paramRecentItemChatMsgData.bottomMargin);
-    paramalnm = (RelativeLayout.LayoutParams)paramalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getLayoutParams();
-    paramInt = (int)paramContext.getResources().getDimension(2131298788);
-    paramalnm.height = paramInt;
-    paramalnm.width = paramInt;
-    paramalnm.setMargins((int)mvd.a(paramContext, 15.5F), paramalnm.topMargin, paramalnm.rightMargin, paramalnm.bottomMargin);
-  }
-  
-  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, alnm paramalnm)
-  {
-    int i1 = paramRecentBaseData.mUnreadNum;
-    int i = paramRecentBaseData.mUnreadFlag;
-    if (((paramRecentBaseData instanceof RecentItemTroopNotification)) && (((RecentItemTroopNotification)paramRecentBaseData).unDealMsgCountNunFlag)) {
-      i = 2;
-    }
     for (;;)
     {
-      int m;
-      int k;
-      int j;
-      int n;
-      if (i1 > 0) {
-        if (i == 0)
-        {
-          paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-          m = 0;
-          k = 99;
-          j = 0;
-          n = 0;
-          i = 0;
-        }
-      }
-      for (;;)
+      JSONArray localJSONArray;
+      int i;
+      String str;
+      JSONObject localJSONObject;
+      try
       {
-        blkk.a(paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, n, k, null);
-        if (m != 0)
-        {
-          paramView = ThemeUtil.getCurrentThemeId();
-          if ((!ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_Alms.a, false, paramView)) && ((paramRecentBaseData instanceof RecentItemChatMsgData)))
-          {
-            i = ((RecentItemChatMsgData)paramRecentBaseData).mBubbleID;
-            if (i > 0)
-            {
-              paramRecentBaseData = (BubbleManager)this.jdField_a_of_type_Alms.a.getManager(44);
-              if (paramRecentBaseData != null)
-              {
-                paramView = paramRecentBaseData.a(this.jdField_a_of_type_Alms.a, paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, i1, paramView);
-                if (paramView != null)
-                {
-                  if (Build.VERSION.SDK_INT < 16) {
-                    break label391;
-                  }
-                  paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setBackground(paramView.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-                  label196:
-                  paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramView.jdField_a_of_type_Int);
-                  paramView = paramView.jdField_a_of_type_AndroidGraphicsRect;
-                  paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setPadding(paramView.left, paramView.top, paramView.right, paramView.bottom);
-                }
-              }
-            }
-          }
+        localJSONArray = new JSONArray();
+        int j = paramList.size();
+        i = 0;
+        if (i >= j) {
+          break label213;
         }
-        return;
-        if (i == 2)
+        str = String.valueOf(paramList.get(i));
+        if (TextUtils.isEmpty(str))
         {
-          paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-          m = 0;
-          k = 99;
-          n = 0;
-          i = 1;
-          j = 0;
+          QLog.w("QQ_CmGame_CmGameTemp", 1, "[getPlayerInfo], uin is null.");
         }
         else
         {
-          if (i == 3)
-          {
-            n = 2130850408;
-            if (!(paramRecentBaseData instanceof RecentTroopAssistantItem)) {
-              break label423;
-            }
-          }
-          label391:
-          label423:
-          for (;;)
-          {
-            paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
-            paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167120));
-            m = 0;
-            j = i1;
-            i = 3;
-            k = 99;
-            break;
-            n = 2130850404;
-            paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
-            paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167121));
-            if (this.jdField_a_of_type_Boolean)
-            {
-              m = 1;
-              j = i1;
-              i = 3;
-              k = 99;
-              break;
-              paramalnm.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setBackgroundDrawable(paramView.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-              break label196;
-            }
-            m = 0;
-            j = i1;
-            i = 3;
-            k = 99;
+          localJSONObject = new JSONObject();
+          localJSONObject.put("uin", str);
+          localObject = a();
+          if (localObject == null) {
             break;
           }
-          m = 0;
-          k = 99;
-          j = 0;
-          n = 0;
-          i = 0;
+          if (str.equals(((QQAppInterface)localObject).getCurrentAccountUin()))
+          {
+            localObject = ((QQAppInterface)localObject).getCurrentNickname();
+            localJSONObject.put("nickname", localObject);
+            localObject = a(str);
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              break label200;
+            }
+            localJSONObject.put("avatarUrl", localObject);
+            localJSONArray.put(localJSONObject);
+          }
         }
       }
+      catch (Throwable paramList)
+      {
+        QLog.e("QQ_CmGame_CmGameTemp", 1, paramList, new Object[0]);
+        return null;
+      }
+      Object localObject = ambc.a((QQAppInterface)localObject, paramInt, str, paramString, true);
+      continue;
+      label200:
+      localJSONObject.put("avatarUrl", "");
+      continue;
+      label213:
+      return localJSONArray;
+      i += 1;
     }
   }
   
-  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, alnm paramalnm, float paramFloat)
+  private void a(String paramString)
   {
-    if (paramRecentBaseData.mAuthenIconId != 0)
-    {
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramContext.getResources().getColor(2131166997));
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * paramFloat));
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, paramRecentBaseData.mAuthenIconId);
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentEfficientItemBuilder", 2, "bindView: item.authId=" + paramRecentBaseData.mAuthenIconId);
-      }
-      return;
+    ThreadManager.post(new ApolloGameArkHandler.1(this, paramString), 5, null, true);
+  }
+  
+  public QQAppInterface a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if ((paramRecentBaseData.getRecentUserType() == 0) && (!bdgb.b()))
+    return null;
+  }
+  
+  public MessageForArkApp a(MessageForApollo paramMessageForApollo, MessageForArkApp paramMessageForArkApp)
+  {
+    MessageForArkApp localMessageForArkApp = paramMessageForArkApp;
+    if (paramMessageForArkApp == null)
     {
-      VipUtils.a(paramView, paramContext, paramRecentBaseData.getRecentUserUin(), paramalnm);
-      return;
+      QLog.i("QQ_CmGame_CmGameTemp", 1, "create an arkMsg obj.");
+      localMessageForArkApp = new MessageForArkApp();
+      localMessageForArkApp.ark_app_message = new ArkAppMessage();
+    }
+    paramMessageForArkApp = a();
+    ArkAppMessage localArkAppMessage = localMessageForArkApp.ark_app_message;
+    if ((paramMessageForApollo == null) || (localArkAppMessage == null) || (paramMessageForArkApp == null)) {
+      return localMessageForArkApp;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("RecentEfficientItemBuilder", 2, "bindView: drawable is null");
+      QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "gameStatus:", Integer.valueOf(paramMessageForApollo.gameStatus), ",gameId:", Integer.valueOf(paramMessageForApollo.gameId), ",arkInfo:", paramMessageForApollo.gameArkInfo, ",roomId:", Long.valueOf(paramMessageForApollo.roomId), ",msgId:", Long.valueOf(paramMessageForApollo.uniseq), ",seq:", Long.valueOf(paramMessageForApollo.msgseq), ",msgType:", Integer.valueOf(paramMessageForApollo.msgType) });
     }
-    paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramContext.getResources().getColor(2131166997));
-    paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
-  }
-  
-  private void a(RecentBaseData paramRecentBaseData, alnm paramalnm)
-  {
-    if (paramalnm.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      paramalnm.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (((paramRecentBaseData instanceof RecentItemChatMsgData)) && (((RecentItemChatMsgData)paramRecentBaseData).mQimOnline == 1))
-      {
-        paramalnm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(aifn.a().b(3));
-        paramalnm.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-    }
-  }
-  
-  private void a(RecentBaseData paramRecentBaseData, alnm paramalnm, Context paramContext)
-  {
-    if ((this.jdField_a_of_type_Alms == null) || (this.jdField_a_of_type_Alms.a == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("RecentEfficientItemBuilder", 2, "decorateStoryHalo: failed. Message: empty adapter. ");
-      }
-    }
-    wjk localwjk;
-    do
-    {
-      return;
-      localwjk = (wjk)this.jdField_a_of_type_Alms.a.getManager(197);
-    } while (!localwjk.a(paramRecentBaseData));
-    paramRecentBaseData = (RecentItemChatMsgData)paramRecentBaseData;
-    localwjk.a(paramRecentBaseData);
-    switch (paramRecentBaseData.haloState)
-    {
-    default: 
-      return;
-    case -3: 
-      a(paramalnm, paramContext);
-      return;
-    case -1: 
-      a(paramalnm, paramContext, paramRecentBaseData, 2130846551);
-      return;
-    }
-    a(paramalnm, paramContext, paramRecentBaseData, 2130846550);
-  }
-  
-  private void a(RecentBaseData paramRecentBaseData, BaseActivity paramBaseActivity, alnm paramalnm, float paramFloat)
-  {
-    if ((paramRecentBaseData.getRecentUserType() == 0) && ((paramRecentBaseData instanceof RecentItemChatMsgData)) && (!bbwq.a(paramRecentBaseData.getRecentUserUin())))
-    {
-      paramRecentBaseData = (RecentItemChatMsgData)paramRecentBaseData;
-      paramBaseActivity = paramBaseActivity.app;
-      ArrayList localArrayList = axsi.a(paramBaseActivity, paramRecentBaseData.mUser.uin, false, 5);
-      paramRecentBaseData = axsi.a(paramBaseActivity, paramRecentBaseData.mUser.uin, localArrayList);
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(paramRecentBaseData);
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding(0, (int)(paramFloat * 1.0F));
-      return;
-    }
-    if ((paramRecentBaseData.getRecentUserType() == 1) && ((paramRecentBaseData instanceof RecentItemTroopMsgData)))
-    {
-      paramRecentBaseData = (RecentItemTroopMsgData)paramRecentBaseData;
-      paramRecentBaseData = bggn.a(paramBaseActivity.app, paramRecentBaseData.troopHonorStr);
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(paramRecentBaseData);
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding(0, (int)(paramFloat * 1.0F));
-      return;
-    }
-    paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(null);
-    paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * paramFloat), (int)(paramFloat * 1.0F));
-  }
-  
-  private void a(RecentBaseData paramRecentBaseData, BaseActivity paramBaseActivity, Drawable paramDrawable, alnm paramalnm)
-  {
-    if (a(paramRecentBaseData))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentEfficientItemBuilder", 2, "bindview user:" + paramRecentBaseData.getRecentUserUin());
-      }
-      paramBaseActivity = paramBaseActivity.app;
-      int j = ((Integer)alno.a(paramBaseActivity, paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin()).first).intValue();
-      int i = j;
-      if (j == 103) {
-        i = 1;
-      }
-      paramalnm = paramalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
-      paramRecentBaseData = paramRecentBaseData.getRecentUserUin();
-      if (paramBaseActivity.a.a() == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramalnm.setFaceDrawable(paramBaseActivity, paramDrawable, i, paramRecentBaseData, 100, false, bool, 0);
-        return;
-      }
-    }
-    paramalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
-  }
-  
-  private void b(RecentBaseData paramRecentBaseData, alnm paramalnm)
-  {
-    if ((paramRecentBaseData instanceof RecentMatchChatListItem)) {
-      if (!((RecentMatchChatListItem)paramRecentBaseData).mExtendFriendOnline) {
-        break label31;
-      }
-    }
-    label31:
-    for (int i = 2130845156;; i = 0)
-    {
-      paramalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, i);
-      return;
-    }
-  }
-  
-  private void c(RecentBaseData paramRecentBaseData, alnm paramalnm)
-  {
-    int i = paramRecentBaseData.mExtraInfoColor;
-    paramRecentBaseData = paramRecentBaseData.mMsgExtroInfo;
-    if (paramRecentBaseData != null) {}
-    for (paramRecentBaseData = paramRecentBaseData.toString();; paramRecentBaseData = "")
-    {
-      Object localObject = paramRecentBaseData;
-      if (paramRecentBaseData != null)
-      {
-        localObject = paramRecentBaseData;
-        if (paramRecentBaseData.length() > 0)
-        {
-          localObject = paramRecentBaseData;
-          if (!paramRecentBaseData.endsWith(" ")) {
-            localObject = paramRecentBaseData + " ";
-          }
-        }
-      }
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (i != 0)) {
-        paramalnm.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(ColorStateList.valueOf(i), 1);
-      }
-      paramalnm.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText((String)localObject, 1);
-      return;
-    }
-  }
-  
-  private void d(RecentBaseData paramRecentBaseData, alnm paramalnm)
-  {
-    try
-    {
-      paramalnm.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mLastMsg);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      paramalnm.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mLastMsg + " ");
-    }
-  }
-  
-  private void e(RecentBaseData paramRecentBaseData, alnm paramalnm)
-  {
-    int i = paramRecentBaseData.mMenuFlag & 0xF0;
-    if (i == 32) {}
-    try
-    {
-      paramalnm.g.setBackgroundResource(2130839403);
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.d("RecentEfficientItemBuilder", 2, new Object[] { "bindView: leftView set top color, uin=", paramRecentBaseData.getRecentUserUin() });
-      return;
-    }
-    catch (Throwable paramRecentBaseData)
-    {
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.d("RecentEfficientItemBuilder", 2, "bindView setBackground error with flag: " + i, paramRecentBaseData);
-    }
-    paramalnm.g.setBackgroundResource(2130839402);
-    if (QLog.isColorLevel())
-    {
-      QLog.d("RecentEfficientItemBuilder", 2, new Object[] { "bindView: leftView set normal color,uin=", paramRecentBaseData.getRecentUserUin() });
-      return;
-    }
-  }
-  
-  private void f(RecentBaseData paramRecentBaseData, alnm paramalnm)
-  {
-    int j = 2130842092;
-    int i = j;
-    switch (paramRecentBaseData.mStatus)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      paramalnm.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0);
-      return;
-      i = j;
-      if (paramRecentBaseData.mIsGroupVideo)
-      {
-        i = 2130842102;
-        continue;
-        if (paramRecentBaseData.mIsGroupVideo)
-        {
-          i = 2130842102;
-        }
-        else
-        {
-          i = 2130842103;
-          continue;
-          i = 2130842103;
-          continue;
-          i = 2130839541;
-          continue;
-          i = 2130839511;
-          continue;
-          i = 2130839542;
-          continue;
-          i = 2130841298;
-          continue;
-          i = 2130839538;
-          continue;
-          i = 2130839506;
-          continue;
-          i = 2130839516;
-        }
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
-  {
-    label67:
-    Object localObject;
     int i;
-    if ((paramView != null) && ((paramView.getTag() instanceof alnm)))
-    {
-      paramalpv = (alnm)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = paramalpv;
-      paramalpv = paramContext.getResources().getColorStateList(2131167074);
-      if (!ThemeUtil.isNowThemeIsDefault(null, false, null)) {
-        break label760;
-      }
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalpv, 0);
-      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
-      if (AppSetting.c) {
-        paramViewGroup.setContentDescription(null);
-      }
-      if (!(paramObject instanceof RecentBaseData)) {
-        break label774;
-      }
-      RecentBaseData localRecentBaseData = (RecentBaseData)paramObject;
-      localObject = localRecentBaseData.getRecentUserUin();
-      i = localRecentBaseData.getRecentUserType();
-      paramalpv = null;
-      if (paramalno != null) {
-        paramalpv = paramalno.a(localRecentBaseData);
-      }
-      a(paramViewGroup, localRecentBaseData, paramContext, paramalpv);
-      if (((wjk)this.jdField_a_of_type_Alms.a.getManager(197)).b(paramObject))
-      {
-        paramView.jdField_b_of_type_AndroidWidgetImageView.setTag(-22, paramObject);
-        paramView.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-      }
-      if ((paramObject instanceof RecentItemEcShop))
-      {
-        paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setOnClickListener(paramOnClickListener);
-        paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setTag(-1, Integer.valueOf(paramInt));
-        if (AppSetting.c) {
-          paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setContentDescription(String.format(anzj.a(2131712034), new Object[] { localRecentBaseData.mTitleName }));
-        }
-      }
-      if (String.valueOf(9970L).equals(localRecentBaseData.getRecentUserUin())) {
-        MiniAppBusiReport.reportEshopExpo("message", String.valueOf(localRecentBaseData.mUnreadNum));
-      }
-      nqw.a.a(localRecentBaseData);
-    }
-    for (paramalno = (alno)localObject;; paramalno = "")
-    {
-      if ((tyi.b) && ((paramObject instanceof RecentItemServiceAccountFolderData))) {
-        paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(4, paramViewGroup);
-      }
-      a(paramContext, paramViewGroup, paramInt, paramObject, paramView, paramOnClickListener);
-      paramViewGroup.setOnClickListener(paramOnClickListener);
-      paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
-      paramViewGroup.setTag(-1, Integer.valueOf(paramInt));
-      if ("2290230341".equals(paramalno)) {
-        bdli.a(1);
-      }
-      if (1008 == i) {
-        tzq.b(paramalno);
-      }
-      return paramViewGroup;
-      paramalpv = new alnm();
-      localObject = a(paramContext, this.jdField_a_of_type_Int, paramalpv);
-      paramalpv.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)((View)localObject).findViewById(2131368212));
-      paramalpv.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131380442));
-      paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject).findViewById(2131378936));
-      paramalpv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131374173));
-      paramalpv.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131369396));
-      paramalpv.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject).findViewById(2131365413));
-      paramalpv.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(16);
-      paramViewGroup = paramContext.getResources();
-      float f = bhlo.a();
-      paramView = paramViewGroup.getColorStateList(2131167074);
-      paramViewGroup = paramViewGroup.getColorStateList(2131166997);
-      paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramViewGroup);
-      if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
-      }
-      for (;;)
-      {
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
-        paramalpv.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramView);
-        paramalpv.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(f * 2.0F), 1);
-        paramalpv.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(14.0F, 1);
-        ((View)localObject).setTag(paramalpv);
-        paramViewGroup = (ViewGroup)localObject;
-        paramView = paramalpv;
-        if (this.jdField_a_of_type_Alms == null) {
-          break;
-        }
-        paramalpv.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Alms.a());
-        paramViewGroup = (ViewGroup)localObject;
-        paramView = paramalpv;
-        break;
-        paramalpv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
-      }
-      label760:
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalpv, 0);
-      break label67;
-      label774:
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText("");
-      paramView.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText("");
-      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
-      i = 0;
-    }
-  }
-  
-  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
-  {
-    if ((paramRecentBaseData == null) || (paramContext == null)) {
-      return null;
-    }
-    int k = paramRecentBaseData.mMenuFlag;
-    paramContext = paramContext.getResources();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    while ((paramRecentBaseData.getRecentUserType() == 1008) || (paramRecentBaseData.getRecentUserType() == 7220))
-    {
-      if ((alol.a(paramRecentBaseData.getRecentUserUin())) && (alor.a().a()) && (!alor.a().a(paramRecentBaseData.getRecentUserUin()))) {
-        this.jdField_a_of_type_JavaUtilList.add(paramContext.getString(jdField_a_of_type_ArrayOfInt[6]));
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramContext.getString(jdField_a_of_type_ArrayOfInt[0]));
-      return this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    int m = k & 0xF0;
-    int j = 2;
-    int i = 3;
-    if ((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1))
-    {
-      j = 8;
-      i = 7;
-    }
-    if (m == 32) {
-      this.jdField_a_of_type_JavaUtilList.add(paramContext.getString(jdField_a_of_type_ArrayOfInt[j]));
-    }
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    Object localObject1;
+    label400:
+    Object localObject2;
     for (;;)
     {
-      if ((0xF000000 & k) == 16777216) {
-        this.jdField_a_of_type_JavaUtilList.add(paramContext.getString(jdField_a_of_type_ArrayOfInt[9]));
+      try
+      {
+        i = paramMessageForApollo.gameStatus;
+        localArkAppMessage.reset();
+        localArkAppMessage.appName = a(paramMessageForApollo);
+        localArkAppMessage.appMinVersion = "1.0.0.0";
+        localArkAppMessage.appDesc = amtj.a(2131699502);
+        localJSONObject1 = new JSONObject();
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("gameId", paramMessageForApollo.gameId);
+        localJSONObject2.put("msgId", String.valueOf(paramMessageForApollo.uniseq));
+        if (paramMessageForApollo.istroop == 1036)
+        {
+          localJSONObject2.put("senderUin", paramMessageForApollo.senderuin);
+          if (paramMessageForApollo.isSend())
+          {
+            localJSONObject2.put("receiverUin", paramMessageForApollo.frienduin);
+            localJSONObject2.put("createTime", paramMessageForApollo.time);
+            localJSONObject2.put("roomId", String.valueOf(paramMessageForApollo.roomId));
+            localJSONObject2.put("gameName", paramMessageForApollo.gameName);
+          }
+        }
+        else
+        {
+          if (TextUtils.isEmpty(paramMessageForApollo.gameExtendJson)) {
+            break label1273;
+          }
+          localObject1 = new JSONObject(paramMessageForApollo.gameExtendJson);
+          localJSONObject2.put("extendInfo", ((JSONObject)localObject1).optString("extendInfo"));
+          if (paramMessageForApollo.msgType != 4) {
+            break label577;
+          }
+          localArkAppMessage.appView = "game_share";
+          localJSONObject2.put("gameStatus", 100);
+          i = 100;
+          if (paramMessageForApollo.istroop != 1036) {
+            break label1282;
+          }
+          localObject1 = ((alnr)paramMessageForArkApp.getManager(153)).a();
+          localObject2 = new JSONArray();
+        }
+        switch (i)
+        {
+        case 0: 
+          label496:
+          paramMessageForArkApp = new JSONArray();
+          localObject1 = paramMessageForApollo.winnerList.iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label884;
+          }
+          paramMessageForArkApp.put(String.valueOf((Long)((Iterator)localObject1).next()));
+          continue;
+          localJSONObject2.put("receiverUin", paramMessageForApollo.selfuin);
+        }
       }
-      if ((k & 0xF) != 1) {
+      catch (Throwable paramMessageForApollo)
+      {
+        QLog.e("QQ_CmGame_CmGameTemp", 1, paramMessageForApollo, new Object[0]);
+        return localMessageForArkApp;
+      }
+      continue;
+      label577:
+      if (paramMessageForApollo.istroop == 1036) {}
+      for (localArkAppMessage.appView = "SocialGame";; localArkAppMessage.appView = "game_aio")
+      {
+        localJSONObject2.put("gameStatus", paramMessageForApollo.gameStatus);
+        localJSONObject2.put("extendJson", paramMessageForApollo.gameArkInfo);
+        localJSONObject2.put("commInfo", paramMessageForApollo.commInfo);
         break;
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramContext.getString(jdField_a_of_type_ArrayOfInt[0]));
-      break;
-      if (m == 16) {
-        this.jdField_a_of_type_JavaUtilList.add(paramContext.getString(jdField_a_of_type_ArrayOfInt[i]));
-      }
+      paramMessageForArkApp = new JSONObject();
+      paramMessageForArkApp.put("uin", paramMessageForApollo.senderuin);
+      paramMessageForArkApp.put("nickname", ((alvd)localObject1).a.get(paramMessageForApollo.senderuin));
+      paramMessageForArkApp.put("avatarUrl", ((alvd)localObject1).b.get(paramMessageForApollo.senderuin));
+      ((JSONArray)localObject2).put(paramMessageForArkApp);
+      localJSONObject2.put("players", localObject2);
     }
-  }
-  
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
-  {
-    alnm localalnm = a(paramView, paramRecentBaseData);
-    if (localalnm == null) {
-      return;
-    }
-    a(paramRecentBaseData, (BaseActivity)paramContext, paramDrawable, localalnm);
-    a(localalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-    VipUtils.a(paramView);
-    float f = bhlo.a();
-    a(paramView, paramRecentBaseData, paramContext, localalnm, f);
-    a(paramRecentBaseData, localalnm);
-    paramDrawable = paramRecentBaseData.mExtraInfo;
-    if (paramDrawable != null) {}
-    for (paramDrawable = paramDrawable.toString();; paramDrawable = "")
+    paramMessageForArkApp = new JSONObject();
+    paramMessageForArkApp.put("uin", paramMessageForApollo.senderuin);
+    paramMessageForArkApp.put("nickname", ((alvd)localObject1).a.get(paramMessageForApollo.senderuin));
+    paramMessageForArkApp.put("avatarUrl", ((alvd)localObject1).b.get(paramMessageForApollo.senderuin));
+    ((JSONArray)localObject2).put(paramMessageForArkApp);
+    if (paramMessageForApollo.isSend()) {}
+    for (paramMessageForArkApp = paramMessageForApollo.frienduin;; paramMessageForArkApp = paramMessageForApollo.selfuin)
     {
-      localalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramDrawable, 2);
-      localalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramRecentBaseData.mShowTime, 0);
-      localalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleName);
-      if (!TextUtils.isEmpty(paramRecentBaseData.mTitleNameCs)) {
-        localalnm.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleNameCs);
-      }
-      a(paramRecentBaseData, (BaseActivity)paramContext, localalnm, f);
-      b(paramRecentBaseData, localalnm);
-      f(paramRecentBaseData, localalnm);
-      c(paramRecentBaseData, localalnm);
-      d(paramRecentBaseData, localalnm);
-      a(paramView, paramRecentBaseData, paramContext, localalnm);
-      e(paramRecentBaseData, localalnm);
-      if (AppSetting.c) {
-        paramView.setContentDescription(paramRecentBaseData.mContentDesc);
-      }
-      localalnm.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.a(paramRecentBaseData.getFaceExtraFlag());
-      a(localalnm, paramContext);
-      a(paramRecentBaseData, localalnm, paramContext);
+      JSONObject localJSONObject3 = new JSONObject();
+      localJSONObject3.put("uin", paramMessageForArkApp);
+      localJSONObject3.put("nickname", ((alvd)localObject1).a.get(paramMessageForArkApp));
+      localJSONObject3.put("avatarUrl", ((alvd)localObject1).b.get(paramMessageForArkApp));
+      ((JSONArray)localObject2).put(localJSONObject3);
+      localJSONObject2.put("players", localObject2);
+      break;
+    }
+    label884:
+    localJSONObject2.put("winList", paramMessageForArkApp);
+    long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    long l1 = l2;
+    if (l2 < paramMessageForApollo.time) {
+      l1 = paramMessageForApollo.time;
+    }
+    localJSONObject2.put("currentTime", l1);
+    for (;;)
+    {
+      localJSONObject1.put("gameArk", localJSONObject2);
+      localArkAppMessage.metaList = localJSONObject1.toString();
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("RecentEfficientItemBuilder", 2, "bindView end");
-      return;
+      QLog.d("QQ_CmGame_CmGameTemp", 2, localArkAppMessage.metaList);
+      return localMessageForArkApp;
+      localJSONObject2.put("roomCapacity", paramMessageForApollo.roomVol);
+      paramMessageForApollo = a(paramMessageForApollo.playerList, paramMessageForApollo.istroop, paramMessageForApollo.frienduin);
+      if ((paramMessageForApollo != null) && (paramMessageForApollo.length() > 0))
+      {
+        localJSONObject2.put("players", paramMessageForApollo);
+        continue;
+        paramMessageForArkApp = new JSONArray();
+        localObject1 = paramMessageForApollo.winnerList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          paramMessageForArkApp.put(String.valueOf((Long)((Iterator)localObject1).next()));
+        }
+        localJSONObject2.put("winList", paramMessageForArkApp);
+        localJSONObject2.put("overType", paramMessageForApollo.overType);
+        paramMessageForArkApp = a(paramMessageForApollo.playerList, paramMessageForApollo.istroop, paramMessageForApollo.frienduin);
+        if ((paramMessageForArkApp != null) && (paramMessageForArkApp.length() > 0)) {
+          localJSONObject2.put("players", paramMessageForArkApp);
+        }
+        localJSONObject2.put("wording", paramMessageForApollo.winRecord);
+        continue;
+        localObject2 = ((amir)paramMessageForArkApp.getManager(155)).a(paramMessageForApollo.gameId);
+        paramMessageForArkApp = amtj.a(2131699503);
+        if (!TextUtils.isEmpty(paramMessageForApollo.gameName)) {
+          paramMessageForArkApp = paramMessageForApollo.gameName;
+        }
+        if (localObject2 != null) {
+          paramMessageForArkApp = ((ApolloGameData)localObject2).name;
+        }
+        if (localObject1 != null)
+        {
+          localJSONObject2.put("summary", ((JSONObject)localObject1).optString("summary"));
+          localJSONObject2.put("picUrl", ((JSONObject)localObject1).optString("picUrl"));
+        }
+        localJSONObject2.put("title", paramMessageForArkApp);
+        localJSONObject2.put("gameMode", paramMessageForApollo.mGameMode);
+        continue;
+        label1273:
+        localObject1 = null;
+        break label400;
+        break label496;
+        label1282:
+        switch (i)
+        {
+        }
+      }
     }
   }
   
-  protected boolean a(RecentBaseData paramRecentBaseData)
+  /* Error */
+  public String a(String paramString)
   {
-    int i = paramRecentBaseData.getRecentUserType();
-    return (i == 0) || (i == 1000) || (i == 1004) || (i == 1003) || (i == 10004) || (i == 1021) || (i == 1022) || (i == 1023) || (i == 10008);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 19	alnl:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   5: ifnull +12 -> 17
+    //   8: aload_1
+    //   9: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   12: istore_2
+    //   13: iload_2
+    //   14: ifeq +9 -> 23
+    //   17: aconst_null
+    //   18: astore_3
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: aload_3
+    //   22: areturn
+    //   23: getstatic 19	alnl:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   26: aload_1
+    //   27: invokevirtual 426	com/tencent/util/LRULinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: checkcast 106	java/lang/String
+    //   33: astore 4
+    //   35: aload 4
+    //   37: astore_3
+    //   38: aload 4
+    //   40: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   43: ifeq -24 -> 19
+    //   46: aload_0
+    //   47: aload_1
+    //   48: invokespecial 428	alnl:a	(Ljava/lang/String;)V
+    //   51: aconst_null
+    //   52: astore_3
+    //   53: goto -34 -> 19
+    //   56: astore_1
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: aload_1
+    //   60: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	61	0	this	alnl
+    //   0	61	1	paramString	String
+    //   12	2	2	bool	boolean
+    //   18	35	3	localObject	Object
+    //   33	6	4	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	56	finally
+    //   23	35	56	finally
+    //   38	51	56	finally
+  }
+  
+  public void a(MessageForApollo paramMessageForApollo)
+  {
+    MessageForArkApp localMessageForArkApp = a(paramMessageForApollo, paramMessageForApollo.mApolloGameArkMsg);
+    if ((localMessageForArkApp == null) || (localMessageForArkApp.ark_app_message == null)) {
+      return;
+    }
+    if (paramMessageForApollo.istroop == 1036)
+    {
+      a(paramMessageForApollo, "UpdateSocialGame", localMessageForArkApp.ark_app_message.metaList);
+      return;
+    }
+    a(paramMessageForApollo, "UpdateGameAioView", localMessageForArkApp.ark_app_message.metaList);
+  }
+  
+  public void a(MessageForApollo paramMessageForApollo, String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramMessageForApollo == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "eventName:", paramString1, ",data:", paramString2 });
+    }
+    paramMessageForApollo = a(paramMessageForApollo);
+    try
+    {
+      ArkAppCenter.a(paramMessageForApollo, paramString1, paramString2, "json");
+      return;
+    }
+    catch (Throwable paramMessageForApollo)
+    {
+      QLog.e("QQ_CmGame_CmGameTemp", 1, paramMessageForApollo, new Object[0]);
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 19	alnl:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   5: ifnull +19 -> 24
+    //   8: aload_1
+    //   9: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   12: ifne +12 -> 24
+    //   15: aload_2
+    //   16: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   19: istore_3
+    //   20: iload_3
+    //   21: ifeq +6 -> 27
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: return
+    //   27: getstatic 19	alnl:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   30: aload_1
+    //   31: aload_2
+    //   32: invokevirtual 457	com/tencent/util/LRULinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   35: pop
+    //   36: goto -12 -> 24
+    //   39: astore_1
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: aload_1
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	44	0	this	alnl
+    //   0	44	1	paramString1	String
+    //   0	44	2	paramString2	String
+    //   19	2	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	39	finally
+    //   27	36	39	finally
   }
 }
 

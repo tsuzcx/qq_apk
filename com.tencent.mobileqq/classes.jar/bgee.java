@@ -1,94 +1,115 @@
-import android.text.TextUtils;
-import javax.annotation.Nullable;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.CustomOnlineStatusManager.1;
+import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class bgee
-  implements wiq
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final ArrayList<WeakReference<Runnable>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int b = 30000;
+  private int c = -1;
   
-  public bgee()
+  public static bgee a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    return bgef.a();
   }
   
-  @Nullable
-  public JSONObject a(int paramInt)
+  private final void a()
   {
-    int j = 1;
-    int i = 1;
-    JSONObject localJSONObject = new JSONObject();
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("CustomOnlineStatusManager", 4, "resetOnEnableToggle");
     }
-    while (paramInt != 0)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  private void b()
+  {
+    ThreadManager.getUIHandler().post(new CustomOnlineStatusManager.1(this));
+  }
+  
+  public final String a()
+  {
+    if (a())
     {
-      return null;
-      paramInt = i;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      long l = System.currentTimeMillis();
+      if (Math.abs(this.jdField_a_of_type_Long - l) > this.b)
       {
-        localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
-        paramInt = 0;
-        continue;
-        paramInt = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
-          paramInt = 0;
+        this.jdField_a_of_type_Long = l;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("CustomOnlineStatusManager", 4, "sync owner status");
         }
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          localJSONObject.put("fake_url", this.jdField_b_of_type_JavaLangString);
-          paramInt = 0;
-        }
+        bgeg.a();
+      }
+      if (bgeg.a(this.jdField_a_of_type_Int)) {
+        return this.jdField_a_of_type_JavaLangString;
       }
     }
-    return localJSONObject;
+    return "";
   }
   
-  public void a(JSONObject paramJSONObject)
+  public final void a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("raw_url");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("fake_url");
+    this.jdField_a_of_type_Int = bgeg.b(paramCustomOnlineStatusMsg);
+    this.jdField_a_of_type_JavaLangString = bgeg.a(paramCustomOnlineStatusMsg);
+    this.b = bgeg.a(paramCustomOnlineStatusMsg);
+    b();
   }
   
-  public void copy(Object paramObject)
+  public void a(Runnable paramRunnable)
   {
-    if ((paramObject instanceof bgee))
-    {
-      paramObject = (bgee)paramObject;
-      if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
-      }
-      if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
-      }
-      if (paramObject.jdField_a_of_type_Int != -1) {
-        this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
-      }
-      if (paramObject.jdField_b_of_type_Int != -1) {
-        this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
-      }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramRunnable));
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
     }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
   }
   
-  public boolean equals(Object paramObject)
+  public final boolean a()
   {
-    if ((paramObject instanceof bgee))
+    int j = this.c;
+    aqgd localaqgd = (aqgd)apub.a().a(479);
+    if ((localaqgd == null) || (localaqgd.a)) {}
+    for (int i = 1;; i = 0)
     {
-      paramObject = (bgee)paramObject;
-      if ((this.jdField_b_of_type_JavaLangString != null) && (paramObject.jdField_b_of_type_JavaLangString != null)) {
-        return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
+      this.c = i;
+      if (j != this.c) {
+        a();
       }
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "featureEnable = " + this.c);
+      }
+      if (this.c != 1) {
+        break;
+      }
+      return true;
     }
     return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (paramString != null) {
+        return Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b;
+      }
+    }
+    return true;
   }
 }
 

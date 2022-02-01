@@ -1,42 +1,49 @@
-import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.qqwallet.QWalletPubAdReport.QueryRsp;
 
-public class ajvm
-  extends azov
+class ajvm
+  implements BusinessObserver
 {
-  private ajvm(PhoneContactFragment paramPhoneContactFragment) {}
+  ajvm(ajvl paramajvl) {}
   
-  private void g(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.jdField_a_of_type_Long));
     }
-    if (this.a.c)
+    try
     {
-      if (PhoneContactFragment.a(this.a) != null) {
-        PhoneContactFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+      paramBundle = paramBundle.getByteArray("data");
+      if ((paramBundle != null) && (paramBoolean))
+      {
+        QWalletPubAdReport.QueryRsp localQueryRsp = new QWalletPubAdReport.QueryRsp();
+        localQueryRsp.mergeFrom(paramBundle);
+        paramInt = localQueryRsp.ret.get();
+        if (paramInt == 0)
+        {
+          ajvj.a(this.a.jdField_a_of_type_Ajvj, localQueryRsp.pv_flag.get());
+          ajvj.a(this.a.jdField_a_of_type_Ajvj, localQueryRsp);
+          if (QLog.isColorLevel()) {
+            QLog.i("QWalletGdtAdManager", 2, "doReqAdsControl onReceive: retCode:" + localQueryRsp.ret.get() + ",msg:" + localQueryRsp.msg.get());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.e("QWalletGdtAdManager", 2, "onReceive fail,retCode:" + paramInt);
+          return;
+        }
       }
-      if (paramBoolean) {
-        this.a.c();
-      }
-      this.a.c = false;
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    catch (Throwable paramBundle)
+    {
+      paramBundle.printStackTrace();
+      QLog.e("QWalletGdtAdManager", 1, "onReceive fail exception:" + paramBundle.getMessage());
     }
-    g(paramBoolean1);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    this.a.c();
   }
 }
 

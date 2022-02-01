@@ -1,17 +1,16 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import boyv;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 
-public final class FaceChangeUtils$3
+final class FaceChangeUtils$3
   implements Runnable
 {
-  public FaceChangeUtils$3(PTFaceAttr[] paramArrayOfPTFaceAttr, Bitmap paramBitmap) {}
+  FaceChangeUtils$3(PTFaceAttr[] paramArrayOfPTFaceAttr, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ArrayOfComTencentTtpicOpenapiPTFaceAttr[0] = boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.val$result[0] = FaceChangeUtils.detectFace(this.val$bitmap);
   }
 }
 

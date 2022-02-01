@@ -1,26 +1,18 @@
-import com.tencent.av.share.AVSchema;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class lyl
-  implements aebz
+class lyl
+  implements DialogInterface.OnDismissListener
 {
-  public lyl(AVSchema paramAVSchema, long paramLong) {}
+  lyl(lyh paramlyh, long paramLong) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onCancel, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
-  }
-  
-  public void b()
-  {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onBeforeStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
-  }
-  
-  public void c()
-  {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onAfterStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+    QLog.w("ShareChat", 1, "ActionSheet.onDismiss, mChoosedLinkType[" + this.jdField_a_of_type_Lyh.b + "], mIHandle[" + this.jdField_a_of_type_Lyh.jdField_a_of_type_Lym + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if ((this.jdField_a_of_type_Lyh.b == -1) && (this.jdField_a_of_type_Lyh.jdField_a_of_type_Lym != null)) {
+      this.jdField_a_of_type_Lyh.a(this.jdField_a_of_type_Lyh.jdField_a_of_type_Int, this.jdField_a_of_type_Lyh.b, 1);
+    }
   }
 }
 

@@ -1,17 +1,41 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public class auqq
-  implements CompoundButton.OnCheckedChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback"}, k=3, mv={1, 1, 16})
+final class auqq
+  implements zop
 {
-  public auqq(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  auqq(int paramInt, auoy paramauoy, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public final void callback(Bundle paramBundle)
   {
-    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    boolean bool1 = paramBundle.getBoolean("enable");
+    boolean bool2 = paramBundle.getBoolean("success");
+    QLog.i("AudioRoomSettingHandler", 1, "handleSetTmpMsgPushSetting: toStatus=" + this.jdField_a_of_type_Int + " result=" + bool2 + " nowStatus=" + bool1);
+    auoy localauoy = this.jdField_a_of_type_Auoy;
+    String str = this.jdField_a_of_type_JavaLangString;
+    JSONObject localJSONObject = new JSONObject();
+    if (bool2)
+    {
+      paramBundle = "success";
+      localJSONObject.put("result", paramBundle);
+      paramBundle = new JSONObject();
+      if (!bool1) {
+        break label157;
+      }
+    }
+    label157:
+    for (int i = 1;; i = 0)
+    {
+      paramBundle.put("pushSwitch", i);
+      localJSONObject.put("data", paramBundle);
+      localauoy.callJs(str, new String[] { localJSONObject.toString() });
+      return;
+      paramBundle = "fail";
+      break;
+    }
   }
 }
 

@@ -1,17 +1,12 @@
-import com.tencent.image.URLDrawableHandler;
-
-public class beyj
+class beyj
+  implements bfku
 {
-  public int a;
-  public URLDrawableHandler a;
-  public String a;
+  beyj(beyh parambeyh, boolean paramBoolean) {}
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Beyh.a = 1;
+    this.jdField_a_of_type_Beyh.a(this.jdField_a_of_type_Boolean);
   }
 }
 

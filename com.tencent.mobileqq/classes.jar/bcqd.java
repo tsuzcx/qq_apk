@@ -1,82 +1,30 @@
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.studyroom.utils.PluginUtils.1;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class bcqd
 {
-  private int jdField_a_of_type_Int;
-  private DataLineMsgRecord jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private Long jdField_b_of_type_JavaLangLong;
-  
-  public bcqd(String paramString, Long paramLong, DataLineMsgRecord paramDataLineMsgRecord)
+  public static Future<?> a(Context paramContext, Bundle paramBundle, boolean paramBoolean, bcqe parambcqe)
   {
-    this.jdField_b_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = ((this.jdField_a_of_type_JavaLangString.length() + 160 - 1) / 160);
-    if (i < this.jdField_a_of_type_JavaLangString.length())
-    {
-      if (i + 160 > this.jdField_a_of_type_JavaLangString.length()) {}
-      for (int j = this.jdField_a_of_type_JavaLangString.length() - i;; j = 160)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(i, j + i));
-        i += 160;
-        break;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(StringBuffer paramStringBuffer)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return -1;
-    }
-    paramStringBuffer.append((String)this.jdField_a_of_type_JavaUtilArrayList.remove(0));
-    int i = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = (i + 1);
-    return i;
-  }
-  
-  public DataLineMsgRecord a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord;
-  }
-  
-  public ToServiceMsg a()
-  {
-    return this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  }
-  
-  public Long a()
-  {
-    return this.jdField_b_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramBundle.putString("qqVersion", "8.4.8");
+    paramBundle.putString("bizType", "StudyRoom");
+    paramBundle.putString("plugin_id", "StudyRoom");
+    paramBundle.putString("appid", "101854111");
+    paramBundle.putInt("authtype", 1);
+    paramBundle.putInt("isGroupCode", 1);
+    paramBundle.putInt("roomCodeType", 1);
+    paramBundle.putString("uin", localQQAppInterface.getCurrentUin());
+    paramBundle.putBoolean("preload", paramBoolean);
+    paramBundle.putString("fromId", "1");
+    paramBundle.putLong("ts_click_millisecond", System.currentTimeMillis());
+    paramBundle.putBoolean("show_status_bar", true);
+    return ThreadManagerExecutor.getExecutorService(192).submit(new PluginUtils.1(paramContext, paramBundle, parambcqe));
   }
 }
 

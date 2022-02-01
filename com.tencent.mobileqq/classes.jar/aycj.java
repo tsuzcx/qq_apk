@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aycj
+class aycj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Comments.Comment paramComment, int paramInt);
+  aycj(aych paramaych) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
+  }
 }
 
 

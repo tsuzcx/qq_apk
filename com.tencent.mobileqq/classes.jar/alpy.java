@@ -1,8 +1,8 @@
-import android.view.View;
+import java.util.List;
 
 public abstract interface alpy
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract void a(boolean paramBoolean, String paramString1, List<alpv> paramList, String paramString2);
 }
 
 

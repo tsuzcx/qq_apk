@@ -1,56 +1,101 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.12.1;
 import com.tencent.qphone.base.util.QLog;
 
-final class awxn
-  extends Drawable.ConstantState
+public class awxn
+  extends amsu
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Shader.TileMode jdField_a_of_type_AndroidGraphicsShader$TileMode = null;
-  boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int jdField_b_of_type_Int;
-  Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = null;
-  String[] jdField_b_of_type_ArrayOfJavaLangString;
-  int c = 119;
-  int d = 160;
+  public awxn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public awxn(awxy paramawxy)
+  public void a()
   {
-    if (paramawxy == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PngFrameDrawable", 2, "【ramdom magic】 png frame param is null.");
-      }
-      throw new IllegalArgumentException("【ramdom magic】 png frame param is null.");
+    boolean bool = this.a.g;
+    amsw localamsw = (amsw)this.a.app.getManager(51);
+    if (localamsw != null) {
+      bool = localamsw.b(NearbyPeopleProfileActivity.a(this.a).uin);
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramawxy.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramawxy.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_Int = paramawxy.c;
-    this.jdField_b_of_type_Int = paramawxy.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramawxy.jdField_a_of_type_Boolean;
+    for (;;)
+    {
+      if (bool != this.a.g)
+      {
+        this.a.g = bool;
+        this.a.runOnUiThread(new NearbyPeopleProfileActivity.12.1(this));
+      }
+      return;
+    }
   }
   
-  public int getChangingConfigurations()
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    return 0;
+    if ((paramSetting == null) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!NearbyPeopleProfileActivity.a(this.a).uin.equals(paramSetting.uin))) {
+      return;
+    }
+    if ((paramSetting.bFaceFlags & 0x20) != 0) {
+      this.a.l = 0;
+    }
+    for (;;)
+    {
+      this.a.b = paramSetting.url;
+      if (NearbyPeopleProfileActivity.a(this.a) != null) {
+        NearbyPeopleProfileActivity.a(this.a).k();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("Q.nearby_people_card.", 2, "onGetHeadInfo mheadSize is: " + this.a.l + " mGetHeadUrl is: " + this.a.b);
+      return;
+      if ((paramSetting.bFaceFlags & 0x10) != 0) {
+        this.a.l = 640;
+      } else if ((paramSetting.bFaceFlags & 0x8) != 0) {
+        this.a.l = 140;
+      } else if ((paramSetting.bFaceFlags & 0x4) != 0) {
+        this.a.l = 100;
+      } else {
+        this.a.l = 40;
+      }
+    }
   }
   
-  public Drawable newDrawable()
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    return new awxl(this, null, null);
+    if ((!paramBoolean1) || (!paramBoolean2) || (!paramBoolean3) || (TextUtils.isEmpty(paramString))) {}
+    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
+      return;
+    }
+    a();
   }
   
-  public Drawable newDrawable(Resources paramResources)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
+      return;
+    }
+    a();
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!paramBoolean1) || (!paramBoolean2)) {}
+    while ((this.a.e != 3) || (NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin))) {
+      return;
+    }
+    a();
+  }
+  
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PngFrameDrawable", 2, "func newDrawable");
+      QLog.i("Q.nearby_people_card.", 2, "onUpdateStangerHead: " + paramBoolean1 + "isStrangerHead: " + paramBoolean2);
     }
-    return new awxl(this, paramResources, null);
+    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (NearbyPeopleProfileActivity.a(this.a) != null) && (paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin)) && (paramBoolean2) && ((this.a.l == 640) || (this.a.l == 0)) && (!TextUtils.isEmpty(this.a.b)) && (!this.a.h)) {
+      this.a.a(paramString, this.a.l, this.a.b, true);
+    }
   }
 }
 

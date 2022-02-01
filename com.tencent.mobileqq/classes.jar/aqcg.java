@@ -1,50 +1,38 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
 
 public class aqcg
-  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public aqcg(ArkAppPreDownloadMgr.3.1 param1) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(aptx[] paramArrayOfaptx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
-    }
-    paramString = (QQAppInterface)aqcf.a(this.a.a.this$0).get();
-    if (paramString != null)
-    {
-      paramString = (bezv)paramString.getManager(193);
-      if (paramString != null)
+    QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[handleReadInJoyResetAllConfig] " + paramArrayOfaptx);
+    if (paramArrayOfaptx != null) {
+      try
       {
-        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
-          break label211;
+        if (paramArrayOfaptx.length > 0)
+        {
+          new pde();
+          int j = paramArrayOfaptx.length;
+          int i = 0;
+          while (i < j)
+          {
+            boolean bool = TextUtils.isEmpty(paramArrayOfaptx[i].a);
+            if (bool) {}
+            i += 1;
+          }
         }
-        long l = 0L;
-        paramAppPathInfo = new File(paramAppPathInfo.path);
-        if (paramAppPathInfo.exists()) {
-          l = paramAppPathInfo.length();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
-        }
-        paramString.a(this.a.a.a.a, l);
+        return;
+      }
+      catch (Exception paramArrayOfaptx)
+      {
+        QLog.e("ReadinjoyResetFunctionConfProcessor", 1, "[handleReadInJoyResetAllConfig] ", paramArrayOfaptx);
       }
     }
-    return;
-    label211:
-    paramString.a(this.a.a.a.a, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqcg
  * JD-Core Version:    0.7.0.1
  */

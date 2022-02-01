@@ -1,19 +1,37 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-final class akrs
-  implements DialogInterface.OnClickListener
+public class akrs
+  extends SosoInterface.OnLocationListener
 {
-  akrs(Activity paramActivity, String paramString1, String paramString2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akrs(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (paramInt == 0)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      akrn.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.a.a = paramSosoLbsInfo.mLocation.mLat02;
+      this.a.b = paramSosoLbsInfo.mLocation.mLon02;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+      }
+      if (FlowCameraActivity2.a(this.a) != null) {
+        FlowCameraActivity2.a(this.a);
+      }
     }
+    do
+    {
+      return;
+      this.a.a = 0.0D;
+      this.a.b = 0.0D;
+    } while (!QLog.isColorLevel());
+    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

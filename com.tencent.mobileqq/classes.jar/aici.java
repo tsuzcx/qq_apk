@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
 
-class aici
-  implements DialogInterface.OnClickListener
+public class aici
+  extends aliz
 {
-  aici(aibr paramaibr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.e();
-  }
+  public TextView a;
+  public PublicRecommendAccountInfo a;
+  public TextView b;
 }
 
 

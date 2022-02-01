@@ -1,52 +1,21 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aisz
+  extends anam
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  public aisz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public static aisz a(String paramString)
+  public void a()
   {
-    aisz localaisz = new aisz();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
-      {
-        localaisz.a(paramString.getBoolean("useRecommendedSticker"));
-        localaisz.a(paramString.getInt("maxMatchLength"));
-      }
-      return localaisz;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
     }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+    arbb localarbb = (arbb)EmoticonGroupStoreFragment.a(this.a).getManager(103);
+    if (localarbb != null) {
+      localarbb.b();
     }
-    return localaisz;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

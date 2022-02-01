@@ -186,17 +186,17 @@ final class ai
     //   403: dup
     //   404: getstatic 156	com/tencent/mobileqq/msf/core/ab:ac	Ljava/lang/String;
     //   407: invokespecial 159	java/io/File:<init>	(Ljava/lang/String;)V
-    //   410: astore 8
+    //   410: astore 7
     //   412: aload 5
     //   414: astore 4
-    //   416: aload 8
+    //   416: aload 7
     //   418: invokevirtual 163	java/io/File:exists	()Z
     //   421: istore_1
     //   422: iload_1
     //   423: ifne +391 -> 814
     //   426: aload 5
     //   428: astore 4
-    //   430: aload 8
+    //   430: aload 7
     //   432: invokevirtual 166	java/io/File:createNewFile	()Z
     //   435: istore_1
     //   436: iload_1
@@ -357,16 +357,16 @@ final class ai
     //   818: new 205	com/tencent/qphone/base/util/Cryptor
     //   821: dup
     //   822: invokespecial 206	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   825: astore 7
+    //   825: astore 8
     //   827: aload 5
     //   829: astore 4
     //   831: new 208	java/io/FileOutputStream
     //   834: dup
-    //   835: aload 8
+    //   835: aload 7
     //   837: invokespecial 211	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   840: astore 5
     //   842: aload 5
-    //   844: aload 7
+    //   844: aload 8
     //   846: getstatic 74	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
     //   849: invokevirtual 148	org/json/JSONObject:toString	()Ljava/lang/String;
     //   852: invokevirtual 215	java/lang/String:getBytes	()[B
@@ -545,7 +545,7 @@ final class ai
     //   1128	7	6	localObject8	Object
     //   1217	1	6	localException4	java.lang.Exception
     //   30	1048	7	localObject9	Object
-    //   410	656	8	localObject10	Object
+    //   825	241	8	localObject10	Object
     // Exception table:
     //   from	to	target	type
     //   430	436	812	java/lang/Exception

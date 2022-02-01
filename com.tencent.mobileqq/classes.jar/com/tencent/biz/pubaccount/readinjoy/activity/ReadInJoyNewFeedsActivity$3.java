@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import sup;
+import syp;
 
 class ReadInJoyNewFeedsActivity$3
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyNewFeedsActivity$3
   
   public void run()
   {
-    sup.a().b(this.this$0.app, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    syp.a().b(this.this$0.app, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

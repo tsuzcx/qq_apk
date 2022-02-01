@@ -1,22 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
+import com.tencent.qphone.base.util.QLog;
 
-class avjj
-  implements ViewSwitcher.ViewFactory
+public class avjj
+  implements avjg
 {
   avjj(avji paramavji) {}
   
-  public View makeView()
+  public void a(avjd paramavjd)
   {
-    CornerImageView localCornerImageView = new CornerImageView(avji.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(agej.a(30.0F, avji.a(this.a).getResources()) / 2);
-    return localCornerImageView;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
+    }
+    avji.a(this.a, paramavjd);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+    }
+    if (avji.a(this.a) != null) {
+      avji.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    }
   }
 }
 

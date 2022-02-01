@@ -1,6 +1,6 @@
 package com.tencent.common.app;
 
-import abiz;
+import aafi;
 import android.content.Context;
 
 public final class SafeModeUtil$1
@@ -10,7 +10,7 @@ public final class SafeModeUtil$1
   
   public void run()
   {
-    abiz.a(this.a, 2);
+    aafi.a(this.a, 2);
   }
 }
 

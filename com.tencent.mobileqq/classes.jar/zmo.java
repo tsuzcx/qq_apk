@@ -1,12 +1,8 @@
-class zmo
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+
+public abstract interface zmo
 {
-  static void a(String paramString1, String paramString2) {}
-  
-  static void b(String paramString1, String paramString2) {}
-  
-  static void c(String paramString1, String paramString2) {}
-  
-  static void d(String paramString1, String paramString2) {}
+  public abstract void b(CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 

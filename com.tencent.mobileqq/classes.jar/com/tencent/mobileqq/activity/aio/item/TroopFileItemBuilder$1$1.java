@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import antz;
+import amoo;
 
 class TroopFileItemBuilder$1$1
   implements Runnable
 {
-  TroopFileItemBuilder$1$1(TroopFileItemBuilder.1 param1, antz paramantz) {}
+  TroopFileItemBuilder$1$1(TroopFileItemBuilder.1 param1, amoo paramamoo) {}
   
   public void run()
   {

@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
-public class aszj
-  implements atds
+public abstract interface aszj
 {
-  public aszj(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public abstract void onNo();
   
-  public void a(String paramString, int paramInt)
-  {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
-  }
+  public abstract void onYes();
 }
 
 

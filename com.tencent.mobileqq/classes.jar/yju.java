@@ -1,16 +1,34 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import java.util.List;
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
 
-public class yju
-  extends wip
+public abstract class yju<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  public List<MomeriesYearNode> a;
-  public boolean a;
+  protected long a;
+  private final String a;
+  private long b;
   
-  public yju(yjr paramyjr, ErrorMessage paramErrorMessage)
+  public yju()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+  }
+  
+  public void call(IN paramIN)
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
+  }
+  
+  public void notifyError(Error paramError)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
+  }
+  
+  public void notifyResult(OUT paramOUT)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
 }
 

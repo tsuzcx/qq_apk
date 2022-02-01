@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 
-final class yzw
-  implements Animation.AnimationListener
+public abstract interface yzw
 {
-  yzw(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a(MotionEvent paramMotionEvent, RecyclerView paramRecyclerView);
 }
 
 

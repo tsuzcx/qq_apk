@@ -1,230 +1,56 @@
-import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class apfb
+  extends apfa
 {
-  private int jdField_a_of_type_Int;
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private HashSet<Integer> jdField_b_of_type_JavaUtilHashSet;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  public boolean b;
+  public Rect c;
+  public Rect d;
+  public int e;
+  public String e;
+  public String f = "";
   
-  public apfb(int paramInt, String... paramVarArgs)
+  public apfb()
   {
-    try
-    {
-      this.e = true;
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new apff(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new apfg(this));
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        int j = paramVarArgs.length;
-        paramInt = i;
-        while (paramInt < j)
-        {
-          String str = paramVarArgs[paramInt];
-          if (!TextUtils.isEmpty(str))
-          {
-            i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-            this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
-            if (QLog.isColorLevel()) {
-              QLog.d("ARMusicController", 2, "load file:" + str + ", id=" + i);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
   }
   
-  public apfb(String paramString1, String paramString2)
+  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    try
+    if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new apfc(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new apfd(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new apfe(this));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
-      try
+      super.a(paramInt, paramString, paramJSONObject);
+      paramString = BaseApplicationImpl.getContext();
+      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
+      this.b = paramJSONObject.optBoolean("passive_rotate", false);
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      this.f = paramJSONObject.optString("end_align", "");
+      if (paramJSONObject.has("start_rect"))
       {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        return;
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
+        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_c_of_type_AndroidGraphicsRect.left = AIOUtils.dp2px(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.top = AIOUtils.dp2px(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.right = AIOUtils.dp2px(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.bottom = AIOUtils.dp2px(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
       }
-      catch (IOException paramString1)
+      if (paramJSONObject.has("end_rect"))
       {
-        paramString1.printStackTrace();
-        return;
+        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
+        this.d = new Rect();
+        this.d.left = AIOUtils.dp2px(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.d.top = AIOUtils.dp2px(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.d.right = AIOUtils.dp2px(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.d.bottom = AIOUtils.dp2px(paramJSONObject.getInt(3) / 2, paramString.getResources());
       }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    int i;
-    for (;;)
-    {
-      try
-      {
-        if (!this.e) {
-          return;
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-        {
-          i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("ARMusicController", 2, "playSound path=" + paramString + ", id=" + i);
-          }
-          if (i == -1) {
-            return;
-          }
-          if (!this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(i))) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidMediaSoundPool.play(i, 1.0F, 1.0F, 1, 0, 1.0F);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ARMusicController", 2, paramString, new Object[0]);
-        return;
-      }
-      i = -1;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i));
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!new File(paramString).exists())
-        {
-          QLog.d("ARMusicController", 2, "playBgMusic file not exist" + paramString);
-          return;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        }
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        this.d = paramBoolean2;
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ARMusicController", 2, "playBgMusic exception", paramString);
-        return;
-      }
-      QLog.d("ARMusicController", 1, "playBgMusic exception" + paramString.getMessage());
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ARMusicController", 2, "playBgMusic : " + this.jdField_a_of_type_JavaLangString);
-        return;
-        this.d = true;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "stopAllMusic");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-      this.jdField_b_of_type_JavaUtilHashSet = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }

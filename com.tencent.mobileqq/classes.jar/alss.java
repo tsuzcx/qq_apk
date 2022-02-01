@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alss
-  implements altn
+  implements AdapterView.OnItemClickListener
 {
-  public alss(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public alss(CmGameDebugView paramCmGameDebugView) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    EditLocalVideoActivity.a(this.a, paramString);
-    EditLocalVideoActivity.g(this.a);
-  }
-  
-  public void b()
-  {
-    QQToast.a(this.a, 2131694321, 1).a();
+    CmGameDebugView.a(this.a, paramInt);
+    this.a.a(paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

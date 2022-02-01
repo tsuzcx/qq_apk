@@ -1,6 +1,6 @@
-public abstract interface ulg
+class ulg
 {
-  public abstract void a(boolean paramBoolean);
+  private static final ulf a = new ulf(null);
 }
 
 

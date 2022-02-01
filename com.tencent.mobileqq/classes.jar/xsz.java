@@ -1,8 +1,21 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface xsz
+class xsz
+  extends SimpleJob<Object>
 {
-  public abstract void a(View paramView, float paramFloat);
+  xsz(xsy paramxsy, String paramString1, String paramString2)
+  {
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    xss.a(this.jdField_a_of_type_Xsy.a.a).a(this.jdField_a_of_type_JavaLangString);
+    return null;
+  }
 }
 
 

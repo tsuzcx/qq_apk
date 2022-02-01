@@ -2,12 +2,12 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,7 +27,7 @@ public abstract class ApkgBaseInfo
   public static final int DOMIAN_TYPE_UPLOAD = 3;
   public static final int DOMIAN_TYPE_WEBSOCKET = 1;
   public static final int DOMIAN_TYPE_WEBVIEW = 4;
-  public static boolean isRdmBuild = bmsw.a().toLowerCase().contains("rdm");
+  public static boolean isRdmBuild = QUA.getQUA3().toLowerCase().contains("rdm");
   private static String mCurWhiteListConfig;
   private static ArrayList<String> sDominWhiteList;
   public String apkgFolderPath;
@@ -238,7 +238,7 @@ public abstract class ApkgBaseInfo
     } while (isDomainConfigCached(localDomainConfig, paramInt));
     if ((localDomainConfig != null) && (!TextUtils.isEmpty(localDomainConfig.host)))
     {
-      if ((this.appConfig != null) && (this.appConfig.config != null))
+      if (this.appConfig.config != null)
       {
         localObject1 = this.appConfig.config.requestDomainList;
         switch (paramInt)
@@ -255,7 +255,7 @@ public abstract class ApkgBaseInfo
           for (;;)
           {
             if (!((Iterator)localObject1).hasNext()) {
-              break label694;
+              break label686;
             }
             Object localObject2 = (String)((Iterator)localObject1).next();
             try
@@ -265,7 +265,7 @@ public abstract class ApkgBaseInfo
               }
               localObject2 = DomainConfig.getDomainConfig(((String)localObject2).toLowerCase(), true);
               if (!DomainConfig.isDomainConfigMatch((DomainConfig)localObject2, localDomainConfig)) {
-                break label652;
+                break label644;
               }
               putDomainConfigToCache(localDomainConfig, paramInt);
               return true;
@@ -283,12 +283,12 @@ public abstract class ApkgBaseInfo
             break;
             localObject1 = this.appConfig.config.businessDomainList;
             break;
-            label652:
+            label644:
             QLog.i("[mini] http.domainValid", 1, "request:" + localDomainConfig + ",allow:" + localThrowable2);
           }
         }
       }
-      label694:
+      label686:
       localObject1 = getDomainWhiteList();
       try
       {

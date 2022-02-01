@@ -1,6 +1,6 @@
 package com.tencent.common;
 
-import boem;
+import bljd;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import java.io.File;
@@ -11,7 +11,7 @@ public class GifUtil
   {
     try
     {
-      boem.a();
+      bljd.a();
       System.load(new File(FeatureManager.getSoDir(), "libgiflossy.so").getPath());
       return;
     }

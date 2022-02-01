@@ -1,19 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class nlv
+class nlv
+  implements AbsListView.OnScrollListener
 {
-  TroopMemberApiService a;
+  nlv(nlt paramnlt, PoiMapActivity paramPoiMapActivity) {}
   
-  public nlv(TroopMemberApiService paramTroopMemberApiService)
-  {
-    this.a = paramTroopMemberApiService;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramBundle == null) {}
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Nlt.jdField_a_of_type_Nlq.b))
+    {
+      this.jdField_a_of_type_Nlt.b(false);
+      if (!PoiMapActivity.b(this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
+        this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      }
+    }
   }
 }
 

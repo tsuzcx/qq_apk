@@ -1,15 +1,31 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aqta
-  extends GestureDetector.SimpleOnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  aqta(aqsy paramaqsy) {}
+  aqta(aqsz paramaqsz) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aqsy.a(this.a);
-    return true;
+    EditText localEditText = (EditText)((QQCustomDialog)paramDialogInterface).findViewById(2131371622);
+    paramDialogInterface = (EditText)((QQCustomDialog)paramDialogInterface).findViewById(2131361952);
+    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
+    {
+      QQToast.a(this.a.a.getActivity(), 1, amtj.a(2131701910), 0).a();
+      return;
+    }
+    aqtx localaqtx = new aqtx();
+    localaqtx.a = localEditText.getText().toString();
+    localaqtx.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
+    localaqtx.jdField_b_of_type_Boolean = true;
+    aqtu.a().a(localaqtx);
+    this.a.a.a.notifyDataSetChanged();
   }
 }
 

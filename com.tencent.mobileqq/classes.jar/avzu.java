@@ -1,18 +1,9 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
 
-class avzu
-  implements awag
+public abstract interface avzu
 {
-  avzu(avzt paramavzt, String paramString) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      avzt.a(this.jdField_a_of_type_Avzt).c(2131695007);
-      avzt.a(this.jdField_a_of_type_Avzt).show();
-    }
-  }
+  public abstract void b(View paramView, MotionEvent paramMotionEvent);
 }
 
 

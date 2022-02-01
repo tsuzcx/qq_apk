@@ -1,24 +1,34 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-class awbz
-  implements aasd
+public class awbz
+  implements BusinessObserver
 {
-  awbz(awby paramawby) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
   
-  public void callback(Bundle paramBundle)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 90)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    }
+    switch (paramInt)
     {
-      awby.a(this.a, paramBundle.getInt("state"));
-      awby.a(this.a, awby.a(this.a), awby.b(this.a));
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
+      }
+      break;
     }
-    while (i != 91) {
+    do
+    {
       return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    awby.a(this.a, i, paramBundle);
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    Map localMap = (Map)paramObject[0];
+    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
   }
 }
 

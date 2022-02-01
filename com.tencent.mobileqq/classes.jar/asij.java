@@ -1,6 +1,19 @@
-public abstract interface asij
+import android.os.Bundle;
+
+class asij
+  implements asit
 {
-  public abstract void a(int paramInt);
+  asij(asii paramasii) {}
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    asii.a(this.a, paramString);
+  }
+  
+  public void a(String paramString, asis paramasis)
+  {
+    asii.a(this.a, paramString, paramasis);
+  }
 }
 
 

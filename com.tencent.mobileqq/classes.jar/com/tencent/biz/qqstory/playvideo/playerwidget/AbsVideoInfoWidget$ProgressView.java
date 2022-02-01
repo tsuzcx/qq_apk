@@ -27,9 +27,9 @@ public class AbsVideoInfoWidget$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561929, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373039));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378603));
+    LayoutInflater.from(paramContext).inflate(2131561806, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373009));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378367));
   }
   
   public void setProgressText(CharSequence paramCharSequence)

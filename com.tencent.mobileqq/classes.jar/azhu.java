@@ -1,13 +1,8 @@
-import android.graphics.drawable.Drawable;
-import android.widget.TextView;
-
 public abstract interface azhu
 {
-  public abstract TextView a();
+  public abstract void a(float paramFloat);
   
-  public abstract void a(Drawable paramDrawable, String paramString);
-  
-  public abstract void a(String paramString, Drawable paramDrawable);
+  public abstract void a(boolean paramBoolean);
 }
 
 

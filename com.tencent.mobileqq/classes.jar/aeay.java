@@ -1,13 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aeay
-  implements DialogInterface.OnClickListener
+public class aeay
+  implements bdbg
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aeay(QQSettingMe paramQQSettingMe) {}
+  
+  public void a(Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    mru.b();
+    this.a.m();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.m();
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (i == 2)
+        {
+          this.a.m();
+          return;
+        }
+      } while (i != 3);
+      if (!(this.a.jdField_c_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        break;
+      }
+      i = paramBundle.getInt("percent");
+      paramBundle = String.valueOf(i) + "%";
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramBundle);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+    return;
+    if (QQSettingMe.f(this.a)) {}
+    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130845961);; localDrawable = this.a.a.getResources().getDrawable(2130845962))
+    {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      if (!(localDrawable instanceof Animatable)) {
+        break;
+      }
+      ((Animatable)localDrawable).start();
+      break;
+    }
   }
 }
 

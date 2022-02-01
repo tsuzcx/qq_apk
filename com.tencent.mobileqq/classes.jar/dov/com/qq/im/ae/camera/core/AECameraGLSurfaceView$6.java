@@ -7,7 +7,7 @@ class AECameraGLSurfaceView$6
   
   public void run()
   {
-    AECameraGLSurfaceView.c(this.this$0);
+    AECameraGLSurfaceView.access$500(this.this$0);
   }
 }
 

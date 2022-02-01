@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
 
 class pux
-  implements View.OnClickListener
+  implements rgq<oidb_cmd0x977.FollowStatusInfo, rcz>
 {
-  pux(puw parampuw, ppu paramppu) {}
+  pux(puw parampuw) {}
   
-  public void onClick(View paramView)
+  public rcz a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
   {
-    sel.a(this.jdField_a_of_type_Ppu.a(), 0, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l = paramFollowStatusInfo.uint64_uin.get();
+    rcz localrcz = new rcz();
+    localrcz.a(Long.valueOf(l));
+    localrcz.a(Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()));
+    localrcz.a(paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8());
+    localrcz.b(paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    localrcz.a(puw.a(this.a, paramFollowStatusInfo.enum_status.get()));
+    return localrcz;
   }
 }
 

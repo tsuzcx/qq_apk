@@ -1,24 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
-class ajyy
-  implements DialogInterface.OnClickListener
+public class ajyy
+  implements View.OnFocusChangeListener
 {
-  ajyy(ajyt paramajyt, ArrayList paramArrayList, int paramInt) {}
+  public ajyy(LingHbFragment paramLingHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    ajyt.a(this.jdField_a_of_type_Ajyt, true);
-    ajyt.a(this.jdField_a_of_type_Ajyt).a(1);
-    ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (bhnv.d(BaseApplicationImpl.getContext()))
-    {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      ajyt.a(this.jdField_a_of_type_Ajyt).b(paramInt);
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
     }
-    ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_JavaUtilArrayList);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
+      return;
+      LingHbFragment.a(this.a).a();
+    }
   }
 }
 

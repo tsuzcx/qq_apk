@@ -1,16 +1,16 @@
 package com.tencent.util;
 
-import antf;
-import bhmi;
-import bhmq;
+import bfvo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import fd;
 import java.io.File;
 import java.io.IOException;
-import zom;
+import ypi;
 
 public final class AutoSaveUtils$1
   implements Runnable
@@ -21,12 +21,12 @@ public final class AutoSaveUtils$1
   {
     File localFile = new File(this.jdField_a_of_type_JavaLangString);
     Object localObject1 = localFile.getAbsolutePath();
-    String str2 = antf.bn;
+    String str2 = AppConstants.SDCARD_IMG_CAMERA;
     new File(str2).mkdirs();
     String str1 = Utils.Crc64String((String)localObject1);
     if (!str1.contains(".")) {
       if (this.jdField_a_of_type_Boolean) {
-        localObject1 = bhmi.b((String)localObject1);
+        localObject1 = FileUtils.estimateFileType((String)localObject1);
       }
     }
     Object localObject2;
@@ -42,7 +42,7 @@ public final class AutoSaveUtils$1
             if (!this.jdField_a_of_type_Boolean) {
               continue;
             }
-            bhmq.a(BaseApplicationImpl.getApplication(), (File)localObject1);
+            bfvo.a(BaseApplicationImpl.getApplication(), (File)localObject1);
             FileProvider7Helper.savePhotoToSysAlbum(BaseApplicationImpl.getApplication(), (File)localObject1);
             if (QLog.isColorLevel()) {
               QLog.d("AutoSaveUtils", 2, "autoSavePic success:" + ((File)localObject1).getAbsolutePath());
@@ -58,9 +58,9 @@ public final class AutoSaveUtils$1
           QLog.e("AutoSaveUtils", 2, "autoSavePic", localIOException);
           return;
         }
-        localObject1 = bhmi.a((String)localObject1);
+        localObject1 = FileUtils.estimateVideoType((String)localObject1);
         break;
-        zom.a(BaseApplicationImpl.getApplication(), (File)localObject1);
+        ypi.a(BaseApplicationImpl.getApplication(), (File)localObject1);
       }
     }
   }

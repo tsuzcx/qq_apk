@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-final class pfj
-  extends apck
+class pfj
+  extends pse
 {
-  pfj(String paramString, boolean paramBoolean)
+  pfj(pey parampey, String paramString, View paramView, ListView paramListView, long paramLong)
   {
-    super(paramString, paramBoolean);
+    super(paramString);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(prx paramprx)
   {
-    pfi.a(false);
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      tzq.a(100, new ArrayList());
-    }
+    paramprx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Long);
   }
 }
 

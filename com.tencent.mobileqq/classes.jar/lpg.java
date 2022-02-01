@@ -1,214 +1,251 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.video.effect.core.EffectTexture;
+import com.tencent.av.video.effect.denoise.DenoiseRender;
+import com.tencent.av.video.effect.lowlight.LowLightRender;
+import com.tencent.av.video.effect.utils.LowLightUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class lpg
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = lbm.h() + "SKINCOLOR" + File.separator;
+  private DenoiseRender jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender;
+  private LowLightRender jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
+  private String jdField_a_of_type_JavaLangString;
+  private final loy jdField_a_of_type_Loy;
+  public boolean a;
+  public int[] a;
   
-  public static float a()
+  private lpf a(lpf paramlpf)
   {
-    if (jdField_a_of_type_Float != -1.0F) {
-      return jdField_a_of_type_Float;
+    if (!lph.c()) {
+      this.jdField_a_of_type_ArrayOfInt[3] = 0;
     }
-    for (;;)
+    do
     {
-      try
+      return paramlpf;
+      if (!this.jdField_a_of_type_Boolean)
       {
-        loq localloq = loq.a();
-        if (localloq == null) {
-          continue;
+        this.jdField_a_of_type_ArrayOfInt[3] = 0;
+        return paramlpf;
+      }
+      localObject = a();
+    } while (localObject == null);
+    this.jdField_a_of_type_Loy.a(4);
+    paramlpf = ((DenoiseRender)localObject).process(paramlpf.jdField_b_of_type_Int, paramlpf.jdField_a_of_type_Int, this.jdField_a_of_type_Loy.jdField_a_of_type_Int, this.jdField_a_of_type_Loy.jdField_b_of_type_Int);
+    paramlpf = lpf.a(paramlpf.getFbo(), paramlpf.getTextureId());
+    this.jdField_a_of_type_ArrayOfInt[3] = 1;
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    localObject[5] += 1;
+    return paramlpf;
+  }
+  
+  private lpf a(lpf paramlpf, boolean paramBoolean)
+  {
+    if (!lph.b()) {
+      this.jdField_a_of_type_ArrayOfInt[0] = 0;
+    }
+    do
+    {
+      return paramlpf;
+      if ((!this.jdField_a_of_type_Boolean) || (paramBoolean))
+      {
+        this.jdField_a_of_type_ArrayOfInt[0] = 0;
+        return paramlpf;
+      }
+      localObject = a();
+    } while (localObject == null);
+    this.jdField_a_of_type_Loy.a(2);
+    paramlpf = ((LowLightRender)localObject).process(paramlpf.jdField_b_of_type_Int, paramlpf.jdField_a_of_type_Int, this.jdField_a_of_type_Loy.jdField_a_of_type_Int, this.jdField_a_of_type_Loy.jdField_b_of_type_Int);
+    paramlpf = lpf.a(paramlpf.getFbo(), paramlpf.getTextureId());
+    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    localObject[2] += 1;
+    return paramlpf;
+  }
+  
+  private void a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    if ((lph.b()) || (lph.c()))
+    {
+      this.jdField_a_of_type_Loy.a(1);
+      paramArrayOfByte = a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, (int)paramLong);
+      j = paramArrayOfByte[0];
+      i = paramArrayOfByte[1];
+    }
+    paramArrayOfByte = this.jdField_a_of_type_ArrayOfInt;
+    if (j == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if ((!this.jdField_a_of_type_Boolean) && (bool))
+      {
+        if (!paramBoolean) {
+          paramArrayOfByte[1] += 1;
         }
-        jdField_a_of_type_Float = localloq.a();
-        lbj.c("EffectBeautyTools", "mBeautyRatio:" + jdField_a_of_type_Float);
+        paramArrayOfByte[4] += 1;
+        lba.d(this.jdField_a_of_type_JavaLangString, " This is the " + paramArrayOfByte[2] + " times open lowlightand the " + paramArrayOfByte[4] + " times open videodenoise");
+        lba.d(this.jdField_a_of_type_JavaLangString, " The LowlightInfo is: lowlight flag = " + paramArrayOfByte[0] + ", video denoise flag = " + paramArrayOfByte[3] + ", lowlight open times = " + paramArrayOfByte[1] + ", denoise open times = " + paramArrayOfByte[4] + ", average luma = " + paramArrayOfByte[6]);
       }
-      catch (Exception localException)
+      paramArrayOfByte[6] = i;
+      if (j == 0)
       {
-        lbj.c("EffectBeautyTools", "getNewBeautyRatio Exception:" + localException);
-        jdField_a_of_type_Float = 1.0F;
-        continue;
+        paramArrayOfByte[0] = 0;
+        paramArrayOfByte[3] = 0;
+        GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(paramArrayOfByte);
       }
-      return jdField_a_of_type_Float;
-      jdField_a_of_type_Float = 1.0F;
+      paramArrayOfByte[7] = ((int)paramLong);
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
   }
   
-  private static lpi a(String paramString)
+  private boolean a()
   {
-    if (TextUtils.isEmpty(paramString))
+    if (!lph.c()) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(boolean paramBoolean)
+  {
+    if (!lph.b()) {}
+    while ((!this.jdField_a_of_type_Boolean) || (paramBoolean)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static int[] a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    int[] arrayOfInt = new int[2];
+    if (liy.jdField_a_of_type_Int * liy.jdField_b_of_type_Int * 3 / 2 != paramArrayOfByte.length)
     {
-      lbj.c("EffectBeautyTools", "parseConfig|content is empty.");
-      return null;
+      lba.h(paramString, "(AndroidCamera.PREVIEW_WIDTH * AndroidCamera.PREVIEW_HEIGHT * 3 / 2) != yuvData.length");
+      return arrayOfInt;
     }
-    for (;;)
-    {
-      try
-      {
-        localJSONObject = new JSONObject(paramString).getJSONObject("skinColorFilter");
-      }
-      catch (JSONException localJSONException3)
-      {
-        JSONObject localJSONObject;
-        int i;
-        String str1;
-        String str2;
-        locallpi = null;
-        continue;
-      }
-      try
-      {
-        i = Integer.valueOf(localJSONObject.getString("filterid")).intValue();
-        str1 = localJSONObject.getString("resurl");
-        str2 = localJSONObject.getString("md5");
-        locallpi = new lpi(i, str1, str2);
-        try
-        {
-          lbj.c("EffectBeautyTools", "parseConfig:" + i + "|" + str1 + "|" + str2);
-          return locallpi;
-        }
-        catch (JSONException localJSONException1) {}
-      }
-      catch (JSONException localJSONException4)
-      {
-        locallpi = null;
-        continue;
-      }
-      try
-      {
-        localJSONException1.printStackTrace();
-        lbj.c("EffectBeautyTools", "parseConfig failed. info = " + localJSONObject);
-        return locallpi;
-      }
-      catch (JSONException localJSONException2)
-      {
-        localJSONException2.printStackTrace();
-        lbj.c("EffectBeautyTools", "parseConfig|parse failed.context = " + paramString);
-        return locallpi;
-      }
-    }
-  }
-  
-  private static void a()
-  {
-    SharedPreferences.Editor localEditor = EffectConfigBase.a(180, EffectConfigBase.c).edit();
-    localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
-    localEditor.commit();
-  }
-  
-  public static void a(Context paramContext)
-  {
     try
     {
-      if (b())
+      paramString = LowLightUtils.DetectLowLight(paramArrayOfByte, paramInt, liy.jdField_a_of_type_Int, liy.jdField_b_of_type_Int, 60, 0.75F);
+      return paramString;
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      for (;;)
       {
-        a();
-        if (new File(jdField_a_of_type_JavaLangString).exists()) {
-          bhmi.a(jdField_a_of_type_JavaLangString);
+        QLog.i("FilterProcessRender", 1, "detectLowLightProcess", paramString);
+        paramString = arrayOfInt;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        QLog.i("FilterProcessRender", 1, "detectLowLightProcess", paramString);
+        paramString = arrayOfInt;
+      }
+    }
+  }
+  
+  public DenoiseRender a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender == null) {
+      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = new DenoiseRender(this.jdField_a_of_type_Loy.jdField_a_of_type_AndroidContentContext);
+    }
+    this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.setUpdateRate(lph.a());
+    return this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender;
+  }
+  
+  public LowLightRender a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender == null) {
+      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = new LowLightRender(this.jdField_a_of_type_Loy.jdField_a_of_type_AndroidContentContext);
+    }
+    return this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender != null)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.destroy();
+      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = null;
+    }
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender != null)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender.destroy();
+      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = null;
+    }
+  }
+  
+  public void a(msh parammsh, lok paramlok, mrk parammrk)
+  {
+    if (parammsh != null) {
+      parammsh.a("checkLowLight");
+    }
+    a(paramlok.jdField_a_of_type_ArrayOfByte, paramlok.jdField_a_of_type_Long, paramlok.jdField_a_of_type_Boolean);
+    if (parammrk != null) {
+      parammrk.e();
+    }
+    if (parammsh != null) {
+      parammsh.b("checkLowLight");
+    }
+  }
+  
+  public void a(msh parammsh, mrk parammrk)
+  {
+    this.jdField_a_of_type_Loy.c();
+    if (a())
+    {
+      if (parammsh != null) {
+        parammsh.a("appleVideoDeNoise");
+      }
+      this.jdField_a_of_type_Loy.jdField_b_of_type_Lpf = a(this.jdField_a_of_type_Loy.jdField_a_of_type_Lpf);
+      if (parammrk != null) {
+        if (this.jdField_a_of_type_Loy.jdField_b_of_type_Lpf.jdField_b_of_type_Int == this.jdField_a_of_type_Loy.jdField_a_of_type_Lpf.jdField_b_of_type_Int) {
+          break label110;
         }
       }
-      paramContext = a(EffectConfigBase.b(180, EffectConfigBase.c));
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString)))
-      {
-        Object localObject = new File(jdField_a_of_type_JavaLangString + "params.json");
-        lbj.c("EffectBeautyTools", "preDownloadResource :" + ((File)localObject).exists());
-        if (!((File)localObject).exists())
-        {
-          localObject = new beum();
-          ((beum)localObject).jdField_a_of_type_Beuq = new lph();
-          ((beum)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
-          ((beum)localObject).jdField_a_of_type_Int = 0;
-          ((beum)localObject).c = (lbm.h() + "skin_color.zip");
-          ((beum)localObject).a(paramContext);
-          lbk.a().a((bevl)localObject);
-        }
+    }
+    label110:
+    for (boolean bool = true;; bool = false)
+    {
+      parammrk.b(bool);
+      if (parammsh != null) {
+        parammsh.b("appleVideoDeNoise");
       }
+      this.jdField_a_of_type_Loy.a(6, this.jdField_a_of_type_Loy.jdField_a_of_type_Lpf, this.jdField_a_of_type_Loy.jdField_b_of_type_Lpf);
       return;
     }
-    catch (Exception paramContext) {}
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
+  public void b(msh parammsh, lok paramlok, mrk parammrk)
   {
-    a(paramContext, paramString, EffectConfigBase.b(180, EffectConfigBase.c));
-    EffectConfigBase.a(180, EffectConfigBase.c, paramInt, paramString);
-    if (paramBoolean) {
-      a(paramContext);
-    }
-  }
-  
-  private static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    for (paramContext = a(paramString1);; paramContext = null)
+    this.jdField_a_of_type_Loy.c();
+    if (a(paramlok.jdField_a_of_type_Boolean))
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramString1 = a(paramString2);
+      if (parammsh != null) {
+        parammsh.a("appleLowLightEnhance");
       }
-      if (paramContext == null) {
-        bhmi.a(jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Loy.jdField_b_of_type_Lpf = a(this.jdField_a_of_type_Loy.jdField_a_of_type_Lpf, paramlok.jdField_a_of_type_Boolean);
+      if (parammsh != null) {
+        parammsh.b("appleLowLightEnhance");
       }
-      while ((paramString1 == null) || (paramContext.b.equals(paramString1.b))) {
-        return;
+      this.jdField_a_of_type_Loy.a(7, this.jdField_a_of_type_Loy.jdField_a_of_type_Lpf, this.jdField_a_of_type_Loy.jdField_b_of_type_Lpf);
+    }
+    GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(this.jdField_a_of_type_ArrayOfInt);
+    if (parammrk != null) {
+      if (this.jdField_a_of_type_Loy.jdField_b_of_type_Lpf.jdField_b_of_type_Int == this.jdField_a_of_type_Loy.jdField_a_of_type_Lpf.jdField_b_of_type_Int) {
+        break label130;
       }
-      bhmi.a(jdField_a_of_type_JavaLangString);
+    }
+    label130:
+    for (boolean bool = true;; bool = false)
+    {
+      parammrk.c(bool);
       return;
     }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_Int != 0) {
-      return jdField_a_of_type_Int == 2;
-    }
-    for (;;)
-    {
-      try
-      {
-        loq localloq = loq.a();
-        if ((localloq == null) || (!localloq.a()) || (!c())) {
-          continue;
-        }
-        jdField_a_of_type_Int = 2;
-        lbj.c("EffectBeautyTools", "mIsSupportFlag:" + jdField_a_of_type_Int);
-      }
-      catch (Exception localException)
-      {
-        lbj.c("EffectBeautyTools", "isSupportNewBeauty Exception:" + localException);
-        jdField_a_of_type_Int = 1;
-        continue;
-      }
-      if (jdField_a_of_type_Int == 2) {
-        break;
-      }
-      return false;
-      jdField_a_of_type_Int = 1;
-    }
-  }
-  
-  private static boolean b()
-  {
-    boolean bool = false;
-    int i = EffectConfigBase.a(180, EffectConfigBase.c).getInt("qav_effect_beauty_config_first_launch", 0);
-    lbj.c("EffectBeautyTools", "getIsFirstLauncher:" + i);
-    if (i == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private static boolean c()
-  {
-    int i = EffectConfigBase.c(180, EffectConfigBase.c);
-    return (new File(jdField_a_of_type_JavaLangString + "params.json").exists()) && (i != 0);
   }
 }
 

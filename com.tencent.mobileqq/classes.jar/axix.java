@@ -1,66 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
 
-public class axix
-  extends axis
+class axix
+  extends RecyclerView.ViewHolder
 {
-  public static String b = antf.ba + "ptt" + File.separator;
-  private static final String c = bfcj.a(axjg.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
-  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
-  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  FrameAnimationView jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView;
+  CircleImageView jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView;
   
-  public axix(MsgBackupResEntity paramMsgBackupResEntity)
+  public axix(View paramView)
   {
-    super(paramMsgBackupResEntity);
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
-    if (this.f == null) {
-      this.f = "";
-    }
-    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
-      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
-    }
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return bfcj.a(b + paramString2 + File.separator + paramString1);
-  }
-  
-  public axgr a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    String str = a();
-    boolean bool = a(str);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
-    }
-    localObject = new axgr();
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      ((axgr)localObject).jdField_a_of_type_Boolean = bool;
-      ((axgr)localObject).jdField_a_of_type_JavaLangString = str;
-      return localObject;
-    }
-  }
-  
-  public String a()
-  {
-    return c + this.d + this.e + this.f;
-  }
-  
-  public String b()
-  {
-    return a(this.d, this.f);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131366955));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366956));
+    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131366957));
   }
 }
 

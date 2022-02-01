@@ -1,199 +1,196 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.data.ApolloActionRecentData;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class amng
-  extends bloj
-  implements aoog, blih
+public class amng
+  extends amnk
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private aoof jdField_a_of_type_Aoof;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected ExpandableListView a;
+  public int a;
   
-  public amng(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    this.jdField_a_of_type_Aoof = new aoof(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-    bhmq.a();
+    return 1;
   }
   
-  protected void a(amof paramamof, Bitmap paramBitmap)
+  public View a()
   {
-    a(paramamof, paramBitmap, true);
+    switch (this.b)
+    {
+    case 1: 
+    default: 
+      return new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.c, this.f, this.jdField_a_of_type_Int);
+    case 0: 
+      return new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.c, this.f, this.jdField_a_of_type_Int);
+    }
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558677, null);
   }
   
-  protected void a(amof paramamof, Bitmap paramBitmap, boolean paramBoolean)
+  public void a()
   {
-    if (paramamof.jdField_c_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (antf.z.equals(paramamof.a))
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    for (;;)
     {
-      paramamof.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844234);
-      return;
+      int j;
+      int i;
+      int k;
+      try
+      {
+        Object localObject;
+        amlw localamlw;
+        int i1;
+        if (this.b == 0)
+        {
+          int m = this.f;
+          int n = this.jdField_a_of_type_Int;
+          j = 0;
+          i = 0;
+          if (j < this.jdField_a_of_type_Int)
+          {
+            LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(j);
+            k = 0;
+            if (k >= this.f) {
+              break label266;
+            }
+            localObject = localLinearLayout.getChildAt(k);
+            localamlw = (amlw)((View)localObject).getTag();
+            i1 = m * n * paramInt + i;
+            List localList = this.jdField_a_of_type_JavaUtilList;
+            if (localList != null) {
+              continue;
+            }
+          }
+        }
+        return;
+        if (i1 < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          localObject = ((amlu)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
+          localamlw.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localamlw.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((amlu)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
+          if ((localObject != null) && (((ApolloActionData)localObject).actionName != null)) {
+            localamlw.jdField_a_of_type_AndroidWidgetTextView.setText(((ApolloActionData)localObject).actionName);
+          }
+          localamlw.jdField_a_of_type_Amlu = ((amlu)this.jdField_a_of_type_JavaUtilList.get(i1));
+          localamlw.jdField_a_of_type_Amlu.c = 1;
+        }
+        else
+        {
+          ((View)localObject).setContentDescription(null);
+          ((View)localObject).setOnClickListener(null);
+        }
+      }
+      finally {}
+      label266:
+      j += 1;
+      continue;
+      k += 1;
+      i += 1;
     }
-    if (antf.A.equals(paramamof.a))
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    boolean bool;
+    if (paramQQAppInterface == null) {
+      bool = false;
+    }
+    Object localObject1;
+    label50:
+    int i;
+    for (;;)
     {
-      paramamof.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844232);
-      return;
+      return bool;
+      try
+      {
+        localObject1 = (amkj)paramQQAppInterface.getManager(154);
+        if (localObject1 == null)
+        {
+          bool = false;
+        }
+        else
+        {
+          if (paramSessionInfo.curType == 0) {}
+          for (paramSessionInfo = ((amkj)localObject1).jdField_a_of_type_JavaUtilList;; paramSessionInfo = ((amkj)localObject1).b)
+          {
+            if (paramSessionInfo == null) {
+              break label250;
+            }
+            if (paramSessionInfo.size() != 0) {
+              break;
+            }
+            break label250;
+            if ((paramSessionInfo.curType != 1) && (paramSessionInfo.curType != 3000)) {
+              break label245;
+            }
+          }
+          if (this.jdField_a_of_type_JavaUtilList != null) {
+            this.jdField_a_of_type_JavaUtilList.clear();
+          }
+          for (;;)
+          {
+            i = paramSessionInfo.size() - 1;
+            break;
+            this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          }
+          localObject1 = new ApolloActionData();
+        }
+      }
+      finally {}
     }
-    if (antf.B.equals(paramamof.a))
+    label140:
+    Object localObject2 = (amir)paramQQAppInterface.getManager(155);
+    if (localObject2 != null)
     {
-      paramamof.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844237);
-      return;
-    }
-    if (antf.y.equals(paramamof.a))
-    {
-      paramamof.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839573);
-      return;
-    }
-    if (paramBitmap == null) {
-      paramBitmap = this.jdField_a_of_type_Aoof.a(paramamof.jdField_c_of_type_Int, paramamof.a);
+      localObject2 = ((amir)localObject2).a(((ApolloActionRecentData)paramSessionInfo.get(i)).actionId);
+      localObject1 = localObject2;
+      if (localObject2 == null) {}
     }
     for (;;)
     {
-      Bitmap localBitmap = paramBitmap;
-      if (paramBitmap == null)
+      localObject2 = new amlx(paramQQAppInterface.getCurrentUin());
+      ((amlx)localObject2).a = ((ApolloActionData)localObject1);
+      ((amlx)localObject2).c = 1;
+      this.jdField_a_of_type_JavaUtilList.add(localObject2);
+      label275:
+      for (;;)
       {
-        if (paramBoolean) {
-          paramBitmap = bhmq.a();
-        }
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_Aoof.a())
+        bool = true;
+        break;
+        label245:
+        paramSessionInfo = null;
+        break label50;
+        label250:
+        bool = false;
+        break;
+        for (;;)
         {
-          this.jdField_a_of_type_Aoof.a(paramamof.a, paramamof.jdField_c_of_type_Int, false);
-          localBitmap = paramBitmap;
+          if (i < 0) {
+            break label275;
+          }
+          if (paramQQAppInterface != null) {
+            break label140;
+          }
+          bool = false;
+          break;
+          i -= 1;
         }
       }
-      if (localBitmap == null) {
-        break;
-      }
-      paramamof.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
     }
-  }
-  
-  public void a(View paramView, int paramInt) {}
-  
-  protected void a(String paramString, Bitmap paramBitmap)
-  {
-    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
-      if ((localObject != null) && ((localObject instanceof amof)))
-      {
-        localObject = (amof)localObject;
-        if (paramString != null) {
-          break label69;
-        }
-        a((amof)localObject, null, false);
-      }
-      label69:
-      while (!paramString.equals(((amof)localObject).a))
-      {
-        i += 1;
-        break;
-      }
-      ((amof)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aoof != null) {
-      this.jdField_a_of_type_Aoof.d();
-    }
-  }
-  
-  public int c_()
-  {
-    return 0;
-  }
-  
-  public Object getChild(int paramInt1, int paramInt2)
-  {
-    return null;
-  }
-  
-  public long getChildId(int paramInt1, int paramInt2)
-  {
-    return 0L;
-  }
-  
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
-  
-  public int getChildrenCount(int paramInt)
-  {
-    return 0;
-  }
-  
-  public Object getGroup(int paramInt)
-  {
-    return null;
-  }
-  
-  public int getGroupCount()
-  {
-    return 0;
-  }
-  
-  public long getGroupId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
-  
-  public boolean hasStableIds()
-  {
-    return false;
-  }
-  
-  public boolean isChildSelectable(int paramInt1, int paramInt2)
-  {
-    return false;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_a_of_type_Aoof.a()) && (paramBitmap != null)) {
-      a(paramString, paramBitmap);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      this.jdField_a_of_type_Aoof.a();
-      this.jdField_a_of_type_Aoof.c();
-    }
-    while (!this.jdField_a_of_type_Aoof.a()) {
-      return;
-    }
-    this.jdField_a_of_type_Aoof.a();
-    this.jdField_a_of_type_Aoof.b();
-    a(null, null);
   }
 }
 

@@ -1,114 +1,155 @@
-import android.app.Activity;
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RewardedVideoAdPlugin;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import mqq.util.WeakReference;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.1.1;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.HeightAdaptableListView;
+import java.util.Locale;
+import java.util.Map;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackData;", "", "rewardedVideoAdPlugin", "Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;", "compId", "", "activity", "Lmqq/util/WeakReference;", "Landroid/app/Activity;", "event", "webView", "Lcom/tencent/mobileqq/mini/webview/JsRuntime;", "callbackId", "", "isMiniGame", "", "(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;Ljava/lang/String;Lmqq/util/WeakReference;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;IZ)V", "getActivity", "()Lmqq/util/WeakReference;", "getCallbackId", "()I", "getCompId", "()Ljava/lang/String;", "getEvent", "()Z", "getRewardedVideoAdPlugin", "()Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;", "getWebView", "()Lcom/tencent/mobileqq/mini/webview/JsRuntime;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "createKey", "equals", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acrl
+public class acrl
+  extends CardObserver
 {
-  public static final acrm a;
-  private static int jdField_b_of_type_Int;
-  private final int jdField_a_of_type_Int;
-  @NotNull
-  private final RewardedVideoAdPlugin jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin;
-  @NotNull
-  private final JsRuntime jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  @NotNull
-  private final String jdField_b_of_type_JavaLangString;
+  public acrl(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  static
+  public void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    jdField_a_of_type_Acrm = new acrm(null);
+    if ((paramBoolean1) && (!this.a.isFinishing())) {
+      AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean2);
+    }
   }
   
-  public acrl(@NotNull RewardedVideoAdPlugin paramRewardedVideoAdPlugin, @NotNull String paramString1, @NotNull WeakReference<Activity> paramWeakReference, @NotNull String paramString2, @NotNull JsRuntime paramJsRuntime, int paramInt, boolean paramBoolean)
+  public void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin = paramRewardedVideoAdPlugin;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime = paramJsRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final JsRuntime a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("REWARDED_PLUGIN_ACTION_MOTIVE_BROWSING_END#").append(this.jdField_a_of_type_JavaLangString).append('#').append(this.jdField_b_of_type_JavaLangString).append('#').append(this.jdField_a_of_type_Int).append('#').append(this.jdField_a_of_type_Boolean).append('#');
-    int i = jdField_b_of_type_Int;
-    jdField_b_of_type_Int = i + 1;
-    return i;
-  }
-  
-  @NotNull
-  public final WeakReference<Activity> a()
-  {
-    return this.jdField_a_of_type_MqqUtilWeakReference;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @NotNull
-  public final String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    if ((paramBoolean) && (AssistantSettingActivity.a(this.a) != null) && (this.a.jdField_a_of_type_Acss != null) && (this.a.jdField_a_of_type_Acss.a(paramArrayOfShort)))
     {
-      if ((paramObject instanceof acrl))
-      {
-        paramObject = (acrl)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin, paramObject.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin)) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_a_of_type_MqqUtilWeakReference, paramObject.jdField_a_of_type_MqqUtilWeakReference)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime, paramObject.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime)) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean)) {}
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, "onGetCommonSwitchFromDetailInfo");
+      }
+      AssistantSettingActivity.a(this.a).a();
+    }
+  }
+  
+  public void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onGetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    AssistantSettingActivity localAssistantSettingActivity;
+    if (paramBoolean)
+    {
+      localAssistantSettingActivity = this.a;
+      if (this.a.jdField_a_of_type_Airj.c()) {
+        break label81;
       }
     }
-    else {
-      return true;
+    label81:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
+      return;
     }
-    return false;
   }
   
-  public int hashCode()
+  public void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    if (!this.a.isFinishing()) {
+      AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean2);
+    }
   }
   
-  @NotNull
-  public String toString()
+  public void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
   {
-    return "RewardedBrowsingCallbackData(rewardedVideoAdPlugin=" + this.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin + ", compId=" + this.jdField_a_of_type_JavaLangString + ", activity=" + this.jdField_a_of_type_MqqUtilWeakReference + ", event=" + this.jdField_b_of_type_JavaLangString + ", webView=" + this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime + ", callbackId=" + this.jdField_a_of_type_Int + ", isMiniGame=" + this.jdField_a_of_type_Boolean + ")";
+    boolean bool2 = true;
+    if (this.a.jdField_a_of_type_Acss == null) {}
+    for (aire localaire = null; localaire == null; localaire = this.a.jdField_a_of_type_Acss.a(paramShort1)) {
+      return;
+    }
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
+    }
+    boolean bool1;
+    if (paramShort2 == 1)
+    {
+      bool1 = true;
+      label91:
+      if ((paramBoolean) || (bool1 != localaire.e)) {
+        break label148;
+      }
+      if (localaire.e) {
+        break label150;
+      }
+    }
+    label148:
+    label150:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      localaire.e = paramBoolean;
+      this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.post(new AssistantSettingActivity.1.1(this, bool1));
+      return;
+      bool1 = false;
+      break label91;
+      break;
+    }
+  }
+  
+  public void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onSetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    AssistantSettingActivity localAssistantSettingActivity;
+    if (!paramBoolean)
+    {
+      AssistantSettingActivity.a(this.a, 2131718207, 1);
+      localAssistantSettingActivity = this.a;
+      if (this.a.jdField_a_of_type_Airj.c()) {
+        break label95;
+      }
+    }
+    label95:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
+      return;
+    }
+  }
+  
+  public void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.a.isFinishing()) || (this.a.app == null)) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      AssistantSettingActivity.a(this.a, 2131718207, 1);
+      AssistantSettingActivity.a(this.a, ahns.a(this.a.app).b(), AssistantSettingActivity.a(this.a));
+      return;
+    }
+    AssistantSettingActivity.a(this.a, paramBoolean2, AssistantSettingActivity.a(this.a));
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {}
+    for (String str = "1";; str = "2")
+    {
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A223", "0X800A223", 0, 0, str, "", "", "");
+      return;
+    }
+  }
+  
+  public void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131699929), 0).b(this.a.getTitleBarHeight());
+      paramBoolean = ((Boolean)paramObject).booleanValue();
+      AssistantSettingActivity.a(this.a, true);
+      this.a.e.setChecked(paramBoolean);
+      AssistantSettingActivity.a(this.a, paramBoolean);
+      AssistantSettingActivity.a(this.a, false);
+    }
   }
 }
 

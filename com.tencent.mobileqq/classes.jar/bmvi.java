@@ -1,19 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bmvi
-  implements DialogInterface.OnClickListener
+class bmvi
+  implements bmvo
 {
-  public bmvi(Context paramContext, int paramInt, String paramString, Intent paramIntent) {}
+  bmvi(bmvh parambmvh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    if (!bmtd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
-      bmtd.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidContentContext);
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
     }
-    paramDialogInterface.dismiss();
+    bmvh.a(this.a, paramFloat);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      bmvh.a(this.a, 3);
+      this.a.b();
+      return;
+    }
+    bmvh.a(this.a, 2);
+    this.a.a(4);
   }
 }
 

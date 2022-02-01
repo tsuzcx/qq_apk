@@ -1,106 +1,57 @@
-import UserGrowth.stSchema;
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stPopWindowsConfig;
+import android.app.Activity;
 import android.content.Context;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.net.URLDecoder;
 
-public class uje
-  implements uix
+class uje
+  implements uyv
 {
-  private stSchema jdField_a_of_type_UserGrowthStSchema;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-  private MiniAppLauncher.MiniAppLaunchListener jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener;
-  private uiw jdField_a_of_type_Uiw;
-  private ujg jdField_a_of_type_Ujg;
-  private upr jdField_a_of_type_Upr;
-  private boolean jdField_a_of_type_Boolean;
-  private ujg jdField_b_of_type_Ujg;
-  private boolean jdField_b_of_type_Boolean;
+  uje(ujd paramujd, Context paramContext) {}
   
-  public uje(Context paramContext)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ujg = new ujh();
-    this.jdField_b_of_type_Ujg = new uji();
+    uyc.a(ujd.a(this.jdField_a_of_type_Ujd), "biz_src_jc_gzh_weishi", paramString, 1, ujd.a(this.jdField_a_of_type_Ujd).link_strategy_type, ujd.a(this.jdField_a_of_type_Ujd));
+    uvi.a(114, ujd.b(this.jdField_a_of_type_Ujd), ujd.c(this.jdField_a_of_type_Ujd), this.jdField_a_of_type_Ujd.a.windowsid);
+    ujd.a(this.jdField_a_of_type_Ujd, 114, "popup_clk_ws");
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000003, this.jdField_a_of_type_Ujd.a.windowsid, this.jdField_a_of_type_Ujd.a.trace_id, ujd.a(this.jdField_a_of_type_Ujd));
   }
   
-  public stSchema a()
+  public void b(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_UserGrowthStSchema;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public WSDownloadParams a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-  }
-  
-  public MiniAppLauncher.MiniAppLaunchListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener;
-  }
-  
-  public uiw a()
-  {
-    return this.jdField_a_of_type_Uiw;
-  }
-  
-  public uje a(stSchema paramstSchema)
-  {
-    this.jdField_a_of_type_UserGrowthStSchema = paramstSchema;
-    return this;
-  }
-  
-  public uje a(WSDownloadParams paramWSDownloadParams)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramWSDownloadParams;
-    return this;
-  }
-  
-  public uje a(uiw paramuiw)
-  {
-    this.jdField_a_of_type_Uiw = paramuiw;
-    return this;
-  }
-  
-  public uje a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public upr a()
-  {
-    return this.jdField_a_of_type_Upr;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_UserGrowthStSchema == null))
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      uqf.d("WSStSchemaJumpManager", "[WSStSchemaJumpManager.java][processStSchemaClickAction] mContext:" + this.jdField_a_of_type_AndroidContentContext + ", mStSchema" + this.jdField_a_of_type_UserGrowthStSchema);
+      paramString = URLDecoder.decode(paramString);
+      pay.d(ujd.a(this.jdField_a_of_type_Ujd), paramString);
+      uya.a("weishi-813", "阻断rich弹窗:" + paramString);
+      uvi.a(140, ujd.b(this.jdField_a_of_type_Ujd), ujd.c(this.jdField_a_of_type_Ujd), this.jdField_a_of_type_Ujd.a.windowsid);
+      uvr.c(140, this.jdField_a_of_type_Ujd.a.type, this.jdField_a_of_type_Ujd.a.windowsid);
+      WSPublicAccReport.getInstance().reportClickRichBlockPop(1000004, this.jdField_a_of_type_Ujd.a.windowsid, this.jdField_a_of_type_Ujd.a.trace_id, ujd.a(this.jdField_a_of_type_Ujd));
       return;
     }
-    if (this.jdField_b_of_type_Boolean) {}
-    for (Object localObject = this.jdField_a_of_type_Ujg;; localObject = this.jdField_b_of_type_Ujg)
-    {
-      localObject = ((ujg)localObject).a(this);
-      if (localObject == null) {
-        break;
-      }
-      ((uiv)localObject).a();
-      return;
-    }
+    uya.c("weishi-813", "阻断rich弹窗:context 不是Activity");
   }
   
-  public boolean a()
+  public void c(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = ujd.a(this.jdField_a_of_type_Ujd).link_strategy_type;
+    paramInt = 401;
+    if (!ujd.a(this.jdField_a_of_type_Ujd)) {
+      paramInt = 402;
+    }
+    localWSDownloadParams.mEventId = paramInt;
+    localWSDownloadParams.mTestId = uvr.b();
+    localWSDownloadParams.mScheme = paramString;
+    unq.a((Activity)ujd.a(this.jdField_a_of_type_Ujd), localWSDownloadParams, false);
+    ujd.a(this.jdField_a_of_type_Ujd, 115, "popup_dl_ws");
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000002, this.jdField_a_of_type_Ujd.a.windowsid, this.jdField_a_of_type_Ujd.a.trace_id, ujd.a(this.jdField_a_of_type_Ujd));
   }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 

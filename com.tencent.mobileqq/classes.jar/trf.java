@@ -1,25 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-class trf
-  extends Handler
+public class trf
 {
-  trf(tre paramtre, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void handleMessage(Message paramMessage)
+  public void a(JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
+    if (paramJSONObject != null)
     {
-    default: 
-      return;
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
+      paramJSONObject = paramJSONObject.optString("apk_url");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.e = paramJSONObject;
+      }
     }
-    tre.a(this.a).set(1);
-    tre.a(this.a, true);
   }
 }
 

@@ -1,16 +1,26 @@
-import com.tencent.biz.qqcircle.events.QCircleFeedCommentEllipseEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vzg
-  implements aaqw
+class vzg
+  extends vlc
 {
-  public vzg(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
+  vzg(vzf paramvzf) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if (QCircleFeedCommentWidget.a(this.a) != null) {
-      aaak.a().a(new QCircleFeedCommentEllipseEvent(QCircleFeedCommentWidget.a(this.a)));
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      QQToast.a(this.a.a.a, 2, amtj.a(2131706081), 0).a();
     }
+    do
+    {
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
+      {
+        QQToast.a(this.a.a.a, 1, amtj.a(2131706086), 0).a();
+        return;
+      }
+    } while ((paramBoolean1) || (paramBoolean2));
+    QQToast.a(this.a.a.a, 1, amtj.a(2131706082), 0).a();
   }
 }
 

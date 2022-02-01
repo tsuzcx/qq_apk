@@ -1,18 +1,17 @@
-import android.view.View;
-
 class atmy
-  implements blkc
+  implements bfzf
 {
-  atmy(atmv paramatmv, View paramView) {}
+  atmy(atmx paramatmx) {}
   
-  public void a()
+  public void onShowed(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    atmx.a(this.a, bfzd.a(paramInt));
+    atmx.a(this.a).height = atmx.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmy
  * JD-Core Version:    0.7.0.1
  */

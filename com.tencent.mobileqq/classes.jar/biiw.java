@@ -1,24 +1,24 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
-
-public class biiw
-  implements URLDrawable.URLDrawableListener
+public abstract interface biiw
 {
-  public biiw(TemplateLikeView paramTemplateLikeView) {}
+  public abstract int a();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public abstract int a(biim parambiim);
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  public abstract void a_(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public abstract void b(int paramInt);
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a.invalidate();
-    this.a.b.invalidate();
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

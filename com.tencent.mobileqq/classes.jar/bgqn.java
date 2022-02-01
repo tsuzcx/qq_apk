@@ -1,15 +1,8 @@
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-class bgqn
-  extends ThreadLocal<SimpleDateFormat>
+public abstract interface bgqn
 {
-  bgqn(bgqm parambgqm) {}
+  public abstract void a(int paramInt, String paramString);
   
-  protected SimpleDateFormat a()
-  {
-    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-  }
+  public abstract void a(bgqe parambgqe);
 }
 
 

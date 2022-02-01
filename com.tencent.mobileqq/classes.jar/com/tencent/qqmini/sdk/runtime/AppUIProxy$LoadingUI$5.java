@@ -11,7 +11,7 @@ class AppUIProxy$LoadingUI$5
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    AppUIProxy.LoadingUI.access$400(this.this$1).setVisibility(8);
+    AppUIProxy.LoadingUI.access$400(this.this$0).setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

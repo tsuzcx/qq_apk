@@ -1,22 +1,17 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
-import com.tencent.viola.core.ViolaEnvironment;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tjc
-  implements bhgv
+  extends tjd
 {
-  public tjc(ViolaBaseView.10.1 param1) {}
-  
-  public void onInfo(long paramLong, double paramDouble)
+  public tjc(BridgeModule paramBridgeModule)
   {
-    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
-    {
-      ViolaBaseView.a(this.a.a.a, paramDouble);
-      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
-    }
-    new Handler().postDelayed(new ViolaBaseView.10.1.1.1(this), 500L);
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$1200(this.a, paramInt2, paramIntent);
   }
 }
 

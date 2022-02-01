@@ -1,19 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afjk
-  implements blpp
+class afjk
+  implements View.OnClickListener
 {
-  public afjk(RecommendFriendActivity paramRecommendFriendActivity) {}
+  afjk(afiw paramafiw) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    RecommendFriendActivity.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.a.tag, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
+    }
+    this.a.app.reportClickEvent("CliOper", "0X80087E6");
+    ahcd.a().a(this.a.app, this.a.mContext);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

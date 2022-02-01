@@ -1,63 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahbj
-  extends aggl
+  implements DialogInterface.OnClickListener
 {
-  public ahbi a;
-  public ImageView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public View c;
-  final int e = 0;
-  final int f = 1;
-  final int g = 2;
-  final int h = 3;
-  final int i = 4;
-  final int j = 5;
+  public ahbj(PhotoListPanel paramPhotoListPanel) {}
   
-  public ahbj(ahbe paramahbe) {}
-  
-  int a(MessageForPic paramMessageForPic)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramMessageForPic.isSendFromLocal())
-    {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)) {
-        return 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    else
-    {
-      if (paramMessageForPic.size > 0L) {
-        return 2;
-      }
-      paramMessageForPic = this.jdField_a_of_type_Ahbe.a.a().a(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
-      if ((paramMessageForPic instanceof berp))
-      {
-        paramMessageForPic = (berp)paramMessageForPic;
-        long l = paramMessageForPic.c();
-        if ((l == 1005L) || (l == 1006L) || (l == 1004L) || (paramMessageForPic.d() == 1003L)) {
-          return 4;
-        }
-        return 3;
-      }
-      return 5;
-    }
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Ahbi != null) {
-      return this.jdField_a_of_type_Ahbi.b;
-    }
-    return false;
   }
 }
 

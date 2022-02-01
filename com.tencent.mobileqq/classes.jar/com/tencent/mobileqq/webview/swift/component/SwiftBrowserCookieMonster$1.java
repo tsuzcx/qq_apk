@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import noe;
+import npn;
 
 class SwiftBrowserCookieMonster$1
   implements Runnable
@@ -32,7 +32,7 @@ class SwiftBrowserCookieMonster$1
         }
         this.this$0.c();
         if (QLog.isColorLevel()) {
-          QLog.i("SwiftBrowserCookieMonster", 2, "start set all cookies " + noe.b(this.this$0.l, new String[0]));
+          QLog.i("SwiftBrowserCookieMonster", 2, "start set all cookies " + npn.b(this.this$0.l, new String[0]));
         }
         this.this$0.a(this.this$0.a(this.jdField_a_of_type_AndroidContentIntent, (AppRuntime)???), true);
         if (!this.this$0.b.compareAndSet(2, 3)) {}
@@ -47,7 +47,7 @@ class SwiftBrowserCookieMonster$1
         {
           this.this$0.g();
           QLog.e("SwiftBrowserCookieMonster", 1, "set cookie error :" + this.this$0.a);
-          noe.b("Web_qqbrowser_check_and_set_cookies");
+          npn.b("Web_qqbrowser_check_and_set_cookies");
           new Handler(Looper.getMainLooper()).post(new SwiftBrowserCookieMonster.1.1(this));
           return;
           ??? = this.jdField_a_of_type_MqqAppAppRuntime;

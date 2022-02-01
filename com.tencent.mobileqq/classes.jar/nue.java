@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class nue
-  implements View.OnClickListener
+public class nue
+  implements TVK_SDKMgr.InstallListener
 {
-  nue(ntc paramntc, oag paramoag) {}
+  public nue(AccountDetailVideoManager.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    aavs.a((BaseActivity)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get(), new aavu(this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, ntc.a(this.jdField_a_of_type_Ntc));
-    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    nua.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    }
+    nua.a = true;
   }
 }
 

@@ -1,26 +1,63 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.HashSet;
+import java.util.Set;
 
-final class avro
-  implements avre
+public class avro
 {
-  public String a()
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public Set<String> a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f = "";
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  
+  public avro(String paramString, int paramInt)
   {
-    return avrd.b;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.h = a(paramString, paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
   }
   
-  public void a(int paramInt)
+  public static String a(String paramString, int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
-      localObject = ((avrl)((AppRuntime)localObject).getManager(219)).a(paramInt);
-      ((avrk)localObject).b = true;
-      ((avrk)localObject).c = 0;
-    }
+    return paramInt + "_" + paramString;
+  }
+  
+  public static String[] a(String paramString)
+  {
+    return paramString.split("_");
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public String toString()
+  {
+    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
   }
 }
 

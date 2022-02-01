@@ -1,19 +1,6 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
-
-public class adpg
-  extends adnc
+public abstract interface adpg
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    adqf.a(paramadmy, adna.a);
-    return true;
-  }
+  public abstract void a();
 }
 
 

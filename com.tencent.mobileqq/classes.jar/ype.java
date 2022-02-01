@@ -1,6 +1,24 @@
-public abstract interface ype
+public class ype
 {
-  public abstract void a(yoj paramyoj);
+  public static String a(String paramString, int paramInt)
+  {
+    if (paramString.getBytes().length <= paramInt) {
+      return paramString;
+    }
+    int k = paramString.length();
+    int j = 0;
+    for (int i = 0;; i = j) {
+      if (j < k)
+      {
+        j += Character.charCount(paramString.codePointAt(j));
+        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
+      }
+      else
+      {
+        return paramString.substring(0, i);
+      }
+    }
+  }
 }
 
 

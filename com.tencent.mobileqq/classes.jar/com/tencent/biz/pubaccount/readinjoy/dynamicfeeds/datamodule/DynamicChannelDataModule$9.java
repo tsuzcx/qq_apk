@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import pea;
+import pjn;
 
 public class DynamicChannelDataModule$9
   implements Runnable
 {
-  public DynamicChannelDataModule$9(pea parampea, DynamicChannelDataModel paramDynamicChannelDataModel) {}
+  public DynamicChannelDataModule$9(pjn parampjn, DynamicChannelDataModel paramDynamicChannelDataModel) {}
   
   public void run()
   {

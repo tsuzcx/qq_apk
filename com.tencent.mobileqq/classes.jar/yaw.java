@@ -1,10 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
-abstract interface yaw<T>
+public class yaw
+  implements wxc
 {
-  @NonNull
-  public abstract Stream<T> a(yas paramyas);
+  public yaw(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  
+  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
+  {
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
+  }
 }
 
 

@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 
-public class akcf
-  implements DialogInterface.OnClickListener
+class akcf
+  implements OnUpdateListener
 {
-  public akcf(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aeef paramaeef) {}
+  akcf(akbx paramakbx, ResultReceiver paramResultReceiver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckForUpdate(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aeef.a(false);
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 0);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
+  }
+  
+  public void onUpdateSucc(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 1);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
   }
 }
 

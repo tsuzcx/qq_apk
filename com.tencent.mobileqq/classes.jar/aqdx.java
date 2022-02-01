@@ -1,21 +1,72 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqdx
-  implements bliz
+public class aqdx
+  extends aptq<aqdw>
 {
-  aqdx(aqdv paramaqdv, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  @NonNull
+  public aqdw a(int paramInt)
   {
-    this.jdField_a_of_type_Aqdv.a.d();
-    this.jdField_a_of_type_Aqdv.a.b("本地APP已删除成功");
-    this.jdField_a_of_type_Blir.dismiss();
+    return new aqdw();
+  }
+  
+  @Nullable
+  public aqdw a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    {
+      aqdw localaqdw = aqdw.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localaqdw;
+    }
+    return null;
+  }
+  
+  public void a(aqdw paramaqdw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaqdw.toString());
+    }
+  }
+  
+  public Class<aqdw> clazz()
+  {
+    return aqdw.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 361;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdx
  * JD-Core Version:    0.7.0.1
  */

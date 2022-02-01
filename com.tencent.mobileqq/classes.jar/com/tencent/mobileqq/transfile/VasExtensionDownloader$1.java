@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import ashc;
-import asqn;
-import beyt;
+import arba;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
 import com.tencent.mobileqq.mqsafeedit.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class VasExtensionDownloader$1
+class VasExtensionDownloader$1
   implements Runnable
 {
-  public VasExtensionDownloader$1(beyt parambeyt, asqn paramasqn) {}
+  VasExtensionDownloader$1(VasExtensionDownloader paramVasExtensionDownloader, FavoriteEmoticonInfo paramFavoriteEmoticonInfo) {}
   
   public void run()
   {
@@ -25,28 +24,28 @@ public class VasExtensionDownloader$1
     do
     {
       return;
-      localObject = (ashc)((AppInterface)localObject).getManager(149);
-      localCustomEmotionData = (CustomEmotionData)((ashc)localObject).a(this.a.f);
-    } while ((localCustomEmotionData == null) || (!new File(this.a.e).exists()));
+      localObject = (arba)((AppInterface)localObject).getManager(149);
+      localCustomEmotionData = (CustomEmotionData)((arba)localObject).a(this.val$info.url);
+    } while ((localCustomEmotionData == null) || (!new File(this.val$info.path).exists()));
     if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
       localCustomEmotionData.RomaingType = "isUpdate";
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData romaing type  isUpdate, path: " + this.a.e);
+        QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData romaing type  isUpdate, path: " + this.val$info.path);
       }
       if ((TextUtils.isEmpty(localCustomEmotionData.md5)) && (!TextUtils.isEmpty(localCustomEmotionData.emoPath)))
       {
         localCustomEmotionData.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localCustomEmotionData.emoPath));
         if (QLog.isColorLevel()) {
-          QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData md5 , path: " + this.a.e);
+          QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData md5 , path: " + this.val$info.path);
         }
       }
       if ("needDel".equals(localCustomEmotionData.RomaingType)) {
         break;
       }
-      ((ashc)localObject).b(localCustomEmotionData);
+      ((arba)localObject).b(localCustomEmotionData);
       return;
       if ("overflow".equals(localCustomEmotionData.RomaingType)) {
         localCustomEmotionData.RomaingType = "overflow_downloaded";

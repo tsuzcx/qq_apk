@@ -1,8 +1,17 @@
-public abstract interface bgbj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bgbj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bgbj(bgbi parambgbi) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

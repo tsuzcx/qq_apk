@@ -1,23 +1,23 @@
-import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aenr
-  extends ahtp
+  implements View.OnTouchListener
 {
-  public aenr(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public aenr(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
-  
-  public void a(aggl paramaggl, ChatMessage paramChatMessage) {}
-  
-  public void b(View paramView) {}
 }
 
 

@@ -1,8 +1,21 @@
-public abstract interface vlb
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class vlb
+  extends SimpleJob<Object>
 {
-  public abstract void a(int paramInt);
+  vlb(vla paramvla, String paramString, boolean paramBoolean)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Vla.b(this.jdField_a_of_type_Boolean);
+    return null;
+  }
 }
 
 

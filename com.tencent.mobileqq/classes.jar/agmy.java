@@ -1,15 +1,7 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-
-class agmy
-  implements OnCompositionLoadedListener
+public class agmy
+  extends aexg
 {
-  agmy(agmu paramagmu) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    agmu.a(this.a, paramLottieComposition);
-  }
+  public bapt a;
 }
 
 

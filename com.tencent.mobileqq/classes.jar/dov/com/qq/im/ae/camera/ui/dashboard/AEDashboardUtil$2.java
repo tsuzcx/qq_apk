@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bomz;
-import bonq;
+import blrg;
+import blrx;
 import java.util.List;
 
 public final class AEDashboardUtil$2
   implements Runnable
 {
-  public AEDashboardUtil$2(bonq parambonq) {}
+  public AEDashboardUtil$2(blrx paramblrx) {}
   
   public void run()
   {
-    List localList1 = bomz.a();
-    List localList2 = bomz.b();
-    bomz.a(this.a, localList1, localList2);
+    List localList1 = blrg.a();
+    List localList2 = blrg.b();
+    blrg.a(this.a, localList1, localList2);
   }
 }
 

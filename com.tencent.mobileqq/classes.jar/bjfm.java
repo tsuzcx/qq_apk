@@ -1,17 +1,33 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
 
-public final class bjfm
-  implements DialogInterface.OnClickListener
+@ProxyService(proxy=RequestProxy.class)
+public class bjfm
+  extends RequestProxy
 {
-  public bjfm(Context paramContext) {}
+  public ConcurrentHashMap<String, Call> a = new ConcurrentHashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void abort(String paramString)
   {
-    bjfq.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    Call localCall = (Call)this.a.get(paramString);
+    if (localCall != null) {
+      localCall.cancel();
+    }
+    this.a.remove(paramString);
+  }
+  
+  public boolean request(String paramString1, byte[] paramArrayOfByte, Map<String, String> paramMap, String paramString2, int paramInt, RequestProxy.RequestListener paramRequestListener)
+  {
+    paramArrayOfByte = MiniOkHttpClientFactory.getRequestClient().newCall(bjcz.a(paramString1, paramMap, paramString2.toUpperCase(), null, paramArrayOfByte));
+    paramArrayOfByte.enqueue(new bjfn(this, paramString1, paramRequestListener));
+    this.a.put(paramString1, paramArrayOfByte);
+    return true;
   }
 }
 

@@ -1,19 +1,42 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-class ttx
-  implements View.OnClickListener
+public class ttx
+  implements INetInfoHandler
 {
-  ttx(ttw paramttw, CertifiedAccountMeta.StUser paramStUser) {}
+  protected WeakReference<tvb> a;
   
-  public void onClick(View paramView)
+  public ttx(tvb paramtvb)
   {
-    aaej.a(this.jdField_a_of_type_Ttw.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    abbe.b("auth_follow", "clk_head", 0, 0, new String[0]);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramtvb);
   }
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tvb)this.a.get()).d();
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tvb)this.a.get()).b();
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((tvb)this.a.get()).c();
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

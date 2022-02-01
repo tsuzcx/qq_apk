@@ -1,34 +1,70 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class xcp
-  extends wou
+  implements xcs
 {
-  public List<CommentEntry> a = new ArrayList();
-  public int b;
-  public String c;
+  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<String, HashSet<xct>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public xcp(qqstory_service.RspFeedCommentList paramRspFeedCommentList)
+  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
   {
-    super(paramRspFeedCommentList.result, paramRspFeedCommentList.feed_comment_info.is_end, paramRspFeedCommentList.feed_comment_info.next_cookie);
-    this.c = paramRspFeedCommentList.feed_comment_info.feed_id.get().toStringUtf8();
-    this.b = paramRspFeedCommentList.feed_comment_info.comment_total_num.get();
-    paramRspFeedCommentList = paramRspFeedCommentList.feed_comment_info.comment_list.get().iterator();
-    while (paramRspFeedCommentList.hasNext())
+    Object localObject = paramURLDrawable.getCurrDrawable();
+    if ((localObject instanceof RegionDrawable))
     {
-      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)paramRspFeedCommentList.next());
-      localCommentEntry.feedId = this.c;
-      this.a.add(localCommentEntry);
+      localObject = ((RegionDrawable)localObject).getBitmap();
+      if (localObject != null) {
+        return localObject;
+      }
     }
+    return bfvo.a(paramURLDrawable, paramInt1, paramInt2);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, xct paramxct)
+  {
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
+    try
+    {
+      URL localURL = new URL(paramString);
+      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setURLDrawableListener(new xcq(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setAutoDownload(true);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        break label177;
+      }
+      xvv.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
+      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
+      if (localObject != null)
+      {
+        paramxct.a(paramString, (Bitmap)localObject);
+        return;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      xvv.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      paramxct.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+      return;
+    }
+    xvv.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+    paramxct.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+    return;
+    label177:
+    xvv.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
+    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramxct);
+    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
+    localMalformedURLException.startDownload();
   }
 }
 

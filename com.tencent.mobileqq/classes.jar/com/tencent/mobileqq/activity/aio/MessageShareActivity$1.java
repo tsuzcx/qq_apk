@@ -20,7 +20,7 @@ class MessageShareActivity$1
     while (localIterator.hasNext())
     {
       ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-      StructMsgForImageShare.sendAndUploadImageShare(this.this$0.app, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, localResultRecord.jdField_a_of_type_JavaLangString, localResultRecord.a(), null, 0);
+      StructMsgForImageShare.sendAndUploadImageShare(this.this$0.app, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, localResultRecord.uin, localResultRecord.getUinType(), null, 0);
       continue;
       StructMsgForImageShare.sendAndUploadImageShare(this.this$0.app, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0);
     }
@@ -28,7 +28,7 @@ class MessageShareActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MessageShareActivity.1
  * JD-Core Version:    0.7.0.1
  */

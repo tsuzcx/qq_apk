@@ -1,24 +1,25 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
 
-public abstract class avjo
+public class avjo
+  implements Drawable.Callback
 {
-  public FrameLayout a;
-  public ImageView a;
-  public FullPopVideoView a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  public avjo(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
   
-  public void a(boolean paramBoolean)
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    if (paramBoolean) {}
-    for (String str = "205929";; str = "205927")
-    {
-      avma.a(this.jdField_a_of_type_JavaLangString, this.b, str, this.jdField_a_of_type_Boolean);
-      return;
-    }
+    this.a.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
   }
 }
 

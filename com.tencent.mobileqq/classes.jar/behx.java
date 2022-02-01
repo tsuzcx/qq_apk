@@ -1,83 +1,99 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class behx
-  implements behv
+public class behx
 {
-  private IBinder a;
+  public int a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<behy> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  behx(IBinder paramIBinder)
+  public static behx a(String paramString)
   {
-    this.a = paramIBinder;
+    behx localbehx = new behx();
+    localbehx.a(paramString);
+    return localbehx;
   }
   
-  public IBinder asBinder()
+  private void a(String paramString)
   {
-    return this.a;
+    long l = System.currentTimeMillis();
+    this.jdField_b_of_type_JavaLangString = paramString;
+    new ArrayList();
+    JSONObject localJSONObject1 = new JSONObject(paramString);
+    this.jdField_b_of_type_Int = localJSONObject1.optInt("errorcode");
+    this.jdField_a_of_type_JavaLangString = localJSONObject1.optString("errormsg");
+    JSONArray localJSONArray = localJSONObject1.optJSONArray("items");
+    int i = 0;
+    while (i < localJSONArray.length())
+    {
+      JSONObject localJSONObject2 = localJSONArray.getJSONObject(i);
+      behy localbehy = new behy();
+      localbehy.jdField_a_of_type_JavaLangString = localJSONObject2.optString("itemstring");
+      localbehy.jdField_a_of_type_Boolean = "YES".equalsIgnoreCase(localJSONObject2.optString("item"));
+      localbehy.jdField_a_of_type_Int = localJSONObject2.optInt("itemconf");
+      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("itemcoord");
+      localbehy.jdField_b_of_type_Int = localJSONObject3.optInt("x");
+      localbehy.c = localJSONObject3.optInt("y");
+      localbehy.d = localJSONObject3.optInt("width");
+      localbehy.e = localJSONObject3.optInt("height");
+      if (!localbehy.a())
+      {
+        xvv.e("QQ.Troop.homework.ArithResult", "arith homework json error!! all json=" + paramString);
+        yos.a("arith homework json error!! json=" + localJSONObject2, new Object[0]);
+      }
+      if (!localbehy.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Int += 1;
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localbehy);
+      i += 1;
+    }
+    this.jdField_a_of_type_OrgJsonJSONArray = localJSONArray;
+    this.jdField_a_of_type_OrgJsonJSONObject = localJSONObject1;
+    xvv.d("QQ.Troop.homework.ArithResult", "parse json cost=" + (System.currentTimeMillis() - l));
   }
   
-  public void beginSwitch()
+  public int a()
   {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void doSwitch(String paramString1, String paramString2)
+  public behy a(int paramInt)
   {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeString(paramString1);
-      localParcel.writeString(paramString2);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    return (behy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public void onProgress(long paramLong1, long paramLong2)
+  public String a()
   {
-    Parcel localParcel = Parcel.obtain();
-    try
+    xvv.d("QQ.Troop.homework.ArithResult", "toJson:" + this.jdField_a_of_type_Boolean);
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Boolean)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeLong(paramLong1);
-      localParcel.writeLong(paramLong2);
-      this.a.transact(2, localParcel, null, 1);
-      return;
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = (behy)this.jdField_a_of_type_JavaUtilList.get(i);
+        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i);
+        if (((behy)localObject).jdField_a_of_type_Boolean) {}
+        for (localObject = "YES";; localObject = "NO")
+        {
+          localJSONObject.put("item", localObject);
+          i += 1;
+          break;
+        }
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("items", this.jdField_a_of_type_OrgJsonJSONArray);
     }
-    finally
+    for (Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.toString();; localObject = this.jdField_b_of_type_JavaLangString)
     {
-      localParcel.recycle();
-    }
-  }
-  
-  public void postSwitch(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(4, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
+      xvv.d("QQ.Troop.homework.ArithResult", "toJSON cost=" + (System.currentTimeMillis() - l));
+      return localObject;
     }
   }
 }

@@ -1,18 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.1.1;
+import android.util.Property;
 
-public class bnqq
-  implements bnrb
+class bnqq
+  extends Property<bnqm, Integer>
 {
-  bnqq(bnqp parambnqp) {}
-  
-  public void a(int paramInt, Drawable paramDrawable)
+  bnqq(bnqm parambnqm, Class paramClass, String paramString)
   {
-    if (paramInt == 0)
-    {
-      bnqp.a(this.a).a.b(0);
-      this.a.a.post(new ZipAnimationDrawable.1.1(this));
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(bnqm parambnqm)
+  {
+    if (parambnqm != null) {
+      return Integer.valueOf(bnqm.b(parambnqm));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bnqm parambnqm, Integer paramInteger)
+  {
+    if (parambnqm != null) {
+      bnqm.b(parambnqm, paramInteger.intValue());
     }
   }
 }

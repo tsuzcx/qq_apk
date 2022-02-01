@@ -1,18 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
 public class aflu
-  implements View.OnClickListener
+  implements aflw
 {
-  public aflu(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public aflu(DoodleView paramDoodleView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 

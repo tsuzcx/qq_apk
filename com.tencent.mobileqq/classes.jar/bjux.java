@@ -1,8 +1,6 @@
 public abstract interface bjux
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void b(String paramString1, String paramString2, String paramString3);
+  public abstract void onRowDeleted(int paramInt1, int paramInt2);
 }
 
 

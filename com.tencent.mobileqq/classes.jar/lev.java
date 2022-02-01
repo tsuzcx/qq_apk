@@ -1,129 +1,72 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class lev
-  implements INetInfoHandler
+class lev
+  extends lwj
 {
-  private lew a;
+  lev(leu paramleu) {}
   
-  public lev(lew paramlew)
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.a = paramlew;
-  }
-  
-  public static int a()
-  {
-    int j = 1;
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
     }
-    for (;;)
+    switch (paramInt1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
-      }
-      return i;
-      if (AppNetConnInfo.isMobileConn())
-      {
-        j = AppNetConnInfo.getMobileInfo();
-        switch (j)
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
-      }
-      else
-      {
-        j = -1;
-        i = 0;
+    default: 
+      return null;
+    }
+    paramString = new Bundle();
+    paramString.putString("camera_used_desc", ljo.a);
+    return paramString;
+  }
+  
+  public void a(RecvMsg paramRecvMsg)
+  {
+    if (paramRecvMsg != null) {
+      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    if (TextUtils.equals(paramString, "avChatRoom"))
+    {
+      ljt localljt = this.a.a.a();
+      if (localljt != null) {
+        localljt.a(paramInt, paramArrayOfByte);
       }
     }
-  }
-  
-  public static int b()
-  {
-    int i = -1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
+      if (paramArrayOfByte != null) {
+        break label96;
+      }
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    return AppNetConnInfo.getMobileInfo();
-  }
-  
-  public void onNetMobile2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
-    }
-    if (this.a != null) {
-      this.a.a(0);
+    label96:
+    for (paramInt = 0;; paramInt = paramArrayOfByte.length)
+    {
+      QLog.i("ChatRoomMng", 4, paramInt + "]");
+      return;
     }
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
-    }
-    if (this.a != null) {
-      this.a.a(1);
-    }
+    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
-    }
-    if (this.a != null) {
-      this.a.a(2);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
-    }
-    if (this.a != null) {
-      this.a.a(1);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
-    }
-    if (this.a != null) {
-      this.a.a(2);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
-    }
-    if (this.a != null) {
-      this.a.a(0);
+    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
+      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
     }
   }
 }

@@ -1,45 +1,31 @@
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.AuthTips;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-final class vvx
-  extends ayxn
+class vvx
+  implements vqp<vvy, vvz>
 {
-  vvx(boolean paramBoolean) {}
+  private vvx(vvv paramvvv) {}
   
-  public void a(cmd0x9ae.RspBody paramRspBody)
+  public void a(@NonNull vvy paramvvy, @Nullable vvz paramvvz, @NonNull ErrorMessage paramErrorMessage)
   {
-    int j = 1;
-    if (paramRspBody != null)
+    if ((paramvvz != null) && (paramvvz.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
     {
-      boolean bool = paramRspBody.bool_has_been_authenticated.get();
-      paramRspBody = paramRspBody.msg_auth_tips.string_tips_action_url.get();
-      if ((paramRspBody != null) && (paramRspBody.trim().length() > 0))
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramvvz.jdField_a_of_type_JavaUtilList);
+      xvv.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramvvz.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramvvz.jdField_a_of_type_Boolean), paramvvz.jdField_a_of_type_JavaLangString });
+      if ((paramvvz.jdField_a_of_type_Boolean) || (paramvvz.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        uyk localuyk = uyk.a();
-        if (!bool) {
-          break label88;
-        }
-        i = 1;
-        localuyk.b(i);
-        localuyk.a(paramRspBody);
+        xvv.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramvvz.b) });
+        this.a.a(true, paramvvz.b);
+        return;
       }
-      if (this.a) {
-        if (!bool) {
-          break label93;
-        }
-      }
-    }
-    label88:
-    label93:
-    for (int i = j;; i = 2)
-    {
-      vtq.a("", 53, 4, i);
+      this.a.c = paramvvz.jdField_a_of_type_JavaLangString;
+      this.a.c();
       return;
-      i = 2;
-      break;
     }
+    xvv.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 

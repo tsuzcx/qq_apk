@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.widget.AutoBgImageView;
 import com.tencent.qphone.base.util.QLog;
-import nbo;
+import ncp;
 
 public class AddMemberItemView
   extends RelativeLayout
@@ -35,7 +35,7 @@ public class AddMemberItemView
   public RectF a()
   {
     int[] arrayOfInt = new int[2];
-    nbo.a(this, arrayOfInt);
+    ncp.a(this, arrayOfInt);
     RectF localRectF = new RectF();
     localRectF.left = arrayOfInt[0];
     localRectF.top = arrayOfInt[1];
@@ -52,10 +52,10 @@ public class AddMemberItemView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)findViewById(2131362132));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131362202);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.width = nbo.w;
-    localLayoutParams.height = nbo.w;
+    localLayoutParams.width = ncp.s;
+    localLayoutParams.height = ncp.s;
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165334));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165342));
   }
 }
 

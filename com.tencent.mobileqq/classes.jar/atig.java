@@ -1,35 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import mqq.app.AppRuntime;
 
-public class atig
-  implements View.OnClickListener
+public abstract class atig
 {
-  public atig(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public static int a;
+  public static int b = 2;
+  private String a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public atig(String paramString, BinaryMessenger paramBinaryMessenger)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public AppRuntime a()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
     }
-    Button localButton = (Button)paramView.findViewById(2131365341);
-    if (localButton.getTag() != null)
-    {
-      this.a.e = ((Integer)localButton.getTag()).intValue();
-      if (this.a.jdField_a_of_type_Atzh != null) {
-        this.a.jdField_a_of_type_Atzh.a(null);
-      }
+  }
+  
+  public String b()
+  {
+    AppRuntime localAppRuntime = a();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
     }
-    this.a.m();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atig
  * JD-Core Version:    0.7.0.1
  */

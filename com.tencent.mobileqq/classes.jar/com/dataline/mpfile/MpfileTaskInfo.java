@@ -73,7 +73,7 @@ public class MpfileTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.mpfile.MpfileTaskInfo
  * JD-Core Version:    0.7.0.1
  */

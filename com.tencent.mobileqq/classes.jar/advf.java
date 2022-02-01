@@ -1,24 +1,50 @@
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class advf
-  extends aqpd
+  extends andd
 {
-  public advf(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public advf(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetAutoAgreeInvite2GroupIn50Flag(boolean paramBoolean1, boolean paramBoolean2)
   {
+    TextView localTextView;
     if (paramBoolean1)
     {
-      if ((this.a.f != null) && (paramBoolean2 != this.a.f.a()))
-      {
-        this.a.f.setOnCheckedChangeListener(null);
-        this.a.f.setChecked(paramBoolean2);
-        this.a.f.setOnCheckedChangeListener(this.a);
+      this.a.f.a().setChecked(paramBoolean2);
+      localTextView = this.a.a;
+      if (!paramBoolean2) {
+        break label59;
       }
+    }
+    label59:
+    for (int i = 2131692854;; i = 2131692855)
+    {
+      localTextView.setText(i);
+      bfyz.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
       return;
     }
-    AssistantSettingActivity.a(this.a, 2131690565, 1);
+  }
+  
+  protected void onSend0x4ff_86Rsp(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, amtj.a(2131707029), 0).a();
+      Switch localSwitch = this.a.f.a();
+      if (!paramBoolean2) {}
+      for (paramBoolean1 = bool;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    bfyz.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 

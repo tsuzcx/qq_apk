@@ -1,21 +1,24 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage;
+import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.BusinessObserver;
 
 public class aevm
-  implements ViewSwitcher.ViewFactory
+  implements BusinessObserver
 {
-  public aevm(Leba paramLeba) {}
+  public aevm(ReminderCardItemPage paramReminderCardItemPage) {}
   
-  public View makeView()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    paramBundle = new ReminderCardItemPage.2.1(this, paramInt, paramBoolean, paramBundle);
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      paramBundle.run();
+      return;
+    }
+    ReminderCardItemPage.a(this.a).runOnUiThread(paramBundle);
   }
 }
 

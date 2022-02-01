@@ -3,30 +3,29 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnba;
 import java.util.ArrayList;
 
 public class WeishiShareDataInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new bnba();
-  public String a;
-  public ArrayList<WeishiPictureUrl> a;
-  public String b;
+  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new WeishiShareDataInfo.1();
+  public ArrayList<WeishiPictureUrl> pictureUrls;
+  public String sSummary;
+  public String sTitle;
   
-  public WeishiShareDataInfo(Parcel paramParcel)
+  protected WeishiShareDataInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilArrayList, WeishiPictureUrl.CREATOR);
+    this.sTitle = paramParcel.readString();
+    this.sSummary = paramParcel.readString();
+    this.pictureUrls = new ArrayList();
+    paramParcel.readTypedList(this.pictureUrls, WeishiPictureUrl.CREATOR);
   }
   
   public WeishiShareDataInfo(String paramString1, String paramString2, ArrayList<WeishiPictureUrl> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.sTitle = paramString1;
+    this.sSummary = paramString2;
+    this.pictureUrls = paramArrayList;
   }
   
   public int describeContents()
@@ -36,9 +35,9 @@ public class WeishiShareDataInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilArrayList);
+    paramParcel.writeString(this.sTitle);
+    paramParcel.writeString(this.sSummary);
+    paramParcel.writeTypedList(this.pictureUrls);
   }
 }
 

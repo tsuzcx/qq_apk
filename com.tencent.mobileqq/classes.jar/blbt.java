@@ -1,37 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.startup.step.SetSplash;
 
-final class blbt
-  extends blbx
+class blbt
+  implements View.OnLayoutChangeListener
 {
-  blbt(blbs paramblbs)
-  {
-    super(null);
-  }
+  blbt(blbs paramblbs) {}
   
-  public boolean a(String paramString, blcq paramblcq)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.a.size() >= this.a.maxSize())
+    if (paramView.getHeight() > 0)
     {
-      blbs.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
-      }
-      return false;
-    }
-    if (paramblcq.a > new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramblcq.toString() }));
-      }
-      this.a.put(paramString, paramblcq);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramblcq.toString() }));
-      }
+      blbs.a(this.a).removeOnLayoutChangeListener(this);
+      SetSplash.a(blbs.b(this.a));
     }
   }
 }

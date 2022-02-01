@@ -1,22 +1,17 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aevn
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public aevn(Leba paramLeba) {}
+  public aevn(ReminderListFragment paramReminderListFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      bcjy.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
-      bdll.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
-    }
+    ReminderListFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

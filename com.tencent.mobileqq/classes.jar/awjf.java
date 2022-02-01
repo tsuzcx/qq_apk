@@ -1,16 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.UiApiPlugin.8;
-import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
-
 public class awjf
-  implements bhit
 {
-  public awjf(UiApiPlugin.8 param8) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a(Bitmap paramBitmap)
+  public String toString()
   {
-    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ret=").append(this.jdField_a_of_type_Int).append(",uin=").append(this.jdField_a_of_type_Long).append(",succFreeLikeCnt=").append(this.b).append(",succPayLikeCnt=").append(this.c).append(",todayLikeCnt=").append(this.d).append(",totalPayStockCnt=").append(this.e).append(",errMsg=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

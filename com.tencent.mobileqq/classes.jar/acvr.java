@@ -1,153 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class acvr
-  implements acvj
+final class acvr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  acvt jdField_a_of_type_Acvt = new acvs(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  public qq_ad_get.QQAdGetRsp.AdInfo a;
-  public int b;
-  private List<String> b;
-  private List<String> c;
+  acvr(QQAppInterface paramQQAppInterface, acxb paramacxb, long paramLong, Context paramContext, acxa paramacxa) {}
   
-  public acvr()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  private int a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    acvp.a(BaseApplicationImpl.getApplication(), this, paramString);
-    j = -1;
-    i = j;
-    for (;;)
-    {
-      try
-      {
-        acvc.a("GdtC2SReporter", "index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int);
-        i = j;
-        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
-        i = j;
-        localHttpURLConnection.setRequestMethod("GET");
-        i = j;
-        localHttpURLConnection.setConnectTimeout(10000);
-        i = j;
-        localHttpURLConnection.setReadTimeout(10000);
-        i = j;
-        localHttpURLConnection.setUseCaches(false);
-        i = j;
-        localHttpURLConnection.setInstanceFollowRedirects(true);
-        i = j;
-        localHttpURLConnection.connect();
-        i = j;
-        j = localHttpURLConnection.getResponseCode();
-        i = j;
-        acvc.a("GdtC2SReporter", "rspCode:  " + j + " index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int + " reportUrl =" + paramString);
-        i = j;
-        int k = this.jdField_a_of_type_Int;
-        if (j != 200) {
-          continue;
-        }
-        paramInt = 0;
-        i = j;
-        bdll.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.jdField_a_of_type_JavaLangString, paramString);
-      }
-      catch (Throwable localThrowable)
-      {
-        acvc.d("GdtC2SReporter", "c2sReport excetpion: " + localThrowable.getMessage());
-        j = i;
-        continue;
-      }
-      acvp.a(BaseApplicationImpl.getApplication(), this, paramString, j, System.currentTimeMillis() - l);
-      return j;
-      paramInt = 1;
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Acxb.jdField_a_of_type_Int, this.jdField_a_of_type_Acxb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acxb.jdField_c_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Acxb.jdField_a_of_type_Boolean) {
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-  }
-  
-  private void a(List<String> paramList)
-  {
-    int i = -1;
-    paramList = paramList.iterator();
-    int j = 0;
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      j += 1;
-      int k = a(str, j);
-      i = k;
-      if (k < 0) {
-        i = a(str, j);
-      }
-      acvp.a(BaseApplicationImpl.getApplication(), this, str, i);
-    }
-    bdll.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, i, "", "", this.jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
-  {
-    int j = 1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
-    if (paramAdInfo == null) {}
-    do
-    {
-      acvp.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-      return;
-      this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
-      this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
-      this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
-      this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
-    } while (this.jdField_a_of_type_JavaLangString == null);
-    if ((paramInt1 == 0) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Int = paramInt1;
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((paramInt1 == 1) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if ((paramInt1 == 2) && (this.c != null) && (this.c.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if (this.jdField_a_of_type_Int == -1) {
-        break;
-      }
-      acvc.a("GdtC2SReporter", "reportAsync for ADID: " + this.jdField_a_of_type_JavaLangString + ", operationType: " + paramInt1);
-      acvp.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, true);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramAdInfo = BaseApplicationImpl.getApplication().getRuntime();
-      String str = paramAdInfo.getAccount();
-      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), acvu.class);
-      localNewIntent.putExtra("key_uin", str);
-      localNewIntent.putExtra("key_adID", this.jdField_a_of_type_JavaLangString);
-      paramInt1 = j;
-      if (i != 0) {
-        paramInt1 = 0;
-      }
-      localNewIntent.putExtra("key_operation", paramInt1);
-      localNewIntent.setObserver(this.jdField_a_of_type_Acvt);
-      paramAdInfo.startServlet(localNewIntent);
-      bdll.a(null, "dc00898", "", "", "0X8009EBC", "0X8009EBC", this.jdField_a_of_type_Int, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
-      return;
+    this.jdField_a_of_type_Acxb.b = false;
+    this.jdField_a_of_type_Acxb.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Acxb.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_Acxb);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

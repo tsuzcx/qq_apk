@@ -1,59 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery;
 
-public class agyi
-  implements bliz
+class agyi
+  implements aszj
 {
-  public agyi(ApolloItemBuilder paramApolloItemBuilder, agyp paramagyp, ApolloActionData paramApolloActionData, blir paramblir) {}
+  agyi(agyh paramagyh) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onNo()
   {
-    switch (paramInt)
+    this.a.a(false);
+    this.a.c(true);
+  }
+  
+  public void onYes()
+  {
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.cancel();
+      this.a.a(true);
+      this.a.jdField_a_of_type_Ahap.a(this.a.jdField_a_of_type_Agzg.jdField_a_of_type_Long, this.a.jdField_a_of_type_Agzg.jdField_a_of_type_Int, 20);
+      agyh.a(this.a).b(true);
+      agyh.b(this.a).a(true);
       return;
-      if ((1 == this.jdField_a_of_type_Agyp.f) || (this.jdField_a_of_type_Agyp.f == 2))
-      {
-        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          QLog.e("ApolloItemBuilder", 1, "mContext is not activity");
-          return;
-        }
-        ApolloUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "lmx_actchat");
-      }
-      else
-      {
-        if (3 == this.jdField_a_of_type_Agyp.f)
-        {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
-            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-            break;
-            paramView.putExtra("url", annv.T + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
-          }
-        }
-        if (4 != this.jdField_a_of_type_Agyp.f) {
-          aean.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agyp.a.uniseq);
-        }
-      }
     }
+    catch (Exception localException) {}
   }
 }
 

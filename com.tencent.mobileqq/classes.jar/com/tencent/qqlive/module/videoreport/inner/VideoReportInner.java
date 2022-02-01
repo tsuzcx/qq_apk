@@ -25,8 +25,10 @@ import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
+import com.tencent.qqlive.module.videoreport.detection.DetectionInterceptors;
 import com.tencent.qqlive.module.videoreport.detection.DetectionPolicy;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.AudioEventReporter;
+import com.tencent.qqlive.module.videoreport.dtreport.lazy.LazyInitObserver;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventParamChecker;
@@ -54,7 +56,9 @@ import com.tencent.qqlive.module.videoreport.reportdata.DataBuilderFactory;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
 import com.tencent.qqlive.module.videoreport.reportdata.IDataBuilder;
 import com.tencent.qqlive.module.videoreport.reportdata.PathData;
+import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
+import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ReportUtils;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
@@ -168,15 +172,15 @@ public class VideoReportInner
   private void initiateComponent()
   {
     AppEventReporter.getInstance();
-    ElementClickReporter.getInstance();
     ViewContainerBinder.getInstance();
     PageSwitchObserver.getInstance();
-    PageManager.getInstance();
     PageReporter.getInstance();
+    AudioEventReporter.getInstance();
     ElementExposureReporter.getInstance();
     ScrollableViewObserver.getInstance();
     ElementExposureEndReporter.getInstance();
-    AudioEventReporter.getInstance();
+    PageManager.getInstance();
+    ElementClickReporter.getInstance();
   }
   
   public void addInnerReporter(IInnerReporter paramIInnerReporter)
@@ -358,6 +362,21 @@ public class VideoReportInner
       return null;
     }
     return PageUtils.getPageInfo(paramView);
+  }
+  
+  public void pageLogicDestroy(Object paramObject)
+  {
+    if (isDebugMode()) {
+      Log.i("VideoReportInner", "clearPageCreRefPageParams: object = " + paramObject);
+    }
+    if (!PageFinder.isPage(paramObject)) {
+      return;
+    }
+    View localView = PageFinder.getPageView(paramObject);
+    PageSwitchObserver.getInstance().onPageViewInvisible(localView);
+    PageManager.getInstance().clearPageContext(paramObject);
+    setPageId(paramObject, null);
+    resetPageParams(paramObject);
   }
   
   @Nullable
@@ -594,6 +613,11 @@ public class VideoReportInner
     }
   }
   
+  public void setDetectionInterceptor(IDetectionInterceptor paramIDetectionInterceptor)
+  {
+    DetectionInterceptors.setDetectionInterceptor(paramIDetectionInterceptor);
+  }
+  
   public void setDetectionMode(int paramInt)
   {
     DetectionPolicy.setDetectionMode(paramInt);
@@ -808,6 +832,7 @@ public class VideoReportInner
     {
       paramApplication.registerActivityLifecycleCallbacks(EventCollector.getInstance());
       ReportUtils.setContext(paramApplication);
+      ThreadUtils.injectTaskInterceptor(LazyInitObserver.getInstance());
       initiateComponent();
     }
     while (!isDebugMode()) {

@@ -1,25 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
 public class bbeq
-  implements bcwn
+  extends bbfd
 {
-  bbeq(bbeo parambbeo) {}
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public bbeq(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
-    }
+    super(paramGroupSearchEngine, parambbfe, paramString, paramInt1);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public bays a(List<bayt> paramList, String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
-    }
+    return new bawl(paramList, paramString, this.jdField_a_of_type_Int);
   }
 }
 

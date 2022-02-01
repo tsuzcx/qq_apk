@@ -1,55 +1,69 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.GuardProcessExitListener;
 
-public class bcpb
-  extends bckw
+class bcpb
+  extends GuardProcessExitListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private bcpc jdField_a_of_type_Bcpc;
+  bcpb(bcpa parambcpa) {}
   
-  public bcpb(bckk parambckk, Context paramContext)
+  public String a()
   {
-    super(parambckk, paramContext);
+    return "com.tencent.mobileqq:live";
   }
   
-  private void a()
+  /* Error */
+  public void a(boolean paramBoolean)
   {
-    String str = a();
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
-      }
-      this.jdField_a_of_type_Bcpc.a();
-      this.jdField_a_of_type_Bcpc.a(str);
-      this.jdField_a_of_type_Bcpc.b();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
-  }
-  
-  private void b(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559818, null, false);
-    this.jdField_a_of_type_Bcpc.a(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_Bcpc = new bcpc(paramContext);
-    b(paramContext);
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void e()
-  {
-    a();
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 10	bcpb:a	Lbcpa;
+    //   4: invokestatic 25	bcpa:a	(Lbcpa;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
+    //   7: ifnull +48 -> 55
+    //   10: aload_0
+    //   11: getfield 10	bcpb:a	Lbcpa;
+    //   14: invokestatic 25	bcpa:a	(Lbcpa;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
+    //   17: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
+    //   20: instanceof 33
+    //   23: ifeq +32 -> 55
+    //   26: aload_0
+    //   27: getfield 10	bcpb:a	Lbcpa;
+    //   30: invokestatic 25	bcpa:a	(Lbcpa;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
+    //   33: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
+    //   36: checkcast 33	com/tencent/mobileqq/intervideo/shadow/PluginProcessKiller
+    //   39: astore_2
+    //   40: aload_2
+    //   41: invokeinterface 36 1 0
+    //   46: aload_0
+    //   47: getfield 10	bcpb:a	Lbcpa;
+    //   50: aconst_null
+    //   51: invokestatic 39	bcpa:a	(Lbcpa;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
+    //   54: pop
+    //   55: return
+    //   56: astore_2
+    //   57: aload_0
+    //   58: getfield 10	bcpb:a	Lbcpa;
+    //   61: aconst_null
+    //   62: invokestatic 39	bcpa:a	(Lbcpa;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
+    //   65: pop
+    //   66: return
+    //   67: astore_2
+    //   68: aload_0
+    //   69: getfield 10	bcpb:a	Lbcpa;
+    //   72: aconst_null
+    //   73: invokestatic 39	bcpa:a	(Lbcpa;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
+    //   76: pop
+    //   77: aload_2
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	bcpb
+    //   0	79	1	paramBoolean	boolean
+    //   39	2	2	localPluginProcessKiller	com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller
+    //   56	1	2	localIllegalArgumentException	java.lang.IllegalArgumentException
+    //   67	11	2	localObject	java.lang.Object
+    // Exception table:
+    //   from	to	target	type
+    //   40	46	56	java/lang/IllegalArgumentException
+    //   40	46	67	finally
   }
 }
 

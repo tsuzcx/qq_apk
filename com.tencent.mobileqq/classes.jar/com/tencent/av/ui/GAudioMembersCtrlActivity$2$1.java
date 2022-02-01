@@ -2,12 +2,12 @@ package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mei;
+import mdr;
 
 public class GAudioMembersCtrlActivity$2$1
   implements Runnable
 {
-  public GAudioMembersCtrlActivity$2$1(mei parammei) {}
+  public GAudioMembersCtrlActivity$2$1(mdr parammdr) {}
   
   public void run()
   {

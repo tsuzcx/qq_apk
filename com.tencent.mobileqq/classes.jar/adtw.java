@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
 public class adtw
-  extends anwt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adtw(AddRequestActivity paramAddRequestActivity) {}
+  public adtw(NotifyPushSettingActivity paramNotifyPushSettingActivity, amov paramamov) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
-      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
+    if ((NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
+    {
+      this.jdField_a_of_type_Amov.e(paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
-      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
-      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
+    NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localFormSwitchItem.setChecked(bool);
+      NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131694311), 0).b(5);
+      break;
     }
   }
 }

@@ -1,12 +1,28 @@
-import com.tencent.mobileqq.data.ConversationInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public abstract interface adbl
+public class adbl
+  extends bfar
 {
-  public abstract int a(StringBuilder paramStringBuilder);
+  public adbl(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public abstract boolean a(ConversationInfo paramConversationInfo);
-  
-  public abstract boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean);
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  {
+    if (paramBoolean)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 16;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("uinname", paramAccountDetail.name);
+      localBundle.putString("extra_type", paramAccountDetail.summary);
+      localBundle.putLong("uin", paramLong);
+      localMessage.setData(localBundle);
+      this.a.a.sendMessage(localMessage);
+    }
+  }
 }
 
 

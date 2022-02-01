@@ -1,84 +1,63 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterArticleOnePic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qvc
-  extends qva
+public class qvc
+  implements View.OnClickListener
 {
-  protected void a()
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  rda jdField_a_of_type_Rda;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
+  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
+  ImageView[] c;
+  
+  private qvc(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = a();
-    if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).a = 1;
-    }
-    Object localObject3 = a();
-    localObject1 = a();
-    if (localObject1 != null)
+    boolean bool = true;
+    switch (paramView.getId())
     {
-      localObject1 = ((qxz)localObject1).a;
-      if (localObject1 == null) {}
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    case 2131366980: 
+      i = 0;
+      label50:
+      if (i < this.jdField_a_of_type_Rda.a.size()) {
+        if (((RecommendFollowInfo)this.jdField_a_of_type_Rda.a.get(i)).isFollowed) {
+          break;
+        }
+      }
+      break;
     }
-    for (localObject1 = ((qxp)localObject1).b;; localObject1 = null)
+    for (int i = 0;; i = 1)
     {
-      ((BaseArticleInfo)localObject3).mTitle = ((String)localObject1);
-      localObject1 = a();
-      if (localObject1 != null) {
-        ((qyg)localObject1).a = true;
-      }
-      try
+      ComponentContentRecommendFollowGroup localComponentContentRecommendFollowGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
+      List localList = this.jdField_a_of_type_Rda.a;
+      if (i == 0) {}
+      for (;;)
       {
-        localObject3 = a();
-        localObject1 = localObject2;
-        if (localObject3 != null)
-        {
-          localObject3 = ((qxz)localObject3).a;
-          localObject1 = localObject2;
-          if (localObject3 != null)
-          {
-            localObject3 = ((qxp)localObject3).a;
-            localObject1 = localObject2;
-            if (localObject3 != null)
-            {
-              localObject3 = (articlesummary.PGCPicInfo)((ArrayList)localObject3).get(0);
-              localObject1 = localObject2;
-              if (localObject3 != null)
-              {
-                localObject3 = ((articlesummary.PGCPicInfo)localObject3).bytes_pic_url;
-                localObject1 = localObject2;
-                if (localObject3 != null)
-                {
-                  localObject3 = ((PBBytesField)localObject3).get();
-                  localObject1 = localObject2;
-                  if (localObject3 != null) {
-                    localObject1 = ((ByteStringMicro)localObject3).toStringUtf8();
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (localObject1 != null) {
-          a().mSinglePicture = new URL((String)localObject1);
-        }
-        return;
+        localComponentContentRecommendFollowGroup.a(localList, bool);
+        break;
+        i += 1;
+        break label50;
+        bool = false;
       }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        localMalformedURLException.printStackTrace();
-        return;
-      }
-      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-      {
-        localIndexOutOfBoundsException.printStackTrace();
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
+      break;
     }
   }
 }

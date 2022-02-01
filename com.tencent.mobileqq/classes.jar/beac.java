@@ -1,33 +1,18 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class beac
-  extends begp
+final class beac
+  implements Comparator<String>
 {
-  public beac(CharSequence paramCharSequence, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    super(paramCharSequence, paramInt);
-  }
-  
-  protected void a(View paramView, String paramString)
-  {
-    paramString = Uri.parse(paramString);
-    paramView = paramView.getContext();
-    paramString = new Intent("android.intent.action.VIEW", paramString);
-    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
     try
     {
-      paramView.startActivity(paramString);
-      return;
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
     }
-    catch (ActivityNotFoundException paramView)
-    {
-      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
-    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
   }
 }
 

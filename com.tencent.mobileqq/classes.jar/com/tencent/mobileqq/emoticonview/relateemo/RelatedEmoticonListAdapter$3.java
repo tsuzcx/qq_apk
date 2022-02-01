@@ -4,26 +4,25 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import astb;
 
-public class RelatedEmoticonListAdapter$3
+class RelatedEmoticonListAdapter$3
   implements Runnable
 {
-  public RelatedEmoticonListAdapter$3(astb paramastb, View paramView, LinearLayout paramLinearLayout) {}
+  RelatedEmoticonListAdapter$3(RelatedEmoticonListAdapter paramRelatedEmoticonListAdapter, View paramView, LinearLayout paramLinearLayout) {}
   
   public void run()
   {
-    if (((astb.a(this.this$0) instanceof Activity)) && (!((Activity)astb.a(this.this$0)).isFinishing()))
+    if (((RelatedEmoticonListAdapter.access$100(this.this$0) instanceof Activity)) && (!((Activity)RelatedEmoticonListAdapter.access$100(this.this$0)).isFinishing()))
     {
       int[] arrayOfInt = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
-      astb.a(this.this$0).showAtLocation(this.jdField_a_of_type_AndroidViewView, 48, (int)(arrayOfInt[0] - this.jdField_a_of_type_AndroidViewView.getMeasuredWidth() * 1.5F), arrayOfInt[1] - this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight());
+      this.val$view.getLocationInWindow(arrayOfInt);
+      RelatedEmoticonListAdapter.access$200(this.this$0).showAtLocation(this.val$view, 48, (int)(arrayOfInt[0] - this.val$view.getMeasuredWidth() * 1.5F), arrayOfInt[1] - this.val$linearLayout.getMeasuredHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

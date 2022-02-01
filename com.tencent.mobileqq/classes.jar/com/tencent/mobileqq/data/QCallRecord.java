@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import adak;
+import abwz;
+import amtj;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.text.SimpleDateFormat;
@@ -48,7 +48,7 @@ public class QCallRecord
   
   public static String getTableName(String paramString, int paramInt)
   {
-    return "qc_" + paramInt + "_" + adak.a(paramString);
+    return "qc_" + paramInt + "_" + abwz.a(paramString);
   }
   
   public void createMessageUniseq()
@@ -75,10 +75,10 @@ public class QCallRecord
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.setTimeInMillis(System.currentTimeMillis());
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6))) {
-      return anzj.a(2131708461);
+      return amtj.a(2131708693);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) + 1 == localCalendar2.get(6))) {
-      return anzj.a(2131708459);
+      return amtj.a(2131708691);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {}
     switch (localCalendar1.get(7))
@@ -86,19 +86,19 @@ public class QCallRecord
     default: 
       return new SimpleDateFormat("yy-MM-dd").format(localDate);
     case 1: 
-      return anzj.a(2131708453);
+      return amtj.a(2131708685);
     case 2: 
-      return anzj.a(2131708456);
+      return amtj.a(2131708688);
     case 3: 
-      return anzj.a(2131708455);
+      return amtj.a(2131708687);
     case 4: 
-      return anzj.a(2131708457);
+      return amtj.a(2131708689);
     case 5: 
-      return anzj.a(2131708460);
+      return amtj.a(2131708692);
     case 6: 
-      return anzj.a(2131708463);
+      return amtj.a(2131708695);
     }
-    return anzj.a(2131708458);
+    return amtj.a(2131708690);
   }
   
   public String getTableName()
@@ -147,14 +147,14 @@ public class QCallRecord
     {
       label189:
       if (k != 0) {}
-      for (localObject = "" + k + anzj.a(2131708454);; localObject = "")
+      for (localObject = "" + k + amtj.a(2131708686);; localObject = "")
       {
         if (j != 0) {
-          localObject = (String)localObject + j + anzj.a(2131708462);
+          localObject = (String)localObject + j + amtj.a(2131708694);
         }
         for (;;)
         {
-          return (String)localObject + i + anzj.a(2131708452);
+          return (String)localObject + i + amtj.a(2131708684);
           label283:
           localObject = String.format(Locale.CHINA, "%02d:%02d", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
           break;
@@ -210,7 +210,7 @@ public class QCallRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QCallRecord
  * JD-Core Version:    0.7.0.1
  */

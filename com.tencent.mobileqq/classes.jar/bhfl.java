@@ -1,26 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
-final class bhfl
-  implements DownloadParams.DecodeHandler
+public class bhfl
+  extends URLDrawableDownListener.Adapter
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bhfl(NewStyleDropdownView paramNewStyleDropdownView) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
+    paramView = paramURLDrawable.getCurrDrawable();
+    if ((paramView instanceof ApngDrawable)) {
+      VasFaceManager.a(null, (ApngDrawable)paramView);
     }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      return bhmq.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bhmq.c(paramBitmap, 50, 50);
   }
 }
 

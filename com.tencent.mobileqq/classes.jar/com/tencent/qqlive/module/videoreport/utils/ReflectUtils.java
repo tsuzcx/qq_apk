@@ -8,9 +8,7 @@ public class ReflectUtils
   {
     try
     {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(null);
+      paramClass = getFieldWithException(paramClass, paramString, null);
       return paramClass;
     }
     catch (Exception paramClass)
@@ -24,9 +22,7 @@ public class ReflectUtils
   {
     try
     {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
+      paramClass = getFieldWithException(paramClass, paramString, paramObject);
       return paramClass;
     }
     catch (Exception paramClass)
@@ -34,6 +30,26 @@ public class ReflectUtils
       paramClass.printStackTrace();
     }
     return null;
+  }
+  
+  public static <T> T getField(String paramString, Object paramObject)
+  {
+    try
+    {
+      paramString = paramObject.getClass().getField(paramString);
+      paramString.setAccessible(true);
+      paramString = paramString.get(paramObject);
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  public static Object getFieldWithException(Class<?> paramClass, String paramString, Object paramObject)
+  {
+    paramClass = paramClass.getDeclaredField(paramString);
+    paramClass.setAccessible(true);
+    return paramClass.get(paramObject);
   }
 }
 

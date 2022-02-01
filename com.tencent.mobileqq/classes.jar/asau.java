@@ -1,20 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asau
-  implements aydt
+  implements View.OnClickListener
 {
-  public asau(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public asau(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
-    }
-    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
+    QfileRecentPicFileTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

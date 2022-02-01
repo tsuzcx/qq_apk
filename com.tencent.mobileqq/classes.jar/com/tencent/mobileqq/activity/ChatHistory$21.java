@@ -10,7 +10,7 @@ class ChatHistory$21
     ChatHistory localChatHistory1 = this.this$0;
     ChatHistory localChatHistory2 = this.this$0;
     if (this.a == true) {}
-    for (int i = 2131691905;; i = 2131691904)
+    for (int i = 2131691951;; i = 2131691950)
     {
       localChatHistory1.b(localChatHistory2.getString(i));
       return;
@@ -19,7 +19,7 @@ class ChatHistory$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.21
  * JD-Core Version:    0.7.0.1
  */

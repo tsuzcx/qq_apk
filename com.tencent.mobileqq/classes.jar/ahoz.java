@@ -1,29 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahoz
-  extends GestureDetector.SimpleOnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  ahoz(ahoy paramahoy) {}
+  ahoz(ahow paramahow) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Ahow.a()) {
-      return false;
-    }
-    agej.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_Ahow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Ahow.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Agjk != null) {
-      this.a.jdField_a_of_type_Agjk.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

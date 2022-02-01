@@ -1,28 +1,30 @@
-import UserGrowth.stSimpleGetFeedListReq;
-import UserGrowth.stSimpleGetFeedListRsp;
-import java.util.ArrayList;
-
-public class uoy
-  extends ukl<stSimpleGetFeedListRsp>
+class uoy
+  implements uxb
 {
-  public uoy(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  uoy(uou paramuou) {}
+  
+  public void a(String paramString)
   {
-    super("SimpleGetFeedList", paramInt);
-    stSimpleGetFeedListReq localstSimpleGetFeedListReq = new stSimpleGetFeedListReq();
-    localstSimpleGetFeedListReq.attach_info = paramString1;
-    localstSimpleGetFeedListReq.isrefresh = paramByte1;
-    localstSimpleGetFeedListReq.isfirst = paramByte2;
-    localstSimpleGetFeedListReq.channel_info = "from_android_qq";
-    localstSimpleGetFeedListReq.context_feedids = paramArrayList;
-    localstSimpleGetFeedListReq.scene = paramInt;
-    localstSimpleGetFeedListReq.gdt_args = paramString2;
-    localstSimpleGetFeedListReq.rowkey = paramString3;
-    localstSimpleGetFeedListReq.session = paramString4;
-    localstSimpleGetFeedListReq.push_info = paramString5;
-    localstSimpleGetFeedListReq.linkStragetyArgs = uqg.a();
-    localstSimpleGetFeedListReq.qqNum = uqt.a();
-    this.a = localstSimpleGetFeedListReq;
-    uqf.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
+    if (uyo.b()) {
+      return;
+    }
+    uou.a(this.a, true);
+    uya.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
+    String str = "weishi://profile?person_id=" + paramString;
+    uxr.a(uou.a(this.a).a(), str, 700, uou.a(this.a), "content");
+    uou.a(this.a, paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    if (uyo.b()) {
+      return;
+    }
+    uou.a(this.a, true);
+    uya.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
+    String str = "weishi://topic?topic_id=" + paramString;
+    uxr.a(uou.a(this.a).a(), str, 700, uou.a(this.a), "content");
+    uou.b(this.a, paramString);
   }
 }
 

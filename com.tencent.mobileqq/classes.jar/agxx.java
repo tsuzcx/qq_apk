@@ -1,91 +1,51 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.view.Gravity;
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 public class agxx
-  extends Drawable
+  extends BroadcastReceiver
 {
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private static final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public agxx(int paramInt, float paramFloat)
+  public agxx(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(paramInt1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
   }
   
-  public void draw(Canvas paramCanvas)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    float f1 = 0.0F;
-    int i = getLevel();
-    if (i == 0) {}
-    Rect localRect1;
-    Rect localRect2;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      return;
-      localRect1 = jdField_b_of_type_AndroidGraphicsRect;
-      localRect2 = getBounds();
-      j = localRect2.width();
-      k = localRect2.height();
-      k -= (10000 - i) * k / 10000;
-      m = paramCanvas.getHeight();
-      Gravity.apply(48, j, k, localRect2, localRect1);
-    } while ((j <= 0) || (k <= 0));
-    this.jdField_a_of_type_JavaLangString = (100 - i / 100 + "%");
-    paramCanvas.save();
-    float f2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
-      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.height() + m) / 2;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
+      if (!a(paramContext)) {
+        this.jdField_a_of_type_Boolean = bool;
+      }
     }
     for (;;)
     {
-      paramCanvas.clipRect(localRect1);
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect2);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_Boolean) {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
       }
-      paramCanvas.restore();
       return;
-      f2 = 0.0F;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = false;
+      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
   }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

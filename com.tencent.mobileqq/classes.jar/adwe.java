@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class adwe
-  implements View.OnClickListener
+  extends adwg
 {
-  public adwe(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public adwe(PortraitImageview paramPortraitImageview) {}
   
-  public void onClick(View paramView)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
+      }
+    }
+    return false;
   }
 }
 

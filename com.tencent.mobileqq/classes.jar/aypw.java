@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.data.NearbyPeopleCard.HiWanItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aypw
+class aypw
+  implements DialogInterface.OnClickListener
 {
-  public NearbyPeopleCard.HiWanItem a;
+  aypw(ayps paramayps) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ayps.a(this.a, false);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

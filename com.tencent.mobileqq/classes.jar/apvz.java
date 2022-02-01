@@ -1,23 +1,36 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
 
-public class apvz
-  implements ArkAppCacheMgr.OnGetAppIcon
+class apvz
+  extends apvy
 {
-  public apvz(ArkAppModuleBase.APIAuthority.1 param1, bhpc parambhpc) {}
+  private String a;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public apvz(String paramString)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_Bhpc.findViewById(2131365478)).setImageBitmap(paramBitmap);
-    }
+    this.a = paramString;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apvz
  * JD-Core Version:    0.7.0.1
  */

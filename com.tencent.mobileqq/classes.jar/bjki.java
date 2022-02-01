@@ -1,510 +1,1499 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.ims.QQProtectCommon.QQProtectQueryHead;
+import com.tencent.ims.QQProtectUpdate.UpdateQueryBody;
+import com.tencent.ims.QQProtectUpdate.UpdateQueryRequest;
+import com.tencent.ims.QQProtectUpdate.UpdateQueryResponse;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.8.5;
-import com.tencent.open.agent.AuthorityActivity.8.6;
-import com.tencent.open.agent.AuthorityActivity.8.7;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.model.AccountManage;
-import com.tencent.open.model.AccountManage.RefreshReason;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListRequest;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qconn.protofile.appType.PassData;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class bjki
-  implements Handler.Callback
+  implements Handler.Callback, INetEngine.IBreakDownFix, INetEngine.INetEngineListener, Manager
 {
-  public bjki(AuthorityActivity paramAuthorityActivity) {}
+  private int jdField_a_of_type_Int = 0;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bjkh jdField_a_of_type_Bjkh;
+  private bjkm jdField_a_of_type_Bjkm;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  final Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString = "";
+  private ConcurrentHashMap<String, NetReq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public boolean handleMessage(Message paramMessage)
+  public bjki(QQAppInterface paramQQAppInterface)
   {
-    SdkAuthorize.GetAuthApiListResponse localGetAuthApiListResponse;
-    int i;
-    switch (paramMessage.what)
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("qp_sfu_config", 0);
+    this.jdField_a_of_type_Bjkh = new bjkh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  private int a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, "No matched update from server.");
+      }
+    }
+    String str;
+    do
     {
-    case 10: 
-    default: 
-    case 0: 
-      for (;;)
+      return -1;
+      if (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("last_update_config_version", 0) < paramInt) {
+        return 0;
+      }
+      str = b();
+      if (!new File(str).exists()) {
+        return 0;
+      }
+      str = bjkf.a(str);
+      if ((str == null) || (!str.equalsIgnoreCase(paramString))) {
+        return 0;
+      }
+    } while ((str == null) || (!str.equalsIgnoreCase(paramString)));
+    return 1;
+  }
+  
+  private String a()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getDir("qqprotect", 0).toString() + File.separator + "SFU/";
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return str;
+  }
+  
+  private String a(bjkm parambjkm)
+  {
+    parambjkm = a() + parambjkm.jdField_a_of_type_Long + File.separator;
+    File localFile = new File(parambjkm);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return parambjkm;
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      Object localObject = bjhj.a(1);
+      if (localObject == null) {
+        return;
+      }
+      QQProtectUpdate.UpdateQueryBody localUpdateQueryBody = new QQProtectUpdate.UpdateQueryBody();
+      localUpdateQueryBody.uint32_file_id.set(paramInt1);
+      localUpdateQueryBody.uint32_file_local_version.set(paramInt2);
+      QQProtectUpdate.UpdateQueryRequest localUpdateQueryRequest = new QQProtectUpdate.UpdateQueryRequest();
+      localUpdateQueryRequest.head_update_query.set((MessageMicro)localObject);
+      localUpdateQueryRequest.body_update_query.set(localUpdateQueryBody);
+      localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "MobileQQprotect.QPUpdate");
+      ((ToServiceMsg)localObject).putWupBuffer(localUpdateQueryRequest.toByteArray());
+      ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService((ToServiceMsg)localObject);
+      a("0X80078AA", paramInt1, "", "");
+      if (QLog.isColorLevel())
       {
-        return true;
-        localGetAuthApiListResponse = (SdkAuthorize.GetAuthApiListResponse)paramMessage.obj;
-        if (localGetAuthApiListResponse != null) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] sent update query: fileid=%d, localversion=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  private void a(bjkm parambjkm)
+  {
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update complete: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      parambjkm.a();
+      if (b())
+      {
+        this.jdField_a_of_type_JavaLangString += String.format("#%d#", new Object[] { Long.valueOf(parambjkm.jdField_b_of_type_Long) });
+        this.jdField_b_of_type_JavaLangString += String.format("#%d#", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) });
+      }
+      a("0X80078B4", 0, "", "");
+    }
+  }
+  
+  private void a(NetReq paramNetReq, int paramInt1, int paramInt2) {}
+  
+  private void a(NetResp paramNetResp)
+  {
+    boolean bool = true;
+    if (paramNetResp == null) {}
+    bjkj localbjkj;
+    do
+    {
+      do
+      {
+        return;
+        if (paramNetResp.mResult != 3) {
           break;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("AuthorityActivity", 2, "GET_API_LIST_DONE  response = null");
+      } while (!QLog.isColorLevel());
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download error=%d", new Object[] { Integer.valueOf(paramNetResp.mResult) }));
+      return;
+      localbjkj = (bjkj)paramNetResp.mReq.getUserData();
+    } while (localbjkj == null);
+    if (paramNetResp.mResult == 0) {}
+    while (!bool)
+    {
+      try
+      {
+        if (localbjkj.jdField_d_of_type_Int >= 3) {
+          break label146;
         }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] retried to download, retry=%d, result=%b, url=%s", new Object[] { Integer.valueOf(localbjkj.jdField_d_of_type_Int), Boolean.valueOf(bool), localbjkj.jdField_c_of_type_JavaLangString }));
+        }
+        a(localbjkj);
+        return;
       }
-      i = localGetAuthApiListResponse.ret.get();
-      if (i != 0) {
-        QLog.d("AuthorityActivity", 1, "rec | cmd: G_A_L_D | uin : *" + bjqq.a(this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + i);
+      catch (Throwable paramNetResp)
+      {
+        paramNetResp.printStackTrace();
+        return;
       }
+      bool = false;
+      continue;
+      label146:
+      File localFile = new File(paramNetResp.mReq.mOutPath);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localbjkj.jdField_d_of_type_JavaLangString.toLowerCase());
+    a(bool, paramNetResp.mReq);
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    paramString3 = String.format("%d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.jdField_a_of_type_Bjkm != null)
+    {
+      paramInt = (int)this.jdField_a_of_type_Bjkm.jdField_b_of_type_Long;
+      if (this.jdField_a_of_type_Bjkm == null) {
+        break label188;
+      }
+    }
+    label188:
+    for (paramString2 = String.format("%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Bjkm.jdField_a_of_type_Long) });; paramString2 = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] report: actiontype=%s, actionname=%s, actionfrom=%d, actionresult=%d, sectionId=%s, reportId=%s, fileInfo: %s", new Object[] { paramString1, paramString1, Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), paramString2, paramString3, "", "" }));
+      }
+      bjhn localbjhn = new bjhn();
+      localbjhn.a(paramString1).a(paramString1).a(paramString3).a(paramString2).a(this.jdField_a_of_type_Int);
+      bjhk.a(localbjhn.toString(), 105, paramInt);
+      return;
+      paramInt = 0;
       break;
     }
-    label3334:
-    label3599:
-    label3604:
-    for (;;)
+  }
+  
+  private void a(boolean paramBoolean, NetReq paramNetReq)
+  {
+    if ((!paramBoolean) || (paramNetReq == null))
     {
-      Object localObject2;
-      Object localObject1;
-      long l1;
-      for (;;)
+      a(3);
+      return;
+    }
+    File localFile = new File(paramNetReq.mOutPath);
+    bjkj localbjkj = (bjkj)paramNetReq.getUserData();
+    if ((!localFile.exists()) || (localbjkj == null))
+    {
+      a(3);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download complete: %s, %s", new Object[] { paramNetReq.mOutPath, localbjkj.jdField_c_of_type_JavaLangString }));
+    }
+    switch (localbjkj.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      localFile = new File(b());
+      new File(paramNetReq.mOutPath).renameTo(localFile);
+      a("0X80078AC", localbjkj.jdField_c_of_type_Int, "", "");
+      if (this.jdField_a_of_type_Bjkh.a(localFile.toString()))
       {
-        Object localObject3;
-        try
-        {
-          bjqh.a().a(this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "6", "" + i, false);
-          if (TextUtils.isEmpty(localGetAuthApiListResponse.msg.get()))
-          {
-            paramMessage = String.format(this.a.getResources().getString(2131694149), new Object[] { Integer.valueOf(i) });
-            if (i == 110405)
-            {
-              this.a.a(paramMessage, new bjkj(this));
-              this.a.b(i, paramMessage);
-              return true;
-            }
-          }
-          else
-          {
-            paramMessage = String.format(this.a.getResources().getString(2131695831), new Object[] { localGetAuthApiListResponse.msg.get(), Integer.valueOf(i) });
-            continue;
-          }
-          if ((i == 110509) && (AuthorityActivity.a(this.a) < 0))
-          {
-            AuthorityActivity.a(this.a, 0);
-            avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-            AccountManage.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_MqqObserverSSOAccountObserver, AuthorityActivity.jdField_e_of_type_JavaLangString, AccountManage.RefreshReason.forceRefreshBy110509);
-            AuthorityActivity.a(this.a).jdField_a_of_type_Long = System.currentTimeMillis();
-            return true;
-          }
-          if (i == 110513)
-          {
-            this.a.b(110513, "", "", "");
-            return true;
-          }
-          if (i == 100044)
-          {
-            localObject2 = AuthorityActivity.a(this.a).getBundleExtra("key_params");
-            localObject1 = ((Bundle)localObject2).getString("packagename");
-            if (localObject1 != null) {
-              break label3604;
-            }
-            localObject1 = "";
-            localObject3 = ((Bundle)localObject2).getString("packagesign");
-            localObject2 = localObject3;
-            if (localObject3 == null) {
-              localObject2 = "";
-            }
-            localObject3 = new Bundle();
-            ((Bundle)localObject3).putString("uin", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject3).putString("openid", "");
-            ((Bundle)localObject3).putString("report_type", "1");
-            ((Bundle)localObject3).putString("act_type", "7");
-            ((Bundle)localObject3).putString("via", "2");
-            ((Bundle)localObject3).putString("app_id", AuthorityActivity.jdField_e_of_type_JavaLangString);
-            ((Bundle)localObject3).putString("packagename", (String)localObject1);
-            ((Bundle)localObject3).putString("stringext_1", (String)localObject2);
-            ((Bundle)localObject3).putString("result", "0");
-            bjqh.a().a((Bundle)localObject3, AuthorityActivity.jdField_e_of_type_JavaLangString, this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, false);
-          }
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("ret", localGetAuthApiListResponse.ret.get());
-          ((JSONObject)localObject1).put("msg", localGetAuthApiListResponse.msg.get());
-          this.a.a(paramMessage, new bjkk(this, localGetAuthApiListResponse, (JSONObject)localObject1));
-          continue;
-          this.a.jdField_h_of_type_Long = SystemClock.elapsedRealtime();
-        }
-        catch (JSONException paramMessage) {}
-        if (this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(localGetAuthApiListResponse))
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("last_update_config_version", localbjkj.jdField_c_of_type_Int).commit();
+        if (this.jdField_a_of_type_Bjkh.a().isEmpty())
         {
           if (QLog.isColorLevel()) {
-            QLog.d("AuthorityActivity", 2, "rec | cmd: G_A_L_D | authorized");
+            QLog.d("QQProtect.QPUpdate", 2, "[SFU] config ok but without any sections");
           }
-          this.a.jdField_f_of_type_Boolean = true;
-          this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131694156);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTag(this.a.jdField_b_of_type_JavaLangString);
-          if (localGetAuthApiListResponse.auth_response != null) {
-            this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = ((SdkAuthorize.AuthorizeResponse)localGetAuthApiListResponse.auth_response.get());
+          d(16);
+          return;
+        }
+        d(5);
+        return;
+      }
+      a("0X80078AC", localbjkj.jdField_c_of_type_Int, localbjkj.jdField_b_of_type_JavaLangString, localbjkj.jdField_c_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, "[SFU] invalid config (sig not accepted)");
+      }
+      a(1);
+      return;
+    }
+    a("0X80078AE", localbjkj.jdField_c_of_type_Int, "", "");
+    d(7);
+  }
+  
+  private boolean a()
+  {
+    Object localObject = this.jdField_a_of_type_Bjkh.a();
+    int i = 0;
+    if (i < ((List)localObject).size()) {
+      if (((bjkm)((List)localObject).get(i)).a()) {}
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (QLog.isColorLevel()) {
+        if (!bool) {
+          break label81;
+        }
+      }
+      label81:
+      for (localObject = "yes";; localObject = "no")
+      {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] all complete: %s", new Object[] { localObject }));
+        return bool;
+        i += 1;
+        break;
+      }
+    }
+  }
+  
+  private boolean a(bjkj parambjkj)
+  {
+    if (parambjkj == null) {}
+    do
+    {
+      return false;
+      if ((parambjkj.jdField_a_of_type_Int == 2) && (parambjkj.e != 1) && (!NetworkUtils.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQProtect.QPUpdate", 2, "[SFU] donot download file because not using wifi");
+        }
+        bjhh.a(3, 1);
+        return false;
+      }
+    } while ((parambjkj.jdField_d_of_type_Int < 3) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(parambjkj.jdField_d_of_type_JavaLangString.toLowerCase())));
+    INetEngine localINetEngine = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = this;
+    localHttpNetReq.mBreakDownFix = this;
+    localHttpNetReq.mReqUrl = parambjkj.jdField_c_of_type_JavaLangString;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = (parambjkj.jdField_a_of_type_JavaLangString + parambjkj.jdField_b_of_type_JavaLangString);
+    parambjkj.jdField_d_of_type_Int += 1;
+    parambjkj.jdField_a_of_type_Long = new Date().getTime();
+    localHttpNetReq.setUserData(parambjkj);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(parambjkj.jdField_d_of_type_JavaLangString.toLowerCase(), localHttpNetReq);
+    localINetEngine.sendReq(localHttpNetReq);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] begin http download %s", new Object[] { parambjkj.jdField_c_of_type_JavaLangString }));
+    }
+    return true;
+  }
+  
+  private boolean a(bjkm parambjkm)
+  {
+    boolean bool;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] rollback: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      if (parambjkm.jdField_b_of_type_JavaUtilList.isEmpty())
+      {
+        if (!QLog.isColorLevel()) {
+          break label355;
+        }
+        QLog.d("QQProtect.QPUpdate", 2, "[SFU] no files need to rollback");
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] rollback result: %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+      return bool;
+      String str = b(parambjkm);
+      long l2 = 0L;
+      int i = 0;
+      while (i < parambjkm.jdField_b_of_type_JavaUtilList.size())
+      {
+        Object localObject = (bjkl)parambjkm.jdField_b_of_type_JavaUtilList.get(i);
+        File localFile1 = new File(((bjkl)localObject).f);
+        File localFile2 = new File(((bjkl)localObject).g);
+        long l1 = l2;
+        if (localFile2.exists())
+        {
+          if (!localFile2.delete()) {
+            localFile2.deleteOnExit();
           }
-          if ((this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse == null) && (this.a.jdField_c_of_type_Boolean))
+          l1 = l2 + 1L;
+        }
+        l2 = l1;
+        if (((bjkl)localObject).jdField_a_of_type_Int == 2)
+        {
+          l2 = l1;
+          if (localFile1.exists())
           {
-            this.a.k();
-            return true;
-          }
-          if (!this.a.jdField_b_of_type_Boolean) {
-            this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          }
-          paramMessage = new HashMap();
-          paramMessage.put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-          paramMessage.put("p1", "logged");
-          paramMessage.put("p2", "auth");
-          bdmc.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, "connect_sso_pageview", false, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, 0L, paramMessage, "");
-          this.a.b("wtl_loggednunauthorized", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-          if ((this.a.jdField_b_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SDKQQAgentPref", 2, "AutoLogin: " + SystemClock.elapsedRealtime());
+            if (!localFile1.delete()) {
+              localFile1.deleteOnExit();
             }
-            this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-            paramMessage = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-            paramMessage.what = 1;
-            paramMessage.obj = this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse;
-            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramMessage);
+            l2 = l1 + 1L;
           }
-          if (!AuthorityActivity.a(this.a)) {
-            this.a.j();
+        }
+        localObject = new File(str, ((bjkl)localObject).jdField_c_of_type_JavaLangString);
+        l1 = l2;
+        if (((File)localObject).exists())
+        {
+          l1 = l2;
+          if (((File)localObject).canRead())
+          {
+            l1 = l2;
+            if (localFile1.exists())
+            {
+              l1 = l2;
+              if (localFile1.canWrite())
+              {
+                a((File)localObject, localFile1);
+                l1 = l2 + 1L;
+              }
+            }
+          }
+        }
+        i += 1;
+        l2 = l1;
+      }
+      if (l2 == parambjkm.jdField_b_of_type_JavaUtilList.size())
+      {
+        bool = true;
+      }
+      else
+      {
+        bool = false;
+        continue;
+        label355:
+        bool = false;
+      }
+    }
+  }
+  
+  /* Error */
+  private boolean a(File paramFile1, File paramFile2)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: iconst_0
+    //   7: istore 4
+    //   9: aload_2
+    //   10: invokevirtual 119	java/io/File:exists	()Z
+    //   13: ifeq +41 -> 54
+    //   16: aload_2
+    //   17: invokevirtual 323	java/io/File:delete	()Z
+    //   20: istore 5
+    //   22: iload 5
+    //   24: ifne +90 -> 114
+    //   27: iconst_0
+    //   28: ifeq +11 -> 39
+    //   31: new 528	java/lang/NullPointerException
+    //   34: dup
+    //   35: invokespecial 529	java/lang/NullPointerException:<init>	()V
+    //   38: athrow
+    //   39: iconst_0
+    //   40: ifeq +11 -> 51
+    //   43: new 528	java/lang/NullPointerException
+    //   46: dup
+    //   47: invokespecial 529	java/lang/NullPointerException:<init>	()V
+    //   50: athrow
+    //   51: iload 4
+    //   53: ireturn
+    //   54: new 113	java/io/File
+    //   57: dup
+    //   58: aload_2
+    //   59: invokevirtual 532	java/io/File:getParent	()Ljava/lang/String;
+    //   62: invokespecial 116	java/io/File:<init>	(Ljava/lang/String;)V
+    //   65: astore 8
+    //   67: aload 8
+    //   69: invokevirtual 119	java/io/File:exists	()Z
+    //   72: ifne +42 -> 114
+    //   75: aload 8
+    //   77: invokevirtual 155	java/io/File:mkdirs	()Z
+    //   80: istore 5
+    //   82: iload 5
+    //   84: ifne +30 -> 114
+    //   87: iconst_0
+    //   88: ifeq +11 -> 99
+    //   91: new 528	java/lang/NullPointerException
+    //   94: dup
+    //   95: invokespecial 529	java/lang/NullPointerException:<init>	()V
+    //   98: athrow
+    //   99: iconst_0
+    //   100: ifeq -49 -> 51
+    //   103: new 528	java/lang/NullPointerException
+    //   106: dup
+    //   107: invokespecial 529	java/lang/NullPointerException:<init>	()V
+    //   110: athrow
+    //   111: astore_1
+    //   112: iconst_0
+    //   113: ireturn
+    //   114: new 534	java/io/FileOutputStream
+    //   117: dup
+    //   118: aload_2
+    //   119: invokespecial 537	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   122: astore_2
+    //   123: new 539	java/io/BufferedInputStream
+    //   126: dup
+    //   127: new 541	java/io/FileInputStream
+    //   130: dup
+    //   131: aload_1
+    //   132: invokespecial 542	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   135: invokespecial 545	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   138: astore_1
+    //   139: invokestatic 551	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   142: sipush 4096
+    //   145: invokevirtual 555	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   148: astore 6
+    //   150: aload_1
+    //   151: aload 6
+    //   153: invokevirtual 559	java/io/BufferedInputStream:read	([B)I
+    //   156: istore_3
+    //   157: iload_3
+    //   158: iconst_m1
+    //   159: if_icmpeq +58 -> 217
+    //   162: aload_2
+    //   163: aload 6
+    //   165: iconst_0
+    //   166: iload_3
+    //   167: invokevirtual 563	java/io/FileOutputStream:write	([BII)V
+    //   170: aload_2
+    //   171: invokevirtual 566	java/io/FileOutputStream:flush	()V
+    //   174: goto -24 -> 150
+    //   177: astore 7
+    //   179: aload_1
+    //   180: astore 6
+    //   182: aload_2
+    //   183: astore_1
+    //   184: aload 6
+    //   186: astore_2
+    //   187: aload 7
+    //   189: astore 6
+    //   191: aload 6
+    //   193: invokevirtual 567	java/io/IOException:printStackTrace	()V
+    //   196: aload_1
+    //   197: ifnull +7 -> 204
+    //   200: aload_1
+    //   201: invokevirtual 570	java/io/FileOutputStream:close	()V
+    //   204: aload_2
+    //   205: ifnull -154 -> 51
+    //   208: aload_2
+    //   209: invokevirtual 571	java/io/BufferedInputStream:close	()V
+    //   212: iconst_0
+    //   213: ireturn
+    //   214: astore_1
+    //   215: iconst_0
+    //   216: ireturn
+    //   217: invokestatic 551	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   220: aload 6
+    //   222: invokevirtual 574	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   225: iconst_1
+    //   226: istore 4
+    //   228: aload_2
+    //   229: ifnull +7 -> 236
+    //   232: aload_2
+    //   233: invokevirtual 570	java/io/FileOutputStream:close	()V
+    //   236: aload_1
+    //   237: ifnull -186 -> 51
+    //   240: aload_1
+    //   241: invokevirtual 571	java/io/BufferedInputStream:close	()V
+    //   244: iconst_1
+    //   245: ireturn
+    //   246: astore_1
+    //   247: iconst_1
+    //   248: ireturn
+    //   249: astore_1
+    //   250: aconst_null
+    //   251: astore_2
+    //   252: aload_2
+    //   253: ifnull +7 -> 260
+    //   256: aload_2
+    //   257: invokevirtual 570	java/io/FileOutputStream:close	()V
+    //   260: aload 6
+    //   262: ifnull +8 -> 270
+    //   265: aload 6
+    //   267: invokevirtual 571	java/io/BufferedInputStream:close	()V
+    //   270: aload_1
+    //   271: athrow
+    //   272: astore_1
+    //   273: goto -234 -> 39
+    //   276: astore_1
+    //   277: iconst_0
+    //   278: ireturn
+    //   279: astore_1
+    //   280: goto -181 -> 99
+    //   283: astore_2
+    //   284: goto -48 -> 236
+    //   287: astore_1
+    //   288: goto -84 -> 204
+    //   291: astore_2
+    //   292: goto -32 -> 260
+    //   295: astore_2
+    //   296: goto -26 -> 270
+    //   299: astore_1
+    //   300: goto -48 -> 252
+    //   303: astore 7
+    //   305: aload_1
+    //   306: astore 6
+    //   308: aload 7
+    //   310: astore_1
+    //   311: goto -59 -> 252
+    //   314: astore 6
+    //   316: aload_1
+    //   317: astore 7
+    //   319: aload 6
+    //   321: astore_1
+    //   322: aload_2
+    //   323: astore 6
+    //   325: aload 7
+    //   327: astore_2
+    //   328: goto -76 -> 252
+    //   331: astore 6
+    //   333: aconst_null
+    //   334: astore_1
+    //   335: aload 7
+    //   337: astore_2
+    //   338: goto -147 -> 191
+    //   341: astore 6
+    //   343: aload_2
+    //   344: astore_1
+    //   345: aload 7
+    //   347: astore_2
+    //   348: goto -157 -> 191
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	351	0	this	bjki
+    //   0	351	1	paramFile1	File
+    //   0	351	2	paramFile2	File
+    //   156	11	3	i	int
+    //   7	220	4	bool1	boolean
+    //   20	63	5	bool2	boolean
+    //   1	306	6	localObject1	Object
+    //   314	6	6	localObject2	Object
+    //   323	1	6	localFile1	File
+    //   331	1	6	localIOException1	java.io.IOException
+    //   341	1	6	localIOException2	java.io.IOException
+    //   4	1	7	localObject3	Object
+    //   177	11	7	localIOException3	java.io.IOException
+    //   303	6	7	localObject4	Object
+    //   317	29	7	localFile2	File
+    //   65	11	8	localFile3	File
+    // Exception table:
+    //   from	to	target	type
+    //   103	111	111	java/io/IOException
+    //   139	150	177	java/io/IOException
+    //   150	157	177	java/io/IOException
+    //   162	174	177	java/io/IOException
+    //   217	225	177	java/io/IOException
+    //   208	212	214	java/io/IOException
+    //   240	244	246	java/io/IOException
+    //   9	22	249	finally
+    //   54	82	249	finally
+    //   114	123	249	finally
+    //   31	39	272	java/io/IOException
+    //   43	51	276	java/io/IOException
+    //   91	99	279	java/io/IOException
+    //   232	236	283	java/io/IOException
+    //   200	204	287	java/io/IOException
+    //   256	260	291	java/io/IOException
+    //   265	270	295	java/io/IOException
+    //   123	139	299	finally
+    //   139	150	303	finally
+    //   150	157	303	finally
+    //   162	174	303	finally
+    //   217	225	303	finally
+    //   191	196	314	finally
+    //   9	22	331	java/io/IOException
+    //   54	82	331	java/io/IOException
+    //   114	123	331	java/io/IOException
+    //   123	139	341	java/io/IOException
+  }
+  
+  private String b()
+  {
+    return a() + "qp_sfu_config.dat";
+  }
+  
+  private String b(bjkm parambjkm)
+  {
+    parambjkm = a(parambjkm) + "bak" + File.separator;
+    File localFile = new File(parambjkm);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return parambjkm;
+  }
+  
+  private void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("last_query_time", new Date().getTime()).commit();
+        d(2);
+        this.jdField_a_of_type_Boolean = true;
+      }
+      do
+      {
+        return;
+        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_query_time", 0L);
+        if (new Date().getTime() - l > 3600000L)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          if (QLog.isColorLevel()) {
+            QLog.d("QQProtect.QPUpdate", 2, "[SFU] last udpate timeout");
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQProtect.QPUpdate", 2, "[SFU] already being updating");
+    }
+  }
+  
+  private void b(bjkm parambjkm)
+  {
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] cleanup: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      FileUtils.delete(a(parambjkm), false);
+    }
+  }
+  
+  private boolean b()
+  {
+    return this.jdField_a_of_type_Int == 0;
+  }
+  
+  private boolean b(bjkm parambjkm)
+  {
+    return true;
+  }
+  
+  private String c(bjkm parambjkm)
+  {
+    return a(parambjkm) + parambjkm.jdField_a_of_type_JavaLangString;
+  }
+  
+  private void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      a("0X80078B5", 0, "", "");
+      this.jdField_a_of_type_Bjkm = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, "[SFU] update ended");
+      }
+      return;
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private boolean c()
+  {
+    this.jdField_a_of_type_Bjkm = null;
+    List localList = this.jdField_a_of_type_Bjkh.a();
+    int i = 0;
+    label150:
+    boolean bool;
+    if (i < localList.size())
+    {
+      bjkm localbjkm = (bjkm)localList.get(i);
+      if (localbjkm.a()) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((localbjkm.jdField_b_of_type_Boolean) && (localbjkm.jdField_a_of_type_Boolean) && (localbjkm.jdField_c_of_type_Boolean)) {
+          break label150;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w("QQProtect.QPUpdate", 2, String.format("[SFU] not matched section: sid=%d, os: %b, qq:%b, cpu:%b", new Object[] { Long.valueOf(localbjkm.jdField_a_of_type_Long), Boolean.valueOf(localbjkm.jdField_b_of_type_Boolean), Boolean.valueOf(localbjkm.jdField_a_of_type_Boolean), Boolean.valueOf(localbjkm.jdField_c_of_type_Boolean) }));
+        }
+        localbjkm.a();
+      }
+      this.jdField_a_of_type_Bjkm = localbjkm;
+      c(0);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] next update: sid=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Bjkm.jdField_a_of_type_Long) }));
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] get next section result? %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+      return bool;
+      bool = true;
+      continue;
+      bool = false;
+    }
+  }
+  
+  private boolean c(bjkm parambjkm)
+  {
+    String str;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify package: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      str = bjkf.a(c(parambjkm));
+      if (str == null) {
+        return false;
+      }
+    }
+    for (boolean bool = str.equalsIgnoreCase(parambjkm.jdField_b_of_type_JavaLangString);; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify result: %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+      return bool;
+    }
+  }
+  
+  private void d()
+  {
+    a(1, this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("last_update_config_version", 0));
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove("last_update_bids").commit();
+  }
+  
+  private void d(int paramInt)
+  {
+    QLog.d("QQProtect.QPUpdate", 1, String.format("[SFU] update event: %d", new Object[] { Integer.valueOf(paramInt) }));
+    switch (paramInt)
+    {
+    case 3: 
+    case 4: 
+    default: 
+    case 1: 
+    case 2: 
+    case 5: 
+    case 6: 
+      do
+      {
+        return;
+        try
+        {
+          if (this.jdField_a_of_type_Int == 1)
+          {
+            d(17);
+            return;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+          return;
+        }
+        d(14);
+        return;
+        d();
+        return;
+        if ((c()) && (this.jdField_a_of_type_Bjkm != null))
+        {
+          if (!i(this.jdField_a_of_type_Bjkm))
+          {
+            d(15);
+            return;
+          }
+          d(6);
+          return;
+        }
+        d(16);
+        return;
+      } while ((this.jdField_a_of_type_Bjkm != null) && (h(this.jdField_a_of_type_Bjkm)));
+      a(3);
+      return;
+    case 7: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (c(this.jdField_a_of_type_Bjkm)))
+      {
+        d(8);
+        return;
+      }
+      a("0X80078AF", 0, "", "");
+      a(4);
+      return;
+    case 8: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (g(this.jdField_a_of_type_Bjkm)))
+      {
+        d(9);
+        return;
+      }
+      a("0X80078B0", 0, "", "");
+      a(5);
+      return;
+    case 9: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (e(this.jdField_a_of_type_Bjkm)))
+      {
+        d(10);
+        return;
+      }
+      a("0X80078B1", 0, "", "");
+      a(6);
+      return;
+    case 10: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (f(this.jdField_a_of_type_Bjkm)))
+      {
+        d(11);
+        return;
+      }
+      c(7);
+      d(13);
+      return;
+    case 11: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (d(this.jdField_a_of_type_Bjkm)))
+      {
+        d(12);
+        return;
+      }
+      c(8);
+      d(13);
+      return;
+    case 12: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (b(this.jdField_a_of_type_Bjkm)))
+      {
+        a(0);
+        return;
+      }
+      a(9);
+      return;
+    case 13: 
+      if ((this.jdField_a_of_type_Bjkm != null) && (a(this.jdField_a_of_type_Bjkm)))
+      {
+        a(0);
+        return;
+      }
+      a("0X80078B3", 0, "", "");
+      a(10);
+      return;
+    case 14: 
+      if (this.jdField_a_of_type_Bjkm != null) {
+        b(this.jdField_a_of_type_Bjkm);
+      }
+      d(15);
+      return;
+    case 15: 
+      a(this.jdField_a_of_type_Bjkm);
+      this.jdField_a_of_type_Bjkm = null;
+      if (a())
+      {
+        d(16);
+        return;
+      }
+      d(5);
+      return;
+    case 16: 
+      e();
+      d(17);
+      return;
+    }
+    c();
+  }
+  
+  private boolean d(bjkm parambjkm)
+  {
+    boolean bool;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      if (parambjkm.jdField_c_of_type_JavaUtilList.isEmpty())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] no diff: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+        }
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify result: %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+      return bool;
+      int i = 0;
+      for (;;)
+      {
+        if (i < parambjkm.jdField_c_of_type_JavaUtilList.size())
+        {
+          bjkl localbjkl = (bjkl)parambjkm.jdField_c_of_type_JavaUtilList.get(i);
+          if (TextUtils.isEmpty(localbjkl.g)) {}
+          for (String str = localbjkl.f;; str = localbjkl.g)
+          {
+            str = bjkf.a(str);
+            if ((str != null) && (str.equalsIgnoreCase(localbjkl.jdField_b_of_type_JavaLangString))) {
+              break label246;
+            }
+            if (!QLog.isColorLevel()) {
+              break label253;
+            }
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] not matched: %s!=%s, sid=%d", new Object[] { str, localbjkl.jdField_b_of_type_JavaLangString, Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+            bool = false;
+            break;
+          }
+          label246:
+          i += 1;
+          continue;
+          label253:
+          bool = false;
+          break;
+        }
+      }
+      bool = true;
+    }
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, "[SFU] all sections update complete");
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        QSecFramework.a().b();
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("last_update_bids", this.jdField_a_of_type_JavaLangString).putString("last_update_sections", this.jdField_b_of_type_JavaLangString).commit();
+        a("0X80078B6", 0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] notify update complete: %s", new Object[] { this.jdField_a_of_type_JavaLangString }));
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  private boolean e(bjkm parambjkm)
+  {
+    boolean bool;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      if (parambjkm.f == 0L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQProtect.QPUpdate", 2, "[SFU] no files need to backup");
+        }
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup result: %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+      return bool;
+      if (parambjkm.f > 0L)
+      {
+        String str1 = b(parambjkm);
+        long l1 = 0L;
+        int i = 0;
+        while (i < parambjkm.jdField_c_of_type_JavaUtilList.size())
+        {
+          bjkl localbjkl = (bjkl)parambjkm.jdField_c_of_type_JavaUtilList.get(i);
+          long l2 = l1;
+          if (1 == localbjkl.jdField_a_of_type_Int)
+          {
+            String str2 = str1 + localbjkl.jdField_c_of_type_JavaLangString;
+            a(new File(localbjkl.f), new File(str2));
+            l2 = l1 + 1L;
+          }
+          i += 1;
+          l1 = l2;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup %d files of %d", new Object[] { Long.valueOf(l1), Integer.valueOf(parambjkm.jdField_c_of_type_JavaUtilList.size()) }));
+        }
+        if (parambjkm.f == l1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+      }
+      else
+      {
+        bool = false;
+      }
+    }
+  }
+  
+  private boolean f(bjkm parambjkm)
+  {
+    boolean bool1;
+    if ((parambjkm != null) && (!parambjkm.jdField_c_of_type_JavaUtilList.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] do update files: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      String str = a(parambjkm);
+      int i = 0;
+      if (i < parambjkm.jdField_c_of_type_JavaUtilList.size())
+      {
+        bjkl localbjkl = (bjkl)parambjkm.jdField_c_of_type_JavaUtilList.get(i);
+        File localFile1 = new File(str, localbjkl.jdField_b_of_type_JavaLangString);
+        Object localObject = new File(localbjkl.f);
+        if ((!localFile1.exists()) || (!localFile1.canRead())) {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] copied failed, src not existed or cannot read: %s", new Object[] { localFile1.toString() }));
           }
         }
         for (;;)
         {
-          l1 = Long.parseLong(AuthorityActivity.jdField_e_of_type_JavaLangString);
-          this.a.a(l1);
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorityActivity", 2, "rec | cmd: G_A_L_D | not authorized");
-          }
-          this.a.jdField_f_of_type_Boolean = false;
-          this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131694156);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTag(this.a.jdField_c_of_type_JavaLangString);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          paramMessage = new HashMap();
-          paramMessage.put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-          paramMessage.put("p1", "logged");
-          paramMessage.put("p2", "uauth");
-          bdmc.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, "connect_sso_pageview", false, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, 0L, paramMessage, "");
-          if (!this.a.jdField_e_of_type_Boolean) {
-            this.a.b("wtl_loggednauthorized", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-          }
-          this.a.j();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SDKQQAgentPref", 2, "AUTHORIZE_DONE:" + SystemClock.elapsedRealtime());
-        }
-        localObject1 = (SdkAuthorize.AuthorizeResponse)paramMessage.obj;
-        i = ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get();
-        if (i != 0)
-        {
-          QLog.d("AuthorityActivity", 1, "rec | cmd: A_D | uin : *" + bjqq.a(this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + i);
-          try
-          {
-            localObject2 = ((SdkAuthorize.AuthorizeResponse)localObject1).msg.get();
-            if (TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              paramMessage = String.format(this.a.getResources().getString(2131694149), new Object[] { Integer.valueOf(i) });
-              if (i != 110405) {
-                break label1455;
-              }
-              this.a.a(paramMessage, new bjkl(this));
-            }
-            for (;;)
-            {
-              this.a.b(i, paramMessage);
-              return true;
-              paramMessage = String.format(this.a.getResources().getString(2131695831), new Object[] { localObject2, Integer.valueOf(i) });
-              break;
-              label1455:
-              if ((i == 110509) && (AuthorityActivity.a(this.a) < 1))
-              {
-                AuthorityActivity.a(this.a, 1);
-                avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-                AccountManage.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_MqqObserverSSOAccountObserver, AuthorityActivity.jdField_e_of_type_JavaLangString, AccountManage.RefreshReason.forceRefreshBy110509);
-                AuthorityActivity.a(this.a).jdField_a_of_type_Long = System.currentTimeMillis();
-                return true;
-              }
-              if (i == 1105030)
-              {
-                this.a.d(i, (String)localObject2);
-                paramMessage = bjzy.a(AuthorityActivity.jdField_e_of_type_JavaLangString, this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-                if ((paramMessage != null) && (paramMessage.length > 0))
-                {
-                  localObject3 = new SdkAuthorize.AuthorizeResponse();
-                  try
-                  {
-                    paramMessage = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject3).mergeFrom(paramMessage);
-                    localObject3 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-                    ((Message)localObject3).what = 1;
-                    ((Message)localObject3).obj = paramMessage;
-                    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject3);
-                    return true;
-                  }
-                  catch (InvalidProtocolBufferMicroException paramMessage) {}
-                }
-                this.a.c(i, (String)localObject2);
-                return true;
-              }
-              if (i == 100044)
-              {
-                localObject2 = new JSONObject();
-                ((JSONObject)localObject2).put("ret", ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get());
-                ((JSONObject)localObject2).put("msg", ((SdkAuthorize.AuthorizeResponse)localObject1).msg.get());
-                this.a.a(paramMessage, new bjkm(this, (SdkAuthorize.AuthorizeResponse)localObject1, (JSONObject)localObject2));
-              }
-            }
-            this.a.b(((SdkAuthorize.AuthorizeResponse)localObject1).openid.get());
-          }
-          catch (JSONException paramMessage) {}
-        }
-        this.a.a(((SdkAuthorize.AuthorizeResponse)localObject1).openid.get(), ((SdkAuthorize.AuthorizeResponse)localObject1).encrytoken.get());
-        try
-        {
-          paramMessage = new JSONObject();
-          paramMessage.put("ret", ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get());
-          paramMessage.put("openid", ((SdkAuthorize.AuthorizeResponse)localObject1).openid.get());
-          paramMessage.put("access_token", ((SdkAuthorize.AuthorizeResponse)localObject1).access_token.get());
-          paramMessage.put("pay_token", ((SdkAuthorize.AuthorizeResponse)localObject1).pay_token.get());
-          paramMessage.put("expires_in", ((SdkAuthorize.AuthorizeResponse)localObject1).expires_in.get());
-          paramMessage.put("pf", ((SdkAuthorize.AuthorizeResponse)localObject1).pf.get());
-          paramMessage.put("pfkey", ((SdkAuthorize.AuthorizeResponse)localObject1).pfkey.get());
-          paramMessage.put("msg", ((SdkAuthorize.AuthorizeResponse)localObject1).msg.get());
-          paramMessage.put("login_cost", this.a.jdField_e_of_type_Long - this.a.d);
-          paramMessage.put("query_authority_cost", this.a.jdField_g_of_type_Long - this.a.jdField_f_of_type_Long);
-          if (this.a.i == 0L)
-          {
-            paramMessage.put("authority_cost", 0);
-            label1954:
-            if (((SdkAuthorize.AuthorizeResponse)localObject1).sendinstall.has()) {
-              paramMessage.put("sendinstall", ((SdkAuthorize.AuthorizeResponse)localObject1).sendinstall.get());
-            }
-            if ((((SdkAuthorize.AuthorizeResponse)localObject1).installwording.has()) && (!TextUtils.isEmpty(((SdkAuthorize.AuthorizeResponse)localObject1).installwording.get()))) {
-              paramMessage.put("installwording", ((SdkAuthorize.AuthorizeResponse)localObject1).installwording.get());
-            }
-            if ((!((SdkAuthorize.AuthorizeResponse)localObject1).passDataResp.has()) || (((SdkAuthorize.AuthorizeResponse)localObject1).passDataResp.size() <= 0)) {
-              break label2280;
-            }
-            localObject2 = ((SdkAuthorize.AuthorizeResponse)localObject1).passDataResp.get().iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (appType.PassData)((Iterator)localObject2).next();
-              paramMessage.put(((appType.PassData)localObject3).key.get(), ((appType.PassData)localObject3).value.get());
-            }
-          }
-        }
-        catch (JSONException paramMessage)
-        {
-          label2106:
-          localObject1 = new HashMap();
-          if (this.a.jdField_h_of_type_Boolean) {}
-          for (paramMessage = "1";; paramMessage = "0")
-          {
-            ((HashMap)localObject1).put("autologin", paramMessage);
-            if (!this.a.jdField_e_of_type_Boolean) {
-              break label2452;
-            }
-            if (!this.a.jdField_f_of_type_Boolean) {
-              break label2356;
-            }
-            ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-            ((HashMap)localObject1).put("p1", "notlogged");
-            ((HashMap)localObject1).put("p2", "auth");
-            bdmc.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-            this.a.b("wtl_lognback", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-            break;
-            paramMessage.put("authority_cost", this.a.i - this.a.jdField_h_of_type_Long);
-            break label1954;
-            label2280:
-            if (AuthorityActivity.b(this.a))
-            {
-              ForwardUtils.a(((SdkAuthorize.AuthorizeResponse)localObject1).ret.get(), this.a.jdField_a_of_type_Bjzb);
-              bjos.a().a(this.a.jdField_a_of_type_AndroidOsBundle, true);
-              break label2106;
-            }
-            this.a.b(((SdkAuthorize.AuthorizeResponse)localObject1).ret.get(), paramMessage.toString(), null, null);
-            break label2106;
-          }
-          label2356:
-          ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-          ((HashMap)localObject1).put("p1", "notlogged");
-          ((HashMap)localObject1).put("p2", "uauth");
-          bdmc.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-          this.a.b("wtl_lognauthorizenback", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-        }
-      }
-      break;
-      label2452:
-      if (this.a.jdField_f_of_type_Boolean)
-      {
-        ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-        ((HashMap)localObject1).put("p1", "logged");
-        ((HashMap)localObject1).put("p2", "auth");
-        bdmc.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-        this.a.b("wtl_loggednunauthorizedback", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-        break;
-      }
-      ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-      ((HashMap)localObject1).put("p1", "logged");
-      ((HashMap)localObject1).put("p2", "uauth");
-      bdmc.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-      this.a.b("wtl_loggednauthorizedback", this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-      break;
-      paramMessage = (SdkAuthorize.GetAuthApiListRequest)paramMessage.obj;
-      this.a.a(paramMessage);
-      break;
-      paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.appName != null) && (!TextUtils.isEmpty(paramMessage.appName.get())))
-      {
-        localObject1 = paramMessage.appName.get();
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a((String)localObject1, null);
-        QLog.i("AuthorityActivity", 1, "get app info done, appName is " + (String)localObject1);
-      }
-      int m;
-      int j;
-      if ((!this.a.jdField_g_of_type_Boolean) && (paramMessage != null) && (paramMessage.iconsURL != null) && (paramMessage.iconsURL.has()))
-      {
-        m = 0;
-        j = 0;
-        i = 0;
-        label2792:
-        if (i >= paramMessage.iconsURL.get().size()) {
-          break label3599;
-        }
-        localObject1 = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-      }
-      for (;;)
-      {
-        try
-        {
-          k = Integer.parseInt(((GetAppInfoProto.MsgIconsurl)localObject1).size.get());
-          if (k >= 100)
-          {
-            localObject1 = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-            if (localObject1 != null)
-            {
-              QLog.i("AuthorityActivity", 1, "get app info done, imgUrl is " + localObject1);
-              ThreadManager.executeOnNetWorkThread(new AuthorityActivity.8.5(this, (GetAppInfoProto.MsgIconsurl)localObject1));
-            }
-            if ((this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface != null) && (QLog.isColorLevel())) {
-              QLog.i("AuthorityActivity", 2, "user uin = " + this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getCurrentAccountUin());
-            }
-            if (paramMessage == null) {
-              break label3334;
-            }
-            if ((paramMessage.ads == null) || (!paramMessage.ads.has())) {
-              break label3294;
-            }
-            paramMessage = (GetAppInfoProto.Ads)paramMessage.ads.get();
-            if ((!paramMessage.beginTime.has()) || (!paramMessage.endTime.has())) {
-              break label3254;
-            }
-            l1 = paramMessage.beginTime.get();
-            long l2 = paramMessage.endTime.get();
-            long l3 = paramMessage.serverTime.get();
-            localObject1 = paramMessage.imgURL.get();
-            if (QLog.isColorLevel()) {
-              QLog.i("AuthorityActivity", 2, "Ads begin time = " + l1 + " endTime = " + l2 + " serverTime = " + l3 + " imgURL = " + (String)localObject1 + " adsTxt = " + paramMessage.txt.get());
-            }
-            if ((l3 < l1) || (l3 > l2)) {
-              break label3229;
-            }
-            localObject2 = new Message();
-            ((Message)localObject2).obj = paramMessage.txt.get();
-            ((Message)localObject2).what = 8;
-            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-            ThreadManager.executeOnNetWorkThread(new AuthorityActivity.8.6(this, (String)localObject1));
-          }
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          int k = 0;
-          continue;
-          int n = m;
-          if (k > m)
-          {
-            j = i;
-            n = k;
-          }
           i += 1;
-          m = n;
-        }
-        break label2792;
-        label3229:
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        break;
-        label3254:
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        if (!QLog.isColorLevel()) {
           break;
+          boolean bool2 = a(localFile1, (File)localObject);
+          bool1 = bool2;
+          if (!bool2)
+          {
+            localObject = localbjkl.f + ".1";
+            File localFile2 = new File((String)localObject);
+            localbjkl.jdField_a_of_type_Int = 3;
+            localbjkl.g = ((String)localObject);
+            bool2 = a(localFile1, localFile2);
+            if (QLog.isColorLevel()) {
+              QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] copied failed, renamed to: %s", new Object[] { localbjkl.g }));
+            }
+            bool1 = bool2;
+            if (bool2)
+            {
+              this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(localbjkl.f, localbjkl.g).commit();
+              bool1 = bool2;
+            }
+          }
+          if (!bool1) {
+            break label376;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] success copied: %s", new Object[] { localbjkl.f }));
+          }
+          parambjkm.jdField_b_of_type_JavaUtilList.add(localbjkl);
+          parambjkm.g += 1L;
         }
-        QLog.i("AuthorityActivity", 2, "Ads begin time or endTime = null");
-        break;
-        label3294:
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        if (!QLog.isColorLevel()) {
-          break;
+        label376:
+        a("0X80078B2", (int)localbjkl.jdField_b_of_type_Long, localbjkl.jdField_a_of_type_JavaLangString, localbjkl.jdField_b_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] failed copied: %s", new Object[] { localbjkl.f }));
         }
-        QLog.i("AuthorityActivity", 2, "Ads = null");
-        break;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AuthorityActivity", 2, "response = null");
-        break;
-        paramMessage = (Bitmap)paramMessage.obj;
-        this.a.jdField_g_of_type_Boolean = true;
-        QLog.i("AuthorityActivity", 1, "get app icon done");
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a("", paramMessage);
-        break;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = true;
-        paramMessage = (String)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(paramMessage);
-        break;
-        paramMessage = (Bitmap)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(paramMessage);
-        break;
-        this.a.a();
-        break;
-        ThreadManager.postImmediately(new AuthorityActivity.8.7(this), null, true);
-        break;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        this.a.b(i, paramMessage);
-        break;
-        this.a.j();
-        if (this.a.j) {
-          break;
-        }
-        localObject2 = paramMessage.getData();
-        i = ((Bundle)localObject2).getInt("error", -1);
-        paramMessage = ((Bundle)localObject2).getString("response");
-        String str = ((Bundle)localObject2).getString("msg");
-        localObject2 = ((Bundle)localObject2).getString("detail");
-        this.a.b(i, paramMessage, str, (String)localObject2);
-        break;
-        i = j;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update %d files of %d", new Object[] { Long.valueOf(parambjkm.g), Integer.valueOf(parambjkm.jdField_c_of_type_JavaUtilList.size()) }));
+      }
+      if (parambjkm.g == parambjkm.jdField_c_of_type_JavaUtilList.size()) {
+        bool1 = true;
       }
     }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update result: %b", new Object[] { Boolean.valueOf(bool1) }));
+      }
+      return bool1;
+      bool1 = false;
+      continue;
+      bool1 = false;
+    }
+  }
+  
+  private boolean g(bjkm parambjkm)
+  {
+    boolean bool;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] unzip package: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      String str = a(parambjkm);
+      File localFile = new File(str);
+      if (!localFile.exists()) {
+        localFile.mkdir();
+      }
+      if (npo.b(c(parambjkm), str) == 0) {
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] unzip result: %b", new Object[] { Boolean.valueOf(bool) }));
+      }
+      return bool;
+      bool = false;
+      continue;
+      bool = false;
+    }
+  }
+  
+  private boolean h(bjkm parambjkm)
+  {
+    boolean bool = false;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] download package: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      bool = a(new bjkj(2, 0, a(parambjkm), parambjkm.jdField_a_of_type_JavaLangString, parambjkm.jdField_c_of_type_JavaLangString, parambjkm.jdField_b_of_type_JavaLangString, 0, true, 0, new Date().getTime(), parambjkm.jdField_b_of_type_Int));
+    }
+    return bool;
+  }
+  
+  private boolean i(bjkm parambjkm)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (parambjkm != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] get different: sid=%d", new Object[] { Long.valueOf(parambjkm.jdField_a_of_type_Long) }));
+      }
+      List localList = parambjkm.jdField_a_of_type_JavaUtilList;
+      int i = 0;
+      if (i < localList.size())
+      {
+        bjkl localbjkl = (bjkl)localList.get(i);
+        if (!new File(localbjkl.f).exists())
+        {
+          localbjkl.jdField_a_of_type_Int = 2;
+          parambjkm.jdField_c_of_type_JavaUtilList.add(localbjkl);
+        }
+        String str;
+        do
+        {
+          i += 1;
+          break;
+          str = bjkf.a(localbjkl.f);
+        } while ((str != null) && (str.equalsIgnoreCase(localbjkl.jdField_b_of_type_JavaLangString)));
+        localbjkl.jdField_a_of_type_Int = 1;
+        if (str != null) {}
+        for (;;)
+        {
+          localbjkl.jdField_c_of_type_JavaLangString = str;
+          parambjkm.jdField_c_of_type_JavaUtilList.add(localbjkl);
+          parambjkm.f += 1L;
+          break;
+          str = "";
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] need to update %d files of %d", new Object[] { Integer.valueOf(parambjkm.jdField_c_of_type_JavaUtilList.size()), Integer.valueOf(parambjkm.jdField_a_of_type_JavaUtilList.size()) }));
+      }
+      bool1 = bool2;
+      if (!parambjkm.jdField_c_of_type_JavaUtilList.isEmpty()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void a()
+  {
+    long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_query_time", -28800000L);
+    long l2 = new Date().getTime() - l1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 1, String.format("[SFU] startSFU last time: %d, interval: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) }));
+    }
+    if (l2 >= 28800000L) {
+      b();
+    }
+  }
+  
+  protected void a(int paramInt)
+  {
+    QLog.e("QQProtect.QPUpdate", 1, String.format("[SFU] update error: %d", new Object[] { Integer.valueOf(paramInt) }));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      d(1);
+      return;
+      File localFile = new File(b());
+      if (localFile.exists())
+      {
+        localFile.delete();
+        continue;
+        c(paramInt);
+      }
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    for (;;)
+    {
+      int i;
+      int j;
+      int n;
+      try
+      {
+        QQProtectUpdate.UpdateQueryResponse localUpdateQueryResponse = new QQProtectUpdate.UpdateQueryResponse();
+        bool1 = bool2;
+        int i1;
+        if (localUpdateQueryResponse != null)
+        {
+          localUpdateQueryResponse.mergeFrom((byte[])paramObject);
+          if ((localUpdateQueryResponse.int32_status == null) || (!localUpdateQueryResponse.int32_status.has())) {
+            break label644;
+          }
+          i = localUpdateQueryResponse.int32_status.get();
+          a("0X80078B8", i, "", "");
+          if (i != 0) {
+            break label597;
+          }
+          if ((localUpdateQueryResponse.uint32_sec_cmd == null) || (!localUpdateQueryResponse.uint32_sec_cmd.has())) {
+            break label638;
+          }
+          j = localUpdateQueryResponse.uint32_sec_cmd.get();
+          int m = 0;
+          int k = m;
+          if (localUpdateQueryResponse.uint32_file_id != null)
+          {
+            k = m;
+            if (localUpdateQueryResponse.uint32_file_id.has()) {
+              k = localUpdateQueryResponse.uint32_file_id.get();
+            }
+          }
+          n = 0;
+          m = n;
+          if (localUpdateQueryResponse.uint32_file_version != null)
+          {
+            m = n;
+            if (localUpdateQueryResponse.uint32_file_version.has()) {
+              m = localUpdateQueryResponse.uint32_file_version.get();
+            }
+          }
+          paramFromServiceMsg = "";
+          paramToServiceMsg = paramFromServiceMsg;
+          if (localUpdateQueryResponse.string_file_hash != null)
+          {
+            paramToServiceMsg = paramFromServiceMsg;
+            if (localUpdateQueryResponse.string_file_hash.has()) {
+              paramToServiceMsg = localUpdateQueryResponse.string_file_hash.get();
+            }
+          }
+          paramObject = "";
+          paramFromServiceMsg = paramObject;
+          if (localUpdateQueryResponse.string_file_url != null)
+          {
+            paramFromServiceMsg = paramObject;
+            if (localUpdateQueryResponse.string_file_url.has()) {
+              paramFromServiceMsg = localUpdateQueryResponse.string_file_url.get();
+            }
+          }
+          i1 = 0;
+          n = i1;
+          if (localUpdateQueryResponse.uint32_zip_flag == null) {
+            break label650;
+          }
+          n = i1;
+          if (!localUpdateQueryResponse.uint32_zip_flag.has()) {
+            break label650;
+          }
+          n = localUpdateQueryResponse.uint32_zip_flag.get();
+          break label650;
+          i1 = a(m, paramToServiceMsg);
+          if (QLog.isColorLevel()) {
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] resp: cmd=%d, status=%d, fileid=%d, fileversion=%d, md5=%s, url=%s, zipped: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(n) }));
+          }
+          if ((i1 == 0) && (k == 1))
+          {
+            a("0X80078AB", k, "", "");
+            if (QLog.isColorLevel()) {
+              QLog.d("QQProtect.QPUpdate", 2, String.format("Need to update config file, fileid=%d", new Object[] { Integer.valueOf(k) }));
+            }
+            bool1 = a(new bjkj(1, k, a(), "qp_sfu_config.dat", paramFromServiceMsg, paramToServiceMsg, m, bool1, 0, new Date().getTime(), 1));
+          }
+        }
+        else
+        {
+          if (bool1) {
+            break label662;
+          }
+          d(17);
+          return;
+        }
+        if (i1 == 1)
+        {
+          paramToServiceMsg = new File(b());
+          bool1 = bool2;
+          if (!this.jdField_a_of_type_Bjkh.a(paramToServiceMsg.toString())) {
+            continue;
+          }
+          if (this.jdField_a_of_type_Bjkh.a().isEmpty()) {
+            d(16);
+          } else {
+            d(5);
+          }
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        d(17);
+        return;
+      }
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQProtect.QPUpdate", 2, "[SFU] NO Need UPDATE");
+        bool1 = bool2;
+        continue;
+        label597:
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] Server replied with error, status=%d", new Object[] { Integer.valueOf(i) }));
+          bool1 = bool2;
+          continue;
+          label638:
+          j = 0;
+          continue;
+          label644:
+          i = -1;
+          continue;
+          label650:
+          if (n == 1)
+          {
+            bool1 = true;
+          }
+          else
+          {
+            label662:
+            bool1 = false;
+            continue;
+            bool1 = true;
+          }
+        }
+      }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] received update push from server: %d", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    b();
+  }
+  
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  {
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
+      return;
+    }
+    paramNetReq = (HttpNetReq)paramNetReq;
+    paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+    paramNetResp.mWrittenBlockLen = 0L;
+    paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+    paramNetReq.mReqProperties.put("Range", paramNetResp);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      a((NetResp)paramMessage.obj);
+      continue;
+      a((NetReq)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1052688, paramNetResp).sendToTarget();
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1052689, (int)paramLong1, (int)paramLong2, paramNetReq).sendToTarget();
   }
 }
 

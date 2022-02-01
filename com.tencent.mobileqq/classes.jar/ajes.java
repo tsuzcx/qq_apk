@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class ajes
-  implements View.OnClickListener
+  extends ajeo
 {
-  public ajes(SearchContactsActivity paramSearchContactsActivity) {}
+  private String a;
   
-  public void onClick(View paramView)
+  public ajes(String paramString)
   {
-    this.a.setResult(0);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return String.format("&mqqvkey=%s", new Object[] { this.a });
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (paramString != null) && (paramString.contains("plg_vkey=1"));
   }
 }
 

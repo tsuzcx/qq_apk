@@ -1,27 +1,22 @@
-import java.io.File;
 import java.util.Comparator;
 
 final class alim
-  implements Comparator<File>
+  implements Comparator<String>
 {
-  private int a(String paramString)
+  public int a(String paramString1, String paramString2)
   {
-    try
+    if ("★".equals(paramString2)) {}
+    do
     {
-      int i = paramString.lastIndexOf('.');
-      if (i == -1) {
-        return Integer.parseInt(paramString);
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
       }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
   }
 }
 

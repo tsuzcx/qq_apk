@@ -1,65 +1,19 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.3;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-class rhw
-  implements Comparator<rhu>
+public class rhw
+  implements DialogInterface.OnClickListener
 {
-  public int a(rhu paramrhu)
-  {
-    if (paramrhu.jdField_a_of_type_Int != -1) {
-      return paramrhu.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramrhu.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bhlg.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramrhu.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  public rhw(ReadInJoyDeliverVideoActivity.3 param3) {}
   
-  public int a(rhu paramrhu1, rhu paramrhu2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a(paramrhu1) - a(paramrhu2);
+    ForwardSdkShareOption.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
+    this.a.this$0.moveTaskToBack(true);
+    this.a.this$0.finish();
   }
 }
 

@@ -1,25 +1,90 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.module.aifilter.BatchImageAIFilterProxy.1;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-final class bmgm
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class bmgm
+  extends bmgg
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  private static final String jdField_a_of_type_JavaLangString = bmgm.class.getSimpleName();
+  private bmgl jdField_a_of_type_Bmgl;
+  private int b;
+  private List<String> c;
+  private List<bmde> d;
+  
+  public bmgm(List<String> paramList, List<bmde> paramList1, int paramInt, bmgl parambmgl)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
+    this.c = paramList;
+    this.d = paramList1;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bmgl = parambmgl;
+    this.jdField_a_of_type_Int = (paramList.size() - 1);
+  }
+  
+  protected bmgl a(List<bmgk> paramList)
+  {
+    int j = 0;
+    bmgn localbmgn = new bmgn();
+    int i;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      i = 1;
     }
-    bmgk.a(paramPluginManagerClient);
-    bmgk.a(null);
-    while (!bmgk.a().isEmpty())
+    for (;;)
     {
-      paramPluginManagerClient = (bmgu)bmgk.a().poll();
-      if (paramPluginManagerClient != null) {
-        bmgk.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_Bmgt, paramPluginManagerClient.jdField_a_of_type_Bmgr);
+      if (i != 0)
+      {
+        i = j;
+        for (;;)
+        {
+          if (i < this.jdField_a_of_type_Int)
+          {
+            paramList = a(null);
+            paramList.jdField_a_of_type_Boolean = true;
+            localbmgn.jdField_a_of_type_JavaUtilList.add(paramList);
+            i += 1;
+            continue;
+            if (paramList.size() == this.jdField_b_of_type_JavaUtilList.size()) {
+              break label210;
+            }
+            bmbx.d(jdField_a_of_type_JavaLangString, "batch image responseList size not match image size");
+            i = 1;
+            break;
+          }
+        }
+        localbmgn.jdField_a_of_type_Boolean = true;
       }
+      for (;;)
+      {
+        localbmgn.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_Int, (bmgu)this.jdField_a_of_type_Bmgl);
+        return localbmgn;
+        i = 0;
+        while (i < this.jdField_a_of_type_Int)
+        {
+          Object localObject = (bmgk)paramList.get(i);
+          this.jdField_a_of_type_JavaUtilList.clear();
+          this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+          localObject = a((bmgk)localObject);
+          localbmgn.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+        }
+      }
+      label210:
+      i = 0;
     }
+  }
+  
+  protected void a(Context paramContext, bmgj parambmgj)
+  {
+    ArrayList localArrayList = new ArrayList(this.c);
+    localArrayList.remove(this.jdField_b_of_type_Int);
+    ThreadManager.getSubThreadHandler().post(new BatchImageAIFilterProxy.1(this, localArrayList, paramContext, parambmgj));
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

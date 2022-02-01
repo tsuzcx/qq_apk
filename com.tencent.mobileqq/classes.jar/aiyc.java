@@ -1,31 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiyc
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public aiyc(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
+  public aiyc(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView) != null)
+    switch (paramView.getId())
     {
-      if (this.jdField_a_of_type_Int == 0) {
-        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).c();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (ChatHistoryTroopFileFragment.a(this.a) != null) {
+        ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
       }
     }
-    else {
-      return;
-    }
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).b();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

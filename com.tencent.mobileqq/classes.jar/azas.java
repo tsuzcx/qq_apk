@@ -1,30 +1,51 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class azas
-  extends FlingGestureHandler
+  extends MqqHandler
 {
-  boolean a = true;
+  public azas(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public azas(Activity paramActivity)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
+    boolean bool2 = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      QLog.d("IphoneTitleBarActivity", 2, "TEST more info message handler: " + paramMessage.what);
     }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
+    do
+    {
+      return;
+    } while (!((String)paramMessage.obj).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a));
+    label86:
+    FormSwitchItem localFormSwitchItem;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (bool1 == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
+        break label154;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      localFormSwitchItem = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (paramMessage.arg1 != 1) {
+        break label156;
+      }
+    }
+    label154:
+    label156:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localFormSwitchItem.setChecked(bool1);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+      return;
+      bool1 = false;
+      break label86;
+      break;
     }
   }
 }

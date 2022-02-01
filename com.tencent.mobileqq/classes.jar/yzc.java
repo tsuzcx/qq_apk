@@ -1,25 +1,21 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+
 public class yzc
 {
-  @zoq(a="tag_type")
   public int a;
-  @zoq(a="tag_id")
-  public long a;
-  @zoq(a="tag_name")
-  public String a;
-  @zoq(a="join_count")
+  public RecyclerView.ViewHolder a;
   public int b;
-  @zoq(a="tag_desc")
-  public String b;
-  @zoq(a="music_type")
   public int c;
-  @zoq(a="wording")
-  public String c;
-  @zoq(a="music_id")
-  public String d;
-  @zoq(a="music_title")
-  public String e;
-  @zoq(a="music_download_url")
-  public String f;
+  public int d;
+  
+  private yzc(RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
 }
 
 

@@ -1,17 +1,26 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 class aibu
-  implements EIPCResultCallback
+  implements Comparable<aibu>
 {
-  aibu(aibr paramaibr) {}
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  aibu(aibs paramaibs, String paramString, Long paramLong)
   {
-    if (-102 == paramEIPCResult.code) {
-      aibr.r(this.a).finish();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+  }
+  
+  public int a(aibu paramaibu)
+  {
+    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramaibu.jdField_a_of_type_JavaLangLong.longValue()) {
+      return -1;
     }
+    return 1;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

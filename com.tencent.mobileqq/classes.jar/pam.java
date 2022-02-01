@@ -1,18 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.util.Pair;
+import java.util.Comparator;
 
-public class pam
+class pam
+  implements Comparator<Pair<Long, Pair<View, BaseArticleInfo>>>
 {
-  public static ArrayList<AladdinListener> a = new ArrayList();
+  pam(pal parampal) {}
   
-  public static void a(AladdinListener paramAladdinListener)
+  public int a(Pair<Long, Pair<View, BaseArticleInfo>> paramPair1, Pair<Long, Pair<View, BaseArticleInfo>> paramPair2)
   {
-    a.add(paramAladdinListener);
-  }
-  
-  public static void b(AladdinListener paramAladdinListener)
-  {
-    a.remove(paramAladdinListener);
+    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
   }
 }
 

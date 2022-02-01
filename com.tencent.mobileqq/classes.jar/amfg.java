@@ -1,10 +1,44 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
 
-public class amfg
-  extends amfi
+class amfg
+  implements alpy
 {
-  public long a;
-  public View a;
+  amfg(amez paramamez, int[] paramArrayOfInt, JSONArray paramJSONArray, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<alpv> paramList, String paramString2)
+  {
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      paramString1 = alpu.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
+      {
+        paramList = this.jdField_a_of_type_Amez;
+        int k = paramString1.b;
+        if (paramString1.a())
+        {
+          j = 0;
+          label79:
+          paramString1 = amez.a(paramList, 8, String.valueOf(k), j);
+          this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label79;
+        paramString1 = amez.a(this.jdField_a_of_type_Amez, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+      }
+    }
+    this.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, amtj.a(2131699661), this.jdField_a_of_type_OrgJsonJSONArray);
+  }
 }
 
 

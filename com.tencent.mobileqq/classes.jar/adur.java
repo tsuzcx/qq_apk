@@ -1,15 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adur
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public adur(ArkFullScreenAppActivity.8.1.1 param1) {}
+  public adur(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramDialogInterface.dismiss();
+    if (paramInt == 4)
+    {
+      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+      this.a.finish();
+    }
+    return false;
   }
 }
 

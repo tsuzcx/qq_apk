@@ -1,13 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class nrw
+public class nrw
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  String b;
   
-  nrw(nrk paramnrk) {}
+  nrw(nru paramnru)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+  }
 }
 
 

@@ -1,34 +1,33 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akps;
-import aksb;
-import bgqu;
-import com.tencent.mobileqq.data.TroopInfo;
+import ajnr;
+import bfai;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TroopPhotoController$3
+class TroopPhotoController$3
   implements Runnable
 {
-  public TroopPhotoController$3(aksb paramaksb, akps paramakps, String paramString) {}
+  TroopPhotoController$3(TroopPhotoController paramTroopPhotoController, ajnr paramajnr, String paramString) {}
   
   public void run()
   {
-    if (!this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin)) {
-      this.this$0.jdField_a_of_type_Bgqu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+    if (!this.this$0.isStillUploading(this.this$0.mTroopInfo.troopuin)) {
+      this.this$0.mManger.a(this.this$0.mTroopInfo.troopuin);
     }
-    Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.this$0.mUploadPaths.iterator();
     while (localIterator.hasNext())
     {
       TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
-      if (localTroopClipPic.ts == this.jdField_a_of_type_Akps.a) {
-        this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(localTroopClipPic);
+      if (localTroopClipPic.ts == this.val$info.a) {
+        this.this$0.mUploadPaths.remove(localTroopClipPic);
       }
     }
-    this.this$0.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Akps);
-    this.this$0.b(this.jdField_a_of_type_Akps);
-    aksb.a(this.jdField_a_of_type_JavaLangString);
+    this.this$0.mInfos.remove(this.val$info);
+    this.this$0.notifyDel(this.val$info);
+    TroopPhotoController.showToast(this.val$errText);
   }
 }
 

@@ -1,51 +1,29 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
-
 public class avuh
-  extends RecyclerView.OnScrollListener
 {
-  public avuh(HotPicRecyclerView paramHotPicRecyclerView) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  private avuh(String paramString, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      avup.c();
-      this.a.b();
-      if (paramInt != 2) {
-        break label128;
-      }
-      this.a.jdField_a_of_type_Avvv.a(true);
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
-      {
-        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
-        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Avui != null)) {
-          this.a.jdField_a_of_type_Avui.d();
-        }
-      }
-      this.a.jdField_a_of_type_Int = paramInt;
-      return;
-      this.a.c();
-      AbstractGifImage.pauseAll();
-      avup.b();
-      break;
-      label128:
-      this.a.jdField_a_of_type_Avvv.a(false);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public int a()
   {
-    if (paramInt2 > 0) {
-      this.a.jdField_a_of_type_Avvv.a(paramInt2);
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
+    localStringBuilder.append(",sig:").append(this.jdField_a_of_type_JavaLangString).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

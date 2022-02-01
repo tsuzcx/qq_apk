@@ -1,36 +1,17 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class ahfj
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  ahfj(ahed paramahed, String paramString) {}
+  ahfj(ahff paramahff) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    bdll.b(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_Ahed.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    paramDialogInterface.dismiss();
+    aash.a(this.a.app, this.a.mActivity, this.a.sessionInfo.curFriendUin, this.a.b);
+    this.a.b = "";
   }
 }
 

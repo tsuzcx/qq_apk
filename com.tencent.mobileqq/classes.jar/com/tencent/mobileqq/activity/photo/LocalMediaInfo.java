@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akqf;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnjz;
-import bnlf;
+import cooperation.qzone.util.PanoramaUtil;
+import cooperation.qzone.util.XMPCoreUtil;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 public class LocalMediaInfo
   implements Parcelable, Serializable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new akqf();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new LocalMediaInfo.1();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -83,6 +82,7 @@ public class LocalMediaInfo
   public int rotation;
   public String scheme = "";
   public int selectStatus;
+  public int showCircleTakeSame;
   public int specialVideoType;
   public int thumbHeight;
   public Rect thumbRect;
@@ -157,7 +157,7 @@ public class LocalMediaInfo
   
   public boolean isPanoramaPhoto()
   {
-    if (!bnjz.a().b()) {}
+    if (!PanoramaUtil.getInstance().isNeedShowPanorama()) {}
     do
     {
       return false;
@@ -170,13 +170,13 @@ public class LocalMediaInfo
   
   public void setPanoramaType()
   {
-    if ((this.panoramaPhotoType != 0) || (!bnjz.a().b())) {}
+    if ((this.panoramaPhotoType != 0) || (!PanoramaUtil.getInstance().isNeedShowPanorama())) {}
     while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
       return;
     }
     if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
     {
-      if (bnlf.a().a(this.path))
+      if (XMPCoreUtil.getInstance().isPanorama(this.path))
       {
         this.panoramaPhotoType = 2;
         return;
@@ -194,7 +194,7 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", mediaBitrate=" + this.mediaBitrate + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", videoInfo=" + this.materialID + ", materialName=" + this.materialName + ", filterID=" + this.filterID + ", scheme=" + this.scheme + ", missionID=" + this.missionID + ", thumbnailProgress=" + this.thumbnailProgress + ", mediaOriginWidth=" + this.mediaOriginWidth + ", mediaOriginHeight=" + this.mediaOriginHeight + ", mediaOriginSize=" + this.mediaOriginSize + ", mediaOriginBitrate=" + this.mediaOriginBitrate + '}';
+    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", mediaBitrate=" + this.mediaBitrate + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", videoInfo=" + this.materialID + ", materialName=" + this.materialName + ", filterID=" + this.filterID + ", scheme=" + this.scheme + ", showCircleTakeSame=" + this.showCircleTakeSame + ", missionID=" + this.missionID + ", thumbnailProgress=" + this.thumbnailProgress + ", mediaOriginWidth=" + this.mediaOriginWidth + ", mediaOriginHeight=" + this.mediaOriginHeight + ", mediaOriginSize=" + this.mediaOriginSize + ", mediaOriginBitrate=" + this.mediaOriginBitrate + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -228,13 +228,13 @@ public class LocalMediaInfo
       paramParcel.writeLong(this.mediaOriginSize);
       paramParcel.writeLong(this.mediaOriginBitrate);
       if (!this.isSystemMeidaStore) {
-        break label367;
+        break label375;
       }
       paramInt = 1;
       label213:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label372;
+        break label380;
       }
       paramInt = 1;
       label228:
@@ -246,12 +246,10 @@ public class LocalMediaInfo
       paramParcel.writeString(this.mCloudPhotoOwnerAlbumId);
       paramParcel.writeString(this.mCloudPhotoId);
       if (!this.isVideoReady) {
-        break label377;
+        break label385;
       }
     }
-    label367:
-    label372:
-    label377:
+    label385:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -259,6 +257,7 @@ public class LocalMediaInfo
       paramParcel.writeString(this.materialName);
       paramParcel.writeString(this.filterID);
       paramParcel.writeString(this.scheme);
+      paramParcel.writeInt(this.showCircleTakeSame);
       paramParcel.writeString(this.missionID);
       paramParcel.writeList(this.mTransferPosList);
       paramParcel.writeList(this.aiTextLabel);
@@ -266,8 +265,10 @@ public class LocalMediaInfo
       return;
       paramInt = 0;
       break;
+      label375:
       paramInt = 0;
       break label213;
+      label380:
       paramInt = 0;
       break label228;
     }

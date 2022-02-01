@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ARRelationShip;
+import android.view.View;
 
-public final class aprr
-  implements Parcelable.Creator<ARRelationShip>
+public abstract interface aprr
 {
-  public ARRelationShip a(Parcel paramParcel)
-  {
-    return new ARRelationShip(paramParcel);
-  }
+  public abstract void a();
   
-  public ARRelationShip[] a(int paramInt)
-  {
-    return new ARRelationShip[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void b();
 }
 
 

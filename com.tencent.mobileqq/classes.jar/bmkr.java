@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerGroupWrapper;
 
-final class bmkr
-  implements DialogInterface.OnClickListener
+class bmkr
+  extends TypeToken<AEEditorPagStickerGroupWrapper>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  bmkr(bmkn parambmkn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmkr
  * JD-Core Version:    0.7.0.1
  */

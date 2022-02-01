@@ -1,27 +1,33 @@
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class aruz
+  implements TextWatcher
 {
-  private static aruo jdField_a_of_type_Aruo;
-  private static boolean jdField_a_of_type_Boolean;
+  public aruz(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public static void a(arva paramarva)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramarva != null) {
-      arwe.a(paramarva);
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      aszk.a(BaseApplicationImpl.getContext().getString(2131693923));
     }
-  }
-  
-  public static boolean a()
-  {
-    return (jdField_a_of_type_Boolean) && (b());
-  }
-  
-  private static boolean b()
-  {
-    if (jdField_a_of_type_Aruo != null) {
-      return jdField_a_of_type_Aruo.a();
+    while (TextUtils.isEmpty(paramEditable)) {
+      return;
     }
-    return true;
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,13 +1,29 @@
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class xjb
-  implements xad
+public class xjb
+  extends QQUIEventReceiver<xin, vvh>
 {
-  public void a(xac paramxac)
+  public xjb(@NonNull xin paramxin)
   {
-    ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramxac));
+    super(paramxin);
+  }
+  
+  public void a(@NonNull xin paramxin, @NonNull vvh paramvvh)
+  {
+    if (xin.a(paramxin) == null)
+    {
+      xvv.b(this.TAG, "ignore this troop nick name change event. %s.", paramvvh.toString());
+      return;
+    }
+    xvv.a(this.TAG, "receive troop nick name change event. %s.", paramvvh.toString());
+    xin.a(paramxin).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vvh.class;
   }
 }
 

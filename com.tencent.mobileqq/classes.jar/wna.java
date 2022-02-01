@@ -1,68 +1,18 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.io.IOException;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-@TargetApi(14)
-public class wna
-  extends wnf
+public final class wna
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  private final beyb jdField_a_of_type_Beyb;
-  public String a;
-  private final boolean jdField_a_of_type_Boolean;
-  public String b;
-  
-  public wna(boolean paramBoolean)
+  public void onComplete(String arg1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    QQStoryContext.a();
-    this.jdField_a_of_type_Beyb = QQStoryContext.a().a();
-  }
-  
-  private void c()
-  {
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_a_of_type_Azrg = new wnb(this);
-    localbeyg.i = this.jdField_a_of_type_JavaLangString;
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.jdField_b_of_type_Int = 196610;
-    QQStoryContext.a();
-    localbeyg.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localbeyg.c = "";
-    localbeyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    this.jdField_a_of_type_Beyb.a(localbeyg);
-  }
-  
-  protected void a()
-  {
-    File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
-    if ((!localFile2.exists()) || (localFile2.length() == 0L)) {
-      yuk.e("Q.qqstory.publish.upload:ImageFileObject", "file not exit %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    }
-    Object localObject;
-    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a())) {
-      localObject = null;
-    }
-    try
+    synchronized ()
     {
-      File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
-      localObject = localFile1;
+      paramString2 = wmz.a();
+      wmz.a().post(new TVKPreloader.1.1(this, paramString2));
+      return;
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        yuk.b("Q.qqstory.publish.upload:ImageFileObject", "create file", localIOException);
-      }
-    }
-    if (PngQuantUtils.a(localFile2, localObject))
-    {
-      localFile2.delete();
-      localObject.renameTo(localFile2);
-    }
-    c();
   }
 }
 

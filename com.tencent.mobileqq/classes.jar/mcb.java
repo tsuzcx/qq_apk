@@ -1,64 +1,37 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVLoadingDialogActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.config.ConfigInfo;
 
-public class mcb
-  extends Handler
+class mcb
+  extends BroadcastReceiver
 {
-  final String a;
+  mcb(mca parammca) {}
   
-  public mcb(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramString;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
     {
-      localObject = (WeakReference)paramMessage.obj;
-      if (localObject != null)
+      if (!mca.a(this.a))
       {
-        localObject = ((WeakReference)localObject).get();
-        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
+        mca.a(this.a, true);
+        if (mca.b(this.a)) {
+          mca.a(this.a);
+        }
       }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      lvm.a().a("update", i);
     }
-    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
+    do
     {
-      switch (paramMessage.what)
-      {
-      }
       do
       {
-        do
-        {
-          return;
-        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
-        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
-        long l = muk.a(paramMessage);
-        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
-        try
-        {
-          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772170, 0);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
-          return;
-        }
-      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
-      return;
-    }
+        return;
+      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mca.b(this.a)));
+      mca.b(this.a, true);
+    } while (!mca.a(this.a));
+    mca.a(this.a);
   }
 }
 

@@ -1,19 +1,12 @@
-import android.app.Activity;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentPart.10;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class vmy
-  implements vvs
+public abstract interface vmy
 {
-  public vmy(QCircleContentPart.10 param10) {}
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void a()
-  {
-    if (this.a.this$0.a() != null)
-    {
-      this.a.this$0.a().finish();
-      this.a.this$0.a().overridePendingTransition(0, 0);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 

@@ -3,27 +3,27 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import pea;
+import pjn;
 
 public class DynamicChannelDataModule$5
   implements Runnable
 {
-  public DynamicChannelDataModule$5(pea parampea, int paramInt1, long paramLong, int paramInt2) {}
+  public DynamicChannelDataModule$5(pjn parampjn, int paramInt1, long paramLong, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = pea.a(this.this$0);
+    Object localObject = pjn.a(this.this$0);
     int i = this.jdField_a_of_type_Int;
     long l = this.jdField_a_of_type_Long;
     int j = this.b;
     localObject = ((EntityManager)localObject).query(DynamicChannelDataModel.class, true, "channelID = ? and recommendSeq > ?", new String[] { String.valueOf(i), String.valueOf(l) }, null, null, "recommendSeq asc", String.valueOf(j));
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
-      pea.a(this.this$0, this.jdField_a_of_type_Int, 0);
+      pjn.a(this.this$0, this.jdField_a_of_type_Int, 0);
       return;
     }
-    localObject = pea.a(this.this$0, this.jdField_a_of_type_Int, (List)localObject, false);
-    pea.a(this.this$0, false, this.jdField_a_of_type_Int, true, true, (List)localObject);
+    localObject = pjn.a(this.this$0, this.jdField_a_of_type_Int, (List)localObject, false);
+    pjn.a(this.this$0, false, this.jdField_a_of_type_Int, true, true, (List)localObject);
   }
 }
 

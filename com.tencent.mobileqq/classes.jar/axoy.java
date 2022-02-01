@@ -1,44 +1,19 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-class axoy
-  implements azrg
+public class axoy
+  extends AnimatorListenerAdapter
 {
-  axoy(axox paramaxox, MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
+  public axoy(ScanOcrView paramScanOcrView, int paramInt) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return null;
-  }
-  
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
-  {
-    try
-    {
-      if (paramazrh.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramazrh.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramazrh.b + ",result.errStr=" + paramazrh.jdField_a_of_type_JavaLangString);
-      }
-      axoz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
+      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
     }
-    catch (Exception paramazrh)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramazrh);
-      }
-      axoz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
     }
   }
 }

@@ -1,18 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import java.util.Map;
 
-public class qpl
-  implements View.OnClickListener
+class qpl
+  implements qps
 {
-  public qpl(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, List paramList, int paramInt) {}
+  qpl(qpk paramqpk) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, Map<String, Object> paramMap)
   {
-    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramView.getId() == 2131380137) {
+      this.a.a(paramView);
+    }
+    do
+    {
+      return;
+      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
+        break;
+      }
+      paramView = this.a.jdField_a_of_type_Slt.a().a();
+    } while (paramView == null);
+    paramView.c();
+    return;
+    this.a.a(paramView, paramMap);
   }
 }
 

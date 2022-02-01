@@ -1,16 +1,36 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acse
-  implements View.OnSystemUiVisibilityChangeListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acse(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
+  public acse(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(7942);
+    boolean bool = false;
+    if (!NetworkUtil.isNetSupport(this.a))
+    {
+      AssistantSettingActivity.a(this.a, 2131694105, 1);
+      localObject = this.a;
+      if (!paramBoolean) {
+        bool = true;
+      }
+      AssistantSettingActivity.b((AssistantSettingActivity)localObject, bool);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (Object localObject = "1";; localObject = "2")
+    {
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A5D5", "0X800A5D5", 0, 0, (String)localObject, "", "", "");
+      this.a.a.b(paramBoolean);
+      break;
     }
   }
 }

@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aepy
-  extends azov
+  implements View.OnClickListener
 {
-  public aepy(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aepy(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramInt);
-    if ((this.a.g) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
-    }
-    this.a.g = false;
+    String str = this.a.d;
+    beqn.a(this.a, str);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

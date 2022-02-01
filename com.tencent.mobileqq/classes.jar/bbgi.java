@@ -1,32 +1,18 @@
-class bbgi
+public class bbgi
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public bbgi(bbgh parambbgh, String paramString, int paramInt1, int paramInt2)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.b * 100 / this.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    this.b += 1;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int += 1;
+    return "source = " + this.jdField_c_of_type_JavaLangString + " editDistance = " + this.d + " matchDegree = " + this.jdField_c_of_type_Int;
   }
 }
 

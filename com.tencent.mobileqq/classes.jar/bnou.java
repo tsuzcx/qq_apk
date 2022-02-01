@@ -1,311 +1,228 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.webviewplugin.QzoneVipPaymentJsPlugin.1;
-import cooperation.vip.manager.MonitorManager;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
+import com.tribe.async.async.JobContext;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 public class bnou
-  extends bnnn
+  extends bnph<bnot, bnot>
+  implements vpk
 {
-  private String a;
+  public final int a;
+  public final String a;
+  public final WeakReference<bnca> a;
+  public final WeakReference<bncb> b;
   
-  private int a(int paramInt)
+  public bnou(bnca parambnca)
   {
-    biod localbiod = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-    int i = paramInt;
-    if ((localbiod instanceof bioz)) {
-      i = ((bioz)localbiod).switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, (byte)paramInt);
+    this(parambnca, null, 0);
+  }
+  
+  public bnou(bnca parambnca, bncb parambncb, int paramInt)
+  {
+    this(parambnca, parambncb, null, paramInt);
+  }
+  
+  public bnou(bnca parambnca, bncb parambncb, String paramString, int paramInt)
+  {
+    if (parambnca == null) {
+      throw new NullPointerException("doodleLayout should not be null");
     }
-    return i;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnca);
+    this.b = new WeakReference(parambncb);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private String a(String paramString1, String paramString2)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    return "qq_m_qq" + "-" + "2013" + "-" + paramString1.replaceAll("-", "_") + "-" + "2013" + "-" + paramString2.replaceAll("-", "_");
-  }
-  
-  private void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2, int paramInt3, Intent paramIntent)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      paramString = paramIntent;
-      if (paramIntent == null) {
-        paramString = new Intent();
-      }
-      paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
-      paramActivity.setResult(0, paramString);
-      paramActivity.finish();
-    case 0: 
-      return;
-    case -5: 
-      paramActivity.finish();
-      return;
-    }
-    paramActivity.setResult(0, paramIntent);
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
-    for (;;)
-    {
-      return;
+    if ((paramInt + 90) % 180 == 0) {
       try
       {
-        localObject = new JSONObject(paramString1);
-        a(((JSONObject)localObject).optString("openUin"), ((JSONObject)localObject).optString("openMonth"), ((JSONObject)localObject).optString("openVipType"), ((JSONObject)localObject).getBoolean("isAuto"), ((JSONObject)localObject).optString("aid"));
-        MonitorManager.a().a(1, 2, "native 支付", "js 回调 native 支付" + paramString1);
-        this.jdField_a_of_type_JavaLangString = paramString2;
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null) {
-          continue;
-        }
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount();
-        paramString2 = new bmsx();
-        paramString2.a("328");
-        paramString2.a(Long.parseLong(paramString1));
-        paramString2.b("10");
-        paramString2.c("1");
-        QZoneClickReport.startReportImediately(paramString1, paramString2);
-        return;
+        xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateOrientation begin!");
+        long l = System.currentTimeMillis();
+        int i = paramBitmap.getWidth();
+        int j = paramBitmap.getHeight();
+        Matrix localMatrix = new Matrix();
+        localMatrix.reset();
+        localMatrix.postRotate(paramInt);
+        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+        xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateOrientation end, cost:" + (System.currentTimeMillis() - l) / 1000.0D);
+        return paramBitmap;
       }
-      catch (Exception localException)
+      catch (Exception paramBitmap)
       {
-        for (;;)
-        {
-          localException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.publish.edit.GenerateDoodleImageSegment", 2, "rotate exception:" + paramBitmap);
         }
+        return null;
       }
     }
+    return null;
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
+  protected void a(JobContext paramJobContext, bnot parambnot)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localObject2 == null) || (((Activity)localObject2).isFinishing())) {}
-    AppInterface localAppInterface;
-    do
+    long l1 = SystemClock.uptimeMillis();
+    paramJobContext = parambnot.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramJobContext))
     {
+      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+      xwa.b("take_video", "create_doodle_result", 0, -1, new String[0]);
       return;
-      localAppInterface = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    } while (localAppInterface == null);
-    Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
-    String str2 = VipUtils.a(paramString4);
-    String str1 = ((Activity)localObject2).getString(2131716940);
-    String str3 = ((Activity)localObject2).getString(2131716941);
-    paramString4 = "";
-    Object localObject1 = "";
-    if ("1".equals(paramString3))
-    {
-      paramString4 = "xxjzgw";
-      str1 = ((Activity)localObject2).getString(2131716940);
-      localObject1 = "1450000153";
     }
+    bnca localbnca = (bnca)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (bncb)this.b.get();
+    Bitmap localBitmap;
+    Object localObject2;
+    if ((localbnca != null) && ((!localbnca.a(this.jdField_a_of_type_Int)) || ((localObject1 != null) && (((bncb)localObject1).a(this.jdField_a_of_type_Int)))))
+    {
+      localBitmap = localbnca.a().a(this.jdField_a_of_type_Int);
+      if (localBitmap != null) {
+        localObject2 = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.b, "mosaic.png");
+      }
+    }
+    label806:
+    label812:
+    label819:
     for (;;)
     {
       try
       {
-        paramString3 = new JSONObject();
-        paramString3.put("offerId", localObject1);
-        localObject1 = (TicketManager)localAppInterface.getManager(2);
-        localObject2 = localAppInterface.getAccount();
-        paramString3.put("userId", localObject2);
-        paramString3.put("skey", ((TicketManager)localObject1).getSkey((String)localObject2));
-        paramString3.put("serviceCode", paramString4);
-        paramString3.put("serviceName", str1);
-        paramString3.put("channel", "");
-        paramString3.put("uint", str3);
-        paramString3.put("openMonth", paramString2);
-        paramString3.put("isCanChange", false);
-        paramString3.put("autoPay", paramBoolean);
-        paramString3.put("aid", str2);
-        paramString3.put("pf", a(bmsw.a(), str2));
-        if ((!paramString1.equals(localAppInterface.getCurrentAccountUin())) && (!paramString1.equals("0")))
+        yoy.a(localBitmap, (String)localObject2, null);
+        parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath = ((String)localObject2);
+        xvv.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateMosaicBitmap success %s", localObject2);
+        localObject2 = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
+        int k;
+        int m;
+        int j;
+        int i;
+        long l2;
+        xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and save doodle image failed");
+      }
+      catch (IOException paramJobContext)
+      {
+        try
         {
-          paramString3.put("provideUin", paramString1);
-          paramString3.put("provideType", "uin");
-        }
-        paramString3.put("discountId", "");
-        paramString3.put("other", "");
-        paramString1 = new Bundle();
-        paramString1.putInt("pay_requestcode", 4);
-        paramString1.putString("json", paramString3.toString());
-        localIntent.putExtras(paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.startActivityForResult(localIntent, (byte)16);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      if ("2".equals(paramString3))
-      {
-        paramString4 = "XXJZGHH";
-        str1 = ((Activity)localObject2).getString(2131716560);
-        localObject1 = "1450001557";
-      }
-    }
-  }
-  
-  private void b()
-  {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    localActivity.finish();
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      break label32;
-    }
-    label32:
-    while (paramByte != 16) {
-      return;
-    }
-    Object localObject;
-    if (paramIntent != null)
-    {
-      localObject = paramIntent.getExtras();
-      if (localObject != null)
-      {
-        localActivity.setResult(paramInt, paramIntent);
-        localObject = ((Bundle)localObject).getString("result");
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject((String)localObject);
-        paramInt = localJSONObject.getInt("resultCode");
-        String str = localJSONObject.getString("resultMsg");
-        int i = localJSONObject.getInt("payState");
-        int j = localJSONObject.getInt("provideState");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localObject });
-        }
-        a(localActivity, paramInt, str, i, j, paramIntent);
-        paramInt = 0;
-        paramIntent = (Intent)localObject;
-      }
-      catch (Exception paramIntent)
-      {
-        paramIntent.printStackTrace();
-        paramInt = 1;
-        paramIntent = (Intent)localObject;
-        continue;
-      }
-      MonitorManager.a().a(1, 3, "米大师支付结果回调", " 回调黄钻结果通知js " + paramIntent);
-      if (paramInt == 0) {
-        break;
-      }
-      paramIntent = new Intent();
-      paramIntent.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
-      localActivity.setResult(0, paramIntent);
-      localActivity.finish();
-      return;
-      paramIntent = "";
-      paramInt = 1;
-      continue;
-      paramIntent = "";
-      paramInt = 1;
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
+          bfvo.a(paramJobContext, (BitmapFactory.Options)localObject2);
+          k = ((BitmapFactory.Options)localObject2).outWidth;
+          m = ((BitmapFactory.Options)localObject2).outHeight;
+          paramJobContext = localbnca.a().a();
+          if (paramJobContext != null)
           {
-            do
+            paramJobContext = paramJobContext.a(k, m, true);
+            if (paramJobContext != null) {
+              parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("dynamic_Sticker_data", paramJobContext);
+            }
+          }
+          localBitmap = localbnca.a(this.jdField_a_of_type_Int, false);
+          paramJobContext = this.jdField_a_of_type_JavaLangString;
+          if (paramJobContext != null) {
+            break label819;
+          }
+          paramJobContext = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.b, ".png");
+          if (localBitmap == null) {
+            break label738;
+          }
+          if (localObject1 == null) {}
+        }
+        catch (OutOfMemoryError paramJobContext)
+        {
+          xvv.b("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "decode video thumb failed %s", paramJobContext);
+          super.notifyError(new BitmapError("Q.qqstory.publish.edit.GenerateDoodleImageSegment", 6));
+          return;
+        }
+        try
+        {
+          if (((bncb)localObject1).a(this.jdField_a_of_type_Int)) {
+            ((bncb)localObject1).a(this.jdField_a_of_type_Int, new Canvas(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
+          }
+          j = m;
+          i = k;
+          if ((parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
+          {
+            j = m;
+            i = k;
+            if (parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false))
             {
-              return bool1;
-              if ((paramString3.equals("payVipDirectly")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-                try
-                {
-                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-                  a(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
-                  return true;
-                }
-                catch (Exception paramJsBridgeListener)
-                {
-                  paramJsBridgeListener.printStackTrace();
-                  return true;
-                }
-              }
-              if ((paramString3.equals("closePayDialog")) || (paramString3.equals("closeFloatingWebView")))
-              {
-                b();
-                return true;
-              }
-              if (!paramString3.equals("SetNaviDeco")) {
-                break;
-              }
-              bool1 = bool2;
-            } while (paramVarArgs == null);
-            bool1 = bool2;
-          } while (TextUtils.isEmpty(paramVarArgs[0]));
-          paramJsBridgeListener = new Intent();
-          QzonePluginProxyActivity.a(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-          paramJsBridgeListener.putExtra("open_what", 7);
-          paramJsBridgeListener.putExtra("navi_deco", paramVarArgs[0]);
-          bool1 = bool2;
-        } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null);
-        bool1 = bool2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
-    QzonePluginProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount(), paramJsBridgeListener, a(9));
-    return true;
-    if ("preloadQzone".equals(paramString3))
-    {
-      ThreadManagerV2.executeOnSubThread(new QzoneVipPaymentJsPlugin.1(this));
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934595L) && (paramMap != null))
-    {
-      ((Integer)paramMap.get("errorCode")).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneVipPaymentJsPlugin", 2, "VasWebReport:EVENT_LOAD_ERROR");
+              i = ((BitmapFactory.Options)localObject2).outHeight;
+              j = ((BitmapFactory.Options)localObject2).outWidth;
+            }
+          }
+          k = parambnot.jdField_a_of_type_Bnpa.c;
+          m = parambnot.jdField_a_of_type_Int;
+          if ((m != 2) && (m != 3) && (m != 5) && (m != 6) && (m != 102)) {
+            break label812;
+          }
+          if ((parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
+          {
+            k = 0;
+            xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resizedBitmap orientation=" + 0);
+          }
+          localObject1 = a(localBitmap, k);
+          if (localObject1 == null) {
+            break label812;
+          }
+          localObject1 = yoy.c((Bitmap)localObject1, i, j, true, false);
+          if (localObject1 == null) {
+            break label806;
+          }
+          bool = yoy.a((Bitmap)localObject1, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+          localbnca.a(localBitmap);
+          if (localObject1 != localBitmap) {
+            yoy.a((Bitmap)localObject1);
+          }
+          if ((localObject1 == null) || (!bool)) {
+            break label692;
+          }
+          xvv.b("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and crop original doodle image success");
+          l2 = SystemClock.uptimeMillis();
+          xwa.b("take_video", "create_doodle_time", 0, 0, new String[] { "" + (l2 - l1) });
+          xwa.b("take_video", "create_doodle_result", 0, 0, new String[0]);
+          parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
+          super.notifyResult(parambnot);
+          return;
+        }
+        finally
+        {
+          localbnca.a(localBitmap);
+        }
+        paramJobContext = paramJobContext;
+        xvv.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "serializeBitmapToFile failed", paramJobContext);
+        super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+        return;
       }
+      label692:
+      xwa.b("take_video", "create_doodle_result", 0, -2, new String[0]);
+      parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+      super.notifyError(new ErrorMessage(-1, "Resize or store doodle failed"));
+      return;
+      label738:
+      xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "get doodle bitmap failed");
+      xwa.b("take_video", "create_doodle_result", 0, -2, new String[0]);
+      parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+      super.notifyError(new ErrorMessage(-1, "DoodleLayout get bitmap failed"));
+      return;
+      xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "do not generate doodle image because doodle is empty");
+      parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+      super.notifyResult(parambnot);
+      return;
+      boolean bool = false;
+      continue;
+      localObject1 = localBitmap;
     }
-    return false;
   }
 }
 

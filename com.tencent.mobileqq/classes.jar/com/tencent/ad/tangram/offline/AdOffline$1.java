@@ -17,7 +17,6 @@ class AdOffline$1
       return;
     }
     AdOffline.access$000(this.this$0, (Context)this.val$appContext.get(), this.val$ad, this.val$result);
-    AdOffline.access$100(this.this$0, (Context)this.val$appContext.get(), this.val$ad, this.val$result);
   }
 }
 

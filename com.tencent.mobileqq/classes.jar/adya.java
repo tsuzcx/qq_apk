@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class adya
-  implements DialogInterface.OnClickListener
+  implements apom
 {
-  public adya(BaseChatPie paramBaseChatPie) {}
+  public adya(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onColorNoteAnimFinish()
   {
-    this.a.b.dismiss();
+    QQBrowserActivity.a(this.a);
   }
 }
 

@@ -1,37 +1,110 @@
-import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgo
-  extends bcga
 {
-  public String a;
+  public final int a;
+  public long a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<bcgm> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private short jdField_a_of_type_Short;
+  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int;
+  public long b;
+  private short jdField_b_of_type_Short;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private short jdField_c_of_type_Short = 1;
   
-  public bcgo(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public bcgo(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = azce.a(paramQQAppInterface, paramInt1, NetworkCenter.getInstance().getNetType());
+    azbu.a(paramString);
   }
   
-  public bcgo(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public int a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    return this.jdField_b_of_type_Int;
   }
   
-  public void a(String paramString)
+  public File a()
   {
-    try
+    return new File(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public List<bcgm> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public short a()
+  {
+    return this.jdField_b_of_type_Short;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Short = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void a(short paramShort)
+  {
+    this.jdField_b_of_type_Short = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      this.a = new JSONObject(paramString).optString("title");
+      azbu.b(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(c, 0, paramString.toString());
-    }
+    azbu.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    azbu.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public short b()
+  {
+    return this.jdField_c_of_type_Short;
+  }
+  
+  public void b(short paramShort)
+  {
+    this.jdField_c_of_type_Short = paramShort;
+  }
+  
+  public short c()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public void c(short paramShort)
+  {
+    this.jdField_a_of_type_Short = paramShort;
   }
 }
 

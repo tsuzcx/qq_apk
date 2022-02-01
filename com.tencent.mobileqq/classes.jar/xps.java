@@ -1,25 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.drawable.Drawable;
 
 public class xps
-  extends QQUIEventReceiver<xpq, xau>
 {
-  public xps(@NonNull xpq paramxpq)
-  {
-    super(paramxpq);
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public xpo a;
+  public int b;
   
-  public void a(@NonNull xpq paramxpq, @NonNull xau paramxau)
+  public String a()
   {
-    yuk.b("InteractWidgetPageHolder", "receive poll info event.");
-    if (paramxpq.d()) {
-      paramxpq.a(paramxpq.jdField_a_of_type_Int, paramxpq.b, paramxpq.jdField_a_of_type_Xqz, paramxpq.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "?";
     }
+    if (this.jdField_a_of_type_Xpo == null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return xqd.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Xpo.a() });
   }
   
-  public Class acceptEventClass()
+  public boolean equals(Object paramObject)
   {
-    return xau.class;
+    return a().equals(((xps)paramObject).a());
+  }
+  
+  public int hashCode()
+  {
+    return a().hashCode();
+  }
+  
+  public String toString()
+  {
+    return a();
   }
 }
 

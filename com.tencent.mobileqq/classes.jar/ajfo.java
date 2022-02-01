@@ -1,18 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajfo
-  implements View.OnClickListener
+class ajfo
+  extends amzx
 {
-  public ajfo(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
+  ajfo(ajey paramajey) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
+    }
+    this.a.e();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
+    }
+    this.a.g();
   }
 }
 

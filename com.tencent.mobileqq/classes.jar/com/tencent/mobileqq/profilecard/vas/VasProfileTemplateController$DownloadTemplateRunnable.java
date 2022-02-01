@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.profilecard.vas;
 
 import android.os.Message;
-import azxy;
-import bhhz;
-import bhmi;
-import bihu;
-import bihw;
-import blhq;
+import aymn;
+import bfrj;
+import bgoe;
+import bgog;
+import bjng;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -21,12 +21,12 @@ class VasProfileTemplateController$DownloadTemplateRunnable
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<FriendProfileCardActivity> jdField_a_of_type_JavaLangRefWeakReference;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private WeakReference<azxy> b;
+  private WeakReference<aymn> b;
   
-  VasProfileTemplateController$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, azxy paramazxy, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
+  VasProfileTemplateController$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, aymn paramaymn, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFriendProfileCardActivity);
-    this.b = new WeakReference(paramazxy);
+    this.b = new WeakReference(paramaymn);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = paramAtomicBoolean;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Long = paramLong;
@@ -38,7 +38,7 @@ class VasProfileTemplateController$DownloadTemplateRunnable
     String str;
     if (!paramBoolean)
     {
-      str = bhhz.a(paramFriendProfileCardActivity.app, -1L);
+      str = bfrj.a(paramFriendProfileCardActivity.app, -1L);
       bool1 = paramBoolean;
       if (str != null)
       {
@@ -60,10 +60,10 @@ class VasProfileTemplateController$DownloadTemplateRunnable
     if (localFile.exists()) {
       localFile.delete();
     }
-    Object localObject = new bihu("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
-    ((bihu)localObject).f = "profileCardDownload";
-    ((bihu)localObject).e = "VIP_profilecard";
-    int j = bihw.a((bihu)localObject, paramFriendProfileCardActivity.app);
+    Object localObject = new bgoe("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
+    ((bgoe)localObject).f = "profileCardDownload";
+    ((bgoe)localObject).e = "VIP_profilecard";
+    int j = bgog.a((bgoe)localObject, paramFriendProfileCardActivity.app);
     if (j == 0) {}
     boolean bool2;
     for (int i = 1;; i = 0)
@@ -72,10 +72,10 @@ class VasProfileTemplateController$DownloadTemplateRunnable
       if (i != 0) {}
       try
       {
-        bhmi.a(localFile.getAbsolutePath(), str + File.separator, false);
-        bhhz.a(paramFriendProfileCardActivity.app, "common", "583");
+        FileUtils.uncompressZip(localFile.getAbsolutePath(), str + File.separator, false);
+        bfrj.a(paramFriendProfileCardActivity.app, "common", "583");
         bool2 = paramBoolean;
-        if (bhhz.a(paramFriendProfileCardActivity.app))
+        if (bfrj.a(paramFriendProfileCardActivity.app))
         {
           localFile.delete();
           bool2 = true;
@@ -110,30 +110,30 @@ class VasProfileTemplateController$DownloadTemplateRunnable
         if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.b != null))
         {
           FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          Object localObject = (azxy)this.b.get();
+          Object localObject = (aymn)this.b.get();
           if ((localFriendProfileCardActivity != null) && (localObject != null))
           {
             long l = System.currentTimeMillis();
             if (QLog.isColorLevel()) {
               QLog.d("ProfileTemplateCheckController", 2, "DownloadTemplateRunnable start");
             }
-            boolean bool3 = bhhz.a(localFriendProfileCardActivity.app);
+            boolean bool3 = bfrj.a(localFriendProfileCardActivity.app);
             if ((this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
               break label468;
             }
-            bool1 = bhhz.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
+            bool1 = bfrj.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
             if (QLog.isColorLevel()) {
               QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable start isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
             }
             boolean bool2 = bool1;
             if (!bool1)
             {
-              localObject = new File(bhhz.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
-              localObject = new bihu(this.jdField_a_of_type_JavaLangString, (File)localObject);
-              ((bihu)localObject).f = "profileCardDownload";
-              ((bihu)localObject).e = "VIP_profilecard";
-              i = bihw.a((bihu)localObject, localFriendProfileCardActivity.app);
-              if ((i != 0) || (!bhhz.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
+              localObject = new File(bfrj.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
+              localObject = new bgoe(this.jdField_a_of_type_JavaLangString, (File)localObject);
+              ((bgoe)localObject).f = "profileCardDownload";
+              ((bgoe)localObject).e = "VIP_profilecard";
+              i = bgog.a((bgoe)localObject, localFriendProfileCardActivity.app);
+              if ((i != 0) || (!bfrj.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
                 continue;
               }
               bool1 = true;

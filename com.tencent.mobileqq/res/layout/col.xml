@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/n0p" android:paddingLeft="@dimen/bat" android:paddingTop="@dimen/bav" android:paddingRight="@dimen/bau" android:paddingBottom="@dimen/bas" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/cor" />
-        <include layout="@layout/cos" />
-        <ViewStub android:id="@id/ngh" android:layout="@layout/cot" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/nla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="52.0dip" android:layout_marginRight="60.0dip" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cos" />
+    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/nga" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendBottomBarView android:layout_gravity="bottom" android:id="@id/ac1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/hgt" android:background="@drawable/g0u" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="40.0dip">
+        <ImageView android:id="@id/hgu" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="23.5dip" android:layout_marginTop="15.5dip" android:src="@drawable/g0v" />
+    </FrameLayout>
+</FrameLayout>

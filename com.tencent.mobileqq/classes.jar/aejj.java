@@ -1,40 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class aejj
-  extends apec
+  implements TextView.OnEditorActionListener
 {
-  private WeakReference<Conversation> a;
+  public aejj(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public aejj(Conversation paramConversation)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
-  {
-    if ((paramBoolean) && (paramList != null))
+    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      Conversation localConversation = (Conversation)this.a.get();
-      if (localConversation != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
-          if (localAppletsAccountInfo != null) {
-            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
-          }
-        }
-      }
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
+      TextPreviewTranslateActivity.a(this.a);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
+      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      return true;
     }
+    return false;
   }
 }
 

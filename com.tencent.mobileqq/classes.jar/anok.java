@@ -1,14 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-final class anok
-  implements anje
+class anok
+  implements View.OnTouchListener
 {
-  anok(anom paramanom, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, amxm paramamxm, int[] paramArrayOfInt) {}
+  anok(anoh paramanoh, ImageView paramImageView) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Anom != null) {
-      this.jdField_a_of_type_Anom.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Amxm.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
     }
   }
 }

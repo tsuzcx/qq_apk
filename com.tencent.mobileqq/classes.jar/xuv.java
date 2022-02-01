@@ -1,13 +1,45 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.view.View;
+import java.util.ArrayList;
 
 class xuv
-  implements xvr
+  extends xqa
 {
-  xuv(xut paramxut, xtj paramxtj, Object paramObject) {}
+  xuv(xuh paramxuh) {}
   
-  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
+  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
   {
-    return this.jdField_a_of_type_Xtj.a(this.jdField_a_of_type_Xut, 0, paramInt1, this.jdField_a_of_type_Xut.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    boolean bool;
+    switch (paramView.getId())
+    {
+    default: 
+      if (xuh.a(this.a).a().size() <= 0) {
+        break label149;
+      }
+      paramView = this.a;
+      if (!xuh.a(this.a))
+      {
+        bool = true;
+        xuh.a(paramView, bool);
+        xuh.a(this.a);
+        if (!xuh.a(this.a)) {
+          break label143;
+        }
+      }
+      break;
+    }
+    label143:
+    for (paramView = "1";; paramView = "2")
+    {
+      xwa.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
+      xwa.a("home_page", "exp_share_day", 0, 0, new String[0]);
+      return;
+      xuh.a(this.a, xuh.a(this.a), paramView);
+      return;
+      bool = false;
+      break;
+    }
+    label149:
+    xuh.a(this.a, xuh.a(this.a), paramView);
   }
 }
 

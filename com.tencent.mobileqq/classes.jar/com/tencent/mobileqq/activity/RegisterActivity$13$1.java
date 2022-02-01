@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import afjo;
+import aecg;
 import android.content.Intent;
 
 public class RegisterActivity$13$1
   implements Runnable
 {
-  public RegisterActivity$13$1(afjo paramafjo, String paramString) {}
+  public RegisterActivity$13$1(aecg paramaecg, String paramString) {}
   
   public void run()
   {
@@ -22,19 +22,19 @@ public class RegisterActivity$13$1
         localObject1 = "https://" + (String)localObject2;
       }
     }
-    localObject2 = new Intent(this.jdField_a_of_type_Afjo.a.getActivity(), QQBrowserActivity.class);
+    localObject2 = new Intent(this.jdField_a_of_type_Aecg.a.getActivity(), QQBrowserActivity.class);
     ((Intent)localObject2).putExtra("is_register_uin", true);
     ((Intent)localObject2).putExtra("isShowAd", false);
     ((Intent)localObject2).putExtra("hide_more_button", true);
     ((Intent)localObject2).putExtra("hide_operation_bar", true);
     ((Intent)localObject2).putExtra("register_uin_msg", 9);
     ((Intent)localObject2).putExtra("register_uin_class", RegisterActivity.class.getName());
-    this.jdField_a_of_type_Afjo.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+    this.jdField_a_of_type_Aecg.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.13.1
  * JD-Core Version:    0.7.0.1
  */

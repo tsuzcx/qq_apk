@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 
-class xwv
-  implements DialogInterface.OnClickListener
+public class xwv
+  extends ybh
 {
-  xwv(xwr paramxwr) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xwv(int paramInt, Bitmap paramBitmap)
   {
-    xwr.a(this.a);
-    yup.a("play_video", "clk_window", 0, 0, new String[0]);
+    super(paramInt, paramBitmap);
+  }
+  
+  public static xwv a(xwv paramxwv, Bitmap paramBitmap)
+  {
+    paramBitmap = new xwv(paramxwv.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = paramxwv.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = paramxwv.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = paramxwv.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = paramxwv.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = paramxwv.jdField_b_of_type_Boolean;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 

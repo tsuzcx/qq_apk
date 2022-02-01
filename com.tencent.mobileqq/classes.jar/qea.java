@@ -1,18 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-
-public class qea
-  implements uyg
+public abstract interface qea
 {
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, suk paramsuk)
-  {
-    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
-    paramsuk.a();
-  }
+  public abstract void a();
 }
 
 

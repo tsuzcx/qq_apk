@@ -1,20 +1,20 @@
 package com.tencent.av.business.manager.pendant;
 
 import android.text.TextUtils;
-import lhw;
-import mbb;
+import lhq;
+import mak;
 
 public class EffectPendantTipsImpl$1
   implements Runnable
 {
-  public EffectPendantTipsImpl$1(lhw paramlhw, String paramString) {}
+  public EffectPendantTipsImpl$1(lhq paramlhq, String paramString) {}
   
   public void run()
   {
     try
     {
       if (!TextUtils.isEmpty(this.a)) {
-        mbb.a(lhw.a(this.this$0), 1016, this.a);
+        mak.a(lhq.a(this.this$0), 1016, this.a);
       }
       return;
     }

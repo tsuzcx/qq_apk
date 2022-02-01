@@ -53,7 +53,7 @@ public class ark
   
   public static final long arkGetARMv7LibCRC32()
   {
-    return 1834049683L;
+    return 3170266751L;
   }
   
   public static final int arkGetARMv7LibSize()
@@ -77,7 +77,7 @@ public class ark
   
   public static final int arkGetPlatformBuildNumber()
   {
-    return 121156844;
+    return 220729720;
   }
   
   public static final int arkGetPlatformVersion()
@@ -117,12 +117,12 @@ public class ark
   
   public static final long getArkSOArm64CRC()
   {
-    return 2687028342L;
+    return 4033399901L;
   }
   
   public static final int getArkSOArm64Size()
   {
-    return 5391840;
+    return 5400032;
   }
   
   public static final long getPngArm64CRC()

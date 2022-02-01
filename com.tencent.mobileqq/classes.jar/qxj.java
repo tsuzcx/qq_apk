@@ -1,11 +1,21 @@
-import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
+import java.util.ArrayList;
 
-public final class qxj
-  implements pno<articlesummary.WendaInfo, qyp>
+public class qxj
 {
-  public qyp a(articlesummary.WendaInfo paramWendaInfo)
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<qxi> a;
+  public long b;
+  public String b;
+  public long c;
+  
+  public qxj(qxg paramqxg) {}
+  
+  public String toString()
   {
-    return qyp.a(paramWendaInfo);
+    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
   }
 }
 

@@ -9,26 +9,32 @@ import com.qq.taf.jce.JceStruct;
 public final class AllInfo
   extends JceStruct
 {
-  static guest_mainpage_rsp cache_stGuestMainpageRsp = new guest_mainpage_rsp();
+  static guest_mainpage_rsp cache_stGuestMainpageRsp;
   static SearchClientShowInfoRsp cache_stYellowVipInfo;
   static byte[] cache_vecQQBigVipInfo = (byte[])new byte[1];
+  static byte[] cache_vecSweetStyleInfo;
   public guest_mainpage_rsp stGuestMainpageRsp;
   public SearchClientShowInfoRsp stYellowVipInfo;
   public byte[] vecQQBigVipInfo;
+  public byte[] vecSweetStyleInfo;
   
   static
   {
     ((byte[])cache_vecQQBigVipInfo)[0] = 0;
     cache_stYellowVipInfo = new SearchClientShowInfoRsp();
+    cache_stGuestMainpageRsp = new guest_mainpage_rsp();
+    cache_vecSweetStyleInfo = (byte[])new byte[1];
+    ((byte[])cache_vecSweetStyleInfo)[0] = 0;
   }
   
   public AllInfo() {}
   
-  public AllInfo(byte[] paramArrayOfByte, SearchClientShowInfoRsp paramSearchClientShowInfoRsp, guest_mainpage_rsp paramguest_mainpage_rsp)
+  public AllInfo(byte[] paramArrayOfByte1, SearchClientShowInfoRsp paramSearchClientShowInfoRsp, guest_mainpage_rsp paramguest_mainpage_rsp, byte[] paramArrayOfByte2)
   {
-    this.vecQQBigVipInfo = paramArrayOfByte;
+    this.vecQQBigVipInfo = paramArrayOfByte1;
     this.stYellowVipInfo = paramSearchClientShowInfoRsp;
     this.stGuestMainpageRsp = paramguest_mainpage_rsp;
+    this.vecSweetStyleInfo = paramArrayOfByte2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -36,6 +42,7 @@ public final class AllInfo
     this.vecQQBigVipInfo = ((byte[])paramJceInputStream.read(cache_vecQQBigVipInfo, 0, false));
     this.stYellowVipInfo = ((SearchClientShowInfoRsp)paramJceInputStream.read(cache_stYellowVipInfo, 1, false));
     this.stGuestMainpageRsp = ((guest_mainpage_rsp)paramJceInputStream.read(cache_stGuestMainpageRsp, 2, false));
+    this.vecSweetStyleInfo = ((byte[])paramJceInputStream.read(cache_vecSweetStyleInfo, 3, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -48,6 +55,9 @@ public final class AllInfo
     }
     if (this.stGuestMainpageRsp != null) {
       paramJceOutputStream.write(this.stGuestMainpageRsp, 2);
+    }
+    if (this.vecSweetStyleInfo != null) {
+      paramJceOutputStream.write(this.vecSweetStyleInfo, 3);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atrd;
-import atws;
+import asdm;
+import asjc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public class FileTransferHandler$5
   public void run()
   {
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle cmd 0x211-0x1.save to weiyun");
-    this.this$0.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 4);
+    this.this$0.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 4);
   }
 }
 

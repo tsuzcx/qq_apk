@@ -1,24 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.2.1;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
 public class alrg
-  implements Animator.AnimatorListener
+  implements Comparator<alrk>
 {
-  public alrg(CareNotificationBar.3 param3) {}
+  public alrg(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(alrk paramalrk1, alrk paramalrk2)
   {
-    this.a.a.post(new CareNotificationBar.3.2.1(this));
+    return paramalrk1.a() - paramalrk2.a();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

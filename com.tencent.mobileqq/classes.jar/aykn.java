@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
 public class aykn
-  implements anvi
 {
-  public aykn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public PersonalityLabelPhoto a;
+  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+  public int b = 0;
+  public int c = 0;
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
-    }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
-  }
+  aykn(aykm paramaykm) {}
 }
 
 

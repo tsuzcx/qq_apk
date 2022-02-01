@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-class aqke
-  implements DialogInterface.OnClickListener
+public class aqke
 {
-  aqke(aqkd paramaqkd, aqkg paramaqkg) {}
+  public String a;
+  public String[] a;
+  public String b;
+  public String[] b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqke(JSONObject paramJSONObject)
   {
-    aqkh.a(BaseApplication.context, this.jdField_a_of_type_Aqkg.d(), aqkd.a(this.jdField_a_of_type_Aqkd));
-    azir.a("0X800ADEF");
+    String str = paramJSONObject.optString("words");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\/");
+    }
+    str = paramJSONObject.optString("overlay");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_b_of_type_ArrayOfJavaLangString = str.split("\\/");
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("optString");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("aioTips");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqke
  * JD-Core Version:    0.7.0.1
  */

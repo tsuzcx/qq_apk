@@ -1,21 +1,43 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import org.xmlpull.v1.XmlSerializer;
 
-public final class bcmp
-  implements Comparator<bcgv>
+public class bcmp
+  extends bciz
 {
-  public int a(bcgv parambcgv1, bcgv parambcgv2)
+  public bcmp()
   {
-    int j = Long.signum(parambcgv2.b() - parambcgv1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(parambcgv2.a() - parambcgv1.a());
+    this.a = "vote";
+  }
+  
+  public String a()
+  {
+    return "VoteCover";
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "vote");
+    if (this.ac == null) {}
+    for (String str = "";; str = this.ac)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "vote");
+      return;
     }
-    j = i;
-    if (i == 0) {
-      j = PublicAccountSearchEngine.a(parambcgv1, parambcgv2);
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    if (parambcin == null) {
+      return true;
     }
-    return j;
+    parambcin = parambcin.a("cover");
+    if (parambcin != null) {}
+    for (;;)
+    {
+      this.ac = parambcin;
+      return true;
+      parambcin = "";
+    }
   }
 }
 

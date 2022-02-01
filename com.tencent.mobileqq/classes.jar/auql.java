@@ -1,14 +1,34 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Bundle;
+import java.util.concurrent.CountDownLatch;
 
-public class auql
-  implements bjhv
+class auql
+  implements aumh
 {
-  public auql(SendBottomBar paramSendBottomBar) {}
+  auql(auqk paramauqk, aumd paramaumd, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  public void a(int paramInt)
+  public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (paramInt == 2) {
-      this.a.c();
+    if (paramBoolean)
+    {
+      paramString = new Bundle();
+      paramString.putString("authid", this.jdField_a_of_type_Aumd.a().b);
+      paramString.putString("authKey", this.jdField_a_of_type_Aumd.a().jdField_a_of_type_JavaLangString);
+      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Aumd.a().jdField_a_of_type_Long);
+      paramString.putString("payToken", this.jdField_a_of_type_Aumd.a().c);
+      Bundle localBundle = new Bundle();
+      localBundle.putBundle("data", paramString);
+      localBundle.putBoolean("isSuccess", true);
+      localBundle.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+      paramString = new Bundle();
+      paramString.putBoolean("isSuccess", false);
+      paramString.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
     }
   }
 }

@@ -1,8 +1,11 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface ayud
+public class ayud
 {
-  public abstract void onClick(View paramView);
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800B1CA", "0X800B1CA", paramInt, 0, "", "", "", "");
+  }
 }
 
 

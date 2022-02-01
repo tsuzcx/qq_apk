@@ -1,101 +1,97 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.SparseArray;
-import android.view.View;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.SubVideoInfo;
+import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
+import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 
-public abstract class rdl
-  extends RecyclerView.ItemDecoration
+public class rdl
 {
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final SparseArray<rdm> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public int a;
+  public long a;
+  public UrlJumpInfo a;
+  public String a;
+  public List<rfo> a;
+  public boolean a;
+  public int b;
+  public UrlJumpInfo b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
   public rdl()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(6);
   }
   
-  public static final rdm a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static rdl a(articlesummary.VideoColumnInfo paramVideoColumnInfo)
   {
-    return a(paramInt1, paramInt2, paramInt3, paramInt4, 0);
-  }
-  
-  public static final rdm a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    rdm localrdm = new rdm();
-    localrdm.e = paramInt5;
-    paramInt5 = (paramInt3 - 1) * paramInt4 / paramInt3;
-    int i = paramInt4 - paramInt5;
-    localrdm.c = paramInt4;
-    if (paramInt1 % paramInt3 == 0) {
-      localrdm.b = paramInt5;
-    }
-    while (paramInt1 / paramInt3 == paramInt2 / paramInt3)
+    boolean bool = true;
+    rdl localrdl = new rdl();
+    localrdl.jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
+    localrdl.jdField_a_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_name.get().toStringUtf8();
+    localrdl.jdField_b_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_icon_url.get().toStringUtf8();
+    localrdl.jdField_d_of_type_JavaLangString = paramVideoColumnInfo.bytes_sub_title.get().toStringUtf8();
+    localrdl.jdField_c_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_icon_url.get().toStringUtf8();
+    localrdl.jdField_b_of_type_Int = paramVideoColumnInfo.uint32_update_count.get();
+    localrdl.jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
+    localrdl.jdField_c_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
+    localrdl.jdField_d_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
+    if (paramVideoColumnInfo.uint32_is_subscribed.get() == 1) {}
+    for (;;)
     {
-      localrdm.d = paramInt4;
-      return localrdm;
-      if ((paramInt1 + 1) % paramInt3 == 0)
+      localrdl.jdField_a_of_type_Boolean = bool;
+      localrdl.jdField_e_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_bg_url.get().toStringUtf8();
+      localrdl.f = paramVideoColumnInfo.bytes_column_card_bg_color.get().toStringUtf8();
+      localrdl.g = paramVideoColumnInfo.bytes_app_name.get().toStringUtf8();
+      localrdl.h = paramVideoColumnInfo.bytes_app_icon_url.get().toStringUtf8();
+      localrdl.jdField_e_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
+      Iterator localIterator = paramVideoColumnInfo.rpt_sub_video_info.get().iterator();
+      while (localIterator.hasNext())
       {
-        localrdm.a = paramInt5;
+        articlesummary.SubVideoInfo localSubVideoInfo = (articlesummary.SubVideoInfo)localIterator.next();
+        rfo localrfo = new rfo();
+        localrfo.jdField_a_of_type_Long = localSubVideoInfo.uint64_article_id.get();
+        localrfo.jdField_a_of_type_JavaLangString = localSubVideoInfo.bytes_inner_uniq_id.get().toStringUtf8();
+        localrfo.jdField_b_of_type_JavaLangString = localSubVideoInfo.bytes_article_title.get().toStringUtf8();
+        localrfo.jdField_c_of_type_JavaLangString = localSubVideoInfo.bytes_first_page_pic_url.get().toStringUtf8();
+        localrfo.jdField_a_of_type_Int = localSubVideoInfo.uint32_video_play_count.get();
+        localrfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a((articlesummary.UrlJumpInfo)localSubVideoInfo.bytes_jum_url.get());
+        localrfo.jdField_b_of_type_Int = localSubVideoInfo.uint32_duration.get();
+        localrdl.jdField_a_of_type_JavaUtilList.add(localrfo);
       }
-      else
-      {
-        localrdm.a = i;
-        localrdm.b = i;
-      }
+      bool = false;
     }
-    localrdm.d = 0;
-    return localrdm;
+    localrdl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
+    localrdl.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
+    return localrdl;
   }
   
-  @Nullable
-  public abstract rdm a(int paramInt, @NotNull RecyclerView paramRecyclerView);
-  
-  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  public String toString()
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    paramView.setTag(Integer.valueOf(i));
-    paramView = a(i, paramRecyclerView);
-    if (paramView != null) {
-      paramRect.set(paramView.a, paramView.c, paramView.b, paramView.d);
-    }
-    for (paramRect = paramView;; paramRect = new rdm())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\n").append("columnId=").append(this.jdField_a_of_type_Int).append("\n").append("columnName=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("columnIconUrl=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("cardIconUrl=").append(this.jdField_c_of_type_JavaLangString).append("\n").append("subTitle=").append(this.jdField_d_of_type_JavaLangString).append("\n").append("updateCount=").append(this.jdField_b_of_type_Int).append("\n").append("updateTime=").append(this.jdField_a_of_type_Long).append("\n").append("videoCount=").append(this.jdField_c_of_type_Int).append("\n").append("subscribeCount=").append(this.jdField_d_of_type_Int).append("\n").append("isSubscribed=").append(this.jdField_a_of_type_Boolean).append("\n").append("cardBgUrl=").append(this.jdField_e_of_type_JavaLangString).append("\n").append("color=").append(this.f).append("\n").append("appName=").append(this.g).append("\n").append("appIconUrl").append(this.h).append("\n").append("cardBgStyle").append(this.jdField_e_of_type_Int).append("\n").append("subVideoInfoList={");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRect);
-      return;
+      rfo localrfo = (rfo)localIterator.next();
+      localStringBuilder.append("\n[").append(localrfo.toString()).append("]");
     }
-  }
-  
-  public void onDraw(@NotNull Canvas paramCanvas, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
-  {
-    super.onDraw(paramCanvas, paramRecyclerView, paramState);
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      paramState = paramRecyclerView.getChildAt(i);
-      int k = ((Integer)paramState.getTag()).intValue();
-      rdm localrdm = (rdm)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localrdm.e);
-      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      k = paramState.getBottom() + localLayoutParams.bottomMargin;
-      int m = paramState.getLeft() - localLayoutParams.leftMargin;
-      int n = paramState.getRight() + localLayoutParams.rightMargin;
-      int i1 = paramState.getTop() - localLayoutParams.topMargin;
-      paramCanvas.drawRect(m - localrdm.a, k, localrdm.b + n, localrdm.d + k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(m - localrdm.a, i1 - localrdm.c, localrdm.b + n, i1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(m - localrdm.a, i1, m, k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(n, i1, localrdm.b + n, k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i += 1;
-    }
+    localStringBuilder.append("}").append("\n").append("defaultJumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.toString()).append("\n").append("appJumpUrl=").append(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.toString()).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

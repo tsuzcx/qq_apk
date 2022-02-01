@@ -1,36 +1,38 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.widget.Switch;
 
 class nvh
-  implements bliz
+  implements DialogInterface.OnClickListener
 {
-  nvh(nvg paramnvg) {}
+  nvh(num paramnum, obr paramobr, boolean paramBoolean, Switch paramSwitch) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= nvg.a(this.a).size()))
-    {
-      nvg.a(this.a).dismiss();
-      return;
+    boolean bool = true;
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_Obr.e) && (this.jdField_a_of_type_Obr.d == 0))
+      {
+        paramDialogInterface = this.jdField_a_of_type_Num;
+        localobr = this.jdField_a_of_type_Obr;
+        if (!this.jdField_a_of_type_Boolean) {
+          paramDialogInterface.a(localobr, bool);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Num.a(this.jdField_a_of_type_Obr, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      }
     }
-    switch (((Integer)nvg.a(this.a).get(paramInt)).intValue())
-    {
+    while (paramInt != 1) {
+      for (;;)
+      {
+        obr localobr;
+        return;
+        bool = false;
+      }
     }
-    for (;;)
-    {
-      nvg.a(this.a).dismiss();
-      return;
-      this.a.a.q();
-      continue;
-      this.a.a.F();
-      continue;
-      this.a.a.H();
-      continue;
-      AccountDetailActivity.d(this.a.a);
-      continue;
-      AccountDetailActivity.a(this.a.a, this.a.a.e);
-    }
+    this.jdField_a_of_type_Num.a(this.jdField_a_of_type_Obr, this.jdField_a_of_type_Boolean);
   }
 }
 

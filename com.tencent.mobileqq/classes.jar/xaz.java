@@ -1,40 +1,30 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class xaz
-  extends QQUIEventReceiver<xax, xaw>
+  extends vll<xax, wbw>
 {
   public xaz(xax paramxax)
   {
     super(paramxax);
   }
   
-  public void a(@NonNull xax paramxax, @NonNull xaw paramxaw)
+  public void a(@NonNull xax paramxax, @NonNull wbw paramwbw)
   {
-    if (paramxax.a()) {}
-    do
+    if ((xax.a(paramxax) != null) && (paramwbw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbw.jdField_a_of_type_JavaUtilList.contains(xax.a(paramxax).a)))
     {
-      return;
-      if (paramxaw.jdField_a_of_type_Boolean)
-      {
-        xax.a(paramxax);
-        return;
-      }
-      if ((paramxaw.a() != null) && (!paramxaw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramxaw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    xax.a(paramxax);
+      xvv.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwbw.b.toString());
+      paramxax.a.i();
+    }
   }
   
   public Class acceptEventClass()
   {
-    return xaw.class;
+    return wbw.class;
   }
+  
+  public void b(@NonNull xax paramxax, @NonNull wbw paramwbw) {}
 }
 
 

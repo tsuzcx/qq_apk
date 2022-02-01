@@ -1,31 +1,15 @@
-import android.os.Handler;
 import android.view.View;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-public abstract class amnj
-  extends BaseAdapter
-  implements AbsListView.OnScrollListener
+public class amnj
 {
-  protected Handler a;
-  public String a;
+  View jdField_a_of_type_AndroidViewView;
+  public ImageView a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View b;
   
-  private final void a(View paramView, Object paramObject, int paramInt, amnk paramamnk)
-  {
-    Object localObject = a(paramInt);
-    if (localObject == null) {
-      return;
-    }
-    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramamnk);
-    amnk.a(paramamnk, true);
-    amnk.a(paramamnk, paramView);
-    this.a.post(paramView);
-  }
-  
-  protected abstract Object a(int paramInt);
-  
-  public abstract void a(View paramView, Object paramObject);
+  public amnj(amni paramamni) {}
 }
 
 

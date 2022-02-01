@@ -1,18 +1,21 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class adax
+  implements View.OnClickListener
 {
-  public int a;
-  public Object a;
-  public String a;
-  public int b;
+  public adax(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public adax() {}
-  
-  public adax(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,27 +1,37 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class aerh
-  implements anvi
+  extends amsu
 {
-  public aerh(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aerh(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      if (paramBoolean) {
-        break label55;
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
       }
-      FriendProfileMoreInfoActivity.a(this.a);
-      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
     }
-    label55:
-    while (paramInt != 2) {
+    label28:
+    Friends localFriends;
+    do
+    {
       return;
-    }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
+      localFriends = ((amsw)this.a.app.getManager(51)).e(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
   }
 }
 

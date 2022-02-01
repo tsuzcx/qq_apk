@@ -1,19 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-class belz
-  implements Animation.AnimationListener
+public class belz
+  implements INetInfoHandler
 {
-  belz(bely parambely) {}
+  public belz(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2None()
   {
-    this.a.a.e();
+    this.a.b.cancel();
+    this.a.b.start();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.b.cancel();
+    this.a.b.start();
+  }
 }
 
 

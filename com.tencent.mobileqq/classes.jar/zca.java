@@ -1,14 +1,21 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+import com.tencent.mobileqq.widget.QQToast;
 
-class zca
-  implements FileFilter
+public class zca
+  implements zjr
 {
-  zca(zbz paramzbz) {}
+  public zca(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public boolean accept(File paramFile)
+  public void a(boolean paramBoolean)
   {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+    if (paramBoolean)
+    {
+      SimpleEventBus.getInstance().dispatchEvent(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131718731, 0).a();
   }
 }
 

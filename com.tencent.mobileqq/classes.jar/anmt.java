@@ -1,45 +1,117 @@
-import android.text.TextUtils;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import android.content.Intent;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
+import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
 
 public class anmt
+  extends abvx
 {
-  int jdField_a_of_type_Int;
-  private annd jdField_a_of_type_Annd;
-  private anne jdField_a_of_type_Anne;
-  private anng jdField_a_of_type_Anng;
-  String jdField_a_of_type_JavaLangString;
-  int b = 30000;
-  
-  public anmr a()
+  public anmt(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    if (this.jdField_a_of_type_Anng == null) {
-      this.jdField_a_of_type_Anng = new annc();
-    }
-    if (this.jdField_a_of_type_Anne == null) {
-      this.jdField_a_of_type_Anne = new annb();
-    }
-    if (this.jdField_a_of_type_Annd == null) {
-      this.jdField_a_of_type_Annd = new anmp();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new IllegalArgumentException("appId required.");
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new IllegalArgumentException("current account uid is required.");
-    }
-    return new anmr(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Anng, this.jdField_a_of_type_Anne, this.jdField_a_of_type_Annd, null);
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public anmt a(int paramInt)
+  private void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if (paramArrayOfByte == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
+        try
+        {
+          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
+          if (paramArrayOfByte != null) {
+            break label71;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
+    return;
+    label71:
+    long l1 = paramArrayOfByte.uint64_to_uin.get();
+    long l2 = paramArrayOfByte.uint64_room_id.get();
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
+    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
+    paramArrayOfByte.putExtra("c2cuin", l1);
+    paramArrayOfByte.putExtra("c2croomid", l2);
+    this.a.getApp().sendBroadcast(paramArrayOfByte);
+    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
   }
   
-  public anmt a(String paramString)
+  private void a(byte[] paramArrayOfByte, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramArrayOfByte);
   }
+  
+  public abxj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new abxj(null, true);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+      {
+        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
+      }
+      else
+      {
+        a(getClass().getName(), paramInt);
+        continue;
+        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+        {
+          boolean bool = lku.a(paramMsgInfo.vMsg);
+          this.a.getMsgHandler().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
+        }
+        else
+        {
+          a(getClass().getName(), paramInt);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
+    {
+      a((byte[])paramVarArgs[2], 11);
+      return;
+    }
+    a(getClass().getName(), paramInt);
+  }
+  
+  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

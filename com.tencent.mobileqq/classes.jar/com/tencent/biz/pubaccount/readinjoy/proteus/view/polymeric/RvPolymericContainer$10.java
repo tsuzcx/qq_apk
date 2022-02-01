@@ -1,18 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 
-import qek;
-import qet;
-import qeu;
+import qki;
+import qkr;
 
 public class RvPolymericContainer$10
   implements Runnable
 {
-  public RvPolymericContainer$10(qek paramqek, long paramLong) {}
+  public RvPolymericContainer$10(qki paramqki) {}
   
   public void run()
   {
-    if ((qek.a(this.this$0).a() > 1) && (qek.a(this.this$0) != null)) {
-      qek.a(this.this$0).a(this.a);
+    if (qki.a(this.this$0) != null) {
+      qki.a(this.this$0).b();
     }
   }
 }

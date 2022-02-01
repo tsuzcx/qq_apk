@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aipm;
+import ahkz;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
@@ -23,8 +23,8 @@ class ChatActivityUtils$AddFriendSpan
     if (((paramView instanceof SplashActivity)) || ((paramView instanceof ChatActivity)))
     {
       paramView = (FragmentActivity)paramView;
-      if ((paramView.getChatFragment().a() instanceof aipm)) {
-        ((aipm)paramView.getChatFragment().a()).bo();
+      if ((paramView.getChatFragment().a() instanceof ahkz)) {
+        ((ahkz)paramView.getChatFragment().a()).a();
       }
     }
   }
@@ -36,7 +36,7 @@ class ChatActivityUtils$AddFriendSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.AddFriendSpan
  * JD-Core Version:    0.7.0.1
  */

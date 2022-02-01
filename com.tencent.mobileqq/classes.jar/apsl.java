@@ -1,57 +1,21 @@
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.Renderer;
-import android.util.Size;
-import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
-import java.nio.FloatBuffer;
-
-public abstract interface apsl
-  extends GLSurfaceView.Renderer
+public class apsl
 {
-  public abstract int a();
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  public abstract long a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
-  
-  public abstract void a(int paramInt, Object paramObject);
-  
-  public abstract void a(int paramInt, float[] paramArrayOfFloat);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(aphp paramaphp);
-  
-  public abstract void a(apht paramapht);
-  
-  public abstract void a(apts paramapts);
-  
-  public abstract void a(VideoRecordController paramVideoRecordController);
-  
-  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
-  
-  public abstract boolean a(aphs paramaphs);
-  
-  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public apsl(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Float = paramFloat;
+  }
 }
 
 

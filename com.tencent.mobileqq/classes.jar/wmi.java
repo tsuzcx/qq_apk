@@ -1,19 +1,14 @@
-import android.support.annotation.Nullable;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class wmi
+  extends AnimatorListenerAdapter
 {
-  private WeakReference<wmh> a;
+  wmi(wmh paramwmh) {}
   
-  public wmi(wmh paramwmh)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramwmh);
-  }
-  
-  @Nullable
-  public wmh a()
-  {
-    return (wmh)this.a.get();
+    super.onAnimationEnd(paramAnimator);
   }
 }
 

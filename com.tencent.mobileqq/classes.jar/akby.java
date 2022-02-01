@@ -1,24 +1,19 @@
-import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
-public class akby
-  extends akbz
+class akby
+  implements akbk
 {
-  public static final int[] a = { 2131690657, 2131690662, 2131690659, 2131690660, 2131690664, 2131690661, 2131690658 };
-  public static final int[] b = { 2131364399, 2131364404, 2131364401, 2131364402, 2131364405, 2131364403, 2131364400 };
+  akby(akbx paramakbx, int paramInt) {}
   
-  public akby(FragmentActivity paramFragmentActivity)
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramHashMap);
+    this.jdField_a_of_type_Akbx.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,10 +1,23 @@
-public abstract interface atvu
+import com.tencent.mobileqq.app.BusinessObserver;
+
+public class atvu
+  implements BusinessObserver
 {
-  public abstract void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public void a() {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public void a(atvx paramatvx) {}
   
-  public abstract void a(String paramString);
+  protected void a(boolean paramBoolean, atvx paramatvx) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, (atvx)paramObject);
+  }
 }
 
 

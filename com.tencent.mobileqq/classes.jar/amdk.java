@@ -1,12 +1,25 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class amdk
-  extends afwn
+  implements Animator.AnimatorListener
 {
-  public CheckBox a;
+  public amdk(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  private amdk(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

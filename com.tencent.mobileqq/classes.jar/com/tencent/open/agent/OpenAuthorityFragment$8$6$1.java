@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bjnp;
+import bhtd;
 
 class OpenAuthorityFragment$8$6$1
   implements Runnable

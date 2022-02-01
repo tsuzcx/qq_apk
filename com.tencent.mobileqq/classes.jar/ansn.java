@@ -1,23 +1,48 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1;
-import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1.1.1;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 
 public class ansn
-  implements Animation.AnimationListener
+  extends anri
 {
-  public ansn(ApolloPanelListAdapter.1 param1) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloPanelListAdapter.1.1.1(this), 300L);
+    paramQQAppInterface = new ansm(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qboss";
+    paramQQAppInterface.c = "qboss_load";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {}
+        try
+        {
+          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+          i += 1;
+        }
+        catch (Exception paramanrl)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QbossLoaderParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramanrl);
+            }
+          }
+        }
+      }
+    }
+    return paramQQAppInterface;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

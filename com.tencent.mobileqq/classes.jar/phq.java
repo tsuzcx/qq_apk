@@ -1,25 +1,19 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 class phq
-  implements ViewTreeObserver.OnPreDrawListener
+  implements pen
 {
-  phq(php paramphp, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
+  phq(phl paramphl) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
-    Object localObject2 = new int[2];
-    ((View)localObject1).getLocationOnScreen((int[])localObject2);
-    localObject2 = this.jdField_a_of_type_Php.a.a(php.a(this.jdField_a_of_type_Php), (int[])localObject2);
-    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
-    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131376146);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131376146, null);
-    return false;
+    Object localObject = (sjy)paramView.getTag();
+    localObject = phl.a(this.a).a(((sjy)localObject).a);
+    uhs.a(phl.a(this.a).a().a(), (ArticleInfo)localObject, phl.a(this.a).a().a(), 56);
+    uhs.a((Activity)phl.a(this.a).a().a(), (ArticleInfo)localObject, phl.a(this.a).a().a(), 56, true, null);
+    psf.a(paramView);
   }
 }
 

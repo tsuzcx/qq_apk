@@ -1,161 +1,43 @@
-import android.os.Environment;
-import android.os.Parcel;
-import android.support.annotation.NonNull;
-import com.google.gson.Gson;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
-import java.util.HashMap;
+import java.util.Locale;
 
-public class aotx
+class aotx
+  implements aouh
 {
-  private static volatile boolean b;
-  private volatile long jdField_a_of_type_Long;
-  private volatile Parcel jdField_a_of_type_AndroidOsParcel;
-  private volatile Thread jdField_a_of_type_JavaLangThread;
-  private volatile boolean jdField_a_of_type_Boolean;
+  aotx(aotv paramaotv, aouj paramaouj, aouf paramaouf, String paramString1, aouh paramaouh, String paramString2) {}
   
-  @NonNull
-  private PermissionMonitor.Listener a()
+  public void a(boolean paramBoolean)
   {
-    return new aoty(this);
-  }
-  
-  private void a(aosy paramaosy, String paramString)
-  {
-    paramaosy = new Gson().toJson(paramaosy);
-    String str = bigv.a(Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/MessageHandlerOnReceive/");
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean = false;
     }
-    bhmi.a(str, System.currentTimeMillis() + "-" + paramString + ".json", paramaosy);
-  }
-  
-  private void a(Thread paramThread, Parcel paramParcel, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private byte[] a(FromServiceMsg paramFromServiceMsg)
-  {
-    Parcel localParcel = Parcel.obtain();
-    Number localNumber = ShadowParcel.a();
-    b(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramFromServiceMsg.writeToParcel(localParcel, 0);
-    a(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramFromServiceMsg = ShadowParcel.a(localNumber.intValue());
-    localParcel.recycle();
-    return paramFromServiceMsg;
-  }
-  
-  private byte[] a(ToServiceMsg paramToServiceMsg)
-  {
-    Parcel localParcel = Parcel.obtain();
-    Number localNumber = ShadowParcel.a();
-    b(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramToServiceMsg.mSkipBinderWhenMarshall = true;
-    paramToServiceMsg.writeToParcel(localParcel, 0);
-    paramToServiceMsg.mSkipBinderWhenMarshall = false;
-    a(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramToServiceMsg = ShadowParcel.a(localNumber.intValue());
-    localParcel.recycle();
-    return paramToServiceMsg;
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener b()
-  {
-    return new aotz(this);
-  }
-  
-  private void b(Thread paramThread, Parcel paramParcel, long paramLong)
-  {
-    if (!b)
+    synchronized (this.jdField_a_of_type_Aouj)
     {
-      b = true;
-      PermissionMonitor.Listener localListener1 = i();
-      PermissionMonitor.Listener localListener2 = h();
-      PermissionMonitor.Listener localListener3 = e();
-      PermissionMonitor.Listener localListener4 = a();
-      PermissionMonitor.Listener localListener5 = b();
-      PermissionMonitor.Listener localListener6 = c();
-      PermissionMonitor.Listener localListener7 = d();
-      PermissionMonitor.Listener localListener8 = f();
-      PermissionMonitor.Listener localListener9 = g();
-      PermissionMonitor.getInstance().config(new PermissionMonitor.Listener[] { localListener1, localListener2, localListener3, localListener4, localListener5, localListener6, localListener7, localListener8, localListener9 }, new String[] { "android/os/Parcel$ReadWriteHelper", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel" }, new String[] { "writeString", "writeStringNoHelper", "writeInt", "writeLong", "writeFloat", "writeDouble", "writeByteArray", "writeBlob", "setDataPosition" }, new String[] { "(Landroid/os/Parcel;Ljava/lang/String;)V", "(Ljava/lang/String;)V", "(I)V", "(J)V", "(F)V", "(D)V", "([BII)V", "([BII)V", "(I)V" }).start();
+      aouj localaouj2 = this.jdField_a_of_type_Aouj;
+      int i = localaouj2.jdField_a_of_type_Int - 1;
+      localaouj2.jdField_a_of_type_Int = i;
+      if (i > 0)
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
+        return;
+      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean) }));
+      if (!this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean)
+      {
+        FileUtils.deleteDirectory(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Aouh.a(false);
+        return;
+      }
     }
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_AndroidOsParcel = paramParcel;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener c()
-  {
-    return new aoua(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener d()
-  {
-    return new aoub(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener e()
-  {
-    return new aouc(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener f()
-  {
-    return new aoud(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener g()
-  {
-    return new aoue(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener h()
-  {
-    return new aouf(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener i()
-  {
-    return new aoug(this);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = bhjx.a(a(paramToServiceMsg));
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printParams reqData=[" + paramToServiceMsg + "]");
+    if (!aotv.a(aots.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
+      this.jdField_a_of_type_Aouh.a(false);
+      return;
     }
-    Object localObject = paramFromServiceMsg.attributes.remove("FromServiceMsg");
-    String str = bhjx.a(a(paramFromServiceMsg));
-    paramFromServiceMsg.attributes.put("FromServiceMsg", localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printParams respData=[" + str + "]");
-    }
-    localObject = new aosy();
-    ((aosy)localObject).jdField_a_of_type_JavaLangString = paramToServiceMsg;
-    ((aosy)localObject).jdField_b_of_type_JavaLangString = str;
-    ((aosy)localObject).c = "placeholder for MessageRecord's metadata";
-    ((aosy)localObject).jdField_b_of_type_Int = 1;
-    ((aosy)localObject).jdField_a_of_type_Int = 1;
-    a((aosy)localObject, paramFromServiceMsg.getServiceCmd());
+    this.jdField_a_of_type_Aouh.a(true);
   }
 }
 

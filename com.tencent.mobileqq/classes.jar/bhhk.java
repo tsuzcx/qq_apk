@@ -1,8 +1,8 @@
-import android.graphics.drawable.Drawable;
-
 public abstract interface bhhk
 {
-  public abstract Drawable a();
+  public abstract void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2);
+  
+  public abstract void onProgressCompleted(bhhi parambhhi);
 }
 
 

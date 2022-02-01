@@ -1,15 +1,8 @@
-import org.apache.http.HttpResponse;
-
-public class bjum
+public abstract interface bjum
 {
-  public int a;
-  public HttpResponse a;
+  public abstract void a();
   
-  public bjum(HttpResponse paramHttpResponse, int paramInt)
-  {
-    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void b();
 }
 
 

@@ -1,15 +1,79 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.hardware.GeomagneticField;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class apao
-  extends aoxh
+public abstract class apao
+  implements SensorEventListener
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  private float jdField_a_of_type_Float = -1.0F;
+  protected SensorManager a;
+  protected apah a;
+  protected List<Sensor> a;
+  private boolean jdField_a_of_type_Boolean;
+  protected float[] a;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  
+  public apao(SensorManager paramSensorManager, apah paramapah)
   {
-    paramQQAppInterface = new apan(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    return paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
+    this.jdField_a_of_type_Apah = paramapah;
   }
+  
+  private GeomagneticField a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    }
+    return null;
+  }
+  
+  protected float a()
+  {
+    GeomagneticField localGeomagneticField = a();
+    if (localGeomagneticField != null) {
+      return localGeomagneticField.getDeclination();
+    }
+    return 0.0F;
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
+    }
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 

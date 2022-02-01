@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount;
 
-import bhjc;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.util.Iterator;
 import java.util.Vector;
-import oct;
+import oeg;
 
 public class SoftAdExpoStatManager$2
   implements Runnable
 {
-  public SoftAdExpoStatManager$2(oct paramoct, Vector paramVector, String paramString) {}
+  public SoftAdExpoStatManager$2(oeg paramoeg, Vector paramVector, String paramString) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class SoftAdExpoStatManager$2
     while (localIterator.hasNext()) {
       localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",,");
     }
-    bhjc.a(oct.a(this.this$0), oct.a(this.this$0) + "expo_stat_key_" + this.jdField_a_of_type_JavaLangString, localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
+    SharePreferenceUtils.set(oeg.a(this.this$0), oeg.a(this.this$0) + "expo_stat_key_" + this.jdField_a_of_type_JavaLangString, localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 

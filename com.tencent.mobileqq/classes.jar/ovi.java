@@ -1,20 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-final class ovi
-  implements sum
+class ovi
+  extends owd
 {
-  ovi(String paramString) {}
-  
-  public void a(suo paramsuo, int paramInt) {}
-  
-  public void a(suo paramsuo, Throwable paramThrowable)
+  ovi(ouu paramouu, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    QLog.e("ReadInJoyCommentPBModule", 2, "preload failed " + this.a);
+    super(paramouu, null);
   }
   
-  public void a(suo paramsuo, suk paramsuk)
+  void a(owg paramowg)
   {
-    QLog.d("ReadInJoyCommentPBModule", 2, "preload success " + this.a);
+    paramowg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
   }
 }
 

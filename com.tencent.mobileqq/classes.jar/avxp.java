@@ -1,16 +1,15 @@
-import android.graphics.ColorMatrixColorFilter;
-import android.os.Bundle;
-import java.util.Map;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
-public abstract interface avxp
+public class avxp
+  implements amwt
 {
-  public abstract void a();
+  public avxp(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(ColorMatrixColorFilter paramColorMatrixColorFilter);
-  
-  public abstract void a(Map<String, Object> paramMap);
+  public void a(String paramString, int paramInt)
+  {
+    MultiAIOFragment.a(this.a).a(paramString, paramInt);
+  }
 }
 
 

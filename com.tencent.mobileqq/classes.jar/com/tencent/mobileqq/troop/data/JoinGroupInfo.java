@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfow;
+import bdyg;
 import java.util.Arrays;
 
 public class JoinGroupInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<JoinGroupInfo> CREATOR = new bfow();
+  public static final Parcelable.Creator<JoinGroupInfo> CREATOR = new bdyg();
   public int a;
   public String a;
   public byte[] a;

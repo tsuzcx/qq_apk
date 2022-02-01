@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.mini.appbrand.utils.ShareUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ class ProgressWebView$6$2
       return;
     }
     QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of picture downloadFailed");
-    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, anzj.a(2131707388), 0).a();
+    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, amtj.a(2131707620), 0).a();
   }
 }
 

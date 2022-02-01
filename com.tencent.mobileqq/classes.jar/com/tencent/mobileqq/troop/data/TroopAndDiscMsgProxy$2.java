@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.data;
 
-import bdmc;
-import bfqa;
+import bdzk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class TroopAndDiscMsgProxy$2
   implements Runnable
 {
-  public TroopAndDiscMsgProxy$2(bfqa parambfqa, boolean paramBoolean) {}
+  public TroopAndDiscMsgProxy$2(bdzk parambdzk, boolean paramBoolean) {}
   
   public void run()
   {
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
-    String str = bfqa.a(this.this$0).getCurrentAccountUin();
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+    String str = bdzk.a(this.this$0).getCurrentAccountUin();
     if (!this.a) {}
     for (boolean bool = true;; bool = false)
     {
-      localbdmc.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      localStatisticCollector.collectPerformance(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
       return;
     }
   }

@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adxf
-  extends aohf
+  implements View.OnClickListener
 {
-  public adxf(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public adxf(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  public void onClick(View paramView)
   {
-    AuthDevRenameActivity.a(this.a);
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a, this.a.getString(2131691858), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    this.a.finish();
+    this.a.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

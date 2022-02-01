@@ -1,53 +1,26 @@
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aimi
-  implements Observer
+public class aimi
+  extends amop
 {
-  aimi(aimd paramaimd) {}
+  public aimi(TroopView paramTroopView) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if ((paramObject instanceof ajma))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "new FriendSystemMessage,:");
-      }
-      paramObservable = ((ajma)paramObject).a.getSystemMsg();
-      if (paramObservable != null) {
-        break label42;
-      }
+    if (paramInt2 == 0) {
+      this.a.j();
     }
-    label42:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObservable.msg.sub_type.get() != 9);
-        paramObservable = String.valueOf(paramObservable.req_uin.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + aimd.a(this.a));
-        }
-      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramObservable.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-      if (!aimd.a(this.a))
-      {
-        aimd.a(this.a, true);
-        awlm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, processed:");
+    while (this.a.a()) {
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694277);
+    }
+    QQToast.a(this.a.a(), 1, paramString1, 0).a();
   }
 }
 

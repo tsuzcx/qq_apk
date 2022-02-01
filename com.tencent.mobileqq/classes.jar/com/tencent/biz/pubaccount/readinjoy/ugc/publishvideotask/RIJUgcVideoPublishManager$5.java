@@ -4,12 +4,12 @@ import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import rgo;
+import rno;
 
 public class RIJUgcVideoPublishManager$5
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$5(rgo paramrgo, UgcVideo paramUgcVideo) {}
+  public RIJUgcVideoPublishManager$5(rno paramrno, UgcVideo paramUgcVideo) {}
   
   public void run()
   {

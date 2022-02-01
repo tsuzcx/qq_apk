@@ -1,8 +1,8 @@
-public class bcsb
+public abstract interface bcsb
 {
-  public int e;
-  public long e;
-  public int f;
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

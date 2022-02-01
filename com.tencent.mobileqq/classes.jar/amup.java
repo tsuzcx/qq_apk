@@ -1,14 +1,30 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import java.io.File;
+import java.util.Comparator;
 
 class amup
+  implements Comparator<File>
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  amup(amuo paramamuo) {}
   
-  amup(amum paramamum) {}
+  public int a(File paramFile1, File paramFile2)
+  {
+    long l2 = 0L;
+    if (paramFile1 != null) {}
+    for (long l1 = paramFile1.lastModified();; l1 = 0L)
+    {
+      if (paramFile2 != null) {
+        l2 = paramFile2.lastModified();
+      }
+      if (l2 >= l1) {
+        break;
+      }
+      return -1;
+    }
+    if (l2 > l1) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

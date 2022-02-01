@@ -1,10 +1,22 @@
-public abstract interface zew
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class zew
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public zew(CommentBottomBar paramCommentBottomBar) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
+  public void onClick(View paramView)
+  {
+    if (CommentBottomBar.a(this.a) != null)
+    {
+      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
+      CommentBottomBar.a(this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

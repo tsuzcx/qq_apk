@@ -1,32 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class oma
-  implements Comparator<omf>
+  implements nnv
 {
-  public oma(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public oma(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public int a(omf paramomf1, omf paramomf2)
+  public void loaded(String paramString, int paramInt)
   {
-    int j = 2147483647;
-    int i;
-    if (TextUtils.isEmpty(omf.a(paramomf1)))
-    {
-      i = 2147483647;
-      if (!TextUtils.isEmpty(omf.a(paramomf2))) {
-        break label44;
-      }
-    }
-    for (;;)
-    {
-      return i - j;
-      i = omf.a(paramomf1).codePointAt(0);
-      break;
-      label44:
-      j = omf.a(paramomf2).codePointAt(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,19 +1,10 @@
-class tww
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+
+public abstract interface tww
 {
-  int a;
-  int b;
-  int c;
-  int d;
+  public abstract void a(sdg paramsdg, AdvertisementInfo paramAdvertisementInfo);
   
-  public tww() {}
-  
-  public tww(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-  }
+  public abstract void b(sdg paramsdg, AdvertisementInfo paramAdvertisementInfo);
 }
 
 

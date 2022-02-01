@@ -1,20 +1,24 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.util.Comparator;
 
-class ylt
-  extends JobSegment<ylv, yff>
+public final class ylt
+  implements Comparator<File>
 {
-  private int jdField_a_of_type_Int;
-  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private yfc jdField_a_of_type_Yfc;
-  
-  protected void a(JobContext paramJobContext, ylv paramylv)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_Yfc = new yfc(paramylv, new ylu(this, paramJobContext, paramylv));
-    this.jdField_a_of_type_Yfc.c();
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return true;
   }
 }
 

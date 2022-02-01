@@ -1,204 +1,162 @@
+import android.os.SystemClock;
 import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bfzm
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private String c = "";
-  private String d = "";
+  private long a;
+  public String a;
+  public ConcurrentHashMap<String, String> a;
   
-  public bfzm() {}
-  
-  public bfzm(boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2, String paramString3, String paramString4)
+  public bfzm()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_JavaLangString = "TimeTraceUtil";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public static bfzm a(araj[] paramArrayOfaraj)
+  public bfzm(String paramString)
   {
-    localObject2 = "";
-    localObject1 = "";
-    localObject3 = "";
-    Object localObject9 = "";
-    int n = 0;
-    i = 0;
-    int k = 0;
-    if (n < paramArrayOfaraj.length)
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_JavaLangString = "TimeTraceUtil";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_JavaLangString = paramString;
+    }
+  }
+  
+  private long a(String paramString, long paramLong)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)))
     {
-      Object localObject4 = paramArrayOfaraj[n].jdField_a_of_type_JavaLangString;
-      if (TextUtils.isEmpty((CharSequence)localObject4))
+      paramString = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (!TextUtils.isEmpty(paramString))
       {
-        localObject7 = localObject9;
-        localObject6 = localObject3;
-      }
-      for (;;)
-      {
-        n += 1;
-        localObject3 = localObject6;
-        localObject9 = localObject7;
-        break;
-        m = k;
-        try
-        {
-          localJSONObject1 = new JSONObject((String)localObject4);
-          m = k;
-          j = localJSONObject1.optInt("globalOpen", 0);
-          m = j;
-          k = localJSONObject1.optInt("globalOpenTXDoc", 0);
-          m = k;
-          localObject8 = localObject2;
-          localObject7 = localObject1;
-          localObject6 = localObject3;
+        paramString = paramString.split(",");
+        if ((paramString.length >= 2) && (TextUtils.isDigitsOnly(paramString[1]))) {
+          return paramLong - Long.parseLong(paramString[1]);
         }
-        catch (JSONException localJSONException1)
+      }
+    }
+    else if ("~~startTime".equals(paramString))
+    {
+      return paramLong - this.jdField_a_of_type_Long;
+    }
+    return 0L;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    for (;;)
+    {
+      long l2;
+      synchronized (new HashMap())
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
         {
-          try
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+          l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+          if (localIterator.hasNext())
           {
-            localJSONObject2 = localJSONObject1.optJSONObject("weikeUrls");
-            localObject5 = localObject2;
-            localObject4 = localObject1;
-            if (localJSONObject2 != null)
-            {
-              localObject8 = localObject2;
-              localObject7 = localObject1;
-              localObject6 = localObject3;
-              localObject2 = localJSONObject2.optString("choose_exam");
+            Object localObject2 = (Map.Entry)localIterator.next();
+            String str1 = (String)((Map.Entry)localObject2).getKey();
+            localObject2 = ((String)((Map.Entry)localObject2).getValue()).split(",");
+            l2 = l1;
+            if (localObject2 == null) {
+              break label190;
             }
-          }
-          catch (JSONException localJSONException2)
-          {
-            for (;;)
-            {
-              JSONObject localJSONObject1;
-              int j;
-              Object localObject8;
-              JSONObject localJSONObject2;
-              Object localObject5;
-              boolean bool1;
-              boolean bool2;
-              i = m;
-              localObject2 = localObject8;
-              localObject1 = localObject7;
-              localObject3 = localObject6;
+            l2 = l1;
+            if (localObject2.length < 3) {
+              break label190;
             }
-          }
-          try
-          {
-            localObject4 = localJSONObject2.optString("get_exam_info");
-            localObject5 = localObject2;
-            localObject8 = localObject5;
-            localObject7 = localObject4;
-            localObject6 = localObject3;
-            localJSONObject1 = localJSONObject1.optJSONObject("txDocUrls");
-            i = m;
-            k = j;
-            localObject2 = localObject5;
-            localObject1 = localObject4;
-            localObject6 = localObject3;
-            localObject7 = localObject9;
-            if (localJSONObject1 == null) {
+            String str2 = localObject2[0];
+            CharSequence localCharSequence = localObject2[1];
+            if (Boolean.parseBoolean(localObject2[2])) {
               continue;
             }
-            localObject8 = localObject5;
-            localObject7 = localObject4;
-            localObject6 = localObject3;
-            localObject3 = localJSONObject1.optString("choose_doc");
-            localObject8 = localObject5;
-            localObject7 = localObject4;
-            localObject6 = localObject3;
-            localObject1 = localJSONObject1.optString("get_doc_info");
-            localObject7 = localObject1;
-            i = m;
-            k = j;
-            localObject2 = localObject5;
-            localObject1 = localObject4;
-            localObject6 = localObject3;
+            l2 = l1;
+            if (!TextUtils.isDigitsOnly(localCharSequence)) {
+              break label190;
+            }
+            l2 = a(str2, Long.parseLong(localCharSequence));
+            break label190;
+            ???.put(str1, String.valueOf(l1));
           }
-          catch (JSONException localJSONException3)
-          {
-            i = m;
-            break label299;
-          }
-          localJSONException1 = localJSONException1;
-          j = m;
         }
-        label299:
-        localJSONException1.printStackTrace();
-        k = j;
-        localObject6 = localObject3;
-        localObject7 = localObject9;
       }
+      label190:
+      do
+      {
+        l1 = 0L;
+        break;
+        return ???;
+      } while (l2 < 0L);
+      long l1 = l2;
     }
-    if (k == 1)
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    long l;
+    ConcurrentHashMap localConcurrentHashMap;
+    StringBuilder localStringBuilder;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      bool1 = true;
-      if (i != 1) {
-        break label377;
+      l = SystemClock.elapsedRealtime();
+      localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      localStringBuilder = new StringBuilder().append(paramString2).append(",").append(String.valueOf(l)).append(",");
+      if (!paramBoolean) {
+        break label135;
       }
     }
-    label377:
-    for (bool2 = true;; bool2 = false)
+    label135:
+    for (String str = "true";; str = "false")
     {
-      paramArrayOfaraj = new bfzm(bool1, (String)localObject2, (String)localObject1, bool2, (String)localObject3, (String)localObject9);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublishHwkThirdPartyEntryConfig", 2, paramArrayOfaraj.toString());
+      localConcurrentHashMap.put(paramString1, str);
+      paramString1 = String.format("TimerOutput: %s to %s cost=%d", new Object[] { paramString2, paramString1, Long.valueOf(a(paramString2, l)) });
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      return paramArrayOfaraj;
-      bool1 = false;
-      break;
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString1);
+      return;
     }
+    Log.i(this.jdField_a_of_type_JavaLangString, paramString1);
   }
   
-  public String a()
+  public void a(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
+    a(paramString, "~~startTime", paramBoolean);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mIsGlobalOpenWeiKe:").append(this.jdField_a_of_type_Boolean).append("\r\n");
-    localStringBuilder.append("mIsGlobalOpenTXDoc:").append(this.jdField_b_of_type_Boolean).append("\r\n");
-    localStringBuilder.append("mStrSelectWeiKeUrl:").append(this.jdField_a_of_type_JavaLangString).append("\r\n");
-    localStringBuilder.append("mStrDetailWeiKeUrl:").append(this.jdField_b_of_type_JavaLangString).append("\r\n");
-    localStringBuilder.append("mStrSelectDocUrl:").append(this.c).append("\r\n");
-    localStringBuilder.append("mStrDetailDocUrl:").append(this.d).append("\r\n");
-    return localStringBuilder.toString();
+    HashMap localHashMap = a();
+    if (localHashMap != null) {
+      try
+      {
+        Iterator localIterator = localHashMap.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          String str2 = (String)((Map.Entry)localObject2).getKey();
+          localObject2 = (String)((Map.Entry)localObject2).getValue();
+          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
+            localStringBuilder.append(str2 + ":" + (String)localObject2 + "ms,");
+          }
+        }
+        str1 = localObject1.toString();
+      }
+      finally {}
+    }
+    String str1;
+    return str1;
   }
 }
 

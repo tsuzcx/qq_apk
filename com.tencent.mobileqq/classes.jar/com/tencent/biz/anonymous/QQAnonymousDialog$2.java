@@ -1,11 +1,11 @@
 package com.tencent.biz.anonymous;
 
-import nlo;
+import nnd;
 
 public class QQAnonymousDialog$2
   implements Runnable
 {
-  public QQAnonymousDialog$2(nlo paramnlo) {}
+  public QQAnonymousDialog$2(nnd paramnnd) {}
   
   public void run()
   {

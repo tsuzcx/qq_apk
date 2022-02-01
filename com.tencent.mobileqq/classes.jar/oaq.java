@@ -1,11 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class oaq
+class oaq
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public oao a;
+  oaq(oap paramoap) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

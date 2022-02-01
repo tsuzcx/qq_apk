@@ -1,22 +1,12 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-
-class bgfq
-  implements View.OnKeyListener
+public class bgfq
 {
-  bgfq(bgfo parambgfo, bgfu parambgfu) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bgfu.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_Bgfo.a.b(this.jdField_a_of_type_Bgfu);
-      return true;
-    }
-    return false;
-  }
+  public bgfq(bgfo parambgfo) {}
 }
 
 

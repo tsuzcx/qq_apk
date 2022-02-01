@@ -2,7 +2,8 @@ package com.tencent.open.agent;
 
 import android.content.res.Resources;
 import android.widget.Button;
-import bjnn;
+import bhtb;
+import bhwf;
 import com.tencent.qphone.base.util.QLog;
 
 public class OpenAuthorityFragment$6
@@ -19,12 +20,12 @@ public class OpenAuthorityFragment$6
     }
     this.this$0.h();
     if (OpenAuthorityFragment.c(this.this$0) == 0) {
-      OpenAuthorityFragment.a(this.this$0).setTag(this.this$0.getResources().getString(2131694152));
+      OpenAuthorityFragment.a(this.this$0).setTag(this.this$0.getResources().getString(2131694255));
     }
     for (;;)
     {
       OpenAuthorityFragment.a(this.this$0).setEnabled(true);
-      this.this$0.a(this.this$0.getResources().getString(2131694160), new bjnn(this));
+      bhwf.a(this.this$0.getActivity(), this.this$0.getResources().getString(2131694263), new bhtb(this));
       return;
       OpenAuthorityFragment.a(this.this$0).setTag(OpenAuthorityFragment.d(this.this$0));
     }

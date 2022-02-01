@@ -1,30 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
-class anff
-  implements ISPlayerVideoView.IVideoViewCallBack
+public class anff
+  extends amsu
 {
-  anff(anfe paramanfe) {}
+  private anff(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public void onSurfaceChanged(Object paramObject)
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceChanged]");
-  }
-  
-  public void onSurfaceCreated(Object paramObject)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceCreated]");
-  }
-  
-  public void onSurfaceDestroy(Object paramObject)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceDestroy]");
-    anfe.a(this.a, true);
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anff
  * JD-Core Version:    0.7.0.1
  */

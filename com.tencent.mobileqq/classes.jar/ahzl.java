@@ -1,14 +1,21 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class ahzl
-  implements ahyf
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.c(paramahfq, paramString);
-  }
+  public int a;
+  public AccountSearchPb.hotwordrecord a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<AccountSearchPb.record> b;
+  public boolean b;
+  public int c;
+  public List<AccountSearchPb.ResultItem> c;
+  public boolean c;
 }
 
 

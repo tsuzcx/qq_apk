@@ -1,44 +1,47 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.av.ui.beauty.BeautySeekView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mlw
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mlw(VideoLayerUI paramVideoLayerUI) {}
+  public mlw(BeautySeekView paramBeautySeekView) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
+    if (BeautySeekView.a(this.a) != paramInt)
+    {
+      BeautySeekView.a(this.a, paramInt);
+      if ((paramBoolean) && (BeautySeekView.a(this.a) != null)) {
+        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
+      }
+      BeautySeekView.a(this.a, paramInt);
+      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
     }
-    if (VideoLayerUI.c(this.a) < 0) {
-      VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
     }
-    if (VideoLayerUI.d(this.a) < 0) {
-      VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
-    }
-    float f = paramScaleGestureDetector.getScaleFactor();
-    this.a.jdField_a_of_type_ArrayOfMep[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
-    return true;
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
+    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
+    BeautySeekView.a(this.a).setVisibility(0);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
     }
-    float f1 = this.a.jdField_a_of_type_ArrayOfMep[0].c();
-    float f2 = this.a.jdField_a_of_type_ArrayOfMep[0].a();
-    float f3 = this.a.jdField_a_of_type_ArrayOfMep[0].b();
-    if (f1 < f2) {
-      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMep[0], f2 / f1, 60L);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
     }
-    while (f1 <= f3) {
-      return;
-    }
-    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMep[0], f3 / f1, 60L);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

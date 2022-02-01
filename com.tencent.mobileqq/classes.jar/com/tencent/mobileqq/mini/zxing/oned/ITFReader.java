@@ -26,18 +26,10 @@ public final class ITFReader
   static
   {
     END_PATTERN_REVERSED = new int[][] { { 1, 1, 2 }, { 1, 1, 3 } };
-    int[] arrayOfInt1 = { 1, 1, 2, 2, 1 };
-    int[] arrayOfInt2 = { 2, 1, 1, 1, 2 };
-    int[] arrayOfInt3 = { 1, 1, 2, 1, 2 };
-    int[] arrayOfInt4 = { 1, 2, 2, 1, 1 };
-    int[] arrayOfInt5 = { 2, 1, 1, 2, 1 };
-    int[] arrayOfInt6 = { 1, 2, 1, 2, 1 };
-    int[] arrayOfInt7 = { 1, 1, 3, 3, 1 };
-    int[] arrayOfInt8 = { 1, 1, 3, 1, 3 };
-    int[] arrayOfInt9 = { 3, 1, 3, 1, 1 };
-    int[] arrayOfInt10 = { 1, 3, 3, 1, 1 };
-    int[] arrayOfInt11 = { 1, 1, 1, 3, 3 };
-    PATTERNS = new int[][] { arrayOfInt1, arrayOfInt2, { 1, 2, 1, 1, 2 }, { 2, 2, 1, 1, 1 }, arrayOfInt3, { 2, 1, 2, 1, 1 }, arrayOfInt4, { 1, 1, 1, 2, 2 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, { 3, 1, 1, 1, 3 }, { 1, 3, 1, 1, 3 }, { 3, 3, 1, 1, 1 }, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, { 3, 1, 1, 3, 1 }, { 1, 3, 1, 3, 1 } };
+    int[] arrayOfInt1 = { 2, 1, 2, 1, 1 };
+    int[] arrayOfInt2 = { 1, 2, 1, 2, 1 };
+    int[] arrayOfInt3 = { 1, 3, 1, 3, 1 };
+    PATTERNS = new int[][] { { 1, 1, 2, 2, 1 }, { 2, 1, 1, 1, 2 }, { 1, 2, 1, 1, 2 }, { 2, 2, 1, 1, 1 }, { 1, 1, 2, 1, 2 }, arrayOfInt1, { 1, 2, 2, 1, 1 }, { 1, 1, 1, 2, 2 }, { 2, 1, 1, 2, 1 }, arrayOfInt2, { 1, 1, 3, 3, 1 }, { 3, 1, 1, 1, 3 }, { 1, 3, 1, 1, 3 }, { 3, 3, 1, 1, 1 }, { 1, 1, 3, 1, 3 }, { 3, 1, 3, 1, 1 }, { 1, 3, 3, 1, 1 }, { 1, 1, 1, 3, 3 }, { 3, 1, 1, 3, 1 }, arrayOfInt3 };
   }
   
   private static int decodeDigit(int[] paramArrayOfInt)

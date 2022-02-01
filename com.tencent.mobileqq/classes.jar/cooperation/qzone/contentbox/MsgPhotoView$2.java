@@ -2,9 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import aoot;
-import bmxu;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import cooperation.qzone.contentbox.model.MQMsg;
 
 class MsgPhotoView$2
@@ -14,15 +13,15 @@ class MsgPhotoView$2
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidContentContext == null) || (this.this$0.jdField_a_of_type_Bmxu == null)) {}
+    if ((this.this$0.mContext == null) || (this.this$0.mUiHandler == null)) {}
     Object localObject;
     do
     {
       return;
-      localObject = aoot.a(1, 3);
-      localObject = aoot.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
-    } while (this.this$0.jdField_a_of_type_Bmxu == null);
-    this.this$0.jdField_a_of_type_Bmxu.obtainMessage(10001, localObject).sendToTarget();
+      localObject = FaceDrawable.getDefaultDrawable(1, 3);
+      localObject = FaceDrawable.getFaceDrawable(((BaseActivity)this.this$0.mContext).app, 1, this.val$data.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
+    } while (this.this$0.mUiHandler == null);
+    this.this$0.mUiHandler.obtainMessage(10001, localObject).sendToTarget();
   }
 }
 

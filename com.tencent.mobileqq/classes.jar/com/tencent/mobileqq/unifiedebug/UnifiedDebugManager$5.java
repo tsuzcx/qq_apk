@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.unifiedebug;
 
 import android.content.Context;
-import bhct;
-import bhcy;
+import bfmf;
+import bfmk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Queue;
 
 public class UnifiedDebugManager$5
   implements Runnable
 {
-  public UnifiedDebugManager$5(bhct parambhct, long paramLong1, Context paramContext, String paramString1, int paramInt, long paramLong2, String paramString2) {}
+  public UnifiedDebugManager$5(bfmf parambfmf, long paramLong1, Context paramContext, String paramString1, int paramInt, long paramLong2, String paramString2) {}
   
   public void run()
   {
     synchronized (this.this$0.a)
     {
-      bhcy localbhcy = (bhcy)this.this$0.a.peek();
-      if ((localbhcy != null) && (localbhcy.jdField_b_of_type_Long == this.jdField_a_of_type_Long))
+      bfmk localbfmk = (bfmk)this.this$0.a.peek();
+      if ((localbfmk != null) && (localbfmk.jdField_b_of_type_Long == this.jdField_a_of_type_Long))
       {
         this.this$0.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
         if (QLog.isColorLevel()) {

@@ -7,6 +7,7 @@ import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -82,6 +83,8 @@ public abstract interface ChannelProxy
   public abstract void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult);
   
   public abstract void getGdtAdInfo(String paramString1, int paramInt, String paramString2, AsyncResult paramAsyncResult);
+  
+  public abstract Drawable getGifDrawable(String paramString);
   
   public abstract void getGroupAppStatus(IMiniAppContext paramIMiniAppContext, String paramString, AsyncResult paramAsyncResult);
   
@@ -199,6 +202,8 @@ public abstract interface ChannelProxy
   
   public abstract boolean startChooseMessageFileActivityForResult(Activity paramActivity, int paramInt1, String paramString, int paramInt2);
   
+  public abstract void startDownloadX5(IMiniAppContext paramIMiniAppContext);
+  
   public abstract boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt);
   
   public abstract void syncForceGroundAndRefreshBadge(Activity paramActivity, String paramString1, String paramString2);
@@ -229,7 +234,7 @@ public abstract interface ChannelProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy
  * JD-Core Version:    0.7.0.1
  */

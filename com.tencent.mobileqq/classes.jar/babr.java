@@ -1,58 +1,39 @@
-import com.tencent.upload.uinterface.data.UpsImageUploadTask;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class babr
-  extends babp
+  implements GLSurfaceView.EGLContextFactory
 {
-  public long b;
-  public byte[] c;
-  public int g;
-  public int h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  protected String k;
-  public int l = 1;
+  private int jdField_a_of_type_Int = 12440;
   
-  public babr(long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public babr(CameraCaptureView paramCameraCaptureView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super(paramLong, paramString1, paramArrayOfByte);
-    this.jdField_g_of_type_Int = 13;
-    this.jdField_k_of_type_Int = 3;
-    this.jdField_k_of_type_JavaLangString = paramString2;
+    int i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   }
   
-  public babp a()
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    UpsImageUploadTask localUpsImageUploadTask = new UpsImageUploadTask(this.jdField_g_of_type_JavaLangString);
-    localUpsImageUploadTask.dataType = this.jdField_g_of_type_Int;
-    localUpsImageUploadTask.fileId = this.jdField_i_of_type_JavaLangString;
-    localUpsImageUploadTask.flowId = this.jdField_e_of_type_Int;
-    localUpsImageUploadTask.iBatchID = this.b;
-    localUpsImageUploadTask.iBatchUploadCount = this.jdField_h_of_type_Int;
-    localUpsImageUploadTask.iBusiNessType = this.jdField_i_of_type_Int;
-    localUpsImageUploadTask.iCurrentUploadOrder = this.jdField_j_of_type_Int;
-    localUpsImageUploadTask.iSync = this.jdField_c_of_type_Int;
-    localUpsImageUploadTask.iUin = this.jdField_a_of_type_Long;
-    localUpsImageUploadTask.iUploadType = this.jdField_k_of_type_Int;
-    localUpsImageUploadTask.keepRaw = this.l;
-    localUpsImageUploadTask.md5 = this.jdField_h_of_type_JavaLangString;
-    localUpsImageUploadTask.preupload = this.jdField_d_of_type_Int;
-    localUpsImageUploadTask.reportRefer = this.jdField_d_of_type_JavaLangString;
-    localUpsImageUploadTask.sBusinessId = this.jdField_k_of_type_JavaLangString;
-    localUpsImageUploadTask.sCommand = this.jdField_j_of_type_JavaLangString;
-    localUpsImageUploadTask.sRefer = this.jdField_e_of_type_JavaLangString;
-    localUpsImageUploadTask.transferData = this.jdField_a_of_type_JavaUtilMap;
-    localUpsImageUploadTask.uiRefer = this.f;
-    localUpsImageUploadTask.uploadTaskCallback = this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
-    localUpsImageUploadTask.vBusiNessData = this.jdField_c_of_type_ArrayOfByte;
-    localUpsImageUploadTask.vLoginData = this.jdField_a_of_type_ArrayOfByte;
-    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask = localUpsImageUploadTask;
-    return this;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.n();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
   }
-  
-  protected void a(int paramInt, Object... paramVarArgs) {}
 }
 
 

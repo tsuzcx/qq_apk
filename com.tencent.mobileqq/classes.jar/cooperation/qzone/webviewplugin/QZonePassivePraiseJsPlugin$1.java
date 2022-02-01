@@ -1,32 +1,30 @@
 package cooperation.qzone.webviewplugin;
 
-import bnmk;
-
-public class QZonePassivePraiseJsPlugin$1
+class QZonePassivePraiseJsPlugin$1
   implements Runnable
 {
-  public QZonePassivePraiseJsPlugin$1(bnmk parambnmk, String[] paramArrayOfString) {}
+  QZonePassivePraiseJsPlugin$1(QZonePassivePraiseJsPlugin paramQZonePassivePraiseJsPlugin, String[] paramArrayOfString) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
+    //   1: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:val$args	[Ljava/lang/String;
     //   4: ifnull +75 -> 79
     //   7: aload_0
-    //   8: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
+    //   8: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:val$args	[Ljava/lang/String;
     //   11: arraylength
     //   12: ifle +67 -> 79
     //   15: aload_0
-    //   16: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
+    //   16: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:val$args	[Ljava/lang/String;
     //   19: iconst_0
     //   20: aaload
     //   21: ifnull +58 -> 79
     //   24: new 25	org/json/JSONObject
     //   27: dup
     //   28: aload_0
-    //   29: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
+    //   29: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:val$args	[Ljava/lang/String;
     //   32: iconst_0
     //   33: aaload
     //   34: invokespecial 28	org/json/JSONObject:<init>	(Ljava/lang/String;)V
@@ -36,32 +34,32 @@ public class QZonePassivePraiseJsPlugin$1
     //   41: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore_1
     //   45: aload_0
-    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbnmk;
+    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lcooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin;
     //   49: aload_2
     //   50: ldc 36
     //   52: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: invokestatic 41	bnmk:a	(Lbnmk;Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 42	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin:access$002	(Lcooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin;Ljava/lang/String;)Ljava/lang/String;
     //   58: pop
     //   59: aload_1
-    //   60: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   60: invokestatic 48	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   63: ifne +16 -> 79
     //   66: aload_0
-    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbnmk;
-    //   70: invokestatic 50	bnmk:a	(Lbnmk;)Ljava/lang/String;
-    //   73: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lcooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin;
+    //   70: invokestatic 52	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin:access$000	(Lcooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin;)Ljava/lang/String;
+    //   73: invokestatic 48	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   76: ifeq +15 -> 91
     //   79: return
     //   80: astore_2
-    //   81: ldc 52
+    //   81: ldc 54
     //   83: astore_1
     //   84: aload_2
-    //   85: invokevirtual 55	org/json/JSONException:printStackTrace	()V
+    //   85: invokevirtual 57	org/json/JSONException:printStackTrace	()V
     //   88: goto -29 -> 59
-    //   91: invokestatic 60	bngf:a	()Lbngf;
-    //   94: invokevirtual 63	bngf:a	()Lbngi;
-    //   97: ldc 52
+    //   91: invokestatic 63	cooperation/qzone/remote/logic/RemoteHandleManager:getInstance	()Lcooperation/qzone/remote/logic/RemoteHandleManager;
+    //   94: invokevirtual 67	cooperation/qzone/remote/logic/RemoteHandleManager:getSender	()Lcooperation/qzone/remote/logic/RemoteRequestSender;
+    //   97: ldc 54
     //   99: aload_1
-    //   100: invokevirtual 68	bngi:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokevirtual 73	cooperation/qzone/remote/logic/RemoteRequestSender:downloadPassivePraise	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: return
     //   104: astore_2
     //   105: goto -21 -> 84

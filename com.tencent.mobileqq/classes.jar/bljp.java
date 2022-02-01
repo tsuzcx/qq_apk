@@ -1,24 +1,13 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.AdapterViewPagerAdapter;
+import java.io.File;
 
 public class bljp
-  extends DataSetObserver
 {
-  public bljp(AdapterViewPagerAdapter paramAdapterViewPagerAdapter) {}
-  
-  public void onChanged()
-  {
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-  }
+  public static final String a = bljv.b + File.separator + "gif";
+  public static final String b = a + File.separator + "gifPreview";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljp
  * JD-Core Version:    0.7.0.1
  */

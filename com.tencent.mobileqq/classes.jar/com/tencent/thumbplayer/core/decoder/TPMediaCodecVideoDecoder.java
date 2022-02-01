@@ -77,7 +77,7 @@ public class TPMediaCodecVideoDecoder
     return false;
   }
   
-  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4)
+  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4, int paramInt5, int paramInt6)
   {
     this.mMimeType = paramString;
     this.mVideoWidth = paramInt1;
@@ -85,6 +85,8 @@ public class TPMediaCodecVideoDecoder
     this.mRotation = paramInt3;
     this.mSurface = paramSurface;
     this.mDrmType = paramInt4;
+    this.mDolbyVisionProfile = paramInt5;
+    this.mDolbyVisionLevel = paramInt6;
     return true;
   }
   

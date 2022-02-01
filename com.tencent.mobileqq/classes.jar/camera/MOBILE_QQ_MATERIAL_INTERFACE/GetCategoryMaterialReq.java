@@ -51,7 +51,7 @@ public final class GetCategoryMaterialReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq
  * JD-Core Version:    0.7.0.1
  */

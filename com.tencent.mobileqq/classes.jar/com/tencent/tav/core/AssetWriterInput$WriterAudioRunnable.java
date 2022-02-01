@@ -20,30 +20,42 @@ class AssetWriterInput$WriterAudioRunnable
   @RequiresApi(api=18)
   public void run()
   {
-    long l1 = -1L;
-    if (AssetWriterInput.access$500(this.this$0) == null) {}
+    if (AssetWriterInput.access$500(this.this$0) == null) {
+      return;
+    }
     for (;;)
     {
-      return;
       try
       {
-        if (this.isEndBuffer) {
-          AssetWriterInput.access$300(this.this$0).endWriteAudioSample();
+        if (!this.isEndBuffer) {
+          continue;
         }
-        while (AssetWriterInput.access$400(this.this$0) != null)
-        {
-          AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, l1);
-          return;
-          AssetWriterInput.access$300(this.this$0).writeAudioSample(this.sampleBuffer.getTime().getTimeUs(), this.sampleBuffer.getSampleByteBuffer());
-          long l2 = AssetWriterInput.access$300(this.this$0).getAudioPresentationTimeUs();
-          l1 = l2;
-        }
+        AssetWriterInput.access$300(this.this$0).endWriteAudioSample();
+        l = -1L;
       }
       catch (Throwable localThrowable)
       {
-        while (AssetWriterInput.access$400(this.this$0) == null) {}
-        AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-122, localThrowable));
+        if (!(localThrowable instanceof ExportRuntimeException)) {
+          continue;
+        }
+        ExportErrorStatus localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus();
+        if (AssetWriterInput.access$400(this.this$0) == null) {
+          continue;
+        }
+        AssetWriterInput.access$400(this.this$0).onError(localExportErrorStatus);
+        return;
+        localExportErrorStatus = new ExportErrorStatus(-122, localExportErrorStatus);
+        continue;
+        long l = -1L;
+        continue;
       }
+      if (AssetWriterInput.access$400(this.this$0) == null) {
+        break;
+      }
+      AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, l);
+      return;
+      AssetWriterInput.access$300(this.this$0).writeAudioSample(this.sampleBuffer.getTime().getTimeUs(), this.sampleBuffer.getSampleByteBuffer());
+      l = AssetWriterInput.access$300(this.this$0).getAudioPresentationTimeUs();
     }
   }
 }

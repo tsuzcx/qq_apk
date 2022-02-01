@@ -1,75 +1,194 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundReqBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ReqBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.RspBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 
 public class puc
+  extends pwd
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private final ConcurrentHashMap<Integer, TopBannerInfo> a;
+  
+  public puc(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qli paramqli, Handler paramHandler, ptv paramptv)
   {
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject1 = localJSONObject2;
-    if (paramBaseArticleInfo != null)
-    {
-      localJSONObject1 = localJSONObject2;
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.smallGameData))
-      {
-        localJSONObject1 = new JSONObject(paramBaseArticleInfo.smallGameData);
-        a(localJSONObject1, paramBaseArticleInfo);
-      }
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqli, paramHandler);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (paramptv != null) {
+      paramptv.a(new pud(this));
     }
-    return localJSONObject1;
   }
   
-  private static JSONObject a(JSONObject paramJSONObject, BaseArticleInfo paramBaseArticleInfo)
+  private void a(TopBannerInfo paramTopBannerInfo)
   {
+    b(paramTopBannerInfo);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTopBannerInfo.mChannelId), paramTopBannerInfo);
+    this.jdField_a_of_type_AndroidOsHandler.post(new BannerInfoModule.2(this, paramTopBannerInfo));
+  }
+  
+  private void b(TopBannerInfo paramTopBannerInfo)
+  {
+    a(paramTopBannerInfo);
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    paramToServiceMsg = new oidb_cmd0xbc9.RspBody();
+    int i = qlk.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    QLog.d("ReadInJoyEngineModule", 2, new Object[] { "handle0xbc9BannerInfo result = ", Integer.valueOf(i) });
+    if ((i == 0) && (paramToServiceMsg.msg_banner_round_rsp_body.has()))
+    {
+      paramObject = (oidb_cmd0xbc9.BannerRoundRspBody)paramToServiceMsg.msg_banner_round_rsp_body.get();
+      if ((!paramObject.uint32_need_update.has()) || (paramObject.uint32_need_update.get() != 1)) {
+        break label453;
+      }
+      paramFromServiceMsg = new TopBannerInfo();
+      if ((paramObject.rpt_msg_banner_list.has()) && (paramObject.rpt_msg_banner_list.size() > 0))
+      {
+        i = 0;
+        if (i < paramObject.rpt_msg_banner_list.size())
+        {
+          paramToServiceMsg = (oidb_cmd0xbc9.BannerItem)paramObject.rpt_msg_banner_list.get(i);
+          if (paramToServiceMsg.uint32_banner_type.has())
+          {
+            if (paramToServiceMsg.uint32_banner_type.get() != 2) {
+              break label199;
+            }
+            if (!paramToServiceMsg.msg_video_banner_item.has()) {
+              break label462;
+            }
+            paramToServiceMsg = rfx.b(paramToServiceMsg);
+          }
+        }
+      }
+    }
+    label453:
     for (;;)
     {
-      int j;
-      try
+      if (paramToServiceMsg != null) {
+        paramFromServiceMsg.addItem(paramToServiceMsg);
+      }
+      i += 1;
+      break;
+      label199:
+      if (paramToServiceMsg.msg_article_content_item.has())
       {
-        paramBaseArticleInfo = new JSONArray();
-        int k = paramJSONObject.optInt("card_size");
-        int i = 1;
-        if (i <= k)
+        paramToServiceMsg = rfv.b(paramToServiceMsg);
+        continue;
+        if (paramObject.bytes_cookie.has()) {
+          paramFromServiceMsg.mCookie = paramObject.bytes_cookie.get().toStringUtf8();
+        }
+        if (paramObject.uint32_channel_id.has()) {
+          paramFromServiceMsg.mChannelId = paramObject.uint32_channel_id.get();
+        }
+        if ((paramObject.rpt_msg_dynamic_banner_list.has()) && (paramObject.rpt_msg_dynamic_banner_list.size() > 0))
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_collection_cell");
-          localJSONObject.put("game_icon", paramJSONObject.optString("game_icon" + i));
-          localJSONObject.put("game_title", paramJSONObject.optString("game_title" + i));
-          localJSONObject.put("game_type_label", paramJSONObject.optString("game_type_label" + i));
-          localJSONObject.put("game_type_label_color", paramJSONObject.optString("game_type_label" + i + "_color"));
-          localJSONObject.put("game_gray_label", paramJSONObject.optString(new StringBuilder().append("game_blue_label").append(i).toString()) + paramJSONObject.optString(new StringBuilder().append("game_gray_label").append(i).toString()));
-          localJSONObject.put("game_button_label", paramJSONObject.optString("game_button_label" + i));
-          j = 1;
-          if (j <= 3)
+          i = j;
+          while (i < paramObject.rpt_msg_dynamic_banner_list.size())
           {
-            String str = paramJSONObject.optString("avator_icon" + i + "_" + j);
-            if (!TextUtils.isEmpty(str)) {
-              localJSONObject.put("avator_icon_" + j, str);
+            if ((((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i)).has()) && (paramObject.rpt_msg_dynamic_banner_list.get(i) != null))
+            {
+              paramToServiceMsg = rfu.a((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i));
+              if (paramToServiceMsg != null)
+              {
+                paramToServiceMsg = paramToServiceMsg.iterator();
+                while (paramToServiceMsg.hasNext()) {
+                  paramFromServiceMsg.addDynamicItem((rfu)paramToServiceMsg.next());
+                }
+              }
             }
-          }
-          else
-          {
-            paramBaseArticleInfo.put(localJSONObject);
-            paramJSONObject.put("datas", paramBaseArticleInfo);
             i += 1;
           }
         }
-        else
+        if (paramObject.msg_more_channel_item.has())
         {
-          return paramJSONObject;
+          paramToServiceMsg = rfw.a((oidb_cmd0xbc9.MoreChannelItem)paramObject.msg_more_channel_item.get());
+          if (paramToServiceMsg != null) {
+            paramFromServiceMsg.setMoreChannelItem(paramToServiceMsg);
+          }
         }
+        a(paramFromServiceMsg);
+        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo bannerInfo = " + paramFromServiceMsg);
+        return;
+        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo uint32_need_update = 0");
       }
-      catch (Exception paramBaseArticleInfo)
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInjoyAdHorizSmallGameCell", 2, "ex.error" + paramBaseArticleInfo.getMessage());
-        }
+        label462:
+        paramToServiceMsg = null;
       }
-      j += 1;
     }
+  }
+  
+  public TopBannerInfo a(int paramInt)
+  {
+    return (TopBannerInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Object localObject1 = a(paramInt1);
+    if (localObject1 == null) {}
+    for (localObject1 = "";; localObject1 = ((TopBannerInfo)localObject1).mCookie)
+    {
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = "";
+      }
+      localObject1 = new oidb_cmd0xbc9.ReqBody();
+      oidb_cmd0xbc9.BannerRoundReqBody localBannerRoundReqBody = new oidb_cmd0xbc9.BannerRoundReqBody();
+      localBannerRoundReqBody.bytes_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      localBannerRoundReqBody.uint32_channel_id.set(paramInt1);
+      ((oidb_cmd0xbc9.ReqBody)localObject1).msg_banner_round_req_body.set(localBannerRoundReqBody);
+      a(qlk.a("OidbSvc.0xbc9", 3017, paramInt2, ((oidb_cmd0xbc9.ReqBody)localObject1).toByteArray()));
+      QLog.d("ReadInJoyEngineModule", 2, "req banner info cookies: " + (String)localObject2 + "  channelId: " + paramInt1);
+      return;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbc9")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    a(paramInt, 1);
+  }
+  
+  public void c(int paramInt)
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { "" + paramInt }, null, null, null, "1");
+    if ((localList == null) || (localList.isEmpty()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), localList.get(0));
   }
 }
 

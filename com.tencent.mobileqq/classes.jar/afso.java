@@ -1,14 +1,12 @@
-import android.widget.Button;
-import android.widget.TextView;
-
 class afso
-  extends amof
+  implements afsr
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  afso(afsn paramafsn) {}
   
-  private afso(afsn paramafsn) {}
+  public void a(int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

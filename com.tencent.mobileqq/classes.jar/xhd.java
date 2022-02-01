@@ -1,12 +1,24 @@
-class xhd
-  extends xfv
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
+
+public class xhd
+  extends JobSegment<String, xhh>
 {
-  xhd(xgp paramxgp, xhx paramxhx) {}
+  private wdu jdField_a_of_type_Wdu = new wdu();
   
-  public boolean b()
+  public xhd(xhc paramxhc, @NonNull String paramString)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Xhx.d);
-    return true;
+    this.jdField_a_of_type_Wdu.a = new ArrayList();
+    paramxhc = new xnh(paramString, 0, "", "");
+    this.jdField_a_of_type_Wdu.a.add(paramxhc);
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    vqn.a().a(this.jdField_a_of_type_Wdu, new xhe(this, paramJobContext));
   }
 }
 

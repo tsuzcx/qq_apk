@@ -1,38 +1,43 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class ybs
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xac>
 {
-  public ybs(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  private static volatile ybs jdField_a_of_type_Ybs;
+  private ybt jdField_a_of_type_Ybt;
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xac paramxac)
+  public static ybs a()
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramxac.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((paramxac.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    if (jdField_a_of_type_Ybs == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      if (jdField_a_of_type_Ybs == null) {
+        jdField_a_of_type_Ybs = new ybs();
       }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      return;
+      return jdField_a_of_type_Ybs;
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramxac);
+    finally {}
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return xac.class;
+    this.jdField_a_of_type_Ybt = null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Ybt != null) {
+      this.jdField_a_of_type_Ybt.a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(ybt paramybt)
+  {
+    this.jdField_a_of_type_Ybt = paramybt;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Ybt != null) {
+      this.jdField_a_of_type_Ybt.a();
+    }
   }
 }
 

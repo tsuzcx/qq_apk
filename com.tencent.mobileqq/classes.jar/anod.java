@@ -1,20 +1,44 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
-class anod
-  implements Comparator<ApolloActionData>
+public class anod
+  implements anny
 {
-  anod(annx paramannx) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 999: 
+      paramamwl.commenMsgContentChanged(paramBoolean, paramObject);
+      return;
+    case 1000: 
+      paramamwl.comenMsgReceived();
+      return;
+    case 1003: 
+      paramamwl.delRoamChatFriend(paramBoolean);
+      return;
+    case 1004: 
+      paramamwl.getRoamChat(paramBoolean, paramObject);
+      return;
+    case 1005: 
+      paramamwl.setRoamChat(paramBoolean);
+      return;
+    case 2000: 
+      paramamwl.friendsListRefresh();
+      return;
+    case 2001: 
+      paramamwl.troopListRefresh();
+      return;
+    case 2002: 
+      paramamwl.recentListRefresh();
+      return;
+    case 1002: 
+      paramamwl.msgDelFriend(paramArrayOfObject);
+      return;
+    case 3012: 
+      paramamwl.transserviceTempChatDownloadPic(paramBoolean, paramArrayOfObject);
+      return;
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    paramamwl.transserviceC2CUploadStreamPtt(paramBoolean, paramArrayOfObject);
   }
 }
 

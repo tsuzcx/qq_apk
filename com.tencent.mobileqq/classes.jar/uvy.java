@@ -1,6 +1,20 @@
-public abstract interface uvy
+public class uvy
+  extends uvx
 {
-  public abstract int a();
+  public uvy(int paramInt)
+  {
+    super(paramInt);
+  }
+  
+  String a()
+  {
+    return "officialacc_weishi";
+  }
+  
+  String b()
+  {
+    return "weishi_share_officialacc";
+  }
 }
 
 

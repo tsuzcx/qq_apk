@@ -1,18 +1,12 @@
-public class aviq
+public abstract interface aviq
 {
-  public int a;
-  public int b;
+  public abstract void a(int paramInt, Exception paramException);
   
-  public aviq(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(Exception paramException);
   
-  public String toString()
-  {
-    return "Point{x=" + this.a + ", y=" + this.b + '}';
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

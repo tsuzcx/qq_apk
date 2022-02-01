@@ -2,10 +2,10 @@ package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
 import android.util.Log;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -54,7 +54,7 @@ public class LpReportInfo_DC01796
       LpReportUtils.safePut(localHashMap, "url", URLEncoder.encode(this.reportObj.url));
       localHashMap.put("size", String.valueOf(this.reportObj.fileSize));
       localHashMap.put("terminal", "Android-QzoneInQQ");
-      LpReportUtils.safePut(localHashMap, "qua", bmsw.a());
+      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
       LpReportUtils.safePut(localHashMap, "client_ip", this.reportObj.clientip);
       localHashMap.put("retry", String.valueOf(this.reportObj.retry));
       localHashMap.put("flow", String.valueOf(this.reportObj.flow));

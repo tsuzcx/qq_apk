@@ -1,45 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.os.Handler;
 
-public class aqnb
-  implements bliz
+class aqnb
+  implements nmh
 {
-  public aqnb(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, blir paramblir) {}
+  aqnb(aqmz paramaqmz, nmg[] paramArrayOfnmg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    if (!paramBoolean)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.e();
-      return;
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693009, 1);
-        continue;
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-        {
-          paramView = new Intent();
-          paramView.setAction("android.intent.action.SENDTO");
-          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693009, 1);
-        }
+      aqmz.a(this.jdField_a_of_type_Aqmz).removeCallbacks(aqmz.a(this.jdField_a_of_type_Aqmz));
+      aqmz.a(this.jdField_a_of_type_Aqmz).run();
+      if (this.jdField_a_of_type_ArrayOfNmg[0] != null) {
+        this.jdField_a_of_type_ArrayOfNmg[0].a();
       }
     }
   }

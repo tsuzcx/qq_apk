@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class aisj
-  implements aisn
+public class aisj
+  implements View.OnClickListener
 {
-  protected QQAppInterface a;
+  public aisj(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
   
-  public aisj(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a() {}
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = aiti.a(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.a(paramString);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
+    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter, this.jdField_a_of_type_Int);
+    new bcek(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

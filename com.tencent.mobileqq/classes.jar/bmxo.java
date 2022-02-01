@@ -1,21 +1,8 @@
-import java.io.File;
-import java.util.Comparator;
-
-final class bmxo
-  implements Comparator<File>
+public class bmxo
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l1 = paramFile1.lastModified();
-    long l2 = paramFile2.lastModified();
-    if (l1 > l2) {
-      return -1;
-    }
-    if (l1 < l2) {
-      return 1;
-    }
-    return 0;
-  }
+  public int a;
+  public int b;
+  public int c;
 }
 
 

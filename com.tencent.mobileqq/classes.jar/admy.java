@@ -1,16 +1,24 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
-public abstract interface admy
+public class admy
+  extends OvershootInterpolator
 {
-  public abstract void onComplete();
+  private boolean jdField_a_of_type_Boolean;
   
-  public abstract void onFailure(int paramInt, String paramString);
+  public admy(JDHongbaoActivity paramJDHongbaoActivity) {}
   
-  public abstract void onPermission(int paramInt);
-  
-  public abstract void onSuccess(JSONObject paramJSONObject);
-  
-  public abstract void onTrigger(JSONObject paramJSONObject);
+  public float getInterpolation(float paramFloat)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
+    }
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
+  }
 }
 
 

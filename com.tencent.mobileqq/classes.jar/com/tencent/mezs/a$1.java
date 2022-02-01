@@ -1,15 +1,15 @@
 package com.tencent.mezs;
 
-import adkl;
+import achf;
 
 public class a$1
   extends Thread
 {
-  public a$1(adkl paramadkl) {}
+  public a$1(achf paramachf) {}
   
   public void run()
   {
-    adkl.a(this.this$0);
+    achf.a(this.this$0);
   }
 }
 

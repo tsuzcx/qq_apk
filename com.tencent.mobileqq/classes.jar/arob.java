@@ -1,44 +1,15 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-public class arob
+public abstract interface arob<V extends View>
 {
-  private static String a = "https://h5.vip.qq.com/p/pay/index?_wv=17301507&_wwv=8192&aid=mvip.g.a.zh_jjms&month=1&type=vip";
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
   
-  @NonNull
-  public static arob a(String paramString)
-  {
-    arob localarob = new arob();
-    if (TextUtils.isEmpty(paramString)) {
-      return localarob;
-    }
-    a(paramString);
-    return localarob;
-  }
-  
-  public static String a()
-  {
-    return a;
-  }
-  
-  private static void a(String paramString)
-  {
-    try
-    {
-      a = new JSONObject(paramString).getJSONObject("android").getString("payH5Url");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arob
  * JD-Core Version:    0.7.0.1
  */

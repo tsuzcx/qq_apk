@@ -9,12 +9,12 @@ class DataBinder$ViewDataBinder
   @Nullable
   public DataEntity getDataEntity(Object paramObject)
   {
-    return (DataEntity)((View)paramObject).getTag(2131369565);
+    return (DataEntity)((View)paramObject).getTag(2131369549);
   }
   
   public void setDataEntity(Object paramObject, DataEntity paramDataEntity)
   {
-    ((View)paramObject).setTag(2131369565, paramDataEntity);
+    ((View)paramObject).setTag(2131369549, paramDataEntity);
   }
 }
 

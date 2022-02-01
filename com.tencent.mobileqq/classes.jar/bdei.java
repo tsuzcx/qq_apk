@@ -1,6 +1,6 @@
-public class bdei
+public abstract interface bdei
 {
-  public static boolean a = true;
+  public abstract boolean a(String paramString);
 }
 
 

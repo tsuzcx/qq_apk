@@ -25,8 +25,6 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bhsr;
-import bhtq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -61,6 +59,8 @@ import com.tencent.mobileqq.mini.widget.media.CoverCameraView;
 import com.tencent.mobileqq.mini.widget.media.CoverLiveView;
 import com.tencent.mobileqq.mini.widget.media.CoverPusherView;
 import com.tencent.mobileqq.mini.widget.media.CoverVideoView;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
@@ -124,7 +124,7 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -454,7 +454,7 @@ public class WebviewContainer
         paramJSONObject = paramJSONObject.optJSONObject("label");
         if (paramJSONObject != null)
         {
-          if (!bhsr.a(paramJSONObject.optString("color")))
+          if (!StringUtil.isEmpty(paramJSONObject.optString("color")))
           {
             localObject1 = getActualColor(paramJSONObject.optString("color"));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -471,7 +471,7 @@ public class WebviewContainer
           }
           paramCoverTextView.setGravity(3);
           localObject1 = paramJSONObject.optString("content");
-          if (!bhsr.a((String)localObject1)) {
+          if (!StringUtil.isEmpty((String)localObject1)) {
             paramCoverTextView.setText((String)localObject1);
           }
           if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
@@ -892,7 +892,7 @@ public class WebviewContainer
             paramInt2 = paramInt4;
             if (this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().getNavbarStyle().equals("custom"))
             {
-              paramInt2 = paramInt4 - (bhtq.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
+              paramInt2 = paramInt4 - (ViewUtils.dpToPx(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
               this.appBrandRuntime.pageContainer.getCurrentPage().updateViewStyle("default");
               this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().setBarStyle("default");
             }
@@ -993,7 +993,7 @@ public class WebviewContainer
           ((CoverView)localObject).setPadding(paramJSONObject1.optInt(3, 0), paramJSONObject1.optInt(0, 0), paramJSONObject1.optInt(1, 0), paramJSONObject1.optInt(2, 0));
         }
         ((CoverView)localObject).setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
-        if ((bhsr.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
+        if ((StringUtil.isEmpty(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
         {
           try
           {
@@ -1038,7 +1038,7 @@ public class WebviewContainer
           i = j;
           continue;
           paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-          if (!bhsr.a(paramJSONObject1)) {
+          if (!StringUtil.isEmpty(paramJSONObject1)) {
             try
             {
               paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2147,7 +2147,7 @@ public class WebviewContainer
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if ((!bhsr.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
+      if ((!StringUtil.isEmpty(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
         break label405;
       }
     }
@@ -2181,7 +2181,7 @@ public class WebviewContainer
       return;
       label405:
       paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-      if (!bhsr.a(paramJSONObject1)) {
+      if (!StringUtil.isEmpty(paramJSONObject1)) {
         try
         {
           paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2300,7 +2300,7 @@ public class WebviewContainer
     {
       ((CoverVideoView)localCoverView).updateVideoPlayerSettings(paramJSONObject);
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bhsr.a(paramJSONObject)) {
+      if (!StringUtil.isEmpty(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }

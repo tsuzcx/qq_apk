@@ -1,26 +1,169 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract interface appn
+public class appn
+  implements aqnw
 {
-  public abstract void a(int paramInt);
+  private static final aqoy jdField_a_of_type_Aqoy = new appo();
+  private static final String jdField_a_of_type_JavaLangString = appn.class.getSimpleName();
+  private appq jdField_a_of_type_Appq;
+  private appr jdField_a_of_type_Appr;
+  private aqoz jdField_a_of_type_Aqoz;
+  private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
   
-  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
+  public aqoa a(apps paramapps)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramapps != null)) {
+      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramapps);
+    }
+    return null;
+  }
   
-  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
+    }
+  }
   
-  public abstract void b(int paramInt);
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Aqoz != null)
+    {
+      this.jdField_a_of_type_Aqoz.b(paramInt);
+      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
+      }
+    }
+  }
   
-  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
+    }
+  }
   
-  public abstract void c(int paramInt);
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_Aqoz = aqoj.a();
+    this.jdField_a_of_type_Aqoz.a(3);
+    this.jdField_a_of_type_Aqoz.c(7000);
+    this.jdField_a_of_type_Aqoz.f(8.0F);
+    this.jdField_a_of_type_Aqoz.c(12.0F);
+    this.jdField_a_of_type_Aqoz.b(12.0F);
+    this.jdField_a_of_type_Aqoz.b(false);
+    this.jdField_a_of_type_Aqoz.d(true);
+    aqol localaqol = aqoj.a();
+    localaqol.a(new appp(this));
+    localaqol.a(-4);
+    localaqol.a(new appt(paramContext));
+    paramContext = localaqol.a();
+    aqox.a(jdField_a_of_type_Aqoy);
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = new DanmakuManager(paramView, paramContext);
+  }
   
-  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  public void a(appq paramappq)
+  {
+    this.jdField_a_of_type_Appq = paramappq;
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
+    }
+  }
   
-  public abstract void d();
+  public void a(appr paramappr)
+  {
+    this.jdField_a_of_type_Appr = paramappr;
+  }
   
-  public abstract void e();
+  public void a(aqoa paramaqoa, aqpx paramaqpx, aqpn paramaqpn) {}
   
-  public abstract void f();
+  public void a(DanmuItemBean paramDanmuItemBean)
+  {
+    if ((paramDanmuItemBean != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null))
+    {
+      paramDanmuItemBean = new apps(paramDanmuItemBean);
+      paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
+      paramDanmuItemBean.e(true);
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
+    }
+  }
+  
+  public void a(List<aqoa> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
+    }
+  }
+  
+  public void b(List<aqoa> paramList)
+  {
+    if ((this.jdField_a_of_type_Appq != null) && (!b())) {
+      this.jdField_a_of_type_Appq.b();
+    }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Appq != null) {
+      this.jdField_a_of_type_Appq.a();
+    }
+  }
 }
 
 

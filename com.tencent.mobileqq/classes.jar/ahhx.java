@@ -1,17 +1,28 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class ahhx
-  extends ahkx
+  extends amsu
 {
-  ahhx(ahgk paramahgk)
+  ahhx(ahhp paramahhp) {}
+  
+  protected void onAddFriend(String paramString)
   {
-    super(paramahgk, null);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onAddFriend : " + paramString);
+    }
+    if ((this.a.isActivityResume()) && (paramString != null) && (paramString.equals(this.a.sessionInfo.curFriendUin))) {
+      ahhp.a(this.a);
+    }
   }
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onUpdateApolloHead(boolean paramBoolean, String paramString, int paramInt)
   {
-    return new ahed(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if ((this.a.app != null) && (TextUtils.equals(paramString, this.a.app.getCurrentAccountUin()))) {
+      this.a.refresh(65536);
+    }
   }
 }
 

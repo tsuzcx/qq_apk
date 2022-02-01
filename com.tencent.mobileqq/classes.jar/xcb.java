@@ -1,62 +1,40 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-
 public class xcb
-  extends wpa
 {
-  public static final String a;
-  private List<String> a;
-  private int c;
-  
-  static
+  public static void a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_like_list_batch_715");
+    xvv.b(paramString1, paramString2);
   }
   
-  public xcb(List<String> paramList, boolean paramBoolean)
+  public static void a(String paramString1, String paramString2, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
-    }
+    xvv.a(paramString1, paramString2, paramObject);
   }
   
-  public String a()
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
+  
+  public static void b(String paramString1, String paramString2)
   {
-    return jdField_a_of_type_JavaLangString;
+    xvv.d(paramString1, paramString2);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public static void b(String paramString1, String paramString2, Object paramObject)
   {
-    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
-    try
-    {
-      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
-      return new xcc(localRspBatchFeedLike);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    xvv.a(paramString1, paramString2, paramObject);
   }
   
-  protected byte[] a()
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
   {
-    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedLike.feed_id_list.set(localList);
-    localReqBatchFeedLike.source.set(this.c);
-    return localReqBatchFeedLike.toByteArray();
+    xvv.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    xvv.e(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    xvv.a(paramString1, paramString2, paramObject1, paramObject2);
   }
 }
 

@@ -1,76 +1,29 @@
-import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class maw
-  extends mav
+public class maw
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public maw(AVActivity paramAVActivity, String paramString, long paramLong) {}
   
-  maw(LinearLayout paramLinearLayout)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131373625));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373622));
-    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131373626);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131373628));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
-      }
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-  }
-  
-  boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null);
-  }
-  
-  boolean a(may parammay)
-  {
-    a();
-    if ((parammay.b) && (parammay.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(parammay.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    mak.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1044);
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(2, false);
+    lgu.e(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a().d) + "");
+    if (AudioHelper.f()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "qav_double_screen_notify, click[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
     }
-    if ((parammay.c) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null)) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      new mch(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, false, 4).a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
-    if ((parammay.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    if ((parammay.jdField_a_of_type_AndroidTextSpannableString != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-      mat.a(this.jdField_a_of_type_AndroidWidgetTextView, parammay);
-    }
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

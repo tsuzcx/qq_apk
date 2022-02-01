@@ -1,42 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1;
 
-class bhqc
-  implements View.OnTouchListener
+public class bhqc
+  implements DialogInterface.OnClickListener
 {
-  bhqc(bhpy parambhpy) {}
+  public bhqc(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840132);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840132));
-    if (this.a.c)
-    {
-      bhpy.a(this.a);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
-      return false;
-      label110:
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-    }
+    paramDialogInterface = new AuthorityControlAppDetailsFragment.2.1(this);
+    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqc
  * JD-Core Version:    0.7.0.1
  */

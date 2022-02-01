@@ -1,21 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-
-public class smi
+public abstract interface smi
 {
-  public ReadInJoyBaseFragment a;
-  public sda a;
-  public boolean a;
-  public boolean b;
-  
-  public smi()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public ReadInJoyBaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
-  }
+  public abstract void a();
 }
 
 

@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
+import amtj;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import anzj;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import zan;
-import zao;
+import ybw;
+import ybx;
 
 public class VideoSharer$1
   implements Runnable
 {
-  public VideoSharer$1(zan paramzan, int paramInt) {}
+  public VideoSharer$1(ybw paramybw, int paramInt) {}
   
   public void run()
   {
@@ -71,23 +71,23 @@ public class VideoSharer$1
             if (QLog.isColorLevel()) {
               QLog.d("DanceMachinePKVideoSharer", 2, "share to wechat bitmap ratio  : " + i + "   size : " + j * k / 1024 + "KB  fileSize : " + new File(this.this$0.h).length());
             }
-            if (zan.a(this.this$0) == null) {
-              zan.a(this.this$0, new zao(this, localBitmap));
+            if (ybw.a(this.this$0) == null) {
+              ybw.a(this.this$0, new ybx(this, localBitmap));
             }
             if (this.a == 1)
             {
-              WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, anzj.a(2131715161), this.this$0.i);
-              WXShareHelper.a().a(zan.a(this.this$0));
-              zan.a(this.this$0, 1);
+              WXShareHelper.getInstance().shareWebPageToWXFriend(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, amtj.a(2131715395), this.this$0.i);
+              WXShareHelper.getInstance().addObserver(ybw.a(this.this$0));
+              ybw.a(this.this$0, 1);
               return;
             }
           }
         }
       }
     } while (this.a != 2);
-    WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, anzj.a(2131715157), this.this$0.i);
-    WXShareHelper.a().a(zan.a(this.this$0));
-    zan.a(this.this$0, 2);
+    WXShareHelper.getInstance().shareWebPageToWXFriendCircle(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, amtj.a(2131715391), this.this$0.i);
+    WXShareHelper.getInstance().addObserver(ybw.a(this.this$0));
+    ybw.a(this.this$0, 2);
   }
 }
 

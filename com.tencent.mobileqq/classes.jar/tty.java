@@ -1,29 +1,66 @@
-import android.support.v4.view.ViewPager;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
 public class tty
-  implements RadioGroup.OnCheckedChangeListener
 {
-  public tty(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bjrq jdField_a_of_type_Bjrq;
+  private sgh jdField_a_of_type_Sgh;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public tty(Activity paramActivity, sgh paramsgh)
   {
-    ServiceAccountFolderActivityNew.a(this.a, true);
-    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
-      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Sgh = paramsgh;
+    this.jdField_a_of_type_Bjrq = new bjrq(paramActivity);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Bjrq != null) && (this.jdField_a_of_type_Bjrq.isShowing())) {
+      this.jdField_a_of_type_Bjrq.dismiss();
     }
-    for (;;)
+  }
+  
+  public void a(View paramView, int paramInt, VideoInfo paramVideoInfo)
+  {
+    ttz localttz = new ttz(this, paramInt, paramVideoInfo);
+    if (!this.jdField_a_of_type_Bjrq.a()) {
+      this.jdField_a_of_type_Bjrq.a();
+    }
+    this.jdField_a_of_type_Bjrq.b = false;
+    ArrayList localArrayList = new ArrayList();
+    if ((paramVideoInfo.a != null) && (paramVideoInfo.a.e != null))
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      if (ServiceAccountFolderActivityNew.b(this.a).getId() == paramInt) {
-        ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
+      int i = 0;
+      while (i < paramVideoInfo.a.e.size())
+      {
+        DislikeInfo localDislikeInfo = new DislikeInfo();
+        localDislikeInfo.jdField_a_of_type_Long = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_Long;
+        localDislikeInfo.jdField_a_of_type_JavaLangString = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_JavaLangString;
+        localArrayList.add(localDislikeInfo);
+        i += 1;
       }
     }
+    if (localArrayList.size() > 0)
+    {
+      obb.a(paramVideoInfo.a);
+      if (this.jdField_a_of_type_Bjrq.a(paramInt, localArrayList)) {
+        this.jdField_a_of_type_Bjrq.a(paramView, localttz);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bjrq != null) && (this.jdField_a_of_type_Bjrq.isShowing())) {
+      this.jdField_a_of_type_Bjrq.dismiss();
+    }
+    this.jdField_a_of_type_Bjrq = null;
   }
 }
 

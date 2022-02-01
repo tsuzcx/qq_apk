@@ -1,151 +1,54 @@
-import android.content.Context;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONObject;
+import com.tencent.widget.TCWDatePicker;
+import com.tencent.widget.TCWNumberPicker;
+import java.util.Calendar;
 
 public class bjuc
+  implements bjuj
 {
-  public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public bjuc(TCWDatePicker paramTCWDatePicker) {}
+  
+  public void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ShareProcessorUtil", 2, "reuseImageForAIO|oldCache=" + paramString1 + ",oldUrl=" + paramString2 + ",newUrl=" + paramString3);
+    TCWDatePicker.b(this.a).setTimeInMillis(TCWDatePicker.a(this.a).getTimeInMillis());
+    int i;
+    if (paramTCWNumberPicker == TCWDatePicker.a(this.a))
+    {
+      i = TCWDatePicker.b(this.a).getActualMaximum(5);
+      if ((paramInt1 == i) && (paramInt2 == 1)) {
+        TCWDatePicker.b(this.a).add(5, 1);
+      }
     }
-    if (paramString1 != null) {}
     for (;;)
     {
-      boolean bool;
-      try
+      TCWDatePicker.a(this.a, TCWDatePicker.b(this.a).get(1), TCWDatePicker.b(this.a).get(2), TCWDatePicker.b(this.a).get(5));
+      TCWDatePicker.b(this.a);
+      TCWDatePicker.c(this.a);
+      return;
+      if ((paramInt1 == 1) && (paramInt2 == i))
       {
-        if ((paramString1.equals(paramString3)) || (BaseApplicationImpl.sImageCache == null)) {
-          break label193;
-        }
-        paramString1 = BaseApplicationImpl.sImageCache.get(paramString1);
-        if (paramString1 == null) {
-          break label193;
-        }
-        BaseApplicationImpl.sImageCache.put(paramString3, paramString1);
-        bool = true;
-      }
-      catch (Exception paramString1)
-      {
-        String str;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
-      str = beqz.d(paramString3);
-      if ((paramString2 != null) && (!paramString2.equals(paramString3)))
-      {
-        paramBoolean = bhmi.d(paramString1, str);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.share.ShareProcessorUtil", 2, "reuseImageForAIO|cache=" + bool + ",file=" + paramBoolean);
-        return;
-        paramString1 = beqz.d(paramString2);
-        continue;
-        QLog.d("Q.share.ShareProcessorUtil", 2, paramString1, new Object[0]);
+        TCWDatePicker.b(this.a).add(5, -1);
       }
       else
       {
-        paramBoolean = false;
+        TCWDatePicker.b(this.a).add(5, paramInt2 - paramInt1);
         continue;
-        label193:
-        bool = false;
-        if (paramBoolean) {
-          paramString1 = paramString2;
-        }
-      }
-    }
-  }
-  
-  public static Object[] a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ShareProcessorUtil", 2, "getRichInfo|targetUrl=" + paramString1);
-    }
-    Object[] arrayOfObject1 = new Object[4];
-    arrayOfObject1[0] = Integer.valueOf(-1);
-    arrayOfObject1[1] = null;
-    arrayOfObject1[2] = null;
-    arrayOfObject1[3] = null;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      return arrayOfObject1;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramContext = nnr.a(paramContext, String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { paramString2, URLEncoder.encode(paramString1) }), null, "GET", null, null, 5000, 5000);
-        if (paramContext == null) {
-          break;
-        }
-        i = paramContext.getStatusLine().getStatusCode();
-        if (i == 200)
+        if (paramTCWNumberPicker == TCWDatePicker.b(this.a))
         {
-          paramContext = nnr.a(paramContext);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.share.ShareProcessorUtil", 2, "getRichInfo|result=" + paramContext);
+          TCWDatePicker.a(this.a);
+          if ((paramInt1 == 11) && (paramInt2 == 0)) {
+            TCWDatePicker.b(this.a).add(2, 1);
+          } else if ((paramInt1 == 0) && (paramInt2 == 11)) {
+            TCWDatePicker.b(this.a).add(2, -1);
+          } else {
+            TCWDatePicker.b(this.a).add(2, paramInt2 - paramInt1);
           }
-          if (TextUtils.isEmpty(paramContext)) {
-            break label382;
-          }
-          paramString2 = new JSONObject(paramContext);
-          if (!paramString2.has("ret")) {
-            break label377;
-          }
-          i = paramString2.getInt("ret");
-          if (!paramString2.has("title")) {
-            break label372;
-          }
-          paramContext = paramString2.getString("title");
-          if (!paramString2.has("abstract")) {
-            break label367;
-          }
-          paramString1 = paramString2.getString("abstract");
-          if (!paramString2.has("thumbUrl")) {
-            break label362;
-          }
-          paramString2 = paramString2.getString("thumbUrl");
-          if (i != 0) {
-            QLog.w("Q.share.ShareProcessorUtil", 1, "getRichInfo|ret=" + i);
-          }
-          Object[] arrayOfObject2 = new Object[4];
-          arrayOfObject2[0] = Integer.valueOf(i);
-          arrayOfObject2[1] = paramContext;
-          arrayOfObject2[2] = paramString1;
-          arrayOfObject2[3] = paramString2;
-          return arrayOfObject2;
         }
-        QLog.w("Q.share.ShareProcessorUtil", 1, "getRichInfo|httpCode=" + i);
-        return arrayOfObject1;
+        else if (paramTCWNumberPicker == TCWDatePicker.c(this.a))
+        {
+          TCWDatePicker.b(this.a).set(1, paramInt2);
+        }
       }
-      catch (Exception paramContext) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.share.ShareProcessorUtil", 2, paramContext, new Object[0]);
-      return arrayOfObject1;
-      label362:
-      paramString2 = null;
-      continue;
-      label367:
-      paramString1 = null;
-      continue;
-      label372:
-      paramContext = null;
-      continue;
-      label377:
-      int i = -1;
     }
-    label382:
-    paramContext = arrayOfObject1;
-    return paramContext;
   }
 }
 

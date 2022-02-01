@@ -1,13 +1,18 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 
-public class ahzm
-  implements ahyf
+public final class ahzm
+  implements Parcelable.Creator<SearchResultItem>
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public SearchResultItem a(Parcel paramParcel)
   {
-    paramahed.g(paramMessageRecord, paramahfq);
+    return new SearchResultItem(paramParcel);
+  }
+  
+  public SearchResultItem[] a(int paramInt)
+  {
+    return new SearchResultItem[paramInt];
   }
 }
 

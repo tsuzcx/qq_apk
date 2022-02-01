@@ -1,21 +1,67 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.kwstudio.office.base.ILog;
+import com.tencent.qphone.base.util.QLog;
 
-class atfj
-  implements DialogInterface.OnClickListener
+public final class atfj
+  implements ILog
 {
-  atfj(atfi paramatfi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void d(String paramString1, String paramString2)
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    QLog.d("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e("TdsReaderView_" + paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w("TdsReaderView_" + paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfj
  * JD-Core Version:    0.7.0.1
  */

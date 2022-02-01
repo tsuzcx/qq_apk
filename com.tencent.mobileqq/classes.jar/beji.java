@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.tofumsg.TofuItem;
-import org.jetbrains.annotations.NotNull;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public abstract interface beji
+public class beji
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  public beji(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
   
-  public abstract TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt);
-  
-  public abstract oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem);
-  
-  public abstract void a();
-  
-  public abstract void a(@NotNull TofuItem paramTofuItem, @NotNull oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
+  }
 }
 
 

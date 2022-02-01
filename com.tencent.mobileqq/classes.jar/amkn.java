@@ -1,27 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class amkn
+public final class amkn
+  implements FilenameFilter
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public Friends a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
-  public ImageView g;
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
+  }
 }
 
 

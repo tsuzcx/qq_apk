@@ -1,17 +1,19 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class bdsa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class bdsa
+  implements QQPermissionCallback
 {
-  bdsa(bdrz parambdrz, LinearLayout paramLinearLayout) {}
+  public bdsa(BaseActivity paramBaseActivity) {}
   
-  public void onGlobalLayout()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bdrz.a(this.jdField_a_of_type_Bdrz, this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if (!this.a.isFinishing()) {
+      bfur.a(this.a);
+    }
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

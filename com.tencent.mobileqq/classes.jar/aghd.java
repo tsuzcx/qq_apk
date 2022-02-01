@@ -1,9 +1,18 @@
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public class aghd
+class aghd
+  extends aghj
 {
-  public ChatMessage a;
-  public StringBuilder b;
+  aghd(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agsu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

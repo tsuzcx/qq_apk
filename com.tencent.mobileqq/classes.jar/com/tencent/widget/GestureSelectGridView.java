@@ -4,9 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import blih;
-import bllz;
-import blma;
+import bjqv;
+import bjqw;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GestureSelectGridView
@@ -14,8 +13,8 @@ public class GestureSelectGridView
 {
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
-  public blih a;
-  public blma a;
+  public bjqw a;
+  public AbsListView.OnScrollListener a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
   float jdField_b_of_type_Float;
@@ -40,7 +39,7 @@ public class GestureSelectGridView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
-    super.setOnScrollListener(new bllz(this));
+    super.setOnScrollListener(new bjqv(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -147,8 +146,8 @@ public class GestureSelectGridView
       {
         if ((!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_b_of_type_Int != -1))
         {
-          if (this.jdField_a_of_type_Blma != null) {
-            this.jdField_a_of_type_Blma.a(this.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Bjqw != null) {
+            this.jdField_a_of_type_Bjqw.a(this.jdField_b_of_type_Int);
           }
           this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         }
@@ -161,8 +160,8 @@ public class GestureSelectGridView
         }
         this.jdField_c_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_Blma != null) {
-          this.jdField_a_of_type_Blma.a(this.jdField_b_of_type_Int);
+        if (this.jdField_a_of_type_Bjqw != null) {
+          this.jdField_a_of_type_Bjqw.a(this.jdField_b_of_type_Int);
         }
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         break;
@@ -184,10 +183,10 @@ public class GestureSelectGridView
         break;
       }
       this.jdField_c_of_type_Int = i;
-      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Blma == null)) {
+      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bjqw == null)) {
         break;
       }
-      this.jdField_a_of_type_Blma.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Bjqw.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
       break;
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f2;
@@ -202,8 +201,8 @@ public class GestureSelectGridView
       this.jdField_c_of_type_Int = -1;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if ((bool) && (this.jdField_a_of_type_Blma != null)) {
-        this.jdField_a_of_type_Blma.h();
+      if ((bool) && (this.jdField_a_of_type_Bjqw != null)) {
+        this.jdField_a_of_type_Bjqw.h();
       }
       if (!bool) {
         break;
@@ -215,14 +214,14 @@ public class GestureSelectGridView
     }
   }
   
-  public void setOnIndexChangedListener(blma paramblma)
+  public void setOnIndexChangedListener(bjqw parambjqw)
   {
-    this.jdField_a_of_type_Blma = paramblma;
+    this.jdField_a_of_type_Bjqw = parambjqw;
   }
   
-  public void setOnScrollListener(blih paramblih)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Blih = paramblih;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
   public void setSelectMode(boolean paramBoolean)
@@ -237,7 +236,7 @@ public class GestureSelectGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.GestureSelectGridView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,26 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class lmx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
+  public lmx(GaInviteActivity paramGaInviteActivity) {}
   
-  public lmx(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
+    if (this.a.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+      return;
+    }
+    ChatActivityUtils.a(this.a, true, new lmy(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmx
  * JD-Core Version:    0.7.0.1
  */

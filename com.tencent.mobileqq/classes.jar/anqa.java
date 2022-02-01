@@ -1,76 +1,67 @@
+import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.parser.AVGameShareJoinRoomAction.2;
 import com.tencent.qphone.base.util.QLog;
-import java.security.KeyFactory;
-import java.security.Signature;
-import java.security.spec.X509EncodedKeySpec;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class anqa
+  extends anrh
 {
-  private String a;
-  private String b;
-  
-  public anqa(String paramString1, String paramString2)
+  public anqa(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.b = paramString1;
-    this.a = paramString2;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static boolean a(byte[] paramArrayOfByte1, String paramString, byte[] paramArrayOfByte2)
+  public boolean a()
   {
-    if ((paramArrayOfByte1 == null) || (TextUtils.isEmpty(paramString)) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length == 0) || (paramArrayOfByte1.length == 0)) {}
-    do
-    {
-      return false;
-      try
-      {
-        paramString = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(bhkv.decode(paramString.getBytes("UTF-8"), 0)));
-        Signature localSignature = Signature.getInstance("SHA1WithRSA");
-        localSignature.initVerify(paramString);
-        localSignature.update(paramArrayOfByte1);
-        boolean bool = localSignature.verify(paramArrayOfByte2);
-        return bool;
-      }
-      catch (Throwable paramArrayOfByte1) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("RSAVerify", 2, "verify failed");
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool = true;
     try
     {
-      if ((bhmi.a(this.a)) && (bhmi.a(this.b)))
-      {
-        byte[] arrayOfByte1 = bhmi.a(this.a);
-        byte[] arrayOfByte2 = bhmi.a(this.b);
-        if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0)) {
-          break label104;
-        }
-        if (paramInt == 0) {
-          return a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq8i/7++SDj/syS1oKlYdNJXuRQo1IxcizuFBwq9Ohi9q9u0GInkVFi/3mRU6opILNqNVUoVncxnvfrBrrzxXgPkOow4TFTfo0f2wQRxsuVud/Fjtiz256JKFvIXHdTJ+ZAFIHLtcJMrDhvTUgIIfv5uDZIXARy2KFSzUhqoEwZt3I3Uv9beVecgYofjQ/N/YtG2uWb5dpHMXfsq6JpEpfKxbbFPYJLnrMol0ngsgDrF1h3C28R6l28jFL1nzkxBNt1dIrmitveA0dXbZhYWpRDjg7Ywwt96c1Qq85rs+TL6pNKAYt7aJy/6+PGfMcbkRrtsL72eokicKHnMKVC84fQIDAQAB", arrayOfByte2);
-        }
-        if (1 != paramInt) {
-          break label102;
-        }
-        bool = a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ZRiTq5kd+Bsb7Rsvrk/8kF3jRPEAln7kLVAKRi4+jb/gdKEAI9y5jhuyobFq9jLMqKCYKJKb8v/KaGjX0LFZg5+FnC/duF829s7lWPKXNggne+hQOwhWFiamCwf8r8Hzi3YmrKPR4iA/bJUwTbey9T0hKpYbB9QA7IpIQAmGd4cn1ylq/2vblqNwpVV53+SCSg5XRqIXwPYRL9siMZEJAtXbjbpHw8B18zYUGlh2XRJssZyNtgtHOQIvwmdUOGTVRTt7sBZy7adUnq3cpH6/qpdLlAVUAFq/WLwUHNviC+uW47884PSdwqHg8NdeIhitfbcdtOmCNt3OJUvf91L/QIDAQAB", arrayOfByte2);
-        return bool;
+      if (TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("key"))) {
+        return c();
       }
+      boolean bool = b();
+      return bool;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (Exception localException)
     {
-      return false;
+      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: " + localException.getMessage());
+      a("AVGameShareJoinRoomAction");
     }
-    catch (Throwable localThrowable)
+    return true;
+  }
+  
+  protected boolean b()
+  {
+    QLog.d("AVGameShareJoinRoomAction", 1, "doAction getRoomInfoAndJoinRoom");
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("key");
+    if (TextUtils.isEmpty(str))
     {
-      return false;
+      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: key is empty");
+      return true;
     }
-    bool = false;
-    label102:
-    return bool;
-    label104:
+    anha.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, new anqb(this));
     return false;
+  }
+  
+  protected boolean c()
+  {
+    QLog.d("AVGameShareJoinRoomAction", 1, "doAction directJoinRoom");
+    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("room");
+    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
+      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: data is empty");
+    }
+    mxn localmxn;
+    do
+    {
+      return true;
+      localmxn = (mxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
+    } while (localmxn == null);
+    ThreadManager.getUIHandler().post(new AVGameShareJoinRoomAction.2(this, localmxn, str2, str1));
+    return true;
   }
 }
 

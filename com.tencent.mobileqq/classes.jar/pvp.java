@@ -1,18 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-class pvp
-  implements ViewBase.OnClickListener
+public class pvp
 {
-  pvp(pvl parampvl, Context paramContext, qwn paramqwn, ArticleInfo paramArticleInfo) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(ViewBase paramViewBase)
+  @NotNull
+  public String toString()
   {
-    rpt.a(this.jdField_a_of_type_AndroidContentContext, ((qyq)this.jdField_a_of_type_Qwn.a.get(0)).a);
-    pvl.a(this.jdField_a_of_type_Pvl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    return "LiveStatus{living='" + this.jdField_a_of_type_Int + '\'' + ", liveTime='" + this.jdField_a_of_type_Long + '\'' + ", source='" + this.jdField_a_of_type_Long + '\'' + ", account='" + this.jdField_a_of_type_Long + '\'' + ", roomId='" + this.jdField_a_of_type_Long + '\'' + ", rowKey='" + this.jdField_a_of_type_Long + '\'' + ", url='" + this.jdField_a_of_type_Long + '\'' + '}';
   }
 }
 

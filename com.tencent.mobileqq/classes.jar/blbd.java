@@ -1,10 +1,11 @@
-public class blbd
+import cooperation.qzone.statistic.Singleton;
+
+final class blbd
+  extends Singleton<blbc, Void>
 {
-  public static void a(int paramInt1, int paramInt2)
+  protected blbc a(Void paramVoid)
   {
-    blbj localblbj = new blbj();
-    localblbj.a(paramInt1).a(paramInt2);
-    blbg.a(localblbj.toString(), 103);
+    return new blbc();
   }
 }
 

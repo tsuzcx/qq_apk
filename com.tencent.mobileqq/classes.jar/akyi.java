@@ -1,21 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
 
-public class akyi
-  implements View.OnClickListener
+public abstract interface akyi
 {
-  public akyi(RedPacketKSongFragment paramRedPacketKSongFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b.setVisibility(8);
-    this.a.a.setVisibility(8);
-    RedPacketKSongFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(@NonNull akym paramakym);
 }
 
 

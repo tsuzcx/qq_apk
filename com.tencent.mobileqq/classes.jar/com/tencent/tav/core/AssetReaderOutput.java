@@ -3,9 +3,9 @@ package com.tencent.tav.core;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.decoder.VideoDecoder;
 import java.util.List;
 
 public abstract class AssetReaderOutput
@@ -30,7 +30,7 @@ public abstract class AssetReaderOutput
       do
       {
         return localCMSampleBuffer;
-        if (localCMSampleBuffer.getTime() != VideoDecoder.SAMPLE_TIME_FINISH) {
+        if (localCMSampleBuffer.getState().getStateCode() != -1L) {
           break;
         }
       } while (this.statusListener == null);

@@ -1,17 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.app.Activity;
+import android.view.View;
 
-public class npb
-  implements aasd
+class npb
+  implements bjoe
 {
-  public npb(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  npb(noy paramnoy, Activity paramActivity, String paramString, bjnw parambjnw) {}
   
-  public void callback(Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBundle != null)
+    switch (paramInt)
     {
-      int i = paramBundle.getInt("mode");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

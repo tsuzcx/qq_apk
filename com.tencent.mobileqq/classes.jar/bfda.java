@@ -1,20 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class bfda
-  implements View.OnTouchListener
 {
-  public bfda(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
+  private static Handler a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(Runnable paramRunnable)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+    if (a == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
+      localHandlerThread.start();
+      a = new Handler(localHandlerThread.getLooper());
     }
-    return false;
+    a.post(paramRunnable);
   }
 }
 

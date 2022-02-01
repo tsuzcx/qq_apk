@@ -1,41 +1,24 @@
-import android.support.annotation.NonNull;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class bnjd
-  implements Comparable<bnjd>
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  public bnjd(DoodleLayout paramDoodleLayout) {}
   
-  public bnjd(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.jdField_a_of_type_Bnjk != null) {
+      this.a.jdField_a_of_type_Bnjk.a(null);
+    }
   }
   
-  public int a(@NonNull bnjd parambnjd)
-  {
-    return (int)(this.jdField_a_of_type_Long - parambnjd.jdField_a_of_type_Long);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof bnjd)) && (this.jdField_a_of_type_JavaLangString.equals(((bnjd)paramObject).jdField_a_of_type_JavaLangString));
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

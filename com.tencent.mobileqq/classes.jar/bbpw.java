@@ -1,32 +1,78 @@
-import android.app.Activity;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.richmediabrowser.listener.IGalleryImageListener;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class bbpw
-  implements IGalleryImageListener
+public class bbpw
+  implements INetEngine.INetEngineListener
 {
-  bbpw(bbpv parambbpv, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
+  public bbpw(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bbpy parambbpy) {}
   
-  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Bbpv.a.b.setVisibility(8);
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.mHttpCode);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.businessID == 1)
     {
-      this.jdField_a_of_type_Bbpv.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
-      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
-      if (this.jdField_a_of_type_Bbpv.a.a != null) {
-        this.jdField_a_of_type_Bbpv.a.a.initDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_Bbpv.a.mScreenWidthPx, this.jdField_a_of_type_Bbpv.a.mScreenHeightPx, this.jdField_a_of_type_Bbpv.getRotation(paramInt));
+      paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.e.iterator();
+      while (paramNetResp.hasNext())
+      {
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+        if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+          localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+        }
+      }
+    }
+    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramNetResp.hasNext())
+    {
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+        localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+      }
+    }
+    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b.iterator();
+    while (paramNetResp.hasNext())
+    {
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+        localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
+    {
+      npo.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Bbpy != null) {
+        this.jdField_a_of_type_Bbpy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
       }
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Bbpv.a.mContext, this.jdField_a_of_type_Bbpv.a.mContext.getString(2131694455), 0).a();
+    catch (IOException paramNetResp)
+    {
+      for (;;)
+      {
+        paramNetResp.printStackTrace();
+      }
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bbpy != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.totalLen = paramLong2;
+      this.jdField_a_of_type_Bbpy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
+    }
   }
 }
 

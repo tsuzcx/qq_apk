@@ -1,30 +1,22 @@
-public abstract interface aszz
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+final class aszz
+  implements aszj
 {
-  public abstract long a();
+  aszz(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(int paramInt);
+  public void onNo() {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public void onYes()
+  {
+    aszt.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aszz
  * JD-Core Version:    0.7.0.1
  */

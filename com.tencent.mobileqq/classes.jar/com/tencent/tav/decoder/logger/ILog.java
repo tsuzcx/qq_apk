@@ -8,9 +8,7 @@ public abstract interface ILog
   
   public abstract void e(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public abstract void e(String paramString, Throwable paramThrowable);
-  
-  public abstract void i(String paramString1, String paramString2, Object... paramVarArgs);
+  public abstract void i(String paramString1, String paramString2);
   
   public abstract void v(String paramString1, String paramString2);
   

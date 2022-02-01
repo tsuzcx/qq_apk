@@ -1,25 +1,21 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
 
-final class bnzg
-  implements UploadManager.IUploadStatusListener
+public class bnzg
+  extends AnimatorListenerAdapter
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  public bnzg(QIMCameraSegmentCaptureButtonLayoutNew paramQIMCameraSegmentCaptureButtonLayoutNew, boolean paramBoolean, float paramFloat) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      bocf.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
-    }
-    label26:
-    while (paramStatusInfo.state != 5) {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayoutNew.a.e();
       return;
     }
-    bocf.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayoutNew.a.a(this.jdField_a_of_type_Float);
   }
 }
 

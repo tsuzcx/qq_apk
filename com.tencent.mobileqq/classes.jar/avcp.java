@@ -1,32 +1,12 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-class avcp
-  extends BroadcastReceiver
+public abstract interface avcp
 {
-  avcp(avcj paramavcj) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((avcj.a(this.a) == null) || (avcj.a(this.a).isFinishing())) {}
-    do
-    {
-      return;
-      paramContext = auzl.a(paramIntent.getStringExtra("key_share_image_by_server"));
-      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "initBroadcastReceiver errorMsg=", paramContext });
-    } while (paramContext == null);
-    if (TextUtils.isEmpty(paramContext))
-    {
-      avcj.a(this.a, avcj.a(this.a).getIntent().getExtras());
-      avcj.a(avcj.a(this.a), avcj.a(this.a), avcj.a(this.a));
-      return;
-    }
-    avcj.a(this.a, paramContext);
-  }
+  public abstract void a(LocationRoom.Venue paramVenue);
+  
+  public abstract void a(String paramString);
 }
 
 

@@ -1,28 +1,10 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awsz
-  implements View.OnClickListener
+public abstract interface awsz
 {
-  awsz(awsu paramawsu, awsk paramawsk) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!paramView.isSelected())
-      {
-        this.jdField_a_of_type_Awsu.a(paramView);
-        this.jdField_a_of_type_Awsu.jdField_a_of_type_Int = 3;
-        awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk, Integer.valueOf(3));
-        bdll.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
-      }
-    }
-  }
+  public abstract void a(String paramString, View paramView, int paramInt);
 }
 
 

@@ -1,89 +1,112 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class bdrk
-  extends bdom
+  extends Handler
 {
-  private LinearLayout a(Context paramContext)
-  {
-    paramContext = new LinearLayout(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.gravity = 17;
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
-  }
+  public bdrk(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  protected int b()
+  public void handleMessage(Message paramMessage)
   {
-    return 23;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof bdrl)))
+    if (this.a.isFinishing()) {
+      return;
+    }
+    long l1;
+    label254:
+    long l2;
+    label418:
+    long l3;
+    switch (paramMessage.what)
     {
-      localbdrl = (bdrl)paramView.getTag();
-      localIterator = this.a.iterator();
+    default: 
+      return;
+    case 1001: 
+      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
+      {
+        this.a.c(false);
+        this.a.rightViewText.setEnabled(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
+        QQToast.a(this.a.getActivity(), 2131695729, 1).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+          break label254;
+        }
+      }
+      for (localObject = "0";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
+      {
+        bfaj.a("pub_page", "fail", (String)localObject, "51", TroopBarPublishActivity.b(this.a), "");
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb failed " + paramMessage.obj);
+        TroopBarPublishActivity.a(this.a, null);
+        l1 = ypi.a(TroopBarPublishActivity.c(this.a));
+        bfaj.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), "", "");
+        return;
+      }
+    case 1003: 
+      localObject = (TroopBarPublishActivity.Pic_list)bfaj.a.get(TroopBarPublishActivity.c(this.a));
+      if (localObject != null)
+      {
+        this.a.jdField_a_of_type_Bdlg.d = ((TroopBarPublishActivity.Pic_list)localObject).url;
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb succ " + paramMessage.obj);
+        l1 = ypi.a(TroopBarPublishActivity.c(this.a));
+        bfaj.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), String.valueOf(paramMessage.arg2), "");
+        if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bdlg.jdField_a_of_type_JavaLangString)) {
+          break label418;
+        }
+        this.a.b(this.a.y, true);
+      }
       for (;;)
       {
-        localObject1 = paramView;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (bdol)localIterator.next();
-        if ("button".equals(((bdol)localObject1).a))
-        {
-          localObject2 = (TextView)((bdol)localObject1).a(paramContext, localbdrl.a, paramBundle);
-          if (TextUtils.isEmpty(((bdqi)localObject1).c())) {
-            ((TextView)localObject2).setTextSize(16.0F);
-          }
-          if (TextUtils.isEmpty(((bdqi)localObject1).d())) {
-            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
-          }
+        TroopBarPublishActivity.a(this.a, null);
+        return;
+        if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
+          this.a.i();
         }
       }
+    case 1011: 
+      paramMessage = (bdnd)paramMessage.obj;
+      this.a.jdField_a_of_type_Bdlg.b = paramMessage.jdField_c_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Bdlg.jdField_a_of_type_JavaLangString = paramMessage.b;
+      TroopBarPublishActivity.a(this.a, null);
+      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
+        this.a.i();
+      }
+      l1 = ypi.a(paramMessage.jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = paramMessage.jdField_a_of_type_Long;
+      bfaj.a(this.a.getActivity(), "tribe_video", "video_upload", 0, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      return;
     }
-    Object localObject1 = a(paramContext);
-    bdrl localbdrl = new bdrl();
-    Iterator localIterator = this.a.iterator();
-    paramView = null;
-    while (localIterator.hasNext())
+    Object localObject = (bdnd)paramMessage.obj;
+    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
     {
-      localObject2 = (bdol)localIterator.next();
-      if ("button".equals(((bdol)localObject2).a))
-      {
-        paramView = (TextView)((bdol)localObject2).a(paramContext, null, paramBundle);
-        if (TextUtils.isEmpty(((bdqi)localObject2).c())) {
-          paramView.setTextSize(16.0F);
-        }
-        if (TextUtils.isEmpty(((bdqi)localObject2).d())) {
-          paramView.setTextColor(Color.parseColor("#12b7f5"));
-        }
-        localObject2 = new LinearLayout.LayoutParams(-1, agej.a(41.0F, paramContext.getResources()));
-        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+      QQToast.a(this.a, 2131695729, 1).b(this.a.getTitleBarHeight());
+      this.a.c(false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+        break label732;
       }
     }
-    if (paramView != null) {
-      localbdrl.a = paramView;
+    label732:
+    for (paramMessage = "0";; paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
+    {
+      bfaj.a("pub_page", "fail", paramMessage, "52", TroopBarPublishActivity.b(this.a), "");
+      l1 = ypi.a(((bdnd)localObject).jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = ((bdnd)localObject).jdField_a_of_type_Long;
+      bfaj.a(this.a.getActivity(), "tribe_video", "video_upload", ((bdnd)localObject).jdField_c_of_type_Int, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      TroopBarPublishActivity.a(this.a, null);
+      return;
     }
-    ((LinearLayout)localObject1).setTag(localbdrl);
-    return localObject1;
-  }
-  
-  public String b()
-  {
-    return "layout23";
   }
 }
 

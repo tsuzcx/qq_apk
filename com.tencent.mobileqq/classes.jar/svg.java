@@ -1,50 +1,127 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebPtsLiteViewCreator.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebPtsLiteViewCreator.3;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemView;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class svg
-  implements nmg
+  implements sth, stm
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IPTSLiteEventListener jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener;
+  private HashMap<String, BaseData> jdField_a_of_type_JavaUtilHashMap;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private HashMap<String, Integer> b;
   
-  public svg(svf paramsvf, String paramString1, String paramString2)
+  public svg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.b = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    g();
   }
   
-  public void a(String paramString, int paramInt)
+  private PTSItemData a(BaseData paramBaseData)
   {
-    QLog.d("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
-    if ((paramInt != 0) || (paramString == null)) {}
-    try
+    paramBaseData = (ProteusItemData)paramBaseData;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramBaseData.Q, paramBaseData);
+    return paramBaseData.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData;
+  }
+  
+  private void a(PTSItemData paramPTSItemData)
+  {
+    ThreadManager.executeOnSubThread(new WebPtsLiteViewCreator.3(this, paramPTSItemData));
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener = new svh(this);
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    paramBaseData = (ProteusItemData)paramBaseData;
+    Integer localInteger = (Integer)this.b.get(paramBaseData.R);
+    if (localInteger != null) {
+      return localInteger.intValue();
+    }
+    QLog.e("WebPtsLiteViewCreator", 1, "[getViewType] error, pageName = " + paramBaseData.R);
+    return -1;
+  }
+  
+  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    paramContext = new PTSItemView(paramContext);
+    paramContext = ((ProteusItemData)paramBaseData).jdField_a_of_type_ComTencentPtsCorePTSComposer.layoutToView(paramContext, this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener, true);
+    qnw.a.a(paramContext);
+    if (paramContext.getLayoutParams() != null) {
+      paramContext.setLayoutParams(new AbsListView.LayoutParams(paramContext.getLayoutParams()));
+    }
+    return new svi(this, paramContext, paramBaseData, null);
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    if (paramBaseData == null) {}
+    while ((!(paramBaseData instanceof ProteusItemData)) || (((ProteusItemData)paramBaseData).jdField_a_of_type_ComTencentPtsCorePTSComposer == null)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    ThreadManager.executeOnSubThread(new WebPtsLiteViewCreator.1(this));
+  }
+  
+  public void e() {}
+  
+  public void f()
+  {
+    Object localObject = qoe.a().a("native_article");
+    if (localObject == null)
     {
-      QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
-      svr.a(svf.a(this.jdField_a_of_type_Svf));
-      if ((paramString == null) && (svr.a(this.jdField_a_of_type_JavaLangString).a))
-      {
-        QLog.d("TemplateFactory", 1, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
-        tyd.a(2, svf.a(this.jdField_a_of_type_Svf));
-        this.jdField_a_of_type_Svf.b(this.jdField_a_of_type_JavaLangString);
-        bnrf.a("kandian_pts_style_update", Boolean.valueOf(true));
-        svc.a().b();
-      }
+      QLog.i("WebPtsLiteViewCreator", 1, "[initPtsLiteTypeCount], pageNameList is null");
       return;
     }
-    catch (Exception paramString)
+    int i = stg.a;
+    localObject = ((List)localObject).iterator();
+    i += 1;
+    while (((Iterator)localObject).hasNext())
     {
-      QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
+      String str = (String)((Iterator)localObject).next();
+      if (!this.b.containsKey(str))
+      {
+        this.b.put(str, Integer.valueOf(i));
+        QLog.i("WebPtsLiteViewCreator", 1, "[initPtsLiteTypeCount], pageName = " + str + ", viewType = " + i);
+      }
+      i += 1;
     }
+    stg.a += this.b.size() + 1;
+    QLog.i("WebPtsLiteViewCreator", 1, "[initPtsLiteTypeCount], view type count = " + stg.a);
   }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramString, paramInt));
-  }
-  
-  public void progress(int paramInt) {}
 }
 
 

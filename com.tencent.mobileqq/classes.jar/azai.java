@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBlankHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class azai
-  implements Parcelable.Creator<OcrRecogResult>
+  extends RecyclerView.ViewHolder
 {
-  public OcrRecogResult a(Parcel paramParcel)
+  public azai(@NotNull View paramView)
   {
-    return new OcrRecogResult(paramParcel);
-  }
-  
-  public OcrRecogResult[] a(int paramInt)
-  {
-    return new OcrRecogResult[paramInt];
+    super(paramView);
   }
 }
 

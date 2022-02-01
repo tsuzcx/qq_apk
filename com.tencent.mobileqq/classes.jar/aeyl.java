@@ -1,30 +1,16 @@
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
-public class aeyl
-  implements bliz
+public abstract interface aeyl
 {
-  public aeyl(MainFragment paramMainFragment, List paramList, blir paramblir) {}
+  public abstract void a(AudioPlayerBase paramAudioPlayerBase);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
-    }
-    try
-    {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (aeys)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
+  public abstract void a(AudioPlayerBase paramAudioPlayerBase, int paramInt);
+  
+  public abstract void b(AudioPlayerBase paramAudioPlayerBase, int paramInt);
+  
+  public abstract void c(AudioPlayerBase paramAudioPlayerBase, int paramInt);
+  
+  public abstract void d(AudioPlayerBase paramAudioPlayerBase, int paramInt);
 }
 
 

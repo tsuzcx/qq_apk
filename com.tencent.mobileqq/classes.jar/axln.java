@@ -1,13 +1,39 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.app.Activity;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
+import mqq.os.MqqHandler;
 
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.TYPE})
-public @interface axln {}
+public class axln
+  extends bcvx
+{
+  public axln(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
+  {
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

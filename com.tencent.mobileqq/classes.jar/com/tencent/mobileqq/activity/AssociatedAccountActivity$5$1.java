@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import agej;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -10,6 +9,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
 
 class AssociatedAccountActivity$5$1
@@ -34,14 +34,14 @@ class AssociatedAccountActivity$5$1
       this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.leftView.bringToFront();
       if ("1103".equals(ThemeUtil.curThemeId))
       {
-        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources().getColorStateList(2131166987);
+        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources().getColorStateList(2131167009);
         AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setTextColor(localColorStateList);
-        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setBackgroundResource(2130838367);
-        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setPadding(agej.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0, agej.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0);
+        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setBackgroundResource(2130838392);
+        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setPadding(AIOUtils.dp2px(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0, AIOUtils.dp2px(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0);
         localObject = AssociatedAccountActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = agej.a(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
+        ((ViewGroup.LayoutParams)localObject).height = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
         if ((localObject instanceof RelativeLayout.LayoutParams)) {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = agej.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
         }
         AssociatedAccountActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).requestLayout();
         localObject = (GradientDrawable)AssociatedAccountActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).getBackground();

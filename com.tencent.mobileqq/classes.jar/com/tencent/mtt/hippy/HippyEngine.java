@@ -11,8 +11,10 @@ public abstract class HippyEngine
 {
   public static final int STATUS_ERR_BRIDGE = -50;
   public static final int STATUS_ERR_DEVSERVER = -100;
+  public static final int STATUS_ERR_RUN_BUNDLE = -600;
   public static final int STATUS_INIT_EXCEPTION = -200;
   public static final int STATUS_OK = 0;
+  public static final int STATUS_REPEAT_LOAD = -700;
   public static final int STATUS_VARIABLE_UNINIT = -500;
   public static final int STATUS_WRONG_STATE = -150;
   public static final int STATUS_WRONG_STATE_LISTEN = -151;

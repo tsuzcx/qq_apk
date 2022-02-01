@@ -1,39 +1,28 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akmg
-  extends aklt
+class akmg
+  implements bjoe
 {
-  public akmg(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  akmg(akmc paramakmc, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bjnw parambjnw) {}
   
-  protected boolean b()
+  public void OnClick(View paramView, int paramInt)
   {
-    return true;
-  }
-  
-  protected void g()
-  {
-    this.e = true;
-    super.g();
-  }
-  
-  protected void u()
-  {
-    super.u();
-  }
-  
-  protected void v()
-  {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    if (akmc.a(this.jdField_a_of_type_Akmc)) {
+      return;
+    }
+    akmc.a(this.jdField_a_of_type_Akmc, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
+      akmc.c(this.jdField_a_of_type_Akmc, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 

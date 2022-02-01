@@ -1,30 +1,19 @@
-import java.io.File;
+import android.text.Editable;
+import java.util.Comparator;
 
-public class besu
+final class besu
+  implements Comparator
 {
-  File a;
+  besu(Editable paramEditable) {}
   
-  public besu(File paramFile)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.a = paramFile;
-  }
-  
-  besv a(String paramString)
-  {
-    return new besv(this, paramString);
-  }
-  
-  File a(String paramString)
-  {
-    if (!this.a.exists()) {
-      this.a.mkdirs();
-    }
-    return new File(this.a, paramString);
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     besu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
 public class alfk
 {
-  public static final IRedPacket a = new alfl();
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public Friends a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
 }
 
 

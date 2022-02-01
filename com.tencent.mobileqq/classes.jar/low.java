@@ -1,18 +1,84 @@
-import android.support.annotation.NonNull;
+import android.opengl.Matrix;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class low
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
+  private int jdField_a_of_type_Int = 0;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private final float[] b;
   
-  @NonNull
-  public String toString()
+  public low()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[apiLevel: ").append(this.jdField_a_of_type_Int).append(", cpuNum: ").append(this.jdField_b_of_type_Int).append(", maxFreqGHZ: ").append(this.jdField_a_of_type_Float).append(", ramSizeGB:").append(this.jdField_b_of_type_Float).append("]");
-    return localStringBuilder.toString();
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    this.b = new float[16];
+    Matrix.setIdentityM(this.b, 0);
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    }
+  }
+  
+  public lpf a(lpf paramlpf, int paramInt1, int paramInt2)
+  {
+    if ((paramlpf == null) || (paramlpf.b == -1) || (paramInt1 == 0) || (paramInt2 == 0)) {
+      return null;
+    }
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (paramInt1 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth()) || (paramInt2 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight()))
+    {
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      }
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramlpf.b, this.jdField_a_of_type_ArrayOfFloat, this.b);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    return lpf.a(0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int == paramInt) {
+      return;
+    }
+    Matrix.setIdentityM(this.b, 0);
+    if (paramInt == 1) {
+      Matrix.scaleM(this.b, 0, -1.0F, 1.0F, 1.0F);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.i("ExtraRender", 4, "updateMatrix, mirrorFlag[" + paramInt + "]");
+      return;
+      if (paramInt == 2) {
+        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int != 0;
   }
 }
 

@@ -1,32 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.PagingScrollView;
 import com.tencent.qphone.base.util.QLog;
 
-final class bhfu
-  implements DownloadParams.DecodeHandler
+public class bhfu
+  implements View.OnTouchListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bhfu(PagingScrollView paramPagingScrollView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "PART_ROUND_CORNER_DECODER");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    if (this.a.mIsOnSpecialView)
     {
-      do
+      int i = paramMotionEvent.getAction();
+      if ((i == 1) || (i == 3))
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bhmq.e(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
+        this.a.mIsOnSpecialView = false;
+        this.a.getParent().requestDisallowInterceptTouchEvent(false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
+        }
+      }
+    }
+    return false;
   }
 }
 

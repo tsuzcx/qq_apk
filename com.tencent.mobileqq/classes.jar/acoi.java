@@ -1,6 +1,26 @@
-public abstract interface acoi
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class acoi
+  implements View.OnClickListener
 {
-  public abstract void onResponse(acoh paramacoh);
+  public acoi(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!aych.a().a(this.a.app, this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.a.b == null) || (!this.a.b.isShowing())) {
+        AccountManageActivity.a(this.a);
+      }
+    }
+  }
 }
 
 

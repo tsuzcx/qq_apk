@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.message;
 
-import adak;
-import aosf;
-import apas;
-import apaw;
+import abwz;
+import anla;
+import anuv;
+import anuz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class DatalineMessageManager$3
   implements Runnable
 {
-  public DatalineMessageManager$3(aosf paramaosf, DataLineMsgSet paramDataLineMsgSet) {}
+  public DatalineMessageManager$3(anla paramanla, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {
@@ -29,13 +29,13 @@ public class DatalineMessageManager$3
     int i;
     if (this.this$0.a().a(this.a) > 0)
     {
-      localObject1 = adak.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
-      if (!this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(localObject1)) {
+      localObject1 = abwz.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      if (!this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.containsKey(localObject1)) {
         break label409;
       }
-      bool = ((QQMessageFacade.Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).hasReply;
-      i = ((QQMessageFacade.Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).counter;
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.remove(localObject1);
+      bool = ((QQMessageFacade.Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.get(localObject1)).hasReply;
+      i = ((QQMessageFacade.Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.get(localObject1)).counter;
+      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.remove(localObject1);
     }
     for (;;)
     {
@@ -65,16 +65,16 @@ public class DatalineMessageManager$3
           ((QQMessageFacade.Message)localObject2).emoRecentMsg = null;
           ((QQMessageFacade.Message)localObject2).counter = i;
           ((QQMessageFacade.Message)localObject2).hasReply = bool;
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((QQMessageFacade.Message)localObject2);
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(adak.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.decodeMsg((QQMessageFacade.Message)localObject2);
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.put(abwz.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
         }
       }
-      Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      localObject2 = (RecentUser)((apaw)localObject2).findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+      localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject2 = (RecentUser)((anuz)localObject2).findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
       ((EntityManager)localObject1).close();
       if (localObject2 != null) {
-        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject2);
+        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(localObject2);
       }
       return;
       label409:

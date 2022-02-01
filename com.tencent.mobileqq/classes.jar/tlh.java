@@ -1,35 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.1;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.2;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.3;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import kotlin.Metadata;
 
-public class tlh
-  implements tky
-{
-  tlh(tlf paramtlf) {}
-  
-  public void a()
-  {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.3(this, paramInt));
-  }
-  
-  public void a(tqt paramtqt, int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.4(this, paramInt1, paramInt2));
-  }
-  
-  public void b()
-  {
-    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.2(this));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/MediaBridgeInvokeHandler$Companion;", "", "()V", "NS_MEDIA", "", "SAVE_IMAGE", "SHOW_PICTURE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tlh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

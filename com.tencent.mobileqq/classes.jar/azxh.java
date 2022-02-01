@@ -1,21 +1,25 @@
+import androidx.annotation.NonNull;
+
 public class azxh
 {
-  public float a;
   public int a;
-  public int b;
-  public int c;
+  public String a;
+  public String b = "";
   
-  public azxh(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  public azxh()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
+  @NonNull
   public String toString()
   {
-    return super.toString();
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("actionId").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("actionAndData").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("plainText").append("=").append(this.b).append("|");
+    return localStringBuilder.toString();
   }
 }
 

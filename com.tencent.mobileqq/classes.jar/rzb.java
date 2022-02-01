@@ -1,9 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public abstract interface rzb
+public class rzb
+  extends rsd
 {
-  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
+  private VideoInfo a;
+  
+  public VideoInfo a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.g;
+  }
 }
 
 

@@ -1,41 +1,111 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ajch
-  implements View.OnClickListener
+  extends anbq
 {
-  public ajch(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  public ajch(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, bcqu parambcqu)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    for (;;)
+    Object localObject2;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = ((Integer)localObject).intValue();
-      if ((i >= 0) && (this.a.jdField_a_of_type_Ajck != null))
+      localObject2 = new StringBuilder().append("Conversation.onGetBindSubAccount() return, isSucc=").append(paramBoolean).append(" mSubUin=");
+      if (parambcqu == null)
       {
-        localObject = this.a.getActivity();
-        if (localObject != null)
-        {
-          bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-          MessageRecord localMessageRecord = ((ajcj)this.a.jdField_a_of_type_Ajck.getItem(i)).a;
-          ChatHistoryBubbleListForTroopFragment.a((Activity)localObject, this.a.b, localMessageRecord, 100, 1);
-          if (QLog.isColorLevel()) {
-            QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
-          }
-          bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+        localObject1 = null;
+        QLog.d("SUB_ACCOUNT", 2, (String)localObject1);
+      }
+    }
+    else
+    {
+      if ((paramBoolean) && (parambcqu != null)) {
+        break label113;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder().append("Conversation.onGetBindSubAccount() return:");
+        if (!paramBoolean) {
+          break label107;
         }
       }
     }
+    label107:
+    for (parambcqu = "data=null";; parambcqu = "isSucc=false")
+    {
+      QLog.d("SUB_ACCOUNT", 4, parambcqu);
+      return;
+      localObject1 = parambcqu.c;
+      break;
+    }
+    label113:
+    if (parambcqu.jdField_a_of_type_Int == 1008)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onGetBindSubAccount() delete all subAccountType RU, and add default RU.");
+      }
+      bcqk.a(this.a.a, 0);
+    }
+    if (parambcqu.a())
+    {
+      bcqk.a(this.a.a, parambcqu.a(), 2);
+      this.a.a.mFirstGetSubAccountName = true;
+    }
+    if (parambcqu.b())
+    {
+      localObject1 = parambcqu.b();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          bcqk.c(this.a.a, (String)localObject2);
+        }
+      }
+    }
+    parambcqu.a();
+    this.a.a(0L);
+    Conversation.n(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, bcqu parambcqu)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() isSucc=" + paramBoolean);
+      if (parambcqu != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() mainAccount=" + parambcqu.b + " subAccount=" + parambcqu.c + " errType=" + parambcqu.jdField_a_of_type_Int + " errMsg=" + parambcqu.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((paramBoolean) && (parambcqu != null) && (parambcqu.c())) {
+      bcqk.a(this.a.a, parambcqu.c(), 1);
+    }
+    this.a.a(0L);
+  }
+  
+  protected void c(boolean paramBoolean, bcqu parambcqu)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() isSucc=" + paramBoolean);
+      if (parambcqu != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() mainAccount=" + parambcqu.b + " subAccount=" + parambcqu.c + " errType=" + parambcqu.jdField_a_of_type_Int + " errMsg=" + parambcqu.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if (parambcqu == null) {}
+    while ((!paramBoolean) || (parambcqu.c == null) || (parambcqu.c.length() <= 4)) {
+      return;
+    }
+    this.a.a.getMessageFacade().setReaded(parambcqu.c, 7000);
+    bcqk.c(this.a.a, parambcqu.c);
+    this.a.a(0L);
   }
 }
 

@@ -1,56 +1,45 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
+import android.os.Handler;
+import android.os.Message;
 
 class bhhj
-  extends CustomLruCache<String, Drawable>
+  extends Handler
 {
-  bhhj(bhhi parambhhi, int paramInt)
+  public int a;
+  
+  bhhj(bhhi parambhhi) {}
+  
+  public void a(int paramInt)
   {
-    super(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected int a(String paramString, Drawable paramDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
+    if (!this.jdField_a_of_type_Bhhi.isVisible())
     {
-      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
+      this.jdField_a_of_type_Bhhi.b = this.jdField_a_of_type_Int;
+      return;
+    }
+    if (this.jdField_a_of_type_Bhhi.b > this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Bhhi.c(this.jdField_a_of_type_Bhhi.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bhhi.e);
+      return;
+    }
+    if (this.jdField_a_of_type_Bhhi.b < this.jdField_a_of_type_Int)
+    {
+      int i = this.jdField_a_of_type_Bhhi.b + this.jdField_a_of_type_Bhhi.f;
+      if (i <= this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_Bhhi.c(i);
+      }
+      for (;;)
+      {
+        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bhhi.e);
+        return;
+        this.jdField_a_of_type_Bhhi.c(this.jdField_a_of_type_Int);
       }
     }
-    int m;
-    int k;
-    do
-    {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
-      paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-    }
+    removeMessages(0);
   }
 }
 

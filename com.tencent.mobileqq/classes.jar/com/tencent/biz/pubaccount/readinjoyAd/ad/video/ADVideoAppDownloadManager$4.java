@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.video;
 
-import acwa;
-import bjsz;
+import absl;
+import bhyo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import nzq;
-import tqt;
+import obb;
+import txh;
 
 class ADVideoAppDownloadManager$4
   implements Runnable
 {
-  ADVideoAppDownloadManager$4(ADVideoAppDownloadManager paramADVideoAppDownloadManager, tqt paramtqt) {}
+  ADVideoAppDownloadManager$4(ADVideoAppDownloadManager paramADVideoAppDownloadManager, txh paramtxh) {}
   
   public void run()
   {
-    if (nzq.a(ADVideoAppDownloadManager.a(this.this$0), this.a.d))
+    if (obb.a(ADVideoAppDownloadManager.a(this.this$0), this.a.d))
     {
       QLog.d("ADVideoAppDownloadManager", 1, "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
@@ -29,8 +29,8 @@ class ADVideoAppDownloadManager$4
         {
           QLog.d("ADVideoAppDownloadManager", 1, "already finishDownload." + this.a.d);
           this.this$0.a(this.a, 5, 100);
-          DownloadInfo localDownloadInfo = bjsz.a().c(this.a.a);
-          bjsz.a().a(localDownloadInfo);
+          DownloadInfo localDownloadInfo = bhyo.a().c(this.a.a);
+          bhyo.a().a(localDownloadInfo);
           return;
         }
         i = ADVideoAppDownloadManager.a(this.this$0, ADVideoAppDownloadManager.a(this.this$0), this.a);
@@ -40,7 +40,7 @@ class ADVideoAppDownloadManager$4
       } while (!QLog.isColorLevel());
       QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading.isPkgDownloading." + this.a.d + " " + i);
       return;
-      if (acwa.a())
+      if (absl.a())
       {
         this.this$0.a(this.a, 0);
         return;
@@ -51,7 +51,7 @@ class ADVideoAppDownloadManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

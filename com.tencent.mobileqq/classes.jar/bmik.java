@@ -1,59 +1,31 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public abstract class bmik
-  extends Binder
-  implements bmij
+public class bmik
+  implements WtTicketPromise
 {
-  public bmik()
+  public bmik(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public void Done(Ticket paramTicket)
   {
-    attachInterface(this, "cooperation.qlink.IQlinkService");
+    bmbx.b("AEEditorImageEditFragment", "psKey success.");
   }
   
-  public static bmij a(IBinder paramIBinder)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
-    if ((localIInterface != null) && ((localIInterface instanceof bmij))) {
-      return (bmij)localIInterface;
-    }
-    return new bmil(paramIBinder);
+    bmbx.d("AEEditorImageEditFragment", paramErrMsg.toString());
   }
   
-  public IBinder asBinder()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qlink.IQlinkService");
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    bmbx.d("AEEditorImageEditFragment", paramErrMsg.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmik
  * JD-Core Version:    0.7.0.1
  */

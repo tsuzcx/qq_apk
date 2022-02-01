@@ -1,10 +1,10 @@
 package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
-import lbj;
+import lba;
 
 class TraeAudioManager$headsetSwitchThread
-  extends TraeAudioManager.switchThread
+  extends TraeAudioManager.SwitchThread
 {
   TraeAudioManager$headsetSwitchThread(TraeAudioManager paramTraeAudioManager, long paramLong)
   {
@@ -18,16 +18,16 @@ class TraeAudioManager$headsetSwitchThread
   
   public void a()
   {
-    this.this$0.a(this.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_AndroidContentContext, false);
-    this.this$0.jdField_a_of_type_AndroidMediaAudioManager.setWiredHeadsetOn(true);
-    e();
+    this.this$0.a(this.jdField_a_of_type_Long, TraeAudioManager.a(this.this$0), false);
+    TraeAudioManager.a(this.this$0).setWiredHeadsetOn(true);
+    c();
     int i = 0;
     for (;;)
     {
       if (this.jdField_a_of_type_Boolean == true)
       {
         if (TraeAudioManager.a(this.this$0)) {
-          this.this$0.a(this.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_AndroidContentContext, false);
+          this.this$0.a(this.jdField_a_of_type_Long, TraeAudioManager.a(this.this$0), false);
         }
         long l;
         if (i < 5) {
@@ -47,7 +47,7 @@ class TraeAudioManager$headsetSwitchThread
         {
           for (;;)
           {
-            lbj.e(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
+            lba.h(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
           }
         }
       }

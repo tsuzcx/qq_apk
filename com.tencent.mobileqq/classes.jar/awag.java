@@ -1,6 +1,23 @@
-public abstract interface awag
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+
+public class awag
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(boolean paramBoolean);
+  public awag(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.b(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.b(this.a);
+  }
 }
 
 

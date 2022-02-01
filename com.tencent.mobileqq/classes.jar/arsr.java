@@ -1,16 +1,37 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
-public class arsr
+class arsr
+  implements Animation.AnimationListener
 {
-  public static final Uri a;
-  public static final String[] a;
-  public static final String[] b = { "raw_contact_id", "data1" };
+  arsr(arsq paramarsq, arti paramarti1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, arti paramarti2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Arsq.a).b(this.jdField_b_of_type_Arti, this.c, this.d);
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_Arti.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
+    }
+    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_Arsq.jdField_b_of_type_Int;
+    double d1 = d2;
+    if (this.jdField_a_of_type_Boolean) {
+      d1 = 180.0D - d2;
+    }
+    this.jdField_a_of_type_Arsq.jdField_b_of_type_Float = ((float)d1);
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_Arti.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
+    }
+    this.jdField_a_of_type_Arsq.a(2, this.jdField_b_of_type_Boolean);
   }
 }
 

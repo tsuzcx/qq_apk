@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import aczn;
-import aotu;
-import bcrg;
+import abvw;
+import anmr;
+import bbko;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseMessageManagerForTroopAndDisc$3
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$3(aczn paramaczn, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
+  public BaseMessageManagerForTroopAndDisc$3(abvw paramabvw, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -20,21 +20,21 @@ public class BaseMessageManagerForTroopAndDisc$3
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.this$0.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L);
+      this.this$0.a.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L);
       return;
     }
-    this.this$0.a.a().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.this$0.a.getMsgCache().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     this.this$0.a();
     long l1 = System.currentTimeMillis();
     long l2 = this.jdField_a_of_type_Long;
-    if (this.this$0.a.a().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-      this.this$0.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
+    if (this.this$0.a.getMsgCache().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+      this.this$0.a.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
     }
     for (;;)
     {
-      this.this$0.a.a().e(null);
+      this.this$0.a.getMsgCache().e(null);
       return;
-      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aotu.b, aotu.k);
+      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, anmr.b, anmr.k);
     }
   }
 }

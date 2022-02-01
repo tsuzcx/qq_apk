@@ -1,53 +1,25 @@
-import com.tencent.mobileqq.activity.weather.WeatherServlet.PermissionCallback.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.NewIntent;
-import mqq.app.QQPermissionCallback;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
-public final class amlp
-  implements QQPermissionCallback
+public class amlp
+  implements Animation.AnimationListener
 {
-  private WeakReference<QQAppInterface> a;
-  private WeakReference<NewIntent> b;
-  private WeakReference<AppActivity> c;
+  public amlp(ApolloGameViewBinder.GameListAdapter.2.1.1 param1) {}
   
-  private amlp(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramNewIntent);
-    this.c = new WeakReference(paramAppActivity);
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_Amlq.a = null;
   }
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 1, "User requestPermissions denied...");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    NewIntent localNewIntent = (NewIntent)this.b.get();
-    AppActivity localAppActivity = (AppActivity)this.c.get();
-    if ((localQQAppInterface != null) && (localNewIntent != null) && (localAppActivity != null))
-    {
-      ThreadManager.getSubThreadHandler().post(new WeatherServlet.PermissionCallback.1(this, localNewIntent, localQQAppInterface));
-      bhlq.a(localAppActivity, paramArrayOfString, paramArrayOfInt);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 1, "User requestPermissions grant...");
-    }
-    paramArrayOfString = (QQAppInterface)this.a.get();
-    paramArrayOfInt = (NewIntent)this.b.get();
-    if ((paramArrayOfString != null) && (paramArrayOfInt != null)) {
-      amln.a(paramArrayOfString, paramArrayOfInt);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

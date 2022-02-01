@@ -1,33 +1,64 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-class vnq
-  extends RecyclerView.OnScrollListener
+@TargetApi(14)
+public class vnq
+  extends vni
 {
-  vnq(vnp paramvnp, String paramString1, String paramString2) {}
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public vnq(@NonNull String[] paramArrayOfString)
   {
-    TextView localTextView;
-    if ((this.jdField_a_of_type_Vnp.a().a() instanceof aace))
+    super(paramArrayOfString);
+  }
+  
+  protected void a(String[] paramArrayOfString, vnj paramvnj)
+  {
+    int n = paramArrayOfString.length;
+    int i = 0;
+    if (i < n)
     {
-      paramInt1 = ((aace)this.jdField_a_of_type_Vnp.a().a()).findFirstVisibleItemPosition();
-      if ((vnp.a(this.jdField_a_of_type_Vnp) != paramInt1) && (vnp.a(this.jdField_a_of_type_Vnp) != null))
+      File localFile1 = new File(paramArrayOfString[i]);
+      double d = a(localFile1);
+      File[] arrayOfFile = localFile1.listFiles();
+      if (arrayOfFile == null) {}
+      for (;;)
       {
-        localTextView = vnp.a(this.jdField_a_of_type_Vnp);
-        if (paramInt1 <= 1) {
-          break label89;
+        i += 1;
+        break;
+        long l = System.currentTimeMillis();
+        int i1 = arrayOfFile.length;
+        int k = 0;
+        int j = 0;
+        for (;;)
+        {
+          if (j < i1)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile2 = arrayOfFile[j];
+              int m = k;
+              if (l - localFile2.lastModified() > 86400000L)
+              {
+                a(localFile2);
+                m = k + 1;
+              }
+              j += 1;
+              k = m;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                xvv.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
         }
+        paramvnj.jdField_b_of_type_Double = (d - a(localFile1) + paramvnj.jdField_b_of_type_Double);
+        paramvnj.jdField_b_of_type_Int = (k + paramvnj.jdField_b_of_type_Int);
       }
-    }
-    label89:
-    for (paramRecyclerView = this.jdField_a_of_type_JavaLangString;; paramRecyclerView = this.b)
-    {
-      localTextView.setText(paramRecyclerView);
-      vnp.a(this.jdField_a_of_type_Vnp, paramInt1);
-      return;
     }
   }
 }

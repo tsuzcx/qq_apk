@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
+import amsw;
 import android.os.Message;
-import anyw;
-import azxr;
-import bahm;
-import blhq;
+import aymg;
+import ayxd;
+import bjng;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
@@ -12,13 +12,13 @@ import com.tencent.mobileqq.data.Card;
 public class ProfileQZoneComponent$6
   implements Runnable
 {
-  public ProfileQZoneComponent$6(bahm parambahm) {}
+  public ProfileQZoneComponent$6(ayxd paramayxd) {}
   
   public void run()
   {
     int j = 0;
-    azxr localazxr = (azxr)bahm.a(this.this$0);
-    Object localObject = (anyw)bahm.a(this.this$0).getManager(51);
+    aymg localaymg = (aymg)ayxd.a(this.this$0);
+    Object localObject = (amsw)ayxd.a(this.this$0).getManager(51);
     if (localObject == null)
     {
       localObject = null;
@@ -37,16 +37,16 @@ public class ProfileQZoneComponent$6
       if (i != 0) {}
       for (localMessage.what = 6;; localMessage.what = 5)
       {
-        if (bahm.a(this.this$0) != null) {
-          bahm.a(this.this$0).sendMessage(localMessage);
+        if (ayxd.a(this.this$0) != null) {
+          ayxd.a(this.this$0).sendMessage(localMessage);
         }
         i = j;
-        if (localazxr.a != null) {
-          i = localazxr.a.h;
+        if (localaymg.a != null) {
+          i = localaymg.a.h;
         }
-        bahm.a(this.this$0, i);
+        ayxd.a(this.this$0, i);
         return;
-        localObject = ((anyw)localObject).b(localazxr.a.a);
+        localObject = ((amsw)localObject).b(localaymg.a.a);
         break;
       }
     }

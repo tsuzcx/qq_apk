@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-
-public final class axeq
-  implements Parcelable.Creator<MiniAppOptions>
+class axeq
+  implements axfc
 {
-  public MiniAppOptions a(Parcel paramParcel)
-  {
-    return new MiniAppOptions(paramParcel);
-  }
+  axeq(axen paramaxen, axes paramaxes) {}
   
-  public MiniAppOptions[] a(int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    return new MiniAppOptions[paramInt];
+    this.jdField_a_of_type_Axen.c(paramString);
+    if (this.jdField_a_of_type_Axes != null) {
+      this.jdField_a_of_type_Axes.a(paramBoolean, paramString);
+    }
   }
 }
 

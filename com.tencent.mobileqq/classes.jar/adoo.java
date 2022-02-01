@@ -1,17 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
-class adoo
-  implements View.OnClickListener
+public class adoo
+  implements ViewSwitcher.ViewFactory
 {
-  adoo(adom paramadom) {}
+  public adoo(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public View makeView()
   {
-    this.a.a.d();
-    adom.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

@@ -1,35 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.Future;
 
-@JsPlugin(secondary=true)
 public class bkur
-  extends BaseJsPlugin
+  implements PluginManagerUpdater
 {
-  @JsEvent({"refreshQzoneFeed"})
-  public void refreshQzoneFeed(RequestEvent paramRequestEvent)
+  private aulr jdField_a_of_type_Aulr;
+  private File jdField_a_of_type_JavaIoFile;
+  
+  public bkur(aulr paramaulr, File paramFile)
   {
-    Activity localActivity = this.mMiniAppContext.getAttachedActivity();
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent("action_personalize_js2qzone");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("cmd", "refreshFeed");
-      localIntent.putExtras(localBundle);
-      bmtd.a(localActivity, bmtk.a(), localIntent);
-      paramRequestEvent.ok();
-      if (QLog.isColorLevel()) {
-        QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
-      }
-      return;
-    }
-    QLog.e("RefreshQzoneFeedPlugin", 1, "activity is null");
+    this.jdField_a_of_type_Aulr = paramaulr;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
+  
+  public File getLatest()
+  {
+    return this.jdField_a_of_type_JavaIoFile;
+  }
+  
+  public Future isAvailable(File paramFile)
+  {
+    return this.jdField_a_of_type_Aulr.isAvailable(paramFile);
+  }
+  
+  public Future update()
+  {
+    return this.jdField_a_of_type_Aulr.update();
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

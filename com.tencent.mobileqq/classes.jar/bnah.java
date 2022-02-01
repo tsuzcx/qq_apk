@@ -1,18 +1,48 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.ImageTagInfo;
+import android.os.Handler;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnah
-  implements Parcelable.Creator<ImageTagInfo>
+public class bnah
+  implements FFmpegExecuteResponseCallback
 {
-  public ImageTagInfo a(Parcel paramParcel)
+  public bnah(CropVideoActivity paramCropVideoActivity) {}
+  
+  public void onFailure(String paramString)
   {
-    return new ImageTagInfo(paramParcel, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    }
+    this.a.a.sendEmptyMessage(4);
   }
   
-  public ImageTagInfo[] a(int paramInt)
+  public void onFinish(boolean paramBoolean)
   {
-    return new ImageTagInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    }
+    this.a.a.sendEmptyMessage(3);
+  }
+  
+  public void onProgress(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
+    }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    }
   }
 }
 

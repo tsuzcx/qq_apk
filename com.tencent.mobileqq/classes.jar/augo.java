@@ -1,6 +1,6 @@
 public abstract interface augo
 {
-  public abstract void a(String paramString1, String paramString2);
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

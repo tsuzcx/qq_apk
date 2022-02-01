@@ -15,18 +15,18 @@ import android.widget.SeekBar;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.qphone.base.util.QLog;
-import ocd;
-import odr;
+import odq;
+import ofe;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rmr;
-import rpj;
-import rpk;
-import rpl;
-import rpm;
-import rvy;
-import rwc;
-import rxg;
+import rtt;
+import rwl;
+import rwm;
+import rwn;
+import rwo;
+import sdc;
+import sdg;
+import sek;
 
 public class VideoFeedsGestureLayout
   extends RelativeLayout
@@ -40,11 +40,11 @@ public class VideoFeedsGestureLayout
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private VideoFeedsPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private rmr jdField_a_of_type_Rmr;
-  private rpj jdField_a_of_type_Rpj;
-  private rpk jdField_a_of_type_Rpk;
-  private rpm jdField_a_of_type_Rpm;
-  private rvy jdField_a_of_type_Rvy;
+  private rtt jdField_a_of_type_Rtt;
+  private rwl jdField_a_of_type_Rwl;
+  private rwm jdField_a_of_type_Rwm;
+  private rwo jdField_a_of_type_Rwo;
+  private sdc jdField_a_of_type_Sdc;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -114,8 +114,8 @@ public class VideoFeedsGestureLayout
   
   public void a()
   {
-    if (this.jdField_a_of_type_Rpm != null) {
-      this.jdField_a_of_type_Rpm.a();
+    if (this.jdField_a_of_type_Rwo != null) {
+      this.jdField_a_of_type_Rwo.a();
     }
     this.jdField_c_of_type_Int = 0;
   }
@@ -128,8 +128,8 @@ public class VideoFeedsGestureLayout
     if (paramInt == 0)
     {
       this.jdField_d_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Rpj != null) {
-        this.jdField_a_of_type_Rpj.a(this, 1);
+      if (this.jdField_a_of_type_Rwl != null) {
+        this.jdField_a_of_type_Rwl.a(this, 1);
       }
       if (this.jdField_a_of_type_AndroidMediaAudioManager == null)
       {
@@ -160,10 +160,10 @@ public class VideoFeedsGestureLayout
           break;
         }
         this.jdField_d_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Rpj == null) {
+        if (this.jdField_a_of_type_Rwl == null) {
           break;
         }
-        this.jdField_a_of_type_Rpj.a(this, 2);
+        this.jdField_a_of_type_Rwl.a(this, 2);
         break;
         if (this.jdField_c_of_type_Int == 0) {
           this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(3);
@@ -179,12 +179,12 @@ public class VideoFeedsGestureLayout
           if (i != 0) {
             break label273;
           }
-          rxg.a().a(true, "user_gesture", j);
+          sek.a().a(true, "user_gesture", j);
         }
         for (;;)
         {
           this.jdField_a_of_type_AndroidMediaAudioManager.setStreamVolume(3, i, 0);
-          this.jdField_a_of_type_Rpm.a(1, i / this.g, 0L, 0L);
+          this.jdField_a_of_type_Rwo.a(1, i / this.g, 0L, 0L);
           break;
           i = j;
           if (j >= 0) {
@@ -194,12 +194,12 @@ public class VideoFeedsGestureLayout
           break label192;
           j = 1;
           break label203;
-          rxg.a().a(false, "user_gesture", j);
+          sek.a().a(false, "user_gesture", j);
         }
-      } while (this.jdField_a_of_type_Rmr == null);
+      } while (this.jdField_a_of_type_Rtt == null);
       if (this.jdField_c_of_type_Int == 0)
       {
-        if (this.jdField_a_of_type_Rmr.a()) {
+        if (this.jdField_a_of_type_Rtt.a()) {
           this.jdField_b_of_type_Boolean = true;
         }
         if (this.f != -1) {
@@ -219,11 +219,11 @@ public class VideoFeedsGestureLayout
       }
       for (;;)
       {
-        this.jdField_a_of_type_Rmr.a(i / 255.0F);
-        this.jdField_a_of_type_Rpm.a(2, i / 255.0F, 0L, 0L);
+        this.jdField_a_of_type_Rtt.a(i / 255.0F);
+        this.jdField_a_of_type_Rwo.a(2, i / 255.0F, 0L, 0L);
         this.f = i;
         break;
-        this.e = this.jdField_a_of_type_Rmr.a();
+        this.e = this.jdField_a_of_type_Rtt.a();
         break label337;
         this.e = this.f;
         break label337;
@@ -233,10 +233,10 @@ public class VideoFeedsGestureLayout
         }
       }
     case 3: 
-      if ((this.jdField_a_of_type_Rvy != null) && (this.jdField_a_of_type_Rvy.a() != null))
+      if ((this.jdField_a_of_type_Sdc != null) && (this.jdField_a_of_type_Sdc.a() != null))
       {
-        l2 = this.jdField_a_of_type_Rvy.a().jdField_b_of_type_Int * 1000;
-        l1 = this.jdField_a_of_type_Rvy.a();
+        l2 = this.jdField_a_of_type_Sdc.a().jdField_b_of_type_Int * 1000;
+        l1 = this.jdField_a_of_type_Sdc.a();
       }
       break;
     }
@@ -254,19 +254,19 @@ public class VideoFeedsGestureLayout
       for (;;)
       {
         this.h = ((int)(f1 * (float)l2));
-        this.jdField_a_of_type_Rpm.a(3, paramFloat, this.h, l2);
+        this.jdField_a_of_type_Rwo.a(3, paramFloat, this.h, l2);
         break;
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null)
         {
-          l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.b();
+          l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.c();
           l1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a();
           break label517;
         }
-        if (this.jdField_a_of_type_Rpk == null) {
+        if (this.jdField_a_of_type_Rwm == null) {
           break label770;
         }
-        l2 = this.jdField_a_of_type_Rpk.a();
-        l1 = this.jdField_a_of_type_Rpk.b();
+        l2 = this.jdField_a_of_type_Rwm.a();
+        l1 = this.jdField_a_of_type_Rwm.b();
         break label517;
         f1 = f2;
         if (f2 < 0.0F) {
@@ -275,23 +275,23 @@ public class VideoFeedsGestureLayout
       }
       if (this.jdField_c_of_type_Int == 3)
       {
-        if (this.jdField_a_of_type_Rvy == null) {
+        if (this.jdField_a_of_type_Sdc == null) {
           break label725;
         }
-        this.jdField_a_of_type_Rvy.c(this.h);
+        this.jdField_a_of_type_Sdc.c(this.h);
         if (this.jdField_a_of_type_AndroidWidgetSeekBar != null) {
           this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.h / 1000);
         }
       }
       for (;;)
       {
-        this.jdField_a_of_type_Rpm.a(0, 0.0F, 0L, 0L);
+        this.jdField_a_of_type_Rwo.a(0, 0.0F, 0L, 0L);
         break;
         label725:
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null) {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a(this.h, true);
-        } else if (this.jdField_a_of_type_Rpk != null) {
-          this.jdField_a_of_type_Rpk.a(this.h);
+        } else if (this.jdField_a_of_type_Rwm != null) {
+          this.jdField_a_of_type_Rwm.a(this.h);
         }
       }
       label770:
@@ -310,7 +310,7 @@ public class VideoFeedsGestureLayout
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new rpl(this));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new rwn(this));
     }
   }
   
@@ -342,11 +342,11 @@ public class VideoFeedsGestureLayout
       {
         localJSONException.printStackTrace();
         continue;
-        ocd.b(null, null, "0X8008A42", "0X8008A42", 0, 0, "", "", "", odr.a(localJSONObject), false);
+        odq.b(null, null, "0X8008A42", "0X8008A42", 0, 0, "", "", "", ofe.a(localJSONObject), false);
         continue;
-        ocd.b(null, null, "0X8008A43", "0X8008A43", 0, 0, "", "", "", odr.a(localJSONObject), false);
+        odq.b(null, null, "0X8008A43", "0X8008A43", 0, 0, "", "", "", ofe.a(localJSONObject), false);
         continue;
-        ocd.b(null, null, "0X8008A41", "0X8008A41", 0, 0, "", "", "", odr.a(localJSONObject), false);
+        odq.b(null, null, "0X8008A41", "0X8008A41", 0, 0, "", "", "", ofe.a(localJSONObject), false);
       }
     }
   }
@@ -365,11 +365,11 @@ public class VideoFeedsGestureLayout
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
     if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Rpm = new rpm();
+      this.jdField_a_of_type_Rwo = new rwo();
     }
     try
     {
-      this.jdField_a_of_type_Rpm.a(this.jdField_a_of_type_AndroidAppActivity, this);
+      this.jdField_a_of_type_Rwo.a(this.jdField_a_of_type_AndroidAppActivity, this);
       this.jdField_a_of_type_Boolean = true;
       if (this.jdField_c_of_type_Boolean)
       {
@@ -388,8 +388,8 @@ public class VideoFeedsGestureLayout
           }
         }
         a(true);
-      } while (this.jdField_a_of_type_Rmr == null);
-      this.jdField_a_of_type_Rmr.a();
+      } while (this.jdField_a_of_type_Rtt == null);
+      this.jdField_a_of_type_Rtt.a();
       this.f = -1;
     }
   }
@@ -400,9 +400,9 @@ public class VideoFeedsGestureLayout
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnCustomClickListener(rpj paramrpj)
+  public void setOnCustomClickListener(rwl paramrwl)
   {
-    this.jdField_a_of_type_Rpj = paramrpj;
+    this.jdField_a_of_type_Rwl = paramrwl;
   }
   
   public void setSeekBar(SeekBar paramSeekBar)
@@ -410,9 +410,9 @@ public class VideoFeedsGestureLayout
     this.jdField_a_of_type_AndroidWidgetSeekBar = paramSeekBar;
   }
   
-  public void setVideoBrightnessController(rmr paramrmr)
+  public void setVideoBrightnessController(rtt paramrtt)
   {
-    this.jdField_a_of_type_Rmr = paramrmr;
+    this.jdField_a_of_type_Rtt = paramrtt;
   }
   
   public void setVideoPlayManager(VideoFeedsPlayManager paramVideoFeedsPlayManager)
@@ -421,14 +421,14 @@ public class VideoFeedsGestureLayout
     this.jdField_a_of_type_Int = 2;
   }
   
-  public void setVideoPlayManager(rpk paramrpk)
+  public void setVideoPlayManager(rwm paramrwm)
   {
-    this.jdField_a_of_type_Rpk = paramrpk;
+    this.jdField_a_of_type_Rwm = paramrwm;
   }
   
-  public void setVideoPlayManager(rvy paramrvy)
+  public void setVideoPlayManager(sdc paramsdc)
   {
-    this.jdField_a_of_type_Rvy = paramrvy;
+    this.jdField_a_of_type_Sdc = paramsdc;
     this.jdField_a_of_type_Int = 1;
   }
 }

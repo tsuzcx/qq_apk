@@ -1,19 +1,47 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+import android.app.Activity;
+import android.content.Intent;
+import org.jetbrains.annotations.NotNull;
 
 public class pmf
+  extends pmb
 {
-  public static pme a(int paramInt, Context paramContext)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public pmf(@NotNull pmc parampmc, Activity paramActivity)
   {
-    switch (paramInt)
+    super(parampmc, "RIJDailyPopupStep");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private boolean b()
+  {
+    int j = 5;
+    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    int i = j;
+    if (localIntent != null)
     {
-    default: 
-      return new MediaGifView(paramContext);
-    case 0: 
-      return new MediaGifView(paramContext);
+      i = j;
+      if (localIntent.hasExtra("launch_from")) {
+        i = localIntent.getIntExtra("launch_from", 5);
+      }
     }
-    return new MediaVideoView(paramContext);
+    if (i == 15) {}
+    for (boolean bool = true;; bool = false)
+    {
+      twp.a("RIJDailyFloatingPopupStep", "isOpenFloatingWindow = " + bool);
+      return bool;
+    }
+  }
+  
+  protected void g() {}
+  
+  protected void h() {}
+  
+  public void i()
+  {
+    this.jdField_a_of_type_Boolean = b();
+    a(this.jdField_a_of_type_Boolean);
   }
 }
 

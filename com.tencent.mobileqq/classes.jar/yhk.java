@@ -1,49 +1,40 @@
+import android.content.Context;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.view.ViewGroup;
 
 public class yhk
-  extends wjm<yhc, yml>
+  extends ygy
 {
-  public yhk(yhc paramyhc)
+  public int c;
+  
+  public yhk(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    super(paramyhc);
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
   }
   
-  public void a(@NonNull yhc paramyhc, @NonNull yml paramyml)
+  @NonNull
+  public Class<? extends ygz> a()
   {
-    if ((paramyml.jdField_a_of_type_Int == 2) || (!paramyml.jdField_a_of_type_JavaLangString.equals(yhc.a(paramyhc))) || (yhc.a(paramyhc) == null))
-    {
-      yuk.b(this.TAG, "ignore this video cookie change event. %s.", paramyml.toString());
-      return;
-    }
-    if (!yhc.a(paramyhc).c())
-    {
-      yuk.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramyml.toString() });
-      return;
-    }
-    paramyml = yhc.a(paramyhc).a(yhc.a(paramyhc), yhc.a(paramyhc).a().mVideoPullType);
-    if (paramyml == null)
-    {
-      yuk.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { yhc.a(paramyhc), Integer.valueOf(yhc.a(paramyhc).a().mVideoPullType) });
-      return;
-    }
-    yuk.a(this.TAG, "receive video cookie change event. %s.", paramyml.toString());
-    yhc.a(paramyhc).a().updateVideoInfo(paramyml);
-    yhc.a(paramyhc).a(paramyml.mVideoItemList, true);
-    if (yhc.a(paramyhc) != null) {
-      yhc.a(paramyhc).a(paramyml.mVideoPullType, paramyml.mVideoNextCookie, paramyml.mVideoSeq);
-    }
-    yhc.a(paramyhc).c();
+    return yhl.class;
   }
   
-  public Class acceptEventClass()
+  @NonNull
+  public ygz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return yml.class;
+    return new yhl(this, paramContext, paramViewGroup);
   }
   
-  public void b(@NonNull yhc paramyhc, @NonNull yml paramyml) {}
+  public void a(int paramInt)
+  {
+    xvv.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

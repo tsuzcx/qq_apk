@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby;
 
-import akrx;
-import axws;
-import axxb;
-import bdmc;
+import ajpv;
+import awka;
+import awkj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -17,28 +17,28 @@ class NearbyTitleBarActivity$ReportRunnable$1
   {
     try
     {
-      axws.d(this.this$0.jdField_a_of_type_JavaLangString);
+      awka.d(this.this$0.jdField_a_of_type_JavaLangString);
       long l1 = this.this$0.jdField_a_of_type_Long - this.this$0.c;
       long l2 = this.this$0.d - this.this$0.c;
       long l3 = this.this$0.jdField_b_of_type_Long;
       long l4 = this.this$0.c;
       HashMap localHashMap = new HashMap();
-      localHashMap.put("param_DeviceType", akrx.a() + "");
+      localHashMap.put("param_DeviceType", ajpv.a() + "");
       localHashMap.put("param_PreloadType", this.this$0.jdField_b_of_type_Int + "");
       if ((l1 > 0L) && (l1 < 60000L) && (l2 > 0L) && (l2 < 60000L))
       {
         if (this.this$0.jdField_a_of_type_Int != 0) {
           break label261;
         }
-        bdmc.a(BaseApplicationImpl.getContext()).a(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", false, l2, l1, localHashMap, "");
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", false, l2, l1, localHashMap, "");
       }
       while (QLog.isColorLevel())
       {
-        axxb.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.this$0.jdField_b_of_type_Int) });
+        awkj.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.this$0.jdField_b_of_type_Int) });
         return;
         label261:
         if (this.this$0.jdField_a_of_type_Int == 1) {
-          bdmc.a(BaseApplicationImpl.getContext()).a(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", true, l2, l1, localHashMap, "");
+          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", true, l2, l1, localHashMap, "");
         }
       }
       return;

@@ -38,6 +38,11 @@ public class MiniProgramLpReportDC04239
   public static final String ARK_ACTION = "ark";
   public static final String ARK_SUB_ACTION_BATTLE = "ark_battle";
   public static final String DESKTOP_ACTION = "desktop";
+  public static final String DESKTOP_SEARCH_ACTION_TYPE = "desktop";
+  public static final String DESKTOP_SEARCH_SUB_ACTION_BUTTON = "search_button";
+  public static final String DESKTOP_SEARCH_SUB_ACTION_CLICK = "result_click";
+  public static final String DESKTOP_SEARCH_SUB_ACTION_EXPOSE = "result_expo";
+  public static final String DESKTOP_SEARCH_SUB_ACTION_TYPE = "search";
   public static final String DROP_DOWN_ACTION = "drop_down";
   public static final String DROP_DOWN_RESERVERS_DELETE = "delete";
   public static final String DROP_DOWN_RESERVERS_SETTOP_OFF = "settop_off";
@@ -103,6 +108,7 @@ public class MiniProgramLpReportDC04239
   public static final String PAY_WX_ACTION = "wechat_pay";
   public static final String PAY_WX_SUB_ACTION_LAUNCH = "launch_wechatpay";
   public static final String PROFILE_CARD_ACTION = "id_card";
+  public static final String PULLDOWN_ACTION = "pulldown";
   public static final String RETAIN_DIALOG_ACTION_TYPE = "minigame_popup";
   public static final String RETAIN_DIALOG_RESERVES_CLICK = "click";
   public static final String RETAIN_DIALOG_RESERVES_EXPOSE = "expo";
@@ -111,6 +117,12 @@ public class MiniProgramLpReportDC04239
   public static final String RETAIN_DIALOG_SUB_ACTION_ICON = "icon";
   public static final String RETAIN_DIALOG_SUB_ACTION_MORE = "moregame";
   public static final String SCOPE_ACTION = "scope";
+  public static final String SEARCH_ACTION_TYPE = "search";
+  public static final String SEARCH_RESERVES_UNUSED = "unused";
+  public static final String SEARCH_RESERVES_USED = "used";
+  public static final String SEARCH_SUB_ACTION_BUTTON_CLICK = "click_button";
+  public static final String SEARCH_SUB_ACTION_RESULT_CLICK = "result_click";
+  public static final String SEARCH_SUB_ACTION_RESULT_VIEW = "result_view";
   public static final String SHARE_ALERT_RESERVERS_ACTION = "show";
   public static final String SYS_ALERT_ACTION = "sys_alert";
   private static final String TAG = "MiniProgramLpReportDC04239";
@@ -316,7 +328,7 @@ public class MiniProgramLpReportDC04239
   
   public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    reportWithGroupId(paramString1, paramString2, paramString3, "", paramString4);
+    reportWithGroupId(null, paramString1, paramString2, paramString3, "", paramString4);
   }
   
   public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
@@ -388,9 +400,9 @@ public class MiniProgramLpReportDC04239
     MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.1(paramString3, paramString4, paramString5, paramString1, paramMiniAppConfig, paramString2));
   }
   
-  public static void reportWithGroupId(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static void reportWithGroupId(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5));
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5, paramMiniAppConfig));
   }
   
   private static void sendRecordDurationMsg()

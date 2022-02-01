@@ -1,27 +1,23 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class mcl
+class mcl
+  extends Handler
 {
-  public static void a(String paramString)
+  public mcl(mck parammck, Looper paramLooper)
   {
-    bdll.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+    super(paramLooper);
   }
   
-  public static void b(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof VideoAppInterface)) {
-      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
-    }
-    if (i > 0) {}
-    for (localObject = "0X80076B4";; localObject = "0X80076B3")
+    switch (paramMessage.what)
     {
-      a((String)localObject);
-      lbj.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
+    default: 
       return;
     }
+    mck.a(this.a);
   }
 }
 

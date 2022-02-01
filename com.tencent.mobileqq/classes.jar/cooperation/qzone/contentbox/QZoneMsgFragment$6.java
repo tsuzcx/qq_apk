@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.widget.RelativeLayout.LayoutParams;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 
@@ -12,13 +12,13 @@ class QZoneMsgFragment$6
   
   public void run()
   {
-    if ((this.a != null) && (this.a.size() > 0)) {}
+    if ((this.val$datas != null) && (this.val$datas.size() > 0)) {}
     for (int i = 44;; i = 0)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)QZoneMsgFragment.a(this.this$0).getLayoutParams();
-      localLayoutParams.bottomMargin = bhtq.b(i);
-      QZoneMsgFragment.a(this.this$0).setLayoutParams(localLayoutParams);
-      QZoneMsgFragment.a(this.this$0).a(this.a);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)QZoneMsgFragment.access$500(this.this$0).getLayoutParams();
+      localLayoutParams.bottomMargin = ViewUtils.dpToPx(i);
+      QZoneMsgFragment.access$500(this.this$0).setLayoutParams(localLayoutParams);
+      QZoneMsgFragment.access$600(this.this$0).updateData(this.val$datas);
       return;
     }
   }

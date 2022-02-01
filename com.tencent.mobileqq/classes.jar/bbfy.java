@@ -1,60 +1,29 @@
-import android.support.v4.view.ViewPager;
-import android.view.MotionEvent;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class bbfy
-  implements GLGestureListener
 {
-  private ViewPager a;
+  public static final String a = amtj.a(2131701938);
+  public static final String b = amtj.a(2131701965);
+  public static final String c = amtj.a(2131701937);
+  public static final String d = amtj.a(2131701936);
   
-  public bbfy(ViewPager paramViewPager)
+  public static String a(long paramLong)
   {
-    this.a = paramViewPager;
-  }
-  
-  public void a(ViewPager paramViewPager)
-  {
-    this.a = paramViewPager;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1002;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    paramMotionEvent.getAction();
-    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
-    try
-    {
-      this.a.onTouchEvent(paramMotionEvent);
-      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
+    long l = System.currentTimeMillis() / 1000L - paramLong;
+    if ((l >= 0L) && (l < 60L)) {
+      return a;
     }
-    catch (Exception localException)
-    {
-      try
-      {
-        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
-        {
-          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-          this.a.onTouchEvent(paramMotionEvent);
-          paramMotionEvent.recycle();
-        }
-        return false;
-        localException = localException;
-        localException.printStackTrace();
-      }
-      catch (Exception paramMotionEvent)
-      {
-        for (;;)
-        {
-          paramMotionEvent.printStackTrace();
-        }
-      }
+    if ((l >= 60L) && (l < 3600L)) {
+      return l / 60L + b;
     }
+    if ((l >= 3600L) && (l < 86400L)) {
+      return l / 3600L + c;
+    }
+    if ((l >= 86400L) && (l < 432000L)) {
+      return l / 86400L + d;
+    }
+    return new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong * 1000L));
   }
 }
 

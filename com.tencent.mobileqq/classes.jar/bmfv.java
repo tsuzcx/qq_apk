@@ -1,58 +1,30 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class bmfv
+  implements Animator.AnimatorListener
 {
-  private static bmfv jdField_a_of_type_Bmfv;
-  private HashMap<String, bmfu> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public bmfv(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public static bmfv a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (jdField_a_of_type_Bmfv == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bmfv == null) {
-        jdField_a_of_type_Bmfv = new bmfv();
-      }
-      return jdField_a_of_type_Bmfv;
-    }
-    finally {}
+    AEEditorAILoadingView.a(this.a, 0);
   }
   
-  public bmfu a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    bmfu localbmfu2 = (bmfu)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    bmfu localbmfu1 = localbmfu2;
-    if (localbmfu2 == null)
-    {
-      localbmfu1 = new bmfu(paramString);
-      localbmfu1.a();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbmfu1);
-    }
-    return localbmfu1;
+    AEEditorAILoadingView.a(this.a, 0);
   }
   
-  public void a(String paramString)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    if ((bmfu)this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    }
+    AEEditorAILoadingView.a(this.a, AEEditorAILoadingView.a(this.a) + 1);
   }
   
-  public boolean a(String paramString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return (bmfu)this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null;
-  }
-  
-  public void b(String paramString)
-  {
-    bmfu localbmfu2 = (bmfu)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    bmfu localbmfu1 = localbmfu2;
-    if (localbmfu2 == null)
-    {
-      localbmfu1 = new bmfu(paramString);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbmfu1);
-    }
-    localbmfu1.a();
+    AEEditorAILoadingView.a(this.a, 1);
   }
 }
 

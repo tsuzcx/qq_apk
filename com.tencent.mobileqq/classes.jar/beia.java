@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.BubblePopupWindow;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class beia
-  implements View.OnClickListener
+public class beia
+  extends JobSegment<String, beie>
 {
-  beia(behz parambehz) {}
+  private beic jdField_a_of_type_Beic;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public beia(beic parambeic)
   {
-    behz.a(this.a).b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Beic = parambeic;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    xvv.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    vqn.a().a(new beid(this.jdField_a_of_type_Beic, this.jdField_a_of_type_JavaLangString), new beib(this));
   }
 }
 

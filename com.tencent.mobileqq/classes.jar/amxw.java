@@ -1,33 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
-import com.tencent.widget.HorizontalListView;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public class amxw
-  implements Animation.AnimationListener
+class amxw
+  implements FileFilter
 {
-  public amxw(CmGameDebugView paramCmGameDebugView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean accept(File paramFile)
   {
-    if (CmGameDebugView.a(this.a))
-    {
-      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
-      CmGameDebugView.a(this.a, false);
-    }
-    if (CmGameDebugView.b(this.a)) {
-      CmGameDebugView.b(this.a, 0);
-    }
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxw
  * JD-Core Version:    0.7.0.1
  */

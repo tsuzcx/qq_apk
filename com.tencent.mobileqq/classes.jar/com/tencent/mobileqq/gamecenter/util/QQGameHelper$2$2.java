@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.gamecenter.util;
 
-import avmg;
+import atzf;
 import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQGameHelper$2$2
   implements Runnable
 {
-  public QQGameHelper$2$2(avmg paramavmg, QQGamePubWebView paramQQGamePubWebView) {}
+  public QQGameHelper$2$2(atzf paramatzf, QQGamePubWebView paramQQGamePubWebView) {}
   
   public void run()
   {

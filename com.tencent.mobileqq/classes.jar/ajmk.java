@@ -1,10 +1,26 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+
 public class ajmk
-  extends ajmf
+  implements Animation.AnimationListener
 {
-  public boolean a()
+  public ajmk(CountryActivity paramCountryActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Ajmq.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

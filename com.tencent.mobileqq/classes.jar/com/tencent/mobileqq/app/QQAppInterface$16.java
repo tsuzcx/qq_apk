@@ -11,11 +11,11 @@ class QQAppInterface$16
   {
     try
     {
-      QQAppInterface.f(this.this$0).unregisterReceiver(QQAppInterface.b(this.this$0));
+      QQAppInterface.access$3000(this.this$0).unregisterReceiver(QQAppInterface.access$2900(this.this$0));
       try
       {
         label17:
-        QQAppInterface.g(this.this$0).unregisterReceiver(QQAppInterface.a(this.this$0));
+        QQAppInterface.access$3100(this.this$0).unregisterReceiver(QQAppInterface.access$1500(this.this$0));
         return;
       }
       catch (Exception localException1) {}

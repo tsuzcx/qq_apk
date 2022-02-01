@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apqt;
+import aokg;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniRecog$3
   implements Runnable
 {
-  public MiniRecog$3(apqt paramapqt) {}
+  public MiniRecog$3(aokg paramaokg) {}
   
   public void run()
   {

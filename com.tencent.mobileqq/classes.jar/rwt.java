@@ -1,6 +1,23 @@
-public abstract class rwt
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+
+public class rwt
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  private rwt(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    super.onAnimationCancel(paramAnimator);
+    VideoFeedsGuideView.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    VideoFeedsGuideView.a(this.a, true);
+  }
 }
 
 

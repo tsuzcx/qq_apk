@@ -1,45 +1,57 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.nearby.smooth.ItemLoader;
+import com.tencent.widget.AbsListView;
 
-public class axgt
+public final class axgt
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  int jdField_a_of_type_Int;
+  final Handler jdField_a_of_type_AndroidOsHandler;
+  axgs jdField_a_of_type_Axgs;
+  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public axgt(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
+  void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_a_of_type_Int = paramInt;
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public int a()
+  void a(View paramView1, View paramView2, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Axgs.a();
+    ListAdapter localListAdapter = this.jdField_a_of_type_Axgs.a();
+    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+      return;
+    }
   }
   
-  public MsgBackupUserData a()
+  void a(axgs paramaxgs)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+    this.jdField_a_of_type_Axgs = paramaxgs;
+    if (this.jdField_a_of_type_Axgs != null)
+    {
+      paramaxgs = this.jdField_a_of_type_Axgs.a();
+      paramaxgs.setOnScrollListener(new axgw(this, null));
+      paramaxgs.setOnTouchListener(new axgv(this, null));
+      paramaxgs.setOnItemSelectedListener(new axgx(this, null));
+    }
   }
   
-  public String a()
+  void b()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
-    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Axgs == null) {
+      throw new IllegalStateException("Cannot cancel requests with no managed view");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Axgs.a());
   }
 }
 

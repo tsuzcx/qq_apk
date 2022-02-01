@@ -1,40 +1,38 @@
 package com.tencent.mobileqq.transfile;
 
-import betj;
-import betq;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ForwardSdkShareProcessor$RichStep$1
+class ForwardSdkShareProcessor$RichStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$RichStep$1(betq parambetq) {}
+  ForwardSdkShareProcessor$RichStep$1(ForwardSdkShareProcessor.RichStep paramRichStep) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|run|retry=" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|run|retry=" + this.this$1.retryCount);
     }
-    if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.this$1.isCancelled.get())
     {
-      this.a.f();
+      this.this$1.doCancel();
       return;
     }
-    int i = this.a.a();
-    if (this.a.c.get())
+    int i = this.this$1.doRich();
+    if (this.this$1.needRich.get())
     {
-      if ((i == -1) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+      if ((i == -1) && (this.this$1.retryCount.getAndIncrement() < 2))
       {
         ThreadManager.post(this, 8, null, true);
         return;
       }
-      this.a.c.set(false);
-      QLog.d("Q.share.ForwardSdkShareProcessor", 1, "RichStep|rich fail,lack=" + betj.a(this.a.jdField_b_of_type_Betj));
+      this.this$1.needRich.set(false);
+      QLog.d("Q.share.ForwardSdkShareProcessor", 1, "RichStep|rich fail,lack=" + ForwardSdkShareProcessor.access$000(this.this$1.this$0));
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.b();
+    this.this$1.isDidRich = true;
+    this.this$1.doNextStep();
   }
 }
 

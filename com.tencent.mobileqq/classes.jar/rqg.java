@@ -1,20 +1,57 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
 
-final class rqg
-  implements Animation.AnimationListener
+public class rqg
+  extends AsyncTask<Void, Void, Boolean>
 {
-  rqg(View paramView) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public rqg(Bitmap paramBitmap, String paramString)
   {
-    this.a.setTag(-1, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected Boolean a(Void... paramVarArgs)
+  {
+    return Boolean.valueOf(yoy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    executeOnExecutor(ThreadManagerExecutor.getExecutorService(64), null);
+  }
+  
+  public void a(URLDrawable.DownloadListener paramDownloadListener)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = paramDownloadListener;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    super.onPostExecute(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener == null) {
+      return;
+    }
+    if (paramBoolean.booleanValue())
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadSucceed(0L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadFailed(0);
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadStarted();
+    }
+  }
 }
 
 

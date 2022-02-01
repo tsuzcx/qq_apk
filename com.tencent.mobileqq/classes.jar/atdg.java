@@ -1,137 +1,42 @@
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.StringCompanionObject;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog;", "Lcom/tencent/mobileqq/mini/ui/dialog/DialogFromBottom;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "subTitleView", "Landroid/widget/TextView;", "getSubTitleView", "()Landroid/widget/TextView;", "setSubTitleView", "(Landroid/widget/TextView;)V", "taskAdapter", "Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter;", "init", "", "refresh", "maxMatchCount", "", "leftMatchCount", "tasks", "", "Lcom/tencent/mobileqq/extendfriend/limitchat/CompletePesonalDataTask;", "showDialog", "updateTasks", "Companion", "SpacesItemDecoration", "TaskAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class atdg
-  extends DialogFromBottom
+public class atdg
 {
-  public static final atdh a;
-  @Nullable
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  @Nullable
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private atdj jdField_a_of_type_Atdj;
+  public static boolean a;
+  public Activity a;
   
   static
   {
-    jdField_a_of_type_Atdh = new atdh(null);
+    jdField_a_of_type_Boolean = true;
   }
   
-  public atdg(@NotNull Context paramContext)
+  private atdg(Activity paramActivity)
   {
-    super(paramContext);
-    a(paramContext);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  private final void a(Context paramContext)
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
   {
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131561181, null);
-    if (localObject1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout");
-    }
-    localObject1 = (LinearLayout)localObject1;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)((LinearLayout)localObject1).findViewById(2131376409));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((LinearLayout)localObject1).findViewById(2131379026));
-    Object localObject2 = new LinearLayoutManager(paramContext);
-    ((LinearLayoutManager)localObject2).setOrientation(1);
-    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-    if (localRecyclerView != null) {
-      localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject2);
-    }
-    int i = bhtq.b(8.0F);
-    int j = bhtq.b(0.0F);
-    localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-    if (localObject2 != null) {
-      ((RecyclerView)localObject2).addItemDecoration((RecyclerView.ItemDecoration)new atdi(i, j));
-    }
-    this.jdField_a_of_type_Atdj = new atdj(paramContext);
-    paramContext = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-    if (paramContext != null) {
-      paramContext.setAdapter((RecyclerView.Adapter)this.jdField_a_of_type_Atdj);
-    }
-    ((ImageView)((LinearLayout)localObject1).findViewById(2131362954)).setOnClickListener((View.OnClickListener)new atdm(this));
-    setOnCancelListener((DialogInterface.OnCancelListener)atdn.a);
-    ((LinearLayout)localObject1).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new atdo((LinearLayout)localObject1));
-    setContentView((View)localObject1);
-  }
-  
-  private final void a(List<? extends ataf> paramList)
-  {
-    atdj localatdj = this.jdField_a_of_type_Atdj;
-    if (localatdj == null) {
-      Intrinsics.throwNpe();
-    }
-    localatdj.a(paramList);
-    paramList = this.jdField_a_of_type_Atdj;
-    if (paramList == null) {
-      Intrinsics.throwNpe();
-    }
-    paramList.notifyDataSetChanged();
-  }
-  
-  public final void a(int paramInt1, int paramInt2, @Nullable List<? extends ataf> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompletePersonalDataDialog", 2, "showDialog maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. >>>gotoDownload. url:" + paramString);
+    if ((paramActivity == null) || (paramString == null) || (paramBundle == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CompletePersonalDataDialog", 2, "showDialog return for empty tasks");
-      }
-      return;
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
+      return false;
     }
-    b(paramInt1, paramInt2, paramList);
-    show();
+    new atdg(paramActivity).a(paramString, paramBundle);
+    return true;
   }
   
-  public final void b(int paramInt1, int paramInt2, @Nullable List<? extends ataf> paramList)
+  public void a(String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompletePersonalDataDialog", 2, "refresh maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
-    }
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localTextView != null)
-    {
-      Object localObject = StringCompanionObject.INSTANCE;
-      localObject = getContext().getString(2131698005);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.getString(R.stri…_personal_data_sub_title)");
-      Object[] arrayOfObject = new Object[2];
-      arrayOfObject[0] = Integer.valueOf(paramInt1);
-      arrayOfObject[1] = Integer.valueOf(paramInt2);
-      localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
-      localTextView.setText((CharSequence)localObject);
-    }
-    a(paramList);
+    atgn.a(paramString, new atdh(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdg
  * JD-Core Version:    0.7.0.1
  */

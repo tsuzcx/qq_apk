@@ -1,209 +1,186 @@
-import android.util.Base64;
-import android.util.LruCache;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable;
+import cooperation.vip.qqbanner.QbossADImmersionBannerManager.2;
+import mqq.os.MqqHandler;
 
-final class blbs
-  extends LruCache<String, blcq>
+public class blbs
+  extends akki
 {
-  private static final byte[] jdField_a_of_type_ArrayOfByte = { 90, 39, 2, -61, -88, -75, -36, 105, -102, 55, 18, 69, -72, -11, -84, 50 };
-  private static final byte[] jdField_b_of_type_ArrayOfByte = { -86, 39, 34, -61, -88, -75, -84, 105, 74, 39, 2, 35, -85, -74, -68, 105 };
-  private File jdField_a_of_type_JavaIoFile;
-  private List<Pair<String, blcq>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private File jdField_b_of_type_JavaIoFile;
-  private boolean jdField_b_of_type_Boolean;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private blbp jdField_a_of_type_Blbp;
+  private ZipAnimationDrawable jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
   
-  public blbs(String paramString, int paramInt)
+  private int a(blbp paramblbp)
   {
-    super(paramInt);
-    this.jdField_a_of_type_JavaIoFile = new File(paramString);
-    this.jdField_b_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaIoFile.getPath() + ".bak");
-    b();
-  }
-  
-  private void a(blbx paramblbx)
-  {
-    if (this.jdField_b_of_type_JavaIoFile.exists())
+    if ((paramblbp == null) || (TextUtils.isEmpty(paramblbp.j))) {
+      return 24;
+    }
+    try
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_b_of_type_JavaIoFile.renameTo(this.jdField_a_of_type_JavaIoFile);
+      int i = Integer.parseInt(paramblbp.j);
+      return i;
     }
-    if ((this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_JavaIoFile.isFile()))
+    catch (Exception paramblbp)
     {
-      int i = 0;
-      if (this.jdField_a_of_type_JavaIoFile.length() > 10485760L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Cache file too big: " + this.jdField_a_of_type_JavaIoFile.length());
-        }
-        i = 1;
-      }
-      new blbw(this.jdField_a_of_type_JavaIoFile, paramblbx).a();
-      if (i != 0)
-      {
-        blbd.a(2, 2);
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
+      paramblbp.printStackTrace();
+      QLog.i("QbossADBannerManager", 1, "getFrameRate exception");
     }
+    return 24;
   }
   
-  private void a(String paramString, blcq paramblcq, XmlSerializer paramXmlSerializer)
+  private void i()
   {
-    if (paramblcq.jdField_a_of_type_Long > new Date().getTime()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Write entry: " + paramblcq.toString());
-      }
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (localLayoutParams == null) {
+      localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
     }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        paramXmlSerializer.startTag(null, "CacheEntry");
-        paramXmlSerializer.attribute(null, "Key", paramString);
-        paramXmlSerializer.attribute(null, "AttrType", Integer.toString(paramblcq.jdField_a_of_type_Int));
-        paramXmlSerializer.attribute(null, "Category", Integer.toString(paramblcq.b));
-        paramXmlSerializer.attribute(null, "SubCategory", Integer.toString(paramblcq.c));
-        paramXmlSerializer.attribute(null, "Action", Integer.toString(paramblcq.d));
-        paramXmlSerializer.attribute(null, "ExpireTime", Long.toString(paramblcq.jdField_a_of_type_Long));
-        if (paramblcq.jdField_a_of_type_ArrayOfByte != null) {
-          paramXmlSerializer.attribute(null, "ExtraInfo", Base64.encodeToString(paramblcq.jdField_a_of_type_ArrayOfByte, 0));
-        }
-        paramXmlSerializer.endTag(null, "CacheEntry");
-        return;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-    }
-    QLog.d("QSec.AVEngine", 2, "Discard expired entry for write: " + paramblcq.toString());
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      if (!this.jdField_b_of_type_JavaIoFile.exists())
-      {
-        if (!this.jdField_a_of_type_JavaIoFile.renameTo(this.jdField_b_of_type_JavaIoFile)) {
-          return false;
-        }
-      }
-      else {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-    }
-    new blbw(this.jdField_b_of_type_JavaIoFile, new blbv(this, this.jdField_a_of_type_JavaIoFile)).a();
-    return true;
-  }
-  
-  private blcq b(String paramString)
-  {
-    paramString = new blbu(this, paramString);
-    a(paramString);
-    return paramString.a;
-  }
-  
-  private void b()
-  {
-    a(new blbt(this));
-  }
-  
-  public blcq a(String paramString)
-  {
-    Object localObject;
-    if (paramString == null) {
-      localObject = null;
-    }
-    blcq localblcq;
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return localObject;
-          localblcq = (blcq)super.get(paramString);
-          if (localblcq == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QSec.AVEngine", 2, "Hit memory cache for key: " + paramString);
-          }
-          localObject = localblcq;
-        } while (localblcq.jdField_a_of_type_Long >= new Date().getTime());
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Memory cache expired for key: " + paramString);
-        }
-        remove(paramString);
-        return null;
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localObject = localblcq;
-      } while (this.jdField_b_of_type_Boolean != true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Look from cache file for key: " + paramString);
-      }
-      localblcq = b(paramString);
-      localObject = localblcq;
-    } while (localblcq == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Hit file cache for key: " + paramString);
-    }
-    if (localblcq.jdField_a_of_type_Long < new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "File cache expired for key: " + paramString);
-      }
-      return null;
-    }
-    put(paramString, localblcq);
-    return localblcq;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      a();
-    }
-  }
-  
-  public void a(String paramString, blcq paramblcq)
-  {
-    if ((paramString != null) && (paramblcq != null))
-    {
-      if (put(paramString, paramblcq) == null) {
-        this.jdField_a_of_type_JavaUtilList.add(new Pair(paramString, paramblcq));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Put to cache, key: %s, result: %s ", new Object[] { paramString, paramblcq.toString() }));
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() >= 5)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Trigger rebuild cache file");
-        }
-        a();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, blcq paramblcq1, blcq paramblcq2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramblcq1, paramblcq2);
-    if (!paramBoolean) {
+      localLayoutParams.width = b();
+      localLayoutParams.height = c();
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      Object localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((ViewGroup.MarginLayoutParams)localObject).topMargin = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = b();
+      ((ViewGroup.LayoutParams)localObject).height = super.c();
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = ((int)(localLayoutParams.height * 2.050848F));
+      ((ViewGroup.LayoutParams)localObject).height = localLayoutParams.height;
+      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.jdField_a_of_type_AndroidViewView.addOnLayoutChangeListener(new blbt(this));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Memory cache overflow.");
+  }
+  
+  private void j()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null)) {
+      return;
     }
-    this.jdField_b_of_type_Boolean = true;
+    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getHandler(Conversation.class);
+    if (localMqqHandler != null)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 1062;
+      localMessage.obj = new View[] { this.jdField_a_of_type_AndroidViewView, this.c, this.d, this.jdField_a_of_type_AndroidWidgetImageView };
+      localMqqHandler.sendMessage(localMessage);
+      return;
+    }
+    QLog.i("QbossADBannerManager", 1, "handle is null.");
+  }
+  
+  private void k()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null)) {
+      return;
+    }
+    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getHandler(Conversation.class);
+    if (localMqqHandler != null)
+    {
+      localMqqHandler.sendEmptyMessage(1063);
+      return;
+    }
+    QLog.i("QbossADBannerManager", 1, "handle is null.");
+  }
+  
+  protected int a()
+  {
+    return 2131561892;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379709));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379823));
+    this.c = ((TextView)localView.findViewById(2131379430));
+    this.d = ((TextView)localView.findViewById(2131379438));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365147));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368419));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365139));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369763));
+    i();
+    return new View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
+  protected void a(akke paramakke)
+  {
+    super.a(paramakke);
+    ThreadManagerV2.getUIHandlerV2().post(new QbossADImmersionBannerManager.2(this, paramakke));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.stop();
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.start();
+  }
+  
+  protected int c()
+  {
+    return super.c() + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + ViewUtils.dpToPx(50.0F);
+  }
+  
+  public void c()
+  {
+    super.c();
+    j();
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
+    {
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.stop();
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.release();
+    }
+    k();
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
+    {
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.stop();
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.release();
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = null;
+    }
   }
 }
 

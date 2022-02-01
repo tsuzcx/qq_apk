@@ -1,19 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class allg
-  implements View.OnClickListener
+  extends andd
 {
-  allg(aljw paramaljw, azku paramazku) {}
+  allg(allb paramallb) {}
   
-  public void onClick(View paramView)
+  protected void onAddRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    Intent localIntent = aziu.a(aljw.a(this.jdField_a_of_type_Aljw).app, this.jdField_a_of_type_Azku.a);
-    aljw.a(this.jdField_a_of_type_Aljw).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(allb.a(this.a))))
+    {
+      allb.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
+      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
+      return;
+    }
+    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + allb.a(this.a));
   }
 }
 

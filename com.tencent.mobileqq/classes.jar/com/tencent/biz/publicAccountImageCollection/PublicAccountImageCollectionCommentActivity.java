@@ -15,12 +15,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import uxd;
-import uxe;
-import uxf;
-import uxg;
-import uxh;
-import uxi;
+import vfa;
+import vfb;
+import vfc;
+import vfd;
+import vfe;
+import vff;
 
 public class PublicAccountImageCollectionCommentActivity
   extends BaseActivity
@@ -73,8 +73,9 @@ public class PublicAccountImageCollectionCommentActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -82,20 +83,20 @@ public class PublicAccountImageCollectionCommentActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559617);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364783);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364780));
+    super.setContentView(2131559619);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364814);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364811));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new uxd(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new uxe(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131364774).setOnClickListener(new uxf(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new uxg(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377319));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new uxh(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new vfa(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new vfb(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131364805).setOnClickListener(new vfc(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new vfd(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377070));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new vfe(this));
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("anonymous", false);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362699));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362704));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new uxi(this));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new vff(this));
     paramBundle = getIntent().getStringExtra("comment");
     if (!TextUtils.isEmpty(paramBundle))
     {
@@ -120,7 +121,7 @@ public class PublicAccountImageCollectionCommentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity
  * JD-Core Version:    0.7.0.1
  */

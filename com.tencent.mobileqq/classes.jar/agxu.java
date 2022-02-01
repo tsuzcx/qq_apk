@@ -1,31 +1,22 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class agxu
-  implements aoog
+public class agxu
+  extends BroadcastReceiver
 {
-  agxu(agxr paramagxr) {}
+  public agxu(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        agxr.b(this.a).setImageBitmap(paramBitmap);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          agxr.a(this.a).setImageBitmap(paramBitmap);
-        }
-      }
+      this.a.finish();
     }
   }
 }

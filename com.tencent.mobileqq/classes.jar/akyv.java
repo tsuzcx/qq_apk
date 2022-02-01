@@ -1,43 +1,22 @@
-import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
 public class akyv
-  extends Handler
+  extends MqqHandler
 {
-  public akyv(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
+  public akyv(ContactsInnerFrame paramContactsInnerFrame) {}
   
   public void handleMessage(Message paramMessage)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.b()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage:getActivity() == null || getActivity().isFinishing()");
-      }
-    }
-    do
+    switch (paramMessage.what)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage() returned:输入完成");
-      }
-    } while (NetConnInfoCenter.getServerTime() - this.a.c < this.a.b);
-    if (TextUtils.isEmpty(this.a.a.getText().toString()))
-    {
-      this.a.a(anzj.a(2131704868));
+    case 1: 
+    case 2: 
+    default: 
       return;
     }
-    bmrq.a(this.a.getActivity().app, "tenpay.com", new akyw(this));
+    ContactsInnerFrame.a(this.a);
   }
 }
 

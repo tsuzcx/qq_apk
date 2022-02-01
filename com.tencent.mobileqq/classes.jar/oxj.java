@@ -1,7 +1,33 @@
+import android.os.Bundle;
 import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView$Companion;", "", "()V", "MENU_BOTTOM", "", "MENU_CANCLE_BOTTOM", "MENU_CANCLE_TOP", "MENU_TOP", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxj {}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxj
+  extends nmf
+{
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  {
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      this.a.a(paramArrayOfByte);
+      return;
+    }
+    this.a.a(paramInt, "Empty error message.");
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
+    {
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

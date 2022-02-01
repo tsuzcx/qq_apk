@@ -1,70 +1,199 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.os.Looper;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-final class bngv
-  implements asmr
+public abstract class bngv
+  implements bngz
 {
-  bngv(EditText paramEditText) {}
+  private static String a;
+  protected float a;
+  public Context a;
+  public Rect a;
+  protected bngw a;
+  protected DoodleView a;
+  protected boolean b;
+  protected Paint h;
+  protected Paint i;
+  protected int p;
+  protected int q;
+  protected int r;
+  protected int s;
+  protected int t;
   
-  public void a(asmu paramasmu)
+  static
   {
-    if ((paramasmu == null) || (this.a == null)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramasmu instanceof assp));
-      i = this.a.getSelectionStart();
-      j = this.a.getSelectionEnd();
-    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
-    this.a.getEditableText().replace(i, j, behh.b(((assp)paramasmu).a));
+    jdField_a_of_type_JavaLangString = "BaseLayer";
   }
   
-  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
-  
-  public boolean a(asmu paramasmu)
+  public bngv(DoodleView paramDoodleView)
   {
-    return true;
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = paramDoodleView;
+    c();
   }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.h = new Paint();
+    this.h.setAntiAlias(true);
+    this.i = new Paint();
+    this.i.setAntiAlias(true);
+    this.i.setStyle(Paint.Style.STROKE);
+    this.i.setStrokeWidth(5.0F);
+    this.i.setColor(-16776961);
+    this.b = false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.t;
+  }
+  
+  public abstract String a();
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("illegal width or height, width=" + paramInt1 + ",height=" + paramInt2);
+    }
+    xvv.b("BaseLayer", "layer size,width=" + paramInt1 + ",height=" + paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsRect.top = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramInt2;
+    this.r = this.jdField_a_of_type_AndroidGraphicsRect.left;
+    this.s = this.jdField_a_of_type_AndroidGraphicsRect.right;
+    this.p = this.jdField_a_of_type_AndroidGraphicsRect.top;
+    this.q = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+  }
+  
+  protected abstract void a(Canvas paramCanvas);
+  
+  public void a(Canvas paramCanvas, float paramFloat)
+  {
+    b(paramCanvas);
+  }
+  
+  public void a(Canvas paramCanvas, float paramFloat, boolean paramBoolean)
+  {
+    a(paramCanvas, paramFloat);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    this.t = paramBundle.getInt("BaseLayer:TopLevelWeight");
+  }
+  
+  public void a(bngw parambngw)
+  {
+    this.jdField_a_of_type_Bngw = parambngw;
+  }
+  
+  public abstract boolean a(long paramLong);
+  
+  protected abstract boolean a(MotionEvent paramMotionEvent);
   
   public void b()
   {
-    if (this.a == null) {}
+    xvv.b("BaseLayer", getClass().getName() + " onDestroy.");
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect.width();
+  }
+  
+  public void c(int paramInt)
+  {
+    this.t = (paramInt + 1);
+  }
+  
+  public int d()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect.height();
+  }
+  
+  public final void d(Canvas paramCanvas)
+  {
+    a(paramCanvas);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setActiveLayer(this);
+    }
     for (;;)
     {
+      k();
       return;
-      if (this.a.getSelectionStart() != 0) {
-        try
-        {
-          Editable localEditable = this.a.getText();
-          int i = this.a.getSelectionStart();
-          int j = TextUtils.getOffsetBefore(this.a.getText(), i);
-          if (i != j)
-          {
-            localEditable.delete(Math.min(i, j), Math.max(i, j));
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.f();
     }
   }
   
-  public void b(asmu paramasmu) {}
+  public boolean d()
+  {
+    return this.b;
+  }
   
-  public void c() {}
+  public final boolean d(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Bngw != null) {
+      this.jdField_a_of_type_Bngw.a(this, paramMotionEvent);
+    }
+    k();
+    return a(paramMotionEvent);
+  }
   
-  public void d() {}
+  public void k()
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
+      return;
+    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.postInvalidate();
+  }
   
-  public void setting() {}
+  public void l()
+  {
+    xvv.b("BaseLayer", getClass().getName() + " onPause.");
+    this.b = false;
+  }
+  
+  public void m()
+  {
+    xvv.b("BaseLayer", getClass().getName() + " onResume.");
+    this.b = true;
+  }
+  
+  public void n()
+  {
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setTopLevelLayer(this);
+  }
 }
 
 

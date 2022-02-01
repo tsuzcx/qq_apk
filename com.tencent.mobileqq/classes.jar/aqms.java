@@ -1,18 +1,8 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class aqms
 {
-  public Set<Integer> a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c = false;
-  
-  public aqms()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
+  public int a;
+  public long a;
+  public String a;
 }
 
 

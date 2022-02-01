@@ -1,11 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class arvp
+  implements View.OnClickListener
 {
-  public int a = -1;
-  public boolean a;
+  public arvp(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public arvp(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = paramInt;
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    if (UniformDownloadActivity.a(this.a)) {
+      bibc.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bibc.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    }
   }
 }
 

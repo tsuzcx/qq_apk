@@ -1,22 +1,33 @@
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.qphone.base.util.QLog;
+
 class awov
+  extends awox
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  awov(awot paramawot) {}
   
-  public awov(String paramString1, String paramString2)
+  public Message a(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = bjtz.d(paramString2);
-    this.d = awor.a(paramString1);
+    if (paramMessage == null) {
+      return null;
+    }
+    return this.a.b(paramMessage);
   }
   
-  public String toString()
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      }
+      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 

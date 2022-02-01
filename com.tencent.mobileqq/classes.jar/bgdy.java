@@ -1,6 +1,18 @@
-public abstract interface bgdy
+import android.content.Context;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+class bgdy
+  extends QQCustomDialog
 {
-  public abstract void a(boolean paramBoolean);
+  bgdy(bgdv parambgdv, Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    super.onBackPressed();
+  }
 }
 
 

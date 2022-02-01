@@ -1,41 +1,18 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy.MusicPlayerListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuAdManager.1.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import mqq.os.MqqHandler;
 
-class bkyv
-  extends axqq
+public class bkyv
+  implements blbv
 {
-  bkyv(bkys parambkys) {}
+  bkyv(bkyu parambkyu) {}
   
-  public void onPlaySongChanged(com.tencent.mobileqq.music.SongInfo paramSongInfo)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (bkys.a(this.a) != null)
-    {
-      com.tencent.qqmini.sdk.launcher.core.model.SongInfo localSongInfo = new com.tencent.qqmini.sdk.launcher.core.model.SongInfo();
-      localSongInfo.album = paramSongInfo.g;
-      localSongInfo.coverUrl = paramSongInfo.e;
-      localSongInfo.detailUrl = paramSongInfo.f;
-      localSongInfo.duration = paramSongInfo.jdField_d_of_type_Long;
-      localSongInfo.fromMini = paramSongInfo.jdField_a_of_type_Boolean;
-      localSongInfo.id = paramSongInfo.jdField_a_of_type_Long;
-      localSongInfo.mid = paramSongInfo.jdField_a_of_type_JavaLangString;
-      localSongInfo.singer = paramSongInfo.h;
-      localSongInfo.singerId = paramSongInfo.jdField_c_of_type_Long;
-      localSongInfo.startTime = paramSongInfo.jdField_a_of_type_Int;
-      localSongInfo.summary = paramSongInfo.jdField_d_of_type_JavaLangString;
-      localSongInfo.title = paramSongInfo.jdField_c_of_type_JavaLangString;
-      localSongInfo.type = paramSongInfo.jdField_b_of_type_Int;
-      localSongInfo.uin = paramSongInfo.jdField_b_of_type_Long;
-      localSongInfo.url = paramSongInfo.jdField_b_of_type_JavaLangString;
-      bkys.a(this.a).onPlaySongChanged(localSongInfo);
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuAdManager.1.1(this, paramGetAdsRsp), 500L);
     }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    if ((bkys.a(this.a) == null) || ((bkys.a(this.a).a() != null) && (!bkys.a(this.a).a().equals(bkys.a(this.a))))) {}
-    while (bkys.a(this.a) == null) {
-      return;
-    }
-    bkys.a(this.a).onPlayStateChanged(paramInt);
   }
 }
 

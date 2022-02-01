@@ -1,23 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class ysf
-  extends QQUIEventReceiver<yrh, wtr>
+public abstract interface ysf
 {
-  public ysf(@NonNull yrh paramyrh)
-  {
-    super(paramyrh);
-  }
+  public abstract void a(int paramInt);
   
-  public void a(@NonNull yrh paramyrh, @NonNull wtr paramwtr)
-  {
-    paramyrh.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wtr.class;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,49 +1,72 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import com.tencent.mobileqq.ark.ArkTopGestureLayout;
+import android.graphics.Color;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aqdf
-  extends TopGestureLayout.TopGestureDetector
 {
-  public aqdf(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
+  public int a;
+  public ArrayList<bddb> a;
+  public boolean a;
+  
+  public aqdf()
   {
-    super(paramArkTopGestureLayout, paramContext);
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static aqdf a(String paramString)
   {
-    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
-    do
+    if (paramString == null) {
+      return null;
+    }
+    try
     {
-      do
+      aqdf localaqdf = new aqdf();
+      paramString = new JSONObject(paramString);
+      localaqdf.jdField_a_of_type_Boolean = paramString.optBoolean("showEntrance", false);
+      localaqdf.jdField_a_of_type_Int = paramString.optInt("bannerInterval", 10);
+      paramString = paramString.optJSONArray("array");
+      if (paramString != null)
       {
-        do
+        int i = 0;
+        while (i < paramString.length())
         {
-          do
-          {
-            return false;
-            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-            if (!this.a.hasGestureFlag(1)) {
-              break;
-            }
-          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
-          this.a.setGestureFlag(-1);
-        } while (ArkTopGestureLayout.a(this.a));
-        this.a.mOnFlingGesture.flingLToR();
-        return false;
-      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
-      this.a.setGestureFlag(-1);
-    } while (ArkTopGestureLayout.b(this.a));
-    this.a.mOnFlingGesture.flingRToL();
-    return false;
+          JSONObject localJSONObject = (JSONObject)paramString.get(i);
+          bddb localbddb = new bddb();
+          localbddb.jdField_b_of_type_Int = localJSONObject.optInt("id");
+          localbddb.jdField_c_of_type_Int = localJSONObject.optInt("order");
+          localbddb.a = localJSONObject.optString("title");
+          localbddb.jdField_b_of_type_JavaLangString = localJSONObject.optString("subTitle");
+          localbddb.d = Color.parseColor(localJSONObject.optString("bgColor"));
+          localbddb.jdField_c_of_type_JavaLangString = localJSONObject.optString("imageUrl");
+          localaqdf.jdField_a_of_type_JavaUtilArrayList.add(localbddb);
+          i += 1;
+        }
+      }
+      Collections.sort(localaqdf.jdField_a_of_type_JavaUtilArrayList, new aqdg());
+      QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localaqdf.toString());
+      return localaqdf;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      }
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return 50;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdf
  * JD-Core Version:    0.7.0.1
  */

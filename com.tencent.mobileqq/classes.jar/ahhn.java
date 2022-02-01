@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
-final class ahhn
-  implements ahky
+class ahhn
+  implements nnv
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhn(ahgz paramahgz) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    if (paramChatMessage.isSend()) {
-      return 48;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
     }
-    return 49;
+    paramString = this.a;
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ahgz.b(paramString, bool);
+      return;
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

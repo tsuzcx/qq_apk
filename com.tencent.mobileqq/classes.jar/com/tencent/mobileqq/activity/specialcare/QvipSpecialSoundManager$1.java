@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import amjr;
+import aleo;
 import android.content.Context;
 import java.io.File;
 
 class QvipSpecialSoundManager$1
   implements Runnable
 {
-  QvipSpecialSoundManager$1(QvipSpecialSoundManager paramQvipSpecialSoundManager, amjr paramamjr) {}
+  QvipSpecialSoundManager$1(QvipSpecialSoundManager paramQvipSpecialSoundManager, aleo paramaleo) {}
   
   public void run()
   {

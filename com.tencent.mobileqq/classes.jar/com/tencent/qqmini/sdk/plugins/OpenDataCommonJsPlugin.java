@@ -1,19 +1,29 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqmini.sdk.action.CheckJsServiceAction;
 import com.tencent.qqmini.sdk.action.GetShareState;
 import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.core.utils.StringUtil;
+import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
 import com.tencent.qqmini.sdk.launcher.model.InnerShareData.Builder;
@@ -21,11 +31,11 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
 import com.tencent.qqmini.sdk.utils.OpenDataDomainUtil;
-import com.tencent.qqmini.sdk.utils.WnsUtil;
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +44,7 @@ import org.json.JSONObject;
 public class OpenDataCommonJsPlugin
   extends BaseJsPlugin
 {
+  public static final String API_ON_INTERACTIVE_STORAGE_MODIFIED = "onInteractiveStorageModified";
   public static final int SHARE_TARGET_SHARE_CHAT = 5;
   private static final String TAG = "OpenDataCommonJsPlugin";
   private ChannelProxy mChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
@@ -53,6 +64,30 @@ public class OpenDataCommonJsPlugin
     return "";
   }
   
+  private void getPotentialFriendListImpl(RequestEvent paramRequestEvent)
+  {
+    if (this.mMiniAppInfo == null)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , no appid");
+      paramRequestEvent.fail("appid is null");
+      return;
+    }
+    String str = this.mMiniAppInfo.appId;
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPotentialFriendList(null, str, new OpenDataCommonJsPlugin.6(this, paramRequestEvent));
+  }
+  
+  private void getUserInteractiveStorage(String[] paramArrayOfString, RequestEvent paramRequestEvent)
+  {
+    if (this.mMiniAppInfo == null)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , no appid");
+      paramRequestEvent.fail("appid is null");
+      return;
+    }
+    String str = this.mMiniAppInfo.appId;
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInteractiveStorage(null, str, paramArrayOfString, new OpenDataCommonJsPlugin.7(this, paramRequestEvent));
+  }
+  
   private boolean isFileExists(String paramString)
   {
     return new File(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString)).exists();
@@ -67,6 +102,76 @@ public class OpenDataCommonJsPlugin
       return true;
     }
     return false;
+  }
+  
+  private void modifyFriendInteractiveStorage(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString8, String paramString9, int paramInt2)
+  {
+    if (this.mMiniAppInfo == null)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no appid");
+      paramRequestEvent.fail("appid is null.");
+      return;
+    }
+    String str1 = this.mMiniAppInfo.appId;
+    String str2 = this.mMiniAppInfo.shareId;
+    if (!paramBoolean.booleanValue())
+    {
+      if (TextUtils.isEmpty(paramString3))
+      {
+        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no openid");
+        paramRequestEvent.fail("openid is null.");
+      }
+    }
+    else if (TextUtils.isEmpty(str2))
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , no shareId");
+      paramRequestEvent.fail("shareId is null.");
+      return;
+    }
+    boolean bool = OpenDataDomainUtil.getInstance().isDomainValid(paramString6);
+    if ((!TextUtils.isEmpty(paramString6)) && (new File(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString6)).exists())) {}
+    for (int i = 1; (StringUtil.isEmpty(paramString6)) || ((!bool) && (i == 0)); i = 0)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , image illegal");
+      paramRequestEvent.fail("image illegal.");
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(paramString1, paramInt1 + "");
+    CloudStorage.StInteractiveTemplate localStInteractiveTemplate = new CloudStorage.StInteractiveTemplate();
+    localStInteractiveTemplate.action.set(paramString8);
+    localStInteractiveTemplate.object.set(paramString9);
+    localStInteractiveTemplate.ratio.set(paramInt2);
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt1, paramString2, localHashMap, paramBoolean.booleanValue(), localStInteractiveTemplate, new OpenDataCommonJsPlugin.8(this, paramRequestEvent, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
+  }
+  
+  private void onInteractiveStorageModified(JSONObject paramJSONObject, RequestEvent paramRequestEvent, String paramString)
+  {
+    try
+    {
+      if (CheckJsServiceAction.obtain(this.mMiniAppContext).isServiceOrMainContext(paramRequestEvent.jsService))
+      {
+        paramJSONObject.put("key", paramString);
+        paramRequestEvent = paramRequestEvent.jsService;
+        paramJSONObject = paramJSONObject.toString();
+        if (this.mIsMiniGame) {}
+        for (int i = -1;; i = PageAction.obtain(this.mMiniAppContext).getPageId())
+        {
+          paramRequestEvent.evaluateSubscribeJS("onInteractiveStorageModified", paramJSONObject, i);
+          return;
+        }
+      }
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "onInteractiveStorageModified error,", paramJSONObject);
+    }
+  }
+  
+  private void reportOpenDataShareResultTo4239(IMiniAppContext paramIMiniAppContext, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    ThreadManager.getSubThreadHandler().post(new OpenDataCommonJsPlugin.12(this, paramIMiniAppContext, paramString1, paramString2, paramInt, paramString3));
   }
   
   private void shareMessageToFriend(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, RequestEvent paramRequestEvent)
@@ -96,8 +201,8 @@ public class OpenDataCommonJsPlugin
       if ((!StringUtil.isEmpty(paramString4)) && ((bool2) || (bool1))) {
         break;
       }
-      paramString1.setSharePicPath(WnsUtil.defaultShareImg()).build().shareAppMessage();
-      QMLog.e("OpenDataCommonJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool2 + "] [isLocalResourceExists=" + bool1 + "] [imageUrl=" + paramString4 + "], use default share image");
+      QMLog.e("OpenDataCommonJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool2 + "] [isLocalResourceExists=" + bool1 + "] [imageUrl=" + paramString4 + "], image illegal.");
+      paramRequestEvent.fail("image illegal.");
       return;
     }
     if ((paramString4.startsWith("http")) || (paramString4.startsWith("https")))
@@ -108,9 +213,31 @@ public class OpenDataCommonJsPlugin
     paramString1.setSharePicPath(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString4)).setIsLocalPic(true).build().shareAppMessage();
   }
   
+  private void showConfirmModificationModel(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString8, String paramString9, int paramInt2)
+  {
+    String str2 = paramString9 + paramString8;
+    if (paramInt2 > 0) {}
+    for (String str1 = "确认" + paramString8 + paramString4 + paramInt1 * paramInt2 + paramString9 + "?"; paramBoolean.booleanValue(); str1 = "确认" + paramString8 + paramString4 + paramString9 + "?")
+    {
+      modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2);
+      return;
+    }
+    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataCommonJsPlugin.9(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2), null, new OpenDataCommonJsPlugin.10(this, paramRequestEvent));
+  }
+  
+  private void showQQCustomModel(String paramString1, String paramString2, String paramString3, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppBrandTask.runTaskOnUiThread(new OpenDataCommonJsPlugin.11(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
+  }
+  
   @JsEvent({"canUseComponent"})
   public void canUseComponent(RequestEvent paramRequestEvent)
   {
+    if (this.mIsMiniGame)
+    {
+      paramRequestEvent.fail("not mini app");
+      return;
+    }
     try
     {
       JSONObject localJSONObject = new JSONObject();
@@ -230,6 +357,21 @@ public class OpenDataCommonJsPlugin
     this.mChannelProxy.getGroupCloudStorage(this.mMiniAppInfo.appId, paramString, paramArrayOfString, new OpenDataCommonJsPlugin.2(this, paramRequestEvent));
   }
   
+  @JsEvent({"getPotentialFriendList"})
+  public void getPotentialFriendList(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      getPotentialFriendListImpl(paramRequestEvent);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + localThrowable);
+      paramRequestEvent.fail(localThrowable.getMessage());
+    }
+  }
+  
   @JsEvent({"getUserCloudStorage"})
   public void getUserCloudStorage(RequestEvent paramRequestEvent)
   {
@@ -279,6 +421,143 @@ public class OpenDataCommonJsPlugin
     }
     paramRequestEvent = new OpenDataCommonJsPlugin.1(this, paramRequestEvent);
     this.mChannelProxy.getUserCloudStorage(this.mMiniAppInfo.appId, paramArrayOfString, paramRequestEvent);
+  }
+  
+  @JsEvent({"getUserInteractiveStorage"})
+  public void getUserInteractiveStorage(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      JSONArray localJSONArray = new JSONObject(paramRequestEvent.jsonParams).optJSONArray("keyList");
+      String[] arrayOfString;
+      if (localJSONArray != null)
+      {
+        arrayOfString = new String[localJSONArray.length()];
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          arrayOfString[i] = ((String)localJSONArray.get(i));
+          i += 1;
+        }
+      }
+      for (;;)
+      {
+        getUserInteractiveStorage(arrayOfString, paramRequestEvent);
+        return;
+        arrayOfString = new String[0];
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + localThrowable);
+      paramRequestEvent.fail(localThrowable.getMessage());
+      return;
+    }
+  }
+  
+  @JsEvent({"modifyFriendInteractiveStorage"})
+  public void modifyFriendInteractiveStorage(RequestEvent paramRequestEvent)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+        String str6 = ((JSONObject)localObject).getString("key");
+        int m = ((JSONObject)localObject).getInt("opNum");
+        String str7 = ((JSONObject)localObject).getString("operation");
+        String str8 = ((JSONObject)localObject).optString("title");
+        String str9 = ((JSONObject)localObject).optString("imageUrl");
+        String str10 = ((JSONObject)localObject).optString("imageUrlId");
+        Boolean localBoolean = Boolean.valueOf(((JSONObject)localObject).optBoolean("quiet"));
+        String str1 = "";
+        String str2 = "";
+        int k = -1;
+        String str4 = "";
+        String str5 = "";
+        localObject = ((JSONObject)localObject).optJSONObject("friendInfo");
+        if (localObject != null)
+        {
+          str1 = ((JSONObject)localObject).getString("openid");
+          str2 = ((JSONObject)localObject).getString("nickname");
+        }
+        String str3 = str4;
+        localObject = str5;
+        int j = k;
+        if (!TextUtils.isEmpty(this.mApkgInfo.mConfigStr))
+        {
+          JSONArray localJSONArray = new JSONObject(this.mApkgInfo.mConfigStr).optJSONArray("modifyFriendInteractiveStorageTemplates");
+          str3 = str4;
+          localObject = str5;
+          j = k;
+          if (localJSONArray != null)
+          {
+            str3 = str4;
+            localObject = str5;
+            j = k;
+            if (localJSONArray.length() > 0)
+            {
+              i = 0;
+              str3 = str4;
+              localObject = str5;
+              j = k;
+              if (i < localJSONArray.length())
+              {
+                localObject = localJSONArray.getJSONObject(i);
+                if (localObject == null) {
+                  break label416;
+                }
+                str3 = ((JSONObject)localObject).optString("key");
+                if ((TextUtils.isEmpty(str3)) || (!str3.equals(str6))) {
+                  break label416;
+                }
+                j = ((JSONObject)localObject).optInt("ratio");
+                str3 = ((JSONObject)localObject).optString("action");
+                localObject = ((JSONObject)localObject).optString("object");
+              }
+            }
+          }
+        }
+        if (localBoolean.booleanValue())
+        {
+          modifyFriendInteractiveStorage(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, paramRequestEvent, str3, (String)localObject, j);
+          return;
+        }
+        showConfirmModificationModel(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, paramRequestEvent, str3, (String)localObject, j);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + localThrowable.getMessage());
+        paramRequestEvent.fail();
+        return;
+      }
+      label416:
+      i += 1;
+    }
+  }
+  
+  @JsEvent({"onMessage"})
+  public void onMessage(RequestEvent paramRequestEvent)
+  {
+    if (!this.mIsMiniGame)
+    {
+      paramRequestEvent.fail("not mini game");
+      return;
+    }
+    if (CheckJsServiceAction.obtain(this.mMiniAppContext).isServiceOrMainContext(paramRequestEvent.jsService))
+    {
+      MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+      if ((localMiniAppInfo != null) && (localMiniAppInfo.whiteList != null) && (localMiniAppInfo.whiteList.contains("onMessage")))
+      {
+        paramRequestEvent.jsService.evaluateSubscribeJS("onMessage", paramRequestEvent.jsonParams, 0);
+        return;
+      }
+      QMLog.e("OpenDataCommonJsPlugin", "开放域调用了未授权的私有API: postMessage -> onMessage");
+      return;
+    }
+    paramRequestEvent.jsService.evaluateSubscribeJS("onMessage", paramRequestEvent.jsonParams, 0);
   }
   
   @JsEvent({"removeUserCloudStorage"})
@@ -350,15 +629,15 @@ public class OpenDataCommonJsPlugin
             {
               String str2 = (String)localIterator.next();
               if (TextUtils.isEmpty(str2)) {
-                break label334;
+                break label338;
               }
               if (i != 0) {
-                break label337;
+                break label341;
               }
               localObject = "?";
               localStringBuilder.append((String)localObject).append(str2).append("=").append(localJSONObject.getString(str2));
               i += 1;
-              break label334;
+              break label338;
             }
             this.mMiniAppInfo.friendMessageQuery = localStringBuilder.toString();
             QMLog.d("OpenDataCommonJsPlugin", "friendMessageQuery : " + this.mMiniAppInfo.friendMessageQuery);
@@ -372,12 +651,12 @@ public class OpenDataCommonJsPlugin
       catch (Throwable localThrowable)
       {
         QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_SET_MESSAGE_TO_FRIEND_QUERY error ", localThrowable);
-        paramRequestEvent.fail();
+        paramRequestEvent.fail(localThrowable.getMessage());
         return;
       }
-      label334:
+      label338:
       continue;
-      label337:
+      label341:
       String str1 = "&";
     }
   }
@@ -432,8 +711,8 @@ public class OpenDataCommonJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + localThrowable.getMessage());
-      paramRequestEvent.fail();
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + localThrowable);
+      paramRequestEvent.fail(localThrowable.getMessage());
     }
   }
 }

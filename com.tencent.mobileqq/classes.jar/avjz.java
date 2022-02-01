@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
 
 final class avjz
-  implements Comparator<PadFaceAd>
+  extends avki<Handler, Void>
 {
-  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
+  protected Handler a(Void paramVoid)
   {
-    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
-      return -1;
-    }
-    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
-      return 0;
-    }
-    return 1;
+    return new Handler(Looper.getMainLooper());
   }
 }
 

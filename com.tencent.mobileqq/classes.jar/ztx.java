@@ -1,19 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieOnCompositionLoadedListener;
 
-class ztx
-  implements Animation.AnimationListener
+public class ztx
+  implements LottieOnCompositionLoadedListener
 {
-  ztx(ztv paramztv) {}
+  public ztx(TroopGiftPanel paramTroopGiftPanel, ztb paramztb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.a.dismiss();
+    TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, paramLottieComposition, this.jdField_a_of_type_Ztb);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,27 +1,32 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
+
 public class bdkd
+  implements Animator.AnimatorListener
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
+  public bdkd(SavingAnimView paramSavingAnimView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SavingAnimView.a(this.a, 0);
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SavingAnimView.c(this.a, SavingAnimView.a(this.a));
+    SavingAnimView.d(this.a, SavingAnimView.d(this.a));
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).d();
+    }
+  }
 }
 
 

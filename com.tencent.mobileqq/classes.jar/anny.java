@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import java.util.Comparator;
-
-class anny
-  implements Comparator<ApolloFavActionData>
+public abstract interface anny
 {
-  anny(annx paramannx) {}
-  
-  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
-  {
-    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
-      return 0;
-    }
-    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm);
 }
 
 

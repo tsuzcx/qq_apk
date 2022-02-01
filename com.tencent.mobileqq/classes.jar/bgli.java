@@ -1,28 +1,26 @@
-import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.vas.watchword.VasWatchWord.addObserver.1.checkWatchWord.1.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import kotlin.Metadata;
 
-class bgli
-  implements bglj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Leipc/EIPCResult;", "kotlin.jvm.PlatformType", "onCallback"}, k=3, mv={1, 1, 16})
+public final class bgli
+  implements EIPCResultCallback
 {
-  bgli(bglf parambglf, ArrayList paramArrayList) {}
+  public static final bgli a = new bgli();
   
-  public void a(long paramLong, ImportantMsgItem paramImportantMsgItem)
+  public final void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramImportantMsgItem == null) {
+    if (paramEIPCResult != null) {}
+    for (Bundle localBundle = paramEIPCResult.data; localBundle == null; localBundle = null) {
       return;
     }
-    paramImportantMsgItem.addMsgInfos(this.jdField_a_of_type_JavaUtilArrayList);
-    if ((bglf.a(this.jdField_a_of_type_Bglf).containsKey(Long.valueOf(paramLong))) && (paramImportantMsgItem.maxImportantMsgSeq >= ((Integer)bglf.a(this.jdField_a_of_type_Bglf).get(Long.valueOf(paramLong))).intValue()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ImportantMsgManager", 2, "handlerPushImportantMsg updateMaxMsgSeq: maxImportantMsgSeq:" + paramImportantMsgItem.maxImportantMsgSeq + " registerProxy lastSeq:" + bglf.a(this.jdField_a_of_type_Bglf).get(Long.valueOf(paramLong)));
-      }
-      paramImportantMsgItem.updateMaxMsgSeq();
-    }
-    this.jdField_a_of_type_Bglf.a(paramImportantMsgItem.clone());
-    bglf.a(this.jdField_a_of_type_Bglf, paramLong);
+    int i = paramEIPCResult.data.getInt("ret");
+    bglg.a.b();
+    new Handler(Looper.getMainLooper()).post((Runnable)new VasWatchWord.addObserver.1.checkWatchWord.1.1(paramEIPCResult, i));
   }
 }
 

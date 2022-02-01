@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.bubble.ChatXListView;
-import zps;
 
 public class PublicAccountChatPie$8
   implements Runnable
 {
-  public PublicAccountChatPie$8(ainh paramainh) {}
+  public PublicAccountChatPie$8(ahiu paramahiu) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), zps.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F));
+    this.this$0.listView.setPadding(this.this$0.listView.getPaddingLeft(), this.this$0.listView.getPaddingTop(), this.this$0.listView.getPaddingRight(), UIUtils.dip2px(this.this$0.mContext, 80.0F));
   }
 }
 

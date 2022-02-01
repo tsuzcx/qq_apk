@@ -1,10 +1,4 @@
-import com.tencent.image.URLDrawable;
-
-public class awvy
-{
-  public URLDrawable a;
-  public boolean a;
-}
+public class awvy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

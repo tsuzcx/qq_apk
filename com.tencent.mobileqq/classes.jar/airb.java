@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-class airb
-  implements Comparator<MessageRecord>
+public abstract interface airb
 {
-  airb(aiqx paramaiqx) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
-  }
+  public abstract void c();
 }
 
 

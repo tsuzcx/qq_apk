@@ -1,10 +1,12 @@
 package com.tencent.hippy.qq.app;
 
 import android.view.ViewGroup;
+import com.tencent.hippy.qq.utils.HippyReporter;
 import com.tencent.mtt.hippy.HippyEngine.ModuleListener;
 import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.common.HippyJsException;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class HippyQQEngine$2
   implements HippyEngine.ModuleListener
@@ -13,36 +15,31 @@ class HippyQQEngine$2
   
   public void onInitialized(int paramInt, String paramString, HippyRootView paramHippyRootView)
   {
-    if (HippyQQEngine.access$300(this.this$0) != null)
+    this.this$0.mMapLoadStepsTime.put("loadModuleEnd", Long.valueOf(System.currentTimeMillis()));
+    if (this.this$0.mFragment != null)
     {
-      if ((paramInt != 0) || (paramHippyRootView == null)) {
-        break label52;
+      if (((paramInt != 0) && (paramInt != -700)) || (paramHippyRootView == null)) {
+        break label85;
       }
-      HippyQQEngine.access$400(this.this$0).addView(paramHippyRootView);
-      if (HippyQQEngine.access$200(this.this$0) != null) {
-        HippyQQEngine.access$200(this.this$0).onSuccess();
+      if (paramHippyRootView.getParent() == null) {
+        HippyQQEngine.access$000(this.this$0).addView(paramHippyRootView);
+      }
+      if (this.this$0.mEngineListener != null) {
+        this.this$0.mEngineListener.onSuccess();
       }
     }
-    label52:
-    while (HippyQQEngine.access$200(this.this$0) == null) {
+    label85:
+    while (this.this$0.mEngineListener == null) {
       return;
     }
-    HippyQQEngine.access$200(this.this$0).onError(paramInt, paramString);
+    this.this$0.mEngineListener.onError(paramInt, paramString);
   }
   
   public boolean onJsException(HippyJsException paramHippyJsException)
   {
-    if (QLog.isColorLevel()) {
-      if (paramHippyJsException == null) {
-        break label42;
-      }
-    }
-    label42:
-    for (paramHippyJsException = paramHippyJsException.getMessage();; paramHippyJsException = "")
-    {
-      QLog.d("Hippy", 2, "Hippy: loadModule onJsException msg=" + paramHippyJsException);
-      return true;
-    }
+    QLog.d("Hippy", 1, "Hippy: loadModule onJsException:" + paramHippyJsException);
+    HippyReporter.getInstance().reportException(HippyQQEngine.access$100(this.this$0), this.this$0.mModuleVersion, 4, paramHippyJsException);
+    return true;
   }
 }
 

@@ -1,36 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class pxz
-  extends BroadcastReceiver
+  implements zop
 {
-  pxz(pxl parampxl, VideoView paramVideoView, ViewBean paramViewBean, ViewBase paramViewBase) {}
+  pxz(pxw parampxw, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void callback(Bundle paramBundle)
   {
-    boolean bool;
-    if (((AudioManager)paramContext.getSystemService("audio")).getStreamVolume(3) <= 0)
-    {
-      bool = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.setMute(bool);
-      paramIntent = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean;
-      if (!bool) {
-        break label62;
-      }
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
     }
-    label62:
-    for (paramContext = "video_audio_mute";; paramContext = "video_audio_speak")
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramIntent.putMapValue("pgc_video_content_audio_icon", paramContext);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.bindDynamicValue(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean);
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
+      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
-      bool = false;
-      break;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
+      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
   }
 }

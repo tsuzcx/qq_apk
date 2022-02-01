@@ -1,23 +1,18 @@
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-class uun
-  implements bliz
+public final class uun
+  implements Parcelable.Creator<WSPushStrategyInfo>
 {
-  uun(uum paramuum, stSimpleMetaPerson paramstSimpleMetaPerson) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public WSPushStrategyInfo a(Parcel paramParcel)
   {
-    if (!nny.a(uum.a(this.jdField_a_of_type_Uum)))
-    {
-      bjuh.a().a(2131719373);
-      return;
-    }
-    uum.a(this.jdField_a_of_type_Uum).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    uum.a(this.jdField_a_of_type_Uum).setText("关注");
-    uum.a(this.jdField_a_of_type_Uum).setVisibility(0);
+    return new WSPushStrategyInfo(paramParcel);
+  }
+  
+  public WSPushStrategyInfo[] a(int paramInt)
+  {
+    return new WSPushStrategyInfo[paramInt];
   }
 }
 

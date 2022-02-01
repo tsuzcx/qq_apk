@@ -1,29 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class asxv
-  implements View.OnTouchListener
+  extends asxz
 {
-  public asxv(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public asxv(FileManagerEntity paramFileManagerEntity)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
+    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
+    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
+      return "";
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidViewView.postInvalidate();
-      }
-    }
+    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
   }
 }
 

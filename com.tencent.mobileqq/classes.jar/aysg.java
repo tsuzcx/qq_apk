@@ -1,13 +1,15 @@
-import android.widget.TextView;
+import android.view.View;
+import java.util.ArrayList;
 
-public class aysg
-  extends ayqn
+class aysg
+  implements bjoe
 {
-  public TextView g;
+  aysg(aysb paramaysb, ArrayList paramArrayList, bjnw parambjnw) {}
   
-  public aysg(aysf paramaysf)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramaysf);
+    ((bgaf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Bjnw.e();
   }
 }
 

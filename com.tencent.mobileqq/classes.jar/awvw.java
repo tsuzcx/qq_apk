@@ -1,19 +1,9 @@
-public class awvw
+class awvw
 {
-  public int a;
   public String a;
+  public String b;
   
-  public awvw()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  private awvw(awur paramawur) {}
 }
 
 

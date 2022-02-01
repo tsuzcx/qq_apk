@@ -17,11 +17,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import blhq;
+import bjng;
 import com.tencent.qphone.base.util.QLog;
-import yuk;
-import yuq;
-import zdj;
+import xvv;
+import xwb;
+import yek;
 
 public class CropView
   extends View
@@ -34,8 +34,8 @@ public class CropView
   Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   Rect jdField_a_of_type_AndroidGraphicsRect;
-  blhq jdField_a_of_type_Blhq;
-  zdj jdField_a_of_type_Zdj;
+  bjng jdField_a_of_type_Bjng;
+  yek jdField_a_of_type_Yek;
   boolean jdField_a_of_type_Boolean;
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;
@@ -154,7 +154,7 @@ public class CropView
     //   64: astore 10
     //   66: ldc 150
     //   68: ldc 152
-    //   70: invokestatic 157	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: invokestatic 157	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   73: aload_0
     //   74: getfield 159	com/tencent/biz/qqstory/takevideo/doodle/ui/crop/CropView:jdField_e_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
     //   77: ifnonnull +65 -> 142
@@ -307,7 +307,7 @@ public class CropView
     //   371: getfield 92	android/graphics/Rect:bottom	I
     //   374: invokevirtual 194	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   377: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   380: invokestatic 206	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   380: invokestatic 206	xvv:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   383: ldc 150
     //   385: new 177	java/lang/StringBuilder
     //   388: dup
@@ -318,7 +318,7 @@ public class CropView
     //   398: getfield 159	com/tencent/biz/qqstory/takevideo/doodle/ui/crop/CropView:jdField_e_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
     //   401: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   404: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: invokestatic 157	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   407: invokestatic 157	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   410: new 213	android/graphics/BitmapFactory$Options
     //   413: dup
     //   414: invokespecial 214	android/graphics/BitmapFactory$Options:<init>	()V
@@ -345,7 +345,7 @@ public class CropView
     //   459: ldc 150
     //   461: ldc 228
     //   463: aload 9
-    //   465: invokestatic 231	yuk:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   465: invokestatic 231	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   468: aload_1
     //   469: ifnull +8 -> 477
     //   472: aload_1
@@ -364,7 +364,7 @@ public class CropView
     //   497: iload 7
     //   499: invokevirtual 194	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   502: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   505: invokestatic 157	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   505: invokestatic 157	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   508: aload 10
     //   510: invokevirtual 234	android/graphics/Bitmap:getWidth	()I
     //   513: istore 6
@@ -396,7 +396,7 @@ public class CropView
     //   575: iload 5
     //   577: invokevirtual 194	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   580: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   583: invokestatic 157	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   583: invokestatic 157	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   586: aload_0
     //   587: invokevirtual 243	com/tencent/biz/qqstory/takevideo/doodle/ui/crop/CropView:getContext	()Landroid/content/Context;
     //   590: invokevirtual 249	android/content/Context:getResources	()Landroid/content/res/Resources;
@@ -438,7 +438,7 @@ public class CropView
     //   665: iload 5
     //   667: invokevirtual 194	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   670: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   673: invokestatic 157	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   673: invokestatic 157	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   676: iload 6
     //   678: iload 5
     //   680: getstatic 275	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
@@ -516,7 +516,7 @@ public class CropView
     //   815: invokevirtual 305	android/graphics/Bitmap:isMutable	()Z
     //   818: invokevirtual 308	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   821: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   824: invokestatic 157	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   824: invokestatic 157	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   827: aload_1
     //   828: ifnull +7 -> 835
     //   831: aload_1
@@ -531,7 +531,7 @@ public class CropView
     //   845: ldc 150
     //   847: ldc 228
     //   849: aload 10
-    //   851: invokestatic 231	yuk:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   851: invokestatic 231	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   854: aload_1
     //   855: ifnull +8 -> 863
     //   858: aload_1
@@ -546,7 +546,7 @@ public class CropView
     //   872: ldc 150
     //   874: ldc 228
     //   876: aload 10
-    //   878: invokestatic 231	yuk:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   878: invokestatic 231	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   881: aload_1
     //   882: ifnull +7 -> 889
     //   885: aload_1
@@ -631,7 +631,7 @@ public class CropView
   private void a(float paramFloat1, float paramFloat2)
   {
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Blhq.removeMessages(1001);
+    this.jdField_a_of_type_Bjng.removeMessages(1001);
     int m = (int)(this.jdField_a_of_type_AndroidGraphicsRect.left + paramFloat1);
     int n = (int)(this.jdField_a_of_type_AndroidGraphicsRect.right + paramFloat1);
     int i1 = (int)(this.jdField_a_of_type_AndroidGraphicsRect.top + paramFloat2);
@@ -648,8 +648,8 @@ public class CropView
     {
       this.jdField_a_of_type_AndroidGraphicsRect.offset((int)paramFloat1, (int)paramFloat2);
       this.jdField_c_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_Zdj != null) && (paramFloat1 > 0.0F) && (paramFloat2 > 0.0F)) {
-        this.jdField_a_of_type_Zdj.a(this.jdField_c_of_type_Boolean);
+      if ((this.jdField_a_of_type_Yek != null) && (paramFloat1 > 0.0F) && (paramFloat2 > 0.0F)) {
+        this.jdField_a_of_type_Yek.a(this.jdField_c_of_type_Boolean);
       }
       return;
       if (this.jdField_b_of_type_AndroidGraphicsRect.right > n) {
@@ -667,7 +667,7 @@ public class CropView
   private void a(int paramInt, float paramFloat1, float paramFloat2)
   {
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Blhq.removeMessages(1001);
+    this.jdField_a_of_type_Bjng.removeMessages(1001);
     int m;
     Rect localRect;
     if (paramInt == 1)
@@ -688,8 +688,8 @@ public class CropView
     for (;;)
     {
       this.jdField_c_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Zdj != null) {
-        this.jdField_a_of_type_Zdj.a(this.jdField_c_of_type_Boolean);
+      if (this.jdField_a_of_type_Yek != null) {
+        this.jdField_a_of_type_Yek.a(this.jdField_c_of_type_Boolean);
       }
       return;
       if (paramInt == 2)
@@ -852,10 +852,10 @@ public class CropView
     float f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     float f2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     this.h = Math.min(this.f / f1, this.g / f2);
-    yuk.b("EditPicActivityCropView", "setBitmap scale : " + this.h);
+    xvv.b("EditPicActivityCropView", "setBitmap scale : " + this.h);
     this.k = (f1 * this.h);
     this.l = (this.h * f2);
-    yuk.b("EditPicActivityCropView", "setBitmap image width " + this.k + " image height " + this.l);
+    xvv.b("EditPicActivityCropView", "setBitmap image width " + this.k + " image height " + this.l);
     this.jdField_a_of_type_AndroidGraphicsRect = a();
     this.jdField_b_of_type_AndroidGraphicsRect = a();
     this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.h, this.h);
@@ -878,7 +878,7 @@ public class CropView
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     this.jdField_e_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Blhq.removeMessages(1001);
+    this.jdField_a_of_type_Bjng.removeMessages(1001);
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
   }
@@ -888,7 +888,7 @@ public class CropView
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
     this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(1.0F, 1.0F);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      yuk.e("EditPicActivityCropView", "cropview rotate bitmap is null..");
+      xvv.e("EditPicActivityCropView", "cropview rotate bitmap is null..");
     }
     float f1;
     float f2;
@@ -925,7 +925,7 @@ public class CropView
         }
         this.h = (this.g / f2);
         f1 = this.h;
-        yuk.b("EditPicActivityCropView", "calculate picscale : " + this.h + " final : " + f1);
+        xvv.b("EditPicActivityCropView", "calculate picscale : " + this.h + " final : " + f1);
         this.k = (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.h);
         this.l = (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.h);
         this.jdField_a_of_type_AndroidGraphicsRect = a();
@@ -933,11 +933,11 @@ public class CropView
         this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f1, this.i, this.j);
         invalidate();
       }
-    } while (this.jdField_a_of_type_Zdj == null);
+    } while (this.jdField_a_of_type_Yek == null);
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Zdj.a(bool);
+      this.jdField_a_of_type_Yek.a(bool);
       return;
       this.jdField_d_of_type_Boolean = true;
       break;
@@ -974,15 +974,15 @@ public class CropView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setOnTouchListener(this);
-    this.jdField_d_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131299168);
-    this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131299169);
+    this.jdField_d_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131299233);
+    this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131299234);
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
   }
   
   public boolean a()
   {
-    this.jdField_a_of_type_Blhq.removeMessages(1001);
+    this.jdField_a_of_type_Bjng.removeMessages(1001);
     Object localObject = new int[2];
     Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
     if (this.jdField_e_of_type_AndroidGraphicsRect != null) {
@@ -999,8 +999,8 @@ public class CropView
       if (QLog.isColorLevel()) {
         QLog.d("EditPicActivityCropView", 2, "too small " + localObject);
       }
-      if (this.jdField_a_of_type_Zdj != null) {
-        this.jdField_a_of_type_Zdj.a(7);
+      if (this.jdField_a_of_type_Yek != null) {
+        this.jdField_a_of_type_Yek.a(7);
       }
     } while (this.jdField_e_of_type_AndroidGraphicsRect == null);
     this.jdField_e_of_type_AndroidGraphicsRect.set(this.jdField_d_of_type_AndroidGraphicsRect);
@@ -1008,8 +1008,8 @@ public class CropView
     if (localObject != null) {
       setBitmap((Bitmap)localObject);
     }
-    if (this.jdField_a_of_type_Zdj != null) {
-      this.jdField_a_of_type_Zdj.a(localBitmap);
+    if (this.jdField_a_of_type_Yek != null) {
+      this.jdField_a_of_type_Yek.a(localBitmap);
     }
     return true;
   }
@@ -1057,7 +1057,7 @@ public class CropView
   {
     if (paramMessage.what == 1001)
     {
-      yuq.b("0X80075D1");
+      xwb.b("0X80075D1");
       a();
     }
     return false;
@@ -1093,7 +1093,7 @@ public class CropView
       this.jdField_b_of_type_Float = paramMotionEvent.getX();
       this.jdField_c_of_type_Float = paramMotionEvent.getY();
       this.jdField_a_of_type_Int = a(paramMotionEvent);
-      yuk.b("EditPicActivityCropView", "hitResizeCorner " + this.jdField_a_of_type_Int);
+      xvv.b("EditPicActivityCropView", "hitResizeCorner " + this.jdField_a_of_type_Int);
       this.jdField_a_of_type_Boolean = a(paramMotionEvent);
       this.jdField_a_of_type_Float = 0.0F;
       this.jdField_e_of_type_Boolean = false;
@@ -1113,7 +1113,7 @@ public class CropView
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_Boolean = false;
       if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(1001, 1000L);
+        this.jdField_a_of_type_Bjng.sendEmptyMessageDelayed(1001, 1000L);
       }
       return true;
     }
@@ -1179,12 +1179,12 @@ public class CropView
     }
     b();
     invalidate();
-    this.jdField_a_of_type_Blhq.removeMessages(1001);
+    this.jdField_a_of_type_Bjng.removeMessages(1001);
   }
   
-  public void setCropListener(zdj paramzdj)
+  public void setCropListener(yek paramyek)
   {
-    this.jdField_a_of_type_Zdj = paramzdj;
+    this.jdField_a_of_type_Yek = paramyek;
   }
 }
 

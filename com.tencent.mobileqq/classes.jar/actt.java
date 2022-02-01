@@ -1,50 +1,110 @@
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class actt
-  implements acos
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public actt(GdtBannerFragmentForJS paramGdtBannerFragmentForJS) {}
+  public actt(AuthDevActivity paramAuthDevActivity) {}
   
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    Object localObject;
+    boolean bool;
+    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
+    {
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      localObject = AuthDevActivity.a(this.a);
+      if (AuthDevActivity.a(this.a).a())
+      {
+        bool = false;
+        ((FormSwitchItem)localObject).setChecked(bool);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        if (NetworkUtil.isNetSupport(this.a)) {
+          break label127;
+        }
+        QQToast.a(this.a, this.a.getString(2131692035), 0).b(this.a.getTitleBarHeight());
+      }
     }
-    return -2147483648L;
-  }
-  
-  public void onAdClicked(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acvc.b("GdtBannerFragmentForJS", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void onAdClosed(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acvc.b("GdtBannerFragmentForJS", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-    this.a.a.removeView(GdtBannerFragmentForJS.a(this.a).a());
-  }
-  
-  public void onAdFailedToLoad(com.tencent.gdtad.api.GdtAd paramGdtAd, acor paramacor)
-  {
-    acvc.d("GdtBannerFragmentForJS", "onAdFailedToLoad " + paramacor.a());
-    Toast.makeText(BaseApplicationImpl.getContext(), "onAdFailedToLoad " + paramacor.a(), 0).show();
-  }
-  
-  public void onAdImpression(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acvc.b("GdtBannerFragmentForJS", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void onAdLoaded(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acvc.b("GdtBannerFragmentForJS", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    label127:
+    do
+    {
+      do
+      {
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+        bool = true;
+        break;
+        localObject = (anat)this.a.app.getBusinessHandler(34);
+      } while (localObject == null);
+      if (!AuthDevActivity.a(this.a).a()) {}
+      for (bool = true;; bool = false)
+      {
+        ((anat)localObject).a(bool);
+        break;
+      }
+      if (paramCompoundButton == AuthDevActivity.b(this.a).a())
+      {
+        if (AuthDevActivity.b(this.a).a())
+        {
+          localObject = "0";
+          bcef.b(null, "dc00898", "", "", "0X800AC54", "0X800AC54", 0, 0, (String)localObject, "", "", "");
+          AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+          localObject = AuthDevActivity.b(this.a);
+          if (!AuthDevActivity.b(this.a).a()) {
+            break label313;
+          }
+        }
+        for (bool = false;; bool = true)
+        {
+          ((FormSwitchItem)localObject).setChecked(bool);
+          AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+          AuthDevActivity.a(this.a);
+          break;
+          localObject = "1";
+          break label212;
+        }
+      }
+    } while (paramCompoundButton != AuthDevActivity.c(this.a).a());
+    label212:
+    label350:
+    int i;
+    label313:
+    if (AuthDevActivity.c(this.a).a())
+    {
+      localObject = "1";
+      bcef.b(null, "dc00898", "", "", "0X800AC53", "0X800AC53", 0, 0, (String)localObject, "", "", "");
+      localObject = this.a.app;
+      if (!paramBoolean) {
+        break label484;
+      }
+      i = 1;
+      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+      if (!paramBoolean) {
+        break label489;
+      }
+      bcef.b(null, "dc00898", "", "", "0X800A721", "0X800A721", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      label389:
+      SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+      this.a.app.sendRegisterPush();
+      break;
+      localObject = "0";
+      break label350;
+      label484:
+      i = 0;
+      break label389;
+      label489:
+      bcef.b(null, "dc00898", "", "", "0X800A722", "0X800A722", 0, 0, "", "", "", "");
+    }
   }
 }
 

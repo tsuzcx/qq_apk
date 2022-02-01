@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import ahzv;
+import agwj;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -8,14 +8,14 @@ import android.widget.ImageView;
 public class IntimateInfoNavBar$1
   implements Runnable
 {
-  public IntimateInfoNavBar$1(ahzv paramahzv) {}
+  public IntimateInfoNavBar$1(agwj paramagwj) {}
   
   public void run()
   {
-    ahzv.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772055));
-    ahzv.a(this.this$0).clearAnimation();
-    ahzv.a(this.this$0).startAnimation(ahzv.a(this.this$0));
-    ahzv.a(this.this$0).setAnimationListener(this.this$0);
+    agwj.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772057));
+    agwj.a(this.this$0).clearAnimation();
+    agwj.a(this.this$0).startAnimation(agwj.a(this.this$0));
+    agwj.a(this.this$0).setAnimationListener(this.this$0);
   }
 }
 

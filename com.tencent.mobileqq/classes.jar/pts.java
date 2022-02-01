@@ -1,48 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabData;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspTrace;
 
-public class pts
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/AritcleInfoModuleUtils;", "", "()V", "handleRealStyle", "", "serviceKey", "stylePbData", "Lcom/tencent/mobileqq/pb/PBBytesField;", "isChannelDataExcludeFollowChannel", "", "clientSwitch", "", "resp", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspBody;", "isFollowChannelClientSwitch", "isVideoRealtimeReplaceReq", "report68BTrace", "rspTrace", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspTrace;", "CommonChannelDataHandle", "FollowChannelDataHandler", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pts
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public static final pts a = new pts();
+  
+  public final void a(@Nullable Object paramObject, @NotNull PBBytesField paramPBBytesField)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("id_test", new JSONObject());
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anzj.a(2131711739));
-      localJSONObject1.put("id_gallery_cnt", localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject1.put("id_gallery_img", localObject);
-      localJSONObject1.put("id_gallery_bg", new JSONObject());
-      puo.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label207;
-      }
-      puo.a(paramBaseArticleInfo, localJSONObject1);
-      puo.b(paramBaseArticleInfo, localJSONObject1);
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "stylePbData");
+    paramPBBytesField = qlg.a(paramPBBytesField);
+    if ((paramPBBytesField != null) && ((paramObject instanceof String))) {
+      szl.a((String)paramObject, paramPBBytesField);
     }
-    for (;;)
-    {
-      puo.l(paramBaseArticleInfo, localJSONObject1);
-      puo.e(paramBaseArticleInfo, localJSONObject1);
-      puo.g(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-      puo.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label207:
-      puo.d(paramBaseArticleInfo, localJSONObject1);
+  }
+  
+  public final void a(@NotNull oidb_cmd0x68b.RspTrace paramRspTrace)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspTrace, "rspTrace");
+    if (paramRspTrace.has()) {
+      pay.a(pay.a(), paramRspTrace.rpt_trace_record_list.get());
     }
+  }
+  
+  public final boolean a(long paramLong)
+  {
+    return (paramLong >> 13 & 1L) == 1L;
+  }
+  
+  public final boolean a(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return ((paramLong >> 9 & 1L) == 1L) && (paramRspBody.msg_rsp_get_follow_tab_data.has());
+  }
+  
+  public final boolean b(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return (!a(paramLong, paramRspBody)) && (paramRspBody.rspChannelArticle.has()) && (paramRspBody.rspChannelArticle.get() != null);
   }
 }
 

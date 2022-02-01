@@ -1,15 +1,7 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
-
-public class bgzh
-  implements bdyi
+public abstract interface bgzh
+  extends bguj
 {
-  bgzh(bgzd parambgzd) {}
-  
-  public void a()
-  {
-    this.a.a.post(new TroopGiftAnimationController.4.1(this));
-  }
+  public abstract String getRedirect302Url();
 }
 
 

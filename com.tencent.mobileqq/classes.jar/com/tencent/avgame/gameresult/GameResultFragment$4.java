@@ -5,8 +5,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.widget.FrameLayout;
-import bhtq;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -24,7 +24,7 @@ class GameResultFragment$4
       if (localBitmap1 != null)
       {
         QLog.d("GameResultFragment", 2, "initViewForGameKnowledge save bitmap " + localBitmap1.getWidth());
-        int i = bhtq.a(300.0F);
+        int i = ViewUtils.dip2px(300.0F);
         Bitmap localBitmap2 = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
         Canvas localCanvas = new Canvas(localBitmap2);
         localCanvas.drawARGB(255, 255, 255, 255);

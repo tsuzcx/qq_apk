@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 public class axip
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public axip(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  private final Context a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axip(View paramView)
   {
-    axgj.a().a().c();
-    axgj.a().d();
-    if (this.a.a)
-    {
-      this.a.g();
-      return;
-    }
-    this.a.a(this.a.getActivity());
+    super(paramView);
+    this.a = paramView.getContext();
   }
 }
 

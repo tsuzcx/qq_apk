@@ -1,27 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.2;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.quic.QuicResDownload;
+import java.util.Properties;
+import mqq.app.MobileQQ;
 
-class bbrd
-  implements DialogInterface.OnClickListener
+public class bbrd
+  implements bbrg
 {
-  bbrd(bbrb parambbrb, int paramInt, Object paramObject) {}
+  public bbrd(ShortVideoResourceManager.2 param2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+  }
+  
+  public void onNetWorkNone()
+  {
+    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+  }
+  
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
+      QuicResDownload.a = true;
     }
-    do
+    try
     {
+      Properties localProperties = new Properties();
+      localProperties.put("version", "8.4.8.4810");
+      localProperties.put("appid", String.valueOf(AppSetting.a()));
+      localProperties.put("release", String.valueOf(true));
+      localProperties.put("name", paramString);
+      bcdu.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
       return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData));
-    bbrb.a(this.jdField_a_of_type_Bbrb).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Bbrb.updateUI();
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

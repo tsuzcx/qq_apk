@@ -10,26 +10,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbgf;
-import bhtq;
-import breq;
-import brfc;
-import brfn;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import babc;
+import bnya;
+import bnyw;
+import bnzn;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
 import java.util.concurrent.atomic.AtomicBoolean;
-import yup;
+import xwa;
 
 public class QIMCameraStoryCaptureButtonLayout
-  extends QIMCameraSegmentCaptureButtonLayout
-  implements breq
+  extends QIMCameraSegmentCaptureButtonLayoutNew
+  implements bnya
 {
   private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent = null;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private brfn jdField_a_of_type_Brfn;
+  private bnzn jdField_a_of_type_Bnzn;
   private DragAnimationMgr jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr;
   private QIMCameraStoryCaptureButtonLayout.RunnableLW jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout$RunnableLW = new QIMCameraStoryCaptureButtonLayout.RunnableLW(this, null);
   private long jdField_b_of_type_Long;
@@ -148,8 +147,8 @@ public class QIMCameraStoryCaptureButtonLayout
     if (QLog.isColorLevel()) {
       QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "onDownUINeedChange method");
     }
-    if (this.jdField_a_of_type_Brfn != null) {
-      this.jdField_a_of_type_Brfn.ae();
+    if (this.jdField_a_of_type_Bnzn != null) {
+      this.jdField_a_of_type_Bnzn.a();
     }
   }
   
@@ -160,26 +159,6 @@ public class QIMCameraStoryCaptureButtonLayout
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout$RunnableLW, 100L);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "onEnterRegion method,leftDirection:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      setSegment(true);
-      if (this.jdField_a_of_type_Brfn != null) {
-        this.jdField_a_of_type_Brfn.d(3);
-      }
-    }
-    do
-    {
-      return;
-      setLockStatus(true);
-    } while (this.jdField_a_of_type_Brfn == null);
-    this.jdField_a_of_type_Brfn.d(4);
-  }
-  
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
@@ -188,8 +167,8 @@ public class QIMCameraStoryCaptureButtonLayout
     if (paramBoolean2) {
       if (paramBoolean1)
       {
-        if (this.jdField_a_of_type_Brfn != null) {
-          this.jdField_a_of_type_Brfn.d(1);
+        if (this.jdField_a_of_type_Bnzn != null) {
+          this.jdField_a_of_type_Bnzn.a(1);
         }
         setEnableSegment(false);
       }
@@ -197,23 +176,23 @@ public class QIMCameraStoryCaptureButtonLayout
     for (;;)
     {
       if (!this.g) {
-        r();
+        q();
       }
-      if (this.jdField_a_of_type_Brfn != null) {
-        this.jdField_a_of_type_Brfn.b(paramBoolean1, paramBoolean2);
+      if (this.jdField_a_of_type_Bnzn != null) {
+        this.jdField_a_of_type_Bnzn.a(paramBoolean1, paramBoolean2);
       }
       return;
-      if (this.jdField_a_of_type_Brfn != null) {
-        this.jdField_a_of_type_Brfn.d(2);
+      if (this.jdField_a_of_type_Bnzn != null) {
+        this.jdField_a_of_type_Bnzn.a(2);
       }
       int i = -1;
-      if (this.jdField_a_of_type_Brfn != null) {
-        i = this.jdField_a_of_type_Brfn.i();
+      if (this.jdField_a_of_type_Bnzn != null) {
+        i = this.jdField_a_of_type_Bnzn.a();
       }
-      yup.a("clk_lock", bbgf.jdField_a_of_type_Int, 0, new String[] { "" + i });
+      xwa.a("clk_lock", babc.jdField_a_of_type_Int, 0, new String[] { "" + i });
       continue;
       if (this.f) {
-        h(false);
+        g(false);
       }
     }
   }
@@ -225,7 +204,7 @@ public class QIMCameraStoryCaptureButtonLayout
     }
     int i = paramMotionEvent.getAction();
     f();
-    GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView);
+    GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_AndroidOpenglGLSurfaceView);
     if (this.jdField_a_of_type_Boolean) {}
     do
     {
@@ -237,12 +216,11 @@ public class QIMCameraStoryCaptureButtonLayout
           if (this.e) {
             break;
           }
-        } while ((this.jdField_a_of_type_Brfc == null) || ((paramMotionEvent.getAction() & 0xFF) != 0));
-        this.jdField_a_of_type_Brfc.D();
+        } while ((this.jdField_a_of_type_Bnyw == null) || ((paramMotionEvent.getAction() & 0xFF) != 0));
         return false;
         if (this.jdField_d_of_type_AndroidViewView.getVisibility() == 0)
         {
-          s();
+          r();
           return false;
         }
         switch (i & 0xFF)
@@ -257,7 +235,7 @@ public class QIMCameraStoryCaptureButtonLayout
         this.jdField_b_of_type_Long = System.currentTimeMillis();
         return true;
       }
-      if ((this.jdField_a_of_type_Brfc != null) && (this.jdField_a_of_type_Brfc.d())) {
+      if ((this.jdField_a_of_type_Bnyw != null) && (this.jdField_a_of_type_Bnyw.g())) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -268,7 +246,7 @@ public class QIMCameraStoryCaptureButtonLayout
     {
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        break label349;
+        break label341;
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
     }
@@ -277,12 +255,12 @@ public class QIMCameraStoryCaptureButtonLayout
       a(paramMotionEvent);
       this.jdField_c_of_type_Boolean = true;
       return true;
-      label349:
+      label341:
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
     }
     if ((this.g) && (this.jdField_b_of_type_Long != 0L) && (this.jdField_b_of_type_Long - System.currentTimeMillis() < 50L))
     {
-      r();
+      q();
       setLockStatus(false);
       this.jdField_b_of_type_Long = 0L;
       return true;
@@ -290,8 +268,8 @@ public class QIMCameraStoryCaptureButtonLayout
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr.a(paramMotionEvent);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout$RunnableLW);
     return true;
-    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView instanceof EffectsCameraCaptureView)) && (((EffectsCameraCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView).g())) {
-      ((EffectsCameraCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView).k();
+    if (this.jdField_a_of_type_Bnyw != null) {
+      this.jdField_a_of_type_Bnyw.b();
     }
     if ((this.g) && (this.jdField_b_of_type_Long != 0L)) {
       return true;
@@ -312,38 +290,18 @@ public class QIMCameraStoryCaptureButtonLayout
     }
     for (;;)
     {
-      i(false);
-      if (this.jdField_a_of_type_Brfn != null) {
-        this.jdField_a_of_type_Brfn.c(this.f, this.g);
+      h(false);
+      if (this.jdField_a_of_type_Bnzn != null) {
+        this.jdField_a_of_type_Bnzn.b(this.f, this.g);
       }
       return;
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(0);
     }
   }
   
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "onExitRegion method,leftDirection:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      setSegment(false);
-      if (this.jdField_a_of_type_Brfn != null) {
-        this.jdField_a_of_type_Brfn.d(5);
-      }
-    }
-    do
-    {
-      return;
-      setLockStatus(false);
-    } while (this.jdField_a_of_type_Brfn == null);
-    this.jdField_a_of_type_Brfn.d(6);
-  }
-  
   public void c()
   {
-    v();
+    u();
   }
   
   public void c(boolean paramBoolean)
@@ -353,31 +311,26 @@ public class QIMCameraStoryCaptureButtonLayout
     }
     if (paramBoolean)
     {
-      h(true);
+      g(true);
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setDrawCenterCircle(false);
     }
   }
   
-  public boolean c()
+  protected void e()
   {
-    return this.g;
-  }
-  
-  protected void d()
-  {
-    super.d();
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131364188);
-    int i = bhtq.a(45.0F);
-    int j = bhtq.a(60.0F);
-    int k = bhtq.a(17.0F);
+    super.e();
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131364209);
+    int i = ViewUtils.dip2px(45.0F);
+    int j = ViewUtils.dip2px(60.0F);
+    int k = ViewUtils.dip2px(17.0F);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams.addRule(9, -1);
     localLayoutParams.addRule(15, -1);
     localLayoutParams.setMargins(j, 0, 0, 0);
     this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(k);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844474);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844653);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844348);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844529);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.0F);
     localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
@@ -387,8 +340,8 @@ public class QIMCameraStoryCaptureButtonLayout
     localLayoutParams.addRule(15, -1);
     localLayoutParams.setMargins(0, 0, j, 0);
     this.jdField_b_of_type_AndroidWidgetImageView.setTranslationY(k);
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844474);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844651);
+    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844348);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844527);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_b_of_type_AndroidWidgetImageView.setAlpha(0.0F);
     localRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
@@ -398,7 +351,7 @@ public class QIMCameraStoryCaptureButtonLayout
     this.f = false;
   }
   
-  public void h(boolean paramBoolean)
+  public void g(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "showStatusButton:" + paramBoolean + " mIsSegment:" + this.f + " mEnableSegment:" + this.h + " mLockStatus:" + this.g);
@@ -411,7 +364,7 @@ public class QIMCameraStoryCaptureButtonLayout
     }
   }
   
-  protected void i()
+  protected void h()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "startCaptureAnimationEnd method");
@@ -419,7 +372,7 @@ public class QIMCameraStoryCaptureButtonLayout
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr.a(true);
   }
   
-  public void i(boolean paramBoolean)
+  public void h(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "showStatusButtonWithAnim:" + paramBoolean + " mIsSegment:" + this.f + " mEnableSegment:" + this.h + " mLockStatus:" + this.g);
@@ -432,24 +385,64 @@ public class QIMCameraStoryCaptureButtonLayout
     }
   }
   
-  protected void k()
+  public void h_(boolean paramBoolean)
   {
-    super.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "onEnterRegion method,leftDirection:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      setSegment(true);
+      if (this.jdField_a_of_type_Bnzn != null) {
+        this.jdField_a_of_type_Bnzn.a(3);
+      }
+    }
+    do
+    {
+      return;
+      setLockStatus(true);
+    } while (this.jdField_a_of_type_Bnzn == null);
+    this.jdField_a_of_type_Bnzn.a(4);
+  }
+  
+  public void i_(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCameraStoryCaptureButtonLayout", 2, "onExitRegion method,leftDirection:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      setSegment(false);
+      if (this.jdField_a_of_type_Bnzn != null) {
+        this.jdField_a_of_type_Bnzn.a(5);
+      }
+    }
+    do
+    {
+      return;
+      setLockStatus(false);
+    } while (this.jdField_a_of_type_Bnzn == null);
+    this.jdField_a_of_type_Bnzn.a(6);
+  }
+  
+  protected void j()
+  {
+    super.j();
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr.b();
   }
   
-  public void n()
+  public void k()
   {
-    super.n();
+    super.k();
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setDrawCenterCircle(true);
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr.b();
-    i(false);
+    h(false);
   }
   
-  public void setCaptureStatusChangeListener(brfn parambrfn)
+  public void setCaptureStatusChangeListener(bnzn parambnzn)
   {
-    this.jdField_a_of_type_Brfn = parambrfn;
+    this.jdField_a_of_type_Bnzn = parambnzn;
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
@@ -496,30 +489,24 @@ public class QIMCameraStoryCaptureButtonLayout
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844475);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844650);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844349);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844526);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844474);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844651);
+    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130844348);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844527);
   }
   
   public void setSelectPause(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844475);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844652);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844349);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844528);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844474);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844653);
-  }
-  
-  public void w()
-  {
-    setLockStatus(false);
-    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setDrawCenterCircle(true);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130844348);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844529);
   }
 }
 

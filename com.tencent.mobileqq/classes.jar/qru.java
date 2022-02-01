@@ -1,53 +1,57 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-public abstract class qru
-  extends Binder
-  implements qrt
+public class qru
+  extends qpk
 {
-  public qru()
+  public qru(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  public static qrt a(IBinder paramIBinder)
+  public qpk a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof qrt))) {
-      return (qrt)localIInterface;
-    }
-    return new qrv(paramIBinder);
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
   }
   
-  public IBinder asBinder()
+  public qpk d()
   {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentBig))) {
+      localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qpj);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+    }
+    a(localLinearLayout);
     return this;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public qpk e()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null) {}
-    for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
-    {
-      paramParcel2.writeStrongBinder(paramParcel1);
-      return true;
-    }
+    return null;
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public qpk o()
+  {
+    super.o();
+    return this;
   }
 }
 

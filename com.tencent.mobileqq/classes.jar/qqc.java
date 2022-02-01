@@ -1,22 +1,19 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qqc
-  implements bliz
+class qqc
+  implements View.OnClickListener
 {
-  public qqc(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qqc(qpw paramqpw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    for (;;)
-    {
-      ComponentHeaderTopicRecommend.a(this.a).dismiss();
-      return;
-      ComponentHeaderTopicRecommend.a(this.a, false);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

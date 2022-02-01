@@ -1,13 +1,19 @@
-import android.os.IBinder.DeathRecipient;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class lfd
-  implements IBinder.DeathRecipient
+public class lfd
+  extends BroadcastReceiver
 {
-  lfd(lfc paramlfc) {}
+  public lfd(VideoAppInterface paramVideoAppInterface) {}
   
-  public void binderDied()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    lbj.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
+    paramContext = paramIntent.getAction();
+    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    System.exit(0);
   }
 }
 

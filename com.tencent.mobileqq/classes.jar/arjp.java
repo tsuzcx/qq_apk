@@ -1,88 +1,61 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class arjp
-  extends arac<arej>
 {
-  public static arej a()
+  public int a;
+  public long a;
+  public String a;
+  public List<arjk> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  
+  public arjp()
   {
-    return (arej)aran.a().a(633);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  @NonNull
-  public arej a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    return new arej();
-  }
-  
-  @Nullable
-  public arej a(araj[] paramArrayOfaraj)
-  {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
-    Object localObject = null;
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      localarej = arej.a(paramArrayOfaraj[0].a);
-      localObject = localarej;
-      if (QLog.isColorLevel())
+      bool1 = bool2;
+      if ((paramObject instanceof arjp))
       {
-        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-        localObject = localarej;
+        paramObject = (arjp)paramObject;
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_JavaLangString != null)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+            bool1 = true;
+          }
+        }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      arej localarej;
-      return localObject;
-    }
-    QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
-    return null;
+    return bool1;
   }
   
-  public void a(arej paramarej)
+  public String toString()
   {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onUpdate]");
-  }
-  
-  public Class<arej> clazz()
-  {
-    return arej.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 633;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
+    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjp
  * JD-Core Version:    0.7.0.1
  */

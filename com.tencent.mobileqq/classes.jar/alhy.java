@@ -1,15 +1,18 @@
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 public class alhy
 {
-  public String a;
-  public String b;
-  public String c;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
   
-  public alhy(alhw paramalhw, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public alhy(alhx paramalhx) {}
 }
 
 

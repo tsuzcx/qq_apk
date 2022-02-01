@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import ydn;
-import ydq;
-import ydt;
-import ykj;
+import xey;
+import xfb;
+import xfe;
+import xlu;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public ydn a;
-  public ydt a;
+  public xey a;
+  public xfe a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +38,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bhgr.a(paramContext, 105.0F);
-    this.jdField_a_of_type_Ydn = new ydn(getContext());
-    super.setAdapter(this.jdField_a_of_type_Ydn);
-    super.setOnItemClickListener(this.jdField_a_of_type_Ydn);
-    super.setOnScrollStateChangedListener(new ydq(this));
+    this.b = DisplayUtil.dip2px(paramContext, 105.0F);
+    this.jdField_a_of_type_Xey = new xey(getContext());
+    super.setAdapter(this.jdField_a_of_type_Xey);
+    super.setOnItemClickListener(this.jdField_a_of_type_Xey);
+    super.setOnScrollStateChangedListener(new xfb(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Ydn;
+    return this.jdField_a_of_type_Xey;
   }
   
-  public void setData(List<ykj> paramList, String paramString)
+  public void setData(List<xlu> paramList, String paramString)
   {
-    this.jdField_a_of_type_Ydn.a(paramList, paramString);
+    this.jdField_a_of_type_Xey.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,9 +63,9 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(ydt paramydt)
+  public void setOnHorizontalScrollListener(xfe paramxfe)
   {
-    this.jdField_a_of_type_Ydt = paramydt;
+    this.jdField_a_of_type_Xfe = paramxfe;
   }
 }
 

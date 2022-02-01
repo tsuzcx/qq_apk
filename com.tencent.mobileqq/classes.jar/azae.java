@@ -1,21 +1,35 @@
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class azae
+  implements ayzv
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public azae(InterestSwitchEditActivity paramInterestSwitchEditActivity, azaz paramazaz, bjnw parambjnw) {}
   
-  public String toString()
+  public void a(@NotNull View paramView, @Nullable ayzt paramayzt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
-    return localStringBuilder.toString();
+    if (bmbv.a(paramView)) {
+      return;
+    }
+    if ((paramayzt == null) || (this.jdField_a_of_type_Azaz.g() == paramayzt.a())) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, paramayzt.a(), this.jdField_a_of_type_Azaz);
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+      {
+        QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity.getTitleBarHeight());
+        return;
+      }
+      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, this.jdField_a_of_type_Azaz, paramayzt.a());
+    }
   }
 }
 

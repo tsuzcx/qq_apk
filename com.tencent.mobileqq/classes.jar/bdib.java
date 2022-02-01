@@ -1,9 +1,24 @@
-import com.tencent.mobileqq.startup.step.InitHook;
+import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
+import java.util.List;
 
-public class bdib
-  implements anwh
+class bdib
+  extends bdji<CreatingState>
 {
-  public void a(boolean paramBoolean) {}
+  bdib(bdhz parambdhz, CreatingState paramCreatingState, List paramList)
+  {
+    super(paramCreatingState, paramList);
+  }
+  
+  public void a(CreatingState paramCreatingState)
+  {
+    super.a(paramCreatingState);
+    if (bdhz.a(this.a).b() == CreatingState.TEMPLATE_SHOW_LAYER)
+    {
+      bdhz.a(this.a).c(true);
+      return;
+    }
+    bdhz.a(this.a).c(false);
+  }
 }
 
 

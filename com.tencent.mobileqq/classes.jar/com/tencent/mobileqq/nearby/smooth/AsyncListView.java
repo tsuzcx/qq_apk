@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
-import aytk;
-import aytl;
-import blih;
-import bljo;
+import axgs;
+import axgt;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class AsyncListView
   extends FPSXListView
 {
-  final aytk a = new aytk(this);
+  final axgs a = new axgs(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,24 +42,24 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(aytl paramaytl)
+  public void setItemManager(axgt paramaxgt)
   {
-    this.a.a(paramaytl);
+    this.a.a(paramaxgt);
   }
   
-  public void setOnItemSelectedListener(bljo parambljo)
+  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.a.a(parambljo);
+    this.a.a(paramOnItemSelectedListener);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(parambljo);
+      super.setOnItemSelectedListener(paramOnItemSelectedListener);
     }
   }
   
-  public void setOnScrollListener(blih paramblih)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.a.a(paramblih);
+    this.a.a(paramOnScrollListener);
     if (!this.a.a()) {
-      super.setOnScrollListener(paramblih);
+      super.setOnScrollListener(paramOnScrollListener);
     }
   }
   

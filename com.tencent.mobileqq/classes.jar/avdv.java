@@ -1,43 +1,13 @@
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
 
-class avdv
-  implements WtTicketPromise
+public class avdv
+  implements DialogInterface.OnClickListener
 {
-  avdv(avdu paramavdu, String paramString) {}
+  public avdv(LocationDialogUtil.11 param11) {}
   
-  public void Done(Ticket paramTicket)
-  {
-    if (DeleteFaceFragment.a(this.jdField_a_of_type_Avdu.a))
-    {
-      QLog.d("DeleteFaceFragment", 1, "GetSkey Done, activity is empty");
-      return;
-    }
-    QLog.d("DeleteFaceFragment", 1, "GetSkey done");
-    if ((paramTicket == null) || (paramTicket._sig == null))
-    {
-      QLog.e("DeleteFaceFragment", 1, "ticket is error");
-      DeleteFaceFragment.a(this.jdField_a_of_type_Avdu.a, this.jdField_a_of_type_Avdu.a.getString(2131693975));
-      return;
-    }
-    paramTicket = new String(paramTicket._sig);
-    DeleteFaceFragment.a(this.jdField_a_of_type_Avdu.a, this.jdField_a_of_type_JavaLangString, paramTicket);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("DeleteFaceFragment", 1, new Object[] { "getSkey Failed, ", paramErrMsg.getMessage() });
-    DeleteFaceFragment.a(this.jdField_a_of_type_Avdu.a, paramErrMsg.getMessage());
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.e("DeleteFaceFragment", 1, new Object[] { "getSkey timeout, ", paramErrMsg.getMessage() });
-    DeleteFaceFragment.a(this.jdField_a_of_type_Avdu.a, paramErrMsg.getMessage());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

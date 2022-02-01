@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
 
-class sql
-  implements ViewFactory.FoundClickableViewListener
+public final class sql
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
 {
-  sql(sqk paramsqk) {}
-  
-  public void onFound(ViewBase paramViewBase)
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
   {
-    paramViewBase.setOnClickListener(new sqm(this));
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
   }
 }
 

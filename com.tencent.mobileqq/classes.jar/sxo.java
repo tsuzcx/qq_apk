@@ -1,18 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import com.tencent.widget.AdapterView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class sxo
-  implements bljm
 {
-  public sxo(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
-      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  sxn jdField_a_of_type_Sxn;
+  TextView b;
+  TextView c;
 }
 
 

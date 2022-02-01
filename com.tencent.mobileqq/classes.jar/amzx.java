@@ -1,20 +1,23 @@
-import java.util.List;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class amzx
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public String b;
+  public void a(boolean paramBoolean) {}
   
-  public amzx(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
+  public void b(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    }
+    b(paramBoolean);
   }
 }
 

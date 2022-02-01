@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.widget;
 
-import aggs;
+import aezn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bfpy;
-import bhlo;
+import bdzi;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class ScrollerRunnable
   private long jdField_a_of_type_Long = -1L;
   private View jdField_a_of_type_AndroidViewView;
   @Nullable
-  private bfpy jdField_a_of_type_Bfpy;
+  private bdzi jdField_a_of_type_Bdzi;
   protected ListView a;
   protected Runnable a;
   HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -49,11 +49,11 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
     this.e = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledFadingEdgeLength();
-    if (bhlo.d() / 1048576L > 512L) {}
+    if (DeviceInfoUtil.getSystemTotalMemory() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131299011) + 0.5D));
+      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131299076) + 0.5D));
       return;
       bool = false;
     }
@@ -61,8 +61,8 @@ public class ScrollerRunnable
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Bfpy != null) {
-      return this.jdField_a_of_type_Bfpy.a(this.k);
+    if (this.jdField_a_of_type_Bdzi != null) {
+      return this.jdField_a_of_type_Bdzi.a(this.k);
     }
     return false;
   }
@@ -83,52 +83,52 @@ public class ScrollerRunnable
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +28 -> 33
-    //   8: ldc 119
+    //   8: ldc 120
     //   10: iconst_2
-    //   11: new 121	java/lang/StringBuilder
+    //   11: new 122	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 124
-    //   20: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 125
+    //   20: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: iload_1
-    //   24: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: iload_1
     //   34: ifne +28 -> 62
     //   37: aload_0
     //   38: getfield 51	com/tencent/mobileqq/widget/ScrollerRunnable:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   41: invokevirtual 141	java/util/HashMap:isEmpty	()Z
+    //   41: invokevirtual 142	java/util/HashMap:isEmpty	()Z
     //   44: ifne +18 -> 62
     //   47: aload_0
     //   48: getfield 51	com/tencent/mobileqq/widget/ScrollerRunnable:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   51: invokevirtual 144	java/util/HashMap:clear	()V
+    //   51: invokevirtual 145	java/util/HashMap:clear	()V
     //   54: aload_0
     //   55: iconst_0
-    //   56: putfield 146	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
+    //   56: putfield 147	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
     //   59: aload_0
     //   60: monitorexit
     //   61: return
     //   62: aload_0
     //   63: getfield 51	com/tencent/mobileqq/widget/ScrollerRunnable:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   66: iload_1
-    //   67: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   70: invokevirtual 156	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   67: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   70: invokevirtual 157	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   73: ifeq -14 -> 59
     //   76: aload_0
     //   77: aload_0
-    //   78: getfield 146	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
+    //   78: getfield 147	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
     //   81: aload_0
     //   82: getfield 51	com/tencent/mobileqq/widget/ScrollerRunnable:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   85: iload_1
-    //   86: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   89: invokevirtual 160	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   92: checkcast 148	java/lang/Integer
-    //   95: invokevirtual 163	java/lang/Integer:intValue	()I
+    //   86: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   89: invokevirtual 161	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   92: checkcast 149	java/lang/Integer
+    //   95: invokevirtual 164	java/lang/Integer:intValue	()I
     //   98: isub
-    //   99: putfield 146	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
+    //   99: putfield 147	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
     //   102: goto -43 -> 59
     //   105: astore_2
     //   106: aload_0
@@ -156,8 +156,8 @@ public class ScrollerRunnable
     //   2: aload_0
     //   3: getfield 51	com/tencent/mobileqq/widget/ScrollerRunnable:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   6: iload_1
-    //   7: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   10: invokevirtual 156	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   7: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   10: invokevirtual 157	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   13: istore_3
     //   14: iload_3
     //   15: ifeq +6 -> 21
@@ -166,35 +166,35 @@ public class ScrollerRunnable
     //   20: return
     //   21: aload_0
     //   22: aload_0
-    //   23: getfield 146	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
+    //   23: getfield 147	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
     //   26: iload_2
     //   27: iadd
-    //   28: putfield 146	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
+    //   28: putfield 147	com/tencent/mobileqq/widget/ScrollerRunnable:f	I
     //   31: aload_0
     //   32: getfield 51	com/tencent/mobileqq/widget/ScrollerRunnable:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   35: iload_1
-    //   36: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   36: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   39: iload_2
-    //   40: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   43: invokevirtual 168	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   40: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   43: invokevirtual 169	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   46: pop
-    //   47: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   47: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   50: ifeq -32 -> 18
-    //   53: ldc 119
+    //   53: ldc 120
     //   55: iconst_2
-    //   56: new 121	java/lang/StringBuilder
+    //   56: new 122	java/lang/StringBuilder
     //   59: dup
-    //   60: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   63: ldc 170
-    //   65: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   63: ldc 171
+    //   65: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: iload_1
-    //   69: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   72: ldc 172
-    //   74: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   72: ldc 173
+    //   74: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: iload_2
-    //   78: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   81: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   78: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   87: goto -69 -> 18
     //   90: astore 4
     //   92: aload_0
@@ -250,9 +250,9 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a(@Nullable bfpy parambfpy)
+  public void a(@Nullable bdzi parambdzi)
   {
-    this.jdField_a_of_type_Bfpy = parambfpy;
+    this.jdField_a_of_type_Bdzi = parambdzi;
   }
   
   public void a(boolean paramBoolean)
@@ -315,9 +315,9 @@ public class ScrollerRunnable
     if ((this.k == 5) && (this.jdField_a_of_type_Long > 0L))
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof aggs))
+      if ((localObject instanceof aezn))
       {
-        localObject = ((aggs)localObject).a();
+        localObject = ((aezn)localObject).a();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           i1 = ((List)localObject).size();

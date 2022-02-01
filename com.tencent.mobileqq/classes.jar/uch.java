@@ -1,23 +1,22 @@
-import android.os.Bundle;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 
 public class uch
-  implements anui
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public int a;
+  public long a;
+  public ReadInJoyArticle a;
+  public String a;
+  public String b = "";
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public uch()
   {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uch
  * JD-Core Version:    0.7.0.1
  */

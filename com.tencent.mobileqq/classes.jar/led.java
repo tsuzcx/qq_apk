@@ -1,58 +1,24 @@
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
-public class led
+class led
+  extends BroadcastReceiver
 {
-  public static String a;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  lee jdField_a_of_type_Lee;
-  boolean jdField_a_of_type_Boolean = false;
+  led(lec paramlec) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
-  }
-  
-  public led(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Lee = new lee(paramVideoAppInterface);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((this.a.a() != null) && (paramIntent != null))
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Lee);
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
-    }
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
-    localIntentFilter.addAction("tencent.video.q2v.SwitchToMultiAudo");
-    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
-    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
-    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
-    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
-    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
-    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Lee, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
+      long l = mtt.a(paramIntent);
+      paramContext = paramIntent.getStringExtra("camera_id");
+      int i = paramIntent.getIntExtra("availability", 1);
+      this.a.a(paramContext, i);
+      if (QLog.isColorLevel()) {
+        QLog.w("GCameraAvailabilityMonitor", 1, "CameraAvailabilityReceiver, id[" + paramContext + "], available[" + i + "], seq[" + l + "]");
+      }
     }
   }
 }

@@ -1,19 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
 
 public class avdz
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public avdz(HotChatFragment paramHotChatFragment) {}
+  public avdz(LocationDialogUtil.16 param16) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
-      this.a.a.refresh();
-    }
+    paramDialogInterface = avhu.a(this.a.a.app);
+    paramDialogInterface.a(3);
+    paramDialogInterface.a = false;
   }
 }
 

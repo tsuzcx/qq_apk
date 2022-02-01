@@ -1,50 +1,61 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.hiboom.SquareRelativeLayout;
-import com.tencent.mobileqq.widget.NumberCheckBox;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aifb
-  extends RecyclerView.ViewHolder
+  extends aiea
+  implements View.OnClickListener
 {
-  aiew jdField_a_of_type_Aiew;
-  public View a;
-  public FrameLayout a;
-  public ImageView a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public SquareRelativeLayout a;
-  public NumberCheckBox a;
-  public ImageView b;
-  
-  public aifb(aiez paramaiez, View paramView)
+  public aifb(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout = ((SquareRelativeLayout)paramView.findViewById(2131366916));
-    if (PhotoListPanel.f() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout.setCloseSquare(true);
+    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aifc)))
+    {
+      localObject = new aifc();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561248, null);
+      ((aifc)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378707));
+      ((aifc)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366123);
+      ((aifc)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.setTag(localObject);
+      ((aifc)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((aigr)this.jdField_a_of_type_Aigo).a.title);
+      localObject = ((aifc)localObject).jdField_a_of_type_AndroidViewView;
+      if (!((aigr)this.jdField_a_of_type_Aigo).a.showEntrance) {
+        break label133;
+      }
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368915));
-    this.jdField_a_of_type_Aiew = ((PhotoListPanel)paramaiez.a.get()).a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131368863));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372531);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368864));
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this.jdField_a_of_type_Aiew);
+    label133:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      return paramView;
+      localObject = (aifc)paramView.getTag();
+      break;
     }
-    if ((((PhotoListPanel)paramaiez.a.get()).m) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369005));
-    this.b = ((ImageView)paramView.findViewById(2131368916));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369004));
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aicl.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      bcef.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
+    }
   }
 }
 

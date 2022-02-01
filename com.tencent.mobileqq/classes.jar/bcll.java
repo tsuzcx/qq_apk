@@ -1,48 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.util.VADHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.PAAudioPttDownloadProcessor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
-public class bcll
-  extends bcmb
+class bcll
+  implements View.OnClickListener
 {
-  public bcll(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
-  }
+  bcll(bclk parambclk) {}
   
-  public bcfq a(List<bcfr> paramList, String paramString)
+  public void onClick(View paramView)
   {
-    return new bcfc(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
-  
-  public List<bcfq> a(bcmq parambcmq)
-  {
-    if (!GroupSearchEngine.a(this.a)) {
-      return null;
-    }
-    VADHelper.a("voice_search_approximate_cost");
-    List localList = super.a(parambcmq);
-    VADHelper.b("voice_search_approximate_cost");
-    if ((localList != null) && (!localList.isEmpty()))
+    if (TextUtils.isEmpty(this.a.ag))
     {
-      if (parambcmq.a == null) {
-        parambcmq.a = new Bundle();
-      }
-      parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
-      if (localList.size() >= 2)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bcfq)localList.get(1)).a().size());
-        }
-        parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bcfq)localList.get(1)).a().size());
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
     for (;;)
     {
-      return localList;
-      parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
+      try
+      {
+        String str = PAAudioPttDownloadProcessor.getPttPath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.af);
+        if (!TextUtils.isEmpty(str)) {
+          break label133;
+        }
+        this.a.a();
+        this.a.a(this.a.ag, paramView);
+        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.ag, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.ae, this.a.af);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      break;
+      label133:
+      if (new File(localException).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.ag, paramView);
+      }
     }
   }
 }

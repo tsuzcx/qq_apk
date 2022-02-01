@@ -1,6 +1,18 @@
-public abstract interface zib
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class zib
+  implements View.OnClickListener
 {
-  public abstract void a(zia paramzia);
+  public zib(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

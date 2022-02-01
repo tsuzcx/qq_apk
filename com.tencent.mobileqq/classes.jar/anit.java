@@ -1,280 +1,215 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import friendlist.AddGroupResp;
+import friendlist.DelGroupResp;
+import friendlist.MovGroupMemResp;
+import friendlist.ReSortGroupResp;
+import friendlist.RenameGroupResp;
+import friendlist.SetGroupResp;
+import java.nio.ByteBuffer;
 
 public class anit
-  extends beqz
+  extends anio
 {
-  public static int a;
-  public static int b = 2;
-  public static int c = 3;
-  
-  static
+  public anit(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    jdField_a_of_type_Int = 1;
+    super(paramQQAppInterface, paramFriendListHandler);
   }
   
-  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
+  private void a(ToServiceMsg paramToServiceMsg, MovGroupMemResp paramMovGroupMemResp)
   {
-    return a(false, paramString1, paramURLDrawableOptions, paramString2);
-  }
-  
-  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean)
-  {
-    return a(false, paramString1, paramURLDrawableOptions, paramString2, paramBoolean);
-  }
-  
-  public static URLDrawable a(boolean paramBoolean, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
-  {
-    return a(paramBoolean, paramString1, paramURLDrawableOptions, paramString2, false);
-  }
-  
-  public static URLDrawable a(boolean paramBoolean1, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
-    }
-    if (!paramBoolean1) {}
-    for (String str = annv.k + "boxcard/" + paramString1;; str = paramString1)
+    paramToServiceMsg = paramToServiceMsg.extraData;
+    String str = paramToServiceMsg.getString("uin");
+    byte b1 = paramToServiceMsg.getByte("group_id");
+    byte b2 = paramToServiceMsg.getByte("away_group_id");
+    if (paramMovGroupMemResp.result == 0)
     {
-      File localFile = new File(str);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-      if (paramURLDrawableOptions == null)
+      ((amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(str, b1);
+      a(9, true, new Object[] { str, Byte.valueOf(b1), Byte.valueOf(b2) });
+      return;
+    }
+    a(9, false, null);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, SetGroupResp paramSetGroupResp)
+  {
+    boolean bool;
+    int i;
+    if (paramSetGroupResp.result == 0)
+    {
+      bool = true;
+      i = paramToServiceMsg.extraData.getInt("set_type", -1);
+      if (i == paramSetGroupResp.reqtype) {
+        break label671;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleSetGroupResp | unmatched reqtype, local = " + i + ", remote = " + paramSetGroupResp.reqtype);
+      }
+      bool = false;
+    }
+    label671:
+    for (;;)
+    {
+      Object localObject1 = ByteBuffer.wrap(paramSetGroupResp.vecBody);
+      amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      Object localObject2;
+      switch (i)
       {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mExtraInfo = null;
-      }
-      if (localURLDrawableOptions.mLoadingDrawable == null) {
-        localURLDrawableOptions.mLoadingDrawable = beyq.a;
-      }
-      if (localURLDrawableOptions.mFailedDrawable == null) {
-        localURLDrawableOptions.mFailedDrawable = beyq.a;
-      }
-      if (localURLDrawableOptions.mExtraInfo == null) {
-        localURLDrawableOptions.mExtraInfo = new aniu();
-      }
-      paramBoolean1 = paramBoolean2;
-      if ((localURLDrawableOptions.mExtraInfo instanceof aniu))
-      {
-        paramURLDrawableOptions = (aniu)localURLDrawableOptions.mExtraInfo;
-        if (!TextUtils.isEmpty(str)) {
-          paramURLDrawableOptions.jdField_a_of_type_JavaLangString = str;
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramURLDrawableOptions.jdField_b_of_type_JavaLangString = paramString2;
-        }
-        if (paramURLDrawableOptions.jdField_a_of_type_Int != jdField_a_of_type_Int)
+      default: 
+        return;
+        bool = false;
+        break;
+      case 0: 
+        localObject2 = new AddGroupResp();
+        if (bool)
         {
-          paramBoolean1 = paramBoolean2;
-          if (!paramURLDrawableOptions.jdField_b_of_type_Boolean) {}
-        }
-        else
-        {
-          paramBoolean1 = true;
-        }
-      }
-      if ((!paramBoolean1) && (localFile.exists()))
-      {
-        paramURLDrawableOptions = URLDrawable.getDrawable(localFile, localURLDrawableOptions);
-        paramString1 = paramURLDrawableOptions;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ApolloImageDownloader", 2, "getDrawable file exsit path->" + str + ",url:" + paramString2);
-          paramString1 = paramURLDrawableOptions;
-        }
-      }
-      for (;;)
-      {
-        return paramString1;
-        try
-        {
-          paramString1 = URLDrawable.getDrawable(new URL("apollo_image", "", paramString1), localURLDrawableOptions);
-        }
-        catch (Exception paramString1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloImageDownloader", 2, paramString1.getMessage());
+          ((AddGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
+          ((AddGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
+          ((AddGroupResp)localObject2).cGroupId = ((ByteBuffer)localObject1).get();
+          ((AddGroupResp)localObject2).cSortId = ((ByteBuffer)localObject1).get();
+          localObject1 = localamsw.a(((AddGroupResp)localObject2).cGroupId + "");
+          if (localObject1 == null) {
+            break label295;
           }
-          paramString1 = null;
+          ((Groups)localObject1).group_id = ((AddGroupResp)localObject2).cGroupId;
+          ((Groups)localObject1).seqid = ((AddGroupResp)localObject2).cSortId;
+          ((Groups)localObject1).group_name = paramToServiceMsg.extraData.getString("group_name");
         }
+        for (paramToServiceMsg = (ToServiceMsg)localObject1;; paramToServiceMsg = (ToServiceMsg)localObject1)
+        {
+          localamsw.a(paramToServiceMsg);
+          a(18, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (AddGroupResp)localObject2));
+          return;
+          localObject1 = new Groups();
+          ((Groups)localObject1).group_id = ((AddGroupResp)localObject2).cGroupId;
+          ((Groups)localObject1).seqid = ((AddGroupResp)localObject2).cSortId;
+          ((Groups)localObject1).group_name = paramToServiceMsg.extraData.getString("group_name");
+        }
+      case 1: 
+        localObject2 = new RenameGroupResp();
+        if (bool)
+        {
+          ((RenameGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
+          ((RenameGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
+          i = ((ByteBuffer)localObject1).get();
+          ((RenameGroupResp)localObject2).cLen = ((ByteBuffer)localObject1).get();
+          paramToServiceMsg = new byte[((RenameGroupResp)localObject2).cLen];
+          ((ByteBuffer)localObject1).get(paramToServiceMsg, 0, ((RenameGroupResp)localObject2).cLen);
+          ((RenameGroupResp)localObject2).sGroupName = new String(paramToServiceMsg);
+          paramToServiceMsg = localamsw.a(String.valueOf(i));
+          if (paramToServiceMsg == null) {
+            break label485;
+          }
+        }
+        for (paramToServiceMsg.group_name = ((RenameGroupResp)localObject2).sGroupName;; paramToServiceMsg.group_name = ((RenameGroupResp)localObject2).sGroupName)
+        {
+          localamsw.a(paramToServiceMsg);
+          a(19, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (RenameGroupResp)localObject2));
+          return;
+          paramToServiceMsg = new Groups();
+          paramToServiceMsg.group_id = ((int)((RenameGroupResp)localObject2).dwSequence);
+        }
+      case 2: 
+        paramToServiceMsg = new DelGroupResp();
+        if (bool)
+        {
+          paramToServiceMsg.dwToUin = ((ByteBuffer)localObject1).getInt();
+          paramToServiceMsg.dwSequence = ((ByteBuffer)localObject1).getInt();
+          paramToServiceMsg.cGroupid = ((ByteBuffer)localObject1).get();
+        }
+        paramSetGroupResp = new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, paramToServiceMsg);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.handleDelGroupResp(paramToServiceMsg, bool, paramSetGroupResp);
+        return;
+      case 3: 
+        label295:
+        label485:
+        localObject2 = new ReSortGroupResp();
+        if (bool)
+        {
+          ((ReSortGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
+          ((ReSortGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
+          localamsw.a(paramToServiceMsg.extraData.getByteArray("group_id_list"), paramToServiceMsg.extraData.getByteArray("sort_id_list"));
+        }
+        a(22, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (ReSortGroupResp)localObject2));
+        return;
       }
     }
   }
   
-  public static final String a(int paramInt1, int paramInt2)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramInt1 == 3) {
-      return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramInt2 + "/task_detail.gif";
-    }
-    return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_item_" + paramInt2 + "/task_detail.png";
-  }
-  
-  public static final String a(String paramString)
-  {
-    return "https://cmshow.gtimg.cn/client/img/" + paramString;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    boolean bool = true;
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if ("friendlist.MovGroupMemReq".equals(localObject))
     {
-      return false;
-      String str = annv.k + paramString.substring(paramString.lastIndexOf("/") + 1);
-      if (new File(str).exists()) {
-        return true;
+      i = paramToServiceMsg.extraData.getByte("move_fri_type");
+      if (i == 0) {
+        if (paramObject != null) {
+          a(paramToServiceMsg, (MovGroupMemResp)paramObject);
+        }
       }
-      paramString = a(true, str, null, paramString, true);
-    } while (paramString == null);
-    paramString.startDownload();
-    return false;
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
     }
-    if ((paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof aniu)))
+    while (!"friendlist.SetGroupReq".equals(localObject))
     {
-      paramOutputStream = (aniu)paramDownloadParams.mExtraInfo;
-      paramDownloadParams = paramOutputStream.jdField_a_of_type_JavaLangString;
-      paramOutputStream = paramOutputStream.jdField_b_of_type_JavaLangString;
-      paramDownloadParams = new File(paramDownloadParams);
-      if (paramDownloadParams.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloImageDownloader", 2, "downloadImage file exsit url->" + paramOutputStream);
-        }
-      }
       int i;
       do
       {
-        return paramDownloadParams;
-        paramDownloadParams.getParentFile().mkdirs();
-        if ((BaseApplicationImpl.sApplication != null) && (!bhnv.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-          paramURLDrawableHandler.onFileDownloadFailed(0);
-        }
-        bihu localbihu = new bihu(paramOutputStream, paramDownloadParams);
-        localbihu.b = 1;
-        localbihu.p = false;
-        localbihu.q = true;
-        localbihu.r = true;
-        i = bihw.a(localbihu, null);
-        if (i != 0) {
-          break;
-        }
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->0");
-      return paramDownloadParams;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->" + i);
-      }
+        return;
+        a(9, false, null);
+        return;
+      } while ((i != 1) || (paramObject == null));
+      paramToServiceMsg = (MovGroupMemResp)paramObject;
+      return;
     }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
-    }
-    return null;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    Bitmap localBitmap = null;
-    aniu localaniu;
-    if ((paramFile != null) && (paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof aniu)))
+    if (QLog.isColorLevel())
     {
-      localaniu = (aniu)paramDownloadParams.mExtraInfo;
-      if (localaniu.jdField_a_of_type_Int != jdField_a_of_type_Int) {
-        break label102;
+      localObject = new StringBuilder().append("onSetGroupCmd :").append(paramToServiceMsg.extraData.getInt("set_type", -1000)).append(", ").append(paramFromServiceMsg.isSuccess()).append(", ");
+      if (paramObject == null) {
+        break label182;
       }
     }
     for (;;)
     {
-      try
-      {
-        localBitmap = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
-        localBitmap = bhmq.a(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        paramFile = localBitmap;
-        return paramFile;
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, bool);
+      if (!paramFromServiceMsg.isSuccess()) {
+        break label188;
       }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloImageDownloader", 2, localThrowable.getMessage());
-        }
-      }
-      label102:
-      do
-      {
-        return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-      } while (localaniu.jdField_a_of_type_Int != b);
-      if (paramFile.exists())
-      {
-        paramURLDrawableHandler = new BitmapFactory.Options();
-        paramURLDrawableHandler.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
-        paramURLDrawableHandler.inSampleSize = bhmq.a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
-        paramURLDrawableHandler.inJustDecodeBounds = false;
-        paramURLDrawableHandler.inPreferredConfig = Bitmap.Config.RGB_565;
-        try
-        {
-          paramFile = BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
-          if (paramFile != null) {
-            if (localaniu.jdField_a_of_type_Boolean)
-            {
-              i = 2130850000;
-              paramDownloadParams = bhmq.a(paramFile, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, true);
-              paramFile = paramDownloadParams;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
-              return paramDownloadParams;
-            }
-          }
-        }
-        catch (OutOfMemoryError paramFile)
-        {
-          for (;;)
-          {
-            QLog.e("ApolloImageDownloader", 1, "decode server pic oom!!");
-            System.gc();
-            paramFile = localThrowable;
-            continue;
-            int i = 2130849824;
-          }
-          paramDownloadParams = paramFile;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramFile = paramDownloadParams;
-      if (!QLog.isColorLevel()) {
+      paramFromServiceMsg = (SetGroupResp)paramObject;
+      if (paramFromServiceMsg == null) {
         break;
       }
-      QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
-      return paramDownloadParams;
-      paramDownloadParams = null;
+      a(paramToServiceMsg, paramFromServiceMsg);
+      return;
+      label182:
+      bool = false;
     }
+    label188:
+    switch (paramToServiceMsg.extraData.getInt("set_type", -1))
+    {
+    default: 
+      return;
+    case 0: 
+      a(18, false, null);
+      return;
+    case 1: 
+      a(19, false, null);
+      return;
+    case 2: 
+      a(21, false, null);
+      return;
+    }
+    a(22, false, null);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return ("friendlist.MovGroupMemReq".equals(paramString)) || ("friendlist.SetGroupReq".equals(paramString));
   }
 }
 

@@ -1,21 +1,22 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class akwc
-  implements DialogInterface.OnClickListener
+public class akwc
+  implements MediaPlayer.OnCompletionListener
 {
-  akwc(akwb paramakwb) {}
+  public akwc(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-    akwa.a(this.a.a).dismiss();
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
+    }
   }
 }
 

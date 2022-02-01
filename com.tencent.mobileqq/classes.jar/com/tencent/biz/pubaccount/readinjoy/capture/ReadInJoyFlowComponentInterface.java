@@ -1,27 +1,27 @@
 package com.tencent.biz.pubaccount.readinjoy.capture;
 
-import aluh;
+import akry;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class ReadInJoyFlowComponentInterface
-  implements aluh
+  implements akry
 {
   public static final String a = ReadInJoyFlowComponentInterface.class.getName();
   
-  public String a()
+  public String getRefer()
   {
     return "READINJOY_VIDEO";
   }
   
-  public void a(Activity paramActivity)
+  public void localVideoClick(Activity paramActivity)
   {
     Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
     localIntent.putExtra("enter_from", 25);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
-    localIntent.putExtra("video_refer", a());
+    localIntent.putExtra("video_refer", getRefer());
     localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
@@ -34,11 +34,11 @@ public class ReadInJoyFlowComponentInterface
     paramActivity.startActivityForResult(localIntent, 10013);
   }
   
-  public void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(Activity paramActivity, Intent paramIntent) {}
+  public void sendClick(Activity paramActivity, Intent paramIntent) {}
   
-  public void c_(String paramString) {}
+  public void setRefer(String paramString) {}
 }
 
 

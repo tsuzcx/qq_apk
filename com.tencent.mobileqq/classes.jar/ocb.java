@@ -1,39 +1,59 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class ocb
-  implements bliz
+  extends ArrayAdapter<oca>
 {
-  public ocb(PublicAccountMenuBar paramPublicAccountMenuBar, List paramList, blir paramblir) {}
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<oca> jdField_a_of_type_JavaUtilList;
   
-  public void OnClick(View paramView, int paramInt)
+  public ocb(Context paramContext, int paramInt, List<oca> paramList)
   {
-    try
-    {
-      if (PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar)) {
-        return;
-      }
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, true);
-      if (paramInt == 0)
-      {
-        PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
-        return;
-      }
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-      return;
-    }
-    paramView = (aayp)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+    super(paramContext, paramInt, paramList);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public oca a(int paramInt)
+  {
+    return (oca)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
     if (paramView == null)
     {
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
-      return;
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559158, null);
+      paramView = new occ();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373090));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373091));
+      localView.setTag(paramView);
     }
-    PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, paramView);
-    this.jdField_a_of_type_Blir.dismiss();
+    for (;;)
+    {
+      Object localObject = a(paramInt);
+      paramView.jdField_a_of_type_Oca = ((oca)localObject);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((oca)localObject).jdField_a_of_type_JavaLangString);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(((oca)localObject).jdField_a_of_type_Int);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (occ)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
   }
 }
 

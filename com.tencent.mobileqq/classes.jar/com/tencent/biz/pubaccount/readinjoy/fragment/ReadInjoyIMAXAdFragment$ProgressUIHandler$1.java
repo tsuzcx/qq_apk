@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.qphone.base.util.QLog;
-import plj;
+import pqv;
 
 public class ReadInjoyIMAXAdFragment$ProgressUIHandler$1
   implements Runnable
 {
-  public ReadInjoyIMAXAdFragment$ProgressUIHandler$1(plj paramplj) {}
+  public ReadInjoyIMAXAdFragment$ProgressUIHandler$1(pqv parampqv) {}
   
   public void run()
   {

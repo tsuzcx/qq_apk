@@ -21,6 +21,7 @@ public class ActionBridge<T>
   static
   {
     ACTION_CLASS.put("ShareAction", "com.tencent.qqmini.sdk.action.ShareAction");
+    ACTION_CLASS.put("FavoritesAction", "com.tencent.qqmini.sdk.action.FavoritesAction");
     ACTION_CLASS.put("UpdateUIAction", "com.tencent.qqmini.sdk.action.UpdateUIAction");
     ACTION_CLASS.put("PageAction", "com.tencent.qqmini.sdk.action.PageAction");
     ACTION_CLASS.put("RestartAction", "com.tencent.qqmini.sdk.action.RestartAction");
@@ -103,7 +104,7 @@ public class ActionBridge<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge
  * JD-Core Version:    0.7.0.1
  */

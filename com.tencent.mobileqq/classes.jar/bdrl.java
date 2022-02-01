@@ -1,8 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class bdrl
+public class bdrl
+  implements DialogInterface.OnClickListener
 {
-  View a;
+  public bdrl(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

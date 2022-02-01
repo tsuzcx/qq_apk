@@ -11,45 +11,46 @@ import com.tencent.qphone.base.util.QLog;
 public class DinTypeFaceTextView
   extends TextView
 {
-  static Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  static boolean jdField_a_of_type_Boolean;
+  private static final String TAG = "DinTypeFaceTextView";
+  static Typeface dinTypeface;
+  static boolean loadTypeFaced;
   
   public DinTypeFaceTextView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public DinTypeFaceTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public DinTypeFaceTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    if (jdField_a_of_type_AndroidGraphicsTypeface == null) {
-      b();
+    if (dinTypeface == null) {
+      loadTypeFace();
     }
-    if (jdField_a_of_type_AndroidGraphicsTypeface != null) {
-      setTypeface(jdField_a_of_type_AndroidGraphicsTypeface);
+    if (dinTypeface != null) {
+      setTypeface(dinTypeface);
     }
   }
   
-  private void b()
+  private void loadTypeFace()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (loadTypeFaced) {
       return;
     }
     try
     {
-      jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(getResources().getAssets(), "qzone_din.ttf");
+      dinTypeface = Typeface.createFromAsset(getResources().getAssets(), "qzone_din.ttf");
       return;
     }
     catch (Throwable localThrowable)
@@ -59,7 +60,7 @@ public class DinTypeFaceTextView
     }
     finally
     {
-      jdField_a_of_type_Boolean = true;
+      loadTypeFaced = true;
     }
   }
 }

@@ -2,35 +2,35 @@ package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import beqz;
-import beyq;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import java.io.File;
-import sxb;
-import sxe;
-import zoc;
+import tbb;
+import tbe;
+import yoy;
 
 class CropImageView$1
   implements Runnable
 {
-  CropImageView$1(CropImageView paramCropImageView, Bitmap paramBitmap, sxe paramsxe, Bitmap.CompressFormat paramCompressFormat, int paramInt, sxb paramsxb) {}
+  CropImageView$1(CropImageView paramCropImageView, Bitmap paramBitmap, tbe paramtbe, Bitmap.CompressFormat paramCompressFormat, int paramInt, tbb paramtbb) {}
   
   public void run()
   {
     boolean bool = true;
-    Bitmap localBitmap = zoc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Sxe.a(), this.jdField_a_of_type_Sxe.b(), this.jdField_a_of_type_Sxe.a());
+    Bitmap localBitmap = yoy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Tbe.a(), this.jdField_a_of_type_Tbe.b(), this.jdField_a_of_type_Tbe.a());
     int i;
     String str;
     if (localBitmap != null)
     {
       i = 1;
-      str = beyq.a + File.separator + beqz.c(new StringBuilder().append("CropImageView").append(System.currentTimeMillis()).toString());
-      if ((i == 0) || (!zoc.a(localBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat, this.jdField_a_of_type_Int, str))) {
+      str = URLDrawableHelper.diskCachePath + File.separator + AbsDownloader.getFileName(new StringBuilder().append("CropImageView").append(System.currentTimeMillis()).toString());
+      if ((i == 0) || (!yoy.a(localBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat, this.jdField_a_of_type_Int, str))) {
         break label144;
       }
     }
     for (;;)
     {
-      CropImageView.a(this.this$0, str, bool, this.jdField_a_of_type_Sxb);
+      CropImageView.a(this.this$0, str, bool, this.jdField_a_of_type_Tbb);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         localBitmap.recycle();
       }
@@ -44,7 +44,7 @@ class CropImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.CropImageView.1
  * JD-Core Version:    0.7.0.1
  */

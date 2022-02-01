@@ -1,6 +1,22 @@
-public abstract interface wpb<T extends wov>
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
+
+class wpb
+  implements wol
 {
-  public abstract void a(int paramInt, String paramString, T paramT);
+  wpb(wpa paramwpa) {}
+  
+  public void a(ErrorMessage paramErrorMessage, List<wod> paramList)
+  {
+    this.a.a.a(paramErrorMessage, paramList);
+    this.a.b();
+  }
+  
+  public void a(List<woe> paramList, boolean paramBoolean)
+  {
+    this.a.a.a(paramList, paramBoolean);
+    this.a.b();
+  }
 }
 
 

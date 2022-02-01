@@ -1,47 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.viola.adapter.IBridgeAdapter;
-import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public class tcz
-  implements IBridgeAdapter
+class tcz
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public tcz()
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
+  
+  tcz(tcy paramtcy, View paramView, int paramInt1, int paramInt2)
   {
-    registerModuleFunction();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public ArrayList<String> getAdapterUnRegisterFunction()
+  public boolean onPreDraw()
   {
-    return null;
-  }
-  
-  public void registerModuleFunction() {}
-  
-  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
-  {
-    if (paramViolaInstance == null) {
-      break label5;
+    this.jdField_a_of_type_Tcy.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a) + tcy.a(this.jdField_a_of_type_Tcy));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tcy.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tcy.a) + tcy.b(this.jdField_a_of_type_Tcy));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    for (;;)
-    {
-      label5:
-      return;
-      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
-      {
-        paramString = paramViolaInstance.getFragment();
-        if (paramString == null) {
-          break;
-        }
-        if ((paramString instanceof ViolaFragment)) {}
-        for (paramString = ((ViolaFragment)paramString).getTtileChangelistener(); paramString != null; paramString = null)
-        {
-          paramString.a(((Boolean)paramObject).booleanValue());
-          return;
-        }
-      }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a, this.jdField_a_of_type_Tcy.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a)));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a).setVisibility(4);
     }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tcy.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 

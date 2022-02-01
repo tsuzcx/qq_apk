@@ -1,64 +1,40 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahfv
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
-  
-  ahfv(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-  }
+  ahfv(ahfp paramahfp) {}
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.b.get();
-    if ((paramView == null) || (localObject == null)) {}
-    boolean bool;
-    do
+    ahfp.a(this.a);
+    if ((ahfp.a(this.a) != null) && (!TextUtils.isEmpty(ahfp.a(this.a))))
     {
-      do
+      String str = "big_brother_source_key=biz_src_zf_games&platform=qq_m&current_uin=$OPID$&user_openid=$OPID$&launchfrom=sq_gamecenter&gamedata=&platformdata=";
+      QQAppInterface localQQAppInterface = this.a.getApp();
+      if ((!TextUtils.isEmpty(ahfp.b(this.a))) && (localQQAppInterface != null))
       {
-        do
-        {
-          return;
-          bdll.b(paramView, "dc00898", "", "", "0X800906D", "0X800906D", 0, 0, "", "", "", "");
-        } while (!(localObject instanceof Activity));
-        if (!bhnv.d((Context)localObject))
-        {
-          QQToast.a((Context)localObject, 2131691989, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299011));
-          return;
+        if (!ahfp.b(this.a).startsWith("&")) {
+          str = "big_brother_source_key=biz_src_zf_games&platform=qq_m&current_uin=$OPID$&user_openid=$OPID$&launchfrom=sq_gamecenter&gamedata=&platformdata=" + "&";
         }
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.b.get() == null));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
-      bool = Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", (String)localObject);
-    localBundle.putString("tdsourcetag", "s_qq_aio_grey");
-    TeamWorkDocEditBrowserActivity.a((Context)this.b.get(), localBundle, false);
-    if (!bool)
-    {
-      bdll.b(paramView, "CliOper", "", "", "0X8008A35", "0X8008A35", 0, 0, "", "", "", "");
-      return;
+        str = str + ahfp.b(this.a);
+        new bbkb().a(localQQAppInterface, this.a.getActivity(), ahfp.a(this.a).c, str, ahfp.a(this.a), 536870912);
+        ((VasExtensionHandler)localQQAppInterface.getBusinessHandler(71)).a(ahfp.a(this.a).c, localQQAppInterface.getCurrentAccountUin(), 1);
+      }
     }
-    bdll.b(paramView, "CliOper", "", "", "0X8009075", "0X8009075", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e(ahfp.b, 1, "gameinfo is null ");
+    }
   }
 }
 

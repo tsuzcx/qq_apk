@@ -1,19 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.bizparts.QCircleSharePart.6;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class vfp
-  implements aoog
+  implements Animation.AnimationListener
 {
-  public vfp(QCircleSharePart.6 param6, aoof paramaoof) {}
+  public vfp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d("QCircleSharePart", 1, "shareToWeChat share user icon(need decode task)  onDecodeTaskCompleted");
-    QCircleSharePart.6.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleSharePart$6, paramBitmap);
-    this.jdField_a_of_type_Aoof.a(null);
-    this.jdField_a_of_type_Aoof.d();
+    paramAnimation = (ImageView)this.a.findViewById(2131380267);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131380268);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

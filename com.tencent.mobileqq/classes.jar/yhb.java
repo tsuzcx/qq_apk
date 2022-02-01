@@ -1,14 +1,40 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class yhb
-  extends ztl
+  extends ygz<yha>
 {
-  public yhb(StoryDetailFragment paramStoryDetailFragment) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370327);
   
-  public boolean a(boolean paramBoolean)
+  yhb(yha paramyha, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    this.a.d();
-    return true;
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131561697, paramViewGroup, false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
+  
+  public void a(yha paramyha, int paramInt)
+  {
+    super.a(paramyha, paramInt);
+    if (paramyha != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramyha.a());
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
 }
 

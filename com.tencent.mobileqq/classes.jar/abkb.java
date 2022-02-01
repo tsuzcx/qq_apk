@@ -1,24 +1,40 @@
-import android.app.Activity;
+import com.tencent.ad.tangram.log.AdLogAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface abkb
+public final class abkb
+  implements AdLogAdapter
 {
-  public abstract void a();
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
   
-  public abstract void a(int paramInt);
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
   
-  public abstract void a(Activity paramActivity, abjp paramabjp);
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
   
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abkb
  * JD-Core Version:    0.7.0.1
  */

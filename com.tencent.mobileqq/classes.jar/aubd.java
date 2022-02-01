@@ -1,69 +1,104 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aubd
+public class aubd
+  extends WebViewPlugin
 {
-  protected final QQAppInterface a;
+  public static String a = "qqgame_api";
   
-  public aubd(QQAppInterface paramQQAppInterface)
+  public aubd()
   {
-    this.a = paramQQAppInterface;
+    this.mPluginNameSpace = a;
   }
   
-  protected abstract String a(boolean paramBoolean);
-  
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
-  public void a(aube paramaube, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    paramaube = paramaube.a();
-    if (paramExcitingTransferOneSlotComplete != null) {
-      paramaube.putAll(paramExcitingTransferOneSlotComplete.getReportData());
-    }
-    if (paramHashMap != null) {
-      paramaube.putAll(paramHashMap);
-    }
-    paramHashMap = bdmc.a(BaseApplication.getContext());
-    String str = this.a.getCurrentAccountUin();
-    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
-    for (boolean bool = true;; bool = false)
+    super.handleEvent(paramString, paramLong, paramMap);
+    if (paramLong == 8589934621L)
     {
-      paramHashMap.a(str, "actPDSlot", bool, 0L, 0L, paramaube, "");
-      return;
+      paramString = new JSONObject();
+      if (paramMap != null) {}
+      for (;;)
+      {
+        try
+        {
+          localInteger = (Integer)paramMap.get("action");
+          if ((localInteger.intValue() != 1) && (localInteger.intValue() != 2) && (localInteger.intValue() != 3)) {
+            continue;
+          }
+          paramString.put("action", localInteger);
+          if (paramMap.containsKey("height")) {
+            paramString.put("height", paramMap.get("height"));
+          }
+          if (paramMap.containsKey("index")) {
+            paramString.put("index", paramMap.get("index"));
+          }
+          if (paramMap.containsKey("gameData")) {
+            paramString.put("gameData", paramMap.get("gameData"));
+          }
+        }
+        catch (ClassCastException paramMap)
+        {
+          Integer localInteger;
+          paramMap.printStackTrace();
+          continue;
+        }
+        catch (JSONException paramMap)
+        {
+          paramMap.printStackTrace();
+          continue;
+        }
+        dispatchJsEvent("gameFeedsEvent", paramString, null);
+        return true;
+        if (localInteger.intValue() == 4)
+        {
+          paramString.put("action", localInteger);
+          paramString.put("perfData", paramMap.get("perfData"));
+        }
+      }
     }
+    if (paramLong == 8589934625L) {
+      dispatchJsEvent("gameFeedsPause", new JSONObject(), null);
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  public void a(boolean paramBoolean)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (a()) {
-      b(paramBoolean);
-    }
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
-    }
-    bdmc.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  protected abstract boolean a();
-  
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
-  {
-    HashMap localHashMap = b();
-    if (localHashMap != null)
+    if (a.equals(paramString2))
     {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
-      bdmc.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameWebViewJsPlugin", 1, "pkgName:" + paramString2 + " method:" + paramString3);
+      }
+      if ("notifyWebLoaded".equals(paramString3))
+      {
+        paramJsBridgeListener = new Intent("action_qgame_jaspi_webloaded");
+        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+        return true;
+      }
+      if ("playVideo".equals(paramString3))
+      {
+        paramJsBridgeListener = new Intent("action_qgame_h5_video_play");
+        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+        return true;
+      }
+      if ("videoPause".equals(paramString3))
+      {
+        paramJsBridgeListener = new Intent("action_qgame_h5_video_pause");
+        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+        return true;
+      }
     }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

@@ -1,16 +1,6 @@
-import java.util.ArrayList;
-
-class rnk
+public abstract interface rnk
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<rns> a = new ArrayList();
-  public int b;
-  public long b;
-  public String b;
-  public int c;
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

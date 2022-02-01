@@ -1,52 +1,18 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.hlyyb.downloader.DownloaderTask;
 
-public class bcpl
-  implements bcny
+public abstract interface bcpl
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public abstract void a(DownloaderTask paramDownloaderTask);
   
-  public bcpl(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
-    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320);
-    if ((paramViewGroup != null) && (paramInt2 > 0)) {
-      paramViewGroup.setImageResource(paramInt2);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369569));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
-    if (paramInt3 == 12) {
-      this.b.setText(anzj.a(2131712537) + tyi.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + anzj.a(2131712536));
-    }
-  }
+  public abstract void b(DownloaderTask paramDownloaderTask);
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
+  public abstract void c(DownloaderTask paramDownloaderTask);
   
-  public TextView a()
-  {
-    return null;
-  }
+  public abstract void d(DownloaderTask paramDownloaderTask);
   
-  public List<bcnz> a()
-  {
-    return null;
-  }
+  public abstract void e(DownloaderTask paramDownloaderTask);
   
-  public TextView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
+  public abstract void f(DownloaderTask paramDownloaderTask);
 }
 
 

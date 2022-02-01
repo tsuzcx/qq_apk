@@ -1,25 +1,30 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class anyi
-  implements Handler.Callback
+public abstract class anyi
+  implements BusinessObserver
 {
-  private WeakReference<FrameHelperActivity> a;
+  public abstract void a(aogo paramaogo);
   
-  public anyi(FrameHelperActivity paramFrameHelperActivity)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramFrameHelperActivity);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity != null) {
-      localFrameHelperActivity.a(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    return false;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    try
+    {
+      a((aogo)paramObject);
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      a(new aogo());
+    }
   }
 }
 

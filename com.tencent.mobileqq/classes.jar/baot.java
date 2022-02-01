@@ -1,57 +1,44 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class baot
-  extends BaseAdapter
+class baot
+  implements EIPCResultCallback
 {
-  public List<QCallRecord> a;
+  baot(baos parambaos) {}
   
-  public baot(QCallDetailActivity paramQCallDetailActivity)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
-      return QCallRecord.TYPE_DATE;
-    }
-    return QCallRecord.TYPE_REALRECORD;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return paramView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
+    if (paramEIPCResult.data == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramEIPCResult.data.getInt("notify_type"))
+          {
+          default: 
+            return;
+          }
+        } while (paramEIPCResult.code != 0);
+        i = paramEIPCResult.data.getInt("id");
+        paramEIPCResult = paramEIPCResult.data.getString("url");
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature.TOOL", 2, "mSignatureManagerIPCCallback get action id = " + i + " url = " + paramEIPCResult);
+        }
+      } while (TextUtils.isEmpty(paramEIPCResult));
+      baos.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
+      baos.b(this.a);
+      this.a.notifyObservers(Integer.valueOf(4));
+      return;
+    } while (paramEIPCResult.code != 0);
+    int i = paramEIPCResult.data.getInt("id");
+    this.a.a(i, true);
   }
 }
 

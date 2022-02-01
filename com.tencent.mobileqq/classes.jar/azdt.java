@@ -1,6 +1,13 @@
-public abstract interface azdt
+public class azdt
 {
-  public abstract void a();
+  public int a;
+  public byte[] a;
+  
+  public azdt(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

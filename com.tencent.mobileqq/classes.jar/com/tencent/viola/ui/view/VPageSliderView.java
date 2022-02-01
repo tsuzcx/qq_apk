@@ -7,12 +7,15 @@ import android.os.Build.VERSION;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.TranslateAnimation;
+import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.adapter.VSliderAdapter;
 import com.tencent.viola.ui.component.VPage;
 import com.tencent.viola.ui.component.VPage.PAGEVIEWSTATE;
@@ -44,6 +47,7 @@ public class VPageSliderView
   private boolean mHandleDefault = true;
   private boolean mHasWillAppearFire = false;
   private boolean mHasWillDisappearFire = false;
+  private boolean mInterruptEnable = false;
   private int mLastPositionOffsetPixels = 0;
   private VSliderView.VSliderListener mListener;
   private int mMaximumVelocity;
@@ -155,6 +159,11 @@ public class VPageSliderView
       this.mRect.set(getLeft(), getTop(), getRight(), getBottom());
     }
     this.mHandleDefault = false;
+    if ((this.mInterruptEnable) && ((getParent() instanceof ViewGroup)))
+    {
+      ((ViewGroup)getParent()).requestDisallowInterceptTouchEvent(false);
+      return;
+    }
     layout(getLeft() + (int)(paramFloat * 0.5F), getTop(), getRight() + (int)(paramFloat * 0.5F), getBottom());
   }
   
@@ -172,6 +181,9 @@ public class VPageSliderView
   public void bindComponent(VPageSlider paramVPageSlider)
   {
     this.mWeakReference = new WeakReference(paramVPageSlider);
+    if ((getComponent() != null) && (getComponent().getInstance() != null) && (!TextUtils.isEmpty(getComponent().getInstance().getUrl()))) {
+      this.mInterruptEnable = getComponent().getInstance().getUrl().contains("v_fromswitch=1");
+    }
   }
   
   public void changeCurrentPageState(VPageSlider paramVPageSlider, int paramInt, VPage.PAGEVIEWSTATE paramPAGEVIEWSTATE)
@@ -501,6 +513,11 @@ public class VPageSliderView
   public void setBouncesEnable(Boolean paramBoolean)
   {
     this.mBouncesEnable = paramBoolean.booleanValue();
+  }
+  
+  public void setInterruptEnable(Boolean paramBoolean)
+  {
+    this.mInterruptEnable = paramBoolean.booleanValue();
   }
   
   public void setScrollEnable(boolean paramBoolean)

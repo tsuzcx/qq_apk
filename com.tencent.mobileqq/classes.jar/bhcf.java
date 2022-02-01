@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface bhcf
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

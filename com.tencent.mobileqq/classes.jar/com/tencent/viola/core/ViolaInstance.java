@@ -157,6 +157,24 @@ public class ViolaInstance
     this.mRenderContainer.addView(paramVComponentContainer.getHostView(), 0);
   }
   
+  private void dealReportWhenDestroy()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(ViolaEnvironment.JS_ERROR_AFTER_RENDER, Integer.toString(this.mJsErrorCountRunning));
+    localHashMap.putAll(getReportCommonData());
+    IReportDelegate localIReportDelegate = ViolaSDKManager.getInstance().getReportDelegate();
+    if (localIReportDelegate != null) {
+      localIReportDelegate.reportRunningData(localHashMap, this.mUrl);
+    }
+    ViolaReportManager.getInstance().postDataToBeacon("actKanDianViolaJsError", localHashMap);
+    if ((!this.mIsReportEnded) && (!this.mReportDataMap.isEmpty()))
+    {
+      this.mIsReportEnded = true;
+      this.mReportDataMap.putAll(getReportCommonData());
+      ViolaReportManager.getInstance().postDataToBeacon("actKanDianViolaData", this.mReportDataMap);
+    }
+  }
+  
   private void destroyView(View paramView)
   {
     int i = 0;
@@ -299,6 +317,15 @@ public class ViolaInstance
     this.preCreateBodyView = null;
   }
   
+  private void resetLocalVariable()
+  {
+    this.mLifeCycleMap.clear();
+    this.mRendered = false;
+    this.mIsReportEnded = false;
+    this.mMasterListRef = null;
+    this.mMasterVideoRef = null;
+  }
+  
   private String tryAddNativeVue(String paramString)
   {
     Object localObject = paramString;
@@ -396,20 +423,8 @@ public class ViolaInstance
         this.mRenderContainer = null;
       }
       ViolaLogUtils.destroy();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(ViolaEnvironment.JS_ERROR_AFTER_RENDER, Integer.toString(this.mJsErrorCountRunning));
-      localHashMap.putAll(getReportCommonData());
-      IReportDelegate localIReportDelegate = ViolaSDKManager.getInstance().getReportDelegate();
-      if (localIReportDelegate != null) {
-        localIReportDelegate.reportRunningData(localHashMap, this.mUrl);
-      }
-      ViolaReportManager.getInstance().postDataToBeacon("actKanDianViolaJsError", localHashMap);
-      if ((!this.mIsReportEnded) && (!this.mReportDataMap.isEmpty()))
-      {
-        this.mIsReportEnded = true;
-        this.mReportDataMap.putAll(getReportCommonData());
-        ViolaReportManager.getInstance().postDataToBeacon("actKanDianViolaData", this.mReportDataMap);
-      }
+      dealReportWhenDestroy();
+      resetLocalVariable();
       ViolaSDKManager.getInstance().destroyInstance(this.mInstanceId);
       if (this.mContextReference != null)
       {
@@ -426,7 +441,6 @@ public class ViolaInstance
         this.mActivityReference.clear();
         this.mActivityReference = null;
       }
-      this.mLifeCycleMap.clear();
       this.isDestroy = true;
       return;
     }
@@ -976,6 +990,24 @@ public class ViolaInstance
     if (this.mViolaPageListener != null) {
       this.mViolaPageListener.pageOpenSuccess();
     }
+  }
+  
+  public void reRenderJSSource(String paramString1, String paramString2, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    dealReportWhenDestroy();
+    resetLocalVariable();
+    ViolaLogUtils.d("ViolaInstance", "violaInstance reRenderJSSource start!,jsUrl=" + this.mUrl);
+    renderJsStartMonitor();
+    jsCreateInstanceStart = System.currentTimeMillis();
+    this.mInitData = paramString2;
+    this.mCreateBodyCache = paramString3;
+    paramString2 = tryAddNativeVue(paramString2);
+    ensureRenderArchor();
+    ViolaSDKManager.getInstance().createInstanceJSSource(this, paramString1, paramString3, paramString2);
+    ViolaLogUtils.d("ViolaInstance", "violaInstance reRenderJSSource end!,jsUrl=" + this.mUrl);
   }
   
   @Deprecated

@@ -1,34 +1,11 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class xec
-  extends wov
+  extends vko
 {
-  private final qqstory_group.RspAddGroupVideo a;
-  
-  public xec(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
-  {
-    super(paramRspAddGroupVideo.result);
-    this.a = paramRspAddGroupVideo;
-  }
-  
-  public List<xed> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.group_feed_list.get().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new xed((qqstory_group.GroupFeed)localIterator.next()));
-    }
-    return localArrayList;
-  }
+  public int a;
   
   public String toString()
   {
-    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 

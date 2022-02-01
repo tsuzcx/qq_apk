@@ -1,20 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
-
-public class mhq
-  implements Animation.AnimationListener
+public abstract interface mhq
 {
-  public mhq(QQLogo paramQQLogo) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
 }
 
 

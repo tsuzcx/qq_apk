@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
+import android.view.View;
 
 public class tam
-  implements tar
+  extends tal
 {
-  public tam(ChannelBottomBanner paramChannelBottomBanner) {}
-  
-  public void a(int paramInt)
+  public tam(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    super(-16777216, 0, 0, paramString);
   }
+  
+  public void onClick(View paramView) {}
 }
 
 

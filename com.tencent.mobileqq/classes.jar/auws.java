@@ -1,166 +1,165 @@
 import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.X5ApiPlugin.1;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebView;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auws
-  extends asdn
+  extends WebViewPlugin
 {
-  private boolean d;
+  private ConcurrentHashMap<String, auwt> a;
+  private ConcurrentHashMap<String, auwt> b;
   
-  public auws(QQAppInterface paramQQAppInterface)
+  public auws()
   {
-    super("qq.android.flutter.app.v8.3.9", paramQQAppInterface);
+    this.mPluginNameSpace = "x5";
   }
   
-  public static String e()
+  private int a(Context paramContext, String paramString)
   {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    if (bgyb.b())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFlutter.QFlutterAppDownloader", 2, "getFilesDir is null");
+      if ((!TextUtils.isEmpty(paramString)) && (bgyb.a(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
+      {
+        if ((paramContext != null) && (QbSdk.getTbsVersion(paramContext) >= 43810)) {
+          return 4;
+        }
+        return 3;
       }
-      localObject = "";
+      return 2;
     }
-    String str;
-    do
+    return 1;
+  }
+  
+  private void a(Context paramContext, WebView paramWebView, auwt paramauwt)
+  {
+    int i = a(paramContext, paramauwt.jdField_a_of_type_JavaLangString);
+    if (i == 4) {
+      a(paramWebView, paramauwt);
+    }
+    b(i, paramauwt.b);
+  }
+  
+  private void a(auwt paramauwt)
+  {
+    this.b.put(paramauwt.jdField_a_of_type_JavaLangString, paramauwt);
+    b(5, paramauwt.b);
+  }
+  
+  private void a(WebView paramWebView, auwt paramauwt)
+  {
+    this.a.put(paramauwt.jdField_a_of_type_JavaLangString, paramauwt);
+    ThreadManager.post(new X5ApiPlugin.1(this, paramauwt, paramWebView), 5, null, true);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.b != null) && (this.a != null))
     {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.flutter.app.v8.3.9";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("QFlutter.QFlutterAppDownloader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public int a()
-  {
-    return 10093;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QFlutterAppData.class;
-  }
-  
-  public String a()
-  {
-    return QFlutterAppData.class.getSimpleName();
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    int i = (int)(100L * paramLong1 / paramLong2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "download progress: " + i);
-    }
-    auwu.a(1, paramLong1, paramLong2);
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("onDownloadFinish, result: %s, errCode: %s, filepath: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
-    }
-    if (!paramBoolean) {
-      auwu.a(1, false);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "download success: " + paramString);
-    }
-    if (auwu.a(paramString, (QFlutterAppData)a())) {
-      auwu.a(1, true);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      f();
-      auwu.a(1, false);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    super.a(paramBoolean);
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b()
-  {
-    String str = e();
-    boolean bool = auog.a(new File(str));
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
-    }
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (paramXmlData != null) {}
-    for (long l = paramXmlData.totalSize;; l = 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterAppDownloader", 2, new Object[] { "download begin, totalLen: %s", Long.valueOf(l) });
+      Object localObject = this.b.values().iterator();
+      if (((Iterator)localObject).hasNext())
+      {
+        localObject = (auwt)((Iterator)localObject).next();
+        this.b.remove(((auwt)localObject).jdField_a_of_type_JavaLangString);
+        this.a.put(((auwt)localObject).jdField_a_of_type_JavaLangString, localObject);
+        a(this.mRuntime.a(), (auwt)localObject);
+        b(4, ((auwt)localObject).b);
       }
+    }
+  }
+  
+  private boolean a()
+  {
+    Object localObject = this.mRuntime.a();
+    if (localObject != null)
+    {
+      localObject = (bgxd)((WebViewFragment)localObject).getComponentProvider().a(-2);
+      return (localObject != null) && (!((bgxd)localObject).k);
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    if (this.a == null) {
+      this.a = new ConcurrentHashMap();
+    }
+    if (this.b == null) {
+      this.b = new ConcurrentHashMap();
+    }
+  }
+  
+  private void b(int paramInt, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramInt);
+      callJs(paramString, new String[] { localJSONObject.toString() });
       return;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public boolean b()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
-    }
-    if (this.d) {
-      return true;
-    }
-    return super.b();
+    a(true);
   }
   
-  public boolean e()
+  public void a(int paramInt, String paramString)
   {
-    QLog.d("QFlutter.QFlutterAppDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.d) }));
-    if (!this.d) {
+    if (paramInt == 0)
+    {
+      if (this.a.containsKey(paramString)) {
+        b(0, ((auwt)this.a.remove(paramString)).b);
+      }
+      a(a());
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"x5".equals(paramString2)) {
       return false;
     }
-    return super.e();
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "restoreState");
+    if (("preload".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = new auwt();
+        paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("url");
+        paramString1.b = paramJsBridgeListener.optString("callback");
+        paramString1.jdField_a_of_type_Boolean = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
+        b();
+        if (paramString1.jdField_a_of_type_Boolean) {
+          if (a()) {
+            a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+          } else {
+            a(paramString1);
+          }
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+      }
+      a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
     }
-    a().loadState = 0;
-    a().Version = 0;
-    asdd.a(a(), new String[0]);
+    return true;
   }
 }
 

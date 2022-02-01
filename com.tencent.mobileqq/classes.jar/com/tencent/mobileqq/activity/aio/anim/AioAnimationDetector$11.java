@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agkw;
-import agky;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
+import afdp;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class AioAnimationDetector$11
   implements Runnable
 {
-  public AioAnimationDetector$11(agkw paramagkw, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, agky paramagky, ChatMessage paramChatMessage) {}
+  public AioAnimationDetector$11(afdp paramafdp, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    agkw.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_Agky, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector.11
  * JD-Core Version:    0.7.0.1
  */

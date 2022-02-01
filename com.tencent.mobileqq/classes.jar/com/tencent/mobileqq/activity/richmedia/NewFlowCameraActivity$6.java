@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import agej;
-import aluf;
-import alwg;
+import akrw;
+import aktx;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bdfd;
-import bhez;
+import bbxx;
+import bfol;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.util.VersionUtils;
 import java.util.HashMap;
@@ -31,14 +31,14 @@ class NewFlowCameraActivity$6
     {
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      bdfd.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+      bbxx.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
       if (VersionUtils.isHoneycomb()) {
-        this.this$0.I();
+        this.this$0.D();
       }
-      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(aluf.a));
+      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(akrw.a));
       NewFlowCameraActivity.a(this.this$0).put("isTemplateMode", String.valueOf(this.this$0.f));
-      if (this.this$0.jdField_a_of_type_Alwg != null) {
-        str = this.this$0.jdField_a_of_type_Alwg.a();
+      if (this.this$0.jdField_a_of_type_Aktx != null) {
+        str = this.this$0.jdField_a_of_type_Aktx.a();
       }
       NewFlowCameraActivity.a(this.this$0).put("templateId", str);
       if ((this.this$0.o != 90) && (this.this$0.o != 270)) {
@@ -60,16 +60,16 @@ class NewFlowCameraActivity$6
         return;
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         Object localObject;
-        if (this.this$0.jdField_a_of_type_Alwg != null)
+        if (this.this$0.jdField_a_of_type_Aktx != null)
         {
-          localObject = this.this$0.jdField_a_of_type_Alwg.a();
+          localObject = this.this$0.jdField_a_of_type_Aktx.a();
           if ((localObject == null) || (TextUtils.isEmpty(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl))) {
             break label499;
           }
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          i = agej.a(50.0F, this.this$0.getResources());
+          i = AIOUtils.dp2px(50.0F, this.this$0.getResources());
           GradientDrawable localGradientDrawable = new GradientDrawable();
-          localGradientDrawable.setColor(this.this$0.getResources().getColor(2131165854));
+          localGradientDrawable.setColor(this.this$0.getResources().getColor(2131165872));
           localGradientDrawable.setShape(1);
           localGradientDrawable.setSize(i, i);
           localURLDrawableOptions.mRequestWidth = i;
@@ -77,8 +77,8 @@ class NewFlowCameraActivity$6
           localURLDrawableOptions.mFailedDrawable = localGradientDrawable;
           localURLDrawableOptions.mLoadingDrawable = localGradientDrawable;
           localObject = URLDrawable.getDrawable(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl, localURLDrawableOptions);
-          ((URLDrawable)localObject).setTag(bhez.a(i, i));
-          ((URLDrawable)localObject).setDecodeHandler(bhez.a);
+          ((URLDrawable)localObject).setTag(bfol.a(i, i));
+          ((URLDrawable)localObject).setDecodeHandler(bfol.a);
           this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         }
         for (;;)
@@ -86,14 +86,14 @@ class NewFlowCameraActivity$6
           if (!VersionUtils.isHoneycomb()) {
             break label562;
           }
-          this.this$0.I();
+          this.this$0.D();
           break;
           label499:
           if ((localObject != null) && (((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals("0")))
           {
             this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
             this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            bdfd.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+            bbxx.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
           }
         }
         break;

@@ -11,8 +11,9 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class CertifiedAccountMeta$StUser
   extends MessageMicro<StUser>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 106, 114 }, new String[] { "id", "nick", "icon", "desc", "followState", "type", "email", "telNum", "attr", "youZhan", "yzOrderPage", "registerCertifiedAccountUrl", "personInfo", "iconInfo" }, new Object[] { "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", Long.valueOf(0L), null, "", "", null, null }, StUser.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 106, 114, 120 }, new String[] { "id", "nick", "icon", "desc", "followState", "type", "email", "telNum", "attr", "youZhan", "yzOrderPage", "registerCertifiedAccountUrl", "personInfo", "iconInfo", "certifiedType" }, new Object[] { "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", Long.valueOf(0L), null, "", "", null, null, Integer.valueOf(0) }, StUser.class);
   public final PBUInt64Field attr = PBField.initUInt64(0L);
+  public final PBUInt32Field certifiedType = PBField.initUInt32(0);
   public final PBStringField desc = PBField.initString("");
   public final PBStringField email = PBField.initString("");
   public final PBUInt32Field followState = PBField.initUInt32(0);

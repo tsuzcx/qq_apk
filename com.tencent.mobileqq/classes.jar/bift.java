@@ -1,91 +1,307 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.1;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bift
-  implements SensorEventListener
+public class bift
+  implements bldr, bleb
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  public static String a;
+  protected final int a;
+  protected long a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private biao jdField_a_of_type_Biao;
+  private ArrayList<WadlResult> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
   
-  private void a(long paramLong)
+  static
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaLangString = "WadlJsBridgeCallBack";
   }
   
-  public void a()
+  public bift(boolean paramBoolean, biao parambiao)
   {
-    bifp.b = 1;
-    bifp.a = true;
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Biao = parambiao;
   }
   
-  public void b()
+  private void a()
   {
-    bifp.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+    if (this.jdField_a_of_type_Biao == null) {}
+    while ((System.currentTimeMillis() - this.jdField_b_of_type_Long <= 1000L) && (!this.jdField_b_of_type_Boolean)) {
+      return;
     }
-    label66:
-    do
+    Object localObject1 = new JSONArray();
+    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((JSONArray)localObject1).put(bifx.a((WadlResult)((Iterator)localObject2).next()));
+    }
+    localObject1 = ((JSONArray)localObject1).toString();
+    localObject2 = this.jdField_a_of_type_Biao.getJsCallbackMethod();
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {}
+    for (localObject1 = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + (String)localObject1 + ");}void(0);";; localObject1 = "javascript:" + (String)localObject2 + "(" + (String)localObject1 + ")")
     {
-      do
+      b((String)localObject1);
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.jdField_b_of_type_Boolean = false;
+      return;
+    }
+  }
+  
+  private void a(int paramInt, WadlParams paramWadlParams)
+  {
+    if (paramWadlParams == null) {
+      return;
+    }
+    int j = 1;
+    int i = j;
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+    }
+    while (i != 0)
+    {
+      a(bifx.a(paramInt));
+      return;
+      bldt.a().c(0, paramWadlParams.jdField_a_of_type_JavaLangString);
+      i = j;
+      continue;
+      bldt.a().a(0, paramWadlParams.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsHandler.post(new WadlJsBridgeCallBack.2(this, paramWadlParams));
+      i = 0;
+    }
+  }
+  
+  private void b(WadlResult paramWadlResult)
+  {
+    if (paramWadlResult != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+        WadlResult localWadlResult = (WadlResult)localIterator.next();
+        if ((localWadlResult.a != null) && (paramWadlResult.a != null) && (TextUtils.equals(localWadlResult.a.jdField_a_of_type_JavaLangString, paramWadlResult.a.jdField_a_of_type_JavaLangString))) {
+          localWadlResult.d = paramWadlResult.d;
+        }
       }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramWadlResult);
+      }
+      if (paramWadlResult.d == 100) {
+        this.jdField_b_of_type_Boolean = true;
+      }
+      return;
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      bifn.c(jdField_a_of_type_JavaLangString, "doJsCallBack loadJs=" + paramString);
+      try
       {
-        a();
-        a(l1);
-        return;
+        WebView localWebView = this.jdField_a_of_type_Biao.getWebview();
+        if (localWebView != null)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.post(new WadlJsBridgeCallBack.1(this, localWebView, paramString));
+          return;
+        }
       }
-      if (this.jdField_a_of_type_Int < 10)
+      catch (Exception paramString)
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
+        bifn.a(jdField_a_of_type_JavaLangString, "doJsCallback exception", paramString);
       }
-      a(l1);
-    } while (bifp.b >= 3);
-    b();
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        WadlResult localWadlResult = (WadlResult)localIterator.next();
+        if ((localWadlResult.a != null) && (TextUtils.equals(localWadlResult.a.jdField_a_of_type_JavaLangString, paramString))) {
+          localIterator.remove();
+        }
+      }
+    }
+  }
+  
+  public void a(WadlResult paramWadlResult)
+  {
+    String str;
+    if ((paramWadlResult != null) && (this.jdField_a_of_type_Boolean))
+    {
+      paramWadlResult = bifx.a(paramWadlResult).toString();
+      str = this.jdField_a_of_type_Biao.getJsCallbackMethod();
+      if (!TextUtils.isEmpty(str)) {
+        break label67;
+      }
+    }
+    label67:
+    for (paramWadlResult = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramWadlResult + ");}void(0);";; paramWadlResult = "javascript:" + str + "(" + paramWadlResult + ")")
+    {
+      b(paramWadlResult);
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      if ((BaseActivity.sTopActivity.isResume()) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L))
+      {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        bhzt.a().a(paramString);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      bifn.a(jdField_a_of_type_JavaLangString, "showToast exception", paramString);
+    }
+  }
+  
+  public HashSet<String> getFilterCmds()
+  {
+    bifp localbifp = (bifp)bifq.a().a("comminfo");
+    if (localbifp != null) {
+      return localbifp.a();
+    }
+    return blec.a;
+  }
+  
+  public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
+  {
+    bifn.c(jdField_a_of_type_JavaLangString, "onCmdRsp cmd=" + paramString + ",isSucc");
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    if (paramIntent != null) {}
+    for (paramIntent = paramIntent.getStringExtra("webssoReqJson");; paramIntent = null)
+    {
+      paramJSONObject = paramIntent;
+      if (paramIntent == null) {
+        paramJSONObject = "";
+      }
+      paramIntent = localJSONObject.toString();
+      b("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.requestWebSso',{\"cmd\": " + paramString + ", \"webssoReq\":" + paramJSONObject + ", \"ret\":" + paramLong + ", \"data\":" + paramIntent + "});}void(0);");
+      return;
+    }
+  }
+  
+  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
+  {
+    bifn.c(jdField_a_of_type_JavaLangString, "onQueryCallback params:" + paramArrayList);
+    JSONArray localJSONArray;
+    if (paramArrayList != null) {
+      try
+      {
+        localJSONArray = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          localJSONArray.put(bifx.a((WadlResult)paramArrayList.next()));
+          continue;
+          return;
+        }
+      }
+      catch (Exception paramArrayList)
+      {
+        bifn.a(jdField_a_of_type_JavaLangString, "onQueryCallback exception:" + paramArrayList.getMessage());
+      }
+    }
+    b("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + "1" + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);");
+  }
+  
+  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
+  {
+    bifn.c(jdField_a_of_type_JavaLangString, "onQueryCallbackVia params:" + paramArrayList);
+    JSONArray localJSONArray;
+    if (paramArrayList != null) {
+      try
+      {
+        localJSONArray = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          localJSONArray.put(bifx.a((WadlResult)paramArrayList.next()));
+          continue;
+          return;
+        }
+      }
+      catch (Exception paramArrayList)
+      {
+        bifn.a(jdField_a_of_type_JavaLangString, "onQueryCallbackVia exception:" + paramArrayList.getMessage());
+      }
+    }
+    b("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadActionByVia',{\"guid\": " + "1" + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);");
+  }
+  
+  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
+  {
+    if ((paramWadlResult == null) || (paramWadlResult.a == null))
+    {
+      bifn.a(jdField_a_of_type_JavaLangString, "onWadlTaskStatusChanged error wadlResult is null");
+      return;
+    }
+    WadlParams localWadlParams = paramWadlResult.a;
+    String str = localWadlParams.jdField_a_of_type_JavaLangString;
+    int i = bifx.a(paramWadlResult.b);
+    bifs.b(localWadlParams.jdField_a_of_type_JavaLangString);
+    bifn.c(jdField_a_of_type_JavaLangString, "onWadlTaskStatusChanged:" + paramWadlResult + ",localStatus:" + i);
+    switch (i)
+    {
+    default: 
+      bifn.a(jdField_a_of_type_JavaLangString, "download status not response!");
+      return;
+    case 3: 
+    case 4: 
+    case 6: 
+    case 9: 
+    case 10: 
+    case 13: 
+    case 20: 
+      c(str);
+      a(paramWadlResult);
+      return;
+    case -2: 
+      i = bifx.b(paramWadlResult.c);
+      bifn.a(jdField_a_of_type_JavaLangString, "onWadlTaskStatusChanged  error,wadlErrCode=" + i);
+      c(str);
+      a(i, localWadlParams);
+      a(paramWadlResult);
+      return;
+    }
+    b(paramWadlResult);
+    a();
   }
 }
 

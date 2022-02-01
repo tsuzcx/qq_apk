@@ -1,30 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Build.VERSION;
 
-class bfyt
-  implements woy<bfyv, wov>
+public final class bfyt
 {
-  bfyt(bfys parambfys) {}
-  
-  public void a(@NonNull bfyv parambfyv, @Nullable wov paramwov, @NonNull ErrorMessage paramErrorMessage)
+  public static int a()
   {
-    if (paramErrorMessage.isFail())
-    {
-      yuk.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
-      bfys.a(this.a, paramErrorMessage);
-      return;
+    if (Build.VERSION.SDK_INT > 10) {
+      return 4;
     }
-    if (paramwov.a == 0)
-    {
-      parambfyv = new bfyw();
-      parambfyv.a = bfys.a(this.a);
-      parambfyv.b = bfys.a(this.a).b;
-      bfys.a(this.a, parambfyv);
-      return;
-    }
-    yuk.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramwov.b);
-    bfys.b(this.a, new ErrorMessage(paramwov.a, paramwov.b));
+    return 0;
   }
 }
 

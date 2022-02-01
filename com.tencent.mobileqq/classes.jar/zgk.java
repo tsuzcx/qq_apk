@@ -1,39 +1,28 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.comment.CommentView;
+import com.tencent.biz.subscribe.comment.ReplyContainer;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zgk
-  extends zfy
+  implements View.OnClickListener
 {
-  public int c;
+  public zgk(CommentView paramCommentView) {}
   
-  public zgk(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public Class<? extends zfz> a()
-  {
-    return zgl.class;
-  }
-  
-  @NonNull
-  public zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new zgl(this, paramContext, paramViewGroup);
-  }
-  
-  public void a(int paramInt)
-  {
-    yuk.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
+    {
+      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
+      this.a.jdField_a_of_type_Zgl.b.setVisibility(8);
+      this.a.jdField_a_of_type_Zgl.a.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

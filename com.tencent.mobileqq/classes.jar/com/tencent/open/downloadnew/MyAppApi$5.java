@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bjvg;
-import bjxd;
+import bias;
+import bicl;
 
 public class MyAppApi$5
   implements Runnable
 {
-  public MyAppApi$5(bjxd parambjxd, String paramString1, String paramString2) {}
+  public MyAppApi$5(bicl parambicl, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bjvg.a("202", bjvg.a(this.a, "NEWYYB"), this.b);
+    bias.a("202", bias.a(this.a, "NEWYYB"), this.b);
   }
 }
 

@@ -1,102 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.35.1;
-import com.tencent.mobileqq.activity.Conversation.35.2;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class aeih
-  extends anuw
+  implements TextWatcher
 {
-  public aeih(Conversation paramConversation) {}
+  public aeih(SubLoginActivity paramSubLoginActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if (!bhjx.a(paramObject.uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          this.a.a(8, paramObject.uin, -2147483648);
-        }
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
+        SubLoginActivity.a(this.a).setVisibility(0);
       }
-      else {
-        return;
-      }
-      Conversation.a(this.a, "onCardDownload");
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
       return;
     }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " conversation onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      this.a.a(0L);
-    }
-  }
-  
-  public void onGetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    super.onGetNotDisturb(paramBoolean, paramString1, paramString2);
-    Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
-  }
-  
-  protected void onGreetingRecv(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
-      }
-      this.a.a(8, antf.H, 1001);
-    }
-  }
-  
-  protected void onSetNick(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      Conversation.a(this.a, "onSetNick", paramString);
-    }
-  }
-  
-  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
-    if (!"not_disturb_from_conversation".equals(paramString2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 4, "onSetNotDisturb NOT FROM THIS" + paramString2);
-      }
-    }
-    do
-    {
-      return;
-      if (!paramBoolean)
-      {
-        ThreadManagerV2.getUIHandlerV2().post(new Conversation.35.1(this));
-        return;
-      }
-      Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
-    } while (FriendsStatusUtil.a(this.a.a()));
-    ThreadManagerV2.getUIHandlerV2().post(new Conversation.35.2(this));
-  }
-  
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "Conversation.onUpdateAvatar: uin:" + paramString + ", success :" + paramBoolean);
-    }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bhjx.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendEmptyMessage(3);
-    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

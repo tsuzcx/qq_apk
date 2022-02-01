@@ -6,17 +6,17 @@ import android.content.Intent;
 import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import nff;
+import ngm;
 
 public class AccountReceiver
   extends BroadcastReceiver
 {
   private String jdField_a_of_type_JavaLangString;
-  private nff jdField_a_of_type_Nff;
+  private ngm jdField_a_of_type_Ngm;
   
-  public AccountReceiver(nff paramnff, String paramString)
+  public AccountReceiver(ngm paramngm, String paramString)
   {
-    this.jdField_a_of_type_Nff = paramnff;
+    this.jdField_a_of_type_Ngm = paramngm;
     this.jdField_a_of_type_JavaLangString = ("mqq.intent.action.EXIT_" + paramString);
     QLog.i("AccountReceiver", 1, "AccountReceiver, packageName[" + paramString + "]");
   }
@@ -52,8 +52,8 @@ public class AccountReceiver
           if (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
             break label110;
           }
-          if (this.jdField_a_of_type_Nff != null) {
-            this.jdField_a_of_type_Nff.b(1001);
+          if (this.jdField_a_of_type_Ngm != null) {
+            this.jdField_a_of_type_Ngm.b(1001);
           }
           Process.killProcess(Process.myPid());
           return;
@@ -64,31 +64,31 @@ public class AccountReceiver
       return;
       if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
       {
-        if (this.jdField_a_of_type_Nff != null) {
-          this.jdField_a_of_type_Nff.b(1003);
+        if (this.jdField_a_of_type_Ngm != null) {
+          this.jdField_a_of_type_Ngm.b(1003);
         }
         Process.killProcess(Process.myPid());
         return;
       }
       if ("mqq.intent.action.LOGOUT".equals(paramContext))
       {
-        if (this.jdField_a_of_type_Nff != null) {
-          this.jdField_a_of_type_Nff.b(1002);
+        if (this.jdField_a_of_type_Ngm != null) {
+          this.jdField_a_of_type_Ngm.b(1002);
         }
         Process.killProcess(Process.myPid());
         return;
       }
       if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramContext))
       {
-        if (this.jdField_a_of_type_Nff != null) {
-          this.jdField_a_of_type_Nff.b(1005);
+        if (this.jdField_a_of_type_Ngm != null) {
+          this.jdField_a_of_type_Ngm.b(1005);
         }
         Process.killProcess(Process.myPid());
         return;
       }
     } while (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext));
-    if (this.jdField_a_of_type_Nff != null) {
-      this.jdField_a_of_type_Nff.b(1004);
+    if (this.jdField_a_of_type_Ngm != null) {
+      this.jdField_a_of_type_Ngm.b(1004);
     }
     Process.killProcess(Process.myPid());
   }

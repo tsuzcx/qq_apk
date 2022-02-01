@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend;
 
-import aiub;
-import aiud;
-import aiue;
+import ahom;
+import ahoo;
+import ahop;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bdmc;
-import bhsr;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +22,9 @@ public class ScenesRecommendManager
   extends BroadcastReceiver
   implements Manager
 {
-  aiud jdField_a_of_type_Aiud;
+  ahoo jdField_a_of_type_Ahoo;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<aiub> jdField_a_of_type_JavaUtilList = null;
+  List<ahom> jdField_a_of_type_JavaUtilList = null;
   
   public ScenesRecommendManager() {}
   
@@ -41,64 +41,64 @@ public class ScenesRecommendManager
     return (ScenesRecommendManager)paramQQAppInterface.getManager(364);
   }
   
-  private void a(aiub paramaiub)
+  private void a(ahom paramahom)
   {
-    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramaiub.a());
-    if (this.jdField_a_of_type_Aiud == null) {
+    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramahom.a());
+    if (this.jdField_a_of_type_Ahoo == null) {
       return;
     }
-    this.jdField_a_of_type_Aiud.a(paramaiub);
+    this.jdField_a_of_type_Ahoo.a(paramahom);
   }
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Aiud == null) {
+    if (this.jdField_a_of_type_Ahoo == null) {
       return false;
     }
-    return this.jdField_a_of_type_Aiud.a(paramString);
+    return this.jdField_a_of_type_Ahoo.a(paramString);
   }
   
-  private aiub b(String paramString)
+  private ahom b(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    aiub localaiub;
+    ahom localahom;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localaiub = (aiub)localIterator.next();
-    } while ((localaiub.d() == null) || (!localaiub.d().equalsIgnoreCase(paramString)));
-    for (paramString = localaiub;; paramString = null) {
+      localahom = (ahom)localIterator.next();
+    } while ((localahom.d() == null) || (!localahom.d().equalsIgnoreCase(paramString)));
+    for (paramString = localahom;; paramString = null) {
       return paramString;
     }
   }
   
-  public aiub a(String paramString)
+  public ahom a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    aiub localaiub;
+    ahom localahom;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localaiub = (aiub)localIterator.next();
-    } while ((localaiub.a() == null) || (!localaiub.a().equalsIgnoreCase(paramString)));
-    for (paramString = localaiub;; paramString = null) {
+      localahom = (ahom)localIterator.next();
+    } while ((localahom.a() == null) || (!localahom.a().equalsIgnoreCase(paramString)));
+    for (paramString = localahom;; paramString = null) {
       return paramString;
     }
   }
   
   public void a()
   {
-    String str = aiue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = ahop.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     QLog.i("ScenesRecommendManager", 0, "loadConfigFromLoacl config is " + str);
     a(str);
   }
@@ -115,23 +115,23 @@ public class ScenesRecommendManager
     }
     localHashMap.put("kov", str);
     localHashMap.put("result", paramInt + "");
-    paramString = bdmc.a(BaseApplication.getContext());
+    paramString = StatisticCollector.getInstance(BaseApplication.getContext());
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramString.a(null, "scenes_rec_emo_monitor", bool, 0L, 0L, localHashMap, null);
+      paramString.collectPerformance(null, "scenes_rec_emo_monitor", bool, 0L, 0L, localHashMap, null);
       return;
     }
   }
   
-  public void a(aiud paramaiud)
+  public void a(ahoo paramahoo)
   {
-    this.jdField_a_of_type_Aiud = paramaiud;
+    this.jdField_a_of_type_Ahoo = paramahoo;
   }
   
   public void a(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return;
     }
     if (this.jdField_a_of_type_JavaUtilList == null) {
@@ -139,7 +139,7 @@ public class ScenesRecommendManager
     }
     for (;;)
     {
-      paramString = aiue.a(paramString);
+      paramString = ahop.a(paramString);
       if (paramString == null) {
         break;
       }

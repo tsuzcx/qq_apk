@@ -1,57 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class adjo
-  implements adbw
+  implements AdapterView.OnItemLongClickListener
 {
-  public int a()
-  {
-    return 10007;
-  }
+  public adjo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean a()
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(164);
-    byte[] arrayOfByte = paramQQAppInterface.a().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (arrayOfByte != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
-    }
-    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramMessageRecord);
-      l1 = l2;
-    }
-    catch (NumberFormatException paramMessageRecord)
-    {
-      for (;;)
-      {
-        QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
-      }
-    }
-    localCommTmp.to_uin.set(l1);
-    paramRoutingHead.comm_tmp.set(localCommTmp);
+    FriendProfileImageActivity.a(this.a);
     return true;
-  }
-  
-  public int b()
-  {
-    return 8042;
   }
 }
 

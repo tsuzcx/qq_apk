@@ -1,8 +1,15 @@
-public abstract interface uyj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+final class uyj
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  uyj(uwy paramuwy) {}
   
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    uyd.b(this.a);
+  }
 }
 
 

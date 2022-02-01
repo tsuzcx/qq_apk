@@ -1,15 +1,13 @@
 package cooperation.qzone.webviewplugin;
 
-import bnmr;
-
-public class QZoneSharePictureJsPlugin$2
+class QZoneSharePictureJsPlugin$2
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$2(bnmr parambnmr, String[] paramArrayOfString) {}
+  QZoneSharePictureJsPlugin$2(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
   public void run()
   {
-    bnmr.a(this.this$0, this.a[0]);
+    QZoneSharePictureJsPlugin.access$200(this.this$0, this.val$args[0]);
   }
 }
 

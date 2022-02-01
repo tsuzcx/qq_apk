@@ -1,20 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
 
-final class lwc
-  extends msp
+public abstract interface lwc
+  extends IInterface
 {
-  lwc(String paramString1, String paramString2, String paramString3)
-  {
-    super(paramString1, paramString2, paramString3);
-  }
-  
-  protected void a(String paramString)
-  {
-    lwb.a(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

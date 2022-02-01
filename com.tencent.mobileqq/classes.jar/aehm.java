@@ -1,25 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
-public final class aehm
-  implements Comparator<PhoneContact>
+public class aehm
+  implements DialogInterface.OnKeyListener
 {
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public aehm(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
-    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
-    {
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
+    if (paramInt == 4) {
+      this.a.finish();
     }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+    return false;
   }
 }
 

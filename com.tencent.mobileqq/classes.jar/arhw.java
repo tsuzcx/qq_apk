@@ -1,59 +1,35 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
-public class arhw
+class arhw
+  implements INetEngine.IBreakDownFix
 {
-  public int a;
-  public String a;
-  public int b;
+  arhw(arhu paramarhu) {}
   
-  public arhw()
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static arhw a(araj[] paramArrayOfaraj)
-  {
-    localarhw = new arhw();
-    int i = 0;
-    try
+    if ((paramNetReq != null) && (paramNetResp != null) && ((paramNetReq instanceof HttpNetReq)))
     {
-      while (i < paramArrayOfaraj.length)
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("preloadSwitch"))
-        {
-          localarhw.jdField_a_of_type_Int = localJSONObject.optInt("preloadSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed preloadswtich=" + localarhw.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("preloadInterval"))
-        {
-          localarhw.b = localJSONObject.optInt("preloadInterval", 30);
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed swtich=" + localarhw.b);
-          }
-        }
-        if (localJSONObject.has("preloadUrl"))
-        {
-          localarhw.jdField_a_of_type_JavaLangString = localJSONObject.optString("preloadUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed preload url=" + localarhw.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
+        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
       }
-      return localarhw;
-    }
-    catch (Throwable paramArrayOfaraj)
-    {
-      com.tencent.TMG.utils.QLog.e("QQGamePreloadConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaraj.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhw
  * JD-Core Version:    0.7.0.1
  */

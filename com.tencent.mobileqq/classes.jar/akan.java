@@ -1,105 +1,64 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class akan
-  implements Handler.Callback
+  implements akal
 {
-  public akan(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  private List<String> a;
   
-  public boolean handleMessage(Message paramMessage)
+  public String a(List<String> paramList, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.C2CAllFragment", 2, new Object[] { "handleMessage ", Integer.valueOf(paramMessage.what) });
-    }
-    switch (paramMessage.what)
+    int i = paramList.size() - 1;
+    while (i >= 0)
     {
-    case 6: 
-    case 7: 
-    case 11: 
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    case 9: 
-    case 22: 
-    case 23: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 65537: 
-    case 65538: 
-    case 65539: 
-    case 65540: 
-    case 24: 
-    case 25: 
-    case 27: 
-    case 28: 
-    case 33: 
-    case 14: 
-    case 15: 
-    case 26: 
-    case 34: 
-    case 13: 
-      do
-      {
-        return true;
-        this.a.g(paramMessage);
-        return true;
-        this.a.a(paramMessage);
-        return true;
-        this.a.f(paramMessage);
-        return true;
-        this.a.e(paramMessage);
-        return true;
-        this.a.b(paramMessage);
-        return true;
-        this.a.d(paramMessage);
-        return true;
-        this.a.c(paramMessage);
-        return true;
-        ChatHistoryC2CAllFragment.a(this.a);
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.history.C2CAllFragment", 2, "handle_get_roam_msg_auth_mode notify UI");
-        }
-        if (this.a.jdField_a_of_type_Aocm.f())
-        {
-          this.a.c(false);
-          return true;
-        }
-        this.a.u();
-        return true;
-      } while (paramMessage.obj == null);
-      ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = this.a;
-      BaseApplication localBaseApplication = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      if (((Boolean)paramMessage.obj).booleanValue() == true) {}
-      for (int i = 2131691905;; i = 2131691904)
-      {
-        localChatHistoryC2CAllFragment.a(localBaseApplication.getString(i));
-        return true;
+      String str = (String)paramList.remove(i);
+      if (!TextUtils.isEmpty(str)) {
+        return str;
       }
-    case 39: 
-      ChatHistoryC2CAllFragment.a(this.a, paramMessage);
-      return true;
-    case 40: 
-      ChatHistoryC2CAllFragment.b(this.a, paramMessage);
-      return true;
-    case 41: 
-      ChatHistoryC2CAllFragment.c(this.a, paramMessage);
-      return true;
+      i -= 1;
     }
-    ChatHistoryC2CAllFragment.d(this.a, paramMessage);
-    return true;
+    if (paramBoolean)
+    {
+      if (this.a == null)
+      {
+        this.a = new ArrayList(7);
+        this.a.add("花");
+        this.a.add("风");
+        this.a.add("夜");
+        this.a.add("雨");
+        this.a.add("情");
+        this.a.add("云");
+        this.a.add("春");
+      }
+      i = new Random().nextInt(this.a.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("KeyWordChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.a.size());
+      }
+      return (String)this.a.get(i);
+    }
+    return "";
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a(String paramString)
+  {
+    return !TextUtils.isEmpty(paramString);
+  }
+  
+  public InputFilter[] a(int paramInt)
+  {
+    if ((SystemUtil.isFlyme()) || (SystemUtil.isMeizu())) {}
+    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
+      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
+    }
+    return new InputFilter[0];
   }
 }
 

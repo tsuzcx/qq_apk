@@ -1,9 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-public abstract interface ryu
+public class ryu
+  extends obx
 {
-  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
+  private ryu(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 

@@ -1,19 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.widget.LinearLayout;
 
 public class akdm
-  implements akfu
+  extends RecyclerView.ViewHolder
 {
-  public akdm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  LinearLayout a;
   
-  public void a()
+  public akdm(LinearLayout paramLinearLayout)
   {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
+    super(paramLinearLayout);
+    this.a = paramLinearLayout;
   }
 }
 

@@ -1,103 +1,156 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.IBinder;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.List;
 
-class aibz
-  implements AdapterView.OnItemClickListener
+public class aibz
+  extends BaseAdapter
 {
-  aibz(aibr paramaibr, AIOShortVideoData paramAIOShortVideoData, File paramFile, int paramInt, aidw paramaidw) {}
+  private aicb jdField_a_of_type_Aicb;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<aica> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aibz(Context paramContext)
   {
-    int i = 0;
-    Object localObject = paramView.getTag();
-    if (localObject == null) {}
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private int a(float paramFloat, int paramInt)
+  {
+    return (Math.min(255, Math.max(0, (int)(255.0F * paramFloat))) << 24) + (0xFFFFFF & paramInt);
+  }
+  
+  private ColorStateList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int[] arrayOfInt1 = { 16842919, 16842910 };
+    int[] arrayOfInt2 = { 16842908 };
+    int[] arrayOfInt3 = { 16842909 };
+    int[] arrayOfInt4 = new int[0];
+    return new ColorStateList(new int[][] { arrayOfInt1, { 16842910, 16842908 }, { 16842910 }, arrayOfInt2, arrayOfInt3, arrayOfInt4 }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
+  }
+  
+  private Drawable a(int paramInt)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(42.0F);
+    localGradientDrawable.setColor(paramInt);
+    return localGradientDrawable;
+  }
+  
+  private Drawable a(int paramInt1, int paramInt2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    Drawable localDrawable = a(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
+    localDrawable = a(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
+    localDrawable = a(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
+    localDrawable = a(paramInt2);
+    localStateListDrawable.addState(new int[0], localDrawable);
+    return localStateListDrawable;
+  }
+  
+  public aica a(int paramInt)
+  {
+    return (aica)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(aica paramaica)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramaica);
+  }
+  
+  public void a(aicb paramaicb)
+  {
+    this.jdField_a_of_type_Aicb = paramaicb;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    aica localaica;
+    Object localObject;
+    label104:
+    int i;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561111, null, false);
+      paramView = new aicc(this);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379863));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
+      localView.setTag(paramView);
+      localaica = a(paramInt);
+      if (localaica != null)
+      {
+        paramView.jdField_a_of_type_JavaLangString = localaica.jdField_a_of_type_JavaLangString;
+        paramView.jdField_a_of_type_Int = paramInt;
+        TextView localTextView = paramView.jdField_a_of_type_AndroidWidgetTextView;
+        if (!TextUtils.isEmpty(localaica.jdField_a_of_type_JavaLangString)) {
+          break label216;
+        }
+        localObject = "";
+        localTextView.setText((CharSequence)localObject);
+        if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+          break label226;
+        }
+        i = Color.parseColor("#A8A8A8");
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845200));
+      }
+    }
     for (;;)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      this.jdField_a_of_type_Aibr.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      switch (((bhsc)localObject).a.action)
+      int j = a(0.5F, i);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(i, j, j, i));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (aicc)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label216:
+      localObject = localaica.jdField_a_of_type_JavaLangString;
+      break label104;
+      label226:
+      if (localaica.b == null)
       {
+        i = Color.parseColor("#03081A");
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845199));
       }
-      for (;;)
+      else
       {
-        localObject = this.jdField_a_of_type_Aibr.jdField_a_of_type_Aicx.a();
-        if ((localObject == null) || (((aidw)localObject).a == null) || (!AIOShortVideoData.class.isInstance(((aidw)localObject).a))) {
-          break;
-        }
-        localObject = (AIOShortVideoData)((aidw)localObject).a;
-        if (((AIOShortVideoData)localObject).b != 0) {
-          break label640;
-        }
-        bdll.b(null, "dc00898", "", "", "0X8009EF9", "0X8009EF9", i, 0, "", "", "", "");
-        break;
-        i = 1;
-        aibr.a(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOGalleryScene", 2, "click menu to share to qzone");
-        }
-        localObject = bmtk.a();
-        ((bmtk)localObject).a = this.jdField_a_of_type_Aibr.b;
-        bmtd.c(aibr.t(this.jdField_a_of_type_Aibr), (bmtk)localObject, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 10001);
-        bdll.b(null, "dc00898", "", "", "0X8007539", "0X8007539", 0, 0, "", "", "", "");
-        i = 4;
-        continue;
-        aibr.a(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aidw);
-        continue;
-        bdll.b(null, "P_CliOper", "dwop_via", "", "0X8009BE4", "0X8009BE4", this.jdField_a_of_type_Aibr.k, 0, "", "", "", "");
-        String str = this.jdField_a_of_type_Aibr.d;
-        localObject = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject = this.jdField_a_of_type_Aibr.c;
-        }
-        aibr.a(aibr.u(this.jdField_a_of_type_Aibr), this.jdField_a_of_type_Aibr.jdField_g_of_type_Int, this.jdField_a_of_type_Aibr.c, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.jdField_g_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.i, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.jdField_g_of_type_Int, false);
-        i = 6;
-        continue;
-        int j = 3;
-        i = j;
-        if (this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz.asBinder().pingBinder())
-        {
-          localObject = this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.jdField_f_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.jdField_f_of_type_Int, this.jdField_a_of_type_Aibr.jdField_g_of_type_Int);
-          i = j;
-          if (localObject != null)
-          {
-            bmko.a((Intent)localObject).a(aibr.v(this.jdField_a_of_type_Aibr), BaseApplicationImpl.getApplication().getRuntime().getAccount());
-            bmky.a(null, 3, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.jdField_g_of_type_Int);
-            bmky.a(BaseApplicationImpl.getApplication().getRuntime(), 6, 5);
-            i = j;
-            continue;
-            i = 7;
-            aibr.b(this.jdField_a_of_type_Aibr, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData);
-            continue;
-            j = 6;
-            i = j;
-            if (this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz.asBinder().pingBinder())
-            {
-              this.jdField_a_of_type_Aibr.jdField_a_of_type_Aidz.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.jdField_f_of_type_Long);
-              QQToast.a(aibr.w(this.jdField_a_of_type_Aibr), aibr.x(this.jdField_a_of_type_Aibr).getString(2131692445), 0).a();
-              i = j;
-            }
-          }
-        }
-      }
-      label640:
-      if (((AIOShortVideoData)localObject).b == 1) {
-        bdll.b(null, "dc00898", "", "", "0X8009EF8", "0X8009EF8", i, 0, "", "", "", "");
+        i = Color.parseColor(localaica.b);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(a(0.1F, i), a(0.2F, i)));
       }
     }
   }

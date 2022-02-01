@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.MotionEvent;
 
-public class ahsg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ahsg
 {
-  public ahsg(SixCombolEffectView paramSixCombolEffectView) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

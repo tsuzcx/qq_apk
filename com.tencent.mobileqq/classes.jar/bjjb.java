@@ -1,6 +1,9 @@
+import android.util.Pair;
+import java.util.List;
+
 public abstract interface bjjb
 {
-  public abstract void a(String paramString);
+  public abstract void a(List<Pair<Integer, Byte>> paramList);
 }
 
 

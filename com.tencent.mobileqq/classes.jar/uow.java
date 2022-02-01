@@ -1,18 +1,17 @@
-import UserGrowth.stPostFeedCommentV2Req;
-import UserGrowth.stPostFeedCommentV2Rsp;
-import UserGrowth.stSimpleMetaComment;
-import UserGrowth.stSimpleMetaFeed;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class uow
-  extends ukl<stPostFeedCommentV2Rsp>
+class uow
+  implements View.OnTouchListener
 {
-  public uow(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
+  uow(uou paramuou) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super("PostFeedCommentV2", 10003);
-    this.a = new stPostFeedCommentV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment, new ArrayList(), 0);
-    uqf.c("WsCommentBusiness", "stPostFeedCommentV2Req:" + this.a.toString());
+    uou.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

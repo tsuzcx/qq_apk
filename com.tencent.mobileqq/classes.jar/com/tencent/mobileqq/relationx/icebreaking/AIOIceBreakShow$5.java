@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import bbcd;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import azwy;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AIOIceBreakShow$5
@@ -12,7 +12,7 @@ class AIOIceBreakShow$5
   
   public void run()
   {
-    ((bbcd)AIOIceBreakShow.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(285)).i(AIOIceBreakShow.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((azwy)AIOIceBreakShow.a(this.this$0).app.getManager(285)).i(AIOIceBreakShow.a(this.this$0).sessionInfo.curFriendUin);
   }
 }
 

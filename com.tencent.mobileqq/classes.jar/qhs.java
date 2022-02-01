@@ -1,105 +1,164 @@
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ColorUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase.ClickStatus;
 
 public class qhs
+  extends ButtonBase
 {
-  private static int a(Context paramContext, String paramString)
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean jdField_a_of_type_Boolean;
+  private AnimatorSet b = new AnimatorSet();
+  
+  public qhs(VafContext paramVafContext)
   {
-    if ((paramContext == null) || (paramContext.getResources() == null) || (TextUtils.isEmpty(paramString))) {
-      return 0;
-    }
-    return paramContext.getResources().getIdentifier(paramString, "drawable", paramContext.getPackageName());
+    super(paramVafContext);
+    a(paramVafContext);
   }
   
-  public static Drawable a(Context paramContext, String paramString, int paramInt)
+  private void a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (paramContext != null) {
-        break label22;
-      }
-      localObject1 = localObject2;
-    }
-    label22:
-    do
-    {
-      return localObject1;
-      if (!a(paramString)) {
-        break;
-      }
-      localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      paramContext = paramContext.getResources().getDrawable(2130841690);
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext;
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext;
-      paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-      localObject1 = paramContext;
-    } while (paramInt <= 0);
-    paramContext.setDecodeHandler(new bhfy(paramInt));
-    return paramContext;
-    if (b(paramString))
-    {
-      paramString = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-      paramString = "qb_public_account_readinjoy_" + paramString;
-      return paramContext.getResources().getDrawable(a(paramContext, paramString));
-    }
-    QLog.e("PTSImageUtil", 1, "[getDrawable] null, imageUrl = " + paramString);
-    return null;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.0F }).setDuration(200L) });
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new qht(this));
+    this.b.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L) });
+    this.b.addListener(new qhu(this));
   }
   
-  public static void a(PTSImageView paramPTSImageView, String paramString)
+  private void a(VafContext paramVafContext)
   {
-    if ((paramPTSImageView == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isDebugVersion()) {
-      QLog.i("PTSImageUtil", 2, "[setLocalImageDrawable], localPath = " + paramString);
-    }
-    int i;
-    try
-    {
-      String str = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-      str = "qb_public_account_readinjoy_" + str;
-      i = a(paramPTSImageView.getContext(), str);
-      if (i == 0)
-      {
-        QLog.e("PTSImageUtil", 1, "[setLocalImageDrawable], cannot find the resource, localPath = " + paramString);
-        paramPTSImageView.setImageDrawable(new ColorDrawable(0));
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("PTSImageUtil", 1, "[setLocalImageDrawable] error, e = " + paramString);
-      paramPTSImageView.setImageDrawable(new ColorDrawable(0));
-      return;
-    }
-    paramPTSImageView.setImageResource(i);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    paramVafContext = new LinearLayout.LayoutParams(-2, -2);
+    paramVafContext.gravity = 16;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramVafContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramVafContext);
+    a();
   }
   
-  public static boolean a(String paramString)
+  private void a(CharSequence paramCharSequence)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
-      return false;
-    }
-    return true;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
   }
   
-  public static boolean b(String paramString)
+  private void b()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetImageView.setSelected(isSelected());
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public boolean onClick()
+  {
+    b();
+    boolean bool2 = super.onClick();
+    if (!isSelected()) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      super.setSelected(bool1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(bool1);
+      return bool2;
     }
-    return paramString.startsWith("images");
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.mTextSize);
+    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(this.mCompoundDrawablePadding, 0, 0, 0);
+    a(this.mText);
+  }
+  
+  public void refresh()
+  {
+    super.refresh();
+  }
+  
+  public void setBackgroundColorForStates() {}
+  
+  public void setBackgroundForStates()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable((Drawable)localObject);
+  }
+  
+  public void setCompoundDrawableForStates()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+  }
+  
+  public void setSelected(boolean paramBoolean)
+  {
+    super.setSelected(paramBoolean);
+    this.jdField_a_of_type_AndroidWidgetTextView.setSelected(paramBoolean);
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(paramBoolean);
+    }
+  }
+  
+  public void setText(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.equals(paramCharSequence, this.mText))
+    {
+      this.mText = paramCharSequence;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    }
+  }
+  
+  public void setTextColorForStates()
+  {
+    ColorStateList localColorStateList = ColorUtil.getColorStateList(getStatus(0).textColor, getStatus(1).textColor, getStatus(4).textColor);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
   }
 }
 

@@ -1,42 +1,47 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ywb
-  implements EIPCResultCallback
+  implements ShareActionSheet.OnItemClickListener
 {
-  public ywb(EditVideoArtFilter paramEditVideoArtFilter, zaf paramzaf) {}
+  public ywb(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (paramEIPCResult.data == null) {}
-    int j;
-    Object localObject;
-    do
+    paramShareActionSheet.dismiss();
+    QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() click item = " + paramActionSheetItem.action);
+    switch (paramActionSheetItem.action)
     {
+    default: 
       return;
-      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
-      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
-      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
-      }
-    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
-    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
-      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
-      ((Message)localObject).obj = paramEIPCResult;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Zaf.a;
-      EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
+    case 26: 
+      QRDisplayActivity.a(this.a, 6000, AppConstants.DATALINE_PC_UIN);
+      return;
+    case 72: 
+      QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+      return;
+    case 2: 
+      this.a.i = 0;
+      QRDisplayActivity.a(this.a);
+      return;
+    case 3: 
+      this.a.i = 1;
+      QRDisplayActivity.a(this.a);
+      return;
+    case 9: 
+      this.a.i = 2;
+      QRDisplayActivity.a(this.a);
+      return;
+    case 10: 
+      this.a.i = 3;
+      QRDisplayActivity.a(this.a);
       return;
     }
-    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
-    EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
+    this.a.e();
   }
 }
 

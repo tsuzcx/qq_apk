@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.animation.Animator;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-class afha
-  implements DialogInterface.OnClickListener
+public abstract interface afha
 {
-  afha(afgy paramafgy) {}
+  public abstract void a(Animator paramAnimator, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.p();
-  }
+  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
 }
 
 

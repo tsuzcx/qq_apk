@@ -1,34 +1,46 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAutoReply;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ahay
-  extends ClickableSpan
+public class ahay
 {
-  ahay(ahax paramahax, MessageForAutoReply paramMessageForAutoReply, ahtx paramahtx) {}
+  private static int a;
+  public ConcurrentHashMap<Long, ahbb> a;
   
-  public void onClick(@NonNull View paramView)
+  static
   {
-    ahax.a(this.jdField_a_of_type_Ahax, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply);
+    jdField_a_of_type_Int = 900000;
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  private ahay()
   {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply.senderuin.equals(this.jdField_a_of_type_Ahax.a.getCurrentAccountUin()))
-    {
-      paramTextPaint.setColor(this.jdField_a_of_type_Ahtx.d.getCurrentTextColor());
-      paramTextPaint.setUnderlineText(true);
-      return;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static final ahay a()
+  {
+    return ahba.a();
+  }
+  
+  public ahbb a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (ahbb)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     }
-    paramTextPaint.setColor(BaseApplication.context.getResources().getColor(2131167008));
-    paramTextPaint.setUnderlineText(false);
+    return null;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new ahbb(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 

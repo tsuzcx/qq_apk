@@ -1,21 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bmjo
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public bmjo(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public bmjo(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

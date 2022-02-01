@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import admy;
+import acjr;
 import org.json.JSONObject;
 
 public final class DoraemonUtil$3
   implements Runnable
 {
-  public DoraemonUtil$3(admy paramadmy, JSONObject paramJSONObject) {}
+  public DoraemonUtil$3(acjr paramacjr, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Admy.onTrigger(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Acjr.onTrigger(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

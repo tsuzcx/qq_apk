@@ -1,28 +1,6 @@
-public class apce
-  implements anui
+public abstract interface apce
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      if (!paramBoolean) {
-        break;
-      }
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
-    return;
-    a(false, false, -1);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aggs;
-import aimn;
+import aezn;
+import ahia;
 
 public class MultiForwardChatPie$5
   implements Runnable
 {
-  public MultiForwardChatPie$5(aimn paramaimn) {}
+  public MultiForwardChatPie$5(ahia paramahia) {}
   
   public void run()
   {
-    aimn.a(this.this$0).notifyDataSetChanged();
+    ahia.a(this.this$0).notifyDataSetChanged();
   }
 }
 

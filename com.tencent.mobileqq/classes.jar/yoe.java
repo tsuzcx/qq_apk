@@ -1,40 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class yoe
-  extends zsj<yoh>
+class yoe
+  implements View.OnClickListener
 {
-  private LruCache<yoh, Drawable> a = new yof(this, 5242880);
+  yoe(yod paramyod) {}
   
-  public LruCache<yoh, Drawable> a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public zsk a(ImageView paramImageView, yoh paramyoh)
-  {
-    return new yoi(paramImageView, paramyoh);
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
-  public void b()
-  {
-    super.b();
-    try
-    {
-      this.a.evictAll();
-      return;
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
     }
-    catch (Exception localException)
-    {
-      this.a = new yog(this, 5242880);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

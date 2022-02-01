@@ -1,12 +1,12 @@
 package com.tencent.device.msg.activities;
 
 import Override;
-import abyk;
-import abyl;
-import abym;
-import abyn;
-import achd;
-import ache;
+import aaut;
+import aauu;
+import aauv;
+import aauw;
+import abdm;
+import abdn;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -18,11 +18,11 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import apdr;
-import bjbs;
-import bjtx;
+import bhht;
+import bhzm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.utils.PermissionUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
@@ -40,10 +40,10 @@ public class DeviceMsgSettingActivity
   public Handler a;
   public CompoundButton a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bjbs a;
+  public bhht a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<abyn> a;
+  public ArrayList<aauw> a;
   public String b;
   public String c;
   
@@ -75,7 +75,7 @@ public class DeviceMsgSettingActivity
         paramString = "set_device_property";
       }
     }
-    ache.a(paramString, localBundle, i, null, this.app, new abym(this));
+    abdn.a(paramString, localBundle, i, null, this.app, new aauv(this));
   }
   
   private void b()
@@ -85,14 +85,14 @@ public class DeviceMsgSettingActivity
     this.c = localIntent.getStringExtra("din");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)super.getAppRuntime());
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Bjbs = new bjbs(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377457));
-    this.jdField_a_of_type_Bjbs.c(2131692663);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bjbs.isShowing())) {
-      this.jdField_a_of_type_Bjbs.show();
+    this.jdField_a_of_type_Bhht = new bhht(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377220));
+    this.jdField_a_of_type_Bhht.c(2131692714);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bhht.isShowing())) {
+      this.jdField_a_of_type_Bhht.show();
     }
     c();
-    achd.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
+    abdm.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
   }
   
   private void c()
@@ -116,12 +116,12 @@ public class DeviceMsgSettingActivity
         str1 = "get_device_property";
       }
     }
-    ache.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new abyl(this));
+    abdn.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aauu(this));
   }
   
   private void d()
   {
-    Object localObject = (TextView)super.findViewById(2131377465);
+    Object localObject = (TextView)super.findViewById(2131377228);
     if (localObject != null)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
@@ -130,7 +130,7 @@ public class DeviceMsgSettingActivity
     }
     else
     {
-      localObject = super.findViewById(2131377459);
+      localObject = super.findViewById(2131377222);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -141,14 +141,14 @@ public class DeviceMsgSettingActivity
     }
     for (;;)
     {
-      localObject = super.findViewById(2131377460);
+      localObject = super.findViewById(2131377223);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
           break label107;
         }
         ((View)localObject).setVisibility(0);
-        bjtx.c("DeviceMsgSettingActivity", "show none background");
+        bhzm.c("DeviceMsgSettingActivity", "show none background");
       }
       return;
       ((TextView)localObject).setVisibility(0);
@@ -157,7 +157,7 @@ public class DeviceMsgSettingActivity
       ((View)localObject).setVisibility(0);
     }
     label107:
-    bjtx.c("DeviceMsgSettingActivity", "hide none background");
+    bhzm.c("DeviceMsgSettingActivity", "hide none background");
     ((View)localObject).setVisibility(8);
   }
   
@@ -168,10 +168,10 @@ public class DeviceMsgSettingActivity
     int i = 0;
     if (i < j)
     {
-      abyn localabyn = (abyn)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      aauw localaauw = (aauw)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       FormSwitchItem localFormSwitchItem = new FormSwitchItem(this, null);
       localFormSwitchItem.setBgType(0);
-      localFormSwitchItem.setText(localabyn.jdField_a_of_type_JavaLangString);
+      localFormSwitchItem.setText(localaauw.jdField_a_of_type_JavaLangString);
       localFormSwitchItem.setFocusable(true);
       label76:
       Switch localSwitch;
@@ -179,8 +179,8 @@ public class DeviceMsgSettingActivity
       {
         localFormSwitchItem.setBgType(0);
         localSwitch = localFormSwitchItem.a();
-        localSwitch.setTag(Integer.valueOf(localabyn.jdField_a_of_type_Int));
-        if (localabyn.b != 1) {
+        localSwitch.setTag(Integer.valueOf(localaauw.jdField_a_of_type_Int));
+        if (localaauw.b != 1) {
           break label173;
         }
       }
@@ -211,19 +211,20 @@ public class DeviceMsgSettingActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559073);
-    super.setTitle(2131691405);
+    super.setContentView(2131559081);
+    super.setTitle(2131691445);
     if (Build.VERSION.SDK_INT >= 23) {
-      if (!apdr.a(this)) {
-        apdr.a(this, 3, new abyk(this));
+      if (!PermissionUtils.isStorePermissionEnable(this)) {
+        PermissionUtils.requestStorePermission(this, 3, new aaut(this));
       }
     }
     for (;;)
@@ -238,9 +239,9 @@ public class DeviceMsgSettingActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    this.jdField_a_of_type_Bjbs.c(2131717938);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bjbs.isShowing())) {
-      this.jdField_a_of_type_Bjbs.show();
+    this.jdField_a_of_type_Bhht.c(2131718179);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bhht.isShowing())) {
+      this.jdField_a_of_type_Bhht.show();
     }
     Object localObject1 = new JSONArray();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -250,10 +251,10 @@ public class DeviceMsgSettingActivity
     {
       if (localIterator.hasNext())
       {
-        localObject2 = (abyn)localIterator.next();
-        if (((abyn)localObject2).jdField_a_of_type_Int == j)
+        localObject2 = (aauw)localIterator.next();
+        if (((aauw)localObject2).jdField_a_of_type_Int == j)
         {
-          int k = ((abyn)localObject2).b;
+          int k = ((aauw)localObject2).b;
           if (paramBoolean)
           {
             i = 1;
@@ -268,7 +269,7 @@ public class DeviceMsgSettingActivity
             }
             i = 1;
             label136:
-            achd.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
+            abdm.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
           }
         }
       }
@@ -287,7 +288,7 @@ public class DeviceMsgSettingActivity
         try
         {
           label174:
-          localObject2 = new JSONObject().put("id", ((abyn)localObject2).jdField_a_of_type_Int);
+          localObject2 = new JSONObject().put("id", ((aauw)localObject2).jdField_a_of_type_Int);
           if (!paramBoolean) {
             break label228;
           }

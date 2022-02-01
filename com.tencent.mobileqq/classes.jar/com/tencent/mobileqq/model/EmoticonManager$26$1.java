@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.util.SparseArray;
-import axfj;
+import avsq;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 
 class EmoticonManager$26$1

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.bless;
 
-import agej;
+import amtj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import anzj;
-import auog;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
@@ -19,7 +19,7 @@ public class BlessPtvModule
   extends Entity
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = anzj.a(2131700073);
+  public static final String DEFAULT_MODULE_TITLE = amtj.a(2131700308);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
@@ -66,13 +66,13 @@ public class BlessPtvModule
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838855);
+      return paramActivity.getResources().getDrawable(2130838911);
     }
     String str = path + File.separator + this.id + File.separator + this.id + ".png";
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int i = agej.a(56.0F, paramActivity.getResources());
+      int i = AIOUtils.dp2px(56.0F, paramActivity.getResources());
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
       paramActivity = URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
@@ -91,10 +91,10 @@ public class BlessPtvModule
   {
     if (this.id == "0")
     {
-      if ((this.defaultM4aPath == null) || (!auog.a(this.defaultM4aPath))) {}
+      if ((this.defaultM4aPath == null) || (!FileUtil.isFileExists(this.defaultM4aPath))) {}
     }
     else {
-      while ((auog.a(getLrcPath())) && (auog.a(getM4aPath())) && (auog.a(getPicPath()))) {
+      while ((FileUtil.isFileExists(getLrcPath())) && (FileUtil.isFileExists(getM4aPath())) && (FileUtil.isFileExists(getPicPath()))) {
         return true;
       }
     }

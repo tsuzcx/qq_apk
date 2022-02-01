@@ -1,8 +1,18 @@
-public abstract interface agfm
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class agfm
+  extends aghj
 {
-  public abstract int a();
+  agfm(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afzw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

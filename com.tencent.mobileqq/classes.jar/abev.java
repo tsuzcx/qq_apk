@@ -1,27 +1,13 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class abev
-  implements QQPermissionCallback
+  implements abfi
 {
-  public abev(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
+  public abev(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, String paramString) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
-    }
-    bhpc.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, anzj.a(2131706320));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
-    }
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
+    this.jdField_a_of_type_ComTencentGamecenterCommonUtilGameCenterAPIJavaScript.callbackJS(this.jdField_a_of_type_JavaLangString, paramInt, paramString);
   }
 }
 

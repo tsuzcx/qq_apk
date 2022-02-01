@@ -1,16 +1,29 @@
-import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.smtt.sdk.WebView;
 
-class bhxn
-  extends bhpc
+public class bhxn
+  extends Handler
 {
-  bhxn(bhxk parambhxk, Context paramContext, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public void onBackPressed()
-  {
-    super.onBackPressed();
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (bhxm)paramMessage.obj;
+    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
+    try
+    {
+      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 

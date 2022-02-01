@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.logcathook;
 
 import android.content.SharedPreferences;
-import awve;
+import avik;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -16,8 +16,8 @@ final class LogcatHook$1
       if ((BaseApplicationImpl.getApplication().getSharedPreferences("suspend_thread_pref_file", 0).getBoolean("enable_sys_log", false)) && (!LogcatHook.a))
       {
         System.loadLibrary("logcathook");
-        awve.a("com.tencent.mobileqq", BaseApplicationImpl.processName, AppSetting.a, 0L);
-        LogcatHook.updateLogFilePath(awve.a());
+        avik.a("com.tencent.mobileqq", BaseApplicationImpl.processName, AppSetting.a, 0L);
+        LogcatHook.updateLogFilePath(avik.a());
         LogcatHook.a(false);
         LogcatHook.a = true;
         QLog.sLogcatHooked = true;

@@ -1,43 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.mobileqq.widget.ScrollerRunnable.4;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.plato.mqq.network.ProgressListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
 
-public class bjda
-  implements Animator.AnimatorListener
+final class bjda
+  implements ProgressListener
 {
-  public bjda(ScrollerRunnable.4 param4) {}
+  bjda(UploaderProxy.UploadListener paramUploadListener) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onProgress(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (this.a.a.getParent() != null)
-    {
-      this.a.a.clearAnimation();
-      if (QLog.isColorLevel()) {
-        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
-    if ((bgiy.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.obtainMessage(50).sendToTarget();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
+    this.a.onUploadProgress((int)(100.0D * paramLong1 / paramLong2), (int)paramLong1, (int)paramLong2);
   }
 }
 

@@ -1,16 +1,22 @@
-class mar
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
+public class mar
+  implements MessageQueue.IdleHandler
 {
-  lqt jdField_a_of_type_Lqt;
-  maq[] jdField_a_of_type_ArrayOfMaq = new maq[2];
+  public mar(AVActivity paramAVActivity) {}
   
-  mar(map parammap)
+  public boolean queueIdle()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfMaq.length)
-    {
-      this.jdField_a_of_type_ArrayOfMaq[i] = new maq(parammap);
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
     }
+    ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
+    return false;
   }
 }
 

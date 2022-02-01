@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.intervideo.od;
 
 import android.os.Bundle;
-import avzc;
-import awdt;
+import aumc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-public class ODLoadingActivity$3
+class ODLoadingActivity$3
   implements Runnable
 {
   ODLoadingActivity$3(ODLoadingActivity paramODLoadingActivity, Future paramFuture, long paramLong, Bundle paramBundle) {}
@@ -16,7 +15,7 @@ public class ODLoadingActivity$3
   {
     try
     {
-      ((avzc)this.jdField_a_of_type_JavaUtilConcurrentFuture.get(6L, TimeUnit.SECONDS)).enter(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, new awdt(this));
+      ((aumc)this.jdField_a_of_type_JavaUtilConcurrentFuture.get(6L, TimeUnit.SECONDS)).enter(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, ODLoadingActivity.a(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -24,7 +23,7 @@ public class ODLoadingActivity$3
       if (QLog.isColorLevel()) {
         QLog.i("ODLoadingActivity", 2, "getBizPm fail", localException);
       }
-      this.this$0.runOnUiThread(new ODLoadingActivity.3.2(this));
+      this.this$0.runOnUiThread(new ODLoadingActivity.3.1(this));
       this.this$0.finish();
     }
   }

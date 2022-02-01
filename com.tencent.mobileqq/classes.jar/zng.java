@@ -1,17 +1,20 @@
 import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zng
+public class zng
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public zng(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
-  
-  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
-  
-  public abstract boolean a(View paramView, int paramInt);
+  public void onClick(View paramView)
+  {
+    zxp.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
+    zka.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131718720, new znh(this));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

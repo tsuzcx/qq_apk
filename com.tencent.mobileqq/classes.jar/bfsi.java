@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfsi
-  implements DialogInterface.OnClickListener
+class bfsi
+  implements View.OnClickListener
 {
-  public bfsi(TroopFileItemOperation.10.1 param1) {}
+  bfsi(bfse parambfse, Context paramContext, QQAppInterface paramQQAppInterface, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (bfsf.a(this.a.a.jdField_a_of_type_Bfsf) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Bfrs.a);
+    bfse.a(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_AndroidContentContext);
+    bfse.a(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2);
+    bfse.b(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C6", "0X800B0C6", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

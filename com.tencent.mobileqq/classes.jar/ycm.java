@@ -1,9 +1,10 @@
+import android.graphics.Bitmap;
+
 public abstract interface ycm
-  extends ykl
 {
-  public abstract void b();
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public abstract void c();
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

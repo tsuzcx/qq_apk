@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
 
-final class aunc
-  implements Comparator<FileInfo>
+class aunc
+  implements Callable<aumc>
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  aunc(auna paramauna) {}
+  
+  public aumc a()
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return auml.b(auna.a(this.a).getApplication(), "GVideo", localQQAppInterface.getCurrentUin());
   }
 }
 

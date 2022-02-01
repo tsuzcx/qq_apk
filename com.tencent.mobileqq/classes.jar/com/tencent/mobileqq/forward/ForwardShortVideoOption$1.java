@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import beyq;
-import bhpc;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ForwardShortVideoOption$1
   implements Runnable
 {
-  ForwardShortVideoOption$1(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, bhpc parambhpc, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  ForwardShortVideoOption$1(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, QQCustomDialog paramQQCustomDialog, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    beyq.a(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
+    URLDrawableHelper.decodeLocalImage(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
     this.this$0.a.runOnUiThread(new ForwardShortVideoOption.1.1(this));
   }
 }

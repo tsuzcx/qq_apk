@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.soload;
 
-import alil;
-import bdgp;
+import akgd;
+import bbzd;
 import java.io.Serializable;
 
 public class LoadParam$LoadItem
@@ -25,12 +25,12 @@ public class LoadParam$LoadItem
       this.lops = paramLoadOptions;
       return;
     }
-    this.lops = new bdgp().a();
+    this.lops = new bbzd().a();
   }
   
   public boolean isSame(LoadItem paramLoadItem)
   {
-    if (!alil.c(paramLoadItem.name, this.name)) {
+    if (!akgd.c(paramLoadItem.name, this.name)) {
       return false;
     }
     return this.lops.isSame(paramLoadItem.lops);
@@ -43,7 +43,7 @@ public class LoadParam$LoadItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.LoadParam.LoadItem
  * JD-Core Version:    0.7.0.1
  */

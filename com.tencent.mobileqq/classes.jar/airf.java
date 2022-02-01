@@ -1,127 +1,84 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForSafeGrayTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AlphaClickableRelativeLayout;
+import com.tencent.widget.XListView;
 
 public class airf
+  extends ainh
 {
-  public static MessageForReplyText.SourceMsgInfo a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt, long paramLong, String paramString)
+  protected airh a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected TextView a;
+  private bcoq a;
+  protected QQAppInterface a;
+  protected AlphaClickableRelativeLayout a;
+  protected XListView a;
+  
+  public airf(Activity paramActivity)
   {
-    if (paramChatMessage == null) {
-      return null;
+    super(paramActivity);
+    this.jdField_a_of_type_Bcoq = new airg(this);
+    if ((paramActivity instanceof SplashActivity)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
     }
-    paramQQAppInterface = new MessageForReplyText.SourceMsgInfo();
-    paramQQAppInterface.origUid = paramChatMessage.msgUid;
-    paramQQAppInterface.mSourceMsgSeq = paramChatMessage.shmsgseq;
-    paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.senderuin);
-    paramQQAppInterface.setUniSeq(paramChatMessage.uniseq, true);
-    paramQQAppInterface.mSourceMsgTime = ((int)paramChatMessage.time);
-    paramQQAppInterface.mSourceSummaryFlag = 1;
-    paramQQAppInterface.mType = paramInt;
-    paramQQAppInterface.mAtInfoStr = paramChatMessage.getExtInfoFromExtStr(bcrn.i);
-    Object localObject = nlj.a(paramChatMessage);
-    if (!TextUtils.isEmpty(((nlk)localObject).b)) {
-      paramQQAppInterface.mAnonymousNickName = ((nlk)localObject).b;
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryController", 2, "CTEntryController create");
     }
-    for (;;)
-    {
-      if (((paramChatMessage instanceof MessageForFile)) && (paramQQAppInterface.mSourceMsgSenderUin == 0L) && (paramChatMessage.issend != 1) && (!TextUtils.isEmpty(paramChatMessage.frienduin))) {
-        paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.frienduin);
-      }
-      paramQQAppInterface.mSourceMsgToUin = paramLong;
-      paramQQAppInterface.mSourceMsgTroopName = paramString;
-      try
-      {
-        if (!(paramChatMessage instanceof MessageForMixedMsg)) {
-          break;
-        }
-        paramQQAppInterface.mSourceMsgText = MessageForMixedMsg.getReplySummary(paramChatMessage);
-        return paramQQAppInterface;
-      }
-      catch (Exception paramChatMessage)
-      {
-        paramQQAppInterface.mSourceMsgText = "";
-        return paramQQAppInterface;
-      }
-      if ((paramQQAppInterface.mSourceMsgSenderUin == 50000000L) || (paramQQAppInterface.mSourceMsgSenderUin == 1000000L))
-      {
-        localObject = bgrf.a(paramChatMessage);
-        if (localObject != null) {
-          paramQQAppInterface.mAnonymousNickName = ((bgrg)localObject).c;
-        }
-      }
-    }
-    if ((paramChatMessage instanceof MessageForStructing))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForStructing.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
-    }
-    if ((paramChatMessage instanceof MessageForArkApp))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForArkApp.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.mSourceMsgText = paramChatMessage.getSummaryMsg();
-    return paramQQAppInterface;
   }
   
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public void a(airh paramairh)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgSeq, 0L);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
-    {
-      int i = 0;
-      while (i < paramQQAppInterface.size())
-      {
-        paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
-        if ((!adak.a(paramSessionInfo)) && (!(paramSessionInfo instanceof MessageForSafeGrayTips))) {
-          return paramSessionInfo;
-        }
-        i += 1;
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Airh = paramairh;
   }
   
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2)
+  public void a(View paramView)
   {
-    paramQQAppInterface = paramQQAppInterface.a().b(paramString, paramInt, paramLong1, paramLong2);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
-    {
-      paramInt = 0;
-      while (paramInt < paramQQAppInterface.size())
-      {
-        paramString = (MessageRecord)paramQQAppInterface.get(paramInt);
-        if ((!adak.b(paramString)) && (!(paramString instanceof MessageForSafeGrayTips))) {
-          return paramString;
-        }
-        paramInt += 1;
-      }
-    }
-    return null;
+    super.a(paramView);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131377553));
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131376113));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376119));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131370636));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362203));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
   }
   
-  public static MessageRecord b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public void a(boolean paramBoolean) {}
+  
+  protected boolean a()
   {
-    return a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid);
+    boolean bool = bcoo.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryController", 2, String.format("shouldShowRecommendEntry, isStudyMode: %s", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return !bool;
   }
   
-  public static MessageRecord c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public void b()
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
-      return b(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
-    }
-    return a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
+    super.b();
+    bcoo.a(this.jdField_a_of_type_Bcoq);
   }
+  
+  public void d()
+  {
+    super.d();
+    bcoo.b(this.jdField_a_of_type_Bcoq);
+  }
+  
+  public void d(boolean paramBoolean) {}
 }
 
 

@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.WarnMsg;
 
 public class awjg
-  implements bgxz
 {
-  public awjg(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public int a;
+  public String a;
+  public oidb_0x8e7.WarnMsg a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void a(long paramLong)
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramLong) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[level=").append(this.jdField_a_of_type_Int).append(",stockPerLike=").append(this.jdField_b_of_type_Int).append(",freeLikePeopleLimit=").append(this.c).append(",freeLikeOneLimit=").append(this.d).append(",stockCount=").append(this.e).append(",freeLikePeopleCount=").append(this.f).append(",buyStockUrl=").append(this.jdField_a_of_type_JavaLangString).append(",updateLevelUrl=").append(this.jdField_b_of_type_JavaLangString).append("]");
+    return localStringBuilder.toString();
   }
 }
 

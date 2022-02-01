@@ -18,13 +18,14 @@ import com.tencent.theme.SkinnableBitmapDrawable;
 public class RoundImageView
   extends ImageView
 {
-  float jdField_a_of_type_Float = 0.0F;
-  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_a_of_type_Boolean = false;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  boolean jdField_b_of_type_Boolean = false;
+  private static final String TAG = "RoundImageView";
+  float mRadius = 0.0F;
+  RectF mTempRectF = new RectF();
+  Path path = new Path();
+  boolean qwNoBottomRadius = false;
+  boolean qwNoRightRadius = false;
+  Rect rect1 = new Rect();
+  Rect rect2 = new Rect();
   
   public RoundImageView(Context paramContext)
   {
@@ -39,16 +40,29 @@ public class RoundImageView
   public RoundImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext, paramAttributeSet, paramInt);
+    initAttrs(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  private void clipPathSafe(Canvas paramCanvas)
+  {
+    try
+    {
+      paramCanvas.clipPath(this.path);
+      return;
+    }
+    catch (Exception paramCanvas)
+    {
+      QLog.e("RoundImageView", 1, "clipPathSafe exception", paramCanvas);
+    }
+  }
+  
+  private void initAttrs(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QwRoundView, paramInt, 0);
     try
     {
-      this.jdField_a_of_type_Float = ((int)paramContext.getDimension(1, 0.0F));
-      this.jdField_a_of_type_Boolean = paramContext.getBoolean(0, false);
+      this.mRadius = ((int)paramContext.getDimension(1, 0.0F));
+      this.qwNoBottomRadius = paramContext.getBoolean(0, false);
       return;
     }
     catch (Exception paramAttributeSet)
@@ -62,19 +76,6 @@ public class RoundImageView
     }
   }
   
-  private void a(Canvas paramCanvas)
-  {
-    try
-    {
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      return;
-    }
-    catch (Exception paramCanvas)
-    {
-      QLog.e("RoundImageView", 1, "clipPathSafe exception", paramCanvas);
-    }
-  }
-  
   protected void onDraw(Canvas paramCanvas)
   {
     float f1 = 0.0F;
@@ -84,14 +85,14 @@ public class RoundImageView
       {
         int i = getMeasuredWidth();
         int j = getMeasuredHeight();
-        if (this.jdField_a_of_type_Float <= 0.0F) {
+        if (this.mRadius <= 0.0F) {
           break label241;
         }
-        if (this.jdField_b_of_type_Boolean)
+        if (this.qwNoRightRadius)
         {
-          this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i + this.jdField_a_of_type_Float, j);
-          this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-          a(paramCanvas);
+          this.mTempRectF.set(0.0F, 0.0F, i + this.mRadius, j);
+          this.path.addRoundRect(this.mTempRectF, this.mRadius, this.mRadius, Path.Direction.CW);
+          clipPathSafe(paramCanvas);
           localObject = getDrawable();
           if (localObject == null) {
             break label241;
@@ -102,18 +103,18 @@ public class RoundImageView
             if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
               break label241;
             }
-            this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-            this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, i, j);
-            paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, null);
+            this.rect1.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+            this.rect2.set(0, 0, i, j);
+            paramCanvas.drawBitmap((Bitmap)localObject, this.rect1, this.rect2, null);
           }
         }
         else
         {
-          localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+          localObject = this.mTempRectF;
           float f2 = i;
           float f3 = j;
-          if (this.jdField_a_of_type_Boolean) {
-            f1 = this.jdField_a_of_type_Float;
+          if (this.qwNoBottomRadius) {
+            f1 = this.mRadius;
           }
           ((RectF)localObject).set(0.0F, 0.0F, f2, f1 + f3);
           continue;
@@ -139,14 +140,14 @@ public class RoundImageView
   
   public void setRadiusWithoutRight(int paramInt)
   {
-    this.jdField_a_of_type_Float = paramInt;
-    this.jdField_b_of_type_Boolean = true;
+    this.mRadius = paramInt;
+    this.qwNoRightRadius = true;
   }
   
   public void setmRadius(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mRadius = paramInt;
+    this.qwNoBottomRadius = paramBoolean;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.intervideo.now.DownloadEngine;
 
-import awbl;
-import awbn;
+import auol;
+import auon;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 
 public class DownloadTaskListenerBridge$1
   implements Runnable
 {
-  public DownloadTaskListenerBridge$1(awbl paramawbl, DownloaderTask paramDownloaderTask) {}
+  public DownloadTaskListenerBridge$1(auol paramauol, DownloaderTask paramDownloaderTask) {}
   
   public void run()
   {
-    if (awbl.a(this.this$0) != null) {
-      awbl.a(this.this$0).c(this.a);
+    if (auol.a(this.this$0) != null) {
+      auol.a(this.this$0).c(this.a);
     }
   }
 }

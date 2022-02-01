@@ -1,27 +1,53 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class ygk
-  extends wzi
+  extends ygh<ygb>
+  implements View.OnClickListener
 {
-  public FeedVideoInfo a;
-  public String a;
-  public List<StoryVideoItem> a;
-  public String b;
-  
-  public ygk(ErrorMessage paramErrorMessage, String paramString)
+  public ygk(Context paramContext)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramContext);
   }
   
-  public String toString()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
+    if (this.jdField_a_of_type_Yfy == null)
+    {
+      localObject = paramView;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    if (paramView == null) {}
+    for (Object localObject = new ygl(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((ygb)this.jdField_a_of_type_Yfy).a(), ((ygb)this.jdField_a_of_type_Yfy).a(), this);; localObject = (ygl)paramView)
+    {
+      ((ygl)localObject).a((ygb)this.jdField_a_of_type_Yfy, paramInt, getCount());
+      break;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag(2131378194)).intValue();
+    ygc localygc = (ygc)((ygb)this.jdField_a_of_type_Yfy).a.get(i);
+    ImageView localImageView = (ImageView)paramView;
+    Boolean localBoolean = (Boolean)localImageView.getTag(2131378172);
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    {
+      localygc.a = localImageView.getDrawable();
+      this.jdField_a_of_type_Yga.a(localygc);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      xvv.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
+    }
   }
 }
 

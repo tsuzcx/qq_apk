@@ -1,15 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
-
-public abstract interface atbt<V extends View>
-{
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
-  
-  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbt
  * JD-Core Version:    0.7.0.1
  */

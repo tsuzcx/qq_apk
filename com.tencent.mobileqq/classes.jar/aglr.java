@@ -1,34 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aglr
-  implements Animator.AnimatorListener
+public class aglr
+  implements View.OnClickListener
 {
-  aglr(aglq paramaglq) {}
+  public aglr(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimation", 2, "onAnimationEnd");
+    aglx localaglx = (aglx)AIOUtils.getHolder(paramView);
+    if (paramView == localaglx.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localaglx);
     }
-    aglq.a(this.a).remove();
-    if (aglq.a(this.a).isEmpty()) {
-      this.a.c();
-    }
-    while (aglq.a(this.a)) {
+    for (;;)
+    {
+      bcef.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (paramView == localaglx.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localaglx);
+      }
     }
-    aglq.a(this.a).clear();
-    this.a.c();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

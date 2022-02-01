@@ -7,8 +7,8 @@ class AEVideoShelfEditFragment$14
   
   public void run()
   {
-    AEVideoShelfEditFragment.a(this.this$0, this.a * 0.9D);
-    AEVideoShelfEditFragment.b(this.this$0, (int)AEVideoShelfEditFragment.a(this.this$0));
+    AEVideoShelfEditFragment.access$2702(this.this$0, this.val$progress * 0.9D);
+    AEVideoShelfEditFragment.access$2800(this.this$0, (int)AEVideoShelfEditFragment.access$2700(this.this$0));
   }
 }
 

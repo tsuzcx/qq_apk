@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class bjna
-  implements View.OnClickListener
 {
-  public bjna(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
-  
-  public void onClick(View paramView)
+  public static String a(Throwable paramThrowable)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof String))) {
-      this.a.b((String)localObject);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    StringWriter localStringWriter = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
 }
 

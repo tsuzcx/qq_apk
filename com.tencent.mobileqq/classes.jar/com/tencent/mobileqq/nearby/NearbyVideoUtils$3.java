@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
 import android.text.TextUtils;
-import beyb;
-import beyg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
 public final class NearbyVideoUtils$3
   implements Runnable
@@ -14,11 +14,11 @@ public final class NearbyVideoUtils$3
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      beyg localbeyg = new beyg();
-      localbeyg.a = true;
-      localbeyg.i = this.jdField_a_of_type_JavaLangString;
-      localbeyg.b = 64;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
+      TransferRequest localTransferRequest = new TransferRequest();
+      localTransferRequest.mIsUp = true;
+      localTransferRequest.mLocalPath = this.jdField_a_of_type_JavaLangString;
+      localTransferRequest.mFileType = 64;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
     }
   }
 }

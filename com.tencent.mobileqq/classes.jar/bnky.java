@@ -1,178 +1,825 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.filter.BaseFilter;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.model.DoodleItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator.1;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class bnky
-  implements Downloader.DownloadListener
+public class bnky
+  extends bnkd
 {
-  bnky(bnkx parambnkx) {}
+  protected double a;
+  public int a;
+  bnjz jdField_a_of_type_Bnjz;
+  bnkx jdField_a_of_type_Bnkx = null;
+  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  VideoMaterial jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
+  HashMap<String, VideoFilterBase> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  boolean jdField_a_of_type_Boolean = false;
+  protected int[] a;
+  public int b;
+  Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  boolean jdField_b_of_type_Boolean = false;
+  int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  int jdField_c_of_type_Int = 320;
+  Frame jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  boolean jdField_c_of_type_Boolean = false;
+  int[] jdField_c_of_type_ArrayOfInt = new int[1];
+  int jdField_d_of_type_Int = 480;
+  Frame jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  public boolean d;
+  int[] jdField_d_of_type_ArrayOfInt = new int[1];
+  int jdField_e_of_type_Int = 0;
+  boolean jdField_e_of_type_Boolean = true;
+  int jdField_f_of_type_Int = 0;
+  boolean jdField_f_of_type_Boolean = false;
+  public int g;
+  public boolean g;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public bnky(bnjz parambnjz)
   {
-    paramString = bnkx.a(this.a, paramString, true).iterator();
-    while (paramString.hasNext())
+    this.jdField_a_of_type_Double = 0.75D;
+    this.jdField_a_of_type_ArrayOfInt = new int[2];
+    this.jdField_g_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bnjz = parambnjz;
+  }
+  
+  public static VideoFilterBase a(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial == null) {}
+    do
     {
-      paramDownloadResult = (bnla)paramString.next();
-      bnkz localbnkz = (bnkz)paramDownloadResult.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbnkz != null) {
-        localbnkz.a(paramDownloadResult.jdField_a_of_type_Int, paramDownloadResult.d);
+      return null;
+      if ((paramVideoMaterial.getDoodleItem() == null) && (QLog.isColorLevel())) {
+        QLog.w("PersonalityOperator", 2, "material.getDoodleItem is null!");
       }
-      paramDownloadResult.a();
+      if (paramVideoMaterial.getShaderType() == 13) {
+        return b(paramVideoMaterial);
+      }
+      if (paramVideoMaterial.getShaderType() == 15) {
+        return c(paramVideoMaterial);
+      }
+    } while (paramVideoMaterial.getShaderType() != 14);
+    return d(paramVideoMaterial);
+  }
+  
+  static VideoFilterBase b(VideoMaterial paramVideoMaterial)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramVideoMaterial != null)
+    {
+      DoodleItem localDoodleItem = paramVideoMaterial.getDoodleItem();
+      localObject1 = localObject2;
+      if (localDoodleItem != null) {
+        localObject1 = new bnkw(localDoodleItem, paramVideoMaterial.getDataPath());
+      }
+    }
+    return localObject1;
+  }
+  
+  static VideoFilterBase c(VideoMaterial paramVideoMaterial)
+  {
+    return new bnku();
+  }
+  
+  static VideoFilterBase d(VideoMaterial paramVideoMaterial)
+  {
+    return new bnkv(paramVideoMaterial.getDoodleItem(), paramVideoMaterial.getDataPath());
+  }
+  
+  public void a()
+  {
+    c();
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    this.jdField_b_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    GLES20.glGenTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(this.jdField_c_of_type_ArrayOfInt.length, this.jdField_c_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(this.jdField_d_of_type_ArrayOfInt.length, this.jdField_d_of_type_ArrayOfInt, 0);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
+  {
+    PointF localPointF = new PointF(paramFloat1, paramFloat2);
+    paramFloat1 = this.jdField_a_of_type_Int / this.jdField_c_of_type_Int;
+    localPointF.x *= paramFloat1;
+    localPointF.y = (paramFloat1 * localPointF.y);
+    localPointF = new PointF(localPointF.x - this.jdField_a_of_type_Int * 0.5F, localPointF.y - this.jdField_b_of_type_Int * 0.5F);
+    this.jdField_a_of_type_Bnkx.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localPointF);
+    this.jdField_a_of_type_Bnkx.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_g_of_type_Boolean = true;
+    this.jdField_g_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Bnjz != null) {
+      this.jdField_a_of_type_Bnjz.a();
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    float f1 = Math.min(720.0F / Math.min(paramInt1, paramInt2), 1.0F);
+    this.jdField_a_of_type_Int = ((int)(paramInt1 * f1));
+    this.jdField_b_of_type_Int = ((int)(f1 * paramInt2));
+    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+      a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
+    }
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
+    if (this.jdField_c_of_type_Boolean) {
+      a(true);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, double paramDouble)
+  {
+    if (paramInt1 / paramInt2 > 0.75D) {
+      paramInt2 = (int)(paramInt1 / 0.75D);
+    }
+    while (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    {
+      return;
+      paramInt1 = (int)(paramInt2 * 0.75D);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((VideoFilterBase)((Map.Entry)localIterator.next()).getValue()).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    }
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
+    GLES20.glTexImage2D(3553, 0, 6402, paramInt1, paramInt2, 0, 6402, 5123, null);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glTexParameteri(3553, 10240, 9728);
+    GLES20.glTexParameteri(3553, 10241, 9728);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() < 1)) {
+      return;
+    }
+    Frame localFrame = new Frame(paramInt1, paramInt2, paramInt3, paramInt4);
+    GlUtil.setBlendMode(true);
+    GLES20.glBindFramebuffer(36160, paramInt1);
+    GLES20.glViewport(0, 0, paramInt3, paramInt4);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt3, paramInt4, 1.0D);
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt3, paramInt4, paramInt2, 1.0D, localFrame);
+    GlUtil.setBlendMode(false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, bnkx parambnkx)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() < 1)) {
+      return;
+    }
+    Frame localFrame = new Frame(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO(), this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2);
+    GlUtil.setBlendMode(true);
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(parambnkx.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), 1.0D, localFrame);
+    GlUtil.setBlendMode(false);
+    parambnkx.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(bnkx parambnkx)
+  {
+    if ((parambnkx.jdField_d_of_type_Boolean) && (parambnkx.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_b_of_type_Boolean);
+      if ((!parambnkx.jdField_a_of_type_Boolean) && (parambnkx.jdField_b_of_type_Boolean))
+      {
+        if (parambnkx.jdField_c_of_type_Boolean) {
+          a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, parambnkx);
+        }
+        this.jdField_f_of_type_Boolean = true;
+        return;
+      }
+    } while (parambnkx.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() <= 1);
+    a(this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, parambnkx);
+  }
+  
+  public void a(Frame paramFrame, int paramInt1, int paramInt2, bnkx parambnkx)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() < 1)) {
+      return;
+    }
+    GlUtil.setBlendMode(true);
+    GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
+    ArrayList localArrayList = new ArrayList();
+    boolean bool = parambnkx.jdField_d_of_type_Boolean;
+    localArrayList.addAll(parambnkx.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+    Object localObject = (VideoFilterBase)this.jdField_a_of_type_JavaUtilHashMap.get(parambnkx.jdField_a_of_type_JavaLangString);
+    if ((localObject instanceof bnkw))
+    {
+      localObject = (bnkw)localObject;
+      ((bnkw)localObject).a(localArrayList);
+      ((bnkw)localObject).renderTexture(paramFrame.getTextureId(), paramInt1, paramInt2);
+      if (bool)
+      {
+        this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt1, paramInt2, 1.0D);
+        GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+        GLES20.glViewport(0, 0, paramInt1, paramInt2);
+        ((bnkw)localObject).a(parambnkx.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+        ((bnkw)localObject).renderTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2);
+        parambnkx.b();
+      }
+    }
+    for (;;)
+    {
+      GlUtil.setBlendMode(false);
+      if ((!parambnkx.jdField_d_of_type_Boolean) || (!parambnkx.jdField_c_of_type_Boolean)) {
+        break;
+      }
+      paramFrame = parambnkx.a(paramInt1, paramInt2);
+      a(paramFrame.getFBO(), paramFrame.getTextureId(), paramInt1, paramInt2);
+      return;
+      if ((localObject instanceof bnku))
+      {
+        localObject = (bnku)localObject;
+        ((bnku)localObject).a();
+        ((bnku)localObject).a(localArrayList, bool, parambnkx);
+        GLES20.glViewport(0, 0, paramInt1, paramInt2);
+        GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
+        ((bnku)localObject).renderTexture(paramFrame.getTextureId(), paramInt1, paramInt2);
+        if (bool)
+        {
+          this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt1, paramInt2, 1.0D);
+          GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+          GLES20.glViewport(0, 0, paramInt1, paramInt2);
+          ((bnku)localObject).a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId());
+          parambnkx.b();
+        }
+      }
+      else if ((localObject instanceof bnkv))
+      {
+        localObject = (bnkv)localObject;
+        ((bnkv)localObject).a(localArrayList);
+        bnkz.a(this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_d_of_type_ArrayOfInt[0], paramInt1, paramInt2, true);
+        ((bnkv)localObject).a();
+        bnkz.a(this.jdField_a_of_type_ComTencentFilterBaseFilter, paramFrame, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_d_of_type_ArrayOfInt[0], paramInt1, paramInt2);
+        if (bool)
+        {
+          ((bnkv)localObject).a(parambnkx.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+          this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt1, paramInt2, 1.0D);
+          bnkz.a(this.jdField_a_of_type_ComTencentFilterBaseFilter, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_d_of_type_ArrayOfInt[0], paramInt1, paramInt2);
+          parambnkx.b();
+        }
+      }
+    }
+  }
+  
+  public void a(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramVideoMaterial.getId()))
+      {
+        VideoFilterBase localVideoFilterBase = a(paramVideoMaterial);
+        if (localVideoFilterBase != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramVideoMaterial.getId(), localVideoFilterBase);
+        }
+      }
+      this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = paramVideoMaterial;
+      paramVideoMaterial = new PersonalityOperator.1(this, paramVideoMaterial);
+      if (this.jdField_a_of_type_Bnjz != null) {
+        this.jdField_a_of_type_Bnjz.a(paramVideoMaterial);
+      }
+      return;
+    }
+    xvv.b("PersonalityOperator", "material is null!");
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+      return;
+    }
+    paramString = (VideoFilterBase)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString.ApplyGLSLFilter();
+    paramString.setRenderMode(1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    boolean bool = true;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = true;
+    if (!paramBoolean) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      this.jdField_c_of_type_Boolean = paramBoolean;
+      if (this.jdField_a_of_type_Bnjz != null) {
+        this.jdField_a_of_type_Bnjz.a();
+      }
+      return;
+    }
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+      if ((QLog.isColorLevel()) && (paramMotionEvent.getAction() == 0)) {
+        QLog.w("PersonalityOperator", 2, "onTouch filterMap is empty");
+      }
+    }
+    do
+    {
+      return true;
+      if ((this.jdField_f_of_type_Int + 1 <= 50) || (this.jdField_a_of_type_Bnkx == null) || (!this.jdField_a_of_type_Bnkx.jdField_d_of_type_Boolean)) {
+        break;
+      }
+    } while (paramMotionEvent.getAction() != 0);
+    QQStoryContext.a();
+    QQToast.a(QQStoryContext.a().getApp(), amtj.a(2131707065), 0).a();
+    return true;
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    int i;
+    if (paramMotionEvent.getAction() == 2) {
+      if (this.jdField_a_of_type_Bnkx != null)
+      {
+        a(f1, f2, false);
+        i = this.jdField_e_of_type_Int + 1;
+        this.jdField_e_of_type_Int = i;
+        this.jdField_e_of_type_Int = (i % 4);
+        if (this.jdField_e_of_type_Int != 0) {}
+      }
+    }
+    for (;;)
+    {
+      this.jdField_d_of_type_Boolean = true;
+      if (this.jdField_a_of_type_Bnjz == null) {
+        break;
+      }
+      this.jdField_a_of_type_Bnjz.a();
+      return true;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        if ((this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId())))
+        {
+          paramMotionEvent = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId();
+          if (this.jdField_a_of_type_Bnjz != null) {}
+          for (i = this.jdField_a_of_type_Bnjz.a();; i = 0)
+          {
+            this.jdField_a_of_type_Bnkx = new bnkx(102, paramMotionEvent, i);
+            this.jdField_f_of_type_Int += 1;
+            this.jdField_a_of_type_Bnkx.jdField_c_of_type_Boolean = true;
+            if (this.jdField_a_of_type_Bnjz != null) {
+              this.jdField_a_of_type_Bnjz.a(this.jdField_a_of_type_Bnkx);
+            }
+            a(f1, f2, false);
+            this.jdField_e_of_type_Int = 0;
+            break;
+          }
+        }
+      }
+      else if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.jdField_a_of_type_Bnkx != null)) {
+        a(f1, f2, true);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+  }
+  
+  public void c()
+  {
+    this.jdField_f_of_type_Int = 0;
+    try
+    {
+      this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+      this.jdField_b_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+      if (this.jdField_e_of_type_Boolean)
+      {
+        this.jdField_e_of_type_Boolean = false;
+        if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          while (localIterator.hasNext()) {
+            ((VideoFilterBase)((Map.Entry)localIterator.next()).getValue()).clearGLSLSelf();
+          }
+          this.jdField_a_of_type_JavaUtilHashMap.clear();
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PersonalityOperator", 2, "clear " + localThrowable.toString());
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glDeleteTextures(this.jdField_c_of_type_ArrayOfInt.length, this.jdField_c_of_type_ArrayOfInt, 0);
+    GLES20.glDeleteTextures(this.jdField_d_of_type_ArrayOfInt.length, this.jdField_d_of_type_ArrayOfInt, 0);
+  }
+  
+  public void d()
+  {
+    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Double);
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(16640);
+    GLES20.glFlush();
+    this.jdField_b_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, this.jdField_a_of_type_Double, this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label122;
+      }
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
+      bnkz.a();
+      this.jdField_a_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      this.jdField_f_of_type_Boolean = false;
+      return;
+      label122:
+      a(this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO(), this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    }
+  }
   
   /* Error */
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void e()
   {
     // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 75	bnkx:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   4: invokestatic 77	bnkx:a	(Ljava/lang/String;)V
+    //   0: aload_0
+    //   1: getfield 86	bnky:jdField_f_of_type_Boolean	Z
+    //   4: ifeq +29 -> 33
     //   7: aload_0
-    //   8: getfield 12	bnky:a	Lbnkx;
-    //   11: aload_1
-    //   12: iconst_1
-    //   13: invokestatic 25	bnkx:a	(Lbnkx;Ljava/lang/String;Z)Ljava/util/Collection;
-    //   16: invokeinterface 31 1 0
-    //   21: astore_3
-    //   22: aload_3
-    //   23: invokeinterface 37 1 0
-    //   28: ifeq +229 -> 257
-    //   31: aload_3
-    //   32: invokeinterface 41 1 0
-    //   37: checkcast 43	bnla
-    //   40: astore 4
-    //   42: aload 4
-    //   44: getfield 46	bnla:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   47: invokevirtual 51	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   50: checkcast 53	bnkz
-    //   53: astore 5
-    //   55: aload 5
-    //   57: ifnull +111 -> 168
-    //   60: aload 4
-    //   62: getfield 80	bnla:b	Ljava/lang/String;
-    //   65: aload 4
-    //   67: getfield 60	bnla:d	Ljava/lang/String;
-    //   70: invokestatic 83	bnkx:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   73: astore 6
-    //   75: aload 6
-    //   77: invokestatic 86	bnkx:a	(Ljava/io/File;)Z
-    //   80: ifeq +152 -> 232
-    //   83: aload_0
-    //   84: monitorenter
-    //   85: aload_0
-    //   86: getfield 12	bnky:a	Lbnkx;
-    //   89: invokestatic 89	bnkx:a	(Lbnkx;)Landroid/support/v4/util/LruCache;
-    //   92: aload 4
-    //   94: getfield 91	bnla:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   97: invokevirtual 96	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 98	android/graphics/Bitmap
-    //   103: astore_1
-    //   104: aload_1
-    //   105: astore_2
-    //   106: aload_1
-    //   107: ifnonnull +13 -> 120
-    //   110: aload 6
-    //   112: invokevirtual 104	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   115: aconst_null
-    //   116: invokestatic 107	bnkx:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   119: astore_2
-    //   120: aload_2
-    //   121: astore_1
-    //   122: aload_0
-    //   123: monitorexit
-    //   124: aload_1
-    //   125: ifnull +82 -> 207
-    //   128: aload_0
-    //   129: getfield 12	bnky:a	Lbnkx;
-    //   132: invokestatic 89	bnkx:a	(Lbnkx;)Landroid/support/v4/util/LruCache;
-    //   135: aload 4
-    //   137: getfield 91	bnla:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   140: aload_1
-    //   141: invokevirtual 111	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   144: pop
-    //   145: aload 5
-    //   147: ifnull +21 -> 168
-    //   150: aload 5
-    //   152: aload 4
-    //   154: getfield 56	bnla:jdField_a_of_type_Int	I
-    //   157: aload 4
-    //   159: getfield 60	bnla:d	Ljava/lang/String;
-    //   162: aload_1
-    //   163: invokeinterface 114 4 0
-    //   168: aload 4
-    //   170: invokevirtual 65	bnla:a	()V
-    //   173: goto -151 -> 22
-    //   176: astore_2
-    //   177: aconst_null
-    //   178: astore_1
-    //   179: ldc 116
-    //   181: iconst_1
-    //   182: aload_2
-    //   183: invokevirtual 119	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   186: invokestatic 125	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   189: goto -67 -> 122
-    //   192: astore_1
-    //   193: aload_0
-    //   194: monitorexit
-    //   195: aload_1
-    //   196: athrow
-    //   197: astore_2
-    //   198: aconst_null
-    //   199: astore_1
-    //   200: aload_2
-    //   201: invokevirtual 128	java/lang/Exception:printStackTrace	()V
-    //   204: goto -82 -> 122
-    //   207: aload 5
-    //   209: ifnull -41 -> 168
-    //   212: aload 5
-    //   214: aload 4
-    //   216: getfield 56	bnla:jdField_a_of_type_Int	I
-    //   219: aload 4
-    //   221: getfield 60	bnla:d	Ljava/lang/String;
-    //   224: invokeinterface 63 3 0
-    //   229: goto -61 -> 168
-    //   232: aload 5
-    //   234: ifnull -66 -> 168
-    //   237: aload 5
-    //   239: aload 4
-    //   241: getfield 56	bnla:jdField_a_of_type_Int	I
-    //   244: aload 4
-    //   246: getfield 60	bnla:d	Ljava/lang/String;
-    //   249: invokeinterface 63 3 0
-    //   254: goto -86 -> 168
-    //   257: return
-    //   258: astore_2
-    //   259: goto -59 -> 200
-    //   262: astore_2
-    //   263: goto -84 -> 179
+    //   8: aload_0
+    //   9: getfield 70	bnky:jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   12: invokevirtual 284	com/tencent/aekit/openrender/internal/Frame:getFBO	()I
+    //   15: aload_0
+    //   16: getfield 70	bnky:jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   19: invokevirtual 276	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
+    //   22: aload_0
+    //   23: getfield 88	bnky:jdField_a_of_type_Int	I
+    //   26: aload_0
+    //   27: getfield 166	bnky:jdField_b_of_type_Int	I
+    //   30: invokevirtual 325	bnky:a	(IIII)V
+    //   33: aload_0
+    //   34: getfield 66	bnky:jdField_b_of_type_ComTencentFilterBaseFilter	Lcom/tencent/filter/BaseFilter;
+    //   37: aload_0
+    //   38: getfield 70	bnky:jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   41: invokevirtual 276	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
+    //   44: aload_0
+    //   45: getfield 29	bnky:jdField_c_of_type_Int	I
+    //   48: aload_0
+    //   49: getfield 31	bnky:jdField_d_of_type_Int	I
+    //   52: iconst_0
+    //   53: aload_0
+    //   54: getfield 35	bnky:jdField_a_of_type_Double	D
+    //   57: aload_0
+    //   58: getfield 68	bnky:jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   61: invokevirtual 280	com/tencent/filter/BaseFilter:RenderProcess	(IIIIDLcom/tencent/aekit/openrender/internal/Frame;)V
+    //   64: aload_0
+    //   65: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   68: ifnull +23 -> 91
+    //   71: aload_0
+    //   72: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   75: instanceof 486
+    //   78: ifeq +13 -> 91
+    //   81: aload_0
+    //   82: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   85: checkcast 486	bnkb
+    //   88: invokevirtual 488	bnkb:f	()V
+    //   91: aload_0
+    //   92: getfield 182	bnky:jdField_g_of_type_Boolean	Z
+    //   95: ifeq +285 -> 380
+    //   98: aload_0
+    //   99: iconst_0
+    //   100: putfield 182	bnky:jdField_g_of_type_Boolean	Z
+    //   103: aconst_null
+    //   104: astore 8
+    //   106: aconst_null
+    //   107: astore 7
+    //   109: invokestatic 106	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   112: ifeq +12 -> 124
+    //   115: ldc 108
+    //   117: iconst_2
+    //   118: ldc_w 490
+    //   121: invokestatic 492	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   124: invokestatic 498	java/lang/System:currentTimeMillis	()J
+    //   127: lstore_2
+    //   128: aload 8
+    //   130: astore 6
+    //   132: aload_0
+    //   133: getfield 29	bnky:jdField_c_of_type_Int	I
+    //   136: aload_0
+    //   137: getfield 31	bnky:jdField_d_of_type_Int	I
+    //   140: imul
+    //   141: invokestatic 504	java/nio/IntBuffer:allocate	(I)Ljava/nio/IntBuffer;
+    //   144: astore 9
+    //   146: aload 8
+    //   148: astore 6
+    //   150: iconst_0
+    //   151: iconst_0
+    //   152: aload_0
+    //   153: getfield 29	bnky:jdField_c_of_type_Int	I
+    //   156: aload_0
+    //   157: getfield 31	bnky:jdField_d_of_type_Int	I
+    //   160: sipush 6408
+    //   163: sipush 5121
+    //   166: aload 9
+    //   168: invokestatic 508	android/opengl/GLES20:glReadPixels	(IIIIIILjava/nio/Buffer;)V
+    //   171: aload 8
+    //   173: astore 6
+    //   175: aload 9
+    //   177: invokevirtual 512	java/nio/IntBuffer:array	()[I
+    //   180: astore 10
+    //   182: aload 8
+    //   184: astore 6
+    //   186: aload_0
+    //   187: getfield 29	bnky:jdField_c_of_type_Int	I
+    //   190: aload_0
+    //   191: getfield 31	bnky:jdField_d_of_type_Int	I
+    //   194: getstatic 518	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   197: invokestatic 524	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   200: astore 9
+    //   202: aload 8
+    //   204: astore 6
+    //   206: aload 9
+    //   208: aload 10
+    //   210: invokestatic 528	java/nio/IntBuffer:wrap	([I)Ljava/nio/IntBuffer;
+    //   213: invokevirtual 532	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
+    //   216: aload 9
+    //   218: ifnull +331 -> 549
+    //   221: aload 8
+    //   223: astore 6
+    //   225: aload_0
+    //   226: getfield 90	bnky:jdField_g_of_type_Int	I
+    //   229: i2f
+    //   230: fconst_1
+    //   231: fmul
+    //   232: aload_0
+    //   233: getfield 29	bnky:jdField_c_of_type_Int	I
+    //   236: i2f
+    //   237: fdiv
+    //   238: fstore_1
+    //   239: aload 8
+    //   241: astore 6
+    //   243: new 534	android/graphics/Matrix
+    //   246: dup
+    //   247: invokespecial 535	android/graphics/Matrix:<init>	()V
+    //   250: astore 10
+    //   252: aload 8
+    //   254: astore 6
+    //   256: aload 10
+    //   258: ldc_w 536
+    //   261: invokevirtual 540	android/graphics/Matrix:postRotate	(F)Z
+    //   264: pop
+    //   265: aload 8
+    //   267: astore 6
+    //   269: aload 10
+    //   271: ldc_w 541
+    //   274: fload_1
+    //   275: fmul
+    //   276: fload_1
+    //   277: fconst_1
+    //   278: fmul
+    //   279: invokevirtual 545	android/graphics/Matrix:postScale	(FF)Z
+    //   282: pop
+    //   283: aload 8
+    //   285: astore 6
+    //   287: aload 9
+    //   289: iconst_0
+    //   290: iconst_0
+    //   291: aload 9
+    //   293: invokevirtual 548	android/graphics/Bitmap:getWidth	()I
+    //   296: aload 9
+    //   298: invokevirtual 551	android/graphics/Bitmap:getHeight	()I
+    //   301: aload 10
+    //   303: iconst_0
+    //   304: invokestatic 554	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   307: astore 8
+    //   309: aload 8
+    //   311: astore 6
+    //   313: aload 6
+    //   315: astore 7
+    //   317: aload_0
+    //   318: iconst_0
+    //   319: putfield 426	bnky:jdField_d_of_type_Boolean	Z
+    //   322: aload_0
+    //   323: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   326: ifnull +14 -> 340
+    //   329: aload_0
+    //   330: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   333: aload 6
+    //   335: invokeinterface 557 2 0
+    //   340: invokestatic 498	java/lang/System:currentTimeMillis	()J
+    //   343: lstore 4
+    //   345: invokestatic 106	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   348: ifeq +32 -> 380
+    //   351: ldc 108
+    //   353: iconst_2
+    //   354: new 455	java/lang/StringBuilder
+    //   357: dup
+    //   358: invokespecial 456	java/lang/StringBuilder:<init>	()V
+    //   361: ldc_w 559
+    //   364: invokevirtual 462	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   367: lload 4
+    //   369: lload_2
+    //   370: lsub
+    //   371: invokevirtual 562	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   374: invokevirtual 466	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   377: invokestatic 492	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   380: return
+    //   381: astore 8
+    //   383: aconst_null
+    //   384: astore 6
+    //   386: aload 6
+    //   388: astore 7
+    //   390: invokestatic 106	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   393: ifeq +20 -> 413
+    //   396: aload 6
+    //   398: astore 7
+    //   400: ldc_w 564
+    //   403: iconst_2
+    //   404: aload 8
+    //   406: iconst_0
+    //   407: anewarray 566	java/lang/Object
+    //   410: invokestatic 569	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   413: aload_0
+    //   414: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   417: ifnull -77 -> 340
+    //   420: aload_0
+    //   421: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   424: aload 6
+    //   426: invokeinterface 557 2 0
+    //   431: goto -91 -> 340
+    //   434: astore 8
+    //   436: aload 7
+    //   438: astore 6
+    //   440: invokestatic 106	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   443: ifeq +35 -> 478
+    //   446: aload 7
+    //   448: astore 6
+    //   450: ldc_w 564
+    //   453: iconst_2
+    //   454: new 455	java/lang/StringBuilder
+    //   457: dup
+    //   458: invokespecial 456	java/lang/StringBuilder:<init>	()V
+    //   461: ldc_w 571
+    //   464: invokevirtual 462	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: aload 8
+    //   469: invokevirtual 574	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   472: invokevirtual 466	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   475: invokestatic 468	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   478: aload_0
+    //   479: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   482: ifnull -142 -> 340
+    //   485: aload_0
+    //   486: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   489: aload 7
+    //   491: invokeinterface 557 2 0
+    //   496: goto -156 -> 340
+    //   499: astore 8
+    //   501: aload 6
+    //   503: astore 7
+    //   505: aload 8
+    //   507: astore 6
+    //   509: aload_0
+    //   510: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   513: ifnull +14 -> 527
+    //   516: aload_0
+    //   517: getfield 92	bnky:jdField_a_of_type_Bnjz	Lbnjz;
+    //   520: aload 7
+    //   522: invokeinterface 557 2 0
+    //   527: aload 6
+    //   529: athrow
+    //   530: astore 6
+    //   532: goto -23 -> 509
+    //   535: astore 8
+    //   537: aload 6
+    //   539: astore 7
+    //   541: goto -105 -> 436
+    //   544: astore 8
+    //   546: goto -160 -> 386
+    //   549: aconst_null
+    //   550: astore 6
+    //   552: goto -239 -> 313
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	266	0	this	bnky
-    //   0	266	1	paramString	String
-    //   0	266	2	paramDownloadResult	DownloadResult
-    //   21	11	3	localIterator	Iterator
-    //   40	205	4	localbnla	bnla
-    //   53	185	5	localbnkz	bnkz
-    //   73	38	6	localFile	java.io.File
+    //   0	555	0	this	bnky
+    //   238	39	1	f1	float
+    //   127	243	2	l1	long
+    //   343	25	4	l2	long
+    //   130	398	6	localObject1	Object
+    //   530	8	6	localObject2	Object
+    //   550	1	6	localObject3	Object
+    //   107	433	7	localObject4	Object
+    //   104	206	8	localBitmap	android.graphics.Bitmap
+    //   381	24	8	localException1	java.lang.Exception
+    //   434	34	8	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   499	7	8	localObject5	Object
+    //   535	1	8	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   544	1	8	localException2	java.lang.Exception
+    //   144	153	9	localObject6	Object
+    //   180	122	10	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   85	104	176	java/lang/OutOfMemoryError
-    //   85	104	192	finally
-    //   110	120	192	finally
-    //   122	124	192	finally
-    //   179	189	192	finally
-    //   193	195	192	finally
-    //   200	204	192	finally
-    //   85	104	197	java/lang/Exception
-    //   110	120	258	java/lang/Exception
-    //   110	120	262	java/lang/OutOfMemoryError
+    //   132	146	381	java/lang/Exception
+    //   150	171	381	java/lang/Exception
+    //   175	182	381	java/lang/Exception
+    //   186	202	381	java/lang/Exception
+    //   206	216	381	java/lang/Exception
+    //   225	239	381	java/lang/Exception
+    //   243	252	381	java/lang/Exception
+    //   256	265	381	java/lang/Exception
+    //   269	283	381	java/lang/Exception
+    //   287	309	381	java/lang/Exception
+    //   132	146	434	java/lang/OutOfMemoryError
+    //   150	171	434	java/lang/OutOfMemoryError
+    //   175	182	434	java/lang/OutOfMemoryError
+    //   186	202	434	java/lang/OutOfMemoryError
+    //   206	216	434	java/lang/OutOfMemoryError
+    //   225	239	434	java/lang/OutOfMemoryError
+    //   243	252	434	java/lang/OutOfMemoryError
+    //   256	265	434	java/lang/OutOfMemoryError
+    //   269	283	434	java/lang/OutOfMemoryError
+    //   287	309	434	java/lang/OutOfMemoryError
+    //   132	146	499	finally
+    //   150	171	499	finally
+    //   175	182	499	finally
+    //   186	202	499	finally
+    //   206	216	499	finally
+    //   225	239	499	finally
+    //   243	252	499	finally
+    //   256	265	499	finally
+    //   269	283	499	finally
+    //   287	309	499	finally
+    //   440	446	499	finally
+    //   450	478	499	finally
+    //   317	322	530	finally
+    //   390	396	530	finally
+    //   400	413	530	finally
+    //   317	322	535	java/lang/OutOfMemoryError
+    //   317	322	544	java/lang/Exception
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_f_of_type_Int -= 1;
+    if (this.jdField_a_of_type_Bnjz != null) {
+      this.jdField_a_of_type_Bnjz.a();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Bnjz != null) {
+      this.jdField_a_of_type_Bnjz.a();
+    }
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_f_of_type_Int = 0;
+    if (this.jdField_a_of_type_Bnjz != null) {
+      this.jdField_a_of_type_Bnjz.a();
+    }
+  }
+  
+  public void i()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Bnjz != null) {
+      this.jdField_a_of_type_Bnjz.a();
+    }
   }
 }
 

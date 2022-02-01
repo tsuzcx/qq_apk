@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
-
-public class rax
-  implements View.OnClickListener
+class rax
+  extends rai
 {
-  public rax(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  rax(rau paramrau) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
-    ReadInJoyDeliverVideoActivity.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return -15550475;
   }
 }
 

@@ -1,11 +1,6 @@
-class muj
+public abstract interface muj
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  long b = 0L;
-  long c = this.jdField_a_of_type_Muh.jdField_a_of_type_Int;
-  
-  muj(muh parammuh) {}
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

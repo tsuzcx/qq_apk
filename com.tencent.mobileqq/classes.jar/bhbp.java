@@ -1,43 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class bhbp
-  implements azrg
+  extends Handler
 {
-  protected WeakReference<TroopPicEffectsEditActivity> a;
+  public bhbp(CircleProgressBar paramCircleProgressBar) {}
   
-  public bhbp(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
-  }
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
-  
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
-  {
-    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
-    if (localTroopPicEffectsEditActivity == null) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    localTroopPicEffectsEditActivity.c();
-    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
-    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
-    localIntent.putExtra("uintype", 1);
-    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
-    localIntent.putExtra("isFromTroopEffectPic", true);
-    localTroopPicEffectsEditActivity.startActivity(agej.a(localIntent, new int[] { 1 }));
-    localTroopPicEffectsEditActivity.finish();
-    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramazrh.a, new bhbq(this, localTroopPicEffectsEditActivity));
+    do
+    {
+      return;
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 

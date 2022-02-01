@@ -1,39 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class airo
-  extends NativeGifImage
+class airo
+  extends amsu
 {
-  public airo(File paramFile, boolean paramBoolean)
-  {
-    super(paramFile, paramBoolean);
-  }
+  airo(airj paramairj) {}
   
-  public int a()
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
-  }
-  
-  public Bitmap a()
-  {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
-  }
-  
-  public int b()
-  {
-    return this.mMetaData[FRAME_COUNT_INDEX];
-  }
-  
-  public int c()
-  {
-    return this.mCurrentFrameIndex;
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      airj.a(this.a, true);
+      airj.a(this.a);
+    }
   }
 }
 

@@ -1,13 +1,10 @@
-import android.content.Context;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class bnwy
-  extends bnhx<QzoneHuangzuanVipIconShow, Context>
+  implements DialogInterface.OnClickListener
 {
-  protected QzoneHuangzuanVipIconShow a(Context paramContext)
-  {
-    return new QzoneHuangzuanVipIconShow(paramContext);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

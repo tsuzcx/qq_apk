@@ -1,34 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qep
-  extends pfh
+public class qep
+  implements ViewBase.OnClickListener
 {
-  qep(qek paramqek) {}
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private slt jdField_a_of_type_Slt;
   
-  public void h(int paramInt)
+  public qep(ArticleInfo paramArticleInfo, slt paramslt)
   {
-    boolean bool;
-    if (paramInt < 3)
-    {
-      bool = true;
-      QLog.d("RvPolymericContainer", 1, "visibility changed, visible :  " + bool);
-      if (!bool) {
-        break label61;
-      }
-      qek.c(this.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Slt = paramslt;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = this.jdField_a_of_type_Slt.a().a();
+    if (paramViewBase != null) {
+      paramViewBase.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
     }
-    for (;;)
-    {
-      if (paramInt == 5) {
-        pfd.a().b(this);
-      }
-      return;
-      bool = false;
-      break;
-      label61:
-      if (qek.a(this.a) != null) {
-        qek.a(this.a).b();
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
     }
   }
 }

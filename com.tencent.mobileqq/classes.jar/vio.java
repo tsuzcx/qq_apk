@@ -1,13 +1,10 @@
-public class vio
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
+
+public abstract interface vio
 {
-  public int a;
-  public boolean a;
-  
-  private vio()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = vim.jdField_a_of_type_Int;
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 

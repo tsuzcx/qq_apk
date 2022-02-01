@@ -1,11 +1,11 @@
 package com.tencent.open.agent.report;
 
-import bjqh;
+import bhvw;
 
 public class ReportCenter$4
   implements Runnable
 {
-  public ReportCenter$4(bjqh parambjqh, String paramString) {}
+  public ReportCenter$4(bhvw parambhvw, String paramString) {}
   
   /* Error */
   public void run()
@@ -16,17 +16,17 @@ public class ReportCenter$4
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjqh;
-    //   8: invokevirtual 32	bjqh:a	()Landroid/os/Bundle;
+    //   5: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbhvw;
+    //   8: invokevirtual 32	bhvw:a	()Landroid/os/Bundle;
     //   11: astore 6
     //   13: aload_0
     //   14: monitorexit
-    //   15: invokestatic 37	bjjo:a	()Lbjjo;
-    //   18: invokevirtual 40	bjjo:a	()Landroid/content/Context;
+    //   15: invokestatic 37	bhpc:a	()Lbhpc;
+    //   18: invokevirtual 40	bhpc:a	()Landroid/content/Context;
     //   21: aconst_null
-    //   22: invokestatic 45	bjvf:a	(Landroid/content/Context;Ljava/lang/String;)Lbjvf;
+    //   22: invokestatic 45	biar:a	(Landroid/content/Context;Ljava/lang/String;)Lbiar;
     //   25: ldc 47
-    //   27: invokevirtual 50	bjvf:a	(Ljava/lang/String;)I
+    //   27: invokevirtual 50	biar:a	(Ljava/lang/String;)I
     //   30: istore_1
     //   31: iload_1
     //   32: ifne +267 -> 299
@@ -111,27 +111,27 @@ public class ReportCenter$4
     //   213: iload 5
     //   215: sipush 200
     //   218: if_icmpne +13 -> 231
-    //   221: invokestatic 161	bjqj:a	()Lbjqj;
+    //   221: invokestatic 161	bhvy:a	()Lbhvy;
     //   224: ldc 163
-    //   226: invokevirtual 165	bjqj:a	(Ljava/lang/String;)V
+    //   226: invokevirtual 165	bhvy:a	(Ljava/lang/String;)V
     //   229: iconst_1
     //   230: istore_2
     //   231: iload_2
     //   232: ifne +18 -> 250
-    //   235: invokestatic 161	bjqj:a	()Lbjqj;
+    //   235: invokestatic 161	bhvy:a	()Lbhvy;
     //   238: ldc 163
     //   240: aload_0
-    //   241: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjqh;
-    //   244: getfield 168	bjqh:a	Ljava/util/ArrayList;
-    //   247: invokevirtual 171	bjqj:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   241: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbhvw;
+    //   244: getfield 168	bhvw:a	Ljava/util/ArrayList;
+    //   247: invokevirtual 171	bhvy:a	(Ljava/lang/String;Ljava/util/List;)V
     //   250: aload_0
-    //   251: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjqh;
+    //   251: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbhvw;
     //   254: astore 6
     //   256: aload 6
     //   258: monitorenter
     //   259: aload_0
-    //   260: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjqh;
-    //   263: getfield 168	bjqh:a	Ljava/util/ArrayList;
+    //   260: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbhvw;
+    //   263: getfield 168	bhvw:a	Ljava/util/ArrayList;
     //   266: invokevirtual 176	java/util/ArrayList:clear	()V
     //   269: aload 6
     //   271: monitorexit

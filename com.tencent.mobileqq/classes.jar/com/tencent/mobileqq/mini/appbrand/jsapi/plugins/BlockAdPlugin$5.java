@@ -29,7 +29,9 @@ class BlockAdPlugin$5
     }
     for (boolean bool = ((GameActivity)this.this$0.jsPluginEngine.activityContext).updateBlockAdPosition(this.val$replaceLeft, this.val$replaceTop, this.val$compId);; bool = false)
     {
-      if (bool) {}
+      if (bool) {
+        ((BlockAdView)localObject).startBlockAnimation();
+      }
       for (;;)
       {
         try

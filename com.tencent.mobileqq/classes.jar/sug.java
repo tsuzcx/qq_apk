@@ -1,138 +1,78 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.widget.AbsListView;
 
 public class sug
+  implements sth, stm
 {
-  public static final String a;
-  int a;
-  public List<byte[]> a;
-  public sui a;
-  public sus<Bitmap> a;
-  int jdField_b_of_type_Int = 0;
-  final List<SoftReference<Bitmap>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private static boolean jdField_a_of_type_Boolean;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private pup jdField_a_of_type_Pup = new suh(this);
   
-  static
+  public int a(BaseData paramBaseData)
   {
-    jdField_a_of_type_JavaLangString = "zimage." + sug.class.getSimpleName();
+    return 16;
   }
   
-  sug(int paramInt)
+  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-    this.jdField_a_of_type_Sui = new sui(2097152);
-    this.jdField_a_of_type_Int = 0;
-    while (paramInt < 5)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new byte[16384]);
-      paramInt += 1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qle();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
     }
-    this.jdField_a_of_type_Sus = new suh(this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramBaseData.b;
+    }
+    paramViewGroup = (ProteusBookData)paramBaseData;
+    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramViewGroup.a);
+    paramViewGroup = localContainer;
+    if (localContainer == null) {
+      paramViewGroup = new View(paramContext);
+    }
+    return new sui(paramViewGroup, paramBaseData);
   }
   
-  public Bitmap a(BitmapFactory.Options paramOptions)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
   {
-    for (;;)
+    return paramBaseData.r == 18;
+  }
+  
+  public void b()
+  {
+    if (jdField_a_of_type_Boolean)
     {
-      int i;
-      try
-      {
-        this.jdField_b_of_type_Int += 1;
-        ArrayList localArrayList = new ArrayList();
-        List localList = this.jdField_b_of_type_JavaUtilList;
-        i = 0;
-        try
-        {
-          if (i < this.jdField_b_of_type_JavaUtilList.size())
-          {
-            localBitmap = (Bitmap)((SoftReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-            if (localBitmap != null)
-            {
-              if (suv.a(localBitmap, paramOptions))
-              {
-                localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-                str = "cache";
-                if (!localArrayList.isEmpty()) {
-                  this.jdField_b_of_type_JavaUtilList.removeAll(localArrayList);
-                }
-                if (localBitmap != null) {
-                  this.jdField_a_of_type_Int += 1;
-                }
-                if (QLog.isColorLevel()) {
-                  suv.a(jdField_a_of_type_JavaLangString, "getReuseableBitmap found:" + str + " picSize:" + paramOptions.outWidth + "x" + paramOptions.outHeight + " bitmap:" + localBitmap + " state:" + toString());
-                }
-                return localBitmap;
-              }
-            }
-            else {
-              localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-            }
-          }
-        }
-        finally {}
-        String str = "notFound";
+      jdField_a_of_type_Boolean = false;
+      pum localpum = pkm.a().a();
+      if (localpum != null) {
+        localpum.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Pup, false);
       }
-      finally {}
-      Bitmap localBitmap = null;
-      continue;
-      i += 1;
     }
   }
   
-  suk a(suo paramsuo)
-  {
-    if (paramsuo == null) {}
-    do
-    {
-      return null;
-      paramsuo = bhld.a(paramsuo.a());
-    } while ((paramsuo == null) || (!paramsuo.a()));
-    return paramsuo.a();
-  }
+  public void c() {}
   
-  public void a()
+  public void d()
   {
-    try
-    {
-      this.jdField_a_of_type_Sui.a();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    pum localpum = pkm.a().a();
+    if (localpum != null) {
+      localpum.a(this.jdField_a_of_type_Pup);
     }
   }
   
-  public void a(suo paramsuo, suk paramsuk)
-  {
-    if (paramsuo == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        bhld.a(paramsuo.a(), paramsuk);
-      }
-      finally {}
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("total:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" reuse:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public void e() {}
 }
 
 

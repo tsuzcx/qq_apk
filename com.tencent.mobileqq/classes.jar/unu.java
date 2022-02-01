@@ -1,34 +1,37 @@
-import android.text.TextUtils;
-import com.google.gson.Gson;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class unu
+@SuppressLint({"HandlerLeak"})
+class unu
+  extends Handler
 {
-  private ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
+  WeakReference<unt> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static unu a()
+  unu(unt paramunt1, unt paramunt2)
   {
-    return unw.a();
+    uya.b("WSFallKeyPicMonitor", "init DownloadHandler");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramunt2);
   }
   
-  public String a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      return (String)this.a.get(paramString);
+    super.handleMessage(paramMessage);
+    uya.b("WSFallKeyPicMonitor", "handleMessage to download");
+    if (paramMessage.what == 1)
+    {
+      if (unt.a(this.jdField_a_of_type_Unt) != 4) {
+        break label46;
+      }
+      unt.a(this.jdField_a_of_type_Unt);
     }
-    return "";
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(String paramString, Map<String, String> paramMap)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramMap != null)) {
-      this.a.put(paramString, new Gson().toJson(paramMap));
+    for (;;)
+    {
+      this.jdField_a_of_type_Unt.b();
+      return;
+      label46:
+      unt.b(this.jdField_a_of_type_Unt);
     }
   }
 }

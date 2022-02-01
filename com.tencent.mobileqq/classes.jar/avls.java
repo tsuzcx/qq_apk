@@ -1,76 +1,72 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.protocol.GetArkTailReq;
-import com.tencent.mobileqq.gamecenter.protocol.ReportTypeReq;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.1;
+import com.tencent.qphone.base.util.QLog;
 
-public class avls
+public abstract class avls
 {
-  private static volatile avls jdField_a_of_type_Avls;
-  private Map<MessageRecord, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public int a;
+  avlr a;
+  public avlt a;
+  public avlu a;
+  public volatile boolean a;
+  public int b = 1000 / this.jdField_a_of_type_Int;
   
-  public static avls a()
+  public avls()
   {
-    if (jdField_a_of_type_Avls == null) {}
+    this.jdField_a_of_type_Int = 8;
+    g();
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = (1000 / paramInt);
+  }
+  
+  public void a(avlr paramavlr)
+  {
+    this.jdField_a_of_type_Avlr = paramavlr;
+  }
+  
+  public void a(avlt paramavlt)
+  {
+    this.jdField_a_of_type_Avlt = paramavlt;
+  }
+  
+  public void a(avlu paramavlu)
+  {
+    this.jdField_a_of_type_Avlu = paramavlu;
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    f();
+    if (!this.jdField_a_of_type_Boolean) {}
     try
     {
-      if (jdField_a_of_type_Avls == null) {
-        jdField_a_of_type_Avls = new avls();
-      }
-      return jdField_a_of_type_Avls;
-    }
-    finally {}
-  }
-  
-  public void a(long paramLong, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
+      new Thread(new MagicfaceDecoder.1(this)).start();
       return;
     }
-    Object localObject = (Long)this.jdField_a_of_type_JavaUtilMap.get(paramMessageRecord);
-    if (localObject == null) {}
-    for (long l1 = 0L;; l1 = ((Long)localObject).longValue())
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      long l2 = NetConnInfoCenter.getServerTimeMillis();
-      if (l2 - Long.valueOf(l1).longValue() <= 30000L) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(paramMessageRecord, Long.valueOf(l2));
-      localObject = alil.a();
-      if (localObject == null) {
-        break;
-      }
-      GetArkTailReq localGetArkTailReq = new GetArkTailReq();
-      localGetArkTailReq.appid = (paramLong + "");
-      localGetArkTailReq.tt = 1;
-      localGetArkTailReq.scene_id = 1;
-      localGetArkTailReq.qq_version = bhlo.c();
-      akxq.a(localGetArkTailReq, new avlu(this, paramMessageRecord, new WeakReference(localObject)));
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagicfaceDecoder", 2, "startDecoder err:" + localOutOfMemoryError.getMessage());
     }
   }
   
-  public void a(long paramLong, BusinessObserver paramBusinessObserver)
+  public void e()
   {
-    GetArkTailReq localGetArkTailReq = new GetArkTailReq();
-    localGetArkTailReq.appid = (paramLong + "");
-    localGetArkTailReq.tt = 1;
-    localGetArkTailReq.scene_id = 3;
-    localGetArkTailReq.qq_version = bhlo.c();
-    akxq.a(localGetArkTailReq, paramBusinessObserver);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  protected void f() {}
+  
+  protected void g()
   {
-    ReportTypeReq localReportTypeReq = new ReportTypeReq();
-    localReportTypeReq.appid = paramString;
-    localReportTypeReq.type = paramInt1;
-    localReportTypeReq.sub_type = paramInt2;
-    localReportTypeReq.tt = 1;
-    akxq.a(localReportTypeReq, new avlt(this));
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

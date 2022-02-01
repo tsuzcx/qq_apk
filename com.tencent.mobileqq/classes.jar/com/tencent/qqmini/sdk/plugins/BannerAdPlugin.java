@@ -38,7 +38,6 @@ import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.manager.BannerAdViolationManager;
 import com.tencent.qqmini.sdk.manager.LoginManager;
 import com.tencent.qqmini.sdk.utils.AdUtil;
 import com.tencent.qqmini.sdk.utils.BannerAdPosInfo;
@@ -175,7 +174,6 @@ public class BannerAdPlugin
         if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
         {
           this.mBannerAdContainer.setVisibility(0);
-          BannerAdViolationManager.scheduleViolationDetectTask(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
           bool = true;
         }
         else
@@ -192,7 +190,6 @@ public class BannerAdPlugin
             if ((this.mHasNewAd) && (this.mBannerAdPosInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
               this.mBannerAdView.onExposure();
             }
-            BannerAdViolationManager.scheduleViolationDetectTask(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
             this.mHasNewAd = false;
             bool = true;
           }
@@ -519,7 +516,7 @@ public class BannerAdPlugin
     //   5: getfield 91	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdView	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBannerAdView;
     //   8: ifnonnull +17 -> 25
     //   11: ldc 29
-    //   13: ldc_w 586
+    //   13: ldc_w 576
     //   16: invokestatic 203	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: iload_2
     //   20: istore_1
@@ -541,7 +538,7 @@ public class BannerAdPlugin
     //   44: istore_1
     //   45: aload_0
     //   46: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   49: invokevirtual 589	android/widget/FrameLayout:getVisibility	()I
+    //   49: invokevirtual 579	android/widget/FrameLayout:getVisibility	()I
     //   52: ifne -31 -> 21
     //   55: aload_0
     //   56: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
@@ -699,7 +696,7 @@ public class BannerAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin
  * JD-Core Version:    0.7.0.1
  */

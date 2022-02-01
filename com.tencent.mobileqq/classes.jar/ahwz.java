@@ -1,17 +1,30 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ahwz
-  implements ahcc
+class ahwz
+  implements Animator.AnimatorListener
 {
-  public ahwz(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  ahwz(ahwx paramahwx) {}
   
-  public void onUpdate(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    this.a.a.a = true;
+    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimator.putExtra("from_key", this.a.a.a());
+    paramAnimator.putExtra("fromType", 13);
+    this.a.a.startActivity(paramAnimator);
+    this.a.a.overridePendingTransition(0, 0);
+    bfta.a(false);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

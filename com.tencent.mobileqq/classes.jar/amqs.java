@@ -1,21 +1,24 @@
-import android.graphics.Bitmap;
-
-class amqs
-  extends aojs
+public class amqs
 {
-  amqs(amqr paramamqr) {}
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "0";
+  public String d = "";
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  amqs()
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aefd
-  implements bbst
+class aefd
+  implements DialogInterface.OnClickListener
 {
-  public aefd(ChatSettingActivity paramChatSettingActivity) {}
+  aefd(aeey paramaeey) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.g != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.g);
-    }
+    this.a.a.show();
+    this.a.b = false;
+    aeey.c(this.a);
   }
 }
 

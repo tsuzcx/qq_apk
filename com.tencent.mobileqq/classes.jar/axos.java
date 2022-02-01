@@ -1,33 +1,56 @@
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class axos
-  implements anui
 {
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public Rect a;
+  public String a;
+  public List<Point> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d = -2147483648;
+  public boolean d;
+  public int e = -2147483648;
+  public int f = 2147483647;
+  public int g = 2147483647;
+  public int h = -1;
+  public int i = -1;
+  public int j = -1;
+  public int k = -1;
+  public int l = -1;
+  public int m = -1;
+  public int n = -1;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public axos(atvv paramatvv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_JavaLangString = paramatvv.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramatvv.a();
+    this.h = paramatvv.b;
+    this.l = paramatvv.jdField_a_of_type_Int;
+    if (((atvw)paramatvv.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int > ((atvw)paramatvv.jdField_a_of_type_JavaUtilArrayList.get(1)).jdField_a_of_type_Int) {
+      this.c = true;
     }
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
-      }
-      break;
-    }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    Map localMap = (Map)paramObject[0];
-    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
+  }
+  
+  public int a()
+  {
+    return ((Point)this.jdField_a_of_type_JavaUtilList.get(0)).x;
+  }
+  
+  public int b()
+  {
+    return ((Point)this.jdField_a_of_type_JavaUtilList.get(0)).y;
   }
 }
 

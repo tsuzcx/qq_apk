@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nqj
-  implements Animation.AnimationListener
+  implements zop
 {
-  public nqj(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
+  public nqj(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("state");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

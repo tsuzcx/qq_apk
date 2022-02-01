@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
-import adak;
+import abwp;
+import abwz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import asam;
-import begp;
-import bhlg;
+import aquj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -18,6 +16,8 @@ import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentMsgBoxItem
@@ -50,12 +50,12 @@ public class RecentMsgBoxItem
     {
       return;
       localObject1 = null;
-      Object localObject2 = paramQQAppInterface.a();
-      adab localadab = paramQQAppInterface.a();
+      Object localObject2 = paramQQAppInterface.getMessageFacade();
+      abwp localabwp = paramQQAppInterface.getConversationFacade();
       if (localObject2 != null)
       {
-        localObject2 = ((QQMessageFacade)localObject2).a(getRecentUserUin(), getRecentUserType());
-        localObject3 = paramQQAppInterface.a().a(((QQMessageFacade.Message)localObject2).senderuin, ((QQMessageFacade.Message)localObject2).istroop, ((QQMessageFacade.Message)localObject2).uniseq);
+        localObject2 = ((QQMessageFacade)localObject2).getLastMessage(getRecentUserUin(), getRecentUserType());
+        localObject3 = paramQQAppInterface.getMessageFacade().getMsgItemByUniseq(((QQMessageFacade.Message)localObject2).senderuin, ((QQMessageFacade.Message)localObject2).istroop, ((QQMessageFacade.Message)localObject2).uniseq);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -67,24 +67,24 @@ public class RecentMsgBoxItem
         break label513;
       }
       this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
-      if (localadab == null) {
+      if (localabwp == null) {
         break;
       }
-      this.mUnreadNum = localadab.a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-      if ((localObject1 != null) && (adak.d((MessageRecord)localObject1))) {
+      this.mUnreadNum = localabwp.a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+      if ((localObject1 != null) && (abwz.d((MessageRecord)localObject1))) {
         this.mUnreadFlag = 3;
       }
       localObject3 = getMsgSummaryTemp();
       this.mHasFlowerMsg = false;
       if (localObject1 != null)
       {
-        if (!asam.a(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).senderuin, ((QQMessageFacade.Message)localObject1).istroop)) {
+        if (!aquj.a(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).senderuin, ((QQMessageFacade.Message)localObject1).istroop)) {
           break label526;
         }
-        this.mMsgExtroInfo = paramContext.getResources().getString(2131692883);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
-        if (localadab != null) {
-          ((MsgSummary)localObject3).strContent = localadab.a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131692882), 0);
+        this.mMsgExtroInfo = paramContext.getResources().getString(2131692933);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
+        if (localabwp != null) {
+          ((MsgSummary)localObject3).strContent = localabwp.a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131692932), 0);
         }
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg_boxitem", 2, "boxUin" + getRecentUserUin() + ",boxType" + getRecentUserType() + ",HasUnreadRedPacketMsg");
@@ -93,10 +93,10 @@ public class RecentMsgBoxItem
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg_boxitem", 2, "boxUin" + getRecentUserUin() + ",boxType" + getRecentUserType() + ",unreadNum:" + this.mUnreadNum);
       }
-      localObject2 = bhlg.q(paramQQAppInterface, getRecentUserUin());
+      localObject2 = ContactUtils.getDateNickName(paramQQAppInterface, getRecentUserUin());
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = bhlg.b(paramQQAppInterface, getRecentUserUin(), false);
+        localObject1 = ContactUtils.getBuddyName(paramQQAppInterface, getRecentUserUin(), false);
       }
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -126,11 +126,11 @@ public class RecentMsgBoxItem
       this.mDisplayTime = 0L;
       break;
       label526:
-      if (asam.b(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).senderuin, ((QQMessageFacade.Message)localObject1).istroop))
+      if (aquj.b(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).senderuin, ((QQMessageFacade.Message)localObject1).istroop))
       {
         this.mHasFlowerMsg = true;
-        this.mMsgExtroInfo = paramContext.getResources().getString(2131693844);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
+        this.mMsgExtroInfo = paramContext.getResources().getString(2131693943);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
         if (!QLog.isColorLevel()) {
           break label273;
         }
@@ -163,7 +163,7 @@ public class RecentMsgBoxItem
           return;
           paramMsgSummary.bShowDraft = false;
           paramMsgSummary.mDraft = null;
-          paramQQAppInterface = paramQQAppInterface.a();
+          paramQQAppInterface = paramQQAppInterface.getMessageFacade();
         } while (paramQQAppInterface == null);
         paramQQAppInterface = paramQQAppInterface.getDraftSummaryInfo(getRecentUserUin(), getRecentUserType());
       } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
@@ -171,7 +171,7 @@ public class RecentMsgBoxItem
     } while (this.mDisplayTime > l);
     this.mDisplayTime = l;
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new begp(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new QQText(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)

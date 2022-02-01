@@ -1,78 +1,58 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
-class apls
-  implements aplq
+public class apls
+  implements aplr
 {
-  private IBinder a;
-  
-  apls(IBinder paramIBinder)
+  private void a(Context paramContext, String paramString)
   {
-    this.a = paramIBinder;
+    LaunchParam localLaunchParam = new LaunchParam();
+    localLaunchParam.scene = 1131;
+    MiniAppController.startAppByAppid(paramContext, paramString, "", "", localLaunchParam, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
+    }
   }
   
-  public void a(int paramInt)
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+    int i = 0;
+    if (paramColorNote.getServiceType() != 16842752) {
       return;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    String str = paramColorNote.getSubType();
+    paramColorNote = paramColorNote.getReserve();
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "openColorNoteMiniAppByAppInfo", 0) == 1) {
+      i = 1;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if ((paramColorNote != null) && (paramColorNote.length > 0) && (i != 0))
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      paramColorNote = MiniAppUtils.createFromBuffer(paramColorNote);
+      if ((paramColorNote != null) && (!TextUtils.isEmpty(paramColorNote.desc))) {
+        try
+        {
+          MiniAppController.launchMiniAppByAppInfo(null, paramColorNote, 1131);
+          return;
+        }
+        catch (Exception paramColorNote)
+        {
+          QLog.e("MiniAppLauncher_colorNote", 1, "MiniAppLauncher, launch exception: " + Log.getStackTraceString(paramColorNote));
+          a(paramContext, str);
+          return;
+        }
+      }
+      a(paramContext, str);
       return;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    a(paramContext, str);
   }
 }
 

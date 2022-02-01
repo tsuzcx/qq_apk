@@ -1,25 +1,28 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aetn
-  implements View.OnClickListener
+  extends bjmc
 {
-  public aetn(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aetn(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    CheckBox localCheckBox = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
+    if (this.a.c > 0)
     {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
       return;
     }
+    this.a.f.setVisibility(4);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 

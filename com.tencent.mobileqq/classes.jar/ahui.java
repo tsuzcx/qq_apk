@@ -1,15 +1,6 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-
 class ahui
-  extends agen
 {
-  public ViewGroup a;
-  public AnyScaleTypeImageView a;
-  public TextView b;
-  
-  ahui(ahue paramahue) {}
+  private static ahuf a = new ahuf(null);
 }
 
 

@@ -1,22 +1,17 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-class awtc
-  implements View.OnClickListener
+public class awtc
+  implements View.OnTouchListener
 {
-  awtc(awta paramawta) {}
+  public awtc(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      awsk.a(this.a.a, null);
-      bdll.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
-    }
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 

@@ -1,6 +1,20 @@
-public abstract interface lsj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController.5;
+import com.tencent.qphone.base.util.QLog;
+
+public class lsj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(lsh paramlsh, int paramInt1, int paramInt2);
+  public lsj(RandomController.5 param5) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
+    }
+    this.a.this$0.c = false;
+  }
 }
 
 

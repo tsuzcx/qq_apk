@@ -1,54 +1,60 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tavcut.exporter.ImageExporter.ImageExportCallback;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.tavsticker.utils.CollectionUtil;
+import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.21.1;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.21.2;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public abstract class bmid
-  extends Binder
-  implements bmic
+public class bmid
+  implements ImageExporter.ImageExportCallback
 {
-  public bmid()
+  public bmid(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public void onCancelled() {}
+  
+  public void onExportComplete()
   {
-    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
+    bmbx.b("AEEditorImageEditFragment", "images export complete");
+    AEEditorImageEditFragment.a(this.a, System.currentTimeMillis());
+    bmbx.b("AEEditorImageEditFragment", "perf: image export cost = " + (AEEditorImageEditFragment.a(this.a) - AEEditorImageEditFragment.b(this.a)) + "ms");
+    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.21.2(this));
   }
   
-  public static bmic a(IBinder paramIBinder)
+  public void onFailed(Collection<String> paramCollection)
   {
-    if (paramIBinder == null) {
-      return null;
+    bmbx.d("AEEditorImageEditFragment", "images export failed");
+    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.21.1(this, paramCollection));
+  }
+  
+  public void onImageExport(String paramString)
+  {
+    bmbx.b("AEEditorImageEditFragment", "image export, path = " + paramString);
+    if (AEEditorImageEditFragment.a(this.a) == null) {
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if ((localIInterface != null) && ((localIInterface instanceof bmic))) {
-      return (bmic)localIInterface;
-    }
-    return new bmie(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    Object localObject = AEEditorImageEditFragment.a(this.a).getMediaModels();
+    if (((List)localObject).get(AEEditorImageEditFragment.a(this.a).size()) != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
-      return true;
+      bmbg.a().a().jdField_c_of_type_JavaUtilHashMap.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a).size()), Integer.valueOf(((MediaModel)((List)localObject).get(AEEditorImageEditFragment.a(this.a).size())).getMediaEffectModel().getStickerModelList().size()));
+      localObject = ((MediaModel)((List)localObject).get(AEEditorImageEditFragment.a(this.a).size())).getMediaEffectModel().getStickerModelList();
+      int i = AEEditorImageEditFragment.a(this.a).size();
+      if (!CollectionUtil.isEmptyList((List)localObject)) {
+        this.a.a((List)localObject, i);
+      }
+      localObject = bmbg.a((String)AEEditorImageEditFragment.a(this.a).get(i));
+      bmbg.a().a().jdField_c_of_type_AndroidUtilSparseArray.put(i, localObject);
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    bmbc.a().b(AEEditorImageEditFragment.a(this.a).size());
+    AEEditorImageEditFragment.a(this.a).add(paramString);
   }
 }
 

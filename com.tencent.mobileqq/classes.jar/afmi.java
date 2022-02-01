@@ -1,74 +1,102 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-
-class afmi
-  extends atpa
+public class afmi
+  implements afme
 {
-  afmi(afmg paramafmg) {}
+  public static final afmf<afmi> a;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  static
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
-      }
-      if (((afmn)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
-    }
-    for (;;)
-    {
-      if (paramInt != -1) {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_Bhpc != null) {
-            this.a.jdField_a_of_type_Bhpc.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
-          }
-        }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
-      }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
-      return;
-      label232:
-      paramInt = -1;
+    jdField_a_of_type_Afmf = new afmj();
+  }
+  
+  public afmi() {}
+  
+  public afmi(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public afmi(afmc paramafmc)
+  {
+    paramafmc.a();
+    this.jdField_a_of_type_Float = paramafmc.a();
+    this.b = paramafmc.a();
+    this.c = paramafmc.a();
+    this.jdField_a_of_type_Long = paramafmc.a();
+  }
+  
+  public afmi(afmi paramafmi)
+  {
+    if (paramafmi != null) {
+      a(paramafmi.a(), paramafmi.b(), paramafmi.c(), 0L);
     }
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
+  public float a()
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.a();
-        return;
-      }
-    }
+    return this.jdField_a_of_type_Float;
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public long a()
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_Bhpc != null) {
-      this.a.jdField_a_of_type_Bhpc.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
-    }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.c = paramFloat3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(afmc paramafmc, int paramInt)
+  {
+    paramafmc.a(1);
+    paramafmc.a(this.jdField_a_of_type_Float);
+    paramafmc.a(this.b);
+    paramafmc.a(this.c);
+    paramafmc.a(this.jdField_a_of_type_Long);
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_a_of_type_Float *= paramFloat;
+    this.b *= paramFloat;
+    this.c *= paramFloat;
   }
 }
 

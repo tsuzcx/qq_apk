@@ -1,40 +1,44 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class bfmo
-  implements aasd
+  implements BusinessObserver
 {
-  bfmo(bfmn parambfmn, String paramString) {}
+  bfmo(bfmn parambfmn) {}
   
-  public void callback(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l = paramBundle.getLong("lastMsgTime");
-    paramBundle = paramBundle.getString("lastMsgContent");
-    try
+    if (paramBoolean)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("lastMsgTime", l);
-      localJSONObject.put("lastMsgContent", paramBundle);
-      if (!TextUtils.isEmpty(paramBundle))
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle == null) {}
+    }
+    while (!QLog.isColorLevel()) {
+      try
       {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("errorMsg", "");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Bfmn.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
+        localRemoteLogRsp.mergeFrom(paramBundle);
+        if (localRemoteLogRsp.i32_ret.has())
+        {
+          paramInt = localRemoteLogRsp.i32_ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
+          }
+        }
         return;
-        localJSONObject.put("ret", -1);
-        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
       }
-      return;
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
+        return;
+      }
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
   }
 }
 

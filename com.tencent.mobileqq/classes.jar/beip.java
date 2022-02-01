@@ -1,50 +1,274 @@
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager.1;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class beip
 {
-  public static final String a = String.valueOf(153);
-  public static final String b = String.valueOf(153);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
+  public beip(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    if (paramInt2 < 0) {
-      paramInt2 = bhnv.a(null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    int i = j;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      if (!TextUtils.isEmpty(this.c)) {
+        break label71;
+      }
+      i = j;
     }
+    while (i != 0)
+    {
+      throw new IllegalArgumentException("args error");
+      label71:
+      i = j;
+      if (a(this.jdField_a_of_type_JavaLangString)) {
+        i = 0;
+      }
+    }
+  }
+  
+  private static File a()
+  {
+    return new File(AppConstants.SDCARD_PATH + "homework_troop");
+  }
+  
+  private void a(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    ThreadManager.postImmediately(new BeginnerGuideDownloadManager.1(this, paramHandler, paramInt, paramBoolean), null, true);
+    paramHandler.sendEmptyMessage(1111);
+  }
+  
+  private void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    label162:
+    label193:
     for (;;)
     {
-      int i = paramInt2;
-      if (paramInt2 <= 0) {
-        i = 10;
-      }
-      paramAppRuntime = paramString4;
+      TroopManager localTroopManager;
       try
       {
-        if (TextUtils.isEmpty(paramString4)) {
-          paramAppRuntime = "1";
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig");
         }
-        VasWebviewUtil.reportVasStatus(paramString1, paramString2, paramString3, i, paramInt1, paramInt3, Integer.parseInt(paramAppRuntime), paramString5, "");
-        if ((QLog.isColorLevel()) && (paramInt3 < 0))
+        localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        paramString = beir.a(paramString, "config.cfg");
+        if (!paramBoolean) {
+          break label162;
+        }
+        switch (paramInt)
         {
-          paramString4 = new StringBuilder();
-          paramString4.append(paramString1).append("|step:");
-          paramString4.append(paramInt1).append("|from:");
-          paramString4.append(paramString2).append("|resultCode:");
-          paramString4.append(paramInt3).append("|id:");
-          paramString4.append(paramString3).append("|version:");
-          paramString4.append(paramAppRuntime);
-          QLog.i("ThemeReporter", 2, "ThemeReporterreportTheme Error data::" + paramString4.toString());
+        case 5: 
+        case 6: 
+          if (QLog.isColorLevel()) {
+            QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Publish not match");
+          }
+          label86:
+          return;
         }
-        return;
       }
-      catch (Exception paramAppRuntime)
+      finally {}
+      localTroopManager.a.a = paramString;
+      continue;
+      localTroopManager.a.b = paramString;
+      continue;
+      for (;;)
       {
-        QLog.e("ThemeReporter", 1, "ThemeReporter reportTheme Exception:" + paramAppRuntime.getMessage());
-        return;
+        if (!QLog.isColorLevel()) {
+          break label193;
+        }
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Submit not match");
+        break label86;
+        localTroopManager.a.c = paramString;
+        break label86;
+        localTroopManager.a.d = paramString;
+        break label86;
+        break;
+        switch (paramInt)
+        {
+        }
       }
     }
+  }
+  
+  private boolean a(String paramString)
+  {
+    try
+    {
+      new URL(paramString);
+      return true;
+    }
+    catch (MalformedURLException paramString) {}
+    return false;
+  }
+  
+  private static String b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    try
+    {
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      paramString = str1;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        paramString = new File(paramString);
+        if (!paramString.exists()) {
+          break;
+        }
+        try
+        {
+          String str2 = bjkf.a(paramString);
+          paramString = str2;
+          if (str2 == null) {
+            paramString = "";
+          }
+        }
+        catch (IOException paramString)
+        {
+          paramString = "";
+        }
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = "";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, new Object[] { "BeginnerGuideDownloadManager$calcMD5", " md5:" + paramString + ", cost:" + (System.currentTimeMillis() - l) });
+    }
+    return paramString;
+  }
+  
+  private boolean b(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload");
+    }
+    File localFile1 = a();
+    File localFile2 = new File(localFile1, this.b);
+    Object localObject = this.b.substring(0, this.b.lastIndexOf("."));
+    localFile1 = new File(localFile1, (String)localObject + "_src");
+    if ((!localFile1.exists()) && (!localFile1.mkdirs()))
+    {
+      paramHandler.sendEmptyMessage(1120);
+      return false;
+    }
+    localObject = new ArrayList();
+    String[] arrayOfString = localFile1.list();
+    String str = localFile1.getAbsolutePath();
+    Message localMessage = Message.obtain();
+    localMessage.what = 1110;
+    localMessage.arg1 = paramInt;
+    localMessage.obj = str;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload begin unzip");
+      }
+      ((ArrayList)localObject).addAll(npo.a(localFile2));
+      if (Arrays.asList(arrayOfString).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file already unzip");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      npo.b(localFile2.getAbsolutePath(), localFile1.getAbsolutePath());
+      if (Arrays.asList(localFile1.list()).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip success");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      throw new Exception("trigger catch");
+    }
+    catch (Exception localException)
+    {
+      paramHandler.sendEmptyMessage(1120);
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip error ", localException);
+      }
+      paramHandler = ((ArrayList)localObject).iterator();
+      while (paramHandler.hasNext())
+      {
+        File localFile3 = new File(localFile1, (String)paramHandler.next());
+        if ((localFile3.exists()) && (!localFile3.delete()) && (QLog.isColorLevel())) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip del error");
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload");
+    }
+    File localFile = a();
+    if ((!localFile.exists()) && (!localFile.mkdirs())) {
+      return false;
+    }
+    localFile = new File(localFile, this.b);
+    if ((localFile.exists()) && (this.c.equalsIgnoreCase(b(localFile.getAbsolutePath()))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload: file exists, no need to start download again");
+      }
+      a(paramHandler, paramInt, paramBoolean);
+      return true;
+    }
+    INetEngine localINetEngine = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mNeedIpConnect = true;
+    localHttpNetReq.mNeedNotReferer = true;
+    localHttpNetReq.mCallback = new beiq(this, paramHandler, paramInt, paramBoolean);
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mReqUrl = this.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mOutPath = localFile.getAbsolutePath();
+    localHttpNetReq.mPrioty = 0;
+    localINetEngine.sendReq(localHttpNetReq);
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload sendReq success");
+    }
+    return true;
   }
 }
 

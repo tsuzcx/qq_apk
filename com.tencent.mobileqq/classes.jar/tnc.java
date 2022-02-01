@@ -1,48 +1,121 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
-import com.tencent.widget.AbsListView;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class tnc
-  extends tna
+  extends Handler
 {
-  public int a(BaseData paramBaseData)
-  {
-    if ((paramBaseData instanceof ProteusInnerData)) {
-      return tpp.a((ProteusInnerData)paramBaseData);
-    }
-    return 20;
-  }
+  private tnc(ViolaVideoView paramViolaVideoView) {}
   
-  protected spi a(View paramView, BaseData paramBaseData)
+  public void handleMessage(Message paramMessage)
   {
-    return new tnd(this, paramView, paramBaseData, this.a);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    Object localObject = null;
-    if (this.a != null) {
-      localObject = (Context)this.a.get();
+    switch (paramMessage.what)
+    {
     }
-    if ((!(localObject instanceof Activity)) || (((Activity)localObject).getWindow().getAttributes().softInputMode != 4)) {}
     do
     {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                        ViolaVideoView.a(this.a).sendEmptyMessageDelayed(0, 3000L);
+                        long l = ViolaVideoView.a(this.a);
+                        l = 3000L - (System.currentTimeMillis() - l);
+                        if (l > 0L)
+                        {
+                          ViolaVideoView.a(this.a).removeMessages(0);
+                          ViolaVideoView.a(this.a).sendEmptyMessageDelayed(0, l);
+                          return;
+                        }
+                      } while (!ViolaVideoView.a(this.a).d());
+                      ViolaVideoView.a(this.a, false);
+                      return;
+                      if (QLog.isColorLevel()) {
+                        QLog.d("ViolaVideoView", 2, "mUiHandler.postDelayed() innerChangePlayButton(MSG_SHOW_LOADING_BTN) mIsNeedShowLoading = " + ViolaVideoView.a(this.a));
+                      }
+                    } while (!ViolaVideoView.a(this.a));
+                    ViolaVideoView.a(this.a, 3, null);
+                    return;
+                  } while (ViolaVideoView.a(this.a).a() == null);
+                  ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843256));
+                  ViolaVideoView.a(this.a).clearAnimation();
+                  paramMessage = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+                  paramMessage.setDuration(500L);
+                  paramMessage.setRepeatCount(-1);
+                  paramMessage.setRepeatMode(1);
+                  paramMessage.setStartTime(-1L);
+                  paramMessage.setInterpolator(new LinearInterpolator());
+                  ViolaVideoView.a(this.a).startAnimation(paramMessage);
+                  ViolaVideoView.b(this.a).setVisibility(0);
+                  ViolaVideoView.b(this.a).setText("");
+                  return;
+                } while (ViolaVideoView.a(this.a).a() == null);
+                ViolaVideoView.a(this.a).clearAnimation();
+                ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843258));
+                ViolaVideoView.b(this.a).setVisibility(0);
+                ViolaVideoView.b(this.a).setText("");
+                return;
+              } while (ViolaVideoView.a(this.a).a() == null);
+              ViolaVideoView.a(this.a).clearAnimation();
+              ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843258));
+              ViolaVideoView.b(this.a).setVisibility(8);
+              ViolaVideoView.b(this.a).setText("");
+              return;
+            } while (ViolaVideoView.a(this.a).a() == null);
+            ViolaVideoView.a(this.a).clearAnimation();
+            ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843258));
+            ViolaVideoView.b(this.a).setVisibility(0);
+            ViolaVideoView.b(this.a).setText("");
+            return;
+          } while (ViolaVideoView.a(this.a).a() == null);
+          ViolaVideoView.a(this.a).clearAnimation();
+          ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843257));
+          ViolaVideoView.b(this.a).setText("");
+          return;
+        } while (ViolaVideoView.a(this.a).a() == null);
+        ViolaVideoView.a(this.a).clearAnimation();
+        ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843257));
+        ViolaVideoView.b(this.a).setVisibility(8);
+        ViolaVideoView.b(this.a).setText("");
+      } while ((ViolaVideoView.c(this.a).getVisibility() != 0) || (!NetworkUtil.isMobileNetWork(this.a.getContext())));
+      ViolaVideoView.a(this.a).setVisibility(0);
+      ViolaVideoView.c(this.a).setVisibility(8);
       return;
-      localObject = (InputMethodManager)((Context)localObject).getSystemService("input_method");
-    } while (localObject == null);
-    ((InputMethodManager)localObject).hideSoftInputFromWindow(paramAbsListView.getWindowToken(), 2);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return (paramBaseData != null) && (paramBaseData.r == 22);
+    } while (ViolaVideoView.a(this.a).a() == null);
+    ViolaVideoView.a(this.a).clearAnimation();
+    ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130848544));
+    ViolaVideoView.b(this.a).setVisibility(0);
+    ViolaVideoView.b(this.a).setVisibility(0);
+    TextView localTextView = ViolaVideoView.b(this.a);
+    if (paramMessage.obj != null) {}
+    for (paramMessage = paramMessage.obj.toString();; paramMessage = "")
+    {
+      localTextView.setText(paramMessage);
+      return;
+    }
   }
 }
 

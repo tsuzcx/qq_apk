@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-
-public abstract interface amoc
+class amoc
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  public int a;
+  public String a;
+  public String b;
+  
+  public amoc(amoa paramamoa, int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

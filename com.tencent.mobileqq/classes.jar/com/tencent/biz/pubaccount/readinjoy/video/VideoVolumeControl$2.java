@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import rxg;
-import rxh;
+import sek;
+import sel;
 
 public class VideoVolumeControl$2
   implements Runnable
 {
-  public VideoVolumeControl$2(rxg paramrxg) {}
+  public VideoVolumeControl$2(sek paramsek) {}
   
   public void run()
   {
-    rxh localrxh = rxg.a(this.this$0);
-    if (localrxh != null) {
-      ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(localrxh, 32);
+    sel localsel = sek.a(this.this$0);
+    if (localsel != null) {
+      ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(localsel, 32);
     }
   }
 }

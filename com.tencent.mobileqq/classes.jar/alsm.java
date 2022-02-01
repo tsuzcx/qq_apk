@@ -1,30 +1,11 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import java.util.List;
+import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
+import java.util.Timer;
 
-class alsm
-  extends Filter
+public class alsm
 {
-  alsm(alsl paramalsl) {}
-  
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
-  {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
-    {
-      this.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.notifyDataSetInvalidated();
-  }
+  public int a;
+  public ApolloTicker.NativeDrawTask a;
+  public Timer a;
 }
 
 

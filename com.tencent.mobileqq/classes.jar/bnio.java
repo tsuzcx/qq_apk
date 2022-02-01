@@ -1,18 +1,15 @@
-import android.content.Context;
+import android.animation.ValueAnimator;
 
 public class bnio
+  implements bnin
 {
-  public static Context a;
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public static Context a()
-  {
-    return a;
-  }
+  public void b(ValueAnimator paramValueAnimator) {}
   
-  public static void a(Context paramContext)
-  {
-    a = paramContext;
-  }
+  public void c(ValueAnimator paramValueAnimator) {}
+  
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import rx.functions.Action1;
-
-public class uwa
-  implements Action1<Throwable>
+final class uwa
+  extends uvx
 {
-  public uwa(RoundImageView paramRoundImageView) {}
-  
-  public void a(Throwable paramThrowable)
+  uwa(int paramInt)
   {
-    uqf.d("RoundImageView", "[RoundImageView] bitmap is null");
+    super(paramInt);
+  }
+  
+  String a()
+  {
+    return "null";
+  }
+  
+  String b()
+  {
+    return "null";
   }
 }
 

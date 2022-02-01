@@ -1,20 +1,12 @@
-import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-public class xpz
-  implements xsz
+public abstract interface xpz
 {
-  public final ViewPager.PageTransformer a;
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
   
-  public xpz(ViewPager.PageTransformer paramPageTransformer)
-  {
-    this.a = paramPageTransformer;
-  }
-  
-  public void a(View paramView, float paramFloat)
-  {
-    this.a.transformPage(paramView, paramFloat);
-  }
+  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
 }
 
 

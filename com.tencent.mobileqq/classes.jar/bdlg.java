@@ -1,44 +1,67 @@
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bdlg
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "cartoon";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = String.valueOf(System.currentTimeMillis() / 1000L);
-  public String o = "";
-  public String p = "";
-  public String q = "";
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  private int d;
+  public String d;
+  public String e;
   
-  public String toString()
+  public bdlg()
   {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.a).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.h).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.l).append("|");
-    localStringBuffer.append(this.m).append("|");
-    localStringBuffer.append(this.n).append("|");
-    localStringBuffer.append(this.o).append("|");
-    localStringBuffer.append(this.p).append("|");
-    localStringBuffer.append(this.q).append("|");
-    return localStringBuffer.toString();
+    this.jdField_d_of_type_Int = 1;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("video_md5", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("video_thumbe_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("text", this.e);
+      localJSONObject.put("duration", this.jdField_a_of_type_Int);
+      localJSONObject.put("size", this.jdField_a_of_type_Long);
+      localJSONObject.put("width", this.jdField_b_of_type_Int);
+      localJSONObject.put("height", this.jdField_c_of_type_Int);
+      localJSONObject.put("isLocalVideo", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("takeVideoMode", this.jdField_d_of_type_Int);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoInfo", 2, "VideoInfo: " + QLog.getStackTraceString(localJSONException));
+    }
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_d_of_type_Int = -1;
+      return;
+    case 1: 
+      this.jdField_d_of_type_Int = 2;
+      return;
+    case 0: 
+      this.jdField_d_of_type_Int = 1;
+      return;
+    }
+    this.jdField_d_of_type_Int = 3;
   }
 }
 

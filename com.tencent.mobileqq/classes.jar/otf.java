@@ -1,22 +1,18 @@
-import android.view.View;
-
-class otf
-  implements bliz
+public class otf
 {
-  otf(otd paramotd, otp paramotp, blir paramblir) {}
+  public int a;
+  public boolean a = true;
+  public int b;
+  public boolean b = true;
+  public int c;
+  public boolean c = true;
+  public int d;
+  public boolean d;
   
-  public void OnClick(View paramView, int paramInt)
+  public otf()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      this.jdField_a_of_type_Otd.a().a(this.jdField_a_of_type_Otp, this.jdField_a_of_type_Otd.c);
-      this.jdField_a_of_type_Otd.notifyDataSetChanged();
-    }
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 1;
   }
 }
 

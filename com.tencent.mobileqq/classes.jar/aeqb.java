@@ -1,20 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeqb
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public aeqb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aeqb(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Azxr.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Blhq != null)) {
-      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(4);
-    }
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

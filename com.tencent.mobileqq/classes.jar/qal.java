@@ -1,52 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qal
-  implements LogUtil.ProteusLog
+class qal
+  implements ViewBase.OnClickListener
 {
-  public void d(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
+  qal(qak paramqak, pvc parampvc, Container paramContainer) {}
   
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
+    paramViewBase = this.jdField_a_of_type_Pvc.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    pgw.b(paramViewBase, (int)paramViewBase.mChannelID);
+    uhv.a(paramViewBase);
   }
 }
 

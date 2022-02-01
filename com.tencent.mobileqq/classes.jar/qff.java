@@ -1,51 +1,117 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class qff
-  extends RecyclerView.ItemDecoration
+  implements ViewBase.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = true;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private pvc jdField_a_of_type_Pvc;
   private int b;
   private int c;
-  private int d;
   
-  public qff(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public qff(pvc parampvc, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt1;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.c = paramInt4;
+    this.jdField_a_of_type_Pvc = parampvc;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  private int a(int paramInt)
   {
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (this.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      paramRect.top = this.jdField_a_of_type_Int;
-      paramRect.bottom = this.c;
-      if (i == 0) {
-        paramRect.left = this.b;
+    case 1112: 
+    default: 
+      return 0;
+    case 1113: 
+      return 1;
+    }
+    return 2;
+  }
+  
+  public void a()
+  {
+    int k = this.jdField_a_of_type_Int;
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvc.a();
+    int i;
+    if (localArticleInfo != null)
+    {
+      if (!localArticleInfo.hasChannelInfo()) {
+        break label148;
       }
-      if (i == paramState.getItemCount() - 1) {
-        paramRect.right = this.d;
+      i = localArticleInfo.mChannelInfoId;
+      if (!TextUtils.isEmpty(localArticleInfo.mArticleFriendLikeText)) {
+        break label153;
       }
     }
-    do
+    label148:
+    label153:
+    for (int j = 0;; j = 1)
     {
+      String str = pay.d(localArticleInfo);
+      odq.a(null, "CliOper", "", localArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localArticleInfo.mFeedId), Long.toString(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), pay.a(localArticleInfo.mAlgorithmID, pay.a(localArticleInfo), k, i, j, NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext), str, localArticleInfo.mStrCircleId, localArticleInfo.innerUniqueID, pay.f(localArticleInfo), localArticleInfo), false);
+      uhz.a(localArticleInfo, k);
       return;
-      paramRect.left = this.b;
-      paramRect.right = this.d;
-      if (i == 0) {
-        paramRect.top = this.jdField_a_of_type_Int;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((this.jdField_a_of_type_Pvc == null) || (this.jdField_a_of_type_Pvc.a() == null) || (this.jdField_a_of_type_Pvc.a().mSmallMiniGameInfo == null)) {
+      return;
+    }
+    String str = "";
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvc.a();
+    switch (this.c)
+    {
+    default: 
+      paramViewBase = "";
+    case 1115: 
+    case 1112: 
+    case 1113: 
+    case 1114: 
+      for (;;)
+      {
+        if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty(str)) && (!MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("OnSmallGameCardClickListener", 0, "mini game url error jump by appid url = " + paramViewBase);
+          }
+          MiniAppLauncher.launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, str, null, null, null, null, 2103);
+        }
+        a();
+        return;
+        obb.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Pvc.g(), this.b, obb.jdField_a_of_type_Int);
+        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(this.b);
+        str = localArticleInfo.mSmallMiniGameInfo.a(this.b);
+        continue;
+        int i = a(this.c);
+        obb.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Pvc.g(), i, obb.jdField_a_of_type_Int);
+        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(i);
+        str = localArticleInfo.mSmallMiniGameInfo.a(i);
       }
-    } while (i != paramState.getItemCount() - 1);
-    paramRect.bottom = this.c;
+    }
+    nzz localnzz = new nzz().a(501L).b(50101L).c(5010105L).d(9L);
+    if (localArticleInfo.mSmallMiniGameInfo.a()) {}
+    for (paramViewBase = "3";; paramViewBase = "2")
+    {
+      paramViewBase = localnzz.h(paramViewBase).i(String.valueOf(this.b)).a();
+      obb.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      pay.d(this.jdField_a_of_type_AndroidContentContext, localArticleInfo.mSmallMiniGameInfo.a);
+      paramViewBase = "";
+      break;
+    }
   }
 }
 

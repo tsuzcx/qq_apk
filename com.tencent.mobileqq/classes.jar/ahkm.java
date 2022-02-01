@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ahkm
-  implements ahky
+class ahkm
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahkm(ahiu paramahiu) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramChatMessage.msgtype != -1036) {
-      return 17;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "mQidianClickListener ... mQidianKefu = " + this.a.x);
     }
-    return 18;
+    this.a.a(2131694821);
+    this.a.a.a(this.a.mActivity, this.a.sessionInfo.curFriendUin, this.a.f, this.a.g, this.a.h, new ahkn(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

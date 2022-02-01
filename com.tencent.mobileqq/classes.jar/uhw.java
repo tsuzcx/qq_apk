@@ -1,21 +1,11 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-
-public class uhw
-  extends RecyclerView.ViewHolder
+final class uhw
+  implements pln
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  TextView b;
+  public void l() {}
   
-  uhw(View paramView)
+  public void m()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)paramView.findViewById(2131363109));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
-    this.b = ((TextView)paramView.findViewById(2131369465));
+    uhv.a(true);
   }
 }
 

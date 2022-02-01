@@ -14,6 +14,7 @@ class TPReportManager$1
   
   public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
+    int i = 0;
     super.onSignalStrengthsChanged(paramSignalStrength);
     if (TPReportManager.access$3300(this.this$0) == null) {
       return;
@@ -24,50 +25,54 @@ class TPReportManager$1
       TPLogUtil.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
       return;
     }
+    label246:
     for (;;)
     {
+      int j;
       try
       {
         String[] arrayOfString = paramSignalStrength.toString().split(" ");
-        i = ((TelephonyManager)localObject).getNetworkType();
-        if ((i != 13) || (arrayOfString.length <= 9)) {
-          break label191;
+        j = ((TelephonyManager)localObject).getNetworkType();
+        if ((j == 13) && (arrayOfString.length > 9))
+        {
+          if (arrayOfString[9].startsWith("ber="))
+          {
+            TPReportManager.access$3402(this.this$0, i);
+            return;
+          }
+          i = TPCommonUtils.optInt(arrayOfString[9], 0);
+          continue;
+          localObject = ((TelephonyManager)localObject).getNetworkOperator();
+          if ((localObject != null) && (!((String)localObject).startsWith("46000")) && (!((String)localObject).startsWith("46002")))
+          {
+            if (((String)localObject).startsWith("46007"))
+            {
+              i = 0;
+              break label246;
+            }
+            if (((String)localObject).equals("46001"))
+            {
+              i = paramSignalStrength.getCdmaDbm();
+              break label246;
+            }
+            if (((String)localObject).equals("46003"))
+            {
+              i = paramSignalStrength.getEvdoDbm();
+              break label246;
+              i = paramSignalStrength.getGsmSignalStrength();
+              i = i * 2 - 113;
+              continue;
+            }
+          }
+          i = 0;
         }
-        i = TPCommonUtils.optInt(arrayOfString[9], 0);
-        TPReportManager.access$3402(this.this$0, i);
-        return;
       }
       catch (Throwable paramSignalStrength)
       {
         return;
       }
-      localObject = ((TelephonyManager)localObject).getNetworkOperator();
-      if ((localObject != null) && (!((String)localObject).startsWith("46000")) && (!((String)localObject).startsWith("46002")))
-      {
-        if (((String)localObject).startsWith("46007"))
-        {
-          i = 0;
-          continue;
-        }
-        if (((String)localObject).equals("46001"))
-        {
-          i = paramSignalStrength.getCdmaDbm();
-          continue;
-        }
-        if (((String)localObject).equals("46003"))
-        {
-          i = paramSignalStrength.getEvdoDbm();
-          continue;
-          i = paramSignalStrength.getGsmSignalStrength();
-          i = i * 2 - 113;
-          continue;
-        }
-      }
-      int i = 0;
-      continue;
-      label191:
-      if ((i != 8) && (i != 10) && (i != 9)) {
-        if (i != 3) {}
+      if ((j != 8) && (j != 10) && (j != 9)) {
+        if (j == 3) {}
       }
     }
   }

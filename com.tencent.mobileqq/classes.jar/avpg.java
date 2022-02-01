@@ -1,48 +1,33 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import java.lang.reflect.Method;
+import android.os.Handler;
+import android.os.Looper;
 
-public abstract class avpg
+class avpg
 {
-  public static avpg a;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public static void a()
+  avpg(avpf paramavpf)
   {
-    try
+    Looper localLooper2 = Looper.myLooper();
+    Looper localLooper1 = localLooper2;
+    if (localLooper2 == null) {
+      localLooper1 = Looper.getMainLooper();
+    }
+    if (localLooper1 != null)
     {
-      Method localMethod = Class.forName("com.tencent.mobileqq.haoliyou.JefsClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (avpg)localMethod.invoke(null, new Object[0]);
+      this.jdField_a_of_type_AndroidOsHandler = new avph(this, localLooper1, paramavpf);
       return;
     }
-    catch (Throwable localThrowable) {}
+    this.jdField_a_of_type_AndroidOsHandler = null;
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
+  Handler a()
   {
-    avpg localavpg = a;
-    if (localavpg != null) {
-      localavpg.b(paramActivity, paramIntent, paramInt, paramBundle);
-    }
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
-  
-  public static void a(Context paramContext, Intent paramIntent, Runnable paramRunnable)
-  {
-    avpg localavpg = a;
-    if (localavpg != null) {
-      localavpg.b(paramContext, paramIntent, paramRunnable);
-    }
-  }
-  
-  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
-  
-  public abstract void b(Context paramContext, Intent paramIntent, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpg
  * JD-Core Version:    0.7.0.1
  */

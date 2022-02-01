@@ -1,40 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import com.tencent.mobileqq.portal.PortalManager.LogoConfig;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class azuj
+  implements ViewPager.OnPageChangeListener
 {
-  public void a() {}
+  public azuj(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void a(int paramInt, azuk paramazuk) {}
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void a(long paramLong1, int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, List<PortalManager.LogoConfig> paramList, String paramString, long paramLong2, boolean paramBoolean, long paramLong3) {}
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void a(long paramLong1, int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean, int paramInt2, Bitmap paramBitmap4, Bitmap paramBitmap5, List<PortalManager.LogoConfig> paramList, List<PortalManager.ComboNumber> paramList1, Bitmap paramBitmap6, long paramLong3, Bitmap paramBitmap7, Bitmap paramBitmap8) {}
-  
-  public void a(boolean paramBoolean, String paramString, azuk paramazuk) {}
-  
-  public boolean a()
+  public void onPageSelected(int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(Bitmap paramBitmap)
-  {
-    return false;
-  }
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    return false;
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
+    {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).requestParentDisallowInterecptTouchEvent(false);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).requestParentDisallowInterecptTouchEvent(true);
   }
 }
 

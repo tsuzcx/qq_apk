@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class aipn
-  implements View.OnClickListener
+public class aipn
+  extends CardObserver
 {
-  aipn(aipm paramaipm) {}
+  private aipn(FriendFragment paramFriendFragment) {}
   
-  public void onClick(View paramView)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (!this.a.M) {
-      aean.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 

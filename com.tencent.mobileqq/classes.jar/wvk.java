@@ -1,19 +1,20 @@
+import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
+
 public class wvk
+  implements wxh
 {
-  public final int a;
-  public final String a;
-  public final wvj a;
+  public wvk(TextureVideoView paramTextureVideoView) {}
   
-  public wvk(wvj paramwvj, int paramInt, String paramString)
+  @TargetApi(15)
+  public void a(wwz paramwwz, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Wvj = paramwvj;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "Output{intput=" + this.jdField_a_of_type_Wvj + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    if (this.a.getHandler() == null) {
+      return;
+    }
+    this.a.getHandler().post(new TextureVideoView.1.1(this, paramwwz));
   }
 }
 

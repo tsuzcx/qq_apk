@@ -1,9 +1,9 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-
-public abstract interface aswh
+public class aswh
 {
-  public abstract Drawable a(String paramString1, String paramString2, ImageView paramImageView);
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
 }
 
 

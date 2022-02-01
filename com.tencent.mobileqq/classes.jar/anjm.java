@@ -1,26 +1,22 @@
-public class anjm
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+
+class anjm
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public float b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
+  anjm(anjl paramanjl, Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("back_for_hidden_chat", true);
+    paramDialogInterface.setFlags(603979776);
+    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
+    bcef.b(this.jdField_a_of_type_Anjl.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+  }
 }
 
 

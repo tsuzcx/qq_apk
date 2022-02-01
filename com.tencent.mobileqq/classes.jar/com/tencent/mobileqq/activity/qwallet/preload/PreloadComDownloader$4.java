@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import aldd;
-import bihz;
+import akaw;
+import bgoj;
 
 public class PreloadComDownloader$4
   implements Runnable
 {
   public void run()
   {
-    if (aldd.a(this.this$0) != null) {
-      aldd.a(this.this$0).a(this.jdField_a_of_type_Bihu, this.jdField_a_of_type_Biht, this.jdField_a_of_type_AndroidOsBundle);
+    if (akaw.a(this.this$0) != null) {
+      akaw.a(this.this$0).a(this.jdField_a_of_type_Bgoe, this.jdField_a_of_type_Bgod, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

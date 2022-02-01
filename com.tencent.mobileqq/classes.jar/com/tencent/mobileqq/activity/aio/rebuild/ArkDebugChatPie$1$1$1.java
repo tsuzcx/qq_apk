@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihb;
-import aihc;
-import anzj;
+import ahdr;
+import ahds;
+import amtj;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ArkDebugChatPie$1$1$1
   implements Runnable
 {
-  public ArkDebugChatPie$1$1$1(aihc paramaihc) {}
+  public ArkDebugChatPie$1$1$1(ahds paramahds) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.this$0.a, anzj.a(2131699570), 0).a();
+    QQToast.a(this.a.a.this$0.mContext, amtj.a(2131699805), 0).a();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import tcd;
-import tcf;
+import tgg;
+import tgi;
 
 public class ViolaAccessHelper$4$1
   implements Runnable
 {
-  public ViolaAccessHelper$4$1(tcd paramtcd, long paramLong) {}
+  public ViolaAccessHelper$4$1(tgg paramtgg, long paramLong) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ViolaAccessHelper$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

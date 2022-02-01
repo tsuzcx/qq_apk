@@ -1,17 +1,29 @@
-import android.animation.Animator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class aisw
+public class aisw
 {
-  aism jdField_a_of_type_Aism;
-  Animator jdField_a_of_type_AndroidAnimationAnimator;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private BaseActivity a;
+  
+  public aisw(BaseActivity paramBaseActivity)
+  {
+    this.a = paramBaseActivity;
+  }
+  
+  public bjnw a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    bjnw localbjnw = (bjnw)bjon.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131562948, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837574));
+    localGridView.setAdapter(new aisy(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbjnw.a(localGridView);
+    localbjnw.c(2131690620);
+    return localbjnw;
+  }
 }
 
 

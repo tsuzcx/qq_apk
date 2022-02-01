@@ -1,33 +1,28 @@
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
 
 public class adnd
+  extends amsu
 {
-  public static adnc a(Class<? extends adnc> paramClass, adnb paramadnb)
+  public adnd(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (paramClass == adoc.class) {
-      paramClass = new adoc();
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      if (paramClass != null) {
-        paramClass.a(paramadnb);
-      }
-      return paramClass;
-      if (paramClass == adoi.class) {
-        paramClass = new adoi();
-      } else {
-        try
-        {
-          adnc localadnc = (adnc)paramClass.newInstance();
-          paramClass = localadnc;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
-          paramClass = null;
-        }
+      paramString = ((amsw)this.a.app.getManager(51)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
       }
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 

@@ -1,13 +1,38 @@
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import java.util.Iterator;
+import java.util.List;
 
 public class artv
-  implements arua
+  extends AsyncTask<Void, Void, Integer>
 {
-  public artv(DanmakuManager paramDanmakuManager) {}
+  public artv(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void a(aruc paramaruc)
+  protected Integer a(Void... paramVarArgs)
   {
-    DanmakuManager.a(this.a).a(paramaruc);
+    return Integer.valueOf(aszl.b(this.a));
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    this.a.stopTitleProgress();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      asll localasll = (asll)localIterator.next();
+      if (localasll.e == 4)
+      {
+        localasll.d = paramInteger.intValue();
+        this.a.jdField_a_of_type_Aslj.notifyDataSetChanged();
+      }
+    }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.startTitleProgress();
   }
 }
 

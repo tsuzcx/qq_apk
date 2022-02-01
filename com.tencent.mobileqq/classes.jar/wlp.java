@@ -1,86 +1,19 @@
-import android.support.annotation.NonNull;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class wlp
-  extends wlj
+  extends xqa
 {
-  protected int a;
-  protected int b;
+  public wlp(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public wlp(@NonNull String[] paramArrayOfString)
+  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
   {
-    super(paramArrayOfString);
-    paramArrayOfString = (wta)wth.a(10);
-    this.jdField_a_of_type_Int = ((Integer)paramArrayOfString.b("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
-    this.b = ((Integer)paramArrayOfString.b("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
-  }
-  
-  protected void a(String[] paramArrayOfString, wlk paramwlk)
-  {
-    int m = paramArrayOfString.length;
-    int i = 0;
-    String str;
-    if (i < m)
+    if ((paramObject instanceof QQUserUIItem))
     {
-      str = paramArrayOfString[i];
-      if (!a(str, this.jdField_a_of_type_Int)) {}
+      paramView = (QQUserUIItem)paramObject;
+      vpl.a(this.a.a, 10, paramView.uid);
     }
-    for (;;)
-    {
-      i += 1;
-      break;
-      File localFile = new File(str);
-      double d = a(localFile);
-      File[] arrayOfFile = localFile.listFiles();
-      ArrayList localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      int j = 0;
-      while (j < k)
-      {
-        localArrayList.add(new wlq(this, arrayOfFile[j]));
-        j += 1;
-      }
-      Collections.sort(localArrayList);
-      int n = localArrayList.size();
-      k = 0;
-      j = 0;
-      while (j < n)
-      {
-        if (j % 150 == 0) {}
-        try
-        {
-          Thread.sleep(100L);
-          if ((j % 20 == 0) && (a(str, this.b))) {
-            return;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-          a(((wlq)localArrayList.get(j)).a);
-          k += 1;
-          j += 1;
-        }
-      }
-      paramwlk.jdField_a_of_type_Double = (d - a(localFile) + paramwlk.jdField_a_of_type_Double);
-      paramwlk.jdField_a_of_type_Int += k;
-    }
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    paramString = new File(paramString).listFiles();
-    if (paramString == null) {}
-    while (paramString.length <= paramInt) {
-      return true;
-    }
-    return false;
   }
 }
 

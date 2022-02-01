@@ -1,12 +1,21 @@
-class xgt
-  extends xgd
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
+
+public class xgt
 {
-  xgt(xgp paramxgp, xhw paramxhw) {}
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public boolean a;
+  public boolean b;
   
-  public boolean b()
+  public xgt(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_Xhw.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

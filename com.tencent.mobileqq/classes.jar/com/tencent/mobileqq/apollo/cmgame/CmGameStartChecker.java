@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import amxj;
-import amxk;
-import anbd;
+import alsd;
+import alse;
+import alvx;
+import alyu;
+import alyx;
+import alzd;
+import amip;
+import amjj;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anea;
-import aned;
-import anej;
-import annv;
-import anop;
-import bdmc;
-import bhnv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
@@ -27,6 +25,8 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.pb.apollo.STCheckGame.STCheckGameRsp;
 import com.tencent.pb.apollo.STCheckGame.STGameConfInfo;
@@ -36,13 +36,13 @@ import java.util.HashMap;
 import mqq.observer.BusinessObserver;
 
 public class CmGameStartChecker
-  implements anej, BusinessObserver
+  implements alzd, BusinessObserver
 {
   private volatile int jdField_a_of_type_Int;
   public long a;
-  private anea jdField_a_of_type_Anea;
+  private alyu jdField_a_of_type_Alyu;
   private CmGameStartChecker.StartCheckParam jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam;
-  private WeakReference<amxk> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<alse> jdField_a_of_type_JavaLangRefWeakReference;
   public long b;
   private WeakReference<AppInterface> b;
   public long c;
@@ -56,11 +56,11 @@ public class CmGameStartChecker
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      amxk localamxk = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localamxk != null)
+      alse localalse = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localalse != null)
       {
         QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "callBackGameCheckFail:", Long.valueOf(paramLong), ",startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam });
-        localamxk.onGameCheckFinish(paramLong, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
+        localalse.onGameCheckFinish(paramLong, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
       }
     }
   }
@@ -69,11 +69,11 @@ public class CmGameStartChecker
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      amxk localamxk = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localamxk != null)
+      alse localalse = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localalse != null)
       {
         QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "callBackGameFail:", Long.valueOf(paramLong), ",startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam });
-        localamxk.onGameFailed(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramLong);
+        localalse.onGameFailed(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramLong);
       }
     }
   }
@@ -83,16 +83,16 @@ public class CmGameStartChecker
     if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    if (anbd.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))
+    if (alvx.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))
     {
       b();
       return;
     }
-    amxk localamxk = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    alse localalse = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     this.jdField_a_of_type_Int += 1;
     if (this.jdField_a_of_type_Int == 1)
     {
-      localamxk.onGameCheckRetry(1);
+      localalse.onGameCheckRetry(1);
       a(1);
       return;
     }
@@ -101,7 +101,7 @@ public class CmGameStartChecker
       a(-17L);
       return;
     }
-    localamxk.onGameCheckRetry(2);
+    localalse.onGameCheckRetry(2);
   }
   
   public String a(int paramInt, String paramString)
@@ -125,7 +125,7 @@ public class CmGameStartChecker
   
   public void a(int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) || ((!bhnv.d(((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getApp())) && (!anbd.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))))
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) || ((!NetworkUtil.isNetSupport(((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getApp())) && (!alvx.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))))
     {
       QLog.e("cmgame_process.CmGameStartChecker", 1, "[checkGame] none network");
       a(-10L);
@@ -143,7 +143,7 @@ public class CmGameStartChecker
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      paramString = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramString = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (paramString == null);
     QLog.d("cmgame_process.CmGameStartChecker", 2, "[onDownloadProgress] progress:" + paramInt1);
     paramString.onDownloadGameResProgress(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramInt1);
@@ -159,26 +159,26 @@ public class CmGameStartChecker
         return;
         this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.startT = -1L;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      paramString = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramString = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (paramString == null);
     QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onDownloadGameResStart startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     paramString.onDownloadGameResStart(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
   
-  public void a(amxj paramamxj, long paramLong)
+  public void a(alsd paramalsd, long paramLong)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {}
-    amxk localamxk;
+    alse localalse;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localamxk = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localamxk == null);
+      localalse = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localalse == null);
     QLog.d("cmgame_process.CmGameStartChecker", 2, "[onDownloadConfirm] startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    localamxk.onDownloadConfirm(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramamxj, paramLong);
+    localalse.onDownloadConfirm(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, paramalsd, paramLong);
   }
   
   protected void a(Bundle paramBundle)
@@ -197,7 +197,7 @@ public class CmGameStartChecker
       if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
         break label1898;
       }
-      localObject1 = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       k = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId;
       m = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameMode;
       localObject4 = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.from;
@@ -288,7 +288,7 @@ public class CmGameStartChecker
               if (localObject1 != null)
               {
                 QLog.d("cmgame_process.CmGameStartChecker", 2, "onGetGameKey gameCheckListener.onSsoCmdRuleRsp startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-                ((amxk)localObject1).onSsoCmdRuleRsp(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, (String)localObject2);
+                ((alse)localObject1).onSsoCmdRuleRsp(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, (String)localObject2);
               }
             }
             for (;;)
@@ -340,7 +340,7 @@ public class CmGameStartChecker
                   }
                   this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game = ((ApolloGameData)localObject4);
                   this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.viewMode = ((ApolloGameData)localObject4).viewMode;
-                  ((amxk)localObject1).onGetGameData(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+                  ((alse)localObject1).onGetGameData(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
                 }
               }
               if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null) {
@@ -357,8 +357,8 @@ public class CmGameStartChecker
               this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.transInfo = new String(((STCheckGame.STCheckGameRsp)localObject3).transInfo.get().toByteArray());
             }
             this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.delayMs = ((STCheckGame.STCheckGameRsp)localObject3).delayMs.get();
-            amsx.b = str4;
-            amsx.jdField_c_of_type_JavaLangString = str5;
+            alnr.b = str4;
+            alnr.jdField_c_of_type_JavaLangString = str5;
             localObject3 = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
             if (localObject3 != null) {
               ApolloGameUtil.a((AppInterface)localObject3, n);
@@ -368,7 +368,7 @@ public class CmGameStartChecker
             }
             QLog.i("cmgame_process.CmGameStartChecker", 1, "[game_launch_cost], check game:" + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.startT));
             if (bool1) {
-              anbd.a(ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
+              alvx.a(ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
             }
             localObject4 = new HashMap();
             ((HashMap)localObject4).put("param_gameId", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
@@ -383,33 +383,33 @@ public class CmGameStartChecker
     for (Object localObject2 = "1";; localObject2 = "0")
     {
       ((HashMap)localObject4).put("param_update", localObject2);
-      bdmc.a(((AppInterface)localObject3).getApp()).a(((AppInterface)localObject3).getCurrentAccountUin(), "cmgame_checkgame_update", true, 0L, 0L, (HashMap)localObject4, "", false);
+      StatisticCollector.getInstance(((AppInterface)localObject3).getApp()).collectPerformance(((AppInterface)localObject3).getCurrentAccountUin(), "cmgame_checkgame_update", true, 0L, 0L, (HashMap)localObject4, "", false);
       QLog.d("CmGameStat", 1, new Object[] { "cmgame_checkgame_update, needUpdate=", Boolean.valueOf(bool1), " [gameId=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId), "]" });
       if (localObject1 != null) {
-        ((amxk)localObject1).onGameCheckFinish(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
+        ((alse)localObject1).onGameCheckFinish(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, null);
       }
-      if (anop.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isWhiteUsr, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId))
+      if (amjj.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isWhiteUsr, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId))
       {
-        localObject1 = new aned();
-        ((aned)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
-        ((aned)localObject1).jdField_a_of_type_Long = l2;
-        ((aned)localObject1).jdField_b_of_type_Long = l1;
-        ((aned)localObject1).jdField_a_of_type_ArrayOfByte = paramBundle;
-        ((aned)localObject1).jdField_b_of_type_Boolean = bool2;
-        ((aned)localObject1).jdField_a_of_type_Boolean = bool1;
-        ((aned)localObject1).jdField_c_of_type_JavaLangString = str3;
-        ((aned)localObject1).jdField_e_of_type_JavaLangString = str1;
-        ((aned)localObject1).jdField_d_of_type_JavaLangString = str2;
-        ((aned)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId;
-        ((aned)localObject1).jdField_a_of_type_Int = i1;
-        ((aned)localObject1).jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        ((aned)localObject1).f = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.from;
-        ((aned)localObject1).jdField_d_of_type_Int = 0;
-        ((aned)localObject1).jdField_c_of_type_Long = System.currentTimeMillis();
-        ((aned)localObject1).jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.delayMs;
-        this.jdField_a_of_type_Anea = new anea((aned)localObject1, this);
-        bool3 = this.jdField_a_of_type_Anea.a();
-        anbd.a(new Object[] { "[checkRes], serverVersion:" + i1 + ", isPatch:" + bool2, ", isUpdate:" + bool1, ",delay:", Integer.valueOf(((aned)localObject1).jdField_e_of_type_Int) });
+        localObject1 = new alyx();
+        ((alyx)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+        ((alyx)localObject1).jdField_a_of_type_Long = l2;
+        ((alyx)localObject1).jdField_b_of_type_Long = l1;
+        ((alyx)localObject1).jdField_a_of_type_ArrayOfByte = paramBundle;
+        ((alyx)localObject1).jdField_b_of_type_Boolean = bool2;
+        ((alyx)localObject1).jdField_a_of_type_Boolean = bool1;
+        ((alyx)localObject1).jdField_c_of_type_JavaLangString = str3;
+        ((alyx)localObject1).jdField_e_of_type_JavaLangString = str1;
+        ((alyx)localObject1).jdField_d_of_type_JavaLangString = str2;
+        ((alyx)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId;
+        ((alyx)localObject1).jdField_a_of_type_Int = i1;
+        ((alyx)localObject1).jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
+        ((alyx)localObject1).f = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.from;
+        ((alyx)localObject1).jdField_d_of_type_Int = 0;
+        ((alyx)localObject1).jdField_c_of_type_Long = System.currentTimeMillis();
+        ((alyx)localObject1).jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.delayMs;
+        this.jdField_a_of_type_Alyu = new alyu((alyx)localObject1, this);
+        bool3 = this.jdField_a_of_type_Alyu.a();
+        alvx.a(new Object[] { "[checkRes], serverVersion:" + i1 + ", isPatch:" + bool2, ", isUpdate:" + bool1, ",delay:", Integer.valueOf(((alyx)localObject1).jdField_e_of_type_Int) });
         QLog.i("cmgame_process.CmGameStartChecker", 1, "onGetGameKey [cmgame_pack_main], response, gameId:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + ",ver:" + i1 + ",isPatch:" + bool2 + ",isUpdate:" + bool1);
         if (bool3) {
           break;
@@ -439,9 +439,9 @@ public class CmGameStartChecker
     }
   }
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, amxk paramamxk)
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, alse paramalse)
   {
-    if ((paramStartCheckParam == null) || (paramamxk == null)) {
+    if ((paramStartCheckParam == null) || (paramalse == null)) {
       if (QLog.isColorLevel()) {
         QLog.d("cmgame_process.CmGameStartChecker", 2, "[launchGame],startCheckParam == null || gameStartCheckListener == nul");
       }
@@ -456,7 +456,7 @@ public class CmGameStartChecker
       }
       ApolloGameStateMachine.a().a();
       ApolloGameStateMachine.a().a(1);
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamxk);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalse);
       this.jdField_a_of_type_Int = 0;
       if (!paramStartCheckParam.isRunning) {
         break;
@@ -487,7 +487,7 @@ public class CmGameStartChecker
     this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.viewMode = ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mGameType);
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramString = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramString = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramString != null)
       {
         QLog.d("cmgame_process.CmGameStartChecker", 2, new Object[] { "gameCheckListener.onDownloadGameResDown startCheckParam:", this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam });
@@ -514,15 +514,15 @@ public class CmGameStartChecker
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.CmGameStartChecker", 2, " checkLife  life =" + i);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode == annv.jdField_a_of_type_Long)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.retCode == amip.jdField_a_of_type_Long)
     {
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        localObject = (amxk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (alse)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (localObject != null)
         {
           QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onGameLifeTipShow startCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-          ((amxk)localObject).onGameLifeTipShow(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+          ((alse)localObject).onGameLifeTipShow(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
         }
       }
       VipUtils.a(null, "cmshow", "Apollo", "game_times_short", 0, 0, new String[] { "" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId });
@@ -534,7 +534,7 @@ public class CmGameStartChecker
   public void c(int paramInt, String paramString)
   {
     QLog.e("cmgame_process.CmGameStartChecker", 1, "[onDownloadFailure], ret:" + paramInt);
-    anbd.a(new Object[] { "[downloadRes], failed ret:", Integer.valueOf(paramInt), ", packName:", paramString });
+    alvx.a(new Object[] { "[downloadRes], failed ret:", Integer.valueOf(paramInt), ", packName:", paramString });
     b(-12L);
   }
   
@@ -555,8 +555,8 @@ public class CmGameStartChecker
     //   15: iload 9
     //   17: istore 6
     //   19: aload_3
-    //   20: ldc_w 806
-    //   23: invokevirtual 810	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   20: ldc_w 809
+    //   23: invokevirtual 813	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   26: istore 8
     //   28: iload 7
     //   30: istore_1
@@ -567,8 +567,8 @@ public class CmGameStartChecker
     //   39: iload 8
     //   41: istore 5
     //   43: aload_3
-    //   44: ldc_w 812
-    //   47: invokevirtual 816	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: ldc_w 815
+    //   47: invokevirtual 819	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   50: astore 14
     //   52: iload 7
     //   54: istore_1
@@ -578,9 +578,9 @@ public class CmGameStartChecker
     //   61: istore 6
     //   63: iload 8
     //   65: istore 5
-    //   67: ldc_w 818
+    //   67: ldc_w 821
     //   70: aload 14
-    //   72: invokevirtual 822	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   72: invokevirtual 825	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   75: ifne +36 -> 111
     //   78: iload 7
     //   80: istore_1
@@ -592,10 +592,10 @@ public class CmGameStartChecker
     //   91: istore 5
     //   93: aload_0
     //   94: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
-    //   97: getfield 654	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:isWhiteUsr	Z
-    //   100: invokestatic 827	andd:a	(Z)Ljava/lang/String;
+    //   97: getfield 657	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:isWhiteUsr	Z
+    //   100: invokestatic 830	alxx:a	(Z)Ljava/lang/String;
     //   103: aload 14
-    //   105: invokevirtual 822	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   105: invokevirtual 825	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   108: ifeq +1051 -> 1159
     //   111: iload 7
     //   113: istore_1
@@ -606,9 +606,9 @@ public class CmGameStartChecker
     //   122: iload 8
     //   124: istore 5
     //   126: aload_3
-    //   127: ldc_w 829
-    //   130: invokevirtual 816	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   133: invokestatic 832	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   127: ldc_w 832
+    //   130: invokevirtual 819	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: invokestatic 835	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   136: istore 7
     //   138: iload 7
     //   140: istore_1
@@ -619,8 +619,8 @@ public class CmGameStartChecker
     //   149: iload 8
     //   151: istore 5
     //   153: aload_0
-    //   154: invokestatic 602	java/lang/System:currentTimeMillis	()J
-    //   157: putfield 833	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
+    //   154: invokestatic 603	java/lang/System:currentTimeMillis	()J
+    //   157: putfield 836	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
     //   160: iload 7
     //   162: istore_1
     //   163: iload 8
@@ -630,8 +630,8 @@ public class CmGameStartChecker
     //   171: iload 8
     //   173: istore 5
     //   175: aload_3
-    //   176: ldc 220
-    //   178: invokevirtual 226	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   176: ldc 221
+    //   178: invokevirtual 227	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
     //   181: astore 14
     //   183: aload 14
     //   185: ifnull +543 -> 728
@@ -645,9 +645,9 @@ public class CmGameStartChecker
     //   201: istore 6
     //   203: iload 8
     //   205: istore 5
-    //   207: new 835	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp
+    //   207: new 838	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp
     //   210: dup
-    //   211: invokespecial 836	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:<init>	()V
+    //   211: invokespecial 839	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:<init>	()V
     //   214: astore_3
     //   215: iload 7
     //   217: istore_1
@@ -659,7 +659,7 @@ public class CmGameStartChecker
     //   228: istore 5
     //   230: aload_3
     //   231: aload 14
-    //   233: invokevirtual 837	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   233: invokevirtual 840	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   236: pop
     //   237: iload 7
     //   239: istore_1
@@ -669,9 +669,9 @@ public class CmGameStartChecker
     //   246: istore 6
     //   248: iload 8
     //   250: istore 5
-    //   252: new 222	android/os/Bundle
+    //   252: new 223	android/os/Bundle
     //   255: dup
-    //   256: invokespecial 838	android/os/Bundle:<init>	()V
+    //   256: invokespecial 841	android/os/Bundle:<init>	()V
     //   259: astore 14
     //   261: iload 7
     //   263: istore_1
@@ -682,11 +682,11 @@ public class CmGameStartChecker
     //   272: iload 8
     //   274: istore 5
     //   276: aload 14
-    //   278: ldc_w 839
+    //   278: ldc_w 842
     //   281: aload_3
-    //   282: getfield 843	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:ret	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   285: invokevirtual 846	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   288: invokevirtual 850	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   282: getfield 846	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:ret	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   285: invokevirtual 849	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   288: invokevirtual 853	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   291: iload 7
     //   293: istore_1
     //   294: iload 8
@@ -698,9 +698,9 @@ public class CmGameStartChecker
     //   306: aload_0
     //   307: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   310: aload_3
-    //   311: getfield 843	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:ret	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   314: invokevirtual 846	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   317: putfield 275	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
+    //   311: getfield 846	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:ret	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   314: invokevirtual 849	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   317: putfield 276	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
     //   320: iload 7
     //   322: istore_1
     //   323: iload 8
@@ -710,12 +710,12 @@ public class CmGameStartChecker
     //   331: iload 8
     //   333: istore 5
     //   335: aload 14
-    //   337: ldc 220
+    //   337: ldc 221
     //   339: aload_3
-    //   340: getfield 853	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:pbRsqData	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   343: invokevirtual 339	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   346: invokevirtual 345	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   349: invokevirtual 857	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   340: getfield 856	com/tencent/pb/webssoagent/WebSSOAgent$UniSsoServerRsp:pbRsqData	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   343: invokevirtual 340	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   346: invokevirtual 346	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   349: invokevirtual 860	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
     //   352: iload 7
     //   354: istore_1
     //   355: iload 8
@@ -724,15 +724,15 @@ public class CmGameStartChecker
     //   361: istore 6
     //   363: iload 8
     //   365: istore 5
-    //   367: new 859	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$3
+    //   367: new 862	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$3
     //   370: dup
     //   371: aload_0
     //   372: aload 14
-    //   374: invokespecial 862	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$3:<init>	(Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker;Landroid/os/Bundle;)V
+    //   374: invokespecial 865	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$3:<init>	(Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker;Landroid/os/Bundle;)V
     //   377: sipush 128
     //   380: aconst_null
     //   381: iconst_1
-    //   382: invokestatic 863	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   382: invokestatic 866	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   385: iload 7
     //   387: istore_1
     //   388: aload_0
@@ -750,47 +750,47 @@ public class CmGameStartChecker
     //   417: if_icmpne +783 -> 1200
     //   420: aload_0
     //   421: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
-    //   424: getfield 275	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
+    //   424: getfield 276	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
     //   427: lstore 10
     //   429: aload_0
-    //   430: getfield 833	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
+    //   430: getfield 836	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
     //   433: aload_0
-    //   434: getfield 864	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_Long	J
+    //   434: getfield 867	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_Long	J
     //   437: lsub
     //   438: lstore 12
     //   440: aconst_null
-    //   441: invokestatic 869	bjjh:a	(Landroid/content/Context;)I
+    //   441: invokestatic 872	bhov:a	(Landroid/content/Context;)I
     //   444: istore 6
-    //   446: new 612	java/util/HashMap
+    //   446: new 613	java/util/HashMap
     //   449: dup
-    //   450: invokespecial 613	java/util/HashMap:<init>	()V
+    //   450: invokespecial 614	java/util/HashMap:<init>	()V
     //   453: astore_3
     //   454: aload_3
-    //   455: ldc_w 871
+    //   455: ldc_w 874
     //   458: lload 10
-    //   460: invokestatic 535	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   463: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   460: invokestatic 536	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   463: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   466: pop
     //   467: aload_3
-    //   468: ldc_w 615
+    //   468: ldc_w 616
     //   471: aload_0
     //   472: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   475: getfield 122	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:gameId	I
-    //   478: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   481: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   478: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   481: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   484: pop
     //   485: aload_3
-    //   486: ldc_w 873
+    //   486: ldc_w 876
     //   489: iload 6
-    //   491: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   494: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   491: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   494: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   497: pop
     //   498: aload 15
     //   500: invokevirtual 152	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   503: invokestatic 630	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   503: invokestatic 632	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   506: astore 14
     //   508: aload 15
-    //   510: invokevirtual 633	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   510: invokevirtual 635	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   513: astore 15
     //   515: lload 10
     //   517: lconst_0
@@ -800,14 +800,14 @@ public class CmGameStartChecker
     //   523: istore_2
     //   524: aload 14
     //   526: aload 15
-    //   528: ldc_w 875
+    //   528: ldc_w 878
     //   531: iload_2
     //   532: lload 12
     //   534: lconst_0
     //   535: aload_3
     //   536: ldc 117
     //   538: iconst_0
-    //   539: invokevirtual 638	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   539: invokevirtual 641	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   542: lload 10
     //   544: lconst_0
     //   545: lcmp
@@ -827,31 +827,31 @@ public class CmGameStartChecker
     //   571: isub
     //   572: istore 5
     //   574: aconst_null
-    //   575: ldc_w 785
-    //   578: ldc_w 787
-    //   581: ldc_w 877
+    //   575: ldc_w 788
+    //   578: ldc_w 790
+    //   581: ldc_w 880
     //   584: iload_1
     //   585: iload 4
     //   587: iconst_2
-    //   588: anewarray 400	java/lang/String
+    //   588: anewarray 401	java/lang/String
     //   591: dup
     //   592: iconst_0
     //   593: iload 7
-    //   595: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   595: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   598: aastore
     //   599: dup
     //   600: iconst_1
     //   601: iload 5
-    //   603: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   603: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   606: aastore
-    //   607: invokestatic 794	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   610: ldc_w 640
+    //   607: invokestatic 797	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   610: ldc_w 643
     //   613: iconst_1
     //   614: bipush 9
     //   616: anewarray 4	java/lang/Object
     //   619: dup
     //   620: iconst_0
-    //   621: ldc_w 879
+    //   621: ldc_w 882
     //   624: aastore
     //   625: dup
     //   626: iconst_1
@@ -860,18 +860,18 @@ public class CmGameStartChecker
     //   632: aastore
     //   633: dup
     //   634: iconst_2
-    //   635: ldc_w 649
+    //   635: ldc_w 652
     //   638: aastore
     //   639: dup
     //   640: iconst_3
     //   641: aload_0
     //   642: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   645: getfield 122	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:gameId	I
-    //   648: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   648: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   651: aastore
     //   652: dup
     //   653: iconst_4
-    //   654: ldc_w 881
+    //   654: ldc_w 884
     //   657: aastore
     //   658: dup
     //   659: iconst_5
@@ -880,23 +880,23 @@ public class CmGameStartChecker
     //   665: aastore
     //   666: dup
     //   667: bipush 6
-    //   669: ldc_w 883
+    //   669: ldc_w 886
     //   672: aastore
     //   673: dup
     //   674: bipush 7
     //   676: iload 6
-    //   678: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   678: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   681: aastore
     //   682: dup
     //   683: bipush 8
-    //   685: ldc_w 651
+    //   685: ldc_w 654
     //   688: aastore
     //   689: invokestatic 135	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   692: iconst_4
     //   693: anewarray 4	java/lang/Object
     //   696: dup
     //   697: iconst_0
-    //   698: ldc_w 885
+    //   698: ldc_w 888
     //   701: aastore
     //   702: dup
     //   703: iconst_1
@@ -905,14 +905,14 @@ public class CmGameStartChecker
     //   709: aastore
     //   710: dup
     //   711: iconst_2
-    //   712: ldc_w 887
+    //   712: ldc_w 890
     //   715: aastore
     //   716: dup
     //   717: iconst_3
     //   718: lload 12
     //   720: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   723: aastore
-    //   724: invokestatic 720	anbd:a	([Ljava/lang/Object;)V
+    //   724: invokestatic 723	alvx:a	([Ljava/lang/Object;)V
     //   727: return
     //   728: iload 7
     //   730: istore_1
@@ -928,12 +928,12 @@ public class CmGameStartChecker
     //   747: anewarray 4	java/lang/Object
     //   750: dup
     //   751: iconst_0
-    //   752: ldc_w 889
+    //   752: ldc_w 892
     //   755: aastore
     //   756: dup
     //   757: iconst_1
     //   758: iload 8
-    //   760: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   760: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   763: aastore
     //   764: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   767: iload 7
@@ -945,7 +945,7 @@ public class CmGameStartChecker
     //   778: iload 8
     //   780: istore 5
     //   782: aload_0
-    //   783: invokespecial 891	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:d	()V
+    //   783: invokespecial 894	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:d	()V
     //   786: goto -401 -> 385
     //   789: astore_3
     //   790: ldc 46
@@ -953,13 +953,13 @@ public class CmGameStartChecker
     //   793: new 56	java/lang/StringBuilder
     //   796: dup
     //   797: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   800: ldc_w 893
+    //   800: ldc_w 896
     //   803: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   806: aload_3
-    //   807: invokevirtual 896	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   807: invokevirtual 899	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   810: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   813: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   816: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   816: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   819: aload_0
     //   820: getfield 30	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
     //   823: invokevirtual 42	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
@@ -975,47 +975,47 @@ public class CmGameStartChecker
     //   848: if_icmpne +377 -> 1225
     //   851: aload_0
     //   852: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
-    //   855: getfield 275	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
+    //   855: getfield 276	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
     //   858: lstore 10
     //   860: aload_0
-    //   861: getfield 833	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
+    //   861: getfield 836	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
     //   864: aload_0
-    //   865: getfield 864	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_Long	J
+    //   865: getfield 867	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_Long	J
     //   868: lsub
     //   869: lstore 12
     //   871: aconst_null
-    //   872: invokestatic 869	bjjh:a	(Landroid/content/Context;)I
+    //   872: invokestatic 872	bhov:a	(Landroid/content/Context;)I
     //   875: istore 6
-    //   877: new 612	java/util/HashMap
+    //   877: new 613	java/util/HashMap
     //   880: dup
-    //   881: invokespecial 613	java/util/HashMap:<init>	()V
+    //   881: invokespecial 614	java/util/HashMap:<init>	()V
     //   884: astore_3
     //   885: aload_3
-    //   886: ldc_w 871
+    //   886: ldc_w 874
     //   889: lload 10
-    //   891: invokestatic 535	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   894: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   891: invokestatic 536	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   894: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   897: pop
     //   898: aload_3
-    //   899: ldc_w 615
+    //   899: ldc_w 616
     //   902: aload_0
     //   903: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   906: getfield 122	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:gameId	I
-    //   909: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   912: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   909: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   912: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   915: pop
     //   916: aload_3
-    //   917: ldc_w 873
+    //   917: ldc_w 876
     //   920: iload 6
-    //   922: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   925: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   922: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   925: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   928: pop
     //   929: aload 15
     //   931: invokevirtual 152	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   934: invokestatic 630	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   934: invokestatic 632	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   937: astore 14
     //   939: aload 15
-    //   941: invokevirtual 633	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   941: invokevirtual 635	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   944: astore 15
     //   946: lload 10
     //   948: lconst_0
@@ -1025,14 +1025,14 @@ public class CmGameStartChecker
     //   954: istore_2
     //   955: aload 14
     //   957: aload 15
-    //   959: ldc_w 875
+    //   959: ldc_w 878
     //   962: iload_2
     //   963: lload 12
     //   965: lconst_0
     //   966: aload_3
     //   967: ldc 117
     //   969: iconst_0
-    //   970: invokevirtual 638	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   970: invokevirtual 641	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   973: lload 10
     //   975: lconst_0
     //   976: lcmp
@@ -1052,31 +1052,31 @@ public class CmGameStartChecker
     //   1002: isub
     //   1003: istore 5
     //   1005: aconst_null
-    //   1006: ldc_w 785
-    //   1009: ldc_w 787
-    //   1012: ldc_w 877
+    //   1006: ldc_w 788
+    //   1009: ldc_w 790
+    //   1012: ldc_w 880
     //   1015: iload_1
     //   1016: iload 4
     //   1018: iconst_2
-    //   1019: anewarray 400	java/lang/String
+    //   1019: anewarray 401	java/lang/String
     //   1022: dup
     //   1023: iconst_0
     //   1024: iload 7
-    //   1026: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1026: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   1029: aastore
     //   1030: dup
     //   1031: iconst_1
     //   1032: iload 5
-    //   1034: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1034: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   1037: aastore
-    //   1038: invokestatic 794	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   1041: ldc_w 640
+    //   1038: invokestatic 797	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   1041: ldc_w 643
     //   1044: iconst_1
     //   1045: bipush 9
     //   1047: anewarray 4	java/lang/Object
     //   1050: dup
     //   1051: iconst_0
-    //   1052: ldc_w 879
+    //   1052: ldc_w 882
     //   1055: aastore
     //   1056: dup
     //   1057: iconst_1
@@ -1085,18 +1085,18 @@ public class CmGameStartChecker
     //   1063: aastore
     //   1064: dup
     //   1065: iconst_2
-    //   1066: ldc_w 649
+    //   1066: ldc_w 652
     //   1069: aastore
     //   1070: dup
     //   1071: iconst_3
     //   1072: aload_0
     //   1073: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   1076: getfield 122	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:gameId	I
-    //   1079: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1079: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1082: aastore
     //   1083: dup
     //   1084: iconst_4
-    //   1085: ldc_w 881
+    //   1085: ldc_w 884
     //   1088: aastore
     //   1089: dup
     //   1090: iconst_5
@@ -1105,23 +1105,23 @@ public class CmGameStartChecker
     //   1096: aastore
     //   1097: dup
     //   1098: bipush 6
-    //   1100: ldc_w 883
+    //   1100: ldc_w 886
     //   1103: aastore
     //   1104: dup
     //   1105: bipush 7
     //   1107: iload 6
-    //   1109: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1109: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1112: aastore
     //   1113: dup
     //   1114: bipush 8
-    //   1116: ldc_w 651
+    //   1116: ldc_w 654
     //   1119: aastore
     //   1120: invokestatic 135	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   1123: iconst_4
     //   1124: anewarray 4	java/lang/Object
     //   1127: dup
     //   1128: iconst_0
-    //   1129: ldc_w 885
+    //   1129: ldc_w 888
     //   1132: aastore
     //   1133: dup
     //   1134: iconst_1
@@ -1130,14 +1130,14 @@ public class CmGameStartChecker
     //   1140: aastore
     //   1141: dup
     //   1142: iconst_2
-    //   1143: ldc_w 887
+    //   1143: ldc_w 890
     //   1146: aastore
     //   1147: dup
     //   1148: iconst_3
     //   1149: lload 12
     //   1151: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1154: aastore
-    //   1155: invokestatic 720	anbd:a	([Ljava/lang/Object;)V
+    //   1155: invokestatic 723	alvx:a	([Ljava/lang/Object;)V
     //   1158: return
     //   1159: iload 7
     //   1161: istore_1
@@ -1153,7 +1153,7 @@ public class CmGameStartChecker
     //   1178: anewarray 4	java/lang/Object
     //   1181: dup
     //   1182: iconst_0
-    //   1183: ldc_w 898
+    //   1183: ldc_w 901
     //   1186: aastore
     //   1187: dup
     //   1188: iconst_1
@@ -1209,47 +1209,47 @@ public class CmGameStartChecker
     //   1287: if_icmpne +317 -> 1604
     //   1290: aload_0
     //   1291: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
-    //   1294: getfield 275	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
+    //   1294: getfield 276	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:retCode	J
     //   1297: lstore 10
     //   1299: aload_0
-    //   1300: getfield 833	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
+    //   1300: getfield 836	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_c_of_type_Long	J
     //   1303: aload_0
-    //   1304: getfield 864	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_Long	J
+    //   1304: getfield 867	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_b_of_type_Long	J
     //   1307: lsub
     //   1308: lstore 12
     //   1310: aconst_null
-    //   1311: invokestatic 869	bjjh:a	(Landroid/content/Context;)I
+    //   1311: invokestatic 872	bhov:a	(Landroid/content/Context;)I
     //   1314: istore 6
-    //   1316: new 612	java/util/HashMap
+    //   1316: new 613	java/util/HashMap
     //   1319: dup
-    //   1320: invokespecial 613	java/util/HashMap:<init>	()V
+    //   1320: invokespecial 614	java/util/HashMap:<init>	()V
     //   1323: astore 14
     //   1325: aload 14
-    //   1327: ldc_w 871
+    //   1327: ldc_w 874
     //   1330: lload 10
-    //   1332: invokestatic 535	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1335: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1332: invokestatic 536	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1335: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1338: pop
     //   1339: aload 14
-    //   1341: ldc_w 615
+    //   1341: ldc_w 616
     //   1344: aload_0
     //   1345: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   1348: getfield 122	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:gameId	I
-    //   1351: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1354: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1351: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1354: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1357: pop
     //   1358: aload 14
-    //   1360: ldc_w 873
+    //   1360: ldc_w 876
     //   1363: iload 6
-    //   1365: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1368: invokevirtual 621	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1365: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1368: invokevirtual 622	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1371: pop
     //   1372: aload 16
     //   1374: invokevirtual 152	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1377: invokestatic 630	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   1377: invokestatic 632	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   1380: astore 15
     //   1382: aload 16
-    //   1384: invokevirtual 633	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1384: invokevirtual 635	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1387: astore 16
     //   1389: lload 10
     //   1391: lconst_0
@@ -1259,14 +1259,14 @@ public class CmGameStartChecker
     //   1397: istore_2
     //   1398: aload 15
     //   1400: aload 16
-    //   1402: ldc_w 875
+    //   1402: ldc_w 878
     //   1405: iload_2
     //   1406: lload 12
     //   1408: lconst_0
     //   1409: aload 14
     //   1411: ldc 117
     //   1413: iconst_0
-    //   1414: invokevirtual 638	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   1414: invokevirtual 641	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1417: lload 10
     //   1419: lconst_0
     //   1420: lcmp
@@ -1286,31 +1286,31 @@ public class CmGameStartChecker
     //   1446: isub
     //   1447: istore 5
     //   1449: aconst_null
-    //   1450: ldc_w 785
-    //   1453: ldc_w 787
-    //   1456: ldc_w 877
+    //   1450: ldc_w 788
+    //   1453: ldc_w 790
+    //   1456: ldc_w 880
     //   1459: iload_1
     //   1460: iload 4
     //   1462: iconst_2
-    //   1463: anewarray 400	java/lang/String
+    //   1463: anewarray 401	java/lang/String
     //   1466: dup
     //   1467: iconst_0
     //   1468: iload 7
-    //   1470: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1470: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   1473: aastore
     //   1474: dup
     //   1475: iconst_1
     //   1476: iload 5
-    //   1478: invokestatic 617	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1478: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   1481: aastore
-    //   1482: invokestatic 794	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   1485: ldc_w 640
+    //   1482: invokestatic 797	com/tencent/mobileqq/utils/VipUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   1485: ldc_w 643
     //   1488: iconst_1
     //   1489: bipush 9
     //   1491: anewarray 4	java/lang/Object
     //   1494: dup
     //   1495: iconst_0
-    //   1496: ldc_w 879
+    //   1496: ldc_w 882
     //   1499: aastore
     //   1500: dup
     //   1501: iconst_1
@@ -1319,18 +1319,18 @@ public class CmGameStartChecker
     //   1507: aastore
     //   1508: dup
     //   1509: iconst_2
-    //   1510: ldc_w 649
+    //   1510: ldc_w 652
     //   1513: aastore
     //   1514: dup
     //   1515: iconst_3
     //   1516: aload_0
     //   1517: getfield 34	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker:jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam	Lcom/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam;
     //   1520: getfield 122	com/tencent/mobileqq/apollo/cmgame/CmGameStartChecker$StartCheckParam:gameId	I
-    //   1523: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1523: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1526: aastore
     //   1527: dup
     //   1528: iconst_4
-    //   1529: ldc_w 881
+    //   1529: ldc_w 884
     //   1532: aastore
     //   1533: dup
     //   1534: iconst_5
@@ -1339,23 +1339,23 @@ public class CmGameStartChecker
     //   1540: aastore
     //   1541: dup
     //   1542: bipush 6
-    //   1544: ldc_w 883
+    //   1544: ldc_w 886
     //   1547: aastore
     //   1548: dup
     //   1549: bipush 7
     //   1551: iload 6
-    //   1553: invokestatic 572	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1553: invokestatic 573	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1556: aastore
     //   1557: dup
     //   1558: bipush 8
-    //   1560: ldc_w 651
+    //   1560: ldc_w 654
     //   1563: aastore
     //   1564: invokestatic 135	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   1567: iconst_4
     //   1568: anewarray 4	java/lang/Object
     //   1571: dup
     //   1572: iconst_0
-    //   1573: ldc_w 885
+    //   1573: ldc_w 888
     //   1576: aastore
     //   1577: dup
     //   1578: iconst_1
@@ -1364,14 +1364,14 @@ public class CmGameStartChecker
     //   1584: aastore
     //   1585: dup
     //   1586: iconst_2
-    //   1587: ldc_w 887
+    //   1587: ldc_w 890
     //   1590: aastore
     //   1591: dup
     //   1592: iconst_3
     //   1593: lload 12
     //   1595: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1598: aastore
-    //   1599: invokestatic 720	anbd:a	([Ljava/lang/Object;)V
+    //   1599: invokestatic 723	alvx:a	([Ljava/lang/Object;)V
     //   1602: aload_3
     //   1603: athrow
     //   1604: iload 4

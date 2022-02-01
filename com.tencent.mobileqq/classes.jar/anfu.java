@@ -1,18 +1,32 @@
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
-class anfu
-  implements anol
+public class anfu
+  extends ResourcePluginListener
 {
-  anfu(anfs paramanfs, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
+  private anfu(GetConfig paramGetConfig) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void a(byte paramByte)
   {
-    anfs.a(this.jdField_a_of_type_Anfs, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+    if (this.a.b == 44)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      this.a.a.app.removeLebaListener(GetConfig.a(this.a));
+      this.a.a(7);
+    }
+  }
+  
+  public void b(byte paramByte)
+  {
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    this.a.a.app.removeAboutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfu
  * JD-Core Version:    0.7.0.1
  */

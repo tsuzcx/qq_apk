@@ -1,44 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
 
-public abstract class bmkv
-  extends OnPluginInstallListener.Stub
+class bmkv
+  implements View.OnClickListener
 {
-  public Bundle a;
+  bmkv(bmku parambmku, AEEditorFilterBean paramAEEditorFilterBean, int paramInt) {}
   
-  public bmkv(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a = paramBundle;
-  }
-  
-  public void a()
-  {
-    bmkq.a(BaseApplication.getContext(), this);
-  }
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    a(false, this.a);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
+    AEEditorFilterBean localAEEditorFilterBean = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean;
+    boolean bool = true;
+    if (bmku.a(this.jdField_a_of_type_Bmku) != null) {
+      bool = bmku.a(this.jdField_a_of_type_Bmku).a(this.jdField_a_of_type_Int, localAEEditorFilterBean);
+    }
+    if (bool) {
+      this.jdField_a_of_type_Bmku.a(this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmkv
  * JD-Core Version:    0.7.0.1
  */

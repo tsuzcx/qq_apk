@@ -1,15 +1,12 @@
-import com.tencent.av.gaudio.GaInviteDialogActivity;
-
 public class lnl
-  implements aeby
 {
-  public lnl(GaInviteDialogActivity paramGaInviteDialogActivity) {}
+  public long a;
+  public long b;
   
-  public void a(int paramInt1, int paramInt2)
+  public lnl(long paramLong1, long paramLong2)
   {
-    this.a.g = paramInt1;
-    this.a.h = paramInt2;
-    GaInviteDialogActivity.a(this.a);
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
 }
 

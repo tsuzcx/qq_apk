@@ -1,36 +1,14 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class akfr
 {
-  public static String a(MessageRecord paramMessageRecord)
+  public String a;
+  public String b;
+  public String c;
+  
+  public akfr(akfp paramakfp, String paramString1, String paramString2, String paramString3)
   {
-    if ((paramMessageRecord instanceof MessageForText))
-    {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
-    }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
-    }
-    if ((paramMessageRecord instanceof MessageForReplyText))
-    {
-      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
-    }
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
-    }
-    return "";
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

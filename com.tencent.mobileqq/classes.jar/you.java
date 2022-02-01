@@ -1,58 +1,36 @@
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.ListIterator;
-import java.util.Map.Entry;
-import java.util.WeakHashMap;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class you
+public final class you
 {
-  private LinkedHashMap<zsk, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
-  private WeakHashMap<ImageView, zsk> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  private final yov a;
   
-  public int a()
+  public you(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+    this(paramContext, paramOnGestureListener, null);
   }
   
-  public ListIterator<Map.Entry<zsk, WeakReference<ImageView>>> a()
+  public you(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+    this.a = new yow(paramContext, paramOnGestureListener, paramHandler);
   }
   
-  public zsk a(ImageView paramImageView)
+  public void a(int paramInt)
   {
-    paramImageView = (zsk)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
-    if (paramImageView != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
-    }
-    return paramImageView;
+    yow.a(paramInt);
   }
   
-  public void a()
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
   {
-    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.a.a(paramOnDoubleTapListener);
   }
   
-  public void a(ImageView paramImageView, zsk paramzsk)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    zsk localzsk = (zsk)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramzsk);
-    if (localzsk != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localzsk);
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramzsk, new WeakReference(paramImageView));
-  }
-  
-  public void a(zsk paramzsk)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramzsk);
-  }
-  
-  public zsk b(ImageView paramImageView)
-  {
-    return (zsk)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
+    return this.a.a(paramMotionEvent);
   }
 }
 

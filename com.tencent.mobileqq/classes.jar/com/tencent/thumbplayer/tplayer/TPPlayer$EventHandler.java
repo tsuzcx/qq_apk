@@ -110,6 +110,8 @@ class TPPlayer$EventHandler
     localTPPlayerListeners.onInfo(this.mPlayer, 1010, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
     return;
     localTPPlayerListeners.onStateChange(paramMessage.arg1, paramMessage.arg2);
+    return;
+    localTPPlayerListeners.onStopAsyncComplete(this.mPlayer);
   }
 }
 

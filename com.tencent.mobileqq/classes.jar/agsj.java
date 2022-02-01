@@ -1,19 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agsj
-  implements DialogInterface.OnClickListener
+  extends agsg
 {
-  agsj(agsi paramagsi, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agsj(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-    agsi.a(null);
-    if (agsi.a(this.jdField_a_of_type_Agsi) != null) {
-      agsi.a(this.jdField_a_of_type_Agsi).b();
-    }
+    super(paramQQAppInterface);
   }
 }
 

@@ -1,22 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.graphics.drawable.ClipDrawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.QavPanel;
 
-class mhw
-  implements Animator.AnimatorListener
+public class mhw
+  implements View.OnTouchListener
 {
-  mhw(mhr parammhr) {}
+  public mhw(QavPanel paramQavPanel) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    mhr.a(this.a).setAlpha(0.0F);
-    mhr.a(this.a).setVisibility(0);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setAlpha(127);
+      continue;
+      this.a.a.setAlpha(255);
+    }
   }
 }
 

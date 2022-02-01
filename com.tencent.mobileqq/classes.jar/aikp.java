@@ -1,102 +1,206 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.GameUsrAvatarClickLis.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.URLEncoder;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aikp
-  implements View.OnClickListener
+  extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  WeakReference<Context> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public aikp(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, Context paramContext)
+  public aikp(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = paramBoolean;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
+    super(paramQQAppInterface);
   }
   
-  private void a()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    try
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (this.app == null)) {}
+    aikq localaikq;
+    do
     {
-      String str = ((avld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).d();
-      Context localContext = (Context)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if ((!TextUtils.isEmpty(str)) && (localContext != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      do
       {
-        if (str.contains("?")) {}
-        for (str = str + "&roleId=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf-8");; str = str + "?roleId=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf-8"))
-        {
-          Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-          localIntent.putExtra("url", str);
-          localContext.startActivity(localIntent);
-          return;
-        }
-      }
+        return;
+        localaikq = (aikq)this.app.getManager(383);
+      } while (localaikq == null);
+      paramToServiceMsg = new oidb_0x5eb.RspBody();
+    } while (parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg) != 0);
+    if (paramToServiceMsg.rpt_msg_uin_data.has()) {}
+    for (paramToServiceMsg = paramToServiceMsg.rpt_msg_uin_data.get();; paramToServiceMsg = null)
+    {
+      localaikq.a(paramToServiceMsg);
+      notifyUI(1, true, new Object[] { paramToServiceMsg });
       return;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), paramString);
+    paramString.putWupBuffer(paramArrayOfByte);
+    if (paramBundle != null) {
+      paramString.extraData = paramBundle;
+    }
+    sendPbReq(paramString);
+  }
+  
+  public void a(List<Long> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()) || (paramList.size() > 70)) {
+      return;
+    }
+    Object localObject = new oidb_0x5eb.ReqBody();
+    ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.set(paramList);
+    ((oidb_0x5eb.ReqBody)localObject).uint32_req_age.set(1);
+    ((oidb_0x5eb.ReqBody)localObject).uint32_req_gender.set(1);
+    ((oidb_0x5eb.ReqBody)localObject).uint32_req_city.set(1);
+    ((oidb_0x5eb.ReqBody)localObject).uint32_req_province.set(1);
+    ((oidb_0x5eb.ReqBody)localObject).uint32_req_country.set(1);
+    localObject = makeOIDBPkg("OidbSvc.0x5eb_troopnotifycation", 1515, 22, ((oidb_0x5eb.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("uins", paramList);
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (this.app == null)) {}
+    label19:
+    label52:
+    do
     {
-      QLog.e(aikg.g, 1, localThrowable, new Object[0]);
+      do
+      {
+        do
+        {
+          break label19;
+          do
+          {
+            return;
+          } while (!paramFromServiceMsg.isSuccess());
+          paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+          try
+          {
+            paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
+            paramToServiceMsg = paramFromServiceMsg;
+          }
+          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+          {
+            int k;
+            int j;
+            int i;
+            break label52;
+            paramFromServiceMsg.b(paramObject);
+            notifyUI(1, true, new Object[] { paramObject });
+          }
+        } while ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has()) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null) || (paramToServiceMsg.uint32_result.get() != 0));
+        paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
+        k = PkgTools.getShortData(paramToServiceMsg, 0);
+      } while (paramToServiceMsg.length != k * 10 + 2);
+      paramFromServiceMsg = (aikq)this.app.getManager(383);
+    } while (paramFromServiceMsg == null);
+    paramObject = new ArrayList();
+    j = 2;
+    i = 0;
+    while (i < k)
+    {
+      long l = PkgTools.getLongData(paramToServiceMsg, j);
+      paramObject.add(Long.valueOf(l));
+      j += 4;
+      int m = PkgTools.getShortData(paramToServiceMsg, j);
+      j = j + 2 + 4;
+      paramFromServiceMsg.a(l, m);
+      i += 1;
     }
   }
   
-  private void a(String paramString)
+  public void b(List<Long> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    boolean bool;
+    if ((paramList == null) || (paramList.isEmpty()) || (paramList.size() > 70)) {}
     do
     {
       return;
-      GameUserInfo localGameUserInfo = ((avld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).a(paramString);
-      if (localGameUserInfo == null)
+      int i = 0;
+      while (i < paramList.size())
       {
-        QLog.w(aikg.g, 1, "GameUsrAvatarClickLis, usrInfo is null, roleId:" + paramString);
-        return;
+        if ((Long)paramList.get(i) == null) {
+          paramList.remove(i);
+        }
+        i += 1;
       }
-      if (TextUtils.isEmpty(localGameUserInfo.mFaceUrl))
-      {
-        QLog.w(aikg.g, 1, "GameUsrAvatarClickLis, faceurl is null, roleId:" + paramString);
-        return;
-      }
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130840274);
-      paramString.mFailedDrawable = localDrawable;
-      paramString.mLoadingDrawable = localDrawable;
-      paramString.mRequestWidth = agej.a(60.0F, BaseApplicationImpl.getContext().getResources());
-      paramString.mRequestHeight = agej.a(60.0F, BaseApplicationImpl.getContext().getResources());
-      URLDrawable.removeMemoryCacheByUrl(localGameUserInfo.mFaceUrl, paramString);
-      bool = bhmi.d(beqz.d(localGameUserInfo.mFaceUrl));
-    } while (!QLog.isColorLevel());
-    QLog.d(aikg.g, 2, "GameUsrAvatarClickLis del ret:" + bool);
+    } while (paramList.isEmpty());
+    short s = (short)paramList.size();
+    Object localObject = ByteBuffer.allocate(paramList.size() * 4 + 2);
+    ((ByteBuffer)localObject).putShort(s);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      ((ByteBuffer)localObject).putInt((int)((Long)paramList.next()).longValue());
+    }
+    paramList = ((ByteBuffer)localObject).array();
+    localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1640);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramList));
+    a("OidbSvc.0x668", ((oidb_sso.OIDBSSOPkg)localObject).toByteArray(), null);
   }
   
-  public void onClick(View paramView)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    ThreadManager.getSubThreadHandler().post(new GameMsgChatPie.GameUsrAvatarClickLis.1(this));
-    EventCollector.getInstance().onViewClicked(paramView);
+    return aikt.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive res == null || req == null");
+    }
+    String str;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive resultCode:" + paramFromServiceMsg.getResultCode() + "errMsg: " + paramFromServiceMsg.getBusinessFailMsg() + "serviceCmd: " + paramToServiceMsg.getServiceCmd());
+      }
+      str = paramToServiceMsg.getServiceCmd();
+      try
+      {
+        int i = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
+        if ((i != 0) && (QLog.isColorLevel())) {
+          QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive return Error result:" + i + "cmd：" + paramToServiceMsg.getServiceCmd());
+        }
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive exception: " + localInvalidProtocolBufferMicroException.getMessage() + "cmd：" + paramToServiceMsg.getServiceCmd());
+          }
+        }
+      }
+      if ("OidbSvc.0x5eb_troopnotifycation".equals(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"OidbSvc.0x668".equals(str));
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

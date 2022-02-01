@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.graphics.PointF;
-import bojl;
+import blnq;
 
 class AECameraGLSurfaceView$19
   implements Runnable
 {
-  AECameraGLSurfaceView$19(AECameraGLSurfaceView paramAECameraGLSurfaceView, bojl parambojl, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$19(AECameraGLSurfaceView paramAECameraGLSurfaceView, blnq paramblnq, float paramFloat1, float paramFloat2, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bojl.a(new PointF(this.jdField_a_of_type_Float, this.b), this.jdField_a_of_type_Int);
+    this.val$aeFilterProcessTex.a(new PointF(this.val$x, this.val$y), this.val$screenWidth);
   }
 }
 

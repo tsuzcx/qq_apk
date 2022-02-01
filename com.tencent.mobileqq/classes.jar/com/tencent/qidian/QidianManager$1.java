@@ -1,15 +1,15 @@
 package com.tencent.qidian;
 
-import bkgt;
+import bily;
 
 public class QidianManager$1
   implements Runnable
 {
-  public QidianManager$1(bkgt parambkgt) {}
+  public QidianManager$1(bily parambily) {}
   
   public void run()
   {
-    bkgt.a(this.this$0);
+    bily.a(this.this$0);
   }
 }
 

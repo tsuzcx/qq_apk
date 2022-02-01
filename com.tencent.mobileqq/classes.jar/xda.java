@@ -1,41 +1,68 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class xda
-  extends wpa
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vuc>
 {
-  public String a;
-  
-  public String a()
+  public xda(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    return wnu.a("StorySvc.get_profile_year_node_info");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vuc paramvuc)
   {
-    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
-    try
-    {
-      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
-      return new xdb(localRspProfileYearNodeList);
+    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramvuc.c)) {}
+    while ((!paramvuc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) || (TextUtils.isEmpty(paramvuc.d)) || (!((vuk)vux.a(19)).a(paramvuc.d).contains(paramvuc.jdField_a_of_type_JavaLangString))) {
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "get delete event. groupId=" + paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString + ", feedId=" + paramvuc.d);
+    }
+    ShareGroupItem localShareGroupItem;
+    if (paramQQStoryShareGroupProfileActivity.a != null)
     {
-      for (;;)
+      localShareGroupItem = paramQQStoryShareGroupProfileActivity.a;
+      int i = localShareGroupItem.videoCount - 1;
+      localShareGroupItem.videoCount = i;
+      if (i == 0)
       {
-        paramArrayOfByte.printStackTrace();
+        ThreadManager.getUIHandler().postDelayed(new QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1(this, paramQQStoryShareGroupProfileActivity), 400L);
+        return;
       }
     }
+    if (paramQQStoryShareGroupProfileActivity.isResume())
+    {
+      if (paramvuc.jdField_b_of_type_Boolean)
+      {
+        localShareGroupItem = ((xen)vux.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
+        if ((localShareGroupItem != null) && (localShareGroupItem.headerUnionIdList.contains(paramvuc.jdField_b_of_type_JavaLangString))) {
+          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
+        }
+      }
+      paramQQStoryShareGroupProfileActivity.b(false);
+      return;
+    }
+    if (paramvuc.jdField_b_of_type_Boolean)
+    {
+      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+      paramQQStoryShareGroupProfileActivity.c = true;
+      return;
+    }
+    paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
-    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqProfileYearNodeList.toByteArray();
+    return vuc.class;
   }
 }
 

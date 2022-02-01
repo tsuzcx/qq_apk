@@ -1,29 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.support.annotation.NonNull;
 
 public class axyu
-  implements biug<oidb_0x8e4.RspBody>
 {
-  public axyu(GameRoomInviteActivity paramGameRoomInviteActivity, bitz parambitz) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public axyu()
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, anzj.a(2131704002));
-        return;
-      }
-    }
-    this.jdField_a_of_type_Bitz.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new axyv(this));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "MusicStatus[needConvert:" + this.jdField_a_of_type_Boolean + ", , songId:" + this.jdField_a_of_type_JavaLangString + ", songName:" + this.jdField_b_of_type_JavaLangString + ", songType:" + this.jdField_a_of_type_Int + ", singerName:" + this.jdField_c_of_type_JavaLangString + ", remainTime:" + this.jdField_b_of_type_Int + ", sourceType:" + this.jdField_c_of_type_Int + ", pauseFlag:" + this.jdField_b_of_type_Boolean + ", duration:" + this.d;
   }
 }
 

@@ -1,89 +1,58 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-public class auxe
-  extends QIPCModule
+class auxe
+  implements Handler.Callback
 {
-  private static volatile auxe a;
-  public static volatile boolean a;
+  auxe(auxd paramauxd) {}
   
-  private auxe(String paramString)
+  private void a()
   {
-    super(paramString);
-  }
-  
-  public static auxe a()
-  {
-    if (jdField_a_of_type_Auxe == null) {}
-    try
-    {
-      if (jdField_a_of_type_Auxe == null) {
-        jdField_a_of_type_Auxe = new auxe("FlutterSubQIPCModule");
-      }
-      return jdField_a_of_type_Auxe;
+    if (auxd.a(this.a) != null) {
+      auxd.a(this.a).setRefreshing(false);
     }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean) {}
-    try
-    {
-      QIPCClientHelper.getInstance().register(a());
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
+    if (auxd.a(this.a) != null) {
+      auxd.a(this.a).setRefresh(false);
     }
   }
   
-  public static void b()
+  public boolean handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if (QIPCClientHelper.getInstance().getClient() != null)
+    default: 
+      return false;
+    case 3: 
+      QQToast.a(this.a.a(), 1, 2131718604, 0).b(auxd.a(this.a));
+      a();
+      return false;
+    case 4: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
       {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        jdField_a_of_type_Boolean = false;
+        if (i == 0) {
+          break label134;
+        }
+        auxd.a(this.a);
+        if (auxd.a(this.a) == null) {
+          break;
+        }
+        auxd.a(this.a).a(0);
+        this.a.a.sendEmptyMessageDelayed(5, 800L);
+        return false;
       }
-      return;
+      label134:
+      a();
+      QQToast.a(this.a.a(), 1, 2131718604, 0).b(auxd.a(this.a));
+      return false;
     }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool1;
-    if ("ACTION_INSTALL_RESULT".equals(paramString))
-    {
-      bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-      paramString = paramBundle.getString("KEY_INSTALL_DIR");
-      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
-      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
-      QLog.d("FlutterSubQIPCModule", 1, String.format("install finish isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
-      auxj.a().a(bool1, paramString, bool2, bool3);
-    }
-    for (;;)
-    {
-      return null;
-      if ("ACTION_PREDOWNLOAD_RESULT".equals(paramString))
-      {
-        bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-        QLog.d("FlutterSubQIPCModule", 1, "predownload finish isSuccess=" + bool1);
-        LocalMultiProcConfig.putBool("qzone_flutter_predownload_success", bool1);
-      }
-    }
+    a();
+    return false;
   }
 }
 

@@ -1,32 +1,20 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class ayrc
-  implements URLDrawable.URLDrawableListener
 {
-  public ayrc(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public int a;
+  public Point a;
+  public int b;
+  public Point b;
+  public int c;
+  public Point c;
+  public int d;
+  public Point d;
+  public Point e;
+  public Point f;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 2) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 2)
-    {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-    }
-  }
+  public ayrc(SingleTouchLayout paramSingleTouchLayout) {}
 }
 
 

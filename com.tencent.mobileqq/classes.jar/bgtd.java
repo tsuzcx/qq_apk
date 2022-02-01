@@ -1,63 +1,64 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa48.oidb_0xa48.RspBody;
-import tencent.im.oidb.cmd0xa48.oidb_0xa48.SendItem;
-import tencent.im.oidb.cmd0xa48.oidb_0xa48.SendListRsp;
 
-class bgtd
-  extends nkp
+public class bgtd
+  extends WebViewPlugin
 {
-  bgtd(bgsu parambgsu, bgst parambgst) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bgtd()
   {
-    int j = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    this.mPluginNameSpace = "forceHttps";
+  }
+  
+  private boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    nko localnko = nko.a();
+    boolean bool1 = bool2;
+    if (localnko.e(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftMemberList. onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      bool1 = bool2;
+      if (!localnko.f(paramString)) {
+        bool1 = true;
       }
-      this.jdField_a_of_type_Bgst.a(paramInt, "");
-      return;
     }
-    paramBundle = new oidb_0xa48.RspBody();
-    try
+    return bool1;
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    if (!nko.a().d()) {
+      return false;
+    }
+    if (("http".equals(paramString2)) && (a(paramString1)))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new long[paramBundle.msg_send_list_rsp.rpt_today_birth.size()];
-      int i = 0;
-      while (i < paramArrayOfByte.length)
-      {
-        paramArrayOfByte[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_today_birth.get(i)).uint64_uin.get();
-        i += 1;
+      paramString2 = this.mRuntime.a();
+      if ((paramString2 != null) && (paramString2.mStatistics != null)) {
+        paramString2.mStatistics.C = true;
       }
-      long[] arrayOfLong1 = new long[paramBundle.msg_send_list_rsp.rpt_send_gift.size()];
-      i = 0;
-      while (i < arrayOfLong1.length)
+      paramString2 = "https" + paramString1.substring("http".length());
+      CustomWebView localCustomWebView = this.mRuntime.a();
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        arrayOfLong1[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_send_gift.get(i)).uint64_uin.get();
-        i += 1;
+        localStringBuilder = new StringBuilder().append("need switch url=").append(npn.b(paramString1, new String[0]));
+        if (localCustomWebView != null) {
+          break label155;
+        }
       }
-      long[] arrayOfLong2 = new long[paramBundle.msg_send_list_rsp.rpt_recv_gift.size()];
-      i = j;
-      while (i < arrayOfLong2.length)
+      label155:
+      for (paramString1 = ", view==null";; paramString1 = "")
       {
-        arrayOfLong2[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_recv_gift.get(i)).uint64_uin.get();
-        i += 1;
+        QLog.i("forceHttps", 2, paramString1);
+        if (localCustomWebView == null) {
+          break;
+        }
+        localCustomWebView.loadUrl(paramString2);
+        return true;
       }
-      this.jdField_a_of_type_Bgst.a(paramArrayOfByte, arrayOfLong1, arrayOfLong2);
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftMemberList. error=" + QLog.getStackTraceString(paramArrayOfByte));
-      }
-      this.jdField_a_of_type_Bgst.a(paramInt, "InvalidProtocolBufferMicroException");
-    }
+    return false;
   }
 }
 

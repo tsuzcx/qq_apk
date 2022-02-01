@@ -1,17 +1,22 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ajpj
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  ajpj(ajpi paramajpi) {}
+  ajpj(ajpd paramajpd) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
+    if (paramInt == 1) {
+      ajpd.a(this.a, ajpd.a(this.a));
     }
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.b();
+    ajpd.a(this.a).moveTaskToBack(true);
   }
 }
 

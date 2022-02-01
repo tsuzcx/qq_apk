@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class aehq
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public aehq(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public aehq(SplashActivity paramSplashActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
+    localIntent.putExtra("key_reset", true);
+    this.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

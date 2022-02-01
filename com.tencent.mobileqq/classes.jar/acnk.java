@@ -1,38 +1,27 @@
-import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acnk
-  implements EIPCResultCallback
+public class acnk
+  implements View.OnClickListener
 {
-  acnk(acnj paramacnj, WeakReference paramWeakReference, AdIPCManager.Params paramParams) {}
+  public acnk(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    boolean bool;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      bool = true;
-      localResult.success = bool;
-      if (paramEIPCResult == null) {
-        break label83;
-      }
+    bcef.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
     }
-    label83:
-    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
-    {
-      localResult.bundle = paramEIPCResult;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ((AdIPCManager.Callback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).onCallback(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params, localResult);
-      }
-      return;
-      bool = false;
-      break;
+    AccountManageActivity.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import akyb;
+import ajvs;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -18,10 +18,10 @@ import android.os.PowerManager.WakeLock;
 import android.provider.Settings.System;
 import android.view.MotionEvent;
 import android.view.Window;
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -66,8 +66,9 @@ public class QQLSUnlockActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -134,7 +135,7 @@ public class QQLSUnlockActivity
         QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          akyb.a((QQAppInterface)paramBundle, false);
+          ajvs.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -155,13 +156,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    bdmc.a(this).c(this);
+    StatisticCollector.getInstance(this).logOnPause(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    bdmc.a(this).b(this);
+    StatisticCollector.getInstance(this).logOnResume(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
@@ -173,7 +174,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qqlive.module.videoreport.page.IScrollReader;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 
 public class soi
-  implements IScrollReader
+  extends ThreadLocal<Integer>
 {
-  public soi(FastWebActivity paramFastWebActivity) {}
+  public soi(ReadInJoyXListView paramReadInJoyXListView) {}
   
-  public int readScroll(View paramView)
+  protected Integer a()
   {
-    if ((paramView instanceof AbsListView)) {
-      return ((AbsListView)paramView).getLastVisiblePosition();
-    }
-    return 0;
+    return Integer.valueOf(0);
   }
 }
 

@@ -1,80 +1,46 @@
 import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter;
+import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import java.lang.ref.WeakReference;
 
-class abjq
-  implements abkc
+public class abjq
+  implements AdHalfScreenAdapter
 {
-  abjq(abjp paramabjp) {}
-  
-  public void f()
+  public AdError show(AdHalfScreenAdapter.Params paramParams)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
-    }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    }
-    this.a.f();
-    if ((this.a.jdField_a_of_type_Abkb != null) && (!this.a.jdField_a_of_type_Abkb.a())) {
-      this.a.jdField_a_of_type_Abkb.a();
-    }
-  }
-  
-  public void g()
-  {
-    if (this.a.jdField_a_of_type_Abkg.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.g();
-    if ((this.a.jdField_a_of_type_Abkb != null) && (this.a.jdField_a_of_type_Abkb.a())) {
-      this.a.jdField_a_of_type_Abkb.b();
-    }
-  }
-  
-  public void h()
-  {
-    if (this.a.jdField_a_of_type_Abkg.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_Abjo != null) {
-      this.a.jdField_a_of_type_Abjo.a(4);
-    }
-    if ((this.a.jdField_a_of_type_Abkb != null) && (this.a.jdField_a_of_type_Abkb.a())) {
-      this.a.jdField_a_of_type_Abkb.b();
-    }
-    this.a.h();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
-  }
-  
-  public void i()
-  {
-    this.a.i();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_Abkg.a() != this.a) {
-        break label87;
+      abrl.d("GdtHalfScreenAdapter", "show error");
+      return new AdError(4);
+    }
+    Object localObject = null;
+    if (paramParams.style == 2)
+    {
+      AdCanvasData localAdCanvasData = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
+      if (localAdCanvasData != null)
+      {
+        localObject = localAdCanvasData;
+        if (localAdCanvasData.isValid()) {}
+      }
+      else
+      {
+        return new AdError(4);
       }
     }
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_Abkg.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.n();
+    GdtBaseHalfScreenFragment.a((Activity)paramParams.activity.get(), GdtBaseHalfScreenFragmentForJs.class, paramParams.ad, localObject, paramParams.webUrl, paramParams.style, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjq
  * JD-Core Version:    0.7.0.1
  */

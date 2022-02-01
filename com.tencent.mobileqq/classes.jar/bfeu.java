@@ -1,33 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
-class bfeu
-  implements View.OnClickListener
+public class bfeu
 {
-  private bfev jdField_a_of_type_Bfev;
-  private bfew jdField_a_of_type_Bfew;
+  public View a;
+  public URLImageView a;
   
-  public bfeu(bfew parambfew)
-  {
-    this.jdField_a_of_type_Bfew = parambfew;
-  }
-  
-  public void a(bfev parambfev)
-  {
-    this.jdField_a_of_type_Bfev = parambfev;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    bfew.a(this.jdField_a_of_type_Bfew, i);
-    if (this.jdField_a_of_type_Bfev != null) {
-      this.jdField_a_of_type_Bfev.a((bfex)bfew.a(this.jdField_a_of_type_Bfew).get(i));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public bfeu(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
 }
 
 

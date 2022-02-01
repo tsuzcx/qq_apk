@@ -1,16 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
 
-final class awer
-  implements EIPCResultCallback
+public class awer
+  extends BroadcastReceiver
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public awer(MusicGeneQQBrowserActivity paramMusicGeneQQBrowserActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
-    }
-    if (paramEIPCResult.code != 0) {}
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      String str1;
+      String str2;
+      String str3;
+      if ("BROAD_CAST_SHARE_MUSIC_GENE".equals(paramContext))
+      {
+        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+        MusicGeneQQBrowserActivity.a(this.a, str2, str3, "", str1, paramContext, paramIntent, 1101244924L);
+        return;
+      }
+      if ("BROAD_CAST_SHARE_SONG".equals(paramContext))
+      {
+        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+        String str4 = paramIntent.getStringExtra("BUNDLE_KEY_AUDIO_URL");
+        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+        MusicGeneQQBrowserActivity.a(this.a, str2, str3, str4, str1, paramContext, paramIntent, 1101244924L);
+        return;
+      }
+    } while (!"BROAD_CAST_UPDATE_TITLE".equals(paramContext));
   }
 }
 

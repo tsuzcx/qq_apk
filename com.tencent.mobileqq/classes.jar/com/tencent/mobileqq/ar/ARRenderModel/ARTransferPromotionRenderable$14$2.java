@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apfk;
-import aphx;
-import blha;
+import anyw;
+import aobk;
+import bjmp;
 import com.tencent.qphone.base.util.QLog;
 
 class ARTransferPromotionRenderable$14$2
@@ -12,11 +12,11 @@ class ARTransferPromotionRenderable$14$2
   
   public void run()
   {
-    if ((this.a.this$0.a != null) && (aphx.a(this.a.this$0) != null) && (aphx.a(this.a.this$0).a()))
+    if ((this.a.this$0.a != null) && (aobk.a(this.a.this$0) != null) && (aobk.a(this.a.this$0).a()))
     {
-      long l = aphx.a(this.a.this$0).a();
-      if (aphx.a(this.a.this$0) != null) {
-        this.a.this$0.a.postDelayed(aphx.a(this.a.this$0), 4600L - l);
+      long l = aobk.a(this.a.this$0).a();
+      if (aobk.a(this.a.this$0) != null) {
+        this.a.this$0.a.postDelayed(aobk.a(this.a.this$0), 4600L - l);
       }
       QLog.d("ARTransferPromotionRenderable", 2, "start Post  mRepeatCheckRunnable " + l);
     }

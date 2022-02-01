@@ -1,63 +1,23 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aujo
-  implements SeekBar.OnSeekBarChangeListener
+  implements EIPCResultCallback
 {
-  aujo(aujj paramaujj) {}
+  aujo(aujn paramaujn, long paramLong) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((paramBoolean) && (aujj.a(this.a) != null))
+    switch (paramEIPCResult.code)
     {
-      aujj.a(this.a, aujj.b(this.a, paramInt));
-      this.a.jdField_a_of_type_Aukp.b(aujj.a(this.a));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("#@#@", 1, "onProgressChanged userPos[" + aujj.a(this.a) + "]");
-      }
-      this.a.jdField_a_of_type_Aukp.d(false);
     }
-  }
-  
-  @TargetApi(16)
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((aujj.a(this.a) == null) || (!aujj.a(this.a).isPlaying()))
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    aujj.d(this.a);
-    aujj.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.jdField_a_of_type_Boolean = aujj.a(this.a).isPlaying();
-    aujj.a(this.a).pause();
-    this.a.jdField_a_of_type_Aukp.a(null);
-    aujj.a(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (aujj.a(this.a) == null) {}
     for (;;)
     {
-      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      bcef.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - aujn.a(this.jdField_a_of_type_Aujn)), String.valueOf(this.jdField_a_of_type_Long), "", "");
       return;
-      aujj.a(this.a, aujj.b(this.a, paramSeekBar.getProgress()));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("##########", 1, "mMediaPlayer sekTo [" + aujj.a(this.a) + "]");
-      }
-      aujj.a(this.a).seekTo(aujj.a(this.a));
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        aujj.a(this.a).post(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_Aukp.d(true);
-        aujj.a(this.a).play();
-      }
+      aujn.a(this.jdField_a_of_type_Aujn).a(2, paramEIPCResult.data);
+      continue;
+      aujn.a(this.jdField_a_of_type_Aujn).a(1, paramEIPCResult.data);
     }
   }
 }

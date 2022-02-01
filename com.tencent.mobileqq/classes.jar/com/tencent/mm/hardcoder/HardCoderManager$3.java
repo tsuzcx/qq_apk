@@ -1,8 +1,8 @@
 package com.tencent.mm.hardcoder;
 
-import adms;
-import admw;
-import bjty;
+import acjl;
+import acjp;
+import bhzn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,33 +11,33 @@ import java.io.File;
 public class HardCoderManager$3
   implements Runnable
 {
-  public HardCoderManager$3(admw paramadmw, QQAppInterface paramQQAppInterface) {}
+  public HardCoderManager$3(acjp paramacjp, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     QLog.d("HardCoder.QQManager", 1, "start download");
-    File localFile = new File(adms.b + "_tmp");
-    int i = HttpDownloadUtil.a(this.a, "https://qd.myapp.com/myapp/qqteam/qq_tools/libhc4.jpg", localFile);
+    File localFile = new File(acjl.b + "_tmp");
+    int i = HttpDownloadUtil.downloadData(this.a, "https://qd.myapp.com/myapp/qqteam/qq_tools/libhc4.jpg", localFile);
     if (i == 0) {
-      if ((localFile.exists()) && ("5c08438266c3084212bb9307aa7c2aaa".equalsIgnoreCase(bjty.a(localFile))))
+      if ((localFile.exists()) && ("5c08438266c3084212bb9307aa7c2aaa".equalsIgnoreCase(bhzn.a(localFile))))
       {
-        localFile.renameTo(new File(adms.b));
-        admw.a(this.this$0, 6);
+        localFile.renameTo(new File(acjl.b));
+        acjp.a(this.this$0, 6);
       }
     }
     for (;;)
     {
-      localFile = new File(adms.a);
+      localFile = new File(acjl.a);
       if (localFile.exists()) {
         localFile.delete();
       }
-      QLog.d("HardCoder.QQManager", 1, "downloadResult = " + i + ", state = " + admw.a(this.this$0));
+      QLog.d("HardCoder.QQManager", 1, "downloadResult = " + i + ", state = " + acjp.a(this.this$0));
       return;
       QLog.d("HardCoder.QQManager", 1, "check md5 fail");
       localFile.delete();
-      admw.a(this.this$0, 5);
+      acjp.a(this.this$0, 5);
       continue;
-      admw.a(this.this$0, 5);
+      acjp.a(this.this$0, 5);
     }
   }
 }

@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
-public class wxk
-  implements bizc
+class wxk
+  implements MediaPlayer.OnPreparedListener
 {
-  public wxk(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
+  wxk(wxj paramwxj, wxe paramwxe) {}
   
-  public void a(String paramString)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.a.setVisibility(4);
+    this.jdField_a_of_type_Wxe.a_(this.jdField_a_of_type_Wxj);
   }
 }
 

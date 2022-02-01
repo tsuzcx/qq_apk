@@ -1,28 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.TMG.utils.QLog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class adqe
-  implements DialogInterface.OnKeyListener
+public class adqe
+  implements DialogInterface.OnDismissListener
 {
-  adqe(adqa paramadqa, DialogInterface.OnCancelListener paramOnCancelListener) {}
+  public adqe(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
-      {
-        QLog.e("SdkAuthDialog", 1, "keyListener is null");
-        return true;
-      }
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
-      this.jdField_a_of_type_Adqa.a();
-      bdll.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
+    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
+      LoginInfoActivity.a(this.a, null);
     }
-    return true;
   }
 }
 

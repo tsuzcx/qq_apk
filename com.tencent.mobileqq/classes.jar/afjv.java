@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afjv
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public afjv(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public afjv(TroopChatPie paramTroopChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131719093);
-    }
-    this.a.a(paramMessage, 1);
+    this.a.finish();
   }
 }
 

@@ -1,22 +1,11 @@
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.Network;
-import com.tencent.qphone.base.util.QLog;
-
 class awvh
-  extends ConnectivityManager.NetworkCallback
+  implements bjog
 {
-  awvh(awvg paramawvg) {}
+  awvh(awur paramawur) {}
   
-  public void onAvailable(Network paramNetwork)
+  public void onDismiss()
   {
-    QLog.d("GateWayVerifyManager", 1, "switch network success");
-    if ((awvg.a(this.a) == null) || (!awvg.a(this.a).equals(paramNetwork)))
-    {
-      awvg.a(this.a, paramNetwork);
-      if (awvg.a(this.a) != null) {
-        awvg.a(this.a).a(paramNetwork);
-      }
-    }
+    this.a.b = false;
   }
 }
 

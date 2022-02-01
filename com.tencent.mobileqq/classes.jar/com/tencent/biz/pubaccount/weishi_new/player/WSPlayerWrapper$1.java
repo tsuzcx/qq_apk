@@ -1,32 +1,32 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
 import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.util.Properties;
-import ukv;
-import ulb;
-import ulc;
+import urq;
+import urv;
+import urw;
+import usk;
 
 public class WSPlayerWrapper$1
   implements Runnable
 {
-  public WSPlayerWrapper$1(ulc paramulc, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public WSPlayerWrapper$1(urw paramurw, usk paramusk) {}
   
   public void run()
   {
     Object localObject = null;
     if (this.a != null) {
-      localObject = this.a.getStreamDumpInfo();
+      localObject = this.a.a();
     }
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = ulb.a((String)localObject);
+      localObject = urv.a((String)localObject);
       if (localObject != null)
       {
-        ulc.a(this.this$0, Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue());
-        localObject = ulc.a(this.this$0);
+        urw.a(this.this$0, Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue());
+        localObject = urw.a(this.this$0);
         if (localObject != null) {
-          ((ukv)localObject).a(this.this$0, ulc.a(this.this$0));
+          ((urq)localObject).a(this.this$0, urw.a(this.this$0));
         }
       }
     }
@@ -34,7 +34,7 @@ public class WSPlayerWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerWrapper.1
  * JD-Core Version:    0.7.0.1
  */

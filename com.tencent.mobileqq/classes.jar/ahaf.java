@@ -1,20 +1,28 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahaf
+class ahaf
   implements View.OnClickListener
 {
-  public ahaf(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
+  ahaf(ahae paramahae, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    if ((ahae.a(this.jdField_a_of_type_Ahae) == null) || (ahae.a(this.jdField_a_of_type_Ahae).a.a(this.jdField_a_of_type_JavaLangString) == null))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = ahae.a(this.jdField_a_of_type_Ahae).a.a(this.jdField_a_of_type_JavaLangString, ahae.a(this.jdField_a_of_type_Ahae).jdField_d_of_type_Int, ahae.a(this.jdField_a_of_type_Ahae).jdField_d_of_type_JavaUtilList);
+    String str2 = ahae.a(this.jdField_a_of_type_Ahae) + "";
+    if (bool) {}
+    for (String str1 = "1";; str1 = "2")
+    {
+      bcef.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str2, str1, "", "");
+      this.jdField_a_of_type_Ahae.notifyDataSetChanged();
+      break;
+    }
   }
 }
 

@@ -1,58 +1,68 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.olympic.TorchInfo;
 import com.tencent.qphone.base.util.QLog;
 
-class axqf
-  implements bcxm
+public class axqf
+  extends axqg
 {
-  axqf(axqb paramaxqb, long paramLong, axpw paramaxpw, String paramString, int paramInt1, int paramInt2) {}
+  public axqf(OlympicManager paramOlympicManager) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadVideo id = " + this.jdField_a_of_type_Long + ", result =" + paramInt);
-    }
-    if (this.jdField_a_of_type_Axpw.jdField_a_of_type_Bcxn.a != null)
+    if (QLog.isColorLevel())
     {
-      String str = ShortVideoUtils.a(this.jdField_a_of_type_Axpw.jdField_a_of_type_Bcxn.a, "mp4");
-      axpx localaxpx = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString);
-      if ((localaxpx != null) && (!localaxpx.jdField_a_of_type_Boolean))
-      {
-        localaxpx.jdField_a_of_type_Int = paramInt;
-        localaxpx.jdField_a_of_type_Axpw.jdField_a_of_type_Int = 3;
-        if (paramInt == 0) {
-          i = 1;
-        }
-        localaxpx.jdField_a_of_type_Axqo = new axqo(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, i, str, false);
-        this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString, localaxpx);
-        this.jdField_a_of_type_Axqb.a(localaxpx.jdField_a_of_type_Axpw, 0, 0, "");
-      }
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
     }
   }
   
-  public void b(int paramInt)
+  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
   {
-    if ((this.jdField_a_of_type_Axqb.a != null) && (this.jdField_a_of_type_Axpw.jdField_a_of_type_Bcxn.a != null)) {
-      this.jdField_a_of_type_Axqb.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, this.jdField_a_of_type_Axpw.jdField_a_of_type_Bcxn.a.videoFileSize, true);
-    }
-    axpx localaxpx;
-    if (this.jdField_a_of_type_Axpw.jdField_a_of_type_Bcxn != null)
+    if (QLog.isColorLevel())
     {
-      localaxpx = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString);
-      if ((localaxpx != null) && (!localaxpx.jdField_a_of_type_Boolean))
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+    }
+    OlympicManager.a(this.a, false);
+    if (paramBoolean)
+    {
+      OlympicManager.a(this.a, paramArrayOfByte);
+      if (paramInt == 0)
       {
-        localaxpx.c = paramInt;
-        this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaLangString, localaxpx);
-        if (!axqb.a(this.jdField_a_of_type_Axqb)) {
-          break label136;
+        bcef.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
+        this.a.a(1);
+        this.a.a(paramTorchInfo);
+        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+        paramArrayOfByte = Long.valueOf(-1L);
+        paramString = paramArrayOfByte;
+        if (OlympicManager.a(this.a) != null)
+        {
+          paramString = paramArrayOfByte;
+          if (OlympicManager.a(this.a).type == 2) {
+            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
+          }
         }
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, localaxpx.c);
+        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
       }
     }
-    return;
-    label136:
-    axqb.b(this.jdField_a_of_type_Axqb, localaxpx, paramInt);
+    else
+    {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.a.a(1);
+      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+      return;
+    }
+    OlympicManager.b(this.a, false);
+    OlympicManager.b(this.a, null);
+    OlympicManager.a(this.a, 0);
   }
 }
 

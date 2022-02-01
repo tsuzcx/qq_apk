@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.addon;
 
-import amrx;
-import amry;
+import almr;
+import alms;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DiyPendantFetcher$6
   implements Runnable
 {
-  public DiyPendantFetcher$6(amrx paramamrx) {}
+  public DiyPendantFetcher$6(almr paramalmr) {}
   
   public void run()
   {
@@ -18,18 +18,18 @@ public class DiyPendantFetcher$6
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
-      amry localamry = (amry)localIterator.next();
-      if ((localamry != null) && (localamry.a() != null))
+      alms localalms = (alms)localIterator.next();
+      if ((localalms != null) && (localalms.a() != null))
       {
-        if (!localHashSet.contains(localamry))
+        if (!localHashSet.contains(localalms))
         {
-          localHashSet.add(localamry);
-          localamry.invalidateSelf();
-          this.this$0.a.remove(localamry);
+          localHashSet.add(localalms);
+          localalms.invalidateSelf();
+          this.this$0.a.remove(localalms);
         }
       }
       else {
-        this.this$0.a.remove(localamry);
+        this.this$0.a.remove(localalms);
       }
     }
     if (QLog.isColorLevel()) {

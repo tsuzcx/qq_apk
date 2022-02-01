@@ -1,17 +1,22 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract class aitn
+class aitn
+  implements DialogInterface.OnClickListener
 {
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  aitn(aitl paramaitl) {}
   
-  public abstract JSONObject a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      bgge.a(aitl.a(this.a), aitl.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", aitl.a(this.a).getApp().getString(2131718745), "");
+    }
+  }
 }
 
 

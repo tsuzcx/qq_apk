@@ -1,54 +1,44 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import org.json.JSONObject;
 
 public class apyk
-  implements apyw
 {
-  public EIPCResult a(Bundle paramBundle)
+  private String a = "";
+  private String b = "";
+  
+  public static apyk a(String paramString)
   {
-    QQAppInterface localQQAppInterface = apxv.a();
-    if (localQQAppInterface == null)
+    if (paramString == null) {}
+    do
     {
-      QLog.e("ArkApp.GetNicknameHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    String str = paramBundle.getString("Uin", localQQAppInterface.getCurrentAccountUin());
-    Object localObject = null;
-    if (!TextUtils.isEmpty(agyw.a)) {
-      localObject = bhlg.h(localQQAppInterface, agyw.a, str);
-    }
-    if (localObject != null)
-    {
-      paramBundle = (Bundle)localObject;
-      if (!TextUtils.equals((CharSequence)localObject, str)) {}
-    }
-    else
-    {
-      localObject = bhlg.q(localQQAppInterface, str);
-      paramBundle = (Bundle)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramBundle = bhlg.a(localQQAppInterface, str, 0);
+      return null;
+      try
+      {
+        apyk localapyk = new apyk();
+        paramString = new JSONObject(paramString);
+        localapyk.a = paramString.optString("dest_icon", "");
+        localapyk.b = paramString.optString("avatar_pendant", "");
+        return localapyk;
       }
-    }
-    localObject = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.i("ArkApp.GetNicknameHandler", 1, "GetNicknameHandler.onCall, nickname is empty");
-      ((Bundle)localObject).putString("Nickname", "");
-    }
-    for (;;)
-    {
-      return EIPCResult.createResult(0, (Bundle)localObject);
-      ((Bundle)localObject).putString("Nickname", paramBundle);
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyk
  * JD-Core Version:    0.7.0.1
  */

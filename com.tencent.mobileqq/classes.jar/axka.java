@@ -1,53 +1,72 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Log;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender.SSOException;
+import java.net.URL;
+import java.util.concurrent.Callable;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class axka
-  extends WebViewPlugin
+  implements Callable<byte[]>
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  final byte[] jdField_a_of_type_ArrayOfByte;
+  
+  public axka(WebServiceSSO.WebServiceSSOSender paramWebServiceSSOSender, int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    int i = 0;
-    if ((paramString2 == null) || (!"msgForward".equalsIgnoreCase(paramString2)) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!"showForwardToWXMsg".equalsIgnoreCase(paramString3)) || (paramVarArgs == null)) {
-      return false;
-    }
-    if (paramVarArgs.length > 0) {
-      while (i < paramVarArgs.length)
-      {
-        QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
-        i += 1;
-      }
-    }
-    paramJsBridgeListener = "0";
-    try
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  private byte[] a(URL paramURL, byte[] paramArrayOfByte)
+  {
+    Object localObject = null;
+    paramArrayOfByte = RequestBody.create(null, paramArrayOfByte);
+    paramURL = new Request.Builder().url(paramURL).post(paramArrayOfByte).build();
+    paramArrayOfByte = WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a).newCall(paramURL).execute();
+    paramURL = localObject;
+    if (paramArrayOfByte.isSuccessful())
     {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("rId");
-      paramJsBridgeListener = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
+      paramArrayOfByte.body().contentLength();
+      paramURL = paramArrayOfByte.body().bytes();
+      paramArrayOfByte.body().close();
+      try
       {
-        long l;
-        QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
+        paramArrayOfByte = new JSONObject(new String(paramURL));
+        try
+        {
+          int i = paramArrayOfByte.getInt("ErrorCode");
+          paramArrayOfByte = paramArrayOfByte.getString("ErrorInfo");
+          throw new WebServiceSSO.WebServiceSSOSender.SSOException(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender, i, paramArrayOfByte);
+        }
+        catch (JSONException paramArrayOfByte)
+        {
+          throw new WebServiceSSO.WebServiceSSOSender.SSOException(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender, -3, "SSO通信异常，异常信息解析错误。原始内容：" + new String(paramURL));
+        }
+        return paramURL;
       }
+      catch (Exception paramArrayOfByte) {}
     }
-    paramString1 = this.mRuntime.a();
-    l = paramJsBridgeListener.hashCode();
-    paramString2 = new Intent(paramString1, MultiForwardActivity.class);
-    paramString2.putExtra("chat_subType", 3);
-    paramString2.putExtra("uin", "0");
-    paramString2.putExtra("uintype", 1040);
-    paramString2.putExtra("multi_url", paramJsBridgeListener);
-    paramString2.putExtra("multi_uniseq", l);
-    paramString1.startActivity(paramString2);
-    paramString1.finish();
-    return true;
+  }
+  
+  public byte[] a()
+  {
+    if (WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a)) {}
+    for (Object localObject = "https://test.tim.qq.com/v4/";; localObject = "https://open.tim.qq.com/v4/")
+    {
+      localObject = new URL((String)localObject + "NowSSOSvcProxy" + "/" + this.jdField_a_of_type_JavaLangString + WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a));
+      Log.d("RequestCallable", "WebServiceSSO--send url=" + ((URL)localObject).toString());
+      return a((URL)localObject, this.jdField_a_of_type_ArrayOfByte);
+    }
   }
 }
 

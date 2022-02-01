@@ -1,14 +1,8 @@
-import android.view.View;
-
-class sqz
-  implements blkc
+public abstract interface sqz
 {
-  sqz(sqx paramsqx) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.a.a.setSelected(false);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

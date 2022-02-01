@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import org.json.JSONObject;
 
 public class alxb
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  private static int a = 10000;
+  public alxb(CmGameAvHandler.9 param9) {}
   
-  public static void a(int paramInt)
+  public void onComplete(int paramInt1, int paramInt2)
   {
-    a = paramInt;
-  }
-  
-  public static void a(String paramString, Properties paramProperties)
-  {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
+    int i = 0;
+    if (paramInt2 == 0) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        alvx.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
+      }
+      catch (Exception localException) {}
+      i = -1;
     }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    bdla.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
   }
 }
 

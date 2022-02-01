@@ -65,7 +65,7 @@ public class PreloadFlowControlConfig
     //   51: invokestatic 78	com/tencent/mobileqq/activity/qwallet/preload/PreloadFlowControlConfig:getConfigPath	(Ljava/lang/String;Lmqq/app/AppRuntime;)Ljava/lang/String;
     //   54: astore 4
     //   56: aload 4
-    //   58: invokestatic 83	alil:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   58: invokestatic 83	akgd:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   61: checkcast 2	com/tencent/mobileqq/activity/qwallet/preload/PreloadFlowControlConfig
     //   64: astore_0
     //   65: aload_0

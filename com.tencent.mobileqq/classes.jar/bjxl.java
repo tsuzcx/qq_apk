@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class bjxl
-  implements DialogInterface.OnCancelListener
+class bjxl
+  implements View.OnLayoutChangeListener
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public bjxl(bjxd parambjxd, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = bjvg.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
+  private bjxl(bjxh parambjxh) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_Bjxd.a(this.b);
-    bjvg.a("720", this.jdField_a_of_type_JavaLangString, this.b);
+    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if ((paramInt1 != 0) && (!bjxh.d(this.jdField_a_of_type_Bjxh)) && ((this.jdField_a_of_type_Int != paramView.getHeight()) || (this.b != paramView.getWidth()))) {
+        this.jdField_a_of_type_Bjxh.f(bjxh.b(this.jdField_a_of_type_Bjxh));
+      }
+      this.jdField_a_of_type_Int = paramView.getHeight();
+      this.b = paramView.getWidth();
+      return;
+    }
   }
 }
 

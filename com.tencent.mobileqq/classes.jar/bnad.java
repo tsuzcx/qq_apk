@@ -1,29 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnad
-  implements Parcelable.Creator<CoverCacheData.PackageInfo>
+public class bnad
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public CoverCacheData.PackageInfo a(Parcel paramParcel)
-  {
-    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
-    if (paramParcel != null)
-    {
-      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localPackageInfo.d = paramParcel.readString();
-    }
-    return localPackageInfo;
-  }
+  public bnad(CropVideoActivity paramCropVideoActivity) {}
   
-  public CoverCacheData.PackageInfo[] a(int paramInt)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    return null;
+    float f = paramScaleGestureDetector.getScaleFactor();
+    CropVideoActivity.a(this.a).b(f, f, 1.0F);
+    return true;
   }
 }
 

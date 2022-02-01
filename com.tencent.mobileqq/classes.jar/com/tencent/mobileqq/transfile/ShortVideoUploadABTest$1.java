@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import bexj;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ShortVideoUploadABTest$1
+final class ShortVideoUploadABTest$1
   implements Runnable
 {
+  ShortVideoUploadABTest$1(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, StringBuilder paramStringBuilder) {}
+  
   public void run()
   {
-    bexj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+    ShortVideoUploadABTest.doSendABTestMessage(this.val$app, BaseApplication.getContext(), this.val$aioSessionInfo, this.val$sb.toString());
   }
 }
 

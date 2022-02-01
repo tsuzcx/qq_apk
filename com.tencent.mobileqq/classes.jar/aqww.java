@@ -1,89 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.ColorDrawable;
 
 public class aqww
-  implements DialogInterface.OnDismissListener
+  extends ColorDrawable
 {
-  public aqww(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private int a;
+  private int b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aqww(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|pickerType : " + this.a.i);
-    }
-    if (this.a.i == 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-      this.a.jdField_a_of_type_Anve.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-      paramDialogInterface = this.a.jdField_a_of_type_Anve.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-      if (AppSetting.c)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701265) + paramDialogInterface);
-        bhga.a(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701268) + paramDialogInterface);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|mCurAgeIndex1 : " + this.a.f + ", mCurAgeIndex2 : " + this.a.g + ", mAgeSelectIndex1 : " + this.a.jdField_b_of_type_Int + ", mAgeSelectIndex2 : " + this.a.jdField_c_of_type_Int);
-      }
-      bdll.b(this.a.app, "CliOper", "", "", "0X8004243", "0X8004243", 0, 0, this.a.jdField_b_of_type_Int + "", this.a.jdField_c_of_type_Int + "", "", "");
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
-      if (ConditionSearchFriendActivity.a(this.a) > 0)
-      {
-        this.a.jdField_e_of_type_AndroidViewView.scrollBy(0, -ConditionSearchFriendActivity.a(this.a));
-        ConditionSearchFriendActivity.c(this.a, 0);
-      }
-      return;
-      if (this.a.i == 3)
-      {
-        this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-        this.a.jdField_a_of_type_Anve.b(this.a.jdField_d_of_type_Int);
-        if (AppSetting.c)
-        {
-          this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701267) + anve.c[this.a.jdField_d_of_type_Int]);
-          bhga.a(this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701278) + anve.c[this.a.jdField_d_of_type_Int]);
-        }
-        bdll.b(this.a.app, "CliOper", "", "", "0X8006F0B", "0X8006F0B", 0, 0, this.a.jdField_d_of_type_Int + "", "", "", "");
-      }
-      else
-      {
-        this.a.jdField_d_of_type_AndroidWidgetTextView = null;
-        paramDialogInterface = ConditionSearchFriendActivity.a(this.a);
-        String[] arrayOfString = new String[4];
-        arrayOfString[0] = this.a.jdField_b_of_type_JavaLangString;
-        arrayOfString[1] = this.a.jdField_a_of_type_ArrayOfJavaLangString[0];
-        arrayOfString[2] = this.a.jdField_a_of_type_ArrayOfJavaLangString[1];
-        arrayOfString[3] = this.a.jdField_a_of_type_ArrayOfJavaLangString[2];
-        if (this.a.i == 1)
-        {
-          this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-          this.a.jdField_a_of_type_Anve.a(0, paramDialogInterface);
-          this.a.jdField_a_of_type_Anve.b(arrayOfString);
-          if (AppSetting.c)
-          {
-            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701264) + paramDialogInterface);
-            bhga.a(this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701263) + paramDialogInterface);
-          }
-        }
-        else if (this.a.i == 2)
-        {
-          this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
-          this.a.jdField_a_of_type_Anve.a(1, paramDialogInterface);
-          this.a.jdField_a_of_type_Anve.c(arrayOfString);
-          if (AppSetting.c)
-          {
-            this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701274) + paramDialogInterface);
-            bhga.a(this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701275) + paramDialogInterface);
-          }
-        }
-      }
-    }
+    super(0);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public aqww(int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1);
+    this.a = paramInt2;
+    this.b = paramInt3;
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.b;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a;
   }
 }
 

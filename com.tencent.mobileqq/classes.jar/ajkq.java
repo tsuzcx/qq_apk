@@ -1,94 +1,87 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class ajkq
-  extends ajjr
-  implements szu
+  extends bggc
 {
-  public ajkq(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
-  {
-    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
-  }
+  public ajkq(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public View a(int paramInt, View paramView)
+  protected void handlePendantAuth(boolean paramBoolean, Object paramObject)
   {
-    paramInt = this.jdField_a_of_type_Ajln.c();
-    int i = this.jdField_a_of_type_Ajln.b();
-    ajkr localajkr;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ajkr)))
+    paramObject = (Bundle)paramObject;
+    long l = paramObject.getLong("pendantId");
+    paramObject.getInt("seriesId");
+    Object localObject = paramObject.getString("uin");
+    int i = paramObject.getInt("result");
+    if ((l == -1L) || (localObject == null)) {}
+    do
     {
-      localajkr = new ajkr();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561365, null);
-      localajkr.a = ((ThemeTabLayout)paramView.findViewById(2131378363));
-      localajkr.a.a(this);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendSlideTabBuilder", 2, "getView new ConnectionsTabLayout tabPosition  ->" + paramInt + ", tabId =" + i);
+      return;
+      if (!paramBoolean) {
+        break label472;
       }
-      if ((this.jdField_a_of_type_Ajmf != null) || ((this.jdField_a_of_type_Ajmf instanceof ajmh))) {
-        localajkr.a.a(((ajmh)this.jdField_a_of_type_Ajmf).a, i);
+      if (l != 0L) {
+        break;
       }
-      localajkr.a.setOnTabSelectedListener(this);
-      paramView.setTag(localajkr);
-    }
-    for (;;)
-    {
-      c(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendSlideTabBuilder", 2, "getView update tabPosition = " + paramInt + ", tabId =" + i);
+      this.a.b.setVisibility(4);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.a.jdField_a_of_type_Bgcu != null) {
+        this.a.jdField_a_of_type_Bgcu.c = -1;
       }
-      if ((localajkr != null) && (localajkr.a != null) && ((this.jdField_a_of_type_Ajmf != null) || ((this.jdField_a_of_type_Ajmf instanceof ajmh))))
+      bcef.b(this.a.app, "CliOper", "", "", "0X8005FD4", "0X8005FD4", 0, 0, "", "", "", "");
+      if ((this.a.jdField_a_of_type_Alhs != null) && (this.a.jdField_a_of_type_JavaUtilList != null))
       {
-        ArrayList localArrayList = ((ajmh)this.jdField_a_of_type_Ajmf).a;
-        localajkr.a.b(localArrayList, i);
+        paramObject = ((AvatarPendantManager)this.a.app.getManager(46)).a();
+        this.a.jdField_a_of_type_Alhs.a(paramObject, this.a.jdField_a_of_type_JavaUtilList);
       }
-      return paramView;
-      localajkr = (ajkr)paramView.getTag();
+    } while ((this.a.jdField_a_of_type_Bgct == null) || (!this.a.jdField_a_of_type_Bgct.jdField_a_of_type_Boolean));
+    localObject = bgev.a("linkPendantSet");
+    paramObject = localObject;
+    if (localObject != null) {
+      paramObject = ((String)localObject).replace("[id]", String.valueOf(this.a.jdField_a_of_type_Bgct.jdField_a_of_type_Int));
     }
-  }
-  
-  public ArrayList<ajiq> a()
-  {
-    if ((this.jdField_a_of_type_Ajmf != null) || ((this.jdField_a_of_type_Ajmf instanceof ajmh))) {
-      return ((ajmh)this.jdField_a_of_type_Ajmf).a;
-    }
-    return null;
-  }
-  
-  public void a(szz paramszz)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendSlideTabBuilder", 2, "builder onTabSelected tab ->" + paramszz.a());
+      QLog.i("AvatarPendantActivity", 2, "handlePendantAuth, mPendantInfo.isLink == true, jump to url =" + paramObject);
     }
-    if ((this.jdField_a_of_type_Ajln != null) && (paramszz != null))
+    localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramObject);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    ((Intent)localObject).putExtra("webStyle", "noBottomBar");
+    this.a.startActivity((Intent)localObject);
+    bcef.b(this.a.app, "CliOper", "", "", "0X8006517", "0X8006517", 0, 0, "", "", "", "");
+    return;
+    this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131718191);
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    localObject = this.a.app;
+    if (this.a.d) {}
+    for (paramObject = "1";; paramObject = "0")
     {
-      this.jdField_a_of_type_Ajln.b(((Integer)paramszz.a()).intValue(), paramszz.a());
-      int i = this.jdField_a_of_type_Ajln.b();
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", i, 0, "0", "3", "", "");
+      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "0X8005FD6", "0X8005FD6", 0, 0, paramObject, "", "", "");
+      if (!this.a.d) {
+        break;
+      }
+      this.a.d = false;
+      break;
     }
-  }
-  
-  public void b(szz paramszz) {}
-  
-  public void c(View paramView)
-  {
-    if (paramView == null) {
+    label472:
+    paramObject = (PendantTipsInfo)paramObject.getSerializable("tipsInfo");
+    if (paramObject != null)
+    {
+      this.a.a(paramObject, l, i);
       return;
     }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839402);
-      return;
-    }
-    paramView.setBackgroundResource(2130850231);
+    QLog.e("AvatarPendantActivity", 1, "handlePendantAuth, tipsInfo == null, pendantId = " + l);
   }
-  
-  public void c(szz paramszz) {}
 }
 
 

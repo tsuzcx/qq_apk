@@ -1,204 +1,272 @@
-import android.annotation.TargetApi;
-import android.graphics.ImageFormat;
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.PreviewCallback;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 
 public class ljr
-  extends ljg
-  implements Camera.PreviewCallback
 {
-  public boolean a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u;
+  public static String v;
+  public static String w;
+  public static String x;
+  public static String y;
+  public static String z;
+  public byte a;
+  public int a;
+  @Deprecated
+  lke a;
+  public byte b;
+  public int b;
+  public byte c;
+  public int c;
+  public byte d;
+  public int d;
+  public byte e;
+  public byte f;
+  public byte g;
+  public byte h;
+  public byte i;
+  public byte j;
+  public byte k;
+  public byte l;
+  public byte m;
+  public byte n;
+  public byte o;
+  public byte p;
+  public byte q;
+  public byte r;
+  public byte s;
+  public byte t;
+  public byte u;
+  public byte v;
   
-  public ljr(lje paramlje, ljf paramljf)
+  static
   {
-    super(paramlje, paramljf);
-    this.jdField_a_of_type_Boolean = true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    jdField_a_of_type_JavaLangString = "sharp/camera_angle/" + "enable";
+    localStringBuilder.setLength(0);
+    jdField_b_of_type_JavaLangString = "sharp/camera_angle/" + "local/" + "front";
+    localStringBuilder.setLength(0);
+    jdField_c_of_type_JavaLangString = "sharp/camera_angle/" + "local/" + "back";
+    localStringBuilder.setLength(0);
+    jdField_d_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_e_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "90";
+    localStringBuilder.setLength(0);
+    jdField_f_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "180";
+    localStringBuilder.setLength(0);
+    jdField_g_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "270";
+    localStringBuilder.setLength(0);
+    jdField_h_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_i_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "90";
+    localStringBuilder.setLength(0);
+    jdField_j_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "180";
+    localStringBuilder.setLength(0);
+    jdField_k_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "270";
+    localStringBuilder.setLength(0);
+    jdField_l_of_type_JavaLangString = "sharp/camera_angle/" + "sensor";
+    localStringBuilder.setLength(0);
+    jdField_m_of_type_JavaLangString = "sharp/camera_angle/" + "mini_sdk";
+    localStringBuilder.setLength(0);
+    jdField_n_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "enable";
+    localStringBuilder.setLength(0);
+    jdField_o_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "local/" + "front";
+    localStringBuilder.setLength(0);
+    jdField_p_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "local/" + "back";
+    localStringBuilder.setLength(0);
+    jdField_q_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_r_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "90";
+    localStringBuilder.setLength(0);
+    jdField_s_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "180";
+    localStringBuilder.setLength(0);
+    jdField_t_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "270";
+    localStringBuilder.setLength(0);
+    jdField_u_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "0";
+    localStringBuilder.setLength(0);
+    jdField_v_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "90";
+    localStringBuilder.setLength(0);
+    w = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "180";
+    localStringBuilder.setLength(0);
+    x = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "270";
+    localStringBuilder.setLength(0);
+    y = "sharp/camera_angle_landscape/" + "sensor";
+    localStringBuilder.setLength(0);
+    z = "sharp/camera_angle_landscape/" + "mini_sdk";
+    localStringBuilder.setLength(0);
   }
   
-  private int a(int paramInt)
+  public ljr()
   {
-    int i = ImageFormat.getBitsPerPixel(paramInt);
-    float f = i * 1.0F / 8.0F;
-    int j = (int)(lje.b * lje.jdField_a_of_type_Int * f);
-    if (AudioHelper.f()) {
-      QLog.w("MyPreviewCallback", 1, "getPreviewBufferSize, previewFormat[" + paramInt + "], bitPixel[" + i + "], byteNum[" + f + "], bufSize[" + j + "]");
-    }
-    return j;
+    this.jdField_a_of_type_Lke = null;
   }
   
-  private boolean a(int paramInt)
+  private byte a(int paramInt)
   {
-    if (paramInt <= 0) {
-      return false;
+    if ((paramInt < -128) || (paramInt > 127)) {
+      throw new IllegalArgumentException(paramInt + " out of the range of byte");
     }
-    try
-    {
-      ljp.a().a(paramInt);
-      return true;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError1)
-    {
-      for (;;)
-      {
-        URLDrawable.clearMemoryCache();
-        try
-        {
-          ljp.a().a(paramInt);
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          QLog.e("MyPreviewCallback", 2, "allocateFrame failed , size:" + paramInt + ", " + localOutOfMemoryError2.getMessage());
-        }
-      }
-    }
-    return false;
+    return (byte)paramInt;
   }
   
-  public void a()
+  public boolean a(lke paramlke)
   {
-    ljp.a().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MyPreviewCallback", 2, "release");
-    }
+    return paramlke.a(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) >= 1;
   }
   
-  public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
+  public boolean b(lke paramlke)
   {
-    this.jdField_a_of_type_Ljt.a();
-    int j;
-    int k;
-    int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Lje.a() != null)) {
-      if (a(a(this.jdField_a_of_type_Lje.a().getPreviewFormat())))
-      {
-        j = 0;
-        k = 0;
-        if (j < ljp.a().a())
-        {
-          paramSurfaceTexture = ljp.a().a(0);
-          i = k;
-          if (paramSurfaceTexture != null)
-          {
-            ljp.a().a(paramSurfaceTexture, 1);
-            this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramSurfaceTexture);
-            k += 1;
-            i = k;
-            if (k < 2) {}
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this);
-          i = 1;
-        }
-      }
-    }
+    boolean bool2 = false;
+    if (a(paramlke)) {}
     for (;;)
     {
-      QLog.w("MyPreviewCallback", 1, "setPreviewCallback, type[" + i + "], seq[" + paramLong + "]");
-      return;
-      j += 1;
-      k = i;
-      break;
-      this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
-      i = 2;
-      continue;
-      i = 3;
-      this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
+      try
+      {
+        this.jdField_b_of_type_Int = paramlke.a(jdField_m_of_type_JavaLangString, this.jdField_b_of_type_Int);
+        if (Build.VERSION.SDK_INT < this.jdField_b_of_type_Int) {
+          continue;
+        }
+        this.jdField_a_of_type_Byte = a(paramlke.a(jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte));
+        this.jdField_b_of_type_Byte = a(paramlke.a(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Byte));
+        this.jdField_c_of_type_Byte = a(paramlke.a(jdField_d_of_type_JavaLangString, this.jdField_c_of_type_Byte));
+        this.jdField_d_of_type_Byte = a(paramlke.a(jdField_e_of_type_JavaLangString, this.jdField_d_of_type_Byte));
+        this.jdField_e_of_type_Byte = a(paramlke.a(jdField_f_of_type_JavaLangString, this.jdField_e_of_type_Byte));
+        this.jdField_f_of_type_Byte = a(paramlke.a(jdField_g_of_type_JavaLangString, this.jdField_f_of_type_Byte));
+        this.jdField_g_of_type_Byte = a(paramlke.a(jdField_h_of_type_JavaLangString, this.jdField_g_of_type_Byte));
+        this.jdField_h_of_type_Byte = a(paramlke.a(jdField_i_of_type_JavaLangString, this.jdField_h_of_type_Byte));
+        this.jdField_i_of_type_Byte = a(paramlke.a(jdField_j_of_type_JavaLangString, this.jdField_i_of_type_Byte));
+        this.jdField_j_of_type_Byte = a(paramlke.a(jdField_k_of_type_JavaLangString, this.jdField_j_of_type_Byte));
+        this.jdField_k_of_type_Byte = a(paramlke.a(jdField_l_of_type_JavaLangString, this.jdField_k_of_type_Byte));
+        bool1 = true;
+      }
+      catch (Exception paramlke)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("CameraConfigParser", 2, "parse camera angle config error, reset data.", paramlke);
+        this.jdField_a_of_type_Byte = 0;
+        this.jdField_b_of_type_Byte = 0;
+        this.jdField_c_of_type_Byte = 0;
+        this.jdField_d_of_type_Byte = 0;
+        this.jdField_e_of_type_Byte = 0;
+        this.jdField_f_of_type_Byte = 0;
+        this.jdField_g_of_type_Byte = 0;
+        this.jdField_h_of_type_Byte = 0;
+        this.jdField_i_of_type_Byte = 0;
+        this.jdField_j_of_type_Byte = 0;
+        this.jdField_k_of_type_Byte = 0;
+        this.jdField_b_of_type_Int = 0;
+        bool1 = bool2;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraConfigParser", 2, "value_local_front:" + this.jdField_a_of_type_Byte + ", value_local_back:" + this.jdField_b_of_type_Byte + ", value_remote_front_0:" + this.jdField_c_of_type_Byte + ", value_remote_front_90:" + this.jdField_d_of_type_Byte + ", value_remote_front_180:" + this.jdField_e_of_type_Byte + ", value_remote_front_270:" + this.jdField_f_of_type_Byte + ", value_remote_back_0:" + this.jdField_g_of_type_Byte + ", value_remote_back_90:" + this.jdField_h_of_type_Byte + ", value_remote_back_180:" + this.jdField_i_of_type_Byte + ", value_remote_back_270:" + this.jdField_j_of_type_Byte + ", value_sensor:" + this.jdField_k_of_type_Byte + ", value_minisdk:" + this.jdField_b_of_type_Int);
+      }
+      return bool1;
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CameraConfigParser", 2, "ignore camera angle config: sdk version not in range, miniSdk:" + this.jdField_b_of_type_Int);
+        bool1 = bool2;
+        continue;
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CameraConfigParser", 2, "camera angle config disable, return");
+          bool1 = bool2;
+        }
+      }
     }
   }
   
-  @TargetApi(8)
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public boolean c(lke paramlke)
   {
-    if (paramArrayOfByte == null)
-    {
-      if (AudioHelper.f()) {
-        QLog.w("MyPreviewCallback", 1, "onPreviewFrame, data is null, Camera[" + paramCamera + "], camera[" + this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera + "]");
-      }
-      this.jdField_a_of_type_Ljt.b();
-    }
-    int n;
-    int j;
-    int i;
-    boolean bool;
-    label327:
-    do
-    {
-      return;
-      a(this.jdField_a_of_type_Ljh);
-      n = paramArrayOfByte.length;
-      j = lje.jdField_a_of_type_Int;
-      i = lje.b;
-      int k = i;
-      int m = j;
-      if (n != j * i * 3 / 2)
-      {
-        if (n != 460800) {
-          break;
-        }
-        j = 640;
-        i = 480;
-        k = i;
-        m = j;
-        if (AudioHelper.f())
-        {
-          QLog.w("MyPreviewCallback", 1, "OnPreviewData false, expectSize[" + lje.jdField_a_of_type_Int + ", " + lje.b + "], dataLen[" + n + "], fixSize[" + j + ", " + i + "]");
-          m = j;
-          k = i;
-        }
-      }
-      this.jdField_a_of_type_Ljt.a(this.jdField_a_of_type_Ljh.jdField_a_of_type_Int, this.jdField_a_of_type_Lje.f, lje.d, this.jdField_a_of_type_Lje.e, this.jdField_a_of_type_Ljh.c, this.jdField_a_of_type_Ljh.d, this.jdField_a_of_type_Ljh.b, n, m, k);
-      if (this.jdField_a_of_type_Ljf != null)
-      {
-        paramCamera = lpc.a();
-        long l = this.jdField_a_of_type_Ljt.j;
-        i = lje.c;
-        j = this.jdField_a_of_type_Ljh.jdField_a_of_type_Int;
-        n = this.jdField_a_of_type_Ljh.b;
-        if (this.jdField_a_of_type_Lje.f != 1) {
-          break label467;
-        }
-        bool = true;
-        paramCamera.a(l, paramArrayOfByte, m, k, i, j, n, bool, lje.d, System.currentTimeMillis());
-        this.jdField_a_of_type_Ljf.a(paramCamera);
-      }
-    } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera == null));
-    paramCamera = ljp.a().a(0);
-    if (paramCamera == null)
-    {
-      paramCamera = paramArrayOfByte;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.w("MyPreviewCallback", 1, "OnPreviewData, 没有空闲的缓存");
-        paramCamera = paramArrayOfByte;
-      }
-    }
+    return paramlke.a(jdField_n_of_type_JavaLangString, this.jdField_c_of_type_Int) >= 1;
+  }
+  
+  public boolean d(lke paramlke)
+  {
+    boolean bool2 = false;
+    if (c(paramlke)) {}
     for (;;)
     {
-      ljp.a().a(paramCamera, 1);
-      this.jdField_a_of_type_Lje.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramCamera);
-      return;
-      if (n == 1382400)
+      try
       {
-        j = 1280;
-        i = 720;
-        break;
+        this.jdField_d_of_type_Int = paramlke.a(z, this.jdField_d_of_type_Int);
+        if (Build.VERSION.SDK_INT < this.jdField_d_of_type_Int) {
+          continue;
+        }
+        this.jdField_l_of_type_Byte = a(paramlke.a(jdField_o_of_type_JavaLangString, this.jdField_l_of_type_Byte));
+        this.jdField_m_of_type_Byte = a(paramlke.a(jdField_p_of_type_JavaLangString, this.jdField_m_of_type_Byte));
+        this.jdField_n_of_type_Byte = a(paramlke.a(jdField_q_of_type_JavaLangString, this.jdField_n_of_type_Byte));
+        this.jdField_o_of_type_Byte = a(paramlke.a(jdField_r_of_type_JavaLangString, this.jdField_o_of_type_Byte));
+        this.jdField_p_of_type_Byte = a(paramlke.a(jdField_s_of_type_JavaLangString, this.jdField_p_of_type_Byte));
+        this.jdField_q_of_type_Byte = a(paramlke.a(jdField_t_of_type_JavaLangString, this.jdField_q_of_type_Byte));
+        this.jdField_r_of_type_Byte = a(paramlke.a(jdField_u_of_type_JavaLangString, this.jdField_r_of_type_Byte));
+        this.jdField_s_of_type_Byte = a(paramlke.a(jdField_v_of_type_JavaLangString, this.jdField_s_of_type_Byte));
+        this.jdField_t_of_type_Byte = a(paramlke.a(w, this.jdField_t_of_type_Byte));
+        this.jdField_u_of_type_Byte = a(paramlke.a(x, this.jdField_u_of_type_Byte));
+        this.jdField_v_of_type_Byte = a(paramlke.a(y, this.jdField_v_of_type_Byte));
+        bool1 = true;
       }
-      if (n != 115200) {
-        break;
+      catch (Exception paramlke)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("CameraConfigParser", 2, "parse camera landscape angle config error, reset data.", paramlke);
+        this.jdField_l_of_type_Byte = 0;
+        this.jdField_m_of_type_Byte = 0;
+        this.jdField_n_of_type_Byte = 0;
+        this.jdField_o_of_type_Byte = 0;
+        this.jdField_p_of_type_Byte = 0;
+        this.jdField_q_of_type_Byte = 0;
+        this.jdField_r_of_type_Byte = 0;
+        this.jdField_s_of_type_Byte = 0;
+        this.jdField_t_of_type_Byte = 0;
+        this.jdField_u_of_type_Byte = 0;
+        this.jdField_v_of_type_Byte = 0;
+        this.jdField_d_of_type_Int = 0;
+        bool1 = bool2;
+        continue;
       }
-      j = 320;
-      i = 240;
-      break;
-      label467:
-      bool = false;
-      break label327;
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraConfigParser", 2, "value_landscape_local_front:" + this.jdField_l_of_type_Byte + ", value_landscape_local_back:" + this.jdField_m_of_type_Byte + ", value_landscape_remote_front_0:" + this.jdField_n_of_type_Byte + ", value_landscape_remote_front_90:" + this.jdField_o_of_type_Byte + ", value_landscape_remote_front_180:" + this.jdField_p_of_type_Byte + ", value_landscape_remote_front_270:" + this.jdField_q_of_type_Byte + ", value_landscape_remote_back_0:" + this.jdField_r_of_type_Byte + ", value_landscape_remote_back_90:" + this.jdField_s_of_type_Byte + ", value_landscape_remote_back_180:" + this.jdField_t_of_type_Byte + ", value_landscape_remote_back_270:" + this.jdField_u_of_type_Byte + ", value_landscape_sensor:" + this.jdField_v_of_type_Byte + ", value_landscape_minisdk:" + this.jdField_d_of_type_Int);
+      }
+      return bool1;
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CameraConfigParser", 2, "ignore camera landscape angle config: sdk version not in range, miniSdk:" + this.jdField_d_of_type_Int);
+        bool1 = bool2;
+        continue;
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CameraConfigParser", 2, "camera landscape angle config disable");
+          bool1 = bool2;
+        }
+      }
     }
   }
 }

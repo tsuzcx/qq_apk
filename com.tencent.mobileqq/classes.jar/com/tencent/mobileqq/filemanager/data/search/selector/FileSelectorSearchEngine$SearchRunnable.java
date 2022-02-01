@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.data.search.selector;
 
-import aual;
-import bcmd;
-import bcmq;
+import asmv;
+import bbff;
+import bbfs;
 import java.util.ArrayList;
 import java.util.List;
 
 class FileSelectorSearchEngine$SearchRunnable
   implements Runnable
 {
-  bcmd<aual> jdField_a_of_type_Bcmd;
-  bcmq jdField_a_of_type_Bcmq;
+  bbff<asmv> jdField_a_of_type_Bbff;
+  bbfs jdField_a_of_type_Bbfs;
   
   private FileSelectorSearchEngine$SearchRunnable(FileSelectorSearchEngine paramFileSelectorSearchEngine) {}
   
@@ -18,18 +18,18 @@ class FileSelectorSearchEngine$SearchRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Bcmq == null)
+      if (this.jdField_a_of_type_Bbfs == null)
       {
-        this.jdField_a_of_type_Bcmd.a(new ArrayList(), 6);
+        this.jdField_a_of_type_Bbff.a(new ArrayList(), 6);
         return;
       }
-      bcmq localbcmq = this.jdField_a_of_type_Bcmq;
-      String str = this.jdField_a_of_type_Bcmq.a;
-      List localList = this.this$0.a(localbcmq);
+      bbfs localbbfs = this.jdField_a_of_type_Bbfs;
+      String str = this.jdField_a_of_type_Bbfs.a;
+      List localList = this.this$0.a(localbbfs);
       try
       {
-        if ((this.jdField_a_of_type_Bcmd != null) && (localbcmq == this.jdField_a_of_type_Bcmq) && (str.equals(this.jdField_a_of_type_Bcmq.a))) {
-          this.jdField_a_of_type_Bcmd.a(localList, 1);
+        if ((this.jdField_a_of_type_Bbff != null) && (localbbfs == this.jdField_a_of_type_Bbfs) && (str.equals(this.jdField_a_of_type_Bbfs.a))) {
+          this.jdField_a_of_type_Bbff.a(localList, 1);
         }
         return;
       }
@@ -44,7 +44,7 @@ class FileSelectorSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,16 @@
-public abstract interface bhrj
+public class bhrj
 {
-  public abstract void a(bamu parambamu, bamv parambamv);
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public abstract void b(bamu parambamu, bamv parambamv);
+  public String toString()
+  {
+    return "[flag=" + this.jdField_a_of_type_Int + ", title=" + this.jdField_a_of_type_JavaLangString + ", isNew=" + this.jdField_a_of_type_Boolean + ", api=" + this.jdField_b_of_type_JavaLangString + ", id=" + this.jdField_b_of_type_Int + ", isChecked=" + this.jdField_b_of_type_Boolean + "]";
+  }
 }
 
 

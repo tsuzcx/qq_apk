@@ -1,29 +1,14 @@
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class aurs
-  implements boae<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
+final class aurs
+  implements EIPCResultCallback
 {
-  aurs(aurp paramaurp, ausc paramausc) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
-    }
-    if (this.jdField_a_of_type_Ausc != null) {
-      this.jdField_a_of_type_Ausc.a(paramInt, paramString);
-    }
-  }
-  
-  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
-    }
-    if (this.jdField_a_of_type_Ausc != null) {
-      this.jdField_a_of_type_Ausc.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
     }
   }
 }

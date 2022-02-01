@@ -1,260 +1,70 @@
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.ad.tangram.ark.AdArkAdapter;
-import com.tencent.ad.tangram.ark.AdArkAdapter.ArkNotifyCallback;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
-import com.tencent.ad.tangram.ark.AdArkAdapter.DataParams;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Params;
-import com.tencent.gdtad.adapter.GdtArkViewAdapter.4;
-import com.tencent.gdtad.adapter.GdtArkViewAdapter.5;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
-import com.tencent.mobileqq.pb.PBField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.gdt.ark_form_data.ArkFormData;
-import tencent.gdt.ark_form_data.ArkFormData.FormInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
+import com.tencent.mobileqq.abtest.ABTestController;
+import com.tencent.mobileqq.abtest.ABTestController.EvtType;
+import com.tencent.mtt.abtestsdk.ABTestApi;
+import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
 
 public class acmz
-  implements apwk, AdArkAdapter
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private AdArkAdapter.ArkNotifyCallback jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$ArkNotifyCallback;
+  private volatile RomaExpEntity jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
   
-  private agyw a(ArkAppView paramArkAppView, bhow parambhow)
+  public acmz(String paramString1, String paramString2, String paramString3)
   {
-    agyw localagyw = new agyw();
-    parambhow.jdField_a_of_type_Agyw = localagyw;
-    int i = paramArkAppView.getWidth();
-    int j = paramArkAppView.getHeight();
-    localagyw.a(parambhow.jdField_a_of_type_JavaLangString, parambhow.b, parambhow.c, parambhow.d, parambhow.jdField_a_of_type_Float, parambhow.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localagyw.setFixSize(i, j);
-    localagyw.setMaxSize(i, j);
-    localagyw.setMinSize(i, j);
-    return localagyw;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
+    this.d = ABTestController.a().a(paramString1, paramString2, paramString3);
+    ABTestApi.getAllExperiments(new acna(this, System.currentTimeMillis(), paramString1), 3000);
   }
   
-  @SuppressLint({"NewApi"})
-  private JSONObject a(String paramString1, String paramString2)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) {}
+    for (String str1 = this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId();; str1 = "") {
+      return String.format("layerName:%s, entityGrayId:%s, contrastGrayId:%s, experimentGrayId:%s \nisContrast:%s, isExperiment:%s", new Object[] { str2, str1, this.c, this.b, Boolean.valueOf(c()), Boolean.valueOf(b()) });
     }
-    paramString1 = new JSONObject(paramString1);
-    JSONArray localJSONArray1 = paramString1.getJSONObject("content").getJSONArray("modules");
-    JSONArray localJSONArray2 = new JSONArray();
-    int i = 0;
-    for (;;)
+  }
+  
+  public void a(ABTestController.EvtType paramEvtType, String paramString)
+  {
+    if (a()) {
+      ABTestController.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId(), paramEvtType, paramString);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (a())
     {
-      if (i < localJSONArray1.length())
-      {
-        if (((JSONObject)localJSONArray1.get(i)).getString("id").equals(paramString2)) {
-          localJSONArray2.put(localJSONArray1.get(i));
-        }
-      }
-      else
-      {
-        do
-        {
-          localJSONArray1.remove(0);
-        } while (localJSONArray1.length() > 0);
-        localJSONArray1.put(localJSONArray2.get(0));
-        return paramString1;
-      }
-      i += 1;
+      ABTestApi.reportExpExpose(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity);
+      a(ABTestController.EvtType.EXPOSE, paramString);
     }
   }
   
-  private void a(ArkAppView paramArkAppView, AdArkAdapter.Params paramParams)
+  public boolean a()
   {
-    if ((paramParams == null) || (!paramParams.isValid())) {
-      return;
-    }
-    float f = 0.0F;
-    if (((Context)paramParams.context.get()).getResources().getDisplayMetrics() != null) {
-      f = ((Context)paramParams.context.get()).getResources().getDisplayMetrics().scaledDensity;
-    }
-    String str1 = "com.tencent.xijing.form";
-    String str2 = "form";
-    if (!TextUtils.isEmpty(paramParams.appName)) {
-      str1 = paramParams.appName;
-    }
-    if (!TextUtils.isEmpty(paramParams.viewName)) {
-      str2 = paramParams.viewName;
-    }
-    paramArkAppView.initArkView(a(paramArkAppView, new bhow(bhow.a(str1, str2, "0.0.0.1", paramParams.metaData, f, null, null))), false);
-    paramArkAppView.setVisibility(0);
+    return (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId()));
   }
   
-  private void a(ArkAppView paramArkAppView, String paramString1, String paramString2, String paramString3, String paramString4)
+  public boolean b()
   {
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (paramArkAppView.getContext() != null)
-    {
-      f1 = f2;
-      if (paramArkAppView.getContext().getResources() != null)
-      {
-        f1 = f2;
-        if (paramArkAppView.getContext().getResources().getDisplayMetrics() != null) {
-          f1 = paramArkAppView.getContext().getResources().getDisplayMetrics().scaledDensity;
-        }
-      }
-    }
-    paramArkAppView.initArkView(a(paramArkAppView, new bhow(bhow.a(paramString1, paramString2, "0.0.0.1", paramString4, f1, null, null))), false);
-    paramArkAppView.setVisibility(0);
-  }
-  
-  public View buildArkView(AdArkAdapter.Params paramParams)
-  {
-    if ((paramParams != null) && (paramParams.isValid()))
-    {
-      AdArkAdapter.Callback localCallback = (AdArkAdapter.Callback)paramParams.callback.get();
-      ArkAppView localArkAppView = new ArkAppView((Context)paramParams.context.get(), null);
-      localArkAppView.setBorderType(0);
-      localArkAppView.setCallback(new acna(this, localCallback));
-      localArkAppView.setOnTouchListener(localArkAppView);
-      if ((paramParams.context.get() instanceof Activity))
-      {
-        FrameLayout localFrameLayout = (FrameLayout)((Activity)paramParams.context.get()).findViewById(16908290);
-        if (localFrameLayout != null)
-        {
-          this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
-          if (this.jdField_a_of_type_AndroidViewView != null) {
-            this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new acnb(this, localCallback));
-          }
-        }
-      }
-      localArkAppView.setInputCallback(new acnc(this, localCallback));
-      localArkAppView.post(new GdtArkViewAdapter.4(this, localArkAppView, paramParams));
-      return localArkAppView;
-    }
-    return null;
-  }
-  
-  public View buildSelectWindowArkView(AdArkAdapter.Params paramParams)
-  {
-    if (paramParams != null)
-    {
-      ArkAppView localArkAppView = new ArkAppView((Context)paramParams.context.get(), null);
-      localArkAppView.setBorderType(0);
-      localArkAppView.setOnTouchListener(localArkAppView);
-      localArkAppView.post(new GdtArkViewAdapter.5(this, localArkAppView, paramParams));
-      localArkAppView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
-      return localArkAppView;
-    }
-    return null;
-  }
-  
-  public String getArkFormData(AdArkAdapter.DataParams paramDataParams)
-  {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject3;
-    try
-    {
-      Object localObject4 = new ark_form_data.ArkFormData();
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).ad_info.product_type.set(paramDataParams.product_type);
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).ad_info.display_info.advertiser_info.advertiser_id.set(paramDataParams.advertiser_id);
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).ad_info.report_info.landing_page_report_url.set(paramDataParams.landing_page_report_url);
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).ad_info.report_info.trace_info.traceid.set(paramDataParams.traceid);
-      localObject1 = localObject3;
-      JSONObject localJSONObject = a(paramDataParams.canvas_json, paramDataParams.form_module_id);
-      if (localJSONObject == null) {
-        return null;
-      }
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).ad_info.dest_info.canvas_json.set(localJSONObject.toString());
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).ad_info.dest_info.dest_type.set(paramDataParams.dest_type);
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).form_info.form_module_id.set(paramDataParams.form_module_id);
-      localObject1 = localObject3;
-      ((ark_form_data.ArkFormData)localObject4).form_info.index.set(paramDataParams.index);
-      localObject1 = localObject3;
-      localObject4 = acvb.a((PBField)localObject4);
-      paramDataParams = (AdArkAdapter.DataParams)localObject2;
-      if (localObject4 != null)
-      {
-        paramDataParams = (AdArkAdapter.DataParams)localObject2;
-        localObject1 = localObject3;
-        if ((localObject4 instanceof JSONObject))
-        {
-          localObject1 = localObject3;
-          paramDataParams = localObject4.toString();
-        }
-      }
-      localObject1 = paramDataParams;
-      localObject2 = paramDataParams;
-      if (!TextUtils.isEmpty(paramDataParams))
-      {
-        localObject1 = paramDataParams;
-        localObject2 = new JSONObject();
-        localObject1 = paramDataParams;
-        ((JSONObject)localObject2).put("gdt", localObject4);
-        localObject1 = paramDataParams;
-        paramDataParams = ((JSONObject)localObject2).toString();
-        return paramDataParams;
-      }
-    }
-    catch (JSONException paramDataParams)
-    {
-      paramDataParams.printStackTrace();
-      localObject2 = localObject1;
-    }
-    return localObject2;
-  }
-  
-  public Rect getArkInputRect(View paramView)
-  {
-    if ((paramView != null) && ((paramView instanceof ArkAppView))) {
-      return ((ArkAppView)paramView).getInputRect();
-    }
-    return null;
-  }
-  
-  public boolean notify(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$ArkNotifyCallback != null) {
-      return this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$ArkNotifyCallback.notify(paramString1, paramString2, paramString3);
+    if (a()) {
+      return this.b.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId());
     }
     return false;
   }
   
-  public void setNotify(WeakReference<AdArkAdapter.ArkNotifyCallback> paramWeakReference)
+  public boolean c()
   {
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null))
-    {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$ArkNotifyCallback = ((AdArkAdapter.ArkNotifyCallback)paramWeakReference.get());
-      ArkAppNotifyCenter.setNotify("com.tencent.xijing.form", new WeakReference(this));
-      return;
+    if (a()) {
+      return this.c.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId());
     }
-    this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$ArkNotifyCallback = null;
-    ArkAppNotifyCenter.setNotify("com.tencent.xijing.form", null);
+    return false;
   }
 }
 

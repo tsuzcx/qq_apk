@@ -1,123 +1,53 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplate1;
+import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
 import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
-import java.util.concurrent.Executor;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bgpo
-  extends bjul<HashMap<String, Object>, Void, JSONObject>
+  extends bgpj
 {
-  protected int a;
-  protected Bundle a;
-  protected bgpp a;
-  protected boolean a;
-  
-  public bgpo(String paramString1, String paramString2, bgpp parambgpp, int paramInt, Bundle paramBundle)
+  public bgpo(Activity paramActivity, JSONObject paramJSONObject, aymg paramaymg)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_Bgpp = parambgpp;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    super(paramActivity, paramJSONObject, paramaymg);
+    this.d = UIUtils.dip2px(paramActivity, 4.0F);
   }
   
-  public bgpo(String paramString1, String paramString2, bgpp parambgpp, int paramInt, Bundle paramBundle, boolean paramBoolean)
+  public View a(JSONObject paramJSONObject, View paramView)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_Bgpp = parambgpp;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
-  {
-    if (isCancelled()) {
-      return null;
-    }
-    Object localObject = paramVarArgs[0];
-    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    Object localObject = (QZoneLayoutTemplate1)paramView.findViewById(2131368705);
+    if (localObject != null)
     {
-      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
-      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+      ((QZoneLayoutTemplate1)localObject).setBorderWidth(b(paramJSONObject));
+      ((QZoneLayoutTemplate1)localObject).setItemBg(a(paramJSONObject, a(100.0F), a(100.0F)), a(paramJSONObject));
+      ((QZoneLayoutTemplate1)localObject).setLeftView(paramJSONObject.optString("ph"));
+      ((QZoneLayoutTemplate1)localObject).setRightView(paramJSONObject.optString("ph"));
     }
-    for (;;)
-    {
-      try
-      {
-        Bundle localBundle = new Bundle();
-        String str1 = ((Bundle)localObject).getString("Cookie");
-        String str2 = ((Bundle)localObject).getString("Referer");
-        String str3 = ((Bundle)localObject).getString("Host");
-        if (str1 != null)
-        {
-          localBundle.putString("Cookie", str1);
-          ((Bundle)localObject).remove("Cookie");
-        }
-        if (str2 != null)
-        {
-          localBundle.putString("Referer", str2);
-          ((Bundle)localObject).remove("Referer");
-        }
-        if (str3 != null)
-        {
-          localBundle.putString("Host", str3);
-          ((Bundle)localObject).remove(str3);
-        }
-        localObject = new JSONObject(nnr.a(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
-        paramVarArgs = (HashMap<String, Object>[])localObject;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          paramVarArgs = (HashMap<String, Object>[])localObject;
-          if (((JSONObject)localObject).getInt("retcode") == 0) {
-            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
-          }
-        }
-      }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-      }
-      return paramVarArgs;
-      paramVarArgs = null;
+    localObject = paramView.findViewById(2131368236);
+    TextView localTextView = (TextView)paramView.findViewById(2131378524);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368384);
+    String str = localTextView.getText().toString();
+    if ((this.jdField_a_of_type_Aymg.a.a != 0) && (str.length() > 4) && (str.substring(str.length() - 4, str.length()).equals("QQ空间"))) {
+      localTextView.setText(str.substring(0, str.length() - 4) + amtj.a(2131713848));
     }
+    a(paramJSONObject, (View)localObject, localTextView, localImageView);
+    return paramView;
   }
   
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public void a(HashMap<String, Object> paramHashMap)
+  public ProfileCardFavorShowView a(Activity paramActivity)
   {
-    Executor localExecutor = a();
-    if (localExecutor != null)
-    {
-      executeOnExecutor(localExecutor, new HashMap[] { paramHashMap });
-      return;
-    }
-    execute(new HashMap[] { paramHashMap });
+    return new ProfileCardFavorShowView(paramActivity, null, 2131561965);
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public void b(HashMap<String, View> paramHashMap)
   {
-    if (isCancelled()) {}
-    while (this.jdField_a_of_type_Bgpp == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bgpp.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561974, null));
   }
 }
 

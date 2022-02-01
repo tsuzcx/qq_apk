@@ -1,15 +1,34 @@
-class bamb
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+
+public class bamb
+  extends WebChromeClient
 {
-  public long a;
-  public bluw a;
-  public boolean a;
+  private bamb(ActionUrlActivity paramActionUrlActivity) {}
   
-  public bamb(bluw parambluw)
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    this.jdField_a_of_type_Bluw = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bluw = parambluw;
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.setTitle(paramString);
+    this.a.a();
   }
 }
 

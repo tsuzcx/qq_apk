@@ -1,34 +1,72 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class aewv
-  extends axwp
 {
-  public aewv(LikeSettingActivity paramLikeSettingActivity) {}
+  private static aewv a;
+  public int a;
+  private int b = -1;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  private aewv()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  /* Error */
+  public static aewv a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	aewv:jdField_a_of_type_Aewv	Laewv;
+    //   6: ifnonnull +22 -> 28
+    //   9: new 2	aewv
+    //   12: dup
+    //   13: invokespecial 21	aewv:<init>	()V
+    //   16: putstatic 20	aewv:jdField_a_of_type_Aewv	Laewv;
+    //   19: getstatic 20	aewv:jdField_a_of_type_Aewv	Laewv;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 20	aewv:jdField_a_of_type_Aewv	Laewv;
+    //   31: iconst_1
+    //   32: putfield 14	aewv:jdField_a_of_type_Int	I
+    //   35: goto -16 -> 19
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   22	5	0	localaewv	aewv
+    //   38	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	38	finally
+    //   19	23	38	finally
+    //   28	35	38	finally
+  }
+  
+  public int a()
+  {
+    if (-1 == this.b)
     {
-      QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
-      paramBoolean1 = ((axuk)this.a.app.getManager(161)).a();
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+      if ((DeviceInfoUtil.getSystemTotalMemory() >>> 20 <= 1390L) || (DeviceInfoUtil.getCpuNumber() <= 3) || (DeviceInfoUtil.getCpuFrequency() <= 1433L)) {
+        break label48;
+      }
+      this.b = 1;
+    }
+    for (;;)
+    {
+      return this.b;
+      label48:
+      if ((DeviceInfoUtil.getSystemTotalMemory() >>> 20 > 926L) && (DeviceInfoUtil.getCpuNumber() > 1) && (DeviceInfoUtil.getCpuFrequency() > 961L)) {
+        this.b = 2;
+      } else {
+        this.b = 3;
+      }
     }
   }
 }

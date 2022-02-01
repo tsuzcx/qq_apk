@@ -1,51 +1,24 @@
+import android.support.v4.app.FragmentActivity;
+
 public class aixh
+  extends aiwz
 {
-  private int jdField_a_of_type_Int = 1;
-  private aixi jdField_a_of_type_Aixi;
+  public static final int[] a = { 2131690702 };
+  public static final int[] b = { 2131364426 };
   
-  public aixh() {}
-  
-  public aixh(aixi paramaixi)
+  public aixh(FragmentActivity paramFragmentActivity)
   {
-    this.jdField_a_of_type_Aixi = paramaixi;
+    super(paramFragmentActivity);
   }
   
-  public int a()
+  protected int[] a()
   {
-    return this.jdField_a_of_type_Int;
+    return b;
   }
   
-  public void a()
+  protected int[] b()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.jdField_a_of_type_Aixi != null)
-      {
-        this.jdField_a_of_type_Aixi.a(1);
-        this.jdField_a_of_type_Int = 2;
-      }
-    }
-    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Aixi == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Aixi.a(2);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Aixi != null))
-    {
-      this.jdField_a_of_type_Aixi.a();
-      this.jdField_a_of_type_Int = 3;
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_Aixi != null))
-    {
-      this.jdField_a_of_type_Aixi.b();
-      this.jdField_a_of_type_Int = 1;
-    }
+    return a;
   }
 }
 

@@ -1,25 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class urn
-  implements View.OnClickListener
+  extends Handler
 {
-  urn(url paramurl) {}
+  private url a;
   
-  public void onClick(View paramView)
+  urn(Looper paramLooper, url paramurl)
   {
-    if (aazb.a("vertical_video_top_homepage_click")) {
-      uqf.a("AbsWsUIGroup", "fast click, ignored: vertical video top homepage");
-    }
-    for (;;)
+    super(paramLooper);
+    this.a = paramurl;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      uvv.e(url.a(this.a).a(), url.a(this.a).b(), url.a(this.a));
-      ueg.a(url.a(this.a).getActivity(), "from_qq_chat", 0, false);
+    case 1: 
+      url.a(this.a);
+      return;
     }
+    url.b(this.a);
   }
 }
 

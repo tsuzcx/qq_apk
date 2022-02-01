@@ -1,468 +1,283 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager.1;
+import com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager.2;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;>;
-import java.util.UUID;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aukx
-  extends aukv
 {
-  public aukx(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  private static aukx jdField_a_of_type_Aukx;
+  private ConcurrentHashMap<String, nxq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  private String a(long paramLong, String paramString1, String paramString2, int paramInt)
+  public static aukx a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = "";
-    }
-    do
-    {
-      return paramString1;
-      paramString2 = antf.bs + auoo.a(paramLong, paramInt, paramString2);
-      if (!a(paramString1, paramString2)) {
-        break;
-      }
-      paramString1 = paramString2;
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopFileMsgBackupHandler<QFile>", 4, "getThumbSavePath. thumbPath[" + paramString2 + "]");
-    return paramString2;
-    QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "getThumbSavePath. move file failed.");
-    return "";
-  }
-  
-  private boolean a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    if (paramMessageRecord.isMultiMsg) {}
-    for (Object localObject1 = (MessageForTroopFile)aunj.a((ChatMessage)paramMessageRecord); localObject1 == null; localObject1 = (MessageForTroopFile)paramMessageRecord)
-    {
-      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: get updateTroopFileRecord failed. get troop file msg is null. isMulti[" + paramMessageRecord.isMultiMsg + "]");
-      return false;
-    }
-    long l = Long.parseLong(((MessageForTroopFile)localObject1).frienduin);
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
-    localObject1 = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject1);
-    if ((localTroopFileTransferManager == null) || (localObject1 == null))
-    {
-      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: get troopFileTransferManager failed.");
-      return false;
-    }
-    if (((bftf)localObject1).jdField_a_of_type_JavaUtilUUID == null)
-    {
-      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: updateTroopFileRecord failed. troop file status info uuid is null");
-      return false;
-    }
-    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(((bftf)localObject1).jdField_a_of_type_JavaUtilUUID);
-    Object localObject2;
-    String str;
-    if (localItem != null) {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        localObject1 = "";
-        localObject2 = "";
-        Iterator localIterator = paramList.iterator();
-        paramList = (List<MsgBackupResEntity>)localObject2;
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            localObject2 = (MsgBackupResEntity)localIterator.next();
-            if ((a((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
-            {
-              str = a((MsgBackupResEntity)localObject2);
-              if (TextUtils.isEmpty(str)) {
-                break label381;
-              }
-              if (((MsgBackupResEntity)localObject2).msgSubType == 12)
-              {
-                if (bhmi.b(localItem.largeThumbnailFile)) {
-                  continue;
-                }
-                localObject1 = a(l, str, localItem.Id.toString(), 640);
-              }
-            }
-          }
-        }
-      }
-    }
-    label381:
-    for (;;)
-    {
-      break;
-      if (((MsgBackupResEntity)localObject2).msgSubType == 11)
-      {
-        if (bhmi.b(localItem.LocalFile)) {
-          break;
-        }
-        paramList = a(str, localItem.FileName);
-        continue;
-        if (bhmi.b(paramList))
-        {
-          localItem.LocalFile = paramList;
-          localItem.Status = 11;
-          localTroopFileTransferManager.b(localItem);
-        }
-        if (bhmi.b((String)localObject1))
-        {
-          localItem.largeThumbnailFile = ((String)localObject1);
-          localItem.HasThumbnailFile_Large = true;
-          localTroopFileTransferManager.b(localItem);
-        }
-        return true;
-        return false;
-      }
-    }
-  }
-  
-  private void c(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    if (paramMessageRecord.isMultiMsg) {}
-    for (Object localObject1 = (MessageForTroopFile)aunj.a((ChatMessage)paramMessageRecord); localObject1 == null; localObject1 = (MessageForTroopFile)paramMessageRecord)
-    {
-      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "onImport: createTroopFileRecord failed. get troop file msg is null. isMulti[" + paramMessageRecord.isMultiMsg + "]");
-      return;
-    }
-    long l = Long.parseLong(((MessageForTroopFile)localObject1).frienduin);
-    if (bgrh.a(l) == null) {
-      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "createTroopFileRecord: get TroopFileDataManager failed.");
-    }
-    bfrs localbfrs = bgrn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).b(((MessageForTroopFile)localObject1).url, ((MessageForTroopFile)localObject1).fileName, ((MessageForTroopFile)localObject1).fileSize, ((MessageForTroopFile)localObject1).bisID);
-    Object localObject2;
-    String str;
-    if ((localbfrs != null) && (paramList != null) && (!paramList.isEmpty()))
-    {
-      localObject1 = "";
-      localObject2 = "";
-      Iterator localIterator = paramList.iterator();
-      paramList = (List<MsgBackupResEntity>)localObject2;
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          localObject2 = (MsgBackupResEntity)localIterator.next();
-          if ((a((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
-          {
-            str = a((MsgBackupResEntity)localObject2);
-            if (TextUtils.isEmpty(str)) {
-              break label412;
-            }
-            if (((MsgBackupResEntity)localObject2).msgSubType == 12) {
-              localObject1 = a(l, str, UUID.nameUUIDFromBytes(localbfrs.b.getBytes()).toString(), 640);
-            }
-          }
-        }
-      }
-    }
-    label412:
-    for (;;)
-    {
-      break;
-      if (((MsgBackupResEntity)localObject2).msgSubType == 11)
-      {
-        paramList = a(str, localbfrs.c);
-        continue;
-        if (bhmi.b(paramList))
-        {
-          localbfrs.h = paramList;
-          localbfrs.e = 11;
-          a("TroopFileMsgBackupHandler<QFile>", "createTroopFileRecord", String.valueOf(paramMessageRecord.msgseq), "save origin path. path[" + paramList + "]");
-        }
-        if (bhmi.b((String)localObject1))
-        {
-          localbfrs.j = ((String)localObject1);
-          a("TroopFileMsgBackupHandler<QFile>", "createTroopFileRecord", String.valueOf(paramMessageRecord.msgseq), "save large thumb path. path[" + (String)localObject1 + "]");
-        }
-        TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).a(localbfrs);
-        return;
-      }
-    }
-  }
-  
-  protected String a(MessageRecord paramMessageRecord, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("msgType", 5);
-      localJSONObject.put("msgSubType", paramInt);
-      MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramMessageRecord;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileType[" + 3 + "]");
+      if (jdField_a_of_type_Aukx == null) {
+        jdField_a_of_type_Aukx = new aukx();
       }
-      localJSONObject.put("uint32_file_type", 3);
-      localJSONObject.put("uint64_sender_uin", paramMessageRecord.senderuin);
-      localJSONObject.put("uint64_receiver_uin", paramMessageRecord.frienduin);
-      Object localObject = localMessageForTroopFile.url;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileUuid[" + (String)localObject + "]");
-        }
-        localJSONObject.put("bytes_file_uuid", localObject);
-      }
-      localObject = localMessageForTroopFile.fileName;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileName[" + (String)localObject + "]");
-        }
-        localJSONObject.put("str_file_name", localObject);
-      }
-      long l = localMessageForTroopFile.fileSize;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo fileSize[" + l + "]");
-      }
-      localJSONObject.put("uint64_file_size", l);
-      localObject = localMessageForTroopFile.sha1;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo strSHA1[" + (String)localObject + "]");
-        }
-        localJSONObject.put("sha", localObject);
-      }
-      paramInt = localMessageForTroopFile.width;
-      if (paramInt != 0)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo imgWidth[" + paramInt + "]");
-        }
-        localJSONObject.put("uint32_img_width", paramInt);
-      }
-      paramInt = localMessageForTroopFile.height;
-      if (paramInt != 0)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo imgHeight[" + paramInt + "]");
-        }
-        localJSONObject.put("uint32_img_height", paramInt);
-      }
-      localObject = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopFile);
-      if ((localObject != null) && (((bftf)localObject).e > 0) && (((bftf)localObject).f > 0))
-      {
-        localJSONObject.put("uint32_img_width", ((bftf)localObject).e);
-        localJSONObject.put("uint32_img_height", ((bftf)localObject).f);
-      }
-      l = localMessageForTroopFile.lastTime;
-      if (l != 0L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo deadTime[" + l + "]");
-        }
-        localJSONObject.put("int64_dead_time", l);
-      }
-      l = localMessageForTroopFile.duration;
-      if (l != 0L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo videoDur[" + l + "]");
-        }
-        localJSONObject.put("uint64_video_duration", l);
-      }
-      paramInt = localMessageForTroopFile.bisID;
-      if (paramInt != 0)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileMsgBackupHandler<QFile>", 1, "buildResourceInfo bizId[" + paramInt + "]");
-        }
-        localJSONObject.put("uint32_bus_id", paramInt);
-      }
-      if (paramMessageRecord.isMultiMsg) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        localJSONObject.put("nest_forward", paramInt);
-        paramMessageRecord = localJSONObject.toString();
-        return paramMessageRecord;
-      }
-      return "{}";
+      aukx localaukx = jdField_a_of_type_Aukx;
+      return localaukx;
     }
-    catch (JSONException paramMessageRecord) {}
+    finally {}
   }
   
-  public String a(MsgBackupResEntity paramMsgBackupResEntity)
+  private void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt, nxq paramnxq)
   {
-    HashMap localHashMap = a(paramMsgBackupResEntity.extraDataStr);
-    String str2 = "";
-    String str1 = "";
-    if (paramMsgBackupResEntity.msgSubType == 12)
+    if (QLog.isColorLevel()) {
+      QLog.d("ImaxAdvertisement", 2, "jumpToImaxDisplayActivity item :" + paramString);
+    }
+    Intent localIntent = new Intent(paramContext, PublicAccountAdvertisementActivity.class);
+    localIntent.putExtra("arg_ad_json", paramnxq.a());
+    localIntent.putExtra("USR_CLICK_TIME", SystemClock.uptimeMillis());
+    localIntent.putExtra("is_first_open_imax_ad", akms.c);
+    akms.c = false;
+    paramContext.startActivity(localIntent);
+    ThreadManager.post(new ImaxAdRecentUserManager.2(this, paramQQAppInterface, paramString, paramInt, paramnxq), 5, null, false);
+    nxz.a().a(paramQQAppInterface, 2, paramnxq);
+  }
+  
+  public List<nxq> a(String paramString)
+  {
+    ArrayList localArrayList1 = new ArrayList(2);
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values() != null))
     {
-      str1 = (String)localHashMap.get("uint64_receiver_uin");
-      long l = 0L;
-      if (!TextUtils.isEmpty(str1))
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+      while (localIterator.hasNext())
       {
-        l = Long.parseLong(str1);
-        str2 = (String)localHashMap.get("bytes_file_uuid");
-        if (QLog.isDebugVersion()) {
-          QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop file uin[" + str1 + "] fileId[" + str2 + "]");
+        nxq localnxq = (nxq)localIterator.next();
+        ArrayList localArrayList2 = localnxq.jdField_a_of_type_JavaUtilArrayList;
+        if ((localArrayList2 != null) && (localArrayList2.size() > 0) && (paramString.equals(((nxr)localArrayList2.get(0)).b)) && (localnxq.jdField_a_of_type_Int == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ImaxAdvertisement", 2, "getAdvertisementItembyVid:" + paramString + " item:" + localnxq.jdField_a_of_type_JavaLangString);
+          }
+          localArrayList1.add(localnxq);
         }
-        str2 = auoo.a(l, 640, str2);
-        str1 = jdField_a_of_type_JavaLangString;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ImaxAdvertisement", 2, "getAdvertisementItem disPlayitemList:" + localArrayList1.size());
+    }
+    return localArrayList1;
+  }
+  
+  public nxq a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (nxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, akkk paramakkk, AbsListView paramAbsListView)
+  {
+    int i;
+    if ((paramAbsListView != null) && (paramakkk != null) && (paramQQAppInterface != null))
+    {
+      i = paramAbsListView.getFirstVisiblePosition();
+      if (i <= 0) {
+        break label369;
+      }
+      i -= 1;
+    }
+    label239:
+    label369:
     for (;;)
     {
-      a("TroopFileMsgBackupHandler<QFile>", "getTempFilePath", "", "resType[" + paramMsgBackupResEntity.msgType + "] tempPath[" + str1 + str2 + "]");
-      return str1 + str2;
-      QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop file uin is null");
-      break;
-      if (paramMsgBackupResEntity.msgSubType == 11)
+      int k = paramAbsListView.getLastVisiblePosition();
+      int j = i;
+      for (;;)
       {
-        str1 = (String)localHashMap.get("str_file_name");
-        if (QLog.isDebugVersion()) {
-          QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop fileName[" + str1 + "]");
+        Object localObject1;
+        if (j < k + 1)
+        {
+          localObject1 = paramakkk.getItem(j);
+          if ((localObject1 == null) || (!(localObject1 instanceof RecentItemImaxADData))) {
+            break label360;
+          }
+          localObject1 = (RecentItemImaxADData)localObject1;
+          localObject2 = paramQQAppInterface.getConversationFacade().a(((RecentItemImaxADData)localObject1).mUser.uin, ((RecentItemImaxADData)localObject1).mUser.getType());
+          if (localObject2 != null) {
+            ((ConversationInfo)localObject2).isImax = true;
+          }
+          if (!aukz.a(paramAbsListView.getChildAt(j - i))) {
+            break label360;
+          }
+          localObject3 = ((RecentItemImaxADData)localObject1).mUser.uin;
+          localObject2 = b((String)localObject3);
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            break label245;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ImaxAdvertisement", 2, "isShowImaxAdItem item recreated " + (String)localObject3);
+          }
+          localObject1 = nxq.a(aukz.b(paramQQAppInterface.getCurrentUin(), (String)localObject3));
+          if (localObject1 != null) {
+            break label239;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ImaxAdvertisement", 2, "isShowImaxAdItem item false " + (String)localObject3);
+          }
         }
-        str2 = (String)localHashMap.get("bytes_file_uuid");
-        str2 = MD5.toMD5(str1 + str2);
-        if (QLog.isDebugVersion()) {
-          QLog.i("<QFile_Backup>", 1, "getTempFilePath: troop temp msg backup fileName[" + str2 + "]");
-        }
-        str1 = b;
+        return;
+        a((nxq)localObject1);
+        label245:
+        Object localObject2 = Message.obtain();
+        Object localObject3 = new HashMap();
+        ((HashMap)localObject3).put("key_app", new WeakReference(paramQQAppInterface));
+        ((HashMap)localObject3).put("key_adapter", new WeakReference(paramakkk));
+        ((HashMap)localObject3).put("key_listview", new WeakReference(paramAbsListView));
+        ((Message)localObject2).obj = localObject3;
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putString("key_ad_id", ((nxq)localObject1).c);
+        ((Message)localObject2).setData((Bundle)localObject3);
+        ((Message)localObject2).what = 2;
+        aukv.a().a((Message)localObject2);
+        j += 1;
       }
     }
   }
   
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("<QFile_Backup>", 1, "Export: type[troop] contactUin[" + paramMessageRecord.frienduin + "] senderUin[" + paramMessageRecord.senderuin + "] uniSeq[" + paramMessageRecord.uniseq + "] msgSeq[" + paramMessageRecord.msgseq + "]");
-    }
-    Object localObject1;
-    if (paramMessageRecord.isMultiMsg)
+    nxq localnxq;
+    if ((paramRecentUser != null) && (paramRecentUser.uin != null))
     {
-      localObject1 = (MessageForTroopFile)aunj.a((ChatMessage)paramMessageRecord);
-      localObject1 = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject1);
-      if (localObject1 != null) {
-        break label145;
+      localnxq = b(paramRecentUser.uin);
+      if ((localnxq != null) && (NetConnInfoCenter.getServerTimeMillis() >= localnxq.b))
+      {
+        localObject = (ProxyManager)paramQQAppInterface.getManager(18);
+        if (localObject != null) {
+          break label136;
+        }
       }
-      QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "handleExport: get TroopFileStatusInfo failed.");
     }
-    for (;;)
+    label136:
+    for (Object localObject = null;; localObject = ((ProxyManager)localObject).a())
     {
+      if (localObject != null)
+      {
+        akla.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
+        ((anuz)localObject).delRecentUser(paramRecentUser);
+        akms.b(paramQQAppInterface, localnxq.jdField_a_of_type_JavaLangString, 10005);
+        paramQQAppInterface.getMessageFacade().setReaded(localnxq.jdField_a_of_type_JavaLangString, 10005);
+      }
+      a(paramQQAppInterface, paramRecentUser, localnxq, false);
       return;
-      localObject1 = (MessageForTroopFile)paramMessageRecord;
-      localObject1 = bgsk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject1);
-      break;
-      label145:
-      int i = aunj.a(((bftf)localObject1).g);
-      if ((i == 0) || (i == 2))
-      {
-        Object localObject2 = ((bftf)localObject1).c;
-        if (bhmi.b((String)localObject2))
-        {
-          localObject2 = a(paramMessageRecord, 12, (String)localObject2);
-          paramList.add(localObject2);
-          a("TroopFileMsgBackupHandler<QFile>", "handleExport", String.valueOf(paramMessageRecord.msgseq), "add resource. resType[" + ((MsgBackupResEntity)localObject2).msgType + "]");
-        }
-      }
-      localObject1 = ((bftf)localObject1).jdField_a_of_type_JavaLangString;
-      if (bhmi.b((String)localObject1))
-      {
-        localObject1 = a(paramMessageRecord, 11, (String)localObject1);
-        paramList.add(localObject1);
-        a("TroopFileMsgBackupHandler<QFile>", "handleExport", String.valueOf(paramMessageRecord.msgseq), "add resource. resType[" + ((MsgBackupResEntity)localObject1).msgType + "]");
-      }
-      if ((QLog.isDebugVersion()) && (paramList != null))
-      {
-        QLog.i("<QFile_Backup>", 1, "Export --step: msgSeq[" + paramMessageRecord.msgseq + "resourceSize[" + paramList.size() + "]");
-        paramMessageRecord = paramList.iterator();
-        while (paramMessageRecord.hasNext())
-        {
-          paramList = (MsgBackupResEntity)paramMessageRecord.next();
-          QLog.i("<QFile_Backup>", 1, "Export --step: backup entity [" + paramList.toLogString() + "]");
-        }
-      }
     }
   }
   
-  public boolean a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, nxq paramnxq, boolean paramBoolean)
   {
-    boolean bool1 = true;
-    if (paramMsgBackupResEntity == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("ImaxAdvertisement", 2, "dodelete ExpireItem uin:" + paramRecentUser.uin);
+    }
+    ThreadManager.executeOnFileThread(new ImaxAdRecentUserManager.1(this, paramBoolean, paramQQAppInterface, paramnxq, paramRecentUser));
+    a(paramRecentUser.uin);
+  }
+  
+  public void a(nxq paramnxq)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramnxq.jdField_a_of_type_JavaLangString, paramnxq);
+  }
+  
+  public boolean a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramContext != null)
     {
-      return false;
-      paramMessageRecord = a(paramMsgBackupResEntity.extraDataStr);
-      String str = (String)paramMessageRecord.get("bytes_file_uuid");
-      paramMessageRecord = (String)paramMessageRecord.get("uint64_receiver_uin");
-      if (TextUtils.isEmpty(str))
-      {
-        QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop fileId is null");
-        return false;
+      if (paramQQAppInterface != null) {
+        break label55;
       }
-      if (TextUtils.isEmpty(paramMessageRecord))
-      {
-        QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop uin is null");
-        return false;
-      }
-      TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramMessageRecord));
-      paramMessageRecord = null;
-      if (localTroopFileTransferManager != null) {
-        paramMessageRecord = localTroopFileTransferManager.a(str);
-      }
-      if (paramMessageRecord == null)
-      {
-        QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "checkNeedDownloadRes: get troopStatusInfo failed.");
-        return true;
-      }
-      QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop fileId[" + str + "]");
-      if (paramMsgBackupResEntity.msgSubType == 12)
-      {
-        bool1 = bhmi.b(paramMessageRecord.c);
-        QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: offline large thumb exist[" + bool1 + "]");
-        if (!bool1) {}
-        for (bool1 = true;; bool1 = false) {
-          return bool1;
-        }
-      }
-    } while (paramMsgBackupResEntity.msgSubType != 11);
-    boolean bool2 = bhmi.b(paramMessageRecord.jdField_a_of_type_JavaLangString);
-    QLog.i("<QFile_Backup>", 1, "checkNeedDownloadRes: troop origin file exist[" + bool2 + "]");
-    if (!bool2) {}
+      bool1 = bool2;
+    }
     for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImaxAdvertisement", 2, "openImaxAdvertisement result " + bool1);
+      }
       return bool1;
-      bool1 = false;
-    }
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    if (QLog.isDebugVersion())
-    {
-      QLog.i("<QFile_Backup>", 1, "Import: type[troop] contactUin[" + paramMessageRecord.frienduin + "] senderUin[" + paramMessageRecord.senderuin + "] uniSeq[" + paramMessageRecord.uniseq + "] msgSeq[" + paramMessageRecord.msgseq + "]");
-      if (paramList != null)
+      label55:
+      if (TextUtils.isEmpty(paramString))
       {
-        QLog.i("<QFile_Backup>", 1, "Import --step: msgSeq[" + paramMessageRecord.msgseq + "resourceSize[" + paramList.size() + "]");
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext())
+        bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          MsgBackupResEntity localMsgBackupResEntity = (MsgBackupResEntity)localIterator.next();
-          QLog.i("<QFile_Backup>", 1, "Import --step: backup entity [" + localMsgBackupResEntity.toLogString() + "]");
+          QLog.d("ImaxAdvertisement", 2, "openImaxAdvertisement empty uin!");
+          bool1 = bool2;
+        }
+      }
+      else
+      {
+        nxq localnxq = b(paramString);
+        if (localnxq == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ImaxAdvertisement", 2, "openAdvertisement item recreated :" + paramString);
+          }
+          localnxq = nxq.a(aukz.b(paramQQAppInterface.getCurrentUin(), paramString));
+          bool1 = bool2;
+          if (localnxq != null)
+          {
+            a(localnxq);
+            a(paramContext, paramQQAppInterface, paramString, paramInt, localnxq);
+            bool1 = true;
+          }
+        }
+        else
+        {
+          a(paramContext, paramQQAppInterface, paramString, paramInt, localnxq);
+          bool1 = true;
         }
       }
     }
-    if (a(paramMessageRecord, paramList)) {
-      a("TroopFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "update troop file record.");
+  }
+  
+  public nxq b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return (nxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
     }
-    for (;;)
+    return null;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values() != null)
     {
-      a(paramMessageRecord);
-      return;
-      c(paramMessageRecord, paramList);
-      a("TroopFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "create troop file record.");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((nxq)localIterator.next()).jdField_a_of_type_Boolean = false;
+      }
     }
   }
 }

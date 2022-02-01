@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pon;
-import qfx;
+import ptv;
+import qlt;
 
 public class ArticleInfoModule$17
   implements Runnable
 {
-  public ArticleInfoModule$17(pon parampon, int paramInt, List paramList, long paramLong) {}
+  public ArticleInfoModule$17(ptv paramptv, int paramInt, List paramList, long paramLong) {}
   
   public void run()
   {
-    qfx.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
+    qlt.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
   }
 }
 

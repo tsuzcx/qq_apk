@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
-import bhmi;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.mobileqq.mini.apkg.MiniGamePluginInfo;
 import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -37,7 +37,7 @@ final class GpkgManager$3
         this.val$listener.onPluginDownloadComplete(false, new RuntimeException("file size mismatch, expected:" + this.val$pluginInfo.packageSize + " got:" + this.val$pkgFile.length()), null);
         return;
       }
-      bhmi.a(this.val$folder.getAbsolutePath(), false);
+      FileUtils.delete(this.val$folder.getAbsolutePath(), false);
       if (!WxapkgUnpacker.unpackSync(this.val$pkgFile.getAbsolutePath(), this.val$folder.getAbsolutePath(), "", true))
       {
         QLog.e("[minigame] GpkgManager", 1, "[Gpkg] download plugin unpack failed " + this.val$pluginInfo);

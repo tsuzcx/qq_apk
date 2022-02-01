@@ -1,145 +1,101 @@
-import android.os.Build;
-import android.os.Bundle;
-import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.WtloginManagerImpl;
-import mqq.manager.WtloginManager;
-import oicq.wlogin_sdk.tools.util;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class avwr
-  extends QIPCModule
 {
-  private static volatile avwr a;
+  public static avwo a;
   
-  public avwr(String paramString)
+  private static HashMap<String, String> a()
   {
-    super(paramString);
+    HashMap localHashMap = new HashMap();
+    if (a != null)
+    {
+      avwu.a("MsgBackup_MsgBackupReporter", "mReportContainer = %s", new Object[] { a });
+      localHashMap.put("bizType", String.valueOf(a.jdField_a_of_type_Int));
+      localHashMap.put("platForm", String.valueOf(a.jdField_b_of_type_Int));
+      localHashMap.put("requestStatus", String.valueOf(a.jdField_a_of_type_Boolean));
+      localHashMap.put("errorCode", String.valueOf(a.jdField_c_of_type_Int));
+      localHashMap.put("totalCost", String.valueOf(a.jdField_a_of_type_Long));
+      localHashMap.put("averageSpeed", String.valueOf(a.jdField_a_of_type_Double));
+      localHashMap.put("totalSessionCount", String.valueOf(a.jdField_b_of_type_Long));
+      localHashMap.put("finishedSessionCount", String.valueOf(a.jdField_c_of_type_Long));
+      localHashMap.put("resSessionContains", String.valueOf(a.jdField_d_of_type_Long));
+      localHashMap.put("resTotalSize", String.valueOf(a.e));
+      localHashMap.put("dbTotalSize", String.valueOf(a.f));
+      localHashMap.put("resRequestCount", String.valueOf(a.g));
+      localHashMap.put("resRequestFailedCount", String.valueOf(a.h));
+      localHashMap.put("resRequestCancelCount", String.valueOf(a.i));
+      localHashMap.put("resTrivialCount", String.valueOf(a.j));
+      localHashMap.put("resTrivialFailedCount", String.valueOf(a.k));
+      localHashMap.put("resTrivialCancelCount", String.valueOf(a.l));
+      localHashMap.put("dbRequestCount", String.valueOf(a.m));
+      localHashMap.put("dbRequestFailedCount", String.valueOf(a.n));
+      localHashMap.put("dbRequestCancelCount", String.valueOf(a.o));
+      localHashMap.put("udpDetected", String.valueOf(a.jdField_b_of_type_Boolean));
+      localHashMap.put("connectType", String.valueOf(a.jdField_d_of_type_Int));
+      localHashMap.put("connectElipse", String.valueOf(a.p));
+      localHashMap.put("sessionReadyAllTimes", String.valueOf(a.q));
+      localHashMap.put("fileFailedCount", String.valueOf(a.r));
+      localHashMap.put("fileErrorList", String.valueOf(a.jdField_a_of_type_JavaUtilArrayList));
+    }
+    return localHashMap;
   }
   
-  public static avwr a()
+  public static void a()
   {
-    if (a == null) {}
-    try
+    if (a == null)
     {
-      if (a == null) {
-        a = new avwr("DeviceProtectQIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  private EIPCResult a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: QQAppInterface is null");
-      return EIPCResult.createResult(-102, null);
-    }
-    Bundle localBundle = new Bundle();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        Object localObject = (WtloginManagerImpl)paramQQAppInterface.getManager(1);
-        String str4;
-        String str3;
-        String str1;
-        if (localObject != null)
-        {
-          paramQQAppInterface = BaseApplication.getContext();
-          str4 = util.buf_to_string(((WtloginManagerImpl)localObject).getGUID());
-          str3 = UserAction.getQIMEI();
-          i = AppSetting.a();
-          str1 = Build.BRAND;
-          localObject = Build.MODEL;
-          if (HwNetworkUtil.getSystemNetwork(paramQQAppInterface) == 1)
-          {
-            paramQQAppInterface = HwNetworkUtil.getCurrentWifiBSSID(paramQQAppInterface);
-            break label338;
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("guid:").append(str4).append("qimei:").append(str3).append("subappid:").append(str5).append("platform:").append(str2).append("brand:").append(str1).append("model:").append((String)localObject).append("bssid:").append(paramQQAppInterface);
-            QLog.d("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo info: " + localStringBuilder);
-            localBundle.putString("guid", str4);
-            localBundle.putString("qimei", str3);
-            localBundle.putString("subappid", str5);
-            localBundle.putString("platform", str2);
-            localBundle.putString("brand", str1);
-            localBundle.putString("model", (String)localObject);
-            localBundle.putString("bssid", paramQQAppInterface);
-            return EIPCResult.createResult(0, localBundle);
-          }
-        }
-        else
-        {
-          QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: wtLoginManager is null");
-          paramQQAppInterface = "";
-          localObject = "";
-          str1 = "";
-          str2 = "";
-          str5 = "";
-          str3 = "";
-          str4 = "";
-          continue;
-        }
-        paramQQAppInterface = "";
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: " + paramQQAppInterface.getMessage());
-        return EIPCResult.createResult(-102, null);
-      }
-      label338:
-      String str2 = "Android";
-      String str5 = String.valueOf(i);
+      a = new avwo();
+      a.a();
+      a.jdField_b_of_type_Int = 4;
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public static void a(String paramString)
   {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("DeviceProtectQIPCModule", 1, "handleGetGuidInfo error: QQAppInterface is null");
-      callbackResult(paramInt, EIPCResult.createResult(-102, null));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "]");
     }
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("guid", util.buf_to_string(((WtloginManager)paramQQAppInterface.getManager(1)).getGUID()));
-      QLog.d("DeviceProtectQIPCModule", 1, "handleGetGuidInfo success");
-      callbackResult(paramInt, EIPCResult.createResult(0, localBundle));
-      return;
+    bcef.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt + "]");
     }
-    catch (Exception paramQQAppInterface)
+    bcef.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt1 + "], reservedFromType = [" + paramInt2 + "]");
+    }
+    bcef.b(null, "dc00898", "", "", paramString, paramString, paramInt1, 0, String.valueOf(paramInt2), "", "", "");
+  }
+  
+  public static void b()
+  {
+    if (a != null)
     {
-      QLog.e("DeviceProtectQIPCModule", 1, "handleGetGuidInfo error: " + paramQQAppInterface.getMessage());
-      callbackResult(paramInt, EIPCResult.createResult(-102, null));
+      a.a();
+      a = null;
     }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static void c()
   {
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(paramBundle instanceof QQAppInterface)) {
-      return null;
+    if (a != null)
+    {
+      HashMap localHashMap = a();
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "MsgBackup_MsgBackupReporter", true, 0L, 0L, localHashMap, null);
+      b();
     }
-    paramBundle = (QQAppInterface)paramBundle;
-    if ("ACTION_GET_DEVICE_INFO".equals(paramString)) {
-      return a(paramBundle);
-    }
-    if ("ACTION_GET_GUID_INFO".equals(paramString)) {
-      a(paramBundle, paramInt);
-    }
-    return null;
   }
 }
 

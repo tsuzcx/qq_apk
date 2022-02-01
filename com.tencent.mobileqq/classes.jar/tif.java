@@ -1,84 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.core.ViolaInstance;
 
-public abstract interface tif
+public class tif
+  implements toi
 {
-  public abstract void a();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public abstract void a(float paramFloat);
+  public tif(BridgeModule paramBridgeModule) {}
   
-  public abstract void a(int paramInt, VVideoView paramVVideoView, boolean paramBoolean, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  public void a() {}
   
-  public abstract void a(VVideoView paramVVideoView);
-  
-  public abstract void a(VVideoView paramVVideoView, int paramInt);
-  
-  public abstract void a(VVideoView paramVVideoView, String paramString);
-  
-  public abstract void a(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract void a(VVideoView paramVVideoView, JSONObject paramJSONObject);
-  
-  public abstract void a(VVideoView paramVVideoView, boolean paramBoolean);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(VVideoView paramVVideoView);
-  
-  public abstract void b(VVideoView paramVVideoView, int paramInt);
-  
-  public abstract void b(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract void b(VVideoView paramVVideoView, JSONObject paramJSONObject);
-  
-  public abstract void b(VVideoView paramVVideoView, boolean paramBoolean);
-  
-  public abstract void b_(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(VVideoView paramVVideoView);
-  
-  public abstract void c(VVideoView paramVVideoView, int paramInt);
-  
-  public abstract void c(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract void c(VVideoView paramVVideoView, boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void c_(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void d(VVideoView paramVVideoView);
-  
-  public abstract void e();
-  
-  public abstract void e(VVideoView paramVVideoView);
-  
-  public abstract void f();
-  
-  public abstract void f(VVideoView paramVVideoView);
-  
-  public abstract void f_(int paramInt);
-  
-  public abstract void g();
-  
-  public abstract void g(VVideoView paramVVideoView);
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void a(boolean paramBoolean)
+  {
+    ViolaFragment localViolaFragment;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
+    {
+      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
+      if (!paramBoolean) {
+        break label85;
+      }
+      this.jdField_a_of_type_JavaLangString = localViolaFragment.getStatusBarColor();
+      this.jdField_a_of_type_Boolean = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
+      localViolaFragment.setStatusBarColor("#FF000000");
+      localViolaFragment.initStatusBarColor("#FF000000");
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(true), true);
+    }
+    label85:
+    do
+    {
+      return;
+      localViolaFragment.setStatusBarColor(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.initStatusBarColor(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
+    } while ((!localViolaFragment.isSuspension()) || (localViolaFragment.getCommonSuspensionGestureLayout() == null));
+    localViolaFragment.getCommonSuspensionGestureLayout().g();
+  }
 }
 
 

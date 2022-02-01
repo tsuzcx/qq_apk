@@ -8,13 +8,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import antf;
-import bdow;
-import begp;
-import bhlg;
+import bchh;
 import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class LiteActivity$36
@@ -31,15 +31,15 @@ class LiteActivity$36
       if (this.this$0.jdField_b_of_type_AndroidWidgetTextView == null)
       {
         this.this$0.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.this$0);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131371500);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131371468);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130839129));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130839164));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839129);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.this$0.getResources().getColorStateList(2131167066));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839164);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.this$0.getResources().getColorStateList(2131167088));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setPadding((int)(LiteActivity.a(this.this$0) * 10.0F), this.this$0.jdField_b_of_type_AndroidWidgetTextView.getPaddingTop(), (int)(LiteActivity.b(this.this$0) * 10.0F), this.this$0.jdField_b_of_type_AndroidWidgetTextView.getPaddingBottom());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.getResources().getDimension(2131297021));
+        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.getResources().getDimension(2131297076));
         this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.this$0);
       }
@@ -61,7 +61,7 @@ class LiteActivity$36
       localStringBuilder.append(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.nickName);
       label388:
       localStringBuilder.append(":");
-      if (!(localObject instanceof begp)) {
+      if (!(localObject instanceof QQText)) {
         break label905;
       }
     }
@@ -69,7 +69,7 @@ class LiteActivity$36
     {
       try
       {
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((begp)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((QQText)localObject).append(localStringBuilder.toString(), true, new int[] { 1, 16 }));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_AndroidContentIntent);
         localObject = this.this$0.jdField_b_of_type_AndroidWidgetTextView.getHandler();
@@ -85,7 +85,7 @@ class LiteActivity$36
         label510:
         if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgtype == -2011)
         {
-          localObject = bdow.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgData);
+          localObject = bchh.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgData);
           if (localObject != null)
           {
             localObject = ((AbsStructMsg)localObject).mMsgBrief;
@@ -124,9 +124,9 @@ class LiteActivity$36
         }
         if ((1010 == this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.istroop) || (1001 == this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.istroop) || (10002 == this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.istroop))
         {
-          if (String.valueOf(antf.H).equals(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin))
+          if (String.valueOf(AppConstants.LBS_HELLO_UIN).equals(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin))
           {
-            str2 = bhlg.q(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.senderuin);
+            str2 = ContactUtils.getDateNickName(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.senderuin);
             str1 = str2;
             if (TextUtils.isEmpty(str2)) {
               str1 = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.senderuin;
@@ -137,10 +137,10 @@ class LiteActivity$36
             if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgtype != -1024) {
               break label388;
             }
-            localObject = String.format(this.this$0.getResources().getString(2131697950), new Object[] { str1 });
+            localObject = String.format(this.this$0.getResources().getString(2131698107), new Object[] { str1 });
             break label388;
           }
-          str2 = bhlg.q(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin);
+          str2 = ContactUtils.getDateNickName(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin);
           str1 = str2;
           if (!TextUtils.isEmpty(str2)) {
             continue;
@@ -166,7 +166,7 @@ class LiteActivity$36
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.36
  * JD-Core Version:    0.7.0.1
  */

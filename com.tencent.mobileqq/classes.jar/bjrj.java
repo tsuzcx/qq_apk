@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.appcommon.js.AppInterface.2;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class bjrj
-  implements DialogInterface.OnDismissListener
+class bjrj
+  implements PopupWindow.OnDismissListener
 {
-  public bjrj(AppInterface.2 param2) {}
+  bjrj(bjrh parambjrh) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onDismiss()
   {
-    this.a.this$0.tipDialog = null;
+    this.a.a(1.0F);
   }
 }
 

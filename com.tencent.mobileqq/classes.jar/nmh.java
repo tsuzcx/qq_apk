@@ -1,6 +1,6 @@
 public abstract interface nmh
 {
-  public abstract void loaded(int paramInt, String paramString);
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

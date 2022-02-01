@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahpk;
+import aglx;
 
 class QQStoryItemBuilder$8$1
   implements Runnable
@@ -9,11 +9,11 @@ class QQStoryItemBuilder$8$1
   
   public void run()
   {
-    Long localLong = (Long)this.a.jdField_a_of_type_Ahpk.a.getTag();
+    Long localLong = (Long)this.a.jdField_a_of_type_Aglx.a.getTag();
     if ((localLong == null) || (localLong.longValue() != this.a.jdField_a_of_type_Long)) {
       return;
     }
-    QQStoryItemBuilder.a(this.a.jdField_a_of_type_Ahpk.a, this.a.b, this.a.this$0.c, this.a.this$0.d, this.a.this$0.a);
+    QQStoryItemBuilder.a(this.a.jdField_a_of_type_Aglx.a, this.a.b, this.a.this$0.c, this.a.this$0.d, this.a.this$0.a);
   }
 }
 

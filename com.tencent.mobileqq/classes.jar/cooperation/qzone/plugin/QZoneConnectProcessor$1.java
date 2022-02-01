@@ -1,16 +1,13 @@
 package cooperation.qzone.plugin;
 
-import bnea;
-import bneb;
-
-public class QZoneConnectProcessor$1
+class QZoneConnectProcessor$1
   implements Runnable
 {
-  public QZoneConnectProcessor$1(bnea parambnea, bneb parambneb) {}
+  QZoneConnectProcessor$1(QZoneConnectProcessor paramQZoneConnectProcessor, QZoneConnectProcessor.WrappedServiceConnection paramWrappedServiceConnection) {}
   
   public void run()
   {
-    bnea.a(this.this$0, this.a);
+    QZoneConnectProcessor.access$200(this.this$0, this.val$wrapped);
   }
 }
 

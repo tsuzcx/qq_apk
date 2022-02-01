@@ -1,26 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qbw
-  implements Animator.AnimatorListener
+  implements ViewBase.OnClickListener
 {
-  qbw(qbu paramqbu) {}
+  qbw(qbu paramqbu, pvc parampvc, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(ViewBase paramViewBase)
   {
-    qbu.a(this.a).setSelected(this.a.isSelected());
+    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
+    TemplateBean localTemplateBean = this.jdField_a_of_type_Pvc.a().mProteusTemplateBean;
+    if (localTemplateBean != null)
+    {
+      paramViewBase = qbu.a(this.jdField_a_of_type_Qbu, localTemplateBean, paramViewBase);
+      if (twr.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
+        twr.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pvc.a().getContext(), this.jdField_a_of_type_Pvc.g());
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_Pvc.a().a(false, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    qbu.a(this.a, false);
-    qbu.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

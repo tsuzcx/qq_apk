@@ -27,14 +27,14 @@ public class GifEncoder
     this.jdField_a_of_type_Long = 0L;
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString, GifEncoder.EncodingType paramEncodingType)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
     if (0L != this.jdField_a_of_type_Long) {
       a();
     }
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Long = nativeInit(paramInt1, paramInt2, paramString, paramEncodingType.ordinal(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Long = nativeInit(paramInt1, paramInt2, paramString, paramInt3, this.jdField_a_of_type_Int);
     if (0L == this.jdField_a_of_type_Long) {
       throw new FileNotFoundException();
     }

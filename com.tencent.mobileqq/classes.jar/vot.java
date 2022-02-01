@@ -1,106 +1,93 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleLikeBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StLike;
-import feedcloud.FeedCloudMeta.StNotice;
-import feedcloud.FeedCloudMeta.StOperation;
-import feedcloud.FeedCloudMeta.StReply;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StNoticeBusiData;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.IOException;
+import java.net.URLEncoder;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class vot
-  implements View.OnClickListener
+public class vot
+  extends vow
 {
-  vot(voq paramvoq) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public vot(String paramString)
   {
-    Object localObject2 = "";
-    if (this.a.jdField_a_of_type_Int == 6)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private ErrorMessage a()
+  {
+    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+    long l = System.currentTimeMillis();
+    localObject = HttpUtil.openRequest(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
+    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
     {
-      localObject1 = (FeedCloudMeta.StComment)this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.operation.comment.get();
-      if ((localObject1 == null) || (((FeedCloudMeta.StComment)localObject1).likeInfo.get() == null)) {
-        break label435;
+      localObject = HttpUtil.readHttpResponse((HttpResponse)localObject);
+      xvv.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
+      localObject = new JSONObject((String)localObject);
+      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
+      if (this.jdField_a_of_type_Int != 0) {
+        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
       }
     }
-    label410:
-    label435:
-    for (Object localObject1 = ((FeedCloudMeta.StLike)((FeedCloudMeta.StComment)localObject1).likeInfo.get()).id.get();; localObject1 = "")
+    else
     {
-      int i = 6;
-      long l1 = 0L;
-      if ((this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData != null) && (this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get() != null)) {}
+      xvv.d("Q.qqstory.publish.upload.LinkRichObject", "");
+      if (localObject != null) {}
+      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
+        return new ErrorMessage(96000003, (String)localObject);
+      }
+    }
+    String str = ((JSONObject)localObject).getString("title");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
+      this.b = str;
+    }
+    str = ((JSONObject)localObject).getString("abstract");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
+      this.c = str;
+    }
+    localObject = ((JSONObject)localObject).getString("thumbUrl");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
+      this.d = ((String)localObject);
+    }
+    xvv.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    return new ErrorMessage();
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      if (a().isSuccess())
+      {
+        b();
+        notifyResult(new ErrorMessage());
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      xvv.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
+      new ErrorMessage(96000001, localJSONException.getMessage());
+      b();
+      notifyResult(new ErrorMessage());
+      return;
+    }
+    catch (IOException localIOException)
+    {
       for (;;)
       {
-        try
-        {
-          j = Integer.parseInt(uzg.a(this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "unread_like_count", "0"));
-        }
-        catch (Exception localException1)
-        {
-          long l2;
-          Object localObject3;
-          j = 0;
-        }
-        try
-        {
-          l2 = Long.parseLong(uzg.a(this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "last_like_time", "0"));
-          l1 = l2;
-          localObject2 = new QCircleLikeBean();
-          ((QCircleLikeBean)localObject2).setFeed(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed);
-          ((QCircleLikeBean)localObject2).setRequestType(i);
-          ((QCircleLikeBean)localObject2).setLikeId((String)localObject1);
-          ((QCircleLikeBean)localObject2).setCount(j);
-          ((QCircleLikeBean)localObject2).setTime(l1);
-          ((QCircleLikeBean)localObject2).setFromReportBean(this.a.a().clone());
-          uyx.a(paramView.getContext(), (QCircleLikeBean)localObject2);
-          vtq.a("", 17, 12, 1);
-          EventCollector.getInstance().onViewClicked(paramView);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          break label410;
-        }
-        if (this.a.jdField_a_of_type_Int == 7)
-        {
-          localObject3 = (FeedCloudMeta.StComment)this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.operation.comment.get();
-          localObject1 = localObject2;
-          if (localObject3 != null)
-          {
-            localObject3 = ((FeedCloudMeta.StComment)localObject3).vecReply.get();
-            localObject1 = localObject2;
-            if (localObject3 != null)
-            {
-              localObject1 = localObject2;
-              if (((List)localObject3).size() > 0)
-              {
-                localObject1 = localObject2;
-                if (((List)localObject3).get(0) != null)
-                {
-                  localObject1 = localObject2;
-                  if (((FeedCloudMeta.StReply)((List)localObject3).get(0)).likeInfo.get() != null) {
-                    localObject1 = ((FeedCloudMeta.StLike)((FeedCloudMeta.StReply)((List)localObject3).get(0)).likeInfo.get()).id.get();
-                  }
-                }
-              }
-            }
-          }
-          i = 7;
-          break;
-        }
-        i = 2;
-        localObject1 = localObject2;
-        break;
-        QLog.e("QCircleDefaultMessagePresenter", 1, localException1, new Object[0]);
-        continue;
-        int j = 0;
+        xvv.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
+        new ErrorMessage(96000000, localIOException.getMessage());
       }
     }
   }

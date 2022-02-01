@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class aiqh
-  implements Animation.AnimationListener
+  extends ainm
 {
-  public aiqh(TroopChatPie paramTroopChatPie) {}
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public StringBuilder a;
+  public SingleLineTextView c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  aiqh()
   {
-    this.a.d.setBackgroundResource(2130843607);
-    this.a.a.setBackgroundResource(2130843613);
-    this.a.p.setVisibility(8);
-    this.a.q.setVisibility(8);
-    this.a.n.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.p.setVisibility(0);
-    this.a.q.setVisibility(0);
+    this.b = 11;
   }
 }
 

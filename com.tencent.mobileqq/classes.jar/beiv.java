@@ -1,17 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil.2.1;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
 
-public final class beiv
-  extends beit
+public class beiv
+  extends aptq<beiu>
 {
-  public beiv(QQAppInterface paramQQAppInterface) {}
-  
-  public boolean a(int paramInt)
+  @NonNull
+  public beiu a(int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
-    return super.a(paramInt);
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new beiu();
+  }
+  
+  @Nullable
+  public beiu a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return beiu.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public void a(beiu parambeiu) {}
+  
+  public Class<beiu> clazz()
+  {
+    return beiu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 605;
   }
 }
 

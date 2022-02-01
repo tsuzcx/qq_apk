@@ -1,3 +1,5 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
@@ -11,20 +13,27 @@ import com.etrump.mixlayout.AnimatedImageSpan.1;
 public class fk
   extends DynamicDrawableSpan
 {
-  private Drawable a;
+  private Drawable mDrawable;
+  
+  public fk(Context paramContext, int paramInt)
+  {
+    paramContext = paramContext.getResources().getDrawable(paramInt);
+    paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth(), paramContext.getIntrinsicHeight());
+    this.mDrawable = paramContext;
+  }
   
   public fk(Drawable paramDrawable)
   {
-    this.a = paramDrawable;
+    this.mDrawable = paramDrawable;
     paramDrawable = new Handler();
     paramDrawable.post(new AnimatedImageSpan.1(this, paramDrawable));
   }
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    paramCharSequence = this.a;
+    paramCharSequence = this.mDrawable;
     if ((paramCharSequence instanceof AnimatedImageDrawable)) {
-      paramCharSequence = ((AnimatedImageDrawable)this.a).a();
+      paramCharSequence = ((AnimatedImageDrawable)this.mDrawable).a();
     }
     for (;;)
     {
@@ -46,7 +55,7 @@ public class fk
   
   public Drawable getDrawable()
   {
-    return this.a;
+    return this.mDrawable;
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)

@@ -1,60 +1,33 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopFeedItem;
+import android.content.SharedPreferences;
+import com.tencent.gamecenter.activities.GameCenterActivity;
+import java.util.HashMap;
+import java.util.List;
 
-class bgxf
-  extends bgxe
+public class bgxf
 {
-  bgxf(bgwy parambgwy)
+  public static HashMap<String, Integer> a;
+  public static List<String> a;
+  public static int d = -1;
+  public int a;
+  public long a;
+  public SharedPreferences a;
+  public boolean a;
+  public int b;
+  public int c = 6;
+  
+  static
   {
-    super(parambgwy);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
   }
   
-  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  public bgxf()
   {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.a.a).inflate(2131560573, null);
-    }
-    paramView = (bgxg)localView.getTag();
-    Object localObject = paramView;
-    if (paramView == null)
-    {
-      localObject = new bgxg(this);
-      ((bgxg)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131372628));
-      ((bgxg)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378936));
-      ((bgxg)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131381229));
-      ((bgxg)localObject).b = ((TextView)localView.findViewById(2131381232));
-      ((bgxg)localObject).c = ((TextView)localView.findViewById(2131381233));
-      localView.setOnClickListener(this.a);
-      localView.setTag(localObject);
-    }
-    ((bgxg)localObject).jdField_a_of_type_Int = paramInt;
-    ((bgxg)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
-    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
-    ((bgxg)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-    ((bgxg)localObject).b.setText(paramTroopFeedItem.content);
-    ((bgxg)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    paramView = anzj.a(2131714094) + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
-    if (!bhsr.a(paramTroopFeedItem.ex_1))
-    {
-      ((bgxg)localObject).c.setText(paramTroopFeedItem.ex_1);
-      paramView = paramView + " " + paramTroopFeedItem.ex_1;
-    }
-    for (;;)
-    {
-      ((bgxg)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843606);
-      paramTroopFeedItem = paramView;
-      if (!paramBoolean) {
-        paramTroopFeedItem = paramView + " " + anzj.a(2131714090);
-      }
-      localView.setContentDescription(paramTroopFeedItem);
-      return localView;
-      ((bgxg)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(String paramString)
+  {
+    GameCenterActivity.a(paramString, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
   }
 }
 

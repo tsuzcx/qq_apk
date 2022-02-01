@@ -14,17 +14,15 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aoot;
-import bmsw;
-import bmyl;
-import bmym;
-import bntm;
+import bkyt;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
 import cooperation.qzone.report.lp.LpReportManager;
 import mqq.app.AppRuntime;
@@ -33,85 +31,41 @@ public class TimeHeaderLayout
   extends LinearLayout
   implements View.OnClickListener
 {
-  public static String a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmyl jdField_a_of_type_Bmyl;
-  bmym jdField_a_of_type_Bmym;
-  TextView b;
-  TextView c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "capsule_open";
-  }
+  public static String KEY_TIME_CAPSULE_EXPAND = "capsule_open";
+  ImageView avatarView;
+  Handler handler;
+  TimeHeaderLayout.HeadInfo headInfo;
+  TextView loginDaysView;
+  private Context mContext;
+  private LinearLayout mLayoutVisitor;
+  TimeHeaderLayout.OnDetailClickListner onDetailClickListner;
+  SharedPreferences preferences;
+  TextView registerDyasView;
+  View timeCapsule;
+  TextView vistorView;
   
   public TimeHeaderLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
   public TimeHeaderLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
   public TimeHeaderLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
-  private String a()
-  {
-    String str2 = QzoneConfig.getInstance().getConfig("H5Url", "QzoneVisitor", "https://h5.qzone.qq.com/qzone/visitor/{hostUin}?uin={uin}&from={from}&qua={qua}&clicktime={clicktime}&hostuin={hostUin}&_wv=3&_proxy=1&trace_detail=%7B%22appid%22%3A%22{refer}%22%7D");
-    if (TextUtils.isEmpty(str2)) {
-      return str2;
-    }
-    String str3 = b();
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str3)) {
-      str1 = str2.replace("{uin}", str3).replace("{hostUin}", str3);
-    }
-    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", bmsw.a());
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    LayoutInflater.from(getContext()).inflate(2131562483, this, true);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378855);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363109));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375891));
-    this.b = ((TextView)findViewById(2131375386));
-    this.c = ((TextView)findViewById(2131375965));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369792));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    findViewById(2131378855).setOnClickListener(this);
-    bntm.a(9, 1);
-  }
-  
-  private void a(bmyl parambmyl)
-  {
-    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
-    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
-    if ((this.jdField_a_of_type_Bmym != null) && (parambmyl != null)) {
-      this.jdField_a_of_type_Bmym.a(parambmyl.jdField_a_of_type_JavaLangString, 2131378855);
-    }
-  }
-  
-  private String b()
+  private String getCurrentUin()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime != null) {
@@ -120,37 +74,76 @@ public class TimeHeaderLayout
     return null;
   }
   
-  private void b()
+  private String getVisitorJumpUrl()
   {
-    Object localObject = aoot.a(1, 3);
-    localObject = aoot.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    if (this.jdField_a_of_type_Bmyl != null)
+    String str2 = QzoneConfig.getInstance().getConfig("H5Url", "QzoneVisitor", "https://h5.qzone.qq.com/qzone/visitor/{hostUin}?uin={uin}&from={from}&qua={qua}&clicktime={clicktime}&hostuin={hostUin}&_wv=3&_proxy=1&trace_detail=%7B%22appid%22%3A%22{refer}%22%7D");
+    if (TextUtils.isEmpty(str2)) {
+      return str2;
+    }
+    String str3 = getCurrentUin();
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str3)) {
+      str1 = str2.replace("{uin}", str3).replace("{hostUin}", str3);
+    }
+    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", QUA.getQUA3());
+  }
+  
+  private void init()
+  {
+    this.handler = new Handler(Looper.getMainLooper());
+    LayoutInflater.from(getContext()).inflate(2131562359, this, true);
+    this.preferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
+    this.timeCapsule = findViewById(2131378619);
+    this.avatarView = ((ImageView)findViewById(2131363126));
+    this.registerDyasView = ((TextView)findViewById(2131375659));
+    this.loginDaysView = ((TextView)findViewById(2131375154));
+    this.vistorView = ((TextView)findViewById(2131375733));
+    this.mLayoutVisitor = ((LinearLayout)findViewById(2131369781));
+    this.mLayoutVisitor.setOnClickListener(this);
+    findViewById(2131378619).setOnClickListener(this);
+    bkyt.a(9, 1);
+  }
+  
+  private void onDetailClick(TimeHeaderLayout.HeadInfo paramHeadInfo)
+  {
+    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
+    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
+    if ((this.onDetailClickListner != null) && (paramHeadInfo != null)) {
+      this.onDetailClickListner.onDetailClick(paramHeadInfo.jumpUrl, 2131378619);
+    }
+  }
+  
+  private void update()
+  {
+    Object localObject = FaceDrawable.getDefaultDrawable(1, 3);
+    localObject = FaceDrawable.getFaceDrawable(((BaseActivity)this.mContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
+    this.avatarView.setImageDrawable((Drawable)localObject);
+    if (this.headInfo != null)
     {
-      if (this.jdField_a_of_type_Bmyl.c <= 999L) {
-        break label120;
+      if (this.headInfo.todayVisitor <= 999L) {
+        break label122;
       }
-      this.c.setText("999+");
-      if (this.jdField_a_of_type_Bmyl.b <= 999L) {
-        break label140;
+      this.vistorView.setText("999+");
+      if (this.headInfo.loginDays <= 999L) {
+        break label142;
       }
-      this.b.setText("999+");
+      this.loginDaysView.setText("999+");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bmyl.jdField_a_of_type_Long <= 9999L) {
-        break label160;
+      if (this.headInfo.registerDays <= 9999L) {
+        break label162;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("9999+");
+      this.registerDyasView.setText("9999+");
       return;
-      label120:
-      this.c.setText(String.valueOf(this.jdField_a_of_type_Bmyl.c));
+      label122:
+      this.vistorView.setText(String.valueOf(this.headInfo.todayVisitor));
       break;
-      label140:
-      this.b.setText(String.valueOf(this.jdField_a_of_type_Bmyl.b));
+      label142:
+      this.loginDaysView.setText(String.valueOf(this.headInfo.loginDays));
     }
-    label160:
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Bmyl.jdField_a_of_type_Long));
+    label162:
+    this.registerDyasView.setText(String.valueOf(this.headInfo.registerDays));
   }
   
   public void onClick(View paramView)
@@ -162,31 +155,31 @@ public class TimeHeaderLayout
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      a(this.jdField_a_of_type_Bmyl);
+      onDetailClick(this.headInfo);
       continue;
-      if (this.jdField_a_of_type_Bmym != null)
+      if (this.onDetailClickListner != null)
       {
-        String str = a();
+        String str = getVisitorJumpUrl();
         if (QLog.isColorLevel()) {
           QLog.i("QZoneMsg", 0, " jump url = " + str);
         }
-        bntm.a(9, 2);
-        this.jdField_a_of_type_Bmym.a(str, 2131369792);
+        bkyt.a(9, 2);
+        this.onDetailClickListner.onDetailClick(str, 2131369781);
       }
     }
   }
   
-  public void setHeadInfo(bmyl parambmyl)
+  public void setHeadInfo(TimeHeaderLayout.HeadInfo paramHeadInfo)
   {
-    this.jdField_a_of_type_Bmyl = parambmyl;
-    if (parambmyl != null) {
+    this.headInfo = paramHeadInfo;
+    if (paramHeadInfo != null) {
       ThreadManagerV2.executeOnSubThread(new TimeHeaderLayout.1(this));
     }
   }
   
-  public void setOnDetailClickListner(bmym parambmym)
+  public void setOnDetailClickListner(TimeHeaderLayout.OnDetailClickListner paramOnDetailClickListner)
   {
-    this.jdField_a_of_type_Bmym = parambmym;
+    this.onDetailClickListner = paramOnDetailClickListner;
   }
 }
 

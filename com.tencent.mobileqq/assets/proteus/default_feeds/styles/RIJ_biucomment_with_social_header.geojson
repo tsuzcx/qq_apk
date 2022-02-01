@@ -71,7 +71,6 @@
                                     "value": "351"
                                 },
                                 "attributes": {
-                                    "setFrameString:": "-1",
                                     "setArticleModel:": "-1",
                                     "setPreAccountUin:": "$feeds_pre_account_uin"
                                 }
@@ -99,6 +98,7 @@
                     "type": "match_parent"
                 },
                 "attributes": {
+                    "setCornerRadiusString:":"6",
                     "setBackgroundColorString:": "#F5F6FA"
                 },
                 "subviews": [
@@ -130,7 +130,7 @@
                 "$includeComponet": "componet/RIJ_column_capsule.geojson"
             },
             {
-              "$includeComponet": "componet/social_bottom_share_style_a.geojson"
+                "$includeComponet": "componet/social_bottom_share_style_a.geojson"
             },
             {
                 "view_type":"UIView",
@@ -147,16 +147,12 @@
                     "type": "match_parent"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#E5E5E5",
                     "setAttatchInfo:":"$separatorShouldShould"
                 }
             },
             {
-                "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
-            },
-            {
-                "$includeComponet": "componet/separator.geojson"
+                "$includeComponet": "componet/separator_normal_bottom.geojson"
             }
         ]
     }

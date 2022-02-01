@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class auzd
-  implements View.OnClickListener
+  extends amsu
 {
-  public auzd(ForwardFileOption paramForwardFileOption) {}
+  public auzd(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    ForwardFileOption.b(this.a);
-    ForwardFileOption.a(this.a, paramView);
-    bdll.b(null, "dc00898", "", "", "0X800AEEA", "0X800AEEA", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
+    {
+      String str = auzn.a(2, String.valueOf(paramObject));
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        auyq.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(2, String.valueOf(paramObject), false);
+      }
+    }
   }
 }
 

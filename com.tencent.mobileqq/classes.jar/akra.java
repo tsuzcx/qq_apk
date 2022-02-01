@@ -1,163 +1,266 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.sharpP.SharpPUtils;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ListView;
+import android.util.Log;
+import android.widget.ImageButton;
+import android.widget.VideoView;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixRunnable;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 
 public class akra
-  extends BaseAdapter
 {
-  private final String jdField_a_of_type_JavaLangString = "VerticalPictureAdapter";
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private final aeyl jdField_a_of_type_Aeyl = new akrb(this);
+  private final akvf jdField_a_of_type_Akvf = new akrc(this);
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener;
+  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private bhht jdField_a_of_type_Bhht;
+  private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
+  private FixedSizeVideoView jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView;
+  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Dialog> jdField_a_of_type_JavaLangRefWeakReference;
+  private yir jdField_a_of_type_Yir;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  private long c;
   
-  public akra(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, Context paramContext)
+  private akra(Activity paramActivity, FixedSizeVideoView paramFixedSizeVideoView, ImageButton paramImageButton, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo)
   {
-    a();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView = paramFixedSizeVideoView;
+    this.jdField_a_of_type_AndroidWidgetImageButton = paramImageButton;
+    this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = paramQzoneVerticalVideoTopicInfo;
+    this.jdField_a_of_type_Yir = a();
   }
   
-  private void a()
+  private long a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.a.setRecyclerListener(new akrb(this));
+    return this.b - this.jdField_a_of_type_Long;
   }
   
-  private void a(akrc paramakrc, int paramInt)
+  public static akra a(Activity paramActivity, FixedSizeVideoView paramFixedSizeVideoView, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo, ImageButton paramImageButton)
   {
-    akqz localakqz = (akqz)getItem(paramInt);
-    if (localakqz == null)
+    return new akra(paramActivity, paramFixedSizeVideoView, paramImageButton, paramQzoneVerticalVideoTopicInfo);
+  }
+  
+  private yir a()
+  {
+    if ((this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo != null) && (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.hasMusic()))
     {
-      QZLog.e("VerticalPictureAdapter", "photoInfo == null");
-      return;
-    }
-    AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)paramakrc.a.getLayoutParams();
-    AbsListView.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null) {
-      localLayoutParams1 = new AbsListView.LayoutParams(-1, -2);
-    }
-    QZLog.d("VerticalPictureAdapter", 1, new Object[] { "photoInfo.heightWeightProportion:", Float.valueOf(localakqz.jdField_a_of_type_Float) });
-    if (localakqz.jdField_a_of_type_Float != 0.0F)
-    {
-      float f = bhtq.a();
-      localLayoutParams1.height = ((int)(localakqz.jdField_a_of_type_Float * f));
-    }
-    paramakrc.a.setLayoutParams(localLayoutParams1);
-    paramakrc.a.setImageDrawable(null);
-  }
-  
-  private void b(akrc paramakrc, int paramInt)
-  {
-    Object localObject = (akqz)getItem(paramInt);
-    if ((localObject == null) || (TextUtils.isEmpty(((akqz)localObject).jdField_a_of_type_JavaLangString))) {
-      QZLog.e("VerticalPictureAdapter", "loadImageData: bigUrl is empty");
-    }
-    for (;;)
-    {
-      return;
-      File localFile = new File(((akqz)localObject).jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = bhtq.a();
-        float f = bhtq.a();
-        localURLDrawableOptions.mRequestHeight = ((int)(((akqz)localObject).jdField_a_of_type_Float * f));
-        localURLDrawableOptions.mLoadingDrawable = beyq.a;
-        try
-        {
-          localObject = localFile.toURI().toURL();
-          if (localObject != null)
-          {
-            localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-            if (localObject != null) {
-              switch (((URLDrawable)localObject).getStatus())
-              {
-              default: 
-                ((URLDrawable)localObject).startDownload();
-              }
-            }
-            if (localObject != null)
-            {
-              paramakrc.a.setImageDrawable((Drawable)localObject);
-              return;
-            }
-          }
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          for (;;)
-          {
-            localMalformedURLException.printStackTrace();
-            localURLDrawable = null;
-          }
-        }
-      }
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = bhtq.a();
-    localURLDrawableOptions.mRequestHeight = ((int)(bhtq.a() * localURLDrawable.jdField_a_of_type_Float));
-    localURLDrawableOptions.mLoadingDrawable = beyq.a;
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(localURLDrawable.jdField_a_of_type_JavaLangString), localURLDrawableOptions);
-    if (localURLDrawable == null) {
-      QLog.w("PEAK", 2, "drawable == null");
-    }
-    paramakrc.a.setImageDrawable(localURLDrawable);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalPictureAdapter", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size());
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size()) && (paramInt >= 0)) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.get(paramInt);
+      yir localyir = new yir();
+      localyir.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getMusicUrl();
+      localyir.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getTopicId();
+      localyir.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getMusicName();
+      localyir.jdField_b_of_type_Int = 3;
+      return localyir;
     }
     return null;
   }
   
-  public long getItemId(int paramInt)
+  private void b(boolean paramBoolean)
   {
-    return paramInt;
+    float f2 = 0.0F;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView != null) {}
+    for (;;)
+    {
+      try
+      {
+        Object localObject = VideoView.class.getDeclaredField("mMediaPlayer");
+        ((Field)localObject).setAccessible(true);
+        localObject = (MediaPlayer)((Field)localObject).get(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView);
+        if (localObject != null)
+        {
+          if (paramBoolean)
+          {
+            f1 = 0.0F;
+            break label100;
+            ((MediaPlayer)localObject).setVolume(f1, f2);
+          }
+        }
+        else {
+          return;
+        }
+        float f1 = 1.0F;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        QZLog.e("EditLocalVideoMusicMixe", 2, localNoSuchFieldException, new Object[0]);
+        return;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QZLog.e("EditLocalVideoMusicMixe", 2, localIllegalAccessException, new Object[0]);
+        return;
+      }
+      f2 = 1.0F;
+      continue;
+      label100:
+      if (!paramBoolean) {}
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  private void c(boolean paramBoolean)
   {
-    akrc localakrc = new akrc(this, null);
-    if (paramView == null)
-    {
-      localakrc.a = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-      localakrc.a.setTag(localakrc);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) {
+      if (!paramBoolean) {
+        break label49;
+      }
     }
-    for (paramView = localakrc;; paramView = (akrc)paramView.getTag())
+    label49:
+    for (int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();; i = 0)
     {
-      a(paramView, paramInt);
-      b(paramView, paramInt);
-      paramView = paramView.a;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      this.jdField_a_of_type_Int = i;
+      if (this.jdField_a_of_type_Yir == null) {
+        b(false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = null;
+      return;
     }
+  }
+  
+  private boolean c()
+  {
+    return (this.jdField_a_of_type_Yir != null) && (a() - this.jdField_a_of_type_Yir.f > 0L);
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aeyl);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
+    }
+    AudioPlayer localAudioPlayer;
+    String str;
+    if (this.jdField_a_of_type_Yir != null)
+    {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Yir.g)) {
+        break label119;
+      }
+      localAudioPlayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
+      str = this.jdField_a_of_type_Yir.g;
+      if (this.jdField_a_of_type_Int == 0) {
+        break label108;
+      }
+    }
+    label108:
+    for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_Yir.jdField_d_of_type_Int)
+    {
+      localAudioPlayer.b(str, i);
+      this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(new Intent("action_music_start"));
+      b(true);
+      return;
+    }
+    label119:
+    QZLog.e("EditLocalVideoMusicMixe", 2, new Object[] { "startAudioPlayback: music not downloaded " + this.jdField_a_of_type_Yir.jdField_d_of_type_JavaLangString });
+  }
+  
+  public void a()
+  {
+    P2VEditMusicDialog localP2VEditMusicDialog = new P2VEditMusicDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Akvf, (int)a(), true);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      localP2VEditMusicDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+    }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener != null) {
+      localP2VEditMusicDialog.setOnShowListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener);
+    }
+    localP2VEditMusicDialog.setCanceledOnTouchOutside(false);
+    localP2VEditMusicDialog.show();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localP2VEditMusicDialog);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 - paramInt1 > 0)
+    {
+      this.jdField_a_of_type_Long = paramInt1;
+      this.b = paramInt2;
+      Log.d("EditLocalVideoMusicMixe", "updateVideoFrameClippedRange: " + paramInt1 + " " + paramInt2);
+      return;
+    }
+    Log.w("EditLocalVideoMusicMixe", "updateVideoFrameClippedRange: duration less or equal than zero " + paramInt2 + " " + paramInt1);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Yir != null) {
+      new P2VEditMusicDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Akvf, (int)paramLong, true);
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    a(0, (int)paramLong);
+    this.c = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(akre paramakre)
+  {
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new EditLocalVideoMusicMixRunnable(this.jdField_a_of_type_Long, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Yir, new akrd(this, paramakre)));
+  }
+  
+  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = paramOnDismissListener;
+  }
+  
+  public void a(DialogInterface.OnShowListener paramOnShowListener)
+  {
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = paramOnShowListener;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (((Dialog)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isShowing());
+  }
+  
+  public void b()
+  {
+    c(false);
+    f();
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Yir != null) && ((this.jdField_a_of_type_Yir.jdField_b_of_type_Int == 0) || (this.jdField_a_of_type_Yir.jdField_b_of_type_Int == 3) || (this.jdField_a_of_type_Yir.jdField_b_of_type_Int == 2)) && (!this.jdField_a_of_type_Boolean);
+  }
+  
+  public void c()
+  {
+    c(false);
+  }
+  
+  public void d()
+  {
+    c(true);
+  }
+  
+  public void e()
+  {
+    f();
   }
 }
 

@@ -1,57 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
 
-public class txd
-  extends tye
+class txd
+  extends AnimatorListenerAdapter
 {
-  final int a = 3;
+  txd(txb paramtxb, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
   
-  public txd(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramBaseApplicationImpl);
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setVisibility(4);
+    txb.a(this.jdField_a_of_type_Txb).a();
   }
   
-  public static URL a(String paramString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = new URL("pubaccountimage_gifplaytime", null, paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
-        paramString = null;
-      }
-    }
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if (GifDrawable.isGifFile(paramFile)) {
-      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
-    {
-      return new txe(paramFile, true, i);
-      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-    }
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setVisibility(0);
   }
 }
 

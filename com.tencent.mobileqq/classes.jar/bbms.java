@@ -1,69 +1,88 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x6b.SubMsgType0x6b.MsgBody;
 
 public class bbms
-  extends Handler
+  implements bbnb
 {
-  protected WeakReference<bbmq> a;
-  
-  public bbms(bbmq parambbmq1, Looper paramLooper, bbmq parambbmq2)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm, MessageHandler paramMessageHandler)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbmq2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    bbmq localbbmq = (bbmq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbbmq == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
+    parambbkm = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("Push_PCActive_Notice_Decode", 2, "get notice from decodeC2CMsgPkg_MsgType0x210");
+    }
+    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+    try
+    {
+      Object localObject = new SubMsgType0x6b.MsgBody();
+      ((SubMsgType0x6b.MsgBody)localObject).mergeFrom(paramMsgType0x210);
+      long l = ((SubMsgType0x6b.MsgBody)localObject).uint64_to_uin.get();
+      if (!SettingCloneUtil.readValue(BaseApplicationImpl.getApplication(), Long.toString(l), null, "qqsetting_pcactive_key", false))
+      {
+        if (!((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.has()) {
+          break label337;
+        }
+        paramMsgType0x210 = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.get().toByteArray(), "utf-8");
+        if (!((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.has()) {
+          break label332;
+        }
+        paramList = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.get().toByteArray(), "utf-8");
+        if (((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.has()) {
+          parambbkm = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.get().toByteArray(), "utf-8");
+        }
+        BaseApplicationImpl.getApplication().setPCActiveNotice(Long.toString(l), paramMsgType0x210, parambbkm, paramList);
+        localObject = new Intent("mqq.intent.action.PCACTIVE_TIPS");
+        ((Intent)localObject).putExtra("uin", Long.toString(l));
+        ((Intent)localObject).putExtra("Message", paramMsgType0x210);
+        ((Intent)localObject).putExtra("lButton", parambbkm);
+        ((Intent)localObject).putExtra("rButton", paramList);
+        if (NotifyPCActiveActivity.a == null) {
+          BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
+        }
+      }
+      bblf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Push_PCActive_Notice_Decode", 2, "failed to get msg0x210.SubMsgType0x6b");
+        }
       }
     }
-    label187:
-    do
+    catch (UnsupportedEncodingException paramMsgType0x210)
     {
-      do
+      for (;;)
       {
-        return;
-        switch (i)
+        if (QLog.isColorLevel())
         {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (paramMessage.obj != null)
-          {
-            bbmq.a(localbbmq, (bbmt)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("bundle == null");
-        case 1: 
-          if ((bbmq.a(this.jdField_a_of_type_Bbmq)) || (bbmq.a(this.jdField_a_of_type_Bbmq) == null) || (!bbmq.a(this.jdField_a_of_type_Bbmq).a)) {
-            break label187;
-          }
-          sendEmptyMessageDelayed(1, 100L);
+          QLog.d("Push_PCActive_Notice_Decode", 2, "failed to parse msg0x210.SubMsgType0x6b");
+          continue;
+          label332:
+          paramList = null;
+          continue;
+          label337:
+          paramMsgType0x210 = null;
         }
-      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
-      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
-      return;
-      bbmq.a(localbbmq);
-      return;
-      if (paramMessage.obj != null)
-      {
-        paramMessage = (Object[])paramMessage.obj;
-        if ((paramMessage == null) || (paramMessage.length != 5)) {
-          throw new IllegalArgumentException("args == null || args.length != 6");
-        }
-        localbbmq.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-        return;
       }
-      throw new RuntimeException("bundle == null");
-    } while (bbmq.a(this.jdField_a_of_type_Bbmq) == null);
-    bbmq.a(this.jdField_a_of_type_Bbmq).a();
+    }
   }
 }
 

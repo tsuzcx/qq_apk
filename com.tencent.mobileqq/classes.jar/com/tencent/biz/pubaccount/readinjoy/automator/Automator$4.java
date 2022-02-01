@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import omo;
-import omp;
+import onz;
+import ooa;
 
 public class Automator$4
   implements Runnable
 {
-  public Automator$4(omo paramomo, omp paramomp) {}
+  public Automator$4(onz paramonz, ooa paramooa) {}
   
   public void run()
   {

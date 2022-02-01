@@ -1,15 +1,6 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
-
-class wxf
-  implements Comparator<xiw>
+public abstract interface wxf
 {
-  wxf(wxe paramwxe) {}
-  
-  public int a(xiw paramxiw1, xiw paramxiw2)
-  {
-    return wxl.a(paramxiw1.a.mCreateTime, paramxiw2.a.mCreateTime);
-  }
+  public abstract void a(wwz paramwwz);
 }
 
 

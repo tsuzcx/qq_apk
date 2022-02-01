@@ -1,23 +1,76 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afrw
-  extends lnc
+  implements afrc
 {
-  public afrw(TroopAssistantActivity paramTroopAssistantActivity) {}
+  private agxe jdField_a_of_type_Agxe;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  protected void a(int paramInt, long paramLong)
+  public afrw(afqw paramafqw, BaseChatPie paramBaseChatPie)
   {
-    this.a.c();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
   }
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  private PokeAndEmoPanel a()
   {
-    this.a.c();
+    if (this.jdField_a_of_type_Agxe == null) {
+      this.jdField_a_of_type_Agxe = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getPanelManager();
+    }
+    return (PokeAndEmoPanel)this.jdField_a_of_type_Agxe.a(23);
   }
   
-  protected void b(int paramInt, long paramLong)
+  private void a()
   {
-    this.a.c();
+    PokeAndEmoPanel localPokeAndEmoPanel = a();
+    if (localPokeAndEmoPanel != null) {
+      localPokeAndEmoPanel.a();
+    }
+  }
+  
+  private void b()
+  {
+    PokeAndEmoPanel localPokeAndEmoPanel = a();
+    if (localPokeAndEmoPanel != null) {
+      localPokeAndEmoPanel.c();
+    }
+  }
+  
+  private void c()
+  {
+    PokeAndEmoPanel localPokeAndEmoPanel = a();
+    if (localPokeAndEmoPanel != null)
+    {
+      localPokeAndEmoPanel.b();
+      agkg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), agkg.a);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 9: 
+    case 11: 
+    case 12: 
+    default: 
+      return;
+    case 8: 
+      a();
+      return;
+    case 10: 
+      b();
+      return;
+    }
+    c();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 8, 10, 13 };
   }
 }
 

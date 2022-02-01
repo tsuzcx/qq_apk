@@ -1,22 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
 class aink
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bjub
 {
-  aink(ainh paramainh, View paramView, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  aink(ainj paramainj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if ((paramValueAnimator == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  {
+    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
+    if ((parambjua instanceof SimpleTextView)) {
+      parambjua.setTag(-10, paramObject);
     }
-    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    float f2 = this.jdField_a_of_type_Int;
-    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    return parambjua;
+  }
+  
+  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  {
+    this.a.a(paramInt, paramArrayOfbjua);
   }
 }
 

@@ -1,13 +1,23 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import agej;
-import amsx;
-import amva;
-import amwd;
-import amxi;
-import anas;
-import anbd;
-import ande;
+import alnr;
+import alpu;
+import alqx;
+import alsc;
+import alvm;
+import alvx;
+import alxy;
+import amdp;
+import amec;
+import ameg;
+import amej;
+import amez;
+import amfw;
+import amfy;
+import amip;
+import amja;
+import ammz;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,26 +29,11 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aniv;
-import anji;
-import anjm;
-import anjp;
-import ankf;
-import anlc;
-import anle;
-import annv;
-import anog;
-import ansi;
-import anzj;
-import aser;
-import asev;
-import bhlo;
-import bhlq;
-import bhmi;
-import bhpc;
-import binq;
-import bioy;
-import birg;
+import aqyp;
+import aqyt;
+import bfur;
+import bgtw;
+import bgve;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -48,6 +43,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
@@ -60,9 +56,13 @@ import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -80,11 +80,11 @@ import org.json.JSONObject;
 
 public class ApolloJsPlugin
   extends VasWebviewJsPlugin
-  implements amwd
+  implements alqx
 {
   public static final String BUSINESS_NAME = "apollo";
-  private static final int DEFAULT_HEIGHT = (int)(bhlo.l() * 0.4D / bhlo.a());
-  private static final int DEFAULT_WIDTH = (int)((float)(bhlo.k() >> 1) / bhlo.a());
+  private static final int DEFAULT_HEIGHT = (int)(DeviceInfoUtil.getHeight() * 0.4D / DeviceInfoUtil.getDesity());
+  private static final int DEFAULT_WIDTH = (int)((float)(DeviceInfoUtil.getWidth() >> 1) / DeviceInfoUtil.getDesity());
   public static final int INITFROM_GETLOCALINFO = 3;
   public static final int INITFROM_GETROLE = 2;
   public static final int INITFROM_GETSWITCH = 4;
@@ -94,24 +94,24 @@ public class ApolloJsPlugin
   public static int sResponseKey;
   private static int sRoleGender;
   private boolean alreadyCallBack;
-  private bhpc gameDialog;
+  private QQCustomDialog gameDialog;
   public int mAISwitch;
   private int mApolloStatus;
-  private anji mApolloViewContoller;
+  private amec mApolloViewContoller;
   private CmGameStartChecker mCmGameStartChecker;
-  private amxi mCmGameStartCheckerListener;
+  private alsc mCmGameStartCheckerListener;
   private String mCurrentUin;
   private boolean mDataInited;
   private int[] mDressIds;
   private int mGender;
   public boolean mHasInited;
-  protected anlc mInterceptor;
+  protected amfw mInterceptor;
   public boolean mIsAIRole;
   private long mLastGameTime;
   private boolean mNeedCreateInterceptor;
   public Bundle mReqBundle;
   private int mRoleId = -1;
-  private ankf mRscLoader;
+  private amez mRscLoader;
   private String mTab;
   private Vector<String> mValidAvatarIdList = new Vector();
   
@@ -122,16 +122,16 @@ public class ApolloJsPlugin
       QLog.d("ApolloJsPlugin", 2, "apollo_client onApolloJsCreate");
     }
     ApolloEngine.a();
-    amva.a();
+    alpu.a();
   }
   
   public ApolloJsPlugin(String paramString)
   {
     this.mPluginNameSpace = "apollo";
-    if (anle.a())
+    if (amfy.a())
     {
       this.mNeedCreateInterceptor = false;
-      this.mInterceptor = anlc.a(true, paramString);
+      this.mInterceptor = amfw.a(true, paramString);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloJsPlugin", 2, "apollo_client onApolloJsCreate ApolloWebDataHandler.isInstanceCreated():true");
       }
@@ -139,7 +139,7 @@ public class ApolloJsPlugin
     for (;;)
     {
       ApolloEngine.a();
-      amva.a();
+      alpu.a();
       return;
       this.mNeedCreateInterceptor = true;
       ThreadManager.postImmediately(new ApolloJsPlugin.1(this, paramString), null, true);
@@ -214,13 +214,13 @@ public class ApolloJsPlugin
   {
     if (!"mounted".equals(Environment.getExternalStorageState()))
     {
-      QQToast.a(paramContext, anzj.a(2131699344), 0).a();
+      QQToast.a(paramContext, amtj.a(2131699579), 0).a();
       return false;
     }
     return true;
   }
   
-  public anlc getIntercepter()
+  public amfw getIntercepter()
   {
     return this.mInterceptor;
   }
@@ -254,7 +254,7 @@ public class ApolloJsPlugin
           }
         }
         if (this.mRscLoader == null) {
-          this.mRscLoader = new ankf(this);
+          this.mRscLoader = new amez(this);
         }
         Object localObject3 = this.mRscLoader.a(paramString);
         if (localObject3 != null)
@@ -287,7 +287,7 @@ public class ApolloJsPlugin
         if (QLog.isColorLevel()) {
           QLog.d("ApolloJsPlugin", 1, "apollo_client handleEvent reinited ApolloUrlInterceptor,url:" + paramString);
         }
-        this.mInterceptor = anlc.a(true, paramString);
+        this.mInterceptor = amfw.a(true, paramString);
         this.mNeedCreateInterceptor = false;
       }
       if (this.mInterceptor != null)
@@ -432,7 +432,7 @@ public class ApolloJsPlugin
           paramVarArgs = this.mRuntime.a();
           if ((paramVarArgs == null) || (this.isDestroy) || (paramVarArgs.isFinishing()))
           {
-            callbackError(paramString2, anzj.a(2131699351));
+            callbackError(paramString2, amtj.a(2131699586));
             return true;
           }
           if ("startRecord".equals(paramString3))
@@ -461,27 +461,27 @@ public class ApolloJsPlugin
             {
               this.mReqBundle.clear();
               this.mReqBundle.putInt("maxDuration", j);
-              super.sendRemoteReq(asev.a("ipc_apollo_start_record_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+              super.sendRemoteReq(aqyt.a("ipc_apollo_start_record_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
             }
           }
           else if ("stopRecord".equals(paramString3))
           {
-            super.sendRemoteReq(asev.a("ipc_apollo_stop_record_msg", paramString2, this.mOnRemoteResp.key, null), false, true);
+            super.sendRemoteReq(aqyt.a("ipc_apollo_stop_record_msg", paramString2, this.mOnRemoteResp.key, null), false, true);
           }
           else if ("startUploadRecord".equals(paramString3))
           {
-            super.sendRemoteReq(asev.a("ipc_apollo_upload_record_msg", paramString2, this.mOnRemoteResp.key, null), false, true);
+            super.sendRemoteReq(aqyt.a("ipc_apollo_upload_record_msg", paramString2, this.mOnRemoteResp.key, null), false, true);
           }
           else if ("startPlayLastRecord".equals(paramString3))
           {
             paramJsBridgeListener = ((JSONObject)localObject1).optString("url", "");
             this.mReqBundle.clear();
             this.mReqBundle.putString("url", paramJsBridgeListener);
-            super.sendRemoteReq(asev.a("ipc_apollo_play_last_record_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+            super.sendRemoteReq(aqyt.a("ipc_apollo_play_last_record_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
           }
           else if ("stopPlayLastRecord".equals(paramString3))
           {
-            super.sendRemoteReq(asev.a("ipc_apollo_stop_last_record_msg", paramString2, this.mOnRemoteResp.key, null), false, true);
+            super.sendRemoteReq(aqyt.a("ipc_apollo_stop_last_record_msg", paramString2, this.mOnRemoteResp.key, null), false, true);
           }
           else if ("getPlaymateMsgList".equals(paramString3))
           {
@@ -490,7 +490,7 @@ public class ApolloJsPlugin
             {
               this.mReqBundle.clear();
               this.mReqBundle.putString("uinList", paramJsBridgeListener.toString());
-              super.sendRemoteReq(asev.a("ipc_apollo_get_playmate_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+              super.sendRemoteReq(aqyt.a("ipc_apollo_get_playmate_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
             }
             else
             {
@@ -510,7 +510,7 @@ public class ApolloJsPlugin
                 this.mReqBundle.putString("nickName", paramString1);
               }
               this.mReqBundle.putInt("src", i);
-              super.sendRemoteReq(asev.a("ipc_apollo_open_cmgame_aio", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+              super.sendRemoteReq(aqyt.a("ipc_apollo_open_cmgame_aio", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               callbackOk(paramString2);
             }
             else
@@ -535,7 +535,7 @@ public class ApolloJsPlugin
           }
           else if ("clearThunderCache".equals(paramString3))
           {
-            paramJsBridgeListener = new File(annv.jdField_a_of_type_JavaLangString + "/webview/");
+            paramJsBridgeListener = new File(amip.jdField_a_of_type_JavaLangString + "/webview/");
             if (paramJsBridgeListener.exists())
             {
               paramJsBridgeListener = paramJsBridgeListener.listFiles();
@@ -549,7 +549,7 @@ public class ApolloJsPlugin
                   if ((!paramString1.isDirectory()) || (!new File(paramString1, paramString1.getName() + ".txt").exists())) {
                     break label10047;
                   }
-                  bhmi.a(paramString1.getAbsolutePath());
+                  FileUtils.deleteDirectory(paramString1.getAbsolutePath());
                   if (!QLog.isColorLevel()) {
                     break label10047;
                   }
@@ -562,12 +562,12 @@ public class ApolloJsPlugin
           }
           else if ("stopThunderCache".equals(paramString3))
           {
-            anle.a().b();
+            amfy.a().b();
             callbackOk(paramString2);
           }
           else if ("resumeThunderCache".equals(paramString3))
           {
-            anle.a().c();
+            amfy.a().c();
             callbackOk(paramString2);
           }
           else
@@ -581,7 +581,7 @@ public class ApolloJsPlugin
               l = System.currentTimeMillis();
               if (l - this.mLastGameTime <= 1000L)
               {
-                callbackError(paramString2, anzj.a(2131699333));
+                callbackError(paramString2, amtj.a(2131699568));
                 return true;
               }
               this.mLastGameTime = l;
@@ -626,7 +626,7 @@ public class ApolloJsPlugin
                   ((Bundle)localObject1).putString("gameName", str2);
                   ((Bundle)localObject1).putInt("src", k);
                   ((Bundle)localObject1).putInt("enter", 3);
-                  paramJsBridgeListener = agej.a(new Intent(paramVarArgs, SplashActivity.class), new int[] { 2 });
+                  paramJsBridgeListener = AIOUtils.setOpenAIOIntent(new Intent(paramVarArgs, SplashActivity.class), new int[] { 2 });
                   paramJsBridgeListener.putExtras((Bundle)localObject1);
                   paramVarArgs.startActivity(paramJsBridgeListener);
                   if (QLog.isColorLevel()) {
@@ -661,36 +661,36 @@ public class ApolloJsPlugin
                       }
                       paramString1.src = 318001;
                       paramString1.disableMinGame = true;
-                      anas.a((String)localObject2);
+                      alvm.a((String)localObject2);
                     }
                   }
                   this.mReqBundle.clear();
                   this.mReqBundle.putSerializable("StartCheckParam", paramString1);
-                  super.sendRemoteReq(asev.a("ipc_apollo_start_apollo_game", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_start_apollo_game", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
               }
               else {
-                callbackError(paramString2, anzj.a(2131699327));
+                callbackError(paramString2, amtj.a(2131699562));
               }
             }
             else
             {
               if ("checkGameStatus".equals(paramString3))
               {
-                if (!bhmi.a())
+                if (!FileUtils.hasSDCardAndWritable())
                 {
                   callbackError(paramString2, "sdcard未装");
                   return true;
                 }
-                if (bhmi.c() < 52428800.0F)
+                if (FileUtils.getAvailableExternalMemorySize() < 52428800.0F)
                 {
-                  callbackError(paramString2, anzj.a(2131699332));
+                  callbackError(paramString2, amtj.a(2131699567));
                   return true;
                 }
                 i = ((JSONObject)localObject1).optInt("gameId");
                 this.mReqBundle.clear();
                 this.mReqBundle.putInt("gameId", i);
-                paramJsBridgeListener = asev.a("IPC_APOLLO_DOWNLOAD_GAME", paramString2, this.mOnRemoteResp.key, this.mReqBundle);
+                paramJsBridgeListener = aqyt.a("IPC_APOLLO_DOWNLOAD_GAME", paramString2, this.mOnRemoteResp.key, this.mReqBundle);
                 this.alreadyCallBack = false;
                 super.sendRemoteReq(paramJsBridgeListener, false, true);
                 return true;
@@ -698,14 +698,14 @@ public class ApolloJsPlugin
               if ("chooseFriendPlayGame".equals(paramString3))
               {
                 i = ((JSONObject)localObject1).optInt("gameId");
-                paramJsBridgeListener = new ansi();
+                paramJsBridgeListener = new ammz();
                 paramJsBridgeListener.jdField_a_of_type_Int = i;
-                anog.a(paramJsBridgeListener, this.mRuntime.a(), 2);
+                amja.a(paramJsBridgeListener, this.mRuntime.a(), 2);
                 return true;
               }
               if ("dispatchGameEvent".equals(paramString3))
               {
-                paramJsBridgeListener = anbd.a();
+                paramJsBridgeListener = alvx.a();
                 if (paramJsBridgeListener != null) {
                   paramJsBridgeListener.c(((JSONObject)localObject1).toString());
                 }
@@ -714,9 +714,9 @@ public class ApolloJsPlugin
               else if ("setBackViewVisibility".equals(paramString3))
               {
                 i = ((JSONObject)localObject1).optInt("visibility");
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
-                  ((anjp)paramVarArgs).c(i);
+                  ((amej)paramVarArgs).c(i);
                   callbackOk(paramString2);
                 }
                 else
@@ -737,9 +737,9 @@ public class ApolloJsPlugin
                   this.mApolloViewContoller.a(paramVarArgs, paramJsBridgeListener, paramString1, paramString3);
                   callbackOk(paramString2);
                 }
-                else if ((paramVarArgs instanceof anjp))
+                else if ((paramVarArgs instanceof amej))
                 {
-                  ((anjp)paramVarArgs).a(paramVarArgs, paramString1, paramString3);
+                  ((amej)paramVarArgs).a(paramVarArgs, paramString1, paramString3);
                   callbackOk(paramString2);
                 }
                 else
@@ -750,17 +750,17 @@ public class ApolloJsPlugin
               else if ("openDiyActionFloatView".equals(paramString3))
               {
                 paramJsBridgeListener = ((JSONObject)localObject1).optString("defaultText");
-                if ((paramVarArgs instanceof anjp)) {
-                  ((anjp)paramVarArgs).a(paramJsBridgeListener);
+                if ((paramVarArgs instanceof amej)) {
+                  ((amej)paramVarArgs).a(paramJsBridgeListener);
                 } else {
-                  callbackError(paramString2, anzj.a(2131699361));
+                  callbackError(paramString2, amtj.a(2131699596));
                 }
               }
               else if ("sayHi".equals(paramString3))
               {
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
-                  paramJsBridgeListener = ((anjp)paramVarArgs).a();
+                  paramJsBridgeListener = ((amej)paramVarArgs).a();
                   super.callJs(paramString2 + "&&" + paramString2 + "(" + paramJsBridgeListener + ");");
                 }
                 else if (this.mApolloViewContoller != null)
@@ -784,28 +784,28 @@ public class ApolloJsPlugin
                 {
                   this.mReqBundle.clear();
                   this.mReqBundle.putString("apollo_uin", paramJsBridgeListener);
-                  super.sendRemoteReq(asev.a("ipc_apollo_setcapsule", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_setcapsule", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                 }
               }
               else if ("openBox".equals(paramString3))
               {
                 paramJsBridgeListener = ((JSONObject)localObject1).optString("uin");
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
-                  paramJsBridgeListener = ((anjp)paramVarArgs).a(paramJsBridgeListener);
+                  paramJsBridgeListener = ((amej)paramVarArgs).a(paramJsBridgeListener);
                   super.callJs(paramString2 + "&&" + paramString2 + "(" + paramJsBridgeListener + ");");
                 }
                 else
                 {
-                  callbackError(paramString2, anzj.a(2131699367));
+                  callbackError(paramString2, amtj.a(2131699602));
                 }
               }
               else if ("setApolloViewVisibility".equals(paramString3))
               {
                 i = ((JSONObject)localObject1).optInt("visibility", 0);
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
-                  ((anjp)paramVarArgs).d(i);
+                  ((amej)paramVarArgs).d(i);
                   callbackOk(paramString2);
                   return true;
                 }
@@ -826,7 +826,7 @@ public class ApolloJsPlugin
                 }
                 if ((this.mApolloViewContoller == null) && ((this.mRuntime.a().getParent() instanceof RelativeLayout)))
                 {
-                  this.mApolloViewContoller = new anji((RelativeLayout)this.mRuntime.a().getParent(), null);
+                  this.mApolloViewContoller = new amec((RelativeLayout)this.mRuntime.a().getParent(), null);
                   this.mApolloViewContoller.a(this);
                 }
                 if (this.mApolloViewContoller == null)
@@ -926,7 +926,7 @@ public class ApolloJsPlugin
                   }
                   this.mReqBundle.putInt("from", 1);
                   this.mReqBundle.putSerializable("apolloList", paramVarArgs);
-                  super.sendRemoteReq(asev.a("ipc_apollo_check_avatar_res", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_check_avatar_res", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                   this.mApolloViewContoller.a(true, paramString3.x, paramString3.y);
                 }
                 else
@@ -940,7 +940,7 @@ public class ApolloJsPlugin
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "initAvatar");
                 }
-                if (!anjp.class.isInstance(paramVarArgs))
+                if (!amej.class.isInstance(paramVarArgs))
                 {
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "initAvatar, not ApolloStoreActivity");
@@ -1018,9 +1018,9 @@ public class ApolloJsPlugin
                 break label10105;
                 this.mValidAvatarIdList.clear();
                 this.mValidAvatarIdList.add(((ApolloWebAvatarParam)localObject2).apolloId);
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
-                  paramVarArgs = (anjp)paramVarArgs;
+                  paramVarArgs = (amej)paramVarArgs;
                   if (i != 0)
                   {
                     if (QLog.isColorLevel()) {
@@ -1039,7 +1039,7 @@ public class ApolloJsPlugin
                     }
                     this.mReqBundle.putInt("from", 0);
                     this.mReqBundle.putSerializable("apolloList", (Serializable)localObject3);
-                    super.sendRemoteReq(asev.a("ipc_apollo_check_avatar_res", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                    super.sendRemoteReq(aqyt.a("ipc_apollo_check_avatar_res", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                     paramVarArgs.a(true, ((ApolloWebAvatarParam)localObject2).x, ((ApolloWebAvatarParam)localObject2).y);
                   }
                 }
@@ -1053,13 +1053,13 @@ public class ApolloJsPlugin
                   this.mReqBundle.putString("uin", ((JSONObject)localObject1).optString("uin"));
                   this.mReqBundle.putLong("avatarTs", l);
                   this.mReqBundle.putIntArray("dressId", paramJsBridgeListener);
-                  super.sendRemoteReq(asev.a("ipc_apollo_update_avatar_info", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_update_avatar_info", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                   break;
                   paramString1 = paramVarArgs.a(this.mApolloStatus, (ApolloWebAvatarParam)localObject2);
                   super.callJs(paramString2 + "&&" + paramString2 + "(" + paramString1 + ");");
                   continue;
                   QLog.e("ApolloJsPlugin", 1, "initAvatar, not apollo store activity");
-                  callbackError(paramString2, anzj.a(2131699350));
+                  callbackError(paramString2, amtj.a(2131699585));
                 }
               }
               else if ("addAvatar".equals(paramString3))
@@ -1067,14 +1067,14 @@ public class ApolloJsPlugin
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "addAvatar");
                 }
-                if (!(paramVarArgs instanceof anjp))
+                if (!(paramVarArgs instanceof amej))
                 {
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "addAvatar, not IApolloActivityJsCallBack, check mApolloViewContoller");
                   }
                   if ((this.mApolloViewContoller == null) && ((this.mRuntime.a().getParent() instanceof RelativeLayout)))
                   {
-                    this.mApolloViewContoller = new anji((RelativeLayout)this.mRuntime.a().getParent(), null);
+                    this.mApolloViewContoller = new amec((RelativeLayout)this.mRuntime.a().getParent(), null);
                     this.mApolloViewContoller.a(this);
                   }
                   if (this.mApolloViewContoller == null)
@@ -1109,7 +1109,7 @@ public class ApolloJsPlugin
                     if (j != 0)
                     {
                       QLog.e("ApolloJsPlugin", 1, "addAvatar, param invalid");
-                      callbackError(paramString2, anzj.a(2131699353));
+                      callbackError(paramString2, amtj.a(2131699588));
                     }
                   }
                   else
@@ -1168,11 +1168,11 @@ public class ApolloJsPlugin
                     this.mReqBundle.clear();
                     this.mReqBundle.putInt("from", 2);
                     this.mReqBundle.putSerializable("apolloList", paramString1);
-                    super.sendRemoteReq(asev.a("ipc_apollo_check_avatar_res", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                    super.sendRemoteReq(aqyt.a("ipc_apollo_check_avatar_res", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                   }
-                  else if ((paramVarArgs instanceof anjp))
+                  else if ((paramVarArgs instanceof amej))
                   {
-                    paramJsBridgeListener = ((anjp)paramVarArgs).a(paramString1);
+                    paramJsBridgeListener = ((amej)paramVarArgs).a(paramString1);
                     super.callJs(paramString2 + "&&" + paramString2 + "(" + paramJsBridgeListener + ");");
                   }
                   else if (this.mApolloViewContoller != null)
@@ -1183,13 +1183,13 @@ public class ApolloJsPlugin
                   else
                   {
                     QLog.e("ApolloJsPlugin", 1, "addAvatar, controller null");
-                    callbackError(paramString2, anzj.a(2131699365));
+                    callbackError(paramString2, amtj.a(2131699600));
                   }
                 }
                 else
                 {
                   QLog.e("ApolloJsPlugin", 1, "addAvatar, param list null");
-                  callbackError(paramString2, anzj.a(2131699373));
+                  callbackError(paramString2, amtj.a(2131699608));
                 }
               }
               else if ("destroyAvatar".equals(paramString3))
@@ -1197,7 +1197,7 @@ public class ApolloJsPlugin
                 paramJsBridgeListener = ((JSONObject)localObject1).optJSONArray("apolloList");
                 if ((paramJsBridgeListener == null) || (paramJsBridgeListener.length() == 0))
                 {
-                  callbackError(paramString2, anzj.a(2131699362));
+                  callbackError(paramString2, amtj.a(2131699597));
                 }
                 else
                 {
@@ -1211,9 +1211,9 @@ public class ApolloJsPlugin
                     this.mValidAvatarIdList.remove(paramString3);
                     i += 1;
                   }
-                  if ((paramVarArgs instanceof anjp))
+                  if ((paramVarArgs instanceof amej))
                   {
-                    ((anjp)paramVarArgs).a(paramString1);
+                    ((amej)paramVarArgs).a(paramString1);
                     callbackOk(paramString2);
                   }
                   else if (this.mApolloViewContoller != null)
@@ -1224,7 +1224,7 @@ public class ApolloJsPlugin
                   else
                   {
                     QLog.e("ApolloJsPlugin", 1, "destroyAvatar, controller null");
-                    callbackError(paramString2, anzj.a(2131699357));
+                    callbackError(paramString2, amtj.a(2131699592));
                   }
                 }
               }
@@ -1234,7 +1234,7 @@ public class ApolloJsPlugin
                 {
                   this.mReqBundle.clear();
                   this.mReqBundle.putInt("apollo_initFrom", 2);
-                  super.sendRemoteReq(asev.a("ipc_apollo_get_apollo_data", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_get_apollo_data", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                   return true;
                 }
                 paramJsBridgeListener = new JSONObject();
@@ -1263,12 +1263,12 @@ public class ApolloJsPlugin
                 {
                   this.mReqBundle.clear();
                   this.mReqBundle.putInt("apollo_initFrom", 3);
-                  super.sendRemoteReq(asev.a("ipc_apollo_get_apollo_data", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_get_apollo_data", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                   return true;
                 }
                 if ((this.mDressIds == null) || (this.mDressIds.length <= 0))
                 {
-                  callbackError(paramString2, anzj.a(2131699343));
+                  callbackError(paramString2, amtj.a(2131699578));
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "dressIds.array->默认角色或获取本人信息失败");
                   }
@@ -1303,7 +1303,7 @@ public class ApolloJsPlugin
                   callbackError(paramString2, "sdcard未装");
                   return true;
                 }
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
                   paramJsBridgeListener = ((JSONObject)localObject1).optJSONArray("dressIds");
                   if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length() > 0))
@@ -1330,7 +1330,7 @@ public class ApolloJsPlugin
                     }
                     if (i != 0)
                     {
-                      paramJsBridgeListener = ((anjp)paramVarArgs).a(paramString1);
+                      paramJsBridgeListener = ((amej)paramVarArgs).a(paramString1);
                       super.callJs(paramString2 + "&&" + paramString2 + "(" + paramJsBridgeListener + ");");
                       if (QLog.isColorLevel()) {
                         QLog.e("ApolloJsPlugin", 2, "callbackId->" + paramString2 + " callbackOk" + paramJsBridgeListener);
@@ -1340,7 +1340,7 @@ public class ApolloJsPlugin
                     {
                       this.mReqBundle.clear();
                       this.mReqBundle.putIntArray("apollo_dressIds", paramString1);
-                      super.sendRemoteReq(asev.a("ipc_apollo_preview", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                      super.sendRemoteReq(aqyt.a("ipc_apollo_preview", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                     }
                   }
                   else
@@ -1350,7 +1350,7 @@ public class ApolloJsPlugin
                 }
                 else
                 {
-                  callbackError(paramString2, anzj.a(2131699358));
+                  callbackError(paramString2, amtj.a(2131699593));
                 }
               }
               else if (("previewOnFrame".equals(paramString3)) || ("previewAction".equals(paramString3)))
@@ -1381,7 +1381,7 @@ public class ApolloJsPlugin
                 this.mReqBundle.putString("apollo_id", paramVarArgs);
                 this.mReqBundle.putString("title", paramJsBridgeListener);
                 this.mReqBundle.putString("subTitle", paramString1);
-                super.sendRemoteReq(asev.a("ipc_apollo_preview_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_preview_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
               }
               else if ("setup".equals(paramString3))
               {
@@ -1397,19 +1397,19 @@ public class ApolloJsPlugin
                     i += 1;
                   }
                 }
-                if ((paramVarArgs instanceof anjp))
+                if ((paramVarArgs instanceof amej))
                 {
                   this.mApolloStatus = 1;
-                  ((anjp)paramVarArgs).a(this.mRoleId, this.mDressIds);
+                  ((amej)paramVarArgs).a(this.mRoleId, this.mDressIds);
                   callbackOk(paramString2);
                   this.mReqBundle.clear();
                   paramJsBridgeListener = ((JSONObject)localObject1).optString("userData");
                   this.mReqBundle.putString("apollo_userData", paramJsBridgeListener);
-                  super.sendRemoteReq(asev.a("ipc_apollo_setup", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_setup", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
                 else
                 {
-                  callbackError(paramString2, anzj.a(2131699339));
+                  callbackError(paramString2, amtj.a(2131699574));
                 }
               }
               else if ("changeRole".equals(paramString3))
@@ -1448,18 +1448,18 @@ public class ApolloJsPlugin
                   this.mReqBundle.putInt("apollo_roleId", this.mRoleId);
                   this.mReqBundle.putInt("apollo_fromSelf", 0);
                   this.mReqBundle.putString("apollo_userData", paramJsBridgeListener);
-                  super.sendRemoteReq(asev.a("ipc_apollo_changerole", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_changerole", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                 }
                 else
                 {
-                  callbackError(paramString2, anzj.a(2131699346));
+                  callbackError(paramString2, amtj.a(2131699581));
                 }
               }
               else if ("closeWebview".equals(paramString3))
               {
-                super.sendRemoteReq(asev.a("ipc_kandian_hb_close_guid", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_kandian_hb_close_guid", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 paramVarArgs.finish();
-                if (!(paramVarArgs instanceof anjp)) {
+                if (!(paramVarArgs instanceof amej)) {
                   paramVarArgs.overridePendingTransition(0, 0);
                 }
                 paramJsBridgeListener = new JSONObject();
@@ -1473,7 +1473,7 @@ public class ApolloJsPlugin
                 {
                   this.mReqBundle.clear();
                   this.mReqBundle.putInt("apollo_initFrom", 4);
-                  super.sendRemoteReq(asev.a("ipc_apollo_get_apollo_data", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_get_apollo_data", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                   return true;
                 }
                 paramJsBridgeListener = new JSONObject();
@@ -1523,7 +1523,7 @@ public class ApolloJsPlugin
               else if ("getFriendsByOpenApollo".equals(paramString3))
               {
                 this.mReqBundle.clear();
-                super.sendRemoteReq(asev.a("ipc_apollo_get_openapollo_friends", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_get_openapollo_friends", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("sendActionToFrd".equals(paramString3))
               {
@@ -1545,7 +1545,7 @@ public class ApolloJsPlugin
               else if ("refreshAction".equals(paramString3))
               {
                 this.mReqBundle.clear();
-                super.sendRemoteReq(asev.a("ipc_apollo_refresh_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_refresh_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "apolloJsPlugin call refreshAction");
                 }
@@ -1553,7 +1553,7 @@ public class ApolloJsPlugin
               else if ("getLocalFavAction".equals(paramString3))
               {
                 this.mReqBundle.clear();
-                super.sendRemoteReq(asev.a("ipc_apollo_getfav_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_getfav_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "apolloJsPlugin call getLocalFavAction");
                 }
@@ -1573,7 +1573,7 @@ public class ApolloJsPlugin
                 this.mReqBundle.putInt("audioId", k);
                 this.mReqBundle.putInt("playOriginalAudio", m);
                 this.mReqBundle.putFloat("audioStartTime", f);
-                super.sendRemoteReq(asev.a("ipc_apollo_add_fav_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_add_fav_action", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "apolloJsPlugin call addCustomAction");
                 }
@@ -1582,7 +1582,7 @@ public class ApolloJsPlugin
               {
                 this.mReqBundle.clear();
                 this.mReqBundle.putString("delJson", ((JSONObject)localObject1).opt("favActionDel").toString());
-                super.sendRemoteReq(asev.a("ipc_apollo_del_fav_list", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_del_fav_list", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "apolloJsPlugin call delLocalFavList");
                 }
@@ -1591,7 +1591,7 @@ public class ApolloJsPlugin
               {
                 this.mReqBundle.clear();
                 this.mReqBundle.putString("writeData", ((JSONObject)localObject1).toString());
-                super.sendRemoteReq(asev.a("ipc_apollo_write_local", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_write_local", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, "apolloJsPlugin call writeLocalData");
                 }
@@ -1603,7 +1603,7 @@ public class ApolloJsPlugin
                 if (i == 1)
                 {
                   this.mReqBundle.putInt("bonusSuccess", i);
-                  super.sendRemoteReq(asev.a("ipc_kandian_hb_lottery", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_kandian_hb_lottery", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
               }
               else if ("removeBubble".equals(paramString3))
@@ -1611,26 +1611,26 @@ public class ApolloJsPlugin
                 l = ((JSONObject)localObject1).optLong("bubbleId");
                 this.mReqBundle.clear();
                 this.mReqBundle.putLong("bubble_id", l);
-                super.sendRemoteReq(asev.a("ipc_apollo_clear_bubble", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_clear_bubble", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("downloadImageOnFrame".equals(paramString3))
               {
                 i = new Random().nextInt();
                 this.mReqBundle.clear();
                 this.mReqBundle.putInt("apollo_previewAction", i);
-                super.sendRemoteReq(asev.a("ipc_apollo_downloadImageOnFrame", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_downloadImageOnFrame", paramString2, this.mOnRemoteResp.key, this.mReqBundle), true, true);
               }
               else if ("addGame".equals(paramString3))
               {
                 this.mReqBundle.clear();
                 this.mReqBundle.putString("gameListJson", ((JSONObject)localObject1).toString());
-                super.sendRemoteReq(asev.a("ipc_apollo_add_game", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_add_game", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("delGame".equals(paramString3))
               {
                 this.mReqBundle.clear();
                 this.mReqBundle.putString("gameListJson", ((JSONObject)localObject1).toString());
-                super.sendRemoteReq(asev.a("ipc_apollo_del_game", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_del_game", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("updateGameList".equals(paramString3))
               {
@@ -1639,7 +1639,7 @@ public class ApolloJsPlugin
                 }
                 this.mReqBundle.clear();
                 this.mReqBundle.putString("gameListJson", ((JSONObject)localObject1).toString());
-                super.sendRemoteReq(asev.a("ipc_apollo_update_game_list", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_apollo_update_game_list", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("isCmFaceAdded".equals(paramString3))
               {
@@ -1648,13 +1648,13 @@ public class ApolloJsPlugin
                 if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length() > 0))
                 {
                   this.mReqBundle.putString("faceIdList", paramJsBridgeListener.toString());
-                  super.sendRemoteReq(asev.a("ipc_apollo_is_cm_face_added", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_is_cm_face_added", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
                 else
                 {
                   paramJsBridgeListener = new JSONObject();
                   paramJsBridgeListener.put("result", 1);
-                  paramJsBridgeListener.put("msg", anzj.a(2131699335));
+                  paramJsBridgeListener.put("msg", amtj.a(2131699570));
                   super.callJs(paramString2 + "&&" + paramString2 + "(" + paramJsBridgeListener.toString() + ");");
                 }
               }
@@ -1665,13 +1665,13 @@ public class ApolloJsPlugin
                 if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length() > 0))
                 {
                   this.mReqBundle.putString("faceIdList", paramJsBridgeListener.toString());
-                  super.sendRemoteReq(asev.a("ipc_apollo_add_cm_face", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_apollo_add_cm_face", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
                 else
                 {
                   paramJsBridgeListener = new JSONObject();
                   paramJsBridgeListener.put("result", 1);
-                  paramJsBridgeListener.put("msg", anzj.a(2131699352));
+                  paramJsBridgeListener.put("msg", amtj.a(2131699587));
                   super.callJs(paramString2 + "&&" + paramString2 + "(" + paramJsBridgeListener.toString() + ");");
                 }
               }
@@ -1687,14 +1687,14 @@ public class ApolloJsPlugin
                 paramString1 = ((JSONObject)localObject1).optString("url");
                 if (!TextUtils.isEmpty(paramString1))
                 {
-                  paramJsBridgeListener = (birg)access$101(this, 2);
-                  if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a != null) && (paramJsBridgeListener.a.a != null))
+                  paramJsBridgeListener = (SwiftBrowserUIStyleHandler)access$101(this, 2);
+                  if ((paramJsBridgeListener != null) && (paramJsBridgeListener.mSwiftTitleUI != null) && (paramJsBridgeListener.mSwiftTitleUI.leftView != null))
                   {
                     paramString3 = URLDrawable.URLDrawableOptions.obtain();
-                    paramString3.mLoadingDrawable = paramVarArgs.getResources().getDrawable(2130850668);
+                    paramString3.mLoadingDrawable = paramVarArgs.getResources().getDrawable(2130850593);
                     paramString1 = URLDrawable.getDrawable(paramString1, paramString3);
                     paramString1.startDownload();
-                    paramJsBridgeListener.a.a.setBackgroundDrawable(paramString1);
+                    paramJsBridgeListener.mSwiftTitleUI.leftView.setBackgroundDrawable(paramString1);
                   }
                 }
               }
@@ -1724,7 +1724,7 @@ public class ApolloJsPlugin
               }
               else if ("showGameCard".equals(paramString3))
               {
-                amsx.a(((JSONObject)localObject1).optInt("gameId"), ((JSONObject)localObject1).optString("extraInfo"), this.mRuntime.a());
+                alnr.a(((JSONObject)localObject1).optInt("gameId"), ((JSONObject)localObject1).optString("extraInfo"), this.mRuntime.a());
               }
               else if ("createShortcut".equals(paramString3))
               {
@@ -1738,12 +1738,12 @@ public class ApolloJsPlugin
                 if (QLog.isColorLevel()) {
                   QLog.d("ApolloJsPlugin", 2, new Object[] { "openCmGameMatch, url=", paramString1 });
                 }
-                super.sendRemoteReq(asev.a("ipc_open_cm_game_match_page", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_open_cm_game_match_page", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("isTcpConnected".equals(paramString3))
               {
                 this.mReqBundle.clear();
-                super.sendRemoteReq(asev.a("ipc_cm_game_conn_connected", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                super.sendRemoteReq(aqyt.a("ipc_cm_game_conn_connected", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
               }
               else if ("checkCmGameWebView".equals(paramString3))
               {
@@ -1756,7 +1756,7 @@ public class ApolloJsPlugin
                     QLog.d("ApolloJsPlugin", 1, "[checkCmGameWebView] not CmGameFragment");
                     callbackOk(paramString2);
                     paramVarArgs.finish();
-                    anbd.a(paramVarArgs, paramString1);
+                    alvx.a(paramVarArgs, paramString1);
                   }
                   else
                   {
@@ -1777,7 +1777,7 @@ public class ApolloJsPlugin
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "sendGameAppArkMessage");
                   }
-                  super.sendRemoteReq(asev.a("ipc_open_cm_game_send_game_app_ark_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_open_cm_game_send_game_app_ark_msg", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
                 else
                 {
@@ -1806,7 +1806,7 @@ public class ApolloJsPlugin
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "sendGameAppArkMessage");
                   }
-                  super.sendRemoteReq(asev.a("ipc_save_game_to_plus", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+                  super.sendRemoteReq(aqyt.a("ipc_save_game_to_plus", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
                 }
                 else
                 {
@@ -1908,7 +1908,7 @@ public class ApolloJsPlugin
         if ((localObject1 != null) && (!this.isDestroy) && (!((Activity)localObject1).isFinishing())) {
           break label101;
         }
-        callbackError(str, anzj.a(2131699331));
+        callbackError(str, amtj.a(2131699566));
       }
     }
     return;
@@ -1941,7 +1941,7 @@ public class ApolloJsPlugin
               if (QLog.isColorLevel()) {
                 QLog.e("ApolloJsPlugin", 2, paramBundle.getMessage());
               }
-              callbackError(str, anzj.a(2131699336));
+              callbackError(str, amtj.a(2131699571));
               return;
             }
             callbackError(str, i + "");
@@ -2001,7 +2001,7 @@ public class ApolloJsPlugin
               paramBundle = ((Bundle)localObject2).getIntArray("apollo_dressIds");
               if ((((Bundle)localObject2).getInt("apollo_result") == 0) && (paramBundle != null))
               {
-                callbackError(str, anzj.a(2131699337));
+                callbackError(str, amtj.a(2131699572));
                 return;
               }
               if (this.mApolloViewContoller != null)
@@ -2012,9 +2012,9 @@ public class ApolloJsPlugin
                   QLog.e("ApolloJsPlugin", 2, "callbackId->" + str + " callbackOk" + paramBundle);
                 }
               }
-              else if ((localObject1 instanceof anjp))
+              else if ((localObject1 instanceof amej))
               {
-                paramBundle = ((anjp)localObject1).a(paramBundle);
+                paramBundle = ((amej)localObject1).a(paramBundle);
                 super.callJs(str + "&&" + str + "(" + paramBundle + ");");
                 if (QLog.isColorLevel()) {
                   QLog.e("ApolloJsPlugin", 2, "callbackId->" + str + " callbackOk" + paramBundle);
@@ -2022,7 +2022,7 @@ public class ApolloJsPlugin
               }
               else
               {
-                callbackError(str, anzj.a(2131699348));
+                callbackError(str, amtj.a(2131699583));
               }
             }
             else
@@ -2057,52 +2057,52 @@ public class ApolloJsPlugin
                 int i9 = ((Bundle)localObject2).getInt("apollo_partnerRoleId");
                 localObject7 = ((Bundle)localObject2).getString("apollo_id");
                 boolean bool2 = ((Bundle)localObject2).getBoolean("apollo_is_super_yellow");
-                localObject2 = new anjm();
-                ((anjm)localObject2).jdField_a_of_type_Int = i5;
-                ((anjm)localObject2).jdField_b_of_type_Int = i;
-                ((anjm)localObject2).jdField_c_of_type_Int = m;
-                ((anjm)localObject2).jdField_d_of_type_Int = n;
-                ((anjm)localObject2).e = i1;
-                ((anjm)localObject2).f = j;
-                ((anjm)localObject2).g = k;
-                ((anjm)localObject2).h = i2;
-                ((anjm)localObject2).i = i9;
-                ((anjm)localObject2).j = i3;
-                ((anjm)localObject2).k = i4;
-                ((anjm)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject6);
-                ((anjm)localObject2).l = i6;
-                ((anjm)localObject2).m = i7;
-                ((anjm)localObject2).jdField_a_of_type_Float = f1;
-                ((anjm)localObject2).jdField_b_of_type_Float = f2;
-                ((anjm)localObject2).jdField_a_of_type_Boolean = bool1;
-                ((anjm)localObject2).jdField_c_of_type_JavaLangString = paramBundle;
-                ((anjm)localObject2).jdField_d_of_type_JavaLangString = ((String)localObject4);
-                ((anjm)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject7);
-                ((anjm)localObject2).jdField_b_of_type_Boolean = bool2;
+                localObject2 = new ameg();
+                ((ameg)localObject2).jdField_a_of_type_Int = i5;
+                ((ameg)localObject2).jdField_b_of_type_Int = i;
+                ((ameg)localObject2).jdField_c_of_type_Int = m;
+                ((ameg)localObject2).jdField_d_of_type_Int = n;
+                ((ameg)localObject2).e = i1;
+                ((ameg)localObject2).f = j;
+                ((ameg)localObject2).g = k;
+                ((ameg)localObject2).h = i2;
+                ((ameg)localObject2).i = i9;
+                ((ameg)localObject2).j = i3;
+                ((ameg)localObject2).k = i4;
+                ((ameg)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject6);
+                ((ameg)localObject2).l = i6;
+                ((ameg)localObject2).m = i7;
+                ((ameg)localObject2).jdField_a_of_type_Float = f1;
+                ((ameg)localObject2).jdField_b_of_type_Float = f2;
+                ((ameg)localObject2).jdField_a_of_type_Boolean = bool1;
+                ((ameg)localObject2).jdField_c_of_type_JavaLangString = paramBundle;
+                ((ameg)localObject2).jdField_d_of_type_JavaLangString = ((String)localObject4);
+                ((ameg)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject7);
+                ((ameg)localObject2).jdField_b_of_type_Boolean = bool2;
                 if ((i8 == 0) && (i > 0))
                 {
                   if ("ipc_apollo_preview_audio_action".equals(localObject3))
                   {
-                    paramBundle = anji.a("ApolloViewController is null or Activity not instanceof IApolloActivityJsCallBack");
+                    paramBundle = amec.a("ApolloViewController is null or Activity not instanceof IApolloActivityJsCallBack");
                     if (this.mApolloViewContoller != null)
                     {
-                      paramBundle = this.mApolloViewContoller.a((anjm)localObject2);
+                      paramBundle = this.mApolloViewContoller.a((ameg)localObject2);
                       super.callJs(str + "&&" + str + "(" + paramBundle + ");");
                     }
                     while (QLog.isColorLevel())
                     {
                       QLog.e("ApolloJsPlugin", 2, "IPC_APOLLO_PREVIEW_AUDIO_ACTION callbackId->" + str + " callbackOk" + paramBundle);
                       return;
-                      if ((localObject1 instanceof anjp))
+                      if ((localObject1 instanceof amej))
                       {
-                        paramBundle = ((anjp)localObject1).a((anjm)localObject2);
+                        paramBundle = ((amej)localObject1).a((ameg)localObject2);
                         super.callJs(str + "&&" + str + "(" + paramBundle + ");");
                       }
                     }
                   }
                   else if ("ipc_apollo_preview_action".equals(localObject3))
                   {
-                    localObject3 = new File(aniv.b(i7));
+                    localObject3 = new File(amdp.b(i7));
                     if ((i7 > 0) && (!((File)localObject3).exists()))
                     {
                       if (QLog.isColorLevel()) {
@@ -2118,13 +2118,13 @@ public class ApolloJsPlugin
                       this.mReqBundle.putString("apollo_json", ((String)localObject5).toString());
                       this.mReqBundle.putString("title", paramBundle);
                       this.mReqBundle.putString("subTitle", (String)localObject4);
-                      super.sendRemoteReq(asev.a("ipc_apollo_preview_audio_action", str, this.mOnRemoteResp.key, this.mReqBundle), true, true);
+                      super.sendRemoteReq(aqyt.a("ipc_apollo_preview_audio_action", str, this.mOnRemoteResp.key, this.mReqBundle), true, true);
                       return;
                     }
-                    paramBundle = anji.a("ApolloViewController is null or Activity not instanceof IApolloActivityJsCallBack");
-                    if ((localObject1 instanceof anjp))
+                    paramBundle = amec.a("ApolloViewController is null or Activity not instanceof IApolloActivityJsCallBack");
+                    if ((localObject1 instanceof amej))
                     {
-                      paramBundle = ((anjp)localObject1).a((anjm)localObject2);
+                      paramBundle = ((amej)localObject1).a((ameg)localObject2);
                       super.callJs(str + "&&" + str + "(" + paramBundle + ");");
                     }
                     while (QLog.isColorLevel())
@@ -2133,18 +2133,18 @@ public class ApolloJsPlugin
                       return;
                       if (this.mApolloViewContoller != null)
                       {
-                        paramBundle = this.mApolloViewContoller.a((anjm)localObject2);
+                        paramBundle = this.mApolloViewContoller.a((ameg)localObject2);
                         super.callJs(str + "&&" + str + "(" + paramBundle + ");");
                       }
                       else
                       {
-                        callbackError(str, anzj.a(2131699366));
+                        callbackError(str, amtj.a(2131699601));
                       }
                     }
                   }
                 }
                 else {
-                  callbackError(str, anzj.a(2131699363) + (String)localObject3);
+                  callbackError(str, amtj.a(2131699598) + (String)localObject3);
                 }
               }
               else if ("ipc_apollo_check_avatar_res".equals(localObject3))
@@ -2160,7 +2160,7 @@ public class ApolloJsPlugin
                 {
                   if ((localObject3 == null) || (((ArrayList)localObject3).size() == 0))
                   {
-                    callbackError(str, anzj.a(2131699342));
+                    callbackError(str, amtj.a(2131699577));
                     return;
                   }
                   paramBundle = ((Bundle)localObject2).getString("reqUrl");
@@ -2193,10 +2193,10 @@ public class ApolloJsPlugin
                         return;
                         if (j == 0)
                         {
-                          if (!(localObject1 instanceof anjp)) {
+                          if (!(localObject1 instanceof amej)) {
                             break;
                           }
-                          paramBundle = ((anjp)localObject1).a(this.mApolloStatus, (ApolloWebAvatarParam)localObject2);
+                          paramBundle = ((amej)localObject1).a(this.mApolloStatus, (ApolloWebAvatarParam)localObject2);
                         }
                       }
                     }
@@ -2209,7 +2209,7 @@ public class ApolloJsPlugin
                   }
                   if (paramBundle != null)
                   {
-                    aniv.a(paramBundle, ((ApolloWebAvatarParam)localObject2).uin, new ApolloJsPlugin.4(this, (ApolloWebAvatarParam)localObject2, (Activity)localObject1, j, str), ((ApolloWebAvatarParam)localObject2).roleId, ((ApolloWebAvatarParam)localObject2).dressIds, -1, -1, false);
+                    amdp.a(paramBundle, ((ApolloWebAvatarParam)localObject2).uin, new ApolloJsPlugin.4(this, (ApolloWebAvatarParam)localObject2, (Activity)localObject1, j, str), ((ApolloWebAvatarParam)localObject2).roleId, ((ApolloWebAvatarParam)localObject2).dressIds, -1, -1, false);
                     return;
                   }
                   callbackError(str, "获取AppInterface失败");
@@ -2231,10 +2231,10 @@ public class ApolloJsPlugin
                         ((ArrayList)localObject6).add(localObject5);
                         if (this.mValidAvatarIdList.contains(((ApolloWebAvatarParam)localObject5).apolloId))
                         {
-                          if (!(localObject1 instanceof anjp)) {
+                          if (!(localObject1 instanceof amej)) {
                             break label2450;
                           }
-                          ((anjp)localObject1).a((ArrayList)localObject6);
+                          ((amej)localObject1).a((ArrayList)localObject6);
                         }
                         for (;;)
                         {
@@ -2251,7 +2251,7 @@ public class ApolloJsPlugin
                       }
                       if (paramBundle != null)
                       {
-                        aniv.a(paramBundle, ((ApolloWebAvatarParam)localObject5).uin, new ApolloJsPlugin.5(this, (ApolloWebAvatarParam)localObject5, (Activity)localObject1, (AtomicInteger)localObject2, (ArrayList)localObject3, str), ((ApolloWebAvatarParam)localObject5).roleId, ((ApolloWebAvatarParam)localObject5).dressIds, -1, -1, false);
+                        amdp.a(paramBundle, ((ApolloWebAvatarParam)localObject5).uin, new ApolloJsPlugin.5(this, (ApolloWebAvatarParam)localObject5, (Activity)localObject1, (AtomicInteger)localObject2, (ArrayList)localObject3, str), ((ApolloWebAvatarParam)localObject5).roleId, ((ApolloWebAvatarParam)localObject5).dressIds, -1, -1, false);
                       }
                       else
                       {
@@ -2267,9 +2267,9 @@ public class ApolloJsPlugin
                 else
                 {
                   if (j != 2) {
-                    QQToast.a((Context)localObject1, anzj.a(2131699330), 1).a();
+                    QQToast.a((Context)localObject1, amtj.a(2131699565), 1).a();
                   }
-                  callbackError(str, anzj.a(2131699340));
+                  callbackError(str, amtj.a(2131699575));
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "下载素材角色装扮素材失败->mRoleId" + this.mRoleId + " mDressIds->" + this.mDressIds);
                   }
@@ -2289,7 +2289,7 @@ public class ApolloJsPlugin
                   }
                   else
                   {
-                    paramBundle = aniv.a(j);
+                    paramBundle = amdp.a(j);
                   }
                   this.mDressIds = paramBundle;
                   this.mRoleId = j;
@@ -2299,7 +2299,7 @@ public class ApolloJsPlugin
                     callbackOk(str);
                     return;
                   }
-                  callbackError(str, anzj.a(2131699326));
+                  callbackError(str, amtj.a(2131699561));
                   return;
                 }
                 if ("ipc_apollo_get_apollo_data".equals(localObject3))
@@ -2324,7 +2324,7 @@ public class ApolloJsPlugin
                     {
                       if ((this.mDressIds == null) || (this.mDressIds.length <= 0))
                       {
-                        callbackError(str, anzj.a(2131699368));
+                        callbackError(str, amtj.a(2131699603));
                         if (!QLog.isColorLevel()) {
                           break;
                         }
@@ -2360,7 +2360,7 @@ public class ApolloJsPlugin
                   {
                     if (this.mRoleId <= 0)
                     {
-                      callbackError(str, anzj.a(2131699347));
+                      callbackError(str, amtj.a(2131699582));
                       return;
                     }
                     paramBundle = new JSONObject();
@@ -2398,14 +2398,14 @@ public class ApolloJsPlugin
                   {
                     QLog.d("ApolloJsPlugin", 2, "IPC_APOLLO_GET_OPENAPOLLO_FRIENDS onResponse dataStr is:" + paramBundle);
                     return;
-                    callbackError(str, anzj.a(2131699355));
+                    callbackError(str, amtj.a(2131699590));
                   }
                 }
                 else if ("ipc_apollo_query_mine_redinfo".equals(localObject3))
                 {
                   i = ((Bundle)localObject2).getInt("isNewFlag");
-                  if ((i == 1) && ((localObject1 instanceof anjp))) {
-                    ((anjp)localObject1).b();
+                  if ((i == 1) && ((localObject1 instanceof amej))) {
+                    ((amej)localObject1).b();
                   }
                   if (QLog.isColorLevel()) {
                     QLog.d("ApolloJsPlugin", 2, "IPC_APOLLO_QUERY_MINE_REDINFO onResponse dataInt is:" + i);
@@ -2452,11 +2452,11 @@ public class ApolloJsPlugin
                     QLog.d("ApolloJsPlugin", 2, "IPC_APOLLO_DEL_FAV_ACTION onResponse data is:" + ((JSONObject)localObject1).toString());
                     return;
                     if (i == 1) {
-                      callbackError(str, anzj.a(2131699345));
+                      callbackError(str, amtj.a(2131699580));
                     } else if (i == 2) {
-                      callbackError(str, anzj.a(2131699354));
+                      callbackError(str, amtj.a(2131699589));
                     } else {
-                      callbackError(str, anzj.a(2131699341));
+                      callbackError(str, amtj.a(2131699576));
                     }
                   }
                 }
@@ -2493,8 +2493,8 @@ public class ApolloJsPlugin
         if (!"ipc_apollo_downloadImageOnFrame".equals(localObject3)) {
           break;
         }
-      } while (!(localObject1 instanceof anjp));
-      ((anjp)localObject1).b(str);
+      } while (!(localObject1 instanceof amej));
+      ((amej)localObject1).b(str);
       return;
       if ((!"ipc_apollo_add_game".equals(localObject3)) && (!"ipc_apollo_del_game".equals(localObject3))) {
         break;
@@ -2515,7 +2515,7 @@ public class ApolloJsPlugin
         callbackOk(str);
         return;
       }
-      callbackError(str, anzj.a(2131699359));
+      callbackError(str, amtj.a(2131699594));
       return;
     }
     if ("ipc_apollo_choose_friend_play_game".equals(localObject3))
@@ -2524,16 +2524,16 @@ public class ApolloJsPlugin
       j = ((Bundle)localObject2).getInt("gameMode");
       if (((Bundle)localObject2).getBoolean("hasGameRunning"))
       {
-        this.gameDialog = bhlq.a((Context)localObject1, 0, "", anzj.a(2131699329), 2131690580, 2131694098, new ApolloJsPlugin.6(this, i, j, (Activity)localObject1), new ApolloJsPlugin.7(this));
+        this.gameDialog = bfur.a((Context)localObject1, 0, "", amtj.a(2131699564), 2131690620, 2131694201, new ApolloJsPlugin.6(this, i, j, (Activity)localObject1), new ApolloJsPlugin.7(this));
         if ((localObject1 instanceof BaseActivity)) {
           VipUtils.a(((BaseActivity)localObject1).getAppInterface(), "cmshow", "Apollo", "game_alert_show", 3, 0, new String[0]);
         }
         this.gameDialog.show();
         return;
       }
-      paramBundle = new ansi();
+      paramBundle = new ammz();
       paramBundle.jdField_a_of_type_Int = i;
-      anog.a(paramBundle, this.mRuntime.a(), 2);
+      amja.a(paramBundle, this.mRuntime.a(), 2);
       return;
     }
     if ("IPC_APOLLO_DOWNLOAD_GAME".equals(localObject3))
@@ -2541,10 +2541,10 @@ public class ApolloJsPlugin
       paramBundle = (CmGameStartChecker.StartCheckParam)((Bundle)localObject2).getSerializable("StartCheckParam");
       if (paramBundle == null)
       {
-        callbackError(str, anzj.a(2131699370));
+        callbackError(str, amtj.a(2131699605));
         return;
       }
-      localObject2 = anbd.a();
+      localObject2 = alvx.a();
       this.mCmGameStartChecker = new CmGameStartChecker((AppInterface)localObject2);
       this.mCmGameStartCheckerListener = new ApolloJsPlugin.8(this, (AppInterface)localObject2, false, str, (Activity)localObject1);
       this.mCmGameStartChecker.a(paramBundle, this.mCmGameStartCheckerListener);

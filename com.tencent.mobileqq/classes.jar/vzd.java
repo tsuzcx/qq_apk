@@ -1,24 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
 
-class vzd
-  implements Animation.AnimationListener
+public class vzd
 {
-  vzd(vzc paramvzc) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.clearAnimation();
-    this.a.a.c = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.c = true;
-  }
+  private vzd(DotAnimationView paramDotAnimationView) {}
 }
 
 

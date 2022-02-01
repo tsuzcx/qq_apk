@@ -1,14 +1,30 @@
-import java.util.ArrayList;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
-public abstract interface bcyi
+public class bcyi
+  extends ClickableSpan
 {
-  public abstract void a(int paramInt);
+  public bcyi(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public abstract void a(int paramInt, bcyb parambcyb);
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    paramView.putExtra("hide_more_button", true);
+    paramView.putExtra("hide_operation_bar", true);
+    this.a.startActivity(paramView.putExtra("url", "https://tim.qq.com/htdocs/2.0_lead/document.html"));
+  }
   
-  public abstract void a(int paramInt, ArrayList<bcyb> paramArrayList);
-  
-  public abstract void b(int paramInt, bcyb parambcyb);
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.a.getResources().getColor(2131165518));
+  }
 }
 
 

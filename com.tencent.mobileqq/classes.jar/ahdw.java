@@ -1,12 +1,20 @@
-final class ahdw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ahdw
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  ahdw(ahdt paramahdt) {}
   
-  ahdw(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    this.a.a.setVisibility(8);
+    this.a.mInputBar.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

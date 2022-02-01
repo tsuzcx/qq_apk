@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.recite.utils;
 
 import android.os.Bundle;
-import bgds;
-import biht;
-import bihu;
-import bihz;
+import bena;
+import bgod;
+import bgoe;
+import bgoj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
@@ -12,16 +12,16 @@ import org.json.JSONObject;
 public class SoLibraryChecker$4
   implements Runnable
 {
-  public SoLibraryChecker$4(bgds parambgds, JSONObject paramJSONObject, String paramString, biht parambiht) {}
+  public SoLibraryChecker$4(bena parambena, JSONObject paramJSONObject, String paramString, bgod parambgod) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
     Object localObject = new File(this.jdField_a_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
-    localObject = new bihu(str, (File)localObject);
-    ((bihu)localObject).b = 3;
-    bgds.a(this.this$0).a((bihu)localObject, this.jdField_a_of_type_Biht, localBundle);
+    localObject = new bgoe(str, (File)localObject);
+    ((bgoe)localObject).b = 3;
+    bena.a(this.this$0).a((bgoe)localObject, this.jdField_a_of_type_Bgod, localBundle);
     if (QLog.isColorLevel()) {
       QLog.d("SoLibraryLoader", 2, "start Download url = " + str);
     }

@@ -1,5 +1,6 @@
 package com.tencent.weseevideo.composition.builder;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import com.tencent.weseevideo.composition.VideoRenderChainConfigure;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
@@ -16,7 +17,7 @@ public class MediaBuilderFactory
   public static final int TIME_MAX_MS = 60000;
   public static final int TIME_MIN_MS = 2000;
   
-  public static void mediaBuilderAsync(@NonNull MediaModel paramMediaModel, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull VideoRenderChainConfigure paramVideoRenderChainConfigure, @NonNull MediaBuilderListener paramMediaBuilderListener)
+  public static void mediaBuilderAsync(@NonNull MediaModel paramMediaModel, Context paramContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull VideoRenderChainConfigure paramVideoRenderChainConfigure, @NonNull MediaBuilderListener paramMediaBuilderListener)
   {
     switch (paramVideoRenderChainConfigure.getSceneType())
     {
@@ -27,12 +28,12 @@ public class MediaBuilderFactory
       MovieTemplateMediaBuilder.buildAsync(paramMediaModel, paramIStickerContextInterface, paramMediaBuilderListener, paramVideoRenderChainConfigure);
       return;
     }
-    AutoTemplateMediaBuilder.build(paramMediaModel, paramIStickerContextInterface, paramVideoRenderChainConfigure, paramMediaBuilderListener);
+    AutoTemplateMediaBuilder.build(paramMediaModel, paramContext, paramIStickerContextInterface, paramVideoRenderChainConfigure, paramMediaBuilderListener);
   }
   
-  public static void mediaBuilderAsync(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull MediaBuilderListener paramMediaBuilderListener)
+  public static void mediaBuilderAsync(@NonNull MediaModel paramMediaModel, Context paramContext, @NonNull VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull MediaBuilderListener paramMediaBuilderListener)
   {
-    mediaBuilderAsync(paramMediaModel, paramIStickerContextInterface, new VideoRenderChainConfigure(true), paramMediaBuilderListener);
+    mediaBuilderAsync(paramMediaModel, paramContext, paramIStickerContextInterface, new VideoRenderChainConfigure(true), paramMediaBuilderListener);
   }
 }
 

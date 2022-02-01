@@ -1,16 +1,15 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import java.util.List;
 
 public class akyq
-  extends bjet
+  extends bdah
 {
-  public akyq(RedPacketKSongFragment paramRedPacketKSongFragment, bjeu parambjeu) {}
+  public akyq(TextPreviewMenu paramTextPreviewMenu) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
-    this.jdField_a_of_type_Bjeu.a();
+    TextPreviewMenu.b(this.a);
+    TextPreviewMenu.a(this.a, paramList);
   }
 }
 

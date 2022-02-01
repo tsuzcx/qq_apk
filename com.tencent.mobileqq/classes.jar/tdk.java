@@ -1,6 +1,6 @@
 public abstract interface tdk
 {
-  public abstract void a(int paramInt);
+  public abstract void a(tdl paramtdl);
 }
 
 

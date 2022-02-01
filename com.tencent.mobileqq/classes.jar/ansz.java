@@ -1,65 +1,41 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.2;
+import android.content.Context;
+import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.io.File;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ansz
-  extends antb
-  implements antd
+  extends anrh
 {
-  public ansz(ante paramante)
+  public ansz(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(null, paramante);
-    this.jdField_a_of_type_Antd = this;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static String a(String paramString)
+  private boolean C()
   {
-    paramString = Utils.Crc64String(paramString);
-    String str = annv.k;
-    return str + paramString + ".zip";
+    WXMiniProgramHelper.a().a(this.a);
+    return true;
   }
   
-  public void a(antb paramantb, String paramString1, String paramString2, String paramString3)
+  public boolean a()
   {
-    this.jdField_a_of_type_Int = 1;
-    bihu localbihu = new bihu(paramString1, new File(paramString2));
-    localbihu.p = true;
-    localbihu.n = true;
-    localbihu.f = "apollo_gif";
-    localbihu.b = 1;
-    localbihu.q = true;
-    localbihu.r = true;
-    localbihu.a(new anta(this, paramString1, paramString2, paramString3));
-    paramantb = BaseApplicationImpl.getApplication();
-    if (paramantb != null)
+    try
     {
-      paramantb = paramantb.getRuntime();
-      if (!(paramantb instanceof QQAppInterface)) {}
+      if ((this.a.containsKey("user_name")) && (!StringUtil.isEmpty((String)this.a.get("user_name"))))
+      {
+        boolean bool = C();
+        return bool;
+      }
+      return false;
     }
-    for (paramantb = (QQAppInterface)paramantb;; paramantb = null)
+    catch (Exception localException)
     {
-      if (paramantb != null)
-      {
-        paramantb = (bihw)paramantb.getManager(47);
-        if (paramantb != null)
-        {
-          paramantb = paramantb.a(3);
-          if (paramantb != null) {
-            paramantb.a(localbihu, localbihu.a(), null);
-          }
-        }
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localbihu));
-        }
-        return;
-      }
+      QLog.e("QwalletToLaunchWXMiniAppAction", 1, "doAction error: " + localException.getMessage());
+      a("QwalletToLaunchWXMiniAppAction");
     }
+    return false;
   }
 }
 

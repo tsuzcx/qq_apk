@@ -1,20 +1,37 @@
-import android.app.Activity;
-import android.view.View;
+import android.util.LruCache;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.profilecard.bussiness.circle.ProfileCircleComponent.1.1;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ayvn
-  implements ayvs
+public class ayvn
+  implements VSDispatchObserver.onVSRspCallBack<FeedCloudRead.StGetMainPageRsp>
 {
-  ayvn(ayvl paramayvl, Activity paramActivity) {}
+  ayvn(ayvm paramayvm) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    paramView = (ayvx)ayvw.a().a().get(paramInt);
-    ayxg.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a(), 60010);
-    ayxc.a(String.valueOf(paramView.a()), paramInt);
+    ayvm.a(this.a).set(false);
+    if (paramStGetMainPageRsp != null)
+    {
+      paramVSBaseRequest = paramStGetMainPageRsp.vecFeed.get();
+      ayvm.a(this.a, paramStGetMainPageRsp);
+      if (((aymg)ayvm.a(this.a)).a != null) {
+        ayvm.a().put(((aymg)ayvm.b(this.a)).a.uin, new ayvr(paramStGetMainPageRsp, System.currentTimeMillis()));
+      }
+      if ((paramVSBaseRequest != null) && (paramVSBaseRequest.size() > 0))
+      {
+        ayvm.a(this.a, paramVSBaseRequest);
+        ayvm.a(this.a).post(new ProfileCircleComponent.1.1(this));
+        QLog.d("ProfileCircleComponent", 4, "makeOrRefreshQQCircle onResponse success");
+      }
+    }
   }
-  
-  public void b(View paramView, int paramInt) {}
 }
 
 

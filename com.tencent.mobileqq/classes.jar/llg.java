@@ -1,6 +1,8 @@
 public abstract interface llg
 {
-  public abstract void j(int paramInt);
+  public abstract void a(int paramInt);
+  
+  public abstract void invalidate();
 }
 
 

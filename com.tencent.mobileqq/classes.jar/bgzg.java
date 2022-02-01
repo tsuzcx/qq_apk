@@ -1,48 +1,16 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class bgzg
-  implements bdym
+public abstract interface bgzg
+  extends bguj
 {
-  bgzg(bgzd parambgzd) {}
+  public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
   
-  public void a(bdyr parambdyr)
-  {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.a.jdField_a_of_type_Int >= 4)
-    {
-      aocz.a("cartoon", "clk_inter", bgzd.a(this.a).frienduin, bgth.b(bgzd.a(this.a)) + "", "", "");
-      parambdyr = bgzd.a(this.a);
-      if ((parambdyr != null) && (bhnv.a(parambdyr) == 0))
-      {
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-        parambdyr = parambdyr.getString(2131696937);
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(parambdyr, bgzd.a(this.a).n, bhgr.a(bgzd.a(this.a), 16.0F));
-      }
-    }
-    else
-    {
-      if (bgzd.a(this.a) != null) {}
-      for (parambdyr = "0";; parambdyr = "1")
-      {
-        bdll.b(null, "dc00899", "Grp_flower", "", "forall", "Clk_grab", 0, 0, "" + bgzd.a(this.a).frienduin, "" + bgth.b(bgzd.a(this.a)), parambdyr, "" + mvb.a(localAppInterface, localAppInterface.getCurrentAccountUin(), bgzd.a(this.a).frienduin));
-        break;
-      }
-    }
-    ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-    parambdyr = (bgsu)localAppInterface.getManager(113);
-    bgzd.a(this.a).a = NetConnInfoCenter.getServerTimeMillis();
-    if (this.a.jdField_a_of_type_Int > 3)
-    {
-      parambdyr.a("OidbSvc.0x7f7", 2039, this.a.jdField_a_of_type_Int, bgzd.a(this.a).frienduin, bgzd.a(this.a).bagId, 3000L, bgzd.a(this.a));
-      return;
-    }
-    parambdyr.a("OidbSvc.0x6b5", 1717, this.a.jdField_a_of_type_Int, bgzd.a(this.a).frienduin, bgzd.a(this.a).bagId, 3000L, bgzd.a(this.a));
-  }
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract String c();
 }
 
 

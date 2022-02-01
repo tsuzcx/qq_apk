@@ -2,11 +2,11 @@ package com.tencent.avgame.gameroom;
 
 import android.graphics.RectF;
 import android.support.v4.app.FragmentActivity;
-import bdll;
+import bcef;
 import com.tencent.avgame.gameroom.gamelist.GameListView;
 import com.tencent.avgame.gameroom.seat.SeatView;
-import nbp;
-import nci;
+import ncq;
+import ndn;
 
 class GameRoomFragment$3
   implements Runnable
@@ -33,8 +33,8 @@ class GameRoomFragment$3
       }
       return;
     }
-    this.this$0.jdField_a_of_type_Nbp.a().a(this.this$0.getString(2131690282), localRectF, 146);
-    bdll.b(null, "dc00898", "", "", "0X800B350", "0X800B350", 1, 0, "", "", "", "");
+    this.this$0.jdField_a_of_type_Ncq.a().a(this.this$0.getString(2131690307), localRectF, 146);
+    bcef.b(null, "dc00898", "", "", "0X800B350", "0X800B350", 1, 0, "", "", "", "");
   }
 }
 

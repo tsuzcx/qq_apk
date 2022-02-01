@@ -1,49 +1,92 @@
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-@ProxyService(proxy=LogProxy.class)
 public class bkxm
-  extends LogProxy
 {
-  public void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  public static final AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      if (paramThrowable == null)
-      {
-        QLog.i(paramString1, 1, paramString2);
-        return;
-      }
-      break;
-    case 2: 
-      if (paramThrowable == null)
-      {
-        QLog.d(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.d(paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 4: 
-      if (paramThrowable == null)
-      {
-        QLog.w(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.w(paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 5: 
-      if (paramThrowable == null)
-      {
-        QLog.e(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.e(paramString1, 1, paramString2, paramThrowable);
-      return;
+    if (paramBaseApplicationImpl == null) {
+      return null;
     }
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
+    if ("troop_member_card_plugin.apk".equals(paramString)) {}
+    label158:
+    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
+      try
+      {
+        for (;;)
+        {
+          Class localClass = Class.forName(str);
+          paramBaseApplicationImpl = localClass;
+          if (paramBaseApplicationImpl != null) {
+            break;
+          }
+          try
+          {
+            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
+            return null;
+          }
+          catch (ClassNotFoundException paramBaseApplicationImpl)
+          {
+            paramBaseApplicationImpl.printStackTrace();
+            return null;
+          }
+          if (!"troop_manage_plugin.apk".equals(paramString)) {
+            break label158;
+          }
+          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
+        }
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        for (;;)
+        {
+          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
+          paramBaseApplicationImpl = paramString.loadClass(str);
+          BasicClassTypeUtil.setClassLoader(true, paramString);
+        }
+      }
+      catch (IllegalArgumentException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
+          break;
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+      catch (IllegalAccessException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (InstantiationException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (InvocationTargetException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (NoSuchMethodException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (Exception paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+    }
   }
 }
 

@@ -1,25 +1,24 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
 class ayvr
-  extends GestureDetector.SimpleOnGestureListener
 {
-  ayvr(ayvq paramayvq, ayvs paramayvs) {}
+  private long jdField_a_of_type_Long;
+  private FeedCloudRead.StGetMainPageRsp jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp = new FeedCloudRead.StGetMainPageRsp();
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  ayvr(FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp, long paramLong)
   {
-    if ((ayvq.a(this.jdField_a_of_type_Ayvq) != null) && (this.jdField_a_of_type_Ayvs != null)) {
-      this.jdField_a_of_type_Ayvs.b(ayvq.a(this.jdField_a_of_type_Ayvq), ayvq.a(this.jdField_a_of_type_Ayvq).getChildPosition(ayvq.a(this.jdField_a_of_type_Ayvq)));
-    }
+    this.jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp.set(paramStGetMainPageRsp);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public long a()
   {
-    if ((ayvq.a(this.jdField_a_of_type_Ayvq) != null) && (this.jdField_a_of_type_Ayvs != null)) {
-      this.jdField_a_of_type_Ayvs.a(ayvq.a(this.jdField_a_of_type_Ayvq), ayvq.a(this.jdField_a_of_type_Ayvq).getChildPosition(ayvq.a(this.jdField_a_of_type_Ayvq)));
-    }
-    return true;
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public FeedCloudRead.StGetMainPageRsp a()
+  {
+    return this.jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp;
   }
 }
 

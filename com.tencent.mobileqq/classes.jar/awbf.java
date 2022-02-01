@@ -1,8 +1,28 @@
-public abstract interface awbf
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
+
+public class awbf
+  extends awbz
 {
-  public abstract void a(int paramInt);
+  public awbf(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
+    }
+    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
+    {
+      MultiCardRecommendFragment.a(this.a).a.clear();
+      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
+    }
+  }
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import appv;
-import bdmc;
+import aoji;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$8
   implements Runnable
 {
-  public ARReport$8(appv paramappv, long paramLong, boolean paramBoolean) {}
+  public ARReport$8(aoji paramaoji, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ARReport$8
     }
     for (;;)
     {
-      bdmc.a(BaseApplication.getContext()).a("", "ARCloudControlSo", true, 0L, 0L, localHashMap, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "ARCloudControlSo", true, 0L, 0L, localHashMap, "");
       return;
       localHashMap.put("result", "1");
     }

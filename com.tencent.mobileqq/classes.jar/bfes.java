@@ -1,32 +1,29 @@
-import android.content.Context;
-import android.widget.ListView;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
 public class bfes
+  extends Handler
 {
-  private static String jdField_a_of_type_JavaLangString = "TribeTitlePrefixPanelView";
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private bfew jdField_a_of_type_Bfew;
-  
-  public bfes(Context paramContext, ListView paramListView)
+  public bfes(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
-    this.jdField_a_of_type_Bfew = new bfew(paramContext);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bfew);
+    super(paramLooper);
   }
   
-  public void a(bfev parambfev)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Bfew != null) {
-      this.jdField_a_of_type_Bfew.a(parambfev);
+    if ((AvatarWallViewPager.a(this.a)) || (!AvatarWallViewPager.b(this.a))) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
+      return;
     }
-  }
-  
-  public void a(List<bfex> paramList)
-  {
-    if (this.jdField_a_of_type_Bfew != null) {
-      this.jdField_a_of_type_Bfew.a(paramList);
-    }
+    paramMessage = this.a;
+    paramMessage.b += 1;
+    this.a.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
   }
 }
 

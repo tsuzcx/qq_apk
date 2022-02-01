@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class alyn
-  implements Parcelable.Creator<BarrageParcelItem>
+final class alyn
+  implements EIPCResultCallback
 {
-  public BarrageParcelItem a(Parcel paramParcel)
-  {
-    return new BarrageParcelItem(paramParcel);
-  }
+  alyn(String paramString, long paramLong) {}
   
-  public BarrageParcelItem[] a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new BarrageParcelItem[paramInt];
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1)
+    {
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+      alvx.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
+    }
+    while (i != 2) {
+      return;
+    }
+    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
+    alvx.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

@@ -23,54 +23,56 @@ class TroopAlbumPlugin$1
     if ("troop_upload".equals(paramIntent.getAction()))
     {
       paramContext = TroopAlbumPlugin.access$000(this.this$0);
-      localObject1 = paramContext.getActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).edit();
-      localObject2 = new JSONObject();
-      i = paramIntent.getIntExtra("count", 0);
-      boolean bool = paramIntent.getBooleanExtra("fail", false);
-      try
+      if (paramContext != null) {}
+    }
+    label230:
+    while (!"troop_select".equals(paramIntent.getAction()))
+    {
+      do
       {
-        ((JSONObject)localObject2).put("count", i);
-        ((JSONObject)localObject2).put("isFail", bool);
-        if (QLog.isColorLevel()) {
-          QLog.w("TroopAlbumPlugin", 2, "troopAlbumReceiver" + i + ",isfail" + bool);
-        }
-        if (!bool) {
-          break label229;
-        }
-        ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", true).apply();
-      }
-      catch (JSONException paramIntent)
-      {
+        return;
+        localObject1 = paramContext.getActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).edit();
+        localObject2 = new JSONObject();
+        i = paramIntent.getIntExtra("count", 0);
+        boolean bool = paramIntent.getBooleanExtra("fail", false);
         try
         {
-          for (;;)
-          {
-            paramContext.getActivity().unregisterReceiver(TroopAlbumPlugin.access$100(this.this$0));
-            TroopAlbumPlugin.access$002(this.this$0, null);
-            return;
-            ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
+          ((JSONObject)localObject2).put("count", i);
+          ((JSONObject)localObject2).put("isFail", bool);
+          if (QLog.isColorLevel()) {
+            QLog.w("TroopAlbumPlugin", 2, "troopAlbumReceiver" + i + ",isfail" + bool);
           }
-          paramIntent = paramIntent;
-          paramIntent.printStackTrace();
+          if (!bool) {
+            break label230;
+          }
+          ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", true).apply();
         }
-        catch (IllegalArgumentException paramContext)
+        catch (JSONException paramIntent)
         {
-          for (;;)
+          try
           {
-            QLog.i("TroopAlbumPlugin", 2, paramContext.getMessage());
+            for (;;)
+            {
+              paramContext.getActivity().unregisterReceiver(TroopAlbumPlugin.access$100(this.this$0));
+              TroopAlbumPlugin.access$002(this.this$0, null);
+              return;
+              ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
+            }
+            paramIntent = paramIntent;
+            paramIntent.printStackTrace();
+          }
+          catch (IllegalArgumentException paramContext)
+          {
+            for (;;)
+            {
+              QLog.i("TroopAlbumPlugin", 2, paramContext.getMessage());
+            }
           }
         }
-      }
-      if (paramContext != null)
-      {
         paramContext.callJs("groupAlbum_onGroupAlbumUpload", (JSONObject)localObject2);
-        if (i == 0) {
-          ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
-        }
-      }
+      } while (i != 0);
+      ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
     }
-    label229:
-    while (!"troop_select".equals(paramIntent.getAction())) {}
     QLog.w("TroopAlbumPlugin", 2, "troop_select recive");
     paramContext = paramIntent.getStringExtra("key_selected_albuminfo.id");
     Object localObject1 = paramIntent.getStringExtra("key_selected_albuminfo.name");

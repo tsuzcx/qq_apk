@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -55,7 +55,7 @@ public class LpReportInfo_dc01245
     {
       localHashMap.put("expose_time", String.valueOf(System.currentTimeMillis()));
       localHashMap.put("expose_src", String.valueOf(this.expose_src));
-      localHashMap.put("qua", bmsw.a());
+      localHashMap.put("qua", QUA.getQUA3());
       localHashMap.put("zhubo_type", String.valueOf(this.zhubo_type));
       localHashMap.put("reserve1", String.valueOf(this.reserve1));
       localHashMap.put("reserve2", String.valueOf(this.reserve2));

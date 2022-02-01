@@ -1,174 +1,96 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import Wallet.GetSkinListRsp;
+import Wallet.PopDialog;
+import Wallet.SetSelectedSkinRsp;
+import Wallet.SkinInfo;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.QwAdapter;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.observer.BusinessObserver;
 
-public class akae
-  extends BaseAdapter
+class akae
+  implements BusinessObserver
 {
-  private akag jdField_a_of_type_Akag;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  akae(akad paramakad) {}
   
-  public akae(Context paramContext)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public void a(akag paramakag)
-  {
-    this.jdField_a_of_type_Akag = paramakag;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(List<Object> paramList)
-  {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+    if (QLog.isColorLevel()) {
+      QLog.d("HbSkinLogic", 2, "mObserver type = " + paramInt + " isSuccess = " + paramBoolean + " bundle = " + paramBundle);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool2 = false;
-    Object localObject2 = getItem(paramInt);
-    if ((localObject2 instanceof String)) {
-      if ((paramView != null) && ((paramView.getTag() instanceof TextView)))
+    akad.a(this.a, false);
+    if (paramBundle != null) {
+      switch (paramInt)
       {
-        localObject1 = (TextView)paramView.getTag();
-        ((TextView)localObject1).setText((String)localObject2);
       }
     }
-    for (localObject1 = paramView;; localObject1 = paramView)
+    label215:
+    do
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560897, paramViewGroup, false);
-      localObject1 = (TextView)paramView.findViewById(2131378617);
-      paramView.setTag(localObject1);
-      break;
-      if ((localObject2 instanceof TencentDocItem))
+      return;
+      List localList = akad.a(this.a).getList();
+      localList.clear();
+      akad.a(this.a, localList);
+      GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
+      if (localGetSkinListRsp != null)
       {
-        localObject1 = paramView;
-        for (;;)
+        Object localObject = this.a;
+        if (localGetSkinListRsp.is_hide_list) {}
+        for (paramInt = 8;; paramInt = 0)
         {
-          try
+          ((akad)localObject).b(paramInt);
+          if (!localGetSkinListRsp.is_hide_list) {
+            break label215;
+          }
+          if (akad.a(this.a) != -1) {
+            break;
+          }
+          akaa.c = akad.a(this.a, -1);
+          return;
+        }
+        akad.b(this.a, true);
+        akaa.c = akad.a(this.a, akad.a(this.a));
+        return;
+        akaa.jdField_a_of_type_Boolean = paramBundle.getBoolean("isCache");
+        akad.a(this.a, localGetSkinListRsp.selected_id);
+        if (QLog.isColorLevel()) {
+          QLog.d("HbSkinLogic", 2, "rsp size = " + localGetSkinListRsp.skin_list.size() + " serverSkinID = " + akad.b(this.a));
+        }
+        akaa.c = localGetSkinListRsp.selected_id;
+        if (QLog.isColorLevel()) {
+          QLog.d("HbSkinLogic", 2, "select restor: " + akaa.c);
+        }
+        akad.a(this.a).clear();
+        paramInt = 0;
+        while (paramInt < localGetSkinListRsp.skin_list.size())
+        {
+          localObject = (SkinInfo)localGetSkinListRsp.skin_list.get(paramInt);
+          if (QLog.isColorLevel())
           {
-            for (;;)
-            {
-              TencentDocItem localTencentDocItem = (TencentDocItem)localObject2;
-              if (paramView != null)
-              {
-                localObject1 = paramView;
-                if ((paramView.getTag() instanceof akaf))
-                {
-                  localObject1 = paramView;
-                  localObject2 = (akaf)paramView.getTag();
-                  localObject1 = localObject2;
-                }
-              }
-              try
-              {
-                label154:
-                paramView.setVisibility(0);
-                ((akaf)localObject1).jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTencentDocItem = localTencentDocItem;
-                ((akaf)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(localTencentDocItem.mTitle);
-                akfw.a(((akaf)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTencentDocItem.mIcon);
-                if (this.jdField_a_of_type_Boolean)
-                {
-                  ((akaf)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-                  boolean bool1 = bool2;
-                  if (this.jdField_a_of_type_Akag != null)
-                  {
-                    bool1 = bool2;
-                    if (this.jdField_a_of_type_Akag.a(localTencentDocItem)) {
-                      bool1 = true;
-                    }
-                  }
-                  ((akaf)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool1);
-                }
-                for (;;)
-                {
-                  ((akaf)localObject1).b.setText(localTencentDocItem.mDescription);
-                  localObject2 = paramView;
-                  localObject1 = paramView;
-                  paramView = (View)localObject2;
-                  break;
-                  localObject1 = paramView;
-                  localObject2 = new akaf();
-                  localObject1 = paramView;
-                  paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560873, paramViewGroup, false);
-                  localObject1 = paramView;
-                  ((akaf)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366617));
-                  localObject1 = paramView;
-                  ((akaf)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366604));
-                  localObject1 = paramView;
-                  ((akaf)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366615));
-                  localObject1 = paramView;
-                  ((akaf)localObject2).b = ((TextView)paramView.findViewById(2131366602));
-                  localObject1 = paramView;
-                  ((akaf)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-                  localObject1 = paramView;
-                  ((akaf)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(agej.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-                  localObject1 = paramView;
-                  paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-                  localObject1 = paramView;
-                  paramView.setTag(localObject2);
-                  localObject1 = localObject2;
-                  break label154;
-                  ((akaf)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-                }
-                QLog.e("ChatHistoryBaseTenDocAdapter", 4, "getView failed", localException1);
-              }
-              catch (Exception localException1) {}
+            paramBundle = "{}";
+            if (((SkinInfo)localObject).pop_dialog != null) {
+              paramBundle = String.format("{%s, %s, %s, %s, %s, %s}", new Object[] { ((SkinInfo)localObject).pop_dialog.dialog_tips, ((SkinInfo)localObject).pop_dialog.dialog_title, ((SkinInfo)localObject).pop_dialog.left_tips, ((SkinInfo)localObject).pop_dialog.left_url, ((SkinInfo)localObject).pop_dialog.right_tips, ((SkinInfo)localObject).pop_dialog.right_url });
             }
+            QLog.d("HbSkinLogic", 2, "skin_list " + paramInt + " skin_id: " + ((SkinInfo)localObject).skin_id + ", skin_permission_state: " + ((SkinInfo)localObject).skin_permission_state + ", skin_name: " + ((SkinInfo)localObject).skin_name + ", PopDialog: " + paramBundle + ",  is_hide_title: " + ((SkinInfo)localObject).is_hide_title + ", blessing: " + ((SkinInfo)localObject).blessing);
           }
-          catch (Exception localException2)
-          {
-            paramView = (View)localObject1;
-          }
+          paramBundle = new akaa((SkinInfo)localObject);
+          paramBundle.jdField_a_of_type_Int = (paramInt + 1);
+          akad.a(this.a).add(paramBundle);
+          paramInt += 1;
+        }
+        if (!TextUtils.isEmpty(localGetSkinListRsp.more_skin_url)) {
+          localList.add(akac.c(localGetSkinListRsp.more_skin_url));
         }
       }
-    }
+      akaa.a(localList);
+      akad.a(this.a).notifyDataSetChanged();
+      akad.b(this.a, akad.a(this.a));
+      return;
+      paramBundle = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
+    } while (!QLog.isColorLevel());
+    QLog.d("HbSkinLogic", 2, "SetSelectedSkinRsp = " + paramBundle);
   }
 }
 

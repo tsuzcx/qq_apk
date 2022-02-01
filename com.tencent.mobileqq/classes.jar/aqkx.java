@@ -1,47 +1,51 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqkx
-  implements Animator.AnimatorListener
+public class aqkx
 {
-  aqkx(aqkv paramaqkv, aqlc paramaqlc) {}
+  private boolean a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static aqkx a(aptx[] paramArrayOfaptx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Aqlc.jdField_a_of_type_Long);
+    boolean bool = true;
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0))
+    {
+      paramArrayOfaptx = null;
+      return paramArrayOfaptx;
     }
-    this.jdField_a_of_type_Aqkv.a(this.jdField_a_of_type_Aqlc);
+    aqkx localaqkx = new aqkx();
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaptx[0].a);
+        paramArrayOfaptx = localaqkx;
+        if (!localJSONObject.has("SendAsTxDoc")) {
+          break;
+        }
+        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
+        {
+          localaqkx.a = bool;
+          return localaqkx;
+        }
+      }
+      catch (JSONException paramArrayOfaptx)
+      {
+        paramArrayOfaptx.printStackTrace();
+        return localaqkx;
+      }
+      bool = false;
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Aqlc.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Aqkv.a(this.jdField_a_of_type_Aqlc);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Aqlc.jdField_a_of_type_Long);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Aqlc.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Aqlc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqkx
  * JD-Core Version:    0.7.0.1
  */

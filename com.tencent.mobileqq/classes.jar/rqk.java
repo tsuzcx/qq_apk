@@ -1,8 +1,14 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 
-public abstract interface rqk
+class rqk
+  implements rqd<rgo>
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  rqk(rqj paramrqj) {}
+  
+  public boolean a(rgo paramrgo)
+  {
+    return TextUtils.equals("video/mp4", paramrgo.a);
+  }
 }
 
 

@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Friends;
-import mqq.app.QQPermissionCallback;
+import com.tencent.image.Utils;
 
-class ajub
-  implements QQPermissionCallback
+public class ajub
+  extends ajuc
 {
-  ajub(ajtz paramajtz, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ajub(String paramString)
   {
-    bhlq.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    super(paramString);
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateHeif";
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  static boolean a(String paramString)
   {
-    ajtz.a(this.jdField_a_of_type_Ajtz, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
+    return Utils.isHeifFile(paramString);
   }
 }
 

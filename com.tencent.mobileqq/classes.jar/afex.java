@@ -1,84 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
 public class afex
 {
-  public static void a(Activity paramActivity)
-  {
-    b(paramActivity);
-  }
+  public Bitmap a;
+  public NinePatch a;
   
-  public static void a(Activity paramActivity, String paramString)
+  public void a()
   {
-    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
-    if ((paramActivity instanceof BaseActivity)) {
-      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
-    }
-    if (bipb.a.containsKey("PublicAccountJs")) {
-      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
-    }
-    localIntent.putExtra("fromLocalUrl", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hideRightButton", true);
-    localIntent.putExtra("leftViewText", paramActivity.getString(2131694618));
-    localIntent.putExtra("assignBackText", paramActivity.getString(2131694618));
-    if (TextUtils.isEmpty(paramString)) {
-      localIntent.putExtra("url", tyi.b);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      paramActivity.startActivity(localIntent);
-      return;
-      localIntent.putExtra("url", "https://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
   }
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  public void a(Bitmap paramBitmap)
   {
-    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
-    if (TextUtils.isEmpty(paramString2)) {
-      if ((paramActivity instanceof BaseActivity)) {
-        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
-      }
-    }
-    for (;;)
+    if (paramBitmap != null)
     {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        localIntent.putExtra("leftViewText", paramString1);
-        localIntent.putExtra("assignBackText", paramString1);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
+      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
       }
-      if (bipb.a.containsKey("PublicAccountJs")) {
-        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
-      }
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = "https://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
-      }
-      localIntent.putExtra("fromLocalUrl", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", paramString1);
-      localIntent.putExtra("hideRightButton", true);
-      paramActivity.startActivity(localIntent);
-      return;
-      localIntent.putExtra("uin", paramString2);
     }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
   }
   
-  private static void b(Activity paramActivity)
+  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", "");
-    localIntent.putExtra("from_key", 2);
-    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
-    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a(paramActivity, localIntent, null);
+    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
+      if (paramPaint != null) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
+      }
+    }
+    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
   }
 }
 

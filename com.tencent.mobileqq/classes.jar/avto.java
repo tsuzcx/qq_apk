@@ -1,6 +1,16 @@
-public abstract interface avto
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class avto
+  implements Handler.Callback
 {
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  avto(avtn paramavtn) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    avtn.a(this.a, paramMessage);
+    return true;
+  }
 }
 
 

@@ -1,153 +1,272 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.Window;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJMsgBoxPopupStep.1;
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJMsgBoxPopupStep.2;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.image.RIJPreloadImage.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class pgv
-  extends pgp
 {
-  private Activity a;
+  private static int jdField_a_of_type_Int = 10;
+  private static int b;
+  private long jdField_a_of_type_Long;
   
-  public pgv(@NotNull pgq parampgq, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  static
   {
-    super(parampgq, "RIJMsgBoxPopupStep");
-    this.a = paramActivity;
+    jdField_b_of_type_Int = 10;
   }
   
-  private void a(Activity paramActivity, int paramInt, String paramString, long paramLong)
+  private void a(List<pgu> paramList)
   {
-    if (paramActivity == null)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      QLog.e("RIJMsgBoxPopupStep", 1, "openMsgBoxPage failed, activity = null");
-      return;
-    }
-    ozs.d = true;
-    paramActivity.getWindow().getDecorView().postDelayed(new RIJMsgBoxPopupStep.1(this, paramActivity, paramInt, paramString), paramLong);
-    i();
-  }
-  
-  private boolean a(int paramInt)
-  {
-    QLog.d("RIJMsgBoxPopupStep", 2, "checkIfShowMsgBoxWithFloatingWindow | launchFrom : " + paramInt);
-    if (paramInt != 5) {
-      return false;
-    }
-    Object localObject = ((KandianMergeManager)ozs.a().getManager(162)).a();
-    if ((localObject == null) || (((KandianMsgBoxRedPntInfo)localObject).mMsgCnt <= 0))
-    {
-      QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | no msg");
-      return false;
-    }
-    boolean bool = ((Boolean)bnrf.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(false))).booleanValue();
-    QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | sp showFloatingWin " + bool);
-    localObject = Aladdin.getConfig(262);
-    if (localObject != null) {
-      if (((AladdinConfig)localObject).getIntegerFromString("kandian_msg_box_popup_window_cfg", 0) == 1)
+      pgu localpgu = (pgu)paramList.next();
+      if ((localpgu != null) && (localpgu.jdField_a_of_type_JavaNetURL != null))
       {
-        bool = true;
-        bnrf.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(bool));
-        QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | aladdin cfg showFloatingWin " + bool);
+        if (TextUtils.equals("pubaccountimage", localpgu.jdField_a_of_type_JavaNetURL.getProtocol())) {
+          localpgu.jdField_a_of_type_JavaNetURL = pay.a(localpgu.jdField_a_of_type_JavaNetURL.getFile(), false);
+        }
+        if (localpgu.jdField_a_of_type_JavaNetURL != null)
+        {
+          syo localsyo = new syo();
+          psq.a.a(localsyo, localpgu.jdField_a_of_type_JavaNetURL.toString());
+          localsyo.jdField_a_of_type_Int = ((Integer)localpgu.jdField_a_of_type_AndroidUtilPair.first).intValue();
+          localsyo.jdField_b_of_type_Int = ((Integer)localpgu.jdField_a_of_type_AndroidUtilPair.second).intValue();
+          localsyo.jdField_b_of_type_Boolean = true;
+          syn.a().a(localsyo, null);
+        }
+      }
+    }
+  }
+  
+  private void a(List<pgu> paramList, int paramInt, BaseArticleInfo paramBaseArticleInfo, ped paramped)
+  {
+    paramInt = paramped.a().a().getItemViewType(paramInt);
+    if (paramInt == 4) {
+      if (paramBaseArticleInfo.mVideoCoverUrl != null)
+      {
+        paramBaseArticleInfo = paramBaseArticleInfo.mVideoCoverUrl;
+        paramList.add(pgu.a(paramBaseArticleInfo, pai.f()));
       }
     }
     for (;;)
     {
-      QLog.d("RIJMsgBoxPopupStep", 1, "checkIfShowMsgBoxWithFloatingWindow | showFloatingWindow " + bool);
-      if (bool)
+      return;
+      if (paramBaseArticleInfo.mSinglePicture != null)
       {
-        a(this.a, 6, "", 0L);
-        if (this.a != null)
+        paramBaseArticleInfo = paramBaseArticleInfo.mSinglePicture;
+        break;
+      }
+      paramBaseArticleInfo = pay.a(paramBaseArticleInfo.mFirstPagePicUrl);
+      break;
+      if ((paramInt == 70) || (paramInt == 46))
+      {
+        if (paramBaseArticleInfo.mVideoCoverUrl != null)
         {
-          localObject = ozs.a(this.a);
-          if (localObject != null) {
-            ((ReadinjoyTabFrame)localObject).a(32);
+          paramped = paramBaseArticleInfo.mVideoCoverUrl;
+          paramList.add(pgu.a(paramped, pai.g()));
+          if ((paramBaseArticleInfo.mSubArtilceList == null) || (paramBaseArticleInfo.mSubArtilceList.size() <= 0)) {
+            continue;
+          }
+          paramBaseArticleInfo = (ArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
+          if (paramBaseArticleInfo.mVideoCoverUrl == null) {
+            break label199;
+          }
+          paramBaseArticleInfo = paramBaseArticleInfo.mVideoCoverUrl;
+        }
+        for (;;)
+        {
+          paramList.add(pgu.a(paramBaseArticleInfo, pai.g()));
+          return;
+          if (paramBaseArticleInfo.mSinglePicture != null)
+          {
+            paramped = paramBaseArticleInfo.mSinglePicture;
+            break;
+          }
+          paramped = pay.a(paramBaseArticleInfo.mFirstPagePicUrl);
+          break;
+          label199:
+          if (paramBaseArticleInfo.mSinglePicture != null) {
+            paramBaseArticleInfo = paramBaseArticleInfo.mSinglePicture;
+          } else {
+            paramBaseArticleInfo = pay.a(paramBaseArticleInfo.mFirstPagePicUrl);
           }
         }
       }
-      return bool;
-      bool = false;
-      break;
-    }
-  }
-  
-  private void i()
-  {
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)ozs.a().getManager(162);
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = localKandianMergeManager.a();
-    if (localKandianMsgBoxRedPntInfo != null)
-    {
-      localKandianMsgBoxRedPntInfo.isRead = true;
-      localKandianMergeManager.l();
-      ThreadManagerV2.excute(new RIJMsgBoxPopupStep.2(this, localKandianMsgBoxRedPntInfo, localKandianMergeManager), 64, null, false);
-    }
-  }
-  
-  protected void g()
-  {
-    int i = 1;
-    Object localObject = this.a.getIntent();
-    ozs.d = false;
-    boolean bool;
-    if (((Intent)localObject).hasExtra("notification_message_id"))
-    {
-      String str = ((Intent)localObject).getStringExtra("notification_message_id");
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((ozs.k() == 2) && (ozs.m() == 2))
+      else if ((paramInt == 3) || (paramInt == 14) || (paramInt == 105))
       {
-        if (!str.isEmpty()) {
-          ((KandianMergeManager)localQQAppInterface.getManager(162)).a(2, str);
+        if (paramBaseArticleInfo.mPictures != null)
+        {
+          paramBaseArticleInfo = paramBaseArticleInfo.mPictures;
+          int i = paramBaseArticleInfo.length;
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            paramList.add(pgu.a(paramBaseArticleInfo[paramInt], pai.a()));
+            paramInt += 1;
+          }
         }
       }
       else
       {
-        ((Intent)localObject).removeExtra("notification_message_id");
-        if ((ozs.m() != 1) && (ozs.k() == 2)) {
-          break label187;
+        if ((paramInt == 2) || (paramInt == 6) || (paramInt == 66) || (paramInt == 115))
+        {
+          paramList.add(pgu.a(paramBaseArticleInfo.mSinglePicture, pai.e()));
+          return;
         }
-        a(this.a, 5, str, 200L);
-        bool = true;
-        label117:
-        localObject = new paa().a("uin", localQQAppInterface.getCurrentAccountUin()).a("push_type", Integer.valueOf(9));
-        if (bool) {
-          i = 3;
+        if ((paramInt == 1) || (paramInt == 5) || (paramInt == 104) || (paramInt == 106))
+        {
+          paramList.add(pgu.a(paramBaseArticleInfo.mSinglePicture, pai.a()));
+          return;
         }
-        ocd.a("0X80081DB", ((paa)localObject).a("load_mode", Integer.valueOf(i)).a());
+        if ((paramInt == 122) && (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) && (twr.k((AdvertisementInfo)paramBaseArticleInfo)) && (((AdvertisementInfo)paramBaseArticleInfo).mAdImgList != null))
+        {
+          paramBaseArticleInfo = ((AdvertisementInfo)paramBaseArticleInfo).mAdImgList.iterator();
+          while (paramBaseArticleInfo.hasNext()) {
+            paramList.add(pgu.a(pay.a((String)paramBaseArticleInfo.next()), pai.e()));
+          }
+        }
       }
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      QLog.i("RIJMsgBoxPopupStep", 1, "readInJoy lock push, notificationMessageId is empty");
-      break;
-      label187:
-      bool = false;
-      break label117;
-      bool = false;
     }
   }
   
-  protected void h()
+  public int a()
   {
-    int i = this.a.getIntent().getIntExtra("launch_from", 5);
-    if ((((KandianMergeManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(162)).f() > 0) && (a(i))) {}
-    for (boolean bool = true;; bool = false)
+    return jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJPreloadImage", 2, "cpu:" + DeviceInfoUtil.getCpuNumber() + " mem:" + DeviceInfoUtil.getSystemTotalMemory() + " fre:" + DeviceInfoUtil.getCpuFrequency());
+    }
+    int i = DeviceInfoUtil.getCpuNumber();
+    long l = DeviceInfoUtil.getSystemTotalMemory();
+    if ((i >= 4) && (l >= 1610612736.0D))
     {
-      a(bool);
+      jdField_a_of_type_Int = 6;
       return;
     }
+    jdField_a_of_type_Int = 4;
+  }
+  
+  public void a(int paramInt1, int paramInt2, ped paramped)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJPreloadImage", 2, "preloadImg start:" + paramInt1 + " count:" + paramInt2);
+    }
+    long l = System.currentTimeMillis();
+    if (!NetworkUtil.isWifiConnected(paramped.a().a())) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList(paramped.a());
+    ThreadManager.post(new RIJPreloadImage.1(this, this.jdField_a_of_type_Long, localArrayList, paramInt1, paramInt2, paramped, l), 5, null, true);
+  }
+  
+  public void a(int paramInt1, int paramInt2, slt paramslt)
+  {
+    if (!PreloadManager.a().a()) {}
+    for (;;)
+    {
+      return;
+      PreloadManager.a().e();
+      int i = paramslt.a();
+      while (paramInt1 <= paramInt2)
+      {
+        Object localObject = paramslt.getItem(paramInt1);
+        if ((localObject instanceof BaseArticleInfo))
+        {
+          localObject = (BaseArticleInfo)localObject;
+          if ((!pay.a(((BaseArticleInfo)localObject).mArticleContentUrl, ((BaseArticleInfo)localObject).mChannelID, (ArticleInfo)localObject)) && (!pay.a((BaseArticleInfo)localObject)) && (!paramslt.a(i, ((BaseArticleInfo)localObject).mArticleID)))
+          {
+            localObject = ((BaseArticleInfo)localObject).mArticleContentUrl;
+            if (aacg.a((String)localObject)) {
+              PreloadManager.a().a((String)localObject);
+            }
+          }
+        }
+        paramInt1 += 1;
+      }
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, peu parampeu, ped paramped)
+  {
+    syn.a().c();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJPreloadImage", 2, "resume image onScrollStateChanged idle");
+    }
+    if (paramBoolean) {
+      a(paramInt2, jdField_a_of_type_Int, paramped);
+    }
+    for (;;)
+    {
+      if ((paramInt1 - paramInt2 < jdField_b_of_type_Int) && (parampeu != null)) {
+        parampeu.a();
+      }
+      return;
+      a(paramInt2 - jdField_a_of_type_Int, jdField_a_of_type_Int, paramped);
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, slt paramslt)
+  {
+    if (!PublicAccountImageCollectionPreloadManager.a().a()) {}
+    for (;;)
+    {
+      return;
+      PublicAccountImageCollectionPreloadManager.a().c();
+      while (paramInt1 <= paramInt2)
+      {
+        Object localObject = paramslt.getItem(paramInt1);
+        if (localObject != null)
+        {
+          localObject = (BaseArticleInfo)localObject;
+          int i = paramslt.a(paramInt1);
+          if ((i == 8) || (i == 7)) {
+            PublicAccountImageCollectionPreloadManager.a().a(String.valueOf(((BaseArticleInfo)localObject).innerUniqueID));
+          }
+        }
+        paramInt1 += 1;
+      }
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2, slt paramslt)
+  {
+    if ((!bkwm.C(pem.a())) || (!bkwm.D(pem.a()))) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    while (paramInt1 <= paramInt2)
+    {
+      Object localObject = paramslt.getItem(paramInt1);
+      if (localObject != null)
+      {
+        localObject = (BaseArticleInfo)localObject;
+        if (!pay.a((BaseArticleInfo)localObject)) {
+          localArrayList.add((ArticleInfo)localObject);
+        }
+      }
+      paramInt1 += 1;
+    }
+    pkm.a().a().a(localArrayList);
   }
 }
 

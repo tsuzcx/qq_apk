@@ -1,26 +1,18 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
 
-public class bbjy
-  extends bbjz
+public final class bbjy
+  implements Parcelable.Creator<FriendGroupListInfo>
 {
-  public int a = -1;
-  
-  public HashMap<String, String> a(String paramString)
+  public FriendGroupListInfo a(Parcel paramParcel)
   {
-    if ("ShortVideo.Preview".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playAction", this.a + "");
-      return paramString;
-    }
-    return null;
+    return new FriendGroupListInfo(paramParcel);
+  }
+  
+  public FriendGroupListInfo[] a(int paramInt)
+  {
+    return new FriendGroupListInfo[paramInt];
   }
 }
 

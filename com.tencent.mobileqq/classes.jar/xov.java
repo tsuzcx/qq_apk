@@ -1,236 +1,92 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableStringBuilder;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class xov
-  extends zsv
+  extends QQUIEventReceiver<xoi, wda>
 {
-  public static final String KEY = "PlayerCommentSegment";
-  private int jdField_a_of_type_Int;
-  private xoj jdField_a_of_type_Xoj;
-  private xow jdField_a_of_type_Xow = new xow(this);
-  private xox jdField_a_of_type_Xox = new xox();
-  private xoy jdField_a_of_type_Xoy = new xoy(this);
-  private xpb jdField_a_of_type_Xpb;
-  public yfw a;
-  
-  public xov(Context paramContext)
+  public xov(xoi paramxoi1, @NonNull xoi paramxoi2)
   {
-    super(paramContext);
+    super(paramxoi2);
   }
   
-  private boolean b()
+  public void a(@NonNull xoi paramxoi, @NonNull wda paramwda)
   {
-    return (this.jdField_a_of_type_Xoj == null) || (this.jdField_a_of_type_Xoj.a());
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Yfw != null)) {
-      return this.jdField_a_of_type_Yfw.a(b()).size();
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_Yfw == null) || (paramInt > this.jdField_a_of_type_Yfw.a(b()).size()))
+    if ((TextUtils.isEmpty(paramwda.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramwda.jdField_b_of_type_JavaLangString)) || (paramwda.jdField_a_of_type_Int == 0) || (paramwda.jdField_a_of_type_Long == 0L))
     {
-      yuk.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. position is out of bound.");
-      return paramyqw.a();
+      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible poll event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d.", new Object[] { paramwda.jdField_a_of_type_JavaLangString, paramwda.jdField_b_of_type_JavaLangString, Integer.valueOf(paramwda.jdField_a_of_type_Int), Long.valueOf(paramwda.jdField_a_of_type_Long) });
+      return;
     }
-    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_Yfw.a(b()).get(paramInt);
-    if (localCommentEntry == null)
+    Object localObject1 = paramxoi.a(paramwda.jdField_a_of_type_JavaLangString);
+    if ((localObject1 == null) || (!(localObject1 instanceof xpg)))
     {
-      yuk.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
-      return paramyqw.a();
+      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramwda.jdField_a_of_type_JavaLangString });
+      return;
     }
-    paramViewGroup = (ImageView)paramyqw.a(2131363109);
-    TextView localTextView1 = (TextView)paramyqw.a(2131371813);
-    TextView localTextView2 = (TextView)paramyqw.a(2131364805);
-    Object localObject1 = (LinearLayout)paramyqw.a(2131364798);
-    TextView localTextView3 = (TextView)paramyqw.a(2131370292);
-    ImageView localImageView = (ImageView)paramyqw.a(2131364816);
-    ProgressBar localProgressBar = (ProgressBar)paramyqw.a(2131364840);
-    if (localCommentEntry.type == 1)
+    Object localObject2 = (xpg)localObject1;
+    xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "receive poll event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.pollIndex = %d.", paramwda.jdField_a_of_type_JavaLangString, paramwda.jdField_b_of_type_JavaLangString, Integer.valueOf(paramwda.jdField_a_of_type_Int), Integer.valueOf(paramwda.jdField_b_of_type_Int));
+    localObject1 = ((xpg)localObject2).a().iterator();
+    Object localObject3;
+    for (;;)
     {
-      paramViewGroup.setVisibility(8);
-      ((LinearLayout)localObject1).setVisibility(8);
-      localTextView3.setVisibility(0);
-      localTextView3.setText(localCommentEntry.content);
-      if (QQStoryContext.a())
+      if (((Iterator)localObject1).hasNext())
       {
-        localTextView2.setBackgroundResource(2130846461);
-        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
-        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
-        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166476));
+        localObject3 = (StoryVideoItem)((Iterator)localObject1).next();
+        if (((StoryVideoItem)localObject3).mVid.equals(paramwda.jdField_b_of_type_JavaLangString))
+        {
+          localObject1 = ((StoryVideoItem)localObject3).getPollLayout();
+          if ((localObject1 != null) && (((vwh)localObject1).a.length > paramwda.jdField_b_of_type_Int)) {
+            localObject1 = localObject1.a[(paramwda.jdField_b_of_type_Int + 1)];
+          }
+        }
       }
-      return paramyqw.a();
-    }
-    paramViewGroup.setVisibility(0);
-    ((LinearLayout)localObject1).setVisibility(0);
-    localTextView3.setVisibility(8);
-    localObject1 = localCommentEntry.commentId + localCommentEntry.feedId + localCommentEntry.status + this.jdField_a_of_type_Xow.hashCode() + "bubble_style";
-    Object localObject2 = wrc.a().a((String)localObject1);
-    label352:
-    QQUserUIItem localQQUserUIItem;
-    Drawable localDrawable;
-    if (localObject2 != null)
-    {
-      localTextView2.setText((CharSequence)localObject2);
-      localQQUserUIItem = ((wtt)wth.a(2)).c(localCommentEntry.authorUnionId);
-      localDrawable = bhmq.b();
-      if (localQQUserUIItem != null) {
-        break label616;
-      }
-      localObject1 = "";
-      label383:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label626;
-      }
-      paramInt = 1;
-      label393:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label631;
-      }
-      localObject2 = "V";
-      label405:
-      if (localQQUserUIItem != null) {
-        break label638;
-      }
-      paramViewGroup.setImageDrawable(localDrawable);
-      label416:
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-        break label751;
-      }
-      paramViewGroup = new SpannableStringBuilder(xiz.b);
-      label440:
-      if (paramInt != 0)
-      {
-        paramInt = paramViewGroup.length();
-        paramViewGroup.append((CharSequence)localObject2);
-        ygd.a(paramViewGroup, (String)localObject1, paramInt, paramViewGroup.length());
-      }
-      localTextView1.setText(paramViewGroup);
-      if (localCommentEntry.status != 2) {
-        break label791;
-      }
-      localImageView.setVisibility(0);
-      localProgressBar.setVisibility(8);
     }
     for (;;)
     {
-      localTextView2.setOnTouchListener(this.jdField_a_of_type_Xox);
-      localTextView2.setSpannableFactory(begp.a);
-      localTextView2.setTextColor(-16777216);
-      break;
-      localObject2 = ygd.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yfw.a, localCommentEntry, this.jdField_a_of_type_Xow);
-      localTextView2.setText((CharSequence)localObject2);
-      if (localCommentEntry.isReply())
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localQQUserUIItem = ((wtt)wth.a(2)).c(localCommentEntry.replierUnionId);
-        if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
-          break label352;
+        localObject1 = xhw.a(paramwda.jdField_a_of_type_JavaLangString, paramwda.jdField_a_of_type_Int, paramwda.jdField_a_of_type_Long, 1, (String)localObject1);
+        localObject3 = new ArrayList();
+        ((List)localObject3).add(localObject1);
+        ((xpg)localObject2).a((List)localObject3, false);
+        localObject2 = (CommentLikeFeedItem)((xpg)localObject2).a;
+        ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
+        if (xoi.a((CommentLikeFeedItem)localObject2)) {
+          ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
         }
-        wrc.a().a((String)localObject1, (CharSequence)localObject2);
-        break label352;
+        for (;;)
+        {
+          xoi.a(paramxoi).b(paramwda.jdField_a_of_type_JavaLangString);
+          ThreadManager.post(new HomeFeedPresenter.SendVidPollDataResultReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
+          xoi.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
+          return;
+          if (localObject1 == null) {}
+          for (int i = 0;; i = ((vwh)localObject1).a.length)
+          {
+            xvv.e("Q.qqstory.home.data.HomeFeedPresenter", "get poll answer failed because PollLayout is null or pollIndex lager than contents.length. pollLayout = %s, pollLayout.contents.length = %d, event.pollIndex = %d.", new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(paramwda.jdField_b_of_type_Int) });
+            localObject1 = null;
+            break;
+          }
+          ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
+        }
       }
-      wrc.a().a((String)localObject1, (CharSequence)localObject2);
-      break label352;
-      label616:
-      localObject1 = localQQUserUIItem.getUserIconUrl();
-      break label383;
-      label626:
-      paramInt = 0;
-      break label393;
-      label631:
-      localObject2 = "";
-      break label405;
-      label638:
-      if ((localQQUserUIItem.isVipButNoFriend()) || (localQQUserUIItem.isNotDovUser()))
-      {
-        zps.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
-        break label416;
-      }
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq))
-      {
-        paramViewGroup.setImageDrawable(aoot.a(xiz.a(), 1, localQQUserUIItem.qq, 3, localDrawable, localDrawable));
-        break label416;
-      }
-      if (nnr.a(localQQUserUIItem.headUrl))
-      {
-        zps.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
-        break label416;
-      }
-      paramViewGroup.setImageDrawable(localDrawable);
-      break label416;
-      label751:
-      if (localQQUserUIItem.isVipButNoFriend())
-      {
-        paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.nickName);
-        break label440;
-      }
-      paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.getDisplayName());
-      break label440;
-      label791:
-      localImageView.setVisibility(8);
-      if (localCommentEntry.status == 1) {
-        localProgressBar.setVisibility(0);
-      } else {
-        localProgressBar.setVisibility(8);
-      }
+      xvv.e("Q.qqstory.home.data.HomeFeedPresenter", "generate vote comment failed because poll answer is empty.");
+      return;
+      localObject1 = null;
     }
   }
   
-  public CommentEntry a(int paramInt)
+  public Class acceptEventClass()
   {
-    if ((this.jdField_a_of_type_Yfw == null) || (paramInt >= this.jdField_a_of_type_Yfw.a(this.jdField_a_of_type_Xoj.a()).size())) {
-      return null;
-    }
-    return (CommentEntry)this.jdField_a_of_type_Yfw.a(this.jdField_a_of_type_Xoj.a()).get(paramInt);
-  }
-  
-  public String a()
-  {
-    return "PlayerCommentSegment";
-  }
-  
-  public yqw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new yqw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561725, paramViewGroup, false));
-    paramViewGroup.a(this.jdField_a_of_type_Xoy);
-    paramViewGroup.a(2131363109).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131371813).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131364806).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131364806).setOnLongClickListener(paramViewGroup);
-    paramViewGroup.a(2131370292).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131370292).setOnLongClickListener(paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public void a(xoj paramxoj, xpb paramxpb, int paramInt)
-  {
-    this.jdField_a_of_type_Xoj = paramxoj;
-    this.jdField_a_of_type_Xpb = paramxpb;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(yfw paramyfw)
-  {
-    this.jdField_a_of_type_Yfw = paramyfw;
+    return wda.class;
   }
 }
 

@@ -1,22 +1,17 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
 
 public class axnt
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnTouchListener
 {
-  public axnt(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  public axnt(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
-    }
-    if (MultiCardPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.a.a.a(paramView);
+    return false;
   }
 }
 

@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class bhrz
-  implements View.OnClickListener
+  implements Comparator<Friend>
 {
-  public bhrz(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
+  public bhrz(FriendChooser paramFriendChooser) {}
   
-  public void onClick(View paramView)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
   }
 }
 

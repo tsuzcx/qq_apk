@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agtu;
-import agtv;
-import agtw;
+import afpo;
+import afpp;
+import afpq;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +15,13 @@ import android.view.animation.TranslateAnimation;
 public class AIOShakeHelper$1
   implements Runnable
 {
-  public AIOShakeHelper$1(agtu paramagtu, Activity paramActivity) {}
+  public AIOShakeHelper$1(afpo paramafpo, Activity paramActivity) {}
   
   public void run()
   {
-    agtu.a(this.this$0, new View(this.a));
-    agtu.a(this.this$0).setOnTouchListener(new agtv(this));
-    this.a.addContentView(agtu.a(this.this$0), new ViewGroup.LayoutParams(-1, -1));
+    afpo.a(this.this$0, new View(this.a));
+    afpo.a(this.this$0).setOnTouchListener(new afpp(this));
+    this.a.addContentView(afpo.a(this.this$0), new ViewGroup.LayoutParams(-1, -1));
     View localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0);
     AnimationSet localAnimationSet = new AnimationSet(false);
     long l = 0L;
@@ -53,7 +53,7 @@ public class AIOShakeHelper$1
       l += arrayOfLong[i];
       i += 1;
     }
-    localAnimationSet.setAnimationListener(new agtw(this));
+    localAnimationSet.setAnimationListener(new afpq(this));
     localView.startAnimation(localAnimationSet);
   }
 }

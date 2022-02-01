@@ -1,61 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
-public class arqu
-  extends arac<arqt>
+class arqu
+  implements Animation.AnimationListener
 {
-  public static arqt a()
+  arqu(arqt paramarqt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (arqt)aran.a().a(487);
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new arqv(this));
+    this.a.c.startAnimation(paramAnimation);
   }
   
-  @NonNull
-  public arqt a(int paramInt)
-  {
-    return new arqt();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  @Nullable
-  public arqt a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arqt.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arqt paramarqt) {}
-  
-  public Class<arqt> clazz()
-  {
-    return arqt.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 487;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqu
  * JD-Core Version:    0.7.0.1
  */

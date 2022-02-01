@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.magicface;
 
-import lgr;
+import lgl;
 
 public class FaceItem
-  extends lgr
+  extends lgl
 {
   private String attr;
   private String compress_res_md5;

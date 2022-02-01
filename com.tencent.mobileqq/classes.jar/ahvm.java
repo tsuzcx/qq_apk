@@ -1,21 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ahvm
-  extends Handler
+public final class ahvm
+  implements DialogInterface.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = true;
+  public ahvm(boolean paramBoolean, Context paramContext) {}
   
-  ahvm(ahvl paramahvl) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == ahvl.b()) {}
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what != ahvl.c()) {}
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
   }
 }

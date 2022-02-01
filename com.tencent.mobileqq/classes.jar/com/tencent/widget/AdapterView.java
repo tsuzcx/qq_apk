@@ -20,10 +20,7 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bljm;
-import bljn;
-import bljo;
-import blqm;
+import bjun;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
@@ -42,7 +39,7 @@ public abstract class AdapterView<T extends Adapter>
   static final int SYNC_SELECTED_POSITION = 0;
   public static final String TAG = "XListView";
   boolean mBlockLayoutRequests = false;
-  public boolean mDataChanged;
+  boolean mDataChanged;
   private boolean mDesiredFocusableInTouchModeState;
   private boolean mDesiredFocusableState;
   private View mEmptyView;
@@ -50,21 +47,21 @@ public abstract class AdapterView<T extends Adapter>
   public int mFirstPosition;
   boolean mInLayout = false;
   @ViewDebug.ExportedProperty(category="list")
-  public int mItemCount;
+  protected int mItemCount;
   int mLayoutHeight;
-  public boolean mNeedSync = false;
+  boolean mNeedSync = false;
   @ViewDebug.ExportedProperty(category="list")
-  public int mNextSelectedPosition = -1;
-  public long mNextSelectedRowId = -9223372036854775808L;
-  public int mOldItemCount;
+  int mNextSelectedPosition = -1;
+  long mNextSelectedRowId = -9223372036854775808L;
+  int mOldItemCount;
   protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  bljm mOnItemClickListener;
-  bljn mOnItemLongClickListener;
-  bljo mOnItemSelectedListener;
+  AdapterView.OnItemClickListener mOnItemClickListener;
+  AdapterView.OnItemLongClickListener mOnItemLongClickListener;
+  AdapterView.OnItemSelectedListener mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
-  public int mSelectedPosition = -1;
-  public long mSelectedRowId = -9223372036854775808L;
+  protected int mSelectedPosition = -1;
+  long mSelectedRowId = -9223372036854775808L;
   private AdapterView<T>.SelectionNotifier mSelectionNotifier;
   int mSpecificBottom;
   int mSpecificTop;
@@ -152,7 +149,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    blqm.a(paramString);
+    bjun.a(paramString);
   }
   
   public static void traceEnd() {}
@@ -209,7 +206,7 @@ public abstract class AdapterView<T extends Adapter>
     return (super.canAnimate()) && (this.mItemCount > 0);
   }
   
-  public void checkFocus()
+  void checkFocus()
   {
     boolean bool2 = false;
     Adapter localAdapter = getAdapter();
@@ -403,17 +400,17 @@ public abstract class AdapterView<T extends Adapter>
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final bljm getOnItemClickListener()
+  public final AdapterView.OnItemClickListener getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final bljn getOnItemLongClickListener()
+  public final AdapterView.OnItemLongClickListener getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final bljo getOnItemSelectedListener()
+  public final AdapterView.OnItemSelectedListener getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -686,7 +683,7 @@ public abstract class AdapterView<T extends Adapter>
     return bool;
   }
   
-  public void rememberSyncState()
+  void rememberSyncState()
   {
     if (getChildCount() > 0)
     {
@@ -837,7 +834,7 @@ public abstract class AdapterView<T extends Adapter>
     }
   }
   
-  public void setNextSelectedPositionInt(int paramInt)
+  void setNextSelectedPositionInt(int paramInt)
   {
     this.mNextSelectedPosition = paramInt;
     this.mNextSelectedRowId = getItemIdAtPosition(paramInt);
@@ -853,25 +850,25 @@ public abstract class AdapterView<T extends Adapter>
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(bljm parambljm)
+  public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.mOnItemClickListener = parambljm;
+    this.mOnItemClickListener = paramOnItemClickListener;
   }
   
-  public void setOnItemLongClickListener(bljn parambljn)
+  public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = parambljn;
+    this.mOnItemLongClickListener = paramOnItemLongClickListener;
   }
   
-  public void setOnItemSelectedListener(bljo parambljo)
+  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.mOnItemSelectedListener = parambljo;
+    this.mOnItemSelectedListener = paramOnItemSelectedListener;
   }
   
-  public void setSelectedPositionInt(int paramInt)
+  void setSelectedPositionInt(int paramInt)
   {
     this.mSelectedPosition = paramInt;
     this.mSelectedRowId = getItemIdAtPosition(paramInt);

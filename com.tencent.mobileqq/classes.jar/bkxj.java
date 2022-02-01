@@ -1,14 +1,33 @@
-import com.tencent.plato.mqq.network.ProgressListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-final class bkxj
-  implements ProgressListener
+class bkxj
+  extends RemoteCommand
 {
-  bkxj(UploaderProxy.UploadListener paramUploadListener) {}
-  
-  public void onProgress(long paramLong1, long paramLong2, boolean paramBoolean)
+  bkxj(bkxg parambkxg, String paramString)
   {
-    this.a.onUploadProgress((int)(100.0D * paramLong1 / paramLong2), (int)paramLong1, (int)paramLong2);
+    super(paramString);
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 

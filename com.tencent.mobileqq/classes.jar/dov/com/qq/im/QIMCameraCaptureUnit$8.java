@@ -1,32 +1,53 @@
 package dov.com.qq.im;
 
-import bocn;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import amtj;
+import android.app.Activity;
+import blhu;
+import bnbo;
+import bnbp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
 
 public class QIMCameraCaptureUnit$8
   implements Runnable
 {
-  public QIMCameraCaptureUnit$8(bocn parambocn, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
+  public QIMCameraCaptureUnit$8(blhu paramblhu, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    switch (this.a)
     {
-      this.this$0.b(this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
-      if (!this.this$0.i) {
-        this.this$0.e(true);
-      }
     }
-    for (;;)
+    do
     {
-      this.this$0.h();
-      if ((!this.b) || (!this.this$0.k)) {
+      do
+      {
+        do
+        {
+          return;
+          QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131708876), 1).a();
+          Activity localActivity = this.this$0.jdField_a_of_type_Bnbp.a();
+          if ((localActivity != null) && (!localActivity.isFinishing())) {
+            this.this$0.jdField_a_of_type_Bnbo.a(2);
+          }
+        } while (!this.this$0.g);
+        this.this$0.C();
+        return;
+        if ((this.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayoutNew.b()) && (this.this$0.g))
+        {
+          this.this$0.a(null, false);
+          return;
+        }
+        QQToast.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
         this.this$0.g();
-      }
+        this.this$0.D();
+      } while (!this.this$0.g);
+      this.this$0.B();
       return;
-      this.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.u();
-    }
+      QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131708878), 0).a();
+    } while (!this.this$0.g);
+    this.this$0.B();
   }
 }
 

@@ -1,37 +1,26 @@
-import android.content.Context;
-import android.content.IntentFilter;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
 public class actj
+  extends anbq
 {
-  private actl jdField_a_of_type_Actl;
-  private actm jdField_a_of_type_Actm;
-  private Context jdField_a_of_type_AndroidContentContext;
+  public actj(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public actj(Context paramContext)
+  protected void a(boolean paramBoolean, bcqu parambcqu)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
   
-  public void a()
+  protected void b(boolean paramBoolean, bcqu parambcqu)
   {
-    this.jdField_a_of_type_Actl = new actl(this, null);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Actl, localIntentFilter);
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
   
-  public void a(actm paramactm)
+  protected void c(boolean paramBoolean, bcqu parambcqu)
   {
-    this.jdField_a_of_type_Actm = paramactm;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Actl != null) && (this.jdField_a_of_type_AndroidContentContext != null))
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Actl);
-      this.jdField_a_of_type_Actm = null;
-    }
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
 }
 

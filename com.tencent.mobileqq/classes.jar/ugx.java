@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import java.util.Map;
 
-final class ugx
-  extends bhme
+public class ugx
 {
-  ugx(WSDownloadParams paramWSDownloadParams) {}
+  protected Map<Integer, Integer> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Integer a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    ugs.a(126, this.a);
-    unx.a(this.a.mScene, false, false);
+    return (Integer)this.a.get(Integer.valueOf(paramInt));
   }
 }
 

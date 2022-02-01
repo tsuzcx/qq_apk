@@ -1,48 +1,21 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.view.SurfaceHolder;
 
 public class alpo
-  extends AbsRecentStatus
 {
-  private static int a = 20;
+  public int a;
+  public SurfaceHolder a;
+  public int b;
+  public int c;
   
-  public int[] declareStatus()
+  public String toString()
   {
-    return new int[] { 6 };
-  }
-  
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
-  {
-    return true;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
-    Object localObject;
-    do
-    {
-      return false;
-      localObject = (QQAppInterface)paramIMCoreAppRuntime;
-      paramIMCoreAppRuntime = paramRecentBaseData.getRecentUserUin();
-      paramRecentBaseData.mStatus = 0;
-      localObject = (ListenTogetherManager)((QQAppInterface)localObject).getManager(331);
-      if (((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1)) && (((ListenTogetherManager)localObject).a(1, paramIMCoreAppRuntime)))
-      {
-        paramRecentBaseData.mStatus = 6;
-        return false;
-      }
-    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!((ListenTogetherManager)localObject).a(2, paramIMCoreAppRuntime)));
-    paramRecentBaseData.mStatus = 6;
-    return false;
-  }
-  
-  public int priority()
-  {
-    return a;
+    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
+    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", w=").append(this.b);
+    localStringBuffer.append(", h=").append(this.c);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

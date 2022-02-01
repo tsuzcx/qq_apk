@@ -1,34 +1,60 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.30.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class sfj
-  implements sga
+abstract class sfj
 {
-  sfj(sel paramsel) {}
+  protected long a;
+  private ArrayList<sfj> a;
+  protected long b;
   
-  public void onClick(View paramView)
+  sfj()
   {
-    pmz localpmz = (pmz)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = this.a.b(localpmz.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null) {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  abstract long a(long paramLong);
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((sfj)localIterator.next()).a();
+    }
+    this.b = 0L;
+  }
+  
+  public void a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((sfj)localIterator.next()).a(paramLong);
+    }
+    this.b = a(paramLong);
+    if (this.b < 0L) {
+      this.b = 0L;
+    }
+    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
+    {
+      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
       return;
     }
-    if (!rpt.a(localBaseArticleInfo, this.a.a()))
-    {
-      if (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))
-      {
-        ubd.a(this.a.a, (ArticleInfo)localBaseArticleInfo, this.a, 56);
-        ubd.a(this.a.a, (ArticleInfo)localBaseArticleInfo, this.a, 56, true, null);
-        return;
-      }
-      this.a.a(localpmz.jdField_a_of_type_Rwc, localBaseArticleInfo);
+    this.jdField_a_of_type_Long = this.b;
+  }
+  
+  protected void a(sfj paramsfj)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramsfj) < 0) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramsfj);
     }
-    ThreadManager.executeOnSubThread(new ReadInJoyBaseAdapter.30.1(this, localBaseArticleInfo));
-    pms.a(paramView);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((sfj)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import pkr;
+import pqd;
 
 public class ReadInJoySelfFragment$9$1
   implements Runnable
 {
-  public ReadInJoySelfFragment$9$1(pkr parampkr) {}
+  public ReadInJoySelfFragment$9$1(pqd parampqd) {}
   
   public void run()
   {

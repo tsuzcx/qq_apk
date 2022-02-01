@@ -1,19 +1,12 @@
-public class wxz
-  extends wip
+import android.content.Intent;
+
+public abstract interface wxz
 {
-  public String a;
-  public xms a;
+  public abstract void a();
   
-  public wxz(xms paramxms, String paramString)
-  {
-    this.jdField_a_of_type_Xms = paramxms;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public String toString()
-  {
-    return "UpdateMsgTabCoverEvent{, groupId=" + this.jdField_a_of_type_Xms + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
-  }
+  public abstract void b();
 }
 
 

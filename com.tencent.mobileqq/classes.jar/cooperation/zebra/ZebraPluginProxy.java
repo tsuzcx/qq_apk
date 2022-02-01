@@ -3,11 +3,11 @@ package cooperation.zebra;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bdll;
-import bhkd;
+import bcef;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.pluginsdk.PluginActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qphone.base.util.MD5;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class ZebraPluginProxy
   
   public static void backToPhoto(Intent paramIntent, Activity paramActivity)
   {
-    PhotoUtils.a(paramIntent, paramActivity);
+    PhotoUtils.backToPhoto(paramIntent, paramActivity);
   }
   
   public static int getConstInt(String paramString)
@@ -77,22 +77,22 @@ public class ZebraPluginProxy
   
   public static void onSendResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent, boolean paramBoolean)
   {
-    PhotoUtils.a(paramActivity, paramInt1, paramInt2, paramIntent, paramBoolean);
+    PhotoUtils.onSendResult(paramActivity, paramInt1, paramInt2, paramIntent, paramBoolean);
   }
   
   public static void reportController_reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    bdll.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    bcef.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public static void sendPhoto(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    PhotoUtils.a(paramActivity, paramIntent, paramArrayList, 0, paramBoolean);
+    PhotoUtils.sendPhoto(paramActivity, paramIntent, paramArrayList, 0, paramBoolean);
   }
   
   public static void sendPhotoForPhotoPlus(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList)
   {
-    PhotoUtils.a(paramActivity, paramIntent, paramArrayList);
+    PhotoUtils.sendPhotoForPhotoPlus(paramActivity, paramIntent, paramArrayList);
   }
   
   public static void startPhotoList(Activity paramActivity, Bundle paramBundle)
@@ -108,10 +108,10 @@ public class ZebraPluginProxy
       paramActivity.startActivity(localIntent);
       if ((paramActivity instanceof PluginActivity))
       {
-        bhkd.anim(((PluginActivity)paramActivity).getOutActivity(), false, true);
+        AlbumUtil.anim(((PluginActivity)paramActivity).getOutActivity(), false, true);
         return;
       }
-      bhkd.anim(paramActivity, false, true);
+      AlbumUtil.anim(paramActivity, false, true);
       return;
     }
     catch (Exception paramActivity)

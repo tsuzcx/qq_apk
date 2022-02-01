@@ -1,477 +1,306 @@
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.3;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.NearbyImgDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class awwy
+  extends aago
 {
-  private static final awxa jdField_a_of_type_Awxa = new awxa(null);
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?<=\\[).*?(?=\\])");
-  private static final Pattern b = Pattern.compile("(?<=\\()-?[0-9]*,-?[0-9]*(?=\\))");
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<awwo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected Context a;
+  public PicInfo a;
+  int d;
   
-  public awwy(String paramString)
+  public awwy(Context paramContext, PicInfo paramPicInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo = paramPicInfo;
   }
   
-  private int a(String paramString)
+  public View a(int paramInt, Handler paramHandler, awxa paramawxa)
   {
-    int j = 0;
-    paramString = paramString.split("\\:");
-    int i = j;
-    try
+    File localFile = null;
+    URL localURL = null;
+    URLDrawable localURLDrawable = null;
+    boolean bool2 = true;
+    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
+      return localURLImageView;
+    }
+    Object localObject1;
+    Object localObject3;
+    label258:
+    long l;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c))
     {
-      if (paramString.length == 2)
+      localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c), null);
+      localObject3 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+      ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
+      ((URLDrawable.URLDrawableOptions)localObject3).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {
+        localObject1 = localURLDrawable;
+      }
+    }
+    else
+    {
+      try
       {
-        i = j;
-        if ("offset".equalsIgnoreCase(paramString[0])) {
-          i = Integer.parseInt(paramString[1].trim());
+        localFile = new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c);
+        localObject1 = localURLDrawable;
+        localURL = localFile.toURL();
+        localObject1 = localURLDrawable;
+        localURLDrawable = URLDrawable.getDrawable(new URL("nearbylocalimage", localURL.getAuthority(), localURL.getFile()), (URLDrawable.URLDrawableOptions)localObject3);
+        localObject1 = localURLDrawable;
+        localURLImageView.setImageDrawable(localURLDrawable);
+        localObject1 = localURLDrawable;
+        if (!localFile.exists()) {
+          break label441;
+        }
+        localObject1 = localURLDrawable;
+        bool1 = localFile.isFile();
+        if (!bool1) {
+          break label441;
+        }
+        bool1 = true;
+        localObject1 = localURLDrawable;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        for (;;)
+        {
+          label315:
+          if (QLog.isDevelopLevel()) {
+            localMalformedURLException1.printStackTrace();
+          }
+          bool1 = false;
         }
       }
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("ParsingQrc", paramString.toString());
-    }
-    return 0;
-  }
-  
-  private long a(String paramString, awwo paramawwo)
-  {
-    String[] arrayOfString = paramString.split("\\,");
-    if (arrayOfString.length < 2)
-    {
-      paramString = paramString.split("\\:");
-      if ((this.jdField_a_of_type_Int == 0) && (paramString[0].equalsIgnoreCase("offset"))) {
-        this.jdField_a_of_type_Int = Integer.parseInt(paramString[1]);
+      if ((localObject1 == null) || (((URLDrawable)localObject1).getStatus() == 1) || (((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 4)) {
+        break label627;
       }
+      localURLImageView.setURLDrawableDownListener(new awwz(this, paramawxa, paramInt));
+      if (!bool1) {
+        break label619;
+      }
+      l = 1000L;
+      paramHandler.postDelayed(new PicBrowserImage.3(this, (URLDrawable)localObject1, paramawxa, paramInt), l);
     }
-    while (arrayOfString.length != 2) {
-      return -1L;
-    }
-    try
-    {
-      long l1 = Long.parseLong(arrayOfString[1]);
-      long l2 = Long.parseLong(arrayOfString[0]);
-      paramawwo.jdField_b_of_type_Long = l1;
-      paramawwo.jdField_a_of_type_Long = l2;
-      return l2;
-    }
-    catch (Exception paramString) {}
-    return -1L;
-  }
-  
-  private awwl a(String paramString, int paramInt1, int paramInt2, awwl paramawwl)
-  {
-    long l2 = 0L;
-    paramString = paramString.split("\\,");
-    if (paramString.length < 2) {}
-    while (paramString.length != 2) {
-      return null;
-    }
-    long l4 = Long.parseLong(paramString[1]);
-    long l3 = Long.parseLong(paramString[0]);
-    long l1 = l4;
-    if (l4 < 0L) {
-      l1 = 0L;
-    }
-    if (l3 < 0L) {}
     for (;;)
     {
-      return new awwl(l2, l1, paramInt1, paramInt2);
-      l2 = l3;
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return;
-    }
-    Object localObject3 = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
-    Object localObject2 = new ArrayList();
-    int i = -1;
-    int j = -1;
-    label36:
-    Object localObject1;
-    if (((Matcher)localObject3).find())
-    {
-      localObject1 = ((Matcher)localObject3).group();
-      if (localObject1 != null) {
-        break label396;
-      }
-      localObject1 = "";
-    }
-    label396:
-    for (;;)
-    {
+      label441:
+      Object localObject2;
       for (;;)
       {
-        int k = paramString.indexOf("[" + (String)localObject1 + "]");
-        if ((j != -1) && (k - j > i + 2))
+        return localURLImageView;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b))
         {
-          String str1 = paramString.substring(i + j + 2, k);
-          Iterator localIterator = ((ArrayList)localObject2).iterator();
-          while (localIterator.hasNext())
+          String str = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b.replaceFirst("http", "nearbyimage");
+          if (AbsDownloader.hasFile(str))
           {
-            String str2 = (String)localIterator.next();
-            awwo localawwo = new awwo();
-            if (a(str2, localawwo) != -1L)
-            {
-              a(str1, localawwo);
-              this.jdField_a_of_type_JavaUtilArrayList.add(localawwo);
+            localObject3 = URLDrawable.getDrawable(str, null);
+            localObject1 = localObject3;
+            if (!QLog.isColorLevel()) {
+              break;
             }
+            QLog.i("PicBrowser", 2, "PicBrowserGalleryAdapter getView loadingDrawble is: " + str);
+            localObject1 = localObject3;
+            break;
           }
-          ((ArrayList)localObject2).clear();
-        }
-        ((ArrayList)localObject2).add(localObject1);
-        i = ((String)localObject1).length();
-        j = k;
-        break label36;
-        if (((ArrayList)localObject2).isEmpty()) {
+          localObject1 = URLDrawableHelper.TRANSPARENT;
           break;
         }
-        j = i + 2 + j;
-        i = j;
-        try
+        localObject1 = URLDrawableHelper.TRANSPARENT;
+        break;
+        bool1 = false;
+        localObject1 = localURLDrawable;
+        break label258;
+        localObject2 = localURL;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a))
         {
-          if (j > paramString.length()) {
-            i = paramString.length();
-          }
-          paramString = paramString.substring(i).trim();
-          if ((paramString.length() == 0) && (this.jdField_a_of_type_Int == 0))
+          localObject1 = localFile;
+          try
           {
-            paramString = ((ArrayList)localObject2).iterator();
-            do
+            localObject2 = NearbyImgDownloader.convertURL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+            localObject1 = localFile;
+            this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a = ((URL)localObject2).toString();
+            localObject1 = localFile;
+            localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
+            localObject1 = localObject2;
+            ((URLDrawable)localObject2).setDownloadListener(new awho(this.jdField_a_of_type_AndroidContentContext, "actNearbyPicBrowser"));
+            localObject1 = localObject2;
+            localURLImageView.setImageDrawable((Drawable)localObject2);
+            localObject1 = localObject2;
+            bool1 = AbsDownloader.hasFile(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+            localObject1 = localObject2;
+          }
+          catch (MalformedURLException localMalformedURLException2)
+          {
+            localObject2 = localObject1;
+            if (QLog.isDevelopLevel())
             {
-              if (!paramString.hasNext()) {
-                break;
-              }
-              i = a((String)paramString.next());
-            } while (i == 2147483647);
-            this.jdField_a_of_type_Int = i;
-            return;
+              localMalformedURLException2.printStackTrace();
+              localObject2 = localObject1;
+            }
           }
         }
-        catch (Exception paramString)
-        {
-          Log.e("ParsingQrc", paramString.toString());
-          return;
-        }
       }
-      localObject1 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = new awwo();
-        if (a((String)localObject2, (awwo)localObject3) != -1L)
-        {
-          a(paramString, (awwo)localObject3);
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-        }
+      bool1 = false;
+      localObject1 = localObject2;
+      break label258;
+      label619:
+      l = 300L;
+      break label315;
+      label627:
+      if (localObject1 != null) {
+        break label643;
       }
+      paramawxa.a(paramInt, false);
+    }
+    label643:
+    if (((URLDrawable)localObject1).getStatus() == 1) {}
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramawxa.a(paramInt, bool1);
       break;
     }
   }
   
-  private void a(String paramString, awwo paramawwo)
+  public void a()
   {
-    label244:
-    for (;;)
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo != null) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a;
+    }
+    try
     {
-      ArrayList localArrayList;
-      try
+      localObject = NearbyImgDownloader.convertURL((String)localObject);
+      if (localObject != null)
       {
-        paramawwo.jdField_a_of_type_JavaLangString = "";
-        if (paramString == null) {
-          break;
-        }
-        if (paramString.equals("")) {
-          return;
-        }
-        Matcher localMatcher = b.matcher(paramString);
-        localArrayList = new ArrayList();
-        Object localObject1 = "";
-        if (localMatcher.find())
-        {
-          Object localObject2 = localMatcher.group();
-          if (localObject2 != null) {
-            break label244;
-          }
-          localObject2 = "";
-          int i = paramString.indexOf("(" + (String)localObject2 + ")");
-          int j = ((String)localObject1).length();
-          String str1 = (String)localObject1 + paramString.substring(0, i);
-          String str2 = paramString.substring(i + ((String)localObject2).length() + 2, paramString.length());
-          paramString = null;
-          if (localArrayList.size() > 0) {
-            paramString = (awwl)localArrayList.get(localArrayList.size() - 1);
-          }
-          localObject2 = a((String)localObject2, j, str1.length(), paramString);
-          localObject1 = str1;
-          paramString = str2;
-          if (localObject2 == null) {
-            continue;
-          }
-          localArrayList.add(localObject2);
-          localObject1 = str1;
-          paramString = str2;
-          continue;
-        }
-        paramawwo.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+        localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+        ((URLDrawable)localObject).setDownloadListener(new awho(this.jdField_a_of_type_AndroidContentContext));
+        ThreadManager.postImmediately(new PicBrowserImage.1(this, (URLDrawable)localObject), null, true);
       }
-      catch (Exception paramString)
-      {
-        Log.e("ParsingQrc", "", paramString);
-        return;
-      }
-      paramawwo.jdField_b_of_type_JavaUtilArrayList = localArrayList;
       return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void a(View paramView, int paramInt, awxa paramawxa)
+  {
+    paramView = (URLImageView)paramView;
+    URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
+    if (localURLDrawable == null) {
+      return;
+    }
+    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
+    {
+      int i = localURLDrawable.getProgress();
+      if (i > 0) {
+        paramawxa.b(paramInt, i / 100);
+      }
+      paramView.setMinimumHeight(10);
+      paramView.setMinimumWidth(10);
+      return;
+    }
+    if (localURLDrawable.getStatus() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramawxa.a(paramInt, bool);
+      break;
     }
   }
   
-  /* Error */
-  public awwm a()
+  public void a(boolean paramBoolean) {}
+  
+  public void c() {}
+  
+  public Drawable getAnimationDrawable()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 47	awwy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: ifnull +64 -> 70
-    //   9: aload_2
-    //   10: ldc 210
-    //   12: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   15: ifeq +57 -> 72
-    //   18: aload_2
-    //   19: ldc 210
-    //   21: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   24: istore_1
-    //   25: iload_1
-    //   26: iconst_m1
-    //   27: if_icmpeq +43 -> 70
-    //   30: aload_2
-    //   31: invokevirtual 177	java/lang/String:length	()I
-    //   34: ldc 210
-    //   36: invokevirtual 177	java/lang/String:length	()I
-    //   39: iload_1
-    //   40: iadd
-    //   41: iconst_1
-    //   42: iadd
-    //   43: if_icmple +27 -> 70
-    //   46: aload_2
-    //   47: iload_1
-    //   48: ldc 210
-    //   50: invokevirtual 177	java/lang/String:length	()I
-    //   53: iadd
-    //   54: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
-    //   57: astore_2
-    //   58: aload_2
-    //   59: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   62: ldc 216
-    //   64: invokevirtual 219	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   67: ifne +10 -> 77
-    //   70: aconst_null
-    //   71: areturn
-    //   72: iconst_m1
-    //   73: istore_1
-    //   74: goto -49 -> 25
-    //   77: aload_2
-    //   78: aload_2
-    //   79: ldc 216
-    //   81: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   84: ldc 216
-    //   86: invokevirtual 177	java/lang/String:length	()I
-    //   89: iadd
-    //   90: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
-    //   93: astore_2
-    //   94: aload_2
-    //   95: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   98: ldc 221
-    //   100: invokevirtual 219	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   103: ifeq -33 -> 70
-    //   106: aload_2
-    //   107: aload_2
-    //   108: ldc 221
-    //   110: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   113: ldc 221
-    //   115: invokevirtual 177	java/lang/String:length	()I
-    //   118: iadd
-    //   119: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
-    //   122: astore_2
-    //   123: aload_2
-    //   124: ldc 223
-    //   126: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   129: ifeq +131 -> 260
-    //   132: aload_2
-    //   133: ldc 223
-    //   135: invokevirtual 226	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   138: istore_1
-    //   139: iload_1
-    //   140: iconst_m1
-    //   141: if_icmpeq -71 -> 70
-    //   144: aload_2
-    //   145: iconst_0
-    //   146: iload_1
-    //   147: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
-    //   150: astore_2
-    //   151: aload_2
-    //   152: ldc 221
-    //   154: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   157: ifeq +108 -> 265
-    //   160: aload_2
-    //   161: ldc 221
-    //   163: invokevirtual 226	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   166: istore_1
-    //   167: iload_1
-    //   168: iconst_m1
-    //   169: if_icmpeq -99 -> 70
-    //   172: aload_2
-    //   173: iconst_0
-    //   174: iload_1
-    //   175: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
-    //   178: astore_2
-    //   179: new 228	java/io/BufferedReader
-    //   182: dup
-    //   183: new 230	java/io/StringReader
-    //   186: dup
-    //   187: aload_2
-    //   188: invokespecial 232	java/io/StringReader:<init>	(Ljava/lang/String;)V
-    //   191: invokespecial 235	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   194: astore_3
-    //   195: aload_3
-    //   196: astore_2
-    //   197: aload_3
-    //   198: invokevirtual 238	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   201: astore 4
-    //   203: aload 4
-    //   205: ifnull +65 -> 270
-    //   208: aload_3
-    //   209: astore_2
-    //   210: aload_0
-    //   211: aload 4
-    //   213: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   216: invokespecial 240	awwy:a	(Ljava/lang/String;)V
-    //   219: goto -24 -> 195
-    //   222: astore 4
-    //   224: aload_3
-    //   225: astore_2
-    //   226: ldc 75
-    //   228: aload 4
-    //   230: invokevirtual 78	java/lang/Exception:toString	()Ljava/lang/String;
-    //   233: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   236: pop
-    //   237: aload_3
-    //   238: ifnull -168 -> 70
-    //   241: aload_3
-    //   242: invokevirtual 243	java/io/BufferedReader:close	()V
-    //   245: aconst_null
-    //   246: areturn
-    //   247: astore_2
-    //   248: ldc 75
-    //   250: aload_2
-    //   251: invokevirtual 244	java/io/IOException:toString	()Ljava/lang/String;
-    //   254: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   257: pop
-    //   258: aconst_null
-    //   259: areturn
-    //   260: iconst_m1
-    //   261: istore_1
-    //   262: goto -123 -> 139
-    //   265: iconst_m1
-    //   266: istore_1
-    //   267: goto -100 -> 167
-    //   270: aload_3
-    //   271: astore_2
-    //   272: aload_0
-    //   273: getfield 45	awwy:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   276: getstatic 36	awwy:jdField_a_of_type_Awxa	Lawxa;
-    //   279: invokestatic 250	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   282: aload_3
-    //   283: astore_2
-    //   284: new 252	awwm
-    //   287: dup
-    //   288: iconst_2
-    //   289: aload_0
-    //   290: getfield 89	awwy:jdField_a_of_type_Int	I
-    //   293: aload_0
-    //   294: getfield 45	awwy:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   297: invokespecial 255	awwm:<init>	(IILjava/util/ArrayList;)V
-    //   300: astore 4
-    //   302: aload_3
-    //   303: ifnull +7 -> 310
-    //   306: aload_3
-    //   307: invokevirtual 243	java/io/BufferedReader:close	()V
-    //   310: aload 4
-    //   312: areturn
-    //   313: astore_2
-    //   314: ldc 75
-    //   316: aload_2
-    //   317: invokevirtual 244	java/io/IOException:toString	()Ljava/lang/String;
-    //   320: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   323: pop
-    //   324: goto -14 -> 310
-    //   327: astore_3
-    //   328: aconst_null
-    //   329: astore_2
-    //   330: aload_2
-    //   331: ifnull +7 -> 338
-    //   334: aload_2
-    //   335: invokevirtual 243	java/io/BufferedReader:close	()V
-    //   338: aload_3
-    //   339: athrow
-    //   340: astore_2
-    //   341: ldc 75
-    //   343: aload_2
-    //   344: invokevirtual 244	java/io/IOException:toString	()Ljava/lang/String;
-    //   347: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   350: pop
-    //   351: goto -13 -> 338
-    //   354: astore_3
-    //   355: goto -25 -> 330
-    //   358: astore 4
-    //   360: aconst_null
-    //   361: astore_3
-    //   362: goto -138 -> 224
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	365	0	this	awwy
-    //   24	243	1	i	int
-    //   4	222	2	localObject1	Object
-    //   247	4	2	localIOException1	java.io.IOException
-    //   271	13	2	localObject2	Object
-    //   313	4	2	localIOException2	java.io.IOException
-    //   329	6	2	localObject3	Object
-    //   340	4	2	localIOException3	java.io.IOException
-    //   194	113	3	localBufferedReader	java.io.BufferedReader
-    //   327	12	3	localObject4	Object
-    //   354	1	3	localObject5	Object
-    //   361	1	3	localObject6	Object
-    //   201	11	4	str	String
-    //   222	7	4	localException1	Exception
-    //   300	11	4	localawwm	awwm
-    //   358	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   197	203	222	java/lang/Exception
-    //   210	219	222	java/lang/Exception
-    //   272	282	222	java/lang/Exception
-    //   284	302	222	java/lang/Exception
-    //   241	245	247	java/io/IOException
-    //   306	310	313	java/io/IOException
-    //   179	195	327	finally
-    //   334	338	340	java/io/IOException
-    //   197	203	354	finally
-    //   210	219	354	finally
-    //   226	237	354	finally
-    //   272	282	354	finally
-    //   284	302	354	finally
-    //   179	195	358	java/lang/Exception
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
+      return null;
+    }
+    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
+    ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {}
+    for (;;)
+    {
+      Object localObject4;
+      Object localObject2;
+      try
+      {
+        localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c).toURL(), (URLDrawable.URLDrawableOptions)localObject1);
+        localObject4 = getThumbRect();
+        if ((localObject1 == null) || (localObject4 == null)) {
+          break;
+        }
+        this.d = getCutValue((Rect)localObject4, (Drawable)localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PicBrowser", 2, "getAnimationDrawable ,cutValue = " + this.d);
+        }
+        return localObject1;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        if (QLog.isDevelopLevel()) {
+          localMalformedURLException1.printStackTrace();
+        }
+        localObject2 = null;
+        continue;
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b)) {
+        try
+        {
+          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b);
+          localObject4 = new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile());
+          if (AbsDownloader.hasFile(((URL)localObject4).toString()))
+          {
+            localObject2 = URLDrawable.getDrawable((URL)localObject4, (URLDrawable.URLDrawableOptions)localObject2);
+            continue;
+          }
+          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+          localObject2 = URLDrawable.getDrawable(new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile()), (URLDrawable.URLDrawableOptions)localObject2);
+        }
+        catch (MalformedURLException localMalformedURLException2)
+        {
+          if (QLog.isDevelopLevel()) {
+            localMalformedURLException2.printStackTrace();
+          }
+        }
+      } else {
+        Object localObject3 = null;
+      }
+    }
+  }
+  
+  public int getCutValue()
+  {
+    return this.d;
   }
 }
 

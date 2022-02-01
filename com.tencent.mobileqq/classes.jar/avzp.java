@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
 
-class avzp
-  implements aweg
+public class avzp
 {
-  avzp(avzo paramavzo) {}
-  
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    avzo.a(this.a, paramNewTogetherRoomMessageData, 1);
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    avzo.a(this.a, paramNewTogetherRoomMessageData, 3);
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    avzo.a(this.a, paramNewTogetherRoomMessageData, 2);
-  }
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public String a;
 }
 
 

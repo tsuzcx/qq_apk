@@ -1,20 +1,24 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class wos
+  implements wok
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
+  private final wor a;
+  
+  public wos(wor paramwor)
   {
-    paramQQUserUIItem = xiz.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+    this.a = paramwor;
   }
   
-  public static String b(QQUserUIItem paramQQUserUIItem)
+  public void a(wol paramwol)
   {
-    paramQQUserUIItem = xiz.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new vxt("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream1 = localStream2;
+    if (this.a.a.a == 5) {
+      localStream1 = localStream2.map(new vxq()).map(new vxg(this.a.a));
+    }
+    localStream1.subscribe(new wot(this, paramwol));
   }
 }
 

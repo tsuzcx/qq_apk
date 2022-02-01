@@ -5,21 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import atzw;
-import auaa;
-import bcbi;
-import bcfr;
-import bcmc;
+import asmg;
+import asmk;
+import baum;
+import bayt;
+import bbfe;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
 
 public class FileSearchFragment
-  extends BaseSearchFragment<bcfr>
+  extends BaseSearchFragment<bayt>
 {
   protected boolean a;
   public String b;
-  public List<bcfr> b;
+  public List<bayt> b;
   int c = -1;
   
   public FileSearchFragment()
@@ -27,19 +27,19 @@ public class FileSearchFragment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public bcbi a()
+  public baum a()
   {
-    return new atzw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new asmg(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public bcmc a()
+  public bbfe a()
   {
     return new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
   }
   
   public String a()
   {
-    return auaa.jdField_b_of_type_JavaLangString;
+    return asmk.jdField_b_of_type_JavaLangString;
   }
   
   public void b(boolean paramBoolean)
@@ -50,7 +50,7 @@ public class FileSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367946);
+    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367979);
     if (!this.jdField_a_of_type_Boolean) {
       paramViewGroup.setVisibility(8);
     }
@@ -64,7 +64,7 @@ public class FileSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchFragment
  * JD-Core Version:    0.7.0.1
  */

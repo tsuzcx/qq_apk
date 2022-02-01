@@ -1,18 +1,37 @@
-import java.util.Map;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
-class aado
-  implements aaza
+public class aado
+  extends WebViewPlugin
 {
-  aado(aadn paramaadn, String paramString, aadu paramaadu) {}
-  
-  public void a()
+  public aado()
   {
-    Object localObject = aadn.a().get(this.jdField_a_of_type_JavaLangString);
-    if (localObject != null)
-    {
-      this.jdField_a_of_type_Aadu.a(localObject);
-      aadn.a().remove(this.jdField_a_of_type_JavaLangString);
+    this.mPluginNameSpace = "troop_member_level_JS_API";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"troop_member_level_JS_API".equals(paramString2)) {
+      return false;
     }
+    if (("setTitleBar".equals(paramString3)) && (paramVarArgs.length == 3))
+    {
+      paramString2 = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
+      if (paramString2 != null)
+      {
+        paramString1 = paramVarArgs[0];
+        paramJsBridgeListener = paramString1;
+        if ("RETURN".equals(paramString1)) {
+          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
+        }
+        paramString2.mSwiftTitleUI.setTitleBar(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

@@ -61,7 +61,7 @@ public class NavigatorBarForMiniGame
       this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131365042);
+      this.mCapsuleButton.setId(2131365069);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       j = DisplayUtil.dip2px(getContext(), 9.0F);

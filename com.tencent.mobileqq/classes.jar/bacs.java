@@ -1,10 +1,6 @@
-import com.tencent.image.URLImageView;
-
-class bacs
+public abstract interface bacs
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  
-  bacs(bacr parambacr) {}
+  public abstract void a();
 }
 
 

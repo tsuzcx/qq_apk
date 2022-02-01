@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahcz;
-import ahda;
+import afzl;
+import afzm;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class FileTimDocGrayTipsItemBuilder$1
   implements Runnable
 {
-  public FileTimDocGrayTipsItemBuilder$1(ahcz paramahcz, ahda paramahda) {}
+  public FileTimDocGrayTipsItemBuilder$1(afzl paramafzl, afzm paramafzm) {}
   
   public void run()
   {
-    this.this$0.a.a().a(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, "extStr", this.a.a.getExtInfoString());
+    this.this$0.a.getMessageFacade().updateMsgFieldByUniseq(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, "extStr", this.a.a.getExtInfoString());
   }
 }
 

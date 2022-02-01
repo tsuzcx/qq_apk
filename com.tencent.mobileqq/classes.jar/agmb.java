@@ -1,123 +1,142 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletTransferMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agmb
-  extends Drawable
+class agmb
+  implements View.OnClickListener
 {
-  protected int a;
-  agmc jdField_a_of_type_Agmc;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  protected Paint a;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected Object a;
-  protected int b = 50;
+  agmb(agma paramagma) {}
   
-  public agmb(Resources paramResources)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.b = 50;
-  }
-  
-  public void a(agmc paramagmc)
-  {
-    this.jdField_a_of_type_Agmc = paramagmc;
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof agmd)) && (((agmd)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((agmd)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangObject = new agmd(this, paramString);
-  }
-  
-  public void a(String[] paramArrayOfString, int paramInt)
-  {
-    if (paramArrayOfString == null) {}
+    if (this.a.a()) {}
+    label145:
+    label166:
+    label201:
+    label608:
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      try
+      long l = System.currentTimeMillis();
+      if (akgc.a(this.a.c, l))
       {
-        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof agmd)))
+        this.a.c = l;
+        MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)((agmd)AIOUtils.getHolder(paramView)).a;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+        if (localMessageForQQWalletMsg != null)
         {
-          boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
-          if (bool) {
-            continue;
+          QQWalletBaseMsgElem localQQWalletBaseMsgElem;
+          Object localObject;
+          int i;
+          if (localMessageForQQWalletMsg.mQQWalletTransferMsg != null)
+          {
+            localQQWalletBaseMsgElem = localMessageForQQWalletMsg.mQQWalletTransferMsg.elem;
+            if (localMessageForQQWalletMsg.messageType == 9) {
+              if (localMessageForQQWalletMsg.isSend())
+              {
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.buyerclick", 0, 0, "", "", "", "");
+                localObject = localMessageForQQWalletMsg.mQQWalletTransferMsg.body;
+                if (localObject == null) {
+                  break label298;
+                }
+                i = ((QQWalletAioBodyReserve)localObject).pfa_type;
+                if (i != 1) {
+                  break label303;
+                }
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.aio.qiukaitong.click", 0, 0, "", "", "", "");
+                if (QLog.isColorLevel()) {
+                  QLog.d(agma.jdField_a_of_type_JavaLangString, 2, "onClick pfa_type=" + i);
+                }
+              }
+            }
+          }
+          for (;;)
+          {
+            for (;;)
+            {
+              if (localQQWalletBaseMsgElem == null) {
+                break label608;
+              }
+              if (TextUtils.isEmpty(localQQWalletBaseMsgElem.actionsPriority))
+              {
+                akgc.b(paramView.getContext(), localQQWalletBaseMsgElem.linkUrl);
+                break;
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.payerclick", 0, 0, "", "", "", "");
+                break label145;
+                i = 0;
+                break label166;
+                if (i != 2) {
+                  break label201;
+                }
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.aio.yikaitong.click", 0, 0, "", "", "", "");
+                break label201;
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "transferaccountmsg", "show", 0, 0, "" + localMessageForQQWalletMsg.mQQWalletTransferMsg.templateId, "", "", "");
+                continue;
+              }
+              localObject = localQQWalletBaseMsgElem.actionsPriority.split("\\|");
+              int j = 0;
+              i = 0;
+              while (j < localObject.length)
+              {
+                if (!TextUtils.isEmpty(localObject[j])) {
+                  break label438;
+                }
+                j += 1;
+              }
+              break;
+              try
+              {
+                k = Integer.valueOf(localObject[j]).intValue();
+                if (k == 1)
+                {
+                  if (akgc.b(paramView.getContext(), localQQWalletBaseMsgElem.linkUrl)) {
+                    break;
+                  }
+                  i = -1;
+                }
+              }
+              catch (Exception localException)
+              {
+                int k;
+                do
+                {
+                  do
+                  {
+                    for (;;)
+                    {
+                      if (QLog.isDevelopLevel()) {
+                        localException.printStackTrace();
+                      }
+                      k = i;
+                      if (QLog.isColorLevel())
+                      {
+                        QLog.d(agma.jdField_a_of_type_JavaLangString, 2, "QQWalletMsgItemBuilder failed to convert String:" + localObject[j] + " to Interger,", localException);
+                        k = i;
+                      }
+                    }
+                    if (k != 2) {
+                      break;
+                    }
+                  } while (!akgc.a(paramView.getContext(), localQQWalletBaseMsgElem.jumpUrl));
+                  break;
+                } while ((k != 3) || (!agma.a(this.a, paramView.getContext(), localQQWalletBaseMsgElem.nativeAndroid, null, str, localMessageForQQWalletMsg, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)));
+              }
+            }
+            break;
+            localQQWalletBaseMsgElem = null;
           }
         }
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("VipPendantDrawable", 1, "setPngPaths, exception=" + MsfSdkUtils.getStackTraceString(localException));
-        }
-      }
     }
-    a();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
-    this.b = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Int == -1) {}
-    Bitmap localBitmap;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Agmc == null);
-      localBitmap = this.jdField_a_of_type_Agmc.a();
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      invalidateSelf();
-    }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    invalidateSelf();
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
-    invalidateSelf();
   }
 }
 

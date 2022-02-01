@@ -3,6 +3,7 @@ package com.tencent.tavcut.session;
 import android.util.SparseArray;
 import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
 import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tavcut.util.CompositionUtils;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
@@ -21,6 +22,7 @@ class TAVCutImageSession$3
     paramVideoRenderChainManager.getComposition().setRenderSize(this.val$size);
     paramVideoRenderChainManager.getComposition().setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFill);
     paramMediaBuilderOutput = new WSImageRender();
+    CompositionUtils.removeTAVAspectEffect(paramVideoRenderChainManager.getComposition());
     paramMediaBuilderOutput.init(paramVideoRenderChainManager.getComposition(), paramVideoRenderChainManager.getComposition().getRenderSize());
     TAVCutImageSession.access$300(this.this$0).put(this.val$index, paramMediaBuilderOutput);
   }

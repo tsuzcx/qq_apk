@@ -1,35 +1,22 @@
-public class bdxv
-  extends bdxn
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.TextView;
+
+class bdxv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private float d;
-  private float e;
+  bdxv(bdxs parambdxs, bdwe parambdwe) {}
   
-  public bdxv(int paramInt, float paramFloat1, float paramFloat2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramInt, 2, 0);
-    this.d = paramFloat1;
-    this.e = paramFloat2;
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
-    if (this.e - this.d > 0.0F) {
-      if (this.jdField_c_of_type_Float >= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-    }
-    for (;;)
-    {
-      if (paramInt >= this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.jdField_c_of_type_Float <= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f = 1.0F * (100 - i) / 100.0F;
+    this.jdField_a_of_type_Bdwe.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
+    f = this.jdField_a_of_type_Bdwe.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
+    this.jdField_a_of_type_Bdwe.jdField_b_of_type_AndroidViewView.setTranslationY(f);
+    f = i * -180.0F / 100.0F;
+    this.jdField_a_of_type_Bdwe.c.setRotation(f);
   }
 }
 

@@ -1,50 +1,74 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nwk
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements AdapterView.OnItemClickListener
 {
-  public nwk(VideoCoverFragment paramVideoCoverFragment) {}
+  public nwk(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    VideoCoverFragment.a(this.a);
-    int i = this.a.a();
-    if ((i > 1) && (VideoCoverFragment.a(this.a) != null))
+    Object localObject = paramView.getTag();
+    if (localObject == null)
     {
-      if (VideoCoverFragment.a(this.a) != i - 1) {
-        break label209;
-      }
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.1(this));
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+    }
+    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).sheetItem.action;
+    int j = odq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    label168:
+    label171:
+    String str;
+    switch (i)
     {
-      paramTVK_IMediaPlayer = ((nwg)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
-      bdll.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Nwh.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Nwh.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Nwh.b);
-      Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
-      i = (int)(((nwg)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
-      if (localInteger == null) {
+    default: 
+      i = 0;
+      str = this.a.e;
+      if (!this.a.d()) {
         break;
       }
-      PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(localInteger.intValue() + i));
-      return;
-      label209:
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.2(this));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverFragment", 2, "current time = null");
+    for (localObject = "02";; localObject = "01")
+    {
+      odq.a(null, str, "0X8007CA6", "0X8007CA6", 0, 0, (String)localObject, i + "", j + "", null);
+      break;
+      zsf.b(this.a, this.a.a(), this.a.a(), this.a.b());
+      i = 1;
+      break label171;
+      zsf.a(this.a, this.a.a(), this.a.a(), this.a.b());
+      i = 2;
+      break label171;
+      zsf.a(this.a, this.a.a(), this.a.a(), this.a.b(), i);
+      i = 3;
+      break label171;
+      zsf.a(this.a, this.a.a(), this.a.a(), this.a.b(), i);
+      i = 4;
+      break label171;
+      this.a.f();
+      i = 5;
+      break label171;
+      this.a.E();
+      i = 6;
+      break label171;
+      this.a.F();
+      i = 7;
+      break label171;
+      this.a.H();
+      i = 8;
+      break label171;
+      bily.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.i, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, j, true);
+      break label168;
     }
-    PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(i));
   }
 }
 

@@ -1,28 +1,31 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class ajcw
-  implements bivl
+  extends AccountObserver
 {
-  public ajcw(AddContactsView paramAddContactsView) {}
+  public ajcw(Conversation paramConversation) {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    if (this.a.i != null)
+    if (this.a.a != null)
     {
-      if (paramInt2 < this.a.i.getY() + this.a.i.getHeight() * 2 / 3) {
-        break label74;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
       }
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        AddContactsView.a(this.a, false);
-      }
+      this.a.a.a("AccountObserver.onOnlineStatusChanged");
     }
-    return;
-    label74:
-    AddContactsView.a(this.a);
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
+    }
+    this.a.a.a("AccountObserver.onOnlineStatusPush");
   }
 }
 

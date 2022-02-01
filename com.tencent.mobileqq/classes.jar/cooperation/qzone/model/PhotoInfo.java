@@ -1,210 +1,108 @@
 package cooperation.qzone.model;
 
 import NS_FASHION_FEEDS_TAG_PROTO.TagInfo;
-import abkf;
+import aago;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnal;
-import bnjz;
+import cooperation.qzone.util.PanoramaUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
 
 public class PhotoInfo
-  extends abkf
+  extends aago
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bnal();
-  public static int l;
-  public static int m;
-  public static int n;
-  public float a;
-  public int a;
-  public long a;
-  public GpsInfo4LocalImage a;
-  public VideoInfo a;
-  public Boolean a;
-  public String a;
-  public ArrayList<String> a;
-  public Map<Integer, String> a;
-  private WeakReference<Drawable> a;
-  public boolean a;
-  public float b;
-  public int b;
-  public long b;
-  public Boolean b;
-  public String b;
-  public ArrayList<TagInfo> b;
-  public Map<Integer, String> b;
-  private WeakReference<Drawable> b;
-  public boolean b;
-  public long c;
-  public Boolean c;
-  public String c;
-  public ArrayList<ImageTagInfo> c;
-  public int d;
-  public long d;
-  public String d;
-  public ArrayList<FaceData> d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public boolean j;
-  public int k;
-  public String k;
-  public boolean k;
-  public String l;
-  public boolean l;
-  public String m;
-  public boolean m;
-  public String n;
-  public int o;
-  public String o;
-  public int p;
-  public String p;
-  public int q;
-  public String q;
-  public int r;
-  public String r;
-  public int s;
-  public String s;
-  public int t;
-  public String t;
-  public int u;
-  public String u;
-  public int v;
-  public String v;
-  public int w;
-  public String w;
-  public int x;
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new PhotoInfo.1();
+  public static final int IMAGE_RESOLUTION_BIG = 1;
+  public static final int IMAGE_RESOLUTION_ORIGINAL = 2;
+  public static int SHOW_GIF;
+  public static int SHOW_NEITHER_GIF_NOR_PLAY = 1;
+  public static int SHOW_STATIC_PHOTO;
+  public String albumId = "";
+  public String albumName;
+  public int albumPriv;
+  public int allow_share;
+  public String appAdSchema = "";
+  public boolean appAdShow;
+  public String appAdText = "";
+  public int appid;
+  public String bigUrl = "";
+  public Map<Integer, String> busi_param = new HashMap();
+  public int commentCount;
+  public long ctime;
+  public String curkey = "";
+  public String currentUrl = "";
+  public long date;
+  public String desc = "";
+  public long fileSize;
+  public int flag;
+  public GpsInfo4LocalImage gpsInfo;
+  public boolean hasCheckFace;
+  public boolean hasLoaded;
+  public Boolean hasLocalOrgFile;
+  public boolean hasPraise;
+  public boolean hasPreDownload;
+  public Boolean hasQQCode;
+  public Boolean hasQRCode;
+  public boolean hasShowHighScaleTips;
+  public boolean hasVisited;
+  public float heightWeightProportion;
+  private WeakReference<Drawable> imageDrawable;
+  public int imageResolution;
+  public boolean isFakeFeed;
+  public int isIndependentUgc = -1;
+  public boolean isSelected;
+  public float lastScale;
+  public String lloc = "";
+  public ArrayList<FaceData> mFaceList;
+  public int mNeedEncodeGifDelay;
+  public ArrayList<String> mNeedEncodeGifPics = new ArrayList();
+  public boolean needShowFaceIcon;
+  public int opMask;
+  public int opsynflag;
+  public String orgUrl = "";
+  public long originSize;
+  public int photoOpmask;
+  public int photoType = 1;
+  public boolean picInfoOpen;
+  public ArrayList<TagInfo> picTaginfoList;
+  public int praiseCount;
+  public int progress;
+  public Map<Integer, String> pssBusiParam;
+  public String pssCellId = "";
+  public String pssCellSubId = "";
+  public String pssCurLikeKey = "";
+  public boolean pssHasFeedPraise;
+  public String pssOrgLikeKey = "";
+  public int pssSubId;
+  public String pssUgcKey = "";
+  public boolean quanLoaded;
+  public int shareAlbumRight;
+  public String sharePhotoUrl = "";
+  public String shareQqUrl = "";
+  public int shareSpaceRight;
+  public String shareSummary = "";
+  public String shareTitle = "";
+  public String shareWeixinUrl = "";
+  public int showGifState = SHOW_STATIC_PHOTO;
+  public String sloc = "";
+  public ArrayList<ImageTagInfo> tagList;
+  private WeakReference<Drawable> thumbDrawable;
+  public String unikey = "";
+  public String uploadOwner = "";
+  public int uploadtime;
+  public long uploaduin;
+  public VideoInfo videodata;
+  public int videoflag;
   
   static
   {
-    jdField_m_of_type_Int = 1;
-    jdField_n_of_type_Int = 2;
-  }
-  
-  public PhotoInfo()
-  {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_h_of_type_JavaLangString = "";
-    this.jdField_i_of_type_JavaLangString = "";
-    this.jdField_j_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_f_of_type_Int = 1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_k_of_type_Int = jdField_l_of_type_Int;
-    this.jdField_k_of_type_JavaLangString = "";
-    this.jdField_l_of_type_JavaLangString = "";
-    this.jdField_m_of_type_JavaLangString = "";
-    this.jdField_n_of_type_JavaLangString = "";
-    this.jdField_o_of_type_JavaLangString = "";
-    this.jdField_p_of_type_JavaLangString = "";
-    this.jdField_q_of_type_JavaLangString = "";
-    this.jdField_r_of_type_JavaLangString = "";
-    this.jdField_s_of_type_JavaLangString = "";
-    this.jdField_t_of_type_JavaLangString = "";
-    this.jdField_u_of_type_JavaLangString = "";
-    this.jdField_v_of_type_JavaLangString = "";
-    this.jdField_w_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public Drawable a()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-      return (Drawable)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    }
-    return null;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (paramDrawable != null) {
-      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramDrawable);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_i_of_type_Int & 0x4) > 0;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public Rect b()
-  {
-    return null;
-  }
-  
-  public Drawable b()
-  {
-    if (this.jdField_b_of_type_MqqUtilWeakReference != null) {
-      return (Drawable)this.jdField_b_of_type_MqqUtilWeakReference.get();
-    }
-    return null;
-  }
-  
-  public boolean b()
-  {
-    if (!bnjz.a().b()) {}
-    while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public Drawable c()
-  {
-    Drawable localDrawable2 = b();
-    Drawable localDrawable1 = localDrawable2;
-    if (localDrawable2 == null) {
-      localDrawable1 = a();
-    }
-    return localDrawable1;
-  }
-  
-  public int d()
-  {
-    return 0;
+    SHOW_GIF = 2;
   }
   
   public int describeContents()
@@ -212,103 +110,185 @@ public class PhotoInfo
     return 0;
   }
   
+  public Drawable getAnimationDrawable()
+  {
+    Drawable localDrawable2 = getImageDrawable();
+    Drawable localDrawable1 = localDrawable2;
+    if (localDrawable2 == null) {
+      localDrawable1 = getThumbDrawable();
+    }
+    return localDrawable1;
+  }
+  
+  public int getCutValue()
+  {
+    return 0;
+  }
+  
+  public Drawable getImageDrawable()
+  {
+    if (this.imageDrawable != null) {
+      return (Drawable)this.imageDrawable.get();
+    }
+    return null;
+  }
+  
+  public int getStartX()
+  {
+    return 0;
+  }
+  
+  public int getStartY()
+  {
+    return 0;
+  }
+  
+  public Drawable getThumbDrawable()
+  {
+    if (this.thumbDrawable != null) {
+      return (Drawable)this.thumbDrawable.get();
+    }
+    return null;
+  }
+  
+  public Rect getThumbRect()
+  {
+    return null;
+  }
+  
+  public boolean hasFace()
+  {
+    return (this.flag & 0x2) > 0;
+  }
+  
+  public boolean isPanorama()
+  {
+    if (!PanoramaUtil.getInstance().isNeedShowPanorama()) {}
+    while ((this.flag != 32) && (this.flag != 16)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean isWebPic()
+  {
+    return (this.flag & 0x4) > 0;
+  }
+  
+  public boolean needAnimation(boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable)
+  {
+    if (paramDrawable != null) {
+      this.imageDrawable = new WeakReference(paramDrawable);
+    }
+  }
+  
+  public String toDebugString()
+  {
+    return "PhotoInfo{\nalbumName='" + this.albumName + '\'' + '\n' + ", albumId='" + this.albumId + '\'' + '\n' + ", albumPriv=" + this.albumPriv + '\n' + ", currentUrl='" + this.currentUrl + '\'' + '\n' + ", bigUrl='" + this.bigUrl + '\'' + '\n' + ", orgUrl='" + this.orgUrl + '\'' + '\n' + ", desc='" + this.desc + '\'' + '\n' + ", praiseCount=" + this.praiseCount + '\n' + ", commentCount=" + this.commentCount + '\n' + ", hasPraise=" + this.hasPraise + '\n' + ", unikey='" + this.unikey + '\'' + '\n' + ", curkey='" + this.curkey + '\'' + '\n' + ", lloc='" + this.lloc + '\'' + '\n' + ", sloc='" + this.sloc + '\'' + '\n' + ", busi_param=" + this.busi_param + '\n' + ", mNeedEncodeGifPics=" + this.mNeedEncodeGifPics + '\n' + ", mNeedEncodeGifDelay=" + this.mNeedEncodeGifDelay + '\n' + ", photoType=" + this.photoType + '\n' + ", opsynflag=" + this.opsynflag + '\n' + ", isIndependentUgc=" + this.isIndependentUgc + '\n' + ", flag=" + this.flag + '\n' + ", isSelected=" + this.isSelected + '\n' + ", hasLoaded=" + this.hasLoaded + '\n' + ", hasShowHighScaleTips=" + this.hasShowHighScaleTips + '\n' + ", lastScale=" + this.lastScale + '\n' + ", hasLocalOrgFile=" + this.hasLocalOrgFile + '\n' + ", progress=" + this.progress + '\n' + ", hasPreDownload=" + this.hasPreDownload + '\n' + ", hasVisited=" + this.hasVisited + '\n' + ", tagList=" + this.tagList + '\n' + ", quanLoaded=" + this.quanLoaded + '\n' + ", isFakeFeed=" + this.isFakeFeed + '\n' + ", showGifState=" + this.showGifState + '\n' + ", ctime=" + this.ctime + '\n' + ", gpsInfo=" + this.gpsInfo + '\n' + ", date=" + this.date + '\n' + ", hasQRCode=" + this.hasQRCode + '\n' + ", opMask=" + this.opMask + '\n' + ", allow_share=" + this.allow_share + '\n' + ", videoflag=" + this.videoflag + '\n' + ", videodata=" + this.videodata.toDebugString() + '\n' + ", uploadtime=" + this.uploadtime + '\n' + ", photoOpmask=" + this.photoOpmask + '\n' + ", uploadOwner='" + this.uploadOwner + '\'' + '\n' + ", uploaduin=" + this.uploaduin + '\n' + ", appid=" + this.appid + '\n' + ", pssCellId='" + this.pssCellId + '\'' + '\n' + ", pssCellSubId='" + this.pssCellSubId + '\'' + '\n' + ", pssUgcKey='" + this.pssUgcKey + '\'' + '\n' + ", pssSubId=" + this.pssSubId + '\n' + ", pssCurLikeKey='" + this.pssCurLikeKey + '\'' + '\n' + ", pssOrgLikeKey='" + this.pssOrgLikeKey + '\'' + '\n' + ", pssBusiParam=" + this.pssBusiParam + '\n' + ", pssHasFeedPraise=" + this.pssHasFeedPraise + '\n' + ", shareWeixinUrl='" + this.shareWeixinUrl + '\'' + '\n' + ", shareQqUrl='" + this.shareQqUrl + '\'' + '\n' + ", shareTitle='" + this.shareTitle + '\'' + '\n' + ", shareSummary='" + this.shareSummary + '\'' + '\n' + ", sharePhotoUrl='" + this.sharePhotoUrl + '\'' + '\n' + ", shareSpaceRight=" + this.shareSpaceRight + '\n' + ", shareAlbumRight=" + this.shareAlbumRight + '\n' + ", hasCheckFace=" + this.hasCheckFace + '\n' + ", needShowFaceIcon=" + this.needShowFaceIcon + '\n' + ", mFaceList=" + this.mFaceList + '\n' + ", originSize=" + this.originSize + '\n' + ", fileSize=" + this.fileSize + '\n' + ", imageResolution=" + this.imageResolution + '\n' + ", appAdShow=" + this.appAdShow + '\n' + ", appAdText='" + this.appAdText + '\'' + '\n' + ", appAdSchema='" + this.appAdSchema + '\'' + '\n' + ", picInfoOpen=" + this.picInfoOpen + '\n' + ", thumbDrawable=" + this.thumbDrawable + '\n' + ", imageDrawable=" + this.imageDrawable + '\n' + ", heightWeightProportion=" + this.heightWeightProportion + '\n' + '}';
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i2 = 1;
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    int i1;
-    if (this.jdField_a_of_type_Boolean)
+    int j = 1;
+    paramParcel.writeString(this.albumId);
+    paramParcel.writeInt(this.albumPriv);
+    paramParcel.writeString(this.currentUrl);
+    paramParcel.writeString(this.bigUrl);
+    paramParcel.writeString(this.orgUrl);
+    paramParcel.writeString(this.desc);
+    paramParcel.writeInt(this.praiseCount);
+    paramParcel.writeInt(this.commentCount);
+    int i;
+    if (this.hasPraise)
     {
-      i1 = 1;
-      paramParcel.writeInt(i1);
-      paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
-      paramParcel.writeMap(this.jdField_a_of_type_JavaUtilMap);
-      paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-      paramParcel.writeInt(this.jdField_e_of_type_Int);
-      paramParcel.writeInt(this.jdField_f_of_type_Int);
-      paramParcel.writeInt(this.jdField_g_of_type_Int);
-      paramParcel.writeInt(this.jdField_h_of_type_Int);
-      paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelGpsInfo4LocalImage, paramInt);
-      if (!this.jdField_b_of_type_Boolean) {
+      i = 1;
+      paramParcel.writeInt(i);
+      paramParcel.writeString(this.unikey);
+      paramParcel.writeString(this.curkey);
+      paramParcel.writeString(this.lloc);
+      paramParcel.writeString(this.sloc);
+      paramParcel.writeMap(this.busi_param);
+      paramParcel.writeList(this.mNeedEncodeGifPics);
+      paramParcel.writeInt(this.mNeedEncodeGifDelay);
+      paramParcel.writeInt(this.photoType);
+      paramParcel.writeInt(this.opsynflag);
+      paramParcel.writeInt(this.isIndependentUgc);
+      paramParcel.writeParcelable(this.gpsInfo, paramInt);
+      if (!this.isSelected) {
         break label556;
       }
-      i1 = 1;
+      i = 1;
       label179:
-      paramParcel.writeInt(i1);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      paramParcel.writeLong(this.jdField_b_of_type_Long);
-      paramParcel.writeTypedList(this.jdField_c_of_type_JavaUtilArrayList);
-      if (!this.jdField_h_of_type_Boolean) {
+      paramParcel.writeInt(i);
+      paramParcel.writeLong(this.ctime);
+      paramParcel.writeLong(this.date);
+      paramParcel.writeTypedList(this.tagList);
+      if (!this.isFakeFeed) {
         break label561;
       }
-      i1 = 1;
+      i = 1;
       label217:
-      paramParcel.writeInt(i1);
-      paramParcel.writeInt(this.jdField_k_of_type_Int);
-      paramParcel.writeInt(this.jdField_i_of_type_Int);
-      paramParcel.writeInt(this.jdField_o_of_type_Int);
-      paramParcel.writeInt(this.jdField_p_of_type_Int);
-      paramParcel.writeInt(this.jdField_q_of_type_Int);
-      paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelVideoInfo, paramInt);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeInt(this.jdField_r_of_type_Int);
-      paramParcel.writeInt(this.jdField_s_of_type_Int);
-      paramParcel.writeString(this.jdField_k_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeInt(this.jdField_t_of_type_Int);
-      paramParcel.writeString(this.jdField_l_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_m_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_n_of_type_JavaLangString);
-      paramParcel.writeInt(this.jdField_u_of_type_Int);
-      paramParcel.writeString(this.jdField_o_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_p_of_type_JavaLangString);
-      paramParcel.writeMap(this.jdField_b_of_type_JavaUtilMap);
-      if (!this.jdField_i_of_type_Boolean) {
+      paramParcel.writeInt(i);
+      paramParcel.writeInt(this.showGifState);
+      paramParcel.writeInt(this.flag);
+      paramParcel.writeInt(this.opMask);
+      paramParcel.writeInt(this.allow_share);
+      paramParcel.writeInt(this.videoflag);
+      paramParcel.writeParcelable(this.videodata, paramInt);
+      paramParcel.writeString(this.albumName);
+      paramParcel.writeInt(this.uploadtime);
+      paramParcel.writeInt(this.photoOpmask);
+      paramParcel.writeString(this.uploadOwner);
+      paramParcel.writeLong(this.uploaduin);
+      paramParcel.writeInt(this.appid);
+      paramParcel.writeString(this.pssCellId);
+      paramParcel.writeString(this.pssCellSubId);
+      paramParcel.writeString(this.pssUgcKey);
+      paramParcel.writeInt(this.pssSubId);
+      paramParcel.writeString(this.pssCurLikeKey);
+      paramParcel.writeString(this.pssOrgLikeKey);
+      paramParcel.writeMap(this.pssBusiParam);
+      if (!this.pssHasFeedPraise) {
         break label566;
       }
       paramInt = 1;
       label384:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.jdField_q_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_r_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_s_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_t_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_u_of_type_JavaLangString);
-      paramParcel.writeInt(this.jdField_v_of_type_Int);
-      paramParcel.writeInt(this.jdField_w_of_type_Int);
-      if (!this.jdField_j_of_type_Boolean) {
+      paramParcel.writeString(this.shareWeixinUrl);
+      paramParcel.writeString(this.shareQqUrl);
+      paramParcel.writeString(this.shareTitle);
+      paramParcel.writeString(this.shareSummary);
+      paramParcel.writeString(this.sharePhotoUrl);
+      paramParcel.writeInt(this.shareSpaceRight);
+      paramParcel.writeInt(this.shareAlbumRight);
+      if (!this.hasCheckFace) {
         break label571;
       }
       paramInt = 1;
       label454:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeSerializable(this.jdField_d_of_type_JavaUtilArrayList);
-      if (!this.jdField_k_of_type_Boolean) {
+      paramParcel.writeSerializable(this.mFaceList);
+      if (!this.needShowFaceIcon) {
         break label576;
       }
       paramInt = 1;
       label476:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.jdField_d_of_type_Long);
-      if (!this.jdField_l_of_type_Boolean) {
+      paramParcel.writeLong(this.originSize);
+      if (!this.appAdShow) {
         break label581;
       }
       paramInt = 1;
       label498:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.jdField_v_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_w_of_type_JavaLangString);
-      if (!this.jdField_m_of_type_Boolean) {
+      paramParcel.writeString(this.appAdText);
+      paramParcel.writeString(this.appAdSchema);
+      if (!this.picInfoOpen) {
         break label586;
       }
     }
@@ -319,17 +299,17 @@ public class PhotoInfo
     label576:
     label581:
     label586:
-    for (paramInt = i2;; paramInt = 0)
+    for (paramInt = j;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeList(this.jdField_b_of_type_JavaUtilArrayList);
-      paramParcel.writeFloat(this.jdField_b_of_type_Float);
+      paramParcel.writeList(this.picTaginfoList);
+      paramParcel.writeFloat(this.heightWeightProportion);
       return;
-      i1 = 0;
+      i = 0;
       break;
-      i1 = 0;
+      i = 0;
       break label179;
-      i1 = 0;
+      i = 0;
       break label217;
       paramInt = 0;
       break label384;

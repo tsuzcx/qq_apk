@@ -1,50 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.data.MessageForConfessNews;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afyk
-  implements DialogInterface.OnClickListener
+class afyk
+  implements View.OnClickListener
 {
-  public afyk(TroopTransferActivity paramTroopTransferActivity, String paramString, bhpc parambhpc) {}
+  afyk(afyj paramafyj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!bhnv.d(BaseApplication.getContext()))
+    Object localObject;
+    int i;
+    if ((paramView instanceof ConfessNewsBgView))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bjbv == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bjbv = new bjbv(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bjbv.b(2, 2131691989, 1000);
-      return;
-    }
-    paramDialogInterface = (aoip)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
-    if (paramDialogInterface != null) {}
-    try
-    {
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
-      long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
-      paramDialogInterface.a(l1, l2, l3);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bjbv == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bjbv = new bjbv(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bjbv.b(0, 2131718803, 1000);
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
+      localObject = paramView.getTag();
+      if ((localObject instanceof MessageForConfessNews))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopdisband.transfer", 2, paramDialogInterface.toString());
+        localObject = (MessageForConfessNews)localObject;
+        if (((MessageForConfessNews)localObject).istroop != 1) {
+          break label80;
         }
+        i = 1;
+        if (i == 0) {
+          break label85;
+        }
+        apsz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
       }
     }
-    this.jdField_a_of_type_Bhpc.cancel();
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label80:
+      i = 0;
+      break;
+      label85:
+      apse.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
+    }
   }
 }
 

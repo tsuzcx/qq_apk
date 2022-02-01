@@ -4,12 +4,12 @@ import android.content.Context;
 import android.widget.Button;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import mur;
+import mua;
 
 public class TraeHelper$5
   implements Runnable
 {
-  public TraeHelper$5(mur parammur, Button paramButton, Context paramContext) {}
+  public TraeHelper$5(mua parammua, Button paramButton, Context paramContext) {}
   
   public void run()
   {

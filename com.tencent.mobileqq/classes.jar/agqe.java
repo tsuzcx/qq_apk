@@ -1,11 +1,47 @@
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface agqe
+class agqe
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt, agpw paramagpw, List<agqr> paramList, Map<Integer, Integer> paramMap);
+  agqe(agqd paramagqd) {}
   
-  public abstract boolean a(String paramString);
+  public void onClick(View paramView)
+  {
+    Object localObject = AIOUtils.getMessage(paramView);
+    if (!(localObject instanceof MessageForText)) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (MessageForText)localObject;
+      if (!this.a.a())
+      {
+        if (((MessageForText)localObject).msgtype == -1003)
+        {
+          AIOUtils.isUserOperatedInAIO = true;
+          localObject = PkgTools.Decodecgi(((MessageForText)localObject).action);
+          localObject = bfwg.a(this.a.a, paramView.getContext(), (String)localObject);
+          if (localObject != null) {
+            ((bfvp)localObject).a();
+          }
+        }
+        if ((paramView instanceof ETTextView)) {
+          ((ETTextView)paramView).startAnimation(true, false);
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,92 +1,123 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.task.ApolloAioBubblePush.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class anlm
 {
-  private DrawerPushItem jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
-  private boolean jdField_a_of_type_Boolean;
+  private static LinkedList<anlm> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
   
-  public DrawerPushItem a()
+  /* Error */
+  public static anlm a(int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 21	anlm:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: invokevirtual 28	java/util/LinkedList:size	()I
+    //   9: ifle +53 -> 62
+    //   12: getstatic 21	anlm:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   15: iconst_0
+    //   16: invokevirtual 32	java/util/LinkedList:remove	(I)Ljava/lang/Object;
+    //   19: checkcast 2	anlm
+    //   22: astore 6
+    //   24: aload 6
+    //   26: iload_0
+    //   27: putfield 34	anlm:jdField_a_of_type_Int	I
+    //   30: aload 6
+    //   32: aload_1
+    //   33: putfield 36	anlm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   36: aload 6
+    //   38: lload_2
+    //   39: putfield 38	anlm:jdField_a_of_type_Long	J
+    //   42: aload 6
+    //   44: iload 4
+    //   46: putfield 40	anlm:b	I
+    //   49: aload 6
+    //   51: iload 5
+    //   53: putfield 42	anlm:c	I
+    //   56: ldc 2
+    //   58: monitorexit
+    //   59: aload 6
+    //   61: areturn
+    //   62: new 2	anlm
+    //   65: dup
+    //   66: invokespecial 43	anlm:<init>	()V
+    //   69: astore 6
+    //   71: goto -47 -> 24
+    //   74: astore_1
+    //   75: ldc 2
+    //   77: monitorexit
+    //   78: aload_1
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	paramInt1	int
+    //   0	80	1	paramString	String
+    //   0	80	2	paramLong	long
+    //   0	80	4	paramInt2	int
+    //   0	80	5	paramInt3	int
+    //   22	48	6	localanlm	anlm
+    // Exception table:
+    //   from	to	target	type
+    //   3	24	74	finally
+    //   24	56	74	finally
+    //   62	71	74	finally
   }
   
-  public void a()
+  /* Error */
+  public static void a(java.util.List<anlm> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new ApolloAioBubblePush.1(this, paramQQAppInterface), 8, null, true);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloAioBubblePush", 2, "DO NOT show bubble, maybe item is null, item:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-      }
-    }
-    anfr localanfr;
-    do
-    {
-      do
-      {
-        return false;
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloAioBubblePush", 2, "DO NOT show bubble cause it has been showed.");
-      return false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_type == 4) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id)))
-      {
-        paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "apollo_game_reddot_sp", 0).edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id, true).commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloAioBubblePush", 2, "[onShowBubble] parseGameReddot mPushItem.msg_id has show:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
-        }
-      }
-      QLog.i("ApolloAioBubblePush", 1, "Show bubble, id:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
-      localanfr = angi.a(paramQQAppInterface);
-    } while (localanfr == null);
-    localanfr.a("", this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.content);
-    this.jdField_a_of_type_Boolean = true;
-    b(paramQQAppInterface);
-    if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_type == 10) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_type == 7)) {
-      amsx.a(101, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.tianshuAdId), this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.tianshuTraceInfo);
-    }
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(paramInt), 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id });
-    return true;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) || (paramQQAppInterface == null)) {}
-    do
-    {
-      return;
-      paramQQAppInterface = (amsx)paramQQAppInterface.getManager(153);
-    } while (!this.jdField_a_of_type_Boolean);
-    DrawerPushItem localDrawerPushItem = this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
-    localDrawerPushItem.show_sum += 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum == this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts)
-    {
-      QLog.i("ApolloAioBubblePush", 1, "remove item from db, id:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
-      paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-      return;
-    }
-    paramQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-    QLog.i("ApolloAioBubblePush", 1, "update item from db" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.msg_id);
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 21	anlm:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: invokevirtual 28	java/util/LinkedList:size	()I
+    //   9: istore_1
+    //   10: iload_1
+    //   11: bipush 100
+    //   13: if_icmplt +7 -> 20
+    //   16: ldc 2
+    //   18: monitorexit
+    //   19: return
+    //   20: aload_0
+    //   21: invokeinterface 50 1 0
+    //   26: astore_0
+    //   27: aload_0
+    //   28: invokeinterface 56 1 0
+    //   33: ifeq -17 -> 16
+    //   36: aload_0
+    //   37: invokeinterface 60 1 0
+    //   42: checkcast 2	anlm
+    //   45: astore_2
+    //   46: getstatic 21	anlm:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   49: aload_2
+    //   50: invokevirtual 64	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   53: pop
+    //   54: getstatic 21	anlm:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   57: invokevirtual 28	java/util/LinkedList:size	()I
+    //   60: istore_1
+    //   61: iload_1
+    //   62: bipush 100
+    //   64: if_icmplt -37 -> 27
+    //   67: goto -51 -> 16
+    //   70: astore_0
+    //   71: ldc 2
+    //   73: monitorexit
+    //   74: aload_0
+    //   75: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	76	0	paramList	java.util.List<anlm>
+    //   9	56	1	i	int
+    //   45	5	2	localanlm	anlm
+    // Exception table:
+    //   from	to	target	type
+    //   3	10	70	finally
+    //   20	27	70	finally
+    //   27	61	70	finally
   }
 }
 

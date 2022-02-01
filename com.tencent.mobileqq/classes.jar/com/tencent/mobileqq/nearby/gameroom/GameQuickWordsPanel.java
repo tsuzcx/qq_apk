@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aikq;
+import ahgc;
+import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import anzj;
-import axxo;
-import axxp;
-import bitz;
-import biuo;
-import biup;
+import awkw;
+import awkx;
+import bhab;
+import bhaq;
+import bhar;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 public class GameQuickWordsPanel
   extends RelativeLayout
 {
-  public aikq a;
-  public biup a;
+  public ahgc a;
+  public bhar a;
   public SessionInfo a;
   public QQAppInterface a;
   XListView a;
@@ -34,17 +34,17 @@ public class GameQuickWordsPanel
   
   public void a()
   {
-    ((axxp)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
+    ((awkx)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aikq paramaikq)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ahgc paramahgc)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Aikq = paramaikq;
-    this.jdField_a_of_type_Biup = ((bitz)paramQQAppInterface.a(107)).a(this.jdField_a_of_type_JavaLangString);
-    paramQQAppInterface = this.jdField_a_of_type_Biup.a();
+    this.jdField_a_of_type_JavaLangString = paramSessionInfo.curFriendUin;
+    this.jdField_a_of_type_Ahgc = paramahgc;
+    this.jdField_a_of_type_Bhar = ((bhab)paramQQAppInterface.getBusinessHandler(107)).a(this.jdField_a_of_type_JavaLangString);
+    paramQQAppInterface = this.jdField_a_of_type_Bhar.a();
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.a();
@@ -55,9 +55,9 @@ public class GameQuickWordsPanel
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131367394));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new axxo(this));
-      paramQQAppInterface = new axxp(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131367422));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new awkw(this));
+      paramQQAppInterface = new awkx(this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramQQAppInterface);
       paramQQAppInterface.notifyDataSetChanged();
       return;
@@ -65,11 +65,11 @@ public class GameQuickWordsPanel
       break;
       label131:
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilArrayList.add(anzj.a(2131703949));
-      this.jdField_a_of_type_JavaUtilArrayList.add(anzj.a(2131703950));
-      this.jdField_a_of_type_JavaUtilArrayList.add(anzj.a(2131703953));
-      this.jdField_a_of_type_JavaUtilArrayList.add(anzj.a(2131703952));
-      this.jdField_a_of_type_JavaUtilArrayList.add(anzj.a(2131703951));
+      this.jdField_a_of_type_JavaUtilArrayList.add(amtj.a(2131704178));
+      this.jdField_a_of_type_JavaUtilArrayList.add(amtj.a(2131704179));
+      this.jdField_a_of_type_JavaUtilArrayList.add(amtj.a(2131704182));
+      this.jdField_a_of_type_JavaUtilArrayList.add(amtj.a(2131704181));
+      this.jdField_a_of_type_JavaUtilArrayList.add(amtj.a(2131704180));
     }
   }
 }

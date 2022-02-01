@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anwo;
+import amqx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -10,7 +10,7 @@ public class GetDiscussionInfo
 {
   public int a()
   {
-    ((anwo)this.a.app.a(6)).c();
+    ((amqx)this.a.app.getBusinessHandler(6)).c();
     return 7;
   }
 }

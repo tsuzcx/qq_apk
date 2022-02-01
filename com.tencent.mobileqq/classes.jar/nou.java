@@ -1,33 +1,20 @@
-import android.content.Intent;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class nou
-  extends MSFServlet
+public final class nou
 {
-  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
-  
-  public String[] getPreferSSOCommands()
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    return this.a;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    nov localnov = SensorAPIJavaScript.getMsfToWebViewConnector();
-    if (localnov != null) {
-      localnov.a(paramIntent, paramFromServiceMsg);
-    }
-    while (!QLog.isColorLevel()) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
       return;
     }
-    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 

@@ -1,16 +1,20 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
 class atqm
-  implements atqq
+  extends RecyclerView.ViewHolder
 {
-  atqm(atpa paramatpa) {}
+  public int a = atqf.b;
   
-  public void a(Object[] paramArrayOfObject)
+  public atqm(View paramView)
   {
-    atpa.b(this.a, paramArrayOfObject);
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqm
  * JD-Core Version:    0.7.0.1
  */

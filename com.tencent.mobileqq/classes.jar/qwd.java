@@ -1,43 +1,22 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class qwd
+  implements vgd
 {
-  public List<qwe> a;
+  public qwd(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public static qwd a(articlesummary.HotWordInfo paramHotWordInfo)
-  {
-    qwd localqwd = new qwd();
-    if ((paramHotWordInfo != null) && (paramHotWordInfo.rpt_hot_word_item.has()))
-    {
-      localqwd.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
-      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
-      while (paramHotWordInfo.hasNext())
-      {
-        qwe localqwe = qwe.a((articlesummary.HotWordItem)paramHotWordInfo.next());
-        localqwd.a.add(localqwe);
-      }
-    }
-    return localqwd;
-  }
+  public void a(URL paramURL, int paramInt) {}
   
-  public byte[] a()
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, syk paramsyk)
   {
-    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
-    if ((this.a != null) && (this.a.size() > 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((qwe)localIterator.next()).a());
-      }
-      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
     }
-    return localHotWordInfo.toByteArray();
+    ComponentHeaderTopicRecommend.a(this.a, paramsyk.a());
   }
 }
 

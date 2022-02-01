@@ -1,159 +1,59 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.PhotoWallView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
-public abstract class bhgg
-  extends Drawable
+public class bhgg
+  extends ampb
 {
-  protected int a;
-  protected ColorFilter a;
-  protected Drawable a;
-  protected int b;
-  protected Drawable b;
-  protected Drawable c;
-  protected boolean c;
+  private WeakReference<PhotoWallView> a;
   
-  protected bhgg(Drawable paramDrawable1, Drawable paramDrawable2)
+  public bhgg(PhotoWallView paramPhotoWallView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable1;
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramDrawable2;
+    this.a = new WeakReference(paramPhotoWallView);
   }
   
-  public Drawable a()
+  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
   {
-    switch (this.jdField_a_of_type_Int)
+    if (this.a != null) {}
+    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
     {
-    default: 
-      return null;
-    case 0: 
-      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    case 1: 
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    }
-    return this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public Bitmap b()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))) {
-      return ((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      localDrawable.draw(paramCanvas);
-    }
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    int i = 0;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      i = localDrawable.getIntrinsicHeight();
-    }
-    return i;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    int i = 0;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      i = localDrawable.getIntrinsicWidth();
-    }
-    return i;
-  }
-  
-  public int getMinimumHeight()
-  {
-    int i = 0;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      i = localDrawable.getMinimumHeight();
-    }
-    return i;
-  }
-  
-  public int getMinimumWidth()
-  {
-    int i = 0;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      i = localDrawable.getMinimumWidth();
-    }
-    return i;
-  }
-  
-  public int getOpacity()
-  {
-    int i = 0;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      i = localDrawable.getOpacity();
-    }
-    return i;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bhjd.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-      if (this.jdField_b_of_type_Int != -1) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+      if (localPhotoWallView == null) {
+        return;
       }
-      invalidateSelf();
-    }
-    Drawable localDrawable;
-    do
-    {
+      if (paramInt != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+        }
+        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
+      }
+      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        paramInt += 1;
+      }
+      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        bcef.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
+      }
+      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
       return;
-      localDrawable = a();
-    } while (localDrawable == null);
-    localDrawable.setBounds(paramRect);
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      localDrawable.setAlpha(paramInt);
-    }
-  }
-  
-  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      localDrawable.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      localDrawable.setColorFilter(paramColorFilter);
     }
   }
 }

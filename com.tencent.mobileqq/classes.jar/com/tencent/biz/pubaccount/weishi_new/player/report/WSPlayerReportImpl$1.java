@@ -1,35 +1,84 @@
 package com.tencent.biz.pubaccount.weishi_new.player.report;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.util.Properties;
-import ulc;
-import uln;
-import ulo;
-import uqf;
+import urw;
+import usg;
+import ush;
+import usk;
+import uya;
 
 public class WSPlayerReportImpl$1
   implements Runnable
 {
-  public WSPlayerReportImpl$1(ulo paramulo, ulc paramulc) {}
+  public WSPlayerReportImpl$1(ush paramush, urw paramurw) {}
   
   public void run()
   {
-    if (ulo.a(this.this$0)) {
+    long l2 = 0L;
+    if (ush.a(this.this$0)) {
       return;
     }
-    Properties localProperties = this.a.a().getPlayDetailsTime();
-    ulo.a(this.this$0).h = Long.valueOf(localProperties.getProperty("httpdnsMS")).longValue();
-    ulo.a(this.this$0).i = Long.valueOf(localProperties.getProperty("httpredirectMS")).longValue();
-    ulo.a(this.this$0).m = Long.valueOf(localProperties.getProperty("cacheframeMS")).longValue();
-    ulo.a(this.this$0).j = Long.valueOf(localProperties.getProperty("httpfirstrecvMS")).longValue();
-    ulo.a(this.this$0).l = Long.valueOf(localProperties.getProperty("getmp4headerMS")).longValue();
-    ulo.a(this.this$0).k = Long.valueOf(localProperties.getProperty("httpconnectMS")).longValue();
-    uqf.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onVideoPrepared] mHttpDNSTime:" + ulo.a(this.this$0).h + ", mHttpRedirectTime:" + ulo.a(this.this$0).i + ", mCacheFrameTime:" + ulo.a(this.this$0).m + ", mHttpFirstReceiveTime:" + ulo.a(this.this$0).j + ", mMp4HeaderParseTime:" + ulo.a(this.this$0).l + ", mHttpConnectTime:" + ulo.a(this.this$0).k);
+    Properties localProperties = this.a.a().a();
+    usg localusg = ush.a(this.this$0);
+    if (localProperties != null)
+    {
+      l1 = Long.valueOf(localProperties.getProperty("httpdnsMS")).longValue();
+      localusg.i = l1;
+      localusg = ush.a(this.this$0);
+      if (localProperties == null) {
+        break label362;
+      }
+      l1 = Long.valueOf(localProperties.getProperty("httpredirectMS")).longValue();
+      label89:
+      localusg.j = l1;
+      localusg = ush.a(this.this$0);
+      if (localProperties == null) {
+        break label367;
+      }
+      l1 = Long.valueOf(localProperties.getProperty("cacheframeMS")).longValue();
+      label123:
+      localusg.n = l1;
+      localusg = ush.a(this.this$0);
+      if (localProperties == null) {
+        break label372;
+      }
+      l1 = Long.valueOf(localProperties.getProperty("httpfirstrecvMS")).longValue();
+      label157:
+      localusg.k = l1;
+      localusg = ush.a(this.this$0);
+      if (localProperties == null) {
+        break label377;
+      }
+    }
+    label362:
+    label367:
+    label372:
+    label377:
+    for (long l1 = Long.valueOf(localProperties.getProperty("getmp4headerMS")).longValue();; l1 = 0L)
+    {
+      localusg.m = l1;
+      localusg = ush.a(this.this$0);
+      l1 = l2;
+      if (localProperties != null) {
+        l1 = Long.valueOf(localProperties.getProperty("httpconnectMS")).longValue();
+      }
+      localusg.l = l1;
+      uya.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onVideoPrepared] mHttpDNSTime:" + ush.a(this.this$0).i + ", mHttpRedirectTime:" + ush.a(this.this$0).j + ", mCacheFrameTime:" + ush.a(this.this$0).n + ", mHttpFirstReceiveTime:" + ush.a(this.this$0).k + ", mMp4HeaderParseTime:" + ush.a(this.this$0).m + ", mHttpConnectTime:" + ush.a(this.this$0).l);
+      return;
+      l1 = 0L;
+      break;
+      l1 = 0L;
+      break label89;
+      l1 = 0L;
+      break label123;
+      l1 = 0L;
+      break label157;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.report.WSPlayerReportImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class tte
-  extends Handler
+  extends tsy
 {
-  public tte(ReadInJoyPatchAdView paramReadInJoyPatchAdView, Looper paramLooper)
+  public tte(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    super(paramLooper);
+    super(paramBaseData, paramWeakReference, localWeakReference);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyPatchAdView", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      int i = 0;
-      if ((paramMessage.obj instanceof Integer)) {
-        i = ((Integer)paramMessage.obj).intValue();
-      }
-      ReadInJoyPatchAdView.a(this.a, i);
-      return;
-      ReadInJoyPatchAdView.a(this.a);
-      return;
-    } while (this.a.a == null);
-    this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new ttf(this, paramBaseData, paramContext));
+  }
+  
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerBigPicItemData));
   }
 }
 

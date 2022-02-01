@@ -1,36 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agbx
-  implements View.OnClickListener
+class agbx
+  implements bjoe
 {
-  public agbx(ActivateFriendView paramActivateFriendView) {}
+  agbx(agbw paramagbw, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ActivateFriendViewItem localActivateFriendViewItem = (ActivateFriendViewItem)paramView;
-    if (localActivateFriendViewItem.a)
+    this.jdField_a_of_type_Bjnw.dismiss();
+    switch (paramInt)
     {
-      ActivateFriendView.a(this.a);
-      if (localActivateFriendViewItem.a) {
-        break label82;
-      }
     }
-    label82:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      localActivateFriendViewItem.setChecked(bool);
-      if (ActivateFriendView.a(this.a) != null) {
-        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ActivateFriendView.b(this.a);
-      break;
+    } while (this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 3000);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin).longValue();
+      paramView = (amoo)this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(22);
+      if (paramView != null) {
+        paramView.a(l);
+      }
+      bcef.b(this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Agbw.jdField_a_of_type_Int), "", "");
+      return;
     }
+    catch (NumberFormatException paramView) {}
   }
 }
 

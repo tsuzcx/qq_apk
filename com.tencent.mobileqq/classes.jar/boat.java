@@ -1,15 +1,19 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 
-class boat
-  implements ThreadPool.Job<Void>
+public class boat
+  extends Handler
 {
-  boat(boan paramboan, beum parambeum) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boat(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
   {
-    boan.a(this.jdField_a_of_type_Boan).a(this.jdField_a_of_type_Beum);
-    return null;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

@@ -1,8 +1,43 @@
-import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import java.util.ArrayList;
 
-public abstract interface bmlr
+public final class bmlr
+  implements zxu
 {
-  public abstract boolean a(int paramInt, Bundle paramBundle);
+  public bmlr(FrameVideoHelper paramFrameVideoHelper, zxu paramzxu) {}
+  
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  {
+    bmbx.b("AEEditorMusicHelper", "[extractFrameForSmartMusic], onResult(), isSuccess=" + paramBoolean + ", dataArray=" + paramArrayList + ", frameSize=" + paramLong);
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("[extractFrameForSmartMusic], executeTime=").append(this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a()).append(", frameCount=");
+      if (paramArrayList == null)
+      {
+        i = 0;
+        bmbx.a("AEEditorMusicHelper", i + ", size=" + this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.b() + "KB");
+      }
+    }
+    else if (this.jdField_a_of_type_Zxu != null)
+    {
+      if (paramArrayList != null) {
+        break label169;
+      }
+    }
+    label169:
+    for (paramArrayList = null;; paramArrayList = new ArrayList(paramArrayList))
+    {
+      this.jdField_a_of_type_Zxu.a(paramBoolean, paramArrayList, paramLong);
+      if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null) {
+        this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
+      }
+      return;
+      i = paramArrayList.size();
+      break;
+    }
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.util;
 
+import amtj;
 import android.content.Context;
 import android.os.SystemClock;
-import anzj;
-import bcnp;
-import bhlq;
-import bhpc;
-import bhrp;
+import bbgr;
+import bfur;
+import bfyl;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +23,7 @@ public class VADHelper
   
   static
   {
-    jdField_a_of_type_Int = bhrp.b;
+    jdField_a_of_type_Int = bfyl.b;
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
     jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap());
     jdField_a_of_type_Boolean = false;
@@ -61,37 +61,23 @@ public class VADHelper
   
   public static long a(String paramString)
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (jdField_a_of_type_Boolean)
+    if ((jdField_a_of_type_Boolean) && (paramString != null))
     {
-      l1 = l2;
-      if (paramString != null)
+      Long[] arrayOfLong = (Long[])jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if ((arrayOfLong != null) && (arrayOfLong[0].longValue() > 0L))
       {
-        Long[] arrayOfLong = (Long[])jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        l1 = l2;
-        if (arrayOfLong != null)
+        Long localLong = arrayOfLong[1];
+        if (localLong != null)
         {
-          l1 = l2;
-          if (arrayOfLong[0].longValue() > 0L)
-          {
-            Long localLong = arrayOfLong[1];
-            l2 = localLong.longValue();
-            l1 = l2;
-            if (localLong != null)
-            {
-              l1 = l2;
-              if (QLog.isColorLevel())
-              {
-                QLog.i(jdField_a_of_type_JavaLangString, 2, paramString + ", AVG.cost=" + arrayOfLong[1].longValue() / arrayOfLong[0].longValue() + " totalTime:" + arrayOfLong[1] + " count:" + arrayOfLong[0]);
-                l1 = l2;
-              }
-            }
+          if (QLog.isColorLevel()) {
+            QLog.i(jdField_a_of_type_JavaLangString, 2, paramString + ", AVG.cost=" + arrayOfLong[1].longValue() / arrayOfLong[0].longValue() + " totalTime:" + arrayOfLong[1] + " count:" + arrayOfLong[0]);
           }
+          return localLong.longValue();
         }
+        return 0L;
       }
     }
-    return l1;
+    return 0L;
   }
   
   public static void a()
@@ -118,7 +104,7 @@ public class VADHelper
     QLog.i(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
     if ((jdField_b_of_type_Boolean) && (!c))
     {
-      bhlq.a(paramContext, 230, anzj.a(2131714814), localStringBuilder.toString(), "", "ok", new bcnp(), null).show();
+      bfur.a(paramContext, 230, amtj.a(2131715048), localStringBuilder.toString(), "", "ok", new bbgr(), null).show();
       c = true;
     }
     a();
@@ -181,7 +167,7 @@ public class VADHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.VADHelper
  * JD-Core Version:    0.7.0.1
  */

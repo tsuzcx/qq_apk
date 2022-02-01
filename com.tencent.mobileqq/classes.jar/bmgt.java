@@ -1,66 +1,53 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.module.aifilter.SingleImageAIFilterProxy.1;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bmgt
+  extends bmgg
 {
-  int jdField_a_of_type_Int = 0;
-  public Dialog a;
-  public Intent a;
-  public ServiceConnection a;
-  public avsk a;
-  PluginBaseInfo jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo;
-  public Class<? extends Activity> a;
-  public String a;
-  public List<RemoteCommand> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c = 10000;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
+  private static final String a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private List<bmde> c;
   
-  public bmgt(int paramInt)
+  static
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangString = bmgt.class.getSimpleName();
   }
   
-  public void a()
+  public bmgt(String paramString, List<bmde> paramList, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo != null))
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramList;
+  }
+  
+  public bmgl a(List<bmgk> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (paramList = null;; paramList = (bmgk)paramList.get(0))
     {
-      QLog.d("plugin_tag", 1, "pluginStartupAttachInfo dex2Oat " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat + "lib " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib + "download " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload + "apk " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
-      if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk != 0L))
-      {
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginOatCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginLibCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginDownloadCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginApkCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk = 0L;
+      return a(paramList);
+      if (paramList.size() > 1) {
+        bmbx.d(jdField_a_of_type_JavaLangString, "single image but responseList != 1");
       }
     }
   }
   
-  public void a(PluginBaseInfo paramPluginBaseInfo)
+  protected void a(Context paramContext, bmgj parambmgj)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo = paramPluginBaseInfo;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = 1;
+    ThreadManager.getSubThreadHandler().post(new SingleImageAIFilterProxy.1(this, localArrayList, paramContext, parambmgj));
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

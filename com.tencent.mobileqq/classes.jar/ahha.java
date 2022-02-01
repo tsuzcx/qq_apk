@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
 class ahha
-  extends ahkx
+  extends andd
 {
-  ahha(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahha(ahgz paramahgz) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onBuluoHotChatRedPointComing(boolean paramBoolean, String paramString)
   {
-    return new ahuv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if ((this.a.g != 2) && (paramBoolean) && (this.a.b != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
+      this.a.b.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
+    }
   }
 }
 

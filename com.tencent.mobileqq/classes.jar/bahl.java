@@ -1,43 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.bussiness.presentwall.ProfilePresentWallComponent.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class bahl
-  implements View.OnClickListener
 {
-  bahl(bahk parambahk) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  amwl jdField_a_of_type_Amwl;
+  baho jdField_a_of_type_Baho;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof azvr)) {}
-    switch (((azvr)localObject).a)
-    {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    localObject = new Intent(bahk.a(this.a), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", ((azxr)bahk.a(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.presentCustourl);
-    bahk.b(this.a).startActivity((Intent)localObject);
-    ThreadManager.getFileThreadHandler().post(new ProfilePresentWallComponent.1.1(this));
-    if (((azxr)bahk.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {
-      bdll.b(bahk.a(this.a), "", "", "", "0X800A1C7", "0X800A1C7", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      baew.f(bahk.c(this.a), (azxr)bahk.c(this.a));
-      break;
-      bdll.b(bahk.b(this.a), "", "", "", "0X800A1C9", "0X800A1C9", 0, 0, "", "", "", "");
-    }
+    return (this.a != null) && (this.b == 1);
+  }
+  
+  public boolean b()
+  {
+    return (this.a != null) && (this.b >= 2);
+  }
+  
+  public boolean c()
+  {
+    return (this.a != null) && (this.c == 3);
+  }
+  
+  public boolean d()
+  {
+    return (this.a != null) && (this.c >= 4);
   }
 }
 

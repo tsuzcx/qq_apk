@@ -1,28 +1,21 @@
-class aseo
-  extends anul
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.FetchAppInfoCallback.1;
+import com.tencent.tmassistant.appinfo.aidl.GetAppInfoCallback;
+import com.tencent.tmassistant.appinfo.data.AppDetail;
+import java.util.List;
+
+public class aseo
+  extends GetAppInfoCallback
 {
-  aseo(asel paramasel) {}
+  aseo(asej paramasej) {}
   
-  protected void a(int paramInt)
+  public void onGetAppInfoResponse(int paramInt1, int paramInt2, List<AppDetail> paramList)
   {
-    if ((paramInt == 0) && (this.a.a != null)) {
-      this.a.a.e();
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
-  
-  protected void b(int paramInt)
-  {
-    asel.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new QFileAppStorePromoteManager.FetchAppInfoCallback.1(this, paramInt1, paramInt2, paramList));
   }
 }
 

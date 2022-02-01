@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ark;
 
-import aqcf;
-import arbu;
-import arbz;
-import arca;
+import aovq;
+import apvk;
+import apvp;
+import apvq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ArkAppPreDownloadMgr$1
   implements Runnable
 {
-  public ArkAppPreDownloadMgr$1(aqcf paramaqcf) {}
+  public ArkAppPreDownloadMgr$1(aovq paramaovq) {}
   
   public void run()
   {
-    arbz localarbz = arca.b(380).a();
-    if ((localarbz == null) && (QLog.isColorLevel())) {
+    apvp localapvp = apvq.b(380).a();
+    if ((localapvp == null) && (QLog.isColorLevel())) {
       QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling get preload config from default");
     }
-    aqcf.a(this.this$0).clear();
-    this.this$0.a(localarbz);
-    aqcf.c();
+    aovq.a(this.this$0).clear();
+    this.this$0.a(localapvp);
+    aovq.c();
     this.this$0.a();
   }
 }

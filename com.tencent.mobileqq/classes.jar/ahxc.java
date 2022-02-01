@@ -1,23 +1,20 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-class ahxc
-  implements ahca
+public class ahxc
+  implements aibo
 {
-  ahxc(ahxb paramahxb) {}
+  public ahxc(AddContactsActivity paramAddContactsActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    UnlimitedBladeWorks.a(this.a.a).b = true;
-    UnlimitedBladeWorks.a(this.a.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a.a) != null)
+    AddContactsActivity.a(this.a, paramBoolean);
+    ImageView localImageView = AddContactsActivity.a(this.a);
+    if (AddContactsActivity.a(this.a)) {}
+    for (int i = 0;; i = 8)
     {
-      UnlimitedBladeWorks.a(this.a.a).a();
-      if (UnlimitedBladeWorks.b(this.a.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
-        UnlimitedBladeWorks.a(this.a.a, 0);
-      }
+      localImageView.setVisibility(i);
+      return;
     }
   }
 }

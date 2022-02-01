@@ -1,22 +1,22 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bolg;
-import bolh;
+import blpm;
+import blpn;
+import com.tencent.biz.common.util.HttpUtil;
 import java.util.List;
-import nnr;
 
 public class AEBottomListAdapter$1$1
   implements Runnable
 {
-  public AEBottomListAdapter$1$1(bolh parambolh) {}
+  public AEBottomListAdapter$1$1(blpn paramblpn) {}
   
   public void run()
   {
-    int i = nnr.a();
+    int i = HttpUtil.getNetWorkType();
     if (i != 0) {
       this.a.a.notifyDataSetChanged();
     }
-    if ((i == 1) && (bolg.a(this.a.a).size() > 1)) {
+    if ((i == 1) && (blpm.a(this.a.a).size() > 1)) {
       this.a.a.b();
     }
   }

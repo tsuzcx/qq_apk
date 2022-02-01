@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import asjw;
-import bilz;
-import binb;
-import bisi;
+import ardu;
+import bgsi;
+import bgtj;
+import bgyk;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.emosm.Client;
@@ -108,7 +108,7 @@ public class LiveRoomWebViewFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QLog.d("LiveRoomWebViewFragment", 1, "onCreateView");
-    if (bilz.d) {
+    if (bgsi.d) {
       this.mIsWebViewCache = true;
     }
     this.mRootLayout = new FrameLayout(getActivity());
@@ -139,7 +139,7 @@ public class LiveRoomWebViewFragment
       this.mIntent.putExtra("webview_hide_progress", true);
       this.mWebViewBuilder = new LiveRoomWebViewBuilder(getActivity(), getActivity(), this.mIntent, this.mApp);
       paramLayoutInflater = null;
-      paramViewGroup = new binb(this.mWebViewBuilder);
+      paramViewGroup = new bgtj(this.mWebViewBuilder);
       if (this.mPluginList != null)
       {
         paramLayoutInflater = new VasCommonJsPlugin();
@@ -150,8 +150,8 @@ public class LiveRoomWebViewFragment
       if ((paramLayoutInflater != null) && (paramLayoutInflater.mRuntime != null)) {
         setVasUIInterface(paramLayoutInflater, paramViewGroup);
       }
-      if (!asjw.a().a()) {
-        asjw.a().a().doBindService(this.mApp.getApplication());
+      if (!ardu.a().a()) {
+        ardu.a().a().doBindService(this.mApp.getApplication());
       }
       if (this.mWebViewBuilder.getContainer().getParent() != null) {
         QLog.d("LiveRoomWebViewFragment", 1, "ViewRoot 's parent " + this.mWebViewBuilder.getContainer().getParent().hashCode());
@@ -237,9 +237,9 @@ public class LiveRoomWebViewFragment
     }
   }
   
-  public void setVasUIInterface(VasCommonJsPlugin paramVasCommonJsPlugin, binb parambinb)
+  public void setVasUIInterface(VasCommonJsPlugin paramVasCommonJsPlugin, bgtj parambgtj)
   {
-    paramVasCommonJsPlugin.setUiInterface(new LiveRoomWebViewFragment.1(this, parambinb));
+    paramVasCommonJsPlugin.setUiInterface(new LiveRoomWebViewFragment.1(this, parambgtj));
   }
 }
 

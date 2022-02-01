@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="65.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/a2o" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/h4b" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/wkc" android:layout_marginStart="16.0dip" />
-    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:id="@id/my0" android:background="@drawable/bkh" android:layout_width="53.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:text="进群" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" />
-    <RelativeLayout android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/my0" android:layout_toRightOf="@id/a2o" android:layout_centerVertical="true">
-        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_marginStart="12.0dip" />
-    </RelativeLayout>
-</RelativeLayout>

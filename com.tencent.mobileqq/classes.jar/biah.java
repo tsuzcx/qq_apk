@@ -1,19 +1,8 @@
-public class biah
+import android.graphics.Bitmap;
+
+public abstract interface biah
 {
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    paramString6 = new StringBuilder();
-    paramString6.append(paramString1).append("|");
-    paramString6.append(paramString2).append("|");
-    paramString6.append(paramString3).append("|");
-    paramString6.append(paramString4).append("|");
-    paramString6.append(paramString5).append("|");
-    paramString6.append(paramString7).append("|");
-    paramString6.append(paramString8).append("|");
-    paramString6.append(paramString9).append("|");
-    paramString6.append(paramString10);
-    bdkl.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
-  }
+  public abstract void a(String paramString, Bitmap paramBitmap);
 }
 
 

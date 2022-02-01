@@ -1,34 +1,36 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanel;
 
-class mhz
-  extends ClickableSpan
+public class mhz
+  implements Animator.AnimatorListener
 {
-  private WeakReference<mhr> a;
+  public mhz(QavPanel paramQavPanel) {}
   
-  public mhz(mhr parammhr)
-  {
-    this.a = new WeakReference(parammhr);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a == null) {}
-    do
+    if (QavPanel.a(this.a))
     {
+      paramAnimator = this.a.a.a().a();
+      paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
+      paramAnimator.b("tryPlayBtnMuteAnimation onAnimationEnd", 1);
+      this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
       return;
-      paramView = (mhr)this.a.get();
-    } while (paramView == null);
-    paramView.d();
+    }
+    this.a.a.a().g("tryPlayBtnMuteAnimation onAnimationEnd", 1);
+    this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
+    QavPanel.a(this.a).a(false, false);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    QavPanel.a(this.a).a(false);
   }
 }
 

@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearch;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.AppConstants;
 
-final class bchf
-  implements Comparator<MostUsedSearch>
+public abstract interface bchf
 {
-  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
-  {
-    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
-  }
+  public static final String an = amtj.a(2131713645);
+  public static final String ao = amtj.a(2131713637);
+  public static final String ap = amtj.a(2131713630);
+  public static final String aq = amtj.a(2131713641);
+  public static final String ar = AppConstants.SDCARD_PATH + "photo" + "/temp/";
 }
 
 

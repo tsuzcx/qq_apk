@@ -1,20 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
-final class boci
-  implements DialogInterface.OnClickListener
+public class boci
 {
-  boci(int paramInt, Activity paramActivity) {}
+  public int a;
+  public int b = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boci(SVHwEncoder.HwEncode paramHwEncode)
   {
-    if (boch.b(this.jdField_a_of_type_Int))
-    {
-      boch.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
-      return;
-    }
-    boch.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

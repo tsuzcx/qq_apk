@@ -1,37 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.widget.DynamicGridView;
 
 public class bjpl
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bjpl(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public bjpl(DynamicGridView paramDynamicGridView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_Bhpc == paramDialogInterface)
-    {
-      if (paramInt != 1) {
-        break label99;
-      }
-      paramDialogInterface = new Intent(this.a.getActivity(), LoginActivity.class);
-      paramDialogInterface.putExtra("key_params", this.a.jdField_a_of_type_AndroidOsBundle);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("fromThirdAppByOpenSDK", true);
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.getActivity().startActivity(paramDialogInterface);
-      this.a.getActivity().finish();
-    }
-    label99:
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.getActivity().setResult(0);
-    this.a.getActivity().finish();
+    this.a.invalidate();
   }
 }
 

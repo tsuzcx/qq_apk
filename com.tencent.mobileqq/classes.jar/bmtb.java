@@ -1,52 +1,45 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_req;
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import com.tencent.qphone.base.util.QLog;
 
-public class bmtb
-  extends QzoneExternalRequest
+class bmtb
+  extends bmte
 {
-  public JceStruct a;
+  bmtb(bmta parambmta) {}
   
-  public bmtb(long paramLong, String paramString)
-  {
-    super.setRefer(paramString);
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    paramString = new get_albumlist_num_req();
-    paramString.uin = paramLong;
-    this.a = paramString;
-  }
+  public void onCancel(String paramString) {}
   
-  public static get_albumlist_num_rsp a(byte[] paramArrayOfByte)
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
     }
-    get_albumlist_num_rsp localget_albumlist_num_rsp;
-    do
+    paramString = this.a;
+    if (paramBoolean) {}
+    for (;;)
     {
-      return paramArrayOfByte;
-      localget_albumlist_num_rsp = (get_albumlist_num_rsp)decode(paramArrayOfByte, "getAlbumListNum");
-      paramArrayOfByte = localget_albumlist_num_rsp;
-    } while (localget_albumlist_num_rsp != null);
-    return null;
+      try
+      {
+        this.a.a.mProgress = 100;
+        this.a.b();
+        return;
+      }
+      finally {}
+      this.a.a.mProgress = -1;
+      this.a.a(4);
+    }
   }
   
-  public String getCmdString()
+  public void onNetChange(int paramInt) {}
+  
+  public void onProgress(String arg1, int paramInt)
   {
-    return "QzoneNewService.getAlbumListNum";
+    synchronized (this.a)
+    {
+      this.a.a.mProgress = paramInt;
+      return;
+    }
   }
   
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAlbumListNum";
-  }
+  public void onStart(String paramString, boolean paramBoolean) {}
 }
 
 

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import blpe;
+import bjto;
 
 public class ReboundLayout
   extends LinearLayout
@@ -137,7 +137,7 @@ public class ReboundLayout
   
   public void onStopNestedScroll(View paramView)
   {
-    startAnimation(new blpe(this, null));
+    startAnimation(new bjto(this, null));
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
@@ -159,7 +159,7 @@ public class ReboundLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ReboundLayout
  * JD-Core Version:    0.7.0.1
  */

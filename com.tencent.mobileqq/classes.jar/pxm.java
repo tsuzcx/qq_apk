@@ -1,22 +1,30 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcShortContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 class pxm
-  extends ComponentContentPgcShortContentGridImage
+  implements pxo<BEAN, COOKIE>
 {
-  pxm(pxl parampxl, Context paramContext, ArticleInfo paramArticleInfo)
-  {
-    super(paramContext);
-  }
+  pxm(pxj parampxj, pxi parampxi) {}
   
-  public int d()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
+    this.jdField_a_of_type_Pxj.a.addAll(paramArrayList);
+    if (paramBoolean1)
+    {
+      pxj.a(this.jdField_a_of_type_Pxj, paramCOOKIE);
+      paramArrayList = this.jdField_a_of_type_Pxj;
+      if (paramBoolean2) {
+        break label68;
+      }
     }
-    return super.d();
+    label68:
+    for (paramBoolean2 = true;; paramBoolean2 = false)
+    {
+      pxj.a(paramArrayList, paramBoolean2);
+      this.jdField_a_of_type_Pxi.a(paramBoolean1, this.jdField_a_of_type_Pxj.a, paramInt2, paramString);
+      return;
+    }
   }
 }
 

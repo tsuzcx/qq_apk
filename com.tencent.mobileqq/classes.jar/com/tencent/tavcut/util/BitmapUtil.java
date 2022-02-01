@@ -12,10 +12,13 @@ import android.media.ExifInterface;
 import android.support.annotation.NonNull;
 import com.tencent.tavcut.bean.CropConfig;
 import com.tencent.tavcut.bean.Size;
+import java.io.File;
 import java.io.IOException;
 
 public class BitmapUtil
 {
+  public static final int BUFFER_SIZE_DECODE_BITMAP = 8192;
+  public static final int BUFFER_SIZE_DECODE_BOUND = 2048;
   private static final String TAG = BitmapUtil.class.getSimpleName();
   
   public static Bitmap cropBitmap(String paramString, CropConfig paramCropConfig)
@@ -67,6 +70,177 @@ public class BitmapUtil
       {
         Logger.e(paramString);
       }
+    }
+  }
+  
+  /* Error */
+  public static Bitmap decodeFileWithBuffer(String paramString, BitmapFactory.Options paramOptions)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: new 114	java/io/FileInputStream
+    //   6: dup
+    //   7: aload_0
+    //   8: invokespecial 117	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   11: astore_2
+    //   12: aload_1
+    //   13: ifnull +47 -> 60
+    //   16: aload_2
+    //   17: astore_0
+    //   18: aload_1
+    //   19: getfield 121	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   22: ifeq +38 -> 60
+    //   25: aload_2
+    //   26: astore_0
+    //   27: new 123	java/io/BufferedInputStream
+    //   30: dup
+    //   31: aload_2
+    //   32: sipush 2048
+    //   35: invokespecial 126	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   38: aconst_null
+    //   39: aload_1
+    //   40: invokestatic 130	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   43: astore_1
+    //   44: aload_1
+    //   45: astore_0
+    //   46: aload_0
+    //   47: astore_3
+    //   48: aload_2
+    //   49: ifnull +9 -> 58
+    //   52: aload_2
+    //   53: invokevirtual 135	java/io/InputStream:close	()V
+    //   56: aload_0
+    //   57: astore_3
+    //   58: aload_3
+    //   59: areturn
+    //   60: aload_2
+    //   61: astore_0
+    //   62: new 123	java/io/BufferedInputStream
+    //   65: dup
+    //   66: aload_2
+    //   67: sipush 8192
+    //   70: invokespecial 126	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   73: aconst_null
+    //   74: aload_1
+    //   75: invokestatic 130	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   78: astore_1
+    //   79: aload_1
+    //   80: astore_0
+    //   81: goto -35 -> 46
+    //   84: astore_3
+    //   85: aconst_null
+    //   86: astore_1
+    //   87: aload_1
+    //   88: astore_0
+    //   89: getstatic 21	com/tencent/tavcut/util/BitmapUtil:TAG	Ljava/lang/String;
+    //   92: aload_3
+    //   93: invokevirtual 138	java/lang/Exception:toString	()Ljava/lang/String;
+    //   96: invokestatic 141	com/tencent/tavcut/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   99: aload 4
+    //   101: astore_3
+    //   102: aload_1
+    //   103: ifnull -45 -> 58
+    //   106: aload_1
+    //   107: invokevirtual 135	java/io/InputStream:close	()V
+    //   110: aconst_null
+    //   111: areturn
+    //   112: astore_0
+    //   113: aconst_null
+    //   114: areturn
+    //   115: astore_1
+    //   116: aconst_null
+    //   117: astore_0
+    //   118: aload_0
+    //   119: ifnull +7 -> 126
+    //   122: aload_0
+    //   123: invokevirtual 135	java/io/InputStream:close	()V
+    //   126: aload_1
+    //   127: athrow
+    //   128: astore_1
+    //   129: aload_0
+    //   130: areturn
+    //   131: astore_0
+    //   132: goto -6 -> 126
+    //   135: astore_1
+    //   136: goto -18 -> 118
+    //   139: astore_3
+    //   140: aload_2
+    //   141: astore_1
+    //   142: goto -55 -> 87
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	145	0	paramString	String
+    //   0	145	1	paramOptions	BitmapFactory.Options
+    //   11	130	2	localFileInputStream	java.io.FileInputStream
+    //   47	12	3	str	String
+    //   84	9	3	localException1	Exception
+    //   101	1	3	localObject1	Object
+    //   139	1	3	localException2	Exception
+    //   1	99	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	12	84	java/lang/Exception
+    //   106	110	112	java/io/IOException
+    //   3	12	115	finally
+    //   52	56	128	java/io/IOException
+    //   122	126	131	java/io/IOException
+    //   18	25	135	finally
+    //   27	44	135	finally
+    //   62	79	135	finally
+    //   89	99	135	finally
+    //   18	25	139	java/lang/Exception
+    //   27	44	139	java/lang/Exception
+    //   62	79	139	java/lang/Exception
+  }
+  
+  public static Bitmap getBitmapWithSize(String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!new File(paramString).exists()) {
+      return null;
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    decodeFileWithBuffer(paramString, localOptions);
+    localOptions.inJustDecodeBounds = false;
+    int i = localOptions.outWidth;
+    int j = localOptions.outHeight;
+    j = Math.min(i / paramInt1, j / paramInt2);
+    i = j;
+    if (j < 1) {
+      i = 1;
+    }
+    localOptions.inSampleSize = i;
+    Bitmap localBitmap2 = retryOptionBitmap(localOptions, paramString, true);
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2 == null)
+    {
+      localOptions.inSampleSize += 1;
+      localBitmap1 = retryOptionBitmap(localOptions, paramString);
+    }
+    if (localBitmap1 == null) {
+      return null;
+    }
+    i = localBitmap1.getWidth();
+    j = localBitmap1.getHeight();
+    float f2 = paramInt1 / i;
+    float f3 = paramInt2 / j;
+    if ((f2 > 1.0F) && (f3 > 1.0F)) {
+      return localBitmap1;
+    }
+    paramString = new Matrix();
+    if (paramBoolean1)
+    {
+      float f1 = Math.min(f2, f3);
+      if (paramBoolean2) {
+        f1 = Math.max(f2, f3);
+      }
+      paramString.postScale(f1, f1);
+    }
+    for (;;)
+    {
+      return retryMatrixBitmap(localBitmap1, i, j, paramString, true);
+      paramString.postScale(f2, f3);
     }
   }
   
@@ -124,6 +298,67 @@ public class BitmapUtil
     return (paramBitmap != null) && (!paramBitmap.isRecycled());
   }
   
+  public static Bitmap retryMatrixBitmap(Bitmap paramBitmap, int paramInt1, int paramInt2, Matrix paramMatrix, boolean paramBoolean)
+  {
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramInt1, paramInt2, paramMatrix, true);
+      return localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      Logger.e(TAG, "catch out of mem Matrix " + paramBoolean, localOutOfMemoryError);
+      if (paramBoolean) {
+        return retryMatrixBitmap(paramBitmap, paramInt1, paramInt2, paramMatrix, false);
+      }
+    }
+    return null;
+  }
+  
+  private static Bitmap retryOptionBitmap(BitmapFactory.Options paramOptions, String paramString)
+  {
+    int i = 0;
+    Object localObject = null;
+    for (;;)
+    {
+      if ((i > 0) && (paramOptions.inSampleSize > 7)) {
+        return localObject;
+      }
+      try
+      {
+        Bitmap localBitmap = decodeFileWithBuffer(paramString, paramOptions);
+        localObject = localBitmap;
+        Logger.i("QZoneUpload", "options.inSampleSize ： " + paramOptions.inSampleSize);
+        return localBitmap;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        Logger.e(TAG, "catch out of mem Option small options", localOutOfMemoryError);
+        paramOptions.inSampleSize += 1;
+        i += 1;
+      }
+    }
+  }
+  
+  private static Bitmap retryOptionBitmap(BitmapFactory.Options paramOptions, String paramString, boolean paramBoolean)
+  {
+    Object localObject = null;
+    try
+    {
+      Bitmap localBitmap = decodeFileWithBuffer(paramString, paramOptions);
+      localObject = localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      do
+      {
+        Logger.e(TAG, "catch out of mem Option " + paramBoolean, localOutOfMemoryError);
+      } while (!paramBoolean);
+    }
+    return localObject;
+    return retryOptionBitmap(paramOptions, paramString, false);
+  }
+  
   public static boolean saveBitmap(Bitmap paramBitmap, int paramInt, String paramString)
   {
     return saveBitmap(paramBitmap, Bitmap.CompressFormat.JPEG, paramInt, paramString, null);
@@ -138,184 +373,184 @@ public class BitmapUtil
     //   3: iconst_0
     //   4: istore 5
     //   6: aload_0
-    //   7: invokestatic 38	com/tencent/tavcut/util/BitmapUtil:isValidBitmap	(Landroid/graphics/Bitmap;)Z
-    //   10: ifne +13 -> 23
-    //   13: getstatic 16	com/tencent/tavcut/util/BitmapUtil:TAG	Ljava/lang/String;
-    //   16: ldc 166
-    //   18: invokestatic 169	com/tencent/tavcut/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: iconst_0
-    //   22: ireturn
-    //   23: aconst_null
-    //   24: astore 9
-    //   26: new 171	java/io/FileOutputStream
-    //   29: dup
-    //   30: new 173	java/io/File
-    //   33: dup
-    //   34: aload_3
-    //   35: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
-    //   38: invokespecial 177	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   41: astore 10
-    //   43: aload 10
-    //   45: astore 9
-    //   47: aload_0
-    //   48: aload_1
-    //   49: iload_2
-    //   50: aload 10
-    //   52: invokevirtual 181	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   55: pop
-    //   56: aload 10
-    //   58: ifnull +229 -> 287
-    //   61: aload 10
-    //   63: invokevirtual 184	java/io/FileOutputStream:flush	()V
-    //   66: aload 10
-    //   68: invokevirtual 187	java/io/FileOutputStream:close	()V
-    //   71: aload 4
-    //   73: ifnull +190 -> 263
-    //   76: new 111	android/media/ExifInterface
-    //   79: dup
-    //   80: aload_3
-    //   81: invokespecial 114	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
-    //   84: astore_0
-    //   85: ldc 111
-    //   87: invokevirtual 191	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
-    //   90: astore_1
-    //   91: aload_1
-    //   92: arraylength
-    //   93: istore 6
-    //   95: iload 5
-    //   97: istore_2
-    //   98: iload_2
-    //   99: iload 6
-    //   101: if_icmpge +165 -> 266
-    //   104: aload_1
-    //   105: iload_2
-    //   106: aaload
-    //   107: astore_3
-    //   108: aload_3
-    //   109: invokevirtual 196	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   112: astore 9
-    //   114: aload 9
-    //   116: invokestatic 202	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   119: ifne +36 -> 155
-    //   122: aload 9
-    //   124: ldc 203
-    //   126: invokevirtual 209	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   129: ifeq +26 -> 155
-    //   132: aload_3
-    //   133: ldc 111
-    //   135: invokevirtual 213	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   138: invokevirtual 216	java/lang/Object:toString	()Ljava/lang/String;
-    //   141: astore_3
-    //   142: aload_3
-    //   143: ldc 116
-    //   145: invokevirtual 220	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   148: istore 8
-    //   150: iload 8
-    //   152: ifeq +83 -> 235
-    //   155: iload_2
-    //   156: iconst_1
-    //   157: iadd
-    //   158: istore_2
-    //   159: goto -61 -> 98
-    //   162: astore_0
-    //   163: aload_0
-    //   164: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   167: iconst_0
-    //   168: istore 7
-    //   170: goto -99 -> 71
-    //   173: astore_1
-    //   174: aconst_null
-    //   175: astore_0
-    //   176: aload_0
-    //   177: astore 9
-    //   179: aload_1
-    //   180: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   183: aload_0
-    //   184: ifnull +103 -> 287
-    //   187: aload_0
-    //   188: invokevirtual 184	java/io/FileOutputStream:flush	()V
-    //   191: aload_0
-    //   192: invokevirtual 187	java/io/FileOutputStream:close	()V
-    //   195: goto -124 -> 71
-    //   198: astore_0
-    //   199: aload_0
-    //   200: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   203: iconst_0
-    //   204: istore 7
-    //   206: goto -135 -> 71
-    //   209: astore_0
-    //   210: aload 9
-    //   212: astore_1
-    //   213: aload_1
-    //   214: ifnull +11 -> 225
-    //   217: aload_1
-    //   218: invokevirtual 184	java/io/FileOutputStream:flush	()V
-    //   221: aload_1
-    //   222: invokevirtual 187	java/io/FileOutputStream:close	()V
-    //   225: aload_0
-    //   226: athrow
-    //   227: astore_1
-    //   228: aload_1
-    //   229: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   232: goto -7 -> 225
-    //   235: aload 4
-    //   237: aload_3
-    //   238: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
-    //   241: astore 9
-    //   243: aload 9
-    //   245: ifnull -90 -> 155
-    //   248: aload_0
-    //   249: aload_3
-    //   250: aload 9
-    //   252: invokevirtual 227	android/media/ExifInterface:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
-    //   255: goto -100 -> 155
-    //   258: astore_0
-    //   259: aload_0
-    //   260: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   263: iload 7
-    //   265: ireturn
-    //   266: aload_0
-    //   267: invokevirtual 230	android/media/ExifInterface:saveAttributes	()V
-    //   270: goto -7 -> 263
-    //   273: astore_0
-    //   274: aload 9
-    //   276: astore_1
-    //   277: goto -64 -> 213
-    //   280: astore_1
-    //   281: aload 10
-    //   283: astore_0
-    //   284: goto -108 -> 176
-    //   287: iconst_0
-    //   288: istore 7
-    //   290: goto -219 -> 71
+    //   7: invokestatic 43	com/tencent/tavcut/util/BitmapUtil:isValidBitmap	(Landroid/graphics/Bitmap;)Z
+    //   10: ifne +14 -> 24
+    //   13: getstatic 21	com/tencent/tavcut/util/BitmapUtil:TAG	Ljava/lang/String;
+    //   16: ldc_w 269
+    //   19: invokestatic 141	com/tencent/tavcut/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: iconst_0
+    //   23: ireturn
+    //   24: aconst_null
+    //   25: astore 9
+    //   27: new 271	java/io/FileOutputStream
+    //   30: dup
+    //   31: new 145	java/io/File
+    //   34: dup
+    //   35: aload_3
+    //   36: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: invokespecial 274	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   42: astore 10
+    //   44: aload 10
+    //   46: astore 9
+    //   48: aload_0
+    //   49: aload_1
+    //   50: iload_2
+    //   51: aload 10
+    //   53: invokevirtual 278	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   56: pop
+    //   57: aload 10
+    //   59: ifnull +230 -> 289
+    //   62: aload 10
+    //   64: invokevirtual 281	java/io/FileOutputStream:flush	()V
+    //   67: aload 10
+    //   69: invokevirtual 282	java/io/FileOutputStream:close	()V
+    //   72: aload 4
+    //   74: ifnull +191 -> 265
+    //   77: new 192	android/media/ExifInterface
+    //   80: dup
+    //   81: aload_3
+    //   82: invokespecial 193	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
+    //   85: astore_0
+    //   86: ldc 192
+    //   88: invokevirtual 286	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   91: astore_1
+    //   92: aload_1
+    //   93: arraylength
+    //   94: istore 6
+    //   96: iload 5
+    //   98: istore_2
+    //   99: iload_2
+    //   100: iload 6
+    //   102: if_icmpge +166 -> 268
+    //   105: aload_1
+    //   106: iload_2
+    //   107: aaload
+    //   108: astore_3
+    //   109: aload_3
+    //   110: invokevirtual 291	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   113: astore 9
+    //   115: aload 9
+    //   117: invokestatic 297	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   120: ifne +37 -> 157
+    //   123: aload 9
+    //   125: ldc_w 298
+    //   128: invokevirtual 304	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   131: ifeq +26 -> 157
+    //   134: aload_3
+    //   135: ldc 192
+    //   137: invokevirtual 308	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   140: invokevirtual 309	java/lang/Object:toString	()Ljava/lang/String;
+    //   143: astore_3
+    //   144: aload_3
+    //   145: ldc 195
+    //   147: invokevirtual 313	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   150: istore 8
+    //   152: iload 8
+    //   154: ifeq +83 -> 237
+    //   157: iload_2
+    //   158: iconst_1
+    //   159: iadd
+    //   160: istore_2
+    //   161: goto -62 -> 99
+    //   164: astore_0
+    //   165: aload_0
+    //   166: invokestatic 96	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   169: iconst_0
+    //   170: istore 7
+    //   172: goto -100 -> 72
+    //   175: astore_1
+    //   176: aconst_null
+    //   177: astore_0
+    //   178: aload_0
+    //   179: astore 9
+    //   181: aload_1
+    //   182: invokestatic 96	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   185: aload_0
+    //   186: ifnull +103 -> 289
+    //   189: aload_0
+    //   190: invokevirtual 281	java/io/FileOutputStream:flush	()V
+    //   193: aload_0
+    //   194: invokevirtual 282	java/io/FileOutputStream:close	()V
+    //   197: goto -125 -> 72
+    //   200: astore_0
+    //   201: aload_0
+    //   202: invokestatic 96	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   205: iconst_0
+    //   206: istore 7
+    //   208: goto -136 -> 72
+    //   211: astore_0
+    //   212: aload 9
+    //   214: astore_1
+    //   215: aload_1
+    //   216: ifnull +11 -> 227
+    //   219: aload_1
+    //   220: invokevirtual 281	java/io/FileOutputStream:flush	()V
+    //   223: aload_1
+    //   224: invokevirtual 282	java/io/FileOutputStream:close	()V
+    //   227: aload_0
+    //   228: athrow
+    //   229: astore_1
+    //   230: aload_1
+    //   231: invokestatic 96	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   234: goto -7 -> 227
+    //   237: aload 4
+    //   239: aload_3
+    //   240: invokevirtual 317	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   243: astore 9
+    //   245: aload 9
+    //   247: ifnull -90 -> 157
+    //   250: aload_0
+    //   251: aload_3
+    //   252: aload 9
+    //   254: invokevirtual 320	android/media/ExifInterface:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
+    //   257: goto -100 -> 157
+    //   260: astore_0
+    //   261: aload_0
+    //   262: invokestatic 96	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   265: iload 7
+    //   267: ireturn
+    //   268: aload_0
+    //   269: invokevirtual 323	android/media/ExifInterface:saveAttributes	()V
+    //   272: goto -7 -> 265
+    //   275: astore_0
+    //   276: aload 9
+    //   278: astore_1
+    //   279: goto -64 -> 215
+    //   282: astore_1
+    //   283: aload 10
+    //   285: astore_0
+    //   286: goto -108 -> 178
+    //   289: iconst_0
+    //   290: istore 7
+    //   292: goto -220 -> 72
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	293	0	paramBitmap	Bitmap
-    //   0	293	1	paramCompressFormat	Bitmap.CompressFormat
-    //   0	293	2	paramInt	int
-    //   0	293	3	paramString	String
-    //   0	293	4	paramExifInterface	ExifInterface
-    //   4	92	5	i	int
-    //   93	9	6	j	int
-    //   1	288	7	bool1	boolean
-    //   148	3	8	bool2	boolean
-    //   24	251	9	localObject	Object
-    //   41	241	10	localFileOutputStream	java.io.FileOutputStream
+    //   0	295	0	paramBitmap	Bitmap
+    //   0	295	1	paramCompressFormat	Bitmap.CompressFormat
+    //   0	295	2	paramInt	int
+    //   0	295	3	paramString	String
+    //   0	295	4	paramExifInterface	ExifInterface
+    //   4	93	5	i	int
+    //   94	9	6	j	int
+    //   1	290	7	bool1	boolean
+    //   150	3	8	bool2	boolean
+    //   25	252	9	localObject	Object
+    //   42	242	10	localFileOutputStream	java.io.FileOutputStream
     // Exception table:
     //   from	to	target	type
-    //   61	71	162	java/io/IOException
-    //   26	43	173	java/io/IOException
-    //   187	195	198	java/io/IOException
-    //   26	43	209	finally
-    //   217	225	227	java/io/IOException
-    //   76	95	258	java/lang/Exception
-    //   108	150	258	java/lang/Exception
-    //   235	243	258	java/lang/Exception
-    //   248	255	258	java/lang/Exception
-    //   266	270	258	java/lang/Exception
-    //   47	56	273	finally
-    //   179	183	273	finally
-    //   47	56	280	java/io/IOException
+    //   62	72	164	java/io/IOException
+    //   27	44	175	java/io/IOException
+    //   189	197	200	java/io/IOException
+    //   27	44	211	finally
+    //   219	227	229	java/io/IOException
+    //   77	96	260	java/lang/Exception
+    //   109	152	260	java/lang/Exception
+    //   237	245	260	java/lang/Exception
+    //   250	257	260	java/lang/Exception
+    //   268	272	260	java/lang/Exception
+    //   48	57	275	finally
+    //   181	185	275	finally
+    //   48	57	282	java/io/IOException
   }
   
   public static Bitmap scaleBitmap(Bitmap paramBitmap, int paramInt)

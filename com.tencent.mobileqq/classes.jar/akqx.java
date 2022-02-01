@@ -1,22 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import cooperation.qzone.RDMEtraMsgCollector;
 
 public class akqx
-  implements bljm
+  implements bjog
 {
-  public akqx(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  public akqx(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss()
   {
-    if (QzonePhotoPreviewActivity.a(this.a))
-    {
-      this.a.getActivity().finish();
-      bhkd.anim(this.a.getActivity(), true, false);
-      return;
-    }
-    this.a.a();
+    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + amtj.a(2131702775);
+    RDMEtraMsgCollector.getInstance().addUserAction(str);
   }
 }
 

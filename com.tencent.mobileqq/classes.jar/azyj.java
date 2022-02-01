@@ -1,33 +1,12 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
 
 public class azyj
 {
-  public String a;
-  public String b;
+  public ResourceGrabView a;
   
-  public String a()
+  public static azyj a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
-    {
-      this.b = paramString[0];
-      this.a = paramString[1];
-      return;
-    }
-    this.b = "";
-    this.a = "";
+    return azyl.a();
   }
 }
 

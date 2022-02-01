@@ -1,12 +1,17 @@
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class axew
+final class axew
+  implements awqt
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  axew(axfd paramaxfd, int paramInt) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte)
+  {
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Axfd != null) {
+      this.jdField_a_of_type_Axfd.a(false, null, true, this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

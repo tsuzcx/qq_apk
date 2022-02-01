@@ -1,28 +1,21 @@
 public class bgrk
 {
   public int a;
-  public long a;
   public String a;
   public int b;
-  public String b;
+  public int c = 2;
+  public int d;
+  public int e;
+  public int f;
   
-  public bgrk(String paramString, long paramLong, int paramInt1, int paramInt2)
+  public bgrk(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Int = 2;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-  }
-  
-  public bgrk(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
   }
 }
 

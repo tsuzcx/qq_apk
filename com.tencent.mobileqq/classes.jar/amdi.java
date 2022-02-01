@@ -1,17 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import java.util.Comparator;
 
-public class amdi
-  extends Handler
+class amdi
+  implements Comparator<amei>
 {
-  public amdi(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  amdi(amdf paramamdf) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(amei paramamei1, amei paramamei2)
   {
-    switch (paramMessage.what)
-    {
-    }
+    return paramamei1.h - paramamei2.h;
   }
 }
 

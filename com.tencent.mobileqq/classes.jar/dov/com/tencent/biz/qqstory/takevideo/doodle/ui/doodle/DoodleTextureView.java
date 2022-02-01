@@ -4,9 +4,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLSurfaceView.Renderer;
-import bqmp;
-import bqnt;
-import bqoq;
+import bnjb;
+import bnkb;
+import bnky;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -14,10 +14,10 @@ import javax.microedition.khronos.opengles.GL10;
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, bqmp
+  implements GLSurfaceView.Renderer, bnjb
 {
   int jdField_a_of_type_Int = 320;
-  bqnt jdField_a_of_type_Bqnt;
+  bnkb jdField_a_of_type_Bnkb;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -37,8 +37,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bqnt != null) {
-      this.jdField_a_of_type_Bqnt.c(paramInt);
+    if (this.jdField_a_of_type_Bnkb != null) {
+      this.jdField_a_of_type_Bnkb.c(paramInt);
     }
   }
   
@@ -57,8 +57,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Bqnt != null) {
-      this.jdField_a_of_type_Bqnt.e();
+    if (this.jdField_a_of_type_Bnkb != null) {
+      this.jdField_a_of_type_Bnkb.e();
     }
   }
   
@@ -67,9 +67,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Bqnt != null)
+    if (this.jdField_a_of_type_Bnkb != null)
     {
-      paramGL10 = (bqoq)this.jdField_a_of_type_Bqnt.a(102);
+      paramGL10 = (bnky)this.jdField_a_of_type_Bnkb.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -78,8 +78,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Bqnt != null) {
-      this.jdField_a_of_type_Bqnt.d();
+    if (this.jdField_a_of_type_Bnkb != null) {
+      this.jdField_a_of_type_Bnkb.d();
     }
   }
   
@@ -89,10 +89,10 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(bqnt parambqnt)
+  public void setOpController(bnkb parambnkb)
   {
-    this.jdField_a_of_type_Bqnt = parambqnt;
-    this.jdField_a_of_type_Bqnt.a(this);
+    this.jdField_a_of_type_Bnkb = parambnkb;
+    this.jdField_a_of_type_Bnkb.a(this);
     super.b(new DoodleTextureView.1(this));
   }
 }

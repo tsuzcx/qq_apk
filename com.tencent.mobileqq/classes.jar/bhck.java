@@ -1,26 +1,6 @@
-import android.os.Handler;
-
-class bhck
-  implements bhci
+public abstract interface bhck
 {
-  bhck(bhcj parambhcj) {}
-  
-  public void a()
-  {
-    bhcj.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    bhcj.a(this.a).sendEmptyMessage(0);
-  }
-  
-  public void c()
-  {
-    if (bhcj.a(this.a) != null) {
-      bhcj.a(this.a).b();
-    }
-  }
+  public abstract void a();
 }
 
 

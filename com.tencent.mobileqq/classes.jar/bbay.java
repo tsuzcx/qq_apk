@@ -1,81 +1,80 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import org.apache.http.Header;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import java.util.List;
 
 public class bbay
-  extends beqz
+  extends bbch
 {
-  protected BaseApplicationImpl a;
-  
-  public bbay(BaseApplicationImpl paramBaseApplicationImpl)
+  public bbay(FaceDecoder paramFaceDecoder)
   {
-    this.a = paramBaseApplicationImpl;
+    super(paramFaceDecoder);
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected bbbm<bayt, bbhb> a(FaceDecoder paramFaceDecoder)
   {
-    if ((paramDownloadParams != null) && (paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
-    {
-      paramOutputStream = (String)paramDownloadParams.tag;
-      paramDownloadParams = bigv.a(antf.bg);
-      try
-      {
-        paramDownloadParams = new File(paramDownloadParams);
-        paramDownloadParams.mkdirs();
-        paramDownloadParams = new File(paramDownloadParams, Utils.Crc64String(paramOutputStream));
-        if (paramDownloadParams.exists()) {
-          return paramDownloadParams;
-        }
-        int i = bihw.a(new bihu(paramOutputStream, paramDownloadParams), null);
-        if (i == 0) {
-          return paramDownloadParams;
-        }
-      }
-      catch (Exception paramOutputStream)
-      {
-        QLog.e("AbsDownloader", 1, "download exception " + paramOutputStream);
-      }
-    }
-    return null;
+    return new bbbc(paramFaceDecoder);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(bayr parambayr, bbha parambbha)
   {
-    if ((paramDownloadParams != null) && (paramFile != null))
+    parambayr = (bays)parambayr;
+    LinearLayout localLinearLayout = ((bbgt)parambbha).a();
+    if (localLinearLayout != null)
     {
-      paramDownloadParams = paramDownloadParams.getHeader("isCircle");
-      if (paramDownloadParams != null)
+      List localList = parambayr.a();
+      if (localList != null)
       {
-        paramDownloadParams = paramDownloadParams.getValue();
-        if (!TextUtils.isEmpty(paramDownloadParams))
+        localLinearLayout.removeAllViews();
+        int k = Math.min(localList.size(), parambayr.a());
+        int i = 0;
+        if (i < k)
         {
-          int j = Integer.valueOf(paramDownloadParams).intValue();
-          int i = 90;
-          if (this.a != null) {
-            i = bhgr.a(this.a, 30.0F);
-          }
-          paramDownloadParams = bhmq.a(paramFile.getAbsolutePath(), i, i);
-          paramFile = paramDownloadParams;
-          if (j == 1)
+          bayt localbayt = (bayt)localList.get(i);
+          View localView = LayoutInflater.from(parambbha.a().getContext()).inflate(2131562755, null);
+          bbgv localbbgv = new bbgv(localView);
+          localView.setTag(2131380831, localbayt);
+          localView.setTag(2131380836, localbbgv);
+          localView.setTag(2131380832, Integer.valueOf(i));
+          localView.setTag(2131380830, Integer.valueOf(localList.size()));
+          localView.setTag(2131380833, this.a);
+          bdvp.a(localView, 1, localbayt.b(), 2);
+          bbgn.a(localbayt, k, i);
+          int m = localbayt.a();
+          int n = localbayt.b();
+          if ((localbayt instanceof bayu)) {}
+          for (int j = ((bayu)localbayt).u;; j = 0)
           {
-            if (paramDownloadParams != null) {
-              paramFile = bhmq.a(paramDownloadParams, paramDownloadParams.getWidth(), paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
-            }
-          }
-          else {
-            return paramFile;
+            bbgn.a(m, n, localView, j);
+            localLinearLayout.addView(localView);
+            this.a.a(localbayt, localbbgv);
+            i += 1;
+            break;
           }
         }
       }
     }
-    return null;
+    if (parambbha.b() != null) {
+      parambbha.b().setVisibility(8);
+    }
+    if ((parambayr instanceof bayd))
+    {
+      parambayr = ((bayd)parambayr).a();
+      parambbha = ((bbgt)parambbha).a();
+      if (parambbha != null)
+      {
+        if (parambayr == null) {
+          break label339;
+        }
+        parambbha.a().setVisibility(0);
+        this.a.a(parambayr, parambbha);
+      }
+    }
+    return;
+    label339:
+    parambbha.a().setVisibility(8);
   }
 }
 

@@ -1,28 +1,24 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.HashMap;
 
-public class alit
+class alit
+  implements Comparator<Entity>
 {
-  public static Rect a(View paramView)
-  {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    return localRect;
-  }
+  alit(alis paramalis, HashMap paramHashMap) {}
   
-  public static View a(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    int i = ((aggs)((blmb)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "pos is:" + i);
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
     }
-    if (i < 0) {
-      return null;
+    if (l1 > l2) {
+      return 1;
     }
-    return paramChatXListView.getChildAt(i - paramChatXListView.getFirstVisiblePosition());
+    return 0;
   }
 }
 

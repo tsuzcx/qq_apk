@@ -1,20 +1,24 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.widget.TextView;
 
-public class awlh
+class awlh
+  extends BroadcastReceiver
 {
-  public int a;
-  public Context a;
-  public Drawable a;
-  public View.OnClickListener a;
-  public arsh a;
-  public awkl a;
-  public QQAppInterface a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  awlh(awlc paramawlc) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("SmallScreenState", 0);
+    if (i == 3) {
+      this.a.a.setVisibility(4);
+    }
+    while ((i != 2) && (i != 0)) {
+      return;
+    }
+    this.a.a.setVisibility(0);
+  }
 }
 
 

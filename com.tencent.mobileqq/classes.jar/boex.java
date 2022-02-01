@@ -1,9 +1,9 @@
-import java.io.File;
-
-public class boex
+public final class boex
 {
-  public static final String a = boez.f + File.separator + "camera_emo_default_template.json";
-  public static final String b = boez.f + File.separator + "camera_emo_updated_template.json";
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 3006) || (paramInt == 3009) || (paramInt == 3014) || (paramInt == 3068) || (paramInt == 3075) || (paramInt == 3078) || (paramInt == 3079);
+  }
 }
 
 

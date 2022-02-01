@@ -1,17 +1,16 @@
 public class bjun
 {
-  public final int a;
-  public final String a;
+  public static void a() {}
   
-  public bjun(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public static void a(long paramLong, String paramString, int paramInt) {}
+  
+  public static void a(String paramString) {}
+  
+  public static void b(long paramLong, String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjun
  * JD-Core Version:    0.7.0.1
  */

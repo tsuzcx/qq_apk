@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bddk
+class bddk
+  implements DialogInterface.OnClickListener
 {
-  private static volatile bddk jdField_a_of_type_Bddk;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bddl(this, "Module_VideoPlayIPCServer");
+  bddk(bddh parambddh, String paramString, int paramInt) {}
   
-  public static bddk a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Bddk == null) {}
-    try
+    bddh localbddh = this.jdField_a_of_type_Bddh;
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 8) {}
+    for (String str1 = "clk_openframe_cancel";; str1 = "clk_joinbar_cancel")
     {
-      if (jdField_a_of_type_Bddk == null) {
-        jdField_a_of_type_Bddk = new bddk();
-      }
-      return jdField_a_of_type_Bddk;
+      bddh.a(localbddh, str2, str1);
+      paramDialogInterface.dismiss();
+      return;
     }
-    finally {}
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

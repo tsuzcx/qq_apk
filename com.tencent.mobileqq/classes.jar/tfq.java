@@ -1,17 +1,68 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class tfq
-  extends tfp
+public class tfq<T>
 {
-  public tfq(BridgeModule paramBridgeModule)
+  private T jdField_a_of_type_JavaLangObject;
+  private List<tfr<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public tfq(T paramT)
   {
-    super(paramBridgeModule);
+    this.jdField_a_of_type_JavaLangObject = paramT;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public T a()
   {
-    BridgeModule.access$1300(this.a, paramInt2);
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((tfr)localIterator.next()).a(this);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+  }
+  
+  public void a(tfr<T> paramtfr)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramtfr)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramtfr);
+      }
+      return;
+    }
+    finally
+    {
+      paramtfr = finally;
+      throw paramtfr;
+    }
+  }
+  
+  public void b(tfr<T> paramtfr)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramtfr);
+      return;
+    }
+    finally
+    {
+      paramtfr = finally;
+      throw paramtfr;
+    }
   }
 }
 

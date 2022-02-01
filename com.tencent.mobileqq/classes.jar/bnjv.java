@@ -1,19 +1,8 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
-
-final class bnjv
-  implements QQPermissionCallback
+public class bnjv
 {
-  bnjv(String paramString1, String paramString2, String paramString3, Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static boolean a(int paramInt)
   {
-    bhlq.b(bnjs.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bnjs.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
   }
 }
 

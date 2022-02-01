@@ -1,34 +1,48 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-
-public class baia
-  extends VasQuickUpdateManager.CallBacker
+public abstract class baia
 {
-  public baia(VasProfileTemplateController paramVasProfileTemplateController) {}
+  public static final String a;
+  public long a;
+  private String b;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  static
   {
-    if (VipProfileCardDiyActivity.a(paramLong, paramString1, VasProfileTemplateController.a(this.a).a.diyTextFontId))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate DIY text font download,  errorCode=%s httpCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      if (paramInt1 == 0)
-      {
-        paramString1 = VasProfileTemplateController.a(this.a).b.obtainMessage();
-        paramString1.what = 5;
-        paramString1.obj = VasProfileTemplateController.a(this.a).a;
-        paramString1.arg1 = 0;
-        paramString1.arg2 = 17;
-        VasProfileTemplateController.a(this.a).b.sendMessage(paramString1);
-      }
-      paramVasQuickUpdateManager.removeCallBacker(this);
+    jdField_a_of_type_JavaLangString = babz.jdField_a_of_type_JavaLangString;
+  }
+  
+  public baia(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a()
+  {
+    if (this.b == null) {
+      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
     }
+  }
+  
+  public final String a()
+  {
+    a();
+    return this.b + "thumb.jpg";
+  }
+  
+  public final String b()
+  {
+    a();
+    return this.b + "combine.mp4";
+  }
+  
+  public final String c()
+  {
+    a();
+    return this.b + "audio.mp4";
+  }
+  
+  public String d()
+  {
+    a();
+    return this.b;
   }
 }
 

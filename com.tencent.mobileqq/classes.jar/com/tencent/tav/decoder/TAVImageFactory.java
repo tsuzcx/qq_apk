@@ -4,24 +4,48 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.annotation.Nullable;
 import java.util.Arrays;
 
 public class TAVImageFactory
 {
   private static Bitmap.Config[] SUPPORT_CONFIGS = { Bitmap.Config.ALPHA_8, Bitmap.Config.RGB_565, Bitmap.Config.ARGB_4444, Bitmap.Config.ARGB_8888 };
   
-  private static Bitmap checkBitmapConfig(Bitmap paramBitmap)
+  @Nullable
+  private static Bitmap checkBitmapConfig(@Nullable Bitmap paramBitmap)
   {
-    Bitmap localBitmap = paramBitmap;
-    if (Arrays.binarySearch(SUPPORT_CONFIGS, paramBitmap.getConfig()) < 0) {
-      localBitmap = transcodeBitmap(paramBitmap);
+    Bitmap localBitmap;
+    if (paramBitmap == null) {
+      localBitmap = null;
     }
-    return localBitmap;
+    for (;;)
+    {
+      return localBitmap;
+      localBitmap = paramBitmap;
+      try
+      {
+        if (Arrays.binarySearch(SUPPORT_CONFIGS, paramBitmap.getConfig()) >= 0) {
+          continue;
+        }
+        localBitmap = transcodeBitmap(paramBitmap);
+      }
+      finally {}
+    }
   }
   
-  public static Bitmap fixSupportImageConfig(Bitmap paramBitmap)
+  @Nullable
+  public static Bitmap fixSupportImageConfig(@Nullable Bitmap paramBitmap)
   {
-    return checkBitmapConfig(paramBitmap);
+    try
+    {
+      paramBitmap = checkBitmapConfig(paramBitmap);
+      return paramBitmap;
+    }
+    finally
+    {
+      paramBitmap = finally;
+      throw paramBitmap;
+    }
   }
   
   private static Bitmap transcodeBitmap(Bitmap paramBitmap)

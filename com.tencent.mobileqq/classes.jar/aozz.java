@@ -1,50 +1,57 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
 
 public class aozz
-  extends aoxg
 {
-  public aozz(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static final String a;
+  public apab[] a;
+  
+  static
   {
-    super(paramQQAppInterface, paramContext);
+    jdField_a_of_type_JavaLangString = apac.class.getSimpleName() + "." + aozz.class.getSimpleName();
   }
   
-  private boolean C()
+  public aozz()
   {
-    try
+    this.jdField_a_of_type_ArrayOfApab = new apab[7];
+  }
+  
+  public apab a(AppInterface paramAppInterface, int paramInt)
+  {
+    int i;
+    if (paramInt >= 0)
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      if (TextUtils.isEmpty(arpx.a().h())) {}
-      for (String str = "https://docs.qq.com/desktop/m/index.html?_from=1";; str = arpx.a().h())
+      i = paramInt;
+      if (paramInt <= 7) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfApab[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
       {
-        this.a.startActivity(localIntent.putExtra("url", str));
-        break;
+      default: 
+        paramAppInterface = (AppInterface)localObject;
       }
-      return true;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      localException.printStackTrace();
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new apaa();
+      }
+      this.jdField_a_of_type_ArrayOfApab[i] = localObject;
+      return localObject;
+      paramAppInterface = new ltw();
+      continue;
+      paramAppInterface = new anzh();
+      continue;
+      paramAppInterface = new naz();
     }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TeamWorkListAction", 1, "doAction error: " + localException.getMessage());
-      a("TeamWorkListAction");
-    }
-    return false;
   }
 }
 

@@ -1,109 +1,76 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class xqo
-  extends xqn
+class xqo
+  implements wba
 {
-  private xqn a;
+  xqo(xqn paramxqn, ArrayList paramArrayList) {}
   
-  public Activity a()
+  public void a(boolean paramBoolean)
   {
-    return this.a.a();
-  }
-  
-  public OpenPlayerBuilder.Data a()
-  {
-    return this.a.a();
-  }
-  
-  public XViewPager a()
-  {
-    return this.a.a();
-  }
-  
-  public String a(String paramString)
-  {
-    return this.a.a(paramString);
-  }
-  
-  public xms a()
-  {
-    return this.a.a();
-  }
-  
-  public xmv a()
-  {
-    return this.a.a();
-  }
-  
-  public xqf a()
-  {
-    return this.a.a();
-  }
-  
-  public xqn a()
-  {
-    return this.a;
-  }
-  
-  public xqy a()
-  {
-    return this.a.a();
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.a.a(paramIntent);
-  }
-  
-  public void a(wjd paramwjd)
-  {
-    this.a.a(paramwjd);
-  }
-  
-  public void a(xpd paramxpd)
-  {
-    this.a.a(paramxpd);
-  }
-  
-  public void a(xqn paramxqn)
-  {
-    if (this.a != null) {
-      throw new IllegalStateException("Base context already set");
+    xvv.d("GetMyStoryDesFromVidListStep", "onFinishAll(%b[isEveryTaskSuccess])", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (!paramBoolean)
+    {
+      xvv.e("GetMyStoryDesFromVidListStep", "Get vid to basic info failed!");
+      if (this.jdField_a_of_type_Xqn.jdField_a_of_type_Xrs != null)
+      {
+        this.jdField_a_of_type_Xqn.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqn.a());
+        return;
+      }
+      xvv.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+      return;
     }
-    this.a = paramxqn;
-  }
-  
-  public void a(xrg paramxrg)
-  {
-    this.a.a(paramxrg);
-  }
-  
-  public boolean a()
-  {
-    return this.a.a();
-  }
-  
-  public void b(wjd paramwjd)
-  {
-    this.a.b(paramwjd);
-  }
-  
-  public void b(xpd paramxpd)
-  {
-    this.a.b(paramxpd);
-  }
-  
-  public boolean b()
-  {
-    return this.a.b();
+    Object localObject1 = (vuu)vux.a(5);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2;
+    Object localObject3;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (String)localIterator.next();
+      localObject3 = ((vuu)localObject1).a((String)localObject2);
+      xvv.b("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) = %s", localObject2, localObject3);
+      if (localObject3 == null) {
+        xvv.e("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) return null", new Object[] { localObject2 });
+      } else {
+        localArrayList.add(localObject3);
+      }
+    }
+    ((vuu)localObject1).a(QQStoryContext.a().b(), 0, localArrayList, true);
+    localIterator = ((vuu)localObject1).a(false).iterator();
+    while (localIterator.hasNext())
+    {
+      localObject2 = (StoryVideoItem)localIterator.next();
+      localObject3 = xoi.b((StoryVideoItem)localObject2, localArrayList);
+      if (localObject3 != null)
+      {
+        ((vuu)localObject1).a(((StoryVideoItem)localObject2).mVid);
+        xvv.d("GetMyStoryDesFromVidListStep", "delete local fake item because we get real item from server, local vid=%s, network vid=%s", new Object[] { ((StoryVideoItem)localObject2).mVid, localObject3 });
+      }
+      else
+      {
+        xoi.a((StoryVideoItem)localObject2);
+      }
+    }
+    localObject1 = ((vuu)localObject1).b(QQStoryContext.a().b());
+    xqn.a(this.jdField_a_of_type_Xqn).b();
+    xqn.a(this.jdField_a_of_type_Xqn).a((List)localObject1);
+    xqn.a(this.jdField_a_of_type_Xqn).jdField_a_of_type_Vwa = this.jdField_a_of_type_Xqn.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa;
+    xqn.a(this.jdField_a_of_type_Xqn).b = this.jdField_a_of_type_Xqn.jdField_a_of_type_Xqt.jdField_a_of_type_Boolean;
+    Collections.sort(xqn.a(this.jdField_a_of_type_Xqn).a());
+    if (xqn.a(this.jdField_a_of_type_Xqn) != null) {
+      xqn.a(this.jdField_a_of_type_Xqn).a(xqn.a(this.jdField_a_of_type_Xqn));
+    }
+    if (this.jdField_a_of_type_Xqn.jdField_a_of_type_Xrs != null)
+    {
+      this.jdField_a_of_type_Xqn.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqn.a());
+      return;
+    }
+    xvv.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
   }
 }
 

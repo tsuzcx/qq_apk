@@ -1,17 +1,6 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-
-class bbup
-  implements bbvu
+public abstract interface bbup
 {
-  bbup(bbuo parambbuo) {}
-  
-  public void a(String paramString)
-  {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
-    }
-    SignatureHistoryFragment.a(this.a.a, paramString);
-  }
+  public abstract void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

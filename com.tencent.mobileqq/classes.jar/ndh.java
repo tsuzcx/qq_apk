@@ -1,26 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.gameroom.stage.StageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
-class ndh
-  implements Animator.AnimatorListener
+public class ndh
+  implements View.OnTouchListener
 {
-  ndh(ndg paramndg) {}
+  public ndh(GameListView paramGameListView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.removeView(this.a.a.b);
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.setCancelPreparePressImage();
+      continue;
+      this.a.setCancelPrepareNorImage();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndh
  * JD-Core Version:    0.7.0.1
  */

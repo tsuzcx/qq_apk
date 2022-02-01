@@ -1,21 +1,42 @@
-public final class sxf
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public abstract class sxf
 {
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  protected abstract void a();
+  
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
+    try
+    {
+      paramJSONObject.put("folder_status", pay.d);
+      paramJSONObject.put("kandian_mode", pay.e());
+      paramJSONObject = paramJSONObject.toString();
+      odq.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
+    }
   }
   
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public abstract void b();
+  
+  public void c()
   {
-    paramFloat1 /= paramFloat4 / 2.0F;
-    if (paramFloat1 < 1.0F) {
-      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
-    }
-    paramFloat3 /= 2.0F;
-    paramFloat1 -= 2.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
+    a();
   }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

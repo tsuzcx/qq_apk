@@ -8,13 +8,13 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import asbl;
+import aqvi;
 
 public class StaticLayoutView
   extends View
 {
   private Layout jdField_a_of_type_AndroidTextLayout;
-  asbl jdField_a_of_type_Asbl;
+  aqvi jdField_a_of_type_Aqvi;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -75,10 +75,10 @@ public class StaticLayoutView
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof asbl)) {
-            ((asbl)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof aqvi)) {
+            ((aqvi)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_Asbl = null;
+          this.jdField_a_of_type_Aqvi = null;
           postInvalidate();
         }
         for (;;)
@@ -86,19 +86,19 @@ public class StaticLayoutView
           return true;
           if (i == 0)
           {
-            if ((localObject1[0] instanceof asbl))
+            if ((localObject1[0] instanceof aqvi))
             {
-              ((asbl)localObject1[0]).a(true);
-              this.jdField_a_of_type_Asbl = ((asbl)localObject1[0]);
+              ((aqvi)localObject1[0]).a(true);
+              this.jdField_a_of_type_Aqvi = ((aqvi)localObject1[0]);
             }
             postInvalidate();
           }
         }
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Asbl != null))
+      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Aqvi != null))
       {
-        this.jdField_a_of_type_Asbl.a(false);
-        this.jdField_a_of_type_Asbl = null;
+        this.jdField_a_of_type_Aqvi.a(false);
+        this.jdField_a_of_type_Aqvi = null;
         postInvalidate();
       }
     }

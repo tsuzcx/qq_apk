@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.game;
 
-import amzg;
+import alua;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -9,16 +9,16 @@ import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 public class ApolloJSContext$1
   implements Runnable
 {
-  public ApolloJSContext$1(amzg paramamzg) {}
+  public ApolloJSContext$1(alua paramalua) {}
   
   public void run()
   {
-    if (amzg.a(this.this$0) != null)
+    if (alua.a(this.this$0) != null)
     {
-      Object localObject = amzg.a(this.this$0).getUrl();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("urlshare.cn")) && (amzg.a(this.this$0) != null))
+      Object localObject = alua.a(this.this$0).getUrl();
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("urlshare.cn")) && (alua.a(this.this$0) != null))
       {
-        localObject = amzg.a(this.this$0).getPluginEngine();
+        localObject = alua.a(this.this$0).getPluginEngine();
         if (localObject != null)
         {
           localObject = ((WebViewPluginEngine)localObject).a("apolloGame");

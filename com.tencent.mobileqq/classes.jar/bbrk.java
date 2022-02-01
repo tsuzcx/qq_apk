@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class bbrk
-  implements DialogInterface.OnCancelListener
+public class bbrk
 {
-  bbrk(bbrb parambbrb) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.a.b) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
 }
 
 

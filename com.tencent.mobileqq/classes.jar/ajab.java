@@ -1,48 +1,18 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajab
+public class ajab
   implements View.OnClickListener
 {
-  ajab(ajaa paramajaa, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
+  public ajab(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (this.jdField_a_of_type_Int == 2) {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 1)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
-      }
-      else if (i == 2)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-        continue;
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          if (i == 0) {
-            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
-          } else if (i == 1) {
-            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
-          } else if (i == 2) {
-            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-          }
-        }
-        else {
-          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-        }
-      }
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

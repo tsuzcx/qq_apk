@@ -1,14 +1,15 @@
-class ayri
-  implements ayru
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.VipTagView;
+
+public class ayri
+  implements bfzz<Float>
 {
-  ayri(ayrf paramayrf, ayrk paramayrk) {}
+  public ayri(VipTagView paramVipTagView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Ayrf.c(paramString);
-    if (this.jdField_a_of_type_Ayrk != null) {
-      this.jdField_a_of_type_Ayrk.a(paramBoolean, paramString);
-    }
+    VipTagView.a(this.a, paramFloat1.floatValue());
+    this.a.invalidate();
   }
 }
 

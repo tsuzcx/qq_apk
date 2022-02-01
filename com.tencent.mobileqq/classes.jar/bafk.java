@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import java.lang.ref.WeakReference;
-import java.util.Set;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bafk
-  implements anui
+  implements Handler.Callback
 {
-  private WeakReference<AbsProfileHeaderView> a;
+  public bafk(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public bafk(AbsProfileHeaderView paramAbsProfileHeaderView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramAbsProfileHeaderView);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
+    switch (paramMessage.what)
     {
-      paramObject = (Set)paramObject;
-      AbsProfileHeaderView localAbsProfileHeaderView = (AbsProfileHeaderView)this.a.get();
-      if ((localAbsProfileHeaderView != null) && (paramObject.contains(localAbsProfileHeaderView.jdField_a_of_type_Azxr.a.a)))
-      {
-        localAbsProfileHeaderView.b(localAbsProfileHeaderView.jdField_a_of_type_Azxr, false);
-        localAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      }
+    default: 
+      return false;
     }
+    if (!NeoVideoFilterPlayView.a(this.a))
+    {
+      this.a.requestRender();
+      return true;
+    }
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    xvv.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
 }
 

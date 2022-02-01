@@ -1,279 +1,170 @@
+import android.app.Activity;
 import android.content.Context;
+import android.text.SpannableStringBuilder;
 import android.view.View;
-import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
-import com.tencent.biz.qqcircle.events.QCirclePolyPraiseUpdateEvent;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.FeedLikeLego.2;
+import com.tencent.biz.qqstory.comment.FeedLikeLego.3;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StLike;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudWrite.StDoLikeRsp;
-import java.lang.ref.WeakReference;
-import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
-import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiRspData;
-import qqcircle.QQCircleFeedBase.StLikeBusiData;
-import qqcircle.QQCircleFeedBase.StPolyLike;
-import qqcircle.QQCircleFeedBase.StRewardData;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vsj
-  implements aabg<QCircleReportBean>
+  extends vsu<LikeEntry>
 {
-  private static String jdField_a_of_type_JavaLangString = "QCirclePolyRequestManager";
-  private aabg<QCircleReportBean> jdField_a_of_type_Aabg;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
-  private ReportExtraTypeInfo jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private WeakReference<QCirclePolyLikeAniView> jdField_b_of_type_JavaLangRefWeakReference;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private WeakReference<View> c;
+  private int jdField_a_of_type_Int;
+  public Activity a;
+  public TextView a;
+  public CommentLikeFeedItem a;
+  public List<LikeEntry> a;
+  public vuj a;
+  private xhr jdField_a_of_type_Xhr;
+  private xji jdField_a_of_type_Xji;
+  public xnp a;
+  public boolean a;
   
-  public vsj(Context paramContext)
+  public vsj(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext, paramView);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Xhr = new xhr(paramActivity, paramCommentLikeFeedItem, paramInt, false);
+    this.jdField_a_of_type_Xji = new xji();
   }
   
-  private void a(int paramInt, FeedCloudMeta.StFeed paramStFeed)
+  public static vsj a(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt)
   {
-    int j = 0;
-    int i = 0;
-    vud localvud;
-    vuf localvuf;
-    if (paramInt == 0) {
-      if (a())
+    paramContext = new vsj(paramContext, paramActivity, paramView, paramCommentLikeFeedItem, paramInt);
+    paramContext.jdField_a_of_type_Boolean = false;
+    return paramContext;
+  }
+  
+  public vsv a()
+  {
+    return new vse(this, this.jdField_a_of_type_Boolean);
+  }
+  
+  public vsw a()
+  {
+    return new vsk(this);
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369925));
+    this.jdField_a_of_type_Vuj = ((vuj)vux.a(15));
+    this.jdField_a_of_type_Xnp = ((xnp)vux.a(11));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_Vsw);
+  }
+  
+  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+  }
+  
+  public void a(List<LikeEntry> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int k = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
+    boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isFriend();
+    if (!bool)
+    {
+      if ((j == 0) && (k == 0))
       {
-        vtr.a(39, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, b());
-        localvud = vud.a();
-        localvuf = new vuf().a("likebutton").b("unlike").a(a()).a(paramStFeed);
-        paramInt = i;
-        if (this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo != null) {
-          paramInt = this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition;
-        }
-        localvud.a(localvuf.a(paramInt).c(paramStFeed.poster.id.get()));
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramList = xho.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Xhr);
+      if ((bool) || (j != 0) || (k <= 0)) {
+        break label153;
       }
     }
-    do
+    label153:
+    for (int i = 1;; i = 0)
     {
+      if ((paramList.length() != 0) || (i != 0)) {
+        break label158;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      vtn.a(39, 2, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, a());
+      if (j == 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       break;
-      if (paramInt == 1)
-      {
-        if (a()) {
-          vtr.a(36, 3, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, b());
-        }
-        for (;;)
-        {
-          localvud = vud.a();
-          localvuf = new vuf().a("liketype").b("like").a(a()).a(paramStFeed);
-          paramInt = j;
-          if (this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo != null) {
-            paramInt = this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition;
-          }
-          localvud.a(localvuf.a(paramInt).c(paramStFeed.poster.id.get()));
-          aaak.a().a(new QCircleFuelAnimationEvent());
-          return;
-          vtn.a(36, 3, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, a());
-        }
+    }
+    label158:
+    if (!bool) {
+      if ((j == 0) && (k > 0)) {
+        paramList.append(String.format("%s次赞", new Object[] { UIUtils.formatCount(k) }));
       }
-    } while ((paramInt == 21) || (paramInt != 22));
-  }
-  
-  private void a(FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = uzg.a(paramStFeed.likeInfo);
-    QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData localStDoLikeReqDoPolyLikeBusiReqData = new QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData();
-    localStDoLikeReqDoPolyLikeBusiReqData.polyLikeInfo.set(paramStPolyLike2);
-    if ((paramStPolyLike2.articleType.get() != 0) || (paramStPolyLike1.articleType.get() != 1)) {
-      localStDoLikeReqDoPolyLikeBusiReqData.curPolyLikeInfo.set(paramStPolyLike1);
     }
-    localObject = new QCircleDoLikeRequest(paramStFeed, paramInt, (FeedCloudMeta.StLike)localObject, localStDoLikeReqDoPolyLikeBusiReqData, a(), paramBoolean);
-    VSNetworkHelper.a().a((VSBaseRequest)localObject, new vsm(this, (QCircleDoLikeRequest)localObject, paramInt, paramStFeed, paramStPolyLike1, paramStPolyLike2));
-  }
-  
-  private void a(FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
-  {
-    QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiRspData localStDoLikeReqDoPolyLikeBusiRspData;
-    if (paramStDoLikeRsp != null) {
-      localStDoLikeReqDoPolyLikeBusiRspData = new QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiRspData();
-    }
-    try
-    {
-      localStDoLikeReqDoPolyLikeBusiRspData.mergeFrom(paramStDoLikeRsp.busiRspData.get().toByteArray());
-      if (localStDoLikeReqDoPolyLikeBusiRspData.rewardData.myMoney.get() >= 0L) {
-        vry.a().a((float)localStDoLikeReqDoPolyLikeBusiRspData.rewardData.myMoney.get());
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramStDoLikeRsp)
-    {
-      paramStDoLikeRsp.printStackTrace();
-    }
-  }
-  
-  private boolean a()
-  {
-    return QCircleReportBean.isContentDetailPage(a());
-  }
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
-      return QCircleReportBean.getPageId(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
-    }
-    if (this.jdField_a_of_type_Aabg != null) {
-      return QCircleReportBean.getPageId(jdField_a_of_type_JavaLangString, (QCircleReportBean)this.jdField_a_of_type_Aabg.getReportBean());
-    }
-    return 0;
-  }
-  
-  public QCircleReportBean a()
-  {
-    return QCircleReportBean.getReportBean(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
-  }
-  
-  public void a(aabg<QCircleReportBean> paramaabg)
-  {
-    this.jdField_a_of_type_Aabg = paramaabg;
-  }
-  
-  public void a(QCircleReportBean paramQCircleReportBean)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean(jdField_a_of_type_JavaLangString, paramQCircleReportBean);
-  }
-  
-  public void a(ReportExtraTypeInfo paramReportExtraTypeInfo, View paramView1, View paramView2, QCirclePolyLikeAniView paramQCirclePolyLikeAniView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo = paramReportExtraTypeInfo;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView1);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQCirclePolyLikeAniView);
-    this.c = new WeakReference(paramView2);
-  }
-  
-  public void a(FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2)
-  {
-    Object localObject2 = new QQCircleFeedBase.StLikeBusiData();
     for (;;)
     {
-      try
-      {
-        localObject1 = new QQCircleFeedBase.StLikeBusiData();
-        ((InvalidProtocolBufferMicroException)localObject2).printStackTrace();
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramList);
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_Xji);
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+      QLog.d("FeedLikeLego", 2, "id:" + paramList.toString() + " isFriend:" + bool + "  likeSize:" + j + "  likeCount" + k);
+      return;
+      if ((j < k) && (k > 0))
       {
-        try
-        {
-          ((QQCircleFeedBase.StLikeBusiData)localObject1).mergeFrom(paramStFeed.likeInfo.busiData.get().toByteArray());
-          j = paramStFeed.likeInfo.count.get();
-          if (paramInt != 21) {
-            break label129;
-          }
-          i = j + 1;
-          paramStFeed.likeInfo.count.set(i);
-          paramStFeed.likeInfo.status.set(paramInt);
-          aaak.a().a(new QCirclePolyPraiseUpdateEvent(paramStFeed.id.get(), paramStPolyLike1, paramStPolyLike2, paramInt, i));
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-        {
-          Object localObject1;
-          int j;
-          int i;
-          break label121;
-        }
-        localInvalidProtocolBufferMicroException2 = localInvalidProtocolBufferMicroException2;
-        localObject1 = localObject2;
-        localObject2 = localInvalidProtocolBufferMicroException2;
+        paramList.append(String.format("等%s人赞了", new Object[] { UIUtils.formatCount(k) }));
       }
-      label121:
-      continue;
-      label129:
-      i = j;
-      if (paramInt == 1)
+      else
       {
-        i = j;
-        if (!uzg.a(paramStPolyLike2, (QQCircleFeedBase.StLikeBusiData)localObject1)) {
-          i = j + 1;
-        }
+        paramList.append("赞了");
+        continue;
+        paramList.append("赞了");
       }
     }
   }
   
-  public void a(FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike)
+  public void a(boolean paramBoolean)
   {
-    boolean bool = false;
-    int i = 1;
-    if (!nny.a(this.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131693968), 0).a();
-    }
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    try
+    String str = QQStoryContext.a().b();
+    if (paramBoolean)
     {
-      Object localObject = new QQCircleFeedBase.StLikeBusiData();
-      ((QQCircleFeedBase.StLikeBusiData)localObject).mergeFrom(paramStFeed.likeInfo.busiData.get().toByteArray());
-      localObject = ((QQCircleFeedBase.StLikeBusiData)localObject).curPolyLikeInfo;
-      if (paramStPolyLike.articleType.get() == 0) {}
-      for (;;)
-      {
-        a(paramStFeed, (QQCircleFeedBase.StPolyLike)localObject, paramStPolyLike, i, bool);
-        QLog.d(jdField_a_of_type_JavaLangString, 4, " request type:" + i);
-        a(i, paramStFeed);
-        return;
-        i = paramStPolyLike.articleType.get();
-        if (i == 1)
-        {
-          bool = true;
-          i = 21;
-        }
-        else
-        {
-          i = -1;
-        }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = 1;
+      Object localObject;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount != -1) {
+        localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
       }
-      return;
+      for (((CommentLikeFeedItem)localObject).mLikeCount += 1;; this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = 1)
+      {
+        localObject = new LikeEntry();
+        ((LikeEntry)localObject).likeTime = System.currentTimeMillis();
+        ((LikeEntry)localObject).uin = QQStoryContext.a().getCurrentUin();
+        ((LikeEntry)localObject).unionId = str;
+        ((LikeEntry)localObject).feedId = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
+        ThreadManager.post(new FeedLikeLego.2(this, (vvj)vux.a(2), str, (LikeEntry)localObject), 5, null, true);
+        return;
+      }
     }
-    catch (Exception paramStFeed) {}
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = 0;
+    ThreadManager.post(new FeedLikeLego.3(this, str), 5, null, true);
   }
   
-  public void a(FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike, int paramInt)
-  {
-    ((QCirclePolyLikeAniView)this.jdField_b_of_type_JavaLangRefWeakReference.get()).startRewardAni(paramStPolyLike, (View)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (View)this.c.get(), a(), new vsl(this, paramStFeed, paramInt, paramStPolyLike), true);
-  }
+  public void b() {}
   
-  public void a(QQCircleFeedBase.StPolyLike paramStPolyLike1, View paramView, int paramInt, int[] paramArrayOfInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike2)
-  {
-    ((QCirclePolyLikeAniView)this.jdField_b_of_type_JavaLangRefWeakReference.get()).startZanAni(paramStPolyLike1, paramView, (View)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (View)this.c.get(), paramArrayOfInt, a(), new vsk(this, paramStFeed, paramInt, paramStPolyLike2, paramStPolyLike1));
-  }
-  
-  protected int b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
-      return QCircleReportBean.getParentPageId(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
-    }
-    if (this.jdField_a_of_type_Aabg != null) {
-      return QCircleReportBean.getParentPageId(jdField_a_of_type_JavaLangString, (QCircleReportBean)this.jdField_a_of_type_Aabg.getReportBean());
-    }
-    return 0;
-  }
+  public void c() {}
 }
 
 

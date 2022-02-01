@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.intervideo.od;
 
 import Override;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,11 +13,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anzj;
-import aoik;
-import awbj;
-import awds;
-import bjbs;
+import auoj;
+import auqs;
+import auqt;
+import bhht;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -30,34 +31,58 @@ public class ODLoadingActivity
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bjbs jdField_a_of_type_Bjbs;
+  private final auqt jdField_a_of_type_Auqt = new auqt(this);
+  private bhht jdField_a_of_type_Bhht;
   private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  private void a()
+  private void c()
   {
-    if (this.jdField_a_of_type_Bjbs == null)
+    if (this.jdField_a_of_type_Bhht == null)
     {
-      this.jdField_a_of_type_Bjbs = new bjbs(this, 40);
-      this.jdField_a_of_type_Bjbs.a(anzj.a(2131706704));
+      this.jdField_a_of_type_Bhht = new bhht(this, 40);
+      this.jdField_a_of_type_Bhht.a(amtj.a(2131706934));
     }
-    this.jdField_a_of_type_Bjbs.show();
+    this.jdField_a_of_type_Bhht.show();
   }
   
-  private void b()
+  private void d()
   {
     this.b = true;
-    if (this.jdField_a_of_type_Bjbs != null) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if (this.jdField_a_of_type_Bhht != null) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
+  }
+  
+  public void a()
+  {
+    d();
+    finish();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onCloseLoadingView").report();
+    auoj.b("33669909");
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    runOnUiThread(new ODLoadingActivity.4(this));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onShowLoadingView").report();
+    auoj.b("33669908");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onEnterComplete").report();
+    auoj.b("33669911");
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -73,7 +98,7 @@ public class ODLoadingActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onBackPressed").report();
-      awbj.b("33669910");
+      auoj.b("33669910");
       IVCommonInterfaceImpl.getInstance().onHostActivityBackPress();
     }
   }
@@ -101,19 +126,19 @@ public class ODLoadingActivity
       for (;;)
       {
         str = paramBundle.getString("bizType");
-        paramBundle.putString("qqVersion", "8.4.5");
+        paramBundle.putString("qqVersion", "8.4.8");
         paramBundle.putBoolean("isGooglePlayVersion", false);
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l));
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
-        awbj.b("33669907");
+        auoj.b("33669907");
         this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
         findViewById(16908290).setVisibility(8);
         this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
-        ExecutorService localExecutorService = aoik.a(192);
-        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new awds(this, str)), l, paramBundle));
+        ExecutorService localExecutorService = ThreadManagerExecutor.getExecutorService(192);
+        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new auqs(this, str)), l, paramBundle));
         return;
         QLog.e("ODLoadingActivity", 2, "not have fromId");
       }
@@ -138,7 +163,7 @@ public class ODLoadingActivity
       localField.setAccessible(true);
       localField.set(this.jdField_a_of_type_AndroidViewView, null);
       label34:
-      b();
+      d();
       IVCommonInterfaceImpl.getInstance().onHostActivityDestroy();
       return;
     }

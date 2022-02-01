@@ -1,24 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class bgeq
-  extends bgeg
+public class bgeq
 {
-  public List<Integer> b = new ArrayList();
-  public int g = 0;
-  
-  public bgeq()
-  {
-    this.b.add(Integer.valueOf(0));
-    this.b.add(Integer.valueOf(3));
-    this.b.add(Integer.valueOf(1));
-    this.b.add(Integer.valueOf(2));
-  }
-  
-  public int e()
-  {
-    return this.g;
-  }
+  public static int b = 2;
+  public static int c = 1;
+  public int a;
+  public bgen a;
+  public String a;
+  public bgen b;
+  public bgen c;
+  public int d;
+  public int e;
 }
 
 

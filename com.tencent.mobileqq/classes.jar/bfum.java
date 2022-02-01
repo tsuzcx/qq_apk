@@ -1,29 +1,37 @@
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
+
 public class bfum
+  extends MqqHandler
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  private final WeakReference<Handler.Callback> a;
   
-  public bfum(int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public bfum(Handler.Callback paramCallback)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public bfum(Looper paramLooper, Handler.Callback paramCallback)
+  {
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("opType:").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("msgSenderUin:").append(this.jdField_a_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("opUin:").append(this.jdField_b_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("opTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("graytipuniseq:").append(this.jdField_b_of_type_Long);
-    return localStringBuilder.toString();
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

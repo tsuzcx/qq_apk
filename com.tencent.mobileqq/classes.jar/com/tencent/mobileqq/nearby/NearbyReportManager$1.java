@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.nearby;
 
-import aodb;
-import axwq;
-import axwr;
-import blgz;
+import amxd;
+import awjy;
+import awjz;
+import bjmo;
 import java.util.ArrayList;
 
 public class NearbyReportManager$1
   implements Runnable
 {
-  public NearbyReportManager$1(axwq paramaxwq, blgz paramblgz, aodb paramaodb, boolean paramBoolean) {}
+  public NearbyReportManager$1(awjy paramawjy, bjmo parambjmo, amxd paramamxd, boolean paramBoolean) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdField_a_of_type_Blgz.a())
+    while (i < this.jdField_a_of_type_Bjmo.a())
     {
-      localArrayList.add((axwr)this.jdField_a_of_type_Blgz.a(i));
+      localArrayList.add((awjz)this.jdField_a_of_type_Bjmo.a(i));
       i += 1;
     }
-    this.jdField_a_of_type_Aodb.a(localArrayList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Amxd.a(localArrayList, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-
-public class aiep
-  implements DialogInterface.OnClickListener
+public abstract interface aiep
 {
-  public aiep(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  public abstract void ad_();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
+  public abstract void b();
+  
+  public abstract void j_(int paramInt);
 }
 
 

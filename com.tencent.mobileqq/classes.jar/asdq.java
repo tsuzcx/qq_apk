@@ -1,78 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.List;
 
-public class asdq
-  extends asdn
+class asdq
 {
-  public asdq(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.hotfriend.res", paramQQAppInterface);
-  }
+  long jdField_a_of_type_Long = 0L;
+  ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
+  String jdField_a_of_type_JavaLangString = null;
+  List<String> jdField_a_of_type_JavaUtilList = null;
+  short jdField_a_of_type_Short = 0;
+  String jdField_b_of_type_JavaLangString = null;
+  List<String> jdField_b_of_type_JavaUtilList = null;
+  short jdField_b_of_type_Short = 0;
+  String c = null;
+  String d = null;
+  String e = null;
+  String f = null;
+  String g = null;
+  String h = null;
+  String i = null;
   
-  public int a()
-  {
-    return 10042;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return HotFriendResData.class;
-  }
-  
-  public String a()
-  {
-    return "HotFriendResHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
-      return;
-    }
-    try
-    {
-      String str = axtp.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
-      }
-      if (!TextUtils.isEmpty(str)) {
-        bhmi.a(paramString, str, false);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    super.a(paramString);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
+  private asdq(asdm paramasdm) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asdq
  * JD-Core Version:    0.7.0.1
  */

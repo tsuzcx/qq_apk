@@ -1,8 +1,16 @@
-public abstract interface aqwh
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+
+class aqwh
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public abstract void a();
+  aqwh(aqwg paramaqwg) {}
   
-  public abstract void b();
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 4097) {
+      bcef.b(aqwg.a(this.a), "dc00898", "", "", "0X8007FAA", "0X8007FAA", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 

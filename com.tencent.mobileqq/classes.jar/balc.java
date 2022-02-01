@@ -1,9 +1,19 @@
-import kotlin.Metadata;
+import mqq.app.QQPermissionCallback;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingUtils;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class balc
+class balc
+  implements QQPermissionCallback
 {
-  public static final bald a = new bald(null);
+  balc(bakw parambakw) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bfur.a(this.a.mContext);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bakw.a(this.a);
+  }
 }
 
 

@@ -1,25 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public final class nqd
-  extends Handler
+public class nqd
+  extends MSFServlet
 {
-  public nqd(Looper paramLooper, nqf paramnqf)
+  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
+  
+  public String[] getPreferSSOCommands()
   {
-    super(paramLooper);
+    return this.a;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
+    nqe localnqe = SensorAPIJavaScript.getMsfToWebViewConnector();
+    if (localnqe != null) {
+      localnqe.a(paramIntent, paramFromServiceMsg);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    this.a.a(paramMessage.arg1, null);
+    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
   }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 

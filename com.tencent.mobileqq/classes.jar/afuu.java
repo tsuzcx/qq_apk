@@ -1,32 +1,59 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
 public class afuu
-  implements View.OnClickListener
+  implements bjoe
 {
-  public afuu(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public afuu(ApolloItemBuilder paramApolloItemBuilder, afvb paramafvb, ApolloActionData paramApolloActionData, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    znw.a(this.a.jdField_a_of_type_Afwg);
-    znw.a(this.a.jdField_a_of_type_JavaUtilList);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    switch (paramInt)
     {
-      localArrayList.add(((afwe)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.cancel();
+      return;
+      if ((1 == this.jdField_a_of_type_Afvb.f) || (this.jdField_a_of_type_Afvb.f == 2))
+      {
+        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          QLog.e("ApolloItemBuilder", 1, "mContext is not activity");
+          return;
+        }
+        ApolloUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "lmx_actchat");
+      }
+      else
+      {
+        if (3 == this.jdField_a_of_type_Afvb.f)
+        {
+          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
+            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
+          }
+          for (;;)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+            break;
+            paramView.putExtra("url", amip.T + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
+          }
+        }
+        if (4 != this.jdField_a_of_type_Afvb.f) {
+          acvv.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Afvb.a.uniseq);
+        }
+      }
+    }
   }
 }
 

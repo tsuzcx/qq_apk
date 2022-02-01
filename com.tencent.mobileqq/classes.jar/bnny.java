@@ -1,21 +1,4 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class bnny
-  extends BroadcastReceiver
-{
-  bnny(bnnx parambnnx) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getAction().equals("com.tencent.qq.syncQunMsg"))
-    {
-      int i = paramIntent.getIntExtra("com.tencent.qq.unreadcount", 0);
-      bnnx.a(this.a, i);
-    }
-  }
-}
+public class bnny {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

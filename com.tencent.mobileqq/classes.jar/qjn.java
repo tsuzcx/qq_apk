@@ -1,23 +1,25 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
-class qjn
-  implements PopupWindow.OnDismissListener
+public class qjn
+  implements Drawable.Callback
 {
-  qjn(qjh paramqjh, blmm paramblmm) {}
+  public qjn(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public void onDismiss()
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Blmm.a(1.0F);
-    if (this.jdField_a_of_type_Qjh.a.b)
-    {
-      rvy localrvy = this.jdField_a_of_type_Qjh.a.a();
-      if (localrvy != null)
-      {
-        localrvy.c();
-        this.jdField_a_of_type_Qjh.a.b = false;
-      }
-    }
+    paramDrawable = new zuq(paramDrawable);
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
+  
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

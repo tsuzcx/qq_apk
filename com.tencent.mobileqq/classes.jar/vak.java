@@ -1,38 +1,13 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import qqcircle.TaskCenterReader.TaskListRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
 
-class vak
-  implements aaav<TaskCenterReader.TaskListRsp>
+public class vak
+  implements uqy
 {
-  vak(vai paramvai) {}
+  public vak(WSVerticalDataManager paramWSVerticalDataManager, boolean paramBoolean1, boolean paramBoolean2, vaa paramvaa, Object paramObject, String paramString, long paramLong) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
+  public void a(urj paramurj)
   {
-    if (paramTaskListRsp != null)
-    {
-      this.a.setDatas((ArrayList)paramTaskListRsp.taskRecords.get());
-      if ((this.a.a != null) && (vai.a(this.a) != null))
-      {
-        this.a.a.removeAllViews();
-        paramString = String.valueOf(paramTaskListRsp.myFuel.get()).toCharArray();
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
-        {
-          char c = paramString[i];
-          ImageView localImageView = new ImageView(vai.b(this.a));
-          localImageView.setImageResource(vai.a(this.a)[java.lang.Character.getNumericValue(c)]);
-          this.a.a.addView(localImageView);
-          i += 1;
-        }
-      }
-      vai.a(this.a, paramTaskListRsp.taskEntranceUrl.get());
-    }
+    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, paramurj, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Vaa, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
   }
 }
 

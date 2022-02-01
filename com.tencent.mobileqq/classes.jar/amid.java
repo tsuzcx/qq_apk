@@ -1,21 +1,12 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-
 public class amid
-  extends bmme
 {
-  public amid(ShortVideoPlayActivity paramShortVideoPlayActivity, Activity paramActivity, bmmg parambmmg, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
-  {
-    super(paramActivity, parambmmg, paramInt1, paramInt2, paramAppRuntime);
-  }
+  public int a;
+  public int b;
   
-  public void onClick(View paramView)
+  public amid(int paramInt1, int paramInt2)
   {
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

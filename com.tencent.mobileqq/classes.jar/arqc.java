@@ -1,56 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
 public class arqc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private Map<String, List<arqd>> a = new HashMap();
+  public arqc(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
   
-  public static arqc a(araj[] paramArrayOfaraj)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      return null;
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
     }
-    localarqc = new arqc();
-    try
-    {
-      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].a);
-      Iterator localIterator = paramArrayOfaraj.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONArray localJSONArray = paramArrayOfaraj.getJSONArray(str);
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(arqd.a(localJSONArray.getJSONObject(i)));
-          i += 1;
-        }
-        localarqc.a.put(str, localArrayList);
-      }
-      return localarqc;
-    }
-    catch (JSONException paramArrayOfaraj)
-    {
-      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfaraj);
-    }
-  }
-  
-  public Map<String, List<arqd>> a()
-  {
-    return this.a;
+    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqc
  * JD-Core Version:    0.7.0.1
  */

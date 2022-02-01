@@ -1,47 +1,98 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class wcl
-  extends RecyclerView.Adapter<wcm>
+public class wcl
+  implements vqp<wfi, wgt>
 {
-  public List<FeedCloudMeta.StTagInfo> a;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Queue<vxd> jdField_a_of_type_JavaUtilQueue;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicBoolean b = new AtomicBoolean(false);
   
-  private wcl(wcj paramwcj)
+  public wcl(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public wcm a(ViewGroup paramViewGroup, int paramInt)
+  private void a(wfi paramwfi, wgt paramwgt)
   {
-    return new wcm(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560721, paramViewGroup, false));
+    vlj localvlj = (vlj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
+    List localList = paramwgt.a();
+    localvlj.a(paramwgt.a());
+    if (paramwfi.a() == 3)
+    {
+      paramwfi = localList.iterator();
+      while (paramwfi.hasNext())
+      {
+        paramwgt = (vxd)paramwfi.next();
+        localvlj.b(paramwgt);
+        localvlj.c(paramwgt);
+        localvlj.d(paramwgt);
+      }
+    }
+    localvlj.a(localList);
+    localvlj.a(localList, true);
   }
   
-  public void a(List<FeedCloudMeta.StTagInfo> paramList)
+  private void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   }
   
-  public void a(wcm paramwcm, int paramInt)
+  private void c()
   {
-    paramwcm.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramwcm, paramInt, getItemId(paramInt));
+    Object localObject = (vlj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
+    if (!this.b.get()) {}
+    for (;;)
+    {
+      vxd localvxd = (vxd)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localvxd == null)
+      {
+        localObject = new wcm(true);
+        vli.a().dispatch((Dispatcher.Dispatchable)localObject);
+        return;
+      }
+      ((vlj)localObject).a(localvxd);
+    }
   }
   
-  public int getItemCount()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public long getItemId(int paramInt)
+  public void a(@NonNull wfi paramwfi, @Nullable wgt paramwgt, @NonNull ErrorMessage paramErrorMessage)
   {
-    return paramInt;
+    if (a()) {}
+    do
+    {
+      return;
+      this.b.set(true);
+      if ((paramwgt != null) && (!paramErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
+    return;
+    a(paramwfi, paramwgt);
+    this.b.set(false);
+    c();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

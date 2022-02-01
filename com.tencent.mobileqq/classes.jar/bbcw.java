@@ -1,76 +1,65 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import java.util.Set;
 
 public class bbcw
-  extends BaseAdapter
+  extends bbbc
 {
-  private int jdField_a_of_type_Int = 25;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
-  private int c;
+  private Set<String> b;
   
-  public bbcw(Context paramContext, String[] paramArrayOfString, int paramInt)
+  public bbcw(FaceDecoder paramFaceDecoder, bbbg parambbbg, Set<String> paramSet1, Set<String> paramSet2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167080);
-    this.c = paramContext.getColor(2131167050);
+    super(paramFaceDecoder, parambbbg, paramSet1);
+    this.b = paramSet2;
   }
   
-  public View a(int paramInt)
+  public void b(bayt parambayt, bbhb parambbhb)
   {
-    return getView(paramInt, null, null);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramView == null)
+    super.b(parambayt, parambbhb);
+    if (parambbhb.c() != null)
     {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-    }
-    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
-    {
-      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      localObject2 = paramView;
-      if (paramView == null) {
-        localObject2 = (WheelTextView)localObject1;
+      localObject = parambayt.b();
+      if ((this.b != null) && (this.b.contains(localObject))) {
+        parambbhb.c().setText(amtj.a(2131712836));
       }
-      ((WheelTextView)localObject2).setTextSize(20.0F);
-      ((WheelTextView)localObject2).setTextColor(this.b);
-      ((WheelTextView)localObject2).setGravity(17);
-      ((WheelTextView)localObject2).setText(str);
-      ((WheelTextView)localObject2).setBackgroundColor(this.c);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = paramView;
     }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool = bezm.b((QQAppInterface)localObject, parambayt.b());
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (!(parambbhb instanceof bbgv)) {
+        break label165;
+      }
+      ((bbgv)parambbhb).a(bool);
+    }
+    for (;;)
+    {
+      if (parambbhb.a() != null)
+      {
+        if ((!(parambayt instanceof baxo)) && (!(parambayt instanceof baxb)) && (!(parambayt instanceof baxj))) {
+          break;
+        }
+        if (parambbhb.c() != null) {
+          parambbhb.c().setVisibility(8);
+        }
+        parambbhb.a().setVisibility(0);
+      }
+      return;
+      label165:
+      if ((parambbhb instanceof bbis)) {
+        ((bbis)parambbhb).a(bool);
+      }
+    }
+    if (parambbhb.c() != null) {
+      parambbhb.c().setVisibility(0);
+    }
+    parambbhb.a().setVisibility(8);
   }
+  
+  public void d(bayt parambayt, bbhb parambbhb) {}
 }
 
 

@@ -3,17 +3,17 @@ package com.tencent.avgame.videorecord;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
-import auog;
-import bkdp;
+import bija;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import java.nio.IntBuffer;
-import myk;
-import mze;
-import niq;
+import mzl;
+import naf;
+import nkf;
 
 public class GuessSongGameRecordCtrl$2
   implements Runnable
 {
-  public GuessSongGameRecordCtrl$2(niq paramniq, int[] paramArrayOfInt) {}
+  public GuessSongGameRecordCtrl$2(nkf paramnkf, int[] paramArrayOfInt) {}
   
   public void run()
   {
@@ -24,19 +24,19 @@ public class GuessSongGameRecordCtrl$2
       localBitmap.copyPixelsFromBuffer(IntBuffer.wrap(this.a));
       Matrix localMatrix = new Matrix();
       localMatrix.setScale(1.0F, -1.0F);
-      boolean bool = auog.a(Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), localMatrix, true), niq.a(this.this$0));
+      boolean bool = FileUtil.writeBitmapToFile(Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), localMatrix, true), nkf.a(this.this$0));
       if (!bool) {
-        niq.a(this.this$0, null);
+        nkf.a(this.this$0, null);
       }
-      bkdp.a(this.this$0.a, "save photo " + bool + " " + niq.a(this.this$0));
+      bija.a(this.this$0.a, "save photo " + bool + " " + nkf.a(this.this$0));
       if (!this.this$0.b()) {
-        myk.a().a().a(niq.b(this.this$0), niq.a(this.this$0), niq.a(this.this$0));
+        mzl.a().a().a(nkf.b(this.this$0), nkf.a(this.this$0), nkf.a(this.this$0));
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      bkdp.a(this.this$0.a, "save photo " + localThrowable);
+      bija.a(this.this$0.a, "save photo " + localThrowable);
     }
   }
 }

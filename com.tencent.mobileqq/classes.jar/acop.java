@@ -1,15 +1,72 @@
-import com.tencent.gdtad.aditem.GdtPreLoader.1;
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class acop
-  implements MiniAppPrePullManager.IPrePullListener
+  implements TextWatcher
 {
-  public acop(GdtPreLoader.1 param1) {}
+  public acop(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    acvc.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      AddAccountActivity.a(this.a, null);
+    }
+    String str;
+    SimpleAccount localSimpleAccount;
+    for (;;)
+    {
+      return;
+      if (paramCharSequence != null)
+      {
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        {
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
+    label110:
+    if (this.a.app == null)
+    {
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label198;
+      }
+      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
+        break label200;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.app.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin());
+      break label126;
+      label198:
+      break;
+      label200:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    }
   }
 }
 

@@ -1,17 +1,6 @@
-import android.app.Activity;
-import com.sina.weibo.sdk.openapi.IWBAPI;
-import mqq.util.WeakReference;
-
-class bilx
+public abstract interface bilx
 {
-  WeakReference<Activity> a;
-  WeakReference<IWBAPI> b;
-  
-  bilx(Activity paramActivity, IWBAPI paramIWBAPI)
-  {
-    this.a = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramIWBAPI);
-  }
+  public abstract void a(binj parambinj);
 }
 
 

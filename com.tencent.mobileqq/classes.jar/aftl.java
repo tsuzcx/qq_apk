@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-
-public class aftl
-  implements DialogInterface.OnClickListener
+class aftl
+  implements bfft
 {
-  public aftl(TroopInfoActivity paramTroopInfoActivity) {}
+  aftl(aftj paramaftj, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramDialogInterface.dismiss();
-    this.a.k();
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ((afii)aftj.a(this.jdField_a_of_type_Aftj)).f = true;
+      this.jdField_a_of_type_Aftj.a(true);
+      return;
+    }
+    ((afii)aftj.a(this.jdField_a_of_type_Aftj)).f = false;
+    this.jdField_a_of_type_Aftj.a(false);
   }
 }
 

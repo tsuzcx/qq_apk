@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import amtj;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
@@ -127,33 +127,30 @@ class BlockAdPlugin$6
         paramJSONObject.put("width", this.val$blockAdInfo.getRealWidth());
         paramJSONObject.put("height", this.val$blockAdInfo.getRealHeight());
         BlockAdPlugin.access$000(this.this$0, this.val$webview, paramJSONObject, "onBlockAdStateChange");
-        label684:
-        if (localStGetAdRsp == null) {
-          continue;
-        }
         try
         {
-          if ((localStGetAdRsp.vecAppInfo == null) || (localStGetAdRsp.vecAppInfo.size() <= 0) || (localStGetAdRsp.iPreLoadLevel.get() != 2L)) {
-            continue;
-          }
-          i = 0;
-          while (i < localStGetAdRsp.vecAppInfo.size())
+          label684:
+          while ((localStGetAdRsp.vecAppInfo != null) && (localStGetAdRsp.vecAppInfo.size() > 0) && (localStGetAdRsp.iPreLoadLevel.get() == 2L))
           {
-            GpkgManager.preloadGpkgByConfig(new MiniAppConfig(MiniAppInfo.from((INTERFACE.StApiAppInfo)localStGetAdRsp.vecAppInfo.get(i))));
-            i += 1;
+            i = 0;
+            while (i < localStGetAdRsp.vecAppInfo.size())
+            {
+              GpkgManager.preloadGpkgByConfig(new MiniAppConfig(MiniAppInfo.from((INTERFACE.StApiAppInfo)localStGetAdRsp.vecAppInfo.get(i))));
+              i += 1;
+            }
+            QLog.e("[minigame] BlockAdPlugin", 1, "getBlockAd no ads");
           }
-          QLog.e("[minigame] BlockAdPlugin", 1, "getBlockAd no ads");
+          if (paramJSONObject == null) {}
         }
         catch (Throwable paramJSONObject)
         {
           QLog.e("[minigame] BlockAdPlugin", 1, "preloadGpkgByConfig failed:" + paramJSONObject.getMessage());
           return;
         }
-        if (paramJSONObject != null) {}
         try
         {
           i = paramJSONObject.getInt("resultCode");
-          BlockAdPlugin.access$200(this.this$0, this.val$webview, i, anzj.a(2131699818), this.val$blockAdInfo.getCompId());
+          BlockAdPlugin.access$200(this.this$0, this.val$webview, i, amtj.a(2131700053), this.val$blockAdInfo.getCompId());
           for (;;)
           {
             QLog.e("[minigame] BlockAdPlugin", 1, "getBlockAd request error");

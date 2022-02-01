@@ -1,53 +1,101 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
-class atsz
-  extends attg
+public class atsz
+  extends BaseAdapter
 {
-  protected long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected String a;
-  private long b;
-  protected String b;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public List<String> a;
   
-  atsz(atsi paramatsi, MessageRecord paramMessageRecord)
+  public atsz(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
   {
-    super(paramatsi);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramatsi = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramatsi);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getActivity().getLayoutInflater();
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, atte paramatte)
+  public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    String str1 = aubb.a(aunj.e(this.jdField_b_of_type_JavaLangString));
-    String str2 = aubb.a(aunj.a(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_Long = aunj.a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    if (paramList == null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        notifyDataSetChanged();
+      }
+      return;
     }
-    atsi.a(this.jdField_a_of_type_Atsi).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, atsi.a(this.jdField_a_of_type_Atsi).getCurrentAccountUin(), new atta(this, paramatte, str2));
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559132, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
+      paramView = new attb(this);
+      paramView.a = ((URLImageView)localView.findViewById(2131365963));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = ayfc.a((String)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
+      localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+      paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      paramView.a.setImageDrawable((Drawable)localObject2);
+      localObject2 = paramView.a;
+      paramView.a.setOnClickListener(new atta(this, (String)localObject1, (View)localObject2));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject1 = (attb)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsz
  * JD-Core Version:    0.7.0.1
  */

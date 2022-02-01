@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.multiaio;
 
-import agej;
-import alpb;
+import akms;
+import amtj;
+import amwt;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -30,37 +31,36 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import anzj;
-import aocr;
-import axkc;
-import axkd;
-import axke;
-import axkf;
-import axkg;
-import axkh;
-import axki;
-import axkj;
-import axkk;
-import axkl;
-import axkm;
-import axkn;
-import axko;
-import axkp;
-import axkq;
-import axkr;
-import axlc;
-import axld;
-import axle;
-import axlf;
-import axlh;
-import axlt;
-import axlx;
-import axmn;
-import axmo;
-import bdll;
+import avxj;
+import avxk;
+import avxl;
+import avxm;
+import avxn;
+import avxo;
+import avxp;
+import avxq;
+import avxr;
+import avxs;
+import avxt;
+import avxu;
+import avxv;
+import avxw;
+import avxx;
+import avxy;
+import avyj;
+import avyk;
+import avyl;
+import avym;
+import avyo;
+import avza;
+import avze;
+import avzu;
+import avzv;
+import bcef;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
@@ -84,13 +84,13 @@ import mqq.observer.BusinessObserver;
 
 public class MultiAIOFragment
   extends PublicBaseFragment
-  implements axlh, axmn, BusinessObserver
+  implements avyo, avzu, BusinessObserver
 {
   private int jdField_a_of_type_Int;
+  private amwt jdField_a_of_type_Amwt = new avxp(this);
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private View jdField_a_of_type_AndroidViewView;
-  private aocr jdField_a_of_type_Aocr = new axki(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private MultiAIOFragment.MiniAIOScrollToNewMsg jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment$MiniAIOScrollToNewMsg = new MultiAIOFragment.MiniAIOScrollToNewMsg(this, null);
   private MultiAIOFragment.UpdateMsgReadTimer jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment$UpdateMsgReadTimer = new MultiAIOFragment.UpdateMsgReadTimer(this, null);
@@ -122,7 +122,7 @@ public class MultiAIOFragment
   private int a(View paramView)
   {
     int j = 0;
-    paramView = ((ChatXListView)paramView.findViewById(2131370020)).getAdapter();
+    paramView = ((ChatXListView)paramView.findViewById(2131370017)).getAdapter();
     int i = 0;
     if (i < paramView.getCount())
     {
@@ -237,12 +237,12 @@ public class MultiAIOFragment
       paramContext.b(paramInt2);
       if (!paramBoolean)
       {
-        alpb.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, paramRecentBaseData.mTitleName, true, 2, null, localBundle, null);
+        akms.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, paramRecentBaseData.mTitleName, true, 2, null, localBundle, null);
         a(paramBitmap, paramArrayOfInt);
         return;
       }
       Intent[] arrayOfIntent = new Intent[1];
-      alpb.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, paramRecentBaseData.mTitleName, true, 2, null, localBundle, arrayOfIntent);
+      akms.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, paramRecentBaseData.mTitleName, true, 2, null, localBundle, arrayOfIntent);
       paramContext.a(arrayOfIntent[0]);
       a(paramBitmap, paramArrayOfInt);
       return;
@@ -288,8 +288,8 @@ public class MultiAIOFragment
     int i2 = localViewGroup.getHeight();
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axkg(this, localImageView, m, k, n, i, i1, j, i2 - n));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new axkh(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avxn(this, localImageView, m, k, n, i, i1, j, i2 - n));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new avxo(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setVisibility(0);
@@ -337,18 +337,18 @@ public class MultiAIOFragment
   
   private void a(View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator = ((TabPageIndicator)paramView.findViewById(2131368631));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator = ((TabPageIndicator)paramView.findViewById(2131368655));
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager = ((MultiAIOViewPager)paramView.findViewById(2131381041));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager = ((MultiAIOViewPager)paramView.findViewById(2131380767));
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setOffscreenPageLimit(2);
     paramBundle = getResources();
-    int i = (int)((paramBundle.getDisplayMetrics().widthPixels - agej.a(42.0F, paramBundle) * 2) * (1.0F - axmo.a) * 0.5F);
-    int j = agej.a(2.0F, paramBundle);
+    int i = (int)((paramBundle.getDisplayMetrics().widthPixels - AIOUtils.dp2px(42.0F, paramBundle) * 2) * (1.0F - avzv.a) * 0.5F);
+    int j = AIOUtils.dp2px(2.0F, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setPageMargin(-(j + i));
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setPageTransformer(false, new axmo());
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setOnClickListener(new axkj(this));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setPageTransformer(false, new avzv());
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setOnClickListener(new avxq(this));
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setTouchEventConsumer(this);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnClickListener(new axkk(this));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnClickListener(new avxr(this));
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setTouchEventConsumer(this);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOPagerAdapter = new MultiAIOPagerAdapter(getChildFragmentManager());
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOPagerAdapter.a(this.jdField_a_of_type_JavaUtilList);
@@ -362,14 +362,14 @@ public class MultiAIOFragment
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOPagerAdapter);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setActTAG("MultiWindowAIOFPS");
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setIdleListener(new axkl(this));
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setFlingListener(new axkm(this));
-    Object localObject = new axkn(this);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnPageChangeListener((axlt)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnTabClickListener(new axko(this));
-    ((axlx)localObject).b(0);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.a(new axkp(this));
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnActionUpNotFling(new axkq(this));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setIdleListener(new avxs(this));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setFlingListener(new avxt(this));
+    Object localObject = new avxu(this);
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnPageChangeListener((avza)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnTabClickListener(new avxv(this));
+    ((avze)localObject).b(0);
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.a(new avxw(this));
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOnActionUpNotFling(new avxx(this));
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setOverScrollMode(2);
     localObject = a(getActivity());
     if (localObject != null) {
@@ -396,12 +396,12 @@ public class MultiAIOFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiAioFragment", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt + "]");
     }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
   }
   
   private boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = paramView.findViewById(2131368725);
+    paramView = paramView.findViewById(2131368750);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -416,7 +416,7 @@ public class MultiAIOFragment
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Aocr);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setMultiAIOUnreadListener(this.jdField_a_of_type_Amwt);
   }
   
   private void b(Bitmap paramBitmap)
@@ -431,9 +431,9 @@ public class MultiAIOFragment
     int j = localMarginLayoutParams.topMargin;
     int k = localMarginLayoutParams.width;
     int m = localMarginLayoutParams.height;
-    int n = getResources().getDimensionPixelSize(2131296369);
-    int i2 = getResources().getDimensionPixelSize(2131296369);
-    int i1 = getResources().getDimensionPixelOffset(2131296370);
+    int n = getResources().getDimensionPixelSize(2131296422);
+    int i2 = getResources().getDimensionPixelSize(2131296422);
+    int i1 = getResources().getDimensionPixelOffset(2131296423);
     i2 = getResources().getDisplayMetrics().widthPixels - n - i2;
     int i3 = getResources().getDisplayMetrics().heightPixels - i1;
     if (QLog.isColorLevel()) {
@@ -445,8 +445,8 @@ public class MultiAIOFragment
     localFrameLayout.addView(localImageView);
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axke(this, localImageView, i, n, j, i1, k, i2, i3, m));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new axkf(this, localImageView));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avxl(this, localImageView, i, n, j, i1, k, i2, i3, m));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new avxm(this, localImageView));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.setVisibility(0);
@@ -461,17 +461,17 @@ public class MultiAIOFragment
     e();
     FragmentActivity localFragmentActivity = getActivity();
     ViewGroup localViewGroup = (ViewGroup)localFragmentActivity.getWindow().getDecorView();
-    this.jdField_c_of_type_AndroidViewView = localFragmentActivity.getLayoutInflater().inflate(2131561058, localViewGroup, false);
-    this.jdField_c_of_type_AndroidViewView.findViewById(2131363850).setOnClickListener(new axkc(this));
-    this.jdField_c_of_type_AndroidViewView.findViewById(2131363716).setOnClickListener(new axkd(this));
-    ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131380184)).setText(anzj.a(2131705881) + axlf.jdField_a_of_type_Int);
+    this.jdField_c_of_type_AndroidViewView = localFragmentActivity.getLayoutInflater().inflate(2131560929, localViewGroup, false);
+    this.jdField_c_of_type_AndroidViewView.findViewById(2131363876).setOnClickListener(new avxj(this));
+    this.jdField_c_of_type_AndroidViewView.findViewById(2131363745).setOnClickListener(new avxk(this));
+    ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131379914)).setText(amtj.a(2131706111) + avym.jdField_a_of_type_Int);
     d();
     localViewGroup.addView(this.jdField_c_of_type_AndroidViewView);
   }
   
   private void d()
   {
-    float f = axlf.jdField_a_of_type_Int * 1.0F / 20.0F;
+    float f = avym.jdField_a_of_type_Int * 1.0F / 20.0F;
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager.b(f);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator.a(f);
   }
@@ -505,9 +505,9 @@ public class MultiAIOFragment
     }
   }
   
-  public axld a()
+  public avyk a()
   {
-    return ((axlc)getActivity().app.getManager(325)).b(this.jdField_b_of_type_Int);
+    return ((avyj)getActivity().app.getManager(325)).b(this.jdField_b_of_type_Int);
   }
   
   public RecentBaseData a(int paramInt)
@@ -533,7 +533,7 @@ public class MultiAIOFragment
   public ListView a()
   {
     if (this.jdField_b_of_type_AndroidViewView != null) {
-      return (ListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370020);
+      return (ListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370017);
     }
     return null;
   }
@@ -557,99 +557,99 @@ public class MultiAIOFragment
     //   1: ifnonnull +13 -> 14
     //   4: ldc 76
     //   6: iconst_1
-    //   7: ldc_w 860
+    //   7: ldc_w 862
     //   10: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   13: return
     //   14: aload_1
-    //   15: invokevirtual 863	android/view/View:getTag	()Ljava/lang/Object;
-    //   18: checkcast 865	java/lang/Integer
-    //   21: invokevirtual 868	java/lang/Integer:intValue	()I
+    //   15: invokevirtual 865	android/view/View:getTag	()Ljava/lang/Object;
+    //   18: checkcast 867	java/lang/Integer
+    //   21: invokevirtual 870	java/lang/Integer:intValue	()I
     //   24: istore_3
     //   25: aload_0
     //   26: aload_1
     //   27: aload_2
-    //   28: invokespecial 870	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    //   28: invokespecial 872	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Landroid/view/View;Landroid/view/MotionEvent;)Z
     //   31: istore 5
     //   33: aload_1
-    //   34: ldc_w 871
+    //   34: ldc_w 873
     //   37: invokevirtual 110	android/view/View:findViewById	(I)Landroid/view/View;
     //   40: astore 6
     //   42: aload_1
-    //   43: invokevirtual 874	android/view/View:destroyDrawingCache	()V
+    //   43: invokevirtual 876	android/view/View:destroyDrawingCache	()V
     //   46: aload_1
     //   47: iconst_1
-    //   48: invokevirtual 877	android/view/View:setDrawingCacheEnabled	(Z)V
+    //   48: invokevirtual 879	android/view/View:setDrawingCacheEnabled	(Z)V
     //   51: aload 6
     //   53: ifnull +10 -> 63
     //   56: aload 6
     //   58: bipush 8
-    //   60: invokevirtual 878	android/view/View:setVisibility	(I)V
+    //   60: invokevirtual 880	android/view/View:setVisibility	(I)V
     //   63: aload_1
-    //   64: invokevirtual 881	android/view/View:getDrawingCache	()Landroid/graphics/Bitmap;
+    //   64: invokevirtual 883	android/view/View:getDrawingCache	()Landroid/graphics/Bitmap;
     //   67: astore 7
     //   69: aload 7
     //   71: aload 7
     //   73: invokevirtual 367	android/graphics/Bitmap:getWidth	()I
     //   76: i2f
     //   77: aload_1
-    //   78: invokevirtual 884	android/view/View:getScaleX	()F
+    //   78: invokevirtual 886	android/view/View:getScaleX	()F
     //   81: fmul
     //   82: f2i
     //   83: aload 7
     //   85: invokevirtual 370	android/graphics/Bitmap:getHeight	()I
     //   88: i2f
     //   89: aload_1
-    //   90: invokevirtual 887	android/view/View:getScaleY	()F
+    //   90: invokevirtual 889	android/view/View:getScaleY	()F
     //   93: fmul
     //   94: f2i
     //   95: iconst_1
-    //   96: invokestatic 891	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   96: invokestatic 893	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   99: astore 7
     //   101: iconst_2
     //   102: newarray int
     //   104: astore 8
     //   106: aload_1
     //   107: aload 8
-    //   109: invokevirtual 696	android/view/View:getLocationOnScreen	([I)V
+    //   109: invokevirtual 697	android/view/View:getLocationOnScreen	([I)V
     //   112: aload_0
     //   113: aload_1
-    //   114: invokespecial 893	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Landroid/view/View;)I
+    //   114: invokespecial 895	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Landroid/view/View;)I
     //   117: istore 4
     //   119: aload_0
     //   120: aload_1
-    //   121: putfield 853	com/tencent/mobileqq/multiaio/MultiAIOFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   121: putfield 855	com/tencent/mobileqq/multiaio/MultiAIOFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   124: aload_0
     //   125: aload_1
-    //   126: invokevirtual 894	android/view/View:getContext	()Landroid/content/Context;
+    //   126: invokevirtual 896	android/view/View:getContext	()Landroid/content/Context;
     //   129: aload_1
     //   130: iload_3
     //   131: aload_0
-    //   132: getfield 567	com/tencent/mobileqq/multiaio/MultiAIOFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   132: getfield 568	com/tencent/mobileqq/multiaio/MultiAIOFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   135: iload_3
-    //   136: invokeinterface 844 2 0
+    //   136: invokeinterface 846 2 0
     //   141: checkcast 323	com/tencent/mobileqq/activity/recent/RecentBaseData
     //   144: iload 5
     //   146: aload 7
     //   148: aload 8
     //   150: iload 4
-    //   152: invokespecial 896	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Landroid/content/Context;Landroid/view/View;ILcom/tencent/mobileqq/activity/recent/RecentBaseData;ZLandroid/graphics/Bitmap;[II)V
+    //   152: invokespecial 898	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Landroid/content/Context;Landroid/view/View;ILcom/tencent/mobileqq/activity/recent/RecentBaseData;ZLandroid/graphics/Bitmap;[II)V
     //   155: iload 5
     //   157: ifeq +33 -> 190
     //   160: iconst_2
     //   161: istore_3
-    //   162: ldc_w 898
+    //   162: ldc_w 900
     //   165: iload_3
-    //   166: invokestatic 900	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Ljava/lang/String;I)V
+    //   166: invokestatic 902	com/tencent/mobileqq/multiaio/MultiAIOFragment:a	(Ljava/lang/String;I)V
     //   169: aload 6
     //   171: ifnull +9 -> 180
     //   174: aload 6
     //   176: iconst_0
-    //   177: invokevirtual 878	android/view/View:setVisibility	(I)V
+    //   177: invokevirtual 880	android/view/View:setVisibility	(I)V
     //   180: aload_1
     //   181: iconst_0
-    //   182: invokevirtual 877	android/view/View:setDrawingCacheEnabled	(Z)V
+    //   182: invokevirtual 879	android/view/View:setDrawingCacheEnabled	(Z)V
     //   185: aload_1
-    //   186: invokevirtual 874	android/view/View:destroyDrawingCache	()V
+    //   186: invokevirtual 876	android/view/View:destroyDrawingCache	()V
     //   189: return
     //   190: iconst_1
     //   191: istore_3
@@ -658,39 +658,39 @@ public class MultiAIOFragment
     //   197: ldc 76
     //   199: iconst_1
     //   200: iconst_2
-    //   201: anewarray 902	java/lang/Object
+    //   201: anewarray 904	java/lang/Object
     //   204: dup
     //   205: iconst_0
-    //   206: ldc_w 904
+    //   206: ldc_w 906
     //   209: aastore
     //   210: dup
     //   211: iconst_1
     //   212: aload_2
     //   213: aastore
-    //   214: invokestatic 907	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   217: invokestatic 911	axle:a	()V
+    //   214: invokestatic 909	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   217: invokestatic 913	avyl:a	()V
     //   220: aload 6
     //   222: ifnull +9 -> 231
     //   225: aload 6
     //   227: iconst_0
-    //   228: invokevirtual 878	android/view/View:setVisibility	(I)V
+    //   228: invokevirtual 880	android/view/View:setVisibility	(I)V
     //   231: aload_1
     //   232: iconst_0
-    //   233: invokevirtual 877	android/view/View:setDrawingCacheEnabled	(Z)V
+    //   233: invokevirtual 879	android/view/View:setDrawingCacheEnabled	(Z)V
     //   236: aload_1
-    //   237: invokevirtual 874	android/view/View:destroyDrawingCache	()V
+    //   237: invokevirtual 876	android/view/View:destroyDrawingCache	()V
     //   240: return
     //   241: astore_2
     //   242: aload 6
     //   244: ifnull +9 -> 253
     //   247: aload 6
     //   249: iconst_0
-    //   250: invokevirtual 878	android/view/View:setVisibility	(I)V
+    //   250: invokevirtual 880	android/view/View:setVisibility	(I)V
     //   253: aload_1
     //   254: iconst_0
-    //   255: invokevirtual 877	android/view/View:setDrawingCacheEnabled	(Z)V
+    //   255: invokevirtual 879	android/view/View:setDrawingCacheEnabled	(Z)V
     //   258: aload_1
-    //   259: invokevirtual 874	android/view/View:destroyDrawingCache	()V
+    //   259: invokevirtual 876	android/view/View:destroyDrawingCache	()V
     //   262: aload_2
     //   263: athrow
     // Local variable table:
@@ -785,18 +785,18 @@ public class MultiAIOFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
-    axld localaxld2 = a();
-    axld localaxld1 = localaxld2;
-    if (localaxld2 == null)
+    avyk localavyk2 = a();
+    avyk localavyk1 = localavyk2;
+    if (localavyk2 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MultiAioFragment", 2, "onCreate() called with: savedInstanceState = [" + paramBundle + "], multiAioContext == null");
       }
-      localaxld1 = axld.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_b_of_type_Int = localaxld1.a();
+      localavyk1 = avyk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_b_of_type_Int = localavyk1.a();
     }
-    localaxld1.a(this);
-    this.jdField_a_of_type_JavaUtilList = localaxld1.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    localavyk1.a(this);
+    this.jdField_a_of_type_JavaUtilList = localavyk1.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
     int i;
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
@@ -842,7 +842,7 @@ public class MultiAIOFragment
       View localView;
       do
       {
-        localView = paramLayoutInflater.inflate(2131561059, paramViewGroup, false);
+        localView = paramLayoutInflater.inflate(2131560930, paramViewGroup, false);
         localObject1 = localView;
       } while (localView == null);
       a(localView, paramBundle);
@@ -858,7 +858,7 @@ public class MultiAIOFragment
       for (;;)
       {
         QLog.e("MultiAioFragment", 1, "onCreateView: ", localThrowable);
-        axle.a();
+        avyl.a();
         Object localObject2 = localObject1;
       }
     }
@@ -871,8 +871,8 @@ public class MultiAIOFragment
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (localFragmentActivity.isFinishing()))
     {
-      axkr.a();
-      ((axlc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(325)).a(this.jdField_b_of_type_Int);
+      avxy.a();
+      ((avyj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(325)).a(this.jdField_b_of_type_Int);
     }
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()))
     {
@@ -886,10 +886,10 @@ public class MultiAIOFragment
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setMultiAIOUnreadListener(null);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
     }
-    axky.jdField_a_of_type_Boolean = false;
+    avyf.jdField_a_of_type_Boolean = false;
   }
   
   public void onDestroyView()
@@ -954,7 +954,7 @@ public class MultiAIOFragment
     View localView = getView();
     paramBundle = localView;
     if (localView != null) {
-      paramBundle = localView.findViewById(2131371513);
+      paramBundle = localView.findViewById(2131371481);
     }
     a(paramBundle, localBitmap);
   }
@@ -966,7 +966,7 @@ public class MultiAIOFragment
     if (localSystemBarCompact != null) {
       localSystemBarCompact.setgetStatusBarVisible(false, 0);
     }
-    if (axlf.jdField_a_of_type_Boolean) {}
+    if (avym.jdField_a_of_type_Boolean) {}
     d();
   }
 }

@@ -1,19 +1,21 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-final class bhlu
+public final class bhlu
   implements DialogInterface.OnClickListener
 {
-  bhlu(bhpc parambhpc) {}
+  public bhlu(Context paramContext) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.dismiss();
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhlu
  * JD-Core Version:    0.7.0.1
  */

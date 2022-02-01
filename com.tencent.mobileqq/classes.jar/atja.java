@@ -1,105 +1,55 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.1;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.2;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.3;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.4;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class atja
-  implements DownloadListener
+  extends MSFServlet
 {
-  public atja(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ("1101070898".equals(paramString1))
+    if (paramIntent != null)
     {
-      paramString1 = UniformDownloadActivity.a(this.a);
-      UniformDownloadActivity.a(this.a, paramString1);
-      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      atjb localatjb = (atjb)atii.a().a("sso_channel");
+      if (localatjb == null) {
+        break;
       }
-      UniformDownloadActivity.a(this.a, paramString1);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      localatjb.a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
+    QLog.d("QFlutterFlutterServlet", 1, "ssoChannel is null");
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    if (paramIntent != null)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.e);
-    }
-    bdll.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
-    this.a.runOnUiThread(new UniformDownloadActivity.10.4(this));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
-      this.a.runOnUiThread(new UniformDownloadActivity.10.3(this));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.e);
-      }
-      if ((localDownloadInfo != null) && (localDownloadInfo.c.equals("1101070898"))) {
-        this.a.runOnUiThread(new UniformDownloadActivity.10.2(this, localDownloadInfo));
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
       }
     }
   }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    this.a.runOnUiThread(new UniformDownloadActivity.10.1(this));
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atja
  * JD-Core Version:    0.7.0.1
  */

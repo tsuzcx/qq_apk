@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.17.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class aecn
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aecn(ChatHistory paramChatHistory) {}
+  public aecn(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ThreadManager.post(new ChatHistory.17.1(this), 8, null, false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131719378);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

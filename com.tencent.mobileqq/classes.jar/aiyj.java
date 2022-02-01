@@ -1,23 +1,17 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-class aiyj
-  implements TextView.OnEditorActionListener
+public class aiyj
+  implements DialogInterface.OnClickListener
 {
-  aiyj(aiyh paramaiyh) {}
+  public aiyj(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      aiyu.a("0X800A89F", 0, 0);
-      return true;
-    }
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.getActivity().setResult(8001);
   }
 }
 

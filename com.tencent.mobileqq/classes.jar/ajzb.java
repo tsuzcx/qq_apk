@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.image.AbstractGifImage;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class ajzb
-  implements DialogInterface.OnDismissListener
+public class ajzb
+  implements ajvb
 {
-  ajzb(ajyt paramajyt) {}
+  public ajzb(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a() {}
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
+  }
 }
 
 

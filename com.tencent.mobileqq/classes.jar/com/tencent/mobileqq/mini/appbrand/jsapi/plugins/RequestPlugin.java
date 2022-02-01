@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
-import bhlo;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -22,6 +21,7 @@ import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil;
 import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil.JsPluginParam;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Set;
@@ -252,7 +252,7 @@ public class RequestPlugin
   private String getUserAgent()
   {
     if ((this.jsPluginEngine != null) && (this.jsPluginEngine.getActivityContext() != null)) {
-      return getSystemUA() + " QQ/MiniApp QQ/" + bhlo.c();
+      return getSystemUA() + " QQ/MiniApp QQ/" + DeviceInfoUtil.getQQVersion();
     }
     return null;
   }
@@ -443,12 +443,12 @@ public class RequestPlugin
     //   193: iload 4
     //   195: ldc_w 542
     //   198: ldc_w 543
-    //   201: invokestatic 549	anzj:a	(I)Ljava/lang/String;
+    //   201: invokestatic 549	amtj:a	(I)Ljava/lang/String;
     //   204: invokespecial 551	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/RequestPlugin:callbackFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Lorg/json/JSONObject;ILjava/lang/String;Ljava/lang/String;)V
     //   207: ldc_w 542
     //   210: aconst_null
     //   211: ldc_w 552
-    //   214: invokestatic 549	anzj:a	(I)Ljava/lang/String;
+    //   214: invokestatic 549	amtj:a	(I)Ljava/lang/String;
     //   217: invokestatic 323	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Lorg/json/JSONObject;
     //   220: invokevirtual 150	org/json/JSONObject:toString	()Ljava/lang/String;
     //   223: astore 7
@@ -720,7 +720,7 @@ public class RequestPlugin
     //   788: iload 4
     //   790: ldc_w 650
     //   793: ldc_w 651
-    //   796: invokestatic 549	anzj:a	(I)Ljava/lang/String;
+    //   796: invokestatic 549	amtj:a	(I)Ljava/lang/String;
     //   799: invokespecial 551	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/RequestPlugin:callbackFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Lorg/json/JSONObject;ILjava/lang/String;Ljava/lang/String;)V
     //   802: aload 7
     //   804: monitorexit

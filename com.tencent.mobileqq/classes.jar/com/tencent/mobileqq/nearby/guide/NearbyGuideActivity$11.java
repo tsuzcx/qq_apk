@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import bdll;
+import bcef;
 
 class NearbyGuideActivity$11
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyGuideActivity$11
   
   public void run()
   {
-    bdll.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
+    bcef.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
   }
 }
 

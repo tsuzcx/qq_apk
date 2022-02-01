@@ -1,21 +1,58 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 
 public class tat
-  extends AnimatorListenerAdapter
+  extends Drawable
 {
-  public tat(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  private Bitmap a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public tat(Bitmap paramBitmap)
   {
-    this.a.a();
+    this.a = paramBitmap;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public Bitmap a()
   {
-    this.a.a();
+    return this.a;
   }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((this.a != null) && (!this.a.isRecycled())) {
+      paramCanvas.drawBitmap(this.a, 0.0F, 0.0F, null);
+    }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getMinimumHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

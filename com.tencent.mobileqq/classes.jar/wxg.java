@@ -1,28 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Collections;
-import java.util.List;
-
-class wxg
-  extends SimpleObserver<List<xiw>>
+public abstract interface wxg
 {
-  wxg(wxd paramwxd, wxh paramwxh, wvn paramwvn) {}
-  
-  public void a(List<xiw> paramList)
-  {
-    super.onNext(paramList);
-    if (this.jdField_a_of_type_Wxh != null) {
-      this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wvn, Collections.emptyList());
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Wxh != null) {
-      this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wvn, paramError);
-    }
-  }
+  public abstract void a(wwz paramwwz);
 }
 
 

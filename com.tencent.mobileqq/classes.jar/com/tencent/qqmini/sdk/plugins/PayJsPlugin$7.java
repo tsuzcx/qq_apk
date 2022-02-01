@@ -1,22 +1,16 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.widget.MiniToast;
 
 class PayJsPlugin$7
-  implements PayJsPlugin.IStarQueryListener
+  implements Runnable
 {
-  PayJsPlugin$7(PayJsPlugin paramPayJsPlugin, RequestEvent paramRequestEvent) {}
+  PayJsPlugin$7(PayJsPlugin paramPayJsPlugin, Activity paramActivity) {}
   
-  public void onResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      PayJsPlugin.access$1600(this.this$0, this.val$req, paramJSONObject);
-      return;
-    }
-    paramJSONObject = paramJSONObject.optString("errMsg");
-    PayJsPlugin.access$700(this.this$0, this.val$req, null, paramJSONObject);
+    MiniToast.makeText(this.val$context, 0, "【仅debug可见】使用h5支付", 0).show();
   }
 }
 

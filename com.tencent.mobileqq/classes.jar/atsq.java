@@ -1,43 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
-import java.util.concurrent.Executor;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
 public class atsq
-  extends attg
+  extends Handler
 {
-  public long a;
-  private Bundle a;
-  public String a;
-  private long b;
-  public String b;
+  public atsq(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public atsq(atsi paramatsi, MessageRecord paramMessageRecord)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramatsi);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramatsi = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramatsi);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, atte paramatte)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    aunu.a().execute(new QFileMsgForwardManager.BuddyUploadTaskExcuter.1(this, paramString, paramatte));
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        return;
+        if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
+        {
+          this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690749));
+          this.a.jdField_a_of_type_Bhht.d(2130849594);
+          this.a.jdField_a_of_type_Bhht.b(false);
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+        return;
+      } while ((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing()));
+      this.a.jdField_a_of_type_Bhht.cancel();
+      this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690751));
+      this.a.jdField_a_of_type_Bhht.c(true);
+      this.a.jdField_a_of_type_Bhht.a(false);
+      this.a.jdField_a_of_type_Bhht.b(true);
+      return;
+    }
+    QQSettingChatOperationFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsq
  * JD-Core Version:    0.7.0.1
  */

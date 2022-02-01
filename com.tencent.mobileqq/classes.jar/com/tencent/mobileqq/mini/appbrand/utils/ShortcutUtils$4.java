@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
+import amtj;
 import android.app.Activity;
-import anzj;
 
 final class ShortcutUtils$4
   implements Runnable
@@ -11,7 +11,7 @@ final class ShortcutUtils$4
   public void run()
   {
     if (ShortcutUtils.PermissionDialog.canShowDialog()) {
-      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, anzj.a(2131712886), anzj.a(2131712892), anzj.a(2131712873), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
+      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, amtj.a(2131713118), amtj.a(2131713124), amtj.a(2131713105), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
     }
   }
 }

@@ -1,15 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 public class adgi
-  implements adci
+  extends BroadcastReceiver
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public adgi(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ((bitz)paramadan.a().a(107)).a(paramMsgType0x210.vProtobuf);
-    return null;
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
+    }
   }
 }
 

@@ -1,15 +1,26 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
 public class alew
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public String a;
+  public alew(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk) {}
   
-  public alew(String paramString, long paramLong, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Alfk.a.getLayoutParams());
+    paramAnimation.addRule(15);
+    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
+    this.jdField_a_of_type_Alfk.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Alfk.a.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class ajxs
-  extends antg
+  implements OnCompositionLoadedListener
 {
-  public ajxs(TroopFragment paramTroopFragment) {}
+  public ajxs(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  protected void a(int paramInt)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.e();
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
   }
 }
 

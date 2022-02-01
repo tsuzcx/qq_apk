@@ -1,12 +1,18 @@
-class adpc
-  implements adnx
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.chat.QCircleObserver;
+
+public class adpc
+  extends QCircleObserver
 {
-  adpc(adpb paramadpb) {}
+  public adpc(Leba paramLeba) {}
   
-  public void a(axeh paramaxeh, int paramInt)
+  public void onUpdateRedPoint(int paramInt)
   {
-    adpb.a(this.a, paramaxeh);
-    adpb.a(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "QCircleObserver onUpdateRedPoint " + paramInt);
+    }
+    Leba.f(this.a);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bnjl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.FileUtils;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
 
@@ -27,7 +27,7 @@ class VideoJsPlugin$5
     if (localFile.exists()) {
       localFile.delete();
     }
-    if (bnjl.a(new File(this.val$info.path), localFile))
+    if (FileUtils.copyFile(new File(this.val$info.path), localFile))
     {
       this.val$info.path = str;
       VideoJsPlugin.access$700(this.this$0, this.val$info, this.val$changeSize);

@@ -1,33 +1,19 @@
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 class blqx
-  extends DataSetObservable
+  implements View.OnTouchListener
 {
-  blqx(blqv paramblqv) {}
+  blqx(blqw paramblqw) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof blqw)) {
-            ((blqw)localDataSetObserver).a(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
+    if ((blqw.a(this.a) != null) && (blqw.a(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, blqw.a(this.a), blqw.a(this.a));
     }
+    return true;
   }
 }
 

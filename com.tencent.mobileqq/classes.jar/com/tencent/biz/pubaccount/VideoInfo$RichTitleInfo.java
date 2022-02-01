@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import odi;
+import oev;
 import org.json.JSONObject;
 
 public class VideoInfo$RichTitleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RichTitleInfo> CREATOR = new odi();
+  public static final Parcelable.Creator<RichTitleInfo> CREATOR = new oev();
   public String a;
   public String b;
   public String c;

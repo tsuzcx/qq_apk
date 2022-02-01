@@ -1,15 +1,20 @@
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import java.lang.ref.WeakReference;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
-class acnr
-  implements acxq
+public class acnr
+  extends MqqHandler
 {
-  acnr(acnq paramacnq, AdImageViewAdapter.Params paramParams) {}
+  public acnr(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.e();
   }
 }
 

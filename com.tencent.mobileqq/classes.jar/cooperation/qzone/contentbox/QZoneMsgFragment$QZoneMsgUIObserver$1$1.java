@@ -1,7 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import bmyh;
-
 class QZoneMsgFragment$QZoneMsgUIObserver$1$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1$1
   
   public void run()
   {
-    QZoneMsgFragment.a(this.a.a.a);
+    QZoneMsgFragment.access$300(this.this$2.this$1.this$0);
   }
 }
 

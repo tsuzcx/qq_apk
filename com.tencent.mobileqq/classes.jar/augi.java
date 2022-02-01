@@ -1,33 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
-class augi
-  implements View.OnClickListener
+public class augi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  augi(aufz paramaufz, int paramInt) {}
+  public augi(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_Aufz.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label86;
-      }
-      bdll.b(null, "dc00898", "", "", "0X800A745", "0X800A745", auoo.c(this.jdField_a_of_type_Aufz.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Aufz.a.d()) {
-        this.jdField_a_of_type_Aufz.a.b();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label86:
-      if (this.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_Aufz.a.g();
-      }
-    }
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.requestLayout();
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.soload;
 
-import bdgx;
+import bbzm;
 
 public class SoLoadManager$1
   implements Runnable
 {
-  public SoLoadManager$1(bdgx parambdgx, LoadParam paramLoadParam) {}
+  public SoLoadManager$1(bbzm parambbzm, LoadParam paramLoadParam) {}
   
   public void run()
   {
-    bdgx.a(this.this$0, this.a, null);
+    bbzm.a(this.this$0, this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.SoLoadManager.1
  * JD-Core Version:    0.7.0.1
  */

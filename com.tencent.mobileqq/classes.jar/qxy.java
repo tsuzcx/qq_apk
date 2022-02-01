@@ -1,49 +1,40 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class qxy
-  implements Cloneable
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$reportTaskCompleted$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qxy
+  extends nmf
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  qxy(qxx paramqxx) {}
   
-  private static qxy b(feeds_info.LocationInfo paramLocationInfo)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    qxy localqxy = new qxy();
-    String str;
-    if (paramLocationInfo.bytes_name.has())
+    QLog.i("RIJRewardTaskRemoteRepo", 1, "report task completed onResult() <-- errorCode: " + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      str = paramLocationInfo.bytes_name.get().toStringUtf8();
-      localqxy.jdField_a_of_type_JavaLangString = str;
-      localqxy.jdField_a_of_type_Int = paramLocationInfo.uint32_longitude.get();
-      localqxy.jdField_b_of_type_Int = paramLocationInfo.uint32_latitude.get();
-      if (!paramLocationInfo.bytes_icon_url.has()) {
-        break label90;
+      paramArrayOfByte = this.a;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.a();
       }
     }
-    label90:
-    for (paramLocationInfo = paramLocationInfo.bytes_icon_url.get().toStringUtf8();; paramLocationInfo = "")
+    do
     {
-      localqxy.jdField_b_of_type_JavaLangString = paramLocationInfo;
-      return localqxy;
-      str = "";
-      break;
-    }
+      return;
+      paramArrayOfByte = this.a;
+    } while (paramArrayOfByte == null);
+    paramArrayOfByte.a(paramInt, "");
   }
   
-  public qxy a()
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
   {
-    try
-    {
-      qxy localqxy = (qxy)super.clone();
-      return localqxy;
+    QLog.e("RIJRewardTaskRemoteRepo", 1, "report task completed onError() <-- errorCode: " + paramInt + ", errorMsg: " + paramString);
+    paramBundle = this.a;
+    if (paramBundle != null) {
+      paramBundle.a(paramInt, paramString);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    return true;
   }
 }
 

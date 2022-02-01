@@ -1,30 +1,15 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class vpr
-  implements ViewPager.OnPageChangeListener
 {
-  public vpr(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    
-    if ((QCirclePersonalBottomView.a(this.a) != null) && (QCirclePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      QCirclePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
-    }
-    if (paramInt == 1) {
-      QCirclePersonalBottomView.a(this.a, 20, 1);
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    QCirclePersonalBottomView.a(this.a, 21, 1);
+    return vqk.a(paramStoryVideoItem);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return vqk.a(paramString);
   }
 }
 

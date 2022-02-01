@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import Override;
-import aana;
+import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -18,48 +18,42 @@ import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anzj;
-import aquy;
-import bddz;
-import bdlh;
-import bdnr;
-import bhmi;
-import bhmq;
-import blfp;
-import bocw;
-import boem;
-import bork;
-import bozr;
-import bozv;
-import bpam;
-import bplq;
-import bqci;
-import bqcj;
-import bqck;
-import bqcl;
-import bqeq;
-import bqgk;
-import bqhk;
-import bqhs;
-import bqjx;
-import bqka;
-import bqua;
-import bqug;
-import bqyo;
-import brhj;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import apoh;
+import bbpr;
+import bfvo;
+import blie;
+import bljd;
+import bmbc;
+import bmbg;
+import bmbx;
+import bmql;
+import bncl;
+import bncm;
+import bncn;
+import bncp;
+import bndn;
+import bnee;
+import bnew;
+import bngn;
+import bngq;
+import bnot;
+import bnoy;
+import bnsq;
+import boax;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.sveffects.SvEffectSdkInitor;
 import dov.com.qq.im.ae.SessionWrap;
+import dov.com.qq.im.ae.download.AEResUtil;
 import dov.com.qq.im.capture.text.DynamicTextItem;
 import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
 import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity;
@@ -73,22 +67,23 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
-import yuk;
-import yup;
-import yuq;
+import xvv;
+import xwa;
+import xwb;
+import zjv;
 
 public class EditPicActivity
   extends QQStoryBaseActivity
-  implements bqhs
+  implements bnew
 {
   public long a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public bqgk a;
-  brhj jdField_a_of_type_Brhj = new bqci(this);
+  public bnee a;
+  boax jdField_a_of_type_Boax = new bncl(this);
   
   public EditPicActivity()
   {
-    this.jdField_a_of_type_Bqgk = new bqcl();
+    this.jdField_a_of_type_Bnee = new bncp();
     this.jdField_a_of_type_Long = -1L;
   }
   
@@ -104,7 +99,7 @@ public class EditPicActivity
   
   public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    return a(paramActivity, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, false, false, false, paramInt1, paramInt2, 0, false, null, paramBundle);
+    return a(paramActivity, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt1, paramInt2, 0, false, null, paramBundle);
   }
   
   public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt1, int paramInt2, int paramInt3, HashMap<String, Object> paramHashMap)
@@ -112,12 +107,7 @@ public class EditPicActivity
     return a(paramActivity, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, false, false, false, paramInt1, paramInt2, 0, false, paramHashMap);
   }
   
-  public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean9, HashMap<String, Object> paramHashMap)
-  {
-    return a(paramActivity, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6, paramBoolean7, paramBoolean8, paramInt1, paramInt2, paramInt3, paramBoolean9, paramHashMap, null);
-  }
-  
-  public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean9, HashMap<String, Object> paramHashMap, Bundle paramBundle)
+  public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean6, HashMap<String, Object> paramHashMap, Bundle paramBundle)
   {
     Bundle localBundle = paramActivity.getIntent().getExtras();
     Intent localIntent = new Intent();
@@ -135,11 +125,11 @@ public class EditPicActivity
     localIntent.putExtra("open_chatfragment", true);
     long l2 = 0L;
     if (paramBoolean1) {
-      l2 = 0L | 0x20000000;
+      l2 = 0L | 0x400;
     }
     long l1 = l2;
     if (paramBoolean2) {
-      l1 = l2 | 1L | 0x0;
+      l1 = l2 | 1L;
     }
     l2 = l1;
     if (paramBoolean3) {
@@ -150,28 +140,12 @@ public class EditPicActivity
       l1 = l2 | 0x4;
     }
     l2 = l1;
-    if (paramBoolean7) {
-      l2 = l1 | 0x4000000;
-    }
-    l1 = l2;
-    if (paramBoolean6) {
-      l1 = l2 | 0x10000000;
-    }
-    l2 = l1;
-    if (paramBoolean8) {
-      l2 = l1 | 0x20000;
-    }
-    l1 = l2;
     if (paramBoolean5)
     {
-      l1 = l2;
+      l2 = l1;
       if (Build.VERSION.SDK_INT >= 21) {
-        l1 = l2 | 0x40;
+        l2 = l1 | 0x40;
       }
-    }
-    l2 = l1;
-    if (paramInt2 == 102) {
-      l2 = l1 | 0x800000;
     }
     if (paramInt1 != 2)
     {
@@ -180,7 +154,7 @@ public class EditPicActivity
     }
     else
     {
-      l1 = l2 | 0x40000000 | 0x2000 | 0x4000;
+      l1 = l2 | 0x800 | 0x200 | 0x20000 | 0x2000;
     }
     if ((paramInt1 != 8) && (paramInt1 != 4))
     {
@@ -189,30 +163,16 @@ public class EditPicActivity
     }
     else
     {
-      l2 = l1 | 0x2000;
-    }
-    l1 = l2;
-    if (paramInt1 == 1) {
-      l1 = l2 | 0x2000000;
-    }
-    l2 = l1;
-    if (paramInt1 == 2) {
-      l2 = l1 | 0x0;
+      l2 = l1 | 0x200;
     }
     if ((paramBundle != null) && (paramBundle.getBoolean("key_multi_edit_pic", false))) {
       localIntent.putExtra("key_multi_edit_pic", true);
     }
-    l2 |= 0x0;
-    l1 = l2;
-    if (bddz.l()) {
-      l1 = l2 & 0xDFFFFFFF & 0xFFFFFFF7 & 0xFFFFFEFF & 0xFFFFFFBF & 0xFFFFFFDF;
+    l1 = l2 | 0x1000;
+    if ((paramInt2 == 122) || (paramInt2 == 125) || (paramInt2 == 133) || (EditVideoParams.a(paramInt2))) {
+      l1 &= 0xFFFFFDFF;
     }
-    l2 = l1;
-    if (paramInt2 == 102) {
-      l2 = l1 & 0xFBFFFFFF & 0xFFFDFFFF;
-    }
-    if ((paramInt2 == 122) || (paramInt2 == 125) || (paramInt2 == 133) || (EditVideoParams.a(paramInt2))) {}
-    for (l1 = l2 & 0xFFFFDFFF;; l1 = l2)
+    for (;;)
     {
       paramBundle = (SessionWrap)paramActivity.getIntent().getParcelableExtra("ARG_SESSION_INFO");
       if (paramBundle != null)
@@ -227,7 +187,7 @@ public class EditPicActivity
       localIntent.putExtra("pic_entrance_type", paramInt3);
       localIntent.putExtra("TEMP_PARAM", l1);
       localIntent.putExtra("PATH", paramString);
-      localIntent.putExtra("go_publish_activity", paramBoolean9);
+      localIntent.putExtra("go_publish_activity", paramBoolean6);
       if (paramHashMap != null) {
         localIntent.putExtra("user_params", paramHashMap);
       }
@@ -237,6 +197,11 @@ public class EditPicActivity
       }
       return localIntent;
     }
+  }
+  
+  public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean9, HashMap<String, Object> paramHashMap)
+  {
+    return a(paramActivity, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt1, paramInt2, paramInt3, paramBoolean9, paramHashMap, null);
   }
   
   public static Intent a(Intent paramIntent)
@@ -255,7 +220,7 @@ public class EditPicActivity
   {
     if (LiuHaiUtils.f())
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370081));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370078));
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
       localLayoutParams.height = LiuHaiUtils.a();
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
@@ -274,38 +239,19 @@ public class EditPicActivity
     {
     default: 
       return paramIntent;
-    case 101: 
-      String str = ForwardRecentActivity.class.getName();
-      paramIntent.putExtra("forward_type", 1);
-      paramIntent.putExtra("forward_ability_entrence_show_in_share", true);
-      paramIntent.putExtra("k_qzone", true);
-      paramIntent.putExtra("k_qqstory", true);
-      paramIntent.putExtra("k_smartdevice", false);
-      paramIntent.putExtra("k_favorites", false);
-      paramIntent.putExtra("k_phonecontacts", false);
-      paramIntent.putExtra("forward_filepath", paramString);
-      paramIntent.putExtra("forward_extra", paramString);
-      paramIntent.putExtra("forward_thumb", paramString);
-      paramIntent.putExtra("forward_urldrawable", true);
-      paramIntent.putExtra("forward_urldrawable_big_url", paramString);
-      paramIntent.putExtra("forward_urldrawable_thumb_url", paramString);
-      paramIntent.putExtra("forward_photo_shortvideo_is_edited", true);
-      paramIntent.putExtra("forward_source_from_shoot_quick", true);
-      paramIntent.setClassName("com.tencent.mobileqq", str);
-      return paramIntent;
     }
     paramIntent.setClassName("com.tencent.mobileqq", SendWebPicActivity.class.getName());
     return paramIntent;
   }
   
-  public Intent a(bqua parambqua)
+  public Intent a(bnot parambnot)
   {
-    boolean bool2 = true;
+    int i = 0;
     Object localObject1;
     String str;
     Object localObject2;
     ArrayList localArrayList;
-    if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_AndroidContentIntent == null)
+    if (this.jdField_a_of_type_Bnee.jdField_a_of_type_AndroidContentIntent == null)
     {
       localObject1 = getIntent();
       str = ((Intent)localObject1).getStringExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
@@ -316,154 +262,123 @@ public class EditPicActivity
         ((Intent)localObject1).putExtra("open_chatfragment_fromphoto", true);
       }
       localArrayList = new ArrayList();
-      if ((!parambqua.jdField_a_of_type_Bqug.c) && (parambqua.jdField_a_of_type_Bqug.jdField_b_of_type_Boolean)) {
-        break label301;
+      if ((!parambnot.jdField_a_of_type_Bnoy.c) && (parambnot.jdField_a_of_type_Bnoy.jdField_b_of_type_Boolean)) {
+        break label319;
       }
       QLog.d("EditPicActivity", 1, "send sourcePath");
-      localObject2 = this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-      label123:
-      localArrayList.add(localObject2);
-      if ((this.jdField_a_of_type_Bqgk == null) || (this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqeq == null) || (this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqeq.a() == null) || (this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqeq.a().a() == null)) {
-        break label1143;
-      }
+      localObject2 = this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
     }
-    label301:
-    label838:
-    label1104:
-    label1109:
-    label1133:
-    label1138:
-    label1143:
-    for (Object localObject3 = this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqeq.a().a().a;; localObject3 = null)
+    JSONArray localJSONArray;
+    Object localObject3;
+    for (;;)
     {
-      JSONArray localJSONArray = new JSONArray();
-      if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
+      localArrayList.add(localObject2);
+      localJSONArray = null;
+      localObject3 = localJSONArray;
+      if (this.jdField_a_of_type_Bnee != null)
       {
-        localObject3 = ((List)localObject3).iterator();
-        for (;;)
+        localObject3 = localJSONArray;
+        if (this.jdField_a_of_type_Bnee.jdField_a_of_type_Bndn != null)
         {
-          if (((Iterator)localObject3).hasNext())
+          localObject3 = localJSONArray;
+          if (this.jdField_a_of_type_Bnee.jdField_a_of_type_Bndn.a() != null)
           {
-            bqka localbqka = (bqka)((Iterator)localObject3).next();
-            if ((localbqka.a != null) && (localbqka.a.a() != null))
-            {
-              localJSONArray.put(localbqka.a.a().toString());
-              continue;
-              localObject1 = this.jdField_a_of_type_Bqgk.jdField_a_of_type_AndroidContentIntent;
-              break;
-              localObject2 = parambqua.jdField_a_of_type_Bqug.jdField_b_of_type_JavaLangString;
-              if (getIntent().getIntExtra("camera_type", -1) != -1)
-              {
-                bhmi.d(parambqua.jdField_a_of_type_Bqug.jdField_a_of_type_JavaLangString);
-                new File(parambqua.jdField_a_of_type_Bqug.jdField_a_of_type_JavaLangString);
-                bhmq.a(this, parambqua.jdField_a_of_type_Bqug.jdField_a_of_type_JavaLangString);
-              }
-              ((Intent)localObject1).putExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
-              break label123;
+            localObject3 = localJSONArray;
+            if (this.jdField_a_of_type_Bnee.jdField_a_of_type_Bndn.a().a() != null) {
+              localObject3 = this.jdField_a_of_type_Bnee.jdField_a_of_type_Bndn.a().a().a;
             }
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("DText", 2, "EditPicActivity getPublishIntent, content is: " + localJSONArray.toString());
+      localJSONArray = new JSONArray();
+      if ((localObject3 == null) || (((List)localObject3).isEmpty())) {
+        break label392;
       }
-      if (localJSONArray.length() > 0) {
-        ((Intent)localObject1).putExtra("dynamic_text", localJSONArray.toString());
-      }
-      ((Intent)localObject1).putExtra(PublishParam.jdField_a_of_type_JavaLangString, parambqua.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
-      boolean bool3 = ((Intent)localObject1).getBooleanExtra("input_full_screen_mode", false);
-      boolean bool1;
-      int i;
-      if ((parambqua.jdField_a_of_type_Bqug.c) || (!parambqua.jdField_a_of_type_Bqug.jdField_b_of_type_Boolean))
+      localObject3 = ((List)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        bool1 = true;
-        ((Intent)localObject1).putExtra("PhotoConst.SEND_ORIGIN", bool1);
-        ((Intent)localObject1).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-        ((Intent)localObject1).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)localArrayList.get(0));
-        if (!bool1) {
-          break label1104;
+        bngq localbngq = (bngq)((Iterator)localObject3).next();
+        if ((localbngq.a != null) && (localbngq.a.a() != null)) {
+          localJSONArray.put(localbngq.a.a().toString());
         }
+      }
+      localObject1 = this.jdField_a_of_type_Bnee.jdField_a_of_type_AndroidContentIntent;
+      break;
+      label319:
+      localObject2 = parambnot.jdField_a_of_type_Bnoy.jdField_b_of_type_JavaLangString;
+      if (getIntent().getIntExtra("camera_type", -1) != -1)
+      {
+        FileUtils.deleteFile(parambnot.jdField_a_of_type_Bnoy.jdField_a_of_type_JavaLangString);
+        new File(parambnot.jdField_a_of_type_Bnoy.jdField_a_of_type_JavaLangString);
+        bfvo.a(this, parambnot.jdField_a_of_type_Bnoy.jdField_a_of_type_JavaLangString);
+      }
+      ((Intent)localObject1).putExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
+    }
+    label392:
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "EditPicActivity getPublishIntent, content is: " + localJSONArray.toString());
+    }
+    if (localJSONArray.length() > 0) {
+      ((Intent)localObject1).putExtra("dynamic_text", localJSONArray.toString());
+    }
+    ((Intent)localObject1).putExtra(PublishParam.jdField_a_of_type_JavaLangString, parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
+    boolean bool2 = ((Intent)localObject1).getBooleanExtra("input_full_screen_mode", false);
+    boolean bool1;
+    if ((parambnot.jdField_a_of_type_Bnoy.c) || (!parambnot.jdField_a_of_type_Bnoy.jdField_b_of_type_Boolean))
+    {
+      bool1 = true;
+      ((Intent)localObject1).putExtra("PhotoConst.SEND_ORIGIN", bool1);
+      ((Intent)localObject1).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+      ((Intent)localObject1).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)localArrayList.get(0));
+      if (bool1) {
         i = 2;
-        ((Intent)localObject1).putExtra("PhotoConst.CURRENT_QUALITY_TYPE", i);
-        ((Intent)localObject1).putExtra("PhotoConst.SEND_FLAG", true);
-        ((Intent)localObject1).putExtra("video_sync_to_story", parambqua.d);
-        ((Intent)localObject1).addFlags(603979776);
-        if ((this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.j()) || (bool3)) {
-          ((Intent)localObject1).putExtra("key_multi_edit_source_path", this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EditPicActivity", 2, "sendPhotoForPhotoPlus , activity = " + this + ",flag = " + ((Intent)localObject1).getFlags() + ",data = " + ((Intent)localObject1).getExtras());
-        }
-        localObject2 = a((Intent)localObject1, this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), (String)localObject2);
-        localObject1 = localObject2;
-        if (str != null)
-        {
-          localObject1 = localObject2;
-          if (str.contains("ForwardRecentActivity")) {
-            localObject1 = a((Intent)localObject2);
-          }
-        }
-        localObject2 = ((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-        localObject3 = ((Intent)localObject1).getStringExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME");
-        if (QLog.isColorLevel()) {
-          QLog.d("EditPicActivity", 2, "initclassName:" + (String)localObject2);
-        }
-        if (localObject2 != null)
-        {
-          if (((!"com.tencent.mobileqq.activity.SplashActivity".equals(localObject2)) && (!"com.tencent.mobileqq.activity.ChatActivity".equals(localObject2))) || (!"com.tencent.mobileqq.activity.photo.PhotoPreviewActivity".equals(str)) || (!"com.tencent.mobileqq.activity.photo.SendPhotoActivity".equals(localObject3))) {
-            break label1109;
-          }
-          ((Intent)localObject1).setClassName(((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
-        }
-        ((Intent)localObject1).putExtra("open_chatfragment_fromphoto", true);
-        ((Intent)localObject1).putExtra("VIDEO_LOCATE_DESCRIPTION", parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLocationDescription);
-        ((Intent)localObject1).putExtra("VIDEO_LOCAL_LONGITUDE", parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLongitude);
-        ((Intent)localObject1).putExtra("VIDEO_LOCAL_LATITUDE", parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLatitude);
-        if (parambqua.e)
-        {
-          ((Intent)localObject1).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
-          ((Intent)localObject1).removeExtra("PhotoConst.is_troop_send_mixed_msg");
-          parambqua = ((Intent)localObject1).getStringExtra("uin");
-          i = ((Intent)localObject1).getIntExtra("uintype", 0);
-          localObject3 = new bdnr();
-          ((bdnr)localObject3).d = "0X800699A";
-          ((bdnr)localObject3).e = String.valueOf(parambqua);
-          ((bdnr)localObject3).f = "3";
-          ((bdnr)localObject3).i = "shanzhao";
-          localObject2 = DataReporter.a().a(i);
-          parambqua = (bqua)localObject2;
-          if (localObject2 == null) {
-            parambqua = DataReporter.Destination.UNKNOWN;
-          }
-          ((bdnr)localObject3).g = parambqua.toString();
-          bdlh.b(null, (bdnr)localObject3);
-        }
-        if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqhk == null) {
-          break label1138;
-        }
-        if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqhk.a(this.jdField_a_of_type_Bqgk.a()) == null) {
-          break label1133;
-        }
-        bool1 = bool2;
       }
-      for (;;)
+      ((Intent)localObject1).putExtra("PhotoConst.CURRENT_QUALITY_TYPE", i);
+      ((Intent)localObject1).putExtra("PhotoConst.SEND_FLAG", true);
+      ((Intent)localObject1).putExtra("video_sync_to_story", parambnot.d);
+      ((Intent)localObject1).addFlags(603979776);
+      if ((this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.h()) || (bool2)) {
+        ((Intent)localObject1).putExtra("key_multi_edit_source_path", this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditPicActivity", 2, "sendPhotoForPhotoPlus , activity = " + this + ",flag = " + ((Intent)localObject1).getFlags() + ",data = " + ((Intent)localObject1).getExtras());
+      }
+      localObject2 = a((Intent)localObject1, this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), (String)localObject2);
+      localObject1 = localObject2;
+      if (str != null)
       {
-        ((Intent)localObject1).putExtra("VIDEO_HAS_TAG", bool1);
-        parambqua = ((Intent)localObject1).getStringExtra("key_camera_material_name");
-        bpam.b("EditPicActivity", "AIO send photo---takeSameName=" + parambqua);
-        return localObject1;
-        bool1 = false;
-        break;
-        i = 0;
-        break label524;
-        if (!"com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity".equals(str)) {
-          break label838;
+        localObject1 = localObject2;
+        if (str.contains("ForwardRecentActivity")) {
+          localObject1 = a((Intent)localObject2);
         }
+      }
+      localObject2 = ((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+      localObject3 = ((Intent)localObject1).getStringExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME");
+      if (QLog.isColorLevel()) {
+        QLog.d("EditPicActivity", 2, "initclassName:" + (String)localObject2);
+      }
+      if (localObject2 != null)
+      {
+        if (((!"com.tencent.mobileqq.activity.SplashActivity".equals(localObject2)) && (!"com.tencent.mobileqq.activity.ChatActivity".equals(localObject2))) || (!"com.tencent.mobileqq.activity.photo.PhotoPreviewActivity".equals(str)) || (!"com.tencent.mobileqq.activity.photo.SendPhotoActivity".equals(localObject3))) {
+          break label957;
+        }
+        ((Intent)localObject1).setClassName(((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
+      }
+    }
+    for (;;)
+    {
+      ((Intent)localObject1).putExtra("open_chatfragment_fromphoto", true);
+      ((Intent)localObject1).putExtra("VIDEO_LOCATE_DESCRIPTION", parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLocationDescription);
+      ((Intent)localObject1).putExtra("VIDEO_LOCAL_LONGITUDE", parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLongitude);
+      ((Intent)localObject1).putExtra("VIDEO_LOCAL_LATITUDE", parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLatitude);
+      parambnot = ((Intent)localObject1).getStringExtra("key_camera_material_name");
+      bmbx.b("EditPicActivity", "AIO send photo---takeSameName=" + parambnot);
+      return localObject1;
+      bool1 = false;
+      break;
+      label957:
+      if ("com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity".equals(str)) {
         ((Intent)localObject1).setClassName("com.tencent.mobileqq", (String)localObject2);
-        break label838;
-        bool1 = false;
-        continue;
-        bool1 = false;
       }
     }
   }
@@ -471,11 +386,6 @@ public class EditPicActivity
   public View a()
   {
     return getWindow().getDecorView();
-  }
-  
-  public bqgk a()
-  {
-    return this.jdField_a_of_type_Bqgk;
   }
   
   public void a(int paramInt1, Intent paramIntent, int paramInt2, int paramInt3)
@@ -488,32 +398,32 @@ public class EditPicActivity
     if (QLog.isColorLevel()) {
       QLog.d("EditPicActivity", 2, new Object[] { "finish, publishStoryFlag", Boolean.valueOf(paramBoolean) });
     }
-    dov.com.qq.im.QIMEffectCameraCaptureUnit.w = paramBoolean;
-    bofh.a = paramBoolean;
+    bljy.e = paramBoolean;
     setResult(paramInt1, paramIntent);
     finish();
     overridePendingTransition(paramInt3, paramInt2);
-    this.jdField_a_of_type_Bqgk.A();
+    this.jdField_a_of_type_Bnee.x();
   }
   
-  public void a(bqgk parambqgk)
+  public void a(bnee parambnee)
   {
-    this.jdField_a_of_type_Bqgk = parambqgk;
+    this.jdField_a_of_type_Bnee = parambnee;
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Bqgk.a(paramInt1, paramInt2, paramIntent);
-    yuk.c("EditPicActivity", "doOnActivityResult");
+    this.jdField_a_of_type_Bnee.a(paramInt1, paramInt2, paramIntent);
+    xvv.c("EditPicActivity", "doOnActivityResult");
     Intent localIntent;
     Object localObject;
     if (paramInt1 == 666) {
@@ -523,7 +433,7 @@ public class EditPicActivity
         localIntent.setClass(this, EditPicActivity.class);
         if (localIntent.getIntExtra("camera_type", -1) == 103)
         {
-          paramIntent = this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+          paramIntent = this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
           if (QLog.isColorLevel()) {
             QLog.d("EditPicActivity", 2, "reset2Camera end shoot " + this + " new path " + paramIntent);
           }
@@ -533,11 +443,11 @@ public class EditPicActivity
             localObject = PreferenceManager.getDefaultSharedPreferences(this).getString("edit_pic_new_path", "");
             QLog.d("EditPicActivity", 1, " be killed. read sp " + (String)localObject);
           }
-          if (bhmi.a((String)localObject)) {
+          if (FileUtils.fileExists((String)localObject)) {
             break label248;
           }
           QLog.i("EditPicActivity", 1, "recamera file not exist " + (String)localObject);
-          QQToast.a(this, anzj.a(2131702566), 0).a();
+          QQToast.a(this, amtj.a(2131702801), 0).a();
           finish();
         }
       }
@@ -552,52 +462,41 @@ public class EditPicActivity
           return;
           paramIntent = localIntent.getStringExtra("image_path");
           break;
-          paramIntent = new EditVideoParams(this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int, this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Long, new EditTakePhotoSource((String)localObject, 2, 0, 0), EditVideoParams.a(this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()));
+          paramIntent = new EditVideoParams(this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int, this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c, new EditTakePhotoSource((String)localObject, 2, 0, 0), EditVideoParams.a(this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()));
           localIntent.putExtra(EditVideoParams.class.getName(), paramIntent);
           finish();
           startActivity(localIntent);
           return;
-          yuk.c("EditPicActivity", "recamera cancel, finish");
+          xvv.c("EditPicActivity", "recamera cancel, finish");
           finish();
           return;
           if (paramInt1 != 1000) {
-            break label443;
+            break label371;
           }
         } while (paramInt2 != -1);
-        if (paramIntent.getIntExtra("forward_to_someplace_from_shoot_quick", 0) == 1003)
-        {
-          this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int = 1;
-          getIntent().putExtra("main_tab_id", 6);
-          getIntent().putExtra("fragment_id", 1);
-          getIntent().putExtra("switch_anim", true);
-          this.jdField_a_of_type_Bqgk.a();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Bqgk.a(paramInt1, paramInt2, paramIntent);
-          return;
-          a(paramInt2, paramIntent, 2130772029, 0);
-        }
+        a(paramInt2, paramIntent, 2130772030, 0);
+        this.jdField_a_of_type_Bnee.a(paramInt1, paramInt2, paramIntent);
+        return;
         if (paramInt1 == 1001)
         {
-          a(paramInt2, paramIntent, 2130772029, 0);
+          a(paramInt2, paramIntent, 2130772030, 0);
           return;
         }
       } while (paramInt1 != 19003);
       if (paramInt2 == -1)
       {
-        a(paramInt2, paramIntent, 2130772029, 0);
+        a(paramInt2, paramIntent, 2130772030, 0);
         return;
       }
     } while ((paramInt2 != 0) || (paramIntent == null) || (!paramIntent.getBooleanExtra("NOCANCEL4DATALIN", false)));
-    label443:
-    a(-1, paramIntent, 2130772029, 0);
+    label371:
+    a(-1, paramIntent, 2130772030, 0);
   }
   
   public void doOnBackPressed()
   {
-    yuk.c("EditPicActivity", "doOnBackPressed");
-    if (!this.jdField_a_of_type_Bqgk.d()) {
+    xvv.c("EditPicActivity", "doOnBackPressed");
+    if (!this.jdField_a_of_type_Bnee.d()) {
       super.doOnBackPressed();
     }
   }
@@ -611,200 +510,176 @@ public class EditPicActivity
     if (LiuHaiUtils.f()) {
       LiuHaiUtils.enableNotch(this);
     }
-    blfp.a();
-    boem.a();
+    SvEffectSdkInitor.init();
+    bljd.a();
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    bqcj.a(QQStoryContext.a().a(), this);
+    bncm.a();
     paramBundle = (EditVideoParams)getIntent().getParcelableExtra(EditVideoParams.class.getName());
-    bqyo.a("finish jump activity", bqyo.a(getIntent()));
-    yuk.d("EditPicActivity", "doOnCreate instance=%d, video params=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), paramBundle });
+    bnsq.a("finish jump activity", bnsq.a(getIntent()));
+    xvv.d("EditPicActivity", "doOnCreate instance=%d, video params=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), paramBundle });
     if ((paramBundle == null) || (TextUtils.isEmpty(paramBundle.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a())))
     {
-      QQToast.a(this, anzj.a(2131702569), 0).a();
+      QQToast.a(this, amtj.a(2131702804), 0).a();
       finish();
       return true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("EditPicActivity", 2, "source " + paramBundle.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
     }
-    if (!bhmi.a(paramBundle.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()))
+    if (!FileUtils.fileExists(paramBundle.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()))
     {
-      QQToast.a(this, anzj.a(2131702570), 0).a();
+      QQToast.a(this, amtj.a(2131702805), 0).a();
       finish();
       return true;
     }
     int i = getIntent().getIntExtra("editpic_cameratype", -1);
     if (i == 1)
     {
-      bqyo.i();
+      bnsq.e();
       BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putLong("sv_latest_taken_photo_time", System.currentTimeMillis()).commit();
     }
     for (;;)
     {
       i = getIntent().getIntExtra("edit_video_way", 0);
-      this.jdField_a_of_type_Bqgk.b(i);
+      this.jdField_a_of_type_Bnee.b(i);
       try
       {
-        blfp.a = true;
-        bork.c();
-        if (VideoEnvironment.a("AVCodec", super.getApplicationContext()) != 0) {
-          yuk.e("EditPicActivity", "load AVCodec so failed");
+        SvEffectSdkInitor.isDovCapture = true;
+        AEResUtil.loadAEBaseSo();
+        if (VideoEnvironment.loadAVCodecSo("AVCodec", super.getApplicationContext()) != 0) {
+          xvv.e("EditPicActivity", "load AVCodec so failed");
         }
-        this.jdField_a_of_type_Bqgk.e = true;
-        setContentViewC(2131559100);
+        this.jdField_a_of_type_Bnee.d = true;
+        setContentViewC(2131559108);
         if (isInMultiWindow())
         {
-          QQToast.a(this, anzj.a(2131702567), 0).a();
+          QQToast.a(this, amtj.a(2131702802), 0).a();
           finish();
           return true;
           if (i != 2) {
             continue;
           }
-          bqyo.j();
+          bnsq.f();
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          yuk.c("EditPicActivity", "load so failed", localException);
+          xvv.c("EditPicActivity", "load so failed", localException);
         }
         a();
-        this.jdField_a_of_type_Bqgk.a(this, paramBundle);
-        if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null)
-        {
-          this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("FILTER_STRING");
-          this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Int = getIntent().getIntExtra("FILTER_MAXSIDE", 640);
-          this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.c = getIntent().getStringExtra("FILTER_LOADING_PATH");
-        }
-        if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditPicRawImage == null) {
-          break label593;
+        this.jdField_a_of_type_Bnee.a(this, paramBundle);
+        if (this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditPicRawImage == null) {
+          break label513;
         }
       }
     }
-    long l;
     Object localObject;
-    boolean bool;
-    label586:
-    label593:
-    int j;
-    int k;
-    if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqck != null)
+    if (this.jdField_a_of_type_Bnee.jdField_a_of_type_Bncn != null)
     {
-      l = getIntent().getLongExtra("babyq_ability", 0L) & 0x2;
-      localObject = this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditPicRawImage;
-      if (l > 0L)
-      {
-        bool = true;
-        ((EditPicRawImage)localObject).a = bool;
-        localObject = this.jdField_a_of_type_Bqgk.jdField_a_of_type_Bqck;
-        if (l <= 0L) {
-          break label861;
-        }
-        bool = true;
-        ((bqck)localObject).f = bool;
+      long l = getIntent().getLongExtra("babyq_ability", 0L) & 0x2;
+      localObject = this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditPicRawImage;
+      if (l <= 0L) {
+        break label701;
+      }
+      bool = true;
+      ((EditPicRawImage)localObject).a = bool;
+      localObject = this.jdField_a_of_type_Bnee.jdField_a_of_type_Bncn;
+      if (l <= 0L) {
+        break label707;
       }
     }
-    else
+    label513:
+    label701:
+    label707:
+    for (boolean bool = true;; bool = false)
     {
-      localObject = (bocw)bplq.a(13);
-      ((bocw)localObject).b(this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a());
-      this.jdField_a_of_type_Bqgk.j();
-      PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Brhj, false);
+      ((bncn)localObject).f = bool;
+      localObject = (blie)bmql.a(13);
+      ((blie)localObject).b(this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a());
+      this.jdField_a_of_type_Bnee.h();
+      PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Boax);
       if (paramBundle.jdField_a_of_type_AndroidOsBundle != null) {
-        yuq.a(paramBundle.jdField_a_of_type_AndroidOsBundle.getInt("pic_entrance_type", 0));
+        xwb.a(paramBundle.jdField_a_of_type_AndroidOsBundle.getInt("pic_entrance_type", 0));
       }
-      bqug.a(null);
+      bnoy.a(null);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      j = this.jdField_a_of_type_Bqgk.g();
-      k = this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c();
-      if (this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 1)
-      {
-        l = getIntent().getLongExtra("stop_record_time", -1L);
-        if (l <= 0L) {
-          break label867;
-        }
-      }
-    }
-    label861:
-    label867:
-    for (i = (int)(this.jdField_a_of_type_Long - l);; i = 0)
-    {
-      yup.b("time_openedit", 1, i, new String[] { yup.b(j), "0", "", String.valueOf(k) });
-      i = this.jdField_a_of_type_Bqgk.i();
-      getIntent().putExtra("capture_operation_in", i);
-      yup.a("video_edit_new", "edit_exp", i, 0, new String[] { yup.b(j), "", "", String.valueOf(k) });
-      ((bocw)localObject).d(1);
-      ((bocw)localObject).a(4);
+      i = this.jdField_a_of_type_Bnee.f();
+      int j = this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c();
+      int k = this.jdField_a_of_type_Bnee.h();
+      getIntent().putExtra("capture_operation_in", k);
+      xwa.a("video_edit_new", "edit_exp", k, 0, new String[] { xwa.b(i), "", "", String.valueOf(j) });
+      ((blie)localObject).d(1);
+      ((blie)localObject).a(4);
+      bbpr.a("0X800B3C4", paramBundle.c());
       return true;
       bool = false;
       break;
-      bool = false;
-      break label586;
     }
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    yuk.b("EditPicActivity", "doOnDestroy %d", Integer.valueOf(System.identityHashCode(this)));
-    this.jdField_a_of_type_Bqgk.o();
-    bocw localbocw = (bocw)bplq.a(13);
-    if (localbocw != null) {
-      localbocw.d(1);
+    xvv.b("EditPicActivity", "doOnDestroy %d", Integer.valueOf(System.identityHashCode(this)));
+    this.jdField_a_of_type_Bnee.m();
+    blie localblie = (blie)bmql.a(13);
+    if (localblie != null) {
+      localblie.d(1);
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    yuk.c("EditPicActivity", "doOnPause");
-    this.jdField_a_of_type_Bqgk.m();
-    aquy.a(BaseApplicationImpl.getContext(), 2, true);
+    xvv.c("EditPicActivity", "doOnPause");
+    this.jdField_a_of_type_Bnee.k();
+    apoh.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    yuk.c("EditPicActivity", "doOnResume");
-    this.jdField_a_of_type_Bqgk.l();
-    bqyo.a("resume activity");
-    ((bocw)bplq.a(13)).c(1);
+    xvv.c("EditPicActivity", "doOnResume");
+    this.jdField_a_of_type_Bnee.j();
+    bnsq.a("resume activity");
+    ((blie)bmql.a(13)).c(1);
     if (Build.VERSION.SDK_INT >= 29) {
-      aana.a(getWindow());
+      zjv.a(getWindow());
     }
-    aquy.a(BaseApplicationImpl.getContext(), 2, false);
+    apoh.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    yuk.c("EditPicActivity", "doOnStart");
-    this.jdField_a_of_type_Bqgk.k();
-    yuq.jdField_a_of_type_JavaLangString = yuq.a(this.jdField_a_of_type_Bqgk.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int);
-    yuq.jdField_b_of_type_JavaLangString = "pic_edit";
-    bozr.a().a();
-    bozv.a().c();
+    xvv.c("EditPicActivity", "doOnStart");
+    this.jdField_a_of_type_Bnee.i();
+    xwb.jdField_a_of_type_JavaLangString = xwb.a(this.jdField_a_of_type_Bnee.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int);
+    xwb.jdField_b_of_type_JavaLangString = "pic_edit";
+    bmbc.a().a();
+    bmbg.a().c();
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    this.jdField_a_of_type_Bqgk.n();
-    bozr.a().b();
-    bpam.b("EditPicActivity", "【doOnStop】");
-    yuq.jdField_a_of_type_JavaLangString = "";
-    yuq.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Bnee.l();
+    bmbc.a().b();
+    bmbx.b("EditPicActivity", "【doOnStop】");
+    xwb.jdField_a_of_type_JavaLangString = "";
+    xwb.jdField_b_of_type_JavaLangString = "";
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_Bqgk.c(paramBoolean);
+    this.jdField_a_of_type_Bnee.c(paramBoolean);
   }
   
   @Override

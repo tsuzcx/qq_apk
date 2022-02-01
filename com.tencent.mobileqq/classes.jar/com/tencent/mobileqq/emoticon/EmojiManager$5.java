@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticon;
 
-import askd;
+import areb;
 import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class EmojiManager$5
   implements Runnable
 {
-  public EmojiManager$5(askd paramaskd, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public EmojiManager$5(areb paramareb, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class EmojiManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiManager.5
  * JD-Core Version:    0.7.0.1
  */

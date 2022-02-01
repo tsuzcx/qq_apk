@@ -18,10 +18,10 @@ class NewFlowCameraActivity$RefreshUITimer
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.this$0.K();
-      this.this$0.L();
-      this.this$0.M();
-      this.this$0.N();
+      this.this$0.F();
+      this.this$0.G();
+      this.this$0.H();
+      this.this$0.I();
     }
   }
 }

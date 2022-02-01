@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aifz;
-import akza;
-import akzb;
-import akzc;
-import alik;
+import ahcp;
+import ajws;
+import ajwt;
+import ajwu;
+import akgc;
+import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -22,20 +23,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anzj;
-import aoot;
-import bhga;
-import bhlq;
-import bhpc;
+import bfpm;
+import bfur;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import com.tencent.qphone.base.util.QLog;
@@ -90,7 +90,7 @@ public class RedPacketPopFragment
     Object localObject = Build.MANUFACTURER;
     int i;
     if (((String)localObject).equalsIgnoreCase("meizu")) {
-      i = 2131697819;
+      i = 2131697965;
     }
     for (;;)
     {
@@ -100,8 +100,8 @@ public class RedPacketPopFragment
         if (j == 0) {
           break label226;
         }
-        ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131165608), paramContext.getResources().getColor(2131165613)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
-        bhlq.a(paramContext, anzj.a(2131712179), (CharSequence)localObject, 0, 2131718838, null, null, new akza(this, paramContext)).show();
+        ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131165616), paramContext.getResources().getColor(2131165621)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
+        bfur.a(paramContext, amtj.a(2131712411), (CharSequence)localObject, 0, 2131719087, null, null, new ajws(this, paramContext)).show();
         return;
       }
       catch (Exception paramContext) {}
@@ -112,41 +112,41 @@ public class RedPacketPopFragment
       return;
       if (((String)localObject).equalsIgnoreCase("xiaomi"))
       {
-        i = 2131697821;
+        i = 2131697967;
       }
       else if (((String)localObject).equalsIgnoreCase("vivo"))
       {
-        i = 2131697820;
+        i = 2131697966;
       }
       else
       {
-        i = 2131697818;
+        i = 2131697964;
         j = 1;
       }
     }
     label226:
-    bhlq.a(paramContext, 230, anzj.a(2131712206), ((SpannableString)localObject).toString(), anzj.a(2131712175), "", null, new akzb(this)).show();
+    bfur.a(paramContext, 230, amtj.a(2131712438), ((SpannableString)localObject).toString(), amtj.a(2131712407), "", null, new ajwt(this)).show();
   }
   
   protected void a(View paramView)
   {
-    new ImmersionBar(getActivity(), 0, paramView.findViewById(2131377964));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131363239);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131372227);
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364593));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364594));
-    this.f = ((ImageView)paramView.findViewById(2131367923));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373247));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131373248);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369752));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131372245));
+    new ImmersionBar(getActivity(), 0, paramView.findViewById(2131377733));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131363270);
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131372192);
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364624));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364625));
+    this.f = ((ImageView)paramView.findViewById(2131367956));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373211));
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131373212);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369741));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131372210));
   }
   
   protected void a(ImageView paramImageView)
   {
     String str = a();
     if ((!TextUtils.isEmpty(str)) && (paramImageView != null)) {
-      LottieComposition.Factory.fromJsonString(str, new akzc(this, paramImageView));
+      LottieComposition.Factory.fromJsonString(str, new ajwu(this, paramImageView));
     }
   }
   
@@ -154,13 +154,13 @@ public class RedPacketPopFragment
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(getResources().getDrawable(2130843476));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(getResources().getDrawable(2130843538));
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      bhga.a(this.jdField_e_of_type_AndroidWidgetImageView, getActivity().getResources().getString(2131694717), null);
-      bhga.a(this.jdField_a_of_type_AndroidWidgetImageButton, getActivity().getResources().getString(2131694717), null);
-      if (alik.a(getActivity()))
+      bfpm.a(this.jdField_e_of_type_AndroidWidgetImageView, getActivity().getResources().getString(2131694833), null);
+      bfpm.a(this.jdField_a_of_type_AndroidWidgetImageButton, getActivity().getResources().getString(2131694833), null);
+      if (akgc.a(getActivity()))
       {
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
         this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -179,7 +179,7 @@ public class RedPacketPopFragment
         if (this.jdField_c_of_type_Int == 1)
         {
           localObject = ((Bundle)localObject).getString("redPacketId");
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)aifz.a.get(localObject));
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)ahcp.a.get(localObject));
         }
         for (;;)
         {
@@ -188,12 +188,12 @@ public class RedPacketPopFragment
           }
           return false;
           localThrowable = localThrowable;
-          this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundColor(getResources().getColor(2131166109));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundColor(getResources().getColor(2131166128));
           break;
           this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
           this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
           break label108;
-          MessageRecord localMessageRecord = getActivity().app.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
+          MessageRecord localMessageRecord = getActivity().app.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, l);
           if ((localMessageRecord instanceof MessageForQQWalletMsg)) {
             this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)localMessageRecord);
           }
@@ -206,8 +206,8 @@ public class RedPacketPopFragment
           localException.printStackTrace();
         }
         label284:
-        aoot localaoot = aoot.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (byte)4);
-        this.f.setImageDrawable(localaoot);
+        FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (byte)4);
+        this.f.setImageDrawable(localFaceDrawable);
       }
     }
     return true;
@@ -273,7 +273,7 @@ public class RedPacketPopFragment
     paramBundle = null;
     try
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2131562061, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131561938, paramViewGroup, false);
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
     }

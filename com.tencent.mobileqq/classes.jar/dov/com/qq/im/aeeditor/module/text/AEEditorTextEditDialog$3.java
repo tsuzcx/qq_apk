@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bpjw;
+import bmms;
 import com.tencent.tavcut.bean.TextEditorData;
 import org.libpag.PAGFile;
 import org.libpag.PAGFont;
@@ -10,21 +10,21 @@ import org.libpag.PAGView;
 public class AEEditorTextEditDialog$3
   implements Runnable
 {
-  public AEEditorTextEditDialog$3(bpjw parambpjw, PAGFile paramPAGFile, TextEditorData paramTextEditorData, PAGText paramPAGText) {}
+  public AEEditorTextEditDialog$3(bmms parambmms, PAGFile paramPAGFile, TextEditorData paramTextEditorData, PAGText paramPAGText) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_OrgLibpagPAGFile != bpjw.a(this.this$0).getFile()) {
-      bpjw.a(this.this$0).setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
+    if (this.jdField_a_of_type_OrgLibpagPAGFile != bmms.a(this.this$0).getFile()) {
+      bmms.a(this.this$0).setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
     }
-    PAGFont localPAGFont = bpjw.a(this.this$0, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+    PAGFont localPAGFont = bmms.a(this.this$0, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
     if (localPAGFont != null)
     {
       this.jdField_a_of_type_OrgLibpagPAGText.fontStyle = localPAGFont.fontStyle;
       this.jdField_a_of_type_OrgLibpagPAGText.fontFamily = localPAGFont.fontFamily;
     }
-    bpjw.a(this.this$0).setTextData(0, this.jdField_a_of_type_OrgLibpagPAGText);
-    bpjw.a(bpjw.a(this.this$0).getColorList(), bpjw.a(this.this$0));
+    bmms.a(this.this$0).setTextData(0, this.jdField_a_of_type_OrgLibpagPAGText);
+    bmms.a(bmms.a(this.this$0).getColorList(), bmms.a(this.this$0));
   }
 }
 

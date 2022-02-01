@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.decoupleim;
 
-import aony;
+import anhk;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb$1
   implements Runnable
 {
-  public ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb$1(aony paramaony, LoginActivity paramLoginActivity, String paramString) {}
+  public ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb$1(anhk paramanhk, LoginActivity paramLoginActivity, String paramString) {}
   
   public void run()
   {

@@ -3,7 +3,7 @@ package dov.com.qq.im.ae.play;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bpwm;
+import bmzq;
 import dov.com.qq.im.capture.view.QIMSlidingTabView;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,29 +11,35 @@ import java.util.List;
 public class AEPlayShowTabView
   extends QIMSlidingTabView
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<bpwm> jdField_a_of_type_JavaUtilArrayList;
+  private int curIndex;
+  private ArrayList<bmzq> dataList;
   
   public AEPlayShowTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public int a()
+  public int getCurIndex()
   {
-    return this.jdField_a_of_type_Int;
+    return this.curIndex;
   }
   
-  public ArrayList<bpwm> a()
+  public ArrayList<bmzq> getDataList()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.dataList;
   }
   
-  public void a(int paramInt)
+  public void initTabItemsWithRedDot(ArrayList<bmzq> paramArrayList)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    ArrayList localArrayList = b();
+    this.dataList = paramArrayList;
+    super.initTabItemsWithRedDot(paramArrayList);
+  }
+  
+  public void onTabChecked(int paramInt)
+  {
+    super.onTabChecked(paramInt);
+    this.curIndex = paramInt;
+    ArrayList localArrayList = getmTabItemList();
     if (localArrayList == null) {
       return;
     }
@@ -58,12 +64,6 @@ public class AEPlayShowTabView
       localView.setScaleX(1.0F);
       localView.setScaleY(1.0F);
     }
-  }
-  
-  public void a(ArrayList<bpwm> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    super.a(paramArrayList);
   }
 }
 

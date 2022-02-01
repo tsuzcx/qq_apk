@@ -1,19 +1,31 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
 
-class sqv
-  implements srh
+public class sqv
+  extends AnimatorListenerAdapter
 {
-  sqv(sqr paramsqr) {}
+  public sqv(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    sry.a(paramProteusItemData.b, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    paramViewBase = paramViewBase.getEventAttachedData();
-    if (!TextUtils.isEmpty(paramViewBase)) {
-      ozs.d(paramContext, paramViewBase);
+    super.onAnimationCancel(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
+    SlideActiveAnimController.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
     }
   }
 }

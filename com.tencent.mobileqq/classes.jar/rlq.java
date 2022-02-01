@@ -1,6 +1,9 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+
 public abstract interface rlq
+  extends pxh<ColumnInfo>
 {
-  public abstract void a(rld paramrld);
+  public abstract void a();
 }
 
 

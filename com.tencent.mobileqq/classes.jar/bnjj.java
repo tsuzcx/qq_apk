@@ -1,27 +1,58 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.8.1;
 
-final class bnjj
-  implements ModuleDownloadListener
+public class bnjj
+  implements bngg
 {
-  public void onDownloadCanceled(String paramString) {}
+  public bnjj(DoodleLayout paramDoodleLayout) {}
   
-  public void onDownloadFailed(String paramString)
+  public void a(int paramInt)
   {
-    QZLog.i(bnji.a, "download webp so fail");
+    if (this.a.jdField_a_of_type_Bnjl != null) {
+      this.a.jdField_a_of_type_Bnjl.a(1, paramInt);
+    }
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    if (!paramString.equals("animatedWebp.so")) {
+    if (DoodleLayout.b(this.a)) {
       return;
     }
-    bjwf.a().edit().putString("PREFERENCE_SO_MD5_KEY", bnji.b).commit();
-    QZLog.i(bnji.a, "download webp so succ");
+    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+  }
+  
+  public boolean a(bngd parambngd)
+  {
+    boolean bool = false;
+    if (DoodleLayout.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DoodleLayout", 2, "onEditFaceItem mIsRecording");
+      }
+    }
+    while (((DoodleLayout.b(this.a)) && (!DoodleLayout.c(this.a))) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView == null)) {
+      return false;
+    }
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+    DoodleLayout.b(this.a);
+    if (parambngd.h == 3) {
+      this.a.post(new DoodleLayout.8.1(this));
+    }
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(parambngd);
+    parambngd.k = true;
+    SegmentKeeper localSegmentKeeper = parambngd.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper;
+    if (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a()) {
+      bool = true;
+    }
+    localSegmentKeeper.lockData(bool);
+    if ((parambngd.h == 1) || (parambngd.h == 3)) {
+      parambngd.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView);
+    }
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+    return true;
   }
 }
 

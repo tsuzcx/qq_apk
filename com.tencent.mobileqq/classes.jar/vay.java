@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public final class vay
-  implements Parcelable.Creator<QCircleFakeFeed>
+class vay
+  implements AdExposureChecker.ExposureCallback
 {
-  public QCircleFakeFeed a(Parcel paramParcel)
-  {
-    return new QCircleFakeFeed(paramParcel);
-  }
+  vay(vax paramvax) {}
   
-  public QCircleFakeFeed[] a(int paramInt)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    return new QCircleFakeFeed[paramInt];
+    FLog.e("AdExposureChecker", "onExposure");
+    var.a(vax.a(this.a), (vaq)this.a.a());
   }
 }
 

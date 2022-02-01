@@ -1,16 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-class afsh
-  implements DialogInterface.OnClickListener
+public class afsh
+  implements afrc
 {
-  afsh(afsf paramafsf, bhpc parambhpc) {}
+  private afiw a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afsh(afiw paramafiw)
   {
-    bdll.b(this.jdField_a_of_type_Afsf.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afsf.a.a, "", "", "");
-    this.jdField_a_of_type_Bhpc.cancel();
+    this.a = paramafiw;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    SessionInfo localSessionInfo;
+    do
+    {
+      return;
+      localObject = this.a.a;
+      localSessionInfo = this.a.sessionInfo;
+      if ((localObject != null) && ((localSessionInfo.curType == 1024) || (((bily)localObject).a(localSessionInfo.curFriendUin)))) {
+        ((bily)localObject).a(localSessionInfo.curFriendUin, localSessionInfo.curType);
+      }
+      if ((localObject != null) && (((bily)localObject).a(localSessionInfo.curFriendUin))) {
+        ((bing)this.a.app.getBusinessHandler(85)).a(null, localSessionInfo.curFriendUin, false);
+      }
+    } while ((!(this.a instanceof ahdt)) && (!nns.b(localSessionInfo.curFriendUin)));
+    if (localObject == null) {}
+    for (Object localObject = "";; localObject = ((bily)localObject).a(localSessionInfo.curFriendUin))
+    {
+      bcef.b(this.a.app, "dc00899", "Qidian", localSessionInfo.curFriendUin, "0X8009787", "CloseAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.4.8", "");
+      return;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13 };
   }
 }
 

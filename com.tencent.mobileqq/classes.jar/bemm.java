@@ -1,8 +1,8 @@
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
+import android.view.View;
 
 public abstract interface bemm
 {
-  public abstract void a(BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

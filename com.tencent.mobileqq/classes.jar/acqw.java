@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
-final class acqw
-  implements DialogInterface.OnDismissListener
+public class acqw
+  implements View.OnClickListener
 {
-  acqw(acqn paramacqn) {}
+  public acqw(AddRequestActivity paramAddRequestActivity) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    acqn.a(this.a).b();
+    bcef.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

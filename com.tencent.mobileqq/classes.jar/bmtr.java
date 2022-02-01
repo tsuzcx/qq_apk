@@ -1,41 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bmtr
-  extends bndt
+class bmtr
+  implements URLDrawable.URLDrawableListener
 {
-  public bmtr(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  bmtr(bmtq parambmtq, String paramString, URLDrawable paramURLDrawable, bmsl parambmsl) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    bmtq.a.remove(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
+    }
   }
   
-  public void a(float paramFloat)
-  {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.a.obtainMessage(1008).sendToTarget();
+    bmtq.a.remove(this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    bmtq.a(this.jdField_a_of_type_Bmtq, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Bmsl);
   }
-  
-  public void b()
-  {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
-  }
-  
-  public void c() {}
 }
 
 

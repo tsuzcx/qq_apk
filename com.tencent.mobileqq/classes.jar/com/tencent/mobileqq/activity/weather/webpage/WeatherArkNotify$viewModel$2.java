@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import amma;
+import algx;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelStoreOwner;
-import axtv;
+import awhc;
 import com.tencent.mobileqq.mvvm.LifeCycleFragment;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "invoke"}, k=3, mv={1, 1, 16})
 public final class WeatherArkNotify$viewModel$2
   extends Lambda
-  implements Function0<amma>
+  implements Function0<algx>
 {
   public WeatherArkNotify$viewModel$2(LifeCycleFragment paramLifeCycleFragment)
   {
@@ -21,9 +21,9 @@ public final class WeatherArkNotify$viewModel$2
   }
   
   @NotNull
-  public final amma invoke()
+  public final algx invoke()
   {
-    return (amma)axtv.a((ViewModelStoreOwner)this.$fragment).get(amma.class);
+    return (algx)awhc.a((ViewModelStoreOwner)this.$fragment).get(algx.class);
   }
 }
 

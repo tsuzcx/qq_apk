@@ -1,26 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agvj
-  implements DialogInterface.OnClickListener
+public class agvj
+  implements agut
 {
-  agvj(agvi paramagvi, List paramList, BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramDialogInterface = axpm.a(agvi.a(this.jdField_a_of_type_Agvi), (ArrayList)this.jdField_a_of_type_JavaUtilList);
-    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
-    agvi.a(this.jdField_a_of_type_Agvi, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
+    paramagap.d(paramagcc, paramString);
   }
 }
 

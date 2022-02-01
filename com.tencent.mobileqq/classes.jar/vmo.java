@@ -1,19 +1,10 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-
-public class vmo
-  implements vxz
+public abstract interface vmo
 {
-  public vmo(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public abstract void a(vmp paramvmp);
   
-  public void a(String paramString)
-  {
-    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
-    localQCircleInitBean.setUin(paramString);
-    localQCircleInitBean.setFromReportBean(this.a.a().clone());
-    uyx.b(this.a.getContext(), localQCircleInitBean);
-  }
+  public abstract boolean a();
+  
+  public abstract void b(vmp paramvmp);
 }
 
 

@@ -1,8 +1,17 @@
-import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
 
-public abstract interface bndq
+class bndq
+  implements View.OnTouchListener
 {
-  public abstract void a(boolean paramBoolean, Context paramContext, bndr parambndr);
+  bndq(bndn parambndn) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.a.a.a(paramMotionEvent);
+  }
 }
 
 

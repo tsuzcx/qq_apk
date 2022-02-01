@@ -1,295 +1,206 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
+import com.tencent.mobileqq.apollo.script.SpriteActionMessage.1;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloSlaveInfo;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amak
 {
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private amae jdField_a_of_type_Amae;
-  private amal jdField_a_of_type_Amal;
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 4;
-  private final Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private final float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = Color.parseColor("#298be7");
-  private final float d;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j;
-  private float k;
+  private amau a;
   
-  public amak(amae paramamae, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public amak(amau paramamau)
   {
-    this.jdField_a_of_type_Amae = paramamae;
-    Object localObject = this.jdField_a_of_type_Amae.getContext();
-    this.jdField_a_of_type_Float = (bhtq.a() * 0.0375F);
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
-    this.d = paramInt3;
-    paramamae = a(((Context)localObject).getResources(), 2130849159, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    localObject = a(((Context)localObject).getResources(), 2130849161, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
-    localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    localColorDrawable.draw(localCanvas);
-    if (paramamae != null) {
-      localCanvas.drawBitmap(paramamae, (this.jdField_a_of_type_Float - paramamae.getWidth()) / 2.0F, (this.jdField_b_of_type_Float - paramamae.getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.a = paramamau;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new SpriteActionMessage.1(this, paramInt, paramBoolean));
+  }
+  
+  private void a(ApolloActionData paramApolloActionData)
+  {
+    if (paramApolloActionData == null) {
+      QLog.e("cmshow_scripted_SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
-    localCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-    localColorDrawable.draw(localCanvas);
-    if (localObject != null) {
-      localCanvas.drawBitmap((Bitmap)localObject, (this.jdField_a_of_type_Float - ((Bitmap)localObject).getWidth()) / 2.0F, (this.jdField_b_of_type_Float - ((Bitmap)localObject).getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    this.h = (1.0F * paramInt4 / paramInt2 * paramFloat1 + this.jdField_a_of_type_Float);
-    this.g = (2000.0F / paramInt2 * paramFloat1);
-    this.j = (paramInt3 - this.jdField_a_of_type_Float);
-    this.k = this.jdField_a_of_type_Float;
-    this.e = this.jdField_a_of_type_Float;
-    this.f = this.h;
-  }
-  
-  private void a(float paramFloat, Canvas paramCanvas)
-  {
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramFloat, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return (Math.abs(paramFloat1 - paramFloat3) <= this.jdField_a_of_type_Float * 2.0F) && (paramFloat2 > 0.0F) && (paramFloat2 < this.jdField_b_of_type_Float);
-  }
-  
-  private void b(float paramFloat, Canvas paramCanvas)
-  {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat - this.jdField_a_of_type_Float, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private boolean b(float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int i1 = paramOptions.outHeight;
-    int i2 = paramOptions.outWidth;
-    int n = 1;
-    int m = 1;
-    if ((i1 > paramInt2) || (i2 > paramInt1))
+    SpriteTaskParam localSpriteTaskParam;
+    do
     {
-      i1 /= 2;
-      i2 /= 2;
-      for (;;)
-      {
-        n = m;
-        if (i1 / m <= paramInt2) {
-          break;
-        }
-        n = m;
-        if (i2 / m <= paramInt1) {
-          break;
-        }
-        m *= 2;
-      }
-    }
-    return n;
+      return;
+      localSpriteTaskParam = new SpriteTaskParam();
+      localSpriteTaskParam.f = paramApolloActionData.actionId;
+      localSpriteTaskParam.jdField_c_of_type_Int = 0;
+      localSpriteTaskParam.g = 3;
+      localSpriteTaskParam.e = paramApolloActionData.personNum;
+      localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
+      localSpriteTaskParam.jdField_a_of_type_Boolean = true;
+      localSpriteTaskParam.b = false;
+      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
+    } while ((this.a == null) || (this.a.a() == null));
+    localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
+    ((amaz)this.a.a().getManager(249)).a().a(localSpriteTaskParam);
   }
   
-  public Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
+  private void a(String paramString)
   {
-    int m = 1;
-    if (paramResources == null) {}
-    while (paramInt1 <= 0) {
-      return null;
-    }
-    try
+    amal localamal;
+    if ((this.a != null) && (this.a.a() != null))
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
-      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
-      {
-        localOptions.inJustDecodeBounds = false;
-        localOptions.inSampleSize = paramInt2;
-        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      }
-      return null;
+      localamal = ambc.a(this.a.a());
+      if (localamal != null) {}
     }
-    catch (Exception paramResources)
+    else
     {
-      paramResources.printStackTrace();
-      return null;
-    }
-    catch (OutOfMemoryError paramResources)
-    {
-      paramResources.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Amal = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (paramFloat1 >= 0.0F) {}
-    for (this.k = (this.jdField_a_of_type_Float + paramFloat1);; this.k = this.jdField_a_of_type_Float)
-    {
-      if (paramFloat2 >= 0.0F) {
-        this.j = Math.min(this.jdField_a_of_type_Float + paramFloat2, this.d - this.jdField_a_of_type_Float);
-      }
       return;
     }
+    localamal.a("", paramString);
   }
   
-  public void a(amal paramamal)
-  {
-    this.jdField_a_of_type_Amal = paramamal;
-  }
+  public void a() {}
   
-  public void a(Canvas paramCanvas)
+  public void a(int paramInt)
   {
-    paramCanvas.save();
-    int m = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-    paramCanvas.drawRect(this.e, 0.0F, this.f, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.e, this.jdField_b_of_type_Float - this.jdField_b_of_type_Int, this.f, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
-    b(this.e, paramCanvas);
-    a(this.f, paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.i = paramMotionEvent.getX();
+    if ((this.a == null) || (this.a.a() == null)) {
       return;
     }
-    float f2;
-    float f3;
-    if (paramMotionEvent.getAction() == 2)
+    QQAppInterface localQQAppInterface = this.a.a();
+    ApolloActionData localApolloActionData = ((amir)localQQAppInterface.getManager(155)).a(paramInt);
+    String str = amtj.a(2131713354);
+    if (localApolloActionData == null)
     {
-      f2 = f1 - this.i;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label186;
-      }
-      f3 = Math.max(this.f - this.h, this.k);
-      if (f1 < f3)
-      {
-        this.e = f3;
-        return;
-      }
-      if ((f2 >= 0.0F) || (f2 + this.e > this.jdField_a_of_type_Float)) {
-        break label148;
-      }
-      this.e = f3;
+      a(str);
+      return;
+    }
+    localApolloActionData.bubbleText = str;
+    if (!ApolloUtil.a(paramInt, localApolloActionData.personNum))
+    {
+      ((alnr)localQQAppInterface.getManager(153)).a(localApolloActionData, 4);
+      a(str);
+      return;
+    }
+    a(localApolloActionData);
+  }
+  
+  public boolean a(MessageForApollo paramMessageForApollo)
+  {
+    int k = 2;
+    int j = 0;
+    if ((paramMessageForApollo.actionType != 5) || (this.a == null) || (this.a.a() == null)) {
+      return true;
+    }
+    QQAppInterface localQQAppInterface = this.a.a();
+    String str1 = paramMessageForApollo.extendJson;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionMessage", 2, new Object[] { "rep data:", str1 });
     }
     for (;;)
     {
-      this.jdField_a_of_type_Amae.invalidate();
-      if (this.jdField_a_of_type_Amal == null) {
-        break;
-      }
-      this.jdField_a_of_type_Amal.a(this.e, this.f);
-      return;
-      label148:
-      if (this.f - f1 < this.g)
+      int i;
+      boolean bool1;
+      boolean bool2;
+      try
       {
-        this.e = (this.f - this.g);
+        paramMessageForApollo = new JSONObject(paramMessageForApollo.extendJson);
+        if (!paramMessageForApollo.has("data")) {
+          break label336;
+        }
+        String str2 = localQQAppInterface.getCurrentAccountUin();
+        JSONObject localJSONObject = paramMessageForApollo.getJSONObject("data");
+        JSONArray localJSONArray = localJSONObject.getJSONArray("slaveInfoList");
+        Object localObject = null;
+        str1 = null;
+        paramMessageForApollo = localObject;
+        if (localJSONArray != null)
+        {
+          paramMessageForApollo = localObject;
+          if (localJSONArray.length() > 0)
+          {
+            i = 0;
+            paramMessageForApollo = str1;
+            if (i < localJSONArray.length())
+            {
+              paramMessageForApollo = (ApolloSlaveInfo)bfra.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
+              if ((paramMessageForApollo == null) || (!str2.equals(String.valueOf(paramMessageForApollo.uin)))) {
+                continue;
+              }
+            }
+          }
+        }
+        if (paramMessageForApollo == null) {
+          break label328;
+        }
+        i = paramMessageForApollo.slaveTotal;
+        if (paramMessageForApollo.isCaptured == 1)
+        {
+          bool1 = true;
+          int m = localJSONObject.optInt("defaultActId");
+          a(i, bool1);
+          if ((bool1) || (i != 0)) {
+            break label322;
+          }
+          a(m);
+          bool2 = false;
+          break label347;
+          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clickslaveaction", j, i, new String[0]);
+          return bool2;
+          i += 1;
+          continue;
+        }
+        bool1 = false;
+        continue;
+        if (i > 0) {
+          i = k;
+        } else {
+          i = 3;
+        }
+      }
+      catch (Exception paramMessageForApollo)
+      {
+        QLog.i("cmshow_scripted_SpriteActionMessage", 1, "[handleSendMsg] Exception", paramMessageForApollo);
+        return true;
+      }
+      if (i == 0)
+      {
+        i = 0;
       }
       else
       {
-        this.e = f1;
+        i = 1;
+        break label359;
+        label322:
+        bool2 = true;
+        break label347;
+        label328:
+        bool1 = false;
+        i = 0;
         continue;
-        label186:
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          f3 = Math.min(this.e + this.h, this.j);
-          if (f1 > f3)
-          {
-            this.f = f3;
-            return;
-          }
-          if ((f2 > 0.0F) && (f2 + this.f >= this.h)) {
-            this.f = f3;
-          } else if (f1 - this.e < this.g) {
-            this.f = (this.e + this.g);
-          } else {
-            this.f = f1;
-          }
+        label336:
+        bool1 = false;
+        i = 0;
+        bool2 = true;
+        break label359;
+        label347:
+        if (!bool1) {
+          continue;
         }
+        if (i < 5) {
+          continue;
+        }
+        i = 1;
+      }
+      label359:
+      if (bool1) {
+        j = 1;
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return (!b(this.e, this.jdField_a_of_type_Float)) || (!b(this.f, this.h));
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    boolean bool1 = a(paramFloat1, paramFloat2, this.e - this.jdField_c_of_type_Float);
-    boolean bool2 = a(paramFloat1, paramFloat2, this.f + this.jdField_c_of_type_Float);
-    if (bool1)
-    {
-      this.jdField_a_of_type_Int = 0;
-      return true;
-    }
-    if (bool2)
-    {
-      this.jdField_a_of_type_Int = 1;
-      return true;
-    }
-    return false;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Amal = null;
-    this.e = 0.0F;
-    this.f = 0.0F;
-  }
-  
-  public float c()
-  {
-    return this.f - this.e;
   }
 }
 

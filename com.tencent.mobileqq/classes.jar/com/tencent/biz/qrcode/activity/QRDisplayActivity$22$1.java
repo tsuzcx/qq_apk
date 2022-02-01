@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import auxu;
+import atky;
 
 class QRDisplayActivity$22$1
   implements Runnable
@@ -24,10 +24,10 @@ class QRDisplayActivity$22$1
     localIntent.putExtras(localBundle);
     if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$22.this$0.c == 1)
     {
-      auxu.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$22.this$0, localIntent, 21, 100500, "biz_src_jc_gxl_ctcshare");
+      atky.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$22.this$0, localIntent, 21, 100500, "biz_src_jc_gxl_ctcshare");
       return;
     }
-    auxu.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$22.this$0, localIntent, 21);
+    atky.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$22.this$0, localIntent, 21);
   }
 }
 

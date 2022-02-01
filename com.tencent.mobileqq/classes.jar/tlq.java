@@ -1,146 +1,83 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.10;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.11;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.12;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.13;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.14;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.15;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.16;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.17;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.18;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.19;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.20;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.21;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.22;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.23;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.24;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.25;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.26;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.27;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.28;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.5;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.6;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.7;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.8;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.9;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public class tlq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/RIJBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tlq
+  extends tks
 {
-  public int a;
-  public String a;
-  public tls a;
-  public String b = "";
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  public String t;
-  public String u;
-  public String v;
-  public String w;
-  public String x;
+  public static final tlr a = new tlr(null);
   
-  public tlq()
+  public tlq(@NotNull BridgeModule paramBridgeModule)
   {
-    this.jdField_a_of_type_Tls = new tls();
+    super(paramBridgeModule);
   }
   
-  public static tlq a(String paramString, tlq paramtlq)
+  @NotNull
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = null;
-      return paramString;
-    }
-    if (paramtlq == null) {
-      paramtlq = new tlq();
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        paramtlq.l = paramString.optString("button_desc", "");
-        paramtlq.s = paramString.optString("word_content_no_wifi", "");
-        paramtlq.t = paramString.optString("word_content_wifi", "");
-        paramtlq.u = paramString.optString("word_highlight", "");
-        paramtlq.v = paramString.optString("word_highlight_color", "");
-        paramtlq.w = paramString.optString("word_title", "");
-        paramtlq.m = paramString.optString("detail_url", "");
-        paramtlq.n = paramString.optString("activity_url", "");
-        paramtlq.k = paramString.optString("game_icon", "");
-        paramtlq.x = paramString.optString("component_type", "");
-        String str = paramString.optString("gift_info", "");
-        paramString = paramtlq;
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        paramtlq.jdField_a_of_type_Tls = tls.a(str);
-        return paramtlq;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return paramtlq;
-      }
-    }
+    return "readinjoy";
   }
   
-  public static tlq a(String paramString, tlq paramtlq, tlp paramtlp)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = null;
-      return paramString;
-    }
-    if (paramtlq == null) {
-      paramtlq = new tlq();
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        paramtlq.jdField_a_of_type_Int = paramString.optInt("id", 0);
-        paramtlq.jdField_a_of_type_JavaLangString = paramString.optString("game_name", "");
-        paramtlq.b = paramString.optString("package_name", "");
-        paramtlq.c = paramString.optString("business_type", "");
-        paramtlq.d = paramString.optString("plat_form", "");
-        paramtlq.e = paramString.optString("appid", "");
-        paramtlq.f = paramString.optString("oper_type", "");
-        paramtlq.r = paramString.optString("game_stage", "");
-        paramtlq.g = paramString.optString("game_status", "");
-        paramtlq.h = paramString.optString("game_kind", "");
-        paramtlq.i = paramString.optString("game_sub_kind", "");
-        paramtlq.j = paramString.optString("play_nums", "");
-        paramtlq.o = paramString.optString("game_tags", "");
-        paramtlq.p = paramString.optString("game_download_url", "");
-        paramtlq.q = paramString.optString("game_size", "");
-        if (!TextUtils.isEmpty(paramtlq.b)) {
-          paramtlp.b = paramtlq.b;
-        }
-        if (!TextUtils.isEmpty(paramtlq.p)) {
-          paramtlp.e = paramtlq.p;
-        }
-        paramString = paramtlq;
-        if (TextUtils.isEmpty(paramtlq.e)) {
-          break;
-        }
-        paramtlp.c = paramtlq.e;
-        return paramtlq;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return paramtlq;
-      }
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject, tlq paramtlq, tlp paramtlp)
-  {
-    if (paramJSONObject.has("game_component_info")) {
-      a(paramJSONObject.optString("game_component_info"), paramtlq, paramtlp);
-    }
-    if (paramJSONObject.has("game_component_real_info")) {
-      a(paramJSONObject.optString("game_component_real_info"), paramtlq);
-    }
-    if ((paramJSONObject.has("delivery_mode")) && (paramtlp.jdField_a_of_type_Int > 0) && (paramJSONObject.optString("delivery_mode", "").equals("3")) && (TextUtils.isEmpty(paramtlq.b)))
-    {
-      paramtlq.b = paramtlp.b;
-      paramtlq.x = String.valueOf(paramtlp.jdField_a_of_type_Int);
-    }
+    a("openPrivateLetter", (Function2)new RIJBridgeInvokeHandler.register.1(this));
+    a("openVideo", (Function2)new RIJBridgeInvokeHandler.register.2(this));
+    a("QReport", (Function2)new RIJBridgeInvokeHandler.register.3(this));
+    a("showUGCEditPage", (Function2)new RIJBridgeInvokeHandler.register.4(this));
+    a("showMultiBiuEditPage", (Function2)new RIJBridgeInvokeHandler.register.5(this));
+    a("selectAndInviteFriend", (Function2)new RIJBridgeInvokeHandler.register.6(this));
+    a("selectAndUploadAvatar", (Function2)new RIJBridgeInvokeHandler.register.7(this));
+    a("uploadTopicPic", (Function2)new RIJBridgeInvokeHandler.register.8(this));
+    a("showPicture", (Function2)new RIJBridgeInvokeHandler.register.9(this));
+    a("openAccountPageMore", (Function2)new RIJBridgeInvokeHandler.register.10(this));
+    a("socialize_feeds_update", (Function2)new RIJBridgeInvokeHandler.register.11(this));
+    a("updateAccountCardFollowInfo", (Function2)new RIJBridgeInvokeHandler.register.12(this));
+    a("updateTopicCardFollowInfo", (Function2)new RIJBridgeInvokeHandler.register.13(this));
+    a("showVisibleUserList", (Function2)new RIJBridgeInvokeHandler.register.14(this));
+    a("getBiuTriggerType", (Function2)new RIJBridgeInvokeHandler.register.15(this));
+    a("showShareReadInJoyMenu", (Function2)new RIJBridgeInvokeHandler.register.16(this));
+    a("showUGCVideoRecordPage", (Function2)new RIJBridgeInvokeHandler.register.17(this));
+    a("showCommentEditor", (Function2)new RIJBridgeInvokeHandler.register.18(this));
+    a("showCommentEditorNative", (Function2)new RIJBridgeInvokeHandler.register.19(this));
+    a("feeds_refresh_message", (Function2)new RIJBridgeInvokeHandler.register.20(this));
+    a("isInKanDianTab", (Function2)new RIJBridgeInvokeHandler.register.21(this));
+    a("hasRedPacketSharePermission", (Function2)new RIJBridgeInvokeHandler.register.22(this));
+    a("updateRedPacketShareTime", (Function2)new RIJBridgeInvokeHandler.register.23(this));
+    a("requestRedPacketContentShareToast", (Function2)new RIJBridgeInvokeHandler.register.24(this));
+    a("clearMessageBoxData", (Function2)new RIJBridgeInvokeHandler.register.25(this));
+    a("showFollowAlertView", (Function2)new RIJBridgeInvokeHandler.register.26(this));
+    a("hideFollowAlertView", (Function2)new RIJBridgeInvokeHandler.register.27(this));
+    a("getALDConfigParams", (Function2)new RIJBridgeInvokeHandler.register.28(this));
   }
 }
 

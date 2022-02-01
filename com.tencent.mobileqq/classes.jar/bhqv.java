@@ -1,52 +1,54 @@
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import mqq.observer.BusinessObserver;
 
-class bhqv
-  implements View.OnClickListener
+public class bhqv
+  implements BusinessObserver
 {
-  bhqv(bhqp parambhqp, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bhqv(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = this.jdField_a_of_type_Bhqp.getInputValue();
-    if (TextUtils.isEmpty(str)) {}
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+      return;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhqp, 1);
-        this.jdField_a_of_type_Bhqp.a();
-      }
-      try
-      {
-        if (this.jdField_a_of_type_Bhqp.isShowing()) {
-          this.jdField_a_of_type_Bhqp.dismiss();
+        localObject = new GetAppInfoProto.GetAppinfoResponse();
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle != null)
+          {
+            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
+            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
+            {
+              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              paramBundle.what = 3;
+              paramBundle.obj = localObject;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+              return;
+            }
+          }
         }
-        label60:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if ((this.jdField_a_of_type_Bhqp.a == null) || (this.jdField_a_of_type_Bhqp.a.size() <= 0)) {
-          continue;
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
         }
-        int i = 0;
-        while ((i < this.jdField_a_of_type_Bhqp.a.size()) && (!str.equals(this.jdField_a_of_type_Bhqp.a.get(i)))) {
-          i += 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        break label60;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QzoneTranslucentBrowserFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
 
-public class bmvr
-  implements View.OnClickListener
+public final class bmvr
+  implements Parcelable.Creator<DynamicTextItem.TextMap>
 {
-  public bmvr(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public DynamicTextItem.TextMap a(Parcel paramParcel)
   {
-    if (this.a.getHostActivity() != null) {
-      this.a.getHostActivity().finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new DynamicTextItem.TextMap(paramParcel);
+  }
+  
+  public DynamicTextItem.TextMap[] a(int paramInt)
+  {
+    return new DynamicTextItem.TextMap[paramInt];
   }
 }
 

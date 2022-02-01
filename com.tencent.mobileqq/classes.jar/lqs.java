@@ -1,17 +1,8 @@
-public class lqs
-  implements lqr
+import com.tencent.aekit.openrender.internal.Frame;
+
+public abstract interface lqs
 {
-  public void a(lqq paramlqq) {}
-  
-  public boolean a(lqq paramlqq)
-  {
-    return false;
-  }
-  
-  public boolean b(lqq paramlqq)
-  {
-    return true;
-  }
+  public abstract void a(Frame paramFrame, lqp paramlqp);
 }
 
 

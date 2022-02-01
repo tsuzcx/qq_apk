@@ -2,23 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
 import android.view.ViewGroup;
-import ohp;
+import ojc;
 
 public class ReadInJoyChannelViewPagerController$6
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$6(ohp paramohp, float paramFloat, int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2) {}
+  public ReadInJoyChannelViewPagerController$6(ojc paramojc, float paramFloat, int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Float >= 1.0F - ohp.a(this.this$0))
+    if (this.jdField_a_of_type_Float >= 1.0F - ojc.a(this.this$0))
     {
-      ohp.a(this.this$0, this.jdField_a_of_type_Int);
-      ohp.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+      ojc.a(this.this$0, this.jdField_a_of_type_Int);
+      ojc.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
       return;
     }
-    ohp.a(this.this$0, this.b);
-    ohp.a(this.this$0, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewView);
+    ojc.a(this.this$0, this.b);
+    ojc.a(this.this$0, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

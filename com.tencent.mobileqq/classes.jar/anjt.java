@@ -1,49 +1,29 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anjt
-  implements Comparable<anjt>
+class anjt
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
+  anjt(anjr paramanjr, boolean paramBoolean, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public int a(anjt paramanjt)
+  public void onClick(View paramView)
   {
-    if (paramanjt == null) {}
-    do
+    anjr.a(this.jdField_a_of_type_Anjr).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      AccountManageActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "0X800B276";; str = "0X800B273")
     {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramanjt.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramanjt.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

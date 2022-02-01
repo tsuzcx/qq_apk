@@ -1,23 +1,18 @@
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-
-class vwc
-  implements vju
+public class vwc
 {
-  vwc(vvz paramvvz, vkl paramvkl, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public void a()
+  public vwc(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.jdField_a_of_type_Vkl != null)
-    {
-      this.jdField_a_of_type_Vkl.b("");
-      vvz.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Vkl.a());
-      this.jdField_a_of_type_Vkl.a("");
-      this.jdField_a_of_type_Vkl.b(this.jdField_a_of_type_Vvz.a(null, null));
-    }
-    vvz.a(this.jdField_a_of_type_Vvz, null);
-    vvz.a(this.jdField_a_of_type_Vvz, null);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
   }
 }
 

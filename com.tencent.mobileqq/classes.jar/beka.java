@@ -1,24 +1,38 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
-class beka
-  extends anyu
+public class beka
+  extends BroadcastReceiver
 {
-  beka(bejx parambejx) {}
+  public beka(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
+    if (this.a.a != null)
     {
-      Iterator localIterator = bejx.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((beki)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
+      }
+      this.a.a.b(102);
     }
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
+    }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.b(102);
   }
 }
 

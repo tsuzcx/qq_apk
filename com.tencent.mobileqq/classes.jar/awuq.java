@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
 class awuq
-  implements DialogInterface.OnDismissListener
+  implements awpr
 {
-  awuq(awup paramawup) {}
+  awuq(awun paramawun) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    this.a.a = false;
+    if (awun.a(this.a) != null)
+    {
+      if (paramInt == 0)
+      {
+        awun.a(this.a).b(paramComment);
+        awun.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695856));
+        bcef.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
+      }
+    }
+    else {
+      return;
+    }
+    awun.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695855));
   }
 }
 

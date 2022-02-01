@@ -1,67 +1,29 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+
 public class nld
+  implements Animation.AnimationListener
 {
-  public static int a()
+  public nld(PoiMapActivity paramPoiMapActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.jdField_a_of_type_Int;
+    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    paramAnimation.bottomMargin = (this.a.p + this.a.q);
+    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
+      this.a.e.setVisibility(8);
     }
-    return 0;
+    PoiMapActivity.d(this.a).clearAnimation();
+    this.a.a = true;
   }
   
-  public static String a()
-  {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.jdField_a_of_type_JavaLangString;
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static int b()
-  {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.b;
-    }
-    return -1;
-  }
-  
-  public static String b()
-  {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.c;
-    }
-    return null;
-  }
-  
-  public static String c()
-  {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.d;
-    }
-    return null;
-  }
-  
-  public static String d()
-  {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.e;
-    }
-    return null;
-  }
-  
-  public static String e()
-  {
-    arkf localarkf = (arkf)aran.a().a(207);
-    if (localarkf != null) {
-      return localarkf.f;
-    }
-    return null;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

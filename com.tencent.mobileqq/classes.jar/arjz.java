@@ -1,40 +1,24 @@
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class arjz
+  extends arht
 {
-  public int a = 1;
-  public int b = 1;
+  public arjz(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public static arjz a(String paramString)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    arjz localarjz = new arjz();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localarjz.a = paramString.optInt("preloadPskey", 1);
-      localarjz.b = paramString.optInt("enableFTSMerge", 1);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localarjz.toString());
-      return localarjz;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendCampusFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    if ((paramBoolean) && (ExtendFriendCampusFragment.a(this.a) != null)) {
+      ExtendFriendCampusFragment.a(this.a);
     }
-    return localarjz;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjz
  * JD-Core Version:    0.7.0.1
  */

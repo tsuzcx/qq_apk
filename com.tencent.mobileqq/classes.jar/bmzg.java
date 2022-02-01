@@ -1,14 +1,32 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-class bmzg
-  implements FileFilter
+public class bmzg
+  implements Animator.AnimatorListener
 {
-  bmzg(bmzc parambmzc) {}
+  public bmzg(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public boolean accept(File paramFile)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return paramFile.getName().endsWith(".ftf");
+    this.a.c.setVisibility(0);
+    QIMProviderContainerView.a(this.a, true);
+    QIMProviderContainerView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderContainerView", 2, "panelOpened : " + QIMProviderContainerView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setVisibility(0);
   }
 }
 

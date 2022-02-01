@@ -1,31 +1,14 @@
-import java.util.List;
+import org.json.JSONObject;
 
-public abstract class zte<T>
+public class zte
 {
-  private int jdField_a_of_type_Int;
-  private List<T> jdField_a_of_type_JavaUtilList;
+  public String a;
+  public String b;
   
-  public zte(int paramInt, List<T> paramList)
+  public zte(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public abstract void a(int paramInt, T paramT, yqw paramyqw);
-  
-  public void a(int paramInt, yqw paramyqw)
-  {
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramyqw);
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("jumpUrl");
   }
 }
 

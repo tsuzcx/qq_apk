@@ -1,7 +1,10 @@
-public class aiwr
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+class aiwr
 {
-  public String a = null;
-  public String b = null;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

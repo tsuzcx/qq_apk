@@ -1,20 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class olw
-  extends rwt
+  implements View.OnClickListener
 {
-  public olw(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public olw(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
-    }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).c();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -66,8 +66,8 @@ public class RequestJsPlugin$RequestTask
       if (paramJSONObject.has("responseType")) {
         this.mResponseType = paramJSONObject.optString("responseType");
       }
-      RequestJsPlugin.access$2100(this.mHeaders, paramJSONObject);
-      this.mHeaders.put("Referer", RequestJsPlugin.access$2200(paramRequestJsPlugin));
+      RequestJsPlugin.access$2200(this.mHeaders, paramJSONObject);
+      this.mHeaders.put("Referer", RequestJsPlugin.access$1900(paramRequestJsPlugin));
       this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
       return;
       this.mOriginUrl = this.mUrl;

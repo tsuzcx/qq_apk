@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.view.View;
-import bokv;
+import blpb;
 
 public class VideoStoryAIScenePart$9
   implements Runnable
 {
-  public VideoStoryAIScenePart$9(bokv parambokv) {}
+  public VideoStoryAIScenePart$9(blpb paramblpb) {}
   
   public void run()
   {
-    if (bokv.a(this.this$0) != null)
+    if (blpb.a(this.this$0) != null)
     {
-      bokv.b(this.this$0).setVisibility(8);
-      this.this$0.e();
+      blpb.b(this.this$0).setVisibility(8);
+      this.this$0.b();
     }
   }
 }

@@ -9,28 +9,28 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import aokv;
-import bagf;
-import bdll;
-import beyq;
-import bjci;
+import aneg;
+import ayvw;
+import bcef;
+import bhij;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import znw;
-import zps;
+import yos;
 
 public class QVipMedalView
   extends ViewGroup
 {
   protected int a;
-  protected bjci a;
+  protected bhij a;
   protected List<ImageView> a;
   protected int b;
   
@@ -57,16 +57,16 @@ public class QVipMedalView
       QLog.e("QVipSettingMe.QVipMedalView", 1, "bindData with null value!!");
       return;
     }
-    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, beyq.a, null, null);
+    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, URLDrawableHelper.TRANSPARENT, null, null);
     ProfileActivity.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramImageView);
     paramImageView.setImageDrawable(paramString);
     paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (paramString != null) {}
-    for (paramInt1 = aokv.a(paramString, paramString.c(), false);; paramInt1 = 98)
+    for (paramInt1 = aneg.a(paramString, paramString.getCurrentUin(), false);; paramInt1 = 98)
     {
       if (paramInt2 != 0)
       {
-        paramString = new bagf();
+        paramString = new ayvw();
         Message localMessage = Message.obtain();
         localMessage.arg1 = 1;
         localMessage.obj = paramImageView;
@@ -86,12 +86,12 @@ public class QVipMedalView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bjci == null) {}
-    while (this.jdField_a_of_type_Bjci.a() == getChildCount()) {
+    if (this.jdField_a_of_type_Bhij == null) {}
+    while (this.jdField_a_of_type_Bhij.a() == getChildCount()) {
       return;
     }
-    znw.a("consistency check failed ! adapter count=" + this.jdField_a_of_type_Bjci.a() + " view list size=" + this.jdField_a_of_type_JavaUtilList.size() + " child count=" + getChildCount(), new Object[0]);
-    int j = this.jdField_a_of_type_Bjci.a();
+    yos.a("consistency check failed ! adapter count=" + this.jdField_a_of_type_Bhij.a() + " view list size=" + this.jdField_a_of_type_JavaUtilList.size() + " child count=" + getChildCount(), new Object[0]);
+    int j = this.jdField_a_of_type_Bhij.a();
     removeAllViews();
     int i = 0;
     label97:
@@ -104,7 +104,7 @@ public class QVipMedalView
     }
     for (;;)
     {
-      a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.b(i), this.jdField_a_of_type_Bjci.c(i));
+      a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bhij.a(i), this.jdField_a_of_type_Bhij.a(i), this.jdField_a_of_type_Bhij.b(i), this.jdField_a_of_type_Bhij.c(i));
       addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
       i += 1;
       break label97;
@@ -116,7 +116,7 @@ public class QVipMedalView
   
   protected void a()
   {
-    this.jdField_a_of_type_Int = zps.a(getContext(), 4.0F);
+    this.jdField_a_of_type_Int = UIUtils.dip2px(getContext(), 4.0F);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -124,25 +124,25 @@ public class QVipMedalView
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localQQAppInterface != null) {
-      bdll.b(localQQAppInterface, "dc00898", "", localQQAppInterface.c(), paramString, paramString, paramInt, 0, String.valueOf(paramInt), "", "", "");
+      bcef.b(localQQAppInterface, "dc00898", "", localQQAppInterface.getCurrentUin(), paramString, paramString, paramInt, 0, String.valueOf(paramInt), "", "", "");
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Bjci == null) {}
-    label166:
+    if (this.jdField_a_of_type_Bhij == null) {}
+    label168:
     for (;;)
     {
       return;
-      int i = this.jdField_a_of_type_Bjci.a();
+      int i = this.jdField_a_of_type_Bhij.a();
       int j = getPaddingTop();
       int k = getPaddingBottom();
       paramInt2 = 0;
       for (;;)
       {
         if (paramInt2 >= i) {
-          break label166;
+          break label168;
         }
         int m = this.b;
         int n = this.jdField_a_of_type_Int;
@@ -170,7 +170,7 @@ public class QVipMedalView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (this.jdField_a_of_type_Bjci == null)
+    if (this.jdField_a_of_type_Bhij == null)
     {
       setMeasuredDimension(0, 0);
       return;
@@ -188,30 +188,30 @@ public class QVipMedalView
     }
     for (paramInt2 = j;; paramInt2 = (paramInt2 - 1) * this.jdField_a_of_type_Int + j * paramInt2 + getPaddingLeft() + getPaddingRight())
     {
-      j = this.jdField_a_of_type_Bjci.a();
+      j = this.jdField_a_of_type_Bhij.a();
       b();
       while (i < j)
       {
         ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).measure(View.MeasureSpec.makeMeasureSpec(this.b, 1073741824), View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
         i += 1;
       }
-      this.b = zps.a(getContext(), 20.0F);
+      this.b = UIUtils.dip2px(getContext(), 20.0F);
       paramInt1 = this.b + getPaddingBottom() + getPaddingTop();
       break;
       label167:
-      paramInt2 = this.jdField_a_of_type_Bjci.a();
+      paramInt2 = this.jdField_a_of_type_Bhij.a();
       j = this.b;
     }
     setMeasuredDimension(paramInt2, paramInt1);
   }
   
-  public void setAdapter(bjci parambjci)
+  public void setAdapter(bhij parambhij)
   {
-    this.jdField_a_of_type_Bjci = parambjci;
+    this.jdField_a_of_type_Bhij = parambhij;
     removeAllViews();
-    if (this.jdField_a_of_type_Bjci != null)
+    if (this.jdField_a_of_type_Bhij != null)
     {
-      int j = this.jdField_a_of_type_Bjci.a();
+      int j = this.jdField_a_of_type_Bhij.a();
       int i = 0;
       if (i < j)
       {
@@ -220,7 +220,7 @@ public class QVipMedalView
         }
         for (;;)
         {
-          a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.b(i), this.jdField_a_of_type_Bjci.c(i));
+          a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bhij.a(i), this.jdField_a_of_type_Bhij.a(i), this.jdField_a_of_type_Bhij.b(i), this.jdField_a_of_type_Bhij.c(i));
           addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
           i += 1;
           break;
@@ -233,11 +233,11 @@ public class QVipMedalView
   
   public void setData(MedalList paramMedalList)
   {
-    if (this.jdField_a_of_type_Bjci == null) {
-      this.jdField_a_of_type_Bjci = new bjci();
+    if (this.jdField_a_of_type_Bhij == null) {
+      this.jdField_a_of_type_Bhij = new bhij();
     }
-    this.jdField_a_of_type_Bjci.a(paramMedalList);
-    setAdapter(this.jdField_a_of_type_Bjci);
+    this.jdField_a_of_type_Bhij.a(paramMedalList);
+    setAdapter(this.jdField_a_of_type_Bhij);
   }
   
   public void setItemMargin(int paramInt)

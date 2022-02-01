@@ -1,21 +1,20 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 
 class ahdv
-  implements URLDrawable.URLDrawableListener
+  implements zuz
 {
-  ahdv(ahdk paramahdk, StateListDrawable paramStateListDrawable) {}
+  ahdv(ahdt paramahdt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    this.a.c.setVisibility(0);
+    this.a.a.sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
+    argw.a(this.a.app).a(paramString, this.a.getActivity(), this.a.app, this.a.getCurFriendUin(), localButtonInfo);
+    bcef.b(this.a.app, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.getCurFriendUin(), paramInt1 + "", "", "");
   }
 }
 

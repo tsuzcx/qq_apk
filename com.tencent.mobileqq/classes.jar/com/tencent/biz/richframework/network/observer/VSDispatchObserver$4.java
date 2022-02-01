@@ -1,19 +1,17 @@
 package com.tencent.biz.richframework.network.observer;
 
-import aaau;
-import aaav;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
 
-public class VSDispatchObserver$4
+class VSDispatchObserver$4
   implements Runnable
 {
-  public VSDispatchObserver$4(aaau paramaaau, VSBaseRequest paramVSBaseRequest, aaav paramaaav, long paramLong, Exception paramException) {}
+  VSDispatchObserver$4(VSDispatchObserver paramVSDispatchObserver, VSBaseRequest paramVSBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong, Exception paramException) {}
   
   public void run()
   {
-    aaau.a(this.this$0, this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest, this.jdField_a_of_type_Aaav, -2L, "网络错误", false, null);
-    QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: ParseException: CmdName:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCurrentSeq() + " | errorMsg: inform VSBaseRequest resultcode fail | final dispatch costTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " | exception:" + this.jdField_a_of_type_JavaLangException);
+    VSDispatchObserver.access$100(this.this$0, this.val$request, this.val$cb, -100001L, "网络错误", false, null);
+    QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: ParseException: CmdName:" + this.val$request.getCmdName() + " | TraceId:" + this.val$request.getTraceId() + " | SeqId:" + this.val$request.getCurrentSeq() + " | errorMsg: inform VSBaseRequest resultcode fail | final dispatch costTime:" + (System.currentTimeMillis() - this.val$dispatchStartTimeStamp) + " | exception:" + this.val$e);
   }
 }
 

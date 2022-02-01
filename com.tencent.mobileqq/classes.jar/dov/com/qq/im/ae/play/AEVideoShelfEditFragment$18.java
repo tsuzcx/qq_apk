@@ -7,9 +7,9 @@ class AEVideoShelfEditFragment$18
   
   public void run()
   {
-    AEVideoShelfEditFragment.g(this.this$0);
-    AEVideoShelfEditFragment.a(this.this$0, Boolean.valueOf(false));
-    AEVideoShelfEditFragment.a(this.this$0.getActivity(), false);
+    AEVideoShelfEditFragment.access$2900(this.this$0);
+    AEVideoShelfEditFragment.access$3102(this.this$0, Boolean.valueOf(false));
+    AEVideoShelfEditFragment.keepScreenOn(this.this$0.getActivity(), false);
   }
 }
 

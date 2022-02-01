@@ -1,42 +1,45 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.upload.uinterface.IUploadService;
-import com.tencent.upload.uinterface.UploadServiceBuilder;
-import mqq.manager.Manager;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
 public class babs
-  implements Manager
+  extends OrientationEventListener
 {
-  public babs(QQAppInterface paramQQAppInterface) {}
-  
-  private void b(QQAppInterface paramQQAppInterface, babo parambabo)
+  public babs(CameraCaptureView paramCameraCaptureView, Context paramContext)
   {
-    bmwk localbmwk = new bmwk();
-    if (parambabo != null)
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.v = paramInt;
+    if (paramInt == -1)
     {
-      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), parambabo, null, null, localbmwk, localbmwk);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
+      }
+      this.a.w = 90;
+    }
+    if ((paramInt > 315) || (paramInt < 45)) {
+      this.a.w = 90;
+    }
+    for (;;)
+    {
+      if (this.a.g) {
+        this.a.u = this.a.w;
+      }
+      babk.a = this.a.u;
       return;
-    }
-    parambabo = new babt(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), parambabo, null, null, localbmwk, localbmwk);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, babo parambabo)
-  {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, parambabo);
+      if ((paramInt > 45) && (paramInt < 135)) {
+        this.a.w = 180;
+      } else if ((paramInt > 135) && (paramInt < 225)) {
+        this.a.w = 270;
+      } else if ((paramInt > 225) && (paramInt < 315)) {
+        this.a.w = 0;
+      }
     }
   }
-  
-  public void a(QQAppInterface paramQQAppInterface, babp parambabp, babo parambabo)
-  {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, parambabo);
-    }
-    parambabp.a();
-  }
-  
-  public void onDestroy() {}
 }
 
 

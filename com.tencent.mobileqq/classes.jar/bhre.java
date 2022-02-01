@@ -1,60 +1,32 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
 import com.tencent.qphone.base.util.QLog;
 
-class bhre
-  implements SensorEventListener
+public class bhre
+  extends Handler
 {
-  bhre(bhrd parambhrd) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent arg1)
+  public bhre(CardContainer paramCardContainer, Looper paramLooper)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
-    }
-    if (bhrd.a(this.a) == null) {
-      return;
-    }
-    if (agej.b())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.a = false;
-      return;
-    }
-    if (???.values[0] < bhrd.a(this.a)) {
-      bhrd.a(this.a, true);
     }
     for (;;)
     {
-      ??? = Build.MODEL;
-      if (!agej.a()) {
-        break;
-      }
-      if (bhrd.a(this.a).hasMessages(1)) {
-        bhrd.a(this.a).removeMessages(1);
-      }
-      bhrd.a(this.a).sendMessageDelayed(bhrd.a(this.a).obtainMessage(1), 150L);
+      super.handleMessage(paramMessage);
       return;
-      bhrd.a(this.a, false);
-    }
-    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
-    {
-      if (bhrd.a(this.a).hasMessages(1)) {
-        bhrd.a(this.a).removeMessages(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("CardContainer", 2, "-->handleMessage MSG_UPDATE");
       }
-      bhrd.a(this.a).sendMessageDelayed(bhrd.a(this.a).obtainMessage(1), 250L);
-      return;
-    }
-    synchronized (this.a)
-    {
-      if (bhrd.a(this.a) != null) {
-        bhrd.a(this.a).a(bhrd.a(this.a));
-      }
-      return;
+      CardContainer.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
 }

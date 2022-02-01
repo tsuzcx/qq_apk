@@ -1,8 +1,61 @@
-import android.view.View;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract interface ayqs
+public class ayqs
 {
-  public abstract void a(View paramView);
+  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  
+  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  {
+    return (ToggleButton)this.a.get(paramProfileLabelInfo);
+  }
+  
+  public Map<ProfileLabelInfo, ToggleButton> a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  {
+    if (!a(paramProfileLabelInfo)) {
+      this.a.put(paramProfileLabelInfo, paramToggleButton);
+    }
+  }
+  
+  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
+  {
+    return this.a.get(paramProfileLabelInfo) != null;
+  }
+  
+  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  {
+    if (a(paramProfileLabelInfo)) {
+      this.a.remove(paramProfileLabelInfo);
+    }
+  }
+  
+  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  {
+    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
+      a(paramProfileLabelInfo, paramToggleButton);
+    }
+    for (;;)
+    {
+      paramProfileLabelInfo.toggleStatus();
+      paramToggleButton.toggle();
+      return;
+      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
+        b(paramProfileLabelInfo, paramToggleButton);
+      }
+    }
+  }
 }
 
 

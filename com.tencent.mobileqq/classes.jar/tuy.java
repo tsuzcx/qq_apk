@@ -1,40 +1,55 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class tuy
-  extends tvm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ISuperMaskRes$SuperMaskJson;", "", "json", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)V", "getJson", "()Lorg/json/JSONObject;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tuy
 {
-  public tuy(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  @Nullable
+  private final JSONObject a;
   
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
+  public tuy(@Nullable JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
-    }
-    if (!paramBoolean) {}
-    do
+    this.a = paramJSONObject;
+  }
+  
+  @Nullable
+  public final JSONObject a()
+  {
+    return this.a;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      do
+      if ((paramObject instanceof tuy))
       {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
-      return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
+        paramObject = (tuy)paramObject;
+        if (!Intrinsics.areEqual(this.a, paramObject.a)) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    JSONObject localJSONObject = this.a;
+    if (localJSONObject != null) {
+      return localJSONObject.hashCode();
+    }
+    return 0;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "SuperMaskJson(json=" + this.a + ")";
   }
 }
 

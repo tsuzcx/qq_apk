@@ -1,14 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.1.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agub
-  implements DialogInterface.OnClickListener
+public class agub
+  implements View.OnClickListener
 {
-  agub(agtz paramagtz) {}
+  agub(agua paramagua) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    Object localObject = AIOUtils.getMessage(paramView);
+    if (!(localObject instanceof MessageForText)) {
+      if (QLog.isColorLevel()) {
+        QLog.w("WriteTogetherItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (MessageForText)localObject;
+      if (!this.a.a())
+      {
+        if ((paramView instanceof ETTextView)) {
+          ((ETTextView)paramView).startAnimation(true, false);
+        }
+        if (!agua.a(this.a))
+        {
+          agua.b(this.a, true);
+          ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherItemBuilder.1.1(this, (MessageForText)localObject), 500L);
+        }
+      }
+    }
   }
 }
 

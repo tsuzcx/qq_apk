@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import aldq;
+import akbj;
 import android.os.Handler;
 import android.view.View;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 class MiniGamePublicAccountWebFragment$4
-  implements aldq
+  implements akbj
 {
   MiniGamePublicAccountWebFragment$4(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment, View paramView) {}
   

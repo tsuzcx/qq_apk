@@ -1,21 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bbvw
-  extends bbvn
 {
-  public bbvw(LikesView paramLikesView, int paramInt, String paramString)
+  public static void a(int paramInt)
   {
-    super(paramInt);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("crashKind", "" + paramInt);
+    StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
   }
   
-  public void onClick(View paramView)
+  public static void a(String paramString, long paramLong)
   {
-    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
-      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("time", "" + paramLong);
+    localHashMap.put("filter_id", bbvx.jdField_a_of_type_JavaLangString);
+    localHashMap.put("front_camera", String.valueOf(bbvx.jdField_a_of_type_Boolean));
+    StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, paramString, true, paramLong, bbsu.c, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bbvx.jdField_a_of_type_JavaLangString + " ; front_camera = " + bbvx.jdField_a_of_type_Boolean);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

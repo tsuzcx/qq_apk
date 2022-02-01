@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import org.json.JSONObject;
 
-public final class umt
-  implements Parcelable.Creator<WSPushStrategyInfo>
+public abstract class umt
 {
-  public WSPushStrategyInfo a(Parcel paramParcel)
+  public umt(JSONObject paramJSONObject)
   {
-    return new WSPushStrategyInfo(paramParcel);
+    a(paramJSONObject);
   }
   
-  public WSPushStrategyInfo[] a(int paramInt)
-  {
-    return new WSPushStrategyInfo[paramInt];
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

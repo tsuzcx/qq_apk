@@ -1,94 +1,11 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.AEOpenRenderConfig;
-import com.tencent.aekit.openrender.UniformParam.Float4fParam;
-import com.tencent.aekit.openrender.UniformParam.TextureParam;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.av.opengl.program.TextureProgram;
 
 public class lqz
-  extends lrh
+  extends TextureProgram
 {
-  private static String jdField_b_of_type_JavaLangString = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}";
-  private static String c = "precision mediump float;\nvarying vec2 textureCoordinate;\nuniform vec4 offset;\nuniform vec4 offset1;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture1;\nvoid main() {\n    vec2 newCoordinate;\n    if (textureCoordinate.x <= 0.5) {\n        newCoordinate.x = offset.x + textureCoordinate.x * 2.0 * (1.0 - offset.y - offset.x);\n        newCoordinate.y = offset.y + textureCoordinate.y * (1.0 - offset.w - offset.z);\n        gl_FragColor = texture2D(inputImageTexture, newCoordinate);\n    } else {\n        newCoordinate.x = offset1.x + (textureCoordinate.x - 0.5) * 2.0 * (1.0 - offset1.y - offset1.x);\n        newCoordinate.y = offset1.z + textureCoordinate.y * (1.0 - offset1.w - offset1.z);\n        gl_FragColor = texture2D(inputImageTexture1, newCoordinate);\n    }\n}";
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "CompositeFilter2-" + Integer.toHexString(hashCode());
-  private lra jdField_a_of_type_Lra;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
-  private int jdField_b_of_type_Int;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[4];
-  
-  public lqz(int paramInt1, int paramInt2)
+  public lqz()
   {
-    super(2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "CompositeFilter2: width=" + paramInt1 + ", height=" + paramInt2);
-  }
-  
-  private void a(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
-  {
-    float f = this.jdField_b_of_type_Int / this.jdField_a_of_type_Int * 2.0F;
-    if (paramInt2 / paramInt1 > f)
-    {
-      paramArrayOfFloat[1] = 0.0F;
-      paramArrayOfFloat[0] = 0.0F;
-      paramArrayOfFloat[2] = ((paramInt2 - f * paramInt1) / paramInt2 / 2.0F);
-      paramArrayOfFloat[3] = paramArrayOfFloat[2];
-      return;
-    }
-    paramArrayOfFloat[0] = ((paramInt1 - paramInt2 / f) / paramInt1 / 2.0F);
-    paramArrayOfFloat[1] = paramArrayOfFloat[0];
-    paramArrayOfFloat[3] = 0.0F;
-    paramArrayOfFloat[2] = 0.0F;
-  }
-  
-  @NotNull
-  protected Frame a(List<lrl> paramList, long paramLong)
-  {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0))
-    {
-      Log.e(this.jdField_a_of_type_JavaLangString, "onRender: invalidate composite size");
-      return null;
-    }
-    if (paramList.size() > 2) {
-      Log.w(this.jdField_a_of_type_JavaLangString, "onRender: expect 2 inputs, but got " + paramList.size());
-    }
-    Frame localFrame = ((lrl)paramList.get(0)).a;
-    a(this.jdField_a_of_type_ArrayOfFloat, localFrame.width, localFrame.height);
-    this.jdField_a_of_type_Lra.addParam(new UniformParam.Float4fParam("offset", this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]));
-    if (paramList.size() > 1)
-    {
-      paramList = ((lrl)paramList.get(1)).a;
-      a(this.jdField_b_of_type_ArrayOfFloat, paramList.width, paramList.height);
-      this.jdField_a_of_type_Lra.addParam(new UniformParam.TextureParam("inputImageTexture1", paramList.getTextureId(), 33985));
-      this.jdField_a_of_type_Lra.addParam(new UniformParam.Float4fParam("offset1", this.jdField_b_of_type_ArrayOfFloat[0], this.jdField_b_of_type_ArrayOfFloat[1], this.jdField_b_of_type_ArrayOfFloat[2], this.jdField_b_of_type_ArrayOfFloat[3]));
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Lra.RenderProcess(localFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Lra.addParam(new UniformParam.TextureParam("inputImageTexture1", -1, 33985));
-    }
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Lra = new lra(this);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create filter#" + Integer.toHexString(this.jdField_a_of_type_Lra.hashCode()));
-    this.jdField_a_of_type_Lra.setPositions(AEOpenRenderConfig.ORIGIN_POSITION_COORDS, true);
-    this.jdField_a_of_type_Lra.setTexCords(AEOpenRenderConfig.ORIGIN_TEX_COORDS, true);
-    this.jdField_a_of_type_Lra.ApplyGLSLFilter();
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Lra != null)
-    {
-      this.jdField_a_of_type_Lra.clearGLSLSelf();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lra.hashCode()));
-      this.jdField_a_of_type_Lra = null;
-    }
+    super("uniform mat4 uMatrix;uniform mat4 uTextureMatrix;attribute vec2 aPosition;uniform  float fWidth;uniform  float fHeight;varying  vec2 vTextureCoord  ;varying  float srcWidth;varying  float srcHeight;void main(){  vec4 pos = vec4(aPosition, 0.0, 1.0);  gl_Position = uMatrix * pos;  vec2 inputTextureCoordinate = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;  vTextureCoord = inputTextureCoordinate.xy;  srcWidth = fWidth;  srcHeight = fHeight;}", "precision mediump float;varying  vec2 vTextureCoord  ;varying  float srcWidth;varying  float srcHeight;uniform sampler2D uTextureSampler0;const float k = 4.0;const float THRESHOLD = 1.15;const float EPSION = 0.8; const float QQAV_A1 = 0.00392156862745098;const  mat4 colorMat=mat4(1.0,1.0,1.0,0.0,  0.00093,-0.3437,1.77216,0.0,  1.401687,-0.71417,0.00099,0.0, -0.7011,0.525,-0.8828,0.0);float QQAV_Calc23Points2(sampler2D SamplerA, vec2 TexCoord){    vec2 coordinates[16];    float aroundPoints[16];    float t1,t2,t3;    float d1,d2;    coordinates[0] = vec2(0.0, -3.0);    coordinates[1] = vec2(-1.0, -2.0);    coordinates[2] = vec2(1.0, -2.0);    coordinates[3] = vec2(-2.0, -1.0);    coordinates[4] = vec2(0.0, -1.0);    coordinates[5] = vec2(2.0, -1.0);    coordinates[6] = vec2(-3.0, 0.0);    coordinates[7] = vec2(-1.0, 0.0);    coordinates[8] = vec2(1.0, 0.0);    coordinates[9] = vec2(3.0, 0.0);    coordinates[10] = vec2(-2.0, 1.0);    coordinates[11] = vec2(0.0, 1.0);    coordinates[12] = vec2(2.0, 1.0);    coordinates[13] = vec2(-1.0, 2.0);    coordinates[14] = vec2(1.0, 2.0);    coordinates[15] = vec2(0.0, 3.0);    for(int index = 0; index < 16; ++index)    {        aroundPoints[index] = texture2D(SamplerA, TexCoord + vec2((coordinates[index].x)/(srcWidth*2.0),(coordinates[index].y)/(srcHeight*2.0))).r;    }    t1 = abs(aroundPoints[1] - aroundPoints[2]) + abs(aroundPoints[7] - aroundPoints[8]) + abs(aroundPoints[13] - aroundPoints[14]);    t2 = abs(aroundPoints[3] - aroundPoints[4]) + abs(aroundPoints[4] - aroundPoints[5]);    t3 = abs(aroundPoints[10] - aroundPoints[11]) + abs(aroundPoints[11] - aroundPoints[12]);    d1 = QQAV_A1 + t1 + t2 + t3;    t1 = abs(aroundPoints[3] - aroundPoints[10]) + abs(aroundPoints[4] - aroundPoints[11]) + abs(aroundPoints[5] - aroundPoints[12]);    t2 = abs(aroundPoints[1] - aroundPoints[7]) + abs(aroundPoints[7] - aroundPoints[13]);    t3 = abs(aroundPoints[2] - aroundPoints[8]) + abs(aroundPoints[8] - aroundPoints[14]);    d2 = QQAV_A1 + t1 + t2 + t3;    float weight1, weight2;    int directionIndex = 3;    weight1 = 1.0/(1.0 + pow(d1, k));    weight2 = 1.0/(1.0 + pow(d2, k));    if( d1 > d2 * THRESHOLD)    {        directionIndex = 1;    }    else if(d2  > d1*THRESHOLD)    {        directionIndex = 2;    }    float v1, v2;    v1 = -1.0/16.0*aroundPoints[6] + 9.0/16.0*aroundPoints[7] + 9.0/16.0*aroundPoints[8] - 1.0/16.0*aroundPoints[9];    v2 = -1.0/16.0*aroundPoints[0] + 9.0/16.0*aroundPoints[4] + 9.0/16.0*aroundPoints[11] - 1.0/16.0*aroundPoints[15];    float flag1, flag2, flag3;    float v3 = (weight1*v1 + weight2*v2)/(weight1 + weight2);    flag1 = step(0.5,float(directionIndex))*step(float(directionIndex),1.5);    flag2 = step(1.5,float(directionIndex))*step(float(directionIndex),2.5);    flag3 = step(2.5,float(directionIndex))*step(float(directionIndex),3.5);    return (v2*flag1 + v1*flag2 + v3*flag3);}void main(){      float fX = vTextureCoord.x  * srcWidth*2.0;      float fY = vTextureCoord.y  * srcHeight*2.0;      vec3 Data = vec3(1.0,1.0,1.0);{         if((mod(fX, 2.0) <= EPSION && mod(fY, 2.0) > EPSION) || mod(fX, 2.0) > EPSION && mod(fY, 2.0) <= EPSION)        {            Data   = texture2D(uTextureSampler0,         vTextureCoord).rgb;          Data.r = QQAV_Calc23Points2(uTextureSampler0,vTextureCoord);        }        else        {            Data = texture2D(uTextureSampler0,vTextureCoord).rgb;        }}        gl_FragColor = colorMat * vec4(Data, 1.0);        gl_FragColor.a=1.0;}", new lrc[] { new lrb("aPosition"), new lrd("uMatrix"), new lrd("uAlpha"), new lrd("uTextureMatrix"), new lrd("uTextureSampler0"), new lrd("uTextureSampler1"), new lrd("uTextureSampler2"), new lrd("fWidth"), new lrd("fHeight"), new lrd("colorMat"), new lrd("yuvFormat"), new lrd("leavel") }, false);
   }
 }
 

@@ -1,16 +1,11 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.image.URLImageView;
-
 class aste
-  extends RecyclerView.ViewHolder
+  implements arvc
 {
-  public URLImageView[] a;
+  aste(astb paramastb) {}
   
-  public aste(@NonNull View paramView)
+  public void a(long paramLong)
   {
-    super(paramView);
+    astb.a(this.a, paramLong);
   }
 }
 

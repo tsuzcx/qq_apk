@@ -1,43 +1,45 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
-
-public abstract class bezs
+public class bezs
 {
-  static final String TAG = "PreDownload.Task";
-  protected QQAppInterface app;
-  protected bezv ctrl;
-  public String key;
-  protected Handler subHandler;
-  public Object userData;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  private String c;
+  public int d;
   
-  protected bezs(QQAppInterface paramQQAppInterface, String paramString)
+  public String a()
   {
-    this.key = paramString;
-    this.app = paramQQAppInterface;
-    this.ctrl = ((bezv)paramQQAppInterface.getManager(193));
-    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
+    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
+      return "classteacher";
+    }
+    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
+      return "teacher";
+    }
+    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
+      return "owner";
+    }
+    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
+      return "admin";
+    }
+    return "other";
   }
   
-  public final void cancel()
+  public void a(String paramString)
   {
-    this.subHandler.post(new AbsPreDownloadTask.2(this));
+    this.jdField_c_of_type_JavaLangString = bezr.a(paramString, "").trim().replaceAll("\\s+", " ");
   }
   
-  public abstract void realCancel();
-  
-  public abstract void realStart();
-  
-  public final void start()
+  public String b()
   {
-    this.subHandler.post(new AbsPreDownloadTask.1(this));
+    return this.jdField_c_of_type_JavaLangString;
   }
   
   public String toString()
   {
-    return super.toString() + "[" + this.key + "]";
+    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 

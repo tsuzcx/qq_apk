@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View;
+import android.widget.ImageView;
 
 class xxo
-  implements DialogInterface.OnDismissListener
 {
-  xxo(xxn paramxxn, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-  }
+  xxo(xxn paramxxn) {}
 }
 
 

@@ -1,18 +1,11 @@
 public abstract interface lpj
+  extends lpc
 {
   public abstract int a();
   
-  public abstract void a();
+  public abstract void a(loy paramloy, lok paramlok, lpf paramlpf, lox paramlox, lpq paramlpq);
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(lpc paramlpc);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
+  public abstract byte[] a();
 }
 
 

@@ -13,6 +13,7 @@ public class LoadParam
   public static int CALL_TYPE_ASYNC;
   public static int CALL_TYPE_ASYNC_BY_SYNC = 2;
   public static int CALL_TYPE_SYNC = 1;
+  public int commonFlag;
   public int mCallType = CALL_TYPE_ASYNC;
   public List<LoadParam.LoadItem> mLoadItems = new LinkedList();
   public volatile long mLoadTime;
@@ -50,9 +51,35 @@ public class LoadParam
     return localStringBuilder.toString();
   }
   
+  public static boolean isCloseReport(LoadParam paramLoadParam)
+  {
+    if (paramLoadParam == null) {}
+    while ((paramLoadParam.commonFlag & 0x20) == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean isCloseRetry(LoadParam paramLoadParam)
+  {
+    if (paramLoadParam == null) {}
+    while ((paramLoadParam.commonFlag & 0x10) == 0) {
+      return false;
+    }
+    return true;
+  }
+  
   public static boolean isValid(LoadParam paramLoadParam)
   {
     return (paramLoadParam != null) && (paramLoadParam.isValid());
+  }
+  
+  public void addItem(String paramString, LoadOptions paramLoadOptions)
+  {
+    paramString = new LoadParam.LoadItem(paramString, paramLoadOptions);
+    this.mLoadItems.add(paramString);
+    int i = this.commonFlag;
+    this.commonFlag = (paramString.lops.flag & 0x30 | i);
   }
   
   public boolean isOverTime()
@@ -105,7 +132,7 @@ public class LoadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.LoadParam
  * JD-Core Version:    0.7.0.1
  */

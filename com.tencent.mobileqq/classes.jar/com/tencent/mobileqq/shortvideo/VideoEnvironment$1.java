@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcyc;
-import bcyd;
+import bbrm;
+import bbrn;
 import com.tencent.video.decode.ShortVideoSoLoad;
 import java.io.File;
 
@@ -10,18 +10,18 @@ final class VideoEnvironment$1
 {
   public void run()
   {
-    String str1 = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.a());
-    Object localObject1 = new File(str1 + VideoEnvironment.b());
+    String str1 = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.getContext());
+    Object localObject1 = new File(str1 + VideoEnvironment.access$000());
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }
-    localObject1 = new File(str1 + VideoEnvironment.c());
+    localObject1 = new File(str1 + VideoEnvironment.access$100());
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }
-    String str2 = bcyc.a();
+    String str2 = bbrm.a();
     File[] arrayOfFile = new File(str1).listFiles();
-    int i = VideoEnvironment.a().length;
+    int i = VideoEnvironment.access$200().length;
     int j;
     Object localObject2;
     Object localObject3;
@@ -40,14 +40,14 @@ final class VideoEnvironment$1
           k += 1;
           break;
           localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!VideoEnvironment.a((String)localObject2)))
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!VideoEnvironment.access$300((String)localObject2)))
           {
-            localObject3 = bcyc.a((String)localObject2);
-            m = ((bcyd)localObject3).a();
+            localObject3 = bbrm.a((String)localObject2);
+            m = ((bbrn)localObject3).a();
             if (m == 0) {
               break label306;
             }
-            VideoEnvironment.a("[executeClearHistorySOLibFile] errorCodec=" + m + "  filename=" + (String)localObject2, null);
+            VideoEnvironment.LogDownLoad("[executeClearHistorySOLibFile] errorCodec=" + m + "  filename=" + (String)localObject2, null);
             localObject2 = new File(str1 + (String)localObject2);
             if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
               ((File)localObject2).delete();
@@ -55,7 +55,7 @@ final class VideoEnvironment$1
           }
         }
         label306:
-        localObject3 = ((bcyd)localObject3).b();
+        localObject3 = ((bbrn)localObject3).b();
       }
     }
     label506:
@@ -73,16 +73,16 @@ final class VideoEnvironment$1
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        VideoEnvironment.a("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+        VideoEnvironment.LogDownLoad("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
       }
       break;
-      VideoEnvironment.a("[executeClearHistorySOLibFile] deleteName=" + (String)localObject1 + "  validNumLibso=" + i + " leastVersion=" + j, null);
+      VideoEnvironment.LogDownLoad("[executeClearHistorySOLibFile] deleteName=" + (String)localObject1 + "  validNumLibso=" + i + " leastVersion=" + j, null);
       if (i >= 3)
       {
         localObject1 = new File(str1 + (String)localObject1);
         if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
         {
-          VideoEnvironment.a("[executeClearHistorySOLibFile] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
+          VideoEnvironment.LogDownLoad("[executeClearHistorySOLibFile] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
           ((File)localObject1).delete();
         }
       }
@@ -92,7 +92,7 @@ final class VideoEnvironment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoEnvironment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class AETemplateInfoFragment$2
@@ -11,7 +11,7 @@ class AETemplateInfoFragment$2
   public void run()
   {
     long l = System.currentTimeMillis();
-    bhmi.a(AETemplateInfoFragment.a);
+    FileUtils.deleteDirectory(AETemplateInfoFragment.CACHE_DIR);
     if (QLog.isDebugVersion()) {
       QLog.d("AETemplateInfoFragment", 4, new Object[] { "clear temp files finish, cost=", Long.valueOf(System.currentTimeMillis() - l) });
     }

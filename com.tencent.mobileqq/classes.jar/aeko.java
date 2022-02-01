@@ -1,17 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupDynamicEntrancePicture;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeko
-  implements DialogInterface.OnClickListener
+  extends nmd
 {
-  public aeko(DialogActivity paramDialogActivity) {}
+  public aeko(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    becb.a(this.a.app, this.a);
-    this.a.finish();
-    bdll.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get error:" + paramInt);
+      }
+      paramArrayOfByte = null;
+    }
+    for (;;)
+    {
+      return paramArrayOfByte;
+      try
+      {
+        qqstory_group.RspGetGroupDynamicEntrancePicture localRspGetGroupDynamicEntrancePicture = new qqstory_group.RspGetGroupDynamicEntrancePicture();
+        localRspGetGroupDynamicEntrancePicture.mergeFrom(paramArrayOfByte);
+        paramBundle = (qqstory_struct.ErrorInfo)localRspGetGroupDynamicEntrancePicture.result.get();
+        paramArrayOfByte = paramBundle;
+        if (localRspGetGroupDynamicEntrancePicture.cover_url.has())
+        {
+          paramArrayOfByte = localRspGetGroupDynamicEntrancePicture.cover_url.get().toStringUtf8();
+          if (TextUtils.isEmpty(paramArrayOfByte))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + ": picUrl is Empty");
+            }
+          }
+          else
+          {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            UIUtils.setRoundCornerViewByURL(this.a.jdField_a_of_type_AndroidWidgetImageView, paramArrayOfByte, 68, 68, 4, UIUtils.roundDefaultIcon, "TroopStorySnap");
+            return paramBundle;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get exception:" + paramArrayOfByte.getMessage());
+        }
+        return null;
+      }
+    }
+    return null;
   }
 }
 

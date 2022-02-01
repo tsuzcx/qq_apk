@@ -1,50 +1,34 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class armq
-  extends armf<arno>
+class armq
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public static arno c()
+  armq(armn paramarmn, Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arno localarno2 = (arno)aran.a().a(527);
-    arno localarno1 = localarno2;
-    if (localarno2 == null) {
-      localarno1 = new arno();
+    if (this.jdField_a_of_type_AndroidContentContext != null) {}
+    try
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", armn.a(this.jdField_a_of_type_Armn));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog click confirm " + armn.a(this.jdField_a_of_type_Armn));
+      }
+      return;
     }
-    return localarno1;
-  }
-  
-  @NonNull
-  public arno a()
-  {
-    return new arno();
-  }
-  
-  @NonNull
-  public arno a(@NonNull araj[] paramArrayOfaraj)
-  {
-    return arno.a(paramArrayOfaraj[0].a);
-  }
-  
-  @NonNull
-  public arno b()
-  {
-    return new arno();
-  }
-  
-  public Class<arno> clazz()
-  {
-    return arno.class;
-  }
-  
-  public int type()
-  {
-    return 527;
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,28 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ailh
-  implements View.OnTouchListener
+public class ailh
+  implements aiiv
 {
-  ailh(aikq paramaikq) {}
+  public ailh(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Biup.a();
-    if (i == 0)
+    if (!(paramViewHolder instanceof aikf)) {}
+    do
     {
-      this.a.m.setText(anzj.a(2131704033));
-      this.a.m.setTextColor(this.a.r);
-      this.a.jdField_a_of_type_Axxr.b();
-      if (paramView != null) {
-        paramView.a(true);
-      }
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
-    }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.m.setText(anzj.a(2131703972));
-    this.a.m.setTextColor(this.a.q);
-    this.a.jdField_a_of_type_Axxr.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
+      return;
+      paramView = (aikf)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopNotifyAndRecommendView.a(this.a, paramView);
+  }
+  
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    return false;
   }
 }
 

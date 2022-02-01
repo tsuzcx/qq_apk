@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bcfq;
-import bcmd;
-import bhvd;
+import bays;
+import bbff;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -17,20 +17,20 @@ public class NetSearchEngine$ParseTask
   implements Runnable
 {
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<bcmd> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bbff> jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList;
   
-  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, bcmd parambcmd)
+  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, bbff parambbff)
   {
     this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = parambcmd;
+    this.jdField_a_of_type_JavaUtilArrayList = parambbff;
     Object localObject;
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     }
   }
   
-  private List<bcfq> a(String paramString, ArrayList<byte[]> paramArrayList)
+  private List<bays> a(String paramString, ArrayList<byte[]> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return null;
@@ -58,12 +58,12 @@ public class NetSearchEngine$ParseTask
         j = localObject.length;
         break label72;
         label94:
-        int n = (int)bhvd.a((byte[])localObject, 1);
-        int m = (int)bhvd.a((byte[])localObject, 5);
+        int n = (int)PkgTools.getLongData((byte[])localObject, 1);
+        int m = (int)PkgTools.getLongData((byte[])localObject, 5);
         if ((n > 0) && (n + 9 < j))
         {
           byte[] arrayOfByte = new byte[n];
-          bhvd.a(arrayOfByte, 0, (byte[])localObject, 9, n);
+          PkgTools.copyData(arrayOfByte, 0, (byte[])localObject, 9, n);
           j = n + 9;
           SummaryCardBusiEntry.comm localcomm = new SummaryCardBusiEntry.comm();
           try
@@ -75,7 +75,7 @@ public class NetSearchEngine$ParseTask
             }
             n = localcomm.service.get();
             arrayOfByte = new byte[m];
-            bhvd.a(arrayOfByte, 0, (byte[])localObject, j, m);
+            PkgTools.copyData(arrayOfByte, 0, (byte[])localObject, j, m);
             localObject = this.this$0.a(paramString, n, localcomm, arrayOfByte);
             if ((localObject == null) || (((List)localObject).size() <= 0)) {
               continue;
@@ -104,16 +104,16 @@ public class NetSearchEngine$ParseTask
     List localList = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bcmd localbcmd = (bcmd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbcmd != null) {
-        localbcmd.a(localList, 1);
+      bbff localbbff = (bbff)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbbff != null) {
+        localbbff.a(localList, 1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask
  * JD-Core Version:    0.7.0.1
  */

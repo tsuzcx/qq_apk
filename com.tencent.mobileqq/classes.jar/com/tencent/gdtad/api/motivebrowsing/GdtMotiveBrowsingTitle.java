@@ -1,9 +1,8 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import acrc;
-import acrd;
-import acre;
-import agej;
+import abnl;
+import abnm;
+import abnn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,7 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axty;
+import awhf;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -32,14 +32,14 @@ import org.jetbrains.annotations.Nullable;
 public final class GdtMotiveBrowsingTitle
   extends RelativeLayout
 {
-  public static final acrc a;
+  public static final abnl a;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   
   static
   {
-    jdField_a_of_type_Acrc = new acrc(null);
+    jdField_a_of_type_Abnl = new abnl(null);
   }
   
   public GdtMotiveBrowsingTitle(@NotNull Context paramContext)
@@ -56,13 +56,13 @@ public final class GdtMotiveBrowsingTitle
   {
     super(paramContext, paramAttributeSet, paramInt);
     ImmersiveUtils.a(true, ((Activity)paramContext).getWindow());
-    int i = agej.a(63.0F, getResources());
+    int i = AIOUtils.dp2px(63.0F, getResources());
     paramInt = i;
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int j = ImmersiveUtils.getStatusBarHeight(paramContext);
       paramInt = i + j;
-      i = agej.a(15.0F, getResources());
+      i = AIOUtils.dp2px(15.0F, getResources());
       setPadding(i, j + i, i, i);
     }
     setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, paramInt));
@@ -74,8 +74,8 @@ public final class GdtMotiveBrowsingTitle
   private final Drawable a()
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(agej.a(18.0F, getResources()));
-    localGradientDrawable.setStroke(agej.a(1.0F, getResources()), Color.parseColor("#E5E5E5"));
+    localGradientDrawable.setCornerRadius(AIOUtils.dp2px(18.0F, getResources()));
+    localGradientDrawable.setStroke(AIOUtils.dp2px(1.0F, getResources()), Color.parseColor("#E5E5E5"));
     return (Drawable)localGradientDrawable;
   }
   
@@ -83,25 +83,25 @@ public final class GdtMotiveBrowsingTitle
   {
     if (paramInt > 0)
     {
-      acrd localacrd = new acrd(agej.a(23.0F, getResources()));
+      abnm localabnm = new abnm(AIOUtils.dp2px(23.0F, getResources()));
       String str = String.valueOf(paramInt);
-      SpannableString localSpannableString = new SpannableString((CharSequence)getResources().getString(2131692597, new Object[] { str }));
-      localSpannableString.setSpan(localacrd, 2, str.length() + 2, 17);
+      SpannableString localSpannableString = new SpannableString((CharSequence)getResources().getString(2131692645, new Object[] { str }));
+      localSpannableString.setSpan(localabnm, 2, str.length() + 2, 17);
       return (CharSequence)localSpannableString;
     }
-    return (CharSequence)getResources().getString(2131692599);
+    return (CharSequence)getResources().getString(2131692647);
   }
   
   private final void a()
   {
-    int i = agej.a(16.0F, getResources());
-    Object localObject1 = new RelativeLayout.LayoutParams(-2, agej.a(33.0F, getResources()));
+    int i = AIOUtils.dp2px(16.0F, getResources());
+    Object localObject1 = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(33.0F, getResources()));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
     Object localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
-    axty.a((View)localObject2, a());
+    awhf.a((View)localObject2, a());
     localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
@@ -123,8 +123,8 @@ public final class GdtMotiveBrowsingTitle
     }
     ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setText((CharSequence)getResources().getString(2131692600));
-    ((TextView)localObject1).setId(2131367439);
+    ((TextView)localObject1).setText((CharSequence)getResources().getString(2131692648));
+    ((TextView)localObject1).setId(2131367467);
     ((TextView)localObject1).setTextColor(-16777216);
     ((TextView)localObject1).setTextSize(1, 14.0F);
     localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -133,9 +133,9 @@ public final class GdtMotiveBrowsingTitle
     }
     ((LinearLayout)localObject2).addView((View)localObject1);
     localObject1 = new View(getContext());
-    i = agej.a(1.0F, getResources());
-    int j = agej.a(20.0F, getResources());
-    int k = agej.a(10.0F, getResources());
+    i = AIOUtils.dp2px(1.0F, getResources());
+    int j = AIOUtils.dp2px(20.0F, getResources());
+    int k = AIOUtils.dp2px(10.0F, getResources());
     localObject2 = new RelativeLayout.LayoutParams(i, j);
     ((RelativeLayout.LayoutParams)localObject2).leftMargin = k;
     ((RelativeLayout.LayoutParams)localObject2).rightMargin = k;
@@ -151,7 +151,7 @@ public final class GdtMotiveBrowsingTitle
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
-    ((TextView)localObject1).setId(2131367438);
+    ((TextView)localObject1).setId(2131367466);
     localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
@@ -185,7 +185,7 @@ public final class GdtMotiveBrowsingTitle
   
   private final void b()
   {
-    int i = agej.a(33.0F, getResources());
+    int i = AIOUtils.dp2px(33.0F, getResources());
     Object localObject1 = new RelativeLayout.LayoutParams(i, i);
     Object localObject2 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
@@ -229,7 +229,7 @@ public final class GdtMotiveBrowsingTitle
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("imgClose");
     }
-    localView.setOnClickListener((View.OnClickListener)new acre(paramFunction0));
+    localView.setOnClickListener((View.OnClickListener)new abnn(paramFunction0));
   }
 }
 

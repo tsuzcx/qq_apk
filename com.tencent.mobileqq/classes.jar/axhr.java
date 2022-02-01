@@ -1,49 +1,43 @@
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class axhr
-  implements RadioGroup.OnCheckedChangeListener
+final class axhr
+  implements QQPermissionCallback
 {
-  public axhr(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  axhr(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      if (MsgBackupDateFragment.a(this.a)) {
-        if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a))) {
-          this.a.setRightButtonEnable(true);
-        }
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
     }
-    for (;;)
+    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
+    }
+    try
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      axhq.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
+      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+      }
       return;
-      MsgBackupDateFragment.a(this.a, false);
-      MsgBackupDateFragment.a(this.a, 0L);
-      MsgBackupDateFragment.b(this.a, 0L);
-      MsgBackupDateFragment.a(this.a).setVisibility(8);
-      break;
-      MsgBackupDateFragment.a(this.a, true);
-      MsgBackupDateFragment.a(this.a).setVisibility(0);
-      break;
-      if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
-      {
-        this.a.setRightButtonEnable(true);
-      }
-      else
-      {
-        this.a.setRightButtonEnable(false);
-        continue;
-        this.a.setRightButtonEnable(true);
-      }
+    }
+    catch (Exception paramArrayOfString)
+    {
+      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690618, 0).a();
     }
   }
 }

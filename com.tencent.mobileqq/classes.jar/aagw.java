@@ -1,41 +1,155 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.net.URL;
 
-class aagw
-  implements aanq
+@Deprecated
+public class aagw
+  extends AbstractImageAdapter
 {
-  aagw(aagu paramaagu, CertifiedAccountMeta.StFeed paramStFeed) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public View a(URL paramURL, ViewGroup paramViewGroup)
   {
-    if (paramBoolean1)
+    int i = 0;
+    while (i < paramViewGroup.getChildCount())
     {
-      abbe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
-      paramString = this.jdField_a_of_type_Aagu.getDataList().iterator();
-      while (paramString.hasNext()) {
-        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
-          paramString.remove();
+      URLImageView localURLImageView = (URLImageView)paramViewGroup.getChildAt(i);
+      Object localObject = localURLImageView.getDrawable();
+      if ((localObject != null) && ((localObject instanceof URLDrawable)))
+      {
+        localObject = (URLDrawable)localObject;
+        if ((((URLDrawable)localObject).getURL() != null) && (((URLDrawable)localObject).getURL().equals(paramURL))) {
+          return localURLImageView;
         }
       }
-      this.jdField_a_of_type_Aagu.notifyDataSetChanged();
-      QQToast.a(aagu.a(this.jdField_a_of_type_Aagu), 2, anzj.a(2131690630), 0).a();
-      if (this.jdField_a_of_type_Aagu.getDataList().size() < 5) {
-        this.jdField_a_of_type_Aagu.onRefreshData();
-      }
+      i += 1;
     }
-    if (paramBoolean2) {
-      abbe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+    return null;
+  }
+  
+  public URLDrawable a(URL paramURL, ViewGroup paramViewGroup)
+  {
+    if (paramURL == null) {
+      return null;
+    }
+    paramURL = paramURL.toString();
+    int i = 0;
+    while (i < paramViewGroup.getChildCount())
+    {
+      Object localObject = ((URLImageView)paramViewGroup.getChildAt(i)).getDrawable();
+      if ((localObject != null) && ((localObject instanceof URLDrawable)))
+      {
+        localObject = (URLDrawable)localObject;
+        if ((((URLDrawable)localObject).getURL() != null) && (((URLDrawable)localObject).getURL().toString().equals(paramURL)))
+        {
+          localObject = ((URLDrawable)localObject).getConstantState();
+          if (localObject != null) {
+            return (URLDrawable)((Drawable.ConstantState)localObject).newDrawable(paramViewGroup.getContext().getResources());
+          }
+        }
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    paramView = (URLImageView)paramView;
+    URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
+    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
+    {
+      int i = localURLDrawable.getProgress();
+      if (i == 0) {
+        return;
+      }
+      a(paramInt, i / 100);
+      paramView.setMinimumHeight(10);
+      paramView.setMinimumWidth(10);
+      return;
+    }
+    if (localURLDrawable.getStatus() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(paramInt, bool);
+      break;
+    }
+  }
+  
+  protected void a(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (!paramURLDrawable.isAnim()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setTag(2131296390, Boolean.valueOf(bool));
+      String str = paramURLDrawable.getURL().toString();
+      if ((paramURLDrawable.getStatus() == 1) && (AbsDownloader.hasFile(str)))
+      {
+        paramURLDrawable = AbsDownloader.getFile(str);
+        if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {
+          paramView.setTag(2131296389, Integer.valueOf(bfvo.d(paramURLDrawable.getAbsolutePath())));
+        }
+      }
+      return;
+    }
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = paramView;
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+    paramView = new URLImageView(paramViewGroup.getContext());
+    paramView.setAdjustViewBounds(true);
+    aagv localaagv = (aagv)getItem(paramInt);
+    if (localaagv != null)
+    {
+      localObject = a(localaagv.a(), paramViewGroup);
+      if (localObject != null) {
+        break label198;
+      }
+      localObject = (URLDrawable)localaagv.b();
+    }
+    label198:
+    for (;;)
+    {
+      paramView.setImageDrawable((Drawable)localObject);
+      if ((localObject != null) && (((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 4) && (((URLDrawable)localObject).getStatus() != 2))
+      {
+        i = ((URLDrawable)localObject).getProgress();
+        paramView.setURLDrawableDownListener(new aagx(this, paramInt, paramViewGroup));
+        a(paramInt, i / 100);
+      }
+      while (localObject == null)
+      {
+        int i;
+        localObject = paramView;
+        break;
+      }
+      if (((URLDrawable)localObject).getStatus() == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        a(paramInt, bool);
+        a(paramView, (URLDrawable)localObject);
+        break;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aagw
  * JD-Core Version:    0.7.0.1
  */

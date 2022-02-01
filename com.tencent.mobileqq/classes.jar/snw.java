@@ -1,27 +1,70 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.34.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.app.Activity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class snw
-  implements ppi
 {
-  public snw(FastWebActivity paramFastWebActivity) {}
+  private static snw jdField_a_of_type_Snw;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private uic jdField_a_of_type_Uic;
+  private Integer b;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
+  public static snw a(Activity paramActivity)
   {
-    QLog.d("FastWebActivity", 2, " isSucc " + paramBoolean1 + "  useWebView :" + paramBoolean2 + "  data : " + paramFastWebArticleInfo);
-    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
+    int i;
+    int j;
+    if (jdField_a_of_type_Snw == null)
     {
-      paramBoolean1 = true;
-      std.b("fast_web_show_light_house_2");
+      jdField_a_of_type_Snw = new snw();
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+      i = localDisplayMetrics.widthPixels;
+      j = localDisplayMetrics.heightPixels;
     }
-    for (;;)
+    try
     {
-      this.a.runOnUiThread(new FastWebActivity.34.1(this, paramBoolean1, paramFastWebArticleInfo));
-      return;
-      paramBoolean1 = false;
+      jdField_a_of_type_Snw.jdField_a_of_type_Uic = new uic(paramActivity, i, j);
+      jdField_a_of_type_Snw.jdField_a_of_type_Uic.a(new snx());
+      return jdField_a_of_type_Snw;
     }
+    catch (SecurityException paramActivity)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyScreenShotReporter", 1, "SecurityException error = " + paramActivity.toString());
+        jdField_a_of_type_Snw.jdField_a_of_type_Uic = null;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (jdField_a_of_type_Snw != null)
+    {
+      jdField_a_of_type_Snw.jdField_a_of_type_JavaLangInteger = null;
+      jdField_a_of_type_Snw.b = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Snw != null)
+    {
+      jdField_a_of_type_Snw.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
+      jdField_a_of_type_Snw.b = new Integer(paramInt1);
+    }
+  }
+  
+  public void b()
+  {
+    if ((jdField_a_of_type_Snw != null) && (jdField_a_of_type_Snw.jdField_a_of_type_Uic != null))
+    {
+      jdField_a_of_type_Snw.jdField_a_of_type_Uic.a();
+      jdField_a_of_type_Snw.jdField_a_of_type_Uic = null;
+    }
+    jdField_a_of_type_Snw = null;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
 
 public class tem
-  implements View.OnClickListener
+  implements ter
 {
-  public tem(BridgeModule paramBridgeModule, String paramString) {}
+  public tem(ChannelBottomBanner paramChannelBottomBanner) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 

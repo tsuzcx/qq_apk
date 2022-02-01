@@ -1,25 +1,12 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager.PosListener.1;
-import java.lang.ref.WeakReference;
-
-public final class trc
-  implements ppm
+class trc
+  implements tqt
 {
-  private WeakReference<trb> a;
+  trc(tqz paramtqz) {}
   
-  public trc(trb paramtrb)
+  public void a(txh paramtxh, int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramtrb);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.a != null)
-    {
-      trb localtrb = (trb)this.a.get();
-      if ((localtrb != null) && (trb.a(localtrb) != null)) {
-        trb.a(localtrb).post(new VideoAdExposureManager.PosListener.1(this, localtrb, paramInt));
-      }
+    if (this.a.a.a(paramtxh)) {
+      this.a.a.a(tqz.a(this.a), tqz.a(this.a), paramInt1, paramInt2);
     }
   }
 }

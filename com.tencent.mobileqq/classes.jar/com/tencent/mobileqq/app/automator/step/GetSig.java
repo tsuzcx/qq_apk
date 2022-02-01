@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import amwl;
+import anaw;
 import android.os.Bundle;
-import aocj;
-import aohh;
-import aomp;
-import bdll;
-import bmja;
+import angb;
+import bcef;
+import bknh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class GetSig
   extends AsyncStep
 {
-  private aocj a;
+  private amwl a;
   
   private void a()
   {
@@ -29,10 +29,10 @@ public class GetSig
   
   public int a()
   {
-    if (this.jdField_a_of_type_Aocj == null)
+    if (this.jdField_a_of_type_Amwl == null)
     {
-      this.jdField_a_of_type_Aocj = new aomp(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Aocj);
+      this.jdField_a_of_type_Amwl = new angb(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addDefaultObservers(this.jdField_a_of_type_Amwl);
     }
     a();
     return 2;
@@ -40,17 +40,17 @@ public class GetSig
   
   public void b()
   {
-    ((aohh)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(18)).a();
-    bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
-    bmja.a();
+    ((anaw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(18)).a();
+    bcef.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
+    bknh.a();
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Aocj != null)
+    if (this.jdField_a_of_type_Amwl != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aocj);
-      this.jdField_a_of_type_Aocj = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amwl);
+      this.jdField_a_of_type_Amwl = null;
     }
   }
 }

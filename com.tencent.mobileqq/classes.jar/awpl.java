@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
-public final class awpl
-  implements Parcelable.Creator<LocationRoom.Venue>
+public class awpl
+  implements URLDrawable.URLDrawableListener
 {
-  public LocationRoom.Venue a(Parcel paramParcel)
-  {
-    return new LocationRoom.Venue(paramParcel);
-  }
+  public awpl(StoryPlayController paramStoryPlayController, awtt paramawtt) {}
   
-  public LocationRoom.Venue[] a(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return new LocationRoom.Venue[paramInt];
+    if (this.jdField_a_of_type_Awtt != null) {
+      this.jdField_a_of_type_Awtt.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    }
   }
 }
 

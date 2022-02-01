@@ -1,12 +1,6 @@
-import java.util.Comparator;
-
-final class bcrx
-  implements Comparator<adbr>
+public abstract interface bcrx
 {
-  public int a(adbr paramadbr1, adbr paramadbr2)
-  {
-    return paramadbr2.a() - paramadbr1.a();
-  }
+  public abstract void a(bcra parambcra);
 }
 
 

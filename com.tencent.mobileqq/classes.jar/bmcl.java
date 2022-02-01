@@ -1,20 +1,6 @@
-import cooperation.comic.ui.QQComicFragment;
-
-public class bmcl
-  implements bipr
-{
-  public bmcl(QQComicFragment paramQQComicFragment) {}
-  
-  public Object a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new bmcm(this.a);
-  }
-}
+public abstract interface bmcl
+  extends bnxt
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

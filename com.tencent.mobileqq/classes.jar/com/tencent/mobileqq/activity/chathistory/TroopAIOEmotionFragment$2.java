@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import asuo;
+import argo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,7 +22,7 @@ class TroopAIOEmotionFragment$2
     ArrayList localArrayList = new ArrayList();
     Object localObject = TroopAIOEmotionFragment.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((ChatMessage)((asuo)((Iterator)localObject).next()).a);
+      localArrayList.add((ChatMessage)((argo)((Iterator)localObject).next()).a);
     }
     localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {}
@@ -33,7 +33,7 @@ class TroopAIOEmotionFragment$2
         if (localArrayList.size() != 1) {
           break label122;
         }
-        ((QQAppInterface)localObject).a().a((MessageRecord)localArrayList.get(0), false);
+        ((QQAppInterface)localObject).getMessageFacade().removeMsgByMessageRecord((MessageRecord)localArrayList.get(0), false);
       }
       for (;;)
       {
@@ -41,7 +41,7 @@ class TroopAIOEmotionFragment$2
         return;
         label122:
         if (localArrayList.size() > 1) {
-          ((QQAppInterface)localObject).a().a(localArrayList, false);
+          ((QQAppInterface)localObject).getMessageFacade().removeMultiMsgByMessageRecord(localArrayList, false);
         }
       }
     }

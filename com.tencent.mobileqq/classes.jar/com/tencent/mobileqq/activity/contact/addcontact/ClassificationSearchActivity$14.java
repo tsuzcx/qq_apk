@@ -15,7 +15,7 @@ class ClassificationSearchActivity$14
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     Message localMessage = this.this$0.a.obtainMessage(1);
     localMessage.obj = localList;

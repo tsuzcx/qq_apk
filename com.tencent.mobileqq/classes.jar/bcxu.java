@@ -1,22 +1,22 @@
-public class bcxu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bcxu
+  implements View.OnClickListener
 {
-  public volatile int a = 0;
-  public int b;
-  public int c = 0;
-  public int d;
+  bcxu(bcxt parambcxt) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    switch (this.a)
+    if ((paramView.getTag() instanceof bcxo))
     {
-    default: 
-      return "UNKNOWN_STATUS";
-    case 0: 
-      return "CONFIG_REQUEST_OK";
-    case 1: 
-      return "CONFIG_START_SERVLET";
+      bcxo localbcxo = (bcxo)paramView.getTag();
+      if ((this.a.a != null) && (localbcxo.a.isClickable())) {
+        this.a.a.onClick(paramView);
+      }
     }
-    return "CONFIG_SEND_REQ";
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

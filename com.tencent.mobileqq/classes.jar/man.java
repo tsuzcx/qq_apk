@@ -1,144 +1,72 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.view.RendererUtils;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class man
-  extends lsc
+  extends mao
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Canvas jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-  private Bitmap c;
-  private int k;
-  private int l;
-  private int m;
+  WeakReference<View.OnClickListener> a = null;
+  int f = 0;
+  int g = 0;
+  int h = -1;
+  int i = -1;
+  int j = -1;
   
-  private void e()
+  public man(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwitchFaceTexture", 2, "WL_DEBUG onUpdate start");
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.f = paramInt5;
+    this.g = paramInt6;
+    if (paramOnClickListener != null) {
+      this.a = new WeakReference(paramOnClickListener);
     }
-    int j;
-    int i1;
-    int i;
-    int n;
-    if ((this.l > 0) && (this.m > 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      if (this.l * this.j > this.m * this.i)
-      {
-        j = this.i * this.m / this.j;
-        i1 = (this.l - j) / 2;
-        i = this.m;
-        n = 0;
-        if ((this.c == null) || (this.c.isRecycled()) || (j != this.c.getWidth()) || (i != this.c.getHeight())) {
-          break label278;
-        }
-        Rect localRect = new Rect(i1, n, i1 + j, n + i);
-        RectF localRectF = new RectF(0.0F, 0.0F, j, i);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.c);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect, localRectF, null);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
-        label206:
-        f();
-        a(this.c.getWidth(), this.c.getHeight());
-      }
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public View.OnClickListener a()
+  {
+    if ((this.a == null) || (this.a.isEnqueued())) {
+      return null;
     }
-    for (;;)
+    return (View.OnClickListener)this.a.get();
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SwitchFaceTexture", 2, "WL_DEBUG onUpdate end");
-      }
+      this.a = new WeakReference(paramOnClickListener);
       return;
-      i = this.j * this.l / this.i;
-      n = (this.m - i) / 2;
-      j = this.l;
-      i1 = 0;
-      break;
-      label278:
-      if ((this.c != null) && (!this.c.isRecycled()) && (this.c != this.jdField_a_of_type_AndroidGraphicsBitmap))
-      {
-        this.c.recycle();
-        this.c = null;
-      }
-      this.c = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, i1, n, j, i);
-      this.b = 0;
-      break label206;
-      if ((this.c != null) && (!this.c.isRecycled()))
-      {
-        this.c.recycle();
-        this.c = null;
-      }
     }
+    this.a = null;
   }
   
-  protected Bitmap a()
+  public int f()
   {
-    return this.c;
+    return this.f;
   }
   
-  public void a(int paramInt)
+  public int g()
   {
-    if (this.i != paramInt)
-    {
-      super.a(paramInt);
-      e();
-    }
+    return this.g;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public int h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwitchFaceTexture", 2, "WL_DEBUG setTextureId start");
-    }
-    this.k = paramInt1;
-    this.l = paramInt2;
-    this.m = paramInt3;
-    if ((this.l > 0) && (this.m > 0)) {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) && (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() == this.l) && (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() == this.m))
-      {
-        RendererUtils.saveTextureToBitmap(this.k, this.l, this.m, this.jdField_a_of_type_AndroidGraphicsBitmap);
-        e();
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SwitchFaceTexture", 2, "WL_DEBUG setTextureId end");
-      }
-      return;
-      Bitmap localBitmap = RendererUtils.saveTexture(this.k, this.l, this.m);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != localBitmap)
-      {
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-        e();
-        continue;
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        }
-      }
-    }
+    return this.h;
   }
   
-  protected void a(Bitmap paramBitmap) {}
-  
-  public void b(int paramInt)
+  public int i()
   {
-    if (this.j != paramInt)
-    {
-      super.b(paramInt);
-      e();
-    }
+    return this.i;
   }
   
-  public boolean f()
+  public int j()
   {
-    return (this.k != 0) && (this.l != 0) && (this.m != 0) && (this.c != null) && (!this.c.isRecycled());
+    return this.j;
   }
 }
 

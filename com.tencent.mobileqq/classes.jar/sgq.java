@@ -1,41 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class sgq
-  implements seb
+class sgq
+  extends Handler
 {
-  public sgq(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  private WeakReference<sgn> a;
   
-  public void a(Bundle paramBundle)
+  public sgq(sgn paramsgn)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, str);
-    qzt.b(paramBundle);
+    this.a = new WeakReference(paramsgn);
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    paramString = this.a.a();
-    Intent localIntent;
-    if ((paramBundle != null) && (paramString != null))
+    switch (paramMessage.what)
     {
-      localIntent = new Intent();
-      localIntent.putExtras(paramBundle);
-      localIntent.setClass(paramString, KandianVideoUploadService.class);
     }
-    try
+    do
     {
-      paramString.startService(localIntent);
+      do
+      {
+        return;
+      } while (this.a.get() == null);
+      sgn.a((sgn)this.a.get());
+      sgn.a((sgn)this.a.get()).sendEmptyMessageDelayed(0, sgn.a((sgn)this.a.get()));
+      return;
+    } while (this.a.get() == null);
+    if (QLog.isColorLevel()) {
+      QLog.d(sgn.a((sgn)this.a.get()), 2, "prePlay timeout, try rePlay");
+    }
+    if ((((sgn)this.a.get()).f()) && (((sgn)this.a.get()).a.a() == sgn.a((sgn)this.a.get())))
+    {
+      sgn.b((sgn)this.a.get());
       return;
     }
-    catch (Throwable paramString)
-    {
-      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
-    }
+    sgn.a((sgn)this.a.get(), false);
+    ((sgn)this.a.get()).a(((sgn)this.a.get()).a);
+    sgn.a((sgn)this.a.get(), sgn.a((sgn)this.a.get()));
   }
 }
 

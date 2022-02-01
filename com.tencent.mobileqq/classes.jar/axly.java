@@ -1,22 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
-import java.util.Comparator;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
 public class axly
-  implements Comparator<View>
+  implements PopupWindow.OnDismissListener
 {
-  public int a(View paramView1, View paramView2)
+  public axly(OCRResultActivity paramOCRResultActivity) {}
+  
+  public void onDismiss()
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
+    this.a.a = null;
+    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
     {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
+      Drawable localDrawable = this.a.getResources().getDrawable(2130845519);
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
-    return paramView1.b - paramView2.b;
   }
 }
 

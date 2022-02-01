@@ -1,12 +1,22 @@
-public class mmr
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
+
+class mmr
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  mmr(mmp parammmp) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    mmp.a(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

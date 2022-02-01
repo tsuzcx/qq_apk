@@ -13,14 +13,14 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import awwh;
-import bhtq;
-import bnqp;
+import avjo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable;
 import org.json.JSONObject;
 
 public class LoveZoneTabRedDotView
@@ -31,8 +31,8 @@ public class LoveZoneTabRedDotView
   private final int jdField_a_of_type_Int = 11;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new awwh(this);
-  private bnqp jdField_a_of_type_Bnqp;
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new avjo(this);
+  private ZipAnimationDrawable jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
   public boolean a;
   private String b = "";
   
@@ -89,11 +89,11 @@ public class LoveZoneTabRedDotView
     {
       this.jdField_a_of_type_Boolean = false;
       setVisibility(8);
-      if (this.jdField_a_of_type_Bnqp != null)
+      if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
       {
-        this.jdField_a_of_type_Bnqp.stop();
-        this.jdField_a_of_type_Bnqp.b();
-        this.jdField_a_of_type_Bnqp = null;
+        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.stop();
+        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.release();
+        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = null;
       }
     }
   }
@@ -102,14 +102,14 @@ public class LoveZoneTabRedDotView
   {
     if ((this.jdField_a_of_type_Boolean) && (getVisibility() == 0))
     {
-      if (this.jdField_a_of_type_Bnqp == null) {
+      if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable == null) {
         requestLayout();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Bnqp.d();
+    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.restartAnimation();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -119,24 +119,24 @@ public class LoveZoneTabRedDotView
       return;
     }
     paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130846060);
+    Drawable localDrawable = getResources().getDrawable(2130845951);
     localDrawable.getBounds();
     localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
     localDrawable.draw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + bhtq.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Bnqp == null)
+    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.dpToPx(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable == null)
     {
-      this.jdField_a_of_type_Bnqp = new bnqp();
-      this.jdField_a_of_type_Bnqp.a(jdField_a_of_type_JavaLangString, 18);
-      this.jdField_a_of_type_Bnqp.a(false);
-      this.jdField_a_of_type_Bnqp.b(true);
-      this.jdField_a_of_type_Bnqp.c();
-      this.jdField_a_of_type_Bnqp.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-      this.jdField_a_of_type_Bnqp.start();
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = new ZipAnimationDrawable();
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setAnimationRes(jdField_a_of_type_JavaLangString, 18);
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setRepeatAnimation(false);
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setShowLastFrameWhenStop(true);
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.loadAndShowFirstFrame();
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.start();
     }
-    this.jdField_a_of_type_Bnqp.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - bhtq.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + bhtq.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + bhtq.b(25.0F) - bhtq.b(2.0F) * 3);
-    this.jdField_a_of_type_Bnqp.draw(paramCanvas);
+    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - ViewUtils.dpToPx(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.dpToPx(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + ViewUtils.dpToPx(25.0F) - ViewUtils.dpToPx(2.0F) * 3);
+    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.draw(paramCanvas);
     paramCanvas.restore();
   }
   
@@ -149,15 +149,15 @@ public class LoveZoneTabRedDotView
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bhtq.b(11.0F));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(ViewUtils.dpToPx(11.0F));
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     }
     int j = View.MeasureSpec.getSize(paramInt2);
-    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + bhtq.b(6.0F) + bhtq.b(25.0F);
+    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + ViewUtils.dpToPx(6.0F) + ViewUtils.dpToPx(25.0F);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     int i = (int)(localFontMetrics.bottom - localFontMetrics.top);
-    j = j / 2 - i / 2 - bhtq.b(2.0F);
-    int k = bhtq.b(2.0F);
+    j = j / 2 - i / 2 - ViewUtils.dpToPx(2.0F);
+    int k = ViewUtils.dpToPx(2.0F);
     if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
@@ -165,7 +165,7 @@ public class LoveZoneTabRedDotView
     this.jdField_a_of_type_AndroidGraphicsRect.top = j;
     this.jdField_a_of_type_AndroidGraphicsRect.right = (paramInt1 + 0);
     this.jdField_a_of_type_AndroidGraphicsRect.bottom = (i + k * 2 + j);
-    this.jdField_a_of_type_Float = (j + bhtq.b(2.0F) - localFontMetrics.top);
+    this.jdField_a_of_type_Float = (j + ViewUtils.dpToPx(2.0F) - localFontMetrics.top);
     setMeasuredDimension(paramInt1, paramInt2);
   }
   

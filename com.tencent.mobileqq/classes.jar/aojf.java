@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class aojf
-  implements DialogInterface.OnClickListener
+final class aojf
+  implements INetEngine.IBreakDownFix
 {
-  public aojf(TroopManager paramTroopManager, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
+      return;
+    }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+    paramNetResp.mWrittenBlockLen = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
+    localHttpNetReq.mReqProperties.put("Range", paramNetResp);
+    paramNetResp = localHttpNetReq.mReqUrl;
+    if (paramNetResp.contains("range="))
+    {
+      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+      localHttpNetReq.mReqUrl = (paramNetResp + "range=" + localHttpNetReq.mStartDownOffset);
+    }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", offset=" + localHttpNetReq.mStartDownOffset);
   }
 }
 

@@ -1,8 +1,21 @@
-public abstract interface auey
+import com.etrump.mixlayout.EMEmoticon;
+import com.tencent.commonsdk.cache.QQLruCache;
+
+public final class auey
+  extends QQLruCache<String, EMEmoticon>
 {
-  public abstract void a();
+  public auey(int paramInt1, int paramInt2)
+  {
+    super(paramInt1, paramInt2);
+  }
   
-  public abstract void b();
+  protected void a(boolean paramBoolean, String paramString, EMEmoticon paramEMEmoticon1, EMEmoticon paramEMEmoticon2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramEMEmoticon1, paramEMEmoticon2);
+    if (paramEMEmoticon1 != null) {
+      paramEMEmoticon1.deleteDescriptor();
+    }
+  }
 }
 
 

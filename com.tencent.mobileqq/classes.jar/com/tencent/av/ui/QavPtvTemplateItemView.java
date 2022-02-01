@@ -12,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhez;
+import bfol;
 import com.tencent.av.funchat.AVListImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.widget.CircleProgress;
-import mig;
-import mii;
+import mhp;
+import mhr;
 
 public class QavPtvTemplateItemView
   extends QavListItemBase
@@ -68,19 +68,19 @@ public class QavPtvTemplateItemView
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559775, this);
-    int k = getResources().getColor(2131166990);
+    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559777, this);
+    int k = getResources().getColor(2131167012);
     int j;
     if (!this.jdField_a_of_type_Boolean) {
-      j = getResources().getColor(2131165367);
+      j = getResources().getColor(2131165375);
     }
-    for (int i = 2130846014;; i = 2130846015)
+    for (int i = 2130845914;; i = 2130845915)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373537));
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131373372));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373368));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131373375));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373374));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373453));
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131373288));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373284));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131373291));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373290));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
       b(paramInt1, paramInt2);
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(1.6F);
@@ -94,21 +94,21 @@ public class QavPtvTemplateItemView
         this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setDimmedColor(-47980);
       }
       return;
-      j = getResources().getColor(2131166044);
+      j = getResources().getColor(2131166062);
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mii parammii, mig parammig)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mhr parammhr, mhp parammhp)
   {
-    if (parammii == null) {}
+    if (parammhr == null) {}
     do
     {
       return;
-      super.a(paramInt, parammig);
+      super.a(paramInt, parammhp);
       setId(paramInt);
-      setTag(parammii);
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setTag(parammii);
-      if (!TextUtils.isEmpty(parammii.jdField_a_of_type_JavaLangString)) {
+      setTag(parammhr);
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setTag(parammhr);
+      if (!TextUtils.isEmpty(parammhr.jdField_a_of_type_JavaLangString)) {
         break;
       }
     } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 4);
@@ -117,61 +117,61 @@ public class QavPtvTemplateItemView
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     }
-    if ("0".equals(parammii.jdField_a_of_type_JavaLangString)) {
-      if (TextUtils.isEmpty(parammii.b)) {
+    if ("0".equals(parammhr.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(parammhr.b)) {
         break label405;
       }
     }
     label385:
     label395:
     label405:
-    for (paramInt = Integer.valueOf(parammii.b).intValue();; paramInt = 0)
+    for (paramInt = Integer.valueOf(parammhr.b).intValue();; paramInt = 0)
     {
       if (paramInt > 0)
       {
         this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(paramInt);
-        if ((!parammii.jdField_a_of_type_Boolean) && (!parammii.jdField_a_of_type_JavaLangString.equals("0"))) {
+        if ((!parammhr.jdField_a_of_type_Boolean) && (!parammhr.jdField_a_of_type_JavaLangString.equals("0"))) {
           break label374;
         }
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         label160:
         this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(8);
-        setDimmed(parammii.jdField_c_of_type_Boolean);
+        setDimmed(parammhr.jdField_c_of_type_Boolean);
         setHighlight(paramBoolean1);
-        if (!parammii.d) {
+        if (!parammhr.d) {
           break label395;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        parammig = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (!TextUtils.isEmpty(parammii.jdField_c_of_type_JavaLangString)) {
+        parammhp = this.jdField_a_of_type_AndroidWidgetTextView;
+        if (!TextUtils.isEmpty(parammhr.jdField_c_of_type_JavaLangString)) {
           break label385;
         }
       }
-      for (parammii = " ";; parammii = parammii.jdField_c_of_type_JavaLangString)
+      for (parammhr = " ";; parammhr = parammhr.jdField_c_of_type_JavaLangString)
       {
-        parammig.setText(parammii);
+        parammhp.setText(parammhr);
         return;
-        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(2130850680);
+        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(2130850605);
         break;
-        if (TextUtils.isEmpty(parammii.b)) {
+        if (TextUtils.isEmpty(parammhr.b)) {
           break;
         }
-        parammig = URLDrawable.URLDrawableOptions.obtain();
-        paramInt = getResources().getDimensionPixelSize(2131297656);
+        parammhp = URLDrawable.URLDrawableOptions.obtain();
+        paramInt = getResources().getDimensionPixelSize(2131297711);
         GradientDrawable localGradientDrawable = new GradientDrawable();
-        localGradientDrawable.setColor(getResources().getColor(2131165854));
+        localGradientDrawable.setColor(getResources().getColor(2131165872));
         localGradientDrawable.setShape(1);
         localGradientDrawable.setSize(paramInt, paramInt);
-        parammig.mRequestWidth = paramInt;
-        parammig.mRequestHeight = paramInt;
-        parammig.mFailedDrawable = localGradientDrawable;
-        parammig.mLoadingDrawable = localGradientDrawable;
-        parammig = URLDrawable.getDrawable(parammii.b, parammig);
-        parammig.setTag(bhez.a(paramInt, paramInt));
+        parammhp.mRequestWidth = paramInt;
+        parammhp.mRequestHeight = paramInt;
+        parammhp.mFailedDrawable = localGradientDrawable;
+        parammhp.mLoadingDrawable = localGradientDrawable;
+        parammhp = URLDrawable.getDrawable(parammhr.b, parammhp);
+        parammhp.setTag(bfol.a(paramInt, paramInt));
         if (paramBoolean2) {
-          parammig.setDecodeHandler(bhez.a);
+          parammhp.setDecodeHandler(bfol.a);
         }
-        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammig);
+        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammhp);
         break;
         label374:
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -182,7 +182,7 @@ public class QavPtvTemplateItemView
     }
   }
   
-  public void a(mii parammii, int paramInt)
+  public void a(mhr parammhr, int paramInt)
   {
     if (paramInt % 2 == 0)
     {
@@ -194,7 +194,7 @@ public class QavPtvTemplateItemView
     }
     for (;;)
     {
-      if ((parammii == null) || (!"0".equals(parammii.jdField_a_of_type_JavaLangString))) {
+      if ((parammhr == null) || (!"0".equals(parammhr.jdField_a_of_type_JavaLangString))) {
         break label125;
       }
       setBackgroundColor(-16711681);
@@ -202,7 +202,7 @@ public class QavPtvTemplateItemView
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.argb(155, 224, 176, 216));
       break;
       label106:
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setBackgroundColor(getResources().getColor(2131166044));
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setBackgroundColor(getResources().getColor(2131166062));
     }
     label125:
     if (paramInt % 2 == 0)
@@ -215,7 +215,7 @@ public class QavPtvTemplateItemView
   
   public void b(int paramInt1, int paramInt2)
   {
-    View localView = findViewById(2131373538);
+    View localView = findViewById(2131373454);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;

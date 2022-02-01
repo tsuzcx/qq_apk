@@ -1,26 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonInfoWidget;
-import com.tencent.biz.qqcircle.requests.QCircleJoinGroupReportRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class vph
-  implements wcr
+  implements vox
 {
-  public vph(QCirclePersonInfoWidget paramQCirclePersonInfoWidget) {}
+  public vph(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
+  public void a(vow paramvow)
   {
-    Bundle localBundle = TroopInfoActivity.a(String.valueOf(paramLong), 0);
-    localBundle.putBoolean("troop_info_from_troopsetting", true);
-    localBundle.putInt("exposureSource", 3);
-    bguq.a(this.a.getContext(), localBundle, 2);
-    VSNetworkHelper.a().a(this.a.getContext(), new QCircleJoinGroupReportRequest(paramLong), new vpi(this));
-    vtq.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 31, 2, "", QCirclePersonInfoWidget.a(this.a));
+    ((vpd)this.a.a).j = ((vor)paramvow).b;
+    xvv.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((vpd)this.a.a).j);
+    this.a.a(1, new ErrorMessage());
   }
 }
 

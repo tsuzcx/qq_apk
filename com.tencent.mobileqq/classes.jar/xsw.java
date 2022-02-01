@@ -1,6 +1,15 @@
-public abstract interface xsw
+import java.util.List;
+
+class xsw
+  implements bjog
 {
-  public abstract boolean a();
+  xsw(xss paramxss, int paramInt) {}
+  
+  public void onDismiss()
+  {
+    xpe localxpe = (xpe)this.jdField_a_of_type_Xss.a.a().get(this.jdField_a_of_type_Int);
+    xss.a(this.jdField_a_of_type_Xss, localxpe, "clk_hide");
+  }
 }
 
 

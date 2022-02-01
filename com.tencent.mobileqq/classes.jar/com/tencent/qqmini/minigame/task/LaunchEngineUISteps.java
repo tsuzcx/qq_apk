@@ -10,7 +10,6 @@ import com.tencent.qqmini.sdk.task.TaskExecutionStatics;
 import com.tencent.qqmini.sdk.task.TaskSteps;
 import java.util.List;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.StringsKt;
@@ -54,7 +53,10 @@ public final class LaunchEngineUISteps
   
   public final void onFirstFrame()
   {
-    this.steps.getCurrentStep().onTaskSucceed();
+    BaseTask localBaseTask = this.steps.getCurrentStepOrNull();
+    if (localBaseTask != null) {
+      localBaseTask.onTaskSucceed();
+    }
     QMLog.i("LaunchEngineUISteps", "onFirstFrame");
   }
   
@@ -63,16 +65,14 @@ public final class LaunchEngineUISteps
     Intrinsics.checkParameterIsNotNull(paramGameLaunchStatistic, "statics");
     long l1 = SystemClock.uptimeMillis() - this.launchGameBeginTime;
     long l2 = l1 - paramGameLaunchStatistic.getLaunchTimesMs();
-    BaseTask localBaseTask = this.steps.getCurrentStep();
-    if (localBaseTask == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.qqmini.minigame.task.LaunchEngineUISteps.InitEngine");
+    Object localObject = (LaunchEngineUISteps.InitEngine)this.steps.getCurrentStepOrNull();
+    if (localObject != null) {
+      ((LaunchEngineUISteps.InitEngine)localObject).onTaskSucceed(paramGameLaunchStatistic.getEngineInitStatistic(), l2);
     }
-    ((LaunchEngineUISteps.InitEngine)localBaseTask).onTaskSucceed(paramGameLaunchStatistic.getEngineInitStatistic(), l2);
-    localBaseTask = this.steps.getCurrentStep();
-    if (localBaseTask == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.qqmini.minigame.task.LaunchEngineUISteps.LaunchGame");
+    localObject = (LaunchEngineUISteps.LaunchGame)this.steps.getCurrentStepOrNull();
+    if (localObject != null) {
+      ((LaunchEngineUISteps.LaunchGame)localObject).onTaskSucceed(paramGameLaunchStatistic.getLaunchTimesMs(), paramGameLaunchStatistic.getGameScriptLoadStatics());
     }
-    ((LaunchEngineUISteps.LaunchGame)localBaseTask).onTaskSucceed(paramGameLaunchStatistic.getLaunchTimesMs(), paramGameLaunchStatistic.getGameScriptLoadStatics());
     QMLog.i("LaunchEngineUISteps", StringsKt.trimIndent("onGameLaunched launchGameEnd \n                        totalTimeSpendInLaunch: " + l1 + " \n                        effectivelyInitEngineTime: " + l2 + " \n                        engineInitTime: " + paramGameLaunchStatistic.getEngineInitStatistic().getTotalInitTimesMs() + " \n                        launchTime: " + paramGameLaunchStatistic.getLaunchTimesMs() + "\n                    "));
   }
   

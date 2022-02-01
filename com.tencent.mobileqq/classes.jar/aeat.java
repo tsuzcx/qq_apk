@@ -1,44 +1,91 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import MQQ.PrivExtV2Rsp;
+import MQQ.VipMedalList;
+import MQQ.VipUserInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.31.1;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 
 public class aeat
-  extends ayxo
+  extends aneh
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  public aeat(QQSettingMe paramQQSettingMe) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.a != null))
+    {
+      Object localObject = this.a.a.getPreferences();
+      if (localObject != null) {
+        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
+      }
+      localObject = this.a.a.getCurrentAccountUin();
       if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
+        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
+      }
+      this.a.c((String)localObject);
+    }
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    Object localObject;
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (PrivExtV2Rsp)paramObject;
+        localObject = paramObject.vipInfo;
+        if ((localObject != null) && (((VipUserInfo)localObject).bUpdate == 1))
+        {
+          localObject = ((VipUserInfo)localObject).sUri;
+          if (localObject != null)
+          {
+            QQSettingMe.b(this.a, (String)localObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("QQSettingRedesign", 2, "vip url = " + (String)localObject);
+            }
+            localObject = this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", (String)localObject);
+            if (Build.VERSION.SDK_INT >= 9) {
+              break label216;
+            }
+            ((SharedPreferences.Editor)localObject).commit();
+          }
+        }
+        localObject = this.a.a.getCurrentAccountUin();
+        this.a.c((String)localObject);
+        if (paramObject.medalInfoList != null) {
+          bgff.a(paramObject.medalInfoList.lhNumFlag, paramObject.medalInfoList.lhLogoLv);
+        }
+        this.a.b.post(new QQSettingMe.31.1(this));
+      }
+      else
+      {
+        QQSettingMe.f(this.a);
       }
     }
-    QQAppInterface localQQAppInterface;
+    label216:
     do
     {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
+      ((SharedPreferences.Editor)localObject).apply();
+      break;
+      if ((paramBoolean) && (paramInt == 6))
+      {
+        QQSettingMe.f(this.a);
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      aean.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
-    }
-    paramBundle = (aeat)aean.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    aean.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localQQAppInterface.unRegistObserver(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+      if (paramInt == 4)
+      {
+        this.a.b.sendEmptyMessage(2);
+        return;
+      }
+    } while (paramInt != 5);
+    this.a.b.sendMessage(this.a.b.obtainMessage(3, paramObject));
   }
 }
 

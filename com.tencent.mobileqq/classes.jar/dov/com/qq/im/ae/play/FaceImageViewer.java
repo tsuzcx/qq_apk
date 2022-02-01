@@ -1,5 +1,6 @@
 package dov.com.qq.im.ae.play;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -14,11 +15,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import boza;
-import bozr;
-import bpao;
+import bmbc;
+import bmbz;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
@@ -28,43 +29,47 @@ public class FaceImageViewer
   extends ImageView
   implements View.OnClickListener, View.OnTouchListener
 {
-  private static final String jdField_a_of_type_JavaLangString = FaceImageViewer.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private boza jdField_a_of_type_Boza;
-  private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
-  private float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long;
-  private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private final int jdField_c_of_type_Int = 2;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int = 0;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private final int jdField_e_of_type_Int = 100;
-  private boolean jdField_e_of_type_Boolean = true;
-  private float jdField_f_of_type_Float;
-  private final int jdField_f_of_type_Int = 300;
-  private boolean jdField_f_of_type_Boolean = true;
-  private float jdField_g_of_type_Float;
-  private final int jdField_g_of_type_Int = 5;
-  private boolean jdField_g_of_type_Boolean;
-  private float jdField_h_of_type_Float;
-  private int jdField_h_of_type_Int;
-  private float jdField_i_of_type_Float = 0.0F;
-  private int jdField_i_of_type_Int;
-  private float j;
+  private static final float ADD_ICON_WIDTH = 68.0F;
+  private static final float CENTER_VIEW_WIDTH = 720.0F;
+  private static final String TAG = FaceImageViewer.class.getSimpleName();
+  private final int COMBINED_ACTION_PROTECT_DURATION = 300;
+  private final int DRAG = 1;
+  private final int MAX_SINGLE_CLICK_DURATION = 100;
+  private final int MIN_MOVE_EVENT_COUNT_IN_COMBINED_ACTION = 5;
+  private final int NONE = 0;
+  private final int ZOOM = 2;
+  private long actionDownTime;
+  private long combinedActionProtectExpireAt;
+  private float currentX;
+  private float currentY;
+  private Matrix initMatrix = new Matrix();
+  private boolean isAnimationPlaying;
+  private boolean isCombinedAction;
+  private boolean isFirstDraw = true;
+  private boolean isImageSelected;
+  private FaceImageViewer.OnSaveScrollInfoListener listener;
+  private Activity mActivity;
+  private LayerDrawable mAnimationDrawable;
+  private Drawable mAnimationSolidDrawable;
+  private float mBaseDistance;
+  private int mCenterViewWidth;
+  private Matrix mCurrentMatrix = new Matrix();
+  private boolean mIsSelecting;
+  private float mLastRotation = 0.0F;
+  private boolean mMovable;
+  private NodeItem mNodeItem = new NodeItem();
+  private boolean mSigleDown = true;
+  private ValueAnimator mValueAnimator;
+  private int mode = 0;
+  private int moveEventCount;
+  private int prePointerCount;
+  private float preX;
+  private float preY;
+  private float touchDownX;
+  private float touchDownY;
+  private float touchUpX;
+  private float touchUpY;
+  private float[] values = new float[9];
   
   public FaceImageViewer(Context paramContext)
   {
@@ -75,31 +80,46 @@ public class FaceImageViewer
   {
     super(paramContext, paramAttributeSet);
     super.setScaleType(ImageView.ScaleType.MATRIX);
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+    this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
-    c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837659));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368398);
+    clearSeclected();
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837661));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368422);
   }
   
-  private float a(MotionEvent paramMotionEvent)
+  private float calcRotation(MotionEvent paramMotionEvent)
   {
-    double d1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
-    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(0) - paramMotionEvent.getY(1), d1));
+    double d = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
+    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(0) - paramMotionEvent.getY(1), d));
   }
   
-  private void a(Canvas paramCanvas)
+  private void drawAnimationIfNeed(Canvas paramCanvas)
   {
-    if (!this.jdField_g_of_type_Boolean) {
+    if (!this.isAnimationPlaying) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, getWidth(), getHeight());
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.draw(paramCanvas);
+    this.mAnimationDrawable.setBounds(0, 0, getWidth(), getHeight());
+    this.mAnimationDrawable.draw(paramCanvas);
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  private float getScale()
   {
-    switch (this.jdField_d_of_type_Int)
+    this.mCurrentMatrix.getValues(this.values);
+    return Math.min(this.values[0], this.values[4]);
+  }
+  
+  private void onTouchScaleAndRotate(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.mCurrentMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
+    ImagePositonManager.setShowPosition(getDrawable(), this.mCurrentMatrix, getWidth(), getHeight());
+    this.mCurrentMatrix.postRotate(paramFloat4, getWidth() / 2, getHeight() / 2);
+    setImageMatrix(this.mCurrentMatrix);
+    updateCurrentMatrix();
+  }
+  
+  private void operateMoveEvent(MotionEvent paramMotionEvent)
+  {
+    switch (this.mode)
     {
     }
     float f1;
@@ -107,205 +127,134 @@ public class FaceImageViewer
     do
     {
       return;
-      f1 = this.jdField_c_of_type_Float;
-      f2 = this.jdField_a_of_type_Float;
-      f3 = this.jdField_d_of_type_Float;
-      f4 = this.jdField_b_of_type_Float;
-      ImagePositonManager.setMovePosition(getDrawable(), this.jdField_b_of_type_AndroidGraphicsMatrix, f1 - f2, f3 - f4, getWidth(), getHeight());
-      setImageMatrix(this.jdField_b_of_type_AndroidGraphicsMatrix);
-      e();
-      this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-      this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
+      f1 = this.currentX;
+      f2 = this.preX;
+      f3 = this.currentY;
+      f4 = this.preY;
+      ImagePositonManager.setMovePosition(getDrawable(), this.mCurrentMatrix, f1 - f2, f3 - f4, getWidth(), getHeight());
+      setImageMatrix(this.mCurrentMatrix);
+      updateCurrentMatrix();
+      this.preX = this.currentX;
+      this.preY = this.currentY;
       return;
       f1 = (paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F;
       f2 = (paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F;
       f3 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
       f4 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
       f4 = (float)Math.sqrt(f3 * f3 + f4 * f4);
-      if (this.j == 0.0F)
+      if (this.mBaseDistance == 0.0F)
       {
-        this.j = f4;
+        this.mBaseDistance = f4;
         return;
       }
-    } while (Math.abs(f4 - this.j) < 1.0F);
-    float f3 = f4 / this.j;
-    this.j = f4;
-    float f4 = a(paramMotionEvent);
-    float f5 = this.jdField_i_of_type_Float;
-    this.jdField_i_of_type_Float = a(paramMotionEvent);
-    b(f3, f1, f2, f4 - f5);
+    } while (Math.abs(f4 - this.mBaseDistance) < 1.0F);
+    float f3 = f4 / this.mBaseDistance;
+    this.mBaseDistance = f4;
+    float f4 = calcRotation(paramMotionEvent);
+    float f5 = this.mLastRotation;
+    this.mLastRotation = calcRotation(paramMotionEvent);
+    onTouchScaleAndRotate(f3, f1, f2, f4 - f5);
   }
   
-  private void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void updateCurrentMatrix()
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
-    ImagePositonManager.setShowPosition(getDrawable(), this.jdField_b_of_type_AndroidGraphicsMatrix, getWidth(), getHeight());
-    this.jdField_b_of_type_AndroidGraphicsMatrix.postRotate(paramFloat4, getWidth() / 2, getHeight() / 2);
-    setImageMatrix(this.jdField_b_of_type_AndroidGraphicsMatrix);
-    e();
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.matrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID;
-  }
-  
-  public NodeItem a()
-  {
-    return this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem;
-  }
-  
-  public void a()
-  {
-    Bitmap localBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-    draw(new Canvas(localBitmap));
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
-    {
-      this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      localBitmap.recycle();
-    }
-    if (this.jdField_a_of_type_Boza != null) {
-      this.jdField_a_of_type_Boza.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if ((this.mNodeItem != null) && (this.mNodeItem.matrix != null)) {
+      this.mNodeItem.matrix.set(this.mCurrentMatrix);
     }
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void activeSelected()
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_b_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat3, paramFloat4);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, getWidth() / 2, getHeight() / 2);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.postRotate(paramFloat2, getWidth() / 2, getHeight() / 2);
-    setImageMatrix(this.jdField_b_of_type_AndroidGraphicsMatrix);
-    e();
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = false;
+    this.mIsSelecting = true;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void clearBitmaps()
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_b_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = false;
-    int n = 720;
-    int i1 = 1280;
-    Drawable localDrawable = getDrawable();
-    int m;
-    int k;
-    if (localDrawable != null)
-    {
-      m = localDrawable.getIntrinsicWidth();
-      k = localDrawable.getIntrinsicHeight();
+    if ((this.mNodeItem.bitmap != null) && (!this.mNodeItem.bitmap.isRecycled())) {
+      this.mNodeItem.bitmap.recycle();
     }
-    for (;;)
-    {
-      float f1 = Math.max(paramInt1 * 1.0F / m, paramInt2 * 1.0F / k);
-      this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(paramInt1 / 2 - m / 2, paramInt2 / 2 - k / 2);
-      this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(f1, f1, paramInt1 / 2, paramInt2 / 2);
-      setImageMatrix(this.jdField_b_of_type_AndroidGraphicsMatrix);
-      e();
-      return;
-      k = i1;
-      m = n;
-      if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem != null)
-      {
-        k = i1;
-        m = n;
-        if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap != null)
-        {
-          m = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.getWidth();
-          k = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.getHeight();
-        }
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeGroupID;
-  }
-  
-  public void b()
-  {
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void c()
-  {
-    this.jdField_c_of_type_Boolean = false;
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap != null) && (!this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.isRecycled())) {
-      this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.recycle();
-    }
-    if ((this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap != null) && (!this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap.isRecycled())) {
-      this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap.recycle();
+    if ((this.mNodeItem.cropBitmap != null) && (!this.mNodeItem.cropBitmap.isRecycled())) {
+      this.mNodeItem.cropBitmap.recycle();
     }
     setImageBitmap(null);
   }
   
+  public void clearSeclected()
+  {
+    this.mIsSelecting = false;
+  }
+  
+  public NodeItem getNode()
+  {
+    return this.mNodeItem;
+  }
+  
+  public int getNodeGroupID()
+  {
+    return this.mNodeItem.nodeGroupID;
+  }
+  
+  public int getNodeID()
+  {
+    return this.mNodeItem.nodeID;
+  }
+  
+  public boolean isImageSelected()
+  {
+    return this.isImageSelected;
+  }
+  
   public void onClick(View paramView)
   {
-    if (this.jdField_c_of_type_Boolean) {}
+    if (this.mIsSelecting) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      b();
-      bozr.a().h();
-      bpao.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
+      activeSelected();
+      bmbc.a().h();
+      bmbz.b(this.mActivity, this.mNodeItem.nodeID);
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once) {
-      a(getWidth(), getHeight());
+    if (this.mNodeItem.once) {
+      updateMatrix(getWidth(), getHeight());
     }
     for (;;)
     {
       try
       {
         super.onDraw(paramCanvas);
-        a(paramCanvas);
+        drawAnimationIfNeed(paramCanvas);
         return;
       }
       catch (Throwable paramCanvas) {}
-      this.jdField_b_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.matrix);
-      setImageMatrix(this.jdField_b_of_type_AndroidGraphicsMatrix);
+      this.mCurrentMatrix.set(this.mNodeItem.matrix);
+      setImageMatrix(this.mCurrentMatrix);
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    int m = paramMotionEvent.getPointerCount();
-    int k = 0;
-    while (k < m)
+    this.currentX = 0.0F;
+    this.currentY = 0.0F;
+    int j = paramMotionEvent.getPointerCount();
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_c_of_type_Float += paramMotionEvent.getX();
-      this.jdField_d_of_type_Float += paramMotionEvent.getY();
-      k += 1;
+      this.currentX += paramMotionEvent.getX();
+      this.currentY += paramMotionEvent.getY();
+      i += 1;
     }
-    this.jdField_c_of_type_Float /= m;
-    this.jdField_d_of_type_Float /= m;
-    if (m != this.jdField_i_of_type_Int)
+    this.currentX /= j;
+    this.currentY /= j;
+    if (j != this.prePointerCount)
     {
-      this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-      this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-      this.jdField_i_of_type_Int = m;
+      this.preX = this.currentX;
+      this.preY = this.currentY;
+      this.prePointerCount = j;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
     {
@@ -313,52 +262,52 @@ public class FaceImageViewer
     for (;;)
     {
       return true;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_e_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_f_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_h_of_type_Int = 0;
-      this.j = 0.0F;
-      this.jdField_d_of_type_Int = 1;
+      this.actionDownTime = System.currentTimeMillis();
+      this.touchDownX = paramMotionEvent.getRawX();
+      this.touchDownY = paramMotionEvent.getRawY();
+      this.mSigleDown = true;
+      this.isCombinedAction = false;
+      this.moveEventCount = 0;
+      this.mBaseDistance = 0.0F;
+      this.mode = 1;
       return true;
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_i_of_type_Float = a(paramMotionEvent);
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_d_of_type_Int = 2;
+      this.mSigleDown = false;
+      this.mLastRotation = calcRotation(paramMotionEvent);
+      this.isCombinedAction = true;
+      this.mode = 2;
       return true;
-      this.jdField_d_of_type_Int = 0;
+      this.mode = 0;
       return true;
-      a(paramMotionEvent);
-      this.jdField_h_of_type_Int += 1;
+      operateMoveEvent(paramMotionEvent);
+      this.moveEventCount += 1;
       return true;
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (this.jdField_h_of_type_Int > 5) {
-        this.jdField_a_of_type_Boolean = true;
+      long l2 = this.actionDownTime;
+      if (this.moveEventCount > 5) {
+        this.isCombinedAction = true;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_b_of_type_Long = (l1 + 300L);
+      if (this.isCombinedAction) {
+        this.combinedActionProtectExpireAt = (l1 + 300L);
       }
       for (;;)
       {
-        this.jdField_g_of_type_Float = paramMotionEvent.getRawX();
-        this.jdField_h_of_type_Float = paramMotionEvent.getRawY();
-        this.jdField_i_of_type_Int = 0;
-        if ((Math.abs(this.jdField_g_of_type_Float - this.jdField_e_of_type_Float) <= 10.0F) && (Math.abs(this.jdField_f_of_type_Float - this.jdField_h_of_type_Float) <= 10.0F)) {
+        this.touchUpX = paramMotionEvent.getRawX();
+        this.touchUpY = paramMotionEvent.getRawY();
+        this.prePointerCount = 0;
+        if ((Math.abs(this.touchUpX - this.touchDownX) <= 10.0F) && (Math.abs(this.touchDownY - this.touchUpY) <= 10.0F)) {
           break label406;
         }
-        if (this.jdField_a_of_type_Boza == null) {
+        if (this.listener == null) {
           break;
         }
-        this.jdField_a_of_type_Boza.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.listener.onSaveScrollInfo(this.mNodeItem);
         return true;
-        if (l1 <= this.jdField_b_of_type_Long) {
-          this.jdField_e_of_type_Boolean = false;
+        if (l1 <= this.combinedActionProtectExpireAt) {
+          this.mSigleDown = false;
         }
       }
       label406:
-      if ((this.jdField_e_of_type_Boolean) && (l1 - l2 < 100L)) {
+      if ((this.mSigleDown) && (l1 - l2 < 100L)) {
         try
         {
           paramMotionEvent = View.class.getDeclaredField("mListenerInfo");
@@ -384,13 +333,13 @@ public class FaceImageViewer
   
   public void setImageSelected(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.isImageSelected = paramBoolean;
   }
   
   public void setMovable(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    if (this.jdField_d_of_type_Boolean)
+    this.mMovable = paramBoolean;
+    if (this.mMovable)
     {
       setOnTouchListener(this);
       return;
@@ -400,27 +349,111 @@ public class FaceImageViewer
   
   public void setNodeBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = true;
-    if (this.jdField_a_of_type_Boza != null) {
-      this.jdField_a_of_type_Boza.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    this.mNodeItem.bitmap = paramBitmap;
+    this.mNodeItem.once = true;
+    if (this.listener != null) {
+      this.listener.onSaveScrollInfo(this.mNodeItem);
     }
   }
   
   public void setNodeInfo(NodeItem paramNodeItem)
   {
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID = paramNodeItem.nodeID;
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeGroupID = paramNodeItem.nodeGroupID;
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = paramNodeItem.once;
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.matrix.set(paramNodeItem.matrix);
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap = paramNodeItem.bitmap;
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect = paramNodeItem.maskRect;
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.zIndex = paramNodeItem.zIndex;
+    this.mNodeItem.nodeID = paramNodeItem.nodeID;
+    this.mNodeItem.nodeGroupID = paramNodeItem.nodeGroupID;
+    this.mNodeItem.once = paramNodeItem.once;
+    this.mNodeItem.matrix.set(paramNodeItem.matrix);
+    this.mNodeItem.bitmap = paramNodeItem.bitmap;
+    this.mNodeItem.maskRect = paramNodeItem.maskRect;
+    this.mNodeItem.zIndex = paramNodeItem.zIndex;
   }
   
-  public void setOnSaveScrollInfoListener(boza paramboza)
+  public void setOnSaveScrollInfoListener(FaceImageViewer.OnSaveScrollInfoListener paramOnSaveScrollInfoListener)
   {
-    this.jdField_a_of_type_Boza = paramboza;
+    this.listener = paramOnSaveScrollInfoListener;
+  }
+  
+  public void startAnimaterIfNeed()
+  {
+    if (this.mValueAnimator == null)
+    {
+      this.mValueAnimator = ValueAnimator.ofInt(new int[] { 150, 0 });
+      this.mValueAnimator.setDuration(700L);
+      this.mValueAnimator.setRepeatCount(4);
+      this.mValueAnimator.setInterpolator(new DecelerateInterpolator());
+      this.mValueAnimator.setRepeatMode(2);
+      this.mValueAnimator.addUpdateListener(new FaceImageViewer.1(this));
+      this.mValueAnimator.addListener(new FaceImageViewer.2(this));
+    }
+    if (this.mValueAnimator.isRunning()) {
+      this.mValueAnimator.cancel();
+    }
+    this.mValueAnimator.start();
+  }
+  
+  public void transformCurrentMatrix(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.initMatrix.reset();
+    this.mCurrentMatrix.set(this.initMatrix);
+    this.mCurrentMatrix.postTranslate(paramFloat3, paramFloat4);
+    this.mCurrentMatrix.postScale(paramFloat1, paramFloat1, getWidth() / 2, getHeight() / 2);
+    this.mCurrentMatrix.postRotate(paramFloat2, getWidth() / 2, getHeight() / 2);
+    setImageMatrix(this.mCurrentMatrix);
+    updateCurrentMatrix();
+    this.mNodeItem.once = false;
+  }
+  
+  public void updateCropBitmap()
+  {
+    Bitmap localBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+    draw(new Canvas(localBitmap));
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      this.mNodeItem.cropBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      localBitmap.recycle();
+    }
+    if (this.listener != null) {
+      this.listener.onSaveScrollInfo(this.mNodeItem);
+    }
+  }
+  
+  public void updateMatrix(int paramInt1, int paramInt2)
+  {
+    this.initMatrix.reset();
+    this.mCurrentMatrix.set(this.initMatrix);
+    if (this.mNodeItem != null) {
+      this.mNodeItem.once = false;
+    }
+    int k = 720;
+    int m = 1280;
+    Drawable localDrawable = getDrawable();
+    int j;
+    int i;
+    if (localDrawable != null)
+    {
+      j = localDrawable.getIntrinsicWidth();
+      i = localDrawable.getIntrinsicHeight();
+    }
+    for (;;)
+    {
+      float f = Math.max(paramInt1 * 1.0F / j, paramInt2 * 1.0F / i);
+      this.mCurrentMatrix.postTranslate(paramInt1 / 2 - j / 2, paramInt2 / 2 - i / 2);
+      this.mCurrentMatrix.postScale(f, f, paramInt1 / 2, paramInt2 / 2);
+      setImageMatrix(this.mCurrentMatrix);
+      updateCurrentMatrix();
+      return;
+      i = m;
+      j = k;
+      if (this.mNodeItem != null)
+      {
+        i = m;
+        j = k;
+        if (this.mNodeItem.bitmap != null)
+        {
+          j = this.mNodeItem.bitmap.getWidth();
+          i = this.mNodeItem.bitmap.getHeight();
+        }
+      }
+    }
   }
 }
 

@@ -106,41 +106,45 @@ public class StyleChildFilter
     this.faceStyleItem = paramFaceStyleItem;
     this.customFilterList = paramList;
     setImageNetSize(paramFaceStyleItem.imageSize[0], paramFaceStyleItem.imageSize[1]);
-    paramList = FileUtils.load(AEModule.getContext(), FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.postRender.function);
-    int i = this.NET_SIZE.width;
-    int j = this.NET_SIZE.height;
-    paramFaceStyleItem = paramList;
-    if (TextUtils.isEmpty(paramList)) {
-      paramFaceStyleItem = StyleChildPostRender.FRAGMENT_SHADER;
-    }
-    this.styleChildPostRender = new StyleChildPostRender(i, j, paramFaceStyleItem);
-    this.styleChildPostMaskRender = new StyleChildPostMaskRender(this.NET_SIZE.width, this.NET_SIZE.height);
-    paramFaceStyleItem = FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.transformMask;
-    this.styleChildWarpFilter = new StyleChildTransformFilter(this.NET_SIZE.width, this.NET_SIZE.height, paramFaceStyleItem);
-    paramFaceStyleItem = getFacePointsList();
-    if (paramFaceStyleItem != null) {
-      this.faceOffFilter = new StyleChildFaceOffFilter(paramFaceStyleItem);
-    }
-    this.faceOffMaskFilter = new StyleChildFaceOffMaskFilter();
-    this.cartoonStylePreProcessFilter = new CartoonStylePreProcessFilter();
-    this.cartoonFusionFilter = new CartoonFusionFilter();
-    this.gpuImageLookupFilter = new GPUImageLookupFilter();
-    this.faceColorTransferFilter = new FaceColorTransferFilter();
-    this.warpArr = new float[this.NET_SIZE.width * this.NET_SIZE.height * 2];
-    this.warpMat = Bitmap.createBitmap(this.NET_SIZE.width, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
-    this.outBitmap = Bitmap.createBitmap(this.NET_SIZE.width, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
-    this.faceRectFeatherMask = this.faceStyleItem.postRender.faceRectFeatherMask;
-    FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.setParams(6, this.faceStyleItem.libraryText, this.faceStyleItem.styleChangeType, this.faceStyleItem.initProcess.function, this.faceStyleItem.preProcess.function, this.faceStyleItem.postProcess.function, processBlobNames(this.faceStyleItem.initProcess.blobNames), processBlobNames(this.faceStyleItem.preProcess.blobNames), processBlobNames(this.faceStyleItem.postProcess.blobNames), this.faceStyleItem.initProcess.scale, this.faceStyleItem.initProcess.bias, this.faceStyleItem.preProcess.scale, this.faceStyleItem.preProcess.bias, this.faceStyleItem.postProcess.scale, this.faceStyleItem.postProcess.bias);
-    decodeMaterialBitmap();
-    if (BitmapUtils.isLegal(this.faceMask))
+    if (this.faceStyleItem.postRender == null) {}
+    for (paramFaceStyleItem = null;; paramFaceStyleItem = FileUtils.load(AEModule.getContext(), FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.postRender.function))
     {
-      this.faceOffFilter.loadMask(this.faceMask);
-      this.faceOffMaskFilter.loadMask(this.faceMask);
+      int i = this.NET_SIZE.width;
+      int j = this.NET_SIZE.height;
+      paramList = paramFaceStyleItem;
+      if (TextUtils.isEmpty(paramFaceStyleItem)) {
+        paramList = StyleChildPostRender.FRAGMENT_SHADER;
+      }
+      this.styleChildPostRender = new StyleChildPostRender(i, j, paramList);
+      this.styleChildPostMaskRender = new StyleChildPostMaskRender(this.NET_SIZE.width, this.NET_SIZE.height);
+      paramFaceStyleItem = FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.transformMask;
+      this.styleChildWarpFilter = new StyleChildTransformFilter(this.NET_SIZE.width, this.NET_SIZE.height, paramFaceStyleItem);
+      paramFaceStyleItem = getFacePointsList();
+      if (paramFaceStyleItem != null) {
+        this.faceOffFilter = new StyleChildFaceOffFilter(paramFaceStyleItem);
+      }
+      this.faceOffMaskFilter = new StyleChildFaceOffMaskFilter();
+      this.cartoonStylePreProcessFilter = new CartoonStylePreProcessFilter();
+      this.cartoonFusionFilter = new CartoonFusionFilter();
+      this.gpuImageLookupFilter = new GPUImageLookupFilter();
+      this.faceColorTransferFilter = new FaceColorTransferFilter();
+      this.warpArr = new float[this.NET_SIZE.width * this.NET_SIZE.height * 2];
+      this.warpMat = Bitmap.createBitmap(this.NET_SIZE.width, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
+      this.outBitmap = Bitmap.createBitmap(this.NET_SIZE.width, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
+      this.faceRectFeatherMask = this.faceStyleItem.postRender.faceRectFeatherMask;
+      FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.setParams(6, this.faceStyleItem.libraryText, this.faceStyleItem.styleChangeType, this.faceStyleItem.initProcess.function, this.faceStyleItem.preProcess.function, this.faceStyleItem.postProcess.function, processBlobNames(this.faceStyleItem.initProcess.blobNames), processBlobNames(this.faceStyleItem.preProcess.blobNames), processBlobNames(this.faceStyleItem.postProcess.blobNames), this.faceStyleItem.initProcess.scale, this.faceStyleItem.initProcess.bias, this.faceStyleItem.preProcess.scale, this.faceStyleItem.preProcess.bias, this.faceStyleItem.postProcess.scale, this.faceStyleItem.postProcess.bias);
+      decodeMaterialBitmap();
+      if (BitmapUtils.isLegal(this.faceMask))
+      {
+        this.faceOffFilter.loadMask(this.faceMask);
+        this.faceOffMaskFilter.loadMask(this.faceMask);
+      }
+      initProcessMaterial();
+      initCartoonFusionFilter();
+      initCustomGroup();
+      init();
+      return;
     }
-    initProcessMaterial();
-    initCartoonFusionFilter();
-    initCustomGroup();
-    init();
   }
   
   private void decodeMaterialBitmap()

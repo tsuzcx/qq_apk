@@ -3,8 +3,10 @@ package com.tencent.qqmini.sdk.core.generated;
 import com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.DownloaderProxyDefault;
+import com.tencent.qqmini.sdk.core.proxy.service.FavoritesProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.KingCardProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.LogProxyDefault;
+import com.tencent.qqmini.sdk.core.proxy.service.MiniAppCacheProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.MiniAppNotifyProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.NavigationProxyDefault;
@@ -14,9 +16,11 @@ import com.tencent.qqmini.sdk.core.proxy.service.ShareProxyDefault;
 import com.tencent.qqmini.sdk.core.proxy.service.WnsConfigProxyDefault;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.FavoritesProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMiniAppNotifyProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppCacheProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
@@ -33,18 +37,20 @@ public final class SdkProxyServiceScope
   
   static
   {
-    PROXY_SERVICES.put(MiniAppProxy.class, MiniAppProxyDefault.class);
     PROXY_SERVICES.put(RequestProxy.class, RequestProxyDefault.class);
-    PROXY_SERVICES.put(LogProxy.class, LogProxyDefault.class);
-    PROXY_SERVICES.put(DownloaderProxy.class, DownloaderProxyDefault.class);
+    PROXY_SERVICES.put(FavoritesProxy.class, FavoritesProxyDefault.class);
     PROXY_SERVICES.put(NavigationProxy.class, NavigationProxyDefault.class);
+    PROXY_SERVICES.put(DownloaderProxy.class, DownloaderProxyDefault.class);
+    PROXY_SERVICES.put(WnsConfigProxy.class, WnsConfigProxyDefault.class);
+    PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyDefault.class);
+    PROXY_SERVICES.put(ChannelProxy.class, ChannelProxyDefault.class);
+    PROXY_SERVICES.put(KingCardProxy.class, KingCardProxyDefault.class);
+    PROXY_SERVICES.put(ShareProxy.class, ShareProxyDefault.class);
+    PROXY_SERVICES.put(MiniAppCacheProxy.class, MiniAppCacheProxyDefault.class);
+    PROXY_SERVICES.put(MiniAppProxy.class, MiniAppProxyDefault.class);
+    PROXY_SERVICES.put(LogProxy.class, LogProxyDefault.class);
     PROXY_SERVICES.put(RequestStrategyProxy.class, RequestStrategyProxyDefault.class);
     PROXY_SERVICES.put(MusicPlayerProxy.class, MusicPlayerProxyDefault.class);
-    PROXY_SERVICES.put(WnsConfigProxy.class, WnsConfigProxyDefault.class);
-    PROXY_SERVICES.put(KingCardProxy.class, KingCardProxyDefault.class);
-    PROXY_SERVICES.put(ChannelProxy.class, ChannelProxyDefault.class);
-    PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyDefault.class);
-    PROXY_SERVICES.put(ShareProxy.class, ShareProxyDefault.class);
   }
 }
 

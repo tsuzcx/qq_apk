@@ -1,11 +1,20 @@
-public class lac
-  extends kzz
+import org.apache.http.Header;
+import org.json.JSONObject;
+
+class lac
+  extends kzi
 {
-  private final byte[] a = { -89, -34, -67, 60, 35, 96, 30, -47, 119, 15, 33, -8, 27, -105, 120, -21, -107, 19, 72, 121, 115, 87, -7, 41, -2, 121, -54, -113, 33, -87, -47, 43, -103, -61, 84, -9, 115, 74, 69, 19, -31, -19, 67, 12, -110, -104, 34, -109, 48, -110, 20, -113, 71, 84, -39, -90 };
+  lac(kzz paramkzz, kzi paramkzi) {}
   
-  public String a()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    return a(this.a, a());
+    this.jdField_a_of_type_Kzi.a(paramInt, paramArrayOfHeader, paramJSONObject);
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    this.jdField_a_of_type_Kzi.a(paramThrowable, paramString);
+    super.a(paramThrowable, paramString);
   }
 }
 

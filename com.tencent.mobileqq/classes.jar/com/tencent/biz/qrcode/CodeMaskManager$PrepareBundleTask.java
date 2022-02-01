@@ -8,20 +8,20 @@ import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import zvj;
-import zyx;
+import yuu;
+import yyi;
 
 class CodeMaskManager$PrepareBundleTask
   extends Thread
 {
   Bundle jdField_a_of_type_AndroidOsBundle;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  zvj jdField_a_of_type_Zvj;
+  yuu jdField_a_of_type_Yuu;
   
-  CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, zvj paramzvj, Bundle paramBundle)
+  CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, yuu paramyuu, Bundle paramBundle)
   {
     super("qr_code_mask_prepare_thread");
-    this.jdField_a_of_type_Zvj = paramzvj;
+    this.jdField_a_of_type_Yuu = paramyuu;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
@@ -36,7 +36,7 @@ class CodeMaskManager$PrepareBundleTask
         if (!bool) {
           try
           {
-            localObject1 = zyx.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
+            localObject1 = yyi.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
             if (localObject1 == null) {
               return null;
             }

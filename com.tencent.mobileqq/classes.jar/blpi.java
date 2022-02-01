@@ -1,26 +1,19 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class blpi
+class blpi
+  implements Observer<bmah>
 {
-  public int a;
-  public final Rect a;
-  public Drawable a;
-  public int[] a;
-  public int b;
-  public Drawable b;
-  public int[] b = new int[2];
-  public int c;
-  public Drawable c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  blpi(blpb paramblpb) {}
   
-  private blpi()
+  public void a(@Nullable bmah parambmah)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
+    if (parambmah == null) {}
+    while (parambmah.b != AECaptureMode.PLAY) {
+      return;
+    }
+    blpb.a(this.a);
   }
 }
 

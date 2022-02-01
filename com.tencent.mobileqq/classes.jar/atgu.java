@@ -1,30 +1,26 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.os.Bundle;
 
-public class atgu
-  implements Animation.AnimationListener
+public abstract interface atgu
 {
-  public atgu(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
-    {
-      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
-      return;
-    }
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-  }
+  public abstract int a(atgv paramatgv);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract int a(String paramString, Bundle paramBundle);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,42 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mty
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public boolean a;
-  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  
-  public void a()
+  public static int a(View paramView, int paramInt)
   {
-    c();
-    e();
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_c_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return 2147483647;
     }
+    if ((paramView instanceof Integer)) {
+      return ((Integer)paramView).intValue();
+    }
+    a("getInt", paramInt, paramView);
+    return 2147483647;
   }
   
-  public void c()
+  public static String a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return null;
+    }
+    if ((paramView instanceof String)) {
+      return (String)paramView;
+    }
+    a("getStr", paramInt, paramView);
+    return null;
+  }
+  
+  static void a(String paramString, int paramInt, Object paramObject)
+  {
+    if (AudioHelper.e())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramString = paramString + amtj.a(2131713761) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
+      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+      throw new ClassCastException(paramString);
     }
   }
 }

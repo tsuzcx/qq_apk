@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aphx;
-import aphz;
-import bdll;
+import aobk;
+import aobm;
+import bcef;
 
 public class ARTransferPromotionRenderable$10
   implements Runnable
 {
-  public ARTransferPromotionRenderable$10(aphx paramaphx) {}
+  public ARTransferPromotionRenderable$10(aobk paramaobk) {}
   
   public void run()
   {
-    bdll.b(null, "dc00898", "", "", "0X80098CD", "0X80098CD", 0, 0, aphx.a(this.this$0).a, "", "", "");
+    bcef.b(null, "dc00898", "", "", "0X80098CD", "0X80098CD", 0, 0, aobk.a(this.this$0).a, "", "", "");
   }
 }
 

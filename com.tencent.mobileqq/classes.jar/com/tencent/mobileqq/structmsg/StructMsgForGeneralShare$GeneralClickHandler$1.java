@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.os.Bundle;
-import bdpi;
+import bcht;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgForGeneralShare$GeneralClickHandler$1
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$1(bdpi parambdpi, Bundle paramBundle) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$1(bcht parambcht, Bundle paramBundle) {}
   
   public void run()
   {
@@ -19,11 +19,11 @@ public class StructMsgForGeneralShare$GeneralClickHandler$1
       l = this.a.getLong("msgSeq");
       localObject = this.a.getString("uin");
       i = this.a.getInt("sessionType");
-      localQQMessageFacade = this.this$0.a.a();
-      localObject = localQQMessageFacade.a((String)localObject, i, l);
+      localQQMessageFacade = this.this$0.a.getMessageFacade();
+      localObject = localQQMessageFacade.getMsgItemByUniseq((String)localObject, i, l);
       ((MessageRecord)localObject).saveExtInfoToExtStr("receipt_msg_is_read", "1");
-      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
-      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
+      localQQMessageFacade.updateMsgFieldByUniseq(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
+      localQQMessageFacade.updateMsgFieldByUniseq(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
     }
     while (!QLog.isColorLevel())
     {
@@ -38,7 +38,7 @@ public class StructMsgForGeneralShare$GeneralClickHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler.1
  * JD-Core Version:    0.7.0.1
  */

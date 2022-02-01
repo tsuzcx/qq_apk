@@ -1,26 +1,29 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
+import com.tencent.biz.pubaccount.util.Achilles;
+import com.tencent.biz.pubaccount.util.Achilles.1;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class udd
-  implements MiniAppLauncher.MiniAppLaunchListener
+  extends apcz
 {
-  public udd(WSHomeFragment paramWSHomeFragment) {}
+  public udd(Achilles.1 param1, RockDownloadInfo paramRockDownloadInfo, AchillesParams paramAchillesParams) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      uqf.d("WSHomeFragment", str + ", bundle: " + paramBundle.toString());
-      return;
-    }
+    QLog.d("Achilles", 1, "query predownload info fail: " + paramRockDownloadInfo);
+    Achilles.a(this.jdField_a_of_type_ComTencentMobileqqDataRockDownloadInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyConfigBeansAchillesParams);
+  }
+  
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  {
+    QLog.d("Achilles", 1, "query predownload info success: " + paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udd
  * JD-Core Version:    0.7.0.1
  */

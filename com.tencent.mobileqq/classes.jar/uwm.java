@@ -1,6 +1,18 @@
-public abstract interface uwm
+import UserGrowth.stNotificationReq;
+import UserGrowth.stNotificationRsp;
+
+public class uwm
+  extends urg<stNotificationRsp>
 {
-  public abstract void a();
+  public uwm(String paramString)
+  {
+    super("Notification", 4);
+    stNotificationReq localstNotificationReq = new stNotificationReq();
+    localstNotificationReq.linkStrategyArgs = uyb.a();
+    localstNotificationReq.push_info = paramString;
+    this.a = localstNotificationReq;
+    uya.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+  }
 }
 
 

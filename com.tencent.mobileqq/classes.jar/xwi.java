@@ -1,19 +1,9 @@
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-
-public class xwi
-  extends xqm
+public abstract interface xwi
+  extends xzc
 {
-  public xwi(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
+  public abstract void a(int paramInt);
   
-  public void g()
-  {
-    super.g();
-    if (this.a.jdField_b_of_type_Boolean)
-    {
-      AbsVideoInfoWidget.a(this.a);
-      yuk.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

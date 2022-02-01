@@ -1,79 +1,238 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import KQQ.UserBitFlagReq;
-import KQQ.UserBitFlagRes;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewStub;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import cooperation.qzone.widget.ExtendButton;
 
 public class bhik
-  implements bcuc
+  extends ReportDialog
 {
-  private QQAppInterface a;
+  private TextView a;
   
-  public bhik(QQAppInterface paramQQAppInterface)
+  public bhik(Context paramContext, Intent paramIntent)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSetting", 2, "getCheckUpdateItemData");
-    }
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 1;
-    localReqItem.eServiceID = 106;
-    UserBitFlagReq localUserBitFlagReq = new UserBitFlagReq();
-    localUserBitFlagReq.cEmotionMall = 0;
-    localUserBitFlagReq.cMyWallet = ((byte)bhih.a(this.a));
-    localUserBitFlagReq.cPtt2Text = 0;
-    localUserBitFlagReq.cAccout2Dis = 0;
-    localReqItem.vecParam = localUserBitFlagReq.toByteArray();
-    return localReqItem;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSetting", 2, "handleCheckUpdateItemData");
-    }
-    if (paramRespItem.eServiceID == 106)
-    {
-      UserBitFlagRes localUserBitFlagRes = new UserBitFlagRes();
-      localUserBitFlagRes.readFrom(new JceInputStream(paramRespItem.vecUpdate));
-      int i = localUserBitFlagRes.cEmotionMall;
-      int j = localUserBitFlagRes.cMyWallet;
-      int k = localUserBitFlagRes.cAccout2Dis;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSetting", 2, "vEmotion=" + i + ",cMyWallet=" + j + ",cPtt2Text=" + localUserBitFlagRes.cPtt2Text + " ,cAccout2Dis=" + k);
-      }
-      if (this.a != null)
-      {
-        this.a.getApp().getApplicationContext().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("mywallet_flag", j).putInt("select_member_contacts_flag", k).commit();
-        paramRespItem = this.a;
-        if (localUserBitFlagRes.cPtt2Text != 1) {
-          break label211;
-        }
-      }
+    super(paramContext, 2131755829);
+    String str2 = paramIntent.getStringExtra("qzone_plugin_activity_name");
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131562448, null);
+    Object localObject2 = getWindow();
+    ((Window)localObject2).setWindowAnimations(2131755824);
+    ((Window)localObject2).setContentView((View)localObject1);
+    Object localObject3 = ((Window)localObject2).getAttributes();
+    ((WindowManager.LayoutParams)localObject3).width = -1;
+    ((WindowManager.LayoutParams)localObject3).height = -1;
+    ((WindowManager.LayoutParams)localObject3).gravity = 48;
+    ((WindowManager.LayoutParams)localObject3).y = ((WindowManager.LayoutParams)localObject3).y;
+    ((Window)localObject2).setAttributes((WindowManager.LayoutParams)localObject3);
+    setCanceledOnTouchOutside(false);
+    this.a = ((TextView)((View)localObject1).findViewById(2131371418));
+    localObject2 = paramIntent.getStringExtra("leftViewText");
+    if (localObject2 == null) {
+      localObject2 = paramContext.getString(2131690599);
     }
     for (;;)
     {
-      bduh.a(paramRespItem, bool);
-      return;
-      label211:
-      bool = false;
+      if ("com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity".equals(str2))
+      {
+        localObject3 = ((ViewStub)((View)localObject1).findViewById(2131378105)).inflate();
+        localObject1 = paramIntent.getStringExtra("key_left_tab_title");
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label917;
+        }
+        localObject1 = paramContext.getString(2131716546);
+      }
+      label917:
+      for (;;)
+      {
+        paramIntent = paramIntent.getStringExtra("key_rihgt_tab_title");
+        if (TextUtils.isEmpty(paramIntent)) {}
+        for (paramContext = paramContext.getString(2131716627);; paramContext = paramIntent)
+        {
+          paramIntent = (ExtendButton)((View)localObject3).findViewById(2131363776);
+          Object localObject4 = (ExtendButton)((View)localObject3).findViewById(2131363777);
+          paramIntent.setText((CharSequence)localObject1);
+          ((ExtendButton)localObject4).setText(paramContext);
+          ((ExtendButton)localObject4).setSelected(false);
+          paramIntent.setSelected(true);
+          paramContext = (Context)localObject3;
+          ((TextView)paramContext.findViewById(2131369068)).setText((CharSequence)localObject2);
+          ((ProgressBar)((ViewStub)paramContext.findViewById(2131369129)).inflate()).setVisibility(0);
+          return;
+          localObject4 = ((ViewStub)((View)localObject1).findViewById(2131364897)).inflate();
+          TextView localTextView = (TextView)((ViewStub)((View)localObject4).findViewById(2131369115)).inflate();
+          String str1 = "";
+          long l;
+          if ("com.qzone.homepage.ui.activity.QZoneUserHomeActivity".equals(str2))
+          {
+            l = paramIntent.getLongExtra("qqid", 0L);
+            paramContext = paramIntent.getStringExtra("qzone_uin");
+            if (String.valueOf(Long.valueOf(l)).equals(paramContext))
+            {
+              localObject1 = amtj.a(2131711315);
+              localObject3 = localObject2;
+            }
+          }
+          for (;;)
+          {
+            localTextView.setText((CharSequence)localObject1);
+            paramContext = (Context)localObject4;
+            localObject2 = localObject3;
+            break;
+            localObject1 = "";
+            localObject3 = localObject2;
+            continue;
+            if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716773);
+              localObject3 = paramContext.getString(2131716697);
+            }
+            else if ("com.qzone.cover.ui.activity.QzoneCoverPhotoWallActivity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716671);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.cover.ui.activity.QZoneCoverStoreActivity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131716672);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.detail.ui.activity.QzoneDetailActivity".equals(str2))
+            {
+              localObject1 = str1;
+              localObject3 = localObject2;
+              if (paramIntent.getBooleanExtra("qzone.sourceFrom", false))
+              {
+                localObject3 = paramContext.getString(2131698555);
+                localObject1 = str1;
+              }
+            }
+            else if ("com.qzone.publish.ui.activity.QZoneUploadPhotoRealActivity".equals(str2))
+            {
+              str1 = paramContext.getString(2131717149);
+              int i = paramIntent.getIntExtra("QZoneUploadPhotoActivity.key_state_type_src", -1);
+              paramIntent = paramIntent.getAction();
+              localObject1 = str1;
+              localObject3 = localObject2;
+              if (!TextUtils.isEmpty(paramIntent))
+              {
+                if (paramIntent.equals("com.tencent.intent.QZONE_RESHIP_FROM_QUN_AIO_TO_QUN")) {
+                  i = 5;
+                }
+                for (;;)
+                {
+                  switch (i)
+                  {
+                  case 9: 
+                  case 10: 
+                  default: 
+                    localObject1 = str1;
+                    localObject3 = localObject2;
+                    break;
+                  case 3: 
+                  case 4: 
+                  case 5: 
+                  case 6: 
+                  case 7: 
+                  case 8: 
+                  case 11: 
+                    localObject1 = paramContext.getString(2131717064);
+                    localObject3 = localObject2;
+                    break;
+                    if (paramIntent.equals("com.tencent.intent.QZONE_QUOTE_FROM_AIO")) {
+                      i = 11;
+                    }
+                    break;
+                  }
+                }
+              }
+            }
+            else if ("com.qzone.business.lbsv2.ui.QZoneMoodSelectLocation".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131717089);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.setting.QZoneSettingManager".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131717098);
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.album.business.photolist.activity.QZonePersonalPhotoListActivity".equals(str2))
+            {
+              l = paramIntent.getLongExtra("key_album_face_uin", 0L);
+              paramContext = paramIntent.getStringExtra("key_alubm_name");
+              paramIntent = paramIntent.getStringExtra("key_album_face_nickname");
+              if ((Long.valueOf(l).longValue() != 0L) && (!TextUtils.isEmpty(paramIntent)))
+              {
+                localObject1 = paramIntent + amtj.a(2131711314);
+                localObject3 = localObject2;
+              }
+              else
+              {
+                localObject1 = paramContext;
+                localObject3 = localObject2;
+                if (paramContext == null)
+                {
+                  localObject1 = "";
+                  localObject3 = localObject2;
+                }
+              }
+            }
+            else if ("com.qzone.publish.ui.activity.QZonePublishMoodRealActivity".equals(str2))
+            {
+              localObject1 = paramIntent.getStringExtra("key_title");
+              localObject3 = localObject2;
+            }
+            else if ("com.qzone.publish.ui.activity.QZonePublishQueueAcitvity".equals(str2))
+            {
+              localObject1 = paramContext.getString(2131717016);
+              localObject3 = localObject2;
+            }
+            else
+            {
+              localObject1 = str1;
+              localObject3 = localObject2;
+              if ("com.qzone.permissionsetting.ui.activities.QZoneSinglePermissionSettingActivity".equals(str2))
+              {
+                localObject1 = paramContext.getString(2131716905);
+                localObject3 = localObject2;
+              }
+            }
+          }
+        }
+      }
     }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void setOnDismissListener(@Nullable DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    if (paramOnDismissListener == null) {
+      super.setOnDismissListener(paramOnDismissListener);
+    }
+    super.setOnDismissListener(new bhil(paramOnDismissListener));
   }
 }
 

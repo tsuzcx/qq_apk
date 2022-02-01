@@ -1,65 +1,109 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import mqq.app.AppActivity;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bbgn
-  implements QQPermissionCallback
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bbgo jdField_a_of_type_Bbgo;
-  
-  public bbgn(Activity paramActivity, bbgo parambbgo)
+  public static void a(int paramInt1, int paramInt2, View paramView, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Bbgo = parambbgo;
+    a(paramInt1, paramInt2, paramView, false, paramInt3, true);
   }
   
-  public void a()
+  public static void a(int paramInt1, int paramInt2, View paramView, boolean paramBoolean1, int paramInt3, boolean paramBoolean2)
   {
-    if (Build.VERSION.SDK_INT < 23) {
-      if (this.jdField_a_of_type_Bbgo != null) {
-        this.jdField_a_of_type_Bbgo.a();
+    int i = ((Integer)paramView.getTag(2131380832)).intValue();
+    Object localObject;
+    View localView;
+    LinearLayout.LayoutParams localLayoutParams;
+    int k;
+    if ((paramView instanceof LinearLayout))
+    {
+      paramView = (LinearLayout)paramView;
+      paramView.removeView(paramView.findViewById(2131374239));
+      paramView.removeView(paramView.findViewById(2131374240));
+      if (paramView.getChildCount() == 1)
+      {
+        localObject = paramView.getContext();
+        localView = paramView.getChildAt(0);
+        localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+        int j = ((Context)localObject).getResources().getDimensionPixelSize(2131298464);
+        k = ((Context)localObject).getResources().getDimensionPixelSize(2131298465);
+        switch (paramInt2)
+        {
+        default: 
+          localView.setLayoutParams(localLayoutParams);
+          if (paramBoolean2)
+          {
+            if (paramInt1 <= 1) {
+              break label341;
+            }
+            localView.setPadding(localView.getPaddingLeft(), j, localView.getPaddingRight(), j);
+          }
+          break;
+        }
       }
     }
-    label119:
-    do
+    for (;;)
     {
-      do
+      if (bazf.a(paramInt3))
       {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_AndroidAppActivity == null);
-        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label119;
-          }
-          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
-            break;
-          }
-          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-          return;
+        localObject = new bbhk((Context)localObject, paramInt3).a();
+        ((View)localObject).setId(2131374240);
+        paramView.addView((View)localObject, 0);
+      }
+      if (((paramInt2 == 0) || (paramInt1 == 1)) && (paramBoolean1) && (i != 1))
+      {
+        localObject = new View(paramView.getContext());
+        ((View)localObject).setId(2131374239);
+        ((View)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, paramView.getContext().getResources().getDimensionPixelSize(2131298458)));
+        paramView.addView((View)localObject, 0);
+        if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+          break label363;
         }
-      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
-      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+        ((View)localObject).setBackgroundColor(Color.parseColor("#080808"));
+      }
       return;
-    } while (this.jdField_a_of_type_Bbgo == null);
-    this.jdField_a_of_type_Bbgo.a();
+      localLayoutParams.topMargin = 0;
+      localLayoutParams.bottomMargin = 0;
+      break;
+      localLayoutParams.topMargin = 0;
+      localLayoutParams.bottomMargin = 0;
+      break;
+      localLayoutParams.topMargin = 0;
+      localLayoutParams.bottomMargin = 0;
+      break;
+      label341:
+      localView.setPadding(localView.getPaddingLeft(), k, localView.getPaddingRight(), k);
+    }
+    label363:
+    ((View)localObject).setBackgroundColor(Color.parseColor("#f2f2f2"));
   }
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static void a(bayt parambayt, int paramInt1, int paramInt2)
   {
-    bhlq.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Bbgo != null) {
-      this.jdField_a_of_type_Bbgo.a();
+    int j = 1;
+    int i = j;
+    if (paramInt1 > 1)
+    {
+      if (paramInt2 != 0) {
+        break label26;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      parambayt.a(paramInt1, i);
+      return;
+      label26:
+      i = j;
+      if (paramInt2 == paramInt1 - 1) {
+        i = 2;
+      }
     }
   }
 }

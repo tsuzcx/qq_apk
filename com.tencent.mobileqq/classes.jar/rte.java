@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class rte
-  implements DialogInterface.OnDismissListener
+  implements rtg
 {
-  rte(rsx paramrsx) {}
+  rte(rtb paramrtb) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(JSONObject paramJSONObject)
   {
-    rsx.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((rsx.a(this.a) != null) && (rsx.a(this.a).b()) && (rsx.b(this.a)) && (!rsx.c(this.a)) && (rsx.a(this.a)) && (!rsx.d(this.a))) {
-      rsx.a(this.a).c();
+    rtb.a(this.a, paramJSONObject.toString());
+    if (QLog.isColorLevel()) {
+      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + rtb.a(this.a));
     }
-    if (rsx.a(this.a) != null) {
-      rsx.a(this.a).f();
-    }
-    rsx.a(this.a, false);
   }
 }
 

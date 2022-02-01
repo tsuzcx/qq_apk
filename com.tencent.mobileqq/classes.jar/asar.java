@@ -1,6 +1,40 @@
-public abstract interface asar
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+
+public class asar
+  extends ataq
 {
-  public abstract void c(boolean paramBoolean);
+  public asar(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  
+  public void a()
+  {
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
+  }
 }
 
 

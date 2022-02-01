@@ -1,71 +1,61 @@
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.mobileqq.pb.PBEnumField;
-import java.util.HashMap;
-import java.util.Map;
-import trpc.qq_vgame.nofity.AvGameNotify.NotifyMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class myr
+class myr
+  extends BroadcastReceiver
 {
-  private static Map<Integer, Integer> a = new HashMap(16);
+  myr(myl parammyl) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    a.put(Integer.valueOf(1), Integer.valueOf(1));
-    a.put(Integer.valueOf(2), Integer.valueOf(1));
-    a.put(Integer.valueOf(3), Integer.valueOf(1));
-    a.put(Integer.valueOf(4), Integer.valueOf(1));
-    a.put(Integer.valueOf(101), Integer.valueOf(1));
-    a.put(Integer.valueOf(102), Integer.valueOf(2));
-    a.put(Integer.valueOf(103), Integer.valueOf(2));
-    a.put(Integer.valueOf(104), Integer.valueOf(2));
-    a.put(Integer.valueOf(105), Integer.valueOf(2));
-    a.put(Integer.valueOf(106), Integer.valueOf(2));
-    a.put(Integer.valueOf(107), Integer.valueOf(2));
-    a.put(Integer.valueOf(108), Integer.valueOf(2));
-    a.put(Integer.valueOf(110), Integer.valueOf(2));
-    a.put(Integer.valueOf(201), Integer.valueOf(2));
-  }
-  
-  private static anud a(AVGameAppInterface paramAVGameAppInterface, int paramInt)
-  {
-    if (paramAVGameAppInterface == null) {
-      return null;
+    paramContext = paramIntent.getAction();
+    paramIntent = paramIntent.getStringExtra("process_name");
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
     }
-    paramInt = ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
-    if (paramInt == 1) {
-      paramAVGameAppInterface = paramAVGameAppInterface.a(1);
-    }
-    for (;;)
+    int i;
+    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
     {
-      return paramAVGameAppInterface;
-      if (paramInt == 2) {
-        paramAVGameAppInterface = paramAVGameAppInterface.a(3);
-      } else {
-        paramAVGameAppInterface = null;
+      i = 1;
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break label120;
+      }
+      if ((paramIntent != null) && (paramIntent.equals("com.tencent.mobileqq")))
+      {
+        this.a.a(false);
+        this.a.a = false;
+        myl.a(this.a, false);
       }
     }
-  }
-  
-  public static void a(AVGameAppInterface paramAVGameAppInterface, AvGameNotify.NotifyMsg paramNotifyMsg)
-  {
-    paramAVGameAppInterface = a(paramAVGameAppInterface, paramNotifyMsg.type.get());
-    if (paramAVGameAppInterface != null)
+    label120:
+    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
     {
-      if (!(paramAVGameAppInterface instanceof nad)) {
-        break label32;
-      }
-      ((nad)paramAVGameAppInterface).a(paramNotifyMsg);
+      return;
+      i = 0;
+      break;
     }
-    label32:
-    while (!(paramAVGameAppInterface instanceof nac)) {
+    if (i == 0)
+    {
+      this.a.a = true;
+      this.a.a(true);
+      myl.a(this.a, false);
       return;
     }
-    ((nac)paramAVGameAppInterface).a(paramNotifyMsg);
+    if (myl.b(this.a))
+    {
+      myl.a(this.a, true);
+      return;
+    }
+    this.a.a = true;
+    myl.a(this.a).a = true;
+    myl.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myr
  * JD-Core Version:    0.7.0.1
  */

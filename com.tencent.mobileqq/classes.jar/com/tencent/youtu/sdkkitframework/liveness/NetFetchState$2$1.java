@@ -29,9 +29,9 @@ class NetFetchState$2$1
         i = j;
         if (paramException.responseParsed.errorcode == 0)
         {
-          YtLogger.d(NetFetchState.access$300(), "color_data : " + paramException.responseParsed.color_data);
-          NetFetchState.access$700(this.this$1.this$0).put("color_data", paramException.responseParsed.color_data);
-          NetFetchState.access$800(this.this$1.this$0).put("action_data", paramException.responseParsed.action_data);
+          YtLogger.d(NetFetchState.access$400(), "color_data : " + paramException.responseParsed.color_data);
+          NetFetchState.access$800(this.this$1.this$0).put("color_data", paramException.responseParsed.color_data);
+          NetFetchState.access$900(this.this$1.this$0).put("action_data", paramException.responseParsed.action_data);
           this.this$1.this$0.moveToNextState();
           i = 0;
         }

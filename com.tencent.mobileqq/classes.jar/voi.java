@@ -1,51 +1,22 @@
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment.3;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.Result;
-import feedcloud.FeedCloudRead.StClearCountRsp;
-import feedcloud.FeedCloudRead.StClearCountRspInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class voi
-  implements aaav<FeedCloudRead.StClearCountRsp>
 {
-  public voi(QCircleFolderRcmdTabFragment.3 param3) {}
+  public int a;
+  public ErrorMessage a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StClearCountRsp paramStClearCountRsp)
+  public voi()
   {
-    paramString = new StringBuilder();
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      paramString.append("[sendOuterEntranceRedPointRequest] request success!");
-      if (paramStClearCountRsp != null)
-      {
-        paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
-        paramStClearCountRsp = paramStClearCountRsp.clearCountRspInfos.get();
-        if (paramStClearCountRsp != null)
-        {
-          paramStClearCountRsp = paramStClearCountRsp.iterator();
-          while (paramStClearCountRsp.hasNext())
-          {
-            FeedCloudRead.StClearCountRspInfo localStClearCountRspInfo = (FeedCloudRead.StClearCountRspInfo)paramStClearCountRsp.next();
-            if ((localStClearCountRspInfo != null) && (localStClearCountRspInfo.countType.get() == 1)) {
-              vtd.f(localStClearCountRspInfo.clearTime.get());
-            }
-          }
-        }
-      }
-      QLog.d("QCircleEeveeRedPoint_" + QCircleFolderRcmdTabFragment.e, 1, new Object[] { paramString });
-      return;
-    }
-    paramString.append("[sendOuterEntranceRedPointRequest] request error! isSuccess : ").append(paramBoolean).append(", retCode: ").append(paramLong);
-    if (paramStClearCountRsp != null) {
-      paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
-    }
-    QLog.e("QCircleEeveeRedPoint_" + QCircleFolderRcmdTabFragment.e, 1, new Object[] { paramString });
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
+  }
+  
+  public String toString()
+  {
+    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
   }
 }
 

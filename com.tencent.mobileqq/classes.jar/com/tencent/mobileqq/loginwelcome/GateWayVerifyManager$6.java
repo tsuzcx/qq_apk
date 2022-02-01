@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import awvg;
-import awvj;
+import avin;
+import aviq;
 
 public class GateWayVerifyManager$6
   implements Runnable
 {
-  public GateWayVerifyManager$6(awvg paramawvg, awvj paramawvj) {}
+  public GateWayVerifyManager$6(avin paramavin, aviq paramaviq) {}
   
   public void run()
   {
-    awvg.a(this.this$0, null);
+    avin.a(this.this$0, null);
     this.a.a(new Exception("change network to mobile timeout"));
   }
 }

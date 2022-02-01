@@ -1,25 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class bmfw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static HashMap<String, Long> a = new HashMap();
+  public bmfw(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public static void a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      a.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    if ((AEEditorAILoadingView.a(this.a) >= 2) && (AEEditorAILoadingView.a(this.a)))
+    {
+      AEEditorAILoadingView.a(this.a, false);
+      AEEditorAILoadingView.a(this.a);
     }
-  }
-  
-  public static void b(String paramString)
-  {
-    if ((!QLog.isColorLevel()) || (!a.containsKey(paramString))) {
-      return;
-    }
-    long l = ((Long)a.get(paramString)).longValue();
-    a.remove(paramString);
-    QLog.d("ElapseStat", 2, paramString + " elpase:" + (System.currentTimeMillis() - l));
   }
 }
 

@@ -1,60 +1,81 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
-import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
+import java.lang.ref.SoftReference;
+import java.util.Map;
 
 public class avgu
-  extends BaseAdapter
+  implements avcp
 {
-  private List<IntimateInfo.CommonTroopInfo> jdField_a_of_type_JavaUtilList;
+  public avgu(MapWidget paramMapWidget) {}
   
-  private avgu(CommonTroopListActivity paramCommonTroopListActivity) {}
-  
-  public IntimateInfo.CommonTroopInfo a(int paramInt)
+  public void a()
   {
-    return (IntimateInfo.CommonTroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<IntimateInfo.CommonTroopInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
+      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline.remove();
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = LayoutInflater.from(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity)).inflate(2131559269, null);
+    if (MapWidget.a(this.a) != null) {
+      MapWidget.a(this.a).a(null);
     }
-    for (;;)
+  }
+  
+  public void a(LocationRoom.Venue paramVenue)
+  {
+    Object localObject = (apyk)apub.a().a(575);
+    if (localObject != null) {}
+    for (localObject = ((apyk)localObject).a();; localObject = null)
     {
-      IntimateInfo.CommonTroopInfo localCommonTroopInfo = a(paramInt);
-      ImageView localImageView = (ImageView)paramView.findViewById(2131364903);
-      TextView localTextView = (TextView)paramView.findViewById(2131364906);
-      localImageView.setImageDrawable(aoot.a(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity), 4, localCommonTroopInfo.troopCode));
-      localTextView.setText(localCommonTroopInfo.troopName);
-      paramView.setTag(localCommonTroopInfo);
-      paramView.setOnClickListener(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      for (localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130840613)));; localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject))))
+      {
+        if (localObject != null)
+        {
+          paramVenue.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
+          MapWidget.a(this.a, (Marker)localObject);
+          ((Marker)localObject).setClickable(false);
+          ((Marker)localObject).refreshInfoWindow();
+        }
+        if (MapWidget.a(this.a) != null) {
+          MapWidget.a(this.a).a(paramVenue);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MapWidget", 2, new Object[] { "[map][venue]onNewVenue invoked. Result venue: ", paramVenue });
+        }
+        return;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+        ((URLDrawable)localObject).downloadImediatly();
+        localObject = bfvo.b((Drawable)localObject);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Marker localMarker = (Marker)MapWidget.a(this.a).get(paramString);
+    if (localMarker != null)
+    {
+      localMarker.remove();
+      MapWidget.a(this.a).remove(paramString);
+    }
+    localMarker = (Marker)this.a.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localMarker != null)
+    {
+      localMarker.remove();
+      this.a.jdField_a_of_type_JavaUtilMap.remove(paramString);
     }
   }
 }

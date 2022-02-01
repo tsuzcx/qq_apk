@@ -13,7 +13,7 @@ import android.widget.CompoundButton;
 public class ExtendButton
   extends CompoundButton
 {
-  private boolean a = true;
+  private boolean mAncestorHaveOneSelected = true;
   
   public ExtendButton(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class ExtendButton
   
   protected void dispatchSetSelected(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a))
+    if ((paramBoolean) && (this.mAncestorHaveOneSelected))
     {
       Object localObject = getParent();
       if ((localObject != null) && ((localObject instanceof ViewGroup)))
@@ -74,7 +74,7 @@ public class ExtendButton
   
   public void setAncestorHaveOneSelected(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.mAncestorHaveOneSelected = paramBoolean;
   }
 }
 

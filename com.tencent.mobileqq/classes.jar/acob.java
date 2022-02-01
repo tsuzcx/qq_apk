@@ -1,25 +1,66 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
-import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
-import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
-import java.util.Map;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public final class acob
-  implements AdThreadManagerAdapter
+public class acob
+  implements View.OnClickListener
 {
-  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
+  public acob(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onClick(View paramView)
   {
-    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
-    if (paramInt == 0) {
-      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
-    }
-    if (local1.containsKey(Integer.valueOf(paramInt)))
+    if (!this.a.b)
     {
-      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
-      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return false;
+    Object localObject = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      label35:
+      ((AccountManageActivity)localObject).jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label254;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692310);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167098));
+    }
+    for (;;)
+    {
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        localObject = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((localObject instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localObject).hideIgnoreVisible();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
+      bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
+      break;
+      bool = false;
+      break label35;
+      label254:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131691727);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131167020));
+    }
   }
 }
 

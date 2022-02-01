@@ -1,32 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class qhx
+class qhx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static Parcel a(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel = Parcel.obtain();
-    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-    localParcel.setDataPosition(0);
-    return localParcel;
-  }
+  qhx(qhw paramqhw) {}
   
-  public static <T> T a(byte[] paramArrayOfByte, Parcelable.Creator<T> paramCreator)
+  public void onGlobalLayout()
   {
-    paramArrayOfByte = a(paramArrayOfByte);
-    paramCreator = paramCreator.createFromParcel(paramArrayOfByte);
-    paramArrayOfByte.recycle();
-    return paramCreator;
-  }
-  
-  public static byte[] a(Parcelable paramParcelable)
-  {
-    Parcel localParcel = Parcel.obtain();
-    paramParcelable.writeToParcel(localParcel, 0);
-    paramParcelable = localParcel.marshall();
-    localParcel.recycle();
-    return paramParcelable;
+    if ((qhw.a(this.a).isShown()) && (!qhw.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
+      this.a.a();
+      qhw.a(this.a, true);
+    }
+    if ((!qhw.a(this.a).isShown()) && (qhw.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
+      this.a.b();
+      qhw.a(this.a, false);
+    }
   }
 }
 

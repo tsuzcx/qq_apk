@@ -1,20 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aqte
-  implements View.OnClickListener
+public class aqte
+  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
 {
-  aqte(aqtc paramaqtc) {}
+  public aqsw a;
   
-  public void onClick(View paramView)
+  protected aqte(DataReportSettingFragment paramDataReportSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    aqsy.a(this.a.a).setVisibility(8);
-    aqsy.a(this.a.a, null);
-    if (aqsy.a(this.a.a).getItemCount() == 0) {
-      aqsy.a(this.a.a);
+    if (this.jdField_a_of_type_Aqsw != null)
+    {
+      this.jdField_a_of_type_Aqsw.a = paramBoolean;
+      aqtu.a().e();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, amtj.a(2131701915), new aqtf(this), new aqtg(this)).show();
+    return true;
   }
 }
 

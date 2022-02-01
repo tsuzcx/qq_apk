@@ -1,22 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class wmj
+  implements View.OnTouchListener
 {
-  public int a;
-  public ErrorMessage a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public wmj(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public wmj()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
-  }
-  
-  public String toString()
-  {
-    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
+    return true;
   }
 }
 

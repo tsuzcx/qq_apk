@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amep;
 import android.widget.TextView;
 
-public class SelectMemberActivity$2$1
+class SelectMemberActivity$2$1
   implements Runnable
 {
-  public SelectMemberActivity$2$1(amep paramamep) {}
+  SelectMemberActivity$2$1(SelectMemberActivity.2 param2) {}
   
   public void run()
   {
-    this.a.a.c.sendAccessibilityEvent(4);
+    this.this$1.this$0.mLeftBackBtn.sendAccessibilityEvent(4);
   }
 }
 

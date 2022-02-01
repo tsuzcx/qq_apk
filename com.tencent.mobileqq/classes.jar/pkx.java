@@ -1,49 +1,392 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.1;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.2;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import com.tencent.viola.core.ViolaInstance;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class pkx
-  implements tjr
 {
-  public pkx(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
+  private static final LRULinkedHashMap<String, pla> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static volatile pkx jdField_a_of_type_Pkx;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  public static int b;
+  private static final LRULinkedHashMap<String, pla> jdField_b_of_type_ComTencentUtilLRULinkedHashMap;
+  public static int c;
+  public static int d;
+  public static int e;
+  public static int f;
+  public static int g = 5;
+  protected int a;
+  private long jdField_a_of_type_Long;
+  private ViolaInstance jdField_a_of_type_ComTencentViolaCoreViolaInstance;
+  private String jdField_a_of_type_JavaLangString;
+  protected final plb a;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  private String e;
+  private String f;
+  
+  static
+  {
+    jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
+    jdField_b_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
+    jdField_c_of_type_Int = 1;
+    jdField_d_of_type_Int = 2;
+    jdField_e_of_type_Int = 3;
+    jdField_f_of_type_Int = 4;
+  }
+  
+  public pkx()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Plb = new plb(new pky(this));
+  }
+  
+  public static pkx a()
+  {
+    if (jdField_a_of_type_Pkx == null) {
+      jdField_a_of_type_Pkx = new pkx();
+    }
+    return jdField_a_of_type_Pkx;
+  }
+  
+  public static pla a(String paramString)
+  {
+    if ((AppSetting.f) || (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("viola.ReadInJoyWebRenderEngine", 2, "native_render  getRenderHtmlData url : " + paramString);
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      localpla = (pla)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
+      if (localpla != null)
+      {
+        paramString = localpla;
+        if (localpla.a()) {
+          paramString = null;
+        }
+        return paramString;
+      }
+    }
+    pla localpla = (pla)jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
+    if (localpla != null)
+    {
+      paramString = localpla;
+      if (localpla.a()) {}
+    }
+    for (;;)
+    {
+      return paramString;
+      paramString = null;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "[notifyLibLoad], ret:", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    try
+    {
+      a(paramString, null);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  /* Error */
+  public static void a(String paramString, pkz parampkz)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 132	pkx:jdField_a_of_type_Boolean	Z
+    //   6: ifeq +20 -> 26
+    //   9: aload_1
+    //   10: ifnull +12 -> 22
+    //   13: aload_1
+    //   14: getstatic 47	pkx:g	I
+    //   17: invokeinterface 137 2 0
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: return
+    //   26: invokestatic 143	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   29: new 145	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyWebRenderEngine$3
+    //   32: dup
+    //   33: aload_1
+    //   34: aload_0
+    //   35: invokespecial 148	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyWebRenderEngine$3:<init>	(Lpkz;Ljava/lang/String;)V
+    //   38: invokevirtual 154	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   41: pop
+    //   42: goto -20 -> 22
+    //   45: astore_0
+    //   46: ldc 2
+    //   48: monitorexit
+    //   49: aload_0
+    //   50: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	paramString	String
+    //   0	51	1	parampkz	pkz
+    // Exception table:
+    //   from	to	target	type
+    //   3	9	45	finally
+    //   13	22	45	finally
+    //   26	42	45	finally
+  }
+  
+  public static void b()
+  {
+    if (!bkwm.q(pay.a())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [getWebRenderConfig], is:", Boolean.valueOf(false) });
+      }
+    }
+    for (;;)
+    {
+      if (tgc.a()) {
+        tgc.a();
+      }
+      return;
+      if (!jdField_a_of_type_Boolean) {
+        a("preload");
+      } else if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [sLoadEngineLibDone], is:", Boolean.valueOf(true) });
+      }
+    }
+  }
+  
+  public static boolean b()
+  {
+    boolean bool = true;
+    File localFile = new File(pld.a(), "libviola.so");
+    if ((!jdField_a_of_type_Boolean) || (!localFile.exists()))
+    {
+      pay.a(pay.a(), true, 2);
+      a("other ");
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "native_render [isEngineReady], ret:", Boolean.valueOf(false) });
+      }
+      bool = false;
+    }
+    while (!QLog.isColorLevel()) {
+      return bool;
+    }
+    QLog.d("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "native_render [isEngineReady], ret:", Boolean.valueOf(true) });
+    return true;
+  }
+  
+  public static void c() {}
+  
+  private void d()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public int a(Bundle paramBundle)
+  {
+    pay.a(pay.a(), true, 9);
+    this.jdField_a_of_type_Int = 11;
+    return -1;
+  }
   
   public void a()
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.2(this), 200L);
+    if (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance != null)
+    {
+      this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.destroy();
+      this.jdField_a_of_type_ComTencentViolaCoreViolaInstance = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage success!");
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public int b(Bundle paramBundle)
+  {
+    Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("_prenr");
+    if ((!this.jdField_d_of_type_Boolean) && (a(this.jdField_a_of_type_JavaLangString) != null))
+    {
+      this.jdField_a_of_type_Int = 10;
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 1, "native_render doCreateLoopStep_Check has url cache");
+      }
+    }
+    for (;;)
+    {
+      return 0;
+      this.jdField_a_of_type_Int = 4;
     }
   }
   
-  public void a(int paramInt)
+  @Deprecated
+  public int c(Bundle paramBundle)
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.1(this), 1000L);
+    return 0;
+  }
+  
+  @Deprecated
+  public int d(Bundle paramBundle)
+  {
+    return 0;
+  }
+  
+  @Deprecated
+  public int e(Bundle paramBundle)
+  {
+    return 0;
+  }
+  
+  @Deprecated
+  public int f(Bundle paramBundle)
+  {
+    return 0;
+  }
+  
+  public int g(Bundle paramBundle)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangString.replace("_pbid", "_bid");
+    if (bgxw.a((String)localObject))
+    {
+      localObject = bgxw.a((String)localObject);
+      if ((localObject != null) && (!TextUtils.isEmpty(((bgxx)localObject).jdField_b_of_type_JavaLangString))) {
+        this.jdField_e_of_type_JavaLangString = ((bgxx)localObject).jdField_b_of_type_JavaLangString;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyViolaChannelFragment", 2, "reloadPage error,error code=" + paramInt);
+    while (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, "native_render doCreateLoopStep_GetHtml mHtmlOffline is empty");
+      }
+      pay.a(pay.a(), true, 7);
+      return a(paramBundle);
+      localObject = nny.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      if (localObject != null) {
+        try
+        {
+          int i = ((noc)localObject).a.available();
+          if (i != 0)
+          {
+            byte[] arrayOfByte = new byte[i];
+            if (i == ((noc)localObject).a.read(arrayOfByte)) {
+              this.jdField_e_of_type_JavaLangString = new String(arrayOfByte, "utf-8");
+            }
+          }
+        }
+        catch (IOException localIOException)
+        {
+          return a(paramBundle);
+        }
+      }
+    }
+    this.jdField_a_of_type_Int = 8;
+    return 0;
+  }
+  
+  public int h(Bundle paramBundle)
+  {
+    String str1 = "<!--native-render-->";
+    String str3 = "<!--native-data-render-->";
+    String str2 = "renderData";
+    this.jdField_f_of_type_JavaLangString = "true;";
+    String str4 = str1;
+    String str5 = str2;
+    String str6 = str3;
+    if (paramBundle != null)
+    {
+      if (!TextUtils.isEmpty(paramBundle.getString(thi.jdField_a_of_type_JavaLangString))) {
+        str1 = paramBundle.getString(thi.jdField_a_of_type_JavaLangString);
+      }
+      if (!TextUtils.isEmpty(paramBundle.getString(thi.jdField_e_of_type_JavaLangString))) {
+        str2 = paramBundle.getString(thi.jdField_e_of_type_JavaLangString);
+      }
+      if (!TextUtils.isEmpty(paramBundle.getString(thi.jdField_c_of_type_JavaLangString))) {
+        str3 = paramBundle.getString(thi.jdField_c_of_type_JavaLangString);
+      }
+      str4 = str1;
+      str5 = str2;
+      str6 = str3;
+      if (!TextUtils.isEmpty(paramBundle.getString(thi.jdField_d_of_type_JavaLangString)))
+      {
+        this.jdField_f_of_type_JavaLangString = paramBundle.getString(thi.jdField_d_of_type_JavaLangString);
+        str6 = str3;
+        str5 = str2;
+        str4 = str1;
+      }
+    }
+    this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replaceFirst(str4, this.jdField_d_of_type_JavaLangString);
+    this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replaceFirst(str6, "var " + str5 + " = " + this.jdField_f_of_type_JavaLangString + ";");
+    this.jdField_a_of_type_Int = 9;
+    return 0;
+  }
+  
+  public int i(Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+    {
+      if (!this.jdField_c_of_type_Boolean) {
+        break label131;
+      }
+      jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(this.jdField_a_of_type_JavaLangString, new pla(this.jdField_e_of_type_JavaLangString, "utf-8", 1800000L));
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render one result total cost[" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ms]");
+      }
+      pay.a(pay.a(), true, 8);
+      pay.a(pay.a(), true, 12, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      d();
+      a();
+      this.jdField_a_of_type_Int = 1;
+      return -1;
+      label131:
+      jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(this.jdField_a_of_type_JavaLangString, new pla(this.jdField_e_of_type_JavaLangString, "utf-8"));
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
+  public int j(Bundle paramBundle)
   {
-    if ((1 == paramInt) && (paz.a())) {
-      pfd.a().l();
-    }
+    pay.a(pay.a(), true, 3);
+    d();
+    a();
+    this.jdField_a_of_type_Int = 1;
+    return -1;
   }
   
-  public void b(int paramInt)
+  public int k(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage process,process code=" + paramInt);
-    }
+    d();
+    a();
+    this.jdField_a_of_type_Int = 1;
+    return -1;
   }
 }
 

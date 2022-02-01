@@ -1,10 +1,6 @@
-public abstract interface prl<BEAN>
+public abstract interface prl
 {
-  public abstract void a(prp<BEAN> paramprp);
-  
-  public abstract void a(boolean paramBoolean, prk<BEAN> paramprk);
-  
-  public abstract boolean a();
+  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
 }
 
 

@@ -1,6 +1,56 @@
-public abstract interface aruo
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import com.tencent.widget.BubblePopupWindow;
+
+public class aruo
+  implements SlideDetectListView.OnSlideListener
 {
-  public abstract boolean a();
+  public aruo(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onSlideCancelled(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    paramSlideDetectListView = paramView.findViewById(2131377244);
+    this.a.jdField_a_of_type_Aslr.a(null);
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).hide();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365371);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
+    }
+    LocalFileBrowserActivity.a(this.a);
+  }
+  
+  public void onSlideStarted(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+    }
+    if (!this.a.b())
+    {
+      this.a.jdField_a_of_type_Aslr.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
+      paramView.setPressed(false);
+    }
+    do
+    {
+      return;
+      paramSlideDetectListView = paramView.findViewById(2131377244);
+      paramView = (FileInfo)this.a.jdField_a_of_type_Aslr.getItem(paramInt);
+      this.a.jdField_a_of_type_Aslr.a(paramView);
+    } while (paramSlideDetectListView == null);
+    paramView = (Button)paramSlideDetectListView.findViewById(2131365371);
+    paramView.setTag(Integer.valueOf(paramInt));
+    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((ShaderAnimLayout)paramSlideDetectListView).show();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+  }
 }
 
 

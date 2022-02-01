@@ -1,28 +1,18 @@
-import java.net.URL;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-public abstract interface augl
+public class augl
+  implements View.OnTouchListener
 {
-  public abstract int a();
+  public augl(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public abstract String a();
-  
-  public abstract URL a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    HotPicMainPanel.a(this.a);
+    return true;
+  }
 }
 
 

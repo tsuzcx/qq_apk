@@ -1,48 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.mediafocus.MediaFocusController;
+import com.tencent.mobileqq.mediafocus.MediaFocusController.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.Stack;
 
-class avoz
-  implements askn
+public class avoz
+  implements EIPCResultCallback
 {
-  avoz(avoy paramavoy) {}
+  public avoz(MediaFocusController.1 param1, long paramLong) {}
   
-  public void a(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    String str = bhyk.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if (localViewParent != null)
+    boolean bool1;
+    boolean bool2;
+    long l;
+    if (paramEIPCResult.data != null)
     {
-      localViewParent = localViewParent.getParent();
-      if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+      bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
+      bool2 = paramEIPCResult.data.getBoolean("isItemExist");
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      if ((!bool1) || (!bool2)) {
+        break label75;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged not the same process but existed, cost:", Long.valueOf(l) });
       }
     }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
+    return;
+    label75:
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
     }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
-      }
-    }
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
   }
 }
 

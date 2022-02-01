@@ -1,51 +1,29 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.os.Bundle;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class aidh
-  extends azre
+class aidh
+  implements AbsListView.OnScrollListener
 {
-  public aidh(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  aidh(aidb paramaidb) {}
   
-  public void a(int paramInt, azql paramazql)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
-    if (localObject != null)
-    {
-      if (paramazql.jdField_a_of_type_Int != 0) {
-        break label139;
-      }
-      ((aiec)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramazql.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aidl;
-      if (localObject != null)
-      {
-        if (paramazql.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        ((aidl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramazql.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      label139:
-      ((aiec)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramazql.jdField_a_of_type_Azqh.jdField_a_of_type_JavaLangString + ", desc:" + paramazql.jdField_a_of_type_Azqh.b, paramazql.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
-    }
-    ((aidl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramazql.jdField_a_of_type_Azqh.jdField_a_of_type_JavaLangString + ", desc:" + paramazql.jdField_a_of_type_Azqh.b, paramazql.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+    aidb.a(this.a, paramInt1 + paramInt2 - 1);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aiec;
-    if (localObject != null) {
-      ((aiec)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    if (paramInt != 0) {
+      return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aidl;
-    if (localObject != null) {
-      ((aidl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    if (aidb.b(this.a) >= this.a.getCount() - 2)
+    {
+      paramAbsListView = new Bundle();
+      paramAbsListView.putString("from", "4");
+      aidb.a(this.a).b(4, aidb.a(this.a), paramAbsListView);
     }
+    this.a.d();
   }
 }
 

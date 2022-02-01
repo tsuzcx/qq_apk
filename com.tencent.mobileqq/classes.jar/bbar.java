@@ -1,38 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import java.util.ArrayList;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
-public final class bbar
-  implements Parcelable.Creator<RedAppInfo>
+public class bbar
+  extends bbam
 {
-  public RedAppInfo a(Parcel paramParcel)
+  bays a(ahzl paramahzl, List<bayt> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
-    localRedAppInfo.a = new ArrayList();
-    paramParcel.readList(localRedAppInfo.a, null);
-    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
-    return localRedAppInfo;
+    bbgj.a(90);
+    return new baxw(paramahzl, paramList, paramString1);
   }
   
-  public RedAppInfo[] a(int paramInt)
+  bayt a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    return new RedAppInfo[paramInt];
+    return null;
+  }
+  
+  bayt a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new baxx(paramrecord, paramString, paramCharSequence);
   }
 }
 

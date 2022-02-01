@@ -1,224 +1,33 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.troop.honor.troop_honor.GroupUserCardHonor;
+import android.graphics.Color;
+import android.util.SparseArray;
 
 public class bggn
 {
-  public static axtj a(bggs parambggs)
+  public byte a;
+  public int a;
+  public long a;
+  public SparseArray<bggn> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
+  
+  public static bggn a()
   {
-    if (parambggs != null)
-    {
-      axtj localaxtj = new axtj();
-      localaxtj.jdField_c_of_type_JavaLangString = parambggs.b;
-      String str = parambggs.jdField_a_of_type_JavaLangString;
-      localaxtj.jdField_a_of_type_JavaLangString = str;
-      localaxtj.d = str;
-      localaxtj.jdField_a_of_type_Long = parambggs.jdField_a_of_type_Int;
-      localaxtj.jdField_c_of_type_Boolean = true;
-      return localaxtj;
-    }
-    return null;
+    return new bggn();
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public static bggn a(int paramInt, byte paramByte)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return "";
-    }
-    return c(((bggj)paramQQAppInterface.getManager(346)).a(paramString1, paramString2));
+    bggn localbggn = new bggn();
+    localbggn.jdField_b_of_type_Int = paramInt;
+    localbggn.jdField_a_of_type_Byte = paramByte;
+    return localbggn;
   }
   
-  public static String a(List<Integer> paramList)
+  public int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      int i = 0;
-      while (i < paramList.size())
-      {
-        localStringBuilder.append(paramList.get(i));
-        if (i != paramList.size() - 1) {
-          localStringBuilder.append("|");
-        }
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    localObject = null;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return "";
-    }
-    try
-    {
-      troop_honor.GroupUserCardHonor localGroupUserCardHonor = new troop_honor.GroupUserCardHonor();
-      localGroupUserCardHonor.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localObject;
-      if (localGroupUserCardHonor.id.has()) {
-        paramArrayOfByte = localGroupUserCardHonor.id.get();
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        QLog.d("TroopHonor.utils", 1, "parseRspToHonorList", paramArrayOfByte);
-        paramArrayOfByte = localObject;
-      }
-    }
-    return a(paramArrayOfByte);
-  }
-  
-  public static ArrayList<blpn> a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    paramString = ((bggj)paramQQAppInterface.getManager(346)).a(paramString);
-    if ((paramString == null) || (paramString.isEmpty())) {
-      return null;
-    }
-    Collections.sort(paramString);
-    paramQQAppInterface = new ArrayList();
-    paramString = paramString.iterator();
-    while (paramString.hasNext())
-    {
-      bggs localbggs = (bggs)paramString.next();
-      blpn localblpn = new blpn();
-      localblpn.jdField_a_of_type_JavaLangString = localbggs.b;
-      paramQQAppInterface.add(localblpn);
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static List<Integer> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
-    }
-    ArrayList localArrayList;
-    String[] arrayOfString;
-    do
-    {
-      return paramString;
-      localArrayList = new ArrayList();
-      arrayOfString = paramString.split("\\|");
-      paramString = localArrayList;
-    } while (arrayOfString.length <= 0);
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      paramString = localArrayList;
-      if (i >= j) {
-        break;
-      }
-      paramString = arrayOfString[i];
-      try
-      {
-        localArrayList.add(Integer.valueOf(paramString));
-        i += 1;
-      }
-      catch (NumberFormatException paramString)
-      {
-        for (;;)
-        {
-          QLog.d("TroopHonor.utils", 1, "convertStrToHonorList", paramString);
-        }
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, NavBarAIO paramNavBarAIO, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean)
-  {
-    if ((paramQQAppInterface == null) || (paramActivity == null) || (TextUtils.isEmpty(paramString)) || (paramNavBarAIO == null) || (paramImageView1 == null) || (paramImageView2 == null)) {
-      return;
-    }
-    bggj localbggj = (bggj)paramQQAppInterface.getManager(346);
-    if (!localbggj.b(paramString))
-    {
-      paramNavBarAIO.setTitleIconLeft(0, 0);
-      paramImageView1.setOnTouchListener(null);
-      paramImageView2.setOnTouchListener(null);
-      return;
-    }
-    localbggj.b(paramString, paramQQAppInterface.getCurrentAccountUin(), new bggo(paramNavBarAIO, paramImageView1, paramImageView2, paramBoolean, paramQQAppInterface, paramString, paramActivity));
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 != 1L) {}
-    while ((paramLong2 != 1003L) && (paramLong2 != 1004L) && (paramLong2 != 1005L) && (paramLong2 != 1006L) && (paramLong2 != 1021L)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (nlj.a(paramMessageRecord)) {
-      return false;
-    }
-    if ((paramMessageRecord instanceof MessageForTroopConfess)) {
-      return false;
-    }
-    if ("1000000".equals(paramMessageRecord.senderuin)) {
-      return false;
-    }
-    return !((bgty)paramQQAppInterface.getManager(203)).b(paramMessageRecord.senderuin);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString) != null;
-  }
-  
-  public static String b(List<bggs> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      localStringBuilder.append(((bggs)paramList.get(i)).jdField_a_of_type_Int);
-      if (i != paramList.size() - 1) {
-        localStringBuilder.append("|");
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String c(List<bggs> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localStringBuilder.append(((bggs)paramList.next()).jdField_a_of_type_JavaLangString);
-      }
-    }
-    return localStringBuilder.toString();
+    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
   }
 }
 

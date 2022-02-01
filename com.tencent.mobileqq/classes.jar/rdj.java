@@ -1,39 +1,33 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
 
 public class rdj
-  extends blsv<rdu, rdk>
 {
-  public rdj(Context paramContext, List<rdu> paramList)
-  {
-    super(paramContext, paramList);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public int a(int paramInt)
-  {
-    return 0;
-  }
+  public rdj() {}
   
-  public rdk a(ViewGroup paramViewGroup, int paramInt)
+  public rdj(articlesummary.LocalInfo paramLocalInfo)
   {
-    ImageView localImageView = new ImageView(this.a);
-    paramInt = paramViewGroup.getLayoutParams().height;
-    localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt, paramInt));
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    return new rdk(this, localImageView);
-  }
-  
-  public void a(rdk paramrdk, int paramInt)
-  {
-    Bitmap localBitmap = ((rdu)a(paramInt)).a();
-    if (localBitmap != null) {
-      ((ImageView)paramrdk.itemView).setImageBitmap(localBitmap);
+    if (paramLocalInfo == null) {
+      return;
     }
+    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
+    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
+    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
+    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
+    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
+    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
   }
 }
 

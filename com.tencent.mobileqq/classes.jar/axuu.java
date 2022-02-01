@@ -1,10 +1,12 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.graphics.Color;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class axuu
-  implements BusinessObserver
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public int a = Color.parseColor("#AA000000");
+  public BaseActivity a;
+  public int b = Color.parseColor("#0C000000");
+  public int c = Color.parseColor("#4DEBEDF5");
 }
 
 

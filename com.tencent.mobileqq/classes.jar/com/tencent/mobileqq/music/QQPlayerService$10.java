@@ -2,7 +2,7 @@ package com.tencent.mobileqq.music;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhnu;
+import bfws;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 
@@ -27,7 +27,7 @@ class QQPlayerService$10
       if (QLog.isColorLevel()) {
         QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
       }
-      bhnu.b();
+      bfws.b();
     }
   }
 }

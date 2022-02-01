@@ -1,19 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.open.downloadnew.WebViewDownloadListener.1;
+import com.tencent.smtt.sdk.ValueCallback;
 
 public class bidh
-  implements View.OnClickListener
+  implements ValueCallback<String>
 {
-  public bidh(TextHeaderView paramTextHeaderView, Activity paramActivity, int paramInt, QQVipMsgInfo paramQQVipMsgInfo) {}
+  public bidh(WebViewDownloadListener.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewTextHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhzm.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
   }
 }
 

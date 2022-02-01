@@ -1,16 +1,6 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
-
-class bkgc
-  implements FilenameFilter
+public abstract interface bkgc
 {
-  bkgc(bkgb parambkgb) {}
-  
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

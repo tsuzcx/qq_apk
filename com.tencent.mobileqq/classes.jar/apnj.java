@@ -1,82 +1,50 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class apnj
-  extends apnu
-  implements apnh
+  implements apnn
 {
-  public int a;
-  public String a;
-  public apnk[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
-  
-  public apnj()
+  public String a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfApnk = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692085);
   }
   
-  public static boolean a(apnj paramapnj)
+  public void a(View paramView, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramapnj != null)
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
     {
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
+      }
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
       bool1 = bool2;
-      if (paramapnj.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramapnj.b == 0)
-        {
-          bool1 = bool2;
-          if (paramapnj.jdField_a_of_type_ArrayOfApnk != null)
-          {
-            bool1 = bool2;
-            if (paramapnj.jdField_a_of_type_ArrayOfApnk[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramapnj.jdField_a_of_type_ArrayOfApnk[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
     }
-    return bool1;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfApnk[0].a;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfApnk != null)
+    label116:
+    label121:
+    for (;;)
     {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfApnk.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApnk[i];
-        i += 1;
-      }
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bkox.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bkpf.b(paramView, 6, 0);
+      bkpj.a(paramView.getCurrentAccountUin());
+      bcef.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
-    String str2 = "null";
-    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

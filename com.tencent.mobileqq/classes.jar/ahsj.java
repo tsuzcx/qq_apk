@@ -1,42 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
-
 public class ahsj
-  extends AnimatorListenerAdapter
 {
-  public ahsj(SixCombolEffectView paramSixCombolEffectView) {}
+  private ahsi jdField_a_of_type_Ahsi = new ahsi();
+  private ahsk jdField_a_of_type_Ahsk = new ahsk();
+  private ahsl jdField_a_of_type_Ahsl = new ahsl();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ahsi a()
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-        SixCombolEffectView.jdField_a_of_type_Int = 4;
-        if (QLog.isColorLevel()) {
-          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-        }
-      } while (SixCombolEffectView.a(this.a) == null);
-      paramAnimator = SixCombolEffectView.a(this.a);
-    } while (paramAnimator == null);
-    SixCombolEffectView.a(this.a).a(paramAnimator);
+    return this.jdField_a_of_type_Ahsi;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public ahsk a()
   {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 3;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    return this.jdField_a_of_type_Ahsk;
+  }
+  
+  public ahsl a()
+  {
+    return this.jdField_a_of_type_Ahsl;
+  }
+  
+  public String a()
+  {
+    if (!this.jdField_a_of_type_Ahsl.b) {
+      return this.jdField_a_of_type_Ahsi.b();
+    }
+    if (this.jdField_a_of_type_Ahsk.f()) {
+      return this.jdField_a_of_type_Ahsi.a();
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    a().b("");
+    this.jdField_a_of_type_Ahsk.a(0);
+    this.jdField_a_of_type_Ahsl.b(false);
   }
 }
 

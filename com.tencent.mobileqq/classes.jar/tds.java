@@ -1,38 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-class tds
-  implements bliz
+public class tds
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  tds(tdr paramtdr, String paramString) {}
+  public tds(TabLayoutCompat paramTabLayoutCompat) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        paramView.put("index", paramInt);
-        if ((!this.jdField_a_of_type_Tdr.a) || (paramInt != 0)) {
-          continue;
-        }
-        paramView.put("type", 2);
-        if (tdr.a(this.jdField_a_of_type_Tdr) != null) {
-          ((BridgeModule)tdr.a(this.jdField_a_of_type_Tdr).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
-        }
-      }
-      catch (JSONException paramView)
-      {
-        continue;
-      }
-      tdr.a(this.jdField_a_of_type_Tdr).dismiss();
-      return;
-      paramView.put("type", 0);
-    }
+    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
   }
 }
 

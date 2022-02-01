@@ -1,32 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class bebz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bebz(beby parambeby) {}
+  bebz(bebp parambebp, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((beby.a(this.a) instanceof CustomWebView))
-    {
-      if (2 != beby.a(this.a).c) {
-        break label57;
-      }
-      ((CustomWebView)beby.a(this.a)).callJs("openAdvPermissionsMobile()");
-      this.a.dismiss();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label57:
-      ((CustomWebView)beby.a(this.a)).callJs("openCooperationMobile()");
-      this.a.dismiss();
-      bdll.b(beby.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+    if (paramInt == 1) {
+      bebp.a(this.jdField_a_of_type_Bebp, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
   }
 }

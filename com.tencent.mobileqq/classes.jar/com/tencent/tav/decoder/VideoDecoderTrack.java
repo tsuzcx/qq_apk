@@ -8,6 +8,7 @@ import com.tencent.tav.asset.AssetTrack;
 import com.tencent.tav.asset.AssetTrackSegment;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TextureInfo;
@@ -16,15 +17,16 @@ import com.tencent.tav.extractor.ExtractorUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class VideoDecoderTrack
   implements IDecoderTrack
 {
-  public static boolean LOG_VERBOSE = false;
   public static boolean PRE_READ = true;
   private static String TAG = "VDecoderTrack";
   private Surface _outputSurface;
   private float _speed = 1.0F;
+  @Nullable
   private IVideoDecoder currentDecoder;
   private final Object currentDecoderLock = new Object();
   private CMSampleBuffer currentFrame = null;
@@ -36,7 +38,7 @@ public class VideoDecoderTrack
   private CMTime frameDuration = new CMTime(1L, 44);
   private int frameRate = 44;
   private boolean isReleased = false;
-  private CMTime lastSampleTime = CMTime.CMTimeInvalid;
+  private CMSampleState lastSampleState = new CMSampleState();
   private VideoDecoderTrack.DecoderWrapper nextDecoder;
   private final Object nextDecoderLock = new Object();
   private CMSampleBuffer nextFrame = null;
@@ -143,7 +145,7 @@ public class VideoDecoderTrack
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_1
-    //   9: invokevirtual 334	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   9: invokevirtual 339	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
     //   12: astore 11
     //   14: aload 11
     //   16: ifnonnull +10 -> 26
@@ -153,456 +155,413 @@ public class VideoDecoderTrack
     //   23: monitorexit
     //   24: aload_1
     //   25: areturn
-    //   26: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   26: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
     //   29: astore 7
-    //   31: new 336	java/lang/StringBuilder
+    //   31: new 341	java/lang/StringBuilder
     //   34: dup
-    //   35: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   38: ldc_w 339
-    //   41: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   38: ldc_w 344
+    //   41: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: aload 11
-    //   46: getfield 348	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   49: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc_w 350
-    //   55: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: getfield 353	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   49: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: ldc_w 355
+    //   55: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: astore 8
     //   60: aload_0
-    //   61: getfield 121	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
-    //   64: ifnull +283 -> 347
+    //   61: getfield 120	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
+    //   64: ifnull +271 -> 335
     //   67: iconst_1
     //   68: istore 5
     //   70: aload 7
     //   72: aload 8
     //   74: iload 5
-    //   76: invokevirtual 353	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: iconst_0
-    //   83: anewarray 4	java/lang/Object
-    //   86: invokestatic 362	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   89: iconst_5
-    //   90: istore_3
-    //   91: aconst_null
-    //   92: astore 7
-    //   94: aload 7
-    //   96: ifnonnull +769 -> 865
-    //   99: iload_3
-    //   100: ifle +765 -> 865
-    //   103: aload_0
-    //   104: getfield 98	com/tencent/tav/decoder/VideoDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread;
-    //   107: ifnull +409 -> 516
-    //   110: aload_0
-    //   111: getfield 98	com/tencent/tav/decoder/VideoDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread;
-    //   114: invokestatic 368	com/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread:access$100	(Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread;)I
-    //   117: istore 4
-    //   119: iload 4
-    //   121: aload_0
-    //   122: getfield 77	com/tencent/tav/decoder/VideoDecoderTrack:segments	Ljava/util/ArrayList;
-    //   125: invokevirtual 268	java/util/ArrayList:size	()I
-    //   128: if_icmpge +234 -> 362
-    //   131: aload_0
-    //   132: iload 4
-    //   134: invokespecial 221	com/tencent/tav/decoder/VideoDecoderTrack:getSegment	(I)Lcom/tencent/tav/decoder/DecoderTrackSegment;
-    //   137: invokevirtual 334	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
-    //   140: aload 11
-    //   142: invokestatic 374	com/tencent/tav/extractor/ExtractorUtils:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
-    //   145: ifeq +217 -> 362
-    //   148: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   151: new 336	java/lang/StringBuilder
-    //   154: dup
-    //   155: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   158: ldc_w 376
-    //   161: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: aload 11
-    //   166: getfield 348	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   169: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   175: iconst_0
-    //   176: anewarray 4	java/lang/Object
-    //   179: invokestatic 362	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   182: aload_0
-    //   183: getfield 100	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoderLock	Ljava/lang/Object;
-    //   186: astore 8
-    //   188: aload 8
-    //   190: monitorenter
-    //   191: aload_0
-    //   192: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   195: ifnull +164 -> 359
-    //   198: aload_0
-    //   199: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   202: getfield 382	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
-    //   205: aload 11
-    //   207: invokestatic 374	com/tencent/tav/extractor/ExtractorUtils:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
-    //   210: ifeq +149 -> 359
-    //   213: aload_0
-    //   214: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   217: getfield 385	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
-    //   220: ifnull +139 -> 359
+    //   76: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 367	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: iconst_5
+    //   86: istore_3
+    //   87: aconst_null
+    //   88: astore 7
+    //   90: aload 7
+    //   92: ifnonnull +695 -> 787
+    //   95: iload_3
+    //   96: ifle +691 -> 787
+    //   99: aload_0
+    //   100: getfield 97	com/tencent/tav/decoder/VideoDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread;
+    //   103: ifnull +390 -> 493
+    //   106: aload_0
+    //   107: getfield 97	com/tencent/tav/decoder/VideoDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread;
+    //   110: invokestatic 373	com/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread:access$100	(Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderCreateThread;)I
+    //   113: istore 4
+    //   115: iload 4
+    //   117: aload_0
+    //   118: getfield 76	com/tencent/tav/decoder/VideoDecoderTrack:segments	Ljava/util/ArrayList;
+    //   121: invokevirtual 273	java/util/ArrayList:size	()I
+    //   124: if_icmpge +226 -> 350
+    //   127: aload_0
+    //   128: iload 4
+    //   130: invokespecial 226	com/tencent/tav/decoder/VideoDecoderTrack:getSegment	(I)Lcom/tencent/tav/decoder/DecoderTrackSegment;
+    //   133: invokevirtual 339	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   136: aload 11
+    //   138: invokestatic 379	com/tencent/tav/extractor/ExtractorUtils:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
+    //   141: ifeq +209 -> 350
+    //   144: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   147: new 341	java/lang/StringBuilder
+    //   150: dup
+    //   151: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   154: ldc_w 381
+    //   157: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: aload 11
+    //   162: getfield 353	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   165: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   171: invokestatic 367	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   174: aload_0
+    //   175: getfield 99	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoderLock	Ljava/lang/Object;
+    //   178: astore 8
+    //   180: aload 8
+    //   182: monitorenter
+    //   183: aload_0
+    //   184: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   187: ifnull +160 -> 347
+    //   190: aload_0
+    //   191: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   194: getfield 387	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   197: aload 11
+    //   199: invokestatic 379	com/tencent/tav/extractor/ExtractorUtils:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
+    //   202: ifeq +145 -> 347
+    //   205: aload_0
+    //   206: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   209: getfield 390	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   212: ifnull +135 -> 347
+    //   215: aload_0
+    //   216: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   219: getfield 390	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   222: astore_2
     //   223: aload_0
-    //   224: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   227: getfield 385	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
-    //   230: astore_2
-    //   231: aload_0
-    //   232: aload_0
-    //   233: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   236: getfield 386	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:segmentIndex	I
-    //   239: invokespecial 221	com/tencent/tav/decoder/VideoDecoderTrack:getSegment	(I)Lcom/tencent/tav/decoder/DecoderTrackSegment;
-    //   242: aload_1
-    //   243: if_acmpeq +17 -> 260
-    //   246: aload_2
-    //   247: aload_1
-    //   248: invokevirtual 284	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   251: aload_1
-    //   252: invokevirtual 389	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   255: invokeinterface 395 3 0
-    //   260: aload_0
-    //   261: aconst_null
-    //   262: putfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   265: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   268: astore_1
-    //   269: new 336	java/lang/StringBuilder
-    //   272: dup
-    //   273: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   276: ldc_w 397
-    //   279: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: astore 7
-    //   284: aload_0
-    //   285: getfield 121	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
-    //   288: ifnonnull +65 -> 353
-    //   291: iload 6
-    //   293: istore 5
-    //   295: aload_1
-    //   296: aload 7
-    //   298: iload 5
-    //   300: invokevirtual 353	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   303: ldc_w 399
-    //   306: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   309: aload_2
-    //   310: invokeinterface 402 1 0
-    //   315: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   318: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: iconst_0
-    //   322: anewarray 4	java/lang/Object
-    //   325: invokestatic 362	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   328: aload 8
-    //   330: monitorexit
-    //   331: aload_2
-    //   332: astore_1
-    //   333: goto -311 -> 22
-    //   336: astore_1
-    //   337: aload 8
-    //   339: monitorexit
-    //   340: aload_1
-    //   341: athrow
-    //   342: astore_1
-    //   343: aload_0
-    //   344: monitorexit
-    //   345: aload_1
-    //   346: athrow
-    //   347: iconst_0
-    //   348: istore 5
-    //   350: goto -280 -> 70
-    //   353: iconst_0
-    //   354: istore 5
-    //   356: goto -61 -> 295
-    //   359: aload 8
-    //   361: monitorexit
-    //   362: aload_0
-    //   363: getfield 121	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
-    //   366: ifnull +526 -> 892
-    //   369: aload 11
-    //   371: getfield 405	com/tencent/tav/decoder/DecoderAssetTrack:size	Lcom/tencent/tav/coremedia/CGSize;
-    //   374: astore 8
-    //   376: aload 11
-    //   378: getfield 408	com/tencent/tav/decoder/DecoderAssetTrack:preferRotation	I
-    //   381: istore 4
-    //   383: aload 8
-    //   385: ifnull +507 -> 892
-    //   388: aload_0
-    //   389: getfield 121	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
-    //   392: aload 8
-    //   394: getfield 413	com/tencent/tav/coremedia/CGSize:width	F
-    //   397: f2i
-    //   398: aload 8
-    //   400: getfield 416	com/tencent/tav/coremedia/CGSize:height	F
-    //   403: f2i
-    //   404: iload 4
-    //   406: invokeinterface 422 4 0
-    //   411: astore 8
-    //   413: aload 7
-    //   415: astore 9
-    //   417: aload 11
-    //   419: getfield 425	com/tencent/tav/decoder/DecoderAssetTrack:sourceType	I
-    //   422: iconst_3
-    //   423: if_icmpne +327 -> 750
-    //   426: aload 7
-    //   428: astore 9
-    //   430: new 427	com/tencent/tav/decoder/ImageDecoder
-    //   433: dup
-    //   434: invokespecial 428	com/tencent/tav/decoder/ImageDecoder:<init>	()V
-    //   437: astore 7
-    //   439: aload 7
-    //   441: aload 11
-    //   443: getfield 348	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   446: getstatic 431	com/tencent/tav/decoder/ImageDecoder:IMAGE_DECODE_SIZE	Lcom/tencent/tav/coremedia/CGSize;
-    //   449: aconst_null
-    //   450: invokeinterface 435 4 0
-    //   455: aload 7
-    //   457: astore 9
-    //   459: aload 7
-    //   461: aload_1
-    //   462: invokevirtual 284	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   465: aload_2
-    //   466: invokeinterface 395 3 0
-    //   471: aload 7
-    //   473: astore 9
-    //   475: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   478: new 336	java/lang/StringBuilder
-    //   481: dup
-    //   482: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   485: ldc_w 437
-    //   488: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   491: aload 11
-    //   493: getfield 348	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   496: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   499: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   502: iconst_0
-    //   503: anewarray 4	java/lang/Object
-    //   506: invokestatic 362	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   509: iload_3
-    //   510: iconst_1
-    //   511: isub
-    //   512: istore_3
-    //   513: goto -419 -> 94
-    //   516: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   519: new 336	java/lang/StringBuilder
-    //   522: dup
-    //   523: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   526: ldc_w 439
-    //   529: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   532: aload 11
-    //   534: getfield 348	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   537: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: iconst_0
-    //   544: anewarray 4	java/lang/Object
-    //   547: invokestatic 362	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   550: aload_0
-    //   551: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   554: ifnull -192 -> 362
-    //   557: aload_0
-    //   558: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   561: getfield 382	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
-    //   564: aload 11
-    //   566: invokestatic 374	com/tencent/tav/extractor/ExtractorUtils:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
-    //   569: ifeq -207 -> 362
-    //   572: aload_0
-    //   573: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   576: getfield 385	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
-    //   579: ifnull -217 -> 362
-    //   582: aload_0
-    //   583: getfield 100	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoderLock	Ljava/lang/Object;
-    //   586: astore 8
-    //   588: aload 8
-    //   590: monitorenter
-    //   591: aload_0
-    //   592: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   595: ifnull +149 -> 744
-    //   598: aload_0
-    //   599: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   602: getfield 382	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
-    //   605: aload 11
-    //   607: if_acmpne +137 -> 744
-    //   610: aload_0
-    //   611: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   614: getfield 385	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
-    //   617: ifnull +127 -> 744
-    //   620: aload_0
-    //   621: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   624: getfield 385	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
-    //   627: astore_2
-    //   628: aload_0
-    //   629: aload_0
-    //   630: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   633: getfield 386	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:segmentIndex	I
-    //   636: invokespecial 221	com/tencent/tav/decoder/VideoDecoderTrack:getSegment	(I)Lcom/tencent/tav/decoder/DecoderTrackSegment;
-    //   639: aload_1
-    //   640: if_acmpeq +17 -> 657
-    //   643: aload_2
-    //   644: aload_1
-    //   645: invokevirtual 284	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   648: aload_1
-    //   649: invokevirtual 389	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   652: invokeinterface 395 3 0
-    //   657: aload_0
-    //   658: aconst_null
-    //   659: putfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   662: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   665: astore_1
-    //   666: new 336	java/lang/StringBuilder
-    //   669: dup
-    //   670: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   673: ldc_w 397
-    //   676: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   679: astore 7
-    //   681: aload_0
-    //   682: getfield 121	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
-    //   685: ifnonnull +53 -> 738
-    //   688: iconst_1
-    //   689: istore 5
-    //   691: aload_1
-    //   692: aload 7
-    //   694: iload 5
-    //   696: invokevirtual 353	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   699: ldc_w 399
-    //   702: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   705: aload_2
-    //   706: invokeinterface 402 1 0
-    //   711: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   714: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   717: iconst_0
-    //   718: anewarray 4	java/lang/Object
-    //   721: invokestatic 362	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   724: aload 8
-    //   726: monitorexit
-    //   727: aload_2
-    //   728: astore_1
-    //   729: goto -707 -> 22
-    //   732: astore_1
-    //   733: aload 8
-    //   735: monitorexit
-    //   736: aload_1
-    //   737: athrow
-    //   738: iconst_0
-    //   739: istore 5
-    //   741: goto -50 -> 691
-    //   744: aload 8
-    //   746: monitorexit
-    //   747: goto -385 -> 362
-    //   750: aload 7
-    //   752: astore 9
-    //   754: new 441	com/tencent/tav/decoder/VideoDecoder
-    //   757: dup
-    //   758: aload 11
-    //   760: getfield 348	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   763: aload 8
-    //   765: invokespecial 444	com/tencent/tav/decoder/VideoDecoder:<init>	(Ljava/lang/String;Landroid/view/Surface;)V
-    //   768: astore 7
-    //   770: goto -315 -> 455
-    //   773: astore 10
-    //   775: aload 7
-    //   777: astore 9
-    //   779: aload 10
-    //   781: astore 7
-    //   783: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   786: new 336	java/lang/StringBuilder
-    //   789: dup
-    //   790: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   793: ldc_w 446
-    //   796: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   799: aload 7
-    //   801: invokevirtual 449	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   804: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   807: aload 7
-    //   809: invokevirtual 452	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   812: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   815: invokestatic 456	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   818: aload_0
-    //   819: aload 8
-    //   821: invokespecial 215	com/tencent/tav/decoder/VideoDecoderTrack:free	(Landroid/view/Surface;)V
-    //   824: aload 9
-    //   826: ifnull +22 -> 848
-    //   829: aload 9
-    //   831: iconst_1
-    //   832: invokeinterface 460 2 0
-    //   837: aload_0
-    //   838: aload 9
-    //   840: invokeinterface 464 1 0
-    //   845: invokespecial 215	com/tencent/tav/decoder/VideoDecoderTrack:free	(Landroid/view/Surface;)V
-    //   848: aconst_null
-    //   849: astore 7
-    //   851: goto -342 -> 509
-    //   854: astore 7
-    //   856: aconst_null
-    //   857: astore 7
-    //   859: goto -350 -> 509
-    //   862: astore_1
-    //   863: aload_1
-    //   864: athrow
-    //   865: aload 7
-    //   867: astore_1
-    //   868: goto -846 -> 22
-    //   871: astore 7
-    //   873: goto -90 -> 783
-    //   876: astore 8
-    //   878: aload 7
-    //   880: astore 9
-    //   882: aload 8
-    //   884: astore 7
-    //   886: aconst_null
-    //   887: astore 8
-    //   889: goto -106 -> 783
-    //   892: aconst_null
-    //   893: astore 8
-    //   895: goto -482 -> 413
+    //   224: aload_0
+    //   225: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   228: getfield 391	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:segmentIndex	I
+    //   231: invokespecial 226	com/tencent/tav/decoder/VideoDecoderTrack:getSegment	(I)Lcom/tencent/tav/decoder/DecoderTrackSegment;
+    //   234: aload_1
+    //   235: if_acmpeq +17 -> 252
+    //   238: aload_2
+    //   239: aload_1
+    //   240: invokevirtual 289	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   243: aload_1
+    //   244: invokevirtual 394	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   247: invokeinterface 400 3 0
+    //   252: aload_0
+    //   253: aconst_null
+    //   254: putfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   257: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   260: astore_1
+    //   261: new 341	java/lang/StringBuilder
+    //   264: dup
+    //   265: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   268: ldc_w 402
+    //   271: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: astore 7
+    //   276: aload_0
+    //   277: getfield 120	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
+    //   280: ifnonnull +61 -> 341
+    //   283: iload 6
+    //   285: istore 5
+    //   287: aload_1
+    //   288: aload 7
+    //   290: iload 5
+    //   292: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   295: ldc_w 404
+    //   298: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   301: aload_2
+    //   302: invokeinterface 407 1 0
+    //   307: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokestatic 367	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   316: aload 8
+    //   318: monitorexit
+    //   319: aload_2
+    //   320: astore_1
+    //   321: goto -299 -> 22
+    //   324: astore_1
+    //   325: aload 8
+    //   327: monitorexit
+    //   328: aload_1
+    //   329: athrow
+    //   330: astore_1
+    //   331: aload_0
+    //   332: monitorexit
+    //   333: aload_1
+    //   334: athrow
+    //   335: iconst_0
+    //   336: istore 5
+    //   338: goto -268 -> 70
+    //   341: iconst_0
+    //   342: istore 5
+    //   344: goto -57 -> 287
+    //   347: aload 8
+    //   349: monitorexit
+    //   350: aload_0
+    //   351: getfield 120	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
+    //   354: ifnull +451 -> 805
+    //   357: aload 11
+    //   359: getfield 410	com/tencent/tav/decoder/DecoderAssetTrack:size	Lcom/tencent/tav/coremedia/CGSize;
+    //   362: astore 8
+    //   364: aload 11
+    //   366: getfield 413	com/tencent/tav/decoder/DecoderAssetTrack:preferRotation	I
+    //   369: istore 4
+    //   371: aload 8
+    //   373: ifnull +432 -> 805
+    //   376: aload_0
+    //   377: getfield 120	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
+    //   380: aload 8
+    //   382: getfield 418	com/tencent/tav/coremedia/CGSize:width	F
+    //   385: f2i
+    //   386: aload 8
+    //   388: getfield 421	com/tencent/tav/coremedia/CGSize:height	F
+    //   391: f2i
+    //   392: iload 4
+    //   394: invokeinterface 427 4 0
+    //   399: astore 9
+    //   401: aload 7
+    //   403: astore 8
+    //   405: aload_0
+    //   406: aload 11
+    //   408: aload 9
+    //   410: invokespecial 220	com/tencent/tav/decoder/VideoDecoderTrack:newDecoderParams	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Landroid/view/Surface;)Lcom/tencent/tav/decoder/IVideoDecoder$Params;
+    //   413: astore 10
+    //   415: aload 7
+    //   417: astore 8
+    //   419: invokestatic 433	com/tencent/tav/decoder/factory/AVDecoderFactory:getInstance	()Lcom/tencent/tav/decoder/factory/IDecoderFactory;
+    //   422: aload 10
+    //   424: invokeinterface 439 2 0
+    //   429: astore 7
+    //   431: aload 7
+    //   433: ifnull +19 -> 452
+    //   436: aload 7
+    //   438: astore 8
+    //   440: aload 7
+    //   442: aload_1
+    //   443: invokevirtual 289	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   446: aload_2
+    //   447: invokeinterface 400 3 0
+    //   452: aload 7
+    //   454: astore 8
+    //   456: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   459: new 341	java/lang/StringBuilder
+    //   462: dup
+    //   463: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   466: ldc_w 441
+    //   469: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   472: aload 11
+    //   474: getfield 353	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   477: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   483: invokestatic 367	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   486: iload_3
+    //   487: iconst_1
+    //   488: isub
+    //   489: istore_3
+    //   490: goto -400 -> 90
+    //   493: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   496: new 341	java/lang/StringBuilder
+    //   499: dup
+    //   500: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   503: ldc_w 443
+    //   506: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: aload 11
+    //   511: getfield 353	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   514: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   517: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   520: invokestatic 367	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   523: aload_0
+    //   524: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   527: ifnull -177 -> 350
+    //   530: aload_0
+    //   531: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   534: getfield 387	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   537: aload 11
+    //   539: invokestatic 379	com/tencent/tav/extractor/ExtractorUtils:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
+    //   542: ifeq -192 -> 350
+    //   545: aload_0
+    //   546: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   549: getfield 390	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   552: ifnull -202 -> 350
+    //   555: aload_0
+    //   556: getfield 99	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoderLock	Ljava/lang/Object;
+    //   559: astore 8
+    //   561: aload 8
+    //   563: monitorenter
+    //   564: aload_0
+    //   565: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   568: ifnull +145 -> 713
+    //   571: aload_0
+    //   572: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   575: getfield 387	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   578: aload 11
+    //   580: if_acmpne +133 -> 713
+    //   583: aload_0
+    //   584: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   587: getfield 390	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   590: ifnull +123 -> 713
+    //   593: aload_0
+    //   594: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   597: getfield 390	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   600: astore_2
+    //   601: aload_0
+    //   602: aload_0
+    //   603: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   606: getfield 391	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:segmentIndex	I
+    //   609: invokespecial 226	com/tencent/tav/decoder/VideoDecoderTrack:getSegment	(I)Lcom/tencent/tav/decoder/DecoderTrackSegment;
+    //   612: aload_1
+    //   613: if_acmpeq +17 -> 630
+    //   616: aload_2
+    //   617: aload_1
+    //   618: invokevirtual 289	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   621: aload_1
+    //   622: invokevirtual 394	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   625: invokeinterface 400 3 0
+    //   630: aload_0
+    //   631: aconst_null
+    //   632: putfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   635: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   638: astore_1
+    //   639: new 341	java/lang/StringBuilder
+    //   642: dup
+    //   643: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   646: ldc_w 402
+    //   649: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   652: astore 7
+    //   654: aload_0
+    //   655: getfield 120	com/tencent/tav/decoder/VideoDecoderTrack:surfaceCreator	Lcom/tencent/tav/decoder/IDecoderTrack$SurfaceCreator;
+    //   658: ifnonnull +49 -> 707
+    //   661: iconst_1
+    //   662: istore 5
+    //   664: aload_1
+    //   665: aload 7
+    //   667: iload 5
+    //   669: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   672: ldc_w 404
+    //   675: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   678: aload_2
+    //   679: invokeinterface 407 1 0
+    //   684: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   687: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   690: invokestatic 367	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   693: aload 8
+    //   695: monitorexit
+    //   696: aload_2
+    //   697: astore_1
+    //   698: goto -676 -> 22
+    //   701: astore_1
+    //   702: aload 8
+    //   704: monitorexit
+    //   705: aload_1
+    //   706: athrow
+    //   707: iconst_0
+    //   708: istore 5
+    //   710: goto -46 -> 664
+    //   713: aload 8
+    //   715: monitorexit
+    //   716: goto -366 -> 350
+    //   719: astore 7
+    //   721: aload 8
+    //   723: astore 10
+    //   725: aload 7
+    //   727: astore 8
+    //   729: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   732: ldc_w 445
+    //   735: aload 8
+    //   737: invokestatic 449	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   740: aload_0
+    //   741: aload 9
+    //   743: invokespecial 252	com/tencent/tav/decoder/VideoDecoderTrack:free	(Landroid/view/Surface;)V
+    //   746: aload 10
+    //   748: ifnull +22 -> 770
+    //   751: aload 10
+    //   753: iconst_1
+    //   754: invokeinterface 453 2 0
+    //   759: aload_0
+    //   760: aload 10
+    //   762: invokeinterface 457 1 0
+    //   767: invokespecial 252	com/tencent/tav/decoder/VideoDecoderTrack:free	(Landroid/view/Surface;)V
+    //   770: aconst_null
+    //   771: astore 7
+    //   773: goto -287 -> 486
+    //   776: astore 7
+    //   778: aconst_null
+    //   779: astore 7
+    //   781: goto -295 -> 486
+    //   784: astore_1
+    //   785: aload_1
+    //   786: athrow
+    //   787: aload 7
+    //   789: astore_1
+    //   790: goto -768 -> 22
+    //   793: astore 8
+    //   795: aconst_null
+    //   796: astore 9
+    //   798: aload 7
+    //   800: astore 10
+    //   802: goto -73 -> 729
+    //   805: aconst_null
+    //   806: astore 9
+    //   808: goto -407 -> 401
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	898	0	this	VideoDecoderTrack
-    //   0	898	1	paramDecoderTrackSegment	DecoderTrackSegment
-    //   0	898	2	paramCMTime	CMTime
-    //   90	423	3	i	int
-    //   117	288	4	j	int
-    //   68	672	5	bool1	boolean
-    //   1	291	6	bool2	boolean
-    //   4	846	7	localObject1	Object
-    //   854	1	7	localException1	Exception
-    //   857	9	7	localObject2	Object
-    //   871	8	7	localException2	Exception
-    //   884	1	7	localObject3	Object
-    //   58	762	8	localObject4	Object
-    //   876	7	8	localException3	Exception
-    //   887	7	8	localObject5	Object
-    //   415	466	9	localObject6	Object
-    //   773	7	10	localException4	Exception
-    //   12	747	11	localDecoderAssetTrack	DecoderAssetTrack
+    //   0	811	0	this	VideoDecoderTrack
+    //   0	811	1	paramDecoderTrackSegment	DecoderTrackSegment
+    //   0	811	2	paramCMTime	CMTime
+    //   86	404	3	i	int
+    //   113	280	4	j	int
+    //   68	641	5	bool1	boolean
+    //   1	283	6	bool2	boolean
+    //   4	662	7	localObject1	Object
+    //   719	7	7	localException1	Exception
+    //   771	1	7	localObject2	Object
+    //   776	1	7	localException2	Exception
+    //   779	20	7	localObject3	Object
+    //   58	678	8	localObject4	Object
+    //   793	1	8	localException3	Exception
+    //   399	408	9	localSurface	Surface
+    //   413	388	10	localObject5	Object
+    //   12	567	11	localDecoderAssetTrack	DecoderAssetTrack
     // Exception table:
     //   from	to	target	type
-    //   191	260	336	finally
-    //   260	291	336	finally
-    //   295	331	336	finally
-    //   337	340	336	finally
-    //   359	362	336	finally
-    //   8	14	342	finally
-    //   26	67	342	finally
-    //   70	89	342	finally
-    //   103	191	342	finally
-    //   340	342	342	finally
-    //   362	383	342	finally
-    //   388	413	342	finally
-    //   417	426	342	finally
-    //   430	439	342	finally
-    //   439	455	342	finally
-    //   459	471	342	finally
-    //   475	509	342	finally
-    //   516	591	342	finally
-    //   736	738	342	finally
-    //   754	770	342	finally
-    //   783	824	342	finally
-    //   863	865	342	finally
-    //   591	657	732	finally
-    //   657	688	732	finally
-    //   691	727	732	finally
-    //   733	736	732	finally
-    //   744	747	732	finally
-    //   439	455	773	java/lang/Exception
-    //   829	848	854	java/lang/Exception
-    //   829	848	862	finally
-    //   417	426	871	java/lang/Exception
-    //   430	439	871	java/lang/Exception
-    //   459	471	871	java/lang/Exception
-    //   475	509	871	java/lang/Exception
-    //   754	770	871	java/lang/Exception
-    //   362	383	876	java/lang/Exception
-    //   388	413	876	java/lang/Exception
+    //   183	252	324	finally
+    //   252	283	324	finally
+    //   287	319	324	finally
+    //   325	328	324	finally
+    //   347	350	324	finally
+    //   8	14	330	finally
+    //   26	67	330	finally
+    //   70	85	330	finally
+    //   99	183	330	finally
+    //   328	330	330	finally
+    //   350	371	330	finally
+    //   376	401	330	finally
+    //   405	415	330	finally
+    //   419	431	330	finally
+    //   440	452	330	finally
+    //   456	486	330	finally
+    //   493	564	330	finally
+    //   705	707	330	finally
+    //   729	746	330	finally
+    //   785	787	330	finally
+    //   564	630	701	finally
+    //   630	661	701	finally
+    //   664	696	701	finally
+    //   702	705	701	finally
+    //   713	716	701	finally
+    //   405	415	719	java/lang/Exception
+    //   419	431	719	java/lang/Exception
+    //   440	452	719	java/lang/Exception
+    //   456	486	719	java/lang/Exception
+    //   751	770	776	java/lang/Exception
+    //   751	770	784	finally
+    //   350	371	793	java/lang/Exception
+    //   376	401	793	java/lang/Exception
   }
   
   private void createDecoder(DecoderAssetTrack paramDecoderAssetTrack, int paramInt)
@@ -650,35 +609,40 @@ public class VideoDecoderTrack
     this.nextDecoder.segmentIndex = paramInt;
   }
   
-  private CMSampleBuffer createSampleBuffer(CMTime paramCMTime)
+  private CMSampleBuffer createSampleBuffer(long paramLong)
   {
-    return new CMSampleBuffer(paramCMTime);
+    return createSampleBuffer(CMSampleState.fromError(paramLong));
   }
   
-  private CMSampleBuffer createSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo, boolean paramBoolean)
+  private CMSampleBuffer createSampleBuffer(CMSampleState paramCMSampleState)
   {
-    return new CMSampleBuffer(paramCMTime, paramTextureInfo, paramBoolean);
+    return new CMSampleBuffer(paramCMSampleState);
   }
   
-  private CMSampleBuffer createSampleBuffer(CMTime paramCMTime, VideoTexture paramVideoTexture, boolean paramBoolean)
+  private CMSampleBuffer createSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
+  {
+    return new CMSampleBuffer(paramCMSampleState, paramTextureInfo, paramBoolean);
+  }
+  
+  private CMSampleBuffer createSampleBuffer(CMSampleState paramCMSampleState, VideoTexture paramVideoTexture, boolean paramBoolean)
   {
     if (paramVideoTexture == null) {}
     for (TextureInfo localTextureInfo = null;; localTextureInfo = paramVideoTexture.getTextureInfo())
     {
-      paramCMTime = new CacheSampleBuffer(paramCMTime, localTextureInfo, paramBoolean);
-      paramCMTime.setTexture(paramVideoTexture);
-      return paramCMTime;
+      paramCMSampleState = new CacheSampleBuffer(paramCMSampleState, localTextureInfo, paramBoolean);
+      paramCMSampleState.setTexture(paramVideoTexture);
+      return paramCMSampleState;
     }
   }
   
-  private CMSampleBuffer createSampleBuffer(@NonNull CMTime paramCMTime, boolean paramBoolean)
+  private CMSampleBuffer createSampleBuffer(@NonNull CMSampleState paramCMSampleState, boolean paramBoolean)
   {
     if ((this.currentDecoder instanceof VideoDecoder)) {
-      return createSampleBuffer(paramCMTime, this.surfaceCreator.videoTextureForSurface(this._outputSurface), paramBoolean);
+      return createSampleBuffer(paramCMSampleState, this.surfaceCreator.videoTextureForSurface(this._outputSurface), paramBoolean);
     }
     if (this.currentDecoder == null) {}
     for (TextureInfo localTextureInfo = null;; localTextureInfo = this.currentDecoder.getTextureInfo()) {
-      return createSampleBuffer(paramCMTime, localTextureInfo, paramBoolean);
+      return createSampleBuffer(paramCMSampleState, localTextureInfo, paramBoolean);
     }
   }
   
@@ -686,12 +650,12 @@ public class VideoDecoderTrack
   private CMSampleBuffer createSampleBuffer(boolean paramBoolean)
   {
     if (this.currentFrame != null) {
-      return createSampleBuffer(this.lastSampleTime, this.currentFrame.getTextureInfo(), paramBoolean);
+      return createSampleBuffer(this.lastSampleState, this.currentFrame.getTextureInfo(), paramBoolean);
     }
-    CMTime localCMTime = this.lastSampleTime;
+    CMSampleState localCMSampleState = this.lastSampleState;
     if (this.currentDecoder == null) {}
     for (TextureInfo localTextureInfo = null;; localTextureInfo = this.currentDecoder.getTextureInfo()) {
-      return createSampleBuffer(localCMTime, localTextureInfo, paramBoolean);
+      return createSampleBuffer(localCMSampleState, localTextureInfo, paramBoolean);
     }
   }
   
@@ -718,41 +682,41 @@ public class VideoDecoderTrack
         logVerbose("doReadSample: step 1 ");
         if (this.isReleased)
         {
-          paramCMTime = createSampleBuffer(IDecoder.SAMPLE_TIME_UNSTART);
+          paramCMTime = createSampleBuffer(-100L);
           return paramCMTime;
         }
         if (paramCMTime == null)
         {
-          paramCMTime = createSampleBuffer(IDecoder.SAMPLE_TIME_ERROR);
+          paramCMTime = createSampleBuffer(-3L);
           continue;
         }
         if (this.segmentIndex == -1)
         {
-          if (!this.lastSampleTime.smallThan(IDecoder.SAMPLE_TIME_FINISH))
+          if (this.lastSampleState.getStateCode() >= -1L)
           {
-            paramCMTime = createSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
+            paramCMTime = createSampleBuffer(-1L);
             continue;
           }
-          paramCMTime = createSampleBuffer(VideoDecoder.SAMPLE_TIME_UNSTART);
+          paramCMTime = createSampleBuffer(-100L);
           continue;
         }
         DecoderTrackSegment localDecoderTrackSegment = getCurrentSegment();
-        Object localObject = VideoDecoder.SAMPLE_TIME_FINISH;
+        Object localObject = CMSampleState.fromError(-1L);
         int i = 0;
         logVerbose("doReadSample: step 2 ");
         CMTime localCMTime;
         if (this.currentDecoder == null)
         {
-          this.lastSampleTime = this.lastSampleTime.add(this.frameDuration);
+          this.lastSampleState = new CMSampleState(this.lastSampleState.getTime().add(this.frameDuration));
           localCMTime = this.currentSegmentStartTime.add(localDecoderTrackSegment.getScaledDuration());
-          if (this.lastSampleTime.smallThan(localCMTime))
+          if (this.lastSampleState.getTime().smallThan(localCMTime))
           {
             if (this.surfaceCreator == null)
             {
-              paramCMTime = createSampleBuffer(this.lastSampleTime);
+              paramCMTime = createSampleBuffer(this.lastSampleState);
               continue;
             }
-            paramCMTime = createSampleBuffer(this.lastSampleTime, this.surfaceCreator.videoTextureForSurface(this._outputSurface), false);
+            paramCMTime = createSampleBuffer(this.lastSampleState, this.surfaceCreator.videoTextureForSurface(this._outputSurface), false);
           }
         }
         else
@@ -761,21 +725,21 @@ public class VideoDecoderTrack
           if ((float)((CMTime)localObject).getTimeUs() <= (float)localDecoderTrackSegment.getScaledDuration().getTimeUs() * this._speed) {
             continue;
           }
-          localObject = VideoDecoder.SAMPLE_TIME_FINISH;
+          localObject = CMSampleState.fromError(-1L);
         }
-        if ((((CMTime)localObject).equalsTo(VideoDecoder.SAMPLE_TIME_FINISH)) || (((CMTime)localObject).bigThan(localDecoderTrackSegment.getTimeRange().getDuration())))
+        if ((((CMSampleState)localObject).stateMatchingTo(new long[] { -1L })) || (((CMSampleState)localObject).getTime().bigThan(localDecoderTrackSegment.getTimeRange().getDuration())))
         {
           if (localDecoderTrackSegment.getScaledDuration().add(this.currentSegmentStartTime).sub(this.frameDuration).bigThan(paramCMTime))
           {
             if ((i == 0) || (this.currentDecoder == null) || (!this.currentDecoder.isLastFrameValid())) {
-              break label595;
+              break label653;
             }
             paramBoolean = true;
-            paramCMTime = createSampleBuffer(paramCMTime, paramBoolean);
+            paramCMTime = createSampleBuffer(new CMSampleState(paramCMTime), paramBoolean);
             continue;
             localObject = ((CMTime)localObject).add(localDecoderTrackSegment.getDecoderStartTime());
             if (this.currentDecoder == null) {
-              localObject = IDecoder.SAMPLE_TIME_UNSTART;
+              localObject = CMSampleState.fromError(-100L);
             } else {
               localObject = this.currentDecoder.readSample((CMTime)localObject);
             }
@@ -784,13 +748,13 @@ public class VideoDecoderTrack
           {
             if (paramBoolean)
             {
-              Logger.e(TAG, "async read finish , skip it!");
+              Logger.d(TAG, "async read finish , skip it!");
               paramCMTime = null;
               continue;
             }
             if (!nextSegment(true))
             {
-              paramCMTime = createSampleBuffer(VideoDecoder.SAMPLE_TIME_FINISH, false);
+              paramCMTime = createSampleBuffer(CMSampleState.fromError(-1L), false);
               continue;
             }
             localDecoderTrackSegment = getCurrentSegment();
@@ -799,34 +763,49 @@ public class VideoDecoderTrack
         }
         else
         {
-          if (((CMTime)localObject).getTimeUs() >= 0L)
+          if (((CMSampleState)localObject).getStateCode() >= 0L)
           {
             logVerbose("doReadSample: step 3 ");
-            localCMTime = ((CMTime)localObject).sub(localDecoderTrackSegment.getDecoderStartTime());
+            localCMTime = ((CMSampleState)localObject).getTime().sub(localDecoderTrackSegment.getDecoderStartTime());
             localObject = localCMTime;
             if (localCMTime.bigThan(localDecoderTrackSegment.getTimeRange().getDuration())) {
               localObject = localDecoderTrackSegment.getTimeRange().getDuration();
             }
-            localObject = this.currentSegmentStartTime.add(((CMTime)localObject).divide(this._speed));
-            logVerbose("readSample: currentTime = " + paramCMTime + "  sampleTime = " + localObject);
-            paramCMTime = createSampleBuffer((CMTime)localObject, true);
+            localObject = new CMSampleState(this.currentSegmentStartTime.add(((CMTime)localObject).divide(this._speed)));
+            logVerbose("readSample: currentTime = " + paramCMTime + "  sampleState = " + localObject);
+            paramCMTime = createSampleBuffer((CMSampleState)localObject, true);
             continue;
           }
-          if (!((CMTime)localObject).equalsTo(VideoDecoder.SAMPLE_TIME_ERROR))
+          if (!((CMSampleState)localObject).stateMatchingTo(new long[] { -3L }))
           {
-            paramCMTime = createSampleBuffer(this.lastSampleTime);
+            paramCMTime = createSampleBuffer(this.lastSampleState);
             continue;
           }
-          paramCMTime = createSampleBuffer((CMTime)localObject);
+          paramCMTime = createSampleBuffer((CMSampleState)localObject);
           continue;
         }
         i = 1;
       }
       finally {}
       continue;
-      label595:
+      label653:
       paramBoolean = false;
     }
+  }
+  
+  private void doReleaseCurrentDecoder()
+  {
+    if ((this.currentDecoder == null) || (this.currentDecoder.getSourcePath() == null)) {
+      return;
+    }
+    IVideoDecoder localIVideoDecoder = this.currentDecoder;
+    this.currentDecoder = null;
+    if ((localIVideoDecoder instanceof ImageDecoder))
+    {
+      localIVideoDecoder.release(true);
+      return;
+    }
+    ThreadPool.execute(new VideoDecoderTrack.1(this, localIVideoDecoder));
   }
   
   private int findSegmentIndexAt(CMTime paramCMTime, boolean paramBoolean)
@@ -899,14 +878,12 @@ public class VideoDecoderTrack
   
   private void logVerbose(String paramString)
   {
-    if (LOG_VERBOSE) {
-      Logger.d(TAG, paramString);
-    }
+    Logger.v(TAG, paramString);
   }
   
   private boolean needSwitchNextFrame(@Nullable CMSampleBuffer paramCMSampleBuffer1, @NonNull CMSampleBuffer paramCMSampleBuffer2, @NonNull CMTime paramCMTime)
   {
-    if ((paramCMSampleBuffer1 == null) || (paramCMSampleBuffer2.getTime().smallThan(CMTime.CMTimeZero))) {}
+    if ((paramCMSampleBuffer1 == null) || (paramCMSampleBuffer1.getTextureInfo() == null) || (paramCMSampleBuffer1.getTextureInfo().isReleased()) || (paramCMSampleBuffer2.getTime().smallThan(CMTime.CMTimeZero))) {}
     long l;
     do
     {
@@ -914,6 +891,17 @@ public class VideoDecoderTrack
       l = paramCMSampleBuffer2.getTime().getTimeUs();
     } while (Math.abs(paramCMTime.getTimeUs()) >= Math.abs(l));
     return false;
+  }
+  
+  @NotNull
+  private IVideoDecoder.Params newDecoderParams(DecoderAssetTrack paramDecoderAssetTrack, Surface paramSurface)
+  {
+    IVideoDecoder.Params localParams = new IVideoDecoder.Params();
+    localParams.sourceType = paramDecoderAssetTrack.sourceType;
+    localParams.filePath = paramDecoderAssetTrack.assetPath;
+    localParams.outputSize = ImageDecoder.IMAGE_DECODE_SIZE;
+    localParams.outputSurface = paramSurface;
+    return localParams;
   }
   
   private boolean nextSegment(boolean paramBoolean)
@@ -927,22 +915,16 @@ public class VideoDecoderTrack
       return false;
     }
     this.currentSegmentStartTime = getSegmentStartTime(this.segmentIndex);
-    this.lastSampleTime = this.currentSegmentStartTime;
+    this.lastSampleState = new CMSampleState(this.currentSegmentStartTime);
     Object localObject2 = getCurrentSegment();
     IVideoDecoder localIVideoDecoder;
-    if (((DecoderTrackSegment)localObject2).getVideoAsset() != null) {
-      synchronized (this.currentDecoderLock)
+    if (((DecoderTrackSegment)localObject2).getVideoAsset() != null)
+    {
+      releaseCurrentDecoder();
+      if (paramBoolean)
       {
-        if ((this.currentDecoder != null) && (this.currentDecoder.getSourcePath() != null))
-        {
-          new VideoDecoderTrack.ReleaseDecoderThread(this, this.currentDecoder).start();
-          this.currentDecoder = null;
-        }
-        if (paramBoolean)
-        {
-          ??? = getCurrentSegment().getDecoderStartTime();
-          localIVideoDecoder = createDecoder((DecoderTrackSegment)localObject2, (CMTime)???);
-        }
+        ??? = getCurrentSegment().getDecoderStartTime();
+        localIVideoDecoder = createDecoder((DecoderTrackSegment)localObject2, (CMTime)???);
       }
     }
     for (;;)
@@ -963,25 +945,17 @@ public class VideoDecoderTrack
         ??? = TAG;
         localObject2 = new StringBuilder().append("nextSegment:");
         if (this.currentDecoder != null) {
-          break label385;
+          break label306;
         }
         paramBoolean = true;
         Logger.d((String)???, paramBoolean + " " + this._speed);
         return true;
-        localObject3 = finally;
-        throw localObject3;
         ??? = CMTime.CMTimeInvalid;
       }
-      Logger.e(TAG, "nextSegment: videoAsset is null");
-      synchronized (this.currentDecoderLock)
-      {
-        if (this.currentDecoder != null)
-        {
-          new VideoDecoderTrack.ReleaseDecoderThread(this, this.currentDecoder).start();
-          this.currentDecoder = null;
-        }
-      }
-      label385:
+      Logger.d(TAG, "nextSegment: videoAsset is null");
+      releaseCurrentDecoder();
+      continue;
+      label306:
       paramBoolean = false;
     }
   }
@@ -1000,18 +974,14 @@ public class VideoDecoderTrack
     }
   }
   
-  private void releaseDecoder()
+  private void releaseCurrentDecoder()
   {
     if (this.currentDecoder == null) {
       return;
     }
     synchronized (this.currentDecoderLock)
     {
-      if ((this.currentDecoder != null) && (this.currentDecoder.getSourcePath() != null))
-      {
-        new VideoDecoderTrack.ReleaseDecoderThread(this, this.currentDecoder).start();
-        this.currentDecoder = null;
-      }
+      doReleaseCurrentDecoder();
       return;
     }
   }
@@ -1024,7 +994,7 @@ public class VideoDecoderTrack
   @Nullable
   private CMSampleBuffer switchToNextFrame()
   {
-    this.currentFrame = createSampleBuffer(this.nextFrame.getTime(), this.nextFrame.getTextureInfo(), this.nextFrame.isNewFrame());
+    this.currentFrame = createSampleBuffer(this.nextFrame.getState(), this.nextFrame.getTextureInfo(), this.nextFrame.isNewFrame());
     VideoTexture localVideoTexture;
     if ((this.nextFrame.isNewFrame()) && ((this.nextFrame instanceof CacheSampleBuffer)))
     {
@@ -1036,17 +1006,17 @@ public class VideoDecoderTrack
     try
     {
       localVideoTexture.awaitNewImage();
-      this.nextFrame = createSampleBuffer(CMTime.CMTimeInvalid);
+      this.nextFrame = createSampleBuffer(new CMSampleState());
       if (this.currentFrame.getTime().smallThan(CMTime.CMTimeZero))
       {
-        this.lastSampleTime = this.currentFrame.getTime();
-        return createSampleBuffer(this.currentFrame.getTime());
+        this.lastSampleState = this.currentFrame.getState();
+        return createSampleBuffer(this.currentFrame.getState());
       }
     }
     catch (Throwable localThrowable)
     {
       Logger.e(TAG, "readSample: videoTexture.awaitNewImage() error", localThrowable);
-      return createSampleBuffer(IDecoder.SAMPLE_TIME_ERROR);
+      return createSampleBuffer(CMSampleState.fromError(-3L));
     }
     return null;
   }
@@ -1097,7 +1067,7 @@ public class VideoDecoderTrack
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: invokespecial 678	com/tencent/tav/decoder/VideoDecoderTrack:unNeedReDecoderNextFrame	(Lcom/tencent/tav/coremedia/CMTime;)Z
+    //   4: invokespecial 727	com/tencent/tav/decoder/VideoDecoderTrack:unNeedReDecoderNextFrame	(Lcom/tencent/tav/coremedia/CMTime;)Z
     //   7: istore_2
     //   8: iload_2
     //   9: ifeq +6 -> 15
@@ -1105,22 +1075,22 @@ public class VideoDecoderTrack
     //   13: monitorexit
     //   14: return
     //   15: aload_0
-    //   16: getfield 106	com/tencent/tav/decoder/VideoDecoderTrack:isReleased	Z
+    //   16: getfield 105	com/tencent/tav/decoder/VideoDecoderTrack:isReleased	Z
     //   19: ifne -7 -> 12
     //   22: aload_0
-    //   23: new 485	com/tencent/tav/coremedia/CMSampleBuffer
+    //   23: new 482	com/tencent/tav/coremedia/CMSampleBuffer
     //   26: dup
     //   27: aload_1
-    //   28: invokespecial 487	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
-    //   31: putfield 108	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   28: invokespecial 728	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   31: putfield 107	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
     //   34: aload_0
-    //   35: getfield 119	com/tencent/tav/decoder/VideoDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderThread;
+    //   35: getfield 118	com/tencent/tav/decoder/VideoDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderThread;
     //   38: astore_1
     //   39: aload_1
     //   40: monitorenter
     //   41: aload_0
-    //   42: getfield 119	com/tencent/tav/decoder/VideoDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderThread;
-    //   45: invokevirtual 681	com/tencent/tav/decoder/VideoDecoderTrack$DecoderThread:action	()V
+    //   42: getfield 118	com/tencent/tav/decoder/VideoDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderThread;
+    //   45: invokevirtual 731	com/tencent/tav/decoder/VideoDecoderTrack$DecoderThread:action	()V
     //   48: aload_1
     //   49: monitorexit
     //   50: goto -38 -> 12
@@ -1169,7 +1139,7 @@ public class VideoDecoderTrack
   
   public CMTime getCurrentSampleTime()
   {
-    return this.lastSampleTime;
+    return this.lastSampleState.getTime();
   }
   
   public CMTime getDuration()
@@ -1203,10 +1173,10 @@ public class VideoDecoderTrack
   
   public CMSampleBuffer readSample()
   {
-    if (this.lastSampleTime == CMTime.CMTimeInvalid) {
+    if (this.lastSampleState.isInvalid()) {
       return readSample(CMTime.CMTimeZero);
     }
-    return readSample(this.lastSampleTime.add(this.frameDuration));
+    return readSample(this.lastSampleState.getTime().add(this.frameDuration));
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
@@ -1214,65 +1184,62 @@ public class VideoDecoderTrack
     logVerbose("readSample: start expectFrameTime = " + paramCMTime);
     if (this.isReleased)
     {
-      releaseDecoder();
-      ??? = createSampleBuffer(IDecoder.SAMPLE_TIME_UNSTART);
-      return ???;
+      releaseCurrentDecoder();
+      paramCMTime = createSampleBuffer(CMSampleState.fromError(-100L));
+      return paramCMTime;
     }
     if (paramCMTime.bigThan(getDuration()))
     {
-      releaseDecoder();
-      return createSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
+      releaseCurrentDecoder();
+      return createSampleBuffer(CMSampleState.fromError(-1L));
     }
     if ((this.currentFrame != null) && (this.currentFrame.getTime().getTimeUs() >= 0L) && (this.currentFrame.getTextureInfo() != null) && (!this.currentFrame.getTime().smallThan(paramCMTime)))
     {
-      this.lastSampleTime = paramCMTime;
-      return createSampleBuffer(this.lastSampleTime, this.currentFrame.getTextureInfo(), false);
+      this.lastSampleState = new CMSampleState(paramCMTime);
+      return createSampleBuffer(this.lastSampleState, this.currentFrame.getTextureInfo(), false);
     }
     logVerbose("readSample: step 1 ");
-    Object localObject2 = paramCMTime.sub(this.frameDuration).add(new CMTime(1L, paramCMTime.timeScale));
-    if ((findSegmentIndexAt(paramCMTime, false) == this.segmentIndex) && (this.nextFrame != null) && (this.nextFrame.getTime().getTimeUs() >= 0L) && (this.decodeType == IDecoder.DecodeType.Video)) {}
+    CMTime localCMTime = paramCMTime.sub(this.frameDuration).add(new CMTime(1L, paramCMTime.timeScale));
+    if ((findSegmentIndexAt(paramCMTime, false) == this.segmentIndex) && (this.nextFrame != null) && (this.nextFrame.getState().getStateCode() >= 0L) && (this.decodeType == IDecoder.DecodeType.Video)) {}
     for (;;)
     {
       synchronized (this.nextFrameDecoderLock)
       {
-        if ((this.nextFrame == null) || (this.nextFrame.getTime().getTimeUs() < IDecoder.SAMPLE_TIME_FINISH.getTimeUs()) || ((this.nextFrame.getTextureInfo() == null) && (this.nextFrame.getSampleByteBuffer() == null)))
+        if ((this.nextFrame == null) || (this.nextFrame.getState().getStateCode() < -1L) || ((this.nextFrame.getTextureInfo() == null) && (this.nextFrame.getSampleByteBuffer() == null)))
         {
-          logVerbose("readSample:" + localObject2 + " nextFrame not hit time");
-          this.nextFrame = doReadSample((CMTime)localObject2);
+          logVerbose("readSample:" + localCMTime + " nextFrame not hit time");
+          this.nextFrame = doReadSample(localCMTime);
         }
-        logVerbose("readSample: step 2 ");
+        createNextDecoder(this.segmentIndex);
+        this.lastSampleState = new CMSampleState(paramCMTime);
         boolean bool = needSwitchNextFrame(this.currentFrame, this.nextFrame, paramCMTime);
-        localObject2 = new StringBuilder().append("readSample: needSwitch: ").append(bool).append(" expectFrameTime = ").append(paramCMTime).append(" currentFrame = ");
+        ??? = new StringBuilder().append("readSample: needSwitch: ").append(bool).append(" expectFrameTime = ").append(paramCMTime).append(" currentFrame = ");
         if (this.currentFrame != null) {
-          break label528;
+          break label519;
         }
-        ??? = CMTime.CMTimeZero;
-        logVerbose(??? + "  nextFrame = " + this.nextFrame);
+        paramCMTime = CMTime.CMTimeZero;
+        logVerbose(paramCMTime + "  nextFrame = " + this.nextFrame);
         if (bool)
         {
-          localObject2 = switchToNextFrame();
-          ??? = localObject2;
-          if (localObject2 != null) {
+          ??? = switchToNextFrame();
+          paramCMTime = (CMTime)???;
+          if (??? != null) {
             break;
           }
         }
-        logVerbose("readSample: step 3 ");
-        createNextDecoder(this.segmentIndex);
-        this.lastSampleTime = paramCMTime;
-        logVerbose("readSample: step 4 ");
         return createSampleBuffer(bool);
       }
-      logVerbose("readSample:" + localObject2 + " nextFrame not hit");
+      logVerbose("readSample:" + localCMTime + " nextFrame not hit");
       if (findSegmentIndexAt(paramCMTime, false) != this.segmentIndex)
       {
         this.nextFrame = doReadSample(paramCMTime);
       }
       else
       {
-        this.nextFrame = doReadSample((CMTime)localObject2);
+        this.nextFrame = doReadSample(localCMTime);
         continue;
-        label528:
-        ??? = this.currentFrame.getTime();
+        label519:
+        paramCMTime = this.currentFrame.getTime();
       }
     }
   }
@@ -1284,86 +1251,86 @@ public class VideoDecoderTrack
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 119	com/tencent/tav/decoder/VideoDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderThread;
-    //   6: invokevirtual 746	com/tencent/tav/decoder/VideoDecoderTrack$DecoderThread:release	()V
-    //   9: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   12: new 336	java/lang/StringBuilder
+    //   3: getfield 118	com/tencent/tav/decoder/VideoDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderThread;
+    //   6: invokevirtual 791	com/tencent/tav/decoder/VideoDecoderTrack$DecoderThread:release	()V
+    //   9: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   12: new 341	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 337	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 748
-    //   22: invokevirtual 343	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokespecial 342	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 793
+    //   22: invokevirtual 348	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: aload_0
-    //   26: invokevirtual 452	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 593	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: invokevirtual 583	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 572	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: aload_0
     //   36: iconst_1
-    //   37: putfield 106	com/tencent/tav/decoder/VideoDecoderTrack:isReleased	Z
+    //   37: putfield 105	com/tencent/tav/decoder/VideoDecoderTrack:isReleased	Z
     //   40: aload_0
-    //   41: getfield 77	com/tencent/tav/decoder/VideoDecoderTrack:segments	Ljava/util/ArrayList;
-    //   44: invokevirtual 751	java/util/ArrayList:clear	()V
+    //   41: getfield 76	com/tencent/tav/decoder/VideoDecoderTrack:segments	Ljava/util/ArrayList;
+    //   44: invokevirtual 796	java/util/ArrayList:clear	()V
     //   47: aload_0
-    //   48: getfield 207	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   48: getfield 212	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
     //   51: ifnull +31 -> 82
     //   54: aload_0
-    //   55: getfield 207	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   55: getfield 212	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
     //   58: iconst_1
-    //   59: invokeinterface 460 2 0
+    //   59: invokeinterface 453 2 0
     //   64: aload_0
     //   65: aload_0
-    //   66: getfield 207	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
-    //   69: invokeinterface 464 1 0
-    //   74: invokespecial 753	com/tencent/tav/decoder/VideoDecoderTrack:release	(Landroid/view/Surface;)V
+    //   66: getfield 212	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   69: invokeinterface 457 1 0
+    //   74: invokespecial 798	com/tencent/tav/decoder/VideoDecoderTrack:release	(Landroid/view/Surface;)V
     //   77: aload_0
     //   78: aconst_null
-    //   79: putfield 207	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
+    //   79: putfield 212	com/tencent/tav/decoder/VideoDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/IVideoDecoder;
     //   82: aload_0
-    //   83: getfield 100	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoderLock	Ljava/lang/Object;
+    //   83: getfield 99	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoderLock	Ljava/lang/Object;
     //   86: astore_1
     //   87: aload_1
     //   88: monitorenter
     //   89: aload_0
-    //   90: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   90: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
     //   93: ifnull +15 -> 108
     //   96: aload_0
-    //   97: getfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
-    //   100: invokestatic 757	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:access$300	(Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;)V
+    //   97: getfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   100: invokestatic 802	com/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper:access$400	(Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;)V
     //   103: aload_0
     //   104: aconst_null
-    //   105: putfield 258	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
+    //   105: putfield 206	com/tencent/tav/decoder/VideoDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/VideoDecoderTrack$DecoderWrapper;
     //   108: aload_1
     //   109: monitorexit
     //   110: aload_0
-    //   111: getfield 110	com/tencent/tav/decoder/VideoDecoderTrack:currentFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   111: getfield 109	com/tencent/tav/decoder/VideoDecoderTrack:currentFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
     //   114: ifnull +23 -> 137
     //   117: aload_0
-    //   118: getfield 110	com/tencent/tav/decoder/VideoDecoderTrack:currentFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   121: invokevirtual 518	com/tencent/tav/coremedia/CMSampleBuffer:getTextureInfo	()Lcom/tencent/tav/coremedia/TextureInfo;
+    //   118: getfield 109	com/tencent/tav/decoder/VideoDecoderTrack:currentFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   121: invokevirtual 519	com/tencent/tav/coremedia/CMSampleBuffer:getTextureInfo	()Lcom/tencent/tav/coremedia/TextureInfo;
     //   124: ifnull +13 -> 137
     //   127: aload_0
-    //   128: getfield 110	com/tencent/tav/decoder/VideoDecoderTrack:currentFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   131: invokevirtual 518	com/tencent/tav/coremedia/CMSampleBuffer:getTextureInfo	()Lcom/tencent/tav/coremedia/TextureInfo;
-    //   134: invokevirtual 760	com/tencent/tav/coremedia/TextureInfo:release	()V
+    //   128: getfield 109	com/tencent/tav/decoder/VideoDecoderTrack:currentFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   131: invokevirtual 519	com/tencent/tav/coremedia/CMSampleBuffer:getTextureInfo	()Lcom/tencent/tav/coremedia/TextureInfo;
+    //   134: invokevirtual 803	com/tencent/tav/coremedia/TextureInfo:release	()V
     //   137: aload_0
-    //   138: getfield 108	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   138: getfield 107	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
     //   141: ifnull +39 -> 180
     //   144: aload_0
-    //   145: getfield 108	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   148: instanceof 494
+    //   145: getfield 107	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   148: instanceof 492
     //   151: ifeq +29 -> 180
     //   154: aload_0
-    //   155: getfield 108	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   158: checkcast 494	com/tencent/tav/decoder/CacheSampleBuffer
-    //   161: invokevirtual 644	com/tencent/tav/decoder/CacheSampleBuffer:getTexture	()Lcom/tencent/tav/decoder/VideoTexture;
+    //   155: getfield 107	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   158: checkcast 492	com/tencent/tav/decoder/CacheSampleBuffer
+    //   161: invokevirtual 693	com/tencent/tav/decoder/CacheSampleBuffer:getTexture	()Lcom/tencent/tav/decoder/VideoTexture;
     //   164: ifnull +16 -> 180
     //   167: aload_0
-    //   168: getfield 108	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   171: checkcast 494	com/tencent/tav/decoder/CacheSampleBuffer
-    //   174: invokevirtual 644	com/tencent/tav/decoder/CacheSampleBuffer:getTexture	()Lcom/tencent/tav/decoder/VideoTexture;
-    //   177: invokevirtual 761	com/tencent/tav/decoder/VideoTexture:release	()V
-    //   180: getstatic 54	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
-    //   183: ldc_w 763
-    //   186: invokestatic 593	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: getfield 107	com/tencent/tav/decoder/VideoDecoderTrack:nextFrame	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   171: checkcast 492	com/tencent/tav/decoder/CacheSampleBuffer
+    //   174: invokevirtual 693	com/tencent/tav/decoder/CacheSampleBuffer:getTexture	()Lcom/tencent/tav/decoder/VideoTexture;
+    //   177: invokevirtual 804	com/tencent/tav/decoder/VideoTexture:release	()V
+    //   180: getstatic 55	com/tencent/tav/decoder/VideoDecoderTrack:TAG	Ljava/lang/String;
+    //   183: ldc_w 806
+    //   186: invokestatic 572	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   189: aload_0
     //   190: monitorexit
     //   191: return
@@ -1398,7 +1365,7 @@ public class VideoDecoderTrack
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
     Object localObject1 = null;
-    logVerbose("seekTo:[timeUs " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
+    logVerbose("seekTo:[time " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
     synchronized (this.nextFrameDecoderLock)
     {
       this.currentFrame = null;
@@ -1409,7 +1376,7 @@ public class VideoDecoderTrack
     {
       if ((!this.started) || (this.isReleased))
       {
-        Logger.e(TAG, "seekTo: [failed] [started " + this.started + "] [isReleased " + this.isReleased + "]");
+        Logger.e(TAG, "seekTo: [failed] [started " + this.started + "] [isReleased " + this.isReleased + "]", new RuntimeException());
         return null;
         paramCMTime = finally;
         throw paramCMTime;
@@ -1418,7 +1385,7 @@ public class VideoDecoderTrack
       if (i == -1)
       {
         this.segmentIndex = -1;
-        Logger.e(TAG, "seekTo: [failed] [index " + i + "]");
+        Logger.w(TAG, "seekTo: [failed] [index " + i + "]");
         return null;
       }
     }
@@ -1433,13 +1400,13 @@ public class VideoDecoderTrack
     DecoderTrackSegment localDecoderTrackSegment = getCurrentSegment();
     if (this.currentDecoder == null)
     {
-      this.lastSampleTime = paramCMTime;
-      Logger.e(TAG, "seekTo: [failed] [currentDecoder == null]");
+      this.lastSampleState = new CMSampleState(paramCMTime);
+      Logger.w(TAG, "seekTo: [failed] [currentDecoder == null]");
       return null;
     }
     this.currentDecoder.seekTo(localDecoderTrackSegment.getDecoderStartTime().add((CMTime)???), paramBoolean2);
     if (paramCMTime.bigThan(this.frameDuration)) {}
-    for (this.lastSampleTime = paramCMTime.sub(this.frameDuration);; this.lastSampleTime = paramCMTime)
+    for (this.lastSampleState = new CMSampleState(paramCMTime.sub(this.frameDuration));; this.lastSampleState = new CMSampleState(paramCMTime))
     {
       paramCMTime = localObject1;
       if (paramBoolean1) {
@@ -1447,7 +1414,7 @@ public class VideoDecoderTrack
       }
       this.currentFrame = null;
       this.nextFrame = null;
-      logVerbose("seekTo: [success] [lastSampleTime " + this.lastSampleTime + "] [sampleBuffer " + paramCMTime + "]");
+      logVerbose("seekTo: [success] [lastSampleState " + this.lastSampleState + "] [sampleBuffer " + paramCMTime + "]");
       return paramCMTime;
     }
   }

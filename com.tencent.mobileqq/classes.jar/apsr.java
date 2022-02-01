@@ -1,10 +1,33 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class apsr
-  extends apsq
+class apsr
+  implements Comparator<Rect>
 {
-  public void a(AppInterface paramAppInterface, Bundle paramBundle) {}
+  apsr(apsq paramapsq) {}
+  
+  public int a(Rect paramRect1, Rect paramRect2)
+  {
+    if (this.a.g.contains(paramRect1)) {}
+    do
+    {
+      do
+      {
+        return 1;
+        if (this.a.g.contains(paramRect2)) {
+          return -1;
+        }
+        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
+          return -1;
+        }
+      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
+      if (paramRect1.width() > paramRect2.width()) {
+        return -1;
+      }
+    } while (paramRect1.width() < paramRect2.width());
+    return 0;
+  }
 }
 
 

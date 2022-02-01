@@ -1,17 +1,6 @@
-import android.text.TextUtils;
-
-public class yko
-  extends ykj
+public abstract interface yko
 {
-  public yko()
-  {
-    super("memory_publish", null);
-  }
-  
-  public static boolean a(ykj paramykj)
-  {
-    return TextUtils.equals("memory_publish", paramykj.a);
-  }
+  public abstract void a(ykv paramykv);
 }
 
 

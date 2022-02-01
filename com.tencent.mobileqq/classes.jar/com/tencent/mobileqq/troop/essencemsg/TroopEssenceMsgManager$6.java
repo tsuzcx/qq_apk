@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bfuo;
+import bedz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -9,11 +9,11 @@ import mqq.os.MqqHandler;
 public class TroopEssenceMsgManager$6
   implements Runnable
 {
-  public TroopEssenceMsgManager$6(bfuo parambfuo, long paramLong1, long paramLong2) {}
+  public TroopEssenceMsgManager$6(bedz parambedz, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    bfuo.a(this.this$0).a().b(String.valueOf(this.a), 1, this.b);
+    bedz.a(this.this$0).getMessageFacade().removeMsgByUniseq(String.valueOf(this.a), 1, this.b);
     ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.6.1(this));
   }
 }

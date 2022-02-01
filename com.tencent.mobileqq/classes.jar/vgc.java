@@ -1,16 +1,9 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
-
-class vgc
-  implements aadm<Object>
+public class vgc
 {
-  vgc(vfx paramvfx) {}
-  
-  public void a(Object... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      vfx.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

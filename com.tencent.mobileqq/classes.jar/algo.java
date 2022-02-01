@@ -1,141 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherArkNotify.viewModel.2;
+import com.tencent.mobileqq.mvvm.LifeCycleFragment;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class algo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkNotify;", "Lcom/tencent/mobileqq/ark/API/ArkAppNotifyCenter$INotifyReg;", "fragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "(Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;)V", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "getViewModel", "()Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "viewModel$delegate", "Lkotlin/Lazy;", "notify", "", "appName", "", "eventName", "params", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class algo
+  implements aopx
 {
-  public static Bitmap a(agpd paramagpd, int paramInt1, int paramInt2, float paramFloat)
+  public static final algp a;
+  private final Lazy a;
+  
+  static
   {
-    if ((paramagpd == null) || (paramagpd.a() == null) || (paramagpd.a().size() <= 0)) {
-      return null;
-    }
-    float f1;
-    float f5;
-    float f2;
-    float f6;
-    label544:
-    do
-    {
-      for (;;)
-      {
-        float f7;
-        try
-        {
-          int i = paramagpd.a().a().width();
-          int j = paramagpd.a().a().height();
-          localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-          localCanvas = new Canvas(localBitmap);
-          localCanvas.drawColor(-1);
-          localPaint = new Paint(7);
-          localPaint.setStyle(Paint.Style.STROKE);
-          localPaint.setColor(-16777216);
-          localPaint.setStrokeWidth(paramFloat);
-          localPaint.setStrokeCap(Paint.Cap.ROUND);
-          localPaint.setStrokeJoin(Paint.Join.ROUND);
-          f1 = i;
-          f5 = 0.0F;
-          f2 = j;
-          f6 = 0.0F;
-          localObject1 = paramagpd.a().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = ((agqn)((Iterator)localObject1).next()).a().iterator();
-          f7 = f1;
-          f4 = f5;
-          f3 = f2;
-          paramFloat = f6;
-          f6 = paramFloat;
-          f2 = f3;
-          f5 = f4;
-          f1 = f7;
-          if (!((Iterator)localObject2).hasNext()) {
-            continue;
-          }
-          localObject3 = (agqo)((Iterator)localObject2).next();
-          f1 = f7;
-          if (((agqo)localObject3).a() < f7) {
-            f1 = ((agqo)localObject3).a();
-          }
-          f2 = f4;
-          if (((agqo)localObject3).a() > f4) {
-            f2 = ((agqo)localObject3).a();
-          }
-          f4 = f3;
-          if (((agqo)localObject3).b() < f3) {
-            f4 = ((agqo)localObject3).b();
-          }
-          if (((agqo)localObject3).b() <= paramFloat) {
-            break label544;
-          }
-          paramFloat = ((agqo)localObject3).b();
-        }
-        catch (Throwable paramagpd)
-        {
-          Bitmap localBitmap;
-          Canvas localCanvas;
-          Paint localPaint;
-          Object localObject1;
-          Object localObject2;
-          Object localObject3;
-          agqn localagqn;
-          ArrayList localArrayList;
-          paramagpd.printStackTrace();
-          return null;
-        }
-        float f3 = f5 - f1;
-        float f4 = f6 - f2;
-        paramFloat = Math.max(f3, f4);
-        f1 -= (paramFloat - f3) / 2.0F;
-        f2 -= (paramFloat - f4) / 2.0F;
-        localObject2 = new Path();
-        f3 = paramInt1 / paramFloat;
-        paramFloat = paramInt2 / paramFloat;
-        localObject3 = paramagpd.a().iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          localagqn = (agqn)((Iterator)localObject3).next();
-          paramagpd = localagqn.a();
-          if (paramagpd != null)
-          {
-            ((Path)localObject2).moveTo((paramagpd.a() - f1) * f3, (paramagpd.b() - f2) * paramFloat);
-            localArrayList = localagqn.a();
-            paramInt1 = 1;
-            if (paramInt1 < localagqn.c())
-            {
-              localObject1 = (agqo)localArrayList.get(paramInt1);
-              ((Path)localObject2).quadTo((paramagpd.a() - f1) * f3, (paramagpd.b() - f2) * paramFloat, (((agqo)localObject1).a() - f1) * f3, (((agqo)localObject1).b() - f2) * paramFloat);
-              paramInt1 += 1;
-              paramagpd = (agpd)localObject1;
-            }
-          }
-        }
-        else
-        {
-          localCanvas.drawPath((Path)localObject2, localPaint);
-          return localBitmap;
-          f3 = f4;
-          f4 = f2;
-          f7 = f1;
-        }
-      }
-    } while ((f1 <= f5) && (f2 <= f6));
-    return null;
+    jdField_a_of_type_Algp = new algp(null);
   }
   
-  public static void a(Bitmap paramBitmap)
+  public algo(@NotNull LifeCycleFragment paramLifeCycleFragment)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      paramBitmap.recycle();
+    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new WeatherArkNotify.viewModel.2(paramLifeCycleFragment));
+  }
+  
+  private final algx a()
+  {
+    return (algx)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  public boolean notify(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherArkNotify", 2, "notify --->  appName: " + paramString1 + ", eventName: " + paramString2 + ", params: " + paramString3);
     }
+    try
+    {
+      if (!TextUtils.equals((CharSequence)paramString1, (CharSequence)"com.tencent.weather_v2")) {
+        break label150;
+      }
+      if (paramString2 == null) {
+        return true;
+      }
+      switch (paramString2.hashCode())
+      {
+      case 6648771: 
+        if (!paramString2.equals("notify_client_msg")) {
+          break label150;
+        }
+        a().c(paramString3);
+        return true;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.d("WeatherArkNotify", 1, paramString1, new Object[0]);
+      return true;
+    }
+    if (paramString2.equals("notify_web_msg")) {
+      a().b(paramString3);
+    }
+    label150:
+    return true;
+    return true;
   }
 }
 

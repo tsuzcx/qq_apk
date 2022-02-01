@@ -55,7 +55,6 @@
                     "value":"46"
                 },
                 "attributes": {
-                    "setFrameString:": "-1",
                     "loadImageWithPath:": "$operation_banner_icon"
                 }
             },

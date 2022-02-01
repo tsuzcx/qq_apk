@@ -1,6 +1,7 @@
 package a.a.a.b;
 
 import com.tencent.secprotocol.ByteData;
+import com.tencent.secprotocol.t.ReportLogHelper;
 import org.json.JSONObject;
 
 public class e
@@ -13,9 +14,13 @@ public class e
       int i = paramString2.optInt(g.a(29));
       long l = paramString2.optLong(g.a(30));
       paramString2 = paramString2.optString(g.a(31));
-      if (i == 0) {
+      if (i == 0)
+      {
+        ReportLogHelper.report(3, 0);
         ByteData.getInstance().getCode(0L, 0L, paramLong, l, paramString2, paramb.g, paramb.d, null, paramString1);
+        return;
       }
+      ReportLogHelper.report(3, 1);
       return;
     }
     catch (Exception paramString1)

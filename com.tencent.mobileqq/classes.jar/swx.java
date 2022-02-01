@@ -1,10 +1,9 @@
-public abstract interface swx
+import org.json.JSONObject;
+
+public class swx
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void b(float paramFloat);
+  public int a;
+  public JSONObject a;
 }
 
 

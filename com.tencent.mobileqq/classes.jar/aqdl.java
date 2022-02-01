@@ -1,26 +1,110 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqdl
-  implements View.OnClickListener
+public class aqdl
 {
-  aqdl(aqdj paramaqdj) {}
+  public int a;
+  public List<Long> a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public aqdl()
   {
-    if ((aqdj.a(this.a) == 0) && (!TextUtils.isEmpty(aqdj.b(this.a)))) {
-      aqdj.a(this.a, null);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static aqdl a(aptx[] paramArrayOfaptx)
+  {
+    aqdl localaqdl = new aqdl();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      int j = paramArrayOfaptx.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfaptx[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((aptx)localObject).a;
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            if (((JSONObject)localObject).has("gtcSwitch")) {
+              localaqdl.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gtcSwitch");
+            }
+            if (((JSONObject)localObject).has("groupMemberCount")) {
+              localaqdl.b = ((JSONObject)localObject).optInt("groupMemberCount");
+            }
+            if (((JSONObject)localObject).has("allGroupTypesEnable")) {
+              localaqdl.c = ((JSONObject)localObject).optInt("allGroupTypesEnable");
+            }
+            if (((JSONObject)localObject).has("enabledGroupTypes"))
+            {
+              localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
+              localaqdl.jdField_a_of_type_JavaUtilList.addAll(a((JSONArray)localObject));
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localaqdl.toString());
+          }
+        }
+      }
     }
-    aqdj.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return localaqdl;
+  }
+  
+  private static List<Long> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int j = paramJSONArray.length();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            localArrayList.add(Long.valueOf(paramJSONArray.getLong(i)));
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("TroopMemberRecommend.ConfBean", 2, "TroopMemRecommendConfBean processJsonArray error", localException);
+            }
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.jdField_a_of_type_Int).append(", groupMemberCount: ").append(this.b).append(", allGroupTypesEnable: ").append(this.c).append(", enabledGroupTypes: ").append(this.jdField_a_of_type_JavaUtilList.toString()).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdl
  * JD-Core Version:    0.7.0.1
  */

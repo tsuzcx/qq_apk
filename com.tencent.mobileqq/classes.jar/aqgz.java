@@ -1,29 +1,19 @@
 public class aqgz
-  implements aqgw
 {
-  public void onRotationUpdateOriginal(float[] paramArrayOfFloat) {}
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat) {}
-  
-  public void onSensorSupport(int paramInt, boolean paramBoolean) {}
-  
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
-  
-  public void updateAzimuth(float paramFloat) {}
-  
-  public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
-  
-  public void updatePitch(float paramFloat) {}
-  
-  public void updateRoll(float paramFloat) {}
-  
-  public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3) {}
-  
-  public void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3) {}
+  public aqgz()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131710377);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqgz
  * JD-Core Version:    0.7.0.1
  */

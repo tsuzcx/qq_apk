@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhuf;
+import bgau;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -17,6 +17,7 @@ import mqq.app.Packet;
 public class MiniAppSendArkMsgServlet
   extends MiniAppAbstractServlet
 {
+  public static final String KEY_API_NAME = "key_api_name";
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_ARK_JSON = "key_ark_json";
   public static final String KEY_EXT = "key_ext";
@@ -39,7 +40,7 @@ public class MiniAppSendArkMsgServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -79,6 +80,7 @@ public class MiniAppSendArkMsgServlet
     Object localObject2 = paramIntent.getStringExtra("key_openid");
     String str1 = paramIntent.getStringExtra("key_ark_json");
     String str2 = paramIntent.getStringExtra("key_appid");
+    String str3 = paramIntent.getStringExtra("key_api_name");
     Object localObject1 = null;
     if (arrayOfByte != null) {
       localObject1 = new COMM.StCommonExt();
@@ -86,13 +88,13 @@ public class MiniAppSendArkMsgServlet
     try
     {
       ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new MiniAppSendArkMsgRequest((COMM.StCommonExt)localObject1, str2, (String)localObject2, str1).encode(paramIntent, this.index, getTraceId());
+      localObject2 = new MiniAppSendArkMsgRequest((COMM.StCommonExt)localObject1, str2, (String)localObject2, str1, str3).encode(paramIntent, this.index, getTraceId());
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_share.SendArkMsg");
-      paramPacket.putSendData(bhuf.a((byte[])localObject1));
+      paramPacket.putSendData(bgau.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

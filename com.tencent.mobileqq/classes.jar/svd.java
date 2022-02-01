@@ -1,41 +1,15 @@
-public class svd
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
+class svd
+  implements svf
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  svd(sup paramsup) {}
   
-  public svd(String paramString)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    this.a = paramString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
-    {
-      return true;
-      if ((paramObject instanceof svd)) {
-        return false;
-      }
-      paramObject = (svd)paramObject;
-      if ((this.b == null) || (!this.b.equals(paramObject.b))) {
-        break;
-      }
-    } while ((this.c != null) && (this.c.equals(paramObject.c)));
-    return false;
-    return false;
-  }
-  
-  public String toString()
-  {
-    return " bid :" + this.b + " localPath:" + this.c + "  ";
+    svr.b(paramContext, paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 

@@ -1,53 +1,66 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashSet;
+import org.json.JSONArray;
 
 public class xbz
-  extends wov
+  extends xpk
 {
-  public List<xca> a;
-  public List<ylv> b = new ArrayList(0);
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public xbz(ErrorMessage paramErrorMessage)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    switch (paramInt1)
+    {
+    default: 
+      xvv.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
+      a(paramInt2, paramIntent);
+      e();
+      return;
+    }
+    if (paramInt2 == -1) {}
+    for (;;)
+    {
+      try
+      {
+        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
+        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
+        {
+          xvv.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.addAll(localLinkedHashSet);
+          vns.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
+          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
+          paramIntent.putExtra("isAddFromExist", true);
+          a(paramInt2, paramIntent);
+          e();
+          return;
+        }
+      }
+      catch (ClassCastException localClassCastException)
+      {
+        xvv.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
+        Object localObject = null;
+        continue;
+        xvv.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
+        paramInt2 = 0;
+        continue;
+      }
+      xvv.d("AddVideoMiddleCode", "add video to group cancel by user");
+    }
   }
   
-  public xbz(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    super(paramRspBatchFeedComment.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
-    while (paramRspBatchFeedComment.hasNext())
-    {
-      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
-      xca localxca = new xca();
-      localxca.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
-      localxca.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
-      localxca.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
-      localxca.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
-      if (localxca.jdField_b_of_type_Int != 1) {
-        this.b.add(new ylv(localxca.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
-      }
-      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
-        localCommentEntry.feedId = localxca.jdField_a_of_type_JavaLangString;
-        localxca.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localxca);
-    }
+    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
+    this.b = paramBundle2.getString("shareGroupName");
+    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
+    xvv.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
+    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
   }
 }
 

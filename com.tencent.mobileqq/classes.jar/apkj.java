@@ -1,10 +1,20 @@
-public abstract interface apkj
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class apkj
+  extends andd
 {
-  public abstract void b(int paramInt);
+  public apkj(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
   
-  public abstract void c();
-  
-  public abstract void d();
+  protected void onOIDB0XA80_0_Ret(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
+    }
+    if (paramBoolean) {
+      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
+    }
+  }
 }
 
 

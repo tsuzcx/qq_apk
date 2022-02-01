@@ -1,41 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
 
 class pgy
-  implements View.OnClickListener
+  extends anav
 {
-  pgy(pgw parampgw, QQAppInterface paramQQAppInterface, FrameLayout paramFrameLayout, GuideData paramGuideData) {}
+  pgy(pgx parampgx) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    Object localObject = (qtq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(270);
-    if (((qtq)localObject).a() == 1)
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (pxs.a(pgx.a(this.a).a().a(), str) < rea.d)
     {
-      ((qtq)localObject).a(false);
-      localObject = ((qtq)localObject).a(pgw.a(this.jdField_a_of_type_Pgw), 0);
-      if (localObject != null)
-      {
-        ((RefreshData)localObject).isShown = false;
-        bhsi.f(pgw.a(this.jdField_a_of_type_Pgw), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
-      }
+      ((ReadInJoyXListView)pgx.a(this.a).a().a().a()).c(6);
+      return;
     }
-    pgw.a(this.jdField_a_of_type_Pgw).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pgw.a(this.jdField_a_of_type_Pgw));
-    pgw.a(this.jdField_a_of_type_Pgw, null);
-    bhsi.s(pgw.a(this.jdField_a_of_type_Pgw), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJSkinOperationPopupStep", 2, "set skin: id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQToast.a(pgx.a(this.a).a().a(), 0, pgx.a(this.a).a().a().getString(2131717546), 0).a();
   }
 }
 

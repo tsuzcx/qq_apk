@@ -1,32 +1,78 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.QSecRptControllerImpl;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.qzone.util.ProtocolUtils;
+import java.util.Map;
 
 public class blbi
-  extends nkq
+  extends blaw
 {
-  public blbi(QSecRptControllerImpl paramQSecRptControllerImpl) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
-    try
+    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      paramObject = (sweet_comm_cfg_item)paramObject;
+      if (a() != null)
+      {
+        atub localatub = (atub)a().getBusinessHandler(153);
+        if (localatub != null) {
+          localatub.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (a() == null);
+      paramObject = (atub)a().getBusinessHandler(153);
+    } while (paramObject == null);
+    paramObject.a(false, null, null, null);
+  }
+  
+  public QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
+  
+  public QzoneExternalRequest a(Intent paramIntent)
+  {
+    return new blbj(this, paramIntent);
+  }
+  
+  public void a(long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool = false;
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    {
+      paramIntent = (sweet_comm_cfg_get_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
+      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
+      {
+        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
+        if (paramIntent != null) {
+          bool = true;
+        }
+        a(bool, paramIntent);
       }
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    a(false, null);
   }
 }
 

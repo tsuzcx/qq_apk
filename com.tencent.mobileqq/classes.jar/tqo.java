@@ -1,27 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
-
-class tqo
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface tqo
 {
-  tqo(tqn paramtqn, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = paramValueAnimator.floatValue();
-    float f5 = this.c;
-    float f6 = paramValueAnimator.floatValue();
-    float f7 = this.d;
-    float f8 = paramValueAnimator.floatValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setLeftAreaTranslate(f1 * f2, f3 * f4);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setRightAreaTranslate(f5 * f6, f8 * f7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.postInvalidate();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(txh paramtxh, int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

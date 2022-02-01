@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.ui;
 
-import bhgv;
+import bfqf;
 
 class MiniAppMonitorInfoView$FpsListener
-  implements bhgv
+  implements bfqf
 {
   private MiniAppMonitorInfoView$FpsListener(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
   

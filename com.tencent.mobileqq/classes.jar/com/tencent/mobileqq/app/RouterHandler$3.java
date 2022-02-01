@@ -23,7 +23,7 @@ class RouterHandler$3
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = this.this$0.b.a().createEntityManager();
+      localObject1 = this.this$0.b.getEntityManagerFactory().createEntityManager();
       List localList = ((EntityManager)localObject1).rawQuery(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin + " where uSessionID=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
       ((EntityManager)localObject1).close();
       if ((localList == null) || (localList.size() <= 0)) {

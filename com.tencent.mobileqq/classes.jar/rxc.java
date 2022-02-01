@@ -1,6 +1,17 @@
-public abstract interface rxc
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+final class rxc
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(rwc paramrwc, int paramInt1, int paramInt2);
+  rxc(View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.setTag(2131362701, null);
+  }
 }
 
 

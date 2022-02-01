@@ -1,20 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class arzl
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public arzl(DataReportViewer paramDataReportViewer) {}
+  public arzl(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = paramBoolean;
-    if (this.a.a) {
-      this.a.a();
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    QfileLocalFileAppTabView.a(this.a.a.this$0);
+    this.a.a.this$0.c(true);
   }
 }
 

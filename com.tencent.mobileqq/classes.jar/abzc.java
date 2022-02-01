@@ -1,131 +1,23 @@
-import android.os.Bundle;
-import com.tencent.litetransfersdk.ActionInfo;
-import com.tencent.litetransfersdk.Session;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
-class abzc
-  extends abwg
+public class abzc
+  implements abzb
 {
-  abzc(abzb paramabzb) {}
-  
-  private List<abwg> a(Session paramSession)
+  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramSession != null)
-    {
-      str1 = str2;
-      if (paramSession.actionInfo != null) {
-        str1 = paramSession.actionInfo.strServiceName;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x100");
     }
-    return a(str1);
+    return aqud.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo);
   }
   
-  private List<abwg> a(String paramString)
+  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      if (paramString != null) {
-        return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      }
-      return null;
-      paramString = "";
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(abzb.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgProgress");
-    }
-    Object localObject = a("");
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((abwg)((Iterator)localObject).next()).a(paramBundle);
-      }
-    }
-  }
-  
-  public void a(Session paramSession)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(abzb.jdField_a_of_type_JavaLangString, 4, "onServiceSessionNew:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((abwg)((Iterator)localObject).next()).a(paramSession);
-      }
-    }
-  }
-  
-  public void a(Session paramSession, float paramFloat)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(abzb.jdField_a_of_type_JavaLangString, 4, "onServiceSessionProgress:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((abwg)((Iterator)localObject).next()).a(paramSession, paramFloat);
-      }
-    }
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(abzb.jdField_a_of_type_JavaLangString, 4, "onServiceSessionComplete:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((abwg)((Iterator)localObject).next()).a(paramSession, paramBoolean);
-      }
-    }
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(abzb.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgSendRet");
-    }
-    Object localObject = a("");
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((abwg)((Iterator)localObject).next()).b(paramBundle);
-      }
-    }
-  }
-  
-  public void b(Session paramSession)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(abzb.jdField_a_of_type_JavaLangString, 4, "onServiceSessionStart:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((abwg)((Iterator)localObject).next()).b(paramSession);
-      }
-    }
+    return a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
   }
 }
 

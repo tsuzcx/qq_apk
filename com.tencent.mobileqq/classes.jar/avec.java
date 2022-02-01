@@ -1,16 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
 public class avec
-  implements bliz
+  implements DialogInterface.OnClickListener
 {
-  public avec(LangSettingFragment paramLangSettingFragment, int paramInt) {}
+  public avec(LocationDialogUtil.4 param4) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
-    }
+    bcef.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
   }
 }
 

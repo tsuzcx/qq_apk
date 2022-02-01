@@ -1,61 +1,111 @@
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class yns
-  extends ynv<ShareGroupFeedItem>
 {
-  public yns(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super(paramShareGroupFeedItem);
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem)
-  {
-    super.a(paramStoryVideoItem);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount -= 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
-  {
-    super.a(paramStoryVideoItem, paramBoolean);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount += 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
-    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((paramQQAppInterface != null) && (a(paramString)))
     {
-      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      ynq localynq = (ynq)paramQQAppInterface.getManager(208);
+      String str = a(paramString);
+      paramString = localynq.a(paramString);
+      if (paramString != null) {
+        return paramQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq4Troop(str, 1, paramString.longValue());
+      }
     }
-    c(paramStoryFeed, true);
-    return true;
+    return null;
+  }
+  
+  public static String a(Intent paramIntent, @NonNull String paramString1, String paramString2)
+  {
+    int j = 78;
+    int i = 8;
+    int k = 0;
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
+    {
+      paramString1 = paramString1.replace("$GCODE$", paramString2);
+      if (paramIntent != null) {
+        break label121;
+      }
+      label36:
+      if (paramIntent != null) {
+        break label133;
+      }
+      label40:
+      if (paramIntent != null) {
+        break label146;
+      }
+    }
+    for (;;)
+    {
+      paramIntent = new StringBuilder(paramString1);
+      paramIntent.append("&troopStoryMemoriesFrom=").append(i).append("&playVideoFrom=").append(j).append("&lastOpenFrom=").append(k);
+      return paramIntent.toString();
+      QLog.e("TroopStoryUtil", 1, new Object[] { "configTroopStoryProfileFromAIO empty. troopUin=", "", ", url=", paramString1 });
+      break;
+      label121:
+      i = paramIntent.getIntExtra("extra_share_group_from", 8);
+      break label36;
+      label133:
+      j = paramIntent.getIntExtra("extra_play_video_from", 78);
+      break label40;
+      label146:
+      k = paramIntent.getIntExtra("extra_last_open_from", 0);
+    }
+  }
+  
+  public static String a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    return ("gs_" + paramMessageForShortVideo.frienduin + '_' + paramMessageForShortVideo.getMd5() + '_' + MD5Utils.toMD5(paramMessageForShortVideo.uuid) + "-700").toLowerCase();
+  }
+  
+  public static String a(String paramString)
+  {
+    if (a(paramString))
+    {
+      paramString = paramString.split("_");
+      if (paramString.length > 2) {
+        return paramString[1];
+      }
+    }
+    return null;
+  }
+  
+  public static void a(MessageForTroopStory paramMessageForTroopStory, Bundle paramBundle)
+  {
+    paramBundle.putInt("forward_type", 32);
+    paramBundle.putLong("key_uid", paramMessageForTroopStory.uid);
+    paramBundle.putString("key_union_id", paramMessageForTroopStory.unionId);
+    paramBundle.putString("key_md5", paramMessageForTroopStory.md5);
+    paramBundle.putString("key_thumb_url", paramMessageForTroopStory.thumbUrl);
+    paramBundle.putString("key_doodle_url", paramMessageForTroopStory.doodleUrl);
+    paramBundle.putInt("key_video_width", paramMessageForTroopStory.videoWidth);
+    paramBundle.putInt("key_video_height", paramMessageForTroopStory.videoHeight);
+    paramBundle.putString("key_source_name", paramMessageForTroopStory.sourceName);
+    paramBundle.putString("key_source_action_type", paramMessageForTroopStory.sourceActionType);
+    paramBundle.putString("key_source_action_data", paramMessageForTroopStory.sourceActionData);
+    paramBundle.putString("key_compatible_text", paramMessageForTroopStory.compatibleText);
+    paramBundle.putInt("key_ctr_version", paramMessageForTroopStory.ctrVersion);
+  }
+  
+  public static boolean a(int paramInt, MessageRecord paramMessageRecord)
+  {
+    return (vla.i()) && (paramInt == 1) && ((paramMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)paramMessageRecord).busiType == 1);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (paramString != null) && (paramString.startsWith("gs_"));
   }
 }
 

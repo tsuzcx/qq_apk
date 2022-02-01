@@ -1,173 +1,369 @@
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.4;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
 public class bhml
+  implements agyg
 {
-  public static final byte[] a;
-  private static final char[] a;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private ajoe jdField_a_of_type_Ajoe;
+  private ajqi jdField_a_of_type_Ajqi;
+  private View jdField_a_of_type_AndroidViewView;
+  avpj jdField_a_of_type_Avpj = new bhmn(this);
+  private bhmo jdField_a_of_type_Bhmo;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private IVideoOuterStatusListener jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener;
+  public final Runnable a;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
   
-  static
+  public bhml(Context paramContext)
   {
-    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-    jdField_a_of_type_ArrayOfByte = new byte[0];
+    this.jdField_a_of_type_JavaLangRunnable = new TVKVideoController.4(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Bhmo = new bhmo(this, null);
+    this.jdField_a_of_type_Ajoe = new ajoe();
   }
   
-  public static byte a(char paramChar)
+  private void a(int paramInt)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return (byte)(paramChar - '0');
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null))
+    {
+      this.jdField_a_of_type_Ajoe.a(paramInt);
+      this.jdField_a_of_type_Bhmo.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return (byte)(paramChar - 'a' + 10);
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    int i = 401;
+    if (paramInt1 == 101) {
+      i = 403;
     }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return (byte)(paramChar - 'A' + 10);
+    int j = i;
+    if (paramInt1 == 122) {
+      if (paramInt2 != 204)
+      {
+        j = i;
+        if (paramInt2 != 202) {}
+      }
+      else
+      {
+        j = 402;
+      }
     }
-    return 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener.onVideoError(j);
+    }
   }
   
-  public static String a(byte paramByte)
+  private void c()
   {
-    int i = jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)];
-    paramByte = (byte)(paramByte >>> 4);
-    return new String(new char[] { jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)], i });
+    if ((this.jdField_a_of_type_Ajoe != null) && (this.jdField_a_of_type_Ajqi != null))
+    {
+      if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_Boolean) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString != null) {
+        this.jdField_a_of_type_Ajoe.a(this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString, 0L);
+      }
+    }
+    return;
+    label50:
+    String str1;
+    if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)
+    {
+      str1 = "0";
+      if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) {
+        break label128;
+      }
+    }
+    label128:
+    for (String str2 = "";; str2 = this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)
+    {
+      this.jdField_a_of_type_Ajoe.a(this.jdField_a_of_type_Ajqi.a(), str1, this.jdField_a_of_type_Ajqi.jdField_a_of_type_ArrayOfJavaLangString, 0L, str2, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      return;
+      str1 = String.valueOf(this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime);
+      break;
+    }
   }
   
-  public static String a(String paramString)
+  private void d()
   {
-    return new String(a(paramString));
+    int i = avpf.a().a(1, this.jdField_a_of_type_Avpj);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null) && (i == 0))
+    {
+      this.jdField_a_of_type_Ajoe.c();
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Bhmo.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
+    }
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  private void e()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    char[] arrayOfChar;
+    avpf.a().a(this.jdField_a_of_type_Avpj);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null) && (!this.jdField_b_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Ajoe.b();
+      this.jdField_a_of_type_Int = 4;
+      this.jdField_a_of_type_Bhmo.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+  }
+  
+  private void f()
+  {
+    avpf.a().a(this.jdField_a_of_type_Avpj);
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((AudioManager)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("audio")).abandonAudioFocus(null);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_Ajqi == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TVKVideoController", 2, "clickPlay mCurInfo is null");
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TVKVideoController", 2, new Object[] { "clickPlay curState:", Integer.valueOf(this.jdField_a_of_type_Int), " ,isCompleted:", Boolean.valueOf(this.jdField_b_of_type_Boolean), " ,path:", this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString });
+      }
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if (this.jdField_b_of_type_Boolean)
+        {
+          c();
+          this.jdField_b_of_type_Boolean = false;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        d();
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 4);
+    d();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener = FloatingScreenManager.getInstance().setFloatingVideoListener(new bhmm(this));
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 < 0) || (paramInt2 < 0)) {
+      break label8;
+    }
+    label8:
+    label112:
     for (;;)
     {
-      return null;
-      arrayOfChar = new char[paramArrayOfByte.length * 2];
-      int i = 0;
-      try
+      return;
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null))
       {
-        while (i < paramArrayOfByte.length)
+        if (paramInt1 > paramInt2) {}
+        for (float f = paramInt2 / paramInt1;; f = paramInt1 / paramInt2)
         {
-          int j = paramArrayOfByte[i];
-          arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-          j = (byte)(j >>> 4);
-          arrayOfChar[(i * 2 + 0)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-          i += 1;
+          if ((f <= 0.5D) || (f >= 0.6D) || (!(this.jdField_a_of_type_AndroidViewView instanceof IVideoViewBase))) {
+            break label112;
+          }
+          ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).setXYaxis(2);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("TVKVideoController", 2, new Object[] { "handleFullScreen ratio:", Float.valueOf(f) });
+          return;
         }
-        if (!QLog.isColorLevel()) {}
       }
-      catch (Exception paramArrayOfByte) {}
     }
-    QLog.d("HexUtil", 2, " === bytes2HexStr error === " + paramArrayOfByte.toString());
-    return null;
-    return new String(arrayOfChar);
   }
   
-  public static void a(String paramString, byte[] paramArrayOfByte)
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Long == paramLong)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TVKVideoController", 2, new Object[] { "onRecokeMsg:", Long.valueOf(paramLong) });
+      }
+      ThreadManager.getUIHandler().post(new TVKVideoController.2(this));
+    }
+  }
+  
+  public void a(ajqi paramajqi, long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      b(paramString, paramArrayOfByte);
+      QLog.d("TVKVideoController", 2, new Object[] { "initTVKVideoController with mediaInfo :", paramajqi.jdField_a_of_type_JavaLangString });
     }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Ajqi = paramajqi;
+    this.jdField_a_of_type_Ajqi.e = paramLong2;
+    if (this.jdField_a_of_type_Ajoe != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Bhmo, this.jdField_a_of_type_Ajqi, null);
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null))
+      {
+        this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    agye.a().a(this);
   }
   
-  public static byte[] a(String paramString)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
     Object localObject;
-    if ((paramString == null) || (paramString.equals(""))) {
-      localObject = jdField_a_of_type_ArrayOfByte;
-    }
-    for (;;)
+    if (FileUtils.fileExistsAndNotEmpty(paramString))
     {
-      return localObject;
-      byte[] arrayOfByte = new byte[paramString.length() / 2];
-      int i = 0;
-      localObject = arrayOfByte;
-      try
+      paramString = ShortVideoUtils.getThumbUrl(paramString);
+      if (paramString != null)
       {
-        if (i < arrayOfByte.length)
-        {
-          char c1 = paramString.charAt(i * 2);
-          char c2 = paramString.charAt(i * 2 + 1);
-          arrayOfByte[i] = ((byte)(a(c1) * 16 + a(c2)));
-          i += 1;
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("HexUtil", 2, " === hexStr2Bytes error === " + paramString.toString());
+        paramString = paramString.toString();
+        if (!TextUtils.isEmpty(paramString)) {
+          localObject = new aqww(Color.rgb(214, 214, 214), paramInt1, paramInt2);
         }
       }
     }
-    return jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public static String b(String paramString)
-  {
-    return a(paramString.getBytes());
-  }
-  
-  public static void b(String paramString, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    try
     {
-      QLog.i(paramString, 2, "bytes = null or bytes.length = 0");
+      localObject = URLDrawable.getDrawable(paramString, (Drawable)localObject, (Drawable)localObject);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        ((URLDrawable)localObject).downloadImediatly();
+      }
+      if ((localObject instanceof URLDrawable)) {
+        this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
+      }
       return;
     }
-    StringBuilder localStringBuilder1 = new StringBuilder((paramArrayOfByte.length + 15) / 16 * 73 + 85);
-    localStringBuilder1.append("buf size: " + paramArrayOfByte.length).append("\r\n");
-    localStringBuilder1.append("______00_01_02_03_04_05_06_07_08_09_0A_0B_0C_0D_0E_0F\r\n");
-    StringBuilder localStringBuilder2 = new StringBuilder(32);
-    localStringBuilder2.append(" ");
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    for (;;)
+    catch (Exception localException)
     {
-      if (j < paramArrayOfByte.length)
-      {
-        if (i == 0) {
-          localStringBuilder1.append(String.format("%04x: ", new Object[] { Integer.valueOf(j) }));
-        }
-        localStringBuilder1.append(String.format("%02x ", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
-        if ((paramArrayOfByte[j] >= 32) && (paramArrayOfByte[j] <= 127)) {
-          localStringBuilder2.append(String.format("%c", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
-        }
-      }
-      for (;;)
-      {
-        int m = i + 1;
-        i = m;
-        if (m < 16) {
-          break label293;
-        }
-        localStringBuilder1.append(localStringBuilder2.toString()).append("\r\n");
-        localStringBuilder2.setLength(1);
-        if (k == 0) {
-          break;
-        }
-        do
-        {
-          QLog.i(paramString, 2, localStringBuilder1.toString());
-          return;
-          localStringBuilder2.append(".");
-          break;
-        } while (i == 0);
-        localStringBuilder1.append("   ");
-        localStringBuilder2.append(" ");
-        k = 1;
-      }
-      i = 0;
-      label293:
-      j += 1;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("TVKVideoController", 2, "initCover():  getDrawable Exception, coverUrl=" + paramString, localException);
     }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TVKVideoController", 2, new Object[] { "initTVKVideoController with path:", paramString });
+    }
+    long l = 0L;
+    File localFile = new File(paramString);
+    if (localFile.exists()) {
+      l = localFile.length();
+    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Ajqi = new ajqi();
+    this.jdField_a_of_type_Ajqi.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ajqi.b = l;
+    this.jdField_a_of_type_Ajqi.d = l;
+    this.jdField_a_of_type_Ajqi.e = paramLong2;
+    if (this.jdField_a_of_type_Ajoe != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Bhmo, this.jdField_a_of_type_Ajqi, null);
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null))
+      {
+        this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    agye.a().a(this);
+  }
+  
+  public boolean a(boolean paramBoolean, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TVKVideoController", 2, "enterFloat failed! mediaplay not init");
+      }
+      return false;
+    }
+    FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(paramBoolean).setCanMove(true).build();
+    if (FloatingScreenManager.getInstance().enterFloatingScreen(BaseApplicationImpl.getContext(), this.jdField_a_of_type_AndroidViewView, localFloatingScreenParams, bhlw.a(paramInt)) == 1)
+    {
+      FloatingScreenPermission.enterPermissionRequestDialog((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      return false;
+    }
+    a();
+    this.jdField_b_of_type_Boolean = false;
+    g();
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TVKVideoController", 2, "destory!");
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((AudioManager)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("audio")).abandonAudioFocus(null);
+    }
+    this.jdField_a_of_type_Ajqi = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Ajoe != null)
+    {
+      this.jdField_a_of_type_Ajoe.a();
+      this.jdField_a_of_type_Ajoe = null;
+    }
+    if (this.jdField_a_of_type_Bhmo != null)
+    {
+      this.jdField_a_of_type_Bhmo.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Bhmo = null;
+    }
+    avpf.a().a(this.jdField_a_of_type_Avpj);
+    agye.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhml
  * JD-Core Version:    0.7.0.1
  */

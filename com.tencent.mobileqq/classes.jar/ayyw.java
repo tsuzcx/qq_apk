@@ -1,51 +1,46 @@
-import android.text.TextUtils;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayyw
-  implements ActionMode.Callback
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ayyw(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
+  public ayyw(VasProfileTagView paramVasProfileTagView) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramMenuItem.getItemId() == 2131372016)
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    }
+    VasProfileTagView.a(this.a, true);
+    paramFloat1 = paramFloat2;
+    if (paramMotionEvent1 != null)
     {
-      paramActionMode = ayyb.a(this.jdField_a_of_type_AndroidWidgetEditText);
-      if (TextUtils.isEmpty(paramActionMode)) {
-        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, anzj.a(2131706696), 0).a();
+      paramFloat1 = paramFloat2;
+      if (paramMotionEvent2 != null) {
+        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
       }
     }
-    else
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
+    }
+    if (Math.abs(paramFloat1) > VasProfileTagView.a(this.a))
     {
-      return false;
+      if ((paramFloat1 > 0.0F) && (this.a.b)) {
+        if (this.a.a())
+        {
+          this.a.g();
+          VasProfileTagView.a(this.a).b(null);
+        }
+      }
+      while ((paramFloat1 >= 0.0F) || (this.a.b)) {
+        return true;
+      }
+      this.a.a();
+      return true;
     }
-    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode = paramActionMode.getMenuInflater();
-    if (paramActionMode != null) {
-      paramActionMode.inflate(2131623940, paramMenu);
-    }
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
     return false;
   }
 }

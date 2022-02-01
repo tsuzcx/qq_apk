@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class rml
-  implements View.OnClickListener
+public class rml
 {
-  rml(rmj paramrmj) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public rml(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
-    }
-    if (rmj.a(this.a).isShowing()) {
-      rmj.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "ColumnPublishInfo{coverUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.b + '\'' + ", intro='" + this.c + '\'' + ", submitPermission='" + this.jdField_a_of_type_Int + '\'' + '}';
   }
 }
 

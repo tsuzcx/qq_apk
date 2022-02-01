@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.ArrayList;
 
-public class bheq
-  implements DialogInterface.OnKeyListener
+class bheq
 {
-  public bheq(UpgradeActivity paramUpgradeActivity) {}
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
+  View jdField_a_of_type_AndroidViewView;
+  ArrayList<Pair<View, bhep>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  int[] jdField_a_of_type_ArrayOfInt;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
-  }
+  private bheq(bhen parambhen) {}
 }
 
 

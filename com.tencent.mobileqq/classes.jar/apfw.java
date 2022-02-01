@@ -1,79 +1,52 @@
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public class apfw
+public class apfw<T>
 {
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
-  apln jdField_a_of_type_Apln = null;
-  private apmc jdField_a_of_type_Apmc;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  final AbstractCollection<T> a;
   
-  void a()
+  public apfw(int paramInt)
   {
-    try
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      if (this.jdField_a_of_type_Apln != null)
-      {
-        if (this.jdField_a_of_type_Apmc != null)
-        {
-          this.jdField_a_of_type_Apln.b(this.jdField_a_of_type_Apmc);
-          this.jdField_a_of_type_Apmc = null;
-        }
-        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
-        {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_AndroidContentServiceConnection = null;
-        }
-        this.jdField_a_of_type_Apln = null;
-      }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      this.a = new ArrayDeque();
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.w(apgj.a, 1, "DownloadDependRes.clean, Exception", localException);
-    }
+    this.a = new ArrayBlockingQueue(30);
   }
   
-  void a(AppInterface paramAppInterface)
+  public T a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (!ArConfigService.e(BaseApplicationImpl.getApplication().getRuntime()))
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(apgj.a, 1, "tryDownload, so未准备");
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
       }
-      b();
     }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
   }
   
-  void b()
+  public void a()
   {
-    if (this.jdField_a_of_type_Apln != null) {}
-    do
-    {
-      try
-      {
-        this.jdField_a_of_type_Apln.c();
-        return;
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramT);
       }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(apgj.a, 2, "downloadArSo Exception", localException);
-        return;
-      }
-      this.jdField_a_of_type_Apmc = new apfx(this);
-      this.jdField_a_of_type_AndroidContentServiceConnection = new apfy(this);
-    } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
-    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    QLog.w(apgj.a, 1, "bindServer, ret[" + bool + "]");
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 

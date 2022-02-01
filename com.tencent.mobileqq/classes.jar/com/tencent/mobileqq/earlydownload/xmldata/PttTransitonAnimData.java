@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import asej;
+import aqyh;
 
 public class PttTransitonAnimData
   extends XmlData
 {
-  @asej(a=false, b=true)
+  @aqyh(a=false, b=true)
   public boolean autoDownload;
   public boolean isUserClick = true;
   
@@ -21,7 +21,7 @@ public class PttTransitonAnimData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.PttTransitonAnimData
  * JD-Core Version:    0.7.0.1
  */

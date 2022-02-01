@@ -1,66 +1,31 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.MotionEvent;
-import com.tencent.image.AbstractGifImage;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
-public class avsh
-  extends RecyclerView.OnScrollListener
-  implements avvw
+class avsh
+  extends amwl
 {
-  private int jdField_a_of_type_Int = 0;
-  private aspu jdField_a_of_type_Aspu;
-  private avvv jdField_a_of_type_Avvv = new avvv(200, this);
+  avsh(avsf paramavsf, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
   
-  public avsh(aspu paramaspu)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
   {
-    this.jdField_a_of_type_Aspu = paramaspu;
-  }
-  
-  public boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      this.jdField_a_of_type_Avvv.a(true);
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
+    if (paramBoolean)
     {
-      return false;
-      if ((i == 1) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_Aspu != null)) {
-        this.jdField_a_of_type_Aspu.n();
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_Aspu != null))
-    {
-      this.jdField_a_of_type_Aspu.m();
-      this.jdField_a_of_type_Avvv.a(false);
-    }
-  }
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if (paramInt == 0) {
-      AbstractGifImage.resumeAll();
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.jdField_a_of_type_Int == 2) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_Aspu != null)) {
-        this.jdField_a_of_type_Aspu.n();
-      }
-      this.jdField_a_of_type_Int = paramInt;
+      avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
       return;
-      AbstractGifImage.pauseAll();
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      this.jdField_a_of_type_Avvv.a(paramInt2);
+    avsf localavsf = this.jdField_a_of_type_Avsf;
+    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
+    if (paramamwm != null) {}
+    for (paramamwm = Integer.valueOf(paramamwm.b);; paramamwm = "")
+    {
+      avsf.a(localavsf, localMessageForMixedMsg, true, paramamwm);
+      return;
     }
   }
 }

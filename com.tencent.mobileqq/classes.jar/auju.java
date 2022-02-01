@@ -1,20 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class auju
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  auju(aujr paramaujr) {}
+  auju(aujs paramaujs, axkv paramaxkv) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    aujr.a(this.a, true);
-    this.a.jdField_a_of_type_Auku.f(true);
-    this.a.jdField_a_of_type_Auku.d(false);
-    aujr.a(this.a);
-    this.a.jdField_a_of_type_Augj.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = 11;
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
+    {
+      aujs.a(this.jdField_a_of_type_Aujs, 11);
+      QLog.e("FaceContext", 1, "refreshIpStateOnSubProcess error, eipcResult is null or data is null");
+      this.jdField_a_of_type_Axkv.onFailedResponse(null, -1, "eipcResult is null");
+      return;
+    }
+    Object localObject;
+    if (paramEIPCResult.code == 0)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("usable", false);
+      localObject = this.jdField_a_of_type_Aujs;
+      if (bool) {}
+      for (;;)
+      {
+        aujs.a((aujs)localObject, i);
+        paramEIPCResult = paramEIPCResult.data.getString("msg");
+        this.jdField_a_of_type_Axkv.ipJudgeSuccess(bool, paramEIPCResult);
+        return;
+        i = 10;
+      }
+    }
+    if (paramEIPCResult.code == -102)
+    {
+      aujs.a(this.jdField_a_of_type_Aujs, 11);
+      i = paramEIPCResult.data.getInt("code");
+      localObject = paramEIPCResult.data.getString("cmd");
+      paramEIPCResult = paramEIPCResult.data.getString("msg");
+      this.jdField_a_of_type_Axkv.onFailedResponse((String)localObject, i, paramEIPCResult);
+      return;
+    }
+    aujs.a(this.jdField_a_of_type_Aujs, 11);
+    QLog.e("FaceContext", 1, new Object[] { "refreshIpStateOnSubProcess error, unknown code : ", Integer.valueOf(paramEIPCResult.code) });
+    this.jdField_a_of_type_Axkv.onFailedResponse(null, -1, "unknown code");
   }
 }
 

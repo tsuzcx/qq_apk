@@ -1,78 +1,146 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class psq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper;", "", "()V", "SUFFIX_SHARPP", "", "getSUFFIX_SHARPP", "()Ljava/lang/String;", "SUFFIX_WEBP", "getSUFFIX_WEBP", "TAG", "getTAG", "TYPE_SHARPP", "getTYPE_SHARPP", "TYPE_WEBP", "getTYPE_WEBP", "converToOptImageUrl", "", "imageRequest", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "originUrl", "convertBackToOriginUrl", "url", "originType", "convertToOptTypeUrl", "convertUrlToOtherType", "type", "decodeSharpP", "Landroid/graphics/Bitmap;", "filePath", "width", "", "height", "reuseBitmap", "decodeSharpPInBounds", "Landroid/graphics/BitmapFactory$Options;", "getTpType", "isSharpP", "", "isWebp", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class psq
 {
-  public int a;
-  public ToServiceMsg a;
-  public String a;
-  public List<ArticleInfo> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public List<ArticleInfo> b;
-  public boolean b;
+  @NotNull
+  private static final String a = "RIJImageSharpHelper";
+  public static final psq a;
+  @NotNull
+  private static final String b = "sharp";
+  @NotNull
+  private static final String c = "webp";
+  @NotNull
+  private static final String d = "tp=sharp";
+  @NotNull
+  private static final String e = "tp=webp";
   
-  public psq a()
+  static
   {
-    psq localpsq = new psq();
-    localpsq.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg).a(this.jdField_a_of_type_Int).b(this.jdField_b_of_type_Int).a(this.jdField_a_of_type_JavaUtilList).b(this.jdField_b_of_type_JavaUtilList).a(this.jdField_a_of_type_Boolean).b(this.jdField_b_of_type_Boolean).a(this.jdField_a_of_type_ArrayOfByte).a(this.jdField_a_of_type_JavaLangString);
-    return localpsq;
+    jdField_a_of_type_Psq = new psq();
+    jdField_a_of_type_JavaLangString = "RIJImageSharpHelper";
   }
   
-  public psq a(int paramInt)
+  @Nullable
+  public final Bitmap a(@NotNull String paramString, int paramInt1, int paramInt2, @Nullable Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString, "filePath");
+    return new psr().a(paramString, paramInt1, paramInt2, Bitmap.Config.ARGB_8888, paramBitmap);
   }
   
-  public psq a(ToServiceMsg paramToServiceMsg)
+  @NotNull
+  public final BitmapFactory.Options a(@NotNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString, "filePath");
+    return new psr().a(paramString);
   }
   
-  public psq a(String paramString)
+  @NotNull
+  public final String a(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    if (StringsKt.contains$default((CharSequence)paramString, (CharSequence)"fmt=gif", false, 2, null)) {}
+    do
+    {
+      return paramString;
+      if (psn.a.f()) {
+        return a(paramString, c);
+      }
+    } while ((!psn.a.g()) || (!bjkq.a((Context)BaseApplicationImpl.context)));
+    return a(paramString, b);
   }
   
-  public psq a(List<ArticleInfo> paramList)
+  @NotNull
+  public final String a(@NotNull String paramString1, @NotNull String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString1, "url");
+    Intrinsics.checkParameterIsNotNull(paramString2, "type");
+    Object localObject = bjnd.a(paramString1);
+    if (((Map)localObject).containsKey("tp"))
+    {
+      localObject = (String)((Map)localObject).get("tp");
+      return StringsKt.replace$default(paramString1, "tp=" + (String)localObject, "tp=" + paramString2, false, 4, null);
+    }
+    if (((Map)localObject).size() > 0) {
+      return paramString1 + "&tp=" + paramString2;
+    }
+    return paramString1 + "?tp=" + paramString2;
   }
   
-  public psq a(boolean paramBoolean)
+  public final void a(@NotNull syo paramsyo, @NotNull String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramsyo, "imageRequest");
+    Intrinsics.checkParameterIsNotNull(paramString, "originUrl");
+    try
+    {
+      paramsyo.c = b(paramString);
+      paramsyo.a = new URL(a(paramString));
+      return;
+    }
+    catch (Exception paramsyo)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, paramsyo.getMessage());
+    }
   }
   
-  public psq a(byte[] paramArrayOfByte)
+  public final boolean a(@NotNull String paramString)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    return StringsKt.contains$default((CharSequence)paramString, (CharSequence)d, false, 2, null);
   }
   
-  public psq b(int paramInt)
+  @Nullable
+  public final String b(@NotNull String paramString)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    paramString = bjnd.a(paramString);
+    if (paramString.containsKey("tp")) {
+      return (String)paramString.get("tp");
+    }
+    return "";
   }
   
-  public psq b(List<ArticleInfo> paramList)
+  @NotNull
+  public final String b(@NotNull String paramString1, @NotNull String paramString2)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public psq b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramString1, "url");
+    Intrinsics.checkParameterIsNotNull(paramString2, "originType");
+    Object localObject = bjnd.a(paramString1);
+    String str = paramString1;
+    if (((Map)localObject).containsKey("tp"))
+    {
+      localObject = (String)((Map)localObject).get("tp");
+      if (!c.equals(localObject))
+      {
+        str = paramString1;
+        if (!b.equals(localObject)) {}
+      }
+      else
+      {
+        if (TextUtils.isEmpty((CharSequence)paramString2)) {
+          break label129;
+        }
+        str = StringsKt.replace$default(paramString1, "tp=" + (String)localObject, "tp=" + paramString2, false, 4, null);
+      }
+    }
+    return str;
+    label129:
+    paramString1 = bjnd.a(paramString1, "tp");
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "URLUtil.deleteParameter(url, \"tp\")");
+    return paramString1;
   }
 }
 

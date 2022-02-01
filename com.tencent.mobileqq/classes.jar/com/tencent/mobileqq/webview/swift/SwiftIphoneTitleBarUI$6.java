@@ -2,12 +2,12 @@ package com.tencent.mobileqq.webview.swift;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import binq;
+import bgtw;
 
 public class SwiftIphoneTitleBarUI$6
   implements Runnable
 {
-  public SwiftIphoneTitleBarUI$6(binq parambinq, TextView paramTextView1, TextView paramTextView2, String paramString) {}
+  public SwiftIphoneTitleBarUI$6(bgtw parambgtw, TextView paramTextView1, TextView paramTextView2, String paramString) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class SwiftIphoneTitleBarUI$6
       this.b.setText(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.this$0.c(this.jdField_a_of_type_JavaLangString);
+    this.this$0.setTitle(this.jdField_a_of_type_JavaLangString);
   }
 }
 

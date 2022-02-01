@@ -56,7 +56,6 @@
                 "value":"37"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setImageWithURLString:lineup:":["-1","-1"],
                 "setBackgroundColorString:":"#000000"
                 }
@@ -98,7 +97,6 @@
                 "value":"229"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setText:":"-1",
                 "setTextColorString:":"#9d9d9d",
                 "setFontSizeString:":"12",
@@ -162,7 +160,6 @@
                 "value":"375"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setBackgroundColorString:":"#eaeaea"
                 }
                 }

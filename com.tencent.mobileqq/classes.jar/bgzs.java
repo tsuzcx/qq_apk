@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
-public class bgzs
-  implements bdxo
+public abstract interface bgzs
+  extends bguj
 {
-  public bgzs(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public abstract int a();
   
-  public void a()
-  {
-    bdxw localbdxw = new bdxw(new bdxn[] { new bdxv(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new bdxv(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localbdxw.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new bdxn[] { localbdxw });
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
 }
 
 

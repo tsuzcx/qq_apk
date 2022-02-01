@@ -1,42 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.wifi.QWifiListFragment;
-import com.tencent.mobileqq.wifi.QWifiSecurityFragment;
-import com.wifisdk.ui.api.BaseFragImplManager;
-import com.wifisdk.ui.fragments.BaseFragmentImpl;
-
-public class bjhy
-  extends BaseFragImplManager
+final class bjhy
+  extends bjib
 {
-  public void finishFragImpl(BaseFragmentImpl paramBaseFragmentImpl)
+  public bjiu a;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bjhy(bjhw parambjhw, String paramString)
   {
-    paramBaseFragmentImpl = paramBaseFragmentImpl.getFragment();
-    if (paramBaseFragmentImpl != null)
-    {
-      paramBaseFragmentImpl = paramBaseFragmentImpl.getActivity();
-      if (paramBaseFragmentImpl != null) {
-        paramBaseFragmentImpl.finish();
-      }
-    }
+    super(null);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void switchFragImpl(Context paramContext, int paramInt1, int paramInt2, Intent paramIntent)
+  public boolean a(String paramString, bjiu parambjiu)
   {
-    Object localObject = null;
-    if (paramInt2 == 1) {
-      localObject = new QWifiListFragment();
-    }
-    while (localObject == null)
+    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
     {
-      return;
-      if (paramInt2 == 2) {
-        localObject = new QWifiSecurityFragment();
-      }
+      this.jdField_a_of_type_Bjiu = parambjiu;
+      return false;
     }
-    PublicFragmentActivity.a(paramContext, paramIntent, localObject.getClass());
+    return true;
   }
 }
 

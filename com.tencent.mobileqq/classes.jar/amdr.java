@@ -1,42 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import java.io.File;
+import java.util.zip.ZipEntry;
 
-public class amdr
-  implements blob
+class amdr
+  implements npp
 {
-  public amdr(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  amdr(amdq paramamdq, StringBuilder paramStringBuilder, String paramString) {}
   
-  public void a()
+  public boolean a(ZipEntry paramZipEntry)
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
+    if (paramZipEntry.isDirectory())
     {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
+      if ((this.jdField_a_of_type_Amdq.a != null) && (this.jdField_a_of_type_Amdq.a.length > 0))
       {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        localObject = this.jdField_a_of_type_Amdq.a;
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          int k = localObject[i];
+          if (paramZipEntry.getName().equals(Integer.valueOf(k + File.separatorChar)))
+          {
+            this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" download, ");
+            return false;
+          }
+          i += 1;
         }
       }
+      Object localObject = new File(this.jdField_a_of_type_JavaLangString + paramZipEntry.getName());
+      if ((localObject != null) && (((File)localObject).isDirectory()) && (((File)localObject).list().length >= 3))
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" exist, ");
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" copy, ");
     }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
-    {
-      paramPinnedFooterExpandableListView.b(paramInt);
-      return;
-    }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    return true;
   }
 }
 

@@ -1,36 +1,92 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-final class bjwn
-  implements ITMAssistantExchangeURLListenner
+public class bjwn
+  implements Animator.AnimatorListener
 {
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  final float jdField_a_of_type_Float;
+  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  public boolean a;
+  final float jdField_b_of_type_Float;
+  final int jdField_b_of_type_Int;
+  public final RecyclerView.ViewHolder b;
+  public boolean b;
+  final float jdField_c_of_type_Float;
+  final int jdField_c_of_type_Int;
+  boolean jdField_c_of_type_Boolean = false;
+  final float d;
+  float e;
+  float f;
+  private float g;
+  
+  bjwn(bjwf parambjwf, RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    bjtx.b(bjwk.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bjwo(this, parambjwf));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(paramViewHolder.itemView);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
+    a(0.0F);
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(false);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.g = paramFloat;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Float == this.jdField_c_of_type_Float) {}
+    for (this.e = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationX(); this.jdField_b_of_type_Float == this.d; this.e = (this.jdField_a_of_type_Float + this.g * (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float)))
     {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bjwk.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bjwk.jdField_a_of_type_JavaLangObject)
-    {
-      bjwk.jdField_a_of_type_JavaLangObject.notify();
+      this.f = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationY();
       return;
     }
+    this.f = (this.jdField_b_of_type_Float + this.g * (this.d - this.jdField_b_of_type_Float));
   }
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    a(1.0F);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (!this.jdField_c_of_type_Boolean) {
+      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(true);
+    }
+    this.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

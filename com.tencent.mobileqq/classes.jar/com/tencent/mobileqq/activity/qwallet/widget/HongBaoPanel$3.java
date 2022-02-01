@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import alfb;
-import alik;
+import akcu;
+import akgc;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bhsr;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
@@ -17,8 +17,8 @@ class HongBaoPanel$3
   {
     try
     {
-      alfb localalfb = (alfb)paramView.getTag();
-      if (localalfb == null)
+      akcu localakcu = (akcu)paramView.getTag();
+      if (localakcu == null)
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
@@ -39,8 +39,8 @@ class HongBaoPanel$3
           if (str.jdField_a_of_type_OrgJsonJSONObject != null)
           {
             str = str.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-            if (!bhsr.a(str)) {
-              alik.b(this.this$0.mContext, str);
+            if (!StringUtil.isEmpty(str)) {
+              akgc.b(this.this$0.mContext, str);
             }
           }
           break;
@@ -49,8 +49,8 @@ class HongBaoPanel$3
           break;
         case 102: 
           str = str.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-          if (!bhsr.a(str)) {
-            alik.b(this.this$0.mContext, str);
+          if (!StringUtil.isEmpty(str)) {
+            akgc.b(this.this$0.mContext, str);
           }
           break;
         }

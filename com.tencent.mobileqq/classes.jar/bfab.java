@@ -1,24 +1,14 @@
-import java.util.Comparator;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 class bfab
-  implements Comparator
+  extends ThreadLocal<SimpleDateFormat>
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  bfab(bfaa parambfaa) {}
+  
+  protected SimpleDateFormat a()
   {
-    paramObject1 = (bezy)paramObject1;
-    paramObject2 = (bezy)paramObject2;
-    if (paramObject1.c > paramObject2.c) {}
-    do
-    {
-      return -1;
-      if (paramObject1.c < paramObject2.c) {
-        return 1;
-      }
-    } while (paramObject1.d > paramObject2.d);
-    if (paramObject1.d < paramObject2.d) {
-      return 1;
-    }
-    return 0;
+    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
   }
 }
 

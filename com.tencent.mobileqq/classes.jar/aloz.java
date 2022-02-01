@@ -1,38 +1,42 @@
-import android.util.SparseIntArray;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-final class aloz
-  extends SparseIntArray
+public final class aloz
+  implements acjr
 {
-  aloz()
+  public aloz(View paramView, acju paramacju, long paramLong, int paramInt) {}
+  
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    put(0, 1);
-    put(1, 2);
-    put(3000, 3);
-    put(1004, 4);
-    put(1006, 5);
-    put(1000, 6);
-    put(1022, 8);
-    put(1001, 10);
-    put(10004, 10);
-    put(10002, 10);
-    put(5000, 11);
-    put(9000, 12);
-    put(1002, 13);
-    put(9002, 14);
-    put(7230, 17);
-    put(7120, 18);
-    put(9501, 19);
-    put(6000, 20);
-    put(7000, 21);
-    put(9999, 22);
-    put(1023, 23);
-    put(1005, 24);
-    put(1024, 25);
-    put(1025, 26);
-    put(7220, 29);
-    put(10008, 31);
-    put(10009, 32);
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
+    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
+    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
+    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
+    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
+    paramJSONObject.optDouble("accuracy", 0.0D);
+    double d5 = paramJSONObject.optDouble("speed", 0.0D);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
+      return;
+    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

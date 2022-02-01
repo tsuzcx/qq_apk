@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class qaw
-  implements ViewBase.IBuilder
+class qaw
+  implements quh
 {
-  public ViewBase build(VafContext paramVafContext)
+  qaw(qat paramqat, pvc parampvc) {}
+  
+  public void a()
   {
-    return new qav(paramVafContext);
+    pet localpet = this.jdField_a_of_type_Pvc.a().a().a();
+    if (localpet != null) {
+      localpet.a(null, this.jdField_a_of_type_Pvc.a(), 1);
+    }
   }
 }
 

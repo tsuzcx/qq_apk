@@ -1,19 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
+import bfuc;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 
 class TaskManager$11
   implements JSContext.Callback
 {
-  TaskManager$11(TaskManager paramTaskManager, Task paramTask) {}
+  TaskManager$11(TaskManager paramTaskManager) {}
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    if (this.val$task != null) {
-      return this.val$task.id;
-    }
-    return "";
+    return new String(bfuc.decode((String)paramArrayOfObject[0], 2));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.lifeachivement;
 
-import agej;
+import amov;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,19 +11,19 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import anum;
-import azxr;
-import azzh;
-import azzk;
-import azzm;
-import azzn;
-import azzp;
-import azzq;
-import azzr;
-import azzs;
-import azzt;
+import aymg;
+import aynw;
+import aynz;
+import ayob;
+import ayoc;
+import ayoe;
+import ayof;
+import ayog;
+import ayoh;
+import ayoi;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
 import com.tencent.qphone.base.util.QLog;
@@ -33,12 +33,12 @@ public class LifeAchivementPanelView
   extends ProfileContentTitleView
 {
   public long a;
+  public amov a;
   RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   Button jdField_a_of_type_AndroidWidgetButton;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public anum a;
-  public azzh a;
-  azzm jdField_a_of_type_Azzm;
+  public aynw a;
+  ayob jdField_a_of_type_Ayob;
   public String a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -53,21 +53,21 @@ public class LifeAchivementPanelView
     super(paramContext, paramAttributeSet);
   }
   
-  private void a(azzn paramazzn, int paramInt1, int paramInt2)
+  private void a(ayoc paramayoc, int paramInt1, int paramInt2)
   {
     if (paramInt2 == 1)
     {
-      paramazzn.jdField_a_of_type_Boolean = true;
-      paramazzn.c += 1;
+      paramayoc.jdField_a_of_type_Boolean = true;
+      paramayoc.c += 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Azzh.notifyItemChanged(paramInt1);
+      this.jdField_a_of_type_Aynw.notifyItemChanged(paramInt1);
       return;
       if (paramInt2 == 2)
       {
-        paramazzn.jdField_a_of_type_Boolean = false;
-        paramazzn.c -= 1;
+        paramayoc.jdField_a_of_type_Boolean = false;
+        paramayoc.c -= 1;
       }
     }
   }
@@ -75,47 +75,47 @@ public class LifeAchivementPanelView
   private void d()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(getContext());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new azzr(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new azzs(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new ayog(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new ayoh(this));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getContext());
     localLinearLayoutManager.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    int i = agej.a(5.0F, getResources());
-    int j = agej.a(0.0F, getResources());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new azzk(i, j));
-    this.jdField_a_of_type_Azzm = new azzt(this);
+    int i = AIOUtils.dp2px(5.0F, getResources());
+    int j = AIOUtils.dp2px(0.0F, getResources());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aynz(i, j));
+    this.jdField_a_of_type_Ayob = new ayoi(this);
     if (QLog.isColorLevel()) {
       QLog.i("LifeAchivementPanelView", 2, "init ");
     }
-    this.jdField_a_of_type_Azzh = new azzh(getContext(), null, this.jdField_a_of_type_Azzm);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azzh);
+    this.jdField_a_of_type_Aynw = new aynw(getContext(), null, this.jdField_a_of_type_Ayob);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aynw);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561455, this, false));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369596));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new azzp(this));
-    URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369595);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561339, this, false));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369587));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ayoe(this));
+    URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369586);
     if (localURLImageView != null)
     {
       localURLImageView.setImageURL("https://downv6.qq.com/qq_relation/life_achivement/lifeachivement_empty_bg.png");
       localURLImageView.setVisibility(0);
     }
     d();
-    this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new azzq(this));
-    this.jdField_b_of_type_AndroidViewViewGroup.setContentDescription(getResources().getString(2131691032));
+    this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new ayof(this));
+    this.jdField_b_of_type_AndroidViewViewGroup.setContentDescription(getResources().getString(2131691072));
   }
   
-  public void a(Card paramCard, azxr paramazxr)
+  public void a(Card paramCard, aymg paramaymg)
   {
     bool1 = true;
     String str = "";
     if (!TextUtils.isEmpty(paramCard.lifeAchievementOpenId)) {
       str = paramCard.lifeAchievementOpenId;
     }
-    boolean bool2 = ProfileActivity.AllInOne.b(paramazxr.a);
+    boolean bool2 = ProfileActivity.AllInOne.b(paramaymg.a);
     long l1 = 0L;
     try
     {
@@ -131,7 +131,7 @@ public class LifeAchivementPanelView
         bool1 = false;
       }
     }
-    if (paramazxr.a.a == 0)
+    if (paramaymg.a.a == 0)
     {
       this.jdField_b_of_type_Boolean = bool2;
       this.jdField_a_of_type_JavaLangString = str;
@@ -141,7 +141,7 @@ public class LifeAchivementPanelView
     }
   }
   
-  public void a(ArrayList<azzn> paramArrayList, int paramInt)
+  public void a(ArrayList<ayoc> paramArrayList, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("LifeAchivementPanelView", 2, "showAchivementList dataArrayList.size() = " + paramArrayList.size() + ",totalCount = " + paramInt);
@@ -149,7 +149,7 @@ public class LifeAchivementPanelView
     c();
     a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Azzh.a(paramArrayList, paramInt, bool);
+    this.jdField_a_of_type_Aynw.a(paramArrayList, paramInt, bool);
   }
   
   public void b()
@@ -161,9 +161,9 @@ public class LifeAchivementPanelView
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
-  public void setCardHandler(anum paramanum)
+  public void setCardHandler(amov paramamov)
   {
-    this.jdField_a_of_type_Anum = paramanum;
+    this.jdField_a_of_type_Amov = paramamov;
   }
 }
 

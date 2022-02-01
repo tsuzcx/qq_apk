@@ -1,76 +1,46 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.DrawableContainer.DrawableContainerState;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class xxf
-  extends xqm
+  extends SimpleObserver<yjh>
 {
-  public xxf(xwr paramxwr) {}
+  xxf(xxd paramxxd) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(yjh paramyjh)
   {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Xms.equals(localObject))) {}
-    do
+    super.onNext(paramyjh);
+    this.a.a(40);
+    paramyjh = paramyjh.a.b;
+    xvv.b("EditPicSave", "picPath = " + paramyjh);
+    if (this.a.jdField_a_of_type_Yan.getActivity() != null)
     {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        yuk.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          xjn.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        wlt.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131718165), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (xwr.a(this.a) != null)) {
-        xwr.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Xfj == null);
-    this.a.jdField_a_of_type_Xfj.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((LiuHaiUtils.a) && (!bdep.a(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (xwr.a(this.a) - zps.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
-    {
-      Object localObject = xwr.a(this.a).getBackground();
-      if ((localObject instanceof StateListDrawable))
-      {
-        localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
-        if (localObject != null) {
-          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167307));
-        }
-      }
+      ThreadManager.post(new EditPicSave.2.1(this, paramyjh), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.g();
     }
   }
   
-  public void g()
+  public void onCancel()
   {
-    super.g();
-    if (xwr.a(this.a) != null) {
-      xwr.a(this.a).a();
-    }
+    super.onCancel();
+    xvv.d("EditPicSave", "saveVideo cancel !");
+    this.a.jdField_a_of_type_Xzd.a(0);
+    this.a.h();
+    QQToast.a(this.a.jdField_a_of_type_Yan.a(), amtj.a(2131702822), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    xvv.e("EditPicSave", "saveVideo error ：" + paramError);
+    this.a.jdField_a_of_type_Xzd.a(0);
+    QQToast.a(this.a.jdField_a_of_type_Yan.a(), 1, amtj.a(2131702823) + paramError, 0).a();
+    this.a.h();
   }
 }
 

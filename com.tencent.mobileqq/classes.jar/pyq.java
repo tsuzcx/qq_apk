@@ -1,13 +1,10 @@
-class pyq
-  implements qoe
+import android.graphics.Bitmap;
+
+public abstract interface pyq
 {
-  pyq(pyp parampyp, ppu paramppu, sel paramsel) {}
+  public abstract void a(soh paramsoh, pvc parampvc, int paramInt);
   
-  public void a()
-  {
-    ozs.a = this.jdField_a_of_type_Ppu.a();
-    ozs.a(this.jdField_a_of_type_Sel.a(), this.jdField_a_of_type_Ppu.a(), 2);
-  }
+  public abstract void a(soh paramsoh, pvc parampvc, long paramLong, Bitmap paramBitmap);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import awql;
-import awqx;
-import bhlq;
-import bhpc;
+import avdr;
+import aved;
+import bfur;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class LocationDialogUtil$5
   implements Runnable
@@ -14,8 +14,8 @@ public final class LocationDialogUtil$5
   
   public void run()
   {
-    bhpc localbhpc = bhlq.a(this.a, 230, null, this.a.getResources().getString(2131718251), 2131690580, 2131694098, new awqx(this), null);
-    awql.a(this.a, localbhpc);
+    QQCustomDialog localQQCustomDialog = bfur.a(this.a, 230, null, this.a.getResources().getString(2131718492), 2131690620, 2131694201, new aved(this), null);
+    avdr.a(this.a, localQQCustomDialog);
   }
 }
 

@@ -1,12 +1,20 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-public abstract interface avzc
-  extends PluginManager
+public class avzc
+  extends DataSetObserver
 {
-  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
+  public avzc(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  
+  public void onChanged()
+  {
+    this.a.b();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.b();
+  }
 }
 
 

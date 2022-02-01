@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class ahzt
-  implements ahzu
+class ahzt
+  extends RecyclerView.ViewHolder
 {
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
+  
+  public ahzt(ahzq paramahzq, View paramView)
   {
-    int i = 1;
-    if (ahml.a(paramMessageRecord)) {
-      if (paramMessageRecord.istroop != 0) {
-        break label41;
-      }
-    }
-    for (;;)
-    {
-      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X800B154", "0X800B154", i, 0, "", "", "", "");
-      return;
-      label41:
-      if (paramMessageRecord.istroop == 1) {
-        i = 2;
-      } else if (ChatActivityUtils.a(paramMessageRecord.istroop)) {
-        i = 3;
-      } else {
-        i = 4;
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376717));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
   }
 }
 

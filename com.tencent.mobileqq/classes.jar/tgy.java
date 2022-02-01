@@ -1,7 +1,21 @@
-import kotlin.Metadata;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DeviceBridgeInvokeHandler$Companion;", "", "()V", "GET_CLIENT_INFO", "", "GET_CU_KING_STATUS", "GET_DEVICE_INFO", "GET_GDT_INFO", "GET_NETWORK_INFO", "GET_NETWORK_TYPE", "GET_NET_TYPE", "GET_RECOMMEND_FLAG", "IS_MOBILE_QQ", "NS_DEVICE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tgy {}
+public class tgy
+  implements apkw
+{
+  public tgy(ViolaFragment paramViolaFragment, Bundle paramBundle) {}
+  
+  public ColorNote getColorNote()
+  {
+    if (ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment) != null) {
+      return ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment).a();
+    }
+    ViolaFragment.access$302(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, new tgl(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getUrl()).a(this.jdField_a_of_type_AndroidOsBundle.getString("param")).a(this.jdField_a_of_type_AndroidOsBundle.getBoolean("useTransParentFragment")).a(ViolaFragment.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment)));
+    return ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment).a();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import agej;
-import aklt;
+import ajjs;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class MiniPie$3
   implements Runnable
 {
-  public MiniPie$3(aklt paramaklt) {}
+  public MiniPie$3(ajjs paramajjs) {}
   
   public void run()
   {
-    agej.a(this.this$0.a);
+    AIOUtils.showKeyboard(this.this$0.a);
   }
 }
 

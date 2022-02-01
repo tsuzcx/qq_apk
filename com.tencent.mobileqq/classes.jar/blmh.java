@@ -1,6 +1,18 @@
-public abstract interface blmh
+import com.tencent.qphone.base.util.QLog;
+
+class blmh
+  implements bhhk
 {
-  public abstract void onScrollStateChanged(int paramInt);
+  blmh(blmd paramblmd) {}
+  
+  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
+  
+  public void onProgressCompleted(bhhi parambhhi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListLogicAECircle", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
+    }
+  }
 }
 
 

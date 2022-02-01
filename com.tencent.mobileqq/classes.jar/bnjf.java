@@ -1,60 +1,15 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
+import android.support.annotation.NonNull;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class bnjf
-  implements Downloader.DownloadListener
+public class bnjf
+  implements bnry
 {
-  bnjf(bnje parambnje, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
+  public bnjf(DoodleLayout paramDoodleLayout) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void a(@NonNull bnsf parambnsf)
   {
-    File localFile = new File(bnje.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
-    }
-    if (bnje.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bnje.jdField_a_of_type_ArrayOfBoolean[bnje.a(this.jdField_a_of_type_Bnje)] = false;
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    File localFile = new File(bnje.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
-    }
-    if (bnje.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bnje.jdField_a_of_type_ArrayOfBoolean[bnje.a(this.jdField_a_of_type_Bnje)] = false;
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    File localFile = new File(bnje.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localFile = new File(bnje.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(bnje.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
-    }
-    LocalMultiProcConfig.putBool(this.b, true);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
-    }
-    if (bnje.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bnje.jdField_a_of_type_ArrayOfBoolean[bnje.a(this.jdField_a_of_type_Bnje)] = false;
-    }
+    this.a.a(parambnsf.a, parambnsf.b);
+    xwb.b("0X80075CD");
   }
 }
 

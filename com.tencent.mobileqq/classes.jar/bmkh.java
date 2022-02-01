@@ -1,16 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
-class bmkh
-  implements DialogInterface.OnClickListener
+public class bmkh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  bmkh(bmkd parambmkd) {}
+  public bmkh(AEEditorFilterControlPanel paramAEEditorFilterControlPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a.b = true;
-    bmkd.a(this.a, 1);
-    bmkd.c(this.a);
+    if ((paramBoolean) && (paramSeekBar.getVisibility() == 0))
+    {
+      if (AEEditorFilterControlPanel.a(this.a) != null) {
+        AEEditorFilterControlPanel.a(this.a).setText(paramInt + "%");
+      }
+      if (AEEditorFilterControlPanel.a(this.a) != null) {
+        AEEditorFilterControlPanel.a(this.a).a(this.a.a(), paramInt / 100.0F);
+      }
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).setVisibility(0);
+    }
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).u();
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).setVisibility(4);
+    }
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).v();
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

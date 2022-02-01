@@ -1,27 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class myc
-  implements DialogInterface.OnDismissListener
+public class myc
+  implements BusinessObserver
 {
-  myc(mya parammya, Activity paramActivity) {}
+  public void a(int paramInt, boolean paramBoolean, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!this.jdField_a_of_type_Mya.c)
-    {
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
+    if (((paramObject instanceof String)) || (paramObject == null)) {
+      a(paramInt, paramBoolean, (String)paramObject);
     }
-    this.jdField_a_of_type_Mya.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myc
  * JD-Core Version:    0.7.0.1
  */

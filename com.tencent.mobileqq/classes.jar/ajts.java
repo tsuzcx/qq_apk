@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajts
-  implements ValueAnimator.AnimatorUpdateListener
+class ajts
+  implements View.OnClickListener
 {
-  public ajts(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  ajts(ajtr paramajtr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    if (ajtr.a(this.a) == null)
+    {
+      ajtr.a(this.a, bfur.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717337), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717335), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717336), new ajtt(this), new ajtu(this)));
+      ajtr.a(this.a).setCanceledOnTouchOutside(false);
+    }
+    ajtr.a(this.a).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

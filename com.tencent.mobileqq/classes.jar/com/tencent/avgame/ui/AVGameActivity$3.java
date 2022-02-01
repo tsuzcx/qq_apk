@@ -1,11 +1,10 @@
 package com.tencent.avgame.ui;
 
 import android.text.TextUtils;
-import com.tencent.avgame.session.AVGameSession;
-import com.tencent.avgame.session.AVGameSession.SessionStatus;
 import com.tencent.avgame.util.AVGameNodeReportUtil;
 import com.tencent.qphone.base.util.QLog;
-import nfm;
+import ngu;
+import nhn;
 
 class AVGameActivity$3
   implements Runnable
@@ -16,10 +15,10 @@ class AVGameActivity$3
   {
     int i = 0;
     QLog.i("AVGameActivity", 1, "mEnterAvRoomRunnable begin isFinishing:" + this.this$0.isFinishing() + " mRoomId:" + AVGameActivity.a(this.this$0));
-    String str = AVGameSession.a(11, Long.valueOf(AVGameActivity.a(this.this$0)).longValue());
-    AVGameSession localAVGameSession = nfm.b().a();
-    if ((localAVGameSession != null) && (localAVGameSession.a.equalsIgnoreCase(str))) {
-      if (localAVGameSession.a() == AVGameSession.SessionStatus.ENTERED) {
+    String str = nhn.a(11, Long.valueOf(AVGameActivity.a(this.this$0)).longValue());
+    nhn localnhn = ngu.b().a();
+    if ((localnhn != null) && (localnhn.a.equalsIgnoreCase(str))) {
+      if (localnhn.a() == 2) {
         this.this$0.a(5);
       }
     }
@@ -28,15 +27,15 @@ class AVGameActivity$3
       if (i == 0)
       {
         return;
-        if (localAVGameSession.a() == AVGameSession.SessionStatus.ENTERING) {
+        if (localnhn.a() == 1) {
           this.this$0.a(6);
         }
       }
       else
       {
-        if (localAVGameSession != null)
+        if (localnhn != null)
         {
-          nfm.b().e();
+          ngu.b().e();
           if (QLog.isColorLevel()) {
             QLog.d("AVGameActivity", 2, "mEnterAvRoomRunnable exit old session");
           }
@@ -53,7 +52,7 @@ class AVGameActivity$3
           return;
         }
         AVGameNodeReportUtil.b();
-        i = nfm.b().a(AVGameActivity.a(this.this$0), AVGameActivity.a(this.this$0), 1, this.this$0);
+        i = ngu.b().a(AVGameActivity.a(this.this$0), AVGameActivity.a(this.this$0), 1, this.this$0);
         if (QLog.isColorLevel()) {
           QLog.d("AVGameActivity", 2, "mEnterAvRoomRunnable enterRoom coast " + (System.currentTimeMillis() - l) + " retCode=" + i);
         }
@@ -62,7 +61,7 @@ class AVGameActivity$3
           AVGameActivity.a(this.this$0, 2, i);
           return;
         }
-        if (nfm.b().a() == null)
+        if (ngu.b().a() == null)
         {
           AVGameActivity.a(this.this$0, 3, 1);
           return;

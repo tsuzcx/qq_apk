@@ -1,19 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.view.NoScrollViewPager;
 
 class bliy
-  implements View.OnClickListener
+  implements bmcp
 {
-  bliy(blir paramblir) {}
+  bliy(blix paramblix) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.dismiss();
-    if (blir.a(this.a) != null) {
-      blir.a(this.a).onDismiss();
+    if (paramInt == 0)
+    {
+      blix.a(this.a).setCurrentItem(0, true);
+      blix.a(this.a).d();
+      blix.a(this.a).p();
+      bmbc.a().ae();
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (blix.a(this.a))
+    {
+      blix.a(this.a);
+      bmbc.a().af();
+      return;
+    }
+    blix.b(this.a);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt != 1) || (blix.a(this.a));
   }
 }
 

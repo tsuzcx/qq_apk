@@ -1,12 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class ngt
-  implements View.OnClickListener
+public abstract interface ngt
 {
-  ngt(ngq paramngq) {}
+  public abstract Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
   
-  public void onClick(View paramView) {}
+  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
 }
 
 

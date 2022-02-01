@@ -1,19 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
 public class ayqp
-  extends ayqn
+  extends Handler
 {
-  public View e;
-  public ImageView e;
-  public View f;
-  public ImageView f;
-  public TextView g;
+  public ayqp(CircularProgressBar paramCircularProgressBar) {}
   
-  public ayqp(ayqo paramayqo)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramayqo);
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      if (CircularProgressBar.a(this.a) > 360) {
+        CircularProgressBar.a(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
   }
 }
 

@@ -6,12 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sop;
+import ssq;
+import swa;
 
 public class WebFastAdapter$10
   implements Runnable
 {
-  public WebFastAdapter$10(sop paramsop) {}
+  public WebFastAdapter$10(ssq paramssq) {}
   
   public void run()
   {
@@ -21,11 +22,14 @@ public class WebFastAdapter$10
     {
       Object localObject = (BaseData)localIterator.next();
       int j = i;
+      int k;
       if ((localObject instanceof ProteusItemData))
       {
         localObject = ((ProteusItemData)localObject).c;
-        j = i;
-        if (localObject != null) {
+        k = i;
+        if (localObject != null)
+        {
+          k = i;
           j = i;
         }
       }
@@ -35,21 +39,25 @@ public class WebFastAdapter$10
         {
           if (((JSONObject)localObject).opt("id_recommend_category_txt") != null)
           {
-            int k = 1;
-            j = 1;
-            i = k;
-            localObject = ((JSONObject)localObject).getJSONObject("id_recommend_category_txt");
-            i = k;
-            ((JSONObject)localObject).put("text", "下载快报阅读");
-            i = k;
-            ((JSONObject)localObject).put("label_ug_progress_progress", 0);
+            k = i;
+            j = i;
+            if (((JSONObject)localObject).optString("kd_ug_rsp_info") != null)
+            {
+              i = 1;
+              k = 1;
+              j = i;
+              JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("id_recommend_category_txt");
+              j = i;
+              localJSONObject.put("text", new swa(((JSONObject)localObject).optString("kd_ug_rsp_info")).f);
+              j = i;
+              localJSONObject.put("label_ug_progress_progress", 0);
+            }
           }
-          i = j;
+          i = k;
         }
         catch (JSONException localJSONException)
         {
           localJSONException.printStackTrace();
-          j = i;
         }
         i = j;
       }
@@ -61,7 +69,7 @@ public class WebFastAdapter$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,51 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenAuthorityFragment.12.1;
-import com.tencent.open.model.AccountManage.RefreshReason;
-import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import java.lang.ref.WeakReference;
 
 public class bjng
-  extends bjpq
+  extends Handler
 {
-  public bjng(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private WeakReference<Handler.Callback> a;
   
-  public void a(boolean paramBoolean, int paramInt)
+  public bjng(Handler.Callback paramCallback)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
-    if (paramBoolean) {
-      return;
-    }
-    this.a.k();
-    if (paramInt == 151)
-    {
-      OpenAuthorityFragment.a(this.a, anzj.a(2131706730), false);
-      this.a.c(OpenAuthorityFragment.b(this.a));
-      return;
-    }
-    OpenAuthorityFragment.a(this.a, anzj.a(2131706731) + paramInt, false);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public void a(boolean paramBoolean, int paramInt, bjpr parambjpr)
+  public bjng(Looper paramLooper, Handler.Callback paramCallback)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onDoAuthorize isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
-    avcw.a("KEY_AUTHORIZE_REQUEST", OpenAuthorityFragment.a(this.a), paramBoolean);
-    Object localObject;
-    if ((paramBoolean) && (parambjpr != null))
-    {
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = parambjpr;
-      this.a.a.sendMessage((Message)localObject);
-      return;
-    }
-    if (paramInt == 110509)
-    {
-      if (OpenAuthorityFragment.e(this.a) >= 2)
-      {
-        parambjpr = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
-        localObject = this.a;
-        if (parambjpr == null) {}
-        for (parambjpr = null;; parambjpr = parambjpr.a)
-        {
-          ((OpenAuthorityFragment)localObject).c(parambjpr);
-          return;
-        }
-      }
-      OpenAuthorityFragment.f(this.a);
-      OpenAuthorityFragment.a(this.a, AccountManage.RefreshReason.forceRefreshBy110509);
-      return;
-    }
-    if ((parambjpr != null) && (!TextUtils.isEmpty(parambjpr.a.get())))
-    {
-      OpenAuthorityFragment.a(this.a, parambjpr.a.get() + anzj.a(2131706726) + paramInt, false);
-      return;
-    }
-    OpenAuthorityFragment.a(this.a, anzj.a(2131706728) + paramInt, false);
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onGetVirtualList isSuccess=", Boolean.valueOf(paramBoolean) });
-    if (OpenAuthorityFragment.a(this.a))
-    {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, " activity is isInvalid");
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    avcw.a("KEY_GET_VIRTUAL_LIST_D24", OpenAuthorityFragment.a(this.a), paramBoolean);
-    this.a.getActivity().runOnUiThread(new OpenAuthorityFragment.12.1(this, paramBoolean, paramGetVirtualListResult));
+    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
+  }
+  
+  public String toString()
+  {
+    Object localObject = (Handler.Callback)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("WH");
+    if (localObject != null) {}
+    for (localObject = localObject.toString();; localObject = "None callback") {
+      return (String)localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjng
  * JD-Core Version:    0.7.0.1
  */

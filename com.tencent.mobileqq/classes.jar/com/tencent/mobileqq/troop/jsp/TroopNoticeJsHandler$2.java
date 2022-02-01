@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bghf;
-import bmsm;
+import beqn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import cooperation.qzone.LargeIntentManager;
 import java.util.ArrayList;
-import sel;
+import pgw;
 
 public final class TroopNoticeJsHandler$2
   implements Runnable
@@ -47,7 +47,7 @@ public final class TroopNoticeJsHandler$2
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
     {
       localBundle.putBoolean("is_grid_image_report", true);
-      sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "", this.jdField_a_of_type_Int, localBundle);
+      pgw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "", this.jdField_a_of_type_Int, localBundle);
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       localBundle.putString("src_id", this.jdField_a_of_type_JavaLangString);
@@ -56,9 +56,9 @@ public final class TroopNoticeJsHandler$2
       localBundle.putString("str_data_extra", this.jdField_b_of_type_JavaLangString);
     }
     localIntent.putExtras(localBundle);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > bghf.a()))
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > beqn.a()))
     {
-      bmsm.a(localIntent, this.jdField_a_of_type_AndroidAppActivity);
+      LargeIntentManager.saveIntent(localIntent, this.jdField_a_of_type_AndroidAppActivity);
       localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);
       localIntent.putExtra("save_intent_to_file", true);
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, this.jdField_b_of_type_Int);

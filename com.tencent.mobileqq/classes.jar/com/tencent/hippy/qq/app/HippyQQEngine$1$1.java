@@ -1,8 +1,5 @@
 package com.tencent.hippy.qq.app;
 
-import android.text.TextUtils;
-import com.tencent.mtt.hippy.utils.LogUtils;
-
 class HippyQQEngine$1$1
   implements Runnable
 {
@@ -10,21 +7,7 @@ class HippyQQEngine$1$1
   
   public void run()
   {
-    String str;
-    if (this.val$result == 0) {
-      if ((!TextUtils.isEmpty(this.val$filePath)) && (HippyQQEngine.access$000(this.this$1.this$0) <= 0))
-      {
-        str = this.val$filePath + "/" + "index.android.jsbundle";
-        HippyQQEngine.access$100(this.this$1.this$0, str);
-      }
-    }
-    do
-    {
-      return;
-      str = "check package update error: " + this.val$msg;
-      LogUtils.e("hippy", str);
-    } while ((HippyQQEngine.access$000(this.this$1.this$0) > 0) || (HippyQQEngine.access$200(this.this$1.this$0) == null));
-    HippyQQEngine.access$200(this.this$1.this$0).onError(this.val$result, str);
+    this.this$1.this$0.doUpdatePackageComplete(this.val$result, this.val$msg, this.val$filePath, this.this$1.val$checkStartTime);
   }
 }
 

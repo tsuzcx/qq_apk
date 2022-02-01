@@ -1,6 +1,11 @@
-public abstract interface rih
+import android.widget.ImageView;
+
+class rih
 {
-  public abstract void a(bcfr parambcfr);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
+  
+  private rih(rif paramrif) {}
 }
 
 

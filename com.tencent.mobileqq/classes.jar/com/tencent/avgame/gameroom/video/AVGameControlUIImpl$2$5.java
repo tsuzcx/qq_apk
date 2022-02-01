@@ -1,11 +1,11 @@
 package com.tencent.avgame.gameroom.video;
 
-import nec;
+import nfj;
 
 public class AVGameControlUIImpl$2$5
   implements Runnable
 {
-  public AVGameControlUIImpl$2$5(nec paramnec) {}
+  public AVGameControlUIImpl$2$5(nfj paramnfj) {}
   
   public void run()
   {

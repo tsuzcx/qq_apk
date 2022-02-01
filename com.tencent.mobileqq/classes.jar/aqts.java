@@ -1,135 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class aqts
+  extends BaseAdapter
 {
-  public static final int[] a = { 17039360, 17104896, 16908292 };
+  public aqts(DataReportViewer paramDataReportViewer) {}
   
-  public static aque a(int paramInt)
+  public int getCount()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 16908292: 
-      return new aqtz();
-    case 17104896: 
-      return new aqua();
-    case 17039360: 
-      return new auew();
-    }
-    return new aqub();
+    return this.a.a.size();
   }
   
-  public static List<ColorNote> a(int paramInt)
+  public Object getItem(int paramInt)
   {
-    List localList1 = b(paramInt);
-    List localList2 = c(0);
-    if (localList1 == null) {
-      return null;
-    }
-    if ((localList2 == null) || (localList2.size() == 0)) {
-      return localList1;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = localList1.iterator();
-    while (localIterator1.hasNext())
+    return this.a.a.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      ColorNote localColorNote = (ColorNote)localIterator1.next();
-      Iterator localIterator2 = localList2.iterator();
-      while (localIterator2.hasNext()) {
-        if (aqsd.a(localColorNote, (ColorNote)localIterator2.next())) {
-          localArrayList.add(localColorNote);
-        }
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559612, paramViewGroup, false);
+      paramView = new aqtt(this.a, localView);
+      localView.setTag(paramView);
+      localObject = (ReportData)this.a.a.get(paramInt);
+      paramView.a.setText(((ReportData)localObject).table);
+      paramView.b.setText(((ReportData)localObject).mainAction);
+      paramView.c.setText(((ReportData)localObject).subAction);
+      paramView.d.setText(((ReportData)localObject).actionName);
+      paramView.e.setText(String.valueOf(((ReportData)localObject).opType));
+      paramView.f.setText(String.valueOf(((ReportData)localObject).result));
+      paramView.g.setText(((ReportData)localObject).r2);
+      paramView.h.setText(((ReportData)localObject).r3);
+      paramView.i.setText(((ReportData)localObject).r4);
+      paramView.j.setText(((ReportData)localObject).r5);
+      if (!((ReportData)localObject).isLightBlueBg) {
+        break label249;
       }
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166585));
     }
-    localList1.removeAll(localArrayList);
-    return localList1;
-  }
-  
-  public static List<ColorNote> a(List<ColorNote> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList != null)
+    for (;;)
     {
-      localObject = paramList;
-      if (paramList.size() > 3) {
-        localObject = paramList.subList(0, 3);
-      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (aqtt)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label249:
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167337));
     }
-    return localObject;
-  }
-  
-  static List<ColorNote> a(List<ColorNote> paramList, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramList.next();
-      if (localColorNote.getServiceType() == paramInt) {
-        localArrayList.add(0, localColorNote);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(ColorNote paramColorNote)
-  {
-    if ((paramColorNote == null) || (TextUtils.isEmpty(paramColorNote.getMainTitle()))) {
-      return;
-    }
-    paramColorNote = aqsd.c(paramColorNote);
-    paramColorNote.setType(2);
-    aqrf localaqrf = new aqrf();
-    localaqrf.a(paramColorNote.getServiceType(), paramColorNote.getSubType(), 2);
-    localaqrf.a(new aqtt(localaqrf, paramColorNote));
-    a(paramColorNote.getServiceType());
-  }
-  
-  private static void a(List<ColorNote> paramList)
-  {
-    if ((paramList != null) && (paramList.size() >= 20))
-    {
-      aqrf localaqrf = new aqrf();
-      int i = 9;
-      while (i < paramList.size())
-      {
-        ColorNote localColorNote = (ColorNote)paramList.get(i);
-        localaqrf.a(localColorNote.getServiceType(), localColorNote.getSubType(), 2);
-        i += 1;
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      List localList = b(paramInt);
-      if ((localList != null) && (localList.size() > 20)) {
-        a(localList);
-      }
-      return true;
-    }
-    aqri.a(paramInt);
-    return true;
-  }
-  
-  public static List<ColorNote> b(int paramInt)
-  {
-    return a(c(2), paramInt);
-  }
-  
-  public static List<ColorNote> c(int paramInt)
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a(false, paramInt);
   }
 }
 

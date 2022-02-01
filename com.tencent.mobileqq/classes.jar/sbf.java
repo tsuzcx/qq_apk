@@ -1,57 +1,29 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sbf
+class sbf
+  extends sif
 {
-  private JSONObject a;
+  sbf(sab paramsab) {}
   
-  public sbf(String paramString)
+  public int a()
   {
-    try
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        this.a = new JSONObject();
-        return;
-      }
-      this.a = new JSONObject(paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return 19;
   }
   
-  public sbf(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.a = new JSONObject();
-    odr.a(paramString1, paramString2, paramString3, paramString4, this.a);
+    sab.a(this.a, paramVideoInfo, paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
   }
   
-  public sbf(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public int b()
   {
-    this(paramString1);
-    odr.a(paramString2, paramString3, paramString4, paramString5, this.a);
+    return 0;
   }
   
-  public String a()
+  public int c()
   {
-    return this.a.toString();
-  }
-  
-  protected void a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.a.put(paramString, paramObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return 1;
   }
 }
 

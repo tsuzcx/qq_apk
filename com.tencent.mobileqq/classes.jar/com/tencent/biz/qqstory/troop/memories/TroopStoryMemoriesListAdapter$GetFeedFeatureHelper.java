@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import wzv;
+import wbl;
 
 public class TroopStoryMemoriesListAdapter$GetFeedFeatureHelper
   implements Runnable
@@ -19,7 +19,7 @@ public class TroopStoryMemoriesListAdapter$GetFeedFeatureHelper
     if (QLog.isDevelopLevel()) {
       QLog.d("TroopStoryMemoriesListAdapter", 2, "start to send GetFeedFeature request: " + this.jdField_a_of_type_JavaUtilList);
     }
-    wzv.a(this.jdField_a_of_type_JavaUtilList);
+    wbl.a(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.text.TextUtils;
-import bmzm;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -12,6 +11,7 @@ import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.PathUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.minigame.MiniAppInfoReportManager;
 import cooperation.qzone.util.QZLog;
 import org.json.JSONObject;
 
@@ -270,7 +270,7 @@ public class GameInfoManager
     this.miniGamePkg = paramMiniGamePkg;
     try
     {
-      bmzm.a(getMiniAppSimpleInfo());
+      MiniAppInfoReportManager.setMiniAppInfo(getMiniAppSimpleInfo());
       return;
     }
     catch (Throwable paramMiniGamePkg)

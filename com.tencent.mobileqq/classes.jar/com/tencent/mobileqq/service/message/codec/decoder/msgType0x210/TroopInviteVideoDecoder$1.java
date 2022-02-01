@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.message.codec.decoder.msgType0x210;
 
-import bctt;
+import bbnd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.MsgBody;
 
@@ -11,12 +11,12 @@ public final class TroopInviteVideoDecoder$1
   
   public void run()
   {
-    bctt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xb1Submsgtype0xb1$MsgBody.invite_info, this.jdField_a_of_type_Boolean);
+    bbnd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xb1Submsgtype0xb1$MsgBody.invite_info, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.TroopInviteVideoDecoder.1
  * JD-Core Version:    0.7.0.1
  */

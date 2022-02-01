@@ -1,54 +1,52 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.4;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public final class anoz
-  implements admy
+  extends anpq
 {
-  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
-  
-  public anoz(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
-  
-  private String[] a(int paramInt)
+  protected anoz(QQAppInterface paramQQAppInterface, anpt paramanpt)
   {
-    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
+    super(paramQQAppInterface, paramanpt);
   }
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public int a(QQMessageFacade.Message paramMessage)
   {
-    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
-    ThreadManager.post(new ApolloGameUtil.6.6(this, paramString, a(paramString.length()), new anpc(this)), 8, null, false);
+    return b(paramMessage);
   }
   
-  public void onPermission(int paramInt)
+  public anpt a(QQMessageFacade.Message paramMessage)
   {
-    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
-    ThreadManager.post(new ApolloGameUtil.6.2(this, str, a(str.length()), new anpa(this)), 8, null, false);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
-    try
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNamePostfix(paramMessage);
+    String str1;
+    if ((paramMessage.nickName != null) && (!"".equals(paramMessage.nickName)))
     {
-      String str = paramJSONObject.optString("openid");
-      paramJSONObject = paramJSONObject.optString("access_token");
-      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
-      ThreadManager.post(new ApolloGameUtil.6.4(this, paramJSONObject, a(paramJSONObject.length()), new anpb(this)), 8, null, false);
-      return;
+      str1 = (String)localObject + paramMessage.nickName + "(" + a() + "):";
+      this.jdField_a_of_type_Anpt.b(str1);
+      localObject = (String)localObject + paramMessage.nickName + ": " + c();
+      this.jdField_a_of_type_Anpt.d((String)localObject);
     }
-    catch (Exception paramJSONObject)
+    for (;;)
     {
-      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().msgNotifyManager.b() == 1)
+      {
+        localObject = (amqx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(6);
+        if (localObject != null)
+        {
+          localObject = ((amqx)localObject).a(paramMessage.frienduin, true);
+          this.jdField_a_of_type_Anpt.a((Bitmap)localObject);
+        }
+      }
+      return b(paramMessage);
+      str1 = ContactUtils.getNick(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin, 0);
+      String str2 = (String)localObject + str1 + "(" + a() + "):";
+      this.jdField_a_of_type_Anpt.b(str2);
+      localObject = (String)localObject + str1 + ": " + c();
+      this.jdField_a_of_type_Anpt.d((String)localObject);
     }
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

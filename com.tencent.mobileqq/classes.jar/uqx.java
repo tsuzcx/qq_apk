@@ -1,17 +1,6 @@
-final class uqx
-  implements sum
+public abstract interface uqx
 {
-  public void a(suo paramsuo, int paramInt) {}
-  
-  public void a(suo paramsuo, Throwable paramThrowable)
-  {
-    uqf.b("PreloadCoverImgLog", "onFail request = " + paramsuo);
-  }
-  
-  public void a(suo paramsuo, suk paramsuk)
-  {
-    uqf.b("PreloadCoverImgLog", "onSuccess request = " + paramsuo);
-  }
+  public abstract void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, uqz paramuqz);
 }
 
 

@@ -1,107 +1,100 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.ark.ModuleRegister;
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.ark.open.security.ArkAppUrlChecker;
-import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-final class aqfe
-  implements ark.ApplicationCallback
+public class aqfe
+  extends aptq<aqfd>
 {
-  public void AppCreate(ark.Application paramApplication)
+  @NonNull
+  public aqfd a(int paramInt)
   {
-    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+    return new aqfd();
   }
   
-  public void AppDestroy(ark.Application paramApplication)
+  @Nullable
+  public aqfd a(aptx[] paramArrayOfaptx)
   {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppCenterEvent.a(1, paramApplication, null);
-    aqfh.a(paramApplication);
-  }
-  
-  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
-  {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
-    boolean bool1 = true;
-    int j;
-    int i;
-    boolean bool2;
-    if (localArkAppUrlChecker != null)
-    {
-      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
-      i = 0;
-      if (j != 0) {
-        break label279;
-      }
-      bool1 = true;
-      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
-      boolean bool4 = aqbx.a();
-      if ((!bool3) || (bool4)) {
-        break label285;
-      }
-      bool2 = true;
-      label69:
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
-      }
-      if (bool1) {
-        break label291;
-      }
-      i = 1;
-      if (bool2) {
-        break label291;
-      }
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", noe.b(paramString, new String[0]) });
-      bool1 = true;
-      i = 2;
-    }
-    label279:
-    label285:
-    label291:
-    for (;;)
-    {
-      aqfh.a(paramApplication, paramString, j, i, "");
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", noe.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
-      return bool1;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label69;
-    }
-  }
-  
-  public void OutputScriptError(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      paramString1 = "";
-    }
-    for (;;)
-    {
-      if (paramString2 == null) {
-        paramString2 = "";
-      }
-      for (;;)
+    QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onParsed");
+    if (paramArrayOfaptx != null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        if (paramArrayOfaptx.length > 0)
+        {
+          paramArrayOfaptx = (aqfd)apul.a(paramArrayOfaptx[0].a, aqfd.class);
+          return paramArrayOfaptx;
         }
-        aqca.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+      }
+      catch (QStorageInstantiateException paramArrayOfaptx) {}
+    }
+    return null;
+  }
+  
+  public void a(aqfd paramaqfd)
+  {
+    if (paramaqfd == null) {
+      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
+    }
+    label123:
+    for (;;)
+    {
+      return;
+      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate");
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {}
+      for (localObject = (QQAppInterface)localObject;; localObject = null)
+      {
+        if (localObject == null) {
+          break label123;
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).getCurrentUin(), 0).edit();
+        localEditor.putString("yyb_promote_dialog_key", paramaqfd.a);
+        localEditor.apply();
+        localObject = (aser)((QQAppInterface)localObject).getManager(317);
+        if (localObject == null) {
+          break;
+        }
+        ((aser)localObject).a(paramaqfd);
         return;
       }
     }
   }
   
-  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  public Class<aqfd> clazz()
   {
-    apwe.a(paramModuleRegister, paramApplication);
+    return aqfd.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 625;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqfe
  * JD-Core Version:    0.7.0.1
  */

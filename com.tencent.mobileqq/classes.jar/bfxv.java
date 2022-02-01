@@ -1,40 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.FileUploadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfxv
-  implements Observer
+class bfxv
+  implements View.OnClickListener
 {
-  private final void a(Object paramObject)
-  {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a((Set)paramObject[0]);
-  }
+  bfxv(bfxr parambfxr, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject == null) {
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfxr, 1);
     }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      new Handler(paramObservable).post(new TroopFileUploadMgr.FileUploadMgrObserver.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
+    this.jdField_a_of_type_Bfxr.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

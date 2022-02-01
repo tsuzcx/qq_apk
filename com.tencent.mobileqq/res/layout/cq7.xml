@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.subscribe.widget.ShadowCardView android:layout_gravity="center" android:id="@id/nc2" android:layout_width="100.0dip" android:layout_height="36.0dip" app:shadowBlur="8.0dip" app:shadowBottomHeight="0.0dip" app:shadowCardColor="#b3000000" app:shadowCardOffsetX="0.0dip" app:shadowCardOffsetY="0.0dip" app:shadowRightHeight="0.0dip" app:shadowRound="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="14.0dip" android:textColor="#e6ffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/mlj" android:layout_width="100.0dip" android:layout_height="36.0dip" android:text="@string/wsa" />
-</com.tencent.biz.subscribe.widget.ShadowCardView>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="29.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/nif" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="10.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/nig" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="3.0dip" />
+        <TextView android:textSize="14.0dip" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/nih" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:text="班级投票聚餐" android:maxEms="6" android:singleLine="true" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/nie" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/gtc" />
+    </LinearLayout>
+    <View android:layout_width="8.0dip" android:layout_height="29.0dip" />
+</LinearLayout>

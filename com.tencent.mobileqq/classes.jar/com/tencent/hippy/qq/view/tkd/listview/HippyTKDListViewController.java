@@ -6,6 +6,7 @@ import com.tencent.hippy.qq.view.tkd.common.HippyTKDSkinHandler;
 import com.tencent.mtt.hippy.annotation.HippyController;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 import com.tencent.mtt.hippy.common.HippyArray;
+import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.views.list.HippyListView;
 import com.tencent.mtt.hippy.views.list.HippyListViewController;
@@ -18,6 +19,11 @@ public class HippyTKDListViewController
   private static final String TAG = "HippyQBListViewController";
   
   public View createViewImpl(Context paramContext)
+  {
+    return new HippyTKDListView(paramContext);
+  }
+  
+  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     return new HippyTKDListView(paramContext);
   }

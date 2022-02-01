@@ -1,64 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.app.Activity;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahwr
-  extends agem
+  implements View.OnClickListener
 {
-  public ahwr(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-  }
+  public ahwr(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  protected agen a()
+  public void onClick(View paramView)
   {
-    return new ahws(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
-  {
-    paramagen = (ahws)paramagen;
-    paramagen = paramView;
-    if (paramView == null)
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    for (;;)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558890, null);
-      paramagen = (TextView)paramView.findViewById(2131367669);
-      paramagen.setMovementMethod(null);
-      paramagen.setGravity(17);
-      paramagen = paramView;
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)localObject).intValue();
+      if ((i >= 0) && (this.a.jdField_a_of_type_Ahwu != null))
       {
-        paramagen = (TextView)paramView.findViewById(2131368014);
-        paramLinearLayout = (TextView)paramView.findViewById(2131368015);
-        paramagen.setBackgroundColor(2130842510);
-        paramLinearLayout.setBackgroundColor(2130842510);
-        paramagen = paramView;
+        localObject = this.a.getActivity();
+        if (localObject != null)
+        {
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+          MessageRecord localMessageRecord = ((ahwt)this.a.jdField_a_of_type_Ahwu.getItem(i)).a;
+          ChatHistoryBubbleListForTroopFragment.a((Activity)localObject, this.a.b, localMessageRecord, 100, 1);
+          if (QLog.isColorLevel()) {
+            QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+          }
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+        }
       }
     }
-    paramView = (TextView)paramagen.findViewById(2131367669);
-    if ((paramMessageRecord.istroop == 1) && (nlj.a().a(paramMessageRecord.senderuin)))
-    {
-      paramView.setTextColor(nlj.d);
-      return paramagen;
-    }
-    paramView.setTextColor(paramagen.getResources().getColorStateList(2131165537));
-    return paramagen;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bhum[] a(View paramView)
-  {
-    return null;
   }
 }
 

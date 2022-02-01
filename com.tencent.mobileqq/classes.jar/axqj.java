@@ -1,29 +1,8 @@
-class axqj
-  implements ault
+public abstract interface axqj
 {
-  axqj(axqb paramaxqb, axpw paramaxpw) {}
+  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
   
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Axpw != null) && (this.jdField_a_of_type_Axpw.a != null))
-    {
-      String str = this.jdField_a_of_type_Axpw.a.a();
-      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
-      if ((localaxpx != null) && (!localaxpx.a))
-      {
-        localaxpx.c = paramInt;
-        this.jdField_a_of_type_Axqb.a(str, localaxpx);
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    axqb.a(this.jdField_a_of_type_Axqb, this.jdField_a_of_type_Axpw, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
+  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
 }
 
 

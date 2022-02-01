@@ -1,9 +1,19 @@
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class nyr
+  implements View.OnClickListener
 {
-  public boolean a = true;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
+  public nyr(VideoCoverView paramVideoCoverView, Context paramContext) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

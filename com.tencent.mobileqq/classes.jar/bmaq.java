@@ -1,34 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
-class bmaq
-  extends aoeg
+public class bmaq
+  extends ViewModel
 {
-  bmaq(bmao parambmao, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  private MutableLiveData<Boolean> a = new MutableLiveData();
+  private MutableLiveData<Boolean> b = new MutableLiveData();
+  private MutableLiveData<Boolean> c = new MutableLiveData();
+  private MutableLiveData<Boolean> d = new MutableLiveData();
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public MutableLiveData<Boolean> a()
   {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isSuccess", paramBoolean);
-    ((Bundle)localObject).putString("uin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putAll((Bundle)localObject);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("publicAccount.followUin, isSuccess=").append(paramBoolean).append("; result=");
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break label108;
-      }
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    if (this.b.getValue() != null) {
+      return ((Boolean)this.b.getValue()).booleanValue();
     }
-    label108:
-    for (paramString = this.jdField_a_of_type_AndroidOsBundle.toString();; paramString = "null")
-    {
-      QLog.d("BuscardPluginRemoteCommand", 2, paramString);
-      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
-      }
-      return;
+    return false;
+  }
+  
+  public MutableLiveData<Boolean> b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    if (this.c.getValue() != null) {
+      return ((Boolean)this.c.getValue()).booleanValue();
     }
+    return false;
+  }
+  
+  public MutableLiveData<Boolean> c()
+  {
+    return this.c;
+  }
+  
+  public MutableLiveData<Boolean> d()
+  {
+    return this.d;
   }
 }
 

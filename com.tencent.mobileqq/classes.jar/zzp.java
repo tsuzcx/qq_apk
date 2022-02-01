@@ -1,33 +1,19 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class zzp
-  extends zzu
+  implements View.OnClickListener
 {
-  zzp(zzl paramzzl, zzs paramzzs, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
-  {
-    super(null);
-  }
+  zzp(zzo paramzzo, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
   
-  public void onAnimationEnd(View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    ViewCompat.setAlpha(paramView, 1.0F);
-    ViewCompat.setTranslationX(paramView, 0.0F);
-    ViewCompat.setTranslationY(paramView, 0.0F);
-    ViewCompat.setScaleX(paramView, 1.0F);
-    ViewCompat.setScaleY(paramView, 1.0F);
-    this.jdField_a_of_type_Zzl.dispatchChangeFinished(this.jdField_a_of_type_Zzs.a, true);
-    zzl.g(this.jdField_a_of_type_Zzl).remove(this.jdField_a_of_type_Zzs.a);
-    zzl.a(this.jdField_a_of_type_Zzl);
-  }
-  
-  public void onAnimationStart(View paramView)
-  {
-    this.jdField_a_of_type_Zzl.dispatchChangeStarting(this.jdField_a_of_type_Zzs.a, true);
+    if (zzo.a(this.jdField_a_of_type_Zzo) != null) {
+      zzo.a(this.jdField_a_of_type_Zzo).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

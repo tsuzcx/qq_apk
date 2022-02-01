@@ -1,18 +1,30 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aluv
-  implements View.OnLayoutChangeListener
+public class aluv
+  implements View.OnClickListener
 {
-  aluv(aluu paramaluu) {}
+  public aluv(CmGameLoadingView.2 param2) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setText(anzj.a(2131706338) + this.a.jdField_a_of_type_Int + "%");
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setVisibility(0);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    if (this.a.jdField_a_of_type_Alsd != null) {
+      this.a.jdField_a_of_type_Alsd.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
+      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

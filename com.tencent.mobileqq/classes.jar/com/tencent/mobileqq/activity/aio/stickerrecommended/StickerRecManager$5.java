@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aiti;
-import anyw;
+import ahns;
+import amsw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StickerRecManager$5
   implements Runnable
 {
-  public StickerRecManager$5(aiti paramaiti) {}
+  public StickerRecManager$5(ahns paramahns) {}
   
   public void run()
   {
@@ -18,12 +18,12 @@ public class StickerRecManager$5
       QLog.d("StickerRecManager", 2, "start pull words");
     }
     int m = 255;
-    Object localObject = (anyw)aiti.a(this.this$0).getManager(51);
+    Object localObject = (amsw)ahns.a(this.this$0).getManager(51);
     int j = k;
     int i = m;
     if (localObject != null)
     {
-      localObject = ((anyw)localObject).b(aiti.a(this.this$0).getCurrentAccountUin());
+      localObject = ((amsw)localObject).b(ahns.a(this.this$0).getCurrentAccountUin());
       j = k;
       i = m;
       if (localObject != null)
@@ -37,7 +37,7 @@ public class StickerRecManager$5
     for (;;)
     {
       j = ((Card)localObject).age;
-      this.this$0.a(aiti.a(this.this$0).c(), 3, i, j);
+      this.this$0.a(ahns.a(this.this$0).getCurrentUin(), 3, i, j);
       return;
       label113:
       if (((Card)localObject).shGender == 0) {

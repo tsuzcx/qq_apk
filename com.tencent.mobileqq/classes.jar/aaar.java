@@ -1,32 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aaar
+class aaar
+  implements View.OnClickListener
 {
-  private static volatile aaap jdField_a_of_type_Aaap;
-  private static final String jdField_a_of_type_JavaLangString = aaar.class.getName();
-  private static String b;
-  private static String c;
+  aaar(aaaq paramaaaq, String paramString, Activity paramActivity) {}
   
-  public static aaap a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Aaap == null) {}
-    try
+    this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
     {
-      if (jdField_a_of_type_Aaap == null)
-      {
-        if (b == null) {
-          b = BaseApplicationImpl.getApplication().getPackageName();
-        }
-        if (c == null) {
-          c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
-        }
-        jdField_a_of_type_Aaap = new aaas(b, c);
+      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
+      if ((localAppInterface instanceof NearbyAppInterface)) {
+        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
       }
-      yuk.b(jdField_a_of_type_JavaLangString, "init FileCache");
-      return jdField_a_of_type_Aaap;
     }
-    finally {}
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

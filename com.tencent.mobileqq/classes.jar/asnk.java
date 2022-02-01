@@ -1,48 +1,68 @@
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class asnk
-  implements asno
+  implements bbhb
 {
-  public asnk(EmoticonPanelController paramEmoticonPanelController, int paramInt, long paramLong) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   
-  public void a()
+  public asnk(ViewGroup paramViewGroup)
   {
-    int j = this.jdField_a_of_type_Int;
-    int i = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelController", 2, "switchTabMode mMarketPgkDownloaded = true");
-      }
-      List localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_JavaUtilList;
-      i = j;
-      if (localList != null)
-      {
-        i = j;
-        if (localList.size() > 0)
-        {
-          i = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.a();
-          j = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.b();
-          if ((j == 0) || (j >= i)) {
-            break label129;
-          }
-          i = j;
-        }
-      }
-    }
-    label129:
-    for (;;)
-    {
-      j = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a(12);
-      if (EmoticonPanelController.jdField_b_of_type_Int == j) {
-        i = j;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean = false;
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, this.jdField_a_of_type_Long, i);
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560795, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366631));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366642));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365420));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

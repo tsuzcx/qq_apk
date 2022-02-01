@@ -1,11 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.1.1;
 
-public abstract interface bjdf
+public class bjdf
+  extends BroadcastReceiver
 {
-  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
+  bjdf(bjde parambjde) {}
   
-  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (!bjde.a(this.a)) {}
+    do
+    {
+      return;
+      bjde.a(this.a, false);
+      paramContext = paramIntent.getAction();
+      QLog.d("MediaChooseJsProxyImpl", 2, "mAvatarReceiver.onReceive action=" + paramContext);
+    } while (!"get_media_info".equals(paramContext));
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaChooseJsProxyImpl", 2, new Object[] { paramIntent });
+    }
+    ThreadManagerV2.executeOnSubThread(new MediaChooseJsProxyImpl.1.1(this, paramIntent));
+  }
 }
 
 

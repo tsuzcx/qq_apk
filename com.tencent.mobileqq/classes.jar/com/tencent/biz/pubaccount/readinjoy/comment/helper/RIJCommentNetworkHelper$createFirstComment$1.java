@@ -6,19 +6,20 @@ import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentDa
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import owp;
-import owr;
-import ows;
+import oxp;
+import oxr;
+import oxs;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "commentId", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createFirstComment$1
   extends Lambda
   implements Function1<String, Unit>
 {
-  public RIJCommentNetworkHelper$createFirstComment$1(boolean paramBoolean1, ows paramows, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, FirstCommentCreateData paramFirstCommentCreateData, long paramLong2)
+  public RIJCommentNetworkHelper$createFirstComment$1(boolean paramBoolean1, oxs paramoxs, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, FirstCommentCreateData paramFirstCommentCreateData, long paramLong2)
   {
     super(1);
   }
@@ -28,18 +29,18 @@ public final class RIJCommentNetworkHelper$createFirstComment$1
     Intrinsics.checkParameterIsNotNull(paramString, "commentId");
     if (!this.$needBiuAfterComment)
     {
-      this.$callback.a(this.$commentSeq, true, 1, paramString, this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-      owr.a(owr.a, 0, System.currentTimeMillis() - this.$requestTime);
+      this.$callback.a(this.$commentSeq, true, 0, 1, paramString, this.$commentJsonStr, this.$feedsType, this.$isFeeds);
+      oxr.a(oxr.a, 0, System.currentTimeMillis() - this.$requestTime);
       if (TextUtils.isEmpty((CharSequence)this.$requestData.b())) {
-        break label128;
+        break label129;
       }
     }
-    label128:
+    label129:
     for (String str = this.$requestData.b();; str = this.$requestData.c())
     {
-      owr.a(owr.a, this.$requestData.a(), str, "", "", paramString);
+      oxr.a(oxr.a, this.$requestData.a(), str, "", "", paramString);
       return;
-      owp.a.a((SimpleCommentData)this.$requestData, (Function1)new RIJCommentNetworkHelper.createFirstComment.1.1(this, paramString));
+      oxp.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createFirstComment.1.1(this, paramString));
       break;
     }
   }

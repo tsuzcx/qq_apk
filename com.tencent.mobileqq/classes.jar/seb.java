@@ -1,10 +1,12 @@
-import android.os.Bundle;
-
-public abstract interface seb
+class seb
+  implements sma
 {
-  public abstract void a(Bundle paramBundle);
+  seb(sdy paramsdy) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public void a()
+  {
+    this.a.g();
+  }
 }
 
 

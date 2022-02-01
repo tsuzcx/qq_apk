@@ -35,7 +35,6 @@ public final class gdt_analysis_event
   public static final int EVENT_GET_DEVICE_IPV4_START = 1046;
   public static final int EVENT_GET_DEVICE_IPV4_SUCCESS = 1047;
   public static final int EVENT_GET_DEVICE_LOCATION = 1038;
-  public static final int EVENT_GET_DEVICE_MAC_ADDRESS = 1041;
   public static final int EVENT_GET_DEVICE_QADID = 1044;
   public static final int EVENT_GET_DEVICE_TAID_TICKET = 1050;
   public static final int EVENT_GET_IMEI = 1116;

@@ -1,38 +1,39 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xal
+  extends QQUIEventReceiver<wzo, vuc>
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public static boolean a;
-  
-  public static void a(String paramString)
+  public xal(@NonNull wzo paramwzo)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    super(paramwzo);
+  }
+  
+  public void a(@NonNull wzo paramwzo, @NonNull vuc paramvuc)
+  {
+    paramwzo.l();
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramwzo.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    xvv.b(this.TAG, "delete onEvent");
+    if ((!paramvuc.jdField_a_of_type_Boolean) && (paramvuc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
     {
-      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
-      {
-        jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        jdField_a_of_type_JavaUtilSet.add(paramString);
+      if (QLog.isColorLevel()) {
+        xvv.d(this.TAG, "删除失败：%s", new Object[] { paramvuc.a() });
       }
-      if (!jdField_a_of_type_Boolean)
-      {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
-      }
-      return;
+      QQToast.a(paramwzo.b(), 1, amtj.a(2131705999), 0).a();
     }
   }
   
-  public static void a(ArrayList<String> paramArrayList)
+  public Class acceptEventClass()
   {
-    paramArrayList = new xam(paramArrayList);
-    xan localxan = new xan();
-    wrg.a().a(paramArrayList, localxan);
+    return vuc.class;
   }
 }
 

@@ -1,112 +1,205 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.util.ArrayList;
 
 public class awgj
-  extends WebViewPlugin
 {
-  private String a;
-  
-  public awgj()
+  public static int a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2)
   {
-    this.mPluginNameSpace = "deviceProtect";
-  }
-  
-  private void a()
-  {
-    Object localObject2;
-    try
+    switch ((int)paramLong1)
     {
-      Object localObject4 = QIPCClientHelper.getInstance().getClient().callServer("DeviceProtectQIPCModule", "ACTION_GET_DEVICE_INFO", null);
-      if (((EIPCResult)localObject4).code != 0)
-      {
-        QLog.e("DeviceProtectJsApiPlugin", 1, "handleGetDeviceInfo error: result.code != EIPCResult.CODE_NO_ERR");
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("retCode", -1);
-        callJs(this.a, new String[] { ((JSONObject)localObject1).toString() });
-        return;
-      }
-      Object localObject3 = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject1 = ((EIPCResult)localObject4).data.getString("guid", "");
-      localObject2 = ((EIPCResult)localObject4).data.getString("qimei", "");
-      String str1 = ((EIPCResult)localObject4).data.getString("subappid", "");
-      String str2 = ((EIPCResult)localObject4).data.getString("platform", "");
-      String str3 = ((EIPCResult)localObject4).data.getString("brand", "");
-      String str4 = ((EIPCResult)localObject4).data.getString("model", "");
-      localObject4 = ((EIPCResult)localObject4).data.getString("bssid", "");
-      localJSONObject.put("guid", localObject1);
-      localJSONObject.put("qimei", localObject2);
-      localJSONObject.put("subappid", str1);
-      localJSONObject.put("platform", str2);
-      localJSONObject.put("brand", str3);
-      localJSONObject.put("model", str4);
-      localJSONObject.put("bssid", localObject4);
-      localJSONObject.put("devInfo", str3 + " " + str4);
-      ((JSONObject)localObject3).put("retCode", 0);
-      ((JSONObject)localObject3).put("retData", localJSONObject);
-      callJs(this.a, new String[] { ((JSONObject)localObject3).toString() });
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("guid:").append((String)localObject1).append("qimei:").append((String)localObject2).append("subappid:").append(str1).append("platform:").append(str2).append("brand:").append(str3).append("model:").append(str4).append("bssid:").append((String)localObject4);
-      QLog.d("DeviceProtectJsApiPlugin", 1, "handleGetDeviceInfo info: " + localObject3);
-      return;
     }
-    catch (Exception localException) {}
-    try
-    {
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("retCode", -1);
-      callJs(this.a, new String[] { ((JSONObject)localObject2).toString() });
-      QLog.e("DeviceProtectJsApiPlugin", 1, "GetDeviceInfo callJs error", localException);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("DeviceProtectJsApiPlugin", 1, "GetDeviceInfo callJs JSONException", localJSONException);
-      }
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo error, url is empty");
-    }
+    int i;
     do
     {
-      return false;
-      QLog.d("DeviceProtectJsApiPlugin", 1, "Call DeviceProtectJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
-    } while ((!"deviceProtect".equals(paramString2)) || (!"getDeviceInfo".equals(paramString3)));
-    QLog.d("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo, args:" + paramVarArgs);
-    paramJsBridgeListener = paramString1.split("#");
-    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length == 2))
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  return 0;
+                                } while (VipUtils.a(paramQQAppInterface, paramString, 2) <= 0);
+                                if (paramLong2 == 0L) {
+                                  return 2130850096;
+                                }
+                                if (paramLong2 == 1L) {
+                                  return 2130850097;
+                                }
+                              } while (paramLong2 != 2L);
+                              return 2130850098;
+                              i = VipUtils.a(paramQQAppInterface, paramString, 3);
+                              if (i != 1) {
+                                break;
+                              }
+                              if (paramLong2 == 0L) {
+                                return 2130840344;
+                              }
+                              if (paramLong2 == 1L) {
+                                return 2130840345;
+                              }
+                            } while (paramLong2 != 2L);
+                            return 2130840346;
+                          } while (i != 2);
+                          if (paramLong2 == 0L) {
+                            return 2130840347;
+                          }
+                          if (paramLong2 == 1L) {
+                            return 2130840348;
+                          }
+                        } while (paramLong2 != 2L);
+                        return 2130840349;
+                        i = VipUtils.a(paramQQAppInterface, paramString, 4);
+                        if (i != 1) {
+                          break;
+                        }
+                        if (paramLong2 == 0L) {
+                          return 2130840350;
+                        }
+                        if (paramLong2 == 1L) {
+                          return 2130840351;
+                        }
+                      } while (paramLong2 != 2L);
+                      return 2130840352;
+                    } while (i != 2);
+                    if (paramLong2 == 0L) {
+                      return 2130840353;
+                    }
+                    if (paramLong2 == 1L) {
+                      return 2130840354;
+                    }
+                  } while (paramLong2 != 2L);
+                  return 2130840355;
+                  i = VipUtils.a(paramQQAppInterface, paramString, 0);
+                  if (i != 1) {
+                    break;
+                  }
+                  if (paramLong2 == 1L) {
+                    return 2130850115;
+                  }
+                } while (paramLong2 != 2L);
+                return 2130850071;
+              } while (i != 2);
+              if (paramLong2 == 1L) {
+                return 2130850116;
+              }
+            } while (paramLong2 != 2L);
+            return 2130850072;
+            i = VipUtils.a(paramQQAppInterface, paramString, 1);
+            if (i != 1) {
+              break;
+            }
+            if (paramLong2 == 1L) {
+              return 2130850119;
+            }
+          } while (paramLong2 != 2L);
+          return 2130850075;
+        } while (i != 2);
+        if (paramLong2 == 1L) {
+          return 2130850120;
+        }
+      } while (paramLong2 != 2L);
+      return 2130850076;
+      i = VipUtils.a(paramQQAppInterface, paramString, 5);
+      if ((i == 1) && (paramLong2 == 1L)) {
+        return 2130850108;
+      }
+      if ((i == 2) && (paramLong2 == 1L)) {
+        return 2130850109;
+      }
+      if ((i == 3) && (paramLong2 == 1L)) {
+        return 2130850110;
+      }
+    } while ((i != 4) || (paramLong2 != 1L));
+    return 2130850107;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, long paramLong1, long paramLong2, long paramLong3, String paramString2)
+  {
+    String str = paramString2;
+    if (paramLong2 == 2L)
     {
-      this.a = paramJsBridgeListener[1];
-      a();
-      return true;
+      str = paramString2;
+      if (paramLong3 > 0L)
+      {
+        int i = VipUtils.a(paramQQAppInterface, paramString1, 0);
+        str = paramString2;
+        if (i > 0) {
+          str = awgl.a(paramString2, i, false);
+        }
+      }
     }
-    QLog.e("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo error, jsapi does not contain callback");
-    return false;
+    return str;
   }
   
-  public void onCreate()
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    super.onCreate();
+    if (TextUtils.isEmpty(paramString2)) {}
+    int i;
+    do
+    {
+      Object localObject;
+      apyy localapyy;
+      do
+      {
+        do
+        {
+          return paramString2;
+          localObject = paramString2.split("/");
+        } while (localObject.length < 2);
+        localObject = localObject[(localObject.length - 2)];
+        localapyy = apyz.a();
+      } while ((localapyy == null) || (localapyy.a((String)localObject) <= 0));
+      i = VipUtils.a(paramQQAppInterface, paramString1, 0);
+    } while (i <= 0);
+    return awgl.a(paramString2, i, false);
   }
   
-  public void onDestroy()
+  public static void a(QQAppInterface paramQQAppInterface, amsw paramamsw, Friends paramFriends, String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    super.onDestroy();
+    if ((paramFriends == null) || (paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfByte.length > 1) {}
+      for (paramFriends.relationIconFlag = (paramArrayOfByte[1] << 8 | paramArrayOfByte[0]); paramBoolean; paramFriends.relationIconFlag = paramArrayOfByte[0])
+      {
+        paramamsw.a(paramFriends);
+        paramQQAppInterface.getBusinessHandler(1).notifyUI(3, true, paramString);
+        return;
+      }
+    }
   }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, afat paramafat, String paramString, aucf paramaucf, ArrayList<awfu> paramArrayList) {}
+  
+  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, afat paramafat, StringBuilder paramStringBuilder) {}
 }
 
 

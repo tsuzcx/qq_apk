@@ -1,239 +1,230 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.BirthdayNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.GeoGraphicNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MemorialDayNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.OneBirthdayFriend;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.OneMemorialDayInfo;
 
-@TargetApi(18)
 public class bbmm
+  implements bbnb
 {
-  private int jdField_a_of_type_Int = 1024;
-  private long jdField_a_of_type_Long;
-  private final MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private bbmn jdField_a_of_type_Bbmn;
-  private final bbmv jdField_a_of_type_Bbmv;
-  private final DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean b;
-  private volatile boolean c;
-  private volatile boolean d;
-  
-  static
+  public static boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!bbmm.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public bbmm(DecodeConfig paramDecodeConfig, bbmv parambbmv)
-  {
-    this.jdField_a_of_type_Bbmv = parambbmv;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig = paramDecodeConfig;
-    this.jdField_a_of_type_Long = (paramDecodeConfig.endTimeMillSecond * 1000L);
+    Object localObject2 = paramQQAppInterface.getMessageFacade().getMsgList(AppConstants.ACTIVATE_FRIENDS_UIN, 0);
+    Object localObject1 = new SubMsgType0x76.MsgBody();
+    int j;
+    int i;
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(paramDecodeConfig.inputFilePath);
-      this.jdField_a_of_type_Bbmn = a(this.jdField_a_of_type_AndroidMediaMediaExtractor);
-      if (this.jdField_a_of_type_Bbmn.jdField_a_of_type_Int >= 0)
+      ((SubMsgType0x76.MsgBody)localObject1).mergeFrom(paramArrayOfByte);
+      j = ((SubMsgType0x76.MsgBody)localObject1).uint32_msg_type.get();
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("HWAudioRecoder", 1, "audio track normal");
-        }
-        this.jdField_a_of_type_Bbmv.a(1, this.jdField_a_of_type_Bbmn.jdField_a_of_type_AndroidMediaMediaFormat);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Bbmn.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Bbmn.jdField_a_of_type_AndroidMediaMediaFormat.containsKey("max-input-size")) {
-          this.jdField_a_of_type_Int = this.jdField_a_of_type_Bbmn.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("max-input-size");
-        }
-        if (this.jdField_a_of_type_Bbmn.jdField_b_of_type_Int >= 0)
+        paramArrayOfByte = new StringBuilder().append("receive push, msg type = ").append(j).append(", local msg count = ");
+        if (localObject2 != null)
         {
-          this.jdField_a_of_type_Bbmv.a(2);
-          this.jdField_a_of_type_Bbmv.a(2, this.jdField_a_of_type_Bbmn.jdField_b_of_type_AndroidMediaMediaFormat);
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Bbmn.jdField_b_of_type_Int);
-          if (this.jdField_a_of_type_Bbmn.jdField_b_of_type_AndroidMediaMediaFormat.containsKey("max-input-size"))
+          i = ((List)localObject2).size();
+          QLog.d("ActivateFriends.Processor", 2, i);
+        }
+      }
+      else
+      {
+        if (localObject2 == null) {
+          break label247;
+        }
+        paramArrayOfByte = ((List)localObject2).iterator();
+        for (;;)
+        {
+          label110:
+          if (paramArrayOfByte.hasNext())
           {
-            int i = this.jdField_a_of_type_Bbmn.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("max-input-size");
-            if (i > this.jdField_a_of_type_Int) {
-              this.jdField_a_of_type_Int = i;
+            localObject2 = (MessageRecord)paramArrayOfByte.next();
+            if ((localObject2 instanceof MessageForActivateFriends))
+            {
+              localObject2 = (MessageForActivateFriends)localObject2;
+              if ((((MessageForActivateFriends)localObject2).getMsgBody() != null) && (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() != j)) {
+                continue;
+              }
+              paramQQAppInterface.getMessageFacade().removeMsgByUniseq(AppConstants.ACTIVATE_FRIENDS_UIN, 0, ((MessageForActivateFriends)localObject2).uniseq);
+              continue;
+              return false;
             }
           }
         }
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int).order(ByteOrder.nativeOrder());
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.startTimeMillSecond * 1000L, 0);
-        return;
-        this.jdField_a_of_type_Bbmv.a(0);
-        this.jdField_a_of_type_Bbmv.a(1, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("HWAudioRecoder", 1, "no audio track");
-        }
-      }
-      return;
     }
-    catch (Exception paramDecodeConfig)
+    catch (Exception paramQQAppInterface)
     {
-      QLog.e("HWAudioRecoder", 1, "getAudioTrack,", paramDecodeConfig);
-    }
-  }
-  
-  public bbmn a(MediaExtractor paramMediaExtractor)
-  {
-    bbmn localbbmn = new bbmn();
-    int j = paramMediaExtractor.getTrackCount();
-    long l2 = 0L;
-    int i = 0;
-    MediaFormat localMediaFormat;
-    String str;
-    long l1;
-    if (i < j)
-    {
-      localMediaFormat = paramMediaExtractor.getTrackFormat(i);
-      str = localMediaFormat.getString("mime");
-      l1 = l2;
-      if (localbbmn.jdField_a_of_type_Int >= 0) {
-        break label206;
-      }
-      l1 = l2;
-      if (!str.startsWith("audio/")) {
-        break label206;
-      }
-      l2 += 1L;
-      if (l2 == 1L)
-      {
-        localbbmn.jdField_a_of_type_Int = i;
-        localbbmn.jdField_a_of_type_JavaLangString = str;
-        localbbmn.jdField_a_of_type_AndroidMediaMediaFormat = localMediaFormat;
-        label99:
-        l1 = l2;
-        if (l2 < 2L) {
-          break label206;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends", 2, "parse push got error.", paramQQAppInterface);
       }
     }
-    else
-    {
-      if (localbbmn.jdField_a_of_type_Int < 0) {
-        break label217;
-      }
-    }
-    label206:
-    label217:
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      QLog.d("HWAudioRecoder", 1, new Object[] { "getAudioTrack, ", Integer.valueOf(localbbmn.jdField_a_of_type_Int), " ", Integer.valueOf(localbbmn.jdField_b_of_type_Int) });
-      return localbbmn;
-      if (l2 != 2L) {
-        break label99;
-      }
-      localbbmn.jdField_b_of_type_Int = i;
-      localbbmn.jdField_b_of_type_JavaLangString = str;
-      localbbmn.jdField_b_of_type_AndroidMediaMediaFormat = localMediaFormat;
-      break label99;
-      i += 1;
-      l2 = l1;
-      break;
-    }
-  }
-  
-  public void a()
-  {
-    QLog.d("HWAudioRecoder", 1, "stopRecording audio");
-    while ((!a()) && (b())) {}
-    QLog.d("HWAudioRecoder", 1, "stopRecording audio, indeed");
-    this.jdField_a_of_type_Bbmv.a();
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!this.b) {}
+    label247:
+    aneo localaneo;
+    label386:
     do
     {
-      return true;
-      if (this.jdField_a_of_type_Bbmn.jdField_b_of_type_Int < 0) {
-        return this.c;
+      i = -1;
+      break;
+      if (!QLog.isColorLevel()) {
+        break label110;
       }
-    } while ((this.c) && (this.d));
-    return false;
+      QLog.e("ActivateFriends.Processor", 2, "local data is error." + localObject2);
+      break label110;
+      paramArrayOfByte = bbli.a(-5003);
+      paramArrayOfByte.selfuin = paramQQAppInterface.getCurrentAccountUin();
+      paramArrayOfByte.frienduin = AppConstants.ACTIVATE_FRIENDS_UIN;
+      paramArrayOfByte.istroop = 9002;
+      paramArrayOfByte.senderuin = "";
+      localaneo = (aneo)paramQQAppInterface.getManager(85);
+      if (j != 1) {
+        break label555;
+      }
+      if (((SubMsgType0x76.MsgBody)localObject1).msg_geographic_notify.rpt_msg_one_friend.get().size() <= 0) {
+        break label537;
+      }
+      localObject2 = (MessageForActivateFriends)paramArrayOfByte;
+      ((MessageForActivateFriends)localObject2).msg = aneo.a(paramQQAppInterface.getApp(), (SubMsgType0x76.MsgBody)localObject1);
+      ((MessageForActivateFriends)localObject2).msgBody = ((SubMsgType0x76.MsgBody)localObject1);
+      ((MessageForActivateFriends)localObject2).msgData = ((SubMsgType0x76.MsgBody)localObject1).toByteArray();
+      break label852;
+      bcef.b(paramQQAppInterface, "CliOper", "", "", (String)localObject1, (String)localObject2, localaneo.a, 0, "", "", "", "");
+    } while (paramArrayOfByte == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends", 2, "activiate_friends|rec msg  fromUin:" + paramLong1 + " toUin:" + paramLong2 + " seq:" + paramInt1);
+    }
+    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_from_uin", String.valueOf(paramLong1));
+    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_to_uin", String.valueOf(paramLong2));
+    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_msg_seq", String.valueOf(paramInt1));
+    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_msg_type", String.valueOf(paramInt2));
+    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_msg_sub_type", String.valueOf(paramInt3));
+    localObject1 = new ArrayList();
+    ((ArrayList)localObject1).add(paramArrayOfByte);
+    paramQQAppInterface.getMessageFacade().addMessage((ArrayList)localObject1, paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.isBackgroundStop);
+    localaneo.a(j);
+    return true;
+    label537:
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ActivateFriends", 2, "Geo friend list size = 0");
+      break label889;
+      label555:
+      MessageForActivateFriends localMessageForActivateFriends;
+      if (j == 2)
+      {
+        localObject2 = ((SubMsgType0x76.MsgBody)localObject1).msg_birthday_notify.rpt_msg_one_friend.get();
+        if (((List)localObject2).size() > 0)
+        {
+          localMessageForActivateFriends = (MessageForActivateFriends)paramArrayOfByte;
+          localMessageForActivateFriends.msgBody = ((SubMsgType0x76.MsgBody)localObject1);
+          localMessageForActivateFriends.msgData = ((SubMsgType0x76.MsgBody)localObject1).toByteArray();
+          localMessageForActivateFriends.msg = aneo.a(paramQQAppInterface.getApp(), (SubMsgType0x76.MsgBody)localObject1);
+          label621:
+          localObject1 = new HashSet();
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            ((Set)localObject1).add(String.valueOf(((SubMsgType0x76.OneBirthdayFriend)((Iterator)localObject2).next()).uint64_uin.get()));
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break label894;
+        }
+        QLog.d("ActivateFriends", 2, "Birth friend list size = 0");
+        break label894;
+        paramQQAppInterface.getMsgCache().a((Set)localObject1);
+      }
+      else
+      {
+        if (j != 3) {
+          break label904;
+        }
+        localObject2 = ((SubMsgType0x76.MsgBody)localObject1).msg_memorialday_notify.rpt_anniversary_info.get();
+        if (((List)localObject2).size() > 0)
+        {
+          localObject2 = (SubMsgType0x76.OneMemorialDayInfo)((List)localObject2).get(0);
+          localMessageForActivateFriends = (MessageForActivateFriends)paramArrayOfByte;
+          localMessageForActivateFriends.msgBody = ((SubMsgType0x76.MsgBody)localObject1);
+          localMessageForActivateFriends.msgData = ((SubMsgType0x76.MsgBody)localObject1).toByteArray();
+          localMessageForActivateFriends.msg = aneo.a(paramQQAppInterface.getApp(), (SubMsgType0x76.MsgBody)localObject1);
+          bcef.b(paramQQAppInterface, "dc00898", "", "", "0X8007AD4", "0X8007AD4", (int)((SubMsgType0x76.OneMemorialDayInfo)localObject2).uint32_type.get(), 0, "", "", "", "");
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            break label899;
+          }
+          QLog.d("ActivateFriends", 2, "Memorial friend list size = 0");
+          break label899;
+        }
+      }
+    }
+    label899:
+    label904:
+    label909:
+    label915:
+    for (;;)
+    {
+      localObject2 = "0X8004E04";
+      break;
+      label852:
+      if ((j == 1) || (j == 2)) {
+        if (j != 1) {
+          break label909;
+        }
+      }
+      for (localObject1 = "0X8004E03";; localObject1 = "0X8004E04")
+      {
+        if (j != 1) {
+          break label915;
+        }
+        localObject2 = "0X8004E03";
+        break;
+        label889:
+        paramArrayOfByte = null;
+        break label852;
+        label894:
+        paramArrayOfByte = null;
+        break label621;
+        paramArrayOfByte = null;
+        break label852;
+        paramArrayOfByte = null;
+        break label852;
+        break label386;
+      }
+    }
   }
   
-  public boolean b()
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm, MessageHandler paramMessageHandler)
   {
-    int i = 2;
-    if ((!this.b) || (a())) {
-      return false;
+    long l1 = paramMsg.msg_head.to_uin.get();
+    long l2 = paramMsg.msg_head.from_uin.get();
+    int i = paramMsg.msg_head.msg_seq.get();
+    long l3 = paramMsg.msg_head.msg_uid.get();
+    int j = paramMsg.msg_head.msg_type.get();
+    if (a(paramMessageHandler.app, paramMsgType0x210.msg_content.get().toByteArray(), l2, l1, i, j, paramMsgType0x210.sub_msg_type.get())) {
+      paramMessageHandler.a().a("handleActivateFriendsPush2", true, 1, true, false);
     }
-    int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTrackIndex();
-    if (j < 0)
-    {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, 0, 0L, 4);
-      this.jdField_a_of_type_Bbmv.a(1, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      this.jdField_a_of_type_Bbmv.a(2, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      this.c = true;
-      this.d = true;
-      return true;
-    }
-    if (j == this.jdField_a_of_type_Bbmn.jdField_a_of_type_Int) {
-      i = 1;
-    }
-    int k;
-    long l;
-    while (j == this.jdField_a_of_type_Bbmn.jdField_b_of_type_Int)
-    {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      k = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_JavaNioByteBuffer, 0);
-      l = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-      if ((jdField_a_of_type_Boolean) || (k <= this.jdField_a_of_type_Int)) {
-        break;
-      }
-      throw new AssertionError();
-    }
-    return false;
-    if ((k < 0) || ((this.jdField_a_of_type_Long > 0L) && (l > this.jdField_a_of_type_Long)))
-    {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, 0, 0L, 4);
-      this.jdField_a_of_type_Bbmv.a(i, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      if (j == this.jdField_a_of_type_Bbmn.jdField_a_of_type_Int)
-      {
-        this.c = true;
-        return true;
-      }
-      this.d = true;
-      return true;
-    }
-    if ((this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags() & 0x1) != 0)
-    {
-      j = 1;
-      if (j == 0) {
-        break label322;
-      }
-    }
-    label322:
-    for (j = 1;; j = 0)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, k, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), j);
-      this.jdField_a_of_type_Bbmv.a(i, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-      return true;
-      j = 0;
-      break;
-    }
+    bblf.a(paramMessageHandler, l2, i, l3, j);
   }
 }
 

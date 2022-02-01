@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajuv;
+import aips;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -92,7 +92,7 @@ public class PhoneContact
         i = this.netTypeIconId;
       }
     }
-    ajuv localajuv;
+    aips localaips;
     do
     {
       return i;
@@ -102,7 +102,7 @@ public class PhoneContact
       if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
         return 0;
       }
-      localajuv = ajuv.a();
+      localaips = aips.a();
       if (this.eNetworkType != 0) {
         break;
       }
@@ -110,8 +110,8 @@ public class PhoneContact
         return 0;
       }
       i = j;
-    } while (1 != localajuv.a(this.iTermType, 1));
-    if (1 != localajuv.a(this.iTermType, 1)) {
+    } while (1 != localaips.a(this.iTermType, 1));
+    if (1 != localaips.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)
@@ -155,7 +155,7 @@ public class PhoneContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PhoneContact
  * JD-Core Version:    0.7.0.1
  */

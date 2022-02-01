@@ -1,35 +1,28 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import java.util.ArrayList;
 
-class bnfi
-  implements bndy
+public class bnfi
+  implements zxu
 {
-  bnfi(bnfh parambnfh) {}
+  public bnfi(LocalVideoSelectActivity paramLocalVideoSelectActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, FrameVideoHelper paramFrameVideoHelper) {}
   
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    boolean bool = false;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.isFinishing())
     {
-      paramIntent = bndi.a(paramFromServiceMsg.getWupBuffer());
-      bnfh.a(this.a, paramIntent);
-      bnfh.a(this.a, paramIntent, null);
-      bnbw.a().a(paramIntent);
-      if (this.a.a != null)
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.b();
+      Bundle localBundle = new Bundle();
+      if (paramArrayList != null)
       {
-        paramFromServiceMsg = this.a.a;
-        if (paramIntent != null) {
-          bool = true;
-        }
-        paramFromServiceMsg.a(bool);
+        localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
+        localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
       }
+      bnsr.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity, LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.jdField_a_of_type_Int, this.b, this.c, this.d, 0, "", "", false, LocalVideoSelectActivity.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.e, localBundle);
+      this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
     }
-    do
-    {
-      return;
-      bnfh.a(this.a, null, null);
-    } while (this.a.a == null);
-    this.a.a.a(false);
   }
 }
 

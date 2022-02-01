@@ -1,8 +1,8 @@
-import android.os.Bundle;
+import android.view.View;
 
 public abstract interface bmeh
 {
-  public abstract void a(Bundle paramBundle);
+  public abstract boolean a(View paramView);
 }
 
 

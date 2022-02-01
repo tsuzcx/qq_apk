@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
 
-class yev
-  implements View.OnClickListener
+public abstract interface yev
 {
-  yev(yet paramyet) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void onClick(View paramView)
-  {
-    this.a.b();
-    this.a.a.i();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract Bitmap b();
+  
+  public abstract void b(Animation paramAnimation);
 }
 
 

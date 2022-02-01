@@ -1,58 +1,63 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
-class awnw
-  implements Application.ActivityLifecycleCallbacks
+public class awnw
+  implements awoi
 {
-  awnw(awnq paramawnq) {}
+  public awnw(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public void a(InterestTagInfo paramInterestTagInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if ((this.a.c) && (!this.a.b))
+    ChooseInterestTagActivity.a(this.a, 0);
+    bjmm.b(ChooseInterestTagActivity.a(this.a));
+    boolean bool;
+    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
+      if (ChooseInterestTagActivity.b(this.a) != -1)
+      {
+        bool = true;
+        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
+        ChooseInterestTagActivity.a(this.a).setText("");
+        ChooseInterestTagActivity.a(this.a, "");
+      }
     }
-    while (!awnq.b(this.a)) {
+    else
+    {
+      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
+        break label132;
+      }
+      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
+      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+    }
+    label132:
+    do
+    {
       return;
-    }
-    awnq.a(this.a, false);
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(true);
+      bool = false;
+      break;
+      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
+        break label198;
+      }
+    } while (ChooseInterestTagActivity.d(this.a));
+    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
+    ChooseInterestTagActivity.b(this.a, true);
+    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
+    return;
+    label198:
+    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
+    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
+  public boolean a(InterestTagInfo paramInterestTagInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 

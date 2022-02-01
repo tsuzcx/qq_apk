@@ -1,35 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.zip.ZipEntry;
 
-final class npp
-  implements BusinessObserver
+public abstract interface npp
 {
-  npp(QQAppInterface paramQQAppInterface, npr paramnpr) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        npo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Npr);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
-    }
-    this.jdField_a_of_type_Npr.a();
-  }
+  public abstract boolean a(ZipEntry paramZipEntry);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     npp
  * JD-Core Version:    0.7.0.1
  */

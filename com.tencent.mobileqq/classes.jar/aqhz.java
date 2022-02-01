@@ -1,134 +1,44 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.ReqBody;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqhz
-  extends anud
 {
-  public aqhz(AppInterface paramAppInterface)
+  private static String a = "https://h5.vip.qq.com/p/pay/index?_wv=17301507&_wwv=8192&aid=mvip.g.a.zh_jjms&month=1&type=vip";
+  
+  @NonNull
+  public static aqhz a(String paramString)
   {
-    super(paramAppInterface);
+    aqhz localaqhz = new aqhz();
+    if (TextUtils.isEmpty(paramString)) {
+      return localaqhz;
+    }
+    a(paramString);
+    return localaqhz;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static String a()
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      notifyUI(1001, false, null);
-    }
-    oidb_0x74b.RspBody localRspBody;
-    int j;
-    int k;
-    int m;
-    boolean bool;
-    do
+    return a;
+  }
+  
+  private static void a(String paramString)
+  {
+    try
     {
-      return;
-      localRspBody = new oidb_0x74b.RspBody();
-      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-      paramFromServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("id"));
-      j = paramToServiceMsg.extraData.getInt("type");
-      k = paramToServiceMsg.extraData.getInt("headType");
-      m = paramToServiceMsg.extraData.getInt("sizeType");
-      bool = paramToServiceMsg.extraData.getBoolean("isSmartMode");
-      QLog.i("Q.dynamicAvatar", 2, "handleDynamicAvatarInfo, result : " + i);
-      if (i != 0) {
-        break;
-      }
-      paramToServiceMsg = aqhv.a(localRspBody);
-      notifyUI(1001, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
-      paramFromServiceMsg = (aqib)this.mApp.getManager(180);
-    } while (paramFromServiceMsg == null);
-    if ((this.mApp instanceof QQAppInterface))
-    {
-      paramFromServiceMsg.a(paramToServiceMsg);
+      a = new JSONObject(paramString).getJSONObject("android").getString("payH5Url");
       return;
     }
-    paramFromServiceMsg.a(localRspBody.toByteArray());
-    return;
-    QLog.i("Q.dynamicAvatar", 1, "handleGetDynamicAvatarInfo result not success.");
-    notifyUI(1001, false, new Object[] { null, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
-  }
-  
-  public void a(Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    Object localObject = null;
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(Integer.valueOf(17));
-    localArrayList2.add(Integer.valueOf(18));
-    ArrayList localArrayList1;
-    if (paramInt1 != 18)
+    catch (JSONException paramString)
     {
-      localArrayList1 = new ArrayList();
-      localArrayList1.add(paramLong);
+      paramString.printStackTrace();
     }
-    for (;;)
-    {
-      oidb_0x74b.ReqBody localReqBody = new oidb_0x74b.ReqBody();
-      if ((localArrayList1 != null) && (!localArrayList1.isEmpty())) {
-        localReqBody.rpt_uint64_uin.set(localArrayList1);
-      }
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
-        localReqBody.rpt_uint64_tinyid.set((List)localObject);
-      }
-      if ((localArrayList2 != null) && (!localArrayList2.isEmpty())) {
-        localReqBody.rpt_head_type.set(localArrayList2);
-      }
-      localObject = makeOIDBPkg("OidbSvc.0x74b", 1867, 0, localReqBody.toByteArray());
-      ((ToServiceMsg)localObject).extraData.putLong("id", paramLong.longValue());
-      ((ToServiceMsg)localObject).extraData.putInt("type", paramInt1);
-      ((ToServiceMsg)localObject).extraData.putInt("headType", paramInt2);
-      ((ToServiceMsg)localObject).extraData.putInt("sizeType", paramInt3);
-      ((ToServiceMsg)localObject).extraData.putBoolean("isSmartMode", paramBoolean);
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(paramLong);
-      localArrayList1 = null;
-    }
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0x74b");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return aqia.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (msgCmdFilter(paramFromServiceMsg.getServiceCmd()));
-      paramFromServiceMsg.getServiceCmd();
-    } while (!"OidbSvc.0x74b".equals(paramFromServiceMsg.getServiceCmd()));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhz
  * JD-Core Version:    0.7.0.1
  */

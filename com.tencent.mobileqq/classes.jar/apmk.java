@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class apmk
+  implements View.OnTouchListener
 {
-  apmi jdField_a_of_type_Apmi = null;
-  apny jdField_a_of_type_Apny;
-  Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-  String jdField_a_of_type_JavaLangString = "";
+  apmk(apmh paramapmh) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return apmh.a(this.a).onTouchEvent(paramMotionEvent);
+  }
 }
 
 

@@ -30,7 +30,7 @@ class BannerAdPlugin$2
     //   32: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
     //   35: return
     //   36: iload_1
-    //   37: ifeq +721 -> 758
+    //   37: ifeq +716 -> 753
     //   40: ldc 58
     //   42: iconst_1
     //   43: ldc 60
@@ -127,7 +127,7 @@ class BannerAdPlugin$2
     //   245: invokestatic 142	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$200	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;)Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;
     //   248: astore_2
     //   249: aload_2
-    //   250: ifnull +465 -> 715
+    //   250: ifnull +460 -> 710
     //   253: aload_0
     //   254: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
     //   257: getfield 146	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
@@ -139,9 +139,9 @@ class BannerAdPlugin$2
     //   273: aload_2
     //   274: invokespecial 159	com/tencent/gdtad/aditem/GdtAd:<init>	(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;)V
     //   277: astore 7
-    //   279: invokestatic 165	acoo:a	()Lacoo;
+    //   279: invokestatic 165	abkw:a	()Labkw;
     //   282: aload 7
-    //   284: invokevirtual 168	acoo:a	(Lcom/tencent/gdtad/aditem/GdtAd;)V
+    //   284: invokevirtual 168	abkw:a	(Lcom/tencent/gdtad/aditem/GdtAd;)V
     //   287: aload_0
     //   288: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
     //   291: getfield 146	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
@@ -153,7 +153,7 @@ class BannerAdPlugin$2
     //   305: invokevirtual 172	com/tencent/mobileqq/minigame/ui/GameActivity:createBannerAd	(Lcom/tencent/mobileqq/minigame/data/BannerAdPosInfo;Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;)Z
     //   308: istore_1
     //   309: iload_1
-    //   310: ifeq +346 -> 656
+    //   310: ifeq +341 -> 651
     //   313: new 70	org/json/JSONObject
     //   316: dup
     //   317: invokespecial 173	org/json/JSONObject:<init>	()V
@@ -261,149 +261,147 @@ class BannerAdPlugin$2
     //   537: getfield 236	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo:report_info	Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo$ReportInfo;
     //   540: getfield 251	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo$ReportInfo:click_url	Lcom/tencent/mobileqq/pb/PBStringField;
     //   543: invokevirtual 85	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   546: invokestatic 256	bkxw:a	(Landroid/content/Context;Ljava/lang/String;)V
+    //   546: invokestatic 256	bjds:a	(Landroid/content/Context;Ljava/lang/String;)V
     //   549: aload_0
     //   550: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
     //   553: aload 6
     //   555: iconst_0
     //   556: invokestatic 260	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$400	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Ljava/lang/String;I)V
     //   559: aload 5
-    //   561: ifnull -526 -> 35
-    //   564: aload 5
-    //   566: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   569: ifnull -534 -> 35
-    //   572: aload 5
-    //   574: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   577: invokevirtual 270	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   580: ifle -545 -> 35
-    //   583: aload 5
-    //   585: getfield 274	NS_MINI_AD/MiniAppAd$StGetAdRsp:iPreLoadLevel	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   588: invokevirtual 279	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   591: ldc2_w 280
-    //   594: lcmp
-    //   595: ifne -560 -> 35
-    //   598: iload_3
-    //   599: aload 5
-    //   601: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   604: invokevirtual 270	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   607: if_icmpge -572 -> 35
-    //   610: new 283	com/tencent/mobileqq/mini/apkg/MiniAppConfig
-    //   613: dup
-    //   614: aload 5
-    //   616: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   619: iload_3
-    //   620: invokevirtual 286	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   623: checkcast 288	NS_MINI_INTERFACE/INTERFACE$StApiAppInfo
-    //   626: invokestatic 294	com/tencent/mobileqq/mini/apkg/MiniAppInfo:from	(LNS_MINI_INTERFACE/INTERFACE$StApiAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
-    //   629: invokespecial 297	com/tencent/mobileqq/mini/apkg/MiniAppConfig:<init>	(Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;)V
-    //   632: invokestatic 303	com/tencent/mobileqq/minigame/gpkg/GpkgManager:preloadGpkgByConfig	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;)V
-    //   635: iload_3
-    //   636: iconst_1
-    //   637: iadd
-    //   638: istore_3
-    //   639: goto -41 -> 598
-    //   642: astore_2
-    //   643: ldc 58
-    //   645: iconst_1
-    //   646: ldc_w 305
-    //   649: aload_2
-    //   650: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   653: goto -104 -> 549
-    //   656: aload_0
-    //   657: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
-    //   660: aload_0
-    //   661: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   664: sipush 1003
-    //   667: invokestatic 38	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$000	()Ljava/util/HashMap;
-    //   670: sipush 1003
-    //   673: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   676: invokevirtual 50	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   679: checkcast 52	java/lang/String
-    //   682: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
-    //   685: ldc 58
-    //   687: iconst_1
-    //   688: new 103	java/lang/StringBuilder
-    //   691: dup
-    //   692: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   695: ldc_w 311
+    //   561: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   564: ifnull -529 -> 35
+    //   567: aload 5
+    //   569: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   572: invokevirtual 270	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   575: ifle -540 -> 35
+    //   578: aload 5
+    //   580: getfield 274	NS_MINI_AD/MiniAppAd$StGetAdRsp:iPreLoadLevel	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   583: invokevirtual 279	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   586: ldc2_w 280
+    //   589: lcmp
+    //   590: ifne -555 -> 35
+    //   593: iload_3
+    //   594: aload 5
+    //   596: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   599: invokevirtual 270	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   602: if_icmpge -567 -> 35
+    //   605: new 283	com/tencent/mobileqq/mini/apkg/MiniAppConfig
+    //   608: dup
+    //   609: aload 5
+    //   611: getfield 264	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   614: iload_3
+    //   615: invokevirtual 286	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   618: checkcast 288	NS_MINI_INTERFACE/INTERFACE$StApiAppInfo
+    //   621: invokestatic 294	com/tencent/mobileqq/mini/apkg/MiniAppInfo:from	(LNS_MINI_INTERFACE/INTERFACE$StApiAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   624: invokespecial 297	com/tencent/mobileqq/mini/apkg/MiniAppConfig:<init>	(Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;)V
+    //   627: invokestatic 303	com/tencent/mobileqq/minigame/gpkg/GpkgManager:preloadGpkgByConfig	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;)V
+    //   630: iload_3
+    //   631: iconst_1
+    //   632: iadd
+    //   633: istore_3
+    //   634: goto -41 -> 593
+    //   637: astore_2
+    //   638: ldc 58
+    //   640: iconst_1
+    //   641: ldc_w 305
+    //   644: aload_2
+    //   645: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   648: goto -99 -> 549
+    //   651: aload_0
+    //   652: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
+    //   655: aload_0
+    //   656: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   659: sipush 1003
+    //   662: invokestatic 38	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$000	()Ljava/util/HashMap;
+    //   665: sipush 1003
+    //   668: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   671: invokevirtual 50	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   674: checkcast 52	java/lang/String
+    //   677: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
+    //   680: ldc 58
+    //   682: iconst_1
+    //   683: new 103	java/lang/StringBuilder
+    //   686: dup
+    //   687: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   690: ldc_w 311
+    //   693: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   696: aload 6
     //   698: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   701: aload 6
-    //   703: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   706: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   709: invokestatic 66	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   712: goto -163 -> 549
-    //   715: ldc 58
-    //   717: iconst_1
-    //   718: ldc_w 313
-    //   721: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   724: goto -175 -> 549
-    //   727: astore_2
-    //   728: ldc 58
-    //   730: iconst_1
-    //   731: new 103	java/lang/StringBuilder
-    //   734: dup
-    //   735: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   738: ldc_w 317
-    //   741: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   744: aload_2
-    //   745: invokevirtual 320	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   748: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   751: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   754: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   757: return
-    //   758: aload_2
-    //   759: ifnull +39 -> 798
-    //   762: aload_2
-    //   763: ldc_w 322
-    //   766: invokevirtual 91	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   769: istore_3
-    //   770: aload_0
-    //   771: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
-    //   774: aload_0
-    //   775: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   778: iload_3
-    //   779: ldc_w 323
-    //   782: invokestatic 328	anzj:a	(I)Ljava/lang/String;
-    //   785: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
-    //   788: ldc 58
-    //   790: iconst_1
-    //   791: ldc_w 330
-    //   794: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   797: return
-    //   798: aload_0
-    //   799: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
-    //   802: aload_0
-    //   803: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   806: sipush 1003
-    //   809: invokestatic 38	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$000	()Ljava/util/HashMap;
-    //   812: sipush 1003
-    //   815: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   818: invokevirtual 50	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   821: checkcast 52	java/lang/String
-    //   824: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
-    //   827: goto -39 -> 788
-    //   830: astore_2
-    //   831: aload_0
-    //   832: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
-    //   835: aload_0
-    //   836: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   839: sipush 1003
-    //   842: invokestatic 38	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$000	()Ljava/util/HashMap;
-    //   845: sipush 1003
-    //   848: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   851: invokevirtual 50	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   854: checkcast 52	java/lang/String
-    //   857: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
-    //   860: goto -72 -> 788
+    //   701: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   704: invokestatic 66	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   707: goto -158 -> 549
+    //   710: ldc 58
+    //   712: iconst_1
+    //   713: ldc_w 313
+    //   716: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   719: goto -170 -> 549
+    //   722: astore_2
+    //   723: ldc 58
+    //   725: iconst_1
+    //   726: new 103	java/lang/StringBuilder
+    //   729: dup
+    //   730: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   733: ldc_w 317
+    //   736: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   739: aload_2
+    //   740: invokevirtual 320	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   743: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   746: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   749: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   752: return
+    //   753: aload_2
+    //   754: ifnull +39 -> 793
+    //   757: aload_2
+    //   758: ldc_w 322
+    //   761: invokevirtual 91	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   764: istore_3
+    //   765: aload_0
+    //   766: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
+    //   769: aload_0
+    //   770: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   773: iload_3
+    //   774: ldc_w 323
+    //   777: invokestatic 328	amtj:a	(I)Ljava/lang/String;
+    //   780: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
+    //   783: ldc 58
+    //   785: iconst_1
+    //   786: ldc_w 330
+    //   789: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   792: return
+    //   793: aload_0
+    //   794: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
+    //   797: aload_0
+    //   798: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   801: sipush 1003
+    //   804: invokestatic 38	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$000	()Ljava/util/HashMap;
+    //   807: sipush 1003
+    //   810: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   813: invokevirtual 50	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   816: checkcast 52	java/lang/String
+    //   819: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
+    //   822: goto -39 -> 783
+    //   825: astore_2
+    //   826: aload_0
+    //   827: getfield 16	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;
+    //   830: aload_0
+    //   831: getfield 18	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin$2:val$webview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   834: sipush 1003
+    //   837: invokestatic 38	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$000	()Ljava/util/HashMap;
+    //   840: sipush 1003
+    //   843: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   846: invokevirtual 50	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   849: checkcast 52	java/lang/String
+    //   852: invokestatic 56	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin:access$100	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BannerAdPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;ILjava/lang/String;)V
+    //   855: goto -72 -> 783
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	863	0	this	2
-    //   0	863	1	paramBoolean	boolean
-    //   0	863	2	paramJSONObject	org.json.JSONObject
-    //   1	778	3	i	int
+    //   0	858	0	this	2
+    //   0	858	1	paramBoolean	boolean
+    //   0	858	2	paramJSONObject	org.json.JSONObject
+    //   1	773	3	i	int
     //   75	154	4	j	int
-    //   57	558	5	localStGetAdRsp	NS_MINI_AD.MiniAppAd.StGetAdRsp
-    //   67	635	6	str	java.lang.String
+    //   57	553	5	localStGetAdRsp	NS_MINI_AD.MiniAppAd.StGetAdRsp
+    //   67	630	6	str	java.lang.String
     //   277	233	7	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -415,17 +413,17 @@ class BannerAdPlugin$2
     //   235	249	176	org/json/JSONException
     //   253	309	176	org/json/JSONException
     //   549	559	176	org/json/JSONException
-    //   564	598	176	org/json/JSONException
-    //   598	635	176	org/json/JSONException
-    //   643	653	176	org/json/JSONException
-    //   656	712	176	org/json/JSONException
-    //   715	724	176	org/json/JSONException
-    //   728	757	176	org/json/JSONException
-    //   313	549	642	org/json/JSONException
-    //   564	598	727	java/lang/Throwable
-    //   598	635	727	java/lang/Throwable
-    //   762	788	830	java/lang/Exception
-    //   798	827	830	java/lang/Exception
+    //   559	593	176	org/json/JSONException
+    //   593	630	176	org/json/JSONException
+    //   638	648	176	org/json/JSONException
+    //   651	707	176	org/json/JSONException
+    //   710	719	176	org/json/JSONException
+    //   723	752	176	org/json/JSONException
+    //   313	549	637	org/json/JSONException
+    //   559	593	722	java/lang/Throwable
+    //   593	630	722	java/lang/Throwable
+    //   757	783	825	java/lang/Exception
+    //   793	822	825	java/lang/Exception
   }
 }
 

@@ -1,8 +1,10 @@
 class aslo
 {
-  public int a;
-  public String a;
-  public String b;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long b;
+  
+  aslo(asln paramasln) {}
 }
 
 

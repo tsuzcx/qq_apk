@@ -1,19 +1,41 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-class apim
-  implements aprk
+public class apim
+  implements BusinessObserver
 {
-  apim(apil paramapil) {}
+  protected void a(boolean paramBoolean, long paramLong) {}
   
-  public void a()
-  {
-    GLES20.glUniform1i(apil.a(this.a), apil.b(this.a));
-  }
+  protected void a(boolean paramBoolean, long paramLong, List<aphw> paramList) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    apil.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    apiw.a("glGetUniformLocation uDisplayType");
+    if (paramInt == 1)
+    {
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+    }
+    do
+    {
+      return;
+      if (paramInt == 2)
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+        return;
+      }
+      if (paramInt == 3)
+      {
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+    } while (paramInt != 6);
+    a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
   }
 }
 

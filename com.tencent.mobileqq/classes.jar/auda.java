@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 class auda
-  implements aumz
+  implements DialogInterface.OnClickListener
 {
-  auda(aucz paramaucz) {}
+  auda(aucz paramaucz, InputStream paramInputStream) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdll.b(null, "dc00898", "", "", "0X800AEE3", "0X800AEE3", 0, 0, "", "", "", "");
-    LinkByWeiyunFragment.a(this.a.jdField_a_of_type_AndroidAppActivity, null, this.a.jdField_a_of_type_JavaLangString, false);
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      aucz.a(this.jdField_a_of_type_Aucz).finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 

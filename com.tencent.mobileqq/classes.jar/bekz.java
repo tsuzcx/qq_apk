@@ -1,26 +1,129 @@
-final class bekz
-  implements bell
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+public final class bekz
 {
-  bekz(belr parambelr1, beko parambeko, StringBuilder paramStringBuilder, belr parambelr2) {}
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, bela> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  public void a(belm parambelm1, belm parambelm2, belm parambelm3)
+  private static void a(bela parambela, boolean paramBoolean)
   {
-    int i = parambelm1.jdField_a_of_type_Char;
-    int j = parambelm2.jdField_a_of_type_Char;
-    if ((i == 43) && (j == 45)) {
-      this.jdField_a_of_type_Belr.a(Math.min(parambelm1.jdField_a_of_type_Int, parambelm2.jdField_a_of_type_Int));
-    }
-    beks.a(parambelm1, parambelm2, parambelm3, this.jdField_a_of_type_Beko);
-    if (parambelm3.jdField_a_of_type_Char == '+')
+    if ((parambela != null) && (parambela.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-      if (j == 43) {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(this.b.a(parambelm3.jdField_a_of_type_Int));
+      if (parambela.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      {
+        if (parambela.jdField_a_of_type_JavaIoFile == null)
+        {
+          File localFile = new File(parambela.jdField_a_of_type_JavaLangString);
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          parambela.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
+          parambela.jdField_a_of_type_JavaIoFile = localFile;
+        }
+        parambela.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(parambela.jdField_a_of_type_JavaIoFileOutputStream);
+      }
+      if (paramBoolean)
+      {
+        if (parambela.jdField_a_of_type_JavaIoFileOutputStream != null)
+        {
+          parambela.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          parambela.jdField_a_of_type_JavaIoFileOutputStream.close();
+          parambela.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        parambela.jdField_a_of_type_JavaIoFile = null;
       }
     }
-    else {
-      return;
+  }
+  
+  public static void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((bela)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
+    {
+      bela localbela = new bela();
+      localbela.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localbela);
     }
-    this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_Belr.a(parambelm3.jdField_a_of_type_Int));
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (bela)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    bela localbela = (bela)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbela == null) || (localbela.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      localbela.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localbela.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localbela.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localbela.jdField_a_of_type_JavaIoFileOutputStream = null;
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    bela localbela = (bela)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbela != null) && (localbela.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localbela, true);
+      label29:
+      localbela.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      b(paramString);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
+    }
   }
 }
 

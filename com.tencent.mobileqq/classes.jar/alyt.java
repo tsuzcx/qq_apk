@@ -1,20 +1,43 @@
-class alyt
+import com.tencent.qphone.base.util.QLog;
+
+public class alyt
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public alyt(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public String a()
   {
-    this.a = paramFloat2;
-    this.b = paramFloat3;
-    this.c = paramFloat1;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.f = paramFloat6;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.d == 0) {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      }
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
+    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mActivityId=").append(this.b);
+    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mAIOType=").append(this.c);
+    localStringBuffer.append(", mShareTo=").append(this.d);
+    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mShareRet=").append(this.e);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.tencent.nativebmp.NativeBitmap;
 import io.flutter.plugin.common.MethodChannel.Result;
 import java.io.IOException;
 import java.io.InputStream;
@@ -444,7 +445,7 @@ public class QFlutterResourceLoader
     this.nativeInterface = paramNativeAppInterface;
     if (!this.sJniSoLoaded)
     {
-      paramNativeAppInterface.loadJniSo();
+      NativeBitmap.init(paramNativeAppInterface.getLibPath());
       this.sJniSoLoaded = true;
     }
   }

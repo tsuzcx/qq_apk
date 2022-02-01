@@ -1,42 +1,124 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
 
-public class bfzq
-  implements View.OnClickListener
+public final class bfzq
 {
-  public bfzq(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
+  private static ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "KEY_DELAY_LOAD_PROXY", "KEY_ENABLE_MEMORY_LEAK" };
   
-  public void onClick(View paramView)
+  public static void a(Context paramContext, boolean paramBoolean, @Nullable String paramString, @Nullable Throwable paramThrowable)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
+    int i = 0;
+    try
     {
-      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
-      int i = 0;
-      while (i < j)
+      paramContext = paramContext.getSharedPreferences("BootOptimize", 0).edit();
+      if (paramBoolean)
       {
-        localObject = (bfzv)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
-        if ((((Boolean)((bfzv)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((bfzv)localObject).a).troopuin)))
+        paramContext.putLong("_last_crash_time_", System.currentTimeMillis());
+        paramString = jdField_a_of_type_ArrayOfJavaLangString;
+        int j = paramString.length;
+        while (i < j)
         {
-          localArrayList1.add(((TroopInfo)((bfzv)localObject).a).troopname);
-          localArrayList2.add(((TroopInfo)((bfzv)localObject).a).troopuin);
+          paramThrowable = paramString[i];
+          paramContext.putBoolean("8.4.8" + paramThrowable, true);
+          i += 1;
         }
-        i += 1;
+      }
+      if (TextUtils.isEmpty(paramString))
+      {
+        paramContext.putBoolean("8.4.8" + paramString, true);
+        if (paramThrowable != null)
+        {
+          while (paramThrowable.getCause() != null) {
+            paramThrowable = paramThrowable.getCause();
+          }
+          StringWriter localStringWriter = new StringWriter();
+          paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+          paramContext.putString("8.4.8_crash_because_" + paramString, localStringWriter.getBuffer().toString());
+        }
+      }
+      paramContext.apply();
+      return;
+    }
+    catch (Throwable paramContext) {}
+  }
+  
+  private static boolean a(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {}
+    long l;
+    do
+    {
+      return true;
+      paramContext = paramContext.getSharedPreferences("BootOptimize", 0);
+      if ((!TextUtils.isEmpty(paramString)) && (paramContext.getBoolean("8.4.8" + paramString, false))) {
+        return false;
+      }
+      l = paramContext.getLong("_last_crash_time_", 0L);
+    } while (System.currentTimeMillis() - l > 1800000L);
+    return false;
+  }
+  
+  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramContext == null) {
+        break label69;
       }
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList2);
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", localArrayList1);
-    this.a.getActivity().setResult(262, (Intent)localObject);
-    this.a.getActivity().doOnBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    label69:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call setSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " ,value=", Boolean.valueOf(paramBoolean) });
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
+        break;
+      }
+      return false;
+    }
+    paramContext.getSharedPreferences("BootOptimize", 0).edit().putBoolean(paramString, paramBoolean).apply();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+    return true;
+  }
+  
+  public static boolean b(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      if (paramContext != null)
+      {
+        bool = true;
+        QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call getSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " judgeSafeMode=", Boolean.valueOf(paramBoolean) });
+      }
+    }
+    else {
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
+        break label74;
+      }
+    }
+    label74:
+    do
+    {
+      return false;
+      bool = false;
+      break;
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+        return ((Boolean)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
+      }
+    } while ((paramBoolean) && (!a(paramContext, paramString)));
+    paramBoolean = paramContext.getSharedPreferences("BootOptimize", 0).getBoolean(paramString, false);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+    if (QLog.isColorLevel()) {
+      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "key=", paramString, " value=", Boolean.valueOf(paramBoolean) });
+    }
+    return paramBoolean;
   }
 }
 

@@ -1,18 +1,89 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
 public class ajaf
-  implements View.OnClickListener
+  implements Comparator<ajac>
 {
-  public ajaf(BlessActivity paramBlessActivity) {}
+  int jdField_a_of_type_Int = -1;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(View paramView)
+  public ajaf(int paramInt, boolean paramBoolean)
   {
-    bdll.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
-    BlessActivity.a(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int a(ajac paramajac1, ajac paramajac2)
+  {
+    int i = -1;
+    int k = 1;
+    int j = 1;
+    if (this.jdField_a_of_type_Int == 0) {
+      i = paramajac1.c.compareToIgnoreCase(paramajac2.c);
+    }
+    label89:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            if (this.jdField_a_of_type_Int != 2) {
+              break label89;
+            }
+            if (paramajac1.jdField_b_of_type_Long == paramajac2.jdField_b_of_type_Long) {
+              return 0;
+            }
+            if (paramajac1.jdField_b_of_type_Long <= paramajac2.jdField_b_of_type_Long) {
+              break;
+            }
+          } while (this.jdField_a_of_type_Boolean);
+          return 1;
+          if (this.jdField_a_of_type_Boolean) {}
+          for (i = j;; i = -1) {
+            return i;
+          }
+          if (this.jdField_a_of_type_Int != 3) {
+            break label149;
+          }
+          if (paramajac1.a == paramajac2.a) {
+            return 0;
+          }
+          if (paramajac1.a <= paramajac2.a) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Boolean);
+        return 1;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (i = k;; i = -1) {
+          return i;
+        }
+        if (this.jdField_a_of_type_Int != 1) {
+          break label208;
+        }
+        if (paramajac1.e != paramajac2.e) {
+          break;
+        }
+        j = paramajac1.jdField_b_of_type_JavaLangString.compareToIgnoreCase(paramajac2.jdField_b_of_type_JavaLangString);
+        if (j == 0) {
+          return 0;
+        }
+      } while (j <= 0);
+      return 1;
+    } while (paramajac1.e >= paramajac2.e);
+    label149:
+    return 1;
+    label208:
+    if (this.jdField_a_of_type_Int == 8)
+    {
+      if (paramajac1.m == paramajac2.m) {
+        return paramajac1.c.compareToIgnoreCase(paramajac2.c);
+      }
+      return paramajac2.m - paramajac1.m;
+    }
+    return 0;
   }
 }
 

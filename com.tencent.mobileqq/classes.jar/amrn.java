@@ -1,42 +1,51 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amrn
-  extends amof
+  implements BusinessObserver
 {
-  public amrl a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public Switch a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
+  public static final String TAG = "FavEmoRoamingObserver";
   
-  public amrn(View paramView)
+  protected void onDelEmoResponse(boolean paramBoolean) {}
+  
+  protected void onModifyFavData(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370633));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377963));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376892));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378604));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378606));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371492));
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379360));
-    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131373870));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379453);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379524));
-    this.e = ((TextView)paramView.findViewById(2131379523));
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (paramObject == null);
+      onDelEmoResponse(((Boolean)paramObject).booleanValue());
+      return;
+    case 1: 
+      try
+      {
+        onUploadReq((ArrayList)paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
+        return;
+      }
+    case 2: 
+      onUpdateFavData(paramBoolean, paramObject);
+      return;
+    }
+    onModifyFavData(paramBoolean, paramObject);
   }
+  
+  protected void onUpdateFavData(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onUploadReq(List<CustomEmotionData> paramList) {}
 }
 
 

@@ -1,22 +1,22 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class apsx
-  implements MessageQueue.IdleHandler
+class apsx
+  implements View.OnClickListener
 {
-  public apsx(ARScanEntryView paramARScanEntryView) {}
+  apsx(apsw paramapsw, MessageForTroopConfess paramMessageForTroopConfess) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
+      apsz.a(this.jdField_a_of_type_Apsw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apsw.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Apsw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
     }
-    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
-      ARScanEntryView.a(this.a).c();
-    }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

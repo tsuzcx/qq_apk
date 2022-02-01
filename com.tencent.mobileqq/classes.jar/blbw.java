@@ -1,298 +1,334 @@
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.util.Pair;
-import java.io.File;
-import org.xmlpull.v1.XmlPullParser;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.pb.TianShuAccess.AdPosItem;
+import cooperation.vip.pb.TianShuAccess.CommInfo;
+import cooperation.vip.pb.TianShuAccess.GetAdsReq;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.MapEntry;
+import cooperation.vip.pb.TianShuReport.UserActionMultiReportReq;
+import cooperation.vip.pb.TianShuReport.UserActionMultiReportRsp;
+import cooperation.vip.pb.TianShuReport.UserCommReport;
+import cooperation.vip.tianshu.TianShuManager.1;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 
-final class blbw
+public class blbw
 {
-  private blbx jdField_a_of_type_Blbx;
-  private File jdField_a_of_type_JavaIoFile;
+  private static blbw jdField_a_of_type_Blbw;
+  private long jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getSharedPreferences("tianshu_manager", 4).getLong("time_delay", 3000L);
+  private final ArrayList<blbx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashMap<Long, WeakReference<blbv>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public blbw(File paramFile, blbx paramblbx)
+  public static blbw a()
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Blbx = paramblbx;
-  }
-  
-  private Pair<String, blcq> a(XmlPullParser paramXmlPullParser)
-  {
+    if (jdField_a_of_type_Blbw == null) {}
     try
     {
-      String str = paramXmlPullParser.getAttributeValue(null, "Key");
-      if (TextUtils.isEmpty(str)) {
-        return null;
+      if (jdField_a_of_type_Blbw == null) {
+        jdField_a_of_type_Blbw = new blbw();
       }
-      blcq localblcq = new blcq();
-      localblcq.jdField_a_of_type_Int = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "AttrType"));
-      localblcq.b = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Category"));
-      localblcq.c = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "SubCategory"));
-      localblcq.d = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Action"));
-      localblcq.jdField_a_of_type_Long = Long.parseLong(paramXmlPullParser.getAttributeValue(null, "ExpireTime"));
-      paramXmlPullParser = paramXmlPullParser.getAttributeValue(null, "ExtraInfo");
-      if (!TextUtils.isEmpty(paramXmlPullParser)) {
-        localblcq.jdField_a_of_type_ArrayOfByte = Base64.decode(paramXmlPullParser, 0);
-      }
-      paramXmlPullParser = new Pair(str, localblcq);
-      return paramXmlPullParser;
+      return jdField_a_of_type_Blbw;
     }
-    catch (Exception paramXmlPullParser)
-    {
-      paramXmlPullParser.printStackTrace();
-    }
-    return null;
+    finally {}
   }
   
-  /* Error */
+  private static TianShuAccess.AdPosItem a(blbu paramblbu)
+  {
+    TianShuAccess.AdPosItem localAdPosItem = new TianShuAccess.AdPosItem();
+    localAdPosItem.posId.set(paramblbu.jdField_a_of_type_Int);
+    localAdPosItem.nNeedCnt.set(paramblbu.b);
+    if (paramblbu.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      paramblbu = paramblbu.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (paramblbu.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramblbu.next();
+        TianShuAccess.MapEntry localMapEntry = new TianShuAccess.MapEntry();
+        localMapEntry.key.set(String.valueOf(localEntry.getKey()));
+        localMapEntry.value.set(String.valueOf(localEntry.getValue()));
+        localAdPosItem.extra_info.add(localMapEntry);
+      }
+    }
+    return localAdPosItem;
+  }
+  
+  private static TianShuAccess.CommInfo a()
+  {
+    TianShuAccess.CommInfo localCommInfo = new TianShuAccess.CommInfo();
+    long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    localCommInfo.lUin.set(l);
+    localCommInfo.strApp.set("sq");
+    localCommInfo.strOs.set("and");
+    localCommInfo.strDeviceInfo.set(String.valueOf(blbz.b()));
+    localCommInfo.strVersion.set(AppSetting.f());
+    String str = LbsManagerService.getCityCode();
+    localCommInfo.strCityCode.set(String.valueOf(str));
+    localCommInfo.strQimei.set(String.valueOf(blbz.a()));
+    localCommInfo.strQua.set(String.valueOf(QUA.getQUA3()));
+    return localCommInfo;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      this.jdField_a_of_type_Long = (paramInt * 1000);
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tianshu_manager", 4).edit();
+      localEditor.putLong("time_delay", this.jdField_a_of_type_Long);
+      localEditor.apply();
+    }
+  }
+  
+  private void a(ArrayList<blbx> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+      return;
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    TianShuReport.UserActionMultiReportReq localUserActionMultiReportReq = new TianShuReport.UserActionMultiReportReq();
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), blby.class);
+    localUserActionMultiReportReq.user_comm_report.set(blbz.a());
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      blbx localblbx = (blbx)paramArrayList.next();
+      localUserActionMultiReportReq.report_infos.add(blbz.a(localblbx));
+    }
+    localNewIntent.putExtra("data", bgau.a(localUserActionMultiReportReq.toByteArray()));
+    localNewIntent.putExtra("cmd", "TianShu.UserActionMultiReport");
+    localAppRuntime.startServlet(localNewIntent);
+  }
+  
+  private void b(blbx paramblbx)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramblbx);
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+        ThreadManager.getSubThreadHandler().postDelayed(new TianShuManager.1(this), this.jdField_a_of_type_Long);
+      }
+      return;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("TianShuManager", 1, "getADFromTianShuCache mTianshuTraceInfoCache is null");
+      return "";
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
+      return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    return "";
+  }
+  
   public void a()
   {
-    // Byte code:
-    //   0: new 99	javax/crypto/spec/IvParameterSpec
-    //   3: dup
-    //   4: invokestatic 104	blbs:a	()[B
-    //   7: invokespecial 107	javax/crypto/spec/IvParameterSpec:<init>	([B)V
-    //   10: astore 5
-    //   12: new 109	javax/crypto/spec/SecretKeySpec
-    //   15: dup
-    //   16: invokestatic 111	blbs:b	()[B
-    //   19: ldc 113
-    //   21: invokespecial 116	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   24: astore 6
-    //   26: ldc 118
-    //   28: invokestatic 124	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   31: astore 7
-    //   33: aload 7
-    //   35: iconst_2
-    //   36: aload 6
-    //   38: aload 5
-    //   40: invokevirtual 128	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   43: new 130	javax/crypto/CipherInputStream
-    //   46: dup
-    //   47: new 132	java/io/BufferedInputStream
-    //   50: dup
-    //   51: new 134	java/io/FileInputStream
-    //   54: dup
-    //   55: aload_0
-    //   56: getfield 14	blbw:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   59: invokespecial 137	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   62: invokespecial 140	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   65: aload 7
-    //   67: invokespecial 143	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   70: astore 7
-    //   72: invokestatic 149	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
-    //   75: astore 8
-    //   77: aload 8
-    //   79: aload 7
-    //   81: ldc 151
-    //   83: invokeinterface 155 3 0
-    //   88: aload 8
-    //   90: invokeinterface 159 1 0
-    //   95: istore_3
-    //   96: iconst_0
-    //   97: istore_1
-    //   98: aconst_null
-    //   99: astore 5
-    //   101: iload_3
-    //   102: iconst_1
-    //   103: if_icmpeq +46 -> 149
-    //   106: iload_3
-    //   107: iconst_2
-    //   108: if_icmpne +116 -> 224
-    //   111: aload 8
-    //   113: invokeinterface 163 1 0
-    //   118: astore 6
-    //   120: aload 6
-    //   122: ldc 165
-    //   124: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   127: ifeq +72 -> 199
-    //   130: aload 8
-    //   132: aconst_null
-    //   133: ldc 173
-    //   135: invokeinterface 28 3 0
-    //   140: invokestatic 45	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   143: istore_1
-    //   144: iload_1
-    //   145: iconst_1
-    //   146: if_icmpeq +28 -> 174
-    //   149: aload 7
-    //   151: ifnull +8 -> 159
-    //   154: aload 7
-    //   156: invokevirtual 178	java/io/InputStream:close	()V
-    //   159: aload_0
-    //   160: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   163: ifnull +10 -> 173
-    //   166: aload_0
-    //   167: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   170: invokevirtual 182	blbx:a	()V
-    //   173: return
-    //   174: iconst_1
-    //   175: istore_1
-    //   176: iload_1
-    //   177: istore_2
-    //   178: aload 5
-    //   180: astore 6
-    //   182: aload 8
-    //   184: invokeinterface 185 1 0
-    //   189: istore_3
-    //   190: aload 6
-    //   192: astore 5
-    //   194: iload_2
-    //   195: istore_1
-    //   196: goto -95 -> 101
-    //   199: iload_1
-    //   200: ifeq +240 -> 440
-    //   203: aload 6
-    //   205: ldc 187
-    //   207: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   210: ifeq +230 -> 440
-    //   213: aload_0
-    //   214: aload 8
-    //   216: invokespecial 189	blbw:a	(Lorg/xmlpull/v1/XmlPullParser;)Lcom/tencent/util/Pair;
-    //   219: astore 5
-    //   221: goto -45 -> 176
-    //   224: aload 5
-    //   226: astore 6
-    //   228: iload_1
-    //   229: istore_2
-    //   230: iload_3
-    //   231: iconst_3
-    //   232: if_icmpne -50 -> 182
-    //   235: aload 5
-    //   237: astore 6
-    //   239: iload_1
-    //   240: istore_2
-    //   241: ldc 187
-    //   243: aload 8
-    //   245: invokeinterface 163 1 0
-    //   250: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   253: ifeq -71 -> 182
-    //   256: aload 5
-    //   258: astore 6
-    //   260: iload_1
-    //   261: istore_2
-    //   262: aload 5
-    //   264: ifnull -82 -> 182
-    //   267: aload_0
-    //   268: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   271: ifnull +33 -> 304
-    //   274: aload_0
-    //   275: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   278: aload 5
-    //   280: getfield 193	com/tencent/util/Pair:first	Ljava/lang/Object;
-    //   283: checkcast 167	java/lang/String
-    //   286: aload 5
-    //   288: getfield 196	com/tencent/util/Pair:second	Ljava/lang/Object;
-    //   291: checkcast 36	blcq
-    //   294: invokevirtual 199	blbx:a	(Ljava/lang/String;Lblcq;)Z
-    //   297: istore 4
-    //   299: iload 4
-    //   301: ifeq -152 -> 149
-    //   304: aconst_null
-    //   305: astore 6
-    //   307: iload_1
-    //   308: istore_2
-    //   309: goto -127 -> 182
-    //   312: astore 5
-    //   314: aload 5
-    //   316: invokevirtual 200	java/io/IOException:printStackTrace	()V
-    //   319: goto -160 -> 159
-    //   322: astore 6
-    //   324: aconst_null
-    //   325: astore 5
-    //   327: aload 6
-    //   329: invokevirtual 93	java/lang/Exception:printStackTrace	()V
-    //   332: aload 5
-    //   334: ifnull +8 -> 342
-    //   337: aload 5
-    //   339: invokevirtual 178	java/io/InputStream:close	()V
-    //   342: aload_0
-    //   343: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   346: ifnull -173 -> 173
-    //   349: aload_0
-    //   350: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   353: invokevirtual 182	blbx:a	()V
-    //   356: return
-    //   357: astore 5
-    //   359: aload 5
-    //   361: invokevirtual 200	java/io/IOException:printStackTrace	()V
-    //   364: goto -22 -> 342
-    //   367: astore 5
-    //   369: aconst_null
-    //   370: astore 6
-    //   372: aload 6
-    //   374: ifnull +8 -> 382
-    //   377: aload 6
-    //   379: invokevirtual 178	java/io/InputStream:close	()V
-    //   382: aload_0
-    //   383: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   386: ifnull +10 -> 396
-    //   389: aload_0
-    //   390: getfield 16	blbw:jdField_a_of_type_Blbx	Lblbx;
-    //   393: invokevirtual 182	blbx:a	()V
-    //   396: aload 5
-    //   398: athrow
-    //   399: astore 6
-    //   401: aload 6
-    //   403: invokevirtual 200	java/io/IOException:printStackTrace	()V
-    //   406: goto -24 -> 382
-    //   409: astore 5
-    //   411: aload 7
-    //   413: astore 6
-    //   415: goto -43 -> 372
-    //   418: astore 7
-    //   420: aload 5
-    //   422: astore 6
-    //   424: aload 7
-    //   426: astore 5
-    //   428: goto -56 -> 372
-    //   431: astore 6
-    //   433: aload 7
-    //   435: astore 5
-    //   437: goto -110 -> 327
-    //   440: goto -264 -> 176
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	443	0	this	blbw
-    //   97	211	1	i	int
-    //   177	132	2	j	int
-    //   95	138	3	k	int
-    //   297	3	4	bool	boolean
-    //   10	277	5	localObject1	Object
-    //   312	3	5	localIOException1	java.io.IOException
-    //   325	13	5	localObject2	Object
-    //   357	3	5	localIOException2	java.io.IOException
-    //   367	30	5	localObject3	Object
-    //   409	12	5	localObject4	Object
-    //   426	10	5	localObject5	Object
-    //   24	282	6	localObject6	Object
-    //   322	6	6	localException1	Exception
-    //   370	8	6	localObject7	Object
-    //   399	3	6	localIOException3	java.io.IOException
-    //   413	10	6	localObject8	Object
-    //   431	1	6	localException2	Exception
-    //   31	381	7	localObject9	Object
-    //   418	16	7	localObject10	Object
-    //   75	169	8	localXmlPullParser	XmlPullParser
-    // Exception table:
-    //   from	to	target	type
-    //   154	159	312	java/io/IOException
-    //   0	72	322	java/lang/Exception
-    //   337	342	357	java/io/IOException
-    //   0	72	367	finally
-    //   377	382	399	java/io/IOException
-    //   72	96	409	finally
-    //   111	144	409	finally
-    //   182	190	409	finally
-    //   203	221	409	finally
-    //   241	256	409	finally
-    //   267	299	409	finally
-    //   327	332	418	finally
-    //   72	96	431	java/lang/Exception
-    //   111	144	431	java/lang/Exception
-    //   182	190	431	java/lang/Exception
-    //   203	221	431	java/lang/Exception
-    //   241	256	431	java/lang/Exception
-    //   267	299	431	java/lang/Exception
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+  }
+  
+  void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      paramIntent = new byte[i];
+      PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    TianShuReport.UserActionMultiReportRsp localUserActionMultiReportRsp = new TianShuReport.UserActionMultiReportRsp();
+    int i = paramFromServiceMsg.getResultCode();
+    if (i == 1000) {
+      try
+      {
+        localUserActionMultiReportRsp.mergeFrom(paramIntent);
+        i = localUserActionMultiReportRsp.err_code.get();
+        if (i == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TianShuManager", 2, "onReceive ret " + i);
+          }
+          a(localUserActionMultiReportRsp.multi_duration.get());
+          return;
+        }
+        QLog.d("TianShuManager", 2, "onReceive ret " + i);
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.e("TianShuManager", 2, "onReceive exception " + paramIntent);
+        return;
+      }
+    }
+    QLog.e("TianShuManager", 2, "onReceive result fail with result " + i);
+  }
+  
+  public void a(blbx paramblbx)
+  {
+    if (paramblbx == null) {
+      return;
+    }
+    b(paramblbx);
+  }
+  
+  public void a(TianShuAccess.AdItem paramAdItem)
+  {
+    if (paramAdItem == null) {}
+    String str;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+      {
+        QLog.e("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache is null");
+        return;
+      }
+      str = String.valueOf(paramAdItem.iAdId.get());
+      paramAdItem = paramAdItem.traceinfo.get();
+    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramAdItem)));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramAdItem);
+    QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramAdItem);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    String str;
+    do
+    {
+      return;
+      str = anxs.a(paramString);
+    } while (TextUtils.isEmpty(str));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString);
+    QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramString);
+  }
+  
+  public void a(List<blbu> paramList, blbv paramblbv)
+  {
+    if ((paramList == null) || (paramList.size() <= 0) || (paramblbv == null)) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), new WeakReference(paramblbv));
+    paramblbv = BaseApplicationImpl.getApplication().getRuntime();
+    TianShuAccess.GetAdsReq localGetAdsReq = new TianShuAccess.GetAdsReq();
+    localGetAdsReq.stComminfo.set(a());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      blbu localblbu = (blbu)paramList.next();
+      localGetAdsReq.lstPos.add(a(localblbu));
+    }
+    paramList = new NewIntent(paramblbv.getApplication(), blby.class);
+    paramList.putExtra("data", bgau.a(localGetAdsReq.toByteArray()));
+    paramList.putExtra("cmd", "TianShu.GetAds");
+    paramList.putExtra("requestKey", l);
+    paramblbv.startServlet(paramList);
+  }
+  
+  void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    byte[] arrayOfByte = null;
+    if (paramIntent != null)
+    {
+      long l = paramIntent.getLongExtra("requestKey", -1L);
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l)) != null)
+      {
+        paramIntent = (blbv)((WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l))).get();
+        if (paramIntent != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l));
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramFromServiceMsg.isSuccess())
+      {
+        i = paramFromServiceMsg.getWupBuffer().length - 4;
+        arrayOfByte = new byte[i];
+        PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      }
+      TianShuAccess.GetAdsRsp localGetAdsRsp = new TianShuAccess.GetAdsRsp();
+      int i = paramFromServiceMsg.getResultCode();
+      if (i == 1000)
+      {
+        try
+        {
+          localGetAdsRsp.mergeFrom(arrayOfByte);
+          i = localGetAdsRsp.code.get();
+          if (i != 0) {
+            break label247;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TianShuManager", 2, "onReceive success " + i);
+          }
+          if (paramIntent != null)
+          {
+            paramIntent.onGetAdvs(true, localGetAdsRsp);
+            return;
+          }
+          QLog.e("TianShuManager", 1, "callback == null");
+          return;
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          QLog.e("TianShuManager", 2, "onReceive exception " + paramFromServiceMsg);
+          if (paramIntent == null) {
+            return;
+          }
+        }
+        paramIntent.onGetAdvs(false, localGetAdsRsp);
+        return;
+        label247:
+        QLog.d("TianShuManager", 2, "onReceive ret " + i);
+        if (paramIntent == null) {
+          return;
+        }
+        paramIntent.onGetAdvs(false, localGetAdsRsp);
+        return;
+      }
+      QLog.e("TianShuManager", 2, "onReceive result fail with result " + i);
+      if (paramIntent == null) {
+        return;
+      }
+      paramIntent.onGetAdvs(false, localGetAdsRsp);
+      return;
+      paramIntent = null;
+      break;
+      paramIntent = null;
+    }
   }
 }
 

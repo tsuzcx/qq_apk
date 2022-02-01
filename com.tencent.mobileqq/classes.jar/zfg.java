@@ -1,53 +1,19 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-public abstract class zfg<PACKAGE extends zex>
-  extends BaseAdapter
+class zfg
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoReplyRsp>
 {
-  public int a;
-  protected Context a;
-  protected PACKAGE a;
-  protected zez a;
+  zfg(zfb paramzfb, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public zfg(Context paramContext)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(PACKAGE paramPACKAGE)
-  {
-    this.jdField_a_of_type_Zex = paramPACKAGE;
-  }
-  
-  public void a(zez paramzez)
-  {
-    this.jdField_a_of_type_Zez = paramzez;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Zex == null) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_Zex.b();
-    int j = this.jdField_a_of_type_Zex.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    vli.a().dispatch(this.jdField_a_of_type_Zfb.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Zfb.hashCode()) }));
   }
 }
 

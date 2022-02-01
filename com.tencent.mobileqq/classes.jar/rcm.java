@@ -1,28 +1,8 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import java.net.URL;
 
-public class rcm
-  implements Comparator<Object>
+public abstract interface rcm
 {
-  private Spanned a;
-  
-  public rcm(Spanned paramSpanned)
-  {
-    this.a = paramSpanned;
-  }
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i > j) {
-      return 1;
-    }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract URL a(URL paramURL);
 }
 
 

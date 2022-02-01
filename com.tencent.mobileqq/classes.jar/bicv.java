@@ -1,40 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
 
 public class bicv
+  extends bidj
 {
-  public static String a(MessageRecord paramMessageRecord)
+  bicw jdField_a_of_type_Bicw;
+  
+  public bicv(bicl parambicl, Activity paramActivity, bicw parambicw)
   {
-    String str2 = "";
-    String str1 = str2;
-    try
+    super(paramActivity);
+    this.jdField_a_of_type_Bicw = parambicw;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    a();
+    if (paramBoolean.booleanValue())
     {
-      Object localObject = paramMessageRecord.extStr;
-      paramMessageRecord = str2;
-      str1 = str2;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      if (bidi.a())
       {
-        str1 = str2;
-        localObject = new JSONObject((String)localObject);
-        str1 = str2;
-        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
-        paramMessageRecord = str2;
-        str1 = str2;
-        if (TextUtils.isEmpty(str2))
+        this.jdField_a_of_type_Bicl.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Bicl.jdField_b_of_type_Boolean = false;
+        long l = -1L;
+        switch (this.jdField_a_of_type_Bicw.jdField_a_of_type_Int)
         {
-          str1 = str2;
-          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
+        case 1: 
+        default: 
+          l = this.jdField_a_of_type_Bicl.a(this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bicw.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bicw.jdField_b_of_type_Boolean);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Bicl.jdField_a_of_type_Long = l;
+          this.jdField_a_of_type_Bicl.jdField_b_of_type_Long = System.currentTimeMillis();
+          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle != null))
+          {
+            paramBoolean = bias.a(this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle.getString(bibw.i), "NEWYYB");
+            bias.a("311", paramBoolean, this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle.getString(bibw.b));
+            Context localContext = bhpc.a().a();
+            if (localContext != null) {
+              bias.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle.getString(bibw.b));
+            }
+          }
+          if ((this.jdField_a_of_type_Bicl.jdField_a_of_type_Bicz != null) && (this.jdField_a_of_type_Bicl.jdField_a_of_type_Bicz.isShowing())) {
+            this.jdField_a_of_type_Bicl.jdField_a_of_type_Bicz.dismiss();
+          }
+          return;
+          this.jdField_a_of_type_Bicl.e = true;
+          if (this.jdField_a_of_type_Bicl.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+          {
+            l = this.jdField_a_of_type_Bicl.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Bicl.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+          }
+          else
+          {
+            bhzm.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
+            continue;
+            l = this.jdField_a_of_type_Bicl.b(this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bicw.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bicw.jdField_b_of_type_Boolean);
+            continue;
+            l = this.jdField_a_of_type_Bicl.b(this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle);
+          }
         }
       }
-      return paramMessageRecord;
+      if (this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+        this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+      }
+      this.jdField_a_of_type_Bicl.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      return;
     }
-    catch (Throwable paramMessageRecord)
-    {
-      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
+    if (this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
     }
-    return str1;
+    this.jdField_a_of_type_Bicl.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+  }
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+    if (this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    }
   }
 }
 

@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="40" android:drawable="@drawable/eeh" />
-    <item android:duration="40" android:drawable="@drawable/eei" />
-    <item android:duration="40" android:drawable="@drawable/eej" />
-    <item android:duration="40" android:drawable="@drawable/eek" />
-    <item android:duration="40" android:drawable="@drawable/eel" />
-    <item android:duration="40" android:drawable="@drawable/eem" />
-    <item android:duration="40" android:drawable="@drawable/een" />
-    <item android:duration="40" android:drawable="@drawable/eeo" />
-    <item android:duration="40" android:drawable="@drawable/eep" />
-    <item android:duration="40" android:drawable="@drawable/eeq" />
-    <item android:duration="40" android:drawable="@drawable/eer" />
-    <item android:duration="40" android:drawable="@drawable/ees" />
-    <item android:duration="40" android:drawable="@drawable/eet" />
-</animation-list>
+    <gradient android:startColor="#ff7a46ff" android:endColor="#ff7a46ff" android:angle="0.0" android:centerColor="#ff7a46ff" />
+    <corners android:radius="14.0dip" />
+</shape>

@@ -1,6 +1,22 @@
-public abstract interface uwn
+import UserGrowth.stGetPersonalFeedListReq;
+import UserGrowth.stGetPersonalFeedListRsp;
+import java.util.ArrayList;
+
+public class uwn
+  extends urg<stGetPersonalFeedListRsp>
 {
-  public abstract void a(int paramInt);
+  public uwn(String paramString1, String paramString2, boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
+  {
+    super("GetPersonalFeedList", paramInt);
+    stGetPersonalFeedListReq localstGetPersonalFeedListReq = new stGetPersonalFeedListReq();
+    localstGetPersonalFeedListReq.personId = paramString1;
+    localstGetPersonalFeedListReq.attach_info = paramString2;
+    localstGetPersonalFeedListReq.isFirst = paramBoolean;
+    localstGetPersonalFeedListReq.context_feedids = paramArrayList;
+    localstGetPersonalFeedListReq.scene = paramInt;
+    this.a = localstGetPersonalFeedListReq;
+    uya.d("PersonalFeedListRequest", "stSimpleGetFeedListReq  = " + localstGetPersonalFeedListReq.toString());
+  }
 }
 
 

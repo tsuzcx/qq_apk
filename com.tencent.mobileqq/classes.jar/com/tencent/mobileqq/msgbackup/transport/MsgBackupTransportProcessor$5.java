@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import axjd;
+import avwk;
 
 public class MsgBackupTransportProcessor$5
   implements Runnable
 {
-  public MsgBackupTransportProcessor$5(axjd paramaxjd) {}
+  public MsgBackupTransportProcessor$5(avwk paramavwk) {}
   
   public void run()
   {
-    axjd.a(this.this$0);
+    avwk.a(this.this$0);
   }
 }
 

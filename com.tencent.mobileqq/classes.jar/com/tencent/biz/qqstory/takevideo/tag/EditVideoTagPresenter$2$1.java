@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import zle;
-import zlg;
+import yme;
+import ymg;
 
 public class EditVideoTagPresenter$2$1
   implements Runnable
 {
-  public EditVideoTagPresenter$2$1(zlg paramzlg) {}
+  public EditVideoTagPresenter$2$1(ymg paramymg) {}
   
   public void run()
   {
-    zle.a(zle.a(this.a.a), zle.a(this.a.a));
+    yme.a(yme.a(this.a.a), yme.a(this.a.a));
   }
 }
 

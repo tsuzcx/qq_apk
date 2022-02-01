@@ -1,19 +1,6 @@
-import mqq.app.QQPermissionCallback;
-
-class aiom
-  implements QQPermissionCallback
+public abstract interface aiom
 {
-  aiom(ainh paramainh) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhlq.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ainh.j(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,34 +1,86 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.graphics.Color;
+import android.text.TextUtils;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-public final class bclu
-  extends ThreadPoolExecutor
+public class bclu
+  extends bcgy
 {
-  public bclu(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
+  String as;
+  
+  public bclu()
   {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
+    this(null);
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public bclu(String paramString)
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
+    super(paramString, "remark");
+  }
+  
+  public String a()
+  {
+    return "Remark";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.as = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.as == null) {}
+    for (String str = "";; str = this.as)
     {
-      ((FutureTask)paramRunnable).get();
+      paramObjectOutput.writeUTF(str);
       return;
     }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    super.a(paramXmlSerializer);
+    if (!TextUtils.isEmpty(this.as)) {
+      paramXmlSerializer.attribute(null, "url", this.as);
     }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    if (parambcin == null) {
+      return true;
+    }
+    this.as = parambcin.a("bgColor");
+    return super.a(parambcin);
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public int c()
+  {
+    return 2131379799;
+  }
+  
+  public int e()
+  {
+    return Color.rgb(128, 128, 128);
+  }
+  
+  public int f()
+  {
+    return 24;
+  }
+  
+  public String g()
+  {
+    return this.as;
   }
 }
 

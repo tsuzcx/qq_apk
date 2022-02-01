@@ -1,25 +1,46 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
 
 class abwb
+  extends nmf
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<abwc> b;
-  
-  public abwb(abvz paramabvz, View paramView, abwc paramabwc)
+  abwb(abwa paramabwa, boolean paramBoolean, bdyi parambdyi, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramabwc);
+    super(paramBoolean);
   }
   
-  public abwc a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return (abwc)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = new oidb_cmd0x6ef.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
+        {
+          this.jdField_a_of_type_Bdyi.a.a(21, this.jdField_a_of_type_Long, this.b);
+          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = besd.a(this.jdField_a_of_type_Abwa.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdyi, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+            this.jdField_a_of_type_JavaUtilMap.put(abwz.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
 }
 

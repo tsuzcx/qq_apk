@@ -1,28 +1,25 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aiaz
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  aiaz(aiay paramaiay, String paramString) {}
+  aiaz(aiay paramaiay) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
-    }
-    aiay.a(this.jdField_a_of_type_Aiay).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.c, this.a.a.a, "", "");
+    Intent localIntent = new Intent(this.a.a.getActivity(), SearchContactsActivity.class);
+    localIntent.putExtra("from_key", 1);
+    localIntent.putExtra("fromType", 13);
+    this.a.a.getActivity().startActivity(localIntent);
+    this.a.a.getActivity().overridePendingTransition(0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

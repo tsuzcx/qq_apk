@@ -1,10 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+
 public class soy
+  extends ThreadLocal<Boolean>
 {
-  public float a;
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public soy(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  
+  protected Boolean a()
+  {
+    return Boolean.valueOf(false);
+  }
 }
 
 

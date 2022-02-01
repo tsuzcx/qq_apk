@@ -1,47 +1,89 @@
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class apam
-  extends aoxh
+  extends apap
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[3];
+  private float[] g = new float[3];
+  private float[] h = new float[16];
+  private float[] i = new float[3];
+  
+  public apam(Context paramContext, int paramInt, SensorManager paramSensorManager, apah paramapah)
   {
-    paramQQAppInterface = new apal(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wsgzh";
-    paramQQAppInterface.c = "miniapp_player";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    super(paramContext, paramInt, paramSensorManager, paramapah);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    paramSensorManager = paramSensorManager.getDefaultSensor(2);
+    if ((paramContext != null) && (paramSensorManager != null))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager);
+      return;
     }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
+    throw new OrientationProviderNotFound("1,2");
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.jdField_a_of_type_Apah == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 2.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Apah.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 2.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Apah.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 2.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Apah.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Apah.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 2)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.d, 0, 3);
+      apai.a(this.d, this.g);
+      System.arraycopy(this.d, 0, this.g, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
+    }
     for (;;)
     {
-      if (i < paramContext.length)
+      if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
       {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {}
-        try
-        {
-          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-          i += 1;
+        SensorManager.getOrientation(this.h, this.i);
+        if (this.jdField_a_of_type_Int == 1) {
+          break;
         }
-        catch (Exception paramaoxk)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("WeishiPublicAccountVideoParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramaoxk);
-            }
-          }
-        }
+        super.a(this.h);
+      }
+      return;
+      if (paramSensorEvent.sensor.getType() == 1)
+      {
+        System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
+        apai.a(this.e, this.f);
+        System.arraycopy(this.e, 0, this.f, 0, 3);
       }
     }
-    return paramQQAppInterface;
+    a((float)(Math.toDegrees(this.i[0] + a()) + 360.0D) % 360.0F, (float)(this.i[1] * 180.0F / 3.141592653589793D), (float)(this.i[2] * 180.0F / 3.141592653589793D));
   }
 }
 

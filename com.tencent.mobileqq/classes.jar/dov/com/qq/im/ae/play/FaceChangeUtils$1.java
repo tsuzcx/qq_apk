@@ -1,14 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import boyv;
-import boyy;
+import android.graphics.Bitmap;
 
-public final class FaceChangeUtils$1
+final class FaceChangeUtils$1
   implements Runnable
 {
+  FaceChangeUtils$1(FaceChangeUtils.ChangeFaceSingleCallback paramChangeFaceSingleCallback, Bitmap paramBitmap, String paramString) {}
+  
   public void run()
   {
-    this.jdField_a_of_type_Boyy.a(boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+    this.val$callback.onResult(FaceChangeUtils.access$100(this.val$userFace, this.val$materialDir));
   }
 }
 

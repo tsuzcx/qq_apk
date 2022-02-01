@@ -1,42 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.util.WeakReference;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.data.AppShareID;
+import mqq.os.MqqHandler;
 
-class ajbz
-  extends anyu
+public class ajbz
+  extends ampv
 {
-  ajbz(ajby paramajby) {}
+  public ajbz(Conversation paramConversation) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  protected void onGetAppShareInfo(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    ajby.a(this.a).removeMessages(1);
-    if ((this.a.jdField_a_of_type_Bjbs == null) || (!this.a.jdField_a_of_type_Bjbs.isShowing())) {
-      QLog.e("SeparateForward", 1, new Object[] { "onGetFriendNickBatch timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.a.a(0L);
     }
-    for (;;)
+  }
+  
+  protected void onGetRealNameStatus(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  {
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      return;
-      this.a.jdField_a_of_type_Bjbs.dismiss();
-      axpf.a().b.clear();
-      if ((paramBoolean) && (paramObject != null)) {
-        axpf.a().b.putAll((Map)paramObject);
-      }
-      if (axpf.a().b.size() == 0)
-      {
-        BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-        if (localBaseActivity != null) {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697755, 0).b(localBaseActivity.getTitleBarHeight());
-        }
-      }
-      while (QLog.isDevelopLevel())
-      {
-        QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
-        return;
-        this.a.a((Map)paramObject, axpf.a().a);
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      if (!this.a.h) {
+        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
       }
     }
   }

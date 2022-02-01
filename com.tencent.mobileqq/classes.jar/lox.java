@@ -1,68 +1,157 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.graphics.PointF;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import java.nio.ByteBuffer;
+import java.util.List;
 
 public class lox
-  extends low
 {
-  public lox(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public int a;
+  public List<PointF> a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public float[] a;
+  public int b;
+  public short b;
+  public byte[] b;
+  public int c;
+  public byte[] c;
+  
+  public lox()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_ArrayOfByte = null;
   }
   
-  public void a(String paramString)
+  private byte[] a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (!TextUtils.isEmpty(paramString))
+    PointF localPointF = null;
+    Object localObject = localPointF;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      if (i < j)
+      localObject = localPointF;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        Object localObject = paramString[i];
-        if (localObject == null) {}
-        for (;;)
+        localObject = localPointF;
+        if (paramInt1 != 0)
         {
-          i += 1;
-          break;
-          int k = localObject.indexOf('=');
-          if ((k > 0) && (k < localObject.length()))
+          localObject = localPointF;
+          if (paramInt2 != 0)
           {
-            String str;
-            float f;
-            try
+            localObject = localPointF;
+            if (paramFloat > 0.0001D)
             {
-              str = localObject.substring(0, k);
-              f = Float.parseFloat(localObject.substring(k + 1));
-              if (!"MemoryLimit".equalsIgnoreCase(str)) {
-                break label118;
+              float f = 240.0F / (paramInt1 * paramFloat);
+              paramFloat = 320.0F / (paramInt2 * paramFloat);
+              lba.f("FaceData", "getFaceFeature:" + paramInt1 + "|" + paramInt2 + "|" + f);
+              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 4);
+              paramInt1 = 0;
+              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+              {
+                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+                short s1 = (short)(int)(localPointF.x * f);
+                short s2 = (short)(int)(localPointF.y * paramFloat);
+                ((ByteBuffer)localObject).putShort(s1);
+                ((ByteBuffer)localObject).putShort(s2);
+                paramInt1 += 1;
               }
-              this.jdField_b_of_type_Float = f;
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-            }
-            continue;
-            label118:
-            if ("CpuNumLimit".equalsIgnoreCase(str)) {
-              this.jdField_b_of_type_Int = ((int)f);
-            } else if ("CpuFreqLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Float = f;
-            } else if ("APILevelLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Int = ((int)f);
+              localObject = ((ByteBuffer)localObject).array();
             }
           }
         }
       }
     }
+    return localObject;
   }
   
-  public boolean a(@NonNull low paramlow)
+  private byte[] b(int paramInt1, int paramInt2, float paramFloat)
   {
-    return (this.jdField_a_of_type_Int <= paramlow.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int <= paramlow.jdField_b_of_type_Int) && (this.jdField_a_of_type_Float <= paramlow.jdField_a_of_type_Float) && (this.jdField_b_of_type_Float <= paramlow.jdField_b_of_type_Float);
+    PointF localPointF = null;
+    Object localObject = localPointF;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject = localPointF;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        localObject = localPointF;
+        if (paramInt1 != 0)
+        {
+          localObject = localPointF;
+          if (paramInt2 != 0)
+          {
+            localObject = localPointF;
+            if (paramFloat > 0.0001D)
+            {
+              float f = 2.4E+008F / (paramInt1 * paramFloat);
+              paramFloat = 3.2E+008F / (paramInt2 * paramFloat);
+              lba.f("FaceData", "getFaceFeature2:" + paramInt1 + "|" + paramInt2 + "|" + f);
+              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 8);
+              paramInt1 = 0;
+              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+              {
+                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+                paramInt2 = (int)(localPointF.x * f);
+                int i = (int)(localPointF.y * paramFloat);
+                ((ByteBuffer)localObject).putInt(paramInt2);
+                ((ByteBuffer)localObject).putInt(i);
+                paramInt1 += 1;
+              }
+              localObject = ((ByteBuffer)localObject).array();
+            }
+          }
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(PTFaceAttr paramPTFaceAttr, float paramFloat, boolean paramBoolean)
+  {
+    if (paramPTFaceAttr != null)
+    {
+      this.jdField_a_of_type_Int = paramPTFaceAttr.getFaceCount();
+      if ((this.jdField_a_of_type_Int > 0) && (paramPTFaceAttr != null))
+      {
+        if (paramBoolean) {
+          break label104;
+        }
+        this.jdField_a_of_type_JavaUtilList = ((List)paramPTFaceAttr.getAllFacePoints().get(0));
+        this.jdField_a_of_type_ArrayOfFloat = ((float[])paramPTFaceAttr.getAllFaceAngles().get(0));
+        this.jdField_a_of_type_ArrayOfByte = a(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
+        this.jdField_b_of_type_ArrayOfByte = b(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
+      }
+    }
+    label104:
+    do
+    {
+      return;
+      this.jdField_a_of_type_Int = 0;
+      break;
+      paramPTFaceAttr = paramPTFaceAttr.genOrigFaceData();
+    } while (paramPTFaceAttr == null);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramPTFaceAttr.getBytes().length + 4);
+    this.jdField_a_of_type_Short = ((short)(int)(this.jdField_c_of_type_Int * paramFloat));
+    this.jdField_b_of_type_Short = ((short)(int)(this.jdField_b_of_type_Int * paramFloat));
+    localByteBuffer.put(new byte[] { (byte)(this.jdField_b_of_type_Short >> 8), (byte)(this.jdField_b_of_type_Short >> 0), (byte)(this.jdField_a_of_type_Short >> 8), (byte)(this.jdField_a_of_type_Short >> 0) });
+    localByteBuffer.put(paramPTFaceAttr.getBytes());
+    this.jdField_c_of_type_ArrayOfByte = localByteBuffer.array();
   }
 }
 

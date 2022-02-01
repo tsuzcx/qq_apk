@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aguj
-  implements agvc
+  implements agut
 {
-  public void a(int paramInt) {}
-  
-  public int[] a()
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    return new int[7];
+    paramagap.a(paramagcc.b, paramString);
   }
 }
 

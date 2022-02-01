@@ -1,30 +1,42 @@
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.view.AioMiniProfileLabelFlowLayout;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.vas.avatar.AvatarLayout;
+import com.tencent.mobileqq.widget.RoundCorneredRelativeLayout;
+
 public class agre
-  extends agrm
+  extends aexg
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  public agre(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof agre));
-      paramObject = (agre)paramObject;
-    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
-    return true;
-  }
+  private alhi jdField_a_of_type_Alhi;
+  private alkt jdField_a_of_type_Alkt;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private GridView jdField_a_of_type_AndroidWidgetGridView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private AioMiniProfileLabelFlowLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemViewAioMiniProfileLabelFlowLayout;
+  private DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
+  private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
+  private RoundCorneredRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetRoundCorneredRelativeLayout;
+  public String a;
+  public boolean a;
+  private View jdField_b_of_type_AndroidViewView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private View jdField_c_of_type_AndroidViewView;
+  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private View jdField_d_of_type_AndroidViewView;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View jdField_e_of_type_AndroidViewView;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private TextView f;
+  private TextView g;
+  private TextView h;
 }
 
 

@@ -1,11 +1,6 @@
-import android.view.animation.Animation;
-
-class azto
-  extends blgm
+public abstract interface azto
 {
-  azto(azti paramazti) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public abstract void a();
 }
 
 

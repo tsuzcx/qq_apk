@@ -1,6 +1,17 @@
-public abstract interface bmyz
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
+
+public class bmyz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public bmyz(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c();
+  }
 }
 
 

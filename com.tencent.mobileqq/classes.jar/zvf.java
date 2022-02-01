@@ -1,34 +1,62 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
-final class zvf
-  extends AnimatorListenerAdapter
+public class zvf
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  protected Context a;
+  protected Drawable a;
+  protected View a;
+  protected WindowManager a;
+  protected PopupWindow a;
   
-  zvf(View paramView, int paramInt)
+  public zvf(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new zvg(this));
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new IllegalStateException("setContentView was not called with a view to display.");
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      return;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+  }
+  
+  public void b(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
   }
 }
 

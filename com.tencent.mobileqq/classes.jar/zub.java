@@ -1,29 +1,36 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import java.io.PrintStream;
 
 public class zub
-  extends QQUIEventReceiver<StoryUserBadgeView, xap>
+  implements InputFilter
 {
-  public zub(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
+  protected int a;
+  
+  public zub(TroopGiftPanel paramTroopGiftPanel, int paramInt)
   {
-    super(paramStoryUserBadgeView);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull xap paramxap)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (paramxap.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    while (paramxap.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
-      return;
+    System.out.println("filter() source = " + paramCharSequence + ", dest = " + paramSpanned + ", start = " + paramInt1 + ", dstart = " + paramInt3 + ", dend = " + paramInt4);
+    if (paramCharSequence.length() != 1) {
+      return "";
     }
-    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xap.class;
+    paramInt1 = paramCharSequence.charAt(0);
+    if ((paramInt1 < 48) || (paramInt1 > 57)) {
+      return "";
+    }
+    if ((paramInt3 == 0) && (paramInt1 == 48)) {
+      return "";
+    }
+    if ((this.jdField_a_of_type_Int > 0) && (paramSpanned.length() >= this.jdField_a_of_type_Int)) {
+      return "";
+    }
+    return null;
   }
 }
 

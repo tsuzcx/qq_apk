@@ -34,7 +34,7 @@ class PtvTemplateManager$1
     //   43: aload_3
     //   44: astore_2
     //   45: aload_3
-    //   46: invokestatic 61	noe:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   46: invokestatic 61	npn:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   49: astore 5
     //   51: aload 5
     //   53: astore_1
@@ -268,7 +268,7 @@ class PtvTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

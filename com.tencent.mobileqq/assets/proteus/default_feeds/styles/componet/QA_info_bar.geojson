@@ -16,7 +16,7 @@
         {
             "view_type":"UILabel",
             "view_id":"id_QA_info_bar_left_view",
-            "margin_left": "6",
+            "margin_left": "16",
             "height":{
                 "type":"relative",
                 "value":"36"

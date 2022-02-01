@@ -1,34 +1,33 @@
 package cooperation.qzone.webviewplugin;
 
-import bnma;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import nnr;
 
-public class QZoneDNSAnalyzeJsPlugin$2
+class QZoneDNSAnalyzeJsPlugin$2
   implements Runnable
 {
-  public QZoneDNSAnalyzeJsPlugin$2(bnma parambnma, int paramInt) {}
+  QZoneDNSAnalyzeJsPlugin$2(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, int paramInt) {}
   
   public void run()
   {
-    int i = nnr.a();
+    int i = HttpUtil.getNetWorkType();
     if ((i != 0) && (i != -1)) {
       try
       {
         String str = InetAddress.getByName("h5.qzone.qq.com").getHostAddress();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.a + ", Analyze h5.qzone.qq.com ip address : " + str);
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.val$errorCode + ", Analyze h5.qzone.qq.com ip address : " + str);
         return;
       }
       catch (UnknownHostException localUnknownHostException)
       {
         localUnknownHostException.printStackTrace();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.a + ", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.val$errorCode + ", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
         return;
       }
     }
-    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.a + ", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
+    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.val$errorCode + ", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
   }
 }
 

@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
-
-public class afkz
-  implements DialogInterface.OnClickListener
+public abstract interface afkz
 {
-  public afkz(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a(this.a.a);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

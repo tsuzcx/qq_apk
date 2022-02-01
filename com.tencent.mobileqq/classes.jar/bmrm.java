@@ -1,25 +1,92 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class bmrm
-  implements View.OnClickListener
+public abstract class bmrm
 {
-  bmrm(bmrk parambmrk) {}
+  public int a;
+  protected SegmentKeeper a;
+  public Object a;
+  public ArrayList<bmrn> a;
+  public int b;
+  protected int c;
   
-  public void onClick(View paramView)
+  public bmrm(Object paramObject)
   {
-    if (bmrk.a(this.a))
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public abstract float a();
+  
+  public abstract int a();
+  
+  public abstract int a(Activity paramActivity, int paramInt);
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_JavaLangObject.hashCode());
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (bmrk.b(this.a)) {
-        this.a.dismiss();
-      }
-      if (bmrk.b(this.a) != null) {
-        bmrk.b(this.a).onClick(paramView);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bmrn)localIterator.next()).a(this);
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bmrn)localIterator.next()).a(this, paramInt);
+      }
+    }
+  }
+  
+  public abstract void a(Activity paramActivity, int paramInt);
+  
+  public void a(bmrn parambmrn)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambmrn)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambmrn);
+      }
+      return;
+    }
+  }
+  
+  public void a(SegmentKeeper paramSegmentKeeper)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = paramSegmentKeeper;
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bmrn)localIterator.next()).b(this);
+      }
+    }
+  }
+  
+  public void b(Activity paramActivity, int paramInt) {}
 }
 
 

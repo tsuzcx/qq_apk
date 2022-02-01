@@ -6,8 +6,8 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.g;
 import com.tencent.mobileqq.msf.core.a.g.a;
 import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.ap;
-import com.tencent.mobileqq.msf.core.ap.f;
+import com.tencent.mobileqq.msf.core.aq;
+import com.tencent.mobileqq.msf.core.aq.f;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.net.x;
 import com.tencent.mobileqq.msf.core.quicksend.f;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 
 public class a
   extends c
-  implements ap.f
+  implements aq.f
 {
   public static final boolean a = ;
   public static boolean b = false;
@@ -33,10 +33,10 @@ public class a
   {
     if (a)
     {
-      if (ap.a().b() != null)
+      if (aq.a().b() != null)
       {
-        ap.a().a(this);
-        QLog.i("ConnQualityStat", 1, ap.a().b().toString());
+        aq.a().a(this);
+        QLog.i("ConnQualityStat", 1, aq.a().b().toString());
       }
       return;
     }
@@ -50,7 +50,7 @@ public class a
   
   public static boolean b()
   {
-    return (a) && (ap.a().c());
+    return (a) && (aq.a().c());
   }
   
   public void a(int paramInt) {}
@@ -60,7 +60,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramInt, paramLong, paramx);
+      aq.a().a(paramInt, paramLong, paramx);
       a.c.a().a(false);
       return;
     }
@@ -78,7 +78,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramLong1, paramLong2);
+      aq.a().a(paramLong1, paramLong2);
       return;
     }
     catch (Exception localException)
@@ -92,7 +92,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(parama);
+      aq.a().a(parama);
       a.c.a().a(false);
       return;
     }
@@ -110,7 +110,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramToServiceMsg);
+      aq.a().a(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -124,7 +124,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramToServiceMsg, paramFromServiceMsg);
+      aq.a().a(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -138,7 +138,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+      aq.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -169,7 +169,7 @@ public class a
       {
         try
         {
-          ap.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
+          aq.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
           return;
         }
         finally {}
@@ -190,7 +190,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramToServiceMsg, paramBoolean);
+      aq.a().a(paramToServiceMsg, paramBoolean);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -205,7 +205,7 @@ public class a
     try
     {
       if (NetConnInfoCenter.isWifiConn()) {
-        ap.a().a(paramSocket, paramInt2);
+        aq.a().a(paramSocket, paramInt2);
       }
       for (;;)
       {
@@ -224,7 +224,7 @@ public class a
           MsfService.serviceInitStart = 0L;
         }
         return;
-        ap.a().b(paramSocket, paramInt2);
+        aq.a().b(paramSocket, paramInt2);
       }
     }
     catch (Exception paramSocket)
@@ -241,7 +241,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().a(paramBoolean);
+      aq.a().a(paramBoolean);
       if (paramBoolean)
       {
         long l = SystemClock.uptimeMillis();
@@ -274,7 +274,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().b(paramToServiceMsg);
+      aq.a().b(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -286,7 +286,7 @@ public class a
   public void c()
   {
     if (a) {
-      ap.a().d();
+      aq.a().d();
     }
     a.c.a().a(false);
   }
@@ -296,7 +296,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().c(paramToServiceMsg);
+      aq.a().c(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -310,7 +310,7 @@ public class a
     if (a) {}
     try
     {
-      ap.a().e();
+      aq.a().e();
       return;
     }
     catch (Exception localException)

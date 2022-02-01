@@ -1,32 +1,10 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
+import java.util.ArrayList;
 
 public class bfdk
-  implements ISPlayerVideoView.IVideoViewCallBack
 {
-  public bfdk(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onSurfaceChanged(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceChanged");
-    }
-  }
-  
-  public void onSurfaceCreated(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
-    }
-  }
-  
-  public void onSurfaceDestroy(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
-  }
+  public int a;
+  public ArrayList<bfdl> a;
+  public ArrayList<bfdl> b;
 }
 
 

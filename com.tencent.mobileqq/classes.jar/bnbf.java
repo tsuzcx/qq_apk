@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
-
-public final class bnbf
-  implements Parcelable.Creator<BroadcastUrl>
+public class bnbf
 {
-  public BroadcastUrl a(Parcel paramParcel)
-  {
-    return new BroadcastUrl(paramParcel);
-  }
-  
-  public BroadcastUrl[] a(int paramInt)
-  {
-    return new BroadcastUrl[paramInt];
-  }
+  public int a;
+  public boolean a;
+  public int b = 20;
+  public boolean b;
+  public int c = 500;
 }
 
 

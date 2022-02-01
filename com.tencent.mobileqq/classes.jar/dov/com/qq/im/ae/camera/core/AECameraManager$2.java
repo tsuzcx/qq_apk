@@ -1,15 +1,13 @@
 package dov.com.qq.im.ae.camera.core;
 
-import boiw;
-
-public class AECameraManager$2
+class AECameraManager$2
   implements Runnable
 {
-  public AECameraManager$2(boiw paramboiw, boolean paramBoolean) {}
+  AECameraManager$2(AECameraManager paramAECameraManager, boolean paramBoolean) {}
   
   public void run()
   {
-    boiw.a(this.this$0, this.a);
+    AECameraManager.access$100(this.this$0, this.val$forceStop);
   }
 }
 

@@ -33,7 +33,7 @@ class GroupPlugin$MyActivityResultListener
           ResultRecord localResultRecord = (ResultRecord)paramIntent.get(paramInt1);
           try
           {
-            ((JSONArray)localObject).put(new JSONObject().put("uin", localResultRecord.a).put("name", localResultRecord.b));
+            ((JSONArray)localObject).put(new JSONObject().put("uin", localResultRecord.uin).put("name", localResultRecord.name));
             paramInt1 += 1;
           }
           catch (JSONException localJSONException2)

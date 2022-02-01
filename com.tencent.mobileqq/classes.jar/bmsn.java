@@ -1,29 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.CellInfo;
+import dov.com.qq.im.capture.data.QIMBeautyItem;
 
 public final class bmsn
-  implements Parcelable.Creator<LbsDataV2.CellInfo>
+  implements Parcelable.Creator<QIMBeautyItem>
 {
-  public LbsDataV2.CellInfo a(Parcel paramParcel)
+  public QIMBeautyItem a(Parcel paramParcel)
   {
-    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
-    if (paramParcel != null)
-    {
-      localCellInfo.mcc = paramParcel.readInt();
-      localCellInfo.mnc = paramParcel.readInt();
-      localCellInfo.lac = paramParcel.readInt();
-      localCellInfo.cellId = paramParcel.readInt();
-      localCellInfo.rssi = paramParcel.readInt();
-      localCellInfo.stationLat = paramParcel.readDouble();
-      localCellInfo.stationLon = paramParcel.readDouble();
-    }
-    return localCellInfo;
+    return new QIMBeautyItem(paramParcel);
   }
   
-  public LbsDataV2.CellInfo[] a(int paramInt)
+  public QIMBeautyItem[] a(int paramInt)
   {
-    return null;
+    return new QIMBeautyItem[paramInt];
   }
 }
 

@@ -1,18 +1,38 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.SeekBar;
 
-public class ball
-  extends balj
+class ball
+  implements View.OnTouchListener
 {
-  public ball(LSRecordPanel paramLSRecordPanel) {}
+  ball(balk parambalk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
+    float f1 = 0.0F;
+    paramView = new Rect();
+    this.a.a.getHitRect(paramView);
+    if ((paramMotionEvent.getY() >= paramView.top - 600) && (paramMotionEvent.getY() <= paramView.bottom + 600)) {}
+    for (int i = 1; i == 0; i = 0) {
+      return false;
     }
-    this.a.c = null;
+    float f3 = paramView.top + (paramView.height() >> 1);
+    float f2 = paramMotionEvent.getX() - paramView.left;
+    if (f2 < 0.0F) {}
+    for (;;)
+    {
+      paramView = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3, paramMotionEvent.getMetaState());
+      boolean bool = this.a.a.onTouchEvent(paramView);
+      paramView.recycle();
+      return bool;
+      if (f2 > paramView.width()) {
+        f1 = paramView.width();
+      } else {
+        f1 = f2;
+      }
+    }
   }
 }
 

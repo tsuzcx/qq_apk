@@ -1,36 +1,45 @@
-class yvj
-  implements zgr<Boolean, zgw>
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+
+public class yvj
+  implements View.OnLongClickListener
 {
-  yvj(yvh paramyvh, long paramLong, int paramInt) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new yvl(this);
+  View jdField_a_of_type_AndroidViewView;
   
-  public Void a(Boolean paramBoolean, zgw paramzgw)
+  public yvj(QRCardActivity paramQRCardActivity) {}
+  
+  @SuppressLint({"ServiceCast", "NewApi"})
+  void a(String paramString)
   {
-    if ((!paramBoolean.booleanValue()) || (paramzgw == null) || (paramzgw.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    if (!TextUtils.isEmpty(paramString))
     {
-      yuk.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
-    }
-    yuk.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramzgw.jdField_a_of_type_Int));
-    if (paramzgw.jdField_a_of_type_Int >= this.jdField_a_of_type_Yvh.a.length)
-    {
-      yuk.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramzgw.jdField_a_of_type_Int) });
-      return null;
-    }
-    yuk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramzgw.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int] = yvk.a(this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int], paramzgw.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramzgw.jdField_a_of_type_JavaLangString;
-    if (paramzgw.jdField_a_of_type_Long > 0L)
-    {
-      this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramzgw.jdField_a_of_type_Long / 1000);
-      yuk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int].jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Yvh.a.length == 1))
-      {
-        this.jdField_a_of_type_Yvh.a[paramzgw.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
-        yuk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
+      if (Build.VERSION.SDK_INT < 11) {
+        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
       }
     }
-    this.jdField_a_of_type_Yvh.i();
-    return null;
+    else {
+      return;
+    }
+    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setSelected(true);
+    bgaz localbgaz = new bgaz();
+    localbgaz.a(2131365216, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131691179), 2130838962);
+    bfue.a(paramView, localbgaz, this.jdField_a_of_type_AndroidViewView$OnClickListener, new yvk(this, paramView));
+    return true;
   }
 }
 

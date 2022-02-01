@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.detail.view;
 
-import ygl;
+import xhw;
 
 class StoryDetailFragment$2
   implements Runnable

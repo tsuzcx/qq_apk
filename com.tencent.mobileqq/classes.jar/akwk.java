@@ -1,19 +1,6 @@
-import com.tencent.image.Utils;
-
-public class akwk
-  extends akwl
+public abstract interface akwk
 {
-  public akwk(String paramString)
-  {
-    super(paramString);
-    this.a = "PhotoIncompatibleWebp";
-    this.b = "reportGenerateHeif";
-  }
-  
-  static boolean a(String paramString)
-  {
-    return Utils.isHeifFile(paramString);
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

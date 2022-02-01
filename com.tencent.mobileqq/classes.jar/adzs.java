@@ -1,8 +1,16 @@
-public abstract interface adzs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+
+class adzs
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  adzs(adzq paramadzq) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.p();
+  }
 }
 
 

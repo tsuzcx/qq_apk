@@ -1,28 +1,18 @@
+import com.tencent.mqp.app.sec.d;
+import com.tencent.qqprotect.qsec.QSecFramework;
+
 public class bjji
+  implements bjjo
 {
-  private static bjji a;
+  public bjji(QSecFramework paramQSecFramework) {}
   
-  public static bjji a()
+  public void a(int paramInt1, int paramInt2)
   {
-    try
+    if ((paramInt1 == 1) && (paramInt2 == 1))
     {
-      if (a == null) {
-        a = new bjji();
-      }
-      bjji localbjji = a;
-      return localbjji;
+      d.e(1, d.x(), null);
+      QSecFramework.a(this.a).b(this);
     }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    bjwg.a(paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    bjwg.b(paramString);
   }
 }
 

@@ -1,33 +1,56 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
-import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import java.util.List;
 
 public class vze
-  extends Animation
+  extends vtc<vxd, vtf<vxd>>
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  private int a;
   
-  private vze(QCircleExpandableTextView paramQCircleExpandableTextView, int paramInt1, int paramInt2)
+  public vze(Context paramContext)
   {
-    setDuration(paramQCircleExpandableTextView.b);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super(paramContext);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public int a(int paramInt)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    int i = (int)((this.b - this.jdField_a_of_type_Int) * paramFloat + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.a.setMaxHeight(i - this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.e);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.getLayoutParams().height = i;
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.requestLayout();
+    vxd localvxd = (vxd)a(paramInt);
+    if (localvxd != null) {
+      return localvxd.jdField_a_of_type_Int;
+    }
+    return 0;
   }
   
-  public boolean willChangeBounds()
+  public int a(String paramString)
   {
-    return true;
+    List localList = a();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (TextUtils.equals(((vxd)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
+        return b() + i;
+      }
+      i += 1;
+    }
+    return b();
+  }
+  
+  public void a(vtf<vxd> paramvtf)
+  {
+    super.onViewDetachedFromWindow(paramvtf);
+    paramvtf.a();
+  }
+  
+  public vtf b(ViewGroup paramViewGroup, int paramInt)
+  {
+    return war.a(paramViewGroup, paramInt);
+  }
+  
+  public void b(vtf paramvtf, int paramInt)
+  {
+    paramvtf.a((vxd)a(paramInt));
   }
 }
 

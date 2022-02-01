@@ -1,10 +1,20 @@
-import java.io.File;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-abstract interface aizz
+public class aizz
+  implements View.OnClickListener
 {
-  public abstract File a(String paramString);
+  public aizz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public abstract String c();
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

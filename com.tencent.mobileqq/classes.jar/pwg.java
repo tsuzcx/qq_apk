@@ -1,45 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
 
 public class pwg
-  implements pye
 {
-  private BaseTemplateFactory a;
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private long b = 0L;
   
-  public pwg(VafContext paramVafContext)
+  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
   {
-    this.a = paramVafContext.getTemplateFactory();
+    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
   }
   
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public pwg a(long paramLong)
   {
-    if (this.a != null) {
-      return this.a.getTemplateBean(paramJSONObject);
-    }
-    return null;
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public pwg b(long paramLong)
   {
-    return new ptl().M(paramBaseArticleInfo).B(paramBaseArticleInfo).a();
-  }
-  
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
-    if ((paramContainer instanceof qek)) {
-      ((qek)paramContainer).a(paramppu);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
-  {
-    return false;
+    this.b = paramLong;
+    return this;
   }
 }
 

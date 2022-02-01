@@ -1,156 +1,79 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import mqq.app.MobileQQ;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class rse
-  implements rro
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper;", "", "()V", "cacheDebugText", "", "codecJson", "getDebugText", "setCodecJson", "", "setMediaCodecInfo", "mediaCodecInfo", "Lcom/tencent/thumbplayer/api/TPPlayerMsg$TPMediaCodecInfo;", "Companion", "OnCodecReuseInfoUpdateCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rse
 {
-  private rse(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  public static final rsf a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int = -1;
+  private static boolean jdField_b_of_type_Boolean;
+  private static String c = "https://sqimg.qq.com/qq_product_operations/kan/superplayer_codecreuse_config.json";
+  private String jdField_a_of_type_JavaLangString = "";
+  private String jdField_b_of_type_JavaLangString = "";
   
-  public void a(rrm paramrrm) {}
-  
-  public void a(rrm paramrrm, int paramInt) {}
-  
-  public void a(rrm paramrrm, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(rrm paramrrm, boolean paramBoolean)
+  static
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).b();
-    }
+    jdField_a_of_type_Rsf = new rsf(null);
   }
   
-  public void b(rrm paramrrm)
+  @NotNull
+  public final String a()
   {
-    if ((ryi.a().a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm.jdField_a_of_type_Rwf)) && (bnrf.v(VideoFeedsRecommendFragment.a(this.a))) && (paramrrm == VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm))
+    if (TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaLangString)) {}
+    try
     {
-      int i = VideoFeedsRecommendFragment.a(this.a).c;
-      int j = VideoFeedsRecommendFragment.a(this.a).c();
-      Object localObject = VideoFeedsRecommendFragment.a(this.a).findViewHolderForLayoutPosition(i + j + 1);
-      if ((localObject instanceof rol))
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      if (localJSONObject.optBoolean("isVideo", false))
       {
-        localObject = (rol)localObject;
-        if (((rol)localObject).jdField_a_of_type_Rrm != null) {
-          VideoFeedsRecommendFragment.a(this.a).b(((rol)localObject).jdField_a_of_type_Rrm);
-        }
+        boolean bool1 = localJSONObject.optBoolean("isReuse", false);
+        boolean bool2 = localJSONObject.optBoolean("reuseEnable", false);
+        int i = localJSONObject.optInt("totalCodec", -1);
+        this.jdField_b_of_type_JavaLangString = ("isReuse:" + bool1 + " reuseEnable:" + bool2 + "\ntotalCodec:" + i);
+      }
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.w("CodecReuseHelper", 1, "getDebugText error for parse Json:" + this.jdField_a_of_type_JavaLangString);
       }
     }
-    if ((VideoFeedsRecommendFragment.a(this.a).c == 0) && (paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 0)) {
-      VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rvo.a(3);
-    }
-    if ((VideoFeedsRecommendFragment.a(this.a) != null) && (paramrrm != null) && (VideoFeedsRecommendFragment.a(this.a).size() > 0) && (paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null))
-    {
-      if (paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c)
-      {
-        if (paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Tmf.a <= 0L) {
-          paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Tmf.a = VideoFeedsRecommendFragment.a(this.a).a();
-        }
-        VideoFeedsRecommendFragment.a(this.a).f();
+  }
+  
+  public final void a(@Nullable TPPlayerMsg.TPMediaCodecInfo paramTPMediaCodecInfo)
+  {
+    if (paramTPMediaCodecInfo == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("CodecReuseHelper", 2, "parseAndSetMediaCodecInfo failed for mediaCodecInfo is null.");
       }
     }
-    else {
+    while ((paramTPMediaCodecInfo.infoType != TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY) || (paramTPMediaCodecInfo.mediaType != TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO)) {
       return;
     }
-    VideoFeedsRecommendFragment.a(this.a).a();
-    paramrrm = paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString;
-    if ((paramrrm != null) && (paramrrm.equalsIgnoreCase(((VideoInfo)VideoFeedsRecommendFragment.a(this.a).get(0)).jdField_a_of_type_JavaLangString)))
-    {
-      VideoFeedsRecommendFragment.a(this.a).b(0);
-      return;
-    }
-    VideoFeedsRecommendFragment.a(this.a).b(VideoFeedsRecommendFragment.a(this.a).c + 1);
+    paramTPMediaCodecInfo = paramTPMediaCodecInfo.msg;
+    Intrinsics.checkExpressionValueIsNotNull(paramTPMediaCodecInfo, "mediaCodecInfo.msg");
+    a(paramTPMediaCodecInfo);
   }
   
-  public void b(rrm paramrrm, boolean paramBoolean) {}
-  
-  public void c(rrm paramrrm)
+  public final void a(@NotNull String paramString)
   {
-    boolean bool;
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
-    {
-      bool = VideoFeedsRecommendFragment.a(this.a).c();
-      VideoFeedsPlayActivity.a("video play completion!, in weishi mode! interrupted weishi ad");
-      if (!bool) {}
-    }
-    do
-    {
-      do
-      {
-        return;
-        VideoFeedsPlayActivity.a("video play completion!, move to next position");
-        bool = VideoFeedsRecommendFragment.e(this.a);
-        if (VideoFeedsRecommendFragment.b(this.a))
-        {
-          if (bool)
-          {
-            VideoFeedsRecommendFragment.a(this.a).b();
-            return;
-          }
-          VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rvo.a(5);
-          return;
-        }
-        if (VideoFeedsRecommendFragment.e(this.a))
-        {
-          if ((VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a() != null))
-          {
-            VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo));
-            VideoFeedsRecommendFragment.a(this.a).a();
-            return;
-          }
-          VideoFeedsRecommendFragment.a(this.a).b();
-        }
-        if ((paramrrm == null) || (paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo == null) || (!paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c) || (nzq.a(paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).mShowAdButton)) {
-          break;
-        }
-      } while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a).a() == null) || (VideoFeedsRecommendFragment.a(this.a) == null));
-      VideoFeedsRecommendFragment.a(this.a).e();
-      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a());
-      return;
-    } while ((VideoFeedsRecommendFragment.a(this.a).a(paramrrm)) || (VideoFeedsRecommendFragment.a(this.a).c == VideoFeedsRecommendFragment.a(this.a).size() - 1) || ((!VideoFeedsRecommendFragment.g(this.a)) && (bhnv.b(VideoFeedsRecommendFragment.a(this.a).getApplication().getApplicationContext()))));
-    if (VideoFeedsRecommendFragment.a(this.a).a())
-    {
-      VideoFeedsRecommendFragment.a(this.a, true);
+    Intrinsics.checkParameterIsNotNull(paramString, "codecJson");
+    if (TextUtils.equals((CharSequence)this.jdField_a_of_type_JavaLangString, (CharSequence)paramString)) {
       return;
     }
-    if (bool)
-    {
-      VideoFeedsRecommendFragment.a(this.a).addOnLayoutChangeListener(new rsf(this));
-      return;
-    }
-    VideoFeedsRecommendFragment.a(this.a).a();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = "";
   }
-  
-  public void d(rrm paramrrm)
-  {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsAccessibilityHelper.a(VideoFeedsRecommendFragment.a(this.a).i, true);
-    }
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).b();
-    }
-  }
-  
-  public void e(rrm paramrrm)
-  {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsAccessibilityHelper.a(VideoFeedsRecommendFragment.a(this.a).i, false);
-    }
-    if (paramrrm.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c)
-    {
-      VideoFeedsRecommendFragment.a(this.a).f();
-      return;
-    }
-    VideoFeedsRecommendFragment.a(this.a).a();
-  }
-  
-  public void f(rrm paramrrm) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiim;
+import ahey;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ConfessChatPie$4
   implements Runnable
 {
-  public ConfessChatPie$4(aiim paramaiim) {}
+  public ConfessChatPie$4(ahey paramahey) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, 8);
+    this.this$0.app.getMessageFacade().getAndParseAIOList(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, this.this$0.sessionInfo.topicId, 8);
   }
 }
 

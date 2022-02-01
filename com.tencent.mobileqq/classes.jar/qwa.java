@@ -1,50 +1,23 @@
-import java.net.URL;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class qwa
+  extends ClickableSpan
 {
-  private int jdField_a_of_type_Int;
-  private URL jdField_a_of_type_JavaNetURL;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public qwa(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Int;
+    pay.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
   
-  public URL a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return this.jdField_a_of_type_JavaNetURL;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(URL paramURL)
-  {
-    this.jdField_a_of_type_JavaNetURL = paramURL;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.a.getResources()));
   }
 }
 

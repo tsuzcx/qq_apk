@@ -1,34 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.msg.data.MessageForDevShortVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public final class abzh
-  implements Parcelable.Creator<MessageForShortVideo>
+public class abzh
+  implements abzb
 {
-  public MessageForDevShortVideo a(Parcel paramParcel)
+  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
-    localMessageForDevShortVideo.uuid = paramParcel.readString();
-    localMessageForDevShortVideo.md5 = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForDevShortVideo.fileType = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForDevShortVideo.fileSource = paramParcel.readString();
-    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
-    return localMessageForDevShortVideo;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x108");
+    }
+    return aqvh.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo);
   }
   
-  public MessageForDevShortVideo[] a(int paramInt)
+  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    return new MessageForDevShortVideo[paramInt];
+    return a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
   }
 }
 

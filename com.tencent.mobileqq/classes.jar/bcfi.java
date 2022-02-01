@@ -1,40 +1,12 @@
-import android.view.View;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.WtloginReporter.1;
 
 public class bcfi
-  implements bcfq
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<bcfr> jdField_a_of_type_JavaUtilList;
-  
-  public bcfi(List<bcfr> paramList, String paramString, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return anzj.a(2131704287);
-  }
-  
-  public List<bcfr> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
   }
 }
 

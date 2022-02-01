@@ -1,72 +1,59 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class umy
-  extends umw<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  private int a;
+  public umx a;
+  public una a;
+  public unb a;
   
-  public umy(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
+  public umy()
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Unb = new unb(null);
+    this.jdField_a_of_type_Una = new una(null);
+    this.jdField_a_of_type_Umx = new umx(null);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  private static JSONObject a(String paramString)
   {
-    int i = 2;
-    boolean bool1 = true;
-    if (paramWSPushStrategyInfo == null) {
-      return false;
-    }
-    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
-    if (!bool2)
-    {
-      ueg.a(paramContext, paramWSPushStrategyInfo.mScheme);
-      paramContext = uqt.a();
-      if (paramContext != null) {
-        paramContext.a(null);
-      }
-      uqt.a();
-    }
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool2)
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        i = 2;
-        if (this.jdField_a_of_type_Umn != null) {
-          break label93;
-        }
-        paramContext = "";
-        label74:
-        unx.a(i, 1, paramContext);
-        label80:
-        if (bool2) {
-          break label133;
-        }
+        paramString = new JSONObject(paramString);
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
       }
     }
-    for (;;)
-    {
-      return bool1;
-      i = 1;
-      break;
-      label93:
-      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Umn).mFeedIds;
-      break label74;
-      if (this.jdField_a_of_type_Int != 6) {
-        break label80;
-      }
-      if (bool2) {}
-      for (;;)
-      {
-        unx.d(i);
-        break;
-        i = 1;
-      }
-      label133:
-      bool1 = false;
+    return null;
+  }
+  
+  public static umy a()
+  {
+    return (umy)apub.a().a(447);
+  }
+  
+  public void a(String paramString)
+  {
+    uya.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
+    paramString = a(paramString);
+    if (paramString == null) {
+      return;
+    }
+    this.jdField_a_of_type_Unb = unb.a(paramString.optJSONObject("video_plugin_threshold"));
+    this.jdField_a_of_type_Una = una.a(paramString.optJSONObject("trends_tab_strategy"));
+    this.jdField_a_of_type_Umx = umx.a(paramString.optJSONObject("beacon_report_strategy"));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Unb).append(", mStrategyConfig=");
+    if (this.jdField_a_of_type_Una != null) {}
+    for (String str = this.jdField_a_of_type_Una.a;; str = "null") {
+      return str + "mBeaconConfigInfo=" + this.jdField_a_of_type_Umx + '}';
     }
   }
 }

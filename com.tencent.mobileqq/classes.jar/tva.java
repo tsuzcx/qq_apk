@@ -1,30 +1,38 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class tva
-  implements View.OnFocusChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ISuperMaskUI$Companion;", "", "()V", "ERROR", "", "getERROR", "()I", "FINISH", "getFINISH", "NONE", "getNONE", "PAUSE", "getPAUSE", "PREPARE", "getPREPARE", "SHOW", "getSHOW", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tva
 {
-  public tva(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  private static final int jdField_a_of_type_Int = 0;
+  private static final int b = 1;
+  private static final int c = 2;
+  private static final int d = 3;
+  private static final int e = 4;
+  private static final int f = 5;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public final int a()
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
-      }
-    }
+    return jdField_a_of_type_Int;
+  }
+  
+  public final int b()
+  {
+    return b;
+  }
+  
+  public final int c()
+  {
+    return c;
+  }
+  
+  public final int d()
+  {
+    return e;
+  }
+  
+  public final int e()
+  {
+    return f;
   }
 }
 

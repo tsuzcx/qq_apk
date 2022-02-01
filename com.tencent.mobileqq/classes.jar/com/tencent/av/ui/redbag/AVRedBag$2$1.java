@@ -1,15 +1,15 @@
 package com.tencent.av.ui.redbag;
 
-import mpp;
+import moy;
 
 public class AVRedBag$2$1
   implements Runnable
 {
-  public AVRedBag$2$1(mpp parammpp, int paramInt) {}
+  public AVRedBag$2$1(moy parammoy, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mpp.d(this.jdField_a_of_type_Int - 1);
+    this.jdField_a_of_type_Moy.d(this.jdField_a_of_type_Int - 1);
   }
 }
 

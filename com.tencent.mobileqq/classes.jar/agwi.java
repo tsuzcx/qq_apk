@@ -1,30 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agwi
-  implements bive
+public abstract interface agwi
 {
-  agwi(agwg paramagwg) {}
-  
-  public void a()
-  {
-    if ((agwg.a(this.a) != null) && (agwg.a(this.a).a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
-      }
-      agwg.a(this.a).d();
-    }
-    for (;;)
-    {
-      if ((agwg.a(this.a) != null) && (agwg.a(this.a).a())) {
-        agwg.a(this.a).d();
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
-      }
-    }
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
 }
 
 

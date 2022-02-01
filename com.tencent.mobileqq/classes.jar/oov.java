@@ -1,70 +1,135 @@
+import android.content.Context;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$R5Builder;", "", "()V", "r5Json", "Lorg/json/JSONObject;", "getR5Json", "()Lorg/json/JSONObject;", "addCardReportJson", "cardReportJson", "", "addString", "key", "value", "build", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oov
+public class oov
 {
-  @NotNull
-  private final JSONObject a = new JSONObject();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  public String a;
+  public ArrayList<SocializeFeedsInfo.BiuCommentInfo> a;
+  pwf jdField_a_of_type_Pwf = new oow(this);
+  qtr jdField_a_of_type_Qtr = new qtr();
+  long jdField_b_of_type_Long;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final String jdField_b_of_type_JavaLangString = "5";
+  TextView c;
   
-  @NotNull
-  public final String a()
+  public oov(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment, Context paramContext)
   {
-    String str = this.a.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "r5Json.toString()");
-    return str;
+    a(paramContext);
+    this.jdField_a_of_type_AndroidViewView.setTag(this);
   }
   
-  @NotNull
-  public final oov a(@NotNull String paramString)
+  private void a(long paramLong)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "cardReportJson");
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      Iterator localIterator = localJSONObject.keys();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        Intrinsics.checkExpressionValueIsNotNull(str1, "key");
-        String str2 = localJSONObject.optString(str1);
-        Intrinsics.checkExpressionValueIsNotNull(str2, "json.optString(key)");
-        a(str1, str2);
-      }
-      return this;
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new oox(this));
+    String str = ReadInJoyUserInfoModule.a();
+    if (localReadInJoyUserInfo != null) {
+      str = localReadInJoyUserInfo.nick;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("RIJChannelBannerReport", 1, "[addCardReportJson] failed, e = " + localJSONException + ", cardReportJson = " + paramString);
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
   }
   
-  @NotNull
-  public final oov a(@NotNull String paramString1, @NotNull String paramString2)
+  private void a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "key");
-    Intrinsics.checkParameterIsNotNull(paramString2, "value");
+    paramArrayList = SocializeFeedsInfo.a(null, "5", this.jdField_a_of_type_Pwf, paramArrayList);
+    this.c.setSpannableFactory(QQText.SPANNABLE_FACTORY);
+    this.c.setText(paramArrayList);
+  }
+  
+  private boolean a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        if (!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)paramArrayList.next()).jdField_a_of_type_JavaLangString)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560203, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367956));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371777));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364803));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363570));
+  }
+  
+  public void a(MultiBiuSameContent paramMultiBiuSameContent, int paramInt)
+  {
+    a(paramMultiBiuSameContent.jdField_a_of_type_Long);
+    this.c.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    Object localObject = pax.a(paramMultiBiuSameContent.jdField_b_of_type_Int, true);
+    if (localObject != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(paramMultiBiuSameContent.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Long = paramMultiBiuSameContent.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Int = paramMultiBiuSameContent.c;
+    this.jdField_b_of_type_Long = paramMultiBiuSameContent.jdField_b_of_type_Long;
+    this.c.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    this.jdField_a_of_type_JavaLangString = ReadInjoyFriendsBiuComponentFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, paramMultiBiuSameContent.jdField_a_of_type_Long, paramMultiBiuSameContent.c, paramMultiBiuSameContent.jdField_b_of_type_Long);
     try
     {
-      if (!TextUtils.isEmpty((CharSequence)paramString1))
+      if ((paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList != null) && (!paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
       {
-        this.a.put(paramString1, paramString2);
-        return this;
+        this.jdField_a_of_type_JavaUtilArrayList = paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList;
+        if (a(paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList))
+        {
+          this.c.setVisibility(8);
+          return;
+        }
+        a(this.jdField_a_of_type_JavaUtilArrayList);
+        return;
       }
-      QLog.i("RIJChannelBannerReport", 2, "[addString] failed, key is empty, value = " + paramString2);
-      return this;
     }
-    catch (JSONException paramString1)
+    catch (Exception paramMultiBiuSameContent)
     {
-      QLog.e("RIJChannelBannerReport", 1, "[addString] e = " + paramString1);
+      QLog.e("ReadInjoyFriendsBiuComponentFragment", 2, "setData: ", paramMultiBiuSameContent);
+      return;
     }
-    return this;
+    if (TextUtils.isEmpty(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString))
+    {
+      this.c.setVisibility(8);
+      return;
+    }
+    localObject = new SpannableStringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString);
+    ((SpannableStringBuilder)localObject).append(new QQText(localStringBuilder, 7, 16));
+    this.c.setText((CharSequence)localObject);
   }
 }
 

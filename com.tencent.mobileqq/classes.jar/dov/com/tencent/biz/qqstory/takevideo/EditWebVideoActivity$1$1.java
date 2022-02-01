@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anzj;
-import bqia;
+import amtj;
+import bnex;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class EditWebVideoActivity$1$1
   implements Runnable
 {
-  public EditWebVideoActivity$1$1(bqia parambqia) {}
+  public EditWebVideoActivity$1$1(bnex parambnex) {}
   
   public void run()
   {
     this.a.a.f();
-    QQToast.a(this.a.a, anzj.a(2131702868), 0).a();
+    QQToast.a(this.a.a, amtj.a(2131703098), 0).a();
     this.a.a.finish();
   }
 }

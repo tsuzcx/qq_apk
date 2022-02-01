@@ -1,75 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageForVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agtx
-  implements agvc
+class agtx
+  implements View.OnClickListener
 {
-  private aiul jdField_a_of_type_Aiul;
-  public FragmentActivity a;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private mxp jdField_a_of_type_Mxp = new agty(this);
+  agtx(agtw paramagtw) {}
   
-  public agtx(BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aiul != null) {
-      this.jdField_a_of_type_Aiul.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if (!agtw.a(this.a)) {}
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Mxp);
-      return;
-    case 5: 
-      a(true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Mxp);
-  }
-  
-  public void a(aiwh paramaiwh)
-  {
-    if (paramaiwh == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aiul = new aiul(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramaiwh, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    paramaiwh.a(this.jdField_a_of_type_Aiul);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    mxc localmxc = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
-    if (localmxc != null)
-    {
-      boolean bool = localmxc.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if (bool) {
-        localmxc.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, 1);
-      }
-      if ((QLog.isColorLevel()) && (paramBoolean)) {
-        QLog.d("AVGameHelper", 2, "Enter AIO, troopUin :" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + "isAVGameOpen is: " + bool);
+      if (lld.c())
+      {
+        Object localObject = (aezy)AIOUtils.getHolder(paramView);
+        if (localObject != null)
+        {
+          localObject = (MessageForVideo)((aezy)localObject).a;
+          agtw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (MessageForVideo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          if (((MessageForVideo)localObject).istroop == 1044) {
+            bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
+          }
+        }
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 5, 13 };
   }
 }
 

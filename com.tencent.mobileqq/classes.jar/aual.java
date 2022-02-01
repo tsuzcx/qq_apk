@@ -1,78 +1,29 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-public abstract class aual
-  extends bcfs
+public class aual
+  implements bhle
 {
-  protected int a;
-  protected Bundle a;
-  protected String a;
+  public aual(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public aual(String paramString, int paramInt)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<bcfr> a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    return new ArrayList(0);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View paramView)
-  {
-    int i = d();
-    if (i == 1) {
-      if (paramView.getId() == 2131366604) {
-        b(paramView);
-      }
-    }
-    while (i <= 1)
+    if (paramInt == 5)
     {
-      return;
-      c(paramView);
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      paramView.putExtra("fromQGamePub", true);
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
       return;
     }
-    d(paramView);
+    QQGameFeedWebFragment.a(this.a, this.a.a);
+    this.a.getActivity().finish();
   }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected abstract void b(View paramView);
-  
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  protected abstract void c(View paramView);
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public abstract String d();
-  
-  protected abstract void d(View paramView);
-  
-  public abstract int e();
 }
 
 

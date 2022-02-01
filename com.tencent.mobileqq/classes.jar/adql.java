@@ -1,65 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import protocol.KQQConfig.UpgradeInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adql
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public adql(AboutActivity paramAboutActivity) {}
+  public adql(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = 2;
-    Intent localIntent;
-    if (bjxd.a().b())
-    {
-      if (bhrv.a()) {
-        i = 1;
-      }
-      bdll.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      localIntent.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(localIntent);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((AboutActivity.a(this.a).jdField_a_of_type_Bhdz != null) && (bhrv.a(AboutActivity.a(this.a).jdField_a_of_type_Bhdz.a)))
-      {
-        if (bhrv.a()) {
-          i = 1;
-        }
-        bdll.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        localIntent.putExtra("activity_type", 4096);
-        if (BaseActivity.sTopActivity != null) {
-          BaseActivity.sTopActivity.startActivity(localIntent);
-        }
-      }
-      else if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null))
-      {
-        bdll.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", bhdu.a(), "");
-        UpgradeDetailActivity.a(this.a, bhdu.a().a(), false, false, true);
-      }
-    }
+    LoginInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).setVisibility(4);
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).clearAnimation();
+    LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

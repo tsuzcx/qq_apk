@@ -1,22 +1,12 @@
-import android.view.View;
-import android.widget.SimpleAdapter.ViewBinder;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
 
 public class rbw
-  implements SimpleAdapter.ViewBinder
 {
-  public rbw(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
-  
-  public boolean setViewValue(View paramView, Object paramObject, String paramString)
-  {
-    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
-    {
-      ((TextView)paramView).setText((CharSequence)paramObject);
-      return true;
-    }
-    return false;
-  }
+  public int a;
+  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
+  public List<ArticleInfo> b;
 }
 
 

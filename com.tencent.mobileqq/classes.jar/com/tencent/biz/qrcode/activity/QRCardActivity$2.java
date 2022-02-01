@@ -13,9 +13,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import nnr;
 
 class QRCardActivity$2
   implements Runnable
@@ -29,7 +29,7 @@ class QRCardActivity$2
     int n;
     try
     {
-      localObject1 = nnr.a(this.this$0, this.this$0.l, "GET", null, null);
+      localObject1 = HttpUtil.openUrlForByte(this.this$0, this.this$0.l, "GET", null, null);
       if (localObject1 == null) {
         return;
       }

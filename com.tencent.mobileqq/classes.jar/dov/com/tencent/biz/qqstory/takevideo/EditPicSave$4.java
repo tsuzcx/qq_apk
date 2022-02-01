@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqcp;
+import bnct;
 
 public class EditPicSave$4
   implements Runnable
 {
-  public EditPicSave$4(bqcp parambqcp) {}
+  public EditPicSave$4(bnct parambnct) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bqcp localbqcp = this.this$0;
-    localbqcp.jdField_a_of_type_Int += this.this$0.b;
+    bnct localbnct = this.this$0;
+    localbnct.jdField_a_of_type_Int += this.this$0.b;
     if (this.this$0.jdField_a_of_type_Int > 99)
     {
       this.this$0.jdField_a_of_type_Int = 99;
@@ -21,7 +21,7 @@ public class EditPicSave$4
       return;
     }
     this.this$0.a(this.this$0.jdField_a_of_type_Int);
-    this.this$0.c();
+    this.this$0.b();
   }
 }
 

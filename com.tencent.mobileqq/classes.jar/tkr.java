@@ -1,26 +1,34 @@
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class tkr
+  extends tkf
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
-  
-  public tkr()
+  tkr(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
   }
   
-  @NotNull
-  public String toString()
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    return "jumpType = " + this.jdField_a_of_type_Int + "reportForClick = " + this.jdField_a_of_type_Boolean + "autoDownload = " + this.jdField_b_of_type_Boolean + "videoStartPositionMillis = " + this.jdField_a_of_type_Long + "isAutoPlaying = " + this.c + "filterVideoCeiling = " + this.d + "position = " + this.jdField_b_of_type_Int;
+    paramString2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("rowkey", "");
+    paramString3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("topicId", "");
+    paramActionSheetItem = this.jdField_a_of_type_OrgJsonJSONObject.optString("title", "");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      tkc.a(this.jdField_a_of_type_Tkc).rijWatchWordPresenter.a(paramString2, paramString1, paramString3, paramActionSheetItem);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      tkc.a(this.jdField_a_of_type_Tkc).rijWatchWordPresenter.a(paramString3, paramString1, paramActionSheetItem);
+      return;
+    }
+    QLog.e(tkc.a, 1, "args is illegal: " + this.jdField_a_of_type_OrgJsonJSONObject.toString());
   }
 }
 

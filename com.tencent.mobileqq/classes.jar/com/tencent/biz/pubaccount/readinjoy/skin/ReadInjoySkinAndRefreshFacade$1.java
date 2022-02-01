@@ -1,45 +1,45 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
 import com.tencent.common.app.AppInterface;
-import qtp;
-import qtq;
-import qtt;
-import qtw;
-import quk;
-import quo;
+import ran;
+import rao;
+import rar;
+import rau;
+import rbi;
+import rbm;
 
 public class ReadInjoySkinAndRefreshFacade$1
   implements Runnable
 {
-  public ReadInjoySkinAndRefreshFacade$1(quk paramquk) {}
+  public ReadInjoySkinAndRefreshFacade$1(rbi paramrbi) {}
   
   public void run()
   {
-    Object localObject = (qtq)this.this$0.a.getManager(270);
-    int i = quk.a(this.this$0);
-    RefreshData localRefreshData = ((qtq)localObject).a(this.this$0.a.getApp(), i);
+    Object localObject = (rao)this.this$0.a.getManager(270);
+    int i = rbi.a(this.this$0);
+    RefreshData localRefreshData = ((rao)localObject).a(this.this$0.a.getApp(), i);
     int j = (int)(System.currentTimeMillis() / 1000L);
-    if ((localRefreshData != null) && (localRefreshData.isShowInSource(quk.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime)) {
-      if (quo.a(localRefreshData.id)) {
+    if ((localRefreshData != null) && (localRefreshData.isShowInSource(rbi.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime)) {
+      if (rbm.a(localRefreshData.id)) {
         if (localRefreshData.isShown)
         {
-          ((qtq)localObject).a(1, localRefreshData.id, localRefreshData.seq, i);
-          ((qtq)localObject).a(true);
+          ((rao)localObject).a(1, localRefreshData.id, localRefreshData.seq, i);
+          ((rao)localObject).a(true);
         }
       }
     }
     for (;;)
     {
-      localObject = (GuideData)((qtp)this.this$0.a.getManager(271)).a("operation_guide");
-      SkinData localSkinData = ((qtw)this.this$0.a.getManager(261)).a(this.this$0.a.getApp());
-      ((qtt)this.this$0.a.getBusinessHandler(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject, quk.a(this.this$0));
+      localObject = (GuideData)((ran)this.this$0.a.getManager(271)).a("operation_guide");
+      SkinData localSkinData = ((rau)this.this$0.a.getManager(261)).a(this.this$0.a.getApp());
+      ((rar)this.this$0.a.getBusinessHandler(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject, rbi.a(this.this$0));
       return;
-      ((qtq)localObject).a(0, "", -1L, i);
+      ((rao)localObject).a(0, "", -1L, i);
       continue;
-      ((qtq)localObject).a(0, "", -1L, i);
-      ((qtq)localObject).a(localRefreshData, quk.a(this.this$0));
+      ((rao)localObject).a(0, "", -1L, i);
+      ((rao)localObject).a(localRefreshData, rbi.a(this.this$0));
       continue;
-      ((qtq)localObject).a(0, "", -1L, i);
+      ((rao)localObject).a(0, "", -1L, i);
     }
   }
 }

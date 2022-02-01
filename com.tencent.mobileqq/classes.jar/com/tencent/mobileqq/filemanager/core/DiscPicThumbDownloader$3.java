@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atud;
-import atuf;
-import auob;
+import asgn;
+import asgp;
+import atal;
 
 public class DiscPicThumbDownloader$3
   implements Runnable
 {
-  public DiscPicThumbDownloader$3(atud paramatud, atuf paramatuf) {}
+  public DiscPicThumbDownloader$3(asgn paramasgn, asgp paramasgp) {}
   
   public void run()
   {
-    auob.b(this.a.a);
+    atal.b(this.a.a);
   }
 }
 

@@ -1,71 +1,77 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class bapt
-  extends ClickableSpan
+public class bapt
+  extends bapu
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<BaseActivity> b;
+  public int a;
+  public long a;
+  TextView a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
   
-  public bapt(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  public bapt(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    WeakReference localWeakReference;
-    if (a(paramWeakReference1, localWeakReference))
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "ClosePCVerifyClickableSpan() error: params wrong");
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference1;
-    this.b = localWeakReference;
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 2;
+    this.i = 2130846026;
+    VasWebviewUtil.reportCommercialDrainage(paramAppInterface.getCurrentAccountUin(), "signature_aio", "show", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
   
-  private boolean a()
+  protected int a()
   {
-    return (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b.get() == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    return 3;
   }
   
-  private boolean a(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  public View a(RichStatus paramRichStatus)
   {
-    return (paramWeakReference == null) || (paramWeakReference1 == null);
+    paramRichStatus = super.a(paramRichStatus);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMsgId = this.jdField_a_of_type_Long;
+    l();
+    return paramRichStatus;
   }
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    QLog.d("ClosePCVerifyImpl", 1, "onClick");
-    bdll.b(null, "dc00898", "", "", "0X800AE03", "0X800AE03", 0, 0, "", "", "", "");
-    if (a())
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "onClick error: params wrong");
-      return;
-    }
-    paramView = (BaseActivity)this.b.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!bhnv.d(paramView))
-    {
-      QQToast.a(paramView, 1, 2131698477, 1).a();
-      QLog.e("ClosePCVerifyImpl", 1, "NetworkError");
-      return;
-    }
-    bapq.a(this.jdField_a_of_type_Bapq, localQQAppInterface, paramView);
+    this.h = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166467);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    int i = AIOUtils.dp2px(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    Object localObject = new FrameLayout.LayoutParams(-1, i);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setYOffset(i + AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    i = (int)(ScreenUtil.SCREEN_WIDTH * 0.11F);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.a(i);
+    localObject = (ViewGroup.MarginLayoutParams)this.b.getLayoutParams();
+    localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((ViewGroup.MarginLayoutParams)localObject).topMargin = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected boolean a()
   {
-    QLog.d("ClosePCVerifyImpl", 1, "updateDrawState");
-    if (a())
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "updateDrawState error: param wrong");
-      return;
-    }
-    paramTextPaint.setColor(((BaseActivity)this.b.get()).getResources().getColor(2131165729));
-    paramTextPaint.setUnderlineText(false);
+    return true;
   }
 }
 

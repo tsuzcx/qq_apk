@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
+import com.idlefish.flutterboost.XPlatformPlugin;
 import io.flutter.embedding.android.FlutterEngineConfigurator;
 import io.flutter.embedding.android.FlutterEngineProvider;
 import io.flutter.embedding.android.FlutterView.RenderMode;
@@ -13,7 +14,6 @@ import io.flutter.embedding.android.SplashScreen;
 import io.flutter.embedding.android.SplashScreenProvider;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
-import io.flutter.plugin.platform.PlatformPlugin;
 import java.util.Map;
 
 public abstract interface FlutterActivityAndFragmentDelegate$Host
@@ -47,7 +47,7 @@ public abstract interface FlutterActivityAndFragmentDelegate$Host
   public abstract FlutterEngine provideFlutterEngine(@NonNull Context paramContext);
   
   @Nullable
-  public abstract PlatformPlugin providePlatformPlugin(@Nullable Activity paramActivity, @NonNull FlutterEngine paramFlutterEngine);
+  public abstract XPlatformPlugin providePlatformPlugin(@NonNull FlutterEngine paramFlutterEngine);
   
   @Nullable
   public abstract SplashScreen provideSplashScreen();
@@ -56,7 +56,7 @@ public abstract interface FlutterActivityAndFragmentDelegate$Host
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate.Host
  * JD-Core Version:    0.7.0.1
  */

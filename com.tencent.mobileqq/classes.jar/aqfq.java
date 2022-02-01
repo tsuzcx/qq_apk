@@ -1,87 +1,140 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class aqfq
-  implements aqfo
+public class aqfq
+  implements apts<String>, aqew
 {
-  aqfq(aqfp paramaqfp) {}
+  static boolean jdField_a_of_type_Boolean = true;
+  static boolean b = true;
+  private long jdField_a_of_type_Long = 20971520L;
+  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  public String a;
+  private boolean c;
   
-  public void a(boolean paramBoolean, JSONObject paramJSONObject, Object arg3)
+  public aqfq()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)aqfp.a(this.a).get();
-    if ((localQQAppInterface == null) || (??? == null) || (!(??? instanceof Bundle)))
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Long = 20971520L;
+    this.c = false;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    try
     {
-      QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback invalid param app=", localQQAppInterface, ",userData=", ??? });
+      this.c = paramJSONObject.getBoolean("enableaqq");
+      paramJSONObject = paramJSONObject.getJSONObject("config");
+      if (paramJSONObject != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
+      }
+      for (;;)
+      {
+        QLog.i("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
+        return;
+        this.jdField_a_of_type_Long = 20971520L;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+      }
       return;
     }
-    Object localObject1 = (Bundle)???;
-    long l = ((Bundle)localObject1).getLong("key_process_message_uniseq");
-    Object localObject2 = ((Bundle)localObject1).getString("key_process_message_friend_uin");
-    int i = ((Bundle)localObject1).getInt("key_process_message_uin_type");
-    synchronized (aqfp.a(this.a))
+    catch (JSONException paramJSONObject)
     {
-      if ((Bundle)aqfp.a(this.a).get(Long.valueOf(l)) != null)
+      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    int k = 0;
+    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
+      a();
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      if (paramString.length() == 0)
       {
-        aqfp.a(this.a).remove(Long.valueOf(l));
-        aqfp.a(this.a).removeMessages(1, localObject1);
-        ??? = localQQAppInterface.a().b((String)localObject2, i, l);
-        if ((??? == null) || (!(??? instanceof MessageForArkApp))) {
-          QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.sArkMsgPrepCallback find ArkMsg failed!");
+        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
+        a();
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
+      return;
+    }
+    JSONArray localJSONArray = paramString.names();
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < localJSONArray.length())
+      {
+        Object localObject = localJSONArray.getString(i).trim();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
+          if (localObject != null)
+          {
+            a((JSONObject)localObject);
+            j = 1;
+          }
         }
       }
       else
       {
-        QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback.failed for msg callback timeout uniseq=", Long.valueOf(l) });
+        if (j != 0) {
+          break;
+        }
+        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Upload config, use default value");
+        a();
         return;
       }
+      i += 1;
     }
-    localObject1 = (MessageForArkApp)???;
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.sArkMsgPrepCallback  uniseq=", Long.valueOf(l), ", processState=", Integer.valueOf(((MessageForArkApp)localObject1).getProcessState()), ", success=", Boolean.valueOf(paramBoolean), String.format(" ,msg=%h", new Object[] { localObject1 }), ", this=", ((MessageForArkApp)localObject1).getBaseInfoString(), ", msgJson=", paramJSONObject });
-    }
-    if (((MessageForArkApp)localObject1).ark_app_message != null)
-    {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("appid", ((MessageForArkApp)localObject1).ark_app_message.appName);
-      if (!paramBoolean) {
-        break label441;
-      }
-    }
-    label441:
-    for (??? = "1";; ??? = "2")
-    {
-      ((HashMap)localObject2).put("result", ???);
-      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "actAsyncShareCallback", true, 0L, 0L, (HashMap)localObject2, null);
-      if (!paramBoolean) {
-        break;
-      }
-      ((MessageForArkApp)localObject1).updateArkAppMetaData(paramJSONObject);
-      ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1002);
-      ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
-      ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
-      localQQAppInterface.a().b((MessageRecord)localObject1, null);
-      return;
-    }
-    ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1003);
-    ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
-    ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
-    localQQAppInterface.a().a(((MessageForArkApp)localObject1).frienduin, ((MessageForArkApp)localObject1).istroop, ((MessageForArkApp)localObject1).uniseq);
-    aqfp.a(this.a, localQQAppInterface, (MessageForArkApp)localObject1);
+  }
+  
+  public boolean a()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqfq
  * JD-Core Version:    0.7.0.1
  */

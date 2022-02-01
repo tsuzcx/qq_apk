@@ -1,23 +1,27 @@
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lip
 {
-  public static void a()
+  public static lil a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
   {
-    a("0X8009850");
-  }
-  
-  static void a(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    VideoAppInterface localVideoAppInterface = null;
+    if (AudioHelper.f()) {
+      QLog.w("ARZimuTaskFactory", 1, "create, id[" + paramString + "], seq[" + paramLong + "]");
     }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
-  }
-  
-  public static void b()
-  {
-    a("0X8009851");
+    if ("spit".equals(paramString))
+    {
+      paramVideoAppInterface = new liu(paramLong, paramVideoAppInterface);
+      localVideoAppInterface = paramVideoAppInterface;
+      if ((paramContext instanceof liv))
+      {
+        ((liu)paramVideoAppInterface).a((liv)paramContext);
+        localVideoAppInterface = paramVideoAppInterface;
+      }
+    }
+    return localVideoAppInterface;
   }
 }
 

@@ -1,33 +1,18 @@
-import android.util.SparseArray;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajnh
+  extends aycd
 {
-  public int a;
-  public SparseArray<byte[]> a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
+  public ajnh(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public ajnh()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.d = null;
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    if (this.a.a)
+    {
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
+    }
   }
 }
 

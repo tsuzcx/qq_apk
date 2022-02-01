@@ -1,49 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
 public class aphg
-  extends Handler
+  implements bjoe
 {
-  private WeakReference<VideoEncoderCore> a;
+  public aphg(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bjnw parambjnw) {}
   
-  public aphg(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

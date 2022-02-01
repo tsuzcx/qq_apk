@@ -5,6 +5,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class dt
@@ -17,7 +18,7 @@ class dt
     boolean bool = true;
     Object localObject = (dv)paramView.getTag();
     int i = DataLineMsgRecord.getDevTypeBySeId(((dv)localObject).a.jdField_a_of_type_Long);
-    DataLineMsgRecord localDataLineMsgRecord = dr.a(this.a).a().a(i).a(((dv)localObject).a.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = dr.a(this.a).getMessageFacade().getDatalineMessageManager(i).a(((dv)localObject).a.jdField_a_of_type_Long);
     if (localDataLineMsgRecord == null) {}
     for (;;)
     {
@@ -30,13 +31,13 @@ class dt
         break;
       case 0: 
       case 3: 
-        localObject = (anvu)dr.a(this.a).a(8);
+        localObject = (amqd)dr.a(this.a).getBusinessHandler(8);
         if ((localDataLineMsgRecord.strMoloKey != null) && (!localDataLineMsgRecord.isReportPause))
         {
           localDataLineMsgRecord.isReportPause = true;
           dq.m(dr.a(this.a));
         }
-        ((anvu)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
+        ((amqd)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
         if (localDataLineMsgRecord.isSendFromLocal()) {
           localDLFileInfo.jdField_a_of_type_Int = 1;
         }
@@ -44,20 +45,20 @@ class dt
       case 1: 
       case 2: 
       case 4: 
-        if (bhnv.d(dr.a(this.a)))
+        if (NetworkUtil.isNetSupport(dr.a(this.a)))
         {
-          if ((aunj.a()) && (localDLFileInfo.b > 3145728L))
+          if ((aszt.a()) && (localDLFileInfo.b > 3145728L))
           {
             if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
             for (;;)
             {
-              aunj.a(bool, dr.a(this.a), new du(this, localDataLineMsgRecord, (dv)localObject));
+              aszt.a(bool, dr.a(this.a), new du(this, localDataLineMsgRecord, (dv)localObject));
               break;
               bool = false;
             }
           }
           i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-          DataLineMsgSet localDataLineMsgSet = dr.a(this.a).a(i).a(localDataLineMsgRecord.sessionid);
+          DataLineMsgSet localDataLineMsgSet = dr.a(this.a).getDataLineMsgProxy(i).a(localDataLineMsgRecord.sessionid);
           if (localDataLineMsgSet != null) {
             localDataLineMsgSet.setPaused(false);
           }
@@ -75,7 +76,7 @@ class dt
         }
         else
         {
-          auna.a(2131694008);
+          aszk.a(2131694108);
         }
         break;
       case 5: 

@@ -1,21 +1,21 @@
-import com.tencent.qapmsdk.base.meta.DumpResult;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
-public abstract interface adkw
-  extends adks
+public class adkw
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public abstract DumpResult a(String paramString, adkz paramadkz);
+  public adkw(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public abstract String a();
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
   
-  public abstract void a(adku paramadku);
-  
-  public abstract void a(DumpResult paramDumpResult);
-  
-  public abstract String b();
-  
-  public abstract void b(adku paramadku);
-  
-  public abstract boolean c();
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
+  }
 }
 
 

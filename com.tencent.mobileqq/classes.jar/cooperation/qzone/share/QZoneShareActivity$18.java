@@ -11,7 +11,7 @@ class QZoneShareActivity$18
   
   public void run()
   {
-    QQToast.a(this.this$0, this.this$0.a.msg.get(), 0).a();
+    QQToast.a(this.this$0, this.this$0.mGetAppinfoResponse.msg.get(), 0).a();
   }
 }
 

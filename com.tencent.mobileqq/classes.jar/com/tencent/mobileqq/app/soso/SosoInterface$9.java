@@ -7,8 +7,8 @@ final class SosoInterface$9
 {
   public void run()
   {
-    if (SosoInterface.a().size() == 0) {
-      SosoInterface.d();
+    if (SosoInterface.access$500().size() == 0) {
+      SosoInterface.access$100();
     }
   }
 }

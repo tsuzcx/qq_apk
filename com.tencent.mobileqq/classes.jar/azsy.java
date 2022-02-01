@@ -1,52 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class azsy
-  extends arac<azsz>
+  extends QzoneExternalRequest
 {
-  @NonNull
-  public azsz a(int paramInt)
+  public JceStruct a;
+  
+  public azsy(newest_feeds_req paramnewest_feeds_req)
   {
-    return new azsz();
+    super.setHostUin(paramnewest_feeds_req.login_uin);
+    super.setLoginUserId(paramnewest_feeds_req.login_uin);
+    this.a = paramnewest_feeds_req;
   }
   
-  @Nullable
-  public azsz a(araj[] paramArrayOfaraj)
+  public static newest_feeds_rsp a(byte[] paramArrayOfByte)
   {
-    azsz localazsz = new azsz();
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
-      azsz.a(localazsz, paramArrayOfaraj[0].a);
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    return localazsz;
+    newest_feeds_rsp localnewest_feeds_rsp;
+    do
+    {
+      return paramArrayOfByte;
+      localnewest_feeds_rsp = (newest_feeds_rsp)decode(paramArrayOfByte, "getAIONewestFeeds");
+      paramArrayOfByte = localnewest_feeds_rsp;
+    } while (localnewest_feeds_rsp != null);
+    return null;
   }
   
-  public void a(azsz paramazsz) {}
-  
-  public Class<azsz> clazz()
+  public String getCmdString()
   {
-    return azsz.class;
+    return "QzoneNewService.getAIONewestFeeds";
   }
   
-  public boolean isNeedCompressed()
+  public JceStruct getReq()
   {
-    return true;
+    return this.a;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public String uniKey()
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 495;
+    return "getAIONewestFeeds";
   }
 }
 

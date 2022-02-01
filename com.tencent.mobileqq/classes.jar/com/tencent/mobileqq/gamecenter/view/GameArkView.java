@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import anxh;
-import avmq;
+import atzp;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkView;
+import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GameArkView
   extends RelativeLayout
-  implements avmq, ArkViewImplement.LoadCallback
+  implements atzp, ArkViewImplement.LoadCallback
 {
   private int jdField_a_of_type_Int = 101;
   private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
@@ -31,8 +31,8 @@ public class GameArkView
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559207, this);
-    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374508));
+    LayoutInflater.from(getContext()).inflate(2131559214, this);
+    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374276));
     try
     {
       paramContext = getResources().getDisplayMetrics();
@@ -45,7 +45,7 @@ public class GameArkView
       for (float f = paramContext.density;; f = -1.0F)
       {
         QLog.d("GameArkView", 4, new Object[] { Float.valueOf(f) });
-        f = anxh.a.density;
+        f = FontSettingManager.systemMetrics.density;
         if (paramContext != null)
         {
           f = Math.min(f, paramContext.density);

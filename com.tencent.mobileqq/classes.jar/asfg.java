@@ -1,69 +1,54 @@
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 class asfg
-  implements asfu
+  implements asdf
 {
-  asfg(asfd paramasfd, axps paramaxps) {}
+  asfg(asff paramasff, String paramString, asfo paramasfo) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Axps.isShowing()) {
-      this.jdField_a_of_type_Axps.dismiss();
-    }
-    asfd.a(this.jdField_a_of_type_Asfd);
-    asfd.a(this.jdField_a_of_type_Asfd).a().b();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Axps.a(paramInt);
-  }
-  
-  public void a(asfc paramasfc)
-  {
-    if ((paramasfc != null) && (!this.jdField_a_of_type_Asfd.a.isFinishing())) {
-      switch (paramasfc.a)
-      {
-      }
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Axps.isShowing()) {
-        this.jdField_a_of_type_Axps.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asff.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
       }
-      asfd.a(this.jdField_a_of_type_Asfd);
-      asfd.a(this.jdField_a_of_type_Asfd).a().b();
+      this.jdField_a_of_type_Asfo.a(ases.a(this.jdField_a_of_type_Asff.jdField_a_of_type_Long, bool2), bool1);
       return;
-      QQToast.a(this.jdField_a_of_type_Asfd.a.getApplicationContext(), this.jdField_a_of_type_Asfd.a.getString(2131717539), 0).a();
-      continue;
-      if (paramasfc.b == 10006)
+      if ((paramInt == -6101) || (paramInt == -7003))
       {
-        QQToast.a(this.jdField_a_of_type_Asfd.a.getApplicationContext(), this.jdField_a_of_type_Asfd.a.getString(2131717530), 0).a();
+        bool1 = false;
+        bool2 = true;
       }
       else
       {
-        QQToast.a(this.jdField_a_of_type_Asfd.a.getApplicationContext(), this.jdField_a_of_type_Asfd.a.getString(2131717534), 0).a();
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i("MultiEmotionSaveManager", 2, "onSaveComplete " + this.jdField_a_of_type_Asfd.a.isFinishing());
-        }
+        bool1 = false;
       }
     }
   }
   
-  public void b()
+  public void a(String paramString1, String paramString2)
   {
-    if (!this.jdField_a_of_type_Axps.isShowing())
-    {
-      this.jdField_a_of_type_Axps.a(0);
-      this.jdField_a_of_type_Axps.a(new asfh(this));
-      if (QLog.isColorLevel()) {
-        QLog.i("MultiEmotionSaveManager", 2, "onSaveBegin");
-      }
-      this.jdField_a_of_type_Axps.show();
+    paramString2 = new Bundle();
+    paramString2.putString("_m_ForwardFileType", "2");
+    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Asff.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Asff.jdField_a_of_type_Long + "");
+    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Asff.c);
+    paramString2.putString("_m_ForwardDeadTime", "0");
+    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Asff.e);
+    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Asff.f);
+    paramString2.putString("_m_ForwardUuid", paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asff.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
     }
+    this.jdField_a_of_type_Asfo.a(paramString1, paramString2);
   }
 }
 

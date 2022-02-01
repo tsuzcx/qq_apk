@@ -1,39 +1,6 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-public class zac
-  extends bezs
+public abstract interface zac
 {
-  public zac(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
-  
-  protected void realCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realCancel download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
-    }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
-    }
-    bihz localbihz = ((bihw)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(47)).a(1);
-    bihu localbihu = new bihu(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localbihu.n = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("md5", this.c);
-    localBundle.putString("path", this.b);
-    localbihz.a(localbihu, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
-  }
+  public abstract void a();
 }
 
 

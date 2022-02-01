@@ -1,34 +1,17 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class sqb
-  implements spj
+  implements View.OnClickListener
 {
-  public static final String a;
-  private static String b = "WebFastLikeDislikeCreator";
-  private sqc a;
+  public sqb(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = anzj.a(2131715662);
-  }
-  
-  public int a(BaseData paramBaseData)
-  {
-    return 19;
-  }
-  
-  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Sqc = new sqc(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560173, null), paramBaseData);
-    return this.jdField_a_of_type_Sqc;
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.r == 21;
+    ReadinjoyTabFrame.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

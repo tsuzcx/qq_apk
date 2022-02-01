@@ -1,33 +1,20 @@
-public class atbe
-  extends atbb
+import android.content.Context;
+import android.os.AsyncTask;
+
+final class atbe
+  extends df
 {
-  public atbe(atba paramatba, atag paramatag)
-  {
-    super(paramatba, paramatag);
-    this.jdField_a_of_type_Int = 0;
-  }
+  atbe(Context paramContext) {}
   
-  public void a(int paramInt)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_Atag.a();
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    switch (paramInt1)
-    {
-    default: 
-      return false;
-    }
-    this.jdField_a_of_type_Atba.a(2, paramInt2);
-    return true;
+    super.a(paramAsyncTask, paramInt);
+    dc.a(this.a, paramAsyncTask, paramInt, new atbf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbe
  * JD-Core Version:    0.7.0.1
  */

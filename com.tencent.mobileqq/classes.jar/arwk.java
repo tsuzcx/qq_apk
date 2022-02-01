@@ -1,28 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.FeedsManager.2.1;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
 public class arwk
-  implements ThreadExcutor.IThreadListener
+  implements bjqk
 {
-  public arwk(FeedsManager paramFeedsManager) {}
+  public arwk(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void a(int paramInt)
   {
-    FeedsManager.access$102(this.a, true);
-    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
-    if (FeedsManager.access$300(this.a))
+    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
     {
-      FeedsManager.access$302(this.a, false);
-      this.a.updateQzoneFeeds();
+      if (!this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
     }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
-  
-  public void onPreRun() {}
 }
 
 

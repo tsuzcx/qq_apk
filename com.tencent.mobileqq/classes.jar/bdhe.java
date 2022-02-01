@@ -1,9 +1,4 @@
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
-
-public abstract interface bdhe
-{
-  public abstract void a(int paramInt, SoConfig.SoInfo paramSoInfo);
-}
+public class bdhe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -1,18 +1,13 @@
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bild
+final class bild
+  implements FilenameFilter
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public String b;
-  
-  public bild(int paramInt, String paramString1, String paramString2, Drawable paramDrawable)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".cfg"));
   }
 }
 

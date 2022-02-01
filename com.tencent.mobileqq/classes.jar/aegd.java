@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class aegd
   implements DialogInterface.OnClickListener
 {
-  public aegd(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
+  public aegd(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

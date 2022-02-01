@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 
 class QzoneModuleManager$2
@@ -10,9 +10,9 @@ class QzoneModuleManager$2
   
   public void run()
   {
-    int i = bdmc.a();
+    int i = StatisticCollector.getQzonePatchTag();
     QLog.i("QzoneModuleManager", 1, "current versionNum is:" + i);
-    bdmc.a(i + 6000);
+    StatisticCollector.setQzonePatchTag(i + 6000);
     QzoneModuleManager.access$102(this.this$0, true);
   }
 }

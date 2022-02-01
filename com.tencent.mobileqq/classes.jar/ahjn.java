@@ -1,18 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30.1;
 
-class ahjn
-  extends ahkx
+public class ahjn
+  implements Animation.AnimationListener
 {
-  ahjn(ahgk paramahgk)
+  ahjn(ahiu paramahiu) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramahgk, null);
+    ahiu.d(this.a).post(new PublicAccountChatPie.30.1(this));
   }
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new ahvg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

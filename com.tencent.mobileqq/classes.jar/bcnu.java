@@ -1,38 +1,51 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class bcnu
-  implements bcny
+  implements BusinessObserver
 {
-  protected View a;
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public bcnu(ViewGroup paramViewGroup)
-  {
-    this.a = new LinearLayout(paramViewGroup.getContext());
-    this.a.setVisibility(8);
-  }
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public View a()
-  {
-    return this.a;
-  }
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
   
-  public TextView a()
-  {
-    return null;
-  }
+  public void c(boolean paramBoolean, Bundle paramBundle) {}
   
-  public List<bcnz> a()
-  {
-    return null;
-  }
+  public void d(boolean paramBoolean, Bundle paramBundle) {}
   
-  public TextView b()
+  public void e(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return null;
+    switch (paramInt)
+    {
+    case 6: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.e("KidModeObserver", 1, new Object[] { "unknown type: ", Integer.valueOf(paramInt) });
+      }
+      return;
+    case 3: 
+      b(paramBoolean, paramBundle);
+      return;
+    case 4: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("advance_setting_field");
+      paramBundle.getInt("advance_setting_value");
+      a(paramBoolean, paramInt);
+      return;
+    case 2: 
+      e(paramBoolean, paramBundle);
+      return;
+    case 5: 
+      d(paramBoolean, paramBundle);
+      return;
+    }
+    c(paramBoolean, paramBundle);
   }
 }
 

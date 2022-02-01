@@ -1,107 +1,34 @@
-import android.content.Context;
-import android.view.MotionEvent;
-
-public class azch
+public abstract interface azch
 {
-  private float jdField_a_of_type_Float;
-  private final azci jdField_a_of_type_Azci;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  private float c;
-  private float d;
-  private float e;
+  public abstract int a();
   
-  public azch(Context paramContext, azci paramazci)
-  {
-    this.jdField_a_of_type_Azci = paramazci;
-  }
+  public abstract void a();
   
-  private float a(MotionEvent paramMotionEvent)
-  {
-    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
-  }
+  public abstract void a(float paramFloat);
   
-  private void a()
-  {
-    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Azci.b(this);
-  }
+  public abstract void a(int paramInt);
   
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Azci.a(this));
-  }
+  public abstract void a(int paramInt, byte paramByte);
   
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_Azci.a(this);
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public abstract void a(azci paramazci);
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  public abstract void a(String paramString);
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    int i = 0;
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            b();
-            return true;
-          } while (paramMotionEvent.getPointerCount() != 2);
-          float f = a(paramMotionEvent);
-          this.d = f;
-          this.e = f;
-          this.c = f;
-          return true;
-        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
-        this.d = a(paramMotionEvent);
-        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
-        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
-        boolean bool = this.jdField_a_of_type_Boolean;
-        a();
-        if ((!bool) || (a())) {
-          i = 1;
-        }
-      } while (i == 0);
-      this.e = this.d;
-      return true;
-    } while (paramMotionEvent.getPointerCount() != 2);
-    b();
-    return true;
-  }
+  public abstract boolean a();
   
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
+  public abstract int b();
   
-  public float c()
-  {
-    return this.d - this.e;
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

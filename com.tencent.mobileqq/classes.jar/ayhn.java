@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class ayhn
-  implements View.OnClickListener
+public class ayhn
+  extends aygp
 {
-  ayhn(ayhj paramayhj) {}
-  
-  public void onClick(View paramView)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    this.a.b(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    a(paramBaseChatPie.sessionInfo.curType, 213);
   }
 }
 

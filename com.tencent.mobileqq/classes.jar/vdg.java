@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.List;
 
 class vdg
-  implements View.OnClickListener
+  implements unf<stSimpleMetaFeed>
 {
-  vdg(vda paramvda) {}
+  vdg(vdf paramvdf, vaa paramvaa, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, List<stSimpleMetaFeed> paramList, boolean paramBoolean2)
   {
-    QLog.d("QCircleFolderSplashPart", 4, "btn onClick");
-    vtq.a("", 20, vda.a(this.a));
-    if (vda.c(this.a)) {}
-    for (String str = "1";; str = "2")
+    paramList = vdf.a(this.jdField_a_of_type_Vdf, paramList);
+    if (this.jdField_a_of_type_Vaa != null) {
+      this.jdField_a_of_type_Vaa.a(paramList, this.jdField_a_of_type_Boolean, this.b, null);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject)
+  {
+    if (!paramBoolean3)
     {
-      vtq.a("", 19, 4, 0, str);
-      uyy.a().a(false);
-      vda.a(this.a);
-      this.a.b("show_publish_feed_guide_bubble", null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      if (this.jdField_a_of_type_Vaa != null) {
+        this.jdField_a_of_type_Vaa.a(-1, "task failed.");
+      }
+      this.jdField_a_of_type_Vdf.a(-1, "task failed.");
     }
   }
 }

@@ -1,101 +1,148 @@
+import QQService.EVIPSPEC;
+import QQService.VipBaseInfo;
+import QQService.VipOpenInfo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import friendlist.FriendInfo;
+import friendlist.GetFriendListResp;
+import friendlist.GroupInfo;
+import java.util.ArrayList;
+import java.util.Map;
 
-class anim
-  extends bhzs
+public class anim
 {
-  anim(anil paramanil) {}
-  
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  public static void a(QQAppInterface paramQQAppInterface, GetFriendListResp paramGetFriendListResp)
   {
-    if (paramBoolean)
+    boolean bool2 = true;
+    int i = paramGetFriendListResp.startIndex;
+    amsw localamsw = (amsw)paramQQAppInterface.getManager(51);
+    VasFaceManager localVasFaceManager = ((bgga)paramQQAppInterface.getManager(235)).a;
+    gb localgb = (gb)paramQQAppInterface.getManager(42);
+    boolean bool1;
+    FriendInfo localFriendInfo;
+    if ((paramGetFriendListResp.stSelfInfo != null) && (i == 0))
     {
+      bool1 = true;
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "ApolloDressChange uin=" + paramObject);
+        QLog.i("Q.contacttab.friend.FriendListUpdateUtil", 2, "updateSelfOnRsp needUpdateSelf=" + bool1);
       }
-      if (anil.a(this.a) != null) {
-        anil.a(this.a).e();
+      if (bool1)
+      {
+        localFriendInfo = paramGetFriendListResp.stSelfInfo;
+        paramGetFriendListResp = localamsw.e(paramQQAppInterface.getCurrentAccountUin());
+        if (paramGetFriendListResp != null) {
+          break label737;
+        }
+        paramGetFriendListResp = new Friends();
+        paramGetFriendListResp.name = localFriendInfo.nick;
+        paramGetFriendListResp.remark = localFriendInfo.remark;
+        paramGetFriendListResp.uin = String.valueOf(localFriendInfo.friendUin);
+        paramGetFriendListResp.cSpecialFlag = localFriendInfo.cSpecialFlag;
+        paramGetFriendListResp.detalStatusFlag = localFriendInfo.detalStatusFlag;
+        paramGetFriendListResp.alias = localFriendInfo.sShowName;
+        paramGetFriendListResp.iBatteryStatus = localFriendInfo.iBatteryStatus;
+        paramGetFriendListResp.uExtOnlineStatus = localFriendInfo.uExtOnlineStatus;
+        axys.a(paramGetFriendListResp, localFriendInfo.vecMusicInfo, "GetFriendList(self)");
+        axvv.a(paramGetFriendListResp, localFriendInfo.vecExtOnlineBusinessInfo, "GetFriendList(self)");
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler", 2, new Object[] { "handleGetFriendList selfUin=" + paramGetFriendListResp.uin + ", cSpecialFlag=" + paramGetFriendListResp.cSpecialFlag, " battery:", Integer.valueOf(localFriendInfo.iBatteryStatus), " extOnline:", Long.valueOf(localFriendInfo.uExtOnlineStatus) });
+        }
       }
-      this.a.c();
+    }
+    label737:
+    for (;;)
+    {
+      paramGetFriendListResp.abilityBits = localFriendInfo.uAbiFlag;
+      paramGetFriendListResp.eNetwork = localFriendInfo.eNetworkType;
+      paramGetFriendListResp.groupid = localFriendInfo.groupId;
+      paramGetFriendListResp.qqVipInfo = anii.a(localFriendInfo.oVipInfo, EVIPSPEC.E_SP_QQVIP.value(), paramGetFriendListResp.qqVipInfo);
+      paramGetFriendListResp.superQqInfo = anii.a(localFriendInfo.oVipInfo, EVIPSPEC.E_SP_SUPERQQ.value(), paramGetFriendListResp.superQqInfo);
+      paramGetFriendListResp.superVipInfo = anii.a(localFriendInfo.oVipInfo, EVIPSPEC.E_SP_SUPERVIP.value(), paramGetFriendListResp.superVipInfo);
+      paramGetFriendListResp.bigClubInfo = anii.a(localFriendInfo.oVipInfo, EVIPSPEC.E_SP_BIGCLUB.value(), paramGetFriendListResp.bigClubInfo);
+      paramGetFriendListResp.cNewLoverDiamondFlag = localFriendInfo.cNewLoverDiamondFlag;
+      if ((localFriendInfo.oVipInfo != null) && (localFriendInfo.oVipInfo.mOpenInfo != null))
+      {
+        VipOpenInfo localVipOpenInfo = (VipOpenInfo)localFriendInfo.oVipInfo.mOpenInfo.get(Integer.valueOf(EVIPSPEC.E_SP_SUPERVIP.value()));
+        if (localVipOpenInfo != null) {
+          paramGetFriendListResp.superVipTemplateId = ((int)localVipOpenInfo.lNameplateId);
+        }
+        localVipOpenInfo = (VipOpenInfo)localFriendInfo.oVipInfo.mOpenInfo.get(Integer.valueOf(EVIPSPEC.E_SP_BIGCLUB.value()));
+        if (localVipOpenInfo != null) {
+          paramGetFriendListResp.bigClubTemplateId = ((int)localVipOpenInfo.lNameplateId);
+        }
+        paramGetFriendListResp.nameplateVipType = localFriendInfo.oVipInfo.iNameplateVipType;
+        paramGetFriendListResp.grayNameplateFlag = localFriendInfo.oVipInfo.iGrayNameplateFlag;
+      }
+      paramGetFriendListResp.namePlateOfKingGameId = localFriendInfo.uGameAppid;
+      paramGetFriendListResp.namePlateOfKingLoginTime = localFriendInfo.uGameLastLoginTime;
+      paramGetFriendListResp.namePlateOfKingDan = ((int)localFriendInfo.ulKingOfGloryRank);
+      if (localFriendInfo.cKingOfGloryFlag == 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        paramGetFriendListResp.namePlateOfKingDanDisplatSwitch = bool1;
+        localamsw.a(paramGetFriendListResp);
+        localVasFaceManager.b(paramGetFriendListResp.uin, (int)localFriendInfo.uFaceStoreId);
+        if (QLog.isColorLevel()) {
+          QLog.i("FriendListHandler.selfFontEffect", 2, "self fontEffect: " + (int)localFriendInfo.uFontEffect);
+        }
+        localgb.a(paramGetFriendListResp.uin, (int)localFriendInfo.uFontEffect);
+        paramQQAppInterface.getApp().getSharedPreferences("sp_plate_of_king", 0).edit().putBoolean("plate_of_king_display_switch_" + paramQQAppInterface.getCurrentUin(), paramGetFriendListResp.namePlateOfKingDanDisplatSwitch).apply();
+        return;
+        bool1 = false;
+        break;
+      }
     }
   }
   
-  protected void onChangeUserApolloStatus(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetZanCount(boolean paramBoolean, Object paramObject)
+  public static void a(QQAppInterface paramQQAppInterface, GetFriendListResp paramGetFriendListResp, long paramLong)
   {
-    if ((!paramBoolean) || (paramObject == null) || (anil.a(this.a) == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsPresenter", 2, "get zanCount = " + paramObject);
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-    int i = ((SharedPreferences)localObject).getInt("apollo_zan_count" + anil.a(this.a), 0);
-    ((SharedPreferences)localObject).edit().putInt("apollo_zan_count" + anil.a(this.a), ((Integer)paramObject).intValue()).commit();
-    if (((Integer)paramObject).intValue() > 99999) {
-      paramObject = Integer.valueOf(99999);
-    }
-    for (;;)
+    paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+    if (paramGetFriendListResp.vecGroupInfo != null)
     {
-      localObject = String.valueOf(paramObject);
-      if (((Integer)paramObject).intValue() >= 99999)
+      int j = paramGetFriendListResp.vecGroupInfo.size();
+      Groups[] arrayOfGroups = new Groups[j];
+      int i = 0;
+      while (i < j)
       {
-        paramObject = Integer.valueOf(99999);
-        localObject = paramObject + "+";
+        GroupInfo localGroupInfo = (GroupInfo)paramGetFriendListResp.vecGroupInfo.get(i);
+        Groups localGroups = new Groups();
+        localGroups.group_id = localGroupInfo.groupId;
+        localGroups.group_name = localGroupInfo.groupname;
+        localGroups.group_friend_count = localGroupInfo.friend_count;
+        localGroups.seqid = localGroupInfo.seqid;
+        localGroups.datetime = paramLong;
+        arrayOfGroups[i] = localGroups;
+        i += 1;
       }
+      if ((j > 0) && (QLog.isColorLevel()))
+      {
+        paramGetFriendListResp = (GroupInfo)paramGetFriendListResp.vecGroupInfo.get(0);
+        QLog.d("Q.contacttab.friend.FriendListUpdateUtil", 2, "handleGetFriendList " + bftf.a(paramGetFriendListResp.groupname) + ", " + paramGetFriendListResp.friend_count + ", " + paramGetFriendListResp.sqqOnLine_count + ", " + paramGetFriendListResp.seqid);
+      }
+      paramQQAppInterface.a(arrayOfGroups);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  {
+    int i = 1;
+    if (i < 19)
+    {
+      if ((!paramBoolean2) && (i == 16)) {}
       for (;;)
       {
-        anil.a(this.a).a((String)localObject, i, ((Integer)paramObject).intValue());
-        return;
-      }
-    }
-  }
-  
-  protected void onSetZanCount(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject == null) || (anil.a(this.a) == null) || (anil.a(this.a) == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsPresenter", 2, "set zanCount = " + paramObject);
-    }
-    if (paramBoolean) {}
-    label378:
-    for (;;)
-    {
-      try
-      {
-        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-        Calendar localCalendar = Calendar.getInstance();
-        ((SharedPreferences)localObject).edit().putBoolean(anil.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + anil.a(this.a) + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
-        if (((Integer)paramObject).intValue() <= 99999) {
-          break label378;
+        i += 1;
+        break;
+        if (((paramBoolean1) || (i != 18)) && (i != 13)) {
+          paramQQAppInterface.getPreferences().edit().putLong("inccheckupdatetimeStamp" + i, paramLong).commit();
         }
-        paramObject = Integer.valueOf(99999);
-        anil.a(this.a).b(((Integer)paramObject).intValue());
-        return;
       }
-      catch (Exception paramObject) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("ApolloGuestsPresenter", 2, "set zanCount error= " + paramObject.toString());
-      return;
-      if (((Long)paramObject).longValue() != -501010L) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "today has vote to " + anil.a(this.a));
-      }
-      paramObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-      Object localObject = Calendar.getInstance();
-      paramObject.edit().putBoolean(anil.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + anil.a(this.a) + ((Calendar)localObject).get(1) + ((Calendar)localObject).get(2) + ((Calendar)localObject).get(5), true).commit();
-      return;
     }
   }
 }

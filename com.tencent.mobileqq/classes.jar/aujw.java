@@ -1,18 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0x87a.RspBody;
 
-class aujw
-  implements View.OnClickListener
+final class aujw
+  extends axkv
 {
-  aujw(aujr paramaujr) {}
+  aujw(Activity paramActivity, String paramString, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
+    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
+    if (paramInt == 89) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131698266), 0).a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+      return;
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
+    }
+  }
+  
+  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
+    localIntent.putExtra("k_from", "f_SetFaceData");
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
+    {
+      localIntent.putExtra("phone_num", paramRspBody);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
+      return;
+    }
   }
 }
 

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayoutNew;
 
-public final class bnyv
-  implements Parcelable.Creator<WadlResult>
+public class bnyv
+  extends Handler
 {
-  public WadlResult a(Parcel paramParcel)
+  public bnyv(QIMCameraCaptureButtonLayoutNew paramQIMCameraCaptureButtonLayoutNew, Looper paramLooper)
   {
-    return new WadlResult(paramParcel);
+    super(paramLooper);
   }
   
-  public WadlResult[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new WadlResult[paramInt];
+    super.handleMessage(paramMessage);
+    this.a.a(paramMessage);
   }
 }
 

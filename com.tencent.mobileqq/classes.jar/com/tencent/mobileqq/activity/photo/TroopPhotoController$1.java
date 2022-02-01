@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akps;
-import aksb;
-import bgup;
+import ajnr;
+import bfed;
 
-public class TroopPhotoController$1
+class TroopPhotoController$1
   implements Runnable
 {
-  public TroopPhotoController$1(aksb paramaksb, akps paramakps, bgup parambgup) {}
+  TroopPhotoController$1(TroopPhotoController paramTroopPhotoController, ajnr paramajnr, bfed parambfed) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Akps, this.jdField_a_of_type_Bgup);
+    this.this$0.notifyUpdate(this.val$info, this.val$state);
   }
 }
 

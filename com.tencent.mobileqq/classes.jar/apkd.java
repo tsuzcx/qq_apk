@@ -1,4 +1,7 @@
-public class apkd {}
+public abstract interface apkd
+{
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

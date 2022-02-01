@@ -1,6 +1,13 @@
-public abstract interface bfcb
+public class bfcb
 {
-  public abstract void a(bfau parambfau, bfbj parambfbj);
+  public long a;
+  public String a;
+  
+  public bfcb(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

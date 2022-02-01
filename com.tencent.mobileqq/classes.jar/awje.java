@@ -1,39 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-
-class awje
-  implements aasd
+public class awje
 {
-  awje(awjd paramawjd, String paramString) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void callback(Bundle paramBundle)
+  public String toString()
   {
-    if (paramBundle.getBoolean("isSuccess", false))
-    {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Awjd.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Awjd.jdField_a_of_type_JavaLangString))) {
-        break label120;
-      }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        localObject = new Intent(this.jdField_a_of_type_Awjd.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Awjd.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
-      }
-    }
-    label120:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

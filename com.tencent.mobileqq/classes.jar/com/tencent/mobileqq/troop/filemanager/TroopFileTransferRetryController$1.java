@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bfvm;
-import bfvn;
+import beex;
+import beey;
 
 public class TroopFileTransferRetryController$1
   implements Runnable
 {
-  public TroopFileTransferRetryController$1(bfvm parambfvm, String paramString) {}
+  public TroopFileTransferRetryController$1(beex parambeex, String paramString) {}
   
   public void run()
   {

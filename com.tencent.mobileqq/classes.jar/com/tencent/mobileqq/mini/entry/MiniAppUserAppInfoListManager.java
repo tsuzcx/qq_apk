@@ -6,11 +6,11 @@ import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anui;
-import apeb;
-import arfd;
+import anxn;
+import apyt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -49,7 +49,7 @@ public class MiniAppUserAppInfoListManager
   private LinkedList<MiniAppInfo> mTopAppList = new LinkedList();
   private COMM.StCommonExt mTopExtInfo;
   private LinkedList<MiniAppInfo> mUsedAppList = new LinkedList();
-  private anui redDotObserver = new MiniAppUserAppInfoListManager.1(this);
+  private BusinessObserver redDotObserver = new MiniAppUserAppInfoListManager.1(this);
   
   public MiniAppUserAppInfoListManager(QQAppInterface paramQQAppInterface)
   {
@@ -238,7 +238,7 @@ public class MiniAppUserAppInfoListManager
           }
         }
       }
-      if (localLinkedList2 != null)
+      if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
         for (;;)
@@ -716,7 +716,7 @@ public class MiniAppUserAppInfoListManager
       }
     }
     finally {}
-    boolean bool = arfd.e();
+    boolean bool = apyt.e();
     localObject = ((List)localObject).iterator();
     MiniAppInfo localMiniAppInfo;
     Integer localInteger1;
@@ -829,10 +829,10 @@ public class MiniAppUserAppInfoListManager
       paramLong2 = System.currentTimeMillis();
       if (paramLong2 - paramLong1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        localObject = (apeb)((AppInterface)localObject).getBusinessHandler(148);
+        localObject = (anxn)((AppInterface)localObject).getBusinessHandler(148);
         if (localObject != null)
         {
-          ((apeb)localObject).a();
+          ((anxn)localObject).a();
           localSharedPreferences.edit().putLong(str, paramLong2).commit();
         }
       }

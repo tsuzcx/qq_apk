@@ -1,28 +1,24 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.activity.aio.helper.AioPaiYiPaiHelper;
+import java.lang.ref.WeakReference;
 
 public class afpt
-  implements View.OnFocusChangeListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public afpt(SubLoginActivity paramSubLoginActivity) {}
+  private WeakReference<AioPaiYiPaiHelper> a;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public afpt(AioPaiYiPaiHelper paramAioPaiYiPaiHelper)
   {
-    if (true == paramBoolean)
-    {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    this.a = new WeakReference(paramAioPaiYiPaiHelper);
+  }
+  
+  public boolean onPreDraw()
+  {
+    AioPaiYiPaiHelper localAioPaiYiPaiHelper = (AioPaiYiPaiHelper)this.a.get();
+    if (localAioPaiYiPaiHelper != null) {
+      AioPaiYiPaiHelper.a(localAioPaiYiPaiHelper);
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    return true;
   }
 }
 

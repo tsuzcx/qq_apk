@@ -1,54 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
-class armd
-  implements arlb
+public abstract class armd
+  extends PublicBaseFragment
 {
-  armd(arlz paramarlz) {}
+  protected arky a;
+  protected int j = -1;
   
-  public void a(Context paramContext)
+  public void a(arky paramarky)
   {
-    try
-    {
-      Intent localIntent;
-      if (new JSONObject(arlz.a(this.a)).getInt("showlocalfile") == 1)
-      {
-        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
-        if (localIntent != null) {}
-      }
-      else
-      {
-        return;
-      }
-      try
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("category", 23);
-        localIntent.putExtra("bundle", localBundle);
-        localIntent.putExtra("localSdCardfile", 0);
-        paramContext.startActivity(localIntent);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    this.a = paramarky;
+  }
+  
+  public void i() {}
+  
+  public void i(int paramInt)
+  {
+    this.j = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armd
  * JD-Core Version:    0.7.0.1
  */

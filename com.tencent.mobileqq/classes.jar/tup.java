@@ -1,88 +1,88 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.BannerPagerAdapter.2;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tup
-  extends PagerAdapter
 {
-  private List<beke> a = new ArrayList();
-  
-  private void a()
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    ThreadManager.getUIHandler().post(new FolderRecommendTabFragment.BannerPagerAdapter.2(this));
-  }
-  
-  public List<beke> a()
-  {
-    return this.a;
-  }
-  
-  public void a(beke parambeke, Context paramContext)
-  {
-    if (parambeke != null)
+    int k = 1;
+    for (;;)
     {
-      if ((!"1".equals(parambeke.a)) || (TextUtils.isEmpty(parambeke.b))) {
-        break label62;
+      try
+      {
+        if (paramAdData.a == null) {
+          return paramJSONObject;
+        }
+        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
+        if (!TextUtils.isEmpty(paramAdData.a.k)) {
+          paramJSONObject.put("id_inner_small_img", new JSONObject());
+        }
+        JSONObject localJSONObject;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
+          paramJSONObject.put("id_inner_title", localJSONObject);
+        }
+        if ((!twh.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.h);
+          paramJSONObject.put("id_inner_category", localJSONObject);
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.d)) {
+          break label424;
+        }
+        paramJSONObject.put("id_inner_game_img1", new JSONObject());
+        paramJSONObject.put("id_game_img1_container1", new JSONObject());
+        i = 1;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.e))
+        {
+          paramJSONObject.put("id_inner_game_img2", new JSONObject());
+          paramJSONObject.put("id_game_img2_container2", new JSONObject());
+          i = 1;
+          j = 1;
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.f)) {
+          break label421;
+        }
+        paramJSONObject.put("id_inner_game_img3", new JSONObject());
+        paramJSONObject.put("id_game_img3_container3", new JSONObject());
+        i = 0;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.g))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Tri.g);
+          paramJSONObject.put("id_inner_ad_name", localJSONObject);
+          j = k;
+          if (j != 0) {
+            paramJSONObject.put("id_bottom_operation", new JSONObject());
+          }
+          if (i != 0) {
+            paramJSONObject.put("id_game_img_right_space", new JSONObject());
+          }
+          localJSONObject = new JSONObject();
+          localJSONObject.put("innerGameModel", paramAdData);
+          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
+          return paramJSONObject;
+        }
       }
-      localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", parambeke.b);
-      localIntent.putExtra("fromOneCLickCLose", true);
-      paramContext.startActivity(localIntent);
+      catch (JSONException paramAdData)
+      {
+        paramAdData.printStackTrace();
+        return paramJSONObject;
+      }
+      continue;
+      label421:
+      continue;
+      label424:
+      int i = 0;
+      int j = 0;
     }
-    label62:
-    while ((!"2".equals(parambeke.a)) || (TextUtils.isEmpty(parambeke.b))) {
-      return;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(parambeke.b));
-    paramContext.startActivity(localIntent);
-  }
-  
-  public void a(List<beke> paramList)
-  {
-    this.a.clear();
-    this.a.addAll(paramList);
-    a();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if ((paramObject instanceof View)) {
-      paramViewGroup.removeView((View)paramObject);
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559643, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131363288);
-    localImageView.setImageDrawable(URLDrawable.getDrawable(((beke)this.a.get(paramInt)).c));
-    localImageView.setOnClickListener(new tuq(this, paramInt));
-    paramViewGroup.addView(localView);
-    return localView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 

@@ -1,36 +1,42 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-final class bhfp
-  implements DownloadParams.DecodeHandler
+public class bhfp
+  extends ImageSpan
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  
+  public bhfp(Drawable paramDrawable, int paramInt)
   {
-    try
-    {
-      int i = paramBitmap.getHeight();
-      int j = paramBitmap.getWidth();
-      int k = paramDownloadParams.reqWidth;
-      int m = paramDownloadParams.reqHeight;
-      float f = k * 1.0F / j;
-      paramDownloadParams = new Matrix();
-      paramDownloadParams.setScale(f, f);
-      if (i * f > m) {}
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
-      {
-        QLog.d(bhez.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-        break;
-      }
-      return paramDownloadParams;
+    super(paramDrawable, paramInt);
+  }
+  
+  public bhfp a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    return this;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
+    paramInt1 = paramInt2;
+    if (this.mVerticalAlignment == 1) {
+      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
     }
-    catch (Exception paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-      return paramBitmap;
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
+      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
     }
+    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

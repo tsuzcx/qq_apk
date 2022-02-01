@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-
 public class atap
-  implements DialogInterface.OnDismissListener
 {
-  public atap(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ExtendFriendLimitChatMatchFragment.a(this.a, false);
-  }
+  public int a;
+  public Object a;
+  public boolean a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atap
  * JD-Core Version:    0.7.0.1
  */

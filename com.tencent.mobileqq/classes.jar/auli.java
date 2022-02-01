@@ -1,16 +1,60 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class auli
-  implements aumz
+public class auli
+  extends aptq<aulj>
 {
-  auli(aulf paramaulf, List paramList) {}
-  
-  public void a()
+  @NonNull
+  public aulj a(int paramInt)
   {
-    auoo.a(aulf.a(this.jdField_a_of_type_Aulf), this.jdField_a_of_type_JavaUtilList, aulf.a(this.jdField_a_of_type_Aulf), aulf.a(this.jdField_a_of_type_Aulf));
+    return new aulj();
   }
   
-  public void b() {}
+  @Nullable
+  public aulj a(aptx[] paramArrayOfaptx)
+  {
+    aulj localaulj = new aulj();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
+      aulj.a(localaulj, paramArrayOfaptx[0].a);
+    }
+    return localaulj;
+  }
+  
+  public void a(aulj paramaulj) {}
+  
+  public Class<aulj> clazz()
+  {
+    return aulj.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 445;
+  }
 }
 
 

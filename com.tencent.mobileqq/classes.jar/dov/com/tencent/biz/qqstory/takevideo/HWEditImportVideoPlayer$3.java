@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bqgk;
-import bqid;
+import bnee;
+import bnfa;
 
 public class HWEditImportVideoPlayer$3
   implements Runnable
 {
-  public HWEditImportVideoPlayer$3(bqid parambqid, int paramInt) {}
+  public HWEditImportVideoPlayer$3(bnfa parambnfa, int paramInt) {}
   
   public void run()
   {

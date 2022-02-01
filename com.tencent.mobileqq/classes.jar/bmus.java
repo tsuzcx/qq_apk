@@ -1,8 +1,9 @@
-public abstract interface bmus
+public class bmus
 {
-  public abstract void a(awyb paramawyb);
-  
-  public abstract void b(awyb paramawyb);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
 }
 
 

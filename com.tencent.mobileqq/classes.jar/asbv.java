@@ -1,21 +1,16 @@
-import android.content.Context;
-
-public class asbv
-  extends lze
+class asbv
+  implements ascz
 {
-  public static boolean a(Context paramContext, String paramString)
-  {
-    return a(paramContext, "TencentDoc_USER_" + paramString, false);
-  }
+  asbv(asbj paramasbj) {}
   
-  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  public void a(Object[] paramArrayOfObject)
   {
-    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
+    asbj.access$900(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asbv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.thumbplayer.core.downloadproxy.api;
 
 import android.content.Context;
-import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPProxyAdapterManager;
 import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils;
@@ -20,7 +19,7 @@ public class TPDownloadProxyHelper
     if (offlineVinfoAdapter != null) {
       return offlineVinfoAdapter.checkVideoStatus(paramString1, paramString2);
     }
-    return TPProxyAdapterManager.getInstance().checkVideoStatus(paramString1, paramString2);
+    return "";
   }
   
   public static Context getContext()
@@ -55,12 +54,7 @@ public class TPDownloadProxyHelper
     if (offlineVinfoAdapter != null) {
       return offlineVinfoAdapter.getRecordDuration(paramString1, paramString2);
     }
-    return TPProxyAdapterManager.getInstance().getRecordDuration(paramString1, paramString2);
-  }
-  
-  public static boolean isReadyForDownload()
-  {
-    return TPDownloadProxyFactory.isReadyForDownload();
+    return -1;
   }
   
   public static boolean isReadyForPlay()
@@ -83,19 +77,25 @@ public class TPDownloadProxyHelper
     offlineVinfoAdapter = paramITPOfflineVinfoAdapter;
   }
   
-  public static void setTPProxyAdapter(ITPProxyAdapter paramITPProxyAdapter)
-  {
-    TPProxyAdapterManager.getInstance().setProxyAdapter(paramITPProxyAdapter);
-  }
+  public static void setTPProxyAdapter(ITPProxyAdapter paramITPProxyAdapter) {}
   
   public static void setUseService(boolean paramBoolean)
   {
     TPDownloadProxyFactory.setUseService(paramBoolean);
   }
   
-  public static void updateProxyMessage(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  public static void setUserData(String paramString, Object paramObject)
   {
-    TPProxyAdapterManager.getInstance().updateProxyMessage(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
+    try
+    {
+      TPDownloadProxyNative.getInstance().setUserData(paramString, paramObject.toString());
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", "setUserData failed, error:" + paramString.toString());
+    }
   }
   
   public static long verifyOfflineCacheSync(String paramString1, int paramInt, String paramString2, String paramString3)

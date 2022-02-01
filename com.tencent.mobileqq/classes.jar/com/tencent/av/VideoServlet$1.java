@@ -1,16 +1,16 @@
 package com.tencent.av;
 
-import ldd;
-import lfq;
+import lcx;
+import lfk;
 
 public class VideoServlet$1
   implements Runnable
 {
-  public VideoServlet$1(ldd paramldd, HardWareCodecSSO.ConfigRsp paramConfigRsp) {}
+  public VideoServlet$1(lcx paramlcx, HardWareCodecSSO.ConfigRsp paramConfigRsp) {}
   
   public void run()
   {
-    lfq.a().a(this.a);
+    lfk.a().a(this.a);
   }
 }
 

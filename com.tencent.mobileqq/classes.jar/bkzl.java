@@ -1,18 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.mini.util.AnimUtil;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class bkzl
-  implements aqvd
+  implements blac
 {
-  bkzl(bkzk parambkzk, Activity paramActivity) {}
+  bkzl(bkzk parambkzk) {}
   
-  public void onColorNoteAnimFinish()
+  public void a(boolean paramBoolean)
   {
-    if ((bkzk.a(this.jdField_a_of_type_Bkzk) != null) && (bkzk.a(this.jdField_a_of_type_Bkzk).isInternalApp())) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    bkzk.a(this.a, paramBoolean);
+    if ((bkzk.a(this.a)) && (bkzk.b(this.a)))
+    {
+      bkzk.a(this.a);
+      if (bkzk.c(this.a))
+      {
+        QLog.d("VipARCameraController", 2, " init onresume");
+        bkzk.a(this.a).a();
+      }
     }
-    AnimUtil.clearAnim(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

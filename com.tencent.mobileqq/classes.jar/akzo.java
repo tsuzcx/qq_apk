@@ -1,17 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
-final class akzo
-  implements DialogInterface.OnClickListener
+public class akzo
+  extends aepg
 {
-  akzo(Activity paramActivity) {}
+  public CheckBox a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.setResult(-1);
-    this.a.finish();
-  }
+  private akzo(FriendListInnerFrame paramFriendListInnerFrame) {}
 }
 
 

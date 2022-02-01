@@ -2,28 +2,38 @@ package com.tencent.thumbplayer.tplayer;
 
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioFrameOutputListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioProcessFrameOutputListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnCompletionListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnErrorListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnInfoListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnPreparedListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnStateChangeListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnStopAsyncCompleteListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoFrameOutListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoProcessFrameOutputListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 
 class TPPlayerListeners$TPPlayerListenersEmptyImpl
-  implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnSubtitleFrameOutListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoSizeChangedListener
+  implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnAudioProcessFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnStopAsyncCompleteListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnSubtitleFrameOutListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoProcessFrameOutputListener, ITPPlayerListener.IOnVideoSizeChangedListener
 {
   public void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onAudioFrameOut");
+  }
+  
+  public TPPostProcessFrameBuffer onAudioProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onPostProcessFrameOut");
+    return null;
   }
   
   public void onCompletion(ITPPlayer paramITPPlayer)
@@ -56,6 +66,11 @@ class TPPlayerListeners$TPPlayerListenersEmptyImpl
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onStateChange");
   }
   
+  public void onStopAsyncComplete(ITPPlayer paramITPPlayer)
+  {
+    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onStopAsyncComplete");
+  }
+  
   public void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
   {
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onSubtitleData");
@@ -69,6 +84,12 @@ class TPPlayerListeners$TPPlayerListenersEmptyImpl
   public void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onVideoFrameOut");
+  }
+  
+  public TPPostProcessFrameBuffer onVideoProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onPostProcessFrameOut");
+    return null;
   }
   
   public void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)

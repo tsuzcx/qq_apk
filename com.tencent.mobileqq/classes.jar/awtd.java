@@ -1,25 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class awtd
-  implements View.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public awtd(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
+  public awtd(StuffContainerView paramStuffContainerView) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {}
-    for (;;)
+    long l1 = System.currentTimeMillis();
+    long l2 = StuffContainerView.a(this.a);
+    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
-      bdll.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
-    }
+      StuffContainerView.a(this.a, l1);
+      if (QLog.isColorLevel()) {
+        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
+      }
+    } while (this.a.a == null);
+    this.a.a.l();
   }
 }
 

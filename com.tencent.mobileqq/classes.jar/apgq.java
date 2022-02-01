@@ -1,12 +1,34 @@
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
+
 public class apgq
+  extends amsu
 {
-  public long a;
-  public boolean a;
+  public apgq(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public apgq(long paramLong, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((paramBoolean) && (paramString != null))
+    {
+      String str = ContactUtils.getBuddyNickName(this.a.app, paramString, false);
+      int i = 0;
+      while (i < this.a.c.getChildCount())
+      {
+        Object localObject = this.a.c.getChildAt(i);
+        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof apgz)) && (paramString.equals(((apgz)((View)localObject).getTag()).a)))
+        {
+          localObject = (TextView)((View)localObject).findViewById(2131371777);
+          if (localObject != null) {
+            ((TextView)localObject).setText(str);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

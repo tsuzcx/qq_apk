@@ -1,17 +1,19 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-final class PtvTemplateManager$2
+class PtvTemplateManager$2
   implements Runnable
 {
+  PtvTemplateManager$2(PtvTemplateManager paramPtvTemplateManager, String paramString) {}
+  
   public void run()
   {
-    bhmi.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
+    FileUtils.writeFile(PtvTemplateManager.a().getPath() + File.separator, "dov_doodle_template_new.cfg", this.a);
     if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "save Config to file finish.");
+      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
     }
   }
 }

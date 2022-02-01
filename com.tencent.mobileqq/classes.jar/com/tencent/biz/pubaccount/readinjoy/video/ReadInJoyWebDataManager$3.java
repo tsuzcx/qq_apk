@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.net.URL;
 import org.json.JSONObject;
-import rlz;
+import rtb;
 
 public class ReadInJoyWebDataManager$3
   implements Runnable
 {
-  public ReadInJoyWebDataManager$3(rlz paramrlz, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public ReadInJoyWebDataManager$3(rtb paramrtb, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    long l = rlz.a();
+    long l = rtb.a();
     try
     {
-      rlz.a(l);
-      if (rlz.b() > 52428800L) {
+      rtb.a(l);
+      if (rtb.b() > 52428800L) {
         return;
       }
     }

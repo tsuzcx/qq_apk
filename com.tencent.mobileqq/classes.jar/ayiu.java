@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
+import java.util.Comparator;
 
-class ayiu
-  implements View.OnClickListener
+public final class ayiu
+  implements Comparator<PortalManager.TimerConfig>
 {
-  ayiu(ayit paramayit) {}
-  
-  public void onClick(View paramView)
+  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (StartLiveTopicLabelListView.a(this.a.a) != null) {
-        StartLiveTopicLabelListView.a(this.a.a).a();
-      }
+    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
+    if (l > 0L) {
+      return 1;
     }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

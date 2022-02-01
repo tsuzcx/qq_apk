@@ -1,25 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class oij
-  extends blgm
+class oij
+  implements View.OnClickListener
 {
-  public oij(ReadInJoyNaviController.1 param1, View paramView) {}
+  oij(oif paramoif) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, oii.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new oik(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    oii.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
+    oif.a(this.a, 5);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

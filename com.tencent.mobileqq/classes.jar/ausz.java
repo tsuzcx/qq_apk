@@ -1,45 +1,35 @@
-import android.content.Context;
-import com.tencent.kwstudio.office.base.IGlobal;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.jsp.AECameraPlugin;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import java.io.File;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
+import org.json.JSONObject;
 
-public final class ausz
-  implements IGlobal
+public class ausz
+  implements INetEngine.INetEngineListener
 {
-  private final TdsReaderGlobal a;
+  public ausz(AECameraPlugin paramAECameraPlugin, String paramString1, String paramString2, String paramString3) {}
   
-  private ausz(TdsReaderGlobal paramTdsReaderGlobal)
+  public void onResp(NetResp paramNetResp)
   {
-    this.a = paramTdsReaderGlobal;
-  }
-  
-  public Context getApplicationContext()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public Executor getExecutor()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public String getFileDir()
-  {
-    Context localContext = getApplicationContext();
-    File localFile2 = localContext.getExternalFilesDir(null);
-    File localFile1 = localFile2;
-    if (localFile2 == null) {
-      localFile1 = localContext.getFilesDir();
+    if (paramNetResp.mErrCode == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 2);
+      paramNetResp = AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading succeeded");
+      this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { paramNetResp.toString() });
+      if (AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.mRuntime.a())) {
+        ypi.a(BaseApplicationImpl.getApplication(), new File(this.c));
+      }
+      return;
     }
-    return localFile1.getAbsolutePath();
+    AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 3);
+    paramNetResp = AECameraPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading failed");
+    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { paramNetResp.toString() });
   }
   
-  public InputStream getResourceAsStream(String paramString)
-  {
-    return null;
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

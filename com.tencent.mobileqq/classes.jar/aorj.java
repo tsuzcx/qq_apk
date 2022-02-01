@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import eipc.EIPCResult;
 
 class aorj
-  extends ayxn
+  implements aosi
 {
-  aorj(aori paramaori, QQAppInterface paramQQAppInterface) {}
+  aorj(aori paramaori, int paramInt) {}
   
-  public void a(cmd0x9ae.RspBody paramRspBody)
+  public void a(EIPCResult paramEIPCResult)
   {
-    aori.a(this.jdField_a_of_type_Aori, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspBody, this);
+    this.jdField_a_of_type_Aori.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
   }
 }
 

@@ -1,159 +1,97 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.util.WeakReference;
+import android.support.annotation.UiThread;
+import android.view.View;
 
-public class uky
-  extends Handler
+public abstract class uky<T>
+  implements Handler.Callback
 {
-  private final WeakReference<WSPlayerManager> a;
+  protected int a;
+  protected Context a;
+  protected Handler a;
+  protected View a;
+  protected T a;
+  protected int b = -1;
   
-  public uky(WSPlayerManager paramWSPlayerManager, Looper paramLooper)
+  public uky(Context paramContext)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramWSPlayerManager);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void dispatchMessage(Message paramMessage)
+  private void e()
   {
-    WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
-    if ((localWSPlayerManager == null) || (WSPlayerManager.e(localWSPlayerManager))) {}
-    do
-    {
-      return;
-      if (!(paramMessage.obj instanceof ukz)) {
-        break;
-      }
-    } while (!WSPlayerManager.a(localWSPlayerManager, (ukz)paramMessage.obj));
-    super.dispatchMessage(paramMessage);
-    return;
-    super.dispatchMessage(paramMessage);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
-    if (localWSPlayerManager == null) {
-      return;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  protected Resources a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      return this.jdField_a_of_type_AndroidContentContext.getResources();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case -4: 
-      localObject = new StringBuilder().append("[WSPlayerManager.java][handleMessage] MSG_PLAY_BY_URL_FAILED. playerStartByUrl failed, retry again. RetryVideoUrl:");
-      if (WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Uld == null) {
-        break;
-      }
-    case -3: 
-      for (paramMessage = WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Uld.b;; paramMessage = "videoInfo is null.")
-      {
-        uqf.d("WS_VIDEO_PLAYER", paramMessage);
-        if (WSPlayerManager.b(localWSPlayerManager) == 1) {
-          break;
-        }
-        WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Boolean = false;
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager), false);
-        WSPlayerManager.c(localWSPlayerManager);
-        return;
-        uqf.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][handleMessage] MSG_PRE_PLAY_TIME_OUT. prePlay timeout, try rePlay");
-        paramMessage = WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
-        if ((paramMessage != null) && (paramMessage.d()) && (paramMessage.a() == WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Uld))
-        {
-          uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_PRE_PLAY_TIME_OUT. startVideoAfterPrepared!");
-          WSPlayerManager.a(localWSPlayerManager).a();
-          return;
-        }
-        WSPlayerManager.b(localWSPlayerManager).jdField_a_of_type_Boolean = false;
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager));
-        WSPlayerManager.a(localWSPlayerManager, WSPlayerManager.b(localWSPlayerManager), false);
-        return;
-      }
-    }
-    paramMessage = WSPlayerManager.a(localWSPlayerManager);
-    Object localObject = WSPlayerManager.b(localWSPlayerManager);
-    long l1;
-    boolean bool;
-    if ((paramMessage != null) && (paramMessage.b()) && ((((ukz)localObject).jdField_a_of_type_Ukp == null) || (!((ukz)localObject).jdField_a_of_type_Ukp.a((ukz)localObject))) && (!paramMessage.e()))
-    {
-      l1 = paramMessage.a();
-      long l2 = paramMessage.b();
-      if (((ukz)localObject).jdField_a_of_type_Ukp != null) {
-        ((ukz)localObject).jdField_a_of_type_Ukp.a((ukz)localObject, l1, l2);
-      }
-      if (l1 < l2 - 300L) {
-        break label508;
-      }
-      WSPlayerManager.e(localWSPlayerManager, true);
-      int i = (int)(l2 - l1);
-      uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_FOR_UPDATE_VIDEO_PLAY_POSITION onVideoEndSoon pos:" + l1 + ", duration:" + l2 + ", remainDuration:" + i + ", mHasCallEndingSoon:" + WSPlayerManager.f(localWSPlayerManager));
-      if ((!WSPlayerManager.f(localWSPlayerManager)) && (WSPlayerManager.a(localWSPlayerManager) != null))
-      {
-        WSPlayerManager.f(localWSPlayerManager, true);
-        if ((((ukz)localObject).jdField_a_of_type_Ukp != null) && (!WSPlayerManager.g(localWSPlayerManager)))
-        {
-          if ((!WSPlayerManager.h(localWSPlayerManager)) && (!WSPlayerManager.i(localWSPlayerManager))) {
-            break label502;
-          }
-          bool = true;
-          ((ukz)localObject).jdField_a_of_type_Ukp.a(WSPlayerManager.b(localWSPlayerManager), i, bool);
-        }
-      }
-    }
-    for (;;)
-    {
-      WSPlayerManager.a(localWSPlayerManager).sendEmptyMessageDelayed(-2, 100L);
-      return;
-      label502:
-      bool = false;
-      break;
-      label508:
-      if ((l1 <= 500L) && (l1 >= 0L) && (WSPlayerManager.j(localWSPlayerManager)))
-      {
-        uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][handleMessage] MSG_FOR_UPDATE_VIDEO_PLAY_POSITION onVideoReplayOnLoop pos:" + l1);
-        WSPlayerManager.g(localWSPlayerManager, false);
-        WSPlayerManager.f(localWSPlayerManager, false);
-        WSPlayerManager.e(localWSPlayerManager, false);
-        WSPlayerManager.d(localWSPlayerManager);
-        paramMessage.i();
-        paramMessage.j();
-        if (WSPlayerManager.a(localWSPlayerManager) != null)
-        {
-          paramMessage = WSPlayerManager.a(localWSPlayerManager).iterator();
-          while (paramMessage.hasNext()) {
-            ((ula)paramMessage.next()).a(WSPlayerManager.b(localWSPlayerManager), WSPlayerManager.e(localWSPlayerManager));
-          }
-        }
-      }
+    return null;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
     }
   }
   
-  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
+  public void a(T paramT)
   {
-    WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
-    if ((localWSPlayerManager == null) || (WSPlayerManager.e(localWSPlayerManager))) {
-      return false;
-    }
-    if ((Looper.myLooper() == Looper.getMainLooper()) && (paramLong <= SystemClock.uptimeMillis()))
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+    e();
+  }
+  
+  @UiThread
+  protected abstract void b();
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected abstract void c();
+  
+  public void d()
+  {
+    c();
+    b(-1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
     {
-      if (paramMessage.getCallback() != null) {
-        paramMessage.getCallback().run();
-      }
-      for (;;)
-      {
-        return true;
-        handleMessage(paramMessage);
-      }
+      b();
+      return true;
     }
-    if (paramMessage.obj == null) {
-      paramMessage.obj = WSPlayerManager.b(localWSPlayerManager);
-    }
-    return super.sendMessageAtTime(paramMessage, paramLong);
+    return false;
   }
 }
 

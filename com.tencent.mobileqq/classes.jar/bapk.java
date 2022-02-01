@@ -1,56 +1,19 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.videoplatform.api.ILoadSo;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bapk
-  implements ILoadSo
+  implements View.OnClickListener
 {
-  boolean a = false;
+  public bapk(CommentsView paramCommentsView, baph parambaph, int paramInt) {}
   
-  public boolean isCkeygeneratorV2Load()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public boolean isCkguardLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean isDownProxyLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean isTPCoreLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean loadDownProxySync()
-  {
-    boolean bool = bdgx.a().a("DownloadProxy").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
+    if ((this.jdField_a_of_type_Baph.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
     }
-    return bool;
-  }
-  
-  public void loadSo(LoadSoCallback paramLoadSoCallback)
-  {
-    bdgx localbdgx = bdgx.a();
-    paramLoadSoCallback = new bapl(this, paramLoadSoCallback);
-    localbdgx.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
-  }
-  
-  public boolean loadTPCoreSync()
-  {
-    boolean bool = bdgx.a().a("TPCore-master").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
-    }
-    return bool;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

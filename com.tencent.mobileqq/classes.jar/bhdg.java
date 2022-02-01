@@ -1,48 +1,44 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
+
 public class bhdg
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
+  private bhdg(DraggableGridView paramDraggableGridView) {}
   
-  public bhdg() {}
-  
-  public bhdg(int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(bhdg parambhdg)
-  {
-    if (parambhdg != null)
+    int i = 0;
+    while (i < DraggableGridView.a(this.a).getChildCount())
     {
-      this.jdField_a_of_type_Int = parambhdg.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = parambhdg.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public Object clone()
-  {
-    return new bhdg(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof bhdg))
-    {
-      paramObject = (bhdg)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
+      if ((paramAnimation instanceof GridView))
       {
-        bool1 = bool2;
-        if (bhjx.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-          bool1 = true;
+        paramAnimation = (GridView)paramAnimation;
+        int j = 0;
+        while (j < paramAnimation.getChildCount())
+        {
+          paramAnimation.getChildAt(j).clearAnimation();
+          paramAnimation.getChildAt(j).setPressed(false);
+          paramAnimation.getChildAt(j).setVisibility(0);
+          j += 1;
         }
       }
+      i += 1;
     }
-    return bool1;
+    this.a.a();
+    DraggableGridView.b(this.a, false);
+    DraggableGridView.c(this.a, false);
+    DraggableGridView.a(this.a).notifyDataSetChanged();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

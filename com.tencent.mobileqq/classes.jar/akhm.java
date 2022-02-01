@@ -1,22 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-
-class akhm
-  implements DialogInterface.OnClickListener
+public abstract interface akhm
 {
-  akhm(akha paramakha) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.getIntent().removeExtra("if_check_account_same");
-    this.a.b.dismiss();
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhm
  * JD-Core Version:    0.7.0.1
  */

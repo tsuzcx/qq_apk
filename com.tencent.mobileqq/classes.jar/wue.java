@@ -1,9 +1,10 @@
 public class wue
 {
-  @zoq(a="type")
+  public float a;
   public int a;
-  @zoq(a="content")
-  public wud a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 

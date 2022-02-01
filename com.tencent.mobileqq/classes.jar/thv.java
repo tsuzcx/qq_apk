@@ -1,15 +1,24 @@
-import kotlin.Metadata;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "callBackId", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/UIBridgeInvokeHandler$arouseReadInJoyNativeCommentView$1$1"}, k=3, mv={1, 1, 16})
-final class thv
-  implements tfg
+class thv
+  implements thw
 {
-  thv(tht paramtht, String paramString) {}
+  thv(thu paramthu) {}
   
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Tht.a(paramString, paramJSONObject);
+    thu.a(this.a).setRightButtonText(paramString, paramOnClickListener);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    thu.a(this.a).setTitleTransparent(paramBoolean);
+  }
+  
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    thu.a(this.a).setLeftButtonText(paramString, paramOnClickListener);
   }
 }
 

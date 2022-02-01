@@ -1,18 +1,121 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class ldu
-  implements mvr
+  extends BroadcastReceiver
 {
-  ldu(ldt paramldt, ldy paramldy, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
+  public static String a;
+  VideoAppInterface a;
   
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  static
   {
-    this.jdField_a_of_type_Ldy.j = paramInt;
-    this.jdField_a_of_type_Ldy.i = paramString2;
-    DeviceCapabilityExamination.a(this.jdField_a_of_type_Ldy, this.jdField_a_of_type_Ldt.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Ldt.jdField_a_of_type_Ldr != null) {
-      this.jdField_a_of_type_Ldt.jdField_a_of_type_Ldr.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
-    }
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
+  
+  public ldu(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    long l;
+    int i;
+    boolean bool;
+    int j;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              try
+              {
+                paramContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+                if (QLog.isColorLevel()) {
+                  QLog.d(jdField_a_of_type_JavaLangString, 2, "recv account broadcast: " + paramIntent.getAction());
+                }
+                if (!paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED")) {
+                  break;
+                }
+                this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1001);
+                if (paramContext != null) {
+                  paramContext.A();
+                }
+                Process.killProcess(Process.myPid());
+                return;
+              }
+              catch (RuntimeException paramContext) {}
+            } while (!QLog.isColorLevel());
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "RuntimeException", paramContext);
+            return;
+            if (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1003);
+              if (paramContext != null) {
+                paramContext.A();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.LOGOUT"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1002);
+              if (paramContext != null) {
+                paramContext.A();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1005);
+              if (paramContext != null) {
+                paramContext.A();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) {
+              break;
+            }
+          } while (paramContext == null);
+          if (paramContext.e) {
+            paramContext.a(paramContext.b, paramContext.a, 74);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "ACTION_ACCOUNT_CHANGED, video process exit!");
+          }
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1004);
+          paramContext.A();
+          Process.killProcess(Process.myPid());
+          return;
+        } while (!"tencent.video.q2v.membersChange".equals(paramIntent.getAction()));
+        l = paramIntent.getLongExtra("relationId", -1L);
+        i = paramIntent.getIntExtra("relationType", 0);
+        if (l != -1L) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "can not get the right value");
+      return;
+      bool = paramIntent.getBooleanExtra("Exit", false);
+      j = paramIntent.getIntExtra("avtype", 0);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(79), Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(j) });
+    } while ((!bool) || (j == 2));
+    paramContext.b(i, l);
   }
 }
 

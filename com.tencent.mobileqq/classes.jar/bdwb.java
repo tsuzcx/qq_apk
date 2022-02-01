@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment;
+import android.view.View;
 
-public class bdwb
-  implements DialogInterface.OnCancelListener
+class bdwb
+  implements bjoe
 {
-  public bdwb(StudyRoomLoadingFragment paramStudyRoomLoadingFragment) {}
+  bdwb(bdvx parambdvx) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a();
+    bdvx.a(this.a);
+    if (paramInt == 0) {
+      bdvx.a(this.a, "");
+    }
   }
 }
 

@@ -1,28 +1,11 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class afro
-  implements ThreadExcutor.IThreadListener
+class afro
+  implements apfg
 {
-  public afro(TroopAssistantActivity paramTroopAssistantActivity) {}
+  afro(afrn paramafrn) {}
   
-  public void onAdded()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
-  }
-  
-  public void onPostRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, false);
-  }
-  
-  public void onPreRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
+    afrn.a(this.a);
   }
 }
 

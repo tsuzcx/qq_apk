@@ -1,27 +1,64 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.TimeChangeReceiver.1;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import java.lang.ref.WeakReference;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
-public class afol
-  implements View.OnClickListener
+public final class afol
+  extends BroadcastReceiver
 {
-  public afol(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
+  private Calendar jdField_a_of_type_JavaUtilCalendar;
   
-  public void onClick(View paramView)
+  private afol(BaseChatPie paramBaseChatPie)
   {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+  }
+  
+  private void a()
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localBaseChatPie != null)
     {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+      if (this.jdField_a_of_type_JavaUtilCalendar == null) {
+        this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+      }
+      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
+      int i = this.jdField_a_of_type_JavaUtilCalendar.get(11);
+      if ((i < 19) && (i >= 7)) {
+        break label81;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label81:
+    for (boolean bool = true; Looper.getMainLooper() == Looper.myLooper(); bool = false)
+    {
+      localBaseChatPie.panelicons.b(bool);
+      return;
+    }
+    localBaseChatPie.getUIHandler().post(new AIOIconChangeByTimeHelper.TimeChangeReceiver.1(this, localBaseChatPie, bool));
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
+      a();
+    }
+    do
+    {
+      return;
+      if ("android.intent.action.TIME_SET".equals(paramContext))
+      {
+        a();
+        return;
+      }
+    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
+    a();
   }
 }
 

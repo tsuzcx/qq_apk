@@ -1,48 +1,56 @@
 import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pab
+  extends RecyclerView.Adapter
 {
-  public static int a(BaseArticleInfo paramBaseArticleInfo)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private tbn jdField_a_of_type_Tbn;
+  private List<String> b = new ArrayList();
+  
+  public pab(Context paramContext, List<String> paramList1, List<String> paramList2, tbn paramtbn)
   {
-    int j = 0;
-    int i = j;
-    if (b(paramBaseArticleInfo))
+    this.b = paramList1;
+    this.jdField_a_of_type_JavaUtilList = paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Tbn = paramtbn;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.b != null) {
+      return this.b.size();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder instanceof pad))
     {
-      i = j;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
-        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
+      pad localpad = (pad)paramViewHolder;
+      if ((paramInt >= 0) && (paramInt < this.b.size()))
+      {
+        String str1 = (String)this.b.get(paramInt);
+        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localpad.a.setText(str1);
+        localpad.a.setOnClickListener(new pac(this, str2, str1));
       }
     }
-    return i;
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
-  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    int j = paramView.getPaddingTop();
-    int k = paramView.getPaddingBottom();
-    if (ozs.u()) {
-      paramRoundAngleFrameLayout.setRadius(bhgr.a(paramContext, 8.0F));
-    }
-    for (int i = bhgr.a(paramContext, 14.0F);; i = bhgr.a(paramContext, 6.0F))
-    {
-      paramView.setPadding(i, j, i, k);
-      return;
-      paramRoundAngleFrameLayout.setRadius(bhgr.a(paramContext, 0.0F));
-    }
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
+    return new pad(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560150, null));
   }
 }
 

@@ -1,22 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment.onCreate..inlined.let.lambda.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rpr
-  extends AnimatorListenerAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "errorMsg", "", "onResult", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$1$1"}, k=3, mv={1, 1, 16})
+public final class rpr
+  implements rmf
 {
-  private rpr(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  public rpr(SelectTopicFragment.onCreate..inlined.let.lambda.1 param1, ColumnInfo paramColumnInfo) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public final void a(int paramInt, @Nullable String paramString)
   {
-    super.onAnimationCancel(paramAnimator);
-    VideoFeedsGuideView.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    VideoFeedsGuideView.a(this.a, true);
+    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.this$0, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$activity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$rowKey$inlined, paramString);
   }
 }
 

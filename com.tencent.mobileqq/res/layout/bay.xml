@@ -13,7 +13,7 @@
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ckr" android:scaleType="centerInside" android:layout_toLeftOf="@id/jfe" android:layout_centerVertical="true" />
     </RelativeLayout>
     <FrameLayout android:id="@id/fcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/emoticon_aio_panel" />
         <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/aom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/ffj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>

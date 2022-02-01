@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api;
 
-import acos;
-import acvc;
+import abla;
+import abrl;
 import java.lang.ref.WeakReference;
 
 class GdtAd$3
@@ -13,11 +13,11 @@ class GdtAd$3
   {
     if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
     {
-      acvc.d("GdtAd", "notifyImpression error");
+      abrl.d("GdtAd", "notifyImpression error");
       return;
     }
-    acvc.b("GdtAd", "notifyImpression");
-    ((acos)GdtAd.access$000((GdtAd)this.a.get()).get()).onAdImpression((GdtAd)this.a.get());
+    abrl.b("GdtAd", "notifyImpression");
+    ((abla)GdtAd.access$000((GdtAd)this.a.get()).get()).onAdImpression((GdtAd)this.a.get());
   }
 }
 

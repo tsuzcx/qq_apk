@@ -1,19 +1,6 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-public class aidq
+public abstract interface aidq
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  
-  public aidq(aido paramaido) {}
+  public abstract void a(aijj paramaijj, int paramInt);
 }
 
 

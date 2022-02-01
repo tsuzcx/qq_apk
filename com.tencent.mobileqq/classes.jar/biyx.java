@@ -1,6 +1,22 @@
-public abstract interface biyx
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqconnect.wtlogin.Login;
+
+public class biyx
+  implements TextView.OnEditorActionListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public biyx(Login paramLogin) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 6)
+    {
+      this.a.b();
+      return true;
+    }
+    return false;
+  }
 }
 
 

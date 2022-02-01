@@ -1,21 +1,32 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class bbrf
-  implements MessageQueue.IdleHandler
+public class bbrf
 {
-  bbrf(bbrb parambbrb) {}
+  public int a;
+  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  public String a;
+  public ArrayList<bbrg> a;
+  public int b = 0;
   
-  public boolean queueIdle()
+  public bbrf(ShortVideoResourceManager paramShortVideoResourceManager, HttpNetReq paramHttpNetReq)
   {
-    AIOPictureData localAIOPictureData = this.a.a();
-    bbpn localbbpn = new bbpn();
-    if ((localAIOPictureData != null) && (localbbpn.a(localAIOPictureData, 4)) && (localbbpn.a(localAIOPictureData, 4) == null))
-    {
-      this.a.f(true);
-      this.a.updateUI();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
+    this.b = 0;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
     }
-    return false;
+    this.b = 1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

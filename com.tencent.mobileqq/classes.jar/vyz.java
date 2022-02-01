@@ -1,6 +1,17 @@
-public abstract interface vyz
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+
+public class vyz
+  extends vqm
 {
-  public abstract void a();
+  public vyz(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
+  {
+    super(paramRspQQStoryGuide.result);
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideResponse{}";
+  }
 }
 
 

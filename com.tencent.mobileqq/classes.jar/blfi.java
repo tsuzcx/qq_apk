@@ -1,16 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
-
-public class blfi
-  extends Handler
+public abstract interface blfi
 {
-  public blfi(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(paramMessage);
-  }
+  public abstract void a(int paramInt, String paramString, byte[] paramArrayOfByte);
 }
 
 

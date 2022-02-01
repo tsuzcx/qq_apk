@@ -1,17 +1,23 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqun
-  implements ViewTreeObserver.OnPreDrawListener
+class aqun
+  implements View.OnClickListener
 {
-  public aqun(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  aqun(aqum paramaqum) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ColorNoteSmallScreenRelativeLayout.a(this.a);
-    return true;
+    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    {
+      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.a(this.a.a, null);
+      this.a.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

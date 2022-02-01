@@ -1,23 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 
-public class akay
-  implements DialogInterface.OnDismissListener
+class akay
+  extends AbsPreDownloadTask
 {
-  public akay(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  akay(akaw paramakaw, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, bgod parambgod, DownloadParam paramDownloadParam)
   {
-    paramDialogInterface = (akir)paramDialogInterface;
-    paramDialogInterface.a();
-    int i = paramDialogInterface.a();
-    paramDialogInterface = (aocm)this.a.a.getManager(92);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
-    }
+    super(paramQQAppInterface, paramString);
+  }
+  
+  public void realCancel() {}
+  
+  public void realStart()
+  {
+    akaw.a(this.jdField_a_of_type_Akaw, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bgod, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam);
   }
 }
 

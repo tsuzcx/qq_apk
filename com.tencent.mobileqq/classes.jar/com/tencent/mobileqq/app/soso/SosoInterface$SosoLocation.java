@@ -3,7 +3,6 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apcu;
 import com.tencent.map.geolocation.TencentPoi;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,100 +10,100 @@ import java.util.List;
 public final class SosoInterface$SosoLocation
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoLocation> CREATOR = new apcu();
-  public double a;
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public List<TencentPoi> a;
-  public double b;
-  public float b;
-  public String b;
-  public double c;
-  public String c;
-  public double d;
-  public String d;
-  public double e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public static final Parcelable.Creator<SosoLocation> CREATOR = new SosoInterface.SosoLocation.1();
+  public float accuracy;
+  public String address;
+  public double altitude;
+  public String city;
+  public String cityCode;
+  public String district;
+  public int fakeReason;
+  public long locationTime;
+  public double mLat02;
+  public double mLat84;
+  public double mLon02;
+  public double mLon84;
+  public String mProviderSource;
+  public String mVerifyKey;
+  public String name;
+  public String nation;
+  public List<TencentPoi> poi;
+  public String province;
+  public float speed;
+  public String street;
+  public String streetNo;
+  public String town;
+  public String village;
   
   public SosoInterface$SosoLocation() {}
   
-  public SosoInterface$SosoLocation(Parcel paramParcel)
+  protected SosoInterface$SosoLocation(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Double = paramParcel.readDouble();
-    this.jdField_b_of_type_Double = paramParcel.readDouble();
-    this.jdField_c_of_type_Double = paramParcel.readDouble();
-    this.jdField_d_of_type_Double = paramParcel.readDouble();
-    this.jdField_e_of_type_Double = paramParcel.readDouble();
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Float = paramParcel.readFloat();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.f = paramParcel.readString();
-    this.g = paramParcel.readString();
-    this.h = paramParcel.readString();
-    this.i = paramParcel.readString();
-    this.j = paramParcel.readString();
-    this.k = paramParcel.readString();
-    this.l = paramParcel.readString();
-    this.m = paramParcel.readString();
+    this.mLat02 = paramParcel.readDouble();
+    this.mLon02 = paramParcel.readDouble();
+    this.mLat84 = paramParcel.readDouble();
+    this.mLon84 = paramParcel.readDouble();
+    this.altitude = paramParcel.readDouble();
+    this.accuracy = paramParcel.readFloat();
+    this.fakeReason = paramParcel.readInt();
+    this.locationTime = paramParcel.readLong();
+    this.speed = paramParcel.readFloat();
+    this.name = paramParcel.readString();
+    this.address = paramParcel.readString();
+    this.nation = paramParcel.readString();
+    this.province = paramParcel.readString();
+    this.city = paramParcel.readString();
+    this.cityCode = paramParcel.readString();
+    this.district = paramParcel.readString();
+    this.town = paramParcel.readString();
+    this.village = paramParcel.readString();
+    this.street = paramParcel.readString();
+    this.streetNo = paramParcel.readString();
+    this.mVerifyKey = paramParcel.readString();
+    this.mProviderSource = paramParcel.readString();
   }
   
-  public SosoLocation a(int paramInt, boolean paramBoolean)
+  public SosoLocation clone(int paramInt, boolean paramBoolean)
   {
     SosoLocation localSosoLocation = new SosoLocation();
     if (paramBoolean)
     {
-      localSosoLocation.jdField_a_of_type_Double = this.jdField_a_of_type_Double;
-      localSosoLocation.jdField_b_of_type_Double = this.jdField_b_of_type_Double;
-      localSosoLocation.jdField_c_of_type_Double = this.jdField_c_of_type_Double;
-      localSosoLocation.jdField_d_of_type_Double = this.jdField_d_of_type_Double;
+      localSosoLocation.mLat02 = this.mLat02;
+      localSosoLocation.mLon02 = this.mLon02;
+      localSosoLocation.mLat84 = this.mLat84;
+      localSosoLocation.mLon84 = this.mLon84;
     }
-    localSosoLocation.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    localSosoLocation.jdField_e_of_type_Double = this.jdField_e_of_type_Double;
-    localSosoLocation.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    localSosoLocation.l = this.l;
-    localSosoLocation.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localSosoLocation.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localSosoLocation.m = this.m;
+    localSosoLocation.speed = this.speed;
+    localSosoLocation.altitude = this.altitude;
+    localSosoLocation.accuracy = this.accuracy;
+    localSosoLocation.mVerifyKey = this.mVerifyKey;
+    localSosoLocation.fakeReason = this.fakeReason;
+    localSosoLocation.locationTime = this.locationTime;
+    localSosoLocation.mProviderSource = this.mProviderSource;
     if ((paramInt == 1) || (paramInt == 3) || (paramInt == 4))
     {
-      localSosoLocation.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localSosoLocation.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localSosoLocation.name = this.name;
+      localSosoLocation.address = this.address;
     }
     if ((paramInt == 3) || (paramInt == 4))
     {
-      localSosoLocation.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localSosoLocation.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      localSosoLocation.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-      localSosoLocation.f = this.f;
-      localSosoLocation.g = this.g;
-      localSosoLocation.h = this.h;
-      localSosoLocation.i = this.i;
-      localSosoLocation.j = this.j;
-      localSosoLocation.k = this.k;
+      localSosoLocation.nation = this.nation;
+      localSosoLocation.province = this.province;
+      localSosoLocation.city = this.city;
+      localSosoLocation.cityCode = this.cityCode;
+      localSosoLocation.district = this.district;
+      localSosoLocation.town = this.town;
+      localSosoLocation.village = this.village;
+      localSosoLocation.street = this.street;
+      localSosoLocation.streetNo = this.streetNo;
     }
     if (paramInt == 4)
     {
       LinkedList localLinkedList = new LinkedList();
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        localLinkedList.addAll(this.jdField_a_of_type_JavaUtilList);
+      if ((this.poi != null) && (this.poi.size() > 0)) {
+        localLinkedList.addAll(this.poi);
       }
-      localSosoLocation.jdField_a_of_type_JavaUtilList = localLinkedList;
+      localSosoLocation.poi = localLinkedList;
     }
     return localSosoLocation;
   }
@@ -116,28 +115,28 @@ public final class SosoInterface$SosoLocation
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeDouble(this.jdField_a_of_type_Double);
-    paramParcel.writeDouble(this.jdField_b_of_type_Double);
-    paramParcel.writeDouble(this.jdField_c_of_type_Double);
-    paramParcel.writeDouble(this.jdField_d_of_type_Double);
-    paramParcel.writeDouble(this.jdField_e_of_type_Double);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeFloat(this.jdField_b_of_type_Float);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.f);
-    paramParcel.writeString(this.g);
-    paramParcel.writeString(this.h);
-    paramParcel.writeString(this.i);
-    paramParcel.writeString(this.j);
-    paramParcel.writeString(this.k);
-    paramParcel.writeString(this.l);
-    paramParcel.writeString(this.m);
+    paramParcel.writeDouble(this.mLat02);
+    paramParcel.writeDouble(this.mLon02);
+    paramParcel.writeDouble(this.mLat84);
+    paramParcel.writeDouble(this.mLon84);
+    paramParcel.writeDouble(this.altitude);
+    paramParcel.writeFloat(this.accuracy);
+    paramParcel.writeInt(this.fakeReason);
+    paramParcel.writeLong(this.locationTime);
+    paramParcel.writeFloat(this.speed);
+    paramParcel.writeString(this.name);
+    paramParcel.writeString(this.address);
+    paramParcel.writeString(this.nation);
+    paramParcel.writeString(this.province);
+    paramParcel.writeString(this.city);
+    paramParcel.writeString(this.cityCode);
+    paramParcel.writeString(this.district);
+    paramParcel.writeString(this.town);
+    paramParcel.writeString(this.village);
+    paramParcel.writeString(this.street);
+    paramParcel.writeString(this.streetNo);
+    paramParcel.writeString(this.mVerifyKey);
+    paramParcel.writeString(this.mProviderSource);
   }
 }
 

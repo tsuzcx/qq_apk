@@ -1,40 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-
 public class bfkg
-  extends aojs
 {
-  public bfkg(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
+  public String toString()
   {
-    this.a.app.removeObserver(this.a.a);
-    if (paramInt1 == 0)
-    {
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
-      localObject = null;
-      if (localTroopManager != null) {
-        localObject = localTroopManager.b(Long.toString(paramLong));
-      }
-      if (localObject != null)
-      {
-        ((TroopInfo)localObject).troopLat = paramInt2;
-        ((TroopInfo)localObject).troopLon = paramInt3;
-        localTroopManager.b((TroopInfo)localObject);
-      }
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("troopUin", paramLong);
-    ((Intent)localObject).putExtra("errCode", paramInt1);
-    ((Intent)localObject).putExtra("isClear", paramBoolean);
-    ((Intent)localObject).putExtra("location", paramString);
-    ((Intent)localObject).putExtra("lat", paramInt2);
-    ((Intent)localObject).putExtra("lon", paramInt3);
-    this.a.setResult(-1, (Intent)localObject);
-    this.a.finish();
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.b).append("]");
+    return localStringBuilder.toString();
   }
 }
 

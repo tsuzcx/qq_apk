@@ -1,133 +1,118 @@
 public final class gs
 {
-  private int jdField_a_of_type_Int = 0;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  public static final gs a;
+  private final int jdField_a_of_type_Int;
+  private gt jdField_a_of_type_Gt;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private final int jdField_b_of_type_Int;
+  private gt jdField_b_of_type_Gt;
+  private int[] jdField_b_of_type_ArrayOfInt;
   
-  private void a(int paramInt)
+  static
   {
-    if (paramInt > this.jdField_a_of_type_ArrayOfInt.length << 5)
-    {
-      int[] arrayOfInt = a(paramInt);
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt.length);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    jdField_a_of_type_Gs = new gs(285, 256);
+  }
+  
+  public gs(int paramInt1, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    if (paramInt2 <= 0) {
+      a();
     }
   }
   
-  private static int[] a(int paramInt)
+  static int a(int paramInt1, int paramInt2)
   {
-    return new int[paramInt + 31 >> 5];
+    return paramInt1 ^ paramInt2;
   }
   
-  public int a()
+  private void a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 < 0) || (paramInt2 > 32)) {
-      throw new IllegalArgumentException("Num bits must be between 0 and 32");
-    }
-    a(this.jdField_a_of_type_Int + paramInt2);
-    if (paramInt2 > 0)
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+    this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+    int j = 0;
+    int i = 1;
+    while (j < this.jdField_a_of_type_Int)
     {
-      if ((paramInt1 >> paramInt2 - 1 & 0x1) == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(bool);
-        paramInt2 -= 1;
-        break;
+      this.jdField_a_of_type_ArrayOfInt[j] = i;
+      int k = i << 1;
+      i = k;
+      if (k >= this.jdField_a_of_type_Int) {
+        i = (k ^ this.jdField_b_of_type_Int) & this.jdField_a_of_type_Int - 1;
       }
+      j += 1;
     }
-  }
-  
-  public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    int i = 0;
-    while (i < paramInt3)
+    i = 0;
+    while (i < this.jdField_a_of_type_Int - 1)
     {
-      int j = 0;
-      int m;
-      for (int k = 0; j < 8; k = m)
-      {
-        m = k;
-        if (a(paramInt1)) {
-          m = k | 1 << 7 - j;
-        }
-        paramInt1 += 1;
-        j += 1;
-      }
-      paramArrayOfByte[(paramInt2 + i)] = ((byte)k);
+      this.jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_ArrayOfInt[i]] = i;
       i += 1;
     }
+    this.jdField_a_of_type_Gt = new gt(this, new int[] { 0 });
+    this.jdField_b_of_type_Gt = new gt(this, new int[] { 1 });
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(gs paramgs)
+  private void b()
   {
-    int j = paramgs.jdField_a_of_type_Int;
-    a(this.jdField_a_of_type_Int + j);
-    int i = 0;
-    while (i < j)
-    {
-      a(paramgs.a(i));
-      i += 1;
+    if (!this.jdField_a_of_type_Boolean) {
+      a();
     }
   }
   
-  public void a(boolean paramBoolean)
+  int a(int paramInt)
   {
-    a(this.jdField_a_of_type_Int + 1);
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      int i = this.jdField_a_of_type_Int >> 5;
-      arrayOfInt[i] |= 1 << (this.jdField_a_of_type_Int & 0x1F);
-    }
-    this.jdField_a_of_type_Int += 1;
+    b();
+    return this.jdField_a_of_type_ArrayOfInt[paramInt];
   }
   
-  public boolean a(int paramInt)
+  gt a()
   {
-    return (this.jdField_a_of_type_ArrayOfInt[(paramInt >> 5)] & 1 << (paramInt & 0x1F)) != 0;
+    b();
+    return this.jdField_a_of_type_Gt;
   }
   
-  public int b()
+  gt a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Int + 7 >> 3;
+    b();
+    if (paramInt1 < 0) {
+      throw new IllegalArgumentException();
+    }
+    if (paramInt2 == 0) {
+      return this.jdField_a_of_type_Gt;
+    }
+    int[] arrayOfInt = new int[paramInt1 + 1];
+    arrayOfInt[0] = paramInt2;
+    return new gt(this, arrayOfInt);
   }
   
-  public void b(gs paramgs)
+  int b(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfInt.length != paramgs.jdField_a_of_type_ArrayOfInt.length) {
-      throw new IllegalArgumentException("Sizes don't match");
+    b();
+    if (paramInt == 0) {
+      throw new IllegalArgumentException();
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[i] ^= paramgs.jdField_a_of_type_ArrayOfInt[i];
-      i += 1;
-    }
+    return this.jdField_b_of_type_ArrayOfInt[paramInt];
   }
   
-  public String toString()
+  int b(int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int);
-    int i = 0;
-    if (i < this.jdField_a_of_type_Int)
-    {
-      if ((i & 0x7) == 0) {
-        localStringBuilder.append(' ');
-      }
-      if (a(i)) {}
-      for (char c = 'X';; c = '.')
-      {
-        localStringBuilder.append(c);
-        i += 1;
-        break;
-      }
+    b();
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {
+      return 0;
     }
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_ArrayOfInt[((this.jdField_b_of_type_ArrayOfInt[paramInt1] + this.jdField_b_of_type_ArrayOfInt[paramInt2]) % (this.jdField_a_of_type_Int - 1))];
+  }
+  
+  int c(int paramInt)
+  {
+    b();
+    if (paramInt == 0) {
+      throw new ArithmeticException();
+    }
+    return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int - this.jdField_b_of_type_ArrayOfInt[paramInt] - 1)];
   }
 }
 

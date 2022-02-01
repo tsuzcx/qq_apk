@@ -1,77 +1,31 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.util.Pair;
+import java.util.List;
+import java.util.regex.Matcher;
 
-public class bden
+final class bden
+  implements bdfm
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bdeo jdField_a_of_type_Bdeo = new bdeo(0);
-  private bdeo b = new bdeo(1);
+  bden(bdef parambdef, List paramList) {}
   
-  public bdeo a()
+  public String a(Matcher paramMatcher)
   {
-    if (bdeo.a(this.jdField_a_of_type_Bdeo).getAndSet(1) == 0) {
-      return this.jdField_a_of_type_Bdeo;
-    }
-    if (bdeo.a(this.b).getAndSet(1) == 0) {
-      return this.b;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    bdeo.a(this.jdField_a_of_type_Bdeo).getAndSet(0);
-    bdeo.a(this.b).getAndSet(0);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bdeo.a(this.jdField_a_of_type_Bdeo).getAndAdd(0) == 0)
+    paramMatcher = this.jdField_a_of_type_Bdef.a(bdej.a(paramMatcher.group(1)));
+    int i = 0;
+    for (;;)
     {
-      bool1 = bool2;
-      if (bdeo.a(this.b).getAndAdd(0) == 0) {
-        bool1 = true;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (!((String)paramMatcher.first).equals(localPair.first)) {
+          break label95;
+        }
+        if (((String)paramMatcher.second).compareTo((String)localPair.second) <= 0) {
+          bdfn.a(this.jdField_a_of_type_JavaUtilList, i, 1);
+        }
       }
-    }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      return "";
+      label95:
+      i += 1;
     }
   }
 }

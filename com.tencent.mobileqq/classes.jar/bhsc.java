@@ -1,12 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.open.agent.FriendChooser;
 
 public class bhsc
+  implements TextWatcher
 {
-  public ImageView a;
-  public TextView a;
-  public ShareActionSheetBuilder.ActionSheetItem a;
+  public bhsc(FriendChooser paramFriendChooser) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.jetbrains.annotations.NotNull;
 
 class sbj
-  implements DialogInterface.OnDismissListener
+  extends uha
 {
-  sbj(sbi paramsbi) {}
+  sbj(sab paramsab) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    }
-    if (sbi.a(this.a) != null) {
-      sbi.a(this.a).a(sbi.a(this.a), sbi.b(this.a), false, false);
-    }
-    sbi.a(this.a, true);
-    sbi.b(this.a, false);
+    return this.a.a(paramInt, paramActionSheetItem);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webview.swift;
 
-import abea;
-import abfw;
-import abgi;
-import abgn;
-import adng;
-import adpb;
-import adpd;
-import adqf;
+import aaal;
+import aach;
+import aact;
+import aacy;
+import acjz;
+import aclu;
+import aclw;
+import acmy;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,34 +16,34 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.LruCache;
-import aqdj;
-import aqfj;
-import aqqo;
-import awgk;
-import awht;
-import axrl;
-import bdhn;
-import bdll;
-import bhlo;
-import bifo;
-import binj;
-import biod;
-import bioy;
-import bipa;
-import bipb;
-import bipc;
-import bipm;
-import biqx;
-import birz;
-import bkag;
-import bkik;
-import bnzq;
+import aowu;
+import aoyu;
+import apjx;
+import autl;
+import auux;
+import awes;
+import bcac;
+import bcef;
+import bglz;
+import bgtp;
+import bguj;
+import bgve;
+import bgvg;
+import bgvh;
+import bgvi;
+import bgvs;
+import bgxd;
+import bgyb;
+import bifq;
+import binp;
+import blex;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.game.ApolloGamePlugin;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.MessageRoamJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
@@ -64,9 +64,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import lbi;
-import niz;
-import oej;
+import laz;
+import nko;
+import ofw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,13 +78,13 @@ public final class WebViewPluginEngine
   protected static final HashSet<String> a;
   private static boolean jdField_a_of_type_Boolean;
   public Activity a;
-  private LruCache<String, adpb> jdField_a_of_type_AndroidUtilLruCache;
+  private LruCache<String, aclu> jdField_a_of_type_AndroidUtilLruCache;
   private volatile CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
   public AppInterface a;
   public WebViewFragment a;
   private WebViewPluginEngine.WebViewJSInterfaceImpl jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine$WebViewJSInterfaceImpl;
   private final ConcurrentHashMap<String, WebViewPlugin> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private niz jdField_a_of_type_Niz;
+  private nko jdField_a_of_type_Nko;
   private final HashMap<Long, CopyOnWriteArrayList<WebViewPlugin>> b = new HashMap();
   private final HashMap<String, CopyOnWriteArrayList<WebViewPlugin>> c = new HashMap();
   
@@ -144,10 +144,10 @@ public final class WebViewPluginEngine
       do
       {
         return -1;
-        if (!(paramWebViewPlugin instanceof binj)) {
+        if (!(paramWebViewPlugin instanceof bgtp)) {
           break;
         }
-        paramWebViewPlugin = ((binj)paramWebViewPlugin).getMultiNameSpace();
+        paramWebViewPlugin = ((bgtp)paramWebViewPlugin).getMultiNameSpace();
       } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.length <= 0));
       int j = paramWebViewPlugin.length;
       int i = 0;
@@ -159,18 +159,18 @@ public final class WebViewPluginEngine
           break label60;
         }
       }
-      while (!bipb.jdField_a_of_type_JavaUtilHashMap.containsKey(localCharSequence))
+      while (!bgvh.jdField_a_of_type_JavaUtilHashMap.containsKey(localCharSequence))
       {
         i += 1;
         break label37;
         break;
       }
-      return ((Integer)bipb.jdField_a_of_type_JavaUtilHashMap.get(localCharSequence)).intValue();
+      return ((Integer)bgvh.jdField_a_of_type_JavaUtilHashMap.get(localCharSequence)).intValue();
       if (TextUtils.isEmpty(paramWebViewPlugin.mPluginNameSpace)) {
         break;
       }
-    } while (!bipb.jdField_a_of_type_JavaUtilHashMap.containsKey(paramWebViewPlugin.mPluginNameSpace));
-    return ((Integer)bipb.jdField_a_of_type_JavaUtilHashMap.get(paramWebViewPlugin.mPluginNameSpace)).intValue();
+    } while (!bgvh.jdField_a_of_type_JavaUtilHashMap.containsKey(paramWebViewPlugin.mPluginNameSpace));
+    return ((Integer)bgvh.jdField_a_of_type_JavaUtilHashMap.get(paramWebViewPlugin.mPluginNameSpace)).intValue();
     b(paramWebViewPlugin.toString() + " have no namespace!!!!");
     return -1;
   }
@@ -216,9 +216,9 @@ public final class WebViewPluginEngine
         QLog.i("WebLog_WebViewPluginEngine", 2, "insertPlugin:add pair [" + paramString + "] -> " + paramWebViewPlugin.getClass().getSimpleName());
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWebViewPlugin);
-      if (bipm.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+      if (bgvs.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        l2 = ((Long)bipm.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
+        l2 = ((Long)bgvs.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
         if (l2 > 0L)
         {
           i = 1;
@@ -242,15 +242,15 @@ public final class WebViewPluginEngine
           }
         }
       }
-    } while (!bipc.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
-    long l2 = ((Long)bipc.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
+    } while (!bgvi.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
+    long l2 = ((Long)bgvi.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
     int i = 1;
     long l1 = 1L;
     label268:
     if ((l2 > 0L) && (l2 >= l1)) {
       if ((l2 & l1) != 0L)
       {
-        localObject2 = bipc.a(l1);
+        localObject2 = bgvi.a(l1);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject1 = (CopyOnWriteArrayList)this.c.get(localObject2);
@@ -260,7 +260,7 @@ public final class WebViewPluginEngine
             paramString = new CopyOnWriteArrayList();
             this.c.put(localObject2, paramString);
           }
-          if (!(paramWebViewPlugin instanceof aqfj)) {
+          if (!(paramWebViewPlugin instanceof aoyu)) {
             break label374;
           }
           paramString.add(0, paramWebViewPlugin);
@@ -438,7 +438,7 @@ public final class WebViewPluginEngine
           if (paramCustomWebView != null)
           {
             a(paramCustomWebView, localJsBridgeListener, paramString, str2, (String)localObject1, (String[])localObject2);
-            if (biqx.y)
+            if (bgxd.y)
             {
               if (localObject3 != null) {
                 break label675;
@@ -457,7 +457,7 @@ public final class WebViewPluginEngine
             label692:
             for (paramCustomWebView = "";; paramCustomWebView = paramCustomWebView.getPath())
             {
-              bdll.b(null, "dc00899", "WV_Analysis", "", "jsapi_call", "total", 0, 0, paramWebViewPluginEngine, paramCustomWebView, str1, "");
+              bcef.b(null, "dc00899", "WV_Analysis", "", "jsapi_call", "total", 0, 0, paramWebViewPluginEngine, paramCustomWebView, str1, "");
               return true;
               localObject1 = new String[0];
               break;
@@ -491,7 +491,7 @@ public final class WebViewPluginEngine
         }
         for (;;)
         {
-          if ((l == -1L) || (biqx.y))
+          if ((l == -1L) || (bgxd.y))
           {
             if (localObject3 == null)
             {
@@ -507,7 +507,7 @@ public final class WebViewPluginEngine
               }
               paramCustomWebView = "";
               label740:
-              bdll.b(null, "dc00899", "WV_Analysis", "", "jsapi_call", "total", 2, 0, paramWebViewPluginEngine, paramCustomWebView, str1, "");
+              bcef.b(null, "dc00899", "WV_Analysis", "", "jsapi_call", "total", 2, 0, paramWebViewPluginEngine, paramCustomWebView, str1, "");
             }
           }
           else
@@ -553,13 +553,13 @@ public final class WebViewPluginEngine
                 paramCustomWebView = ((String)localObject3).substring(0, ((String)localObject3).indexOf("?"));
                 i = (int)paramWebViewPluginEngine.a().a();
                 j = QbSdk.getTbsVersion(BaseApplication.getContext());
-                paramWebViewPluginEngine = bhlo.h() + " " + bhlo.i();
+                paramWebViewPluginEngine = DeviceInfoUtil.getManufactureInfo() + " " + DeviceInfoUtil.getModel();
                 VasWebviewUtil.reportVasStatus("JsApiRights", str2, (String)localObject1, 3, 0, j, i, paramCustomWebView, paramWebViewPluginEngine);
                 if (!paramCustomWebView.startsWith("http")) {
                   QLog.d("WebLog_WebViewPluginEngine", 1, "no plugin have right handle  " + str1 + ", x5 version = " + j + ", phone is " + paramWebViewPluginEngine);
                 }
               }
-              if (!biqx.y) {
+              if (!bgxd.y) {
                 break label766;
               }
               if (localObject3 == null)
@@ -579,7 +579,7 @@ public final class WebViewPluginEngine
               label1105:
               for (paramCustomWebView = "";; paramCustomWebView = paramCustomWebView.getPath())
               {
-                bdll.b(null, "dc00899", "WV_Analysis", "", "jsapi_call", "total", 1, 0, paramWebViewPluginEngine, paramCustomWebView, str1, "");
+                bcef.b(null, "dc00899", "WV_Analysis", "", "jsapi_call", "total", 1, 0, paramWebViewPluginEngine, paramCustomWebView, str1, "");
                 break;
                 paramCustomWebView = Uri.parse((String)localObject3);
                 break label1045;
@@ -607,7 +607,7 @@ public final class WebViewPluginEngine
   
   private WebViewPlugin b(String paramString)
   {
-    paramString = bipb.a(paramString);
+    paramString = bgvh.a(paramString);
     b(paramString);
     a(paramString);
     return paramString;
@@ -655,9 +655,9 @@ public final class WebViewPluginEngine
   
   private void b(WebViewPlugin paramWebViewPlugin)
   {
-    if ((paramWebViewPlugin instanceof binj))
+    if ((paramWebViewPlugin instanceof bgtp))
     {
-      String[] arrayOfString = ((binj)paramWebViewPlugin).getMultiNameSpace();
+      String[] arrayOfString = ((bgtp)paramWebViewPlugin).getMultiNameSpace();
       if ((arrayOfString != null) && (arrayOfString.length > 0))
       {
         int j = arrayOfString.length;
@@ -771,7 +771,7 @@ public final class WebViewPluginEngine
     //   153: invokevirtual 393	java/lang/String:substring	(I)Ljava/lang/String;
     //   156: invokestatic 403	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   159: astore 11
-    //   161: ldc_w 569
+    //   161: ldc_w 570
     //   164: aload 11
     //   166: invokevirtual 387	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   169: ifeq +378 -> 547
@@ -800,14 +800,14 @@ public final class WebViewPluginEngine
     //   220: aload_1
     //   221: lload 7
     //   223: iconst_1
-    //   224: invokespecial 572	com/tencent/mobileqq/webview/swift/JsBridgeListener:<init>	(Lcom/tencent/smtt/sdk/WebView;JZ)V
+    //   224: invokespecial 573	com/tencent/mobileqq/webview/swift/JsBridgeListener:<init>	(Lcom/tencent/smtt/sdk/WebView;JZ)V
     //   227: astore 21
     //   229: getstatic 78	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:jdField_a_of_type_Int	I
     //   232: iconst_m1
     //   233: if_icmpne +17 -> 250
     //   236: iconst_3
     //   237: iconst_1
-    //   238: invokestatic 577	bira:a	(IZ)Z
+    //   238: invokestatic 578	bgxg:a	(IZ)Z
     //   241: ifeq +357 -> 598
     //   244: iconst_1
     //   245: istore_3
@@ -835,7 +835,7 @@ public final class WebViewPluginEngine
     //   290: ldc_w 441
     //   293: ldc_w 443
     //   296: ldc 199
-    //   298: ldc_w 579
+    //   298: ldc_w 580
     //   301: aload 22
     //   303: iconst_0
     //   304: iconst_0
@@ -843,7 +843,7 @@ public final class WebViewPluginEngine
     //   307: aload 10
     //   309: ldc 199
     //   311: ldc 199
-    //   313: invokestatic 452	bdll:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   313: invokestatic 452	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   316: iconst_0
     //   317: istore 4
     //   319: iconst_0
@@ -894,29 +894,29 @@ public final class WebViewPluginEngine
     //   398: invokespecial 483	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   401: astore 12
     //   403: aload 12
-    //   405: ldc_w 581
-    //   408: invokevirtual 585	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   405: ldc_w 582
+    //   408: invokevirtual 586	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   411: checkcast 190	java/lang/String
     //   414: invokestatic 367	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   417: istore_3
     //   418: aload 12
-    //   420: ldc_w 587
-    //   423: invokevirtual 585	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   420: ldc_w 588
+    //   423: invokevirtual 586	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   426: checkcast 190	java/lang/String
     //   429: astore 9
     //   431: aload 12
-    //   433: ldc_w 589
-    //   436: invokevirtual 585	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   433: ldc_w 590
+    //   436: invokevirtual 586	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   439: checkcast 190	java/lang/String
     //   442: astore 10
     //   444: aload 12
-    //   446: ldc_w 591
-    //   449: invokevirtual 585	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   446: ldc_w 592
+    //   449: invokevirtual 586	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   452: pop
     //   453: aload 12
-    //   455: invokevirtual 592	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   455: invokevirtual 593	org/json/JSONObject:toString	()Ljava/lang/String;
     //   458: astore 13
-    //   460: ldc_w 569
+    //   460: ldc_w 570
     //   463: aload 13
     //   465: invokevirtual 387	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   468: ifeq +165 -> 633
@@ -934,7 +934,7 @@ public final class WebViewPluginEngine
     //   490: aload 10
     //   492: aload 22
     //   494: aload 21
-    //   496: invokevirtual 596	com/tencent/biz/pubaccount/CustomWebView:checkToken	(Lcom/tencent/biz/pubaccount/CustomWebView;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;)Z
+    //   496: invokevirtual 597	com/tencent/biz/pubaccount/CustomWebView:checkToken	(Lcom/tencent/biz/pubaccount/CustomWebView;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;)Z
     //   499: ifne +270 -> 769
     //   502: iconst_1
     //   503: ireturn
@@ -978,9 +978,9 @@ public final class WebViewPluginEngine
     //   577: goto -395 -> 182
     //   580: invokestatic 245	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   583: ifeq +13 -> 596
-    //   586: ldc_w 598
+    //   586: ldc_w 599
     //   589: iconst_2
-    //   590: ldc_w 600
+    //   590: ldc_w 601
     //   593: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   596: iconst_0
     //   597: ireturn
@@ -1021,7 +1021,7 @@ public final class WebViewPluginEngine
     //   669: new 167	java/lang/StringBuilder
     //   672: dup
     //   673: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   676: ldc_w 602
+    //   676: ldc_w 603
     //   679: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   682: aload 9
     //   684: invokevirtual 397	java/lang/NumberFormatException:toString	()Ljava/lang/String;
@@ -1047,10 +1047,10 @@ public final class WebViewPluginEngine
     //   727: new 167	java/lang/StringBuilder
     //   730: dup
     //   731: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   734: ldc_w 604
+    //   734: ldc_w 605
     //   737: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   740: aload 9
-    //   742: invokevirtual 605	org/json/JSONException:toString	()Ljava/lang/String;
+    //   742: invokevirtual 606	org/json/JSONException:toString	()Ljava/lang/String;
     //   745: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   748: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   751: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1069,7 +1069,7 @@ public final class WebViewPluginEngine
     //   783: aload 22
     //   785: invokevirtual 155	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   788: checkcast 190	java/lang/String
-    //   791: ldc_w 607
+    //   791: ldc_w 608
     //   794: invokevirtual 359	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   797: astore 10
     //   799: aload 10
@@ -1117,10 +1117,10 @@ public final class WebViewPluginEngine
     //   876: iconst_0
     //   877: iconst_3
     //   878: aconst_null
-    //   879: ldc_w 609
-    //   882: invokestatic 612	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(ILjava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+    //   879: ldc_w 610
+    //   882: invokestatic 613	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	(ILjava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
     //   885: aastore
-    //   886: invokevirtual 616	com/tencent/biz/pubaccount/CustomWebView:callJs4OpenApi	(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;I[Ljava/lang/String;)V
+    //   886: invokevirtual 617	com/tencent/biz/pubaccount/CustomWebView:callJs4OpenApi	(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;I[Ljava/lang/String;)V
     //   889: iconst_1
     //   890: ireturn
     //   891: astore 9
@@ -1227,7 +1227,7 @@ public final class WebViewPluginEngine
   
   private boolean b(String paramString)
   {
-    String str1 = birz.b(paramString);
+    String str1 = bgyb.b(paramString);
     if (TextUtils.isEmpty(str1)) {
       return false;
     }
@@ -1275,7 +1275,7 @@ public final class WebViewPluginEngine
                 ((StringBuilder)localObject1).append("plugin[").append(localWebViewPlugin.getClass().getSimpleName()).append("] handle scheme[").append(str1).append("] success cost ").append(l2 - l1).append(" ms.");
                 QLog.i("WebLog_WebViewPluginEngine", 2, ((StringBuilder)localObject1).toString());
               }
-              biqx.a(paramString, str2, 0);
+              bgxd.a(paramString, str2, 0);
               return true;
               localObject1 = new StringBuilder();
               break;
@@ -1295,14 +1295,14 @@ public final class WebViewPluginEngine
           ((StringBuilder)localObject1).append("overrideUrlRequest error:no plugin can handle this scheme[").append(str1).append("].");
           QLog.i("WebLog_WebViewPluginEngine", 2, ((StringBuilder)localObject1).toString());
         }
-        biqx.a(paramString, str2, 1);
+        bgxd.a(paramString, str2, 1);
       }
     }
     for (;;)
     {
       return false;
       QLog.e("WebLog_WebViewPluginEngine", 1, new Object[] { new StringBuilder("overrideUrlRequest error:no plugin can handle this scheme[").append(str1).append("].") });
-      biqx.a(paramString, str2, 2);
+      bgxd.a(paramString, str2, 2);
     }
   }
   
@@ -1318,7 +1318,7 @@ public final class WebViewPluginEngine
     }
     String str1;
     JSONObject localJSONObject;
-    adpd localadpd;
+    aclw localaclw;
     do
     {
       for (;;)
@@ -1339,8 +1339,8 @@ public final class WebViewPluginEngine
           try
           {
             localJSONObject = new JSONObject(paramString);
-            localadpd = new adpd(paramCustomWebView, localJSONObject);
-            str2 = adqf.a(str2);
+            localaclw = new aclw(paramCustomWebView, localJSONObject);
+            str2 = acmy.a(str2);
             if (!TextUtils.isEmpty(str2)) {
               break label171;
             }
@@ -1362,11 +1362,11 @@ public final class WebViewPluginEngine
       if (!jdField_a_of_type_Boolean)
       {
         jdField_a_of_type_Boolean = true;
-        adng.a();
+        acjz.a();
       }
-      paramWebViewPluginEngine.jdField_a_of_type_AndroidUtilLruCache = new bipa(2);
+      paramWebViewPluginEngine.jdField_a_of_type_AndroidUtilLruCache = new bgvg(2);
     }
-    paramString = (adpb)paramWebViewPluginEngine.jdField_a_of_type_AndroidUtilLruCache.get(str2);
+    paramString = (aclu)paramWebViewPluginEngine.jdField_a_of_type_AndroidUtilLruCache.get(str2);
     if ("config".equals(str1))
     {
       paramCustomWebView = paramString;
@@ -1375,7 +1375,7 @@ public final class WebViewPluginEngine
         paramCustomWebView = localJSONObject.optString("appid");
         paramString = new Bundle();
         paramString.putString("urlSummary", str2);
-        paramString = (adpb)adng.a(paramWebViewPluginEngine.jdField_a_of_type_AndroidAppActivity, 0, paramCustomWebView, paramString);
+        paramString = (aclu)acjz.a(paramWebViewPluginEngine.jdField_a_of_type_AndroidAppActivity, 0, paramCustomWebView, paramString);
         paramCustomWebView = paramString;
         if (paramString != null)
         {
@@ -1393,30 +1393,30 @@ public final class WebViewPluginEngine
       }
       if (paramCustomWebView != null)
       {
-        paramCustomWebView.a(str1, localJSONObject, localadpd);
+        paramCustomWebView.a(str1, localJSONObject, localaclw);
         return true;
       }
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewPluginEngine", 2, "apimgr create fail");
       }
-      adqf.a(localadpd, 11);
+      acmy.a(localaclw, 11);
       return true;
     }
     if ((paramString != null) && (paramString.b()))
     {
-      paramString.a(str1, localJSONObject, localadpd);
+      paramString.a(str1, localJSONObject, localaclw);
       return true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewPluginEngine", 2, "apimgr not verified");
     }
-    adqf.a(localadpd, 10);
+    acmy.a(localaclw, 10);
     return true;
   }
   
-  public adpb a(String paramString)
+  public aclu a(String paramString)
   {
-    paramString = adqf.a(paramString);
+    paramString = acmy.a(paramString);
     if (TextUtils.isEmpty(paramString)) {
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewPluginEngine", 2, "invalid native api call, url is illegal");
@@ -1425,12 +1425,12 @@ public final class WebViewPluginEngine
     while (this.jdField_a_of_type_AndroidUtilLruCache == null) {
       return null;
     }
-    return (adpb)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    return (aclu)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
   }
   
   public WebViewPlugin a(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = bipb.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Object localObject1 = bgvh.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
@@ -1449,7 +1449,7 @@ public final class WebViewPluginEngine
         localObject2 = localObject1;
         if (paramBoolean)
         {
-          localObject1 = bipb.a(paramInt);
+          localObject1 = bgvh.a(paramInt);
           localObject2 = localObject1;
           if (localObject1 != null)
           {
@@ -1563,12 +1563,12 @@ public final class WebViewPluginEngine
     return localStringBuilder.toString();
   }
   
-  public niz a()
+  public nko a()
   {
-    if (this.jdField_a_of_type_Niz == null) {
-      this.jdField_a_of_type_Niz = niz.a();
+    if (this.jdField_a_of_type_Nko == null) {
+      this.jdField_a_of_type_Nko = nko.a();
     }
-    return this.jdField_a_of_type_Niz;
+    return this.jdField_a_of_type_Nko;
   }
   
   public void a()
@@ -1601,31 +1601,31 @@ public final class WebViewPluginEngine
       Object localObject3;
       if (localIntent.getIntExtra("uintype", -1) == 1030)
       {
-        localObject3 = new aqqo();
+        localObject3 = new apjx();
         a((WebViewPlugin)localObject3);
         a("campus_circle", (WebViewPlugin)localObject3);
       }
       if ((localIntent.getBooleanExtra("fromQZone", false)) && ((((String)localObject2).equals("http")) || (((String)localObject2).equals("https"))))
       {
-        localObject3 = new abgi();
+        localObject3 = new aact();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
-      if (axrl.a((String)localObject1))
+      if (awes.a((String)localObject1))
       {
-        localObject3 = new axrl();
+        localObject3 = new awes();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
-      if (bnzq.a((String)localObject1))
+      if (blex.a((String)localObject1))
       {
-        localObject3 = new bnzq();
+        localObject3 = new blex();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
-      if (abfw.a((String)localObject1))
+      if (aach.a((String)localObject1))
       {
-        localObject3 = new abfw();
+        localObject3 = new aach();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
@@ -1641,9 +1641,9 @@ public final class WebViewPluginEngine
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
-      if ((oej.a()) && (oej.a((String)localObject1)))
+      if ((ofw.a()) && (ofw.a((String)localObject1)))
       {
-        localObject3 = new abea();
+        localObject3 = new aaal();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
@@ -1661,31 +1661,31 @@ public final class WebViewPluginEngine
       }
       if ((((String)localObject1).contains("docx.qq.com")) || (((String)localObject1).contains("docs.qq.com")))
       {
-        localObject3 = new awgk();
+        localObject3 = new autl();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
-      if (bifo.a((String)localObject1))
+      if (bglz.a((String)localObject1))
       {
-        localObject3 = new bifo();
+        localObject3 = new bglz();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
       if (((String)localObject1).contains("lbs.qidian.qq.com/authorize/voiceShow"))
       {
-        localObject3 = new bkik();
+        localObject3 = new binp();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
       if (((String)localObject1).contains("kandian.qq.com"))
       {
-        localObject3 = new abgn();
+        localObject3 = new aacy();
         a((WebViewPlugin)localObject3);
         b((WebViewPlugin)localObject3);
       }
       if ((localIntent.getBooleanExtra("key_from_splash_ad", false)) && ((((String)localObject2).equals("http")) || (((String)localObject2).equals("https"))))
       {
-        localObject2 = new bdhn();
+        localObject2 = new bcac();
         a((WebViewPlugin)localObject2);
         a("splashADPlugin", (WebViewPlugin)localObject2);
       }
@@ -1698,33 +1698,33 @@ public final class WebViewPluginEngine
       localObject1 = localIntent.getExtras();
       if ((localObject1 != null) && ((Class)((Bundle)localObject1).getSerializable("fragmentClass") == ArkBrowserFragment.class))
       {
-        localObject2 = new aqdj();
+        localObject2 = new aowu();
         a((WebViewPlugin)localObject2);
         b((WebViewPlugin)localObject2);
       }
       if ((localObject1 != null) && (((Bundle)localObject1).getParcelable("h5_ark_url_web_checker") != null))
       {
-        localObject2 = new aqfj((Bundle)localObject1);
+        localObject2 = new aoyu((Bundle)localObject1);
         a((WebViewPlugin)localObject2);
         b((WebViewPlugin)localObject2);
       }
-      localObject2 = new awht();
+      localObject2 = new auux();
       a((WebViewPlugin)localObject2);
       b((WebViewPlugin)localObject2);
       if ((localObject1 != null) && ("music".equals(((Bundle)localObject1).getString("forward_ark_app_view"))))
       {
-        localObject1 = new lbi();
+        localObject1 = new laz();
         a((WebViewPlugin)localObject1);
         b((WebViewPlugin)localObject1);
       }
-      bkag.a();
+      bifq.a();
       return;
     }
   }
   
-  public void a(biod parambiod)
+  public void a(bguj parambguj)
   {
-    if (parambiod == null) {}
+    if (parambguj == null) {}
     for (;;)
     {
       return;
@@ -1733,7 +1733,7 @@ public final class WebViewPluginEngine
       {
         WebViewPlugin localWebViewPlugin = (WebViewPlugin)localIterator.next();
         if (localWebViewPlugin != null) {
-          localWebViewPlugin.setWebUiInterface(parambiod);
+          localWebViewPlugin.setWebUiInterface(parambguj);
         }
       }
     }
@@ -1782,14 +1782,14 @@ public final class WebViewPluginEngine
             localWebViewPlugin.initRuntime(paramActivity, paramAppInterface);
           }
           localWebViewPlugin.onActivityReady();
-          if ((localWebViewPlugin instanceof abgi)) {
+          if ((localWebViewPlugin instanceof aact)) {
             i = 1;
           }
         }
       }
       if ((bool) && (i == 0))
       {
-        paramList = new abgi();
+        paramList = new aact();
         paramList.initRuntime(paramActivity, paramAppInterface);
         paramList.onCreate();
         paramList.onAppRuntimeReady(paramAppInterface);

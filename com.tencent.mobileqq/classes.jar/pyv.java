@@ -1,28 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
-public class pyv
-  implements ViewBase.OnClickListener
+class pyv
+  implements View.OnClickListener
 {
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private sel jdField_a_of_type_Sel;
+  pyv(pyr parampyr, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
-  public pyv(ArticleInfo paramArticleInfo, sel paramsel)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_Sel = paramsel;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = this.jdField_a_of_type_Sel.a();
-    if (paramViewBase != null) {
-      paramViewBase.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-    }
+    String str = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    pay.a(pyr.a(this.jdField_a_of_type_Pyr), str);
+    pyr.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

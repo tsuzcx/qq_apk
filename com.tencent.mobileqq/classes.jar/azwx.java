@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import java.util.List;
 
-public final class azwx
-  implements Parcelable.Creator<PersonalityLabelInfo>
+public abstract interface azwx
 {
-  public PersonalityLabelInfo a(Parcel paramParcel)
-  {
-    return new PersonalityLabelInfo(paramParcel);
-  }
-  
-  public PersonalityLabelInfo[] a(int paramInt)
-  {
-    return new PersonalityLabelInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean, List<ahmw> paramList);
 }
 
 

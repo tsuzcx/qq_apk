@@ -1,121 +1,73 @@
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
 public class oxv
+  extends TextBase
 {
-  private static final int a = Utils.rp2px(10.0D);
+  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
+  private static final int b = Utils.dp2px(16.0D);
+  private NativeCommentTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
   
-  private static int a(TemplateBean paramTemplateBean)
+  public oxv(VafContext paramVafContext)
   {
-    if (paramTemplateBean == null)
-    {
-      QLog.i("DividerConfigUtils", 1, "templateBean TYPE_UNKNOWN == null");
-      return -1;
-    }
-    if (paramTemplateBean.findViewById("id_separator_normal_bottom") != null) {
-      return 1;
-    }
-    if (paramTemplateBean.findViewById("id_separator_special_bottom_space") != null) {
-      return 2;
-    }
-    QLog.i("DividerConfigUtils", 1, "getViewType TYPE_UNKNOWN" + paramTemplateBean);
-    return -1;
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView = new NativeCommentTextView(paramVafContext.getContext());
   }
   
-  private static int a(ViewBase paramViewBase, boolean paramBoolean)
+  public void a(ouc paramouc, View paramView, int paramInt)
   {
-    if (paramViewBase == null) {
-      return 0;
-    }
-    Layout.Params localParams = paramViewBase.getComLayoutParams();
-    int i = localParams.mLayoutHeight;
-    if (paramBoolean) {}
-    for (localParams.mLayoutHeight = a;; localParams.mLayoutHeight = 0)
-    {
-      paramViewBase.setComLayoutParams(localParams);
-      return localParams.mLayoutHeight - i;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramouc, paramView, paramInt);
   }
   
-  public static boolean a(Container paramContainer, ppu paramppu)
+  public int getComMeasuredHeight()
   {
-    int i = 0;
-    if ((paramContainer == null) || (paramppu == null)) {}
-    Object localObject;
-    int j;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextSize(0, b * orx.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextColor(jdField_a_of_type_Int);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
     do
     {
-      do
-      {
-        do
-        {
-          return false;
-          localObject = paramppu.a();
-        } while (localObject == null);
-        j = paramppu.h();
-        paramppu = ((sel)localObject).b(j);
-        localObject = ((sel)localObject).b(j + 1);
-      } while ((paramppu == null) || (localObject == null));
-      j = a(paramppu.mProteusTemplateBean);
-    } while (j == -1);
-    int k = a(((BaseArticleInfo)localObject).mProteusTemplateBean);
-    QLog.i("DividerConfigUtils", 1, "topType:" + j + " nextType:" + k);
-    if (k < 0) {
-      QLog.i("DividerConfigUtils", 1, "nextArticleInfo:" + ((BaseArticleInfo)localObject).mProteusTemplateBean);
-    }
-    paramppu = paramContainer.getVirtualView();
-    switch (j)
-    {
-    }
-    for (;;)
-    {
-      localObject = paramppu.getComLayoutParams();
-      if (((Layout.Params)localObject).mLayoutHeight >= 0) {
-        ((Layout.Params)localObject).mLayoutHeight = (i + ((Layout.Params)localObject).mLayoutHeight);
-      }
-      paramppu = paramppu.getComLayoutParams();
-      paramContainer.setLayoutParams(new RelativeLayout.LayoutParams(paramppu.mLayoutWidth, paramppu.mLayoutHeight));
-      return true;
-      localObject = paramppu.findViewBaseByName("id_separator_normal_bottom");
-      switch (k)
-      {
-      default: 
-        i = b((ViewBase)localObject, true);
-        break;
-      case 2: 
-        i = b((ViewBase)localObject, false);
-        continue;
-        localObject = paramppu.findViewBaseByName("id_separator_special_bottom_space");
-        switch (k)
-        {
-        default: 
-          i = a((ViewBase)localObject, false);
-          break;
-        case 2: 
-          i = a((ViewBase)localObject, true);
-        }
-        break;
-      }
-    }
-  }
-  
-  private static int b(ViewBase paramViewBase, boolean paramBoolean)
-  {
-    if (paramViewBase == null) {
-      return 0;
-    }
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      paramViewBase.setVisibility(i);
-      return 0;
-    }
+      return super.setAttribute(paramInt, paramObject);
+    } while (!(paramObject instanceof ouo));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setCommentModel((ouo)paramObject);
+    return true;
   }
 }
 

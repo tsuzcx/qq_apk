@@ -1,48 +1,29 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agzk
-  extends aggl
+class agzk
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public TextView b;
-  public String b;
-  public View c;
+  agzk(agzi paramagzi, AIOShortVideoData paramAIOShortVideoData) {}
   
-  public void a(agzk paramagzk, apzt paramapzt)
+  public void onClick(View paramView)
   {
-    Object localObject2 = paramapzt.getArkAppNameAndPath();
-    String str = localObject2[0];
-    Object localObject1 = localObject2[1];
-    localObject2 = localObject2[2];
-    paramapzt.clickTail(null, paramagzk, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
-    if (localObject1 != null)
+    agzi.a(this.jdField_a_of_type_Agzi, agzi.a(this.jdField_a_of_type_Agzi), amtj.a(2131699203));
+    boolean bool = bbta.a().a();
+    Activity localActivity = agzi.b(this.jdField_a_of_type_Agzi);
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
+    if (bool) {}
+    for (int i = 1;; i = 0)
     {
-      ArkAppCacheMgr.getAppIcon(str, new agzl(this, paramagzk));
-      paramapzt = ArkAppCacheMgr.getApplicationDesc(str);
-      if (paramapzt != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        paramagzk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramagzk.jdField_a_of_type_AndroidWidgetTextView.setText(paramapzt);
-      }
-    }
-    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      DanceMachineQQBrowserActivity.a(localActivity, j, str, i, -999, 1, 0, null);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new agzm(this, str, paramagzk));
   }
 }
 

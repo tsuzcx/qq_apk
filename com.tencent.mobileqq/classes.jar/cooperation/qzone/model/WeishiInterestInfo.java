@@ -3,22 +3,21 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnax;
 import java.util.ArrayList;
 
 public class WeishiInterestInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiInterestInfo> CREATOR = new bnax();
-  public String a;
-  public ArrayList<Long> a;
+  public static final Parcelable.Creator<WeishiInterestInfo> CREATOR = new WeishiInterestInfo.1();
+  public String desc;
+  public ArrayList<Long> uinList;
   
   public WeishiInterestInfo() {}
   
-  public WeishiInterestInfo(Parcel paramParcel)
+  protected WeishiInterestInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(Long.class.getClassLoader());
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.uinList = paramParcel.readArrayList(Long.class.getClassLoader());
+    this.desc = paramParcel.readString();
   }
   
   public int describeContents()
@@ -28,8 +27,8 @@ public class WeishiInterestInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeList(this.uinList);
+    paramParcel.writeString(this.desc);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bhsi;
+import bfyz;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class LoadDex$3
@@ -10,7 +10,7 @@ class LoadDex$3
   
   public void run()
   {
-    bhsi.b(BaseApplicationImpl.context);
+    bfyz.b(BaseApplicationImpl.context);
   }
 }
 

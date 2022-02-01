@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rwu;
+import sdy;
 
 public class VideoUIManager$10
   implements Runnable
 {
-  public VideoUIManager$10(rwu paramrwu) {}
+  public VideoUIManager$10(sdy paramsdy) {}
   
   public void run()
   {
-    rwu.g(this.this$0);
+    sdy.g(this.this$0);
   }
 }
 

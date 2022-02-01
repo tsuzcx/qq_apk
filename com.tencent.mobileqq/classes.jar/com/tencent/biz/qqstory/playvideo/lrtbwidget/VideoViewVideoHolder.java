@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
+import amtj;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
@@ -26,9 +27,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bdkh;
-import blhn;
+import bcdb;
+import bjnd;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
@@ -36,6 +36,7 @@ import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
 import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -49,65 +50,64 @@ import java.io.File;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import wjj;
-import wjn;
-import wjt;
-import wkr;
+import vli;
+import vlm;
+import vls;
+import vmq;
+import vuq;
+import vuu;
+import vux;
+import vvp;
+import vwm;
+import vwn;
+import vxd;
+import wdl;
+import wkf;
+import wkg;
+import wlb;
+import wog;
+import wsk;
+import wsq;
+import wsr;
+import wst;
+import wsu;
+import wsv;
+import wsw;
+import wsx;
+import wsy;
+import wsz;
 import wta;
+import wtb;
+import wtc;
+import wtd;
 import wte;
+import wtf;
+import wtg;
 import wth;
-import wtz;
-import wuw;
+import wti;
+import wtj;
+import wtl;
+import wtm;
+import wtn;
+import wto;
+import wtp;
+import wtq;
+import wtr;
+import wty;
+import wur;
 import wux;
-import wvn;
-import xbv;
-import xip;
-import xiq;
-import xjl;
-import xmv;
-import xqz;
-import xrf;
-import xrg;
-import xri;
-import xrj;
-import xrk;
-import xrl;
-import xrm;
-import xrn;
-import xro;
-import xrp;
-import xrq;
-import xrr;
-import xrs;
-import xrt;
-import xru;
-import xrv;
-import xrw;
-import xrx;
-import xry;
-import xsa;
-import xsb;
-import xsc;
-import xsd;
-import xse;
-import xsf;
-import xsg;
-import xsn;
-import xtg;
-import xtm;
-import xtt;
-import xui;
-import xuj;
-import xuk;
-import xut;
-import yuk;
-import yup;
-import znw;
-import zps;
-import zsd;
+import wve;
+import wvt;
+import wvu;
+import wvv;
+import wwe;
+import xvv;
+import xwa;
+import yos;
+import yro;
 
 public class VideoViewVideoHolder
-  extends xrg
+  extends wsr
   implements View.OnClickListener
 {
   public static final SparseArray<int[]> a;
@@ -123,14 +123,14 @@ public class VideoViewVideoHolder
   public QQStoryLoadingView a;
   public Stream a;
   private Map<String, Long> jdField_a_of_type_JavaUtilMap = new VideoViewVideoHolder.12(this);
-  private xbv jdField_a_of_type_Xbv = new xbv();
-  private xiq jdField_a_of_type_Xiq;
-  public xjl a;
-  public xsc a;
-  private xsn jdField_a_of_type_Xsn;
-  public xtg a;
-  private xtt jdField_a_of_type_Xtt = new xtt();
-  public zsd a;
+  private wdl jdField_a_of_type_Wdl = new wdl();
+  private wkg jdField_a_of_type_Wkg;
+  public wlb a;
+  public wtn a;
+  private wty jdField_a_of_type_Wty;
+  public wur a;
+  private wve jdField_a_of_type_Wve = new wve();
+  public yro a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[6];
   private long jdField_b_of_type_Long;
   private View jdField_b_of_type_AndroidViewView;
@@ -164,28 +164,28 @@ public class VideoViewVideoHolder
   static
   {
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "s_Idle", "s_VideoInfo", "s_VideoInfo_OK", "s_DoodleDown", "s_DoodleDown_OK", "s_VideoFile", "s_VideoFile_OK", "s_Prepare", "s_Prepare_OK", "s_Starting", "s_Playing_OK", "s_Pause", "s_Complete_OK" };
-    jdField_a_of_type_AndroidUtilSparseArray = new xrj();
+    jdField_a_of_type_AndroidUtilSparseArray = new wsu();
   }
   
   public VideoViewVideoHolder(ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
-    this.jdField_a_of_type_Xsc = new xsc(this, null);
+    this.jdField_a_of_type_Wtn = new wtn(this, null);
     this.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_d_of_type_Int = 3;
-    this.jdField_a_of_type_Xjl = new xrm(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365172));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370642));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)paramViewGroup.findViewById(2131370299));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)paramViewGroup.findViewById(2131380916));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378594);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378593));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378591));
+    this.jdField_a_of_type_Wlb = new wsx(this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365198));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370610));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)paramViewGroup.findViewById(2131370267));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)paramViewGroup.findViewById(2131380642));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378362);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378361));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378359));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378595));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378363));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378592));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131378360));
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -193,15 +193,15 @@ public class VideoViewVideoHolder
   {
     a("HC", SystemClock.uptimeMillis());
     this.jdField_e_of_type_Boolean = true;
-    yuk.b(this.jdField_a_of_type_JavaLangString, "hideCover, hide loading view");
+    xvv.b(this.jdField_a_of_type_JavaLangString, "hideCover, hide loading view");
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
     h();
-    yuk.d(this.jdField_a_of_type_JavaLangString, "CheckVideoViewRealStartRunnable, %s, currentPosition=%d, outputTimeOutCount=%d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(xui.a(a()).a().jdField_a_of_type_Int) });
-    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString;
+    xvv.d(this.jdField_a_of_type_JavaLangString, "CheckVideoViewRealStartRunnable, %s, currentPosition=%d, outputTimeOutCount=%d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(wvt.a(a()).a().jdField_a_of_type_Int) });
+    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString;
     k();
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideoViewVideoHolder.11(this), 600L);
-    this.jdField_a_of_type_Xsn.c(this, this.jdField_a_of_type_Xtg);
+    this.jdField_a_of_type_Wty.c(this, this.jdField_a_of_type_Wur);
   }
   
   private static void a(@NonNull View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -222,7 +222,7 @@ public class VideoViewVideoHolder
   
   private void a(ErrorMessage paramErrorMessage)
   {
-    yuk.d(this.jdField_a_of_type_JavaLangString, "onError. %d : %s", new Object[] { Integer.valueOf(paramErrorMessage.errorCode), paramErrorMessage.errorMsg });
+    xvv.d(this.jdField_a_of_type_JavaLangString, "onError. %d : %s", new Object[] { Integer.valueOf(paramErrorMessage.errorCode), paramErrorMessage.errorMsg });
     if (paramErrorMessage.errorCode == 0) {
       return;
     }
@@ -241,22 +241,22 @@ public class VideoViewVideoHolder
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-      this.jdField_a_of_type_Xtg.a(8);
+      this.jdField_a_of_type_Wur.a(8);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new xrw(this, paramErrorMessage));
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new wth(this, paramErrorMessage));
       return;
     case 4: 
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.getResources().getString(2131698612));
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.getResources().getString(2131698847));
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(null);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-      this.jdField_a_of_type_Xtg.a(8);
+      this.jdField_a_of_type_Wur.a(8);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     case 5: 
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-      this.jdField_a_of_type_Xtg.a(8);
+      this.jdField_a_of_type_Wur.a(8);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     case 7: 
@@ -265,17 +265,17 @@ public class VideoViewVideoHolder
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(null);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-      this.jdField_a_of_type_Xtg.a(8);
+      this.jdField_a_of_type_Wur.a(8);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new xrx(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new wti(this));
       return;
     }
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    this.jdField_a_of_type_Xtg.a(8);
+    this.jdField_a_of_type_Wur.a(8);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new xrk(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new wsv(this));
   }
   
   private void a(@NonNull StoryVideoItem paramStoryVideoItem)
@@ -287,11 +287,11 @@ public class VideoViewVideoHolder
       this.jdField_d_of_type_JavaLangString = paramStoryVideoItem.mVid;
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_Xtg.a();
+    Object localObject1 = this.jdField_a_of_type_Wur.a();
     boolean bool = localObject1 instanceof TextureVideoView;
     int i3 = 0;
-    int i7 = zps.b(this.jdField_a_of_type_AndroidViewView.getContext());
-    int i5 = zps.c(this.jdField_a_of_type_AndroidViewView.getContext());
+    int i7 = UIUtils.getScreenWidth(this.jdField_a_of_type_AndroidViewView.getContext());
+    int i5 = UIUtils.getScreenHeight(this.jdField_a_of_type_AndroidViewView.getContext());
     double d1 = i1 / i2;
     double d2 = i7 / i5;
     int i4;
@@ -366,10 +366,10 @@ public class VideoViewVideoHolder
       this.i = paramStoryVideoItem.playerScaleType;
       this.h = paramStoryVideoItem.mVideoHeight;
       this.g = paramStoryVideoItem.mVideoWidth;
-      a(anzj.a(2131715217) + i12 + anzj.a(2131715212) + i11 + anzj.a(2131715214) + String.valueOf(this.jdField_c_of_type_Boolean));
-      localObject2 = new StringBuilder().append(anzj.a(2131715211)).append(paramStoryVideoItem.mVideoDuration).append(anzj.a(2131715231)).append(paramStoryVideoItem.mVideoBytes);
+      a(amtj.a(2131715451) + i12 + amtj.a(2131715446) + i11 + amtj.a(2131715448) + String.valueOf(this.jdField_c_of_type_Boolean));
+      localObject2 = new StringBuilder().append(amtj.a(2131715445)).append(paramStoryVideoItem.mVideoDuration).append(amtj.a(2131715465)).append(paramStoryVideoItem.mVideoBytes);
       if (paramStoryVideoItem.mIsPicture == 1) {}
-      for (localObject1 = anzj.a(2131715225);; localObject1 = "")
+      for (localObject1 = amtj.a(2131715459);; localObject1 = "")
       {
         a((String)localObject1);
         this.jdField_a_of_type_ArrayOfInt[0] = i12;
@@ -378,8 +378,8 @@ public class VideoViewVideoHolder
         this.jdField_a_of_type_ArrayOfInt[3] = i9;
         this.jdField_a_of_type_ArrayOfInt[4] = i8;
         this.jdField_a_of_type_ArrayOfInt[5] = i7;
-        yuk.b(this.jdField_a_of_type_JavaLangString, "updateViewParam, videoWidth/videoHeight=%d/%d, layoutWidth/layoutHeight=%d/%d, leftMargin=%d, topMargin=%d, vid=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[2]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[3]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[4]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[5]), paramStoryVideoItem.mVid });
-        a(this.jdField_a_of_type_Xtg.a(), i10, i9, i8, i7);
+        xvv.b(this.jdField_a_of_type_JavaLangString, "updateViewParam, videoWidth/videoHeight=%d/%d, layoutWidth/layoutHeight=%d/%d, leftMargin=%d, topMargin=%d, vid=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[2]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[3]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[4]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[5]), paramStoryVideoItem.mVid });
+        a(this.jdField_a_of_type_Wur.a(), i10, i9, i8, i7);
         a(this.jdField_a_of_type_AndroidWidgetImageView, i10, i9, i8, i7);
         a(this.jdField_b_of_type_AndroidWidgetImageView, i10, i9, i8, i7);
         return;
@@ -434,7 +434,7 @@ public class VideoViewVideoHolder
   
   private void a(@NonNull String paramString)
   {
-    yuk.b(this.jdField_a_of_type_JavaLangString, paramString);
+    xvv.b(this.jdField_a_of_type_JavaLangString, paramString);
   }
   
   private void a(String paramString, long paramLong)
@@ -446,18 +446,18 @@ public class VideoViewVideoHolder
     }
   }
   
-  private void a(xqz paramxqz, xtg paramxtg, int paramInt)
+  private void a(wsk paramwsk, wur paramwur, int paramInt)
   {
-    if (!TextUtils.equals(this.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(this.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    String str = yup.a(a());
-    xtt localxtt = paramxtg.a();
+    String str = xwa.a(a());
+    wve localwve = paramwur.a();
     long l1;
     long l2;
-    if (localxtt.jdField_d_of_type_Long == 0L)
+    if (localwve.jdField_d_of_type_Long == 0L)
     {
-      l1 = paramxtg.b();
+      l1 = paramwur.b();
       if (paramInt != 1) {
         break label102;
       }
@@ -465,15 +465,15 @@ public class VideoViewVideoHolder
     }
     for (;;)
     {
-      Bosses.get().postJob(new xro(this, this.jdField_a_of_type_JavaLangString, paramxqz, l1, l2, paramInt, str));
+      Bosses.get().postJob(new wsz(this, this.jdField_a_of_type_JavaLangString, paramwsk, l1, l2, paramInt, str));
       return;
-      l1 = localxtt.jdField_d_of_type_Long;
+      l1 = localwve.jdField_d_of_type_Long;
       break;
       label102:
-      if (localxtt.jdField_d_of_type_Long == 0L) {
-        l2 = paramxtg.a();
+      if (localwve.jdField_d_of_type_Long == 0L) {
+        l2 = paramwur.a();
       } else {
-        l2 = localxtt.e;
+        l2 = localwve.e;
       }
     }
   }
@@ -506,14 +506,14 @@ public class VideoViewVideoHolder
   
   private void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_Xqz.a();
+    Object localObject = this.jdField_a_of_type_Wsk.a();
     if (localObject == null)
     {
       b().setVisibility(8);
       return;
     }
     localObject = ((StoryVideoItem)localObject).getVideoLinkInfo();
-    if ((localObject != null) && (((wuw)localObject).a()) && (((wuw)localObject).a.a()) && (a().mReportData.from != 86))
+    if ((localObject != null) && (((vwm)localObject).a()) && (((vwm)localObject).a.a()) && (a().mReportData.from != 86))
     {
       b().setVisibility(paramInt);
       return;
@@ -524,26 +524,26 @@ public class VideoViewVideoHolder
   private void b(StoryVideoItem paramStoryVideoItem)
   {
     if ((!TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) && (!StoryVideoItem.isFakeVid(paramStoryVideoItem.mVid))) {
-      this.jdField_a_of_type_Xbv.a(paramStoryVideoItem.mVid, paramStoryVideoItem.mOwnerUid, a().mReportData.from, false, paramStoryVideoItem.mCreateTime);
+      this.jdField_a_of_type_Wdl.a(paramStoryVideoItem.mVid, paramStoryVideoItem.mOwnerUid, a().mReportData.from, false, paramStoryVideoItem.mCreateTime);
     }
     for (;;)
     {
       String str = paramStoryVideoItem.mOwnerUid;
       Object localObject = str;
-      if (this.jdField_a_of_type_Xqz.jdField_a_of_type_Wvn != null)
+      if (this.jdField_a_of_type_Wsk.jdField_a_of_type_Vxd != null)
       {
         localObject = str;
-        if (this.jdField_a_of_type_Xqz.jdField_a_of_type_Wvn.jdField_a_of_type_Int == 13) {
-          localObject = this.jdField_a_of_type_Xqz.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString;
+        if (this.jdField_a_of_type_Wsk.jdField_a_of_type_Vxd.jdField_a_of_type_Int == 13) {
+          localObject = this.jdField_a_of_type_Wsk.jdField_a_of_type_Vxd.jdField_a_of_type_JavaLangString;
         }
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = new wtz((String)localObject, paramStoryVideoItem);
-        wjj.a().dispatch((Dispatcher.Dispatchable)localObject);
+        localObject = new vvp((String)localObject, paramStoryVideoItem);
+        vli.a().dispatch((Dispatcher.Dispatchable)localObject);
       }
-      ((wte)wth.a(5)).b(paramStoryVideoItem.mVid);
-      yuk.b(this.jdField_a_of_type_JavaLangString, "Do play video. vid = %s", paramStoryVideoItem.mVid);
+      ((vuu)vux.a(5)).b(paramStoryVideoItem.mVid);
+      xvv.b(this.jdField_a_of_type_JavaLangString, "Do play video. vid = %s", paramStoryVideoItem.mVid);
       return;
       if (QLog.isColorLevel()) {
         QLog.i(this.jdField_a_of_type_JavaLangString, 2, "not report play, vid = " + paramStoryVideoItem.mVid + " mOwnerUid:" + paramStoryVideoItem.mOwnerUid + ", myUin:" + QQStoryContext.a().b());
@@ -551,22 +551,22 @@ public class VideoViewVideoHolder
     }
   }
   
-  private void b(xqz paramxqz, xtg paramxtg, int paramInt)
+  private void b(wsk paramwsk, wur paramwur, int paramInt)
   {
-    StoryVideoItem localStoryVideoItem = paramxqz.a();
+    StoryVideoItem localStoryVideoItem = paramwsk.a();
     if (localStoryVideoItem == null) {
-      yuk.e(this.jdField_a_of_type_JavaLangString, "video info empty , report error! vid :%s", new Object[] { paramxqz.jdField_a_of_type_JavaLangString });
+      xvv.e(this.jdField_a_of_type_JavaLangString, "video info empty , report error! vid :%s", new Object[] { paramwsk.jdField_a_of_type_JavaLangString });
     }
-    while (!TextUtils.equals(this.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString)) {
+    while (!TextUtils.equals(this.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    paramxqz = yup.a(a());
-    xtt localxtt = paramxtg.a();
+    paramwsk = xwa.a(a());
+    wve localwve = paramwur.a();
     long l1;
     long l2;
-    if (localxtt.jdField_d_of_type_Long == 0L)
+    if (localwve.jdField_d_of_type_Long == 0L)
     {
-      l1 = paramxtg.b();
+      l1 = paramwur.b();
       if (paramInt != 1) {
         break label133;
       }
@@ -574,15 +574,15 @@ public class VideoViewVideoHolder
     }
     for (;;)
     {
-      Bosses.get().postJob(new xrp(this, this.jdField_a_of_type_JavaLangString, localStoryVideoItem, l1, l2, paramInt, paramxqz));
+      Bosses.get().postJob(new wta(this, this.jdField_a_of_type_JavaLangString, localStoryVideoItem, l1, l2, paramInt, paramwsk));
       return;
-      l1 = localxtt.jdField_d_of_type_Long;
+      l1 = localwve.jdField_d_of_type_Long;
       break;
       label133:
-      if (localxtt.jdField_d_of_type_Long == 0L) {
-        l2 = paramxtg.a();
+      if (localwve.jdField_d_of_type_Long == 0L) {
+        l2 = paramwur.a();
       } else {
-        l2 = localxtt.e;
+        l2 = localwve.e;
       }
     }
   }
@@ -592,17 +592,17 @@ public class VideoViewVideoHolder
     if (Looper.myLooper() == Looper.getMainLooper()) {}
     for (boolean bool = true;; bool = false)
     {
-      znw.a(bool, "not - main - thread");
+      yos.a(bool, "not - main - thread");
       if (!a(paramInt, (int[])jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_e_of_type_Int))) {
         break;
       }
-      yuk.d(this.jdField_a_of_type_JavaLangString, "changeState : %s => %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt] });
+      xvv.d(this.jdField_a_of_type_JavaLangString, "changeState : %s => %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt] });
       this.jdField_e_of_type_Int = paramInt;
       return true;
     }
-    yuk.d(this.jdField_a_of_type_JavaLangString, new Throwable(), "changeState not allow ! current = %s, new = %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt] });
-    bdkh.a(new IllegalStateException("changeState ! " + jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] + " -- " + jdField_a_of_type_ArrayOfJavaLangString[paramInt]));
-    znw.a(false, "changeState not allow. current=" + jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] + ", new=" + jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    xvv.d(this.jdField_a_of_type_JavaLangString, new Throwable(), "changeState not allow ! current = %s, new = %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt] });
+    bcdb.a(new IllegalStateException("changeState ! " + jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] + " -- " + jdField_a_of_type_ArrayOfJavaLangString[paramInt]));
+    yos.a(false, "changeState not allow. current=" + jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] + ", new=" + jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
     return false;
   }
   
@@ -612,14 +612,14 @@ public class VideoViewVideoHolder
     if (Looper.myLooper() == Looper.getMainLooper())
     {
       bool = true;
-      znw.a(bool, "not - main - thread");
-      yuk.a(this.jdField_a_of_type_JavaLangString, "checkStateAndGoAhead. %s => %s. reset=%s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int], Boolean.valueOf(paramBoolean));
+      yos.a(bool, "not - main - thread");
+      xvv.a(this.jdField_a_of_type_JavaLangString, "checkStateAndGoAhead. %s => %s. reset=%s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int], Boolean.valueOf(paramBoolean));
       if (!paramBoolean) {
         break label134;
       }
       this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] + " - " + jdField_a_of_type_ArrayOfJavaLangString[0]);
       this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of("");
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new xse(this, null)).subscribe(new xrq(this));
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wtp(this, null)).subscribe(new wtb(this));
     }
     label134:
     do
@@ -629,12 +629,12 @@ public class VideoViewVideoHolder
       break;
       if (this.jdField_e_of_type_Int == this.jdField_c_of_type_Int)
       {
-        yuk.a(this.jdField_a_of_type_JavaLangString, "checkStateAndGoAhead. DONE => %s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
+        xvv.a(this.jdField_a_of_type_JavaLangString, "checkStateAndGoAhead. DONE => %s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
         return;
       }
       if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null)
       {
-        yuk.d(this.jdField_a_of_type_JavaLangString, "checkStateAndGoAhead. do nothing. waiting ...");
+        xvv.d(this.jdField_a_of_type_JavaLangString, "checkStateAndGoAhead. do nothing. waiting ...");
         return;
       }
       if (this.jdField_c_of_type_Int == 0)
@@ -647,8 +647,8 @@ public class VideoViewVideoHolder
         if (this.jdField_e_of_type_Int == 0)
         {
           this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_ArrayOfJavaLangString[0] + " - " + jdField_a_of_type_ArrayOfJavaLangString[2]);
-          this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_Xqz);
-          this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new xry(this, null)).map(new xsf(this, null)).subscribe(new xrr(this));
+          this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_Wsk);
+          this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wtj(this, null)).map(new wtq(this, null)).subscribe(new wtc(this));
           return;
         }
         d(true);
@@ -658,35 +658,35 @@ public class VideoViewVideoHolder
       {
         if (this.jdField_e_of_type_Int == 0)
         {
-          if (this.jdField_a_of_type_Xqz != null)
+          if (this.jdField_a_of_type_Wsk != null)
           {
             this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_ArrayOfJavaLangString[0] + " - " + jdField_a_of_type_ArrayOfJavaLangString[6]);
-            this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_Xqz);
-            this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new xry(this, null)).map(new xsf(this, null)).map(new xsa(this, this.jdField_a_of_type_Xsc)).map(new xsd(this, this.jdField_a_of_type_Xsc, b())).subscribe(new xrs(this));
+            this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_Wsk);
+            this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wtj(this, null)).map(new wtq(this, null)).map(new wtl(this, this.jdField_a_of_type_Wtn)).map(new wto(this, this.jdField_a_of_type_Wtn, b())).subscribe(new wtd(this));
             return;
           }
-          yuk.e(this.jdField_a_of_type_JavaLangString, "mData is null");
+          xvv.e(this.jdField_a_of_type_JavaLangString, "mData is null");
           a(new ErrorMessage(0, "mData is null. un bind !"));
           return;
         }
         StoryVideoItem localStoryVideoItem;
         if (this.jdField_e_of_type_Int == 2)
         {
-          if (this.jdField_a_of_type_Xqz != null)
+          if (this.jdField_a_of_type_Wsk != null)
           {
-            localStoryVideoItem = ((wte)wth.a(5)).b(this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString);
+            localStoryVideoItem = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString);
             if (localStoryVideoItem != null)
             {
               this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_ArrayOfJavaLangString[2] + " - " + jdField_a_of_type_ArrayOfJavaLangString[6]);
               this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(localStoryVideoItem);
-              this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new xsa(this, this.jdField_a_of_type_Xsc)).map(new xsd(this, this.jdField_a_of_type_Xsc, b())).subscribe(new xrt(this));
+              this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wtl(this, this.jdField_a_of_type_Wtn)).map(new wto(this, this.jdField_a_of_type_Wtn, b())).subscribe(new wte(this));
               return;
             }
-            yuk.e(this.jdField_a_of_type_JavaLangString, "mData is null");
+            xvv.e(this.jdField_a_of_type_JavaLangString, "mData is null");
             a(new ErrorMessage(0, "Go To VideoFile. storyVideoItem is null. un bind !"));
             return;
           }
-          yuk.e(this.jdField_a_of_type_JavaLangString, "mData is null");
+          xvv.e(this.jdField_a_of_type_JavaLangString, "mData is null");
           a(new ErrorMessage(0, "Go To VideoFile. mData is null. un bind !"));
           return;
         }
@@ -697,15 +697,15 @@ public class VideoViewVideoHolder
         }
         if (this.jdField_e_of_type_Int == 6)
         {
-          localStoryVideoItem = ((wte)wth.a(5)).b(this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString);
+          localStoryVideoItem = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString);
           if (localStoryVideoItem != null)
           {
             this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_ArrayOfJavaLangString[6] + " - " + jdField_a_of_type_ArrayOfJavaLangString[8]);
             this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(localStoryVideoItem);
-            this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new xsg(this, null)).subscribe(new xru(this));
+            this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wtr(this, null)).subscribe(new wtf(this));
             return;
           }
-          a(new ErrorMessage(12, "no videoInfo " + this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString));
+          a(new ErrorMessage(12, "no videoInfo " + this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString));
           return;
         }
         if ((this.jdField_e_of_type_Int == 7) || (this.jdField_e_of_type_Int == 9) || (this.jdField_e_of_type_Int == 12))
@@ -720,30 +720,30 @@ public class VideoViewVideoHolder
         }
         if ((this.jdField_c_of_type_Int == 10) && ((this.jdField_e_of_type_Int == 11) || (this.jdField_e_of_type_Int == 8)))
         {
-          yuk.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. current=%s, target=%s, start play", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
-          localStoryVideoItem = ((wte)wth.a(5)).b(this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString);
+          xvv.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. current=%s, target=%s, start play", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
+          localStoryVideoItem = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString);
           if (localStoryVideoItem != null)
           {
             this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] + " - " + jdField_a_of_type_ArrayOfJavaLangString[10]);
             this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(localStoryVideoItem);
-            this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new VideoViewVideoHolder.VideoStartSegment(this, null)).subscribe(new xrv(this));
+            this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new VideoViewVideoHolder.VideoStartSegment(this, null)).subscribe(new wtg(this));
             return;
           }
-          a(new ErrorMessage(12, "no videoInfo " + this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString));
+          a(new ErrorMessage(12, "no videoInfo " + this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString));
           return;
         }
-        yuk.e(this.jdField_a_of_type_JavaLangString, "state error. currentTargetState = %s, currentState = %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] });
+        xvv.e(this.jdField_a_of_type_JavaLangString, "state error. currentTargetState = %s, currentState = %s", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] });
         return;
       }
     } while (this.jdField_c_of_type_Int != 11);
     if (this.jdField_e_of_type_Int == 10)
     {
-      yuk.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. current=%s, target=%s, pause video", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
+      xvv.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. current=%s, target=%s, pause video", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
       b(11);
-      this.jdField_a_of_type_Xtg.c();
+      this.jdField_a_of_type_Wur.c();
       return;
     }
-    yuk.d(this.jdField_a_of_type_JavaLangString, "requestChangeState. current=%s, target=%s, ERROR !", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int] });
+    xvv.d(this.jdField_a_of_type_JavaLangString, "requestChangeState. current=%s, target=%s, ERROR !", new Object[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int] });
   }
   
   private void g()
@@ -776,12 +776,12 @@ public class VideoViewVideoHolder
       break;
       if (this.jdField_a_of_type_JavaUtilMap.containsKey(str))
       {
-        a(String.format((Locale)null, anzj.a(2131715232), new Object[] { localObject, str, Long.valueOf(((Long)this.jdField_a_of_type_JavaUtilMap.get(str)).longValue() - l1) }));
+        a(String.format((Locale)null, amtj.a(2131715466), new Object[] { localObject, str, Long.valueOf(((Long)this.jdField_a_of_type_JavaUtilMap.get(str)).longValue() - l1) }));
         l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(str)).longValue();
         localObject = str;
         continue;
         if (this.jdField_f_of_type_Boolean) {
-          a(String.format((Locale)null, anzj.a(2131715213), new Object[] { Long.valueOf(((Long)this.jdField_a_of_type_JavaUtilMap.get("HC")).longValue() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("SE")).longValue()) }));
+          a(String.format((Locale)null, amtj.a(2131715447), new Object[] { Long.valueOf(((Long)this.jdField_a_of_type_JavaUtilMap.get("HC")).longValue() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("SE")).longValue()) }));
         }
         return;
       }
@@ -813,9 +813,9 @@ public class VideoViewVideoHolder
       int i1 = this.n;
       int i2 = this.j;
       int i3 = this.k;
-      int i4 = this.jdField_a_of_type_Xtg.a();
+      int i4 = this.jdField_a_of_type_Wur.a();
       String str1 = this.jdField_f_of_type_JavaLangString;
-      String str2 = this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString;
+      String str2 = this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString;
       String str3 = this.jdField_e_of_type_JavaLangString;
       String str4 = this.jdField_c_of_type_JavaLangString;
       long l1 = this.jdField_d_of_type_Long;
@@ -823,8 +823,8 @@ public class VideoViewVideoHolder
       int i6 = this.m;
       int i7 = a().mReportData.from;
       Long localLong = (Long)this.jdField_a_of_type_JavaUtilMap.get("SE");
-      xtt localxtt = new xtt(this.jdField_a_of_type_Xtg.a());
-      Bosses.get().postJob(new xrn(this, this.jdField_a_of_type_JavaLangString, bool1, i1, localLong, bool2, i2, i3, i4, str1, str2, i7, i5, i6, localxtt, l1, str3, str4));
+      wve localwve = new wve(this.jdField_a_of_type_Wur.a());
+      Bosses.get().postJob(new wsy(this, this.jdField_a_of_type_JavaLangString, bool1, i1, localLong, bool2, i2, i3, i4, str1, str2, i7, i5, i6, localwve, l1, str3, str4));
       return;
       bool1 = false;
       break;
@@ -844,7 +844,7 @@ public class VideoViewVideoHolder
     int i2;
     label265:
     Object localObject2;
-    if ((!a().mReportData.hasReportFirstVideoTime) && ((TextUtils.equals(this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString, a().jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString))))
+    if ((!a().mReportData.hasReportFirstVideoTime) && ((TextUtils.equals(this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString, a().jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString))))
     {
       i1 = 1;
       if (!a().mReportData.hasReportFirstVideoTime) {
@@ -885,16 +885,16 @@ public class VideoViewVideoHolder
     if (i1 != 0)
     {
       l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get("HC")).longValue() - l2;
-      a(anzj.a(2131715218) + l1);
+      a(amtj.a(2131715452) + l1);
       if (i1 == 0) {
         break label666;
       }
       localObject1 = "CL ";
-      if (this.jdField_a_of_type_Xtg.a() != 0) {
+      if (this.jdField_a_of_type_Wur.a() != 0) {
         break label674;
       }
       localObject1 = (String)localObject1 + "LO ";
-      localObject1 = (String)localObject1 + this.jdField_a_of_type_Xtg.b();
+      localObject1 = (String)localObject1 + this.jdField_a_of_type_Wur.b();
       localObject1 = (String)localObject1 + " ";
       if (!b()) {
         break label739;
@@ -906,13 +906,13 @@ public class VideoViewVideoHolder
     for (Object localObject1 = (String)localObject1 + "TVK";; localObject1 = (String)localObject1 + "TEX")
     {
       this.jdField_b_of_type_Long = l1;
-      yup.b("play_video", "start_wait_time", a().mReportData.from, (int)l1, new String[] { localObject1, localStringBuilder.toString(), yup.a(a()), this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString });
+      xwa.b("play_video", "start_wait_time", a().mReportData.from, (int)l1, new String[] { localObject1, localStringBuilder.toString(), xwa.a(a()), this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString });
       return;
       l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get("HC")).longValue() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("SE")).longValue();
       break;
       localObject1 = "SL ";
       break label443;
-      if (this.jdField_a_of_type_Xtg.a() == 1)
+      if (this.jdField_a_of_type_Wur.a() == 1)
       {
         localObject1 = (String)localObject1 + "ST ";
         break label478;
@@ -924,45 +924,45 @@ public class VideoViewVideoHolder
   
   public int a()
   {
-    if (this.jdField_a_of_type_Xqz.c())
+    if (this.jdField_a_of_type_Wsk.c())
     {
       if (this.jdField_e_of_type_Int != 10) {
         break label127;
       }
       if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.getVisibility() == 0) {
-        yuk.d(this.jdField_a_of_type_JavaLangString, "toggle video, PLAYING = > PAUSE. ignore because loading while playing");
+        xvv.d(this.jdField_a_of_type_JavaLangString, "toggle video, PLAYING = > PAUSE. ignore because loading while playing");
       }
     }
     else
     {
       return 0;
     }
-    yuk.d(this.jdField_a_of_type_JavaLangString, "toggle video, PLAYING = > PAUSE");
+    xvv.d(this.jdField_a_of_type_JavaLangString, "toggle video, PLAYING = > PAUSE");
     a().setVisibility(0);
     a(11, "toggle pause");
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
     b(0);
-    yup.a("play_video", "exp_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString });
+    xwa.a("play_video", "exp_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString });
     return 2;
     label127:
     if ((this.jdField_e_of_type_Int == 11) && (a().getVisibility() == 0))
     {
-      yuk.d(this.jdField_a_of_type_JavaLangString, "toggle video, PAUSE = > PLAYING");
+      xvv.d(this.jdField_a_of_type_JavaLangString, "toggle video, PAUSE = > PLAYING");
       a().setVisibility(8);
       a(10, "toggle start");
       b(8);
       return 1;
     }
-    yuk.d(this.jdField_a_of_type_JavaLangString, "toggle video, ignore. isPlaying=%s, hideCover=%s, visibility=%d", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Xtg.a()), Boolean.valueOf(this.jdField_e_of_type_Boolean), Integer.valueOf(a().getVisibility()) });
+    xvv.d(this.jdField_a_of_type_JavaLangString, "toggle video, ignore. isPlaying=%s, hideCover=%s, visibility=%d", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Wur.a()), Boolean.valueOf(this.jdField_e_of_type_Boolean), Integer.valueOf(a().getVisibility()) });
     b(8);
     return 0;
   }
   
   public View a()
   {
-    xri localxri = (xri)a(xri.class);
-    if (localxri != null) {
-      return localxri.jdField_b_of_type_AndroidViewView;
+    wst localwst = (wst)a(wst.class);
+    if (localwst != null) {
+      return localwst.jdField_b_of_type_AndroidViewView;
     }
     return new View(a());
   }
@@ -980,20 +980,20 @@ public class VideoViewVideoHolder
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    a(anzj.a(2131715226) + this.jdField_a_of_type_Int + "-" + this.jdField_b_of_type_Int);
+    a(amtj.a(2131715460) + this.jdField_a_of_type_Int + "-" + this.jdField_b_of_type_Int);
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull xqz paramxqz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public void a(int paramInt1, int paramInt2, @NonNull wsk paramwsk, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
   {
     String str;
-    if (this.jdField_a_of_type_Xqz != null)
+    if (this.jdField_a_of_type_Wsk != null)
     {
-      str = this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString;
-      super.a(paramInt1, paramInt2, paramxqz, paramStoryPlayerGroupHolder);
-      yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), paramxqz);
+      str = this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString;
+      super.a(paramInt1, paramInt2, paramwsk, paramStoryPlayerGroupHolder);
+      xvv.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), paramwsk);
       i();
       this.jdField_a_of_type_JavaUtilMap.clear();
-      if (paramxqz.jdField_a_of_type_JavaLangString.equals(str)) {
+      if (paramwsk.jdField_a_of_type_JavaLangString.equals(str)) {
         break label95;
       }
     }
@@ -1018,8 +1018,8 @@ public class VideoViewVideoHolder
     if ((paramInt == 2) || (paramInt == 8) || (paramInt == 10) || (paramInt == 11) || (paramInt == 0))
     {
       bool = true;
-      znw.a(bool);
-      yuk.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. START. current=%s, newTarget=%s. reset=%s, reason=%s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt], Boolean.valueOf(paramBoolean), paramString);
+      yos.a(bool);
+      xvv.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. START. current=%s, newTarget=%s. reset=%s, reason=%s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt], Boolean.valueOf(paramBoolean), paramString);
       if ((this.jdField_c_of_type_Int != paramInt) || (paramBoolean))
       {
         this.jdField_c_of_type_Int = paramInt;
@@ -1029,7 +1029,7 @@ public class VideoViewVideoHolder
         if (this.jdField_a_of_type_ComTribeAsyncReactiveStream == null) {
           break label169;
         }
-        yuk.a(this.jdField_a_of_type_JavaLangString, "cancel current stream : %s. current state = %s", this.jdField_b_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int]);
+        xvv.a(this.jdField_a_of_type_JavaLangString, "cancel current stream : %s. current state = %s", this.jdField_b_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int]);
         this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
         this.jdField_b_of_type_JavaLangString = null;
         this.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
@@ -1038,7 +1038,7 @@ public class VideoViewVideoHolder
     }
     for (;;)
     {
-      yuk.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. DONE. current=%s, newTarget=%s. reset=%s, reason=%s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt], Boolean.valueOf(paramBoolean), paramString);
+      xvv.a(this.jdField_a_of_type_JavaLangString, "requestChangeState. DONE. current=%s, newTarget=%s. reset=%s, reason=%s", jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int], jdField_a_of_type_ArrayOfJavaLangString[paramInt], Boolean.valueOf(paramBoolean), paramString);
       return;
       bool = false;
       break;
@@ -1047,23 +1047,23 @@ public class VideoViewVideoHolder
       continue;
       label177:
       if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-        yuk.b(this.jdField_a_of_type_JavaLangString, "just waiting");
+        xvv.b(this.jdField_a_of_type_JavaLangString, "just waiting");
       } else {
         g();
       }
     }
   }
   
-  public void a(xsn paramxsn)
+  public void a(wty paramwty)
   {
-    this.jdField_a_of_type_Xsn = paramxsn;
+    this.jdField_a_of_type_Wty = paramwty;
   }
   
   protected View b()
   {
-    xrf localxrf = (xrf)a(xrf.class);
-    if (localxrf != null) {
-      return localxrf.jdField_a_of_type_AndroidViewView;
+    wsq localwsq = (wsq)a(wsq.class);
+    if (localwsq != null) {
+      return localwsq.jdField_a_of_type_AndroidViewView;
     }
     return new View(a());
   }
@@ -1073,11 +1073,11 @@ public class VideoViewVideoHolder
     super.b();
     Activity localActivity = a();
     if (b()) {}
-    for (this.jdField_a_of_type_Xtg = new xtm(new xuk(localActivity, String.valueOf(System.identityHashCode(this))));; this.jdField_a_of_type_Xtg = new xtm(new xut(localActivity, String.valueOf(System.identityHashCode(this)))))
+    for (this.jdField_a_of_type_Wur = new wux(new wvv(localActivity, String.valueOf(System.identityHashCode(this))));; this.jdField_a_of_type_Wur = new wux(new wwe(localActivity, String.valueOf(System.identityHashCode(this)))))
     {
-      yuk.a(this.jdField_a_of_type_JavaLangString, "create video view, use-TVK=%s videoView=%s", Boolean.valueOf(b()), this.jdField_a_of_type_Xtg);
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(this.jdField_a_of_type_Xtg.a(), 0, new RelativeLayout.LayoutParams(-1, -1));
-      a(new xrl(this));
+      xvv.a(this.jdField_a_of_type_JavaLangString, "create video view, use-TVK=%s videoView=%s", Boolean.valueOf(b()), this.jdField_a_of_type_Wur);
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(this.jdField_a_of_type_Wur.a(), 0, new RelativeLayout.LayoutParams(-1, -1));
+      a(new wsw(this));
       return;
     }
   }
@@ -1096,9 +1096,9 @@ public class VideoViewVideoHolder
       this.n = 1;
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibilityDelay(0, 1000L, "onSelectedChanged true");
-      yup.b("play_video", "onSelectedState", 0, 0, new String[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] });
+      xwa.b("play_video", "onSelectedState", 0, 0, new String[] { jdField_a_of_type_ArrayOfJavaLangString[this.jdField_e_of_type_Int] });
       a(10, "selected");
-      yup.a("play_video", "exp", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString });
+      xwa.a("play_video", "exp", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString });
     }
     for (;;)
     {
@@ -1122,14 +1122,14 @@ public class VideoViewVideoHolder
   {
     super.c();
     a(0, true, "unBind");
-    if (this.jdField_a_of_type_Zsd != null) {
-      this.jdField_a_of_type_Zsd.dismiss();
+    if (this.jdField_a_of_type_Yro != null) {
+      this.jdField_a_of_type_Yro.dismiss();
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    yuk.d(this.jdField_a_of_type_JavaLangString, "setRepeatWhilePlayDone = %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    xvv.d(this.jdField_a_of_type_JavaLangString, "setRepeatWhilePlayDone = %s", new Object[] { Boolean.valueOf(paramBoolean) });
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
@@ -1152,32 +1152,32 @@ public class VideoViewVideoHolder
     if ((!d()) || (!c()) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder == null)) {
       return false;
     }
-    wta localwta = (wta)wth.a(10);
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.size() > 1) && (!localwta.a()))
+    vuq localvuq = (vuq)vux.a(10);
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.size() > 1) && (!localvuq.a()))
     {
       e();
-      if (this.jdField_a_of_type_Zsd != null) {
-        this.jdField_a_of_type_Zsd.dismiss();
+      if (this.jdField_a_of_type_Yro != null) {
+        this.jdField_a_of_type_Yro.dismiss();
       }
-      this.jdField_a_of_type_Zsd = new zsd(a());
-      this.jdField_a_of_type_Zsd.a(true);
-      this.jdField_a_of_type_Zsd.a(anzj.a(2131715219));
-      this.jdField_a_of_type_Zsd.setOnDismissListener(new xsb(this, this.jdField_d_of_type_Boolean));
-      this.jdField_a_of_type_Zsd.show();
-      localwta.a(true);
+      this.jdField_a_of_type_Yro = new yro(a());
+      this.jdField_a_of_type_Yro.a(true);
+      this.jdField_a_of_type_Yro.a(amtj.a(2131715453));
+      this.jdField_a_of_type_Yro.setOnDismissListener(new wtm(this, this.jdField_d_of_type_Boolean));
+      this.jdField_a_of_type_Yro.show();
+      localvuq.a(true);
       return true;
     }
-    if ((a().a().getCount() > 1) && (!localwta.b()))
+    if ((a().a().getCount() > 1) && (!localvuq.b()))
     {
       e();
-      if (this.jdField_a_of_type_Zsd != null) {
-        this.jdField_a_of_type_Zsd.dismiss();
+      if (this.jdField_a_of_type_Yro != null) {
+        this.jdField_a_of_type_Yro.dismiss();
       }
-      this.jdField_a_of_type_Zsd = new zsd(a());
-      this.jdField_a_of_type_Zsd.a(anzj.a(2131715221));
-      this.jdField_a_of_type_Zsd.setOnDismissListener(new xsb(this, this.jdField_d_of_type_Boolean));
-      this.jdField_a_of_type_Zsd.show();
-      localwta.b(true);
+      this.jdField_a_of_type_Yro = new yro(a());
+      this.jdField_a_of_type_Yro.a(amtj.a(2131715455));
+      this.jdField_a_of_type_Yro.setOnDismissListener(new wtm(this, this.jdField_d_of_type_Boolean));
+      this.jdField_a_of_type_Yro.show();
+      localvuq.b(true);
       return true;
     }
     return false;
@@ -1185,18 +1185,18 @@ public class VideoViewVideoHolder
   
   public void f()
   {
-    if (!this.jdField_a_of_type_Xqz.c()) {
+    if (!this.jdField_a_of_type_Wsk.c()) {
       return;
     }
     int i1 = a().mReportData.from;
-    if (xip.a(i1)) {
-      b(this.jdField_a_of_type_Xqz, this.jdField_a_of_type_Xtg, this.jdField_d_of_type_Int);
+    if (wkf.a(i1)) {
+      b(this.jdField_a_of_type_Wsk, this.jdField_a_of_type_Wur, this.jdField_d_of_type_Int);
     }
     for (;;)
     {
-      yuk.a(this.jdField_a_of_type_JavaLangString, "report video player done! vid :%s , from :%d , op_result: %d", this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString, Integer.valueOf(i1), Integer.valueOf(this.jdField_d_of_type_Int));
+      xvv.a(this.jdField_a_of_type_JavaLangString, "report video player done! vid :%s , from :%d , op_result: %d", this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString, Integer.valueOf(i1), Integer.valueOf(this.jdField_d_of_type_Int));
       return;
-      a(this.jdField_a_of_type_Xqz, this.jdField_a_of_type_Xtg, this.jdField_d_of_type_Int);
+      a(this.jdField_a_of_type_Wsk, this.jdField_a_of_type_Wur, this.jdField_d_of_type_Int);
     }
   }
   
@@ -1209,19 +1209,19 @@ public class VideoViewVideoHolder
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("VideoInfo(" + this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString + ")", this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString));
-      QQToast.a(paramView.getContext(), 2131693895, 0).a();
+      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("VideoInfo(" + this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString + ")", this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString));
+      QQToast.a(paramView.getContext(), 2131693994, 0).a();
       continue;
-      Object localObject = ((wjn)wth.a(4)).b();
+      Object localObject = ((vlm)vux.a(4)).b();
       if ((localObject != null) && (this.jdField_c_of_type_JavaLangString != null))
       {
-        localObject = ((wjt)wth.a(28)).a(blhn.a(this.jdField_c_of_type_JavaLangString, "authkey", (String)localObject).replace("https://", "http://"));
+        localObject = ((vls)vux.a(28)).a(bjnd.a(this.jdField_c_of_type_JavaLangString, "authkey", (String)localObject).replace("https://", "http://"));
         if ((localObject != null) && (localObject.length > 0))
         {
-          ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("VideoUrl(" + this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString + ")", localObject[0]));
-          QQToast.a(paramView.getContext(), 2131693895, 0).a();
+          ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("VideoUrl(" + this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString + ")", localObject[0]));
+          QQToast.a(paramView.getContext(), 2131693994, 0).a();
           continue;
-          localObject = wkr.a(this.jdField_a_of_type_Xqz.jdField_a_of_type_JavaLangString, 0, false, false);
+          localObject = vmq.a(this.jdField_a_of_type_Wsk.jdField_a_of_type_JavaLangString, 0, false, false);
           if ((localObject != null) && (((File)localObject).exists()))
           {
             Intent localIntent = new Intent("android.intent.action.VIEW");
@@ -1240,7 +1240,7 @@ public class VideoViewVideoHolder
             }
             continue;
             label349:
-            QQToast.a(paramView.getContext(), anzj.a(2131715229), 0).a();
+            QQToast.a(paramView.getContext(), amtj.a(2131715463), 0).a();
           }
         }
       }

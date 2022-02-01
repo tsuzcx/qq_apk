@@ -1,6 +1,18 @@
-class bkvk
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bkvk
 {
-  private static bkvj a = new bkvj(null);
+  public int a;
+  public Drawable a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public int b;
+  public Drawable b;
 }
 
 

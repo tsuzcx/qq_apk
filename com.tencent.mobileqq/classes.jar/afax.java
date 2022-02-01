@@ -1,39 +1,67 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.intimate_relation.intimate_relation.IntimateBuddy;
+import tencent.intimate_relation.intimate_relation.IntimateInfo;
+import tencent.intimate_relation.intimate_relation.IntimateLadybro;
+import tencent.intimate_relation.intimate_relation.IntimateLover;
+import tencent.intimate_relation.intimate_relation.SnsRelationInfo;
 
 public class afax
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public afax(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public int a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static afax a(byte[] paramArrayOfByte)
   {
-    if (NotifyPushSettingActivity.a())
+    intimate_relation.IntimateInfo localIntimateInfo = null;
+    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
+    for (;;)
     {
-      NotifyPushSettingActivity.b(this.a).setChecked(false);
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      if (!paramBoolean) {
-        break label121;
-      }
-    }
-    label121:
-    for (int i = 1;; i = 0)
-    {
-      bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean)
+      try
       {
-        NotifyPushSettingActivity.b(this.a).setVisibility(0);
-        NotifyPushSettingActivity.b(this.a).setVisibility(8);
-        break;
+        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localIntimateInfo;
+        if (localSnsRelationInfo.intimate_list.has())
+        {
+          paramArrayOfByte = localIntimateInfo;
+          if (localSnsRelationInfo.intimate_list.size() > 0)
+          {
+            paramArrayOfByte = new afax();
+            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
+            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
+              break label173;
+            }
+            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
+        }
+        return paramArrayOfByte;
       }
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      break;
+      catch (Throwable paramArrayOfByte)
+      {
+        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
+        return null;
+      }
+      label173:
+      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
+      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
+      }
     }
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsIntimatePushInfo{");
+    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

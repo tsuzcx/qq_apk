@@ -1,60 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class arac<T>
+public class arac
+  implements aqzz
 {
-  public static final int DEFAULT = 1;
-  public static final int FAIL_CODE_ERROR = -2;
-  public static final int FAIL_CODE_REQ_TIMEOUT = -1;
-  public static final int MIGRATE = 0;
-  private static final String TAG = "IQConfigProcessor";
+  public arac(CameraEmoSingleSend paramCameraEmoSingleSend) {}
   
-  public abstract Class<T> clazz();
-  
-  public boolean isAccountRelated()
+  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
   {
-    return true;
-  }
-  
-  public abstract boolean isNeedCompressed();
-  
-  public abstract boolean isNeedStoreLargeFile();
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return false;
-  }
-  
-  @NonNull
-  public abstract T migrateOldOrDefaultContent(int paramInt);
-  
-  public abstract int migrateOldVersion();
-  
-  @Nullable
-  public abstract T onParsed(araj[] paramArrayOfaraj);
-  
-  public abstract void onReqFailed(int paramInt);
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + type());
+    boolean bool = true;
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onAddEmoFinish, result:", Integer.valueOf(paramInt), " emoId:", Integer.valueOf(paramCameraEmotionData.emoId), " originalId:", Integer.valueOf(CameraEmoSingleSend.a(this.a).emoId) });
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      CameraEmoSingleSend.a(this.a, bool, paramInt);
+      this.a.a(String.valueOf(paramInt), 2);
+      return;
+      bool = false;
     }
   }
-  
-  public int onSend(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public abstract void onUpdate(T paramT);
-  
-  public abstract int type();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arac
  * JD-Core Version:    0.7.0.1
  */

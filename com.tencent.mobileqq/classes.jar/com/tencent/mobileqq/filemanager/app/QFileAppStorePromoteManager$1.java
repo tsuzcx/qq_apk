@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atrz;
+import asej;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistant.appinfo.GetAppInfoManager;
@@ -9,7 +9,7 @@ import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 public class QFileAppStorePromoteManager$1
   implements Runnable
 {
-  public QFileAppStorePromoteManager$1(atrz paramatrz) {}
+  public QFileAppStorePromoteManager$1(asej paramasej) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class QFileAppStorePromoteManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.1
  * JD-Core Version:    0.7.0.1
  */

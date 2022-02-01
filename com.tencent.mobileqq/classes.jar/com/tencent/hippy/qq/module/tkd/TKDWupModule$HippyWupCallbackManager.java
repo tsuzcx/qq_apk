@@ -2,7 +2,7 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhkv;
+import bfuc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -56,23 +56,27 @@ public class TKDWupModule$HippyWupCallbackManager
         break label343;
       }
       Object localObject = localHippyWupCallbackModule.rspName;
-      paramObject = paramToServiceMsg.jce_rsp_buffer.get().toByteArray();
-      paramToServiceMsg.jce_rsp_buffer.get().toString();
+      paramToServiceMsg = paramToServiceMsg.jce_rsp_buffer.get().toByteArray();
       TKDWupUniPacket localTKDWupUniPacket = new TKDWupUniPacket();
-      if (paramObject.length > 4) {
-        localTKDWupUniPacket.decode(paramObject);
+      if (paramToServiceMsg.length > 4) {
+        localTKDWupUniPacket.decode(paramToServiceMsg);
       }
       paramObject = localTKDWupUniPacket.getRawResponseData((String)localObject, localHippyWupCallbackModule.rspClassName);
       paramToServiceMsg = paramObject;
       if (TextUtils.isEmpty(localHippyWupCallbackModule.rspClassName))
       {
-        localObject = localTKDWupUniPacket.getRspDataMap((String)localObject).entrySet().iterator();
+        localObject = localTKDWupUniPacket.getRspDataMap((String)localObject);
         paramToServiceMsg = paramObject;
-        if (((Iterator)localObject).hasNext())
+        if (localObject != null)
         {
-          paramToServiceMsg = (Map.Entry)((Iterator)localObject).next();
-          localHippyWupCallbackModule.rspClassName = ((String)paramToServiceMsg.getKey());
-          paramToServiceMsg = (byte[])paramToServiceMsg.getValue();
+          localObject = ((HashMap)localObject).entrySet().iterator();
+          paramToServiceMsg = paramObject;
+          if (((Iterator)localObject).hasNext())
+          {
+            paramToServiceMsg = (Map.Entry)((Iterator)localObject).next();
+            localHippyWupCallbackModule.rspClassName = ((String)paramToServiceMsg.getKey());
+            paramToServiceMsg = (byte[])paramToServiceMsg.getValue();
+          }
         }
       }
       if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 0))
@@ -80,7 +84,7 @@ public class TKDWupModule$HippyWupCallbackManager
         paramObject = new HippyMap();
         paramObject.pushInt("code", paramInt);
         paramObject.pushString("className", localHippyWupCallbackModule.rspClassName);
-        paramObject.pushString("body", bhkv.encodeToString(paramToServiceMsg, 2));
+        paramObject.pushString("body", bfuc.encodeToString(paramToServiceMsg, 2));
         localHippyWupCallbackModule.promise.resolve(paramObject);
         return;
       }

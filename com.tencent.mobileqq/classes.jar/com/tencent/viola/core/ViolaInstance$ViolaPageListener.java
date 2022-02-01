@@ -5,6 +5,10 @@ import android.view.View;
 
 public abstract interface ViolaInstance$ViolaPageListener
 {
+  public abstract void onComponentFloatBottom(View paramView, float paramFloat);
+  
+  public abstract void onComponentFloatCenter(View paramView, float paramFloat);
+  
   public abstract void onComponentTopIndex(View paramView, float paramFloat);
   
   public abstract void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2);

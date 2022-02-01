@@ -1,32 +1,54 @@
-public class amxl
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.litetransfersdk.Session;
+
+class amxl
+  extends amqk
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  amxl(amxk paramamxk) {}
   
-  public boolean equals(Object paramObject)
+  protected void a(Session paramSession)
   {
-    if ((paramObject == null) || (!(paramObject instanceof amxl))) {}
-    do
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
     {
-      return false;
-      paramObject = (amxl)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+    }
   }
   
-  public String toString()
+  protected void a(Session paramSession, float paramFloat)
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("positionX:").append(this.a);
-    localStringBuilder.append(", positionY:").append(this.b);
-    localStringBuilder.append(", width:").append(this.c);
-    localStringBuilder.append(", height:").append(this.d);
-    localStringBuilder.append(", align:").append(this.e);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this.a.a(1, paramSession, paramFloat, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(Session paramSession, boolean paramBoolean)
+  {
+    this.a.a(2, paramSession, 0.0D, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.a(paramLong, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(Session paramSession)
+  {
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

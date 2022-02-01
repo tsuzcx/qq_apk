@@ -1,8 +1,15 @@
-public class bnrh
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class bnrh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public String a;
-  public int b;
+  bnrh(bnrd parambnrd) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidateSelf();
+  }
 }
 
 

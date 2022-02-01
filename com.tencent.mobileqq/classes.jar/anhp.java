@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.apollo.sdk.CmShowTest.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public final class anhp
-  implements anps
+class anhp
+  extends amrc
 {
-  public void a(int paramInt)
+  private anhp(anho paramanho) {}
+  
+  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    ThreadManager.getUIHandler().post(new CmShowTest.1.1(this));
+    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
   }
 }
 

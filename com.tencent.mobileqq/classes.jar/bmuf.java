@@ -1,6 +1,19 @@
-public abstract interface bmuf
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.paster.PasterParcelData;
+
+public final class bmuf
+  implements Parcelable.Creator<PasterParcelData>
 {
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  public PasterParcelData a(Parcel paramParcel)
+  {
+    return new PasterParcelData(paramParcel);
+  }
+  
+  public PasterParcelData[] a(int paramInt)
+  {
+    return new PasterParcelData[paramInt];
+  }
 }
 
 

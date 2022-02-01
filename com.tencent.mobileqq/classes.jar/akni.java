@@ -1,17 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class akni
-  implements View.OnClickListener
+  extends AbsRecentStatus
 {
-  public akni(BaseActivityView paramBaseActivityView) {}
+  private static int a = 25;
   
-  public void onClick(View paramView)
+  public int[] declareStatus()
   {
-    this.a.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new int[] { 7 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    do
+    {
+      return false;
+      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+    } while ((paramRecentBaseData.mStatus == 4) || ((paramRecentBaseData.getRecentUserType() != 1) && (paramRecentBaseData.getRecentUserType() != 0)));
+    String str = paramRecentBaseData.getRecentUserUin();
+    if (paramRecentBaseData.getRecentUserType() == 1) {}
+    for (int i = 1;; i = 2)
+    {
+      i = ((bdct)paramIMCoreAppRuntime.getManager(339)).a(i, str);
+      if (((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus < i)) || (i == 0)) {
+        break;
+      }
+      paramRecentBaseData.mStatus = i;
+      return false;
+    }
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

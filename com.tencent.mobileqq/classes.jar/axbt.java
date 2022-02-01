@@ -1,8 +1,26 @@
-public abstract interface axbt
+import android.widget.EditText;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+
+class axbt
+  implements aprh
 {
-  public abstract void a();
+  axbt(axax paramaxax, IphonePickerView paramIphonePickerView, bjnw parambjnw) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing()))
+    {
+      axax.a(this.jdField_a_of_type_Axax, this.jdField_a_of_type_Axax.h, false);
+      this.jdField_a_of_type_Bjnw.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    this.jdField_a_of_type_Axax.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
+    this.jdField_a_of_type_Axax.h.setText(axax.b(this.jdField_a_of_type_Axax).a(0, paramInt1));
+  }
 }
 
 

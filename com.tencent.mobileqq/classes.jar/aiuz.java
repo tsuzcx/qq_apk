@@ -1,166 +1,99 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar.1;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.fling.TopContentLayout;
+import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
 
 public class aiuz
-  implements aiwf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private aiwh jdField_a_of_type_Aiwh;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
+  private float jdField_a_of_type_Float;
   
-  public aiuz(QQAppInterface paramQQAppInterface, aiwh paramaiwh, Context paramContext, SessionInfo paramSessionInfo, MqqHandler paramMqqHandler)
+  public aiuz(TopContentLayout paramTopContentLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aiwh = paramaiwh;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
   }
   
-  public int a()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return 50;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561948, null);
-    TextView localTextView = (TextView)localView.findViewById(2131362507);
-    String str = (String)paramVarArgs[0];
-    int i = ((Integer)paramVarArgs[1]).intValue();
-    localTextView.setText(str);
-    localView.setOnClickListener(new aiva(this, i));
-    return localView;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "check() : ");
+    int i;
+    int j;
+    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    {
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
+      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      if (paramFloat1 <= 0.0F) {
+        break label96;
+      }
+      i -= j;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {}
     for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FraudTipsBar", 2, "mAntiFraudTips is showing or has shown");
-        return;
-      }
-      try
-      {
-        l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (l == 0L) {
-          continue;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          if (amsk.a().a(l))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("FraudTipsBar", 2, "uin cache is out of date, update it! ");
-            }
-            ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a("OidbSvc.0x476_146", (int)l, 146);
-          }
-        }
-        int i = amsk.a().a(l);
-        if (i == 0) {
-          continue;
-        }
-        bhkf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SecWarningCfg");
-        Object localObject = (Bundle)bhkf.a().a("SecWarningCfg", "BannerWording", 146, i);
-        if (localObject != null)
-        {
-          localObject = ((Bundle)localObject).getString("BannerWording");
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            continue;
-          }
-          if (!this.jdField_a_of_type_Aiwh.a(this, new Object[] { localObject, Integer.valueOf(i) })) {
-            continue;
-          }
-          this.jdField_a_of_type_Int = 1;
-          bdll.b(null, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "banner", "display", i, 0, "", "", "", "");
-          Timer localTimer = new Timer();
-          FraudTipsBar.1 local1 = new FraudTipsBar.1(this);
-          localObject = (Bundle)bhkf.a().a("SecWarningCfg", "BannerTTL", 146, i);
-          if (localObject != null)
-          {
-            localObject = ((Bundle)localObject).getString("BannerTTL");
-            try
-            {
-              i = Integer.parseInt((String)localObject);
-              l = i;
-            }
-            catch (Throwable localThrowable2)
-            {
-              for (;;)
-              {
-                localThrowable2.printStackTrace();
-                l = 15L;
-              }
-            }
-            l *= 1000L;
-            if (l <= 0L) {
-              continue;
-            }
-            localTimer.schedule(local1, l);
-            return;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          localThrowable1.printStackTrace();
-          long l = 0L;
-          continue;
-          String str = "0";
-          continue;
-          str = null;
-        }
-      }
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label96:
+      i = -j;
     }
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramInt != 1000) {
-      return;
+    float f1;
+    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    {
+      f1 = Math.abs(paramFloat2 / paramFloat1);
+      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
+      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
+      {
+        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
+        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
+          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
+        }
+        return true;
+      }
+      f1 = paramFloat1;
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
+    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+    if ((paramFloat1 < 0.0F) && (j < i)) {
+      if (Math.abs(paramFloat1) > i - j) {
+        paramFloat1 = i - j;
+      }
     }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 0;
+    for (;;)
+    {
+      f1 = paramFloat1;
+      if (Math.abs(paramFloat1) <= 0.0F) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
+      f1 = paramFloat1;
+      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
+        break;
+      }
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
+      f1 = paramFloat1;
+      break;
+      paramFloat1 = -paramFloat1;
+      continue;
+      if ((paramFloat1 > 0.0F) && (j > 0))
+      {
+        if (Math.abs(paramFloat1) > j) {
+          paramFloat1 = -j;
+        } else {
+          paramFloat1 = -paramFloat1;
+        }
+      }
+      else {
+        paramFloat1 = 0.0F;
+      }
+    }
   }
 }
 

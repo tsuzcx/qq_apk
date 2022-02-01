@@ -1,55 +1,36 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qen
-  implements RecyclerView.OnChildAttachStateChangeListener
+public class qen
+  implements ViewBase.OnClickListener
 {
-  qen(qek paramqek) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
   
-  public void onChildViewAttachedToWindow(View paramView)
+  public qen(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
   {
-    if ((paramView instanceof Container))
-    {
-      if (qek.a(this.a) != null)
-      {
-        int j = qek.a(this.a).getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          Iterator localIterator = ((Container)qek.a(this.a).getChildAt(i)).getViewIdMapping().entrySet().iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject = (Map.Entry)localIterator.next();
-            if ((((Map.Entry)localObject).getValue() instanceof qcr))
-            {
-              localObject = (qcr)((Map.Entry)localObject).getValue();
-              if ((((qcr)localObject).a() instanceof NativeVideoView))
-              {
-                localObject = ((qcr)localObject).a();
-                if (localObject != null) {
-                  ((NativeVideoView)localObject).setVideoPlayListener(new qeo(this));
-                }
-              }
-            }
-          }
-          i += 1;
-        }
-      }
-      pmd.a((Container)paramView);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onChildViewDetachedFromWindow(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramView instanceof Container)) {
-      pmd.b((Container)paramView);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof AdvertisementInfo))
+    {
+      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      if (paramViewBase.mLocalInfo != null)
+      {
+        String str = paramViewBase.mLocalInfo.b;
+        if (!TextUtils.isEmpty(str))
+        {
+          pay.d(this.jdField_a_of_type_AndroidContentContext, str);
+          obb.a(new trn().a(this.jdField_a_of_type_AndroidContentContext).a(obb.a).b(obb.ab).a(paramViewBase).d(obb.aY).a());
+        }
+      }
     }
   }
 }

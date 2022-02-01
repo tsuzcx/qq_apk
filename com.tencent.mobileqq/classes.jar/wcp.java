@@ -1,63 +1,39 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wcp
+  extends QQUIEventReceiver<wcn, wcm>
 {
-  private int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private List<Long> jdField_a_of_type_JavaUtilList;
-  private wcr jdField_a_of_type_Wcr;
-  private wcs jdField_a_of_type_Wcs;
-  
-  public void a(View paramView, int paramInt)
+  public wcp(wcn paramwcn)
   {
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131374082));
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381120);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-      paramView = new LinearLayoutManager(paramView.getContext());
-      paramView.setOrientation(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-      this.jdField_a_of_type_Wcs = new wcs(this, null);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wcs);
-      this.jdField_a_of_type_Int = paramInt;
-    }
+    super(paramwcn);
   }
   
-  public void a(Object paramObject)
+  public void a(@NonNull wcn paramwcn, @NonNull wcm paramwcm)
   {
-    if ((paramObject instanceof ArrayList))
-    {
-      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramObject);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label69;
-      }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      if (this.jdField_a_of_type_Wcs != null) {
-        this.jdField_a_of_type_Wcs.a(this.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    label69:
+    if (paramwcn.a()) {}
     do
     {
       return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-    } while (this.jdField_a_of_type_AndroidViewView == null);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (paramwcm.jdField_a_of_type_Boolean)
+      {
+        wcn.a(paramwcn);
+        return;
+      }
+      if ((paramwcm.a() != null) && (!paramwcm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramwcm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    return;
+    wcn.a(paramwcn);
   }
   
-  public void a(wcr paramwcr)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Wcr = paramwcr;
+    return wcm.class;
   }
 }
 

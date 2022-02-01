@@ -1,32 +1,32 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class pjd
-  implements CompoundButton.OnCheckedChangeListener
+  implements bjxz
 {
-  public pjd(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public pjd(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131698579), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
-      ocd.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ozs.e(), false);
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
+    paramXRecyclerView = pjn.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      ocd.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ozs.e(), false);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
+    paramXRecyclerView = pjn.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
     }
   }
 }

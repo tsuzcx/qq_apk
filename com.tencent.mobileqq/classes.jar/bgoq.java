@@ -1,21 +1,27 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dualsim.common.IKingCardInterface.OnChangeListener;
+import dualsim.common.OrderCheckResult;
+import mqq.app.AppRuntime;
 
 public class bgoq
-  extends TroopAppShortcutContainer
+  implements IKingCardInterface.OnChangeListener
 {
-  public bgoq(TroopAppShortcutFragment paramTroopAppShortcutFragment, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
+  public void onChanged(OrderCheckResult paramOrderCheckResult)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.e("KC.KCWraperV2", 1, "state changed");
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((AppRuntime)localObject).getAccount())
+    {
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramOrderCheckResult != null)) {
+        bgom.a((String)localObject, paramOrderCheckResult);
+      }
+      return;
+    }
   }
 }
 

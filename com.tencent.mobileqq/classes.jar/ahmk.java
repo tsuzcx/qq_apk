@@ -1,24 +1,9 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.MessageForMedalNews;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.annotation.SuppressLint;
 
 class ahmk
-  extends agen
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  MessageForMedalNews jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  
-  ahmk(ahmi paramahmi) {}
+  @SuppressLint({"StaticFieldLeak"})
+  private static ahmg a = new ahmg(null);
 }
 
 

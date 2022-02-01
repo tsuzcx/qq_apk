@@ -1,107 +1,105 @@
-import android.content.res.Configuration;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ohh
-  extends pfh
+public class ohh
 {
-  ohh(ohf paramohf) {}
+  public int a;
+  public String a;
+  public ArrayList<ohi> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public void a(int paramInt)
+  public ohh()
   {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).a(paramInt);
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_b_of_type_JavaLangString = "#FFFFFF";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  public static ohh a(String paramString)
   {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    if (ohf.a(this.a) != null)
+    int i = 0;
+    ohh localohh = new ohh();
+    if (!StringUtil.isEmpty(paramString)) {}
+    for (;;)
     {
-      ohf.a(this.a).f();
-      ohf.a(this.a).g();
-    }
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).a(paramConfiguration);
+      try
+      {
+        paramString = new JSONObject(paramString);
+        localohh.jdField_b_of_type_Int = paramString.optInt("jump_tab_id", 2);
+        localohh.jdField_c_of_type_Int = paramString.optInt("tab_switch");
+        localohh.jdField_b_of_type_JavaLangString = paramString.optString("tab_background", "#FFFFFF");
+        localohh.jdField_d_of_type_Int = paramString.optInt("is_preload");
+        localohh.jdField_a_of_type_Int = paramString.optInt("ark_report_switch", 1);
+        localohh.jdField_a_of_type_JavaLangString = paramString.optString("btn_txt");
+        localohh.jdField_c_of_type_JavaLangString = paramString.optString("minus_view_titie_url", "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png");
+        localohh.jdField_d_of_type_JavaLangString = paramString.optString("recommend_title_url", "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png");
+        paramString = paramString.optJSONArray("tabs");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          ArrayList localArrayList = new ArrayList(paramString.length());
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.optJSONObject(i);
+            ohi localohi = new ohi();
+            localohi.jdField_a_of_type_Int = localJSONObject.optInt("tabid");
+            localohi.jdField_c_of_type_JavaLangString = localJSONObject.optString("icon_normal");
+            localohi.jdField_d_of_type_JavaLangString = localJSONObject.optString("icon_selected");
+            localohi.e = localJSONObject.optString("textcolor_normal", "#CCCCCC");
+            localohi.f = localJSONObject.optString("textcolor_selected", "#000000");
+            localohi.jdField_b_of_type_JavaLangString = localJSONObject.optString("jump_url", "https://h5.qianbao.qq.com/qqshop/index?_wwv=128&_wv=7");
+            localohi.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
+            localohi.jdField_b_of_type_Int = localJSONObject.optInt("page_type", 0);
+            localohi.g = localJSONObject.optString("min_app_version", "8.3.3");
+            if (!localArrayList.contains(localohi)) {
+              localArrayList.add(localohi);
+            }
+          }
+          else
+          {
+            localohh.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+          }
+        }
+        else
+        {
+          return localohh;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return localohh;
+      }
+      i += 1;
     }
   }
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public ohi a(int paramInt)
   {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).a(paramTopBannerInfo);
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
     }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void as_()
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).p();
-    }
-  }
-  
-  public void b()
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).v();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((ohf.a(this.a) != null) && ((ohf.a(this.a) instanceof ReadInJoyListViewGroup)))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      ((ReadInJoyListViewGroup)ohf.a(this.a)).b(paramInt, paramList);
-      ohf.a(this.a, true);
-    }
-  }
-  
-  public void d(int paramInt, List<oor> paramList)
-  {
-    if ((ohf.a(this.a) instanceof ReadInJoyListViewGroup))
-    {
-      pmm localpmm = (pmm)((ReadInJoyListViewGroup)ohf.a(this.a)).a(2);
-      if (localpmm != null) {
-        localpmm.b(paramInt, paramList);
+      ohi localohi = (ohi)localIterator.next();
+      if (localohi.jdField_a_of_type_Int == paramInt) {
+        return localohi;
       }
     }
+    return null;
   }
 }
 

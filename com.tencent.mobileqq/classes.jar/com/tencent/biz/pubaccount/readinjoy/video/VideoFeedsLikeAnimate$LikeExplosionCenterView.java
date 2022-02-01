@@ -12,7 +12,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
-import rqs;
+import rxu;
 
 public class VideoFeedsLikeAnimate$LikeExplosionCenterView
   extends View
@@ -40,7 +40,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionCenterView
     ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("scaleY", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.4F), Keyframe.ofFloat(0.75F, 1.0F), Keyframe.ofFloat(1.0F, 1.28F) }) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.setDuration(400L);
-    localObjectAnimator1.addListener(new rqs(this));
+    localObjectAnimator1.addListener(new rxu(this));
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
     localAnimatorSet.start();
   }

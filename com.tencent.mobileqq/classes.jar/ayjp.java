@@ -1,6 +1,8 @@
-public abstract interface ayjp
+public class ayjp
 {
-  public abstract void a(ayjq paramayjq, int paramInt);
+  public static String a = "precover_ipc_action_get_resource";
+  public static String b = "precover_ipc_action_req_download";
+  public static String c = "precover_ipc_action_query_download_progress";
 }
 
 

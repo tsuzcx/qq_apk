@@ -1,6 +1,12 @@
-public abstract interface xvw
+public class xvw
 {
-  public abstract void a(xvo paramxvo, int paramInt1, int paramInt2);
+  public static void a(int paramInt, String paramString)
+  {
+    xvy localxvy = new xvy();
+    localxvy.a(paramInt, 1);
+    localxvy.a = paramString;
+    vqn.a().a(localxvy, new xvx());
+  }
 }
 
 

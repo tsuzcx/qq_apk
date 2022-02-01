@@ -1,29 +1,29 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import aanu;
-import ahbd;
+import afxp;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import nny;
+import zkp;
 
 public class SubscribePlayerManager$2
   implements Runnable
 {
-  public SubscribePlayerManager$2(aanu paramaanu) {}
+  public SubscribePlayerManager$2(zkp paramzkp) {}
   
   public void run()
   {
-    if (nny.a(BaseApplicationImpl.context) != 1) {
+    if (NetworkUtil.getNetworkType(BaseApplicationImpl.context) != 1) {
       QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
     }
-    while ((aanu.a(this.this$0)) || (aanu.a(this.this$0).size() <= 0)) {
+    while ((zkp.a(this.this$0)) || (zkp.a(this.this$0).size() <= 0)) {
       return;
     }
-    aanu.a(this.this$0, true);
-    Object localObject = aanu.a(this.this$0).keySet().iterator();
+    zkp.a(this.this$0, true);
+    Object localObject = zkp.a(this.this$0).keySet().iterator();
     int i = 0;
     label73:
     if (((Iterator)localObject).hasNext())
@@ -38,11 +38,11 @@ public class SubscribePlayerManager$2
     for (;;)
     {
       break label73;
-      localObject = (ahbd)aanu.a(this.this$0).get(Integer.valueOf(i));
+      localObject = (afxp)zkp.a(this.this$0).get(Integer.valueOf(i));
       if (localObject == null) {
         break;
       }
-      aanu.a(this.this$0, (ahbd)localObject, ((ahbd)localObject).b);
+      zkp.a(this.this$0, (afxp)localObject, ((afxp)localObject).b);
       return;
     }
   }

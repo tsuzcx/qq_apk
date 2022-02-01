@@ -1,64 +1,49 @@
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
-
-public class mnn
-  extends PagerAdapter
+class mnn
 {
-  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
+  public int a;
+  public mnm a;
+  public boolean a;
   
-  public mnn(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
+  public mnn(mnm parammnm, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
-    paramPagerAdapter.registerDataSetObserver(new mno(this, paramEffectCycleViewPager));
+    this.jdField_a_of_type_Mnm = parammnm;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  int a(int paramInt)
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      for (;;)
+      {
+        i = paramInt2;
+        if (paramInt1 >= paramInt2) {
+          break;
+        }
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mnm.a.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        i = Math.min(this.jdField_a_of_type_Mnm.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
+        System.arraycopy(this.jdField_a_of_type_Mnm.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
+        this.jdField_a_of_type_Int += i;
+        paramInt1 += i;
+      }
     }
-    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
-      return 0;
+    if (a())
+    {
+      i = 0;
+      return i;
     }
-    return paramInt - 1;
+    paramInt2 = Math.min(this.jdField_a_of_type_Mnm.a.length - this.jdField_a_of_type_Int, paramInt2);
+    System.arraycopy(this.jdField_a_of_type_Mnm.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int += paramInt2;
+    return paramInt2;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public boolean a()
   {
-    int i = a(paramInt);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
-    if (i > 0) {
-      return i + 2;
-    }
-    return 0;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    int i = a(paramInt);
-    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
-    super.notifyDataSetChanged();
+    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mnm.a.length);
   }
 }
 

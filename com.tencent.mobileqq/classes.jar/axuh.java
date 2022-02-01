@@ -1,41 +1,37 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
-import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axuh
-  implements URLDrawable.DownloadListener
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
+  public axuh(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public axuh(Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public axuh(Context paramContext, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
+    axvf.a(AutoReplyEditActivity.a(this.a), false);
+    String str2 = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
+    String str1;
+    if (AutoReplyEditActivity.a(this.a) != null)
+    {
+      str1 = AutoReplyEditActivity.a(this.a).getRawText();
+      if (str2.equals(str1)) {
+        break label75;
+      }
+      AutoReplyEditActivity.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = "";
+      break;
+      label75:
+      AutoReplyEditActivity.a(this.a);
+    }
   }
 }
 

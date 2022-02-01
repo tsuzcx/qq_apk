@@ -1,18 +1,58 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
 import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$dismissGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ryo
-  extends AnimatorListenerAdapter
+public class ryo
 {
-  ryo(View paramView) {}
+  public int a;
+  public long a;
+  public Bundle a;
+  public View a;
+  public ViewGroup a;
+  public VideoInfo a;
+  public String a;
+  public rds a;
+  public rdt a;
+  public rsr a;
+  public sdj a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
   
-  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
+  public ryo()
   {
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
+      return paramBoolean;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 

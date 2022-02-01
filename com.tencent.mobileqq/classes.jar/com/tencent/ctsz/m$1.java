@@ -1,15 +1,15 @@
 package com.tencent.ctsz;
 
-import abkp;
+import aagy;
 
 public class m$1
   extends Thread
 {
-  public m$1(abkp paramabkp) {}
+  public m$1(aagy paramaagy) {}
   
   public void run()
   {
-    abkp.a(this.this$0);
+    aagy.a(this.this$0);
   }
 }
 

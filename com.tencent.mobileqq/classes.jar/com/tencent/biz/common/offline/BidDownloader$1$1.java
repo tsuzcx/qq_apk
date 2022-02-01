@@ -1,11 +1,11 @@
 package com.tencent.biz.common.offline;
 
-import nmi;
+import nnx;
 
 public class BidDownloader$1$1
   extends Thread
 {
-  public BidDownloader$1$1(nmi paramnmi) {}
+  public BidDownloader$1$1(nnx paramnnx) {}
   
   public void run()
   {

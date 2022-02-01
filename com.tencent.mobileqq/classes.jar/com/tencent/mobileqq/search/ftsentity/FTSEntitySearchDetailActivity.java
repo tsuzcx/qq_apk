@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import Override;
-import agej;
+import amrb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,11 +16,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anws;
-import bhlg;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -54,7 +54,7 @@ public class FTSEntitySearchDetailActivity
       }
       return;
     }
-    int i = ((anws)this.app.getManager(53)).a(paramString2);
+    int i = ((amrb)this.app.getManager(53)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -62,7 +62,7 @@ public class FTSEntitySearchDetailActivity
     }
     int j = getResources().getDisplayMetrics().widthPixels;
     paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
-    int k = agej.a(207.0F, getResources());
+    int k = AIOUtils.dp2px(207.0F, getResources());
     TextPaint localTextPaint = paramTextView.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * getResources().getDisplayMetrics().density;
     String str = paramString1;
@@ -115,8 +115,9 @@ public class FTSEntitySearchDetailActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -125,21 +126,21 @@ public class FTSEntitySearchDetailActivity
     super.doOnCreate(paramBundle);
     this.b = jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_key_fts_type", 0);
-    setContentView(2131558928);
+    setContentView(2131558936);
     paramBundle = getIntent().getStringExtra("uin");
     int i = getIntent().getIntExtra("uinType", -1);
     if (i == 3000) {
-      a(bhlg.a(this.app, paramBundle, i), paramBundle, this.centerView);
+      a(ContactUtils.getNick(this.app, paramBundle, i), paramBundle, this.centerView);
     }
     for (;;)
     {
       Object localObject = super.getSupportFragmentManager();
       paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131365060, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131365087, paramBundle);
       ((FragmentTransaction)localObject).commit();
       return true;
-      super.setTitle(bhlg.a(this.app, paramBundle, i));
+      super.setTitle(ContactUtils.getNick(this.app, paramBundle, i));
     }
   }
   
@@ -158,7 +159,7 @@ public class FTSEntitySearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

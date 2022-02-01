@@ -1,18 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class alru
-  implements View.OnClickListener
+  extends alrs
 {
-  public alru(LoginView paramLoginView) {}
-  
-  public void onClick(View paramView)
+  public void a(alrw paramalrw, Bitmap paramBitmap)
   {
-    bdll.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
-    LoginView.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBitmap == null) || (paramalrw == null) || (TextUtils.isEmpty(paramalrw.jdField_a_of_type_JavaLangCharSequence))) {
+      return;
+    }
+    String str2 = paramalrw.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
+    }
+    paramalrw = str1 + paramalrw.jdField_a_of_type_JavaLangCharSequence;
+    this.a.put(paramalrw, new WeakReference(paramBitmap));
+  }
+  
+  public Bitmap b(alrw paramalrw)
+  {
+    if ((paramalrw == null) || (TextUtils.isEmpty(paramalrw.jdField_a_of_type_JavaLangCharSequence))) {
+      return null;
+    }
+    String str2 = paramalrw.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
+    }
+    paramalrw = str1 + paramalrw.jdField_a_of_type_JavaLangCharSequence;
+    paramalrw = (WeakReference)this.a.get(paramalrw);
+    if (paramalrw != null) {
+      return (Bitmap)paramalrw.get();
+    }
+    return null;
   }
 }
 

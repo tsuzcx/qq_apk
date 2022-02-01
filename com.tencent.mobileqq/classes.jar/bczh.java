@@ -1,8 +1,22 @@
-public abstract interface bczh
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class bczh
+  implements TextView.OnEditorActionListener
 {
-  public abstract void a(int paramInt);
+  bczh(bczc parambczc) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      bjmm.b(this.a.a);
+      this.a.d();
+      return true;
+    }
+    return false;
+  }
 }
 
 

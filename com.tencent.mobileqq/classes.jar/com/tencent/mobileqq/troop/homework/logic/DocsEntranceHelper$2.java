@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.logic;
 
 import android.widget.LinearLayout;
-import bgbn;
+import bekv;
 
 public class DocsEntranceHelper$2
   implements Runnable
 {
-  public DocsEntranceHelper$2(bgbn parambgbn) {}
+  public DocsEntranceHelper$2(bekv parambekv) {}
   
   public void run()
   {

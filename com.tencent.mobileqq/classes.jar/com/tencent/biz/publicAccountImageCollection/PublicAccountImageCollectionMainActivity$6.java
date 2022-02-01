@@ -11,14 +11,14 @@ class PublicAccountImageCollectionMainActivity$6
   public void run()
   {
     this.this$0.a.setVisibility(8);
-    this.this$0.a.findViewById(2131380547).setVisibility(8);
-    this.this$0.a.findViewById(2131380543).setVisibility(8);
-    this.this$0.a.findViewById(2131380544).setVisibility(8);
+    this.this$0.a.findViewById(2131380271).setVisibility(8);
+    this.this$0.a.findViewById(2131380267).setVisibility(8);
+    this.this$0.a.findViewById(2131380268).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.6
  * JD-Core Version:    0.7.0.1
  */

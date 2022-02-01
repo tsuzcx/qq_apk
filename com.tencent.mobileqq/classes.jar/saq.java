@@ -1,52 +1,19 @@
-import android.view.View;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKVideoView;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "videoView", "Lcom/tencent/qqlive/mediaplayer/view/IVideoViewBase;", "(Lcom/tencent/qqlive/mediaplayer/view/IVideoViewBase;)V", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class saq
-  implements sab
+class saq
+  extends sif
 {
-  private final IVideoViewBase a;
+  saq(sab paramsab) {}
   
-  public saq(@Nullable IVideoViewBase paramIVideoViewBase)
+  public int a()
   {
-    this.a = paramIVideoViewBase;
+    return 3;
   }
   
-  @Nullable
-  public View a()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    IVideoViewBase localIVideoViewBase2 = this.a;
-    IVideoViewBase localIVideoViewBase1 = localIVideoViewBase2;
-    if (!(localIVideoViewBase2 instanceof View)) {
-      localIVideoViewBase1 = null;
-    }
-    return (View)localIVideoViewBase1;
-  }
-  
-  public void a()
-  {
-    IVideoViewBase localIVideoViewBase = this.a;
-    if (localIVideoViewBase != null) {
-      localIVideoViewBase.doCacheSurfaceTexture();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    IVideoViewBase localIVideoViewBase = this.a;
-    if (localIVideoViewBase != null) {
-      localIVideoViewBase.setFixedSize(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    IVideoViewBase localIVideoViewBase = this.a;
-    if (localIVideoViewBase != null) {
-      localIVideoViewBase.doRecoverSurfaceTexture();
-    }
+    this.a.a.c(paramString + "&sourcefrom=6");
   }
 }
 

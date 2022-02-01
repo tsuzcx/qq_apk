@@ -1,41 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class afar
-  implements DialogInterface.OnClickListener
+  implements akbj
 {
-  private int jdField_a_of_type_Int;
+  public afar(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
   
-  public afar(NotificationActivity paramNotificationActivity, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int == 1) {
-        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
+    {
+      Object localObject = paramPathResult + File.separator;
+      localObject = (String)localObject + "aio.png";
+      localObject = SafeBitmapFactory.decodeFile((String)localObject, bfvo.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
+      if (localObject != null) {
+        this.a.a.icon = ((Bitmap)localObject);
+      }
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
       }
     }
-    while (paramInt != 1)
+    catch (Throwable paramPathResult)
     {
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
-      do
+      for (;;)
       {
-        return;
-      } while (this.jdField_a_of_type_Int != 2);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      return;
+        paramPathResult.printStackTrace();
+      }
     }
-    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,68 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aukt
-  implements blkm
+public class aukt
 {
-  aukt(aukp paramaukp) {}
+  private static aukt jdField_a_of_type_Aukt;
+  private static final String jdField_a_of_type_JavaLangString = aukt.class.getSimpleName();
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private JSONObject b;
   
-  public void F()
+  public static aukt a()
   {
-    aukp.a(this.a, false);
-    this.a.jdField_a_of_type_Aukf.o();
-    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+    try
+    {
+      if (jdField_a_of_type_Aukt == null) {
+        jdField_a_of_type_Aukt = new aukt();
+      }
+      aukt localaukt = jdField_a_of_type_Aukt;
+      return localaukt;
+    }
+    finally {}
   }
   
-  public void G()
+  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
   {
-    aukp.a(this.a, false);
-    if (aukp.a(this.a)) {
-      this.a.f(true);
+    YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
+    switch (paramInt)
+    {
+    default: 
+      return localYtSDKKitFrameworkWorkMode;
+    case 0: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
+    case 1: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_OCR_TYPE;
+    case 2: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
+    case 3: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
+    case 4: 
+      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
     }
-    if (aukp.b(this.a)) {
-      this.a.g(true);
-    }
-    if (aukp.c(this.a)) {
-      this.a.b(true);
-    }
+    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
   }
   
-  public void H() {}
-  
-  public void a(float paramFloat)
+  public int a(String paramString1, String paramString2)
   {
-    aukp.a(this.a, true);
-    Drawable localDrawable;
-    if (aukp.a(this.a) != null)
+    try
     {
-      localDrawable = aukp.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha(0);
-      }
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString1).getJSONObject("sdk_settings");
+      this.b = new JSONObject(paramString2).getJSONObject("ui_basic_config");
+      return 0;
     }
-    if (aukp.b(this.a) != null)
+    catch (JSONException paramString1)
     {
-      localDrawable = aukp.b(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "initWithConfig error " + paramString1.getMessage());
     }
-    if (paramFloat < 0.8F)
-    {
-      aukp.a(this.a).setVisibility(8);
-      aukp.c(this.a).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    }
+    return -1;
+  }
+  
+  public JSONObject a(int paramInt)
+  {
+    return YtSDKKitConfigHelper.getSDKConfig(a(paramInt), this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

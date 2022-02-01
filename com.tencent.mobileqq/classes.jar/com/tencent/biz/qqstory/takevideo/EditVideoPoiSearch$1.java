@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.widget.EditText;
-import blgx;
-import yym;
+import bjmm;
+import xzw;
 
 public class EditVideoPoiSearch$1
   implements Runnable
 {
-  public EditVideoPoiSearch$1(yym paramyym) {}
+  public EditVideoPoiSearch$1(xzw paramxzw) {}
   
   public void run()
   {
     this.this$0.a.setFocusableInTouchMode(true);
     this.this$0.a.requestFocus();
-    blgx.a(this.this$0.a);
+    bjmm.a(this.this$0.a);
   }
 }
 

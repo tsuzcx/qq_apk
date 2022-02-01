@@ -1,10 +1,6 @@
-public class tde
+public abstract interface tde
 {
-  public static String a = "tag";
-  public static String b = "result";
-  public static String c = "dataTag";
-  public static String d = "dataResult";
-  public static String e = "dataName";
+  public abstract void a(boolean paramBoolean);
 }
 
 

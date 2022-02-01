@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.os.Handler;
 
-public class aqnm
-  implements View.OnClickListener
+public abstract interface aqnm
 {
-  public aqnm(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abstract Resources a();
   
-  public void onClick(View paramView)
-  {
-    aqno localaqno = (aqno)paramView.getTag();
-    this.a.a(localaqno.jdField_a_of_type_JavaLangString, localaqno.b, localaqno.jdField_a_of_type_Boolean);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract Handler a();
+  
+  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

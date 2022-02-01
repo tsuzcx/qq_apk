@@ -1,17 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class afvk
-  implements DialogInterface.OnDismissListener
+public final class afvk
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public afvk(TroopMemberListActivity paramTroopMemberListActivity) {}
+  protected WeakReference<afvi> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public afvk(WeakReference<afvi> paramWeakReference)
   {
-    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
+    this.a = paramWeakReference;
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    paramObject = (afvi)this.a.get();
+    if (paramObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
+    }
+    String str1 = paramObject.a(paramString);
+    if (paramAppPathInfo != null) {}
+    for (paramString = paramAppPathInfo.path;; paramString = null)
+    {
+      paramObject.a.getAppFromLocal = false;
+      paramObject.a.endOfGetApp = System.currentTimeMillis();
+      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
+      {
+        String str2 = paramAppPathInfo.appTempInfo.template;
+        str2 = paramAppPathInfo.appTempInfo.templateView;
+        afvi.a(paramObject).view = str2;
+      }
+      afvi.a(paramAppPathInfo);
+      paramObject.a(paramString, paramInt, str1);
+      return;
+    }
   }
 }
 

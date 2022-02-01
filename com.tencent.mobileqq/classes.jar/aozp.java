@@ -1,16 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
-public class aozp
-  extends aoxh
+class aozp
+  extends bjmc
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aozp(aozm paramaozm) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramQQAppInterface = new aozo(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qzone";
-    paramQQAppInterface.c = "to_redpocket_share";
-    return paramQQAppInterface;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

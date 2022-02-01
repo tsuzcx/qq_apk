@@ -1,18 +1,20 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class amiv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class amiv
+  implements Comparator<ApolloActionData>
 {
-  public amiv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  amiv(amir paramamir) {}
   
-  public void onGlobalLayout()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
+    }
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
+    }
+    return -1;
   }
 }
 

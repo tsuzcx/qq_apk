@@ -293,6 +293,11 @@ public class PageWebviewContainer
     return null;
   }
   
+  public AppBrandPage getBrandPage()
+  {
+    return (AppBrandPage)this.mBrandPage;
+  }
+  
   public BrandPageWebview getBrandPageWebview()
   {
     return this.mBrandPageWebview;

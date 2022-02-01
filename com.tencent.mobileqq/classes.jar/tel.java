@@ -1,32 +1,92 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class tel
-  implements rff
 {
-  public tel(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
-  
-  public void a(int paramInt, String paramString)
+  public static String a(int paramInt, String paramString)
   {
     try
     {
-      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (paramInt == 0) {}
-      for (paramInt = 0;; paramInt = -1)
-      {
-        localJSONObject.put("errCode", paramInt);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errMsg", paramString);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-        return;
-      }
-      return;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("url", paramString);
+      localJSONObject.put("num", paramInt);
+      paramString = localJSONObject.toString();
+      return paramString;
     }
     catch (JSONException paramString)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-      QLog.e(BridgeModule.TAG, 1, "oidb_0xe2a error! e = " + paramString.toString());
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public static pbg a(int paramInt)
+  {
+    return new pbg().b().a(paramInt);
+  }
+  
+  public static pbg a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    localpbg = a(paramInt);
+    try
+    {
+      paramString1 = localpbg.b(paramString1).a("URL", paramString2);
+      if (paramBoolean) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramString1 = paramString1.a("ad_page", paramInt);
+        return paramString1;
+      }
+      return localpbg;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, rft paramrft)
+  {
+    if ((paramrft instanceof rfv)) {}
+    for (String str = ((rfv)paramrft).f;; str = "0")
+    {
+      odq.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt3), String.valueOf(paramInt1), String.valueOf(paramrft.jdField_a_of_type_Int), a(paramInt2, paramrft.e, str, paramrft.jdField_a_of_type_Boolean).a(), false);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    pbg localpbg = a(paramInt1);
+    if (paramBoolean) {
+      paramInt1 = 1;
+    }
+    try
+    {
+      for (;;)
+      {
+        localpbg.a("ad_page_include", paramInt1);
+        odq.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt2), "", "", localpbg.a(), false);
+        return;
+        paramInt1 = 0;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a(String paramString, int paramInt, rft paramrft)
+  {
+    if ((paramrft instanceof rfv)) {}
+    for (paramrft = ((rfv)paramrft).f;; paramrft = "0")
+    {
+      odq.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt), "", "", a(paramInt, paramrft), false);
+      return;
     }
   }
 }

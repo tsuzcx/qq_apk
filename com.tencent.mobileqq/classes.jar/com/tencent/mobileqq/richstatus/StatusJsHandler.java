@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.richstatus;
 
+import amxz;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import aody;
-import awfw;
-import bbvb;
-import bbvc;
+import ausw;
+import baow;
+import baox;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,21 +25,21 @@ import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import ocd;
-import ocj;
+import odq;
+import odw;
 
 public class StatusJsHandler
-  extends awfw
+  extends ausw
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   public AccountDetail a;
   public String a;
   public WeakReference<BaseActivity> a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new bbvb(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new baow(this);
   boolean jdField_a_of_type_Boolean = false;
   String jdField_b_of_type_JavaLangString;
   WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new bbvc(this);
+  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new baox(this);
   boolean jdField_b_of_type_Boolean = false;
   public String c;
   
@@ -56,11 +56,11 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, ocj.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, odw.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.5,3,4745");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.8,3,4810");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
@@ -84,7 +84,7 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "follow");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, ocj.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, odw.class);
     localNewIntent.putExtra("cmd", "follow");
     mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
     try
@@ -94,7 +94,7 @@ public class StatusJsHandler
       localNewIntent.putExtra("data", localFollowRequest.toByteArray());
       localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
       paramBaseActivity.app.startServlet(localNewIntent);
-      ocd.a(paramBaseActivity.app, paramString, 0);
+      odq.a(paramBaseActivity.app, paramString, 0);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "follow exit");
       }
@@ -117,7 +117,7 @@ public class StatusJsHandler
   
   public void a(BaseActivity paramBaseActivity, AccountDetail paramAccountDetail)
   {
-    EntityManager localEntityManager = paramBaseActivity.app.a().createEntityManager();
+    EntityManager localEntityManager = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.getId() != -1L))
     {
       if (QLog.isColorLevel()) {
@@ -131,7 +131,7 @@ public class StatusJsHandler
     for (;;)
     {
       localEntityManager.close();
-      paramBaseActivity = (aody)paramBaseActivity.app.getManager(56);
+      paramBaseActivity = (amxz)paramBaseActivity.app.getManager(56);
       if (paramBaseActivity != null) {
         paramBaseActivity.a(paramAccountDetail);
       }
@@ -163,7 +163,7 @@ public class StatusJsHandler
     }
     this.jdField_a_of_type_Boolean = true;
     this.c = paramString2;
-    paramString2 = localBaseActivity.app.a().createEntityManager();
+    paramString2 = localBaseActivity.app.getEntityManagerFactory().createEntityManager();
     AccountDetail localAccountDetail = (AccountDetail)paramString2.find(AccountDetail.class, paramString1);
     paramString2.close();
     if (localAccountDetail != null)
@@ -178,12 +178,17 @@ public class StatusJsHandler
   {
     BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localBaseActivity == null) {}
-    while (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    ThreadManager.post(new StatusJsHandler.1(this, (LocationManager)localBaseActivity.getSystemService("location")), 5, null, false);
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_b_of_type_Boolean);
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_b_of_type_JavaLangString = paramString;
+      paramString = (LocationManager)localBaseActivity.getSystemService("location");
+    } while (paramString == null);
+    ThreadManager.post(new StatusJsHandler.1(this, paramString), 5, null, false);
   }
   
   public boolean hasFollowAccount(String paramString)
@@ -192,8 +197,8 @@ public class StatusJsHandler
     if (localObject == null) {
       return false;
     }
-    localObject = (aody)((BaseActivity)localObject).app.getManager(56);
-    return (localObject != null) && (((aody)localObject).b(paramString) != null);
+    localObject = (amxz)((BaseActivity)localObject).app.getManager(56);
+    return (localObject != null) && (((amxz)localObject).b(paramString) != null);
   }
   
   public void setData(String paramString1, String paramString2)
@@ -213,7 +218,7 @@ public class StatusJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler
  * JD-Core Version:    0.7.0.1
  */

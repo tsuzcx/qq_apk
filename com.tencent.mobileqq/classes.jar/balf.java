@@ -1,25 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/profilesetting/ReqSetSettingItem$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class balf
-  implements Parcelable.Creator<ReqSetSettingItem>
+class balf
+  implements DialogInterface.OnCancelListener
 {
-  @NotNull
-  public ReqSetSettingItem a(@NotNull Parcel paramParcel)
-  {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new ReqSetSettingItem(paramParcel);
-  }
+  balf(bakw parambakw) {}
   
-  @NotNull
-  public ReqSetSettingItem[] a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return new ReqSetSettingItem[paramInt];
+    if (this.a.b) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
   }
 }
 

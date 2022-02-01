@@ -1,73 +1,82 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-class axfb
-  implements azrg
+final class axfb
+  implements awrb
 {
-  MessageForLongTextMsg jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg;
+  axfb(axff paramaxff) {}
   
-  axfb(axey paramaxey, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, aocj paramaocj) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
-  {
-    try
+    bool3 = true;
+    boolean bool2 = true;
+    int j = 0;
+    int k = 0;
+    i = 0;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    for (;;)
     {
-      if (paramazrh.jdField_a_of_type_Int == 0)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgManager", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - axey.a(this.jdField_a_of_type_Axey)) + ",mResid:" + paramazrh.c);
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (paramArrayOfByte.ret.has())
+          {
+            paramInt = paramArrayOfByte.ret.get();
+            if (paramInt == 0) {
+              i = k;
+            }
+          }
         }
-        AbsShareMsg localAbsShareMsg = aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localAbsShareMsg.mResid = paramazrh.c;
-        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-        localAbsShareMsg.multiMsgFlag = 1;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg = ((MessageForLongTextMsg)bcry.a(-1051));
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.structingMsg = localAbsShareMsg;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.istroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.selfuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.selfuin;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.senderuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.senderuin;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.isread = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.isread;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.time = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.time;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.msgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgseq;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.msgUid = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgUid;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.issend = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.issend;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.uniseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.mAnimFlag = true;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgCount = 1;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgIndex = 0;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgId = ((short)(int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq);
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramazrh.c);
-        nlj.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg);
-        ((bbnr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(326)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg, this.jdField_a_of_type_Aocj);
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = false;
+        paramInt = j;
+      }
+      try
+      {
+        j = paramArrayOfByte.total.get();
+        paramInt = j;
+        bool1 = bool2;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          i = j;
+          QLog.i("NearbyMomentProtocol", 2, "unlike success, total:   " + j);
+          bool1 = bool2;
+          paramInt = j;
+        }
+        if (this.a != null) {
+          this.a.a(bool1, paramInt);
+        }
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, result.errStr=" + paramazrh.b + ",result.errStr=" + paramazrh.jdField_a_of_type_JavaLangString);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramInt = i;
+          bool1 = bool3;
+        }
       }
-      axey.a(this.jdField_a_of_type_Axey, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "upload longMsg pack fail: errCode = " + paramazrh.b);
-      return;
-    }
-    catch (Exception paramazrh)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, catch exception", paramazrh);
-      }
-      axey.a(this.jdField_a_of_type_Axey, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "sendStructLongMsg fail: exception" + paramazrh.getMessage());
+      QLog.i("NearbyMomentProtocol", 1, "unlike error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
+      bool1 = false;
+      paramInt = i;
+      continue;
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

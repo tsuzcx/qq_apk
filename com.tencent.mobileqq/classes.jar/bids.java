@@ -1,105 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
-import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineV2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.ICmdManager;
-import com.tencent.vas.update.callback.listener.ICmdListener;
-import com.tencent.vas.update.entity.BusinessUpdateParams;
-import com.tencent.vas.update.wrapper.VasUpdateWrapper;
-import java.lang.ref.WeakReference;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bids
-  implements bidp
+  implements bicf
 {
-  private bidq jdField_a_of_type_Bidq;
-  private bidw jdField_a_of_type_Bidw;
+  public bids(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public bids(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, String paramString)
   {
-    try
-    {
-      this.jdField_a_of_type_Bidq = ((bidq)paramQQAppInterface.getManager(374));
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      this.jdField_a_of_type_Bidq = new bidq(null);
-    }
+    bhzm.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
   }
   
-  public void cancelDwonloadItem(long paramLong, String paramString)
+  public void a(List<DownloadInfo> paramList)
   {
-    if ((this.jdField_a_of_type_Bidq != null) && (this.jdField_a_of_type_Bidq.getBusinessCallback(paramLong) != null)) {
-      this.jdField_a_of_type_Bidq.getBusinessCallback(paramLong).cancelDownload(paramString);
-    }
-  }
-  
-  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bidq != null) && (this.jdField_a_of_type_Bidq.getBusinessCallback(paramLong) != null))
+    bhzm.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
+      if (i < j)
       {
-        paramString1 = new BusinessUpdateParams(paramLong, paramArrayOfString[i], paramString2);
-        this.jdField_a_of_type_Bidq.getBusinessCallback(paramLong).startDownload(paramString1);
-        i += 1;
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
     }
-  }
-  
-  public void downloadItem(long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bidq != null) && (this.jdField_a_of_type_Bidq.getBusinessCallback(paramLong) != null))
-    {
-      paramString1 = new BusinessUpdateParams(paramLong, paramString1, paramString2);
-      this.jdField_a_of_type_Bidq.getBusinessCallback(paramLong).startDownload(paramString1);
-    }
-  }
-  
-  public void onDestory()
-  {
-    this.jdField_a_of_type_Bidq = null;
-  }
-  
-  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bidw != null) && (this.jdField_a_of_type_Bidw.a() != null)) {
-      this.jdField_a_of_type_Bidw.a().onPbResponse(paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
-  {
-    ThreadManagerV2.excute(new VasUpdateEngineV2.1(this, paramQueryItemVersionCallback, paramInt, paramString), 32, null, true);
-  }
-  
-  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
-  {
-    if (this.jdField_a_of_type_Bidq == null) {}
-    while (this.jdField_a_of_type_Bidq.a() == null) {
-      return;
-    }
-    ICmdManager localICmdManager = VasUpdateWrapper.getCmdManager();
-    if ((localICmdManager == null) || (!(localICmdManager instanceof bidw)))
-    {
-      QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
-      return;
-    }
-    this.jdField_a_of_type_Bidw = ((bidw)localICmdManager);
-    this.jdField_a_of_type_Bidw.a(paramWeakReference);
-  }
-  
-  public void startUpdateAllItem()
-  {
-    if (this.jdField_a_of_type_Bidq != null) {
-      this.jdField_a_of_type_Bidq.updateAllItem();
-    }
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bhzm.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
   }
 }
 

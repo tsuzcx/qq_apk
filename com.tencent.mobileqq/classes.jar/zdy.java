@@ -1,28 +1,20 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zdy
+class zdy
+  implements View.OnClickListener
 {
-  public final ArrayList<zbn> a;
-  @NonNull
-  public final zas a;
-  @NonNull
-  public final zat a;
-  @NonNull
-  public final zbd a;
-  @NonNull
-  public final zbh a;
+  zdy(zdx paramzdx, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public zdy(@NonNull zbh paramzbh, @NonNull zbd paramzbd, @NonNull zat paramzat, @NonNull zas paramzas)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Zbh = paramzbh;
-    this.jdField_a_of_type_Zbd = paramzbd;
-    this.jdField_a_of_type_Zat = paramzat;
-    this.jdField_a_of_type_Zas = paramzas;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramzat);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramzbd);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramzbh);
+    if (((this.jdField_a_of_type_Zdx.itemView instanceof RelativeFeedItemView)) && (zds.a(this.jdField_a_of_type_Zdx.a) != null)) {
+      zds.a(this.jdField_a_of_type_Zdx.a).a(this.jdField_a_of_type_Zdx.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,9 +1,30 @@
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.qphone.base.util.QLog;
+
 public class tsc
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  public float a = 1.0F;
-  public int a;
-  public int b;
-  public int c;
+  public tsc(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
+  
+  public void onError(int paramInt, String paramString)
+  {
+    ReadinjoyAdHippyFragment.a(this.a);
+    if (paramInt != -11) {
+      ReadinjoyAdHippyFragment.c(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+    }
+  }
+  
+  public void onSuccess()
+  {
+    ReadinjoyAdHippyFragment.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy success!");
+    }
+  }
 }
 
 

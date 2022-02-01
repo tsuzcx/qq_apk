@@ -1,12 +1,36 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
 
-@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
-public final class bdur
+public class bdur
+  implements TextWatcher
 {
-  public static void a(bduq parambduq, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
+  public bdur(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
-  public static void a(bduq parambduq, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString) {}
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    paramInt1 = paramCharSequence.length();
+    paramCharSequence = TroopNickRuleFragment.c - paramInt1 + "/" + TroopNickRuleFragment.c + "字";
+    if (paramInt1 >= TroopNickRuleFragment.c) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131166908));
+    }
+    for (;;)
+    {
+      this.a.a.setText(paramCharSequence);
+      return;
+      this.a.a.setTextColor(ColorUtils.parseColor("#878B99"));
+    }
+  }
 }
 
 

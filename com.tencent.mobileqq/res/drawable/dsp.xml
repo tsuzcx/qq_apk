@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/gny" />
-    <item android:drawable="@drawable/trans" />
-</selector>
+    <item android:drawable="@drawable/gnx" />
+    <item android:drawable="@drawable/gnt" android:left="14.0dip" android:top="14.0dip" android:right="14.0dip" android:bottom="14.0dip" />
+</layer-list>

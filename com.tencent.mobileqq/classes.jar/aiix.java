@@ -1,17 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-class aiix
-  implements DialogInterface.OnClickListener
+public class aiix
+  extends RecyclerView.ViewHolder
 {
-  aiix(aiit paramaiit) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiix(Context paramContext, View paramView)
   {
-    paramDialogInterface.dismiss();
-    abvy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
-    this.a.g = "";
+    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  public static aiix a(Context paramContext, View paramView)
+  {
+    return new aiix(paramContext, paramView);
+  }
+  
+  public static aiix a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return new aiix(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+    }
+    return localView1;
   }
 }
 

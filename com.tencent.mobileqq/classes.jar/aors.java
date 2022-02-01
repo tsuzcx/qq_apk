@@ -1,40 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class aors
+final class aors
+  extends aost
 {
-  public static String a(String paramString1, String paramString2)
-  {
-    paramString2 = a(paramString2);
-    if (paramString2 == null) {
-      return null;
-    }
-    return new aoru(new aorx(paramString2)).a(paramString1);
-  }
+  aors(ArrayList paramArrayList) {}
   
-  private static PublicKey a(String paramString)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    try
-    {
-      paramString = new X509EncodedKeySpec(aorp.a(paramString.replaceAll("\\-*BEGIN.*KEY\\-*", "").replaceAll("\\-*END.*KEY\\-*", "")));
-      paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
-      return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      QLog.e("JWTUtil", 1, new Object[] { "getPublicKey NoSuchAlgorithmException : ", paramString.getMessage() });
-      return null;
-    }
-    catch (InvalidKeySpecException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("JWTUtil", 1, new Object[] { "getPublicKey InvalidKeySpecException : ", paramString.getMessage() });
-      }
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("SKey", ""));
     }
   }
 }

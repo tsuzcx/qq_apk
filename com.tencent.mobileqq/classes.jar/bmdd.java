@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import mqq.os.MqqHandler;
-
-public abstract class bmdd
-  implements Observer
+class bmdd
 {
-  public abstract void a();
-  
-  public final void update(Observable paramObservable, Object paramObject)
-  {
-    ThreadManager.getUIHandler().post(new QQComicRedTouchManager.PluginRedTouchObserver.1(this));
-  }
+  static final bmdb a = new bmdb(null);
 }
 
 

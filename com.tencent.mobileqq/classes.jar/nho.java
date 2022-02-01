@@ -1,51 +1,78 @@
+import android.text.TextUtils;
+import java.util.HashMap;
 import java.util.Map;
 
 public class nho
 {
-  public static final String[] a = { "qqvgame.RoomManager-RoomInfoGet", "qqvgame.GameManager-SelectGame", "qqvgame.GameList-GetGameList", "qqvgame.RoomManager-RoomLeave", "qqvgame.RoomManager-RoomUserStatusChange", "qqvgame.UserHeartBeat-UserHeartBeat", "qqvgame.Share-GetShareLink", "qqvgame.GameList-GetQuestionClass", "qqvgame.ActivityCenter-GetActivitys", "qqvgame.ActivityCenter-SyncShareGame" };
-  public static final String[] b = { "qqvgame.GameManager-StartGame", "qqvgame.QuestionManager-GetQuestion", "qqvgame.GameRanking-GetRankingList" };
-  public static final String[] c = { "OnlinePush.ReqPush" };
-  public static final String[] d = { "OidbSvc.0x5eb_20002" };
+  private final Map<String, nhn> jdField_a_of_type_JavaUtilMap = new HashMap(3);
+  private nhn jdField_a_of_type_Nhn;
   
-  public static void a(Map<String, int[]> paramMap)
+  public nhn a()
   {
-    if (paramMap == null) {}
-    for (;;)
+    return this.jdField_a_of_type_Nhn;
+  }
+  
+  public nhn a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      String[] arrayOfString = b;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      nhn localnhn = (nhn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      localObject = localnhn;
+      if (localnhn == null)
       {
-        paramMap.put(arrayOfString[i], new int[] { 3 });
-        i += 1;
-      }
-      arrayOfString = a;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 1 });
-        i += 1;
-      }
-      arrayOfString = c;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 4 });
-        i += 1;
-      }
-      arrayOfString = d;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 2 });
-        i += 1;
+        localnhn = new nhn(paramInt, paramString);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localnhn);
+        if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
+        {
+          localObject = localnhn;
+          if (!paramBoolean) {}
+        }
+        else
+        {
+          a(paramString);
+          localObject = localnhn;
+        }
       }
     }
+    return localObject;
+  }
+  
+  public nhn a(String paramString)
+  {
+    nhn localnhn = null;
+    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
+      localnhn = (nhn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return localnhn;
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && (!paramString.a))
+    {
+      if (this.jdField_a_of_type_Nhn != null) {
+        this.jdField_a_of_type_Nhn.a = false;
+      }
+      paramString.a = true;
+      this.jdField_a_of_type_Nhn = paramString;
+    }
+  }
+  
+  public nhn b(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
+    {
+      paramString = (nhn)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if ((paramString != null) && (paramString == this.jdField_a_of_type_Nhn))
+      {
+        this.jdField_a_of_type_Nhn.a = false;
+        this.jdField_a_of_type_Nhn = null;
+      }
+      return paramString;
+    }
+    return null;
   }
 }
 

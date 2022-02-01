@@ -1,56 +1,33 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class axru
-  implements ServiceConnection
+class axru
+  implements anzu
 {
-  public axru(MusicPlayerActivity paramMusicPlayerActivity) {}
+  axru(axrr paramaxrr, AppInterface paramAppInterface) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a() {}
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    MusicPlayerActivity.a(this.a, axqt.a(paramIBinder));
-    try
-    {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
-      {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (axsb)MusicPlayerActivity.b().get(str), paramIBinder);
-        }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
-        }
-      }
+    anzl localanzl = this.jdField_a_of_type_Axrr.a();
+    if ((localanzl == null) || (!TextUtils.equals(paramString, localanzl.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    catch (Exception paramComponentName) {}
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
+    if (paramInt1 < this.jdField_a_of_type_Axrr.jdField_a_of_type_ArrayOfInt.length) {
+      this.jdField_a_of_type_Axrr.jdField_a_of_type_ArrayOfInt[paramInt1] = paramInt2;
+    }
+    if ((paramInt2 >= 0) && (paramInt2 <= 99))
     {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      axrr.a(this.jdField_a_of_type_Axrr, "onDownloadProgress", true);
       return;
     }
-    catch (RemoteException paramComponentName) {}
+    QLog.w(axrr.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[" + paramInt1 + "], progress[" + paramInt2 + "]");
+    if ((paramInt2 == 100) && (paramInt1 == 0)) {
+      axrr.a(this.jdField_a_of_type_Axrr, "onDownloadProgress", this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    }
+    axrr.a(this.jdField_a_of_type_Axrr, "onDownloadProgress2", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
   }
 }
 

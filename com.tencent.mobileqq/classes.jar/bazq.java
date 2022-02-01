@@ -1,64 +1,37 @@
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.TMG.utils.QLog;
 import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazq
-  implements azpp
+  extends bazc
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  public String a;
   
-  public bazq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public bazq(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(azpq paramazpq)
+  public bazq(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    if ((paramazpq.b == 0) && (paramazpq.a != null))
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
-      if (localMessageRecord == null)
-      {
-        localObject = new MessageForStructing();
-        ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
-      }
-      paramazpq = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramazpq.a, null, (MessageRecord)localObject, null);
-      if ((paramazpq != null) && (!paramazpq.isEmpty()))
-      {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
-        return;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+      this.a = new JSONObject(paramString).optString("title");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramazpq.b);
-    }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 3)
+    catch (JSONException paramString)
     {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d(c, 0, paramString.toString());
     }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 

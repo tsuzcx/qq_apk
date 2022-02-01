@@ -1,43 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
+import com.tencent.superplayer.seamless.SPSeamlessHelper.SeamlessCallback;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class rty
-  extends sbh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$jumpToColumnPlay$1$1", "Lcom/tencent/superplayer/seamless/SPSeamlessHelper$SeamlessCallback;", "onSeamlessExit", "", "enterToken", "", "exitToken", "map", "", "", "onSeamlessJump", "s", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rty
+  implements SPSeamlessHelper.SeamlessCallback
 {
-  rty(rsx paramrsx) {}
+  public rty(sdj paramsdj) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onSeamlessExit(@NotNull String paramString1, @NotNull String paramString2, @NotNull Map<String, ? extends Object> paramMap)
   {
-    rsx.a(this.a).b(rsx.b(this.a));
-    paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putString("title", paramVideoInfo.c);
-    paramActionSheetItem.putString("desc", paramVideoInfo.d);
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com"))) {
-      paramActionSheetItem.putString("detail_url", paramVideoInfo.n);
-    }
-    for (;;)
-    {
-      paramString = new ArrayList(1);
-      paramString.add(paramVideoInfo.b);
-      paramActionSheetItem.putStringArrayList("image_url", paramString);
-      paramActionSheetItem.putLong("req_share_id", 0L);
-      bmud.a(rsx.a(this.a), rsx.a(this.a), paramActionSheetItem, null, 10001);
-      return;
-      paramActionSheetItem.putString("detail_url", paramString + "&sourcefrom=1");
+    Intrinsics.checkParameterIsNotNull(paramString1, "enterToken");
+    Intrinsics.checkParameterIsNotNull(paramString2, "exitToken");
+    Intrinsics.checkParameterIsNotNull(paramMap, "map");
+    paramString2 = this.a;
+    if (paramString2 != null) {
+      paramString2.a(paramString1);
     }
   }
   
-  public int b()
+  public void onSeamlessJump(@NotNull String paramString)
   {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2;
+    Intrinsics.checkParameterIsNotNull(paramString, "s");
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.o();
+    }
   }
 }
 

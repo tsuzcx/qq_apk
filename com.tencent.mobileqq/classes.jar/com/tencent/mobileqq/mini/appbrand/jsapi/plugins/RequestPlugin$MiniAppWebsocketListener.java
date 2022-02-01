@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -9,6 +8,7 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import javax.annotation.Nullable;
 import okhttp3.Headers;
@@ -99,7 +99,7 @@ public class RequestPlugin$MiniAppWebsocketListener
         Object localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("socketTaskId", this.currSocketId);
         ((JSONObject)localObject1).put("state", "error");
-        if ((bhnv.b(BaseApplicationImpl.getContext()) == 0) || (bhnv.b(BaseApplicationImpl.getContext()) == -1))
+        if ((NetworkUtil.getNetworkType(BaseApplicationImpl.getContext()) == 0) || (NetworkUtil.getNetworkType(BaseApplicationImpl.getContext()) == -1))
         {
           paramWebSocket = "network is down";
           ((JSONObject)localObject1).put("errMsg", "network is down");

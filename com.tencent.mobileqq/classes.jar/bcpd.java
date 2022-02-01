@@ -1,28 +1,22 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMenberInfoRsp;
 
 class bcpd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bcpg
 {
-  bcpd(bcpc parambcpc) {}
+  bcpd(bcpa parambcpa) {}
   
-  public void onGlobalLayout()
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (bcpc.a(this.a) != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16) {
-        bcpc.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      ViewGroup.LayoutParams localLayoutParams = bcpc.a(this.a).getLayoutParams();
-      if (localLayoutParams != null)
-      {
-        localLayoutParams.height = ((int)(bcpc.a(this.a).getWidth() / 2.3F));
-        bcpc.a(this.a).requestLayout();
-      }
-    }
+    QLog.w("studyroom.proto.StudyRoomObserver", 2, "onGetStudyRoomMemberCount error. troop:" + paramString1 + " rsp:" + paramInt + " msg:" + paramString2);
+  }
+  
+  public void a(String paramString, self_study_room_troop.StudyRoomMenberInfoRsp paramStudyRoomMenberInfoRsp)
+  {
+    int i = Math.max(paramStudyRoomMenberInfoRsp.member_count.get(), 0);
+    bcpa.a(this.a, paramString, i);
+    QLog.d("studyroom.proto.StudyRoomObserver", 2, "onGetStudyRoomMemberCountSucc troop:" + paramString + " member_count:" + paramStudyRoomMenberInfoRsp.member_count.get());
   }
 }
 

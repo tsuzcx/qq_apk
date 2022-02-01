@@ -4,79 +4,28 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import blgl;
+import bjmb;
 
 class AbsListView$MoveToBottomScroller
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
+  private static final int SCROLL_DURATION = 400;
+  private static final int STATUS_ACCERLERING = 0;
+  private static final int STATUS_DECERLERING = 1;
+  private static final int STATUS_UNIFORM = 2;
+  private static final int STATUS_VISCOUS_FLUID = 3;
+  private int lastMotionY;
+  private float mAccerleration;
+  private float mCurrVelocity;
+  private int mDistance;
+  private int mDuration;
+  private float mMaxVeloctiy;
+  private long mStartTime;
+  private int mStatus;
+  private int mTargetPosition;
+  private boolean mUseViscousFluid;
   
   AbsListView$MoveToBottomScroller(AbsListView paramAbsListView) {}
-  
-  void a()
-  {
-    boolean bool = true;
-    int i = this.this$0.mFirstPosition;
-    int j = this.this$0.getChildCount();
-    i = this.this$0.mItemCount - (i + j - 1) - 1;
-    if (i == 0)
-    {
-      i = AbsListView.access$2600(this.this$0);
-      j = AbsListView.access$2700(this.this$0);
-      int k = this.this$0.mListPadding.bottom;
-      this.e = (this.this$0.getChildAt(this.this$0.getChildCount() - 1).getBottom() - (i - j - k));
-      if (this.e == 0)
-      {
-        b();
-        return;
-      }
-      this.d = 400;
-      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 3;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.this$0.postOnAnimation(this);
-        return;
-      }
-      this.this$0.post(this);
-      return;
-    }
-    this.jdField_c_of_type_Float = (this.this$0.getHeight() * i / this.this$0.getChildCount() / 300.0F);
-    this.jdField_a_of_type_Float = (this.jdField_c_of_type_Float / 100.0F);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Int = (this.this$0.mItemCount - 1);
-    if (i == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
-      this.this$0.postOnAnimation(this);
-      return;
-      bool = false;
-    }
-    this.this$0.post(this);
-  }
-  
-  void b()
-  {
-    this.this$0.removeCallbacks(this);
-    this.this$0.mScrollToBottom = false;
-  }
   
   public void run()
   {
@@ -87,27 +36,27 @@ class AbsListView$MoveToBottomScroller
       int j;
       try
       {
-        j = (int)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long);
-        switch (this.jdField_b_of_type_Int)
+        j = (int)(AnimationUtils.currentAnimationTimeMillis() - this.mStartTime);
+        switch (this.mStatus)
         {
         case 0: 
-          i -= this.jdField_a_of_type_Int;
+          i -= this.lastMotionY;
           if (this.this$0.trackMotionScroll(-i, -i)) {
             break label564;
           }
           i = this.this$0.getChildCount();
           int k = this.this$0.mFirstPosition;
-          if ((this.jdField_b_of_type_Int == 3) || (this.jdField_b_of_type_Int == 1) || (k + i - 1 < this.jdField_c_of_type_Int)) {
+          if ((this.mStatus == 3) || (this.mStatus == 1) || (k + i - 1 < this.mTargetPosition)) {
             break label524;
           }
           k = AbsListView.access$2800(this.this$0);
           int m = AbsListView.access$2900(this.this$0);
           int n = this.this$0.mListPadding.bottom;
-          this.e = (this.this$0.getChildAt(i - 1).getBottom() - (k - m - n));
-          if (this.e != 0) {
+          this.mDistance = (this.this$0.getChildAt(i - 1).getBottom() - (k - m - n));
+          if (this.mDistance != 0) {
             break label426;
           }
-          b();
+          stop();
           return;
         }
       }
@@ -117,50 +66,50 @@ class AbsListView$MoveToBottomScroller
       }
       if (j > 100)
       {
-        this.jdField_b_of_type_Float = this.jdField_c_of_type_Float;
-        i = (int)(this.jdField_c_of_type_Float * j - this.jdField_c_of_type_Float * 400.0F / 8.0F);
-        this.jdField_a_of_type_Float = 0.0F;
-        this.jdField_b_of_type_Int = 2;
+        this.mCurrVelocity = this.mMaxVeloctiy;
+        i = (int)(this.mMaxVeloctiy * j - this.mMaxVeloctiy * 400.0F / 8.0F);
+        this.mAccerleration = 0.0F;
+        this.mStatus = 2;
       }
       else
       {
-        this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * j);
-        i = (int)(this.jdField_b_of_type_Float * j / 2.0F);
+        this.mCurrVelocity = (this.mAccerleration * j);
+        i = (int)(this.mCurrVelocity * j / 2.0F);
         continue;
-        i = (int)(this.jdField_c_of_type_Float * j - this.jdField_c_of_type_Float * 400.0F / 8.0F);
+        i = (int)(this.mMaxVeloctiy * j - this.mMaxVeloctiy * 400.0F / 8.0F);
         continue;
-        if (j > this.d)
+        if (j > this.mDuration)
         {
-          i = this.e - this.jdField_a_of_type_Int;
+          i = this.mDistance - this.lastMotionY;
           this.this$0.trackMotionScroll(-i, -i);
           AdapterView.traceEnd();
           return;
         }
-        this.jdField_b_of_type_Float -= this.jdField_a_of_type_Float * j;
-        i = (int)(this.e - this.jdField_b_of_type_Float * (this.d - j) / 2.0F);
+        this.mCurrVelocity -= this.mAccerleration * j;
+        i = (int)(this.mDistance - this.mCurrVelocity * (this.mDuration - j) / 2.0F);
         continue;
-        if (j > this.d)
+        if (j > this.mDuration)
         {
-          i = this.e - this.jdField_a_of_type_Int;
+          i = this.mDistance - this.lastMotionY;
           this.this$0.trackMotionScroll(-i, -i);
           AdapterView.traceEnd();
           return;
         }
         float f = j;
-        i = (int)(blgl.a(f / this.d) * this.e);
+        i = (int)(bjmb.a(f / this.mDuration) * this.mDistance);
         continue;
         label426:
-        this.d = (400 - j);
-        if (this.d < 100) {
-          this.d = 100;
+        this.mDuration = (400 - j);
+        if (this.mDuration < 100) {
+          this.mDuration = 100;
         }
-        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-        this.jdField_a_of_type_Int = 0;
-        if ((this.jdField_b_of_type_Float * 1000.0F > AbsListView.access$1500(this.this$0)) && (!this.jdField_a_of_type_Boolean))
+        this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
+        this.lastMotionY = 0;
+        if ((this.mCurrVelocity * 1000.0F > AbsListView.access$1500(this.this$0)) && (!this.mUseViscousFluid))
         {
-          this.jdField_b_of_type_Int = 1;
-          this.jdField_b_of_type_Float = (this.e * 2.0F / this.d);
-          this.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / this.d);
+          this.mStatus = 1;
+          this.mCurrVelocity = (this.mDistance * 2.0F / this.mDuration);
+          this.mAccerleration = (this.mCurrVelocity / this.mDuration);
           label524:
           if (Build.VERSION.SDK_INT < 16) {
             break label552;
@@ -171,16 +120,72 @@ class AbsListView$MoveToBottomScroller
         {
           AdapterView.traceEnd();
           return;
-          this.jdField_b_of_type_Int = 3;
+          this.mStatus = 3;
           break;
           label552:
           this.this$0.post(this);
           continue;
           label564:
-          b();
+          stop();
         }
       }
     }
+  }
+  
+  void start()
+  {
+    boolean bool = true;
+    int i = this.this$0.mFirstPosition;
+    int j = this.this$0.getChildCount();
+    i = this.this$0.mItemCount - (i + j - 1) - 1;
+    if (i == 0)
+    {
+      i = AbsListView.access$2600(this.this$0);
+      j = AbsListView.access$2700(this.this$0);
+      int k = this.this$0.mListPadding.bottom;
+      this.mDistance = (this.this$0.getChildAt(this.this$0.getChildCount() - 1).getBottom() - (i - j - k));
+      if (this.mDistance == 0)
+      {
+        stop();
+        return;
+      }
+      this.mDuration = 400;
+      this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
+      this.lastMotionY = 0;
+      this.mStatus = 3;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.this$0.postOnAnimation(this);
+        return;
+      }
+      this.this$0.post(this);
+      return;
+    }
+    this.mMaxVeloctiy = (this.this$0.getHeight() * i / this.this$0.getChildCount() / 300.0F);
+    this.mAccerleration = (this.mMaxVeloctiy / 100.0F);
+    this.mCurrVelocity = 0.0F;
+    this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
+    this.mStatus = 0;
+    this.lastMotionY = 0;
+    this.mTargetPosition = (this.this$0.mItemCount - 1);
+    if (i == 1) {}
+    for (;;)
+    {
+      this.mUseViscousFluid = bool;
+      if (Build.VERSION.SDK_INT < 16) {
+        break;
+      }
+      this.this$0.postOnAnimation(this);
+      return;
+      bool = false;
+    }
+    this.this$0.post(this);
+  }
+  
+  void stop()
+  {
+    this.this$0.removeCallbacks(this);
+    this.this$0.mScrollToBottom = false;
   }
 }
 

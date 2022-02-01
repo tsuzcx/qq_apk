@@ -1,225 +1,329 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgStatusCallback.1;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.os.MqqHandler;
 
 public class bahu
-  extends badd
+  implements afbb
 {
-  private abcm jdField_a_of_type_Abcm;
-  private boolean jdField_a_of_type_Boolean;
+  private bahw jdField_a_of_type_Bahw;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<Long, bahv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentLinkedQueue<Long> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public bahu(baei parambaei, azxr paramazxr)
+  public bahu(String paramString)
   {
-    super(parambaei, paramazxr);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private boolean a(Card paramCard)
+  private FileMsg a()
   {
-    boolean bool1 = true;
-    QLog.i("ProfileWeishiComponent", 2, "makeOrRefreshWeishiFeedList");
-    if (this.jdField_a_of_type_Abcm == null) {
-      return false;
-    }
-    boolean bool2 = a(paramCard, this.jdField_a_of_type_Bjaz);
-    QLog.i("ProfileWeishiComponent", 2, "makeOrRefreshWeishiFeedList mIsRequestShow:" + this.jdField_a_of_type_Boolean + ", shouldShowWeishiPanel:" + bool2);
-    if ((!this.jdField_a_of_type_Boolean) || (!bool2))
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
     {
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label221;
-      }
-      this.jdField_a_of_type_JavaLangObject = null;
-    }
-    label221:
-    for (bool1 = true;; bool1 = false)
-    {
-      QLog.i("ProfileWeishiComponent", 2, "makeOrRefreshWeishiFeedList remove weishi panel!");
-      return bool1;
-      Object localObject;
-      if ((View)this.jdField_a_of_type_JavaLangObject == null)
+      this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+      if ((this.jdField_a_of_type_JavaLangLong != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(this.jdField_a_of_type_JavaLangLong)))
       {
-        localObject = this.jdField_a_of_type_Baiy.a(a_());
-        paramCard = (Card)localObject;
-        if (localObject == null)
-        {
-          paramCard = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131559589, null);
-          this.jdField_a_of_type_Abcm.a(paramCard);
-          this.jdField_a_of_type_Abcm.a(new bahv(this));
+        bahv localbahv = (bahv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_a_of_type_JavaLangLong);
+        if (localbahv != null) {
+          return localbahv.a();
         }
-        this.jdField_a_of_type_JavaLangObject = paramCard;
-        QLog.i("ProfileWeishiComponent", 2, "makeOrRefreshWeishiFeedList show weishi panel!");
       }
-      for (;;)
+    }
+    return null;
+  }
+  
+  private void a(FileMsg paramFileMsg)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramFileMsg.uniseq))))
+    {
+      Object localObject = (bahv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramFileMsg.uniseq));
+      if (localObject == null) {
+        break label150;
+      }
+      View localView = ((bahv)localObject).a();
+      localObject = ((bahv)localObject).a();
+      if ((localView != null) && (localObject != null))
       {
-        paramCard = this.jdField_a_of_type_Abcm.a();
-        localObject = this.jdField_a_of_type_Abcm.a();
-        this.jdField_a_of_type_Abcm.b();
-        a(paramCard, null, (ImageView)localObject);
-        return bool1;
-        bool1 = false;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("realHandleMessage1 status:").append(paramFileMsg.status).append(" ,uniseq").append(paramFileMsg.uniseq);
+          QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
+        }
+        ((afbb)localObject).a(localView, paramFileMsg, paramFileMsg.status, paramFileMsg.errorCode);
       }
     }
-  }
-  
-  private boolean a(Card paramCard, bjaz parambjaz)
-  {
-    boolean bool1;
-    if ((parambjaz == null) || (parambjaz.a(11)))
+    else
     {
-      bool1 = true;
-      if ((paramCard == null) || (paramCard.switchWeishi == 1)) {
-        break label82;
-      }
+      return;
     }
-    label82:
-    for (boolean bool2 = true;; bool2 = false)
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramFileMsg.uniseq));
+    return;
+    label150:
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramFileMsg.uniseq));
+  }
+  
+  private void a(FileMsg paramFileMsg, boolean paramBoolean)
+  {
+    if (paramFileMsg == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileWeishiComponent", 2, String.format("shouldShowWeishiPanelOrNot configEnable:%s,switchEnable:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+            if ((this.jdField_a_of_type_JavaLangLong == null) || (paramFileMsg.uniseq != this.jdField_a_of_type_JavaLangLong.longValue())) {
+              break;
+            }
+            a(paramFileMsg);
+          } while (paramFileMsg.status != 1003);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(this.jdField_a_of_type_JavaLangLong);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_JavaLangLong);
+          if (QLog.isColorLevel()) {
+            QLog.d("OrderMediaMsgStatusCallback", 2, "remove callback:" + this.jdField_a_of_type_JavaLangLong);
+          }
+          a(a(), false);
+          return;
+        } while ((!paramBoolean) || (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramFileMsg.uniseq))));
+        localObject = (bahv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramFileMsg.uniseq));
+      } while (localObject == null);
+      ((bahv)localObject).a(paramFileMsg);
+    } while (!QLog.isColorLevel());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("needCache fileStatus:").append(paramFileMsg.status).append(" ,uniseq:").append(paramFileMsg.uniseq);
+    QLog.d("OrderMediaMsgStatusCallback", 2, ((StringBuilder)localObject).toString());
+  }
+  
+  private boolean a(long paramLong, int paramInt)
+  {
+    boolean bool1 = false;
+    if (bahk.b(paramInt))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Long.valueOf(paramLong));
+      if (this.jdField_a_of_type_Bahw != null) {
+        this.jdField_a_of_type_Bahw.a(paramLong, paramInt);
       }
-      if ((!bool1) || (!bool2)) {
-        break label88;
+      boolean bool2 = true;
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleErrorMessage status:").append(paramInt).append(" ,uniseq:").append(paramLong);
+        QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
+        bool1 = bool2;
       }
-      return true;
-      bool1 = false;
-      break;
     }
-    label88:
-    return false;
+    return bool1;
   }
   
-  private void b(Intent paramIntent)
+  private void c(long paramLong)
   {
-    if ((paramIntent != null) && (paramIntent.getBundleExtra("result") != null) && (paramIntent.getBundleExtra("result").getBoolean("key_weishi_switch"))) {
-      a();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))))
+    {
+      localObject = (bahv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      if (localObject != null)
+      {
+        localView = ((bahv)localObject).a();
+        localafbb = ((bahv)localObject).a();
+        localObject = ((bahv)localObject).a();
+        if ((localView != null) && (localafbb != null) && (localObject != null))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("realHandleMessage2 status:").append(((FileMsg)localObject).status).append(" ,uniseq:").append(((FileMsg)localObject).uniseq);
+            QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
+          }
+          ThreadManager.getUIHandler().post(new OrderMediaMsgStatusCallback.1(this, localafbb, localView, (FileMsg)localObject));
+        }
+      }
     }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Abcm == null) {
-      this.jdField_a_of_type_Abcm = new abcm(this);
+    while (!QLog.isColorLevel())
+    {
+      Object localObject;
+      View localView;
+      afbb localafbb;
+      StringBuilder localStringBuilder;
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+      return;
     }
+    QLog.d("OrderMediaMsgStatusCallback", 2, "CallbackWrapperMap not contain:" + paramLong);
   }
   
-  public int a()
+  public int a(long paramLong)
   {
-    return 1016;
-  }
-  
-  public BaseActivity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  }
-  
-  public String a()
-  {
-    return "ProfileWeishiComponent";
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))
+    {
+      if (((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek()).longValue() == paramLong) {
+        i = 1;
+      }
+    }
+    else {
+      return i;
+    }
+    return 2;
   }
   
   public void a()
   {
-    String str;
-    if (this.jdField_a_of_type_Abcm != null)
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
-      str = ((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-      QLog.i("ProfileWeishiComponent", 2, "[requestWeishiPanelInfo] currentCardUin:" + str);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
     }
-    for (;;)
-    {
-      try
-      {
-        Long.parseLong(str);
-        if (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-          break label139;
-        }
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(str)) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ProfileWeishiComponent", 2, "requestWeishiPanelInfo failed getLong, uin = " + str);
-        return;
-      }
-      this.jdField_a_of_type_Abcm.a(bool, str);
-      this.jdField_a_of_type_Abcm.c();
-      return;
-      boolean bool = false;
-      continue;
-      label139:
-      bool = true;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_Bahw = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(Long.valueOf(paramLong));
     }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 1022) {
-      b(paramIntent);
-    }
-    while ((paramInt2 != -1) || (paramInt1 != 1012)) {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramFileMsg.uniseq)))
+    {
+      a(paramFileMsg);
+      if (QLog.isColorLevel()) {
+        QLog.d("OrderMediaMsgStatusCallback", 2, "not exist in uniseqlist:" + paramFileMsg.uniseq);
+      }
       return;
     }
-    b(paramIntent);
-  }
-  
-  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    i();
-    a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.i("ProfileWeishiComponent", 2, "initOrRefreshWeishiPanel");
-    if (this.jdField_a_of_type_Abcm == null) {
-      this.jdField_a_of_type_Abcm = new abcm(this);
+    boolean bool = true;
+    paramView = paramFileMsg;
+    if (a(paramFileMsg.uniseq, paramInt1))
+    {
+      a(paramFileMsg);
+      paramView = a();
+      bool = false;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Badl != null) {
-      this.jdField_a_of_type_Badl.b();
+    a(paramView, bool);
+  }
+  
+  public void a(bahw parambahw)
+  {
+    this.jdField_a_of_type_Bahw = parambahw;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong, View paramView, afbb paramafbb)
+  {
+    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null) || (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    }
+    Object localObject = afaz.a(paramQQAppInterface);
+    if (localObject != null) {
+      ((afaz)localObject).a(paramView, this);
+    }
+    int i;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), new bahv(this, paramView, paramafbb));
+      if (QLog.isColorLevel()) {
+        QLog.d("OrderMediaMsgStatusCallback", 2, "callback add success:" + paramLong);
+      }
+      paramQQAppInterface = paramQQAppInterface.getTransFileController().findProcessor(this.jdField_a_of_type_JavaLangString, paramLong);
+      if (paramQQAppInterface == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("OrderMediaMsgStatusCallback", 2, "addCallback processor is null " + paramLong);
+        }
+        if (this.jdField_a_of_type_Bahw == null) {
+          break label505;
+        }
+        this.jdField_a_of_type_Bahw.a(paramLong);
+        i = -1;
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          StringBuilder localStringBuilder = ((StringBuilder)localObject).append("addCallback uniseq:").append(paramLong).append(" ,status:").append(i).append(" ,view:");
+          if (paramView != null) {
+            break label511;
+          }
+          paramQQAppInterface = "";
+          label252:
+          paramView = localStringBuilder.append(paramQQAppInterface).append(" ,callback:");
+          if (paramafbb != null) {
+            break label520;
+          }
+        }
+      }
+    }
+    label520:
+    for (paramQQAppInterface = "";; paramQQAppInterface = paramafbb.toString())
+    {
+      paramView.append(paramQQAppInterface);
+      QLog.d("OrderMediaMsgStatusCallback", 2, ((StringBuilder)localObject).toString());
+      return true;
+      if ((paramQQAppInterface instanceof BaseTransProcessor))
+      {
+        paramQQAppInterface = (BaseTransProcessor)paramQQAppInterface;
+        i = (int)paramQQAppInterface.getFileStatus();
+        if (!a(paramLong, i))
+        {
+          this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+          if ((paramLong != 0L) && (this.jdField_a_of_type_JavaLangLong != null) && (paramLong != this.jdField_a_of_type_JavaLangLong.longValue()))
+          {
+            if (paramafbb != null)
+            {
+              paramafbb.a(paramView, paramQQAppInterface.getFileMsg(), i, paramQQAppInterface.errCode);
+              localObject = (bahv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+              if (localObject != null) {
+                ((bahv)localObject).a(paramQQAppInterface.getFileMsg());
+              }
+            }
+            if (QLog.isColorLevel())
+            {
+              paramQQAppInterface = new StringBuilder();
+              paramQQAppInterface.append("Not the first! status:").append(i).append(" ,uniseq:").append(paramLong);
+              QLog.d("OrderMediaMsgStatusCallback", 2, paramQQAppInterface.toString());
+            }
+          }
+        }
+        break;
+        paramQQAppInterface = (bahv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+        paramQQAppInterface.a = new WeakReference(paramView);
+        paramQQAppInterface.b = new WeakReference(paramafbb);
+      }
+      label505:
+      i = -1;
+      break;
+      label511:
+      paramQQAppInterface = paramView.toString();
+      break label252;
     }
   }
   
-  public boolean a(azxr paramazxr)
+  public void b(long paramLong)
   {
-    boolean bool = super.a(paramazxr);
-    return a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard) | bool;
-  }
-  
-  public String a_()
-  {
-    return "map_key_mine_weishi";
-  }
-  
-  public void c()
-  {
-    super.c();
-    umm.a((azxr)this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void d()
-  {
-    super.d();
-    umm.b((azxr)this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void f()
-  {
-    super.f();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("OrderMediaMsgStatusCallback", 2, "removeUniseqFromOrderList " + paramLong);
+      }
+      c(paramLong);
+    }
   }
 }
 

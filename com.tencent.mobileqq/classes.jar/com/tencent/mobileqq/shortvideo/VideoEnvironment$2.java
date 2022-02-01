@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcyx;
-
 final class VideoEnvironment$2
   implements Runnable
 {
-  VideoEnvironment$2(bcyx parambcyx, int paramInt) {}
+  VideoEnvironment$2(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bcyx != null) {
-      this.jdField_a_of_type_Bcyx.a(this.jdField_a_of_type_Int);
+    if (this.val$ele != null) {
+      this.val$ele.VideoSoDownloadProgress(this.val$progress);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoEnvironment.2
  * JD-Core Version:    0.7.0.1
  */

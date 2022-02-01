@@ -1,91 +1,81 @@
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqAddGroupVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoObject;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xbx
-  extends wpa<xec>
 {
-  private final HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final List<Long> jdField_a_of_type_JavaUtilList;
-  private final List<Integer> b;
-  private final int c;
+  private final QQAppInterface a;
   
-  public xbx(String paramString, List<String> paramList, List<Long> paramList1, List<Integer> paramList2, int paramInt)
+  public xbx(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("union_id should not be empty");
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("appInterface is null");
     }
-    if ((paramList == null) || (paramList.isEmpty())) {
-      throw new IllegalArgumentException("vidList is empty");
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.c = paramInt;
+    this.a = paramQQAppInterface;
   }
   
-  public String a()
+  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
   {
-    return wnu.a("StoryGroupSvc.add_video");
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_group.RspAddGroupVideo localRspAddGroupVideo = new qqstory_group.RspAddGroupVideo();
-    try
-    {
-      localRspAddGroupVideo.mergeFrom(paramArrayOfByte);
-      return new xec(localRspAddGroupVideo);
+    if (paramContext == null) {
+      throw new NullPointerException("context is null");
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        yuk.b("AddGroupVideoRequest", "decodeResponse", paramArrayOfByte);
-      }
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("please indicate the share group id");
+    }
+    if ((paramInt1 != 2) && (paramInt1 != 1)) {
+      throw new IllegalArgumentException("shareGroupType is error, type=" + paramInt1);
+    }
+    bjnw localbjnw = bjnw.a(paramContext);
+    localbjnw.a(amtj.a(2131699033), 5);
+    localbjnw.a(amtj.a(2131699031) + vkm.a + amtj.a(2131699032), 5);
+    localbjnw.c(2131690620);
+    localbjnw.a(new xby(this, localbjnw, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
+    if (!localbjnw.isShowing()) {
+      localbjnw.show();
     }
   }
   
-  protected byte[] a()
+  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, boolean paramBoolean, int paramInt2, int paramInt3)
   {
-    qqstory_group.ReqAddGroupVideo localReqAddGroupVideo = new qqstory_group.ReqAddGroupVideo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      qqstory_group.GroupVideo localGroupVideo = new qqstory_group.GroupVideo();
-      localGroupVideo.source.set(this.c);
-      localGroupVideo.union_id.set(ByteStringMicro.copyFromUtf8((String)((Map.Entry)localObject).getKey()));
-      int i = 0;
-      localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        qqstory_group.VideoObject localVideoObject = new qqstory_group.VideoObject();
-        localVideoObject.vid.set(ByteStringMicro.copyFromUtf8(str));
-        localVideoObject.ts.set(((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue() / 1000L);
-        localVideoObject.time_zone.set(((Integer)this.b.get(i)).intValue());
-        localGroupVideo.video_obj_list.add(localVideoObject);
-        i += 1;
-      }
-      localReqAddGroupVideo.group_video_list.add(localGroupVideo);
+    xvv.d("AddVideoController", "addVideoByRecord %s %s %s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+    if (paramContext == null) {
+      throw new NullPointerException("context is null");
     }
-    return localReqAddGroupVideo.toByteArray();
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("please indicate the share group id");
+    }
+    ynm localynm = ynm.a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("entrance_type", 102);
+    localBundle.putInt("shareGroupType", paramInt1);
+    localBundle.putString("shareGroupId", paramString1);
+    localBundle.putString("shareGroupName", paramString2);
+    localBundle.putInt("add_video_source", paramInt3);
+    if (paramInt1 == 1) {
+      localBundle.putLong("groupUin", paramLong);
+    }
+    localBundle.putBoolean("ignorePersonalPublish", paramBoolean);
+    if ((paramContext instanceof Activity))
+    {
+      paramContext = (Activity)paramContext;
+      localynm.a(paramContext, localBundle, paramInt2);
+      paramContext.overridePendingTransition(2130772240, 2130772041);
+      return;
+    }
+    localynm.a(paramContext, localBundle);
+  }
+  
+  public void b(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
+  {
+    xvv.d("AddVideoController", "addVideoByExist %s %s", new Object[] { paramString1, paramString2 });
+    Bundle localBundle = new Bundle();
+    localBundle.putString("shareGroupId", paramString1);
+    localBundle.putString("shareGroupName", paramString2);
+    localBundle.putInt("add_video_source", paramInt3);
+    StoryTransitionActivity.a(paramContext, xbz.class.getName(), localBundle, paramInt2);
   }
 }
 

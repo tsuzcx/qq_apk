@@ -1,8 +1,10 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class bbph
+  implements BusinessObserver
 {
-  public String a;
-  public String b;
-  public String c;
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

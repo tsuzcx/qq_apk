@@ -1,13 +1,18 @@
-class pov
-  implements por
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import org.json.JSONObject;
+
+public class pov
+  implements pqe
 {
-  pov(pou parampou) {}
+  public pov(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a.a(paramInt) == null) {
-      this.a.c(paramInt);
-    }
+    pay.a(this.a.a.getContext(), paa.o);
+    JSONObject localJSONObject = pay.a();
+    odq.a(null, "CliOper", "", "", "0X800845A", "0X800845A", 0, 0, ReadInJoySelfFragment.a(this.a, 11) + "", "", "", localJSONObject.toString(), false);
+    ReadInJoySelfFragment.a(this.a, 11);
   }
 }
 

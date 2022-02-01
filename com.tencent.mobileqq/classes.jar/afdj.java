@@ -1,14 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
 
-class afdj
-  implements DialogInterface.OnClickListener
+public class afdj
 {
-  afdj(afdi paramafdi) {}
+  public static LruCache<String, PAMessage> a = new LruCache(50);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static PAMessage a(MessageRecord paramMessageRecord)
   {
-    paramDialogInterface.dismiss();
+    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
+  }
+  
+  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
+  {
+    String str = a(paramString, paramLong1, paramLong2);
+    PAMessage localPAMessage = (PAMessage)a.get(str);
+    paramString = localPAMessage;
+    if (localPAMessage == null)
+    {
+      paramArrayOfByte = ueg.a(paramArrayOfByte);
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte != null)
+      {
+        a.put(str, paramArrayOfByte);
+        paramString = paramArrayOfByte;
+      }
+    }
+    return paramString;
+  }
+  
+  private static String a(String paramString, long paramLong1, long paramLong2)
+  {
+    return paramString + "&" + paramLong1 + "&" + paramLong2;
   }
 }
 

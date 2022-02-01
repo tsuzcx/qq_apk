@@ -1,17 +1,46 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.text.Editable;
+import android.text.Html.TagHandler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.xml.sax.XMLReader;
 
-public class afqm
-  implements aqmv
+class afqm
+  implements Html.TagHandler
 {
-  public afqm(TextPreviewActivity paramTextPreviewActivity) {}
-  
-  public void a(aqmw paramaqmw)
+  static
   {
-    this.a.jdField_a_of_type_Aqmw = paramaqmw;
-    if (this.a.i != 0) {
-      paramaqmw.a(this.a.i);
+    if (!afqj.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    this.a.i = paramaqmw.a(1, this.a.e, 3, this.a.jdField_a_of_type_Aqmt);
+  }
+  
+  afqm(afqj paramafqj) {}
+  
+  public void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
+  {
+    if (paramString.equalsIgnoreCase("newLine")) {}
+    int i;
+    do
+    {
+      do
+      {
+        paramEditable.append("\n");
+        do
+        {
+          return;
+        } while (!paramString.equalsIgnoreCase("emotion"));
+        paramXMLReader = afqj.a(this.jdField_a_of_type_Afqj, paramXMLReader, "id");
+      } while (TextUtils.isEmpty(paramXMLReader));
+      if ((!jdField_a_of_type_Boolean) && (paramXMLReader == null)) {
+        throw new AssertionError();
+      }
+      i = Integer.parseInt(paramXMLReader);
+      paramEditable.append(this.jdField_a_of_type_Afqj.a("\024" + (char)i));
+    } while (!QLog.isColorLevel());
+    QLog.d("FullScreenInputHelper", 2, "[mix]handleTag: " + paramString + " emotionTag: " + paramXMLReader + " emotionId: " + i);
   }
 }
 

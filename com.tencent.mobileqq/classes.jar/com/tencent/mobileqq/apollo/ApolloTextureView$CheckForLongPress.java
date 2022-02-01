@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amwd;
+import alqx;
 import android.text.TextUtils;
 
 class ApolloTextureView$CheckForLongPress

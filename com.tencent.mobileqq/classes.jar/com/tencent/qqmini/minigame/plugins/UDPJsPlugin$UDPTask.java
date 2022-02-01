@@ -31,7 +31,7 @@ class UDPJsPlugin$UDPTask
     this.jsService = paramIJsService;
     try
     {
-      this.taskId = UDPJsPlugin.access$000().getAndIncrement();
+      this.taskId = UDPJsPlugin.access$200().getAndIncrement();
       this.channel = DatagramChannel.open();
       this.channel.configureBlocking(false);
       this.receiveByteArray = new byte[8192];
@@ -106,7 +106,7 @@ class UDPJsPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "close");
-      UDPJsPlugin.access$300(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
+      UDPJsPlugin.access$400(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
       return;
     }
     catch (JSONException localJSONException) {}
@@ -114,7 +114,7 @@ class UDPJsPlugin$UDPTask
   
   void onError(String paramString)
   {
-    UDPJsPlugin.access$200(this.this$0, paramString, this.taskId);
+    UDPJsPlugin.access$100(this.this$0, paramString, this.taskId);
   }
   
   void onListening()
@@ -124,7 +124,7 @@ class UDPJsPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "listening");
-      UDPJsPlugin.access$100(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
+      UDPJsPlugin.access$300(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
       return;
     }
     catch (JSONException localJSONException) {}
@@ -155,7 +155,7 @@ class UDPJsPlugin$UDPTask
         paramArrayOfByte.put("port", paramSocketAddress.getPort());
         paramArrayOfByte.put("size", paramInt);
         localJSONObject.put("remoteInfo", paramArrayOfByte);
-        UDPJsPlugin.access$400(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
+        UDPJsPlugin.access$500(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
         return;
         label146:
         paramArrayOfByte.put("family", "IPv6");

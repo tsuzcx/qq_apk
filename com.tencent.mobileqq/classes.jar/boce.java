@@ -1,66 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.utils.ILog;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import java.nio.ByteBuffer;
 
-public final class boce
-  implements ILog
+public class boce
 {
-  private static boce a;
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public MediaFormat a;
+  public ByteBuffer a;
+  public boolean a;
   
-  public static boce a()
+  public boce(bocd parambocd)
   {
-    if (a == null) {
-      a = new boce();
-    }
-    return a;
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 2, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    d(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    e(paramString1, paramString2);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    i(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2) {}
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable) {}
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    w(paramString1, paramString2);
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

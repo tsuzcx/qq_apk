@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import android.view.View;
 
-public final class avzb
-  implements Parcelable.Creator<IVPluginInfo>
+public abstract interface avzb
 {
-  public IVPluginInfo a(Parcel paramParcel)
-  {
-    return new IVPluginInfo(paramParcel);
-  }
-  
-  public IVPluginInfo[] a(int paramInt)
-  {
-    return new IVPluginInfo[paramInt];
-  }
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

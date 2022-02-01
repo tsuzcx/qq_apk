@@ -1,33 +1,41 @@
+import android.view.View;
+import android.widget.TextView;
+
 public class yqa
-  extends ypy
+  extends yqc
 {
-  public Object a;
-  public String a;
+  TextView a;
   
-  public yqa(Object paramObject)
+  public yqa(yqe paramyqe, View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    super(paramyqe, paramView);
+    this.a = ((TextView)paramView.findViewById(2131378406));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
   }
   
-  public Object a()
+  public CharSequence a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.a.getText();
   }
   
-  public String a()
+  public void a(CharSequence paramCharSequence)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = ypt.a(this.a, 1);
+    this.a.setText(paramCharSequence);
   }
   
-  public void a()
+  public void e_(boolean paramBoolean)
   {
-    d();
+    if (paramBoolean)
+    {
+      this.a.setBackgroundResource(2130844482);
+      return;
+    }
+    this.a.setBackgroundResource(0);
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

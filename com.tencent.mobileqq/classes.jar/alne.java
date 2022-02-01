@@ -1,27 +1,119 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class alne
-  extends alnl
 {
-  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
+  private static alne jdField_a_of_type_Alne;
+  private Map<Long, alnf> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<Long, Long> b = new HashMap();
+  
+  public static alne a()
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof alnm))) {}
-    paramObject = super.a(paramInt, paramObject, paramalno, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramalpv);
-    paramalno = (alnm)paramObject.getTag();
-    paramViewGroup = paramContext.getResources();
-    paramView = paramViewGroup.getColorStateList(2131167070);
-    paramViewGroup = paramViewGroup.getColorStateList(2131166990);
-    paramalno.a.setTextColor(paramViewGroup);
-    paramalno.b.setTextColor(paramView);
-    paramalno.a.setExtendTextColor(paramView, 0);
-    paramObject.findViewById(2131376485).setBackgroundResource(2130839399);
-    return paramObject;
+    if (jdField_a_of_type_Alne == null) {
+      jdField_a_of_type_Alne = new alne();
+    }
+    return jdField_a_of_type_Alne;
+  }
+  
+  public int a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    {
+      alnf localalnf = (alnf)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localalnf.jdField_a_of_type_Long < 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
+        }
+        return localalnf.jdField_a_of_type_Int;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
+        }
+        return 0;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.b.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "use default value, false");
+    }
+    return 0;
+  }
+  
+  public void a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.b.size() > 500) {
+      this.b.clear();
+    }
+    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    long l = System.currentTimeMillis();
+    alnf localalnf = new alnf(this);
+    localalnf.jdField_a_of_type_Int = paramInt;
+    localalnf.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localalnf);
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      this.b.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((alnf)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.b.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
+    }
+    return true;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import alms;
+import akkk;
 
 class HotChatCenterFragment$6$1
   implements Runnable

@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-
-public class zuz
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface zuz
 {
-  public zuz(RotateCircleImageView paramRotateCircleImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

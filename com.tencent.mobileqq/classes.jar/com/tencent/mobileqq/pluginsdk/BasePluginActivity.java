@@ -36,7 +36,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.skin.util.SkinEngineInitBridge;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinEngine;
@@ -407,20 +406,19 @@ public class BasePluginActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool;
+    boolean bool = true;
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     if (reflectHasAndIsNull(this, "mWindow", Activity.class))
     {
       if (paramMotionEvent.getAction() == 0) {
         onUserInteraction();
       }
       Window localWindow = getWindow();
-      if ((localWindow != null) && (localWindow.superDispatchTouchEvent(paramMotionEvent))) {
-        bool = true;
-      }
+      if ((localWindow == null) || (!localWindow.superDispatchTouchEvent(paramMotionEvent))) {}
     }
     for (;;)
     {
-      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
       return bool;
       bool = onTouchEvent(paramMotionEvent);
       continue;
@@ -763,7 +761,7 @@ public class BasePluginActivity
     //   28: if_icmplt +13 -> 41
     //   31: aload_0
     //   32: ldc 241
-    //   34: ldc_w 447
+    //   34: ldc_w 457
     //   37: aload_2
     //   38: invokestatic 651	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
     //   41: aload_0

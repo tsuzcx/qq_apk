@@ -3,14 +3,14 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azpo;
+import aycw;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CompressInfo> CREATOR = new azpo();
+  public static final Parcelable.Creator<CompressInfo> CREATOR = new aycw();
   public int a;
   public ThumbWidthHeightDP a;
   public String a;
@@ -102,7 +102,7 @@ public class CompressInfo
     this.jdField_b_of_type_Boolean = true;
     BaseApplication localBaseApplication = BaseApplication.getContext();
     if (paramBoolean) {}
-    for (int k = 2131690886;; k = 2131690882)
+    for (int k = 2131690926;; k = 2131690922)
     {
       this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
       return;

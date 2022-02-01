@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.app.Activity;
+import android.view.View;
 
-public class axnu
-  implements axmd
+public abstract interface axnu
 {
-  public axnu(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  public abstract Activity a();
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    MultiCardPageIndicator.a(this.a);
-    return false;
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

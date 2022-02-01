@@ -1,23 +1,15 @@
-import android.text.Spannable;
-import java.util.Comparator;
+import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
 
-final class bgmf
-  implements Comparator<bgme>
+public class bgmf
+  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
 {
-  bgmf(Spannable paramSpannable) {}
+  public bgmf(PathTraceManager paramPathTraceManager) {}
   
-  public int a(bgme parambgme1, bgme parambgme2)
+  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(parambgme1);
-    int k = this.a.getSpanStart(parambgme2);
-    if (j < k) {
-      i = -1;
-    }
-    while (j <= k) {
-      return i;
-    }
-    return 1;
+    PathTraceManager.a(this.a, paramPluginInterface);
   }
 }
 

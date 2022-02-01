@@ -1,20 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
 
-class apbj
-  implements View.OnClickListener
+public class apbj
 {
-  apbj(apbi paramapbi, String paramString) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public static apbj a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
   {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
-    localOpenPlayerBuilder.a();
-    xlj.a(this.jdField_a_of_type_Apbi.a, localOpenPlayerBuilder.a(), null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject;
+    if (paramVideoHeadInfo == null) {
+      localObject = null;
+    }
+    apbj localapbj;
+    do
+    {
+      return localObject;
+      localapbj = new apbj();
+      if (paramVideoHeadInfo.str_url.has()) {
+        localapbj.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
+      }
+      localObject = localapbj;
+    } while (!paramVideoHeadInfo.uint32_video_size.has());
+    localapbj.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
+    return localapbj;
+  }
+  
+  public static ArrayList<apbj> a(List<oidb_0x74b.VideoHeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      apbj localapbj = a((oidb_0x74b.VideoHeadInfo)paramList.next());
+      if (localapbj != null) {
+        localArrayList.add(localapbj);
+      }
+    }
+    return localArrayList;
   }
 }
 

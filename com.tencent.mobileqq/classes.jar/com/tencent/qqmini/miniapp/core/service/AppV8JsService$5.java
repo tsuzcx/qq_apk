@@ -1,6 +1,6 @@
 package com.tencent.qqmini.miniapp.core.service;
 
-import com.tencent.tissue.v8rt.engine.IServiceEventHandler;
+import com.tencent.qqmini.v8rt.engine.IServiceEventHandler;
 
 class AppV8JsService$5
   implements IServiceEventHandler

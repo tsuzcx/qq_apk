@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.widget.FrameLayout.LayoutParams;
 
 public class bhep
-  implements DialogInterface.OnClickListener
+  extends FrameLayout.LayoutParams
 {
-  public bhep(UpgradeActivity paramUpgradeActivity) {}
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhep(int paramInt1, int paramInt2, int paramInt3)
   {
-    UpgradeActivity.a(this.a, true);
-    bdll.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bhdt.b(), String.valueOf(0), bhdu.a(), "");
+    super(paramInt1, paramInt2, paramInt3);
   }
 }
 

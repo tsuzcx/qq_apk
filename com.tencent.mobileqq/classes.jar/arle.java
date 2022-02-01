@@ -1,50 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class arle
-  implements arae<String>
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "{}";
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public arle()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public arle(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void a(String paramString)
+  public void onGlobalLayout()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, "onParse: but configContent is null!");
-    }
-    this.c = paramString;
-    try
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("actionSwitch")) {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("actionSwitch");
+      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
+      int k = j - i;
+      if (k <= j / 4) {
+        break label90;
       }
-      if (paramString.has("actionHint")) {
-        this.jdField_a_of_type_JavaLangString = paramString.getString("actionHint");
-      }
-      if (paramString.has("actionYYBDownloadUrl")) {
-        this.b = paramString.getString("actionYYBDownloadUrl");
-      }
+      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
+      this.jdField_a_of_type_Boolean = true;
+      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
       return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+      label90:
+      if (this.jdField_a_of_type_Boolean) {
+        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arle
  * JD-Core Version:    0.7.0.1
  */

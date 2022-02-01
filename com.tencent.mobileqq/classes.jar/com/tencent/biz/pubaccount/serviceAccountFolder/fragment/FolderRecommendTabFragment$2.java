@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import bnwo;
-import bnwq;
+import blbu;
+import blbw;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +13,16 @@ class FolderRecommendTabFragment$2
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    bnwo localbnwo = new bnwo();
-    localbnwo.a = 476;
-    localbnwo.b = 6;
-    localArrayList.add(localbnwo);
-    bnwq.a().a(localArrayList, FolderRecommendTabFragment.a(this.this$0));
+    blbu localblbu = new blbu();
+    localblbu.a = 476;
+    localblbu.b = 6;
+    localArrayList.add(localblbu);
+    blbw.a().a(localArrayList, FolderRecommendTabFragment.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.2
  * JD-Core Version:    0.7.0.1
  */

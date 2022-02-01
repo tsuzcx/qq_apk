@@ -1,15 +1,22 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 
-class ayzk
-  implements Camera.PictureCallback
+public abstract class ayzk
 {
-  ayzk(ayzg paramayzg) {}
+  protected QQAppInterface a;
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public ayzk(QQAppInterface paramQQAppInterface)
   {
-    this.a.a(paramArrayOfByte, true);
+    this.a = paramQQAppInterface;
   }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, ByteStringMicro paramByteStringMicro);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

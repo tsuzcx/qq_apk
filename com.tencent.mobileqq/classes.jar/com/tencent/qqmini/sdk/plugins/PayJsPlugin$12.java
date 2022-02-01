@@ -1,7 +1,5 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.PayResponse;
@@ -20,11 +18,7 @@ class PayJsPlugin$12
     try
     {
       localJSONObject.put("resultCode", paramPayResponse.getResultCode());
-      String str = paramPayResponse.getExtendInfo();
-      if ((!TextUtils.isEmpty(str)) && (JSONUtil.isJson(str))) {
-        localJSONObject.put("data", new JSONObject(str).optJSONObject("data"));
-      }
-      label58:
+      label19:
       if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
         PayJsPlugin.access$1600(this.this$0, this.val$req, localJSONObject);
       }
@@ -38,20 +32,20 @@ class PayJsPlugin$12
         }
         else
         {
-          str = paramPayResponse.getResultMsg();
+          String str = paramPayResponse.getResultMsg();
           PayJsPlugin.access$700(this.this$0, this.val$req, localJSONObject, str);
         }
       }
     }
     catch (JSONException localJSONException)
     {
-      break label58;
+      break label19;
     }
   }
   
   public void payNeedLogin()
   {
-    QMLog.e("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
+    QMLog.e("PayJsPlugin", "handleMidasGoodsPay payNeedLogin");
     PayJsPlugin.access$700(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }

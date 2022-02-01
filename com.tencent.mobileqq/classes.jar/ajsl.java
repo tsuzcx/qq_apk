@@ -1,31 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajsl
+class ajsl
+  implements DialogInterface.OnClickListener
 {
-  public static ajsm a(int paramInt, Entity paramEntity, QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if (paramInt == 0) {
-      return new ajuo(paramQQAppInterface, paramContext, paramEntity);
-    }
-    if (paramInt == 5) {
-      return new ajtx(paramQQAppInterface, paramContext, paramEntity);
-    }
-    if (paramInt == 1) {
-      return new ajvj(paramQQAppInterface, paramContext, paramEntity);
-    }
-    if (paramInt == 2) {
-      return new ajxj(paramQQAppInterface, paramContext, paramEntity, 2);
-    }
-    if (paramInt == 3) {
-      return new ajxj(paramQQAppInterface, paramContext, paramEntity, 3);
-    }
-    if (paramInt == 4) {
-      return new ajuo(paramQQAppInterface, paramContext, paramEntity);
-    }
-    return null;
-  }
+  ajsl(ajsk paramajsk) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

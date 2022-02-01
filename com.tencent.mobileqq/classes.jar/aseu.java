@@ -1,91 +1,59 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
 
-public abstract class aseu<T extends CustomEmotionBase>
-  implements Manager
+class aseu
+  extends asfq
 {
-  protected QQAppInterface a;
+  protected long a;
   protected String a;
-  protected CopyOnWriteArrayList<WeakReference<ashl>> a;
-  protected AtomicBoolean a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
   
-  public aseu(QQAppInterface paramQQAppInterface)
+  aseu(ases paramases, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    super(paramases);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.h = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  protected abstract int a();
+  void a(String paramString, int paramInt) {}
   
-  protected abstract anvt<T> a();
-  
-  protected abstract ases<T> a();
-  
-  public void a()
+  void a(String paramString, int paramInt, asfo paramasfo)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  public void a(ashl paramashl)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (((WeakReference)localIterator.next()).get() == paramashl) {
-        return;
-      }
-    }
-    paramashl = new WeakReference(paramashl);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramashl);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    anvt localanvt;
-    do
+    if ("1".equals(this.h))
     {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramasfo.a(ases.a(this.jdField_a_of_type_Long, false), false);
       return;
-      localanvt = a();
-    } while (localanvt == null);
+    }
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
+      }
+      paramasfo.a(ases.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    asda localasda = ases.a(this.jdField_a_of_type_Ases).getFileManagerEngine().a();
     if (QLog.isColorLevel()) {
-      QLog.d("CustomEmotionRoamingManagerBase", 2, "------------start syncRoaming----------");
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
     }
-    localanvt.a();
-  }
-  
-  public void b(ashl paramashl)
-  {
-    if (paramashl == null) {}
-    WeakReference localWeakReference;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while (localWeakReference.get() != paramashl);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    localasda.a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new asev(this, paramString, paramasfo));
   }
 }
 

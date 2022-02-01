@@ -1,32 +1,43 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
 
-public class asqb
-  implements TextView.OnEditorActionListener
+final class asqb
+  extends nmf
 {
-  public asqb(EmotionSearchPanel paramEmotionSearchPanel) {}
+  asqb(asqc paramasqc) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool = false;
-    if (paramInt == 3)
-    {
-      if (!bhsr.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))
-      {
-        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AE28", "0X800AE28", 0, 0, "2", "", this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), "");
-        EmotionSearchPanel.a(this.a, true);
-        ((asnw)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).z();
-      }
-      bool = true;
-      EmotionSearchPanel.a(this.a);
+    if (paramInt == 0) {
+      paramBundle = new oidb_0x6e7.RspBody();
     }
-    return bool;
+    do
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
+        }
+        if (this.a != null) {
+          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
+      }
+    } while (this.a == null);
+    this.a.a(0, -1);
   }
 }
 

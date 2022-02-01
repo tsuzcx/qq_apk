@@ -1,30 +1,8 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-
 public class alrq
-  implements Animator.AnimatorListener
 {
-  public alrq(LoginView paramLoginView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    LoginView.c(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    LoginView.c(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String a = "{}";
+  public boolean a;
+  public boolean b;
 }
 
 

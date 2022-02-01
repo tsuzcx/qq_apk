@@ -1,57 +1,130 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class atgt
-  implements Animation.AnimationListener
+class atgt
+  implements atgv
 {
-  public atgt(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  atgt(atgs paramatgs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    boolean bool = this.a.c();
+    QLog.i(atgs.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
+    if (bool) {}
+    for (;;)
+    {
+      return;
+      this.a.a(true);
+      Object localObject = atgs.a(this.a);
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", atgs.a(this.a));
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        atgv localatgv = (atgv)((Iterator)localObject).next();
+        if (localatgv != null) {
+          localatgv.a(paramInt, paramBundle);
+        }
+      }
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
+    QLog.i(atgs.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
+    if ((atgs.b(this.a) < 1) && (1 == atgs.a(this.a)))
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      QLog.i(atgs.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
+      atgs.c(this.a);
+      atgs.a(this.a, paramInt, paramString, paramBundle);
     }
     for (;;)
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
       return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840090);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", atgs.a(this.a));
       }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      Iterator localIterator = atgs.a(this.a).iterator();
+      while (localIterator.hasNext())
       {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840091);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+        atgv localatgv = (atgv)localIterator.next();
+        if (localatgv != null) {
+          localatgv.a(paramInt, paramString, paramBundle);
+        }
       }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840092);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    QLog.i(atgs.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
+    paramBundle = new Bundle();
+    paramBundle.putInt("_CB_SID", atgs.a(this.a));
+    paramBundle.putString("_CB_URL", atgs.a(this.a));
+    paramBundle.putBundle("_CB_USERDATA", atgs.a(this.a));
+    Iterator localIterator = atgs.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      atgv localatgv = (atgv)localIterator.next();
+      if (localatgv != null) {
+        localatgv.a(paramString, paramLong, paramBundle);
+      }
+    }
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", atgs.a(this.a));
+    }
+    Iterator localIterator = atgs.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      atgv localatgv = (atgv)localIterator.next();
+      if (localatgv != null) {
+        localatgv.b(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(atgs.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", atgs.a(this.a));
+    }
+    Iterator localIterator = atgs.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      atgv localatgv = (atgv)localIterator.next();
+      if (localatgv != null) {
+        localatgv.c(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(atgs.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", atgs.a(this.a));
+    }
+    Iterator localIterator = atgs.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      atgv localatgv = (atgv)localIterator.next();
+      if (localatgv != null) {
+        localatgv.d(paramInt, paramBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgt
  * JD-Core Version:    0.7.0.1
  */

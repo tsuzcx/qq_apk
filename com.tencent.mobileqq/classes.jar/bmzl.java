@@ -1,11 +1,25 @@
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
 
 public class bmzl
-  extends bmzi
+  extends bmtc
 {
-  public boolean a()
+  public bmzl(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
+  
+  public void a()
   {
-    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
+    }
+    this.a.g();
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
+    }
+    this.a.a(false);
   }
 }
 

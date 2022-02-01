@@ -1,221 +1,118 @@
-import NearbyGroup.GroupInfo;
-import NearbyGroup.GroupLabel;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class bfpa
+final class bfpa
+  implements DownloadParams.DecodeHandler
 {
-  public static final boolean a = AppSetting.c;
-  
-  public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    return a(paramContext, paramViewGroup, paramInt, 2131562943);
-  }
-  
-  public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
-  {
-    paramContext = LayoutInflater.from(paramContext).inflate(paramInt2, paramViewGroup, false);
-    paramViewGroup = new bfpc();
-    paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379419));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379490));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379368));
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131379447));
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(paramInt1);
-    paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131379448));
-    paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(2);
-    paramViewGroup.e = ((TextView)paramContext.findViewById(2131365622));
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setDistanceTextView(paramViewGroup.e);
-    paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379400));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379360));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379322));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131376838));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131369464));
-    paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(null);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131368923));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131378273));
-    paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379367));
-    paramViewGroup.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131369944);
-    paramViewGroup.jdField_d_of_type_Int = paramInt1;
-    paramContext.setTag(paramViewGroup);
-    return paramContext;
-  }
-  
-  public static void a(Context paramContext, AppInterface paramAppInterface)
-  {
-    HotChatManager.a(paramContext, false);
-  }
-  
-  public static void a(View paramView, GroupInfo paramGroupInfo, Context paramContext, boolean paramBoolean)
-  {
-    a(paramView, paramGroupInfo, paramContext, paramBoolean, false);
-  }
-  
-  public static void a(View paramView, GroupInfo paramGroupInfo, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramView, paramGroupInfo, paramContext, paramBoolean1, true, paramBoolean2);
-  }
-  
-  public static void a(View paramView, GroupInfo paramGroupInfo, Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    bfpc localbfpc = (bfpc)paramView.getTag();
-    localbfpc.jdField_a_of_type_JavaLangString = String.valueOf(paramGroupInfo.lCode);
-    localbfpc.jdField_a_of_type_AndroidWidgetTextView.setText(paramGroupInfo.strName);
-    localbfpc.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131166997));
-    Object localObject1;
-    Object localObject2;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    int n;
+    int i1;
     int i;
-    if ((paramBoolean2) && (paramGroupInfo.labels != null))
+    int j;
+    int k;
+    int m;
+    int i2;
+    int i3;
+    boolean bool;
+    label128:
+    label380:
+    do
     {
-      localObject1 = paramGroupInfo.labels.iterator();
-      while (((Iterator)localObject1).hasNext())
+      Object localObject;
+      do
       {
-        localObject2 = (GroupLabel)((Iterator)localObject1).next();
-        if (((GroupLabel)localObject2).type == 2001L)
+        do
         {
-          i = android.graphics.Color.rgb((int)((GroupLabel)localObject2).text_color.R, (int)((GroupLabel)localObject2).text_color.G, (int)((GroupLabel)localObject2).text_color.B);
-          localbfpc.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-        }
-      }
-    }
-    if ((paramBoolean1) || (paramBoolean3)) {
-      localbfpc.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    }
-    if (paramBoolean3) {
-      localbfpc.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    }
-    localbfpc.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (TextUtils.isEmpty(paramGroupInfo.strIntro))
-    {
-      localbfpc.jdField_c_of_type_AndroidWidgetTextView.setText(2131695490);
-      localbfpc.jdField_a_of_type_NearbyGroupGroupInfo = paramGroupInfo;
-      if ((paramGroupInfo.labels != null) && (paramGroupInfo.labels.size() != 0)) {
-        break label718;
-      }
-      if ((localbfpc.jdField_a_of_type_JavaUtilArrayList == null) || (localbfpc.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+          return paramDownloadParams;
+          localObject = paramDownloadParams.tag;
+          paramDownloadParams = paramBitmap;
+        } while (!(localObject instanceof int[]));
+        paramDownloadParams = paramBitmap;
+      } while (((int[])localObject).length != 6);
+      paramDownloadParams = (int[])localObject;
+      n = paramDownloadParams[0];
+      i1 = paramDownloadParams[1];
+      i = paramDownloadParams[2];
+      j = paramDownloadParams[3];
+      k = paramDownloadParams[4];
+      m = paramDownloadParams[5];
+      i2 = paramBitmap.getHeight();
+      i3 = paramBitmap.getWidth();
+      float f1;
+      if ((n >= 0) && (i1 >= 0) && (i > 0) && (j > 0) && (n < i3) && (i1 < i2))
       {
-        localObject1 = new ArrayList(1);
-        ((ArrayList)localObject1).add(new GroupLabel(paramGroupInfo.iMemberCnt + "", new NearbyGroup.Color(175L, 195L, 213L), 1L, new NearbyGroup.Color(190L, 206L, 220L)));
-        localbfpc.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i(bfol.a(), 2, String.format("CUSTOM_CLIP_DECODER [%d,%d,%d,%d,%d,%d] valid=%b", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) }));
+        }
+        if ((bool) || (k <= 0) || (m <= 0)) {
+          break label439;
+        }
+        f1 = k / m;
+        float f2 = paramBitmap.getWidth() / paramBitmap.getHeight();
+        localObject = new Rect();
+        if (f1 <= f2) {
+          break label380;
+        }
+        i = paramBitmap.getWidth();
+        j = (int)(i / f1);
+        n = (int)(0.5F * (paramBitmap.getHeight() - j));
+        f1 = paramBitmap.getHeight() - j;
+        ((Rect)localObject).set(0, n, i, (int)(j + 0.5F * f1));
       }
-      ((GroupLabel)localbfpc.jdField_a_of_type_JavaUtilArrayList.get(0)).strWording = (paramGroupInfo.iMemberCnt + "");
-      paramGroupInfo.labels = localbfpc.jdField_a_of_type_JavaUtilArrayList;
-      a(paramContext, localbfpc, paramGroupInfo);
-      if ((paramGroupInfo.dwGroupFlagExt & 0x800) == 0L) {
-        break label812;
+      for (;;)
+      {
+        paramBitmap = bfvo.a(paramBitmap, (Rect)localObject, ajpz.a(k, m, ((Rect)localObject).width(), ((Rect)localObject).height()));
+        paramDownloadParams = paramBitmap;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i(bfol.a(), 2, String.format("CUSTOM_CLIP_DECODER centerCrop %s", new Object[] { ((Rect)localObject).toShortString() }));
+        return paramBitmap;
+        bool = false;
+        break label128;
+        i = paramBitmap.getHeight();
+        j = (int)(f1 * i);
+        n = (int)(0.5F * (paramBitmap.getWidth() - j));
+        f1 = paramBitmap.getWidth() - j;
+        ((Rect)localObject).set(n, 0, (int)(j + 0.5F * f1), i);
       }
-      if (paramGroupInfo.dwCertType != 2L) {
-        break label767;
-      }
-      localbfpc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localbfpc.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843809);
-      label435:
-      if ((paramGroupInfo.dwExtFlag & 1L) == 0L) {
-        break label825;
-      }
-      localbfpc.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130842476);
-      localbfpc.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramDownloadParams = paramBitmap;
+    } while (!bool);
+    label439:
+    if (n + i > i3) {
+      i = i3 - n;
     }
-    label718:
     for (;;)
     {
-      label466:
-      if (a)
+      if (i1 + j > i2) {
+        j = i2 - i1;
+      }
+      for (;;)
       {
-        localObject1 = "" + paramGroupInfo.strName;
-        paramContext = paramGroupInfo.iMemberCnt + anzj.a(2131706272);
-        if (paramGroupInfo.labels == null) {
-          break label907;
-        }
-        localObject2 = new StringBuffer();
-        int j = paramGroupInfo.labels.size();
-        i = 0;
-        for (;;)
+        paramDownloadParams = new Rect(n, i1, i + n, j + i1);
+        j = 1;
+        i = j;
+        if (k > 0)
         {
-          if (i < j)
-          {
-            GroupLabel localGroupLabel = (GroupLabel)paramGroupInfo.labels.get(i);
-            if ((localGroupLabel != null) && (!TextUtils.isEmpty(localGroupLabel.strWording))) {
-              ((StringBuffer)localObject2).append(localGroupLabel.strWording).append(" ");
-            }
-            i += 1;
-            continue;
-            i = paramContext.getResources().getDisplayMetrics().widthPixels;
-            if (localbfpc.jdField_b_of_type_Int == 1) {
-              i -= agej.a(110.0F, paramContext.getResources());
-            }
-            for (;;)
-            {
-              localObject1 = nnr.b(nnr.c(paramGroupInfo.strIntro));
-              TextUtils.ellipsize((CharSequence)localObject1, localbfpc.jdField_c_of_type_AndroidWidgetTextView.getPaint(), i, TextUtils.TruncateAt.END, false, new bfpb(localbfpc, (String)localObject1));
-              break;
-              i = (i - agej.a(137.0F, paramContext.getResources())) * 2;
-            }
-            if ((a(paramContext, localbfpc, paramGroupInfo)) || (!QLog.isColorLevel())) {
-              break;
-            }
-            QLog.e("NearbyTroops", 2, "fillTroopLabels failed:" + paramGroupInfo.strName);
-            break;
-            label767:
-            if (paramGroupInfo.dwCertType == 1L)
-            {
-              localbfpc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              localbfpc.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843809);
-              break label435;
-            }
-            localbfpc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label435;
-            localbfpc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label435;
-            localbfpc.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            break label466;
+          i = j;
+          if (m > 0) {
+            i = ajpz.a(k, m, paramDownloadParams.width(), paramDownloadParams.height());
           }
         }
-        if (((StringBuffer)localObject2).length() <= 0) {
-          break label907;
+        if (QLog.isColorLevel()) {
+          QLog.i(bfol.a(), 2, String.format("CUSTOM_CLIP_DECODER [w,h]=[%d,%d] dstClip=%s sample=%d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramDownloadParams, Integer.valueOf(i) }));
         }
-        paramContext = ((StringBuffer)localObject2).toString();
+        return bfvo.a(paramBitmap, paramDownloadParams, i);
       }
     }
-    label907:
-    for (;;)
-    {
-      label812:
-      label825:
-      localbfpc.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramContext);
-      paramContext = (String)localObject1 + paramContext;
-      paramView.setContentDescription(paramContext + paramGroupInfo.strIntro);
-      return;
-    }
-  }
-  
-  protected static boolean a(Context paramContext, bfpc parambfpc, GroupInfo paramGroupInfo)
-  {
-    if ((paramContext == null) || (parambfpc == null) || (paramGroupInfo == null) || (paramGroupInfo.labels == null) || (paramGroupInfo.labels.size() == 0)) {
-      return false;
-    }
-    parambfpc.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    parambfpc.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(0);
-    paramContext = paramGroupInfo.labels;
-    parambfpc.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramContext);
-    return parambfpc.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramContext);
   }
 }
 

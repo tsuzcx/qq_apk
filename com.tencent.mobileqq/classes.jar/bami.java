@@ -1,12 +1,23 @@
-public abstract interface bami
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+
+public class bami
+  implements bamm
 {
-  public abstract void a();
+  public bami(EditActivity paramEditActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(bamh parambamh, int paramInt1, int paramInt2);
-  
-  public abstract void f();
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
+    {
+      balv localbalv = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localbalv != null)
+      {
+        EditActivity.a(this.a).actionText = localbalv.d;
+        EditActivity.a(this.a, false);
+      }
+    }
+  }
 }
 
 

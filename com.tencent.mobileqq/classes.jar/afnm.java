@@ -1,21 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class afnm
-  implements View.OnClickListener
+final class afnm
+  implements amqq
 {
-  public afnm(ShowReactiveActivity paramShowReactiveActivity, arnb paramarnb) {}
-  
-  public void onClick(View paramView)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_Arnb.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {
+      afnl.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 

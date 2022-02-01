@@ -50,6 +50,34 @@ public class PTSNodeFactory
     registerNodeVirtualList();
   }
   
+  private static void addNodeToParent(PTSNodeVirtual paramPTSNodeVirtual, PTSNodeInfo paramPTSNodeInfo, HashMap<String, List<PTSNodeVirtual>> paramHashMap)
+  {
+    if (paramPTSNodeInfo.hasParent())
+    {
+      paramPTSNodeInfo = paramPTSNodeInfo.getParentID();
+      paramHashMap = paramHashMap.values().iterator();
+    }
+    for (;;)
+    {
+      if (paramHashMap.hasNext())
+      {
+        Iterator localIterator = ((List)paramHashMap.next()).iterator();
+        while (localIterator.hasNext())
+        {
+          PTSNodeVirtual localPTSNodeVirtual = (PTSNodeVirtual)localIterator.next();
+          if ((localPTSNodeVirtual != null) && (localPTSNodeVirtual.getNodeInfo() != null) && (TextUtils.equals(localPTSNodeVirtual.getNodeInfo().getUniqueID(), paramPTSNodeInfo)))
+          {
+            removeNodeFromParent(paramPTSNodeVirtual);
+            localPTSNodeVirtual.addChild(paramPTSNodeVirtual);
+          }
+        }
+      }
+      for (int i = 1; i != 0; i = 0) {
+        return;
+      }
+    }
+  }
+  
   private static void addToListMap(String paramString, PTSNodeVirtual paramPTSNodeVirtual, HashMap<String, List<PTSNodeVirtual>> paramHashMap)
   {
     if ((TextUtils.isEmpty(paramString)) || (paramPTSNodeVirtual == null) || (paramHashMap == null)) {
@@ -73,85 +101,46 @@ public class PTSNodeFactory
     hideAllNodeOfListMap(paramHashMap);
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(paramPTSNodeInfo);
-    paramPTSNodeInfo = null;
-    label303:
-    label305:
-    for (;;)
+    Object localObject1 = null;
+    if (!localLinkedList.isEmpty())
     {
-      PTSNodeInfo localPTSNodeInfo;
-      Object localObject;
-      PTSNodeVirtual localPTSNodeVirtual1;
-      String str;
-      Iterator localIterator;
-      if (!localLinkedList.isEmpty())
+      PTSNodeInfo localPTSNodeInfo = (PTSNodeInfo)localLinkedList.remove();
+      paramPTSNodeInfo = getReusableNodeFromListMap(localPTSNodeInfo.getAttributes().getViewID(), paramHashMap);
+      Object localObject2;
+      if (paramPTSNodeInfo == null)
       {
-        localPTSNodeInfo = (PTSNodeInfo)localLinkedList.remove();
-        localObject = getReusableNodeFromListMap(localPTSNodeInfo.getAttributes().getViewID(), paramHashMap);
-        if (localObject == null)
+        localObject2 = buildVirtualNodeBFS(localPTSNodeInfo, paramPTSAppInstance, paramHashMap);
+        paramPTSNodeInfo = (PTSNodeInfo)localObject2;
+        if (localObject2 != null)
         {
-          localPTSNodeVirtual1 = buildVirtualNodeBFS(localPTSNodeInfo, paramPTSAppInstance, paramHashMap);
-          if (localPTSNodeVirtual1 != null) {
-            localPTSNodeVirtual1.bindNodeInfo(localPTSNodeInfo);
-          }
-          localObject = localPTSNodeVirtual1;
-          if (localPTSNodeInfo.hasParent())
-          {
-            str = localPTSNodeInfo.getParentID();
-            localIterator = paramHashMap.values().iterator();
-          }
+          ((PTSNodeVirtual)localObject2).bindNodeInfo(localPTSNodeInfo);
+          paramPTSNodeInfo = (PTSNodeInfo)localObject2;
         }
       }
       for (;;)
       {
-        localObject = localPTSNodeVirtual1;
-        if (localIterator.hasNext())
-        {
-          localObject = (List)localIterator.next();
-          if (localObject != null)
-          {
-            localObject = ((List)localObject).iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              PTSNodeVirtual localPTSNodeVirtual2 = (PTSNodeVirtual)((Iterator)localObject).next();
-              if ((localPTSNodeVirtual2 != null) && (localPTSNodeVirtual2.getNodeInfo() != null) && (TextUtils.equals(localPTSNodeVirtual2.getNodeInfo().getUniqueID(), str))) {
-                localPTSNodeVirtual2.addChild(localPTSNodeVirtual1);
-              }
-            }
-          }
+        addNodeToParent(paramPTSNodeInfo, localPTSNodeInfo, paramHashMap);
+        localObject2 = localObject1;
+        if (localPTSNodeInfo.isRootNode()) {
+          localObject2 = paramPTSNodeInfo;
         }
-        else
+        if (paramPTSNodeInfo != null)
         {
-          for (int i = 1;; i = 0)
-          {
-            if (i == 0) {
-              break label303;
-            }
-            localObject = localPTSNodeVirtual1;
-            label232:
-            if (localPTSNodeInfo.isRootNode()) {
-              paramPTSNodeInfo = (PTSNodeInfo)localObject;
-            }
-            for (;;)
-            {
-              if (localObject != null)
-              {
-                ((PTSNodeVirtual)localObject).showNode();
-                ((PTSNodeVirtual)localObject).setReusable(false);
-              }
-              if (!localPTSNodeInfo.isContainer()) {
-                break label305;
-              }
-              localLinkedList.addAll(localPTSNodeInfo.getChildren());
-              break;
-              ((PTSNodeVirtual)localObject).bindNodeInfo(localPTSNodeInfo);
-              break label232;
-              makeAllNodeReusableOfListMap(paramHashMap);
-              return paramPTSNodeInfo;
-            }
-          }
+          paramPTSNodeInfo.showNode();
+          paramPTSNodeInfo.setReusable(false);
         }
+        localObject1 = localObject2;
+        if (!localPTSNodeInfo.isContainer()) {
+          break;
+        }
+        localLinkedList.addAll(localPTSNodeInfo.getChildren());
+        localObject1 = localObject2;
+        break;
+        paramPTSNodeInfo.bindNodeInfo(localPTSNodeInfo);
       }
     }
+    makeAllNodeReusableOfListMap(paramHashMap);
+    return localObject1;
   }
   
   public static PTSNodeVirtual buildVirtualNode(PTSNodeInfo paramPTSNodeInfo, PTSAppInstance paramPTSAppInstance)
@@ -610,6 +599,14 @@ public class PTSNodeFactory
     registerNodeVirtual("swiper-item", PTSNodeContainer.class);
     registerNodeVirtual("boring", PTSNodeView.class);
     registerCustomViewNodeVirtual("view", "scroll-view", PTSNodeScrollView.class);
+  }
+  
+  private static void removeNodeFromParent(PTSNodeVirtual paramPTSNodeVirtual)
+  {
+    if ((paramPTSNodeVirtual == null) || (paramPTSNodeVirtual.getParent() == null)) {
+      return;
+    }
+    paramPTSNodeVirtual.getParent().removeChild(paramPTSNodeVirtual);
   }
 }
 

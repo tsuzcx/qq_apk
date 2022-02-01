@@ -13,15 +13,15 @@ class RequestJsPlugin$7
   {
     if (paramBoolean)
     {
-      RequestJsPlugin.access$1900(this.this$0, this.val$req, paramJSONObject);
+      RequestJsPlugin.access$2000(this.this$0, this.val$req, paramJSONObject);
       return;
     }
     if (paramJSONObject != null)
     {
-      RequestJsPlugin.access$2000(this.this$0, this.val$req, paramJSONObject, null);
+      RequestJsPlugin.access$2100(this.this$0, this.val$req, paramJSONObject, paramJSONObject.optString("errMsg"));
       return;
     }
-    RequestJsPlugin.access$2000(this.this$0, this.val$req, null, "do not support addGroupApp!");
+    RequestJsPlugin.access$2100(this.this$0, this.val$req, null, "do not support addGroupApp!");
   }
 }
 

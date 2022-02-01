@@ -33,7 +33,6 @@ import java.util.List;
 public class CIImage
   implements Cloneable
 {
-  public static boolean LOG_VERBOSE = false;
   private static Bitmap.Config[] SUPPORT_CONFIGS = { Bitmap.Config.ALPHA_8, Bitmap.Config.RGB_565, Bitmap.Config.ARGB_4444, Bitmap.Config.ARGB_8888 };
   private final String TAG = "CIImage@" + Integer.toHexString(hashCode());
   @FloatRange(from=0.0D, to=1.0D)
@@ -41,12 +40,15 @@ public class CIImage
   @Nullable
   private Bitmap bitmap;
   private CGRect frame;
+  private GaosiBlurFilter gaosiBlurFilter;
   private boolean isHardMode = false;
   @NonNull
   private final List<CIImage> overlayImages = new ArrayList();
   private int preferRotation;
+  private int rotation;
   @NonNull
   private final CGSize size;
+  private String tag;
   private String textureCacheKey;
   @Nullable
   private TextureInfo textureInfo;
@@ -55,26 +57,20 @@ public class CIImage
   
   public CIImage(Bitmap paramBitmap)
   {
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "CIImage() called with: bitmap = [" + paramBitmap + "]");
-    }
-    this.bitmap = paramBitmap;
+    Logger.v(this.TAG, "CIImage() called with: bitmap = [" + paramBitmap + "]");
+    this.bitmap = checkBitmapConfig(paramBitmap);
     this.size = new CGSize(paramBitmap.getWidth(), paramBitmap.getHeight());
   }
   
   public CIImage(@NonNull CGSize paramCGSize)
   {
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "CIImage() called with: renderSize = [" + paramCGSize + "]");
-    }
+    Logger.v(this.TAG, "CIImage() called with: renderSize = [" + paramCGSize + "]");
     this.size = paramCGSize;
   }
   
   public CIImage(TextureInfo paramTextureInfo)
   {
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "CIImage() called with: textureInfo = [" + paramTextureInfo + "]");
-    }
+    Logger.v(this.TAG, "CIImage() called with: textureInfo = [" + paramTextureInfo + "]");
     this.textureInfo = paramTextureInfo;
     this.size = new CGSize(paramTextureInfo.width, paramTextureInfo.height);
   }
@@ -89,12 +85,11 @@ public class CIImage
     long l = System.currentTimeMillis();
     this.preferRotation = TAVBitmapUtils.readImagePreferRotation(paramString);
     this.bitmap = decodeBitmap(paramString, paramCGSize);
+    this.bitmap = checkBitmapConfig(this.bitmap);
     if (this.bitmap != null)
     {
       this.size = new CGSize(this.bitmap.getWidth(), this.bitmap.getHeight());
-      if (LOG_VERBOSE) {
-        Logger.d(this.TAG, "CIImage() called with: imagePath = [" + paramString + "], sampleSize = " + paramCGSize + ", BitmapFactory.decodeFile cons ms = " + (System.currentTimeMillis() - l) + ", outBitmapSize = " + this.size);
-      }
+      Logger.v(this.TAG, "CIImage() called with: imagePath = [" + paramString + "], sampleSize = " + paramCGSize + ", BitmapFactory.decodeFile cons ms = " + (System.currentTimeMillis() - l) + ", outBitmapSize = " + this.size);
       return;
     }
     Logger.e(this.TAG, "CIImage: 图片解码失败！imagePath = " + paramString);
@@ -111,6 +106,15 @@ public class CIImage
     finally {}
   }
   
+  private Bitmap checkBitmapConfig(Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = paramBitmap;
+    if (Arrays.binarySearch(SUPPORT_CONFIGS, paramBitmap.getConfig()) < 0) {
+      localBitmap = transcodeBitmap(paramBitmap);
+    }
+    return localBitmap;
+  }
+  
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
   {
     int i = 1;
@@ -123,12 +127,7 @@ public class CIImage
     }
     localOptions2.inSampleSize = i;
     localOptions2.inPreferredConfig = Bitmap.Config.ARGB_8888;
-    paramCGSize = BitmapFactory.decodeFile(paramString, localOptions2);
-    paramString = paramCGSize;
-    if (Arrays.binarySearch(SUPPORT_CONFIGS, paramCGSize.getConfig()) < 0) {
-      paramString = transcodeBitmap(paramCGSize);
-    }
-    return paramString;
+    return BitmapFactory.decodeFile(paramString, localOptions2);
   }
   
   @NonNull
@@ -201,6 +200,61 @@ public class CIImage
     }
   }
   
+  public void applyFlip(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    float f4 = 0.0F;
+    float f3 = -1.0F;
+    if ((!paramBoolean1) && (!paramBoolean2)) {
+      return;
+    }
+    float f1;
+    float f2;
+    if (paramBoolean1)
+    {
+      f1 = -1.0F;
+      if (!paramBoolean1) {
+        break label94;
+      }
+      f2 = this.size.width;
+      label36:
+      if (!paramBoolean2) {
+        break label100;
+      }
+    }
+    for (;;)
+    {
+      if (paramBoolean2) {
+        f4 = this.size.height;
+      }
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(f1, f3);
+      localMatrix.postTranslate(f2, f4);
+      imageByApplyingTransform(localMatrix);
+      return;
+      f1 = 1.0F;
+      break;
+      label94:
+      f2 = 0.0F;
+      break label36;
+      label100:
+      f3 = 1.0F;
+    }
+  }
+  
+  public void applyGaussianBlur()
+  {
+    TextureInfo localTextureInfo = getDrawTextureInfo();
+    if (localTextureInfo != null)
+    {
+      this.gaosiBlurFilter = new GaosiBlurFilter(false, 20);
+      this.gaosiBlurFilter.setRendererWidth(localTextureInfo.width);
+      this.gaosiBlurFilter.setRendererHeight(localTextureInfo.height);
+      this.gaosiBlurFilter.setRadius(20);
+      Logger.v(this.TAG, "draw: with drawTexture = " + localTextureInfo + ", filter = " + this.gaosiBlurFilter);
+      this.textureInfo = this.gaosiBlurFilter.applyFilter(localTextureInfo);
+    }
+  }
+  
   public void applyPreferRotation()
   {
     applyPreferRotation(0);
@@ -215,23 +269,27 @@ public class CIImage
       do
       {
         return;
-        paramInt = localTextureInfo.preferRotation + paramInt;
-      } while (paramInt == 0);
-      if (LOG_VERBOSE) {
-        Logger.d(this.TAG, "applyPreferRotation: textureInfo.preferRotation = " + paramInt);
-      }
+        this.rotation = (localTextureInfo.preferRotation + paramInt);
+      } while (this.rotation == 0);
+      Logger.v(this.TAG, "applyPreferRotation: textureInfo.preferRotation = " + this.rotation);
       Matrix localMatrix = new Matrix();
-      DecoderUtils.getRotationMatrix(localMatrix, paramInt, localTextureInfo.width, localTextureInfo.height);
+      DecoderUtils.getRotationMatrix(localMatrix, this.rotation, localTextureInfo.width, localTextureInfo.height);
       imageByApplyingTransform(localMatrix);
-    } while (paramInt % 2 != 1);
+    } while (this.rotation % 2 != 1);
     this.size.width = localTextureInfo.height;
     this.size.height = localTextureInfo.width;
   }
   
+  public void clearSelfTexture()
+  {
+    this.textureInfo = null;
+  }
+  
   public CIImage clone()
   {
-    CIImage localCIImage = new CIImage(this.size);
+    CIImage localCIImage = new CIImage(this.size.clone());
     localCIImage.textureInfo = this.textureInfo;
+    localCIImage.textureCacheKey = this.textureCacheKey;
     localCIImage.bitmap = this.bitmap;
     localCIImage.preferRotation = this.preferRotation;
     localCIImage.transform = new Matrix(this.transform);
@@ -257,23 +315,20 @@ public class CIImage
     Object localObject = getDrawTextureInfo();
     if (localObject != null)
     {
-      if (LOG_VERBOSE) {
-        Logger.v(this.TAG, "draw: with drawTexture = " + localObject + ", filter = " + paramTextureFilter);
-      }
+      Logger.v(this.TAG, "draw: with drawTexture = " + localObject + ", filter = " + paramTextureFilter);
       paramTextureFilter.applyFilter((TextureInfo)localObject, this.transform, ((TextureInfo)localObject).getTextureMatrix(), this.alpha, this.frame);
     }
     if (this.overlayImages.isEmpty()) {}
-    for (;;)
+    do
     {
       return;
-      if (LOG_VERBOSE) {
-        Logger.d(this.TAG, "draw: with: draw overlayImages = " + this.overlayImages + ", filter = " + paramTextureFilter);
-      }
+      Logger.v(this.TAG, "draw: with: draw overlayImages = " + this.overlayImages + ", filter = " + paramTextureFilter);
       localObject = this.overlayImages.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((CIImage)((Iterator)localObject).next()).draw(paramTextureFilter);
       }
-    }
+    } while (this.gaosiBlurFilter == null);
+    this.gaosiBlurFilter.release();
   }
   
   @FloatRange(from=0.0D, to=1.0D)
@@ -292,41 +347,35 @@ public class CIImage
     TextureInfo localTextureInfo;
     do
     {
+      EGLContext localEGLContext;
       do
       {
-        EGLContext localEGLContext;
-        do
-        {
-          return localObject;
-          localEGLContext = EGL14.eglGetCurrentContext();
-          if (this.textureCacheKey == null) {
-            this.textureCacheKey = String.valueOf(hashCode());
-          }
-          localTextureInfo = ThreadLocalTextureCache.getInstance().getTextureInfo(this.textureCacheKey);
-          if ((localEGLContext == null) || (localTextureInfo == null)) {
-            break;
-          }
-          localObject = localTextureInfo;
-        } while (!localTextureInfo.isReleased());
-        if (this.bitmap == null) {
+        return localObject;
+        localEGLContext = EGL14.eglGetCurrentContext();
+        if (this.textureCacheKey == null) {
+          this.textureCacheKey = String.valueOf(hashCode());
+        }
+        localTextureInfo = ThreadLocalTextureCache.getInstance().getTextureInfo(this.textureCacheKey);
+        if ((localEGLContext == null) || (localTextureInfo == null)) {
           break;
         }
-        int i = RenderContext.createTexture(3553);
-        localObject = getImageTextureMatrix();
-        localTextureInfo = new TextureInfo(i, 3553, this.bitmap.getWidth(), this.bitmap.getHeight(), (Matrix)localObject, this.preferRotation);
-        GLES20.glBindTexture(3553, localTextureInfo.textureID);
-        GLUtils.texImage2D(3553, 0, this.bitmap, 0);
-        GLES20.glBindTexture(3553, 0);
-        ThreadLocalTextureCache.getInstance().putTextureInfo(this.textureCacheKey, localTextureInfo);
-        if (LOG_VERBOSE) {
-          Logger.v(this.TAG, "getDrawTextureInfo: bind bitmap texture, texture = " + localTextureInfo + ", eglContext = " + localEGLContext);
-        }
         localObject = localTextureInfo;
-      } while (!this.isHardMode);
-      this.bitmap.recycle();
-      this.bitmap = null;
+      } while (!localTextureInfo.isReleased());
+      if (this.bitmap == null) {
+        break;
+      }
+      int i = RenderContext.createTexture(3553);
+      localObject = getImageTextureMatrix();
+      localTextureInfo = new TextureInfo(i, 3553, this.bitmap.getWidth(), this.bitmap.getHeight(), (Matrix)localObject, this.preferRotation);
+      GLES20.glBindTexture(3553, localTextureInfo.textureID);
+      GLUtils.texImage2D(3553, 0, this.bitmap, 0);
+      GLES20.glBindTexture(3553, 0);
+      ThreadLocalTextureCache.getInstance().putTextureInfo(this.textureCacheKey, localTextureInfo);
+      Logger.v(this.TAG, "getDrawTextureInfo: bind bitmap texture, texture = " + localTextureInfo + ", eglContext = " + localEGLContext);
       localObject = localTextureInfo;
-    } while (!LOG_VERBOSE);
+    } while (!this.isHardMode);
+    this.bitmap.recycle();
+    this.bitmap = null;
     Logger.v(this.TAG, "getDrawTextureInfo: isHardMode, bitmap.recycle()");
     return localTextureInfo;
     return null;
@@ -338,9 +387,20 @@ public class CIImage
   }
   
   @NonNull
+  public List<CIImage> getOverlayImages()
+  {
+    return this.overlayImages;
+  }
+  
+  @NonNull
   public CGSize getSize()
   {
     return this.size;
+  }
+  
+  public String getTag()
+  {
+    return this.tag;
   }
   
   @Nullable
@@ -349,23 +409,26 @@ public class CIImage
     return this.transform;
   }
   
+  public CIImage imageApplyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
+  {
+    if (paramTAVVideoConfigurationContentMode == TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill) {}
+    applyFillInFrame(paramCGRect, paramTAVVideoConfigurationContentMode);
+    return this;
+  }
+  
   public CIImage imageByApplyingTransform(Matrix paramMatrix)
   {
     if (this.transform == null) {
       this.transform = new Matrix();
     }
     this.transform.postConcat(paramMatrix);
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "imageByApplyingTransform() called with: in transform = [" + paramMatrix + "], result transform = " + this.transform);
-    }
+    Logger.v(this.TAG, "imageByApplyingTransform() called with: in transform = [" + paramMatrix + "], result transform = " + this.transform);
     return this;
   }
   
   public CIImage imageByCompositingOverImage(CIImage paramCIImage)
   {
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "imageByCompositingOverImage() called with: destImage = [" + paramCIImage + "]");
-    }
+    Logger.v(this.TAG, "imageByCompositingOverImage() called with: destImage = [" + paramCIImage + "]");
     paramCIImage.addOverlayImage(this);
     return paramCIImage;
   }
@@ -375,11 +438,21 @@ public class CIImage
     if (!Utils.isRectValid(paramCGRect)) {
       return this;
     }
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "imageByCroppingToRect: frame = [" + paramCGRect + "]");
+    Logger.v(this.TAG, "imageByCroppingToRect: frame = [" + paramCGRect + "]");
+    this.size.width = paramCGRect.size.width;
+    this.size.height = paramCGRect.size.height;
+    if (this.rotation % 2 != 0) {}
+    for (this.frame = new CGRect(paramCGRect.origin.y, paramCGRect.origin.x, paramCGRect.size.height, paramCGRect.size.width);; this.frame = paramCGRect.clone())
+    {
+      paramCGRect = paramCGRect.origin;
+      if ((paramCGRect.x == 0.0F) && (paramCGRect.y == 0.0F)) {
+        break;
+      }
+      Matrix localMatrix = new Matrix();
+      localMatrix.postTranslate(-paramCGRect.x, -paramCGRect.y);
+      imageByApplyingTransform(localMatrix);
+      return this;
     }
-    this.frame = paramCGRect;
-    return this;
   }
   
   public boolean isCanvasImage()
@@ -419,9 +492,7 @@ public class CIImage
   
   public void reset()
   {
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "reset() called, before transform = " + this.transform);
-    }
+    Logger.v(this.TAG, "reset() called, before transform = " + this.transform);
     if (this.transform != null) {
       this.transform = null;
     }
@@ -432,9 +503,7 @@ public class CIImage
     if ((paramMatrix == null) || (paramMatrix.isIdentity())) {
       return this;
     }
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "safeApplyTransform: transform = [" + paramMatrix + "]");
-    }
+    Logger.v(this.TAG, "safeApplyTransform: transform = [" + paramMatrix + "]");
     float f1 = getExtent().origin.x + getExtent().size.width / 2.0F;
     float f2 = getExtent().origin.y + getExtent().size.height / 2.0F;
     Matrix localMatrix = new Matrix();
@@ -451,14 +520,24 @@ public class CIImage
     this.alpha = paramFloat;
   }
   
+  public void setFrame(CGRect paramCGRect)
+  {
+    this.frame = paramCGRect;
+  }
+  
   public void setHardMode(boolean paramBoolean)
   {
     this.isHardMode = paramBoolean;
   }
   
+  public void setTag(String paramString)
+  {
+    this.tag = paramString;
+  }
+  
   public CIImage simpleClone()
   {
-    CIImage localCIImage = new CIImage(this.size);
+    CIImage localCIImage = new CIImage(this.size.clone());
     localCIImage.textureInfo = this.textureInfo;
     localCIImage.preferRotation = this.preferRotation;
     localCIImage.bitmap = this.bitmap;

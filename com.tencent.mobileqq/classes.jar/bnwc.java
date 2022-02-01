@@ -1,41 +1,15 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_PAIR.sweet_pair_byebye_req;
-import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class bnwc
-  extends QzoneExternalRequest
+public class bnwc
+  implements DialogInterface.OnClickListener
 {
-  bnwc(bnwb parambnwb, Intent paramIntent) {}
+  public bnwc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public String getCmdString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "SweetQzoneService.sweet_pair_byebye";
-  }
-  
-  public JceStruct getReq()
-  {
-    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
-    {
-      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l1;
-      localsweet_req_comm.uin = l1;
-      localsweet_req_comm.loveuin = l2;
-      localsweet_req_comm.qua = bmsw.a();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
-    }
-    return localsweet_pair_byebye_req;
-  }
-  
-  public String uniKey()
-  {
-    return "sweet_pair_byebye";
+    this.a.s();
   }
 }
 

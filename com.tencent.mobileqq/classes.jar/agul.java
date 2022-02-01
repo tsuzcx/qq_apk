@@ -1,15 +1,13 @@
-import android.graphics.drawable.Drawable;
-import android.text.Html.ImageGetter;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agul
-  implements Html.ImageGetter
+public class agul
+  implements agut
 {
-  agul(aguk paramaguk) {}
-  
-  public Drawable getDrawable(String paramString)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    return this.a.a(aguk.a(this.a).a, paramString);
+    paramagap.b(paramMessageRecord, paramagcc);
   }
 }
 

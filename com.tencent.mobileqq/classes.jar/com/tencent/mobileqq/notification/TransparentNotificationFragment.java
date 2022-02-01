@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.notification;
 
-import agej;
+import amru;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import anxm;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -43,11 +43,11 @@ public class TransparentNotificationFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559301, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559307, null);
     Object localObject = getActivity().app;
     Intent localIntent = getActivity().getIntent();
-    anxm localanxm = anxm.a((QQAppInterface)localObject);
-    boolean bool2 = localanxm.a();
+    amru localamru = amru.a((QQAppInterface)localObject);
+    boolean bool2 = localamru.a();
     boolean bool1;
     int i;
     int j;
@@ -68,7 +68,7 @@ public class TransparentNotificationFragment
       ((Intent)localObject).putExtra("uin", paramViewGroup);
       ((Intent)localObject).putExtra("uintype", i);
       ((Intent)localObject).putExtra("uinname", paramBundle);
-      paramViewGroup = agej.a((Intent)localObject, new int[] { 2 });
+      paramViewGroup = AIOUtils.setOpenAIOIntent((Intent)localObject, new int[] { 2 });
       paramViewGroup.setAction("com.tencent.mobileqq.action.CHAT");
       getActivity().startActivity(paramViewGroup);
       getActivity().finish();
@@ -80,7 +80,7 @@ public class TransparentNotificationFragment
       bool1 = false;
       break;
       label284:
-      paramViewGroup = localanxm.a(i, paramViewGroup, paramBundle, j);
+      paramViewGroup = localamru.a(i, paramViewGroup, paramBundle, j);
       getActivity().overridePendingTransition(2130771994, 2130771995);
       getActivity().startActivity(paramViewGroup);
       getActivity().finish();

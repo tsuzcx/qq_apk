@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import aody;
+import amxz;
 
 public class PublicAccountDataManager$4
   implements Runnable
 {
-  public PublicAccountDataManager$4(aody paramaody) {}
+  public PublicAccountDataManager$4(amxz paramamxz) {}
   
   public void run()
   {
-    if (aody.a(aody.a(this.this$0))) {
-      aody.a(this.this$0, 3);
+    if (amxz.a(amxz.a(this.this$0))) {
+      amxz.a(this.this$0, 3);
     }
   }
 }

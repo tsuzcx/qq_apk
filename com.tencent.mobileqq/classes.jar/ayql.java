@@ -1,24 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class ayql
-  implements ayrk
+public class ayql
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ayql(ayqk paramayqk) {}
+  public ayql(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBoolean)
-    {
-      ayek localayek = new ayek().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Ayqg.a(this.a.jdField_a_of_type_Ayqn)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Ayqg.a(this.a.jdField_a_of_type_Ayqn)));
-      if (this.a.jdField_a_of_type_Ayqg.jdField_a_of_type_Boolean) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        localayek.e(paramString).b(this.a.jdField_a_of_type_Ayqg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131699948), 0).a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((Rect)paramValueAnimator.getAnimatedValue());
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
   }
 }
 

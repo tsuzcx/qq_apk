@@ -1,10 +1,16 @@
-public abstract interface alwz
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
+
+class alwz
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  public abstract void b(int paramInt);
+  alwz(alwt paramalwt) {}
   
-  public abstract void c(String paramString);
-  
-  public abstract void i();
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
+  {
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
+  }
 }
 
 

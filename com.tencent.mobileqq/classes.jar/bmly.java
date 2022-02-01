@@ -1,29 +1,44 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class bmly
-  implements ServiceConnection
+class bmly
+  implements SeekBar.OnSeekBarChangeListener
 {
-  bmly(bmlx parambmlx) {}
+  bmly(bmlw parambmlw) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Bmlt = bmlu.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Bmlt != null)
+    if (paramBoolean)
     {
-      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
+      if (!bmlw.c(this.a)) {
+        break label57;
+      }
+      bmlw.a(this.a, paramInt / 100.0F);
+      if (bmlw.a(this.a) != null) {
+        bmlw.a(this.a).a(bmlw.a(this.a));
+      }
     }
+    label57:
+    do
+    {
+      return;
+      bmlw.b(this.a, paramInt / 100.0F);
+      if (bmlw.a(this.a) != null) {
+        bmlw.a(this.a).b(bmlw.b(this.a));
+      }
+      if (paramInt == 0)
+      {
+        bmlw.a(this.a).setEnabled(false);
+        return;
+      }
+    } while (!bmlw.d(this.a));
+    bmlw.a(this.a).setEnabled(true);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.jdField_a_of_type_Bmlt = null;
-    this.a.jdField_a_of_type_Boolean = false;
-  }
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

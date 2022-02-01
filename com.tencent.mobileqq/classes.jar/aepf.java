@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
 
-public class aepf
-  implements aepa
+public final class aepf
+  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
 {
-  public aepf(ForwardTroopListFragment paramForwardTroopListFragment) {}
-  
-  public void a(View paramView)
+  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
   {
-    ForwardTroopListFragment.a(this.a, paramView);
+    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
   }
   
-  public boolean a(String paramString, int paramInt)
+  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
   {
-    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
+    return new TroopMemberListActivity.TroopAdmin[paramInt];
   }
 }
 

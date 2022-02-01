@@ -10,10 +10,10 @@ class ReadInJoyFeedsActivity$3
   
   public void run()
   {
-    QQMessageFacade localQQMessageFacade = this.this$0.app.a();
+    QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
     if (localQQMessageFacade != null)
     {
-      int i = localQQMessageFacade.b();
+      int i = localQQMessageFacade.getUnreadMsgsNum();
       this.this$0.a(i);
     }
   }

@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.generated;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import arfd;
+import apyt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver;
 import com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver1;
@@ -86,7 +86,7 @@ public final class CustomConfiguration
     MINI_PROCESS_5.put("receiver", AppBrandMainReceiver5.class);
     MINI_PROCESS_5.put("supportRuntimeType", Integer.valueOf(4));
     MINI_PROCESS_LIST.add(MINI_PROCESS_5);
-    DEX_CONFIG = arfd.a("sdk_dex_config", "");
+    DEX_CONFIG = apyt.a("sdk_dex_config", "");
     try
     {
       Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("sp_safe_mode", 0);
@@ -99,7 +99,7 @@ public final class CustomConfiguration
         localObject = new JSONObject(DEX_CONFIG);
         if (!TextUtils.isEmpty(((JSONObject)localObject).optString("ver")))
         {
-          ((JSONObject)localObject).putOpt("app_version", "8.4.5.4745");
+          ((JSONObject)localObject).putOpt("app_version", "8.4.8.4810");
           DEX_CONFIG = ((JSONObject)localObject).toString();
         }
       }

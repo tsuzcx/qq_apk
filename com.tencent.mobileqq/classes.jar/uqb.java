@@ -1,35 +1,6 @@
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
-
-public class uqb
+public abstract interface uqb
 {
-  private HandlerThread a;
-  
-  public HandlerThread a()
-  {
-    if (this.a == null) {
-      this.a = new HandlerThread("WeishiHandlerThread");
-    }
-    return this.a;
-  }
-  
-  public void a()
-  {
-    if (this.a != null)
-    {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label29;
-      }
-      this.a.quitSafely();
-    }
-    for (;;)
-    {
-      this.a = null;
-      return;
-      label29:
-      this.a.quit();
-    }
-  }
+  public abstract upq a(ups paramups);
 }
 
 

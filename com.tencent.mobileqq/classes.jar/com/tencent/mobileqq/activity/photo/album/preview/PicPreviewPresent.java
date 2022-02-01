@@ -4,10 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import beyq;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URL;
@@ -56,7 +56,7 @@ public class PicPreviewPresent
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramViewGroup.getWidth();
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramViewGroup.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
       paramView = getFileUrl(paramView);
       if (paramView != null)
@@ -101,7 +101,7 @@ public class PicPreviewPresent
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramViewGroup.getWidth();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramViewGroup.getHeight();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
         paramViewGroup = getFileUrl(localFile);
         if (paramViewGroup != null)

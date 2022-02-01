@@ -1,79 +1,170 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
 public class avem
-  extends axfz
+  extends BaseAdapter
 {
-  public avem(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private avep jdField_a_of_type_Avep;
+  private avfk jdField_a_of_type_Avfk;
+  private List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b = -1;
   
-  public void a(boolean paramBoolean)
+  avem(Context paramContext)
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  LocationRoom.Venue a()
+  {
+    if (this.jdField_a_of_type_Int < 0) {
+      return null;
     }
-    for (;;)
-    {
-      super.a(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
+    return a(this.jdField_a_of_type_Int);
+  }
+  
+  public LocationRoom.Venue a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
+      return (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_Avfk.a()) && (this.jdField_a_of_type_Avep != null)) {
+      this.jdField_a_of_type_Avep.a(1);
     }
   }
   
-  public void a(boolean paramBoolean, axhd paramaxhd)
+  void a(int paramInt)
   {
-    if (paramBoolean)
+    LocationRoom.Venue localVenue1 = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.b > 0)
     {
-      MsgBackupSettingFragment.a(this.a, paramaxhd);
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+      LocationRoom.Venue localVenue2 = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.remove(0);
+      this.jdField_a_of_type_JavaUtilList.add(this.b, localVenue2);
     }
-    for (;;)
-    {
-      super.a(paramBoolean, paramaxhd);
-      return;
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
+    this.jdField_a_of_type_JavaUtilList.remove(localVenue1);
+    this.jdField_a_of_type_JavaUtilList.add(0, localVenue1);
+    this.b = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    notifyDataSetChanged();
+    if (this.jdField_a_of_type_Avep != null) {
+      this.jdField_a_of_type_Avep.a(4);
     }
   }
   
-  public void a(boolean paramBoolean, Object paramObject)
+  void a(avep paramavep)
   {
-    if ((paramBoolean) && ((paramObject instanceof axgx)))
-    {
-      MsgBackupSettingFragment.a = (axgx)paramObject;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
+    this.jdField_a_of_type_Avep = paramavep;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, TencentMap paramTencentMap, LatLng paramLatLng, String paramString)
+  {
+    this.jdField_a_of_type_Avfk = new avfk(paramBaseActivity, paramTencentMap, paramLatLng, paramString);
+    this.jdField_a_of_type_Avfk.a(new aven(this, paramString));
+    if ((this.jdField_a_of_type_Avfk.a()) && (this.jdField_a_of_type_Avep != null)) {
+      this.jdField_a_of_type_Avep.a(0);
     }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
+    this.b = -1;
+    this.jdField_a_of_type_Int = -1;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
-  public void b(boolean paramBoolean)
+  boolean a()
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
-    }
-    for (;;)
-    {
-      super.b(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public int getCount()
   {
-    if (paramBoolean)
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      MsgBackupSettingFragment.a(this.a, (axgt)paramObject);
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
+      if (this.jdField_a_of_type_Avfk.b()) {
+        i = this.jdField_a_of_type_JavaUtilList.size() + 1;
+      }
     }
-    for (;;)
+    else {
+      return i;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @SuppressLint({"InflateParams"})
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      super.b(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
+      localObject = new aveo();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559288, null);
+      ((aveo)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365469);
+      ((aveo)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371627));
+      ((aveo)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362208));
+      ((aveo)localObject).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377028);
+      ((aveo)localObject).jdField_b_of_type_AndroidViewView.setVisibility(4);
+      ((aveo)localObject).c = paramView.findViewById(2131371377);
+      paramView.setTag(localObject);
+    }
+    while ((this.jdField_a_of_type_Avfk.b()) && (paramInt == this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      ((aveo)localObject).c.setVisibility(0);
+      ((aveo)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localObject = (aveo)paramView.getTag();
+    }
+    ((aveo)localObject).c.setVisibility(8);
+    ((aveo)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+    LocationRoom.Venue localVenue = a(paramInt);
+    String str;
+    if (localVenue != null)
+    {
+      ((aveo)localObject).c.setVisibility(8);
+      ((aveo)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ((aveo)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+      str = localVenue.b + localVenue.c;
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break label387;
+      }
+      ((aveo)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131693514), new Object[] { localVenue.b }));
+      ((aveo)localObject).jdField_b_of_type_AndroidViewView.setVisibility(0);
+      localObject = ((aveo)localObject).jdField_a_of_type_AndroidWidgetTextView.getText().toString() + localVenue.c;
+    }
+    for (Object localObject = (String)localObject + this.jdField_a_of_type_AndroidContentContext.getString(2131694514);; localObject = str + this.jdField_a_of_type_AndroidContentContext.getString(2131694515))
+    {
+      paramView.setContentDescription((CharSequence)localObject);
+      break;
+      label387:
+      ((aveo)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
+      ((aveo)localObject).jdField_b_of_type_AndroidViewView.setVisibility(4);
     }
   }
 }

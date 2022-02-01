@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.history;
 
-import akes;
-import akfc;
+import aizs;
+import ajac;
 import android.os.Handler;
 import java.util.List;
 
 class ChatHistoryTroopMemberFragment$41$2$1
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$41$2$1(ChatHistoryTroopMemberFragment.41.2 param2, akfc paramakfc) {}
+  ChatHistoryTroopMemberFragment$41$2$1(ChatHistoryTroopMemberFragment.41.2 param2, ajac paramajac) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Akes.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_JavaLangString);
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Akes.a.getActivity())
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Aizs.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Aizs.a.getActivity())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Akes.a.a.add(this.jdField_a_of_type_Akfc);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Akes.a.b.sendEmptyMessage(9);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Aizs.a.a.add(this.jdField_a_of_type_Ajac);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Aizs.a.b.sendEmptyMessage(9);
       return;
     }
   }

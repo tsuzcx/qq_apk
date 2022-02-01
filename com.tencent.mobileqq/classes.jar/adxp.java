@@ -1,354 +1,85 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AutoLoginHelper.1;
-import com.tencent.mobileqq.activity.AutoLoginHelper.5;
-import com.tencent.mobileqq.activity.AutoLoginHelper.6;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.app.AppRuntime;
-import mqq.observer.AccountObserver;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
 public class adxp
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  azov jdField_a_of_type_Azov = new adxr(this);
-  private bijq jdField_a_of_type_Bijq;
-  private bjbs jdField_a_of_type_Bjbs;
-  private RegisterNewBaseActivity jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new adxs(this);
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adxq(this);
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  public String b;
-  public boolean b;
-  private byte[] b;
-  public String c;
-  public boolean c;
-  private byte[] c;
-  private String d;
-  public boolean d;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g;
-  private boolean h = true;
-  private boolean i = true;
-  private boolean j;
-  private boolean k;
-  private boolean l;
-  
-  public adxp(QQAppInterface paramQQAppInterface, RegisterNewBaseActivity paramRegisterNewBaseActivity, Intent paramIntent)
+  public static void a(Activity paramActivity)
   {
-    this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    b(paramActivity);
   }
   
-  private void h()
+  public static void a(Activity paramActivity, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      this.jdField_d_of_type_Boolean = true;
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, SplashActivity.class);
-      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
-      ((Intent)localObject).putExtra("fragment_id", 1);
-      ((Intent)localObject).putExtra("afterRegAndAutoLogin", true);
-      ((Intent)localObject).addFlags(67108864);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity((Intent)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(LoginActivity.class);
-    } while (localObject == null);
-    ((MqqHandler)localObject).sendEmptyMessage(20140325);
-  }
-  
-  private void i()
-  {
-    azoz.a().a(true);
-    azoz.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.post(new AutoLoginHelper.5(this));
-  }
-  
-  private void k()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.post(new AutoLoginHelper.6(this));
-  }
-  
-  public Intent a()
-  {
-    return this.jdField_a_of_type_AndroidContentIntent;
-  }
-  
-  public void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      bijm.a(getClass().getSimpleName(), a());
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if ((paramActivity instanceof BaseActivity)) {
+      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
     }
-    this.g = a().getBooleanExtra("key_register_from_quick_register", false);
-    if (this.g) {
-      this.jdField_e_of_type_JavaLangString = a().getStringExtra("key_register_secret_phone");
+    if (bgvh.a.containsKey("PublicAccountJs")) {
+      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
     }
-    this.jdField_a_of_type_JavaLangString = a().getStringExtra("phonenum");
-    this.jdField_c_of_type_JavaLangString = a().getStringExtra("invite_code");
-    this.jdField_b_of_type_JavaLangString = a().getStringExtra("key");
-    this.jdField_a_of_type_Boolean = a().getBooleanExtra("key_register_is_phone_num_registered", false);
-    this.jdField_b_of_type_Boolean = a().getBooleanExtra("key_register_has_pwd", true);
-    this.jdField_d_of_type_JavaLangString = a().getStringExtra("uin");
-    this.jdField_a_of_type_ArrayOfByte = a().getByteArrayExtra("key_register_sign");
-    this.jdField_c_of_type_ArrayOfByte = a().getByteArrayExtra("resp_register_supersig");
-    Locale localLocale;
-    String str2;
-    String str3;
-    if (QLog.isDevelopLevel())
-    {
-      localLocale = Locale.getDefault();
-      str2 = this.jdField_d_of_type_JavaLangString;
-      str3 = com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte);
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        break label323;
-      }
-    }
-    label323:
-    for (String str1 = "";; str1 = this.jdField_c_of_type_JavaLangString)
-    {
-      QLog.d("AutoLoginHelper", 4, String.format(localLocale, "onCreate  uin: %s, sign: %s inviteCode: %s", new Object[] { str2, str3, str1 }));
-      str1 = a().getStringExtra("key_register_password");
-      if (str1 != null) {
-        this.jdField_b_of_type_ArrayOfByte = com.tencent.mobileqq.mqsafeedit.MD5.toMD5Byte(str1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLoginHelper", 2, "onCreate ,pwd = " + str1 + ",mPassByte = " + this.jdField_b_of_type_ArrayOfByte);
-      }
-      this.f = a().getBooleanExtra("key_register_unbind", false);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break;
-      }
-      QLog.d("AutoLoginHelper", 2, "onCreate app is null");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Azov);
-    this.h = a().getBooleanExtra("key_register_result", true);
-    this.i = a().getBooleanExtra("key_register_is_lh", false);
-    if ((this.h) && (this.i))
-    {
-      this.k = false;
-      this.l = true;
-      this.jdField_a_of_type_Bijq = new bijq(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, null);
-      this.jdField_a_of_type_Bijq.a(this.jdField_d_of_type_JavaLangString, new adxt(this));
-    }
-    this.jdField_d_of_type_Boolean = false;
-    b();
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if ((paramString == null) || (!paramString.equals(this.jdField_d_of_type_JavaLangString))) {
-      return;
-    }
-    this.j = paramBoolean;
-    if ((!this.j) && (this.k))
-    {
-      k();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715869, 0);
+    localIntent.putExtra("fromLocalUrl", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hideRightButton", true);
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131694734));
+    localIntent.putExtra("assignBackText", paramActivity.getString(2131694734));
+    if (TextUtils.isEmpty(paramString)) {
+      localIntent.putExtra("url", uex.b);
     }
     for (;;)
     {
-      this.k = false;
-      this.l = false;
+      paramActivity.startActivity(localIntent);
       return;
-      if ((this.j) && (this.k)) {
-        if (this.f) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
-        } else {
-          azox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
-        }
-      }
+      localIntent.putExtra("url", "https://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
     }
   }
   
-  public void b()
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
   {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterPhoneNumActivity.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.sendEmptyMessage(103);
-    }
-    localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterPersonalInfoActivity.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.sendEmptyMessage(109);
-    }
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterSendUpSms))
-    {
-      localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterSendUpSms.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.sendEmptyMessage(107);
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if (TextUtils.isEmpty(paramString2)) {
+      if ((paramActivity instanceof BaseActivity)) {
+        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
       }
     }
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterVerifyCodeActivity))
+    for (;;)
     {
-      localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterVerifyCodeActivity.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.sendEmptyMessage(106);
-      }
-    }
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterByNicknameAndPwdActivity))
-    {
-      localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterByNicknameAndPwdActivity.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.sendEmptyMessage(110);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "onAccountChanged success");
-    }
-    if (this.f)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azov);
-      if (this.g)
+      if (!TextUtils.isEmpty(paramString1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime());
-        LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        localIntent.putExtra("leftViewText", paramString1);
+        localIntent.putExtra("assignBackText", paramString1);
       }
-      j();
-      h();
-    }
-    do
-    {
+      if (bgvh.a.containsKey("PublicAccountJs")) {
+        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
+      }
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = "https://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
+      }
+      localIntent.putExtra("fromLocalUrl", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", paramString1);
+      localIntent.putExtra("hideRightButton", true);
+      paramActivity.startActivity(localIntent);
       return;
-      if (azoz.a().a()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AutoLoginHelper", 2, "onAccountChanged not phonenum login");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azov);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Azov);
-    if (this.jdField_e_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new AutoLoginHelper.1(this));
-      QQToast.a(BaseApplicationImpl.sApplication, anzj.a(2131699752), 0).a();
+      localIntent.putExtra("uin", paramString2);
     }
-    j();
-    LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    h();
   }
   
-  public void d()
+  private static void b(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "onDestroy");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azov);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
-    k();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("last_key_words", "");
+    localIntent.putExtra("from_key", 2);
+    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
+    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
+    ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
-  
-  public void e()
-  {
-    if (!this.h) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
-      }
-    }
-    do
-    {
-      return;
-      if (this.g) {
-        bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
-      }
-      if (bhnv.d(BaseApplication.getContext())) {
-        break;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131691989, 0);
-    return;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    if ((this.i) && (!this.j))
-    {
-      if (!this.l)
-      {
-        this.l = true;
-        if (this.jdField_a_of_type_Bijq == null) {
-          this.jdField_a_of_type_Bijq = new bijq(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, null);
-        }
-        this.jdField_a_of_type_Bijq.a(this.jdField_d_of_type_JavaLangString, new adxt(this));
-      }
-      this.k = true;
-      j();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "bindUinWithPhone start to getVerifyBindPhoneUin");
-    }
-    j();
-    if (QLog.isColorLevel())
-    {
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label279;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLoginHelper", 2, "swz mSign = " + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-      }
-    }
-    while (this.f)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
-      return;
-      label279:
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLoginHelper", 2, "swz mSign = null");
-      }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.jdField_d_of_type_JavaLangString, com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte) }));
-    }
-    azox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AutoLoginHelper", 2, "onResume， isStartingMain=" + this.jdField_d_of_type_Boolean);
-    }
-    if (!this.jdField_d_of_type_Boolean) {
-      k();
-    }
-  }
-  
-  public void g() {}
 }
 
 

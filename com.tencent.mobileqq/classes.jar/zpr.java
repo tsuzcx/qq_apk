@@ -1,15 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.troop.VideoCombineHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-class zpr
-  implements ValueAnimator.AnimatorUpdateListener
+public class zpr
+  extends zqp
 {
-  zpr(zpq paramzpq) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public zpr(VideoCombineHelper.2 param2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    zpq.a(this.a, f);
+    super(param2.this$0);
+  }
+  
+  public void a(zqo paramzqo)
+  {
+    if ((paramzqo instanceof zqj)) {
+      this.a.jdField_a_of_type_Zpy.a("", false, "download failed! msg = " + paramzqo.d);
+    }
+    do
+    {
+      return;
+      if ((paramzqo instanceof zqb))
+      {
+        this.a.jdField_a_of_type_Zpy.a("", false, "combine failed! msg = " + paramzqo.d);
+        return;
+      }
+    } while (!(paramzqo instanceof zqm));
+    this.a.jdField_a_of_type_Zpy.a("", false, "sending failed! msg = " + paramzqo.d);
+  }
+  
+  public void b(zqo paramzqo)
+  {
+    if ((paramzqo instanceof zqm))
+    {
+      paramzqo = paramzqo.a();
+      this.a.jdField_a_of_type_Zpy.a(paramzqo.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    }
   }
 }
 

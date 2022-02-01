@@ -1,12 +1,24 @@
 import android.view.View;
-import android.widget.ExpandableListAdapter;
+import android.view.ViewStub;
+import android.view.ViewStub.OnInflateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLImageView;
 
-public abstract interface blof
-  extends ExpandableListAdapter
+class blof
+  implements ViewStub.OnInflateListener
 {
-  public abstract int a();
+  blof(bloe parambloe) {}
   
-  public abstract void a(View paramView, int paramInt);
+  public void onInflate(ViewStub paramViewStub, View paramView)
+  {
+    if (bloe.a(this.a) == null) {
+      return;
+    }
+    paramViewStub = (RelativeLayout.LayoutParams)bloe.a(this.a).getLayoutParams();
+    paramViewStub.addRule(3, paramView.getId());
+    bloe.a(this.a).setLayoutParams(paramViewStub);
+    this.a.a();
+  }
 }
 
 

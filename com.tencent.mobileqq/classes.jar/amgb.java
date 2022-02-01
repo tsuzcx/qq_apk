@@ -1,18 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
-class amgb
-  extends aojs
+public class amgb
 {
-  amgb(amfz paramamfz) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      amfz.a(this.a, paramString, localBitmap);
-    }
-  }
+  public int a;
+  public long a;
+  public JSONObject a = new JSONObject();
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
 }
 
 

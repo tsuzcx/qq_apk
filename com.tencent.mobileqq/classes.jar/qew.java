@@ -1,14 +1,40 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class qew
+public class qew
   implements ViewBase.OnClickListener
 {
-  qew(qev paramqev) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  public qew(Context paramContext, ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
   
   public void onClick(ViewBase paramViewBase)
   {
-    qeu.a(this.a.jdField_a_of_type_Qeu).a(this.a.jdField_a_of_type_Int, paramViewBase, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
+    paramViewBase = bkwm.a("kd_topic_recommend_card_jump_url");
+    if ((paramViewBase instanceof String)) {}
+    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
+      }
+      if (!TextUtils.isEmpty(paramViewBase))
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+          pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+        }
+        pay.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      }
+      return;
+    }
   }
 }
 

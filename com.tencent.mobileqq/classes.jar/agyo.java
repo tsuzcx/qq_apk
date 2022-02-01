@@ -1,52 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import java.io.File;
-import java.io.OutputStream;
 
-public class agyo
-  extends beqz
+class agyo
+  implements bjoe
 {
-  public static final String a(int paramInt)
-  {
-    return annv.d + paramInt + "/panelGif.gif";
-  }
+  agyo(agyh paramagyh, bjnw parambjnw, AIOImageData paramAIOImageData, File paramFile) {}
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    if (paramView == null)
     {
-      paramDownloadParams = (Integer)paramDownloadParams.tag;
-      paramOutputStream = new File(a(paramDownloadParams.intValue()));
-      if (paramOutputStream.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
-      paramOutputStream.getParentFile().mkdirs();
-      if ((BaseApplicationImpl.sApplication != null) && (!bhnv.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-      }
-      paramDownloadParams = new bihu("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
-      paramDownloadParams.b = 1;
-      paramDownloadParams.p = false;
-      if (bihw.a(paramDownloadParams, null) == 0)
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
     }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
+    paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
     }
-    return null;
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Agyh.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

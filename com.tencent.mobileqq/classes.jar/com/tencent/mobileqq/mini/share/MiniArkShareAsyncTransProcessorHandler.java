@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
-import bete;
-import beyb;
-import beyf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
@@ -14,10 +11,13 @@ import com.tencent.mobileqq.mini.launch.CmdCallback;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniArkShareAsyncTransProcessorHandler
-  extends beyf
+  extends TransProcessorHandler
 {
   private static final String TAG = "MiniArkShareImageTransP";
   private final CmdCallback cmdCallback;
@@ -31,8 +31,8 @@ public class MiniArkShareAsyncTransProcessorHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    Object localObject1 = (bete)paramMessage.obj;
-    if ((localObject1 == null) || (((bete)localObject1).c != 62) || (((bete)localObject1).b != 24)) {}
+    Object localObject1 = (FileMsg)paramMessage.obj;
+    if ((localObject1 == null) || (((FileMsg)localObject1).commandId != 62) || (((FileMsg)localObject1).fileType != 24)) {}
     for (;;)
     {
       return;
@@ -41,7 +41,7 @@ public class MiniArkShareAsyncTransProcessorHandler
         Object localObject2 = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
-          ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(((bete)localObject1).a);
+          ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(((FileMsg)localObject1).bdhExtendInfo);
           paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_file_resid.get().toStringUtf8();
           localObject1 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_download_url.get().toStringUtf8();
           localObject2 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_thumb_download_url.get().toStringUtf8();
@@ -80,7 +80,7 @@ public class MiniArkShareAsyncTransProcessorHandler
           if (!(paramMessage instanceof QQAppInterface)) {
             continue;
           }
-          ((QQAppInterface)paramMessage).a().b(this);
+          ((QQAppInterface)paramMessage).getTransFileController().removeHandle(this);
           return;
         }
         catch (RemoteException paramMessage)
@@ -101,7 +101,7 @@ public class MiniArkShareAsyncTransProcessorHandler
         if (!(paramMessage instanceof QQAppInterface)) {
           continue;
         }
-        ((QQAppInterface)paramMessage).a().b(this);
+        ((QQAppInterface)paramMessage).getTransFileController().removeHandle(this);
         return;
       }
       catch (RemoteException paramMessage)

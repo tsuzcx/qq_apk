@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class qwl
+  extends ClickableSpan
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public qwl(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public qwl() {}
-  
-  public qwl(articlesummary.LocalInfo paramLocalInfo)
+  public void onClick(View paramView)
   {
-    if (paramLocalInfo == null) {
-      return;
-    }
-    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
-    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
-    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
-    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
-    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
-    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
-    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
-    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
+    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
+    pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

@@ -1,16 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherVCtrlFragment;
-
 public class awfh
-  implements DialogInterface.OnDismissListener
 {
-  public awfh(WatchTogetherVCtrlFragment paramWatchTogetherVCtrlFragment, Activity paramActivity) {}
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public awfh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
   }
 }
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bhmi;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -26,7 +25,6 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
-import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -73,7 +71,7 @@ public class GpkgManager
       bool1 = bool2;
       if (paramString.exists())
       {
-        paramString = FileUtils.readFileToString(paramString);
+        paramString = com.tencent.mobileqq.mini.utils.FileUtils.readFileToString(paramString);
         bool1 = bool2;
         if (!TextUtils.isEmpty(paramString)) {
           bool1 = new JSONObject(paramString).optBoolean("offlineResourceReady", false);
@@ -330,7 +328,7 @@ public class GpkgManager
     //   10: areturn
     //   11: ldc 45
     //   13: aload_0
-    //   14: invokestatic 432	auog:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: invokestatic 432	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   17: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   20: ifeq +204 -> 224
     //   23: aload_0
@@ -356,52 +354,52 @@ public class GpkgManager
     //   66: astore_3
     //   67: aload_0
     //   68: aload 6
-    //   70: invokestatic 443	nof:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   70: invokestatic 444	npo:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   73: ifne +217 -> 290
     //   76: aload 6
-    //   78: invokestatic 447	bhmi:a	(Ljava/lang/String;)Z
+    //   78: invokestatic 449	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   81: ifeq +209 -> 290
     //   84: aload 6
     //   86: iconst_0
     //   87: iconst_0
-    //   88: invokestatic 450	auog:a	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
+    //   88: invokestatic 453	com/tencent/mobileqq/filemanager/util/FileUtil:getFiles	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
     //   91: astore 4
     //   93: aload 4
     //   95: ifnull +305 -> 400
     //   98: aload 4
-    //   100: invokevirtual 456	java/util/ArrayList:size	()I
+    //   100: invokevirtual 459	java/util/ArrayList:size	()I
     //   103: ifle +297 -> 400
     //   106: aload 4
-    //   108: invokevirtual 457	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   108: invokevirtual 460	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   111: astore 4
     //   113: aload 4
     //   115: invokeinterface 221 1 0
     //   120: ifeq +280 -> 400
     //   123: aload 4
     //   125: invokeinterface 225 1 0
-    //   130: checkcast 459	com/tencent/mobileqq/filemanager/data/FileInfo
+    //   130: checkcast 462	com/tencent/mobileqq/filemanager/data/FileInfo
     //   133: astore 7
     //   135: ldc 39
     //   137: aload 7
-    //   139: invokevirtual 462	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
-    //   142: invokestatic 432	auog:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   139: invokevirtual 465	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
+    //   142: invokestatic 432	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   145: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   148: ifne +19 -> 167
     //   151: ldc 42
     //   153: aload 7
-    //   155: invokevirtual 462	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
-    //   158: invokestatic 432	auog:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   155: invokevirtual 465	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
+    //   158: invokestatic 432	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   161: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   164: ifeq -51 -> 113
     //   167: aload 7
-    //   169: invokevirtual 462	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
+    //   169: invokevirtual 465	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
     //   172: astore 4
     //   174: aload 4
     //   176: astore_3
     //   177: aload_3
     //   178: astore 4
     //   180: aload_3
-    //   181: invokestatic 447	bhmi:a	(Ljava/lang/String;)Z
+    //   181: invokestatic 449	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   184: ifeq +109 -> 293
     //   187: new 106	java/io/File
     //   190: dup
@@ -411,7 +409,7 @@ public class GpkgManager
     //   198: dup
     //   199: aload 5
     //   201: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
-    //   204: invokestatic 466	bhmi:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   204: invokestatic 469	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   207: istore_2
     //   208: aload_3
     //   209: astore 4
@@ -419,11 +417,11 @@ public class GpkgManager
     //   212: ifeq +81 -> 293
     //   215: aload 6
     //   217: iconst_0
-    //   218: invokestatic 468	bhmi:a	(Ljava/lang/String;Z)V
+    //   218: invokestatic 472	com/tencent/mobileqq/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   221: aload 5
     //   223: astore_3
     //   224: aload_3
-    //   225: invokestatic 469	auog:a	(Ljava/lang/String;)Z
+    //   225: invokestatic 475	com/tencent/mobileqq/filemanager/util/FileUtil:isFileExists	(Ljava/lang/String;)Z
     //   228: ifeq +153 -> 381
     //   231: aload_3
     //   232: astore 4
@@ -433,7 +431,7 @@ public class GpkgManager
     //   239: ifne +11 -> 250
     //   242: aload_0
     //   243: iconst_0
-    //   244: invokestatic 468	bhmi:a	(Ljava/lang/String;Z)V
+    //   244: invokestatic 472	com/tencent/mobileqq/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   247: aload_3
     //   248: astore 4
     //   250: ldc 48
@@ -441,11 +439,11 @@ public class GpkgManager
     //   253: new 99	java/lang/StringBuilder
     //   256: dup
     //   257: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   260: ldc_w 471
+    //   260: ldc_w 477
     //   263: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: aload 4
     //   268: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: ldc_w 473
+    //   271: ldc_w 479
     //   274: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: aload_0
     //   278: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -473,24 +471,24 @@ public class GpkgManager
     //   316: new 99	java/lang/StringBuilder
     //   319: dup
     //   320: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   323: ldc_w 475
+    //   323: ldc_w 481
     //   326: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   329: aload_0
     //   330: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   333: ldc_w 477
+    //   333: ldc_w 483
     //   336: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: aload 6
     //   341: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: ldc_w 479
+    //   344: ldc_w 485
     //   347: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: iload_1
     //   351: invokevirtual 305	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   354: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   357: aload 4
-    //   359: invokestatic 482	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   359: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   362: aload 6
     //   364: iconst_0
-    //   365: invokestatic 468	bhmi:a	(Ljava/lang/String;Z)V
+    //   365: invokestatic 472	com/tencent/mobileqq/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   368: iload_1
     //   369: iconst_1
     //   370: iadd
@@ -786,7 +784,7 @@ public class GpkgManager
         return;
       }
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] checkPkgFolderContent failed, delete folder:" + paramString);
-      bhmi.a(paramString, false);
+      com.tencent.mobileqq.utils.FileUtils.delete(paramString, false);
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] download gpkg by url1:" + paramMiniAppConfig.config.downloadUrl);
       downloadGpkgByResumableDownloader(paramMiniAppConfig, paramOnInitGpkgListener, paramString, paramBoolean);
       return;
@@ -839,7 +837,7 @@ public class GpkgManager
     {
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg]verType is not online " + paramMiniAppConfig.config.verType + ", delete path " + str);
       if (new File(str).exists()) {
-        bhmi.a(str, false);
+        com.tencent.mobileqq.utils.FileUtils.delete(str, false);
       }
     }
     paramOnInitGpkgListener = new GpkgManager.MergedOnInitListener(paramMiniAppConfig, paramOnInitGpkgListener);
@@ -876,7 +874,7 @@ public class GpkgManager
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("offlineResourceReady", paramBoolean);
       localObject = ((JSONObject)localObject).toString().replaceAll("\\\\", "");
-      FileUtils.writeFile(new File(paramMiniAppConfig, "offlineconfig.json").getAbsolutePath(), (String)localObject);
+      com.tencent.mobileqq.mini.utils.FileUtils.writeFile(new File(paramMiniAppConfig, "offlineconfig.json").getAbsolutePath(), (String)localObject);
       return;
     }
     catch (Throwable paramMiniAppConfig)

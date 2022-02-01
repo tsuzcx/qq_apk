@@ -1,84 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public final class acno
-  extends QIPCModule
+public class acno
+  implements View.OnClickListener
 {
-  private static volatile acno a;
+  public acno(AccountManageActivity paramAccountManageActivity) {}
   
-  private acno(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static acno a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new acno("gdt_ipc_sync_module_client_to_server");
-      }
-      return a;
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Object localObject2 = null;
-    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
-    if (localParams != null)
+    if (!aych.a().a(this.a.app, this.a)) {}
+    for (;;)
     {
-      paramBundle = localParams.getAction();
-      if (localParams == null) {
-        break label73;
-      }
-      localObject1 = localParams.getToProcessName();
-      label36:
-      acvc.b("GdtIPCAdapter", String.format("ClientToServerIPCSyncModule.onCall action:%s to:%s", new Object[] { paramBundle, localObject1 }));
-      if (!TextUtils.isEmpty(paramString)) {
-        break label79;
-      }
-    }
-    label73:
-    label79:
-    do
-    {
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
       {
-        do
-        {
-          return null;
-          paramBundle = null;
-          break;
-          localObject1 = null;
-          break label36;
-        } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
-        paramBundle = AdProcessManager.INSTANCE.isOnMainProcess();
-      } while ((paramBundle == null) || (!paramBundle.booleanValue()) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
-      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
-    } while (paramString == null);
-    Object localObject1 = paramString.handle(localParams);
-    paramBundle = new EIPCResult();
-    if ((localObject1 != null) && (((AdIPCManager.Result)localObject1).success)) {}
-    for (paramInt = 0;; paramInt = -102)
-    {
-      paramBundle.code = paramInt;
-      paramString = localObject2;
-      if (localObject1 != null) {
-        paramString = ((AdIPCManager.Result)localObject1).bundle;
+        QQToast.a(this.a, 2131693541, 0).a();
       }
-      paramBundle.data = paramString;
-      return paramBundle;
+      else
+      {
+        AccountManageActivity.a(this.a, bcqk.a(this.a.app));
+        Intent localIntent = new Intent();
+        localIntent.setPackage(this.a.getPackageName());
+        localIntent.setClass(this.a, AddAccountActivity.class);
+        this.a.startActivityForResult(localIntent, 1000);
+        this.a.overridePendingTransition(2130771997, 2130771990);
+        bcqj.c(this.a.app, this.a);
+        bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
+      }
     }
   }
 }

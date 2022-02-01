@@ -1,29 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import com.tencent.mobileqq.minigame.utils.thread.TTHandleThread;
+import com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
 
+@ProxyService(proxy=UploaderProxy.class)
 public class bjgj
-  implements MediaPlayer.OnPreparedListener
+  extends UploaderProxy
 {
-  public bjgj(VideoTextureView paramVideoTextureView) {}
+  public ConcurrentHashMap<String, Call> a = new ConcurrentHashMap();
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void abort(String paramString)
   {
-    if (VideoTextureView.a(this.a) != null)
-    {
-      VideoTextureView.a(this.a).start();
-      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
+    Call localCall = (Call)this.a.get(paramString);
+    if (localCall != null) {
+      localCall.cancel();
     }
-    if (VideoTextureView.a() != null)
-    {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-      VideoTextureView.a().onVideoProgressUpdate(0);
-      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
-    }
-    if (VideoTextureView.a(this.a) != null) {
-      VideoTextureView.a(this.a).post(this.a.a);
-    }
+    this.a.remove(paramString);
+  }
+  
+  public boolean upload(String paramString1, Map<String, String> paramMap1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap2, int paramInt, UploaderProxy.UploadListener paramUploadListener)
+  {
+    TTHandleThread.getInstance().post(new UploaderProxyImpl.1(this, paramString1, paramMap1, paramString2, paramMap2, paramString3, paramString4, paramUploadListener));
+    return true;
   }
 }
 

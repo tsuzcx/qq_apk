@@ -1,19 +1,50 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.URLThemeImageView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class alny
-  extends alnv
+class alny
+  implements blbv
 {
-  public View a;
-  public TextView a;
-  public DragTextView a;
-  public URLThemeImageView a;
-  public TextView b;
-  public URLThemeImageView b;
-  public TextView c;
-  public TextView d;
+  alny(alnr paramalnr) {}
+  
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, new Object[] { "onGetAdvs isSucc:", Boolean.valueOf(paramBoolean) });
+    }
+    if ((!paramBoolean) || (paramGetAdsRsp == null)) {
+      return;
+    }
+    if (paramGetAdsRsp.mapAds.has()) {}
+    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null)
+    {
+      QLog.w("ApolloManager", 1, "rspEntries == null");
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    paramGetAdsRsp = paramGetAdsRsp.iterator();
+    while (paramGetAdsRsp.hasNext())
+    {
+      TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+      if ((localRspEntry != null) && (localRspEntry.key.has())) {
+        localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
+      }
+    }
+    alnr.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(364)));
+    alnr.b(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(367)));
+    alnr.c(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(366)));
+    alnr.d(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(365)));
+    alnr.e(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(393)));
+    alnr.f(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(433)));
+    alnr.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(501)), true);
+    alnr.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(502)), false);
+  }
 }
 
 

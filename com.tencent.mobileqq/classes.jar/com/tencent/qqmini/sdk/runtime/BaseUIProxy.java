@@ -147,7 +147,7 @@ public abstract class BaseUIProxy
   
   public void onIntentUpdate(Intent paramIntent)
   {
-    QMLog.i("minisdk-start_UIProxy", this + " [MiniLifecycle] " + "onIntentUpdate");
+    QMLog.i("minisdk-start_UIProxy", this + " [MiniLifecycle] " + "onIntentUpdate " + paramIntent);
     MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
     if (localMiniAppInfo == null)
     {
@@ -350,9 +350,9 @@ public abstract class BaseUIProxy
     }
     label274:
     label301:
-    label461:
-    label466:
-    label475:
+    label468:
+    label473:
+    label482:
     for (;;)
     {
       return;
@@ -394,18 +394,18 @@ public abstract class BaseUIProxy
           break label419;
         }
         if (paramBundle == null) {
-          break label461;
+          break label468;
         }
         i = paramBundle.getInt("start_mode", 3);
         if (i != 3) {
-          break label466;
+          break label473;
         }
         MiniAppStartState.setProcessLoad(paramMiniAppInfo.appId, false);
       }
       for (;;)
       {
         if (this.mPageGestureProxy == null) {
-          break label475;
+          break label482;
         }
         this.mPageGestureProxy.onCreateMiniAppInfo(paramMiniAppInfo);
         return;
@@ -427,8 +427,11 @@ public abstract class BaseUIProxy
           break label274;
           break;
           this.mCurrRuntimeLoader = localBaseRuntimeLoader1;
-          QMLog.i("minisdk-start_UIProxy", "startMiniAppInfo. Create a new runtime loader = " + localBaseRuntimeLoader1);
-          localBaseRuntimeLoader1.start();
+          if (paramMiniAppInfo.isEngineTypeMiniApp())
+          {
+            QMLog.i("minisdk-start_UIProxy", "startMiniAppInfo. Create a new runtime loader = " + localBaseRuntimeLoader1);
+            localBaseRuntimeLoader1.start();
+          }
         }
         i = 3;
         break label301;

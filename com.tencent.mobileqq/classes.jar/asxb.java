@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface asxb
+class asxb
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
+  asxb(aswz paramaswz) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

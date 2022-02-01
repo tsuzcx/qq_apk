@@ -1,16 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class alfp
-  implements View.OnTouchListener
+class alfp
+  implements alep
 {
-  public alfp(ChooseItemView paramChooseItemView) {}
+  alfp(alfo paramalfo, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    return true;
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Alfo.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

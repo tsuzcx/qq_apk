@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class sma
-  implements View.OnClickListener
+public abstract interface sma
 {
-  public sma(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void onClick(View paramView)
-  {
-    ReadinjoyTabFrame.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

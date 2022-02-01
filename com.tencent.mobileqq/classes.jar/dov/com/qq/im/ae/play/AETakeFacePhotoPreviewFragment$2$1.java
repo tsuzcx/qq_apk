@@ -1,15 +1,13 @@
 package dov.com.qq.im.ae.play;
 
-import boxi;
-
-public class AETakeFacePhotoPreviewFragment$2$1
+class AETakeFacePhotoPreviewFragment$2$1
   implements Runnable
 {
-  public AETakeFacePhotoPreviewFragment$2$1(boxi paramboxi, boolean paramBoolean, int paramInt) {}
+  AETakeFacePhotoPreviewFragment$2$1(AETakeFacePhotoPreviewFragment.2 param2, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    AETakeFacePhotoPreviewFragment.a(this.jdField_a_of_type_Boxi.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    AETakeFacePhotoPreviewFragment.access$200(this.this$1.this$0, this.val$isSuccess, this.val$state);
   }
 }
 

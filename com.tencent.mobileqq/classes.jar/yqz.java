@@ -1,32 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class yqz
-  extends QQUIEventReceiver<MystoryListView, wma>
+public final class yqz
+  implements nnv
 {
-  public yqz(@NonNull MystoryListView paramMystoryListView)
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramMystoryListView);
-  }
-  
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull wma paramwma)
-  {
-    paramMystoryListView.q();
-    paramwma = (yrh)paramMystoryListView.a("FeedSegment");
-    if (paramwma != null) {
-      paramwma.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
     }
-    paramMystoryListView = (ysw)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
+      PngQuantUtils.a.set(false);
     }
   }
   
-  public Class acceptEventClass()
-  {
-    return wma.class;
-  }
+  public void progress(int paramInt) {}
 }
 
 

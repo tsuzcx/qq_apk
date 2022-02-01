@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import anum;
-import anve;
-import anyw;
+import amov;
+import ampm;
+import amsw;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -53,8 +53,8 @@ class ConditionSearchManager$4$1
             localCard.strHometownCity = localObject[2];
           }
         }
-        ((anyw)anve.a(this.a.this$0).getManager(51)).a(localCard);
-        ((anum)anve.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
+        ((amsw)ampm.a(this.a.this$0).getManager(51)).a(localCard);
+        ((amov)ampm.a(this.a.this$0).getBusinessHandler(2)).notifyUI(43, true, localCard);
       }
       this.a.this$0.d = false;
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;

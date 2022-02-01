@@ -1,16 +1,61 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.46.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class aeir
-  extends afjb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aeir(Conversation paramConversation) {}
+  public aeir(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void a()
+  public void onGlobalLayout()
   {
-    ThreadManagerV2.getUIHandlerV2().post(new Conversation.46.1(this));
+    Object localObject = new Rect();
+    this.a.mUIStyleHandler.mRootView.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.mUIStyleHandler.mRootView.getRootView().getHeight();
+    int j = i - ((Rect)localObject).bottom;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
+    {
+      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.e = j;
+    }
+    if (j > i / 3)
+    {
+      if (this.a.c) {
+        this.a.b(false);
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Int == 2) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        }
+        i = (int)mum.b(BaseApplicationImpl.getApplication(), this.a.b + j);
+        return;
+        this.a.b(true);
+      }
+    }
+    this.a.b(false);
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    if (this.a.jdField_a_of_type_Int == 2) {
+      i = (int)mum.b(BaseApplicationImpl.getApplication(), this.a.b);
+    }
+    for (;;)
+    {
+      this.a.d = false;
+      return;
+      if (this.a.jdField_a_of_type_Int != 1) {}
+    }
   }
 }
 

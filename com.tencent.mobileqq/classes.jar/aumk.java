@@ -1,14 +1,52 @@
-import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class aumk
-  implements bihs
+public class aumk
+  implements aumc
 {
-  aumk(aumg paramaumg, Activity paramActivity, int paramInt) {}
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
+  private final String b;
   
-  public void callback(int paramInt)
+  public aumk(String paramString, DynamicPluginManager paramDynamicPluginManager)
   {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      aumg.a(this.jdField_a_of_type_Aumg, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.b = paramString;
+  }
+  
+  public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    boolean bool = TextUtils.isEmpty(aumj.a().a());
+    if (bool) {}
+    for (String str = "idle";; str = "busy")
+    {
+      QLog.i("shadow::PluginManagerWrapper", 1, String.format("doPreLoad pps status is %s ", new Object[] { str }));
+      if (bool) {
+        enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      }
+      return;
+    }
+  }
+  
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+    }
+    aumj.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    if ("Now".equals(this.b)) {}
+    for (paramContext = "33669800";; paramContext = "33669805")
+    {
+      auoj.b(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(this.b).opType("enter").d1(paramLong + "").report();
+      return;
     }
   }
 }

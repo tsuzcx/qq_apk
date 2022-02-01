@@ -1,18 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.associations.AssociatedTroopItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class bdve
+class bdve
   implements View.OnClickListener
 {
-  bdve(bdvc parambdvc) {}
+  bdve(bdvd parambdvd) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    bdvc.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject = (AssociatedTroopItem)paramView.getTag();
+    bdvm.a(bdvd.a(this.a), (AssociatedTroopItem)localObject);
+    if (localObject == null) {}
+    for (localObject = "";; localObject = ((AssociatedTroopItem)localObject).uin)
+    {
+      bcef.b(null, "dc00898", "", (String)localObject, "0X800B4B2", "0X800B4B2", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

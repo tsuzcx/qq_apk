@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ogs;
+import oif;
 
 public class DailyDynamicHeaderViewController$11
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$11(ogs paramogs) {}
+  public DailyDynamicHeaderViewController$11(oif paramoif) {}
   
   public void run()
   {
-    ogs.a(this.this$0, true);
+    oif.a(this.this$0, true);
   }
 }
 

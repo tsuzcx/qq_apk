@@ -1,18 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import org.json.JSONObject;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class bfrb
-  implements bgpp
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bfrb
 {
-  bfrb(bfra parambfra, bgre parambgre, int paramInt) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_Bgre.a(this.jdField_a_of_type_Bfra.a.a.a, 0, this.jdField_a_of_type_Int);
-    }
-  }
+  String a() default "";
 }
 
 

@@ -1,25 +1,88 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class blfj
-  implements AudioManager.OnAudioFocusChangeListener
+public final class blfj
+  extends MSFServlet
 {
-  public blfj(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
-  
-  @TargetApi(8)
-  public void onAudioFocusChange(int paramInt)
+  private static void a(FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.this$0.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.this$0.jdField_a_of_type_Int);
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      if (i >= 0) {}
     }
-    if (paramInt == -1) {}
-    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
+    else
+    {
       return;
     }
+    byte[] arrayOfByte = new byte[i];
+    PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    paramFromServiceMsg.putWupBuffer(arrayOfByte);
+  }
+  
+  private static void a(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg.getWupBuffer() != null)
+    {
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      PkgTools.DWord2Byte(arrayOfByte, 0, 4L + l);
+      PkgTools.copyData(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+    }
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "WeiyunV2Svc.TransCmd" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    a(paramFromServiceMsg);
+    if (paramIntent == null) {
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    for (;;)
+    {
+      blfg.a().a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      QLog.e("WyServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WyServlet", 1, "onSend : cmd[" + paramIntent.getServiceCmd() + "]");
+      }
+      a(paramIntent);
+      paramPacket.setSSOCommand("WeiyunV2Svc.TransCmd");
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.setAttributes(paramIntent.getAttributes());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("WyServlet", 1, "onSend : toMsg is null");
   }
 }
 

@@ -1,8 +1,30 @@
-public abstract interface sml
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+
+public class sml
+  implements Animation.AnimationListener
 {
-  public abstract void a(tay paramtay);
+  public sml(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public abstract void b(tay paramtay);
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    ImageView localImageView = ReadInJoyFastWebBottomSocialView.a(this.a);
+    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
+    for (int i = 2130842882;; i = 2130842884)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

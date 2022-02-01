@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.fpsreport;
 
-import adlb;
-import adlc;
+import achv;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 import com.tencent.widget.XListView;
 
 public class FPSXListView
   extends XListView
 {
   private int jdField_a_of_type_Int;
-  private adlc jdField_a_of_type_Adlc;
+  private achv jdField_a_of_type_Achv;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   
@@ -32,8 +32,8 @@ public class FPSXListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Adlc != null) {
-      this.jdField_a_of_type_Adlc.a();
+    if (this.jdField_a_of_type_Achv != null) {
+      this.jdField_a_of_type_Achv.a();
     }
   }
   
@@ -45,41 +45,41 @@ public class FPSXListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Adlc != null)) {
-      this.jdField_a_of_type_Adlc.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Achv != null)) {
+      this.jdField_a_of_type_Achv.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Adlc != null) {
-      this.jdField_a_of_type_Adlc.a(paramInt);
+    if (this.jdField_a_of_type_Achv != null) {
+      this.jdField_a_of_type_Achv.a(paramInt);
     }
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        adlb.a().a("list_leba_new", false);
+        DropFrameMonitor.getInstance().stopMonitorScene("list_leba_new", false);
       }
     }
     while (this.jdField_a_of_type_Int != 2)
     {
       return;
-      adlb.a().a("list_leba_new");
+      DropFrameMonitor.getInstance().startMonitorScene("list_leba_new");
       return;
     }
     if (paramInt == 0)
     {
-      adlb.a().a("list_leba", false);
+      DropFrameMonitor.getInstance().stopMonitorScene("list_leba", false);
       return;
     }
-    adlb.a().a("list_leba");
+    DropFrameMonitor.getInstance().startMonitorScene("list_leba");
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Adlc = new adlc();
-    this.jdField_a_of_type_Adlc.a(paramString);
+    this.jdField_a_of_type_Achv = new achv();
+    this.jdField_a_of_type_Achv.a(paramString);
   }
   
   public void setReportType(int paramInt)

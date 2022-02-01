@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.appbrand;
 
 import android.app.Activity;
 import android.view.View;
-import bhpc;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class JsErrorGuard$PermissionDialog
-  extends bhpc
+  extends QQCustomDialog
 {
   private Activity mActivity;
   
@@ -18,8 +18,8 @@ class JsErrorGuard$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131558999);
-    findViewById(2131369660).setVisibility(8);
+    setContentView(2131559007);
+    findViewById(2131369651).setVisibility(8);
   }
 }
 

@@ -1,16 +1,37 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+
 public class adby
-  implements adbx
+  implements DialogInterface.OnClickListener
 {
-  private adbd<Integer, adbw> a = new adbe();
+  public adby(ChatSettingForTroop.51 param51) {}
   
-  public adbw a(Integer paramInteger)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (adbw)this.a.a(paramInteger);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends adbw> paramClass)
-  {
-    this.a.a(paramInteger, paramClass);
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      return;
+    }
+    try
+    {
+      ForwardSdkShareOption.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
+    }
   }
 }
 

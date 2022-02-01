@@ -1,39 +1,39 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class ylp
+class ylp
+  implements bagj
 {
-  private wix<ylv> a;
+  ylp(ylo paramylo) {}
   
-  public void a()
+  public void onEncodeError(int paramInt, Throwable arg2)
   {
-    try
+    synchronized (ylo.a(this.a))
     {
-      if (this.a != null)
-      {
-        this.a.a();
-        this.a = null;
+      ylo.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(ylo.a, 2, "onEncodeError, errorCode= " + paramInt);
       }
+      ylo.a(this.a).notifyAll();
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
     }
   }
   
-  public void a(List<ylv> paramList)
+  public void onEncodeFinish(String paramString)
   {
-    try
+    synchronized (ylo.a(this.a))
     {
-      if (this.a == null) {
-        this.a = new wix(new ylr());
+      ylo.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(ylo.a, 2, "onEncodeFinish, filePath= " + paramString);
       }
-      this.a.a(paramList);
+      ylo.a(this.a).notifyAll();
       return;
     }
-    finally {}
   }
+  
+  public void onEncodeFrame() {}
+  
+  public void onEncodeStart() {}
 }
 
 

@@ -1,14 +1,10 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bnbg
-  implements bnbt
 {
-  public bnbg(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_JavaLangString);
-  }
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle, int paramInt) {}
 }
 
 

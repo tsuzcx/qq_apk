@@ -1,6 +1,27 @@
-public abstract interface blcp
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.util.QZLog;
+
+class blcp
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt, blco paramblco, blcq paramblcq);
+  blcp(blco paramblco) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    try
+    {
+      paramContext = paramIntent.getAction();
+      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
+      this.a.a(paramIntent);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
+    }
+  }
 }
 
 

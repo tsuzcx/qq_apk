@@ -1,76 +1,57 @@
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.google.zxing.qrcode.decoder.Mode;
+import java.nio.FloatBuffer;
 
-public final class hh
+public class hh
 {
-  private int jdField_a_of_type_Int = -1;
-  private ErrorCorrectionLevel jdField_a_of_type_ComGoogleZxingQrcodeDecoderErrorCorrectionLevel;
-  private Mode jdField_a_of_type_ComGoogleZxingQrcodeDecoderMode;
-  private gy jdField_a_of_type_Gy;
-  private hc jdField_a_of_type_Hc;
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = hi.a(jdField_a_of_type_ArrayOfFloat);
+  public static float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = hi.a(jdField_b_of_type_ArrayOfFloat);
+  private static final float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_a_of_type_Int = jdField_a_of_type_ArrayOfFloat.length / this.jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 2;
+  private int jdField_c_of_type_Int = this.jdField_b_of_type_Int * 4;
+  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer = jdField_a_of_type_JavaNioFloatBuffer;
+  private int jdField_d_of_type_Int = 8;
+  private FloatBuffer jdField_d_of_type_JavaNioFloatBuffer = jdField_b_of_type_JavaNioFloatBuffer;
   
-  public static boolean a(int paramInt)
+  static
   {
-    return (paramInt >= 0) && (paramInt < 8);
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
   }
   
-  public hc a()
+  public int a()
   {
-    return this.jdField_a_of_type_Hc;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(int paramInt)
+  public FloatBuffer a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.jdField_c_of_type_JavaNioFloatBuffer;
   }
   
-  public void a(ErrorCorrectionLevel paramErrorCorrectionLevel)
+  public int b()
   {
-    this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderErrorCorrectionLevel = paramErrorCorrectionLevel;
+    return this.jdField_c_of_type_Int;
   }
   
-  public void a(Mode paramMode)
+  public FloatBuffer b()
   {
-    this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderMode = paramMode;
+    return this.jdField_d_of_type_JavaNioFloatBuffer;
   }
   
-  public void a(gy paramgy)
+  public int c()
   {
-    this.jdField_a_of_type_Gy = paramgy;
+    return this.jdField_d_of_type_Int;
   }
   
-  public void a(hc paramhc)
+  public int d()
   {
-    this.jdField_a_of_type_Hc = paramhc;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append("<<\n");
-    localStringBuilder.append(" mode: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderMode);
-    localStringBuilder.append("\n ecLevel: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderErrorCorrectionLevel);
-    localStringBuilder.append("\n version: ");
-    localStringBuilder.append(this.jdField_a_of_type_Gy);
-    localStringBuilder.append("\n maskPattern: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Hc == null) {
-      localStringBuilder.append("\n matrix: null\n");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(">>\n");
-      return localStringBuilder.toString();
-      localStringBuilder.append("\n matrix:\n");
-      localStringBuilder.append(this.jdField_a_of_type_Hc.toString());
-    }
+    return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     hh
  * JD-Core Version:    0.7.0.1
  */

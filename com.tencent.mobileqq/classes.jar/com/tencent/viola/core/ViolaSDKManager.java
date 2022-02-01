@@ -61,7 +61,7 @@ public class ViolaSDKManager
     KEEP_ALIVE_TIME = 1;
     KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS;
     this.mTaskQueue = new LinkedBlockingQueue(100);
-    this.mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.mTaskQueue);
+    this.mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.mTaskQueue, new NamedThreadFactory("violaThreadPool"));
   }
   
   public static String getCurInstanceId()

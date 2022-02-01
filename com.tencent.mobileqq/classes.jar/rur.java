@@ -1,29 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 class rur
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  rur(rup paramrup, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
+  rur(run paramrun) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (!this.b) {
-        break label63;
-      }
-      rup.a(this.jdField_a_of_type_Rup).z.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d(run.a(), 2, "播放器状态回调 onInfo what = " + paramInt + ", extra = " + paramObject);
     }
-    for (;;)
+    switch (paramInt)
     {
-      rup.a(this.jdField_a_of_type_Rup).x.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-      return;
-      label63:
-      rup.a(this.jdField_a_of_type_Rup).y.setVisibility(0);
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (run.a(this.a) == null);
+      localrut = run.a(this.a);
+      if ((paramObject instanceof String)) {}
+      for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+      {
+        localrut.a(2, paramTVK_IMediaPlayer, null, 0L);
+        break;
+      }
+    } while (run.a(this.a) == null);
+    rut localrut = run.a(this.a);
+    if ((paramObject instanceof String)) {}
+    for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+    {
+      localrut.a(5, paramTVK_IMediaPlayer, null, 0L);
+      break;
     }
   }
 }

@@ -1,6 +1,6 @@
-public abstract interface bnjw<V>
+public abstract interface bnjw
 {
-  public abstract boolean a(V paramV1, V paramV2);
+  public abstract void a();
 }
 
 

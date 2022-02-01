@@ -1,26 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
-
-public class asqk
-  implements Animator.AnimatorListener
+public abstract interface asqk
 {
-  public asqk(EmotionSearchPanel paramEmotionSearchPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!EmotionSearchPanel.b(this.a, true))
-    {
-      EmotionSearchPanel.a(this.a, 1.0F);
-      EmotionSearchPanel.b(this.a);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(int paramInt);
 }
 
 

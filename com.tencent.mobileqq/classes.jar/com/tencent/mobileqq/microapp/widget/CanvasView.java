@@ -22,7 +22,6 @@ import android.graphics.Typeface;
 import android.os.Build.VERSION;
 import android.view.MotionEvent;
 import android.view.View;
-import bhsr;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.b.b;
@@ -30,6 +29,7 @@ import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -135,7 +135,7 @@ public class CanvasView
       }
       localObject2 = ((JSONArray)localObject3).optString(0);
       localObject1 = localObject2;
-      if (!bhsr.a((String)localObject2))
+      if (!StringUtil.isEmpty((String)localObject2))
       {
         if (!((String)localObject2).startsWith("wxfile")) {
           break label327;
@@ -146,7 +146,7 @@ public class CanvasView
       if (QLog.isColorLevel()) {
         QLog.i("drawCanvas", 2, "dataPath: " + (String)localObject1);
       }
-      if (!bhsr.a((String)localObject1))
+      if (!StringUtil.isEmpty((String)localObject1))
       {
         localObject1 = c.q((String)localObject1);
         if (localObject1 != null)

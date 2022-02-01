@@ -1,28 +1,6 @@
-import org.json.JSONObject;
-
-public class aaei
-  extends JSONObject
+public abstract interface aaei
 {
-  public aaei(aaeg paramaaeg, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public int getInt(String paramString)
-  {
-    if (!has(paramString)) {
-      return 0;
-    }
-    return super.getInt(paramString);
-  }
-  
-  public String getString(String paramString)
-  {
-    if (!has(paramString)) {
-      return "";
-    }
-    return super.getString(paramString);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

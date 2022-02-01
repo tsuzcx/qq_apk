@@ -1,6 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
 import Override;
+import amqd;
+import amsu;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,25 +14,23 @@ import android.view.View.OnClickListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import antf;
-import anvu;
-import anyu;
-import aoot;
-import aran;
-import ardp;
-import asvf;
-import bdll;
-import bhlg;
-import bhlq;
-import bhnv;
-import bhpc;
-import bjbs;
+import apub;
+import apxf;
+import arhf;
+import bcef;
+import bfur;
+import bhht;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -41,41 +41,41 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import zxh;
-import zxk;
-import zxl;
-import zxm;
-import zxn;
-import zxo;
-import zxp;
-import zxq;
-import zyl;
-import zyp;
-import zyr;
-import zys;
-import zyu;
-import zyv;
+import yws;
+import ywv;
+import yww;
+import ywx;
+import ywy;
+import ywz;
+import yxa;
+import yxb;
+import yxw;
+import yya;
+import yyc;
+import yyd;
+import yyf;
+import yyg;
 
 public class QRLoginMgrActivity
   extends QRLoginBaseActivity
-  implements View.OnClickListener, zyp
+  implements View.OnClickListener, yya
 {
   private long jdField_a_of_type_Long;
+  private amsu jdField_a_of_type_Amsu = new ywz(this);
   private Context jdField_a_of_type_AndroidContentContext;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new zxh(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new yws(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private anyu jdField_a_of_type_Anyu = new zxo(this);
-  private bjbs jdField_a_of_type_Bjbs;
+  private bhht jdField_a_of_type_Bhht;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
   private String jdField_a_of_type_JavaLangString;
   private Set<Long> jdField_a_of_type_JavaUtilSet;
-  private ConcurrentHashMap<Long, zyr> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentHashMap<Long, yyc> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
-  private zyl jdField_a_of_type_Zyl;
-  private zys jdField_a_of_type_Zys;
-  private zyu jdField_a_of_type_Zyu = new zxn(this);
+  private yxw jdField_a_of_type_Yxw;
+  private yyd jdField_a_of_type_Yyd;
+  private yyf jdField_a_of_type_Yyf = new ywy(this);
   private TextView b;
   
   private void a(int paramInt)
@@ -95,12 +95,12 @@ public class QRLoginMgrActivity
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    Iterator localIterator = this.jdField_a_of_type_Zyl.a().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Yxw.a().iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
-      localObject = (zyr)localIterator.next();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((zyr)localObject).jdField_a_of_type_Long), localObject);
+      localObject = (yyc)localIterator.next();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((yyc)localObject).jdField_a_of_type_Long), localObject);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QRLoginMgrActivity", 2, new Object[] { "confirmQRLogout allLogout:", Boolean.valueOf(paramBoolean), " appid:", Long.valueOf(paramLong), " size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
@@ -111,33 +111,33 @@ public class QRLoginMgrActivity
       while (localIterator.hasNext())
       {
         localObject = (Long)localIterator.next();
-        if (!asvf.a().a(this.app, ((Long)localObject).longValue(), (byte)0, new byte[0], 101))
+        if (!arhf.a().a(this.app, ((Long)localObject).longValue(), (byte)0, new byte[0], 101))
         {
           d();
-          QQToast.a(getApplicationContext(), 1, 2131715932, 0).a();
+          QQToast.a(getApplicationContext(), 1, 2131716166, 0).a();
         }
       }
     }
-    while (asvf.a().a(this.app, paramLong, (byte)0, new byte[0], 100)) {
+    while (arhf.a().a(this.app, paramLong, (byte)0, new byte[0], 100)) {
       return;
     }
     d();
-    QQToast.a(getApplicationContext(), 1, 2131715932, 0).a();
+    QQToast.a(getApplicationContext(), 1, 2131716166, 0).a();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131365475));
-    this.jdField_a_of_type_Zyl = new zyl();
-    this.jdField_a_of_type_Zyl.a(this);
-    View localView = LayoutInflater.from(this).inflate(2131560405, null);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)localView.findViewById(2131371591));
-    boolean bool = SettingCloneUtil.readValue(this, this.app.c(), null, "qqsetting_qrlogin_set_mute", false);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131365507));
+    this.jdField_a_of_type_Yxw = new yxw();
+    this.jdField_a_of_type_Yxw.a(this);
+    View localView = LayoutInflater.from(this).inflate(2131560415, null);
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)localView.findViewById(2131371559));
+    boolean bool = SettingCloneUtil.readValue(this, this.app.getCurrentUin(), null, "qqsetting_qrlogin_set_mute", false);
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(bool);
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(localView);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Zyl);
-    if (((ardp)aran.a().a(528)).jdField_a_of_type_Int == 1)
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Yxw);
+    if (((apxf)apub.a().a(528)).jdField_a_of_type_Int == 1)
     {
       localView.setVisibility(0);
       return;
@@ -147,8 +147,8 @@ public class QRLoginMgrActivity
   
   private void c()
   {
-    this.jdField_a_of_type_Zys = ((zys)this.app.getManager(335));
-    this.jdField_a_of_type_Zys.a(this.jdField_a_of_type_Zyu);
+    this.jdField_a_of_type_Yyd = ((yyd)this.app.getManager(335));
+    this.jdField_a_of_type_Yyd.a(this.jdField_a_of_type_Yyf);
   }
   
   private void d()
@@ -156,108 +156,109 @@ public class QRLoginMgrActivity
     this.jdField_a_of_type_MqqOsMqqHandler.post(new QRLoginMgrActivity.5(this));
   }
   
-  private void d(zyr paramzyr)
+  private void d(yyc paramyyc)
   {
     Intent localIntent = new Intent(getApplicationContext(), FMActivity.class);
     localIntent.putExtra("category", 6);
     localIntent.putExtra("selectMode", true);
-    localIntent.putExtra("targetUin", antf.z);
+    localIntent.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
     localIntent.putExtra("tab_tab_type", 5);
     localIntent.putExtra("max_select_count", 50);
-    localIntent.putExtra("qrlogin_appid", paramzyr.jdField_a_of_type_Long);
+    localIntent.putExtra("qrlogin_appid", paramyyc.jdField_a_of_type_Long);
     startActivityForResult(localIntent, 2);
-    bdll.b(null, "dc00898", "", "", "0X800A472", "0X800A472", paramzyr.c, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", "0X800A472", "0X800A472", paramyyc.c, 0, "", "", "", "");
   }
   
   protected void a()
   {
-    super.setContentView(2131560403);
-    super.setTitle(2131715944);
-    this.b = ((TextView)findViewById(2131371808));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366217));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372050));
+    super.setContentView(2131560413);
+    super.setTitle(2131716178);
+    this.b = ((TextView)findViewById(2131371772));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366245));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372015));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     b();
   }
   
-  public void a(zyr paramzyr)
+  public void a(yyc paramyyc)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onItmeClick type:", Integer.valueOf(paramzyr.jdField_a_of_type_Int) });
+      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onItmeClick type:", Integer.valueOf(paramyyc.jdField_a_of_type_Int) });
     }
     Intent localIntent;
-    if (zyv.a(paramzyr.jdField_a_of_type_Int))
+    if (yyg.a(paramyyc.jdField_a_of_type_Int))
     {
       localIntent = new Intent(this, LiteActivity.class);
-      localIntent.putExtra("targetUin", antf.z);
+      localIntent.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
       localIntent.addFlags(67108864);
       startActivity(localIntent);
     }
     for (;;)
     {
-      bdll.b(null, "dc00898", "", "", "0X800A471", "0X800A471", paramzyr.c, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A471", "0X800A471", paramyyc.c, 0, "", "", "", "");
       return;
-      if (zyv.b(paramzyr.jdField_a_of_type_Int))
+      if (yyg.b(paramyyc.jdField_a_of_type_Int))
       {
         localIntent = new Intent(this, LiteActivity.class);
-        localIntent.putExtra("targetUin", antf.A);
+        localIntent.putExtra("targetUin", AppConstants.DATALINE_IPAD_UIN);
         localIntent.addFlags(67108864);
         startActivity(localIntent);
       }
-      else if (zyv.c(paramzyr.jdField_a_of_type_Int))
+      else if (yyg.c(paramyyc.jdField_a_of_type_Int))
       {
-        QQToast.a(getApplicationContext(), getString(2131715951), 0).b(getTitleBarHeight());
+        QQToast.a(getApplicationContext(), getString(2131716185), 0).b(getTitleBarHeight());
       }
     }
   }
   
-  public void b(zyr paramzyr)
+  public void b(yyc paramyyc)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onCloseClick type:", Integer.valueOf(paramzyr.jdField_a_of_type_Int) });
+      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onCloseClick type:", Integer.valueOf(paramyyc.jdField_a_of_type_Int) });
     }
-    if (!bhnv.g(this))
+    if (!NetworkUtil.isNetworkAvailable(this))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131695458, 0).b(getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131695597, 0).b(getTitleBarHeight());
       return;
     }
-    bhpc localbhpc = bhlq.a(this, 230);
-    localbhpc.setMessage(getString(2131715930, new Object[] { paramzyr.jdField_a_of_type_JavaLangString, paramzyr.b }));
-    localbhpc.setPositiveButton(2131715954, new zxp(this, paramzyr));
-    localbhpc.setNegativeButton(2131690580, new zxq(this));
-    localbhpc.show();
-    bdll.b(null, "dc00898", "", "", "0X800A473", "0X800A473", paramzyr.c, 0, "", "", "", "");
+    QQCustomDialog localQQCustomDialog = bfur.a(this, 230);
+    localQQCustomDialog.setMessage(getString(2131716164, new Object[] { paramyyc.jdField_a_of_type_JavaLangString, paramyyc.b }));
+    localQQCustomDialog.setPositiveButton(2131716188, new yxa(this, paramyyc));
+    localQQCustomDialog.setNegativeButton(2131690620, new yxb(this));
+    localQQCustomDialog.show();
+    bcef.b(null, "dc00898", "", "", "0X800A473", "0X800A473", paramyyc.c, 0, "", "", "", "");
   }
   
-  public void c(zyr paramzyr)
+  public void c(yyc paramyyc)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onFileClick type:", Integer.valueOf(paramzyr.jdField_a_of_type_Int) });
+      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onFileClick type:", Integer.valueOf(paramyyc.jdField_a_of_type_Int) });
     }
-    anvu localanvu = (anvu)this.app.a(8);
-    if (zyv.a(paramzyr.jdField_a_of_type_Int))
+    amqd localamqd = (amqd)this.app.getBusinessHandler(8);
+    if (yyg.a(paramyyc.jdField_a_of_type_Int))
     {
-      localanvu.jdField_a_of_type_JavaLangString = antf.z;
-      localanvu.jdField_a_of_type_Int = 0;
+      localamqd.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+      localamqd.jdField_a_of_type_Int = 0;
     }
     while (!CheckPermission.isHasStoragePermission(this))
     {
-      CheckPermission.requestSDCardPermission(this, new zxk(this, paramzyr));
+      CheckPermission.requestSDCardPermission(this, new ywv(this, paramyyc));
       return;
-      if (zyv.b(paramzyr.jdField_a_of_type_Int))
+      if (yyg.b(paramyyc.jdField_a_of_type_Int))
       {
-        localanvu.jdField_a_of_type_JavaLangString = antf.A;
-        localanvu.jdField_a_of_type_Int = 1;
+        localamqd.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
+        localamqd.jdField_a_of_type_Int = 1;
       }
     }
-    d(paramzyr);
+    d(paramyyc);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -274,16 +275,16 @@ public class QRLoginMgrActivity
       QLog.w("QRLoginMgrActivity", 1, "appid is -1 !");
     }
     label48:
-    zyr localzyr;
+    yyc localyyc;
     do
     {
       return;
       while (!paramIntent.hasNext()) {
-        paramIntent = this.jdField_a_of_type_Zyl.a().iterator();
+        paramIntent = this.jdField_a_of_type_Yxw.a().iterator();
       }
-      localzyr = (zyr)paramIntent.next();
-    } while (localzyr.jdField_a_of_type_Long != l);
-    a(localzyr);
+      localyyc = (yyc)paramIntent.next();
+    } while (localyyc.jdField_a_of_type_Long != l);
+    a(localyyc);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -298,14 +299,14 @@ public class QRLoginMgrActivity
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("qrlogin_position");
     this.jdField_a_of_type_Long = getIntent().getLongExtra("qrlogin_appid", -1L);
     paramBundle = this.app.getCurrentAccountUin();
-    this.b.setText(bhlg.h(this.app, paramBundle));
-    paramBundle = aoot.a(this.app, paramBundle, (byte)3);
+    this.b.setText(ContactUtils.getAccountNickName(this.app, paramBundle));
+    paramBundle = FaceDrawable.getUserFaceDrawable(this.app, paramBundle, (byte)3);
     if (paramBundle != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
     }
     c();
-    addObserver(this.jdField_a_of_type_Anyu);
-    bdll.b(null, "dc00898", "", "", "0X800A470", "0X800A470", 0, 0, "", "", "", "");
+    addObserver(this.jdField_a_of_type_Amsu);
+    bcef.b(null, "dc00898", "", "", "0X800A470", "0X800A470", 0, 0, "", "", "", "");
     return true;
   }
   
@@ -313,10 +314,10 @@ public class QRLoginMgrActivity
   {
     super.doOnDestroy();
     d();
-    removeObserver(this.jdField_a_of_type_Anyu);
+    removeObserver(this.jdField_a_of_type_Amsu);
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Zys != null) {
-      this.jdField_a_of_type_Zys.b(this.jdField_a_of_type_Zyu);
+    if (this.jdField_a_of_type_Yyd != null) {
+      this.jdField_a_of_type_Yyd.b(this.jdField_a_of_type_Yyf);
     }
     this.jdField_a_of_type_AndroidContentContext = null;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
@@ -332,24 +333,24 @@ public class QRLoginMgrActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (bhnv.g(this)) {
+      if (NetworkUtil.isNetworkAvailable(this)) {
         break;
       }
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131695458, 0).b(getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131695597, 0).b(getTitleBarHeight());
     }
-    bhpc localbhpc = bhlq.a(this, 230);
-    localbhpc.setTitle(2131715922);
-    if (this.jdField_a_of_type_Zys != null) {
-      localbhpc.setMessage(this.jdField_a_of_type_Zys.a(this.jdField_a_of_type_AndroidContentContext));
+    QQCustomDialog localQQCustomDialog = bfur.a(this, 230);
+    localQQCustomDialog.setTitle(2131716156);
+    if (this.jdField_a_of_type_Yyd != null) {
+      localQQCustomDialog.setMessage(this.jdField_a_of_type_Yyd.a(this.jdField_a_of_type_AndroidContentContext));
     }
     for (;;)
     {
-      localbhpc.setPositiveButton(2131715954, new zxl(this));
-      localbhpc.setNegativeButton(2131690580, new zxm(this));
-      localbhpc.show();
-      bdll.b(null, "dc00898", "", "", "0X800A477", "0X800A477", 0, 0, "", "", "", "");
+      localQQCustomDialog.setPositiveButton(2131716188, new yww(this));
+      localQQCustomDialog.setNegativeButton(2131690620, new ywx(this));
+      localQQCustomDialog.show();
+      bcef.b(null, "dc00898", "", "", "0X800A477", "0X800A477", 0, 0, "", "", "", "");
       break;
-      localbhpc.setMessage(2131715923);
+      localQQCustomDialog.setMessage(2131716157);
     }
   }
   

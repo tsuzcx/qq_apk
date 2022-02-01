@@ -1,42 +1,38 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class aacf
-  extends StaggeredGridLayoutManager
+class aacf
+  implements DialogInterface.OnClickListener
 {
-  public aacf(int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  aacf(aaca paramaaca) {}
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    if (!TextUtils.isEmpty(this.a.a))
     {
-      super.onLayoutChildren(paramRecycler, paramState);
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
+      }
+      switch (paramInt)
+      {
+      default: 
+        if (QLog.isColorLevel()) {
+          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
+        }
+        break;
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      aaca.h(this.a);
+      return;
+      aaca.i(this.a);
       return;
     }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-      QLog.e("SafeStaggeredGridLayoutManager", 4, paramRecycler, new Object[0]);
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
+    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
   }
 }
 

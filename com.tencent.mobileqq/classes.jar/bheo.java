@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bheo
-  implements DialogInterface.OnClickListener
+class bheo
+  implements View.OnClickListener
 {
-  public bheo(UpgradeActivity paramUpgradeActivity) {}
+  bheo(bhen parambhen, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bdll.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bhdt.b(), String.valueOf(0), bhdu.a(), "0");
-    this.a.a();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bhen.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

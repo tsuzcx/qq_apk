@@ -1,52 +1,75 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.IPayResultCallBack;
-import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.PayResponse;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayJsPlugin$10
-  implements PayProxy.IPayResultCallBack
+  implements AsyncResult
 {
-  PayJsPlugin$10(PayJsPlugin paramPayJsPlugin, RequestEvent paramRequestEvent) {}
+  PayJsPlugin$10(PayJsPlugin paramPayJsPlugin, PayJsPlugin.IStarQueryListener paramIStarQueryListener) {}
   
-  public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    QMLog.i("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " ret=" + paramJSONObject);
+    if (paramJSONObject == null) {
+      paramJSONObject = new JSONObject();
+    }
+    for (;;)
     {
-      localJSONObject.put("resultCode", paramPayResponse.getResultCode());
-      label19:
-      if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
-        PayJsPlugin.access$1600(this.this$0, this.val$req, localJSONObject);
-      }
-      for (;;)
+      try
       {
-        QMLog.i("PayJsPlugin", "handleMidasMonthCardPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
-        return;
-        if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
-        {
-          PayJsPlugin.access$000(this.this$0, this.val$req, localJSONObject);
+        paramJSONObject.put("resultCode", -1);
+        paramJSONObject.put("errMsg", "系统错误");
+        if (this.val$listener != null) {
+          this.val$listener.onResult(false, paramJSONObject);
         }
-        else
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QMLog.e("PayJsPlugin", "invokeMidasQuery JSONException ", paramJSONObject);
+        return;
+      }
+      try
+      {
+        Object localObject = (MiniAppMidasPay.StQueryStarCurrencyRsp)paramJSONObject.get("response");
+        int i = paramJSONObject.getInt("resultCode");
+        String str = paramJSONObject.getString("errMsg");
+        paramJSONObject = new JSONObject();
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject(new HashMap());
+        localJSONObject1.put("attachInfo", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).extInfo.attachInfo.get());
+        localJSONObject1.put("mapInfo", localJSONObject2);
+        paramJSONObject.put("resultCode", i);
+        paramJSONObject.put("errMsg", str);
+        paramJSONObject.put("extInfo", localJSONObject1);
+        paramJSONObject.put("rechargeNum", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).rechargeNum.get());
+        paramJSONObject.put("remainder", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).remainder.get());
+        localObject = ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).offerid.get();
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!QUAUtil.isQQApp())) {
+          this.this$0.mRealOfferId = ((String)localObject);
+        }
+        QMLog.i("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
+        if (this.val$listener != null)
         {
-          String str = paramPayResponse.getResultMsg();
-          PayJsPlugin.access$700(this.this$0, this.val$req, localJSONObject, str);
+          this.val$listener.onResult(true, paramJSONObject);
+          return;
         }
       }
+      catch (Throwable paramJSONObject)
+      {
+        QMLog.e("PayJsPlugin", "invokeMidasQuery failed", paramJSONObject);
+      }
     }
-    catch (JSONException localJSONException)
-    {
-      break label19;
-    }
-  }
-  
-  public void payNeedLogin()
-  {
-    QMLog.e("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
-    PayJsPlugin.access$700(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }
 

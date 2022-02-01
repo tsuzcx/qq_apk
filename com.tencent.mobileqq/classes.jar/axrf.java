@@ -1,36 +1,28 @@
-import android.os.Build;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
 
-public class axrf
+class axrf
 {
-  public static String[] a = { "samsung SM-N7508V", "samsung SM-N9002", "samsung SM-N9005", "samsung SM-N9006", "samsung SM-N9008", "samsung SM-N9009", "samsung SM-N9009V", "samsung SM-G3858", "samsung SM-G7108V", "samsung SM-G7108U", "samsung SM-G9008V", "samsung GT-I9308I", "samsung GT-I9508V", "samsung SM-G3588V", "samsung SM-T2558", "samsung SM-G9300", "HTC T528w", "MI 3", "HTC 802t", "GT-I9100", "GT-I9300", "SCH-I939", "MX4", "HUAWEI C8813D" };
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public ARTipsCircleProgress a;
+  public ViewGroup b;
+  public TextView b;
+  public ViewGroup c;
+  public TextView c;
+  public ViewGroup d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
   
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = a;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQPlayerService", 2, "isPhoneInWhiteList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
-    }
-  }
+  private axrf(axqp paramaxqp) {}
 }
 
 

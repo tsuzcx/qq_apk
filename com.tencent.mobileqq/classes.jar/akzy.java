@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
 
 public class akzy
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public akzy(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public akzy(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      alil.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
     }
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.d();
   }
 }
 

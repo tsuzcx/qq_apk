@@ -1,49 +1,68 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
 public class ujk
+  extends RecyclerView.OnScrollListener
 {
-  private static final int jdField_a_of_type_Int = bdep.a(240.0F);
-  private static final int b = bdep.a(240.0F);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public ujk(WSFollowFragment paramWSFollowFragment) {}
   
-  public void a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((!CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilList)) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        View localView = (View)localIterator.next();
-        if ((localView instanceof DiniFlyAnimationView))
-        {
-          ((DiniFlyAnimationView)localView).cancelAnimation();
-          this.jdField_a_of_type_AndroidViewViewGroup.removeView(localView);
-        }
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {
+      WSFollowFragment.a(this.a, true);
     }
+    switch (paramInt)
+    {
+    default: 
+      DropFrameMonitor.getInstance().startMonitorScene("weishi_follow_list");
+      return;
+    }
+    DropFrameMonitor.getInstance().stopMonitorScene("weishi_follow_list", false);
   }
   
-  public void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    paramViewGroup = new DiniFlyAnimationView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-    paramViewGroup.setAnimation("wsdoublelike/data.json");
-    paramViewGroup.setSpeed(2.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(jdField_a_of_type_Int, b);
-    localLayoutParams.setMargins(paramInt1 - jdField_a_of_type_Int / 2, paramInt2 - b / 2, 0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramViewGroup, localLayoutParams);
-    this.jdField_a_of_type_JavaUtilList.add(paramViewGroup);
-    paramViewGroup.addAnimatorListener(new ujl(this, paramViewGroup));
-    paramViewGroup.playAnimation();
+    boolean bool2 = false;
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (WSFollowFragment.a(this.a).a == null)
+    {
+      paramInt1 = WSFollowFragment.a(this.a).findFirstVisibleItemPosition();
+      paramRecyclerView = WSFollowFragment.a(this.a, paramInt1, false);
+      uya.d("WSFollowContinuePlayLog", "mAdapter.mPlayingHolder is null. startPosition:" + paramInt1 + ", lastOrNextVideoHolder:" + paramRecyclerView);
+      if (WSFollowFragment.a(this.a, paramRecyclerView))
+      {
+        if (!WSFollowFragment.a(this.a)) {
+          break label149;
+        }
+        uya.d("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] mIsHandlingBackFromVertical true.");
+      }
+    }
+    else
+    {
+      paramRecyclerView = this.a;
+      localObject = WSFollowFragment.a(this.a).a;
+      if (paramInt2 > 0) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        paramRecyclerView = paramRecyclerView.a((upp)localObject, bool1, false);
+        break;
+      }
+    }
+    label149:
+    uya.g("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] playVideo title:" + paramRecyclerView.a.d + ", mPlayingHolder:" + paramRecyclerView);
+    WSFollowFragment.a(this.a, paramRecyclerView);
+    Object localObject = this.a;
+    boolean bool1 = bool2;
+    if (paramInt2 > 0) {
+      bool1 = true;
+    }
+    paramRecyclerView = ((WSFollowFragment)localObject).a(paramRecyclerView, bool1, true);
+    uya.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onScrolled] setPrePlayingHolder prePlayHolder:" + paramRecyclerView);
+    WSFollowFragment.a(this.a).b(paramRecyclerView);
   }
 }
 

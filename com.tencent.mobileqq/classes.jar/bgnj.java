@@ -1,346 +1,74 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import java.io.File;
+import java.util.HashSet;
 
 public class bgnj
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<Integer, bgnl> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private TreeMap<Integer, Integer> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  private String jdField_b_of_type_JavaLangString = "";
-  private HashMap<Integer, bgni> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private String c = "";
+  public static final HashSet<String> a;
+  public static final String[] a;
+  public static final HashSet<String> b;
   
-  public static bgnj a(String paramString)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberLevelMapConfig", 2, "content : " + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    TreeMap localTreeMap = new TreeMap();
-    String str2 = "";
-    String str1 = "";
-    ArrayList localArrayList = new ArrayList();
-    localObject3 = str1;
-    localObject1 = str2;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      localObject3 = str1;
-      localObject1 = str2;
-      paramString = localJSONObject.getJSONArray("grayTroopUins");
-      int i;
-      if (paramString != null)
-      {
-        localObject3 = str1;
-        localObject1 = str2;
-        if (paramString.length() > 0)
-        {
-          i = 0;
-          for (;;)
-          {
-            localObject3 = str1;
-            localObject1 = str2;
-            if (i >= paramString.length()) {
-              break;
-            }
-            localObject3 = str1;
-            localObject1 = str2;
-            localArrayList.add(Integer.valueOf(paramString.getInt(i)));
-            i += 1;
-          }
-        }
-      }
-      localObject3 = str1;
-      localObject1 = str2;
-      paramString = localJSONObject.getJSONArray("troopMemberLevelMap");
-      if (paramString != null)
-      {
-        localObject3 = str1;
-        localObject1 = str2;
-        if (paramString.length() > 0)
-        {
-          i = 0;
-          for (;;)
-          {
-            localObject3 = str1;
-            localObject1 = str2;
-            if (i >= paramString.length()) {
-              break;
-            }
-            localObject3 = str1;
-            localObject1 = str2;
-            localObject2 = paramString.getJSONObject(i);
-            localObject3 = str1;
-            localObject1 = str2;
-            localObject4 = new bgnl(((JSONObject)localObject2).getInt("begin"), ((JSONObject)localObject2).getInt("end"), ((JSONObject)localObject2).getInt("rankid"), ((JSONObject)localObject2).getString("rankname"));
-            localObject3 = str1;
-            localObject1 = str2;
-            localHashMap1.put(Integer.valueOf(((JSONObject)localObject2).getInt("rankid")), localObject4);
-            i += 1;
-          }
-        }
-      }
-      localObject3 = str1;
-      localObject1 = str2;
-      paramString = localJSONObject.getJSONArray("titleBackgroundColor");
-      if (paramString != null)
-      {
-        localObject3 = str1;
-        localObject1 = str2;
-        if (paramString.length() > 0)
-        {
-          i = 0;
-          for (;;)
-          {
-            localObject3 = str1;
-            localObject1 = str2;
-            if (i >= paramString.length()) {
-              break;
-            }
-            localObject3 = str1;
-            localObject1 = str2;
-            localObject2 = paramString.getJSONObject(i);
-            localObject3 = str1;
-            localObject1 = str2;
-            localObject4 = new bgni(((JSONObject)localObject2).getInt("titleId"), ((JSONObject)localObject2).getString("start"), ((JSONObject)localObject2).getString("end"));
-            localObject3 = str1;
-            localObject1 = str2;
-            localHashMap2.put(Integer.valueOf(((JSONObject)localObject2).getInt("titleId")), localObject4);
-            i += 1;
-          }
-        }
-      }
-      localObject3 = str1;
-      localObject1 = str2;
-      paramString = localJSONObject.getJSONArray("oldLevelToNewLevelMap");
-      if (paramString != null)
-      {
-        localObject3 = str1;
-        localObject1 = str2;
-        if (paramString.length() > 0)
-        {
-          i = 0;
-          for (;;)
-          {
-            localObject3 = str1;
-            localObject1 = str2;
-            if (i >= paramString.length()) {
-              break;
-            }
-            localObject3 = str1;
-            localObject1 = str2;
-            localObject2 = paramString.getJSONObject(i);
-            localObject3 = str1;
-            localObject1 = str2;
-            localTreeMap.put(Integer.valueOf(((JSONObject)localObject2).getInt("old")), Integer.valueOf(((JSONObject)localObject2).getInt("new")));
-            i += 1;
-          }
-        }
-      }
-      localObject3 = str1;
-      localObject1 = str2;
-      Object localObject4 = localJSONObject.getJSONObject("onlyLevelBackgroundColor");
-      localObject2 = str1;
-      paramString = str2;
-      if (localObject4 != null)
-      {
-        localObject3 = str1;
-        localObject1 = str2;
-        paramString = ((JSONObject)localObject4).getString("start");
-        localObject3 = str1;
-        localObject1 = paramString;
-        localObject2 = ((JSONObject)localObject4).getString("end");
-      }
-      localObject3 = localObject2;
-      localObject1 = paramString;
-      str1 = localJSONObject.getString("newGroupMemberLevelJumpUrl");
-      localObject1 = str1;
-      if (localObject1 == null) {
-        break label756;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        Object localObject2 = localObject3;
-        paramString = "";
-        localObject3 = localObject1;
-        continue;
-        localObject1 = "";
-      }
-    }
-    localObject3 = paramString;
-    paramString = (String)localObject1;
-    localObject1 = new bgnj();
-    ((bgnj)localObject1).jdField_a_of_type_JavaUtilHashMap = localHashMap1;
-    ((bgnj)localObject1).jdField_b_of_type_JavaUtilHashMap = localHashMap2;
-    ((bgnj)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((bgnj)localObject1).jdField_a_of_type_JavaUtilTreeMap = localTreeMap;
-    ((bgnj)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
-    ((bgnj)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
-    ((bgnj)localObject1).c = paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberLevelMapConfig", 2, "levelMap.size : " + localHashMap1.size() + ",levelColorMap.size :" + localHashMap2.size() + ", tempGrayList.size :" + localArrayList.size());
-    }
-    return localObject1;
-  }
-  
-  public int a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      return 0;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    Object localObject;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = localIterator.next();
-      localObject = (bgnl)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    } while ((((bgnl)localObject).jdField_a_of_type_Int > paramInt) || (paramInt > ((bgnl)localObject).b));
-    for (paramInt = ((bgnl)localObject).c;; paramInt = 0) {
-      return paramInt;
-    }
-  }
-  
-  public String a()
-  {
-    return this.c;
-  }
-  
-  public String a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberLevelMapConfig", 2, "getRankNameByLevel levelMap is null");
-      }
-      return "";
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    Object localObject2;
-    do
-    {
-      if (!((Iterator)localObject1).hasNext()) {
-        break;
-      }
-      localObject2 = (Integer)((Iterator)localObject1).next();
-      localObject2 = (bgnl)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
-    } while ((localObject2 == null) || (((bgnl)localObject2).jdField_a_of_type_Int > paramInt) || (((bgnl)localObject2).b < paramInt));
-    for (localObject1 = ((bgnl)localObject2).jdField_a_of_type_JavaLangString;; localObject1 = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberLevelMapConfig", 2, "getRankNameByLevel strRankName = " + (String)localObject1);
-      }
-      return localObject1;
-    }
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.c);
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberLevelMapConfig", 2, "isGrayTroop troopUin = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilList == null))
-    {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append("grayTroopUinList is null ? ");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label96;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("TroopMemberLevelMapConfig", 2, bool1);
-        bool2 = false;
-        return bool2;
-        label96:
-        bool1 = false;
-      }
-    }
-    paramString = paramString.substring(paramString.length() - 1);
-    int i = 0;
-    label114:
-    if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if (!String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString)) {}
-    }
-    for (bool1 = bool2;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopMemberLevelMapConfig", 2, "isGrayTroop isGrayTroop = " + bool1);
-      return bool1;
-      i += 1;
-      break label114;
-    }
-  }
-  
-  public int[] a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-      return null;
-    }
-    return new int[] { Color.parseColor(this.jdField_a_of_type_JavaLangString), Color.parseColor(this.jdField_b_of_type_JavaLangString) };
-  }
-  
-  public int[] a(int paramInt)
-  {
-    Object localObject = (bgni)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localObject != null)
-    {
-      String str = ((bgni)localObject).jdField_a_of_type_JavaLangString;
-      localObject = ((bgni)localObject).jdField_b_of_type_JavaLangString;
-      return new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
-    }
-    return null;
-  }
-  
-  public int b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilTreeMap == null) || (this.jdField_a_of_type_JavaUtilTreeMap.size() == 0)) {
-      return 0;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      int i = ((Integer)localEntry.getKey()).intValue();
-      int j = ((Integer)localEntry.getValue()).intValue();
-      if (paramInt == i) {
-        return j;
-      }
-    }
-    return 0;
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    b = new HashSet();
+    b.add(AppConstants.SDCARD_PATH + File.separator + "flashchat" + File.separator);
+    b.add(AppConstants.SDCARD_POKE);
+    b.add(AppConstants.SDCARD_NEW_POKE);
+    b.add(AppConstants.SDCARD_PE);
+    b.add(AppConstants.SDCARD_PATH_EMOJIS);
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/.troop/pic_effects/");
+    b.add(AppConstants.SDCARD_PATH + ".troop/enter_effects/");
+    b.add(AppConstants.SDCARD_PATH + ".gift/");
+    b.add(AppConstants.SDCARD_PATH + "qav/");
+    b.add(AppConstants.SDCARD_PATH + "new_ptv_template/");
+    b.add(AppConstants.SDCARD_PATH + "ptv_template/");
+    b.add(AppConstants.SDCARD_PATH + "funcall/");
+    b.add(AppConstants.SDCARD_PATH + "pddata/prd/av_redpacket/");
+    b.add(AppConstants.SDCARD_PATH + "pddata/prd/early");
+    b.add(AppConstants.SDCARD_PATH + "hotimage/");
+    b.add(AppConstants.SDCARD_PATH + "pddata/vas/");
+    b.add(AppConstants.SDCARD_PATH + ".profilecard/");
+    b.add(AppConstants.SDCARD_PATH + "head/");
+    b.add(AppConstants.SDCARD_PATH + ".hiboom_font/");
+    b.add(AppConstants.SDCARD_PATH + ".font_info/");
+    b.add(AppConstants.SDCARD_PATH + ".font_effect/");
+    b.add(AppConstants.SDCARD_PATH + ".pendant/");
+    b.add(AppConstants.SDCARD_PATH + ".vaspoke/");
+    b.add(AppConstants.SDCARD_PATH + "system_background/");
+    b.add(AppConstants.SDCARD_PATH + ".CorlorNick/");
+    b.add(AppConstants.SDCARD_PATH + "custom_background/");
+    b.add(AppConstants.SDCARD_PATH + ".starHead/");
+    b.add(AppConstants.SDCARD_PATH + "rbt/");
+    b.add(AppConstants.SDCARD_PATH + ".vipicon/");
+    b.add(AppConstants.SDCARD_PATH + "webso/offline/");
+    b.add(AppConstants.SDCARD_PATH + ".readInjoy/");
+    b.add(azid.a);
+    b.add(AppConstants.SDCARD_SHORTVIDEO_SAVE);
+    b.add(AppConstants.SDCARD_ROOT + "/Tencent/ReaderZone/style/");
+    b.add(AppConstants.SDCARD_ROOT + "/Tencent/ReaderZone/font/");
+    b.add(AppConstants.SDCARD_PATH + ".apollo/");
+    b.add(AppConstants.SDCARD_PATH + "DoutuRes" + File.separator);
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/TMAssistantSDK/Download/com.tencent.mobileqq" + File.separator);
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/pddata/");
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/pddata/APP/offline/html5/");
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/pddata/APP/offline/tmp/");
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/ShareScreenShots");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "diskcache" + File.separator);
+    jdField_a_of_type_JavaUtilHashSet.add(AbsDownloader.CHAT_IMAGE_ROOT);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "photo/");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "thumb/");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "shortvideo" + File.separator);
+    jdField_a_of_type_JavaUtilHashSet.add(avwe.b);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SUBSCRIBE_DRAFT);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SUBSCRIBE_DRAFT_SIMPLE);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_ROOT + "/Tencent/QQfile_recv/");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_HOMEWORK_AUDIO);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_HOMEWORK_ATTACH);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + ".Rock" + File.separator);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_ROOT + "/Tencent/QQ_Collection/");
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.SDCARD_PATH + "keyword_emotion", AppConstants.SDCARD_PATH + ".sticker_recommended_pics", AppConstants.SDCARD_ROOT + "/Tencent/QQ_CameraEmo", AppConstants.SDCARD_PATH + ".diy", AppConstants.SDCARD_PATH + "Scribble", AppConstants.SDCARD_PATH + ".emotionsm", AppConstants.SDCARD_ROOT + "/Tencent/QQ_Favorite", AppConstants.SDCARD_PATH + "hotpic", AppConstants.SDCARD_PATH + "hugeimagecache", AppConstants.SDCARD_PATH + "ArkApp", AppConstants.SDCARD_PATH + "zhitu", AppConstants.SDCARD_PATH + "msgbackup", AppConstants.SDCARD_PATH + "qqmusic", AppConstants.SDCARD_PATH + "aio_long_shot", AppConstants.SDCARD_PATH + "tim_theme_aio", AppConstants.SDCARD_PATH + "qim_theme_aio", AppConstants.SDCARD_PATH + "nativemem", AppConstants.SDCARD_PATH + "pddata/prd/ar_promotion", AppConstants.SDCARD_PATH + "pddata/app/offline/html5", AppConstants.SDCARD_PATH + "iar", AppConstants.SDCARD_ROOT + "/AVReportCenter" };
   }
 }
 

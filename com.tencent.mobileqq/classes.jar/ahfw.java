@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahfw
-  implements View.OnTouchListener
+class ahfw
+  implements DialogInterface.OnClickListener
 {
-  public ahfw(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  ahfw(ahfp paramahfp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    ahfp.b(this.a);
   }
 }
 

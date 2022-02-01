@@ -1,24 +1,6 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.17.1;
-
-public class afga
-  implements Animation.AnimationListener
+public abstract interface afga
 {
-  public afga(QQLSActivity paramQQLSActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a();
 }
 
 

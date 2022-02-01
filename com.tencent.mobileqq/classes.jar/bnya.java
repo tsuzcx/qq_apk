@@ -1,59 +1,18 @@
-import NS_NEW_MOBILE_REPORT.AccessRspHead;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-
-public class bnya
-  extends MSFServlet
+public abstract interface bnya
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBAdvServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = paramFromServiceMsg.getResultCode();
-        if (i != 1000) {
-          break;
-        }
-        paramIntent = bnxz.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
-      } while (paramIntent == null);
-      QLog.d("YYBAdvServlet", 2, "handler MobileReport result , resultCode=" + i + " error code " + paramIntent.err_code + " error msg " + paramIntent.err_msg);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("YYBAdvServlet", 2, "MobileReport fail, resultCode=" + i);
-  }
+  public abstract void a();
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    long l = paramIntent.getLongExtra("selfuin", 0L);
-    paramIntent = paramIntent.getStringArrayListExtra("uninstall_app_list");
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBAdvServlet", 2, "YYB send");
-    }
-    if (paramIntent != null)
-    {
-      bnxz localbnxz = new bnxz(Long.valueOf(l).longValue(), paramIntent);
-      byte[] arrayOfByte = localbnxz.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null)
-      {
-        QLog.e("YYBAdvServlet", 1, "onSend request encode result is null.cmd=" + localbnxz.uniKey());
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(15000L);
-      paramPacket.setSSOCommand(localbnxz.getCmdString());
-      paramPacket.putSendData(paramIntent);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void h_(boolean paramBoolean);
+  
+  public abstract void i_(boolean paramBoolean);
 }
 
 

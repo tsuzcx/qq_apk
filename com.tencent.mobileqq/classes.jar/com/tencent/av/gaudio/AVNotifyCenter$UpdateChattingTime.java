@@ -1,9 +1,9 @@
 package com.tencent.av.gaudio;
 
 import java.lang.ref.WeakReference;
-import lmu;
+import lml;
 import mqq.os.MqqHandler;
-import mvd;
+import mum;
 
 class AVNotifyCenter$UpdateChattingTime
   implements Runnable
@@ -31,7 +31,7 @@ class AVNotifyCenter$UpdateChattingTime
         localAVNotifyCenter.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 2000L);
       }
     } while (!localAVNotifyCenter.jdField_b_of_type_Boolean);
-    String str = mvd.a(localAVNotifyCenter.jdField_a_of_type_Long);
+    String str = mum.a(localAVNotifyCenter.jdField_a_of_type_Long);
     if (AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Int == 3)
     {
       localAVNotifyCenter.a(29, 0, Long.toString(AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Long), str);

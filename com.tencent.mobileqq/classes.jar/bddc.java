@@ -1,55 +1,40 @@
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.2;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class bddc
-  extends biht
+  implements BusinessObserver
 {
-  public bddc(RedBagVideoManager.2 param2, String paramString1, String paramString2, String paramString3) {}
+  protected void a() {}
   
-  public void onDone(bihu parambihu)
+  protected void a(bddf parambddf, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void a(boolean paramBoolean, bddf parambddf, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    boolean bool = true;
-    try
+    switch (paramInt)
     {
-      if (parambihu.a() == 3)
+    case 2: 
+    default: 
+    case 1: 
+    case 0: 
+    case 3: 
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
-        }
-        parambihu = bdcy.a(this.b);
-        if (this.c.equalsIgnoreCase(parambihu))
-        {
-          bdcy.b(this.b);
-          bdcy.a(bdcy.jdField_a_of_type_JavaLangString + "videoRedbagResInfo", this.c);
-          bhsi.e(BaseApplication.getContext(), false);
-          break label271;
-        }
-      }
-      for (;;)
-      {
-        parambihu = new HashMap();
-        parambihu.put("param_FailCode", String.valueOf(i));
-        bdmc.a(BaseApplication.getContext()).a(null, "videoRedbagResDownload", bool, 0L, 0L, parambihu, "");
-        bdcy.jdField_a_of_type_Boolean = false;
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "[onDone] checkMd5 failed: " + this.b);
-        }
-        bhmi.d(this.b);
-        bool = false;
-        i = 80704;
-        break label271;
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambihu.b + " code=" + parambihu.a);
-        }
-        i = parambihu.a;
-        bool = false;
-      }
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (bddf)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+        return;
+        paramObject = (Object[])paramObject;
+        a((bddf)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
+        return;
+      } while (!paramBoolean);
+      a();
+      return;
     }
-    finally {}
+    a(paramBoolean, (Bundle)paramObject);
   }
 }
 

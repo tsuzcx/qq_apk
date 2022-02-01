@@ -1,26 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public final class angv
-  implements EIPCResultCallback
+class angv
+  implements ShareActionSheet.OnItemClickListener
 {
-  public angv(String paramString1, String paramString2, anha paramanha) {}
+  angv(angu paramangu) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("selfUinStatus");
-    int j = paramEIPCResult.getInt("friendUinStatus");
-    angt.a(this.jdField_a_of_type_JavaLangString, i);
-    angt.a(this.b, j);
-    if (this.jdField_a_of_type_Anha != null) {
-      this.jdField_a_of_type_Anha.a(true);
-    }
-    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
+    this.a.a(paramActionSheetItem);
   }
 }
 

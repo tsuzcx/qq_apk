@@ -1,16 +1,4 @@
-import com.tencent.biz.qqcircle.fragments.message.item.QCircleMessageReplyItemView;
-
-public class vol
-  implements vxz
-{
-  public vol(QCircleMessageReplyItemView paramQCircleMessageReplyItemView) {}
-  
-  public void a(String paramString)
-  {
-    QCircleMessageReplyItemView.a(this.a, paramString);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vol

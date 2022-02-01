@@ -1,52 +1,46 @@
 package com.tencent.av.screenshare;
 
-import com.tencent.av.VideoConstants.EmShareOps;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lff;
+import lez;
 import mqq.util.WeakReference;
 
 class ScreenShareCtrl$ShareOpsTimeOutTask
   implements Runnable
 {
   private final int jdField_a_of_type_Int;
-  private final VideoConstants.EmShareOps jdField_a_of_type_ComTencentAvVideoConstants$EmShareOps;
-  private final lff jdField_a_of_type_Lff;
+  private final lez jdField_a_of_type_Lez;
   private final WeakReference<VideoController> jdField_a_of_type_MqqUtilWeakReference;
+  private final int b;
   
-  public ScreenShareCtrl$ShareOpsTimeOutTask(VideoController paramVideoController, lff paramlff, VideoConstants.EmShareOps paramEmShareOps, int paramInt)
+  public ScreenShareCtrl$ShareOpsTimeOutTask(VideoController paramVideoController, lez paramlez, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramVideoController);
-    this.jdField_a_of_type_Lff = paramlff;
-    this.jdField_a_of_type_ComTencentAvVideoConstants$EmShareOps = paramEmShareOps;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Lez = paramlez;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
   public void run()
   {
+    int j = 1;
     VideoController localVideoController = (VideoController)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    int i;
-    if ((localVideoController != null) && (this.jdField_a_of_type_Lff != null))
-    {
-      if (this.jdField_a_of_type_ComTencentAvVideoConstants$EmShareOps != VideoConstants.EmShareOps.START) {
+    if ((localVideoController != null) && (this.jdField_a_of_type_Lez != null)) {
+      if (this.jdField_a_of_type_Int != 1) {
         break label136;
-      }
-      i = 86;
-      if (!this.jdField_a_of_type_Lff.j) {
-        break label142;
       }
     }
     label136:
-    label142:
-    for (int j = 2;; j = 1)
+    for (int i = 86;; i = 89)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVShare", 2, "ShareOpsTimeOutTask, actionResult[" + i + "], session[" + this.jdField_a_of_type_Lff + "], multiAVSubType[" + j + "]");
+      if (this.jdField_a_of_type_Lez.j) {
+        j = 2;
       }
-      localVideoController.a(i, this.jdField_a_of_type_Int, this.jdField_a_of_type_Lff.F, this.jdField_a_of_type_Lff.g, this.jdField_a_of_type_Lff.D, j);
+      if (QLog.isColorLevel()) {
+        QLog.i("AVShare", 2, "ShareOpsTimeOutTask, actionResult[" + i + "], session[" + this.jdField_a_of_type_Lez + "], multiAVSubType[" + j + "]");
+      }
+      localVideoController.a(i, this.b, this.jdField_a_of_type_Lez.F, this.jdField_a_of_type_Lez.g, this.jdField_a_of_type_Lez.D, j);
       return;
-      i = 89;
-      break;
     }
   }
 }

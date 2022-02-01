@@ -27,23 +27,11 @@ public class StoryTextToastView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public StoryTextToastView a(String paramString)
-  {
-    this.a.setText(paramString);
-    return this;
-  }
-  
   protected void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560973, this, true);
-    this.a = ((TextView)findViewById(2131379124));
-    this.b = ((TextView)findViewById(2131379125));
-  }
-  
-  public StoryTextToastView b(String paramString)
-  {
-    this.b.setText(paramString);
-    return this;
+    LayoutInflater.from(paramContext).inflate(2131560849, this, true);
+    this.a = ((TextView)findViewById(2131378892));
+    this.b = ((TextView)findViewById(2131378893));
   }
 }
 

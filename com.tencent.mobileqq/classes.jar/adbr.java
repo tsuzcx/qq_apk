@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface adbr
+class adbr
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  adbr(adbq paramadbq) {}
   
-  public abstract void a(List<adbr> paramList);
-  
-  public abstract boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre);
-  
-  public abstract boolean a(im_msg_body.Elem paramElem);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

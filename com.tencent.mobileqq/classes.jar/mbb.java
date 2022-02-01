@@ -1,109 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class mbb
+public class mbb
+  implements URLDrawable.URLDrawableListener
 {
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
+  public mbb(AVActivity paramAVActivity) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
-    ((lin)paramVideoAppInterface.a(11)).b();
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((lin)paramVideoAppInterface.a(11)).c();
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((lin)paramVideoAppInterface.a(11)).a(paramInt);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((lin)paramVideoAppInterface.a(11)).a(paramBoolean);
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lin)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lin)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lin)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lin)paramVideoAppInterface.a(11)).a(paramInt, paramString);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lin)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lin)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
-  }
-  
-  public static void b(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((lin)paramVideoAppInterface.a(11)).d();
-  }
-  
-  public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
 }
 
 

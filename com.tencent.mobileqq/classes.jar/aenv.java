@@ -1,19 +1,17 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aenv
   implements View.OnClickListener
 {
-  public aenv(ForceLogoutActivity paramForceLogoutActivity) {}
+  public aenv(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    this.a.a.setText("");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

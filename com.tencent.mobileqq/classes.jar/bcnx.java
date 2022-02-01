@@ -1,9 +1,13 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bcnx
-  extends bcoa
+final class bcnx
+  implements DialogInterface.OnClickListener
 {
-  public abstract ImageView b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

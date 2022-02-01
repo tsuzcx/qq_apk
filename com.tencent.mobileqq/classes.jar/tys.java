@@ -1,42 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class tys
-  implements EIPCResultCallback
+class tys
+  implements View.OnClickListener
 {
-  tys(tfh paramtfh, String paramString) {}
+  tys(tyr paramtyr) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    int j = 0;
-    int i = j;
-    if (paramEIPCResult != null)
-    {
-      i = j;
-      if (paramEIPCResult.data != null) {
-        i = paramEIPCResult.data.getInt("action_get_app_type");
-      }
-    }
-    QLog.e("PublicAccountH5AbilityPlugin", 1, "getAppType is " + i);
-    if (this.jdField_a_of_type_Tfh != null) {}
-    try
-    {
-      this.jdField_a_of_type_Tfh.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.getMessage());
-    }
+    twr.a(tyr.a(this.a), 1000, null);
+    uhs.a((Activity)tyr.a(this.a), tyr.a(this.a), tyr.a(this.a).a(), tyr.a(this.a).e(), false, twq.b(tyr.a(this.a)), new trj());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tys
  * JD-Core Version:    0.7.0.1
  */

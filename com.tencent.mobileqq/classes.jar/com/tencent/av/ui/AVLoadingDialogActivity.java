@@ -17,24 +17,24 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.ref.WeakReference;
-import mca;
-import mcb;
+import mbj;
+import mbk;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mca(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new mcb(this.jdField_a_of_type_JavaLangString);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mbj(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new mbk(this.jdField_a_of_type_JavaLangString);
   final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
   
   Dialog a()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755824);
-    localReportDialog.setContentView(2131559572);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755826);
+    localReportDialog.setContentView(2131559574);
     localReportDialog.setCancelable(false);
-    TextView localTextView = (TextView)localReportDialog.findViewById(2131372578);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131372546);
     if (localTextView != null) {
-      localTextView.setText(2131695277);
+      localTextView.setText(2131695416);
     }
     return localReportDialog;
   }
@@ -42,8 +42,9 @@ public class AVLoadingDialogActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

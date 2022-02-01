@@ -1,12 +1,6 @@
-class aqoq
-  implements aqou
+public abstract interface aqoq
 {
-  aqoq(aqop paramaqop) {}
-  
-  public void a(aqon paramaqon, int paramInt)
-  {
-    aqop.a(this.a, paramaqon, paramInt);
-  }
+  public abstract void a(aqpr paramaqpr, aqop paramaqop);
 }
 
 

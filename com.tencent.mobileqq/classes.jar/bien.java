@@ -1,15 +1,19 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.CreateVirtualResult;
 
-public abstract interface bien
+public final class bien
+  implements Parcelable.Creator<CreateVirtualResult>
 {
-  public abstract void a();
+  public CreateVirtualResult a(Parcel paramParcel)
+  {
+    return new CreateVirtualResult(paramParcel);
+  }
   
-  public abstract void a(Rect paramRect);
-  
-  public abstract void a(Drawable paramDrawable);
-  
-  public abstract boolean a();
+  public CreateVirtualResult[] a(int paramInt)
+  {
+    return new CreateVirtualResult[paramInt];
+  }
 }
 
 

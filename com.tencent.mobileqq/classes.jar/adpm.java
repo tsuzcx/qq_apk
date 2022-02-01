@@ -1,10 +1,24 @@
-public abstract interface adpm
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+public class adpm
+  extends axkt
 {
-  public abstract void a(adpn paramadpn);
+  public adpm(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public abstract void a(String paramString1, int paramInt, String paramString2);
-  
-  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3);
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+    }
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    {
+      List localList = ajek.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
+    }
+  }
 }
 
 

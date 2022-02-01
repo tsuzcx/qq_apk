@@ -21,7 +21,7 @@ public class VideoComposition
   private Asset asset;
   @Nullable
   private Class<? extends VideoCompositing> customVideoCompositorClass;
-  private CMTime frameDuration;
+  private CMTime frameDuration = new CMTime(1L, 30);
   private List<? extends VideoCompositionInstruction> instructions;
   private VideoComposition.RenderLayoutMode renderLayoutMode;
   private float renderScale;

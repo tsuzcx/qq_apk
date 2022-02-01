@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import mqq.app.MobileQQ;
-import ocd;
+import odq;
 
 class AfterSyncMsg$5
   implements Runnable
@@ -17,14 +17,14 @@ class AfterSyncMsg$5
     String str;
     if (this.this$0.a.app.getApplication() != null)
     {
-      str = this.this$0.a.app.c();
+      str = this.this$0.a.app.getCurrentUin();
       if (!SettingCloneUtil.readValue(this.this$0.a.app.getApplication().getApplicationContext(), str, null, "qqsetting_lock_screen_whenexit_key", true)) {
         break label86;
       }
     }
     for (;;)
     {
-      ocd.a(null, "CliOper", "", str, "0X80096F0", "0X80096F0", 0, 0, String.valueOf(i), "", "", "", false);
+      odq.a(null, "CliOper", "", str, "0X80096F0", "0X80096F0", 0, 0, String.valueOf(i), "", "", "", false);
       return;
       label86:
       i = 0;

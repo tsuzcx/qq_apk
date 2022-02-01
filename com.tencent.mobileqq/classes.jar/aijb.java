@@ -1,51 +1,59 @@
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class aijb
-  extends aieg
+public class aijb
 {
-  static final String jdField_a_of_type_JavaLangString = aiit.class.getSimpleName();
-  WeakReference<aiit> jdField_a_of_type_JavaLangRefWeakReference;
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131691363 };
+  private static final int[] b = { 2130839549 };
+  private static final int[] c = { 2131370711 };
+  Context jdField_a_of_type_AndroidContentContext;
+  private bjty jdField_a_of_type_Bjty;
   
-  public aijb(aiit paramaiit)
+  public aijb(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaiit);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
   }
   
-  public void a(CompressInfo paramCompressInfo)
+  public View a(Context paramContext, int paramInt, bjtz parambjtz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
+    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
+    return this.jdField_a_of_type_Bjty.a(paramContext, localView, parambjtz, -1);
   }
   
-  public void b(CompressInfo paramCompressInfo)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-    aiit localaiit = (aiit)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localaiit == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
-      }
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298791);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298792);
+    int[] arrayOfInt1 = c;
+    int[] arrayOfInt2 = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt3 = b;
+    this.jdField_a_of_type_Bjty = new aijc(this, 1, 2, new int[] { i, j }, -1, arrayOfInt1, arrayOfInt2, arrayOfInt3);
+  }
+  
+  public void a(Context paramContext, View paramView, int paramInt1, Object paramObject, bjtz parambjtz, View.OnClickListener paramOnClickListener, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Bjty != null) {}
+    for (int i = this.jdField_a_of_type_Bjty.a(paramContext, paramView, paramInt1, paramObject, parambjtz, paramOnClickListener);; i = 0)
+    {
+      if (paramInt2 != -1)
+      {
+        if (paramInt1 != paramInt2) {
+          paramView.scrollTo(0, 0);
+        }
+      }
+      else {
+        return;
+      }
+      paramView.scrollTo(i, 0);
+      return;
     }
-    localaiit.g(paramCompressInfo.e);
-    aiit.a(localaiit).a();
   }
 }
 

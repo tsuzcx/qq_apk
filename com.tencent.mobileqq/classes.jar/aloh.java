@@ -1,9 +1,6 @@
-class aloh
-  implements bloq
+public abstract interface aloh
 {
-  aloh(alof paramalof) {}
-  
-  public void a() {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

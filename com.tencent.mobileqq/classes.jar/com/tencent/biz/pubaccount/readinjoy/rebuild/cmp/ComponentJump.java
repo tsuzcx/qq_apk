@@ -13,23 +13,23 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.Iterator;
 import java.util.List;
-import ppu;
-import psx;
-import qjg;
-import qjp;
-import qno;
-import qqm;
-import qqn;
-import qqo;
-import qqp;
+import pvc;
+import pyr;
+import qpj;
+import qps;
+import qtr;
+import qwp;
+import qwq;
+import qwr;
+import qws;
 import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
 public class ComponentJump
   extends RelativeLayout
-  implements qjg
+  implements qpj
 {
   public View a;
-  qno a;
+  qtr a;
   public View[] a;
   public TextView[] a;
   
@@ -85,9 +85,9 @@ public class ComponentJump
           }
           i += 1;
         }
-        localList = psx.a(paramArticleInfo);
+        localList = pyr.a(paramArticleInfo);
         continue;
-        localList = psx.b(paramArticleInfo);
+        localList = pyr.b(paramArticleInfo);
       }
       a(paramInt, paramArticleInfo, null);
     }
@@ -133,7 +133,7 @@ public class ComponentJump
           this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(((articlesummary.PackJumpInfo)localObject1).str_wording.get());
           localObject2 = ((articlesummary.PackJumpInfo)localObject1).str_url.get();
           localObject1 = ((articlesummary.PackJumpInfo)localObject1).str_wording.get();
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new qqo(this, (String)localObject1, (String)localObject2));
+          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new qwr(this, (String)localObject1, (String)localObject2));
           i = 1;
         }
         paramArticleInfo.remove();
@@ -146,7 +146,7 @@ public class ComponentJump
       this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setText(((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get());
       paramArticleInfo = ((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_url.get();
       localObject1 = ((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get();
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new qqp(this, (String)localObject1, paramArticleInfo));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new qws(this, (String)localObject1, paramArticleInfo));
       if ((paramInt - 1 >= 0) && (paramInt - 1 <= 1)) {
         this.jdField_a_of_type_ArrayOfAndroidViewView[(paramInt - 1)].setVisibility(0);
       }
@@ -172,7 +172,7 @@ public class ComponentJump
       return;
     case 2: 
     case 3: 
-      paramArticleInfo = new qqm(this, paramPackJumpInfo);
+      paramArticleInfo = new qwp(this, paramPackJumpInfo);
       if (paramPackJumpInfo.enum_style.get() == 2)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
@@ -191,7 +191,7 @@ public class ComponentJump
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramArticleInfo);
       return;
     }
-    paramPackJumpInfo = new qqn(this, paramArticleInfo);
+    paramPackJumpInfo = new qwq(this, paramArticleInfo);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
     localLayoutParams.addRule(11, 0);
     localLayoutParams.addRule(9, -1);
@@ -204,7 +204,7 @@ public class ComponentJump
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qno = new qno();
+    this.jdField_a_of_type_Qtr = new qtr();
     this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[2];
     a(paramContext);
@@ -215,22 +215,22 @@ public class ComponentJump
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560059, this, true);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369483));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369485));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369487));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369488));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369484);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369486);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560065, this, true);
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369467));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369469));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369471));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369472));
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369468);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369470);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof ppu))
+    if ((paramObject instanceof pvc))
     {
-      this.jdField_a_of_type_Qno.a((ppu)paramObject);
+      this.jdField_a_of_type_Qtr.a((pvc)paramObject);
       b();
-      if (!this.jdField_a_of_type_Qno.a.b()) {
+      if (!this.jdField_a_of_type_Qtr.a.b()) {
         break label88;
       }
     }
@@ -238,16 +238,16 @@ public class ComponentJump
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if (this.jdField_a_of_type_Qno.a.b()) {
-        a(this.jdField_a_of_type_Qno.a.d(), this.jdField_a_of_type_Qno.a.a());
+      if (this.jdField_a_of_type_Qtr.a.b()) {
+        a(this.jdField_a_of_type_Qtr.a.d(), this.jdField_a_of_type_Qtr.a.a());
       }
       return;
     }
   }
   
-  public void a(qjp paramqjp)
+  public void a(qps paramqps)
   {
-    this.jdField_a_of_type_Qno.a(paramqjp);
+    this.jdField_a_of_type_Qtr.a(paramqps);
   }
   
   public void b() {}

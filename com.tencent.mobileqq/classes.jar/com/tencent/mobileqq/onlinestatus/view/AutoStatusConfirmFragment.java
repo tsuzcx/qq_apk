@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
-import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,15 +14,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import azhq;
-import azib;
-import azic;
-import azir;
-import aziu;
-import azjb;
+import axuy;
+import axvj;
+import axvk;
+import axvz;
+import axwc;
+import axwj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.widget.QQToast;
@@ -73,7 +73,7 @@ public class AutoStatusConfirmFragment
     }
     for (;;)
     {
-      if (paramView.getId() == 2131376944) {
+      if (paramView.getId() == 2131376699) {
         getActivity().finish();
       }
       for (;;)
@@ -85,31 +85,31 @@ public class AutoStatusConfirmFragment
         }
         i = 1;
         break;
-        if (paramView.getId() == 2131364160)
+        if (paramView.getId() == 2131364182)
         {
           getActivity().finish();
           if (i != 0) {
-            azir.a("0X800AFA5", i);
+            axvz.a("0X800AFA5", i);
           }
         }
-        else if (paramView.getId() == 2131372900)
+        else if (paramView.getId() == 2131372868)
         {
-          aziu localaziu = ((azic)BaseApplicationImpl.getApplication().getRuntime().getManager(369)).a();
+          axwc localaxwc = ((axvk)BaseApplicationImpl.getApplication().getRuntime().getManager(369)).a();
           getActivity().finish();
           if (i != 0) {
-            azir.a("0X800AFA4", i);
+            axvz.a("0X800AFA4", i);
           }
-          i = localaziu.a();
+          i = localaxwc.a();
           if (this.jdField_a_of_type_Long != i)
           {
             if (QLog.isColorLevel()) {
-              QLog.e("AutoStatusConfirmFragment", 2, "[status][autoMgr] submitStatus ignore submitStatus: " + azjb.a((int)this.jdField_a_of_type_Long) + " curStatus: " + azjb.a(i));
+              QLog.e("AutoStatusConfirmFragment", 2, "[status][autoMgr] submitStatus ignore submitStatus: " + axwj.a((int)this.jdField_a_of_type_Long) + " curStatus: " + axwj.a(i));
             }
             QQToast.a(BaseApplicationImpl.getApplication(), "当前状态已改变，无法切换", 0).a();
           }
           else
           {
-            aziu.a(BaseActivity.sTopActivity.app, this.jdField_a_of_type_Long, false, "dialog_switch");
+            axwc.a(BaseActivity.sTopActivity.app, this.jdField_a_of_type_Long, false, "dialog_switch");
           }
         }
       }
@@ -123,17 +123,17 @@ public class AutoStatusConfirmFragment
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramViewGroup = paramLayoutInflater.inflate(2131558417, null);
     paramViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372065));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131364160));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372030));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131364182));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.b = ((Button)paramViewGroup.findViewById(2131372900));
+    this.b = ((Button)paramViewGroup.findViewById(2131372868));
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_Long = getActivity().getIntent().getLongExtra("ext_status", 0L);
     this.jdField_a_of_type_Int = getActivity().getIntent().getIntExtra("is_background", -1);
-    paramLayoutInflater = azhq.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long);
-    paramBundle = getResources().getString(2131697735, new Object[] { paramLayoutInflater.a });
+    paramLayoutInflater = axuy.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long);
+    paramBundle = getResources().getString(2131697881, new Object[] { paramLayoutInflater.a });
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
-    int i = agej.a(24.0F, getResources());
+    int i = AIOUtils.dp2px(24.0F, getResources());
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
     paramBundle.mRequestWidth = i;
     paramBundle.mRequestHeight = i;
@@ -151,7 +151,7 @@ public class AutoStatusConfirmFragment
       for (;;)
       {
         if (i != 0) {
-          azir.a("0X800AFA3", i);
+          axvz.a("0X800AFA3", i);
         }
         V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
         return paramViewGroup;

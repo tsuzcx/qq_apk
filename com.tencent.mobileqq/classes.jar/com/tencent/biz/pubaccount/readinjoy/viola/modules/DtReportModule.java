@@ -6,7 +6,7 @@ import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.utils.ViolaUtils;
-import thz;
+import tml;
 
 public class DtReportModule
   extends BaseModule
@@ -30,7 +30,7 @@ public class DtReportModule
         }
       }
     }
-    thz.a(paramString1, paramObject, localObject1);
+    tml.a(paramString1, paramObject, localObject1);
   }
   
   public String getModuleName()
@@ -40,7 +40,7 @@ public class DtReportModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.DtReportModule
  * JD-Core Version:    0.7.0.1
  */

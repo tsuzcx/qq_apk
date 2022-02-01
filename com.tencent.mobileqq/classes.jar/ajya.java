@@ -1,34 +1,37 @@
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Iterator;
-import java.util.List;
 
 public class ajya
-  implements View.OnClickListener
+  extends RecyclerView.ItemDecoration
 {
-  public ajya(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  private int a;
+  private int b;
   
-  public void onClick(View paramView)
+  private ajya(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((EmoticonFromGroupEntity)localIterator.next()).status = -1;
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildPosition(paramView);
+    if (i == 0)
+    {
+      paramRect.left = this.a;
+      return;
     }
-    this.a.a.clear();
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
-    EmoticonGroupStoreFragment.a(this.a).a = false;
-    EmoticonGroupStoreFragment.a(this.a).a(false);
-    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.e(this.a);
-    this.a.a(true);
-    this.a.resetLeftButton();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    {
+      paramRect.left = this.b;
+      paramRect.right = this.a;
+      return;
+    }
+    paramRect.left = this.b;
   }
 }
 

@@ -1,16 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import com.tencent.qidian.PhotoWallViewForQiDianProfile;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
-final class bilu
-  implements EIPCResultCallback
+public class bilu
+  implements AdapterView.OnItemClickListener
 {
-  bilu(Runnable paramRunnable) {}
+  public bilu(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d("OpenSdkQIPCClient", 1, "WBQIPCClient installWBSdk onCallback");
-    this.a.run();
+    paramAdapterView = (binj)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_Bilx == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bilx.a(paramAdapterView);
   }
 }
 

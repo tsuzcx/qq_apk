@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AbsAECaptureButton;
 
 class blom
-  implements View.OnClickListener
+  implements bmye
 {
-  blom(blol paramblol) {}
+  blom(bloe parambloe) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bloe.a(this.a).setTouchEnable(true);
+  }
+  
+  public void b()
+  {
+    bloe.a(this.a).n();
+    bloe.a(this.a).setTouchEnable(true);
   }
 }
 

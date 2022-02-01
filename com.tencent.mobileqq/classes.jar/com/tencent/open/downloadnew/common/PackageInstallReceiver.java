@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bjtx;
+import bhzm;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class PackageInstallReceiver
@@ -14,10 +14,10 @@ public class PackageInstallReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bjtx.c(this.a, "onReceive >> " + paramIntent.getAction());
+    bhzm.c(this.a, "onReceive >> " + paramIntent.getAction());
     paramContext = paramIntent.getDataString();
     if (TextUtils.isEmpty(paramContext)) {
-      bjtx.e(this.a, "onReceive intentPkgNameString == null ");
+      bhzm.e(this.a, "onReceive intentPkgNameString == null ");
     }
     Object localObject;
     do
@@ -33,7 +33,7 @@ public class PackageInstallReceiver
       }
       else
       {
-        bjtx.e(this.a, "onReceive packageName == null " + paramIntent.getDataString());
+        bhzm.e(this.a, "onReceive packageName == null " + paramIntent.getDataString());
         return;
       }
       if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REPLACED"))

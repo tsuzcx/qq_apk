@@ -2,10 +2,10 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
 
-public final class FFmpegUtils$14
+final class FFmpegUtils$14
   extends ArrayList<Object>
 {
-  public FFmpegUtils$14(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  FFmpegUtils$14(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
     add(this.val$finalNoneAudioVideoPath);
     add(this.val$finalMixAudioPath);

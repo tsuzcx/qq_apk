@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bkua
-  implements DialogInterface.OnClickListener
+class bkua
+  implements View.OnClickListener
 {
-  public bkua(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  bkua(bkty parambkty) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().loadUrl("javascript:" + bkty.a(this.a) + "()");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkua
  * JD-Core Version:    0.7.0.1
  */

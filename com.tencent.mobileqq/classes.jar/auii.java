@@ -1,14 +1,14 @@
 import android.view.View;
+import android.view.View.OnTouchListener;
 
-class auii
-  implements aunx
+public abstract interface auii
+  extends View.OnTouchListener
 {
-  auii(auih paramauih) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    aunj.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Augj.d());
-  }
+  public abstract void b(View paramView, int paramInt);
+  
+  public abstract void c(auhb paramauhb, int paramInt);
 }
 
 

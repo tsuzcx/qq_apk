@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
-class akbp
-  implements View.OnClickListener
+public class akbp
+  implements nnv
 {
-  akbp(akbo paramakbo, akbr paramakbr) {}
+  public akbp(PreloadModule paramPreloadModule) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    String str = String.valueOf(this.jdField_a_of_type_Akbr.a.getText());
-    akbo.a(this.jdField_a_of_type_Akbo, str);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    }
   }
 }
 

@@ -1,21 +1,21 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class bhgn
+class bhgn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public Bitmap a;
-  private bhgn a;
+  bhgn(bhgl parambhgl) {}
   
-  public bhgn()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Bhgn = null;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    bhgl.a(this.a).setAlpha(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgn
  * JD-Core Version:    0.7.0.1
  */

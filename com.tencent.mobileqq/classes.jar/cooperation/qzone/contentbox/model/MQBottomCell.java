@@ -17,7 +17,20 @@ public class MQBottomCell
   public int total;
   public ArrayList<String> userAvatar;
   
-  private static ArrayList<String> a(JSONArray paramJSONArray)
+  private static JSONArray convertAvatarToJsonArray(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return null;
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      localJSONArray.put((String)paramArrayList.next());
+    }
+    return localJSONArray;
+  }
+  
+  private static ArrayList<String> parseAvatarArrayList(JSONArray paramJSONArray)
   {
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
       return null;
@@ -44,19 +57,6 @@ public class MQBottomCell
     return localArrayList;
   }
   
-  private static JSONArray a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localJSONArray.put((String)paramArrayList.next());
-    }
-    return localJSONArray;
-  }
-  
   public static MQBottomCell parseFromJson(JSONObject paramJSONObject)
   {
     if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
@@ -68,7 +68,7 @@ public class MQBottomCell
       localMQBottomCell.total = paramJSONObject.optInt("total");
       localMQBottomCell.content = paramJSONObject.optString("content");
       localMQBottomCell.jumpUrl = paramJSONObject.optString("jumpUrl");
-      localMQBottomCell.userAvatar = a(paramJSONObject.optJSONArray("userAvatar"));
+      localMQBottomCell.userAvatar = parseAvatarArrayList(paramJSONObject.optJSONArray("userAvatar"));
       return localMQBottomCell;
     }
     catch (Exception paramJSONObject)
@@ -96,7 +96,7 @@ public class MQBottomCell
       localJSONObject.put("total", this.total);
       localJSONObject.put("content", this.content);
       localJSONObject.put("jumpUrl", this.jumpUrl);
-      localJSONObject.put("total", a(this.userAvatar));
+      localJSONObject.put("total", convertAvatarToJsonArray(this.userAvatar));
       return localJSONObject;
     }
     catch (Exception localException)

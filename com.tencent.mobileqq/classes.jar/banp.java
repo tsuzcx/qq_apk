@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class banp
-  extends bezs
+public class banp
+  implements DialogInterface.OnClickListener
 {
-  banp(bano parambano, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  public banp(SignatureEditFragment paramSignatureEditFragment) {}
   
-  protected void realCancel()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("QbossPreDownloadManager", 1, "ctrl realCancel");
-  }
-  
-  protected void realStart()
-  {
-    QLog.i("QbossPreDownloadManager", 1, "downloadRes realStart packagename:" + this.jdField_a_of_type_JavaLangString + ",path" + this.b);
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("Qboss_PreDownload_PackageName", this.jdField_a_of_type_JavaLangString);
-    bano.a("Qboss_PreDownload_Start", (HashMap)localObject);
-    localObject = new beum();
-    ((beum)localObject).jdField_a_of_type_Beuq = new banq(this.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
-    ((beum)localObject).jdField_a_of_type_JavaLangString = this.c;
-    ((beum)localObject).jdField_a_of_type_Int = 0;
-    ((beum)localObject).c = this.b;
-    ((bevo)this.app.getNetEngine(0)).a((bevl)localObject);
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -40,7 +40,7 @@ final class MiniProgramLpReportDC04266$1
         QMLog.e("MiniProgramLpReportDC04266", "eventName not found!");
         throw new AssertionError("MiniProgramLpReportDC04266 eventName not found!");
       }
-      QMLog.d("MiniProgramLpReportDC04266", "MiniReportManager  reportEventType() called with: eventType = [" + this.val$eventType + "]" + str2 + "  retCode:" + this.val$ssoCmdRetCode + "  attachInfo: " + this.val$attachInfo + "  timestamp: " + this.val$timestamp + "  launchId: " + str1 + " timecost: " + this.val$timeCost);
+      QMLog.d("MiniProgramLpReportDC04266", "MiniReportManager  reportEventType() called with: eventType = [" + this.val$eventType + "]" + str2 + "  retCode:" + this.val$ssoCmdRetCode + "  attachInfo: " + this.val$attachInfo + "  timestamp: " + this.val$timestamp + "  launchId: " + str1 + " timecost: " + this.val$timeCost + " reserves1:" + this.val$reserves1 + " reserves2:" + this.val$reserves2);
     }
     Object localObject = MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, AppBrandUtil.getUrlWithoutParams(this.val$page), str2, this.val$attachInfo, this.val$ssoCmdName, String.valueOf(this.val$ssoCmdRetCode), this.val$appType, String.valueOf(this.val$timeCost), this.val$httpRequestThirdUrl, String.valueOf(this.val$timestamp), str1, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4, this.val$renderMode);
     if (!QUAUtil.isQQApp()) {

@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
-class aeju
-  implements View.OnClickListener
+public class aeju
+  extends Handler
 {
-  aeju(aejr paramaejr) {}
-  
-  public void onClick(View paramView)
+  public aeju(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
   {
-    this.a.a.onClick(this.a.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_Almi.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Almi.notifyDataSetChanged();
+    this.a.b();
   }
 }
 

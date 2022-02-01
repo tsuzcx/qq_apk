@@ -1,17 +1,27 @@
-public class aaas
-  extends aaat
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aaas
+  implements View.OnClickListener
 {
-  private final String a = aaas.class.getName();
+  aaas(aaaq paramaaaq, String paramString, Activity paramActivity) {}
   
-  public aaas(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    super(paramString1, paramString2);
-  }
-  
-  protected String a()
-  {
-    yuk.b(this.a, "Get cache tag[Disk]: cache");
-    return "protocal_cache";
+    this.jdField_a_of_type_Aaaq.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    {
+      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
+      if ((localAppInterface instanceof NearbyAppInterface)) {
+        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

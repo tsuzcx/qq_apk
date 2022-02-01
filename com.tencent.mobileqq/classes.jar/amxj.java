@@ -1,14 +1,41 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
-public abstract interface amxj
+public class amxj
+  extends amti
 {
-  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  protected void a()
+  {
+    super.a();
+    if (this.d >= amtg.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
+    }
+  }
   
-  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
-class ayne
-  implements DialogInterface.OnClickListener
+public class ayne
+  extends Handler
 {
-  ayne(aymj paramaymj) {}
+  public ayne(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 1)
+    if (!this.a.a(paramMessage)) {}
+    switch (paramMessage.what)
     {
-      if (this.a.jdField_a_of_type_Aypz != null) {
-        this.a.jdField_a_of_type_Aypz.a(2);
-      }
-      if (aymj.a(this.a) != null)
+    case 5: 
+    case 8: 
+    default: 
+      return;
+    case 6: 
+      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
       {
-        if (!this.a.n) {
-          break label88;
-        }
-        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
+        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
+        return;
       }
+      Toast.makeText(this.a.a.getApplicationContext(), 2131694702, 0).show();
+      return;
+    case 7: 
+      Toast.makeText(this.a.a.getApplicationContext(), 2131694650, 0).show();
+      return;
     }
-    label88:
-    do
-    {
-      do
-      {
-        return;
-        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Aypz != null) {
-        this.a.jdField_a_of_type_Aypz.a(10);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697963);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (aymj.a(this.a) == null);
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
+    this.a.d();
   }
 }
 

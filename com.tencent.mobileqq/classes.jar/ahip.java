@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class ahip
-  extends ahkx
+  implements zuj
 {
-  ahip(ahgk paramahgk)
+  ahip(ahik paramahik) {}
+  
+  public void a()
   {
-    super(paramahgk, null);
+    awng localawng = this.a.a;
+    if (this.a.sessionInfo.curType == 10002) {}
+    for (int i = 8;; i = 6)
+    {
+      localawng.a(false, true, i);
+      return;
+    }
   }
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void b()
   {
-    return new ahmm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.a.a();
   }
 }
 

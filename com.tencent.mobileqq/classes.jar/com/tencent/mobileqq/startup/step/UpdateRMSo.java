@@ -9,7 +9,7 @@ public class UpdateRMSo
   protected boolean doStep()
   {
     long l1 = System.currentTimeMillis();
-    VideoEnvironment.a(2131230760, 2131230761);
+    VideoEnvironment.initBuiltInDoCopyEnvStep(2131230760, 2131230761);
     long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
       QLog.i("VideoEnvironment", 2, "initBuiltInDoCopyEnvStep... time=" + (l2 - l1) + " ms");

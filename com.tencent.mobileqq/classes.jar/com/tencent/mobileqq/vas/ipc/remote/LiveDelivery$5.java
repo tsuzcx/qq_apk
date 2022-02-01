@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import beke;
-import bnwp;
+import bdda;
+import blbv;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
@@ -10,7 +10,7 @@ import eipc.EIPCModule;
 import eipc.EIPCResult;
 
 class LiveDelivery$5
-  implements bnwp
+  implements blbv
 {
   LiveDelivery$5(LiveDelivery paramLiveDelivery, int paramInt1, EIPCModule paramEIPCModule, int paramInt2) {}
   

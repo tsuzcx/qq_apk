@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.impls.memory;
 
-import adlq;
+import acij;
 import android.app.Activity;
 import android.view.Choreographer;
 import java.lang.reflect.Field;
@@ -15,7 +15,7 @@ public final class ActivityLeakSolutionInner$1
     try
     {
       Choreographer localChoreographer = Choreographer.getInstance();
-      adlq.a.set(localChoreographer, this.a.getApplicationContext());
+      acij.a.set(localChoreographer, this.a.getApplicationContext());
       return;
     }
     catch (Throwable localThrowable) {}

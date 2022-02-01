@@ -1,32 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class aovy
-  extends aoxh
+class aovy
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aovy(aovx paramaovx, aowb paramaowb) {}
+  
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    paramQQAppInterface = new aovx(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "avgame";
-    paramQQAppInterface.c = "create_room";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
+    if (paramBitmap != null)
     {
-      paramString = paramContext[i];
-      if (paramString.split("=").length == 2)
-      {
-        int j = paramString.indexOf("=");
-        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
-      }
-      i += 1;
+      this.jdField_a_of_type_Aowb.b.setVisibility(0);
+      this.jdField_a_of_type_Aowb.a.setVisibility(0);
+      this.jdField_a_of_type_Aowb.a.setImageBitmap(paramBitmap);
+      return;
     }
-    return paramQQAppInterface;
+    this.jdField_a_of_type_Aowb.a.setVisibility(8);
   }
 }
 

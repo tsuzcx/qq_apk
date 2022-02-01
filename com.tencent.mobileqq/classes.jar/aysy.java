@@ -1,11 +1,26 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
 
-abstract interface aysy
+public abstract interface aysy
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public abstract void a(List<RedTouchItem> paramList);
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(BaseActivity paramBaseActivity, Bundle paramBundle);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

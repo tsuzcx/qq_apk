@@ -1,11 +1,40 @@
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class oiw
-  extends pfh
+public class oiw
+  extends Handler
 {
-  oiw(oiv paramoiv) {}
+  private WeakReference<ois> a;
   
-  public void a_(List<twi> paramList) {}
+  public oiw(ois paramois)
+  {
+    this.a = new WeakReference(paramois);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ois localois = (ois)this.a.get();
+    if (localois == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          ois.a(localois);
+          return;
+        }
+      } while (ois.a(localois) == null);
+      ois.a(localois).a(ois.a(localois));
+      return;
+    } while (ois.a(localois) == null);
+    ois.a(localois).b();
+  }
 }
 
 

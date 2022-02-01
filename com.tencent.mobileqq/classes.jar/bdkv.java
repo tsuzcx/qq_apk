@@ -1,19 +1,22 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment.MyNetInfoHandler.1;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment.MyNetInfoHandler.2;
 
-public final class bdkv
+public class bdkv
+  extends bdjj
 {
-  public static void a(Context paramContext, boolean paramBoolean)
+  private bdkv(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  
+  protected void a()
   {
-    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
-    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
-    paramContext.commit();
+    ThreadManager.getUIHandlerV2().post(new WriteTogetherEditorFragment.MyNetInfoHandler.1(this));
   }
   
-  public static boolean a(Context paramContext, boolean paramBoolean)
+  protected void b()
   {
-    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
+    ThreadManager.getUIHandlerV2().post(new WriteTogetherEditorFragment.MyNetInfoHandler.2(this));
   }
 }
 

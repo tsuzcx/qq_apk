@@ -1,66 +1,106 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.QzoneMainRuntime;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasResEngine.VasResController.2;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class bggu
-  extends arac<bggt>
 {
-  @NonNull
-  public bggt a(int paramInt)
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  bgod jdField_a_of_type_Bgod = new bggv(this);
+  private bgoj jdField_a_of_type_Bgoj;
+  
+  public bggu(int paramInt, Handler paramHandler)
   {
-    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bggt();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  @Nullable
-  public bggt a(araj[] paramArrayOfaraj)
+  private Manager a(AppRuntime paramAppRuntime)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return bggt.a(paramArrayOfaraj[0].a);
+    Object localObject2 = null;
+    Object localObject1;
+    if ((paramAppRuntime instanceof ToolAppRuntime))
+    {
+      paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
+      localObject1 = localObject2;
+      if ((paramAppRuntime instanceof BrowserAppInterface)) {
+        localObject1 = paramAppRuntime.getManager(47);
+      }
     }
-    return null;
+    do
+    {
+      do
+      {
+        return localObject1;
+        if ((paramAppRuntime instanceof QQAppInterface)) {
+          return paramAppRuntime.getManager(47);
+        }
+        localObject1 = localObject2;
+      } while (!(paramAppRuntime instanceof QzoneMainRuntime));
+      paramAppRuntime = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("qzone_plugin.apk");
+      localObject1 = localObject2;
+    } while (paramAppRuntime == null);
+    return paramAppRuntime.getManager(47);
   }
   
-  public void a(bggt parambggt)
+  public int a()
   {
-    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + parambggt);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((bggj)((QQAppInterface)localAppRuntime).getManager(346)).a(parambggt, false);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new VasResController.2(this, paramString, paramInt1, paramInt2), 5, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((this.jdField_a_of_type_Bgoj == null) && (localObject != null)) {}
+    try
+    {
+      localObject = a((AppRuntime)localObject);
+      if ((localObject instanceof bgog)) {
+        this.jdField_a_of_type_Bgoj = ((bgog)localObject).a(1);
+      }
+      if (TextUtils.isEmpty(paramString1)) {
+        QLog.e("VasResController", 1, "downLoad error url is empty dst =" + paramString2);
+      }
+      if ((this.jdField_a_of_type_Bgoj != null) && (this.jdField_a_of_type_Bgoj.a(paramString1) == null))
+      {
+        paramString1 = new bgoe(paramString1, new File(paramString2));
+        this.jdField_a_of_type_Bgoj.a(paramString1, this.jdField_a_of_type_Bgod, paramBundle);
+      }
+      return;
     }
-  }
-  
-  public Class<bggt> clazz()
-  {
-    return bggt.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 544;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("VasResController", 1, localException.getMessage());
+      }
+    }
   }
 }
 

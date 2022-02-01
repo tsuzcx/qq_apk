@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajhd
-  implements ajwc
+class ajhd
+  implements View.OnClickListener
 {
-  public ajhd(TroopView paramTroopView) {}
+  ajhd(ajhb paramajhb) {}
   
-  public long a()
+  public void onClick(View paramView)
   {
-    return TroopView.a(this.a);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

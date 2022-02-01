@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-class aime
-  implements Comparator<MessageRecord>
+public class aime
+  implements aiiw
 {
-  aime(aimd paramaimd) {}
+  public aime(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
-  }
+  public void a() {}
 }
 
 

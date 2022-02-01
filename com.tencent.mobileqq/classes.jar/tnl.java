@@ -1,29 +1,50 @@
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerTriplePicItemData;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-public class tnl
-  extends tnb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageController$startBarrageItemAnimation$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tnl
+  implements Animator.AnimatorListener
 {
-  public tnl(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
+  tnl(BarrageItemView paramBarrageItemView, ValueAnimator paramValueAnimator) {}
+  
+  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    super(paramBaseData, paramWeakReference, localWeakReference);
+    int i = 0;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView.getX() + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView.getWidth() <= 0) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      this.jdField_a_of_type_Tne.a().removeView((View)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView);
+      paramAnimator = tne.b(this.jdField_a_of_type_Tne).iterator();
+      Intrinsics.checkExpressionValueIsNotNull(paramAnimator, "animatorList.iterator()");
+      while (paramAnimator.hasNext())
+      {
+        Object localObject = paramAnimator.next();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "animatorListIterator.next()");
+        if (Intrinsics.areEqual(((tnf)localObject).a(), this.jdField_a_of_type_AndroidAnimationValueAnimator)) {
+          paramAnimator.remove();
+        }
+      }
+    }
+    QLog.d("BarrageController", 2, "onAnimationEnd but not out of screen.");
   }
   
-  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
-  {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new tnm(this, paramBaseData, paramContext));
-  }
+  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
   
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
-  {
-    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerTriplePicItemData));
-  }
+  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

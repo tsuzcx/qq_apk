@@ -5,12 +5,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import uvw;
+import vdr;
 
 public class WSSwipeRefreshLayout
   extends SwipeRefreshLayout
 {
-  private uvw a;
+  private vdr a;
   
   public WSSwipeRefreshLayout(Context paramContext)
   {
@@ -29,18 +29,22 @@ public class WSSwipeRefreshLayout
     for (boolean bool = true;; bool = false)
     {
       localViewParent.requestDisallowInterceptTouchEvent(bool);
-      return super.onInterceptTouchEvent(paramMotionEvent);
+      if ((this.a == null) || (this.a.b())) {
+        break;
+      }
+      return false;
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setOnInterceptTouchEventListener(uvw paramuvw)
+  public void setOnInterceptTouchEventListener(vdr paramvdr)
   {
-    this.a = paramuvw;
+    this.a = paramvdr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

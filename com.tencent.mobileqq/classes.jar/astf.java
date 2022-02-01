@@ -1,27 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import mqq.app.MobileQQ;
 
-public class astf
+class astf
+  implements DialogInterface.OnClickListener
 {
-  private aogm jdField_a_of_type_Aogm = new astg(this);
-  private asth jdField_a_of_type_Asth;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  astf(astb paramastb) {}
   
-  public astf(QQAppInterface paramQQAppInterface, asth paramasth)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Asth = paramasth;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Aogm);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aogm);
-  }
-  
-  public void a(ChatMessage paramChatMessage, int paramInt)
-  {
-    ((aogn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(180)).a(paramChatMessage, paramInt);
+    this.a.b();
+    this.a.a.removeObserver(astb.a(this.a));
+    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
+    localIntent.addFlags(67108864);
+    this.a.a.getApplication().startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

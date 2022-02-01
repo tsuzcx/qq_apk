@@ -1,6 +1,7 @@
 package com.tencent.biz.qrcode.activity;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,30 +18,29 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import anzj;
-import aold;
-import bdll;
-import bhlq;
-import bhpc;
-import bjbs;
+import aneo;
+import bcef;
+import bfur;
+import bhht;
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
-import nnr;
-import zxc;
-import zxd;
-import zxe;
-import zxf;
-import zxx;
-import zyv;
-import zyx;
+import ywn;
+import ywo;
+import ywp;
+import ywq;
+import yxi;
+import yyg;
+import yyi;
 
 public class QRLoginAuthActivity
   extends QRLoginBaseActivity
@@ -58,9 +58,9 @@ public class QRLoginAuthActivity
   public ProgressBar a;
   protected RelativeLayout a;
   public TextView a;
-  public bjbs a;
+  public bhht a;
   private WtloginManager jdField_a_of_type_MqqManagerWtloginManager;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new zxc(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new ywn(this);
   public boolean a;
   protected byte[] a;
   public int b;
@@ -77,14 +77,14 @@ public class QRLoginAuthActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = anzj.a(2131710082);
-    jdField_b_of_type_JavaLangString = anzj.a(2131710083);
+    jdField_a_of_type_JavaLangString = amtj.a(2131710314);
+    jdField_b_of_type_JavaLangString = amtj.a(2131710315);
   }
   
   public QRLoginAuthActivity()
   {
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new zxf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ywq(this);
   }
   
   private void a(byte[] paramArrayOfByte)
@@ -92,25 +92,25 @@ public class QRLoginAuthActivity
     if ((this.jdField_b_of_type_Int == 65793) || (this.jdField_b_of_type_Int == 77313))
     {
       this.e = "Windows";
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846992));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846900));
       return;
     }
     if (this.jdField_b_of_type_Int == 5)
     {
       this.e = "Mac";
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846992));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846900));
       return;
     }
     if (this.jdField_b_of_type_Int == 3)
     {
       this.e = "iPad";
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846993));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846901));
       return;
     }
-    if (zyv.b(this.jdField_b_of_type_Int))
+    if (yyg.b(this.jdField_b_of_type_Int))
     {
       this.e = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846995));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846903));
       return;
     }
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
@@ -206,15 +206,15 @@ public class QRLoginAuthActivity
   
   protected void a()
   {
-    super.setContentView(2131560402);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131370395));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374746));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364957));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131379055));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370563));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372895));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365474));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131374747));
+    super.setContentView(2131560412);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131370363));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374514));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364984));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131378824));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370531));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372863));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365506));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131374515));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -225,12 +225,12 @@ public class QRLoginAuthActivity
       return;
     }
     Object localObject;
-    if (!nnr.a(this))
+    if (!HttpUtil.isConnect(this))
     {
-      localObject = bhlq.a(this, 230);
-      ((bhpc)localObject).setMessage(2131717578);
-      ((bhpc)localObject).setPositiveButton(2131694098, new zxe(this));
-      ((bhpc)localObject).show();
+      localObject = bfur.a(this, 230);
+      ((QQCustomDialog)localObject).setMessage(2131717814);
+      ((QQCustomDialog)localObject).setPositiveButton(2131694201, new ywp(this));
+      ((QQCustomDialog)localObject).show();
     }
     if (paramString != null)
     {
@@ -239,31 +239,31 @@ public class QRLoginAuthActivity
     }
     else
     {
-      localObject = getString(2131717576);
+      localObject = getString(2131717812);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130839659));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130839696));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717575);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717811);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
   }
   
   protected void a(boolean paramBoolean)
   {
-    ((aold)this.app.getManager(85)).b();
-    this.jdField_a_of_type_Bjbs = new bjbs(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_Bjbs.c(2131715973);
-    this.jdField_a_of_type_Bjbs.setOnCancelListener(new zxd(this));
-    this.jdField_a_of_type_Bjbs.show();
-    Object localObject1 = zyx.a(this.app.a());
+    ((aneo)this.app.getManager(85)).b();
+    this.jdField_a_of_type_Bhht = new bhht(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_Bhht.c(2131716207);
+    this.jdField_a_of_type_Bhht.setOnCancelListener(new ywo(this));
+    this.jdField_a_of_type_Bhht.show();
+    Object localObject1 = yyi.a(this.app.getOnlineStauts());
     Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
     ((ByteBuffer)localObject2).putShort((short)2);
     ((ByteBuffer)localObject2).putShort((short)localObject1.length);
     ((ByteBuffer)localObject2).put((byte[])localObject1);
     localObject2 = ((ByteBuffer)localObject2).array();
-    Object localObject3 = this.app.b(this.jdField_c_of_type_JavaLangString);
+    Object localObject3 = this.app.getUinDisplayNameBeforeLogin(this.jdField_c_of_type_JavaLangString);
     localObject1 = new ArrayList();
     if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).equals(this.jdField_c_of_type_JavaLangString)))
     {
@@ -336,7 +336,7 @@ public class QRLoginAuthActivity
       localIntent.setFlags(67108864);
       super.startActivity(localIntent);
     }
-    Toast.makeText(getApplicationContext(), 2131717577, 0).show();
+    Toast.makeText(getApplicationContext(), 2131717813, 0).show();
     if ((!TextUtils.isEmpty(this.g)) && ("1600000104".equals(this.g.trim())))
     {
       localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
@@ -358,8 +358,9 @@ public class QRLoginAuthActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -389,17 +390,17 @@ public class QRLoginAuthActivity
   
   public void doOnDestroy()
   {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
     super.doOnDestroy();
-    zxx.a(this);
+    yxi.a(this);
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131364957) {
+    if (i == 2131364984) {
       if (this.jdField_b_of_type_Boolean)
       {
         Intent localIntent = new Intent(this, ScannerActivity.class);
@@ -415,14 +416,14 @@ public class QRLoginAuthActivity
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       a(false);
-      bdll.b(null, "dc00898", "", "", "0X800A46E", "0X800A46E", zyv.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A46E", "0X800A46E", yyg.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
       continue;
-      if (i == 2131379055)
+      if (i == 2131378824)
       {
         a(true);
-        bdll.b(null, "dc00898", "", "", "0X800A46F", "0X800A46F", zyv.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
+        bcef.b(null, "dc00898", "", "", "0X800A46F", "0X800A46F", yyg.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
       }
-      else if (i == 2131369829)
+      else if (i == 2131369818)
       {
         finish();
         this.jdField_a_of_type_MqqManagerWtloginManager.cancelCode(getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfByte);

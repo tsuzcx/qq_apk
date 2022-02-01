@@ -1,11 +1,16 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class vgy
-  implements Comparator<vhb>
+class vgy
+  implements SDKInitListener
 {
-  public int a(vhb paramvhb1, vhb paramvhb2)
+  vgy(vgw paramvgw) {}
+  
+  public void onSDKInited(boolean paramBoolean)
   {
-    return vjk.a(paramvhb1, paramvhb2);
+    if (paramBoolean) {
+      QLog.i("QCIRCLE_PLUGIN", 4, "preload playSdk success");
+    }
   }
 }
 

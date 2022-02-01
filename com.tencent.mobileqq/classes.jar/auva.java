@@ -1,140 +1,56 @@
-import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
-public class auva
-  implements View.OnClickListener
+class auva
+  implements zop
 {
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  public View a;
-  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  auva(auuz paramauuz, long paramLong1, long paramLong2, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void callback(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
+    boolean bool = true;
+    paramBundle = paramBundle.getString("videoPath");
+    Object localObject;
+    if (!TextUtils.isEmpty(paramBundle))
     {
-      if (!paramBoolean) {
-        break label98;
-      }
-      if (!this.c)
-      {
-        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-        }
-        this.c = true;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-      }
-    }
-    return;
-    label98:
-    this.c = true;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (this.c)
-      {
-        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-        }
-        this.c = false;
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { this.jdField_a_of_type_AndroidViewView.getHeight() });
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new auvb(this));
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-      }
-      return;
-    }
-    this.c = false;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!bhnv.d(BaseApplication.getContext())) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anzj.a(2131702278), 0).a();
+      localObject = new File(paramBundle);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
+      }
+      try
+      {
+        localObject = new JSONObject();
+        if (bool)
+        {
+          MediaApiPlugin.a(this.jdField_a_of_type_Auuz.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
+          ((JSONObject)localObject).put("ret", 0);
+          ((JSONObject)localObject).put("errMsg", "");
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Auuz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+          ((JSONObject)localObject).put("ret", -2);
+          ((JSONObject)localObject).put("errMsg", amtj.a(2131714201));
+        }
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      catch (Exception paramBundle)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+      }
       return;
-      label115:
-      Object localObject;
-      if (this.b)
-      {
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            new StringBuilder(this.jdField_a_of_type_JavaLangString);
-            if (this.jdField_a_of_type_JavaLangString.indexOf("?") > 0) {
-              this.jdField_a_of_type_JavaLangString += "&converFrom=qqFile";
-            }
-          }
-          else
-          {
-            if (!this.jdField_a_of_type_Boolean) {
-              break label204;
-            }
-            bedq.a(null, "0X800ABAB");
-          }
-          for (;;)
-          {
-            localObject = new Bundle();
-            ((Bundle)localObject).putString("url", this.jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject).putBoolean("temp_preview_from_qq", true);
-            ((Bundle)localObject).putParcelable("key_team_work_file_import_info", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-            TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, (Bundle)localObject, false);
-            break;
-            this.jdField_a_of_type_JavaLangString += "?converFrom=qqFile";
-            break label115;
-            label204:
-            bedq.a(null, "0X800ABAC");
-          }
-        }
-      }
-      else
-      {
-        localObject = BaseApplicationImpl.sApplication.getRuntime();
-        if ((localObject instanceof QQAppInterface))
-        {
-          localObject = (beav)((QQAppInterface)localObject).a(120);
-          if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
-          {
-            if (!((beav)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
-              ((beav)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-            }
-            bedq.a(null, "0X800ABA6");
-            beaj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null);
-          }
-        }
-      }
+      bool = false;
     }
   }
 }

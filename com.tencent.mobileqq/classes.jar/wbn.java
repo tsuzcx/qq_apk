@@ -1,24 +1,27 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import feedcloud.FeedCloudMeta.StUser;
-import qqcircle.QQCircleDitto.StItemContainer;
-
 public class wbn
-  implements wak
 {
-  public wbn(QCirclePushRankItemView paramQCirclePushRankItemView, QQCircleDitto.StItemContainer paramStItemContainer) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
   
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public wbn(String paramString)
   {
-    vud localvud = vud.a();
-    vuf localvuf = new vuf().a("followbutton");
-    if (paramBoolean) {}
-    for (String str = "follow";; str = "unfollow")
-    {
-      localvud.a(localvuf.b(str).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushRankItemView.a()).c(paramStUser.id.get()).d(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.containerType.get() + ""));
-      return;
-    }
+    this.b = paramString;
+  }
+  
+  public void a()
+  {
+    wbo localwbo = new wbo(this, false);
+    wbp localwbp = new wbp(this, false);
+    vsx.a().a(localwbo, localwbp);
+  }
+  
+  public void b()
+  {
+    wbo localwbo = new wbo(this, true);
+    wbp localwbp = new wbp(this, true);
+    vsx.a().a(localwbo, localwbp);
   }
 }
 

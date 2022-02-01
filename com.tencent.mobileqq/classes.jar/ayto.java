@@ -1,61 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
-class ayto
-  implements blih
+public class ayto
 {
-  private ayto(aytl paramaytl) {}
+  public List<aytp> a = new ArrayList(1);
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public String a(String paramString)
   {
-    blih localblih = this.a.jdField_a_of_type_Aytk.a();
-    if (localblih != null) {
-      localblih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      aytp localaytp = (aytp)localIterator.next();
+      if ((paramString != null) && (paramString.equals(localaytp.a))) {
+        return localaytp.b;
+      }
+    }
+    return null;
+  }
+  
+  public void a(bgaz parambgaz)
+  {
+    if (parambgaz != null)
+    {
+      parambgaz.a();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        parambgaz.a(2131365216, ((aytp)localIterator.next()).a, 0);
+      }
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    int j = 0;
-    int i;
-    Object localObject;
-    if ((this.a.jdField_a_of_type_Int == 2) && (paramInt != 2))
-    {
-      i = 1;
-      if (i == 0) {
-        break label136;
-      }
-      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if (!this.a.b) {
-        break label129;
-      }
-      i = j;
-      label66:
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
-      this.a.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = paramInt;
-      localObject = this.a.jdField_a_of_type_Aytk.a();
-      if (localObject != null) {
-        ((blih)localObject).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      i = 0;
-      break;
-      label129:
-      i = 550;
-      break label66;
-      label136:
-      if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-    }
+    this.a.add(new aytp(paramString1, paramString2));
+  }
+  
+  public String toString()
+  {
+    return Arrays.toString(this.a.toArray());
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bjuh;
-import bjxd;
+import bhzt;
+import bicl;
 
 public class MyAppApi$4
   implements Runnable
 {
-  public MyAppApi$4(bjxd parambjxd) {}
+  public MyAppApi$4(bicl parambicl) {}
   
   public void run()
   {
-    bjuh.a().a(this.this$0.a);
+    bhzt.a().a(this.this$0.a);
   }
 }
 

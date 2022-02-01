@@ -1,139 +1,190 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandUnit;
+import com.tencent.biz.troop.VideoCombineHelper.1;
+import com.tencent.biz.troop.VideoCombineHelper.2;
+import com.tencent.biz.troop.VideoCombineHelper.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class zpq
 {
-  float jdField_a_of_type_Float = 1.0F;
-  int jdField_a_of_type_Int = 0;
-  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  boolean jdField_a_of_type_Boolean = false;
-  TextView b;
-  TextView c;
+  public static final String a;
+  long jdField_a_of_type_Long = 0L;
+  FFmpeg jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
+  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  HashMap<String, zqa> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  zon jdField_a_of_type_Zon;
   
-  public zpq(BaseActivity paramBaseActivity, int paramInt)
+  static
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
-    for (;;)
+    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_ROOT + "/Tencent/QQ_business/videocombine";
+  }
+  
+  public zpq(BaseActivity paramBaseActivity)
+  {
+    File localFile = new File(jdField_a_of_type_JavaLangString);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.setFFMpegCanExe();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Zon = zon.a();
+  }
+  
+  public bgoj a()
+  {
+    return new bgog(null).a(1);
+  }
+  
+  public String a(zqa paramzqa, zpy paramzpy)
+  {
+    ??? = UUID.nameUUIDFromBytes(paramzqa.c.getBytes());
+    String str1 = "combineVideo_" + ((UUID)???).toString();
+    String str2 = "prepareVideo_" + ((UUID)???).toString();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str2))
       {
-        paramBaseActivity.mActNeedImmersive = false;
-        paramBaseActivity.mNeedStatusTrans = false;
-        paramBaseActivity.getWindow().addFlags(67108864);
+        ((zqa)this.jdField_a_of_type_JavaUtilHashMap.get(str2)).b = true;
+        Looper.prepare();
+        new Handler().postDelayed(new VideoCombineHelper.1(this, paramzqa, paramzpy), 300L);
+        return str1;
       }
-      this.jdField_a_of_type_Int = zft.b(paramBaseActivity, paramInt);
-      return;
-      bool = false;
+      this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramzqa);
+      ThreadManager.post(new VideoCombineHelper.2(this, paramzpy, System.currentTimeMillis(), str1), 8, null, false);
+      return str1;
     }
   }
   
-  private void a(float paramFloat)
+  public void a(String paramString1, String paramString2, zpy paramzpy)
   {
-    int i = (int)(255.0F * paramFloat);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getBackground();
-    if (localDrawable != null)
-    {
-      localDrawable.setAlpha(i);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.invalidateDrawable(localDrawable);
+    Object localObject1 = new File(paramString1).getParentFile();
+    if (!((File)localObject1).exists()) {
+      ((File)localObject1).mkdirs();
     }
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setAlpha(paramFloat);
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(paramFloat);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
-      this.jdField_a_of_type_AndroidContentResColorStateList = this.b.getTextColors();
-    }
-    if (paramFloat > 0.5D)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840291);
-      this.b.setBackgroundResource(2130850668);
-      this.b.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-      this.c.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840291);
-    this.b.setBackgroundResource(2130850668);
-    this.b.setTextColor(this.b.getContext().getResources().getColorStateList(2131166987));
-    this.c.setTextColor(this.c.getContext().getResources().getColorStateList(2131166987));
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131378993));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369088));
-    this.b = ((TextView)paramView.findViewById(2131369042));
-    this.c = ((TextView)paramView.findViewById(2131369073));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369056));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131379037));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(8);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 == 0) && (paramInt2 > 0))
-    {
-      paramInt1 = -paramAbsListView.getChildAt(0).getTop();
-      if ((paramInt1 > this.jdField_a_of_type_Int) && (!a())) {
-        a(true, true);
-      }
-    }
-    while ((paramInt1 <= 0) || (a()))
-    {
-      do
+    ArrayList localArrayList1 = new ArrayList();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    Object localObject2 = new FFmpegCommandUnit();
+    Object localObject3 = ((File)localObject1).getAbsolutePath() + File.separator + "vn.m4a";
+    Object localObject4 = new ArrayList();
+    ((ArrayList)localObject4).add("-y");
+    ((ArrayList)localObject4).add("-i");
+    ((ArrayList)localObject4).add(paramString1);
+    ((ArrayList)localObject4).add("-strict");
+    ((ArrayList)localObject4).add("-2");
+    ((ArrayList)localObject4).add("-acodec");
+    ((ArrayList)localObject4).add("aac");
+    ((ArrayList)localObject4).add("-vn");
+    ((ArrayList)localObject4).add(localObject3);
+    ((FFmpegCommandUnit)localObject2).cmd = ((String[])((ArrayList)localObject4).toArray(new String[0]));
+    ((FFmpegCommandUnit)localObject2).callback = new zpu(this, paramzpy, paramString1);
+    localArrayList1.add(localObject2);
+    ((ArrayList)localObject4).clear();
+    localObject4 = new FFmpegCommandUnit();
+    localObject2 = ((File)localObject1).getAbsolutePath() + File.separator + "an.ts";
+    Object localObject5 = new ArrayList();
+    ((ArrayList)localObject5).add("-y");
+    ((ArrayList)localObject5).add("-i");
+    ((ArrayList)localObject5).add(paramString1);
+    ((ArrayList)localObject5).add("-vcodec");
+    ((ArrayList)localObject5).add("copy");
+    ((ArrayList)localObject5).add("-an");
+    ((ArrayList)localObject5).add(localObject2);
+    ((FFmpegCommandUnit)localObject4).cmd = ((String[])((ArrayList)localObject5).toArray(new String[0]));
+    ((FFmpegCommandUnit)localObject4).callback = new zpv(this, paramzpy, paramString1);
+    localArrayList1.add(localObject4);
+    localObject5 = new FFmpegCommandUnit();
+    localObject4 = ((File)localObject1).getAbsolutePath() + File.separator + "mixed.m4a";
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add("-y");
+    localArrayList2.add("-i");
+    localArrayList2.add(localObject3);
+    localArrayList2.add("-i");
+    localArrayList2.add(paramString2);
+    localArrayList2.add("-filter_complex");
+    localArrayList2.add("amix=inputs=2:duration=first:dropout_transition=2");
+    localArrayList2.add(localObject4);
+    ((FFmpegCommandUnit)localObject5).cmd = ((String[])localArrayList2.toArray(new String[0]));
+    ((FFmpegCommandUnit)localObject5).callback = new zpw(this, paramzpy, paramString1);
+    localArrayList1.add(localObject5);
+    paramString2 = new FFmpegCommandUnit();
+    localObject1 = ((File)localObject1).getAbsolutePath() + File.separator + "combine.mp4";
+    localObject3 = new ArrayList();
+    ((ArrayList)localObject3).add("-y");
+    ((ArrayList)localObject3).add("-i");
+    ((ArrayList)localObject3).add(localObject2);
+    ((ArrayList)localObject3).add("-i");
+    ((ArrayList)localObject3).add(localObject4);
+    ((ArrayList)localObject3).add("-strict");
+    ((ArrayList)localObject3).add("2");
+    ((ArrayList)localObject3).add("-vcodec");
+    ((ArrayList)localObject3).add("copy");
+    ((ArrayList)localObject3).add("-acodec");
+    ((ArrayList)localObject3).add("aac");
+    ((ArrayList)localObject3).add(localObject1);
+    paramString2.cmd = ((String[])((ArrayList)localObject3).toArray(new String[0]));
+    paramString2.callback = new zpx(this, paramzpy, (String)localObject1, paramString1);
+    localArrayList1.add(paramString2);
+    ((ArrayList)localObject3).clear();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.isFFmpegCommandRunning()) {
+      try
       {
+        this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.insertFFmpegQueue(localArrayList1);
         return;
-      } while ((paramInt1 >= this.jdField_a_of_type_Int) || (!a()));
-      a(false, true);
+      }
+      catch (FFmpegCommandAlreadyRunningException paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+      catch (IOException paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.cmdFFmpegQueue(localArrayList1);
       return;
     }
-    a(true, true);
+    catch (FFmpegCommandAlreadyRunningException paramString1)
+    {
+      paramString1.printStackTrace();
+      return;
+    }
+    catch (IOException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(zqa paramzqa, zpy paramzpy)
   {
-    if (paramBoolean1) {}
-    for (float f = 1.0F; this.jdField_a_of_type_Float == f; f = 0.0F) {
+    ??? = UUID.nameUUIDFromBytes(paramzqa.c.getBytes());
+    String str = "prepareVideo_" + ((UUID)???).toString();
+    paramzqa.a = true;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramzqa);
+      ThreadManager.post(new VideoCombineHelper.3(this, paramzpy, System.currentTimeMillis(), str), 8, null, false);
       return;
     }
-    if (paramBoolean2)
-    {
-      ValueAnimator localValueAnimator = new ValueAnimator();
-      localValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, f });
-      localValueAnimator.addUpdateListener(new zpr(this));
-      localValueAnimator.setDuration(500L);
-      localValueAnimator.start();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Float = f;
-      return;
-      a(f);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Float > 0.5D;
   }
 }
 

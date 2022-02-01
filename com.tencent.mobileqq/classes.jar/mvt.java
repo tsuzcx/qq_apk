@@ -1,12 +1,32 @@
-class mvt
+import com.tencent.av.widget.stageview.StageEffectView;
+import com.tencent.av.widget.stageview.StageMemberView;
+import java.util.Comparator;
+
+public class mvt
+  implements Comparator<StageMemberView>
 {
-  int jdField_a_of_type_Int;
-  int b;
+  public mvt(StageEffectView paramStageEffectView) {}
   
-  mvt(mvs parammvs, int paramInt1, int paramInt2)
+  public int a(StageMemberView paramStageMemberView1, StageMemberView paramStageMemberView2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if ((paramStageMemberView1 == null) && (paramStageMemberView2 == null)) {
+      return 0;
+    }
+    if (paramStageMemberView2 == null) {
+      return -1;
+    }
+    if (paramStageMemberView1 == null) {
+      return 1;
+    }
+    paramStageMemberView1 = (mvz)paramStageMemberView1.getTag();
+    paramStageMemberView2 = (mvz)paramStageMemberView2.getTag();
+    if (paramStageMemberView1.a == paramStageMemberView2.a) {
+      return 0;
+    }
+    if (mvo.a(paramStageMemberView1.a - 10000, 20000) < mvo.a(paramStageMemberView2.a - 10000, 20000)) {
+      return -1;
+    }
+    return 1;
   }
 }
 

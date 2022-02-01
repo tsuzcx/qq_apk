@@ -1,31 +1,52 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class wpg
-  extends SimpleJob<Void>
+  extends wnr<TroopAssistantHomeFeedPlayInfo>
 {
-  public wpg(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, Bundle paramBundle, byte[] paramArrayOfByte)
+  public wpg(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    super(paramString);
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (xnp)vux.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
+    }
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public xnh a(String paramString)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
-    paramJobContext = (wpa)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
-    if (paramJobContext == null)
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
-      return null;
+      xnh localxnh = (xnh)localIterator.next();
+      if (localxnh.a.equals(paramString)) {
+        return localxnh;
+      }
     }
-    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
     return null;
   }
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramwoj.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new wfc();
+    ((wfc)localObject).a = this.a.a();
+    xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((wfc)localObject).a);
+    vqn.a().a((vqr)localObject, new wph(this, paramwoj));
+  }
+  
+  public void b() {}
 }
 
 

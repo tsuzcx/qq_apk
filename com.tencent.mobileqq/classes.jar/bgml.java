@@ -1,25 +1,63 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.TracePointsData;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgml
-  implements bliz
+  extends SosoInterface.OnLocationListener
 {
-  public bgml(VisitorTroopCardFragment paramVisitorTroopCardFragment, blir paramblir) {}
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public void OnClick(View paramView, int paramInt)
+  public bgml(PathTraceManager paramPathTraceManager, AppInterface paramAppInterface)
   {
-    switch (this.jdField_a_of_type_Blir.a(paramInt).c)
-    {
+    super(0, true, true, 0L, true, true, "pathtrace");
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 3) {
+      QLog.d("PathTraceManager", 1, "Consecutive Err");
     }
-    for (;;)
+    super.onConsecutiveFailure(paramInt1, paramInt2);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_Blir.dismiss();
+      Object localObject = paramSosoLbsInfo.mLocation;
+      paramSosoLbsInfo = new TracePointsData();
+      paramSosoLbsInfo.time = NetConnInfoCenter.getServerTime();
+      paramSosoLbsInfo.latitude = ((float)((SosoInterface.SosoLocation)localObject).mLat02);
+      paramSosoLbsInfo.longitude = ((float)((SosoInterface.SosoLocation)localObject).mLon02);
+      paramSosoLbsInfo.altitude = ((SosoInterface.SosoLocation)localObject).altitude;
+      paramSosoLbsInfo.accuracy = ((int)((SosoInterface.SosoLocation)localObject).accuracy);
+      paramSosoLbsInfo.speed = ((SosoInterface.SosoLocation)localObject).speed;
+      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+      {
+        localObject = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
+        if (localObject != null) {
+          ((PathTraceManager)localObject).a(paramSosoLbsInfo);
+        }
+      }
       return;
-      VisitorTroopCardFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-      continue;
-      bguq.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      bguq.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    PathTraceManager.b(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager, PathTraceManager.b(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+    if (PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager) != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager.a(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+    }
+    QLog.e("PathTraceManager", 1, "Location Err: " + paramInt);
+  }
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
+  {
+    if ((paramString1.equals("gps")) && (paramInt == 0)) {
+      QLog.d("PathTraceManager", 1, "GPS shutdown");
     }
   }
 }

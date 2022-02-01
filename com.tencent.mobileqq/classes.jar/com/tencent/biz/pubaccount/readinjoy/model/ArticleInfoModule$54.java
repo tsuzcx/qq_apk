@@ -9,12 +9,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import pon;
+import ptv;
 
 public class ArticleInfoModule$54
   implements Runnable
 {
-  public ArticleInfoModule$54(pon parampon, int paramInt) {}
+  public ArticleInfoModule$54(ptv paramptv, int paramInt) {}
   
   public void run()
   {
@@ -30,11 +30,11 @@ public class ArticleInfoModule$54
           localConcurrentHashMap.put(localArticleExposureInfo.rowkey, localArticleExposureInfo);
         }
       }
-      localObject = (ConcurrentHashMap)pon.c(this.this$0).get(Integer.valueOf(this.a));
+      localObject = (ConcurrentHashMap)ptv.c(this.this$0).get(Integer.valueOf(this.a));
       if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0)) {
         localConcurrentHashMap.putAll((Map)localObject);
       }
-      pon.c(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
+      ptv.c(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
     }
     QLog.d("ArticleInfoModule", 1, "loadFeedsExposureInfo from db , channelID : " + this.a + ", result : " + localList);
   }

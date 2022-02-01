@@ -1,53 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-final class tca
-  implements tcg
+class tca
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public void a()
+  private final int jdField_a_of_type_Int;
+  private final int b;
+  
+  tca(tbz paramtbz, int paramInt1, int paramInt2)
   {
-    Object localObject = tbz.a("https://viola/viola_config.json?v_bid=3192");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        JSONArray localJSONArray = (JSONArray)((JSONObject)localObject).get("preload_bids");
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          tbz.a((String)localJSONArray.get(i), null);
-          i += 1;
-        }
-        tbz.jdField_a_of_type_JavaLangString = ozs.a();
-        tbz.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (((JSONObject)localObject).has("use_main")) {
-          tbz.jdField_a_of_type_Boolean = ((Boolean)((JSONObject)localObject).get("use_main")).booleanValue();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is success!");
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ViolaAccessHelper", 2, "pre load all offline from offline is exception:" + localException.getMessage());
-        }
-        tbz.b();
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is empty!");
-    }
-    tbz.b();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a(int paramInt) {}
-  
-  public void b() {}
+  public boolean onPreDraw()
+  {
+    this.jdField_a_of_type_Tbz.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a) + tbz.a(this.jdField_a_of_type_Tbz));
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Tbz.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Tbz.a) + tbz.b(this.jdField_a_of_type_Tbz));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a).setVisibility(0);
+    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a, this.jdField_a_of_type_Tbz.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a)));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a).setVisibility(4);
+    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tbz.a, this.jdField_a_of_type_Int, this.b);
+    return true;
+  }
 }
 
 

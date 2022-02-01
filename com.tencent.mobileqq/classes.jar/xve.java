@@ -1,6 +1,17 @@
-public abstract interface xve
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class xve
+  implements View.OnClickListener
 {
-  public abstract void a(xvc paramxvc);
+  xve(xvb paramxvb) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

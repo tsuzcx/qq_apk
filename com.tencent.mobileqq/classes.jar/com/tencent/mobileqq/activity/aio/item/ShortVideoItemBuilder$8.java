@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahqw;
+import agnj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import java.util.Calendar;
 public class ShortVideoItemBuilder$8
   implements Runnable
 {
-  public ShortVideoItemBuilder$8(ahqw paramahqw) {}
+  public ShortVideoItemBuilder$8(agnj paramagnj) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class ShortVideoItemBuilder$8
     if (bool)
     {
       localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
-      ShortVideoUtils.a("", true);
+      ShortVideoUtils.deleteDownloadTempFile("", true);
     }
   }
 }

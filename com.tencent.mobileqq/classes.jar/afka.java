@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afka
-  implements View.OnClickListener
+  extends andl
 {
-  public afka(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public afka(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.refresh(65536);
   }
 }
 

@@ -2,18 +2,18 @@ package com.tencent.open.appstore.dl;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import bjjo;
-import bjsz;
+import bhpc;
+import bhyo;
 
 public class DownloadManagerV2$2
   implements Runnable
 {
-  public DownloadManagerV2$2(bjsz parambjsz, IntentFilter paramIntentFilter1, IntentFilter paramIntentFilter2) {}
+  public DownloadManagerV2$2(bhyo parambhyo, IntentFilter paramIntentFilter1, IntentFilter paramIntentFilter2) {}
   
   public void run()
   {
-    bjjo.a().a().registerReceiver(bjsz.a(this.this$0), this.a);
-    bjjo.a().a().registerReceiver(bjsz.a(this.this$0), this.b);
+    bhpc.a().a().registerReceiver(bhyo.a(this.this$0), this.a);
+    bhpc.a().a().registerReceiver(bhyo.a(this.this$0), this.b);
   }
 }
 

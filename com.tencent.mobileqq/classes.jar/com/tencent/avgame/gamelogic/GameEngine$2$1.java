@@ -1,19 +1,19 @@
 package com.tencent.avgame.gamelogic;
 
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
-import myk;
-import myl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import mzl;
+import mzm;
 
 public class GameEngine$2$1
   implements Runnable
 {
-  public GameEngine$2$1(myl parammyl) {}
+  public GameEngine$2$1(mzm parammzm) {}
   
   public void run()
   {
-    if (bhnv.a()) {}
-    for (int i = 2131690270;; i = 2131690312)
+    if (NetworkUtil.isNetworkAvailable()) {}
+    for (int i = 2131690295;; i = 2131690350)
     {
       String str = BaseApplicationImpl.getApplication().getString(i);
       this.a.a.a(10, str, this.a.a.a());

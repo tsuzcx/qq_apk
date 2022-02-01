@@ -3,22 +3,24 @@ package cooperation.qzone.video;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bmgk;
-import bmgt;
-import bndl;
-import bndr;
-import bnfk;
+import bkkq;
+import bkkz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import cooperation.qzone.plugin.QZonePluginUtils;
 import java.io.File;
 
 public class QZoneLiveVideoPluginProxyBroadcastReceiver
   extends PluginProxyBroadcastReceiver
 {
-  public static void a(Context paramContext, String paramString1, Intent paramIntent, String paramString2)
+  public static final String TAG = "QZoneLiveVideoPluginProxyBroadcastReceiver";
+  
+  public static void sendBroadcast(Context paramContext, String paramString1, Intent paramIntent, String paramString2)
   {
     paramIntent.putExtra("useSkinEngine", -1);
-    paramString2 = bnfk.a();
+    paramString2 = QZonePluginUtils.getLoadQZoneLivePluginId();
     if (TextUtils.isEmpty(paramString2)) {
       QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + paramString2);
     }
@@ -28,23 +30,23 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
       if (!paramString2.equals("qzone_live_video_plugin_hack.apk")) {
         break;
       }
-    } while (!new File(bnfk.a(paramContext), paramString2).exists());
+    } while (!new File(QZonePluginUtils.getPluginInstallDir(paramContext), paramString2).exists());
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "sendBroadcast 加载动态包:hackPluginID:" + paramString2);
     }
-    bndr localbndr = new bndr(0);
-    localbndr.b = "qzone_live_video_plugin_hack.apk";
-    localbndr.d = "QZoneLiveVideo";
-    localbndr.jdField_a_of_type_JavaLangString = paramString1;
-    localbndr.e = "com.qzone.adapter.livevideo.LiveVideoPluginPreloadBroadcastReceiver";
-    localbndr.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbndr.b = paramString2;
-    localbndr.d = "QZoneLiveVideo";
-    bndl.b(paramContext, localbndr);
+    IQZonePluginManager.PluginParams localPluginParams = new IQZonePluginManager.PluginParams(0);
+    localPluginParams.mPluginID = "qzone_live_video_plugin_hack.apk";
+    localPluginParams.mPluginName = "QZoneLiveVideo";
+    localPluginParams.mUin = paramString1;
+    localPluginParams.mConponentName = "com.qzone.adapter.livevideo.LiveVideoPluginPreloadBroadcastReceiver";
+    localPluginParams.mIntent = paramIntent;
+    localPluginParams.mPluginID = paramString2;
+    localPluginParams.mPluginName = "QZoneLiveVideo";
+    IQZonePluginManager.launchPluginBroadcast(paramContext, localPluginParams);
     return;
     if (paramString2.equals("qzone_live_video_plugin.apk"))
     {
-      paramString2 = new bmgt(0);
+      paramString2 = new bkkz(0);
       paramString2.b = "qzone_live_video_plugin.apk";
       paramString2.d = "QZoneLiveVideo";
       paramString2.jdField_a_of_type_JavaLangString = paramString1;
@@ -55,7 +57,7 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bmgk.b(paramContext, paramString2);
+      bkkq.b(paramContext, paramString2);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + paramString2);

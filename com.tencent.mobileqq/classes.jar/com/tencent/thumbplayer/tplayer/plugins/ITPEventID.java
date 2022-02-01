@@ -6,6 +6,7 @@ public class ITPEventID
   public static final int PLAYER_State_Create_Done = 101;
   public static final int PLAYER_State_Create_Start = 100;
   public static final int PLAYER_State_EndBuffering = 115;
+  public static final int PLAYER_State_First_Clip_Open = 124;
   public static final int PLAYER_State_First_Packet_Read = 119;
   public static final int PLAYER_State_On_Hls_Private_Tag = 117;
   public static final int PLAYER_State_Pause = 106;

@@ -1,54 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 
-public class sgp
-  implements qzx
+class sgp
 {
-  public sgp(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
   
-  public void a(Bundle paramBundle, float paramFloat)
+  sgp(sgn paramsgn, String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void a(Bundle paramBundle, int paramInt, float paramFloat)
+  @NotNull
+  public String toString()
   {
-    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 200: 
-      this.a.jdField_a_of_type_Qzx.a(paramBundle, (int)paramFloat);
-      return;
-    case 202: 
-      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-      return;
+    StringBuilder localStringBuilder = new StringBuilder().append("PlayParams{vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", url='").append(this.jdField_b_of_type_JavaLangString).append('\'').append(", playType=");
+    if (this.jdField_a_of_type_Int == 101) {}
+    for (String str = "VOD";; str = "LIVE") {
+      return str + '}';
     }
-    qzt.b(paramBundle);
-  }
-  
-  public void a(Bundle paramBundle, String paramString)
-  {
-    paramString = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a();
-    pfa.a().b(true);
-    ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 

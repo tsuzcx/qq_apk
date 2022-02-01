@@ -1,8 +1,14 @@
-public abstract interface smy
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
+public class smy
+  extends rmm
 {
-  public abstract void a();
+  public smy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    ReadInJoyListViewGroup.a(this.a).a(paramInt1, paramInt2, paramInt3);
+  }
 }
 
 

@@ -1,38 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pfg
-  implements Manager
+class pfg
+  extends pse
 {
-  private AppInterface a;
-  
-  public pfg(AppInterface paramAppInterface)
+  pfg(pey parampey, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
   {
-    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
-    this.a = paramAppInterface;
-    a();
+    super(paramString);
   }
   
-  public pfa a()
+  public void a(prx paramprx)
   {
-    return pfa.a();
-  }
-  
-  public void a()
-  {
-    pas.a();
-    pfa.a().a(this.a);
-  }
-  
-  public void b()
-  {
-    pfa.a().a(false);
-  }
-  
-  public void onDestroy()
-  {
-    b();
+    paramprx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
   }
 }
 

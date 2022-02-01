@@ -1,657 +1,332 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
+import android.view.Surface;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import java.nio.ByteBuffer;
 
 public class lol
+  extends lpd
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  private static String jdField_a_of_type_JavaLangString = "hwcodec_new2";
-  private static String b = "sharp/hwcodec_new/";
-  private static String c = "sharp/hwcodec_new2/";
-  private static String d = "avc_decoder/";
-  private static String e = "avc_encoder/";
-  private static String f = "hevc_decoder/";
-  private static String g = "hevc_encoder/";
-  private static String h = "test/";
-  private static String i = "white_list/";
-  private static String j = "black_list/";
-  private static String k = "min_sdk";
-  private static String l = "min_version";
-  private static String m = "max_w";
-  private static String n = "max_h";
-  private static String o = "model";
-  private static String p = "product";
-  private static String q = "fingerprint";
-  private static String r = "sdk";
-  private static String s = "version";
-  private static String t = "codec";
-  private static String u = "disable_sdk";
-  private static String v = "async/";
-  private static String w = "min_sdk";
-  private static String x = "codec";
-  private static String y = "async_min_sdk";
-  private String A;
-  private String B;
-  private String C;
-  private String D;
-  private String E;
-  private String F;
-  private String G;
-  private String H;
-  private String I;
-  private String J;
-  private String K;
-  private String L;
-  private String M;
-  private String N;
-  private String O;
-  private String P;
-  private String Q;
-  private String R;
-  private String S;
-  private String T;
-  private String U;
-  private String V;
-  private String W;
-  private String X;
-  private String Y;
-  private String Z;
-  private int jdField_a_of_type_Int = 1;
-  private lkk jdField_a_of_type_Lkk;
-  private String aa;
-  private String ab;
-  private String ac;
-  private String ad;
-  private String ae;
-  private String af;
-  private String ag;
-  private String ah;
-  private String ai;
-  private String aj;
-  private String ak;
-  private String al;
-  private String am;
-  private String an;
-  private String ao;
-  private String ap;
-  private String aq = b;
-  private String z;
+  private float jdField_a_of_type_Float = -1.0F;
+  private final int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private final lom jdField_a_of_type_Lom = new lom();
+  private lon jdField_a_of_type_Lon;
+  private lpm jdField_a_of_type_Lpm;
+  private final mwf jdField_a_of_type_Mwf = new mwf();
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private final int jdField_b_of_type_Int = 2;
+  private long jdField_b_of_type_Long;
+  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private final mwf jdField_b_of_type_Mwf = new mwf();
+  private boolean jdField_b_of_type_Boolean = true;
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private final int jdField_c_of_type_Int = 3;
+  private long jdField_c_of_type_Long;
+  private int d;
+  private int e;
+  private int f;
+  private int g = 100;
   
-  public lol(lkk paramlkk)
+  @RequiresApi(api=21)
+  private void b()
   {
-    if ((paramlkk != null) && (!paramlkk.a()) && (paramlkk.a().contains(jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Int = 2;
+    this.d = GlUtil.createTexture(36197);
+    GLES20.glBindTexture(36197, 0);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.d);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this, a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setDefaultBufferSize(this.e, this.f);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_Lom.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("EGLScreenCaptureThread", 2, "initGLEnv");
     }
-    this.jdField_a_of_type_Lkk = paramlkk;
-    if (this.jdField_a_of_type_Int == 2) {}
-    for (paramlkk = c;; paramlkk = b)
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
     {
-      this.aq = paramlkk;
-      QLog.i("CodecConfigParser", 1, "ver = " + this.jdField_a_of_type_Int + ", root = " + this.aq);
-      this.z = (this.aq + h + k);
-      this.A = (this.aq + h + u);
-      this.B = (this.aq + h + t);
-      this.C = (this.aq + h + y);
-      this.D = (this.aq + h + l);
-      this.E = (this.aq + d + i + k);
-      this.F = (this.aq + d + i + l);
-      this.G = (this.aq + d + j + o);
-      this.H = (this.aq + d + j + p);
-      this.I = (this.aq + d + j + q);
-      this.J = (this.aq + d + j + r);
-      this.K = (this.aq + d + j + s);
-      this.L = (this.aq + d + i + m);
-      this.M = (this.aq + d + i + n);
-      this.N = (this.aq + e + i + k);
-      this.O = (this.aq + e + i + l);
-      this.P = (this.aq + e + j + o);
-      this.Q = (this.aq + e + j + p);
-      this.R = (this.aq + e + j + q);
-      this.S = (this.aq + e + j + r);
-      this.T = (this.aq + e + j + s);
-      this.U = (this.aq + e + i + m);
-      this.V = (this.aq + e + i + n);
-      this.W = (this.aq + f + i + k);
-      this.X = (this.aq + f + i + l);
-      this.Y = (this.aq + f + j + o);
-      this.Z = (this.aq + f + j + p);
-      this.aa = (this.aq + f + j + q);
-      this.ab = (this.aq + f + j + r);
-      this.ac = (this.aq + f + j + s);
-      this.ad = (this.aq + f + i + m);
-      this.ae = (this.aq + f + i + n);
-      this.af = (this.aq + g + i + k);
-      this.ag = (this.aq + g + i + l);
-      this.ah = (this.aq + g + j + o);
-      this.ai = (this.aq + g + j + p);
-      this.aj = (this.aq + g + j + q);
-      this.ak = (this.aq + g + j + r);
-      this.al = (this.aq + g + j + s);
-      this.am = (this.aq + g + i + m);
-      this.an = (this.aq + g + i + n);
-      this.ao = (this.aq + v + w);
-      this.ap = (this.aq + v + x);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    }
+    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    {
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_Lpm != null)
+    {
+      this.jdField_a_of_type_Lpm.c();
+      this.jdField_a_of_type_Lpm = null;
+    }
+    this.jdField_a_of_type_Lom.b();
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.i("EGLScreenCaptureThread", 2, "releaseGLEnv");
+    }
+  }
+  
+  private void g()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-  }
-  
-  public static int a(lbs paramlbs)
-  {
-    if (Build.VERSION.SDK_INT < 16) {}
-    while ((paramlbs == null) || (Build.VERSION.SDK_INT < paramlbs.c) || (!a(paramlbs.jdField_a_of_type_JavaLangString, null)) || (mrm.a(paramlbs.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT)))) {
-      return 0;
+    if ((this.jdField_b_of_type_Mwf.a()) || (this.jdField_a_of_type_Mwf.a())) {
+      i();
     }
-    if ((paramlbs.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramlbs.d)) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  static boolean a(String paramString, String[] paramArrayOfString)
-  {
-    int i2 = mvd.b();
-    if (mvd.a(paramString) > i2) {
-      return false;
-    }
-    if ((paramArrayOfString != null) && (paramArrayOfString != null))
+    for (;;)
     {
-      int i3 = paramArrayOfString.length;
-      int i1 = 0;
-      for (;;)
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 2000L);
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("EGLScreenCaptureThread", 4, "check, param not valid.");
+      }
+    }
+  }
+  
+  private void h()
+  {
+    boolean bool = this.jdField_a_of_type_Mwf.a(this.jdField_b_of_type_Mwf);
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
+    {
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      }
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_Mwf.jdField_a_of_type_Int, this.jdField_a_of_type_Mwf.jdField_b_of_type_Int, 33984);
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if ((this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
       {
-        if (i1 >= i3) {
-          break label51;
+        if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+          this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
         }
-        if (mvd.a(paramArrayOfString[i1]) == i2) {
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_Mwf.jdField_a_of_type_Int, this.jdField_a_of_type_Mwf.jdField_b_of_type_Int, 33985);
+      }
+      if (this.jdField_a_of_type_Lpm == null)
+      {
+        this.jdField_a_of_type_Lpm = new lpm();
+        this.jdField_a_of_type_Lpm.b();
+      }
+      if (bool) {
+        this.jdField_a_of_type_Lpm.a(this.jdField_a_of_type_Mwf.jdField_a_of_type_Int, this.jdField_a_of_type_Mwf.jdField_b_of_type_Int);
+      }
+      if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (bool)) {
+        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_a_of_type_Mwf.jdField_a_of_type_Int * this.jdField_a_of_type_Mwf.jdField_b_of_type_Int * 3 / 2);
+      }
+    }
+    if ((this.jdField_a_of_type_ArrayOfByte == null) || (bool)) {
+      this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Mwf.jdField_a_of_type_Int * this.jdField_a_of_type_Mwf.jdField_b_of_type_Int * 3 / 2];
+    }
+  }
+  
+  private void i()
+  {
+    long l6 = SystemClock.elapsedRealtime();
+    h();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    if (this.jdField_b_of_type_ArrayOfFloat == null)
+    {
+      this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.e, this.f, this.jdField_a_of_type_Mwf.jdField_a_of_type_Int, this.jdField_a_of_type_Mwf.jdField_b_of_type_Int);
+      Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.d, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    long l7 = Math.abs(SystemClock.elapsedRealtime() - l6);
+    long l4 = 0L;
+    long l5 = 0L;
+    long l1 = 0L;
+    long l3;
+    long l2;
+    Object localObject;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      l1 = SystemClock.elapsedRealtime();
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      this.jdField_a_of_type_Lpm.a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+      l3 = Math.abs(SystemClock.elapsedRealtime() - l1);
+      l1 = SystemClock.elapsedRealtime();
+      GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Mwf.jdField_a_of_type_Int, this.jdField_a_of_type_Mwf.jdField_b_of_type_Int * 3 / 8, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      l2 = Math.abs(SystemClock.elapsedRealtime() - l1);
+      this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Mwf.jdField_a_of_type_Int * this.jdField_a_of_type_Mwf.jdField_b_of_type_Int * 3 / 2);
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      localObject = this.jdField_a_of_type_Lon;
+      if (localObject == null) {
+        break label398;
+      }
+      l1 = SystemClock.elapsedRealtime();
+      ((lon)localObject).a(this.jdField_a_of_type_ArrayOfByte, this.g, 2, this.jdField_a_of_type_Mwf);
+      l1 = SystemClock.elapsedRealtime() - l1;
+    }
+    for (;;)
+    {
+      this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+      l4 = this.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Lom.a(l7, l3, l2, l1, l4 - l6);
+      return;
+      localObject = GlUtil.captureFrame(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), this.jdField_a_of_type_Mwf.jdField_a_of_type_Int, this.jdField_a_of_type_Mwf.jdField_b_of_type_Int, 0);
+      lon locallon = this.jdField_a_of_type_Lon;
+      l3 = l4;
+      l2 = l5;
+      if (locallon != null)
+      {
+        l1 = SystemClock.elapsedRealtime();
+        locallon.a((Bitmap)localObject, this.jdField_a_of_type_Mwf);
+        l1 = SystemClock.elapsedRealtime() - l1;
+        l3 = l4;
+        l2 = l5;
+        continue;
+        label398:
+        l1 = 0L;
+      }
+    }
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public Surface a()
+  {
+    return this.jdField_a_of_type_AndroidViewSurface;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+  }
+  
+  @RequiresApi(api=21)
+  public void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      c();
+      b();
+      return;
+    case 2: 
+      e();
+      f();
+      return;
+    }
+    g();
+  }
+  
+  public void a(lon paramlon)
+  {
+    this.jdField_a_of_type_Lon = paramlon;
+  }
+  
+  public void a(mwf parammwf)
+  {
+    if ((parammwf == null) || (!parammwf.a())) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("EGLScreenCaptureThread", 4, "updateRecordParam cur[" + this.jdField_b_of_type_Mwf + "], come[" + parammwf + "]");
+    }
+    this.jdField_b_of_type_Mwf.a(parammwf);
+  }
+  
+  @RequiresApi(api=18)
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("EGLScreenCaptureThread", 4, "quit");
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
+    if ((paramBoolean) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quitSafely();
+    }
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    int i = 0;
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Long += 1L;
+      l = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_ArrayOfFloat == null) {
+        this.jdField_a_of_type_ArrayOfFloat = new float[16];
+      }
+      paramSurfaceTexture.updateTexImage();
+      paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_Float = ((float)paramSurfaceTexture.getTimestamp());
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("EGLScreenCaptureThread", 4, "onFrameAvailable, time[" + this.jdField_a_of_type_Float + "]");
+    return;
+    long l = Math.abs(l - this.jdField_c_of_type_Long);
+    if (this.jdField_c_of_type_Long != 0L) {
+      if (l >= this.jdField_a_of_type_Mwf.jdField_a_of_type_Long) {}
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {}
+      for (l = Math.min(this.jdField_a_of_type_Mwf.jdField_a_of_type_Long - l, 2000L);; l = 2000L)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, l);
+        if ((i != 0) || ((!this.jdField_b_of_type_Mwf.a()) && (!this.jdField_a_of_type_Mwf.a()))) {
           break;
         }
-        i1 += 1;
+        i();
+        return;
       }
     }
-    label51:
-    return true;
-  }
-  
-  public loh a()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lkk == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        loh localloh = new loh(4, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Lkk, this.W);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkk, this.X, this.ac)))
-          {
-            localObject = a(this.jdField_a_of_type_Lkk, this.ab);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Lkk, this.Y);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Lkk, this.Z);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Lkk, this.aa);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Lkk, this.ad);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              localloh.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Lkk, this.ae);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              localloh.c = localObject[0];
-            }
-            return localloh;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
-    return null;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Lkk == null) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        int[] arrayOfInt = a(this.jdField_a_of_type_Lkk, this.ao);
-        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
-        {
-          arrayOfInt = a(this.jdField_a_of_type_Lkk, this.ap);
-          if (arrayOfInt != null)
-          {
-            boolean bool = mrm.a(arrayOfInt, paramInt);
-            if (bool) {
-              return true;
-            }
-          }
-        }
-      }
-      catch (Exception localException) {}
-    }
-    return false;
-  }
-  
-  boolean a(lkk paramlkk, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Int != 2) {}
-    for (;;)
-    {
-      return true;
-      int i2 = mvd.b();
-      if (mvd.a(paramlkk.a(paramString1, "")) > i2) {
-        return false;
-      }
-      if (paramString2 != null)
-      {
-        paramlkk = paramlkk.a(paramString2);
-        if (paramlkk != null)
-        {
-          int i3 = paramlkk.length;
-          int i1 = 0;
-          while (i1 < i3)
-          {
-            if (mvd.a(paramlkk[i1]) == i2) {
-              return false;
-            }
-            i1 += 1;
-          }
-        }
-      }
-    }
-  }
-  
-  int[] a(lkk paramlkk, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramlkk.a(paramString);
-  }
-  
-  String[] a(lkk paramlkk, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramlkk.a(paramString);
-  }
-  
-  public loh b()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lkk == null) {
-      return null;
-    }
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < 19.");
-      return null;
-    }
-    loh localloh = new loh(8, true);
-    try
-    {
-      localObject = a(this.jdField_a_of_type_Lkk, this.af);
-      if (localObject == null)
-      {
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. minsdk == null.");
-        return null;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. err msg = " + localException.getMessage());
-      return null;
-    }
-    if (Build.VERSION.SDK_INT < localObject[0])
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < minsdk[0]. minsdk[0] = " + localObject[0]);
-      return null;
-    }
-    if (!a(this.jdField_a_of_type_Lkk, this.ag, this.al))
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. checkQQVer failed.");
-      return null;
-    }
-    Object localObject = a(this.jdField_a_of_type_Lkk, this.ak);
-    int i1;
-    if (localObject != null)
-    {
-      i1 = 0;
-      if (i1 < localObject.length)
-      {
-        if (Build.VERSION.SDK_INT != localObject[i1]) {
-          break label453;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT == disablesdk[i].");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Lkk, this.ah);
-    if (localObject != null)
-    {
-      i1 = 0;
-      label248:
-      if (i1 < localObject.length)
-      {
-        if (!Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-          break label460;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.MODEL.equalsIgnoreCase(models[i]).");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Lkk, this.ai);
-    if (localObject != null)
-    {
-      i1 = 0;
-      label300:
-      if (i1 < localObject.length)
-      {
-        if (!Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-          break label467;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(products[i]).");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Lkk, this.aj);
-    if (localObject != null) {
-      i1 = i2;
-    }
-    for (;;)
-    {
-      if (i1 < localObject.length)
-      {
-        if (Build.PRODUCT.equalsIgnoreCase(localObject[i1]))
-        {
-          QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(fingerprints[i].");
-          return null;
-        }
-      }
-      else
-      {
-        localObject = a(this.jdField_a_of_type_Lkk, this.am);
-        if ((localObject != null) && (localObject[0] > 0)) {
-          localException.b = localObject[0];
-        }
-        localObject = a(this.jdField_a_of_type_Lkk, this.an);
-        if ((localObject != null) && (localObject[0] > 0)) {
-          localException.c = localObject[0];
-        }
-        return localException;
-        label453:
-        i1 += 1;
-        break;
-        label460:
-        i1 += 1;
-        break label248;
-        label467:
-        i1 += 1;
-        break label300;
-      }
-      i1 += 1;
-    }
-  }
-  
-  public loh c()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lkk == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        loh localloh = new loh(1, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Lkk, this.E);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkk, this.F, this.K)))
-          {
-            localObject = a(this.jdField_a_of_type_Lkk, this.J);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Lkk, this.G);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Lkk, this.H);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Lkk, this.I);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Lkk, this.L);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              localloh.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Lkk, this.M);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              localloh.c = localObject[0];
-            }
-            return localloh;
-          }
-        }
-        catch (Exception localException) {}
-      }
-    }
-    return null;
-  }
-  
-  public loh d()
-  {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lkk == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        loh localloh = new loh(2, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Lkk, this.N);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkk, this.O, this.T)))
-          {
-            localObject = a(this.jdField_a_of_type_Lkk, this.S);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Lkk, this.P);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Lkk, this.Q);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Lkk, this.R);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Lkk, this.U);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              localloh.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Lkk, this.V);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              localloh.c = localObject[0];
-            }
-            return localloh;
-          }
-        }
-        catch (Exception localException) {}
-      }
-    }
-    return null;
   }
 }
 

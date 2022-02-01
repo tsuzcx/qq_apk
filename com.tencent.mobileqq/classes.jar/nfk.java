@@ -1,58 +1,43 @@
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.1;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.2;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.3;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.4;
 
 public class nfk
-  extends abiv
+  implements nhb
 {
-  static final String[] a = { "ProfileService", "OnlinePush" };
-  private final HashMap<String, nfl> b = new HashMap();
+  public nfk(AVGameControlUIImpl paramAVGameControlUIImpl) {}
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void a()
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (nfl localnfl = (nfl)this.b.get(str);; localnfl = null)
-    {
-      if (localnfl != null) {}
-      for (paramToServiceMsg = localnfl.a(paramToServiceMsg, paramFromServiceMsg);; paramToServiceMsg = null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "decode, cmd[" + str + "], coder[" + localnfl + "], result[" + paramToServiceMsg + "]");
-        }
-        return paramToServiceMsg;
-      }
-    }
+    nht.a().b().post(new AVGameControlUIImpl.3.4(this));
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a(long paramLong) {}
+  
+  public void a(long paramLong, boolean paramBoolean) {}
+  
+  public void b(long paramLong)
   {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (nfl localnfl = (nfl)this.b.get(str);; localnfl = null)
-    {
-      if (localnfl != null) {}
-      for (boolean bool = localnfl.a(paramToServiceMsg, paramUniPacket);; bool = false)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "encodeReqMsg, cmd[" + str + "], coder[" + localnfl + "], ret[" + bool + "]");
-        }
-        return bool;
-      }
-    }
+    nht.a().b().post(new AVGameControlUIImpl.3.3(this, paramLong));
   }
   
-  public String[] a()
+  public void b(long paramLong, boolean paramBoolean)
   {
-    return a;
+    nht.a().b().post(new AVGameControlUIImpl.3.1(this));
+    njf.a(paramBoolean);
+  }
+  
+  public void c(long paramLong, boolean paramBoolean)
+  {
+    nht.a().b().post(new AVGameControlUIImpl.3.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class awmv
-  implements bliz
+final class awmv
+  implements DialogInterface.OnClickListener
 {
-  public awmv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, awnq paramawnq) {}
+  awmv(Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Awnq.b(false);
-      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-      }
-      return;
-      awml.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Awnq.a().e, this.jdField_a_of_type_Awnq.a().b);
-      continue;
-      this.jdField_a_of_type_Awnq.g();
-      continue;
-      this.jdField_a_of_type_Awnq.g();
-    }
+    awmq.a(this.a, 10);
   }
 }
 

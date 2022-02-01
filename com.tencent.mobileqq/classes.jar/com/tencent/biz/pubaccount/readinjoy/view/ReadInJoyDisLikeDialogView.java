@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import sgw;
-import sgx;
+import smi;
+import smj;
 
 public class ReadInJoyDisLikeDialogView
   extends FrameLayout
@@ -29,8 +29,8 @@ public class ReadInJoyDisLikeDialogView
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   protected Boolean a;
   protected ArrayList<DislikeInfo> a;
-  protected sgw a;
-  protected sgx a;
+  protected smi a;
+  protected smj a;
   protected int[] a;
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   private Button[] jdField_a_of_type_ArrayOfAndroidWidgetButton;
@@ -42,8 +42,8 @@ public class ReadInJoyDisLikeDialogView
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131380424, 2131380425, 2131380426, 2131380427, 2131380428, 2131380429, 2131380430, 2131380431 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131380419, 2131380420, 2131380421, 2131380422 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131380148, 2131380149, 2131380150, 2131380151, 2131380152, 2131380153, 2131380154, 2131380155 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131380143, 2131380144, 2131380145, 2131380146 };
     a(paramContext);
   }
   
@@ -105,24 +105,24 @@ public class ReadInJoyDisLikeDialogView
   
   public void a()
   {
-    this.jdField_a_of_type_Sgx = null;
-    this.jdField_a_of_type_Sgw = null;
+    this.jdField_a_of_type_Smj = null;
+    this.jdField_a_of_type_Smi = null;
   }
   
   protected void a(Context paramContext)
   {
     int j = 0;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560076, this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380417));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131167302));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380435));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560082, this);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380141));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131167337));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380159));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380432));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131698585));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380414));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380156));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131698820));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380138));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380416));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380140));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#FFF6F7FA"));
     this.jdField_a_of_type_ArrayOfAndroidWidgetButton = new Button[this.jdField_a_of_type_ArrayOfInt.length];
@@ -147,7 +147,7 @@ public class ReadInJoyDisLikeDialogView
     int i;
     switch (paramView.getId())
     {
-    case 2131380415: 
+    case 2131380139: 
     default: 
       i = 0;
       if (i < this.jdField_a_of_type_ArrayOfInt.length) {
@@ -176,12 +176,12 @@ public class ReadInJoyDisLikeDialogView
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if ((this.jdField_a_of_type_Sgx == null) || (this.jdField_a_of_type_Sgx.a(paramView, this.jdField_b_of_type_JavaUtilArrayList, null)))
+        if ((this.jdField_a_of_type_Smj == null) || (this.jdField_a_of_type_Smj.a(paramView, this.jdField_b_of_type_JavaUtilArrayList, null)))
         {
           a();
           continue;
-          if (this.jdField_a_of_type_Sgw != null) {
-            this.jdField_a_of_type_Sgw.a();
+          if (this.jdField_a_of_type_Smi != null) {
+            this.jdField_a_of_type_Smi.a();
           }
           a();
           continue;
@@ -211,14 +211,14 @@ public class ReadInJoyDisLikeDialogView
     }
   }
   
-  public void setOnComplainListener(sgw paramsgw)
+  public void setOnComplainListener(smi paramsmi)
   {
-    this.jdField_a_of_type_Sgw = paramsgw;
+    this.jdField_a_of_type_Smi = paramsmi;
   }
   
-  public void setOnUninterestConfirmListener(sgx paramsgx)
+  public void setOnUninterestConfirmListener(smj paramsmj)
   {
-    this.jdField_a_of_type_Sgx = paramsgx;
+    this.jdField_a_of_type_Smj = paramsmj;
   }
   
   public void setUninterestData(ArrayList<DislikeInfo> paramArrayList)
@@ -245,7 +245,7 @@ public class ReadInJoyDisLikeDialogView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView
  * JD-Core Version:    0.7.0.1
  */

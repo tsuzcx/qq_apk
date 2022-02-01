@@ -1,6 +1,9 @@
-public abstract interface ajwk
+public class ajwk
 {
-  public abstract void a();
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

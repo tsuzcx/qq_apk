@@ -1,26 +1,33 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
-class avgz
-  implements beup
+public class avgz
+  implements Animator.AnimatorListener
 {
-  avgz(avgx paramavgx) {}
+  public avgz(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void a(bevl parambevl, bevm parambevm)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((parambevl != null) && (parambevm != null) && ((parambevl instanceof beum)))
-    {
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long);
-      }
+    PoiSlideBottomPanel.c(this.a, false);
+    if (PoiSlideBottomPanel.e(this.a) != null) {
+      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
     }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.b(this.a, false);
+    if (PoiSlideBottomPanel.c(this.a) != null) {
+      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.a(this.a, true);
   }
 }
 

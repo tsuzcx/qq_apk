@@ -1,18 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class afeo
-  implements View.OnTouchListener
 {
-  public afeo(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
+  public int a;
+  public TroopInfo a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public afeo(int paramInt, String paramString, TroopInfo paramTroopInfo)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = paramTroopInfo;
   }
 }
 

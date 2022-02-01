@@ -1,161 +1,138 @@
-import android.os.Parcel;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper;
-import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.UnsupportedFieldTypeException;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class alrc
-  extends alra
+  extends amua
 {
-  private static final byte[] a = { 1, 2, 3, 0 };
-  private static final byte[] b = { 2, 3, 4, 1 };
+  public alrc(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  private static final boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      bool1 = true;
+    super.a(paramString1, paramString2, paramBoolean, paramString3, paramString4, paramBoolean1);
+    QLog.e("HotchatActivity", 1, String.format("join hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
+  }
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    super.a(paramString1, paramBoolean, paramString2);
+    if (HotChatCenterFragment.a(this.a) != null) {
+      HotChatCenterFragment.a(this.a).sendEmptyMessage(1);
     }
+    QLog.e("HotchatActivity", 1, String.format("Exit hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2 }));
+  }
+  
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  {
+    if (!paramBoolean)
+    {
+      QLog.e("HotchatActivity", 1, String.format("[onQuickJoinHotChat] failed code:%s result:%s", new Object[] { paramString, Integer.valueOf(paramInt) }));
+      paramHotChatInfo = Message.obtain();
+      paramHotChatInfo.what = 3;
+      paramHotChatInfo.obj = amtj.a(2131704672);
+      if (HotChatCenterFragment.a(this.a) != null) {
+        HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
+      }
+      return;
+      break label181;
+      break label181;
+    }
+    label181:
+    label488:
     do
     {
       do
       {
+        Iterator localIterator;
         do
         {
-          return bool1;
-          bool1 = bool2;
-        } while (paramArrayOfByte1 == null);
-        bool1 = bool2;
-      } while (paramArrayOfByte2 == null);
-      bool1 = bool2;
-    } while (paramArrayOfByte1.length != paramArrayOfByte2.length);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayOfByte1.length) {
-        break label66;
-      }
-      bool1 = bool2;
-      if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
-        break;
-      }
-      i += 1;
-    }
-    label66:
-    return true;
-  }
-  
-  protected Object a(Object paramObject, Field paramField, byte[] paramArrayOfByte)
-  {
-    if ((paramObject instanceof RecentBaseData))
-    {
-      if (paramField.getType() == MsgSummary.class)
-      {
-        paramObject = Parcel.obtain();
-        try
-        {
-          paramObject.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-          paramObject.setDataPosition(0);
-          paramField = new byte[4];
-          paramObject.readByteArray(paramField);
-          boolean bool = a(paramField, a);
-          if (bool) {
-            return null;
-          }
-          if (!a(paramField, b)) {
-            throw new RuntimeException("Bad MsgSummary header");
-          }
-        }
-        finally
-        {
-          paramObject.recycle();
-        }
-        paramField = new MsgSummary();
-        b(paramField, paramObject, ParcelHelper.a(paramField));
-        paramObject.recycle();
-        return paramField;
-      }
-      QLog.e("Recent.Processor", 1, new Object[] { "unparcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
-      return null;
-    }
-    QLog.e("Recent.Processor", 1, new Object[] { "unparcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
-    return null;
-  }
-  
-  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
-  {
-    super.a(paramObject, paramArrayList, paramParcel);
-  }
-  
-  protected byte[] a(Object paramObject, Field paramField)
-  {
-    if ((paramObject instanceof RecentBaseData))
-    {
-      if (paramField.getType() == MsgSummary.class)
-      {
-        Parcel localParcel = Parcel.obtain();
-        localParcel.setDataPosition(0);
-        try
-        {
-          localObject = (MsgSummary)paramField.get(paramObject);
-          if (localObject == null) {
-            localParcel.writeByteArray(a);
-          }
-          for (;;)
+          do
           {
-            paramObject = localParcel.marshall();
-            localParcel.recycle();
-            return paramObject;
-            localParcel.writeByteArray(b);
-            c(localObject, ParcelHelper.a(localObject), localParcel);
+            paramWifiPOIInfo = paramString;
+            if (TextUtils.isEmpty(paramString))
+            {
+              paramWifiPOIInfo = paramString;
+              if (paramHotChatInfo != null) {
+                paramWifiPOIInfo = paramHotChatInfo.name;
+              }
+            }
+            if (paramWifiPOIInfo != null) {
+              break;
+            }
+            paramHotChatInfo = Message.obtain();
+            paramHotChatInfo.obj = amtj.a(2131704670);
+            paramHotChatInfo.what = 3;
+          } while (HotChatCenterFragment.a(this.a) == null);
+          HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
+          return;
+          if ((this.a.a == null) || (this.a.a.size() <= 0)) {
+            break;
           }
-          paramObject = paramObject.getClass();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localObject = new StringBuilder().append("get MsgSummary error. object=");
-          if (paramObject == null) {
-            break label145;
-          }
-        }
-        Object localObject = ((StringBuilder)localObject).append(paramObject).append(", field=");
-        if (paramField != null) {}
-        for (paramObject = paramField.getName();; paramObject = "NullField")
-        {
-          throw new RuntimeException(paramObject, localIllegalAccessException);
-          label145:
-          paramObject = "NullObject";
+          localIterator = this.a.a.entrySet().iterator();
+        } while (!localIterator.hasNext());
+        Object localObject = (Map.Entry)localIterator.next();
+        if (localObject == null) {
           break;
         }
-      }
-      StringBuilder localStringBuilder = new StringBuilder().append("unrecognize type ");
-      if (paramField != null)
-      {
-        paramField = paramField.getType();
-        paramField = localStringBuilder.append(paramField).append("(");
-        if (paramObject == null) {
-          break label226;
+        paramString = (String)((Map.Entry)localObject).getValue();
+        localObject = (String)((Map.Entry)localObject).getKey();
+        if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(paramWifiPOIInfo))) {
+          break;
         }
-      }
-      label226:
-      for (paramObject = paramObject.getClass();; paramObject = "NullObject")
-      {
-        throw new ParcelHelper.UnsupportedFieldTypeException(paramObject + ")");
-        paramField = "NullField";
-        break;
-      }
-    }
-    QLog.e("Recent.Processor", 1, new Object[] { "parcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
-    return null;
+        if (QLog.isColorLevel()) {
+          QLog.d("HotchatActivity", 2, "onQuickJoinHotChat, hotcode:" + paramWifiPOIInfo);
+        }
+        paramWifiPOIInfo = Message.obtain();
+        if ((paramHotChatInfo == null) || ((paramInt != 1) && (paramInt != 2))) {
+          break label488;
+        }
+        paramWifiPOIInfo.what = 2;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name, Integer.valueOf(paramHotChatInfo.apolloGameId) };
+        if (paramHotChatInfo.apolloGameId > 0) {
+          VipUtils.a(null, "cmshow", "Apollo", "join_reliao", 1, 0, new String[] { String.valueOf(paramHotChatInfo.apolloGameId) });
+        }
+        if (HotChatCenterFragment.a(this.a).get() != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("HotchatActivity", 2, String.format("[onQuickJoinHotChat] remove uin:%s code:%s", new Object[] { localObject, paramString }));
+          }
+          ((amtm)HotChatCenterFragment.a(this.a).get()).b((String)localObject);
+        }
+        this.a.a.remove(localObject);
+      } while (HotChatCenterFragment.a(this.a) == null);
+      HotChatCenterFragment.a(this.a).sendMessage(paramWifiPOIInfo);
+      HotChatCenterFragment.a(this.a).sendEmptyMessage(1);
+      return;
+      QLog.e("HotchatActivity", 1, "[onQuickJoinHotChat] join failed");
+      paramHotChatInfo = Message.obtain();
+      paramHotChatInfo.obj = amtj.a(2131704671);
+      paramHotChatInfo.what = 3;
+    } while (HotChatCenterFragment.a(this.a) == null);
+    HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
+    return;
+    QLog.e("HotchatActivity", 1, "[onQuickJoinHotChat] not click at all");
   }
   
-  void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    super.b(paramObject, paramArrayList, paramParcel);
+    super.a(paramBoolean, paramString1, paramInt, paramString2, paramString3);
+    QLog.e("HotchatActivity", 1, String.format("Kicked out  hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
+  }
+  
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    super.b(paramBoolean, paramString1, paramInt, paramString2, paramString3);
+    QLog.e("HotchatActivity", 1, String.format("Kicked out hotchat by admin  uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
   }
 }
 

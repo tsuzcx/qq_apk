@@ -13,13 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bhsr;
-import boem;
-import boyj;
-import bpbr;
-import bpji;
-import bpjk;
+import bljd;
+import bmdb;
+import bmme;
+import bmmg;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -32,52 +31,88 @@ import com.tencent.tavcut.view.TAVCutVideoView;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbsAEPublishVideoProcessFragment
   extends PublicBaseFragment
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private bpjk jdField_a_of_type_Bpjk = bpji.a();
-  public MoviePlayer a;
-  public TAVCutVideoSession a;
-  protected TAVCutVideoView a;
-  protected String a;
+  private static final String TAG = "AbsAEPublishVideoProces";
+  private Dialog mLoadingDialog;
+  protected MoviePlayer mMoviePlayer;
+  protected String missionId;
+  protected TAVCutVideoSession tavCutVideoSession;
+  protected TAVCutVideoView tavCutVideoView;
+  private bmmg videoParam = bmme.a();
   
-  private void a()
+  private String getMissionId()
+  {
+    Log.d("AbsAEPublishVideoProces", "missionId尝试获取");
+    Bundle localBundle = getArguments();
+    String str1 = "";
+    if (getActivity().getIntent().getExtras() != null) {
+      str1 = getActivity().getIntent().getStringExtra("key_ae_video_mission_id");
+    }
+    String str2 = str1;
+    if (StringUtil.isEmpty(str1))
+    {
+      str2 = str1;
+      if (localBundle != null)
+      {
+        str2 = str1;
+        if (localBundle.containsKey("key_ae_video_mission_id")) {
+          str2 = localBundle.getString("key_ae_video_mission_id");
+        }
+      }
+    }
+    return str2;
+  }
+  
+  private void initTavCutAndPlayer()
   {
     Log.d("AbsAEPublishVideoProces", "initTavCutAndPlayer: 开始初始化tavcutsession、moviePlayer");
-    MediaModel localMediaModel = bpbr.a().a(this.jdField_a_of_type_JavaLangString);
-    if ((bhsr.a(this.jdField_a_of_type_JavaLangString)) || (a(localMediaModel)))
+    MediaModel localMediaModel = bmdb.a().a(this.missionId);
+    if ((StringUtil.isEmpty(this.missionId)) || (isMediaModelBroken(localMediaModel)))
     {
-      Log.e("AbsAEPublishVideoProces", "missionId异常！合成model损坏：" + a(localMediaModel));
+      Log.e("AbsAEPublishVideoProces", "missionId异常！合成model损坏：" + isMediaModelBroken(localMediaModel));
       QQToast.a(getActivity(), "视频合成信息异常", 0).a();
       return;
     }
     VideoResourceModel localVideoResourceModel = ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource();
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = new MoviePlayer();
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setLoopPlay(true);
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setBackColor(b());
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = new TAVCutVideoSession();
+    this.mMoviePlayer = new MoviePlayer();
+    this.mMoviePlayer.setLoopPlay(true);
+    this.mMoviePlayer.setBackColor(getPlayerBackColor());
+    this.tavCutVideoSession = new TAVCutVideoSession();
     SessionConfig localSessionConfig = new SessionConfig();
     localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     localSessionConfig.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bpjk.a());
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setSessionConfig(localSessionConfig);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setVideoPath(localVideoResourceModel.getPath());
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setMediaModel(localMediaModel);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addPlayer(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setTAVCutVideoView(this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.init(getActivity());
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setClip(Long.valueOf(localVideoResourceModel.getSelectTimeStart()), Long.valueOf(localVideoResourceModel.getSelectTimeDuration()), true);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerTouchEnable(false);
-    a(localVideoResourceModel);
+    localSessionConfig.setMaxIntermediateRenderSize(this.videoParam.a());
+    if ((this.missionId != null) && (this.missionId.startsWith("multi_video_")))
+    {
+      AEEditorMultiVideoEditFragment.a(getActivity(), this.tavCutVideoSession, this.videoParam, localMediaModel, this.mMoviePlayer, this.tavCutVideoView);
+      this.tavCutVideoSession.restoreStickersWithLyric(new ArrayList(localMediaModel.getMediaEffectModel().getStickerModelList()));
+    }
+    for (;;)
+    {
+      this.tavCutVideoSession.setStickerTouchEnable(false);
+      customizeBindingData(localVideoResourceModel);
+      return;
+      this.tavCutVideoSession.setSessionConfig(localSessionConfig);
+      this.tavCutVideoSession.setVideoPath(localVideoResourceModel.getPath());
+      this.tavCutVideoSession.setMediaModel(localMediaModel);
+      this.tavCutVideoSession.addPlayer(this.mMoviePlayer);
+      this.tavCutVideoSession.setTAVCutVideoView(this.tavCutVideoView);
+      this.tavCutVideoSession.init(getActivity());
+      this.tavCutVideoSession.setClip(Long.valueOf(localVideoResourceModel.getSelectTimeStart()), Long.valueOf(localVideoResourceModel.getSelectTimeDuration()), true);
+    }
   }
   
-  private boolean a(MediaModel paramMediaModel)
+  private boolean isMediaModelBroken(MediaModel paramMediaModel)
   {
     boolean bool2 = false;
     Log.e("AbsAEPublishVideoProces", "检查损坏：mediaModel = " + paramMediaModel);
@@ -86,17 +121,17 @@ public abstract class AbsAEPublishVideoProcessFragment
     {
       localStringBuilder = new StringBuilder().append("损坏原因：videos.size = 0 ");
       if (paramMediaModel.getMediaResourceModel().getVideos().size() != 0) {
-        break label165;
+        break label168;
       }
       bool1 = true;
       Log.e("AbsAEPublishVideoProces", bool1);
       localStringBuilder = new StringBuilder().append("损坏原因：video == null ");
       if (paramMediaModel.getMediaResourceModel().getVideos().get(0) != null) {
-        break label170;
+        break label173;
       }
     }
-    label165:
-    label170:
+    label168:
+    label173:
     for (boolean bool1 = true;; bool1 = false)
     {
       Log.e("AbsAEPublishVideoProces", bool1);
@@ -115,32 +150,24 @@ public abstract class AbsAEPublishVideoProcessFragment
     }
   }
   
-  private String b()
+  abstract void bindViews(View paramView);
+  
+  abstract void customizeBindingData(VideoResourceModel paramVideoResourceModel);
+  
+  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    Log.d("AbsAEPublishVideoProces", "missionId尝试获取");
-    Bundle localBundle = getArguments();
-    String str1 = "";
-    if (getActivity().getIntent().getExtras() != null) {
-      str1 = getActivity().getIntent().getStringExtra("key_ae_video_mission_id");
-    }
-    String str2 = str1;
-    if (bhsr.a(str1))
+    if (paramInt == 4)
     {
-      str2 = str1;
-      if (localBundle != null)
-      {
-        str2 = str1;
-        if (localBundle.containsKey("key_ae_video_mission_id")) {
-          str2 = localBundle.getString("key_ae_video_mission_id");
-        }
-      }
+      getActivity().setResult(0);
+      getActivity().finish();
+      return true;
     }
-    return str2;
+    return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  protected abstract int a();
+  protected abstract int getLayoutId();
   
-  protected String a()
+  protected String getMediaPath()
   {
     Log.d("AbsAEPublishVideoProces", "MediaPath尝试获取");
     Bundle localBundle = getArguments();
@@ -149,7 +176,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = getActivity().getIntent().getStringExtra("key_video_media_path");
     }
     String str2 = str1;
-    if (bhsr.a(str1))
+    if (StringUtil.isEmpty(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -163,40 +190,7 @@ public abstract class AbsAEPublishVideoProcessFragment
     return str2;
   }
   
-  abstract void a(View paramView);
-  
-  abstract void a(VideoResourceModel paramVideoResourceModel);
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!getActivity().isFinishing())
-    {
-      if (!paramBoolean) {
-        break label92;
-      }
-      if (this.jdField_a_of_type_AndroidAppDialog == null)
-      {
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(getActivity(), 2131755824);
-        this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559572);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578)).setText("正在保存封面...");
-      }
-      this.jdField_a_of_type_AndroidAppDialog.show();
-    }
-    label92:
-    while ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-  }
-  
-  protected int b()
-  {
-    return getResources().getColor(2131165261);
-  }
-  
-  public int c()
+  protected int getMediaPosition()
   {
     Log.d("AbsAEPublishVideoProces", "mediaPosition尝试获取");
     Bundle localBundle = getArguments();
@@ -219,15 +213,9 @@ public abstract class AbsAEPublishVideoProcessFragment
     }
   }
   
-  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  protected int getPlayerBackColor()
   {
-    if (paramInt == 4)
-    {
-      getActivity().setResult(0);
-      getActivity().finish();
-      return true;
-    }
-    return super.doOnKeyDown(paramInt, paramKeyEvent);
+    return getResources().getColor(2131165267);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -259,30 +247,54 @@ public abstract class AbsAEPublishVideoProcessFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_JavaLangString = b();
-    boem.a();
-    TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new boyj(this));
+    this.missionId = getMissionId();
+    bljd.a();
+    TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new AbsAEPublishVideoProcessFragment.1(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(getLayoutId(), paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onFinish()
   {
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.release();
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    this.mMoviePlayer.release();
+    this.tavCutVideoSession.release();
     super.onFinish();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    a(paramView);
-    a();
+    bindViews(paramView);
+    initTavCutAndPlayer();
+  }
+  
+  protected void showLoading(boolean paramBoolean)
+  {
+    if (!getActivity().isFinishing())
+    {
+      if (!paramBoolean) {
+        break label92;
+      }
+      if (this.mLoadingDialog == null)
+      {
+        this.mLoadingDialog = new ReportDialog(getActivity(), 2131755826);
+        this.mLoadingDialog.setCancelable(false);
+        this.mLoadingDialog.setCanceledOnTouchOutside(false);
+        this.mLoadingDialog.setContentView(2131559574);
+        ((TextView)this.mLoadingDialog.findViewById(2131372546)).setText("正在保存封面...");
+      }
+      this.mLoadingDialog.show();
+    }
+    label92:
+    while ((this.mLoadingDialog == null) || (!this.mLoadingDialog.isShowing())) {
+      return;
+    }
+    this.mLoadingDialog.dismiss();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import ocd;
-import sbf;
-import sbg;
+import odq;
+import sid;
+import sie;
 
 public final class ReadInJoyUtils$5
   implements Runnable
@@ -11,11 +11,11 @@ public final class ReadInJoyUtils$5
   
   public void run()
   {
-    String str = new sbg(null, null, null, null).f(this.jdField_a_of_type_Boolean).G(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int).F(this.c).g(this.jdField_a_of_type_Long).j(this.jdField_a_of_type_JavaLangString).a().a();
+    String str = new sie(null, null, null, null).f(this.jdField_a_of_type_Boolean).G(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int).F(this.c).g(this.jdField_a_of_type_Long).j(this.jdField_a_of_type_JavaLangString).a().a();
     if (this.jdField_b_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      ocd.a(null, "", "0X80094FD", "0X80094FD", 0, i, "", "", this.jdField_b_of_type_JavaLangString, str, false);
+      odq.a(null, "", "0X80094FD", "0X80094FD", 0, i, "", "", this.jdField_b_of_type_JavaLangString, str, false);
       return;
     }
   }

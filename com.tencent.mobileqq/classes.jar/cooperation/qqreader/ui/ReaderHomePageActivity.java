@@ -10,20 +10,20 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import aqre;
-import bmop;
-import bmpk;
-import bmpn;
-import bmpy;
-import bmpz;
-import bmqe;
-import bmqq;
-import bmqr;
-import bmqu;
-import bmqw;
-import bmra;
-import bmrb;
-import bmrh;
+import apkn;
+import bksw;
+import bktr;
+import bktu;
+import bkuf;
+import bkug;
+import bkul;
+import bkux;
+import bkuy;
+import bkvb;
+import bkvd;
+import bkvh;
+import bkvi;
+import bkvo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -42,10 +42,10 @@ import java.util.Map;
 public class ReaderHomePageActivity
   extends ReaderBaseWebActivity
 {
-  private bmpk jdField_a_of_type_Bmpk;
+  private bktr jdField_a_of_type_Bktr;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private aqre jdField_b_of_type_Aqre;
+  private apkn jdField_b_of_type_Apkn;
   private String jdField_b_of_type_JavaLangString;
   
   private static int a(int paramInt, int[] paramArrayOfInt)
@@ -76,8 +76,8 @@ public class ReaderHomePageActivity
     int j = 0;
     int k = 1;
     int i;
-    if (paramIntent.hasExtra(bmpy.jdField_a_of_type_JavaLangString)) {
-      i = paramIntent.getIntExtra(bmpy.jdField_a_of_type_JavaLangString, 1);
+    if (paramIntent.hasExtra(bkuf.jdField_a_of_type_JavaLangString)) {
+      i = paramIntent.getIntExtra(bkuf.jdField_a_of_type_JavaLangString, 1);
     }
     for (;;)
     {
@@ -86,9 +86,9 @@ public class ReaderHomePageActivity
       if (!paramIntent.getBooleanExtra("is_from_qreader_shortcut", false))
       {
         i = k;
-        if (!bmqu.e(BaseApplicationImpl.getApplication()))
+        if (!bkvb.e(BaseApplicationImpl.getApplication()))
         {
-          boolean bool1 = bmra.a(BaseApplicationImpl.getApplication());
+          boolean bool1 = bkvh.a(BaseApplicationImpl.getApplication());
           boolean bool2 = a(paramIntent);
           if (bool1)
           {
@@ -119,34 +119,34 @@ public class ReaderHomePageActivity
     }
     catch (Exception localException)
     {
-      bmqw.a("ReaderHomePageActivity", "Color is ex" + paramString1 + "=" + paramString2);
+      bkvd.a("ReaderHomePageActivity", "Color is ex" + paramString1 + "=" + paramString2);
     }
     return paramInt;
   }
   
-  private ArrayList<WebViewTabBarData> a(ArrayList<bmpz> paramArrayList, @NonNull Intent paramIntent)
+  private ArrayList<WebViewTabBarData> a(ArrayList<bkug> paramArrayList, @NonNull Intent paramIntent)
   {
     int j = paramArrayList.size();
     ArrayList localArrayList = new ArrayList();
-    if (paramIntent.hasExtra(bmpy.jdField_b_of_type_JavaLangString)) {}
-    for (paramIntent = "" + "&" + bmpy.jdField_b_of_type_JavaLangString + "=" + paramIntent.getStringExtra(bmpy.jdField_b_of_type_JavaLangString);; paramIntent = "")
+    if (paramIntent.hasExtra(bkuf.jdField_b_of_type_JavaLangString)) {}
+    for (paramIntent = "" + "&" + bkuf.jdField_b_of_type_JavaLangString + "=" + paramIntent.getStringExtra(bkuf.jdField_b_of_type_JavaLangString);; paramIntent = "")
     {
       int i = 0;
       while (i < j)
       {
-        bmpz localbmpz = (bmpz)paramArrayList.get(i);
-        if (localbmpz.jdField_b_of_type_Int == 0)
+        bkug localbkug = (bkug)paramArrayList.get(i);
+        if (localbkug.jdField_b_of_type_Int == 0)
         {
           WebViewTabBarData localWebViewTabBarData = new WebViewTabBarData();
-          localWebViewTabBarData.tabIcon = localbmpz.jdField_b_of_type_JavaLangString;
-          localWebViewTabBarData.tabName = localbmpz.jdField_a_of_type_JavaLangString;
-          localWebViewTabBarData.tag = String.valueOf(localbmpz.jdField_a_of_type_Int);
-          localWebViewTabBarData.url = ((String)localbmpz.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
+          localWebViewTabBarData.tabIcon = localbkug.jdField_b_of_type_JavaLangString;
+          localWebViewTabBarData.tabName = localbkug.jdField_a_of_type_JavaLangString;
+          localWebViewTabBarData.tag = String.valueOf(localbkug.jdField_a_of_type_Int);
+          localWebViewTabBarData.url = ((String)localbkug.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
           localArrayList.add(localWebViewTabBarData);
-          if (localbmpz.jdField_a_of_type_JavaUtilArrayList.size() == 2)
+          if (localbkug.jdField_a_of_type_JavaUtilArrayList.size() == 2)
           {
-            this.jdField_a_of_type_JavaLangString = ((String)localbmpz.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
-            this.jdField_b_of_type_JavaLangString = ((String)localbmpz.jdField_a_of_type_JavaUtilArrayList.get(1) + paramIntent);
+            this.jdField_a_of_type_JavaLangString = ((String)localbkug.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
+            this.jdField_b_of_type_JavaLangString = ((String)localbkug.jdField_a_of_type_JavaUtilArrayList.get(1) + paramIntent);
           }
         }
         i += 1;
@@ -157,16 +157,16 @@ public class ReaderHomePageActivity
   
   private void a()
   {
-    this.jdField_b_of_type_Aqre = new aqre(this, false, true);
-    this.jdField_b_of_type_Aqre.a(this);
+    this.jdField_b_of_type_Apkn = new apkn(this, false, true);
+    this.jdField_b_of_type_Apkn.a(this);
   }
   
   private static boolean a(@NonNull Intent paramIntent)
   {
     boolean bool1 = b(paramIntent);
-    boolean bool2 = bmop.a().a();
+    boolean bool2 = bksw.a().a();
     int i = paramIntent.getIntExtra("redtouch_type", -1);
-    boolean bool3 = bmqu.b(BaseApplicationImpl.getApplication());
+    boolean bool3 = bkvb.b(BaseApplicationImpl.getApplication());
     if (QLog.isColorLevel()) {
       QLog.e("ReaderHomePageActivity", 2, "-->isPluginReady:" + bool2 + ",exceed30days:" + bool1 + ",isShelf:" + bool3 + ",has red touch extra:" + paramIntent.hasExtra("redtouch_type") + ",has interval:" + paramIntent.hasExtra("login_interval") + ",isPluginReady=" + bool2);
     }
@@ -176,32 +176,32 @@ public class ReaderHomePageActivity
   private void b()
   {
     QueryUserIdentityTask localQueryUserIdentityTask = new QueryUserIdentityTask();
-    localQueryUserIdentityTask.a(new bmqr(this), true);
+    localQueryUserIdentityTask.a(new bkuy(this), true);
     localQueryUserIdentityTask.a();
   }
   
   private void b(@NonNull Intent paramIntent)
   {
-    this.jdField_a_of_type_Bmpk = new bmpk(this);
-    this.jdField_a_of_type_Bmpk.a();
-    paramIntent.putExtra("tabConfigData", a(this.jdField_a_of_type_Bmpk.a(), paramIntent));
+    this.jdField_a_of_type_Bktr = new bktr(this);
+    this.jdField_a_of_type_Bktr.a();
+    paramIntent.putExtra("tabConfigData", a(this.jdField_a_of_type_Bktr.a(), paramIntent));
     int i = a(paramIntent);
-    bmqw.d("ReaderHomePageActivity", "tabIndex =" + i);
-    int[] arrayOfInt = this.jdField_a_of_type_Bmpk.a();
+    bkvd.d("ReaderHomePageActivity", "tabIndex =" + i);
+    int[] arrayOfInt = this.jdField_a_of_type_Bktr.a();
     StringBuilder localStringBuilder = new StringBuilder().append("itemids is null");
     if (arrayOfInt == null) {}
     for (boolean bool = true;; bool = false)
     {
-      bmqw.d("ReaderHomePageActivity", bool);
+      bkvd.d("ReaderHomePageActivity", bool);
       i = a(i, arrayOfInt);
       paramIntent.putExtra("key_tab_main_tab_pos", i);
       paramIntent.putExtra("tabDefaultIndex", i);
       paramIntent.putExtra("key_subtab", 0);
       paramIntent.putExtra("key_title_bar_left_tab_url", this.jdField_a_of_type_JavaLangString);
       paramIntent.putExtra("key_title_bar_right_tab_url", this.jdField_b_of_type_JavaLangString);
-      paramIntent.putExtra("key_tab_color", a("tabColor", bmpk.jdField_a_of_type_Int, this.jdField_a_of_type_Bmpk.a()));
-      paramIntent.putExtra("key_tab_name_color", a("tabNameDefaultColor", bmpk.jdField_b_of_type_Int, this.jdField_a_of_type_Bmpk.b()));
-      paramIntent.putExtra("key_name_selected_color", a("tabNameSelectedColor", bmpk.c, this.jdField_a_of_type_Bmpk.c()));
+      paramIntent.putExtra("key_tab_color", a("tabColor", bktr.jdField_a_of_type_Int, this.jdField_a_of_type_Bktr.a()));
+      paramIntent.putExtra("key_tab_name_color", a("tabNameDefaultColor", bktr.jdField_b_of_type_Int, this.jdField_a_of_type_Bktr.b()));
+      paramIntent.putExtra("key_name_selected_color", a("tabNameSelectedColor", bktr.c, this.jdField_a_of_type_Bktr.c()));
       return;
     }
   }
@@ -213,23 +213,23 @@ public class ReaderHomePageActivity
   
   private void c(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_b_of_type_Aqre.a(new bmqq(this, paramString1, paramString2, paramString3));
+    this.jdField_b_of_type_Apkn.a(new bkux(this, paramString1, paramString2, paramString3));
   }
   
-  public bmpk a()
+  public bktr a()
   {
-    return this.jdField_a_of_type_Bmpk;
+    return this.jdField_a_of_type_Bktr;
   }
   
   @Nullable
-  public bmrh a()
+  public bkvo a()
   {
-    bmrh localbmrh = null;
+    bkvo localbkvo = null;
     WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localbmrh = (bmrh)localWebViewFragment.mSwiftTitleUI;
+      localbkvo = (bkvo)localWebViewFragment.mSwiftTitleUI;
     }
-    return localbmrh;
+    return localbkvo;
   }
   
   public WebViewFragment a(WebViewTabBarData paramWebViewTabBarData)
@@ -245,7 +245,7 @@ public class ReaderHomePageActivity
       }
       localObject = a();
       if (localObject != null) {
-        ((bmrh)localObject).h(i);
+        ((bkvo)localObject).a(i);
       }
     }
     return paramWebViewTabBarData;
@@ -254,8 +254,8 @@ public class ReaderHomePageActivity
   public void a(String paramString1, String paramString2, String paramString3)
   {
     c(paramString1, paramString2, paramString3);
-    if (this.jdField_b_of_type_Aqre.b()) {
-      this.jdField_b_of_type_Aqre.e();
+    if (this.jdField_b_of_type_Apkn.b()) {
+      this.jdField_b_of_type_Apkn.e();
     }
   }
   
@@ -266,13 +266,13 @@ public class ReaderHomePageActivity
   
   public boolean a()
   {
-    long l1 = bmqu.a(BaseApplicationImpl.getApplication());
+    long l1 = bkvb.a(BaseApplicationImpl.getApplication());
     long l2 = System.currentTimeMillis();
     Object localObject1 = new Date(l1);
     Object localObject2 = new Date(l2);
-    if ((a() != null) && (((ReaderTabBarView)a()).b()) && (bmrb.a((Date)localObject1, (Date)localObject2)) && (AppNetConnInfo.isNetSupport()) && (bmqe.a().a("START_WEBVIEW_ACTIVITY_CONDITION", null)))
+    if ((a() != null) && (((ReaderTabBarView)a()).b()) && (bkvi.a((Date)localObject1, (Date)localObject2)) && (AppNetConnInfo.isNetSupport()) && (bkul.a().a("START_WEBVIEW_ACTIVITY_CONDITION", null)))
     {
-      localObject2 = (String)bmpn.a.get("qqreaderBookStoreGamepop");
+      localObject2 = (String)bktu.a.get("qqreaderBookStoreGamepop");
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "https://cdn.vip.qq.com/club/client/read/6/rel/gameAd_index.html";
@@ -280,7 +280,7 @@ public class ReaderHomePageActivity
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("from", 2);
       ((Intent)localObject2).putExtra("url", (String)localObject1);
-      bmop.a().a(this, (Intent)localObject2, "com.qqreader.pureader.WebViewActivity");
+      bksw.a().a(this, (Intent)localObject2, "com.qqreader.pureader.WebViewActivity");
       return true;
     }
     return false;
@@ -289,14 +289,14 @@ public class ReaderHomePageActivity
   public boolean a(String paramString1, String paramString2, String paramString3)
   {
     c(paramString1, paramString2, paramString3);
-    return this.jdField_b_of_type_Aqre.c();
+    return this.jdField_b_of_type_Apkn.c();
   }
   
   public void b(String paramString1, String paramString2, String paramString3)
   {
     c(paramString1, paramString2, paramString3);
-    if (this.jdField_b_of_type_Aqre.c()) {
-      this.jdField_b_of_type_Aqre.f();
+    if (this.jdField_b_of_type_Apkn.c()) {
+      this.jdField_b_of_type_Apkn.f();
     }
   }
   
@@ -316,8 +316,9 @@ public class ReaderHomePageActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -344,7 +345,7 @@ public class ReaderHomePageActivity
     }
     paramIntent.remove("reslut_select_file_info_list");
     paramIntent.putParcelableArrayList("key_reader_file_for_bundle", localArrayList);
-    bmqe.a().a("EVENT_IMPORT_LOCAL_BOOK", paramIntent);
+    bkul.a().a("EVENT_IMPORT_LOCAL_BOOK", paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -353,7 +354,7 @@ public class ReaderHomePageActivity
     Intent localIntent1 = localIntent2;
     if (localIntent2 == null)
     {
-      bmqw.a("ReaderHomePageActivity", "[ReaderHomePageActivity] intent is null! ");
+      bkvd.a("ReaderHomePageActivity", "[ReaderHomePageActivity] intent is null! ");
       localIntent1 = new Intent();
     }
     localIntent1.putExtra("key_enter_reader_homepage_activity_oncreate_time", System.currentTimeMillis());
@@ -361,13 +362,13 @@ public class ReaderHomePageActivity
     super.doOnCreate(paramBundle);
     b();
     a();
-    bmqw.c("cost_time_tag", "ReaderHomePageActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    bkvd.c("cost_time_tag", "ReaderHomePageActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
     return true;
   }
   
   public void doOnDestroy()
   {
-    this.jdField_b_of_type_Aqre.c();
+    this.jdField_b_of_type_Apkn.c();
     super.doOnDestroy();
   }
   
@@ -395,7 +396,7 @@ public class ReaderHomePageActivity
     setIntent(paramIntent);
     paramIntent = (ReaderTabBarView)a();
     if (paramIntent != null) {
-      paramIntent.setSelectedTab(a(a(getIntent()), this.jdField_a_of_type_Bmpk.a()), false);
+      paramIntent.setSelectedTab(a(a(getIntent()), this.jdField_a_of_type_Bktr.a()), false);
     }
   }
   
@@ -420,9 +421,9 @@ public class ReaderHomePageActivity
           if (j < 0) {
             i = Integer.parseInt(((ReaderHomeTabFragment)localObject).getTag());
           }
-          localObject = (bmrh)((ReaderHomeTabFragment)localObject).mSwiftTitleUI;
+          localObject = (bkvo)((ReaderHomeTabFragment)localObject).mSwiftTitleUI;
           if (localObject != null) {
-            ((bmrh)localObject).h(i);
+            ((bkvo)localObject).a(i);
           }
         }
       }
@@ -434,7 +435,7 @@ public class ReaderHomePageActivity
       int i;
       return;
     }
-    bmqw.d("ReaderHomePageActivity", "webViewFragment =" + localObject.getClass().getName());
+    bkvd.d("ReaderHomePageActivity", "webViewFragment =" + localObject.getClass().getName());
   }
   
   public void doOnStop()
@@ -443,7 +444,7 @@ public class ReaderHomePageActivity
     BaseApplicationImpl localBaseApplicationImpl;
     if (a() != null)
     {
-      bool = bmqe.a().a("EVENT_BOOK_SHELF_IS_NOT_EMPTY", null);
+      bool = bkul.a().a("EVENT_BOOK_SHELF_IS_NOT_EMPTY", null);
       localBaseApplicationImpl = BaseApplicationImpl.getApplication();
       if ((!((ReaderTabBarView)a()).a()) || (!bool)) {
         break label51;
@@ -452,7 +453,7 @@ public class ReaderHomePageActivity
     label51:
     for (boolean bool = true;; bool = false)
     {
-      bmqu.c(localBaseApplicationImpl, bool);
+      bkvb.c(localBaseApplicationImpl, bool);
       return;
     }
   }

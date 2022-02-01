@@ -1,29 +1,59 @@
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IReportManager;
-import java.util.HashMap;
-
 public class biec
-  implements IReportManager
 {
-  public void reportDLEvent(int paramInt1, long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "0";
+  public String d = "default_via";
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  public biec()
   {
-    paramInt1 += 100;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_ReportImpl", 2, "reportDLEvent: bid = " + paramLong + " scid = " + paramString1 + " dlFrom = " + paramInt1 + " bIncrement = " + paramBoolean + " errorCode = " + paramInt2 + " httpCode = " + paramInt3 + " count = " + paramInt4);
+    this.jdField_a_of_type_JavaLangString = "6000";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_Int = 1;
+  }
+  
+  public static biec a(biec parambiec)
+  {
+    biec localbiec = new biec();
+    if (parambiec == null) {
+      return localbiec;
     }
-    if ((int)(Math.random() * 10000.0D) == 1)
-    {
-      paramString3 = new HashMap();
-      paramString3.put("from", String.valueOf(paramInt1));
-      paramString3.put("bid", String.valueOf(paramLong));
-      paramString3.put("scid", String.valueOf(paramString1));
-      paramString3.put("md5", String.valueOf(paramString2));
-      paramString3.put("eventCode", String.valueOf(paramInt2));
-      paramString3.put("httpCode", String.valueOf(paramInt3));
-      paramString3.put("retry", String.valueOf(paramInt4));
-      bdmc.a(BaseApplication.getContext()).a("", "qqvas_updatemgr_complete", false, 0L, -1L, paramString3, "", true);
-    }
+    localbiec.e = parambiec.e;
+    localbiec.f = parambiec.f;
+    localbiec.g = parambiec.g;
+    localbiec.jdField_a_of_type_Long = parambiec.jdField_a_of_type_Long;
+    localbiec.h = parambiec.h;
+    localbiec.jdField_a_of_type_Int = parambiec.jdField_a_of_type_Int;
+    localbiec.jdField_b_of_type_Int = parambiec.jdField_b_of_type_Int;
+    localbiec.c = parambiec.c;
+    localbiec.jdField_b_of_type_JavaLangString = parambiec.jdField_b_of_type_JavaLangString;
+    localbiec.jdField_a_of_type_JavaLangString = parambiec.jdField_a_of_type_JavaLangString;
+    localbiec.d = parambiec.d;
+    return localbiec;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pageId=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\nmoduleId=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\npositionId=" + this.c);
+    localStringBuilder.append("\nvia=" + this.d);
+    localStringBuilder.append("\nurl=" + this.e);
+    localStringBuilder.append("\npackageName=" + this.f);
+    localStringBuilder.append("\niconUrl=" + this.g);
+    localStringBuilder.append("\nlength=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append("\nname=" + this.h);
+    localStringBuilder.append("\nprogress=" + this.jdField_a_of_type_Int);
+    localStringBuilder.append("\nstate=" + this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import android.text.TextUtils;
-import antf;
-import bhmi;
-import bigv;
-import bjty;
+import bhzn;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -16,7 +16,7 @@ class ViolaBaseView$6
   
   public void run()
   {
-    String str = bigv.a(antf.cG + bjty.a(new StringBuilder().append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=").append(System.currentTimeMillis()).toString()) + ".zip");
+    String str = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH_READINJOY_VIOLA_JS_SOURCE_PATH + bhzn.a(new StringBuilder().append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=").append(System.currentTimeMillis()).toString()) + ".zip");
     if (TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel()) {
@@ -25,9 +25,9 @@ class ViolaBaseView$6
       return;
     }
     if (new File(str).exists()) {
-      bhmi.d(str);
+      FileUtils.deleteFile(str);
     }
-    boolean bool = HttpDownloadUtil.a(null, "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559", new File(str));
+    boolean bool = HttpDownloadUtil.download(null, "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559", new File(str));
     QLog.d(ViolaBaseView.a(), 2, "loadSOFromNet [ url:https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559] Download to " + str + ",isSuss:" + bool);
     if ((bool) && (new File(str).exists()))
     {
@@ -39,7 +39,7 @@ class ViolaBaseView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.6
  * JD-Core Version:    0.7.0.1
  */

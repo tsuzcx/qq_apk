@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public final class VideoRecoveryReporter$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    bdmc.a(BaseApplication.getContext()).a("", "av_recovery_result2", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_recovery_result2", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

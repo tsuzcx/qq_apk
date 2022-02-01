@@ -1,15 +1,29 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class almw
   implements DialogInterface.OnClickListener
 {
-  almw(alms paramalms) {}
+  almw(almv paramalmv) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((anum)this.a.a.a(2)).m(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(almv.a(this.a), 2, "On Click Left Button! ");
+    }
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().finish();
+    }
+    for (;;)
+    {
+      almv.a(this.a, 1);
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d(almv.a(this.a), 4, "Call back object is null!");
+      }
+    }
   }
 }
 

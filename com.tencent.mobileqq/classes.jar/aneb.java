@@ -1,37 +1,26 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
-class aneb
-  implements amxj
+public class aneb
+  implements DialogInterface.OnClickListener
 {
-  aneb(anea paramanea) {}
+  public aneb(VideoBroadcastReceiver paramVideoBroadcastReceiver, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    anea localanea = this.a;
-    if (anea.a(this.a).jdField_b_of_type_Boolean)
+    mrd.e(false, false);
+    if (this.jdField_a_of_type_Int == 3000)
     {
-      paramStartCheckParam = anea.a(this.a).e;
-      anea.a(localanea, paramStartCheckParam);
-      if (!"message".equals(anea.a(this.a).f)) {
-        break label101;
-      }
+      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+      VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, this.d);
     }
-    label101:
-    for (int i = 1;; i = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(anea.a(this.a).jdField_b_of_type_Int) });
-      return;
-      paramStartCheckParam = anea.a(this.a).d;
-      break;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (anea.a(this.a) != null) {
-      anea.a(this.a).c(-10001, anea.a(this.a).jdField_b_of_type_JavaLangString);
-    }
+    mrd.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause);
   }
 }
 

@@ -1,17 +1,23 @@
 package com.tencent.weseevideo.model;
 
 import com.tencent.weseevideo.common.utils.GsonUtils;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BaseMediaModel
-  implements Cloneable
+  implements Serializable, Cloneable
 {
-  private final Map<String, String> extraParams = new HashMap(0);
+  private final HashMap<String, String> extraParams = new HashMap(0);
   
   public void clearExtraParams()
   {
     this.extraParams.clear();
+  }
+  
+  protected Object clone()
+  {
+    return super.clone();
   }
   
   public Map<String, String> getExtraParams()

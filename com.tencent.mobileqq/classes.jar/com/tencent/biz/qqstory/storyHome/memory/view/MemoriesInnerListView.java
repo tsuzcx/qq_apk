@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import ykj;
-import ykk;
-import ykl;
-import ykm;
+import xlu;
+import xlv;
+import xlw;
+import xlx;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public ykl a;
-  private ykm a;
+  public xlw a;
+  private xlx a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
@@ -38,22 +38,22 @@ public class MemoriesInnerListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bhgr.a(paramContext, 82.0F);
-    this.jdField_a_of_type_Ykm = new ykm(getContext());
-    super.setAdapter(this.jdField_a_of_type_Ykm);
-    super.setOnItemClickListener(this.jdField_a_of_type_Ykm);
-    super.setOnScrollStateChangedListener(new ykk(this));
+    this.b = DisplayUtil.dip2px(paramContext, 82.0F);
+    this.jdField_a_of_type_Xlx = new xlx(getContext());
+    super.setAdapter(this.jdField_a_of_type_Xlx);
+    super.setOnItemClickListener(this.jdField_a_of_type_Xlx);
+    super.setOnScrollStateChangedListener(new xlv(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Ykm;
+    return this.jdField_a_of_type_Xlx;
   }
   
-  public void setDate(List<ykj> paramList, String paramString)
+  public void setDate(List<xlu> paramList, String paramString)
   {
-    this.jdField_a_of_type_Ykm.a(paramList, paramString);
+    this.jdField_a_of_type_Xlx.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {

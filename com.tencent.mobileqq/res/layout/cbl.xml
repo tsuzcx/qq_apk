@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dq8" android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="16.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/dq8" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.together.ui.RoundRectView android:id="@id/l_o" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_alignParentTop="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/dr7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="13.0dip" android:maxLines="1" android:singleLine="true" android:layout_alignParentTop="true" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="3.5dip" android:layout_below="@id/dr7">
-        <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/d3o" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/j64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxLines="2" />
-    </LinearLayout>
-    <com.tencent.image.URLImageView android:id="@id/dq1" android:layout_width="74.0dip" android:layout_height="70.0dip" android:src="@drawable/hvf" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/mzu" android:focusable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.mobileqq.together.ui.RoundRectView android:id="@id/mzp" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_alignParentTop="true" />
+        <com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView android:id="@id/mzt" android:layout_width="60.0dip" android:layout_height="70.0dip" android:src="@drawable/hvf" android:layout_alignParentRight="true" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/e7z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:maxLines="1" android:singleLine="true" android:layout_alignParentTop="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="3.0dip" android:layout_below="@id/e7z">
+            <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/mzr" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mzx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxLines="1" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/iag" android:focusable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
+        <com.tencent.mobileqq.together.ui.RoundRectView android:id="@id/nf6" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_alignParentTop="true" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/iaf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:maxLines="1" android:singleLine="true" android:layout_alignParentTop="true" />
+        <com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView android:id="@id/nf8" android:layout_width="60.0dip" android:layout_height="70.0dip" android:src="@drawable/hvf" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="3.0dip" android:layout_below="@id/iaf">
+            <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/nf7" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/nfb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxLines="1" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

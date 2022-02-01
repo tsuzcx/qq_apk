@@ -1,105 +1,136 @@
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azvb
-  implements azus
+  extends azva
 {
-  private static azvb jdField_a_of_type_Azvb;
-  private azut jdField_a_of_type_Azut;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new azvc(this, "PrecoverIPCServer_MODEL");
+  public int a;
+  public String a;
+  public String b = "";
   
-  private azvb()
+  public azvb()
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      this.jdField_a_of_type_Azut = ((azut)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(179));
-      this.jdField_a_of_type_Azut.a().a(this);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1001;
+  }
+  
+  private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, "path = " + paramString);
+    }
+    if ("7720.772004".equals(paramString)) {}
+    for (paramString = avod.a(paramQQAppInterface, paramString);; paramString = ((azvi)paramQQAppInterface.getManager(36)).a(paramString)) {
+      return azvm.a(paramString);
     }
   }
   
-  public static azvb a()
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (jdField_a_of_type_Azvb == null) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq clearRed", 2, "path = " + paramString);
+    }
+    ((azvi)paramQQAppInterface.getManager(36)).b(paramString);
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq reportRedInfo", 2, "path = " + paramString + "actId == " + paramInt);
+    }
+    if (paramString == null) {
+      return;
+    }
     try
     {
-      if (jdField_a_of_type_Azvb == null) {
-        jdField_a_of_type_Azvb = new azvb();
-      }
-      return jdField_a_of_type_Azvb;
-    }
-    finally {}
-  }
-  
-  private EIPCResult a(Bundle paramBundle, int paramInt)
-  {
-    Object localObject1 = null;
-    Object localObject2 = paramBundle.getString("businessId");
-    String str = paramBundle.getString("md5");
-    if (TextUtils.isEmpty(str))
-    {
-      localObject1 = EIPCResult.createResult(10, paramBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverIPCServer", 2, "getResource, md5 emtpy");
-      }
-      paramBundle.putInt("callbackId", paramInt);
-      return localObject1;
-    }
-    if (this.jdField_a_of_type_Azut != null)
-    {
-      localObject1 = this.jdField_a_of_type_Azut.a((String)localObject2, str);
-      if (localObject1 == null) {
-        break label100;
-      }
-      paramBundle.putParcelable("resource", (Parcelable)localObject1);
-      localObject1 = EIPCResult.createSuccessResult(paramBundle);
-    }
-    for (;;)
-    {
-      paramBundle.putInt("callbackId", paramInt);
-      return localObject1;
-      label100:
-      localObject2 = EIPCResult.createResult(12, paramBundle);
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
+      if (paramString.contains("\\.")) {}
+      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
       {
-        QLog.d("PrecoverIPCServer", 2, "getResource, RESULT_RESOURCE_NOT_FOUND");
-        localObject1 = localObject2;
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          paramString = ((azvi)paramQQAppInterface.getManager(36)).a(paramString);
+          localJSONObject.put("service_type", 0);
+          localJSONObject.put("actId", paramInt);
+          localJSONObject.put("obj_id", "");
+          localJSONObject.put("pay_amt", 0);
+          localJSONObject.put("service_id", i);
+          ((azvi)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
+          return;
+        }
+        catch (JSONException paramQQAppInterface)
+        {
+          paramQQAppInterface.printStackTrace();
+          return;
+        }
       }
     }
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
-  }
-  
-  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof Object[])) && ("PrecoverIPCServer_MODEL".equals(((Object[])(Object[])paramObject)[0])))
+    catch (NumberFormatException localNumberFormatException)
     {
-      int i = ((Integer)((Object[])(Object[])paramObject)[1]).intValue();
-      paramObject = new Bundle();
-      paramObject.putString("key_action", azva.b);
-      paramObject.putParcelable("resource", paramPrecoverResource);
-      paramObject.putInt("errCode", paramInt);
-      paramObject.putString("errDesc", paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverIPCServer", 2, "onDownloadFinish, errCode=" + paramInt + ", errDesc=" + paramString + ", resource" + paramPrecoverResource);
+      for (;;)
+      {
+        localNumberFormatException.printStackTrace();
+        int i = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule.callbackResult(i, EIPCResult.createSuccessResult(paramObject));
     }
   }
   
-  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    paramBundle.putString("path", this.jdField_a_of_type_JavaLangString);
+    paramBundle.putInt("act_id", this.jdField_a_of_type_Int);
+    paramBundle.putString("reportPath", this.b);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("cmd");
+    if ("getRedInfo".equals(localObject))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+      }
+      paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
+      localObject = new Bundle();
+      ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
+      paramBundle.putBundle("keyResponse", (Bundle)localObject);
+      super.a(paramBundle);
+    }
+    do
+    {
+      return;
+      if ("reportRedInfo".equals(localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+        }
+        a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        return;
+      }
+    } while (!"clearRedInfo".equals(localObject));
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+    }
+    a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    super.b(paramBundle);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("path");
+    this.jdField_a_of_type_Int = paramBundle.getInt("act_id");
+    this.b = paramBundle.getString("reportPath");
+  }
 }
 
 

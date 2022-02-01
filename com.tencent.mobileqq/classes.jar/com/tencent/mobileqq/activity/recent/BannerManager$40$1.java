@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent;
 
-import aljw;
-import allh;
-import bdof;
+import akho;
+import akiz;
+import bcgq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExpiredPushBanner;
@@ -13,12 +13,12 @@ import java.util.List;
 public class BannerManager$40$1
   implements Runnable
 {
-  public BannerManager$40$1(allh paramallh, int paramInt, List paramList) {}
+  public BannerManager$40$1(akiz paramakiz, int paramInt, List paramList) {}
   
   public void run()
   {
     int k = 0;
-    EntityManager localEntityManager = aljw.a(this.jdField_a_of_type_Allh.a).app.a().createEntityManager();
+    EntityManager localEntityManager = akho.a(this.jdField_a_of_type_Akiz.a).app.getEntityManagerFactory().createEntityManager();
     Object localObject = localEntityManager.query(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
     int j = k;
     if (localObject != null)
@@ -41,21 +41,21 @@ public class BannerManager$40$1
     }
     while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = (bdof)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject = (bcgq)this.jdField_a_of_type_JavaUtilList.get(j);
       if (localObject != null)
       {
         long l2 = 0L;
         long l1 = l2;
-        if (((bdof)localObject).c != null)
+        if (((bcgq)localObject).c != null)
         {
           l1 = l2;
-          if (((bdof)localObject).c.contains("|")) {
-            l1 = Long.parseLong(((bdof)localObject).c.substring(((bdof)localObject).c.indexOf("|") + 1));
+          if (((bcgq)localObject).c.contains("|")) {
+            l1 = Long.parseLong(((bcgq)localObject).c.substring(((bcgq)localObject).c.indexOf("|") + 1));
           }
         }
         ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
-        localExpiredPushBanner.cid = Long.parseLong(((bdof)localObject).a);
-        localExpiredPushBanner.md5 = ((bdof)localObject).m;
+        localExpiredPushBanner.cid = Long.parseLong(((bcgq)localObject).a);
+        localExpiredPushBanner.md5 = ((bcgq)localObject).m;
         localExpiredPushBanner.endtime = l1;
         localEntityManager.persist(localExpiredPushBanner);
       }

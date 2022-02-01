@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pra;
-import prc;
-import prd;
-import pre;
+import pwu;
+import pww;
+import pwx;
+import pwy;
 
 public class UserOperationModule$5
   implements Runnable
 {
-  public UserOperationModule$5(pra parampra, boolean paramBoolean, prc paramprc, int paramInt, String paramString) {}
+  public UserOperationModule$5(pwu parampwu, boolean paramBoolean, pww parampww, int paramInt, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      ((prd)this.jdField_a_of_type_Prc).a(false, null, this.jdField_a_of_type_Int + "");
+      ((pwx)this.jdField_a_of_type_Pww).a(false, null, this.jdField_a_of_type_Int + "");
       return;
     }
-    ((pre)this.jdField_a_of_type_Prc).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ((pwy)this.jdField_a_of_type_Pww).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,21 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class xfi
-  extends wov
+  implements Animation.AnimationListener
 {
-  public int b;
+  public xfi(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public xfi(qqstory_service.RspWatchVideo paramRspWatchVideo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramRspWatchVideo.result);
-    this.b = paramRspWatchVideo.unread_count.get();
+    if (this.a.c != null)
+    {
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+    }
   }
   
-  public String toString()
-  {
-    return "WatchVideoResponse{unReadCount=" + this.b + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

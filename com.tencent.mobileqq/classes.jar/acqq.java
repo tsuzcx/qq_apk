@@ -1,17 +1,23 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup;
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "visibility", "", "onSystemUiVisibilityChange"}, k=3, mv={1, 1, 16})
-final class acqq
-  implements View.OnSystemUiVisibilityChangeListener
+public class acqq
+  implements DialogInterface.OnClickListener
 {
-  acqq(ViewGroup paramViewGroup) {}
+  public acqq(AddRequestActivity paramAddRequestActivity) {}
   
-  public final void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.a.setSystemUiVisibility(7942);
+    boolean bool = true;
+    paramDialogInterface = this.a;
+    if (paramInt == 1) {}
+    for (;;)
+    {
+      AddRequestActivity.b(paramDialogInterface, bool);
+      bcef.b(this.a.app, "dc00898", "", "", "0X800B084", "0X800B084", 0, 0, "", "", "", "");
+      return;
+      bool = false;
     }
   }
 }

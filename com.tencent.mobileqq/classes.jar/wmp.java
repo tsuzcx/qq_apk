@@ -1,51 +1,32 @@
-import android.annotation.TargetApi;
-import android.os.SystemClock;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@TargetApi(14)
-public class wmp
-  extends zqh
+class wmp
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 941000;
-  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  private String jdField_a_of_type_JavaLangString;
-  private wmr jdField_a_of_type_Wmr;
-  private String b;
+  wmp(wml paramwml) {}
   
-  public wmp(String paramString1, String paramString2, wmr paramwmr)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Wmr = paramwmr;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    if (paramString.equals(String.valueOf(941001))) {
-      this.jdField_a_of_type_Wmr.a(941001, paramString, "");
+    Context localContext = wml.a(this.a).a();
+    if (!NetworkUtil.isNetworkAvailable(localContext)) {
+      QQToast.a(localContext, 1, 2131694062, 0).a();
     }
     for (;;)
     {
-      yuk.d(wmk.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
-      zom.g(this.jdField_a_of_type_JavaLangString);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramString.equals(String.valueOf(941002))) {
-        this.jdField_a_of_type_Wmr.a(941002, paramString, "");
-      } else {
-        this.jdField_a_of_type_Wmr.a(this.jdField_a_of_type_Int, paramString, "");
-      }
+      xvv.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { wml.a(this.a) });
+      wml.a(this.a).setVisibility(0);
+      wml.a(this.a).removeCallbacks(wml.a(this.a));
+      wml.a(this.a).postDelayed(wml.a(this.a), 500L);
     }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    yuk.a(wmk.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Wmr.a(0, "", this.b);
-    zom.g(this.jdField_a_of_type_JavaLangString);
   }
 }
 

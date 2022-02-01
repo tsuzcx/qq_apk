@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bcdh;
+import bawj;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,21 +31,22 @@ public class FTSEntitySearchActivity
   
   public String a()
   {
-    return bcdh.b(this, this.a);
+    return bawj.b(this, this.a);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bhuu.a = true;
+    bgbp.a = true;
   }
   
   @Override
@@ -57,7 +58,7 @@ public class FTSEntitySearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity
  * JD-Core Version:    0.7.0.1
  */

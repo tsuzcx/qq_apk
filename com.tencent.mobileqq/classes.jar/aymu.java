@@ -1,12 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
 
-class aymu
-  implements DialogInterface.OnClickListener
+public class aymu
 {
-  aymu(aymj paramaymj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a;
+  public ArrayList<aymv> a;
+  public String b;
+  public String c;
 }
 
 

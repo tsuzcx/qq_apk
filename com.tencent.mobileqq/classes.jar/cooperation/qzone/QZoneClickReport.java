@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import bmsx;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
@@ -36,9 +35,9 @@ public class QZoneClickReport
     return paramLong;
   }
   
-  public static void report(String paramString, bmsx parambmsx, boolean paramBoolean)
+  public static void report(String paramString, QZoneClickReport.ReportInfo paramReportInfo, boolean paramBoolean)
   {
-    if (parambmsx == null) {
+    if (paramReportInfo == null) {
       return;
     }
     for (;;)
@@ -46,12 +45,12 @@ public class QZoneClickReport
       try
       {
         paramString = new LpReportInfo_pf00064();
-        paramString.extraInfo = parambmsx.a().toString();
-        parambmsx = LpReportManager.getInstance();
+        paramString.extraInfo = paramReportInfo.toJSON().toString();
+        paramReportInfo = LpReportManager.getInstance();
         if (!paramBoolean)
         {
           paramBoolean = true;
-          parambmsx.reportToPF00064(paramString, paramBoolean, false);
+          paramReportInfo.reportToPF00064(paramString, paramBoolean, false);
           return;
         }
       }
@@ -66,24 +65,24 @@ public class QZoneClickReport
   
   public static void report(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    bmsx localbmsx = new bmsx();
-    localbmsx.a = getLong(paramString1, 0L);
-    localbmsx.c = paramString2;
-    localbmsx.d = paramString3;
-    localbmsx.e = paramString4;
-    localbmsx.f = paramString5;
-    report(paramString1, localbmsx, paramBoolean);
+    QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
+    localReportInfo.toUin = getLong(paramString1, 0L);
+    localReportInfo.actionType = paramString2;
+    localReportInfo.subactionType = paramString3;
+    localReportInfo.reserves = paramString4;
+    localReportInfo.readSource = paramString5;
+    report(paramString1, localReportInfo, paramBoolean);
   }
   
-  public static void startReportImediately(String paramString, bmsx parambmsx)
+  public static void startReportImediately(String paramString, QZoneClickReport.ReportInfo paramReportInfo)
   {
-    if ((getLong(paramString, 0L) <= 0L) || (parambmsx == null)) {
+    if ((getLong(paramString, 0L) <= 0L) || (paramReportInfo == null)) {
       return;
     }
     try
     {
       paramString = new LpReportInfo_pf00064();
-      paramString.extraInfo = parambmsx.a().toString();
+      paramString.extraInfo = paramReportInfo.toJSON().toString();
       LpReportManager.getInstance().reportToPF00064(paramString, false, true);
       return;
     }
@@ -98,11 +97,11 @@ public class QZoneClickReport
     long l = getLong(paramString1, 0L);
     if (l > 0L)
     {
-      bmsx localbmsx = new bmsx();
-      localbmsx.a(paramString2);
-      localbmsx.a(l);
-      localbmsx.b(paramString3);
-      startReportImediately(paramString1, localbmsx);
+      QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
+      localReportInfo.setActionType(paramString2);
+      localReportInfo.setToUin(l);
+      localReportInfo.setSubactionType(paramString3);
+      startReportImediately(paramString1, localReportInfo);
     }
   }
 }

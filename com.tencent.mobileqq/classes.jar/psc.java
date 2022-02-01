@@ -1,113 +1,222 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class psc
-  extends biht
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<TroopMemberApiService> jdField_a_of_type_JavaLangRefWeakReference;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private qgc jdField_a_of_type_Qgc;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public psc(AppRuntime paramAppRuntime, String paramString, Bundle paramBundle, TroopMemberApiService paramTroopMemberApiService)
+  public psc(prz paramprz) {}
+  
+  private View a(View paramView, ArticleInfo paramArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopMemberApiService);
+    if (paramArticleInfo != null)
+    {
+      ArkAppMessage localArkAppMessage = onu.a(paramArticleInfo.mArkAppFeedsInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("FrameworkHandler", 2, new Object[] { "getArkAppView, position: ", Integer.valueOf(paramInt), ", articleInfo: ", paramArticleInfo, ", arkAppMessage: ", localArkAppMessage });
+      }
+      return a(paramArticleInfo, paramView, localArkAppMessage);
+    }
+    onu.b(paramView);
+    return paramView;
   }
   
-  public void onCancel(bihu parambihu)
+  private View a(View paramView, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2)
   {
-    super.onCancel(parambihu);
-    Object localObject = parambihu.a().getString("resId");
-    parambihu = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
+    Object localObject = new pwe(this.jdField_a_of_type_Prz.a(), paramArticleInfo, paramInt1, this.jdField_a_of_type_Prz.b(), this.jdField_a_of_type_Prz.c(), paramInt2, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.d(), null, this.jdField_a_of_type_Prz.a());
+    View localView = qph.a(paramInt2, localObject, paramInt1, paramView, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.a());
+    if (localView != null)
     {
-      ((qtw)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
-      if (parambihu != null)
+      localView.setTag(2131380831, localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("FrameworkHandler", 2, "CellFactory.getView = " + localView.getTag().getClass().getSimpleName());
+      }
+      localView.setTag(2131369487, this.jdField_a_of_type_Prz.a());
+      if (paramArticleInfo == null)
       {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-        ((Bundle)localObject).putInt("retCode", -1);
-        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putInt("rate", 0);
-        parambihu.a(107, (Bundle)localObject);
-        if (QLog.isDebugVersion()) {
-          QLog.d("ReadInJoySkinHelper", 4, "onCancel rsp:" + ((Bundle)localObject).toString());
+        if (QLog.isColorLevel()) {
+          QLog.d("FrameworkHandler", 2, "getView() article is null, set view gone, position: " + paramInt2);
+        }
+        if (localView.getVisibility() != 8) {
+          localView.setVisibility(8);
+        }
+        if ((localView.getLayoutParams() instanceof AbsListView.LayoutParams))
+        {
+          paramView = (AbsListView.LayoutParams)localView.getLayoutParams();
+          if (paramView.height != 1)
+          {
+            paramView.height = 1;
+            localView.setLayoutParams(paramView);
+          }
+        }
+        if (localView != null) {
+          break label410;
+        }
+        paramInt1 = 0;
+        label256:
+        localObject = this.jdField_a_of_type_Prz.c() + "";
+        if (paramArticleInfo == null) {
+          break label415;
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy", 4, "SkinDownloadListener onCancel");
+    label410:
+    label415:
+    for (paramView = String.valueOf(paramArticleInfo.mArticleID);; paramView = "")
+    {
+      odq.a(null, "", "0X80095B4", "0X80095B4", 0, paramInt1, (String)localObject, paramView, this.jdField_a_of_type_Prz.b() + "", "", false);
+      return localView;
+      if (localView.getVisibility() != 0) {
+        localView.setVisibility(0);
+      }
+      if (!(localView.getLayoutParams() instanceof AbsListView.LayoutParams)) {
+        break;
+      }
+      paramView = (AbsListView.LayoutParams)localView.getLayoutParams();
+      if (paramView.height == -2) {
+        break;
+      }
+      paramView.height = -2;
+      localView.setLayoutParams(paramView);
+      break;
+      QLog.w("FrameworkHandler", 1, "CellFactory.getView = null");
+      break;
+      paramInt1 = 1;
+      break label256;
     }
   }
   
-  public void onDone(bihu parambihu)
+  private View a(View paramView, ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2, int paramInt1, int paramInt2)
   {
-    super.onDone(parambihu);
-    Object localObject = parambihu.a().getString("resId");
-    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
+    paramArticleInfo2 = new pwe(this.jdField_a_of_type_Prz.a(), paramArticleInfo1, paramInt1, this.jdField_a_of_type_Prz.b(), this.jdField_a_of_type_Prz.c(), paramInt2, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.d(), paramArticleInfo2, this.jdField_a_of_type_Prz.a());
+    paramArticleInfo2.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
+    long l;
+    if ((paramView != null) && ((paramView instanceof ProteusItemView)))
     {
-      ((qtw)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
-      if (localTroopMemberApiService != null)
-      {
-        localObject = new Bundle();
-        if (parambihu.jdField_a_of_type_Int != 0) {
-          break label169;
-        }
-        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-        ((Bundle)localObject).putInt("retCode", 0);
-        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putInt("rate", 100);
-        localTroopMemberApiService.a(107, (Bundle)localObject);
-      }
+      l = System.currentTimeMillis();
+      ozp.a((ProteusItemView)paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.a(), paramArticleInfo2, paramInt2, "default_feeds");
+      paramView = (ProteusItemView)paramView;
+      tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.convertview#bindData", System.currentTimeMillis() - l);
     }
     for (;;)
     {
-      if (QLog.isDebugVersion()) {
-        QLog.d("ReadInJoySkinHelper", 4, "onDone rsp:" + ((Bundle)localObject).toString());
+      if ((paramView != null) && (paramView.a() != null))
+      {
+        l = System.currentTimeMillis();
+        paramArticleInfo1 = this.jdField_a_of_type_Prz.a();
+        paramView.a().setTag(2131369487, paramArticleInfo1);
+        paramView.setTag(2131380831, paramArticleInfo2);
+        tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.setTag", System.currentTimeMillis() - l);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("readinjoy", 4, "SkinDownloadListener onDone");
+      return paramView;
+      l = System.currentTimeMillis();
+      paramView = ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt1, paramArticleInfo1);
+      tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.getView", System.currentTimeMillis() - l);
+      l = System.currentTimeMillis();
+      ozp.a(paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.a(), paramArticleInfo2, paramInt2, "default_feeds");
+      tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.newview#bindData", System.currentTimeMillis() - l);
+    }
+  }
+  
+  private View a(BaseArticleInfo paramBaseArticleInfo, View paramView, ArkAppMessage paramArkAppMessage)
+  {
+    Object localObject2;
+    if (paramBaseArticleInfo == null)
+    {
+      localObject2 = paramView;
+      return localObject2;
+    }
+    Object localObject1;
+    if ((paramView != null) && ((paramView.getTag() instanceof ons))) {
+      localObject1 = (ons)paramView.getTag();
+    }
+    for (;;)
+    {
+      localObject2 = paramView;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = paramView;
+      if (paramView == null) {
+        break;
+      }
+      if (!onu.a(paramArkAppMessage)) {
+        break label127;
+      }
+      ((ons)localObject1).a(paramArkAppMessage, paramBaseArticleInfo);
+      ((ons)localObject1).a();
+      onu.a(paramView);
+      return paramView;
+      localObject2 = new ons(paramArkAppMessage, paramBaseArticleInfo);
+      onu.a((ons)localObject2, this.jdField_a_of_type_Prz.b());
+      localObject1 = localObject2;
+      if (((ons)localObject2).a() != null)
+      {
+        paramView = ((ons)localObject2).a();
+        paramView.setTag(localObject2);
+        localObject1 = localObject2;
+      }
+    }
+    label127:
+    onu.a(paramArkAppMessage, 0);
+    onu.b(paramView);
+    return paramView;
+  }
+  
+  private View b(View paramView, ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2, int paramInt1, int paramInt2)
+  {
+    paramArticleInfo2 = new pwe(this.jdField_a_of_type_Prz.a(), paramArticleInfo1, paramInt1, this.jdField_a_of_type_Prz.b(), this.jdField_a_of_type_Prz.c(), paramInt2, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.d(), paramArticleInfo2, this.jdField_a_of_type_Prz.a());
+    long l;
+    if ((paramView != null) && ((paramView instanceof ProteusItemView)))
+    {
+      l = System.currentTimeMillis();
+      this.jdField_a_of_type_Qgc.a((ProteusItemView)paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.a(), paramArticleInfo2, paramInt2);
+      tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getDynamicProteusView.convertview#bindData", System.currentTimeMillis() - l);
+      paramView = (ProteusItemView)paramView;
+    }
+    for (;;)
+    {
+      paramArticleInfo1 = this.jdField_a_of_type_Prz.a();
+      if (paramView.a() != null) {
+        paramView.a().setTag(2131369487, paramArticleInfo1);
+      }
+      paramView.setTag(2131380831, paramArticleInfo2);
+      return paramView;
+      l = System.currentTimeMillis();
+      paramView = this.jdField_a_of_type_Qgc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt1, paramArticleInfo1);
+      tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getDynamicProteusView.getView", System.currentTimeMillis() - l);
+      l = System.currentTimeMillis();
+      this.jdField_a_of_type_Qgc.a(paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Prz.a(), this.jdField_a_of_type_Prz.a(), paramArticleInfo2, paramInt2);
+      tpl.a("FrameworkHandler", String.valueOf(paramInt1), "getDynamicProteusView.newview#bindData", System.currentTimeMillis() - l);
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = this.jdField_a_of_type_Prz.a().a();
+        this.jdField_a_of_type_Qgc = this.jdField_a_of_type_Prz.a().a();
+        this.jdField_a_of_type_Boolean = true;
       }
       return;
-      label169:
-      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-      ((Bundle)localObject).putInt("retCode", parambihu.jdField_a_of_type_Int);
-      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-      ((Bundle)localObject).putInt("rate", 0);
-      localTroopMemberApiService.a(107, (Bundle)localObject);
     }
-  }
-  
-  public void onProgress(bihu parambihu)
-  {
-    super.onProgress(parambihu);
-    Object localObject = parambihu.a().getString("resId");
-    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString)) && (localTroopMemberApiService != null))
+    finally
     {
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-      ((Bundle)localObject).putInt("retCode", 0);
-      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-      int i = (int)(parambihu.b * 100L / parambihu.jdField_a_of_type_Long);
-      ((Bundle)localObject).putInt("rate", i);
-      if (i != 100) {
-        localTroopMemberApiService.a(107, (Bundle)localObject);
-      }
+      localObject = finally;
+      throw localObject;
     }
-  }
-  
-  public boolean onStart(bihu parambihu)
-  {
-    return super.onStart(parambihu);
   }
 }
 

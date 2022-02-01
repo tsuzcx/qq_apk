@@ -1,60 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.security.Key;
+import android.os.Bundle;
 
-public class aoru
+final class aoru
+  extends aosw
 {
-  private aorx a;
-  
-  public aoru(aorx paramaorx)
+  aoru(long paramLong1, long paramLong2, aosn paramaosn, long paramLong3)
   {
-    this.a = paramaorx;
+    super(paramLong1, paramLong2);
   }
   
-  private aorv a(String paramString)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    aort localaort = aort.a(paramString);
-    if (localaort == null)
+    String str2 = null;
+    String str3;
+    String str1;
+    if (paramBoolean)
     {
-      QLog.e("JwtConsumer", 1, "format jwt token error");
-      return null;
+      str3 = paramBundle.getString("userAccount", null);
+      str1 = paramBundle.getString("userAccount", null);
+      str2 = paramBundle.getString("openToken", null);
     }
-    paramString = new aorv(paramString, localaort);
-    if (a(paramString)) {}
-    for (;;)
+    for (paramBundle = str3;; paramBundle = null)
     {
-      return paramString;
-      paramString = null;
+      this.jdField_a_of_type_Aosn.a(paramBundle, this.jdField_a_of_type_Long, str1, str2);
+      return;
+      str1 = null;
     }
-  }
-  
-  private boolean a(aorv paramaorv)
-  {
-    paramaorv = paramaorv.a();
-    Key localKey = this.a.a();
-    if (localKey == null)
-    {
-      QLog.e("JwtConsumer", 1, "verificationKeyResolver.resolveKey() is null");
-      return false;
-    }
-    paramaorv.a(localKey);
-    return paramaorv.a();
-  }
-  
-  public String a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null)
-    {
-      QLog.e("JwtConsumer", 1, "process jwt token error, process is null");
-      return null;
-    }
-    paramString = paramString.a();
-    if (paramString == null)
-    {
-      QLog.e("JwtConsumer", 1, "process jwt token error, joseObject is null");
-      return null;
-    }
-    return paramString.a();
   }
 }
 

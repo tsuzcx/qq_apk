@@ -1,31 +1,17 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afjx
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public afjx(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public afjx(TroopChatPie paramTroopChatPie) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
-      }
-    }
-    else {
-      return;
-    }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+    new bcek(this.a.app).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_cancel").a(new String[] { this.a.sessionInfo.curFriendUin }).a();
+    this.a.finish();
   }
 }
 

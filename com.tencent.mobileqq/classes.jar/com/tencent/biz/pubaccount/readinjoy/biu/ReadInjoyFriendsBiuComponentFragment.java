@@ -11,21 +11,22 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhkv;
-import bljm;
+import bfuc;
 import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
-import ocd;
-import onh;
-import oni;
-import onj;
+import odq;
+import oos;
+import oot;
+import oou;
 import org.json.JSONObject;
-import oyu;
-import ozs;
+import paa;
+import pay;
+import pim;
 
 public class ReadInjoyFriendsBiuComponentFragment
   extends PublicBaseFragment
@@ -34,7 +35,7 @@ public class ReadInjoyFriendsBiuComponentFragment
   public View.OnClickListener a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bljm jdField_a_of_type_Bljm = new oni(this);
+  AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new oot(this);
   ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   public ArrayList<MultiBiuSameContent> a;
@@ -47,17 +48,17 @@ public class ReadInjoyFriendsBiuComponentFragment
   public ReadInjoyFriendsBiuComponentFragment()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new onh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new oos(this);
   }
   
   private String a(long paramLong)
   {
-    return oyu.k + bhkv.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+    return paa.k + bfuc.encodeToString(String.valueOf(paramLong).getBytes(), 2);
   }
   
   private String a(long paramLong1, int paramInt, long paramLong2)
   {
-    String str2 = oyu.e.replace("uin=", "uin=" + bhkv.encodeToString(String.valueOf(paramLong1).getBytes(), 0).replace('\n', ' ').trim());
+    String str2 = paa.e.replace("uin=", "uin=" + bfuc.encodeToString(String.valueOf(paramLong1).getBytes(), 0).replace('\n', ' ').trim());
     String str1 = str2;
     if (str2.contains("&feedstype=")) {
       str1 = str2.replace("&feedstype=", "&feedstype=" + paramInt);
@@ -72,14 +73,14 @@ public class ReadInjoyFriendsBiuComponentFragment
     try
     {
       localJSONObject.put("algorithmId", this.c);
-      localJSONObject.put("folder_status", ozs.d);
+      localJSONObject.put("folder_status", pay.d);
       localJSONObject.put("feedsSource", this.d);
       localJSONObject.put("feeds_type", paramInt + "");
-      localJSONObject.put("kandian_mode", "" + ozs.e());
-      localJSONObject.put("tab_source", "" + ozs.d());
+      localJSONObject.put("kandian_mode", "" + pay.e());
+      localJSONObject.put("tab_source", "" + pay.d());
       localJSONObject.put("rowkey", this.e);
       localJSONObject.put("channel_id", this.f);
-      ocd.a(null, String.valueOf(paramLong1), paramString, paramString, 0, 0, String.valueOf(paramLong2), "0", this.b, localJSONObject.toString(), false);
+      odq.a(null, String.valueOf(paramLong1), paramString, paramString, 0, 0, String.valueOf(paramLong2), "0", this.b, localJSONObject.toString(), false);
       return;
     }
     catch (Exception paramString)
@@ -92,7 +93,7 @@ public class ReadInjoyFriendsBiuComponentFragment
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      ozs.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
+      pay.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInjoyFriendsBiuComponentFragment", 2, "jumpUrl url:" + paramString);
       }
@@ -111,7 +112,7 @@ public class ReadInjoyFriendsBiuComponentFragment
     paramBundle = getArguments();
     if (paramBundle != null)
     {
-      localArrayList = paramBundle.getParcelableArrayList("friends_biu_list");
+      ArrayList localArrayList = paramBundle.getParcelableArrayList("friends_biu_list");
       this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
       this.jdField_a_of_type_JavaLangString = paramBundle.getString("articleID");
       this.b = paramBundle.getString("stategyID");
@@ -123,28 +124,30 @@ public class ReadInjoyFriendsBiuComponentFragment
         QLog.d("ReadInjoyFriendsBiuComponentFragment", 2, "onCreate mContents:" + this.jdField_a_of_type_JavaUtilArrayList.size());
       }
     }
-    while (!QLog.isColorLevel())
+    for (;;)
     {
-      ArrayList localArrayList;
+      pim.a.a(getActivity());
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoyFriendsBiuComponentFragment", 2, "onCreate mContents is null or empty");
+      }
     }
-    QLog.d("ReadInjoyFriendsBiuComponentFragment", 2, "onCreate mContents is null or empty");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560195, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367284));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131367213));
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelector(2131167247);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560202, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367307));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131367229));
+    this.jdField_a_of_type_ComTencentWidgetListView.setSelector(2131167276);
     this.jdField_a_of_type_ComTencentWidgetListView.setOverScrollMode(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364584));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364615));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramLayoutInflater.findViewById(2131363235).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramViewGroup = (LinearLayout)paramLayoutInflater.findViewById(2131362682);
-    paramBundle = new onj(this, getActivity(), this.jdField_a_of_type_JavaUtilArrayList);
+    paramLayoutInflater.findViewById(2131363266).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramViewGroup = (LinearLayout)paramLayoutInflater.findViewById(2131362687);
+    paramBundle = new oou(this, getActivity(), this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Bljm);
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("Biu列表");
     }

@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-
-class pvn
-  implements View.OnAttachStateChangeListener
+public class pvn
 {
-  pvn(pvl parampvl) {}
+  public int a;
+  public int b;
   
-  public void onViewAttachedToWindow(View paramView)
+  public String toString()
   {
-    pfd.a().a(pvl.a(this.a));
-  }
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    pfd.a().b(pvl.a(this.a));
+    return "UserCoinInfo{platformCoinCount='" + this.a + '\'' + ", userCoinCount='" + this.b + '\'' + '}';
   }
 }
 

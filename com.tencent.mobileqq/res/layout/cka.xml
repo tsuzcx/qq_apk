@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <TextView android:textSize="10.0sp" android:textColor="#ffffffff" android:id="@id/nt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:text="" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/nx8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/dhz" android:alpha="0.4" />
-    <FrameLayout android:id="@id/enp" android:background="@drawable/dhx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gba" />
-    </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"> android:background="@color/white"> <LinearLayout android:orientation="vertical" android:id="@id/ge0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:layout_centerVertical="true">
+            <com.tencent.widget.FixSizeImageView android:id="@id/gdq" android:clickable="false" android:duplicateParentState="false" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/b59" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_dark_gray" android:ellipsize="end" android:id="@id/gdv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/gdz" android:layout_toRightOf="@id/gdq" />
+            <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="middle" android:id="@id/ge1" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="16.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/gdz" android:layout_below="@id/gdv" android:layout_alignLeft="@id/gdv" />
+            <Button android:id="@id/gdz" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="16.0dip" android:text="@string/psf" android:includeFontPadding="false" android:layout_alignParentRight="true" style="@style/i9" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

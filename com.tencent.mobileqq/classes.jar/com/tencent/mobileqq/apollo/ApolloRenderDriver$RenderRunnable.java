@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import amwc;
-import blhq;
+import alqw;
+import bjng;
 import java.lang.ref.WeakReference;
 
 class ApolloRenderDriver$RenderRunnable
@@ -20,9 +20,9 @@ class ApolloRenderDriver$RenderRunnable
     if ((this.a != null) && (this.a.get() != null))
     {
       localApolloRenderDriver = (ApolloRenderDriver)this.a.get();
-      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_Amwc != null) && (localApolloRenderDriver.jdField_a_of_type_Blhq != null))
+      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_Alqw != null) && (localApolloRenderDriver.jdField_a_of_type_Bjng != null))
       {
-        localApolloRenderDriver.jdField_a_of_type_Amwc.onRender();
+        localApolloRenderDriver.jdField_a_of_type_Alqw.onRender();
         if (((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int <= 0) {
           break label101;
         }
@@ -31,7 +31,7 @@ class ApolloRenderDriver$RenderRunnable
     label101:
     for (int i = 1000 / ((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int;; i = 50)
     {
-      localApolloRenderDriver.jdField_a_of_type_Blhq.postDelayed(this, i);
+      localApolloRenderDriver.jdField_a_of_type_Bjng.postDelayed(this, i);
       return;
     }
   }

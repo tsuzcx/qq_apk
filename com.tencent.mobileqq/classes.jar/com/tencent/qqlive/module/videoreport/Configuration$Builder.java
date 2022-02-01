@@ -18,7 +18,8 @@ public class Configuration$Builder
   private ReportPolicy mElementReportPolicy = ReportPolicy.REPORT_POLICY_ALL;
   private IFormatter mFormatter;
   private boolean mIndependentPageOut = false;
-  private ILogger mLogger = Configuration.access$1600();
+  private int mLazyInitType = 0;
+  private ILogger mLogger = Configuration.access$1700();
   private double mPageExposureMinRate = 0.4D;
   private long mPageExposureMinTime = 200L;
   private long mVisitBackgroundTime = 900000L;
@@ -116,6 +117,12 @@ public class Configuration$Builder
   public Builder independentPageOut(boolean paramBoolean)
   {
     this.mIndependentPageOut = paramBoolean;
+    return this;
+  }
+  
+  public Builder lazyInitType(int paramInt)
+  {
+    this.mLazyInitType = paramInt;
     return this;
   }
   

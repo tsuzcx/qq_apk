@@ -41,7 +41,6 @@
                     "type": "match_parent"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#E6E6E6"
                 }
             },
@@ -64,7 +63,17 @@
                 },
                 "attributes":{
                     "setBackgroundColorString:":"#0D000000",
-                    "setCornerRadiusString:":"15"
+                    "setCornerRadiusString:":"15",
+                    "setDTElementID:withParams:": [
+                        "write_comment_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_write_comment",
+                            "click_type": "single"
+                        }
+                    ]
                 },
                 "subviews":[
                     {
@@ -124,13 +133,22 @@
                     "value":"50"
                 },
                 "attributes":{
-                    "setImage:": "NativeArticleComment"
+                    "setImage:": "NativeArticleComment",
+                    "setDTElementID:withParams:": [
+                        "comment_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_comment",
+                            "click_type": "single"
+                        }
+                    ]
                 }
             },
             {
                 "view_type":"UILabel",
                 "view_id":"id_comment_count",
-                "event_type":"cmd_comment_click",
                 "above_of_view":"id_comment",
                 "right_of_view":"id_comment",
                 "margin_bottom":"-18",
@@ -175,13 +193,22 @@
                         ["#000000","#000000"],
                         ["0","0"],
                         ["0","1"]
+                    ],
+                    "setDTElementID:withParams:": [
+                        "like_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "$dt_like_actionid",
+                            "click_type": "single"
+                        }
                     ]
                 }
             },
             {
                      "view_type":"UILabel",
                      "view_id":"id_like_count",
-                     "event_type":"cmd_like_click",
                      "above_of_view":"id_like",
                      "right_of_view":"id_like",
                      "margin_bottom":"-18",
@@ -222,13 +249,22 @@
                     "value":"50"
                 },
                 "attributes":{
-                    "setImage:": "NativeArticleBiu"
+                    "setImage:": "NativeArticleBiu",
+                    "setDTElementID:withParams:": [
+                        "biu_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_biu",
+                            "click_type": "single"
+                        }
+                    ]
                 }
             },
             {
                      "view_type":"UILabel",
                      "view_id":"id_biu_count",
-                     "event_type":"cmd_biu_click",
                      "above_of_view":"id_biu",
                      "right_of_view":"id_biu",
                      "margin_bottom":"-18",

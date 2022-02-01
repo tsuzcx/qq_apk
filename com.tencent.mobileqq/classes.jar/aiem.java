@@ -1,74 +1,71 @@
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.downloader.GalleryDecoder;
-import com.tencent.widget.Gallery;
-import java.io.File;
-import java.util.HashMap;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager.3.1;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aiem
-  extends GalleryDecoder
+  extends amsu
 {
-  private BaseApplicationImpl a;
+  aiem(aiej paramaiej) {}
   
-  public aiem(BaseApplicationImpl paramBaseApplicationImpl)
+  protected void onAddFriend(String paramString)
   {
-    super(BaseApplicationImpl.getContext());
-    this.a = paramBaseApplicationImpl;
-  }
-  
-  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    int i = 0;
-    if (paramDownloadParams.tag != null) {
-      i = ((Integer)paramDownloadParams.tag).intValue();
-    }
-    if (i == 3)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
-      int j = paramURLDrawableHandler.getWidth();
-      i = paramURLDrawableHandler.getHeight();
-      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
-      j = (int)(j * f);
-      i = (int)(i * f);
-      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
-    }
-    return null;
-  }
-  
-  public String getLogTag()
-  {
-    return "PEAK";
-  }
-  
-  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
-  {
-    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      HashMap localHashMap = paramSafeDecodeOption.getInfo();
-      localHashMap.put("from", "GalleryDecoder");
-      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
+      aigo localaigo = (aigo)((Iterator)localObject).next();
+      if ((localaigo instanceof aigj))
+      {
+        int i = ((aigj)localaigo).a.structMsg.msg.sub_type.get();
+        String str = ((aigj)localaigo).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
+        {
+          ((Iterator)localObject).remove();
+          aiej.a(this.a).getMessageFacade().removeMsgByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, ((aigj)localaigo).a.uniseq, false);
+        }
+      }
+    }
+    aiej.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (aiej.a(this.a) != null)) {
+      aiej.a(this.a).sendEmptyMessage(2);
     }
   }
   
-  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
+  protected void onGetPushRecommend(boolean paramBoolean)
   {
-    try
-    {
-      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
-      return localRoundRectBitmap;
+    if ((paramBoolean) && (aiej.a(this.a) != null)) {
+      aiej.a(this.a).sendEmptyMessage(2);
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return new RoundRectBitmap(paramBitmap, 12.0F);
   }
   
-  public boolean useJpegTurbo()
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    return azru.b();
+    aiej.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (aiej.a(this.a) != null)) {
+      aiej.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

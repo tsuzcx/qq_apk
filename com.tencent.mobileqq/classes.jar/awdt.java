@@ -1,35 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3.1.1;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class awdt
-  implements EnterCallback
+class awdt
+  implements bbqw
 {
-  public awdt(ODLoadingActivity.3 param3) {}
+  awdt(awdi paramawdi, awdd paramawdd, String paramString) {}
   
-  public void onCloseLoadingView()
+  public void a(int paramInt)
   {
-    ODLoadingActivity.b(this.a.this$0);
-    this.a.this$0.finish();
-    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
-    awbj.b("33669909");
+    if ((this.jdField_a_of_type_Awdd.a != null) && (this.jdField_a_of_type_Awdd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Awdd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    }
+    this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd, paramInt, 0, "");
   }
   
-  public void onEnterComplete()
+  public void b(int paramInt)
   {
-    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
-    awbj.b("33669911");
-  }
-  
-  public void onShowLoadingView(View paramView)
-  {
-    ODLoadingActivity.a(this.a.this$0, paramView);
-    this.a.this$0.runOnUiThread(new ODLoadingActivity.3.1.1(this));
-    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
-    awbj.b("33669908");
+    if ((this.jdField_a_of_type_Awdd.a != null) && (this.jdField_a_of_type_Awdd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Awdd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    }
+    if (this.jdField_a_of_type_Awdd.a != null)
+    {
+      String str = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd.a.jdField_a_of_type_Bbqh);
+      awde localawde = this.jdField_a_of_type_Awdi.a(str);
+      if ((localawde != null) && (!localawde.a))
+      {
+        localawde.c = paramInt;
+        this.jdField_a_of_type_Awdi.a(str, localawde);
+        awdi.a(this.jdField_a_of_type_Awdi, localawde, localawde.c);
+      }
+    }
   }
 }
 

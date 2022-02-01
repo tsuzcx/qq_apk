@@ -1,22 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.Comparator;
 
-class auig
-  implements View.OnClickListener
+final class auig
+  implements Comparator<File>
 {
-  auig(auid paramauid, String paramString) {}
-  
-  public void onClick(View paramView)
+  private int a(long paramLong1, long paramLong2)
   {
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.jdField_a_of_type_Auid.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Auid.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.lastModified(), paramFile2.lastModified());
   }
 }
 

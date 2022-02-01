@@ -1,82 +1,236 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class amgi
-  extends Handler
+  implements ambg
 {
-  public amgi(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public static boolean a;
+  private int jdField_a_of_type_Int = 1;
+  amau jdField_a_of_type_Amau;
+  private boolean b;
+  private boolean c;
   
-  public void handleMessage(Message paramMessage)
+  public amgi(amau paramamau)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Amau = paramamau;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (paramQQAppInterface != null)
     {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+      if (localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0) >= localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3)) {
+        bool = true;
+      }
+      jdField_a_of_type_Boolean = bool;
     }
-    label366:
+  }
+  
+  private void b()
+  {
+    if (!this.b) {}
+    Object localObject;
+    alnn localalnn;
+    alnr localalnr;
     do
     {
-      Object[] arrayOfObject;
-      String str;
       do
       {
-        do
-        {
-          return;
-          TroopMemberListInnerFrame.a(this.a, paramMessage);
-          return;
-          paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberListInnerFrame.jdField_b_of_type_Double;
-        } while ((this.a.jdField_a_of_type_Double >= 90.0D) || (this.a.jdField_a_of_type_Int <= 0));
-        if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
-          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)this.a.jdField_a_of_type_Double);
-        this.a.d.setText(String.format(anzj.a(2131714397), new Object[] { Integer.valueOf(Math.min((int)(this.a.jdField_a_of_type_Int * this.a.jdField_a_of_type_Double / 100.0D), this.a.jdField_a_of_type_Int)), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4), 800L);
         return;
-        TroopMemberListInnerFrame.a(this.a, paramMessage.arg1);
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        if (!(paramMessage.obj instanceof Object[])) {
-          break label366;
-        }
-        arrayOfObject = (Object[])paramMessage.obj;
-        if (arrayOfObject.length <= 0) {
-          break label366;
-        }
-        str = (String)arrayOfObject[1];
-        if (str.equals(this.a.jdField_b_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, troopUin != mTroopUin, break:" + str + "," + this.a.jdField_b_of_type_JavaLangString);
-      return;
-      this.a.jdField_a_of_type_JavaUtilMap = ((Map)arrayOfObject[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, mIndexedFriends.size=" + this.a.jdField_a_of_type_JavaUtilMap.size());
+        this.b = false;
+        localObject = this.jdField_a_of_type_Amau.a();
+      } while (localObject == null);
+      localalnn = (alnn)((QQAppInterface)localObject).getManager(211);
+      localalnr = (alnr)((QQAppInterface)localObject).getManager(153);
+      localObject = null;
+      if (localalnn.jdField_a_of_type_Amgg != null) {
+        localObject = localalnn.jdField_a_of_type_Amgg.a();
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 5))
-      {
-        int i = TroopMemberListInnerFrame.a(this.a, this.a.jdField_a_of_type_JavaUtilMap);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(i);
-      }
-      paramMessage.obj = TroopMemberListInnerFrame.a(this.a);
-      TroopMemberListInnerFrame.a(this.a, paramMessage);
-    } while ((this.a.jdField_a_of_type_Boolean) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.q));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramMessage = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
+    } while ((localObject == null) || ((((DrawerPushItem)localObject).msg_type != 7) && (((DrawerPushItem)localObject).msg_type != 9) && (((DrawerPushItem)localObject).msg_type != 2) && (((DrawerPushItem)localObject).msg_type != 10)));
+    QLog.i("ApolloBubbleLogic", 1, "checkIfPanelBubble remove panel bubble");
+    localalnr.a((DrawerPushItem)localObject);
+    localalnn.jdField_a_of_type_Amgg.a();
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp", 0);
+    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_";
+    String str1 = (String)localObject1 + ApolloUtil.b();
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
+    if (((SharedPreferences)localObject2).contains(str1)) {
+      localEditor.putInt(str1, ((SharedPreferences)localObject2).getInt(str1, 0) + 1);
+    }
+    for (;;)
     {
-      paramMessage.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+      localEditor.commit();
+      a(paramQQAppInterface);
       return;
+      Object localObject3 = ((SharedPreferences)localObject2).getAll();
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+          String str2 = (String)localEntry.getKey();
+          if ((str2 != null) && (str2.startsWith((String)localObject1))) {
+            ((List)localObject2).add(localEntry.getKey());
+          }
+        }
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          localEditor.remove((String)((Iterator)localObject1).next());
+        }
+      }
+      localEditor.putInt(str1, 1);
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Amau != null)
+    {
+      alnn localalnn = (alnn)this.jdField_a_of_type_Amau.a().getManager(211);
+      localalnn.jdField_a_of_type_Int = -1;
+      localalnn.a(-1, -1);
+    }
+    this.jdField_a_of_type_Amau = null;
+    this.c = false;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    }
+    label304:
+    for (;;)
+    {
+      return;
+      b();
+      return;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_Amau.a();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_Amau.a() != null) && (ambc.a(localQQAppInterface) != null))
+      {
+        SharedPreferences localSharedPreferences = localQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+        int i = localSharedPreferences.getInt(localQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0);
+        int j = localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3);
+        if (i >= j)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO Bubble show count limited:", Integer.valueOf(j) });
+          }
+        }
+        else if (this.c)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, "current AIO has play bubble, wait for next time");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, "start play bubble");
+          }
+          if (a(localQQAppInterface)) {
+            paramInt = 2;
+          }
+          for (;;)
+          {
+            if (paramInt <= 0) {
+              break label304;
+            }
+            this.b = true;
+            this.c = true;
+            b(localQQAppInterface);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO bubble play type:", Integer.valueOf(paramInt), ",current count:", Integer.valueOf(i), ",maxCount:", Integer.valueOf(j) });
+            return;
+            if (b(localQQAppInterface)) {
+              paramInt = 3;
+            } else {
+              paramInt = 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    alnn localalnn = (alnn)paramQQAppInterface.getManager(211);
+    if (localalnn.jdField_a_of_type_Amgg != null) {}
+    for (DrawerPushItem localDrawerPushItem = localalnn.jdField_a_of_type_Amgg.a();; localDrawerPushItem = null)
+    {
+      if ((localDrawerPushItem != null) && (localDrawerPushItem.msg_type != 7) && (localalnn.jdField_a_of_type_Amgg.a(paramQQAppInterface, this.jdField_a_of_type_Amau.jdField_a_of_type_Int)))
+      {
+        if (localDrawerPushItem.reddotGameId > 0)
+        {
+          localalnn.jdField_a_of_type_Int = localDrawerPushItem.reddotGameId;
+          localalnn.a(localDrawerPushItem.reddotGameId, 3);
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(this.jdField_a_of_type_Amau.jdField_a_of_type_Int), 3, new String[] { String.valueOf(localDrawerPushItem.reddotGameId), String.valueOf(localDrawerPushItem.reddotRedId) });
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "show aio bubble for reddot game, game id=", Integer.valueOf(localDrawerPushItem.reddotGameId) });
+          }
+        }
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    alnn localalnn = (alnn)paramQQAppInterface.getManager(211);
+    if (localalnn.jdField_a_of_type_Amgg != null) {}
+    for (Object localObject = localalnn.jdField_a_of_type_Amgg.a();; localObject = null)
+    {
+      boolean bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((DrawerPushItem)localObject).msg_type == 7)
+        {
+          localObject = (alnr)paramQQAppInterface.getManager(153);
+          bool1 = bool2;
+          if (localalnn.jdField_a_of_type_Amgg.a(paramQQAppInterface, this.jdField_a_of_type_Amau.jdField_a_of_type_Int))
+          {
+            if (localObject != null) {
+              ((alnr)localObject).o = true;
+            }
+            VipUtils.a(null, "cmshow", "Apollo", "peoplebubble", ApolloUtil.b(this.jdField_a_of_type_Amau.jdField_a_of_type_Int), 0, new String[] { String.valueOf(1) });
+            bool1 = true;
+          }
+        }
+      }
+      return bool1;
     }
   }
 }

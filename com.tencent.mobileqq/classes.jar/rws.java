@@ -1,8 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
-public abstract interface rws
+public class rws
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
+  private rws(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    VideoFeedsGuideView.a(this.a);
+  }
 }
 
 

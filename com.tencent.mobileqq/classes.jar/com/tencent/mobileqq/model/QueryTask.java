@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.model;
 
-import axfu;
-import axfv;
+import avtb;
+import avtc;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class QueryTask<Param, Result>
   implements Runnable
 {
-  public axfu<Result> a;
-  public axfv<Param, Result> a;
+  public avtb<Result> a;
+  public avtc<Param, Result> a;
   private Param a;
   
-  public QueryTask(axfv<Param, Result> paramaxfv, axfu<Result> paramaxfu)
+  public QueryTask(avtc<Param, Result> paramavtc, avtb<Result> paramavtb)
   {
-    this.jdField_a_of_type_Axfv = paramaxfv;
-    this.jdField_a_of_type_Axfu = paramaxfu;
+    this.jdField_a_of_type_Avtc = paramavtc;
+    this.jdField_a_of_type_Avtb = paramavtb;
   }
   
   public void a(Param paramParam)
@@ -26,7 +26,7 @@ public class QueryTask<Param, Result>
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Axfv.a(this.jdField_a_of_type_JavaLangObject);
+    Object localObject = this.jdField_a_of_type_Avtc.query(this.jdField_a_of_type_JavaLangObject);
     ThreadManager.getUIHandler().post(new QueryTask.1(this, localObject));
   }
 }

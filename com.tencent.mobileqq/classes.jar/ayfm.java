@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import kotlin.Metadata;
 
-public class ayfm
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor;", "Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelAppInfoOrderConfigProcessor;", "()V", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayfm
+  extends ayfk
 {
-  public ayfm(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public static final ayfn a = new ayfn(null);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int type()
   {
-    return paramMotionEvent.getAction() == 2;
+    return 611;
   }
 }
 

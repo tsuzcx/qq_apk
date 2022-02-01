@@ -1,6 +1,10 @@
-public abstract interface bllq
+public class bllq
+  extends bllc
 {
-  public abstract boolean a(int paramInt);
+  protected bllu a()
+  {
+    return bllx.a(this);
+  }
 }
 
 

@@ -1,33 +1,29 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
 public class akdu
-  implements View.OnClickListener
+  implements aket
 {
-  public akdu(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public akdu(DoodleView paramDoodleView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    znw.a(this.a.jdField_a_of_type_Akfe);
-    znw.a(this.a.jdField_a_of_type_JavaUtilList);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      localArrayList.add(((akfc)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
+    }
   }
 }
 

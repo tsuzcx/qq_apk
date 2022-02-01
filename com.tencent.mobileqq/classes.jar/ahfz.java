@@ -1,17 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
-
-public class ahfz
-  implements View.OnTouchListener
+class ahfz
 {
-  public ahfz(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  ahfz(ahfp paramahfp) {}
 }
 
 

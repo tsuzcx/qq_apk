@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.mainpage;
 
+import amtj;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
-import anzj;
 import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
 
 class MainPageFragment$1
@@ -16,7 +16,7 @@ class MainPageFragment$1
   {
     MiniCacheFreeManager.freeCache(MainPageFragment.getUin(), MainPageFragment.access$000(this.this$0));
     this.this$0.getActivity().finish();
-    Toast.makeText(paramView.getContext(), anzj.a(2131705315), 1).show();
+    Toast.makeText(paramView.getContext(), amtj.a(2131705545), 1).show();
     return false;
   }
 }

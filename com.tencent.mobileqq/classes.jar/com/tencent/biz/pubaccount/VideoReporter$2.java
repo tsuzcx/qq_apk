@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import adak;
-import bdts;
+import abwz;
+import bcme;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ocd;
+import odq;
 import org.json.JSONObject;
-import txx;
+import uem;
 
 public final class VideoReporter$2
   implements Runnable
@@ -22,8 +22,8 @@ public final class VideoReporter$2
     if (this.jdField_a_of_type_Int == -2011)
     {
       l1 = System.currentTimeMillis();
-      localbdts = txx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
-      if (localbdts != null) {
+      localbcme = uem.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
+      if (localbcme != null) {
         localObject1 = "";
       }
     }
@@ -32,9 +32,9 @@ public final class VideoReporter$2
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localbdts.ae);
+        ((JSONObject)localObject2).put("vid", localbcme.ae);
         ((JSONObject)localObject2).put("os", "1");
-        if (!adak.d(this.b)) {
+        if (!abwz.d(this.b)) {
           continue;
         }
         ((JSONObject)localObject2).put("aiotype", i);
@@ -47,14 +47,14 @@ public final class VideoReporter$2
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localbdts.aj;
+        String str = localbcme.aj;
         continue;
       }
-      if (localbdts.aj != null) {
+      if (localbcme.aj != null) {
         continue;
       }
       localObject2 = "0";
-      ocd.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject2, (String)localObject1, false);
+      odq.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject2, (String)localObject1, false);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("VideoReporter", 2, "reportVideoStructMsgSendSuc cost = " + (l2 - l1) + "ms");

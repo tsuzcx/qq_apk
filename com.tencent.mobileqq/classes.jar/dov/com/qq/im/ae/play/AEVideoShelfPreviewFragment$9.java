@@ -7,9 +7,9 @@ class AEVideoShelfPreviewFragment$9
   
   public void run()
   {
-    AEVideoShelfPreviewFragment.a(this.this$0, this.a * 0.9D);
-    double d = (AEVideoShelfPreviewFragment.a(this.this$0) - AEVideoShelfPreviewFragment.b(this.this$0)) * 90.0D / (90.0D - AEVideoShelfPreviewFragment.b(this.this$0));
-    AEVideoShelfPreviewFragment.a(this.this$0, (int)d);
+    AEVideoShelfPreviewFragment.access$702(this.this$0, this.val$progress * 0.9D);
+    double d = (AEVideoShelfPreviewFragment.access$700(this.this$0) - AEVideoShelfPreviewFragment.access$1000(this.this$0)) * 90.0D / (90.0D - AEVideoShelfPreviewFragment.access$1000(this.this$0));
+    AEVideoShelfPreviewFragment.access$800(this.this$0, (int)d);
   }
 }
 

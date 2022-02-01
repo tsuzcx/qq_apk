@@ -1,31 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
 public class bdka
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static void a()
+  public bdka(SavingAnimView paramSavingAnimView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
-    }
-    try
-    {
-      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SavingAnimView.a(this.a, (SavingAnimView.b(this.a) + f) % 1.0F);
+    SavingAnimView.b(this.a, (f + SavingAnimView.c(this.a)) % 1.0F);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdka
  * JD-Core Version:    0.7.0.1
  */

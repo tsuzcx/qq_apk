@@ -1,32 +1,42 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class agow
-  implements aasd
+public class agow
+  extends AnimatorListenerAdapter
 {
-  agow(agov paramagov) {}
+  public agow(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void callback(Bundle paramBundle)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
+    do
     {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
-    }
-    else
+      do
+      {
+        return;
+        SixCombolEffectView.jdField_a_of_type_Int = 4;
+        if (QLog.isColorLevel()) {
+          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+        }
+      } while (SixCombolEffectView.a(this.a) == null);
+      paramAnimator = SixCombolEffectView.a(this.a);
+    } while (paramAnimator == null);
+    SixCombolEffectView.a(this.a).a(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
     {
       return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718816, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718813, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+      SixCombolEffectView.jdField_a_of_type_Int = 3;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

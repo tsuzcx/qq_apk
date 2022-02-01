@@ -41,7 +41,7 @@ final class HorizontalListView$CheckForTap
       if (HorizontalListView.access$700(this.this$0) == null) {
         HorizontalListView.access$702(this.this$0, new HorizontalListView.CheckForLongPress(this.this$0, null));
       }
-      HorizontalListView.access$700(this.this$0).a();
+      HorizontalListView.access$700(this.this$0).rememberWindowAttachCount();
       this.this$0.postDelayed(HorizontalListView.access$700(this.this$0), i);
       return;
       localView = this.this$0.getChildAt(HorizontalListView.access$500(this.this$0) - this.this$0.getFirstVisiblePosition());
@@ -56,7 +56,7 @@ final class HorizontalListView$CheckForTap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.CheckForTap
  * JD-Core Version:    0.7.0.1
  */

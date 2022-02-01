@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif;
 
-import bory;
-import bosg;
-import botp;
+import blwd;
+import blwl;
+import blxu;
 
 public class AEGIFStickerListPart$7$2
   implements Runnable
 {
-  public AEGIFStickerListPart$7$2(bosg parambosg, int paramInt) {}
+  public AEGIFStickerListPart$7$2(blwl paramblwl, int paramInt) {}
   
   public void run()
   {
-    bory.a(this.jdField_a_of_type_Bosg.a).a(this.jdField_a_of_type_Int);
+    blwd.a(this.jdField_a_of_type_Blwl.a).a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,8 +1,19 @@
-public abstract interface ahag
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
+public class ahag
 {
-  public abstract void a();
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public abstract void b();
+  public ahag(ahae paramahae) {}
 }
 
 

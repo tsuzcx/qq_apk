@@ -2,19 +2,18 @@ package dov.com.qq.im.ae.play;
 
 import android.content.Context;
 import android.widget.ProgressBar;
-import bowv;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class AEPlayShowGridViewHolder$4
+class AEPlayShowGridViewHolder$4
   implements Runnable
 {
-  public AEPlayShowGridViewHolder$4(bowv parambowv, boolean paramBoolean) {}
+  AEPlayShowGridViewHolder$4(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder, boolean paramBoolean) {}
   
   public void run()
   {
-    bowv.a(this.this$0).setVisibility(8);
-    if (!this.a) {
-      QQToast.a(bowv.a(), bowv.a().getString(2131717007), 0).a();
+    AEPlayShowGridViewHolder.access$200(this.this$0).setVisibility(8);
+    if (!this.val$isSuccess) {
+      QQToast.a(AEPlayShowGridViewHolder.access$300(), AEPlayShowGridViewHolder.access$300().getString(2131717242), 0).a();
     }
   }
 }

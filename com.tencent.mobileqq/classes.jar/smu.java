@@ -1,32 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
 
 public class smu
-  extends AnimatorListenerAdapter
+  extends AdapterView.AdapterDataSetObserver
 {
-  public smu(SlideActiveAnimController paramSlideActiveAnimController) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public smu(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
   {
-    super.onAnimationCancel(paramAnimator);
-    SlideActiveAnimController.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
-    }
+    super(paramReadInJoyFlowLayout);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void clearSavedState()
   {
-    super.onAnimationEnd(paramAnimator);
-    SlideActiveAnimController.a(this.a, false);
-    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
-    SlideActiveAnimController.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
-    }
+    super.clearSavedState();
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    ReadInJoyFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    ReadInJoyFlowLayout.a(this.a);
   }
 }
 

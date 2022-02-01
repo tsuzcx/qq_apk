@@ -1,28 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import java.util.Map;
-import java.util.Timer;
 
 class TaskManager$12
   implements JSContext.Callback
 {
-  TaskManager$12(TaskManager paramTaskManager, Task paramTask) {}
+  TaskManager$12(TaskManager paramTaskManager) {}
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    String str = (String)paramArrayOfObject[0];
-    double d = ((Double)paramArrayOfObject[1]).doubleValue();
-    paramArrayOfObject = new Timer();
-    paramArrayOfObject.schedule(new TaskManager.12.1(this, paramJSContext, str), d, d);
-    try
-    {
-      paramInt = paramJSContext.timerTasks.size();
-      paramJSContext.timerTasks.put(Integer.valueOf(paramInt), paramArrayOfObject);
-      return Integer.valueOf(paramInt);
+    double d = ((Double)paramArrayOfObject[0]).doubleValue();
+    paramJSContext = (String)paramArrayOfObject[1];
+    paramArrayOfObject = paramArrayOfObject[2];
+    AladdinConfig localAladdinConfig = Aladdin.getConfig((int)d);
+    if ((paramArrayOfObject instanceof Double)) {
+      return Float.valueOf(localAladdinConfig.getFloatFromString(paramJSContext, (float)((Double)paramArrayOfObject).doubleValue()));
     }
-    finally {}
+    if ((paramArrayOfObject instanceof String)) {
+      return localAladdinConfig.getString(paramJSContext, (String)paramArrayOfObject);
+    }
+    if ((paramArrayOfObject instanceof Boolean)) {
+      return Boolean.valueOf(localAladdinConfig.getBooleanFromString(paramJSContext, ((Boolean)paramArrayOfObject).booleanValue()));
+    }
+    return null;
   }
 }
 

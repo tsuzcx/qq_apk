@@ -1,111 +1,135 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhzm
-  extends QIPCModule
 {
-  private static bhzm a;
+  protected static String a;
+  protected static boolean a;
   
-  private bhzm(String paramString)
+  static
   {
-    super(paramString);
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
+    jdField_a_of_type_JavaLangString += "|.*==.*";
+    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
+    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
+    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
   }
   
-  /* Error */
-  public static bhzm a()
+  protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 14	bhzm:a	Lbhzm;
-    //   6: ifnonnull +27 -> 33
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 14	bhzm:a	Lbhzm;
-    //   15: ifnonnull +15 -> 30
-    //   18: new 2	bhzm
-    //   21: dup
-    //   22: ldc 16
-    //   24: invokespecial 17	bhzm:<init>	(Ljava/lang/String;)V
-    //   27: putstatic 14	bhzm:a	Lbhzm;
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: getstatic 14	bhzm:a	Lbhzm;
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_0
-    //   43: ldc 2
-    //   45: monitorexit
-    //   46: aload_0
-    //   47: athrow
-    //   48: astore_0
-    //   49: ldc 2
-    //   51: monitorexit
-    //   52: aload_0
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   36	5	0	localbhzm	bhzm
-    //   42	5	0	localObject1	java.lang.Object
-    //   48	5	0	localObject2	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	30	42	finally
-    //   30	33	42	finally
-    //   43	46	42	finally
-    //   3	12	48	finally
-    //   33	37	48	finally
-    //   46	48	48	finally
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    int i;
-    boolean bool;
-    if ("is_white_name".equals(paramString))
-    {
-      i = paramBundle.getInt("managerId", -1);
-      if (i == 490)
+    if (jdField_a_of_type_Boolean) {
+      if (paramInt == 1)
       {
-        bool = axte.a().a();
-        paramString = new Bundle();
-        paramString.putBoolean("isWhiteName", bool);
-        paramString = EIPCResult.createSuccessResult(paramString);
-      }
-    }
-    for (;;)
-    {
-      callbackResult(paramInt, paramString);
-      return null;
-      if (i == 491)
-      {
-        bool = armo.c().mIsEnable;
-        paramString = new Bundle();
-        paramString.putBoolean("isWhiteName", bool);
-        paramString = EIPCResult.createSuccessResult(paramString);
-      }
-      else
-      {
-        paramString = EIPCResult.createResult(-1, new Bundle());
-        continue;
-        if ("paySuccess".equals(paramString))
-        {
-          ((aokv)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(27)).notifyUI(5, true, paramBundle);
-          paramString = EIPCResult.createResult(0, null);
+        if (paramThrowable != null) {
+          break label187;
         }
-        else
-        {
-          paramString = null;
+        if (QLog.isColorLevel()) {
+          QLog.i(paramString1, 2, "" + "::" + paramString2);
         }
       }
     }
+    label98:
+    do
+    {
+      break label186;
+      if ((paramInt == 2) || (paramInt == 0))
+      {
+        if (paramThrowable != null) {
+          break label226;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(paramString1, 2, "" + "::" + paramString2);
+        }
+      }
+      if (paramInt == 3)
+      {
+        if (paramThrowable != null) {
+          break label265;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w(paramString1, 2, "" + "::" + paramString2);
+        }
+      }
+      for (;;)
+      {
+        if (paramInt == 4)
+        {
+          if (paramThrowable != null) {
+            break label304;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e(paramString1, 2, "" + "::" + paramString2);
+          }
+        }
+        return;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+        break;
+        if (!QLog.isColorLevel()) {
+          break label98;
+        }
+        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+        break label98;
+        if (QLog.isColorLevel()) {
+          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    label186:
+    label187:
+    label226:
+    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
+    label265:
+    label304:
+    return;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(0, paramString1, paramString2, null);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(2, paramString1, paramString2, paramThrowable);
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a(1, paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(3, paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    a(2, paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(4, paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    a(3, paramString1, paramString2, null);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    a(4, paramString1, paramString2, null);
   }
 }
 

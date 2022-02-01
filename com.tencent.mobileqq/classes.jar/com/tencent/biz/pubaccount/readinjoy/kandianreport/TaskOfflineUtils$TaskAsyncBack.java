@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import nmg;
+import nnv;
 
 class TaskOfflineUtils$TaskAsyncBack
-  implements nmg
+  implements nnv
 {
   private final String bid;
   private final TaskOfflineUtils.OfflineCallBack callBack;

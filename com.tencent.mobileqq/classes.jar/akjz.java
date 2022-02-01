@@ -1,8 +1,12 @@
-import android.widget.TextView;
+import android.view.animation.Interpolator;
 
-class akjz
+public class akjz
+  implements Interpolator
 {
-  public TextView a;
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
+  }
 }
 
 

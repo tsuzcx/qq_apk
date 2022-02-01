@@ -246,7 +246,6 @@
             {
                 "view_type": "container",
                 "layout_type": "layout_relative",
-                "margin_bottom": "11.5",
                 "height": {
                     "type": "absolutely",
                     "value": "16"
@@ -258,7 +257,7 @@
                     {
                         "view_type": "UILabel",
                         "view_id": "id_source",
-                        "margin_left": "8",
+                        "margin_left": "12",
                         "height": {
                             "type": "match_parent"
                         },
@@ -294,7 +293,7 @@
                         "align_parent_right": "YES",
                         "align_parent_center_vertical": "YES",
                         "default_visible": "YES",
-                        "margin_right":"8",
+                        "margin_right":"12",
                         "height": {
                             "type": "absolutely",
                             "value": "12"
@@ -330,20 +329,7 @@
                 ]
             },
             {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "default_visible": "YES",
-                "margin_left":"6",
-                "height":{
-                    "type":"absolutely","value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"359"
-                },
-                "attributes":{
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
+                "$includeComponet": "componet/separator_normal_bottom.geojson"
             }
         ]
     }

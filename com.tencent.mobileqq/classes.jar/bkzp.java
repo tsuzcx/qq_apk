@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-@ProxyService(proxy=RequestProxy.class)
-public class bkzp
-  extends RequestProxy
+class bkzp
+  implements GLSurfaceView.EGLContextFactory
 {
-  public ConcurrentHashMap<String, Call> a = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int = 12440;
   
-  public void abort(String paramString)
+  private bkzp(bkzk parambkzk) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    Call localCall = (Call)this.a.get(paramString);
-    if (localCall != null) {
-      localCall.cancel();
-    }
-    this.a.remove(paramString);
+    int i = this.jdField_a_of_type_Int;
+    bkzk.a(this.jdField_a_of_type_Bkzk, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
+    return bkzk.a(this.jdField_a_of_type_Bkzk);
   }
   
-  public boolean request(String paramString1, byte[] paramArrayOfByte, Map<String, String> paramMap, String paramString2, int paramInt, RequestProxy.RequestListener paramRequestListener)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    paramArrayOfByte = MiniOkHttpClientFactory.getRequestClient().newCall(bkxi.a(paramString1, paramMap, paramString2.toUpperCase(), null, paramArrayOfByte));
-    paramArrayOfByte.enqueue(new bkzq(this, paramString1, paramRequestListener));
-    this.a.put(paramString1, paramArrayOfByte);
-    return true;
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
+    }
   }
 }
 

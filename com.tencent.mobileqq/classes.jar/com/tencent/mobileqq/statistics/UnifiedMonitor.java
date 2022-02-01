@@ -1,7 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
-import admp;
-import admq;
+import acji;
+import acjj;
+import amvj;
+import amxv;
+import amxx;
+import amxy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
@@ -18,17 +22,11 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aobg;
-import aodu;
-import aodw;
-import aodx;
-import bdlx;
-import bdmc;
-import bdmp;
-import bdmt;
-import bdmu;
-import bhjx;
-import bnkd;
+import bcer;
+import bcfa;
+import bcfe;
+import bcff;
+import bftf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,6 +36,7 @@ import com.tencent.mobileqq.monitor.MsfMonitorCallback;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.ProcessUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,7 +54,7 @@ public class UnifiedMonitor
   implements Handler.Callback, MsfMonitorCallback
 {
   private static int jdField_a_of_type_Int;
-  private static admq jdField_a_of_type_Admq = new admq();
+  private static acjj jdField_a_of_type_Acjj = new acjj();
   private static UnifiedMonitor jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor;
   public static AtomicBoolean a;
   public static String[] a;
@@ -63,7 +62,7 @@ public class UnifiedMonitor
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private String jdField_a_of_type_JavaLangString;
   public volatile boolean a;
-  private bdmt[] jdField_a_of_type_ArrayOfBdmt = { new bdmt(0.0008F, 100, 10, 0.1F, 6, 0, 0, 0, false), new bdmt(), new bdmt(), new bdmt(), new bdmt(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 1000, 10, 0.001F, 0, 0, 0, 0, false), new bdmt(0.001F, 180000, 2, 1.0F, 6, 6, 0, 0, true), new bdmt(0.001F, 0, 10, 0.1F, 0, 0, 0, 0, false), new bdmt(0.001F, 100, 5, 0.01F, 0, 0, 0, 0, false), new bdmt(0.001F, 100, 10, 0.1F, 6, 0, 0, 0, false), new bdmu(0.0F, 100100005, 1, 0.01F, 0, 0, 2, 300), new bdmt(0.01F, 100, 5, 0.01F, 0, 0, 0, 0, false), new bdmt(0.001F, 180000, 10, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 100, 5, 0.01F, 6, 0, 0, 0, false), new bdmt(0.001F, 600000, 2, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bdmt(0.001F, 100, 5, 0.01F, 6, 0, 0, 0, false), new bdmt(0.01F, 100, 10, 0.01F, 0, 0, 0, 0, false) };
+  private bcfe[] jdField_a_of_type_ArrayOfBcfe = { new bcfe(0.0008F, 100, 10, 0.1F, 6, 0, 0, 0, false), new bcfe(), new bcfe(), new bcfe(), new bcfe(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 1000, 10, 0.001F, 0, 0, 0, 0, false), new bcfe(0.001F, 180000, 2, 1.0F, 6, 6, 0, 0, true), new bcfe(0.001F, 0, 10, 0.1F, 0, 0, 0, 0, false), new bcfe(0.001F, 100, 5, 0.01F, 0, 0, 0, 0, false), new bcfe(0.001F, 100, 10, 0.1F, 6, 0, 0, 0, false), new bcff(0.0F, 100100005, 1, 0.01F, 0, 0, 2, 300), new bcfe(0.01F, 100, 5, 0.01F, 0, 0, 0, 0, false), new bcfe(0.001F, 180000, 10, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 100, 5, 0.01F, 6, 0, 0, 0, false), new bcfe(0.001F, 600000, 2, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 180000, 2, 1.0F, 6, 0, 0, 0, true), new bcfe(0.001F, 100, 5, 0.01F, 6, 0, 0, 0, false), new bcfe(0.01F, 100, 10, 0.01F, 0, 0, 0, 0, false) };
   private Handler jdField_b_of_type_AndroidOsHandler;
   private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
   private String jdField_b_of_type_JavaLangString;
@@ -123,7 +122,7 @@ public class UnifiedMonitor
     {
       try
       {
-        String[] arrayOfString = bnkd.c().split("/");
+        String[] arrayOfString = ProcessUtils.getTopActivityName().split("/");
         localHashMap.put("act", arrayOfString[(arrayOfString.length - 1)]);
         return localHashMap;
       }
@@ -132,7 +131,7 @@ public class UnifiedMonitor
         localHashMap.put("act", "QZoneFriendFeedActivity");
         return localHashMap;
       }
-      str = aodx.a();
+      str = amxy.a();
     } while (str == null);
     localHashMap = new HashMap(8);
     localHashMap.put("act", str);
@@ -141,14 +140,14 @@ public class UnifiedMonitor
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob = null;
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback != null)
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob = null;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_c_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback != null)
     {
-      this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback.onThreadMonitorEnd(paramInt);
-      this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = null;
+      this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback.onThreadMonitorEnd(paramInt);
+      this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = null;
     }
   }
   
@@ -183,17 +182,17 @@ public class UnifiedMonitor
   
   public static boolean c()
   {
-    return (QLog.isColorLevel()) || (bhjx.b());
+    return (QLog.isColorLevel()) || (bftf.b());
   }
   
   public static void d()
   {
-    bdlx.a();
+    bcer.a();
   }
   
   private void e()
   {
-    admp.a().addObserver(jdField_a_of_type_Admq);
+    acji.a().addObserver(jdField_a_of_type_Acjj);
     if (4 == BaseApplicationImpl.sProcessId) {
       g();
     }
@@ -201,16 +200,16 @@ public class UnifiedMonitor
       return;
     }
     if (whetherReportDuringThisStartup(4)) {
-      aobg.a();
+      amvj.a();
     }
     if (whetherReportDuringThisStartup(5)) {
-      aobg.d();
+      amvj.d();
     }
     if (whetherReportDuringThisStartup(6)) {
-      aobg.e();
+      amvj.e();
     }
     if (whetherReportDuringThisStartup(13)) {
-      aobg.c();
+      amvj.c();
     }
     MainService.setUnifiedMonitorInstance(a());
     f();
@@ -251,7 +250,7 @@ public class UnifiedMonitor
         this.jdField_c_of_type_AndroidOsHandler = new Handler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper(), this);
       }
       if (whetherReportDuringThisStartup(18)) {
-        aobg.b();
+        amvj.b();
       }
       return;
       QLog.e("UnifiedMonitor_QAPM", 1, "MsfCore.sCore is null");
@@ -262,27 +261,27 @@ public class UnifiedMonitor
   private void h()
   {
     // Byte code:
-    //   0: invokestatic 328	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   3: getstatic 334	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:unified_monitor_params	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
-    //   6: invokevirtual 337	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
-    //   9: invokevirtual 340	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   0: invokestatic 329	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   3: getstatic 335	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:unified_monitor_params	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   6: invokevirtual 338	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   9: invokevirtual 341	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
     //   12: astore 8
-    //   14: ldc_w 285
+    //   14: ldc_w 286
     //   17: iconst_1
-    //   18: new 342	java/lang/StringBuilder
+    //   18: new 343	java/lang/StringBuilder
     //   21: dup
-    //   22: invokespecial 343	java/lang/StringBuilder:<init>	()V
-    //   25: ldc_w 345
-    //   28: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokespecial 344	java/lang/StringBuilder:<init>	()V
+    //   25: ldc_w 346
+    //   28: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: aload 8
-    //   33: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 354	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   33: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 353	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 355	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: aload 8
     //   44: ifnull +589 -> 633
     //   47: aload 8
-    //   49: ldc_w 356
-    //   52: invokevirtual 137	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   49: ldc_w 357
+    //   52: invokevirtual 138	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   55: astore 10
     //   57: aload 10
     //   59: ifnonnull +20 -> 79
@@ -290,7 +289,7 @@ public class UnifiedMonitor
     //   63: monitorenter
     //   64: aload_0
     //   65: iconst_1
-    //   66: putfield 357	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
+    //   66: putfield 358	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
     //   69: aload_0
     //   70: monitorexit
     //   71: return
@@ -312,8 +311,8 @@ public class UnifiedMonitor
     //   98: aaload
     //   99: astore 8
     //   101: aload 8
-    //   103: ldc_w 359
-    //   106: invokevirtual 137	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   103: ldc_w 360
+    //   106: invokevirtual 138	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   109: astore 11
     //   111: aload 11
     //   113: ifnull +1153 -> 1266
@@ -324,18 +323,18 @@ public class UnifiedMonitor
     //   123: aload 11
     //   125: iconst_0
     //   126: aaload
-    //   127: invokestatic 365	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   127: invokestatic 366	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   130: ifne +1136 -> 1266
     //   133: aload 11
     //   135: iconst_1
     //   136: aaload
-    //   137: invokestatic 365	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   137: invokestatic 366	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   140: ifne +1126 -> 1266
     //   143: aload 11
     //   145: iconst_0
     //   146: aaload
     //   147: bipush 95
-    //   149: invokevirtual 368	java/lang/String:lastIndexOf	(I)I
+    //   149: invokevirtual 369	java/lang/String:lastIndexOf	(I)I
     //   152: istore 6
     //   154: iload 6
     //   156: iconst_m1
@@ -347,7 +346,7 @@ public class UnifiedMonitor
     //   165: iload 6
     //   167: iconst_1
     //   168: iadd
-    //   169: invokevirtual 372	java/lang/String:substring	(II)Ljava/lang/String;
+    //   169: invokevirtual 373	java/lang/String:substring	(II)Ljava/lang/String;
     //   172: astore 8
     //   174: iload 6
     //   176: iconst_m1
@@ -356,7 +355,7 @@ public class UnifiedMonitor
     //   182: aload 11
     //   184: iconst_0
     //   185: aaload
-    //   186: invokevirtual 376	java/lang/String:length	()I
+    //   186: invokevirtual 377	java/lang/String:length	()I
     //   189: iconst_1
     //   190: isub
     //   191: if_icmpge +1090 -> 1281
@@ -366,45 +365,45 @@ public class UnifiedMonitor
     //   198: iload 6
     //   200: iconst_1
     //   201: iadd
-    //   202: invokevirtual 378	java/lang/String:substring	(I)Ljava/lang/String;
+    //   202: invokevirtual 379	java/lang/String:substring	(I)Ljava/lang/String;
     //   205: astore 9
     //   207: iconst_m1
     //   208: istore_3
     //   209: aload 9
-    //   211: invokestatic 383	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   214: invokevirtual 386	java/lang/Integer:intValue	()I
+    //   211: invokestatic 384	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   214: invokevirtual 387	java/lang/Integer:intValue	()I
     //   217: istore_2
     //   218: iload_2
     //   219: istore_3
-    //   220: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   220: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   223: ifeq +1016 -> 1239
-    //   226: ldc_w 285
+    //   226: ldc_w 286
     //   229: iconst_2
-    //   230: new 342	java/lang/StringBuilder
+    //   230: new 343	java/lang/StringBuilder
     //   233: dup
-    //   234: invokespecial 343	java/lang/StringBuilder:<init>	()V
-    //   237: ldc_w 388
-    //   240: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: invokespecial 344	java/lang/StringBuilder:<init>	()V
+    //   237: ldc_w 389
+    //   240: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   243: iload_3
-    //   244: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   247: ldc_w 393
-    //   250: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 392	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   247: ldc_w 394
+    //   250: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   253: aload 8
-    //   255: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: ldc_w 395
-    //   261: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: ldc_w 396
+    //   261: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload 11
     //   266: iconst_0
     //   267: aaload
-    //   268: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: ldc_w 397
-    //   274: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: ldc_w 398
+    //   274: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: aload 11
     //   279: iconst_1
     //   280: aaload
-    //   281: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   287: invokestatic 354	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   281: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: invokevirtual 353	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   287: invokestatic 355	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   290: goto +949 -> 1239
     //   293: aload 8
     //   295: ifnull +971 -> 1266
@@ -419,58 +418,58 @@ public class UnifiedMonitor
     //   314: iload_2
     //   315: bipush 21
     //   317: if_icmpge +949 -> 1266
-    //   320: ldc_w 399
+    //   320: ldc_w 400
     //   323: aload 8
-    //   325: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   325: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   328: ifeq +25 -> 353
     //   331: aload_0
-    //   332: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   332: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   335: iload_2
     //   336: aaload
     //   337: aload 11
     //   339: iconst_1
     //   340: aaload
-    //   341: invokestatic 408	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   344: invokevirtual 412	java/lang/Float:floatValue	()F
-    //   347: putfield 415	bdmt:jdField_a_of_type_Float	F
+    //   341: invokestatic 409	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   344: invokevirtual 413	java/lang/Float:floatValue	()F
+    //   347: putfield 416	bcfe:jdField_a_of_type_Float	F
     //   350: goto +916 -> 1266
-    //   353: ldc_w 417
+    //   353: ldc_w 418
     //   356: aload 8
-    //   358: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   358: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   361: ifeq +85 -> 446
     //   364: aload_0
-    //   365: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   365: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   368: iload_2
     //   369: aaload
     //   370: aload 11
     //   372: iconst_1
     //   373: aaload
-    //   374: invokestatic 383	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   377: invokevirtual 386	java/lang/Integer:intValue	()I
-    //   380: putfield 419	bdmt:jdField_b_of_type_Int	I
+    //   374: invokestatic 384	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   377: invokevirtual 387	java/lang/Integer:intValue	()I
+    //   380: putfield 420	bcfe:jdField_b_of_type_Int	I
     //   383: goto +883 -> 1266
     //   386: astore 8
-    //   388: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   388: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   391: ifeq +875 -> 1266
-    //   394: ldc_w 285
+    //   394: ldc_w 286
     //   397: iconst_2
-    //   398: ldc_w 421
+    //   398: ldc_w 422
     //   401: aload 8
-    //   403: invokestatic 424	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   403: invokestatic 425	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   406: goto +860 -> 1266
     //   409: astore 8
-    //   411: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   411: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   414: ifeq +15 -> 429
-    //   417: ldc_w 285
+    //   417: ldc_w 286
     //   420: iconst_2
-    //   421: ldc_w 421
+    //   421: ldc_w 422
     //   424: aload 8
-    //   426: invokestatic 426	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   426: invokestatic 427	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   429: aload_0
     //   430: monitorenter
     //   431: aload_0
     //   432: iconst_1
-    //   433: putfield 357	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
+    //   433: putfield 358	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
     //   436: aload_0
     //   437: monitorexit
     //   438: return
@@ -479,208 +478,208 @@ public class UnifiedMonitor
     //   442: monitorexit
     //   443: aload 8
     //   445: athrow
-    //   446: ldc_w 428
+    //   446: ldc_w 429
     //   449: aload 8
-    //   451: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   451: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   454: ifeq +39 -> 493
     //   457: aload_0
-    //   458: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   458: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   461: iload_2
     //   462: aaload
     //   463: aload 11
     //   465: iconst_1
     //   466: aaload
-    //   467: invokestatic 383	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   470: invokevirtual 386	java/lang/Integer:intValue	()I
-    //   473: putfield 429	bdmt:jdField_a_of_type_Int	I
+    //   467: invokestatic 384	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   470: invokevirtual 387	java/lang/Integer:intValue	()I
+    //   473: putfield 430	bcfe:jdField_a_of_type_Int	I
     //   476: goto +790 -> 1266
     //   479: astore 8
     //   481: aload_0
     //   482: monitorenter
     //   483: aload_0
     //   484: iconst_1
-    //   485: putfield 357	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
+    //   485: putfield 358	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
     //   488: aload_0
     //   489: monitorexit
     //   490: aload 8
     //   492: athrow
-    //   493: ldc_w 431
+    //   493: ldc_w 432
     //   496: aload 8
-    //   498: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   498: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   501: ifeq +25 -> 526
     //   504: aload_0
-    //   505: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   505: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   508: iload_2
     //   509: aaload
     //   510: aload 11
     //   512: iconst_1
     //   513: aaload
-    //   514: invokestatic 408	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   517: invokevirtual 412	java/lang/Float:floatValue	()F
-    //   520: putfield 433	bdmt:jdField_b_of_type_Float	F
+    //   514: invokestatic 409	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   517: invokevirtual 413	java/lang/Float:floatValue	()F
+    //   520: putfield 434	bcfe:jdField_b_of_type_Float	F
     //   523: goto +743 -> 1266
-    //   526: ldc_w 435
+    //   526: ldc_w 436
     //   529: aload 8
-    //   531: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   531: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   534: ifeq +33 -> 567
-    //   537: getstatic 440	android/os/Build$VERSION:SDK_INT	I
+    //   537: getstatic 441	android/os/Build$VERSION:SDK_INT	I
     //   540: bipush 17
     //   542: if_icmpeq +724 -> 1266
     //   545: aload_0
-    //   546: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   546: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   549: iload_2
     //   550: aaload
     //   551: aload 11
     //   553: iconst_1
     //   554: aaload
-    //   555: invokestatic 383	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   558: invokevirtual 386	java/lang/Integer:intValue	()I
-    //   561: putfield 442	bdmt:jdField_c_of_type_Int	I
+    //   555: invokestatic 384	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   558: invokevirtual 387	java/lang/Integer:intValue	()I
+    //   561: putfield 443	bcfe:jdField_c_of_type_Int	I
     //   564: goto +702 -> 1266
-    //   567: ldc_w 444
+    //   567: ldc_w 445
     //   570: aload 8
-    //   572: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   572: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   575: ifeq +25 -> 600
     //   578: aload_0
-    //   579: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   579: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   582: iload_2
     //   583: aaload
     //   584: aload 11
     //   586: iconst_1
     //   587: aaload
-    //   588: invokestatic 383	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   591: invokevirtual 386	java/lang/Integer:intValue	()I
-    //   594: putfield 446	bdmt:jdField_d_of_type_Int	I
+    //   588: invokestatic 384	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   591: invokevirtual 387	java/lang/Integer:intValue	()I
+    //   594: putfield 447	bcfe:jdField_d_of_type_Int	I
     //   597: goto +669 -> 1266
-    //   600: ldc_w 448
+    //   600: ldc_w 449
     //   603: aload 8
-    //   605: invokevirtual 403	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   605: invokevirtual 404	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   608: ifeq +658 -> 1266
     //   611: aload_0
-    //   612: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   612: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   615: iload_2
     //   616: aaload
     //   617: aload 11
     //   619: iconst_1
     //   620: aaload
-    //   621: invokestatic 451	java/lang/Boolean:valueOf	(Ljava/lang/String;)Ljava/lang/Boolean;
-    //   624: invokevirtual 454	java/lang/Boolean:booleanValue	()Z
-    //   627: putfield 456	bdmt:jdField_d_of_type_Boolean	Z
+    //   621: invokestatic 452	java/lang/Boolean:valueOf	(Ljava/lang/String;)Ljava/lang/Boolean;
+    //   624: invokevirtual 455	java/lang/Boolean:booleanValue	()Z
+    //   627: putfield 457	bcfe:jdField_d_of_type_Boolean	Z
     //   630: goto +636 -> 1266
     //   633: iconst_0
     //   634: istore_2
     //   635: iload_2
     //   636: aload_0
-    //   637: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   637: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   640: arraylength
     //   641: if_icmpge +20 -> 661
     //   644: aload_0
-    //   645: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   645: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   648: iload_2
     //   649: aaload
     //   650: iload_2
-    //   651: invokevirtual 457	bdmt:a	(I)V
+    //   651: invokevirtual 458	bcfe:a	(I)V
     //   654: iload_2
     //   655: iconst_1
     //   656: iadd
     //   657: istore_2
     //   658: goto -23 -> 635
     //   661: aload_0
-    //   662: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   662: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   665: bipush 10
     //   667: aaload
     //   668: iconst_0
-    //   669: putfield 153	bdmt:jdField_a_of_type_Boolean	Z
-    //   672: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   669: putfield 154	bcfe:jdField_a_of_type_Boolean	Z
+    //   672: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   675: ifeq +53 -> 728
     //   678: aload_0
-    //   679: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   679: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   682: iconst_0
     //   683: aaload
     //   684: iconst_1
-    //   685: putfield 153	bdmt:jdField_a_of_type_Boolean	Z
+    //   685: putfield 154	bcfe:jdField_a_of_type_Boolean	Z
     //   688: aload_0
-    //   689: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   689: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   692: iconst_0
     //   693: aaload
-    //   694: ldc_w 458
-    //   697: putfield 419	bdmt:jdField_b_of_type_Int	I
+    //   694: ldc_w 459
+    //   697: putfield 420	bcfe:jdField_b_of_type_Int	I
     //   700: aload_0
-    //   701: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   701: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   704: iconst_0
     //   705: aaload
     //   706: fconst_1
-    //   707: putfield 433	bdmt:jdField_b_of_type_Float	F
-    //   710: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   707: putfield 434	bcfe:jdField_b_of_type_Float	F
+    //   710: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   713: ifeq +15 -> 728
     //   716: aload_0
-    //   717: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   717: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   720: iconst_0
     //   721: aaload
     //   722: sipush 200
-    //   725: putfield 429	bdmt:jdField_a_of_type_Int	I
+    //   725: putfield 430	bcfe:jdField_a_of_type_Int	I
     //   728: aload_0
-    //   729: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   729: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   732: bipush 14
     //   734: aaload
-    //   735: invokestatic 464	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   738: ldc_w 466
-    //   741: ldc_w 468
+    //   735: invokestatic 465	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
+    //   738: ldc_w 467
+    //   741: ldc_w 469
     //   744: aload_0
-    //   745: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   745: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   748: bipush 14
     //   750: aaload
-    //   751: getfield 429	bdmt:jdField_a_of_type_Int	I
-    //   754: invokevirtual 472	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   757: putfield 429	bdmt:jdField_a_of_type_Int	I
-    //   760: invokestatic 464	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   763: ldc_w 466
-    //   766: ldc_w 474
-    //   769: invokevirtual 477	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   751: getfield 430	bcfe:jdField_a_of_type_Int	I
+    //   754: invokevirtual 473	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   757: putfield 430	bcfe:jdField_a_of_type_Int	I
+    //   760: invokestatic 465	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
+    //   763: ldc_w 467
+    //   766: ldc_w 475
+    //   769: invokevirtual 478	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   772: astore 9
-    //   774: invokestatic 464	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   777: ldc_w 466
-    //   780: ldc_w 479
-    //   783: invokevirtual 477	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   774: invokestatic 465	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
+    //   777: ldc_w 467
+    //   780: ldc_w 480
+    //   783: invokevirtual 478	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   786: astore 8
     //   788: aload 9
-    //   790: invokestatic 365	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   790: invokestatic 366	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   793: istore 7
     //   795: iload 7
     //   797: ifne +29 -> 826
     //   800: aload 9
-    //   802: invokestatic 408	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   805: invokevirtual 412	java/lang/Float:floatValue	()F
+    //   802: invokestatic 409	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   805: invokevirtual 413	java/lang/Float:floatValue	()F
     //   808: fstore_1
     //   809: fload_1
     //   810: fconst_0
     //   811: fcmpl
     //   812: iflt +14 -> 826
     //   815: aload_0
-    //   816: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   816: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   819: bipush 14
     //   821: aaload
     //   822: fload_1
-    //   823: putfield 415	bdmt:jdField_a_of_type_Float	F
+    //   823: putfield 416	bcfe:jdField_a_of_type_Float	F
     //   826: aload 8
-    //   828: invokestatic 365	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   828: invokestatic 366	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   831: istore 7
     //   833: iload 7
     //   835: ifne +29 -> 864
     //   838: aload 8
-    //   840: invokestatic 408	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   843: invokevirtual 412	java/lang/Float:floatValue	()F
+    //   840: invokestatic 409	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   843: invokevirtual 413	java/lang/Float:floatValue	()F
     //   846: fstore_1
     //   847: fload_1
     //   848: fconst_0
     //   849: fcmpl
     //   850: iflt +14 -> 864
     //   853: aload_0
-    //   854: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   854: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   857: bipush 14
     //   859: aaload
     //   860: fload_1
-    //   861: putfield 433	bdmt:jdField_b_of_type_Float	F
+    //   861: putfield 434	bcfe:jdField_b_of_type_Float	F
     //   864: getstatic 121	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   867: iconst_4
     //   868: if_icmpne +3 -> 871
@@ -688,21 +687,21 @@ public class UnifiedMonitor
     //   874: iconst_1
     //   875: if_icmpne +14 -> 889
     //   878: aload_0
-    //   879: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   879: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   882: bipush 11
     //   884: aaload
     //   885: iconst_0
-    //   886: putfield 153	bdmt:jdField_a_of_type_Boolean	Z
-    //   889: invokestatic 202	bhjx:b	()Z
+    //   886: putfield 154	bcfe:jdField_a_of_type_Boolean	Z
+    //   889: invokestatic 203	bftf:b	()Z
     //   892: ifeq +64 -> 956
     //   895: getstatic 121	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   898: iconst_1
     //   899: if_icmpne +246 -> 1145
     //   902: aload_0
-    //   903: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   903: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   906: iconst_4
     //   907: aaload
-    //   908: getfield 153	bdmt:jdField_a_of_type_Boolean	Z
+    //   908: getfield 154	bcfe:jdField_a_of_type_Boolean	Z
     //   911: ifeq +234 -> 1145
     //   914: new 123	java/util/HashMap
     //   917: dup
@@ -710,87 +709,87 @@ public class UnifiedMonitor
     //   919: invokespecial 126	java/util/HashMap:<init>	(I)V
     //   922: astore 8
     //   924: aload 8
-    //   926: ldc_w 481
+    //   926: ldc_w 482
     //   929: iconst_1
-    //   930: invokestatic 483	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   933: invokevirtual 143	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   930: invokestatic 484	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   933: invokevirtual 144	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   936: pop
-    //   937: invokestatic 487	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   940: invokestatic 492	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   937: invokestatic 488	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   940: invokestatic 493	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   943: aconst_null
-    //   944: ldc_w 494
+    //   944: ldc_w 495
     //   947: iconst_1
     //   948: lconst_0
     //   949: lconst_0
     //   950: aload 8
     //   952: aconst_null
-    //   953: invokevirtual 497	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
-    //   956: ldc_w 499
+    //   953: invokevirtual 499	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   956: ldc_w 501
     //   959: iconst_1
-    //   960: new 342	java/lang/StringBuilder
+    //   960: new 343	java/lang/StringBuilder
     //   963: dup
-    //   964: invokespecial 343	java/lang/StringBuilder:<init>	()V
-    //   967: ldc_w 501
-    //   970: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   973: invokestatic 202	bhjx:b	()Z
-    //   976: invokevirtual 504	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   979: ldc_w 506
-    //   982: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   985: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   988: invokevirtual 504	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   991: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   994: invokestatic 354	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   964: invokespecial 344	java/lang/StringBuilder:<init>	()V
+    //   967: ldc_w 503
+    //   970: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   973: invokestatic 203	bftf:b	()Z
+    //   976: invokevirtual 506	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   979: ldc_w 508
+    //   982: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   985: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   988: invokevirtual 506	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   991: invokevirtual 353	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   994: invokestatic 355	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   997: iconst_0
     //   998: istore_2
     //   999: aload_0
-    //   1000: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   1000: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   1003: arraylength
     //   1004: istore_3
     //   1005: iload_2
     //   1006: iload_3
     //   1007: if_icmpge +203 -> 1210
     //   1010: aload_0
-    //   1011: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   1011: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   1014: iload_2
     //   1015: aaload
     //   1016: astore 8
-    //   1018: ldc_w 499
+    //   1018: ldc_w 501
     //   1021: iconst_1
-    //   1022: new 342	java/lang/StringBuilder
+    //   1022: new 343	java/lang/StringBuilder
     //   1025: dup
-    //   1026: invokespecial 343	java/lang/StringBuilder:<init>	()V
-    //   1029: ldc_w 508
-    //   1032: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1026: invokespecial 344	java/lang/StringBuilder:<init>	()V
+    //   1029: ldc_w 510
+    //   1032: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1035: iload_2
-    //   1036: invokestatic 510	com/tencent/mobileqq/statistics/UnifiedMonitor:a	(I)Ljava/lang/String;
-    //   1039: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1042: ldc_w 512
-    //   1045: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1036: invokestatic 512	com/tencent/mobileqq/statistics/UnifiedMonitor:a	(I)Ljava/lang/String;
+    //   1039: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1042: ldc_w 514
+    //   1045: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1048: aload 8
-    //   1050: getfield 153	bdmt:jdField_a_of_type_Boolean	Z
-    //   1053: invokevirtual 504	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1056: ldc_w 514
-    //   1059: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1050: getfield 154	bcfe:jdField_a_of_type_Boolean	Z
+    //   1053: invokevirtual 506	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1056: ldc_w 516
+    //   1059: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1062: aload 8
-    //   1064: getfield 433	bdmt:jdField_b_of_type_Float	F
-    //   1067: invokevirtual 517	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   1070: ldc_w 519
-    //   1073: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1064: getfield 434	bcfe:jdField_b_of_type_Float	F
+    //   1067: invokevirtual 519	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1070: ldc_w 521
+    //   1073: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1076: aload 8
-    //   1078: getfield 415	bdmt:jdField_a_of_type_Float	F
-    //   1081: invokevirtual 517	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   1084: ldc_w 521
-    //   1087: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1078: getfield 416	bcfe:jdField_a_of_type_Float	F
+    //   1081: invokevirtual 519	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1084: ldc_w 523
+    //   1087: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1090: aload 8
-    //   1092: getfield 419	bdmt:jdField_b_of_type_Int	I
-    //   1095: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1098: ldc_w 523
-    //   1101: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1092: getfield 420	bcfe:jdField_b_of_type_Int	I
+    //   1095: invokevirtual 392	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1098: ldc_w 525
+    //   1101: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1104: aload 8
-    //   1106: getfield 429	bdmt:jdField_a_of_type_Int	I
-    //   1109: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1112: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1115: invokestatic 354	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1106: getfield 430	bcfe:jdField_a_of_type_Int	I
+    //   1109: invokevirtual 392	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1112: invokevirtual 353	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1115: invokestatic 355	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1118: iload_2
     //   1119: iconst_1
     //   1120: iadd
@@ -798,20 +797,20 @@ public class UnifiedMonitor
     //   1122: goto -117 -> 1005
     //   1125: astore 9
     //   1127: aload 9
-    //   1129: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   1129: invokevirtual 528	java/lang/Exception:printStackTrace	()V
     //   1132: goto -306 -> 826
     //   1135: astore 8
     //   1137: aload 8
-    //   1139: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   1139: invokevirtual 528	java/lang/Exception:printStackTrace	()V
     //   1142: goto -278 -> 864
     //   1145: getstatic 121	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   1148: iconst_4
     //   1149: if_icmpne -193 -> 956
     //   1152: aload_0
-    //   1153: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBdmt	[Lbdmt;
+    //   1153: getfield 102	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_ArrayOfBcfe	[Lbcfe;
     //   1156: bipush 15
     //   1158: aaload
-    //   1159: getfield 153	bdmt:jdField_a_of_type_Boolean	Z
+    //   1159: getfield 154	bcfe:jdField_a_of_type_Boolean	Z
     //   1162: ifeq -206 -> 956
     //   1165: new 123	java/util/HashMap
     //   1168: dup
@@ -819,27 +818,27 @@ public class UnifiedMonitor
     //   1170: invokespecial 126	java/util/HashMap:<init>	(I)V
     //   1173: astore 8
     //   1175: aload 8
-    //   1177: ldc_w 481
+    //   1177: ldc_w 482
     //   1180: iconst_2
-    //   1181: invokestatic 483	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1184: invokevirtual 143	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1181: invokestatic 484	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1184: invokevirtual 144	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1187: pop
-    //   1188: invokestatic 487	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   1191: invokestatic 492	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   1188: invokestatic 488	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   1191: invokestatic 493	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   1194: aconst_null
-    //   1195: ldc_w 494
+    //   1195: ldc_w 495
     //   1198: iconst_1
     //   1199: lconst_0
     //   1200: lconst_0
     //   1201: aload 8
     //   1203: aconst_null
-    //   1204: invokevirtual 497	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   1204: invokevirtual 499	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   1207: goto -251 -> 956
     //   1210: aload_0
     //   1211: monitorenter
     //   1212: aload_0
     //   1213: iconst_1
-    //   1214: putfield 357	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
+    //   1214: putfield 358	com/tencent/mobileqq/statistics/UnifiedMonitor:jdField_a_of_type_Boolean	Z
     //   1217: aload_0
     //   1218: monitorexit
     //   1219: return
@@ -1032,7 +1031,7 @@ public class UnifiedMonitor
       StringBuilder localStringBuilder;
       if (i != 0)
       {
-        str = bdmp.a(String.valueOf(paramInt));
+        str = bcfa.a(String.valueOf(paramInt));
         if (this.jdField_a_of_type_JavaLangString == null)
         {
           this.jdField_a_of_type_JavaLangString = "dbg";
@@ -1042,14 +1041,14 @@ public class UnifiedMonitor
         localStringBuilder.append("AdditionInfo:0|");
         try
         {
-          localObject = BaseApplicationImpl.getApplication().getPackageManager();
+          PackageManager localPackageManager = BaseApplicationImpl.getApplication().getPackageManager();
           if (this.jdField_b_of_type_JavaLangString == null)
           {
-            PackageInfo localPackageInfo = ((PackageManager)localObject).getPackageInfo("com.tencent.mobileqq", 128);
-            this.jdField_b_of_type_JavaLangString = (localPackageInfo.versionName + "." + localPackageInfo.versionCode);
+            localObject = localPackageManager.getPackageInfo("com.tencent.mobileqq", 128);
+            this.jdField_b_of_type_JavaLangString = (((PackageInfo)localObject).versionName + "." + ((PackageInfo)localObject).versionCode);
           }
           if (this.jdField_c_of_type_JavaLangString == null) {
-            this.jdField_c_of_type_JavaLangString = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128).metaData.get("com.tencent.qapm.uuid").toString();
+            this.jdField_c_of_type_JavaLangString = localPackageManager.getApplicationInfo("com.tencent.mobileqq", 128).metaData.get("com.tencent.qapm.uuid").toString();
           }
           localObject = null;
           if (4 != BaseApplicationImpl.sProcessId) {
@@ -1078,7 +1077,7 @@ public class UnifiedMonitor
             continue;
             bool1 = false;
           }
-          localbdmc = bdmc.a(BaseApplicationImpl.getApplication());
+          localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getApplication());
           if (j != 1) {
             break label881;
           }
@@ -1087,10 +1086,10 @@ public class UnifiedMonitor
         localStringBuilder.append("|").append(this.jdField_a_of_type_JavaLangString).append("|").append(System.currentTimeMillis());
         localStringBuilder.append("|").append(paramInt).append("|").append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
         localStringBuilder.append("|").append("monitorThread=").append(paramThread.getName()).append(",tid=").append(paramThread.getId()).append(",state=").append(paramThread.getState());
-        localStringBuilder.append(bdmp.a());
-        localStringBuilder.append(bdmp.b());
+        localStringBuilder.append(bcfa.a());
+        localStringBuilder.append(bcfa.b());
         l = SystemClock.uptimeMillis();
-        j = bdmp.a(BaseApplicationImpl.getContext(), str, localStringBuilder.toString());
+        j = bcfa.a(BaseApplicationImpl.getContext(), str, localStringBuilder.toString());
         l = SystemClock.uptimeMillis() - l;
         if (j == 1) {
           break label1023;
@@ -1103,7 +1102,7 @@ public class UnifiedMonitor
       label845:
       label881:
       label1023:
-      for (boolean bool1 = bdmp.a(str, localStringBuilder.toString());; bool1 = true)
+      for (boolean bool1 = bcfa.a(str, localStringBuilder.toString());; bool1 = true)
       {
         a(str);
         paramThread = new HashMap(2);
@@ -1147,15 +1146,15 @@ public class UnifiedMonitor
         }
         for (;;)
         {
-          paramThread = this.jdField_a_of_type_ArrayOfBdmt[paramInt];
+          paramThread = this.jdField_a_of_type_ArrayOfBcfe[paramInt];
           paramThread.g += 1;
           return;
           localObject = ((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getAccount();
           break;
-          bdmc localbdmc;
+          StatisticCollector localStatisticCollector;
           for (boolean bool2 = true;; bool2 = false)
           {
-            localbdmc.a(null, "event_held_thread", bool2, l, 0L, paramThread, null);
+            localStatisticCollector.collectPerformance(null, "event_held_thread", bool2, l, 0L, paramThread, null);
             break;
           }
           paramThread = new HashMap(2);
@@ -1183,7 +1182,7 @@ public class UnifiedMonitor
             i = 0;
             break label917;
           }
-          bdmc.a(BaseApplicationImpl.getApplication()).a(null, "event_held_thread", false, 0L, 0L, paramThread, null);
+          StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "event_held_thread", false, 0L, 0L, paramThread, null);
         }
       }
       label917:
@@ -1200,77 +1199,77 @@ public class UnifiedMonitor
   void a(String paramString)
   {
     // Byte code:
-    //   0: new 179	java/io/File
+    //   0: new 180	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 184	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 185	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 4
     //   10: aload 4
-    //   12: invokevirtual 753	java/io/File:exists	()Z
+    //   12: invokevirtual 755	java/io/File:exists	()Z
     //   15: ifeq +100 -> 115
-    //   18: ldc_w 285
+    //   18: ldc_w 286
     //   21: iconst_1
-    //   22: new 342	java/lang/StringBuilder
+    //   22: new 343	java/lang/StringBuilder
     //   25: dup
-    //   26: invokespecial 343	java/lang/StringBuilder:<init>	()V
-    //   29: ldc_w 755
-    //   32: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokespecial 344	java/lang/StringBuilder:<init>	()V
+    //   29: ldc_w 757
+    //   32: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_1
-    //   36: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 353	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: aconst_null
     //   46: astore_2
     //   47: aconst_null
     //   48: astore_3
-    //   49: new 757	java/io/BufferedReader
+    //   49: new 759	java/io/BufferedReader
     //   52: dup
-    //   53: new 759	java/io/InputStreamReader
+    //   53: new 761	java/io/InputStreamReader
     //   56: dup
-    //   57: new 761	java/io/FileInputStream
+    //   57: new 763	java/io/FileInputStream
     //   60: dup
     //   61: aload 4
-    //   63: invokespecial 764	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   66: invokespecial 767	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   63: invokespecial 766	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   66: invokespecial 769	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   69: sipush 8096
-    //   72: invokespecial 770	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   72: invokespecial 772	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   75: astore_1
     //   76: aload_1
     //   77: astore_2
     //   78: aload_1
-    //   79: invokevirtual 773	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   79: invokevirtual 775	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   82: astore_3
     //   83: aload_3
     //   84: ifnull +32 -> 116
     //   87: aload_1
     //   88: astore_2
-    //   89: ldc_w 285
+    //   89: ldc_w 286
     //   92: iconst_1
     //   93: aload_3
-    //   94: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: invokestatic 319	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   97: goto -21 -> 76
     //   100: astore_3
     //   101: aload_1
     //   102: astore_2
     //   103: aload_3
-    //   104: invokevirtual 774	java/io/FileNotFoundException:printStackTrace	()V
+    //   104: invokevirtual 776	java/io/FileNotFoundException:printStackTrace	()V
     //   107: aload_1
     //   108: ifnull +7 -> 115
     //   111: aload_1
-    //   112: invokevirtual 777	java/io/BufferedReader:close	()V
+    //   112: invokevirtual 779	java/io/BufferedReader:close	()V
     //   115: return
     //   116: aload_1
     //   117: ifnull -2 -> 115
     //   120: aload_1
-    //   121: invokevirtual 777	java/io/BufferedReader:close	()V
+    //   121: invokevirtual 779	java/io/BufferedReader:close	()V
     //   124: return
     //   125: astore_1
     //   126: aload_1
-    //   127: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   127: invokevirtual 528	java/lang/Exception:printStackTrace	()V
     //   130: return
     //   131: astore_1
     //   132: aload_1
-    //   133: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   133: invokevirtual 528	java/lang/Exception:printStackTrace	()V
     //   136: return
     //   137: astore_2
     //   138: aload_3
@@ -1280,26 +1279,26 @@ public class UnifiedMonitor
     //   142: aload_1
     //   143: astore_2
     //   144: aload_3
-    //   145: invokevirtual 778	java/io/IOException:printStackTrace	()V
+    //   145: invokevirtual 780	java/io/IOException:printStackTrace	()V
     //   148: aload_1
     //   149: ifnull -34 -> 115
     //   152: aload_1
-    //   153: invokevirtual 777	java/io/BufferedReader:close	()V
+    //   153: invokevirtual 779	java/io/BufferedReader:close	()V
     //   156: return
     //   157: astore_1
     //   158: aload_1
-    //   159: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   159: invokevirtual 528	java/lang/Exception:printStackTrace	()V
     //   162: return
     //   163: astore_1
     //   164: aload_2
     //   165: ifnull +7 -> 172
     //   168: aload_2
-    //   169: invokevirtual 777	java/io/BufferedReader:close	()V
+    //   169: invokevirtual 779	java/io/BufferedReader:close	()V
     //   172: aload_1
     //   173: athrow
     //   174: astore_2
     //   175: aload_2
-    //   176: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   176: invokevirtual 528	java/lang/Exception:printStackTrace	()V
     //   179: goto -7 -> 172
     //   182: astore_1
     //   183: goto -19 -> 164
@@ -1349,8 +1348,8 @@ public class UnifiedMonitor
     do
     {
       return;
-      str = this.jdField_a_of_type_ArrayOfBdmt[paramInt1].jdField_a_of_type_JavaLangString;
-    } while ((this.jdField_a_of_type_ArrayOfBdmt[paramInt1].jdField_c_of_type_Boolean) && (TextUtils.isEmpty(str)));
+      str = this.jdField_a_of_type_ArrayOfBcfe[paramInt1].jdField_a_of_type_JavaLangString;
+    } while ((this.jdField_a_of_type_ArrayOfBcfe[paramInt1].jdField_c_of_type_Boolean) && (TextUtils.isEmpty(str)));
     Object localObject = paramMap;
     if (paramMap == null) {
       localObject = new HashMap(17);
@@ -1367,24 +1366,24 @@ public class UnifiedMonitor
         this.jdField_a_of_type_JavaLangString = "pub";
       }
       ((Map)localObject).put("build_type", this.jdField_a_of_type_JavaLangString);
-      if (SystemClock.uptimeMillis() - aodu.jdField_a_of_type_Long < 60000L)
+      if (SystemClock.uptimeMillis() - amxv.jdField_a_of_type_Long < 60000L)
       {
-        ((Map)localObject).put("totalCpu", String.valueOf(aodu.jdField_a_of_type_Int));
-        ((Map)localObject).put("appCpu", String.valueOf(aodu.jdField_a_of_type_Aodw.jdField_a_of_type_Int));
-        ((Map)localObject).put("cpu_update_time", String.valueOf((SystemClock.uptimeMillis() - aodu.jdField_a_of_type_Long) / 1000L));
+        ((Map)localObject).put("totalCpu", String.valueOf(amxv.jdField_a_of_type_Int));
+        ((Map)localObject).put("appCpu", String.valueOf(amxv.jdField_a_of_type_Amxx.jdField_a_of_type_Int));
+        ((Map)localObject).put("cpu_update_time", String.valueOf((SystemClock.uptimeMillis() - amxv.jdField_a_of_type_Long) / 1000L));
       }
       if (paramInt1 == 0)
       {
         paramString = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramString != null) && ((paramString instanceof QQAppInterface)))
         {
-          if (((QQAppInterface)paramString).a.jdField_a_of_type_Long == 0L) {
+          if (((QQAppInterface)paramString).mAutomator.jdField_a_of_type_Long == 0L) {
             break label472;
           }
           bool = true;
           label264:
           ((Map)localObject).put("param_is_logining", String.valueOf(bool));
-          if (((QQAppInterface)paramString).a.c()) {
+          if (((QQAppInterface)paramString).mAutomator.c()) {
             break label478;
           }
           bool = true;
@@ -1412,7 +1411,7 @@ public class UnifiedMonitor
     for (;;)
     {
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramInt2, 0, localObject));
-      paramString = this.jdField_a_of_type_ArrayOfBdmt[paramInt1];
+      paramString = this.jdField_a_of_type_ArrayOfBcfe[paramInt1];
       paramString.g += 1;
       return;
       paramString = "";
@@ -1463,8 +1462,8 @@ public class UnifiedMonitor
     try
     {
       b();
-      bdmp.a(BaseApplicationImpl.getContext());
-      ArrayList localArrayList = bdmp.a(BaseApplicationImpl.getContext());
+      bcfa.a(BaseApplicationImpl.getContext());
+      ArrayList localArrayList = bcfa.a(BaseApplicationImpl.getContext());
       if ((localArrayList != null) && (localArrayList.size() > 0)) {
         while (i < localArrayList.size())
         {
@@ -1486,7 +1485,7 @@ public class UnifiedMonitor
   
   public int getThreshold(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_Int;
+    return this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_Int;
   }
   
   public boolean handleEnd(int paramInt)
@@ -1517,16 +1516,11 @@ public class UnifiedMonitor
         continue;
       }
       Object localObject;
-      int i;
       try
       {
         localObject = (HashMap)paramMessage.obj;
-        i = paramMessage.arg1;
-        int j = Integer.valueOf((String)((HashMap)localObject).get("family")).intValue();
-        if ((j != 0) && (j != 14) && (j != 19)) {
-          break label269;
-        }
-        bdmc.a(BaseApplicationImpl.getApplication()).a(null, "unifiedMonitor", true, i, 0L, (HashMap)localObject, null);
+        int i = paramMessage.arg1;
+        StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "unifiedMonitor", true, i, 0L, (HashMap)localObject, null);
         return true;
       }
       catch (Throwable paramMessage) {}
@@ -1535,78 +1529,75 @@ public class UnifiedMonitor
       }
       paramMessage.printStackTrace();
       return true;
-      label269:
-      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "unifiedMonitor", true, i, 0L, (HashMap)localObject, null);
-      return true;
-      admp.a().a((HashMap)paramMessage.obj);
+      acji.a().a((HashMap)paramMessage.obj);
       return true;
       addEvent(paramMessage.arg1, "", 3000, -1, a());
-      this.jdField_a_of_type_ArrayOfBdmt[paramMessage.arg1].jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_ArrayOfBcfe[paramMessage.arg1].jdField_a_of_type_JavaLangString = null;
       return true;
       h();
       e();
       return true;
-      this.jdField_a_of_type_ArrayOfBdmt[11].jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_ArrayOfBcfe[11].jdField_a_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 2000L);
       return true;
-      aodu.a(false);
+      amxv.a(false);
       if (this.jdField_b_of_type_AndroidOsHandler.hasMessages(7)) {
         continue;
       }
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 1500L);
       return true;
-      aodu.b(false);
-      paramMessage = (bdmu)this.jdField_a_of_type_ArrayOfBdmt[11];
+      amxv.b(false);
+      paramMessage = (bcff)this.jdField_a_of_type_ArrayOfBcfe[11];
       if (whetherReportThisTime(11, true))
       {
         localObject = new HashMap(10);
-        ((Map)localObject).put("total_cpu", String.valueOf(aodu.jdField_a_of_type_Int));
-        ((Map)localObject).put("app_cpu", String.valueOf(aodu.jdField_a_of_type_Aodw.jdField_a_of_type_Int));
+        ((Map)localObject).put("total_cpu", String.valueOf(amxv.jdField_a_of_type_Int));
+        ((Map)localObject).put("app_cpu", String.valueOf(amxv.jdField_a_of_type_Amxx.jdField_a_of_type_Int));
         a().addEvent(11, null, 0, 0, (Map)localObject);
       }
-      if ((aodu.jdField_a_of_type_Int >= paramMessage.j) || (aodu.jdField_a_of_type_Aodw.jdField_a_of_type_Int >= paramMessage.k)) {
+      if ((amxv.jdField_a_of_type_Int >= paramMessage.j) || (amxv.jdField_a_of_type_Amxx.jdField_a_of_type_Int >= paramMessage.k)) {
         if ((QLog.isColorLevel()) && (SystemClock.uptimeMillis() - paramMessage.c > 60000L))
         {
-          QLog.d("UnifiedMonitor_QAPM", 2, "totalCpu exceed: " + aodu.jdField_a_of_type_Int + ", appCpu: " + aodu.jdField_a_of_type_Aodw.jdField_a_of_type_Int);
-          aodu.a(true);
+          QLog.d("UnifiedMonitor_QAPM", 2, "totalCpu exceed: " + amxv.jdField_a_of_type_Int + ", appCpu: " + amxv.jdField_a_of_type_Amxx.jdField_a_of_type_Int);
+          amxv.a(true);
         }
       }
       try
       {
         Thread.sleep(2000L);
-        label591:
-        aodu.b(true);
-        localObject = aodu.a(paramMessage.l, true).iterator();
+        label529:
+        amxv.b(true);
+        localObject = amxv.a(paramMessage.l, true).iterator();
         while (((Iterator)localObject).hasNext()) {
           QLog.d("UnifiedMonitor_QAPM", 2, (String)((Iterator)localObject).next());
         }
-        QLog.d("UnifiedMonitor_QAPM", 2, aodu.a(10));
-        localObject = aodu.a(paramMessage.l, true).iterator();
+        QLog.d("UnifiedMonitor_QAPM", 2, amxv.a(10));
+        localObject = amxv.a(paramMessage.l, true).iterator();
         while (((Iterator)localObject).hasNext()) {
           QLog.d("UnifiedMonitor_QAPM", 2, (String)((Iterator)localObject).next());
         }
         paramMessage.c = SystemClock.uptimeMillis();
-        label704:
+        label636:
         paramMessage.h += 1;
         while ((paramMessage.h < paramMessage.e) && (SystemClock.uptimeMillis() - paramMessage.jdField_a_of_type_Long < paramMessage.f * 1000L))
         {
           this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 2000L);
           return true;
-          QLog.d("UnifiedMonitor_QAPM", 1, "totalCpu exceed: " + aodu.jdField_a_of_type_Int + ", appCpu: " + aodu.jdField_a_of_type_Aodw.jdField_a_of_type_Int);
-          break label704;
+          QLog.d("UnifiedMonitor_QAPM", 1, "totalCpu exceed: " + amxv.jdField_a_of_type_Int + ", appCpu: " + amxv.jdField_a_of_type_Amxx.jdField_a_of_type_Int);
+          break label636;
           paramMessage.m = 1;
         }
         this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        aodu.a(true);
+        amxv.a(true);
         this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(8, 10000L);
         return true;
-        aodu.b(true);
-        localObject = (bdmu)this.jdField_a_of_type_ArrayOfBdmt[11];
+        amxv.b(true);
+        localObject = (bcff)this.jdField_a_of_type_ArrayOfBcfe[11];
         if (!QLog.isColorLevel()) {
           continue;
         }
-        localObject = aodu.a(((bdmu)localObject).l, true);
-        QLog.d("UnifiedMonitor_QAPM", 2, "trace " + paramMessage.obj + "'s cpu end(" + aodu.jdField_a_of_type_Int + ", " + aodu.jdField_a_of_type_Aodw.jdField_a_of_type_Int + ")");
+        localObject = amxv.a(((bcff)localObject).l, true);
+        QLog.d("UnifiedMonitor_QAPM", 2, "trace " + paramMessage.obj + "'s cpu end(" + amxv.jdField_a_of_type_Int + ", " + amxv.jdField_a_of_type_Amxx.jdField_a_of_type_Int + ")");
         paramMessage = ((List)localObject).iterator();
         while (paramMessage.hasNext()) {
           QLog.d("UnifiedMonitor_QAPM", 2, (String)paramMessage.next());
@@ -1614,7 +1605,7 @@ public class UnifiedMonitor
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label591;
+        break label529;
       }
     }
   }
@@ -1628,7 +1619,7 @@ public class UnifiedMonitor
       return false;
       i = a(paramInt);
     } while (!whetherReportDuringThisStartup(i));
-    if (this.jdField_a_of_type_ArrayOfBdmt[i].g >= this.jdField_a_of_type_ArrayOfBdmt[i].jdField_b_of_type_Int)
+    if (this.jdField_a_of_type_ArrayOfBcfe[i].g >= this.jdField_a_of_type_ArrayOfBcfe[i].jdField_b_of_type_Int)
     {
       this.jdField_c_of_type_AndroidOsHandler.removeMessages(b(paramInt));
       a(i);
@@ -1638,14 +1629,14 @@ public class UnifiedMonitor
     this.jdField_c_of_type_AndroidOsHandler.removeMessages(paramInt, Thread.currentThread());
     Message localMessage = this.jdField_c_of_type_AndroidOsHandler.obtainMessage(paramInt, Thread.currentThread());
     localMessage.arg1 = i;
-    this.jdField_c_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_ArrayOfBdmt[i].jdField_a_of_type_Int);
+    this.jdField_c_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_ArrayOfBcfe[i].jdField_a_of_type_Int);
     return true;
   }
   
   public void notifyNotTimeout(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_JavaLangString = null;
     if ((paramInt == 0) || (paramInt == 10)) {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
     }
@@ -1653,24 +1644,24 @@ public class UnifiedMonitor
   
   public void reportStackIfTimeout(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Boolean = false;
   }
   
   public boolean setMonitoredThread(int paramInt, Thread paramThread, AbstractUnifiedMonitor.ThreadMonitorCallback arg3)
   {
-    if ((paramThread == null) || (!this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob != null) || (this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_c_of_type_Int <= 0)) {
+    if ((paramThread == null) || (!this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob != null) || (this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_c_of_type_Int <= 0)) {
       return false;
     }
     QLog.d("UnifiedMonitor_QAPM", 1, "setMonitoredThread for family=" + paramInt);
-    synchronized (this.jdField_a_of_type_ArrayOfBdmt[paramInt])
+    synchronized (this.jdField_a_of_type_ArrayOfBcfe[paramInt])
     {
-      if (this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob == null)
+      if (this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob == null)
       {
-        this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob = new UnifiedMonitor.StackGetterJob(this, paramInt, paramThread);
-        ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob, "um-stack-fetcher-" + paramInt, 5).start();
-        this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob = new UnifiedMonitor.StackGetterJob(this, paramInt, paramThread);
+        ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_ComTencentMobileqqStatisticsUnifiedMonitor$StackGetterJob, "um-stack-fetcher-" + paramInt, 5).start();
+        this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_c_of_type_Boolean = true;
         return true;
       }
     }
@@ -1682,24 +1673,24 @@ public class UnifiedMonitor
     if (paramInt >= 21) {
       return false;
     }
-    return this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_Boolean;
   }
   
   public boolean whetherReportThisTime(int paramInt)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_a_of_type_Boolean)) {
+    if ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_a_of_type_Boolean)) {
       return false;
     }
-    if (this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_c_of_type_Boolean) {
-      return this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Boolean;
+    if (this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_c_of_type_Boolean) {
+      return this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Boolean;
     }
     return whetherReportThisTime(paramInt, false);
   }
   
   public boolean whetherReportThisTime(int paramInt, boolean paramBoolean)
   {
-    float f = this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Float;
-    if (this.jdField_a_of_type_ArrayOfBdmt[paramInt].g >= this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_b_of_type_Int) {}
+    float f = this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Float;
+    if (this.jdField_a_of_type_ArrayOfBcfe[paramInt].g >= this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_b_of_type_Int) {}
     while (Math.random() > f) {
       return false;
     }
@@ -1708,7 +1699,7 @@ public class UnifiedMonitor
   
   public boolean whetherStackEnabled(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfBdmt[paramInt].jdField_c_of_type_Boolean;
+    return this.jdField_a_of_type_ArrayOfBcfe[paramInt].jdField_c_of_type_Boolean;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ocr;
 
-import ayzn;
-import bdmc;
+import axmv;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class OcrControl$5$3
   implements Runnable
 {
-  public OcrControl$5$3(ayzn paramayzn, int paramInt1, int paramInt2, int paramInt3) {}
+  public OcrControl$5$3(axmv paramaxmv, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class OcrControl$5$3
     localHashMap.put("ret_code", String.valueOf(this.c));
     try
     {
-      bdmc.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
       return;
     }
     catch (Exception localException)

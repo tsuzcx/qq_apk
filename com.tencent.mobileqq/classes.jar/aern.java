@@ -1,14 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aern
-  implements Handler.Callback
+public class aern
+  implements View.OnClickListener
 {
-  aern(aerm paramaerm) {}
+  public aern(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

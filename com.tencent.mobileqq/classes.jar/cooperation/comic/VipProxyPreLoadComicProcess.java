@@ -2,7 +2,7 @@ package cooperation.comic;
 
 import android.content.Context;
 import android.content.Intent;
-import bmbt;
+import bkfq;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,9 +20,9 @@ public class VipProxyPreLoadComicProcess
     {
       if (paramIntent.getBooleanExtra("isPreloadProcess", false))
       {
-        bmbt.a.set(2);
+        bkfq.a.set(2);
         int i = paramIntent.getIntExtra("preloadEntry", 0);
-        bmbt.b.set(i);
+        bkfq.b.set(i);
       }
       if (QLog.isColorLevel()) {
         QLog.d("QQComicDebug", 2, "onReceive end");

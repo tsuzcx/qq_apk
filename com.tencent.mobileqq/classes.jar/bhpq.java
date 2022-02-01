@@ -1,27 +1,22 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
+import org.json.JSONObject;
 
 public class bhpq
-  extends bhpc
+  implements DialogInterface.OnClickListener
 {
-  public bhpq(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public bhpq(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
   
-  public void setBodyLayoutNoMargin()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rootView.setPadding(0, 0, 0, 0);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-    localLayoutParams.setMargins(0, 0, 0, 0);
-    this.bodyLayout.setLayoutParams(localLayoutParams);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpq
  * JD-Core Version:    0.7.0.1
  */

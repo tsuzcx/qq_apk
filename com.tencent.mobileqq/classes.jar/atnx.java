@@ -1,49 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class atnx
-  implements View.OnClickListener
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  atnx(atnw paramatnw, View paramView) {}
+  atnx(atnv paramatnv) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof atjl))
-    {
-      localObject = (FileManagerEntity)((atjl)localObject).a;
-      if (paramView.getId() != 2131365346) {
-        break label121;
+    QLog.i("Forward.Preview.Dialog", 1, "onDecodeTaskCompleted uin: " + paramString);
+    if (atnv.a(this.a) == null) {}
+    while (atnv.a(this.a).isPausing()) {
+      return;
+    }
+    paramInt2 = atnv.a(this.a).findFirstVisibleItemPosition();
+    int i = atnv.a(this.a).getChildCount();
+    paramInt1 = 1;
+    label74:
+    if (paramInt1 < i) {
+      if (((String)((Pair)atnv.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
+      {
+        atoc localatoc = (atoc)atnv.a(this.a).getChildViewHolder(atnv.a(this.a).getChildAt(paramInt1));
+        if (!(localatoc instanceof atob)) {
+          break label170;
+        }
+        ((atob)localatoc).a.setImageBitmap(paramBitmap);
       }
-      blir localblir = (blir)blji.a(this.jdField_a_of_type_Atnw.a.a, null);
-      localblir.a(anzj.a(2131708500));
-      localblir.a(anzj.a(2131708504), 3);
-      localblir.d(anzj.a(2131708502));
-      localblir.a(new atny(this, (FileManagerEntity)localObject, localblir));
-      localblir.show();
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (FileManagerEntity)((atof)localObject).a;
+      paramInt1 += 1;
+      break label74;
       break;
-      label121:
-      if (paramView.getId() == 2131367081) {
-        this.jdField_a_of_type_Atnw.a.c((FileManagerEntity)localObject);
-      } else if (paramView.getId() == 2131377341) {
-        ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Atnw.a));
-      }
+      label170:
+      QLog.e("Forward.Preview.Dialog", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnx
  * JD-Core Version:    0.7.0.1
  */

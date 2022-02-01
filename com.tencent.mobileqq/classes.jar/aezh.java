@@ -1,37 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.NamePlateCfgInfo;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aezh
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  implements View.OnClickListener
 {
-  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  public aezh(BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public aezh(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
-  {
-    if (this.a.get() == null)
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof NamePlateCfgInfo)))
     {
-      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onReceive mObserver.get() is null");
-      return;
+      NamePlateCfgInfo localNamePlateCfgInfo = (NamePlateCfgInfo)paramView.getTag();
+      if ((localNamePlateCfgInfo.mVipType != 3) && (localNamePlateCfgInfo.mVipType != 259)) {
+        break label106;
+      }
+      VipUtils.a(BaseActivity.sTopActivity.app, this.a.getContext(), localNamePlateCfgInfo.mVipType, localNamePlateCfgInfo.mNamePlateId, "mios.p.cl.cztx_qlncmp");
     }
-    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onReceive(paramNotifyType, paramInt, paramObject);
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a.get() == null)
+    for (;;)
     {
-      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onVerifyClose mObserver.get() is null");
+      bcef.b(BaseActivity.sTopActivity.app, "dc00898", "", "", "qq_vip", "0X8009CAB", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label106:
+      VipUtils.b(BaseActivity.sTopActivity.app, this.a.getContext(), "mios.p.cl.cztx_qlncmp");
     }
-    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
   }
 }
 

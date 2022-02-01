@@ -1,40 +1,28 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
-class bbfk
-  implements beuq
+public class bbfk
+  implements bbff
 {
-  public void onResp(bevm parambevm)
+  public bbfk(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  
+  public void a(List paramList) {}
+  
+  public void a(List paramList, int paramInt)
   {
-    Object localObject = (bbfn)parambevm.jdField_a_of_type_Bevl.a();
-    lbj.c("CaptureVideoFilterManager", "download file call back. file = " + ((bbfn)localObject).a);
-    if (parambevm.jdField_a_of_type_Int != 0)
-    {
-      lbj.c("CaptureVideoFilterManager", "download file faild. errcode = " + parambevm.b);
-      return;
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    if (!((bbfn)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
-    {
-      lbj.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
-      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-      return;
-    }
-    lbj.c("CaptureVideoFilterManager", "download file successed.");
-    try
-    {
-      localObject = bbfg.a();
-      bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
-      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-      return;
-    }
-    catch (IOException parambevm)
-    {
-      parambevm.printStackTrace();
-      lbj.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
-    }
+    bbgk.a();
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void a(List paramList, bbft parambbft)
+  {
+    a(paramList, parambbft.a);
+  }
 }
 
 

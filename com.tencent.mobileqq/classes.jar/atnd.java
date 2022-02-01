@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class atnd
-  implements DialogInterface.OnClickListener
+class atnd
+  implements TextWatcher
 {
-  public atnd(QfileLocalFileAppTabView.1.1 param1) {}
+  atnd(atmx paramatmx, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
+    if ((atmx.a(this.jdField_a_of_type_Atmx).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    {
+      atmx.a(this.jdField_a_of_type_Atmx).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      atmx.a(this.jdField_a_of_type_Atmx).setSelection(this.jdField_a_of_type_Int - 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnd
  * JD-Core Version:    0.7.0.1
  */

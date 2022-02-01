@@ -1,11 +1,10 @@
-public class apnq
+public abstract interface apnq
 {
-  public int a = 3000;
+  public abstract void a();
   
-  public String toString()
-  {
-    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

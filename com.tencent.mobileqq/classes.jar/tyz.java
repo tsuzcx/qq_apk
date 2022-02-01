@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.webkit.ValueCallback;
 
 class tyz
-  implements View.OnClickListener
+  implements ValueCallback<tpz>
 {
-  tyz(tyo paramtyo, int paramInt1, int paramInt2, String paramString) {}
+  tyz(tyx paramtyx) {}
   
-  public void onClick(View paramView)
+  public void a(tpz paramtpz)
   {
-    this.jdField_a_of_type_Tyo.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Tyo.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Tyo.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramtpz.a();
+    int j = paramtpz.b();
+    if (tyx.a(this.a) != null) {
+      tyx.a(this.a).a(this.a.jdField_a_of_type_AndroidWidgetTextView, this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView, i, j);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyz
  * JD-Core Version:    0.7.0.1
  */

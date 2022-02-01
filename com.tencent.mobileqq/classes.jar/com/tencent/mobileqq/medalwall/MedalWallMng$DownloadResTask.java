@@ -3,8 +3,8 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import axbl;
-import blhq;
+import avos;
+import bjng;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,11 +12,11 @@ import java.io.File;
 public class MedalWallMng$DownloadResTask
   implements Runnable
 {
-  final axbl a;
+  final avos a;
   
-  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, axbl paramaxbl)
+  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, avos paramavos)
   {
-    this.a = paramaxbl;
+    this.a = paramavos;
   }
   
   public void run()
@@ -34,14 +34,14 @@ public class MedalWallMng$DownloadResTask
       ((Message)localObject).what = 2;
       ((Message)localObject).arg1 = ((int)l2);
       ((Message)localObject).obj = this.a;
-      this.this$0.jdField_a_of_type_Blhq.sendMessage((Message)localObject);
+      this.this$0.jdField_a_of_type_Bjng.sendMessage((Message)localObject);
       return;
       long l1 = l2;
       try
       {
         localObject = new File(this.a.jdField_b_of_type_JavaLangString);
         l1 = l2;
-        this.a.jdField_b_of_type_Int = HttpDownloadUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, (File)localObject, 2);
+        this.a.jdField_b_of_type_Int = HttpDownloadUtil.downloadData(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, (File)localObject, 2);
         l1 = l2;
         l2 = SystemClock.elapsedRealtime() - l3;
         l1 = l2;

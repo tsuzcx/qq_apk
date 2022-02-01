@@ -1,40 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-class agnz
-  implements Animator.AnimatorListener
+public class agnz
+  extends Handler
 {
-  agnz(agnx paramagnx, LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public agnz(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationCancel drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    }
+    super(paramLooper);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationEnd drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    switch (paramMessage.what)
+    {
     }
-    agnx.a(this.jdField_a_of_type_Agnx, paramAnimator, this.jdField_a_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationStart drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    }
-    if ((agoc.a(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getSpeed() > 0.0F)) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.reverseAnimationSpeed();
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.invalidateDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
+      return;
+      i = paramMessage.arg1;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        return;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
   }
 }
 

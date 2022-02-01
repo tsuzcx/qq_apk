@@ -1,18 +1,79 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public final class bfyr
-  implements Parcelable.Creator<HWGuideItem>
+public class bfyr
 {
-  public HWGuideItem a(Parcel paramParcel)
+  public static int a()
   {
-    return new HWGuideItem(paramParcel);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_versioncode", 0);
   }
   
-  public HWGuideItem[] a(int paramInt)
+  public static void a(int paramInt)
   {
-    return new HWGuideItem[paramInt];
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_versioncode", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_predownload_success_key", paramBoolean);
+    localEditor.apply();
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_predownload_success_key", false);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0);
+    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
+    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static int b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_dialog_versioncode", 0);
+  }
+  
+  public static void b(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_dialog_versioncode", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_has_show_upgrade_dialog", paramBoolean);
+    localEditor.apply();
+  }
+  
+  public static boolean b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_has_show_upgrade_dialog", false);
+  }
+  
+  public static void c(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_normal_upgrade_version", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void c(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_normal_upgrade", paramBoolean);
+    localEditor.apply();
   }
 }
 

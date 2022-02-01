@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aeqe
-  implements DialogInterface.OnClickListener
+public class aeqe
+  implements View.OnClickListener
 {
-  aeqe(aeqc paramaeqc) {}
+  public aeqe(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
+    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    localIntent.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(localIntent, 111);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

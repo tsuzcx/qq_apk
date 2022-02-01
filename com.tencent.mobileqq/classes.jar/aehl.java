@@ -1,20 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aehl
-  extends FlingGestureHandler
+  implements DialogInterface.OnClickListener
 {
-  public aehl(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public aehl(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void flingLToR()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a) {
-      super.flingLToR();
-    }
+    QQSettingCleanActivity.a(this.a);
+    bcef.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

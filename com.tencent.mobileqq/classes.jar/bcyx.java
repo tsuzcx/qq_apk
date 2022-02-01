@@ -1,8 +1,22 @@
-public abstract interface bcyx
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+
+class bcyx
+  extends bcxo
 {
-  public abstract void a(int paramInt);
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  SingleLineHotwordTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView;
+  TextView b;
+  TextView c;
   
-  public abstract void a(boolean paramBoolean);
+  private bcyx(bcyv parambcyv)
+  {
+    super(parambcyv);
+  }
 }
 
 

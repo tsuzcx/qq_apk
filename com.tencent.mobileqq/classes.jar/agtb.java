@@ -1,16 +1,6 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-
-public final class agtb
-  implements bliz
+public abstract interface agtb
 {
-  public agtb(Activity paramActivity, blir paramblir, String paramString, agtg paramagtg) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Blir, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agtg);
-  }
+  public abstract void a(int paramInt);
 }
 
 

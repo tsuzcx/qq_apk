@@ -1,28 +1,23 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
+import com.tencent.avgame.gameroom.GameRoomFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ncg
+public class ncg
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public ncg(GameRoomFragment paramGameRoomFragment) {}
   
-  public abstract List<mzj> a();
-  
-  public abstract void a();
-  
-  public abstract void a(mze parammze);
-  
-  public abstract void a(mzj parammzj, int paramInt);
-  
-  public abstract void a(nbp paramnbp);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(mzj parammzj, int paramInt);
+  public void onClick(View paramView)
+  {
+    GameActivityCenterCtrl.a().c(this.a.getActivity());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class FriendListHandler$3
   
   public void run()
   {
-    FriendListHandler.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Byte, this.jdField_b_of_type_Byte, this.jdField_a_of_type_Boolean);
+    FriendListHandler.access$200(this.this$0, this.val$headType, this.val$uinOrMobile, this.val$idType, this.val$level, this.val$faceFileType, 0, this.val$isGetStrangerHead);
   }
 }
 

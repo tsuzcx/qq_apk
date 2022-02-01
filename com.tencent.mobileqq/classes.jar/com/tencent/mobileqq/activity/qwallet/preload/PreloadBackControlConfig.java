@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.ResInfo;
-import alil;
-import aran;
+import akgd;
+import apub;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class PreloadBackControlConfig
   {
     try
     {
-      PreloadBackControlConfig localPreloadBackControlConfig = (PreloadBackControlConfig)alil.a(getConfigPath(paramAppRuntime));
+      PreloadBackControlConfig localPreloadBackControlConfig = (PreloadBackControlConfig)akgd.a(getConfigPath(paramAppRuntime));
       if (localPreloadBackControlConfig == null)
       {
         localPreloadBackControlConfig = new PreloadBackControlConfig(paramAppRuntime);
@@ -77,12 +77,12 @@ public class PreloadBackControlConfig
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 112	aran:a	()Laran;
+    //   2: invokestatic 112	apub:a	()Lapub;
     //   5: bipush 68
     //   7: aload_0
     //   8: getfield 28	com/tencent/mobileqq/activity/qwallet/preload/PreloadBackControlConfig:a	Lmqq/app/AppRuntime;
     //   11: invokevirtual 118	mqq/app/AppRuntime:getLongAccountUin	()J
-    //   14: invokevirtual 121	aran:a	(IJ)I
+    //   14: invokevirtual 121	apub:a	(IJ)I
     //   17: istore_1
     //   18: aload_0
     //   19: getfield 30	com/tencent/mobileqq/activity/qwallet/preload/PreloadBackControlConfig:mConfigVersion	I
@@ -125,9 +125,9 @@ public class PreloadBackControlConfig
   {
     try
     {
-      this.mConfigVersion = aran.a().a(68, this.a.getLongAccountUin());
+      this.mConfigVersion = apub.a().a(68, this.a.getLongAccountUin());
       this.mLastBackResInfos = paramArrayList;
-      alil.a(this, getConfigPath(this.a));
+      akgd.a(this, getConfigPath(this.a));
       return;
     }
     finally

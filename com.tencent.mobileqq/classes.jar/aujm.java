@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
-
-class aujm
-  implements DialogInterface.OnDismissListener
+public abstract interface aujm
 {
-  aujm(aujj paramaujj) {}
+  public abstract void a(int paramInt);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

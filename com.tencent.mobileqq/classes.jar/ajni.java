@@ -1,63 +1,44 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajni
+  extends aycd
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c;
+  public ajni(PhoneLaunchActivity.1 param1) {}
   
-  public ajni()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public static ajni a(String paramString)
-  {
-    ajni localajni = new ajni();
-    try
+    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
+    if (this.a.this$0.a != null)
     {
-      paramString = new JSONObject(paramString);
-      localajni.jdField_a_of_type_Int = paramString.optInt("version", -1);
-      localajni.jdField_a_of_type_Long = paramString.optLong("showDate", 0L);
-      localajni.jdField_b_of_type_Long = paramString.optInt("leftShowNum", 0);
-      localajni.jdField_b_of_type_Int = paramString.optInt("showCountEveryDay", 0);
-      localajni.c = paramString.optInt("leftLoginNum", 0);
-      return localajni;
+      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
+      this.a.this$0.a = null;
     }
-    catch (Exception paramString)
+    this.a.this$0.b();
+    if (paramBoolean)
     {
-      localajni.jdField_a_of_type_Int = -1;
-    }
-    return localajni;
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", this.jdField_a_of_type_Int);
-      localJSONObject.put("showDate", this.jdField_a_of_type_Long);
-      localJSONObject.put("leftShowNum", this.jdField_b_of_type_Long);
-      localJSONObject.put("showCountEveryDay", this.jdField_b_of_type_Int);
-      localJSONObject.put("leftLoginNum", this.c);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      Object localObject = this.a.this$0;
+      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
       {
-        localJSONException.printStackTrace();
+        this.a.this$0.setResult(-1);
+        this.a.this$0.finish();
+        return;
       }
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a.this$0)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.this$0.startActivityForResult((Intent)localObject, 2);
+      this.a.this$0.setResult(-1);
+      this.a.this$0.finish();
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return "MobileUnityVersionInfo [version=" + this.jdField_a_of_type_Int + ", showDate=" + this.jdField_a_of_type_Long + ", leftShowNum=" + this.jdField_b_of_type_Long + ", leftLoginNum = " + this.c + ", showCountEveryDay=" + this.jdField_b_of_type_Int + "]";
+    this.a.this$0.a(amtj.a(2131707122));
   }
 }
 

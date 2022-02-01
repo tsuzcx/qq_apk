@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alvu;
+import aktl;
 
 public class NewFlowCameraActivity$54$1
   implements Runnable
 {
-  public NewFlowCameraActivity$54$1(alvu paramalvu) {}
+  public NewFlowCameraActivity$54$1(aktl paramaktl) {}
   
   public void run()
   {

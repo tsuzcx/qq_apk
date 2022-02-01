@@ -1,61 +1,22 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bewc
-  implements ITransactionCallback
+public class bewc
+  implements DialogInterface.OnClickListener
 {
-  bewc(bewb parambewb, long paramLong) {}
+  public bewc(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms retCode=" + paramInt);
-    }
-    if ((bewb.a(this.jdField_a_of_type_Bewb) != null) && (bewb.a(this.jdField_a_of_type_Bewb).b != null)) {
-      new File(bewb.a(this.jdField_a_of_type_Bewb).b).delete();
-    }
-    this.jdField_a_of_type_Bewb.d(2005);
-    this.jdField_a_of_type_Bewb.a.a = paramArrayOfByte;
-    this.jdField_a_of_type_Bewb.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bewb.b);
-    this.jdField_a_of_type_Bewb.d();
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "onSuccess SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    if ((bewb.a(this.jdField_a_of_type_Bewb) != null) && (bewb.a(this.jdField_a_of_type_Bewb).b != null)) {
-      new File(bewb.a(this.jdField_a_of_type_Bewb).b).delete();
-    }
-    bewb.a(this.jdField_a_of_type_Bewb, paramArrayOfByte);
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> onTransStart()");
-    }
-    this.jdField_a_of_type_Bewb.b.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "onUpdateProgress transferedSize:" + paramInt);
+    if (this.jdField_a_of_type_Boolean) {
+      bewt.a(2, new Object());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewc
  * JD-Core Version:    0.7.0.1
  */

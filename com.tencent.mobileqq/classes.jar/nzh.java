@@ -1,10 +1,16 @@
-public class nzh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+
+class nzh
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  nzh(nyz paramnyz, JsResult paramJsResult) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+  }
 }
 
 

@@ -1,34 +1,107 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.ui.QQComicTabBarView;
-import java.util.List;
+import android.content.Context;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class bmcq
-  implements bmcd
+  extends FrameLayout
 {
-  public bmcq(QQComicTabBarView paramQQComicTabBarView) {}
+  private int jdField_a_of_type_Int;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int b;
+  private int c;
+  private int d;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public bmcq(Context paramContext, boolean paramBoolean)
   {
-    paramInt1 = this.a.a();
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
-    RedTouchUI localRedTouchUI;
-    RedAppInfo localRedAppInfo;
-    do
+    super(paramContext);
+    if (!paramBoolean)
     {
-      return;
-      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
-      if ((paramBoolean) && (paramInt1 != paramInt2))
-      {
-        this.a.a(paramInt2);
-        return;
+      i = bmcd.a.s;
+      this.jdField_a_of_type_Int = i;
+      if (paramBoolean) {
+        break label85;
       }
-      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_Bmdf.get("1113.100801");
-      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    } while ((localRedTouchUI == null) || (!localRedTouchUI.b()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
-    this.a.a(paramInt2, true);
+      i = bmcd.a.r;
+      label32:
+      this.b = i;
+      if (paramBoolean) {
+        break label95;
+      }
+      i = bmcd.b.s;
+      label48:
+      this.c = i;
+      if (paramBoolean) {
+        break label105;
+      }
+    }
+    label85:
+    label95:
+    label105:
+    for (int i = bmcd.b.r;; i = bmcd.f.r)
+    {
+      this.d = i;
+      a(paramContext);
+      return;
+      i = bmcd.e.s;
+      break;
+      i = bmcd.e.r;
+      break label32;
+      i = bmcd.f.s;
+      break label48;
+    }
+  }
+  
+  private void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 15.0F);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    TextView localTextView;
+    int i;
+    if (!paramBoolean2)
+    {
+      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (paramBoolean1)
+      {
+        i = this.b;
+        localTextView.setTextColor(i);
+        if (!paramBoolean1) {
+          break label101;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(this.jdField_a_of_type_AndroidWidgetTextView.getTypeface(), 1);
+      }
+    }
+    for (;;)
+    {
+      if (!paramBoolean2) {
+        break label113;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(1.0F, 0.0F, 0.0F, 2131165362);
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (paramBoolean1) {}
+      for (i = this.d;; i = this.c)
+      {
+        localTextView.setTextColor(i);
+        break;
+      }
+      label101:
+      this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(null, 0);
+    }
+    label113:
+    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
   }
 }
 

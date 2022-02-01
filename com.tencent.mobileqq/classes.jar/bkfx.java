@@ -1,38 +1,54 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
 
 public class bkfx
-  extends BaseJsModule
+  extends RemoteCommand
 {
-  public String getModuleName()
+  private boolean a;
+  
+  public bkfx(String paramString, boolean paramBoolean)
   {
-    return "mqq";
+    super(paramString);
+    this.a = paramBoolean;
   }
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = false;
-    if ("getQQVersion".equals(paramString)) {
-      paramString = new JSONObject();
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bkfx("qqcomicemoticonipccmd", false));
     }
-    while (!"getQQVersionSync".equals(paramString)) {
-      try
-      {
-        paramString.putOpt("version", "8.4.5");
-        bool = paramInvokeCallback.exec(0, paramString);
-        return bool;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
       }
     }
-    return false;
+    do
+    {
+      do
+      {
+        return null;
+        localObject = (QQAppInterface)localObject;
+      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
+      localObject = (bkfv)((QQAppInterface)localObject).getManager(147);
+    } while (localObject == null);
+    ((bkfv)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
+    return null;
+  }
+  
+  public boolean isSynchronized()
+  {
+    return this.a;
   }
 }
 

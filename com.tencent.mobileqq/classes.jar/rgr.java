@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class rgr
-  implements DialogInterface.OnDismissListener
+public abstract interface rgr<T>
 {
-  rgr(rgo paramrgo) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    rgo.b(this.a, false);
-  }
+  public abstract boolean a(T paramT);
 }
 
 

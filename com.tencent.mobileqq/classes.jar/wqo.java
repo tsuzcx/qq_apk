@@ -1,52 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Intent;
+import android.os.Bundle;
 
-public class wqo
-  extends wri
+public abstract interface wqo
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public wqo(wqn paramwqn, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
   
-  public String a()
-  {
-    return wqn.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void c();
   
-  public wrj a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new wqp(this.jdField_a_of_type_Wqn, localRspFeedLikeList, this.jdField_a_of_type_Boolean);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      yuk.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
-  }
+  public abstract void d();
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      return localReqFeedLikeList.toByteArray();
-    }
-  }
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

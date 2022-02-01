@@ -1,21 +1,26 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
-class ahci
-  extends aggl
+public class ahci
+  extends ahcf
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
+  public ahci(QQAppInterface paramQQAppInterface, ahcz paramahcz, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afaf paramafaf)
+  {
+    super(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+  }
   
-  ahci(ahcf paramahcf) {}
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText(ahck.c);
+    return false;
+  }
 }
 
 

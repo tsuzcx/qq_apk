@@ -2,10 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import UserGrowth.stSimpleMetaComment;
 import UserGrowth.stSimpleMetaPerson;
-import aajo;
-import aajx;
-import aajz;
-import aakb;
+import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
@@ -18,21 +15,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anzj;
-import bhgn;
-import bhmq;
-import bhsr;
+import bfpy;
+import bfvo;
 import com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import uga;
-import ugb;
-import uqf;
-import zps;
+import umr;
+import ums;
+import uya;
+import zgm;
+import zgv;
+import zgx;
+import zgz;
 
 public class WsCommentView
   extends RelativeLayout
@@ -40,7 +40,6 @@ public class WsCommentView
 {
   private int jdField_a_of_type_Int;
   private stSimpleMetaComment jdField_a_of_type_UserGrowthStSimpleMetaComment;
-  private aakb jdField_a_of_type_Aakb;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -49,7 +48,8 @@ public class WsCommentView
   public WsReplyContainer a;
   FeedRichTextView jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView;
   RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  public ugb a;
+  public ums a;
+  private zgz jdField_a_of_type_Zgz;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -75,45 +75,45 @@ public class WsCommentView
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131559992, this, true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131364804));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131363109));
+    View localView = LayoutInflater.from(getContext()).inflate(2131559996, this, true);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131364834));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131363126));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(18.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372916));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)localView.findViewById(2131372901));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer = ((WsReplyContainer)localView.findViewById(2131376512));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369925);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369922));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369926));
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131365632);
-    this.jdField_a_of_type_Ugb = new ugb();
-    this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131377621));
-    this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364811));
-    this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371416));
-    this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363857));
-    this.jdField_a_of_type_Ugb.c = ((TextView)localView.findViewById(2131363914));
-    this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365640));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372884));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)localView.findViewById(2131372869));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer = ((WsReplyContainer)localView.findViewById(2131376280));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369919);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369916));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369920));
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131365665);
+    this.jdField_a_of_type_Ums = new ums();
+    this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131377389));
+    this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364841));
+    this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371384));
+    this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363883));
+    this.jdField_a_of_type_Ums.c = ((TextView)localView.findViewById(2131363940));
+    this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365673));
   }
   
   private void a(stSimpleMetaComment paramstSimpleMetaComment, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Ugb != null) && (this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetLinearLayout != null))
+    if ((this.jdField_a_of_type_Ums != null) && (this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetLinearLayout != null))
     {
       if ((!paramBoolean) || (paramstSimpleMetaComment == null) || (paramstSimpleMetaComment.replyList.size() <= 0)) {
         break label127;
       }
-      String str = aajo.a(paramstSimpleMetaComment.createtime * 1000L);
-      this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      String str = zgm.a(paramstSimpleMetaComment.createtime * 1000L);
+      this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       if (paramstSimpleMetaComment.replyList.size() > 0) {
-        this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetTextView.setText(paramstSimpleMetaComment.replyNum + anzj.a(2131701128));
+        this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetTextView.setText(paramstSimpleMetaComment.replyNum + amtj.a(2131701363));
       }
     }
     return;
     label127:
-    this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
   private void b()
@@ -129,12 +129,12 @@ public class WsCommentView
   {
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850863);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166181));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850798);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166200));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850830);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165343));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850764);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165351));
   }
   
   public void onClick(View paramView)
@@ -147,61 +147,61 @@ public class WsCommentView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_Aakb != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaComment != null))
+      if ((this.jdField_a_of_type_Zgz != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaComment != null))
       {
-        this.jdField_a_of_type_Aakb.a(paramView, 1, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment.poster);
+        this.jdField_a_of_type_Zgz.a(paramView, 1, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment.poster);
         continue;
-        if ((this.jdField_a_of_type_Aakb != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaComment != null))
+        if ((this.jdField_a_of_type_Zgz != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaComment != null))
         {
-          this.jdField_a_of_type_Aakb.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment.poster);
+          this.jdField_a_of_type_Zgz.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment.poster);
           continue;
-          if (this.jdField_a_of_type_Aakb != null)
+          if (this.jdField_a_of_type_Zgz != null)
           {
-            this.jdField_a_of_type_Aakb.a(paramView, 4, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+            this.jdField_a_of_type_Zgz.a(paramView, 4, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
             continue;
-            if (this.jdField_a_of_type_Aakb != null)
+            if (this.jdField_a_of_type_Zgz != null)
             {
               this.jdField_a_of_type_Boolean = true;
               label194:
               stSimpleMetaComment localstSimpleMetaComment;
               if (this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing == 1)
               {
-                uqf.c("comment", "点赞前 isDing：" + bool + ",mComment.isDing:" + this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing);
+                uya.c("comment", "点赞前 isDing：" + bool + ",mComment.isDing:" + this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing);
                 a(bool);
                 if (bool) {
                   break label373;
                 }
-                uqf.c("comment", "执行点赞 ...............");
+                uya.c("comment", "执行点赞 ...............");
                 localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
                 localstSimpleMetaComment.dingNum += 1L;
-                this.jdField_b_of_type_AndroidWidgetTextView.setText(aajx.a(this.jdField_a_of_type_UserGrowthStSimpleMetaComment.dingNum));
+                this.jdField_b_of_type_AndroidWidgetTextView.setText(zgv.a(this.jdField_a_of_type_UserGrowthStSimpleMetaComment.dingNum));
               }
               for (;;)
               {
                 this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing = ((this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing + 1) % 2);
-                uqf.c("comment", "点赞后 mComment.isDing：" + this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing + ",clickPosition:" + this.jdField_a_of_type_Int);
-                this.jdField_a_of_type_Aakb.a(paramView, 6, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+                uya.c("comment", "点赞后 mComment.isDing：" + this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing + ",clickPosition:" + this.jdField_a_of_type_Int);
+                this.jdField_a_of_type_Zgz.a(paramView, 6, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
                 break;
                 bool = false;
                 break label194;
                 label373:
                 if (this.jdField_a_of_type_UserGrowthStSimpleMetaComment.dingNum > 1L)
                 {
-                  uqf.c("comment", "执行点赞-1 ...............");
+                  uya.c("comment", "执行点赞-1 ...............");
                   localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
                   localstSimpleMetaComment.dingNum -= 1L;
-                  this.jdField_b_of_type_AndroidWidgetTextView.setText(aajx.a(this.jdField_a_of_type_UserGrowthStSimpleMetaComment.dingNum));
+                  this.jdField_b_of_type_AndroidWidgetTextView.setText(zgv.a(this.jdField_a_of_type_UserGrowthStSimpleMetaComment.dingNum));
                 }
                 else
                 {
                   localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
                   localstSimpleMetaComment.dingNum -= 1L;
-                  uqf.c("comment", "执行取消点赞 ...............");
+                  uya.c("comment", "执行取消点赞 ...............");
                   this.jdField_b_of_type_AndroidWidgetTextView.setText("");
                 }
               }
             }
-            uqf.c("comment", "mOnCommentElementClickListener is null ...............");
+            uya.c("comment", "mOnCommentElementClickListener is null ...............");
           }
         }
       }
@@ -218,19 +218,19 @@ public class WsCommentView
     boolean bool;
     if (paramstSimpleMetaComment.poster != null)
     {
-      if ((BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramstSimpleMetaComment.poster.id)) && (bhsr.a(paramstSimpleMetaComment.poster.avatar)))
+      if ((BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramstSimpleMetaComment.poster.id)) && (StringUtil.isEmpty(paramstSimpleMetaComment.poster.avatar)))
       {
         if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(bhmq.c(aajz.a(aajz.a(null, 1, paramstSimpleMetaComment.poster.id, 0)).a, 50, 50));
+          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(bfvo.c(zgx.a(zgx.a(null, 1, paramstSimpleMetaComment.poster.id, 0)).a, 50, 50));
         }
-        zps.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, "", zps.a(getContext(), 35.0F), zps.a(getContext(), 35.0F), zps.a(getContext(), 18.0F), this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, null);
+        UIUtils.setRoundCornerViewByURL(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, "", UIUtils.dip2px(getContext(), 35.0F), UIUtils.dip2px(getContext(), 35.0F), UIUtils.dip2px(getContext(), 18.0F), this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, null);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramstSimpleMetaComment.poster.nick);
         if (!paramstSimpleMetaComment.poster.id.equals(paramString)) {
           break label402;
         }
         if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850872);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850808);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(21.0F), ImmersiveUtils.a(12.0F));
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(ImmersiveUtils.a(2.0F));
@@ -240,7 +240,7 @@ public class WsCommentView
     else
     {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView.setText(paramstSimpleMetaComment.wording);
-      this.jdField_a_of_type_Ugb.jdField_a_of_type_AndroidWidgetTextView.setText(aajo.a(paramstSimpleMetaComment.createtime * 1000L));
+      this.jdField_a_of_type_Ums.jdField_a_of_type_AndroidWidgetTextView.setText(zgm.a(paramstSimpleMetaComment.createtime * 1000L));
       a(paramstSimpleMetaComment, false);
       if (this.jdField_a_of_type_UserGrowthStSimpleMetaComment.replyList.size() != 0) {
         break label416;
@@ -256,14 +256,14 @@ public class WsCommentView
       if (paramstSimpleMetaComment.dingNum <= 0L) {
         break label506;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(aajx.a(paramstSimpleMetaComment.dingNum));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(zgv.a(paramstSimpleMetaComment.dingNum));
     }
     for (;;)
     {
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
-      zps.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, paramstSimpleMetaComment.poster.avatar, zps.a(getContext(), 35.0F), zps.a(getContext(), 35.0F), zps.a(getContext(), 18.0F), bhmq.b(), null);
+      UIUtils.setRoundCornerViewByURL(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, paramstSimpleMetaComment.poster.avatar, UIUtils.dip2px(getContext(), 35.0F), UIUtils.dip2px(getContext(), 35.0F), UIUtils.dip2px(getContext(), 18.0F), bfvo.b(), null);
       break;
       label402:
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
@@ -298,12 +298,12 @@ public class WsCommentView
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setDisplayNum(paramInt);
   }
   
-  public void setOnCommentElementClickListener(aakb paramaakb)
+  public void setOnCommentElementClickListener(zgz paramzgz)
   {
-    this.jdField_a_of_type_Aakb = paramaakb;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setOnCommentElementClickListener(paramaakb);
-    if ((this.jdField_a_of_type_Ugb != null) && (this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetLinearLayout != null)) {
-      this.jdField_a_of_type_Ugb.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new uga(this));
+    this.jdField_a_of_type_Zgz = paramzgz;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setOnCommentElementClickListener(paramzgz);
+    if ((this.jdField_a_of_type_Ums != null) && (this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetLinearLayout != null)) {
+      this.jdField_a_of_type_Ums.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new umr(this));
     }
   }
   
@@ -315,7 +315,7 @@ public class WsCommentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView
  * JD-Core Version:    0.7.0.1
  */

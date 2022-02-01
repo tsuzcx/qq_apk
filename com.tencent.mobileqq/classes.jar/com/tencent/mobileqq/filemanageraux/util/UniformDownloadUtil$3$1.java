@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import auuf;
-import auug;
+import atgn;
+import atgo;
 
 public class UniformDownloadUtil$3$1
   implements Runnable
 {
-  public UniformDownloadUtil$3$1(auug paramauug) {}
+  public UniformDownloadUtil$3$1(atgo paramatgo) {}
   
   public void run()
   {
-    auuf.a(this.this$0.a, this.this$0.b);
+    atgn.a(this.this$0.a, this.this$0.b);
   }
 }
 

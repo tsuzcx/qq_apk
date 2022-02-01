@@ -1,18 +1,31 @@
-import java.util.List;
-
 public class ust
 {
-  public Object a;
-  public List<usv> a;
-  public boolean a;
-  public boolean b;
-  
-  public ust(List<usv> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  public static ust a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return usv.a();
+  }
+  
+  private boolean a()
+  {
+    int i = umu.a().e(1);
+    uya.d("WS_VIDEO_PLAYER", "[WSPlayerWrapHelper.java][isSuperPlayer] playerType:" + i);
+    return i == 1;
+  }
+  
+  public usl a()
+  {
+    if (a()) {
+      return new usw();
+    }
+    return new utc();
+  }
+  
+  public usp a()
+  {
+    if (a()) {
+      return new uta();
+    }
+    return new utg();
   }
 }
 

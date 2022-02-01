@@ -1,121 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import android.app.Activity;
+import java.lang.ref.WeakReference;
 
-class yjn
-  extends SimpleJob<Object>
+public class yjn
 {
-  yjn(yjl paramyjl, String paramString, VideoCollectionItem paramVideoCollectionItem)
+  public final double a;
+  public final float a;
+  public final int a;
+  public final String a;
+  public final WeakReference<Activity> a;
+  public final boolean a;
+  public final double b;
+  public final int b;
+  public final String b;
+  public final boolean b;
+  public final int c;
+  
+  public yjn(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
   {
-    super(paramString);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public String toString()
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (wsu)wth.a(19);
-    MemoryInfoEntry localMemoryInfoEntry = paramJobContext.a(wzn.a(this.jdField_a_of_type_Yjl.jdField_b_of_type_JavaLangString));
-    boolean bool1;
-    boolean bool2;
-    label56:
-    List localList;
-    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1))
-    {
-      bool1 = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label250;
-      }
-      bool2 = true;
-      if (this.jdField_a_of_type_Yjl.jdField_b_of_type_Boolean) {
-        break label414;
-      }
-      localList = paramJobContext.a(this.jdField_a_of_type_Yjl.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, 10L);
-      paramVarArgs = new wzr(this.jdField_a_of_type_Yjl.c, new ErrorMessage());
-      paramVarArgs.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Yjl.jdField_b_of_type_JavaLangString;
-      paramVarArgs.jdField_b_of_type_Boolean = true;
-      paramVarArgs.c = bool2;
-      paramVarArgs.e = true;
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      paramVarArgs.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label256;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label177:
-      if (paramJobContext != null) {
-        break label285;
-      }
-      this.jdField_a_of_type_Yjl.jdField_b_of_type_Boolean = true;
-      if (!bool2) {
-        break label261;
-      }
-      this.jdField_a_of_type_Yjl.a.a(null, 0);
-      label206:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label274;
-      }
-    }
-    label256:
-    label261:
-    label274:
-    for (paramJobContext = "null";; paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key)
-    {
-      yuk.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , not found in db , start get from net , spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      return null;
-      bool1 = false;
-      break;
-      label250:
-      bool2 = false;
-      break label56;
-      paramJobContext = null;
-      break label177;
-      this.jdField_a_of_type_Yjl.a.c();
-      break label206;
-    }
-    label285:
-    if ((localMemoryInfoEntry != null) && (paramJobContext.dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
-    {
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Yjl.jdField_b_of_type_Boolean = true;
-      label317:
-      wjj.a().dispatch(paramVarArgs);
-      this.jdField_a_of_type_Yjl.a(localList, false);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label397;
-      }
-      paramJobContext = "null";
-      label346:
-      if (!paramVarArgs.jdField_a_of_type_Boolean) {
-        break label408;
-      }
-    }
-    label397:
-    label408:
-    for (paramVarArgs = "true";; paramVarArgs = "false")
-    {
-      yuk.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , isEnd = %s ,spend time = %d", new Object[] { paramJobContext, paramVarArgs, Long.valueOf(System.currentTimeMillis() - l) });
-      break;
-      paramVarArgs.jdField_a_of_type_Boolean = false;
-      break label317;
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key;
-      break label346;
-    }
-    label414:
-    if (bool2) {
-      this.jdField_a_of_type_Yjl.a.a(null, 0);
-    }
-    for (;;)
-    {
-      yuk.d("Q.qqstory.memories:MemoryDataPuller", String.format("Req from net ,  spend time = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      break;
-      this.jdField_a_of_type_Yjl.a.c();
-    }
+    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

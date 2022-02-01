@@ -2,8 +2,8 @@ package cooperation.comic.webbundle;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bdkl;
-import nnr;
+import bcdf;
+import com.tencent.biz.common.util.HttpUtil;
 
 public final class WebBundleReportUtils$1
   implements Runnable
@@ -29,7 +29,7 @@ public final class WebBundleReportUtils$1
         break label301;
       }
       str4 = "";
-      switch (nnr.a())
+      switch (HttpUtil.getNetWorkType())
       {
       case 0: 
       default: 
@@ -53,7 +53,7 @@ public final class WebBundleReportUtils$1
       localStringBuffer.append(this.jdField_d_of_type_JavaLangString).append('|');
       localStringBuffer.append(this.e).append('|');
       localStringBuffer.append(this.f);
-      bdkl.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
+      bcdf.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
       return;
       str2 = Build.BRAND;
       break;

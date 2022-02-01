@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class bdgi
-  implements bdhe
+  implements ActionMode.Callback
 {
   bdgi(bdgh parambdgh) {}
   
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    this.a.jdField_a_of_type_Int = paramInt;
-    long l = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq;
-    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
-    if (bdgw.a()) {}
-    for (paramInt = 1;; paramInt = 0)
+    String str = "";
+    Object localObject = bdgh.a(this.a).input;
+    paramMenuItem = str;
+    if (localObject != null)
     {
-      VACDReportUtil.a(l, null, "load.item.getconfig.end", paramInt + "&v=" + bdgd.a() + "&f=" + this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
-      bdgh.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, paramSoInfo);
-      return;
+      localObject = ((EditText)localObject).getText();
+      paramMenuItem = str;
+      if (localObject != null) {
+        paramMenuItem = localObject.toString();
+      }
     }
+    this.a.b(paramMenuItem, 1);
+    paramActionMode.finish();
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    if ((this.a.a()) && (bdgh.a(this.a))) {
+      paramMenu.add(0, 3, 196608, amtj.a(2131719695));
+    }
+    return this.a.a();
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

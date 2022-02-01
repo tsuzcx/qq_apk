@@ -1,20 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
-
-public class afbx
-  implements DialogInterface.OnKeyListener
+public abstract interface afbx
 {
-  public afbx(OverloadTipsActivity paramOverloadTipsActivity) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
-  }
+  public abstract void m();
 }
 
 

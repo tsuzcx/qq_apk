@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.os.Bundle;
-import bfrm;
-import bgpo;
-import bguq;
+import beaw;
+import bezc;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import mqq.manager.TicketManager;
 public class TroopFeedsDataManager$2
   implements Runnable
 {
-  public TroopFeedsDataManager$2(bfrm parambfrm, List paramList, int paramInt) {}
+  public TroopFeedsDataManager$2(beaw parambeaw, List paramList, int paramInt) {}
   
   public void run()
   {
@@ -24,9 +24,9 @@ public class TroopFeedsDataManager$2
     localObject2 = new Bundle();
     ((Bundle)localObject2).putString("qid", "" + this.this$0.jdField_a_of_type_JavaLangLong);
     ((Bundle)localObject2).putString("fnum", "1");
-    ((Bundle)localObject2).putString("bkn", "" + bguq.b(str));
+    ((Bundle)localObject2).putString("bkn", "" + TroopUtils.getBknBySkey(str));
     ((Bundle)localObject2).putString("fids", this.this$0.a(this.jdField_a_of_type_JavaUtilList));
-    ((Bundle)localObject2).putString("ver", "8.4.5");
+    ((Bundle)localObject2).putString("ver", "8.4.8");
     ((Bundle)localObject2).putString("src", "1");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
@@ -34,7 +34,7 @@ public class TroopFeedsDataManager$2
     ((HashMap)localObject1).put("BUNDLE", localObject2);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
     ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new bgpo("https://web.qun.qq.com/cgi-bin/notice/get_data_new", "GET", this.this$0.jdField_a_of_type_Bgpp, this.jdField_a_of_type_Int, null, true).execute(new HashMap[] { localObject1 });
+    new bezc("https://web.qun.qq.com/cgi-bin/notice/get_data_new", "GET", this.this$0.jdField_a_of_type_Bezd, this.jdField_a_of_type_Int, null, true).execute(new HashMap[] { localObject1 });
     if (QLog.isColorLevel()) {
       QLog.d("TroopFeedsDataManager", 2, "get feed from server start: " + System.currentTimeMillis());
     }

@@ -2,10 +2,9 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import blim;
 
 class AbsListView$CheckForLongPress
-  extends blim
+  extends AbsListView.WindowRunnnable
   implements Runnable
 {
   private AbsListView$CheckForLongPress(AbsListView paramAbsListView)
@@ -22,7 +21,7 @@ class AbsListView$CheckForLongPress
     {
       i = this.this$0.mMotionPosition;
       l = this.this$0.mAdapter.getItemId(this.this$0.mMotionPosition);
-      if ((!a()) || (this.this$0.mDataChanged)) {
+      if ((!sameWindow()) || (this.this$0.mDataChanged)) {
         break label126;
       }
     }

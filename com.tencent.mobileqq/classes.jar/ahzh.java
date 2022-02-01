@@ -1,13 +1,22 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahzh
-  implements ahyf
+  implements ahzp
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahzh(SearchContactsFragment paramSearchContactsFragment) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    paramahed.c(paramahfq.b, paramMessageRecord);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 80000001) {
+      bbgk.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
+    }
+    this.a.a(paramString, false);
   }
 }
 

@@ -1,34 +1,32 @@
-import android.animation.Animator;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class altp
-  extends also
+  extends alzg
 {
-  public altp(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public altp(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+    switch (paramInt)
+    {
     }
-    if (this.a.jdField_a_of_type_Aluk != null) {
-      this.a.jdField_a_of_type_Aluk.a();
+    do
+    {
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
     }
-    this.a.k();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
     }
   }
 }

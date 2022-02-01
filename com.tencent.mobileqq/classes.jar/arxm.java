@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
+import java.util.Comparator;
 
 public class arxm
-  implements View.OnClickListener
+  implements Comparator<Long>
 {
-  public arxm(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
+  public arxm(QfileLocalFileDelMediaTabView.1 param1) {}
   
-  public void onClick(View paramView)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
+    }
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

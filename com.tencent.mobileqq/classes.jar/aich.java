@@ -1,18 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
-class aich
-  implements bjbj
+public class aich
+  extends Handler
 {
-  aich(aibr paramaibr) {}
+  private WeakReference<PublicView> a;
   
-  public void a(bjbh parambjbh)
+  public aich(PublicView paramPublicView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
-    }
+    this.a = new WeakReference(paramPublicView);
   }
   
-  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
+  public void handleMessage(Message paramMessage)
+  {
+    PublicView localPublicView = (PublicView)this.a.get();
+    if (localPublicView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      return;
+    case 2: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131718604);
+      return;
+    case 3: 
+      PublicView.a(localPublicView, true);
+      return;
+    }
+    PublicView.b(localPublicView);
+  }
 }
 
 

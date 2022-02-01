@@ -1,39 +1,68 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
 public class wrg
+  extends AbsVideoInfoWidget
 {
-  public static wrg a;
+  private wri a = new wri(this);
+  private boolean e;
   
-  public static wrg a()
+  public wrg(ViewGroup paramViewGroup)
   {
-    if (a == null) {
-      a = new wrg();
-    }
-    return a;
+    super(paramViewGroup);
   }
   
-  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  public String a()
   {
-    QQStoryContext.a();
-    AppInterface localAppInterface = QQStoryContext.a();
-    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), nkl.class);
-    localNewIntent.putExtra("cmd", paramString);
-    localNewIntent.putExtra("data", paramArrayOfByte);
-    localNewIntent.putExtra("isResend", false);
-    localNewIntent.setObserver(paramBusinessObserver);
-    localAppInterface.startServlet(localNewIntent);
+    return "LoadingMoreWidget";
   }
   
-  public void a(wri paramwri, wrj paramwrj)
+  public wri a()
   {
-    byte[] arrayOfByte = paramwri.a();
-    String str = paramwri.a();
-    long l = System.currentTimeMillis();
-    a(paramwri.a(), arrayOfByte, new wrh(this, l, paramwri, str, paramwrj));
+    return this.a;
   }
+  
+  public void a(View paramView) {}
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new wrh(this), "");
+  }
+  
+  public void a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public boolean a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return this.e;
+  }
+  
+  public int b()
+  {
+    return 2131561772;
+  }
+  
+  public void d()
+  {
+    this.e = true;
+    i();
+    xvv.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
+  }
+  
+  public void e()
+  {
+    this.e = false;
+    k();
+    xvv.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
+  }
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

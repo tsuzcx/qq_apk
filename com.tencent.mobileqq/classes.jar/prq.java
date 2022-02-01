@@ -1,107 +1,158 @@
-import android.support.annotation.Nullable;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public abstract class prq<BEAN, COOKIE>
-  implements prl<BEAN>
+public class prq
 {
-  protected int a;
-  @Nullable
-  private COOKIE jdField_a_of_type_JavaLangObject = null;
-  private String jdField_a_of_type_JavaLangString = "";
-  protected CopyOnWriteArrayList<BEAN> a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  
-  public prq()
+  public static void a(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt1, List<BEAN> paramList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString, prk<BEAN> paramprk)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if ((paramBoolean2) && (paramInt1 >= 0)) {
-      this.jdField_a_of_type_Int = paramInt1;
+    if ((paramView instanceof prj)) {
+      ((prj)paramView).a();
     }
-    if (this.jdField_b_of_type_Boolean) {
-      if (paramBoolean2)
+  }
+  
+  public static void a(Container paramContainer)
+  {
+    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+    while (paramContainer.hasNext())
+    {
+      Object localObject = (Map.Entry)paramContainer.next();
+      if ((((Map.Entry)localObject).getValue() instanceof qip))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
-        a(paramList);
-        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
-        if (!paramBoolean3)
-        {
-          paramBoolean1 = true;
-          this.d = paramBoolean1;
+        localObject = (qip)((Map.Entry)localObject).getValue();
+        if ((((qip)localObject).a() instanceof NativeVideoView)) {
+          ((qip)localObject).a().startPlay();
         }
       }
-      else
+    }
+  }
+  
+  public static void a(ListView paramListView)
+  {
+    a(paramListView, true);
+  }
+  
+  public static void a(ListView paramListView, boolean paramBoolean)
+  {
+    e(paramListView);
+  }
+  
+  public static void b(Container paramContainer)
+  {
+    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+    while (paramContainer.hasNext())
+    {
+      Object localObject = (Map.Entry)paramContainer.next();
+      if ((((Map.Entry)localObject).getValue() instanceof qip))
       {
-        paramprk.a(paramBoolean2, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
+        localObject = (qip)((Map.Entry)localObject).getValue();
+        if ((((qip)localObject).a() instanceof NativeVideoView)) {
+          ((qip)localObject).a().stop();
+        }
       }
     }
-    do
+  }
+  
+  public static void b(ListView paramListView)
+  {
+    if ((!pay.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
     {
       return;
-      paramBoolean1 = false;
-      break;
-      if (paramBoolean2)
+      int i = 0;
+      while (i < paramListView.getChildCount())
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
-        this.jdField_a_of_type_JavaLangObject = paramCOOKIE;
-        if (!paramBoolean3) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof prj)) {
+          ((prj)localView).b();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void c(ListView paramListView)
+  {
+    if ((!pay.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof prj)) {
+          ((prj)localView).a();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void d(ListView paramListView)
+  {
+    if (paramListView == null) {}
+    for (;;)
+    {
+      return;
+      if ((pay.a(paramListView.getContext())) && (paramListView.getChildCount() > 0))
+      {
+        int i = 0;
+        while (i < paramListView.getChildCount())
         {
-          this.d = paramBoolean1;
-          paramprk.a(true, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
-          return;
+          View localView = paramListView.getChildAt(i);
+          if ((localView instanceof prj)) {
+            ((prj)localView).c();
+          }
+          i += 1;
         }
       }
-      this.c = true;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } while (paramBoolean1);
-    paramprk.a(false, paramList, paramInt1, Boolean.valueOf(false), paramInt2, paramString);
-  }
-  
-  public abstract void a(@Nullable COOKIE paramCOOKIE, prv<BEAN, COOKIE> paramprv);
-  
-  public abstract void a(List<BEAN> paramList);
-  
-  public void a(prp<BEAN> paramprp)
-  {
-    a(this.jdField_a_of_type_JavaLangObject, new prt(this, paramprp));
-  }
-  
-  public abstract void a(pru<BEAN> parampru);
-  
-  public void a(boolean paramBoolean, prk<BEAN> paramprk)
-  {
-    a();
-    if (paramBoolean) {
-      a(new prr(this, paramprk));
     }
-    a(null, new prs(this, paramBoolean, paramprk));
   }
   
-  public boolean a()
+  private static void e(ListView paramListView)
   {
-    return this.d;
+    int j = 0;
+    int i = 0;
+    View localView;
+    if (i < paramListView.getChildCount())
+    {
+      localView = paramListView.getChildAt(i);
+      if (((localView instanceof prj)) && (pai.a(localView) >= 80.0F))
+      {
+        QLog.d("gifvideo.VideoPlayControlUtils", 2, ">= 80f");
+        if (!((prj)localView).a()) {}
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        QLog.d("gifvideo.VideoPlayControlUtils", 2, "item to play: " + i);
+        for (;;)
+        {
+          if (j < paramListView.getChildCount())
+          {
+            localView = paramListView.getChildAt(j);
+            if (((localView instanceof prj)) && (j != i)) {
+              ((prj)localView).a();
+            }
+            j += 1;
+            continue;
+            i += 1;
+            break;
+          }
+        }
+      }
+      return;
+      i = -1;
+    }
   }
 }
 

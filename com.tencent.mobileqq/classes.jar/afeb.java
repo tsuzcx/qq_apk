@@ -1,31 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 class afeb
-  implements View.OnClickListener
+  extends Animation
 {
-  afeb(afea paramafea) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void onClick(View paramView)
+  afeb(afdx paramafdx) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof afdz))
+    float f2 = 1.5F;
+    float f1 = 0.0F;
+    if (paramFloat < this.jdField_a_of_type_Afdx.jdField_a_of_type_Float * 5.0F) {
+      paramFloat = f2;
+    }
+    for (;;)
     {
-      localObject = (afdz)localObject;
-      if ((((afdz)localObject).a >= 0) && (((afdz)localObject).a < this.a.a.a.size()))
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
+      return;
+      if (paramFloat < 13.0F * this.jdField_a_of_type_Afdx.jdField_a_of_type_Float)
       {
-        localObject = (ProfileLabelInfo)this.a.a.a.remove(((afdz)localObject).a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        afea.a(this.a, (ProfileLabelInfo)localObject);
-        bdll.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Afdx.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Afdx.jdField_a_of_type_Float * 8.0F) * 0.5F;
+        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Afdx.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Afdx.jdField_a_of_type_Float * 8.0F) * 0.5F;
+      }
+      else
+      {
+        paramFloat = 2.0F;
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
 }
 

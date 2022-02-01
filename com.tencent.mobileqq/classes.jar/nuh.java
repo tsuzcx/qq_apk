@@ -1,55 +1,56 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class nuh
-  extends aoeg
+public class nuh
+  implements ViewPager.OnPageChangeListener
 {
-  private ntc b;
+  public nuh(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
   
-  public nuh(ntc paramntc1, ntc paramntc2)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.b = paramntc2;
-  }
-  
-  public void a()
-  {
-    this.b = null;
-  }
-  
-  public void onSetRecvMsgState(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailGroupListContainer", 2, "onGetRecvMsgState isSuccess = " + paramBoolean);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
     }
-    if ((paramBoolean) && (paramSetRecvMsgStateRsp.result == 0))
+    AccountDetailBannerViewPager.a(this.a, paramInt);
+    if (AccountDetailBannerViewPager.a(this.a) != null)
     {
-      ntc.b(this.a, this.a.jdField_a_of_type_Int);
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-        this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_Int).commit();
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
       }
     }
   }
   
-  public void onUpdateFunctionFlag(boolean paramBoolean, oag paramoag)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if ((paramBoolean) && (paramoag != null)) {
-      if (paramoag.e != 3) {}
-    }
-    while (this.b == null) {
-      for (;;)
-      {
-        tzq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
-        return;
-        if ((paramoag.e == 6) && (this.b != null)) {
-          ntc.a(this.b, paramoag);
-        }
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
       }
     }
-    ntc.a(this.b, 2131694659);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null) {
+      AccountDetailBannerViewPager.a(this.a).a(paramInt);
+    }
   }
 }
 

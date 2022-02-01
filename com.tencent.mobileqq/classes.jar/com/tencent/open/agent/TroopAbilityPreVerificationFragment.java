@@ -1,5 +1,6 @@
 package com.tencent.open.agent;
 
+import amtj;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -8,13 +9,11 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.Window;
-import anzj;
-import bhlq;
-import bhpc;
-import bjbs;
-import bjpl;
-import bjpm;
-import bjpn;
+import bfur;
+import bhht;
+import bhva;
+import bhvb;
+import bhvc;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.OpenID;
@@ -23,14 +22,15 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nkm;
-import noa;
+import nmb;
+import npj;
 import tencent.im.oidb.oidb_0xb60.ClientInfo;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
@@ -48,11 +48,11 @@ public abstract class TroopAbilityPreVerificationFragment
   public Bundle a;
   protected Handler a;
   public FragmentActivity a;
-  public bhpc a;
-  protected bjbs a;
+  protected bhht a;
   protected QQAppInterface a;
+  public QQCustomDialog a;
   public String a;
-  private noa jdField_a_of_type_Noa = new bjpm(this);
+  private npj jdField_a_of_type_Npj = new bhvb(this);
   public String b;
   public String c = "";
   public String d = "";
@@ -100,31 +100,31 @@ public abstract class TroopAbilityPreVerificationFragment
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Bhpc != null) && (!this.jdField_a_of_type_Bhpc.isShowing()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
     {
-      this.jdField_a_of_type_Bhpc.show();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     }
-    if (this.jdField_a_of_type_Bhpc == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_a_of_type_Bhpc = bhlq.a(getActivity(), 230);
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bjpl(this);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(getActivity(), 230);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bhva(this);
     }
-    this.jdField_a_of_type_Bhpc.setMessage(2131694652);
-    this.jdField_a_of_type_Bhpc.setTitle(2131691920);
-    this.jdField_a_of_type_Bhpc.setNegativeButton(anzj.a(2131713922), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bhpc.setPositiveButton(anzj.a(2131713918), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bhpc.show();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131694768);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131691966);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(amtj.a(2131714154), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(amtj.a(2131714150), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   private void f()
   {
-    OpenID localOpenID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.c);
+    OpenID localOpenID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.c);
     this.jdField_a_of_type_AndroidOsBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
     {
-      b(anzj.a(2131713917));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.c);
+      b(amtj.a(2131714149));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().d(this.c);
       QLog.d("TroopAbility.PreVerification", 1, "-->checkAccountDiff, get openId from server.");
       return;
     }
@@ -164,12 +164,12 @@ public abstract class TroopAbilityPreVerificationFragment
     ((oidb_0xb60.ClientInfo)localObject2).sdk_version.set(this.f);
     ((oidb_0xb60.ClientInfo)localObject2).platform.set(1);
     QLog.i("TroopAbility.PreVerification", 1, "send type=" + this.jdField_a_of_type_Int + ", appid=" + this.c);
-    nkm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bjpn(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+    nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bhvc(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Noa);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Npj);
   }
   
   public void a(String paramString)
@@ -183,24 +183,24 @@ public abstract class TroopAbilityPreVerificationFragment
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Noa);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Npj);
   }
   
   protected void b(String paramString)
   {
-    if (this.jdField_a_of_type_Bjbs == null) {
-      this.jdField_a_of_type_Bjbs = new bjbs(getActivity(), getActivity().getTitleBarHeight());
+    if (this.jdField_a_of_type_Bhht == null) {
+      this.jdField_a_of_type_Bhht = new bhht(getActivity(), getActivity().getTitleBarHeight());
     }
     d();
-    this.jdField_a_of_type_Bjbs.a(paramString);
+    this.jdField_a_of_type_Bhht.a(paramString);
     if (getActivity().isResume()) {
-      this.jdField_a_of_type_Bjbs.show();
+      this.jdField_a_of_type_Bhht.show();
     }
   }
   
   public void c()
   {
-    b(anzj.a(2131713920));
+    b(amtj.a(2131714152));
     g();
   }
   
@@ -213,8 +213,8 @@ public abstract class TroopAbilityPreVerificationFragment
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()) && (getActivity().isResume())) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing()) && (getActivity().isResume())) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
   }
   
@@ -244,7 +244,7 @@ public abstract class TroopAbilityPreVerificationFragment
     a();
     if (!a())
     {
-      a(anzj.a(2131713912));
+      a(amtj.a(2131714144));
       return;
     }
     f();

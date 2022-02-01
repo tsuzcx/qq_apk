@@ -1,81 +1,28 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.List;
 
-public class awjk
-  extends MSFServlet
+class awjk
+  extends azvc
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  public static long d;
+  awjk(awji paramawji, QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    c = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onSend");
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
     }
-    String str = paramIntent.getStringExtra("extra_cmd");
-    if (str == null)
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      this.jdField_a_of_type_Awji.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
+      awji.a(this.jdField_a_of_type_Awji, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
       }
-      return;
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
-    paramPacket.setSSOCommand(str);
-    long l = paramIntent.getLongExtra("extra_timeout", -1L);
-    if (l > 0L) {
-      paramPacket.setTimeout(l);
-    }
-    if (arrayOfByte != null)
-    {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
-      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
-    }
-    b = System.currentTimeMillis();
   }
 }
 

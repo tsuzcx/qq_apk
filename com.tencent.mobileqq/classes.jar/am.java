@@ -12,14 +12,14 @@ public class am
 {
   public am(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
   
-  DataLineMsgRecord a(anvu paramanvu, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  DataLineMsgRecord a(amqd paramamqd, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramInt1;
     if (paramInt1 == 0) {
-      switch (aunj.a(paramString))
+      switch (aszt.a(paramString))
       {
       default: 
         i = 0;
@@ -28,8 +28,8 @@ public class am
     for (;;)
     {
       DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = anvu.a(i);
-      localDataLineMsgRecord.sessionid = paramanvu.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
+      localDataLineMsgRecord.msgtype = amqd.a(i);
+      localDataLineMsgRecord.sessionid = paramamqd.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
       localDataLineMsgRecord.path = paramString;
       localDataLineMsgRecord.thumbPath = null;
       localDataLineMsgRecord.groupId = paramInt2;
@@ -59,14 +59,14 @@ public class am
   void a(List<String> paramList, int paramInt)
   {
     if (paramList == null) {}
-    anvu localanvu;
+    amqd localamqd;
     int j;
     int i;
-    Object localObject;
+    Object localObject1;
     for (;;)
     {
       return;
-      localanvu = (anvu)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+      localamqd = (amqd)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(8);
       j = paramList.size();
       if (j > 3) {
         break;
@@ -74,82 +74,85 @@ public class am
       i = 0;
       while (i < j)
       {
-        localObject = a(localanvu, (String)paramList.get(i), paramInt, 0, 0, 0);
-        if (localObject != null) {
-          localanvu.a((DataLineMsgRecord)localObject, false);
+        localObject1 = (String)paramList.get(i);
+        localObject1 = a(localamqd, LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, (String)localObject1), paramInt, 0, 0, 0);
+        if (localObject1 != null) {
+          localamqd.a((DataLineMsgRecord)localObject1, false);
         }
         i += 1;
       }
     }
-    label117:
-    DataLineMsgRecord localDataLineMsgRecord;
+    label128:
+    Object localObject2;
     if ((j > 3) && (j < 50))
     {
-      localObject = new ArrayList();
-      int k = localanvu.a();
+      localObject1 = new ArrayList();
+      int k = localamqd.a();
       i = 0;
       if (i < j)
       {
-        localDataLineMsgRecord = a(localanvu, (String)paramList.get(i), paramInt, k, j, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
+        localObject2 = (String)paramList.get(i);
+        localObject2 = a(localamqd, LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, (String)localObject2), paramInt, k, j, i);
+        if (localObject2 != null) {
+          ((ArrayList)localObject1).add(localObject2);
         }
         if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label408;
+          break label441;
         }
-        if (localDataLineMsgRecord != null)
+        if (localObject2 != null)
         {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
+          ((DataLineMsgRecord)localObject2).groupId = 0;
+          ((DataLineMsgRecord)localObject2).groupIndex = 0;
+          ((DataLineMsgRecord)localObject2).groupSize = 0;
         }
-        if (((ArrayList)localObject).size() > 0) {
-          localanvu.a((ArrayList)localObject, false);
+        if (((ArrayList)localObject1).size() > 0) {
+          localamqd.a((ArrayList)localObject1, false);
         }
-        localObject = new ArrayList();
+        localObject1 = new ArrayList();
       }
     }
-    label259:
-    label405:
-    label408:
+    label281:
+    label438:
+    label441:
     for (;;)
     {
       i += 1;
-      break label117;
-      if (((ArrayList)localObject).size() <= 0) {
+      break label128;
+      if (((ArrayList)localObject1).size() <= 0) {
         break;
       }
-      localanvu.a((ArrayList)localObject, false);
+      localamqd.a((ArrayList)localObject1, false);
       return;
-      localObject = new ArrayList();
-      j = localanvu.a();
+      localObject1 = new ArrayList();
+      j = localamqd.a();
       i = 0;
       if (i < 50)
       {
-        localDataLineMsgRecord = a(localanvu, (String)paramList.get(i), paramInt, j, 50, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
+        localObject2 = (String)paramList.get(i);
+        localObject2 = a(localamqd, LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, (String)localObject2), paramInt, j, 50, i);
+        if (localObject2 != null) {
+          ((ArrayList)localObject1).add(localObject2);
         }
         if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label405;
+          break label438;
         }
-        if (localDataLineMsgRecord != null)
+        if (localObject2 != null)
         {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
+          ((DataLineMsgRecord)localObject2).groupId = 0;
+          ((DataLineMsgRecord)localObject2).groupIndex = 0;
+          ((DataLineMsgRecord)localObject2).groupSize = 0;
         }
-        if (((ArrayList)localObject).size() > 0) {
-          localanvu.a((ArrayList)localObject, false);
+        if (((ArrayList)localObject1).size() > 0) {
+          localamqd.a((ArrayList)localObject1, false);
         }
-        localObject = new ArrayList();
+        localObject1 = new ArrayList();
       }
       for (;;)
       {
         i += 1;
-        break label259;
-        if (((ArrayList)localObject).size() > 0) {
-          localanvu.a((ArrayList)localObject, false);
+        break label281;
+        if (((ArrayList)localObject1).size() > 0) {
+          localamqd.a((ArrayList)localObject1, false);
         }
         i = 0;
         while (i < 50)

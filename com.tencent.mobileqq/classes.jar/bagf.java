@@ -1,36 +1,66 @@
-import android.animation.ValueAnimator;
-import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bagf
+class bagf
   extends Handler
 {
-  public static boolean a;
+  protected WeakReference<bage> a;
   
-  public void a(Message paramMessage)
+  public bagf(bage parambage1, Looper paramLooper, bage parambage2)
   {
-    View localView = (View)paramMessage.obj;
-    int i = paramMessage.getData().getInt("iTipsTimes");
-    long l = paramMessage.getData().getLong("iRemindTime");
-    int j = paramMessage.what;
-    paramMessage = ValueAnimator.ofFloat(new float[] { 3.0F });
-    paramMessage.setEvaluator(new bagi(this));
-    paramMessage.setDuration(3000L);
-    if (i >= 1) {
-      paramMessage.setRepeatCount(i - 1);
-    }
-    paramMessage.addUpdateListener(new bagg(this, localView));
-    paramMessage.addListener(new bagh(this, localView, l, j));
-    paramMessage.start();
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambage2);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (1 == paramMessage.arg1) {
-      a(paramMessage);
+    bage localbage = (bage)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbage == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
+      }
+      return;
     }
+    int i = paramMessage.what;
+    switch (i)
+    {
+    default: 
+      throw new RuntimeException("Unhandled msg what=" + i);
+    case 1: 
+      paramMessage = (Object[])paramMessage.obj;
+      try
+      {
+        localbage.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        bage.a(this.jdField_a_of_type_Bage);
+        return;
+      }
+    case 2: 
+      this.jdField_a_of_type_Bage.a();
+      return;
+    case 3: 
+      paramMessage = (String)paramMessage.obj;
+      try
+      {
+        bage.a(this.jdField_a_of_type_Bage, paramMessage);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
+        bage.a(this.jdField_a_of_type_Bage);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Bage.b();
   }
 }
 

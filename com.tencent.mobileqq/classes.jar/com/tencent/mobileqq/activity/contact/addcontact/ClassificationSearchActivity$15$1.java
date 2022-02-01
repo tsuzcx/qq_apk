@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajdi;
+import ahxs;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,11 +13,11 @@ import java.util.List;
 public class ClassificationSearchActivity$15$1
   implements Runnable
 {
-  public ClassificationSearchActivity$15$1(ajdi paramajdi) {}
+  public ClassificationSearchActivity$15$1(ahxs paramahxs) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.a.a.app.a().createEntityManager();
+    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
     List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class);
     if (localList == null) {
       return;

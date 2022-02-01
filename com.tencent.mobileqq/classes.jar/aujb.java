@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 class aujb
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  aujb(auja paramauja) {}
+  aujb(auix paramauix) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    int i = auoo.b(this.a.a.e());
-    bdll.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
-    this.a.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_Boolean = false;
+    auix.a(this.a, true);
+    if (this.a.c == 3) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (auix.a(this.a) == null);
+    auix.a(this.a).j();
   }
 }
 

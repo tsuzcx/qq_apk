@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import mdp;
+import mcy;
 
 public class EffectSettingBtn$3
   implements Runnable
@@ -10,7 +10,7 @@ public class EffectSettingBtn$3
     if (this.this$0.a == null) {
       return;
     }
-    mdp.a(this.this$0, -1006L);
+    mcy.a(this.this$0, -1006L);
   }
 }
 

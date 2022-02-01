@@ -1,187 +1,248 @@
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.text.TextUtils;
-import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class lhi
+public class lhi
 {
-  protected MagicfaceDataAudioJason a;
-  protected MagicfaceDataVideoJason a;
-  protected String a;
-  protected Map<String, MagicfaceDataPendantJason> a;
-  protected Rect b;
-  protected String b;
-  protected int c;
-  protected int d;
+  public static lhi a;
+  public int a;
+  public List<lhj> a;
+  public boolean a;
+  public int b = 0;
   
-  public lhi(String paramString1, String paramString2, String paramString3)
+  public lhi()
   {
-    lbj.c("AVMagicfaceData", "init|config=" + paramString2 + "|" + paramString3 + "|" + paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    try
-    {
-      paramString1 = new JSONObject(paramString1);
-      paramString2 = paramString1.getJSONObject("video");
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = ((MagicfaceDataVideoJason)bhhq.a(paramString2, MagicfaceDataVideoJason.class));
-      int i;
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason != null)
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public static int a()
+  {
+    lhi locallhi = a();
+    if (locallhi != null) {
+      return locallhi.b;
+    }
+    return 3;
+  }
+  
+  public static List<lhj> a()
+  {
+    lhi locallhi = a();
+    if (locallhi != null) {
+      return locallhi.jdField_a_of_type_JavaUtilList;
+    }
+    return null;
+  }
+  
+  public static lhi a()
+  {
+    if ((jdField_a_of_type_Lhi == null) || (jdField_a_of_type_Lhi.jdField_a_of_type_Boolean)) {
+      jdField_a_of_type_Lhi = b();
+    }
+    return jdField_a_of_type_Lhi;
+  }
+  
+  public static boolean a()
+  {
+    lhi locallhi = a();
+    return (locallhi != null) && (locallhi.jdField_a_of_type_Int == 1);
+  }
+  
+  private static lhi b()
+  {
+    int i1 = 3;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
+    }
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.AVPanCfg.name());
+    QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC dpcValue: " + str);
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    int k;
+    int m;
+    int n;
+    if (!TextUtils.isEmpty(str)) {
+      for (;;)
       {
-        if (!"voicesticker".equals(paramString3))
+        try
         {
-          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x > 0)
+          Object localObject1 = str.split("\\|");
+          if ((localObject1 != null) && (localObject1.length >= 3))
           {
-            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
-            paramString3.location_x *= 2;
+            j = auhq.a(localObject1[0], 0);
+            localObject3 = localObject1[1];
+            i = j;
           }
-          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y > 0)
+          try
           {
-            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
-            paramString3.location_y *= 2;
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              i = j;
+              localObject3 = ((String)localObject3).split("-");
+              k = 0;
+              i = j;
+              if (k < localObject3.length)
+              {
+                Object localObject4 = localObject3[k];
+                i = j;
+                if (TextUtils.isEmpty((CharSequence)localObject4)) {
+                  break label623;
+                }
+                i = j;
+                localObject4 = ((String)localObject4).split("_");
+                i = j;
+                if (localObject4.length < 2) {
+                  break label615;
+                }
+                i = j;
+                m = auhq.a(localObject4[0], 0);
+                i = j;
+                n = auhq.a(localObject4[1], 0);
+                label204:
+                if ((m <= 0) || (n <= 0)) {
+                  break label623;
+                }
+                i = j;
+                localArrayList.add(new lhj(n, m));
+                break label623;
+              }
+            }
+            i = j;
+            k = auhq.a(localObject1[2], 3);
+            i = j;
+            label249:
+            if (localArrayList.size() == 0)
+            {
+              localArrayList.add(new lhj(215, 4));
+              localArrayList.add(new lhj(150, 8));
+            }
+            localObject1 = new lhi();
+            ((lhi)localObject1).jdField_a_of_type_Int = i;
+            ((lhi)localObject1).b = k;
+            ((lhi)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+            if ((str == null) || (str.isEmpty())) {
+              bool = true;
+            }
+            ((lhi)localObject1).jdField_a_of_type_Boolean = bool;
+            return localObject1;
           }
-          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width > 0)
+          catch (Exception localException1)
           {
-            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
-            paramString3.width *= 2;
+            j = i;
           }
-          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height > 0)
-          {
-            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
-            paramString3.height *= 2;
+          if ((localObject1 == null) || (localObject1.length != 1)) {
+            continue;
           }
+          j = auhq.a(localObject1[0], 0);
+          i = j;
+          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
+          k = i1;
+          i = j;
+          continue;
         }
-        paramString2 = paramString2.optJSONArray("locations");
-        if (paramString2 != null)
+        catch (Exception localException2)
         {
-          i = 0;
-          while (i < paramString2.length())
-          {
-            paramString3 = (JSONObject)paramString2.get(i);
-            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(paramString3.optInt("x"), paramString3.optInt("y")));
-            i += 1;
-          }
+          Object localObject3;
+          Object localObject2;
+          int j = 0;
+          continue;
+          m = 0;
+          n = 0;
+          continue;
         }
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y));
-      }
-      if (paramString1.has("audio")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = ((MagicfaceDataAudioJason)bhhq.a(paramString1.getJSONObject("audio"), MagicfaceDataAudioJason.class));
-      }
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      if (paramString1.has("pendant"))
-      {
-        paramString1 = paramString1.getJSONArray("pendant");
+        k = i1;
         i = j;
-        while (i < paramString1.length())
+        if (QLog.isColorLevel())
         {
-          paramString2 = (MagicfaceDataPendantJason)bhhq.a((JSONObject)paramString1.get(i), MagicfaceDataPendantJason.class);
-          if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.name)))
+          QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException1);
+          k = i1;
+          i = j;
+          continue;
+          if ((localException1 != null) && (localException1.length == 2))
           {
-            lbj.e("AVMagicfaceData", "Pendant: " + paramString2.toString());
-            paramString2.duration *= 1000;
-            this.jdField_a_of_type_JavaUtilMap.put(paramString2.name, paramString2);
-          }
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null)
-      {
-        lbj.e("AVMagicfaceData", "MagicfaceData error!");
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = new MagicfaceDataVideoJason();
-      }
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason == null) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = new MagicfaceDataAudioJason();
-      }
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.persistent)
-      {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count = 50000;
-        if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count == 0) {
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count = 3;
-        }
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat = true;
-      }
-      lbj.e("AVMagicfaceData", "MagicfaceData:: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.toString());
-      this.c = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count;
-      paramString1 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(-1);
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(paramString1.x, paramString1.y, paramString1.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, paramString1.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
-    }
-  }
-  
-  protected abstract int a();
-  
-  int a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null) {
-      return paramInt;
-    }
-    Point localPoint = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(paramInt);
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(localPoint.x, localPoint.y, localPoint.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, localPoint.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.lastLocationIndex;
-  }
-  
-  protected abstract String a(int paramInt);
-  
-  protected abstract void a();
-  
-  protected abstract void a(int paramInt1, int paramInt2);
-  
-  public boolean a(lhi paramlhi)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramlhi != null)
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        if ((!TextUtils.isEmpty(paramlhi.jdField_b_of_type_JavaLangString)) && (!paramlhi.jdField_b_of_type_JavaLangString.equalsIgnoreCase("face")))
-        {
-          bool1 = bool2;
-          if (!paramlhi.jdField_b_of_type_JavaLangString.equalsIgnoreCase("voicesticker")) {}
-        }
-        else
-        {
-          bool1 = bool2;
-          if (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("pendant")) {
-            bool1 = true;
+            j = auhq.a(localException1[0], 0);
+            localObject2 = localException1[1];
+            i = j;
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              i = j;
+              localObject2 = ((String)localObject2).split("-");
+              k = 0;
+            }
           }
         }
       }
     }
-    return bool1;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public abstract void b();
-  
-  public boolean b()
-  {
-    return (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("face")) || (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("voicesticker"));
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("pendant");
+    for (;;)
+    {
+      i = j;
+      if (k < localObject2.length)
+      {
+        localObject3 = localObject2[k];
+        i = j;
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label630;
+        }
+        i = j;
+        localObject3 = ((String)localObject3).split("_");
+        i = j;
+        if (localObject3.length >= 2)
+        {
+          i = j;
+          m = auhq.a(localObject3[0], 0);
+          i = j;
+          n = auhq.a(localObject3[1], 0);
+          if ((m <= 0) || (n <= 0)) {
+            break label630;
+          }
+          i = j;
+          localArrayList.add(new lhj(n, m));
+          break label630;
+        }
+      }
+      else
+      {
+        i = j;
+        QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
+        k = i1;
+        i = j;
+        break label249;
+      }
+      i = 0;
+      k = i1;
+      break label249;
+      label615:
+      m = 0;
+      n = 0;
+      break label204;
+      label623:
+      k += 1;
+      break;
+      label630:
+      k += 1;
+    }
   }
   
   public String toString()
   {
-    return "Id[" + this.jdField_a_of_type_JavaLangString + "], type[" + this.jdField_b_of_type_JavaLangString + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" mPanoramaEffectMemory: ").append(this.b);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    String str = "";
+    while (localIterator.hasNext())
+    {
+      lhj locallhj = (lhj)localIterator.next();
+      if (locallhj != null) {
+        str = str + locallhj.b + "_" + locallhj.jdField_a_of_type_Int + "-";
+      }
+    }
+    localStringBuilder.append(" hotVideoBlurMemory: ").append(str);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,17 +1,26 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 
 class ahko
-  extends ahkx
+  extends BroadcastReceiver
 {
-  ahko(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahko(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ahux(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    boolean bool = HwNetworkUtil.isNetworkAvailable(this.a.mContext);
+    if ((bool) && (ahiu.d(this.a)))
+    {
+      nsf.a.a();
+      ahiu.c(this.a, false);
+    }
+    while (bool) {
+      return;
+    }
+    nsf.a.a(this.a.getCurTroopUin());
+    ahiu.c(this.a, true);
   }
 }
 

@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
-
-public class ambj
-{
-  public int a;
-  
-  private ambj(GLVideoClipUtil paramGLVideoClipUtil) {}
-}
+public abstract interface ambj
+  extends ambi
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

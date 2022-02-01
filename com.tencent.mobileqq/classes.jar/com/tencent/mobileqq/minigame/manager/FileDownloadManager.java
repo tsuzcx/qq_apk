@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import bkxi;
+import bjcz;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
@@ -59,13 +59,13 @@ public class FileDownloadManager
   
   private static boolean downloadWithDownloader(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, Downloader.DownloadMode paramDownloadMode, DownloaderProxy.DownloadListener paramDownloadListener)
   {
-    MiniappDownloadUtil.getInstance().download(paramString1, paramString2, false, new FileDownloadManager.2(paramDownloadListener, paramString2, paramString1), paramDownloadMode, bkxi.a(paramMap));
+    MiniappDownloadUtil.getInstance().download(paramString1, paramString2, false, new FileDownloadManager.2(paramDownloadListener, paramString2, paramString1), paramDownloadMode, bjcz.a(paramMap));
     return true;
   }
   
   private static boolean downloadWithOkhttp(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, DownloaderProxy.DownloadListener paramDownloadListener)
   {
-    paramMap = MiniOkHttpClientFactory.getDownloadClient(true).newCall(bkxi.a(paramString1, paramMap, "GET", null, null));
+    paramMap = MiniOkHttpClientFactory.getDownloadClient(true).newCall(bjcz.a(paramString1, paramMap, "GET", null, null));
     paramMap.enqueue(new FileDownloadManager.1(paramString1, paramDownloadListener, paramString2, SystemClock.uptimeMillis()));
     taskMap.put(paramString1, paramMap);
     return true;

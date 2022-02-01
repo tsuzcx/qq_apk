@@ -1,21 +1,16 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
+import mqq.os.MqqHandler;
 
 public class blpn
+  implements INetEventHandler
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  blpn(blpm paramblpm) {}
   
-  public blpn()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public boolean a(blpn paramblpn)
-  {
-    return (paramblpn != null) && (this.jdField_a_of_type_Int == paramblpn.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramblpn.jdField_a_of_type_JavaLangString)) && (Math.abs(this.jdField_a_of_type_Float - paramblpn.jdField_a_of_type_Float) < 0.001F);
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
   }
 }
 

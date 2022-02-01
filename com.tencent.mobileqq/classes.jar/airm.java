@@ -1,28 +1,21 @@
-public class airm
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+
+class airm
+  extends arht
 {
-  public double a;
-  public double b;
+  airm(airj paramairj) {}
   
-  public airm(double paramDouble1, double paramDouble2)
+  protected void a(boolean paramBoolean)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public airm(airm paramairm)
-  {
-    a(paramairm);
-  }
-  
-  public void a(airm paramairm)
-  {
-    this.a = paramairm.a;
-    this.b = paramairm.b;
-  }
-  
-  public String toString()
-  {
-    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
+    aire localaire = this.a.a(2);
+    localaire.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
+    if ((localaire.c) && (paramBoolean)) {
+      airj.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localaire.jdField_a_of_type_Int), Boolean.valueOf(localaire.c), Boolean.valueOf(paramBoolean) }));
+    }
   }
 }
 

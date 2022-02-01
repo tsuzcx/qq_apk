@@ -1,11 +1,16 @@
-import android.animation.Animator;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.AudioAnimationView;
+import com.tencent.mobileqq.widget.CircleProgressView;
 
-public abstract interface agob
+public class agob
+  extends aezf
 {
-  public abstract void a(Animator paramAnimator, int paramInt);
+  agny jdField_a_of_type_Agny;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
+  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
   
-  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
+  public agob(agnv paramagnv) {}
 }
 
 

@@ -1,19 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkhp
-  implements bkgs
+class bkhp
+  implements AVCallback
 {
-  public bkhp(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bkhp(bkhk parambkhk) {}
   
-  public void a(bkie parambkie)
+  public void onComplete(int paramInt, String paramString)
   {
-    if (parambkie != null)
+    if (paramInt == 0)
     {
-      parambkie = parambkie.b;
-      if (!TextUtils.isEmpty(parambkie)) {
-        QidianProfileCardActivity.a(this.a, parambkie);
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      bkhk.a(this.a, true);
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
       }
+      return;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }

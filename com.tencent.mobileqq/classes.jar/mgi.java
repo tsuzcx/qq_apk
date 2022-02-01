@@ -1,36 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class mgi
-  implements DialogInterface.OnClickListener
+  implements acwz
 {
-  public mgi(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  public mgi(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.h()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().b() == -1) {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.r(this.jdField_a_of_type_Long);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
-      {
-        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 65535);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
-      }
-    }
+    this.a.h = paramInt1;
+    this.a.i = paramInt2;
+    this.a.d(10);
   }
 }
 

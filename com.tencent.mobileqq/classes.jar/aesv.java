@@ -1,27 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aesv
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aesv(GroupManagerActivity paramGroupManagerActivity) {}
+  public aesv(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
-    }
-    GroupManagerActivity.b(this.a, true);
-    if (GroupManagerActivity.b(this.a))
-    {
-      this.a.a(true);
-      return;
-    }
-    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
-    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    GroupManagerActivity.c(this.a, true);
+    this.a.l();
+    this.a.a(aymn.g, this.a.a, false);
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "2", "1");
   }
 }
 

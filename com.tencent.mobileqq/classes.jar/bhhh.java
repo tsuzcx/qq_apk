@@ -1,89 +1,57 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class bhhh
+  implements View.OnClickListener
 {
-  bbvd jdField_a_of_type_Bbvd;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final WeakReference<ProfileCardMoreInfoView> a;
   
-  public bhhh(QQAppInterface paramQQAppInterface)
+  public bhhh(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = new WeakReference(paramProfileCardMoreInfoView);
   }
   
-  public Bundle a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    paramBundle = paramBundle.getStringArrayList("key");
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("key", paramBundle);
-    if ((paramBundle == null) || (paramBundle.size() == 0)) {
-      return localBundle;
-    }
-    if (this.jdField_a_of_type_Bbvd == null) {
-      this.jdField_a_of_type_Bbvd = ((bbvd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
-    }
-    if (this.jdField_a_of_type_Bbvd == null) {
-      return localBundle;
-    }
-    ArrayList localArrayList = new ArrayList(paramBundle.size());
-    Iterator localIterator = paramBundle.iterator();
-    String str1;
-    if (localIterator.hasNext())
+    int j = 2;
+    Object localObject1 = (ProfileCardMoreInfoView)this.a.get();
+    if (localObject1 == null) {}
+    for (;;)
     {
-      String str2 = (String)localIterator.next();
-      str1 = "";
-      Object localObject;
-      if (str2 == null)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      BaseActivity localBaseActivity = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      QQAppInterface localQQAppInterface = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject1 = ((ProfileCardMoreInfoView)localObject1).jdField_a_of_type_Aymg;
+      if ((localBaseActivity == null) || (localQQAppInterface == null) || (localObject1 != null))
       {
-        localObject = null;
-        label124:
-        paramBundle = str1;
-        if (localObject != null)
-        {
-          paramBundle = str1;
-          if (localObject.length != 3) {}
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          int j = Integer.parseInt(localObject[0]);
-          String str3 = localObject[1];
-          int i = Integer.parseInt(localObject[2]);
-          paramBundle = str1;
-          if (j == 1)
+        Object localObject2 = paramView.getTag();
+        if ((localObject2 instanceof aykg)) {
+          switch (((aykg)localObject2).a)
           {
-            j = Integer.parseInt(str3);
-            localObject = this.jdField_a_of_type_Bbvd.a(j);
-            paramBundle = str1;
-            if (localObject != null)
+          default: 
+            break;
+          case 66: 
+            bfrj.a((aymg)localObject1, localQQAppInterface, localBaseActivity);
+            int i = j;
+            if (((aymg)localObject1).a != null)
             {
-              if (i != 201) {
-                continue;
+              i = j;
+              if (((aymg)localObject1).a.a == 0) {
+                i = 1;
               }
-              paramBundle = ((bbsa)localObject).a;
             }
+            bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009999", "0X8009999", i, 0, "", "", "", "");
           }
         }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-          paramBundle = str1;
-          continue;
-        }
-        axxb.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
-        localArrayList.add(paramBundle);
-        break;
-        localObject = str2.split("_s_");
-        break label124;
-        paramBundle = ((bbsa)localObject).b;
       }
     }
-    localBundle.putStringArrayList("path", localArrayList);
-    return localBundle;
   }
 }
 

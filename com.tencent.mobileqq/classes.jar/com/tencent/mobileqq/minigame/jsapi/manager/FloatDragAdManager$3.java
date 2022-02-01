@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.jsapi.manager;
 
-import bnwq;
+import blbw;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 class FloatDragAdManager$3
@@ -10,7 +10,7 @@ class FloatDragAdManager$3
   
   public void run()
   {
-    bnwq.a().a(FloatDragAdManager.access$300(this.val$adItem, this.val$type, this.val$reportActionId));
+    blbw.a().a(FloatDragAdManager.access$300(this.val$adItem, this.val$type, this.val$reportActionId));
   }
 }
 

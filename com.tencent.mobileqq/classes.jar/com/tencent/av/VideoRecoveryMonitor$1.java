@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import ldb;
+import lcv;
 
 public class VideoRecoveryMonitor$1
   implements Runnable
 {
-  public VideoRecoveryMonitor$1(ldb paramldb) {}
+  public VideoRecoveryMonitor$1(lcv paramlcv) {}
   
   public void run()
   {
-    ldb.a(this.this$0);
+    lcv.a(this.this$0);
   }
 }
 

@@ -1,59 +1,27 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhia
+  implements View.OnClickListener
 {
-  Bundle a = new Bundle();
+  public bhia(QQToast paramQQToast, bhid parambhid, Toast paramToast) {}
   
-  public Bundle a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public bhia a(String paramString)
-  {
-    this.a.putString("text_evidence", paramString);
-    return this;
-  }
-  
-  public bhia b(String paramString)
-  {
-    this.a.putString("img_evidence", paramString);
-    return this;
-  }
-  
-  public bhia c(String paramString)
-  {
-    this.a.putString("url_evidence", paramString);
-    return this;
-  }
-  
-  public bhia d(String paramString)
-  {
-    this.a.putString("video_evidence", paramString);
-    return this;
-  }
-  
-  public bhia e(String paramString)
-  {
-    this.a.putString("file_evidence", paramString);
-    return this;
-  }
-  
-  public bhia f(String paramString)
-  {
-    this.a.putString("audio_evidence", paramString);
-    return this;
-  }
-  
-  public bhia g(String paramString)
-  {
-    this.a.putString("user_input_param", paramString);
-    return this;
+    if (this.jdField_a_of_type_Bhid.a != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      this.jdField_a_of_type_Bhid.a.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,88 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class beug
-  implements beuq
+public class beug
 {
-  long jdField_a_of_type_Long = 0L;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  beug(URLDrawableHandler paramURLDrawableHandler, String paramString, beui parambeui) {}
-  
-  public void onResp(bevm parambevm)
+  beug()
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + parambevm.jdField_a_of_type_Bevl.c + " resp.result = " + parambevm.jdField_a_of_type_Int);
-    }
-    if (parambevm.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    boolean bool1;
-    if (parambevm.jdField_a_of_type_Int == 0)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
-        bool1 = bool2;
-      }
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
-        beuf.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), true, parambevm.c, parambevm.e, null, this.jdField_a_of_type_Beui);
-        return;
+        localJSONObject.put("appId", this.jdField_a_of_type_Long);
+        localJSONObject.put("appType", this.jdField_b_of_type_Long);
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          continue;
+        }
+        str = "";
+        localJSONObject.put("appName", str);
+        if (this.jdField_b_of_type_JavaLangString != null) {
+          continue;
+        }
+        str = "";
+        localJSONObject.put("appJumpUrl", str);
       }
-      catch (Exception parambevm)
+      catch (Exception localException)
       {
-        return;
+        String str;
+        continue;
       }
-      bool2 = false;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(parambevm.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
+      return localJSONObject.toString();
+      str = this.jdField_a_of_type_JavaLangString;
+      continue;
+      str = this.jdField_b_of_type_JavaLangString;
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    this.jdField_a_of_type_Long = paramLong2;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Long = paramString.optLong("appId");
+      this.jdField_b_of_type_Long = paramString.optLong("appType");
+      this.jdField_a_of_type_JavaLangString = paramString.optString("appName");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("appJumpUrl");
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appId:").append(this.jdField_a_of_type_Long).append(" ");
+    localStringBuilder.append("appType:").append(this.jdField_b_of_type_Long).append(" ");
+    localStringBuilder.append("appName:").append(this.jdField_a_of_type_JavaLangString).append(" ");
+    localStringBuilder.append("appJumpUrl:").append(this.jdField_b_of_type_JavaLangString).append(" ");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beug
  * JD-Core Version:    0.7.0.1
  */

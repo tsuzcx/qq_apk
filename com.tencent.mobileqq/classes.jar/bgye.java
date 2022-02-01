@@ -1,10 +1,7 @@
-import android.view.MotionEvent;
-
-public abstract interface bgye
+public class bgye
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public static String a;
+  public static boolean a;
 }
 
 

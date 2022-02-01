@@ -1,18 +1,36 @@
-import java.util.Formatter;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.view.View;
 
-public final class blqe
-  implements blqf
+class blqe
+  extends LinearSmoothScroller
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
-  
-  public String a(int paramInt)
+  public blqe(blqd paramblqd, Context paramContext)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    super(paramContext);
+  }
+  
+  public int calculateDxToMakeVisible(View paramView, int paramInt)
+  {
+    return blqd.a(this.a).a(-this.a.g);
+  }
+  
+  public int calculateDyToMakeVisible(View paramView, int paramInt)
+  {
+    return blqd.a(this.a).b(-this.a.g);
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * blqd.a(this.a));
+  }
+  
+  @Nullable
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return new PointF(blqd.a(this.a).a(this.a.g), blqd.a(this.a).b(this.a.g));
   }
 }
 

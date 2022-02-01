@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo.view;
 
+import amlo;
+import amlp;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import anqu;
-import anqv;
 
 public class ApolloGameViewBinder$GameListAdapter$2$1$1
   implements Runnable
 {
-  public ApolloGameViewBinder$GameListAdapter$2$1$1(anqu paramanqu) {}
+  public ApolloGameViewBinder$GameListAdapter$2$1$1(amlo paramamlo) {}
   
   public void run()
   {
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
     localTranslateAnimation.setDuration(300L);
     localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new anqv(this));
+    localTranslateAnimation.setAnimationListener(new amlp(this));
     this.a.a.a.setVisibility(0);
     this.a.a.a.startAnimation(localTranslateAnimation);
   }

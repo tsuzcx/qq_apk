@@ -1,8 +1,21 @@
-public abstract interface uwg
+import UserGrowth.stFollowFeedsReq;
+import UserGrowth.stFollowFeedsRsp;
+
+public class uwg
+  extends urg<stFollowFeedsRsp>
 {
-  public abstract void a(Object paramObject);
-  
-  public abstract void b(Object paramObject);
+  public uwg(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
+  {
+    super("FollowFeeds", paramInt);
+    stFollowFeedsReq localstFollowFeedsReq = new stFollowFeedsReq();
+    localstFollowFeedsReq.attatch_info = paramString1;
+    localstFollowFeedsReq.is_refresh = paramBoolean2;
+    localstFollowFeedsReq.is_first = paramBoolean1;
+    localstFollowFeedsReq.push_info = paramString2;
+    localstFollowFeedsReq.scene = paramInt;
+    this.a = localstFollowFeedsReq;
+    uya.d("FollowRequest", localstFollowFeedsReq.toString());
+  }
 }
 
 

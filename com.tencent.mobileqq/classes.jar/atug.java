@@ -1,133 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
 
-public class atug
-  extends atub
+class atug
+  implements HttpEngineTask.IHttpEngineTask
 {
-  private atpa a;
+  atug(atud paramatud) {}
   
-  public atug(QQAppInterface paramQQAppInterface)
+  public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Atpa = new atuh(this);
-    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Atpa);
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onPreDownloadStart url=%s", new Object[] { paramHttpEngineTask.httpReq.mReqUrl }));
+    }
   }
   
-  private atui a(long paramLong, boolean paramBoolean)
+  public void onResp(NetResp paramNetResp)
   {
-    atuc localatuc = a(paramLong);
-    if (localatuc == null) {
-      return null;
+    Object localObject = ((HttpNetReq)paramNetResp.mReq).mReqUrl;
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(paramNetResp.mResult) }));
     }
-    if ((localatuc instanceof atui)) {
-      return (atui)localatuc;
-    }
-    return null;
-  }
-  
-  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
-  {
-    if (paramFileManagerEntity.Uuid == null)
+    switch (paramNetResp.mResult)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
-      return null;
     }
-    int i = a(paramFileManagerEntity.fileName);
-    if (-1 == i)
+    do
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. can not getThumb of file:" + paramFileManagerEntity.fileName);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
-      return null;
-    }
-    String str = paramFileManagerEntity.Uuid.replace("/", "");
-    a();
-    str = aumo.a().d() + a(paramInt, str);
-    if (bhmi.b(str) == true)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + str);
-      return str;
-    }
-    atui localatui = new atui(paramFileManagerEntity);
-    localatui.jdField_a_of_type_Int = paramInt;
-    localatui.b = i;
-    a(localatui, str);
-    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + localatui.jdField_a_of_type_Long + "]");
-    return null;
-  }
-  
-  public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
-  {
-    paramList = a(paramLong, false);
-    if ((paramList != null) && (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!TextUtils.isEmpty(paramString)) && (atul.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5)))
-    {
-      QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] discVideo thumb. is config enable IPv6. domain[" + paramString + "]");
-      paramString = new atum(paramString, paramInt);
-      paramList = atul.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 5);
-      if ((paramList != null) && (!paramList.a()))
+      boolean bool1;
+      boolean bool2;
+      do
       {
-        paramString = new ArrayList();
-        paramList = paramList.a.iterator();
-        while (paramList.hasNext())
-        {
-          atun localatun = (atun)paramList.next();
-          paramString.add(localatun.jdField_a_of_type_JavaLangString + ":" + localatun.jdField_a_of_type_Int);
+        return;
+        if (atud.a(this.a) != null) {
+          atud.a(this.a).preDownloadSuccess((String)localObject, paramNetResp.mTotalFileLen);
         }
-        QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] discVideo thumb. use IPv6. hostlist:" + paramString.toString());
-        return paramString;
-      }
-      QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] discVideo thumb. use IPv4:");
-    }
-    return null;
-  }
-  
-  public void a(long paramLong, atyq paramatyq) {}
-  
-  public void a(long paramLong, bhva parambhva)
-  {
-    parambhva.c = 0;
-  }
-  
-  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, atyq paramatyq)
-  {
-    atui localatui = a(paramLong, false);
-    if (localatui == null)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
+        paramNetResp = (HttpNetReq)paramNetResp.mReq;
+        if (!atud.a(this.a, paramNetResp.mOutPath, atud.a(this.a))) {
+          break;
+        }
+        localObject = new File(atud.a());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        bool1 = atud.b(this.a, paramNetResp.mOutPath, atud.a());
+        bool2 = atud.a(this.a);
+      } while (!QLog.isColorLevel());
+      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       return;
-    }
-    if (paramBoolean)
-    {
-      localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
-      aunj.d(localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localatui.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localatui.jdField_a_of_type_Int) });
-    super.a(paramLong, paramBoolean, paramInt, paramString, paramatyq);
+      if (QLog.isColorLevel()) {
+        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
+      }
+      atud.a(this.a, paramNetResp.mOutPath);
+      return;
+    } while (atud.a(this.a) == null);
+    atud.a(this.a).preDownloadSuccess((String)localObject, -1L);
   }
   
-  public boolean a(long paramLong, atyq paramatyq)
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    paramatyq = a(paramLong, false);
-    if (paramatyq == null)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((HttpNetReq)paramNetReq).mReqUrl, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramatyq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramatyq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
-    return true;
   }
-  
-  public void b(long paramLong, atyq paramatyq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atug
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aleu
+  implements Animation.AnimationListener
 {
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  public aleu(SpecailCareListActivity paramSpecailCareListActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    paramInt2 = paramInt1;
-    if (localSharedPreferences != null)
-    {
-      paramInt2 = paramInt1;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
-      }
-    }
-    return paramInt2;
+    this.a.leftView.clearAnimation();
+    this.a.a.clearAnimation();
+    this.a.leftView.setVisibility(4);
+    this.a.a.setVisibility(8);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.b);
+    this.a.rightViewText.setContentDescription(amtj.a(2131713342));
+    this.a.c = true;
   }
   
-  private static SharedPreferences a(int paramInt)
-  {
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      if (paramInt == 1) {
-        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
-      }
-      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static void a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
-    }
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

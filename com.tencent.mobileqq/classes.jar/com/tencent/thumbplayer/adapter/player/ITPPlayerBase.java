@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.adapter.player;
 
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
@@ -61,6 +62,8 @@ public abstract interface ITPPlayerBase
   
   public abstract void setAudioGainRatio(float paramFloat);
   
+  public abstract void setAudioNormalizeVolumeParams(String paramString);
+  
   public abstract void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor);
   
   public abstract void setDataSource(ITPMediaAsset paramITPMediaAsset);
@@ -74,6 +77,8 @@ public abstract interface ITPPlayerBase
   public abstract void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2);
   
   public abstract void setOnAudioPcmOutputListener(ITPPlayerBaseListener.IOnAudioPcmOutListener paramIOnAudioPcmOutListener);
+  
+  public abstract void setOnAudioProcessOutputListener(ITPPlayerBaseListener.IOnAudioProcessOutListener paramIOnAudioProcessOutListener);
   
   public abstract void setOnCompletionListener(ITPPlayerBaseListener.IOnCompletionListener paramIOnCompletionListener);
   
@@ -91,6 +96,8 @@ public abstract interface ITPPlayerBase
   
   public abstract void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener);
   
+  public abstract void setOnVideoProcessOutputListener(ITPPlayerBaseListener.IOnVideoProcessOutListener paramIOnVideoProcessOutListener);
+  
   public abstract void setOnVideoSizeChangedListener(ITPPlayerBaseListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener);
   
   public abstract void setOutputMute(boolean paramBoolean);
@@ -100,6 +107,8 @@ public abstract interface ITPPlayerBase
   public abstract void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam);
   
   public abstract void setSurface(Surface paramSurface);
+  
+  public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
   
   public abstract void start();
   

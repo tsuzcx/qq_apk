@@ -1,38 +1,11 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
 
-public class aozo
-  extends aoxg
+class aozo
+  extends bjmc
 {
-  public aozo(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aozo(aozm paramaozm) {}
   
-  private boolean C()
-  {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
-    String str3 = bmsw.a();
-    bmud.a(this.jdField_a_of_type_AndroidContentContext, str1, null, 0, str2, str3);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneRedpocketShareAction", 1, "doAction error: " + localException.getMessage());
-      a("QzoneRedpocketShareAction");
-    }
-    return false;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
 }
 
 

@@ -1,37 +1,16 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
-
-public class afqp
-  extends Handler
+class afqp
+  implements bjvc
 {
-  public afqp(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  afqp(afqj paramafqj) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131366999);
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
-        return;
-      } while (!(paramMessage.obj instanceof Drawable));
-      localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      afqj.c(this.a);
       return;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
+    }
+    afqj.d(this.a);
   }
 }
 

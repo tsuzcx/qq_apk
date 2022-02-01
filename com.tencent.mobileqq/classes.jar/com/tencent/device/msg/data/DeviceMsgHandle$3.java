@@ -1,7 +1,7 @@
 package com.tencent.device.msg.data;
 
-import abzb;
-import bcrg;
+import aavk;
+import bbko;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,12 +9,12 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class DeviceMsgHandle$3
   implements Runnable
 {
-  public DeviceMsgHandle$3(abzb paramabzb, MessageRecord paramMessageRecord) {}
+  public DeviceMsgHandle$3(aavk paramaavk, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.this$0.app.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq);
-    this.this$0.app.a().a(this.a);
+    this.this$0.app.getMsgCache().a(this.a.frienduin, this.a.istroop, this.a.uniseq);
+    this.this$0.app.getMessageFacade().setChangeAndNotify(this.a);
   }
 }
 

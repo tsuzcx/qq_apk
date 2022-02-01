@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import bioy;
-import bjbs;
+import bgve;
+import bhht;
 import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;

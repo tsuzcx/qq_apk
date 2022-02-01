@@ -1,6 +1,26 @@
-class bbql
+public class bbql
 {
-  private static final bbqj a = new bbqj(null);
+  public aydp a;
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new aydp();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+    ayde.b(this, paramString1, paramString2);
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
 }
 
 

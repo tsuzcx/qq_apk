@@ -20,18 +20,20 @@ class NetFetchState$2
   
   public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
   {
-    paramLiveStyleResponse = new WeJson().toJson(paramYTLiveStyleReq);
-    NetFetchState.access$000(this.this$0).put("select_data", paramYTLiveStyleReq.select_data);
-    if ((!NetFetchState.access$100(this.this$0).isEmpty()) && (NetFetchState.access$200(this.this$0)))
+    paramLiveStyleResponse = new WeJson();
+    paramYTLiveStyleReq.app_id = NetFetchState.access$000(this.this$0);
+    paramLiveStyleResponse = paramLiveStyleResponse.toJson(paramYTLiveStyleReq);
+    NetFetchState.access$100(this.this$0).put("select_data", paramYTLiveStyleReq.select_data);
+    if ((!NetFetchState.access$200(this.this$0).isEmpty()) && (NetFetchState.access$300(this.this$0)))
     {
-      YtLogger.d(NetFetchState.access$300(), "Use local data");
-      NetFetchState.access$400(this.this$0).put("color_data", NetFetchState.access$100(this.this$0));
-      NetFetchState.access$500(this.this$0).put("action_data", "0");
+      YtLogger.d(NetFetchState.access$400(), "Use local data");
+      NetFetchState.access$500(this.this$0).put("color_data", NetFetchState.access$200(this.this$0));
+      NetFetchState.access$600(this.this$0).put("action_data", "0");
       this.this$0.moveToNextState();
       return;
     }
-    YtLogger.d(NetFetchState.access$300(), "Use online data ---> on get config info: " + paramLiveStyleResponse);
-    YtFSM.getInstance().sendNetworkRequset(NetFetchState.access$600(this.this$0), paramLiveStyleResponse, null, new NetFetchState.2.1(this));
+    YtLogger.d(NetFetchState.access$400(), "Use online data ---> on get config info: " + paramLiveStyleResponse);
+    YtFSM.getInstance().sendNetworkRequset(NetFetchState.access$700(this.this$0), paramLiveStyleResponse, null, new NetFetchState.2.1(this));
   }
 }
 

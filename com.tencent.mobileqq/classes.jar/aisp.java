@@ -1,14 +1,25 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
-final class aisp
-  implements Comparator<aisl>
+public class aisp
+  extends amnw
 {
-  public int a(aisl paramaisl1, aisl paramaisl2)
+  public aisp(TroopFragment paramTroopFragment) {}
+  
+  protected void a(int paramInt)
   {
-    if ((paramaisl1 == null) || (paramaisl2 == null)) {
-      return 0;
+    switch (paramInt)
+    {
     }
-    return Float.compare(paramaisl1.a(), paramaisl2.a());
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.e();
   }
 }
 

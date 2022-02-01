@@ -1,11 +1,8 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.view.animation.Transformation;
 
-public class bfzz
-  implements bgbg
+public abstract interface bfzz<T>
 {
-  public bfzz(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void a() {}
+  public abstract void a(bfzt<T> parambfzt, float paramFloat, T paramT, Transformation paramTransformation);
 }
 
 

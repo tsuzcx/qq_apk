@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.soso;
 
-import acwb;
-import acwc;
-import acwd;
-import acwf;
-import acwg;
+import absn;
+import abso;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -19,28 +19,28 @@ final class SosoInterface$8
 {
   public void run()
   {
-    acwf.a().a(BaseApplication.getContext(), new acwg());
-    Object localObject = new acwc();
-    ((acwc)localObject).a = "8b5c3a";
-    localObject = acwb.a(BaseApplication.getContext(), (acwc)localObject);
+    absn.a().a(BaseApplication.getContext(), new abso());
+    Object localObject = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "8b5c3a";
+    localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
     if (localObject != null) {
-      localObject = ((acwd)localObject).a;
+      localObject = ((GdtDeviceInfoHelper.Result)localObject).deviceInfo;
     }
     for (;;)
     {
       if (localObject != null) {
-        SosoInterface.a = ((qq_ad_get.QQAdGet.DeviceInfo)localObject).aid_ticket.get();
+        SosoInterface.mOaid = ((qq_ad_get.QQAdGet.DeviceInfo)localObject).aid_ticket.get();
       }
-      if (!TextUtils.isEmpty(SosoInterface.a))
+      if (!TextUtils.isEmpty(SosoInterface.mOaid))
       {
-        if (SosoInterface.a() == null) {
-          SosoInterface.a(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
+        if (SosoInterface.access$2600() == null) {
+          SosoInterface.access$2602(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
         }
         try
         {
-          SosoInterface.a().setDeviceID(new Pair("oaId", SosoInterface.a));
+          SosoInterface.access$2600().setDeviceID(new Pair("oaId", SosoInterface.mOaid));
           if (QLog.isColorLevel()) {
-            QLog.d("SOSO.LBS", 2, "mLocationManager.setDeviceId（） mOaid = " + SosoInterface.a);
+            QLog.d("SOSO.LBS", 2, "mLocationManager.setDeviceId（） mOaid = " + SosoInterface.mOaid);
           }
           return;
           localObject = null;

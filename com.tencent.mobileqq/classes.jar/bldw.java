@@ -1,69 +1,31 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public class bldw
+class bldw
+  implements EIPCOnGetConnectionListener
 {
-  private AtomicInteger a = new AtomicInteger(0);
+  bldw(bldv parambldv) {}
   
-  public void a()
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    int i;
-    do
-    {
-      i = this.a.get();
-      if ((i & 0xFFFFFFFE) == 0) {}
-      do
-      {
-        return;
-        if ((i & 0x1) == 0) {
-          break;
-        }
-      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
-      synchronized (this.a)
-      {
-        this.a.notifyAll();
-        return;
-      }
-    } while (!this.a.compareAndSet(i, i - 2));
+    if (paramEIPCConnection != null) {
+      bldv.a(this.a, paramEIPCConnection.procName);
+    }
+    bldv.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
+    }
   }
   
-  public boolean a()
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    int i;
-    do
-    {
-      i = this.a.get();
-      if ((i & 0x1) != 0) {
-        return false;
-      }
-    } while (!this.a.compareAndSet(i, i + 2));
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.compareAndSet(0, 1)) {}
-    while (this.a.compareAndSet(1, 1)) {
-      return;
+    if (paramEIPCConnection != null) {
+      bldv.a(this.a, paramEIPCConnection.procName);
     }
-    int i;
-    do
-    {
-      i = this.a.get();
-    } while (!this.a.compareAndSet(i, i | 0x1));
-    try
-    {
-      synchronized (this.a)
-      {
-        this.a.wait();
-        return;
-      }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+    bldv.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
     }
   }
 }

@@ -1,18 +1,35 @@
-import android.app.Activity;
-import android.app.Application;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
-class acsb
-  implements DialogInterface.OnDismissListener
+public class acsb
+  extends Handler
 {
-  acsb(acry paramacry) {}
+  public acsb(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    acry.a(this.a).setIntent(acry.a(this.a));
-    acry.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(acry.a(this.a));
-    acry.a(this.a).o();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690749));
+        this.a.jdField_a_of_type_Bhht.d(2130849594);
+        this.a.jdField_a_of_type_Bhht.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing()));
+    this.a.jdField_a_of_type_Bhht.cancel();
+    this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690751));
+    this.a.jdField_a_of_type_Bhht.c(true);
+    this.a.jdField_a_of_type_Bhht.a(false);
+    this.a.jdField_a_of_type_Bhht.b(true);
   }
 }
 

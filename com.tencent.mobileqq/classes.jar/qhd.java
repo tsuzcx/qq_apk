@@ -1,81 +1,211 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import org.json.JSONObject;
 
 public class qhd
+  extends ViewBase
 {
-  public static String a(boolean paramBoolean, List<BaseArticleInfo> paramList)
+  private int jdField_a_of_type_Int = Utils.dp2px(233.0D);
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private TextView b;
+  
+  public qhd(VafContext paramVafContext)
   {
-    JSONObject localJSONObject1 = new JSONObject();
+    super(paramVafContext);
+    a(paramVafContext);
+  }
+  
+  private int a(String paramString, int paramInt)
+  {
+    int i = Utils.dp2px(paramInt);
+    paramInt = i;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))
+    {
+      paramString = Utils.toDouble(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString));
+      paramInt = i;
+      if (paramString != null) {
+        paramInt = Utils.dp2px(paramString.doubleValue());
+      }
+    }
+    return paramInt;
+  }
+  
+  private void a(VafContext paramVafContext)
+  {
+    qhe localqhe = new qhe(paramVafContext.getContext());
+    localqhe.c(10);
+    localqhe.d(10);
+    localqhe.a(10);
+    localqhe.b(10);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = localqhe;
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    this.b = new TextView(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.b.setMaxLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+    this.b.setIncludeFontPadding(false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    paramVafContext = new LinearLayout.LayoutParams(Utils.dp2px(20.0D), Utils.dp2px(20.0D));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramVafContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b);
+  }
+  
+  private void a(String paramString, TextView paramTextView, int paramInt)
+  {
+    paramTextView.setTextSize(0, a(paramString, paramInt));
+    a();
+  }
+  
+  private void b()
+  {
+    b("setLocationTextColorString:", this.jdField_a_of_type_AndroidWidgetTextView, Color.parseColor("#4D7CAF"));
+    a("setLocationTextSizeString:", this.jdField_a_of_type_AndroidWidgetTextView, 12);
+    b("setDistanceTextColorString:", this.b, Color.parseColor("#737373"));
+    a("setDistanceTextSizeString:", this.b, 12);
+    int i;
     Object localObject;
-    if (paramBoolean) {
-      localObject = "1";
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString("setMidMarginString:")))
+    {
+      i = Utils.dp2px(3.0D);
+      localObject = Utils.toInteger(this.jdField_a_of_type_OrgJsonJSONObject.optString("setMidMarginString:"));
+      if (localObject == null) {
+        break label186;
+      }
+      i = Utils.dp2px(((Integer)localObject).intValue());
+    }
+    label186:
+    for (;;)
+    {
+      localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject).rightMargin = i;
+      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      i = a("setTopPaddingString:", 6);
+      int j = a("setBottomPaddingString:", 6);
+      int k = a("setLeftPaddingString:", 7);
+      int m = a("setRightPaddingString:", 7);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, i, m, j);
+      a();
+      return;
+    }
+  }
+  
+  private void b(String paramString, TextView paramTextView, int paramInt)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))
+    {
+      paramTextView.setTextColor(Utils.parseColor(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)));
+      return;
+    }
+    paramTextView.setTextColor(paramInt);
+  }
+  
+  public void a()
+  {
+    float f1 = this.b.getPaint().measureText(this.b.getText().toString());
+    int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft();
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight();
+    int k = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).rightMargin;
+    float f2 = this.jdField_a_of_type_Int;
+    float f3 = i;
+    float f4 = j;
+    float f5 = k;
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth((int)(f2 - f1 - f3 - f4 - f5));
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return bool1;
+              bool1 = bool2;
+            } while (paramObject == null);
+            bool1 = bool2;
+          } while (!(paramObject instanceof JSONObject));
+          this.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)paramObject);
+          bool1 = bool2;
+        } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
+        b();
+        return true;
+        bool1 = bool2;
+      } while (paramObject == null);
+      bool1 = bool2;
+    } while (!(paramObject instanceof JSONObject));
+    paramObject = (JSONObject)paramObject;
+    String str = paramObject.optString("ad_Location_content");
+    if (!TextUtils.isEmpty(str))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
-      try
-      {
-        localJSONObject1.put("success", localObject);
-        localObject = new JSONArray();
-        if ((paramList == null) || (paramList.size() <= 0)) {
-          break label355;
-        }
-        paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break label355;
-        }
-        localBaseArticleInfo = (BaseArticleInfo)paramList.next();
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("articleID", localBaseArticleInfo.mArticleID);
-        localJSONObject2.put("rowKey", localBaseArticleInfo.innerUniqueID);
-        localJSONObject2.put("title", localBaseArticleInfo.mTitle);
-        localJSONObject2.put("coverImageUrl", localBaseArticleInfo.mFirstPagePicUrl);
-        localJSONObject2.put("jsonImageUrl", localBaseArticleInfo.mJsonPictureList);
-        localJSONObject2.put("articleContentUrl", localBaseArticleInfo.mArticleContentUrl);
-        localJSONObject2.put("subscribeName", localBaseArticleInfo.mSubscribeName);
-        localJSONObject2.put("channelID", localBaseArticleInfo.mChannelID);
-        localJSONObject2.put("recommendSeq", localBaseArticleInfo.mRecommendSeq);
-        localJSONObject2.put("algorithmID", localBaseArticleInfo.mAlgorithmID);
-        localJSONObject2.put("strategyID", localBaseArticleInfo.mStrategyId);
-        localJSONObject2.put("feedsType", localBaseArticleInfo.mFeedType);
-        localJSONObject2.put("proteusItemData", localBaseArticleInfo.proteusItemsData);
-      }
-      catch (JSONException paramList)
-      {
-        BaseArticleInfo localBaseArticleInfo;
-        JSONObject localJSONObject2;
-        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e " + paramList);
-      }
-      try
-      {
-        if (!pfa.a().a(localBaseArticleInfo.mArticleID)) {
-          break label367;
-        }
-        i = 1;
-        localJSONObject2.put("hasRead", i);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e = " + localException);
-        continue;
-      }
-      ((JSONArray)localObject).put(localJSONObject2);
-      continue;
-      for (;;)
-      {
-        return localJSONObject1.toString();
-        localObject = "0";
+      paramObject = paramObject.optString("ad_Location");
+      if (TextUtils.isEmpty(paramObject)) {
         break;
-        label355:
-        localJSONObject1.put("data", localObject);
       }
-      label367:
-      int i = 0;
+      this.b.setText(paramObject);
+      this.b.setVisibility(0);
+      a();
+      return true;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
+    this.b.setVisibility(8);
+    return true;
   }
 }
 

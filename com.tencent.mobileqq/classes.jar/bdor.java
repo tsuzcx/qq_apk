@@ -1,58 +1,60 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class bdor
-  extends Drawable
+  extends AsyncTask<Void, Void, Bundle>
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -16777216;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private int b;
-  private int c;
+  public bdor(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public bdor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected Bundle a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Float = paramInt4;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
+    }
+    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      return localBundle;
+    }
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
   }
   
-  public void draw(Canvas paramCanvas)
+  protected void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    Rect localRect = getBounds();
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = localRect.top;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = localRect.left;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = localRect.right;
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = localRect.bottom;
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (paramBundle == null)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, amtj.a(2131705638), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    atky.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
   }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.c;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.b;
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

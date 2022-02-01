@@ -1,20 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-class qme
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/data/PTSLiteDataFactory$IPTSLiteDataJson;", "", "addR5ReportJson", "", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "r5", "Lorg/json/JSONObject;", "updateDataJson", "jsonData", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qme
 {
-  qme(qmb paramqmb, RelativeLayout paramRelativeLayout) {}
+  public abstract void a(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
-  }
+  public abstract void b(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject);
 }
 
 

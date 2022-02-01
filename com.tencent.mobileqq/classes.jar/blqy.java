@@ -1,8 +1,20 @@
-import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-public abstract interface blqy
+class blqy
+  implements View.OnTouchListener
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  blqy(blqw paramblqw) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((blqw.a(this.a) != null) && (blqw.b(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, blqw.b(this.a), blqw.a(this.a));
+    }
+    return true;
+  }
 }
 
 

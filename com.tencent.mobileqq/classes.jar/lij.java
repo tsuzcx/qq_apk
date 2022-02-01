@@ -1,31 +1,24 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lij
-  extends lii
 {
-  public lij(VideoAppInterface paramVideoAppInterface)
+  public static void a()
   {
-    super(paramVideoAppInterface);
+    a("0X8009850");
   }
   
-  public int a(String paramString)
+  static void a(String paramString)
   {
-    return 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    }
+    bcef.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
   }
   
-  public boolean a(int paramInt, String paramString)
+  public static void b()
   {
-    return false;
+    a("0X8009851");
   }
-  
-  public boolean a(String paramString)
-  {
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

@@ -1,28 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
-
-public class skq
-  implements Animator.AnimatorListener
+public abstract interface skq
 {
-  public skq(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

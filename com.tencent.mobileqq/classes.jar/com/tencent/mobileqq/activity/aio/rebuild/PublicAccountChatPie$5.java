@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
+import amxz;
 import android.os.Handler;
-import aody;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PublicAccountChatPie$5
   implements Runnable
 {
-  public PublicAccountChatPie$5(ainh paramainh) {}
+  public PublicAccountChatPie$5(ahiu paramahiu) {}
   
   public void run()
   {
-    Object localObject = (aody)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+    Object localObject = (amxz)this.this$0.app.getManager(56);
     if (localObject != null) {}
-    for (localObject = ((aody)localObject).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
+    for (localObject = ((amxz)localObject).b(this.this$0.sessionInfo.curFriendUin);; localObject = null)
     {
       if (localObject != null) {
-        this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        this.this$0.a.sendEmptyMessage(1);
       }
       return;
     }

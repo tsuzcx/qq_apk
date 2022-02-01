@@ -1,72 +1,91 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class argv
-  extends arac<argu>
 {
-  @NonNull
-  public argu a(int paramInt)
-  {
-    return new argu();
-  }
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
+  private Map<String, Integer> b = new HashMap();
+  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
   
-  @Nullable
-  public argu a(araj[] paramArrayOfaraj)
+  public int a(String paramString)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      argu localargu = argu.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
+      {
+        int i = ((Integer)this.b.get(paramString)).intValue();
+        return i;
       }
-      return localargu;
-    }
-    return null;
-  }
-  
-  public void a(argu paramargu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramargu.toString());
+      return -1;
     }
   }
   
-  public Class<argu> clazz()
+  public long a(String paramString)
   {
-    return argu.class;
+    long l2 = -1L;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    long l1 = l2;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        l1 = l2;
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+        }
+      }
+      return l1;
+    }
+    finally {}
   }
   
-  public boolean isAccountRelated()
+  public List<StructMsg.ButtonInfo> a(String paramString)
   {
-    return true;
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    {
+      if (this.c.containsKey(paramString))
+      {
+        paramString = (List)this.c.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
   }
   
-  public boolean isNeedCompressed()
+  public void a(String paramString, long paramLong)
   {
-    return true;
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 488;
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        if (this.c.containsKey(paramString)) {
+          this.c.remove(paramString);
+        }
+        this.c.put(paramString, paramList);
+        this.b.put(paramString, Integer.valueOf(paramInt));
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argv
  * JD-Core Version:    0.7.0.1
  */

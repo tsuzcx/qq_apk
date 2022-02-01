@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
-public final class bbfo
-  implements Parcelable.Creator<FilterCategory>
+public class bbfo
+  extends bbee
 {
-  public FilterCategory a(Parcel paramParcel)
+  public final bbfp a;
+  
+  public bbfo(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    return new FilterCategory(paramParcel);
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.a = new bbfp(paramQQAppInterface);
   }
   
-  public FilterCategory[] a(int paramInt)
+  public Comparator<bayp> a()
   {
-    return new FilterCategory[paramInt];
+    return this.a;
   }
 }
 

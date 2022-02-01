@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ArkAppMessage.Config;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-
-final class ahhi
-  implements ahky
+class ahhi
+  implements bfft
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhi(ahgz paramahgz) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramQQAppInterface = (MessageForArkApp)paramChatMessage;
-    paramChatMessage = new ArkAppMessage.Config();
-    paramChatMessage.fromString(paramQQAppInterface.ark_app_message.config);
-    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("multiple"))) {
-      return 112;
+    if ((paramBoolean) && (this.a.b.equals(paramString)))
+    {
+      this.a.f = true;
+      paramString = (aftj)this.a.getHelper(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
     }
-    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("card"))) {
-      return 81;
-    }
-    return 47;
+    do
+    {
+      return;
+      this.a.f = false;
+      paramString = (aftj)this.a.getHelper(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

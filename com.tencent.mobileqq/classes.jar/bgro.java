@@ -1,50 +1,67 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
 class bgro
-  extends Handler
+  extends bgod
 {
-  bgro(bgrn parambgrn, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bgro(bgrn parambgrn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(bgoe parambgoe)
   {
-    super.handleMessage(paramMessage);
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    switch (paramMessage.what)
+    if (parambgoe == null)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      String str = (String)arrayOfObject[2];
-      long l = ((Long)arrayOfObject[3]).longValue();
-      this.a.a(paramMessage, bool, str, l);
-      return;
-    case 2: 
-      paramMessage = (bfrs)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
-    case 3: 
-      paramMessage = (bfrs)arrayOfObject[0];
-      this.a.g(paramMessage);
-      return;
-    case 4: 
-      paramMessage = (bfrs)arrayOfObject[0];
-      this.a.h(paramMessage);
-      return;
-    case 5: 
-      int i = paramMessage.arg1;
-      this.a.a(i);
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
+          onDone(null);
+        }
+      }
+      else
+      {
+        while (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
+        return;
+      }
+      File localFile = new File(bgrn.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
+      if ((localFile.isFile()) && (localFile.exists()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
+        }
+        onDone(null);
+        return;
+      }
+      parambgoe = new Bundle();
+      Object localObject = new bgoe((String)localObject, localFile);
+      ((bgoe)localObject).n = true;
+      ((bgog)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1).a((bgoe)localObject, this.a.jdField_a_of_type_Bgod, parambgoe);
       return;
     }
-    paramMessage = (bfrs)arrayOfObject[0];
-    this.a.j(paramMessage);
+    super.onDone(parambgoe);
+    parambgoe.a();
+    if ((parambgoe.a() == 3) && (parambgoe.jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + parambgoe.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      onDone(null);
+      return;
+      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + parambgoe.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

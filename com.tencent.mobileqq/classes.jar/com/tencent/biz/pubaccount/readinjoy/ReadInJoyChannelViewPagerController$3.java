@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import ohp;
-import pfa;
+import ojc;
+import pkm;
 
 public class ReadInJoyChannelViewPagerController$3
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$3(ohp paramohp, pfa parampfa, TabChannelCoverInfo paramTabChannelCoverInfo) {}
+  public ReadInJoyChannelViewPagerController$3(ojc paramojc, pkm parampkm, TabChannelCoverInfo paramTabChannelCoverInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pfa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
+    this.jdField_a_of_type_Pkm.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
   }
 }
 

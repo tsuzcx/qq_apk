@@ -1,17 +1,114 @@
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
-public abstract interface ansk
+public class ansk
+  extends anrh
 {
-  public abstract anst a(int paramInt);
+  public ansk(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
   
-  public abstract void a();
+  private boolean C()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Jumpaction", 2, " source:" + this.jdField_a_of_type_JavaLangString + "  serverName:" + this.b + "  hostName:" + this.c);
+    }
+    Object localObject1;
+    if (this.c.equals("index"))
+    {
+      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+      ((Intent)localObject1).putExtra("goto_type", 1);
+      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return true;
+              if (!this.c.equals("detail")) {
+                break;
+              }
+            } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+            localObject1 = bhwr.g() + File.separator + "qapp_center_detail.htm";
+            if (new File((String)localObject1).exists()) {}
+            for (localObject1 = "file:///" + (String)localObject1;; localObject1 = bhwr.m() + File.separator + "qapp_center_detail.htm")
+            {
+              localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+              localObject3 = new Bundle();
+              localObject4 = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("param");
+              ((Bundle)localObject3).putString("APP_URL", (String)localObject1);
+              ((Bundle)localObject3).putString("APP_PARAMS", "&" + (String)localObject4);
+              ((Bundle)localObject3).putInt("goto_type", 2);
+              ((Intent)localObject2).putExtras((Bundle)localObject3);
+              ((Intent)localObject2).putExtra("adapter_action", "action_app_detail");
+              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+              return true;
+            }
+            if (!this.c.equals("webview")) {
+              break;
+            }
+          } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+          localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString("APP_URL", Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("url"));
+          ((Bundle)localObject2).putInt("goto_type", 3);
+          ((Intent)localObject1).putExtras((Bundle)localObject2);
+          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+          return true;
+        } while ((!this.c.equals("local")) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
+        localObject2 = Uri.parse(this.jdField_a_of_type_JavaLangString);
+        localObject1 = ((Uri)localObject2).getQueryParameter("title");
+        localObject3 = bhwr.a(((Uri)localObject2).getQueryParameter("url"));
+      } while (localObject3.length <= 1);
+      localObject2 = localObject3[0];
+    } while ((!((String)localObject2).startsWith("file://")) || ((!((String)localObject2).contains(bhwr.g())) && (!((String)localObject2).contains("android_asset/Page/system/"))));
+    Object localObject3 = localObject3[1];
+    Object localObject4 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("APP_URL", (String)localObject2);
+    Object localObject2 = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      ((ArrayList)localObject2).add(localObject1);
+    }
+    localBundle.putStringArrayList("titleName", (ArrayList)localObject2);
+    if ((localObject3 != null) && (((String)localObject3).length() > 0)) {
+      localBundle.putString("APP_PARAMS", (String)localObject3);
+    }
+    localBundle.putInt("goto_type", 4);
+    ((Intent)localObject4).putExtras(localBundle);
+    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject4);
+    return true;
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<anst> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean);
-  
-  public abstract boolean a(int paramInt);
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QappCenterJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("QappCenterJumpAction");
+    }
+    return false;
+  }
 }
 
 

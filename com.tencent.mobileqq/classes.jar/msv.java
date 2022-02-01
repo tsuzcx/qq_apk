@@ -1,6 +1,15 @@
-public abstract interface msv
+public class msv
 {
-  public abstract void a(String paramString, msw parammsw);
+  public int a;
+  public String a;
+  public int b = 0;
+  public int c = 0;
+  
+  msv()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
 }
 
 

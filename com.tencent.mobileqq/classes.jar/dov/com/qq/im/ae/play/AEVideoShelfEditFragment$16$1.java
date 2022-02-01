@@ -7,10 +7,10 @@ class AEVideoShelfEditFragment$16$1
   
   public void run()
   {
-    if (AEVideoShelfEditFragment.a(this.a.this$0) < 100.0D)
+    if (AEVideoShelfEditFragment.access$2700(this.this$1.this$0) < 100.0D)
     {
-      AEVideoShelfEditFragment.a(this.a.this$0, AEVideoShelfEditFragment.a(this.a.this$0) + AEVideoShelfEditFragment.a());
-      AEVideoShelfEditFragment.b(this.a.this$0, (int)AEVideoShelfEditFragment.a(this.a.this$0));
+      AEVideoShelfEditFragment.access$2702(this.this$1.this$0, AEVideoShelfEditFragment.access$2700(this.this$1.this$0) + AEVideoShelfEditFragment.access$3000());
+      AEVideoShelfEditFragment.access$2800(this.this$1.this$0, (int)AEVideoShelfEditFragment.access$2700(this.this$1.this$0));
     }
   }
 }

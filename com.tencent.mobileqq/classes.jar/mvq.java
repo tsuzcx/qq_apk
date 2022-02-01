@@ -1,109 +1,159 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
-class mvq
-  implements ITransactionCallback
+public class mvq
 {
-  long jdField_a_of_type_Long = 0L;
+  private static float jdField_a_of_type_Float = 0.4F;
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static float jdField_b_of_type_Float = 1.0F - jdField_a_of_type_Float;
+  private static float c;
+  private static float d = 1.0F / a(1.0F);
+  private int jdField_a_of_type_Int;
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final mvr jdField_a_of_type_Mvr;
+  private final boolean jdField_a_of_type_Boolean;
+  private final mvr jdField_b_of_type_Mvr;
   
-  mvq(mvp parammvp, String paramString, long paramLong, byte[] paramArrayOfByte, mvr parammvr) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  static
   {
-    QLog.w(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
-    paramArrayOfByte = bhml.a(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_Mvr.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    float f1 = 0.0F;
+    int i = 0;
+    if (i <= 100)
+    {
+      float f4 = i / 100.0F;
+      float f2 = 1.0F;
+      for (;;)
+      {
+        float f3 = (f2 - f1) / 2.0F + f1;
+        float f5 = 3.0F * f3 * (1.0F - f3);
+        float f6 = ((1.0F - f3) * jdField_a_of_type_Float + jdField_b_of_type_Float * f3) * f5 + f3 * f3 * f3;
+        if (Math.abs(f6 - f4) < 1.E-005D)
+        {
+          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          i += 1;
+          break;
+        }
+        if (f6 > f4) {
+          f2 = f3;
+        } else {
+          f1 = f3;
+        }
+      }
+    }
+    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
+    c = 8.0F;
+    d = 1.0F;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public mvq(Context paramContext)
   {
-    String str2 = "";
-    String str1;
-    if (paramArrayOfByte != null) {
-      str1 = str2;
+    this(paramContext, null);
+  }
+  
+  public mvq(Context paramContext, Interpolator paramInterpolator)
+  {
+    this(paramContext, paramInterpolator, true);
+  }
+  
+  public mvq(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Mvr = new mvr();
+    this.jdField_b_of_type_Mvr = new mvr();
+    mvr.a(paramContext);
+  }
+  
+  public static float a(float paramFloat)
+  {
+    paramFloat = c * paramFloat;
+    if (paramFloat < 1.0F) {}
+    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
+      return paramFloat * d;
+    }
+  }
+  
+  public final int a()
+  {
+    return mvr.a(this.jdField_a_of_type_Mvr);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Mvr.a();
+    this.jdField_b_of_type_Mvr.a();
+  }
+  
+  public final void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Mvr.a(paramFloat);
+    this.jdField_b_of_type_Mvr.a(paramFloat);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
+    {
+      float f1 = mvr.a(this.jdField_a_of_type_Mvr);
+      float f2 = mvr.a(this.jdField_b_of_type_Mvr);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
+      {
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
+      }
     }
     for (;;)
     {
-      int i;
-      try
-      {
-        localObject2 = new Bdh_extinfo.CommFileExtRsp();
-        str1 = str2;
-        ((Bdh_extinfo.CommFileExtRsp)localObject2).mergeFrom(paramArrayOfByte);
-        str1 = str2;
-        str2 = ((Bdh_extinfo.CommFileExtRsp)localObject2).bytes_download_url.get().toStringUtf8();
-        str1 = str2;
-        boolean bool = TextUtils.isEmpty(str2);
-        if (!bool) {
-          continue;
-        }
-        i = -10010;
-        str1 = str2;
-      }
-      catch (Exception localException2)
-      {
-        Object localObject2;
-        StringBuilder localStringBuilder;
-        i = -10012;
-        continue;
-        paramArrayOfByte = null;
-        continue;
-      }
-      str2 = bhml.a(this.jdField_a_of_type_ArrayOfByte);
-      localObject2 = this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
-      Object localObject1;
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
-        QLog.w((String)localObject2, 1, paramArrayOfByte + "], retCode[" + i + "], md5[" + str2 + "], url[" + str1 + "]");
-        AudioHelper.a(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString, paramHashMap, false);
-        this.jdField_a_of_type_Mvr.a(i, this.jdField_a_of_type_JavaLangString, str1, str2);
-        return;
-        try
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.w(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
-          }
-          str1 = blhn.a(str2);
-          i = 0;
-        }
-        catch (Exception localException1)
-        {
-          i = -10011;
-          localObject1 = str2;
-        }
-      }
-      else
-      {
-        i = 0;
-        localObject1 = localException2;
-      }
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Mvr.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9, paramInt11);
+      this.jdField_b_of_type_Mvr.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10, paramInt12);
+      return;
     }
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public final boolean a()
   {
-    QLog.w(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString, 1, "onTransStart, sessionId[" + this.jdField_a_of_type_JavaLangString + "]");
+    return (mvr.a(this.jdField_a_of_type_Mvr)) && (mvr.a(this.jdField_b_of_type_Mvr));
   }
   
-  public void onUpdateProgress(int paramInt)
+  public boolean b()
   {
-    if (QLog.isColorLevel())
+    if (a()) {
+      return false;
+    }
+    switch (this.jdField_a_of_type_Int)
     {
-      long l = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Long < l)
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - mvr.a(this.jdField_a_of_type_Mvr);
+      int i = mvr.b(this.jdField_a_of_type_Mvr);
+      if (l < i)
       {
-        QLog.w(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString, 1, "onUpdateProgress, sessionId[" + this.jdField_a_of_type_JavaLangString + "], transferedSize[" + paramInt + "], totalSize[" + this.b + "]");
-        this.jdField_a_of_type_Long = (l + 2000L);
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
+        {
+          if (!mvr.a(this.jdField_a_of_type_Mvr)) {
+            this.jdField_a_of_type_Mvr.b(f);
+          }
+          if (mvr.a(this.jdField_b_of_type_Mvr)) {
+            break;
+          }
+          this.jdField_b_of_type_Mvr.b(f);
+          break;
+        }
+      }
+      a();
+      continue;
+      if ((!mvr.a(this.jdField_a_of_type_Mvr)) && (!this.jdField_a_of_type_Mvr.b()) && (!this.jdField_a_of_type_Mvr.a())) {
+        this.jdField_a_of_type_Mvr.a();
+      }
+      if ((!mvr.a(this.jdField_b_of_type_Mvr)) && (!this.jdField_b_of_type_Mvr.b()) && (!this.jdField_b_of_type_Mvr.a())) {
+        this.jdField_b_of_type_Mvr.a();
       }
     }
   }

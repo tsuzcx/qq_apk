@@ -1,177 +1,179 @@
-import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadDataReport.1;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
+import eipc.EIPCResult;
+import java.net.URLDecoder;
 
 public class pst
+  extends QIPCModule
 {
-  public static void a(ToServiceMsg paramToServiceMsg, int paramInt)
+  private static volatile pst a;
+  
+  private pst(String paramString)
   {
-    Object localObject;
-    boolean bool1;
-    boolean bool2;
-    label130:
-    long l;
-    if (paramToServiceMsg != null)
-    {
-      localObject = (Long)paramToServiceMsg.getAttribute("feedsRequestBeginTime");
-      Integer localInteger = (Integer)paramToServiceMsg.getAttribute("channelID");
-      Long localLong = (Long)paramToServiceMsg.getAttribute(pqj.d);
-      Boolean localBoolean = (Boolean)paramToServiceMsg.getAttribute("hitFeedsPreloadCache");
-      if (localBoolean == null) {
-        break label268;
-      }
-      bool1 = localBoolean.booleanValue();
-      if ((localInteger != null) && (localInteger.intValue() == 0) && (localLong != null) && (localLong.longValue() == -1L))
-      {
-        if ((localObject == null) || (((Long)localObject).longValue() <= 0L)) {
-          break label303;
-        }
-        paramToServiceMsg = (List)paramToServiceMsg.getAttribute("SubscriptionArticles");
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-          break label273;
-        }
-        bool2 = true;
-        l = System.currentTimeMillis() - ((Long)localObject).longValue();
-        QLog.d("FeedsPreloadDataReport", 1, new Object[] { "refreshTime = ", Long.valueOf(l), ", hitFeedsPreloadCache = ", Boolean.valueOf(bool1), ", isRedPoint = ", Boolean.valueOf(bool2) });
-        localObject = ozs.a();
-        if (!bool2) {
-          break label278;
-        }
-        paramToServiceMsg = "1";
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        ((paa)localObject).a("is_reddot", paramToServiceMsg);
-        if (!bool1) {
-          continue;
-        }
-        paramToServiceMsg = "1";
-        ((paa)localObject).a("hit_preload", paramToServiceMsg);
-        ((paa)localObject).a("refresh_cost", String.valueOf(l));
-        ((paa)localObject).a("refresh_num", String.valueOf(paramInt));
-      }
-      catch (JSONException paramToServiceMsg)
-      {
-        label268:
-        label273:
-        label278:
-        QLog.d("FeedsPreloadDataReport", 1, "reportFeedsRefreshCost, e = ", paramToServiceMsg);
-        continue;
-      }
-      a("0X8009C16", ((paa)localObject).a());
-      psv.a(l, bool1);
-      return;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label130;
-      paramToServiceMsg = "0";
-      continue;
-      paramToServiceMsg = "0";
-    }
-    label303:
-    QLog.d("FeedsPreloadDataReport", 1, "beginTime is null, no need to report.");
+    super(paramString);
   }
   
-  private static void a(String paramString1, String paramString2)
+  public static pst a()
   {
-    psr.a().a(new FeedsPreloadDataReport.1(paramString1, paramString2));
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    paa localpaa = ozs.a();
-    String str;
-    if (paramBoolean) {
-      str = "1";
-    }
+    if (a == null) {}
     try
     {
-      for (;;)
-      {
-        localpaa.a("preload_reddot", str);
-        localpaa.a("preload_num", String.valueOf(paramInt));
-        a("0X8009C15", localpaa.a());
-        return;
-        str = "0";
+      if (a == null) {
+        a = new pst("ReadInJoyIPCModule");
       }
+      return a;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.d("FeedsPreloadDataReport", 1, "reportHitFeedsPreloadCache, e = ", localJSONException);
-      }
-    }
+    finally {}
   }
   
-  public static void a(boolean paramBoolean, int paramInt, long paramLong)
+  private void a(Bundle paramBundle)
   {
-    paa localpaa = ozs.a();
-    String str;
-    if (paramBoolean) {
-      str = "1";
+    int i = paramBundle.getInt("key_native_channel_id", 0);
+    int j = paramBundle.getInt("key_native_channel_change_order", 0);
+    String str = paramBundle.getString("key_native_channel_name", "");
+    int k = paramBundle.getInt("key_native_channel_type", 0);
+    boolean bool = paramBundle.getBoolean("key_native_channel_is_push", false);
+    int m = paramBundle.getInt("key_channel_source_from", -1);
+    Object localObject = paramBundle.getString("key_channel_jump_scheme", "");
+    QLog.i("ReadInJoyIPCModule", 1, "[jumpToNativeChannel] native channel jump, channelID = " + i + ", changeChannelOrder = " + j + ", channelName = " + str + ", channelType = " + k + ", isPush = " + bool + ", sourceFrom = " + m + ", scheme = " + (String)localObject);
+    if (j == 1) {
+      pkm.a().b(i, m);
     }
-    for (;;)
+    if (BaseActivity.sTopActivity == null) {}
+    for (paramBundle = BaseApplicationImpl.getContext(); paramBundle == null; paramBundle = BaseActivity.sTopActivity)
     {
-      try
-      {
-        localpaa.a("preload_reddot", str);
-        localpaa.a("preload_num", String.valueOf(paramInt));
-        localpaa.a("package_size", String.valueOf(paramLong));
-        if (paramLong <= 20000L) {
-          continue;
-        }
-        str = "1";
-        localpaa.a("is_too_large", str);
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.d("FeedsPreloadDataReport", 1, "reportReceiveFeedsPreload, e = ", localJSONException);
-        continue;
-      }
-      a("0X8009C14", localpaa.a());
+      QLog.i("ReadInJoyIPCModule", 1, "[jumpToNativeChannel], context is null.");
       return;
-      str = "0";
-      continue;
-      str = "0";
     }
+    if (prw.a(paramBundle, (String)localObject))
+    {
+      QLog.i("ReadInJoyIPCModule", 1, "[jumpToNativeChannel], jump to recommend channel, using floating window.");
+      return;
+    }
+    if (twr.a(paramBundle, (String)localObject, i))
+    {
+      QLog.i("ReadInJoyIPCModule", 1, "[jumpToNativeChannel], jump to mini game channel");
+      return;
+    }
+    if (bool) {}
+    for (localObject = "1"; prt.a((String)localObject, i); localObject = "0")
+    {
+      okj.a(paramBundle, i, str, k, 4);
+      return;
+    }
+    localObject = okj.b(paramBundle, 0, i);
+    if (!(paramBundle instanceof BaseActivity)) {
+      ((Intent)localObject).setFlags(268435456);
+    }
+    paramBundle.startActivity((Intent)localObject);
   }
   
-  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(Bundle paramBundle, int paramInt)
   {
-    paa localpaa = ozs.a();
-    String str;
-    if (paramBoolean1) {
-      str = "1";
+    ReadInJoyUserInfoModule.a(paramBundle.getLong("uin"), new psv(this, paramInt));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    boolean bool = true;
+    if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      QLog.i("ReadInJoyIPCModule", 1, "[onCall], runtime is not QQAppInterface.");
     }
-    for (;;)
+    label237:
+    do
     {
-      try
+      do
       {
-        localpaa.a("preload_reddot", str);
-        if (!paramBoolean2) {
-          continue;
+        do
+        {
+          do
+          {
+            return null;
+            if (!"action_native_channel_jump".equals(paramString)) {
+              break;
+            }
+          } while (paramBundle == null);
+          a(paramBundle);
+          return null;
+          if (!"action_viola_fragment_jump".equals(paramString)) {
+            break;
+          }
+        } while (paramBundle == null);
+        String str = paramBundle.getString("key_viola_fragment_jump_url", "");
+        paramInt = paramBundle.getInt("key_native_channel_id", 0);
+        if (prt.a(Uri.parse(str).getQueryParameter("ispush"), paramInt)) {
+          try
+          {
+            if (str.contains("v_url_base64")) {}
+            for (paramString = bfvp.c(Uri.parse(str).getQueryParameter("v_url_base64")); BaseActivity.sTopActivity == null; paramString = URLDecoder.decode(Uri.parse(str).getQueryParameter("v_url"), "utf-8"))
+            {
+              paramBundle = BaseApplicationImpl.getContext();
+              tgc.a(paramBundle, null, paramString, null);
+              return null;
+            }
+          }
+          catch (Exception paramString)
+          {
+            for (;;)
+            {
+              QLog.e("ReadInJoyIPCModule", 1, "call viola page error = " + paramString.getMessage());
+              paramString = null;
+              continue;
+              paramBundle = BaseActivity.sTopActivity;
+            }
+          }
         }
-        str = "1";
-        localpaa.a("has_exception", str);
-      }
-      catch (JSONException localJSONException)
+        paramInt = paramBundle.getInt("key_native_channel_change_order", 0);
+        if (BaseActivity.sTopActivity == null)
+        {
+          paramString = BaseApplicationImpl.getContext();
+          if (paramInt != 1) {
+            break label237;
+          }
+        }
+        for (;;)
+        {
+          prt.a(paramString, str, bool);
+          return null;
+          paramString = BaseActivity.sTopActivity;
+          break;
+          bool = false;
+        }
+        if ("action_update_biu_and_comment_switch_action".equals(paramString))
+        {
+          bool = ooy.a();
+          paramString = new Bundle();
+          paramString.putBoolean("action_update_biu_and_comment_switch", bool);
+          callbackResult(paramInt, EIPCResult.createResult(0, paramString));
+          return null;
+        }
+        if (!"action_update_biu_and_comment_request_action".equals(paramString)) {
+          break;
+        }
+        paramString = (Intent)paramBundle.getParcelable("action_update_biu_and_comment_request");
+      } while (paramString == null);
+      paramBundle = new ooz();
+      UiApiPlugin.a(paramString, paramBundle, paramString.getStringExtra("arg_callback"), new psu(this, paramInt, paramBundle));
+      return null;
+      if ("action_get_user_info_action".equals(paramString))
       {
-        QLog.d("FeedsPreloadDataReport", 1, "reportTriggerFeedsPreload, e = ", localJSONException);
-        continue;
+        a(paramBundle, paramInt);
+        return null;
       }
-      a("0X8009C13", localpaa.a());
-      return;
-      str = "0";
-      continue;
-      str = "0";
-    }
+    } while (!"action_get_app_type_action".equals(paramString));
+    paramString = new Bundle();
+    paramString.putInt("action_get_app_type", uhv.c());
+    callbackResult(paramInt, EIPCResult.createResult(0, paramString));
+    return null;
   }
 }
 

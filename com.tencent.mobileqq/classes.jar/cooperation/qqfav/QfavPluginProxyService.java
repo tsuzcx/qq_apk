@@ -2,10 +2,10 @@ package cooperation.qqfav;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bmgk;
-import bmgt;
-import bmlq;
-import bmlx;
+import bkkq;
+import bkkz;
+import bkpx;
+import bkqe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -14,31 +14,31 @@ import mqq.app.AppRuntime;
 public class QfavPluginProxyService
   extends PluginProxyService
 {
-  private static bmlq jdField_a_of_type_Bmlq;
-  private static bmlx jdField_a_of_type_Bmlx;
+  private static bkpx jdField_a_of_type_Bkpx;
+  private static bkqe jdField_a_of_type_Bkqe;
   
-  public static bmlq a()
+  public static bkpx a()
   {
-    if (jdField_a_of_type_Bmlq == null) {}
+    if (jdField_a_of_type_Bkpx == null) {}
     try
     {
-      if (jdField_a_of_type_Bmlq == null) {
-        jdField_a_of_type_Bmlq = new bmlq(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bkpx == null) {
+        jdField_a_of_type_Bkpx = new bkpx(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bmlq;
+      return jdField_a_of_type_Bkpx;
     }
     finally {}
   }
   
-  public static bmlx a()
+  public static bkqe a()
   {
-    if (jdField_a_of_type_Bmlx == null) {}
+    if (jdField_a_of_type_Bkqe == null) {}
     try
     {
-      if (jdField_a_of_type_Bmlx == null) {
-        jdField_a_of_type_Bmlx = new bmlx(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bkqe == null) {
+        jdField_a_of_type_Bkqe = new bkqe(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bmlx;
+      return jdField_a_of_type_Bkqe;
     }
     finally {}
   }
@@ -47,22 +47,22 @@ public class QfavPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QfavPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bmgt localbmgt = new bmgt(0);
-    localbmgt.b = "qqfav.apk";
-    localbmgt.d = "qqfav.apk";
-    localbmgt.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbmgt.e = paramString;
-    localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbmgt.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bmgk.c(paramAppRuntime.getApplication(), localbmgt);
+    bkkz localbkkz = new bkkz(0);
+    localbkkz.b = "qqfav.apk";
+    localbkkz.d = "qqfav.apk";
+    localbkkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbkkz.e = paramString;
+    localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbkkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bkkq.c(paramAppRuntime.getApplication(), localbkkz);
   }
   
   public static boolean a()
   {
-    bmlq localbmlq = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbmlq.getCmd()))
+    bkpx localbkpx = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbkpx.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbmlq);
+      PluginCommunicationHandler.getInstance().register(localbkpx);
       return true;
     }
     return false;

@@ -1,22 +1,16 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-
 public class ajye
-  implements URLDrawable.URLDrawableListener
 {
-  public ajye(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public ajye() {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public ajye(String paramString1, String paramString2, long paramLong)
   {
-    EmoticonGroupStoreFragment.a(this.a).invalidate();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

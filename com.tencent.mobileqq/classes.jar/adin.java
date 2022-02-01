@@ -1,42 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adin
-  implements adbw
+  implements aroz
 {
-  public int a()
+  public adin(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void enterAio(String paramString1, String paramString2)
   {
-    return 7400;
+    aros.a(this.a, paramString1, paramString2);
   }
   
-  public boolean a()
+  public void showCampusVerifyDialog(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    return false;
+    aros.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void showMatchCountDialog()
   {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(144);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().o(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    aros.a(this.a);
   }
   
-  public int b()
+  public void showToast(int paramInt)
   {
-    return 3014;
+    aros.a(this.a, this.a.getString(paramInt));
   }
 }
 

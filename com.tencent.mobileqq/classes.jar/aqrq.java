@@ -1,14 +1,19 @@
-import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverConfig;
 
-public abstract interface aqrq
+public final class aqrq
+  implements Parcelable.Creator<PrecoverConfig>
 {
-  public abstract void a(int paramInt);
+  public PrecoverConfig a(Parcel paramParcel)
+  {
+    return new PrecoverConfig(paramParcel);
+  }
   
-  public abstract void a(Context paramContext, int paramInt1, int paramInt2);
-  
-  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void stop();
+  public PrecoverConfig[] a(int paramInt)
+  {
+    return new PrecoverConfig[paramInt];
+  }
 }
 
 

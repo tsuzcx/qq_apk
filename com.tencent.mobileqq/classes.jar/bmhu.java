@@ -1,52 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.AbstractPluginCommunicationChannel;
-import mqq.app.AppRuntime;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bmhu
-  extends AbstractPluginCommunicationChannel
+  implements bmob
 {
-  private QQAppInterface a()
+  public bmhu(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
+    if (AEEditorImageEditFragment.a(this.a).getVisibility() == 0)
+    {
+      Rect localRect = new Rect();
+      AEEditorImageEditFragment.a(this.a).getGlobalVisibleRect(localRect);
+      if (!localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+        AEEditorImageEditFragment.a(this.a);
+      }
     }
-    return null;
+    return false;
   }
   
-  public String getNickName()
+  public boolean b(MotionEvent paramMotionEvent)
   {
-    String str = null;
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      str = localQQAppInterface.getCurrentNickname();
-    }
-    return str;
-  }
-  
-  public String getSKey()
-  {
-    String str = null;
-    if (a() != null) {
-      str = "getSKey";
-    }
-    return str;
-  }
-  
-  public String getSid()
-  {
-    throw new RuntimeException("NotSupported!");
-  }
-  
-  public long getUin()
-  {
-    long l = 0L;
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      l = localQQAppInterface.getLongAccountUin();
-    }
-    return l;
+    return false;
   }
 }
 

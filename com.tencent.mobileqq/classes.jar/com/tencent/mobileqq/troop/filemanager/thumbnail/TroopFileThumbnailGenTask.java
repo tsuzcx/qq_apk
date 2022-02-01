@@ -2,23 +2,23 @@ package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
 import android.text.TextUtils;
 import android.util.Pair;
-import aunj;
-import auog;
-import avpw;
-import avqh;
-import azru;
-import bfva;
-import bfvr;
-import bfxi;
-import bfxj;
-import bfxk;
-import bgsk;
-import bguk;
-import bhmi;
+import aszt;
+import aucy;
+import audj;
+import ayfc;
+import beel;
+import befc;
+import begt;
+import begu;
+import begv;
+import bfby;
+import bfdy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class TroopFileThumbnailGenTask
 {
   protected int a;
   protected long a;
-  protected bfxj a;
+  protected begu a;
   protected TroopFileTransferManager.Item a;
   protected String a;
   protected Timer a;
@@ -41,18 +41,18 @@ public class TroopFileThumbnailGenTask
   protected String e;
   protected String f;
   
-  protected TroopFileThumbnailGenTask(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, bfxj parambfxj)
+  protected TroopFileThumbnailGenTask(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, begu parambegu)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    this.jdField_a_of_type_Bfxj = parambfxj;
+    this.jdField_a_of_type_Begu = parambegu;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = bfxi.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id, paramInt);
+    this.jdField_a_of_type_JavaLangString = begt.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id, paramInt);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) {}
-    for (paramItem = auog.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile);; paramItem = auog.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName))
+    for (paramItem = FileUtil.getExtension(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile);; paramItem = FileUtil.getExtension(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName))
     {
-      if (aunj.a(paramItem) == 2) {
+      if (aszt.a(paramItem) == 2) {
         this.jdField_b_of_type_Boolean = true;
       }
       if (TextUtils.isEmpty(paramString)) {
@@ -64,34 +64,34 @@ public class TroopFileThumbnailGenTask
     this.f = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile;
   }
   
-  public static TroopFileThumbnailGenTask a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, bfxj parambfxj)
+  public static TroopFileThumbnailGenTask a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, begu parambegu)
   {
     if (paramLong == 0L)
     {
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "getTask. troopuin=0");
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "getTask. troopuin=0");
       return null;
     }
     if (paramItem == null)
     {
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "getTask. item=null");
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "getTask. item=null");
       return null;
     }
     if (paramItem.Id == null)
     {
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "getTask. item.id=null");
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "getTask. item.id=null");
       return null;
     }
     if (paramInt == 0)
     {
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "getTask. nThumbSize=0");
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "getTask. nThumbSize=0");
       return null;
     }
     if ((TextUtils.isEmpty(paramString)) && (TextUtils.isEmpty(paramItem.LocalFile)))
     {
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "getTask. localfilepath=null");
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "getTask. localfilepath=null");
       return null;
     }
-    return new TroopFileThumbnailGenTask(paramLong, paramItem, paramInt, paramString, parambfxj);
+    return new TroopFileThumbnailGenTask(paramLong, paramItem, paramInt, paramString, parambegu);
   }
   
   private void a(long paramLong)
@@ -116,53 +116,53 @@ public class TroopFileThumbnailGenTask
     // Byte code:
     //   0: aconst_null
     //   1: aload_0
-    //   2: getfield 70	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:f	Ljava/lang/String;
-    //   5: invokestatic 126	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   2: getfield 71	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:f	Ljava/lang/String;
+    //   5: invokestatic 128	com/tencent/mobileqq/shortvideo/ShortVideoUtils:getVideoThumbnail	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   8: astore_3
     //   9: aload_3
     //   10: ifnull +80 -> 90
     //   13: aload_0
-    //   14: getfield 128	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
-    //   17: invokestatic 133	bhmi:d	(Ljava/lang/String;)Z
+    //   14: getfield 130	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
+    //   17: invokestatic 136	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   20: pop
-    //   21: new 135	com/tencent/mm/vfs/VFSFile
+    //   21: new 138	com/tencent/mm/vfs/VFSFile
     //   24: dup
     //   25: aload_0
-    //   26: getfield 128	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
-    //   29: invokespecial 138	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   26: getfield 130	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
+    //   29: invokespecial 141	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   32: astore_1
     //   33: aload_1
-    //   34: invokevirtual 142	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
+    //   34: invokevirtual 145	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
     //   37: pop
-    //   38: new 144	java/io/BufferedOutputStream
+    //   38: new 147	java/io/BufferedOutputStream
     //   41: dup
-    //   42: new 146	java/io/FileOutputStream
+    //   42: new 149	java/io/FileOutputStream
     //   45: dup
     //   46: aload_0
-    //   47: getfield 128	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
-    //   50: invokespecial 147	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   53: invokespecial 150	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   47: getfield 130	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
+    //   50: invokespecial 150	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   53: invokespecial 153	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   56: astore_2
     //   57: aload_2
     //   58: astore_1
     //   59: aload_3
-    //   60: getstatic 156	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   60: getstatic 159	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   63: bipush 100
     //   65: aload_2
-    //   66: invokevirtual 162	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   66: invokevirtual 165	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   69: pop
     //   70: aload_2
     //   71: astore_1
     //   72: aload_3
-    //   73: invokevirtual 165	android/graphics/Bitmap:recycle	()V
+    //   73: invokevirtual 168	android/graphics/Bitmap:recycle	()V
     //   76: aload_2
     //   77: astore_1
     //   78: aload_2
-    //   79: invokevirtual 168	java/io/BufferedOutputStream:flush	()V
+    //   79: invokevirtual 171	java/io/BufferedOutputStream:flush	()V
     //   82: aload_2
     //   83: ifnull +7 -> 90
     //   86: aload_2
-    //   87: invokevirtual 171	java/io/BufferedOutputStream:close	()V
+    //   87: invokevirtual 174	java/io/BufferedOutputStream:close	()V
     //   90: iconst_0
     //   91: ireturn
     //   92: astore_1
@@ -170,7 +170,7 @@ public class TroopFileThumbnailGenTask
     //   95: ireturn
     //   96: astore_1
     //   97: aload_1
-    //   98: invokevirtual 174	java/lang/Exception:printStackTrace	()V
+    //   98: invokevirtual 177	java/lang/Exception:printStackTrace	()V
     //   101: iconst_0
     //   102: ireturn
     //   103: astore_1
@@ -182,16 +182,16 @@ public class TroopFileThumbnailGenTask
     //   110: aload_2
     //   111: astore_1
     //   112: aload_3
-    //   113: invokevirtual 175	java/io/FileNotFoundException:printStackTrace	()V
+    //   113: invokevirtual 178	java/io/FileNotFoundException:printStackTrace	()V
     //   116: aload_2
     //   117: ifnull +45 -> 162
     //   120: aload_2
-    //   121: invokevirtual 171	java/io/BufferedOutputStream:close	()V
+    //   121: invokevirtual 174	java/io/BufferedOutputStream:close	()V
     //   124: iconst_m1
     //   125: ireturn
     //   126: astore_1
     //   127: aload_1
-    //   128: invokevirtual 174	java/lang/Exception:printStackTrace	()V
+    //   128: invokevirtual 177	java/lang/Exception:printStackTrace	()V
     //   131: iconst_m1
     //   132: ireturn
     //   133: astore_2
@@ -200,12 +200,12 @@ public class TroopFileThumbnailGenTask
     //   136: aload_1
     //   137: ifnull +7 -> 144
     //   140: aload_1
-    //   141: invokevirtual 171	java/io/BufferedOutputStream:close	()V
+    //   141: invokevirtual 174	java/io/BufferedOutputStream:close	()V
     //   144: aload_2
     //   145: athrow
     //   146: astore_1
     //   147: aload_1
-    //   148: invokevirtual 174	java/lang/Exception:printStackTrace	()V
+    //   148: invokevirtual 177	java/lang/Exception:printStackTrace	()V
     //   151: goto -7 -> 144
     //   154: astore_2
     //   155: goto -19 -> 136
@@ -276,10 +276,10 @@ public class TroopFileThumbnailGenTask
         i = 2;
       }
     }
-    while (bgsk.a(this.f, this.d, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int)) {
+    while (bfby.a(this.f, this.d, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int)) {
       try
       {
-        boolean bool = azru.a(this.f, this.d, true, "", i);
+        boolean bool = ayfc.a(this.f, this.d, true, "", i);
         if (!bool) {
           break;
         }
@@ -326,24 +326,24 @@ public class TroopFileThumbnailGenTask
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped");
+      befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped");
       return;
     }
-    bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop.");
+    befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop.");
     e();
     this.jdField_a_of_type_Boolean = true;
-    bfxk.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+    begv.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
     if (!TextUtils.isEmpty(this.d)) {
-      bhmi.d(this.d);
+      FileUtils.deleteFile(this.d);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-    bfva.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    beel.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
   }
   
   protected void a(int paramInt, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Boolean) {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr but had stop. errCode:" + paramInt);
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr but had stop. errCode:" + paramInt);
     }
     do
     {
@@ -351,14 +351,14 @@ public class TroopFileThumbnailGenTask
       e();
       this.jdField_a_of_type_Boolean = true;
       if (!TextUtils.isEmpty(this.d)) {
-        bhmi.d(this.d);
+        FileUtils.deleteFile(this.d);
       }
-      bfxk.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr  errCode:" + paramInt + " passvieErr:" + paramBoolean);
+      begv.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr  errCode:" + paramInt + " passvieErr:" + paramBoolean);
       this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      bfva.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-    } while ((paramBoolean) || (this.jdField_a_of_type_Bfxj == null));
-    this.jdField_a_of_type_Bfxj.a(a(), false, paramInt, this);
+      beel.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    } while ((paramBoolean) || (this.jdField_a_of_type_Begu == null));
+    this.jdField_a_of_type_Begu.a(a(), false, paramInt, this);
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString)
@@ -370,27 +370,27 @@ public class TroopFileThumbnailGenTask
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] doSuc but had stop.");
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] doSuc but had stop.");
       return;
     }
     e();
     this.jdField_a_of_type_Boolean = true;
-    if ((!paramBoolean1) && (!aunj.a(new VFSFile(this.d), new VFSFile(this.e))))
+    if ((!paramBoolean1) && (!aszt.a(new VFSFile(this.d), new VFSFile(this.e))))
     {
-      bfvr.a("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
-      if (bhmi.b(this.e))
+      befc.a("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
+      if (FileUtils.fileExistsAndNotEmpty(this.e))
       {
-        a(bguk.o, false);
+        a(bfdy.o, false);
         return;
       }
     }
     d();
-    bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenSuc  mFilePath:" + this.e + " bHit:" + paramBoolean1 + " bPassiveEnd:" + paramBoolean2);
+    befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenSuc  mFilePath:" + this.e + " bHit:" + paramBoolean1 + " bPassiveEnd:" + paramBoolean2);
     if (!paramBoolean1) {
       this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
     }
     Object localObject1;
-    if (avqh.a().i()) {
+    if (audj.a().i()) {
       if (this.f.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) {
         localObject1 = new File(this.e);
       }
@@ -399,19 +399,19 @@ public class TroopFileThumbnailGenTask
     {
       try
       {
-        localObject1 = avpw.a(BaseApplicationImpl.getContext(), (File)localObject1);
+        localObject1 = aucy.a(BaseApplicationImpl.getContext(), (File)localObject1);
         if (localObject1 != null)
         {
           this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.strQRUrl = ((StringBuilder)((Pair)localObject1).first).toString();
           if (QLog.isDevelopLevel()) {
             QLog.i("IMG_FILE_QR", 1, "TroopFIleThumbGenTask success:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.strQRUrl);
           }
-          bfva.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-          bfva.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-          if ((paramBoolean2) || (this.jdField_a_of_type_Bfxj == null)) {
+          beel.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+          beel.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+          if ((paramBoolean2) || (this.jdField_a_of_type_Begu == null)) {
             break;
           }
-          this.jdField_a_of_type_Bfxj.a(a(), true, 0, this);
+          this.jdField_a_of_type_Begu.a(a(), true, 0, this);
           return;
         }
       }
@@ -422,7 +422,7 @@ public class TroopFileThumbnailGenTask
         }
         Object localObject2 = null;
         continue;
-        if (avpw.jdField_a_of_type_Boolean)
+        if (aucy.jdField_a_of_type_Boolean)
         {
           this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.strQRUrl = null;
           continue;
@@ -440,7 +440,7 @@ public class TroopFileThumbnailGenTask
   {
     this.jdField_a_of_type_Boolean = false;
     a(90000L);
-    bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start.");
+    befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start.");
     ThreadManager.post(this, 5, null, true);
     return true;
   }
@@ -452,7 +452,7 @@ public class TroopFileThumbnailGenTask
   
   public void b()
   {
-    bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] passiveStart.");
+    befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] passiveStart.");
     this.jdField_a_of_type_Boolean = false;
     a(90000L);
   }
@@ -467,40 +467,40 @@ public class TroopFileThumbnailGenTask
     if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c))) {
       return;
     }
-    this.jdField_b_of_type_JavaLangString = bfxk.a();
+    this.jdField_b_of_type_JavaLangString = begv.a();
     this.c = this.jdField_b_of_type_JavaLangString;
   }
   
   protected void d()
   {
-    bfxk.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-    bfxk.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
+    begv.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+    begv.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
   }
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. but had stop");
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. but had stop");
       return;
     }
     c();
     this.e = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     this.d = (this.e + ".ttmp");
-    bfvr.c("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. mTmpFilePath:" + this.d + " thumbPath:" + this.e);
-    if (bhmi.b(this.e))
+    befc.c("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. mTmpFilePath:" + this.d + " thumbPath:" + this.e);
+    if (FileUtils.fileExistsAndNotEmpty(this.e))
     {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] thumb had exsited");
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] thumb had exsited");
       a(true, false);
       return;
     }
-    if (!bhmi.b(this.f))
+    if (!FileUtils.fileExistsAndNotEmpty(this.f))
     {
-      bfvr.b("TroopFileThumbnailGenTask", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] origfile is no exsit");
+      befc.b("TroopFileThumbnailGenTask", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] origfile is no exsit");
       a(-111, false);
       return;
     }
-    bhmi.d(this.d);
+    FileUtils.deleteFile(this.d);
     VFSFile localVFSFile = new VFSFile(this.d);
     for (;;)
     {

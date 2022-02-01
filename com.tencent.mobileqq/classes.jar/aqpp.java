@@ -1,135 +1,43 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
-@TargetApi(9)
-public class aqpp
+public class aqpp<T>
 {
-  private static aqpp jdField_a_of_type_Aqpp;
-  private static Camera.CameraInfo[] jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
-  private final int jdField_a_of_type_Int;
-  private aqqj jdField_a_of_type_Aqqj = aqqj.a();
-  private final Camera.CameraInfo[] jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
-  private int jdField_b_of_type_Int = -1;
-  private int c = -1;
-  private int d = -1;
+  private LruCache<String, T> a = new aqpq(this, (int)Runtime.getRuntime().maxMemory() / 32);
   
-  private aqpp()
+  private static int a(Bitmap paramBitmap)
   {
-    int i;
-    if (jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo != null)
-    {
-      this.jdField_a_of_type_Int = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo.length;
-      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
-      i = k;
-      if (i >= this.jdField_a_of_type_Int) {
-        return;
-      }
-      if ((this.c != -1) || (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing != 0)) {
-        break label203;
-      }
-      this.c = i;
+    if (paramBitmap == null) {
+      return 0;
     }
-    for (;;)
-    {
-      i += 1;
-      break;
-      this.jdField_a_of_type_Int = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraHolder", 1, "[CameraHolder] mNumberOfCameras = " + this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = new Camera.CameraInfo[this.jdField_a_of_type_Int];
-      int j = 0;
-      for (;;)
-      {
-        i = k;
-        if (j >= this.jdField_a_of_type_Int) {
-          break;
-        }
-        this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j] = new Camera.CameraInfo();
-        try
-        {
-          Camera.getCameraInfo(j, this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j]);
-          j += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("Q.camera.CameraHolder", 2, localException, new Object[0]);
-          }
-        }
-      }
-      label203:
-      if ((this.d == -1) && (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing == 1)) {
-        this.d = i;
-      }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+  }
+  
+  private int b(T paramT)
+  {
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
     }
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
   }
   
-  /* Error */
-  public static aqpp a()
+  protected int a(T paramT)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 90	aqpp:jdField_a_of_type_Aqpp	Laqpp;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 90	aqpp:jdField_a_of_type_Aqpp	Laqpp;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	aqpp
-    //   21: dup
-    //   22: invokespecial 91	aqpp:<init>	()V
-    //   25: putstatic 90	aqpp:jdField_a_of_type_Aqpp	Laqpp;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 90	aqpp:jdField_a_of_type_Aqpp	Laqpp;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localaqpp	aqpp
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
+    return 0;
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return aqqj.a().b();
-  }
-  
-  public aqqj a()
-  {
-    return aqqj.a();
-  }
-  
-  public Camera.CameraInfo[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+    try
+    {
+      this.a.trimToSize(paramInt);
+      return;
+    }
+    finally {}
   }
 }
 

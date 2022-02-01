@@ -1,13 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class xau
-  extends wip
+public class xau
+  extends QQUIEventReceiver<xas, voc>
 {
-  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
-  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
+  public xau(@NonNull xas paramxas)
+  {
+    super(paramxas);
+  }
+  
+  public void a(@NonNull xas paramxas, @NonNull voc paramvoc)
+  {
+    if ((paramxas.a == null) || (paramvoc.a == null) || (!TextUtils.equals(paramxas.a.a, paramvoc.a.mVid))) {}
+    do
+    {
+      return;
+      paramxas.i();
+      paramxas = (wsm)paramxas.a(wsm.class);
+    } while (paramxas == null);
+    paramxas.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return voc.class;
+  }
 }
 
 

@@ -1,31 +1,67 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class boeb
-  extends BroadcastReceiver
+public class boeb
 {
-  boeb(boea paramboea) {}
+  private static float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+  public int a;
+  public boec a;
+  private boed jdField_a_of_type_Boed;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private AtomicInteger b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a()
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(0);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boed != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
-      {
-      }
-    }
-    do
-    {
+      this.jdField_a_of_type_Boed.a();
       return;
-      paramContext = this.a.a.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramContext.finish();
+    }
+    b();
+  }
+  
+  public void a(int paramInt, Object paramObject, boolean paramBoolean)
+  {
+    boolean bool = true;
+    boec localboec = this.jdField_a_of_type_Boec;
+    if (paramInt == 1) {}
+    for (;;)
+    {
+      localboec.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Boec.jdField_a_of_type_JavaLangObject = paramObject;
+      this.jdField_a_of_type_Boec.b = paramBoolean;
+      return;
+      bool = false;
+    }
+  }
+  
+  public int b()
+  {
+    return this.b.getAndSet(1);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
+  }
+  
+  public int c()
+  {
+    return this.b.getAndAdd(0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(2);
   }
 }
 

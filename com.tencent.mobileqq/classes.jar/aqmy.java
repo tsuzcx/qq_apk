@@ -1,45 +1,66 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.text.TextUtils;
 
-public class aqmy
-  implements BusinessObserver
+public abstract class aqmy
 {
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void b(boolean paramBoolean, String paramString) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static int a(Context paramContext)
   {
-    switch (paramInt)
+    try
     {
-    default: 
-      return;
-    case 1: 
-      paramInt = paramBundle.getInt("resp_result", 0);
-      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
-      return;
-    case 2: 
-      a(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 3: 
-      b(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 4: 
-      a(paramBoolean);
-      return;
+      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+      return i;
     }
-    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
+    catch (Exception paramContext) {}
+    return 0;
+  }
+  
+  public static int a(Context paramContext, String paramString)
+  {
+    try
+    {
+      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
+      return i;
+    }
+    catch (Exception paramContext) {}
+    return 0;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "";
+  }
+  
+  public static boolean a(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return false;
+      paramContext = paramContext.getPackageManager();
+      try
+      {
+        paramString = paramContext.getApplicationInfo(paramString, 0);
+        if (paramString != null) {
+          return true;
+        }
+      }
+      catch (PackageManager.NameNotFoundException paramString) {}
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmy
  * JD-Core Version:    0.7.0.1
  */

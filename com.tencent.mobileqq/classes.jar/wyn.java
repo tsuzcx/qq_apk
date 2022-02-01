@@ -1,55 +1,36 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class wyn
+public final class wyn
+  extends QQUIEventReceiver<wyc, wbm>
 {
-  public int a;
-  public String a;
-  public int b;
-  
-  public wyn()
+  public wyn(@NonNull wyc paramwyc)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    wta localwta = (wta)wth.a(10);
-    String str = zof.a();
-    this.jdField_a_of_type_JavaLangString = ((String)localwta.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_Int = ((Integer)localwta.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
-    this.b = ((Integer)localwta.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
+    super(paramwyc);
+  }
+  
+  public void a(@NonNull wyc paramwyc, @NonNull wbm paramwbm)
+  {
+    if ((paramwbm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbm.jdField_a_of_type_JavaUtilList != null) && (paramwyc.a != null))
     {
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localwta.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localwta.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+      paramwbm = paramwbm.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwbm.hasNext())
+      {
+        vwa localvwa = (vwa)paramwbm.next();
+        if (TextUtils.equals(paramwyc.a.b, localvwa.a)) {
+          paramwyc.i();
+        }
+      }
     }
-    yuk.a(wyd.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    b();
-    this.jdField_a_of_type_Int += 1;
-    ((wta)wth.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
-    yuk.a(wyd.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a()
-  {
-    b();
-    yuk.a(wyd.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-    return this.jdField_a_of_type_Int < this.b;
-  }
-  
-  public void b()
-  {
-    String str = zof.a();
-    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
-    {
-      wta localwta = (wta)wth.a(10);
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localwta.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localwta.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
-    }
+    return wbm.class;
   }
 }
 

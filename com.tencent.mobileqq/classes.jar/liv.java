@@ -1,28 +1,8 @@
-import android.content.Context;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
 
-public class liv
+public abstract interface liv
 {
-  public static lir a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
-  {
-    VideoAppInterface localVideoAppInterface = null;
-    if (AudioHelper.f()) {
-      QLog.w("ARZimuTaskFactory", 1, "create, id[" + paramString + "], seq[" + paramLong + "]");
-    }
-    if ("spit".equals(paramString))
-    {
-      paramVideoAppInterface = new lja(paramLong, paramVideoAppInterface);
-      localVideoAppInterface = paramVideoAppInterface;
-      if ((paramContext instanceof ljb))
-      {
-        ((lja)paramVideoAppInterface).a((ljb)paramContext);
-        localVideoAppInterface = paramVideoAppInterface;
-      }
-    }
-    return localVideoAppInterface;
-  }
+  public abstract VideoController a();
 }
 
 

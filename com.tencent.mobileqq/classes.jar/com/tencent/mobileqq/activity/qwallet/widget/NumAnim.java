@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
+import amtj;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -9,7 +10,6 @@ import android.text.style.StyleSpan;
 import android.text.style.SuperscriptSpan;
 import android.util.SparseArray;
 import android.widget.TextView;
-import anzj;
 import com.tencent.qphone.base.util.QLog;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -24,7 +24,7 @@ public class NumAnim
   public static final int REGION_PREFFIX = 1;
   public static final int REGION_SUFFIX = 3;
   private static final String TAG = "NumAnim";
-  public static final String WAN = anzj.a(2131706558);
+  public static final String WAN = amtj.a(2131706788);
   static DecimalFormat decimalFormatTo1;
   static DecimalFormat decimalFormatTo2 = new DecimalFormat("0.00");
   final boolean changeDip;
@@ -131,9 +131,6 @@ public class NumAnim
           if (((Boolean)this.mBold.get(1, Boolean.valueOf(false))).booleanValue()) {
             localSpannableString.setSpan(new StyleSpan(1), 0, j, 33);
           }
-        }
-        if (((Boolean)this.mBold.get(2, Boolean.valueOf(true))).booleanValue()) {
-          localSpannableString.setSpan(new StyleSpan(1), j, i, 33);
         }
         localSpannableString.setSpan(new AbsoluteSizeSpan(this.fontSize, this.changeDip), j, i, 33);
         if (i < k)

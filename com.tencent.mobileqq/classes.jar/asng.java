@@ -1,28 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
-class asng
-  implements View.OnClickListener
+public class asng
+  extends baum<bayt, bbhb>
 {
-  asng(asnf paramasnf) {}
+  public asng(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void onClick(View paramView)
+  protected bbbn<bayt, bbhb> a(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - asnf.a(this.a) > 1000L)
-    {
-      asnf.a(this.a, l);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("AECAMERA_MODE", 202);
-      localBundle.putInt("VIDEO_STORY_FROM_TYPE", born.i.a());
-      borr.a((BaseActivity)this.a.a.a, 120, localBundle);
-      bdll.b(((BaseActivity)this.a.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new asni();
+  }
+  
+  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new asnk(paramViewGroup);
   }
 }
 

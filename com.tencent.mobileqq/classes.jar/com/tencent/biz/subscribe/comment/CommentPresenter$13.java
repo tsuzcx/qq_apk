@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaiu;
 import android.widget.ListView;
+import zfs;
 
 public class CommentPresenter$13
   implements Runnable
 {
-  public CommentPresenter$13(aaiu paramaaiu) {}
+  public CommentPresenter$13(zfs paramzfs) {}
   
   public void run()
   {
-    aaiu.b(this.this$0);
+    zfs.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }

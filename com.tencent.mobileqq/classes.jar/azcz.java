@@ -1,449 +1,288 @@
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.InetAddress;
-import java.util.Collections;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.Vector;
 
 public class azcz
-  implements beuq
+  implements afrc
 {
-  private static int jdField_a_of_type_Int = 3;
-  static beup jdField_a_of_type_Beup = new azda();
-  private beuo jdField_a_of_type_Beuo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<azdb> jdField_a_of_type_JavaUtilList = new Vector();
-  Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private int jdField_a_of_type_Int = 12;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  public QQCustomDialog a;
   
-  public azcz(QQAppInterface paramQQAppInterface)
+  public azcz(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    if (paramBaseChatPie != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp().getEntityManagerFactory().createEntityManager();
+    }
   }
   
-  public static String a()
+  private aubx a(byte[] paramArrayOfByte)
   {
-    if (bhjr.a()) {
-      return antf.ba + "OlympicRes/";
+    try
+    {
+      paramArrayOfByte = aucg.a(new String(paramArrayOfByte, "utf-8"));
+      return paramArrayOfByte;
     }
-    return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "OlympicRes/";
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public static String a(String paramString)
+  private void a(EntityManager paramEntityManager, long paramLong)
   {
-    String str = a() + paramString + "_dir" + File.separator;
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicResources", 2, "getUncompressedZipFileDir ,md = " + paramString + ",dir = " + str);
-    }
-    return str;
+    azdf.a().a(paramEntityManager, paramLong, new azda(this));
   }
   
-  private void a(String paramString1, String paramString2, Object paramObject, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
+  private void a(PushDialogTemplate paramPushDialogTemplate, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicResources", 2, "retry.url" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject + ",retryCount=" + paramInt1);
+    if ((paramInt == 103) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)) {
+      azdf.a().a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramPushDialogTemplate);
     }
-    if (this.jdField_a_of_type_Beuo == null) {
-      this.jdField_a_of_type_Beuo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    }
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_Beuq = this;
-    localbeum.jdField_a_of_type_JavaLangString = paramString1;
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.c = paramString3;
-    localbeum.d = 1;
-    localbeum.a(new Object[] { paramString2, paramObject, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-    localbeum.jdField_a_of_type_Beup = jdField_a_of_type_Beup;
-    this.jdField_a_of_type_Beuo.a(localbeum);
   }
   
-  public static boolean a(String paramString)
+  private void a(QQCustomDialog paramQQCustomDialog, aubx paramaubx, PushDialogTemplate paramPushDialogTemplate)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    paramaubx = paramaubx.a();
+    if (paramaubx.a() != 6) {}
+    Object localObject3;
+    Object localObject2;
+    label438:
     do
     {
-      return false;
-      paramString = new File(a() + paramString);
-    } while ((paramString == null) || (!paramString.exists()));
-    return true;
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicResources", 2, "isNeedDownload ,md = " + paramString1);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_JavaUtilSet.contains(paramString1))) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        String str = a();
-        paramString2 = new File(str + paramString1 + paramString2);
-        if (!paramString2.exists())
-        {
-          this.jdField_a_of_type_JavaUtilSet.add(paramString1);
-          if (QLog.isColorLevel()) {
-            QLog.d("OlympicResources", 2, "isNeedDownload. file not exist,md = " + paramString1 + ",file = " + paramString2.getAbsolutePath());
-          }
-          return true;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("OlympicResources", 2, "isNeedDownload.exception happen.e=" + paramString1.getMessage());
-        }
-        paramString1.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
-  public void a(azdb paramazdb)
-  {
-    if (paramazdb == null) {}
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramazdb)) {
       return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramazdb);
-  }
-  
-  public boolean a(String paramString1, String paramString2, Object paramObject, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicResources", 2, "downLoad.url" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject);
-    }
-    if ((paramObject != null) && ((paramObject instanceof String)) && ("mp4".equals(paramObject))) {}
-    String str2;
-    for (String str1 = ".mp4";; str2 = "")
-    {
-      if (!a(paramString2, str1))
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("OlympicResources", 2, "downLoad.not need to download.md5=" + paramString2 + ",url=" + paramString1);
-        }
-        if ((paramObject != null) && ((paramObject instanceof String[])))
+        paramaubx = paramaubx.a();
+        if ((paramaubx != null) && (paramaubx.size() != 0))
         {
-          paramString1 = (String[])paramObject;
-          paramObject = paramString1[0];
-          if ((paramObject != null) && ("shuayishua_anim".equals(paramObject)))
+          paramaubx = paramaubx.iterator();
+          while (paramaubx.hasNext())
           {
-            str1 = a(paramString2);
-            localObject = str1 + "pullfire";
-            String str3 = str1 + "takefire";
-            String str4 = str1 + "firestart";
-            String str5 = str1 + "fire";
-            if ((bhmi.a((String)localObject)) && (bhmi.a(str3)) && (bhmi.a(str4)) && (bhmi.a(str5))) {}
-          }
-        }
-        try
-        {
-          localObject = new File(str1);
-          if (((File)localObject).exists()) {
-            ((File)localObject).delete();
-          }
-          bhmi.a(a() + paramString2, str1, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("OlympicResources", 2, "re un compressZip shuayishua_anim success.destDir=" + str1);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("OlympicResources", 2, "re un compressZip shuayishua_anim failed: " + localException.getMessage());
-            }
-          }
-        }
-        if ((paramObject != null) && ("ActConfig".equals(paramObject)))
-        {
-          paramString1 = paramString1[1];
-          if ((paramString1 != null) && ("TorchAnim".equals(paramString1)))
-          {
-            paramString1 = a(paramString2);
-            if (bhmi.a(paramString1 + "fire")) {}
-          }
-        }
-        try
-        {
-          paramObject = new File(paramString1);
-          if (paramObject.exists()) {
-            paramObject.delete();
-          }
-          bhmi.a(a() + paramString2, paramString1, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("OlympicResources", 2, "re un compressZip TorchAnim success.destDir=" + paramString1);
-          }
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("OlympicResources", 2, "re un compressZip TorchAnim failed: " + paramString1.getMessage());
-            }
-          }
-        }
-        return false;
-      }
-      if (paramBoolean2)
-      {
-        localObject = (OlympicManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(167);
-        if (localObject != null)
-        {
-          if (!((OlympicManager)localObject).a(paramString1))
-          {
-            azet.b("OlympicResources", new Object[] { "download, checkLimit == false, url=", paramString1 });
-            return true;
-          }
-          ((OlympicManager)localObject).a(paramString1, 1, false);
-        }
-      }
-      if (this.jdField_a_of_type_Beuo == null) {
-        this.jdField_a_of_type_Beuo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-      }
-      Object localObject = new beum();
-      ((beum)localObject).jdField_a_of_type_Beuq = this;
-      ((beum)localObject).jdField_a_of_type_JavaLangString = paramString1;
-      ((beum)localObject).jdField_a_of_type_Int = 0;
-      ((beum)localObject).c = (a() + paramString2 + localException);
-      ((beum)localObject).d = 1;
-      ((beum)localObject).a(new Object[] { paramString2, paramObject, Integer.valueOf(0), Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt) });
-      ((beum)localObject).jdField_a_of_type_Beup = jdField_a_of_type_Beup;
-      this.jdField_a_of_type_Beuo.a((bevl)localObject);
-      return true;
-    }
-  }
-  
-  public void b(azdb paramazdb)
-  {
-    if (paramazdb == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(paramazdb);
-  }
-  
-  public void onResp(bevm parambevm)
-  {
-    boolean bool1;
-    beum localbeum;
-    Object localObject2;
-    Object localObject1;
-    int i;
-    String str1;
-    label57:
-    Object localObject4;
-    Object localObject5;
-    int k;
-    boolean bool2;
-    int j;
-    long l;
-    if (parambevm.jdField_a_of_type_Int == 0)
-    {
-      bool1 = true;
-      localbeum = (beum)parambevm.jdField_a_of_type_Bevl;
-      localObject2 = new File(localbeum.c);
-      localObject1 = localbeum.a();
-      i = parambevm.b;
-      if (parambevm.jdField_a_of_type_JavaLangString != null) {
-        break label636;
-      }
-      str1 = "0";
-      if ((localObject1 == null) || (!(localObject1 instanceof Object[]))) {
-        break label888;
-      }
-      localObject1 = (Object[])localObject1;
-      localObject4 = (String)localObject1[0];
-      localObject5 = localObject1[1];
-      k = ((Integer)localObject1[2]).intValue();
-      bool2 = ((Boolean)localObject1[3]).booleanValue();
-      j = ((Integer)localObject1[4]).intValue();
-      if (!bool1) {
-        break label662;
-      }
-      if (this.jdField_a_of_type_JavaUtilSet.contains(localObject4)) {
-        this.jdField_a_of_type_JavaUtilSet.remove(localObject4);
-      }
-      localObject1 = azul.a(((File)localObject2).getAbsolutePath());
-      if (((String)localObject4).equals(localObject1)) {
-        break label645;
-      }
-      ((File)localObject2).delete();
-      bool1 = false;
-      QLog.i("OlympicResources", 1, "onResp.md5 verify fail.md5=" + (String)localObject4 + ",calMD5=" + (String)localObject1);
-      l = 0L;
-      i = -6103066;
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      label241:
-      HashMap localHashMap;
-      label267:
-      String str2;
-      Object localObject3;
-      if ((j == 1) || (j == 2))
-      {
-        if (j == 1)
-        {
-          localObject2 = "olympic_down_shua";
-          if (i != 0) {
-            break label807;
-          }
-          j = 1;
-          localHashMap = new HashMap();
-          localHashMap.put("param_FailCode", String.valueOf(i));
-          localHashMap.put("url", azet.a(localbeum.jdField_a_of_type_JavaLangString));
-          localHashMap.put("err_desc", str1);
-          str2 = "0";
-          localObject3 = str2;
-          if (parambevm.jdField_a_of_type_JavaUtilHashMap != null)
-          {
-            localObject3 = str2;
-            if (parambevm.jdField_a_of_type_JavaUtilHashMap.containsKey("netresp_param_reason")) {
-              localObject3 = (String)parambevm.jdField_a_of_type_JavaUtilHashMap.get("netresp_param_reason");
-            }
-          }
-          localHashMap.put("netresp_param_reason", localObject3);
-          str2 = "0";
-          if (j == 0) {
-            break label812;
-          }
-          localHashMap.put("file_size", String.valueOf(l));
-          localHashMap.put("cdn_ip", "0");
-          bdmc.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject2, true, 0L, l, localHashMap, "", false);
-          azet.b("OlympicResources", new Object[] { "onResp report Download, reportKey=", localObject2, ", errcode=", Integer.valueOf(i), ", url=", localbeum.jdField_a_of_type_JavaLangString });
-        }
-      }
-      else
-      {
-        localObject3 = localObject1;
-        localObject2 = localObject5;
-        localObject1 = localObject4;
-        label499:
-        if (QLog.isColorLevel()) {
-          QLog.i("OlympicResources", 2, "onResp.url=" + localbeum.jdField_a_of_type_JavaLangString + ", result=" + parambevm.jdField_a_of_type_Int + ", errCode=" + i + ",md5 = " + (String)localObject1);
-        }
-        j = 0;
-        for (;;)
-        {
-          if (j < this.jdField_a_of_type_JavaUtilList.size())
-          {
-            localObject4 = (azdb)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localObject4 != null) {
-              ((azdb)localObject4).a(localbeum.jdField_a_of_type_JavaLangString, (String)localObject1, localObject2, i, (String)localObject3);
-            }
-            j += 1;
-            continue;
-            bool1 = false;
-            break;
-            label636:
-            str1 = parambevm.jdField_a_of_type_JavaLangString;
-            break label57;
-            label645:
-            localObject1 = ((File)localObject2).getAbsolutePath();
-            l = ((File)localObject2).length();
-            break label241;
-            label662:
-            if ((localObject2 != null) && (((File)localObject2).exists())) {
-              ((File)localObject2).delete();
-            }
-            if ((k >= jdField_a_of_type_Int) || (!bool2)) {
-              break label1015;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("OlympicResources", 2, "onResp.retry.url=" + localbeum.jdField_a_of_type_JavaLangString + ",md5=" + (String)localObject4 + ", result=" + parambevm.jdField_a_of_type_Int + ", errCode=" + i + ",retryCount=" + k);
-            }
-            a(localbeum.jdField_a_of_type_JavaLangString, (String)localObject4, localObject5, k + 1, bool2, j, localbeum.c);
-          }
-        }
-      }
-      label807:
-      label812:
-      label888:
-      while (bool1)
-      {
-        for (;;)
-        {
-          return;
-          localObject2 = "olympic_down_act";
-          break;
-          j = 0;
-          break label267;
-          try
-          {
-            localObject3 = InetAddress.getByName("hb.url.cn").getHostAddress();
-            localHashMap.put("cdn_ip", localObject3);
-            bdmc.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject2, false, 0L, 0L, localHashMap, "", false);
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
+            localObject1 = (auby)paramaubx.next();
+            localObject3 = ((auby)localObject1).a();
+            localObject2 = ((auby)localObject1).a();
+            if (((auby)localObject1).a() == 7)
             {
-              localObject3 = str2;
-              if (QLog.isColorLevel())
+              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+                paramQQCustomDialog.setTitle((String)localObject1);
+              }
+            }
+            else
+            {
+              if (((auby)localObject1).a() != 8) {
+                break label438;
+              }
+              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(1));
+              if ((localObject2 != null) && (((List)localObject2).size() != 0))
               {
-                localThrowable.printStackTrace();
-                localObject3 = str2;
+                localObject1 = new SpannableStringBuilder();
+                localObject2 = ((List)localObject2).iterator();
+                while (((Iterator)localObject2).hasNext())
+                {
+                  Object localObject4 = (auby)((Iterator)localObject2).next();
+                  localObject3 = ((auby)localObject4).a();
+                  String str1;
+                  if (((auby)localObject4).a() == 2)
+                  {
+                    if (localObject3 != null)
+                    {
+                      localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+                      str1 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
+                      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
+                      if (!TextUtils.isEmpty((CharSequence)localObject4))
+                      {
+                        localObject3 = new SpannableString((CharSequence)localObject4);
+                        ((SpannableString)localObject3).setSpan(Integer.valueOf(Color.parseColor("#03081A")), 0, ((SpannableString)localObject3).length(), 33);
+                        ((SpannableStringBuilder)localObject1).append((CharSequence)localObject3);
+                      }
+                    }
+                  }
+                  else if ((((auby)localObject4).a() == 3) && (localObject3 != null))
+                  {
+                    localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+                    str1 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
+                    String str2 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
+                    localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
+                    SpannableString localSpannableString = new SpannableString((CharSequence)localObject4);
+                    localSpannableString.setSpan(new azdb(this, str1, (String)localObject3, str2), 0, ((String)localObject4).length(), 33);
+                    ((SpannableStringBuilder)localObject1).append(localSpannableString);
+                  }
+                }
+                paramQQCustomDialog.setMessageWithoutAutoLink((CharSequence)localObject1);
               }
             }
           }
         }
-        ((File)localObject2).delete();
-        bdmc.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "olympic_down_null", bool1, 0L, 0L, null, "", false);
-        localObject3 = null;
-        localObject2 = null;
-        localObject1 = null;
-        break label499;
       }
-      QLog.i("OlympicResources", 1, "onResp.url=" + localbeum.jdField_a_of_type_JavaLangString + ", result=" + parambevm.jdField_a_of_type_Int + ", errCode=" + i + ",md5 = " + (String)localObject1 + ", errDesc=" + str1);
-      return;
-      label1015:
-      localObject1 = null;
-      l = 0L;
+    } while ((((auby)localObject1).a() != 9) || (localObject2 == null));
+    Object localObject1 = ((List)localObject2).iterator();
+    int i = 0;
+    label465:
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (auby)((Iterator)localObject1).next();
+      if (((auby)localObject2).a() != 10) {
+        break label590;
+      }
+      localObject3 = ((auby)localObject2).a();
+      localObject2 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
+      if (i != 0) {
+        break label564;
+      }
+      paramQQCustomDialog.setNegativeButton((String)localObject2, new azdc(this, (String)localObject3, paramPushDialogTemplate));
+    }
+    label555:
+    label564:
+    label590:
+    label591:
+    for (;;)
+    {
+      i += 1;
+      for (;;)
+      {
+        break label465;
+        break;
+        if (i != 1) {
+          break label591;
+        }
+        paramQQCustomDialog.setPositiveButton((String)localObject2, new azdd(this, (String)localObject3));
+        break label555;
+      }
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  private void b(PushDialogTemplate paramPushDialogTemplate, int paramInt)
   {
-    Object localObject = null;
-    if ((parambevl == null) || (!(parambevl instanceof beum))) {
+    if ((paramInt == 102) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)) {
+      azdf.a().b(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramPushDialogTemplate);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+  }
+  
+  public void a()
+  {
+    String str;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    {
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
+      if (TextUtils.isEmpty(str)) {}
+    }
+    try
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, Long.valueOf(str).longValue());
       return;
     }
-    String str = ((beum)parambevl).jdField_a_of_type_JavaLangString;
-    parambevl = parambevl.a();
-    if ((parambevl != null) && ((parambevl instanceof Object[])))
+    catch (Exception localException)
     {
-      localObject = (Object[])parambevl;
-      parambevl = (String)localObject[0];
-      localObject = localObject[1];
+      QLog.e("AIOPushDialogHelper", 1, "db search error: ", localException);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 10: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_Int = 10;
+      } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      return;
+    case 4: 
+      this.jdField_a_of_type_Int = 4;
+      return;
+    }
+    a();
+  }
+  
+  public void a(PushDialogTemplate paramPushDialogTemplate, int paramInt1, int paramInt2)
+  {
+    aubx localaubx;
+    if ((paramPushDialogTemplate != null) && (paramPushDialogTemplate.templ_content != null))
+    {
+      localaubx = a(paramPushDialogTemplate.templ_content);
+      if (localaubx != null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+          break label217;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, 2131755826);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559016);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
+        LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131363595);
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
+        localLayoutParams.leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, 30.0F);
+        localLayoutParams.rightMargin = DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, 30.0F);
+        localLinearLayout.setLayoutParams(localLayoutParams);
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("OlympicResources", 2, "onUpdateProgeress.url=" + str + ", md5=" + parambevl + ", userData=" + localObject + ",curOffset=" + paramLong1 + ",totalLen=" + paramLong2);
+      a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, localaubx, paramPushDialogTemplate);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      if (this.jdField_a_of_type_Int != 4) {
+        break label267;
       }
+      a(paramPushDialogTemplate, paramInt2);
+      if (!paramPushDialogTemplate.isFriendBanned()) {
+        break;
+      }
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp(), "dc00898", "", "", "0X800A4B9", "0X800A4B9", 0, 0, "", "", "", "");
+      return;
+      label217:
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp(), "dc00898", "", "", "0X800A4B8", "0X800A4B8", 0, 0, "", "", "", "");
+    return;
+    label267:
+    b(paramPushDialogTemplate, paramInt1);
+  }
+  
+  public void a(List<PushDialogTemplate> paramList, int paramInt1, int paramInt2)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < paramList.size())
       {
-        azdb localazdb = (azdb)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localazdb != null) {
-          localazdb.a(str, parambevl, localObject, paramLong1, paramLong2);
-        }
+        a((PushDialogTemplate)paramList.get(i), paramInt1, paramInt2);
         i += 1;
       }
-      break;
-      parambevl = null;
     }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 10, 4, 7 };
   }
 }
 

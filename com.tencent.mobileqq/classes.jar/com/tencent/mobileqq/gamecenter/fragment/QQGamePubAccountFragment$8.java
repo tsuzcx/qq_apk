@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import avmd;
+import atzc;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ class QQGamePubAccountFragment$8
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       synchronized (QQGamePubAccountFragment.a)
       {
-        avmd.a(localMessageRecord, 0);
+        atzc.a(localMessageRecord, 0);
       }
     }
   }

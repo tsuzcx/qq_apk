@@ -1,48 +1,271 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qconn.protofile.appType.AndroidInfo;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.oidb_0xd55.RspBody;
+import tencent.im.oidb.qqconnect.AndroidAppInfo;
+import tencent.im.oidb.qqconnect.Appinfo;
+import tencent.im.oidb.qqconnect.MobileAppInfo;
 
 public class atks
-  extends auoi
 {
-  public atks(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  private int jdField_a_of_type_Int;
+  public GetAppInfoProto.Ads a;
+  private String jdField_a_of_type_JavaLangString;
+  public List<aadk> a;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  public void a()
+  private static int a(List<aadk> paramList)
   {
-    this.a.a.a().a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + aunj.a());
+    paramList = paramList.iterator();
+    int i = 0;
+    while (paramList.hasNext())
+    {
+      aadk localaadk = (aadk)paramList.next();
+      if ("16".equals(localaadk.b.get()))
+      {
+        i |= 0x1;
+      }
+      else if ("64".equals(localaadk.b.get()))
+      {
+        i |= 0x2;
+      }
+      else
+      {
+        if (!"100".equals(localaadk.b.get())) {
+          break label96;
+        }
+        i |= 0x4;
+      }
+    }
+    label96:
+    for (;;)
+    {
+      break;
+      return i;
     }
   }
   
-  public void d()
+  public static int a(qqconnect.Appinfo paramAppinfo)
   {
-    this.a.a.a().i();
+    int j = 0;
+    if (paramAppinfo.icon_mini_url.has()) {
+      j = 1;
+    }
+    int i;
+    if (!paramAppinfo.icon_middle_url.has())
+    {
+      i = j;
+      if (!paramAppinfo.icon_small_url.has()) {}
+    }
+    else
+    {
+      i = j | 0x2;
+    }
+    j = i;
+    if (paramAppinfo.icon_url.has()) {
+      j = i | 0x4;
+    }
+    return j;
   }
   
-  public void e()
+  public static atks a(GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse)
   {
-    this.a.a.a().j();
+    atks localatks = new atks();
+    localatks.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads = paramGetAppinfoResponse.ads;
+    localatks.jdField_a_of_type_JavaUtilList = aadf.a(paramGetAppinfoResponse.iconsURL);
+    if (!localatks.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localatks.jdField_a_of_type_JavaLangString = aadf.a(localatks.jdField_a_of_type_JavaUtilList, 16);
+      localatks.b = aadf.a(localatks.jdField_a_of_type_JavaUtilList, 100);
+      localatks.jdField_a_of_type_Int = a(localatks.jdField_a_of_type_JavaUtilList);
+    }
+    GetAppInfoProto.AndroidInfo localAndroidInfo = paramGetAppinfoResponse.androidInfo;
+    if (localAndroidInfo != null)
+    {
+      localatks.jdField_a_of_type_Boolean = true;
+      if (!localAndroidInfo.sourceUrl.has()) {
+        break label183;
+      }
+      paramGetAppinfoResponse = localAndroidInfo.sourceUrl.get();
+      localatks.c = paramGetAppinfoResponse;
+      if (!localAndroidInfo.messagetail.has()) {
+        break label189;
+      }
+      paramGetAppinfoResponse = localAndroidInfo.messagetail.get();
+      label131:
+      localatks.d = paramGetAppinfoResponse;
+      if (!localAndroidInfo.packName.has()) {
+        break label195;
+      }
+    }
+    label183:
+    label189:
+    label195:
+    for (paramGetAppinfoResponse = localAndroidInfo.packName.get();; paramGetAppinfoResponse = "")
+    {
+      localatks.e = paramGetAppinfoResponse;
+      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localatks.toString() });
+      return localatks;
+      paramGetAppinfoResponse = "";
+      break;
+      paramGetAppinfoResponse = "";
+      break label131;
+    }
   }
   
-  public void f()
+  public static atks a(preAuth.PreAuthResponse paramPreAuthResponse, appType.AndroidInfo paramAndroidInfo)
   {
-    this.a.a.a().C();
+    atks localatks = new atks();
+    String str;
+    if (paramAndroidInfo.message_tail.has())
+    {
+      str = paramAndroidInfo.message_tail.get();
+      localatks.d = str;
+      if (!paramAndroidInfo.pack_name.has()) {
+        break label172;
+      }
+      str = paramAndroidInfo.pack_name.get();
+      label49:
+      localatks.e = str;
+      if (!paramAndroidInfo.source_url.has()) {
+        break label178;
+      }
+    }
+    label172:
+    label178:
+    for (paramAndroidInfo = paramAndroidInfo.source_url.get();; paramAndroidInfo = "")
+    {
+      localatks.c = paramAndroidInfo;
+      localatks.jdField_a_of_type_Boolean = true;
+      localatks.jdField_a_of_type_JavaUtilList = aadf.b(paramPreAuthResponse.icons_url);
+      if (!localatks.jdField_a_of_type_JavaUtilList.isEmpty())
+      {
+        localatks.jdField_a_of_type_JavaLangString = aadf.a(localatks.jdField_a_of_type_JavaUtilList, 16);
+        localatks.b = aadf.a(localatks.jdField_a_of_type_JavaUtilList, 100);
+        localatks.jdField_a_of_type_Int = a(localatks.jdField_a_of_type_JavaUtilList);
+      }
+      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localatks.toString() });
+      return localatks;
+      str = "";
+      break;
+      str = "";
+      break label49;
+    }
+  }
+  
+  private static String a(qqconnect.Appinfo paramAppinfo, String paramString)
+  {
+    Iterator localIterator = null;
+    Object localObject2 = null;
+    Object localObject1 = localIterator;
+    if (paramAppinfo.mobile_app_info.has())
+    {
+      localObject1 = localIterator;
+      if (paramAppinfo.mobile_app_info.android_app_info.has())
+      {
+        localIterator = paramAppinfo.mobile_app_info.android_app_info.get().iterator();
+        paramAppinfo = localObject2;
+        localObject1 = paramAppinfo;
+        if (localIterator.hasNext())
+        {
+          localObject1 = (qqconnect.AndroidAppInfo)localIterator.next();
+          if (((qqconnect.AndroidAppInfo)localObject1).pack_name.has())
+          {
+            localObject1 = ((qqconnect.AndroidAppInfo)localObject1).pack_name.get();
+            paramAppinfo = (qqconnect.Appinfo)localObject1;
+            if (!((String)localObject1).equals(paramString)) {}
+          }
+        }
+      }
+    }
+    while (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      return paramString;
+      break;
+    }
+    return localObject1;
+  }
+  
+  public static void a(oidb_0xd55.RspBody paramRspBody, String paramString, atks paramatks)
+  {
+    paramatks.jdField_a_of_type_Boolean = true;
+    qqconnect.Appinfo localAppinfo = paramRspBody.appinfo;
+    paramatks.jdField_a_of_type_JavaLangString = localAppinfo.icon_mini_url.get();
+    paramatks.b = localAppinfo.icon_url.get();
+    paramatks.jdField_a_of_type_Int = a(localAppinfo);
+    paramatks.c = localAppinfo.source_url.get();
+    paramatks.d = localAppinfo.app_name.get();
+    paramatks.e = a(localAppinfo, paramString);
+    if (paramRspBody.wording.has()) {}
+    for (paramRspBody = paramRspBody.wording.get();; paramRspBody = "")
+    {
+      paramatks.f = paramRspBody;
+      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "fillAppInfo AppInfo : ", paramatks.toString() });
+      return;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.c;
+  }
+  
+  public String c()
+  {
+    return this.d;
+  }
+  
+  public String d()
+  {
+    return this.e;
+  }
+  
+  public String e()
+  {
+    return this.b;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public String toString()
+  {
+    return "iconUrlMini=" + this.jdField_a_of_type_JavaLangString + ", iconUrlBig=" + this.b + ", appLackOfIcons=" + this.jdField_a_of_type_Int + ", isAndroidInfoExist=" + this.jdField_a_of_type_Boolean + ", sourceUrl=" + this.c + ", appName=" + this.d + ", pkgName=" + this.e + ", mErrorWording=" + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atks
  * JD-Core Version:    0.7.0.1
  */

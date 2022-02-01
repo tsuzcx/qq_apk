@@ -1,8 +1,23 @@
-import android.os.Bundle;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
-public abstract interface augm
+public class augm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  public augm(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
+    }
+    XPanelContainer.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+  }
 }
 
 

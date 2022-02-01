@@ -1,22 +1,33 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class stc
-  implements aasd
+public class stc
 {
-  stc(stb paramstb, boolean paramBoolean) {}
+  public float a;
+  public int a;
+  public long a;
+  public BaseData a;
+  public Long a;
+  public long b;
   
-  public void callback(Bundle paramBundle)
+  public stc(int paramInt, Long paramLong, BaseData paramBaseData)
   {
-    int j = paramBundle.getInt("readinjoy_to_wx_config");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+    this.b = 0L;
+  }
+  
+  public void a(stc paramstc)
+  {
+    if (paramstc != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "config = " + j + ", scene" + i);
-      }
-      this.jdField_a_of_type_Stb.a(j, i);
-      return;
+      this.jdField_a_of_type_JavaLangLong = paramstc.jdField_a_of_type_JavaLangLong;
+      this.jdField_a_of_type_Long = paramstc.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Float = paramstc.jdField_a_of_type_Float;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramstc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+      this.b = paramstc.b;
     }
   }
 }

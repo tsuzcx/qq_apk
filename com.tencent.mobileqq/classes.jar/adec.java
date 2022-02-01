@@ -1,72 +1,33 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.s2c.msgtype0x210.submsgtype0x54.submsgtype0x54.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x54.submsgtype0x54.MsgBody.TaskInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class adec
-  implements adci
+  implements bhdc
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQOperateVoIP", 2, "get voip_tips from handleC2COnlinePushMsg0x210Resp");
-    }
-    paramQQAppInterface = (anvl)paramQQAppInterface.a(4);
-    long l;
-    if (paramQQAppInterface != null)
-    {
-      submsgtype0x54.MsgBody localMsgBody = new submsgtype0x54.MsgBody();
-      try
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        i = localMsgBody.peer_type.get();
-        Object localObject = localMsgBody.task_list.get();
-        paramMsgType0x210 = new ArrayList();
-        if ((localObject != null) && (((List)localObject).size() > 0))
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            submsgtype0x54.MsgBody.TaskInfo localTaskInfo = (submsgtype0x54.MsgBody.TaskInfo)((Iterator)localObject).next();
-            QQOperationViopTipTask localQQOperationViopTipTask = new QQOperationViopTipTask();
-            localQQOperationViopTipTask.taskid = localTaskInfo.task_id.get();
-            paramMsgType0x210.add(localQQOperationViopTipTask);
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramMsgType0x210)
-      {
-        for (;;)
-        {
-          paramMsgType0x210.printStackTrace();
-        }
-        l = localMsgBody.peer_uin.get();
-        if (i != 1) {}
-      }
-    }
-    for (int i = 0;; i = 3000)
-    {
-      paramQQAppInterface.a(String.valueOf(l), i, paramMsgType0x210);
-      return;
-    }
-  }
+  public adec(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    this.a.app.getMessageFacade().clearHistory(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.getMessageFacade().onCurrentMessageDeleted(DiscussionInfoCardActivity.a(this.a), 3000);
+    amat.a(this.a.app, "chat_history_confirm_del_msg");
+    paramDialog = this.a.app.getHandler(Conversation.class);
+    paramView = paramDialog.obtainMessage(1017);
+    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.arg1 = 3000;
+    paramDialog.sendMessage(paramView);
+    QQToast.a(this.a, 2, this.a.getString(2131690758), 0).a();
+    if (this.a.a != null) {
+      ((TextView)this.a.a.findViewById(2131378707)).setTextColor(Color.parseColor("#cccccc"));
+    }
   }
 }
 

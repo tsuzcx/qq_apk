@@ -10,11 +10,11 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import bhtq;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqinterface.MiniAioInterface;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -23,13 +23,12 @@ public class MiniAioInterfaceImpl
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
   private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
   private int b;
   private int c = -1;
   private int d = -1;
   
-  Intent a()
+  Intent a(Activity paramActivity)
   {
     Intent localIntent1 = new Intent();
     localIntent1.setFlags(67108864);
@@ -45,11 +44,11 @@ public class MiniAioInterfaceImpl
       localIntent1.putExtra("banner_businessCategory", "NOW");
       localIntent1.putExtra("banner_activityName", JumpActivity.class);
       localIntent1.putExtra("banner_plguinType", 1);
-      localIntent1.putExtra("banner_pluginProxyActivityName", this.jdField_a_of_type_AndroidAppActivity.getClass().getName());
-      Intent localIntent2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, JumpActivity.class);
+      localIntent1.putExtra("banner_pluginProxyActivityName", paramActivity.getClass().getName());
+      Intent localIntent2 = new Intent(paramActivity, JumpActivity.class);
       localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=%d&roomtype=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.b), Integer.valueOf(this.jdField_a_of_type_Int) })));
       localIntent2.addFlags(268435456);
-      localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(this.jdField_a_of_type_AndroidAppActivity, 0, new Intent[] { localIntent2 }, 134217728));
+      localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(paramActivity, 0, new Intent[] { localIntent2 }, 134217728));
       return localIntent1;
       if (this.jdField_a_of_type_Int == 10001)
       {
@@ -64,16 +63,16 @@ public class MiniAioInterfaceImpl
     }
   }
   
-  protected MiniMsgUserParam a()
+  protected MiniMsgUserParam a(Activity paramActivity)
   {
-    int j = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
-    int k = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-    int m = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDimensionPixelSize(2131297280);
-    int i = j - m * 4 - bhtq.b(47.0F);
+    int j = paramActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
+    int k = ImmersiveUtils.getStatusBarHeight(paramActivity);
+    int m = paramActivity.getApplication().getResources().getDimensionPixelSize(2131297335);
+    int i = j - m * 4 - ViewUtils.dpToPx(47.0F);
     if (this.c != -1) {
       i = j - m * 4 - this.c;
     }
-    j = bhtq.a(7.0F) + k;
+    j = ViewUtils.dip2px(7.0F) + k;
     if (this.d != -1) {
       j = this.d + k;
     }
@@ -84,10 +83,10 @@ public class MiniAioInterfaceImpl
     localMiniMsgUserParam.positionX = i;
     localMiniMsgUserParam.positionY = j;
     localMiniMsgUserParam.filterMsgType = 1;
-    localMiniMsgUserParam.backConversationIntent = a();
+    localMiniMsgUserParam.backConversationIntent = a(paramActivity);
     if (this.b == 10026)
     {
-      localMiniMsgUserParam.contentIconResId = 2130850810;
+      localMiniMsgUserParam.contentIconResId = 2130850743;
       localMiniMsgUserParam.colorType = 2;
       return localMiniMsgUserParam;
     }
@@ -102,13 +101,13 @@ public class MiniAioInterfaceImpl
   
   public void onCreate(Context paramContext, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
+    paramContext = (Activity)((ContextWrapper)paramContext).getBaseContext();
     this.jdField_a_of_type_Long = paramBundle.getLong("roomid");
     this.jdField_a_of_type_Int = paramBundle.getInt("roomType");
     this.b = paramBundle.getInt("fromid", 10001);
     this.c = paramBundle.getInt("offsetX", -1);
     this.d = paramBundle.getInt("offsetY", -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(this.jdField_a_of_type_AndroidAppActivity, a());
+    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(paramContext, a(paramContext));
     this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
   }
   

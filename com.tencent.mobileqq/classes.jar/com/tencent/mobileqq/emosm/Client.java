@@ -8,20 +8,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import asep;
-import aseq;
-import asik;
-import asjw;
+import aqyn;
+import aqyo;
+import arci;
+import ardu;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements asik
+  implements arci
 {
   public static final String TAG = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new asep(this);
+  private ServiceConnection mConnection = new aqyn(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new aseq(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new aqyo(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)
@@ -85,12 +85,12 @@ public class Client
   
   public void onDisconnectWithService()
   {
-    asjw.a().b();
+    ardu.a().b();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
   {
-    asjw.a().d(paramBundle);
+    ardu.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class Client
   {
     try
     {
-      asjw.a().c(paramBundle);
+      ardu.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -152,7 +152,7 @@ public class Client
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.Client
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,13 @@ import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 class TaskManager$29
   implements JSContext.Callback
 {
-  TaskManager$29(TaskManager paramTaskManager) {}
+  TaskManager$29(TaskManager paramTaskManager, Task paramTask) {}
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    return Boolean.valueOf(true);
+    Task.ConfigItem[] arrayOfConfigItem = this.this$0.getNextScript(paramJSContext, (String)paramArrayOfObject[0]);
+    TaskManager.access$1200(this.this$0, paramJSContext, paramArrayOfObject, arrayOfConfigItem, this.val$task);
+    return null;
   }
 }
 

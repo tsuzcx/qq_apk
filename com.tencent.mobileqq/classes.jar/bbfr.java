@@ -1,23 +1,21 @@
-public class bbfr
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
+
+public final class bbfr
+  implements Comparator<bazx>
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e = "";
-  public String f;
-  
-  public bbfr()
+  public int a(bazx parambazx1, bazx parambazx2)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
+    int j = Long.signum(parambazx2.b() - parambazx1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(parambazx2.a() - parambazx1.a());
+    }
+    j = i;
+    if (i == 0) {
+      j = PublicAccountSearchEngine.a(parambazx1, parambazx2);
+    }
+    return j;
   }
 }
 

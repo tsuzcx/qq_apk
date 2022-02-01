@@ -1,58 +1,57 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
-import qqcircle.QQCircleFeedBase.StMainPageBusiRspData;
+import UserGrowth.stGetPersonalFeedListRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.ArrayList;
+import java.util.List;
 
 class vac
-  implements Observer<vxq<FeedCloudRead.StGetMainPageRsp>>
+  implements uqy
 {
-  vac(vaa paramvaa) {}
+  vac(vab paramvab, long paramLong, boolean paramBoolean1, vaa paramvaa, boolean paramBoolean2, Object paramObject) {}
   
-  public void a(@Nullable vxq<FeedCloudRead.StGetMainPageRsp> paramvxq)
+  public void a(urj paramurj)
   {
-    if ((paramvxq == null) || (paramvxq.a() == null)) {
-      QLog.d("QCirclePersonalBottomBlock", 1, "uiStateData is null or getData is null");
-    }
-    for (;;)
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    uya.a("weishi-beacon", "请求播放页（推荐)耗时：" + l + "毫秒");
+    uvw.a().a(l, paramurj.jdField_a_of_type_Urg, "chat_page", this.jdField_a_of_type_Boolean);
+    if (!paramurj.a())
     {
-      return;
-      if (vaa.a(this.a) == null) {
-        QLog.d("QCirclePersonalBottomBlock", 1, "mWidgetView is null");
+      uya.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Vaa != null) {
+        this.jdField_a_of_type_Vaa.a(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
       }
-      try
+      uvw.a().a(l, paramurj.jdField_a_of_type_Urg, paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stGetPersonalFeedListRsp))
+    {
+      stGetPersonalFeedListRsp localstGetPersonalFeedListRsp = (stGetPersonalFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject;
+      if (this.jdField_a_of_type_Boolean) {
+        vab.a(this.jdField_a_of_type_Vab, localstGetPersonalFeedListRsp, this.jdField_a_of_type_Vaa);
+      }
+      vab.a(this.jdField_a_of_type_Vab, localstGetPersonalFeedListRsp.attach_info);
+      vab.a(this.jdField_a_of_type_Vab, localstGetPersonalFeedListRsp.is_finished);
+      ArrayList localArrayList = localstGetPersonalFeedListRsp.feeds;
+      List localList = WSVerticalDataManager.a().a(localArrayList);
+      StringBuilder localStringBuilder = new StringBuilder().append("[WSVerticalDataManager.java][onTaskResponse] itemDataList size:").append(localList.size()).append(", isFirst = ").append(this.jdField_a_of_type_Boolean).append(", mAttachInfo = ").append(vab.a(this.jdField_a_of_type_Vab)).append(", isFinish = ").append(localstGetPersonalFeedListRsp.is_finished).append(", size = ");
+      if (localArrayList != null) {}
+      for (int i = localArrayList.size();; i = 0)
       {
-        QLog.d("QCirclePersonalBottomBlock", 1, "personDetail uiStateData is " + paramvxq.a());
-        if ((paramvxq.a() != 2) && (paramvxq.a() != 3)) {
-          continue;
+        uya.e("WSArkCardDataManagerLog", i);
+        if (paramurj.jdField_a_of_type_Uqz != null) {
+          uvo.a().a(localstGetPersonalFeedListRsp.traceId, paramurj.jdField_a_of_type_Uqz.a);
         }
-        vaa.a(this.a).setFeedCount(((FeedCloudRead.StGetMainPageRsp)paramvxq.a()).feedCount.get());
-        if ((((FeedCloudRead.StGetMainPageRsp)paramvxq.a()).busiRspData.get() == null) || (paramvxq.b())) {
-          continue;
+        if (this.jdField_a_of_type_Vaa == null) {
+          break;
         }
-        QQCircleFeedBase.StMainPageBusiRspData localStMainPageBusiRspData = new QQCircleFeedBase.StMainPageBusiRspData();
-        try
-        {
-          localStMainPageBusiRspData.mergeFrom(((FeedCloudRead.StGetMainPageRsp)paramvxq.a()).busiRspData.get().toByteArray());
-          return;
-        }
-        catch (Exception paramvxq)
-        {
-          QLog.e("QCirclePersonalBottomBlock", 1, "mergeFrom stMainPageBusiRspData error");
-          return;
-        }
+        this.jdField_a_of_type_Vaa.a(localList, this.b, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
         return;
       }
-      catch (Exception paramvxq)
-      {
-        paramvxq.printStackTrace();
-        QLog.e("QCirclePersonalBottomBlock", 1, "personDetail setData error" + paramvxq.getMessage());
-      }
     }
+    uya.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
+    if (this.jdField_a_of_type_Vaa != null) {
+      this.jdField_a_of_type_Vaa.a(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
+    }
+    uvw.a().a(l, paramurj.jdField_a_of_type_Urg, -1, "数据无法解析或为空");
   }
 }
 

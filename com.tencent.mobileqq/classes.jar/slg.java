@@ -1,6 +1,10 @@
 public abstract interface slg
 {
-  public abstract int a(int paramInt1, int paramInt2, boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
 }
 
 

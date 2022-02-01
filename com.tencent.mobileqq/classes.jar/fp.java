@@ -1,19 +1,10 @@
-import java.util.Comparator;
+import android.text.style.CharacterStyle;
 
 class fp
-  implements Comparator<fq>
 {
-  public int a(fq paramfq1, fq paramfq2)
-  {
-    if (paramfq1.a != paramfq2.a)
-    {
-      if (paramfq1.a > paramfq2.a) {
-        return 1;
-      }
-      return -1;
-    }
-    return paramfq1.b - paramfq2.b;
-  }
+  int jdField_a_of_type_Int;
+  CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
+  int b;
 }
 
 

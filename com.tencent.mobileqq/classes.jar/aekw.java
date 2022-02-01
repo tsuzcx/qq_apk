@@ -1,20 +1,44 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aekw
-  extends anuw
+  implements DialogInterface.OnClickListener
 {
-  public aekw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aekw(TroopDisbandActivity paramTroopDisbandActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw = new bhhw(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    }
+    if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
     {
-      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      paramDialogInterface = (anca)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.getBusinessHandler(20);
+      if (paramDialogInterface != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
+        {
+          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
+          localTroopDisbandActivity.b |= 0x1;
+          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw.b(0, 2131691949, 1000);
       }
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      }
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
       return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw.b(2, 2131691945, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw.b(2, 2131694108, 1500);
     }
   }
 }

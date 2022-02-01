@@ -1,8 +1,8 @@
 package com.tencent.open.appstore.js;
 
 import android.os.Build.VERSION;
-import bjtj;
-import bjtx;
+import bhyy;
+import bhzm;
 import com.tencent.smtt.sdk.WebView;
 
 public class DINewForCommonWebView$2
@@ -19,12 +19,12 @@ public class DINewForCommonWebView$2
         DINewForCommonWebView.a(this.this$0).loadUrl(this.a);
         return;
       }
-      DINewForCommonWebView.a(this.this$0).evaluateJavascript(this.a, new bjtj(this));
+      DINewForCommonWebView.a(this.this$0).evaluateJavascript(this.a, new bhyy(this));
       return;
     }
     catch (Exception localException)
     {
-      bjtx.a("DINewForCommonWebView", "[jsCallBack] e>>> ", localException);
+      bhzm.a("DINewForCommonWebView", "[jsCallBack] e>>> ", localException);
     }
   }
 }

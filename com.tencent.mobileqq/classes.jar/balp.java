@@ -1,18 +1,18 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class balp
-  extends balj
+class balp
+  implements QQPermissionCallback
 {
-  public balp(LSRecordPanel paramLSRecordPanel) {}
+  balp(balk parambalk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
-    }
-    this.a.b = null;
+    bfur.a(this.a.mContext);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    balk.c(this.a);
   }
 }
 

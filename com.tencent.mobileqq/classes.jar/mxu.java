@@ -1,32 +1,54 @@
-import com.tencent.avgame.ipc.UserInfo;
-import java.util.HashMap;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class mxu
-  implements anui
+class mxu
+  extends ampv
 {
-  public void a(int paramInt1, String paramString, int paramInt2) {}
+  mxu(mxt parammxt) {}
   
-  public void a(int paramInt, String paramString, UserInfo paramUserInfo) {}
-  
-  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void onGetRealNameStatusForAV(boolean paramBoolean)
   {
-    switch (paramInt)
+    Activity localActivity;
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 0: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (UserInfo)paramObject[2]);
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Integer)paramObject[2]).intValue());
-      return;
+      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localActivity != null) && (!localActivity.isFinishing()))
+      {
+        bcef.b(null, "dc00898", "", "", "0X800B079", "0X800B079", this.a.jdField_a_of_type_Int, 0, "", "", "", "");
+        if (!this.a.jdField_a_of_type_JavaLangString.isEmpty()) {
+          break label206;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV createAvGameRoom");
+        }
+        if (this.a.jdField_b_of_type_Int != 9) {
+          break label171;
+        }
+        this.a.jdField_a_of_type_Mxn.a(localActivity, 9);
+      }
     }
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (HashMap)paramObject[1]);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("RealName", 2, "onGetRealNameStatusForAV authed: " + paramBoolean + ". Remove observer.");
+      }
+      mxn.a(this.a.jdField_a_of_type_Mxn).removeObserver(mxn.a(this.a.jdField_a_of_type_Mxn));
+      return;
+      label171:
+      this.a.jdField_a_of_type_Mxn.a(localActivity, this.a.jdField_b_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.c);
+      continue;
+      label206:
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV joinAvGameRoom. roomId: " + this.a.jdField_a_of_type_JavaLangString);
+      }
+      if (this.a.jdField_b_of_type_Int == 6) {
+        this.a.jdField_a_of_type_Mxn.a(localActivity, 9);
+      } else {
+        this.a.jdField_a_of_type_Mxn.a(localActivity, this.a.jdField_b_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
+      }
+    }
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import azxs;
-import azxt;
-import bhmi;
+import aymh;
+import aymi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
@@ -14,11 +14,11 @@ import org.json.JSONObject;
 public class ProfileCardManager$1
   implements Runnable
 {
-  public ProfileCardManager$1(azxs paramazxs, File paramFile, int paramInt) {}
+  public ProfileCardManager$1(aymh paramaymh, File paramFile, int paramInt) {}
   
   public void run()
   {
-    Object localObject = bhmi.a(this.jdField_a_of_type_JavaIoFile, -1);
+    Object localObject = FileUtils.readFileToStringEx(this.jdField_a_of_type_JavaIoFile, -1);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
@@ -26,22 +26,22 @@ public class ProfileCardManager$1
       if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
         JSONObject localJSONObject1 = ((JSONArray)localObject).getJSONObject(0);
-        localObject = new azxt(this.this$0, this.jdField_a_of_type_Int);
-        ((azxt)localObject).jdField_a_of_type_JavaLangString = localJSONObject1.optString("name");
+        localObject = new aymi(this.this$0, this.jdField_a_of_type_Int);
+        ((aymi)localObject).jdField_a_of_type_JavaLangString = localJSONObject1.optString("name");
         JSONObject localJSONObject2 = localJSONObject1.optJSONObject("previewImage");
         if (localJSONObject2 != null) {
-          ((azxt)localObject).b = (azxs.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
+          ((aymi)localObject).b = (aymh.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
         }
         localJSONObject2 = localJSONObject1.optJSONObject("coverImg");
         if (localJSONObject2 != null) {
-          ((azxt)localObject).c = (azxs.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
+          ((aymi)localObject).c = (aymh.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
         }
         localJSONObject1 = localJSONObject1.optJSONObject("detailImage");
         if (localJSONObject1 != null) {
-          ((azxt)localObject).d = (azxs.jdField_a_of_type_JavaLangString + localJSONObject1.optString("src"));
+          ((aymi)localObject).d = (aymh.jdField_a_of_type_JavaLangString + localJSONObject1.optString("src"));
         }
-        ((azxt)localObject).jdField_a_of_type_Boolean = true;
-        azxs.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+        ((aymi)localObject).jdField_a_of_type_Boolean = true;
+        aymh.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
         if (this.this$0.jdField_a_of_type_AndroidOsHandler != null)
         {
           this.this$0.jdField_a_of_type_AndroidOsHandler.removeMessages(101);

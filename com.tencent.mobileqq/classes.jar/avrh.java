@@ -1,15 +1,12 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class avrh
+class avrh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<avri> a;
-  public int[] a;
-  public String b;
-  public List<avrj> b;
-  public String c;
-  public String d;
+  avrh(avre paramavre) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

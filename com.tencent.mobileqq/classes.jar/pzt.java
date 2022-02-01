@@ -1,33 +1,30 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class pzt
-  implements ViewBase.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  sel jdField_a_of_type_Sel;
-  
-  public pzt(ArticleInfo paramArticleInfo, Context paramContext, sel paramsel)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sel = paramsel;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 3);
-    }
-    for (;;)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null) {}
+    for (String str = paramBaseArticleInfo.mSinglePicture.getFile();; str = null)
     {
-      oxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Sel);
-      pzu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009440", "0X8009443");
-      return;
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 3);
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      qai.a(paramBaseArticleInfo, localJSONObject1, true);
+      qai.a(paramBaseArticleInfo, localJSONObject1);
+      qai.d(paramBaseArticleInfo, localJSONObject1);
+      qai.g(paramBaseArticleInfo, localJSONObject1);
+      qai.n(paramBaseArticleInfo, localJSONObject1);
+      qai.h(paramBaseArticleInfo, localJSONObject1);
+      qai.Z(paramBaseArticleInfo, localJSONObject1);
+      qai.ad(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      qai.a(localJSONObject1, paramBaseArticleInfo);
+      qai.ac(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
     }
   }
 }

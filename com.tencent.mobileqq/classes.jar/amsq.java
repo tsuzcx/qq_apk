@@ -1,14 +1,25 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.lang.ref.WeakReference;
 
-class amsq
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class amsq
+  implements Handler.Callback
 {
-  amsq(amsn paramamsn) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public amsq(FrameHelperActivity paramFrameHelperActivity)
   {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity != null) {
+      localFrameHelperActivity.a(paramMessage);
+    }
+    return false;
   }
 }
 

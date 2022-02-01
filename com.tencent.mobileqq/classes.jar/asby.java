@@ -1,30 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
 class asby
+  implements ascz
 {
-  asby(asbx paramasbx) {}
+  asby(asbj paramasbj) {}
   
-  @QQPermissionDenied(1819)
-  public void denied()
+  public void a(Object[] paramArrayOfObject)
   {
-    QLog.e("CameraHelper", 1, "checkPermission user denied");
-    asbx.a(this.a);
-    asbx.a(this.a, false, 1830003);
-  }
-  
-  @QQPermissionGrant(1819)
-  public void grant()
-  {
-    QLog.d("CameraHelper", 1, "checkPermission user grant");
-    asbx.a(this.a);
-    asbx.a(this.a, true, 0);
+    asbj.access$1200(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asby
  * JD-Core Version:    0.7.0.1
  */

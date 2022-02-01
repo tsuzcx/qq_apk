@@ -1,32 +1,18 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
 
 public class ayyt
-  extends azcf
+  extends ayyv
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public ayyt(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public ayyt(VasProfileSimpleView paramVasProfileSimpleView, aymg paramaymg)
   {
-    super.a(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
-      ayyb.a("0X800AC97", 0);
-    }
+    super(null);
   }
   
-  public void a(ScaleGestureDetector paramScaleGestureDetector)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    VasProfileSimpleView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView, true);
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView.b(this.jdField_a_of_type_Aymg);
   }
 }
 

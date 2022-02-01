@@ -1,42 +1,11 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class vpt
-  implements Observer<vxq<FeedCloudRead.StGetMainPageRsp>>
 {
-  public vpt(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
-  
-  public void a(@Nullable vxq<FeedCloudRead.StGetMainPageRsp> paramvxq)
+  public static Drawable a(List<String> paramList)
   {
-    if (paramvxq != null) {
-      QLog.d("QCirclePersonalDetailFragment", 1, "Observe StGetMainPageRsp state:" + paramvxq.a());
-    }
-    try
-    {
-      QLog.d("QCirclePersonalDetailFragment", 1, "personDetail uiStateData is" + paramvxq.a());
-      if ((paramvxq != null) && ((paramvxq.a() == 2) || (paramvxq.a() == 3)))
-      {
-        if (this.a.a != null)
-        {
-          QLog.e("QCirclePersonalDetailFragment", 1, "personDetail mPersonalDetailHeaderAdapter is not null");
-          this.a.a.setDatas(new ArrayList(Arrays.asList(new FeedCloudRead.StGetMainPageRsp[] { (FeedCloudRead.StGetMainPageRsp)paramvxq.a() })));
-          this.a.a.notifyLoadingComplete(true);
-          return;
-        }
-        QLog.e("QCirclePersonalDetailFragment", 1, "personDetail mPersonalDetailHeaderAdapter is null");
-        return;
-      }
-    }
-    catch (Exception paramvxq)
-    {
-      paramvxq.printStackTrace();
-      QLog.e("QCirclePersonalDetailFragment", 1, "personDetail setData error" + paramvxq.getMessage());
-    }
+    return ((xck)vux.a(24)).a(paramList);
   }
 }
 

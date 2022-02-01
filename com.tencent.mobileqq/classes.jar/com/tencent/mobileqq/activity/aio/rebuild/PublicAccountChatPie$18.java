@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ import java.util.List;
 public class PublicAccountChatPie$18
   implements Runnable
 {
-  public PublicAccountChatPie$18(ainh paramainh, List paramList) {}
+  public PublicAccountChatPie$18(ahiu paramahiu, List paramList) {}
   
   public void run()
   {
@@ -22,9 +22,9 @@ public class PublicAccountChatPie$18
       while (localIterator.hasNext())
       {
         ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
+        this.this$0.app.getMessageFacade().updateMsgFieldByUniseq(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
         if (QLog.isColorLevel()) {
-          QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "saveReadedToDB uin=" + this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " uniseq=" + localChatMessage.uniseq + " extstr=" + localChatMessage.extStr);
+          QLog.d(this.this$0.tag, 2, "saveReadedToDB uin=" + this.this$0.sessionInfo.curFriendUin + " uniseq=" + localChatMessage.uniseq + " extstr=" + localChatMessage.extStr);
         }
       }
       return;
@@ -32,7 +32,7 @@ public class PublicAccountChatPie$18
     catch (Exception localException)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 4, localException.getMessage());
+        QLog.d(this.this$0.tag, 4, localException.getMessage());
       }
     }
   }

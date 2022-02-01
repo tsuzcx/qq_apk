@@ -10,8 +10,8 @@ class ApolloLottieAnim$4
   
   public void run()
   {
-    if ((ApolloLottieAnim.a(this.this$0) != null) && (ApolloLottieAnim.a(this.this$0).get() != null)) {
-      ((DiniFlyAnimationView)ApolloLottieAnim.a(this.this$0).get()).endAnimation();
+    if ((ApolloLottieAnim.access$300(this.this$0) != null) && (ApolloLottieAnim.access$300(this.this$0).get() != null)) {
+      ((DiniFlyAnimationView)ApolloLottieAnim.access$300(this.this$0).get()).endAnimation();
     }
   }
 }

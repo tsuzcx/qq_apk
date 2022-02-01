@@ -1,126 +1,57 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CEmotionFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopEmotionFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class ajam
 {
-  public static String a = "BlessJsApiUtils";
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2)
+  public static ChatHistoryBaseFragment a(int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString1.trim())))
+    switch (paramInt)
     {
-      QQToast.a(paramActivity, 2131690517, 1).a();
-      return;
+    default: 
+      return new ChatHistoryC2CAllFragment();
+    case 2131364417: 
+      return new ChatHistoryC2CAllFragment();
+    case 2131364420: 
+      return new ChatHistoryC2CFileFragment();
+    case 2131364422: 
+      return new ChatHistoryC2CMediaFragment();
+    case 2131364419: 
+      return new ChatHistoryC2CEmotionFragment();
+    case 2131364421: 
+      return new ChatHistoryC2CLinkFragment();
+    case 2131364423: 
+      return new ChatHistoryBaseTenDocFragment();
+    case 2131364418: 
+      return new ChatHistoryC2CDateFragment();
+    case 2131364424: 
+      return new ChatHistoryTroopAllFragment();
+    case 2131364429: 
+      return new ChatHistoryTroopMediaFragment();
+    case 2131364426: 
+      return new ChatHistoryTroopEmotionFragment();
+    case 2131364427: 
+      return new ChatHistoryTroopFileFragment();
+    case 2131364428: 
+      return new ChatHistoryTroopLinkFragment();
+    case 2131364431: 
+      return new ChatHistoryBaseTenDocFragment();
+    case 2131364425: 
+      return new ChatHistoryTroopDateFragment();
     }
-    Intent localIntent = new Intent(paramActivity, BlessSelectMemberActivity.class);
-    localIntent.putExtra("param_type", 9003);
-    localIntent.putExtra("param_entrance", 15);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131690523));
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131690912));
-    localIntent.putExtra("param_exit_animation", 1);
-    localIntent.putExtra("param_blesstype", 1);
-    localIntent.putExtra("param_blessword_content", paramString1);
-    localIntent.putExtra("param_web_callback", paramString2);
-    paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771992, 2130771993);
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    boolean bool = VideoEnvironment.b(paramAppInterface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "isMobileSupportPTV fasle");
-    }
-    return bool;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "startBlessPtvActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", unfoldDDStr:" + paramString5 + ", dDCategoryName:" + paramString6 + ", dDItemID:" + paramString7 + ", unfoldFilter:" + paramString9 + ", filterCategoryName:" + paramString10 + ", filterItemID:" + paramString11 + ", callback:" + paramString12);
-    }
-    boolean bool1 = "1".equals(paramString1);
-    boolean bool2 = "1".equals(paramString2);
-    if ("1".equals(paramString3)) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    for (int i = 2;; i = 1)
-    {
-      bool3 = "1".equals(paramString4);
-      bool4 = "1".equals(paramString8);
-      bool5 = "1".equals(paramString5);
-      bool6 = "1".equals(paramString9);
-      if (bbgg.a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "supportMediaCodec = false");
-      }
-      QQToast.a(paramActivity, paramActivity.getString(2131690521), 0).a();
-      return false;
-    }
-    paramAppInterface = boea.a(bool1, bool2, i, true, bool3, bool5, paramString6, paramString7, bool4, bool6, paramString10, paramString11, boea.e, "", "", null, "", "", "", "", null);
-    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
-    paramString1.putExtras(paramAppInterface);
-    paramString1.putExtra(boea.p, true);
-    paramString1.putExtra("jump_action", 7);
-    paramActivity.startActivity(paramString1);
-    return true;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    boolean bool = bdek.a();
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "issupportFilterSo false");
-    }
-    return bool;
-  }
-  
-  public static boolean c(AppInterface paramAppInterface)
-  {
-    boolean bool = true;
-    if (paramAppInterface.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "isAccLoginSuccess false.");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!a(paramAppInterface));
-        if (bork.a(borf.b) == 1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
-      return false;
-    } while (!bbgg.a());
-    if (ShortVideoUtils.a()) {}
-    for (;;)
-    {
-      return bool;
-      ShortVideoUtils.a(paramAppInterface);
-      if (!ShortVideoUtils.a()) {
-        bool = false;
-      }
-    }
+    return new ChatHistoryTroopMemberFragment();
   }
 }
 

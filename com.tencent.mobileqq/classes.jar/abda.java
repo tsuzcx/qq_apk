@@ -1,16 +1,35 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.utils.LightAppSettingInfo;
 
-class abda
-  implements aaav<CLIENT.StSmartMatchMusicRsp>
+public final class abda
+  implements Parcelable.Creator<LightAppSettingInfo>
 {
-  abda(abcu paramabcu) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  public LightAppSettingInfo a(Parcel paramParcel)
   {
-    long l = System.currentTimeMillis() - abcu.a(this.a);
-    abbe.a("edit_smart_music", abbe.a(paramLong, l, "", 0L));
-    this.a.a(anzj.a(2131702798) + l + "ms");
-    abcu.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    LightAppSettingInfo localLightAppSettingInfo = new LightAppSettingInfo();
+    localLightAppSettingInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLightAppSettingInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localLightAppSettingInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localLightAppSettingInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(ClassLoader.getSystemClassLoader());
+    localLightAppSettingInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localLightAppSettingInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localLightAppSettingInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localLightAppSettingInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localLightAppSettingInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localLightAppSettingInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localLightAppSettingInfo.f = paramParcel.readString();
+    localLightAppSettingInfo.g = paramParcel.readString();
+    localLightAppSettingInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localLightAppSettingInfo.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(ClassLoader.getSystemClassLoader());
+    localLightAppSettingInfo.h = paramParcel.readString();
+    return localLightAppSettingInfo;
+  }
+  
+  public LightAppSettingInfo[] a(int paramInt)
+  {
+    return new LightAppSettingInfo[paramInt];
   }
 }
 

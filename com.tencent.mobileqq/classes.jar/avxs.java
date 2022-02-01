@@ -1,39 +1,14 @@
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
-@RequiresApi(api=18)
 public class avxs
-  implements avwq
+  implements avzi
 {
-  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private zjr jdField_a_of_type_Zjr;
+  public avxs(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("identification_yuv", 2, "uninit..");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(zjv paramzjv)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Zjr != null) {
-      this.jdField_a_of_type_Zjr.a(paramzjv);
-    }
+    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
   }
 }
 

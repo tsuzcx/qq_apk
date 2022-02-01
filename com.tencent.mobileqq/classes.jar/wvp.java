@@ -1,17 +1,17 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class wvp
-  implements Comparator<wvn>
+class wvp
+  implements DialogInterface.OnClickListener
 {
-  public int a(wvn paramwvn1, wvn paramwvn2)
+  wvp(wvo paramwvo) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramwvn1.c < paramwvn2.c) {
-      return 1;
+    if (this.a.a.jdField_a_of_type_Wxb != null) {
+      this.a.a.jdField_a_of_type_Wxb.a(this.a.a.jdField_a_of_type_Wwz);
     }
-    if (paramwvn1.c > paramwvn2.c) {
-      return -1;
-    }
-    return 0;
   }
 }
 

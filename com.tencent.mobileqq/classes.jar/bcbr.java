@@ -1,11 +1,21 @@
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadTraceHelper.Proxy;
 
-public class bcbr
-  extends bcbl
+public final class bcbr
+  implements IMCoreProxyRoute.ThreadTraceHelper.Proxy
 {
-  public bcbr(ListView paramListView, aoof paramaoof, blih paramblih, int paramInt)
+  public void addWaitingTransThread(long paramLong, String paramString)
   {
-    super(paramListView, paramaoof, paramblih, paramInt);
+    bcfa.b(paramLong, paramString);
+  }
+  
+  public void removeWaitingTransThread(long paramLong)
+  {
+    bcfa.a(paramLong);
+  }
+  
+  public void setCurrentTransThread(long paramLong, String paramString)
+  {
+    bcfa.a(paramLong, paramString);
   }
 }
 

@@ -1,21 +1,12 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.widget.BubblePopupWindow;
-
-final class bhky
-  extends TextView
+public class bhky
 {
-  bhky(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    boolean bool = super.performClick();
-    this.a.b();
-    return bool;
-  }
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
 }
 
 

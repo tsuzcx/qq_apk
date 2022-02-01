@@ -1,65 +1,161 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.app.Activity;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.graphics.Rect;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class azyx
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private List<azys> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
   
-  public azyx(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  azyx(List<azys> paramList, View.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrollStateChanged state = " + paramInt);
-    }
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  private List<azys> a(View paramView)
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.b();
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
-      this.b = true;
-    }
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.a();
+      Object localObject = View.class.getDeclaredMethod("getListenerInfo", new Class[0]);
+      if (!((Method)localObject).isAccessible()) {
+        ((Method)localObject).setAccessible(true);
       }
-      if (this.b)
+      paramView = ((Method)localObject).invoke(paramView, new Object[0]);
+      localObject = paramView.getClass().getDeclaredField("mOnClickListener");
+      ((Field)localObject).setAccessible(true);
+      paramView = (View.OnClickListener)((Field)localObject).get(paramView);
+      if ((paramView instanceof azyx))
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.a();
-        this.b = false;
+        paramView = ((azyx)paramView).jdField_a_of_type_JavaUtilList;
+        if ((paramView != null) && (paramView.size() > 0)) {
+          localArrayList.addAll(paramView);
+        }
+      }
+      return localArrayList;
+    }
+    catch (Exception paramView)
+    {
+      QLog.d("ResourceNameOnClickListener", 1, paramView, new Object[0]);
+    }
+    return localArrayList;
+  }
+  
+  private void a(View paramView, FragmentActivity paramFragmentActivity, List<azys> paramList)
+  {
+    Rect localRect;
+    int i;
+    if ((paramView instanceof ViewGroup))
+    {
+      localRect = new Rect();
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < ((ViewGroup)paramView).getChildCount())
+      {
+        View localView = ((ViewGroup)paramView).getChildAt(i);
+        localView.getGlobalVisibleRect(localRect);
+        if (localRect.contains(paramFragmentActivity.clickX, paramFragmentActivity.clickY))
+        {
+          paramView = a(localView);
+          if (paramView.size() > 0) {
+            paramList.addAll(paramView);
+          }
+          a(localView, paramFragmentActivity, paramList);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  private void a(View paramView, List<azys> paramList, Rect paramRect)
+  {
+    if (paramView.getParent() != null)
+    {
+      paramView = (View)paramView.getParent();
+      Object localObject = new Rect();
+      paramView.getGlobalVisibleRect((Rect)localObject);
+      if ((((Rect)localObject).left - paramRect.left <= 20) && (((Rect)localObject).top - paramRect.top <= 20) && (((Rect)localObject).right - paramRect.right <= 20) && (((Rect)localObject).bottom - paramRect.bottom <= 20))
+      {
+        localObject = a(paramView);
+        if (((List)localObject).size() > 0) {
+          paramList.addAll((Collection)localObject);
+        }
+        a(paramView, paramList, paramRect);
       }
     }
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrolled pos = " + paramInt1);
+      QLog.d("ResourceNameOnClickListener", 2, "ResourceNameOnClickListener onLongClick");
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.b();
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageSelected pos = " + paramInt);
+    Object localObject1 = null;
+    if ((paramView.getContext() instanceof Activity)) {
+      localObject1 = (Activity)paramView.getContext();
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.d(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x = paramInt;
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app.getCurrentAccountUin()));
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = BaseActivity.sTopActivity;
+    }
+    azyv localazyv;
+    ArrayList localArrayList;
+    if ((localObject2 instanceof FragmentActivity))
+    {
+      localObject1 = ((FragmentActivity)localObject2).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+      if ((localObject1 instanceof ResourceGrabFragment))
+      {
+        localObject1 = (ResourceGrabFragment)localObject1;
+        localazyv = (azyv)awhc.a((ViewModelStoreOwner)localObject1).get(azyv.class);
+        localazyv.a();
+        localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    try
+    {
+      a(paramView, (FragmentActivity)localObject2, localArrayList);
+      localObject2 = new Rect();
+      paramView.getGlobalVisibleRect((Rect)localObject2);
+      a(paramView, localArrayList, (Rect)localObject2);
+      ((ResourceGrabFragment)localObject1).a(localArrayList);
+      if (((ResourceGrabFragment)localObject1).a()) {
+        localazyv.a(localArrayList);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("ResourceNameOnClickListener", 1, localException, new Object[0]);
+      }
+    }
   }
 }
 

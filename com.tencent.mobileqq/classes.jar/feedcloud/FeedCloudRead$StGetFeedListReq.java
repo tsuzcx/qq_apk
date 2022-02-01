@@ -16,6 +16,7 @@ public final class FeedCloudRead$StGetFeedListReq
   public final PBStringField adAttchInfo = PBField.initString("");
   public final PBBytesField adres = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField busiReqData = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBStringField dstUserId = PBField.initString("");
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public FeedCloudMeta.StFeed feed = new FeedCloudMeta.StFeed();
   public final PBStringField feedAttchInfo = PBField.initString("");
@@ -27,7 +28,7 @@ public final class FeedCloudRead$StGetFeedListReq
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 80, 90 }, new String[] { "extInfo", "listNum", "from", "feed", "adres", "adAttchInfo", "feedAttchInfo", "source", "busiReqData" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, "", "", Integer.valueOf(0), localByteStringMicro2 }, StGetFeedListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 80, 90, 98 }, new String[] { "extInfo", "listNum", "from", "feed", "adres", "adAttchInfo", "feedAttchInfo", "source", "busiReqData", "dstUserId" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, "", "", Integer.valueOf(0), localByteStringMicro2, "" }, StGetFeedListReq.class);
   }
 }
 

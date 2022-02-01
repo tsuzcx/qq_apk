@@ -1,48 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-final class aqwf
-  implements arva
+public class aqwf
 {
-  public void a(String paramString1, String paramString2)
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  
+  public aqwf() {}
+  
+  public aqwf(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aqwe.a(), 2, paramString2);
-    }
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public aqwf(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(aqwe.a(), 2, paramString2, paramThrowable);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public void b(String paramString1, String paramString2)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aqwe.a(), 2, paramString2);
-    }
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
   }
   
-  public void c(String paramString1, String paramString2)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(aqwe.a(), 2, paramString2);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(aqwe.a(), 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(aqwe.a(), 2, paramString2);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", url").append(this.c);
+    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",picUin:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

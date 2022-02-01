@@ -1,37 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
-class lyv
-  extends aojs
+public abstract interface lyv
 {
-  String jdField_a_of_type_JavaLangString;
+  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
   
-  private lyv(lyr paramlyr) {}
+  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
   
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
-    }
-  }
+  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
-  {
-    if (paramTroopInfo == null) {}
-    do
-    {
-      return;
-      paramTroopInfo = paramTroopInfo.troopuin;
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
-    this.jdField_a_of_type_Lyr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    if (this == this.jdField_a_of_type_Lyr.jdField_a_of_type_Lyv) {
-      this.jdField_a_of_type_Lyr.jdField_a_of_type_Lyv = null;
-    }
-    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
-    this.jdField_a_of_type_Lyr.a();
-  }
+  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  
+  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
 }
 
 

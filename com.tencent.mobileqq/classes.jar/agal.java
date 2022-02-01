@@ -1,84 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
-public class agal
-  extends axxn
+class agal
+  implements agtr
 {
-  public agal(VisitorsActivity paramVisitorsActivity) {}
+  agal(agak paramagak, agaj paramagaj, MessageForPoke paramMessageForPoke) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
-    {
-      if (this.a.jdField_a_of_type_Agbd != null) {
-        this.a.jdField_a_of_type_Agbd.notifyDataSetChanged();
-      }
-      if (this.a.b != null) {
-        this.a.b.notifyDataSetChanged();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 3");
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
-    do
-    {
-      return;
-      if (paramInt2 == 1)
-      {
-        if (!paramBoolean)
-        {
-          this.a.jdField_a_of_type_Bacz.b(paramString2, paramInt1, false);
-          return;
-        }
-        this.a.jdField_a_of_type_Bacz.a(paramString2, paramInt1, false);
-        return;
-      }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Bacz.a(Long.parseLong(paramString2));
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<axvx> paramArrayList, int paramInt)
-  {
-    if ((paramBoolean) && (paramArrayList != null)) {}
+    agkc.a().a(20);
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Agaj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Agaj.b == afzw.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agak.a.a instanceof ChatHistoryActivity)) && (!afzw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Agaj.c.setVisibility(0);
+    }
     for (;;)
     {
-      axvx localaxvx;
-      try
-      {
-        if (paramArrayList.size() > 0)
-        {
-          paramArrayList = paramArrayList.iterator();
-          if (paramArrayList.hasNext())
-          {
-            localaxvx = (axvx)paramArrayList.next();
-            if (paramInt != 511) {
-              break label121;
-            }
-            if (localaxvx.jdField_a_of_type_Int != 0) {
-              continue;
-            }
-            bacz localbacz = this.a.jdField_a_of_type_Bacz;
-            String str = localaxvx.jdField_a_of_type_Long + "";
-            int i = localaxvx.b;
-            localbacz.a(str, localaxvx.c + i, false);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Exception paramArrayList)
-      {
-        paramArrayList.printStackTrace();
-      }
-      label121:
-      if (localaxvx.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Bacz.a(localaxvx.jdField_a_of_type_Long);
-      }
+      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      return;
+      this.jdField_a_of_type_Agaj.c.setVisibility(8);
     }
   }
 }

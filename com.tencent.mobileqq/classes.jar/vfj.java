@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vfj
-  implements ShareActionSheet.OnItemClickListener
+public class vfj
+  implements View.OnClickListener
 {
-  vfj(vfi paramvfi) {}
+  public vfj(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(View paramView)
   {
-    vfi.a(this.a, paramActionSheetItem);
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

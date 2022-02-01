@@ -1,10 +1,10 @@
 package com.tencent.open.model;
 
+import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anzj;
-import bjzc;
+import biem;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.qqconnect.Appinfo;
@@ -12,7 +12,7 @@ import tencent.im.oidb.qqconnect.Appinfo;
 public class AppInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppInfo> CREATOR = new bjzc();
+  public static final Parcelable.Creator<AppInfo> CREATOR = new biem();
   private int jdField_a_of_type_Int = -1;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
@@ -59,11 +59,11 @@ public class AppInfo
     switch (this.jdField_b_of_type_Int)
     {
     default: 
-      return anzj.a(2131699530);
+      return amtj.a(2131699765);
     case 0: 
-      return anzj.a(2131699529);
+      return amtj.a(2131699764);
     case 1: 
-      return anzj.a(2131699531);
+      return amtj.a(2131699766);
     case 2: 
       return "ARK应用";
     case 3: 

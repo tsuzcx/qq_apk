@@ -1,29 +1,25 @@
 package cooperation.qzone;
 
 import android.view.View;
-import bmuu;
-import bmuw;
-import bmux;
-import bmuy;
 import com.tencent.image.URLDrawable;
 import java.util.List;
 
-public class QzoneGiftFullScreenViewController$3$2
+class QzoneGiftFullScreenViewController$3$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$2(bmuw parambmuw) {}
+  QzoneGiftFullScreenViewController$3$2(QzoneGiftFullScreenViewController.3 param3) {}
   
   public void run()
   {
     URLDrawable.resume();
-    ((View)this.a.jdField_a_of_type_Bmuu.a).setBackgroundColor(0);
-    bmuu.a(this.a.jdField_a_of_type_Bmuu);
-    this.a.jdField_a_of_type_Bmux.a();
-    if (bmuu.a(this.a.jdField_a_of_type_Bmuu).size() > 0)
+    ((View)this.this$1.this$0.magicfaceReceivePlay).setBackgroundColor(0);
+    QzoneGiftFullScreenViewController.access$100(this.this$1.this$0);
+    this.this$1.val$playListener.giftFullScreenPlayEnd();
+    if (QzoneGiftFullScreenViewController.access$200(this.this$1.this$0).size() > 0)
     {
-      bmuy localbmuy = (bmuy)bmuu.a(this.a.jdField_a_of_type_Bmuu).get(0);
-      this.a.jdField_a_of_type_Bmuu.a(localbmuy.jdField_a_of_type_JavaLangString, localbmuy.b, localbmuy.jdField_a_of_type_Boolean, localbmuy.jdField_a_of_type_Bmux);
-      bmuu.a(this.a.jdField_a_of_type_Bmuu).remove(localbmuy);
+      QzoneGiftFullScreenViewController.MagicData localMagicData = (QzoneGiftFullScreenViewController.MagicData)QzoneGiftFullScreenViewController.access$200(this.this$1.this$0).get(0);
+      this.this$1.this$0.playMaigcface(localMagicData.emotionId, localMagicData.maigcPath, localMagicData.isPassivePraise, localMagicData.playListener);
+      QzoneGiftFullScreenViewController.access$200(this.this$1.this$0).remove(localMagicData);
     }
   }
 }

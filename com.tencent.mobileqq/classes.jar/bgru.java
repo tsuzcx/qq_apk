@@ -1,7 +1,4 @@
-public abstract interface bgru
-{
-  public abstract boolean a(bfrs parambfrs);
-}
+public class bgru {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

@@ -1,15 +1,25 @@
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+
 public class alxt
+  implements TVK_SDKMgr.InstallListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public alxt(CmGameAppInterface paramCmGameAppInterface) {}
   
-  public String toString()
+  public void onInstallProgress(float paramFloat)
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
 }
 

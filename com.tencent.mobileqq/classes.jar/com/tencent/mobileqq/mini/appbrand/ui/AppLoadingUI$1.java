@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import bhez;
+import bfol;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -25,15 +25,15 @@ class AppLoadingUI$1
     try
     {
       int i = DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 60.0F);
-      Object localObject1 = this.this$0.getActivity().getResources().getDrawable(2130841136);
+      Object localObject1 = this.this$0.getActivity().getResources().getDrawable(2130841172);
       Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
       localObject1 = URLDrawable.getDrawable(URLDecoder.decode(AppLoadingUI.access$000(this.this$0).config.iconUrl), (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject1).setTag(bhez.b(i, i, 40));
-      ((URLDrawable)localObject1).setDecodeHandler(bhez.j);
+      ((URLDrawable)localObject1).setTag(bfol.b(i, i, 40));
+      ((URLDrawable)localObject1).setDecodeHandler(bfol.j);
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 7;
       ((Message)localObject2).obj = localObject1;

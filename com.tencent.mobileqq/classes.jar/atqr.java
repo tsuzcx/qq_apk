@@ -1,47 +1,46 @@
+import android.widget.CompoundButton;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class atqr
+  implements atqt
 {
-  private QQAppInterface a;
+  public atqr(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  public atqr(QQAppInterface paramQQAppInterface)
+  public void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong, String paramString5, atqw paramatqw)
-  {
-    atrw localatrw = this.a.a().a();
-    atry localatry = new atry();
-    localatry.jdField_a_of_type_JavaLangString = paramString4;
-    localatry.jdField_a_of_type_Long = paramLong;
-    localatry.c = paramString5;
-    localatry.b = paramString3;
-    if (paramInt1 != 3000)
+    int i = 1;
+    ArrayList localArrayList;
+    if (paramAppletItem != null)
     {
-      localatrw.a(paramString1, paramInt1, paramString2, paramInt2, localatry, 5000, 5, new atqu(this, paramatqw));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsSettingFragment", 2, "OnChangeSwitchListener onChangeSwitchListener " + paramAppletItem.toString() + ",  isChecked:" + paramBoolean);
+      }
+      this.a.a(true);
+      paramCompoundButton.setChecked(paramBoolean);
+      paramCompoundButton = (anxn)AppletsSettingFragment.a(this.a).getBusinessHandler(148);
+      localArrayList = new ArrayList();
+      if (!paramBoolean) {
+        break label113;
+      }
     }
-    localatrw.a(paramString1, paramString2, localatry, new atqv(this, paramatqw));
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt2, atqw paramatqw)
-  {
-    atrw localatrw = this.a.a().a();
-    atry localatry = new atry();
-    localatry.jdField_a_of_type_JavaLangString = paramString4;
-    localatry.jdField_a_of_type_Long = paramLong;
-    if ((paramInt1 == 3000) || (paramInt1 == 1))
+    for (;;)
     {
-      localatrw.a(paramString2, paramString1, localatry, paramInt2, 5000, 3, new atqs(this, paramatqw));
+      paramAppletItem.a(i);
+      localArrayList.add(paramAppletItem);
+      paramCompoundButton.a(localArrayList);
       return;
+      label113:
+      i = 0;
     }
-    localatrw.a(paramString1, paramInt1, paramString2, paramString3, 5000, 3, new atqt(this, paramatqw));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqr
  * JD-Core Version:    0.7.0.1
  */

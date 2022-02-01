@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
 
-class aiau
-  implements aiey
+public class aiau
+  implements View.OnTouchListener
 {
-  aiau(aiar paramaiar) {}
+  float jdField_a_of_type_Float = 0.0F;
   
-  public void a()
+  public aiau(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (aiar.a(this.a).J) {
-      aiar.a(this.a).ba();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
     }
-    aiar.a(this.a).b(aiar.a(this.a).hashCode());
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
+      }
+    }
   }
 }
 

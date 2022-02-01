@@ -1,16 +1,11 @@
 public class aqbg
 {
-  public void a(aqbi paramaqbi, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  public int a;
+  public String a = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbg
  * JD-Core Version:    0.7.0.1
  */

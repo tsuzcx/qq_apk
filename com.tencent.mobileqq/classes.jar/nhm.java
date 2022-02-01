@@ -1,12 +1,6 @@
 public abstract interface nhm
 {
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void a(boolean paramBoolean);
 }
 
 

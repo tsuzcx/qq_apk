@@ -1,15 +1,15 @@
-public class tjx
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+class tjx
+  extends BroadcastReceiver
 {
-  private boolean a;
+  tjx(tjw paramtjw) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
+    this.a.a(paramContext, paramIntent);
   }
 }
 

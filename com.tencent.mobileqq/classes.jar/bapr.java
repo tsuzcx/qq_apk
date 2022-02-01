@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bapr
-  implements DialogInterface.OnClickListener
+public class bapr
+  extends bapi
 {
-  bapr(bapq parambapq, bhpc parambhpc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bapr(LikesView paramLikesView, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
+    super(paramInt);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
+      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

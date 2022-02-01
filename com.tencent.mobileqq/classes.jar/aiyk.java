@@ -1,133 +1,22 @@
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.Context;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class aiyk
+  extends bfba
 {
-  private int jdField_a_of_type_Int;
-  protected ViewGroup a;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private VoiceTextPanel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel;
-  private ViewGroup b;
-  
-  private void d()
+  public aiyk(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bfaz parambfaz, QQAppInterface paramQQAppInterface)
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getBottom());
+    super(paramContext, parambfaz, paramQQAppInterface);
   }
   
-  private void e()
+  protected void b(Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().setOnTouchListener(new aiyl(this));
-  }
-  
-  public int a()
-  {
-    Rect localRect1 = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getWindowVisibleDisplayFrame(localRect1);
-    Rect localRect2 = new Rect();
-    this.b.getGlobalVisibleRect(localRect2);
-    localRect2 = new Rect();
-    this.jdField_a_of_type_AndroidViewViewGroup.getGlobalVisibleRect(localRect2);
-    int j = localRect2.bottom;
-    int i;
-    if (((!Build.MODEL.startsWith("Coolpad")) || (Build.VERSION.SDK_INT != 19)) && ((!Build.MODEL.startsWith("Coolpad A8")) || (Build.VERSION.SDK_INT != 22)) && ((!Build.MODEL.startsWith("Coolpad B770")) || (Build.VERSION.SDK_INT != 22)))
-    {
-      i = j;
-      if (Build.MODEL.startsWith("ivvi"))
-      {
-        i = j;
-        if (Build.VERSION.SDK_INT != 22) {}
-      }
+    super.b(paramObject);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(102);
     }
-    else
-    {
-      i = j - localRect1.top;
-    }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a();
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceTextMaskViewHelper", 2, "dismissTopMaskPanel");
-      }
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a();
-    e();
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
-    {
-      if (paramInt2 != this.jdField_a_of_type_AndroidWidgetPopupWindow.getHeight()) {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
-      }
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
-    e();
-  }
-  
-  public void a(ViewGroup paramViewGroup1, VoiceTextPanel paramVoiceTextPanel, ViewGroup paramViewGroup2, BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel = paramVoiceTextPanel;
-    this.b = paramViewGroup2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      d();
-    }
-    while (this.jdField_a_of_type_Int != 0) {
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getBottom());
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h(false);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 0;
   }
 }
 

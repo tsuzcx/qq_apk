@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ajwm;
+import airj;
 import android.util.SparseArray;
-import bhle;
+import bfuk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
@@ -10,15 +10,15 @@ import java.util.Locale;
 public class CTEntryMng$2
   implements Runnable
 {
-  public CTEntryMng$2(ajwm paramajwm, SparseArray paramSparseArray) {}
+  public CTEntryMng$2(airj paramairj, SparseArray paramSparseArray) {}
   
   public void run()
   {
-    String str = ajwm.a(this.this$0, this.a);
+    String str = airj.a(this.this$0, this.a);
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveEntryRedDot value: %s", new Object[] { str }));
     }
-    bhle.a(ajwm.a(this.this$0).getApp(), ajwm.a(this.this$0).c(), "ct_entry_reddot_info", str);
+    bfuk.a(airj.a(this.this$0).getApp(), airj.a(this.this$0).getCurrentUin(), "ct_entry_reddot_info", str);
   }
 }
 

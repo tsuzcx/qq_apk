@@ -1,14 +1,18 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 
-final class belb
-  implements bekr
+public class belb
 {
-  belb(Pattern paramPattern) {}
+  public float a;
+  public int a;
+  public float b;
   
-  public boolean a(String paramString)
+  public belb(PinyinTextView paramPinyinTextView) {}
+  
+  private void a()
   {
-    return this.a.matcher(paramString).find();
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

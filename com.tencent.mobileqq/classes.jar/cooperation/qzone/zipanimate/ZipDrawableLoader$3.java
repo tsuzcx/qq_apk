@@ -1,66 +1,62 @@
 package cooperation.qzone.zipanimate;
 
 import android.graphics.drawable.BitmapDrawable;
-import bnqv;
-import bnqy;
-import bnra;
-import bnrb;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ZipDrawableLoader$3
+class ZipDrawableLoader$3
   implements Runnable
 {
-  public ZipDrawableLoader$3(bnqv parambnqv, int paramInt, bnrb parambnrb) {}
+  ZipDrawableLoader$3(ZipDrawableLoader paramZipDrawableLoader, int paramInt, ZipFrameLoadedListener paramZipFrameLoadedListener) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Int;
+    int j = this.val$frameIndex;
     int i = j;
-    if (j < bnqv.a(this.this$0)) {
-      i = j + bnqv.a(this.this$0).size();
+    if (j < ZipDrawableLoader.access$500(this.this$0)) {
+      i = j + ZipDrawableLoader.access$600(this.this$0).size();
     }
-    if (i - bnqv.a(this.this$0) > bnqv.b(this.this$0)) {}
-    while (this.jdField_a_of_type_Int >= bnqv.a(this.this$0).size()) {
+    if (i - ZipDrawableLoader.access$500(this.this$0) > ZipDrawableLoader.access$700(this.this$0)) {}
+    while (this.val$frameIndex >= ZipDrawableLoader.access$600(this.this$0).size()) {
       return;
     }
-    bnqy localbnqy = null;
+    ZipDrawableLoader.AnimationFrame localAnimationFrame = null;
     for (;;)
     {
       synchronized (this.this$0)
       {
-        if (this.jdField_a_of_type_Int < bnqv.a(this.this$0).size()) {
-          localbnqy = (bnqy)bnqv.a(this.this$0).get(this.jdField_a_of_type_Int);
+        if (this.val$frameIndex < ZipDrawableLoader.access$600(this.this$0).size()) {
+          localAnimationFrame = (ZipDrawableLoader.AnimationFrame)ZipDrawableLoader.access$600(this.this$0).get(this.val$frameIndex);
         }
-        if (localbnqy == null) {
+        if (localAnimationFrame == null) {
           break;
         }
-        if (localbnqy.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null)
+        if (localAnimationFrame.mBitmapDrawable == null)
         {
-          ??? = bnqv.a(this.this$0, localbnqy.jdField_a_of_type_JavaLangString);
+          ??? = ZipDrawableLoader.access$800(this.this$0, localAnimationFrame.path);
           if (??? != null)
           {
             j = ((BitmapDrawable)???).getIntrinsicWidth();
             i = ((BitmapDrawable)???).getIntrinsicHeight();
-            j = (int)(j * bnqv.a(this.this$0));
-            i = (int)(i * bnqv.a(this.this$0));
-            if (bnqv.a(this.this$0) == null) {
+            j = (int)(j * ZipDrawableLoader.access$900(this.this$0));
+            i = (int)(i * ZipDrawableLoader.access$900(this.this$0));
+            if (ZipDrawableLoader.access$1000(this.this$0) == null) {
               break label285;
             }
-            ((BitmapDrawable)???).setBounds(bnqv.a(this.this$0));
-            localbnqy.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)???);
+            ((BitmapDrawable)???).setBounds(ZipDrawableLoader.access$1000(this.this$0));
+            localAnimationFrame.mBitmapDrawable = ((BitmapDrawable)???);
           }
         }
-        if (!this.this$0.a)
+        if (!this.this$0.mFirstFrameLoaded)
         {
-          this.this$0.a = true;
-          if (bnqv.a(this.this$0) != null) {
-            bnqv.a(this.this$0).a(localbnqy.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+          this.this$0.mFirstFrameLoaded = true;
+          if (ZipDrawableLoader.access$1100(this.this$0) != null) {
+            ZipDrawableLoader.access$1100(this.this$0).onZipFirstFrameLoaded(localAnimationFrame.mBitmapDrawable);
           }
         }
-        if (this.jdField_a_of_type_Bnrb == null) {
+        if (this.val$ls == null) {
           break;
         }
-        this.jdField_a_of_type_Bnrb.a(this.jdField_a_of_type_Int, localbnqy.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+        this.val$ls.onLoaded(this.val$frameIndex, localAnimationFrame.mBitmapDrawable);
         return;
       }
       label285:

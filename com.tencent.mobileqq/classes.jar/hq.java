@@ -1,85 +1,93 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class hq
-  implements BusinessObserver
 {
-  public void a(double paramDouble1, double paramDouble2)
+  public static HashMap<String, Integer> a = new HashMap();
+  public static HashMap<String, Integer> b;
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "handleChangeMapViewAngle= " + paramDouble1 + "|" + paramDouble2);
-    }
+    a.put("actLbsSendPoiListFailure", Integer.valueOf(100));
+    a.put("actLbsSendGetPidFailure", Integer.valueOf(100));
+    a.put("actLbsPayBridgeFailure", Integer.valueOf(100));
+    a.put("actLbsPoiListFailure", Integer.valueOf(10000));
+    a.put("actLbsPackListFailure", Integer.valueOf(1000));
+    a.put("actLbsGetPackFailure", Integer.valueOf(100));
+    a.put("actLbsCaiShenResourceFailure", Integer.valueOf(100));
+    b = new HashMap();
+    b.put("actLbsSendPoiListFailure", Integer.valueOf(10000));
+    b.put("actLbsSendGetPidFailure", Integer.valueOf(10000));
+    b.put("actLbsPayBridgeFailure", Integer.valueOf(10000));
+    b.put("actLbsPoiListFailure", Integer.valueOf(100000));
+    b.put("actLbsPackListFailure", Integer.valueOf(10000));
+    b.put("actLbsGetPackFailure", Integer.valueOf(10000));
+    b.put("actLbsCaiShenResourceFailure", Integer.valueOf(10000));
   }
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public static void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetLBSPoiList, isSuccess  = " + paramBoolean);
-    }
-  }
-  
-  public void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetRedPackPage, isSuccess  = " + paramBoolean);
-    }
-  }
-  
-  public void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    try
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-      do
+      HashMap localHashMap = new HashMap();
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
       {
-        return;
-        c(paramBoolean, paramBundle);
-        return;
-        d(paramBoolean, paramBundle);
-        return;
-        e(paramBoolean, paramBundle);
-        return;
-        f(paramBoolean, paramBundle);
-        return;
-        b(paramBoolean, paramBundle);
-        return;
-        a(paramBoolean, paramBundle);
-        return;
-      } while (paramBundle == null);
-      a(paramBundle.getDouble("latitude"), paramBundle.getDouble("longitude"));
+        if (QLog.isColorLevel()) {
+          QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
+        }
+        StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str, paramString, false, 0L, 0L, localHashMap, null);
+      }
       return;
     }
-    ArrayList localArrayList = null;
-    paramInt = i;
-    if (paramBundle != null)
+    catch (Throwable paramString)
     {
-      localArrayList = paramBundle.getStringArrayList("key_lbs_template_ids");
-      paramInt = paramBundle.getInt("key_lbs_template_cookie", -1);
+      paramString.printStackTrace();
     }
-    a(paramInt, paramBoolean, localArrayList);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", String.valueOf(paramInt));
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (a(paramString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
+        }
+        StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str, paramString, true, 0L, 0L, localHashMap, null);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = (Integer)a.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return (int)(Math.random() * paramString.intValue()) == 1;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    paramString = (Integer)b.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return (int)(Math.random() * paramString.intValue()) == 1;
   }
 }
 

@@ -1,16 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
-class auhh
-  implements View.OnClickListener
+public class auhh
+  extends RecyclerView.OnScrollListener
 {
-  auhh(auha paramauha) {}
+  public auhh(HotPicRecyclerView paramHotPicRecyclerView) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    aunj.a(this.a.a, this.a.d());
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      auhp.c();
+      this.a.b();
+      if (paramInt != 2) {
+        break label128;
+      }
+      this.a.jdField_a_of_type_Auiv.a(true);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
+        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Auhi != null)) {
+          this.a.jdField_a_of_type_Auhi.d();
+        }
+      }
+      this.a.jdField_a_of_type_Int = paramInt;
+      return;
+      this.a.c();
+      AbstractGifImage.pauseAll();
+      auhp.b();
+      break;
+      label128:
+      this.a.jdField_a_of_type_Auiv.a(false);
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 0) {
+      this.a.jdField_a_of_type_Auiv.a(paramInt2);
+    }
   }
 }
 

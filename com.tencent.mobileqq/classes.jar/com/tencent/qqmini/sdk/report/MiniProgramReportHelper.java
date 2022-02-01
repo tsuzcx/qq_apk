@@ -511,6 +511,46 @@ public class MiniProgramReportHelper
     return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(LoginManager.getInstance().getAccount())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(System.currentTimeMillis())), newEntry("qqversion", QUAUtil.getPlatformQUA()), newEntry("imei", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getImei()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(AppLoaderFactory.g().getContext().getContentResolver(), "android_id")) }));
   }
   
+  public static List<COMM.Entry> newVersionEntries(MiniAppInfo paramMiniAppInfo)
+  {
+    ArrayList localArrayList = new ArrayList();
+    COMM.Entry localEntry1;
+    COMM.Entry localEntry2;
+    COMM.Entry localEntry3;
+    COMM.Entry localEntry4;
+    COMM.Entry localEntry5;
+    if (paramMiniAppInfo != null)
+    {
+      localEntry1 = newEntry("appid", paramMiniAppInfo.appId);
+      localEntry2 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
+      localEntry3 = newEntry("app_classification", null);
+      localEntry4 = newEntry("app_tag", "");
+      if (!EnvUtils.isPkgDownloaded(paramMiniAppInfo)) {
+        break label210;
+      }
+      str = "1";
+      localEntry5 = newEntry("isPkgDownloaed", str);
+      if (!EnvUtils.isX5Enabled(paramMiniAppInfo)) {
+        break label216;
+      }
+    }
+    label210:
+    label216:
+    for (String str = "1";; str = "0")
+    {
+      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, newEntry("isX5Enabled", str), newEntry("app_status", String.valueOf(paramMiniAppInfo.verType)) }));
+      if (!TextUtils.isEmpty(paramMiniAppInfo.via)) {
+        localArrayList.add(newEntry("via", paramMiniAppInfo.via));
+      }
+      if (paramMiniAppInfo.baseLibInfo != null) {
+        localArrayList.add(newEntry("app_js_version", paramMiniAppInfo.baseLibInfo.baseLibVersion));
+      }
+      return localArrayList;
+      str = "0";
+      break;
+    }
+  }
+  
   private static Map<String, String> parseReportData(String paramString)
   {
     int i = 0;

@@ -1,209 +1,161 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.1;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.2;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.lang.ref.WeakReference;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class qfo
+public abstract class qfo
+  implements ViewBase.OnClickListener
 {
-  private static qfo jdField_a_of_type_Qfo;
-  private int jdField_a_of_type_Int;
-  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-  private ConcurrentHashMap<Integer, WeakReference<pqj>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public static qfo a()
+  qfo(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (jdField_a_of_type_Qfo == null) {
-      jdField_a_of_type_Qfo = new qfo();
-    }
-    return jdField_a_of_type_Qfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    Object localObject = (Integer)paramToServiceMsg.getAttributes().get("seq");
-    if (localObject == null) {}
-    do
+    if (paramArticleInfo != null)
     {
-      do
+      ReportInfo localReportInfo = new ReportInfo();
+      Object localObject = paramArticleInfo.mSocialFeedInfo;
+      rdy localrdy = new rdy();
+      localReportInfo.mUin = pay.a();
+      localReportInfo.mSource = 0;
+      localReportInfo.mSourceArticleId = paramArticleInfo.mArticleID;
+      localReportInfo.mChannelId = ((int)paramArticleInfo.mChannelID);
+      localReportInfo.mAlgorithmId = ((int)paramArticleInfo.mAlgorithmID);
+      localReportInfo.mStrategyId = paramArticleInfo.mStrategyId;
+      localReportInfo.mServerContext = paramArticleInfo.mServerContext;
+      localReportInfo.mReadTimeLength = -1;
+      localReportInfo.mOperation = paramInt;
+      if (localObject != null)
       {
-        return;
-        localObject = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      } while (localObject == null);
-      localObject = (pqj)((WeakReference)localObject).get();
-    } while (localObject == null);
-    ((pqj)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-  }
-  
-  private boolean a(ToServiceMsg paramToServiceMsg)
-  {
-    int i;
-    int k;
-    if (paramToServiceMsg.getAttribute(pqj.f) != null)
-    {
-      i = ((Integer)paramToServiceMsg.getAttribute(pqj.f)).intValue();
-      if (i == 2)
-      {
-        k = 1;
-        QLog.d("ReadInJoyMSFService", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(k), ", retryTimes = ", Integer.valueOf(i) });
-      }
-    }
-    for (;;)
-    {
-      int n = k;
-      int j;
-      if (paramToServiceMsg.getAttribute("retryIndex") != null)
-      {
-        j = ((Integer)paramToServiceMsg.getAttribute("retryIndex")).intValue();
-        if (j <= 0) {
-          break label162;
+        localrdy.jdField_a_of_type_Long = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Long;
+        if (((SocializeFeedsInfo)localObject).jdField_a_of_type_Rer != null) {
+          localrdy.jdField_b_of_type_Long = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Rer.jdField_a_of_type_Long;
         }
-      }
-      label162:
-      for (i = 1;; i = 0)
-      {
-        n = k | i;
-        QLog.d("ReadInJoyMSFService", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(n), ", fastResendRetryIndex = ", Integer.valueOf(j) });
-        if (n != 0) {
-          QLog.d("ReadInJoyMSFService", 1, " isRetryRequest | 68b Retry");
-        }
-        return n;
-        m = 0;
-        break;
-      }
-      int m = 0;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = new ReadInJoyMSFService.2(this, paramToServiceMsg);
-    ozs.a().post(paramToServiceMsg);
-  }
-  
-  public final void a(ToServiceMsg paramToServiceMsg, pqj parampqj)
-  {
-    if ((paramToServiceMsg == null) || (parampqj == null)) {
-      return;
-    }
-    paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-    parampqj = new WeakReference(parampqj);
-    ozs.a().post(new ReadInJoyMSFService.1(this, paramToServiceMsg, parampqj));
-    a(paramToServiceMsg);
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
-  {
-    Object localObject = null;
-    if (paramToServiceMsg == null) {
-      return;
-    }
-    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyMSFService", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
-      }
-      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("ReadInJoy", 4, "bPbResp:" + bool);
-      }
-      paramException = localObject;
-      if (paramBoolean)
-      {
-        if (!bool) {
-          break label477;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyMSFService", 2, "PB cmd: recv cmd: " + paramFromServiceMsg.getServiceCmd());
-        }
-        paramException = localObject;
-        if (paramFromServiceMsg.getWupBuffer() != null)
+        localrdy.jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject).jdField_b_of_type_Int;
+        localrdy.jdField_b_of_type_Int = ((SocializeFeedsInfo)localObject).d;
+        paramArticleInfo = ((SocializeFeedsInfo)localObject).jdField_a_of_type_JavaUtilList;
+        if ((paramArticleInfo != null) && (!paramArticleInfo.isEmpty()))
         {
-          int i = paramFromServiceMsg.getWupBuffer().length - 4;
-          paramException = new byte[i];
-          bhvd.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-          paramFromServiceMsg.putWupBuffer(paramException);
-          paramException = paramFromServiceMsg.getWupBuffer();
+          localrdy.jdField_a_of_type_JavaUtilList = new ArrayList();
+          paramArticleInfo = paramArticleInfo.iterator();
+          while (paramArticleInfo.hasNext())
+          {
+            localObject = (rer)paramArticleInfo.next();
+            if (localObject != null) {
+              localrdy.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((rer)localObject).jdField_a_of_type_Long));
+            }
+          }
         }
       }
+      localReportInfo.mFeedsReportData = localrdy;
+      paramArticleInfo = new ArrayList();
+      paramArticleInfo.add(localReportInfo);
+      pkm.a().a(paramArticleInfo);
     }
+  }
+  
+  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  {
+    if ((paramArticleInfo == null) || (paramArticleInfo.mSocialFeedInfo == null)) {
+      return;
+    }
+    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
+    label28:
+    label40:
+    int i;
+    label59:
+    int j;
+    label73:
+    long l;
+    if (uhv.a(paramArticleInfo.mChannelID))
+    {
+      if (!pgb.a(paramArticleInfo)) {
+        break label290;
+      }
+      paramString1 = paramArticleInfo.mSubscribeID;
+      if (localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList == null) {
+        break label320;
+      }
+      i = localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList.size();
+      if (!TextUtils.isEmpty(localSocializeFeedsInfo.jdField_a_of_type_JavaLangString)) {
+        break label325;
+      }
+      j = 0;
+      int k = localSocializeFeedsInfo.jdField_b_of_type_Int;
+      int m = localSocializeFeedsInfo.d;
+      int n = localSocializeFeedsInfo.f;
+      paramString1 = pay.a((int)paramArticleInfo.mChannelID, paramArticleInfo.mAlgorithmID, pay.a(paramArticleInfo), paramString1, paramArticleInfo.innerUniqueID, i + 1, j, k, m, n).a();
+      l = paramArticleInfo.mArticleID;
+      if ((!pay.c(paramArticleInfo)) && (!pay.d(paramArticleInfo)) && (!pay.f(paramArticleInfo)) && (!pay.g(paramArticleInfo))) {
+        break label381;
+      }
+      l = paramArticleInfo.businessId;
+    }
+    label290:
+    label320:
+    label325:
+    label381:
     for (;;)
     {
-      a(paramToServiceMsg, paramFromServiceMsg, paramException);
-      return;
-      if (paramFromServiceMsg.getResultCode() == 2008)
+      if ((pgb.i(paramArticleInfo)) || (pgb.g(paramArticleInfo)) || (pgb.j(paramArticleInfo)) || (pgb.k(paramArticleInfo)))
       {
-        paramFromServiceMsg = BaseActivity.sTopActivity;
-        paramToServiceMsg = paramFromServiceMsg;
-        if (paramFromServiceMsg == null) {
-          paramToServiceMsg = ozs.a().getApplication();
+        if (!pgb.o(paramArticleInfo)) {
+          odq.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rfj.jdField_a_of_type_Long), paramString2, paramString2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(l), "" + paramArticleInfo.mStrategyId, paramString1, false);
         }
-        paramFromServiceMsg = new Intent(paramToServiceMsg, NotificationActivity.class);
-        paramFromServiceMsg.setFlags(872415232);
-        paramFromServiceMsg.putExtra("type", 2);
-        paramToServiceMsg.startActivity(paramFromServiceMsg);
-        return;
-      }
-      if (paramException != null)
-      {
-        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        paramException.printStackTrace(new PrintStream(localByteArrayOutputStream));
-        paramException = new String(localByteArrayOutputStream.toByteArray());
-        if (!QLog.isColorLevel()) {
+        if ((pay.l(paramArticleInfo)) || (pay.m(paramArticleInfo))) {
           break;
         }
-        QLog.d("ReadInJoyMSFService", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-        break;
+        pgw.b(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+        return;
+        paramString2 = paramString1;
+        break label28;
+        paramString1 = "" + localSocializeFeedsInfo.jdField_a_of_type_Rer.jdField_a_of_type_Long;
+        break label40;
+        i = 0;
+        break label59;
+        j = 1;
+        break label73;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.w("ReadInJoyMSFService", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
-      break;
-      label477:
-      if (0 != 0) {}
-      try
-      {
-        throw new NullPointerException();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        paramException = localObject;
-      }
-      paramException = localObject;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyMSFService", 2, "bpc null");
-        paramException = localObject;
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoyMSFService", 2, "", localException);
-          paramException = localObject;
-        }
-      }
+      odq.a(null, paramArticleInfo.mSubscribeID, paramString2, paramString2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(l), "" + paramArticleInfo.mStrategyId, paramString1, false);
+      return;
     }
+  }
+  
+  private void b(ArticleInfo paramArticleInfo)
+  {
+    pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  private void c(ArticleInfo paramArticleInfo)
+  {
+    a(paramArticleInfo);
+    a(paramArticleInfo, a());
+  }
+  
+  protected abstract int a();
+  
+  protected abstract void a(ArticleInfo paramArticleInfo);
+  
+  protected abstract void a(ViewBase paramViewBase);
+  
+  public final void onClick(ViewBase paramViewBase)
+  {
+    b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    a(paramViewBase);
+    c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    twi.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 

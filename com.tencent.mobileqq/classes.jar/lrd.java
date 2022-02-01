@@ -1,13 +1,17 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.opengl.GLES20;
 
-class lrd
-  implements lrk
+public class lrd
+  extends lrc
 {
-  lrd(lrc paramlrc) {}
-  
-  public void a(Frame paramFrame, lrh paramlrh)
+  public lrd(String paramString)
   {
-    lrc.a(this.a, paramFrame);
+    super(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    lsd.a();
   }
 }
 

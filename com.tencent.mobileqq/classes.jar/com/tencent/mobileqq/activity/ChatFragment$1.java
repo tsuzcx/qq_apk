@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.v4.app.FragmentActivity;
-import aove;
-import bcrg;
+import anoe;
+import bbko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 import mqq.app.MobileQQ;
@@ -17,28 +17,28 @@ class ChatFragment$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(aove.a, 0);
-    long l = ((SharedPreferences)localObject).getLong(aove.d, 0L);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(anoe.a, 0);
+    long l = ((SharedPreferences)localObject).getLong(anoe.d, 0L);
     if ((l == 0L) || (l > System.currentTimeMillis()) || (System.currentTimeMillis() - l > 14400000L)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ((SharedPreferences)localObject).edit().putLong(aove.d, System.currentTimeMillis()).commit();
+        ((SharedPreferences)localObject).edit().putLong(anoe.d, System.currentTimeMillis()).commit();
       }
       if (i != 0)
       {
         i = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("entrance", 0);
         localObject = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.a, i, this.b);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a((String)localObject, this.a, i, this.b);
       }
-      bcrg.b.clear();
+      bbko.b.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,23 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class wtv
-  extends wsg<wty>
+class wtv
+  implements wus
 {
-  private long jdField_a_of_type_Long;
-  private wvd jdField_a_of_type_Wvd = new wtw(this);
-  protected boolean a;
+  wtv(wtr paramwtr, StoryVideoItem paramStoryVideoItem) {}
   
-  public wtv()
+  public void a(wur paramwur)
   {
-    d();
-  }
-  
-  private void d()
-  {
-    Object localObject = (wta)wth.a(10);
-    this.jdField_a_of_type_Long = ((Long)((wta)localObject).b("edit_video_weather_expiry_time", Long.valueOf(0L))).longValue();
-    if (this.jdField_a_of_type_Long >= System.currentTimeMillis())
+    if (this.jdField_a_of_type_Wtr.isCanceled()) {}
+    do
     {
-      int i = ((Integer)((wta)localObject).b("edit_video_weather_filter_data", Integer.valueOf(-999))).intValue();
-      localObject = (String)((wta)localObject).b("edit_video_weather_desc", "");
-      if ((i != -999) && (!TextUtils.isEmpty((CharSequence)localObject)))
-      {
-        yuk.b("WeatherDataProvider", "get local weather data. temperature = %d. expiryTime = %d. currentTime=%d.", Integer.valueOf(i), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(System.currentTimeMillis()));
-        this.jdField_a_of_type_JavaLangObject = new wty(i, (String)localObject);
-        return;
-      }
-    }
-    yuk.d("WeatherDataProvider", "no valid local weather data.");
-  }
-  
-  public wty a()
-  {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long >= System.currentTimeMillis())) {
-      return null;
-    }
-    return (wty)this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    yuk.a("WeatherDataProvider", "requestWeather[longitude=%s,latitude=%s]", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    xdq localxdq = new xdq(1, paramInt1, paramInt2);
-    wow.a().a(localxdq, new wtx(this));
-  }
-  
-  protected void a(wuz paramwuz)
-  {
-    yuk.b("WeatherDataProvider", "requestWeather.");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      yuk.b("WeatherDataProvider", "is request ing....");
       return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    wva localwva = (wva)wth.a(9);
-    wuz localwuz = paramwuz;
-    if (paramwuz == null) {
-      localwuz = localwva.b();
-    }
-    if (localwuz != null)
-    {
-      a(localwuz.b, localwuz.a);
-      return;
-    }
-    localwva.a(this.jdField_a_of_type_Wvd);
-    localwva.c();
+      xvv.a(this.jdField_a_of_type_Wtr.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Wtr.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtr.a, 12);
+    this.jdField_a_of_type_Wtr.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtr.a).a(this.jdField_a_of_type_Wtr.a, paramwur, VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a));
+    xwa.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

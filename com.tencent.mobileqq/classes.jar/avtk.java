@@ -1,18 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-
-public class avtk
-  implements View.OnTouchListener
+public abstract interface avtk
 {
-  public avtk(HotPicMainPanel paramHotPicMainPanel) {}
+  public abstract void a(int paramInt, avtw paramavtw, Object paramObject);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    HotPicMainPanel.a(this.a);
-    return true;
-  }
+  public abstract void a(avtw paramavtw, Object paramObject);
 }
 
 

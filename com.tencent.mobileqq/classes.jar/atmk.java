@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atmk
-  implements bdhy
+  implements View.OnClickListener
 {
-  public atmk(FileAssistantActivity paramFileAssistantActivity) {}
+  public atmk(ForwardFileOption paramForwardFileOption) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FileAssistantActivity.c(this.a);
-  }
-  
-  public void b()
-  {
-    FileAssistantActivity.c(this.a);
+    this.a.F();
+    ForwardFileOption.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmk
  * JD-Core Version:    0.7.0.1
  */

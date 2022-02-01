@@ -1,32 +1,43 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.ark.ArkDebugger.DebuggerCallback;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.2;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.3;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class ahds
-  implements ahca
+public class ahds
+  implements ArkDebugger.DebuggerCallback
 {
-  ahds(ahdk paramahdk, ahdx paramahdx, MessageForPoke paramMessageForPoke) {}
+  public ahds(ArkDebugChatPie.1 param1) {}
   
-  public void a()
+  public void Accepted()
   {
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Ahdx.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Ahdx.b == ahdk.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Ahdk.a instanceof ChatHistoryActivity)) && (!ahdk.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Ahdx.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      agej.a -= 1;
-      return;
-      this.jdField_a_of_type_Ahdx.c.setVisibility(8);
-    }
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.1(this));
+    QLog.d(this.a.this$0.tag, 1, "ArkDebugger Accepted");
+  }
+  
+  public boolean ReadyToRun(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    ArkAppCenter.a().postToMainThread(new ArkDebugChatPie.1.1.4(this, paramString4, paramString3, paramString1, paramString2));
+    QLog.d(this.a.this$0.tag, 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
+    return true;
+  }
+  
+  public void ReceivedPackage(String paramString1, String paramString2)
+  {
+    ahdr.a(this.a.this$0, paramString1);
+    ahdr.b(this.a.this$0, paramString2);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.3(this, paramString1, paramString2));
+    QLog.d(this.a.this$0.tag, 1, String.format("ArkDebugger ReceivedPackage appid: %s, appview: %s", new Object[] { paramString1, paramString2 }));
+  }
+  
+  public void Stopped(int paramInt)
+  {
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.2(this, paramInt));
+    QLog.d(this.a.this$0.tag, 1, "ArkDebugger Stopped");
   }
 }
 

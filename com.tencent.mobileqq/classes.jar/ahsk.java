@@ -1,19 +1,42 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ahsk
-  extends AnimatorListenerAdapter
 {
-  public ahsk(SixCombolEffectView paramSixCombolEffectView) {}
+  AtomicInteger a = new AtomicInteger(0);
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
+    this.a.set(paramInt);
+  }
+  
+  public boolean a()
+  {
+    return this.a.get() == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.a.get() == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.a.get() == 4;
+  }
+  
+  public boolean d()
+  {
+    return this.a.get() > 4;
+  }
+  
+  public boolean e()
+  {
+    return this.a.get() > 1;
+  }
+  
+  public boolean f()
+  {
+    return this.a.get() == 5;
   }
 }
 

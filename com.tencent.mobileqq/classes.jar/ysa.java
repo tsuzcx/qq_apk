@@ -1,26 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class ysa
-  extends QQUIEventReceiver<yrh, xbq>
+  implements ysz
 {
-  public ysa(@NonNull yrh paramyrh)
-  {
-    super(paramyrh);
-  }
+  public ysa(SegmentList paramSegmentList) {}
   
-  public void a(@NonNull yrh paramyrh, @NonNull xbq paramxbq)
+  public void a()
   {
-    if ((paramxbq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramxbq.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    paramyrh.a(paramxbq);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xbq.class;
+    this.a.a.a(false);
   }
 }
 

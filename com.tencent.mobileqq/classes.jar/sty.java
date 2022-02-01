@@ -1,37 +1,85 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.util.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastImageViewCreator.ImageViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-class sty
-  implements GifDrawable.OnGIFPlayOnceListener
+public class sty
+  implements URLDrawableDownListener
 {
-  AbstractGifImage a;
+  sty(stx paramstx) {}
   
-  sty(AbstractGifImage paramAbstractGifImage)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a = paramAbstractGifImage;
+    if (paramURLDrawable == null) {
+      return;
+    }
+    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + stx.a(this.a));
+    paramThrowable = (ImageData)this.a.a;
+    boolean bool = stw.a(paramURLDrawable.getURL().getFile());
+    if (bool) {}
+    for (paramView = stw.a(paramThrowable.jdField_a_of_type_JavaLangString, paramThrowable);; paramView = paramThrowable.jdField_a_of_type_JavaLangString)
+    {
+      paramView = uet.a(paramView, 4);
+      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
+        break;
+      }
+      if (stx.b(this.a) < 2) {
+        stx.c(this.a);
+      }
+      stx.d(this.a);
+      if ((bool) && (stx.a(this.a) < 3))
+      {
+        paramThrowable.jdField_a_of_type_Boolean = false;
+        ThreadManager.getUIHandler().post(new WebFastImageViewCreator.ImageViewHolder.1.1(this, paramThrowable));
+      }
+      paramView = new HashMap();
+      paramView.put("isSharpP", String.valueOf(bool));
+      paramView.put("url", paramThrowable.jdField_a_of_type_JavaLangString);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
+      return;
+    }
   }
   
-  public void onPlayOnce()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    Object localObject = (List)stx.a().get(this.a);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if (localWeakReference.get() != null) {
-          ((stz)localWeakReference.get()).a();
-        }
-      }
+    if (paramURLDrawable == null) {
+      return;
     }
-    this.a.setGIFPlayOnceListener(null);
-    stx.b().remove(this.a);
-    stx.a().remove(this.a);
+    ImageData localImageData = (ImageData)this.a.a;
+    boolean bool = stw.a(paramURLDrawable.getURL().getFile());
+    if (bool) {}
+    for (paramView = stw.a(localImageData.jdField_a_of_type_JavaLangString, localImageData);; paramView = localImageData.jdField_a_of_type_JavaLangString)
+    {
+      paramView = uet.a(paramView, 4);
+      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
+        break;
+      }
+      if ((localImageData.jdField_a_of_type_Int == 0) || (localImageData.b == 0))
+      {
+        stx.a(this.a, paramURLDrawable);
+        stx.a(this.a).setImageDrawable(paramURLDrawable);
+      }
+      paramView = new HashMap();
+      paramView.put("isSharpP", String.valueOf(bool));
+      paramView.put("url", localImageData.jdField_a_of_type_JavaLangString);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
+      return;
+    }
   }
 }
 

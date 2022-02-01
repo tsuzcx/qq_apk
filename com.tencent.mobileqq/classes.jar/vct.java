@@ -1,48 +1,76 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.Collections;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vct
-  implements vjt
+public abstract class vct
+  extends vbn<vaq>
 {
-  vct(vcn paramvcn) {}
+  public urk a;
+  public urt a;
   
-  public void a()
+  public vct(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    QLog.d("QCircleDataEditContentP", 1, "onClickSend()");
-    if ((this.a.a().isFinishing()) || (vcn.a(this.a) == null))
+    super(paramViewGroup, paramInt1, paramInt2, paramWSVerticalPageFragment);
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a() != null))
     {
-      QLog.d("QCircleDataEditContentP", 1, "onCommentSend(): mTroopAddInputPopupWindow null");
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().f(a());
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().e(a());
     }
-    String str = vcn.a(this.a).a();
-    if (TextUtils.isEmpty(str.trim())) {
-      QQToast.a(this.a.a(), this.a.a().getString(2131697348), 0).a();
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null)
     {
-      vtq.a(vcn.a(this.a).id.get(), 11, 25, 5, "", str, "", "", "", this.a.b());
-      return;
-      if (!NetworkUtils.isNetworkAvailable(this.a.a()))
-      {
-        QQToast.a(this.a.a(), 1, this.a.a().getString(2131693974), 0).a();
-      }
-      else if (vcn.a(this.a).contains(Long.valueOf(Long.parseLong(str))))
-      {
-        QQToast.a(this.a.a(), 1, this.a.a().getString(2131697350), 0).a();
-      }
-      else
-      {
-        vcn.a(this.a).g();
-        vcn.a(this.a).c("");
-        vcn.a(this.a, Collections.singletonList(Long.valueOf(Long.parseLong(str))));
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(b());
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(c());
+    }
+    if (this.jdField_a_of_type_Ula != null) {
+      this.jdField_a_of_type_Ula.b(paramInt);
+    }
+  }
+  
+  public void a(vaq paramvaq)
+  {
+    super.a(paramvaq);
+    if (this.jdField_a_of_type_Ula != null) {
+      this.jdField_a_of_type_Ula.a(paramvaq);
+    }
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public abstract void b();
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  public abstract void c();
+  
+  protected boolean c()
+  {
+    return true;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Ula != null) {
+      this.jdField_a_of_type_Ula.c();
+    }
+  }
+  
+  public void g()
+  {
+    super.g();
+    if (this.jdField_a_of_type_Ula != null) {
+      this.jdField_a_of_type_Ula.b();
     }
   }
 }

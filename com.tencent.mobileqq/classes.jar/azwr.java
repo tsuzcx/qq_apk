@@ -1,24 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-
-class azwr
-  implements DialogInterface.OnClickListener
+public class azwr
 {
-  azwr(azwo paramazwo, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    paramDialogInterface = (azwn)this.jdField_a_of_type_AndroidViewView.getTag(2131365346);
-    if (paramDialogInterface != null) {
-      this.jdField_a_of_type_Azwo.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-    }
-  }
+  public static final String a = amtj.a(2131699235);
+  public static final String b = amtj.a(2131699234);
 }
 
 

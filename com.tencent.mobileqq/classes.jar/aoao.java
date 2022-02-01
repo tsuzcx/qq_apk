@@ -1,29 +1,39 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.qphone.base.util.QLog;
 
 class aoao
-  implements Comparator<File>
+  implements View.OnTouchListener
 {
   aoao(aoan paramaoan) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
+    switch (paramMotionEvent.getAction())
     {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
-      }
-      if (l2 >= l1) {
-        break;
-      }
-      return -1;
     }
-    if (l2 > l1) {
-      return 1;
-    }
-    return 0;
+    do
+    {
+      do
+      {
+        return true;
+        aoan.a(this.a).setAlpha(0.5F);
+        return true;
+        aoan.a(this.a).setAlpha(1.0F);
+        if (!aoan.a(this.a))
+        {
+          aoae.a(true);
+          aoan.a(this.a, true);
+        }
+        aoan.a(this.a).setVisibility(8);
+        aoan.a(this.a).clearAnimation();
+      } while (aoan.a(this.a) == null);
+      aoan.a(this.a).g();
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
+    return true;
   }
 }
 

@@ -1,17 +1,6 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.ConvertRunnable;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import java.lang.ref.WeakReference;
-
-public class zjq
+public abstract interface zjq
 {
-  public static int a = 3;
-  public long a;
-  public ConvertRunnable a;
-  public SlideItemInfo a;
-  public WeakReference<zjr> a;
-  public int b;
-  public long b;
-  public int c;
+  public abstract void a(boolean paramBoolean);
 }
 
 

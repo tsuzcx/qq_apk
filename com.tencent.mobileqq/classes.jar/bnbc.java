@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastAudio;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-public final class bnbc
-  implements Parcelable.Creator<BroadcastAudio>
+final class bnbc
+  implements View.OnClickListener
 {
-  public BroadcastAudio a(Parcel paramParcel)
-  {
-    return new BroadcastAudio(paramParcel);
-  }
+  bnbc(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
   
-  public BroadcastAudio[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new BroadcastAudio[paramInt];
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,66 +1,46 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aeoj
-  implements bcie
+  implements View.OnClickListener
 {
-  public aeoj(ForwardRecentActivity paramForwardRecentActivity) {}
+  public aeoj(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    int i = 3000;
-    paramView = (bcfn)paramView.getTag(2131381109);
-    if (paramView == null) {
-      return;
-    }
-    String str1 = paramView.b();
-    String str2 = paramView.a().toString();
-    if ((paramView instanceof bceb)) {
-      paramView = ((bceb)paramView).e();
-    }
-    for (;;)
+    Object localObject = (anca)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.getBusinessHandler(20);
+    String str;
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
+      ((anca)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label152;
       }
-      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
-        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
+    }
+    label152:
+    for (localObject = "0";; localObject = "1")
+    {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, (String)localObject, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
-      ForwardRecentActivity.h(this.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramView instanceof bcdz))
-      {
-        paramView = ((bcdz)paramView).b();
-      }
-      else if ((paramView instanceof bceh))
-      {
-        paramView = ((bceh)paramView).a;
-        i = 1;
-      }
-      else if ((paramView instanceof bcem))
-      {
-        paramView = ((bcem)paramView).a().troopuin;
-        i = 1;
-      }
-      else if ((paramView instanceof bcec))
-      {
-        i = 0;
-        paramView = "-1";
-      }
-      else
-      {
-        i = -1;
-        paramView = "-1";
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoj
  * JD-Core Version:    0.7.0.1
  */

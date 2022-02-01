@@ -1,35 +1,22 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afkb
-  implements TextWatcher
+  extends bduz
 {
-  public afkb(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  public afkb(TroopChatPie paramTroopChatPie) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(long paramLong)
   {
-    if (paramEditable == null) {}
-    for (;;)
+    if (!String.valueOf(paramLong).equals(this.a.getCurTroopUin())) {}
+    PlusPanel localPlusPanel;
+    do
     {
       return;
-      if (TextUtils.isEmpty(paramEditable.toString())) {
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      }
-      while (RegisterPersonalInfoActivity.a(this.a) != null)
-      {
-        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
-        return;
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
-      }
-    }
+      localPlusPanel = (PlusPanel)this.a.panelManager.a(8);
+    } while (localPlusPanel == null);
+    localPlusPanel.c();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

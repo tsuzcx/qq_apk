@@ -1,8 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.AppInfo;
 
-public abstract interface biem
+public final class biem
+  implements Parcelable.Creator<AppInfo>
 {
-  public abstract void a(Drawable paramDrawable);
+  public AppInfo a(Parcel paramParcel)
+  {
+    return new AppInfo(paramParcel);
+  }
+  
+  public AppInfo[] a(int paramInt)
+  {
+    return new AppInfo[paramInt];
+  }
 }
 
 

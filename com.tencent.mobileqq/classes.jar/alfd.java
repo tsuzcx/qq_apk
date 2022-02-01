@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public final class alfd
-  implements Parcelable.Creator<RedPacketInfoBase>
+public class alfd
+  implements View.OnClickListener
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
-  {
-    return new RedPacketInfoBase(paramParcel);
-  }
+  public alfd(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public RedPacketInfoBase[] a(int paramInt)
-  {
-    return new RedPacketInfoBase[paramInt];
-  }
+  public void onClick(View paramView) {}
 }
 
 

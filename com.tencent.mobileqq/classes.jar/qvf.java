@@ -1,52 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoBigPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qvf
-  extends qva
+public class qvf
+  implements pwy
 {
-  protected void a()
+  public qvf(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    Object localObject = a();
-    if (localObject != null) {
-      ((SocializeFeedsInfo)localObject).a = 6;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    localObject = a();
-    if (localObject != null) {
-      ((qyg)localObject).a = true;
-    }
-    localObject = a();
-    if (localObject != null)
+    if (paramBoolean)
     {
-      localObject = ((qxz)localObject).a;
-      if (localObject != null)
-      {
-        a().mTitle = ((qyi)localObject).g;
-        a().mVideoVid = ((qyi)localObject).e;
-      }
-    }
-    try
-    {
-      localObject = a();
-      if (localObject != null)
-      {
-        localObject = ((qxz)localObject).a;
-        if (localObject != null)
-        {
-          localObject = ((qyi)localObject).d;
-          if (localObject != null) {
-            a().mVideoCoverUrl = new URL((String)localObject);
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
       return;
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      localMalformedURLException.printStackTrace();
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131717436, 0).a();
   }
 }
 

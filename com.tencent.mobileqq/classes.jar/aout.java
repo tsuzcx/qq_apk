@@ -1,37 +1,12 @@
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class aout
 {
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
-  }
+  public void a(aouv paramaouv, Object paramObject) {}
   
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    int i = paramMessageRecord.msgtype;
-    return (i == -2011) || (i == -2060) || (i == -2065) || (i == -5008) || (i == -5010) || (i == -2050) || (i == -1051) || (i == -2021) || (i == -2018) || (i == -4502);
-  }
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
   
-  public static boolean b(int paramInt)
-  {
-    return paramInt == -2022;
-  }
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
   
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == -1035;
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    return paramInt == -2011;
-  }
+  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
 }
 
 

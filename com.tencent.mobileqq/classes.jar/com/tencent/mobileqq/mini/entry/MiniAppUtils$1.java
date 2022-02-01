@@ -4,24 +4,21 @@ import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 final class MiniAppUtils$1
   implements View.OnClickListener
 {
-  MiniAppUtils$1(int paramInt, Activity paramActivity, MiniAppInfo paramMiniAppInfo) {}
+  MiniAppUtils$1(Activity paramActivity, MiniAppInfo paramMiniAppInfo, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = this.val$scene;
     try
     {
-      MiniAppController.launchMiniAppByAppInfo(this.val$activity, this.val$info, localLaunchParam);
+      MiniAppDesktopAdapter.startMiniApp(this.val$activity, this.val$info, this.val$scene);
       if (this.val$scene == 3008) {
         MiniProgramLpReportDC04239.reportAsync("desktop", "featured", "click", null);
       }

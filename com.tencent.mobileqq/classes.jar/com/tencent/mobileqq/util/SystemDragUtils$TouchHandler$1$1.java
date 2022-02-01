@@ -3,29 +3,29 @@ package com.tencent.mobileqq.util;
 import android.content.Context;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
-import bhjl;
-import bhjp;
-import bhjq;
+import bfsu;
+import bfsy;
+import bfsz;
 import com.tencent.mobileqq.widget.QQToast;
 import java.lang.ref.WeakReference;
 
 class SystemDragUtils$TouchHandler$1$1
   implements Runnable
 {
-  SystemDragUtils$TouchHandler$1$1(SystemDragUtils.TouchHandler.1 param1, bhjp parambhjp) {}
+  SystemDragUtils$TouchHandler$1$1(SystemDragUtils.TouchHandler.1 param1, bfsy parambfsy) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bhjp != null) && (this.jdField_a_of_type_Bhjp.a()))
+    if ((this.jdField_a_of_type_Bfsy != null) && (this.jdField_a_of_type_Bfsy.a()))
     {
-      View.DragShadowBuilder localDragShadowBuilder = new View.DragShadowBuilder(this.jdField_a_of_type_Bhjp.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Bhjp.jdField_a_of_type_AndroidViewView.startDrag(this.jdField_a_of_type_Bhjp.jdField_a_of_type_AndroidContentClipData, localDragShadowBuilder, "QQ_AIO_DRAG", 256);
+      View.DragShadowBuilder localDragShadowBuilder = new View.DragShadowBuilder(this.jdField_a_of_type_Bfsy.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Bfsy.jdField_a_of_type_AndroidViewView.startDrag(this.jdField_a_of_type_Bfsy.jdField_a_of_type_AndroidContentClipData, localDragShadowBuilder, "QQ_AIO_DRAG", 256);
     }
     for (;;)
     {
-      bhjq.a(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0, this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_Agjk);
+      bfsz.a(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0, this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_Afce);
       return;
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), bhjl.b(), 0).a();
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), bfsu.b(), 0).a();
     }
   }
 }

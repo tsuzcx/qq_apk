@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeMoreView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class vsa
-  implements View.OnClickListener
+class vsa
+  extends whf
 {
-  public vsa(QCirclePolyLikeMoreView paramQCirclePolyLikeMoreView) {}
+  vsa(vry paramvry) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Vrx != null) {
-      this.a.jdField_a_of_type_Vrx.b();
-    }
-    if (this.a.jdField_a_of_type_Vrn == null) {
-      this.a.jdField_a_of_type_Vrn = new vrn(this.a.getContext());
-    }
-    this.a.jdField_a_of_type_Vrn.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, vry.a().a(), this.a.jdField_a_of_type_Vsj, this.a.a());
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.a();
+    vrx.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    xwa.a("home_page", "suc_share", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

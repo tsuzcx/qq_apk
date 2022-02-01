@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qqe
-  implements pre
+class qqe
+  implements View.OnClickListener
 {
-  public qqe(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qqe(qqd paramqqd) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      pfa.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(paramView, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

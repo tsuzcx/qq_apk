@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class yvl
-  implements Parcelable.Creator<EditLocalVideoSource>
+class yvl
+  implements View.OnClickListener
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  yvl(yvj paramyvj) {}
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new EditLocalVideoSource[paramInt];
+    TextView localTextView = (TextView)this.a.a.findViewById(2131365073);
+    if ((localTextView.getText() instanceof String)) {
+      this.a.a((String)localTextView.getText());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

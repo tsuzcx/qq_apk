@@ -1,6 +1,19 @@
-public abstract interface rgk
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
+
+public final class rgk
+  implements Parcelable.Creator<VisibleSetParam>
 {
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public VisibleSetParam a(Parcel paramParcel)
+  {
+    return new VisibleSetParam(paramParcel);
+  }
+  
+  public VisibleSetParam[] a(int paramInt)
+  {
+    return new VisibleSetParam[paramInt];
+  }
 }
 
 

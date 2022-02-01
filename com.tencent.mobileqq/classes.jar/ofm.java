@@ -1,54 +1,81 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ofm
-  implements View.OnTouchListener
+  extends aptq<ofl>
 {
-  public ofm(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @NonNull
+  public ofl a(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      return false;
-      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-      paramView.d = (i + paramView.d);
-      return false;
-      try
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
-        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView.callJs(paramView);
-          return false;
-        }
-      }
-      catch (JSONException paramView)
-      {
-        paramView.printStackTrace();
+        localObject = (QQAppInterface)localObject;
+        boolean bool = ucp.d((QQAppInterface)localObject);
+        return ofl.a(ucp.a((QQAppInterface)localObject), ucp.b((QQAppInterface)localObject), bool);
       }
     }
+    return new ofl();
+  }
+  
+  @Nullable
+  public ofl a(aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaSubscribeRedDotProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return ofl.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public void a(ofl paramofl)
+  {
+    paramofl.a();
+  }
+  
+  public Class<ofl> clazz()
+  {
+    return ofl.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      return bfyz.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 35;
   }
 }
 

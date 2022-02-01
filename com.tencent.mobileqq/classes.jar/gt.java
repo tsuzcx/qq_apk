@@ -1,127 +1,216 @@
-public final class gt
+final class gt
 {
-  private final int jdField_a_of_type_Int;
+  private final gs jdField_a_of_type_Gs;
   private final int[] jdField_a_of_type_ArrayOfInt;
-  private final int b;
-  private final int c;
   
-  public gt(int paramInt1, int paramInt2)
+  gt(gs paramgs, int[] paramArrayOfInt)
   {
-    if ((paramInt1 < 1) || (paramInt2 < 1)) {
-      throw new IllegalArgumentException("Both dimensions must be greater than 0");
+    if (paramArrayOfInt.length == 0) {
+      throw new IllegalArgumentException();
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = (paramInt1 + 31 >> 5);
-    this.jdField_a_of_type_ArrayOfInt = new int[this.c * paramInt2];
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if ((paramInt2 < 0) || (paramInt1 < 0)) {
-      throw new IllegalArgumentException("Left and top must be nonnegative");
-    }
-    if ((paramInt4 < 1) || (paramInt3 < 1)) {
-      throw new IllegalArgumentException("Height and width must be at least 1");
-    }
-    int i = paramInt1 + paramInt3;
-    paramInt4 = paramInt2 + paramInt4;
-    if ((paramInt4 > this.b) || (i > this.jdField_a_of_type_Int)) {
-      throw new IllegalArgumentException("The region must fit inside the matrix");
-    }
-    for (;;)
+    this.jdField_a_of_type_Gs = paramgs;
+    int j = paramArrayOfInt.length;
+    if ((j > 1) && (paramArrayOfInt[0] == 0))
     {
-      paramInt2 += 1;
-      if (paramInt2 >= paramInt4) {
-        break;
+      while ((i < j) && (paramArrayOfInt[i] == 0)) {
+        i += 1;
       }
-      int j = this.c;
-      paramInt3 = paramInt1;
-      while (paramInt3 < i)
+      if (i == j)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-        int k = (paramInt3 >> 5) + paramInt2 * j;
-        arrayOfInt[k] |= 1 << (paramInt3 & 0x1F);
-        paramInt3 += 1;
+        this.jdField_a_of_type_ArrayOfInt = paramgs.a().jdField_a_of_type_ArrayOfInt;
+        return;
       }
+      this.jdField_a_of_type_ArrayOfInt = new int[j - i];
+      System.arraycopy(paramArrayOfInt, i, this.jdField_a_of_type_ArrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt.length);
+      return;
     }
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  int a()
   {
-    int i = this.c;
-    return (this.jdField_a_of_type_ArrayOfInt[(i * paramInt2 + (paramInt1 >> 5))] >>> (paramInt1 & 0x1F) & 0x1) != 0;
+    return this.jdField_a_of_type_ArrayOfInt.length - 1;
   }
   
-  public int b()
+  int a(int paramInt)
   {
-    return this.b;
+    return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1 - paramInt)];
   }
   
-  public boolean equals(Object paramObject)
+  gt a(int paramInt1, int paramInt2)
   {
-    if (!(paramObject instanceof gt)) {}
-    do
+    if (paramInt1 < 0) {
+      throw new IllegalArgumentException();
+    }
+    if (paramInt2 == 0) {
+      return this.jdField_a_of_type_Gs.a();
+    }
+    int i = this.jdField_a_of_type_ArrayOfInt.length;
+    int[] arrayOfInt = new int[i + paramInt1];
+    paramInt1 = 0;
+    while (paramInt1 < i)
     {
-      return false;
-      paramObject = (gt)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.jdField_a_of_type_ArrayOfInt.length != paramObject.jdField_a_of_type_ArrayOfInt.length));
-    int i = 0;
+      arrayOfInt[paramInt1] = this.jdField_a_of_type_Gs.b(this.jdField_a_of_type_ArrayOfInt[paramInt1], paramInt2);
+      paramInt1 += 1;
+    }
+    return new gt(this.jdField_a_of_type_Gs, arrayOfInt);
+  }
+  
+  gt a(gt paramgt)
+  {
+    if (!this.jdField_a_of_type_Gs.equals(paramgt.jdField_a_of_type_Gs)) {
+      throw new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
+    }
+    if (a()) {
+      return paramgt;
+    }
+    if (paramgt.a()) {
+      return this;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = paramgt.jdField_a_of_type_ArrayOfInt;
+    if (localObject.length > arrayOfInt.length) {
+      paramgt = arrayOfInt;
+    }
     for (;;)
     {
-      if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
-        break label93;
+      arrayOfInt = new int[localObject.length];
+      int j = localObject.length - paramgt.length;
+      System.arraycopy(localObject, 0, arrayOfInt, 0, j);
+      int i = j;
+      while (i < localObject.length)
+      {
+        arrayOfInt[i] = gs.a(paramgt[(i - j)], localObject[i]);
+        i += 1;
       }
-      if (this.jdField_a_of_type_ArrayOfInt[i] != paramObject.jdField_a_of_type_ArrayOfInt[i]) {
-        break;
-      }
-      i += 1;
+      return new gt(this.jdField_a_of_type_Gs, arrayOfInt);
+      paramgt = (gt)localObject;
+      localObject = arrayOfInt;
     }
-    label93:
-    return true;
   }
   
-  public int hashCode()
+  boolean a()
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
-    j = this.c + ((i * 31 + j) * 31 + k) * 31;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    k = arrayOfInt.length;
-    i = 0;
+    boolean bool = false;
+    if (this.jdField_a_of_type_ArrayOfInt[0] == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  gt[] a(gt paramgt)
+  {
+    if (!this.jdField_a_of_type_Gs.equals(paramgt.jdField_a_of_type_Gs)) {
+      throw new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
+    }
+    if (paramgt.a()) {
+      throw new IllegalArgumentException("Divide by 0");
+    }
+    gt localgt2 = this.jdField_a_of_type_Gs.a();
+    int i = paramgt.a(paramgt.a());
+    i = this.jdField_a_of_type_Gs.c(i);
+    gt localgt3;
+    for (gt localgt1 = this; (localgt1.a() >= paramgt.a()) && (!localgt1.a()); localgt1 = localgt1.a(localgt3))
+    {
+      int j = localgt1.a() - paramgt.a();
+      int k = this.jdField_a_of_type_Gs.b(localgt1.a(localgt1.a()), i);
+      localgt3 = paramgt.a(j, k);
+      localgt2 = localgt2.a(this.jdField_a_of_type_Gs.a(j, k));
+    }
+    return new gt[] { localgt2, localgt1 };
+  }
+  
+  gt b(gt paramgt)
+  {
+    if (!this.jdField_a_of_type_Gs.equals(paramgt.jdField_a_of_type_Gs)) {
+      throw new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
+    }
+    if ((a()) || (paramgt.a())) {
+      return this.jdField_a_of_type_Gs.a();
+    }
+    int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
+    int k = arrayOfInt1.length;
+    paramgt = paramgt.jdField_a_of_type_ArrayOfInt;
+    int m = paramgt.length;
+    int[] arrayOfInt2 = new int[k + m - 1];
+    int i = 0;
     while (i < k)
     {
-      j = j * 31 + arrayOfInt[i];
+      int n = arrayOfInt1[i];
+      int j = 0;
+      while (j < m)
+      {
+        arrayOfInt2[(i + j)] = gs.a(arrayOfInt2[(i + j)], this.jdField_a_of_type_Gs.b(n, paramgt[j]));
+        j += 1;
+      }
       i += 1;
     }
-    return j;
+    return new gt(this.jdField_a_of_type_Gs, arrayOfInt2);
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.b * (this.jdField_a_of_type_Int + 1));
-    int i = 0;
-    while (i < this.b)
+    StringBuilder localStringBuilder = new StringBuilder(a() * 8);
+    int i = a();
+    if (i >= 0)
     {
-      int j = 0;
-      if (j < this.jdField_a_of_type_Int)
+      int k = a(i);
+      int j;
+      if (k != 0)
       {
-        if (a(j, i)) {}
-        for (String str = "X ";; str = "  ")
+        if (k >= 0) {
+          break label104;
+        }
+        localStringBuilder.append(" - ");
+        j = -k;
+        label50:
+        if ((i == 0) || (j != 1))
         {
-          localStringBuilder.append(str);
-          j += 1;
-          break;
+          j = this.jdField_a_of_type_Gs.b(j);
+          if (j != 0) {
+            break label127;
+          }
+          localStringBuilder.append('1');
+        }
+        label80:
+        if (i != 0)
+        {
+          if (i != 1) {
+            break label161;
+          }
+          localStringBuilder.append('x');
         }
       }
-      localStringBuilder.append('\n');
-      i += 1;
+      for (;;)
+      {
+        i -= 1;
+        break;
+        label104:
+        j = k;
+        if (localStringBuilder.length() <= 0) {
+          break label50;
+        }
+        localStringBuilder.append(" + ");
+        j = k;
+        break label50;
+        label127:
+        if (j == 1)
+        {
+          localStringBuilder.append('a');
+          break label80;
+        }
+        localStringBuilder.append("a^");
+        localStringBuilder.append(j);
+        break label80;
+        label161:
+        localStringBuilder.append("x^");
+        localStringBuilder.append(i);
+      }
     }
     return localStringBuilder.toString();
   }

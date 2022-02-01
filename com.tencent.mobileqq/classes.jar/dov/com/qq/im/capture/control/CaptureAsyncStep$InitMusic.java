@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.control;
 
-import bplq;
-import bpoz;
+import bmql;
+import bmtm;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
@@ -10,11 +10,11 @@ public class CaptureAsyncStep$InitMusic
 {
   public int a()
   {
-    bpoz localbpoz = (bpoz)bplq.a().c(8);
-    if (localbpoz != null) {
-      localbpoz.e();
+    bmtm localbmtm = (bmtm)bmql.a().c(8);
+    if (localbmtm != null) {
+      localbmtm.c();
     }
-    ((QIMMusicConfigManager)bplq.a(2)).e();
+    ((QIMMusicConfigManager)bmql.a(2)).forceInit();
     return 7;
   }
 }

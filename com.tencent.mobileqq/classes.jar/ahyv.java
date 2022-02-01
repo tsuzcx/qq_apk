@@ -1,13 +1,39 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import java.util.List;
 
 public class ahyv
-  implements ahyf
+  extends Handler
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahyv(SearchBaseFragment paramSearchBaseFragment) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramahed.d(paramahfq, paramString);
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
+      return;
+    case 3: 
+      this.a.c();
+      return;
+    case 4: 
+      this.a.a((List)paramMessage.obj);
+      return;
+    }
+    this.a.h();
   }
 }
 

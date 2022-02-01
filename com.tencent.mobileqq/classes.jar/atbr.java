@@ -1,15 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.State;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface atbr<V extends View>
+class atbr
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase, PullToRefreshBase.State paramState, PullToRefreshBase.Mode paramMode);
+  atbr(atbn paramatbn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1) {
+      this.a.c();
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbr
  * JD-Core Version:    0.7.0.1
  */

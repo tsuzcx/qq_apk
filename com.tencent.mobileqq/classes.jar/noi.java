@@ -1,40 +1,28 @@
-import android.view.View;
-import com.tencent.biz.eqq.CrmIvrText.1;
+import com.tencent.biz.common.offline.BidDownloader;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class noi
-  extends begp
+  extends AbsPreDownloadTask
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  public BidDownloader a;
   
-  public noi(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
+  public noi(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramString);
+    this.a = paramBidDownloader;
   }
   
-  static void a(View paramView, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
+  public void realCancel()
   {
-    paramView.post(new CrmIvrText.1(paramQQAppInterface, paramView, paramString1));
+    QLog.i(nof.a, 1, "cancel predown bid=" + this.a.a);
   }
   
-  protected void a()
+  public void realStart()
   {
-    super.a();
-    Matcher localMatcher = Pattern.compile(behd.b + "|" + "QQ语音").matcher(this.e);
-    while (localMatcher.find())
-    {
-      int i = localMatcher.start();
-      int j = localMatcher.end();
-      a(new noj(this, this.e.substring(i, j)), i, j, 33);
-    }
+    QLog.i(nof.a, 1, "start predown bid=" + this.a.a);
+    this.a.a();
   }
 }
 

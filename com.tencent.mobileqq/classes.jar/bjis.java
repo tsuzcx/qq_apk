@@ -1,12 +1,31 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 
-public abstract class bjis
+public class bjis
 {
-  protected Bundle a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public bjis(Bundle paramBundle)
+  public String a()
   {
-    this.a = paramBundle;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
+    }
+    return bjkf.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public String toString()
+  {
+    return "[ft:" + this.jdField_a_of_type_Int + ",st:" + this.jdField_b_of_type_Int + ",fs:" + this.jdField_c_of_type_Int + ",fn:" + this.jdField_a_of_type_JavaLangString + ",fm:" + this.jdField_b_of_type_JavaLangString + ",a1:" + this.jdField_c_of_type_JavaLangString + ",a2:" + this.d + ",a3:" + this.e + "]";
   }
 }
 

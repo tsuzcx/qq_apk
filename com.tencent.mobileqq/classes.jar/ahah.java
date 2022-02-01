@@ -1,6 +1,29 @@
-public abstract interface ahah
+import android.content.Context;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
+
+class ahah
+  extends FrameLayout
 {
-  public abstract boolean a(int paramInt);
+  public ahah(ahae paramahae, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = ahae.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
+    }
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(ahae.a(this.a).getMeasuredWidth() - ahae.a(this.a).getPaddingLeft() - ahae.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+  }
 }
 
 

@@ -1,20 +1,43 @@
-import java.util.Comparator;
-
-final class lkf
-  implements Comparator<lke>
+public class lkf
 {
-  public int a(lke paramlke1, lke paramlke2)
+  public static String a;
+  private lkg jdField_a_of_type_Lkg = new lkg(this);
+  private lko jdField_a_of_type_Lko = new lko(this);
+  
+  static
   {
-    if (paramlke1 == paramlke2) {
-      return 0;
+    jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public int a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Lko != null) {
+      return this.jdField_a_of_type_Lko.a(paramArrayOfByte);
     }
-    if (paramlke1 == null) {
-      return -1;
+    return -1;
+  }
+  
+  public lkh a()
+  {
+    lkh locallkh = null;
+    if (this.jdField_a_of_type_Lko != null) {
+      locallkh = this.jdField_a_of_type_Lko.a();
     }
-    if (paramlke2 == null) {
-      return 1;
+    return locallkh;
+  }
+  
+  public void a(long paramLong, lkp paramlkp)
+  {
+    this.jdField_a_of_type_Lkg.a(paramLong, paramlkp);
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = null;
+    if (this.jdField_a_of_type_Lkg != null) {
+      arrayOfByte = this.jdField_a_of_type_Lkg.a();
     }
-    return paramlke1.a - paramlke2.a;
+    return arrayOfByte;
   }
 }
 

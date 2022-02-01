@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnni;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneDynamicAlbumPlugin$3
+class QzoneDynamicAlbumPlugin$3
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$3(bnni parambnni, String paramString) {}
+  QzoneDynamicAlbumPlugin$3(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, String paramString) {}
   
   public void run()
   {
-    bngf.a().a().b(this.a);
+    RemoteHandleManager.getInstance().getSender().getDynamicselNum(this.val$cmd);
   }
 }
 

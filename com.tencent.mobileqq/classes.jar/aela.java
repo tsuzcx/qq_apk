@@ -1,29 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aela
-  implements View.OnTouchListener
+class aela
+  implements DialogInterface.OnClickListener
 {
-  public aela(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  aela(aeky paramaeky, QQCustomDialog paramQQCustomDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMotionEvent != null) && (this.a.a != null))
-    {
-      paramView = this.a.a;
-      if (paramMotionEvent.getAction() != 0) {
-        break label39;
-      }
-    }
-    label39:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
-    }
+    bcef.b(this.jdField_a_of_type_Aeky.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Aeky.a.a, "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

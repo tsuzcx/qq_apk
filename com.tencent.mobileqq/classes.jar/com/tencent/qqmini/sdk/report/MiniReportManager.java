@@ -57,6 +57,7 @@ public class MiniReportManager
     eventNameSparseArray.put(15, "servicejsend");
     eventNameSparseArray.put(121, "app_route_done");
     eventNameSparseArray.put(150, "app_err_white_screen");
+    eventNameSparseArray.put(151, "app_init_v8_failed");
     eventNameSparseArray.put(16, "basejsstart");
     eventNameSparseArray.put(17, "basejsready");
     eventNameSparseArray.put(18, "webviewjsstart");
@@ -143,6 +144,7 @@ public class MiniReportManager
     eventNameSparseArray.put(639, "storage_usage");
     eventNameSparseArray.put(640, "http_download");
     eventNameSparseArray.put(641, "http_upload");
+    eventNameSparseArray.put(650, "mini_sdk_service_type");
     eventNameSparseArray.put(770, "mini_sdk_embedded_video_widget");
     eventNameSparseArray.put(771, "mini_sdk_embedded_liveplayer_widget");
     eventNameSparseArray.put(780, "mini_sdk_embedded_support_result");
@@ -303,7 +305,7 @@ public class MiniReportManager
       {
         QMLog.e("MiniReportManager", "detect white_screen. after routedone time:" + l2);
         MiniProgramLpReportDC04266.report(paramMiniAppInfo, 150, paramString1, paramString2, "", 0, paramString3, 0L, "", paramLong, "route_done", String.valueOf(l2), "", "", paramString4);
-        if (WnsConfig.getConfig("qqminiapp", "mini_app_report_white_screen_enable_clear_apkg_cache", 1) == 1)
+        if (WnsConfig.getConfig("qqminiapp", "mini_app_report_white_screen_enable_clear_apkg_cache", 0) == 1)
         {
           QMLog.e("MiniReportManager", "detect white_screen. clear apkg:" + paramMiniAppInfo);
           MiniCacheFreeManager.freeCache(LoginManager.getInstance().getAccount(), paramMiniAppInfo, true, null);

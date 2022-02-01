@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
+@Deprecated
 public class akmy
-  implements QQPermissionCallback
+  extends akll
 {
-  public akmy(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
   {
-    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AvatarPendantActivity.e(this.a);
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = View.inflate(paramContext, 2131562902, null);
+    }
+    paramaklg = paramObject.findViewById(2131379126);
+    paramaklg.setTag(-1, Integer.valueOf(paramInt));
+    paramaklg.setOnClickListener(paramOnClickListener);
+    paramaklg = paramObject.findViewById(2131379125);
+    paramaklg.setTag(-1, Integer.valueOf(paramInt));
+    paramaklg.setOnClickListener(paramOnClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
   }
 }
 

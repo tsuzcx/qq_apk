@@ -1,11 +1,16 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+
 public class yuh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a(String paramString)
+  public yuh(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramString != null) {
-      return "file://" + paramString;
-    }
-    return null;
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

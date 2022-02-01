@@ -1,9 +1,6 @@
 public class awkq
 {
-  public int a;
-  public arsh a;
-  public String a;
-  public int b;
+  public static boolean a;
 }
 
 

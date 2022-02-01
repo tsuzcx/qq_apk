@@ -22,10 +22,12 @@ import com.tencent.qqmini.sdk.launcher.model.MiniServiceFetcher;
 import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
 import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppInterface;
 import com.tencent.qqmini.sdk.launcher.shell.IReceiverProxy;
 import com.tencent.qqmini.sdk.launcher.shell.IShareManager;
 import com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.manager.LoginManager;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -54,6 +56,8 @@ public class MiniAppEnv
   private IMiniServiceManager mMiniServiceManager;
   private List<MiniProcessorConfig> mProcessList;
   private Map<String, WeakReference<IUIProxy>> mUIProxyMap = new HashMap();
+  @BindClass(className="com.tencent.qqmini.sdk.manager.MiniAppInterface")
+  private IMiniAppInterface miniAppInterface;
   @BindClass(className="com.tencent.qqmini.sdk.receiver.MainReceiverProxy")
   private IReceiverProxy receiverProxy;
   protected BaselibLoader sBaselibLoader = new InternalBaselibLoader();
@@ -265,6 +269,8 @@ public class MiniAppEnv
     this.mContext = paramContext;
     processConfiguration(paramConfiguration);
     bindFields();
+    this.miniAppInterface.onCreate(paramContext, paramConfiguration);
+    QMLog.i("MiniAppEnv", "Init MiniAppEnv. MiniSdkVersion:1.8.0_25_0ea610c QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
   }
   
   public void setApkgLoader(ApkgLoader paramApkgLoader)

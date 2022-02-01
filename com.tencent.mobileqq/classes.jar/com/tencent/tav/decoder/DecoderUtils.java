@@ -369,6 +369,32 @@ public class DecoderUtils
     return paramMediaCodec.getOutputBuffer(paramInt);
   }
   
+  public static Matrix getPreferMatrix(CGSize paramCGSize1, CGSize paramCGSize2, int paramInt)
+  {
+    Matrix localMatrix1 = new Matrix();
+    getMatrixAndCropRect(paramCGSize2, paramInt, 1.0F, 0.0F, new Point(0, 0), localMatrix1);
+    Matrix localMatrix2 = new Matrix();
+    paramCGSize2 = getTransformedSize(paramCGSize2, paramInt, 0.0F);
+    float f1;
+    float f2;
+    if (paramCGSize2.width * 1.0F / paramCGSize1.width > 1.0F * paramCGSize2.height / paramCGSize1.height)
+    {
+      f1 = paramCGSize1.width / paramCGSize2.width;
+      localMatrix2.setScale(f1, f1);
+      f2 = paramCGSize2.height;
+      localMatrix2.postTranslate(0.0F, Math.round((paramCGSize1.height - f2 * f1) * 0.5F));
+    }
+    for (;;)
+    {
+      localMatrix1.postConcat(localMatrix2);
+      return localMatrix1;
+      f1 = paramCGSize1.height / paramCGSize2.height;
+      localMatrix2.setScale(f1, f1);
+      f2 = paramCGSize2.width;
+      localMatrix2.postTranslate(Math.round((paramCGSize1.width - f2 * f1) * 0.5F), 0.0F);
+    }
+  }
+  
   public static void getRotationMatrix(Matrix paramMatrix, int paramInt, float paramFloat1, float paramFloat2)
   {
     float f1 = -1.0F;

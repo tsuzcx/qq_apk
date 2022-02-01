@@ -1,19 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.QQRecorder;
+import java.lang.ref.WeakReference;
 
 class bkym
-  extends CmdCallback.Stub
+  extends Handler
 {
-  bkym(bkyl parambkyl, BaseRuntime paramBaseRuntime, String paramString1, String paramString2, String paramString3, int paramInt, RequestEvent paramRequestEvent) {}
+  bkym(bkyl parambkyl) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    paramBundle = paramBundle.getString("shareJson");
-    QLog.d("MiniSDKClientQIPCModule", 1, "handleDirectShareSucCallback shareJsonString after = " + paramBundle);
-    bkyl.a(this.jdField_a_of_type_Bkyl, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (bkyl.a(this.a) != null) {
+            bkyl.a(this.a).a(1, bkyl.a(this.a));
+          }
+        } while (!(paramMessage.obj instanceof String));
+        paramMessage = (String)paramMessage.obj;
+        this.a.d(paramMessage);
+        this.a.c(paramMessage);
+        return;
+        bkyl.a(this.a).c();
+        bftt.b(2131230744, false);
+      } while (this.a.a == null);
+      paramMessage = (Context)this.a.a.get();
+    } while (paramMessage == null);
+    bftt.a(paramMessage, false);
   }
 }
 

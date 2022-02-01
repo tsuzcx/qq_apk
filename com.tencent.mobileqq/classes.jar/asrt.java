@@ -1,15 +1,19 @@
-import android.view.View;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class asrt
+  extends asrq
 {
-  public int a;
-  View jdField_a_of_type_AndroidViewView;
-  public bhwo a;
-  public File a;
-  boolean jdField_a_of_type_Boolean;
+  public asrt(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  {
+    super(paramQQAppInterface, paramFileManagerEntity);
+  }
   
-  asrt(asro paramasro) {}
+  public void a(ashw paramashw)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new asru(this, paramashw));
+  }
 }
 
 

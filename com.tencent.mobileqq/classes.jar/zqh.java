@@ -1,20 +1,26 @@
-public class zqh
-  implements zqq
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.qphone.base.util.QLog;
+
+class zqh
+  extends ExecuteBinResponseCallback
 {
-  public long b;
+  zqh(zqb paramzqb, zql paramzql) {}
   
-  public void onFailure(String paramString) {}
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public void onFailure(String paramString)
   {
-    this.b = System.currentTimeMillis();
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Zql.onFailure(paramString);
   }
   
-  public void onSuccess(String paramString) {}
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Zqb.a.a));
+    }
+    this.jdField_a_of_type_Zqb.a.a = System.currentTimeMillis();
+  }
 }
 
 

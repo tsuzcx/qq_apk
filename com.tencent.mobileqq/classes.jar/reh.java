@@ -1,24 +1,11 @@
-final class reh
-  extends ref<rek, rej, rei>
+import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
+
+public final class reh
+  implements psw<articlesummary.WendaInfo, rfn>
 {
-  public void a(rek paramrek, rej paramrej, int paramInt, rei paramrei)
+  public rfn a(articlesummary.WendaInfo paramWendaInfo)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramrek.a(paramrej);
-      return;
-    case 1: 
-      paramrek.a(paramrej, paramrei.a, paramrei.b);
-      return;
-    case 2: 
-      paramrek.b(paramrej, paramrei.a, paramrei.b);
-      return;
-    case 3: 
-      paramrek.a(paramrej, paramrei.a, paramrei.c, paramrei.b);
-      return;
-    }
-    paramrek.c(paramrej, paramrei.a, paramrei.b);
+    return rfn.a(paramWendaInfo);
   }
 }
 

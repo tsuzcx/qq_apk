@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class avph
-  extends ThreadLocal<Boolean>
+class avph
+  extends Handler
 {
-  public avph(JefsClass paramJefsClass) {}
-  
-  protected Boolean a()
+  avph(avpg paramavpg, Looper paramLooper, avpf paramavpf)
   {
-    return Boolean.valueOf(false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (avpf.a(this.jdField_a_of_type_Avpg.jdField_a_of_type_Avpf))
+    {
+      avpj localavpj = avpf.a(this.jdField_a_of_type_Avpg.jdField_a_of_type_Avpf, (String)paramMessage.obj);
+      if (localavpj != null) {
+        localavpj.a(paramMessage.what);
+      }
+      return;
+    }
   }
 }
 

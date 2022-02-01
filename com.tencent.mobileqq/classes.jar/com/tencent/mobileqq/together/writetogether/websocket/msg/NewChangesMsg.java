@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.together.writetogether.websocket.msg;
 
-import beko;
+import bdef;
 import com.google.gson.JsonDeserializer;
 import java.lang.reflect.Type;
 
@@ -14,7 +14,7 @@ public class NewChangesMsg
   
   protected Type getDeserializeType()
   {
-    return beko.class;
+    return bdef.class;
   }
   
   Type getHeaderType()
@@ -24,7 +24,7 @@ public class NewChangesMsg
   
   protected JsonDeserializer getJsonDeserializer()
   {
-    return beko.a();
+    return bdef.a();
   }
 }
 

@@ -1,39 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ztn
-  extends Handler
+  extends bfch
 {
-  public ztn(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
+  public ztn(TroopGiftPanel paramTroopGiftPanel, zsy paramzsy) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    {
+      amxb.a("gift_store", "fail_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      return;
+    }
+    bcef.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_fail", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Zsy.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muk.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b(int paramInt)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult productId = " + paramInt);
+    }
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
     {
-    default: 
+      amxb.a("gift_store", "suc_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
       return;
     }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
-    }
-    for (;;)
-    {
-      yuk.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
+    bcef.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_suc", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Zsy.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muk.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

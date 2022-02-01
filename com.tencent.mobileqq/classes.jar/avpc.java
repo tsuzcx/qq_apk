@@ -1,13 +1,30 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AutoBgImageView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class avpc
-  extends agen
+class avpc
+  implements EIPClientConnectListener
 {
-  public AutoBgImageView a;
-  public TextView b;
+  avpc(avpb paramavpb) {}
   
-  public avpc(avoy paramavoy) {}
+  public void connectFailed()
+  {
+    avpb.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "connectFailed");
+    }
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      avpb.a(this.a, paramEIPCConnection.procName);
+    }
+    avpb.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "connectSuccess");
+    }
+  }
 }
 
 

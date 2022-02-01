@@ -1,117 +1,234 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
+import android.content.IntentFilter;
+import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-class bbxy
-  implements View.OnClickListener
+public class bbxy
 {
-  bbxy(bbxx parambbxx, View paramView1, bcdx parambcdx, View paramView2, String paramString, List paramList) {}
+  public static long a;
+  static bbxy jdField_a_of_type_Bbxy;
+  static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public static long b;
+  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bbxz(this);
+  bbya jdField_a_of_type_Bbya;
+  public String a;
+  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  long c = 0L;
   
-  public void onClick(View paramView)
+  static
   {
-    long l = System.currentTimeMillis();
-    if (((this.jdField_a_of_type_AndroidViewView.getTag() instanceof Long)) && (l - ((Long)this.jdField_a_of_type_AndroidViewView.getTag()).longValue() < 400L))
+    jdField_a_of_type_Long = 57671680L;
+    jdField_b_of_type_Long = 209715200L;
+  }
+  
+  bbxy()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    c();
+    b();
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.intent.action.MEDIA_BAD_REMOVAL");
+    localIntentFilter.addAction("android.intent.action.MEDIA_EJECT");
+    localIntentFilter.addAction("android.intent.action.MEDIA_MOUNTED");
+    localIntentFilter.addAction("android.intent.action.MEDIA_REMOVED");
+    localIntentFilter.addAction("android.intent.action.MEDIA_UNMOUNTED");
+    localIntentFilter.addDataScheme("file");
+    VideoEnvironment.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static long a(String paramString)
+  {
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramString = new StatFs(paramString);
+      long l = paramString.getAvailableBlocks();
+      int i = paramString.getBlockSize();
+      return i * l;
     }
-    this.jdField_a_of_type_AndroidViewView.setTag(Long.valueOf(l));
-    if (this.jdField_a_of_type_Bcdx.jdField_c_of_type_JavaLangString.equals("mqqapi://contact/search_might_know")) {
-      bdll.b(null, "dc00898", "", "", "0X800A336", "0X800A336", 0, 0, "", "", "", "");
-    }
-    Object localObject1;
-    int i;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcdx.jdField_c_of_type_JavaLangString))
+    catch (Exception paramString)
     {
-      localObject1 = this.jdField_a_of_type_Bcdx.jdField_c_of_type_JavaLangString;
-      if (MiniAppLauncher.isMiniAppUrl((String)localObject1)) {
-        if (this.jdField_a_of_type_Bcdx.jdField_c_of_type_Int == 103)
-        {
-          localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("key_refer", 4001);
-          PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject1, MiniAppSearchFragment.class);
-          i = 0;
-          label172:
-          if (this.jdField_a_of_type_Bcdx.jdField_c_of_type_Int == 1)
-          {
-            if (i == 0) {
-              break label716;
-            }
-            MiniProgramLpReportDC04239.reportAsync("search", "headentrance", "click", "2");
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("StorageManager", 2, "getFreeSpace throw an Exception!", paramString);
       }
     }
+    return 0L;
+  }
+  
+  public static bbxy a()
+  {
+    if (jdField_a_of_type_Bbxy == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bbxy == null) {
+        jdField_a_of_type_Bbxy = new bbxy();
+      }
+      return jdField_a_of_type_Bbxy;
+    }
+  }
+  
+  /* Error */
+  static boolean a(String paramString)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: invokestatic 133	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   5: invokevirtual 137	java/lang/Thread:getId	()J
+    //   8: lstore_2
+    //   9: new 139	java/io/File
+    //   12: dup
+    //   13: new 141	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 142	java/lang/StringBuilder:<init>	()V
+    //   20: aload_0
+    //   21: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 148
+    //   26: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: lload_2
+    //   30: invokevirtual 151	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokespecial 156	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: astore_0
+    //   40: aload_0
+    //   41: invokevirtual 159	java/io/File:exists	()Z
+    //   44: ifeq +22 -> 66
+    //   47: aload_0
+    //   48: invokevirtual 162	java/io/File:delete	()Z
+    //   51: ifeq +8 -> 59
+    //   54: aload_0
+    //   55: invokevirtual 165	java/io/File:createNewFile	()Z
+    //   58: istore_1
+    //   59: aload_0
+    //   60: invokevirtual 162	java/io/File:delete	()Z
+    //   63: pop
+    //   64: iload_1
+    //   65: ireturn
+    //   66: aload_0
+    //   67: invokevirtual 165	java/io/File:createNewFile	()Z
+    //   70: istore_1
+    //   71: goto -12 -> 59
+    //   74: astore 4
+    //   76: aload 4
+    //   78: invokevirtual 168	java/lang/Throwable:printStackTrace	()V
+    //   81: aload_0
+    //   82: invokevirtual 162	java/io/File:delete	()Z
+    //   85: pop
+    //   86: iconst_0
+    //   87: ireturn
+    //   88: astore 4
+    //   90: aload_0
+    //   91: invokevirtual 162	java/io/File:delete	()Z
+    //   94: pop
+    //   95: aload 4
+    //   97: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	paramString	String
+    //   1	70	1	bool	boolean
+    //   8	22	2	l	long
+    //   74	3	4	localThrowable	Throwable
+    //   88	8	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   40	47	74	java/lang/Throwable
+    //   47	59	74	java/lang/Throwable
+    //   66	71	74	java/lang/Throwable
+    //   40	47	88	finally
+    //   47	59	88	finally
+    //   66	71	88	finally
+    //   76	81	88	finally
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      VideoEnvironment.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(bbya parambbya)
+  {
+    this.jdField_a_of_type_Bbya = parambbya;
+  }
+  
+  void b()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     for (;;)
     {
-      if (this.b.getVisibility() == 0)
+      return;
+      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "/Android/data/com.tencent.mobileqq/qq/video");
+      if (QLog.isColorLevel())
       {
-        this.b.setVisibility(8);
-        bhsi.a(this.jdField_a_of_type_Bcdx.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        QLog.e("TAG", 2, "updateStorePath:storeVideoPath=" + this.jdField_b_of_type_JavaLangString);
+        QLog.e("TAG", 2, "updateStorePath:maxAvailableSizePath=" + this.jdField_a_of_type_JavaLangString);
       }
-      bcni.a("home_page", "clk_entry", new String[] { this.jdField_a_of_type_Bcdx.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bbxx.a), String.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-      bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_entry").ver2(bcjy.a(this.jdField_a_of_type_Bbxx.a)).ver3(this.jdField_a_of_type_JavaUtilList.size() + "").ver4(this.jdField_a_of_type_Bcdx.jdField_a_of_type_JavaLangString).ver7("{experiment_id:" + bcjy.b + "}"));
-      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      new aokg((QQAppInterface)localObject1).b((QQAppInterface)localObject1, "clk_entry", "all_result", bcjy.a(this.jdField_a_of_type_Bbxx.a), "", this.jdField_a_of_type_Bcdx.jdField_a_of_type_JavaLangString, "{experiment_id:" + bcjy.b + "}");
-      bcjy.a(bbxx.a(this.jdField_a_of_type_Bbxx), 0, SearchEntryFragment.a(this.jdField_a_of_type_Bbxx.a), "0X8009D1C", 0, 0, this.jdField_a_of_type_Bcdx.jdField_a_of_type_JavaLangString, null);
-      break;
-      i = 1;
-      MiniAppLauncher.startMiniApp(bbxx.a(this.jdField_a_of_type_Bbxx), (String)localObject1, 2005, null);
-      break label172;
-      Object localObject2;
-      if ((((String)localObject1).startsWith("http://")) || (((String)localObject1).startsWith("https://")))
+      try
       {
-        localObject2 = new Intent(bbxx.a(this.jdField_a_of_type_Bbxx), QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("url", (String)localObject1);
-        bbxx.a(this.jdField_a_of_type_Bbxx).startActivity((Intent)localObject2);
-        i = 0;
-        break label172;
-      }
-      if ((bbxx.a(this.jdField_a_of_type_Bbxx) instanceof BaseActivity))
-      {
-        localObject2 = bhni.a(((BaseActivity)paramView.getContext()).app, bbxx.a(this.jdField_a_of_type_Bbxx), (String)localObject1);
-        if (localObject2 != null) {
-          ((bhmr)localObject2).a();
-        }
-        for (;;)
+        File localFile = new File(this.jdField_b_of_type_JavaLangString);
+        if (!localFile.exists())
         {
-          i = 0;
-          break;
-          bbxx.a(this.jdField_a_of_type_Bbxx).startActivity(new Intent(bbxx.a(this.jdField_a_of_type_Bbxx), JumpActivity.class).setData(Uri.parse((String)localObject1)));
+          localFile.mkdirs();
+          return;
         }
       }
-      bbxx.a(this.jdField_a_of_type_Bbxx).startActivity(new Intent(bbxx.a(this.jdField_a_of_type_Bbxx), JumpActivity.class).setData(Uri.parse((String)localObject1)));
-      i = 0;
-      break label172;
-      label716:
-      MiniProgramLpReportDC04239.reportAsync("search", "headentrance", "click", "1");
-      continue;
-      i = this.jdField_a_of_type_Bbxx.a;
-      if (this.jdField_a_of_type_Bbxx.a == 3) {
-        i = 21;
+      catch (Exception localException)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
       }
-      ActiveEntitySearchActivity.a(bbxx.a(this.jdField_a_of_type_Bbxx), this.jdField_a_of_type_Bcdx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bcdx.jdField_a_of_type_ArrayOfLong, i);
-      if (!bhnv.g(bbxx.a(this.jdField_a_of_type_Bbxx))) {
-        QQToast.a(bbxx.a(this.jdField_a_of_type_Bbxx), 0, bbxx.a(this.jdField_a_of_type_Bbxx).getResources().getString(2131717088), 0).a();
+    }
+  }
+  
+  void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaLangString = "";
+      this.c = 0L;
+      Object localObject1 = Environment.getExternalStorageDirectory().getAbsolutePath();
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsValue(localObject1)) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("external_card", localObject1);
+      }
+      localObject1 = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject1).hasNext())
+        {
+          String str = (String)((Iterator)localObject1).next();
+          try
+          {
+            Object localObject3 = new File(str);
+            if ((((File)localObject3).exists()) && (((File)localObject3).canWrite()) && (a(str)))
+            {
+              localObject3 = new StatFs(str);
+              long l = ((StatFs)localObject3).getAvailableBlocks() * ((StatFs)localObject3).getBlockSize();
+              if ((l > 0L) && (this.c < l))
+              {
+                this.c = l;
+                this.jdField_a_of_type_JavaLangString = str;
+              }
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+          }
+        }
       }
     }
   }

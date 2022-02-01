@@ -1,50 +1,141 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadJobContext;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
 
 class ashh
-  extends askr
+  implements UploadManager.IUploadStatusListener
 {
-  ashh(ashd paramashd) {}
+  ashh(ashf paramashf) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public void onUploadJobAdded(String paramString, long paramLong) {}
+  
+  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    if (!this.a.a.containsKey(paramEmoticonPackage.epId)) {
-      return;
-    }
-    askd localaskd = (askd)ashd.l(this.a).getManager(43);
-    if (paramInt == 0)
+    if (this.a.jdField_a_of_type_Atep == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FavroamingManager", 2, "onJsonComplete, start download fav emoticon: " + paramEmoticonPackage.epId);
-      }
-      paramInt = paramBundle.getInt("jsonType", askd.c);
-      paramBundle = new File(asos.r.replace("[epId]", paramEmoticonPackage.epId));
-      ArrayList localArrayList = new ArrayList();
-      aslf localaslf = new aslf();
-      if (paramBundle.exists()) {}
-      for (paramBundle = bhmi.a(paramBundle);; paramBundle = null)
+      do
       {
-        paramBundle = asks.a(ashd.m(this.a), paramEmoticonPackage, paramInt, paramBundle, localArrayList, localaslf);
-        if (paramBundle == null) {
+        return;
+        if (!paramBoolean) {
           break;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("FavroamingManager", 2, "parse Json Error:" + paramBundle);
+        if (paramStatusInfo.state == 3)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onStarted[" + this.a.c + "]");
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+          return;
         }
-        biah.a("emotionType", "emotionActionFav", "2", paramEmoticonPackage.epId, "", "", paramBundle, "", "", "");
-        return;
+        if (paramStatusInfo.state == 6)
+        {
+          if (paramStatusInfo.errorCode == 1810002)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is canceled[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+            }
+            if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+            {
+              paramString = new String[3];
+              paramString[0] = "param_WIFIFileFlow";
+              paramString[1] = "param_WIFIFlow";
+              paramString[2] = "param_Flow";
+            }
+            for (;;)
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
+              return;
+              paramString = new String[3];
+              paramString[0] = "param_XGFileFlow";
+              paramString[1] = "param_XGFlow";
+              paramString[2] = "param_Flow";
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onFailed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+          }
+          if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+          {
+            paramString = new String[3];
+            paramString[0] = "param_WIFIFileFlow";
+            paramString[1] = "param_WIFIFlow";
+            paramString[2] = "param_Flow";
+          }
+          for (;;)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 38, null, paramStatusInfo.errorCode, paramStatusInfo.errorMsg);
+            return;
+            paramString = new String[3];
+            paramString[0] = "param_XGFileFlow";
+            paramString[1] = "param_XGFlow";
+            paramString[2] = "param_Flow";
+          }
+        }
+      } while (paramStatusInfo.state != 5);
+      this.a.jdField_a_of_type_Atep.a(paramStatusInfo.fileId);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onSucceed[" + this.a.c + "],set trafficData size[" + this.a.d + "]");
       }
-      this.a.a(paramEmoticonPackage, localaskd, localArrayList, localaslf);
-      this.a.a(paramEmoticonPackage, localaskd);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId = paramStatusInfo.fileId;
+      if (paramStatusInfo.jobContext != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunDirKey = paramStatusInfo.jobContext.file().pDirKey;
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = paramStatusInfo.jobContext.file().sha;
+        if (!TextUtils.isEmpty(paramStatusInfo.jobContext.file().thumbUrl)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramStatusInfo.jobContext.file().thumbUrl;
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(2);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+      this.a.h = System.currentTimeMillis();
+      if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+      {
+        paramString = new String[3];
+        paramString[0] = "param_WIFIFileFlow";
+        paramString[1] = "param_WIFIFlow";
+        paramString[2] = "param_Flow";
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 37, null, 0, null);
+        paramString = new aszs();
+        paramString.b = "send_file_suc";
+        paramString.jdField_a_of_type_Int = 1;
+        aszr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+        return;
+        paramString = new String[3];
+        paramString[0] = "param_XGFileFlow";
+        paramString[1] = "param_XGFlow";
+        paramString[2] = "param_Flow";
+      }
+      paramLong = System.currentTimeMillis();
+      this.a.jdField_a_of_type_Long = paramStatusInfo.currSize;
+      this.a.d = paramStatusInfo.totalSize;
+    } while (paramLong - this.a.f < 1000L);
+    this.a.f = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "Id[" + this.a.c + "]WeiYun upload is onProgressChange mtransferedSize[" + this.a.jdField_a_of_type_Long + "/" + this.a.d + "]");
     }
-    this.a.a(paramEmoticonPackage);
-    biah.a("emotionType", "emotionActionFav", "1", paramEmoticonPackage.epId, "", bhnv.b(ashd.n(this.a).getApplication()) + "", paramInt + "", "", "", "");
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
   }
 }
 

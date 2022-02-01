@@ -1,61 +1,61 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aqhw
+  extends aqgc<aqhv>
 {
-  public int a;
-  public long a;
-  public ArrayList<aqhx> a;
-  public long b;
-  
-  public static aqhw a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
+  @NonNull
+  public aqhv a()
   {
-    Object localObject;
-    if (paramOneUinHeadInfo == null) {
-      localObject = null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ampi localampi = (ampi)localQQAppInterface.getBusinessHandler(16);
+    if (localampi != null) {
+      localampi.a(localQQAppInterface.getApplication().getApplicationContext());
     }
-    aqhw localaqhw;
-    do
-    {
-      return localObject;
-      localaqhw = new aqhw();
-      if (paramOneUinHeadInfo.uint64_uin.has()) {
-        localaqhw.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
-      }
-      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-        localaqhw.b = paramOneUinHeadInfo.uint64_tinyid.get();
-      }
-      localaqhw.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-      localObject = localaqhw;
-    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
-    localaqhw.jdField_a_of_type_JavaUtilArrayList = aqhx.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
-    return localaqhw;
+    return new aqhv();
   }
   
-  public static ArrayList<aqhw> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  @NonNull
+  public aqhv a(aptx[] paramArrayOfaptx)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ampi localampi = (ampi)localQQAppInterface.getBusinessHandler(16);
+    if (localampi != null) {
+      localampi.a(localQQAppInterface, paramArrayOfaptx[0].a);
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      aqhw localaqhw = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
-      if (localaqhw != null) {
-        localArrayList.add(localaqhw);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfaptx[0]);
     }
-    return localArrayList;
+    return new aqhv();
+  }
+  
+  @NonNull
+  public aqhv b()
+  {
+    return new aqhv();
+  }
+  
+  public Class<aqhv> clazz()
+  {
+    return aqhv.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public int type()
+  {
+    return 26;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhw
  * JD-Core Version:    0.7.0.1
  */

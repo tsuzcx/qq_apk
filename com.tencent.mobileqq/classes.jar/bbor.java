@@ -1,66 +1,22 @@
-import android.app.Activity;
-import com.tencent.richmediabrowser.core.IMvpFactory;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BrowserBaseView;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.4;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
 public class bbor
-  implements IMvpFactory
+  implements HostnameVerifier
 {
-  public BrowserBaseModel createModel(int paramInt, BasePresenter paramBasePresenter)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new bbpn();
-    case 101: 
-      return new bbpo();
-    case 102: 
-      return new bbpj();
-    }
-    return new bbpk();
-  }
+  public bbor(LoginVerifyServlet.4 param4, URL paramURL) {}
   
-  public BasePresenter createPresenter(int paramInt)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new bbpv();
-    case 101: 
-      return new bbpy();
-    case 102: 
-      return new bbpr();
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    return new bbpt();
-  }
-  
-  public BrowserBaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return null;
-          } while (!(paramBasePresenter instanceof bbpv));
-          return new bbrb(paramActivity, (bbpv)paramBasePresenter);
-        } while (!(paramBasePresenter instanceof bbpy));
-        return new bbrp(paramActivity, (bbpy)paramBasePresenter);
-      } while (!(paramBasePresenter instanceof bbpr));
-      return new bbqq(paramActivity, (bbpr)paramBasePresenter);
-    } while (!(paramBasePresenter instanceof bbpt));
-    return new bbqw(paramActivity, (bbpt)paramBasePresenter);
+    return bool;
   }
 }
 

@@ -1,9 +1,9 @@
-import com.tencent.maxvideo.common.AVIOStruct;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.diy.ResData;
 
-public class bdbx
+public abstract interface bdbx
 {
-  public AVIOStruct a;
-  public byte[] a;
+  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
 }
 
 

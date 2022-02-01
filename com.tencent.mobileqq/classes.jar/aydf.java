@@ -1,66 +1,86 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.List;
 
-class aydf
-  implements aydt
+public class aydf
 {
-  aydf(ayde paramayde) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    boolean bool = true;
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(ayde.a(this.a), 2, "errorCode:   " + paramInt);
-    }
-    if (paramArrayOfByte != null) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    if ((paramBundle == null) || (paramQQAppInterface == null))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i(ayde.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i(ayde.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
-        }
-        paramBundle = this.a;
-        if (paramArrayOfByte.is_end.get() == 0) {
-          break label309;
-        }
-      }
-      for (;;)
-      {
-        paramBundle.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
-        ayde.a(this.a, paramArrayOfByte);
-        ayde.a(this.a, ayde.a(this.a) + 10);
-        paramBundle = this.a.jdField_a_of_type_Aycr;
-        paramInt = i;
-        if (paramArrayOfByte.err_code.has()) {
-          paramInt = paramArrayOfByte.err_code.get();
-        }
-        paramBundle.a(1, paramInt);
-        return;
-        label309:
-        bool = false;
-      }
+      a("picPreSendProcess bundle=null!");
       return;
     }
-    catch (Exception paramArrayOfByte)
+    paramBundle.setClassLoader(PhotoSendParams.class.getClassLoader());
+    PhotoSendParams localPhotoSendParams = (PhotoSendParams)paramBundle.getParcelable("PhotoConst.photo_send_qzone_pic_file_params");
+    String str1 = paramBundle.getString("uin");
+    String str2 = paramQQAppInterface.getCurrentUin();
+    paramBundle.getString("troop_uin");
+    int i = paramBundle.getInt("uintype", 1003);
+    if ((localPhotoSendParams == null) || (TextUtils.isEmpty(localPhotoSendParams.rawMd5)) || (TextUtils.isEmpty(localPhotoSendParams.thumbPath)) || (!FileUtils.fileExistsAndNotEmpty(localPhotoSendParams.thumbPath)) || (TextUtils.isEmpty(localPhotoSendParams.rawDownloadUrl)) || (TextUtils.isEmpty(str1)))
     {
-      paramArrayOfByte.printStackTrace();
+      a("picPreSendProcess sendParams error, friendUin:" + str1);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess params friendUin:" + str1 + ", uinType:" + i + ", sendParams:" + localPhotoSendParams.toString());
+    }
+    RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
+    RichProto.RichProtoReq.PicUpReq localPicUpReq;
+    switch (i)
+    {
+    default: 
+      localPicUpReq = new RichProto.RichProtoReq.PicUpReq();
+      localPicUpReq.selfUin = str2;
+      localPicUpReq.peerUin = str1;
+      localPicUpReq.secondUin = str2;
+      localPicUpReq.fileSize = localPhotoSendParams.fileSize;
+      localPicUpReq.md5 = HexUtil.hexStr2Bytes(localPhotoSendParams.rawMd5);
+      localPicUpReq.fileName = (localPhotoSendParams.rawMd5 + ".jpg");
+      localPicUpReq.width = localPhotoSendParams.rawWidth;
+      localPicUpReq.height = localPhotoSendParams.rawHeight;
+      localPicUpReq.picType = 1000;
+      localPicUpReq.typeHotPic = 3;
+      localPicUpReq.transferUrl = localPhotoSendParams.rawDownloadUrl;
+    }
+    for (paramBundle = "c2c_pic_up"; TextUtils.isEmpty(paramBundle); paramBundle = "grp_pic_up")
+    {
+      a("picPreSendProcess protoKey=null!");
+      return;
+      localPicUpReq = new RichProto.RichProtoReq.PicUpReq();
+      localPicUpReq.selfUin = str2;
+      localPicUpReq.peerUin = str1;
+      localPicUpReq.secondUin = str2;
+      localPicUpReq.fileSize = localPhotoSendParams.fileSize;
+      localPicUpReq.md5 = HexUtil.hexStr2Bytes(localPhotoSendParams.rawMd5);
+      localPicUpReq.fileName = (localPhotoSendParams.rawMd5 + ".jpg");
+      localPicUpReq.width = localPhotoSendParams.rawWidth;
+      localPicUpReq.height = localPhotoSendParams.rawHeight;
+      localPicUpReq.picType = 1000;
+      localPicUpReq.busiType = 1045;
+      localPicUpReq.uinType = 1;
+      localPicUpReq.typeHotPic = 3;
+      localPicUpReq.transferUrl = localPhotoSendParams.rawDownloadUrl;
+    }
+    localRichProtoReq.reqs.add(localPicUpReq);
+    localRichProtoReq.protoKey = paramBundle;
+    localRichProtoReq.protoReqMgr = paramQQAppInterface.getProtoReqManager();
+    localRichProtoReq.callback = new aydg(str2, str1, localPhotoSendParams);
+    RichProtoProc.procRichProtoReq(localRichProtoReq);
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("PicAioQzonePreSendMgr", 2, paramString);
     }
   }
 }

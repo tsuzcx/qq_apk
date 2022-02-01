@@ -3,11 +3,11 @@ package com.youtu.arsdk;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
-import apjj;
-import borf;
-import bork;
+import aocw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.download.AEResInfo;
+import dov.com.qq.im.ae.download.AEResUtil;
 import java.io.File;
 
 public class ARShell
@@ -30,7 +30,7 @@ public class ARShell
   
   public static String getCommonSoFilename()
   {
-    return bork.a(borf.b) + "libYTCommon.so";
+    return AEResUtil.getUnzippedPackageDir(AEResInfo.AE_RES_BASE_PACKAGE) + "libYTCommon.so";
   }
   
   public static native int getMarkerCount();
@@ -58,7 +58,7 @@ public class ARShell
         if (bool3) {
           return bool1;
         }
-        if (!apjj.a())
+        if (!aocw.a())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ARShell", 2, "native so is not exist!");
@@ -72,7 +72,7 @@ public class ARShell
           loadARFeatureSoSuccess = true;
           try
           {
-            int i = apjj.a("libARFeature");
+            int i = aocw.a("libARFeature");
             if (i != 0) {
               break label219;
             }
@@ -121,10 +121,10 @@ public class ARShell
     //   14: new 35	java/lang/StringBuilder
     //   17: dup
     //   18: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   21: ldc 117
+    //   21: ldc 118
     //   23: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: getstatic 31	com/youtu/arsdk/ARShell:loadARCoreSoSuccess	Z
-    //   29: invokevirtual 97	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 98	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   32: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   35: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   38: getstatic 31	com/youtu/arsdk/ARShell:loadARCoreSoSuccess	Z
@@ -135,7 +135,7 @@ public class ARShell
     //   48: monitorexit
     //   49: iload_1
     //   50: ireturn
-    //   51: invokestatic 122	apmm:a	()Lapmo;
+    //   51: invokestatic 123	aofz:a	()Laogb;
     //   54: astore_3
     //   55: aload_3
     //   56: ifnonnull +14 -> 70
@@ -145,15 +145,15 @@ public class ARShell
     //   66: istore_1
     //   67: goto -21 -> 46
     //   70: aload_3
-    //   71: invokestatic 125	apmm:a	(Lapmo;)Z
+    //   71: invokestatic 126	aofz:a	(Laogb;)Z
     //   74: ifeq +162 -> 236
     //   77: aload_3
-    //   78: invokeinterface 130 1 0
+    //   78: invokeinterface 131 1 0
     //   83: astore 4
     //   85: aload 4
     //   87: ifnull +13 -> 100
     //   90: aload 4
-    //   92: invokeinterface 135 1 0
+    //   92: invokeinterface 136 1 0
     //   97: ifne +14 -> 111
     //   100: iconst_0
     //   101: putstatic 31	com/youtu/arsdk/ARShell:loadARCoreSoSuccess	Z
@@ -161,18 +161,18 @@ public class ARShell
     //   107: istore_1
     //   108: goto -62 -> 46
     //   111: aload 4
-    //   113: invokeinterface 139 1 0
+    //   113: invokeinterface 140 1 0
     //   118: astore 4
     //   120: aload 4
-    //   122: invokeinterface 144 1 0
+    //   122: invokeinterface 145 1 0
     //   127: ifeq +98 -> 225
     //   130: aload 4
-    //   132: invokeinterface 148 1 0
-    //   137: checkcast 150	java/lang/String
+    //   132: invokeinterface 149 1 0
+    //   137: checkcast 151	java/lang/String
     //   140: astore 5
     //   142: aload_3
     //   143: aload 5
-    //   145: invokestatic 153	apmm:a	(Lapmo;Ljava/lang/String;)I
+    //   145: invokestatic 154	aofz:a	(Laogb;Ljava/lang/String;)I
     //   148: istore_0
     //   149: iload_0
     //   150: ifeq -30 -> 120
@@ -183,11 +183,11 @@ public class ARShell
     //   162: new 35	java/lang/StringBuilder
     //   165: dup
     //   166: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   169: ldc 155
+    //   169: ldc 156
     //   171: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: iload_0
-    //   175: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   178: ldc 157
+    //   175: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   178: ldc 158
     //   180: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: aload 5
     //   185: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -205,9 +205,9 @@ public class ARShell
     //   213: ifeq +12 -> 225
     //   216: ldc 76
     //   218: iconst_2
-    //   219: ldc 158
+    //   219: ldc 159
     //   221: aload_3
-    //   222: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   222: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   225: iconst_1
     //   226: putstatic 31	com/youtu/arsdk/ARShell:loadARCoreSoSuccess	Z
     //   229: getstatic 31	com/youtu/arsdk/ARShell:loadARCoreSoSuccess	Z
@@ -228,7 +228,7 @@ public class ARShell
     //   148	27	0	i	int
     //   1	243	1	bool1	boolean
     //   41	2	2	bool2	boolean
-    //   54	89	3	localapmo	apmo
+    //   54	89	3	localaogb	aogb
     //   205	17	3	localThrowable	Throwable
     //   247	5	3	localObject1	Object
     //   83	48	4	localObject2	Object
@@ -265,19 +265,19 @@ public class ARShell
     //   3: istore_2
     //   4: ldc 2
     //   6: monitorenter
-    //   7: invokestatic 163	com/youtu/arsdk/ARShell:getCommonSoFilename	()Ljava/lang/String;
+    //   7: invokestatic 164	com/youtu/arsdk/ARShell:getCommonSoFilename	()Ljava/lang/String;
     //   10: astore_3
-    //   11: ldc 165
-    //   13: invokestatic 170	apju:a	(Ljava/lang/String;)Z
+    //   11: ldc 166
+    //   13: invokestatic 171	aodh:a	(Ljava/lang/String;)Z
     //   16: ifeq +24 -> 40
     //   19: aload_3
-    //   20: invokestatic 176	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   20: invokestatic 177	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   23: ifne +17 -> 40
-    //   26: new 178	java/io/File
+    //   26: new 179	java/io/File
     //   29: dup
     //   30: aload_3
-    //   31: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
-    //   34: invokevirtual 184	java/io/File:exists	()Z
+    //   31: invokespecial 182	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokevirtual 185	java/io/File:exists	()Z
     //   37: ifne +26 -> 63
     //   40: iload_2
     //   41: istore_1
@@ -285,7 +285,7 @@ public class ARShell
     //   45: ifeq +13 -> 58
     //   48: ldc 76
     //   50: iconst_2
-    //   51: ldc 186
+    //   51: ldc 187
     //   53: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   56: iload_2
     //   57: istore_1
@@ -300,25 +300,25 @@ public class ARShell
     //   72: new 35	java/lang/StringBuilder
     //   75: dup
     //   76: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   79: ldc 188
+    //   79: ldc 189
     //   81: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: getstatic 94	com/youtu/arsdk/ARShell:soLoaded	Z
-    //   87: invokevirtual 97	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   84: getstatic 95	com/youtu/arsdk/ARShell:soLoaded	Z
+    //   87: invokevirtual 98	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   90: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   96: iconst_1
-    //   97: putstatic 94	com/youtu/arsdk/ARShell:soLoaded	Z
+    //   97: putstatic 95	com/youtu/arsdk/ARShell:soLoaded	Z
     //   100: aload_3
-    //   101: invokestatic 193	java/lang/System:load	(Ljava/lang/String;)V
-    //   104: ldc 165
-    //   106: invokestatic 194	apju:a	(Ljava/lang/String;)I
+    //   101: invokestatic 194	java/lang/System:load	(Ljava/lang/String;)V
+    //   104: ldc 166
+    //   106: invokestatic 195	aodh:a	(Ljava/lang/String;)I
     //   109: istore_0
     //   110: iload_0
     //   111: ifne +5 -> 116
     //   114: iconst_1
     //   115: istore_1
     //   116: iload_1
-    //   117: putstatic 196	com/youtu/arsdk/ARShell:loadSoSuccess	Z
+    //   117: putstatic 197	com/youtu/arsdk/ARShell:loadSoSuccess	Z
     //   120: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   123: ifeq +28 -> 151
     //   126: ldc 76
@@ -326,10 +326,10 @@ public class ARShell
     //   129: new 35	java/lang/StringBuilder
     //   132: dup
     //   133: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   136: ldc 198
+    //   136: ldc 199
     //   138: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: iload_0
-    //   142: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   145: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   148: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   151: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -339,25 +339,25 @@ public class ARShell
     //   160: new 35	java/lang/StringBuilder
     //   163: dup
     //   164: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   167: ldc 200
+    //   167: ldc 201
     //   169: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: getstatic 196	com/youtu/arsdk/ARShell:loadSoSuccess	Z
-    //   175: invokevirtual 97	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   172: getstatic 197	com/youtu/arsdk/ARShell:loadSoSuccess	Z
+    //   175: invokevirtual 98	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   178: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   181: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   184: getstatic 196	com/youtu/arsdk/ARShell:loadSoSuccess	Z
+    //   184: getstatic 197	com/youtu/arsdk/ARShell:loadSoSuccess	Z
     //   187: istore_1
     //   188: goto -130 -> 58
     //   191: astore_3
     //   192: iconst_0
-    //   193: putstatic 196	com/youtu/arsdk/ARShell:loadSoSuccess	Z
+    //   193: putstatic 197	com/youtu/arsdk/ARShell:loadSoSuccess	Z
     //   196: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   199: ifeq -48 -> 151
     //   202: ldc 76
     //   204: iconst_2
-    //   205: ldc 201
+    //   205: ldc 202
     //   207: aload_3
-    //   208: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   208: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   211: goto -60 -> 151
     //   214: astore_3
     //   215: ldc 2

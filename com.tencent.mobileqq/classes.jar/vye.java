@@ -1,8 +1,23 @@
-public abstract interface vye
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public class vye
+  extends vqm
 {
-  public abstract void a();
+  public long a;
+  public int b;
   
-  public abstract void b();
+  public vye(qqstory_service.RspCheckActivity paramRspCheckActivity)
+  {
+    super(paramRspCheckActivity.result);
+    this.b = paramRspCheckActivity.is_activity.get();
+    this.a = paramRspCheckActivity.next_check_time.get();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
+  }
 }
 
 

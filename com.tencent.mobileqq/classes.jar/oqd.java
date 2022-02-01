@@ -1,23 +1,82 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqd
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule$ChannelBannerInfo;", "", "(Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule;)V", "cardReportJson", "", "getCardReportJson", "()Ljava/lang/String;", "setCardReportJson", "(Ljava/lang/String;)V", "channelId", "", "getChannelId", "()I", "setChannelId", "(I)V", "dynamicJson", "getDynamicJson", "setDynamicJson", "pageName", "getPageName", "setPageName", "uniqueId", "getUniqueId", "setUniqueId", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oqd
 {
-  oqd(otd paramotd, ViewBase paramViewBase, otp paramotp) {}
+  private int jdField_a_of_type_Int = -1;
+  @NotNull
+  private String jdField_a_of_type_JavaLangString = "";
+  @NotNull
+  private String b = "";
+  @NotNull
+  private String c = "";
+  @NotNull
+  private String d = "";
   
-  public final void onClick(ViewBase paramViewBase)
+  public final int a()
   {
-    paramViewBase = this.jdField_a_of_type_Otd.a();
-    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-    ozs.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
-    if (this.jdField_a_of_type_Otd.a() != null) {
-      this.jdField_a_of_type_Otd.a().g(this.jdField_a_of_type_Otp);
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  public final void b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.b = paramString;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.c;
+  }
+  
+  public final void c(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.c = paramString;
+  }
+  
+  @NotNull
+  public final String d()
+  {
+    return this.d;
+  }
+  
+  public final void d(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.d = paramString;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "channelId = " + this.jdField_a_of_type_Int + ", uniqueId = " + this.jdField_a_of_type_JavaLangString + ", pageName = " + this.b + ", \n dynamicJson = " + this.c + ", \n cardReportJson = " + this.d;
   }
 }
 

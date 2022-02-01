@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiha;
+import ahdq;
 import android.widget.TextView;
 
 public class AppletsChatPie$1
   implements Runnable
 {
-  public AppletsChatPie$1(aiha paramaiha) {}
+  public AppletsChatPie$1(ahdq paramahdq) {}
   
   public void run()
   {
-    if (aiha.a(this.this$0) != null) {
-      aiha.b(this.this$0).setVisibility(8);
+    if (ahdq.a(this.this$0) != null) {
+      ahdq.b(this.this$0).setVisibility(8);
     }
-    if (aiha.c(this.this$0) != null) {
-      aiha.d(this.this$0).setVisibility(8);
+    if (ahdq.c(this.this$0) != null) {
+      ahdq.d(this.this$0).setVisibility(8);
     }
   }
 }

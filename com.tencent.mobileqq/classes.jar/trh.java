@@ -1,46 +1,58 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
-class trh
-  implements tro
+public class trh
 {
-  trh(trg paramtrg) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  public String b;
+  public double c;
+  public long c;
+  public String c;
+  public double d;
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public static trh a(JSONObject paramJSONObject)
   {
-    Object localObject = trg.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
-    {
-      trg.a(this.a, paramGiftServiceBean);
-      trg.a(this.a).setText(paramGiftServiceBean.t);
-      trg.b(this.a, null);
-      if (trg.a(this.a)) {
-        trg.c(this.a, null);
-      }
-      trg.b(this.a).setText("");
-      trg.c(this.a).setText("");
-      trg.a(this.a, new ArrayList());
-      localObject = trg.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          trg.b(this.a).add(localGiftServiceBean);
-        }
-      }
-      if (trg.b(this.a).size() <= 0)
-      {
-        paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = anzj.a(2131704168);
-        paramGiftServiceBean.v = "0";
-        trg.b(this.a).add(paramGiftServiceBean);
-      }
-      trg.a(this.a);
+    if (paramJSONObject == null) {
+      return null;
     }
+    try
+    {
+      trh localtrh = new trh();
+      try
+      {
+        localtrh.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
+        localtrh.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
+        localtrh.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
+        localtrh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
+        localtrh.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
+        localtrh.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
+        localtrh.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
+        localtrh.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
+        localtrh.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
+        localtrh.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
+        localtrh.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
+        localtrh.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
+        return localtrh;
+      }
+      catch (Exception localException1)
+      {
+        paramJSONObject = localtrh;
+      }
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramJSONObject = null;
+      }
+    }
+    localException1.printStackTrace();
+    return paramJSONObject;
   }
 }
 

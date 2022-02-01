@@ -1,43 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import java.util.Iterator;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl.1;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.UUID;
 
-class bgsj
-  extends anua
+public class bgsj
 {
-  bgsj(bgsi parambgsi) {}
-  
-  protected void a(Object paramObject)
+  private void a()
   {
-    if (this.a.a == null) {}
-    for (;;)
+    int i = bgxy.a().a();
+    if ((i & 0x2) == 0)
     {
-      return;
-      paramObject = (bftf)paramObject;
-      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("_accelerator_mode_", i | 0x2);
+      bgxy.a().a(localBundle);
+    }
+  }
+  
+  protected List<WebViewPlugin> a()
+  {
+    return null;
+  }
+  
+  public void a(AppInterface arg1)
+  {
+    if (((!bgsi.jdField_a_of_type_Boolean) && (bgsi.a(???))) || ((!bgsi.jdField_b_of_type_Boolean) && (bgsi.b(???)))) {}
+    label182:
+    while (!QLog.isColorLevel()) {
+      for (;;)
       {
-        long l = paramObject.jdField_b_of_type_Long;
-        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
-        while (localIterator.hasNext())
+        try
         {
-          Object localObject = (ChatMessage)localIterator.next();
-          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
-          {
-            localObject = (MessageForTroopFile)localObject;
-            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
-              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
-              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            }
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadService", 2, "preload webview engine");
           }
+          l1 = System.currentTimeMillis();
+          if (!bgsi.a(???)) {
+            break label182;
+          }
+          bgsi.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
+        }
+        catch (Exception ???)
+        {
+          long l1;
+          long l2;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("PreloadService", 2, "preload error:" + ???.toString());
+          return;
+        }
+        synchronized (bgsi.jdField_a_of_type_JavaLangObject)
+        {
+          bgsi.jdField_a_of_type_JavaLangObject.notifyAll();
+          bgsi.jdField_a_of_type_Boolean = true;
+          l2 = System.currentTimeMillis();
+          if (QLog.isColorLevel()) {
+            QLog.i("QQBrowser", 2, "Pre_Load_async_create_webview_engine, cost=" + (l2 - l1));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadService", 2, "asyncPreload end");
+          }
+          return;
+        }
+        if (bgsi.b(???))
+        {
+          bgsi.jdField_b_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
+          bgsi.jdField_b_of_type_Boolean = true;
         }
       }
     }
+    QLog.d("PreloadService", 2, "async preload:already inited.");
+  }
+  
+  public void a(AppInterface paramAppInterface, Context paramContext, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadService", 2, "asyncPreload app = " + paramAppInterface);
+    }
+    if (paramAppInterface == null) {
+      return;
+    }
+    a();
+    ThreadManager.postImmediately(new PreloadService.PreloadImpl.1(this, paramAppInterface), null, true);
   }
 }
 

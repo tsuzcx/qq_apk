@@ -1,44 +1,44 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import cooperation.qzone.util.QZLog;
-import mqq.util.WeakReference;
+import android.text.Spanned;
 
-final class bmwx
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class bmwx
+  extends bnij
 {
-  bmwx(long paramLong, bmwz parambmwz) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  bmwx(bmww parambmww, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onPluginManagerLoaded: ");
-    Object localObject;
-    if (paramPluginManagerClient != null)
+    super(paramInt);
+  }
+  
+  public int a(CharSequence paramCharSequence)
+  {
+    return 0;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    int j = 0;
+    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
+    int i;
+    if (paramInt2 - paramInt1 != str.length())
     {
-      localObject = Boolean.valueOf(paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"));
-      QZLog.i("QZoneApiProxy", localObject + " cost " + (System.nanoTime() - this.jdField_a_of_type_Long));
-      if (paramPluginManagerClient != null)
-      {
-        if (paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk")) {
-          bmww.b = true;
-        }
-        bmww.a(new WeakReference(paramPluginManagerClient));
+      i = 1;
+      if (i == 0) {
+        break label92;
       }
-      if (this.jdField_a_of_type_Bmwz != null)
-      {
-        localObject = this.jdField_a_of_type_Bmwz;
-        if ((paramPluginManagerClient == null) || (!paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk")) || (!bmww.a(BaseApplicationImpl.getApplication()))) {
-          break label137;
-        }
-      }
+      paramInt2 = str.length();
+      paramInt1 = j;
+      paramCharSequence = str;
     }
-    label137:
-    for (boolean bool = true;; bool = false)
+    label92:
+    for (;;)
     {
-      ((bmwz)localObject).onLoadOver(bool);
-      return;
-      localObject = "null";
-      break;
+      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      if ((paramSpanned == null) && (i != 0))
+      {
+        return paramCharSequence;
+        i = 0;
+        break;
+      }
+      return paramSpanned;
     }
   }
 }

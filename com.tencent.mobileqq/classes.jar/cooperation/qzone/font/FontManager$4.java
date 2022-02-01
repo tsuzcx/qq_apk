@@ -1,28 +1,27 @@
 package cooperation.qzone.font;
 
-import bmzc;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class FontManager$4
+class FontManager$4
   implements Runnable
 {
-  public FontManager$4(bmzc parambmzc, String paramString, int paramInt) {}
+  FontManager$4(FontManager paramFontManager, String paramString, int paramInt) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.val$fontUrl);
     }
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(bmzc.a(this.this$0, this.jdField_a_of_type_Int)))) {
-      bmzc.a(this.this$0, this.jdField_a_of_type_Int);
+    if (HttpDownloadUtil.download(null, this.val$fontUrl, new File(FontManager.access$500(this.this$0, this.val$fontID)))) {
+      FontManager.access$600(this.this$0, this.val$fontID);
     }
     for (;;)
     {
-      bmzc.a(this.this$0, this.jdField_a_of_type_Int);
+      FontManager.access$700(this.this$0, this.val$fontID);
       return;
-      QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
+      QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.val$fontUrl);
     }
   }
 }

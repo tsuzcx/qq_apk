@@ -1,62 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ywe
-  extends Handler
+  implements URLDrawable.URLDrawableListener
 {
-  public ywe(EditVideoArtFilter paramEditVideoArtFilter) {}
+  public ywe(QRDisplayActivity paramQRDisplayActivity, aqbx paramaqbx, int paramInt, boolean paramBoolean) {}
   
-  public void dispatchMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadCanceled:" + this.jdField_a_of_type_Aqbx.a);
     }
-    do
-    {
-      do
-      {
-        return;
-        EditVideoArtFilter.a(this.a, false);
-        localObject = (String)paramMessage.obj;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER SUCCESS,fileOutputPath:" + (String)localObject);
-        }
-        this.a.a((String)localObject, paramMessage.arg1);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(0, true);
-        return;
-        EditVideoArtFilter.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER ERROR");
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690136), 0).a();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER TIMEOUT,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.obj + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-        }
-      } while ((!this.a.jdField_a_of_type_Boolean) || (((Integer)paramMessage.obj).intValue() != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
-      EditVideoArtFilter.a(this.a, false);
-      this.a.f();
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690136), 0).a();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "UPDATE_FILTER_PROGRESS,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.arg1 + ",updateCount:" + paramMessage.arg2 + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-      }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a.getVisibility() != 0) || (paramMessage.arg1 != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramMessage.arg2, false);
-    Object localObject = EditVideoArtFilter.a(this.a).obtainMessage(38);
-    ((Message)localObject).arg1 = paramMessage.arg1;
-    ((Message)localObject).arg2 = (paramMessage.arg2 + 1);
-    EditVideoArtFilter.a(this.a).sendMessageDelayed((Message)localObject, 100L);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqbx.a);
+    }
+    if (paramURLDrawable != null) {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    }
+    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131695942), 0).a();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QRDisplayActivity.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Aqbx, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqbx.a);
+    }
+    if (paramURLDrawable != null) {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    }
   }
 }
 

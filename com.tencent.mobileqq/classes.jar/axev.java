@@ -1,113 +1,72 @@
-import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedStuct;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
 public class axev
 {
-  public static axew a(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, axfd paramaxfd)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    ilive_feeds_read.ReadNearUserFeedsReq localReadNearUserFeedsReq = new ilive_feeds_read.ReadNearUserFeedsReq();
+    try
     {
-      return null;
-      paramString = Uri.parse(paramString);
-      if (paramString.isHierarchical())
+      localReadNearUserFeedsReq.uin.set(Long.valueOf(paramString).longValue());
+      localReadNearUserFeedsReq.pos.set(paramInt2);
+      localReadNearUserFeedsReq.num.set(paramInt3);
+      localReadNearUserFeedsReq.nowid.set(paramLong);
+      localReadNearUserFeedsReq.id_type.set(paramInt1);
+      paramString = SosoInterface.getSosoInfo();
+      if ((paramString != null) && (paramString.mLocation != null))
       {
-        paramString = paramString.getQueryParameter("_appinfo");
-        if (!TextUtils.isEmpty(paramString)) {
-          try
-          {
-            paramString = Base64.decode(paramString, 10);
-            if (paramString == null)
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("miniAppJump", 2, "appinfo decode error 2");
-              return null;
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
-            return null;
-          }
+        paramString = paramString.mLocation;
+        localReadNearUserFeedsReq.lat.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.mLat02)));
+        localReadNearUserFeedsReq.lng.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.mLon02)));
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + paramString.mLat02 + ",req.lng=" + paramString.mLon02);
         }
       }
+      new awqq(paramQQAppInterface).a(24624).b(10).a(new axex(paramInt2, paramaxfd)).a(new axew(paramaxfd, paramInt2)).a(localReadNearUserFeedsReq.toByteArray());
+      return;
     }
-    paramString = new JSONObject(new String(paramString, "UTF-8"));
-    axew localaxew = new axew();
-    localaxew.jdField_a_of_type_Int = paramString.getInt("type");
-    localaxew.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-    localaxew.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
-    localaxew.jdField_b_of_type_Int = paramString.optInt("from");
-    localaxew.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
-    return localaxew;
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      QLog.i("NearbyMomentProtocol", 1, "getNearbyMomentsList, transfer uin error, uin=" + paramString);
+    }
   }
   
-  public static boolean a(Activity paramActivity, axew paramaxew, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt, axfc paramaxfc)
   {
-    if (paramaxew == null) {}
-    while ((paramaxew.jdField_a_of_type_Int == 4) || (paramaxew.jdField_a_of_type_Int != 3)) {
-      return false;
-    }
-    axem.a(paramActivity, paramaxew.jdField_a_of_type_JavaLangString, paramaxew.jdField_a_of_type_Int, null);
-    return true;
+    ilive_feeds_write.DelFeedReq localDelFeedReq = new ilive_feeds_write.DelFeedReq();
+    ilive_feeds_write.DelFeedStuct localDelFeedStuct = new ilive_feeds_write.DelFeedStuct();
+    localDelFeedStuct.feed_id.set(ByteStringMicro.copyFromUtf8(paramString));
+    localDelFeedStuct.timestamp.set(paramLong);
+    localDelFeedStuct.feed_type.set(paramInt);
+    localDelFeedReq.del_type.set(2);
+    localDelFeedReq.select_all.set(0);
+    localDelFeedReq.del_st.get().add(localDelFeedStuct);
+    localDelFeedReq.uid.set(Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+    new awqq(paramQQAppInterface).a(22528).b(5).a(new axez(paramaxfc, paramString)).a(new axey(paramaxfc, paramString)).a(localDelFeedReq.toByteArray());
   }
   
-  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, axfe paramaxfe)
   {
-    return a(paramActivity, a(paramString), paramBundle);
+    new awqu(paramQQAppInterface).a(paramString, new axfa(paramaxfe), null);
   }
   
-  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, axff paramaxff)
   {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    Bundle localBundle = new Bundle();
-    QQAppInterface localQQAppInterface = paramBaseActivity.app;
-    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
-    boolean bool;
-    if (paramMessageRecord.istroop == 1)
-    {
-      localBundle.putString("gc", paramMessageRecord.frienduin);
-      if ((bguq.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (bguq.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
-      {
-        bool = true;
-        localBundle.putBoolean("isAdmin", bool);
-      }
-    }
-    else
-    {
-      paramString = a(paramString);
-      bool = a(paramBaseActivity, paramString, localBundle);
-      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
-      {
-        if (paramString.jdField_b_of_type_Int != 1) {
-          break label186;
-        }
-        bdll.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      bool = false;
-      break;
-      label186:
-      if (paramString.jdField_b_of_type_Int == 2) {
-        bhju.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
-      }
-    }
+    new awqu(paramQQAppInterface).b(paramString, new axfb(paramaxff), null);
   }
 }
 

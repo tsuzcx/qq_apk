@@ -1,74 +1,101 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Checkable;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortItemView;
+import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class arbr
-  extends arac<arbq>
+  extends BaseAdapter
 {
-  public static void a()
+  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  
+  public arbr(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
   {
-    arbq localarbq = (arbq)aran.a().a(430);
-    arbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localarbq);
+    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new arbs(this, paramDragSortListView));
   }
   
-  @NonNull
-  public arbq a(int paramInt)
+  public boolean areAllItemsEnabled()
   {
-    return new arbq();
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
   }
   
-  @Nullable
-  public arbq a(araj[] paramArrayOfaraj)
+  public int getCount()
   {
-    return arbq.a(paramArrayOfaraj);
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
   }
   
-  public void a(arbq paramarbq)
+  public Object getItem(int paramInt)
   {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    arbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramarbq);
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
   }
   
-  public Class<arbq> clazz()
+  public long getItemId(int paramInt)
   {
-    return arbq.class;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
   }
   
-  public boolean isAccountRelated()
+  public int getItemViewType(int paramInt)
   {
-    return true;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
   }
   
-  public boolean isNeedCompressed()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return true;
+    if (paramView != null)
+    {
+      localObject = (DragSortItemView)paramView;
+      localView1 = ((DragSortItemView)localObject).getChildAt(0);
+      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      if (localView2 != localView1)
+      {
+        if (localView1 != null) {
+          ((DragSortItemView)localObject).removeViewAt(0);
+        }
+        ((DragSortItemView)localObject).addView(localView2);
+      }
+      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, (View)localObject, true);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    View localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+    if ((localView1 instanceof Checkable)) {}
+    for (Object localObject = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; localObject = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
+    {
+      ((DragSortItemView)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      ((DragSortItemView)localObject).addView(localView1);
+      break;
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  public int getViewTypeCount()
   {
-    return false;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
   }
   
-  public int migrateOldVersion()
+  public boolean hasStableIds()
   {
-    return 0;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
   }
   
-  public void onReqFailed(int paramInt)
+  public boolean isEmpty()
   {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
   }
   
-  public int type()
+  public boolean isEnabled(int paramInt)
   {
-    return 430;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbr
  * JD-Core Version:    0.7.0.1
  */

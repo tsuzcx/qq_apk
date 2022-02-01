@@ -6,6 +6,10 @@
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/meq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="abp" formItem:leftText="@string/imq" formItem:showArrow="true" />
         <include android:id="@id/gsk" layout="@layout/b25" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/bf1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:layout_marginBottom="@dimen/al1" formItem:bgType="abp" formItem:leftText="@string/ajg" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/bey" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/ajj" formItem:leftTextColor="ab6" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/bey" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/ajj" />
+        <com.tencent.mobileqq.widget.FormItemRelativeLayout android:gravity="center_vertical" android:id="@id/mmk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al1" android:layout_centerVertical="true">
+            <TextView android:textSize="17.0sp" android:textColor="@color/skin_qq_setting_deep_clean" android:id="@id/mmm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/wio" android:includeFontPadding="false" android:contentDescription="@string/wio" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/ani" android:ellipsize="end" android:id="@id/mml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="16.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_below="@id/mmm" android:layout_alignLeft="@id/mmm" />
+        </com.tencent.mobileqq.widget.FormItemRelativeLayout>
     </LinearLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

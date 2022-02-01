@@ -20,6 +20,7 @@ import com.tencent.weseevideo.composition.effectnode.VideoEffectNodeFactory;
 import com.tencent.weseevideo.composition.effectnode.WSLutEffectNode;
 import com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode;
 import com.tencent.weseevideo.composition.effectnode.WSPagChainStickerMergedEffectNode;
+import com.tencent.weseevideo.editor.sticker.WsStickerRenderContext;
 import com.tencent.weseevideo.model.MediaModel;
 import com.tencent.weseevideo.model.effect.CropModel;
 import com.tencent.weseevideo.model.effect.LutModel;
@@ -33,6 +34,7 @@ import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -113,9 +115,16 @@ public class VideoRenderChainManager
     if (this.mRenderContextCreator != null) {
       this.mSharePagOverlayStickerContext = this.mRenderContextCreator.createStickerContext();
     }
-    if (this.mSharePagOverlayStickerContext == null) {
-      this.mSharePagOverlayStickerContext = new TAVStickerRenderContext();
+    if (this.mSharePagOverlayStickerContext == null)
+    {
+      if (needBlur()) {
+        this.mSharePagOverlayStickerContext = new WsStickerRenderContext();
+      }
     }
+    else {
+      return;
+    }
+    this.mSharePagOverlayStickerContext = new TAVStickerRenderContext();
   }
   
   private void initPagChainStickerContext(MediaModel paramMediaModel)
@@ -160,6 +169,17 @@ public class VideoRenderChainManager
     for (boolean bool = true;; bool = false) {
       return bool;
     }
+  }
+  
+  private boolean needBlur()
+  {
+    Iterator localIterator = this.mMediaModel.getMediaEffectModel().getStickerModelList().iterator();
+    while (localIterator.hasNext()) {
+      if ("blur".equals(((StickerModel)localIterator.next()).getType())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   private void updateAEKit(AEKitModel paramAEKitModel)

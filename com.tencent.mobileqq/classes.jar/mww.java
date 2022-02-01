@@ -1,71 +1,30 @@
-import android.content.Intent;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-
 public class mww
-  extends MSFServlet
 {
-  private AVGameAppInterface a;
-  
-  public String[] getPreferSSOCommands()
+  public static String a(long paramLong)
   {
-    return new String[] { "OnlinePush.ReqPush" };
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof AVGameAppInterface)) {
-      this.a = ((AVGameAppInterface)localAppRuntime);
+    long l = paramLong & 0xFFFFFFFF;
+    if (paramLong == l) {
+      return String.valueOf(l);
     }
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent != null)
+    char[] arrayOfChar = "-9223372036854775808".toCharArray();
+    arrayOfChar[0] = '0';
+    int j = arrayOfChar.length - 1;
+    paramLong = l;
+    while ((j != 0) && (paramLong != 0L))
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServlet", 4, "onReceive, cmd[" + paramFromServiceMsg.getServiceCmd() + "]");
-      }
-      if (this.a != null) {
-        this.a.a(paramIntent, paramFromServiceMsg);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
+      int i = (char)(int)(arrayOfChar[j] + paramLong % 10L);
+      arrayOfChar[j] = i;
+      if (i > 57)
       {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameServlet", 4, "send, cmd[" + paramIntent.getServiceCmd() + "]");
-        }
+        arrayOfChar[j] = ((char)(arrayOfChar[j] - '\n'));
+        int k = j - 1;
+        arrayOfChar[k] = ((char)(arrayOfChar[k] + '\001'));
       }
+      paramLong /= 10L;
+      j -= 1;
     }
+    j = '1' - arrayOfChar[0];
+    return new String(arrayOfChar, j, arrayOfChar.length - j);
   }
 }
 

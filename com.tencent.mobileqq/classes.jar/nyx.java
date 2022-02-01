@@ -1,18 +1,32 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class nyx
-  implements View.OnClickListener
+  implements aszj
 {
-  public nyx(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nyx(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void onNo()
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_Int = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    this.a.g();
+    nya.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
+  }
+  
+  public void onYes()
+  {
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    if (this.a.jdField_a_of_type_Int == 5) {
+      this.a.d();
+    }
+    for (;;)
+    {
+      nya.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+      return;
+      this.a.b(VideoCoverView.a(this.a));
+    }
   }
 }
 

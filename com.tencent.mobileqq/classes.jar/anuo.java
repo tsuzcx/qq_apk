@@ -1,25 +1,32 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class anuo
-  extends babo
+public class anuo
+  extends anrh
 {
-  anuo(anum paramanum, long paramLong)
+  public anuo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramLong);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public boolean a()
   {
-    paramUploadImageSize = babn.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
+    boolean bool = false;
+    try
     {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
+      if ("openPlayer".equals(this.jdField_a_of_type_JavaUtilHashMap.get("action"))) {
+        bool = uqs.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+      }
+      return bool;
     }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+    catch (Exception localException)
+    {
+      QLog.e("WeishiPublicAccountVideoAction", 1, "doAction error: " + localException.getMessage());
+      a("WeishiPublicAccountVideoAction");
+    }
+    return false;
   }
 }
 

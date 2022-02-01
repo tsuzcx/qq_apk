@@ -1,29 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atxf
-  extends atxd
+  implements View.OnClickListener
 {
-  public atxf(atwy paramatwy)
-  {
-    super(paramatwy);
-  }
+  atxf(atxe paramatxe, FeedsItemData paramFeedsItemData) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateCancelUploadWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Atxe.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
     }
-    atwy.b(this.jdField_a_of_type_Atwy, 11, 9);
-    atwy.c(this.jdField_a_of_type_Atwy, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Atxd = new atxg(this.jdField_a_of_type_Atwy);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(this.jdField_a_of_type_Atxe.itemView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+      this.jdField_a_of_type_Atxe.itemView.getContext().startActivity(localIntent);
+    }
   }
 }
 

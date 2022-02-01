@@ -12,11 +12,9 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import bhlo;
-import bhnv;
-import bjjo;
-import bjve;
-import bmsw;
+import bhpc;
+import biaq;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -32,8 +30,11 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.QbSdk;
+import cooperation.qzone.QUA;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +44,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import nnr;
 
 public class MiniProgramReportHelper
 {
@@ -160,7 +160,7 @@ public class MiniProgramReportHelper
   
   public static String getNetworkType()
   {
-    String str = nnr.a();
+    String str = HttpUtil.getNetWorkTypeByStr();
     if (str == null) {
       return "unknown";
     }
@@ -185,9 +185,9 @@ public class MiniProgramReportHelper
   public static List<COMM.Entry> newAppQualityEntries(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
   {
     if (PERF_LEVEL == null) {
-      PERF_LEVEL = String.valueOf(bhlo.f());
+      PERF_LEVEL = String.valueOf(DeviceInfoUtil.getPerfLevel());
     }
-    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(bjjo.a().a()));
+    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(bhpc.a().a()));
     COMM.Entry localEntry2 = newEntry("appid", getMiniAppIdSafely(paramMiniAppConfig));
     paramString10 = newEntry("launchid", paramString10);
     label75:
@@ -206,29 +206,29 @@ public class MiniProgramReportHelper
       paramString2 = newEntry("event", paramString2);
       paramString9 = newEntry("timestamp", paramString9);
       if (paramString1 == null) {
-        break label459;
+        break label460;
       }
       localEntry3 = newEntry("page", paramString1);
       if (paramString3 == null) {
-        break label465;
+        break label466;
       }
       paramString3 = newEntry("attachinfo", paramString3);
-      localEntry4 = newEntry("appversion", "8.4.5.4745");
+      localEntry4 = newEntry("appversion", "8.4.8.4810");
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label471;
+        break label472;
       }
       paramString1 = paramMiniAppConfig.config.version;
       localEntry5 = newEntry("miniapp_version", paramString1);
-      localEntry6 = newEntry("qua", bmsw.a());
+      localEntry6 = newEntry("qua", QUA.getQUA3());
       if (paramString4 == null) {
-        break label477;
+        break label478;
       }
       paramString4 = newEntry("cmd", paramString4);
       paramString5 = newEntry("retcode", paramString5);
       paramString7 = newEntry("time_cost", paramString7);
       paramString8 = newEntry("third_url", paramString8);
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.baseLibInfo == null)) {
-        break label484;
+        break label485;
       }
       paramString1 = paramMiniAppConfig.baseLibInfo.baseLibVersion;
       paramString1 = newEntry("baselib_version", paramString1);
@@ -236,15 +236,15 @@ public class MiniProgramReportHelper
       paramString6 = newEntry("app_type", paramString6);
       localEntry8 = newEntry("network_type", getNetworkType());
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.launchParam == null)) {
-        break label490;
+        break label491;
       }
     }
-    label459:
-    label465:
-    label471:
-    label477:
-    label484:
-    label490:
+    label460:
+    label466:
+    label472:
+    label478:
+    label485:
+    label491:
     for (paramMiniAppConfig = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramMiniAppConfig = "")
     {
       return new ArrayList(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, paramString10, paramString2, paramString9, localEntry3, paramString3, localEntry4, localEntry5, localEntry6, paramString4, paramString5, paramString7, paramString8, paramString1, localEntry7, paramString6, localEntry8, newEntry("scene", paramMiniAppConfig), newEntry("reverse1", paramString11), newEntry("reverse2", paramString12), newEntry("reverse3", paramString13), newEntry("reverse4", paramString14), newEntry("busiType", PERF_LEVEL) }));
@@ -374,8 +374,8 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newGenericEntries()
   {
-    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", bhnv.b(bjjo.a().a())) }));
-    Object localObject = bjve.f();
+    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", NetworkUtil.getCurrentWifiSSID(bhpc.a().a())) }));
+    Object localObject = biaq.f();
     if (localObject != null)
     {
       localObject = ((String)localObject).split("\\*");
@@ -473,7 +473,55 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newUserInfoEntries()
   {
-    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(bjjo.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", bmsw.a()), newEntry("imei", bjve.c()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(bjjo.a().a().getContentResolver(), "android_id")) }));
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(bhpc.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", QUA.getQUA3()), newEntry("imei", biaq.c()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(bhpc.a().a().getContentResolver(), "android_id")) }));
+  }
+  
+  public static List<COMM.Entry> newVersionEntries(MiniAppConfig paramMiniAppConfig)
+  {
+    ArrayList localArrayList = new ArrayList();
+    COMM.Entry localEntry1;
+    COMM.Entry localEntry2;
+    COMM.Entry localEntry3;
+    COMM.Entry localEntry4;
+    COMM.Entry localEntry5;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
+    {
+      localEntry1 = newEntry("appid", paramMiniAppConfig.config.appId);
+      localEntry2 = newEntry("app_version", String.valueOf(paramMiniAppConfig.config.version));
+      localEntry3 = newEntry("app_classification", null);
+      localEntry4 = newEntry("app_tag", "");
+      if (!EnvUtils.isPkgDownloaded(paramMiniAppConfig)) {
+        break label244;
+      }
+      localObject = "1";
+      localEntry5 = newEntry("isPkgDownloaed", (String)localObject);
+      if (paramMiniAppConfig == null) {
+        break label250;
+      }
+      localObject = paramMiniAppConfig.config;
+      label98:
+      if (!EnvUtils.isX5Enabled((MiniAppInfo)localObject)) {
+        break label255;
+      }
+    }
+    label244:
+    label250:
+    label255:
+    for (Object localObject = "1";; localObject = "0")
+    {
+      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, newEntry("isX5Enabled", (String)localObject), newEntry("app_status", String.valueOf(paramMiniAppConfig.config.verType)) }));
+      if (!TextUtils.isEmpty(paramMiniAppConfig.config.via)) {
+        localArrayList.add(newEntry("via", paramMiniAppConfig.config.via));
+      }
+      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.baseLibInfo != null)) {
+        localArrayList.add(newEntry("app_js_version", paramMiniAppConfig.baseLibInfo.baseLibVersion));
+      }
+      return localArrayList;
+      localObject = "0";
+      break;
+      localObject = null;
+      break label98;
+    }
   }
   
   private static Map<String, String> parseReportData(String paramString)

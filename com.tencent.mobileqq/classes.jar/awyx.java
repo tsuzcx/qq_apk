@@ -1,8 +1,16 @@
-public abstract interface awyx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class awyx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(awyb paramawyb);
+  awyx(awyf paramawyf) {}
   
-  public abstract void b(awyb paramawyb);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.d(true);
+    bcef.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+  }
 }
 
 

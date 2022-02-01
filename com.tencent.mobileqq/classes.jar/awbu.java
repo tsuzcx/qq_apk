@@ -1,7 +1,13 @@
-public class awbu
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+class awbu
+  extends RecyclerView.ViewHolder
 {
-  public String a;
-  public String b;
+  public awbu(awbo paramawbo, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

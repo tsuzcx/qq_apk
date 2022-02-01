@@ -1,34 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.10;
+import java.util.HashMap;
 
 public class alxj
-  implements Animation.AnimationListener
+  extends amkb
 {
-  private int jdField_a_of_type_Int;
-  private alxk jdField_a_of_type_Alxk;
+  public alxj(CmGameSubProcessHandler.10 param10) {}
   
-  public alxj(VideoFilterViewPager paramVideoFilterViewPager, alxk paramalxk, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Alxk = paramalxk;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((this.jdField_a_of_type_Alxk != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    if (paramInt == 200)
     {
-      this.jdField_a_of_type_Alxk.a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inSampleSize = 1;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
+      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, (BitmapFactory.Options)localObject);
+      localObject = Bitmap.createBitmap(paramArrayOfByte.getWidth(), paramArrayOfByte.getHeight(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      localCanvas.drawBitmap(paramArrayOfByte, 0.0F, 0.0F, null);
+      localCanvas.save();
+      paramArrayOfByte.recycle();
+      if (localObject != null)
+      {
+        this.a.a.a((Bitmap)localObject, 200);
+        alxh.b(this.a.this$0).put(this.a.b, localObject);
       }
+      return;
     }
+    this.a.a.a(null, paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

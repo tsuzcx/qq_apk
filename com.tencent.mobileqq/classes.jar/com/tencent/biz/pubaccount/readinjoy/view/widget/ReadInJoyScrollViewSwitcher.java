@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -15,27 +14,28 @@ import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import szi;
-import szj;
-import szk;
-import szl;
-import zft;
+import tdi;
+import tdj;
+import tdk;
+import tdl;
 
 public class ReadInJoyScrollViewSwitcher
   extends ViewSwitcher
 {
   private int jdField_a_of_type_Int = 400;
-  private ArrayList<szl> jdField_a_of_type_JavaUtilArrayList;
-  private szj jdField_a_of_type_Szj;
-  public szk a;
+  private ArrayList<tdl> jdField_a_of_type_JavaUtilArrayList;
+  private tdj jdField_a_of_type_Tdj;
+  public tdk a;
   private int b;
   private int c;
   
@@ -51,35 +51,35 @@ public class ReadInJoyScrollViewSwitcher
     d();
   }
   
-  private void a(szl paramszl, View paramView, int paramInt)
+  private void a(tdl paramtdl, View paramView, int paramInt)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131378603);
-    localTextView.setText(paramszl.jdField_a_of_type_JavaLangString);
-    paramView = (CornerImageView)paramView.findViewById(2131368212);
-    paramView.setRadius(agej.a(2.0F, getResources()));
+    TextView localTextView = (TextView)paramView.findViewById(2131378367);
+    localTextView.setText(paramtdl.jdField_a_of_type_JavaLangString);
+    paramView = (CornerImageView)paramView.findViewById(2131368236);
+    paramView.setRadius(AIOUtils.dp2px(2.0F, getResources()));
     RelativeLayout.LayoutParams localLayoutParams;
-    if (TextUtils.isEmpty(paramszl.b)) {
-      if (paramszl.jdField_a_of_type_Int > 0)
+    if (TextUtils.isEmpty(paramtdl.b)) {
+      if (paramtdl.jdField_a_of_type_Int > 0)
       {
-        paramView.setImageDrawable(getResources().getDrawable(paramszl.jdField_a_of_type_Int));
+        paramView.setImageDrawable(getResources().getDrawable(paramtdl.jdField_a_of_type_Int));
         localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localLayoutParams.rightMargin = agej.a(32.0F, getResources());
+        localLayoutParams.rightMargin = AIOUtils.dp2px(32.0F, getResources());
         localTextView.setLayoutParams(localLayoutParams);
         paramView.setVisibility(0);
       }
     }
     for (;;)
     {
-      localTextView.setOnClickListener(new szi(this, paramszl));
+      localTextView.setOnClickListener(new tdi(this, paramtdl));
       return;
       paramView.setVisibility(8);
       paramView = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      paramView.rightMargin = agej.a(5.0F, getResources());
+      paramView.rightMargin = AIOUtils.dp2px(5.0F, getResources());
       localTextView.setLayoutParams(paramView);
       continue;
-      a(paramszl.b, paramView);
+      a(paramtdl.b, paramView);
       localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      localLayoutParams.rightMargin = agej.a(32.0F, getResources());
+      localLayoutParams.rightMargin = AIOUtils.dp2px(32.0F, getResources());
       localTextView.setLayoutParams(localLayoutParams);
       paramView.setVisibility(0);
     }
@@ -88,7 +88,7 @@ public class ReadInJoyScrollViewSwitcher
   private void c()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Szj = new szj(this);
+    this.jdField_a_of_type_Tdj = new tdj(this);
     setAnimateFirstView(false);
   }
   
@@ -129,7 +129,7 @@ public class ReadInJoyScrollViewSwitcher
     for (int i = 0;; i = this.b + 1)
     {
       this.b = i;
-      a((szl)this.jdField_a_of_type_JavaUtilArrayList.get(this.b), getNextView(), this.b);
+      a((tdl)this.jdField_a_of_type_JavaUtilArrayList.get(this.b), getNextView(), this.b);
       showNext();
       return;
     }
@@ -138,9 +138,9 @@ public class ReadInJoyScrollViewSwitcher
   protected void a(String paramString, URLImageView paramURLImageView)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = zft.b(getContext(), 24.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = zft.b(getContext(), 24.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = zft.b(getContext(), 2.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.dip2px(getContext(), 24.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.dip2px(getContext(), 24.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = DisplayUtil.dip2px(getContext(), 2.0F);
     try
     {
       localObject = URLDrawable.getDrawable(new URL("redtouchpicdownloadprotoc", null, paramString), (URLDrawable.URLDrawableOptions)localObject);
@@ -163,24 +163,24 @@ public class ReadInJoyScrollViewSwitcher
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
       return;
     }
-    this.jdField_a_of_type_Szj.removeMessages(0);
-    this.jdField_a_of_type_Szj.sendEmptyMessageDelayed(0, this.c);
+    this.jdField_a_of_type_Tdj.removeMessages(0);
+    this.jdField_a_of_type_Tdj.sendEmptyMessageDelayed(0, this.c);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Szj.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Tdj.removeCallbacksAndMessages(null);
   }
   
-  public void setOnClickListener(szk paramszk)
+  public void setOnClickListener(tdk paramtdk)
   {
-    this.jdField_a_of_type_Szk = paramszk;
+    this.jdField_a_of_type_Tdk = paramtdk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher
  * JD-Core Version:    0.7.0.1
  */

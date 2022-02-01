@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
 
 public class aore
-  extends anuw
+  implements DialogInterface.OnClickListener
 {
-  public aore(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
+  public aore(ArkAppYYBDownloadModule.7 param7) {}
   
-  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onSetHiddenSession(paramBoolean, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
-    }
-    if (paramInt == 42318) {
-      if (!paramBoolean) {
-        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), aorf.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
-      }
-    }
-    while ((paramInt != 42319) || (paramBoolean)) {
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bhyo.a().a(10, this.a.a);
       return;
     }
-    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), aorf.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

@@ -1,47 +1,21 @@
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class qob
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<smv> jdField_b_of_type_JavaUtilList = new ArrayList();
-  
-  private qob(qoc paramqoc)
+  public static void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = qoc.a(paramqoc);
-    this.jdField_a_of_type_JavaLangString = qoc.a(paramqoc);
-    this.jdField_b_of_type_JavaLangString = qoc.b(paramqoc);
-    this.jdField_b_of_type_JavaUtilList = qoc.b(paramqoc);
-    this.jdField_a_of_type_Int = qoc.a(paramqoc);
+    a("0X800A833", "", "", "", new qoc().a("type", paramString2).a("msg", paramString1).a());
   }
   
-  public int a()
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.i("PTSReport", 1, "[reportData], actionName = " + paramString1 + ", r2 = " + paramString2 + ", r3 = " + paramString3 + ", r4 = " + paramString4 + ", r5 = " + paramString5);
+    odq.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
   }
   
-  public String a()
+  public static void b(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<smv> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public List<URL> b()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    a("0X800A832", "", "", "", new qoc().a("type", paramString2).a("msg", paramString1).a());
   }
 }
 

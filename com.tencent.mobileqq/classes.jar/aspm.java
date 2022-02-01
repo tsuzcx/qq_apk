@@ -1,37 +1,42 @@
-import android.content.Context;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class aspm
-  extends aslt
+final class aspm
+  implements View.OnClickListener
 {
-  askq jdField_a_of_type_Askq = new aspo(this);
-  askt jdField_a_of_type_Askt = new aspn(this);
-  protected int h = 2;
+  aspm(FileManagerEntity paramFileManagerEntity, Activity paramActivity, asqp paramasqp) {}
   
-  public aspm(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, asmr paramasmr)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramasmr);
-    askc.a().a(this.jdField_a_of_type_Askq);
-    asku.a().a(this.jdField_a_of_type_Askt);
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      aszs localaszs = new aszs();
+      localaszs.b = "file_forward";
+      localaszs.jdField_a_of_type_Int = 71;
+      localaszs.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+      localaszs.c = FileUtil.getExtension(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+      localaszs.d = aszt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
+      aszr.a(localQQAppInterface.getCurrentAccountUin(), localaszs);
+      ataw.b(localQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      if (this.jdField_a_of_type_Asqp != null) {
+        this.jdField_a_of_type_Asqp.a(2);
+      }
+      label113:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label113;
+    }
   }
-  
-  public void a()
-  {
-    super.a();
-    askc.a().b(this.jdField_a_of_type_Askq);
-    asku.a().b(this.jdField_a_of_type_Askt);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage) {}
 }
 
 

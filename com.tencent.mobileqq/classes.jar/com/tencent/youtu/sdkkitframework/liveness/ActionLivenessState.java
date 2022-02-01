@@ -88,6 +88,8 @@ public class ActionLivenessState
       this.actionLiveType = 3;
       continue;
       this.actionLiveType = 4;
+      continue;
+      this.actionLiveType = 5;
     }
   }
   
@@ -104,6 +106,9 @@ public class ActionLivenessState
     }
     if (paramInt == 3) {
       return "fl_act_nod_head";
+    }
+    if (paramInt == 5) {
+      return "fl_pose_keep";
     }
     return "fl_act_error" + paramInt;
   }
@@ -156,6 +161,8 @@ public class ActionLivenessState
         this.actionLiveType = 3;
         continue;
         this.actionLiveType = 4;
+        continue;
+        this.actionLiveType = 5;
       }
     }
   }
@@ -256,6 +263,7 @@ public class ActionLivenessState
       YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
       return;
     }
+    YTPoseDetectInterface.stop();
     YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
   }
   

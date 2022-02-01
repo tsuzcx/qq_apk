@@ -1,110 +1,71 @@
-import android.opengl.Matrix;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
-import com.tencent.ttpic.openapi.filter.TextureRender;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public class lpo
 {
-  private int jdField_a_of_type_Int = 0;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int jdField_b_of_type_Int = 0;
-  private final float[] jdField_b_of_type_ArrayOfFloat;
-  private final float[] c;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = null;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = 0;
+  String jdField_c_of_type_JavaLangString = null;
+  int d = 0;
+  int e = 0;
   
-  public lpo()
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, FilterDesc paramFilterDesc, VideoMaterial paramVideoMaterial, PendantItem paramPendantItem, lok paramlok, int paramInt4)
   {
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    this.jdField_b_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    this.c = new float[16];
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    }
-  }
-  
-  public lpx a(lpx paramlpx, int paramInt1, int paramInt2)
-  {
-    if ((paramlpx == null) || (paramlpx.jdField_b_of_type_Int == -1) || (paramInt1 == 0) || (paramInt2 == 0)) {
-      return null;
-    }
-    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (paramInt1 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth()) || (paramInt2 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight()))
+    String str;
+    label34:
+    label43:
+    StringBuilder localStringBuilder;
+    if ((paramFilterDesc == null) || (paramFilterDesc.name == null))
     {
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      paramFilterDesc = "null";
+      if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
+        break label519;
       }
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
-    }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramlpx.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    return lpx.a(0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2)) {
-      return;
-    }
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    if (paramInt1 == 1)
-    {
-      Matrix.rotateM(this.jdField_b_of_type_ArrayOfFloat, 0, 90.0F, 0.0F, 0.0F, 1.0F);
-      label43:
-      if (paramInt2 != 1) {
-        break label184;
+      str = "null";
+      if (paramVideoMaterial != null) {
+        break label529;
       }
-      Matrix.setIdentityM(this.c, 0);
-      Matrix.scaleM(this.c, 0, -1.0F, 1.0F, 1.0F);
-      Matrix.multiplyMM(this.jdField_b_of_type_ArrayOfFloat, 0, this.c, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
+      paramVideoMaterial = "null";
+      if ((paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int) || (paramInt3 != this.jdField_c_of_type_Int) || (paramBoolean != this.jdField_b_of_type_Boolean) || (this.d != paramlok.a()) || (this.jdField_a_of_type_Boolean != paramlok.jdField_a_of_type_Boolean) || (this.e != paramInt4) || (!TextUtils.equals(paramFilterDesc, this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)) || (!TextUtils.equals(paramVideoMaterial, this.jdField_c_of_type_JavaLangString)))
+      {
+        localStringBuilder = new StringBuilder().append("RenderInfoLog, frameIndex[").append(paramLong).append("], width[").append(this.jdField_a_of_type_Int).append("->").append(paramInt1).append("], height[").append(this.jdField_b_of_type_Int).append("->").append(paramInt2).append("], angle[").append(this.jdField_c_of_type_Int).append("->").append(paramInt3).append("], needFaceData[").append(this.jdField_b_of_type_Boolean).append("->").append(paramBoolean).append("], mDataLen[").append(this.d).append("->").append(paramlok.a()).append("], mBeautyLevel[").append(this.e).append("->").append(paramInt4).append("], isFront[").append(this.jdField_a_of_type_Boolean).append("->").append(paramlok.jdField_a_of_type_Boolean).append("], getFrameAngle[").append(lpr.a(paramlok.jdField_a_of_type_Boolean)).append("], fAngle[").append((paramlok.d - lpr.a(paramlok.jdField_a_of_type_Boolean) - 1 + 4) % 4).append("], strFilterDesc[").append(paramFilterDesc).append("], strPendantItem[").append(str).append("], pendantItem[");
+        if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
+          break label539;
+        }
+      }
     }
-    for (;;)
+    label519:
+    label529:
+    label539:
+    for (paramPendantItem = "null";; paramPendantItem = paramPendantItem.getId())
     {
+      QLog.w(paramString, 1, paramPendantItem + "], strFilters[" + paramVideoMaterial + "]");
+      this.jdField_a_of_type_Boolean = paramlok.jdField_a_of_type_Boolean;
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.i("ExtraRender", 4, "updateMatrix, rotateFlag[" + paramInt1 + "], mirrorFlag[" + paramInt2 + "]");
+      this.jdField_c_of_type_Int = paramInt3;
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_JavaLangString = paramFilterDesc;
+      this.jdField_b_of_type_JavaLangString = str;
+      this.jdField_c_of_type_JavaLangString = paramVideoMaterial;
+      this.d = paramlok.a();
+      this.e = paramInt4;
       return;
-      if (paramInt1 == 2)
-      {
-        Matrix.rotateM(this.jdField_b_of_type_ArrayOfFloat, 0, -90.0F, 0.0F, 0.0F, 1.0F);
-        break label43;
-      }
-      if (paramInt1 != 3) {
-        break label43;
-      }
-      Matrix.rotateM(this.jdField_b_of_type_ArrayOfFloat, 0, 180.0F, 0.0F, 0.0F, 1.0F);
+      paramFilterDesc = paramFilterDesc.name;
+      break;
+      str = paramPendantItem.getId();
+      break label34;
+      paramVideoMaterial = paramVideoMaterial.toString();
       break label43;
-      label184:
-      if (paramInt2 == 2)
-      {
-        Matrix.setIdentityM(this.c, 0);
-        Matrix.scaleM(this.c, 0, 1.0F, -1.0F, 1.0F);
-        Matrix.multiplyMM(this.jdField_b_of_type_ArrayOfFloat, 0, this.c, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
-      }
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int != 0);
   }
 }
 

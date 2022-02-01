@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import java.io.File;
-import java.io.FileFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class aven
-  implements FileFilter
+class aven
+  implements avfm
 {
-  public aven(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  aven(avem paramavem, String paramString) {}
   
-  public boolean accept(File paramFile)
+  public void a(List<LocationRoom.Venue> paramList)
   {
-    if (paramFile.getName().endsWith(".png")) {}
-    while (paramFile.getName().endsWith(".jpg")) {
-      return true;
+    if ((avem.a(this.jdField_a_of_type_Avem) != null) && (avem.a(this.jdField_a_of_type_Avem).size() > 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      avem.a(this.jdField_a_of_type_Avem, paramList);
+      this.jdField_a_of_type_Avem.notifyDataSetChanged();
+      avem.a(this.jdField_a_of_type_Avem, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+      if ((avem.a(this.jdField_a_of_type_Avem).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        if (i == 0) {
+          this.jdField_a_of_type_Avem.a(0);
+        }
+      }
+      while (avem.a(this.jdField_a_of_type_Avem) == null) {
+        return;
+      }
+      paramList = avem.a(this.jdField_a_of_type_Avem);
+      if (avem.a(this.jdField_a_of_type_Avem).size() > 0) {}
+      for (i = 3;; i = 2)
+      {
+        paramList.a(i);
+        return;
+      }
     }
-    return false;
   }
 }
 

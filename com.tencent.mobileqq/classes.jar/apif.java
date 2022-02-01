@@ -1,24 +1,41 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class apif
-  extends aphs
 {
-  public String b;
-  public String c;
+  @ausx(a="isShowAssistantEntrance")
+  public int a;
+  @ausx(a="kuolieAIOEnable")
+  public int b;
   
-  public apif(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
+  public static apif a(String paramString)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = paramString2.split("\\|");
-      if (paramString1.length > 0) {
-        this.b = paramString1[0];
+    apif localapif = (apif)ausy.a(paramString, apif.class);
+    if (QLog.isColorLevel()) {
+      if ("parse: " + localapif == null) {
+        break label52;
       }
     }
-    this.c = paramString3;
-    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
+    label52:
+    for (paramString = localapif.toString();; paramString = " C2CShortcutBarConfBean is null")
+    {
+      QLog.d("C2CShortcutBarConfBean", 2, paramString);
+      return localapif;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return "C2CShortcutBarConfBean{isShowAssistantEntrance = " + this.a + "kuolieAIOEnable = " + this.b + '}';
   }
 }
 

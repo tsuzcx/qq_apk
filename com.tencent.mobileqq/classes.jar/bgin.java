@@ -1,38 +1,25 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.util.Log;
 
 public class bgin
-  extends bghr
 {
-  public bgin(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public final void a(Exception paramException)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 4;
+    a("e:", paramException);
   }
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a(String paramString)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696939), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
-    }
-    return null;
+    Log.i("GLDrawable", paramString);
   }
   
-  public void a(int paramInt, Object paramObject, String paramString)
+  public void a(String paramString, Exception paramException)
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_file", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    Log.i("GLDrawable", paramString, paramException);
   }
   
-  public void b(int paramInt, Object paramObject, String paramString)
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_file", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    Log.i("GLDrawable", "event=" + paramString1 + " statusCode=" + paramString2 + " statusMsg=" + paramString3);
   }
 }
 

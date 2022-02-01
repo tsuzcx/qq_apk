@@ -1,8 +1,8 @@
 {
     "ReadInjoy_ad_small_game_triple_img_cell":{
-
         "view_type":"container",
         "direction":"vertical",
+        "padding_top":"14",
         "height":{
             "type":"wrap_content"
         },
@@ -10,7 +10,6 @@
             "type":"relative",
             "value":"375"
         },
-
         "data_attributes": {
             "setRemoteInfo:": {
                 "jump_src": "$jump_src_fg_button",
@@ -31,89 +30,115 @@
             {
                 "view_type":"container",
                 "direction":"horizontal",
-                "margin_left":"6",
-                "margin_top":"7.5",
+                "margin_left": "12",
                 "height":{
                     "type":"relative",
-                    "value":"84"
+                    "value":"82"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"363"
+                    "value":"351"
                 },
                 "subviews":[
                     {
-                        "view_type":"ReadInjoyAsynImageView",
-                        "view_id":"id_multi_img_1",
-                        "margin_left":"0",
-                        "margin_top":"0",
+                        "view_type":"container",
+                        "layout_type":"layout_relative",
                         "height":{
-                            "type":"relative",
-                            "value":"84"
+                            "type":"match_parent"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"120"
+                            "value":"116"
                         },
-                        "attributes":{
-                            "setFrameString:":"-1",
-
-                            "setImageWithURLString:lineup:":["-1","-1"]
-                        }
+                        "subviews":[
+                            {
+                                "view_type":"ReadInjoyAsynImageView",
+                                "view_id":"id_multi_img_1",
+                                "height":{
+                                    "type":"match_parent"
+                                },
+                                "width":{
+                                    "type":"match_parent"
+                                },
+                                "attributes":{
+                                    "setImageWithURLString:lineup:":["-1","-1"]
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_left_mask",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_left_mask",
+                                "default_visible": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_bottom_round_corner"
+                                }
+                            }
+                        ]
                     },
                     {
                         "view_type":"ReadInjoyAsynImageView",
                         "view_id":"id_multi_img_2",
-                        "margin_left":"1.5",
-                        "margin_top":"0",
+                        "margin_left":"1",
                         "height":{
-                            "type":"relative",
-                            "value":"84"
+                            "type":"match_parent"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"120"
+                            "value":"117"
                         },
                         "attributes":{
-                            "setFrameString:":"-1",
                             "setImageWithURLString:lineup:":["-1","-1"]
                         }
                     },
-
                     {
                         "view_type":"container",
                         "layout_type":"layout_relative",
-                        "margin_left":"1.5",
-                        "margin_top":"0",
+                        "margin_left":"1",
                         "height":{
-                            "type":"relative",
-                            "value":"84"
+                            "type":"match_parent"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"120"
+                            "value":"116"
                         },
                         "subviews":[
                             {
                                 "view_type":"ReadInjoyAsynImageView",
                                 "view_id":"id_multi_img_3",
-                                "margin_left":"0",
-                                "margin_top":"0",
                                 "height":{
-                                    "type":"relative",
-                                    "value":"84"
+                                    "type":"match_parent"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"120"
+                                    "type": "match_parent"
                                 },
                                 "attributes":{
-                                    "setFrameString:":"-1",
-
                                     "setImageWithURLString:lineup:":["-1","-1"]
                                 }
                             },
-
                             {
                                 "view_type":"container",
                                 "layout_type":"layout_relative",
@@ -139,7 +164,6 @@
                                             "type": "match_parent"
                                         },
                                         "attributes":{
-                                            "setFrameString:":"-1",
                                             "setCornerRadiusString:":"2.0",
                                             "setBackgroundColorString:":"#80000000"
                                         }
@@ -159,7 +183,6 @@
                                             "value":"12"
                                         },
                                         "attributes":{
-                                            "setFrameString:":"-1",
                                             "loadImageWithPath:":"-1"
 
                                         }
@@ -181,54 +204,82 @@
                                         },
                                         "attributes":{
                                             "setTextAlignmentString:":"2",
-
-                                            "setFrameString:":"-1",
                                             "setTextColorString:":"#FFFFFF",
                                             "setText:":"-1",
                                             "setFontSizeString:":"11"
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_right_mask",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_right_mask",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_bottom_round_corner"
+                                }
                             }
-
-
                         ]
                     }
 
                 ]
             },
-
             {
                 "view_type":"UILabel",
                 "view_id":"id_artilce_title",
-                "margin_left":"8",
-                "margin_top":"8",
+                "margin_left":"12",
+                "margin_top":"4",
                 "height":{
                     "type":"wrap_content"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"359"
+                    "value":"351"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setText:lineSpace:":["","5"],
                     "setTextColorString:":"-1",
-                    "setFontSizeString:":"17",
+                    "setFontSizeString:":"18",
                     "setNumberOfLinesString:":"2"
 
                 }
             },
             {"$includeComponet":"componet/article_main_body.geojson"},
             {"$includeComponet":"componet/info_bar.geojson"},
-
             {
                 "view_type": "ReadInJoyAwesomeCommentView",
                 "view_id": "id_awesomeview_mutlilines",
-                "margin_left": "6",
+                "margin_left": "12",
                 "width": {
                     "type": "relative",
-                    "value": "363"
+                    "value": "343"
                 },
                 "height": {
                     "type": "wrap_content"
@@ -240,7 +291,7 @@
             {
                 "view_type": "container",
                 "view_id":"search_word_container",
-                "margin_left":"7",
+                "margin_left":"12",
                 "layout_type": "layout_linear",
                 "direction": "horizontal",
                 "height":{
@@ -253,6 +304,7 @@
                     {
                         "view_type":"UILabel",
                         "view_id":"id_search_word_title",
+                        "margin_top":"8",
                         "height":{
                             "type":"relative",
                             "value":"28"
@@ -261,7 +313,6 @@
                             "type":"wrap_content"
                         },
                         "attributes":{
-                            "align_parent_center_vertical:":"YES",
                             "setTextColorString:":"#262626",
                             "setFontSizeString:":"14",
                             "setText:":"$search_word_title"
@@ -270,6 +321,7 @@
                     {
                         "view_type":"UILabel",
                         "view_id":"id_search_word_1",
+                        "margin_top":"8",
                         "margin_left":"8",
                         "padding_left": "8",
                         "padding_right": "8",
@@ -283,9 +335,8 @@
                         },
                         "attributes":{
                             "setBorderWidthString:": "0.5",
-                            "setCornerRadiusString:": "3.0",
+                            "setCornerRadiusString:": "4.0",
                             "setBorderColorString:": "#D9D9D9",
-                            "align_parent_center_vertical:":"YES",
                             "setTextAlignmentString:":"1",
                             "setTextColorString:":"#262626",
                             "setFontSizeString:":"14",
@@ -296,6 +347,7 @@
                     {
                         "view_type":"UILabel",
                         "view_id":"id_search_word_2",
+                        "margin_top":"8",
                         "margin_left":"8",
                         "padding_left": "8",
                         "padding_right": "8",
@@ -309,9 +361,8 @@
                         },
                         "attributes":{
                             "setBorderWidthString:": "0.5",
-                            "setCornerRadiusString:": "3.0",
+                            "setCornerRadiusString:": "4.0",
                         	"setBorderColorString:": "#D9D9D9",
-                            "align_parent_center_vertical:":"YES",
                             "setTextAlignmentString:":"1",
                             "setTextColorString:":"#262626",
                             "setFontSizeString:":"14",
@@ -322,6 +373,7 @@
                     {
                         "view_type":"UILabel",
                         "view_id":"id_search_word_3",
+                        "margin_top":"8",
                         "margin_left":"8",
                         "padding_left": "8",
                         "padding_right": "8",
@@ -335,9 +387,8 @@
                         },
                         "attributes":{
                             "setBorderWidthString:": "0.5",
-                            "setCornerRadiusString:": "3.0",
+                            "setCornerRadiusString:": "4.0",
                             "setBorderColorString:": "#D9D9D9",
-                            "align_parent_center_vertical:":"YES",
                             "setTextAlignmentString:":"1",
                             "setTextColorString:":"#262626",
                             "setFontSizeString:":"14",
@@ -348,6 +399,7 @@
                     {
                         "view_type":"UILabel",
                         "view_id":"id_search_word_4",
+                        "margin_top":"8",
                         "margin_left":"8",
                         "padding_left": "8",
                         "padding_right": "8",
@@ -361,9 +413,8 @@
                         },
                         "attributes":{
                             "setBorderWidthString:": "0.5",
-                            "setCornerRadiusString:": "3.0",
+                            "setCornerRadiusString:": "4.0",
                             "setBorderColorString:": "#D9D9D9",
-                            "align_parent_center_vertical:":"YES",
                             "setTextAlignmentString:":"1",
                             "setTextColorString:":"#262626",
                             "setFontSizeString:":"14",
@@ -373,26 +424,9 @@
                     }
                 ]
             },
-            {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "margin_left":"6",
-                "margin_top":"7",
-
-                "height":{
-                    "type":"absolutely","value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
-                },
-                "attributes":{
-                    "setFrameString:":"-1",
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
-            }
-
+            {"$includeComponet":"componet/separator_normal_bottom.geojson"}
         ]
-    }
+    },
+    "min_version": "8.3.9"
 }
 

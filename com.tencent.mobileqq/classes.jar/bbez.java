@@ -1,60 +1,17 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.List;
 
-class bbez
-  implements beuq
+public class bbez
+  extends bbfd
 {
-  bbez(bbew parambbew, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcwn parambcwn) {}
-  
-  public void onResp(bevm parambevm)
+  public bbez(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambevm.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bbew.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    parambevm = this.jdField_a_of_type_Bbew.a.iterator();
-    while (parambevm.hasNext())
-    {
-      Object localObject = (bbfs)parambevm.next();
-      if (((bbfs)localObject).a != null)
-      {
-        localObject = ((bbfs)localObject).a.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
-          if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
-            localPtvTemplateInfo.usable = this.jdField_a_of_type_Bbew.a(localPtvTemplateInfo);
-          }
-        }
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      nof.a(new File(bbew.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), bbew.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Bcwn != null) {
-        this.jdField_a_of_type_Bcwn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
-      }
-      return;
-    }
-    catch (IOException parambevm)
-    {
-      for (;;)
-      {
-        parambevm.printStackTrace();
-      }
-    }
+    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  public bays a(List<bayt> paramList, String paramString)
   {
-    if (this.jdField_a_of_type_Bcwn != null) {
-      this.jdField_a_of_type_Bcwn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
-    }
+    return new bayl(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

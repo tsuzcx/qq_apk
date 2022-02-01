@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="22.0dip" android:layout_marginTop="5.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/mw7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:maxWidth="17.0dip" android:maxHeight="19.5dip" android:layout_centerVertical="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/nty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:text="1111" android:includeFontPadding="false" android:layout_toRightOf="@id/mw7" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/o2p" android:background="@drawable/di1" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="11.599976dip" android:layout_toRightOf="@id/nty" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/hy" android:textColor="@color/ahm" android:id="@id/b3y" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/bn1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/cc9" />
+    <TextView android:textSize="@dimen/hy" android:textColor="@color/ahm" android:id="@id/ajg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/kam" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/bn2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/cc9" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/aih" android:background="@drawable/go" android:paddingLeft="5.0dip" android:paddingTop="2.0dip" android:paddingRight="5.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+        <TextView android:textSize="@dimen/hy" android:textColor="@color/ahm" android:id="@id/f0f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看3条回复" android:drawablePadding="4.0dip" android:layout_alignParentRight="true" />
+        <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/h8i" />
+    </LinearLayout>
+</LinearLayout>

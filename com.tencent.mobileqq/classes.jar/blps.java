@@ -1,10 +1,12 @@
-import android.view.View;
-
-public abstract interface blps
+class blps
+  implements blpp
 {
-  public abstract void a(View paramView);
+  blps(blpr paramblpr) {}
   
-  public abstract void b(View paramView);
+  public void a()
+  {
+    blpr.a(this.a).a(131076, new Object[0]);
+  }
 }
 
 

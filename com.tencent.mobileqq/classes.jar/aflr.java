@@ -1,20 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class aflr
-  implements View.OnTouchListener
+final class aflr
+  implements afmf<aflq>
 {
-  public aflr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aflq a(afmc paramafmc)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return new aflq(paramafmc);
   }
 }
 

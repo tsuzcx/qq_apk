@@ -1,17 +1,53 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 class ahhv
-  extends ahkx
+  implements Observer
 {
-  ahhv(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahhv(ahhp paramahhp) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return new ahnz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, ahgk.a(this.a));
+    if ((paramObject instanceof aigj))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "new FriendSystemMessage,:");
+      }
+      paramObservable = ((aigj)paramObject).a.getSystemMsg();
+      if (paramObservable != null) {
+        break label42;
+      }
+    }
+    label42:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObservable.msg.sub_type.get() != 9);
+        paramObservable = String.valueOf(paramObservable.req_uin.get());
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.tag, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + ahhp.b(this.a));
+        }
+      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.sessionInfo == null) || (!paramObservable.equals(this.a.sessionInfo.curFriendUin)));
+      if (!ahhp.b(this.a))
+      {
+        ahhp.a(this.a, true);
+        auyo.a(this.a.app, paramObservable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.tag, 2, "FRIEND_ADDSUCCESS, processed:");
   }
 }
 

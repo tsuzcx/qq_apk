@@ -1,31 +1,32 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class aoio
-  extends RecyclablePool.Recyclable
+  extends aoim
 {
-  public int a;
-  public long a;
-  ConcurrentHashMap<String, Long> a;
-  long b;
+  public static final aoio a;
+  public aoiq a;
+  public aois a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  
+  static
+  {
+    jdField_a_of_type_Aoio = new aoio(false);
+  }
   
   public aoio()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
+    this.b = 128L;
   }
   
-  public void recycle()
+  public aoio(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    super.recycle();
+    this.b = 128L;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoio
  * JD-Core Version:    0.7.0.1
  */

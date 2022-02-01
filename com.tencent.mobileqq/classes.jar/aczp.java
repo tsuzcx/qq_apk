@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aczp
-  implements aczq
+public class aczp
+  implements DialogInterface.OnClickListener
 {
-  aczp(aczo paramaczo, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
+  public aczp(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public ToServiceMsg a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Aczo.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    paramDialogInterface = this.a;
+    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
+    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
+    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    }
   }
 }
 

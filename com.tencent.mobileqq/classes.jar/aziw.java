@@ -1,48 +1,24 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
-class aziw
-  extends azie
+public class aziw
+  implements View.OnTouchListener
 {
-  aziw(aziu paramaziu) {}
+  public aziw(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l1;
-    if (paramBoolean)
-    {
-      l1 = azhq.a().a(aziu.a(this.a));
-      if (l1 <= 40000L) {
-        break label176;
-      }
-      if (!aziu.a(this.a)) {
-        break label114;
-      }
-      l2 = paramBundle.getLong("autoStatusInterval");
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoStatusManager", 2, "[status][autoMgr] onSetOnlineStatus status: " + azjb.a((int)l1) + " autoStatusInterval: " + l2);
-      }
-      if (l2 > 60L) {
-        aziu.a(this.a, azjb.a((int)l2));
-      }
+    if (paramMotionEvent.getAction() == 0) {
+      QCallDetailActivity.a(this.a).setPressed(true);
     }
-    label114:
-    while (!aziu.a(this.a))
-    {
-      long l2;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoStatusManager", 2, "[status][autoMgr] onSetOnlineStatus status: " + azjb.a((int)l1) + " startDetector");
-      }
-      aziu.a(this.a).a((int)l1);
-      this.a.a("statusChange");
-      return;
+    while (1 != paramMotionEvent.getAction()) {
+      return false;
     }
-    label176:
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoStatusManager", 2, "[status][autoMgr] onSetOnlineStatus status: " + azjb.a((int)l1) + " stopDetector");
-    }
-    this.a.b("statusChange");
+    QCallDetailActivity.a(this.a).setPressed(false);
+    return false;
   }
 }
 

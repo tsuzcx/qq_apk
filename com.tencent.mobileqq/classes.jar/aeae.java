@@ -1,19 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-final class aeae
+public class aeae
   implements DialogInterface.OnClickListener
 {
-  aeae(aebz paramaebz) {}
+  public aeae(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
   }
 }
 

@@ -1,24 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-class agix
-  implements View.OnClickListener
+public class agix
 {
-  agix(agiq paramagiq) {}
-  
-  public void onClick(View paramView)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
+    paramMessageRecord.isFolded = false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord.isSendFromLocal()) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
-      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
-      bdll.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
+      return false;
+      String str = paramMessageRecord.getExtInfoFromExtStr("key_message_extra_info_flag");
+      if (QLog.isColorLevel()) {
+        QLog.d("MessageFoldable", 2, "strFlag: " + str + ", mr: " + paramMessageRecord);
+      }
+      if (TextUtils.isEmpty(str)) {
+        continue;
+      }
+      try
+      {
+        i = Integer.parseInt(str);
+        if ((i & 0x8) == 0) {
+          continue;
+        }
+        return paramMessageRecord.isFolded;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          localNumberFormatException.printStackTrace();
+          int i = 0;
+        }
+      }
     }
   }
 }

@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.util;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgpp;
-import bgpq;
+import bezd;
+import beze;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.manager.TicketManager;
-import tzv;
+import ugk;
 
 public final class PublicAccountUtil$19
   implements Runnable
@@ -73,7 +73,7 @@ public final class PublicAccountUtil$19
             localObject3 = new HashMap();
             ((HashMap)localObject3).put("BUNDLE", localObject1);
             ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
-            localObject4 = new tzv(this);
+            localObject4 = new ugk(this);
             localObject1 = str;
             if (this.jdField_a_of_type_Int == 1) {
               localObject1 = str + "&rcode=" + Integer.toString(this.jdField_b_of_type_Int);
@@ -81,7 +81,7 @@ public final class PublicAccountUtil$19
             if (QLog.isColorLevel()) {
               QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport cgiUrl=" + (String)localObject1);
             }
-            new bgpq((String)localObject1, "GET", (bgpp)localObject4, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
+            new beze((String)localObject1, "GET", (bezd)localObject4, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
             return;
           }
         }
@@ -91,7 +91,7 @@ public final class PublicAccountUtil$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.19
  * JD-Core Version:    0.7.0.1
  */

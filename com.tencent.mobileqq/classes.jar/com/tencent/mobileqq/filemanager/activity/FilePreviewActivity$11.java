@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.animation.AlphaAnimation;
-import auoe;
-import auof;
+import atao;
+import atap;
 
 class FilePreviewActivity$11
   implements Runnable
@@ -12,22 +12,22 @@ class FilePreviewActivity$11
   public void run()
   {
     if (this.this$0.b == null) {
-      this.this$0.b = new auoe(this.this$0.a);
+      this.this$0.b = new atao(this.this$0.a);
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
-    auof localauof = new auof();
-    localauof.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localauof.jdField_a_of_type_Boolean = false;
-    localauof.jdField_a_of_type_Int = auoe.jdField_a_of_type_Int;
-    localauof.b = 1500;
-    this.this$0.b.a(localauof);
+    atap localatap = new atap();
+    localatap.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localatap.jdField_a_of_type_Boolean = false;
+    localatap.jdField_a_of_type_Int = atao.jdField_a_of_type_Int;
+    localatap.b = 1500;
+    this.this$0.b.a(localatap);
     this.this$0.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.11
  * JD-Core Version:    0.7.0.1
  */

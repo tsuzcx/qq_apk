@@ -1,6 +1,10 @@
-public abstract interface aouy
+class aouy
+  extends aoux
 {
-  public abstract void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock);
+  private aouy()
+  {
+    super(null);
+  }
 }
 
 

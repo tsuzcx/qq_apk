@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aksb;
+import com.tencent.mobileqq.activity.photo.TroopPhotoController;
 
 class TroopAvatarWallEditActivity$16
   implements Runnable
@@ -10,7 +10,7 @@ class TroopAvatarWallEditActivity$16
   public void run()
   {
     if (this.this$0.a != null) {
-      this.this$0.a.d(this.a);
+      this.this$0.a.onInsertAvatarFailed(this.a);
     }
   }
 }

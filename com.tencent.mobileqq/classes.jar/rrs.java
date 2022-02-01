@@ -1,32 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-public class rrs
-  implements ppq
+class rrs
+  implements rrm
 {
-  public rrs(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
+  rrs(rrr paramrrr) {}
   
-  public void a(int paramInt, Map<Long, qwb> paramMap)
+  public void a() {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (pfa.a().a() != null) {
-      pfa.a().a().b(this);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    switch (paramInt)
     {
-      VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-      if (!TextUtils.isEmpty(localVideoInfo.j))
-      {
-        qwb localqwb = (qwb)paramMap.get(Long.valueOf(Long.parseLong(localVideoInfo.j)));
-        if (localqwb != null) {
-          localVideoInfo.n = localqwb.a();
-        }
-      }
+    default: 
+      return;
+    case 0: 
+      rrr.a(this.a, paramString1);
+      rrr.b(this.a, paramString2);
+      rrr.a(this.a, 3);
+      return;
+    case 1001: 
+      rrr.b(this.a, 10);
+      return;
+    case 1002: 
+      rrr.b(this.a, 9);
+      return;
+    case 1003: 
+      rrr.b(this.a, 11);
+      return;
     }
+    rrr.b(this.a, 13);
+    rrr.c(this.a, 1002);
   }
 }
 

@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.Emoticon;
+import android.widget.TextView;
 
-class axfo
-  implements axfu<asre>
+public class axfo
+  extends axdv
 {
-  axfo(axfj paramaxfj, boolean paramBoolean, SessionInfo paramSessionInfo) {}
+  public TextView g;
   
-  public void a(asre paramasre)
+  public axfo(axfn paramaxfn)
   {
-    if ((paramasre != null) && (paramasre.a != null))
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        axfj.a(this.jdField_a_of_type_Axfj.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramasre.a.epId);
-      }
-    }
-    else {
-      return;
-    }
-    axfj.a(this.jdField_a_of_type_Axfj.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramasre.a.epId);
+    super(paramaxfn);
   }
 }
 

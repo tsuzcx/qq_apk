@@ -1,21 +1,27 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wzi
-  extends wip
+  extends QQUIEventReceiver<wyy, wci>
 {
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
-  
-  public wzi(ErrorMessage paramErrorMessage)
+  public wzi(@NonNull wyy paramwyy)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    super(paramwyy);
   }
   
-  public String toString()
+  public void a(@NonNull wyy paramwyy, @NonNull wci paramwci)
   {
-    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
+    if (paramwci.a.isSuccess())
+    {
+      xvv.a(paramwyy.b, "receive user info event. %s.", paramwci.toString());
+      paramwyy.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wci.class;
   }
 }
 

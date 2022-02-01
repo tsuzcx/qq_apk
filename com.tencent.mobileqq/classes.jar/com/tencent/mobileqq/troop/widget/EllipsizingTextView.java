@@ -7,7 +7,7 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bgvm;
+import bfex;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.theme.ISkinIgnoreTypeface;
 
@@ -16,7 +16,7 @@ public class EllipsizingTextView
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 1;
-  private bgvm jdField_a_of_type_Bgvm;
+  private bfex jdField_a_of_type_Bfex;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -52,12 +52,12 @@ public class EllipsizingTextView
     setTypeface(null);
   }
   
-  private bgvm a()
+  private bfex a()
   {
-    if (this.jdField_a_of_type_Bgvm == null) {
-      this.jdField_a_of_type_Bgvm = new bgvm(this);
+    if (this.jdField_a_of_type_Bfex == null) {
+      this.jdField_a_of_type_Bfex = new bfex(this);
     }
-    return this.jdField_a_of_type_Bgvm;
+    return this.jdField_a_of_type_Bfex;
   }
   
   public void a()
@@ -76,15 +76,15 @@ public class EllipsizingTextView
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((bgvm)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((bfex)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((bgvm)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((bfex)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((bgvm)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((bfex)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);

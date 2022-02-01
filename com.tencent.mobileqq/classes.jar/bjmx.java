@@ -1,33 +1,60 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.open.agent.JoinTroopPreVerificationFragment;
+import android.opengl.GLES20;
 
 public class bjmx
-  extends aojs
 {
-  public bjmx(JoinTroopPreVerificationFragment paramJoinTroopPreVerificationFragment) {}
-  
-  protected void e(boolean paramBoolean, String paramString1, String paramString2)
+  public static int a(int paramInt, String paramString)
   {
-    this.a.d();
-    QLog.i("TroopAbility.PreVerification", 1, "onGetJoinTroopTokenForThirdApp, isSuccess: " + paramBoolean + " token: " + paramString1 + ", troopUin: " + paramString2);
-    if (paramBoolean)
+    paramInt = GLES20.glCreateShader(paramInt);
+    if (paramInt != 0)
     {
-      paramString2 = TroopInfoActivity.a(String.valueOf(paramString2), 32);
-      paramString2.putString("authSig", paramString1);
-      paramString2.putString("appid", this.a.c);
-      paramString2.putBoolean("fromThirdAppByOpenSDK", true);
-      paramString2.putInt("action", 3);
-      paramString2.putString("pkg_name", this.a.d);
-      paramString2.putString("app_name", this.a.jdField_a_of_type_JavaLangString);
-      bguq.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 2);
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
+      GLES20.glShaderSource(paramInt, paramString);
+      GLES20.glCompileShader(paramInt);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      if (paramString[0] == 0)
+      {
+        GLES20.glDeleteShader(paramInt);
+        return 0;
+      }
     }
-    this.a.a(anzj.a(2131704779));
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    return paramInt;
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
+    {
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k != 0)
+    {
+      GLES20.glAttachShader(k, i);
+      a("glAttachShader");
+      GLES20.glAttachShader(k, j);
+      a("glAttachShader");
+      GLES20.glLinkProgram(k);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+      if (paramString1[0] != 1)
+      {
+        GLES20.glDeleteProgram(k);
+        return 0;
+      }
+    }
+    return k;
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      throw new RuntimeException(paramString + ": glError " + i);
+    }
   }
 }
 

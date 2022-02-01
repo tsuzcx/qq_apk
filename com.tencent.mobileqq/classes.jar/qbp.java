@@ -1,14 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.app.Activity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class qbp
-  implements ViewBase.IBuilder
+class qbp
+  implements Animation.AnimationListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qbp(qbn paramqbn, View paramView, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new qbo(paramVafContext);
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        qbn.a(this.jdField_a_of_type_Qbn, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

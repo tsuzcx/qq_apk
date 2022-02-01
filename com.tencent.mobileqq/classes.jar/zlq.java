@@ -1,18 +1,15 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
 public class zlq
-  implements AdapterView.OnItemClickListener
+  extends zlk
 {
-  public zlq(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public zlq(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    zlp.a(this.a.a.this$0, zlp.b(this.a.a.this$0));
   }
 }
 

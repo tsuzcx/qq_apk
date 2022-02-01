@@ -1,16 +1,6 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class bmbe
-  implements EIPCResultCallback
+class bmbe
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult.isSuccess()) {
-      bmbd.a(paramEIPCResult.data.getString("config_json"));
-    }
-  }
+  private static bmbc a = new bmbc(null);
 }
 
 

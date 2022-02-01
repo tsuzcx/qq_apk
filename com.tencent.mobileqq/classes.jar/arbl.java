@@ -1,117 +1,282 @@
-public class arbl
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.support.v4.util.LruCache;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class arbl<T>
+  extends BaseAdapter
 {
   public int a;
+  protected Context a;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  private LruCache<String, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(30);
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private HashMap<EmoticonPackage, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  protected List<T> a;
+  JSONArray jdField_a_of_type_OrgJsonJSONArray;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  /* Error */
-  public static arbl a(araj[] paramArrayOfaraj)
+  public arbl(Context paramContext, List<T> paramList)
   {
-    // Byte code:
-    //   0: new 2	arbl
-    //   3: dup
-    //   4: invokespecial 17	arbl:<init>	()V
-    //   7: astore 4
-    //   9: aload_0
-    //   10: arraylength
-    //   11: istore_2
-    //   12: iconst_0
-    //   13: istore_1
-    //   14: goto +112 -> 126
-    //   17: aload 5
-    //   19: getfield 22	araj:a	Ljava/lang/String;
-    //   22: astore 5
-    //   24: aload 5
-    //   26: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   29: istore_3
-    //   30: iload_3
-    //   31: ifne +110 -> 141
-    //   34: new 30	org/json/JSONObject
-    //   37: dup
-    //   38: aload 5
-    //   40: invokespecial 33	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   43: astore 6
-    //   45: aload 6
-    //   47: ldc 35
-    //   49: invokevirtual 39	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   52: ifeq +16 -> 68
-    //   55: aload 4
-    //   57: aload 6
-    //   59: ldc 35
-    //   61: iconst_0
-    //   62: invokevirtual 43	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   65: putfield 45	arbl:a	I
-    //   68: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   71: ifeq +70 -> 141
-    //   74: ldc 53
-    //   76: iconst_2
-    //   77: new 55	java/lang/StringBuilder
-    //   80: dup
-    //   81: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   84: ldc 58
-    //   86: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: aload 5
-    //   91: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   97: invokestatic 70	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: goto +41 -> 141
-    //   103: astore_0
-    //   104: ldc 53
-    //   106: iconst_2
-    //   107: ldc 72
-    //   109: aload_0
-    //   110: invokestatic 76	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   113: aload 4
-    //   115: areturn
-    //   116: astore 6
-    //   118: aload 6
-    //   120: invokevirtual 79	org/json/JSONException:printStackTrace	()V
-    //   123: goto -55 -> 68
-    //   126: iload_1
-    //   127: iload_2
-    //   128: if_icmpge -15 -> 113
-    //   131: aload_0
-    //   132: iload_1
-    //   133: aaload
-    //   134: astore 5
-    //   136: aload 5
-    //   138: ifnonnull -121 -> 17
-    //   141: iload_1
-    //   142: iconst_1
-    //   143: iadd
-    //   144: istore_1
-    //   145: goto -19 -> 126
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	148	0	paramArrayOfaraj	araj[]
-    //   13	132	1	i	int
-    //   11	118	2	j	int
-    //   29	2	3	bool	boolean
-    //   7	107	4	localarbl	arbl
-    //   17	120	5	localObject	Object
-    //   43	15	6	localJSONObject	org.json.JSONObject
-    //   116	3	6	localJSONException	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   9	12	103	java/lang/Throwable
-    //   17	30	103	java/lang/Throwable
-    //   34	68	103	java/lang/Throwable
-    //   68	100	103	java/lang/Throwable
-    //   118	123	103	java/lang/Throwable
-    //   34	68	116	org/json/JSONException
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839183);
+    bgcw.a((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime(), bgcw.d);
+    paramContext = bgcw.d.a(this.jdField_a_of_type_AndroidContentContext);
+    if (paramContext != null) {}
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONArray = paramContext.getJSONArray("wording");
+      this.jdField_a_of_type_AndroidOsHandler = new Handler();
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+      }
+    }
   }
   
-  public boolean a()
+  private Drawable a(EmoticonPackage paramEmoticonPackage)
   {
-    return this.a == 1;
+    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId) != null) {
+      return (Drawable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId);
+    }
+    Drawable localDrawable = aqyy.a(2, paramEmoticonPackage.epId);
+    if (localDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramEmoticonPackage.epId, localDrawable);
+      return localDrawable;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
-  public String toString()
+  public List<EmoticonPackage> a()
   {
-    return "RelatedEmotionConfigBean{mOpenRelatedEmoSwitch = " + this.a + '}';
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((Boolean)localEntry.getValue()).booleanValue()) {
+        localArrayList.add(localEntry.getKey());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    boolean bool = a(paramInt);
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      localHashMap.put(localEmoticonPackage, Boolean.valueOf(bool));
+      return;
+    }
+  }
+  
+  public void a(T paramT)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if ((paramT instanceof EmoticonPackage))
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramT;
+        this.jdField_a_of_type_JavaUtilHashMap.remove(localEmoticonPackage);
+      }
+      this.jdField_a_of_type_JavaUtilList.remove(paramT);
+      if (this.b) {
+        notifyDataSetChanged();
+      }
+      return;
+    }
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
+      if (this.b) {
+        notifyDataSetChanged();
+      }
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localEmoticonPackage)) {
+      return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localEmoticonPackage)).booleanValue();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = new arbm(this);
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559165, null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366004));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366009));
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365795));
+      paramView.d = ((ImageView)localView.findViewById(2131365796));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366008));
+      paramView.e = ((ImageView)localView.findViewById(2131366005));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366010));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131377244);
+      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131380173);
+      paramView.f = ((ImageView)localView.findViewById(2131366006));
+      paramView.jdField_c_of_type_AndroidViewView = localView.findViewById(2131366003);
+      localView.setTag(paramView);
+      paramViewGroup.setTag(paramView);
+      localView.setBackgroundResource(2130839674);
+      localObject = (EmoticonPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((EmoticonPackage)localObject).name);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a((EmoticonPackage)localObject));
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (!((EmoticonPackage)localObject).hasSound) {
+        break label458;
+      }
+      paramView.e.setVisibility(0);
+      if (!((EmoticonPackage)localObject).isNewVoiceType()) {
+        break label445;
+      }
+      paramView.e.setImageResource(2130838322);
+      label280:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label525;
+      }
+      if (a(paramInt)) {
+        break label470;
+      }
+      localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691987) + " " + ((EmoticonPackage)localObject).name);
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847028);
+      label347:
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramView.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      label372:
+      if (((EmoticonPackage)localObject).mobileFeetype != 4) {
+        break label564;
+      }
+      paramView.f.setVisibility(0);
+      paramView.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839682));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (arbm)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label445:
+      paramView.e.setImageResource(2130839683);
+      break label280;
+      label458:
+      paramView.e.setVisibility(8);
+      break label280;
+      label470:
+      localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691977) + " " + ((EmoticonPackage)localObject).name);
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847029);
+      break label347;
+      label525:
+      localView.setContentDescription(((EmoticonPackage)localObject).name);
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      break label372;
+      label564:
+      if (((EmoticonPackage)localObject).mobileFeetype == 5)
+      {
+        paramView.f.setVisibility(0);
+        paramView.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847350));
+      }
+      else
+      {
+        paramView.f.setVisibility(8);
+      }
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
+    this.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbl
  * JD-Core Version:    0.7.0.1
  */

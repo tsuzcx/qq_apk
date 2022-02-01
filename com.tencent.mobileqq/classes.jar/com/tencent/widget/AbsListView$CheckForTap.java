@@ -50,7 +50,7 @@ final class AbsListView$CheckForTap
       if (AbsListView.access$700(this.this$0) == null) {
         AbsListView.access$702(this.this$0, new AbsListView.CheckForLongPress(this.this$0, null));
       }
-      AbsListView.access$700(this.this$0).a();
+      AbsListView.access$700(this.this$0).rememberWindowAttachCount();
       this.this$0.postDelayed(AbsListView.access$700(this.this$0), i);
       return;
       label230:

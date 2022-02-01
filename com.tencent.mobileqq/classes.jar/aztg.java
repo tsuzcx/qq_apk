@@ -1,23 +1,42 @@
-import android.view.animation.Interpolator;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aztg
-  implements Interpolator
+public class aztg
 {
-  public float getInterpolation(float paramFloat)
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public static aztg a(String paramString)
   {
-    if (paramFloat < 0.2094D) {
-      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (paramFloat < 0.404D) {
-      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
+    aztg localaztg = new aztg();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localaztg.jdField_a_of_type_Int = paramString.optInt("animationType");
+      localaztg.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
+      localaztg.b = paramString.optString("giftZipUrl", null);
+      localaztg.c = paramString.optString("giftParticleUrl", null);
+      localaztg.d = paramString.optString("lottieUrl", null);
+      return localaztg;
     }
-    if (paramFloat < 0.6045D) {
-      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
     }
-    if (paramFloat < 0.8064D) {
-      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
-    }
-    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
+    return localaztg;
+  }
+  
+  public String toString()
+  {
+    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
   }
 }
 

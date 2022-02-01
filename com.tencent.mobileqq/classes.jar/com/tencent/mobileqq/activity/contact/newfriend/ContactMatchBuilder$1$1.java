@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ajjl;
-import ajln;
+import aidu;
+import aifw;
 
 class ContactMatchBuilder$1$1
   implements Runnable

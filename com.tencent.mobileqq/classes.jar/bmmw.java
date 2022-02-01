@@ -1,6 +1,8 @@
+import com.tencent.tavcut.bean.TextEditorData;
+
 public abstract interface bmmw
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public abstract void a(TextEditorData paramTextEditorData);
 }
 
 

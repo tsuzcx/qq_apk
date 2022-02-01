@@ -1,40 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aoww
-  extends aoxg
+class aoww
+  implements View.OnClickListener
 {
-  public aoww(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aoww(aowu paramaowu) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      try
-      {
-        if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("mini_appid")) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("fakeUrl")))
-        {
-          i = 1;
-          if (i != 0) {
-            return com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-          }
-          boolean bool = com.tencent.mobileqq.mini.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, 2016, null, null);
-          return bool;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("HttpOpenMicroAppAction", 1, "doAction error: " + localException.getMessage());
-        a("HttpOpenMicroAppAction");
-        return false;
-      }
-      int i = 0;
+    if ((aowu.a(this.a) == 0) && (!TextUtils.isEmpty(aowu.b(this.a)))) {
+      aowu.a(this.a, null);
     }
+    aowu.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

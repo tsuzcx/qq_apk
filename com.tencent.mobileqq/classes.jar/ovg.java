@@ -1,19 +1,17 @@
 import java.util.List;
 
-public abstract interface ovg
-  extends ovf
+class ovg
+  extends owd
 {
-  public abstract void onCommentCreate(boolean paramBoolean, otp paramotp, List<otp> paramList, int paramInt);
+  ovg(ouu paramouu, boolean paramBoolean, List paramList)
+  {
+    super(paramouu, null);
+  }
   
-  public abstract void onCommentCreate(boolean paramBoolean1, otp paramotp, boolean paramBoolean2, List<otp> paramList, int paramInt);
-  
-  public abstract void onCommentDelete(int paramInt1, boolean paramBoolean, otp paramotp, int paramInt2);
-  
-  public abstract void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<otp> paramList, boolean paramBoolean2, int paramInt2);
-  
-  public abstract void onCommentReply(boolean paramBoolean, otp paramotp);
+  void a(owg paramowg)
+  {
+    paramowg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ouu.a(this.jdField_a_of_type_Ouu), 3);
+  }
 }
 
 

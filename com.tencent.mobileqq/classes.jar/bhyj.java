@@ -1,16 +1,26 @@
 public class bhyj
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
+  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
   
-  public bhyj(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
+  public void a(String paramString1, String paramString2)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    }
   }
 }
 

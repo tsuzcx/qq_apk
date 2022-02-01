@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atqx;
-import atup;
-import atut;
-import aunj;
-import bcrg;
+import asdg;
+import asgz;
+import ashd;
+import aszt;
+import bbko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -12,20 +12,20 @@ import com.tencent.qphone.base.util.QLog;
 public class FileManagerEngine$1
   implements Runnable
 {
-  public FileManagerEngine$1(atqx paramatqx, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, long paramLong) {}
+  public FileManagerEngine$1(asdg paramasdg, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, long paramLong) {}
   
   public void run()
   {
-    aunj.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    aszt.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     if (this.jdField_a_of_type_Boolean) {
-      this.this$0.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true, this.c, 0L, true, this.jdField_a_of_type_Int, this.d, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq, null, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, -1L, bcrg.a());
+      this.this$0.a.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true, this.c, 0L, true, this.jdField_a_of_type_Int, this.d, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq, null, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, -1L, bbko.a());
     }
     if (this.jdField_a_of_type_Boolean) {
       QLog.i("FileManagerEngine<FileAssistant>", 1, "=_=k Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] SendLocalfile[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "], peerType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType + "]");
     }
     for (;;)
     {
-      this.this$0.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.this$0.a.getFileManagerRSCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       return;
       QLog.i("FileManagerEngine<FileAssistant>", 1, "=_=k Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] SendLocalfileToWeiyun[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "]");
     }

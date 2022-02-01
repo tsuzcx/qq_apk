@@ -1,16 +1,23 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class uxe
-  implements TextView.OnEditorActionListener
+final class uxe
+  extends ClickableSpan
 {
-  public uxe(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  uxe(uxb paramuxb, String paramString) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(@NonNull View paramView)
   {
-    return paramKeyEvent.getKeyCode() == 66;
+    if (this.jdField_a_of_type_Uxb != null) {
+      this.jdField_a_of_type_Uxb.b(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

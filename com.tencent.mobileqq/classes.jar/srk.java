@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemView;
+import android.content.Intent;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class srk
-  extends spi
+public class srk
+  implements MessageQueue.IdleHandler
 {
-  private boolean jdField_a_of_type_Boolean;
+  public srk(FastWebActivity paramFastWebActivity) {}
   
-  private srk(sri paramsri, PTSItemView paramPTSItemView, BaseData paramBaseData)
+  public boolean queueIdle()
   {
-    super(paramPTSItemView, paramBaseData);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = sri.a(this.jdField_a_of_type_Sri, paramBaseData2);
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView instanceof PTSItemView))) {
-      ((ProteusItemData)paramBaseData2).a.layoutToView((PTSItemView)this.jdField_a_of_type_AndroidViewView, sri.a(this.jdField_a_of_type_Sri), true);
+    if (FastWebActivity.a(this.a).c == 0) {}
+    for (String str = "";; str = FastWebActivity.a(this.a).p)
+    {
+      int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
+      swb.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, this.a.a.mChannelID);
+      return false;
     }
-    this.jdField_a_of_type_Boolean = true;
-    sri.a(this.jdField_a_of_type_Sri, paramBaseData1);
   }
 }
 

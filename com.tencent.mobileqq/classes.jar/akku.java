@@ -1,104 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
 public class akku
+  extends akll
 {
-  private static final akku jdField_a_of_type_Akku = new akku();
-  private Map<String, List<WeakReference<akkr>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  
-  private int a(List<WeakReference<akkr>> paramList, akkr paramakkr)
+  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      int i = 0;
-      while (paramList.hasNext())
-      {
-        akkr localakkr = (akkr)((WeakReference)paramList.next()).get();
-        if ((localakkr != null) && (localakkr == paramakkr)) {
-          return i;
-        }
-        i += 1;
-      }
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = LayoutInflater.from(paramContext).inflate(2131558934, null);
     }
-    return -1;
-  }
-  
-  public static akku a()
-  {
-    return jdField_a_of_type_Akku;
-  }
-  
-  public void a(int paramInt, String paramString, akkr paramakkr)
-  {
-    try
-    {
-      String str = adak.a(paramString, paramInt);
-      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
-      paramString = localList;
-      if (localList == null)
-      {
-        paramString = new ArrayList(2);
-        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-      }
-      if (a(paramString, paramakkr) < 0) {
-        paramString.add(new WeakReference(paramakkr));
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        paramString = adak.a(paramString, paramInt);
-        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        if ((paramString != null) && (paramString.size() > 0))
-        {
-          paramString = paramString.iterator();
-          if (paramString.hasNext())
-          {
-            if ((akkr)((WeakReference)paramString.next()).get() == null) {
-              continue;
-            }
-            bool = true;
-            if (QLog.isColorLevel()) {
-              QLog.d(akmh.a, 2, "hasOtherInstance -->" + bool);
-            }
-            return bool;
-          }
-        }
-      }
-      finally {}
-      boolean bool = false;
-    }
-  }
-  
-  public void b(int paramInt, String paramString, akkr paramakkr)
-  {
-    try
-    {
-      paramString = adak.a(paramString, paramInt);
-      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if ((paramString != null) && (paramString.size() > 0) && (paramakkr != null))
-      {
-        paramInt = a(paramString, paramakkr);
-        if (paramInt >= 0) {
-          paramString.remove(paramInt);
-        }
-      }
-      return;
-    }
-    finally {}
+    paramObject.setOnClickListener(paramOnClickListener);
+    paramObject.setOnLongClickListener(paramOnLongClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
   }
 }
 

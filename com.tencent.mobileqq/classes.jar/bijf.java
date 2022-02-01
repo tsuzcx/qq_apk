@@ -1,52 +1,22 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplate1;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public class bijf
-  extends bija
+class bijf
+  implements ServiceConnection
 {
-  public bijf(Activity paramActivity, JSONObject paramJSONObject, azxr paramazxr)
+  bijf(bijd parambijd) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super(paramActivity, paramJSONObject, paramazxr);
-    this.d = zps.a(paramActivity, 4.0F);
+    bija.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
+    bijd.a(this.a, lwm.a(paramIBinder));
   }
   
-  public View a(JSONObject paramJSONObject, View paramView)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    Object localObject = (QZoneLayoutTemplate1)paramView.findViewById(2131368681);
-    if (localObject != null)
-    {
-      ((QZoneLayoutTemplate1)localObject).setBorderWidth(b(paramJSONObject));
-      ((QZoneLayoutTemplate1)localObject).setItemBg(a(paramJSONObject, a(100.0F), a(100.0F)), a(paramJSONObject));
-      ((QZoneLayoutTemplate1)localObject).setLeftView(paramJSONObject.optString("ph"));
-      ((QZoneLayoutTemplate1)localObject).setRightView(paramJSONObject.optString("ph"));
-    }
-    localObject = paramView.findViewById(2131368212);
-    TextView localTextView = (TextView)paramView.findViewById(2131378759);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368360);
-    String str = localTextView.getText().toString();
-    if ((this.jdField_a_of_type_Azxr.a.a != 0) && (str.length() > 4) && (str.substring(str.length() - 4, str.length()).equals("QQ空间"))) {
-      localTextView.setText(str.substring(0, str.length() - 4) + anzj.a(2131713616));
-    }
-    a(paramJSONObject, (View)localObject, localTextView, localImageView);
-    return paramView;
-  }
-  
-  public ProfileCardFavorShowView a(Activity paramActivity)
-  {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131562090);
-  }
-  
-  public void b(HashMap<String, View> paramHashMap)
-  {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562099, null));
+    bija.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
+    bijd.a(this.a, null);
   }
 }
 

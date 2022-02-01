@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/mvz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <ImageView android:layout_gravity="center|right|top" android:id="@id/mvx" android:background="@drawable/gga" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/ntc" android:background="@drawable/gg_" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ny_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:showArrow="true" formItem:switchText="应用宝推广按钮" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nya" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="应用宝推广二次弹框" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nag" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="QB文档阅读器底部功能条展示" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/muf" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="IPv6使用本地开关配置" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mub" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开C2C IPv6" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mue" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开Group IPv6" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mud" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开Disc IPv6" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/muc" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开数据线 IPv6" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-->IPv6策略" android:layout_weight="1.0" />
+                <RadioGroup android:orientation="horizontal" android:id="@id/njk" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/njh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="IPv4优先" />
+                    <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/nji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IPv6优先" />
+                    <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/njj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="跟随登录" />
+                </RadioGroup>
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mua" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="打开IPv6的情况下不使用IPv4地址" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/n20" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="后台IPv6开关配置：" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip">
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/mlc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/mlf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/mle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/mld" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/mlg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/l89" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="Apk安全检测使用本地开关配置" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/l7s" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="打开Apk安全检测" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

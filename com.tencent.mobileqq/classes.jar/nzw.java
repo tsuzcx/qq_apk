@@ -1,41 +1,27 @@
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
 public class nzw
+  implements ViewPager.PageTransformer
 {
-  private static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((paramJSONObject1 != null) && (paramJSONObject2 != null)) {
-      try
-      {
-        Iterator localIterator = paramJSONObject2.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          paramJSONObject1.put(str, paramJSONObject2.get(str));
-        }
-        return paramJSONObject1;
-      }
-      catch (Exception paramJSONObject2) {}
-    }
-    while (paramJSONObject1 != null) {}
-    if (paramJSONObject2 != null) {
-      return paramJSONObject2;
-    }
-    return new JSONObject();
-  }
+  private nzw(VerticleViewPager paramVerticleViewPager) {}
   
-  public static JSONObject a(JSONObject... paramVarArgs)
+  public void transformPage(View paramView, float paramFloat)
   {
-    JSONObject localJSONObject = new JSONObject();
-    new JSONObject();
-    int i = 0;
-    while (i < paramVarArgs.length)
+    if (paramFloat < -1.0F)
     {
-      localJSONObject = a(localJSONObject, paramVarArgs[i]);
-      i += 1;
+      paramView.setAlpha(0.0F);
+      return;
     }
-    return localJSONObject;
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 

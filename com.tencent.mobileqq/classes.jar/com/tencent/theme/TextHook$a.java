@@ -15,22 +15,34 @@ class TextHook$a
   
   protected Context a(Context... paramVarArgs)
   {
-    long l = SystemClock.uptimeMillis();
-    String str = TextHook.a();
-    if ((TextUtils.isEmpty(str)) || (!TextHook.isSupportProcess(paramVarArgs[0]))) {
-      return null;
-    }
+    long l;
+    String str;
     try
     {
-      if (this.a.mTypefaceMap.get(str) != null)
+      l = SystemClock.uptimeMillis();
+      str = TextHook.a();
+      if ((TextUtils.isEmpty(str)) || (!TextHook.isSupportProcess(paramVarArgs[0]))) {
+        break label191;
+      }
+      try
       {
-        TextHook.a(this.a, (Typeface)this.a.mTypefaceMap.get(str));
-        paramVarArgs = paramVarArgs[0];
-        return paramVarArgs;
+        if (this.a.mTypefaceMap.get(str) != null)
+        {
+          TextHook.a(this.a, (Typeface)this.a.mTypefaceMap.get(str));
+          paramVarArgs = paramVarArgs[0];
+          return paramVarArgs;
+        }
+      }
+      finally {}
+      if (TextUtils.isEmpty(str)) {
+        break label186;
       }
     }
-    finally {}
-    if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
+    catch (Exception paramVarArgs)
+    {
+      return null;
+    }
+    if (new File(str).exists())
     {
       Typeface localTypeface = Typeface.createFromFile(new File(str));
       this.a.mTypefaceMap.put(str, localTypeface);
@@ -39,6 +51,9 @@ class TextHook$a
       paramVarArgs = paramVarArgs[0];
       return paramVarArgs;
     }
+    label186:
+    return null;
+    label191:
     return null;
   }
   

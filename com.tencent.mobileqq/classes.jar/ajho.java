@@ -1,11 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ajho
+class ajho
+  implements View.OnClickListener
 {
-  public abstract Activity a();
+  ajho(ajhm paramajhm) {}
   
-  public abstract QQAppInterface a();
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

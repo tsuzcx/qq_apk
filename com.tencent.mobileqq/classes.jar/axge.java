@@ -1,20 +1,9 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
-
-public abstract interface axge
+public class axge
 {
-  public abstract axgr a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  public abstract boolean a(MessageRecord paramMessageRecord);
-  
-  public abstract boolean a(MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 10019) || (paramInt == 10020) || (paramInt == 10021) || (paramInt == 10022) || (paramInt == 10023) || (paramInt == 10024) || (paramInt == 10025) || (paramInt == 10026) || (paramInt == 10027) || (paramInt == 10028);
+  }
 }
 
 

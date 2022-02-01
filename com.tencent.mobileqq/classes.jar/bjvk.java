@@ -1,7 +1,6 @@
-public class bjvk
+public abstract interface bjvk
 {
-  public static final String a = bjjo.a().f();
-  public static final String b = bjjo.a().f();
+  public abstract void onChangeMultiScreen(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,9 @@
-class lbd
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+
+final class lbd
+  implements IHttpCommunicatorFlowCount
 {
-  private static lbb a = new lbb(null);
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

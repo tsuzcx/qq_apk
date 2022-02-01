@@ -1,31 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class stg
-  extends Handler
+public abstract class stg
 {
-  public stg(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
+  public static int a;
+  public float a;
+  public View a;
+  public BaseData a;
+  protected stl a;
+  public float b = 14.0F;
+  public int b;
+  public int c = 16;
+  public int d = 18;
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_Int = 32;
   }
   
-  public void handleMessage(Message paramMessage)
+  public stg() {}
+  
+  public stg(View paramView, BaseData paramBaseData)
   {
-    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
-    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
-    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    ocd.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
   }
+  
+  public void a() {}
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
+    b(paramBaseData1, paramBaseData2, paramBoolean);
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap) {}
+  
+  public void a(stl paramstl)
+  {
+    this.jdField_a_of_type_Stl = paramstl;
+  }
+  
+  public abstract void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
 }
 
 

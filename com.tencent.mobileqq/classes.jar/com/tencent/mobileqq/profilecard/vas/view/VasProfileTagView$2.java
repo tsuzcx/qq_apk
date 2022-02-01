@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
-import azxr;
+import aymg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.Card;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 class VasProfileTagView$2
   implements Runnable
 {
-  VasProfileTagView$2(VasProfileTagView paramVasProfileTagView, azxr paramazxr) {}
+  VasProfileTagView$2(VasProfileTagView paramVasProfileTagView, aymg paramaymg) {}
   
   public void run()
   {

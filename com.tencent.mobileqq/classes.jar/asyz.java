@@ -1,50 +1,50 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
 
-class asyz
-  extends nkp
+public class asyz
+  implements asyx
 {
-  asyz(asyy paramasyy, boolean paramBoolean) {}
+  public asyz(FMSettings.4 param4) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    boolean bool = true;
-    if (paramInt != 0)
+    synchronized (this.a.this$0)
     {
-      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
-      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
-      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
-      if (!this.b) {}
-      for (bool = true;; bool = false)
+      asyy localasyy2 = this.a.this$0;
+      localasyy2.jdField_a_of_type_Int += 1;
+      asyy.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
       {
-        paramArrayOfByte.setChecked(bool);
-        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
-        return;
+        asyy.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Asyx.a();
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
-    }
-    paramArrayOfByte = (asxh)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
-    if (!this.b) {}
-    for (;;)
-    {
-      paramArrayOfByte.mVipHide = bool;
-      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
-      paramArrayOfByte = this.a.a.getActivity();
-      if (paramArrayOfByte == null) {
-        break;
-      }
-      paramArrayOfByte.setResult(8193);
       return;
-      bool = false;
     }
   }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a.this$0)
+    {
+      asyy localasyy2 = this.a.this$0;
+      localasyy2.jdField_a_of_type_Int += 1;
+      asyy.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        asyy.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Asyx.a(16);
+      }
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    asyy localasyy = this.a.this$0;
+    localasyy.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_Asyx.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

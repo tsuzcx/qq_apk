@@ -1,32 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 public class zlg
-  extends woz<xdl, xey>
+  implements View.OnClickListener
 {
-  zlg(zle paramzle) {}
+  public zlg(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(@NonNull xdl paramxdl, @Nullable xey paramxey, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(View paramView)
   {
-    yuk.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxey != null))
+    if (zvo.a("mLLSkipBackWrapper", 500L))
     {
-      yuk.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramxey.toString());
-      zle.a(this.a).addAll(paramxey.jdField_a_of_type_JavaUtilList);
-      zle.a(this.a, paramxey.jdField_a_of_type_JavaLangString);
-      zle.a(this.a, paramxey.b);
-      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, VideoPlayerView.b(this.a), 0, 1, true);
+      if (this.a.a() != null) {
+        this.a.a(this.a.a().getCurrentPositionMs() - 10000L);
+      }
     }
-    for (;;)
-    {
-      zle.a(this.a).b(paramErrorMessage.errorCode, zle.a(this.a), this.a.a());
-      return;
-      yuk.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

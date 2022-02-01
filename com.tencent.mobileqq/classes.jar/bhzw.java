@@ -1,6 +1,22 @@
-public abstract interface bhzw<E>
+import android.content.Context;
+import java.lang.ref.WeakReference;
+
+public class bhzw
 {
-  public abstract void a(E paramE, Object paramObject);
+  public String a;
+  public WeakReference<Context> a;
+  public String b;
+  public WeakReference<biah> b;
+  public String c;
+  
+  public bhzw(bhzv parambhzv, Context paramContext, String paramString1, String paramString2, String paramString3, biah parambiah)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambiah);
+  }
 }
 
 

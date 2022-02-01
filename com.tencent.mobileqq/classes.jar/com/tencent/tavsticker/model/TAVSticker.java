@@ -36,6 +36,7 @@ public class TAVSticker
   implements Cloneable
 {
   private static final String TAG = TAVSticker.class.getSimpleName();
+  private TAVSticker.TAVStickerAnimationMode animationMode = TAVSticker.TAVStickerAnimationMode.TAVStickerAnimationModeDefault;
   private String assetFilePath = "";
   private float centerX = 0.0F;
   private float centerY = 0.0F;
@@ -290,28 +291,48 @@ public class TAVSticker
     if (this.progressHandler != null) {
       d1 = this.progressHandler.computeProgress(this, paramLong);
     }
-    long l;
+    long l2;
+    long l1;
+    double d3;
     do
     {
       do
       {
         do
         {
-          return d1;
-          if (this.timeRange == null) {
-            break;
-          }
+          do
+          {
+            do
+            {
+              return d1;
+              l2 = durationTime() / 1000L;
+              l1 = paramLong;
+              if (this.timeRange == null) {
+                break;
+              }
+              d1 = d2;
+            } while (!TimeRangeUtil.isInTimeRange(this.timeRange, paramLong));
+            l1 = Math.max(0L, paramLong - this.timeRange.getStartUs() / 1000L);
+            d1 = d2;
+          } while (l2 <= 0L);
           d1 = d2;
-        } while (!TimeRangeUtil.isInTimeRange(this.timeRange, paramLong));
-        paramLong = Math.max(0L, paramLong - this.timeRange.getStartUs() / 1000L);
-        l = durationTime() / 1000L;
+        } while (l1 <= 0L);
+        if (l1 % l2 == 0L) {}
+        for (d2 = 1.0D;; d2 = Math.min(1.0D, l1 % l2 * 1.0D / l2)) {
+          switch (TAVSticker.4.$SwitchMap$com$tencent$tavsticker$model$TAVSticker$TAVStickerAnimationMode[this.animationMode.ordinal()])
+          {
+          default: 
+            return d2;
+          case 1: 
+            return Math.min(1.0D, l1 * 1.0D / l2);
+          }
+        }
         d1 = d2;
-      } while (l <= 0L);
-      return Math.min(1.0D, paramLong % l * 1.0D / l);
-      l = durationTime() / 1000L;
+      } while (this.timeRange == null);
+      d3 = this.timeRange.getDurationUs() * 1.0D / 1000.0D;
       d1 = d2;
-    } while (l <= 0L);
-    return Math.min(1.0D, paramLong % l * 1.0D / l);
+    } while (d3 <= l2);
+    return Math.min(1.0D, l1 * 1.0D / d3);
   }
   
   public long durationTime()
@@ -330,6 +351,11 @@ public class TAVSticker
       return TextUtils.equals(this.uniqueId, paramObject.uniqueId);
     }
     return super.equals(paramObject);
+  }
+  
+  public TAVSticker.TAVStickerAnimationMode getAnimationMode()
+  {
+    return this.animationMode;
   }
   
   public String getAssetFilePath()
@@ -789,6 +815,11 @@ public class TAVSticker
     updateLayerColor();
   }
   
+  public void setAnimationMode(TAVSticker.TAVStickerAnimationMode paramTAVStickerAnimationMode)
+  {
+    this.animationMode = paramTAVStickerAnimationMode;
+  }
+  
   public TAVSticker setAssetFilePath(String paramString)
   {
     this.assetFilePath = paramString;
@@ -940,16 +971,16 @@ public class TAVSticker
     if ((this.pagFile == null) || (this.pagFile.numImages() <= 0) || (CollectionUtil.isEmptyList(this.imageList))) {
       return;
     }
-    int j = this.pagFile.numImages();
+    this.pagFile.numImages();
     ArrayList localArrayList = getStickerImageItems();
     int i = 0;
     label43:
     TAVStickerImageItem localTAVStickerImageItem;
-    if ((i < j) && (i < localArrayList.size()))
+    if (i < localArrayList.size())
     {
       localTAVStickerImageItem = (TAVStickerImageItem)localArrayList.get(i);
       if ((localTAVStickerImageItem != null) && (!CollectionUtil.isEmptyList(this.rendererList))) {
-        break label92;
+        break label85;
       }
     }
     for (;;)
@@ -957,13 +988,13 @@ public class TAVSticker
       i += 1;
       break label43;
       break;
-      label92:
+      label85:
       Iterator localIterator = this.rendererList.iterator();
       while (localIterator.hasNext())
       {
         ITAVStickerRenderer localITAVStickerRenderer = (ITAVStickerRenderer)localIterator.next();
         if ((localITAVStickerRenderer != null) && (localTAVStickerImageItem.getBitmap() != null)) {
-          localITAVStickerRenderer.setImageData(i, PAGImage.FromBitmap(localTAVStickerImageItem.getBitmap()));
+          localITAVStickerRenderer.setImageData(localTAVStickerImageItem.layerIndex, PAGImage.FromBitmap(localTAVStickerImageItem.getBitmap()));
         }
       }
     }

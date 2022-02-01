@@ -1,20 +1,6 @@
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
-
-public class wbt
-  implements aqmj
+public abstract interface wbt
 {
-  public wbt(QCircleRecommendImageView paramQCircleRecommendImageView) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    QCircleRecommendImageView.a(this.a);
-    QCircleRecommendImageView.a(this.a, true);
-    this.a.setPadding(0, 0, 0, 0);
-  }
+  public abstract void a(wbs paramwbs);
 }
 
 

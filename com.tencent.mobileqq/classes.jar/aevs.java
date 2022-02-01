@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.activity.Leba;
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import java.util.ArrayList;
 
 public class aevs
-  extends ayxm
+  implements aewl
 {
-  public aevs(Leba paramLeba) {}
+  public aevs(ReminderListFragment paramReminderListFragment) {}
   
-  protected void a(Object paramObject)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Leba.c(this.a);
+    if (paramBoolean)
+    {
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
+        {
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
+        }
+        ReminderListFragment.b(this.a);
+        return;
+      }
+      ReminderListFragment.b(this.a);
+      return;
+    }
+    ReminderListFragment.a(this.a, amtj.a(2131712493));
   }
 }
 

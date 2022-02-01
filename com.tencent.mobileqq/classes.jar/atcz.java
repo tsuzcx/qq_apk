@@ -1,31 +1,23 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atcz
-  implements View.OnClickListener
+public class atcz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  atcz(Context paramContext, Dialog paramDialog) {}
+  public atcz(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    bdll.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
+    QFileDebugSettingFragment.a(this.a).a(QFileDebugSettingFragment.a(this.a).a());
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcz
  * JD-Core Version:    0.7.0.1
  */

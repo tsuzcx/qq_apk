@@ -1,30 +1,24 @@
-import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import org.jetbrains.annotations.NotNull;
 
-public class udw
-  implements udr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ImageActionItem;", "Lcom/tencent/biz/pubaccount/util/ActionItem;", "name", "", "action", "", "webHandle", "", "url", "(Ljava/lang/String;IZLjava/lang/String;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class udw
+  extends ude
 {
-  public udw(WSRecommendFragment paramWSRecommendFragment) {}
+  @JvmField
+  @NotNull
+  public String b;
   
-  public void a(blsy<stSimpleMetaFeed> paramblsy)
+  public udw(@NotNull String paramString1, int paramInt, boolean paramBoolean, @NotNull String paramString2)
   {
-    int i;
-    if (WSRecommendFragment.d(this.a))
-    {
-      i = paramblsy.getAdapterPosition();
-      paramblsy = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
-      if (paramblsy != null) {}
-    }
-    else
-    {
-      return;
-    }
-    WSRecommendFragment.a(this.a, paramblsy, i);
+    super(paramString1, paramInt, paramBoolean);
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udw
  * JD-Core Version:    0.7.0.1
  */

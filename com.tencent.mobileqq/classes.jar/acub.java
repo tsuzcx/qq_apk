@@ -1,49 +1,26 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acub
-  implements acun
+public class acub
+  implements View.OnClickListener
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  public acub(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    if (paramacts != null) {}
-    for (paramVarArgs = paramacts.a(); (paramacts == null) || (paramVarArgs == null); paramVarArgs = null)
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368367);
+    if (localImageView != null)
     {
-      acvc.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("deviceId", acwe.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacts != null) {
-            paramString = paramacts.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
-          return true;
-          localJSONException = localJSONException;
-          acvc.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
+      int i = 0;
+      if (localImageView.getVisibility() == 0) {
+        i = 4;
       }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          acvc.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
+      localImageView.setVisibility(i);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,81 +1,57 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class auwg
-  implements MethodChannel.MethodCallHandler
+public class auwg
+  implements zop
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public auwg(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString) {}
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public void callback(Bundle paramBundle)
   {
-    String str = paramMethodCall.method;
-    if ("setSpecialCare".equals(str))
+    if (paramBundle.getBoolean("isSuccess", false))
     {
-      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
-      return;
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))) {
+        break label178;
+      }
+      str1 = paramBundle.getString("uin");
+      bool = paramBundle.getBoolean("isFriend", false);
+      localObject = paramBundle.getString("nickName");
+      str2 = paramBundle.getString("remark");
+      if (!TextUtils.isEmpty(str1))
+      {
+        if (!bool) {
+          break label163;
+        }
+        paramBundle = new ProfileActivity.AllInOne(str1, 1);
+        paramBundle.h = ((String)localObject);
+        paramBundle.i = str2;
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("AllInOne", paramBundle);
+        ((Intent)localObject).addFlags(536870912);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+      }
     }
-    if ("setQzoneNotify".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
-      return;
+    label163:
+    label178:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        String str1;
+        boolean bool;
+        String str2;
+        return;
+        paramBundle = new ProfileActivity.AllInOne(str1, 105);
+      }
     }
-    if ("getSCFSwitchs".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("getSpecialRing".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("openSpecialRingMall".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("onPageShowReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellShowReport".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellClickReport".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onSpecialCareSwitchReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 

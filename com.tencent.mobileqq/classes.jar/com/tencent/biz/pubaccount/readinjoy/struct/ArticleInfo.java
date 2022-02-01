@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import ozs;
-import qhx;
-import quu;
-import qvj;
-import qvk;
-import qvv;
-import qwt;
-import qxt;
-import qzb;
+import pay;
+import qoa;
+import rbs;
+import rch;
+import rci;
+import rct;
+import rdr;
+import rer;
+import rga;
 import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
@@ -45,7 +45,7 @@ public class ArticleInfo
   
   public static Parcelable.Creator<ArticleInfo> makeArticleInfoCreator()
   {
-    return new qvk();
+    return new rci();
   }
   
   private void readFromParcel(ArticleInfo paramArticleInfo, Parcel paramParcel)
@@ -84,12 +84,12 @@ public class ArticleInfo
       i = 0;
       while (i < j)
       {
-        paramArticleInfo.mPictures[i] = ozs.a(paramParcel.readString());
+        paramArticleInfo.mPictures[i] = pay.a(paramParcel.readString());
         i += 1;
       }
     }
-    paramArticleInfo.mSinglePicture = ozs.a(paramParcel.readString());
-    paramArticleInfo.mVideoCoverUrl = ozs.a(paramParcel.readString());
+    paramArticleInfo.mSinglePicture = pay.a(paramParcel.readString());
+    paramArticleInfo.mVideoCoverUrl = pay.a(paramParcel.readString());
     paramArticleInfo.mVideoVid = paramParcel.readString();
     paramArticleInfo.mVideoDuration = paramParcel.readInt();
     paramArticleInfo.mCommentIconType = paramParcel.readInt();
@@ -229,14 +229,14 @@ public class ArticleInfo
             paramArticleInfo.mGWCommonData = paramParcel.readString();
             paramArticleInfo.mReportCommonData = paramParcel.readString();
             paramArticleInfo.recommentFlag = paramParcel.readInt();
-            quu.a(paramArticleInfo);
+            rbs.a(paramArticleInfo);
             i = paramParcel.readInt();
             if (i <= 0) {
               break label1248;
             }
             paramArticleInfo.ptsItemDataBytes = new byte[i];
             paramParcel.readByteArray(paramArticleInfo.ptsItemDataBytes);
-            paramArticleInfo.ptsItemData = ((PTSItemData)qhx.a(paramArticleInfo.ptsItemDataBytes, PTSItemData.CREATOR));
+            paramArticleInfo.ptsItemData = ((PTSItemData)qoa.a(paramArticleInfo.ptsItemDataBytes, PTSItemData.CREATOR));
             return;
             paramArticleInfo.mServerContext = new byte[i];
             if (i <= 0) {
@@ -291,7 +291,7 @@ public class ArticleInfo
           try
           {
             localTopicRecommendFeedsInfo.mergeFrom(paramArticleInfo.mTopicRecommendFeedsInfoByte);
-            paramArticleInfo.mTopicRecommendFeedsInfo = qzb.a(localTopicRecommendFeedsInfo);
+            paramArticleInfo.mTopicRecommendFeedsInfo = rga.a(localTopicRecommendFeedsInfo);
           }
           catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
           {
@@ -307,7 +307,7 @@ public class ArticleInfo
         try
         {
           localArkAppFeedsInfo.mergeFrom(paramArticleInfo.mArkAppFeedsInfoBytes);
-          paramArticleInfo.mArkAppFeedsInfo = qvj.a(localArkAppFeedsInfo);
+          paramArticleInfo.mArkAppFeedsInfo = rch.a(localArkAppFeedsInfo);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
         {
@@ -487,31 +487,31 @@ public class ArticleInfo
     return (this.mChannelInfoId != -1) && (!TextUtils.isEmpty(this.mChannelInfoName)) && (this.mChannelInfoType != -1) && (!TextUtils.isEmpty(this.mChannelInfoDisplayName));
   }
   
-  public qvv makeDislikeParam(ArrayList<DislikeInfo> paramArrayList)
+  public rct makeDislikeParam(ArrayList<DislikeInfo> paramArrayList)
   {
     return makeDislikeParam(paramArrayList, this.innerUniqueID);
   }
   
-  public qvv makeDislikeParam(ArrayList<DislikeInfo> paramArrayList, String paramString)
+  public rct makeDislikeParam(ArrayList<DislikeInfo> paramArrayList, String paramString)
   {
-    qvv localqvv = new qvv();
+    rct localrct = new rct();
     if ((paramString != null) && (paramString.length() > 0)) {
-      localqvv.jdField_a_of_type_JavaLangString = paramString;
+      localrct.jdField_a_of_type_JavaLangString = paramString;
     }
-    localqvv.jdField_a_of_type_Long = this.mArticleID;
-    localqvv.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localrct.jdField_a_of_type_Long = this.mArticleID;
+    localrct.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     if (this.mSocialFeedInfo != null)
     {
-      localqvv.b = this.mSocialFeedInfo.jdField_a_of_type_Long;
-      localqvv.c = this.mSocialFeedInfo.jdField_a_of_type_Qxt.jdField_a_of_type_Long;
+      localrct.b = this.mSocialFeedInfo.jdField_a_of_type_Long;
+      localrct.c = this.mSocialFeedInfo.jdField_a_of_type_Rer.jdField_a_of_type_Long;
     }
-    if (ozs.l(this))
+    if (pay.l(this))
     {
-      localqvv.c = this.mPolymericInfo.b;
-      localqvv.d = this.mPolymericInfo.f;
-      localqvv.jdField_a_of_type_Long = 0L;
+      localrct.c = this.mPolymericInfo.b;
+      localrct.d = this.mPolymericInfo.f;
+      localrct.jdField_a_of_type_Long = 0L;
     }
-    return localqvv;
+    return localrct;
   }
   
   public void prewrite()

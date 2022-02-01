@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akhw
-  extends ayxo
+class akhw
+  implements View.OnClickListener
 {
-  akhw(akha paramakha) {}
+  akhw(akho paramakho) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
-    }
-    else
-    {
+      bfur.a(akho.a(this.a), 0, null, amtj.a(2131700065), 2131690620, 2131694201, new akhx(this), new akhy(this)).show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
-      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + localThrowable.getMessage());
+      }
     }
-    this.a.g();
   }
 }
 

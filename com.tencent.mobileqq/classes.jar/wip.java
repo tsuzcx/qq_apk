@@ -1,23 +1,12 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher.Event;
-
-public class wip
-  implements Dispatcher.Event
+class wip
+  extends whl
 {
-  public ErrorMessage a = new ErrorMessage();
+  wip(wif paramwif, wjn paramwjn) {}
   
-  public String a()
+  public boolean b()
   {
-    return this.a.getErrorMessage();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
-      return str + "}";
-    }
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Wjn.d);
+    return true;
   }
 }
 

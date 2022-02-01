@@ -1,30 +1,128 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class wib
-  implements CompoundButton.OnCheckedChangeListener
+public class wib
+  extends wjc
 {
-  wib(wia paramwia) {}
+  public static final String a;
+  public boolean a;
+  private final int[] a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  static
   {
-    if (paramBoolean)
+    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + vpl.a(2131698833);
+  }
+  
+  public wib(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  {
+    QQAppInterface localQQAppInterface = wkp.a();
+    vvj localvvj = (vvj)vux.a(2);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = localQQAppInterface.getCurrentNickname();
+    String str;
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
     {
-      wia.a(this.a);
-      if (wia.a(this.a)) {
-        yup.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
+      str = this.c + amtj.a(2131706170);
+      this.jdField_d_of_type_JavaLangString = str;
+      this.f = paramStoryVideoItem.mOwnerUid;
+      this.e = localvvj.a(this.f, false);
+      this.g = paramStoryVideoItem.mDoodleText;
+      str = paramString;
+      if (paramString == null) {
+        str = "";
+      }
+      this.h = str;
+      if (!paramStoryVideoItem.isMine()) {
+        break label363;
+      }
+      i = 0;
+      label137:
+      this.b = i;
+      this.c = localQQAppInterface.getCurrentNickname();
+      paramStoryVideoItem = localvvj.b(this.f);
+      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
+        this.c = paramStoryVideoItem.nickName;
+      }
+      this.jdField_d_of_type_JavaLangString = a();
+      this.k = this.jdField_d_of_type_JavaLangString;
+      this.i = b();
+      this.j = ("#" + vkm.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
+      this.jdField_d_of_type_Int = 11;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label369;
       }
     }
+    label363:
+    label369:
+    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label377;
+      }
+      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
+      return;
+      str = this.c + amtj.a(2131706171) + vkm.jdField_a_of_type_JavaLangString;
+      break;
+      i = 1;
+      break label137;
+    }
+    label377:
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
+  }
+  
+  protected String a(int paramInt)
+  {
+    int i = 3;
+    if (paramInt == 1)
+    {
+      str1 = this.e;
+      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
+      str3 = this.f;
+      str4 = this.h;
+      paramInt = this.b;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
+        i = 1;
+      }
+    }
+    String str1 = jdField_a_of_type_JavaLangString;
+    String str2 = this.e;
+    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
+    String str4 = this.f;
+    String str5 = this.h;
+    int j = this.b;
+    if (this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      wia.a(this.a, paramBoolean);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
+      i = 1;
+    }
+  }
+  
+  protected void a(wjk paramwjk)
+  {
+    vwk localvwk;
+    if ((paramwjk instanceof wjl))
+    {
+      localvwk = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
+      if (localvwk != null) {}
+    }
+    else
+    {
       return;
-      wia.b(this.a);
-      if (wia.a(this.a)) {
-        yup.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
-      }
+    }
+    paramwjk = (wjl)paramwjk;
+    paramwjk.o = localvwk.b;
+    if (localvwk.a == 2) {}
+    for (paramwjk.p = amtj.a(2131706172);; paramwjk.p = (localvwk.c + amtj.a(2131706173)))
+    {
+      paramwjk.jdField_d_of_type_JavaLangString = a();
+      return;
     }
   }
 }

@@ -1,31 +1,29 @@
-import android.app.Dialog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.widget.ParticipleView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import android.view.View;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class ayyz
-  extends behl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayyz(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public ayyz(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
   
-  protected void a(boolean paramBoolean, List<String> paramList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.a(paramBoolean, paramList);
-    if (OCRResultFragmentNew.a(this.a) != null)
-    {
-      OCRResultFragmentNew.a(this.a).setOnCancelListener(null);
-      OCRResultFragmentNew.a(this.a).dismiss();
-    }
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.setParticipleItems(paramList);
-      this.a.a.a();
-      OCRResultFragmentNew.a(this.a, 2);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131706702), 0).a();
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setScaleY(paramValueAnimator.floatValue());
+    float f1 = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f2 = VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).x;
+    float f3 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getWidth();
+    float f4 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f5 = VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).y;
+    float f6 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getHeight();
+    this.jdField_a_of_type_AndroidViewView.setTranslationX((f1 - f2) * f3 * paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setTranslationY((f4 - f5) * f6 * paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setRotation(paramValueAnimator.floatValue() * 120.0F - 120.0F);
   }
 }
 

@@ -1,11 +1,7 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-
-public class ajrh
-  implements ajon
+class ajrh
+  extends ajrc
 {
-  public ajrh(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void a() {}
+  ajrh(ajrg paramajrg) {}
 }
 
 

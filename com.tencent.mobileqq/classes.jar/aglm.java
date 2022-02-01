@@ -1,24 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class aglm
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  aglm(agll paramagll, agky paramagky, ChatMessage paramChatMessage) {}
+  aglm(agll paramagll) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    Context localContext = agll.a(this.jdField_a_of_type_Agll).getContext();
-    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_Agky.a);
-    localContext.startActivity(localIntent);
-    agll.a(this.jdField_a_of_type_Agll, this.jdField_a_of_type_Agky, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.jdField_a_of_type_Aglj.a()) {
+      return false;
+    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Aglj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Aglj.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Afce != null) {
+      this.a.jdField_a_of_type_Afce.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 

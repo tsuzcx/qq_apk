@@ -5,25 +5,25 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import bokv;
+import blpb;
 import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class VideoStoryAIScenePart$19
   implements Runnable
 {
-  public VideoStoryAIScenePart$19(bokv parambokv, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
+  public VideoStoryAIScenePart$19(blpb paramblpb, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
   
   public void run()
   {
     int i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight();
     int j = this.jdField_a_of_type_Int;
-    int k = bokv.a(this.this$0).getMeasuredHeight();
+    int k = blpb.a(this.this$0).getMeasuredHeight();
     Object localObject = new int[2];
-    bokv.a(this.this$0).getLocationInWindow((int[])localObject);
+    blpb.a(this.this$0).getLocationInWindow((int[])localObject);
     i = j - i - k - 10 - localObject[1];
-    localObject = ObjectAnimator.ofFloat(bokv.a(this.this$0), "translationY", new float[] { 0.0F, i });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bokv.b(this.this$0), "translationY", new float[] { 0.0F, i });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bokv.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    localObject = ObjectAnimator.ofFloat(blpb.a(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(blpb.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(blpb.b(this.this$0), "translationY", new float[] { 0.0F, i });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
     localAnimatorSet.setDuration(300L).start();

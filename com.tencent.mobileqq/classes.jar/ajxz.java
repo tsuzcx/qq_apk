@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
-public class ajxz
-  extends aogx
+class ajxz
+  extends ajxv
 {
-  public ajxz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  ajxz(ajxy paramajxy) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
-    }
-    ashd localashd = (ashd)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localashd != null) {
-      localashd.b();
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
     }
   }
 }

@@ -1,72 +1,110 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class arbk
-  extends arac<arbl>
+  extends RecyclerView.LayoutManager
 {
-  public static arbl a()
+  private View.OnClickListener a;
+  
+  public arbk(View.OnClickListener paramOnClickListener)
   {
-    return (arbl)aran.a().a(655);
+    this.a = paramOnClickListener;
   }
   
-  @NonNull
-  public arbl a(int paramInt)
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return new arbl();
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
   }
   
-  @Nullable
-  public arbl a(araj[] paramArrayOfaraj)
+  public RecyclerView.LayoutParams generateDefaultLayoutParams()
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arbl.a(paramArrayOfaraj);
+    return new RecyclerView.LayoutParams(-2, -2);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    detachAndScrapAttachedViews(paramRecycler);
+    int i = getItemCount();
+    int m;
+    int j;
+    int k;
+    if (i > 3)
+    {
+      i = 3;
+      if (i >= 0)
+      {
+        paramState = paramRecycler.getViewForPosition(i);
+        addView(paramState);
+        measureChildWithMargins(paramState, 0, 0);
+        m = getWidth() - getDecoratedMeasuredWidth(paramState);
+        j = getHeight() - getDecoratedMeasuredHeight(paramState);
+        k = m / 2;
+        m /= 2;
+        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
+        if (i == 3)
+        {
+          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
+          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
+          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
+          paramState.setAlpha(0.8F);
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (i > 0)
+          {
+            paramState.setScaleX(1.0F - i * 0.1F);
+            paramState.setScaleY(1.0F - i * 0.1F);
+            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
+            paramState.setAlpha(0.6F);
+          }
+          else if (this.a != null)
+          {
+            paramState.setOnClickListener(this.a);
+          }
+        }
+      }
     }
-    return null;
-  }
-  
-  public void a(arbl paramarbl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIORelatedEmotionConfProcessor", 2, "AIORelatedEmotionConfProcessor onUpdate");
+    else
+    {
+      i -= 1;
+      if (i >= 0)
+      {
+        paramState = paramRecycler.getViewForPosition(i);
+        addView(paramState);
+        measureChildWithMargins(paramState, 0, 0);
+        m = getWidth() - getDecoratedMeasuredWidth(paramState);
+        j = getHeight() - getDecoratedMeasuredHeight(paramState);
+        k = m / 2;
+        m /= 2;
+        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
+        if (i > 0)
+        {
+          paramState.setScaleX(1.0F - i * 0.1F);
+          paramState.setScaleY(1.0F - i * 0.1F);
+          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (this.a != null) {
+            paramState.setOnClickListener(this.a);
+          }
+        }
+      }
     }
-  }
-  
-  public Class<arbl> clazz()
-  {
-    return arbl.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 655;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbk
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bhsr;
-import bnjq;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -21,7 +19,9 @@ import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.utils.ScreenOffOnListener;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.media.live.TXLivePusherJSAdapter;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.JarReflectUtil;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -81,7 +81,7 @@ public class MiniAppLivePusher
   
   private void initPusherView()
   {
-    this.tXCloudVideoView = bnjq.a("com.tencent.rtmp.ui.TXCloudVideoView", bnjq.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = JarReflectUtil.creatSpecifiedObject("com.tencent.rtmp.ui.TXCloudVideoView", JarReflectUtil.getParamsClass(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePusher", 1, "tXCloudVideoView is null?! ");
@@ -101,28 +101,28 @@ public class MiniAppLivePusher
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 243	java/io/BufferedOutputStream
+    //   0: new 244	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 245	java/io/FileOutputStream
+    //   4: new 246	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 248	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 251	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 249	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 252	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 257	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 258	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 263	java/lang/Math:min	(II)I
+    //   24: invokestatic 264	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 269	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 270	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 272	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 273	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 275	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 276	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -130,7 +130,7 @@ public class MiniAppLivePusher
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 275	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 276	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -159,8 +159,8 @@ public class MiniAppLivePusher
     this.hasSetUp = true;
     setTag("MiniAppLivePusher");
     this.context = paramContext;
-    this.rootView = LayoutInflater.from(paramContext).inflate(2131559396, null);
-    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131373237));
+    this.rootView = LayoutInflater.from(paramContext).inflate(2131559398, null);
+    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131373202));
     addView(this.rootView);
   }
   
@@ -333,7 +333,7 @@ public class MiniAppLivePusher
       paramString = new JSONObject();
       try
       {
-        if (!bhsr.a(this.tempAudioFilePath))
+        if (!StringUtil.isEmpty(this.tempAudioFilePath))
         {
           paramString.put("tempFilePath", this.tempAudioFilePath);
           this.tempAudioFilePath = null;

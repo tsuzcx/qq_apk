@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.forward;
 
-import agej;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anzj;
-import auxu;
-import avcf;
-import avcg;
-import avch;
-import avci;
-import bhjx;
-import bhlq;
-import bhnv;
-import bhpc;
+import atky;
+import atpj;
+import atpk;
+import atpl;
+import atpm;
+import bftf;
+import bfur;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -29,12 +29,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nok;
+import npt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForwardSendHongBaoOption
-  extends auxu
+  extends atky
 {
   protected int e;
   int f = 5;
@@ -59,7 +59,7 @@ public class ForwardSendHongBaoOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (((!bhjx.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000))) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean) && (((this.e & 0x1) <= 0) || (localRecentUser.getType() == 0))))) {
+      if ((localRecentUser != null) && (((!bftf.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000))) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean) && (((localRecentUser.getType() == 0) && (a(jdField_b_of_type_JavaLangInteger))) || ((localRecentUser.getType() == 1) && (a(c))) || ((localRecentUser.getType() == 3000) && (a(d))))))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -68,13 +68,13 @@ public class ForwardSendHongBaoOption
   
   public void a()
   {
-    if ((m()) && ((this.e & 0x100) > 0)) {
+    if ((o()) && ((this.e & 0x100) > 0)) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if ((n()) && ((this.e & 0x10) > 0)) {
+    if ((p()) && ((this.e & 0x10) > 0)) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if ((o()) && ((this.e & 0x1) > 0)) {
+    if ((q()) && ((this.e & 0x1) > 0)) {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
     }
   }
@@ -106,7 +106,7 @@ public class ForwardSendHongBaoOption
           }
           if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("qwallet")))
           {
-            paramIntent = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+            paramIntent = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
             paramIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
             this.jdField_a_of_type_AndroidAppActivity.startActivity(paramIntent);
             this.jdField_a_of_type_AndroidAppActivity.setResult(-1);
@@ -117,7 +117,7 @@ public class ForwardSendHongBaoOption
         }
         if (paramInt1 != 0)
         {
-          String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692410);
+          String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692458);
           paramIntent = str;
           if (localJSONObject.has("retmsg"))
           {
@@ -129,19 +129,19 @@ public class ForwardSendHongBaoOption
           if (this.f > 0)
           {
             this.f -= 1;
-            paramIntent = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230, anzj.a(2131703712), paramIntent, null, null);
-            paramIntent.setPositiveButton(2131692402, new avcg(this, paramIntent));
-            paramIntent.setNegativeButton(2131690580, new avch(this, paramIntent));
+            paramIntent = bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230, amtj.a(2131703942), paramIntent, null, null);
+            paramIntent.setPositiveButton(2131692450, new atpk(this, paramIntent));
+            paramIntent.setNegativeButton(2131690620, new atpl(this, paramIntent));
             paramIntent.show();
             return;
-            paramIntent = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230, anzj.a(2131703710), this.jdField_a_of_type_AndroidAppActivity.getString(2131692410), null, null);
-            paramIntent.setNegativeButton(2131690559, new avcf(this, paramIntent));
+            paramIntent = bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230, amtj.a(2131703940), this.jdField_a_of_type_AndroidAppActivity.getString(2131692458), null, null);
+            paramIntent.setNegativeButton(2131690599, new atpj(this, paramIntent));
             paramIntent.show();
             paramInt1 = 0;
             continue;
           }
-          paramIntent = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230, anzj.a(2131703698), paramIntent, null, null);
-          paramIntent.setNegativeButton(2131690559, new avci(this, paramIntent));
+          paramIntent = bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230, amtj.a(2131703928), paramIntent, null, null);
+          paramIntent.setNegativeButton(2131690599, new atpm(this, paramIntent));
           paramIntent.show();
           return;
         }
@@ -170,9 +170,9 @@ public class ForwardSendHongBaoOption
   
   public boolean c()
   {
-    if (!bhnv.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131693963, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
       return true;
     }
     Object localObject1 = new JSONObject();
@@ -210,7 +210,7 @@ public class ForwardSendHongBaoOption
       ((Intent)localObject1).putExtras((Bundle)localObject2);
       ((Intent)localObject1).putExtra("pay_requestcode", 5);
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject1, 20002);
-      a(2131692403);
+      a(2131692451);
       return true;
       ((JSONObject)localObject2).put("recv_type", 3);
       ((JSONObject)localObject2).put("group_id", this.jdField_a_of_type_AndroidOsBundle.getString("uin"));

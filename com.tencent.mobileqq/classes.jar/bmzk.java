@@ -1,13 +1,6 @@
-import java.lang.ref.WeakReference;
-
-class bmzk
+public abstract interface bmzk
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<bmyz> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  
-  private bmzk(bmzc parambmzc) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,35 +1,32 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
 
 public class behy
 {
   public int a;
   public String a;
-  private JSONObject a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public behy(int paramInt, String paramString)
+  public behy()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = "default";
   }
   
-  public String a()
+  public boolean a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", this.jdField_a_of_type_Int);
-      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
-      return localJSONObject.toString();
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ("default".equals(this.jdField_a_of_type_JavaLangString))) {}
+    while ((this.b < 0) || (this.c < 0) || (this.d <= 0) || (this.e <= 0)) {
+      return false;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "Item{subject='" + this.jdField_a_of_type_JavaLangString + '\'' + ", correct=" + this.jdField_a_of_type_Boolean + ", confidence=" + this.jdField_a_of_type_Int + ", x=" + this.b + ", y=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
   }
 }
 

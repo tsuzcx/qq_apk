@@ -1,28 +1,30 @@
-import android.os.Handler;
+import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class agat
-  extends blgm
+class agat
+  implements atah
 {
-  public agat(VisitorsActivity paramVisitorsActivity) {}
+  agat(agap paramagap, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bgny parambgny) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (this.a.c > 0)
+    paramView = new Bundle();
+    paramView.putString(bgge.i, this.jdField_a_of_type_JavaLangString);
+    paramView.putString(bgge.c, this.b);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+      paramView.putString(bgge.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
+    }
+    bgge.a(this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agap.jdField_a_of_type_AndroidContentContext, paramView);
+    String str = this.c;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
+    for (paramView = "0";; paramView = "1")
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bgny.a(this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "", "", "");
       return;
     }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
   }
 }
 

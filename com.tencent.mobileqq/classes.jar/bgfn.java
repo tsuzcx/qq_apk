@@ -1,12 +1,10 @@
-class bgfn
-  implements bizc
+import java.util.ArrayList;
+
+public class bgfn
 {
-  bgfn(bgfm parambgfm) {}
-  
-  public void a(String paramString)
-  {
-    this.a.a();
-  }
+  public int a;
+  public String a;
+  public ArrayList<bgfo> a = new ArrayList();
 }
 
 

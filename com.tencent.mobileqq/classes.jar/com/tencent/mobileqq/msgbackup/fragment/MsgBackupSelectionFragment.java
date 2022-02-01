@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import adak;
+import abwz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -18,19 +18,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import axgj;
-import axhw;
-import axhy;
-import axij;
-import axik;
-import axil;
-import axjk;
-import bhnv;
-import bhtq;
+import avtq;
+import avvd;
+import avvf;
+import avvq;
+import avvr;
+import avvs;
+import avwr;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -53,9 +53,9 @@ public class MsgBackupSelectionFragment
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axgj jdField_a_of_type_Axgj;
-  private axhw jdField_a_of_type_Axhw;
-  private axhy jdField_a_of_type_Axhy = new axil(this);
+  private avtq jdField_a_of_type_Avtq;
+  private avvd jdField_a_of_type_Avvd;
+  private avvf jdField_a_of_type_Avvf = new avvs(this);
   private String jdField_a_of_type_JavaLangString;
   public List<RecentBaseData> a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -89,17 +89,17 @@ public class MsgBackupSelectionFragment
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
-      localStringBuilder.append(getString(2131690412, new Object[] { Integer.valueOf(paramInt) }));
+      localStringBuilder.append(getString(2131690452, new Object[] { Integer.valueOf(paramInt) }));
     }
     if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
     {
       if (paramInt > 0) {
         localStringBuilder.append("\n");
       }
-      localStringBuilder.append(getString(2131690402, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      localStringBuilder.append(getString(2131690442, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
     }
     if (this.jdField_b_of_type_Int == 2) {
-      localStringBuilder.append("\n").append(getString(2131690392));
+      localStringBuilder.append("\n").append(getString(2131690432));
     }
     if (localStringBuilder.length() > 0)
     {
@@ -112,37 +112,37 @@ public class MsgBackupSelectionFragment
       if (paramInt == this.jdField_a_of_type_JavaUtilList.size())
       {
         this.jdField_a_of_type_Boolean = true;
-        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690438);
+        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690478);
         return;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       else
       {
         this.jdField_a_of_type_Boolean = false;
-        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690420);
+        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690460);
         return;
       }
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_Boolean = false;
-    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690420);
+    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690460);
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
-      localStringBuilder.append(getString(2131690412, new Object[] { Integer.valueOf(paramInt) }));
+      localStringBuilder.append(getString(2131690452, new Object[] { Integer.valueOf(paramInt) }));
     }
     if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
     {
       if (paramInt > 0) {
         localStringBuilder.append("\n");
       }
-      localStringBuilder.append(getString(2131690402, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      localStringBuilder.append(getString(2131690442, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
     }
     if (this.jdField_b_of_type_Int == 2) {
-      localStringBuilder.append("\n").append(getString(2131690392));
+      localStringBuilder.append("\n").append(getString(2131690432));
     }
     if (localStringBuilder.length() > 0)
     {
@@ -151,12 +151,12 @@ public class MsgBackupSelectionFragment
     }
     while (paramBoolean)
     {
-      a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690438);
+      a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690478);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690420);
+    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690460);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
@@ -173,49 +173,49 @@ public class MsgBackupSelectionFragment
   
   private void b()
   {
-    this.jdField_a_of_type_Axgj = axgj.a();
+    this.jdField_a_of_type_Avtq = avtq.a();
   }
   
   private void c()
   {
-    axgj.a().a.clear();
-    axgj.a().a(new axij(this));
-    axgj.a().n();
+    avtq.a().a.clear();
+    avtq.a().a(new avvq(this));
+    avtq.a().n();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363580));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377263));
-    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690420);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365284));
-    a(this.jdField_c_of_type_AndroidWidgetTextView, 2131690421);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377285));
-    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690411);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363609));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377013));
+    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690460);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365312));
+    a(this.jdField_c_of_type_AndroidWidgetTextView, 2131690461);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377035));
+    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690451);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370978));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370946));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131370974));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131370942));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Axhw = new axhw(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Axhw);
-    this.jdField_a_of_type_Axhw.a(this.jdField_a_of_type_Axhy);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131366047);
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131370289);
+    this.jdField_a_of_type_Avvd = new avvd(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Avvd);
+    this.jdField_a_of_type_Avvd.a(this.jdField_a_of_type_Avvf);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131366077);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131370257);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.vg.setOnItemSelectListener(new axik(this));
+    this.vg.setOnItemSelectListener(new avvr(this));
   }
   
   private void e()
   {
-    bhtq.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
-    bhtq.b(this.jdField_b_of_type_AndroidViewView, 8);
-    bhtq.b(this.jdField_a_of_type_AndroidViewView, 8);
+    ViewUtils.setVisible(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
+    ViewUtils.setVisible(this.jdField_b_of_type_AndroidViewView, 8);
+    ViewUtils.setVisible(this.jdField_a_of_type_AndroidViewView, 8);
   }
   
   private void f()
@@ -224,7 +224,7 @@ public class MsgBackupSelectionFragment
     {
       h();
       if (this.jdField_a_of_type_Int == 0) {
-        axjk.a("0X800A233", 2);
+        avwr.a("0X800A233", 2);
       }
     }
     do
@@ -232,17 +232,17 @@ public class MsgBackupSelectionFragment
       do
       {
         return;
-      } while (!axgj.c);
-      axjk.a("0X800A258", 2);
+      } while (!avtq.c);
+      avwr.a("0X800A258", 2);
       return;
       g();
       if (this.jdField_a_of_type_Int == 0)
       {
-        axjk.a("0X800A233", 1);
+        avwr.a("0X800A233", 1);
         return;
       }
-    } while (!axgj.c);
-    axjk.a("0X800A258", 1);
+    } while (!avtq.c);
+    avwr.a("0X800A258", 1);
   }
   
   private void g()
@@ -258,10 +258,10 @@ public class MsgBackupSelectionFragment
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        axgj.a().a.add(localRecentBaseData);
+        avtq.a().a.add(localRecentBaseData);
       }
     }
-    this.jdField_a_of_type_Axhw.b();
+    this.jdField_a_of_type_Avvd.b();
   }
   
   private void h()
@@ -271,8 +271,8 @@ public class MsgBackupSelectionFragment
     {
       this.jdField_a_of_type_Boolean = bool;
       a(0, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Axhw.c();
-      axgj.a().c();
+      this.jdField_a_of_type_Avvd.c();
+      avtq.a().c();
       return;
     }
   }
@@ -281,12 +281,12 @@ public class MsgBackupSelectionFragment
   {
     int m = 3;
     int k = 2;
-    Object localObject = axgj.a().a.iterator();
+    Object localObject = avtq.a().a.iterator();
     int i = 0;
     int j = i;
     if (((Iterator)localObject).hasNext())
     {
-      if (!adak.d(((RecentBaseData)((Iterator)localObject).next()).getRecentUserType())) {
+      if (!abwz.d(((RecentBaseData)((Iterator)localObject).next()).getRecentUserType())) {
         break label135;
       }
       if (i == 2) {
@@ -324,7 +324,7 @@ public class MsgBackupSelectionFragment
       for (;;)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          axjk.a((String)localObject, j, i);
+          avwr.a((String)localObject, j, i);
         }
         return;
         i = 1;
@@ -339,7 +339,7 @@ public class MsgBackupSelectionFragment
         }
         i = 4;
         break label97;
-        if (axgj.c) {
+        if (avtq.c) {
           localObject = "0X800A25D";
         }
       }
@@ -354,12 +354,12 @@ public class MsgBackupSelectionFragment
     b();
     d();
     c();
-    axgj.a().c();
+    avtq.a().c();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561546;
+    return 2131561424;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -372,9 +372,9 @@ public class MsgBackupSelectionFragment
     e();
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Axhw.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Axhw.a();
-      this.jdField_a_of_type_Axhw.notifyDataSetChanged();
+      this.jdField_a_of_type_Avvd.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Avvd.a();
+      this.jdField_a_of_type_Avvd.notifyDataSetChanged();
       return false;
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
@@ -403,7 +403,7 @@ public class MsgBackupSelectionFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onActivityResult startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.jdField_b_of_type_Int + ", startTimeShow = " + this.jdField_a_of_type_JavaLangString + ", endTimeShow = " + this.jdField_b_of_type_JavaLangString);
         }
-        a(this.jdField_a_of_type_Axgj.a.size());
+        a(this.jdField_a_of_type_Avtq.a.size());
       }
     }
     while ((1000 != paramInt1) || (paramInt2 != 1001)) {
@@ -420,8 +420,8 @@ public class MsgBackupSelectionFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131377263: 
-    case 2131365284: 
+    case 2131377013: 
+    case 2131365312: 
       for (;;)
       {
         EventCollector.getInstance().onViewClicked(paramView);
@@ -441,11 +441,11 @@ public class MsgBackupSelectionFragment
         PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupDateFragment.class, 1000);
       }
     }
-    axgj.jdField_b_of_type_Int = axgj.a().a.size();
-    axjk.a();
-    axjk.a.jdField_b_of_type_Long = axgj.jdField_b_of_type_Int;
+    avtq.jdField_b_of_type_Int = avtq.a().a.size();
+    avwr.a();
+    avwr.a.jdField_b_of_type_Long = avtq.jdField_b_of_type_Int;
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "select session detail, sessionCount = " + axgj.jdField_b_of_type_Int);
+      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "select session detail, sessionCount = " + avtq.jdField_b_of_type_Int);
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("session_start_time", this.jdField_a_of_type_Long);
@@ -454,14 +454,14 @@ public class MsgBackupSelectionFragment
     boolean bool;
     if (this.jdField_a_of_type_Int == 0)
     {
-      bool = bhnv.a(BaseApplication.getContext());
+      bool = NetworkUtil.isWifiEnabled(BaseApplication.getContext());
       localIntent.putExtra("session_net_status", bool);
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onClick!!! TYPE_TO_OTHER_DEVICE isNetEnable = " + bool);
       }
       if (bool)
       {
-        axgj.a().a(false);
+        avtq.a().a(false);
         label407:
         PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupQRFragment.class, 1000);
       }
@@ -490,23 +490,23 @@ public class MsgBackupSelectionFragment
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131690422));
+    setTitle(getActivity().getString(2131690462));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Axhw != null) {
-      this.jdField_a_of_type_Axhw.d();
+    if (this.jdField_a_of_type_Avvd != null) {
+      this.jdField_a_of_type_Avvd.d();
     }
-    axgj.a().a(null);
+    avtq.a().a(null);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Axhw.notifyDataSetChanged();
+    this.jdField_a_of_type_Avvd.notifyDataSetChanged();
   }
 }
 

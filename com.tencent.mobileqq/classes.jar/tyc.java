@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
 
-public final class tyc
-  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
+class tyc
+  implements tyh
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
-  {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
-  }
+  tyc(txz paramtxz) {}
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    return new ProfileParams.CurLoginUsr[paramInt];
+    String str = txz.c(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      txz.c(this.a, paramGiftServiceBean);
+      txz.c(this.a).setText(paramGiftServiceBean.t);
+    }
+    txz.a(this.a);
   }
 }
 

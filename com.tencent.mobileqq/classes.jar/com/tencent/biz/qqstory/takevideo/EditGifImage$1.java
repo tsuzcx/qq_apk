@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
-import blhq;
-import bnjm;
+import bjng;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.GifAntishakeModule;
 import java.util.ArrayList;
-import yva;
-import yxt;
+import xwl;
+import xzd;
 
 class EditGifImage$1
   implements Runnable
@@ -18,15 +18,15 @@ class EditGifImage$1
   {
     if (!this.this$0.b)
     {
-      if ((!(this.this$0.jdField_a_of_type_Yxt.a.a instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Yxt.a.a).a == null) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Yxt.a.a).a.size() <= 0)) {
+      if ((!(this.this$0.jdField_a_of_type_Xzd.a.mEditSource instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Xzd.a.mEditSource).a == null) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Xzd.a.mEditSource).a.size() <= 0)) {
         break label284;
       }
-      ArrayList localArrayList = ((EditLocalGifSource)this.this$0.jdField_a_of_type_Yxt.a.a).a;
-      if (!bnjm.a().a(localArrayList, this.a)) {
+      ArrayList localArrayList = ((EditLocalGifSource)this.this$0.jdField_a_of_type_Xzd.a.mEditSource).a;
+      if (!GifAntishakeModule.getInstance().suitableForAntishake(localArrayList, this.a)) {
         break label247;
       }
       this.this$0.c = true;
-      this.this$0.jdField_a_of_type_Blhq.sendEmptyMessage(996);
+      this.this$0.jdField_a_of_type_Bjng.sendEmptyMessage(996);
       if ((this.a != null) && (this.a.size() == localArrayList.size()))
       {
         localArrayList = new ArrayList();
@@ -39,8 +39,8 @@ class EditGifImage$1
           }
           i += 1;
         }
-        this.this$0.jdField_a_of_type_Yva = new yva(this.this$0);
-        this.this$0.jdField_a_of_type_Yva.execute(new ArrayList[] { localArrayList });
+        this.this$0.jdField_a_of_type_Xwl = new xwl(this.this$0);
+        this.this$0.jdField_a_of_type_Xwl.execute(new ArrayList[] { localArrayList });
       }
     }
     label247:
@@ -50,12 +50,12 @@ class EditGifImage$1
       {
         return;
         this.this$0.c = false;
-        this.this$0.jdField_a_of_type_Blhq.sendEmptyMessage(997);
+        this.this$0.jdField_a_of_type_Bjng.sendEmptyMessage(997);
       } while (!QLog.isColorLevel());
       QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
       return;
       this.this$0.c = false;
-      this.this$0.jdField_a_of_type_Blhq.sendEmptyMessage(997);
+      this.this$0.jdField_a_of_type_Bjng.sendEmptyMessage(997);
     } while (!QLog.isColorLevel());
     label284:
     QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");

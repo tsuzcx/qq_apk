@@ -1,8 +1,30 @@
-public abstract interface awxs
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.16.1;
+import com.tencent.qphone.base.util.QLog;
+
+public class awxs
+  implements apbf
 {
-  public abstract void a(ahmg paramahmg);
+  public awxs(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    this.a.runOnUiThread(new NearbyPeopleProfileActivity.16.1(this, paramString, paramBoolean1));
+  }
 }
 
 

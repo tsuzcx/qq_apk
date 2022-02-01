@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.DynamicAvatar;
+import android.view.View;
 
-public final class arwj
-  implements Parcelable.Creator<DynamicAvatar>
+class arwj
 {
-  public DynamicAvatar a(Parcel paramParcel)
-  {
-    return new DynamicAvatar(paramParcel);
-  }
-  
-  public DynamicAvatar[] a(int paramInt)
-  {
-    return new DynamicAvatar[paramInt];
-  }
+  View[] a = new View[12];
 }
 
 

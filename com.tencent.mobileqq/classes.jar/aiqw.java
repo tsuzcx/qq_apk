@@ -1,23 +1,13 @@
-public class aiqw
-  implements bgrl
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+
+public abstract interface aiqw
 {
-  public String a;
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public aiqw(String paramString)
-  {
-    this.a = paramString;
-  }
+  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
   
-  public long a()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a);
-      return l;
-    }
-    catch (Exception localException) {}
-    return 0L;
-  }
+  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
 }
 
 

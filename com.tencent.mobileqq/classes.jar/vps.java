@@ -1,33 +1,11 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import android.graphics.drawable.Drawable;
 import java.util.List;
 
 public class vps
-  extends FragmentPagerAdapter
 {
-  public vps(QCirclePersonalBottomView paramQCirclePersonalBottomView, FragmentManager paramFragmentManager)
+  public static Drawable a(List<String> paramList)
   {
-    super(paramFragmentManager);
-  }
-  
-  public int getCount()
-  {
-    return QCirclePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < QCirclePersonalBottomView.a(this.a).size()) {
-      return (Fragment)QCirclePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    return vpt.a(paramList);
   }
 }
 

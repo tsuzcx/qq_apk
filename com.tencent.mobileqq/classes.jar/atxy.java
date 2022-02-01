@@ -1,29 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.ChatActivity;
 
-class atxy
-  extends atxd
+public class atxy
 {
-  public atxy(atwy paramatwy)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    super(paramatwy);
-  }
-  
-  protected String a()
-  {
-    return "StateSaveToWeiYunByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atwy.b(this.jdField_a_of_type_Atwy, 11, 7);
-    atwy.c(this.jdField_a_of_type_Atwy, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Atxd = new atxx(this.jdField_a_of_type_Atwy);
+    QLog.i("GameBuddyUtil", 1, "[openGameBuddyAio]");
+    Intent localIntent = new Intent(paramContext, ChatActivity.class);
+    localIntent.putExtra("uin", paramString);
+    localIntent.putExtra("uintype", paramInt);
+    paramContext.startActivity(localIntent);
   }
 }
 

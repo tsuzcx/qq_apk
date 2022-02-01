@@ -1,36 +1,141 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Array;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public class akdp
-  implements View.OnClickListener
+  extends akeu
 {
-  public akdp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private StringBuilder a;
   
-  public void onClick(View paramView)
+  public akdp(String paramString1, String paramString2)
   {
-    if ((this.a.d == 15) && (ChatHistoryTroopMemberFragment.a(this.a).size() > 0))
+    super(paramString1, paramString2);
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+  }
+  
+  public boolean a(afkx paramafkx, String paramString, float paramFloat1, int paramInt, float paramFloat2)
+  {
+    if ((paramafkx == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("param_deleted_uins", ChatHistoryTroopMemberFragment.a(this.a));
-      this.a.getActivity().setResult(-1, localIntent);
-      if ((this.a.f == null) || (!this.a.f.equals(this.a.getActivity().app.getCurrentAccountUin()))) {
-        break label178;
+      do
+      {
+        return false;
+        paramafkx = akeh.a(paramafkx, 28, 28, paramFloat2);
+        localObject1 = a(paramafkx);
+        akeh.a(paramafkx);
+      } while (localObject1 == null);
+      Object localObject2 = a((float[][][][])localObject1);
+      paramafkx = new HashSet();
+      Object localObject1 = new LinkedList();
+      paramFloat2 = Math.min(0.01F, paramFloat1);
+      if (localObject2 != null)
+      {
+        paramInt = 0;
+        while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          if ((localObject2.length > paramInt) && (localObject2[paramInt] > paramFloat2))
+          {
+            ((List)localObject1).add(new akdr((String)this.jdField_a_of_type_JavaUtilList.get(paramInt), localObject2[paramInt]));
+            if ((localObject2[paramInt] > paramFloat1) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+              paramafkx.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+            }
+          }
+          paramInt += 1;
+        }
       }
+      Collections.sort((List)localObject1, new akdq(this));
+      localObject2 = new StringBuilder();
+      paramInt = 0;
+      while ((paramInt < 20) && (paramInt < ((List)localObject1).size()))
+      {
+        akdr localakdr = (akdr)((List)localObject1).get(paramInt);
+        ((StringBuilder)localObject2).append(localakdr.jdField_a_of_type_JavaLangString + ":" + localakdr.jdField_a_of_type_Float + "\n");
+        paramInt += 1;
+      }
+      this.jdField_a_of_type_JavaLangStringBuilder = ((StringBuilder)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("DrawClassifier.DefaultClassifier", 2, "recog result:" + ((StringBuilder)localObject2).toString());
+      }
+      if (paramafkx.contains(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DrawClassifier.DefaultClassifier", 2, "recognition succ:" + paramString);
+        }
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DrawClassifier.DefaultClassifier", 2, "recognition failed:" + paramString);
+    return false;
+  }
+  
+  public float[][][][] a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return (float[][][][])null;
     }
-    label178:
-    for (int i = 0;; i = 1)
+    float[][][][] arrayOfFloat = (float[][][][])Array.newInstance(Float.TYPE, new int[] { 1, 28, 28, 1 });
+    int[] arrayOfInt1 = new int[784];
+    float[] arrayOfFloat1 = new float[arrayOfInt1.length];
+    int[] arrayOfInt2 = new int[784];
+    paramBitmap.getPixels(arrayOfInt2, 0, paramBitmap.getWidth(), 0, 0, 28, 28);
+    int i = 0;
+    while (i < arrayOfInt1.length)
     {
-      bdll.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.c, "" + i, "1", ChatHistoryTroopMemberFragment.a(this.a).toString());
-      this.a.getActivity().finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      arrayOfInt1[i] = 255;
+      i += 1;
     }
+    i = 0;
+    while (i < arrayOfInt2.length)
+    {
+      arrayOfInt2[i] &= 0xFF;
+      i += 1;
+    }
+    i = 0;
+    while (i < arrayOfInt1.length)
+    {
+      arrayOfFloat1[i] = (1.0F - arrayOfInt1[i] / 255.0F);
+      i += 1;
+    }
+    int m = arrayOfFloat1.length;
+    i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      k = j;
+      if (arrayOfFloat1[i] != 0.0F) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j < 40) {
+      return (float[][][][])null;
+    }
+    i = 0;
+    while (i < arrayOfFloat[0].length)
+    {
+      j = 0;
+      while (j < arrayOfFloat[0][i].length)
+      {
+        arrayOfFloat[0][i][j][0] = arrayOfFloat1[(i * 28 + j)];
+        j += 1;
+      }
+      i += 1;
+    }
+    return arrayOfFloat;
   }
 }
 

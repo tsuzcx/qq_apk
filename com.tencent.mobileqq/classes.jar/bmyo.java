@@ -1,9 +1,48 @@
-import android.view.View;
-import cooperation.qzone.contentbox.model.MQMsg;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
-public abstract interface bmyo
+public class bmyo
+  implements bmth
 {
-  public abstract void a(MQMsg paramMQMsg, View paramView, int paramInt);
+  public bmyo(MusicProviderView paramMusicProviderView) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Bjng.sendEmptyMessage(2);
+  }
+  
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bmyx);
+    }
+    if (this.a.jdField_a_of_type_Bmyx != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.jdField_a_of_type_Bmyx.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Bmyx.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
+      MusicProviderView.a(this.a).d();
+    }
+  }
+  
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

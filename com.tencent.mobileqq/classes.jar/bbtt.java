@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
 public class bbtt
-  implements DialogInterface.OnClickListener
 {
-  public bbtt(SignatureEditFragment paramSignatureEditFragment) {}
+  public int a;
+  public int b = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbtt(SVHwEncoder.HwEncode paramHwEncode)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().finish();
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_close", "click_close", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

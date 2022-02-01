@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auxu;
-import azxc;
-import azxd;
-import azxf;
-import zyx;
+import atky;
+import aylr;
+import ayls;
+import aylu;
+import yyi;
 
 class ShareHelper$1$1$1
   implements Runnable
@@ -20,10 +20,10 @@ class ShareHelper$1$1$1
     if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_Azxf.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_Aylu.a(false);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      zyx.a(1, 2131695816);
+      yyi.a(1, 2131695956);
       return;
     }
     Bundle localBundle = new Bundle();
@@ -32,10 +32,10 @@ class ShareHelper$1$1$1
     localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt(auxu.e, 1);
+    localBundle.putInt(atky.e, 1);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    auxu.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
+    atky.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
   }
 }
 

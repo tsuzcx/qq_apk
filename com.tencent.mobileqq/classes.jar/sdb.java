@@ -1,27 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
 class sdb
-  implements Animator.AnimatorListener
+  extends ofd
 {
-  sdb(sda paramsda, boolean paramBoolean) {}
+  private sdb(scw paramscw) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    sda.a(this.jdField_a_of_type_Sda, this.jdField_a_of_type_Boolean);
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      scw.a(this.a).addAll(scw.a(this.a).a(paramBundle));
+      this.a.f();
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    sda.a(this.jdField_a_of_type_Sda, this.jdField_a_of_type_Boolean);
-    sda.a(this.jdField_a_of_type_Sda);
-    this.jdField_a_of_type_Sda.b.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,55 +1,72 @@
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
 public class zbb
 {
-  public final float a;
-  public final int a;
-  public final PointF a;
-  public final String a;
-  public final float b;
-  public final int b;
-  public final float c;
-  public final int c;
-  public final float d;
-  public final int d;
+  public static final String a;
+  public static final HashMap<String, String> a;
+  public static final String[] a;
+  public static final String b;
+  public static final HashMap<String, String> b;
+  public static final String c;
+  public static final HashMap<String, String> c;
+  public static final String d;
+  private static final String e = VFSAssistantUtils.getSDKPrivatePath("cache/");
+  private static final String f = VFSAssistantUtils.getSDKPrivatePath("qsubscribe/");
   
-  public zbb(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_c_of_type_Float = paramFloat5;
-    this.jdField_d_of_type_Float = paramFloat6;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
+    jdField_a_of_type_JavaLangString = f + "file/";
+    jdField_b_of_type_JavaLangString = f + "cache/";
+    jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "animation/";
+    d = e + "tencent_sdk_download/";
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_c_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("follow_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/follow_guide_pics.zip");
+    jdField_a_of_type_JavaUtilHashMap.put("praise_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/praise_guide_pics.zip");
+    jdField_b_of_type_JavaUtilHashMap.put("follow_guide_pics", jdField_c_of_type_JavaLangString + "follow_guide_pics" + File.separator);
+    jdField_b_of_type_JavaUtilHashMap.put("praise_guide_pics", jdField_c_of_type_JavaLangString + "praise_guide_pics" + File.separator);
+    jdField_c_of_type_JavaUtilHashMap.put("follow_guide_pics", "KEY_SUBSCRIBE_FOLLOW_GUIDE_DOWNLOAD_URL");
+    jdField_c_of_type_JavaUtilHashMap.put("praise_guide_pics", "KEY_SUBSCRIBE_FOLLOW_PRAISE_DOWNLOAD_URL");
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "follow_guide_pics", "praise_guide_pics" };
   }
   
-  public zbb(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_c_of_type_Float = paramFloat5;
-    this.jdField_d_of_type_Float = paramFloat6;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
+    return String.format("https://h5.qzone.qq.com/subscription/openshop/%s?_proxy=1&_wv=3", new Object[] { paramString });
   }
   
-  public static zbb a(@NonNull zbb paramzbb)
+  public static String a(String paramString1, String paramString2)
   {
-    return new zbb(paramzbb.jdField_a_of_type_AndroidGraphicsPointF.x, paramzbb.jdField_a_of_type_AndroidGraphicsPointF.y, paramzbb.jdField_a_of_type_Float, paramzbb.jdField_b_of_type_Float, paramzbb.jdField_c_of_type_Float, paramzbb.jdField_d_of_type_Float, paramzbb.jdField_a_of_type_Int, paramzbb.jdField_b_of_type_Int, paramzbb.jdField_a_of_type_JavaLangString, paramzbb.jdField_c_of_type_Int, paramzbb.jdField_d_of_type_Int);
+    String str = String.format("https://h5.qzone.qq.com/subscription/addgoods/%s?_proxy=1&_wv=3", new Object[] { paramString1 });
+    paramString1 = str;
+    if (paramString2 != null)
+    {
+      paramString1 = str;
+      if (!StringUtil.isEmpty(paramString2)) {
+        paramString1 = str + "&id=" + URLEncoder.encode(paramString2);
+      }
+    }
+    return paramString1;
   }
   
-  public String toString()
+  public static String b(String paramString)
   {
-    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
+    return "https://h5.qzone.qq.com/subscription/morerecommend/{uin}?_proxy=1&_wv=3&_p=".replace("{uin}", paramString);
+  }
+  
+  public static String c(String paramString)
+  {
+    paramString = jdField_a_of_type_JavaLangString + paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscribeConstants", 4, "QSUSCRIBE_DOWNLOAD_ROOT_PATH" + jdField_a_of_type_JavaLangString + "   getSDKPrivatePath realPath=" + paramString);
+    }
+    return paramString;
   }
 }
 

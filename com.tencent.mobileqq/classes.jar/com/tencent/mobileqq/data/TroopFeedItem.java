@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import bhsr;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.utils.StringUtil;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class TroopFeedItem
@@ -46,8 +46,8 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((bhsr.a(this.tag)) || (bhsr.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (bhsr.a(this.content))) {
+    if ((StringUtil.isEmpty(this.tag)) || (StringUtil.isEmpty(this.title))) {}
+    while (((this.type == 0) || (this.type == 131)) && (StringUtil.isEmpty(this.content))) {
       return false;
     }
     return true;
@@ -55,7 +55,7 @@ public class TroopFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
-import android.view.View;
-
 public class binh
 {
-  public View a;
-  public View b;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 

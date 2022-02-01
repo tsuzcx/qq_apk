@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+
 class ARScanEntryView$16
   implements Runnable
 {
@@ -7,9 +9,7 @@ class ARScanEntryView$16
   
   public void run()
   {
-    ARScanEntryView.a(this.this$0, true);
-    ARScanEntryView.e(this.this$0);
-    ARScanEntryView.b(this.this$0, true);
+    this.this$0.a.setVisibility(8);
   }
 }
 

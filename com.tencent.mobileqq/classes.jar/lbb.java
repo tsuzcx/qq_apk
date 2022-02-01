@@ -1,89 +1,71 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class lbb
-  extends QIPCModule
+  implements mxa
 {
-  private lbb()
+  public void a(String paramString1, String paramString2)
   {
-    super("AioShareMusicIPCMainClient");
-  }
-  
-  public static lbb a()
-  {
-    return lbd.a();
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (localQQAppInterface != null) {}
-    try
-    {
-      ((ListenTogetherManager)localQQAppInterface.getManager(331)).c(new JSONObject(paramBundle.getString("data")));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
     }
   }
   
-  public static void a(JSONObject paramJSONObject, String paramString)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public boolean a()
+  {
+    return QLog.isDevelopLevel();
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
-    }
-    if (bool)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+      QLog.i(paramString1, 2, paramString2);
     }
   }
   
-  private void b(Bundle paramBundle)
+  public boolean b()
   {
-    QQAppInterface localQQAppInterface = null;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (localQQAppInterface != null) {}
-    try
-    {
-      ((ListenTogetherManager)localQQAppInterface.getManager(331)).b(new JSONObject(paramBundle.getString("data")));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
+    return QLog.isColorLevel();
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
     }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void e(String paramString1, String paramString2)
   {
-    if ("checkAioShareMusic".equals(paramString)) {
-      b(paramBundle);
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
     }
-    for (;;)
-    {
-      return null;
-      if ("startListenAioShareMusic".equals(paramString)) {
-        a(paramBundle);
-      }
+  }
+  
+  public void f(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
     }
+  }
+  
+  public void g(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void h(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
   }
 }
 

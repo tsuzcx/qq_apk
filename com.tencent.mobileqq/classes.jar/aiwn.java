@@ -1,34 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
 class aiwn
-  implements View.OnClickListener
+  implements asxo
 {
   aiwn(aiwm paramaiwm) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    QQAppInterface localQQAppInterface;
-    String str2;
-    if (this.a.a())
+    if ((paramInt1 == 3) && (paramInt2 == 0))
     {
-      axan.a().a(aiwm.a(this.a), aiwm.a(this.a).a);
-      aiwm.a(this.a).a();
-      localQQAppInterface = aiwm.a(this.a);
-      str2 = aiwm.a(this.a).a;
-      if (aiwm.a(this.a).b(aiwm.a(this.a).a) != 3) {
-        break label121;
-      }
-    }
-    label121:
-    for (String str1 = "1";; str1 = "0")
-    {
-      bdll.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str2, str1, "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      bcef.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.a, true);
     }
   }
 }

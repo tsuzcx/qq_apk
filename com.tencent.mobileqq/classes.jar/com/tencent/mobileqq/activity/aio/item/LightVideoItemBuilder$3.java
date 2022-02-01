@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.text.TextUtils;
-import bhmi;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.util.Map;
 
 class LightVideoItemBuilder$3
@@ -15,7 +15,7 @@ class LightVideoItemBuilder$3
       if (LightVideoItemBuilder.a().size() == 0) {
         RMVideoStateMgr.c(this.a);
       }
-      bhmi.a(this.a);
+      FileUtils.deleteDirectory(this.a);
     }
   }
 }

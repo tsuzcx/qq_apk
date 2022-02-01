@@ -1,6 +1,6 @@
 public abstract interface bnzs
 {
-  public abstract void a(int paramInt);
+  public abstract void a(String paramString);
 }
 
 

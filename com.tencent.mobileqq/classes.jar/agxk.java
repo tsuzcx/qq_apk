@@ -1,36 +1,20 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
-public class agxk
+class agxk
+  implements QQPermissionCallback
 {
-  public static agxf a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
+  agxk(agxg paramagxg, XPanelContainer paramXPanelContainer) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    boolean bool = true;
-    anyw localanyw = (anyw)paramQQAppInterface.getManager(51);
-    if (localanyw != null) {
-      bool = localanyw.b(paramString);
-    }
-    if (bool)
-    {
-      paramQQAppInterface = new agiq(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-      if (QLog.isColorLevel())
-      {
-        paramContext = new StringBuilder().append("getIntimateView bFriend = ").append(bool).append(" IntimateView ");
-        if (paramQQAppInterface != null) {
-          break label111;
-        }
-      }
-    }
-    label111:
-    for (paramFragmentActivity = "null";; paramFragmentActivity = "created")
-    {
-      QLog.i("IntimateViewFactory", 2, paramFragmentActivity);
-      return paramQQAppInterface;
-      paramQQAppInterface = new agxr(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-      break;
-    }
+    bfur.a(agxg.a(this.jdField_a_of_type_Agxg).getActivity());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    agxg.a(this.jdField_a_of_type_Agxg, this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
   }
 }
 

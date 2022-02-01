@@ -1,43 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class bgdc
-  implements bliz
+class bgdc
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public bgdc(SearchReciteArticleFragment paramSearchReciteArticleFragment, blir paramblir, bgdg parambgdg, int paramInt) {}
+  bgdc(bgdb parambgdb) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    int i = paramInt;
-    if (this.jdField_a_of_type_Bgdg.jdField_a_of_type_Int == 2) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
     {
     default: 
-      return;
-    case 0: 
-      SelectReciteParagraphFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bgdg.c, SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment));
-      bhju.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "0", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bgdg.jdField_a_of_type_Int) });
-      return;
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
     }
-    bhju.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "1", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bgdg.jdField_a_of_type_Int) });
-    bhju.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bgdg.jdField_a_of_type_Int) });
-    try
-    {
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment, bgei.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bgdg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bgdg.c, null));
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    return 1;
   }
 }
 

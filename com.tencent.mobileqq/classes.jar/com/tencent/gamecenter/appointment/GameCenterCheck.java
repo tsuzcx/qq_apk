@@ -1,24 +1,24 @@
 package com.tencent.gamecenter.appointment;
 
-import acig;
-import acik;
+import abep;
+import abet;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.text.TextUtils;
-import avmc;
-import bcuy;
-import bhnv;
-import bkad;
-import bkag;
-import bnyy;
+import atzb;
+import bboi;
+import bifn;
+import bifq;
+import blec;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -56,7 +56,7 @@ public class GameCenterCheck
       {
         i += 1;
         break;
-        Object localObject2 = acik.a(paramString + paramArrayOfString[i]);
+        Object localObject2 = abet.a(paramString + paramArrayOfString[i]);
         localDownloadInfo = new DownloadInfo();
         try
         {
@@ -84,7 +84,7 @@ public class GameCenterCheck
             break label274;
           }
           QLog.i("GameCenterCheck", 2, localDownloadInfo.c + " installed");
-          acik.a(null, "426", "202142", localDownloadInfo.c, "42601", "1", "116");
+          abet.a(null, "426", "202142", localDownloadInfo.c, "42601", "1", "116");
         }
         if (localObject1 == null)
         {
@@ -103,7 +103,7 @@ public class GameCenterCheck
   public static void a()
   {
     boolean bool = b();
-    bkad.c("GameCenterCheck", "checkGameCenter canAppointStart=" + bool);
+    bifn.c("GameCenterCheck", "checkGameCenter canAppointStart=" + bool);
     if (!bool) {
       return;
     }
@@ -112,12 +112,12 @@ public class GameCenterCheck
   
   public static void a(JSONArray paramJSONArray)
   {
-    bkad.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp jsonArray=" + paramJSONArray);
+    bifn.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp jsonArray=" + paramJSONArray);
     if ((paramJSONArray == null) || (paramJSONArray.length() < 1)) {}
     for (;;)
     {
       return;
-      acik.a(new String[] { "APPOINTMENT_UPDATE_LIST" });
+      abet.a(new String[] { "APPOINTMENT_UPDATE_LIST" });
       int i = 0;
       while (i < paramJSONArray.length())
       {
@@ -134,10 +134,10 @@ public class GameCenterCheck
           int k = ((JSONObject)localObject).optInt("min_version");
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str5)))
           {
-            acik.a(null, "558", "206679", str1, "72702", "4", "430", new String[] { "", "1", "5" });
-            if (!acik.a(str2, j, k))
+            abet.a(null, "558", "206679", str1, "72702", "4", "430", new String[] { "", "1", "5" });
+            if (!abet.a(str2, j, k))
             {
-              bkad.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp cancel, appId=" + str1 + ",checkVersion is false");
+              bifn.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp cancel, appId=" + str1 + ",checkVersion is false");
             }
             else
             {
@@ -150,7 +150,7 @@ public class GameCenterCheck
               ((Bundle)localObject).putString("via", "auto_update");
               ((Bundle)localObject).putInt("from", 3);
               ((Bundle)localObject).putInt("flags", 63);
-              avmc.a((Bundle)localObject, str1, false, 0);
+              atzb.a((Bundle)localObject, str1, false, 0);
             }
           }
         }
@@ -158,7 +158,7 @@ public class GameCenterCheck
         {
           QLog.e("GameCenterCheck", 2, "checkIfNeedToDownloadUpdateApp exception", localException);
         }
-        bkad.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp params check fail，jsonTmp=" + ((JSONObject)localObject).toString());
+        bifn.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp params check fail，jsonTmp=" + ((JSONObject)localObject).toString());
         i += 1;
       }
     }
@@ -166,7 +166,7 @@ public class GameCenterCheck
   
   public static void a(String[] paramArrayOfString)
   {
-    bkad.c("GameCenterCheck", "checkIfNeedToDownloadDelayApp:" + paramArrayOfString);
+    bifn.c("GameCenterCheck", "checkIfNeedToDownloadDelayApp:" + paramArrayOfString);
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {}
     for (;;)
     {
@@ -175,24 +175,24 @@ public class GameCenterCheck
       int i = 0;
       while (i < j)
       {
-        acik.a(null, "558", "203713", paramArrayOfString[i], "55801", "4", "430");
+        abet.a(null, "558", "203713", paramArrayOfString[i], "55801", "4", "430");
         i += 1;
       }
-      acik.a("DELAY_LIST", "");
+      abet.a("DELAY_LIST", "");
       paramArrayOfString = a(paramArrayOfString, "DELAY_APPID_DETAIL_");
       if (paramArrayOfString.size() == 0)
       {
-        bkad.c("GameCenterCheck", "checkIfNeedToDownloadDelayApp params.size=0:");
+        bifn.c("GameCenterCheck", "checkIfNeedToDownloadDelayApp params.size=0:");
         return;
       }
       paramArrayOfString = paramArrayOfString.iterator();
       while (paramArrayOfString.hasNext())
       {
         Object localObject = (DownloadInfo)paramArrayOfString.next();
-        localObject = acik.a("DELAY_APPID_DETAIL_" + ((DownloadInfo)localObject).c);
+        localObject = abet.a("DELAY_APPID_DETAIL_" + ((DownloadInfo)localObject).c);
         try
         {
-          acik.a((String)localObject, true, 2);
+          abet.a((String)localObject, true, 2);
         }
         catch (Exception localException)
         {
@@ -204,10 +204,10 @@ public class GameCenterCheck
   
   public static boolean a()
   {
-    if ((!TextUtils.isEmpty(acik.a("APPOINTMENT_LIST"))) || (!TextUtils.isEmpty(acik.a("APPOINTMENT_UPDATE_LIST"))) || (!TextUtils.isEmpty(acik.a("DELAY_LIST"))) || (!TextUtils.isEmpty(acik.a("APPOINTMENT_RES_LIST"))) || (!TextUtils.isEmpty(acik.a("APPOINTMENT_TGPA_LIST")))) {}
+    if ((!TextUtils.isEmpty(abet.a("APPOINTMENT_LIST"))) || (!TextUtils.isEmpty(abet.a("APPOINTMENT_UPDATE_LIST"))) || (!TextUtils.isEmpty(abet.a("DELAY_LIST"))) || (!TextUtils.isEmpty(abet.a("APPOINTMENT_RES_LIST"))) || (!TextUtils.isEmpty(abet.a("APPOINTMENT_TGPA_LIST")))) {}
     for (boolean bool = true;; bool = false)
     {
-      bkad.c("GameCenterCheck", "hasAppointTask hasTask=" + bool);
+      bifn.c("GameCenterCheck", "hasAppointTask hasTask=" + bool);
       return bool;
     }
   }
@@ -219,7 +219,7 @@ public class GameCenterCheck
     if (paramJSONArray != null)
     {
       str1 = paramJSONArray.toString();
-      bkad.c("GameCenterCheck", str1);
+      bifn.c("GameCenterCheck", str1);
       if ((paramJSONArray != null) && (paramJSONArray.length() >= 1)) {
         break label61;
       }
@@ -230,7 +230,7 @@ public class GameCenterCheck
       str1 = "empty";
       break;
       label61:
-      acik.a(new String[] { "APPOINTMENT_TGPA_LIST" });
+      abet.a(new String[] { "APPOINTMENT_TGPA_LIST" });
       int i = 0;
       while (i < paramJSONArray.length())
       {
@@ -256,17 +256,17 @@ public class GameCenterCheck
           if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
             break label576;
           }
-          bkad.c("GameCenterCheck", "checkIfNeedToDownloadTGPA packageName=" + (String)localObject1 + ",resType=" + k + ",appId=" + str1 + ",resName=" + str2 + ",srcUrl=" + str3 + ",versionCode=" + j + ",versionName=" + str4 + ",resMD5=" + str5);
-          if (((k == 0) && (!acik.e)) || ((k == 1) && (!acik.d)) || ((k == 4) && (!acik.d))) {
+          bifn.c("GameCenterCheck", "checkIfNeedToDownloadTGPA packageName=" + (String)localObject1 + ",resType=" + k + ",appId=" + str1 + ",resName=" + str2 + ",srcUrl=" + str3 + ",versionCode=" + j + ",versionName=" + str4 + ",resMD5=" + str5);
+          if (((k == 0) && (!abet.e)) || ((k == 1) && (!abet.d)) || ((k == 4) && (!abet.d))) {
             break label605;
           }
           if (k == 1)
           {
-            boolean bool = acik.a((String)localObject1, j);
+            boolean bool = abet.a((String)localObject1, j);
             if (bool) {
               break label470;
             }
-            bkad.c("GameCenterCheck", "checkIfNeedToDownloadTGPA cancel, checkVersion=" + bool);
+            bifn.c("GameCenterCheck", "checkIfNeedToDownloadTGPA cancel, checkVersion=" + bool);
           }
         }
         catch (Exception localException)
@@ -275,16 +275,16 @@ public class GameCenterCheck
         }
         if (k == 4)
         {
-          int n = acik.a((String)localObject1);
+          int n = abet.a((String)localObject1);
           if (n != -1)
           {
-            bkad.c("GameCenterCheck", "checkIfNeedToDownloadTGPA cancel, localVersion=" + n);
+            bifn.c("GameCenterCheck", "checkIfNeedToDownloadTGPA cancel, localVersion=" + n);
             break label605;
           }
         }
         else
         {
-          if ((k == 0) && (acik.a(0, localException, str2))) {
+          if ((k == 0) && (abet.a(0, localException, str2))) {
             break label605;
           }
         }
@@ -299,10 +299,10 @@ public class GameCenterCheck
         ((Bundle)localObject2).putInt("versionCode", j);
         ((Bundle)localObject2).putString("resMD5", str5);
         ((Bundle)localObject2).putString("via", "auto_tgpa");
-        avmc.a((Bundle)localObject2, localException, true, k);
+        atzb.a((Bundle)localObject2, localException, true, k);
         break label605;
         label576:
-        bkad.c("GameCenterCheck", "checkIfNeedToDownloadTGPA params check fail，jsonTmp=" + ((JSONObject)localObject2).toString());
+        bifn.c("GameCenterCheck", "checkIfNeedToDownloadTGPA params check fail，jsonTmp=" + ((JSONObject)localObject2).toString());
         label605:
         i += 1;
       }
@@ -311,7 +311,7 @@ public class GameCenterCheck
   
   public static void b(String[] paramArrayOfString)
   {
-    bkad.c("GameCenterCheck", "checkIfNeedToDownloadAppointApp:" + paramArrayOfString);
+    bifn.c("GameCenterCheck", "checkIfNeedToDownloadAppointApp:" + paramArrayOfString);
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {
       return;
     }
@@ -319,7 +319,7 @@ public class GameCenterCheck
     int i = 0;
     while (i < j)
     {
-      acik.a(null, "558", "203701", paramArrayOfString[i], "55801", "4", "430");
+      abet.a(null, "558", "203701", paramArrayOfString[i], "55801", "4", "430");
       i += 1;
     }
     j = 0;
@@ -330,7 +330,7 @@ public class GameCenterCheck
     {
       Object localObject3;
       if (i < paramArrayOfString.length) {
-        localObject3 = acik.a("APPOINT_APPID_DETAIL_" + paramArrayOfString[i]);
+        localObject3 = abet.a("APPOINT_APPID_DETAIL_" + paramArrayOfString[i]);
       }
       try
       {
@@ -355,7 +355,7 @@ public class GameCenterCheck
         i += 1;
       }
       if (j != 0) {
-        acik.a("APPOINTMENT_LIST", (String)localObject2);
+        abet.a("APPOINTMENT_LIST", (String)localObject2);
       }
       paramArrayOfString = ((String)localObject1).split("\\|");
       if (paramArrayOfString.length == 0) {
@@ -370,7 +370,7 @@ public class GameCenterCheck
       localObject1 = a(paramArrayOfString, "APPOINT_APPID_DETAIL_");
       if (((List)localObject1).size() < 1)
       {
-        bkad.c("GameCenterCheck", "checkIfNeedToDownloadAppointApp params.size=0:");
+        bifn.c("GameCenterCheck", "checkIfNeedToDownloadAppointApp params.size=0:");
         return;
       }
       paramArrayOfString = new JSONArray();
@@ -378,11 +378,11 @@ public class GameCenterCheck
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DownloadInfo)((Iterator)localObject1).next();
-        localObject3 = acik.a("APPOINT_APPID_DETAIL_" + ((DownloadInfo)localObject2).c);
+        localObject3 = abet.a("APPOINT_APPID_DETAIL_" + ((DownloadInfo)localObject2).c);
         try
         {
-          acik.a((String)localObject3, true, 1);
-          acik.c(((DownloadInfo)localObject2).c, "APPOINTMENT_DOWNLOAD_LIST");
+          abet.a((String)localObject3, true, 1);
+          abet.c(((DownloadInfo)localObject2).c, "APPOINTMENT_DOWNLOAD_LIST");
           paramArrayOfString.put(((DownloadInfo)localObject2).c);
         }
         catch (Exception localException1)
@@ -393,41 +393,41 @@ public class GameCenterCheck
       if (paramArrayOfString.length() <= 0) {
         break;
       }
-      bnyy.a().a(paramArrayOfString, null);
+      blec.a().a(paramArrayOfString, null);
       return;
     }
   }
   
   public static boolean b()
   {
-    if (bhnv.h(BaseApplicationImpl.getContext()))
+    if (NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext()))
     {
       PowerManager localPowerManager = (PowerManager)BaseApplicationImpl.getContext().getSystemService("power");
-      if ((localPowerManager != null) && (!localPowerManager.isScreenOn()) && ((acig.a >= 20) || (acig.b))) {
+      if ((localPowerManager != null) && (!localPowerManager.isScreenOn()) && ((abep.a >= 20) || (abep.b))) {
         return true;
       }
     }
-    acik.a(null, "426", "205572", "", "42601", "1", "116");
+    abet.a(null, "426", "205572", "", "42601", "1", "116");
     return false;
   }
   
   public int a()
   {
-    bkad.c("GameCenterCheck", "GameCenterCheck doStep");
-    acik.a();
-    if ((!acik.b) && (!acik.a) && (!acik.c) && (!acik.d) && (!acik.e))
+    bifn.c("GameCenterCheck", "GameCenterCheck doStep");
+    abet.a();
+    if ((!abet.b) && (!abet.a) && (!abet.c) && (!abet.d) && (!abet.e))
     {
-      bkad.b("GameCenterCheck", "GameCenterCheck switch is off");
+      bifn.b("GameCenterCheck", "GameCenterCheck switch is off");
       return super.a();
     }
-    Long localLong3 = Long.valueOf(acik.a("APPOINTMENT_LASTGET_TIME"));
-    Long localLong2 = Long.valueOf(acik.a("APPOINTMENT_LOAD_GAP"));
+    Long localLong3 = Long.valueOf(abet.a("APPOINTMENT_LASTGET_TIME"));
+    Long localLong2 = Long.valueOf(abet.a("APPOINTMENT_LOAD_GAP"));
     Long localLong1 = localLong2;
     if (0L == localLong2.longValue()) {
       localLong1 = Long.valueOf(30L);
     }
     long l = NetConnInfoCenter.getServerTime();
-    bkad.c("GameCenterCheck", "GameCenterCheck loadGap=" + localLong1 + ", lastTime:" + localLong3 + ",isAppointDownload=" + acik.b + ",isDelayDownload=" + acik.a + ",isUpdateDownload=" + acik.c + ",isResApkDownload=" + acik.d + ",isResDefDownload=" + acik.e);
+    bifn.c("GameCenterCheck", "GameCenterCheck loadGap=" + localLong1 + ", lastTime:" + localLong3 + ",isAppointDownload=" + abet.b + ",isDelayDownload=" + abet.a + ",isUpdateDownload=" + abet.c + ",isResApkDownload=" + abet.d + ",isResDefDownload=" + abet.e);
     int i;
     if (l - localLong3.longValue() < localLong1.longValue())
     {
@@ -440,16 +440,16 @@ public class GameCenterCheck
     for (;;)
     {
       if (a()) {
-        acig.a();
+        abep.a();
       }
-      bkag.a();
-      bnyy.a().a(false, -1L);
+      bifq.a();
+      blec.a().a(false, -1L);
       return super.a();
       i = 0;
       break;
       label257:
-      bkad.c("GameCenterCheck", "GameCenterCheck getPreDownloadList loadGap=" + localLong1);
-      ((bcuy)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(12)).c();
+      bifn.c("GameCenterCheck", "GameCenterCheck getPreDownloadList loadGap=" + localLong1);
+      ((bboi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(12)).c();
     }
   }
   

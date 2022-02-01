@@ -1,105 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 public class rll
+  extends SimpleAdapter
 {
-  public static VideoInfo a(BaseArticleInfo paramBaseArticleInfo)
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131368464, 2131378564, 2131378563 };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
+  
+  public rll(Context paramContext, List<Map<String, CharSequence>> paramList)
   {
-    VideoInfo localVideoInfo = new VideoInfo();
-    localVideoInfo.g = paramBaseArticleInfo.getInnerUniqueID();
-    localVideoInfo.jdField_b_of_type_Boolean = sel.g(paramBaseArticleInfo);
-    localVideoInfo.jdField_d_of_type_Long = paramBaseArticleInfo.mFeedId;
-    localVideoInfo.jdField_h_of_type_Int = paramBaseArticleInfo.mFeedType;
-    return localVideoInfo;
+    super(paramContext, paramList, 2131560302, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
   }
   
-  public static BaseArticleInfo a(VideoInfo paramVideoInfo)
+  public void setViewImage(ImageView paramImageView, String paramString)
   {
-    if ((paramVideoInfo != null) && (paramVideoInfo.jdField_a_of_type_Int != 0))
+    if ("create_topic".equals(paramString))
     {
-      ArticleInfo localArticleInfo = new ArticleInfo();
-      try
-      {
-        localArticleInfo.mArticleID = paramVideoInfo.jdField_c_of_type_Long;
-        localArticleInfo.innerUniqueID = paramVideoInfo.g;
-        localArticleInfo.mTitle = paramVideoInfo.jdField_c_of_type_JavaLangString;
-        localArticleInfo.mSubscribeName = paramVideoInfo.k;
-        localArticleInfo.mSubscribeID = paramVideoInfo.j;
-        localArticleInfo.mFirstPagePicUrl = paramVideoInfo.jdField_b_of_type_JavaLangString;
-        localArticleInfo.mVideoDuration = paramVideoInfo.jdField_d_of_type_Int;
-        localArticleInfo.mVideoCoverUrl = tye.a(paramVideoInfo.jdField_b_of_type_JavaLangString, paramVideoInfo.jdField_a_of_type_Int);
-        localArticleInfo.mVideoVid = paramVideoInfo.jdField_a_of_type_JavaLangString;
-        localArticleInfo.mFeedType = paramVideoInfo.jdField_h_of_type_Int;
-        localArticleInfo.mFeedId = paramVideoInfo.jdField_d_of_type_Long;
-        localArticleInfo.mXGFileSize = paramVideoInfo.jdField_b_of_type_Long;
-        localArticleInfo.busiType = paramVideoInfo.jdField_a_of_type_Int;
-        localArticleInfo.mJsonVideoList = paramVideoInfo.l;
-        localArticleInfo.mVideoCommentCount = paramVideoInfo.jdField_e_of_type_Int;
-        localArticleInfo.mVideoJsonWidth = paramVideoInfo.jdField_b_of_type_Int;
-        localArticleInfo.mVideoJsonHeight = paramVideoInfo.jdField_c_of_type_Int;
-        localArticleInfo.mArticleContentUrl = paramVideoInfo.jdField_f_of_type_JavaLangString;
-        localArticleInfo.thirdIcon = paramVideoInfo.p;
-        localArticleInfo.thirdName = paramVideoInfo.k;
-        localArticleInfo.thirdAction = paramVideoInfo.o;
-        localArticleInfo.thirdUin = paramVideoInfo.j;
-        localArticleInfo.thirdUinName = paramVideoInfo.jdField_q_of_type_JavaLangString;
-        localArticleInfo.mVideoPlayCount = paramVideoInfo.jdField_q_of_type_Int;
-        localArticleInfo.mRecommentdReason = paramVideoInfo.jdField_h_of_type_JavaLangString;
-        localArticleInfo.videoReportInfo = paramVideoInfo.z;
-        localArticleInfo.mSummary = paramVideoInfo.jdField_d_of_type_JavaLangString;
-        localArticleInfo.mTime = paramVideoInfo.jdField_a_of_type_Long;
-        localArticleInfo.mAlgorithmID = paramVideoInfo.jdField_f_of_type_Long;
-        localArticleInfo.mDiskLikeInfoString = DislikeInfo.a(paramVideoInfo.jdField_a_of_type_JavaUtilArrayList);
-        localArticleInfo.mArticleSubscriptText = paramVideoInfo.x;
-        localArticleInfo.mArticleSubscriptColor = paramVideoInfo.y;
-        localArticleInfo.mRecommendSeq = paramVideoInfo.jdField_e_of_type_Long;
-        localArticleInfo.mVideoLogoUrl = paramVideoInfo.u;
-        if (paramVideoInfo.jdField_b_of_type_Boolean)
-        {
-          paramVideoInfo.jdField_a_of_type_Int = 6;
-          localArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl = new qyl();
-          if (!TextUtils.isEmpty(paramVideoInfo.j)) {
-            localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_a_of_type_Long = Long.valueOf(paramVideoInfo.j).longValue();
-          }
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_a_of_type_Int = paramVideoInfo.jdField_h_of_type_Int;
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_b_of_type_JavaLangString = paramVideoInfo.k;
-          localArticleInfo.mSocialFeedInfo.jdField_d_of_type_Int = paramVideoInfo.jdField_e_of_type_Int;
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-          qyn localqyn = new qyn();
-          localqyn.jdField_d_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
-          localqyn.jdField_e_of_type_JavaLangString = paramVideoInfo.jdField_c_of_type_JavaLangString;
-          localqyn.jdField_a_of_type_Long = (paramVideoInfo.jdField_d_of_type_Int * 1000);
-          localqyn.jdField_a_of_type_Int = paramVideoInfo.jdField_b_of_type_Int;
-          localqyn.jdField_b_of_type_Int = paramVideoInfo.jdField_c_of_type_Int;
-          localqyn.g = paramVideoInfo.g;
-          if (paramVideoInfo.jdField_e_of_type_JavaLangString != null) {
-            localqyn.jdField_e_of_type_Int = Integer.parseInt(paramVideoInfo.jdField_e_of_type_JavaLangString);
-          }
-          localqyn.jdField_h_of_type_JavaLangString = paramVideoInfo.jdField_f_of_type_JavaLangString;
-          localqyn.f = paramVideoInfo.jdField_a_of_type_Int;
-          localqyn.i = paramVideoInfo.jdField_a_of_type_JavaLangString;
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_b_of_type_JavaUtilArrayList.add(localqyn);
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxt.jdField_a_of_type_Long = Long.parseLong(paramVideoInfo.j);
-          paramVideoInfo = new qxr();
-          paramVideoInfo.a = Long.valueOf(localArticleInfo.mFeedId);
-          paramVideoInfo.b = Long.valueOf(localArticleInfo.mFeedType);
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr = paramVideoInfo;
-        }
-        return localArticleInfo;
-      }
-      catch (Throwable paramVideoInfo)
-      {
-        paramVideoInfo.printStackTrace();
-        return localArticleInfo;
-      }
+      paramImageView.setImageResource(2130849447);
+      return;
     }
-    return null;
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      paramImageView.setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
+    }
   }
 }
 

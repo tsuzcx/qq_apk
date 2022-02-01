@@ -1,433 +1,509 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Message;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.text.TextPaint;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.animation.Animation;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.1;
-import com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.2;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class axtr
+  extends BaseAdapter
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private axua jdField_a_of_type_Axua;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ArrayList<AutoReplyText> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public axtr(QQAppInterface paramQQAppInterface, Context paramContext, Drawable paramDrawable)
   {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    ThreadManager.post(new OldMutualMarkLogicHelper.2(paramQQAppInterface), 5, null, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aijm paramaijm)
+  private View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
   {
-    ThreadManager.post(new OldMutualMarkLogicHelper.1(paramQQAppInterface, paramSessionInfo, paramaijm), 5, null, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForUniteGrayTip paramMessageForUniteGrayTip, MqqHandler paramMqqHandler, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt)
-  {
-    Object localObject = null;
-    if (a(paramMessageForUniteGrayTip.subType))
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558424, paramViewGroup, false);
+    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131365073);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramViewGroup.getLayoutParams();
+    if (getItemViewType(paramInt) == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendReactive", 2, "new message graytips big ship");
-      }
-      paramMqqHandler.sendEmptyMessage(70);
+      localMarginLayoutParams.topMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298440);
+      localMarginLayoutParams.bottomMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298437);
+      paramViewGroup.setText(2131690214);
+      paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131690214));
     }
     for (;;)
     {
-      return;
-      if (b(paramMessageForUniteGrayTip.subType))
+      paramViewGroup.setLayoutParams(localMarginLayoutParams);
+      return paramLayoutInflater;
+      localMarginLayoutParams.bottomMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298440);
+      localMarginLayoutParams.topMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298437);
+      paramViewGroup.setText(2131690216);
+      paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131690216));
+    }
+  }
+  
+  private axub a(LayoutInflater paramLayoutInflater, int paramInt, View paramView, ViewGroup paramViewGroup, AutoReplyText paramAutoReplyText)
+  {
+    if ((paramView == null) || (paramView.getTag() == null) || (paramView.getVisibility() == 8))
+    {
+      paramView = paramLayoutInflater.inflate(2131558420, paramViewGroup, false);
+      paramLayoutInflater = paramView.findViewById(2131365660);
+      if (ThemeUtil.isDefaultTheme())
       {
+        paramInt = 0;
+        paramLayoutInflater.setVisibility(paramInt);
+        if ((!ThemeUtil.isDefaultTheme()) && (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))) {
+          paramView.findViewById(2131376285).setBackgroundResource(2130839485);
+        }
+        paramView.findViewById(2131369842).setPadding(0, 0, 0, 0);
+        paramView.findViewById(2131376469).setVisibility(8);
+        paramViewGroup = (TextView)paramView.findViewById(2131369869);
+        paramViewGroup.setEditableFactory(new axtt(this, paramViewGroup));
+        paramLayoutInflater = new axub(null);
+        paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramView;
+        paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup;
+        paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376441));
+        paramLayoutInflater.b = paramView.findViewById(2131365797);
+        paramLayoutInflater.c = paramView.findViewById(2131365798);
+        paramLayoutInflater.d = paramView.findViewById(2131378397);
+        paramLayoutInflater.jdField_a_of_type_AndroidViewView.setTag(paramLayoutInflater);
+        label200:
+        paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new axtu(this, paramAutoReplyText));
+        paramLayoutInflater.b.setOnClickListener(new axtv(this, paramAutoReplyText));
+        boolean bool = paramAutoReplyText.getExtra().getBoolean("AutoReplyAdapter:in_use", false);
+        if (paramAutoReplyText.getTextId() != 2147483647) {
+          break label558;
+        }
+        paramInt = 1;
+        label259:
+        paramView = AutoReplyText.trimRawString(paramAutoReplyText.getRawText(), true);
+        int i = (int)(paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getPaint().density);
+        paramView = TextUtils.subQQTextString(paramView, paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 3, i, ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(67.0F), true);
         if (QLog.isColorLevel()) {
-          QLog.d("FriendReactive", 2, "new message graytips friendship");
+          QLog.d("AutoReplyAdapter", 2, "Truncate subText: " + paramView);
         }
-        paramMqqHandler.sendEmptyMessage(88);
-        return;
+        paramViewGroup = new QQText(paramView, 3, i);
+        paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
+        paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramViewGroup);
+        paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(new QQText(amtj.a(2131700008) + paramView, 3, i));
+        paramLayoutInflater.c.setOnClickListener(new axtw(this, paramAutoReplyText, bool));
+        paramLayoutInflater.jdField_a_of_type_AndroidViewView.findViewById(2131376285).setOnClickListener(new axtx(this, paramAutoReplyText));
+        paramViewGroup = paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView;
+        if (!bool) {
+          break label563;
+        }
+        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        label476:
+        paramViewGroup.setImageDrawable(paramView);
+        paramView = paramLayoutInflater.jdField_a_of_type_AndroidViewView;
+        if (paramInt == 0) {
+          break label568;
+        }
       }
-      if (c(paramMessageForUniteGrayTip.subType))
+    }
+    label558:
+    label563:
+    label568:
+    for (paramInt = 0;; paramInt = ScreenUtil.dip2px(200.0F))
+    {
+      paramView.setTag(-3, Integer.valueOf(paramInt));
+      paramView = (RelativeLayout.LayoutParams)paramLayoutInflater.d.getLayoutParams();
+      if (paramView.leftMargin > 0)
       {
-        paramMqqHandler.obtainMessage(201, new String[] { paramMessageForUniteGrayTip.caidanAnimUrl, paramMessageForUniteGrayTip.caidanAnimUrlMd5 }).sendToTarget();
-        return;
+        paramView.leftMargin = 0;
+        paramLayoutInflater.d.setLayoutParams(paramView);
       }
-      if (d(paramMessageForUniteGrayTip.subType))
-      {
-        if (!TextUtils.isEmpty(paramMessageForUniteGrayTip.caidanAnimUrl)) {
-          agkw.a().a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, new axso(BaseApplicationImpl.getContext(), paramMessageForUniteGrayTip.caidanAnimUrl), 4);
-        }
-      }
-      else
-      {
-        paramMqqHandler = agkw.a();
-        if (paramInt == 3) {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850193);
-        }
-        while (paramMessageForUniteGrayTip != null)
-        {
-          paramMqqHandler.a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, paramMessageForUniteGrayTip, 4);
-          return;
-          if (paramInt == 26)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850194);
-          }
-          else if (paramInt == 27)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850195);
-          }
-          else if (paramInt == 4)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850152);
-          }
-          else if (paramInt == 28)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850153);
-          }
-          else if (paramInt == 29)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850154);
-          }
-          else if (paramInt == 1)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850197);
-          }
-          else if (paramInt == 2)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850156);
-          }
-          else if (paramInt == 5)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850196);
-          }
-          else if (paramInt == 30)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850198);
-          }
-          else if (paramInt == 31)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850199);
-          }
-          else if (paramInt == 7)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850191);
-          }
-          else if (paramInt == 8)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850192);
-          }
-          else
-          {
-            paramMessageForUniteGrayTip = localObject;
-            if (paramInt != 11) {
-              if (paramInt == 12)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850167);
-              }
-              else if (paramInt == 13)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850168);
-              }
-              else if (paramInt == 14)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850175);
-              }
-              else if (paramInt == 15)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850176);
-              }
-              else if (paramInt == 16)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850177);
-              }
-              else if (paramInt == 17)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850169);
-              }
-              else if (paramInt == 18)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850170);
-              }
-              else if (paramInt == 19)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850171);
-              }
-              else if (paramInt == 20)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850172);
-              }
-              else if (paramInt == 21)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850173);
-              }
-              else if (paramInt == 22)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850174);
-              }
-              else if (paramInt == 23)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850178);
-              }
-              else if (paramInt == 24)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850179);
-              }
-              else if (paramInt == 25)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850180);
-              }
-              else
-              {
-                paramMessageForUniteGrayTip = localObject;
-                if (axsr.a(paramInt))
-                {
-                  paramMessageForUniteGrayTip = localObject;
-                  if (paramSessionInfo != null)
-                  {
-                    paramInt = axsg.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramInt));
-                    paramMessageForUniteGrayTip = localObject;
-                    if (paramInt != 0) {
-                      paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      return paramLayoutInflater;
+      paramInt = 8;
+      break;
+      paramLayoutInflater = (axub)paramView.getTag();
+      paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramView;
+      break label200;
+      paramInt = 0;
+      break label259;
+      paramView = null;
+      break label476;
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList, aijm paramaijm)
+  private void a()
   {
-    if ((apcb.a().a()) && (a(paramQQAppInterface, paramSessionInfo, paramList)))
-    {
-      paramaijm.V = true;
-      apcb.a().a();
-      if (QLog.isColorLevel()) {
-        QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover enter!!!!!!!!");
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    HashSet localHashSet = new HashSet(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(localHashSet);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  private void a(View paramView, int paramInt)
+  {
+    if (paramInt == 2147483647) {}
+    while ((paramView == null) || (!a())) {
       return;
     }
-    QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover not enter!!!!!!!!");
+    axty localaxty = new axty(this, paramView, paramView.getMeasuredHeight());
+    localaxty.setAnimationListener(new axtz(this, paramInt));
+    localaxty.setDuration(150L);
+    paramView.startAnimation(localaxty);
   }
   
-  public static boolean a(int paramInt)
+  private View b(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
   {
-    if ((paramInt == 6) || (paramInt == 32) || (paramInt == 33)) {}
-    while (paramInt == axsr.a(12L, 2L)) {
-      return true;
-    }
-    return false;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558418, paramViewGroup, false);
+    paramLayoutInflater.setOnClickListener(new axts(this));
+    return paramLayoutInflater;
   }
   
-  private static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList)
+  private void b(int paramInt)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramSessionInfo == null) || (paramQQAppInterface == null)) {
-      return false;
+    if (paramInt == 2147483647) {
+      break label6;
     }
-    long l1 = bcrg.a();
-    Time localTime1 = new Time();
-    localTime1.set(1000L * l1);
-    Time localTime2 = new Time();
-    boolean bool1 = false;
-    boolean bool2 = false;
-    int i = paramList.size() - 1;
+    label6:
+    while (!a()) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    int j = 0;
+    int k = 0;
+    int i = 0;
+    label30:
+    AutoReplyText localAutoReplyText;
+    boolean bool;
+    label110:
+    int m;
+    if (((Iterator)localObject).hasNext())
+    {
+      localAutoReplyText = (AutoReplyText)((Iterator)localObject).next();
+      if (localAutoReplyText.getTextId() == paramInt)
+      {
+        if (localAutoReplyText.getExtra().getBoolean("AutoReplyAdapter:in_use", false)) {
+          i = 1;
+        }
+        ((Iterator)localObject).remove();
+        if (this.jdField_a_of_type_Axua != null)
+        {
+          axua localaxua = this.jdField_a_of_type_Axua;
+          if (localAutoReplyText.getTextId() == 2147483647)
+          {
+            bool = true;
+            localaxua.a(localAutoReplyText, bool);
+          }
+        }
+        else
+        {
+          m = j;
+          j = 1;
+          k = i;
+          i = m;
+        }
+      }
+    }
     for (;;)
     {
-      boolean bool3 = bool2;
-      boolean bool4 = bool1;
-      if (i >= 0) {}
-      try
+      m = k;
+      k = j;
+      j = i;
+      i = m;
+      break label30;
+      bool = false;
+      break label110;
+      if (localAutoReplyText.mTextId != 2147483647)
       {
-        localChatMessage = (ChatMessage)paramList.get(i);
-        if (localChatMessage == null)
+        localAutoReplyText.mTextId = j;
+        m = j + 1;
+        j = k;
+        k = i;
+        i = m;
+        continue;
+        if ((i != 0) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
         {
-          bool3 = bool1;
-          bool1 = bool2;
-          bool2 = bool3;
-          break label411;
+          localObject = (AutoReplyText)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+          if (localObject != null) {
+            a(((AutoReplyText)localObject).getTextId());
+          }
         }
-        long l2 = Math.abs(localChatMessage.time - l1);
-        if (l2 <= 86400L) {
-          break label200;
+        if (k == 0) {
+          break;
         }
-        bool4 = bool1;
-        bool3 = bool2;
+        this.b = true;
+        notifyDataSetChanged();
+        return;
       }
-      catch (Throwable paramQQAppInterface)
+      m = i;
+      i = j;
+      j = k;
+      k = m;
+    }
+  }
+  
+  public ArrayList<AutoReplyText> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (a())
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = null;
+      if (localIterator.hasNext())
       {
+        AutoReplyText localAutoReplyText = (AutoReplyText)localIterator.next();
+        Object localObject3 = localObject1;
+        Bundle localBundle;
+        if (localAutoReplyText != null)
+        {
+          localBundle = localAutoReplyText.getExtra();
+          bool = localBundle.getBoolean("AutoReplyAdapter:in_use", false);
+          if (bool) {
+            localObject1 = localAutoReplyText;
+          }
+          if (localAutoReplyText.getTextId() == paramInt)
+          {
+            localObject3 = localObject1;
+            if (bool) {
+              break label128;
+            }
+            localBundle.putBoolean("AutoReplyAdapter:in_use", true);
+            localObject2 = localObject1;
+            localObject1 = localAutoReplyText;
+          }
+        }
         for (;;)
         {
-          ChatMessage localChatMessage;
-          bool4 = false;
-          bool3 = false;
-          QLog.e("OldMutualMarkLogicHelper", 1, "hasInteractiveToday error: " + paramQQAppInterface.getMessage());
+          localObject3 = localObject2;
+          localObject2 = localObject1;
+          localObject1 = localObject3;
+          break;
+          localBundle.putBoolean("AutoReplyAdapter:in_use", false);
+          localObject3 = localObject1;
+          label128:
+          localObject1 = localObject2;
+          localObject2 = localObject3;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("OldMutualMarkLogicHelper", 2, "hasInteractiveToday selfSend:" + bool4 + " friendSend: " + bool3);
-      }
-      if ((bool4) && (bool3))
-      {
-        return true;
-        label200:
-        if (!a(localChatMessage))
-        {
-          bool3 = bool1;
-          bool1 = bool2;
-          bool2 = bool3;
-          break label411;
+      if (localObject2 != null) {
+        if (localObject1 == null) {
+          break label178;
         }
-        if ((TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.equals(localChatMessage.senderuin, paramQQAppInterface.getCurrentAccountUin())))
-        {
-          localTime2.set(localChatMessage.time * 1000L);
-          if ((localTime1.year == localTime2.year) && (localTime1.yearDay == localTime2.yearDay))
-          {
-            bool3 = TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString);
-            if (bool3)
-            {
-              bool3 = true;
-              bool4 = bool1;
-            }
-            for (;;)
-            {
-              bool1 = bool3;
-              bool2 = bool4;
-              if (!bool4) {
-                break label411;
-              }
-              bool1 = bool3;
-              bool2 = bool4;
-              if (!bool3) {
-                break label411;
-              }
-              break;
-              bool4 = true;
-              bool3 = bool2;
-            }
-          }
-        }
-      }
-      else
-      {
-        return false;
-      }
-      bool3 = bool2;
-      bool2 = bool1;
-      bool1 = bool3;
-      label411:
-      i -= 1;
-      bool3 = bool2;
-      bool2 = bool1;
-      bool1 = bool3;
-    }
-  }
-  
-  private static boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    for (;;)
-    {
-      return false;
-      int[] arrayOfInt = new int[20];
-      int[] tmp12_11 = arrayOfInt;
-      tmp12_11[0] = -1000;
-      int[] tmp18_12 = tmp12_11;
-      tmp18_12[1] = -1001;
-      int[] tmp24_18 = tmp18_12;
-      tmp24_18[2] = -2009;
-      int[] tmp30_24 = tmp24_18;
-      tmp30_24[3] = -2045;
-      int[] tmp36_30 = tmp30_24;
-      tmp36_30[4] = -2009;
-      int[] tmp42_36 = tmp36_30;
-      tmp42_36[5] = -2001;
-      int[] tmp48_42 = tmp42_36;
-      tmp48_42[6] = -2005;
-      int[] tmp55_48 = tmp48_42;
-      tmp55_48[7] = -2010;
-      int[] tmp62_55 = tmp55_48;
-      tmp62_55[8] = -2000;
-      int[] tmp69_62 = tmp62_55;
-      tmp69_62[9] = -2002;
-      int[] tmp76_69 = tmp69_62;
-      tmp76_69[10] = -2008;
-      int[] tmp83_76 = tmp76_69;
-      tmp83_76[11] = -2022;
-      int[] tmp90_83 = tmp83_76;
-      tmp90_83[12] = -30002;
-      int[] tmp97_90 = tmp90_83;
-      tmp97_90[13] = -2011;
-      int[] tmp104_97 = tmp97_90;
-      tmp104_97[14] = -2020;
-      int[] tmp111_104 = tmp104_97;
-      tmp111_104[15] = -2025;
-      int[] tmp118_111 = tmp111_104;
-      tmp118_111[16] = -2065;
-      int[] tmp125_118 = tmp118_111;
-      tmp125_118[17] = -2066;
-      int[] tmp132_125 = tmp125_118;
-      tmp132_125[18] = -3000;
-      int[] tmp139_132 = tmp132_125;
-      tmp139_132[19] = -1035;
-      tmp139_132;
-      int i = 0;
-      while (i < arrayOfInt.length)
-      {
-        if (paramChatMessage.msgtype == arrayOfInt[i]) {
-          return true;
-        }
-        i += 1;
       }
     }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aijm paramaijm)
-  {
-    if (paramaijm.V) {}
-    for (;;)
+    label178:
+    for (boolean bool = true;; bool = false)
     {
+      this.b = bool;
+      if (this.jdField_a_of_type_Axua != null) {
+        this.jdField_a_of_type_Axua.a(localObject2, localObject1);
+      }
+      notifyDataSetChanged();
       return;
-      if (((anyw)paramQQAppInterface.getManager(51)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, false) != null)
-      {
-        axtj localaxtj = axsi.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, 7L, false);
-        if ((localaxtj != null) && (localaxtj.b > 0L) && (localaxtj.a())) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          a(paramQQAppInterface, paramSessionInfo, paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int), paramaijm);
-          return;
-        }
-      }
     }
   }
   
-  public static boolean b(int paramInt)
+  public void a(@Nullable axua paramaxua)
   {
-    if (paramInt == 13) {}
-    while (paramInt == axsr.a(4L, 3L)) {
-      return true;
+    this.jdField_a_of_type_Axua = paramaxua;
+  }
+  
+  public void a(@Nullable AutoReplyText paramAutoReplyText)
+  {
+    if ((!a()) || (paramAutoReplyText == null) || (paramAutoReplyText.getTextId() == 2147483647)) {
+      return;
     }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = null;
+    if (localIterator.hasNext())
+    {
+      AutoReplyText localAutoReplyText = (AutoReplyText)localIterator.next();
+      if ((localAutoReplyText == null) || (localAutoReplyText.getTextId() != paramAutoReplyText.getTextId())) {
+        break label157;
+      }
+      localIterator.remove();
+      localObject = localAutoReplyText;
+    }
+    label157:
+    for (;;)
+    {
+      break;
+      paramAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", false);
+      if ((localObject != null) && (localObject.getExtra().getBoolean("AutoReplyAdapter:in_use", false))) {
+        paramAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", true);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramAutoReplyText);
+      if (this.jdField_a_of_type_Axua != null) {
+        this.jdField_a_of_type_Axua.a(paramAutoReplyText);
+      }
+      a();
+      this.b = true;
+      notifyDataSetChanged();
+      return;
+    }
+  }
+  
+  public void a(List<AutoReplyText> paramList)
+  {
+    int i;
+    if (a())
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      if ((paramList == null) || (paramList.isEmpty())) {
+        break label108;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      paramList = paramList.iterator();
+      i = 0;
+      while (paramList.hasNext())
+      {
+        AutoReplyText localAutoReplyText = (AutoReplyText)paramList.next();
+        if (localAutoReplyText.isChecked()) {
+          i = localAutoReplyText.mTextId;
+        }
+        localAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", false);
+      }
+      a();
+    }
+    for (;;)
+    {
+      notifyDataSetChanged();
+      a(i);
+      this.b = false;
+      return;
+      label108:
+      i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a())
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      notifyDataSetChanged();
+    }
+  }
+  
+  public boolean a()
+  {
+    return Looper.getMainLooper() == Looper.myLooper();
+  }
+  
+  public boolean areAllItemsEnabled()
+  {
     return false;
   }
   
-  public static boolean c(int paramInt)
+  public boolean b()
   {
-    return paramInt == 999;
+    return this.b;
   }
   
-  public static boolean d(int paramInt)
+  public int getCount()
   {
-    return paramInt == 998;
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size() + 1 + 1 + 1;
+    }
+    return 0;
+  }
+  
+  @Nullable
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt - 1);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int j = 1;
+    int i;
+    if ((paramInt >= 0) && (paramInt < 1)) {
+      i = 0;
+    }
+    do
+    {
+      do
+      {
+        return i;
+        if (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() + 1) {
+          return 3;
+        }
+        if (paramInt < 1) {
+          break;
+        }
+        i = j;
+      } while (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size());
+      i = j;
+    } while (paramInt != this.jdField_a_of_type_JavaUtilArrayList.size() + 1 + 1);
+    return 4;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    if ((getItemViewType(paramInt) == 0) || (getItemViewType(paramInt) == 4)) {
+      paramView = a(localLayoutInflater, paramInt, paramViewGroup);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      if (getItemViewType(paramInt) == 3)
+      {
+        paramView = b(localLayoutInflater, paramInt, paramViewGroup);
+      }
+      else
+      {
+        AutoReplyText localAutoReplyText = (AutoReplyText)getItem(paramInt);
+        if (localAutoReplyText != null) {
+          paramView = a(localLayoutInflater, paramInt, paramView, paramViewGroup, localAutoReplyText).jdField_a_of_type_AndroidViewView;
+        }
+      }
+    }
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return (paramInt != 0) && (paramInt != getCount() - 1);
   }
 }
 

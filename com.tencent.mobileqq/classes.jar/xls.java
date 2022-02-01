@@ -1,24 +1,6 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-final class xls
-  extends SimpleJob<Object>
+public abstract interface xls
 {
-  xls(String paramString)
-  {
-    super(paramString);
-  }
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = xlo.a();
-    if (paramJobContext != null) {
-      xlo.b(paramJobContext);
-    }
-    return null;
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

@@ -1,27 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
 
 class axag
   implements DialogInterface.OnClickListener
 {
-  axag(axae paramaxae, BaseChatPie paramBaseChatPie, short paramShort) {}
+  axag(awzr paramawzr) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_Axae.a(this.jdField_a_of_type_Short, true, true);
-        bdll.b(axae.a(this.jdField_a_of_type_Axae), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Axae.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Axae.a(this.jdField_a_of_type_Short), "", "", "", "");
-      }
-    }
+    this.a.d(true);
+    bcef.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

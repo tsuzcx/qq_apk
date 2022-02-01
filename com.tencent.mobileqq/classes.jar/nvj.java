@@ -1,44 +1,16 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nvj
+class nvj
+  implements View.OnClickListener
 {
-  aeqv jdField_a_of_type_Aeqv;
-  WeakReference<AccountDetailActivity> jdField_a_of_type_MqqUtilWeakReference;
-  nvl jdField_a_of_type_Nvl;
+  nvj(nvi paramnvi) {}
   
-  public nvj(QQAppInterface paramQQAppInterface, AccountDetailActivity paramAccountDetailActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aeqv = new aeqv(paramQQAppInterface);
-    this.jdField_a_of_type_Aeqv.b = paramAccountDetailActivity.e;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAccountDetailActivity);
-    this.jdField_a_of_type_Nvl = new nvl(paramAccountDetailActivity);
-  }
-  
-  public void a()
-  {
-    aeqz localaeqz = new aeqz();
-    localaeqz.d = this.jdField_a_of_type_Aeqv.b;
-    localaeqz.a = null;
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aeqv.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localaeqz);
-    this.jdField_a_of_type_Aeqv.a(this.jdField_a_of_type_Nvl);
-    this.jdField_a_of_type_Aeqv.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    new nvk(this, localaeqz).execute(new Void[0]);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
-    {
-      this.jdField_a_of_type_Aeqv.a(null);
-      this.jdField_a_of_type_Aeqv.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    }
+    this.a.a.a(this.a.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

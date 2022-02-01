@@ -1,32 +1,52 @@
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageGialog.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tri
-  implements tro
 {
-  tri(trg paramtrg) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public static tri a(String paramString)
   {
-    String str = trg.b(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
-    {
-      trg.b(this.a, paramGiftServiceBean);
-      trg.b(this.a).setText(paramGiftServiceBean.t);
-      if (trg.a(this.a)) {
-        trg.c(this.a, null);
-      }
-      trg.c(this.a).setText("");
-      if (trg.c(this.a) != null) {
-        trg.c(this.a).clear();
-      }
-      trg.a(this.a);
-      ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.2.1(this));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      paramString = new tri();
+      try
+      {
+        paramString.jdField_a_of_type_Int = localJSONObject.optInt("gift_id", 0);
+        paramString.jdField_a_of_type_JavaLangString = localJSONObject.optString("gift_name", "");
+        paramString.b = localJSONObject.optString("activity_id", "");
+        paramString.c = localJSONObject.optString("gift_icon", "");
+        paramString.g = localJSONObject.optString("gift_desc", "");
+        paramString.d = localJSONObject.optString("bag_item_icon_1", "");
+        paramString.e = localJSONObject.optString("bag_item_icon_2", "");
+        paramString.f = localJSONObject.optString("bag_item_icon_3", "");
+        paramString.h = localJSONObject.optString("need_role", "");
+        return paramString;
+      }
+      catch (JSONException localJSONException1) {}
+    }
+    catch (JSONException localJSONException2)
+    {
+      for (;;)
+      {
+        paramString = null;
+      }
+    }
+    localJSONException1.printStackTrace();
+    return paramString;
   }
 }
 

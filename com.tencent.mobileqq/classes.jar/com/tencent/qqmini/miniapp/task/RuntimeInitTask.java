@@ -4,6 +4,7 @@ import android.content.Context;
 import com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime;
 import com.tencent.qqmini.miniapp.core.service.IAppBrandService;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
+import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
@@ -30,6 +31,7 @@ public class RuntimeInitTask
     {
       this.appBrandRuntime.init(localIAppBrandService);
       this.appBrandRuntime.loadMiniApp(localMiniAppInfo);
+      localIAppBrandService.setApkgInfo((ApkgInfo)localMiniAppInfo.apkgInfo);
       onTaskSucceed();
       return;
     }

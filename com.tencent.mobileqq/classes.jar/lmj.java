@@ -1,54 +1,64 @@
+import android.content.SharedPreferences;
 import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class lmj
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  String b;
-  String c;
-  String d;
-  
-  public static lmj a()
+  public static int a(lmb paramlmb)
   {
-    Object localObject = lbx.b(298).jdField_a_of_type_JavaLangString;
-    lmj locallmj = null;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      locallmj = a((String)localObject);
-    }
-    localObject = locallmj;
-    if (locallmj == null) {
-      localObject = new lmj();
-    }
-    return localObject;
+    if (paramlmb == null) {}
+    do
+    {
+      do
+      {
+        return 11;
+        if (!TextUtils.isEmpty(paramlmb.c)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramlmb }));
+      return 11;
+      if (!paramlmb.a) {
+        break;
+      }
+    } while (!a(paramlmb));
+    return 1;
+    return 2;
   }
   
-  static lmj a(String paramString)
+  static SharedPreferences a()
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      lmj locallmj = new lmj();
-      locallmj.jdField_a_of_type_Boolean = paramString.getBoolean("enable");
-      locallmj.jdField_a_of_type_Int = paramString.getInt("task_id");
-      locallmj.jdField_a_of_type_JavaLangString = paramString.getString("url_zip_so");
-      locallmj.b = paramString.getString("MD5_zip_so");
-      locallmj.c = paramString.getString("MD5_so");
-      locallmj.d = paramString.getString("so_name");
-      return locallmj;
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
-    }
-    return null;
+    return EffectConfigBase.a(298, EffectConfigBase.c);
   }
   
-  public String toString()
+  public static String a()
   {
-    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
+    return AVSoUtils.b();
+  }
+  
+  public static boolean a(lmb paramlmb)
+  {
+    String str1 = paramlmb.b;
+    paramlmb = a() + paramlmb.d + ".so";
+    String str2 = a().getString("so_zip_md5", null);
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (FileUtils.fileExists(paramlmb)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramlmb }));
+    return false;
+    return true;
   }
 }
 

@@ -1,12 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Friends;
 
-class yiu
-  implements DialogInterface.OnDismissListener
+public class yiu
 {
-  yiu(yit paramyit) {}
+  @NonNull
+  protected final Friends a;
+  protected boolean a;
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public yiu(@NonNull Friends paramFriends)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
 }
 
 

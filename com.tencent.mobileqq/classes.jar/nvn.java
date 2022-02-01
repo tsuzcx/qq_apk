@@ -1,24 +1,20 @@
-import android.view.LayoutInflater;
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class nvn
+  implements View.OnClickListener
 {
-  private ViewGroup a;
+  nvn(num paramnum, obr paramobr) {}
   
-  public nvn(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = ((ViewGroup)paramLayoutInflater.inflate(2131558433, paramViewGroup));
-    paramLayoutInflater = (TextView)this.a.findViewById(2131361919);
-    paramViewGroup = (TextView)this.a.findViewById(2131361918);
-    paramLayoutInflater.setText(paramString1);
-    paramViewGroup.setText(paramString2);
-  }
-  
-  public View a()
-  {
-    return this.a;
+    zsf.b((Activity)this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangRefWeakReference.get(), new zsh(this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, num.a(this.jdField_a_of_type_Num));
+    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

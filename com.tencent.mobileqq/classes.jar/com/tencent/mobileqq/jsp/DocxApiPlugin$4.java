@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.jsp;
 
-import awgk;
-import bebl;
+import autl;
+import bcvc;
 
 public class DocxApiPlugin$4
   implements Runnable
 {
-  public DocxApiPlugin$4(awgk paramawgk, String paramString) {}
+  public DocxApiPlugin$4(autl paramautl, String paramString) {}
   
   public void run()
   {
-    bebl.a(this.a);
+    bcvc.a(this.a);
   }
 }
 

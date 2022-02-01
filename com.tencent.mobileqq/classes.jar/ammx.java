@@ -1,20 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.FixSizeImageView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ammx
+class ammx
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public bdwr a;
-  public DragTextView a;
-  public FixSizeImageView a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
-  public View d;
+  ammx(ammw paramammw) {}
   
-  public ammx(ammv paramammv) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

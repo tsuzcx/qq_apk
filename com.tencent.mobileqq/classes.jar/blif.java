@@ -1,65 +1,35 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.widget.AbsListView;
-
-@SuppressLint({"NewApi"})
 public class blif
-  implements blie
 {
-  private blie jdField_a_of_type_Blie;
-  
-  public blif(AbsListView paramAbsListView) {}
-  
-  public void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean)
+  public static bnbq a(int paramInt, bnbp parambnbp, bnbo parambnbo)
   {
-    this.jdField_a_of_type_Blie.a(paramActionMode, paramInt, paramLong, paramBoolean);
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.getCheckedItemCount() == 0) {
-      paramActionMode.finish();
-    }
-  }
-  
-  public void a(blie paramblie)
-  {
-    this.jdField_a_of_type_Blie = paramblie;
-  }
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return this.jdField_a_of_type_Blie.onActionItemClicked(paramActionMode, paramMenuItem);
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Blie.onCreateActionMode(paramActionMode, paramMenu))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(false);
-      bool = true;
+    default: 
+      return new bljy(parambnbp, parambnbo);
+    case 10026: 
+      return new blix(parambnbp, parambnbo);
+    case 10000: 
+    case 10001: 
+    case 10013: 
+    case 10017: 
+    case 10023: 
+    case 10024: 
+      return new bljy(parambnbp, parambnbo);
+    case -1000: 
+      return new bljy();
+    case 10007: 
+      return new blii(parambnbp, parambnbo);
+    case 10012: 
+      return new blih(parambnbp, parambnbo);
+    case 10021: 
+      return new blhu(parambnbp, parambnbo);
     }
-    return bool;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode)
-  {
-    this.jdField_a_of_type_Blie.onDestroyActionMode(paramActionMode);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mChoiceActionMode = null;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.clearChoices();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.rememberSyncState();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.requestLayout();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(true);
-  }
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return this.jdField_a_of_type_Blie.onPrepareActionMode(paramActionMode, paramMenu);
+    return new aiuw(parambnbp, parambnbo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blif
  * JD-Core Version:    0.7.0.1
  */

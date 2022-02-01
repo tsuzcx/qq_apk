@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.listentogether.data;
 
+import amtj;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anzj;
-import awmp;
-import awor;
-import bhlg;
+import auzt;
+import avbv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,7 +24,7 @@ import tencent.aio.media.aio_media.Song;
 public class MusicInfo
   implements ISong
 {
-  public static final Parcelable.Creator<MusicInfo> CREATOR = new awmp();
+  public static final Parcelable.Creator<MusicInfo> CREATOR = new auzt();
   public int a;
   public long a;
   public String a;
@@ -66,7 +66,7 @@ public class MusicInfo
     default: 
       return 0;
     }
-    return 2130840528;
+    return 2130840563;
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -152,7 +152,7 @@ public class MusicInfo
     case 1: 
       return "QQ音乐";
     }
-    return anzj.a(2131705916);
+    return amtj.a(2131706146);
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
@@ -161,7 +161,7 @@ public class MusicInfo
       return "";
     }
     if (paramInt == 2) {}
-    for (paramQQAppInterface = bhlg.b(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = bhlg.h(paramQQAppInterface, paramString, String.valueOf(paramLong)))
+    for (paramQQAppInterface = ContactUtils.getBuddyName(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = ContactUtils.getTroopMemberName(paramQQAppInterface, paramString, String.valueOf(paramLong)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AioShareMusic", 2, " getSourceStr() type = " + paramInt + " sessionUin = " + paramString + " shareUin =" + paramLong + " nickName =" + paramQQAppInterface);
@@ -221,7 +221,7 @@ public class MusicInfo
   
   public String c()
   {
-    return awor.a(this.jdField_a_of_type_JavaLangString);
+    return avbv.a(this.jdField_a_of_type_JavaLangString);
   }
   
   public String d()

@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
 
-public class vmt
-  implements View.OnClickListener
+public abstract interface vmt
 {
-  public vmt(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public abstract void a(String paramString, int paramInt1, int paramInt2, vmp paramvmp);
   
-  public void onClick(View paramView)
-  {
-    QCircleContentOperationView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, vmp paramvmp);
+  
+  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, vmp paramvmp);
+  
+  public abstract void a(String paramString, int paramInt, vmp paramvmp);
+  
+  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, vmp paramvmp);
+  
+  public abstract void b(String paramString, int paramInt, vmp paramvmp);
 }
 
 

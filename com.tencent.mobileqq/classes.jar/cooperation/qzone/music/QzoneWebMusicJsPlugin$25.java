@@ -19,17 +19,17 @@ class QzoneWebMusicJsPlugin$25
         try
         {
           localJSONObject1 = new JSONObject();
-          if (this.a == null) {
+          if (this.val$bundle == null) {
             continue;
           }
-          SongInfo localSongInfo = (SongInfo)this.a.getParcelable("param.song");
+          SongInfo localSongInfo = (SongInfo)this.val$bundle.getParcelable("param.song");
           if ((localSongInfo == null) || (localSongInfo.b != 9) || (localSongInfo.a == null)) {
             continue;
           }
-          i = this.a.getInt("param.state");
+          i = this.val$bundle.getInt("param.state");
           localJSONObject1.put("code", 0);
           localJSONObject2 = new JSONObject();
-          localJSONObject2.put("uin", this.a.getLong("param.uin"));
+          localJSONObject2.put("uin", this.val$bundle.getLong("param.uin"));
           localJSONObject2.put("detailUrl", localSongInfo.a.detailUrl);
           localJSONObject2.put("broadcastID", localSongInfo.a.broadcastID);
           localJSONObject2.put("broadcastName", localSongInfo.a.broadcastName);

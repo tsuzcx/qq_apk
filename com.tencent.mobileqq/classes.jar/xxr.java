@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
-class xxr
-  implements DialogInterface.OnDismissListener
+public class xxr
 {
-  xxr(xxq paramxxq) {}
+  public final int a;
+  public final CharSequence a;
+  public final int b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public xxr(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
 }
 

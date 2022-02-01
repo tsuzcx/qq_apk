@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aduh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aduh(AddRequestActivity paramAddRequestActivity) {}
+  public aduh(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.cancel();
+    aubv.a(this.a, "2", -1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

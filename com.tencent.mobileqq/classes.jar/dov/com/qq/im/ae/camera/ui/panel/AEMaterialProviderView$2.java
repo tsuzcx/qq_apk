@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import bpam;
+import bmbx;
 import com.tencent.mobileqq.widget.QQViewPager;
 
 class AEMaterialProviderView$2
@@ -10,7 +10,7 @@ class AEMaterialProviderView$2
   
   public void run()
   {
-    bpam.b("AEMaterialProviderView", "select category: " + this.a);
+    bmbx.b("AEMaterialProviderView", "select category: " + this.a);
     AEMaterialProviderView.a(this.this$0).setCurrentItem(this.a);
   }
 }

@@ -26,6 +26,8 @@ public abstract interface ITPPlayerAdapter
   public abstract void setVideoInfo(TPVideoInfo paramTPVideoInfo);
   
   public abstract void switchDefinition(TPUrlDataSource paramTPUrlDataSource, int paramInt, long paramLong);
+  
+  public abstract void updateVideoInfo(TPVideoInfo paramTPVideoInfo);
 }
 
 

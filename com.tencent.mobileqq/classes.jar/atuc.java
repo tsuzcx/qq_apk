@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class atuc
+class atuc
+  extends nmf
 {
-  long a;
-  public FileManagerEntity a;
+  atuc(atub paramatub) {}
   
-  public atuc(FileManagerEntity paramFileManagerEntity)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a = paramFileManagerEntity;
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atuc
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
-import pme;
+import prr;
 
 public class MediaGifView
   extends GifView
-  implements pme
+  implements prr
 {
   public MediaGifView(Context paramContext)
   {

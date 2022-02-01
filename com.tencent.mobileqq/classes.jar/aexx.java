@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aexx
-  implements DialogInterface.OnClickListener
+final class aexx
+  implements aeya
 {
-  aexx(aexv paramaexv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (paramInt == 1) {
-      this.a.b();
-    }
-    while (aexv.a(this.a) == null) {
-      return;
-    }
-    aexv.a(this.a).b();
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 58);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,16 +1,6 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-
-class auiw
-  implements bljn
+public abstract interface auiw
 {
-  auiw(auiv paramauiv) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.a.a.f();
-    return true;
-  }
+  public abstract void onCheckSpeed(boolean paramBoolean);
 }
 
 

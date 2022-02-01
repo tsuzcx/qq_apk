@@ -1,18 +1,22 @@
-import com.tribe.async.reactive.StreamFunction;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import mqq.os.MqqHandler;
 
-class wvx
-  extends StreamFunction<wvn, wvn>
+public class wvx
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  int jdField_a_of_type_Int = 0;
+  wvx(wvv paramwvv) {}
   
-  wvx(wvs paramwvs) {}
-  
-  protected void a(wvn paramwvn)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    yuk.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramwvn.a);
-    notifyResult(paramwvn);
+    wvv.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
+    wvv.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
+    paramTVK_IMediaPlayer = this.a.a;
+    if (paramTVK_IMediaPlayer != null) {
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
+    }
   }
 }
 

@@ -1,112 +1,95 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-class aofn
-  extends aoau
+public abstract class aofn
+  extends Binder
+  implements aofm
 {
-  aofn(aofl paramaofl) {}
-  
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
+  public aofn()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramBoolean)
-    {
-      str1 = str2;
-      if (paramArrayOfByte != null)
-      {
-        str1 = new String(paramArrayOfByte);
-        aofl.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", str1));
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "mLbsObserver, onGetStreetViewUrl: isSuccess=" + paramBoolean + ", hashCode=" + hashCode() + ",url=" + str1);
-    }
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
   }
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public static aofm a(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareSearch: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
-      }
+    if (paramIBinder == null) {
+      return null;
     }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
-      return;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof aofm))) {
+      return (aofm)localIInterface;
     }
-    Object localObject = (ToServiceMsg)paramArrayOfObject[0];
-    paramArrayOfObject = (byte[])paramArrayOfObject[1];
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
-    localIntent.putExtra("data", paramArrayOfObject);
-    localIntent.putExtra("req", ((ToServiceMsg)localObject).extraData.getBundle("req"));
-    aofl.a(this.a).sendBroadcast(localIntent);
+    return new aofo(paramIBinder);
   }
   
-  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  public IBinder asBinder()
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareShop: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
-      return;
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetLbsShareShop");
-    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
-    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    aofl.a(this.a).sendBroadcast((Intent)localObject);
+    return this;
   }
   
-  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    if (QLog.isColorLevel())
+    switch (paramInt1)
     {
-      localObject = new StringBuilder().append("mLbsObserver, onGetShareShopDetail: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readLong(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    ArConfigInfo localArConfigInfo;
+    ArEffectConfig localArEffectConfig;
+    if (paramParcel1.readInt() != 0)
+    {
+      localArConfigInfo = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);
+      if (paramParcel1.readInt() == 0) {
+        break label219;
+      }
+      localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(paramParcel1);
+      label178:
+      if (paramParcel1.readInt() == 0) {
+        break label225;
       }
     }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
+    label219:
+    label225:
+    for (paramParcel1 = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
     {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
-      return;
+      a(localArConfigInfo, localArEffectConfig, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+      localArConfigInfo = null;
+      break;
+      localArEffectConfig = null;
+      break label178;
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetShareShopDetail");
-    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
-    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    aofl.a(this.a).sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,22 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zeu
-  extends zei
+  implements View.OnClickListener
 {
-  public Path a;
-  public int b;
-  public int c;
+  public zeu(CommentBottomBar paramCommentBottomBar) {}
   
-  public zeu(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public zeu(zei paramzei, float paramFloat)
-  {
-    super(paramzei.jdField_a_of_type_Int);
-    if ((paramzei instanceof zeu))
-    {
-      paramzei = (zeu)paramzei;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramzei.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramzei.jdField_a_of_type_Int;
-      this.b = paramzei.b;
-      this.c = ((int)(paramzei.c * paramFloat));
+    if (!NetworkUtil.isNetworkAvailable(this.a.getContext())) {
+      QQToast.a(this.a.getContext(), amtj.a(2131694067), 0).a();
     }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

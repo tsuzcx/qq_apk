@@ -1,73 +1,19 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.opengl.GLES20;
 
-public class aobz
+class aobz
+  implements aokx
 {
-  private int jdField_a_of_type_Int;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private int b;
+  aobz(aoby paramaoby) {}
   
-  public aobz(MessageHandler paramMessageHandler, StringBuilder paramStringBuilder, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = paramStringBuilder;
-    this.jdField_a_of_type_Int = paramInt;
+    GLES20.glUniform1i(aoby.a(this.a), aoby.b(this.a));
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aobz a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    this.b = MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).size();
-    Iterator localIterator = MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).keySet().iterator();
-    label232:
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      long l2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.j(str);
-      Object[] arrayOfObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.b(str);
-      if ((arrayOfObject != null) && (arrayOfObject.length > 0)) {}
-      for (long l1 = ((Long)arrayOfObject[1]).longValue();; l1 = 0L)
-      {
-        if (((!this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().a(false)) && (!((Boolean)MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).get(str)).booleanValue())) || (l2 >= l1)) {
-          break label232;
-        }
-        if (QLog.isColorLevel())
-        {
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          this.jdField_a_of_type_JavaLangStringBuilder.append("---------checkGroupMsgComplete needToPullTroop troopUin: ").append(str).append(",lastSeq:").append(l2).append(",svrSeq:").append(l1);
-          QLog.d("Q.msg.MessageHandler", 2, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-        }
-        localArrayList.add(str);
-        break;
-      }
-    }
-    if ((localArrayList != null) && (localArrayList.size() > 0))
-    {
-      this.jdField_a_of_type_Int = localArrayList.size();
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, new String[this.jdField_a_of_type_Int]);
-      int i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler)[i] = ((String)localArrayList.get(i));
-        i += 1;
-      }
-    }
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).clear();
-    return this;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    aoby.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    aocj.a("glGetUniformLocation uDisplayType");
   }
 }
 

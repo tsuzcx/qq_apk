@@ -1,28 +1,6 @@
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
-
-class awdb
-  implements ActionCallback
+public abstract interface awdb
 {
-  awdb(awcz paramawcz) {}
-  
-  public void onResult(String paramString)
-  {
-    try
-    {
-      i = Integer.parseInt(paramString);
-      if (awcz.a(this.a) != null) {
-        awcz.a(this.a).a(i, "");
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
-  }
+  public abstract void a();
 }
 
 

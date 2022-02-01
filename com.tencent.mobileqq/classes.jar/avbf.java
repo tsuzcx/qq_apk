@@ -1,33 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
-
-class avbf
-  implements azrg
+public class avbf
 {
-  avbf(avbe paramavbe, Bundle paramBundle, long paramLong) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public static String a(int paramInt)
   {
-    return null;
-  }
-  
-  public void a(azrh paramazrh)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
-    if (paramazrh == null) {}
-    for (paramazrh = "null";; paramazrh = paramazrh.toString())
+    switch (paramInt)
     {
-      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramazrh);
-      return;
+    default: 
+      return " Unknow playState ";
+    case 0: 
+      return " IDLE ";
+    case 1: 
+      return " BUFFERING ";
+    case 2: 
+      return " PLAYING ";
+    case 3: 
+      return " PAUSE ";
+    case 4: 
+      return " STOP ";
+    case 5: 
+      return " ERROR_INTERNAL ";
+    case 7: 
+      return " ERROR_FOCUS ";
+    case 6: 
+      return " NETWORK_INTERRUPT ";
     }
-  }
-  
-  public void b(azrh paramazrh)
-  {
-    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramazrh });
-    avbe.a(this.jdField_a_of_type_Avbe, paramazrh, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
+    return " COMPLETION ";
   }
 }
 

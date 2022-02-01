@@ -6,7 +6,8 @@
             "type": "wrap_content"
         },
         "width": {
-            "type": "match_parent"
+            "type": "relative",
+            "value": "375"
         },
         "subviews": [
             {
@@ -78,7 +79,6 @@
                                             "type": "match_parent"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setImageWithURLString:lineup:": [
                                                 "-1",
                                                 "1"
@@ -111,7 +111,6 @@
                                             "type": "wrap_content"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setCornerRadiusString:": "25",
                                             "setBackgroundColorString:": "#80101010",
                                             "setAttatchInfo:": "$ios_video_bg_visible"
@@ -133,7 +132,6 @@
                                                     "value": "18"
                                                 },
                                                 "attributes": {
-                                                    "setFrameString:": "-1",
                                                     "loadImageWithPath:": "-1"
                                                 }
                                             },
@@ -153,7 +151,6 @@
                                                 },
                                                 "attributes": {
                                                     "setTextAlignmentString:": "2",
-                                                    "setFrameString:": "-1",
                                                     "setTextColorString:": "#FFFFFF",
                                                     "setText:": "-1",
                                                     "setFontSizeString:": "15"
@@ -263,7 +260,6 @@
                               },
                               "attributes": {
                                 "setBackgroundColorString:": "#4d000000",
-                                "setFrameString:": "-1",
                                 "setText:": "$dislike_text_android",
                                 "setTextColorString:": "#FFFFFF",
                                 "setFontSizeString:": "11",
@@ -309,20 +305,9 @@
                             }
                         ]
                     },
-
-                    {
-                        "$includeComponet": "componet/ad_large_bottom_origin.geojson"
-                    },
-                    {
-                        "$includeComponet": "componet/ad_large_bottom_one.geojson"
-                    },
-                    {
-                        "$includeComponet": "componet/ad_large_bottom_two.geojson"
-                    },
                     {
                         "$includeComponet": "componet/ad_large_bottom_three.geojson"
                     }
-
                 ]
             }
         ]

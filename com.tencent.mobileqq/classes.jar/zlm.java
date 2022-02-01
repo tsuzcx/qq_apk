@@ -1,17 +1,27 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+
 public class zlm
+  extends ahyk
 {
-  protected int a = 48000;
-  protected int b = 1;
-  protected int c = 1;
-  protected int d = 48000;
-  protected int e = 1;
-  protected int f = 1;
-  
-  public void a() {}
-  
-  public byte[] a(int paramInt1, int paramInt2)
+  public zlm(Context paramContext, String paramString)
   {
-    return null;
+    super(paramContext, paramString);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 17;
+    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131299156);
+    paramBundle.setAttributes(localLayoutParams);
   }
 }
 

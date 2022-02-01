@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bngf;
-import bngi;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 class QzoneWebMusicJsPlugin$17
   implements Runnable
@@ -10,7 +10,7 @@ class QzoneWebMusicJsPlugin$17
   
   public void run()
   {
-    bngf.a().a().d();
+    RemoteHandleManager.getInstance().getSender().getPlayingSong();
   }
 }
 

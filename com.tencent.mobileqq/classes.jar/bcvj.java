@@ -1,52 +1,87 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import java.util.List;
 
 public class bcvj
-  extends MSFServlet
+  implements BusinessObserver
 {
-  public static void a(int paramInt, AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bcvj.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    localNewIntent.putExtra("type", paramInt);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bcvj.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
+  
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
-      }
-      return;
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = new bmzy(paramIntent.getIntExtra("type", 1), (UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
-    paramPacket.setTimeout(10000L);
-    paramPacket.setSSOCommand(paramIntent.getCmdString());
-    paramPacket.putSendData(paramIntent.encode());
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                      } while (paramObject == null);
+                      paramObject = (Object[])paramObject;
+                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                      return;
+                    } while (paramObject == null);
+                    paramObject = (Object[])paramObject;
+                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+                  return;
+                } while (paramObject == null);
+                a(paramBoolean, (Object[])paramObject);
+                return;
+                if (paramObject != null) {
+                  b(paramBoolean, (Object[])paramObject);
+                }
+              } while (paramObject == null);
+              c(paramBoolean, (Object[])paramObject);
+              return;
+            } while (paramObject == null);
+            d(paramBoolean, (Object[])paramObject);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 2);
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
   }
 }
 

@@ -1,15 +1,17 @@
-public abstract class smz
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
+public class smz
+  implements Function1<Canvas, Unit>
 {
-  private static int a = 7;
+  public smz(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public static int a()
+  public Unit a(Canvas paramCanvas)
   {
-    return a;
-  }
-  
-  public static void a(int paramInt)
-  {
-    a = paramInt;
+    ReadInJoyListViewGroup.a(this.a, paramCanvas);
+    return null;
   }
 }
 

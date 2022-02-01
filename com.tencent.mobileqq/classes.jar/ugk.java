@@ -1,36 +1,24 @@
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class ugk
-  extends ugc
+  implements bezd
 {
-  public long a;
-  public boolean a;
+  public ugk(PublicAccountUtil.19 param19) {}
   
-  public ugk(JSONObject paramJSONObject)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    super(paramJSONObject);
-  }
-  
-  public static ugk a(JSONObject paramJSONObject)
-  {
-    return new ugk(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 3600L;
-  }
-  
-  public String toString()
-  {
-    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 

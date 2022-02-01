@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Map;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class ahsu
-  implements View.OnClickListener
+class ahsu
+  implements TextView.OnEditorActionListener
 {
-  public ahsu(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  ahsu(ahss paramahss) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    Map localMap = ((ainh)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((ainh)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(localMap);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 4)
+    {
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      ahtf.a("0X800A89F", 0, 0);
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,16 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class agrs
-  implements anwh
+public class agrs
 {
-  public void a(boolean paramBoolean)
+  public int a;
+  public String a;
+  public int b;
+  
+  public agrs(int paramInt1, String paramString, int paramInt2)
   {
-    if (paramBoolean) {
-      agrr.a(true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
 }
 

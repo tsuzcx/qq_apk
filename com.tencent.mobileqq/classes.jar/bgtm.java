@@ -1,20 +1,17 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgtm
+class bgtm
+  implements View.OnClickListener
 {
-  private static Handler a;
+  bgtm(bgtl parambgtl) {}
   
-  public static void a(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    if (a == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
-      localHandlerThread.start();
-      a = new Handler(localHandlerThread.getLooper());
-    }
-    a.post(paramRunnable);
+    this.a.mInActivity.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

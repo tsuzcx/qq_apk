@@ -1,8 +1,15 @@
-import android.app.Activity;
-
-public abstract interface bmun
+public class bmun
 {
-  public abstract void onFail(Activity paramActivity, String paramString);
+  public String a;
+  public String b;
+  public String c;
+  
+  public bmun(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

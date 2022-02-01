@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.base;
 
-import wjd;
-import wje;
+import vlc;
+import vld;
 
 public class QQStoryObserver$1$1
   implements Runnable
 {
-  public QQStoryObserver$1$1(wje paramwje) {}
+  public QQStoryObserver$1$1(vld paramvld) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Wjd.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Vlc.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

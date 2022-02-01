@@ -1,8 +1,17 @@
-public abstract interface mad
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
+class mad
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(int paramInt);
+  mad(mac parammac) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public void onGlobalLayout()
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a(false);
+  }
 }
 
 

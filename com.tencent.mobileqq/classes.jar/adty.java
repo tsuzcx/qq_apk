@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adty
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adty(AddRequestActivity paramAddRequestActivity) {}
+  public adty(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (AddRequestActivity.c(this.a, AddRequestActivity.e(this.a)))
-    {
-      AddRequestActivity.b(this.a, 2131717902, 1000L, false);
-      AddRequestActivity.a(this.a, AddRequestActivity.e(this.a));
-    }
-    AddRequestActivity.a(this.a).dismiss();
-    AddRequestActivity.b(this.a, false);
+    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,47 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ExpandableListView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class rhj
-  extends rhq
+  implements DialogInterface.OnDismissListener
 {
-  private ria a;
+  public rhj(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public rhj(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, ria paramria)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
-    this.jdField_a_of_type_Ria = paramria;
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_Ria != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Ria.b()))
+    if (ReadInJoyDeliverUGCActivity.f(this.a))
     {
-      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717267, new Object[] { String.valueOf(this.jdField_a_of_type_Ria.c()) });
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
-      return;
+      ReadInJoyDeliverUGCActivity.e(this.a, false);
+      ReadInJoyDeliverUGCActivity.e(this.a);
+      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
+        ReadInJoyDeliverUGCActivity.d(this.a, 1, this.a.getString(2131717342));
+      }
+      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
+        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      }
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717261), 0).a();
-  }
-  
-  protected void a(rhy paramrhy, Friends paramFriends)
-  {
-    if ((paramFriends == null) || (this.jdField_a_of_type_Ria == null) || (this.jdField_a_of_type_Ria.a() == null) || (this.jdField_a_of_type_Ria.a().isEmpty())) {
-      return;
-    }
-    paramrhy.a.setBackgroundResource(2130849409);
-    if (this.jdField_a_of_type_Ria.a().contains(paramFriends.uin))
-    {
-      paramrhy.a.setEnabled(false);
-      return;
-    }
-    paramrhy.a.setEnabled(true);
   }
 }
 

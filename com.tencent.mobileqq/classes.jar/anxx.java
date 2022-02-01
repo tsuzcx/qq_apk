@@ -1,31 +1,23 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anxx
-  implements Animation.AnimationListener
 {
-  public anxx(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
+  public String a;
+  public List<AppletItem> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public anxx()
   {
-    paramAnimation = new AnimationSet(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.addAnimation(localAlphaAnimation);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppletsSetting:[").append("des = ").append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
+  }
 }
 
 

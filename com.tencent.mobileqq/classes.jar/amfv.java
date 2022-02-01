@@ -1,25 +1,11 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 
-public class amfv
-  extends antg
+class amfv
 {
-  public amfv(TroopDiscussionTroop paramTroopDiscussionTroop) {}
-  
-  protected void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
-      }
-    } while (TroopDiscussionTroop.a(this.a) == null);
-    TroopDiscussionTroop.a(this.a).c();
-  }
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
+  boolean jdField_a_of_type_Boolean;
 }
 
 

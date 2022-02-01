@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 class askj
-  extends anxe
+  extends asjn
 {
-  askj(askd paramaskd, Object paramObject) {}
-  
-  protected void a(List<CustomEmotionData> arg1)
+  public askj(asji paramasji)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    super(paramasji);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      this.jdField_a_of_type_JavaLangObject.notify();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
+    asji.b(this.jdField_a_of_type_Asji, 11, 7);
+    asji.c(this.jdField_a_of_type_Asji, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Asjn = new askh(this.jdField_a_of_type_Asji);
   }
 }
 

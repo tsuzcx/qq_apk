@@ -1,8 +1,18 @@
-public abstract interface ayul
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
+
+class ayul
+  extends CardObserver
 {
-  public abstract boolean a();
+  ayul(ayuk paramayuk) {}
   
-  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
+  public void onPraiseLifeAchievement(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAchievementComponent", 2, String.format("onPraiseLifeAchievement isSuccess=%s actionType=%s achievementId=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    }
+    ayuk.a(this.a, paramBoolean, paramInt1, paramInt2);
+  }
 }
 
 

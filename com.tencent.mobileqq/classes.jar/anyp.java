@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anyp
-  implements anyr
+class anyp
+  implements MediaPlayer.OnPreparedListener
 {
-  public anyp(FriendListHandler paramFriendListHandler) {}
+  anyp(anyn paramanyn) {}
   
-  public String a(int paramInt1, int paramInt2, FriendListHandler.QQHeadDetails paramQQHeadDetails)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    return "stranger_" + paramInt2 + "_" + paramQQHeadDetails.a;
-  }
-  
-  public String b(int paramInt1, int paramInt2, FriendListHandler.QQHeadDetails paramQQHeadDetails)
-  {
-    return "stranger_" + paramInt2 + "_" + paramQQHeadDetails.a;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + anyn.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      anyn.b(this.a, true);
+      if (anyn.b(this.a))
+      {
+        this.a.a.start();
+        anyn.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

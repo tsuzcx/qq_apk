@@ -1,26 +1,20 @@
-import android.view.SurfaceHolder;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
-class avvy
-  implements IVideoViewBase.IVideoViewCallBack
+public abstract class avvy
 {
-  avvy(avvx paramavvx) {}
+  public String a = "MsgBackup." + getClass().getSimpleName();
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  public void a(String paramString)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+    if (avwu.a) {
+      QLog.d(this.a, 2, paramString);
+    }
   }
   
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  protected boolean a(String paramString)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    this.a.a = true;
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
+    return FileUtils.fileExists(paramString);
   }
 }
 

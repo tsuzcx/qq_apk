@@ -1,47 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.view.View;
 
-public class agbz
-  extends aole
+class agbz
+  implements atah
 {
-  public agbz(ActivateFriendView paramActivateFriendView) {}
+  agbz(agap paramagap) {}
   
-  public void b()
+  public void onClick(View paramView)
   {
-    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
-    do
-    {
-      return;
-      ActivateFriendView.a(this.a, 0);
-      int i = 0;
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-        {
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689517));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-          {
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689520));
-          }
-          else
-          {
-            ActivateFriendView.b(this.a);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
-          }
-        }
-      }
-    } while (ActivateFriendView.a(this.a) == null);
-    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+    paramView = asld.a();
+    aszt.c(this.a.a, paramView);
+    aszr.a("0X8007FA2");
   }
 }
 

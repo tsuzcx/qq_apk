@@ -1,28 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class akuc
-  extends aksu
+  implements bbpy
 {
-  boolean a;
-  
-  protected akuc(AlbumListFragment paramAlbumListFragment)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    super(paramAlbumListFragment);
-    this.jdField_a_of_type_Boolean = false;
+    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
   }
   
-  public void initData(Intent paramIntent)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    super.initData(paramIntent);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Akst.recentImagesMaxCount = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
-      this.jdField_a_of_type_Akst.recentImagesLimitSize = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
-      this.jdField_a_of_type_Akst.recentImagesLimitWidth = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_WIDTH", -1);
-      this.jdField_a_of_type_Akst.recentImagesBlockPaths = paramIntent.getStringArrayListExtra("PhotoConst.RECENT_IMAGES_BLOCK_PATHS");
-    }
+    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 

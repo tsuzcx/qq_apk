@@ -1,11 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class xne
-  extends xnb
+class xne
+  extends JobSegment<xng, xgq>
 {
-  public xne(MemorySelectVideoPlayInfo paramMemorySelectVideoPlayInfo)
+  private int jdField_a_of_type_Int;
+  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xgn jdField_a_of_type_Xgn;
+  
+  protected void a(JobContext paramJobContext, xng paramxng)
   {
-    super(paramMemorySelectVideoPlayInfo.childPlayInfo);
+    this.jdField_a_of_type_Xgn = new xgn(paramxng, new xnf(this, paramJobContext, paramxng));
+    this.jdField_a_of_type_Xgn.c();
   }
 }
 

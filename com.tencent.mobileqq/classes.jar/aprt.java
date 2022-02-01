@@ -1,18 +1,54 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArAwardInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.confess.BaseMsgListFragment;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class aprt
-  implements Parcelable.Creator<ArAwardInfo>
+public class aprt
+  extends amsu
 {
-  public ArAwardInfo a(Parcel paramParcel)
+  public aprt(BaseMsgListFragment paramBaseMsgListFragment) {}
+  
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    return new ArAwardInfo(paramParcel);
+    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
+    try
+    {
+      paramObject = ((HashMap)paramObject).entrySet().iterator();
+      do
+      {
+        Map.Entry localEntry;
+        do
+        {
+          if (!paramObject.hasNext()) {
+            break;
+          }
+          localEntry = (Map.Entry)paramObject.next();
+        } while (localEntry == null);
+        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
+      } while (!paramBoolean);
+      i = 1;
+    }
+    catch (Throwable paramObject)
+    {
+      for (;;)
+      {
+        int i = 0;
+        continue;
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      this.a.b();
+    }
   }
   
-  public ArAwardInfo[] a(int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new ArAwardInfo[paramInt];
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
+      this.a.b();
+    }
   }
 }
 

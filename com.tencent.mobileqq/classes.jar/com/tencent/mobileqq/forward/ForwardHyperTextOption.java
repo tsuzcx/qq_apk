@@ -13,13 +13,13 @@ public class ForwardHyperTextOption
   
   public void a()
   {
-    if (m()) {
+    if (o()) {
       this.a.add(d);
     }
-    if (n()) {
+    if (p()) {
       this.a.add(c);
     }
-    if (o()) {
+    if (q()) {
       this.a.add(b);
     }
   }

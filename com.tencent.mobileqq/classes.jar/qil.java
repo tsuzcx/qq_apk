@@ -1,19 +1,47 @@
 import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
+import tencent.im.oidb.oidb_0xc2f.RspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$requestUpdatePushStatus$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qil
-  extends nkq
+public class qil
+  extends nmc
 {
-  qil(Function1 paramFunction1) {}
+  qil(qid paramqid) {}
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus response errorCode: " + paramInt);
-    this.a.invoke(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new oidb_0xc2f.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        qid.a(this.a).mRecommendFollowInfos = rdw.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
+        if ((qid.a(this.a).mRecommendFollowInfos.a != null) && (qid.a(this.a).mRecommendFollowInfos.a.size() >= 3))
+        {
+          qid.a(this.a).a(qid.a(this.a).mRecommendFollowInfos.a);
+          qid.a(this.a).isShowRecommendList = true;
+          qid.a(this.a);
+          qid.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
+      }
+    }
   }
 }
 

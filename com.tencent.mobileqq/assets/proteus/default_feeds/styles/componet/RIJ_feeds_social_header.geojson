@@ -152,7 +152,20 @@
                     },
                     "attributes":{
                         "setArticleModel:":"$article_model",
-                        "loadAvatarByUin:":"$info_avator_uin"
+                        "loadAvatarByUin:":"$info_avator_uin",
+                        "setDTElementID:withParams:": [
+                            "puin_button",
+                            {
+                                "rowkey": "$dt_rowkey",
+                                "content_type": "$dt_content_type",
+                                "dt_pgid": "14",
+                                "channel_id": "$dt_channel_id",
+                                "backend_info": "$dt_backend_info",
+                                "area": "list",
+                                "actionid": "click_puin",
+                                "click_type": "single"
+                            }
+                        ]
                     }
                 },
                 {
@@ -162,7 +175,6 @@
                     "right_of_view":"id_feeds_info_avator",
                     "left_of_view":"id_feeds_social_header",
                     "align_parent_center_vertical":"YES",
-                    "default_visible":"YES",
                     "height":{
                         "type":"wrap_content"
                     },
@@ -197,7 +209,20 @@
                                         "setText:":"$nickname_text",
                                         "setTextColorString:":"#242424",
                                         "setBoldFontSizeString:":"16",
-                                        "setNumberOfLinesString:":"1"
+                                        "setNumberOfLinesString:":"1",
+                                        "setDTElementID:withParams:": [
+                                          "puin_button",
+                                          {
+                                            "rowkey": "$dt_rowkey",
+                                            "content_type": "$dt_content_type",
+                                            "dt_pgid": "14",
+                                            "channel_id": "$dt_channel_id",
+                                            "backend_info": "$dt_backend_info",
+                                            "area": "list",
+                                            "actionid": "click_puin",
+                                            "click_type": "single"
+                                          }
+                                        ]
                                     }
                                 },
                                 {
@@ -246,66 +271,50 @@
                             ]
                         },
                         {
-                            "view_id":"id_account_info",
                             "view_type":"UIView",
-                            "layout_type":"layout_linear",
+                            "view_id":"id_account_info",
                             "direction":"horizontal",
-                            "default_visible":"YES",
+                            "visible_depend_on_children":"YES",
                             "margin_top":"2",
                             "margin_left":"4",
-                            "right_of_view":"id_feeds_info_avator",
                             "below_of_view":"id_feeds_nickname_wrapper",
-                            "left_of_view":"id_feeds_follow_button_container",
                             "height":{
-                                "type":"wrap_content"
+                                "type":"absolutely",
+                                "value":"16"
                             },
                             "width":{
                                 "type":"match_parent"
                             },
                             "subviews":[
                                 {
-                                    "view_type":"UIView",
-                                    "layout_type":"layout_relative",
-                                    "view_id":"id_user_desc_follow_wrapper",
-                                    "visible_depend_on_children":"YES",
+                                    "view_type":"UILabel",
+                                    "view_id":"id_user_desc_follow",
+                                    "padding_left":"4",
+                                    "padding_right":"4",
                                     "margin_right":"6",
                                     "height":{
-                                        "type":"absolutely",
-                                        "value":"16"
+                                        "type":"match_parent"
                                     },
                                     "width":{
                                         "type":"wrap_content"
                                     },
                                     "attributes":{
                                         "setBackgroundColorString:":"#1A00CAFC",
-                                        "setCornerRadiusString:":"4.0"
-                                    },
-                                    "subviews":[
-                                        {
-                                            "view_type":"UILabel",
-                                            "view_id":"id_user_desc_follow",
-                                            "margin_left":"4",
-                                            "margin_right":"4",
-                                            "height":{
-                                                "type":"match_parent"
-                                            },
-                                            "width":{
-                                                "type":"wrap_content"
-                                            },
-                                            "attributes":{
-                                                "setText:":"$user_desc_follow_text",
-                                                "setTextColorString:":"#00CAFC",
-                                                "setFontSizeString:":"11",
-                                                "setNumberOfLinesString:":"1"
-                                            }
-                                        }
-                                    ]
+                                        "setTextAlignmentString:": "1",
+                                        "setCornerRadiusString:":"4.0",
+                                        "setText:":"$user_desc_follow_text",
+                                        "setTextColorString:":"#00CAFC",
+                                        "setFontSizeString:":"11",
+                                        "setNumberOfLinesString:":"1"
+                                    }
+                                },
+                                {
+                                    "$includeComponet": "componet/RIJ_top_mark.geojson"
                                 },
                                 {
                                     "view_id":"id_feeds_biu_time",
                                     "view_type":"UILabel",
-                                    "right_of_view":"id_user_desc_follow",
-                                    "margin_top":"2",
+                                    "align_parent_center_vertical":"YES",
                                     "height":{
                                         "type":"wrap_content"
                                     },

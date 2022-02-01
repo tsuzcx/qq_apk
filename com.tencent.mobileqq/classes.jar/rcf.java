@@ -1,20 +1,18 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class rcf
-  extends DataSetObserver
+public final class rcf
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  public rcf(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
-  
-  public void onChanged()
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 

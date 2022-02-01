@@ -1,8 +1,36 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
+import com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageView;
+import com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView;
+import com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView;
+import com.tencent.hippy.qq.view.tkd.text.HippyTKDTextView;
+import com.tencent.hippy.qq.view.tkd.view.HippyTKDViewGroup;
+import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.uimanager.HippyCustomViewCreator;
 
-public abstract interface tss
+public class tss
+  implements HippyCustomViewCreator
 {
-  public abstract void a(View paramView, int paramInt);
+  public View createCustomView(String paramString, Context paramContext, HippyMap paramHippyMap)
+  {
+    if (TextUtils.equals("ListView", paramString)) {
+      return new HippyTKDListView(paramContext);
+    }
+    if (TextUtils.equals("Text", paramString)) {
+      return new HippyTKDTextView(paramContext);
+    }
+    if (TextUtils.equals("View", paramString)) {
+      return new HippyTKDViewGroup(paramContext);
+    }
+    if (TextUtils.equals("Image", paramString)) {
+      return new HippyTKDImageView(paramContext);
+    }
+    if (TextUtils.equals("TKDGifImageView", paramString)) {
+      return new HippyTKDGifImageView(paramContext);
+    }
+    return null;
+  }
 }
 
 

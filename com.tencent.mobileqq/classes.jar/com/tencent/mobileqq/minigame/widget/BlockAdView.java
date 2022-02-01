@@ -1,34 +1,47 @@
 package com.tencent.mobileqq.minigame.widget;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhtq;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.minigame.data.BlockAdInfo;
 import com.tencent.mobileqq.minigame.manager.BlockAdManager;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.utils.ViewUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlockAdView
   extends RelativeLayout
 {
-  public final int horizontalHeight = bhtq.b(65.0F);
-  public final int horizontalSingleBlockWidth = bhtq.b(65.0F);
+  private static final String TAG = "[minigame]BlockAdView";
+  private AnimatorSet animatorSet;
+  private ArrayList<BlockAdView.SingleBlockAdView> blockList = new ArrayList();
+  private boolean hasEndBlockAdAnimation;
+  public final int horizontalHeight = ViewUtils.dpToPx(65.0F);
+  public final int horizontalSingleBlockWidth = ViewUtils.dpToPx(65.0F);
   protected ImageView mAdIcon;
-  protected BlockAdView.BlockAdapter mAdapter;
-  private Context mContext;
   private boolean mIsHorizontal;
+  protected LinearLayout mLinearLayout;
+  private int mPlayCount;
   private int mRealAdNum;
-  public final int sideGapHeightHorizontal = bhtq.b(4.0F);
-  public final int sideGapHeightVertical = bhtq.b(4.0F);
-  public final int sideGapWidthHorizontal = bhtq.b(4.0F);
+  public final int sideGapHeightHorizontal = ViewUtils.dpToPx(4.0F);
+  public final int sideGapHeightVertical = ViewUtils.dpToPx(4.0F);
+  public final int sideGapWidthHorizontal = ViewUtils.dpToPx(4.0F);
   public final int sideGapWidthVertical = 0;
-  public final int verticalSingleBlockHeight = bhtq.b(73.0F);
-  public final int verticalWidth = bhtq.b(65.0F);
+  public final int verticalSingleBlockHeight = ViewUtils.dpToPx(73.0F);
+  public final int verticalWidth = ViewUtils.dpToPx(65.0F);
   
   public BlockAdView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
   {
@@ -46,103 +59,126 @@ public class BlockAdView
     this(paramContext, null, 0, paramBoolean);
   }
   
+  private void adjustUIUsingNewData(BlockAdInfo paramBlockAdInfo)
+  {
+    boolean bool2 = true;
+    if (checkIsDataInvalid(paramBlockAdInfo))
+    {
+      this.mRealAdNum = 0;
+      clearBlockAdAnimation();
+      setVisibility(8);
+      return;
+    }
+    if ((this.mRealAdNum == 1) && (this.mIsHorizontal))
+    {
+      localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject1).setMargins(0, this.sideGapHeightHorizontal, 0, this.sideGapHeightHorizontal);
+      this.mLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    }
+    Object localObject1 = paramBlockAdInfo.getGdtAdInfoList().subList(0, this.mRealAdNum);
+    paramBlockAdInfo = paramBlockAdInfo.getBlockAdInfo().subList(0, this.mRealAdNum);
+    clearBlockAdAnimation();
+    this.mLinearLayout.removeAllViewsInLayout();
+    int i = 0;
+    if (i < this.mRealAdNum)
+    {
+      Object localObject2 = getContext();
+      if (this.mRealAdNum < 3) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        localObject2 = new BlockAdView.SingleBlockAdView(this, (Context)localObject2, bool1);
+        ((BlockAdView.SingleBlockAdView)localObject2).setData((MiniAppInfo)paramBlockAdInfo.get(i), (GdtAd)((List)localObject1).get(i), this.mRealAdNum);
+        this.mLinearLayout.addView((View)localObject2);
+        this.blockList.add(localObject2);
+        i += 1;
+        break;
+      }
+    }
+    updateBackground(true);
+    if (this.mRealAdNum > 2) {}
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      updateAdIcon(bool1);
+      return;
+    }
+  }
+  
   private BlockAdInfo calculateAndAdjustBlockAdInfo(BlockAdInfo paramBlockAdInfo)
   {
-    int m = 0;
-    int k = 0;
     if (paramBlockAdInfo == null) {
       return null;
     }
-    int i = getSafeGap();
-    int n = BlockAdManager.getInstance().getGameWidth() - i * 2;
-    int i3 = BlockAdManager.getInstance().getGameHeight() - i * 2;
-    int i1 = BlockAdManager.getInstance().gameDpTopx(paramBlockAdInfo.getLeft());
-    int i4 = BlockAdManager.getInstance().gameDpTopx(paramBlockAdInfo.getTop());
-    int i2 = paramBlockAdInfo.getSize();
-    this.mRealAdNum = i2;
-    if ((i1 < i) || (i4 < i)) {
+    int j = getSafeGap();
+    int n = BlockAdManager.getInstance().getGameWidth() - j * 2;
+    int i1 = BlockAdManager.getInstance().getGameHeight() - j * 2;
+    int i2 = BlockAdManager.getInstance().gameDpTopx(paramBlockAdInfo.getLeft());
+    int i3 = BlockAdManager.getInstance().gameDpTopx(paramBlockAdInfo.getTop());
+    int i = paramBlockAdInfo.getSize();
+    this.mRealAdNum = i;
+    if ((i2 < j) || (i3 < j)) {
       return null;
     }
-    int j;
+    int k;
+    int m;
     if (this.mIsHorizontal)
     {
-      i = this.horizontalHeight;
-      i = this.sideGapHeightHorizontal * 2 + i;
-      if (i4 + i > i3) {
+      k = this.horizontalHeight + this.sideGapHeightHorizontal * 2;
+      if (i3 + k > i1) {
         return null;
       }
-      if (this.horizontalSingleBlockWidth + i1 > n) {
+      if (this.horizontalSingleBlockWidth + i2 > n) {
         return null;
       }
-      m = this.horizontalSingleBlockWidth;
-      if (i2 == 1)
-      {
-        j = 0;
-        j += i2 * m;
-        if (i1 + j <= n) {
-          break label404;
-        }
-        if (i2 != 1) {
-          break label229;
-        }
-        j = 0;
-        label177:
-        m = (n - i1 - j) / this.horizontalSingleBlockWidth;
-        this.mRealAdNum = m;
-        n = this.horizontalSingleBlockWidth;
-        if (m != 1) {
-          break label239;
-        }
-      }
-      label229:
-      label239:
-      for (j = k;; j = this.sideGapWidthHorizontal * 2)
-      {
-        if (m != 0) {
-          break label249;
-        }
-        return null;
-        j = this.sideGapWidthHorizontal * 2;
-        break;
-        j = this.sideGapWidthHorizontal * 2;
-        break label177;
-      }
-      label249:
-      j = n * m + j;
-    }
-    label404:
-    for (;;)
-    {
-      paramBlockAdInfo.setRealWidth(bhtq.c(j));
-      paramBlockAdInfo.setRealHeight(bhtq.c(i));
-      return paramBlockAdInfo;
-      i = this.verticalWidth;
-      if (i2 == 1) {}
-      j = i + 0;
-      if (i1 + j > n) {
-        return null;
-      }
-      if (this.verticalSingleBlockHeight + i4 > i3) {
-        return null;
-      }
-      k = this.verticalSingleBlockHeight * i2;
+      m = this.horizontalSingleBlockWidth * i + this.sideGapWidthHorizontal * 2;
       i = k;
-      if (i4 + k > i3)
+      j = m;
+      if (i2 + m > n)
       {
-        if (i2 == 1) {}
-        k = (i3 - i4 + 0) / this.verticalSingleBlockHeight;
-        this.mRealAdNum = k;
-        n = this.verticalSingleBlockHeight;
-        i = m;
-        if (k == 1) {
-          i = bhtq.b(8.0F);
-        }
-        i = n * k - i;
-        if (k == 0) {
+        m = (n - i2 - this.sideGapWidthHorizontal * 2) / this.horizontalSingleBlockWidth;
+        this.mRealAdNum = m;
+        j = this.horizontalSingleBlockWidth * m + this.sideGapWidthHorizontal * 2;
+        i = k;
+        if (m == 0) {
           return null;
         }
       }
     }
+    else
+    {
+      k = this.verticalWidth + 0;
+      if (i2 + k > n) {
+        return null;
+      }
+      if (this.verticalSingleBlockHeight + i3 > i1) {
+        return null;
+      }
+      m = this.verticalSingleBlockHeight * i;
+      i = m;
+      j = k;
+      if (i3 + m > i1)
+      {
+        m = (i1 - i3 + 0) / this.verticalSingleBlockHeight;
+        this.mRealAdNum = m;
+        i = this.verticalSingleBlockHeight * m;
+        j = k;
+        if (m == 0) {
+          return null;
+        }
+      }
+    }
+    paramBlockAdInfo.setRealWidth(ViewUtils.PxToDp(j));
+    paramBlockAdInfo.setRealHeight(ViewUtils.PxToDp(i));
+    return paramBlockAdInfo;
+  }
+  
+  private boolean checkIsDataInvalid(BlockAdInfo paramBlockAdInfo)
+  {
+    return (this.mRealAdNum < 1) || (paramBlockAdInfo == null) || (paramBlockAdInfo.getGdtAdInfoList() == null) || (paramBlockAdInfo.getGdtAdInfoList().size() < this.mRealAdNum) || (paramBlockAdInfo.getBlockAdInfo() == null) || (paramBlockAdInfo.getBlockAdInfo().size() < this.mRealAdNum);
+  }
+  
+  private int getPlayCount()
+  {
+    return this.mPlayCount;
   }
   
   public static int getSafeGap()
@@ -165,25 +201,27 @@ public class BlockAdView
   
   private void init(Context paramContext, boolean paramBoolean)
   {
-    this.mContext = paramContext;
-    this.mAdapter = new BlockAdView.BlockAdapter(this);
     this.mIsHorizontal = paramBoolean;
-    Object localObject;
-    RelativeLayout.LayoutParams localLayoutParams;
+    this.mLinearLayout = new LinearLayout(paramContext);
+    Object localObject = this.mLinearLayout;
+    int i;
     if (paramBoolean)
     {
-      localObject = new HorizontalListView(paramContext);
-      ((HorizontalListView)localObject).setAdapter(this.mAdapter);
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.setMargins(this.sideGapWidthHorizontal, this.sideGapHeightHorizontal, this.sideGapWidthHorizontal, this.sideGapHeightHorizontal);
-      ((HorizontalListView)localObject).setLayoutParams(localLayoutParams);
-      addView((View)localObject);
+      i = 0;
+      ((LinearLayout)localObject).setOrientation(i);
+      if (!paramBoolean) {
+        break label196;
+      }
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(this.sideGapWidthHorizontal, this.sideGapHeightHorizontal, this.sideGapWidthHorizontal, this.sideGapHeightHorizontal);
     }
     for (;;)
     {
+      this.mLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      addView(this.mLinearLayout);
       this.mAdIcon = new ImageView(paramContext);
-      this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841004));
-      paramContext = new RelativeLayout.LayoutParams(bhtq.b(19.299999F), bhtq.b(11.3F));
+      this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841040));
+      paramContext = new RelativeLayout.LayoutParams(ViewUtils.dpToPx(19.299999F), ViewUtils.dpToPx(11.3F));
       paramContext.addRule(9);
       paramContext.addRule(10);
       this.mAdIcon.setLayoutParams(paramContext);
@@ -191,14 +229,71 @@ public class BlockAdView
       addView(this.mAdIcon);
       setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
       return;
-      localObject = new ListView(paramContext);
-      ((ListView)localObject).setAdapter(this.mAdapter);
-      localLayoutParams = new RelativeLayout.LayoutParams(this.verticalWidth, -2);
-      localLayoutParams.setMargins(0, this.sideGapHeightVertical, 0, this.sideGapHeightVertical);
-      ((ListView)localObject).setLayoutParams(localLayoutParams);
-      ((ListView)localObject).setDivider(null);
-      addView((View)localObject);
+      i = 1;
+      break;
+      label196:
+      localObject = new RelativeLayout.LayoutParams(this.verticalWidth, -2);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, this.sideGapHeightVertical, 0, this.sideGapHeightVertical);
     }
+  }
+  
+  private void startMultiBlockAnimation()
+  {
+    float f = ViewUtils.dip2px(5.0F);
+    Object localObject1 = new ObjectAnimator();
+    ((ObjectAnimator)localObject1).setPropertyName("translationY");
+    ((ObjectAnimator)localObject1).setFloatValues(new float[] { 0.0F, f });
+    Object localObject2 = new ObjectAnimator();
+    ((ObjectAnimator)localObject2).setPropertyName("translationY");
+    ((ObjectAnimator)localObject2).setFloatValues(new float[] { f, 0.0F });
+    ObjectAnimator localObjectAnimator1 = new ObjectAnimator();
+    localObjectAnimator1.setPropertyName("translationY");
+    localObjectAnimator1.setFloatValues(new float[] { 0.0F, f });
+    ObjectAnimator localObjectAnimator2 = new ObjectAnimator();
+    localObjectAnimator2.setPropertyName("translationY");
+    localObjectAnimator2.setFloatValues(new float[] { f, 0.0F });
+    this.animatorSet = new AnimatorSet();
+    this.animatorSet.setInterpolator(new LinearInterpolator());
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject1);
+    localArrayList.add(localObject2);
+    localArrayList.add(localObjectAnimator1);
+    localArrayList.add(localObjectAnimator2);
+    this.animatorSet.setDuration(120L);
+    this.animatorSet.playSequentially(localArrayList);
+    if (this.blockList.size() < 1) {
+      return;
+    }
+    this.animatorSet.setTarget(this.blockList.get(0));
+    this.animatorSet.start();
+    localObject1 = new Handler(Looper.getMainLooper());
+    localObject2 = new BlockAdView.1(this);
+    this.animatorSet.addListener(new BlockAdView.2(this, (Handler)localObject1, (Runnable)localObject2));
+    ((Handler)localObject1).post((Runnable)localObject2);
+  }
+  
+  private void startSingleBlockAnimation()
+  {
+    Object localObject1 = ObjectAnimator.ofFloat(this, "rotation", new float[] { 0.0F, 15.0F });
+    ((ObjectAnimator)localObject1).setDuration(120L);
+    Object localObject2 = ObjectAnimator.ofFloat(this, "rotation", new float[] { 15.0F, -15.0F });
+    ((ObjectAnimator)localObject2).setDuration(120L);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this, "rotation", new float[] { -15.0F, 15.0F });
+    localObjectAnimator1.setDuration(120L);
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "rotation", new float[] { 15.0F, 0.0F });
+    localObjectAnimator2.setDuration(120L);
+    this.animatorSet = new AnimatorSet();
+    this.animatorSet.setInterpolator(new LinearInterpolator());
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject1);
+    localArrayList.add(localObject2);
+    localArrayList.add(localObjectAnimator1);
+    localArrayList.add(localObjectAnimator2);
+    this.animatorSet.playSequentially(localArrayList);
+    localObject1 = new Handler(Looper.getMainLooper());
+    localObject2 = new BlockAdView.3(this);
+    ((Handler)localObject1).post((Runnable)localObject2);
+    this.animatorSet.addListener(new BlockAdView.4(this, (Handler)localObject1, (Runnable)localObject2));
   }
   
   private void updateAdIcon(boolean paramBoolean)
@@ -218,10 +313,22 @@ public class BlockAdView
   {
     if (paramBoolean)
     {
-      setBackgroundDrawable(getResources().getDrawable(2130841006));
+      setBackgroundDrawable(getResources().getDrawable(2130841042));
       return;
     }
-    setBackgroundColor(getResources().getColor(2131166617));
+    setBackgroundColor(getResources().getColor(2131166636));
+  }
+  
+  public void clearBlockAdAnimation()
+  {
+    this.hasEndBlockAdAnimation = true;
+    if (this.animatorSet != null) {
+      this.animatorSet.end();
+    }
+    if (this.blockList != null) {
+      this.blockList.clear();
+    }
+    this.mPlayCount = 0;
   }
   
   public int getRealAdNum()
@@ -247,33 +354,22 @@ public class BlockAdView
   
   public void setData(BlockAdInfo paramBlockAdInfo)
   {
-    boolean bool2 = true;
     paramBlockAdInfo = calculateAndAdjustBlockAdInfo(paramBlockAdInfo);
     if (paramBlockAdInfo == null) {
       this.mRealAdNum = 0;
     }
-    if ((this.mAdapter != null) && (paramBlockAdInfo != null))
+    adjustUIUsingNewData(paramBlockAdInfo);
+  }
+  
+  public void startBlockAnimation()
+  {
+    this.hasEndBlockAdAnimation = false;
+    if (this.mRealAdNum == 1)
     {
-      this.mAdapter.setData(paramBlockAdInfo);
-      if (this.mAdapter.getCount() <= 1) {
-        break label80;
-      }
-      bool1 = true;
-      updateBackground(bool1);
-      if (this.mAdapter.getCount() <= 2) {
-        break label85;
-      }
-    }
-    label80:
-    label85:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      updateAdIcon(bool1);
-      this.mAdapter.notifyDataSetChanged();
+      startSingleBlockAnimation();
       return;
-      bool1 = false;
-      break;
     }
+    startMultiBlockAnimation();
   }
 }
 

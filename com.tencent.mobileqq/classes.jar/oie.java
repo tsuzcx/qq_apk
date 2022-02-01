@@ -1,6 +1,16 @@
-class oie
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.mobileqq.utils.StackBlur;
+
+final class oie
+  extends bfol
 {
-  private static final oid a = new oid(null);
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
+    StackBlur.fastblur(paramDownloadParams, 40);
+    return paramDownloadParams;
+  }
 }
 
 

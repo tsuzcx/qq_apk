@@ -1,32 +1,17 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agiv
-  implements aoog
+  implements View.OnClickListener
 {
-  agiv(agiq paramagiq) {}
+  agiv(agiu paramagiu) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
-    {
-      return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        agiq.b(this.a).setImageBitmap(paramBitmap);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          agiq.a(this.a).setImageBitmap(paramBitmap);
-        }
-      }
-    }
+    agiu.a(this.a, true, this.a.a.getCurrentAccountUin());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

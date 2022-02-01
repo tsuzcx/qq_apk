@@ -6,14 +6,14 @@ import android.support.annotation.NonNull;
 public abstract interface EditVideoParams$EditSource
   extends Parcelable
 {
-  public abstract int a();
+  public abstract String checkParam();
+  
+  public abstract int getHeight();
   
   @NonNull
-  public abstract String a();
+  public abstract String getSourcePath();
   
-  public abstract int b();
-  
-  public abstract String b();
+  public abstract int getWidth();
 }
 
 

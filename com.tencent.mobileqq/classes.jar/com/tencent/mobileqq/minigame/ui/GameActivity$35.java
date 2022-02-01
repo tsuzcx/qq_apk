@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import bkyr;
+import bjeo;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniGamePerformanceStatics;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -40,7 +40,7 @@ class GameActivity$35
       QQMiniGameDataFileSystem localQQMiniGameDataFileSystem = new QQMiniGameDataFileSystem();
       GameView localGameView = GameView.Companion.from(GameActivity.access$5100(this.this$0));
       QQDebugWebSocket localQQDebugWebSocket = GameActivity.access$5200(this.this$0);
-      if (bkyr.b()) {}
+      if (bjeo.b()) {}
       for (JankTraceLevel localJankTraceLevel = JankTraceLevel.BRIEF;; localJankTraceLevel = JankTraceLevel.NONE)
       {
         localTritonPlatform.launchGame(new GameLaunchParam(localQQMiniGamePackage, localQQMiniGameDataFileSystem, localGameView, localQQDebugWebSocket, localJankTraceLevel, localHashMap), new GameActivity.35.1(this));

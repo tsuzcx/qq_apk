@@ -1,37 +1,50 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-class afln
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class afln
+  implements afle
 {
-  aflk jdField_a_of_type_Aflk;
-  Button jdField_a_of_type_AndroidWidgetButton;
+  public afln(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public afln(aflm paramaflm, View paramView, aflk paramaflk)
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
   {
-    super(paramView);
-    this.jdField_a_of_type_Aflk = paramaflk;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374839));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    if (paramDoodleData == null) {
+      return false;
+    }
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = afld.a(paramDoodleData.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleData)
+    {
+      break label33;
+    }
   }
   
-  public void onClick(View paramView)
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
   {
-    if (this.jdField_a_of_type_Aflk != null) {
-      this.jdField_a_of_type_Aflk.a(paramView, getPosition());
+    if (paramDoodleHeader == null) {
+      return false;
     }
-    for (;;)
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = afld.a(paramDoodleHeader.length);
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
-      }
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleHeader)
+    {
+      break label33;
     }
   }
 }

@@ -1,6 +1,7 @@
 package cooperation.qlink;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -10,26 +11,25 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anzj;
-import atyw;
-import auog;
-import bhlq;
-import bhpc;
-import blha;
-import bmim;
-import bmjh;
-import bmji;
-import bmjj;
-import bmjk;
-import bmjl;
-import bmjm;
-import bmjn;
+import aslg;
+import bfur;
+import bjmp;
+import bkmt;
+import bkno;
+import bknp;
+import bknq;
+import bknr;
+import bkns;
+import bknt;
+import bknu;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
@@ -43,12 +43,12 @@ public class QlinkShareJumpActivity
   implements Handler.Callback
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bhpc jdField_a_of_type_Bhpc;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
-  private String b = anzj.a(2131708896);
+  private String b = amtj.a(2131709128);
   
   /* Error */
   private String a(Uri paramUri)
@@ -96,7 +96,7 @@ public class QlinkShareJumpActivity
     //   87: lstore 4
     //   89: lload 4
     //   91: l2f
-    //   92: invokestatic 102	bhmi:c	()F
+    //   92: invokestatic 102	com/tencent/mobileqq/utils/FileUtils:getAvailableExternalMemorySize	()F
     //   95: fcmpl
     //   96: ifle +27 -> 123
     //   99: aload_0
@@ -144,24 +144,24 @@ public class QlinkShareJumpActivity
     //   194: aastore
     //   195: iconst_0
     //   196: aaload
-    //   197: invokestatic 137	bhmi:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   197: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:getUnitFileName	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   200: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   203: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   206: astore 8
-    //   208: new 139	java/io/File
+    //   208: new 140	java/io/File
     //   211: dup
     //   212: aload 9
-    //   214: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
+    //   214: invokespecial 142	java/io/File:<init>	(Ljava/lang/String;)V
     //   217: astore 9
     //   219: aload 9
-    //   221: invokevirtual 144	java/io/File:exists	()Z
+    //   221: invokevirtual 145	java/io/File:exists	()Z
     //   224: ifne +34 -> 258
     //   227: aload 9
-    //   229: invokevirtual 147	java/io/File:mkdirs	()Z
+    //   229: invokevirtual 148	java/io/File:mkdirs	()Z
     //   232: ifne +26 -> 258
     //   235: aload_0
-    //   236: ldc 148
-    //   238: invokestatic 25	anzj:a	(I)Ljava/lang/String;
+    //   236: ldc 149
+    //   238: invokestatic 25	amtj:a	(I)Ljava/lang/String;
     //   241: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   244: aload 6
     //   246: ifnull +10 -> 256
@@ -171,7 +171,7 @@ public class QlinkShareJumpActivity
     //   257: areturn
     //   258: aload 7
     //   260: aload_1
-    //   261: invokevirtual 152	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   261: invokevirtual 153	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   264: astore_1
     //   265: aload_1
     //   266: ifnonnull +40 -> 306
@@ -179,11 +179,11 @@ public class QlinkShareJumpActivity
     //   272: ifeq +11 -> 283
     //   275: ldc 67
     //   277: iconst_2
-    //   278: ldc 154
+    //   278: ldc 155
     //   280: invokestatic 73	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   283: aload_0
-    //   284: ldc 155
-    //   286: invokestatic 25	anzj:a	(I)Ljava/lang/String;
+    //   284: ldc 156
+    //   286: invokestatic 25	amtj:a	(I)Ljava/lang/String;
     //   289: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   292: aload 6
     //   294: ifnull +10 -> 304
@@ -192,15 +192,15 @@ public class QlinkShareJumpActivity
     //   304: aconst_null
     //   305: areturn
     //   306: lload 4
-    //   308: ldc2_w 156
+    //   308: ldc2_w 157
     //   311: lcmp
     //   312: ifle +30 -> 342
     //   315: aload_0
-    //   316: ldc 158
-    //   318: invokestatic 25	anzj:a	(I)Ljava/lang/String;
+    //   316: ldc 159
+    //   318: invokestatic 25	amtj:a	(I)Ljava/lang/String;
     //   321: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   324: aload_1
-    //   325: invokevirtual 161	java/io/InputStream:close	()V
+    //   325: invokevirtual 162	java/io/InputStream:close	()V
     //   328: aload 6
     //   330: ifnull +10 -> 340
     //   333: aload 6
@@ -211,7 +211,7 @@ public class QlinkShareJumpActivity
     //   343: aload 8
     //   345: aload_1
     //   346: lload 4
-    //   348: invokespecial 164	cooperation/qlink/QlinkShareJumpActivity:a	(Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   348: invokespecial 165	cooperation/qlink/QlinkShareJumpActivity:a	(Ljava/lang/String;Ljava/io/InputStream;J)V
     //   351: aload 6
     //   353: ifnull +10 -> 363
     //   356: aload 6
@@ -223,14 +223,14 @@ public class QlinkShareJumpActivity
     //   369: astore_1
     //   370: aload_0
     //   371: iconst_0
-    //   372: putfield 166	cooperation/qlink/QlinkShareJumpActivity:jdField_a_of_type_Boolean	Z
+    //   372: putfield 167	cooperation/qlink/QlinkShareJumpActivity:jdField_a_of_type_Boolean	Z
     //   375: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   378: ifeq +13 -> 391
     //   381: ldc 67
     //   383: iconst_2
-    //   384: ldc 168
+    //   384: ldc 169
     //   386: aload 6
-    //   388: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   388: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   391: aload_1
     //   392: ifnull +9 -> 401
     //   395: aload_1
@@ -321,7 +321,7 @@ public class QlinkShareJumpActivity
         break label259;
       }
       localObject1 = b((Uri)localObject2);
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (auog.a((String)localObject1)) && (new File((String)localObject1).canRead())) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (FileUtil.isFileExists((String)localObject1)) && (new File((String)localObject1).canRead())) {
         break label254;
       }
       localObject1 = a((Uri)localObject2);
@@ -354,7 +354,7 @@ public class QlinkShareJumpActivity
               continue;
             }
             localObject2 = b((Uri)((Iterator)localObject1).next());
-            if (auog.a((String)localObject2)) {
+            if (FileUtil.isFileExists((String)localObject2)) {
               localArrayList.add(localObject2);
             }
             for (;;)
@@ -407,20 +407,20 @@ public class QlinkShareJumpActivity
   {
     this.jdField_a_of_type_Boolean = true;
     ThreadManager.post(new QlinkShareJumpActivity.5(this, paramString, paramInputStream, paramLong), 5, null, true);
-    if (this.jdField_a_of_type_Bhpc == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_a_of_type_Bhpc = bhlq.a(this, getString(2131691145), anzj.a(2131708899), new bmjl(this));
-      this.jdField_a_of_type_Bhpc.setOnDismissListener(new bmjm(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, getString(2131691184), amtj.a(2131709131), new bkns(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new bknt(this));
     }
-    this.jdField_a_of_type_Bhpc.show();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   private void a(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (String str = getString(2131697673);; str = getString(2131697674))
+    for (String str = getString(2131697819);; str = getString(2131697820))
     {
-      bhlq.a(this, 230, getString(2131697629), str, 2131697622, 2131697622, new bmji(this), null).show();
+      bfur.a(this, 230, getString(2131697775), str, 2131697768, 2131697768, new bknp(this), null).show();
       return;
     }
   }
@@ -478,7 +478,7 @@ public class QlinkShareJumpActivity
   private void b()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 50) {
-      bhlq.a(this, 230, getString(2131697629), getString(2131697633), 2131697622, 2131697622, new bmjj(this), null).show();
+      bfur.a(this, 230, getString(2131697775), getString(2131697779), 2131697768, 2131697768, new bknq(this), null).show();
     }
     while ((a()) || (a(false))) {
       return;
@@ -488,20 +488,20 @@ public class QlinkShareJumpActivity
   
   private void b(String paramString)
   {
-    bhpc localbhpc = new bhpc(this, 2131755824);
-    localbhpc.setContentView(2131559008);
-    localbhpc.setTitle(getString(2131718699));
-    localbhpc.setMessage(paramString);
-    localbhpc.setCanceledOnTouchOutside(false);
-    localbhpc.setCancelable(false);
-    localbhpc.setNegativeButton(getString(2131690559), new bmjk(this));
-    localbhpc.show();
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131755826);
+    localQQCustomDialog.setContentView(2131559016);
+    localQQCustomDialog.setTitle(getString(2131718947));
+    localQQCustomDialog.setMessage(paramString);
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.setNegativeButton(getString(2131690599), new bknr(this));
+    localQQCustomDialog.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bhpc != null) {
-      this.jdField_a_of_type_Bhpc.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
   }
   
@@ -511,11 +511,11 @@ public class QlinkShareJumpActivity
     ArrayList localArrayList;
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      this.app.a().a("0X8004F47", this.jdField_a_of_type_JavaUtilArrayList.size());
+      this.app.getQQProxyForQlink().a("0X8004F47", this.jdField_a_of_type_JavaUtilArrayList.size());
       localBundle = new Bundle();
       localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
       localArrayList = new ArrayList();
-      localArrayList.addAll(atyw.a());
+      localArrayList.addAll(aslg.a());
       if (localArrayList == null) {
         break label141;
       }
@@ -524,10 +524,10 @@ public class QlinkShareJumpActivity
     for (int i = localArrayList.size();; i = 0)
     {
       localBundle.putInt("string_beforeshare_selectedfile_count", i);
-      bmim.a(this, 10, localBundle);
+      bkmt.a(this, 10, localBundle);
       finish();
       return;
-      bhlq.a(this, 230, getString(2131697629), getString(2131697674), 2131697622, 2131697622, new bmjn(this), null).show();
+      bfur.a(this, 230, getString(2131697775), getString(2131697820), 2131697768, 2131697768, new bknu(this), null).show();
       return;
     }
   }
@@ -535,8 +535,9 @@ public class QlinkShareJumpActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -579,7 +580,7 @@ public class QlinkShareJumpActivity
           while (paramBundle.hasNext())
           {
             String str = (String)paramBundle.next();
-            if (auog.a(str))
+            if (FileUtil.isFileExists(str))
             {
               if (this.jdField_a_of_type_JavaUtilArrayList == null) {
                 this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -595,7 +596,7 @@ public class QlinkShareJumpActivity
       catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
-        bhlq.a(this, 230, getString(2131697629), getString(2131697674), 2131697622, 2131697622, new bmjh(this), null).show();
+        bfur.a(this, 230, getString(2131697775), getString(2131697820), 2131697768, 2131697768, new bkno(this), null).show();
         return false;
       }
       d();
@@ -636,7 +637,7 @@ public class QlinkShareJumpActivity
       c();
       b();
       continue;
-      this.jdField_a_of_type_Bhpc.setProgress(paramMessage.arg1);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setProgress(paramMessage.arg1);
     }
   }
   

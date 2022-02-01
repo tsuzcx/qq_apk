@@ -1,6 +1,6 @@
 public abstract interface avoi
 {
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract void g();
 }
 
 

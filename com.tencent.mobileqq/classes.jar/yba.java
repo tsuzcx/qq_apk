@@ -1,19 +1,27 @@
-import android.util.LruCache;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
-class yba
-  extends LruCache<String, yas>
+public class yba
+  implements Animator.AnimatorListener
 {
-  yba(yaz paramyaz, int paramInt)
+  public yba(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramInt);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772041);
   }
   
-  protected void a(boolean paramBoolean, String paramString, yas paramyas1, yas paramyas2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.entryRemoved(paramBoolean, paramString, paramyas1, paramyas2);
-    yaq.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
-    paramyas1.a();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772041);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

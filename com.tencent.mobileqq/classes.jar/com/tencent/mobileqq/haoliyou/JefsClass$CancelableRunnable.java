@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.haoliyou;
 
-import avpp;
+import aucr;
 import com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,9 +16,9 @@ public class JefsClass$CancelableRunnable
     this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable = paramWeakOuterRefRunnable;
   }
   
-  public avpp a()
+  public aucr a()
   {
-    return new avpp(this);
+    return new aucr(this);
   }
   
   public void a(int paramInt)

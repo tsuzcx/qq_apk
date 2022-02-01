@@ -1,47 +1,93 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class awns
-  implements awmn
+public class awns
+  implements View.OnClickListener
 {
-  awns(awnq paramawnq) {}
+  public awns(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_Awno.e;
-    String str3 = this.a.jdField_a_of_type_Awno.b;
-    this.a.b(i, str3);
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
-    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
-      bdll.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
-    }
-    while ((i != 1) || (TextUtils.isEmpty(str3))) {
-      return;
-    }
-    String str2 = "2";
-    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
-    String str1 = str2;
-    if (localTroopInfo != null)
-    {
-      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
-        break label180;
+    if (paramView == ChooseInterestTagActivity.b(this.a)) {
+      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+      {
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
+        ChooseInterestTagActivity.a(this.a, true, true);
       }
-      str1 = "0";
     }
-    for (;;)
+    label394:
+    do
     {
-      bdll.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
-      return;
-      label180:
-      str1 = str2;
-      if (localTroopInfo.isAdmin()) {
-        str1 = "1";
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+        break;
+        Object localObject2;
+        if (paramView == this.a.leftView)
+        {
+          bjmm.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a))
+          {
+            this.a.finish();
+          }
+          else
+          {
+            localObject2 = this.a.getIntent();
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new Intent();
+            }
+            Collections.reverse(ChooseInterestTagActivity.a(this.a));
+            ((Intent)localObject1).putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
+            ((Intent)localObject1).putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
+            this.a.setResult(-1, (Intent)localObject1);
+            this.a.finish();
+          }
+        }
+        else
+        {
+          if (paramView != this.a.rightViewText) {
+            break label394;
+          }
+          bjmm.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a)) {
+            if (ChooseInterestTagActivity.a(this.a).isEmpty())
+            {
+              ChooseInterestTagActivity.a(this.a, amtj.a(2131700951));
+            }
+            else
+            {
+              ChooseInterestTagActivity.a(this.a, 0, amtj.a(2131700945), 0);
+              Collections.reverse(ChooseInterestTagActivity.a(this.a));
+              localObject1 = new awoe(ChooseInterestTagActivity.a(this.a));
+              ((awoe)localObject1).a.addAll(ChooseInterestTagActivity.a(this.a));
+              localObject2 = new ArrayList(1);
+              ((List)localObject2).add(localObject1);
+              ChooseInterestTagActivity.a(this.a).a((List)localObject2, 0, 1);
+            }
+          }
+        }
       }
+    } while (paramView != ChooseInterestTagActivity.a(this.a));
+    ChooseInterestTagActivity.a(this.a).setText(amtj.a(2131700968));
+    Object localObject1 = ChooseInterestTagActivity.a(this.a);
+    int j = ChooseInterestTagActivity.a(this.a);
+    int k = ChooseInterestTagActivity.b(this.a);
+    if (ChooseInterestTagActivity.a(this.a)) {}
+    for (int i = 1;; i = 0)
+    {
+      ((awkr)localObject1).a("", j, k, 30, 0, i);
+      break;
     }
   }
 }

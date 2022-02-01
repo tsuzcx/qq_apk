@@ -1,13 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qba
-  implements ViewBase.IBuilder
+class qba
+  implements View.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qba(qat paramqat, slt paramslt, pvc parampvc) {}
+  
+  public void onClick(View paramView)
   {
-    return new qaz(paramVafContext);
+    pet localpet = this.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, this.jdField_a_of_type_Pvc.a(), 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

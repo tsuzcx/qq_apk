@@ -1,6 +1,16 @@
-public abstract interface blkf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.28;
+
+public class blkf
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a();
+  public blkf(AEPituCameraUnit.28 param28) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    bmbx.b(this.a.this$0.a, "PermissionDialog--onCancel");
+  }
 }
 
 

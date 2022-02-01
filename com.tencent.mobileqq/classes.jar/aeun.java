@@ -1,22 +1,50 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.ArrayList;
 
 public class aeun
-  extends aeuk
+  extends amsu
 {
-  public aeun(JumpActivity paramJumpActivity)
+  public aeun(ActivateFriendGrid paramActivateFriendGrid) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    super(paramJumpActivity);
+    int i = 0;
+    for (;;)
+    {
+      if (i < ActivateFriendGrid.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = ContactUtils.getBuddyName(ActivateFriendGrid.a(this.a), str, false);
+          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.b.a(paramInt1, paramInt2, paramIntent);
+    int i = 0;
+    while (i < ActivateFriendGrid.a(this.a).size())
+    {
+      String str = ContactUtils.getFriendDisplayName(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeun
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import ahzv;
+import agwj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class IntimateInfoNavBar$2
   implements Runnable
 {
-  public IntimateInfoNavBar$2(ahzv paramahzv) {}
+  public IntimateInfoNavBar$2(agwj paramagwj) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class IntimateInfoNavBar$2
       QLog.d("NavigateBarManager.IntimateInfoNavBar", 2, String.format("onShow score guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
     localSharedPreferences.edit().putInt("key_aio_score_guide_count", i + 1).commit();
-    bdll.b(null, "dc00898", "", "", "0X800A11C", "0X800A11C", 0, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", "0X800A11C", "0X800A11C", 0, 0, "", "", "", "");
   }
 }
 

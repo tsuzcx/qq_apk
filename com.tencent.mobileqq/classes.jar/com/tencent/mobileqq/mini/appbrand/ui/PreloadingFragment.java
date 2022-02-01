@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import blhn;
+import bjnd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -55,9 +55,9 @@ public class PreloadingFragment
   private static final boolean mEnableDBCache;
   private static LruCache<String, PreloadingFragment.MiniAppConfigCache> sMiniAppConfigCache;
   private Bundle mBundle;
-  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131370318);
+  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131370286);
   private ResultReceiver mResultReceiver;
-  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559397, null);
+  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559399, null);
   private Handler mUIHandler;
   
   static
@@ -187,7 +187,7 @@ public class PreloadingFragment
         if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
           try
           {
-            localObject = (String)blhn.a(paramString1).get("_mappid");
+            localObject = (String)bjnd.a(paramString1).get("_mappid");
             QLog.d("PreloadingFragment", 4, "scheme: appid:  " + (String)localObject);
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
@@ -218,7 +218,7 @@ public class PreloadingFragment
         if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
           try
           {
-            paramString2 = (String)blhn.a(paramString1).get("_mappid");
+            paramString2 = (String)bjnd.a(paramString1).get("_mappid");
             QLog.d("PreloadingFragment", 4, "scheme: appid:  " + paramString2);
             if (!TextUtils.isEmpty(paramString2))
             {
@@ -558,11 +558,11 @@ public class PreloadingFragment
     {
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if (!(localObject1 instanceof QQAppInterface)) {
-        break label348;
+        break label344;
       }
       localObject2 = (MiniAppEntityManager)((AppRuntime)localObject1).getManager(330);
       if (localObject2 == null) {
-        break label357;
+        break label353;
       }
       QLog.d("miniapp-db", 1, "query startAppByAppid start.");
       localObject1 = paramString2;
@@ -572,19 +572,19 @@ public class PreloadingFragment
       paramString2 = ((MiniAppEntityManager)localObject2).queryEntity(MiniAppByIdEntity.class, false, "appId=? and entryPath=? ", new String[] { paramString1, localObject1 }, null, null, null, null);
       localObject2 = ((MiniAppEntityManager)localObject2).queryEntity(MiniAppInfoEntity.class, false, "appId=? ", new String[] { paramString1 }, null, null, null, null);
       if ((paramString2 == null) || (paramString2.size() != 1) || (localObject2 == null) || (((List)localObject2).size() != 1)) {
-        break label357;
+        break label353;
       }
       paramString2 = (MiniAppByIdEntity)paramString2.get(0);
       localObject2 = (MiniAppInfoEntity)((List)localObject2).get(0);
-      if ((paramString2 == null) || (paramString2 == null)) {
-        break label357;
+      if (paramString2 == null) {
+        break label353;
       }
       localObject2 = MiniAppInfo.getMiniAppInfoByIdFromDB(paramString2, (MiniAppInfoEntity)localObject2);
       if (localObject2 == null) {
-        break label357;
+        break label353;
       }
       if (paramLaunchParam != null) {
-        break label373;
+        break label369;
       }
       paramString2 = new LaunchParam();
     }
@@ -615,9 +615,9 @@ public class PreloadingFragment
     paramString1 = new MiniAppConfig((MiniAppInfo)localObject2);
     MiniReportManager.reportEventType(paramString1, 1028, "id_cache", MiniReportManager.getAppType(paramString1));
     return true;
-    label348:
+    label344:
     QLog.e("miniapp-db", 1, "not QQAppInterface");
-    label357:
+    label353:
     return false;
   }
   
@@ -708,8 +708,8 @@ public class PreloadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559397, null);
-      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131370318));
+      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559399, null);
+      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131370286));
     }
     paramLayoutInflater = this.mRootView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);

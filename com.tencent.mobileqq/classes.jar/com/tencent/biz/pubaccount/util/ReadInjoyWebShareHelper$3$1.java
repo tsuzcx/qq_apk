@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
-import bioy;
+import bgve;
 import org.json.JSONException;
-import uav;
+import uhk;
 
 class ReadInjoyWebShareHelper$3$1
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInjoyWebShareHelper$3$1
   
   public void run()
   {
-    Activity localActivity = uav.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$3.this$0).a();
+    Activity localActivity = uhk.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$3.this$0).a();
     if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
@@ -29,7 +29,7 @@ class ReadInjoyWebShareHelper$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

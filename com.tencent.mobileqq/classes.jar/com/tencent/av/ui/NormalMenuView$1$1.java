@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
-import mhf;
-import miv;
+import mgo;
+import mie;
 
 public class NormalMenuView$1$1
   implements Runnable
 {
-  public NormalMenuView$1$1(mhf parammhf) {}
+  public NormalMenuView$1$1(mgo parammgo) {}
   
   public void run()
   {

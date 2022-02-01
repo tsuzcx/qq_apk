@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class afgz
-  implements DialogInterface.OnClickListener
 {
-  afgz(afgy paramafgy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private static final afgw a = new afgw(null);
 }
 
 

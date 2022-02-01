@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import bcsa;
+import bblk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,7 +16,7 @@ class ReceiptMessageDetailFragment$5
     if (QLog.isColorLevel()) {
       QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
     }
-    switch (ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_Int)
+    switch (ReceiptMessageDetailFragment.a(this.this$0).curType)
     {
     default: 
       return;
@@ -25,7 +25,7 @@ class ReceiptMessageDetailFragment$5
       return;
     case 0: 
       ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.b(this.this$0), false);
-      ReceiptMessageDetailFragment.b(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().b(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.this$0), bcsa.a(ReceiptMessageDetailFragment.b(this.this$0))));
+      ReceiptMessageDetailFragment.b(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getMsgHandler().b(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).curFriendUin), ReceiptMessageDetailFragment.a(this.this$0), bblk.a(ReceiptMessageDetailFragment.b(this.this$0))));
       return;
     }
     ReceiptMessageDetailFragment.f(this.this$0);

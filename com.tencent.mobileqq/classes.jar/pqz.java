@@ -1,24 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class pqz
-  extends Handler
+public abstract interface pqz
 {
-  pqz(pqx parampqx, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.f();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

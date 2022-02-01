@@ -1,13 +1,21 @@
-import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class ozt
-  implements tch
+class ozt
+  implements ViewBase.OnClickListener
 {
-  ozt(Context paramContext, String paramString) {}
+  ozt(ozq paramozq, ViewBase paramViewBase) {}
   
-  public void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    {
+      ozp.a(this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
+      ozp.a(this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    }
+    pay.d(this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
   }
 }
 

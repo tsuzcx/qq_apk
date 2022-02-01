@@ -1,6 +1,7 @@
 package com.tencent.superplayer.player;
 
 import android.content.Context;
+import android.os.Build.VERSION;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -32,7 +33,6 @@ import com.tencent.superplayer.preload.PreloadPlayerMgr;
 import com.tencent.superplayer.report.ISPReporter;
 import com.tencent.superplayer.report.SPReportHelper;
 import com.tencent.superplayer.utils.LogUtil;
-import com.tencent.superplayer.utils.ThreadUtil;
 import com.tencent.superplayer.utils.Utils;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
@@ -143,8 +143,9 @@ public class SuperPlayerMgr
   {
     LogUtil.i(this.mTAG, "handleOnVideoPrepared():");
     this.mPlayState.changeStateAndNotify(4);
-    if (this.mVideoView != null) {
-      this.mVideoView.setFixedSize(getVideoWidth(), getVideoHeight());
+    ISPlayerVideoView localISPlayerVideoView = this.mVideoView;
+    if (localISPlayerVideoView != null) {
+      localISPlayerVideoView.setFixedSize(getVideoWidth(), getVideoHeight());
     }
     this.mReporter.onPrepared();
   }
@@ -207,10 +208,11 @@ public class SuperPlayerMgr
     for (;;)
     {
       this.mFrameCheckHelper.setOnVideoFrameCheckListener(this);
-      if ((this.mVideoView != null) && (this.mVideoView.isSurfaceReady()))
+      paramSuperPlayerOption = this.mVideoView;
+      if ((paramSuperPlayerOption != null) && (paramSuperPlayerOption.isSurfaceReady()))
       {
-        this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
-        this.mFrameCheckHelper.updatePlayerVideoView(this.mVideoView);
+        this.mPlayerWrapper.setSurface(paramSuperPlayerOption.getSurface());
+        this.mFrameCheckHelper.updatePlayerVideoView(paramSuperPlayerOption);
       }
       return;
       this.mFrameCheckHelper = new VideoFrameCheckHelper();
@@ -445,13 +447,14 @@ public class SuperPlayerMgr
     {
       int i = 1;
       PreloadPlayerInfo localPreloadPlayerInfo = PreloadPlayerMgr.getInstance().getPlayerFromPool(this.mSceneId, paramSuperPlayerVideoInfo);
+      ISPlayerVideoView localISPlayerVideoView = this.mVideoView;
       if (localPreloadPlayerInfo != null)
       {
         LogUtil.i(this.mTAG, "复用预加载播放器, PlayerTag = 【" + localPreloadPlayerInfo.player.getPlayerTag() + "】");
         this.mPlayerWrapper = localPreloadPlayerInfo.player;
         this.mPlayerWrapper.updatePlayerTag(this.mPlayerTag);
-        if (this.mVideoView != null) {
-          this.mVideoView.changeSurfaceObject(localPreloadPlayerInfo.videoView.getStoredSurfaceObject());
+        if (localISPlayerVideoView != null) {
+          localISPlayerVideoView.changeSurfaceObject(localPreloadPlayerInfo.videoView.getStoredSurfaceObject());
         }
       }
       for (;;)
@@ -472,10 +475,10 @@ public class SuperPlayerMgr
         if (this.mPlayerWrapper == null) {
           this.mPlayerWrapper = new SuperPlayerWrapper(this.mContext, this.mSceneId, this.mPlayerTag, this.mLooper);
         }
-        if ((this.mVideoView != null) && (this.mVideoView.isSurfaceReady()))
+        if ((localISPlayerVideoView != null) && (localISPlayerVideoView.isSurfaceReady()))
         {
-          this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
-          this.mFrameCheckHelper.updatePlayerVideoView(this.mVideoView);
+          this.mPlayerWrapper.setSurface(localISPlayerVideoView.getSurface());
+          this.mFrameCheckHelper.updatePlayerVideoView(localISPlayerVideoView);
         }
         i = 0;
       }
@@ -510,7 +513,25 @@ public class SuperPlayerMgr
     if (this.mVideoView != null) {
       this.mVideoView.removeViewCallBack(null);
     }
-    ThreadUtil.runOnThreadPool(new SuperPlayerMgr.1(this));
+    if (this.mPlayerWrapper != null)
+    {
+      this.mPlayerWrapper.release();
+      this.mPlayerWrapper = null;
+    }
+    if (this.mHandlerThread != null)
+    {
+      if (Build.VERSION.SDK_INT < 18) {
+        break label110;
+      }
+      this.mHandlerThread.quitSafely();
+    }
+    for (;;)
+    {
+      this.mHandlerThread = null;
+      return;
+      label110:
+      this.mHandlerThread.quit();
+    }
   }
   
   public void handleReset()
@@ -647,9 +668,9 @@ public class SuperPlayerMgr
     LogUtil.i(this.mTAG, "api handle : handleUpdatePlayerVideoView");
     if (this.mPlayerWrapper != null)
     {
-      if ((this.mVideoView != null) && (this.mVideoView.isSurfaceReady()))
+      if ((paramISPlayerVideoView != null) && (paramISPlayerVideoView.isSurfaceReady()))
       {
-        this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
+        this.mPlayerWrapper.setSurface(paramISPlayerVideoView.getSurface());
         this.mFrameCheckHelper.updatePlayerVideoView(paramISPlayerVideoView);
       }
     }
@@ -695,10 +716,11 @@ public class SuperPlayerMgr
   public void onSurfaceCreated(Object paramObject)
   {
     LogUtil.i(this.mTAG, "api handle : onSurfaceCreated");
-    if ((this.mVideoView != null) && (this.mVideoView.getSurface() != null) && (this.mPlayerWrapper != null))
+    paramObject = this.mVideoView;
+    if ((paramObject != null) && (paramObject.getSurface() != null) && (this.mPlayerWrapper != null))
     {
-      this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
-      this.mFrameCheckHelper.updatePlayerVideoView(this.mVideoView);
+      this.mPlayerWrapper.setSurface(paramObject.getSurface());
+      this.mFrameCheckHelper.updatePlayerVideoView(paramObject);
       LogUtil.i(this.mTAG, "onSurfaceCreated view created. mediaPlayer.setSurface:");
       return;
     }

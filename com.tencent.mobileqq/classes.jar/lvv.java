@@ -1,41 +1,18 @@
-import android.graphics.Typeface;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lvv
-  implements ViewSwitcher.ViewFactory
+public final class lvv
+  implements Parcelable.Creator<AVRedPacketConfig>
 {
-  public lvv(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
-  
-  public View makeView()
+  public AVRedPacketConfig a(Parcel paramParcel)
   {
-    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-    try
-    {
-      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(agej.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
-      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-      localStrokeTextView.setIncludeFontPadding(false);
-      if (this.jdField_a_of_type_Boolean) {}
-      for (String str = "0";; str = "")
-      {
-        localStrokeTextView.setText(str);
-        localStrokeTextView.setStrokeEnable(true);
-        localStrokeTextView.setStrokeColor(-1);
-        localStrokeTextView.setStrokeSize(agej.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
-        localStrokeTextView.setInnerTextColor(-2094274);
-        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
-        localStrokeTextView.setGravity(17);
-        return localStrokeTextView;
-      }
-      return localStrokeTextView;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    return new AVRedPacketConfig(paramParcel);
+  }
+  
+  public AVRedPacketConfig[] a(int paramInt)
+  {
+    return new AVRedPacketConfig[paramInt];
   }
 }
 

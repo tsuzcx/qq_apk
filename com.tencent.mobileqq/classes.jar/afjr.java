@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import GROUP.MessageRemindRsp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class afjr
-  implements DialogInterface.OnClickListener
+  extends anam
 {
-  public afjr(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
+  public afjr(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    paramDialogInterface.dismiss();
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, anzj.a(2131712225) + anzj.a(2131712246) + this.jdField_a_of_type_JavaLangString + anzj.a(2131712224) + this.b + anzj.a(2131712217));
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.tag, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.sessionInfo.curFriendUin + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.app.getManager(52)).a(this.a.sessionInfo.curFriendUin, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.app, this.a.sessionInfo.curFriendUin, this.a.mContext, this.a, this.a.mTipsMgr);
+      return;
+    }
+    QLog.e("vip_pretty." + this.a.tag, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.sessionInfo.curFriendUin }));
   }
 }
 

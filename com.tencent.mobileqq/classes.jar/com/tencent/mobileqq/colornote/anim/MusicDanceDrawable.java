@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.colornote.anim;
 
-import agej;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -8,20 +7,21 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aqrq;
-import aqrt;
+import apkz;
+import aplc;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MusicDanceDrawable
   extends Drawable
-  implements aqrq, Runnable
+  implements apkz, Runnable
 {
   private static List<Double>[] jdField_a_of_type_ArrayOfJavaUtilList;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<aqrt> jdField_a_of_type_JavaUtilList;
+  private List<aplc> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -60,7 +60,7 @@ public class MusicDanceDrawable
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new aqrt(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.jdField_a_of_type_JavaUtilList.add(new aplc(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
   }
   
   public void a(Context paramContext, int paramInt1, int paramInt2)
@@ -77,7 +77,7 @@ public class MusicDanceDrawable
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt3);
     this.b = paramInt2;
-    this.c = agej.a(2.0F, paramContext.getResources());
+    this.c = AIOUtils.dp2px(2.0F, paramContext.getResources());
     if (this.c < 0) {}
     paramInt3 = (paramInt1 - this.c * 2) / 3;
     paramInt1 = 0;
@@ -94,9 +94,9 @@ public class MusicDanceDrawable
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      aqrt localaqrt = (aqrt)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - aqrt.a(localaqrt), this.jdField_a_of_type_Int + aqrt.b(localaqrt), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_Int += aqrt.b(localaqrt) + this.c;
+      aplc localaplc = (aplc)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - aplc.a(localaplc), this.jdField_a_of_type_Int + aplc.b(localaplc), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_Int += aplc.b(localaplc) + this.c;
       i += 1;
     }
   }
@@ -124,8 +124,8 @@ public class MusicDanceDrawable
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         double d1 = ((Double)jdField_a_of_type_ArrayOfJavaUtilList[i].get(this.f)).doubleValue();
-        aqrt localaqrt = (aqrt)this.jdField_a_of_type_JavaUtilList.get(i);
-        localaqrt.a((int)(d1 * aqrt.c(localaqrt)));
+        aplc localaplc = (aplc)this.jdField_a_of_type_JavaUtilList.get(i);
+        localaplc.a((int)(d1 * aplc.c(localaplc)));
         i += 1;
       }
       scheduleSelf(this, 50L);

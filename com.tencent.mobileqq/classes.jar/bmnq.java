@@ -1,15 +1,15 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bmnq
+public abstract interface bmnq
 {
-  public int a;
-  public Bundle a;
+  public abstract void a(AEEditorTextBean paramAEEditorTextBean, int paramInt);
   
-  bmnq(bmno parambmno, int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
+  public abstract void a(AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean, @Nullable AEEditorPagStickerConfig paramAEEditorPagStickerConfig);
+  
+  public abstract void a(AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean, @NonNull String paramString);
 }
 
 

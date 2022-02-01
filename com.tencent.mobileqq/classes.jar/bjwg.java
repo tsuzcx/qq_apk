@@ -1,406 +1,133 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
+import java.util.List;
 
-public class bjwg
+class bjwg
+  implements RecyclerView.OnItemTouchListener
 {
-  private static SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private static HashMap<String, JSONObject> jdField_a_of_type_JavaUtilHashMap;
-  private static boolean jdField_a_of_type_Boolean;
+  bjwg(bjwf parambjwf) {}
   
-  /* Error */
-  @android.annotation.TargetApi(11)
-  public static SharedPreferences a()
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 15	bjwg:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   6: ifnonnull +27 -> 33
-    //   9: invokestatic 21	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   12: astore_1
-    //   13: getstatic 27	android/os/Build$VERSION:SDK_INT	I
-    //   16: bipush 10
-    //   18: if_icmple +24 -> 42
-    //   21: iconst_4
-    //   22: istore_0
-    //   23: aload_1
-    //   24: ldc 29
-    //   26: iload_0
-    //   27: invokevirtual 33	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   30: putstatic 15	bjwg:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   33: getstatic 15	bjwg:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   36: astore_1
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_1
-    //   41: areturn
-    //   42: iconst_0
-    //   43: istore_0
-    //   44: goto -21 -> 23
-    //   47: astore_1
-    //   48: ldc 2
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   22	22	0	i	int
-    //   12	29	1	localObject1	Object
-    //   47	5	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	21	47	finally
-    //   23	33	47	finally
-    //   33	37	47	finally
-  }
-  
-  public static ArrayList<String> a()
-  {
-    a();
-    return a("login_history");
-  }
-  
-  private static ArrayList<String> a(String paramString)
-  {
-    Object localObject1 = null;
-    try
+    this.a.mGestureDetector.a(paramMotionEvent);
+    int i = paramMotionEvent.getActionMasked();
+    if (i == 0)
     {
-      Object localObject3 = a().getString(paramString, "");
-      if (((String)localObject3).length() > 0)
+      this.a.mActivePointerId = paramMotionEvent.getPointerId(0);
+      this.a.mInitialTouchX = paramMotionEvent.getX();
+      this.a.mInitialTouchY = paramMotionEvent.getY();
+      this.a.obtainVelocityTracker();
+      if (this.a.mSelected == null)
       {
-        String[] arrayOfString = ((String)localObject3).split(",");
-        localObject3 = new ArrayList();
-        int j = arrayOfString.length;
-        int i = 0;
+        paramRecyclerView = this.a.findAnimation(paramMotionEvent);
+        if (paramRecyclerView != null)
+        {
+          bjwf localbjwf = this.a;
+          localbjwf.mInitialTouchX -= paramRecyclerView.e;
+          localbjwf = this.a;
+          localbjwf.mInitialTouchY -= paramRecyclerView.f;
+          this.a.endRecoverAnimation(paramRecyclerView.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, true);
+          if (this.a.mPendingCleanup.remove(paramRecyclerView.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)) {
+            this.a.mCallback.clearView(this.a.mRecyclerView, paramRecyclerView.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+          }
+          this.a.select(paramRecyclerView.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, paramRecyclerView.jdField_b_of_type_Int);
+          this.a.updateDxDy(paramMotionEvent, this.a.mSelectedFlags, 0);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.mVelocityTracker != null) {
+        this.a.mVelocityTracker.addMovement(paramMotionEvent);
+      }
+      if (this.a.mSelected == null) {
+        break;
+      }
+      return true;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.mActivePointerId = -1;
+        this.a.select(null, 0);
+      }
+      else if (this.a.mActivePointerId != -1)
+      {
+        int j = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+        if (j >= 0) {
+          this.a.checkSelectForSwipe(i, paramMotionEvent, j);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return;
+    }
+    this.a.select(null, 0);
+  }
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    int i = 0;
+    this.a.mGestureDetector.a(paramMotionEvent);
+    if (this.a.mVelocityTracker != null) {
+      this.a.mVelocityTracker.addMovement(paramMotionEvent);
+    }
+    if (this.a.mActivePointerId == -1) {}
+    int j;
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        j = paramMotionEvent.getActionMasked();
+        k = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+        if (k >= 0) {
+          this.a.checkSelectForSwipe(j, paramMotionEvent, k);
+        }
+        paramRecyclerView = this.a.mSelected;
+      } while (paramRecyclerView == null);
+      switch (j)
+      {
+      case 4: 
+      case 5: 
+      default: 
+        return;
+      case 1: 
+      case 2: 
+      case 3: 
         for (;;)
         {
-          localObject1 = localObject3;
-          if (i >= j) {
-            break;
-          }
-          ((ArrayList)localObject3).add(arrayOfString[i]);
-          i += 1;
-        }
-      }
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  private static JSONObject a(String paramString)
-  {
-    JSONObject localJSONObject = null;
-    for (;;)
-    {
-      Object localObject2;
-      try
-      {
-        if (jdField_a_of_type_JavaUtilHashMap == null)
-        {
-          jdField_a_of_type_JavaUtilHashMap = new HashMap();
-          if (localJSONObject != null) {
-            break label95;
-          }
-          localObject2 = a().getString(paramString, "{}");
-        }
-      }
-      finally {}
-      for (;;)
-      {
-        try
-        {
-          localObject2 = new JSONObject((String)localObject2);
-        }
-        catch (JSONException localJSONException2)
-        {
-          paramString = localJSONException1;
-          Object localObject1 = localJSONException2;
-          break;
-        }
-        try
-        {
-          jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject2);
-          paramString = (String)localObject2;
-          return paramString;
-        }
-        catch (JSONException localJSONException1)
-        {
-          paramString = (String)localObject2;
-          break;
-        }
-      }
-      localJSONObject = (JSONObject)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      continue;
-      localJSONObject.printStackTrace();
-      continue;
-      label95:
-      paramString = localJSONException1;
-    }
-  }
-  
-  private static void a()
-  {
-    Object localObject1;
-    String str1;
-    Object localObject2;
-    int j;
-    int i;
-    Object localObject3;
-    if (!a())
-    {
-      localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("accountList", 0);
-      str1 = ((SharedPreferences)localObject1).getString("last_account", null);
-      localObject1 = ((SharedPreferences)localObject1).getString("accList", null);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label345;
-      }
-      localObject2 = ((String)localObject1).split(",");
-      if (localObject2 == null) {
-        break label345;
-      }
-      localObject1 = new ArrayList(localObject2.length);
-      j = localObject2.length;
-      i = 0;
-      while (i < j)
-      {
-        localObject3 = localObject2[i];
-        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).equals(str1))) {
-          ((ArrayList)localObject1).add(localObject3);
-        }
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = MsfSdkUtils.getLoginedAccountList();
-      if (localObject2 != null)
-      {
-        localObject2 = ((ArrayList)localObject2).iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (SimpleAccount)((Iterator)localObject2).next();
-          if (((SimpleAccount)localObject3).isLogined())
-          {
-            a(((SimpleAccount)localObject3).getUin(), "login_history", true);
-            i = 1;
-          }
-          for (;;)
-          {
-            break;
-            if (!((SimpleAccount)localObject3).getUin().equals(str1)) {
-              break label337;
-            }
-            str1 = null;
-            label194:
-            if (localObject1 == null) {
-              break label334;
-            }
-            Iterator localIterator = ((ArrayList)localObject1).iterator();
-            String str2;
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              str2 = (String)localIterator.next();
-            } while (!((SimpleAccount)localObject3).getUin().equals(str2));
-            ((ArrayList)localObject1).remove(str2);
-          }
-        }
-      }
-      for (;;)
-      {
-        j = i;
-        if (localObject1 != null)
-        {
-          localObject1 = ((ArrayList)localObject1).iterator();
-          for (;;)
-          {
-            j = i;
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
-            }
-            a((String)((Iterator)localObject1).next(), "login_history", true);
-            i = 1;
-          }
-        }
-        if (!TextUtils.isEmpty(str1))
-        {
-          a(str1, "login_history", true);
-          j = 1;
-        }
-        if (j != 0) {
-          a().edit().putBoolean("have_ever_login", true).commit();
-        }
-        return;
-        label334:
-        break;
-        label337:
-        break label194;
-        i = 0;
-      }
-      label345:
-      localObject1 = null;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    a();
-    a(paramString, "login_history");
-    a(paramString, "login_history", true);
-    if (!a()) {
-      a().edit().putBoolean("have_ever_login", true).commit();
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    JSONObject localJSONObject = a("last_skey_update_time");
-    if (localJSONObject != null) {}
-    try
-    {
-      localJSONObject.put(paramString, paramLong);
-      a("last_skey_update_time", localJSONObject);
-      QLog.e("open_log", 1, new Object[] { "saveUpdateSkeyTime uin=", bjqq.a(paramString) });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("open_log", 1, "saveUpdateSkeyTime", paramString);
-    }
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      for (;;)
-      {
-        try
-        {
-          String str = a().getString(paramString2, "");
-          if (str.length() > 0)
-          {
-            Matcher localMatcher = Pattern.compile("(^|,)" + paramString1 + "($|,)").matcher(str);
-            if (localMatcher.find())
-            {
-              paramString1 = ",";
-              if ((localMatcher.start() == 0) || (localMatcher.end() == str.length())) {
-                break label126;
-              }
-              paramString1 = localMatcher.replaceFirst(paramString1);
-              a().edit().putString(paramString2, paramString1).commit();
-            }
-          }
+          this.a.select(null, 0);
+          this.a.mActivePointerId = -1;
           return;
-        }
-        finally {}
-        label126:
-        paramString1 = "";
-      }
-    }
-  }
-  
-  private static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    int i = 1;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    label169:
-    for (;;)
-    {
-      String str;
-      try
-      {
-        str = a().getString(paramString2, "");
-        if (str.length() <= 0) {
-          break label169;
-        }
-        if (!Pattern.compile("(^|,)" + paramString1 + "($|,)").matcher(str).find())
-        {
-          if (paramBoolean)
-          {
-            paramString1 = paramString1 + "," + str;
-            if (i != 0) {
-              a().edit().putString(paramString2, paramString1).commit();
-            }
-            return;
+          if (k < 0) {
+            break;
           }
-          paramString1 = str + "," + paramString1;
-          continue;
+          this.a.updateDxDy(paramMotionEvent, this.a.mSelectedFlags, k);
+          this.a.moveIfNecessary(paramRecyclerView);
+          this.a.mRecyclerView.removeCallbacks(this.a.mScrollRunnable);
+          this.a.mScrollRunnable.run();
+          this.a.mRecyclerView.invalidate();
+          return;
+          if (this.a.mVelocityTracker != null) {
+            this.a.mVelocityTracker.clear();
+          }
         }
-        i = 0;
       }
-      finally {}
-      paramString1 = str;
-      continue;
-      return;
+      j = paramMotionEvent.getActionIndex();
+    } while (paramMotionEvent.getPointerId(j) != this.a.mActivePointerId);
+    if (j == 0) {
+      i = 1;
     }
-  }
-  
-  private static void a(String paramString, JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (jdField_a_of_type_JavaUtilHashMap != null) {
-        jdField_a_of_type_JavaUtilHashMap.put(paramString, paramJSONObject);
-      }
-      a().edit().putString(paramString, paramJSONObject.toString()).commit();
-      return;
-    }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = a().getBoolean("have_ever_login", false);
-    }
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    JSONObject localJSONObject = a("last_skey_update_time");
-    if (localJSONObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        long l1 = localJSONObject.getLong(paramString);
-        long l2 = System.currentTimeMillis();
-        if (l2 - l1 > 43200000L)
-        {
-          bool = true;
-          QLog.e("open_log", 1, new Object[] { "shouldUpdateSkey ret=", Boolean.valueOf(bool) });
-          return bool;
-        }
-        boolean bool = false;
-        continue;
-        bool = true;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("open_log", 1, "shouldUpdateSkey", paramString);
-      }
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    a(paramString, "login_history");
+    this.a.mActivePointerId = paramMotionEvent.getPointerId(i);
+    this.a.updateDxDy(paramMotionEvent, this.a.mSelectedFlags, j);
   }
 }
 

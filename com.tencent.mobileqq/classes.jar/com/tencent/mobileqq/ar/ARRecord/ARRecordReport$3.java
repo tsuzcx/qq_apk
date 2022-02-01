@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import apgr;
-import bdmc;
+import aoad;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARRecordReport$3
   implements Runnable
 {
-  public ARRecordReport$3(apgr paramapgr, int paramInt, long paramLong) {}
+  public ARRecordReport$3(aoad paramaoad, int paramInt, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    bdmc.a(BaseApplication.getContext()).a("", "ar_record_record_success", true, 0L, this.jdField_a_of_type_Long, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "ar_record_record_success", true, 0L, this.jdField_a_of_type_Long, localHashMap, "");
   }
 }
 

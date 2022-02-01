@@ -1,45 +1,14 @@
-import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class agyy
-  implements ArkAppMgr.IGetAppPathByNameCallback
+class agyy
+  implements DialogInterface.OnClickListener
 {
-  protected WeakReference<agyw> a;
+  agyy(agyh paramagyh) {}
   
-  public agyy(WeakReference<agyw> paramWeakReference)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramWeakReference;
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    paramObject = (agyw)this.a.get();
-    if (paramObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    String str1 = paramObject.a(paramString);
-    if (paramAppPathInfo != null) {}
-    for (paramString = paramAppPathInfo.path;; paramString = null)
-    {
-      paramObject.a.getAppFromLocal = false;
-      paramObject.a.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        String str2 = paramAppPathInfo.appTempInfo.template;
-        str2 = paramAppPathInfo.appTempInfo.templateView;
-        agyw.a(paramObject).view = str2;
-      }
-      agyw.a(paramAppPathInfo);
-      paramObject.a(paramString, paramInt, str1);
-      return;
-    }
+    this.a.e();
   }
 }
 

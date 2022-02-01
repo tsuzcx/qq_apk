@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ConversationFacadeProxy.Proxy;
 
-public class bcbd
-  implements View.OnClickListener
+public final class bcbd
+  implements RecentRoute.ConversationFacadeProxy.Proxy
 {
-  public bcbd(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
+  public int getUnreadCount(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    this.a.f();
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (((paramIMCoreAppRuntime instanceof QQAppInterface)) && ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)))
+    {
+      paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).getConversationFacade();
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(((QQMessageFacade.Message)paramIMCoreMessageStub).frienduin, paramInt);
+      }
+    }
+    return 0;
+  }
+  
+  public int getUnreadCount(IMCoreMessageStub paramIMCoreMessageStub, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    if (((paramIMCoreAppRuntime instanceof QQAppInterface)) && ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)))
+    {
+      paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).getConversationFacade();
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(((QQMessageFacade.Message)paramIMCoreMessageStub).frienduin, ((QQMessageFacade.Message)paramIMCoreMessageStub).istroop);
+      }
+    }
+    return 0;
   }
 }
 

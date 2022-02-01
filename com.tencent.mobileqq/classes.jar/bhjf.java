@@ -1,24 +1,18 @@
-import java.util.Comparator;
+import android.view.View;
 
-final class bhjf
-  implements Comparator
+public abstract interface bhjf
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
-    }
-    if (l1 < l2) {
-      return 2;
-    }
-    return -1;
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(float paramFloat, int paramInt);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjf
  * JD-Core Version:    0.7.0.1
  */

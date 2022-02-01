@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.homework.arithmetic.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfyr;
+import behz;
 
 public class HWGuideItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<HWGuideItem> CREATOR = new bfyr();
+  public static final Parcelable.Creator<HWGuideItem> CREATOR = new behz();
   public String a;
   public String b;
   

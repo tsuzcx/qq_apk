@@ -1,9 +1,14 @@
-public abstract interface yzd
-  extends yxs
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.view.View;
+
+class yzd
+  implements ViewPropertyAnimatorListener
 {
-  public abstract zlk a(int paramInt);
+  public void onAnimationCancel(View paramView) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationEnd(View paramView) {}
+  
+  public void onAnimationStart(View paramView) {}
 }
 
 

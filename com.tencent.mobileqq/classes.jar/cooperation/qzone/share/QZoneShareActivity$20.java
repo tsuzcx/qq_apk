@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import android.content.res.Resources;
-import bjbs;
+import bhht;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$20
@@ -11,13 +11,13 @@ class QZoneShareActivity$20
   
   public void run()
   {
-    if (QZoneShareActivity.a(this.this$0) == null) {
-      QZoneShareActivity.a(this.this$0, new bjbs(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131299011)));
+    if (QZoneShareActivity.access$1800(this.this$0) == null) {
+      QZoneShareActivity.access$1802(this.this$0, new bhht(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131299076)));
     }
-    QZoneShareActivity.a(this.this$0).c(this.a);
+    QZoneShareActivity.access$1800(this.this$0).c(this.val$resId);
     try
     {
-      QZoneShareActivity.a(this.this$0).show();
+      QZoneShareActivity.access$1800(this.this$0).show();
       return;
     }
     catch (Exception localException)

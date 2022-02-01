@@ -1,34 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class ykb
-  extends QQUIEventReceiver<yjy, xas>
+public class ykb
 {
-  public ykb(@NonNull yjy paramyjy)
+  public static String a(String paramString)
   {
-    super(paramyjy);
+    return "Q.qqstory.record.RMW." + paramString;
   }
   
-  public void a(@NonNull yjy paramyjy, @NonNull xas paramxas)
+  public static void a(String paramString1, String paramString2)
   {
-    if ((paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramyjy.jdField_a_of_type_JavaLangString)))
-    {
-      yuk.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramxas);
-      paramyjy.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      yjy.a(paramyjy).e();
-      yjy.a(paramyjy).c();
-      yjy.a(paramyjy).d();
-      yjy.a(paramyjy).a();
-    }
+    xvv.a(a(paramString1), paramString2);
   }
   
-  public Class acceptEventClass()
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    return xas.class;
+    xvv.c(a(paramString1), String.format(paramString2, paramVarArgs));
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    xvv.b(a(paramString1), paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    xvv.c(a(paramString1), paramString2);
   }
 }
 

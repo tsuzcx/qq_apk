@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.ListAdapter;
-import bplz;
+import bmqu;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
@@ -19,16 +19,16 @@ class QIMPtvTemplateProviderView$2
     GridView localGridView = (GridView)this.this$0.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a.get(Integer.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem()));
     if (localGridView != null)
     {
-      localListAdapter = localGridView.a();
-      if ((localListAdapter instanceof bplz))
+      localListAdapter = localGridView.getAdapter();
+      if ((localListAdapter instanceof bmqu))
       {
-        i = ((bplz)localListAdapter).a(this.a);
-        ((bplz)localListAdapter).a(this.a, i);
+        i = ((bmqu)localListAdapter).a(this.a);
+        ((bmqu)localListAdapter).a(this.a, i);
         localGridView.requestFocusFromTouch();
         localGridView.setFocusableInTouchMode(true);
         localGridView.setSelection(i);
-        localGridView.smoothScrollToPosition(i / localGridView.c());
-        ((bplz)localListAdapter).notifyDataSetChanged();
+        localGridView.smoothScrollToPosition(i / localGridView.getNumColumns());
+        ((bmqu)localListAdapter).notifyDataSetChanged();
       }
     }
     while (!QLog.isColorLevel())

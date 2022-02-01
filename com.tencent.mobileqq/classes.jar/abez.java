@@ -1,60 +1,68 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
 public class abez
-  implements aqxy
+  implements atya
 {
-  public abez(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, blir paramblir) {}
+  public abez(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void a()
+  public void onAudioMute(boolean paramBoolean, int paramInt)
   {
-    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
-    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
-    }
-    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
-      this.jdField_a_of_type_Blir.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    abfb localabfb = (abfb)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localabfb != null)
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("year", i);
-      localJSONObject.put("month", j);
-      localJSONObject.put("date", k);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
-      }
+      localabfb.a = paramBoolean;
+      this.a.callJs(localabfb.e + "(" + localabfb.a() + ");");
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onSrceenModeChanged(boolean paramBoolean, int paramInt)
   {
-    switch (paramInt1)
+    abfb localabfb = (abfb)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localabfb != null)
     {
+      localabfb.c = paramBoolean;
+      this.a.callJs(localabfb.d + "(" + localabfb.a() + ");");
     }
-    for (;;)
+  }
+  
+  public void onVideoStatusChanged(int paramInt1, int paramInt2)
+  {
+    abfb localabfb;
+    if (paramInt1 == 3)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+      localabfb = (abfb)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+      if (localabfb != null) {
+        this.a.callJs(localabfb.g + "(" + localabfb.a() + ");");
       }
-      return;
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramInt1 != 5) {
+              break;
+            }
+            localabfb = (abfb)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+          } while (localabfb == null);
+          this.a.callJs(localabfb.f + "(" + localabfb.a() + ");");
+          return;
+          if (paramInt1 != 7) {
+            break;
+          }
+          localabfb = (abfb)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+        } while (localabfb == null);
+        this.a.callJs(localabfb.h + "(" + localabfb.a() + ");");
+        return;
+      } while (paramInt1 != 0);
+      localabfb = (abfb)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+    } while (localabfb == null);
+    this.a.callJs(localabfb.i + "(" + localabfb.a() + ");");
   }
 }
 

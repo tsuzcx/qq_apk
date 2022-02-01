@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
-
 public class axho
-  implements DialogInterface.OnClickListener
 {
-  public axho(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

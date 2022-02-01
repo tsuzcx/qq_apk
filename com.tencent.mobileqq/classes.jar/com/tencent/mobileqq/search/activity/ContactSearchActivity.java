@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.search.activity;
 
 import Override;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anzj;
-import bdll;
-import bguq;
+import bcef;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ContactSearchActivity
@@ -52,16 +52,17 @@ public class ContactSearchActivity
     switch (this.d)
     {
     default: 
-      return anzj.a(2131701461);
+      return amtj.a(2131701696);
     }
-    return anzj.a(2131701444);
+    return amtj.a(2131701679);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -72,8 +73,8 @@ public class ContactSearchActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        bguq.a(this, paramIntent, true);
-        bdll.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        TroopUtils.enterTroopAio(this, paramIntent, true);
+        bcef.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
       }
     }
   }
@@ -98,7 +99,7 @@ public class ContactSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity
  * JD-Core Version:    0.7.0.1
  */

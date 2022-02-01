@@ -1,32 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class acvi
+final class acvi
+  implements DialogInterface.OnClickListener
 {
-  private static acvj a(int paramInt)
-  {
-    acvr localacvr = null;
-    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
-      localacvr = new acvr();
-    }
-    return localacvr;
-  }
+  acvi(acxb paramacxb, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acxa paramacxa) {}
   
-  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
-    acvj localacvj;
-    do
-    {
-      do
-      {
-        acvp.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-        return;
-      } while ((paramInt2 < 0) || (paramInt2 >= 4));
-      localacvj = a(paramInt2);
-    } while (localacvj == null);
-    localacvj.a(paramInt1, paramInt2, paramAdInfo);
+    this.jdField_a_of_type_Acxb.d = false;
+    this.jdField_a_of_type_Acxb.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_Acxb);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,18 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class vdb
-  implements MediaPlayer.OnPreparedListener
+  implements View.OnTouchListener
 {
-  vdb(vda paramvda) {}
+  vdb(vcz paramvcz) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("QCircleFolderSplashPart", 1, "videoView onPrepared!");
-    paramMediaPlayer.start();
-    vtq.a("", 19, 3, 0, "1");
-    paramMediaPlayer.setOnInfoListener(new vdc(this));
+    vcz.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

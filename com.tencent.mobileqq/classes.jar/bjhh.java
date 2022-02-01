@@ -1,7 +1,11 @@
-abstract class bjhh
+public class bjhh
 {
-  public int a;
-  public byte[] a;
+  public static void a(int paramInt1, int paramInt2)
+  {
+    bjhn localbjhn = new bjhn();
+    localbjhn.a(paramInt1).a(paramInt2);
+    bjhk.a(localbjhn.toString(), 103);
+  }
 }
 
 

@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.1;
 
-class bnuf
-  implements bnuv
+public class bnuf
+  implements Animation.AnimationListener
 {
-  bnuf(bnud parambnud) {}
+  public bnuf(VideoFilterViewPager.1 param1) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
-    bnud.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      bnuq.a().a(bnud.a(this.a));
-    }
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -8,5 +8,5 @@
         <TextView android:id="@id/info" style="@style/jx" />
     </LinearLayout>
     <ImageView android:id="@id/i4q" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/njn" android:background="@drawable/h3n" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/title" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/neu" android:background="@drawable/h12" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/title" android:layout_centerVertical="true" />
 </com.tencent.mobileqq.widget.FormItemRelativeLayout>

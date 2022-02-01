@@ -38,18 +38,21 @@ public class PreCacheManager$PreCacheDescData
   
   public PreCacheManager$PreCacheDescData(MiniAppConfig paramMiniAppConfig, String paramString)
   {
-    this.appid = paramMiniAppConfig.config.appId;
-    this.scene = paramMiniAppConfig.launchParam.scene;
-    this.path = paramMiniAppConfig.launchParam.entryPath;
-    int i = PreCacheManager.getCacheType(paramString);
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (paramMiniAppConfig.config.preCacheList != null))
+    if (paramMiniAppConfig != null)
     {
-      paramMiniAppConfig = paramMiniAppConfig.config.preCacheList.iterator();
-      while (paramMiniAppConfig.hasNext())
+      this.appid = paramMiniAppConfig.config.appId;
+      this.scene = paramMiniAppConfig.launchParam.scene;
+      this.path = paramMiniAppConfig.launchParam.entryPath;
+      int i = PreCacheManager.getCacheType(paramString);
+      if (paramMiniAppConfig.config.preCacheList != null)
       {
-        paramString = (PreCacheInfo)paramMiniAppConfig.next();
-        if ((paramString != null) && (paramString.cacheType == i)) {
-          this.url = paramString.getDataUrl;
+        paramMiniAppConfig = paramMiniAppConfig.config.preCacheList.iterator();
+        while (paramMiniAppConfig.hasNext())
+        {
+          paramString = (PreCacheInfo)paramMiniAppConfig.next();
+          if ((paramString != null) && (paramString.cacheType == i)) {
+            this.url = paramString.getDataUrl;
+          }
         }
       }
     }

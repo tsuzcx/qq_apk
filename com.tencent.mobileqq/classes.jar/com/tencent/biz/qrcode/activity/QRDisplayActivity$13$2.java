@@ -1,12 +1,12 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.text.TextUtils;
-import bhju;
-import bhlg;
-import bmtd;
-import bmtk;
+import bftc;
 import com.tencent.mobileqq.app.QQAppInterface;
-import zyx;
+import com.tencent.mobileqq.utils.ContactUtils;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import yyi;
 
 class QRDisplayActivity$13$2
   implements Runnable
@@ -21,32 +21,32 @@ class QRDisplayActivity$13$2
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_Int == 2) {
-        bhju.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_Int), "1" });
+        bftc.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_Int), "1" });
       }
-      zyx.a(1, 2131695816);
+      yyi.a(1, 2131695956);
       return;
     }
     String str;
     if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_Int == 2) {
       if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_Boolean) {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691911, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_JavaLangString });
+        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691957, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_JavaLangString });
       }
     }
     for (;;)
     {
-      bmtk localbmtk = bmtk.a();
-      localbmtk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.app.getAccount();
-      localbmtk.b = bhlg.h(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.app, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.app.getAccount());
-      bmtd.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0, localbmtk, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691912), str, 1);
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+      localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.app.getAccount();
+      localUserInfo.nickname = ContactUtils.getAccountNickName(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.app, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.app.getAccount());
+      QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0, localUserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691958), str, 1);
       return;
-      str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691910, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_JavaLangString });
+      str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691956, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_JavaLangString });
       continue;
       if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_Int == 5) {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691909, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_JavaLangString });
+        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691955, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_a_of_type_JavaLangString });
       } else if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.jdField_c_of_type_Int == 11) {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131692849);
+        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131692900);
       } else {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691913);
+        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$13.this$0.getString(2131691959);
       }
     }
   }

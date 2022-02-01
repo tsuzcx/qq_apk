@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmhz;
-import bmii;
+import bkmg;
+import bkmp;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bmii();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new bkmp();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;
-  public bmhz a;
+  public bkmg a;
   public String a;
   long b = -1L;
   
@@ -58,28 +58,28 @@ public class SendMsg
     //   42: astore_2
     //   43: aload_2
     //   44: invokestatic 87	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   47: invokestatic 92	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
-    //   50: invokevirtual 96	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
+    //   47: invokestatic 93	cooperation/qzone/QzonePluginProxyActivity:getQZonePluginClassLoader	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   50: invokevirtual 97	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   53: aload_0
     //   54: getfield 33	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
     //   57: aload_2
-    //   58: invokevirtual 100	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
+    //   58: invokevirtual 101	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
     //   61: aload_0
     //   62: aload_1
-    //   63: invokevirtual 104	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
-    //   66: invokestatic 109	bmia:a	(Landroid/os/IBinder;)Lbmhz;
-    //   69: putfield 111	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Bmhz	Lbmhz;
+    //   63: invokevirtual 105	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
+    //   66: invokestatic 110	bkmh:a	(Landroid/os/IBinder;)Lbkmg;
+    //   69: putfield 112	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Bkmg	Lbkmg;
     //   72: return
     //   73: astore_3
     //   74: aload_3
-    //   75: invokevirtual 114	java/lang/Exception:printStackTrace	()V
+    //   75: invokevirtual 115	java/lang/Exception:printStackTrace	()V
     //   78: goto -25 -> 53
     //   81: astore_1
-    //   82: ldc 116
+    //   82: ldc 117
     //   84: iconst_1
-    //   85: ldc 118
+    //   85: ldc 119
     //   87: aload_1
-    //   88: invokestatic 124	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   88: invokestatic 125	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   91: aload_1
     //   92: athrow
     // Local variable table:
@@ -102,9 +102,9 @@ public class SendMsg
     return this.jdField_a_of_type_Int;
   }
   
-  public bmhz a()
+  public bkmg a()
   {
-    return this.jdField_a_of_type_Bmhz;
+    return this.jdField_a_of_type_Bkmg;
   }
   
   public String a()
@@ -130,7 +130,7 @@ public class SendMsg
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      paramParcel.writeStrongInterface(this.jdField_a_of_type_Bmhz);
+      paramParcel.writeStrongInterface(this.jdField_a_of_type_Bkmg);
       return;
     }
     catch (RuntimeException paramParcel)

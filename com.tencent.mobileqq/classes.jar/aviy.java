@@ -1,25 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class aviy
-  implements View.OnClickListener
+public class aviy
+  extends amyh
 {
-  aviy(aviu paramaviu, String paramString) {}
+  public aviy(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    acik.a(localHashMap, this.jdField_a_of_type_JavaLangString);
-    localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    localHashMap.put(Integer.valueOf(10), "0");
-    acik.a(anbd.a(), "769", "205711", this.jdField_a_of_type_Aviu.a().gameAppId, "76905", "1", "160", localHashMap);
-    aviu.a(this.jdField_a_of_type_Aviu).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localBundle.putInt("result", i);
+      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
+      return;
+    }
   }
 }
 

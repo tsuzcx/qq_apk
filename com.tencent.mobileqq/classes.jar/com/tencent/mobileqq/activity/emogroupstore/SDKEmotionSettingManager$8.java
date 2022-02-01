@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ajyt;
+import aitt;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
@@ -8,16 +8,16 @@ import com.tencent.qphone.base.util.QLog;
 public class SDKEmotionSettingManager$8
   implements Runnable
 {
-  public SDKEmotionSettingManager$8(ajyt paramajyt) {}
+  public SDKEmotionSettingManager$8(aitt paramaitt) {}
   
   public void run()
   {
-    if (ajyt.a(this.this$0).isFinishing())
+    if (aitt.a(this.this$0).isFinishing())
     {
       QLog.i("SDKEmotionSettingManager", 1, "refreshEmotionRunnable -->activity finish");
       return;
     }
-    ajyt.a(this.this$0).sendBroadcast(new Intent("com.tencent.mobileqq.action.refresh.emotiom"));
+    aitt.a(this.this$0).sendBroadcast(new Intent("com.tencent.mobileqq.action.refresh.emotiom"));
   }
 }
 

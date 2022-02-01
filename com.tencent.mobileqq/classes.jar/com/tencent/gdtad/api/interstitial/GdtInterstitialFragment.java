@@ -1,15 +1,17 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acpv;
-import acpz;
-import acqd;
-import acqe;
-import acqg;
-import acql;
-import acvc;
-import acvp;
-import acwn;
-import afez;
+import abkw;
+import abme;
+import abmi;
+import abmm;
+import abmn;
+import abmp;
+import abmu;
+import abrl;
+import absa;
+import absw;
+import adxr;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -24,17 +26,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import anzj;
-import bjbs;
+import bhht;
 import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
 import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityForTool;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityLandscapeForTool;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityReverseLandscapeForTool;
@@ -49,8 +50,8 @@ public final class GdtInterstitialFragment
   extends PublicBaseFragment
 {
   private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private acql jdField_a_of_type_Acql;
-  private bjbs jdField_a_of_type_Bjbs;
+  private abmu jdField_a_of_type_Abmu;
+  private bhht jdField_a_of_type_Bhht;
   private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
   private GdtInterstitialStatus jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus = new GdtInterstitialStatus();
   
@@ -67,7 +68,7 @@ public final class GdtInterstitialFragment
       {
         do
         {
-          acvc.b("GdtInterstitialFragment", String.format("start errorCode:%d", new Object[] { Integer.valueOf(i) }));
+          abrl.b("GdtInterstitialFragment", String.format("start errorCode:%d", new Object[] { Integer.valueOf(i) }));
           return i;
           i = j;
         } while (paramActivity == null);
@@ -77,14 +78,8 @@ public final class GdtInterstitialFragment
     } while (!paramGdtInterstitialParams.b());
     String str = AdProcessManager.INSTANCE.getWebProcessName();
     Object localObject;
-    if (paramGdtInterstitialParams.jdField_b_of_type_Int == 1)
-    {
+    if (paramGdtInterstitialParams.jdField_b_of_type_Int == 1) {
       localObject = PublicTransFragmentActivityForTool.class;
-      if (acqd.a().b(paramActivity))
-      {
-        localObject = PublicTransFragmentActivity.class;
-        str = AdProcessManager.INSTANCE.getMainProcessName();
-      }
     }
     for (;;)
     {
@@ -102,7 +97,7 @@ public final class GdtInterstitialFragment
           continue;
         }
         if (paramGdtInterstitialParams.jdField_b_of_type_Int != 8) {
-          break label294;
+          break label272;
         }
         localObject = PublicTransFragmentActivityReverseLandscapeForTool.class;
         continue;
@@ -118,11 +113,11 @@ public final class GdtInterstitialFragment
       paramGdtInterstitialParams = new Intent();
       paramGdtInterstitialParams.putExtra("public_fragment_window_feature", 1);
       paramGdtInterstitialParams.putExtras(localBundle);
-      afez.a(paramActivity, paramGdtInterstitialParams, (Class)localObject, GdtInterstitialFragment.class, 10001);
+      adxr.a(paramActivity, paramGdtInterstitialParams, (Class)localObject, GdtInterstitialFragment.class, 10001);
       AdReporterForAnalysis.reportForStartActivity(paramActivity, null, "GdtInterstitialFragment", str);
       i = 0;
       break;
-      label294:
+      label272:
       localObject = null;
     }
   }
@@ -137,33 +132,47 @@ public final class GdtInterstitialFragment
   
   private void a(boolean paramBoolean)
   {
-    acvc.b("GdtInterstitialFragment", String.format("setLoading visible:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    abrl.b("GdtInterstitialFragment", String.format("setLoading visible:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     if (paramBoolean) {
-      if ((this.jdField_a_of_type_Bjbs == null) || (!this.jdField_a_of_type_Bjbs.isShowing())) {}
+      if ((this.jdField_a_of_type_Bhht == null) || (!this.jdField_a_of_type_Bhht.isShowing())) {}
     }
-    while ((paramBoolean) || (this.jdField_a_of_type_Bjbs == null))
+    while ((paramBoolean) || (this.jdField_a_of_type_Bhht == null))
     {
       return;
-      this.jdField_a_of_type_Bjbs = new bjbs(getActivity(), getResources().getDimensionPixelSize(2131299011));
-      this.jdField_a_of_type_Bjbs.setCancelable(false);
-      this.jdField_a_of_type_Bjbs.a(anzj.a(2131704069) + "加载");
-      this.jdField_a_of_type_Bjbs.show();
+      this.jdField_a_of_type_Bhht = new bhht(getActivity(), getResources().getDimensionPixelSize(2131299076));
+      this.jdField_a_of_type_Bhht.setCancelable(false);
+      this.jdField_a_of_type_Bhht.a(amtj.a(2131704298) + "加载");
+      this.jdField_a_of_type_Bhht.show();
       return;
     }
-    if (this.jdField_a_of_type_Bjbs.isShowing()) {}
+    if (this.jdField_a_of_type_Bhht.isShowing()) {}
     try
     {
-      this.jdField_a_of_type_Bjbs.dismiss();
-      this.jdField_a_of_type_Bjbs = null;
+      this.jdField_a_of_type_Bhht.dismiss();
+      this.jdField_a_of_type_Bhht = null;
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        acvc.d("GdtInterstitialFragment", "setLoading", localThrowable);
+        abrl.d("GdtInterstitialFragment", "setLoading", localThrowable);
       }
     }
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams == null) || (!this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.b())) {
+      return;
+    }
+    GdtAd localGdtAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+    if (!localGdtAd.isHitPreloadCanvasJsonExp())
+    {
+      abrl.b("GdtInterstitialFragment", "not hitPreloadCanvasJsonExp");
+      return;
+    }
+    abkw.a().a(localGdtAd);
   }
   
   public GdtInterstitialParams a()
@@ -180,22 +189,22 @@ public final class GdtInterstitialFragment
   {
     if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_e_of_type_Boolean)
     {
-      acvc.d("GdtInterstitialFragment", "onLoaded error");
+      abrl.d("GdtInterstitialFragment", "onLoaded error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_e_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int == 2)
     {
-      acqe.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+      abmn.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
       if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_c_of_type_Long == -2147483648L)
       {
         this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_c_of_type_Long = System.currentTimeMillis();
-        acvp.f(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+        absa.f(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
       }
     }
     a(false);
-    acvc.b("GdtInterstitialFragment", String.format("onLoaded timeMillis:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.a()) }));
-    acvp.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    abrl.b("GdtInterstitialFragment", String.format("onLoaded timeMillis:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.a()) }));
+    absa.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
   }
   
   void a(int paramInt)
@@ -211,7 +220,7 @@ public final class GdtInterstitialFragment
     }
     for (;;)
     {
-      acvc.b("GdtInterstitialFragment", String.format("onClick %b", new Object[] { Boolean.valueOf(bool) }));
+      abrl.b("GdtInterstitialFragment", String.format("onClick %b", new Object[] { Boolean.valueOf(bool) }));
       return bool;
       if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null)
       {
@@ -223,7 +232,7 @@ public final class GdtInterstitialFragment
         {
           GdtHandler.Params localParams = new GdtHandler.Params();
           localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
-          localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(acqd.a().a());
+          localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(abmm.a().a());
           localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
           localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
           localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
@@ -237,7 +246,9 @@ public final class GdtInterstitialFragment
           localParams.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_AndroidGraphicsRect;
           localParams.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_Long;
           localParams.jdField_f_of_type_Boolean = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_f_of_type_Boolean;
+          localParams.g = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.g;
           localParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_JavaLangString;
+          localParams.jdField_a_of_type_OrgJsonJSONObject = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_OrgJsonJSONObject;
           localParams.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_AndroidOsBundle;
           if (!localParams.a())
           {
@@ -246,7 +257,7 @@ public final class GdtInterstitialFragment
           else
           {
             GdtHandler.a(localParams);
-            acvp.c(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+            absa.c(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
             bool = true;
           }
         }
@@ -265,7 +276,7 @@ public final class GdtInterstitialFragment
     }
     for (;;)
     {
-      acvc.b("GdtInterstitialFragment", String.format("finish %b error:%d arkError:%d arkScriptError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
+      abrl.b("GdtInterstitialFragment", String.format("finish %b error:%d arkError:%d arkScriptError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
       return bool;
       a(false);
       this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_b_of_type_Int = paramInt1;
@@ -282,7 +293,7 @@ public final class GdtInterstitialFragment
       else
       {
         getActivity().finish();
-        acvp.d(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+        absa.d(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
         bool = true;
       }
     }
@@ -294,19 +305,19 @@ public final class GdtInterstitialFragment
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_f_of_type_Boolean = true;
-    acvc.b("GdtInterstitialFragment", String.format("onImpression timeMillis:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.a()) }));
-    acvp.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    abrl.b("GdtInterstitialFragment", String.format("onImpression timeMillis:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.a()) }));
+    absa.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
   }
   
   public void beforeFinish()
   {
-    acvc.b("GdtInterstitialFragment", "beforeFinish");
+    abrl.b("GdtInterstitialFragment", "beforeFinish");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 4;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
-    if (this.jdField_a_of_type_Acql != null) {
-      this.jdField_a_of_type_Acql.c(getActivity());
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    if (this.jdField_a_of_type_Abmu != null) {
+      this.jdField_a_of_type_Abmu.c(getActivity());
     }
-    acqd.a().a(a());
+    abmm.a().a(a());
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("interstitialStatus", this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     Intent localIntent = new Intent();
@@ -343,17 +354,17 @@ public final class GdtInterstitialFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    acvc.b("GdtInterstitialFragment", "onActivityCreated");
+    abrl.b("GdtInterstitialFragment", "onActivityCreated");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 6;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    acvc.b("GdtInterstitialFragment", "onAttach");
+    abrl.b("GdtInterstitialFragment", "onAttach");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 7;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
   }
   
   public boolean onBackEvent()
@@ -364,9 +375,9 @@ public final class GdtInterstitialFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    acvc.b("GdtInterstitialFragment", "onCreate");
+    abrl.b("GdtInterstitialFragment", "onCreate");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 8;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -374,11 +385,11 @@ public final class GdtInterstitialFragment
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 1;
     paramLayoutInflater = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus;
     boolean bool;
-    if (acqg.a().a() == 3)
+    if (abmp.a().a() == 3)
     {
       bool = true;
       paramLayoutInflater.jdField_a_of_type_Boolean = bool;
-      acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+      absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     }
     for (;;)
     {
@@ -391,7 +402,7 @@ public final class GdtInterstitialFragment
       {
         try
         {
-          if (!acqd.a().a(a(), new WeakReference(this))) {}
+          if (!abmm.a().a(a(), new WeakReference(this))) {}
           i = 18;
           if (getActivity() == null)
           {
@@ -403,13 +414,13 @@ public final class GdtInterstitialFragment
           getActivity().setRequestedOrientation(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_b_of_type_Int);
           j = 20;
           i = j;
-          this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_c_of_type_Int = acwn.b(getActivity());
+          this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_c_of_type_Int = absw.b(getActivity());
           i = j;
-          this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_d_of_type_Int = acwn.d(getActivity());
+          this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_d_of_type_Int = absw.d(getActivity());
           j = 21;
           i = j;
           if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_c_of_type_Int <= 0) {
-            break label767;
+            break label764;
           }
           i = j;
           if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_d_of_type_Int <= 0)
@@ -419,9 +430,9 @@ public final class GdtInterstitialFragment
             continue;
           }
           i = 22;
-          this.jdField_a_of_type_Acql = new acql(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+          this.jdField_a_of_type_Abmu = new abmu(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
           i = 23;
-          if (this.jdField_a_of_type_Acql.a() == null)
+          if (this.jdField_a_of_type_Abmu.a() == null)
           {
             i = 23;
             j = 1;
@@ -433,7 +444,7 @@ public final class GdtInterstitialFragment
           i = j;
           paramViewGroup.gravity = 17;
           i = j;
-          paramLayoutInflater.addView(this.jdField_a_of_type_Acql.a(), paramViewGroup);
+          paramLayoutInflater.addView(this.jdField_a_of_type_Abmu.a(), paramViewGroup);
           j = 25;
           i = j;
           if (!this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_Boolean)
@@ -453,7 +464,7 @@ public final class GdtInterstitialFragment
         i = 1;
         paramLayoutInflater = null;
         j = 4;
-        acvc.d("GdtInterstitialFragment", "onCreateView", paramViewGroup);
+        abrl.d("GdtInterstitialFragment", "onCreateView", paramViewGroup);
         continue;
       }
       for (;;)
@@ -462,11 +473,11 @@ public final class GdtInterstitialFragment
         {
           a(true);
           i = 3;
-          AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragment.1(this), 0, acqd.a().a(getActivity()));
+          AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragment.1(this), 0, 10000L);
           i = 4;
-          acpz.a();
+          abmi.a();
           i = 5;
-          ArkAppNotifyCenter.setNotify(acqd.a().a().jdField_a_of_type_JavaLangString, new WeakReference(acqd.a().a()));
+          ArkAppNotifyCenter.setNotify(abmm.a().a().jdField_a_of_type_JavaLangString, new WeakReference(abmm.a().a()));
           i = 7;
           paramViewGroup = getArguments();
           if (paramViewGroup == null)
@@ -478,12 +489,13 @@ public final class GdtInterstitialFragment
         catch (Throwable paramViewGroup)
         {
           j = 4;
-          break label737;
+          break label734;
           break;
         }
         try
         {
-          acvc.b("GdtInterstitialFragment", String.format("onCreateView traceId:%s", new Object[] { a() }));
+          abrl.b("GdtInterstitialFragment", String.format("onCreateView traceId:%s", new Object[] { a() }));
+          c();
           AdThreadManager.INSTANCE.post(new GdtInterstitialFragment.2(this, j, i), 5);
           AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtInterstitialFragment", 1, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_JavaLangString);
           V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -491,7 +503,7 @@ public final class GdtInterstitialFragment
         }
         catch (Throwable paramViewGroup)
         {
-          break label737;
+          break label734;
           i = 21;
           j = 1;
         }
@@ -561,33 +573,33 @@ public final class GdtInterstitialFragment
   
   public void onDestroy()
   {
-    acvc.b("GdtInterstitialFragment", "onDestroy");
+    abrl.b("GdtInterstitialFragment", "onDestroy");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 12;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     super.onDestroy();
   }
   
   public void onDestroyView()
   {
-    acvc.b("GdtInterstitialFragment", "onDestroyView");
+    abrl.b("GdtInterstitialFragment", "onDestroyView");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 11;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     super.onDestroyView();
   }
   
   public void onDetach()
   {
-    acvc.b("GdtInterstitialFragment", "onDetach");
+    abrl.b("GdtInterstitialFragment", "onDetach");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 13;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     super.onDetach();
   }
   
   public void onFinish()
   {
-    acvc.b("GdtInterstitialFragment", "onFinish");
+    abrl.b("GdtInterstitialFragment", "onFinish");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 5;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     super.onFinish();
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (Build.VERSION.SDK_INT >= 5)) {
@@ -597,19 +609,19 @@ public final class GdtInterstitialFragment
   
   public void onPause()
   {
-    acvc.b("GdtInterstitialFragment", "onPause");
+    abrl.b("GdtInterstitialFragment", "onPause");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 3;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
-    if (this.jdField_a_of_type_Acql != null) {
-      this.jdField_a_of_type_Acql.a(getActivity());
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    if (this.jdField_a_of_type_Abmu != null) {
+      this.jdField_a_of_type_Abmu.a(getActivity());
     }
     if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_e_of_type_Boolean)
     {
-      acqe.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+      abmn.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
       if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_d_of_type_Long == -2147483648L)
       {
         this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_d_of_type_Long = System.currentTimeMillis();
-        acvp.f(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+        absa.f(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
       }
     }
     super.onPause();
@@ -618,20 +630,20 @@ public final class GdtInterstitialFragment
   public void onResume()
   {
     super.onResume();
-    acvc.b("GdtInterstitialFragment", "onResume");
+    abrl.b("GdtInterstitialFragment", "onResume");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 2;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
-    if (this.jdField_a_of_type_Acql != null) {
-      this.jdField_a_of_type_Acql.b(getActivity());
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    if (this.jdField_a_of_type_Abmu != null) {
+      this.jdField_a_of_type_Abmu.b(getActivity());
     }
     if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_e_of_type_Boolean)
     {
       a(false);
-      acqe.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+      abmn.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
       if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_c_of_type_Long == -2147483648L)
       {
         this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_c_of_type_Long = System.currentTimeMillis();
-        acvp.f(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+        absa.f(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
       }
     }
   }
@@ -639,16 +651,16 @@ public final class GdtInterstitialFragment
   public void onStart()
   {
     super.onStart();
-    acvc.b("GdtInterstitialFragment", "onStart");
+    abrl.b("GdtInterstitialFragment", "onStart");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 9;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
   }
   
   public void onStop()
   {
-    acvc.b("GdtInterstitialFragment", "onStop");
+    abrl.b("GdtInterstitialFragment", "onStop");
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus.jdField_a_of_type_Int = 10;
-    acvp.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
+    absa.e(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus);
     super.onStop();
   }
 }

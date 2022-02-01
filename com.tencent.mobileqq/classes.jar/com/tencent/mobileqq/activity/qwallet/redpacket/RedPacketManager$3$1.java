@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
 import Wallet.GetSkinListRsp;
-import alfe;
-import bhmi;
+import akcx;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class RedPacketManager$3$1
   implements Runnable
 {
-  public RedPacketManager$3$1(alfe paramalfe, GetSkinListRsp paramGetSkinListRsp) {}
+  public RedPacketManager$3$1(akcx paramakcx, GetSkinListRsp paramGetSkinListRsp) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class RedPacketManager$3$1
       JceOutputStream localJceOutputStream = new JceOutputStream();
       localJceOutputStream.setServerEncoding("utf-8");
       this.jdField_a_of_type_WalletGetSkinListRsp.writeTo(localJceOutputStream);
-      bhmi.a(localJceOutputStream.toByteArray(), BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_Alfe.a.getCurrentAccountUin());
+      FileUtils.writeFile(localJceOutputStream.toByteArray(), BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_Akcx.a.getCurrentAccountUin());
       return;
     }
     catch (Throwable localThrowable)

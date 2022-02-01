@@ -1,8 +1,8 @@
 package com.tencent.av.app;
 
 import com.tencent.qphone.base.util.QLog;
-import lpa;
-import mci;
+import loi;
+import mbr;
 
 class VideoAppInterface$5
   implements Runnable
@@ -14,7 +14,7 @@ class VideoAppInterface$5
     if (VideoAppInterface.a(this.this$0).a())
     {
       String str = VideoAppInterface.a(this.this$0).a();
-      mci.a(this.this$0.getCurrentAccountUin(), str);
+      mbr.a(this.this$0.getCurrentAccountUin(), str);
       VideoAppInterface.a(this.this$0).a();
       if (QLog.isColorLevel()) {
         QLog.i(VideoAppInterface.c(), 2, "saveBeautyConfig, config[" + str + "]");

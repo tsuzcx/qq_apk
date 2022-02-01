@@ -1,35 +1,57 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class obm
-  implements bliz
+public class obm
+  implements INetInfoHandler
 {
-  obm(obj paramobj, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, blir paramblir) {}
+  public obm(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onNetMobile2None()
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    case 0: 
-      agju.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from mobile to none");
     }
-    agju.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_Blir.dismiss();
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to mobile");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).removeCallbacks(this.a.b);
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from wifi to none");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this.a.b, 1000L);
   }
 }
 

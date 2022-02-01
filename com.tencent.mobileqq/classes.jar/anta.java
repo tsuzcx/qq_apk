@@ -1,25 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class anta
-  extends biht
+public class anta
+  extends anri
 {
-  anta(ansz paramansz, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDone(bihu parambihu)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    super.onDone(parambihu);
-    if (3 == parambihu.a()) {
-      this.jdField_a_of_type_Ansz.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    paramQQAppInterface = new ansz(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wxminiapp";
+    paramQQAppInterface.c = "launch";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    for (;;)
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambihu.a());
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
-      return;
-      this.jdField_a_of_type_Ansz.a = 2;
-      this.jdField_a_of_type_Ansz.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
+    return paramQQAppInterface;
   }
 }
 

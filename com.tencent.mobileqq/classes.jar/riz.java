@@ -1,18 +1,65 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import kotlin.Metadata;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
-final class riz
-  implements View.OnTouchListener
+public class riz
+  implements TextWatcher
 {
-  public static final riz a = new riz();
+  private int jdField_a_of_type_Int;
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public riz(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return true;
+    int k = paramEditable.length();
+    int i;
+    int j;
+    label24:
+    Drawable[] arrayOfDrawable;
+    if (this.jdField_a_of_type_Int > 0)
+    {
+      i = 1;
+      if (k <= 0) {
+        break label120;
+      }
+      j = 1;
+      if ((j ^ i) != 0)
+      {
+        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
+        if (k <= 0) {
+          break label125;
+        }
+        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839579);
+      }
+    }
+    for (;;)
+    {
+      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      this.jdField_a_of_type_Int = k;
+      if (paramEditable.length() <= 0) {
+        break label133;
+      }
+      pkm.a().g(paramEditable.toString());
+      return;
+      i = 0;
+      break;
+      label120:
+      j = 0;
+      break label24;
+      label125:
+      arrayOfDrawable[2] = null;
+    }
+    label133:
+    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

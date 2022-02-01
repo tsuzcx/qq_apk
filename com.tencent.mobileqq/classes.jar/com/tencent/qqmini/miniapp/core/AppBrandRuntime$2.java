@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
 import com.tencent.qqmini.sdk.utils.SaveCaptureImageUitl;
 
@@ -16,18 +15,19 @@ class AppBrandRuntime$2
 {
   AppBrandRuntime$2(AppBrandRuntime paramAppBrandRuntime, ViewGroup paramViewGroup, GetScreenshot.Callback paramCallback, View paramView) {}
   
-  public void onCaptureImageFailed(AbsVideoPlayer paramAbsVideoPlayer)
+  public void onCaptureImageFailed()
   {
     AppBrandRuntime.access$100(this.this$0, this.val$callback, this.val$contentLayout);
     this.this$0.isGettingScreenShot = false;
   }
   
-  public void onCaptureImageSucceed(AbsVideoPlayer paramAbsVideoPlayer, Bitmap paramBitmap)
+  public void onCaptureImageSucceed(Bitmap paramBitmap)
   {
+    Bitmap localBitmap;
     if (paramBitmap != null)
     {
-      paramAbsVideoPlayer = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
-      if ((paramAbsVideoPlayer == null) || (paramAbsVideoPlayer.isRecycled()))
+      localBitmap = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
+      if ((localBitmap == null) || (localBitmap.isRecycled()))
       {
         if (this.val$callback != null) {
           this.val$callback.onGetScreenshot(null);
@@ -39,10 +39,10 @@ class AppBrandRuntime$2
     {
       this.this$0.isGettingScreenShot = false;
       return;
-      Canvas localCanvas = new Canvas(paramAbsVideoPlayer);
+      Canvas localCanvas = new Canvas(localBitmap);
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$nativeVideoView.getLayoutParams();
       localCanvas.drawBitmap(paramBitmap, localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, null);
-      ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.2.1(this, paramAbsVideoPlayer));
+      ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.2.1(this, localBitmap));
       break;
       AppBrandRuntime.access$100(this.this$0, this.val$callback, this.val$contentLayout);
     }

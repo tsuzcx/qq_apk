@@ -1,40 +1,61 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Iterator;
+import java.util.Set;
 
 public class apua
-  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public apua(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
-  
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (paramBoolean)
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
+  }
+  
+  public static aqaq a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    apty.a().a(419, 0L, false);
+    aqar localaqar = new aqar();
+    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
+    if (paramBaseApplicationImpl != null) {
+      try
+      {
+        paramBaseApplicationImpl = localaqar.a(paramBaseApplicationImpl);
+        if (paramBaseApplicationImpl != null) {
+          return paramBaseApplicationImpl;
+        }
+      }
+      catch (Exception paramBaseApplicationImpl) {}
+    }
+    return new aqaq();
+  }
+  
+  private static aptx[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    Object localObject1 = a(0L, paramBaseApplicationImpl);
+    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
+    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
+    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
+      return null;
+    }
+    localObject1 = new aptx[((Set)localObject2).size()];
+    localObject2 = ((Set)localObject2).iterator();
+    int i = 0;
+    while (((Iterator)localObject2).hasNext())
     {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
-      return;
+      String str = (String)((Iterator)localObject2).next();
+      localObject1[i] = new aptx(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
-    }
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
-    ((apsf)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
+    return localObject1;
+  }
+  
+  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apua
  * JD-Core Version:    0.7.0.1
  */

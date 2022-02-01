@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.service.qzone;
 
-import abjj;
+import aafs;
 import android.content.ContentResolver;
-import bcun;
-import bcvn;
+import bbnx;
+import bbox;
 import com.tencent.common.config.provider.QZoneConfigProvider;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,21 +25,21 @@ public final class QZoneUnreadServletLogic$1
       {
         return;
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
-      } while ((localObject == null) || (!(localObject instanceof bcvn)));
-      localObject = (bcvn)localObject;
-      if (((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
-        ((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      } while ((localObject == null) || (!(localObject instanceof bbox)));
+      localObject = (bbox)localObject;
+      if (((bbox)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
+        ((bbox)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       }
-      if (((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-        abjj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList);
+      if (((bbox)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+        aafs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((bbox)localObject).jdField_a_of_type_JavaUtilArrayList);
       }
-    } while (bcun.a(this.jdField_a_of_type_JavaUtilArrayList, ((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList));
-    ((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
-    ((bcvn)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    } while (bbnx.a(this.jdField_a_of_type_JavaUtilArrayList, ((bbox)localObject).jdField_a_of_type_JavaUtilArrayList));
+    ((bbox)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
+    ((bbox)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
     try
     {
       BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
-      abjj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
+      aafs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
     catch (Exception localException)
@@ -55,7 +55,7 @@ public final class QZoneUnreadServletLogic$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.1
  * JD-Core Version:    0.7.0.1
  */

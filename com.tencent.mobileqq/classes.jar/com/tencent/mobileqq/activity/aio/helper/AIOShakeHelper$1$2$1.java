@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agtu;
-import agtw;
+import afpo;
+import afpq;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class AIOShakeHelper$1$2$1
   implements Runnable
 {
-  public AIOShakeHelper$1$2$1(agtw paramagtw) {}
+  public AIOShakeHelper$1$2$1(afpq paramafpq) {}
   
   public void run()
   {
-    if ((agtu.a(this.a.a.this$0) != null) && (agtu.a(this.a.a.this$0).getParent() != null)) {
-      ((ViewGroup)agtu.a(this.a.a.this$0).getParent()).removeView(agtu.a(this.a.a.this$0));
+    if ((afpo.a(this.a.a.this$0) != null) && (afpo.a(this.a.a.this$0).getParent() != null)) {
+      ((ViewGroup)afpo.a(this.a.a.this$0).getParent()).removeView(afpo.a(this.a.a.this$0));
     }
-    agtu.a(this.a.a.this$0, null);
+    afpo.a(this.a.a.this$0, null);
   }
 }
 

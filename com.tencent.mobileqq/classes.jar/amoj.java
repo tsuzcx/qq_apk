@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class amoj
-  implements View.OnClickListener
+public class amoj
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  amoj(amoi paramamoi) {}
+  public amoj(BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    amoi.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      BaseActivity.mIsInMultiScreen = bool;
+      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
+      }
+      return;
+    }
   }
 }
 

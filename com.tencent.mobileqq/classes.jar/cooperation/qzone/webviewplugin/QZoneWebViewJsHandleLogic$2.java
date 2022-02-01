@@ -2,25 +2,24 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bioy;
-import bnhm;
-import bnmv;
+import bgve;
+import cooperation.qzone.share.WXShareFromQZHelper;
 import java.util.Map;
 
-public final class QZoneWebViewJsHandleLogic$2
+final class QZoneWebViewJsHandleLogic$2
   implements Runnable
 {
-  public QZoneWebViewJsHandleLogic$2(bioy parambioy, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  QZoneWebViewJsHandleLogic$2(bgve parambgve, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Bioy.a();
+    Object localObject = this.val$runtime.a();
     if ((localObject == null) || (((Activity)localObject).isFinishing())) {
       return;
     }
-    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    bnhm.a().a(bnmv.a);
-    bnhm.a().a(this.jdField_a_of_type_JavaLangString, (Bitmap)localObject, this.b, this.c, this.d, this.e, null, 0);
+    localObject = (Bitmap)this.val$wrapper.remove("image");
+    WXShareFromQZHelper.getInstance().addObserver(QZoneWebViewJsHandleLogic.wxShareListener);
+    WXShareFromQZHelper.getInstance().shareMiniProgram(this.val$title, (Bitmap)localObject, this.val$description, this.val$webpageUrl, this.val$path, this.val$userName, null, 0);
   }
 }
 

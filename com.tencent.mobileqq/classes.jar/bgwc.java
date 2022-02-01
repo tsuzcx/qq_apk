@@ -1,16 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgwc
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bgwc
+  implements ThreadExcutor.IThreadListener
 {
-  public bgwc(RedDotAnimateView paramRedDotAnimateView) {}
+  long a = 0L;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
+    }
+    this.a = 0L;
+  }
+  
+  public void onPreRun()
+  {
+    this.a = System.currentTimeMillis();
   }
 }
 

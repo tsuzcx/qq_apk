@@ -1,31 +1,70 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-public class aqwz
-  implements anvi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter;", "Lcom/tencent/qqlive/module/videoreport/dtreport/api/IDTReport;", "()V", "dtEvent", "", "obj", "", "eventKey", "", "params", "", "isImmediatelyUpload", "appkey", "isQQPrivateReport", "shouldPrintLog", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aqwz
+  implements IDTReport
 {
-  public aqwz(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private static volatile aqwz a;
+  public static final aqxa a;
   
-  public void a(int paramInt, boolean paramBoolean)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    jdField_a_of_type_Aqxa = new aqxa(null);
+  }
+  
+  private final boolean a(String paramString)
+  {
+    return (b(paramString)) || (Intrinsics.areEqual(paramString, "dt_appin")) || (Intrinsics.areEqual(paramString, "dt_appout")) || (Intrinsics.areEqual(paramString, "dt_act")) || (Intrinsics.areEqual(paramString, "dt_vst")) || (Intrinsics.areEqual(paramString, "dt_pgin")) || (Intrinsics.areEqual(paramString, "dt_pgin")) || (QLog.isColorLevel());
+  }
+  
+  @Nullable
+  public static final aqwz b()
+  {
+    return jdField_a_of_type_Aqxa.a();
+  }
+  
+  private final boolean b(String paramString)
+  {
+    return (Intrinsics.areEqual(paramString, "qqin")) || (Intrinsics.areEqual(paramString, "qqout"));
+  }
+  
+  public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString, @Nullable Map<String, String> paramMap, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      return false;
     }
-    if ((this.a.j == 1) || (this.a.j == 2))
+    if (a(paramString)) {
+      QLog.d("QQDtReporter", 1, new Object[] { "848QQDT _report event: " + paramString, ",isImmediatelyUpload:", Boolean.valueOf(paramBoolean), ",params:", paramMap });
+    }
+    aqwy.a(paramString);
+    UserAction.onDTUserAction((Context)BaseApplication.context, paramString, true, -1L, -1L, paramMap, paramBoolean, paramBoolean);
+    return true;
+  }
+  
+  public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString1, @Nullable Map<String, String> paramMap, boolean paramBoolean, @Nullable String paramString2)
+  {
+    if (paramString1 == null) {
+      return false;
+    }
+    if (paramString2 == null)
     {
-      if (paramBoolean) {
-        break label110;
-      }
-      this.a.a();
-      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
+      dtEvent(paramObject, paramString1, paramMap, paramBoolean);
+      return false;
     }
-    label110:
-    while (paramInt != 2) {
-      return;
+    if (a(paramString1)) {
+      QLog.d("QQDtReporter", 1, new Object[] { "848QQDT _report eventkey: " + paramString1, " , appkey:" + paramString2, " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , params:", paramMap });
     }
-    this.a.a();
-    this.a.a(this.a.j);
+    aqwy.a(paramString1);
+    UserAction.onDTUserActionToTunnel((Context)BaseApplication.context, paramString2, paramString1, paramMap, paramBoolean, paramBoolean);
+    return false;
   }
 }
 

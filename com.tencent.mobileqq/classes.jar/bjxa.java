@@ -1,40 +1,19 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bjxa
+class bjxa
+  implements View.OnClickListener
 {
-  private static bjxa jdField_a_of_type_Bjxa;
-  private bjxc jdField_a_of_type_Bjxc = new bjxc(this, null);
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bjxb(this, "Module_DownloaderGetCodeServer");
-  private Map<String, Bundle> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+  bjxa(bjwz parambjwz, bjwy parambjwy) {}
   
-  public static bjxa a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Bjxa == null) {}
-    try
-    {
-      jdField_a_of_type_Bjxa = new bjxa();
-      return jdField_a_of_type_Bjxa;
+    int i = this.jdField_a_of_type_Bjwy.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Bjwz.a.a(this.jdField_a_of_type_Bjwy.itemView, i);
     }
-    finally {}
-  }
-  
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

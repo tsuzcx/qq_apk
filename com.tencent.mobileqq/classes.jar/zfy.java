@@ -1,30 +1,38 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
 
-public abstract class zfy
+class zfy
+  implements zho
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
+  zfy(zfs paramzfs, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public zfy(int paramInt1, String paramString, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  @NonNull
-  public abstract Class<? extends zfz> a();
-  
-  @NonNull
-  public abstract zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public boolean a()
-  {
-    return false;
+    zfs.a(this.jdField_a_of_type_Zfs, null);
+    if (zfs.a(this.jdField_a_of_type_Zfs) != null)
+    {
+      zfs.a(this.jdField_a_of_type_Zfs).b(null);
+      if ((zfs.d(this.jdField_a_of_type_Zfs)) && (zfs.b(this.jdField_a_of_type_Zfs) != null)) {
+        zfs.b(this.jdField_a_of_type_Zfs).setText(zfs.a(this.jdField_a_of_type_Zfs).a());
+      }
+      zjz.a().a(zfs.a(this.jdField_a_of_type_Zfs), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply, zfs.a(this.jdField_a_of_type_Zfs).a());
+      zfs.a(this.jdField_a_of_type_Zfs).a("");
+    }
+    if ((zfs.e(this.jdField_a_of_type_Zfs)) && (zfs.a(this.jdField_a_of_type_Zfs) != 0L))
+    {
+      zfs.a(this.jdField_a_of_type_Zfs, false);
+      zfs.d(this.jdField_a_of_type_Zfs, false);
+    }
+    if (zfs.a(this.jdField_a_of_type_Zfs) != null) {
+      zfs.a(this.jdField_a_of_type_Zfs).l();
+    }
+    if ((this.jdField_a_of_type_Zfs.b != null) && (this.jdField_a_of_type_Zfs.b.getVisibility() == 8)) {
+      SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(false));
+    }
   }
 }
 

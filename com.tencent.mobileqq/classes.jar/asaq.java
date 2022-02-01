@@ -1,23 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
-class asaq
-  implements View.OnClickListener
+public class asaq
+  extends asbj
 {
-  asaq(asap paramasap) {}
+  public asaq(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void onClick(View paramView)
+  protected void onThumbDownLoadSuccess(aslv paramaslv)
   {
-    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
-    {
-      HotChatFlashPicActivity.a(this.a.a).dismiss();
-      HotChatFlashPicActivity.a(this.a.a, null);
-      this.a.a.finish();
+    super.onThumbDownLoadSuccess(paramaslv);
+    if ((paramaslv.b != null) && (paramaslv.b.length() > 0)) {
+      this.a.i();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

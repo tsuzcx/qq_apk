@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.history;
 
 import Override;
-import agej;
-import akal;
-import akby;
-import akch;
-import akcq;
-import akcr;
-import akfl;
+import aivl;
+import aiwy;
+import aixh;
+import aixq;
+import aixr;
+import ajal;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -30,7 +30,7 @@ public class ChatHistoryActivity
   extends FragmentActivity
 {
   int jdField_a_of_type_Int;
-  akal jdField_a_of_type_Akal;
+  aivl jdField_a_of_type_Aivl;
   boolean jdField_a_of_type_Boolean;
   boolean b;
   public boolean c;
@@ -52,15 +52,15 @@ public class ChatHistoryActivity
         QLog.d("Q.history.ChatHistoryActivity", 2, "getTagType, result = " + i);
       }
       return i;
-      if ((i == 2131364406) || (i == 2131364399))
+      if ((i == 2131364424) || (i == 2131364417))
       {
         i = 1;
       }
-      else if ((i == 2131364404) || (i == 2131364411))
+      else if ((i == 2131364422) || (i == 2131364429))
       {
         i = 2;
       }
-      else if ((i == 2131364408) || (i == 2131364401))
+      else if ((i == 2131364426) || (i == 2131364419))
       {
         i = 4;
         continue;
@@ -80,22 +80,22 @@ public class ChatHistoryActivity
     }
   }
   
-  private akal a()
+  private aivl a()
   {
     if ((this.jdField_a_of_type_Boolean) || (this.c)) {
-      return new akcq(this);
+      return new aixq(this);
     }
     if (this.jdField_a_of_type_Int == 3011) {
-      return new akby(this);
+      return new aiwy(this);
     }
     if (this.jdField_a_of_type_Int == 3012) {
-      return new akfl(this);
+      return new ajal(this);
     }
     if (this.jdField_a_of_type_Int == 3013) {
-      return new akcr(this);
+      return new aixr(this);
     }
     if (this.jdField_a_of_type_Int == 3014) {
-      return new akch(this);
+      return new aixh(this);
     }
     return null;
   }
@@ -182,8 +182,8 @@ public class ChatHistoryActivity
   
   public int a()
   {
-    if (this.jdField_a_of_type_Akal != null) {
-      return this.jdField_a_of_type_Akal.a();
+    if (this.jdField_a_of_type_Aivl != null) {
+      return this.jdField_a_of_type_Aivl.a();
     }
     return 0;
   }
@@ -191,8 +191,9 @@ public class ChatHistoryActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -202,7 +203,7 @@ public class ChatHistoryActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.history.ChatHistoryActivity", 2, "doOnActivityResult, requestCode = " + paramInt1);
     }
-    this.jdField_a_of_type_Akal.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Aivl.a(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1) {}
     switch (paramInt1)
     {
@@ -217,7 +218,7 @@ public class ChatHistoryActivity
     paramIntent.putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
     paramIntent.putInt("PhotoConst.SEND_BUSINESS_TYPE", 1031);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-    localIntent = agej.a(localIntent, null);
+    localIntent = AIOUtils.setOpenAIOIntent(localIntent, null);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     paramIntent.putBoolean("PicContants.NEED_COMPRESS", false);
     paramIntent.putBoolean("send_in_background", false);
@@ -228,14 +229,14 @@ public class ChatHistoryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558878);
+    setContentView(2131558886);
     a();
-    paramBundle = (TextView)findViewById(2131369088);
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377802);
+    paramBundle = (TextView)findViewById(2131369115);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377571);
     if ((this.jdField_a_of_type_Boolean) || (this.c))
     {
       if (paramBundle != null) {
-        paramBundle.setText(2131690662);
+        paramBundle.setText(2131690702);
       }
       if (localFrameLayout != null) {
         localFrameLayout.setVisibility(8);
@@ -243,9 +244,9 @@ public class ChatHistoryActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Akal = a();
-      this.jdField_a_of_type_Akal.a();
-      paramBundle = super.findViewById(2131376925);
+      this.jdField_a_of_type_Aivl = a();
+      this.jdField_a_of_type_Aivl.a();
+      paramBundle = super.findViewById(2131376679);
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         paramBundle.setFitsSystemWindows(true);
@@ -255,7 +256,7 @@ public class ChatHistoryActivity
       if (this.jdField_a_of_type_Int == 3013)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131693498);
+          paramBundle.setText(2131693593);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -264,7 +265,7 @@ public class ChatHistoryActivity
       else if (this.jdField_a_of_type_Int == 3014)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131690659);
+          paramBundle.setText(2131690699);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -276,19 +277,19 @@ public class ChatHistoryActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Akal.d();
+    this.jdField_a_of_type_Aivl.d();
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Akal.c();
+    this.jdField_a_of_type_Aivl.c();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Akal.b();
+    this.jdField_a_of_type_Aivl.b();
   }
   
   public boolean isWrapContent()

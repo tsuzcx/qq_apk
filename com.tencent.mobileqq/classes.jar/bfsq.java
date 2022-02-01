@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bfsq
-  implements DialogInterface.OnClickListener
+final class bfsq
+  implements DownloadParams.DecodeHandler
 {
-  bfsq(bfsf parambfsf, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+    if (paramBitmap == null) {
+      return null;
     }
+    if ((paramDownloadParams != null) && (paramDownloadParams.reqWidth >= 0) && (paramDownloadParams.reqHeight >= 0)) {
+      return bfsp.a(paramBitmap, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
+    }
+    return bfsp.a(paramBitmap);
   }
 }
 

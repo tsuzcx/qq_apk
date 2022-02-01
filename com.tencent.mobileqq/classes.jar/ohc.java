@@ -1,22 +1,115 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 
-final class ohc
-  implements ViewFactory.FoundClickableViewListener
+public class ohc
+  implements ohf
 {
-  ohc(String paramString, JSONObject paramJSONObject) {}
+  private List<ChatMessage> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onFound(ViewBase paramViewBase)
+  private void a(List<ChatMessage> paramList)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-    default: 
-      paramViewBase.setOnClickListener(new ohe(this));
+      paramList = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0);
+      if ((paramList != null) && (ohm.a(ohm.a(paramList)))) {
+        this.jdField_a_of_type_JavaUtilList.remove(paramList);
+      }
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext != null) {
+      paramContext.sendBroadcast(new Intent("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
+    }
+    ohq.a().a.clear();
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
       return;
     }
-    paramViewBase.setOnClickListener(new ohd(this));
+    ohm.a(paramMessageRecord.uniseq);
+  }
+  
+  public void a(List<ChatMessage> paramList, ohg paramohg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EcshopMinusViewChatPie", 2, "messageArrayList.size: " + this.jdField_a_of_type_JavaUtilList.size());
+    }
+    a(paramList);
+    paramList = ohm.a(paramList);
+    if ((paramList != null) && (ohm.a(ohm.a(paramList))))
+    {
+      paramList.saveExtInfoToExtStr("add_title", "minus_view_title_first");
+      this.jdField_a_of_type_JavaUtilList.add(0, paramList);
+    }
+    if (paramohg != null) {
+      paramohg.a(this.jdField_a_of_type_JavaUtilList);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramList = new qq_ad.QQAdGet();
+    try
+    {
+      if (ohm.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime())) {
+        paramList.trigger_type.set(22);
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("EcshopMinusViewChatPie", 2, "<<<<<<<<<<<<<<sendRequest<<<<<<<<<");
+        }
+        ogq.a(paramList.toByteArray(), "trpc.qqshop.adpush.PushService.GetAd", new ohd(this, paramohg));
+        return;
+        paramList.trigger_type.set(18);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        paramList.trigger_type.set(22);
+      }
+    }
+  }
+  
+  public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    paramContext = new MinusViewBotomView(paramContext);
+    paramContext.setTag("echopMinusViewBotomView");
+    paramContext.setBtnText(ohk.a());
+    paramRelativeLayout.addView(paramContext);
+    paramContext = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
+    if (paramContext != null)
+    {
+      paramContext.width = -1;
+      paramContext.height = -2;
+      paramContext.addRule(12);
+    }
+    return true;
+  }
+  
+  public boolean a(RelativeLayout paramRelativeLayout)
+  {
+    return (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopMinusViewBotomView") != null);
   }
 }
 

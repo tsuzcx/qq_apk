@@ -1,105 +1,73 @@
-import android.support.v4.util.SparseArrayCompat;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
-public class bepl<E extends Enum>
+public class bepl
+  extends beon
 {
-  private SparseArrayCompat<bepm<E>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
-  private E jdField_a_of_type_JavaLangEnum;
-  private String jdField_a_of_type_JavaLangString = "EditorStateMachine";
-  private SparseArrayCompat<List<E>> jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat;
-  private E jdField_b_of_type_JavaLangEnum;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public bepi a;
+  bepm jdField_a_of_type_Bepm;
+  public bepo a;
   
-  public bepl(E paramE, String paramString)
+  public bepl(View paramView)
   {
-    this.jdField_a_of_type_JavaLangEnum = paramE;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "." + paramString);
+    super(paramView);
+    View localView1 = paramView.findViewById(2131369738);
+    View localView2 = paramView.findViewById(2131369684);
+    View localView3 = paramView.findViewById(2131369737);
+    this.jdField_a_of_type_Bepo = new bepo(localView1);
+    this.jdField_a_of_type_Bepi = new bepi(localView2);
+    this.jdField_a_of_type_Bepm = new bepm(localView3);
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  private void a(E paramE, List<E> paramList)
+  public void a(View paramView, HWReciteItem paramHWReciteItem)
   {
-    if (this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat == null) {
-      this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-    }
-    this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramE.ordinal(), paramList);
-  }
-  
-  private boolean a(E paramE)
-  {
-    List localList = (List)this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramE.ordinal());
-    return (localList != null) && (localList.contains(this.jdField_a_of_type_JavaLangEnum)) && (this.jdField_a_of_type_JavaLangEnum != paramE);
-  }
-  
-  public <T extends bepm<E>> T a(E paramE)
-  {
-    return (bepm)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramE.ordinal());
-  }
-  
-  public E a()
-  {
-    return this.jdField_a_of_type_JavaLangEnum;
-  }
-  
-  public void a()
-  {
-    a(this.jdField_b_of_type_JavaLangEnum);
-  }
-  
-  public void a(int paramInt)
-  {
-    bepm localbepm = a(this.jdField_a_of_type_JavaLangEnum);
-    if (localbepm != null) {
-      localbepm.a(paramInt);
-    }
-  }
-  
-  public void a(bepm<E> parambepm)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat == null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-    }
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(((Enum)parambepm.a()).ordinal(), parambepm);
-    a((Enum)parambepm.a(), parambepm.a());
-  }
-  
-  public void a(E paramE)
-  {
-    a(paramE, null);
-  }
-  
-  public void a(E paramE, String paramString)
-  {
-    if (a(paramE))
+    switch (((benq)this.jdField_a_of_type_Beno).jdField_a_of_type_Int)
     {
-      localbepm = a(paramE);
-      if ((localbepm == null) || (!localbepm.a())) {
-        this.jdField_b_of_type_JavaLangEnum = this.jdField_a_of_type_JavaLangEnum;
-      }
-      this.jdField_a_of_type_JavaLangEnum = paramE;
-      paramE = a(this.jdField_b_of_type_JavaLangEnum);
-      if (paramE != null) {
-        paramE.a();
-      }
-      if (localbepm != null)
+    default: 
+      return;
+    case 2: 
+      if (this.jdField_a_of_type_Int == 2)
       {
-        localbepm.jdField_a_of_type_JavaLangString = paramString;
-        localbepm.a(this.jdField_b_of_type_JavaLangEnum);
+        this.jdField_a_of_type_Bepi.a(paramView, paramHWReciteItem, this);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[setState] from: " + this.jdField_b_of_type_JavaLangEnum + " -> to: " + this.jdField_a_of_type_JavaLangEnum);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      bepm localbepm;
+      this.jdField_a_of_type_Bepo.a(paramView, paramHWReciteItem, this);
       return;
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[setState] not allowed state trans: from: " + this.jdField_a_of_type_JavaLangEnum + " -> to: " + paramE);
+    this.jdField_a_of_type_Bepm.a(paramView, paramHWReciteItem, this);
   }
   
-  public E b()
+  public void a(HWReciteItem paramHWReciteItem, benq parambenq, int paramInt)
   {
-    return this.jdField_b_of_type_JavaLangEnum;
+    this.jdField_a_of_type_Int = paramInt;
+    switch (parambenq.jdField_a_of_type_Int)
+    {
+    default: 
+      this.jdField_a_of_type_Bepo.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bepi.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bepm.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    case 2: 
+      if (paramInt == 2)
+      {
+        parambenq.g = 0;
+        this.jdField_a_of_type_Bepo.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_a_of_type_Bepi.a(paramHWReciteItem, this, parambenq, paramInt);
+        this.jdField_a_of_type_Bepm.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        return;
+      }
+      parambenq.g = 3;
+      this.jdField_a_of_type_Bepo.a(paramHWReciteItem, this, parambenq, paramInt);
+      this.jdField_a_of_type_Bepi.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bepm.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_Bepo.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Bepi.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Bepm.a(paramHWReciteItem, this, parambenq, paramInt);
   }
 }
 

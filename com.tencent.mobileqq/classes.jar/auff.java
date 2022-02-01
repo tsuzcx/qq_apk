@@ -1,21 +1,48 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
+import com.tencent.mobileqq.hiboom.RichTextPanelView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class auff
-  extends aufd
+  extends PagerAdapter
 {
-  public auff(auei paramauei)
+  public auff(RichTextPanel paramRichTextPanel) {}
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    super(paramauei);
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  public boolean a(String paramString)
+  public int getCount()
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {}
-    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
-      return false;
+    return RichTextPanel.a(this.a).size();
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
     }
-    return true;
+    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
+    }
+    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
+    return RichTextPanel.a(this.a).get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

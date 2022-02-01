@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.text.TextUtils;
-import beav;
-import bebo;
+import bcum;
+import bcvf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$8
   implements Runnable
 {
-  public TeamWorkFileImportHandler$8(beav parambeav, String paramString) {}
+  public TeamWorkFileImportHandler$8(bcum parambcum, String paramString) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class TeamWorkFileImportHandler$8
     do
     {
       return;
-      localObject = bebo.a(this.a, this.this$0.app.getCurrentAccountUin());
+      localObject = bcvf.a(this.a, this.this$0.app.getCurrentAccountUin());
     } while (TextUtils.isEmpty((CharSequence)localObject));
     try
     {
@@ -40,7 +40,7 @@ public class TeamWorkFileImportHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler.8
  * JD-Core Version:    0.7.0.1
  */

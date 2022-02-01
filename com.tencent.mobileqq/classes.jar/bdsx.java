@@ -1,76 +1,40 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
 public class bdsx
-  extends bdol
+  extends andd
 {
-  String ac = "";
+  public bdsx(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
   
-  public bdsx()
+  protected void onEditTroopLocationRet(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
   {
-    this.a = "more";
-  }
-  
-  public bdsx(String paramString)
-  {
-    this();
-    this.ac = paramString;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    paramBundle = paramView;
-    if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131562946, null);
-    }
-    paramContext = (TextView)paramBundle.findViewById(2131378096);
-    if (TextUtils.isEmpty(this.ac)) {
-      this.ac = anzj.a(2131713418);
-    }
-    paramContext.setText(this.ac);
-    return paramBundle;
-  }
-  
-  public String a()
-  {
-    return "More";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.ac = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.ac == null) {}
-    for (String str = "";; str = bcsa.a(this.ac, false))
+    this.a.app.removeObserver(this.a.a);
+    if (paramInt1 == 0)
     {
-      paramObjectOutput.writeUTF(str);
-      return;
+      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
+      localObject = null;
+      if (localTroopManager != null) {
+        localObject = localTroopManager.b(Long.toString(paramLong));
+      }
+      if (localObject != null)
+      {
+        ((TroopInfo)localObject).troopLat = paramInt2;
+        ((TroopInfo)localObject).troopLon = paramInt3;
+        localTroopManager.b((TroopInfo)localObject);
+      }
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "title");
-    paramXmlSerializer.text(this.ac);
-    paramXmlSerializer.endTag(null, "title");
-  }
-  
-  public boolean a(bdqc parambdqc)
-  {
-    this.ac = bcsa.a(bdow.a(parambdqc), false);
-    return true;
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troopUin", paramLong);
+    ((Intent)localObject).putExtra("errCode", paramInt1);
+    ((Intent)localObject).putExtra("isClear", paramBoolean);
+    ((Intent)localObject).putExtra("location", paramString);
+    ((Intent)localObject).putExtra("lat", paramInt2);
+    ((Intent)localObject).putExtra("lon", paramInt3);
+    this.a.setResult(-1, (Intent)localObject);
+    this.a.finish();
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vas.watchword;
 import QC.GetWatchWordShareRsp;
 import android.content.Context;
 import android.os.Bundle;
-import biev;
+import bglg;
 import com.tencent.mobileqq.app.BaseActivity;
 import eipc.EIPCResult;
 import kotlin.Metadata;
@@ -31,34 +31,34 @@ public final class VasWatchWord$addObserver$1$checkWatchWord$1$1
     default: 
       return;
     case -2600001: 
-      localbiev = biev.a;
+      localbglg = bglg.a;
       localObject2 = BaseActivity.sTopActivity;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
       localObject2 = (Context)localObject2;
       localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-      localbiev.c((Context)localObject2, (String)localObject1);
+      localbglg.c((Context)localObject2, (String)localObject1);
       return;
     case 0: 
-      biev.a.a((GetWatchWordShareRsp)localObject1);
+      bglg.a.a((GetWatchWordShareRsp)localObject1);
       return;
     case 2600003: 
-      localbiev = biev.a;
+      localbglg = bglg.a;
       localObject2 = BaseActivity.sTopActivity;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
       localObject2 = (Context)localObject2;
       localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-      localbiev.c((Context)localObject2, (String)localObject1);
+      localbglg.c((Context)localObject2, (String)localObject1);
       return;
     }
-    biev localbiev = biev.a;
+    bglg localbglg = bglg.a;
     Object localObject2 = BaseActivity.sTopActivity;
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
     localObject2 = (Context)localObject2;
     localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-    localbiev.c((Context)localObject2, (String)localObject1);
+    localbglg.c((Context)localObject2, (String)localObject1);
   }
 }
 

@@ -1,16 +1,28 @@
-class atqn
-  implements atqq
+import android.app.Activity;
+import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
+
+public class atqn
+  implements acxa
 {
-  atqn(atpa paramatpa) {}
+  public atqn(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
   
-  public void a(Object[] paramArrayOfObject)
+  public void onAfterStartActivity()
   {
-    atpa.c(this.a, paramArrayOfObject);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
+  
+  public void onBeforeStartActivity() {}
+  
+  public void onCancel()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bmsw;
+import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class LpreportInfo_dc02910
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", bmsw.a());
+    localHashMap.put("qua", QUA.getQUA3());
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("traceinfo", String.valueOf(this.traceInfo));
     localHashMap.put("idx", String.valueOf(this.index));

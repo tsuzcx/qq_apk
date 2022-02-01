@@ -1,6 +1,6 @@
 public abstract interface zjr
 {
-  public abstract void a(zjv paramzjv);
+  public abstract void a(boolean paramBoolean);
 }
 
 

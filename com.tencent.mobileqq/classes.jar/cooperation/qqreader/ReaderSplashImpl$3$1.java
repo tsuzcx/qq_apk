@@ -4,27 +4,27 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bmpb;
-import bmpe;
+import bkti;
+import bktl;
 
 public class ReaderSplashImpl$3$1
   implements Runnable
 {
-  public ReaderSplashImpl$3$1(bmpe parambmpe, View paramView) {}
+  public ReaderSplashImpl$3$1(bktl parambktl, View paramView) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(bmpb.a(this.jdField_a_of_type_Bmpe.a));
+      RelativeLayout localRelativeLayout = new RelativeLayout(bkti.a(this.jdField_a_of_type_Bktl.a));
       localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      bmpb.a(this.jdField_a_of_type_Bmpe.a, localRelativeLayout);
+      bkti.a(this.jdField_a_of_type_Bktl.a, localRelativeLayout);
       return;
     }
-    bmpb.a(this.jdField_a_of_type_Bmpe.a, bmpb.a(this.jdField_a_of_type_Bmpe.a));
+    bkti.a(this.jdField_a_of_type_Bktl.a, bkti.a(this.jdField_a_of_type_Bktl.a));
   }
 }
 

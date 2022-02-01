@@ -1,27 +1,10 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vsw
-  extends aadf
+public abstract class vsw
+  implements View.OnClickListener
 {
-  private String a;
-  
-  public vsw(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a() {}
-  
-  public void a(aadl paramaadl)
-  {
-    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
-    paramaadl = new vsx(this, localQCircleGetMainPageRequest, paramaadl);
-    localQCircleGetMainPageRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramaadl);
-    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetMainPageRequest.getCmdName() + "| TraceId:" + localQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + localQCircleGetMainPageRequest.getCurrentSeq());
-  }
+  public void onClick(View paramView) {}
 }
 
 

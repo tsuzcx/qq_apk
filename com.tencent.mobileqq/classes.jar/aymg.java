@@ -1,48 +1,40 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.widget.GridView;
-import java.util.Collection;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class aymg
-  extends AvatarWallPagerAdapter<GridView>
 {
-  protected LinearLayout.LayoutParams a;
+  public int a;
+  public long a;
+  public View.OnClickListener a;
+  public aymn a;
+  @Nullable
+  public ayxo a;
+  public bfmt a;
+  public bhha a;
+  public ProfileActivity.AllInOne a;
+  public Card a;
+  public ContactCard a;
+  public TroopMemberCard a;
+  public RichStatus a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public long b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public aymg(aykx paramaykx, AvatarWallViewPager paramAvatarWallViewPager)
+  public aymg()
   {
-    super(paramAvatarWallViewPager);
-  }
-  
-  public View a(int paramInt, GridView paramGridView)
-  {
-    return aykx.a(this.jdField_a_of_type_Aykx, aykx.a(this.jdField_a_of_type_Aykx), paramInt);
-  }
-  
-  public View a(boolean paramBoolean, int paramInt)
-  {
-    View localView = new View(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 30.0F), zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 1.5F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 2.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 2.0F);
-    }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    if (paramBoolean)
-    {
-      localView.setBackgroundColor(-1);
-      return localView;
-    }
-    localView.setBackgroundColor(1728053247);
-    return localView;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_Aykx.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

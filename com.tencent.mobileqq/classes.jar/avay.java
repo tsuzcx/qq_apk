@@ -1,16 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
 class avay
-  extends RecyclerView.ViewHolder
+  implements Animator.AnimatorListener
 {
-  public int a = avar.b;
+  avay(avau paramavau, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public avay(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramView);
-    paramView.setTag(this);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Avau.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Avau.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

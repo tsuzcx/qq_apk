@@ -1,61 +1,20 @@
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+
 public class bnkf
+  implements View.OnLayoutChangeListener
 {
-  private static int jdField_a_of_type_Int;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bnkf b;
-  private bnkf jdField_a_of_type_Bnkf;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
+  public bnkf(GLTextureView paramGLTextureView) {}
   
-  public static bnkf a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (b != null)
-      {
-        bnkf localbnkf = b;
-        b = localbnkf.jdField_a_of_type_Bnkf;
-        localbnkf.jdField_a_of_type_Bnkf = null;
-        jdField_a_of_type_Int -= 1;
-        return localbnkf;
-      }
-      return new bnkf();
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-  }
-  
-  public bnkf a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Bnkf = b;
-        b = this;
-        jdField_a_of_type_Int += 1;
-      }
-      return;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bnkf
  * JD-Core Version:    0.7.0.1
  */

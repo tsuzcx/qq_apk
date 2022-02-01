@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alve;
+import aksv;
 import android.widget.LinearLayout;
 
 public class NewFlowCameraActivity$22$1
   implements Runnable
 {
-  public NewFlowCameraActivity$22$1(alve paramalve) {}
+  public NewFlowCameraActivity$22$1(aksv paramaksv) {}
   
   public void run()
   {

@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import atup;
-import bmim;
+import asgz;
+import bkmt;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -20,8 +20,9 @@ public class QlinkAgentActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -31,7 +32,7 @@ public class QlinkAgentActivity
       setResult(10, paramIntent);
     }
     if (((paramIntent != null) && (paramIntent.getExtras() != null) && ((paramIntent.getBooleanExtra("foward_editbar", false) == true) || (paramIntent.getBooleanExtra("destroy_last_activity", false) == true))) || (paramInt2 == 4)) {
-      this.app.a().a(new QlAndQQInterface.DailogClickInfo(8));
+      this.app.getQQProxyForQlink().a(new QlAndQQInterface.DailogClickInfo(8));
     }
     for (;;)
     {
@@ -63,7 +64,7 @@ public class QlinkAgentActivity
           super.finish();
           return;
         }
-        paramBundle = this.app.a();
+        paramBundle = this.app.getFileManagerDataCenter();
         if (paramBundle == null)
         {
           super.finish();

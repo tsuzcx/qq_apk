@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bmjk
-  implements DialogInterface.OnClickListener
+  implements bmpj
 {
-  public bmjk(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public bmjk(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public void a(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmjk
  * JD-Core Version:    0.7.0.1
  */

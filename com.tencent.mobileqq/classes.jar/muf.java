@@ -1,174 +1,69 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.av.VideoController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 class muf
-  implements SensorEventListener
+  extends RelativeLayout
 {
-  float jdField_a_of_type_Float = 3.1F;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = true;
-  float jdField_b_of_type_Float = 0.0F;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
-  boolean d = false;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
-  muf(mud parammud) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public muf(Context paramContext, int paramInt, CharSequence paramCharSequence)
   {
-    if (paramSensorEvent.sensor.getType() != 8) {}
-    label81:
-    boolean bool1;
-    label119:
-    Object localObject;
-    label199:
-    do
+    super(paramContext);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(paramContext.getResources().getDimensionPixelSize(2131297914), 0, 0, 0);
+    localLayoutParams.addRule(15, -1);
+    localLayoutParams.addRule(9, -1);
+    this.b = new ImageView(paramContext);
+    this.b.setImageResource(paramInt);
+    this.b.setLayoutParams(localLayoutParams);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297914), 0);
+    localLayoutParams.addRule(15, -1);
+    localLayoutParams.addRule(11, -1);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842290);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(15, -1);
+    localLayoutParams.addRule(14, -1);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramContext.getResources().getDimension(2131299028));
+    addView(this.b);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    setBackgroundResource(2130837568);
+    setId(2131369630);
+    setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131296724));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b.setImageResource(paramInt);
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
     {
-      float f1;
-      float f2;
-      do
-      {
-        do
-        {
-          return;
-          f1 = this.jdField_b_of_type_Float;
-          f2 = paramSensorEvent.values[0];
-          this.jdField_b_of_type_Float = f2;
-          if (this.jdField_a_of_type_Float > this.jdField_a_of_type_Mud.b.getMaximumRange()) {
-            this.jdField_a_of_type_Float = this.jdField_a_of_type_Mud.b.getMaximumRange();
-          }
-          if ((f2 < 0.0D) || (f2 >= this.jdField_a_of_type_Float)) {
-            break;
-          }
-          i = 1;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            if (i != 0)
-            {
-              this.jdField_a_of_type_Mud.jdField_a_of_type_Int = 3;
-              paramSensorEvent = this.jdField_a_of_type_Mud;
-              if (i != 0) {
-                break label615;
-              }
-              bool1 = true;
-              mud.a(paramSensorEvent, bool1);
-              this.jdField_a_of_type_Mud.jdField_a_of_type_Muh.d();
-            }
-          }
-        } while ((this.jdField_a_of_type_Mud.b == null) || (this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController == null));
-        paramSensorEvent = this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController.a();
-      } while (paramSensorEvent == null);
-      long l = System.currentTimeMillis();
-      boolean bool2 = mud.a(this.jdField_a_of_type_Mud);
-      localObject = this.jdField_a_of_type_Mud;
-      if (i != 0) {
-        break label621;
-      }
-      bool1 = true;
-      mud.d((mud)localObject, bool1);
-      if (mud.f(this.jdField_a_of_type_Mud) != mud.a(this.jdField_a_of_type_Mud))
-      {
-        if (3 == this.jdField_a_of_type_Mud.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_Mud.jdField_a_of_type_Muh.e();
-        }
-        this.jdField_a_of_type_Mud.jdField_a_of_type_Int = 0;
-      }
-      if ((l - this.jdField_a_of_type_Long > 1000L) || (bool2 != mud.a(this.jdField_a_of_type_Mud)) || (this.jdField_b_of_type_Boolean != paramSensorEvent.P) || (this.c != this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean) || (this.d != mud.b(this.jdField_a_of_type_Mud)))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 4, "onSensorChanged distance[" + f1 + "->" + f2 + "], mlongDistense[" + mud.a(this.jdField_a_of_type_Mud) + "], lastlongDistense[" + bool2 + "], mIsMoving[" + this.d + "->" + mud.b(this.jdField_a_of_type_Mud) + "], mSensorSet[" + this.c + "->" + this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean + "], isSpeakerOn[" + this.jdField_b_of_type_Boolean + "->" + paramSensorEvent.P + "]");
-        }
-        this.jdField_a_of_type_Long = l;
-      }
-      this.jdField_b_of_type_Boolean = paramSensorEvent.P;
-      this.c = this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean;
-      this.d = mud.b(this.jdField_a_of_type_Mud);
-      if ((i == 0) || (!mud.b(this.jdField_a_of_type_Mud))) {
-        break label732;
-      }
-      localObject = paramSensorEvent.a;
-    } while ((!paramSensorEvent.P) || (localObject == null));
-    int i = 0;
-    label543:
-    if (i < localObject.length) {
-      if ((!localObject[i].equals("DEVICE_WIREDHEADSET")) && (!localObject[i].equals("DEVICE_BLUETOOTHHEADSET"))) {}
-    }
-    for (i = 0;; i = 1)
-    {
-      if (!lzq.f(BaseApplicationImpl.getApplication()))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 2, "is App on background , Not execute sensor pressHandFreeBtn !!!");
-        return;
-        i = 0;
-        break label81;
-        label615:
-        bool1 = false;
-        break label119;
-        label621:
-        bool1 = false;
-        break label199;
-        i += 1;
-        break label543;
-      }
-      if ((i == 0) || (!this.jdField_a_of_type_Mud.c)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 2, "1.setSensors pressHandFreeBtn, current mSensorSet = " + this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean);
-      }
-      if (this.jdField_a_of_type_Mud.jdField_a_of_type_Mur != null) {
-        this.jdField_a_of_type_Mud.jdField_a_of_type_Mur.d();
-      }
-      this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean = true;
-      mru.j(this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController);
+      localImageView.setVisibility(i);
       return;
-      label732:
-      if ((!this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean) || (i != 0)) {
-        break;
-      }
-      if (this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController != null) {}
-      for (paramSensorEvent = paramSensorEvent.a;; paramSensorEvent = null)
-      {
-        if (paramSensorEvent != null)
-        {
-          i = 0;
-          if (i >= paramSensorEvent.length) {
-            break label908;
-          }
-          if ((!paramSensorEvent[i].equals("DEVICE_WIREDHEADSET")) && (!paramSensorEvent[i].equals("DEVICE_BLUETOOTHHEADSET"))) {
-            break label899;
-          }
-        }
-        label899:
-        label908:
-        for (i = 0;; i = 1)
-        {
-          if ((i != 0) && (this.jdField_a_of_type_Mud.c))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_Mud.jdField_a_of_type_JavaLangString, 2, "2.setSensors pressHandFreeBtn, current mSensorSet = " + this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean);
-            }
-            if (this.jdField_a_of_type_Mud.jdField_a_of_type_Mur != null) {
-              this.jdField_a_of_type_Mud.jdField_a_of_type_Mur.d();
-            }
-            mru.j(this.jdField_a_of_type_Mud.jdField_a_of_type_ComTencentAvVideoController);
-          }
-          this.jdField_a_of_type_Mud.jdField_a_of_type_Boolean = false;
-          return;
-          i += 1;
-          break;
-        }
-      }
     }
   }
 }

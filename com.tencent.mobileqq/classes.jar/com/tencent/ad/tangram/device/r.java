@@ -1,151 +1,126 @@
 package com.tencent.ad.tangram.device;
 
+import android.content.Context;
+import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.json.AdJSON;
+import com.tencent.ad.tangram.file.a;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.protocol.qq_common.DeviceExt.UUID;
-import com.tencent.ad.tangram.util.d;
-import java.util.UUID;
-import org.json.JSONObject;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForUUID;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.util.e;
+import java.io.File;
 
-public final class r
+final class r
 {
-  private static final String TAG = "AdUUIDInfo";
-  private qq_common.DeviceExt.UUID info;
+  static final String TAG = "AdUUIDUtil";
+  private static q uuidInfo;
   
-  private r(qq_common.DeviceExt.UUID paramUUID)
+  private static String getDirectoryAbsolutePath(String paramString)
   {
-    this.info = paramUUID;
-  }
-  
-  public static r create(r.a parama)
-  {
-    if ((parama == null) || (!parama.isValid()))
-    {
-      AdLog.e("AdUUIDInfo", "create error");
+    if (TextUtils.isEmpty(paramString)) {}
+    while (Environment.getExternalStorageDirectory() == null) {
       return null;
     }
-    UUID localUUID = UUID.randomUUID();
-    qq_common.DeviceExt.UUID localUUID1 = new qq_common.DeviceExt.UUID();
-    localUUID1.v = parama.getVersion();
-    localUUID1.u = localUUID.toString();
-    localUUID1.t = System.currentTimeMillis();
-    localUUID1.m = generateSignature(parama, localUUID1.u, localUUID1.t);
-    return new r(localUUID1);
+    return new File(Environment.getExternalStorageDirectory(), paramString).getAbsolutePath();
   }
   
-  public static r fromString(String paramString)
+  public static r.a getUUID(Context paramContext, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    long l = System.currentTimeMillis();
+    r.a locala = new r.a();
+    locala.error = 1;
+    if (uuidInfo != null)
     {
-      paramString = new JSONObject(paramString);
-      if ((paramString == null) || (JSONObject.NULL.equals(paramString)))
-      {
-        AdLog.e("AdUUIDInfo", "fromString error");
-        return null;
-      }
-      paramString = new r((qq_common.DeviceExt.UUID)qq_common.DeviceExt.UUID.class.cast(AdJSON.toObject(paramString, qq_common.DeviceExt.UUID.class)));
-      return paramString;
+      locala.uuidInfo = uuidInfo;
+      locala.error = 0;
+      locala.cached = true;
     }
-    catch (Throwable paramString)
-    {
-      AdLog.e("AdUUIDInfo", "fromString", paramString);
-    }
-    return null;
-  }
-  
-  private static String generateSignature(r.a parama, String paramString, long paramLong)
-  {
-    if ((parama == null) || (!parama.isValid())) {}
+    Object localObject;
+    q.a locala1;
+    a locala2;
+    a locala3;
     for (;;)
     {
-      parama = null;
-      do
+      AdLog.i("AdUUIDUtil", String.format("getUUID %d", new Object[] { Integer.valueOf(locala.error) }));
+      locala.duration = (System.currentTimeMillis() - l);
+      return locala;
+      localObject = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
+      if (localObject == null)
       {
-        return parama;
-        if ((paramLong == -2147483648L) || (TextUtils.isEmpty(paramString))) {
-          break;
-        }
-        parama = String.format("%s%d%d%s", new Object[] { paramString, Integer.valueOf(parama.getVersion()), Long.valueOf(paramLong), parama.getValue() });
-        if (TextUtils.isEmpty(parama)) {
-          break;
-        }
-        parama = d.md5(parama, "UTF-8");
-        if (TextUtils.isEmpty(parama)) {
-          break;
-        }
-        paramString = parama.toUpperCase();
-        parama = paramString;
-      } while (!TextUtils.isEmpty(paramString));
-    }
-  }
-  
-  private boolean isValid()
-  {
-    return (this.info != null) && (this.info.v > 0) && (this.info.t > 0L) && (!TextUtils.isEmpty(this.info.u)) && (!TextUtils.isEmpty(this.info.m));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof r))) {}
-    do
-    {
-      return false;
-      paramObject = (r)r.class.cast(paramObject);
-      if ((this.info == null) && (paramObject.info == null)) {
-        return true;
+        locala.error = 106;
       }
-    } while ((this.info == null) || (paramObject.info == null));
-    if ((this.info.v == paramObject.info.v) && (this.info.t == paramObject.info.t) && (TextUtils.equals(this.info.u, paramObject.info.u)) && (TextUtils.equals(this.info.m, paramObject.info.m))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public qq_common.DeviceExt.UUID getInfo()
-  {
-    if (isValid()) {
-      return this.info;
-    }
-    return null;
-  }
-  
-  public boolean isValid(r.a parama)
-  {
-    if (!isValid()) {}
-    while ((UUID.fromString(this.info.u) == null) || (parama == null) || (!parama.isValid()) || (parama.getVersion() != this.info.v)) {
-      return false;
-    }
-    parama = generateSignature(parama, this.info.u, this.info.t);
-    return TextUtils.equals(this.info.m, parama);
-  }
-  
-  public String toString()
-  {
-    if (!isValid()) {
-      AdLog.e("AdUUIDInfo", "toString error");
-    }
-    for (;;)
-    {
-      return null;
-      try
+      else
       {
-        Object localObject = AdJSON.fromObject(this.info);
-        if ((localObject != null) && (!JSONObject.NULL.equals(localObject)))
+        locala1 = new q.a(((gdt_settings.Settings)localObject).settingsForUUID);
+        if ((locala1 == null) || (!locala1.isValid()))
         {
-          localObject = localObject.toString();
-          return localObject;
+          locala.error = 4;
+        }
+        else if ((paramBoolean) && (!e.checkPermission(paramContext, "android.permission.WRITE_EXTERNAL_STORAGE")))
+        {
+          locala.error = 17;
+        }
+        else if (!TextUtils.equals(Environment.getExternalStorageState(), "mounted"))
+        {
+          locala.error = 213;
+        }
+        else
+        {
+          locala2 = new a(getDirectoryAbsolutePath("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
+          locala3 = new a(getDirectoryAbsolutePath("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
+          if ((locala2.open()) && (locala3.open())) {
+            break;
+          }
+          locala2.close();
+          locala3.close();
+          locala.error = 18;
         }
       }
-      catch (Throwable localThrowable)
+    }
+    int i = ((gdt_settings.Settings)localObject).settingsForUUID.maxLength;
+    String str1 = locala2.readFully(i);
+    q localq2 = q.fromString(str1);
+    String str2 = locala3.readFully(i);
+    q localq3 = q.fromString(str2);
+    q localq1 = q.create(locala1);
+    if (localq1 != null)
+    {
+      localObject = localq1.toString();
+      label320:
+      if ((localq2 == null) || (!localq2.isValid(locala1))) {
+        break label411;
+      }
+      localq1 = localq2;
+      localObject = str1;
+    }
+    for (;;)
+    {
+      if ((locala2.writeFully((String)localObject)) && (locala3.writeFully((String)localObject)))
       {
-        AdLog.e("AdUUIDInfo", "toString", localThrowable);
+        uuidInfo = localq1;
+        locala.uuidInfo = uuidInfo;
+        locala.error = 0;
+      }
+      locala2.close();
+      locala3.close();
+      AdReporterForAnalysis.reportForUUID(paramContext, localq2, localq3, locala1);
+      break;
+      localObject = null;
+      break label320;
+      label411:
+      if ((localq3 != null) && (localq3.isValid(locala1)))
+      {
+        localObject = str2;
+        localq1 = localq3;
+      }
+      else if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = null;
+        localq1 = null;
       }
     }
-    return null;
   }
 }
 

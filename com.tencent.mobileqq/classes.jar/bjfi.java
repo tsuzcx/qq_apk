@@ -1,6 +1,19 @@
-public abstract interface bjfi
+import android.app.Activity;
+import com.tencent.mobileqq.mini.util.AnimUtil;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
+class bjfi
+  implements apom
 {
-  public abstract void a();
+  bjfi(bjfh parambjfh, Activity paramActivity) {}
+  
+  public void onColorNoteAnimFinish()
+  {
+    if ((bjfh.a(this.jdField_a_of_type_Bjfh) != null) && (bjfh.a(this.jdField_a_of_type_Bjfh).isInternalApp())) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    AnimUtil.clearAnim(this.jdField_a_of_type_AndroidAppActivity);
+  }
 }
 
 

@@ -82,7 +82,9 @@ final class GpkgManager$4
     if ((paramDownloadResult != null) && (paramDownloadResult.getContent() != null)) {}
     for (long l1 = paramDownloadResult.getContent().length;; l1 = -1L)
     {
-      paramDownloadResult.getReport();
+      if (paramDownloadResult != null) {
+        paramDownloadResult.getReport();
+      }
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] onDownloadSucceed " + paramString + ", cost: " + GpkgManager.downloadDuration + "ms speed:" + l1 / (GpkgManager.downloadDuration / 1000.0D) + " B/S");
       MiniReportManager.addCostTimeEventAttachInfo(this.val$gameConfig, 2, "1");
       paramString = this.val$gameConfig;
@@ -90,7 +92,10 @@ final class GpkgManager$4
       for (long l2 = GpkgManager.downloadDuration;; l2 = 0L)
       {
         MiniReportManager.reportEventType(paramString, 620, null, String.valueOf(l1), null, 0, "1", l2, null);
-        GpkgManager.access$300(GpkgManager.access$200(this.val$savePath), this.val$unPackFolderPath, this.val$gameConfig, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath, this.val$isMiniGameProcess, paramDownloadResult);
+        paramString = GpkgManager.access$200(this.val$savePath);
+        if (paramString != null) {
+          GpkgManager.access$300(paramString, this.val$unPackFolderPath, this.val$gameConfig, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath, this.val$isMiniGameProcess, paramDownloadResult);
+        }
         return;
       }
     }

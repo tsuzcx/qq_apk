@@ -1,23 +1,14 @@
-import android.widget.TextView;
+import dov.com.qq.im.aeeditor.view.timeline.EffectTimelineView;
 
-class bmpf
-  implements bmgq
+public abstract interface bmpf
 {
-  bmpf(bmpb parambmpb) {}
+  public abstract void a(bmod parambmod, long paramLong1, long paramLong2);
   
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      bmqw.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
-      if (bmpb.a(this.a) != null) {
-        bmpb.a(this.a).setText("跳转失败，请返回重试");
-      }
-      return;
-    }
-    bmqw.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
-    bmpb.b(this.a);
-  }
+  public abstract void a(bmod parambmod, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, EffectTimelineView paramEffectTimelineView);
+  
+  public abstract void b(bmod parambmod, long paramLong1, long paramLong2);
 }
 
 

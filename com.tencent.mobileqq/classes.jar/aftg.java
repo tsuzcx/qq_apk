@@ -1,28 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aftg
-  extends nkq
+  implements afrc
 {
-  public aftg(TroopInfoActivity paramTroopInfoActivity) {}
+  private BaseChatPie a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aftg(BaseChatPie paramBaseChatPie)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.getIfOnShowDone()) && (this.a.getCurType() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
+    }
+  }
+  
+  private void b()
+  {
+    if ((this.a != null) && (this.a.getCurType() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
+    default: 
+      return;
+    case 5: 
+      a();
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
-    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 5, 10 };
   }
 }
 

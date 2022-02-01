@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.minigame.debug;
 
+import amtj;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import anzj;
-import bhtq;
 import com.tencent.mobileqq.mini.apkg.DebugInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.triton.script.InspectorAgent;
 import com.tencent.mobileqq.triton.script.InspectorAgent.DebuggerMessageListener;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
@@ -25,15 +25,15 @@ public class QQDebugWebSocket
   extends DebugWebSocket
   implements InspectorAgent
 {
-  private static final String DISCONNECT_TIPS = anzj.a(2131709085);
-  private static final String DISCONNECT_TIPS_NOT_RECOVERY = anzj.a(2131709084);
+  private static final String DISCONNECT_TIPS = amtj.a(2131709317);
+  private static final String DISCONNECT_TIPS_NOT_RECOVERY = amtj.a(2131709316);
   public static final int NETWORKTYPE_2G = 2;
   public static final int NETWORKTYPE_3G = 3;
   public static final int NETWORKTYPE_4G = 4;
   public static final int NETWORKTYPE_OFFLINE = 0;
   public static final int NETWORKTYPE_OTHER = 1;
   public static final int NETWORKTYPE_WIFI = 6;
-  private static final String RECONNECT_TIPS = anzj.a(2131709086);
+  private static final String RECONNECT_TIPS = amtj.a(2131709318);
   private AtomicInteger count = new AtomicInteger();
   Runnable heartbeatRunnable = new QQDebugWebSocket.4(this);
   private boolean isQQDebugReady;
@@ -166,9 +166,9 @@ public class QQDebugWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.4.5");
+      localJSONObject.put("qq_version", "8.4.8");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bhtq.a());
+      localJSONObject.put("screen_width", ViewUtils.getScreenWidth());
       localJSONObject.put("user_agent", "MiniGame");
       return localJSONObject;
     }

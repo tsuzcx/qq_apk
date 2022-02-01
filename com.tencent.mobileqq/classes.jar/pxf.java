@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class pxf
-  implements View.OnClickListener
+public abstract interface pxf<BEAN>
 {
-  pxf(pxe parampxe, Container paramContainer, ppu paramppu, int paramInt) {}
+  public abstract void a(pxi<BEAN> parampxi);
   
-  public void onClick(View paramView)
-  {
-    pxe.a(this.jdField_a_of_type_Pxe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("PgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean, pxe<BEAN> parampxe);
+  
+  public abstract boolean a();
 }
 
 

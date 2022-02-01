@@ -3,36 +3,41 @@ package com.tencent.mobileqq.app.face;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class FaceDecoder$1
+final class FaceDecoder$1
   implements Runnable
 {
-  public FaceDecoder$1(FaceInfo paramFaceInfo, QQAppInterface paramQQAppInterface) {}
+  FaceDecoder$1(FaceInfo paramFaceInfo, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int == 101) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int == 115)) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Byte);
+    if ((this.val$faceInfo.jdField_a_of_type_Int == 1) || (this.val$faceInfo.jdField_a_of_type_Int == 101) || (this.val$faceInfo.jdField_a_of_type_Int == 115)) {
+      ((FriendListHandler)this.val$app.getBusinessHandler(1)).getCustomHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte);
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int == 11)
+      if (this.val$faceInfo.jdField_a_of_type_Int == 11)
       {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Byte);
+        ((FriendListHandler)this.val$app.getBusinessHandler(1)).getMobileQQHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Byte);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int == 4)
+      if (this.val$faceInfo.jdField_a_of_type_Int == 4)
       {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Byte);
+        ((FriendListHandler)this.val$app.getBusinessHandler(1)).getTroopHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Byte);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int == 32)
+      if (this.val$faceInfo.jdField_a_of_type_Int == 32)
       {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Byte);
+        ((FriendListHandler)this.val$app.getBusinessHandler(1)).getStrangerHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Int, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte);
         return;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int != 16);
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_b_of_type_Byte);
+      if (this.val$faceInfo.jdField_a_of_type_Int == 16)
+      {
+        ((FriendListHandler)this.val$app.getBusinessHandler(1)).getQCallHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Int, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte);
+        return;
+      }
+    } while (this.val$faceInfo.jdField_a_of_type_Int != 116);
+    ((FriendListHandler)this.val$app.getBusinessHandler(1)).getApolloHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte, this.val$faceInfo.d);
   }
 }
 

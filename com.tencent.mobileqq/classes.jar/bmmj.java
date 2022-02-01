@@ -1,17 +1,18 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.widget.ImageView;
 
 public class bmmj
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public bmmj(LocationDetailActivity paramLocationDetailActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onClick(View paramView)
+  public bmmj(bmmh parambmmh, View paramView)
   {
-    this.a.onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380314);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364717));
   }
 }
 

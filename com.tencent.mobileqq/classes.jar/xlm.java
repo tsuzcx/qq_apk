@@ -1,34 +1,34 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class xlm
-  implements xjk
+class xlm
+  extends QQUIEventReceiver<xlj, wci>
 {
-  xlm(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
-  
-  public void a(int paramInt)
+  public xlm(@NonNull xlj paramxlj)
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
+    super(paramxlj);
+  }
+  
+  public void a(@NonNull xlj paramxlj, @NonNull wci paramwci)
+  {
+    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramxlj.jdField_a_of_type_JavaLangString)))
     {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label58;
-      }
+      xvv.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramwci);
+      paramxlj.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      xlj.a(paramxlj).e();
+      xlj.a(paramxlj).c();
+      xlj.a(paramxlj).d();
+      xlj.a(paramxlj).a();
     }
-    label58:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      xlj.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wci.class;
   }
 }
 

@@ -1,19 +1,55 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import androidx.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class bdji
-  extends SQLiteOpenHelper
+public class bdji<E>
 {
-  public bdji(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  protected E a;
+  protected String a;
+  protected List<E> a;
+  
+  public bdji(E paramE, List<E> paramList)
   {
-    super(paramContext, paramString, null, paramInt);
+    this.jdField_a_of_type_JavaLangObject = paramE;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  public E a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
   
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  @NonNull
+  List<E> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StateProcessor", 2, "[onExit] curState: " + this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StateProcessor", 2, "[handleEvent] state: " + this.jdField_a_of_type_JavaLangObject + ", event: " + paramInt);
+    }
+  }
+  
+  public void a(E paramE)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StateProcessor", 2, "[onEnter] enter: " + this.jdField_a_of_type_JavaLangObject + ", lastState: " + paramE);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

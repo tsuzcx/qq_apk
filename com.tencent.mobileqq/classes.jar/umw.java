@@ -1,15 +1,6 @@
-import android.content.Context;
-
-public abstract class umw<MSG extends umn, INFO extends umo>
+class umw
 {
-  MSG a;
-  
-  public umw(MSG paramMSG)
-  {
-    this.a = paramMSG;
-  }
-  
-  public abstract boolean a(Context paramContext, INFO paramINFO);
+  private static final umu a = new umu(null);
 }
 
 

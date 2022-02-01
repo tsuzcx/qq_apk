@@ -1,56 +1,21 @@
-public class bgtk
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+
+public abstract interface bgtk
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public abstract void buildBottomBar();
   
-  public static bgtk a()
-  {
-    return new bgtk();
-  }
+  public abstract void buildContentView(Bundle paramBundle);
   
-  public bgtk a(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
+  public abstract void buildData();
   
-  public bgtk b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
+  public abstract void buildLayout();
   
-  public bgtk c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
+  public abstract void buildTitleBar();
   
-  public bgtk d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
+  public abstract void buildWebView(AppInterface paramAppInterface);
   
-  public bgtk e(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public bgtk f(String paramString)
-  {
-    this.j = paramString;
-    return this;
-  }
+  public abstract void preInitWebviewPlugin();
 }
 
 

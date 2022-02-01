@@ -1,76 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class arpq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$SpacesItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "space", "", "firstItemTopSpace", "(II)V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arpq
+  extends RecyclerView.ItemDecoration
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private final int a;
+  private final int b;
   
-  public static arpq a(araj[] paramArrayOfaraj)
+  public arpq(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
-    }
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0))
-    {
-      paramArrayOfaraj = null;
-      return paramArrayOfaraj;
-    }
-    arpq localarpq = new arpq();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[0].jdField_a_of_type_JavaLangString);
-        paramArrayOfaraj = localarpq;
-        if (!localJSONObject.has("tencentDocAioSendEntry")) {
-          break;
-        }
-        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
-        if (localJSONObject.has("aioSendDocSwitch"))
-        {
-          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
-            localarpq.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          paramArrayOfaraj = localarpq;
-          if (!localJSONObject.has("webDocSelectorUrl")) {
-            break;
-          }
-          localarpq.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
-          return localarpq;
-        }
-      }
-      catch (JSONException paramArrayOfaraj)
-      {
-        paramArrayOfaraj.printStackTrace();
-        return localarpq;
-      }
-      bool = false;
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public String a()
+  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
+    Intrinsics.checkParameterIsNotNull(paramRect, "outRect");
+    Intrinsics.checkParameterIsNotNull(paramView, "view");
+    Intrinsics.checkParameterIsNotNull(paramRecyclerView, "parent");
+    Intrinsics.checkParameterIsNotNull(paramState, "state");
+    paramRect.bottom = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.top = this.b;
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpq
  * JD-Core Version:    0.7.0.1
  */

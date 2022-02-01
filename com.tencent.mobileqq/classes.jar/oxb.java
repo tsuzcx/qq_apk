@@ -1,31 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class oxb
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/CreateFirstCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxb
+  extends nmf
 {
-  String jdField_a_of_type_JavaLangString = owz.a(this.jdField_a_of_type_Owz).a.commentId;
-  
-  oxb(owz paramowz, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    if ((owz.a(this.jdField_a_of_type_Owz) == null) || (owz.a(this.jdField_a_of_type_Owz).a == null) || (this.jdField_a_of_type_JavaLangString == null))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      owz.a(this.jdField_a_of_type_Owz, this.jdField_a_of_type_AndroidViewView);
+      oxa.a(this.a, paramArrayOfByte);
       return;
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals(owz.a(this.jdField_a_of_type_Owz).a.commentId))
+    this.a.a(paramInt, "Empty error message.");
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
     {
-      owz.a(this.jdField_a_of_type_Owz, this.jdField_a_of_type_AndroidViewView);
-      return;
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
     }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    owz.a(this.jdField_a_of_type_Owz).setAlpha(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(owz.a(this.jdField_a_of_type_Owz));
   }
 }
 

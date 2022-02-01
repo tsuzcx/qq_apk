@@ -1,75 +1,42 @@
-import android.os.Bundle;
-import com.tencent.jungle.videohub.proto.CommProtocolProto.commResponse;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
 
-class awap
-  extends nkq
+public class awap
+  implements avzr
 {
-  awap(awan paramawan, int paramInt1, int paramInt2, boolean paramBoolean, awaq paramawaq) {}
+  public awap(MultiCardFragment paramMultiCardFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("sendPBRequest errorCode=").append(paramInt).append(" bundle=");
-      if (paramBundle != null) {
-        break label142;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
     }
-    label142:
-    for (Object localObject = "null";; localObject = paramBundle.toString())
+    switch (paramInt)
     {
-      QLog.d("ODCsChannel", 2, (String)localObject + " data=" + Arrays.toString(paramArrayOfByte));
-      if ((paramInt == 0) && (paramArrayOfByte != null)) {
-        break label166;
-      }
-      QLog.i("ODCsChannel", 2, "login: fail，errorCode=" + paramInt + " data=" + Arrays.toString(paramArrayOfByte));
-      if (this.jdField_a_of_type_Int <= 0) {
-        break;
-      }
-      awan.b(this.jdField_a_of_type_Awan, this.c, paramArrayOfByte, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Awaq);
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+          MultiCardFragment.a(this.a);
+          MultiCardFragment.a(this.a, true);
+        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
+        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+        MultiCardFragment.a(this.a).a();
+        return;
+        MultiCardFragment.b(this.a, true);
+        MultiCardFragment.a(this.a, false);
+      } while (MultiCardFragment.a(this.a) == null);
+      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
       return;
     }
-    awan.a(this.jdField_a_of_type_Awan, paramInt, null, paramBundle, this.jdField_a_of_type_Awaq);
-    return;
-    label166:
-    localObject = new CommProtocolProto.commResponse();
-    try
-    {
-      ((CommProtocolProto.commResponse)localObject).mergeFrom(paramArrayOfByte);
-      if (((CommProtocolProto.commResponse)localObject).code.get() == 1008)
-      {
-        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，token illegal, errorCode=1008");
-        awan.a(this.jdField_a_of_type_Awan, this.c, paramArrayOfByte, this.b, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Awaq);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-        ((CommProtocolProto.commResponse)localObject).code.set(-10);
-        QLog.e("ODCsChannel", 2, "sendPBRequest: error=" + localInvalidProtocolBufferMicroException.getMessage());
-      }
-      if (((CommProtocolProto.commResponse)localObject).code.get() == 1006)
-      {
-        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，user sig illegal, errorCode=1006");
-        this.jdField_a_of_type_Awan.a(this.c, paramArrayOfByte, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Awaq);
-        return;
-      }
-      if ((((CommProtocolProto.commResponse)localObject).code.get() != 0) && (this.jdField_a_of_type_Int > 0))
-      {
-        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，errorCode=" + ((CommProtocolProto.commResponse)localObject).code.get());
-        awan.b(this.jdField_a_of_type_Awan, this.c, paramArrayOfByte, this.b, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Awaq);
-        return;
-      }
-      awan.a(this.jdField_a_of_type_Awan, paramInt, (CommProtocolProto.commResponse)localObject, paramBundle, this.jdField_a_of_type_Awaq);
-    }
+    MultiCardFragment.b(this.a, true);
+    MultiCardFragment.a(this.a, false);
   }
 }
 

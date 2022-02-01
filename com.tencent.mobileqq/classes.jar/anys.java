@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anys
-  implements Parcelable.Creator<FriendListHandler.QQHeadDetails>
+class anys
+  implements MediaPlayer.OnPreparedListener
 {
-  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
-  {
-    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
-    return localQQHeadDetails;
-  }
+  anys(anyn paramanyn) {}
   
-  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    return new FriendListHandler.QQHeadDetails[paramInt];
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + anyn.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      anyn.b(this.a, true);
+      if (anyn.b(this.a))
+      {
+        this.a.a.start();
+        anyn.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

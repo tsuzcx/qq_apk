@@ -1,6 +1,19 @@
-public abstract interface sej
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
+
+class sej
+  implements ayeo
 {
-  public abstract void a();
+  sej(seh paramseh) {}
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void onSend(ayep paramayep) {}
+  
+  public void updateMsg(ayep paramayep) {}
 }
 
 

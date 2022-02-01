@@ -7,8 +7,8 @@ class PanoramaPieceManager$1
   
   public void run()
   {
-    this.this$0.b();
-    PanoramaPieceManager.a(this.this$0, PanoramaPieceManager.ProcessState.DIVIDE_PIECE);
+    this.this$0.loadOrgPieceData();
+    PanoramaPieceManager.access$002(this.this$0, PanoramaPieceManager.ProcessState.DIVIDE_PIECE);
   }
 }
 

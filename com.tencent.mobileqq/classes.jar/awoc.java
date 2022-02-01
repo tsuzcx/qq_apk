@@ -1,6 +1,39 @@
-public abstract interface awoc
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+
+public class awoc
+  implements View.OnKeyListener
 {
-  public abstract void a(int paramInt);
+  public awoc(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
+      if (ChooseInterestTagActivity.a(this.a).getText() == null)
+      {
+        paramView = "";
+        if (TextUtils.isEmpty(paramView))
+        {
+          ChooseInterestTagActivity.a(this.a).fullScroll(66);
+          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
+        }
+      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break;
+      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
+        bjmm.b(ChooseInterestTagActivity.a(this.a));
+      }
+    }
+  }
 }
 
 

@@ -1,22 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-public class aexg
-  implements Animation.AnimationListener
+public abstract class aexg
+  extends aezy
 {
-  public aexg(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public View a;
+  public TextView a;
 }
 
 

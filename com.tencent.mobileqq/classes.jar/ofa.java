@@ -1,158 +1,203 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool.1;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.pubaccount.VideoPlayCountHandler.1;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.qqshop.qqshop.SQQSHPClientReq;
+import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.ReqBody;
+import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ofa
+  extends BusinessHandler
 {
-  public static final String a;
-  public ShopWebViewFragment a;
-  public EntityManager a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new EcshopCacheTool.1(this);
-  public Map<String, Friends> a;
-  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ofb(this);
-  public ofe a;
-  public boolean a;
-  Map<String, Bitmap> b;
-  public Map<String, Integer> c;
-  public Map<String, String> d;
+  static final String a = "Q.pubaccount.video." + ofb.class.getSimpleName();
   
-  static
+  public ofa(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "shop_assit_banner_json.txt";
+    super(paramAppInterface);
   }
   
-  public ofa(AppInterface paramAppInterface, ShopWebViewFragment paramShopWebViewFragment)
+  public ofa(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = paramShopWebViewFragment;
-    this.c = new ConcurrentHashMap();
-    this.d = new ConcurrentHashMap();
-    this.b = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Ofe = ((ofe)paramAppInterface.getBusinessHandler(0));
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+    super(paramQQAppInterface);
   }
   
-  public Bitmap a(String paramString)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    synchronized (this.b)
+    int j = 0;
+    int k = 0;
+    boolean bool;
+    Bundle localBundle;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      paramString = (Bitmap)this.b.get(paramString);
-      return paramString;
+      bool = true;
+      localBundle = new Bundle();
+      paramFromServiceMsg = "";
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "handleGetPlayCount onReceive :" + bool);
+      }
+      if (!bool) {
+        break label532;
+      }
     }
-  }
-  
-  public String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
-      return "";
-    }
-    paramString = (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.getFriendNick();
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = null;
-    this.jdField_a_of_type_Ofe = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.c != null) {
-      this.c.clear();
-    }
-    if (this.d != null) {
-      this.d.clear();
-    }
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent("action_get_PA_head");
-    localIntent.putExtra("uin", paramString);
-    paramContext.sendBroadcast(localIntent);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    synchronized (this.b)
+    for (;;)
     {
-      this.b.put(paramString, paramBitmap);
-      return;
+      for (;;)
+      {
+        try
+        {
+          localObject = new oidb_sso.OIDBSSOPkg();
+          ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramObject);
+          paramObject = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
+          localObject = new oidb_0x6a6.RspBody();
+          ((oidb_0x6a6.RspBody)localObject).mergeFrom(paramObject);
+          if ((((oidb_0x6a6.RspBody)localObject).uint32_ret_code.has()) && (((oidb_0x6a6.RspBody)localObject).uint32_ret_code.get() == 0)) {
+            if (((oidb_0x6a6.RspBody)localObject).uint32_read_count.has()) {
+              i = ((oidb_0x6a6.RspBody)localObject).uint32_read_count.get();
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          Object localObject;
+          int i;
+          continue;
+          paramToServiceMsg = "";
+          continue;
+        }
+        try
+        {
+          if (paramToServiceMsg.getWupBuffer() == null) {
+            continue;
+          }
+          paramObject = new oidb_sso.OIDBSSOPkg();
+          paramObject.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
+          if ((paramObject.bytes_bodybuffer.has()) && (paramObject.bytes_bodybuffer.get() != null))
+          {
+            paramToServiceMsg = new oidb_0x6a6.ReqBody();
+            paramToServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+            if ((paramToServiceMsg.bytes_article_id.has()) && (paramToServiceMsg.bytes_article_id.get() != null))
+            {
+              paramToServiceMsg = paramToServiceMsg.bytes_article_id.get().toStringUtf8().substring(2);
+              if (QLog.isColorLevel()) {
+                QLog.d(a, 2, "handleGetPlayCount vid :" + paramToServiceMsg + " playCount :" + i);
+              }
+              localBundle.putInt("VALUE_VIDEO_PLAY_COUNT", i);
+              localBundle.putString("VALUE_VIDEO_VID", paramToServiceMsg);
+              super.notifyUI(1, bool, localBundle);
+              return;
+              bool = false;
+              break;
+              if (((oidb_0x6a6.RspBody)localObject).uint64_read_count.has())
+              {
+                i = (int)((oidb_0x6a6.RspBody)localObject).uint64_read_count.get();
+                continue;
+              }
+              if (QLog.isColorLevel())
+              {
+                QLog.e(a, 2, "handleGetPlayCount 获取失败, read_count 为空");
+                i = 0;
+                continue;
+                if (QLog.isColorLevel()) {
+                  QLog.e(a, 2, "handleGetPlayCount 获取失败, ret_code 为空或 ret_code == 1");
+                }
+              }
+              i = 0;
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(a, 2, "geVideoPlayCount, 请求vid空");
+            continue;
+          }
+          paramToServiceMsg = paramFromServiceMsg;
+          if (QLog.isColorLevel())
+          {
+            QLog.e(a, 2, "geVideoPlayCount, reqBody为空");
+            paramToServiceMsg = paramFromServiceMsg;
+            continue;
+            i = j;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          j = i;
+        }
+      }
+      paramToServiceMsg = paramFromServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.e(a, 2, "geVideoPlayCount, ERROR e=" + paramObject.getMessage());
+        i = j;
+        paramToServiceMsg = paramFromServiceMsg;
+        continue;
+        paramToServiceMsg = paramFromServiceMsg;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(a, 2, "geVideoPlayCount, reqPkg为空");
+          paramToServiceMsg = paramFromServiceMsg;
+          continue;
+          label532:
+          i = k;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (QLog.isColorLevel())
+          {
+            QLog.e(a, 2, "geVideoPlayCount, 返回直接出错了");
+            i = k;
+            paramToServiceMsg = paramFromServiceMsg;
+          }
+        }
+      }
     }
   }
   
-  public void a(AppRuntime paramAppRuntime, int paramInt)
+  public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
-    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
-    localSQQSHPClientReq.msglistlen.set(paramInt);
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), awjk.class);
-    localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetFolderInfo");
-    localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
-    localNewIntent.putExtra("extra_timeout", 30000L);
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
-  
-  public void a(AppRuntime paramAppRuntime, List<Long> paramList, double paramDouble1, double paramDouble2)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), awjk.class);
-    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
-    localSQQSHPClientReq.puinlist.addAll(paramList);
-    if ((!TextUtils.isEmpty(paramAppRuntime.getAccount())) && (paramDouble1 != 0.0D) && (paramDouble2 != 0.0D))
+    if (QLog.isDevelopLevel()) {
+      QLog.d(a, 4, "getVideoPlayCount()  vId" + paramString1);
+    }
+    oidb_0x6a6.ReqBody localReqBody = new oidb_0x6a6.ReqBody();
+    paramString1 = ByteStringMicro.copyFromUtf8("5_" + paramString1);
+    localReqBody.bytes_article_id.set(paramString1);
+    localReqBody.uint32_req_type.set(paramInt1);
+    localReqBody.uint32_article_type.set(paramInt2);
+    localReqBody.uint32_platform_type.set(paramInt3);
+    if (!TextUtils.isEmpty(paramString2))
     {
-      localSQQSHPClientReq.latitude.set(paramDouble2);
-      localSQQSHPClientReq.longitude.set(paramDouble1);
-      QLog.i("EcshopCacheTool", 2, "lat:" + paramDouble2 + ",lon:" + paramDouble1);
+      paramString1 = ByteStringMicro.copyFromUtf8(paramString2);
+      localReqBody.rowkey.set(paramString1);
     }
-    localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetShopBindUin");
-    localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
-    localNewIntent.putExtra("extra_timeout", 30000L);
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    paramAppRuntime.startServlet(localNewIntent);
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x6a6", 1702, 0, localReqBody.toByteArray()));
   }
   
-  public boolean a(String paramString)
+  public void a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
-      return false;
-    }
-    return (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString) != null;
+    ThreadManager.excute(new VideoPlayCountHandler.1(this, paramString1, paramString2), 16, null, true);
   }
   
-  public void b(Context paramContext, String paramString)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    paramContext.startActivity(localIntent);
+    return ofb.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "handleGetPlayCount onReceive");
+    }
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

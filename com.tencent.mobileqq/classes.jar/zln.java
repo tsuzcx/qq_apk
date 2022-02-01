@@ -1,6 +1,24 @@
-public abstract interface zln
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
+import java.util.ArrayList;
+
+public class zln
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public zln(SubscribeBannerView paramSubscribeBannerView) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
+      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
+    }
+  }
 }
 
 

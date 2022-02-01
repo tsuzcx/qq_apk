@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
-class alxg
-  implements beuq
+public abstract interface alxg
 {
-  alxg(alxd paramalxd) {}
+  public abstract String a();
   
-  public void onResp(bevm parambevm)
-  {
-    FilterDesc localFilterDesc = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
-    if (parambevm.jdField_a_of_type_Int != 0)
-    {
-      lbj.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((alxd.a(this.a).decrementAndGet() == 0) && (alxd.a(this.a) != null)) {
-      alxd.a(this.a).a(true);
-    }
-    lbj.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
-  }
+  public abstract JSONObject a(alxf paramalxf, JSONObject paramJSONObject);
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public abstract int c();
 }
 
 

@@ -1,26 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.SSOAccountObserver;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import java.util.List;
 
 class bjjl
-  extends SSOAccountObserver
+  implements bjjb
 {
-  bjjl(bjjj parambjjj, int paramInt) {}
+  bjjl(bjjk parambjjk) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void a(List<Pair<Integer, Byte>> paramList)
   {
-    bjjj.a(this.jdField_a_of_type_Bjjj, paramString, this.jdField_a_of_type_Int, paramInt2, -102);
-  }
-  
-  public void onLoginSuccess(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    bjji.a().a(paramString);
-    bjjj.a(paramString);
-    bjjj.a(this.jdField_a_of_type_Bjjj, paramString, this.jdField_a_of_type_Int, 0, 0);
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    bjjj.a(this.jdField_a_of_type_Bjjj, paramString, this.jdField_a_of_type_Int, 2006, -100);
+    Message localMessage = bjjk.a(this.a).obtainMessage(2);
+    localMessage.obj = paramList;
+    bjjk.a(this.a).sendMessage(localMessage);
   }
 }
 

@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asuq
-  extends asuj
+class asuq
+  implements View.OnClickListener
 {
-  public ases a;
+  asuq(asun paramasun, String paramString) {}
   
-  public asuq(QQAppInterface paramQQAppInterface, asup paramasup)
+  public void onClick(View paramView)
   {
-    if ((paramasup.a instanceof asmg)) {}
-    for (int i = 333;; i = 149)
-    {
-      this.a = ((ases)paramQQAppInterface.getManager(i));
-      return;
-    }
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public List<asug> a(boolean paramBoolean)
-  {
-    Object localObject = this.a.b();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(new asup((asmu)((Iterator)localObject).next()));
-    }
-    return localArrayList;
-  }
-  
-  public void a() {}
-  
-  public boolean a()
-  {
-    return false;
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.jdField_a_of_type_Asun.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Asun.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

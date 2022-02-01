@@ -1,16 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pluspanel.appinfo.PlusPanelAppInfo;
+import com.tencent.mobileqq.pluspanel.loader.c2c.C2CPlusPanelAppConfigHelper;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ayfj
-  implements DialogInterface.OnClickListener
+public final class ayfj
 {
-  public ayfj(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private void a(String paramString)
   {
-    ShortVideoCommentsView.c(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      int i = paramString.optInt("appid");
+      PlusPanelAppInfo localPlusPanelAppInfo = C2CPlusPanelAppConfigHelper.INSTANCE.getAppInfoByAppID(i);
+      if (localPlusPanelAppInfo != null)
+      {
+        localPlusPanelAppInfo.appid = i;
+        localPlusPanelAppInfo.name = paramString.optString("title");
+        localPlusPanelAppInfo.enName = paramString.optString("eng_title");
+        localPlusPanelAppInfo.iconUrl = paramString.optString("iconNormal");
+        localPlusPanelAppInfo.iconPress = paramString.optString("iconPress");
+        localPlusPanelAppInfo.simpleDayUrl = paramString.optString("iconConciseNormal");
+        localPlusPanelAppInfo.simpleDayPressUrl = paramString.optString("iconConcisePress");
+        localPlusPanelAppInfo.simpleNightUrl = paramString.optString("iconConciseNightNormal");
+        localPlusPanelAppInfo.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
+        localPlusPanelAppInfo.actionType = paramString.optString("actionType");
+        localPlusPanelAppInfo.action = paramString.optString("action");
+        localPlusPanelAppInfo.enableC2C = paramString.optInt("enableC2C");
+        localPlusPanelAppInfo.enableGroup = paramString.optInt("enableGroup");
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
+    }
   }
 }
 

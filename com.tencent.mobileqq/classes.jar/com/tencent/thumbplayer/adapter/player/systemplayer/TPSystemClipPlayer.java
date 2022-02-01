@@ -14,6 +14,7 @@ import com.tencent.thumbplayer.adapter.TPPlayerDataSource;
 import com.tencent.thumbplayer.adapter.TPPlayerStateStrategy;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBase;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioPcmOutListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnCompletionListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListener;
@@ -22,6 +23,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompl
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
@@ -29,6 +31,7 @@ import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamLong;
 import com.tencent.thumbplayer.api.TPPlayerState;
+import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPTrackInfo;
@@ -137,6 +140,14 @@ public class TPSystemClipPlayer
     this.mPlayerListeners.onAudioPcmOut(paramTPAudioFrameBuffer);
   }
   
+  private TPPostProcessFrameBuffer handleOnAudioProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    if (!this.mStateChecker.validStateCallback(7)) {
+      return null;
+    }
+    return this.mPlayerListeners.onAudioProcessFrameOut(paramTPPostProcessFrameBuffer);
+  }
+  
   private void handleOnComplete()
   {
     if (!this.mStateChecker.validStateCallback(2)) {
@@ -226,6 +237,14 @@ public class TPSystemClipPlayer
       return;
     }
     this.mPlayerListeners.onVideoFrameOut(paramTPVideoFrameBuffer);
+  }
+  
+  private TPPostProcessFrameBuffer handleOnVideoProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    if (!this.mStateChecker.validStateCallback(7)) {
+      return null;
+    }
+    return this.mPlayerListeners.onVideoProcessFrameOut(paramTPPostProcessFrameBuffer);
   }
   
   private void handleOnVideoSizeChange(long paramLong1, long paramLong2)
@@ -320,7 +339,9 @@ public class TPSystemClipPlayer
     if (this.mPlayerInitParams.speedRatio() != 0.0F) {
       paramITPPlayerBase.setPlaySpeedRatio(this.mPlayerInitParams.speedRatio());
     }
-    if ((this.mPlayerInitParams.surface() instanceof SurfaceHolder)) {}
+    if ((this.mPlayerInitParams.surface() instanceof SurfaceHolder)) {
+      paramITPPlayerBase.setSurfaceHolder((SurfaceHolder)this.mPlayerInitParams.surface());
+    }
     for (;;)
     {
       paramITPPlayerBase.setOnInfoListener(this.mPlayerCallback);
@@ -332,7 +353,7 @@ public class TPSystemClipPlayer
       paramITPPlayerBase.setOnSubtitleDataListener(this.mPlayerCallback);
       return;
       if ((this.mPlayerInitParams.surface() instanceof Surface)) {
-        paramITPPlayerBase.setSurface(this.mPlayerInitParams.surface());
+        paramITPPlayerBase.setSurface((Surface)this.mPlayerInitParams.surface());
       }
     }
   }
@@ -357,20 +378,12 @@ public class TPSystemClipPlayer
   
   public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
   {
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.addAudioTrackSource(paramString1, paramString2, paramList);
-    }
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "addAudioTrackSource not supported.");
   }
   
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
-    if (!this.mStateChecker.validStateCall(3)) {}
-    do
-    {
-      return;
-      TPLogUtil.i("TPThumbPlayer[TPSystemClipPlayer.java]", "addSubtitleSource， url: " + paramString1 + ", name: " + paramString3 + ", mimeType: " + paramString2);
-    } while (this.mPlayerBase == null);
-    this.mPlayerBase.addSubtitleSource(paramString1, paramString2, paramString3);
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "addSubtitleSource not supported.");
   }
   
   public void captureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
@@ -382,17 +395,7 @@ public class TPSystemClipPlayer
   
   public void deselectTrack(int paramInt, long paramLong)
   {
-    if (!this.mStateChecker.validStateCall(3)) {}
-    TPTrackInfo[] arrayOfTPTrackInfo;
-    do
-    {
-      return;
-      if (this.mPlayerBase != null) {
-        this.mPlayerBase.deselectTrack(paramInt, paramLong);
-      }
-      arrayOfTPTrackInfo = getTrackInfo();
-    } while (arrayOfTPTrackInfo == null);
-    this.mPlayerInitParams.setDeselectTrackInfo(paramInt, paramLong, arrayOfTPTrackInfo[paramInt]);
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "deselectTrack not supported.");
   }
   
   public long getCurrentPositionMs()
@@ -436,6 +439,7 @@ public class TPSystemClipPlayer
   
   public TPProgramInfo[] getProgramInfo()
   {
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "getProgramInfo not supported.");
     return new TPProgramInfo[0];
   }
   
@@ -457,10 +461,8 @@ public class TPSystemClipPlayer
   
   public TPTrackInfo[] getTrackInfo()
   {
-    if (this.mPlayerBase != null) {
-      return this.mPlayerBase.getTrackInfo();
-    }
-    return null;
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "getTrackInfo not supported.");
+    return new TPTrackInfo[0];
   }
   
   public int getVideoHeight()
@@ -563,7 +565,7 @@ public class TPSystemClipPlayer
     {
       this.mPlayerInitParams.reset();
       this.mPlayerListeners.clear();
-      this.mPlayerState.changeState(10);
+      this.mPlayerState.changeState(11);
     }
   }
   
@@ -623,22 +625,14 @@ public class TPSystemClipPlayer
     selectClipPlayer(paramInt1);
   }
   
-  public void selectProgram(int paramInt, long paramLong) {}
+  public void selectProgram(int paramInt, long paramLong)
+  {
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "selectProgram not supported.");
+  }
   
   public void selectTrack(int paramInt, long paramLong)
   {
-    if (!this.mStateChecker.validStateCall(3)) {}
-    do
-    {
-      TPTrackInfo[] arrayOfTPTrackInfo;
-      do
-      {
-        return;
-        arrayOfTPTrackInfo = getTrackInfo();
-      } while (arrayOfTPTrackInfo == null);
-      this.mPlayerInitParams.addSelectedTrackInfo(paramInt, paramLong, arrayOfTPTrackInfo[paramInt]);
-    } while (this.mPlayerBase == null);
-    this.mPlayerBase.selectTrack(paramInt, paramLong);
+    TPLogUtil.e("TPThumbPlayer[TPSystemClipPlayer.java]", "selectTrack not supported.");
   }
   
   public void setAudioGainRatio(float paramFloat)
@@ -651,6 +645,8 @@ public class TPSystemClipPlayer
     }
     this.mPlayerInitParams.setAudioGainRatio(paramFloat);
   }
+  
+  public void setAudioNormalizeVolumeParams(String paramString) {}
   
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
@@ -713,6 +709,11 @@ public class TPSystemClipPlayer
     throw new IllegalStateException("system Mediaplayer cannot support audio frame out");
   }
   
+  public void setOnAudioProcessOutputListener(ITPPlayerBaseListener.IOnAudioProcessOutListener paramIOnAudioProcessOutListener)
+  {
+    throw new IllegalStateException("system Mediaplayer cannot support audio postprocess frame out");
+  }
+  
   public void setOnCompletionListener(ITPPlayerBaseListener.IOnCompletionListener paramIOnCompletionListener)
   {
     this.mPlayerListeners.setOnCompletionListener(paramIOnCompletionListener);
@@ -751,6 +752,11 @@ public class TPSystemClipPlayer
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
   {
     throw new IllegalStateException("system Mediaplayer cannot support video frame out");
+  }
+  
+  public void setOnVideoProcessOutputListener(ITPPlayerBaseListener.IOnVideoProcessOutListener paramIOnVideoProcessOutListener)
+  {
+    throw new IllegalStateException("system Mediaplayer cannot support video postprocess frame out");
   }
   
   public void setOnVideoSizeChangedListener(ITPPlayerBaseListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener)
@@ -818,6 +824,17 @@ public class TPSystemClipPlayer
     this.mPlayerInitParams.setSurface(paramSurface);
   }
   
+  public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
+  {
+    if (!this.mStateChecker.validStateCall(4)) {
+      throw new IllegalStateException("setSurfaceHolder , state invalid");
+    }
+    if (this.mPlayerBase != null) {
+      this.mPlayerBase.setSurfaceHolder(paramSurfaceHolder);
+    }
+    this.mPlayerInitParams.setSurfaceHolder(paramSurfaceHolder);
+  }
+  
   public void start()
   {
     if (!this.mStateChecker.validStateCall(5)) {
@@ -848,6 +865,7 @@ public class TPSystemClipPlayer
     }
     try
     {
+      this.mPlayerState.changeState(8);
       this.mPlayerBase.stop();
       return;
     }
@@ -857,7 +875,7 @@ public class TPSystemClipPlayer
     }
     finally
     {
-      this.mPlayerState.changeState(8);
+      this.mPlayerState.changeState(9);
     }
   }
   

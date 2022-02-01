@@ -1,133 +1,107 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
-
 public class bcge
-  extends bcga
+  extends bcgb
 {
   public double a;
   public int a;
-  public CharSequence a;
-  public String a;
-  public List<bcft> a;
-  public double b;
-  public int b;
-  public CharSequence b;
-  public String b;
-  public boolean b;
-  public CharSequence c;
-  public List<String> c;
-  public boolean c;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  public String v = "";
+  public String w = "";
+  public String x = "";
   
-  public bcge(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public bcge()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+    this.d = "";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Double = 0.0D;
   }
   
-  public bcge(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public String a(int paramInt)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.b).append("|");
+    localStringBuilder.append(this.c).append("|");
+    localStringBuilder.append(this.e).append("|");
+    localStringBuilder.append(this.d).append("|");
+    localStringBuilder.append(this.f).append("|");
+    localStringBuilder.append(this.g).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
     }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool2 = true;
-    int n = 0;
     for (;;)
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.i = paramString.optString("leftImageURL");
-        this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-        this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_JavaLangCharSequence = bcni.a(paramString.optString("headText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
-        this.jdField_b_of_type_JavaLangCharSequence = bcni.a(paramString.optString("descLineText"));
-        this.jdField_c_of_type_JavaLangCharSequence = bcni.a(paramString.optString("firstLineText"));
-        JSONArray localJSONArray = paramString.optJSONArray("imageList");
-        int i;
-        Object localObject;
-        if (localJSONArray != null)
-        {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            localObject = localJSONArray.optJSONObject(i);
-            localObject = new bcft(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
-            i += 1;
-            continue;
-          }
-        }
-        this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
-        this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
-        this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
-        if (paramString.optInt("topNeedHigherMargin", 0) == 1)
-        {
-          bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
-          if (paramString.optInt("needCornerRadius", 0) != 1) {
-            break label394;
-          }
-          bool1 = bool2;
-          this.jdField_c_of_type_Boolean = bool1;
-          localJSONArray = paramString.optJSONArray("dynamicLineImageList");
-          if (localJSONArray != null)
-          {
-            this.jdField_c_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-            i = n;
-            if (i < localJSONArray.length())
-            {
-              localObject = localJSONArray.optJSONObject(i).optString("url");
-              this.jdField_c_of_type_JavaUtilList.add(localObject);
-              i += 1;
-              continue;
-            }
-          }
-          this.jdField_b_of_type_JavaLangString = paramString.optString("dynamicLineLeftText");
-          this.j = paramString.optString("dynamicLineZanIconUrl");
-          this.k = paramString.optString("dynamicLineZanText");
-          this.l = paramString.optString("dynamicLineCommentIconUrl");
-          this.m = paramString.optString("dynamicLineCommentText");
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      boolean bool1 = false;
-      continue;
-      label394:
-      bool1 = false;
+      localStringBuilder.append(this.jdField_a_of_type_Double).append("|");
+      localStringBuilder.append(this.h).append("|");
+      localStringBuilder.append(this.i).append("|");
+      localStringBuilder.append(this.j).append("|");
+      localStringBuilder.append(this.k).append("|");
+      localStringBuilder.append(this.l).append("|");
+      localStringBuilder.append(this.m).append("|");
+      localStringBuilder.append(this.n).append("|");
+      localStringBuilder.append(this.o).append("|");
+      localStringBuilder.append(this.p).append("|");
+      localStringBuilder.append(this.q).append("|");
+      localStringBuilder.append(this.r).append("|");
+      localStringBuilder.append(this.s).append("|");
+      localStringBuilder.append(this.t).append("|");
+      localStringBuilder.append(this.u).append("|");
+      localStringBuilder.append(this.v).append("|");
+      localStringBuilder.append(this.w).append("|");
+      localStringBuilder.append(this.x).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
     }
   }
   
-  public boolean b()
+  public String toString()
   {
-    return super.b();
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Double).append("|");
+    localStringBuffer.append(this.h).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.l).append("|");
+    localStringBuffer.append(this.m).append("|");
+    localStringBuffer.append(this.n).append("|");
+    localStringBuffer.append(this.o).append("|");
+    localStringBuffer.append(this.p).append("|");
+    localStringBuffer.append(this.q).append("|");
+    localStringBuffer.append(this.r).append("|");
+    localStringBuffer.append(this.s).append("|");
+    localStringBuffer.append(this.t).append("|");
+    localStringBuffer.append(this.u).append("|");
+    localStringBuffer.append(this.v).append("|");
+    localStringBuffer.append(this.w).append("|");
+    localStringBuffer.append(this.x).append("|");
+    return localStringBuffer.toString();
   }
 }
 

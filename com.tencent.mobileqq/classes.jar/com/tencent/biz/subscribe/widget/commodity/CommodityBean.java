@@ -1,7 +1,6 @@
 package com.tencent.biz.subscribe.widget.commodity;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
-import aapk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -13,7 +12,7 @@ import org.json.JSONObject;
 public class CommodityBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommodityBean> CREATOR = new aapk();
+  public static final Parcelable.Creator<CommodityBean> CREATOR = new CommodityBean.1();
   public String mAlias = "";
   public String mImg = "";
   public long mItemID;
@@ -23,7 +22,7 @@ public class CommodityBean
   
   public CommodityBean() {}
   
-  public CommodityBean(Parcel paramParcel)
+  protected CommodityBean(Parcel paramParcel)
   {
     this.mTitle = paramParcel.readString();
     this.mItemID = paramParcel.readLong();

@@ -1,13 +1,16 @@
 package cooperation.qzone;
 
 import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class QZoneVipInfoManager$2
+final class QZoneVipInfoManager$2
   implements Runnable
 {
+  QZoneVipInfoManager$2(QQAppInterface paramQQAppInterface) {}
+  
   public void run()
   {
-    QzoneTiantaiTranslucentBrowserActivity.a(this.a);
+    QzoneTiantaiTranslucentBrowserActivity.a(this.val$appInterface);
   }
 }
 

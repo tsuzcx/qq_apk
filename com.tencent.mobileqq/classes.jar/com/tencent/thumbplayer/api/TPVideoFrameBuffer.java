@@ -2,10 +2,6 @@ package com.tencent.thumbplayer.api;
 
 public class TPVideoFrameBuffer
 {
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_NONE = -1;
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_V_RGB565 = 37;
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_V_YUV420P = 0;
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_V_YUVJ420P = 12;
   public byte[][] data;
   public int dstHeight;
   public int dstWidth;

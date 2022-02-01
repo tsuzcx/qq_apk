@@ -1,34 +1,44 @@
-public class uld
+import UserGrowth.stSimpleGetFeedListRsp;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import java.util.ArrayList;
+
+class uld
+  implements uqy
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
+  uld(ulc paramulc, WSRedDotPushMsg paramWSRedDotPushMsg) {}
   
-  public int a()
+  public void a(urj paramurj)
   {
-    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
-      return 2;
+    ulc.a(this.jdField_a_of_type_Ulc, false);
+    if (paramurj == null) {
+      uya.d("WSRedDotPreloadManager", "WSRedDot preloadTask is null.");
     }
-    return 0;
-  }
-  
-  public int b()
-  {
-    if ((this.a > 0) && (this.b > 0)) {
-      return 0;
+    do
+    {
+      return;
+      uya.b("WSRedDotPreloadManager", "onTaskResponse-resultCode:" + paramurj.b + " | resultBean:" + paramurj.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
+      if (!paramurj.a())
+      {
+        uya.d("WSRedDotPreloadManager", "WSRedDot preload request error. resultCode=" + paramurj.b);
+        return;
+      }
+    } while (!(paramurj.jdField_a_of_type_Urg instanceof uwt));
+    Object localObject = (uwt)paramurj.jdField_a_of_type_Urg;
+    uya.b("WSRedDotPreloadManager", "WSRedDot recommendRequest.mRequestId=" + ((uwt)localObject).b + ", mCurrentUniSeq=" + ulc.a(this.jdField_a_of_type_Ulc));
+    if ((TextUtils.equals(((uwt)localObject).b, String.valueOf(ulc.a(this.jdField_a_of_type_Ulc)))) && ((paramurj.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp)) && (((stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject).feeds != null) && (((stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject).feeds.size() > 0))
+    {
+      localObject = (stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject;
+      ArrayList localArrayList = ((stSimpleGetFeedListRsp)localObject).feeds;
+      if (paramurj.jdField_a_of_type_Uqz != null) {
+        uvo.a().a(((stSimpleGetFeedListRsp)localObject).trace_id, paramurj.jdField_a_of_type_Uqz.a);
+      }
+      long l = ulc.a(this.jdField_a_of_type_Ulc, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);
+      ulf.a().a(localArrayList, l);
+      ulc.b(this.jdField_a_of_type_Ulc, false);
+      return;
     }
-    return 2;
+    uya.d("WSRedDotPreloadManager", "WSRedDot preloadList is empty. task.mResultBean=" + paramurj.jdField_a_of_type_JavaLangObject);
   }
 }
 

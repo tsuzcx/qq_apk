@@ -1,12 +1,31 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-public abstract interface yoo
+class yoo
+  extends JobSegment<Integer, xnm>
 {
-  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
+  private xnl a;
   
-  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
+  public yoo(@NonNull xnl paramxnl)
+  {
+    this.a = paramxnl;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((xnm)localObject).a.size() > 0) || (((xnm)localObject).b))
+    {
+      xvv.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
+    }
+    localObject = new wfc();
+    ((wfc)localObject).a = this.a.a();
+    vqn.a().a((vqr)localObject, new yop(this, paramJobContext, paramInteger));
+  }
 }
 
 

@@ -1,14 +1,18 @@
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class xbk
-  extends wip
+public class xbk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public int b;
-  public String b;
+  public xbk(QGSettingFragment paramQGSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    QGSettingFragment.c(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

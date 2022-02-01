@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.app;
 
 import android.view.ViewGroup;
 import android.view.Window;
-import bjjo;
+import bhpc;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -25,7 +25,7 @@ class AppUIProxy$4
     if (localMiniLoadingAdLayout != null)
     {
       ((ViewGroup)this.val$activity.getWindow().getDecorView()).addView(localMiniLoadingAdLayout);
-      MiniLoadingAdManager.getInstance().show(localMiniLoadingAdLayout, this.val$miniAppConfig.config.appId, String.valueOf(bjjo.a().a()), new AppUIProxy.4.1(this));
+      MiniLoadingAdManager.getInstance().show(localMiniLoadingAdLayout, this.val$miniAppConfig.config.appId, String.valueOf(bhpc.a().a()), new AppUIProxy.4.1(this));
       MiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "ad", "ad_loading", "expo_success", null);
     }
   }

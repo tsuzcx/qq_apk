@@ -3,25 +3,24 @@ package com.tencent.mobileqq.webview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import binc;
 
 public class WebViewTitleStyle
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebViewTitleStyle> CREATOR = new binc();
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public static final Parcelable.Creator<WebViewTitleStyle> CREATOR = new WebViewTitleStyle.1();
+  public int leftAndRightBtnColor;
+  public int statusBarColor;
+  public int titleBgColor;
+  public int titleColor;
   
   public WebViewTitleStyle() {}
   
   public WebViewTitleStyle(Parcel paramParcel)
   {
-    this.b = paramParcel.readInt();
-    this.c = paramParcel.readInt();
-    this.d = paramParcel.readInt();
-    this.e = paramParcel.readInt();
+    this.statusBarColor = paramParcel.readInt();
+    this.titleBgColor = paramParcel.readInt();
+    this.titleColor = paramParcel.readInt();
+    this.leftAndRightBtnColor = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -31,10 +30,10 @@ public class WebViewTitleStyle
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.b);
-    paramParcel.writeInt(this.c);
-    paramParcel.writeInt(this.d);
-    paramParcel.writeInt(this.e);
+    paramParcel.writeInt(this.statusBarColor);
+    paramParcel.writeInt(this.titleBgColor);
+    paramParcel.writeInt(this.titleColor);
+    paramParcel.writeInt(this.leftAndRightBtnColor);
   }
 }
 

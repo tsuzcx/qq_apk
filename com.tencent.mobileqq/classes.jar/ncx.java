@@ -1,22 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.avgame.gameroom.stage.CountDownClockView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ncx
-  implements ValueAnimator.AnimatorUpdateListener
+class ncx
+  implements View.OnTouchListener
 {
-  public ncx(CountDownClockView paramCountDownClockView) {}
+  ncx(ncu paramncu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    CountDownClockView.a(this.a, i);
-    this.a.invalidate();
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncx
  * JD-Core Version:    0.7.0.1
  */

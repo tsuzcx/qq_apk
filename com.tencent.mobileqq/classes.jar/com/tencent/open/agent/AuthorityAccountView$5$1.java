@@ -21,7 +21,7 @@ class AuthorityAccountView$5$1
     try
     {
       QLog.d("AuthorityAccountView", 1, "-->updateAccountFace use default uin");
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.this$0.getResources(), 2130840588));
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.this$0.getResources(), 2130840623));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

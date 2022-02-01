@@ -4,33 +4,33 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
-import aper;
-import apiy;
-import apiz;
-import apja;
-import apjb;
-import apjc;
-import apjd;
-import apje;
-import apjf;
-import apjg;
-import apjk;
-import apjm;
-import apjt;
-import apjx;
-import apkh;
-import aplo;
-import aplq;
-import aplw;
-import aplz;
-import apmc;
-import apmm;
-import apmo;
-import appt;
-import apqv;
-import asde;
-import asdh;
-import asdk;
+import anyd;
+import aocl;
+import aocm;
+import aocn;
+import aoco;
+import aocp;
+import aocq;
+import aocr;
+import aocs;
+import aoct;
+import aocx;
+import aocz;
+import aodg;
+import aodk;
+import aodu;
+import aofb;
+import aofd;
+import aofj;
+import aofm;
+import aofp;
+import aofz;
+import aogb;
+import aojg;
+import aoki;
+import aqxc;
+import aqxf;
+import aqxi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
@@ -46,27 +46,27 @@ public class ArConfigService
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private RemoteCallbackList<aplz> jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  public aper a;
-  public apjt a;
-  private apkh jdField_a_of_type_Apkh = new apiy(this);
-  private final aplo jdField_a_of_type_Aplo = new apjg(this);
-  private appt jdField_a_of_type_Appt = new apjc(this);
-  private asdh jdField_a_of_type_Asdh = new apjb(this);
+  private RemoteCallbackList<aofm> jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  public anyd a;
+  public aodg a;
+  private aodu jdField_a_of_type_Aodu = new aocl(this);
+  private final aofb jdField_a_of_type_Aofb = new aoct(this);
+  private aojg jdField_a_of_type_Aojg = new aocp(this);
+  private aqxf jdField_a_of_type_Aqxf = new aoco(this);
   public Object a;
   public WeakReference<QQAppInterface> a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private RemoteCallbackList<aplq> jdField_b_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  private appt jdField_b_of_type_Appt = new apjd(this);
+  private RemoteCallbackList<aofd> jdField_b_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private aojg jdField_b_of_type_Aojg = new aocq(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private RemoteCallbackList<aplw> jdField_c_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  private appt jdField_c_of_type_Appt = new apje(this);
+  private RemoteCallbackList<aofj> jdField_c_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private aojg jdField_c_of_type_Aojg = new aocr(this);
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
-  private RemoteCallbackList<apmc> jdField_d_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  private appt jdField_d_of_type_Appt = new apjf(this);
+  private RemoteCallbackList<aofp> jdField_d_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private aojg jdField_d_of_type_Aojg = new aocs(this);
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int;
   private boolean jdField_e_of_type_Boolean;
@@ -74,8 +74,8 @@ public class ArConfigService
   
   public ArConfigService()
   {
-    this.jdField_a_of_type_Apjt = null;
-    this.jdField_a_of_type_Aper = null;
+    this.jdField_a_of_type_Aodg = null;
+    this.jdField_a_of_type_Anyd = null;
     this.jdField_a_of_type_JavaLangObject = new Object();
     QLog.w("ArConfig_ArConfigService", 1, "ArConfig_ArConfigService, init");
   }
@@ -86,28 +86,28 @@ public class ArConfigService
       QLog.d("ArConfig_ArConfigService", 2, "downloadArSoInternal");
     }
     if (c()) {}
-    asdk localasdk;
+    aqxi localaqxi;
     for (boolean bool = true;; bool = b())
     {
       this.jdField_b_of_type_Boolean = bool;
       if (this.jdField_b_of_type_Boolean) {
         break label118;
       }
-      localasdk = (asdk)((asde)this.app.getManager(77)).a("qq.android.ar.native.so_v8.3.6");
-      if (localasdk != null)
+      localaqxi = (aqxi)((aqxc)this.app.getManager(77)).a("qq.android.ar.native.so_v8.3.6");
+      if (localaqxi != null)
       {
-        localasdk.a(this.jdField_a_of_type_Asdh);
+        localaqxi.a(this.jdField_a_of_type_Aqxf);
         this.jdField_a_of_type_Int = 0;
-        XmlData localXmlData = localasdk.a();
+        XmlData localXmlData = localaqxi.a();
         if ((localXmlData == null) || (localXmlData.loadState != 2)) {
           break;
         }
         QLog.d("ArConfig_ArConfigService", 1, "downloadArSoInternal in download queue? force download!!!");
-        localasdk.a(true, true);
+        localaqxi.a(true, true);
       }
       return;
     }
-    localasdk.a(true);
+    localaqxi.a(true);
     return;
     label118:
     this.jdField_a_of_type_Int = 100;
@@ -125,7 +125,7 @@ public class ArConfigService
         if (i < j) {
           try
           {
-            ((apmc)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramInt);
+            ((aofp)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramInt);
             i += 1;
           }
           catch (Exception localException1) {}
@@ -144,7 +144,7 @@ public class ArConfigService
   public static boolean a(AppRuntime paramAppRuntime)
   {
     boolean bool2 = false;
-    paramAppRuntime = (asdk)((asde)paramAppRuntime.getManager(77)).a("qq.android.ar.native.so_v8.3.6");
+    paramAppRuntime = (aqxi)((aqxc)paramAppRuntime.getManager(77)).a("qq.android.ar.native.so_v8.3.6");
     boolean bool3;
     int i;
     if (paramAppRuntime != null)
@@ -158,7 +158,7 @@ public class ArConfigService
     label138:
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool4 = apjk.b("ArMapEngine836");
+      boolean bool4 = aocx.b("ArMapEngine836");
       bool2 = bool1 & bool4;
       if (QLog.isColorLevel()) {
         QLog.d("ArConfig_ArConfigService", 2, String.format("isArSoDownload isSuccess=%s version=%s fileExist = %s result=%s ", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(i), Boolean.valueOf(bool4), Boolean.valueOf(bool2) }));
@@ -176,7 +176,7 @@ public class ArConfigService
     }
     do
     {
-      apmo localapmo;
+      aogb localaogb;
       Object localObject;
       do
       {
@@ -184,8 +184,8 @@ public class ArConfigService
         if (QLog.isColorLevel()) {
           QLog.d("ArConfig_ArConfigService", 2, "downArCoreSoInternal");
         }
-        localapmo = apmm.a();
-        if (localapmo == null)
+        localaogb = aofz.a();
+        if (localaogb == null)
         {
           this.jdField_e_of_type_Boolean = true;
           this.jdField_d_of_type_Int = 100;
@@ -195,13 +195,13 @@ public class ArConfigService
         if (this.jdField_e_of_type_Boolean) {
           break;
         }
-        localObject = (aper)this.app.getManager(220);
+        localObject = (anyd)this.app.getManager(220);
       } while (localObject == null);
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new apjm(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, localapmo.a(), this.jdField_c_of_type_Appt);
+          new aocz(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, localaogb.a(), this.jdField_c_of_type_Aojg);
         }
         this.jdField_d_of_type_Int = 0;
         return;
@@ -224,20 +224,20 @@ public class ArConfigService
   
   public static boolean b(AppRuntime paramAppRuntime)
   {
-    apmo localapmo = apmm.a();
-    if (localapmo == null) {
+    aogb localaogb = aofz.a();
+    if (localaogb == null) {
       return true;
     }
-    Object localObject = (aper)paramAppRuntime.getManager(220);
+    Object localObject = (anyd)paramAppRuntime.getManager(220);
     if (localObject != null)
     {
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject == null) || (((ARCommonConfigInfo)localObject).nativeSoResList == null) || (((ARCommonConfigInfo)localObject).nativeSoResList.size() <= 0)) {
           break label118;
         }
-        bool = new apjm((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, localapmo.a());
+        bool = new aocz((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, localaogb.a());
       }
       catch (Exception paramAppRuntime)
       {
@@ -275,13 +275,13 @@ public class ArConfigService
         if (this.f) {
           break;
         }
-        localObject = (aper)this.app.getManager(220);
+        localObject = (anyd)this.app.getManager(220);
       } while (localObject == null);
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new apjm(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arfeature", this.jdField_d_of_type_Appt);
+          new aocz(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arfeature", this.jdField_d_of_type_Aojg);
         }
         this.jdField_e_of_type_Int = 0;
         return;
@@ -299,7 +299,7 @@ public class ArConfigService
   
   private static boolean c()
   {
-    return apjk.a("ArMapEngine836");
+    return aocx.a("ArMapEngine836");
   }
   
   public static boolean c(AppRuntime paramAppRuntime)
@@ -326,13 +326,13 @@ public class ArConfigService
         if (this.jdField_c_of_type_Boolean) {
           break;
         }
-        localObject = (aper)this.app.getManager(220);
+        localObject = (anyd)this.app.getManager(220);
       } while (localObject == null);
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new apjm(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud", this.jdField_b_of_type_Appt);
+          new aocz(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud", this.jdField_b_of_type_Aojg);
         }
         this.jdField_b_of_type_Int = 0;
         return;
@@ -355,16 +355,16 @@ public class ArConfigService
   
   public static boolean d(AppRuntime paramAppRuntime)
   {
-    Object localObject = (aper)paramAppRuntime.getManager(220);
+    Object localObject = (anyd)paramAppRuntime.getManager(220);
     if (localObject != null)
     {
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject == null) || (((ARCommonConfigInfo)localObject).nativeSoResList == null) || (((ARCommonConfigInfo)localObject).nativeSoResList.size() <= 0)) {
           break label105;
         }
-        bool = new apjm((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud");
+        bool = new aocz((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud");
       }
       catch (Exception paramAppRuntime)
       {
@@ -402,13 +402,13 @@ public class ArConfigService
         if (this.jdField_d_of_type_Boolean) {
           break;
         }
-        localObject = (aper)this.app.getManager(220);
+        localObject = (anyd)this.app.getManager(220);
       } while (localObject == null);
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new apjm(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2", this.jdField_a_of_type_Appt);
+          new aocz(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2", this.jdField_a_of_type_Aojg);
         }
         this.jdField_c_of_type_Int = 0;
         return;
@@ -447,7 +447,7 @@ public class ArConfigService
       while (i < j) {
         try
         {
-          ((apmc)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a();
+          ((aofp)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a();
           i += 1;
         }
         catch (Exception localException1) {}
@@ -469,16 +469,16 @@ public class ArConfigService
   
   public static boolean f(AppRuntime paramAppRuntime)
   {
-    Object localObject = (aper)paramAppRuntime.getManager(220);
+    Object localObject = (anyd)paramAppRuntime.getManager(220);
     if (localObject != null)
     {
       try
       {
-        localObject = ((aper)localObject).a(true);
+        localObject = ((anyd)localObject).a(true);
         if ((localObject == null) || (((ARCommonConfigInfo)localObject).nativeSoResList == null) || (((ARCommonConfigInfo)localObject).nativeSoResList.size() <= 0)) {
           break label105;
         }
-        bool = new apjm((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2");
+        bool = new aocz((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2");
       }
       catch (Exception paramAppRuntime)
       {
@@ -507,7 +507,7 @@ public class ArConfigService
       while (i < j) {
         try
         {
-          ((apmc)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).b();
+          ((aofp)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).b();
           i += 1;
         }
         catch (Exception localException1) {}
@@ -532,7 +532,7 @@ public class ArConfigService
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArConfigService", 2, "onBind");
     }
-    return this.jdField_a_of_type_Aplo;
+    return this.jdField_a_of_type_Aofb;
   }
   
   public void onCreate()
@@ -554,16 +554,16 @@ public class ArConfigService
     {
       return;
     }
-    this.jdField_a_of_type_Apjt = ((apjt)localQQAppInterface.getManager(168));
-    if (this.jdField_a_of_type_Apjt != null) {
-      this.jdField_a_of_type_Apjt.a(this.jdField_a_of_type_Apkh);
+    this.jdField_a_of_type_Aodg = ((aodg)localQQAppInterface.getManager(168));
+    if (this.jdField_a_of_type_Aodg != null) {
+      this.jdField_a_of_type_Aodg.a(this.jdField_a_of_type_Aodu);
     }
-    this.jdField_a_of_type_Aper = ((aper)localQQAppInterface.getManager(220));
-    if (this.jdField_a_of_type_Aper != null) {
-      this.jdField_a_of_type_Aper.a(this.jdField_a_of_type_Apkh);
+    this.jdField_a_of_type_Anyd = ((anyd)localQQAppInterface.getManager(220));
+    if (this.jdField_a_of_type_Anyd != null) {
+      this.jdField_a_of_type_Anyd.a(this.jdField_a_of_type_Aodu);
     }
-    apjx.a(new apiz(this));
-    apqv.a(new apja(this));
+    aodk.a(new aocm(this));
+    aoki.a(new aocn(this));
   }
   
   public void onDestroy()
@@ -579,8 +579,9 @@ public class ArConfigService
     this.jdField_c_of_type_AndroidOsRemoteCallbackList.kill();
     this.jdField_c_of_type_AndroidOsRemoteCallbackList = null;
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    apjx.a();
-    apqv.a();
+    this.jdField_a_of_type_Anyd = null;
+    aodk.a();
+    aoki.a();
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason)
@@ -590,8 +591,8 @@ public class ArConfigService
   
   public boolean onUnbind(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Apjt != null) {
-      this.jdField_a_of_type_Apjt.b(this.jdField_a_of_type_Apkh);
+    if (this.jdField_a_of_type_Aodg != null) {
+      this.jdField_a_of_type_Aodg.b(this.jdField_a_of_type_Aodu);
     }
     return super.onUnbind(paramIntent);
   }

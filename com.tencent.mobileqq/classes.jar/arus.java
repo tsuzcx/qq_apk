@@ -1,6 +1,17 @@
-public abstract interface arus
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+
+public class arus
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(arvt paramarvt, arur paramarur);
+  public arus(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
+  }
 }
 
 

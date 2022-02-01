@@ -1,19 +1,78 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
-class pyk
-  implements View.OnClickListener
+public class pyk
 {
-  pyk(pyi parampyi, Context paramContext, ArticleInfo paramArticleInfo) {}
+  public int a;
+  public ToServiceMsg a;
+  public String a;
+  public List<ArticleInfo> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public List<ArticleInfo> b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public pyk a()
   {
-    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
-    sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-    EventCollector.getInstance().onViewClicked(paramView);
+    pyk localpyk = new pyk();
+    localpyk.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg).a(this.jdField_a_of_type_Int).b(this.jdField_b_of_type_Int).a(this.jdField_a_of_type_JavaUtilList).b(this.jdField_b_of_type_JavaUtilList).a(this.jdField_a_of_type_Boolean).b(this.jdField_b_of_type_Boolean).a(this.jdField_a_of_type_ArrayOfByte).a(this.jdField_a_of_type_JavaLangString);
+    return localpyk;
+  }
+  
+  public pyk a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public pyk a(ToServiceMsg paramToServiceMsg)
+  {
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    return this;
+  }
+  
+  public pyk a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public pyk a(List<ArticleInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public pyk a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public pyk a(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
+  }
+  
+  public pyk b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public pyk b(List<ArticleInfo> paramList)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public pyk b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

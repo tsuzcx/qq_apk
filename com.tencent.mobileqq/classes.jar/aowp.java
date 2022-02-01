@@ -1,33 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.widget.TipsBar;
+import java.lang.ref.WeakReference;
 
 public class aowp
-  extends aoxh
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public int a;
+  public long a;
+  public afvh a;
+  public MessageForArkApp a;
+  public String a;
+  public WeakReference<TipsBar> a;
+  public long b;
+  public String b;
+  public WeakReference<ahpb> b;
+  public String c;
+  public String d;
+  
+  aowp(afvh paramafvh, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
   {
-    paramQQAppInterface = new aowo(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "ftssearch";
-    paramQQAppInterface.c = "tab";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
-    }
-    return paramQQAppInterface;
+    a(paramafvh, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+  }
+  
+  void a(afvh paramafvh, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  {
+    this.jdField_a_of_type_Afvh = paramafvh;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.d = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
   }
 }
 

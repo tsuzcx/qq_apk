@@ -1,11 +1,18 @@
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.TimeFormatterUtils.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public final class bdim
-  implements RecentRoute.TimeFormatterUtils.Proxy
+class bdim
+  extends bdis
 {
-  public String getRecentMessageDateTime(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
+  bdim(bdid parambdid, EditorState paramEditorState, List paramList)
   {
-    return bhsw.a(paramStringBuffer, paramLong, paramBoolean, paramString);
+    super(parambdid, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    bdid.a(this.a).a(false, false);
   }
 }
 

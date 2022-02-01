@@ -1,18 +1,76 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vqr
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class vqr<Respond extends vqm>
 {
-  vqr(vqo paramvqo, View paramView) {}
+  public int a;
+  public long a;
+  public vqs<Respond> a;
+  public int b;
+  private int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vqr()
   {
-    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewView.setX(paramValueAnimator.x);
-    this.jdField_a_of_type_AndroidViewView.setY(paramValueAnimator.y);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  @NonNull
+  public static List<ByteStringMicro> a(List<String> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(ByteStringMicro.copyFromUtf8((String)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public abstract String a();
+  
+  public String a(String paramString)
+  {
+    return paramString;
+  }
+  
+  public abstract vqm a(byte[] paramArrayOfByte);
+  
+  public vqs<Respond> a()
+  {
+    return this.jdField_a_of_type_Vqs;
+  }
+  
+  public void a(vqs<Respond> paramvqs)
+  {
+    this.jdField_a_of_type_Vqs = paramvqs;
+  }
+  
+  protected abstract byte[] a();
+  
+  public int b()
+  {
+    int i = this.c;
+    String str = a();
+    int j = i;
+    if (i == 0)
+    {
+      j = i;
+      if (str.length() > 0)
+      {
+        j = 0;
+        while (j < str.length())
+        {
+          i = i * 31 + str.charAt(j);
+          j += 1;
+        }
+        this.c = i;
+        j = i;
+      }
+    }
+    return j;
   }
 }
 

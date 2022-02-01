@@ -1,72 +1,248 @@
-import android.support.annotation.NonNull;
-import com.tencent.commonsdk.util.HexUtil;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aucf
-  extends aucd
 {
-  final long jdField_a_of_type_Long;
-  final byte[] jdField_a_of_type_ArrayOfByte;
-  final byte[] b;
+  public static final int[] a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<MessageForGrayTips.HighlightItem> a;
+  protected boolean a;
+  public int b;
+  public String b;
+  protected boolean b;
+  public int[] b;
+  public int c;
+  public String c;
+  protected boolean c;
+  public int d;
+  public String d;
+  public boolean d = true;
+  public boolean e;
+  public boolean f = true;
   
-  public aucf(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, long paramLong, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
+  static
   {
-    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    jdField_a_of_type_ArrayOfInt = new int[] { 1, 131073, 131078, 135176, 1376257, 2097153, 2097154, 2097155, 2097156, 1245186, 1245187, 65560, 2359297, 65560, 655362, 2424833, 2490369, 2555907, 1179651, 2686977, 2621441, 2359298, 3145729, 2555906, 3145729, 3211265, 135178, 135179, 655378, 655379, 655369, 655376, 3276801, 3276802, 655377, 1179653, 3342339, 3342337, 3342338, 135180, 135181, 655381, 131080, 131081, 655383, 655392, 131082, 655384, 655385, 2359299, 3276804, 131090, 131091, 655393, 131083, 655397, 131084, 131085, 131092, 131087, 131086, 131088, 2, 656395, 459802, 459803, 3, 459817, 656396 };
+  }
+  
+  public aucf(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
-    this.b = paramArrayOfByte6;
+    a();
+  }
+  
+  private void a()
+  {
+    if (this.jdField_c_of_type_Int == -5020)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    if (this.jdField_c_of_type_Int == -5021)
+    {
+      this.jdField_c_of_type_Boolean = false;
+      return;
+    }
+    if (this.jdField_c_of_type_Int == -5022)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      return;
+    }
+    if (this.jdField_c_of_type_Int == -5023)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_c_of_type_Int = -5040;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (paramInt1 >= paramInt2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(aucg.jdField_a_of_type_JavaLangString, 2, new Object[] { "revoke msg UniteGrayTipParam addHightlightItem start >= end error,start=", Integer.valueOf(paramInt1), ",end=", Integer.valueOf(paramInt2) });
+      }
+      return;
+    }
+    Object localObject7 = null;
+    Object localObject5 = null;
+    Object localObject6 = null;
+    Object localObject3 = null;
+    int k = 0;
+    String str1 = null;
+    String str2 = null;
+    String str4 = "";
+    int j;
+    label79:
+    Object localObject2;
+    int i;
+    Object localObject1;
+    Object localObject4;
+    String str3;
+    label388:
+    long l;
+    if (paramBundle == null)
+    {
+      j = -1;
+      localObject2 = localObject6;
+      i = k;
+      localObject1 = localObject7;
+      localObject4 = localObject5;
+      str3 = str4;
+      switch (j)
+      {
+      default: 
+        str3 = str4;
+        localObject4 = localObject5;
+        localObject1 = localObject7;
+        i = k;
+        localObject2 = localObject6;
+      case 4: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+      case 10: 
+      case 12: 
+      case 17: 
+      case 18: 
+      case 22: 
+      case 25: 
+      case 26: 
+      case 31: 
+      case 34: 
+      case 35: 
+      case 37: 
+      case 41: 
+      case 46: 
+      case 47: 
+      case 48: 
+      case 49: 
+      case 50: 
+      case 51: 
+      case 55: 
+      case 56: 
+      case 57: 
+      case 59: 
+      case 60: 
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        }
+        l = 0L;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break;
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        l = Long.parseLong((String)localObject2);
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label745;
+        }
+        paramBundle = "#FF4D94FF";
+        k = Color.parseColor(paramBundle);
+        this.jdField_a_of_type_JavaUtilArrayList.add(new MessageForGrayTips.HighlightItem(paramInt1, paramInt2, l, i, j, (String)localObject1, (String)localObject4, str1, str2, k, str3, 0));
+        return;
+      }
+      catch (NumberFormatException paramBundle) {}
+      j = paramBundle.getInt("key_action");
+      localObject3 = paramBundle.getString("textColor");
+      str1 = paramBundle.getString("image_resource");
+      str2 = paramBundle.getString("image_alt");
+      break label79;
+      localObject2 = paramBundle.getString("troop_mem_uin");
+      if (paramBundle.getBoolean("need_update_nick"))
+      {
+        i = 1;
+        localObject1 = localObject7;
+        localObject4 = localObject5;
+        str3 = str4;
+        break label388;
+      }
+      i = 0;
+      continue;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject4 = paramBundle.getString("key_a_action_DATA");
+      localObject2 = localObject6;
+      i = k;
+      str3 = str4;
+      break label388;
+      localObject2 = paramBundle.getString("troop_mem_uin");
+      i = k;
+      localObject1 = localObject7;
+      localObject4 = localObject5;
+      str3 = str4;
+      break label388;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject2 = localObject6;
+      i = k;
+      localObject4 = localObject5;
+      str3 = str4;
+      break label388;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject4 = paramBundle.getString("key_a_action_DATA");
+      localObject2 = paramBundle.getString("troop_mem_uin");
+      i = k;
+      str3 = str4;
+      break label388;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject2 = localObject6;
+      i = k;
+      localObject4 = localObject5;
+      str3 = str4;
+      break label388;
+      str3 = paramBundle.getString("remark");
+      localObject2 = localObject6;
+      i = k;
+      localObject1 = localObject7;
+      localObject4 = localObject5;
+      break label388;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e(aucg.jdField_a_of_type_JavaLangString, 2, "getHightlightMsgText ==>NumberFormatException");
+      return;
+      label745:
+      paramBundle = (Bundle)localObject3;
+    }
   }
   
   public boolean a()
   {
-    if (!super.a()) {}
-    do
+    boolean bool = abwz.j(this.jdField_c_of_type_Int);
+    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int k = arrayOfInt.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
     {
-      do
-      {
-        do
-        {
-          return false;
-          if (this.jdField_a_of_type_Long != 0L) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mGroupCode is err");
-        return false;
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
-      return false;
-      if ((this.b != null) && (this.b.length != 0)) {
-        break;
+      if (arrayOfInt[i] == this.jdField_b_of_type_Int) {
+        j = 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
-    return false;
-    return true;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" mGroupCode:").append(this.jdField_a_of_type_Long).append(" uuid:");
-    if (this.jdField_a_of_type_ArrayOfByte != null)
-    {
-      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
-      if (this.b == null) {
-        break label88;
-      }
+      i += 1;
     }
-    label88:
-    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
-    {
-      return str;
-      str = "";
-      break;
-    }
+    return (bool) && (j != 0);
   }
 }
 

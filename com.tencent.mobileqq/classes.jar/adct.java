@@ -1,54 +1,87 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import android.content.Intent;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import mqq.app.Constants.LogoutReason;
 
 public class adct
-  implements adci
 {
-  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  private amua jdField_a_of_type_Amua;
+  public bhht a;
+  private Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
+  public QQCustomDialog a;
+  
+  public adct(Conversation paramConversation)
   {
-    Object localObject = new submsgtype0x116.MsgBody();
-    try
+    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      ((submsgtype0x116.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-      long l1 = lcy.a(((submsgtype0x116.MsgBody)localObject).uint32_group_id.get());
-      long l2 = lcy.a(((submsgtype0x116.MsgBody)localObject).uint32_room_id.get());
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x116 qqMainThread;roomId=" + l2 + ";groupId=" + l1);
-      }
-      if (paramQQAppInterface != null)
-      {
-        localObject = new Intent("tencent.video.q2v.GvideoMemInviteUpdate");
-        ((Intent)localObject).putExtra("uin", paramQQAppInterface.c());
-        ((Intent)localObject).putExtra("groupId", l1);
-        ((Intent)localObject).putExtra("roomId", l2);
-        ((Intent)localObject).putExtra("pushData", paramArrayOfByte);
-        ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-        paramQQAppInterface.getApp().sendBroadcast((Intent)localObject);
-      }
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    if (this.jdField_a_of_type_Bhht != null)
     {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
+      this.jdField_a_of_type_Bhht.dismiss();
+      this.jdField_a_of_type_Bhht = null;
+    }
+    if (this.jdField_a_of_type_Amua != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.removeObserver(this.jdField_a_of_type_Amua);
     }
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(RecentUser paramRecentUser)
   {
-    a(paramadan.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a;
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
+    HotChatManager localHotChatManager = localQQAppInterface.getHotChatMng(false);
+    HotChatInfo localHotChatInfo;
+    if ((localHotChatManager != null) && (localHotChatManager.b(paramRecentUser.uin)))
+    {
+      localHotChatManager.a(paramRecentUser.uin);
+      localHotChatInfo = localHotChatManager.a(paramRecentUser.uin);
+      if (localHotChatInfo != null)
+      {
+        if (localHotChatInfo.state == 0) {
+          break label114;
+        }
+        if (!localHotChatInfo.isWifiHotChat) {
+          break label109;
+        }
+        i = 1;
+        bcef.b(localQQAppInterface, "CliOper", "", "", "0X8004D2A", "0X8004D2A", i, 0, "", "", "", "");
+      }
+    }
+    label109:
+    label114:
+    while ((localHotChatInfo.adminLevel != 0) || ((localHotChatInfo.ownerUin != null) && (localHotChatInfo.ownerUin.equals(localQQAppInterface.getCurrentAccountUin())))) {
+      for (;;)
+      {
+        return;
+        i = 2;
+      }
+    }
+    if (localHotChatInfo.isWifiHotChat) {}
+    for (int i = 1;; i = 2)
+    {
+      bcef.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
+      if (this.jdField_a_of_type_Amua == null) {
+        this.jdField_a_of_type_Amua = new adcu(this, localBaseActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = amtr.a(localHotChatManager.a(paramRecentUser.uin), new adcv(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
+      return;
+    }
+  }
+  
+  public void a(Constants.LogoutReason paramLogoutReason)
+  {
+    a();
   }
 }
 

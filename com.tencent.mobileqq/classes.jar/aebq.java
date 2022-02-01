@@ -1,12 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
-public final class aebq
-  implements DialogInterface.OnClickListener
+public class aebq
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aebq(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

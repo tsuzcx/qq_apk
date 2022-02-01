@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import agrm;
-import agro;
-import agrp;
+import afng;
+import afni;
+import afnj;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -22,7 +22,7 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int = -1;
-  private RDBaseListLayout<TItemData, TItemViewHolder>.agro jdField_a_of_type_Agro;
+  private RDBaseListLayout<TItemData, TItemViewHolder>.afni jdField_a_of_type_Afni;
   private View jdField_a_of_type_AndroidViewView;
   private ArrayList<TItemData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int b = 0;
@@ -42,7 +42,7 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private RDBaseListLayout<TItemData, TItemViewHolder>.agrp a(View paramView)
+  private RDBaseListLayout<TItemData, TItemViewHolder>.afnj a(View paramView)
   {
     if (paramView == null) {
       return null;
@@ -50,8 +50,8 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
     for (Object localObject = paramView;; localObject = (View)localObject)
     {
       localObject = ((View)localObject).getTag();
-      if ((localObject != null) && ((localObject instanceof agrp))) {
-        return (agrp)localObject;
+      if ((localObject != null) && ((localObject instanceof afnj))) {
+        return (afnj)localObject;
       }
       localObject = paramView.getParent();
       if (!(localObject instanceof View)) {
@@ -68,7 +68,7 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
       this.jdField_a_of_type_AndroidViewView = new HorizontalListView(getContext());
       ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setOverScrollMode(2);
       this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Agro);
+      ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Afni);
       addView(this.jdField_a_of_type_AndroidViewView);
       return;
     }
@@ -81,7 +81,7 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
     localLinearLayout.setOrientation(1);
     this.jdField_a_of_type_AndroidViewView = new ListView(getContext());
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    ((ListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Agro);
+    ((ListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Afni);
     localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -122,12 +122,12 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
     }
     if ((!paramBoolean) && (this.jdField_a_of_type_Int >= 0))
     {
-      ((agrm)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
+      ((afng)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
       this.jdField_a_of_type_Int = -1;
     }
     Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((agrm)localObject).a(true);
-    ((agrm)localObject).a(true);
+    ((afng)localObject).a(true);
+    ((afng)localObject).a(true);
     if ((this.jdField_a_of_type_AndroidViewView instanceof ListView)) {
       ((ListView)this.jdField_a_of_type_AndroidViewView).setSelection(paramInt);
     }
@@ -176,12 +176,12 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   public boolean a(int paramInt)
   {
     this.b = paramInt;
-    this.jdField_a_of_type_Agro = new agro(this, null);
-    this.jdField_a_of_type_Agro.a();
+    this.jdField_a_of_type_Afni = new afni(this, null);
+    this.jdField_a_of_type_Afni.a();
     a(this.b);
     boolean bool = a();
     if (bool) {
-      this.jdField_a_of_type_Agro.notifyDataSetChanged();
+      this.jdField_a_of_type_Afni.notifyDataSetChanged();
     }
     return bool;
   }
@@ -194,8 +194,8 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   public void b()
   {
     a();
-    if (this.jdField_a_of_type_Agro != null) {
-      this.jdField_a_of_type_Agro.b();
+    if (this.jdField_a_of_type_Afni != null) {
+      this.jdField_a_of_type_Afni.b();
     }
   }
   
@@ -213,10 +213,10 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
         }
         if ((!paramBoolean) && (this.jdField_a_of_type_Int >= 0))
         {
-          ((agrm)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
+          ((afng)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
           this.jdField_a_of_type_Int = -1;
         }
-        ((agrm)localObject).a(true);
+        ((afng)localObject).a(true);
         if (!(this.jdField_a_of_type_AndroidViewView instanceof ListView)) {
           break label113;
         }
@@ -242,8 +242,8 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   
   public void c()
   {
-    if (this.jdField_a_of_type_Agro != null) {
-      this.jdField_a_of_type_Agro.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Afni != null) {
+      this.jdField_a_of_type_Afni.notifyDataSetChanged();
     }
   }
   

@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
-public abstract interface awod
+public class awod
+  implements bhfh
 {
-  public abstract void a(ISong paramISong);
+  public awod(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
+  }
 }
 
 

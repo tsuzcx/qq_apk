@@ -18,8 +18,8 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
   public MiniAppDesktopAdapter$ModuleGuideViewHolder(View paramView)
   {
     super(paramView);
-    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131371032));
-    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131371033));
+    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131371000));
+    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131371001));
   }
   
   public void update()
@@ -27,10 +27,10 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
     if (MiniAppUtils.getAppInterface() != null)
     {
       if (this.emptyGuideLayout != null) {
-        this.emptyGuideLayout.setBackgroundResource(2130840942);
+        this.emptyGuideLayout.setBackgroundResource(2130840978);
       }
       if (this.emptyGuideTextView != null) {
-        this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167074));
+        this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167096));
       }
     }
   }

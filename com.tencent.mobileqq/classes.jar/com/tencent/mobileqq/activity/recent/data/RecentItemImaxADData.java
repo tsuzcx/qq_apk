@@ -28,10 +28,10 @@ public class RecentItemImaxADData
     {
       return;
       super.a(paramQQAppInterface, paramContext);
-      paramQQAppInterface = paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade();
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.a(this.mUser.uin, this.mUser.getType());
+        paramQQAppInterface = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
         if (paramQQAppInterface != null)
         {
           paramContext = paramQQAppInterface.getExtInfoFromExtStr("recent_list_advertisement_message_name");

@@ -1,20 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import java.util.ArrayList;
 
 public class alsh
-  implements DialogInterface.OnClickListener
+  implements Cloneable
 {
-  public alsh(LoginView paramLoginView) {}
+  public int a;
+  public long a;
+  public ArrayList<String> a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Object clone()
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
+    Object localObject = null;
+    try
+    {
+      alsh localalsh = (alsh)super.clone();
+      localObject = localalsh;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.a != null) {
+      localObject.a = ((ArrayList)this.a.clone());
+    }
+    return localObject;
   }
 }
 

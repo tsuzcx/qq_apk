@@ -23,12 +23,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.AnimationUtils;
-import bpam;
-import bpbz;
-import bpcb;
-import bpcc;
-import bpck;
-import bpcl;
+import bmbx;
+import bmdj;
+import bmdl;
+import bmdm;
+import bmdu;
+import bmdv;
 import com.tencent.mobileqq.R.styleable;
 import java.util.Iterator;
 import java.util.List;
@@ -46,9 +46,9 @@ public class AESlidingUpPanelLayout
   private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private View jdField_a_of_type_AndroidViewView;
-  private bpck jdField_a_of_type_Bpck = new bpck();
-  private final bpcl jdField_a_of_type_Bpcl;
-  private final List<bpcc> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private bmdu jdField_a_of_type_Bmdu = new bmdu();
+  private final bmdv jdField_a_of_type_Bmdv;
+  private final List<bmdm> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int = 0;
@@ -90,7 +90,7 @@ public class AESlidingUpPanelLayout
     if (isInEditMode())
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      this.jdField_a_of_type_Bpcl = null;
+      this.jdField_a_of_type_Bmdv = null;
       return;
     }
     TypedArray localTypedArray;
@@ -129,7 +129,7 @@ public class AESlidingUpPanelLayout
       catch (Throwable paramAttributeSet)
       {
         float f1;
-        bpam.a("SlidingUpPanelLayout", paramAttributeSet);
+        bmbx.a("SlidingUpPanelLayout", paramAttributeSet);
         localTypedArray.recycle();
         paramAttributeSet = null;
         continue;
@@ -152,14 +152,14 @@ public class AESlidingUpPanelLayout
       {
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837742);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837755);
           setWillNotDraw(false);
-          this.jdField_a_of_type_Bpcl = bpcl.a(this, 0.5F, paramAttributeSet, new bpcb(this, null));
-          this.jdField_a_of_type_Bpcl.a(this.jdField_a_of_type_Int * f1);
+          this.jdField_a_of_type_Bmdv = bmdv.a(this, 0.5F, paramAttributeSet, new bmdl(this, null));
+          this.jdField_a_of_type_Bmdv.a(this.jdField_a_of_type_Int * f1);
           this.jdField_e_of_type_Boolean = true;
           return;
         }
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837743);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837756);
         continue;
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
@@ -303,7 +303,7 @@ public class AESlidingUpPanelLayout
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bpcc)localIterator.next()).a(paramView, this.jdField_a_of_type_Float);
+      ((bmdm)localIterator.next()).a(paramView, this.jdField_a_of_type_Float);
     }
   }
   
@@ -311,15 +311,15 @@ public class AESlidingUpPanelLayout
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bpcc)localIterator.next()).a(paramView, paramPanelState1, paramPanelState2);
+      ((bmdm)localIterator.next()).a(paramView, paramPanelState1, paramPanelState2);
     }
     sendAccessibilityEvent(32);
   }
   
-  public void a(bpcc parambpcc)
+  public void a(bmdm parambmdm)
   {
-    if (parambpcc != null) {
-      this.jdField_a_of_type_JavaUtilList.add(parambpcc);
+    if (parambmdm != null) {
+      this.jdField_a_of_type_JavaUtilList.add(parambmdm);
     }
   }
   
@@ -335,7 +335,7 @@ public class AESlidingUpPanelLayout
     {
       return false;
       paramInt = a(paramFloat);
-    } while (!this.jdField_a_of_type_Bpcl.a(this.jdField_c_of_type_AndroidViewView, this.jdField_c_of_type_AndroidViewView.getLeft(), paramInt));
+    } while (!this.jdField_a_of_type_Bmdv.a(this.jdField_c_of_type_AndroidViewView, this.jdField_c_of_type_AndroidViewView.getLeft(), paramInt));
     c();
     ViewCompat.postInvalidateOnAnimation(this);
     return true;
@@ -427,10 +427,10 @@ public class AESlidingUpPanelLayout
   
   public void computeScroll()
   {
-    if ((this.jdField_a_of_type_Bpcl != null) && (this.jdField_a_of_type_Bpcl.a(true)))
+    if ((this.jdField_a_of_type_Bmdv != null) && (this.jdField_a_of_type_Bmdv.a(true)))
     {
       if (!isEnabled()) {
-        this.jdField_a_of_type_Bpcl.b();
+        this.jdField_a_of_type_Bmdv.b();
       }
     }
     else {
@@ -445,7 +445,7 @@ public class AESlidingUpPanelLayout
     int i = MotionEventCompat.getActionMasked(paramMotionEvent);
     if ((!isEnabled()) || (!a()) || ((this.jdField_d_of_type_Boolean) && (i != 0)))
     {
-      this.jdField_a_of_type_Bpcl.b();
+      this.jdField_a_of_type_Bmdv.b();
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     float f1 = paramMotionEvent.getX();
@@ -475,7 +475,7 @@ public class AESlidingUpPanelLayout
           i = 1;
         }
         while (i * f4 > 0.0F) {
-          if (this.jdField_a_of_type_Bpck.a(this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_Boolean) > 0)
+          if (this.jdField_a_of_type_Bmdu.a(this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_Boolean) > 0)
           {
             this.jdField_f_of_type_Boolean = true;
             return super.dispatchTouchEvent(paramMotionEvent);
@@ -506,9 +506,9 @@ public class AESlidingUpPanelLayout
             this.jdField_f_of_type_Boolean = false;
             return onTouchEvent(paramMotionEvent);
           }
-          if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Bpcl.a()))
+          if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Bmdv.a()))
           {
-            this.jdField_a_of_type_Bpcl.a();
+            this.jdField_a_of_type_Bmdv.a();
             paramMotionEvent.setAction(0);
           }
           this.jdField_f_of_type_Boolean = true;
@@ -517,7 +517,7 @@ public class AESlidingUpPanelLayout
       }
       else if ((i == 1) && (this.jdField_f_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bpcl.a(0);
+        this.jdField_a_of_type_Bmdv.a(0);
       }
     }
   }
@@ -633,7 +633,7 @@ public class AESlidingUpPanelLayout
   {
     if ((this.jdField_f_of_type_Boolean) || (!a()))
     {
-      this.jdField_a_of_type_Bpcl.b();
+      this.jdField_a_of_type_Bmdv.b();
       return false;
     }
     int i = MotionEventCompat.getActionMasked(paramMotionEvent);
@@ -641,7 +641,7 @@ public class AESlidingUpPanelLayout
     float f2 = paramMotionEvent.getY();
     float f3 = Math.abs(f1 - this.jdField_e_of_type_Float);
     float f4 = Math.abs(f2 - this.jdField_f_of_type_Float);
-    int j = this.jdField_a_of_type_Bpcl.b();
+    int j = this.jdField_a_of_type_Bmdv.b();
     switch (i)
     {
     }
@@ -651,21 +651,21 @@ public class AESlidingUpPanelLayout
       {
         do
         {
-          return this.jdField_a_of_type_Bpcl.a(paramMotionEvent);
+          return this.jdField_a_of_type_Bmdv.a(paramMotionEvent);
           this.jdField_d_of_type_Boolean = false;
           this.jdField_e_of_type_Float = f1;
           this.jdField_f_of_type_Float = f2;
         } while (a(this.jdField_a_of_type_AndroidViewView, (int)f1, (int)f2));
-        this.jdField_a_of_type_Bpcl.a();
+        this.jdField_a_of_type_Bmdv.a();
         this.jdField_d_of_type_Boolean = true;
         return false;
       } while ((f4 <= j) || (f3 <= f4));
-      this.jdField_a_of_type_Bpcl.a();
+      this.jdField_a_of_type_Bmdv.a();
       this.jdField_d_of_type_Boolean = true;
       return false;
-      if (this.jdField_a_of_type_Bpcl.a())
+      if (this.jdField_a_of_type_Bmdv.a())
       {
-        this.jdField_a_of_type_Bpcl.a(paramMotionEvent);
+        this.jdField_a_of_type_Bmdv.a(paramMotionEvent);
         return true;
       }
     } while ((f4 > j) || (f3 > j) || (this.jdField_a_of_type_Float <= 0.0F) || (a(this.jdField_c_of_type_AndroidViewView, (int)this.jdField_e_of_type_Float, (int)this.jdField_f_of_type_Float)) || (this.jdField_a_of_type_AndroidViewView$OnClickListener == null));
@@ -682,7 +682,7 @@ public class AESlidingUpPanelLayout
     if (this.jdField_g_of_type_Boolean) {}
     label71:
     View localView;
-    switch (bpca.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState.ordinal()])
+    switch (bmdk.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState.ordinal()])
     {
     default: 
       this.jdField_a_of_type_Float = 0.0F;
@@ -902,7 +902,7 @@ public class AESlidingUpPanelLayout
       return bool;
       try
       {
-        this.jdField_a_of_type_Bpcl.a(paramMotionEvent);
+        this.jdField_a_of_type_Bmdv.a(paramMotionEvent);
         paramMotionEvent = this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState;
         AESlidingUpPanelLayout.PanelState localPanelState = AESlidingUpPanelLayout.PanelState.COLLAPSED;
         if (paramMotionEvent != localPanelState) {
@@ -941,7 +941,7 @@ public class AESlidingUpPanelLayout
       this.jdField_a_of_type_AndroidViewView.setClickable(true);
       this.jdField_a_of_type_AndroidViewView.setFocusable(false);
       this.jdField_a_of_type_AndroidViewView.setFocusableInTouchMode(false);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bpbz(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bmdj(this));
     }
   }
   
@@ -983,10 +983,10 @@ public class AESlidingUpPanelLayout
   
   public void setPanelState(AESlidingUpPanelLayout.PanelState paramPanelState)
   {
-    if (this.jdField_a_of_type_Bpcl.a() == 2)
+    if (this.jdField_a_of_type_Bmdv.a() == 2)
     {
       Log.d("SlidingUpPanelLayout", "View is settling. Aborting animation.");
-      this.jdField_a_of_type_Bpcl.b();
+      this.jdField_a_of_type_Bmdv.b();
     }
     if ((paramPanelState == null) || (paramPanelState == AESlidingUpPanelLayout.PanelState.DRAGGING)) {
       throw new IllegalArgumentException("Panel state cannot be null or DRAGGING.");
@@ -1004,7 +1004,7 @@ public class AESlidingUpPanelLayout
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       requestLayout();
     }
-    switch (bpca.jdField_a_of_type_ArrayOfInt[paramPanelState.ordinal()])
+    switch (bmdk.jdField_a_of_type_ArrayOfInt[paramPanelState.ordinal()])
     {
     default: 
       return;

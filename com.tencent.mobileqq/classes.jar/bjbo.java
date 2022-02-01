@@ -1,18 +1,17 @@
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.widget.QQBlurView;
+import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.OnDismissListener;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 
 public class bjbo
-  implements ViewTreeObserver.OnPreDrawListener
+  implements MiniLoadingAdLayout.OnDismissListener
 {
-  public bjbo(QQBlurView paramQQBlurView) {}
+  public bjbo(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
   
-  public boolean onPreDraw()
+  public void onDismiss(boolean paramBoolean)
   {
-    if (!QQBlurView.a(this.a)) {}
-    while (!QQBlurView.a(this.a).a()) {
-      return true;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onAdDismiss(paramBoolean);
     }
-    return QQBlurView.a(this.a).b();
   }
 }
 

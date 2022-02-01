@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pox;
+import puf;
 
 class ChannelCoverInfoModule$4$2
   implements Runnable
@@ -10,7 +10,7 @@ class ChannelCoverInfoModule$4$2
   
   public void run()
   {
-    pox.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule$4.this$0, this.jdField_a_of_type_JavaUtilList);
+    puf.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule$4.this$0, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

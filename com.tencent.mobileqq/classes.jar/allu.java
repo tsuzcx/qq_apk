@@ -1,12 +1,11 @@
-public abstract interface allu
+import android.widget.ImageView;
+
+public class allu
+  extends bjtz
 {
-  public abstract boolean isNeedAutoCloseWhenAccountChange();
-  
-  public abstract void onClose();
-  
-  public abstract void onEnter();
-  
-  public abstract void onOverride();
+  public String a;
+  public int b = 1;
+  public ImageView d;
 }
 
 

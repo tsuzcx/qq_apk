@@ -4,13 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bpli;
-import bpop;
-import bpse;
-import bpsf;
-import bpsg;
-import bpsi;
-import bpup;
+import bmqj;
+import bmtc;
+import bmvk;
+import bmvl;
+import bmvm;
+import bmvo;
+import bmxv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,18 +22,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import nof;
+import npo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DynamicTextConfigManager
-  extends bpli
+  extends bmqj
 {
   public static File a;
   private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + "usable" + File.separator;
   public int a;
-  private bpsg jdField_a_of_type_Bpsg = new bpsg(this);
+  private bmvm jdField_a_of_type_Bmvm = new bmvm(this);
   private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString;
@@ -45,7 +45,7 @@ public class DynamicTextConfigManager
   
   static
   {
-    jdField_a_of_type_JavaIoFile = new File(bpup.a(), "dynamic_text");
+    jdField_a_of_type_JavaIoFile = new File(bmxv.a(), "dynamic_text");
   }
   
   public DynamicTextConfigManager()
@@ -53,9 +53,9 @@ public class DynamicTextConfigManager
     this.jdField_a_of_type_Int = 120;
   }
   
-  public static String a(@NonNull bpsf parambpsf)
+  public static String a(@NonNull bmvl parambmvl)
   {
-    return new File(jdField_a_of_type_JavaIoFile, parambpsf.a()).getPath();
+    return new File(jdField_a_of_type_JavaIoFile, parambmvl.a()).getPath();
   }
   
   private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> a(String paramString)
@@ -74,7 +74,7 @@ public class DynamicTextConfigManager
         DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = DynamicTextConfigManager.DynamicTextConfigBean.convertFrom(paramString.getJSONObject(i));
         if (localDynamicTextConfigBean != null)
         {
-          localDynamicTextConfigBean.iconDrawableId = bpse.a(localDynamicTextConfigBean.text_id);
+          localDynamicTextConfigBean.iconDrawableId = bmvk.a(localDynamicTextConfigBean.text_id);
           localArrayList.add(localDynamicTextConfigBean);
         }
         i += 1;
@@ -163,185 +163,12 @@ public class DynamicTextConfigManager
     }
   }
   
-  public String a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DText", 2, "hint get from:" + paramInt);
-    }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("dynamic_text_pre", 4);
-    if (paramInt == 1)
-    {
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        return this.jdField_c_of_type_JavaLangString;
-      }
-      if (localSharedPreferences != null) {
-        return localSharedPreferences.getString("key_dynamic_text_hint_local_slides", "");
-      }
-    }
-    else if (paramInt == 2)
-    {
-      if (this.d != null) {
-        return this.d;
-      }
-      if (localSharedPreferences != null) {
-        return localSharedPreferences.getString("key_dtext_hint_single_photo", "");
-      }
-    }
-    else if (paramInt == 3)
-    {
-      if (this.e != null) {
-        return this.e;
-      }
-      if (localSharedPreferences != null) {
-        return localSharedPreferences.getString("key_dtext_hint_single_video", "");
-      }
-    }
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString("key_dynamic_text_hint_default", "");
-    }
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
   public ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public void a() {}
-  
-  public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bpsi parambpsi)
-  {
-    if ((paramDynamicTextConfigBean == null) || (paramDynamicTextConfigBean.fontInfos == null)) {
-      return;
-    }
-    ThreadManager.postImmediately(new DynamicTextConfigManager.1(this, paramDynamicTextConfigBean, parambpsi), null, true);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "handleDynamicTextConfig config is: " + paramString);
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString.trim())))
-    {
-      Object localObject2 = a(paramString);
-      if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject2);
-          b(paramString);
-          this.jdField_a_of_type_Boolean = true;
-          a().notifyObservers(bpop.class, 3, false, null);
-          ??? = ((ArrayList)localObject2).iterator();
-          while (((Iterator)???).hasNext())
-          {
-            localObject2 = (DynamicTextConfigManager.DynamicTextConfigBean)((Iterator)???).next();
-            if ((((DynamicTextConfigManager.DynamicTextConfigBean)localObject2).predownload == 1) && (!a((DynamicTextConfigManager.DynamicTextConfigBean)localObject2)) && (NetConnInfoCenter.isWifiConn())) {
-              a((DynamicTextConfigManager.DynamicTextConfigBean)localObject2, null);
-            }
-          }
-        }
-        bpup.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
-      }
-    }
-  }
-  
-  public void a(List<DynamicTextConfigManager.DynamicTextConfigBean> paramList, boolean paramBoolean)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = paramList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (((DynamicTextConfigManager.DynamicTextConfigBean)((Iterator)localObject).next()).text_id == 28) {
-            ((Iterator)localObject).remove();
-          }
-        }
-      } while (!paramBoolean);
-      localObject = new DynamicTextConfigManager.DynamicTextConfigBean();
-      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id = 28;
-      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId = bpse.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
-    } while ((paramList == null) || (paramList.size() <= 1));
-    paramList.add(1, localObject);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
-  }
-  
-  public boolean a(bpsf parambpsf)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((parambpsf == null) || (TextUtils.isEmpty(parambpsf.jdField_c_of_type_JavaLangString))) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (TextUtils.isEmpty(parambpsf.jdField_a_of_type_JavaLangString));
-      if (!new File(jdField_a_of_type_JavaIoFile, parambpsf.a()).exists()) {
-        return false;
-      }
-      bool1 = bool2;
-    } while (new File(jdField_a_of_type_JavaLangString + parambpsf.jdField_c_of_type_JavaLangString).exists());
-    return false;
-  }
-  
-  public boolean a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean)
-  {
-    if (paramDynamicTextConfigBean == null) {
-      return false;
-    }
-    if (paramDynamicTextConfigBean.fontInfos == null) {
-      return true;
-    }
-    paramDynamicTextConfigBean = paramDynamicTextConfigBean.fontInfos.iterator();
-    while (paramDynamicTextConfigBean.hasNext()) {
-      if (!a((bpsf)paramDynamicTextConfigBean.next())) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public String b(bpsf parambpsf)
-  {
-    if (parambpsf == null) {
-      return null;
-    }
-    return jdField_a_of_type_JavaLangString + parambpsf.jdField_c_of_type_JavaLangString + File.separator;
-  }
-  
-  public void b() {}
-  
-  public boolean b(bpsf parambpsf)
-  {
-    try
-    {
-      nof.a(new File(jdField_a_of_type_JavaIoFile, parambpsf.a()), jdField_a_of_type_JavaLangString);
-      return true;
-    }
-    catch (Exception parambpsf)
-    {
-      if (QLog.isColorLevel()) {
-        parambpsf.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
-  public void c()
+  public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.i("DText", 2, "initConfigListByFile start");
@@ -356,7 +183,7 @@ public class DynamicTextConfigManager
       return;
       if (b())
       {
-        ??? = bpup.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
+        ??? = bmxv.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
         Object localObject1 = ???;
         if (QLog.isColorLevel())
         {
@@ -374,7 +201,7 @@ public class DynamicTextConfigManager
           }
           return;
         }
-        ??? = bpup.a("dynamic_text_config.cfg");
+        ??? = bmxv.a("dynamic_text_config.cfg");
         localObject3 = ???;
         if (QLog.isColorLevel())
         {
@@ -403,15 +230,139 @@ public class DynamicTextConfigManager
     }
   }
   
-  public boolean c()
+  public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bmvo parambmvo)
   {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("dynamic_text_pre", 4);
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("dynamic_text_key_is_hint_on", false);
+    if ((paramDynamicTextConfigBean == null) || (paramDynamicTextConfigBean.fontInfos == null)) {
+      return;
     }
-    return bool;
+    ThreadManager.postImmediately(new DynamicTextConfigManager.1(this, paramDynamicTextConfigBean, parambmvo), null, true);
   }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "handleDynamicTextConfig config is: " + paramString);
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString.trim())))
+    {
+      Object localObject2 = a(paramString);
+      if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject2);
+          b(paramString);
+          this.jdField_a_of_type_Boolean = true;
+          getApp().notifyObservers(bmtc.class, 3, false, null);
+          ??? = ((ArrayList)localObject2).iterator();
+          while (((Iterator)???).hasNext())
+          {
+            localObject2 = (DynamicTextConfigManager.DynamicTextConfigBean)((Iterator)???).next();
+            if ((((DynamicTextConfigManager.DynamicTextConfigBean)localObject2).predownload == 1) && (!a((DynamicTextConfigManager.DynamicTextConfigBean)localObject2)) && (NetConnInfoCenter.isWifiConn())) {
+              a((DynamicTextConfigManager.DynamicTextConfigBean)localObject2, null);
+            }
+          }
+        }
+        bmxv.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
+      }
+    }
+  }
+  
+  public void a(List<DynamicTextConfigManager.DynamicTextConfigBean> paramList, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((DynamicTextConfigManager.DynamicTextConfigBean)((Iterator)localObject).next()).text_id == 28) {
+            ((Iterator)localObject).remove();
+          }
+        }
+      } while (!paramBoolean);
+      localObject = new DynamicTextConfigManager.DynamicTextConfigBean();
+      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id = 28;
+      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId = bmvk.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
+    } while ((paramList == null) || (paramList.size() <= 1));
+    paramList.add(1, localObject);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
+  }
+  
+  public boolean a(bmvl parambmvl)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((parambmvl == null) || (TextUtils.isEmpty(parambmvl.jdField_c_of_type_JavaLangString))) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (TextUtils.isEmpty(parambmvl.jdField_a_of_type_JavaLangString));
+      if (!new File(jdField_a_of_type_JavaIoFile, parambmvl.a()).exists()) {
+        return false;
+      }
+      bool1 = bool2;
+    } while (new File(jdField_a_of_type_JavaLangString + parambmvl.jdField_c_of_type_JavaLangString).exists());
+    return false;
+  }
+  
+  public boolean a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean)
+  {
+    if (paramDynamicTextConfigBean == null) {
+      return false;
+    }
+    if (paramDynamicTextConfigBean.fontInfos == null) {
+      return true;
+    }
+    paramDynamicTextConfigBean = paramDynamicTextConfigBean.fontInfos.iterator();
+    while (paramDynamicTextConfigBean.hasNext()) {
+      if (!a((bmvl)paramDynamicTextConfigBean.next())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public String b(bmvl parambmvl)
+  {
+    if (parambmvl == null) {
+      return null;
+    }
+    return jdField_a_of_type_JavaLangString + parambmvl.jdField_c_of_type_JavaLangString + File.separator;
+  }
+  
+  public boolean b(bmvl parambmvl)
+  {
+    try
+    {
+      npo.a(new File(jdField_a_of_type_JavaIoFile, parambmvl.a()), jdField_a_of_type_JavaLangString);
+      return true;
+    }
+    catch (Exception parambmvl)
+    {
+      if (QLog.isColorLevel()) {
+        parambmvl.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public void onDestroy() {}
+  
+  public void onInit() {}
 }
 
 

@@ -1,52 +1,31 @@
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
 
-class beim
-  extends beit
+public class beim
+  implements ViewPager.OnPageChangeListener
 {
-  beim(beil parambeil, behv parambehv) {}
+  public beim(DotStyleNavBar paramDotStyleNavBar) {}
   
-  public void a()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_Behv.beginSwitch();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
     }
   }
   
-  public boolean a(int paramInt)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    try
-    {
-      this.jdField_a_of_type_Behv.postSwitch(paramInt);
-      return super.a(paramInt);
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
-      }
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
   }
   
-  public boolean a(beio parambeio)
+  public void onPageSelected(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_Behv.doSwitch(parambeio.a(), parambeio.d());
-      return true;
+    this.a.setCurrent(paramInt);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
     }
-    catch (RemoteException parambeio)
-    {
-      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", parambeio);
-    }
-    return true;
   }
 }
 

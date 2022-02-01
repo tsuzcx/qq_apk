@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.associations.AssociatedTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
-final class bdvf
-  implements DialogInterface.OnDismissListener
+class bdvf
+  implements View.OnClickListener
 {
-  bdvf(bdvc parambdvc) {}
+  bdvf(bdvd parambdvd) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    bdvc.a(this.a).b((bduq)this.a);
-    bdvc.a(this.a).a();
+    Object localObject = (AssociatedTroopItem)paramView.getTag();
+    bdvm.b(bdvd.a(this.a), (AssociatedTroopItem)localObject);
+    if (localObject == null) {}
+    for (localObject = "";; localObject = ((AssociatedTroopItem)localObject).uin)
+    {
+      bcef.b(null, "dc00898", "", (String)localObject, "0X800B4B1", "0X800B4B1", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

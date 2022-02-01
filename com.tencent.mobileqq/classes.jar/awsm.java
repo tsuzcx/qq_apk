@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awsm
-  extends anyu
+public class awsm
+  implements View.OnClickListener
 {
-  awsm(awsk paramawsk) {}
+  public awsm(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf(paramObject);
-    if ((paramBoolean) && (paramObject.equals(awsk.a(this.a).a())))
-    {
-      awsk.a(awsk.a(this.a), 0, String.valueOf(paramObject));
-      if (awsk.a(this.a) != null) {
-        awsk.a(this.a).finish();
-      }
-    }
+    ShortVideoCommentsView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

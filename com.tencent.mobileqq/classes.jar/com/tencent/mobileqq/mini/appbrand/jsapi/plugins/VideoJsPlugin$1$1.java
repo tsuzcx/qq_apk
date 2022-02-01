@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Bundle;
-import bmvx;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVideoSoDownloadModule.DownloadResultCallback;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.MobileQQ;
 
 class VideoJsPlugin$1$1
-  implements bmvx
+  implements QzoneVideoSoDownloadModule.DownloadResultCallback
 {
   VideoJsPlugin$1$1(VideoJsPlugin.1 param1) {}
   
@@ -18,7 +18,7 @@ class VideoJsPlugin$1$1
     if (paramInt == 0)
     {
       QLog.i("VideoJsPlugin", 1, "callback: load ok " + paramInt);
-      if (VideoEnvironment.a("AVCodec", MobileQQ.sMobileQQ.getApplicationContext()) == 0)
+      if (VideoEnvironment.loadAVCodecSo("AVCodec", MobileQQ.sMobileQQ.getApplicationContext()) == 0)
       {
         bool = true;
         VideoJsPlugin.access$002(bool);

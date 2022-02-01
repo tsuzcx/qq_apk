@@ -1,21 +1,8 @@
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import mqq.app.QQPermissionCallback;
+import msf.msgcomm.msg_comm.Msg;
 
-public class abyr
-  implements QQPermissionCallback
+public abstract interface abyr
 {
-  public abyr(DeviceTipActivity paramDeviceTipActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhlq.b(this.a);
-    this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    DeviceTipActivity.b(this.a);
-  }
+  public abstract void a(msg_comm.Msg paramMsg, bblm parambblm);
 }
 
 

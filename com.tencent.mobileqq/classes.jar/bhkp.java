@@ -1,13 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.view.animation.Interpolator;
 
-final class bhkp
-  implements MediaPlayer.OnCompletionListener
+abstract class bhkp
+  implements Interpolator
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  private final float jdField_a_of_type_Float;
+  private final float[] jdField_a_of_type_ArrayOfFloat;
+  
+  public bhkp(float[] paramArrayOfFloat)
   {
-    paramMediaPlayer.release();
-    bhkm.a = null;
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_Float = (1.0F / (this.jdField_a_of_type_ArrayOfFloat.length - 1));
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
+    }
+    if (paramFloat <= 0.0F) {
+      return 0.0F;
+    }
+    int i = Math.min((int)((this.jdField_a_of_type_ArrayOfFloat.length - 1) * paramFloat), this.jdField_a_of_type_ArrayOfFloat.length - 2);
+    paramFloat = (paramFloat - i * this.jdField_a_of_type_Float) / this.jdField_a_of_type_Float;
+    float f = this.jdField_a_of_type_ArrayOfFloat[i];
+    return (this.jdField_a_of_type_ArrayOfFloat[(i + 1)] - this.jdField_a_of_type_ArrayOfFloat[i]) * paramFloat + f;
   }
 }
 

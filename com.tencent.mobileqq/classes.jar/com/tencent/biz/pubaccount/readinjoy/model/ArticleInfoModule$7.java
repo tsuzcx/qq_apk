@@ -6,14 +6,14 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ozs;
-import pfd;
-import pon;
+import pay;
+import pkp;
+import ptv;
 
 public class ArticleInfoModule$7
   implements Runnable
 {
-  public ArticleInfoModule$7(pon parampon, boolean paramBoolean1, List paramList1, List paramList2, int paramInt, boolean paramBoolean2) {}
+  public ArticleInfoModule$7(ptv paramptv, boolean paramBoolean1, List paramList1, List paramList2, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -46,7 +46,7 @@ public class ArticleInfoModule$7
               if (((Iterator)localObject1).hasNext())
               {
                 localObject2 = (ArticleInfo)((Iterator)localObject1).next();
-                localStringBuilder.append("实时替换 article【" + i + "】 id : " + ((ArticleInfo)localObject2).mArticleID + " seq : " + ((ArticleInfo)localObject2).mRecommendSeq + " title : " + ozs.d(((ArticleInfo)localObject2).mTitle) + " , groupID : " + ((ArticleInfo)localObject2).mGroupId + " algorithmID : " + ((ArticleInfo)localObject2).mAlgorithmID + " strategyId : " + ((ArticleInfo)localObject2).mStrategyId + " feedType: " + ((ArticleInfo)localObject2).mFeedType);
+                localStringBuilder.append("实时替换 article【" + i + "】 id : " + ((ArticleInfo)localObject2).mArticleID + " seq : " + ((ArticleInfo)localObject2).mRecommendSeq + " title : " + pay.d(((ArticleInfo)localObject2).mTitle) + " , groupID : " + ((ArticleInfo)localObject2).mGroupId + " algorithmID : " + ((ArticleInfo)localObject2).mAlgorithmID + " strategyId : " + ((ArticleInfo)localObject2).mStrategyId + " feedType: " + ((ArticleInfo)localObject2).mFeedType);
                 if (QLog.isColorLevel()) {
                   if (((ArticleInfo)localObject2).mSocialFeedInfo != null)
                   {
@@ -80,7 +80,7 @@ public class ArticleInfoModule$7
               if (l2 == localArticleInfo.mArticleID)
               {
                 l1 = ((Long)localObject3).longValue();
-                QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList find the original article seq：" + localObject3 + ", reqArticleID: " + l2 + ", title : " + ozs.d(localArticleInfo.mTitle));
+                QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList find the original article seq：" + localObject3 + ", reqArticleID: " + l2 + ", title : " + pay.d(localArticleInfo.mTitle));
               }
             }
           } while (l1 == -1L);
@@ -92,13 +92,13 @@ public class ArticleInfoModule$7
             while (i < ((List)localObject1).size())
             {
               localObject2 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
-              localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + ozs.d(((ArticleInfo)localObject2).mTitle));
+              localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + pay.d(((ArticleInfo)localObject2).mTitle));
               localStringBuilder.append("\n");
               i += 1;
             }
             QLog.d("ArticleInfoModule", 2, localStringBuilder.toString());
           }
-          localObject2 = (ConcurrentHashMap)pon.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+          localObject2 = (ConcurrentHashMap)ptv.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
         } while (localObject2 == null);
         int k = ((List)localObject1).size();
         int j = this.jdField_b_of_type_JavaUtilList.size();
@@ -113,7 +113,7 @@ public class ArticleInfoModule$7
             ((ArticleInfo)localObject3).mRecommendSeq = (j + l3);
             ((ConcurrentHashMap)localObject2).remove(Long.valueOf(l3));
             bool = this.this$0.a(Long.valueOf(((ArticleInfo)localObject3).mArticleID));
-            pon.a(this.this$0, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject3, true, bool);
+            ptv.a(this.this$0, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject3, true, bool);
           }
           i += 1;
         }
@@ -123,7 +123,7 @@ public class ArticleInfoModule$7
           localObject1 = (ArticleInfo)this.jdField_b_of_type_JavaUtilList.get(i);
           ((ArticleInfo)localObject1).mRecommendSeq = (j + l1 - 1L - i);
           bool = this.this$0.a(Long.valueOf(((ArticleInfo)localObject1).mArticleID));
-          pon.a(this.this$0, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject1, true, bool);
+          ptv.a(this.this$0, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject1, true, bool);
           i -= 1;
         }
         localObject1 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int));
@@ -135,14 +135,14 @@ public class ArticleInfoModule$7
           while (i < ((List)localObject1).size())
           {
             localObject2 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
-            localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + ozs.d(((ArticleInfo)localObject2).mTitle));
+            localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + pay.d(((ArticleInfo)localObject2).mTitle));
             localStringBuilder.append("\n");
             i += 1;
           }
           QLog.d("ArticleInfoModule", 2, localStringBuilder.toString());
         }
       } while (!this.jdField_b_of_type_Boolean);
-      pfd.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, l2, (List)localObject1, this.jdField_b_of_type_JavaUtilList);
+      pkp.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, l2, (List)localObject1, this.jdField_b_of_type_JavaUtilList);
       return;
     }
     QLog.e("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList failure");

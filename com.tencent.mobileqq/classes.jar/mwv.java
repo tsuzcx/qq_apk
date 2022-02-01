@@ -1,45 +1,91 @@
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
-
 public class mwv
-  extends bcpv
 {
-  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
-  private nfk jdField_a_of_type_Nfk;
+  protected static mxa a;
   
-  public mwv(AVGameAppInterface paramAVGameAppInterface)
+  public static void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    jdField_a_of_type_Int = Math.abs(new Random().nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      this.jdField_a_of_type_Nfk = new nfk();
-      super.a(this.jdField_a_of_type_Nfk);
-      super.d();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (a != null) {
+      a.a(paramString1, paramString2);
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    super.b(paramToServiceMsg, null, mww.class);
+    if (a != null) {
+      a.a(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void a(mxa parammxa)
+  {
+    a = parammxa;
+  }
+  
+  public static boolean a()
+  {
+    return a != null;
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.b(paramString1, paramString2);
+    }
+  }
+  
+  public static boolean b()
+  {
+    return (a != null) && (a.a());
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.c(paramString1, paramString2);
+    }
+  }
+  
+  public static boolean c()
+  {
+    return (a != null) && (a.b());
+  }
+  
+  @Deprecated
+  public static void d(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.d(paramString1, paramString2);
+    }
+  }
+  
+  @Deprecated
+  public static void e(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.e(paramString1, paramString2);
+    }
+  }
+  
+  @Deprecated
+  public static void f(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.f(paramString1, paramString2);
+    }
+  }
+  
+  public static void g(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.g(paramString1, paramString2);
+    }
+  }
+  
+  public static void h(String paramString1, String paramString2)
+  {
+    if (a != null) {
+      a.h(paramString1, paramString2);
+    }
   }
 }
 

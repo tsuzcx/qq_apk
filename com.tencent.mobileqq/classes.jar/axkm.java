@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
-public class axkm
-  implements axlo
+class axkm
+  implements Callback
 {
-  public axkm(MultiAIOFragment paramMultiAIOFragment) {}
+  axkm(axkl paramaxkl) {}
   
-  public void a()
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    MultiAIOFragment.a(this.a).a();
+    QLog.e("ReportCenter", 4, paramIOException, new Object[0]);
   }
   
-  public void a(int paramInt)
+  public void onResponse(Call paramCall, Response paramResponse)
   {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    MultiAIOFragment.a(this.a).setScrollState(2);
-    MultiAIOFragment.a(this.a).fling(-paramInt);
-  }
-  
-  public boolean a()
-  {
-    return MultiAIOFragment.a(this.a).a();
+    if ((paramResponse != null) && (paramResponse.code() == 200)) {
+      QLog.i("ReportCenter", 4, "data report success.");
+    }
   }
 }
 

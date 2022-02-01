@@ -1,74 +1,91 @@
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
-import com.tencent.pb.now.FeedsProtocol.MediaInfo;
-import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
-import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
-import com.tencent.pb.now.FeedsProtocol.TextFeed;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class ayde
-  extends aycq
 {
-  private String a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  
-  public ayde()
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = "PlayListDataModel";
+    String str = RichMediaUtil.getActionDesc(paramInt2);
+    return RichMediaUtil.buildTag(RichMediaUtil.getUinDesc(paramInt1), RichMediaUtil.getFileTypeDesc(paramInt3), str, "L");
   }
   
-  private void a(FeedsProtocol.GetMediaDetailRsp paramGetMediaDetailRsp)
+  public static void a(Object paramObject, String paramString1, String paramString2)
   {
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.media_list.get().iterator();
-    while (paramGetMediaDetailRsp.hasNext())
+    if ((paramObject instanceof aydh))
     {
-      FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
-      if ((localMediaInfo.type.get() != 1) && (localMediaInfo.type.get() != 2)) {
-        if (localMediaInfo.type.get() == 3) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        } else if (localMediaInfo.type.get() == 5) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        } else if (localMediaInfo.type.get() == 6) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
-        }
+      paramObject = (aydh)paramObject;
+      RichMediaUtil.logdLogic(paramObject.b, true, 1, paramObject.a, paramString1, paramString2);
+      return;
+    }
+    if ((paramObject instanceof MessageForPic))
+    {
+      paramObject = (MessageForPic)paramObject;
+      RichMediaUtil.logdLogic(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step:").append(paramString1);
+    localStringBuilder.append("    \tcontent:").append(paramString2);
+    QLog.d("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, 1);
+  }
+  
+  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (paramInt == 1) {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id:");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" \tstep:");
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append(" \tcont:");
+        localStringBuilder.append(paramString4);
+        QLog.d(paramString1, 2, localStringBuilder.toString());
       }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    while (paramInt != 2) {
       return;
     }
-    new aydm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new aydf(this));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" \tstep:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(" \tcont:");
+    localStringBuilder.append(paramString4);
+    QLog.e(paramString1, 1, localStringBuilder.toString());
   }
   
-  public void a(Bundle paramBundle)
+  public static void b(Object paramObject, String paramString1, String paramString2)
   {
-    if ("1".equals(paramBundle.getString("isLocal"))) {}
-    do
+    if ((paramObject instanceof aydh))
     {
+      paramObject = (aydh)paramObject;
+      RichMediaUtil.logeLogic(paramObject.b, true, 1, paramObject.a, paramString1, paramString2, null);
       return;
-      paramBundle = paramBundle.getString("raw_url");
-      this.jdField_b_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "PlayListDataModel, url=" + paramBundle);
+    }
+    if ((paramObject instanceof MessageForPic))
+    {
+      paramObject = (MessageForPic)paramObject;
+      RichMediaUtil.logeLogic(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2, null);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step:").append(paramString1);
+    localStringBuilder.append("    \tcontent:").append(paramString2);
+    QLog.e("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
   }
   
-  public boolean a()
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    return this.jdField_a_of_type_Boolean;
+    a(paramString1, paramString2, paramString3, paramString4, 2);
   }
 }
 

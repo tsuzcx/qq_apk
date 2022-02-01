@@ -1,48 +1,53 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aute
-  extends WebChromeClient
+public class aute
+  extends WebViewPlugin
 {
-  private final IHostInterface.IWebClient a;
+  zon a;
   
-  private aute(IHostInterface.IWebClient paramIWebClient)
+  public aute()
   {
-    this.a = paramIWebClient;
+    this.mPluginNameSpace = "connect";
   }
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
-      return super.onConsoleMessage(paramConsoleMessage);
-    }
-    return true;
-  }
-  
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {}
-    do
+    boolean bool = false;
+    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
+    try
     {
-      return true;
-      if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
-        return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.optString("appid");
+      paramString1 = paramString3.optString("openid");
+      paramString2 = paramString3.optString("troopuin");
+      paramString3 = paramString3.optString("callback");
+      if (this.a == null)
+      {
+        this.a = zon.a();
+        this.a.a();
       }
-    } while (paramJsPromptResult == null);
-    paramJsPromptResult.cancel();
-    return true;
+      this.a.b(paramJsBridgeListener, paramString1, paramString2, new autf(this, paramString3));
+      bool = true;
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
+    }
+    return bool;
+    return false;
   }
   
-  @Override
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void onDestroy()
   {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    super.onProgressChanged(paramWebView, paramInt);
+    super.onDestroy();
+    if (this.a != null) {
+      this.a.b();
+    }
   }
 }
 

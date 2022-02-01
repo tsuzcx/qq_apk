@@ -1,29 +1,59 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class aqrp
-  implements Animator.AnimatorListener
+  extends DefaultHandler
 {
-  aqrp(aqro paramaqro, aqvd paramaqvd, boolean paramBoolean) {}
+  MessageForTroopFee a;
+  public String a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aqrp()
   {
-    if (this.jdField_a_of_type_Aqvd != null) {
-      this.jdField_a_of_type_Aqvd.onColorNoteAnimFinish();
-    }
-    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof zvd))) {
-      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public MessageForTroopFee a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
+    }
+    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg"))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+    }
+    do
+    {
+      return;
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+      if (paramString3.equals("summary"))
+      {
+        this.jdField_a_of_type_JavaLangString = "summary";
+        return;
+      }
+    } while (!paramString3.equals("source"));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
+  }
 }
 
 

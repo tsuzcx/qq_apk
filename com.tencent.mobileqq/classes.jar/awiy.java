@@ -1,66 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
 public class awiy
-  implements IMiniMsgUnreadCallback
+  implements INetEventHandler
 {
-  public awiy(UiApiPlugin paramUiApiPlugin) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void destroy() {}
+  public awiy(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public void hide() {}
-  
-  public void hideUnread()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadHide", true);
-      this.a.a("UnRead", localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
-  }
-  
-  public boolean show(int paramInt)
-  {
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    try
-    {
-      paramBundle = new JSONObject();
-      this.a.a("backFromMiniAIO", paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
-    }
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadC", paramInt);
-      localJSONObject.put("unReadHide", paramBoolean);
-      this.a.a("updateUnreadCount", localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    int i = HttpUtil.getNetWorkType();
+    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Int = i;
   }
 }
 

@@ -1,70 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class adru
-  implements bliz
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int = -1;
+  public adru(NearbyActivity paramNearbyActivity) {}
   
-  public adru(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Blir != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Blir.dismiss();
-      }
-      switch (paramInt)
+      return false;
+      if (!this.a.c)
       {
-      default: 
-      case 0: 
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-          if (this.jdField_a_of_type_Int < 0) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
-          return;
-        }
-        catch (Throwable paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
-          }
-        }
-      case 1: 
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-          if (this.jdField_a_of_type_Int < 0) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
-          return;
-        }
-        catch (Throwable paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
-          }
-        }
+        this.a.g();
+        this.a.b.removeMessages(1000);
+        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
+        continue;
+        NearbyActivity.a(this.a);
       }
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

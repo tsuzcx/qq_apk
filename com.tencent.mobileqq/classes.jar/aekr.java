@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aekr
-  implements View.OnClickListener
+  extends amwl
 {
-  public aekr(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aekr(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    DiscussionInfoCardActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.c();
+  }
+  
+  protected void onUpdateRecentList()
+  {
+    this.a.c();
   }
 }
 

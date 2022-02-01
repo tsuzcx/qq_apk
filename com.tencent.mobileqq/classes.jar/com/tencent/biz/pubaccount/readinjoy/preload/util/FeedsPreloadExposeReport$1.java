@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.preload.util;
 
 import java.util.List;
-import pfa;
-import psu;
+import pkm;
+import pyo;
 
 public final class FeedsPreloadExposeReport$1
   implements Runnable
 {
-  public FeedsPreloadExposeReport$1(pfa parampfa, List paramList, String paramString) {}
+  public FeedsPreloadExposeReport$1(pkm parampkm, List paramList, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Pfa != null) {
-      this.jdField_a_of_type_Pfa.a(psu.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Pkm != null) {
+      this.jdField_a_of_type_Pkm.a(pyo.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,19 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aemc
   implements View.OnClickListener
 {
-  public aemc(EditActivity paramEditActivity) {}
+  public aemc(TroopInfoActivity paramTroopInfoActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
-    }
+    TroopInfoActivity.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

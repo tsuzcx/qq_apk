@@ -1,45 +1,48 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.widget.ImageView;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.player.MoviePlayer;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
-class bmjg
-  implements ServiceConnection
+public class bmjg
+  implements bmow
 {
-  bmjg(bmjf parambmjf) {}
+  public bmjg(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    bmjf.a(this.a, bmik.a(paramIBinder));
-    bmjf.a(this.a, false);
-    bmjf.a(this.a);
+    if ((AEEditorMultiCutEditFragment.a(this.a) != null) && (AEEditorMultiCutEditFragment.a(this.a).a())) {
+      AEEditorMultiCutEditFragment.a(this.a).b();
+    }
+    this.a.a.f();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(int paramInt)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
+    long l = AEEditorMultiCutEditFragment.a(this.a).a(paramInt);
+    if (AEEditorMultiCutEditFragment.a(this.a).a()) {
+      AEEditorMultiCutEditFragment.a(this.a).b();
+    }
+    this.a.a.a(paramInt, 0);
+    AEEditorMultiCutEditFragment.c(this.a, l);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a.a(paramInt, 0);
+    this.a.a.setScrollByPassive(false);
+    paramInt = (int)(this.a.a.a() * (float)(AEEditorMultiCutEditFragment.a(this.a).getPosition().getTimeUs() / 1000L));
+    if (this.a.a.getWidth() / 2 - paramInt >= AEEditorMultiCutEditFragment.a(this.a))
     {
-      bmjf.a(this.a).getApplication().unbindService(bmjf.a(this.a));
-      bmjf.a(this.a, null);
-      bmjf.a(this.a, false);
+      AEEditorMultiCutEditFragment.c(this.a).setVisibility(0);
       return;
     }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
+    AEEditorMultiCutEditFragment.c(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmjg
  * JD-Core Version:    0.7.0.1
  */

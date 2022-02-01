@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequestRunnable;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public class bfvf
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public aock a;
-  public bfve a;
-  public FromServiceMsg a;
-  public boolean a;
-  public TroopFileProtoReqMgr.ProtoRequestRunnable[] a;
-  
-  public bfvf()
-  {
-    this.jdField_a_of_type_Aock = new aock();
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,25 +1,14 @@
 import android.content.Context;
-import com.rookery.translate.AITranslator;
-import com.rookery.translate.AITranslator.TranslatorType;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
+import android.util.Pair;
 import java.util.List;
+import org.apache.http.Header;
 
-public class kzu
-  implements lau
+abstract class kzu
+  extends kzr
 {
-  public kzu(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, ahud paramahud, String paramString2, Language paramLanguage, lat paramlat, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
-  
-  public void a(TranslateError paramTranslateError, Long paramLong)
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, kzg paramkzg)
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahud, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lat, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
-  }
-  
-  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
-  {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahud, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lat, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramkzg);
   }
 }
 

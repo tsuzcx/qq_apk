@@ -1,14 +1,18 @@
-class attv
-  implements aumz
+public abstract interface attv
 {
-  attv(atts paramatts) {}
+  public abstract String a();
   
-  public void a()
-  {
-    aunj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atts.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract void a(int paramInt);
   
-  public void b() {}
+  public abstract void a(String paramString);
+  
+  public abstract void az_();
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
 }
 
 

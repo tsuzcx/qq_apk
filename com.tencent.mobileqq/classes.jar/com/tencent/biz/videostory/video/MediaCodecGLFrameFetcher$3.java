@@ -1,29 +1,29 @@
 package com.tencent.biz.videostory.video;
 
-import abbk;
-import abbl;
-import abbp;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
+import zxv;
+import zxw;
+import zya;
 
 public class MediaCodecGLFrameFetcher$3
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$3(abbl paramabbl) {}
+  public MediaCodecGLFrameFetcher$3(zxw paramzxw) {}
   
   public void run()
   {
-    if (abbl.a(this.this$0) == null) {
+    if (zxw.a(this.this$0) == null) {
       return;
     }
-    abbl.a(this.this$0).updateTexImage();
-    GLES20.glViewport(0, 0, abbl.a(this.this$0), abbl.b(this.this$0));
-    abbl.a(this.this$0).a(abbl.a(this.this$0), abbl.c(this.this$0));
-    if ((abbl.a(this.this$0) != null) && (!abbl.a(this.this$0).isRecycled())) {
-      abbl.a(this.this$0).recycle();
+    zxw.a(this.this$0).updateTexImage();
+    GLES20.glViewport(0, 0, zxw.a(this.this$0), zxw.b(this.this$0));
+    zxw.a(this.this$0).a(zxw.a(this.this$0), zxw.c(this.this$0));
+    if ((zxw.a(this.this$0) != null) && (!zxw.a(this.this$0).isRecycled())) {
+      zxw.a(this.this$0).recycle();
     }
-    abbl.a(this.this$0, abbk.a(abbl.c(this.this$0), abbl.a(this.this$0), abbl.b(this.this$0)));
+    zxw.a(this.this$0, zxv.a(zxw.c(this.this$0), zxw.a(this.this$0), zxw.b(this.this$0)));
   }
 }
 

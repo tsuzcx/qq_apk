@@ -1,32 +1,40 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class wox<Request extends wpa, Respond extends wov>
-  implements wpb<Respond>
+class wox
+  implements wok
 {
-  protected final long a;
-  protected woy<Request, Respond> a;
-  public Request a;
+  private int jdField_a_of_type_Int;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  wod jdField_a_of_type_Wod;
   
-  public wox(Request paramRequest)
+  public wox(wow paramwow, wod paramwod)
   {
-    this.jdField_a_of_type_Wpa = paramRequest;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Wod = paramwod;
   }
   
-  private void b(int paramInt, String paramString, Respond paramRespond)
+  protected void a(String paramString, wol paramwol)
   {
-    woy localwoy = this.jdField_a_of_type_Woy;
-    if (localwoy != null)
-    {
-      localwoy.a(this.jdField_a_of_type_Wpa, paramRespond, new ErrorMessage(paramInt, paramString));
-      return;
+    wea localwea = new wea();
+    localwea.jdField_c_of_type_JavaLangString = wow.a(this.jdField_a_of_type_Wow).uid;
+    if (wow.a(this.jdField_a_of_type_Wow).collectionKey != null) {
+      localwea.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(wow.a(this.jdField_a_of_type_Wow).collectionKey);
     }
-    yuk.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+    localwea.jdField_d_of_type_JavaLangString = paramString;
+    localwea.jdField_c_of_type_Int = 20;
+    localwea.jdField_e_of_type_Int = wow.a(this.jdField_a_of_type_Wow).shareTimeZone;
+    localwea.jdField_e_of_type_JavaLangString = wow.a(this.jdField_a_of_type_Wow).feedId;
+    localwea.f = wow.a(this.jdField_a_of_type_Wow).identify;
+    localwea.g = wow.a(this.jdField_a_of_type_Wow).videoListOrder;
+    vqn.a().a(localwea, new woy(this, paramwol));
   }
   
-  public void a(int paramInt, String paramString, Respond paramRespond)
+  public void a(wol paramwol)
   {
-    b(paramInt, paramString, paramRespond);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a(wow.a(this.jdField_a_of_type_Wow), paramwol);
   }
 }
 

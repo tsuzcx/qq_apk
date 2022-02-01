@@ -1,98 +1,103 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.mobileqq.data.OperateVoipTipsInfo;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.util.Pair;
 import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import protocol.KQQConfig.GetResourceRespInfo;
 
-class ampv
-  extends anyu
+public class ampv
+  implements BusinessObserver
 {
-  ampv(ampp paramampp) {}
+  protected void onBgResourceUpdate(boolean paramBoolean, long paramLong) {}
   
-  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
+  protected void onCheckAuthCode(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetAppShareInfo(boolean paramBoolean, AppShareID paramAppShareID) {}
+  
+  protected void onGetAuthCode(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  protected void onGetRealNameStatus(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void onGetRealNameStatusForAV(boolean paramBoolean) {}
+  
+  protected void onGetRealNameStatusForExtendFriend(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void onGetRedPacketRainConfig(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onOrginConfigUpdate(boolean paramBoolean, long paramLong) {}
+  
+  protected void onShowVoipTips(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList) {}
+  
+  protected void onSmallPicDownloadSuccess(boolean paramBoolean, String paramString) {}
+  
+  protected void onThemeResourceUpdate(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean) {
-      ampp.c(this.a);
+    switch (paramInt)
+    {
     }
-  }
-  
-  protected void onAddFriend(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    ArrayList localArrayList;
     do
     {
-      return;
-      localArrayList = (ArrayList)ampp.a(this.a).clone();
-    } while (localArrayList.isEmpty());
-    Iterator localIterator = localArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (ajmf)localIterator.next();
-      if ((localObject instanceof ajma))
+      do
       {
-        localObject = (ajma)localObject;
-        int i = ((ajma)localObject).a.structMsg.msg.sub_type.get();
-        localObject = ((ajma)localObject).a.senderuin;
-        if ((i == 13) && (paramString.equals(localObject))) {
-          localIterator.remove();
-        }
-      }
-    }
-    ampp.a(this.a, localArrayList);
-    this.a.notifyDataSetChanged();
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean) {
-      this.a.notifyDataSetChanged();
-    }
-  }
-  
-  public void onSuspiciousGetUnreadNum(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSuspiciousGetUnreadNum " + paramBoolean + " " + paramInt1 + " " + paramInt2);
-    }
-    if ((ampp.a(this.a) != null) && (ampp.a(this.a).getVisibility() == 0))
-    {
-      if ((paramBoolean) && (paramInt2 > 0)) {
-        ampp.a(this.a).setText(paramInt2 + "");
-      }
-    }
-    else {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              onBgResourceUpdate(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+              return;
+              onThemeResourceUpdate(paramBoolean, (GetResourceRespInfo)paramObject);
+              return;
+              onSmallPicDownloadSuccess(paramBoolean, (String)paramObject);
+              return;
+              onUpgradeConfig(paramBoolean, (UpgradeDetailWrapper)paramObject);
+              return;
+              onGetAppShareInfo(paramBoolean, (AppShareID)paramObject);
+              return;
+              onOrginConfigUpdate(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+              return;
+              onUpdateStatusActions(paramBoolean, ((Integer)paramObject).intValue());
+              return;
+              if ((paramObject != null) && ((paramObject instanceof OperateVoipTipsInfo)))
+              {
+                paramObject = (OperateVoipTipsInfo)paramObject;
+                onShowVoipTips(paramObject.uin, paramObject.uinType, paramObject.taskList);
+              }
+              onUpdateWeatherResources(paramBoolean);
+              return;
+              paramObject = (Pair)paramObject;
+              onGetAuthCode(paramBoolean, (String)paramObject.first, (String)paramObject.second);
+              return;
+              onCheckAuthCode(paramBoolean, ((Boolean)paramObject).booleanValue());
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+            onGetRedPacketRainConfig(((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+          onGetRealNameStatus((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length <= 4);
+      onGetRealNameStatusForExtendFriend((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
       return;
-    }
-    ampp.a(this.a).setText("");
+    } while (!(paramObject instanceof Object[]));
+    onGetRealNameStatusForAV(((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
   }
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((paramBoolean1) && (brlp.a(paramBundle.getInt("source_id")))) {
-      ampp.c(this.a);
-    }
-  }
+  protected void onUpdateStatusActions(boolean paramBoolean, int paramInt) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.notifyDataSetChanged();
-    }
-  }
+  protected void onUpdateWeatherResources(boolean paramBoolean) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.notifyDataSetChanged();
-    }
-  }
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper) {}
 }
 
 

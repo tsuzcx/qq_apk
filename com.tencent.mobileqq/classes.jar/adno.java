@@ -1,40 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 
 class adno
-  extends SimpleObserver<axeh>
+  implements bgso
 {
-  adno(adnn paramadnn, adnx paramadnx) {}
+  adno(adnn paramadnn, JumpActivity paramJumpActivity) {}
   
-  public void a(axeh paramaxeh)
+  public void onResult(boolean paramBoolean)
   {
-    adnx localadnx = this.jdField_a_of_type_Adnx;
-    if (paramaxeh.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localadnx.a(paramaxeh, i);
-      return;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    if ((paramError instanceof AppInfoError)) {}
-    for (int i = ((AppInfoError)paramError).type;; i = 0)
-    {
-      this.jdField_a_of_type_Adnx.a(null, i);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.b();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_key_jump_src", 1);
+    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adno
  * JD-Core Version:    0.7.0.1
  */

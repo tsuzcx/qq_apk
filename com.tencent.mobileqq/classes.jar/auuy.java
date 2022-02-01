@@ -1,12 +1,18 @@
-import android.os.Bundle;
+import android.support.v4.util.ArraySet;
 
-public abstract interface auuy
+class auuy
+  implements apcu
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  auuy(auux paramauux, String paramString) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (auux.a(this.jdField_a_of_type_Auux) != null) {
+      auux.a(this.jdField_a_of_type_Auux).remove(Integer.valueOf(paramInt1));
+    }
+    apdi.a().a(paramInt1);
+    this.jdField_a_of_type_Auux.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
+  }
 }
 
 

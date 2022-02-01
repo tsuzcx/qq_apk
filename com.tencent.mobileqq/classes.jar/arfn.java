@@ -1,75 +1,64 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class arfn
+class arfn
+  extends bgod
 {
-  private static final arfn jdField_a_of_type_Arfn = new arfn();
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
+  arfn(arfm paramarfm) {}
   
-  public static arfn a(araj[] paramArrayOfaraj)
+  public void onDone(bgoe parambgoe)
   {
-    Object localObject;
-    if (paramArrayOfaraj == null) {
-      localObject = jdField_a_of_type_Arfn;
+    super.onDone(parambgoe);
+    areb localareb = this.a.a();
+    Bundle localBundle = parambgoe.a();
+    if (parambgoe.a() != 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = localBundle.getLong("vas_download_start");
+      localareb.a(localBundle, parambgoe, bool, parambgoe.a, parambgoe.d, l1 - l2, 0);
+      return;
+    }
+  }
+  
+  public void onDoneFile(bgoe parambgoe)
+  {
+    Object localObject = parambgoe.a();
+    int i = ((Bundle)localObject).getInt(parambgoe.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambgoe);
+    }
+    if (parambgoe.a != 0)
+    {
+      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambgoe.a);
+      if (areb.a(i)) {
+        areb.a.a((EmoticonPackage)localObject, i, -1, parambgoe.a);
+      }
+      bggr.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambgoe.a + "", "", "", "");
     }
     for (;;)
     {
-      return localObject;
-      try
-      {
-        arfn localarfn = new arfn();
-        int j = paramArrayOfaraj.length;
-        int i = 0;
-        localObject = localarfn;
-        if (i >= j) {
-          continue;
-        }
-        localObject = new JSONObject(paramArrayOfaraj[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localarfn.jdField_a_of_type_Boolean = bool;
-          localarfn.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
-          localarfn.b = ((JSONObject)localObject).optString("guideHighlightText", "");
-          localarfn.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
-          i += 1;
-          break;
-        }
-        return jdField_a_of_type_Arfn;
+      return;
+      areb localareb = this.a.a();
+      if (areb.a(i)) {
+        areb.a.a((EmoticonPackage)localObject, i, 0, 0);
       }
-      catch (Exception paramArrayOfaraj)
+      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
       {
-        QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfaraj);
+        localareb.b(parambgoe);
+        return;
+        if (i == 7) {
+          localareb.a(parambgoe);
+        }
       }
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfn
  * JD-Core Version:    0.7.0.1
  */

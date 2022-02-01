@@ -1,22 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.WebSocket;
 
 public class bjgx
-  implements DialogInterface.OnDismissListener
 {
-  public bjgx(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public int a;
+  public WebSocketProxy.WebSocketListener a;
+  public String a;
+  private OkHttpClient jdField_a_of_type_Okhttp3OkHttpClient;
+  public WebSocket a;
+  public boolean a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bjgx(int paramInt1, String paramString, Map<String, String> paramMap, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
+    this.jdField_a_of_type_Int = paramString;
+    this.jdField_a_of_type_JavaLangString = paramMap;
+    Iterator localIterator;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener = localIterator;
+    paramMap = new Request.Builder().url(paramMap).build().newBuilder();
+    if (paramInt2 != null)
+    {
+      localIterator = paramInt2.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        paramMap.addHeader(str, (String)paramInt2.get(str));
+      }
     }
-    ShareActionSheetV2.b(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
-    }
+    paramMap = paramMap.build();
+    long l = paramWebSocketListener / 1000 + 1;
+    this.jdField_a_of_type_Okhttp3OkHttpClient = new OkHttpClient().newBuilder().connectTimeout(l, TimeUnit.SECONDS).writeTimeout(l, TimeUnit.SECONDS).readTimeout(0L, TimeUnit.SECONDS).build();
+    this.jdField_a_of_type_Okhttp3OkHttpClient.newWebSocket(paramMap, new bjgy(this, paramInt1));
   }
 }
 

@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class axbc
-  implements DialogInterface.OnDismissListener
+class axbc
+  implements TextWatcher
 {
-  public axbc(MedalGuideView paramMedalGuideView) {}
+  axbc(axax paramaxax) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void afterTextChanged(Editable paramEditable)
   {
-    MedalGuideView.a(this.a);
+    awkj.a(this.a.e, 90);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

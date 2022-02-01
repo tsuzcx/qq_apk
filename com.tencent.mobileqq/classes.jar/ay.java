@@ -14,7 +14,7 @@ import com.dataline.activities.LiteActivity.27.9;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class ay
-  extends anwb
+  extends amqk
 {
   public ay(LiteActivity paramLiteActivity) {}
   

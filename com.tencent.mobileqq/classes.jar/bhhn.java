@@ -1,15 +1,6 @@
-import android.graphics.drawable.BitmapDrawable;
-import java.lang.ref.WeakReference;
-
-class bhhn
-  extends BitmapDrawable
+public abstract interface bhhn
 {
-  private final WeakReference<bhho> a;
-  
-  public bhho a()
-  {
-    return (bhho)this.a.get();
-  }
+  public abstract boolean isDirty();
 }
 
 

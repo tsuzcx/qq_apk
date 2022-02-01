@@ -1,23 +1,44 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 
-class uva
-  extends GestureDetector.SimpleOnGestureListener
+public class uva
+  extends bjwv<uof, bjwy<uof>>
 {
-  uva(uuz paramuuz) {}
+  private ujh a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public uva(Context paramContext, ujh paramujh)
   {
-    uqf.b("WSVerticalVideoItemView", "itemView onDoubleTap");
-    uuz.a(this.a, paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
+    super(paramContext);
+    this.a = paramujh;
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public int a(int paramInt)
   {
-    uqf.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
-    uuz.a(this.a);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    return 0;
+  }
+  
+  public bjwy<uof> a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return uvb.a(paramViewGroup);
+  }
+  
+  public void a(bjwy<uof> parambjwy)
+  {
+    super.onViewAttachedToWindow(parambjwy);
+    if (((parambjwy instanceof uvb)) && (this.a != null) && (this.a.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
+      ((uvb)parambjwy).a();
+    }
+  }
+  
+  public void a(bjwy<uof> parambjwy, int paramInt)
+  {
+    uof localuof = (uof)a(paramInt);
+    if (localuof == null) {}
+    while (!(parambjwy instanceof uvb)) {
+      return;
+    }
+    ((uvb)parambjwy).a(localuof, paramInt);
   }
 }
 

@@ -1,145 +1,94 @@
-import android.content.Context;
+import android.graphics.Paint;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISPlayerPreDownloader;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.util.Pair;
-import java.io.File;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class apsn
 {
-  public static volatile ISPlayerPreDownloader a;
+  public static int a;
+  private static Paint a;
+  public static Random a;
   
-  public static Pair<Long, String> a(String paramString)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoUtil", 2, "parseFileSize, str=" + paramString);
+    jdField_a_of_type_Int = 12;
+    jdField_a_of_type_JavaUtilRandom = new Random();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  }
+  
+  public static float a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      jdField_a_of_type_AndroidGraphicsPaint.setTextSize(36.0F);
+      return jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString) / 36.0F;
     }
-    if (TextUtils.isEmpty(paramString)) {}
+    return 1.0F;
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return ((paramInt >= 19968) && (paramInt <= 40959)) || (paramInt == 65292) || (paramInt == 12290) || (paramInt == 65281) || (paramInt == 8220) || (paramInt == 8221) || (paramInt == 65288) || (paramInt == 65289) || (paramInt == 126) || (paramInt == 65311);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = 0;
     for (;;)
     {
-      return null;
-      paramString = paramString.split("\\|");
-      if ((paramString == null) || (paramString.length != 2)) {
-        continue;
+      if (i >= paramString.length()) {
+        break label37;
       }
-      try
+      if (!a(paramString.codePointAt(i))) {
+        break;
+      }
+      i += 1;
+    }
+    label37:
+    return true;
+  }
+  
+  private static boolean b(String paramString, ArrayList<Pair<String, Float>> paramArrayList)
+  {
+    paramString = paramString.trim();
+    int j = -1;
+    boolean bool = true;
+    int i = 0;
+    if (i < paramString.length())
+    {
+      String str;
+      if (a(paramString.codePointAt(i)))
       {
-        l = Long.parseLong(paramString[0]);
-        if (l == -1L) {
-          continue;
+        str = paramString.substring(i, i + 1);
+        paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        int k = j;
+        if (j == -1) {
+          k = i;
         }
-        return new Pair(Long.valueOf(l), paramString[1]);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        if (i + 1 < paramString.length())
         {
-          if (QLog.isColorLevel()) {
-            localException.printStackTrace();
-          }
-          long l = -1L;
+          j = k;
+          if (!a(paramString.codePointAt(i + 1))) {}
         }
+        else
+        {
+          str = paramString.substring(k, i + 1);
+          paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
+          j = -1;
+        }
+        bool = false;
       }
     }
-  }
-  
-  private static String a()
-  {
-    if (bhjr.a()) {
-      return bigv.a(antf.ba + "iar" + File.separator);
-    }
-    return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "iar" + File.separator;
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = bjtz.d(paramString);
-      paramString = a() + paramString;
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AROnlineVideoUtil", 2, "getStorageDir, Exception");
-        paramString.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    if (a != null)
-    {
-      a.destory();
-      a = null;
-    }
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = true;
-    if (bhnv.b(BaseApplication.getContext()) == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload, isWifi=" + bool);
-      }
-      if (bool) {}
-      return;
-      bool = false;
-    }
-  }
-  
-  public static void a(Context paramContext, ArVideoResourceInfo paramArVideoResourceInfo)
-  {
-    boolean bool = true;
-    if ((paramArVideoResourceInfo == null) || (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) || (paramArVideoResourceInfo.jdField_d_of_type_Int != 4)) {
-      return;
-    }
-    if (bhnv.b(BaseApplication.getContext()) == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload for multi, isWifi=" + bool);
-      }
-      if (!bool) {
-        break;
-      }
-      if (a == null) {
-        a = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 108);
-      }
-      if (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) {
-        break;
-      }
-      paramContext = paramArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-      String str = a(paramContext);
-      bool = a(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload for multi, url=" + paramContext + ", videoPath=" + str + ", isCached=" + bool);
-      }
-      paramContext = SuperPlayerFactory.createVideoInfoForUrl(paramContext, 101, bjtz.d(paramContext));
-      if (paramArVideoResourceInfo.a <= 4L) {
-        break;
-      }
-      a.startPreDownload(paramContext, paramArVideoResourceInfo.a / 4L);
-      return;
-      bool = false;
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    paramString = new File(paramString);
-    return (paramString.exists()) && (paramString.length() > 0L);
+    return bool;
   }
 }
 

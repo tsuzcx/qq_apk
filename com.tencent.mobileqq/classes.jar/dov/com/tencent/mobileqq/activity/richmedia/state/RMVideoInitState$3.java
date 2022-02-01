@@ -1,27 +1,27 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import anzj;
-import bdax;
-import bral;
+import amtj;
+import bbub;
+import bnum;
 import com.tencent.qphone.base.util.QLog;
 
 public class RMVideoInitState$3
   implements Runnable
 {
-  public RMVideoInitState$3(bral parambral) {}
+  public RMVideoInitState$3(bnum parambnum) {}
   
   public void run()
   {
-    boolean bool = bdax.a(bdax.y);
+    boolean bool = bbub.a(bbub.y);
     if (bool)
     {
-      RMVideoStateMgr.a().a(1102, anzj.a(2131712341), true);
+      RMVideoStateMgr.a().a(1102, amtj.a(2131712573), true);
       return;
     }
     try
     {
       if ((!this.this$0.d) && (this.this$0.f)) {
-        RMVideoStateMgr.a().a(1102, anzj.a(2131712344) + 1102, true);
+        RMVideoStateMgr.a().a(1102, amtj.a(2131712576) + 1102, true);
       }
       RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
       if (QLog.isColorLevel()) {

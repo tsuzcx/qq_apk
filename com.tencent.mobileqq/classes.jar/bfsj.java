@@ -1,23 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bfsj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  bfsj(bfsf parambfsf, bfrs parambfrs) {}
+  bfsj(bfse parambfse) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (bfsf.a(this.jdField_a_of_type_Bfsf) == 0);
-    TroopFileTransferManager.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).c(this.jdField_a_of_type_Bfrs.a);
-  }
+  public void onClick(View paramView) {}
 }
 
 

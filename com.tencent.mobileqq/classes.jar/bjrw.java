@@ -1,60 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class bjrw
-  extends awfv
+  extends ImageSpan
 {
-  public long b;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  
-  public bjrw(WebView paramWebView, long paramLong, String paramString)
+  public bjrw(Drawable paramDrawable, int paramInt)
   {
-    super(paramWebView, paramLong, paramString);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    super(paramDrawable, paramInt);
   }
   
-  public void a(String paramString, Object paramObject)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((localWebView == null) || (paramObject == null)) {
-      return;
-    }
-    String str = "'undefined'";
-    if ((paramObject instanceof String))
-    {
-      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
-      str = "'" + paramObject + "'";
-    }
-    for (;;)
-    {
-      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
-      return;
-      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
-        str = paramObject.toString();
-      } else if ((paramObject instanceof Boolean)) {
-        str = paramObject.toString();
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
-    }
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (localWebView == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.2(this, paramString, localWebView));
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

@@ -1,34 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
 
-public class affr
-  extends BroadcastReceiver
+class affr
+  implements ImageAssetDelegate
 {
-  public affr(QQIdentiferActivity paramQQIdentiferActivity) {}
+  affr(affp paramaffp) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
     {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        QQIdentiferActivity.a(this.a, 204, awgr.a);
-        QQIdentiferActivity.a(this.a, 204, awgr.a);
-        this.a.finish();
-      }
+      paramLottieImageAsset = bfvo.a(affp.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    catch (Exception paramLottieImageAsset)
     {
-      int i;
-      return;
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
     }
-    this.a.finish();
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 

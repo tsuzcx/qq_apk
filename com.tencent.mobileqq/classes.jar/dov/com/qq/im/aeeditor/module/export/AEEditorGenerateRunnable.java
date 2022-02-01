@@ -1,10 +1,10 @@
 package dov.com.qq.im.aeeditor.module.export;
 
-import bpam;
-import bpbw;
-import bphk;
-import bpji;
-import bpjk;
+import bmbx;
+import bmdg;
+import bmkg;
+import bmme;
+import bmmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.tavcut.bean.Size;
 import com.tencent.tavcut.exporter.VideoExportConfig;
@@ -12,11 +12,12 @@ import com.tencent.tavcut.exporter.VideoExporter;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.tavcut.util.VideoUtil;
 import com.tencent.weseevideo.model.MediaModel;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
 
 public class AEEditorGenerateRunnable
   implements Runnable
 {
-  private bpbw jdField_a_of_type_Bpbw;
+  private bmdg jdField_a_of_type_Bmdg;
   private VideoExporter jdField_a_of_type_ComTencentTavcutExporterVideoExporter;
   private MediaModel jdField_a_of_type_ComTencentWeseevideoModelMediaModel;
   private final String jdField_a_of_type_JavaLangString = "AEEditorGenerateRunnable";
@@ -24,32 +25,40 @@ public class AEEditorGenerateRunnable
   private String c;
   private String d;
   
-  public AEEditorGenerateRunnable(String paramString1, String paramString2, String paramString3, MediaModel paramMediaModel, bpbw parambpbw)
+  public AEEditorGenerateRunnable(String paramString1, String paramString2, String paramString3, MediaModel paramMediaModel, bmdg parambmdg)
   {
-    bpam.b("AEEditorGenerateRunnable", "[AEEditorGenerateRunnable] new :" + paramString1);
+    bmbx.b("AEEditorGenerateRunnable", "[AEEditorGenerateRunnable] new :" + paramString1);
     this.b = paramString1;
     this.c = paramString2;
     this.d = paramString3;
     this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel = paramMediaModel;
-    this.jdField_a_of_type_Bpbw = parambpbw;
+    this.jdField_a_of_type_Bmdg = parambmdg;
   }
   
-  private void a(bpjk parambpjk, Size paramSize)
+  private void a(bmmg parambmmg, Size paramSize)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("videoSrc=");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", videoDst=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", exportWidth=");
-    localStringBuilder.append(paramSize.getWidth());
-    localStringBuilder.append(", exportHeight=");
-    localStringBuilder.append(paramSize.getHeight());
+    if (paramSize != null)
+    {
+      localStringBuilder.append(", exportWidth=");
+      localStringBuilder.append(paramSize.getWidth());
+      localStringBuilder.append(", exportHeight=");
+      localStringBuilder.append(paramSize.getHeight());
+    }
     localStringBuilder.append(", exportBitRate=");
-    localStringBuilder.append(parambpjk.b());
+    localStringBuilder.append(parambmmg.b());
     localStringBuilder.append(", exportFrameRate=");
-    localStringBuilder.append(parambpjk.c());
-    bpam.d("AEEditorGenerateRunnable", "[run], exportParams: " + localStringBuilder.toString());
+    localStringBuilder.append(parambmmg.c());
+    bmbx.d("AEEditorGenerateRunnable", "[run], exportParams: " + localStringBuilder.toString());
+  }
+  
+  private boolean a()
+  {
+    return (this.b != null) && (this.b.startsWith("multi_video_"));
   }
   
   public VideoExporter a()
@@ -62,28 +71,38 @@ public class AEEditorGenerateRunnable
     try
     {
       TAVCutVideoSession localTAVCutVideoSession = new TAVCutVideoSession();
-      bpjk localbpjk = bpji.a();
-      Size localSize = localbpjk.a(VideoUtil.getVideoSize(this.c));
-      localTAVCutVideoSession.setMediaModel(this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel);
-      localTAVCutVideoSession.init(BaseApplicationImpl.getContext());
-      VideoExportConfig localVideoExportConfig = new VideoExportConfig();
-      localVideoExportConfig.setOutputPath(this.d);
-      localVideoExportConfig.setSize(localSize.getWidth(), localSize.getHeight());
-      localVideoExportConfig.setBitRate(localbpjk.b());
-      localVideoExportConfig.setFrameRate(localbpjk.c());
-      localTAVCutVideoSession.applyCurrentSticker();
-      a(localbpjk, localSize);
-      this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter = localTAVCutVideoSession.getExporter(localVideoExportConfig);
-      this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter.export(new bphk(this, localTAVCutVideoSession));
+      bmmg localbmmg = bmme.a();
+      Size localSize;
+      if (a())
+      {
+        AEEditorMultiVideoEditFragment.a(BaseApplicationImpl.getContext(), localTAVCutVideoSession, localbmmg, this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel, null, null);
+        localSize = AEEditorMultiVideoEditFragment.a(localTAVCutVideoSession);
+      }
+      for (;;)
+      {
+        localSize = localbmmg.a(localSize);
+        VideoExportConfig localVideoExportConfig = new VideoExportConfig();
+        localVideoExportConfig.setOutputPath(this.d);
+        localVideoExportConfig.setSize(localSize.getWidth(), localSize.getHeight());
+        localVideoExportConfig.setBitRate(localbmmg.b());
+        localVideoExportConfig.setFrameRate(localbmmg.c());
+        localTAVCutVideoSession.applyCurrentSticker();
+        a(localbmmg, localSize);
+        this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter = localTAVCutVideoSession.getExporter(localVideoExportConfig);
+        this.jdField_a_of_type_ComTencentTavcutExporterVideoExporter.export(new bmkg(this, localTAVCutVideoSession));
+        return;
+        localSize = VideoUtil.getVideoSize(this.c);
+        localTAVCutVideoSession.setMediaModel(this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel);
+        localTAVCutVideoSession.init(BaseApplicationImpl.getContext());
+      }
       return;
     }
     catch (Exception localException)
     {
-      do
-      {
-        bpam.d("AEEditorGenerateRunnable", "[ERROR!!!!] generate error" + localException.getMessage());
-      } while (this.jdField_a_of_type_Bpbw == null);
-      this.jdField_a_of_type_Bpbw.a(this.b, -3);
+      bmbx.d("AEEditorGenerateRunnable", "[ERROR!!!!] generate error" + localException.getMessage());
+      if (this.jdField_a_of_type_Bmdg != null) {
+        this.jdField_a_of_type_Bmdg.a(this.b, -3);
+      }
     }
   }
 }

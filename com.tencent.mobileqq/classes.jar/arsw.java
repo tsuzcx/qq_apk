@@ -1,9 +1,15 @@
-public class arsw
+import android.view.animation.Interpolator;
+
+class arsw
+  implements Interpolator
 {
-  public int a;
-  public String a = "";
-  public String b;
-  public String c;
+  arsw(arsq paramarsq) {}
+  
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+  }
 }
 
 

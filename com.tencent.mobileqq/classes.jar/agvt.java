@@ -1,76 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agvt
-  implements agvc
+  implements agut
 {
-  private aiap jdField_a_of_type_Aiap;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public agvt(aguw paramaguw, BaseChatPie paramBaseChatPie)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  private PokeAndEmoPanel a()
-  {
-    if (this.jdField_a_of_type_Aiap == null) {
-      this.jdField_a_of_type_Aiap = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    }
-    return (PokeAndEmoPanel)this.jdField_a_of_type_Aiap.b(23);
-  }
-  
-  private void a()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.a();
-    }
-  }
-  
-  private void b()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.c();
-    }
-  }
-  
-  private void c()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null)
-    {
-      localPokeAndEmoPanel.b();
-      ahnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), ahnt.a);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 9: 
-    case 11: 
-    case 12: 
-    default: 
-      return;
-    case 8: 
-      a();
-      return;
-    case 10: 
-      b();
-      return;
-    }
-    c();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 8, 10, 13 };
+    paramagap.e(paramagcc.b);
   }
 }
 

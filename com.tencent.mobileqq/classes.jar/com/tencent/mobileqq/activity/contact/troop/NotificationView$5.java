@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import aoti;
+import anmf;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,7 +12,7 @@ class NotificationView$5
   public void run()
   {
     if (this.this$0.a != null) {
-      this.this$0.a.a().a().c();
+      this.this$0.a.getMsgHandler().a().c();
     }
   }
 }

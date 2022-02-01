@@ -1,25 +1,56 @@
-import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wee
-  implements vyy
+  extends vqr
 {
-  public wee(QCircleInsFeedItemView paramQCircleInsFeedItemView, Object paramObject) {}
+  public static final String a;
+  public xng a;
   
-  public void a()
+  static
   {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_comment_list_775");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    try
     {
-      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
-      aaak.a().a(new QCircleDoublePraiseAnimationEvent(str, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType, QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)));
-      QLog.d("QCircleDoubleClickLayout", 1, "dispatchEvent id:" + str + " pageType:" + this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType);
-      vud.a().a(new vuf().a("content").b("like").a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a()).a(QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)).c(((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).poster.id.get()));
+      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
+      return new wef(localRspFeedCommentList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
+    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Xng.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Xng.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Xng.jdField_b_of_type_JavaLangString = "";
+    }
+    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Xng.jdField_b_of_type_JavaLangString));
+    localReqFeedCommentList.source.set(this.jdField_a_of_type_Xng.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Xng.jdField_b_of_type_Int != -1) {
+      localReqFeedCommentList.type.set(this.jdField_a_of_type_Xng.jdField_b_of_type_Int);
+    }
+    return localReqFeedCommentList.toByteArray();
   }
 }
 

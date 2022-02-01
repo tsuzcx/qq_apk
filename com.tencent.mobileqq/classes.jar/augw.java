@@ -1,20 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 import com.tencent.qphone.base.util.QLog;
 
-class augw
-  extends aocj
+public class augw
+  implements DialogInterface.OnClickListener
 {
-  augw(augr paramaugr) {}
+  public augw(HotPicPageView paramHotPicPageView, auhb paramauhb) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt1 == 0)
-    {
-      if (augr.a(this.a)) {
-        auna.a(2131693816);
-      }
-      augr.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
-    }
+    this.jdField_a_of_type_Auhb.a(-11);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
   }
 }
 

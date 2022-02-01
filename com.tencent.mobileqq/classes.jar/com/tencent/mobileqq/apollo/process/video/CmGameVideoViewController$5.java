@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.process.video;
 
+import alzx;
+import amad;
+import amke;
 import android.text.TextUtils;
-import anfd;
-import anfj;
-import anpk;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 
 public class CmGameVideoViewController$5
   implements Runnable
 {
-  public CmGameVideoViewController$5(anfj paramanfj, int paramInt, long paramLong) {}
+  public CmGameVideoViewController$5(amad paramamad, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if ((anfj.a(this.this$0) == null) || (TextUtils.isEmpty(anfj.a(this.this$0).c))) {
+    if ((amad.a(this.this$0) == null) || (TextUtils.isEmpty(amad.a(this.this$0).c))) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(anfj.a(this.this$0).c);
+    localStringBuilder.append(amad.a(this.this$0).c);
     String str3 = "";
     String str1 = str3;
     switch (this.jdField_a_of_type_Int)
@@ -36,7 +36,7 @@ public class CmGameVideoViewController$5
         if (!TextUtils.isEmpty(str1)) {
           localStringBuilder.append("&video=").append(URLEncoder.encode(str1, "UTF-8"));
         }
-        anpk.a(localStringBuilder.toString(), null, null);
+        amke.a(localStringBuilder.toString(), null, null);
         return;
       }
       catch (Throwable localThrowable)
@@ -44,29 +44,29 @@ public class CmGameVideoViewController$5
         QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
         return;
       }
-      if ((anfj.a(this.this$0) & 0x1) == 1) {
+      if ((amad.a(this.this$0) & 0x1) == 1) {
         break;
       }
-      String str2 = anfj.a(this.this$0, 0L, 0L, 1L, 0L);
-      anfj.a(this.this$0, anfj.a(this.this$0) | 0x1);
+      String str2 = amad.a(this.this$0, 0L, 0L, 1L, 0L);
+      amad.a(this.this$0, amad.a(this.this$0) | 0x1);
       continue;
-      if ((anfj.a(this.this$0) & 0x2) == 2) {
+      if ((amad.a(this.this$0) & 0x2) == 2) {
         break;
       }
       str2 = "";
-      anfj.a(this.this$0, anfj.a(this.this$0) | 0x2);
+      amad.a(this.this$0, amad.a(this.this$0) | 0x2);
       continue;
-      if ((anfj.a(this.this$0) & 0x4) == 4) {
+      if ((amad.a(this.this$0) & 0x4) == 4) {
         break;
       }
-      str2 = anfj.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
-      anfj.a(this.this$0, anfj.a(this.this$0) | 0x4);
+      str2 = amad.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
+      amad.a(this.this$0, amad.a(this.this$0) | 0x4);
       continue;
-      if ((anfj.a(this.this$0) & 0x8) == 8) {
+      if ((amad.a(this.this$0) & 0x8) == 8) {
         break;
       }
-      str2 = anfj.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
-      anfj.a(this.this$0, anfj.a(this.this$0) | 0x8);
+      str2 = amad.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
+      amad.a(this.this$0, amad.a(this.this$0) | 0x8);
     }
   }
 }

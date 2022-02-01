@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class pwt
-  implements qej
+  extends Handler
 {
-  pwt(pws parampws, ArticleInfo paramArticleInfo, Container paramContainer) {}
-  
-  public void a()
+  pwt(pwr parampwr, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b;
-      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+    default: 
+      return;
     }
+    this.a.f();
   }
 }
 

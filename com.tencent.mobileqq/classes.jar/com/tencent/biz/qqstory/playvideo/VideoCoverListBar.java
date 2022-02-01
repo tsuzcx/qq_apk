@@ -8,34 +8,34 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewConfiguration;
 import android.widget.ListView;
-import ascz;
+import aqww;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wte;
-import wth;
-import xlw;
-import xlx;
-import xly;
-import xmb;
-import yuk;
-import yup;
-import zps;
+import vuu;
+import vux;
+import wnh;
+import wni;
+import wnj;
+import wnm;
+import xvv;
+import xwa;
 
 public class VideoCoverListBar
   extends ListView
 {
   private int jdField_a_of_type_Int;
-  private ascz jdField_a_of_type_Ascz;
+  private aqww jdField_a_of_type_Aqww;
   private String jdField_a_of_type_JavaLangString;
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private wte jdField_a_of_type_Wte;
-  private xlx jdField_a_of_type_Xlx;
-  private xly jdField_a_of_type_Xly;
-  private xmb jdField_a_of_type_Xmb;
+  private vuu jdField_a_of_type_Vuu;
+  private wni jdField_a_of_type_Wni;
+  private wnj jdField_a_of_type_Wnj;
+  private wnm jdField_a_of_type_Wnm;
   private int jdField_b_of_type_Int;
-  private ascz jdField_b_of_type_Ascz;
+  private aqww jdField_b_of_type_Aqww;
   private int c;
   private int d;
   
@@ -62,12 +62,12 @@ public class VideoCoverListBar
       if (paramList == null) {}
       for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
       {
-        this.jdField_a_of_type_Xly.notifyDataSetChanged();
+        this.jdField_a_of_type_Wnj.notifyDataSetChanged();
         if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
           break;
         }
         setVisibility(8);
-        yuk.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
+        xvv.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
         return;
       }
       setVisibility(0);
@@ -75,28 +75,28 @@ public class VideoCoverListBar
         ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
       }
     } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()));
-    yup.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    xwa.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Wte = ((wte)wth.a(5));
+    this.jdField_a_of_type_Vuu = ((vuu)vux.a(5));
     int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298904);
-    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298903);
-    this.c = getContext().getResources().getDimensionPixelOffset(2131298901);
-    this.d = zps.a(paramContext, 11.0F);
-    this.jdField_a_of_type_Ascz = new ascz(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Ascz = new ascz(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Xly = new xly(this, null);
+    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298969);
+    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298968);
+    this.c = getContext().getResources().getDimensionPixelOffset(2131298966);
+    this.d = UIUtils.dip2px(paramContext, 11.0F);
+    this.jdField_a_of_type_Aqww = new aqww(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_b_of_type_Aqww = new aqww(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Wnj = new wnj(this, null);
     setOverScrollMode(2);
     setDivider(new ColorDrawable(0));
     setDividerHeight(this.d);
     setHeaderDividersEnabled(false);
     setFooterDividersEnabled(false);
     setVerticalScrollBarEnabled(false);
-    setAdapter(this.jdField_a_of_type_Xly);
-    setOnTouchListener(new xlw(this, i));
+    setAdapter(this.jdField_a_of_type_Wnj);
+    setOnTouchListener(new wnh(this, i));
   }
   
   public void a()
@@ -106,7 +106,7 @@ public class VideoCoverListBar
   
   public void a(String paramString)
   {
-    List localList = this.jdField_a_of_type_Xmb.a();
+    List localList = this.jdField_a_of_type_Wnm.a();
     if (localList != null)
     {
       int i = 0;
@@ -115,7 +115,7 @@ public class VideoCoverListBar
         if (TextUtils.equals((CharSequence)localList.get(i), paramString))
         {
           this.jdField_a_of_type_JavaLangString = paramString;
-          yuk.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
+          xvv.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
           a(i, localList);
           return;
         }
@@ -123,27 +123,27 @@ public class VideoCoverListBar
       }
     }
     a(-1, localList);
-    yuk.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
+    xvv.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
   }
   
-  public void a(xmb paramxmb)
+  public void a(wnm paramwnm)
   {
-    this.jdField_a_of_type_Xmb = paramxmb;
+    this.jdField_a_of_type_Wnm = paramwnm;
   }
   
   public void b()
   {
-    a(-1, this.jdField_a_of_type_Xmb.a());
+    a(-1, this.jdField_a_of_type_Wnm.a());
   }
   
-  public void setOnVideoClickListener(xlx paramxlx)
+  public void setOnVideoClickListener(wni paramwni)
   {
-    this.jdField_a_of_type_Xlx = paramxlx;
+    this.jdField_a_of_type_Wni = paramwni;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar
  * JD-Core Version:    0.7.0.1
  */

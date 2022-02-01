@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bnxi;
+import blco;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -18,9 +18,9 @@ public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private static volatile long jdField_a_of_type_Long;
-  private bnxi jdField_a_of_type_Bnxi;
+  private blco jdField_a_of_type_Blco;
   
-  private bnxi a()
+  private blco a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -28,11 +28,11 @@ public class QzoneTiantaiTranslucentBrowserActivity
       switch (localIntent.getIntExtra("translucent_controller", 0))
       {
       default: 
-        return new bnxi(this);
+        return new blco(this);
       }
-      return new bnxi(this);
+      return new blco(this);
     }
-    return new bnxi(this);
+    return new blco(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -71,22 +71,23 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Bnxi != null) {
-      this.jdField_a_of_type_Bnxi.e();
+    if (this.jdField_a_of_type_Blco != null) {
+      this.jdField_a_of_type_Blco.e();
     }
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Bnxi != null) && (this.jdField_a_of_type_Bnxi.a())) {
+    if ((this.jdField_a_of_type_Blco != null) && (this.jdField_a_of_type_Blco.a())) {
       super.doOnBackPressed();
     }
   }
@@ -94,8 +95,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Bnxi != null) {
-      this.jdField_a_of_type_Bnxi.a();
+    if (this.jdField_a_of_type_Blco != null) {
+      this.jdField_a_of_type_Blco.a();
     }
     return bool;
   }
@@ -103,24 +104,24 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bnxi != null) {
-      this.jdField_a_of_type_Bnxi.d();
+    if (this.jdField_a_of_type_Blco != null) {
+      this.jdField_a_of_type_Blco.d();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bnxi != null) {
-      this.jdField_a_of_type_Bnxi.b();
+    if (this.jdField_a_of_type_Blco != null) {
+      this.jdField_a_of_type_Blco.b();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bnxi != null) {
-      this.jdField_a_of_type_Bnxi.c();
+    if (this.jdField_a_of_type_Blco != null) {
+      this.jdField_a_of_type_Blco.c();
     }
   }
   
@@ -133,13 +134,13 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bnxi = a();
+    this.jdField_a_of_type_Blco = a();
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

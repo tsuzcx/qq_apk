@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tribe.async.async.JobSegment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class adnq
-  extends axek<JobSegment>
+public class adnq
+  extends adnm
 {
-  adnq(adnp paramadnp, JobSegment paramJobSegment)
+  public adnq(JumpActivity paramJumpActivity)
   {
-    super(paramJobSegment);
+    super(paramJumpActivity);
   }
   
-  public void a(JobSegment paramJobSegment, boolean paramBoolean, axeh paramaxeh)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramBoolean)
-    {
-      adnp.a(this.a, paramaxeh);
-      return;
-    }
-    adnp.a(this.a, new AppInfoError(5, "appInfo error"));
+    this.b.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adnq
  * JD-Core Version:    0.7.0.1
  */

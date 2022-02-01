@@ -1,32 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
 
-class bnfg
-  extends Handler
+public class bnfg
+  implements wxe
 {
-  bnfg(bnff parambnff, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bnfg(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a_(wwz paramwwz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + bnff.a());
-    }
-    if (paramMessage.what == 1) {}
-    try
-    {
-      paramMessage = (String)paramMessage.obj;
-      bnff.a(this.a).a(paramMessage, this.a, 2);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
-    }
+    xvv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 

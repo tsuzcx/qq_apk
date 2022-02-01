@@ -1,37 +1,69 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public final class ausv
-  implements Handler.Callback
+public class ausv
 {
-  private final WeakReference<TdsDebugView> a;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<WebView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  private ausv(TdsDebugView paramTdsDebugView)
+  public ausv(WebView paramWebView, long paramLong, String paramString)
   {
-    this.a = new WeakReference(paramTdsDebugView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a()
   {
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return true;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("JB", 4, "onNoMatchMethod");
     }
-    switch (paramMessage.what)
+    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localWebView == null) {
+      return;
+    }
+    localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':1,'result':'no such method'})");
+  }
+  
+  public void a(Object paramObject)
+  {
+    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localWebView == null) {
+      return;
+    }
+    if (paramObject == null)
     {
-    default: 
-      return true;
-    case 1: 
-      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    case 2: 
-      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
+      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':0});");
+      return;
     }
-    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-    return true;
+    if (((paramObject instanceof Number)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof JSONObject))) {}
+    for (paramObject = paramObject.toString();; paramObject = "'" + paramObject.toString().replace("\\", "\\\\").replace("'", "\\'") + "'")
+    {
+      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':0,'result':" + paramObject + "});");
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localWebView != null) {
+      localWebView.loadUrl("javascript:" + paramString);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("JB", 4, "onPermissionDenied");
+    }
+    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localWebView != null) {
+      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':2,'result':'Permission denied'})");
+    }
   }
 }
 

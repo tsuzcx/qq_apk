@@ -1,14 +1,29 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
 class qel
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  qel(qek paramqek) {}
+  qel(qej paramqej, int paramInt, slt paramslt, pvc parampvc) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (this.jdField_a_of_type_Int == 120) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Slt.a(), this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.c, "kandian feed click");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      pet localpet = this.jdField_a_of_type_Slt.a().a();
+      if (localpet != null) {
+        localpet.a(paramView, this.jdField_a_of_type_Pvc.a(), 2);
+      }
+    }
   }
 }
 

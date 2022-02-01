@@ -1,100 +1,31 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anpo
+  extends anpp
 {
-  private List<WeakReference<anpy>> a = new ArrayList();
-  
-  public void a()
+  protected anpo(QQAppInterface paramQQAppInterface, anpt paramanpt)
   {
-    if (this.a != null) {
-      this.a.clear();
-    }
+    super(paramQQAppInterface, paramanpt);
   }
   
-  public void a(anpy paramanpy)
+  public int a(QQMessageFacade.Message paramMessage)
   {
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      WeakReference localWeakReference;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localWeakReference = (WeakReference)localIterator.next();
-      } while ((localWeakReference == null) || (localWeakReference.get() != paramanpy));
-    }
-    return;
-    this.a.add(new WeakReference(paramanpy));
+    return 527;
   }
   
-  public void a(ApolloActionData paramApolloActionData)
+  public anpt a(QQMessageFacade.Message paramMessage)
   {
-    if (this.a != null)
-    {
-      int i = 0;
-      while (i < this.a.size())
-      {
-        if (this.a.get(i) != null)
-        {
-          anpy localanpy = (anpy)((WeakReference)this.a.get(i)).get();
-          if (localanpy != null) {
-            localanpy.a(paramApolloActionData);
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void a(Boolean paramBoolean)
-  {
-    if (this.a != null)
-    {
-      int i = 0;
-      while (i < this.a.size())
-      {
-        if (this.a.get(i) != null)
-        {
-          anpy localanpy = (anpy)((WeakReference)this.a.get(i)).get();
-          if (localanpy != null) {
-            localanpy.a(paramBoolean);
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.a != null)
-    {
-      int i = 0;
-      while (i < this.a.size())
-      {
-        if (this.a.get(i) != null)
-        {
-          anpy localanpy = (anpy)((WeakReference)this.a.get(i)).get();
-          if (localanpy != null) {
-            localanpy.a();
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void b(anpy paramanpy)
-  {
-    if (this.a != null) {
-      this.a.remove(paramanpy);
-    }
+    Object localObject = atyf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage, c());
+    this.jdField_a_of_type_Anpt.d((String)localObject);
+    a();
+    a(paramMessage, this.jdField_a_of_type_Anpt);
+    localObject = atyf.a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramMessage = atyf.a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Anpt.a((Bitmap)localObject);
+    this.jdField_a_of_type_Anpt.c(paramMessage);
+    return this.jdField_a_of_type_Anpt;
   }
 }
 

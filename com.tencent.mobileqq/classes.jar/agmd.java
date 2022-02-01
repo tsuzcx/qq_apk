@@ -1,11 +1,21 @@
-class agmd
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+
+public class agmd
+  extends aezf
 {
-  String jdField_a_of_type_JavaLangString;
+  public long a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public QQWalletTransferBubbleView a;
+  public TextView b;
+  public QQWalletTransferBubbleView b;
+  public TextView c;
   
-  public agmd(agmb paramagmb, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public agmd(agma paramagma) {}
 }
 
 

@@ -1,52 +1,40 @@
-import java.nio.FloatBuffer;
+import com.immersion.touchsensesdk.IConnection;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
 
 public class hj
+  implements IConnection
 {
-  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = hk.a(jdField_a_of_type_ArrayOfFloat);
-  public static float[] a;
-  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = hk.a(jdField_b_of_type_ArrayOfFloat);
-  private static final float[] jdField_b_of_type_ArrayOfFloat;
-  private int jdField_a_of_type_Int = jdField_a_of_type_ArrayOfFloat.length / this.jdField_b_of_type_Int;
-  private int jdField_b_of_type_Int = 2;
-  private int jdField_c_of_type_Int = this.jdField_b_of_type_Int * 4;
-  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer = jdField_a_of_type_JavaNioFloatBuffer;
-  private int jdField_d_of_type_Int = 8;
-  private FloatBuffer jdField_d_of_type_JavaNioFloatBuffer = jdField_b_of_type_JavaNioFloatBuffer;
+  private oidb_0xa4d.IMMRRsp a;
   
-  static
+  public hj(oidb_0xa4d.IMMRRsp paramIMMRRsp)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+    this.a = paramIMMRRsp;
   }
   
-  public int a()
+  public void disconnect() {}
+  
+  public int getContentLength()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a.bytes_rsp_data.get().toByteArray().length;
   }
   
-  public FloatBuffer a()
+  public long getLastModified()
   {
-    return this.jdField_c_of_type_JavaNioFloatBuffer;
+    return this.a.int64_last_modified.get();
   }
   
-  public int b()
+  public int getResponseCode()
   {
-    return this.jdField_c_of_type_Int;
+    return this.a.int32_ret.get();
   }
   
-  public FloatBuffer b()
+  public byte[] readAllData()
   {
-    return this.jdField_d_of_type_JavaNioFloatBuffer;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public int d()
-  {
-    return this.jdField_b_of_type_Int;
+    return this.a.bytes_rsp_data.get().toByteArray();
   }
 }
 

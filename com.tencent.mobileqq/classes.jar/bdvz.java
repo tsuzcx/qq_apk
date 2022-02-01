@@ -1,39 +1,16 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bdvz
-  implements bdvy
+class bdvz
+  implements DialogInterface.OnDismissListener
 {
-  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
-  private final String b;
+  bdvz(bdvx parambdvx) {}
   
-  public bdvz(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
-    this.b = paramString;
-  }
-  
-  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    avzj.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (bdvj)((QQAppInterface)localObject).getManager(362);
-      if (localObject != null) {
-        ((bdvj)localObject).a(this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-      }
-    }
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
   }
 }
 

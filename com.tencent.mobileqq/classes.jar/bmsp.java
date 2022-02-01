@@ -1,26 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import dov.com.qq.im.capture.data.TemplateData;
 
 public final class bmsp
-  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
+  implements Parcelable.Creator<TemplateData>
 {
-  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
+  public TemplateData a(Parcel paramParcel)
   {
-    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
-    if (paramParcel != null)
-    {
-      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
-    }
-    return localGetGeoInfoRsp;
+    return new TemplateData(paramParcel);
   }
   
-  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  public TemplateData[] a(int paramInt)
   {
-    return null;
+    return new TemplateData[paramInt];
   }
 }
 

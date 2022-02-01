@@ -1,54 +1,94 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class apvi
-  implements INetInfoHandler
+public class apvi
+  extends aptq<apvj>
 {
-  apvi(apuy paramapuy) {}
-  
-  public void onNetMobile2None()
+  @NonNull
+  public apvj a(int paramInt)
   {
-    QLog.e("ark.download.module", 1, "onNetMobile2None");
+    return new apvj();
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  @Nullable
+  public apvj a(aptx[] paramArrayOfaptx)
   {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetMobile2Wifi", paramString });
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
-    paramString = BaseActivity.sTopActivity;
-    if ((apuy.a(this.a)) && (!apuy.b(this.a)) && (paramString != null))
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
     {
-      paramString = paramString.getString(2131690126);
-      if (apuy.a(this.a, paramString)) {
-        apuy.b(this.a, true);
+      apvj localapvj = apvj.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
       }
+      return localapvj;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
+    }
+    akhg.a(true);
+    return null;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void a(apvj paramapvj)
   {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetNone2Wifi", paramString });
+    if (paramapvj == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramapvj.toString());
+    }
+    akhg.a(true);
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public Class<apvj> clazz()
   {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetWifi2Mobile", paramString });
+    return apvj.class;
   }
   
-  public void onNetWifi2None()
+  public boolean isAccountRelated()
   {
-    QLog.e("ark.download.module", 1, "onNetWifi2None");
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
+    }
+    akhg.a(true);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+    akhg.a(true);
+  }
+  
+  public int type()
+  {
+    return 597;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apvi
  * JD-Core Version:    0.7.0.1
  */

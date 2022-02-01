@@ -1,19 +1,59 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class qkn
-  implements View.OnTouchListener
+  implements Application.ActivityLifecycleCallbacks
 {
-  qkn(qkj paramqkj, LinearLayout paramLinearLayout) {}
+  qkn(qki paramqki, Activity paramActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private void a(Activity paramActivity, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+    if (paramActivity != this.jdField_a_of_type_AndroidAppActivity) {}
+    do
+    {
+      return;
+      QLog.d("RvPolymericContainer", 1, "visibility changed, visible :  " + paramBoolean);
+      if (paramBoolean)
+      {
+        qki.c(this.jdField_a_of_type_Qki);
+        return;
+      }
+    } while (qki.a(this.jdField_a_of_type_Qki) == null);
+    qki.a(this.jdField_a_of_type_Qki).b();
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if ((paramActivity == this.jdField_a_of_type_AndroidAppActivity) && (BaseApplication.getContext() != null)) {
+      BaseApplication.getContext().unregisterActivityLifecycleCallbacks(this);
     }
-    return false;
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    a(paramActivity, false);
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    a(paramActivity, true);
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    a(paramActivity, true);
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    a(paramActivity, false);
   }
 }
 

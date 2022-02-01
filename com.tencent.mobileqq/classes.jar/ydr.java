@@ -1,9 +1,6 @@
-import android.view.View;
-
-public abstract interface ydr
-{
-  public abstract void a(View paramView, ykj paramykj);
-}
+public class ydr
+  extends vko
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

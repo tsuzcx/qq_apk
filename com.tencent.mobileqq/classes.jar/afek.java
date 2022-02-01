@@ -1,22 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
-public class afek
-  implements View.OnTouchListener
+class afek
+  implements Animator.AnimatorListener
 {
-  public afek(PublicAccountListActivity paramPublicAccountListActivity) {}
+  afek(afej paramafej) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.a();
-      ocd.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimation", 2, "onAnimationEnd");
     }
-    return true;
+    afej.a(this.a).remove();
+    if (afej.a(this.a).isEmpty()) {
+      this.a.c();
+    }
+    while (afej.a(this.a)) {
+      return;
+    }
+    afej.a(this.a).clear();
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,39 +1,18 @@
-public class bdxt
-  extends bdxn
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+
+class bdxt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int f;
-  private int g;
+  bdxt(bdxs parambdxs, View paramView) {}
   
-  public bdxt(int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramInt1, 4, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  public bdxt(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, 4, paramInt4);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.a >= this.g) {
-        this.a = this.g;
-      }
-    }
-    for (;;)
-    {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.a <= this.g) {
-        this.a = this.g;
-      }
-    }
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
 }
 

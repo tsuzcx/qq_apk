@@ -1,42 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
-public class atih
-  implements bliz
+public abstract class atih
+  extends atig
 {
-  public atih(LocalFileBrowserActivity paramLocalFileBrowserActivity, blir paramblir) {}
+  protected MethodChannel a;
   
-  public void OnClick(View paramView, int paramInt)
+  public atih(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    switch (paramInt)
-    {
+    super(paramString, paramBinaryMessenger);
+    MethodCodec localMethodCodec = a();
+    if (TextUtils.isEmpty(paramString)) {
+      throw new IllegalArgumentException("channelName must not be empty");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-        if ((!auog.a(paramView.c())) || (auog.c(paramView.c())))
-        {
-          aunj.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          auna.a(2131692076);
-        }
-      }
+    if (localMethodCodec == null) {
+      throw new IllegalArgumentException("methodCodec must not be null");
     }
+    this.a = new MethodChannel(paramBinaryMessenger, paramString, a());
+    this.a.setMethodCallHandler(a());
   }
+  
+  public abstract MethodChannel.MethodCallHandler a();
+  
+  public abstract MethodCodec a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atih
  * JD-Core Version:    0.7.0.1
  */

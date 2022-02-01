@@ -1,30 +1,36 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.List;
 
 public class bgvr
-  extends TextView
 {
-  public bgvr(FollowImageTextView paramFollowImageTextView, Context paramContext)
+  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bhjm parambhjm)
   {
-    super(paramContext);
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if (FollowImageTextView.a(this.a))
-    {
-      super.onDraw(paramCanvas);
-      return;
+    int i = 0;
+    if (paramIntent != null) {
+      i = paramIntent.getIntExtra("tabBarStyle", 0);
     }
-    Object localObject = getPaint();
-    ((TextPaint)localObject).setColor(getCurrentTextColor());
-    ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((bgvu)localObject).a(FollowImageTextView.a(this.a) - 1);
-    ((bgvu)localObject).a(paramCanvas);
+    bkvd.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
+    if (i == 1)
+    {
+      paramContext = new QQComicTabBarView(paramContext);
+      paramContext.a(paramIntent, paramList, parambhjm);
+      return paramContext;
+    }
+    if (i == 2)
+    {
+      paramContext = new ReaderTabBarView(paramContext);
+      paramContext.a(paramIntent, paramList, parambhjm);
+      return paramContext;
+    }
+    paramContext = new SwiftFragmentTabBar(paramContext);
+    paramContext.a(paramList, parambhjm);
+    return paramContext;
   }
 }
 

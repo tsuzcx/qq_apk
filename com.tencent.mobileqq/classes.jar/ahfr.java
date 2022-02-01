@@ -1,40 +1,14 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahfr
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<QQAppInterface> a;
-  private WeakReference<Context> b;
+  ahfr(ahfp paramahfp, ahfz paramahfz) {}
   
-  ahfr(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.a.get();
-    if (((this.b.get() instanceof Activity)) && (paramView != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
-      }
-      HotChatManager.a(null, false);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    ahfp.a(this.jdField_a_of_type_Ahfp, this.jdField_a_of_type_Ahfz);
   }
 }
 

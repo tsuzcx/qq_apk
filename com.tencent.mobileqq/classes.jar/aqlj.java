@@ -1,60 +1,78 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqlj
-  extends AnimatorListenerAdapter
+public class aqlj
+  extends aptq<String>
 {
-  aqlj(aqli paramaqli) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  @NonNull
+  public String a(int paramInt)
   {
-    this.a.a("animator set end!");
-    if (this.a.c != null)
-    {
-      aqli.a(this.a).removeView(this.a.c);
-      this.a.c = null;
-      if (this.a.d == null) {
-        break label186;
-      }
-      aqli.b(this.a).removeView(this.a.d);
-      this.a.d = null;
+    return "";
+  }
+  
+  @Nullable
+  public String a(aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
     }
-    for (;;)
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
+      paramArrayOfaptx = null;
+    }
+    String str;
+    do
     {
-      if (this.a.e != null)
-      {
-        this.a.e.setVisibility(0);
-        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-        paramAnimator.a = -1L;
-        paramAnimator.b();
-      }
-      if (this.a.jdField_b_of_type_AndroidViewView != null) {
-        this.a.jdField_b_of_type_AndroidViewView.invalidate();
-      }
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.a(true);
-      return;
-      this.a.a("something wrong, bubble view is null!");
-      break;
-      label186:
-      this.a.a("something wrong, pendview is null!");
+      return paramArrayOfaptx;
+      str = paramArrayOfaptx[0].a;
+      paramArrayOfaptx = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
+    return str;
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public Class<String> clazz()
   {
-    this.a.a("animator set start!");
-    this.a.a(false);
+    return String.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 462;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,34 @@
-import android.app.Activity;
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class nno
-  implements bliz
+  extends Handler
 {
-  nno(nnj paramnnj, Activity paramActivity, String paramString, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  nno(nnn paramnnn, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Blir.dismiss();
       return;
-      nnj.c(this.jdField_a_of_type_Nnj, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      nnj.a(this.jdField_a_of_type_Nnj, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
     }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

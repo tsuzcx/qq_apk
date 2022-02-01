@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amsx;
+import alnr;
 import android.text.TextUtils;
 import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -22,7 +22,7 @@ class ApolloPanel$34
   {
     boolean bool4 = false;
     boolean bool3 = false;
-    if ((this.this$0.a == null) || (this.this$0.a.a == null)) {
+    if ((this.this$0.a == null) || (this.this$0.a.app == null)) {
       return;
     }
     bool1 = bool3;
@@ -59,8 +59,8 @@ class ApolloPanel$34
             bool1 = bool3;
             if (localJSONObject != null)
             {
-              amsx localamsx = (amsx)this.this$0.a.a.getManager(153);
-              ApolloPanel.a(this.this$0, localamsx.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
+              alnr localalnr = (alnr)this.this$0.a.app.getManager(153);
+              ApolloPanel.a(this.this$0, localalnr.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
               localObject = ApolloPanel.a(this.this$0);
               bool1 = bool3;
               if (localObject == null) {}
@@ -81,7 +81,7 @@ class ApolloPanel$34
             }
             ApolloPanel.a(this.this$0, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, ApolloPanel.a(this.this$0).icon_url);
             ApolloPanel.c(this.this$0);
-            VipUtils.a(this.this$0.a.a, "cmshow", "Apollo", "house_new_view", ApolloUtil.b(this.this$0.a.b()), 0, new String[] { ApolloPanel.a(this.this$0).msg_id });
+            VipUtils.a(this.this$0.a.app, "cmshow", "Apollo", "house_new_view", ApolloUtil.b(this.this$0.a.getCurType()), 0, new String[] { ApolloPanel.a(this.this$0).msg_id });
           }
           bool1 = true;
           ApolloPanel.a(this.this$0, bool1);

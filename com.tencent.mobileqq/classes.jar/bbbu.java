@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bbbu
-  implements DialogInterface.OnClickListener
+class bbbu
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bbbu(bbbt parambbbt) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    bbbt.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

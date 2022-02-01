@@ -1,54 +1,22 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class adoe
-  extends adod
+public class adoe
+  extends adnm
 {
-  public adoe(admy paramadmy, long paramLong)
+  public adoe(JumpActivity paramJumpActivity)
   {
-    super(paramadmy, 3, paramLong);
+    super(paramJumpActivity);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("nation", paramSosoLbsInfo.a.c);
-        localJSONObject.put("province", paramSosoLbsInfo.a.d);
-        localJSONObject.put("city", paramSosoLbsInfo.a.e);
-        localJSONObject.put("district", paramSosoLbsInfo.a.g);
-        adqf.a(this.jdField_a_of_type_Admy, localJSONObject);
-        return;
-      }
-      catch (JSONException paramSosoLbsInfo)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
-          }
-        }
-      }
-    }
-    adqf.a(this.jdField_a_of_type_Admy, paramInt, "error " + paramInt);
+    this.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adoe
  * JD-Core Version:    0.7.0.1
  */

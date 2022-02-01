@@ -1,8 +1,8 @@
 package com.tencent.mfsdk.reporter;
 
-import admm;
+import acjf;
 import android.text.TextUtils;
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ public class QCloudFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private admm jdField_a_of_type_Admm;
+  private acjf jdField_a_of_type_Acjf;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -30,12 +30,12 @@ public class QCloudFileUploadRunnable
   private String d;
   private String e;
   
-  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, admm paramadmm, int paramInt, MqqHandler paramMqqHandler)
+  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, acjf paramacjf, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Admm = paramadmm;
+    this.jdField_a_of_type_Acjf = paramacjf;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -104,7 +104,7 @@ public class QCloudFileUploadRunnable
       l = System.currentTimeMillis();
       str = "out_" + String.valueOf(l) + ".zip";
       localObject = (String)localObject + "/" + str;
-      bhmi.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
+      FileUtils.zipFiles(this.jdField_a_of_type_JavaLangString, (String)localObject);
     }
     return false;
     return false;
@@ -141,13 +141,13 @@ public class QCloudFileUploadRunnable
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 190	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Boolean	Z
+    //   1: getfield 191	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Boolean	Z
     //   4: ifne +16 -> 20
     //   7: aload_0
     //   8: iconst_1
-    //   9: putfield 190	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Boolean	Z
+    //   9: putfield 191	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Boolean	Z
     //   12: aload_0
-    //   13: invokespecial 192	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	()Z
+    //   13: invokespecial 193	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	()Z
     //   16: ifne +4 -> 20
     //   19: return
     //   20: aload_0
@@ -157,69 +157,69 @@ public class QCloudFileUploadRunnable
     //   30: ifeq +11 -> 41
     //   33: ldc 68
     //   35: iconst_2
-    //   36: ldc 194
-    //   38: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: ldc 195
+    //   38: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   41: aload_0
     //   42: iconst_0
-    //   43: invokespecial 167	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
+    //   43: invokespecial 168	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
     //   46: return
     //   47: aload_0
     //   48: getfield 29	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_JavaNetURL	Ljava/net/URL;
-    //   51: invokevirtual 203	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   54: checkcast 205	java/net/HttpURLConnection
+    //   51: invokevirtual 204	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   54: checkcast 206	java/net/HttpURLConnection
     //   57: astore 7
     //   59: aload 7
     //   61: sipush 30000
-    //   64: invokevirtual 208	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   64: invokevirtual 209	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   67: aload 7
     //   69: sipush 30000
-    //   72: invokevirtual 211	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   72: invokevirtual 212	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   75: aload 7
     //   77: iconst_1
-    //   78: invokevirtual 214	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   78: invokevirtual 215	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   81: aload 7
     //   83: iconst_1
-    //   84: invokevirtual 217	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   84: invokevirtual 218	java/net/HttpURLConnection:setDoInput	(Z)V
     //   87: aload 7
     //   89: iconst_0
-    //   90: invokevirtual 220	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   90: invokevirtual 221	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   93: aload 7
-    //   95: ldc 221
-    //   97: invokevirtual 224	java/net/HttpURLConnection:setChunkedStreamingMode	(I)V
+    //   95: ldc 222
+    //   97: invokevirtual 225	java/net/HttpURLConnection:setChunkedStreamingMode	(I)V
     //   100: aload 7
-    //   102: ldc 226
-    //   104: invokevirtual 229	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   102: ldc 227
+    //   104: invokevirtual 230	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   107: aload 7
-    //   109: ldc 231
-    //   111: ldc 233
-    //   113: invokevirtual 237	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: ldc 232
+    //   111: ldc 234
+    //   113: invokevirtual 238	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload 7
-    //   118: ldc 239
-    //   120: ldc 241
-    //   122: invokevirtual 237	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: ldc 240
+    //   120: ldc 242
+    //   122: invokevirtual 238	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   125: aload 7
-    //   127: ldc 243
-    //   129: ldc 245
-    //   131: invokevirtual 237	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   134: new 247	java/io/DataOutputStream
+    //   127: ldc 244
+    //   129: ldc 246
+    //   131: invokevirtual 238	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   134: new 248	java/io/DataOutputStream
     //   137: dup
     //   138: aload 7
-    //   140: invokevirtual 251	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   143: invokespecial 254	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   140: invokevirtual 252	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   143: invokespecial 255	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   146: astore 6
     //   148: aload 6
     //   150: astore 5
     //   152: aload 6
     //   154: aload_0
     //   155: getfield 117	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   158: invokevirtual 257	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   158: invokevirtual 258	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   161: aload 6
     //   163: astore 5
     //   165: aload_0
     //   166: getfield 51	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_JavaIoFileInputStream	Ljava/io/FileInputStream;
-    //   169: invokevirtual 260	java/io/FileInputStream:available	()I
-    //   172: ldc 221
-    //   174: invokestatic 266	java/lang/Math:min	(II)I
+    //   169: invokevirtual 261	java/io/FileInputStream:available	()I
+    //   172: ldc 222
+    //   174: invokestatic 267	java/lang/Math:min	(II)I
     //   177: istore_2
     //   178: aload 6
     //   180: astore 5
@@ -233,7 +233,7 @@ public class QCloudFileUploadRunnable
     //   195: aload 8
     //   197: iconst_0
     //   198: iload_2
-    //   199: invokevirtual 270	java/io/FileInputStream:read	([BII)I
+    //   199: invokevirtual 271	java/io/FileInputStream:read	([BII)I
     //   202: istore_1
     //   203: iload_1
     //   204: ifle +207 -> 411
@@ -243,14 +243,14 @@ public class QCloudFileUploadRunnable
     //   213: aload 8
     //   215: iconst_0
     //   216: iload_2
-    //   217: invokevirtual 274	java/io/DataOutputStream:write	([BII)V
+    //   217: invokevirtual 275	java/io/DataOutputStream:write	([BII)V
     //   220: aload 6
     //   222: astore 5
     //   224: aload_0
     //   225: getfield 51	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_JavaIoFileInputStream	Ljava/io/FileInputStream;
-    //   228: invokevirtual 260	java/io/FileInputStream:available	()I
-    //   231: ldc 221
-    //   233: invokestatic 266	java/lang/Math:min	(II)I
+    //   228: invokevirtual 261	java/io/FileInputStream:available	()I
+    //   231: ldc 222
+    //   233: invokestatic 267	java/lang/Math:min	(II)I
     //   236: istore_2
     //   237: aload 6
     //   239: astore 5
@@ -259,14 +259,14 @@ public class QCloudFileUploadRunnable
     //   245: aload 8
     //   247: iconst_0
     //   248: iload_2
-    //   249: invokevirtual 270	java/io/FileInputStream:read	([BII)I
+    //   249: invokevirtual 271	java/io/FileInputStream:read	([BII)I
     //   252: istore_1
     //   253: goto -50 -> 203
     //   256: astore 9
     //   258: aload 6
     //   260: astore 5
     //   262: aload 9
-    //   264: invokevirtual 277	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   264: invokevirtual 278	java/lang/OutOfMemoryError:printStackTrace	()V
     //   267: goto -47 -> 220
     //   270: astore 7
     //   272: iconst_0
@@ -279,7 +279,7 @@ public class QCloudFileUploadRunnable
     //   286: astore 5
     //   288: ldc 68
     //   290: iconst_2
-    //   291: ldc_w 279
+    //   291: ldc_w 280
     //   294: aload 7
     //   296: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   299: iload_3
@@ -287,7 +287,7 @@ public class QCloudFileUploadRunnable
     //   302: aload 6
     //   304: ifnull +11 -> 315
     //   307: aload 6
-    //   309: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   309: invokevirtual 281	java/io/DataOutputStream:close	()V
     //   312: iload_3
     //   313: istore 4
     //   315: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -297,17 +297,17 @@ public class QCloudFileUploadRunnable
     //   324: new 80	java/lang/StringBuilder
     //   327: dup
     //   328: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   331: ldc_w 282
+    //   331: ldc_w 283
     //   334: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   337: iload 4
-    //   339: invokevirtual 285	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   342: ldc_w 287
+    //   339: invokevirtual 286	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   342: ldc_w 288
     //   345: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   348: aload_0
     //   349: getfield 45	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Int	I
-    //   352: invokevirtual 290	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   352: invokevirtual 291	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   355: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   358: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   358: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   361: iload 4
     //   363: ifne +289 -> 652
     //   366: aload_0
@@ -315,7 +315,7 @@ public class QCloudFileUploadRunnable
     //   370: ifle +282 -> 652
     //   373: aload_0
     //   374: iconst_0
-    //   375: invokespecial 167	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
+    //   375: invokespecial 168	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
     //   378: aload_0
     //   379: aload_0
     //   380: getfield 25	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_b_of_type_Int	I
@@ -331,8 +331,8 @@ public class QCloudFileUploadRunnable
     //   398: aload_0
     //   399: getfield 37	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
     //   402: aload_0
-    //   403: ldc2_w 291
-    //   406: invokevirtual 298	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   403: ldc2_w 292
+    //   406: invokevirtual 299	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   409: pop
     //   410: return
     //   411: aload 6
@@ -340,45 +340,45 @@ public class QCloudFileUploadRunnable
     //   415: aload 6
     //   417: aload_0
     //   418: getfield 121	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:d	Ljava/lang/String;
-    //   421: invokevirtual 257	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   421: invokevirtual 258	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   424: aload 6
     //   426: astore 5
     //   428: aload 6
     //   430: aload_0
     //   431: getfield 132	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:e	Ljava/lang/String;
-    //   434: invokevirtual 257	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   434: invokevirtual 258	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   437: aload 6
     //   439: astore 5
     //   441: aload_0
-    //   442: new 300	java/io/BufferedInputStream
+    //   442: new 301	java/io/BufferedInputStream
     //   445: dup
     //   446: aload 7
-    //   448: invokevirtual 304	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   451: invokespecial 307	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   448: invokevirtual 305	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   451: invokespecial 308	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   454: sipush 8192
-    //   457: invokestatic 313	com/tencent/qapmsdk/common/util/FileUtil:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   460: invokevirtual 315	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Ljava/lang/String;)Z
+    //   457: invokestatic 314	com/tencent/qapmsdk/common/util/FileUtil:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   460: invokevirtual 316	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Ljava/lang/String;)Z
     //   463: istore_3
     //   464: aload 6
     //   466: astore 5
     //   468: aload_0
-    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Admm	Ladmm;
+    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Acjf	Lacjf;
     //   472: ifnull +24 -> 496
     //   475: iload_3
     //   476: ifeq +20 -> 496
     //   479: aload 6
     //   481: astore 5
     //   483: aload_0
-    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Admm	Ladmm;
+    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Acjf	Lacjf;
     //   487: aload_0
     //   488: getfield 27	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_Int	I
-    //   491: invokeinterface 319 2 0
+    //   491: invokeinterface 320 2 0
     //   496: iload_3
     //   497: istore 4
     //   499: aload 6
     //   501: ifnull -186 -> 315
     //   504: aload 6
-    //   506: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   506: invokevirtual 281	java/io/DataOutputStream:close	()V
     //   509: iload_3
     //   510: istore 4
     //   512: goto -197 -> 315
@@ -401,7 +401,7 @@ public class QCloudFileUploadRunnable
     //   542: aload 6
     //   544: ifnull -229 -> 315
     //   547: aload 6
-    //   549: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   549: invokevirtual 281	java/io/DataOutputStream:close	()V
     //   552: iload_3
     //   553: istore 4
     //   555: goto -240 -> 315
@@ -427,7 +427,7 @@ public class QCloudFileUploadRunnable
     //   594: astore 5
     //   596: ldc 68
     //   598: iconst_2
-    //   599: ldc_w 279
+    //   599: ldc_w 280
     //   602: aload 7
     //   604: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   607: iload_3
@@ -435,7 +435,7 @@ public class QCloudFileUploadRunnable
     //   610: aload 6
     //   612: ifnull -297 -> 315
     //   615: aload 6
-    //   617: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   617: invokevirtual 281	java/io/DataOutputStream:close	()V
     //   620: iload_3
     //   621: istore 4
     //   623: goto -308 -> 315
@@ -449,12 +449,12 @@ public class QCloudFileUploadRunnable
     //   639: aload 5
     //   641: ifnull +8 -> 649
     //   644: aload 5
-    //   646: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   646: invokevirtual 281	java/io/DataOutputStream:close	()V
     //   649: aload 6
     //   651: athrow
     //   652: aload_0
     //   653: iconst_0
-    //   654: invokespecial 167	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
+    //   654: invokespecial 168	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
     //   657: return
     //   658: astore 5
     //   660: iload_3

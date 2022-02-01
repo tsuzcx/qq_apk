@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class ydp
-  implements View.OnClickListener
+final class ydp
+  implements FilenameFilter
 {
-  ydp(ydo paramydo) {}
-  
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
 }
 

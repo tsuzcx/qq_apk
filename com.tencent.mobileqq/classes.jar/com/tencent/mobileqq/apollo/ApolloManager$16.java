@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amsx;
+import alnr;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
@@ -8,22 +8,22 @@ import java.util.List;
 public class ApolloManager$16
   implements Runnable
 {
-  public ApolloManager$16(amsx paramamsx, DrawerPushItem paramDrawerPushItem) {}
+  public ApolloManager$16(alnr paramalnr, DrawerPushItem paramDrawerPushItem) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    synchronized (amsx.a(this.this$0))
+    synchronized (alnr.a(this.this$0))
     {
-      if ((amsx.a(this.this$0) != null) && (this.a != null) && (amsx.a(this.this$0).contains(this.a))) {
-        amsx.a(this.this$0).remove(this.a);
+      if ((alnr.a(this.this$0) != null) && (this.a != null) && (alnr.a(this.this$0).contains(this.a))) {
+        alnr.a(this.this$0).remove(this.a);
       }
-      if (amsx.a(this.this$0) != null)
+      if (alnr.a(this.this$0) != null)
       {
-        amsx.a(this.this$0).remove(this.a);
-        amsx.a(this.this$0).close();
+        alnr.a(this.this$0).remove(this.a);
+        alnr.a(this.this$0).close();
       }
       return;
     }

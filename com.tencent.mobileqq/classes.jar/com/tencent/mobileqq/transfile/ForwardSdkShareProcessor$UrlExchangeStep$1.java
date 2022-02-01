@@ -2,12 +2,10 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import avcw;
-import betj;
-import bett;
-import beyg;
-import bjqh;
-import bjuc;
+import atqa;
+import bhvw;
+import bhzo;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,47 +15,46 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import nnr;
 
-public class ForwardSdkShareProcessor$UrlExchangeStep$1
+class ForwardSdkShareProcessor$UrlExchangeStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$UrlExchangeStep$1(bett parambett) {}
+  ForwardSdkShareProcessor$UrlExchangeStep$1(ForwardSdkShareProcessor.UrlExchangeStep paramUrlExchangeStep) {}
   
   public void run()
   {
-    this.a.a("UrlExchangeStep|run,retry=" + bett.a(this.a));
-    if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    this.this$1.qlog("UrlExchangeStep|run,retry=" + ForwardSdkShareProcessor.UrlExchangeStep.access$1400(this.this$1));
+    if (this.this$1.isCancelled.get())
     {
-      this.a.f();
+      this.this$1.doCancel();
       return;
     }
     Object localObject = new Bundle();
-    String str = this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    String str = this.this$1.this$0.app.getCurrentUin();
     int i;
     long l;
     boolean bool;
-    if ((!betj.a(this.a.jdField_b_of_type_Betj).get()) && (TextUtils.isEmpty(this.a.jdField_b_of_type_Betj.e)))
+    if ((!ForwardSdkShareProcessor.access$900(this.this$1.this$0).get()) && (TextUtils.isEmpty(this.this$1.this$0.mRemoteImgUrl)))
     {
       i = 0;
       ((Bundle)localObject).putString("report_type", "102");
       ((Bundle)localObject).putString("act_type", "52");
       ((Bundle)localObject).putString("intext_3", "0");
-      ((Bundle)localObject).putString("stringext_1", this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaLangString);
+      ((Bundle)localObject).putString("stringext_1", this.this$1.this$0.mTargetUrl);
       ((Bundle)localObject).putString("intext_4", "" + i);
-      bjqh.a().a((Bundle)localObject, "", str, false);
+      bhvw.a().a((Bundle)localObject, "", str, false);
       l = System.currentTimeMillis();
-      avcw.a("batch_url_exchange");
+      atqa.a("batch_url_exchange");
       localObject = new Bundle();
-      HashMap localHashMap = nnr.a(this.a.jdField_b_of_type_Betj.jdField_a_of_type_AndroidContentContext, str, betj.a(this.a.jdField_b_of_type_Betj), 1, this.a.jdField_b_of_type_Betj.b, (Bundle)localObject);
+      HashMap localHashMap = HttpUtil.batchUrlExchange(this.this$1.this$0.mAppContext, str, ForwardSdkShareProcessor.access$200(this.this$1.this$0), 1, this.this$1.this$0.mUrlMap, (Bundle)localObject);
       l = System.currentTimeMillis() - l;
       bool = ((Bundle)localObject).getBoolean("isSuccess");
       i = ((Bundle)localObject).getInt("retcode", -1);
-      bett.b(this.a).set(i);
+      ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).set(i);
       localObject = new HashMap();
       ((HashMap)localObject).put("param_ret_code", Integer.toString(i));
-      avcw.a("batch_url_exchange", str, (HashMap)localObject, bool);
-      this.a.a("UrlExchangeStep|run,suc=" + bool + ",ret=" + bett.b(this.a) + ",cost=" + l);
+      atqa.a("batch_url_exchange", str, (HashMap)localObject, bool);
+      this.this$1.qlog("UrlExchangeStep|run,suc=" + bool + ",ret=" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1) + ",cost=" + l);
       Bundle localBundle = new Bundle();
       localBundle.putString("report_type", "102");
       localBundle.putString("act_type", "12");
@@ -68,24 +65,24 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
       localObject = "0";
       label415:
       localBundle.putString("intext_1", (String)localObject);
-      localBundle.putString("intext_2", "" + bett.b(this.a));
+      localBundle.putString("intext_2", "" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1));
       localBundle.putString("intext_5", "" + l);
       if (!bool) {
-        localBundle.putString("stringext_1", this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaLangString);
+        localBundle.putString("stringext_1", this.this$1.this$0.mTargetUrl);
       }
-      bjqh.a().a(localBundle, "", str, false);
+      bhvw.a().a(localBundle, "", str, false);
       if (!bool) {
         break label1107;
       }
-      this.a.jdField_b_of_type_Betj.b.putAll(localHashMap);
-      this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.a("UrlExchangeStep|run,url=" + this.a.jdField_b_of_type_Betj.b.toString());
-      localObject = (String)this.a.jdField_b_of_type_Betj.b.get("imageUrl");
+      this.this$1.this$0.mUrlMap.putAll(localHashMap);
+      this.this$1.this$0.mIsAllUrlShort.set(true);
+      this.this$1.qlog("UrlExchangeStep|run,url=" + this.this$1.this$0.mUrlMap.toString());
+      localObject = (String)this.this$1.this$0.mUrlMap.get("imageUrl");
       if (localObject != null)
       {
-        avcw.a("reuse_image_for_aio");
-        bjuc.a(false, this.a.jdField_b_of_type_Betj.e, this.a.jdField_b_of_type_Betj.e, (String)localObject);
-        avcw.a("reuse_image_for_aio", str, true);
+        atqa.a("reuse_image_for_aio");
+        bhzo.a(false, this.this$1.this$0.mRemoteImgUrl, this.this$1.this$0.mRemoteImgUrl, (String)localObject);
+        atqa.a("reuse_image_for_aio", str, true);
       }
     }
     label1099:
@@ -93,54 +90,54 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
     do
     {
       if (!bool) {
-        QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + bett.b(this.a) + ",cost=" + l + ",url=" + this.a.jdField_b_of_type_Betj.b.toString());
+        QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1) + ",cost=" + l + ",url=" + this.this$1.this$0.mUrlMap.toString());
       }
-      localObject = this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.c, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Int, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Long);
+      localObject = this.this$1.this$0.app.getMessageFacade().queryMsgItemByUniseq(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq);
       if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
       {
         localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
-        str = (String)this.a.jdField_b_of_type_Betj.b.get("targetUrl");
+        str = (String)this.this$1.this$0.mUrlMap.get("targetUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mMsgUrl = str;
         }
-        str = (String)this.a.jdField_b_of_type_Betj.b.get("sourceUrl");
+        str = (String)this.this$1.this$0.mUrlMap.get("sourceUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mSourceUrl = str;
         }
-        str = (String)this.a.jdField_b_of_type_Betj.b.get("sourceIcon");
+        str = (String)this.this$1.this$0.mUrlMap.get("sourceIcon");
         if (str != null) {
           ((AbsShareMsg)localObject).mSourceIcon = str;
         }
-        str = (String)this.a.jdField_b_of_type_Betj.b.get("audioUrl");
+        str = (String)this.this$1.this$0.mUrlMap.get("audioUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mContentSrc = str;
         }
-        str = (String)this.a.jdField_b_of_type_Betj.b.get("imageUrl");
+        str = (String)this.this$1.this$0.mUrlMap.get("imageUrl");
         if (str != null)
         {
           ((AbsShareMsg)localObject).shareData.imageUrlStatus = 1;
           ((AbsShareMsg)localObject).updateCover(str);
         }
-        if (this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        if (this.this$1.this$0.mIsAllUrlShort.get()) {
           ((AbsShareMsg)localObject).shareData.shortUrlStatus = 1;
         }
-        this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.c, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Int, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
+        this.this$1.this$0.app.getMessageFacade().updateMsgContentByUniseq(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
       }
-      this.a.b();
+      this.this$1.doNextStep();
       return;
-      i = this.a.jdField_b_of_type_Betj.e.length();
+      i = this.this$1.this$0.mRemoteImgUrl.length();
       break;
       localObject = "1";
       break label415;
-      if ((bett.b(this.a).get() == 100000) && (betj.b(this.a.jdField_b_of_type_Betj) < 2))
+      if ((ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).get() == 100000) && (ForwardSdkShareProcessor.access$1200(this.this$1.this$0) < 2))
       {
-        betj.c(this.a.jdField_b_of_type_Betj);
-        betj.a(this.a.jdField_b_of_type_Betj, null);
-        betj.a(this.a.jdField_b_of_type_Betj, true);
-        betj.a(this.a.jdField_b_of_type_Betj);
+        ForwardSdkShareProcessor.access$1208(this.this$1.this$0);
+        ForwardSdkShareProcessor.access$202(this.this$1.this$0, null);
+        ForwardSdkShareProcessor.access$102(this.this$1.this$0, true);
+        ForwardSdkShareProcessor.access$1300(this.this$1.this$0);
         return;
       }
-    } while ((bett.b(this.a).get() != -1) || (bett.a(this.a).getAndIncrement() >= 2));
+    } while ((ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).get() != -1) || (ForwardSdkShareProcessor.UrlExchangeStep.access$1400(this.this$1).getAndIncrement() >= 2));
     ThreadManager.post(this, 8, null, true);
   }
 }

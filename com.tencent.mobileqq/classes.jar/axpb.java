@@ -1,55 +1,51 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.graphics.Rect;
 
-class axpb
-  implements azrg
+public class axpb
 {
-  axpb(axoz paramaxoz, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  public int a;
+  public Rect a;
+  public int b;
+  public Rect b = new Rect();
+  public int c;
+  public Rect c;
+  public int d;
+  public int e;
+  public int f;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public axpb()
   {
-    return null;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
   }
   
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
+  public String toString()
   {
-    try
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("currAlpha = ").append(this.e).append("\n").append("currRect = ");
+    if (this.jdField_c_of_type_AndroidGraphicsRect != null)
     {
-      if (paramazrh.jdField_a_of_type_Int == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - axoz.a(this.jdField_a_of_type_Axoz)) + ",mResid:" + paramazrh.c);
-        }
-        AbsShareMsg localAbsShareMsg = aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localAbsShareMsg.mResid = paramazrh.c;
-        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-        localAbsShareMsg.multiMsgFlag = 1;
-        MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        localMessageForLongTextMsg.structingMsg = localAbsShareMsg;
-        localMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramazrh.c);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Boolean);
-        return;
+      str = this.jdField_c_of_type_AndroidGraphicsRect.toShortString();
+      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("radomAreaIndex = ").append(this.f).append("\n").append("radomRect = ");
+      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+        break label182;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramazrh.b + ",result.errStr=" + paramazrh.jdField_a_of_type_JavaLangString);
+      str = this.jdField_a_of_type_AndroidGraphicsRect.toShortString();
+      label95:
+      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("gapDuration = ").append(this.jdField_c_of_type_Int).append("\n").append("startRect = ");
+      if (this.b == null) {
+        break label188;
       }
-      axoz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      return;
     }
-    catch (Exception paramazrh)
+    label182:
+    label188:
+    for (String str = this.b.toShortString();; str = "")
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramazrh);
-      }
-      axoz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localStringBuilder2.append(str).append("\n").append("edageWidth = ").append(this.jdField_a_of_type_Int).append("\n");
+      return localStringBuilder1.toString();
+      str = "";
+      break;
+      str = "";
+      break label95;
     }
   }
 }

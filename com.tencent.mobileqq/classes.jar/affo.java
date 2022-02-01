@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-
 class affo
-  implements DialogInterface.OnDismissListener
+  implements bcsd
 {
-  affo(affm paramaffm) {}
+  affo(affn paramaffn) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(bcsi parambcsi)
   {
-    QQIdentiferActivity.a(this.a.a, 205, anzj.a(2131709240));
-    this.a.a.finish();
+    this.a.b();
   }
 }
 

@@ -1,71 +1,32 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asss
-  extends asol
+class asss
+  implements View.OnClickListener
 {
-  private asmr jdField_a_of_type_Asmr;
-  protected asmx a;
-  private List<asmu> jdField_a_of_type_JavaUtilList;
-  protected int[] a;
+  asss(assj paramassj, int paramInt) {}
   
-  public asss(Context paramContext, asmr paramasmr, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramContext, 1, paramInt);
-    this.jdField_a_of_type_Asmr = paramasmr;
-    this.jdField_a_of_type_ArrayOfInt = assp.a();
-  }
-  
-  protected int a(int paramInt)
-  {
-    return 2007;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Asmr = null;
-  }
-  
-  protected void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    while ((a(paramInt) != 2007) || (paramInt >= b())) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = assp.a(this.jdField_a_of_type_ArrayOfInt);
-    }
-    if (this.jdField_a_of_type_Asmx == null)
+    if (this.jdField_a_of_type_Assj.a != null)
     {
-      this.jdField_a_of_type_Asmx = new asom(this, 2007);
-      this.jdField_a_of_type_Asmx.a(true);
-      this.jdField_a_of_type_Asmx.c(false);
-      this.jdField_a_of_type_Asmx.b(false);
-      asmu localasmu = new asmu();
-      localasmu.i = "delete";
-      this.jdField_a_of_type_Asmx.a(localasmu);
+      if (this.jdField_a_of_type_Int != 1) {
+        break label86;
+      }
+      bcef.b(null, "dc00898", "", "", "0X800A745", "0X800A745", ataw.c(this.jdField_a_of_type_Assj.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Assj.a.d()) {
+        this.jdField_a_of_type_Assj.a.b();
+      }
     }
-    paramView = (EmoticonLinearLayout)paramView;
-    paramView.setCallBack(this.jdField_a_of_type_Asmr);
-    paramView.setAdapter(this.jdField_a_of_type_Asmx);
-    c();
-    this.jdField_a_of_type_Asmx.a(paramInt);
-    this.jdField_a_of_type_Asmx.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Asmx.a();
-  }
-  
-  public int b()
-  {
-    return assj.a(this.jdField_a_of_type_ArrayOfInt);
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Asmx != null) {
-      this.jdField_a_of_type_Asmx.a(3, 7);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label86:
+      if (this.jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_Assj.a.g();
+      }
     }
   }
 }

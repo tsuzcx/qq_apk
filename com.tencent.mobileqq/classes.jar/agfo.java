@@ -1,49 +1,17 @@
-public class agfo
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class agfo
+  extends aghj
 {
-  public int a;
-  bhkl jdField_a_of_type_Bhkl;
-  volatile boolean jdField_a_of_type_Boolean;
-  
-  public agfo(bhkl parambhkl, int paramInt)
+  agfo(agcw paramagcw)
   {
-    this(parambhkl, paramInt, false);
+    super(paramagcw, null);
   }
   
-  public agfo(bhkl parambhkl, int paramInt, boolean paramBoolean)
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_Bhkl = parambhkl;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public bhkl a()
-  {
-    return this.jdField_a_of_type_Bhkl;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(agfo paramagfo)
-  {
-    if ((paramagfo == null) || (this.jdField_a_of_type_Bhkl == null)) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bhkl.equals(paramagfo.jdField_a_of_type_Bhkl);
+    return new agtf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

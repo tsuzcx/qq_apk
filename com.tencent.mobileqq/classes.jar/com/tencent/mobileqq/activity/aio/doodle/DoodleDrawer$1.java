@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agpa;
+import afku;
 import java.util.List;
 
 public class DoodleDrawer$1
   implements Runnable
 {
-  public DoodleDrawer$1(agpa paramagpa, String paramString, long paramLong, List paramList) {}
+  public DoodleDrawer$1(afku paramafku, String paramString, long paramLong, List paramList) {}
   
   public void run()
   {
-    agpa.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList);
+    afku.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

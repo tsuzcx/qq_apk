@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import xsg;
-import xsi;
-import yuk;
+import wtr;
+import wtt;
+import xvv;
 
 public class VideoViewVideoHolder$VideoPrepareSegment$2$2
   implements Runnable
 {
-  public VideoViewVideoHolder$VideoPrepareSegment$2$2(xsi paramxsi, int paramInt) {}
+  public VideoViewVideoHolder$VideoPrepareSegment$2$2(wtt paramwtt, int paramInt) {}
   
   public void run()
   {
-    yuk.e(this.jdField_a_of_type_Xsi.a.a.a, "onError, setOnDownloadListener [vid, url, errorCode=%d]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    VideoViewVideoHolder.c(this.jdField_a_of_type_Xsi.a.a, 10);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsi.a.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_Xsi.a.a, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Xsi.a.a.a(8, "download error");
-    xsg.a(this.jdField_a_of_type_Xsi.a, new ErrorMessage(this.jdField_a_of_type_Int, "download error"));
+    xvv.e(this.jdField_a_of_type_Wtt.a.a.a, "onError, setOnDownloadListener [vid, url, errorCode=%d]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    VideoViewVideoHolder.c(this.jdField_a_of_type_Wtt.a.a, 10);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtt.a.a, false);
+    VideoViewVideoHolder.b(this.jdField_a_of_type_Wtt.a.a, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Wtt.a.a.a(8, "download error");
+    wtr.a(this.jdField_a_of_type_Wtt.a, new ErrorMessage(this.jdField_a_of_type_Int, "download error"));
   }
 }
 

@@ -1,23 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import com.tencent.widget.SingleLineTextView;
 
 public class akkw
+  extends akld
 {
-  public static void a(String paramString)
+  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
   {
-    a(paramString, "");
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    bdll.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(akmh.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
-    }
+    if ((paramView != null) && ((paramView.getTag() instanceof akle))) {}
+    paramObject = super.a(paramInt, paramObject, paramaklg, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaknm);
+    paramaklg = (akle)paramObject.getTag();
+    paramViewGroup = paramContext.getResources();
+    paramView = paramViewGroup.getColorStateList(2131167092);
+    paramViewGroup = paramViewGroup.getColorStateList(2131167012);
+    paramaklg.a.setTextColor(paramViewGroup);
+    paramaklg.b.setTextColor(paramView);
+    paramaklg.a.setExtendTextColor(paramView, 0);
+    paramObject.findViewById(2131376253).setBackgroundResource(2130839434);
+    return paramObject;
   }
 }
 

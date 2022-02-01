@@ -1,52 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
 public class awpk
+  implements URLDrawable.URLDrawableListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public awpk(StoryPlayController paramStoryPlayController, ImageView paramImageView, awtt paramawtt) {}
   
-  public awpk(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public boolean a(int paramInt, String paramString)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (!(paramObject instanceof awpk)) {}
-    do
-    {
-      return false;
-      paramObject = (awpk)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (this.jdField_a_of_type_Awtt != null) {
+      this.jdField_a_of_type_Awtt.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    }
   }
 }
 

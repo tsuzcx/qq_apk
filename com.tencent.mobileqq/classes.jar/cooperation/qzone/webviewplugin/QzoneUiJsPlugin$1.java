@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnom;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneUiJsPlugin$1
+class QzoneUiJsPlugin$1
   implements Runnable
 {
-  public QzoneUiJsPlugin$1(bnom parambnom, String paramString) {}
+  QzoneUiJsPlugin$1(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
   public void run()
   {
-    bngf.a().a().g(this.a);
+    RemoteHandleManager.getInstance().getSender().deleteTempVideo(this.val$videoPath);
   }
 }
 

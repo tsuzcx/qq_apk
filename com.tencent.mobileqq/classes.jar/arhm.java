@@ -1,16 +1,18 @@
 class arhm
-  implements bpuc
+  extends arht
 {
-  arhm(arhl paramarhl) {}
+  arhm(arhi paramarhi) {}
   
-  public void a(String paramString)
+  protected void c(boolean paramBoolean)
   {
-    ((bpqt)bplq.a(1)).a(paramString);
+    if (paramBoolean) {
+      arhi.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bojx;
-import brae;
+import bloc;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class FilterPagerViewStubHolder$1
   implements Runnable
 {
-  public FilterPagerViewStubHolder$1(bojx parambojx, brae parambrae, boolean paramBoolean) {}
+  public FilterPagerViewStubHolder$1(bloc parambloc, boolean paramBoolean) {}
   
   public void run()
   {
-    bojx.a(this.this$0).setScrollCallBack(this.jdField_a_of_type_Brae);
-    bojx.a(this.this$0).setIsNormalMode(this.jdField_a_of_type_Boolean);
+    bloc.a(this.this$0).setIsNormalMode(this.a);
   }
 }
 

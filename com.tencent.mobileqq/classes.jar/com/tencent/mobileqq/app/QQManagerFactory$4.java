@@ -2,10 +2,10 @@ package com.tencent.mobileqq.app;
 
 import java.util.ArrayList;
 
-public final class QQManagerFactory$4
+final class QQManagerFactory$4
   extends ArrayList<Integer>
 {
-  public QQManagerFactory$4()
+  QQManagerFactory$4()
   {
     add(Integer.valueOf(35));
     add(Integer.valueOf(36));

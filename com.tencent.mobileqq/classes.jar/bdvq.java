@@ -1,23 +1,45 @@
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 
-public class bdvq
+final class bdvq
+  implements DialogInterface.OnClickListener
 {
-  public JSONObject a = new JSONObject();
+  bdvq(QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
   
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    JSONObject localJSONObject = this.a.optJSONObject("plugin");
-    if (localJSONObject != null) {
-      return localJSONObject.optInt("preload", 0) == 1;
+    paramDialogInterface = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo;
+    if (paramDialogInterface != null)
+    {
+      localTroopInfo = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString);
+      if (localTroopInfo != null)
+      {
+        if (!localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          break label124;
+        }
+        paramDialogInterface = "0";
+      }
     }
-    return false;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "StudyRoomConfBean{data=" + this.a + '}';
+    for (;;)
+    {
+      paramDialogInterface = bdvp.jdField_a_of_type_JavaLangString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$UIN$", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$ROLE$", paramDialogInterface);
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 2016, TroopUtils.createEntryModel(localTroopInfo, this.jdField_a_of_type_JavaLangString), null);
+      bcef.b(null, "dc00898", "", "", "0X800B223", "0X800B223", 0, 0, "", "", "", "");
+      return;
+      label124:
+      if (localTroopInfo.isAdmin()) {
+        paramDialogInterface = "1";
+      } else {
+        paramDialogInterface = "2";
+      }
+    }
   }
 }
 

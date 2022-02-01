@@ -1,37 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public class agdu
+final class agdu
+  implements aghk
 {
-  public static BaseChatPie a()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof FragmentActivity))
-    {
-      localObject = ((FragmentActivity)localObject).getChatFragment();
-      if (localObject != null) {
-        return ((ChatFragment)localObject).a();
-      }
+    paramQQAppInterface = (MessageForArkApp)paramChatMessage;
+    paramChatMessage = new ArkAppMessage.Config();
+    paramChatMessage.fromString(paramQQAppInterface.ark_app_message.config);
+    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("multiple"))) {
+      return 112;
     }
-    return null;
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    BaseChatPie localBaseChatPie = a();
-    if (localBaseChatPie != null) {
-      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("card"))) {
+      return 81;
     }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    return a();
+    return 47;
   }
 }
 

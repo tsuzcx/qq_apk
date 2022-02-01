@@ -1,139 +1,376 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bjkh
-  implements BusinessObserver
 {
-  public bjkh(AuthorityActivity paramAuthorityActivity, boolean paramBoolean, String paramString) {}
+  private long jdField_a_of_type_Long = 0L;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<bjkm> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bjkh(QQAppInterface paramQQAppInterface)
   {
-    AuthorityActivity.d(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.d(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
-    }
-    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangRunnable);
-    paramInt = paramBundle.getInt("code");
-    SdkAuthorize.AuthorizeResponse localAuthorizeResponse;
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("qp_sfu_config", 0);
+  }
+  
+  private int a(String paramString1, String paramString2)
+  {
+    paramString1 = paramString1.split("\\.");
+    paramString2 = paramString2.split("\\.");
+    int i;
+    int j;
+    if (paramString1.length < paramString2.length)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.d = 0;
-      localAuthorizeResponse = new SdkAuthorize.AuthorizeResponse();
+      i = paramString1.length;
+      j = 0;
     }
-    label1170:
     for (;;)
     {
-      try
+      if (j >= i) {
+        break label84;
+      }
+      int k = Integer.parseInt(paramString1[j]);
+      int m = Integer.parseInt(paramString2[j]);
+      if (k > m)
       {
-        localObject = paramBundle.getByteArray("data");
-        if (!this.jdField_a_of_type_Boolean) {
-          break label1170;
+        return 1;
+        i = paramString2.length;
+        break;
+      }
+      if (k < m) {
+        return -1;
+      }
+      j += 1;
+    }
+    label84:
+    return 0;
+  }
+  
+  private String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getDir("qqprotect", 0).toString() + File.separator + "SFU/" + "qp_sfu_config.dat";
+  }
+  
+  private String a(String paramString1, String paramString2, String paramString3)
+  {
+    String str = "";
+    if ((TextUtils.isEmpty(paramString1)) || (paramString1.equals("1"))) {
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getFilesDir().getParent();
+    }
+    for (;;)
+    {
+      paramString1 = str;
+      if (!str.endsWith(File.separator))
+      {
+        paramString1 = str;
+        if (!paramString2.startsWith(File.separator)) {
+          paramString1 = str + File.separator;
         }
-        localObject = bjzy.b((byte[])localObject, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb);
-        if (localObject != null)
-        {
-          l1 = localObject.length;
-          localAuthorizeResponse = (SdkAuthorize.AuthorizeResponse)localAuthorizeResponse.mergeFrom((byte[])localObject);
-          if (localAuthorizeResponse != null)
-          {
-            Message localMessage = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-            localMessage.what = 1;
-            localMessage.obj = localAuthorizeResponse;
-            this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
-            if (localAuthorizeResponse.ret.get() == 0) {
-              bjzy.a(AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, localAuthorizeResponse.expires_in.get(), (byte[])localObject);
-            }
-            i = localAuthorizeResponse.toByteArray().length;
-            l2 = i;
-          }
-        }
       }
-      catch (Exception paramBundle)
-      {
-        long l1;
-        int i;
-        long l2;
-        localObject = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-        ((Message)localObject).what = 6;
-        ((Message)localObject).arg1 = 3002;
-        ((Message)localObject).obj = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources().getString(2131694160);
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-        localObject = (String)((Message)localObject).obj;
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + this.jdField_a_of_type_JavaLangString + " | uin : *" + bjqq.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt, paramBundle);
-        AuthorityActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, "KEY_AUTHORIZE_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.d, false);
-        continue;
+      paramString1 = paramString1 + paramString2;
+      if (!paramString2.endsWith(File.separator)) {
+        break;
       }
-      try
-      {
-        i = localAuthorizeResponse.ret.get();
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("report_type", "103");
-        ((Bundle)localObject).putString("act_type", "13");
-        if (!paramBundle.getBoolean("isShort", false)) {
-          continue;
-        }
-        paramBundle = "2";
-        ((Bundle)localObject).putString("intext_3", paramBundle);
-        ((Bundle)localObject).putString("stringext_1", AuthorityActivity.d(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putString("intext_2", "" + i);
-        ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.d(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-        bjqh.a().a((Bundle)localObject, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
-        bjvn.a().a("agent_authority", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.h, l1, l2, 0, Long.parseLong(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString), "1000069", "ret: " + i);
-        bjvq.a().a(0, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-        AuthorityActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, "KEY_AUTHORIZE_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.d, true);
-      }
-      catch (Exception paramBundle)
-      {
-        bjtx.c("AuthorityActivity", "-->success report exception cmd: agent_authority", paramBundle);
-        continue;
-      }
-      QLog.d("AuthorityActivity", 1, "rec | cmd: " + this.jdField_a_of_type_JavaLangString + " | uin : *" + bjqq.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.i = SystemClock.elapsedRealtime();
-      bjtx.c("Authority_TimeCost", "<TimeStamp> authority cost : " + (this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.i - this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.h));
-      return;
-      paramBundle = "1";
-      continue;
-      QLog.d("AuthorityActivity", 1, "rec | cmd: " + this.jdField_a_of_type_JavaLangString + " | uin : *" + bjqq.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) + " | ret : failed | code : " + paramInt);
-      if ((paramInt == 1002) && (this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.d < 2))
-      {
-        paramBundle = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity;
-        paramBundle.d += 1;
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.k();
-        return;
-      }
-      paramBundle = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      paramBundle.what = 6;
-      paramBundle.arg1 = 3002;
-      paramBundle.obj = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources().getString(2131694160);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramBundle);
-      AuthorityActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, "KEY_AUTHORIZE_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.d, false);
-      paramBundle = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources().getString(2131694160);
-      try
-      {
-        bjvn.a().a("agent_authority", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.h, 0L, 0L, paramInt, Long.parseLong(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString), "1000069", paramBundle);
-        bjvq.a().a(1, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), 3002, 1, paramBundle);
-        bjqh.a().a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "6", "" + 3002, false);
-      }
-      catch (Exception paramBundle)
-      {
-        bjtx.c("AuthorityActivity", "-->failed report exception cmd: agent_authority", paramBundle);
+      return paramString1 + paramString3;
+      if (paramString1.equals("2")) {
+        str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getExternalFilesDir(null).getParent();
       }
     }
+    return paramString1 + File.separator + paramString3;
+  }
+  
+  private boolean a(String paramString, long paramLong1, long paramLong2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramString == null) || (!paramString.equals("android"))) {
+      bool1 = false;
+    }
+    long l;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            if ((paramLong1 < 0L) || (paramLong2 < 0L)) {
+              return false;
+            }
+            l = Build.VERSION.SDK_INT;
+            if (paramLong1 != 0L) {
+              break;
+            }
+            bool1 = bool2;
+          } while (paramLong2 == 0L);
+          if ((paramLong1 != 0L) || (paramLong2 <= 0L)) {
+            break;
+          }
+          bool1 = bool2;
+        } while (l <= paramLong2);
+        return false;
+        if ((paramLong1 <= 0L) || (paramLong2 != 0L)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (l >= paramLong1);
+      return false;
+      if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
+        break label147;
+      }
+      if (l < paramLong1) {
+        break;
+      }
+      bool1 = bool2;
+    } while (l <= paramLong2);
+    return false;
+    label147:
+    return false;
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return bool1;
+          paramString1 = paramString1.replace(" ", "");
+          paramString2 = paramString2.replace(" ", "");
+          boolean bool3 = paramString1.equals("*");
+          boolean bool4 = paramString2.equals("*");
+          String str;
+          if (bool3)
+          {
+            bool1 = bool2;
+            if (bool4) {}
+          }
+          else
+          {
+            str = DeviceInfoUtil.getQQVersionWithCode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+            if (TextUtils.isEmpty(str)) {
+              return false;
+            }
+            if ((bool3) && (!bool4)) {
+              bool1 = bool2;
+            }
+          }
+          try
+          {
+            if (a(str, paramString2) > 0) {
+              return false;
+            }
+          }
+          catch (Exception paramString1)
+          {
+            int i;
+            paramString1.printStackTrace();
+          }
+        }
+        if ((bool3) || (!bool4)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (a(str, paramString1) >= 0);
+      return false;
+      if ((bool3) || (bool4)) {
+        break label182;
+      }
+      if (a(str, paramString2) > 0) {
+        break;
+      }
+      i = a(str, paramString1);
+      bool1 = bool2;
+    } while (i >= 0);
+    return false;
+    label182:
+    return false;
+  }
+  
+  private boolean b(String paramString)
+  {
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Long = paramString.getLong("version");
+      this.jdField_a_of_type_Boolean = paramString.getBoolean("forceupdate");
+      paramString = paramString.getJSONArray("sections");
+      int i = 0;
+      while (i < paramString.length())
+      {
+        bjkm localbjkm = new bjkm();
+        Object localObject = paramString.getJSONObject(i);
+        localbjkm.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("sid");
+        localbjkm.jdField_b_of_type_Long = ((JSONObject)localObject).getLong("bid");
+        localbjkm.jdField_c_of_type_Long = ((JSONObject)localObject).getLong("size");
+        localbjkm.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("name");
+        localbjkm.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).getString("md5");
+        localbjkm.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).getString("url");
+        localbjkm.jdField_d_of_type_Long = ((JSONObject)localObject).getLong("osminver");
+        localbjkm.jdField_e_of_type_Long = ((JSONObject)localObject).getLong("osmaxver");
+        localbjkm.f = ((JSONObject)localObject).getString("cpuabi");
+        localbjkm.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).getString("qqminver");
+        localbjkm.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).getString("qqmaxver");
+        localbjkm.g = ((JSONObject)localObject).getString("os");
+        localbjkm.jdField_b_of_type_Boolean = a(localbjkm.g, localbjkm.jdField_d_of_type_Long, localbjkm.jdField_e_of_type_Long);
+        localbjkm.jdField_c_of_type_Boolean = c(localbjkm.f);
+        localbjkm.jdField_a_of_type_Boolean = a(localbjkm.jdField_d_of_type_JavaLangString, localbjkm.jdField_e_of_type_JavaLangString);
+        if (((JSONObject)localObject).has("flag")) {
+          localbjkm.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("flag");
+        }
+        localObject = ((JSONObject)localObject).getJSONArray("files");
+        int j = 0;
+        while (j < ((JSONArray)localObject).length())
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+          bjkl localbjkl = new bjkl();
+          localbjkl.jdField_a_of_type_Long = localJSONObject.getLong("size");
+          localbjkl.jdField_d_of_type_JavaLangString = localJSONObject.getString("root");
+          localbjkl.jdField_e_of_type_JavaLangString = localJSONObject.getString("path");
+          localbjkl.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
+          localbjkl.f = a(localbjkl.jdField_d_of_type_JavaLangString, localbjkl.jdField_e_of_type_JavaLangString, localbjkl.jdField_a_of_type_JavaLangString);
+          localbjkl.jdField_b_of_type_JavaLangString = localJSONObject.getString("md5");
+          localbjkl.jdField_b_of_type_Long = localJSONObject.getLong("rptid");
+          if (localJSONObject.has("extra")) {
+            localbjkl.i = localJSONObject.getString("extra");
+          }
+          localbjkm.jdField_a_of_type_JavaUtilList.add(localbjkl);
+          j += 1;
+        }
+        localArrayList.add(localbjkm);
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaUtilList = localArrayList;
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, "[SFU] parsing config error");
+      }
+    }
+    return false;
+  }
+  
+  private boolean c(String paramString)
+  {
+    if (paramString == null) {}
+    for (;;)
+    {
+      return false;
+      Object localObject = paramString.replace(" ", "");
+      if (((String)localObject).equals("*")) {
+        return true;
+      }
+      paramString = Build.CPU_ABI;
+      localObject = ((String)localObject).split(",");
+      if (localObject != null)
+      {
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramString.contains(localObject[i])) {
+            return true;
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public List<bjkm> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public List<bjkm> a(long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("last_update_bids", "");
+    String str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("last_update_sections", "");
+    if ((((String)localObject).indexOf(String.format("#%d#", new Object[] { Long.valueOf(paramLong) })) != -1) && (a(a())) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = (bjkm)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (((bjkm)localObject).jdField_b_of_type_Long == paramLong) {
+          if (str.indexOf(String.format("#%d#", new Object[] { Long.valueOf(((bjkm)localObject).jdField_a_of_type_Long) })) != -1) {
+            break label167;
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label167:
+          int j = 0;
+          bjkl localbjkl;
+          while (j < ((bjkm)localObject).jdField_a_of_type_JavaUtilList.size())
+          {
+            localbjkl = (bjkl)((bjkm)localObject).jdField_a_of_type_JavaUtilList.get(j);
+            localbjkl.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(localbjkl.f, "");
+            j += 1;
+          }
+          j = 0;
+          while (j < ((bjkm)localObject).jdField_c_of_type_JavaUtilList.size())
+          {
+            localbjkl = (bjkl)((bjkm)localObject).jdField_c_of_type_JavaUtilList.get(j);
+            localbjkl.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(localbjkl.f, "");
+            j += 1;
+          }
+          j = 0;
+          while (j < ((bjkm)localObject).jdField_b_of_type_JavaUtilList.size())
+          {
+            localbjkl = (bjkl)((bjkm)localObject).jdField_b_of_type_JavaUtilList.get(j);
+            localbjkl.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(localbjkl.f, "");
+            j += 1;
+          }
+          localArrayList.add(localObject);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    byte[] arrayOfByte = bjkn.a(new File(paramString), null);
+    if (arrayOfByte != null) {
+      bool = b(new String(arrayOfByte));
+    }
+    while (!QLog.isColorLevel()) {
+      return bool;
+    }
+    QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] invalid sig of config: %s", new Object[] { paramString }));
+    return false;
   }
 }
 

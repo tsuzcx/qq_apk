@@ -167,7 +167,7 @@ public class ViewTransformer
       this.mHeadView = getChildAt(0);
       this.mSubView = getChildAt(1);
     }
-    this.anim = AnimationUtils.loadAnimation(this.mContext, 2130772205);
+    this.anim = AnimationUtils.loadAnimation(this.mContext, 2130772213);
     this.anim.setAnimationListener(this);
     setAnimation(this.anim);
     startAnimation(this.anim);

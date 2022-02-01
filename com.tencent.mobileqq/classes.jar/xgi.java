@@ -1,15 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xgi
-  extends xhn
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public xgi(@NonNull BannerFeedItem paramBannerFeedItem)
+  public xgi(VideoEncodeActivity paramVideoEncodeActivity) {}
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a = paramBannerFeedItem.shareInfo.a;
-    this.b = paramBannerFeedItem.shareInfo.b;
-    this.c = paramBannerFeedItem.shareInfo.d;
-    this.d = paramBannerFeedItem.shareInfo.c;
+    RadioButton localRadioButton = (RadioButton)paramRadioGroup.findViewById(paramInt);
+    VideoEncodeActivity.a(this.a, (String)localRadioButton.getTag());
+    xvv.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
+    VideoEncodeActivity.a(this.a);
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

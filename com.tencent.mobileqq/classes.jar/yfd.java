@@ -1,23 +1,25 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.Arrays;
+import java.util.List;
 
-class yfd
-  extends SimpleJob
+public class yfd
+  implements ycy
 {
-  yfd(yfc paramyfc, String paramString, yff paramyff, boolean paramBoolean)
+  @NonNull
+  private final ycv[] a;
+  
+  public yfd(ycv... paramVarArgs)
   {
-    super(paramString);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
+    }
+    this.a = paramVarArgs;
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void a(List<ycv> paramList, DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Yfc.a();
-    this.jdField_a_of_type_Yfc.b();
-    ((wse)wth.a(17)).a(this.jdField_a_of_type_Yff.a, yfc.a(this.jdField_a_of_type_Yfc).a, yfc.a(this.jdField_a_of_type_Yfc).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Yfc.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
+    paramList.addAll(Arrays.asList(this.a));
   }
 }
 

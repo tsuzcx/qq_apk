@@ -1,50 +1,34 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x67.submsgtype0x67.MsgBody;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class adeg
-  implements adci
+  implements Animation.AnimationListener
 {
-  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
+  public adeg(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearbyTroopPush", 2, "receive msgtype0x210.submsgtype0x67 group recmd push: " + paramadan.a(paramMsgType0x210));
-    }
-    submsgtype0x67.MsgBody localMsgBody = new submsgtype0x67.MsgBody();
-    try
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      if (localMsgBody.rpt_msg_grpinfo.has())
-      {
-        paramMsgType0x210 = localMsgBody.rpt_msg_grpinfo.get();
-        paramadan = (aoat)paramadan.a().a(3);
-        if (paramadan != null) {
-          paramadan.a(paramMsgType0x210);
-        }
-      }
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
+    }
+    while (paramAnimation != this.b) {
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("nearbyTroopPush", 2, "receive msgtype0x210.submsgtype0x67 mergeFrom exception: " + paramMsgType0x210.toString());
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan, paramMsgType0x210);
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

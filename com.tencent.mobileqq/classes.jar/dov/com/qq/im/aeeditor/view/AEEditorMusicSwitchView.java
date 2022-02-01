@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import bpky;
+import bmnu;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class AEEditorMusicSwitchView
@@ -22,7 +22,7 @@ public class AEEditorMusicSwitchView
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bpky jdField_a_of_type_Bpky;
+  private bmnu jdField_a_of_type_Bmnu;
   private TextView b;
   
   public AEEditorMusicSwitchView(@NonNull Context paramContext)
@@ -46,17 +46,17 @@ public class AEEditorMusicSwitchView
     this.jdField_a_of_type_Int = paramInt;
     b(paramInt);
     c(paramInt);
-    if (this.jdField_a_of_type_Bpky != null) {
-      this.jdField_a_of_type_Bpky.a(paramInt);
+    if (this.jdField_a_of_type_Bmnu != null) {
+      this.jdField_a_of_type_Bmnu.a(paramInt);
     }
   }
   
   private void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558559, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379984));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379704));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369384));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558560, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379748));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379487));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369381));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     b(this.jdField_a_of_type_Int);
@@ -92,7 +92,7 @@ public class AEEditorMusicSwitchView
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131379984) {
+    if (i == 2131379748) {
       if (this.jdField_a_of_type_Int != 0) {}
     }
     for (;;)
@@ -101,15 +101,15 @@ public class AEEditorMusicSwitchView
       return;
       a(0);
       continue;
-      if ((i == 2131379704) && (this.jdField_a_of_type_Int != 1)) {
+      if ((i == 2131379487) && (this.jdField_a_of_type_Int != 1)) {
         a(1);
       }
     }
   }
   
-  public void setSwitchClickListener(@Nullable bpky parambpky)
+  public void setSwitchClickListener(@Nullable bmnu parambmnu)
   {
-    this.jdField_a_of_type_Bpky = parambpky;
+    this.jdField_a_of_type_Bmnu = parambmnu;
   }
 }
 

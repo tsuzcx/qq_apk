@@ -18,9 +18,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import ozc;
-import pll;
-import plm;
+import pai;
+import pqx;
+import pqy;
 
 public class GifView
   extends FrameLayout
@@ -61,7 +61,7 @@ public class GifView
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841690);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841730);
     }
     return mLoadingDrawable;
   }
@@ -82,10 +82,10 @@ public class GifView
       l = System.currentTimeMillis();
       localAtomicLong3 = new AtomicLong(l);
       localAtomicLong4 = new AtomicLong(0L);
-      paramURLDrawable.setDownloadListener(new pll(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+      paramURLDrawable.setDownloadListener(new pqx(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
     } while (this.mGifImageView == null);
     StringBuilder localStringBuilder = new StringBuilder();
-    this.mGifImageView.setURLDrawableDownListener(new plm(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
+    this.mGifImageView.setURLDrawableDownListener(new pqy(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
   }
   
   private void hideGifAnim()
@@ -173,7 +173,7 @@ public class GifView
     if ((this.mCoverImageView != null) && (paramString != null)) {}
     try
     {
-      ozc.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
+      pai.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
       return;
     }
     catch (MalformedURLException paramString)
@@ -234,7 +234,7 @@ public class GifView
     if ((this.mStaticZImageView != null) && (paramString != null)) {}
     try
     {
-      ozc.a(this.mStaticZImageView, new URL(paramString), getContext());
+      pai.a(this.mStaticZImageView, new URL(paramString), getContext());
       return;
     }
     catch (MalformedURLException paramString)

@@ -1,55 +1,102 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.open.base.BspatchUtil;
-import java.io.File;
+import org.json.JSONObject;
 
-class aqaq
-  implements aqat
+public class aqaq
 {
-  aqaq(aqai paramaqai, aqas paramaqas1, String paramString1, aqas paramaqas2, String paramString2, aqau paramaqau) {}
+  private long jdField_a_of_type_Long = 2000L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = 60000L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = true;
+  private boolean d = false;
   
-  public void a(byte[] paramArrayOfByte)
+  public static aqaq a(String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqas.jdField_b_of_type_JavaLangString }));
+    boolean bool2 = true;
+    if (paramString == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_Aqau.a(false);
-      return;
-      if (!aqai.b(paramArrayOfByte, this.jdField_a_of_type_Aqas.f))
+      aqaq localaqaq = new aqaq();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("useNewLog", 1) == 1)
       {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqas.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aqas.f }));
-      }
-      else
-      {
-        String str1 = aqai.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Aqas.jdField_a_of_type_JavaLangString);
-        if (!new File(str1).isFile())
-        {
-          ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, str1 }));
+        bool1 = true;
+        localaqaq.jdField_a_of_type_Boolean = bool1;
+        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
+          break label130;
         }
-        else
-        {
-          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aqas.d });
-          if (!aqai.a(paramArrayOfByte, str2))
-          {
-            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, str2 }));
-          }
-          else
-          {
-            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString }))) {
-              break;
-            }
-            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqas.f }));
-          }
+        bool1 = true;
+        label56:
+        localaqaq.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("enableConsole", 1) != 1) {
+          break label135;
+        }
+        bool1 = true;
+        label74:
+        localaqaq.c = bool1;
+        if (paramString.optInt("enableCheckPermission", 1) != 1) {
+          break label140;
         }
       }
+      label130:
+      label135:
+      label140:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        localaqaq.d = bool1;
+        localaqaq.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+        localaqaq.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+        return localaqaq;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label56;
+        bool1 = false;
+        break label74;
+      }
+      return null;
     }
-    this.jdField_a_of_type_Aqau.a(true);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Long < 0L) {
+      return 2000L;
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_b_of_type_Long < 0L) {
+      return 60000L;
+    }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public String toString()
+  {
+    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqaq
  * JD-Core Version:    0.7.0.1
  */

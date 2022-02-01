@@ -2,7 +2,7 @@
 <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/ewe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    <LinearLayout android:orientation="vertical" android:id="@id/ewi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="65.0dip">
+    <LinearLayout android:orientation="vertical" android:id="@id/ewi" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <RelativeLayout android:id="@id/ls7" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="45.0dip">
             <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:id="@id/lsu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ小程序" android:layout_centerInParent="true" />
             <RelativeLayout android:gravity="center_vertical" android:id="@id/lsm" android:background="@drawable/hzv" android:clipChildren="false" android:layout_width="80.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true">
@@ -13,11 +13,12 @@
                 <ImageView android:id="@id/lsn" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/hcb" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
             </RelativeLayout>
         </RelativeLayout>
-        <com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView android:id="@id/equ" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+        <com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView android:id="@id/equ" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="65.0dip" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/ltv" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="65.0dip">
-        <ImageView android:id="@id/ltw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hcc" />
-    </LinearLayout>
+    <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/ltv" android:layout_width="fill_parent" android:layout_height="65.0dip">
+        <com.tencent.mobileqq.widget.QQBlurView android:id="@id/n3e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/ltw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hcc" android:layout_centerInParent="true" />
+    </RelativeLayout>
     <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/lff" android:background="@drawable/hcd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="65.0dip">
         <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/lfe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rzo" android:drawableLeft="@drawable/ho6" android:drawablePadding="12.0dip" />
     </LinearLayout>

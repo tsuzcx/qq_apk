@@ -1,9 +1,23 @@
-import com.tencent.image.URLDrawableHandler;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public abstract interface suu
-  extends URLDrawableHandler
+class suu
+  implements svf
 {
-  public abstract void a(String paramString);
+  suu(sup paramsup) {}
+  
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  {
+    JSONObject localJSONObject = paramProteusItemData.c;
+    if (sup.a(this.a, localJSONObject))
+    {
+      sup.a(this.a, paramViewBase, paramContext, paramProteusItemData);
+      return;
+    }
+    sup.b(this.a, paramViewBase, paramContext, paramProteusItemData);
+  }
 }
 
 

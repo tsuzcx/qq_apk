@@ -1,33 +1,13 @@
-import android.graphics.Bitmap;
+import android.view.View;
 
-public class yvk
-  extends yzy
+class yvk
+  implements bjoy
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
+  yvk(yvj paramyvj, View paramView) {}
   
-  public yvk(int paramInt, Bitmap paramBitmap)
+  public void a()
   {
-    super(paramInt, paramBitmap);
-  }
-  
-  public static yvk a(yvk paramyvk, Bitmap paramBitmap)
-  {
-    paramBitmap = new yvk(paramyvk.c, paramBitmap);
-    paramBitmap.jdField_a_of_type_Int = paramyvk.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Int = paramyvk.jdField_b_of_type_Int;
-    paramBitmap.jdField_a_of_type_JavaLangString = paramyvk.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_a_of_type_Boolean = paramyvk.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_b_of_type_Boolean = paramyvk.jdField_b_of_type_Boolean;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

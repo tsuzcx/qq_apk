@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class ayhh
-  implements aycl
+public class ayhh
+  extends aygp
 {
-  ayhh(ayhf paramayhf) {}
-  
-  public void a(Comments.Comment paramComment)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    if (ayhf.a(this.a) != null)
-    {
-      ayhf.a(this.a).a(paramComment);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
-      }
-    }
-  }
-  
-  public void a(Comments.Comment paramComment, int paramInt, String paramString)
-  {
-    if (ayhf.a(this.a) != null)
-    {
-      ayhf.a(this.a).a(paramComment, paramInt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
-      }
-    }
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
   }
 }
 

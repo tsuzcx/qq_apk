@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import anvu;
-import bhvd;
+import amqd;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.MsgSCBody;
 import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
@@ -13,7 +13,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class DataLineHandler$6
   implements Runnable
 {
-  public DataLineHandler$6(anvu paramanvu, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
+  public DataLineHandler$6(amqd paramamqd, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public class DataLineHandler$6
             break;
           }
           arrayOfByte = new byte[i];
-          bhvd.a(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+          PkgTools.copyData(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
         }
         if (arrayOfByte == null) {
           break;

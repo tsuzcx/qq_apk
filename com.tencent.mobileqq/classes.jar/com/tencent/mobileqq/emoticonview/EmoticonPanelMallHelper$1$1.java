@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asno;
-
 class EmoticonPanelMallHelper$1$1
   implements Runnable
 {
@@ -9,12 +7,12 @@ class EmoticonPanelMallHelper$1$1
   
   public void run()
   {
-    this.a.a.a();
+    this.this$1.val$callback.callbackInMainThread();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

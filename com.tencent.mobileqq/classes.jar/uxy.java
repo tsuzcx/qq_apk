@@ -1,13 +1,4 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-class uxy
-{
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  
-  uxy(uxx paramuxx) {}
-}
+class uxy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

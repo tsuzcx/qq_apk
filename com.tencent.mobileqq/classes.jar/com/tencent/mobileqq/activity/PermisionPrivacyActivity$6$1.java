@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 class PermisionPrivacyActivity$6$1
@@ -15,12 +15,12 @@ class PermisionPrivacyActivity$6$1
       PermisionPrivacyActivity.a(this.a.this$0).setRightText("");
       return;
     }
-    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + anzj.a(2131706796));
+    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + amtj.a(2131707028));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

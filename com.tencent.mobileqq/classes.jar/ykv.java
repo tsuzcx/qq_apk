@@ -1,12 +1,28 @@
-class ykv
-  extends ztl
+import android.media.MediaFormat;
+
+public class ykv
 {
-  ykv(yku paramyku) {}
+  public int a;
+  public long a;
+  public MediaFormat a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
   
-  public boolean a(boolean paramBoolean)
+  public ykv()
   {
-    this.a.b();
-    return true;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("Image2result.result ").append("src: ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("result ").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

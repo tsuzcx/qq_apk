@@ -1,32 +1,19 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import mqq.app.QQPermissionCallback;
 
 public class rhg
-  extends rhf
+  implements QQPermissionCallback
 {
-  public rhg(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public rhg(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramContext, paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  protected void a(View paramView, ResultRecord paramResultRecord)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
-      return;
-    }
-    paramView = (CheckBox)paramView.findViewById(2131364511);
-    paramView.setBackgroundResource(2130849409);
-    if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
-    {
-      paramView.setEnabled(false);
-      return;
-    }
-    paramView.setEnabled(true);
+    this.a.o();
   }
 }
 

@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import java.util.ArrayList;
 
 public class afch
-  implements bbsw
+  implements Observer<ArrayList<ayfo>>
 {
-  public afch(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public afch(PlusPanel paramPlusPanel) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(@Nullable ArrayList<ayfo> paramArrayList)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131717966);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    this.a.a(paramArrayList);
+    PlusPanel.a(this.a).a(this.a.a, new afci(this));
   }
 }
 

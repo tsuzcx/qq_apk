@@ -1,42 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.List;
 
 public class pew
-  implements pql
 {
-  public pew(KandianSubscribeManager paramKandianSubscribeManager) {}
+  AnimationSet a;
+  public ped a;
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public pew(ped paramped)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    if (localQQAppInterface == null) {}
-    QQMessageFacade localQQMessageFacade;
-    MessageRecord localMessageRecord;
-    do
-    {
-      return;
-      localQQMessageFacade = localQQAppInterface.a();
-      localMessageRecord = localQQMessageFacade.b(antf.aQ, 1008);
-    } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
-    localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
-    localMessageRecord.createMessageUniseq();
-    localQQMessageFacade.a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
-    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
-    if (paramReadInJoyUserInfo != null) {
-      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+    this.jdField_a_of_type_Ped = paramped;
+  }
+  
+  public AnimationSet a()
+  {
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet == null) {
+      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(this.jdField_a_of_type_Ped.a().a(), 2130772058));
     }
-    QLog.d(KandianSubscribeManager.a, 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageRecord);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    List localList = this.jdField_a_of_type_AndroidViewAnimationAnimationSet.getAnimations();
+    int j = localList.size();
+    int i = 0;
+    while (i < j)
+    {
+      localAnimationSet.addAnimation((Animation)localList.get(i));
+      i += 1;
+    }
+    return localAnimationSet;
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    this.jdField_a_of_type_Ped.a().remove(paramBaseArticleInfo);
+    this.jdField_a_of_type_Ped.a().a().notifyDataSetChanged();
+    this.jdField_a_of_type_Ped.a().e(true);
   }
 }
 

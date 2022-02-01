@@ -39,16 +39,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131718768;
+      i = 2131719016;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131719411;
+        return 2131719735;
       }
     } while (k != j - 2);
-    return 2131690486;
+    return 2131690526;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -59,7 +59,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131718768) {
+      if (k != 2131719016) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -67,7 +67,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131718768) {
+      if (k == 2131719016) {
         if (m == 24)
         {
           i = 24;
@@ -118,9 +118,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2131561606);
-    setContentBackgroundResource(2130838778);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378328));
+    super.setContentView(2131561484);
+    setContentBackgroundResource(2130838891);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378095));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -132,7 +132,7 @@ public class BaseSystemActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_AndroidWidgetCursorAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setTranscriptMode(1);
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
-    this.app.a().addObserver(this);
+    this.app.getMessageFacade().addObserver(this);
     setTitle(a());
     jdField_a_of_type_Int = TimeZone.getDefault().getRawOffset();
   }
@@ -196,8 +196,9 @@ public class BaseSystemActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -226,14 +227,14 @@ public class BaseSystemActivity
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850615, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850540, 0, 0, 0);
     return this.rightViewText;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.app.a().deleteObserver(this);
+    this.app.getMessageFacade().deleteObserver(this);
     if (this.jdField_a_of_type_AndroidWidgetCursorAdapter != null) {
       this.jdField_a_of_type_AndroidWidgetCursorAdapter.changeCursor(null);
     }
@@ -252,7 +253,7 @@ public class BaseSystemActivity
       paramObservable = (MessageRecord)paramObject;
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
-        this.app.a().c(this.jdField_a_of_type_JavaLangString, 0);
+        this.app.getMessageFacade().setReaded(this.jdField_a_of_type_JavaLangString, 0);
         runOnUiThread(new BaseSystemActivity.1(this));
       }
       if (!paramObservable.isSendFromLocal()) {
@@ -263,7 +264,7 @@ public class BaseSystemActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseSystemActivity
  * JD-Core Version:    0.7.0.1
  */

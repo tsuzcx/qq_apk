@@ -1,38 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.widget.FadeIconImageView;
+import Wallet.RedInfoSyncRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class akcr
-  extends akbz
+class akcr
+  implements BusinessObserver
 {
-  public static final int[] a;
-  public static final int[] b = { 2131364399 };
+  akcr(akcq paramakcq) {}
   
-  static
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690657 };
-  }
-  
-  public akcr(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
+    }
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
+        if (paramBundle == null) {
+          break label97;
+        }
+      }
+    }
+    label97:
+    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    {
+      QLog.d("QWalletRedManager", 2, paramBundle);
+      return;
+    }
   }
 }
 

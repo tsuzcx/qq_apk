@@ -1,40 +1,57 @@
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class sxe
 {
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private float jdField_b_of_type_Float;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
+  private String jdField_a_of_type_JavaLangString = "";
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private boolean jdField_a_of_type_Boolean = true;
+  private String b = "utf-8";
   
-  public sxe(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
+  public sxe(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
-    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this(paramString, "utf-8");
   }
   
-  public float a()
+  public sxe(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public RectF a()
+  private void a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (!this.jdField_a_of_type_JavaLangString.endsWith("?")) {
+      this.jdField_a_of_type_JavaLangString += "?";
+    }
   }
   
-  public RectF b()
+  public String a()
   {
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
   
-  @NonNull
-  public String toString()
+  public sxe a(String paramString1, String paramString2)
   {
-    return "cropRect:" + this.jdField_a_of_type_AndroidGraphicsRectF + " ,imageRect:" + this.jdField_b_of_type_AndroidGraphicsRectF + " ,scale:" + this.jdField_a_of_type_Float + " ,angle:" + this.jdField_b_of_type_Float;
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaLangStringBuilder.append("&");
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString1);
+      this.jdField_a_of_type_JavaLangStringBuilder.append("=");
+      this.jdField_a_of_type_JavaLangStringBuilder.append(URLEncoder.encode(paramString2, this.b));
+      return this;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return this;
   }
 }
 

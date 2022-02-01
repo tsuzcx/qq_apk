@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.util;
 
 import cooperation.qzone.LocalMultiProcConfig;
-import ups;
+import uxn;
 
 public class QzoneVerticalVideoPluginApk$2
   implements Runnable
 {
-  public QzoneVerticalVideoPluginApk$2(ups paramups) {}
+  public QzoneVerticalVideoPluginApk$2(uxn paramuxn) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QzoneVerticalVideoPluginApk$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.QzoneVerticalVideoPluginApk.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,156 +1,134 @@
-import android.opengl.GLES20;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bbku
 {
-  private static final ConcurrentLinkedQueue<bbku> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  public static final String[] a;
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public float[] a;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private bbkp jdField_a_of_type_Bbkp;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<ConcurrentHashMap<String, Long>> jdField_a_of_type_JavaUtilArrayList;
+  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(2);
+  private ConcurrentHashMap<String, ArrayList<Object[]>> b = new ConcurrentHashMap(2);
   
-  private bbku()
+  static
   {
-    int i = bblk.a(1)[0];
-    if (i == 0)
-    {
-      bblk.a("glGenTexture");
-      throw new Exception("Unable to generate new texture " + Integer.toHexString(GLES20.glGetError()));
-    }
-    this.jdField_a_of_type_Int = i;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "msg_cached_max_seq", "msg_cached_min_seq", "msg_readed_seq", "msg_expired_seq" };
   }
   
-  public static bbku a()
+  public bbku(QQAppInterface paramQQAppInterface, int paramInt, String paramString, SharedPreferences paramSharedPreferences, bbkp parambbkp)
   {
-    synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
+    this.jdField_a_of_type_Bbkp = parambbkp;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_a_of_type_ArrayOfJavaLangString.length);
+    paramInt = 0;
+    while (paramInt <= 3)
     {
-      bbku localbbku1 = (bbku)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      ??? = localbbku1;
-      if (localbbku1 != null) {}
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ConcurrentHashMap(2));
+      paramInt += 1;
     }
-    return localbbku2;
   }
   
-  public static void a()
+  public int a(String paramString)
   {
-    try
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(2));
+    }
+    return ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
+  }
+  
+  public long a(int paramInt, String paramString)
+  {
+    if ((paramInt < 0) || (paramInt > 3) || (TextUtils.isEmpty(paramString))) {
+      return 0L;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() == null) {
+      return 0L;
+    }
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!localConcurrentHashMap.containsKey(paramString)) {
+      localConcurrentHashMap.put(paramString, Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(a(paramInt, paramString), 0L)));
+    }
+    return ((Long)localConcurrentHashMap.get(paramString)).longValue();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    if ((paramInt < 0) || (paramInt > 3) || (TextUtils.isEmpty(paramString))) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("_").append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]).append("_").append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i <= 3)
     {
-      yuk.c("FlowEdit_DecodedFrame", "releaseAll");
-      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(i)).clear();
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
+    if ((paramInt1 < 0) || (paramInt1 > 3) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    long l1;
+    if (paramInt2 == 1) {
+      l1 = Math.max(paramLong, a(paramInt1, paramString));
+    }
+    for (;;)
+    {
+      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).put(paramString, Long.valueOf(l1));
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() == null) {
+        break;
+      }
+      this.jdField_a_of_type_Bbkp.putLong(a(paramInt1, paramString), l1);
+      return;
+      l1 = paramLong;
+      if (paramInt2 == 2)
       {
-        if (!jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-          ((bbku)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll()).c();
+        long l2 = a(paramInt1, paramString);
+        l1 = paramLong;
+        if (l2 != 0L) {
+          l1 = Math.min(paramLong, l2);
         }
       }
     }
-    finally {}
   }
   
-  public int a()
+  public void a(String paramString, Object[] paramArrayOfObject)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new IllegalStateException("this is an invalid frame");
-    }
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new IllegalStateException("this is an invalid frame, don't recycle please");
-    }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue)
+    ArrayList localArrayList2 = (ArrayList)this.b.get(paramString);
+    ArrayList localArrayList1;
+    if (localArrayList2 != null)
     {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(this);
-      return;
+      localArrayList1 = localArrayList2;
+      if (localArrayList2.size() != 0) {}
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Int != 0)
+    else
     {
-      bblk.b(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = 0;
-      return;
+      localArrayList1 = new ArrayList();
     }
-    yuk.d("FlowEdit_DecodedFrame", "release duplicate %d", new Object[] { Integer.valueOf(System.identityHashCode(this)) });
-  }
-  
-  /* Error */
-  protected void finalize()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 133	java/lang/Object:finalize	()V
-    //   4: aload_0
-    //   5: getfield 63	bbku:jdField_a_of_type_Int	I
-    //   8: ifeq +10 -> 18
-    //   11: ldc 73
-    //   13: ldc 135
-    //   15: invokestatic 137	yuk:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   18: return
-    //   19: astore_1
-    //   20: aload_0
-    //   21: getfield 63	bbku:jdField_a_of_type_Int	I
-    //   24: ifeq -6 -> 18
-    //   27: ldc 73
-    //   29: ldc 135
-    //   31: invokestatic 137	yuk:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   34: return
-    //   35: astore_1
-    //   36: aload_0
-    //   37: getfield 63	bbku:jdField_a_of_type_Int	I
-    //   40: ifeq +10 -> 50
-    //   43: ldc 73
-    //   45: ldc 135
-    //   47: invokestatic 137	yuk:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   50: aload_1
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	this	bbku
-    //   19	1	1	localThrowable	Throwable
-    //   35	16	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	4	19	java/lang/Throwable
-    //   0	4	35	finally
-  }
-  
-  public String toString()
-  {
-    return "DecodedFrame{textureId=" + this.jdField_a_of_type_Int + ", timeStampUs=" + this.jdField_a_of_type_Long + ", cycleCount=" + this.jdField_b_of_type_Int + '}';
+    localArrayList1.add(paramArrayOfObject);
+    this.b.put(paramString, localArrayList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbku
  * JD-Core Version:    0.7.0.1
  */

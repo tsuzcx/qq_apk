@@ -1,18 +1,16 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class azjw
-  extends azjx
+class azjw
+  implements DialogInterface.OnClickListener
 {
-  azjw()
+  azjw(azjv paramazjv, QQCustomDialog paramQQCustomDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(1);
-    this.a = "StepEmptySensor";
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent) {}
 }
 
 

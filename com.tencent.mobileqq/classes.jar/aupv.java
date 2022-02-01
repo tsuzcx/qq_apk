@@ -1,27 +1,17 @@
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
-public class aupv
-  implements View.OnClickListener
+class aupv
+  implements CustomizedLoading
 {
-  public aupv(SendBottomBar paramSendBottomBar) {}
+  aupv(aupc paramaupc) {}
   
-  public void onClick(View paramView)
+  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
   {
-    if (SendBottomBar.a(this.a) != null) {
-      SendBottomBar.a(this.a).a();
-    }
-    if (SendBottomBar.a(this.a)) {
-      aunj.b(SendBottomBar.a(this.a));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aunj.a(SendBottomBar.a(this.a));
-    }
+    LoadingFragment.a(paramContext, paramBundle, paramView);
   }
 }
 

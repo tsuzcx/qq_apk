@@ -1,33 +1,53 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.utils.VipUtils.UpdateRecentEfficientVipIconTask;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bgam
-  implements View.OnClickListener
 {
-  public bgam(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  private static ArrayList<VipUtils.UpdateRecentEfficientVipIconTask> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public static void a(View paramView)
   {
-    blgx.b(paramView);
-    try
+    Iterator localIterator = a.iterator();
+    VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask2;
+    View localView;
+    do
     {
-      this.a.i();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
+      if (!localIterator.hasNext()) {
+        break label80;
+      }
+      localUpdateRecentEfficientVipIconTask2 = (VipUtils.UpdateRecentEfficientVipIconTask)localIterator.next();
+      localView = VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask2);
+      localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;
+      if (localView == paramView) {
+        break;
+      }
+    } while (localView != null);
+    label80:
+    for (VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;; localUpdateRecentEfficientVipIconTask1 = null)
     {
-      for (;;)
+      if (localUpdateRecentEfficientVipIconTask1 != null)
       {
+        a.remove(localUpdateRecentEfficientVipIconTask1);
+        VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask1, false);
         if (QLog.isColorLevel()) {
-          QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", localJSONException);
+          QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - diable");
         }
       }
+      return;
     }
+  }
+  
+  public static void a(VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask)
+  {
+    a.add(paramUpdateRecentEfficientVipIconTask);
+  }
+  
+  public static void b(VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask)
+  {
+    a.remove(paramUpdateRecentEfficientVipIconTask);
   }
 }
 

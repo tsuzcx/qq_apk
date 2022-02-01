@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.util.Iterator;
 import java.util.List;
-import twi;
+import ucy;
 
 class SubscriptFeedsActivity$10
   implements Runnable
@@ -12,16 +12,16 @@ class SubscriptFeedsActivity$10
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      twi localtwi = (twi)localIterator.next();
-      if (localtwi.b > 0) {
-        localtwi.a();
+      ucy localucy = (ucy)localIterator.next();
+      if (localucy.b > 0) {
+        localucy.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.10
  * JD-Core Version:    0.7.0.1
  */

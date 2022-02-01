@@ -1,46 +1,87 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver.1;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class aiml
-  extends asvt
+  extends andd
 {
-  aiml(aimd paramaimd) {}
+  public aiml(TroopView paramTroopView) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aswv paramaswv, String paramString)
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetUnLimitFriendInfo() success=%s uinType=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
-    }
-    if ((paramBoolean) && (paramaswv != null)) {
-      ThreadManager.getSubThreadHandler().post(new LimitChatPie.7.1(this, paramInt2, paramaswv));
+    if (paramBoolean) {
+      this.a.j();
     }
   }
   
-  protected void a(boolean paramBoolean, asxh paramasxh, int paramInt)
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramasxh != null))
-    {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramasxh, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.K);
-      aimd.a(this.a, paramasxh.mNickName);
-      this.a.e.setText(paramasxh.mNickName);
-      if ((!TextUtils.isEmpty(paramasxh.mNickName)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramasxh.mNickName;
+    if (paramBoolean) {
+      this.a.j();
+    }
+  }
+  
+  protected void onModifyTroopInfo(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.j();
       }
     }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.j();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.j();
   }
   
-  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (paramBoolean) {
+      TroopView.a(this.a);
     }
-    aimd.a(this.a, paramArrayList);
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (!paramBoolean) {
+        break label79;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.a(101, 800L);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
+      return;
+      label79:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
+      this.a.b(2131718604);
+    }
+  }
+  
+  protected void onUpdateTroopNickname(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 

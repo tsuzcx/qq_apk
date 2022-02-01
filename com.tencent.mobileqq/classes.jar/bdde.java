@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.aio.media.aio_media.RspLatestPlayingState;
 
-class bdde
-  implements View.OnClickListener
+public abstract interface bdde
 {
-  bdde(bdcy parambdcy) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onClick(View paramView)
-  {
-    bdcy.a(this.a, bdcy.a(this.a));
-    bdcy.b(this.a, System.currentTimeMillis());
-    if (bdcy.a(this.a) - bdcy.b(this.a) < 300L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bdcy.a(this.a);
-    }
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(String paramString, int paramInt);
 }
 
 

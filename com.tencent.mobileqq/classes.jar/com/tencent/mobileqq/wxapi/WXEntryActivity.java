@@ -9,13 +9,13 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bnhm;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
 import com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.share.WXShareFromQZHelper;
 import mqq.app.AndroidOreoUtils;
 
 public class WXEntryActivity
@@ -24,8 +24,9 @@ public class WXEntryActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -61,7 +62,7 @@ public class WXEntryActivity
     {
       try
       {
-        bnhm.a().a(this, getIntent());
+        WXShareFromQZHelper.getInstance().handleWXEntryActivityIntent(this, getIntent());
       }
       catch (Throwable paramBundle)
       {

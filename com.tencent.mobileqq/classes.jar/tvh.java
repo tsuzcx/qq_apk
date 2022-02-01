@@ -1,430 +1,192 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class tvh
-  extends BaseAdapter
-  implements aoog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/impl/SuperMaskResMgr;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ISuperMaskRes;", "()V", "TAG", "", "hasInit", "", "getHasInit", "()Z", "setHasInit", "(Z)V", "reqResList", "Ljava/util/concurrent/ConcurrentHashMap;", "", "getReqResList", "()Ljava/util/concurrent/ConcurrentHashMap;", "setReqResList", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "addNewRes", "", "data", "doInit", "findResDataFromLocal", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ISuperMaskRes$SuperMaskJson;", "adId", "adSource", "getLocalResList", "initLocalRes", "removeInvalidRes", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvh
+  implements tux
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
-  private static int e;
-  private float jdField_a_of_type_Float;
-  private alno jdField_a_of_type_Alno;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private KandianMergeManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager;
-  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<twi> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private List<Object> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private List<tvj> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private float d;
-  private int f;
+  @NotNull
+  private static ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static final tvh a;
+  private static volatile boolean jdField_a_of_type_Boolean;
   
   static
   {
-    jdField_b_of_type_Int = 1;
-    e = 3;
-    jdField_d_of_type_Int = 1;
+    jdField_a_of_type_Tvh = new tvh();
   }
   
-  public tvh(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, LayoutInflater paramLayoutInflater)
+  private final void b()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_Alno = new alno(paramQQAppInterface, this, false);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297932);
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297934);
-    this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297933);
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297931);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
-    b();
+    a(b());
+    a(true);
+    QLog.d("ReadInJoySuperMaskAd", 1, "SuperMaskResMgr init finish");
   }
   
-  private void a(tvi paramtvi, String paramString)
+  @NotNull
+  public ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> a()
   {
-    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localBitmap == null)
-    {
-      paramtvi.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Alno.a(1008, paramString));
-      return;
-    }
-    paramtvi.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   }
   
-  public void a()
+  @Nullable
+  public tuy a(@Nullable String paramString1, @Nullable String paramString2)
   {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty())
-    {
-      bdll.b(null, "CliOper", "", "", "0X8006110", "0X8006110", 0, this.jdField_a_of_type_JavaUtilHashSet.size(), 0, "", "", "", "");
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label128;
-        }
-        String str = (String)localIterator.next();
-        Object localObject1 = "";
-        try
-        {
-          Object localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("folder_status", ozs.jdField_d_of_type_Int);
-          localObject2 = ((JSONObject)localObject2).toString();
-          localObject1 = localObject2;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-        ocd.a(null, str, "0X80081C7", "0X80081C7", 0, 0, "", "", "", (String)localObject1, false);
-      }
-    }
-    label128:
-    if (this.f > 0) {
-      bdll.b(null, "CliOper", "", "", "0X8006154", "0X8006154", 0, this.f, 0, "", "", "", "");
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_a_of_type_JavaUtilHashSet = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = null;
-    this.jdField_a_of_type_Alno.a();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = null;
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-    this.jdField_a_of_type_AndroidContentResResources = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_c_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_JavaUtilList = null;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(DragFrameLayout paramDragFrameLayout)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = paramDragFrameLayout;
-  }
-  
-  public void a(List<twi> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_c_of_type_JavaUtilList.size() > 0) {
-      this.jdField_c_of_type_JavaUtilList.clear();
-    }
-    ArrayList localArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList.addAll(localArrayList);
-  }
-  
-  public void c()
-  {
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.addAll(this.jdField_c_of_type_JavaUtilList);
-    this.jdField_b_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_b_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    int i = e;
-    Object localObject = this.jdField_b_of_type_JavaUtilList.get(paramInt);
-    if ((localObject instanceof twi)) {
-      paramInt = jdField_a_of_type_Int;
-    }
+    if ((paramString1 == null) || (paramString2 == null)) {}
     do
     {
-      return paramInt;
-      paramInt = i;
-    } while (!(localObject instanceof tvj));
-    return jdField_b_of_type_Int;
+      return null;
+      paramString1 = ttv.a(pay.a()).a(paramString2 + "_" + paramString1);
+      if (tuw.c(paramString1)) {
+        tuw.a(paramString1);
+      }
+    } while (paramString1 == null);
+    return new tuy(paramString1.toJson());
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  /* Error */
+  public void a()
   {
-    Object localObject1;
-    if ((paramInt < 0) || (paramInt >= this.jdField_b_of_type_JavaUtilList.size()))
-    {
-      localObject1 = null;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-    }
-    int j = getItemViewType(paramInt);
-    Object localObject2 = null;
-    int i;
-    if (paramView == null) {
-      if (j == jdField_a_of_type_Int)
-      {
-        localObject2 = new tvi(this);
-        localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560376, null);
-        ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((View)localObject1).findViewById(2131378210));
-        ((tvi)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131378224));
-        ((tvi)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131378229));
-        ((tvi)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131376487));
-        ((tvi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject1).findViewById(2131380439));
-        ((tvi)localObject2).c = ((TextView)((View)localObject1).findViewById(2131366494));
-        ((tvi)localObject2).jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject1).findViewById(2131370764));
-        ((tvi)localObject2).jdField_b_of_type_AndroidWidgetButton = ((Button)((View)localObject1).findViewById(2131370744));
-        ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        ((tvi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, (View)localObject1);
-        ((tvi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-        ((tvi)localObject2).jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        ((tvi)localObject2).jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramView = ((tvi)localObject2).c;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = this.jdField_a_of_type_AndroidContentResResources.getColor(2131166060);
-          label294:
-          paramView.setTextColor(i);
-          paramView = ((tvi)localObject2).jdField_a_of_type_AndroidWidgetTextView;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label413;
-          }
-          i = this.jdField_a_of_type_AndroidContentResResources.getColor(2131166066);
-          label325:
-          paramView.setTextColor(i);
-          paramView = ((tvi)localObject2).jdField_b_of_type_AndroidWidgetTextView;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label428;
-          }
-          i = this.jdField_a_of_type_AndroidContentResResources.getColor(2131166069);
-          label356:
-          paramView.setTextColor(i);
-          label362:
-          paramView = (View)localObject1;
-          if (localObject1 != null)
-          {
-            paramView = (View)localObject1;
-            if (localObject2 != null)
-            {
-              ((View)localObject1).setTag(localObject2);
-              paramView = (View)localObject1;
-            }
-          }
-        }
-      }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokevirtual 136	tvh:a	()Z
+    //   6: ifne +28 -> 34
+    //   9: invokestatic 142	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   12: invokestatic 145	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   15: invokestatic 151	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   18: ifeq +19 -> 37
+    //   21: getstatic 156	com/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/impl/SuperMaskResMgr$initLocalRes$1:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/impl/SuperMaskResMgr$initLocalRes$1;
+    //   24: checkcast 158	java/lang/Runnable
+    //   27: bipush 10
+    //   29: aconst_null
+    //   30: iconst_1
+    //   31: invokestatic 164	com/tencent/mobileqq/app/ThreadManagerV2:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: return
+    //   37: aload_0
+    //   38: invokespecial 66	tvh:b	()V
+    //   41: goto -7 -> 34
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	49	0	this	tvh
+    //   44	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	34	44	finally
+    //   37	41	44	finally
+  }
+  
+  public void a(@Nullable Object paramObject)
+  {
+    if (!(paramObject instanceof MaterialData)) {
+      paramObject = null;
     }
     for (;;)
     {
-      if (paramView == null)
+      Object localObject = (MaterialData)paramObject;
+      if ((localObject != null) && (tuw.a((MaterialData)localObject)))
       {
-        localObject1 = null;
-        break;
-        i = this.jdField_a_of_type_AndroidContentResResources.getColor(2131166065);
-        break label294;
-        label413:
-        i = this.jdField_a_of_type_AndroidContentResResources.getColor(2131166059);
-        break label325;
-        label428:
-        i = this.jdField_a_of_type_AndroidContentResResources.getColor(2131166068);
-        break label356;
-        if (j != jdField_b_of_type_Int) {
-          break label1261;
-        }
-        localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559990, null);
-        break label362;
-      }
-      if (j == jdField_a_of_type_Int)
-      {
-        paramView.setTag(2131378216, Integer.valueOf(paramInt));
-        localObject2 = (tvi)paramView.getTag();
-        localtwi = (twi)getItem(paramInt);
-        if (this.jdField_a_of_type_JavaUtilHashSet != null) {
-          this.jdField_a_of_type_JavaUtilHashSet.add(localtwi.jdField_a_of_type_JavaLangString);
-        }
-        ((tvi)localObject2).jdField_a_of_type_JavaLangString = localtwi.jdField_a_of_type_JavaLangString;
-        a((tvi)localObject2, localtwi.jdField_a_of_type_JavaLangString);
-        localObject1 = twk.a().a(localtwi.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty((CharSequence)localObject1))
+        paramObject = new ConcurrentHashMap();
+        tuw.a((MaterialData)localObject, paramObject);
+        if (!TextUtils.isEmpty((CharSequence)((MaterialData)localObject).adid))
         {
-          localObject1 = twk.a().a(localtwi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            ((tvi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-            ((tvi)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(TimeManager.getInstance().getMsgDisplayTime(localtwi.jdField_a_of_type_JavaLangString, localtwi.jdField_a_of_type_Long));
-            if (localtwi.jdField_b_of_type_Int <= 0) {
-              break label922;
-            }
-            i = 3;
-            blkk.a(((tvi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, localtwi.jdField_b_of_type_Int, 2130850404, 99, null);
-            if (localtwi.jdField_a_of_type_JavaUtilList.size() <= 0) {
-              break label1025;
-            }
-            localtwj = (twj)localtwi.jdField_a_of_type_JavaUtilList.get(0);
-            if (localtwj.jdField_a_of_type_Int != 0) {
-              break label928;
-            }
-            ((tvi)localObject2).c.setMaxLines(1);
-            ((tvi)localObject2).c.setText(new begp(localtwj.c.replaceFirst("^\\s+", ""), 3, 20));
-            ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup.setTag(2131378213, Integer.valueOf(localtwi.jdField_b_of_type_Int));
-            ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup.setTag(2131378222, localtwi.jdField_a_of_type_JavaLangString);
-            ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup.setTag(2131378215, localObject1);
-            ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup.setTag(2131378214, Integer.valueOf(jdField_c_of_type_Int));
-            ((tvi)localObject2).jdField_a_of_type_AndroidViewViewGroup.setTag(localtwi);
-            ((tvi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131378213, localtwi);
-            ((tvi)localObject2).jdField_a_of_type_AndroidWidgetButton.setTag(2131378222, localtwi.jdField_a_of_type_JavaLangString);
-            ((tvi)localObject2).jdField_a_of_type_AndroidWidgetButton.setTag(2131378215, localObject1);
-            ((tvi)localObject2).jdField_b_of_type_AndroidWidgetButton.setTag(2131378222, localtwi.jdField_a_of_type_JavaLangString);
-            paramView.setTag(-3, Integer.valueOf((int)(this.jdField_c_of_type_Float + this.jdField_d_of_type_Float)));
-          }
+          Map localMap = (Map)jdField_a_of_type_Tvh.a();
+          localObject = ((MaterialData)localObject).adid;
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "it.adid");
+          localMap.put(localObject, paramObject);
         }
       }
-      label922:
-      label928:
-      while (j != jdField_b_of_type_Int) {
-        for (;;)
-        {
-          twi localtwi;
-          twj localtwj;
-          localObject1 = paramView;
-          break;
-          ((tvi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(localtwi.jdField_a_of_type_JavaLangString);
-          continue;
-          ((tvi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          continue;
-          i = 0;
-          continue;
-          if (localtwj.jdField_a_of_type_Int == 1)
-          {
-            ((tvi)localObject2).c.setMaxLines(2);
-            ((tvi)localObject2).c.setText(localtwj.jdField_b_of_type_JavaLangString.replaceFirst("^\\s+", ""));
-          }
-          else if (localtwj.jdField_a_of_type_Int == 2)
-          {
-            ((tvi)localObject2).c.setMaxLines(1);
-            ((tvi)localObject2).c.setText(2131695848);
-          }
-          else
-          {
-            ((tvi)localObject2).c.setMaxLines(1);
-            ((tvi)localObject2).c.setText(2131695849);
-            continue;
-            if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-              QLog.w("SubscriptFeedsNewAdapter", 2, "getView feed.mItems.size() == 0, is error!!");
-            }
-          }
-        }
-      }
-      label1025:
-      localObject1 = (tvj)getItem(paramInt);
-      ((TextView)paramView.findViewById(2131371448)).setText(((tvj)localObject1).jdField_a_of_type_JavaLangString);
-      ((ImageView)paramView.findViewById(2131371447)).setImageDrawable(((tvj)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      localObject2 = (DragTextView)paramView.findViewById(2131380439);
-      ((DragTextView)localObject2).setDragViewType(0, paramView);
-      if (((tvj)localObject1).jdField_a_of_type_Int > 0) {}
-      for (i = 3;; i = 0)
-      {
-        blkk.a((TextView)localObject2, i, ((tvj)localObject1).jdField_a_of_type_Int, 2130850404, 99, null);
-        if (((tvj)localObject1).jdField_a_of_type_Int > 0) {
-          paramView.findViewById(2131362969).setVisibility(8);
-        }
-        localObject2 = (ViewGroup)paramView.findViewById(2131371446);
-        ((ViewGroup)localObject2).setTag(2131378214, Integer.valueOf(jdField_d_of_type_Int));
-        ((ViewGroup)localObject2).setTag(2131378440, ((tvj)localObject1).jdField_b_of_type_JavaLangString);
-        ((ViewGroup)localObject2).setTag(2131376112, Integer.valueOf(((tvj)localObject1).jdField_b_of_type_Int));
-        ((ViewGroup)localObject2).setTag(2131376113, Integer.valueOf(((tvj)localObject1).jdField_a_of_type_Int));
-        ((ViewGroup)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        break;
-      }
-      label1261:
-      localObject1 = paramView;
-      break label362;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return e;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (this.jdField_a_of_type_ComTencentWidgetXListView == null) || (paramString == null) || (paramString.length() == 0)) {}
-    for (;;)
-    {
       return;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
-      paramInt2 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
+    }
+  }
+  
+  public void a(@NotNull ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> paramConcurrentHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramConcurrentHashMap, "<set-?>");
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  @NotNull
+  public ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> b()
+  {
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = ttv.a(pay.a());
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "AdMaterialResManager.get…eadInJoyUtils.getQQApp())");
+    localObject1 = ((ttv)localObject1).a();
+    if (((HashMap)localObject1).size() <= 0)
+    {
+      l2 = System.currentTimeMillis();
+      twp.a("ReadInJoySuperMaskAd", "getLocalResList time cost : " + (l2 - l1));
+      return localConcurrentHashMap;
+    }
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "allDBData");
+    localObject1 = ((Map)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      Object localObject3 = ((Map.Entry)localObject2).getValue();
+      Intrinsics.checkExpressionValueIsNotNull(localObject3, "it.value");
+      if (tuw.a((MaterialData)localObject3))
       {
-        paramBitmap = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((paramBitmap != null) && ((paramBitmap instanceof tvi)))
+        localObject3 = new ConcurrentHashMap();
+        Object localObject4 = ((Map.Entry)localObject2).getValue();
+        Intrinsics.checkExpressionValueIsNotNull(localObject4, "it.value");
+        tuw.a((MaterialData)localObject4, (ConcurrentHashMap)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)((MaterialData)((Map.Entry)localObject2).getValue()).adid))
         {
-          paramBitmap = (tvi)paramBitmap;
-          if (paramString.equals(paramBitmap.jdField_a_of_type_JavaLangString)) {
-            a(paramBitmap, paramString);
-          }
+          localObject4 = (Map)localConcurrentHashMap;
+          localObject2 = ((MaterialData)((Map.Entry)localObject2).getValue()).adid;
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.value.adid");
+          ((Map)localObject4).put(localObject2, localObject3);
         }
-        paramInt1 += 1;
       }
+    }
+    long l2 = System.currentTimeMillis();
+    twp.a("ReadInJoySuperMaskAd", "getLocalResList time cost : " + (l2 - l1));
+    return localConcurrentHashMap;
+  }
+  
+  public void b(@Nullable Object paramObject)
+  {
+    if (!(paramObject instanceof MaterialData)) {
+      paramObject = null;
+    }
+    for (;;)
+    {
+      paramObject = (MaterialData)paramObject;
+      if ((paramObject != null) && (!TextUtils.isEmpty((CharSequence)paramObject.adid))) {
+        jdField_a_of_type_Tvh.a().remove(paramObject.adid);
+      }
+      return;
     }
   }
 }

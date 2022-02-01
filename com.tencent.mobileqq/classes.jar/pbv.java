@@ -1,32 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.aladdin.config.utils.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class pbv
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public static int a(int paramInt)
   {
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    SharedPreferences localSharedPreferences = a(pay.a());
+    if (localSharedPreferences == null)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("check_period_ms", str1)) {
-        bnrf.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
-      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
-        bnrf.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
-      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
-        bnrf.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
+      Log.e("AladdinPrefUtils", "getConfigVersionById: return 0 for sp is null");
+      return 0;
     }
-    return true;
+    return localSharedPreferences.getInt("config_version_" + paramInt, 0);
   }
   
-  public void onWipeConfig(int paramInt) {}
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null)
+    {
+      Log.e("AladdinPrefUtils", "getSharedPreferences: null for runtime is null");
+      return null;
+    }
+    paramAppRuntime = "readinjoy_sp_aladdin_" + paramAppRuntime.getAccount();
+    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+  }
+  
+  public static void a()
+  {
+    Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs");
+    SharedPreferences localSharedPreferences = a(pay.a());
+    if (localSharedPreferences == null)
+    {
+      Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs: sp is null");
+      return;
+    }
+    localSharedPreferences.edit().clear().commit();
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(pay.a());
+    if (localSharedPreferences == null)
+    {
+      Log.e("AladdinPrefUtils", "setConfigVersionById: sp is null");
+      return;
+    }
+    localSharedPreferences.edit().putInt("config_version_" + paramInt1, paramInt2).apply();
+  }
 }
 
 

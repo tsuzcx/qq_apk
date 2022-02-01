@@ -1,14 +1,22 @@
-public abstract interface aupa
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+
+public class aupa
+  extends amsu
 {
-  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
+  public aupa(ShareToQQActivity paramShareToQQActivity) {}
   
-  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
-  
-  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
-  
-  public abstract void updatePage(int paramInt1, int paramInt2);
-  
-  public abstract void webLog(String paramString);
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
+    {
+      paramString = new Intent();
+      paramString.putExtra("isSuccess", paramBoolean2);
+      paramString.putExtra("isCancelShield", false);
+      this.a.setResult(-1, paramString);
+    }
+    this.a.finish();
+  }
 }
 
 

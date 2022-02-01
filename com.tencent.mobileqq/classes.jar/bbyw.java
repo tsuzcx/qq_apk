@@ -1,25 +1,24 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
 class bbyw
-  implements View.OnClickListener
+  implements bbzt
 {
-  bbyw(bbyl parambbyl) {}
+  bbyw(bbyv parambbyv) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    if (bbyl.a(this.a).getCurrentItem() != 0)
+    this.a.jdField_a_of_type_Int = paramInt;
+    LoadParam localLoadParam = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam;
+    long l = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (bbzl.a()) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      bbyl.a(this.a).setCurrentItem(0, bbyl.a(this.a));
-      this.a.d();
-      this.a.a(0);
-      this.a.a(this.a.a.getResources().getString(2131717254));
+      bbzi.a(localLoadParam, l, null, "load.item.getconfig.end", paramInt + "&v=" + bbyr.a() + "&f=" + this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      bbyv.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, paramSoInfo);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import apeg;
-import bior;
-import blpp;
+import anxs;
+import bgux;
+import bjts;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
@@ -25,7 +25,7 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements blpp
+  implements bjts
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -64,7 +64,7 @@ public class EcshopWebActivity
     if (this.jdField_a_of_type_Boolean) {
       return super.a(paramWebViewTabBarData);
     }
-    return bior.a(this, paramWebViewTabBarData, super.getIntent());
+    return bgux.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -129,21 +129,22 @@ public class EcshopWebActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381335));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381053));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365060));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365087));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {}
     }
     View localView;
     for (boolean bool = super.dispatchTouchEvent(paramMotionEvent);; bool = super.dispatchTouchEvent(paramMotionEvent))
     {
-      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
       return bool;
-      localView = findViewById(2131376731);
+      localView = findViewById(2131376501);
       if (localView != null) {
         break;
       }
@@ -189,7 +190,7 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
-    apeg.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
+    anxs.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
   }
   
   public void doOnRestoreInstanceState(Bundle paramBundle)

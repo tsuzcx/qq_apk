@@ -1,37 +1,53 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-class wqt
-  extends wrf
+final class wqt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  wqt(wqs paramwqs) {}
+  wqt(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    wqg localwqg;
-    int i;
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
+    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    float f3;
+    if (f1 < f2)
     {
-      localwqg = (wqg)this.a.a();
-      if (wqs.a(this.a) != 11) {
-        break label145;
-      }
-      i = 211;
+      f1 = f2 / f1;
+      f2 = i;
+      f3 = i;
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
     }
     for (;;)
     {
-      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-      i = yup.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      yup.a("home_page", "clk_like_more", yup.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), yup.a(localwqg.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
       return;
-      label145:
-      if (wqs.a(this.a) == 12) {
-        i = 222;
-      } else {
-        i = 210;
+      if (f2 < f1)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+        f1 /= f2;
+        f2 = j;
+        f3 = j;
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
       }
     }
   }

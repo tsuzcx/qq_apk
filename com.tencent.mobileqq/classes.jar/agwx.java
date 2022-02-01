@@ -1,48 +1,46 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
 public class agwx
-  implements agvc
+  implements OnCompositionLoadedListener
 {
-  private BaseChatPie a;
+  public agwx(PEPanel paramPEPanel, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  public agwx(BaseChatPie paramBaseChatPie)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.a != null) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if (paramLottieComposition == null)
     {
-    default: 
-      return;
-    case 5: 
-      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo.PEPanel", 2, "composition is null ,return");
+      }
       return;
     }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 5, 10 };
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onCompositionLoaded done ", new Object[0]));
+    }
+    Rect localRect = paramLottieComposition.getBounds();
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources().getDisplayMetrics().widthPixels;
+    i = XPanelContainer.a;
+    AIOUtils.dp2px(40.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources());
+    float f = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources().getDisplayMetrics().widthPixels / localRect.width();
+    PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel, paramLottieComposition.getDuration() * 6L / 10L);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScale(f);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorUpdateListener(PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel).sendEmptyMessageDelayed(0, PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel));
   }
 }
 

@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-public abstract class bfrg
+public class bfrg
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public static boolean a(Context paramContext, AppInterface paramAppInterface)
   {
-    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
-    try
-    {
-      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
-      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
-      localTroopFeedItem.tag = paramJSONObject.getString("tag");
-      if (paramJSONObject.has("pub_uin")) {
-        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
-      }
-      return localTroopFeedItem;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return localTroopFeedItem;
+    return (SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131717794), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackgroundPause) || (!bfrw.a(BaseApplicationImpl.sApplication))) && (!FriendsStatusUtil.a(paramContext));
   }
 }
 

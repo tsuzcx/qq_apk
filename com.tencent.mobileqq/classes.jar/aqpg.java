@@ -1,6 +1,21 @@
+import android.graphics.Canvas;
+import android.view.View.OnTouchListener;
+
 public abstract interface aqpg
 {
-  public abstract void a(int paramInt, aqon paramaqon);
+  public abstract float a();
+  
+  public abstract Canvas a();
+  
+  public abstract void a();
+  
+  public abstract void a(Canvas paramCanvas);
+  
+  public abstract void a(View.OnTouchListener paramOnTouchListener);
+  
+  public abstract void a(aqph paramaqph);
+  
+  public abstract void b();
 }
 
 

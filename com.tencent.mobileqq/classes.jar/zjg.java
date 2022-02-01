@@ -1,35 +1,39 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.util.Property;
+import android.widget.ImageView;
 
-class zjg
-  implements ServiceConnection
+final class zjg
+  extends Property<ImageView, Matrix>
 {
-  private zje a;
-  
-  public zjg(zje paramzje)
+  zjg(Class paramClass, String paramString)
   {
-    this.a = paramzje;
+    super(paramClass, paramString);
   }
   
-  public void a()
+  public Matrix a(ImageView paramImageView)
   {
-    this.a = null;
+    return null;
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(ImageView paramImageView, Matrix paramMatrix)
   {
-    zje localzje = this.a;
-    if (localzje != null) {
-      localzje.a(paramComponentName, paramIBinder);
+    Drawable localDrawable = paramImageView.getDrawable();
+    if (localDrawable == null) {
+      return;
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    zje localzje = this.a;
-    if (localzje != null) {
-      localzje.a(paramComponentName);
+    if (paramMatrix == null) {
+      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
+    }
+    for (;;)
+    {
+      paramImageView.invalidate();
+      return;
+      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramImageView.getImageMatrix() == null) {
+        paramImageView.setImageMatrix(new Matrix());
+      }
+      paramImageView.setImageMatrix(paramMatrix);
     }
   }
 }

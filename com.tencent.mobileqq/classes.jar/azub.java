@@ -1,56 +1,37 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
 public class azub
-  implements bhtj<Float>
+  implements aycx
 {
-  public azub(ImageShakeAnimView paramImageShakeAnimView) {}
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public azub(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      if (paramFloat1.floatValue() < 180.0F)
-      {
-        this.a.jdField_a_of_type_Float = (1.0F - paramFloat1.floatValue() * 0.01F / 180.0F);
-        this.a.b = (0.02F * paramFloat1.floatValue() / 180.0F + 1.0F);
-        return;
-      }
-      if (paramFloat1.floatValue() < 360.0F)
-      {
-        parambhtd = Float.valueOf(paramFloat1.floatValue() - 180.0F);
-        this.a.jdField_a_of_type_Float = (0.99F + 0.03F * parambhtd.floatValue() / 180.0F);
-        this.a.b = (1.02F - parambhtd.floatValue() * 0.04F / 180.0F);
-        return;
-      }
-      if (paramFloat1.floatValue() < 540.0F)
-      {
-        parambhtd = Float.valueOf(paramFloat1.floatValue() - 360.0F);
-        this.a.jdField_a_of_type_Float = (1.02F - 0.03F * parambhtd.floatValue() / 180.0F);
-        this.a.b = (parambhtd.floatValue() * 0.03F / 180.0F + 0.98F);
-        return;
-      }
-      parambhtd = Float.valueOf(paramFloat1.floatValue() - 540.0F);
-      this.a.jdField_a_of_type_Float = (0.99F + parambhtd.floatValue() * 0.01F / 180.0F);
-      this.a.b = (1.01F - parambhtd.floatValue() * 0.01F / 180.0F);
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(aycy paramaycy)
+  {
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
+    if (localReceiptMessageDetailFragment == null) {
       return;
     }
-    if (paramFloat1.floatValue() < 120.0F)
+    switch (paramaycy.a)
     {
-      this.a.jdField_a_of_type_Float = (1.0F - 0.02F * paramFloat1.floatValue() / 120.0F);
-      this.a.b = (paramFloat1.floatValue() * 0.04F / 120.0F + 1.0F);
+    default: 
+      return;
+    case -1: 
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
       return;
     }
-    if (paramFloat1.floatValue() < 380.0F)
-    {
-      parambhtd = Float.valueOf(paramFloat1.floatValue() - 120.0F);
-      this.a.jdField_a_of_type_Float = (0.98F + parambhtd.floatValue() * 0.04F / 260.0F);
-      this.a.b = (1.04F - parambhtd.floatValue() * 0.08F / 260.0F);
-      return;
-    }
-    parambhtd = Float.valueOf(paramFloat1.floatValue() - 380.0F);
-    this.a.jdField_a_of_type_Float = (1.02F - 0.02F * parambhtd.floatValue() / 120.0F);
-    this.a.b = (parambhtd.floatValue() * 0.04F / 120.0F + 0.96F);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
   }
 }
 

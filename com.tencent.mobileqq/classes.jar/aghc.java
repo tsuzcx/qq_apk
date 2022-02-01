@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.config.AppSetting;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract class aghc
-  implements aghf
+class aghc
+  extends aghj
 {
-  public static final boolean e = AppSetting.c;
-  public int b;
+  aghc(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
   
-  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, agjk paramagjk);
-  
-  public abstract void a();
-  
-  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new aglj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

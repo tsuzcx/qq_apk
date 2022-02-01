@@ -1,15 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
 
 public class afra
-  implements DialogInterface.OnClickListener
+  implements afrc
 {
-  public afra(TranslucentTRansferFragment paramTranslucentTRansferFragment, bhpc parambhpc) {}
+  private agxe jdField_a_of_type_Agxe;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afra(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  private HongBaoPanel a()
+  {
+    if (this.jdField_a_of_type_Agxe == null) {
+      this.jdField_a_of_type_Agxe = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getPanelManager();
+    }
+    return (HongBaoPanel)this.jdField_a_of_type_Agxe.a(10);
+  }
+  
+  private void a()
+  {
+    HongBaoPanel localHongBaoPanel = a();
+    if (localHongBaoPanel != null) {
+      localHongBaoPanel.onDestory();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13 };
   }
 }
 

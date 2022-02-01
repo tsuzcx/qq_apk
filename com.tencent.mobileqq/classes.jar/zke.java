@@ -1,7 +1,6 @@
-public class zke
+public abstract interface zke
 {
-  public int a;
-  public int b;
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
 }
 
 

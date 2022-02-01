@@ -1,102 +1,57 @@
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bjad
-  extends ExploreByTouchHelper
+@JsPlugin(secondary=true)
+public class bjad
+  extends BaseJsPlugin
 {
-  private WeakReference<View> a;
-  
-  private bjad(View paramView)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
-    super(paramView);
-    this.a = new WeakReference(paramView);
-  }
-  
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    View localView = (View)this.a.get();
-    if ((localView instanceof ParticipleView))
+    try
     {
-      int i = ParticipleView.a((ParticipleView)localView, paramFloat1, paramFloat2);
-      if (i >= 0) {
-        return i;
-      }
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localJSONObject;
     }
-    return -2147483648;
+    catch (JSONException localJSONException)
+    {
+      QMLog.e("TimTeamPlugin", "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+    }
+    return null;
   }
   
-  public void getVisibleVirtualViews(List<Integer> paramList)
+  @JsEvent({"tim_space"})
+  public void timSpace(RequestEvent paramRequestEvent)
   {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
+    try
     {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      int i = 0;
-      int j = ((List)localObject).size();
-      while (i < j)
+      paramRequestEvent = new JSONObject(a(paramRequestEvent).getString("data")).getString("action");
+      if (QMLog.isColorLevel()) {
+        QMLog.d("TimTeamPlugin", "onInvoke|" + paramRequestEvent);
+      }
+      if (TextUtils.equals(paramRequestEvent, "showCoopSpaceProfile"))
       {
-        paramList.add(Integer.valueOf(i));
-        i += 1;
+        paramRequestEvent = this.mMiniAppContext.getAttachedActivity();
+        Intent localIntent = new Intent(paramRequestEvent, AccountDetailActivity.class);
+        localIntent.putExtra("uin", AppConstants.TIM_TEAM_UIN);
+        paramRequestEvent.startActivity(localIntent);
       }
+      return;
     }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (paramInt2 == 16)
+    catch (Exception paramRequestEvent)
     {
-      paramBundle = (View)this.a.get();
-      if ((paramBundle instanceof ParticipleView))
-      {
-        paramBundle = ParticipleView.a((ParticipleView)paramBundle);
-        if (paramBundle != null)
-        {
-          paramBundle.invalidateVirtualView(paramInt1);
-          paramBundle.sendEventForVirtualView(paramInt1, 1);
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      if (paramInt < ((List)localObject).size()) {
-        paramAccessibilityEvent.setContentDescription(((bjac)((List)localObject).get(paramInt)).a.a());
-      }
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      if ((paramInt < ((List)localObject).size()) && (paramInt != -2147483648))
-      {
-        localObject = (bjac)((List)localObject).get(paramInt);
-        if (bjac.a((bjac)localObject).size() > 0)
-        {
-          RectF localRectF = (RectF)bjac.a((bjac)localObject).get(0);
-          paramAccessibilityNodeInfoCompat.setContentDescription(((bjac)localObject).a.a());
-          paramAccessibilityNodeInfoCompat.addAction(16);
-          paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
-        }
-      }
+      while (!QMLog.isColorLevel()) {}
+      QMLog.w("TimTeamPlugin", "decode param error");
     }
   }
 }

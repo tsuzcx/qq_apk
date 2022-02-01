@@ -1,19 +1,30 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class vlk
-  implements aabr<uzt>
+class vlk
+  extends amsu
 {
-  public vlk(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
+  vlk(vlj paramvlj) {}
   
-  public void a(aabu paramaabu, uzt paramuzt)
+  protected void onAddFriend(String paramString)
   {
-    if (paramaabu.e()) {
-      this.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
     }
-    while (!paramaabu.d()) {
+    try
+    {
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
       return;
     }
-    this.a.a(false);
+    catch (NumberFormatException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
+    }
   }
 }
 

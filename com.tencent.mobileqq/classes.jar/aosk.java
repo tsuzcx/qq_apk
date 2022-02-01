@@ -1,115 +1,45 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
 
 public class aosk
+  implements aosg
 {
-  public static int a(MessageRecord paramMessageRecord, int paramInt)
+  private WtloginObserver a;
+  
+  private void a(long paramLong1, long paramLong2, aosn paramaosn)
   {
-    paramMessageRecord = a(paramMessageRecord);
-    int j;
-    if (paramMessageRecord != null)
+    QQAppInterface localQQAppInterface = aori.a();
+    if (localQQAppInterface == null)
     {
-      paramMessageRecord = paramMessageRecord.iterator();
-      int i = 0;
-      j = i;
-      if (!paramMessageRecord.hasNext()) {
-        break label62;
-      }
-      aosl localaosl = (aosl)paramMessageRecord.next();
-      if (localaosl.a != paramInt) {
-        break label64;
-      }
-      i = localaosl.b + i;
+      paramaosn.a(null, 0L, null, null);
+      return;
     }
-    label62:
-    label64:
-    for (;;)
-    {
-      break;
-      j = 0;
-      return j;
+    if (this.a == null) {
+      this.a = new aosm(this, paramaosn);
     }
+    ((WtloginManager)localQQAppInterface.getManager(1)).getOpenKeyWithoutPasswd(localQQAppInterface.getCurrentUin(), paramLong1, paramLong2, this.a);
   }
   
-  public static List<aosl> a(MessageRecord paramMessageRecord)
+  public void a(Bundle paramBundle, aosi paramaosi)
   {
-    ArrayList localArrayList;
-    String str;
-    int j;
-    int i;
-    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
+    if (aori.a() == null)
     {
-      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramMessageRecord.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          paramMessageRecord = (bdol)localIterator.next();
-          if (paramMessageRecord != null)
-          {
-            str = anzj.a(2131704162);
-            j = 1;
-            if ((paramMessageRecord instanceof bdqx))
-            {
-              i = ((bdqx)paramMessageRecord).a.getInt("count");
-              j = 1;
-              paramMessageRecord = str;
-            }
-          }
-        }
-      }
+      QLog.e("ArkApp.LoginHandler", 1, "LoginHandler.onCall, qq app is null");
+      paramaosi.a(EIPCResult.createResult(-102, new Bundle()));
+      return;
     }
-    for (;;)
+    long l1 = paramBundle.getLong("srcAppID", 0L);
+    long l2 = paramBundle.getLong("dstAppID", 0L);
+    if ((l1 == 0L) || (l2 == 0L))
     {
-      localArrayList.add(new aosl(paramMessageRecord, j, i));
-      break;
-      Object localObject = paramMessageRecord.h;
-      if (localObject != null)
-      {
-        i = j;
-        paramMessageRecord = str;
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          i = j;
-          paramMessageRecord = str;
-          str = ((JSONObject)localObject).getString("giftName");
-          i = j;
-          paramMessageRecord = str;
-          j = ((JSONObject)localObject).getInt("giftType");
-          i = j;
-          paramMessageRecord = str;
-          int k = ((JSONObject)localObject).getInt("giftCount");
-          i = k;
-          paramMessageRecord = str;
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          j = i;
-          i = 0;
-        }
-        continue;
-        return localArrayList;
-        return null;
-      }
-      else
-      {
-        i = 0;
-        j = 1;
-        paramMessageRecord = localJSONException;
-      }
+      paramaosi.a(EIPCResult.createResult(0, new Bundle()));
+      return;
     }
+    a(l1, l2, new aosl(this, paramaosi));
   }
 }
 

@@ -1,74 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arfo
-  extends arac<arfn>
+  implements View.OnClickListener
 {
-  public static arfn a()
-  {
-    return (arfn)aran.a().a(572);
-  }
+  public arfo(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
   
-  @NonNull
-  public arfn a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new arfn();
-  }
-  
-  @Nullable
-  public arfn a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      new arfn();
-      return arfn.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arfn paramarfn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramarfn.toString());
-    }
-  }
-  
-  public Class<arfn> clazz()
-  {
-    return arfn.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 572;
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfo
  * JD-Core Version:    0.7.0.1
  */

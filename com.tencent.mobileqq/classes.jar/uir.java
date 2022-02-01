@@ -1,17 +1,11 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class uir
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  private static final Map<String, Object> a = new HashMap();
   
-  public String toString()
-  {
-    return "Type{cardType=" + this.jdField_a_of_type_Int + ", isOuterDescStyle=" + this.jdField_a_of_type_Boolean + ", isInnerInfoStyle=" + this.b + ", isPlayAndLikeStyle=" + this.c + ", isOnlyInnerStyle=" + this.d + ", isOnlyOuterStyle=" + this.e + ", isPlayCountStyle=" + this.f + '}';
-  }
+  public static void a() {}
 }
 
 

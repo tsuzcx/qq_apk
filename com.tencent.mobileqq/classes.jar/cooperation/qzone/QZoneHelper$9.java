@@ -1,28 +1,32 @@
 package cooperation.qzone;
 
+import aufm;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
+import common.config.service.QzoneConfig;
 
-public final class QZoneHelper$9
+final class QZoneHelper$9
   implements Runnable
 {
-  public QZoneHelper$9(long paramLong) {}
+  QZoneHelper$9(QQAppInterface paramQQAppInterface, aufm paramaufm) {}
   
   public void run()
   {
-    try
-    {
-      QLog.i("QZoneHelper", 2, "QQ清空缓存数据时的回调 onQQClearLocalCache,uin=" + this.a);
-      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
-      LocalMultiProcConfig.putBool("qzone_first_in", true);
-      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
-      LocalMultiProcConfig.putBool("qzone_first_in_passive", true);
-      QzoneOfflineCacheHelper.updataSmallGameLastCacheFinishTime(this.a, 0L);
-      return;
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessEnable", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard enable:" + i);
     }
-    catch (Exception localException)
+    if (i == 1)
     {
-      QLog.e("QZoneHelper", 1, "QQ清空缓存数据时的回调 error.", localException);
+      long l = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
+      i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
+      }
+      if (l >= i) {
+        QZoneHelper.preloadQzone(this.val$app, "FriendProfileCardActivity", this.val$session, false);
+      }
     }
   }
 }

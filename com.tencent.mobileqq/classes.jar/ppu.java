@@ -1,49 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-public abstract interface ppu
+public class ppu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract int a();
+  public ppu(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public abstract ArticleInfo a();
-  
-  public abstract VafContext a();
-  
-  public abstract sel a();
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract ArticleInfo b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract boolean d();
-  
-  public abstract int e();
-  
-  public abstract boolean e();
-  
-  public abstract int f();
-  
-  public abstract boolean f();
-  
-  public abstract int g();
-  
-  public abstract boolean g();
-  
-  public abstract int h();
-  
-  public abstract boolean h();
-  
-  public abstract boolean i();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
+  }
 }
 
 

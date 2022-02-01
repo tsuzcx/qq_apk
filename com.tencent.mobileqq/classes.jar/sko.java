@@ -1,41 +1,91 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.Scroller;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout.IndicatorTouchListener.1;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout.IndicatorTouchListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class sko
-  implements AdapterView.OnItemClickListener
+public class sko
+  implements View.OnTouchListener
 {
-  sko(skn paramskn, Context paramContext) {}
+  private float jdField_a_of_type_Float;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CaptureOperateTouchLayout.IndicatorTouchListener.1(this);
+  private skn jdField_a_of_type_Skn;
+  private float jdField_b_of_type_Float;
+  private Runnable jdField_b_of_type_JavaLangRunnable = new CaptureOperateTouchLayout.IndicatorTouchListener.2(this);
+  private float c;
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public sko(CaptureOperateTouchLayout paramCaptureOperateTouchLayout, skn paramskn)
   {
-    pqu localpqu = (pqu)this.jdField_a_of_type_Skn.getItem(paramInt);
-    Object localObject;
-    if ((localpqu != null) && (!TextUtils.isEmpty(localpqu.b)))
+    this.jdField_a_of_type_Skn = paramskn;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-      if (!localpqu.b.startsWith("mqq://")) {
-        break label178;
-      }
-      localObject = bhni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, localpqu.b);
-      if (localObject != null) {
-        ((bhmr)localObject).a();
-      }
     }
     for (;;)
     {
-      localObject = new paa().b().a();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ocd.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + localpqu.c, "" + localpqu.a, "", (String)localObject, false);
+      this.g = paramMotionEvent.getRawX();
+      return true;
+      this.jdField_a_of_type_Float = paramView.getX();
+      this.jdField_b_of_type_Float = paramView.getY();
+      this.c = paramMotionEvent.getRawX();
+      this.d = paramMotionEvent.getRawY();
+      this.e = paramView.getX();
+      this.f = paramView.getY();
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, false);
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).setFinalX((int)CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).getX());
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      continue;
+      if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout))
+      {
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, false);
+        int i = (int)(Math.abs(paramView.getX() - this.e) / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) * 400.0F);
+        ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramView.getScrollX(), this.e }).setDuration(i);
+        localValueAnimator.addUpdateListener(new skp(this, paramView));
+        localValueAnimator.start();
+        this.jdField_a_of_type_Skn.a(true);
       }
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      label178:
-      ozs.b(skn.a(this.jdField_a_of_type_Skn), localpqu.b);
+      for (;;)
+      {
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).abortAnimation();
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b());
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b());
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+        break;
+        this.jdField_a_of_type_Skn.a(false);
+      }
+      float f2 = this.jdField_a_of_type_Float;
+      float f3 = paramMotionEvent.getRawX();
+      float f4 = this.c;
+      float f1 = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout);
+      f2 = Math.min(Math.max(f2 + (f3 - f4), 0.0F), f1);
+      paramView.setX(f2);
+      f1 = f2 / f1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.a(f1, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout));
+      if ((!CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout)) && ((Math.abs(this.e - paramView.getX()) > 10.0F) || (Math.abs(this.f - paramView.getY()) > 10.0F)))
+      {
+        this.e = paramView.getX();
+        this.f = paramView.getY();
+        ThreadManager.getUIHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+        ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        ThreadManager.getUIHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
+        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+        this.jdField_a_of_type_Skn.c();
+      }
     }
   }
 }

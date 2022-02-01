@@ -1,10 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 final class bgqs
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

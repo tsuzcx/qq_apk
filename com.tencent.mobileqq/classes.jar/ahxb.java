@@ -1,50 +1,23 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public class ahxb
+class ahxb
   implements Animator.AnimatorListener
 {
-  private ahxb(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  ahxb(ahwx paramahwx) {}
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (UnlimitedBladeWorks.a(this.a).a)
-    {
-      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
-        break label55;
-      }
-      UnlimitedBladeWorks.a(this.a);
-      UnlimitedBladeWorks.a(this.a, 5);
-    }
-    for (;;)
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
-      return;
-      label55:
-      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(new ahxc(this));
-      UnlimitedBladeWorks.a(this.a).c();
-      UnlimitedBladeWorks.a(this.a, 1);
-    }
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (UnlimitedBladeWorks.a(this.a))
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      return;
-    }
-    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

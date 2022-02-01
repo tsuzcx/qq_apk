@@ -1,8 +1,4 @@
-import com.tribe.async.dispatch.IEventReceiver;
-
-public abstract interface yqi
-  extends IEventReceiver
-{}
+public class yqi {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

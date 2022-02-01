@@ -1,53 +1,49 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.fragment.ShieldFriendsListFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class attc
+  extends amsu
 {
-  int jdField_a_of_type_Int;
-  public atte a;
-  attg jdField_a_of_type_Attg;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString;
+  public attc(ShieldFriendsListFragment paramShieldFriendsListFragment) {}
   
-  attc(atsi paramatsi, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Atte = new attd(this, paramatsi, paramMessageRecord);
-  }
-  
-  void a()
-  {
-    if ((this.jdField_a_of_type_Attg != null) && (this.jdField_b_of_type_Int == 0))
+    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
+    if (!paramBoolean2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
+      paramString = this.a;
+      if (!paramBoolean1)
+      {
+        paramBoolean1 = true;
+        if (ShieldFriendsListFragment.a(paramString, paramLong, paramBoolean1)) {
+          QQToast.a(BaseApplication.getContext(), amtj.a(2131713098), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
+        }
       }
-      this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Attg.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Atte);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
-  }
-  
-  void b()
-  {
-    if ((this.jdField_a_of_type_Attg != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
+    do
     {
-      this.jdField_a_of_type_Attg.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Int = 4;
-    }
+      return;
+      paramBoolean1 = false;
+      break;
+      if (ShieldFriendsListFragment.a(this.a).a(String.valueOf(paramLong)))
+      {
+        ShieldFriendsListFragment.a(this.a, paramLong, paramBoolean1);
+        return;
+      }
+      paramString = ((amsw)this.a.getActivity().app.getManager(51)).e(String.valueOf(paramLong));
+    } while ((paramString == null) || (paramString.isShield()));
+    ShieldFriendsListFragment.a(this.a).a(paramString);
+    ShieldFriendsListFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attc
  * JD-Core Version:    0.7.0.1
  */

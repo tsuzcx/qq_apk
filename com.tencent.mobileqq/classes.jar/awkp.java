@@ -1,75 +1,109 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Path;
+import android.view.View;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class awkp
+  extends aufs
 {
-  public static int a(int paramInt)
+  public awkp(HeartLayout paramHeartLayout)
   {
-    if (paramInt == 1) {
-      return 1;
-    }
-    return 2;
+    super(paramHeartLayout);
   }
   
-  public static int a(RedTouch paramRedTouch)
+  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
   {
-    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
-    do
+    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
+    Path localPath = new Path();
+    label95:
+    label107:
+    int i;
+    int j;
+    int k;
+    int m;
+    if (!this.jdField_a_of_type_Aufu.jdField_a_of_type_Boolean) {
+      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
+      {
+        this.jdField_a_of_type_Aufu.jdField_a_of_type_Int = ((paramView.getWidth() - (int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float)) / 2);
+        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
+          break label415;
+        }
+        this.jdField_a_of_type_Aufu.b = ((int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float));
+        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
+          break label447;
+        }
+        paramInt1 = 1;
+        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aufu.c) + this.jdField_a_of_type_Aufu.d);
+        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aufu.c) + this.jdField_a_of_type_Aufu.d);
+        k = paramView.getHeight() - this.jdField_a_of_type_Aufu.b;
+        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float);
+        paramInt2 = this.jdField_a_of_type_Aufu.g;
+        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Aufu.f) + (paramInt1 + paramInt2);
+        m = paramInt2 / this.jdField_a_of_type_Aufu.e;
+        paramInt1 = k - paramInt2;
+        if (paramInt1 >= 0) {
+          break label666;
+        }
+        paramInt1 = 0;
+      }
+    }
+    label653:
+    label666:
+    for (;;)
     {
-      return 0;
-      paramRedTouch = paramRedTouch.a();
-    } while ((paramRedTouch == null) || (paramRedTouch.isEmpty()));
-    paramRedTouch = paramRedTouch.iterator();
-    while (paramRedTouch.hasNext())
-    {
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next();
-      if (localRedTypeInfo.red_type.get() == 0) {
-        return 1;
+      paramInt2 = k - paramInt2 / 2;
+      if (paramInt2 < 0) {
+        paramInt2 = 0;
       }
-      if (localRedTypeInfo.red_type.get() == 5) {
-        return 2;
+      for (;;)
+      {
+        localPath.moveTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int, k);
+        localPath.cubicTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2);
+        localPath.moveTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2);
+        if (paramInt2 - m >= 0) {
+          localPath.cubicTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + j, paramInt1);
+        }
+        return localPath;
+        this.jdField_a_of_type_Aufu.jdField_a_of_type_Int = (paramInt1 - (int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float / 3.0F));
+        break;
+        label415:
+        this.jdField_a_of_type_Aufu.b = (paramView.getHeight() - paramInt2 + (int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float / 3.0F));
+        break label95;
+        label447:
+        paramInt1 = -1;
+        break label107;
+        k = this.jdField_a_of_type_Aufu.l;
+        m = this.jdField_a_of_type_Aufu.k;
+        int n = this.jdField_a_of_type_Aufu.h / 2;
+        int i1;
+        int i2;
+        int i3;
+        int i4;
+        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
+        {
+          i = 1;
+          i1 = localRandom.nextInt(this.jdField_a_of_type_Aufu.c);
+          i2 = this.jdField_a_of_type_Aufu.d;
+          i3 = localRandom.nextInt(this.jdField_a_of_type_Aufu.c);
+          i4 = this.jdField_a_of_type_Aufu.d;
+          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
+          if (k <= paramInt2) {
+            break label653;
+          }
+          j = k - j;
+        }
+        for (;;)
+        {
+          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Aufu.h / 2, paramInt2 - this.jdField_a_of_type_Aufu.i / 2);
+          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
+          return localPath;
+          i = -1;
+          break;
+          j += k;
+        }
       }
-      if (localRedTypeInfo.red_type.get() == 11) {
-        return 3;
-      }
     }
-    return 3;
-  }
-  
-  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
-      return 0;
-    }
-    if (paramRedTypeInfo.red_type.get() == 0) {
-      return 1;
-    }
-    if (paramRedTypeInfo.red_type.get() == 5) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public static bdne a(String paramString)
-  {
-    bdne localbdne = new bdne();
-    localbdne.i = "trends_tab";
-    localbdne.j = "trends_plugin";
-    localbdne.k = paramString;
-    return localbdne;
-  }
-  
-  public static int b(RedTouch paramRedTouch)
-  {
-    if (paramRedTouch == null) {}
-    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
-      return 0;
-    }
-    return 1;
   }
 }
 

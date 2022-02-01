@@ -1,23 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class blah
-  implements View.OnClickListener
+public class blah
 {
-  blah(blag paramblag) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
+  public blah(int paramInt1, long paramLong, int paramInt2, String paramString1, int paramInt3, String paramString2, int paramInt4)
   {
-    CheckBox localCheckBox = blag.a(this.a);
-    if (!blag.a(this.a).isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.d = paramInt4;
+  }
+  
+  public String toString()
+  {
+    return " mBusinessType =" + this.jdField_a_of_type_Int + " mType = " + this.jdField_b_of_type_Int + " mOrederId = " + this.jdField_b_of_type_JavaLangString;
   }
 }
 

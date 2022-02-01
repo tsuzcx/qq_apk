@@ -1,13 +1,13 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import java.io.File;
 
-public abstract interface bljn
+public class bljn
 {
-  public abstract boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public static final String a = blju.c + "/app_lib/qq_filter" + File.separator;
+  public static final String b = a + "final_ptu_res_file" + File.separator;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljn
  * JD-Core Version:    0.7.0.1
  */

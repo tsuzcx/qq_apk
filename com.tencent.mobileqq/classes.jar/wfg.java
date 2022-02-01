@@ -1,39 +1,53 @@
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wfg
+  extends vqr<wgr>
 {
-  static int a(int paramInt)
+  private static final String a = vpl.a("StorySvc.get_weather");
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public wfg(int paramInt1, int paramInt2, int paramInt3)
   {
-    return (0xFF00 & paramInt) >> 8;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
-  public static void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public String a()
   {
-    if (paramFloat1 >= paramFloat2) {
-      throw new IllegalArgumentException("Minimum zoom has to be less than Medium zoom. Call setMinimumZoom() with a more appropriate value");
-    }
-    if (paramFloat2 >= paramFloat3) {
-      throw new IllegalArgumentException("Medium zoom has to be less than Maximum zoom. Call setMaximumZoom() with a more appropriate value");
-    }
+    return a;
   }
   
-  public static boolean a(ImageView.ScaleType paramScaleType)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    if (paramScaleType == null) {
-      return false;
-    }
-    switch (wfh.a[paramScaleType.ordinal()])
+    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
+    try
     {
-    default: 
-      return true;
+      localRspGetWeather.mergeFrom(paramArrayOfByte);
+      return new wgr(localRspGetWeather);
     }
-    throw new IllegalStateException("Matrix scale type is not supported");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public static boolean a(ImageView paramImageView)
+  protected byte[] a()
   {
-    return paramImageView.getDrawable() != null;
+    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
+    localReqGetWeather.coordinate.set(this.c);
+    localReqGetWeather.longitude.set(this.d);
+    localReqGetWeather.latitude.set(this.e);
+    return localReqGetWeather.toByteArray();
   }
 }
 

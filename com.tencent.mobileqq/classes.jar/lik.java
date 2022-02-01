@@ -1,212 +1,135 @@
-import android.os.Handler;
-import com.tencent.av.AVFunChat.AVFunChatMessage;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.support.SupportFace.1;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class lik
-  extends lii
+public abstract class lik
+  implements moa
 {
-  private boolean a;
-  private int c = -1;
-  private int d = -1;
-  private int e = -1;
-  private int f = -1;
+  protected int a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected Paint a;
+  protected lgc a;
+  protected mob a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
   
-  public lik(VideoAppInterface paramVideoAppInterface)
+  public lik(lgc paramlgc, boolean paramBoolean)
   {
-    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Int = 32;
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Lgc = paramlgc;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private boolean a()
+  public abstract int a();
+  
+  public int a(long paramLong)
   {
-    return lpm.c();
+    return 0;
   }
   
-  private boolean b()
+  Bitmap a()
   {
-    return lpm.d();
-  }
-  
-  private boolean c()
-  {
-    return lpm.f();
-  }
-  
-  private boolean d()
-  {
-    return lpm.d();
-  }
-  
-  public int a(String paramString)
-  {
-    if ("normal".equalsIgnoreCase(paramString)) {
-      return this.c;
-    }
-    if ("interact".equalsIgnoreCase(paramString)) {
-      return this.d;
-    }
-    if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
-      return this.e;
-    }
-    if ("creative".equalsIgnoreCase(paramString)) {
-      return this.f;
-    }
-    return -1;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      bkdz.a().postDelayed(new SupportFace.1(this), 1100L);
-    }
-    lbj.c("SupportFace", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
-    if (paramString != null)
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Lgc.a))
     {
-      if (!paramString.equals("SUPPORT_TRUE")) {
-        break label122;
-      }
-      if (paramInt != 1) {
-        break label83;
-      }
-      this.c = 1;
-    }
-    label83:
-    label122:
-    do
-    {
-      return false;
-      if (paramInt == 3)
-      {
-        this.c = 1;
-        this.d = 1;
-        return false;
-      }
-      if (paramInt == 14)
-      {
-        this.f = 1;
-        lbj.c("SupportFace", "onReceiveSupportMessage  support reason 1:");
-        return false;
-      }
-      return true;
-      if (paramString.equals("SUPPORT_FALSE"))
-      {
-        if (paramInt == 1)
-        {
-          this.c = 0;
-          this.d = 0;
-        }
-        for (;;)
-        {
-          return true;
-          if (paramInt == 3)
-          {
-            this.d = 0;
-          }
-          else if (paramInt == 14)
-          {
-            this.f = 0;
-            lbj.c("SupportFace", "onReceiveSupportMessage not support reason 1:");
-          }
-        }
-      }
-      if (paramString.equals("SUPPORT_SWITCH_FACE"))
-      {
-        if (paramInt == 3) {
-          this.e = 1;
-        }
-        return true;
-      }
-      if (paramString.equals("SUPPORT_CREATIVECOP_TRUE"))
-      {
-        if (paramInt == 14)
-        {
-          this.f = 1;
-          lbj.c("SupportFace", "onReceiveSupportMessage  support reason 2:");
-        }
-        return true;
-      }
-    } while (!paramString.equals("SUPPORT_CREATIVECOP_FALSE"));
-    if (paramInt == 14)
-    {
-      this.f = 0;
-      lbj.c("SupportFace", "onReceiveSupportMessage  not support reason 2:");
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    lbj.d("SupportFace", String.format("isSelfSupport| device info:mode=%s,sdkVersion=%d,cpuFreq=%d,cpuCount=%d,memCapacity=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_b_of_type_Long) }));
-    if ("normal".equalsIgnoreCase(paramString)) {
-      bool = a();
+      lba.f("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
+      localObject3 = localObject1;
     }
     do
     {
-      return bool;
-      if ("interact".equalsIgnoreCase(paramString)) {
-        return b();
-      }
-      if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
-        return d();
-      }
-    } while (!"creative".equalsIgnoreCase(paramString));
-    return c();
-  }
-  
-  public void b()
-  {
-    boolean bool2 = lil.b();
-    if (bork.a(borf.c) == 1) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      bool3 = a();
-      if ((bool3) && (bool2)) {
-        localVideoController.a(1, "SUPPORT_TRUE");
-      }
-      bool4 = d();
-      if ((bool4) && (bool2)) {
-        localVideoController.a(3, "SUPPORT_SWITCH_FACE");
-      }
-      bool5 = b();
-      if ((bool5) && (bool2)) {
-        localVideoController.a(3, "SUPPORT_TRUE");
-      }
-      bool6 = c();
-      if ((bool6) && (bool1))
+      for (;;)
       {
-        AVFunChat.AVFunChatMessage localAVFunChatMessage = new AVFunChat.AVFunChatMessage();
-        localAVFunChatMessage.uint64_type.set(14L);
-        localAVFunChatMessage.enum_operator.set(1);
-        localAVFunChatMessage.str_msg.set("SUPPORT_CREATIVECOP_TRUE");
-        localVideoController.a(14, localAVFunChatMessage);
+        return localObject3;
+        lba.f("ARZimuItemTask", "build:" + toString());
+        localObject1 = localObject3;
+        Object localObject2 = localObject4;
+        try
+        {
+          int i = a();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          int j = b();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
+          return localObject3;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localObject3 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
+            return localObject1;
+          }
+        }
+        catch (Exception localException)
+        {
+          localObject3 = localOutOfMemoryError;
+        }
       }
-      if ((!bool3) || (!bool4) || (!bool5) || (!bool6)) {
-        break;
-      }
-      return;
-    }
-    QLog.w("SupportFace", 1, "sendSupportMsg, normal[" + bool3 + "], switchfaceStandard[" + bool4 + "], interact[" + bool5 + "], creativePendant[" + bool6 + "], isSOExist[" + bool2 + "],isPagSoExist[" + bool1 + "]");
+    } while (!QLog.isColorLevel());
+    QLog.e("ARZimuItemTask", 2, localException.getMessage());
+    return localOutOfMemoryError;
   }
   
-  public void c()
+  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
+  
+  public void a(Typeface paramTypeface, int paramInt, mob parammob)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.c = -1;
-    this.d = -1;
-    this.e = -1;
-    this.f = -1;
-    lbj.c("SupportFace", "SupportFace restore:");
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    }
+    this.jdField_a_of_type_Mob = parammob;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+  }
+  
+  public void a(lgc paramlgc)
+  {
+    this.jdField_a_of_type_Lgc = paramlgc;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public abstract int b();
+  
+  public Bitmap b()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

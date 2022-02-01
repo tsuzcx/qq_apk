@@ -1,12 +1,52 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.net.URLEncoder;
 
-public abstract interface ayci
+class ayci
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, ayck paramayck);
+  ayci(aych paramaych, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(Comments.Comment paramComment, aycj paramaycj);
-  
-  public abstract void a(Comments.Comment paramComment, aycl paramaycl);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      paramDialogInterface = new StringBuilder("https://accounts.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
+      paramDialogInterface.append("?");
+      paramDialogInterface.append("uin=");
+      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append("&plat=1");
+      paramDialogInterface.append("&app=1");
+      paramDialogInterface.append("&version=8.4.8.4810");
+      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
+      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
+      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+      paramDialogInterface = paramDialogInterface.toString();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("portraitOnly", true);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("hide_more_button", true);
+      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
+  }
 }
 
 

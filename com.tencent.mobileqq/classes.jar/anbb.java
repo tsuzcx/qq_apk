@@ -1,15 +1,51 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-class anbb
-  implements EIPCResultCallback
+public class anbb
+  extends QIPCModule
 {
-  anbb(anav paramanav) {}
+  private static anbb a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private anbb()
   {
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
+    super("SignInModule");
+  }
+  
+  public static anbb a()
+  {
+    if (a == null) {
+      a = new anbb();
+    }
+    return a;
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramInt = paramBundle.getInt("type", 1);
+    int i = paramBundle.getInt("result", 2);
+    int j = paramBundle.getInt("day", 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
+    }
+    if (i == 0)
+    {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramString != null)
+      {
+        paramString.getPreferences();
+        paramString = (amov)paramString.getBusinessHandler(2);
+        if (QLog.isColorLevel()) {
+          QLog.i("DailySignIn", 2, "get oidb0x922 by web");
+        }
+        paramString.c(0);
+        paramString.l();
+      }
+    }
+    return null;
   }
 }
 

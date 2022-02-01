@@ -1,25 +1,16 @@
-import QQService.StreamInfo;
-
-public class bcrr
+class bcrr
+  implements bcrf
 {
-  public int a;
-  public StreamInfo a;
-  public String a;
-  public short a;
-  public int b;
+  bcrr(bcro parambcro) {}
   
-  public bcrr(String paramString, short paramShort, int paramInt1, StreamInfo paramStreamInfo, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Short = paramShort;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_QQServiceStreamInfo = paramStreamInfo;
-    this.b = paramInt2;
+    bcro.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrr
  * JD-Core Version:    0.7.0.1
  */

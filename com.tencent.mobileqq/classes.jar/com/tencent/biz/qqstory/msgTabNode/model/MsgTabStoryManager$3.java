@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.biz.qqstory.database.MsgTabNodeEntity;
-import wwg;
+import vxw;
 
 public class MsgTabStoryManager$3
   implements Runnable
 {
-  public MsgTabStoryManager$3(wwg paramwwg, MsgTabNodeEntity paramMsgTabNodeEntity) {}
+  public MsgTabStoryManager$3(vxw paramvxw, MsgTabNodeEntity paramMsgTabNodeEntity) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MsgTabStoryManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager.3
  * JD-Core Version:    0.7.0.1
  */

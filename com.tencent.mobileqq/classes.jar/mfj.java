@@ -1,18 +1,21 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.av.ui.MultiMembersAudioIndicator;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
+import com.tencent.qphone.base.util.QLog;
 
 public class mfj
-  extends RadioButton
+  extends mcc
 {
-  public mfj(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public mfj(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public boolean performClick()
+  protected void a(bfxk parambfxk)
   {
-    return true;
+    if ((QLog.isDevelopLevel()) || (this.a.a != parambfxk.a)) {
+      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambfxk.a + "]");
+    }
+    if (this.a.a != parambfxk.a)
+    {
+      this.a.a = parambfxk.a;
+      this.a.i(0L, 65535);
+    }
   }
 }
 

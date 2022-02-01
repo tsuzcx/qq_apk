@@ -43,8 +43,11 @@ class AssetImageGenerator$ImageGeneratorThread
     this.handler = new Handler(getLooper(), this);
   }
   
-  private void release()
+  private void release(boolean paramBoolean)
   {
+    if (paramBoolean) {
+      this.handler.removeCallbacksAndMessages(null);
+    }
     Message localMessage = Message.obtain();
     localMessage.what = 2;
     this.handler.sendMessage(localMessage);

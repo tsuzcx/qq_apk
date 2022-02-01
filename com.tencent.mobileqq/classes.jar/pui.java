@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
 
-public class pui
+class pui
+  implements Comparator<ChannelInfo>
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  pui(puh parampuh) {}
+  
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    JSONObject localJSONObject = new JSONObject();
-    puo.a(paramBaseArticleInfo, localJSONObject, true);
-    puo.a(paramBaseArticleInfo, localJSONObject);
-    puo.b(paramBaseArticleInfo, localJSONObject);
-    puo.e(paramBaseArticleInfo, localJSONObject);
-    puo.l(paramBaseArticleInfo, localJSONObject);
-    puo.g(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
-    puo.a(localJSONObject, paramBaseArticleInfo);
-    return localJSONObject;
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
+    }
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
+    }
+    return 1;
   }
 }
 

@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class mkm
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
   mkm(mkl parammkl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+    long l;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      l = mtt.a(paramIntent);
+      if (!paramContext.equals("tencent.video.invite.accept")) {
+        break label32;
+      }
+      this.a.a(l);
+    }
+    label32:
+    do
+    {
+      return;
+      if (paramContext.equals("tencent.video.invite.refuse"))
+      {
+        this.a.b(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaaccept"))
+      {
+        this.a.d(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaignore"))
+      {
+        this.a.c(l);
+        return;
+      }
+    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
+    this.a.b();
   }
 }
 

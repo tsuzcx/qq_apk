@@ -1,12 +1,4 @@
-public abstract class asmp
-  extends asmu
-{
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-}
+public class asmp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

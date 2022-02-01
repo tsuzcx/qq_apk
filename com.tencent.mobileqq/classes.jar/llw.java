@@ -1,44 +1,76 @@
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
+import java.io.BufferedReader;
 
-public abstract class llw
-  extends llm
+public class llw
+  extends llv
 {
-  protected Path a;
-  protected PathMeasure a;
+  private float jdField_a_of_type_Float;
+  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
+  private float jdField_b_of_type_Float;
+  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
+  private boolean c;
   
-  public llw()
+  public float a(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    int j = arrayOfFloat1.length;
+    int i = 1;
+    if (i < j) {
+      if (arrayOfFloat1[i] <= paramFloat) {}
+    }
+    for (;;)
+    {
+      if (i == -1)
+      {
+        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
+        i += 1;
+        break;
+      }
+      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+      j = i - 1;
+      float f1 = arrayOfFloat2[j];
+      float f2 = arrayOfFloat1[j];
+      float f3 = arrayOfFloat2[i];
+      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
+      i = -1;
+    }
   }
   
-  public abstract void a();
-  
-  public void a(float paramFloat1, float paramFloat2)
+  public void a(BufferedReader paramBufferedReader)
   {
-    super.a(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Float = llr.a(paramBufferedReader, "highMin");
+      this.jdField_b_of_type_Float = llr.a(paramBufferedReader, "highMax");
+      this.c = llr.a(paramBufferedReader, "relative");
+      this.jdField_b_of_type_ArrayOfFloat = new float[llr.a(paramBufferedReader, "scalingCount")];
+      int i = 0;
+      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_b_of_type_ArrayOfFloat[i] = llr.a(paramBufferedReader, "scaling" + i);
+        i += 1;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[llr.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_a_of_type_ArrayOfFloat[i] = llr.a(paramBufferedReader, "timeline" + i);
+        i += 1;
+      }
+    }
   }
   
-  public void b(float paramFloat1, float paramFloat2)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
+    return this.c;
   }
   
-  public void c(float paramFloat1, float paramFloat2)
+  public float b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
+    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * llm.a();
   }
 }
 

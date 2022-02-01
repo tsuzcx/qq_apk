@@ -1,21 +1,13 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class snb
-  implements InvocationHandler
+  implements peb
 {
-  public snb(FastWebActivity.1 param1) {}
+  public snb(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
-    return null;
+    this.a.a(true, 2);
   }
 }
 

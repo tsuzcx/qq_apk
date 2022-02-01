@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 class bahn
-  implements View.OnClickListener
+  extends amwl
 {
   bahn(bahm parambahm) {}
   
-  public void onClick(View paramView)
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    bahm.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty()) && ((paramList.get(0) instanceof MessageForShortVideo))) {
+      agye.a((MessageRecord)paramList.get(0));
+    }
   }
 }
 

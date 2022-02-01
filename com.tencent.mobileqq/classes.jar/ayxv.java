@@ -1,55 +1,57 @@
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class ayxv
-  implements anui
+class ayxv
 {
-  public void a(int paramInt, String paramString, ayzf paramayzf) {}
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
-  
-  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ayxv(ayxu paramayxu, String paramString, File paramFile, Drawable paramDrawable)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public ayxv a()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (aqhy.c().b()))
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 2))
+      String str = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      if ((ayxu.a(this.jdField_a_of_type_Ayxu) != null) && (TextUtils.equals(ayxu.a(this.jdField_a_of_type_Ayxu), str)) && (bgio.a(ayxu.a(this.jdField_a_of_type_Ayxu))))
       {
-        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
-        return;
-      }
-      a(false, "", null);
-      return;
-    case 2: 
-      Object localObject = (Object[])paramObject;
-      if ((paramObject != null) && (localObject.length == 2))
-      {
-        paramObject = (Integer)localObject[0];
-        localObject = (TranslateResult)localObject[1];
-        if (localObject != null)
-        {
-          a(paramBoolean, paramObject.intValue(), (TranslateResult)localObject);
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_Ayxu.b(), 2, "initProfileCardBackground: use old etc-drawable");
         }
-        a(false, paramObject.intValue(), null);
-        return;
+        this.jdField_a_of_type_Boolean = true;
+        return this;
       }
-      a(false, -1, null);
-      return;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bgio.a().a(this.jdField_a_of_type_JavaIoFile, true);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        bgio.a().a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
+        ayxu.a(this.jdField_a_of_type_Ayxu, str);
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_Ayxu.b(), 2, "initProfileCardBackground use new etc-drawable");
+        }
+      }
     }
-    paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length == 3))
-    {
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (ayzf)paramObject[2]);
-      return;
-    }
-    a(-1, "", null);
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -8,12 +8,14 @@ public class LabelInfo
   public boolean hasSelected;
   public String id;
   public String name;
+  public String rank;
   
   protected Object clone()
   {
     LabelInfo localLabelInfo = new LabelInfo();
     localLabelInfo.id = this.id;
     localLabelInfo.name = this.name;
+    localLabelInfo.rank = this.rank;
     localLabelInfo.hasSelected = this.hasSelected;
     return localLabelInfo;
   }
@@ -51,6 +53,7 @@ public class LabelInfo
     StringBuffer localStringBuffer = new StringBuffer("LabelInfo{\n");
     localStringBuffer.append("id='").append(this.id).append('\'').append('\n');
     localStringBuffer.append(", name='").append(this.name).append('\'').append('\n');
+    localStringBuffer.append(", rank='").append(this.rank).append('\'').append('\n');
     localStringBuffer.append(", hasSelected=").append(this.hasSelected).append('\n');
     localStringBuffer.append('}');
     return localStringBuffer.toString();

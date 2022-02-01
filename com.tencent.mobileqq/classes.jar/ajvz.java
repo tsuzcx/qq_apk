@@ -1,13 +1,21 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ajvz
+public class ajvz
+  implements View.OnClickListener
 {
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
+  public ajvz(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
-  
-  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    this.a.b.setVisibility(8);
+    this.a.a.setVisibility(8);
+    RedPacketKSongFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

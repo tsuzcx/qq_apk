@@ -1,6 +1,14 @@
-abstract interface rye
+public abstract interface rye
 {
-  public abstract long a();
+  public abstract void a();
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(Object paramObject, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

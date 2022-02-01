@@ -3,23 +3,17 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnak;
 import java.util.Map;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator<MapParcelable> CREATOR = new bnak();
-  private Map<Integer, String> a;
+  public static final Parcelable.Creator<MapParcelable> CREATOR = new MapParcelable.1();
+  private Map<Integer, String> singleMap;
   
   public MapParcelable(Map<Integer, String> paramMap)
   {
-    this.a = paramMap;
-  }
-  
-  public Map<Integer, String> a()
-  {
-    return this.a;
+    this.singleMap = paramMap;
   }
   
   public int describeContents()
@@ -27,9 +21,14 @@ public class MapParcelable
     return 0;
   }
   
+  public Map<Integer, String> getSingleMap()
+  {
+    return this.singleMap;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeMap(this.a);
+    paramParcel.writeMap(this.singleMap);
   }
 }
 

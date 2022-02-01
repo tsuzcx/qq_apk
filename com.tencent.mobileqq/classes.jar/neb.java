@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
 
-class neb
-  implements DialogInterface.OnClickListener
+public class neb
+  implements Animator.AnimatorListener
 {
-  neb(ndy paramndy, long paramLong) {}
+  public neb(TalkingEffectLayout paramTalkingEffectLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QLog.w(this.jdField_a_of_type_Ndy.a, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationCancel(paramAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationEnd(paramAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationRepeat(paramAnimator);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationStart(paramAnimator);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     neb
  * JD-Core Version:    0.7.0.1
  */

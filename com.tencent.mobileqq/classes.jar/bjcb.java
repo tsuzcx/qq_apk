@@ -1,37 +1,128 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast.ProtectedToast;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
+import com.tencent.mobileqq.mini.util.AdUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ICmdListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-public class bjcb
-  implements Handler.Callback
+class bjcb
+  implements AdProxy.ICmdListener
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  bjcb(bjca parambjca, Activity paramActivity) {}
   
-  public bjcb(QQToast.ProtectedToast paramProtectedToast, Handler paramHandler)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.handleMessage(paramMessage);
-      return true;
+    if ((!paramBoolean) || (paramJSONObject == null)) {
+      if (this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
+        this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+      }
     }
-    catch (Throwable paramMessage)
+    do
     {
       for (;;)
       {
-        paramMessage.printStackTrace();
+        return;
+        try
+        {
+          i = paramJSONObject.getInt("retCode");
+          localObject1 = paramJSONObject.getString("errMsg");
+          paramJSONObject = paramJSONObject.getString("response");
+          if ((i != 0) || (TextUtils.isEmpty(paramJSONObject))) {
+            break label395;
+          }
+          localObject1 = new JSONObject(paramJSONObject).optJSONArray("pos_ads_info").getJSONObject(0);
+          if (((JSONObject)localObject1).optInt("ret", -1) == 0) {
+            break label168;
+          }
+          if (this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)
+          {
+            this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
+            return;
+          }
+        }
+        catch (JSONException paramJSONObject)
+        {
+          QLog.e("AdProxyImpl", 1, "loadAD, err", paramJSONObject);
+        }
       }
+    } while (this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null);
+    this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+    return;
+    label168:
+    Object localObject2 = ((JSONObject)localObject1).getJSONArray("ads_info").getJSONObject(0);
+    Object localObject1 = new GdtInterstitialParams();
+    localObject2 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject2));
+    paramBoolean = AdUtils.isHitInterstitialAdNewStyle(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject2));
+    label242:
+    int j;
+    if (this.jdField_a_of_type_Bjca.c == 90)
+    {
+      i = 1;
+      break label439;
+      ((GdtInterstitialParams)localObject1).b = j;
+      ((GdtInterstitialParams)localObject1).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = bjca.a(this.jdField_a_of_type_Bjca, (qq_ad_get.QQAdGetRsp.AdInfo)localObject2);
+      if ((!paramBoolean) || (i != 0)) {
+        break label460;
+      }
+    }
+    label395:
+    label439:
+    label454:
+    label460:
+    for (int i = 1;; i = 0)
+    {
+      ((GdtInterstitialParams)localObject1).jdField_a_of_type_Int = i;
+      ((GdtInterstitialParams)localObject1).jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bjca.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Bjca.jdField_a_of_type_Abmj = new abmj(this.jdField_a_of_type_AndroidAppActivity, (GdtInterstitialParams)localObject1);
+      if (this.jdField_a_of_type_Bjca.jdField_a_of_type_Abmj != null)
+      {
+        if (this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
+          this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onLoad();
+        }
+        AdProxyImpl.a(this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject, this.jdField_a_of_type_Bjca.b);
+        return;
+      }
+      if (this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
+        break;
+      }
+      this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      return;
+      j = PluginConst.AdConst.getRetCodeByServerResult(i);
+      if (j != -1) {
+        i = j;
+      }
+      while (this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)
+      {
+        this.jdField_a_of_type_Bjca.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(i, (String)localObject1);
+        return;
+      }
+      break;
+      for (;;)
+      {
+        if (i == 0) {
+          break label454;
+        }
+        j = 0;
+        break;
+        i = 0;
+      }
+      j = 1;
+      break label242;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcb
  * JD-Core Version:    0.7.0.1
  */

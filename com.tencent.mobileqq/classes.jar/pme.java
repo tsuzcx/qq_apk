@@ -1,20 +1,24 @@
-public abstract interface pme
+import android.webkit.ValueCallback;
+
+class pme
+  implements ValueCallback<Boolean>
 {
-  public abstract void a();
+  pme(pmd parampmd) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract boolean isPlaying();
-  
-  public abstract void setMediaCoverUrl(String paramString);
-  
-  public abstract void setMediaPlayUrl(String paramString);
-  
-  public abstract void setMediaPlayVid(String paramString);
+  public void a(Boolean paramBoolean)
+  {
+    if (paramBoolean.booleanValue())
+    {
+      tvg.a.a("hasResourceInfo");
+      tvi.a.a(pmd.a(this.a));
+      tvi.a.a();
+      this.a.a(true);
+      return;
+    }
+    tvg.a.a("noResourceInfo");
+    tvi.a.a(tuz.a.d());
+    this.a.a(false);
+  }
 }
 
 

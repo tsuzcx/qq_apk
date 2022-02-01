@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.data;
 
 import UserGrowth.stSimpleGetFeedListRsp;
 import UserGrowth.stSimpleMetaFeed;
-import acvc;
+import abrl;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
@@ -20,31 +20,32 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pgj;
+import plv;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import uep;
-import ugd;
-import uke;
-import ukh;
-import ukl;
-import uko;
-import unu;
-import uoy;
-import uqf;
-import uqt;
-import usf;
-import usp;
-import usq;
-import usr;
-import uss;
-import ust;
-import usu;
-import usv;
-import usw;
-import uvh;
+import ulf;
+import umu;
+import uqz;
+import urc;
+import urg;
+import urj;
+import uvo;
+import uvw;
+import uwt;
+import uya;
+import uyo;
+import vaa;
+import vak;
+import val;
+import vam;
+import van;
+import vao;
+import vap;
+import vaq;
+import var;
+import vdc;
 
 public class WSVerticalDataManager
 {
@@ -78,7 +79,7 @@ public class WSVerticalDataManager
   
   public static WSVerticalDataManager a()
   {
-    return usu.a();
+    return vap.a();
   }
   
   private String a(boolean paramBoolean)
@@ -86,10 +87,10 @@ public class WSVerticalDataManager
     if (!paramBoolean) {
       return "";
     }
-    WSRedDotPushMsg localWSRedDotPushMsg = uqt.a();
-    pgj localpgj = uqt.a();
-    if (localpgj != null) {
-      localpgj.a(null);
+    WSRedDotPushMsg localWSRedDotPushMsg = uyo.a();
+    plv localplv = uyo.a();
+    if (localplv != null) {
+      localplv.a(null);
     }
     if (localWSRedDotPushMsg == null) {
       return "";
@@ -97,7 +98,7 @@ public class WSVerticalDataManager
     return localWSRedDotPushMsg.mMsgData;
   }
   
-  private ArrayList<String> a(boolean paramBoolean, List<usv> paramList, String paramString)
+  private ArrayList<String> a(boolean paramBoolean, List<vaq> paramList, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if ((TextUtils.equals(paramString, "aio_home_page")) && (paramBoolean))
@@ -115,7 +116,7 @@ public class WSVerticalDataManager
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          paramString = (usv)paramList.next();
+          paramString = (vaq)paramList.next();
           if ((paramString != null) && ((paramString.a() instanceof stSimpleMetaFeed))) {
             localArrayList.add(((stSimpleMetaFeed)paramString.a()).id);
           }
@@ -124,25 +125,25 @@ public class WSVerticalDataManager
     }
   }
   
-  private void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, usf paramusf, int paramInt)
+  private void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, vaa paramvaa, int paramInt)
   {
-    if ((paramusf instanceof uvh))
+    if ((paramvaa instanceof vdc))
     {
-      paramusf = ((uvh)paramusf).a();
-      if (!(paramusf instanceof WSVerticalPageFragment)) {
+      paramvaa = ((vdc)paramvaa).a();
+      if (!(paramvaa instanceof WSVerticalPageFragment)) {
         break label82;
       }
     }
     label82:
-    for (paramusf = (WSVerticalPageFragment)paramusf;; paramusf = null)
+    for (paramvaa = (WSVerticalPageFragment)paramvaa;; paramvaa = null)
     {
-      if ((paramusf != null) && (paramusf.getActivity() != null))
+      if ((paramvaa != null) && (paramvaa.getActivity() != null))
       {
-        if (!paramusf.getActivity().isFinishing()) {
-          ugd.a().a(paramInt, paramstSimpleGetFeedListRsp.config);
+        if (!paramvaa.getActivity().isFinishing()) {
+          umu.a().a(paramInt, paramstSimpleGetFeedListRsp.config);
         }
-        if (TextUtils.equals(paramusf.a(), "aio_home_page")) {
-          ugd.a().b(paramstSimpleGetFeedListRsp.config);
+        if (TextUtils.equals(paramvaa.a(), "aio_home_page")) {
+          umu.a().b(paramstSimpleGetFeedListRsp.config);
         }
       }
       return;
@@ -166,7 +167,7 @@ public class WSVerticalDataManager
       }
       catch (JSONException paramString)
       {
-        acvc.d("WSVerticalDataManagerLog", "setGdtArgs", paramString);
+        abrl.d("WSVerticalDataManagerLog", "setGdtArgs", paramString);
       }
     }
     for (;;)
@@ -177,85 +178,90 @@ public class WSVerticalDataManager
     }
   }
   
-  private void a(String paramString, boolean paramBoolean, usf paramusf)
+  private void a(String paramString, boolean paramBoolean, vaa paramvaa)
   {
     if ((!paramBoolean) || (!TextUtils.equals(paramString, "aio_home_page"))) {
       return;
     }
-    paramString = uqt.a();
+    paramString = uyo.a();
     if (paramString != null)
     {
-      a(paramusf, paramString);
+      a(paramvaa, paramString);
       return;
     }
-    a(paramusf);
+    a(paramvaa);
   }
   
   private void a(ArrayList<stSimpleMetaFeed> paramArrayList)
   {
     if (CollectionUtils.isEmpty(paramArrayList)) {}
-    pgj localpgj;
+    plv localplv;
     do
     {
       return;
-      pgj.b((stSimpleMetaFeed)paramArrayList.get(0));
+      plv.b((stSimpleMetaFeed)paramArrayList.get(0));
       paramArrayList = a(paramArrayList);
-      localpgj = uqt.a();
-    } while ((localpgj == null) || (paramArrayList == null));
-    uqf.a("WSVerticalDataManagerLog", "saveLastFeedInfo");
-    localpgj.a(paramArrayList);
+      localplv = uyo.a();
+    } while ((localplv == null) || (paramArrayList == null));
+    uya.a("WSVerticalDataManagerLog", "saveLastFeedInfo");
+    localplv.a(paramArrayList);
   }
   
-  private void a(uko paramuko, boolean paramBoolean1, usf paramusf, boolean paramBoolean2, Object paramObject, Subscriber<? super ust> paramSubscriber, String paramString)
+  private void a(urj paramurj, boolean paramBoolean1, vaa paramvaa, boolean paramBoolean2, Object paramObject, Subscriber<? super vao> paramSubscriber, String paramString, long paramLong)
   {
-    if (!paramuko.a())
+    paramLong = System.currentTimeMillis() - paramLong;
+    uya.a("weishi-beacon", "请求播放页（推荐)耗时：" + paramLong + "毫秒");
+    uvw.a().a(paramLong, paramurj.jdField_a_of_type_Urg, "fullscreen_videoplay", paramBoolean1);
+    if (!paramurj.a())
     {
-      uqf.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramuko.jdField_a_of_type_Int + ", msg:" + paramuko.jdField_a_of_type_JavaLangString);
-      paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString));
+      uya.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
+      paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString));
+      uvw.a().a(paramLong, paramurj.jdField_a_of_type_Urg, paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
       return;
     }
-    if ((paramuko.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp))
+    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp))
     {
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)paramuko.jdField_a_of_type_JavaLangObject;
+      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject;
       if (paramBoolean1) {
-        if (paramuko.jdField_a_of_type_Ukl == null) {
-          break label293;
+        if (paramurj.jdField_a_of_type_Urg == null) {
+          break label371;
         }
       }
-      label293:
-      for (int i = paramuko.jdField_a_of_type_Ukl.b();; i = 2)
+      label371:
+      for (int i = paramurj.jdField_a_of_type_Urg.b();; i = 2)
       {
-        a(localstSimpleGetFeedListRsp, paramusf, i);
+        a(localstSimpleGetFeedListRsp, paramvaa, i);
         this.c = localstSimpleGetFeedListRsp.attach_info;
         this.b = localstSimpleGetFeedListRsp.session;
         a(localstSimpleGetFeedListRsp.gdt_args);
-        if (paramuko.jdField_a_of_type_Uke != null) {
-          unu.a().a(localstSimpleGetFeedListRsp.trace_id, paramuko.jdField_a_of_type_Uke.a);
+        if (paramurj.jdField_a_of_type_Uqz != null) {
+          uvo.a().a(localstSimpleGetFeedListRsp.trace_id, paramurj.jdField_a_of_type_Uqz.a);
         }
-        paramuko = localstSimpleGetFeedListRsp.feeds;
-        a(paramuko);
-        paramuko = a(paramuko, paramString);
-        uqf.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] itemDataList size:" + paramuko.size() + ", isRefresh:" + paramBoolean2 + ", isFirst:" + paramBoolean1 + ", mAttachInfo:" + this.c + ", mLastSession:" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
-        paramSubscriber.onNext(new ust(paramuko, paramBoolean2, paramBoolean1, paramObject));
+        paramurj = localstSimpleGetFeedListRsp.feeds;
+        a(paramurj);
+        paramurj = a(paramurj, paramString, false);
+        uya.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] itemDataList size:" + paramurj.size() + ", isRefresh:" + paramBoolean2 + ", isFirst:" + paramBoolean1 + ", mAttachInfo:" + this.c + ", mLastSession:" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
+        paramSubscriber.onNext(new vao(paramurj, paramBoolean2, paramBoolean1, paramObject));
         return;
       }
     }
-    uqf.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-    paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString));
+    uya.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
+    paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString));
+    uvw.a().a(paramLong, paramurj.jdField_a_of_type_Urg, -1, "数据无法解析或为空");
   }
   
-  private void a(uko paramuko, boolean paramBoolean1, boolean paramBoolean2, usf paramusf, Object paramObject, String paramString)
+  private void a(urj paramurj, boolean paramBoolean1, boolean paramBoolean2, vaa paramvaa, Object paramObject, String paramString, long paramLong)
   {
-    Observable.create(new uss(this, paramuko, paramBoolean2, paramusf, paramBoolean1, paramObject, paramString)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new usr(this, paramusf));
+    Observable.create(new van(this, paramurj, paramBoolean2, paramvaa, paramBoolean1, paramObject, paramString, paramLong)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new vam(this, paramvaa));
   }
   
-  private void a(usf paramusf)
+  private void a(vaa paramvaa)
   {
-    uqf.a("WSVerticalDataManagerLog", "fetchVerticalListDataFromLocal");
-    uep.a().c(new usq(this, paramusf));
+    uya.a("WSVerticalDataManagerLog", "fetchVerticalListDataFromLocal");
+    ulf.a().c(new val(this, paramvaa));
   }
   
-  private void a(usf paramusf, WSRedDotPushMsg paramWSRedDotPushMsg)
+  private void a(vaa paramvaa, WSRedDotPushMsg paramWSRedDotPushMsg)
   {
     IWSPushBaseStrategy localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
     if (TextUtils.isEmpty(paramWSRedDotPushMsg.mFeedIds)) {}
@@ -266,16 +272,16 @@ public class WSVerticalDataManager
         return;
       } while ((localIWSPushBaseStrategy == null) || (localIWSPushBaseStrategy.getType() == 2) || (((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel == null) || (TextUtils.isEmpty(((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel.jdField_a_of_type_JavaLangString)));
       paramWSRedDotPushMsg = ((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel.a(paramWSRedDotPushMsg.mFeedIds);
-    } while (paramusf == null);
-    paramusf.a(a(Arrays.asList(new stSimpleMetaFeed[] { paramWSRedDotPushMsg })), false, true, null);
+    } while (paramvaa == null);
+    paramvaa.a(a(Arrays.asList(new stSimpleMetaFeed[] { paramWSRedDotPushMsg })), false, true, null);
   }
   
   private String b()
   {
-    pgj localpgj = uqt.a();
+    plv localplv = uyo.a();
     String str = "";
-    if (localpgj != null) {
-      str = localpgj.c();
+    if (localplv != null) {
+      str = localplv.c();
     }
     return str;
   }
@@ -294,16 +300,16 @@ public class WSVerticalDataManager
     }
     catch (JSONException paramJSONObject1)
     {
-      acvc.d("WSVerticalDataManagerLog", "onResult", paramJSONObject1);
+      abrl.d("WSVerticalDataManagerLog", "onResult", paramJSONObject1);
     }
   }
   
-  public List<usv> a(List paramList)
+  public List<vaq> a(List paramList)
   {
-    return a(paramList, "");
+    return a(paramList, "", false);
   }
   
-  public List<usv> a(List paramList, String paramString)
+  public List<vaq> a(List paramList, String paramString, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
     if (!CollectionUtils.isEmpty(paramList))
@@ -314,15 +320,18 @@ public class WSVerticalDataManager
         if ((paramList.get(i) instanceof stSimpleMetaFeed))
         {
           stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(i);
-          usv localusv = new usv();
-          if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.gdt_ad_type == 1) && (localstSimpleMetaFeed.gdt_ad_info != null))
-          {
-            usw.a(localstSimpleMetaFeed);
-            usw.a(BaseApplicationImpl.getContext(), localstSimpleMetaFeed, paramString);
-            localusv.a(usw.a(localstSimpleMetaFeed));
+          if ((paramBoolean) && (i == paramList.size() - 1)) {
+            localstSimpleMetaFeed.isLoop = true;
           }
-          localusv.a(localstSimpleMetaFeed);
-          localArrayList.add(localusv);
+          vaq localvaq = new vaq();
+          if ((localstSimpleMetaFeed.gdt_ad_type == 1) && (localstSimpleMetaFeed.gdt_ad_info != null))
+          {
+            var.a(localstSimpleMetaFeed);
+            var.a(BaseApplicationImpl.getContext(), localstSimpleMetaFeed, paramString);
+            localvaq.a(var.a(localstSimpleMetaFeed));
+          }
+          localvaq.a(localstSimpleMetaFeed);
+          localArrayList.add(localvaq);
         }
         i += 1;
       }
@@ -337,13 +346,13 @@ public class WSVerticalDataManager
     jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString, List<usv> paramList, usf paramusf, Object paramObject)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString, List<vaq> paramList, vaa paramvaa, Object paramObject)
   {
-    uqf.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][fetchVerticalListData] scene:" + paramInt + ", isRefresh:" + paramBoolean1 + ", isFirst:" + paramBoolean2 + ", from:" + paramString + ", attachInfo:" + this.c + ", lastSession" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
-    a(paramString, paramBoolean2, paramusf);
+    uya.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][fetchVerticalListData] scene:" + paramInt + ", isRefresh:" + paramBoolean1 + ", isFirst:" + paramBoolean2 + ", from:" + paramString + ", attachInfo:" + this.c + ", lastSession" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
+    a(paramString, paramBoolean2, paramvaa);
     paramList = a(paramBoolean2, paramList, paramString);
     String str = a(paramBoolean2);
-    paramusf = new usp(this, System.currentTimeMillis(), paramBoolean2, paramBoolean1, paramusf, paramObject, paramString);
+    paramvaa = new vak(this, paramBoolean1, paramBoolean2, paramvaa, paramObject, paramString, System.currentTimeMillis());
     a("");
     byte b1;
     if (paramBoolean1)
@@ -362,8 +371,8 @@ public class WSVerticalDataManager
     label235:
     for (byte b2 = 1;; b2 = 0)
     {
-      paramString = new uko(new uoy(paramString, b1, b2, paramList, paramInt, jdField_a_of_type_JavaLangString, "", this.b, str), null, paramusf, 1001);
-      ukh.a().a(paramString);
+      paramString = new urj(new uwt(paramString, b1, b2, paramList, paramInt, jdField_a_of_type_JavaLangString, "", this.b, str), null, paramvaa, 1001);
+      urc.a().a(paramString);
       return;
       paramString = this.c;
       break;
@@ -374,7 +383,7 @@ public class WSVerticalDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager
  * JD-Core Version:    0.7.0.1
  */

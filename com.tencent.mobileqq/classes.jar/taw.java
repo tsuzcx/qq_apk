@@ -1,17 +1,16 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
 public class taw
-  implements Function1<Canvas, Unit>
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public taw(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  private taw(GestureCropImageView paramGestureCropImageView) {}
   
-  public Unit a(Canvas paramCanvas)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    ColorBandVideoEntranceButton.a(this.a, paramCanvas);
-    return null;
+    this.a.a(paramScaleGestureDetector.getScaleFactor(), GestureCropImageView.a(this.a), GestureCropImageView.b(this.a), true);
+    return true;
   }
 }
 

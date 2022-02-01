@@ -1,166 +1,80 @@
-import android.text.TextUtils;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class arbc
+class arbc
+  extends TransProcessorHandler
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public arbc()
+  arbc(arbb paramarbb, Looper paramLooper)
   {
-    a();
+    super(paramLooper);
   }
   
-  public static arbc a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("TroopNotificationConfig.config", 1, "onUpdate, newConf = " + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    int i = 0;
-    int j = 0;
-    long l2 = 0L;
-    int k = 0;
-    n = 0;
-    l4 = 0L;
-    int i4 = 0;
-    l1 = l4;
-    m = n;
-    i1 = k;
-    long l3 = l2;
-    int i2 = j;
-    int i3 = i;
-    for (;;)
+    Object localObject = (FileMsg)paramMessage.obj;
+    if ((localObject == null) || (((FileMsg)localObject).commandId != this.a.a())) {}
+    do
     {
-      try
+      do
       {
-        paramString = new JSONObject(paramString);
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        i = paramString.optInt("globalOpen", 0);
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        j = paramString.optInt("totalRemindCntOfOneWeak", 0);
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        l2 = paramString.optLong("intervelShowTime", 0L);
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        k = paramString.optInt("totalRemindCntOfOneDay");
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        n = paramString.optInt("todoGroupVerifyMsgLevel", 0);
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        l4 = paramString.optLong("cleanExpiredTime", 0L);
-        l1 = l4;
-        m = n;
-        i1 = k;
-        l3 = l2;
-        i2 = j;
-        i3 = i;
-        int i5 = paramString.optInt("maxFetchMsgCnt", 300);
-        m = i5;
-        paramString.printStackTrace();
-      }
-      catch (JSONException paramString)
-      {
-        try
+        do
         {
-          i1 = paramString.optInt("showUnreadBk", 0);
-          i3 = n;
-          l1 = l4;
-          i2 = m;
-          n = i1;
-          paramString = new arbc();
-          if (i != 1) {
-            break label423;
-          }
-          bool = true;
-          paramString.jdField_a_of_type_Boolean = bool;
-          paramString.jdField_a_of_type_Int = j;
-          paramString.jdField_a_of_type_Long = l2;
-          paramString.jdField_b_of_type_Int = k;
-          paramString.c = i3;
-          paramString.jdField_b_of_type_Long = l1;
-          paramString.d = i2;
-          paramString.e = n;
-          return paramString;
-        }
-        catch (JSONException paramString)
-        {
-          for (;;)
+          return;
+          switch (paramMessage.what)
           {
-            boolean bool;
-            i1 = m;
-            l1 = l4;
-            m = n;
+          case 1002: 
+          case 1006: 
+          case 1007: 
+          default: 
+            return;
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + ((FileMsg)localObject).serverPath);
         }
-        paramString = paramString;
-        n = 0;
-        i = i3;
-        j = i2;
-        l2 = l3;
-        k = i1;
-        i1 = n;
+      } while (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() < this.a.jdField_b_of_type_Int);
+      this.a.f();
+      return;
+      if (arbb.a(this.a) == null)
+      {
+        QLog.e("FavroamingManager", 1, "app is null");
+        return;
       }
-      n = i4;
-      i2 = i1;
-      i3 = m;
-      continue;
-      label423:
-      bool = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "STATUS_SEND_AND_SAVE_FINISHED resId=" + ((FileMsg)localObject).serverPath);
+      }
+      paramMessage = ((arba)this.a.a()).a(((FileMsg)localObject).serverPath);
+      localObject = (amrm)arbb.b(this.a).getBusinessHandler(72);
+    } while ((localObject == null) || (paramMessage == null) || (paramMessage.isMarkFace));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage);
+    ((amrm)localObject).a(localArrayList, 1);
+    return;
+    QLog.i("FavroamingManager", 1, "upload fav error:" + ((FileMsg)localObject).serverPath);
+    if (arbb.c(this.a) != null) {}
+    for (int i = NetworkUtil.getNetworkType(arbb.d(this.a).getApplication());; i = -1)
+    {
+      bggr.a("emotionType", "emotionActionFav", "4", "", "", i + "", ((FileMsg)localObject).serverPath, "", "", "");
+      return;
+      QLog.i("FavroamingManager", 1, "upload fav cancel:" + ((FileMsg)localObject).serverPath);
+      return;
     }
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_Long = 60L;
-    this.jdField_b_of_type_Int = 100;
-    this.c = 10;
-    this.jdField_b_of_type_Long = 1209600L;
-    this.d = 300;
-    this.e = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbc
  * JD-Core Version:    0.7.0.1
  */

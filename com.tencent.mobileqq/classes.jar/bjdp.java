@@ -1,27 +1,13 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
-public class bjdp
-  extends AccessibilityDelegateCompat
+class bjdp
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener
 {
-  public bjdp(TabBarView paramTabBarView) {}
+  bjdp(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener paramOnErrorListener) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjdj, paramInt1, paramInt2);
   }
 }
 

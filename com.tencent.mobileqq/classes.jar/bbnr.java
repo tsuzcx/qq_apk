@@ -1,252 +1,214 @@
+import QQWalletPay.ReqCheckChangePwdAuth;
+import QQWalletPay.RespCheckChangePwdAuth;
+import Wallet.AuthCodeReq;
+import Wallet.AuthCodeRsp;
+import Wallet.GetPasswordReq;
+import Wallet.GetPasswordRsp;
+import Wallet.PfaFriendRqt;
+import Wallet.PfaFriendRsp;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.manager.Manager;
 
 public class bbnr
-  implements bbny, Manager
+  extends aafe
 {
-  private aocj jdField_a_of_type_Aocj;
-  private bbnp jdField_a_of_type_Bbnp;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, bbnv> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final String[] a = { "QQWalletPayAuthServer", "AdvRuleSvrCmd", "WalletGestureSvc", "VacThirdCodeSvc", "QWalletPfa" };
   
-  public bbnr(QQAppInterface paramQQAppInterface)
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private bbnp a()
-  {
-    if (this.jdField_a_of_type_Bbnp == null) {
-      this.jdField_a_of_type_Bbnp = new bbnp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    return this.jdField_a_of_type_Bbnp;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
-  {
-    ((bbnr)paramQQAppInterface.getManager(326)).b(paramString, paramLong);
-  }
-  
-  public bbnv a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramFromServiceMsg == null) {
       return null;
     }
-    for (;;)
+    paramToServiceMsg = new UniPacket(true);
+    try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-        {
-          paramString = (bbnv)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          return paramString;
-        }
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (RespCheckChangePwdAuth)paramToServiceMsg.getByClass("resp", new RespCheckChangePwdAuth());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
       }
-      bbnv localbbnv = new bbnv(paramString, a());
-      localbbnv.a(this);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbbnv);
-      paramString = localbbnv;
+      return null;
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aocj == null)
+    catch (Exception paramToServiceMsg)
     {
-      this.jdField_a_of_type_Aocj = new bbns(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aocj);
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, aocj paramaocj)
-  {
-    a(paramMessageRecord, paramaocj, null);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, aocj paramaocj, bbnt parambbnt)
-  {
-    bbnv localbbnv = a(paramMessageRecord.frienduin);
-    String str = null;
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      str = ((MessageForShortVideo)paramMessageRecord).videoFileName;
-    }
-    while (localbbnv.a(paramMessageRecord.uniseq, str))
-    {
-      localbbnv.a(paramMessageRecord, paramaocj, parambbnt);
-      return;
-      if ((paramMessageRecord instanceof MessageForPic)) {
-        str = ((MessageForPic)paramMessageRecord).path;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrderMediaMsgManager", 2, "sendOrderMsg but not in queue, uniseq:" + paramMessageRecord.uniseq);
-    }
-    a().a(paramMessageRecord, paramaocj, parambbnt);
+    return null;
   }
   
-  public void a(MessageRecord paramMessageRecord, String paramString)
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    Object localObject = a(paramMessageRecord.frienduin);
-    if (((bbnv)localObject).a(paramMessageRecord.uniseq, paramString))
-    {
-      ((bbnv)localObject).a(paramMessageRecord, paramMessageRecord.uniseq, paramString, true);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("addOrderMsg but not in queue, uniseq:").append(paramMessageRecord.uniseq).append(", path:").append(paramString);
-      QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)localObject).toString());
-    }
-    a().a(paramMessageRecord);
-  }
-  
-  public void a(String paramString)
-  {
-    bbnv localbbnv = null;
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localbbnv = (bbnv)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder();
-          StringBuilder localStringBuilder = ((StringBuilder)???).append("remove orderSession, suin = ").append(paramString).append(", addr = ");
-          if (localbbnv != null)
-          {
-            paramString = localbbnv.toString();
-            localStringBuilder.append(paramString);
-            QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)???).toString());
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      paramString = Integer.valueOf(0);
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    a(paramString).a(paramLong, "");
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    a(paramString).a(paramLong1, paramLong2);
-  }
-  
-  public void a(String paramString1, MessageRecord paramMessageRecord, String paramString2)
-  {
-    bbnv localbbnv = a(paramMessageRecord.frienduin);
-    if (!localbbnv.a(paramMessageRecord.uniseq, paramString2)) {
-      a(paramString1, paramMessageRecord.uniseq);
-    }
-    localbbnv.a(paramMessageRecord, paramMessageRecord.uniseq, paramString2, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (a().a(paramString2)) {
-      return;
-    }
-    a(paramString1).a(0L, paramString2);
-  }
-  
-  public void a(String paramString, ArrayList<ChatMessage> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      int i = 0;
-      int k;
-      for (int j = 0; paramArrayList.hasNext(); j = k)
-      {
-        ChatMessage localChatMessage = (ChatMessage)paramArrayList.next();
-        k = j + 1;
-        j = i;
-        if (bbnp.a(localChatMessage.msgtype))
-        {
-          j = i + 1;
-          a(paramString).a(localChatMessage.uniseq, "", a().a(localChatMessage));
-        }
-        i = j;
-      }
-      bbnu.b(j, i);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a()) {
-      return false;
-    }
+    paramUniPacket.setServantName("MQQ.OpenPayServer.QQWalletPayAuthObj");
+    paramUniPacket.setFuncName("checkChangePwdAuth");
+    paramUniPacket.put("req", (ReqCheckChangePwdAuth)paramToServiceMsg.extraData.getSerializable("ReqCheckChangePwdAuth"));
     return true;
   }
   
-  public boolean a(String paramString, long paramLong)
+  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a().a(paramLong) == 0) {
-      return false;
+    if (paramFromServiceMsg == null) {
+      return null;
     }
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, View paramView, agif paramagif)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
-      return false;
-    }
-    return a(paramString).a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramView, paramagif);
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    a(paramString).a(paramLong);
-  }
-  
-  public boolean b(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a().a(paramLong) != 2) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    paramToServiceMsg = new UniPacket(true);
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((bbnv)localIterator.next()).a();
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (GetPasswordRsp)paramToServiceMsg.getByClass("rsp", new GetPasswordRsp());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return null;
     }
-    if (this.jdField_a_of_type_Aocj != null)
+    catch (Exception paramToServiceMsg)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aocj);
-      this.jdField_a_of_type_Aocj = null;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return null;
+  }
+  
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("Wallet.GesturePasswordServer.GesturePasswordObj");
+    paramUniPacket.setFuncName("GetPassword");
+    paramUniPacket.put("req", (GetPasswordReq)paramToServiceMsg.extraData.getSerializable("GetPasswordReq"));
+    return true;
+  }
+  
+  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg == null) {
+      return null;
+    }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (AuthCodeRsp)paramToServiceMsg.getByClass("rsp", new AuthCodeRsp());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
+      }
+      return null;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
+      }
+    }
+    return null;
+  }
+  
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("VAC.AuthCodeCoroServer.AuthCodeCoroObj");
+    paramUniPacket.setFuncName("fetchCodes");
+    paramUniPacket.put("req", (AuthCodeReq)paramToServiceMsg.extraData.getSerializable("AuthCodeReq"));
+    return true;
+  }
+  
+  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg == null) {
+      return null;
+    }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (PfaFriendRsp)paramToServiceMsg.getByClass("rsp", new PfaFriendRsp());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
+      }
+      return null;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
+      }
+    }
+    return null;
+  }
+  
+  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("Wallet.WalletFriendQueryServer.WalletFriendObj");
+    paramUniPacket.setFuncName("QueryRecommendFriend");
+    paramUniPacket.put("rqt", (PfaFriendRqt)paramToServiceMsg.extraData.getSerializable("PfaFriendRqt"));
+    return true;
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      return null;
+      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
+        return b(paramToServiceMsg, paramFromServiceMsg);
+      }
+      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
+        return c(paramToServiceMsg, paramFromServiceMsg);
+      }
+      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
+        return d(paramToServiceMsg, paramFromServiceMsg);
+      }
+    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
+    return e(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      return false;
+      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
+        return b(paramToServiceMsg, paramUniPacket);
+      }
+      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
+        return c(paramToServiceMsg, paramUniPacket);
+      }
+      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
+        return d(paramToServiceMsg, paramUniPacket);
+      }
+    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
+    return e(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return a;
   }
 }
 

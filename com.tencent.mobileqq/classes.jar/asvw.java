@@ -1,26 +1,15 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class asvw
-  implements beup
+  implements DialogInterface.OnDismissListener
 {
-  asvw(asvu paramasvu) {}
+  asvw(asvt paramasvt) {}
   
-  public void a(bevl parambevl, bevm parambevm)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((parambevl != null) && (parambevm != null) && ((parambevl instanceof beum)))
-    {
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long);
-      }
-    }
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
   }
 }
 

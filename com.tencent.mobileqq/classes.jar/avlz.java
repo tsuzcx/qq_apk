@@ -1,10 +1,6 @@
-public class avlz
+public abstract interface avlz
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  public abstract void a(int paramInt);
 }
 
 

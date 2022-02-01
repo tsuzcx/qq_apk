@@ -1,38 +1,58 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-final class xpj
-  extends AnimatorListenerAdapter
+public class xpj
+  implements Comparator<StoryVideoItem>
 {
-  xpj(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
+  private boolean a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public xpj(boolean paramBoolean)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    this.a = paramBoolean;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
   {
-    yuk.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    paramAnimator.setStartDelay(400L);
-    paramAnimator.setDuration(400L);
-    paramAnimator.addUpdateListener(new xpk(this));
-    paramAnimator.addListener(new xpl(this));
-    paramAnimator.start();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    int j = 1;
+    int i = -1;
+    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
+      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
+        i = 0;
+      }
+    }
+    do
+    {
+      do
+      {
+        return i;
+        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
+          break;
+        }
+        i = j;
+      } while (this.a);
+      return -1;
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+      if (!paramStoryVideoItem1.isUploadFail()) {
+        break;
+      }
+      i = j;
+    } while (this.a);
+    return -1;
+    if (paramStoryVideoItem2.isUploadFail())
+    {
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+    }
+    return 0;
   }
 }
 

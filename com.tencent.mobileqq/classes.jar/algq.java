@@ -1,30 +1,7 @@
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import kotlin.Metadata;
 
-public class algq
-  implements OnCompositionLoadedListener
-{
-  public algq(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
-    {
-      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
-      akyd.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$Companion;", "", "()V", "SLIDE_DIR_HORIZONTAL", "", "SLIDE_DIR_NONE", "SLIDE_DIR_VERTICAL", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class algq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

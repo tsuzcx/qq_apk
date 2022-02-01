@@ -1,7 +1,4 @@
-public abstract interface qts
-{
-  public abstract void a(int paramInt, String paramString, long paramLong);
-}
+public class qts {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

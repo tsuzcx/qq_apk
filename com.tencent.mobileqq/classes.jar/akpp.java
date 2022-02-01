@@ -1,48 +1,84 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
-class akpp
-  implements DialogInterface.OnClickListener
+public class akpp
+  implements TextWatcher
 {
-  akpp(akpn paramakpn) {}
+  public akpp(LoginView paramLoginView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a.jdField_a_of_type_Int == 2) {
-      this.a.a.a("0X8005B8A", 1);
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      LoginView.a(this.a, null);
     }
+    String str;
+    SimpleAccount localSimpleAccount;
     for (;;)
     {
-      paramDialogInterface.dismiss();
-      if (bhnv.d(this.a.a)) {
-        break;
-      }
-      this.a.a.a(2131694008);
       return;
-      if (this.a.a.jdField_a_of_type_Int == 6) {
-        this.a.a.a("0X8005B8A", 2);
-      } else if (this.a.a.jdField_a_of_type_Int == 7) {
-        this.a.a.a("0X8005B8A", 3);
+      if (paramCharSequence != null)
+      {
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        {
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
+        }
       }
     }
-    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
+    label110:
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
     {
-      this.a.a.setResult(0);
-      this.a.a.finish();
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label308;
+      }
+      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
+        if (!LoginView.i(this.a))
+        {
+          LoginView.i(this.a, true);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+          paramCharSequence = this.a.c;
+          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a)) && (!LoginView.g(this.a))) {
+            break label310;
+          }
+        }
+      }
+    }
+    label308:
+    label310:
+    for (paramInt1 = 2130846890;; paramInt1 = 2130844587)
+    {
+      paramCharSequence.setImageResource(paramInt1);
+      this.a.c.setContentDescription(amtj.a(2131705473));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+      LoginView.c(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
       return;
+      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin());
+      break label126;
+      break;
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new akpq(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131717902, 300L, true);
   }
 }
 

@@ -1,21 +1,18 @@
-class bhoy
-  implements agyz
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
+
+final class bhoy
+  implements EIPClientConnectListener
 {
-  bhoy(bhox parambhox) {}
-  
-  public boolean a(agyw paramagyw)
+  public void connectFailed()
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
+    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "connectFailed");
   }
   
-  public boolean a(agyw paramagyw, String paramString1, String paramString2)
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    return false;
+    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "connectSuccess");
   }
 }
 

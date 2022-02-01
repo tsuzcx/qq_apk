@@ -1,149 +1,183 @@
-import android.text.Editable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloResponseManager.1.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.util.Base64;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlPullParser;
 
-public class amun
-  implements View.OnClickListener
+class amun
 {
-  amun(amum paramamum) {}
+  private amul jdField_a_of_type_Amul;
+  private amum jdField_a_of_type_Amum;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
   
-  public void onClick(View paramView)
+  public amun(amuh paramamuh, amum paramamum, amul paramamul, XmlPullParser paramXmlPullParser)
   {
-    if ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      BaseChatPie localBaseChatPie = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localBaseChatPie != null)
-      {
-        Object localObject1 = paramView.getTag(2131362788);
-        Object localObject2 = paramView.getTag(2131362789);
-        if ((localObject1 != null) && (localObject2 != null))
-        {
-          int i = ((Integer)localObject1).intValue();
-          int j = ((Integer)localObject2).intValue();
-          Object localObject3 = ((annx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(i);
-          if (localObject3 == null)
-          {
-            QLog.e("ApolloResponseManager", 1, "on click action is null!");
-          }
-          else
-          {
-            VipUtils.a(null, "cmshow", "Apollo", "quickresponseclick", String.valueOf(this.a.jdField_a_of_type_JavaLangString), ApolloUtil.b(this.a.jdField_a_of_type_Int), j, new String[] { String.valueOf(i), String.valueOf(((ApolloActionData)localObject3).feeType) });
-            if (!ApolloUtil.a(((ApolloActionData)localObject3).actionId, ((ApolloActionData)localObject3).personNum))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloResponseManager", 2, "download action data");
-              }
-              ThreadManager.post(new ApolloResponseManager.1.1(this, (ApolloActionData)localObject3), 5, null, false);
-            }
-            localObject1 = new anrg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-            ((anra)localObject1).h = 1;
-            ((anra)localObject1).a = ((ApolloActionData)localObject3);
-            ((ApolloActionData)localObject3).atNickName = "";
-            ((ApolloActionData)localObject3).inputText = "";
-            localObject2 = localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-            if (((SessionInfo)localObject2).jdField_a_of_type_Int == 0)
-            {
-              ((ApolloActionData)localObject3).peerUin = ((SessionInfo)localObject2).jdField_a_of_type_JavaLangString;
-              if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null)) {
-                ((ApolloActionData)localObject3).inputText = behh.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-              }
-            }
-            for (;;)
-            {
-              if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null))
-              {
-                localObject3 = localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-                if ((localObject3 != null) && (((String)localObject3).length() > 99) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-                {
-                  ChatActivityUtils.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131717895, 1);
-                  break;
-                  if (((((SessionInfo)localObject2).jdField_a_of_type_Int != 1) && (((SessionInfo)localObject2).jdField_a_of_type_Int != 3000)) || (localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null)) {
-                    continue;
-                  }
-                  ArrayList localArrayList = new ArrayList();
-                  if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-                    bgme.a(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText(), localArrayList);
-                  }
-                  if (((ApolloActionData)localObject3).personNum == 1)
-                  {
-                    if ((localArrayList.size() == 1) && (0L != ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin) && (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).startPos == 0))
-                    {
-                      String str = behh.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-                      try
-                      {
-                        ((ApolloActionData)localObject3).atNickName = str.substring(0, ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen);
-                        if (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen >= localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() - 1) {}
-                        for (((ApolloActionData)localObject3).inputText = "";; ((ApolloActionData)localObject3).inputText = str.substring(((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen))
-                        {
-                          ((ApolloActionData)localObject3).peerUin = (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin + "");
-                          localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-                          break;
-                        }
-                      }
-                      catch (Exception localException)
-                      {
-                        for (;;)
-                        {
-                          if (QLog.isColorLevel()) {
-                            QLog.d("ApolloResponseManager", 2, "inputText err:" + localException.getMessage());
-                          }
-                          ((ApolloActionData)localObject3).inputText = "";
-                        }
-                      }
-                    }
-                    if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-                      continue;
-                    }
-                    localObject2 = bhlg.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, true);
-                    localObject2 = new StringBuilder("@").append((String)localObject2);
-                    ((anra)localObject1).a.peerUin = this.a.jdField_a_of_type_JavaLangString;
-                    ((anra)localObject1).a.atNickName = ((StringBuilder)localObject2).toString();
-                    ((anra)localObject1).a.inputText = behh.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-                    localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-                    localBaseChatPie.a((anra)localObject1);
-                    localBaseChatPie.jdField_a_of_type_Anra = ((anra)localObject1);
-                    this.a.a();
-                    break;
-                  }
-                  if ((((ApolloActionData)localObject3).personNum != 0) || (localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx == null) || (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() == null)) {
-                    continue;
-                  }
-                  ((ApolloActionData)localObject3).inputText = behh.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-                  localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-                  continue;
-                }
-                if ((((SessionInfo)localObject2).jdField_a_of_type_Int != 1) && (((SessionInfo)localObject2).jdField_a_of_type_Int != 3000)) {
-                  localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-                }
-              }
-            }
-            if (localBaseChatPie != null) {
-              localBaseChatPie.a((anra)localObject1);
-            }
-            this.a.a();
-          }
-        }
+    this.jdField_a_of_type_Amum = paramamum;
+    this.jdField_a_of_type_Amul = paramamul;
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
+  }
+  
+  public amul a()
+  {
+    return this.jdField_a_of_type_Amul;
+  }
+  
+  public amum a()
+  {
+    return this.jdField_a_of_type_Amum;
+  }
+  
+  public amun a()
+  {
+    Object localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+    if ("activity".equals(localObject1)) {
+      if (this.jdField_a_of_type_Amum == null) {
+        this.jdField_a_of_type_Amum = new amum();
       }
     }
+    String str;
+    label224:
+    Object localObject2;
+    do
+    {
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            return this;
+            this.jdField_a_of_type_Amum.a();
+            return this;
+            if ("note".equals(localObject1))
+            {
+              this.jdField_a_of_type_Amul = new amul();
+              return this;
+            }
+            if ("activityid".equals(localObject1))
+            {
+              if (this.jdField_a_of_type_Amum != null)
+              {
+                this.jdField_a_of_type_Amum.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+                return this;
+              }
+            }
+            else if ("stime".equals(localObject1))
+            {
+              localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+              if (this.jdField_a_of_type_Amul != null)
+              {
+                this.jdField_a_of_type_Amul.jdField_a_of_type_Long = amul.a((String)localObject1);
+                return this;
+              }
+            }
+            else
+            {
+              if (!"content".equals(localObject1)) {
+                break label224;
+              }
+              try
+              {
+                str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+                localObject1 = str;
+                if (str != null) {
+                  localObject1 = str.trim();
+                }
+                if (this.jdField_a_of_type_Amul != null)
+                {
+                  this.jdField_a_of_type_Amul.jdField_a_of_type_JavaLangString = ((String)localObject1);
+                  return this;
+                }
+              }
+              catch (Exception localException1)
+              {
+                localException1.printStackTrace();
+              }
+            }
+          }
+        } while (!QLog.isColorLevel());
+        awkj.a("HotchatSCMng", new Object[] { "parseNotice exception", localException1.toString() });
+        return this;
+        if (!"endtime".equals(localException1)) {
+          break;
+        }
+        localObject2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+      } while (this.jdField_a_of_type_Amul == null);
+      this.jdField_a_of_type_Amul.jdField_b_of_type_Long = amul.a((String)localObject2);
+      return this;
+    } while (!"url".equals(localObject2));
+    label382:
+    for (;;)
+    {
+      try
+      {
+        str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+        localObject2 = str;
+        if (str != null) {
+          localObject2 = str.trim();
+        }
+        if ((localObject2 == null) || (((String)localObject2).startsWith("http://")) || (((String)localObject2).contains("&"))) {
+          break label382;
+        }
+        localObject2 = new String(Base64.decode(((String)localObject2).getBytes(), 0));
+        if (this.jdField_a_of_type_Amul == null) {
+          break;
+        }
+        this.jdField_a_of_type_Amul.jdField_b_of_type_JavaLangString = ((String)localObject2);
+        return this;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      awkj.a("HotchatSCMng", new Object[] { "parseNotice exception", localException2.toString() });
+      return this;
+    }
+  }
+  
+  public amun b()
+  {
+    if ("activity".equals(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName())) {
+      if ((this.jdField_a_of_type_Amum != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amum.jdField_a_of_type_JavaLangString)))
+      {
+        localamum = (amum)this.jdField_a_of_type_Amuh.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_Amum.jdField_a_of_type_JavaLangString);
+        if (amuh.jdField_a_of_type_Boolean)
+        {
+          if (localamum != null) {
+            break label126;
+          }
+          str = "null";
+          awkj.a("HotchatSCMng", "parse", new Object[] { str, this.jdField_a_of_type_Amum });
+        }
+        if (localamum != null) {
+          break label132;
+        }
+        this.jdField_a_of_type_Amuh.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_Amum.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amum);
+        this.jdField_a_of_type_Amum = null;
+      }
+    }
+    label126:
+    while ((!"note".equals(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName())) || (this.jdField_a_of_type_Amul == null) || (this.jdField_a_of_type_Amum == null))
+    {
+      amum localamum;
+      for (;;)
+      {
+        return this;
+        String str = "not null";
+      }
+      localamum.jdField_a_of_type_Int = -1;
+      localamum.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_Amum.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Amum.a();
+      return this;
+    }
+    label132:
+    this.jdField_a_of_type_Amum.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Amul);
+    this.jdField_a_of_type_Amul = null;
+    return this;
   }
 }
 

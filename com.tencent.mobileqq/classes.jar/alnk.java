@@ -1,20 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.TMG.utils.QLog;
 
-public class alnk
-  extends alnv
+class alnk
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public ThemeImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  alnk(alnh paramalnh) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+  }
 }
 
 

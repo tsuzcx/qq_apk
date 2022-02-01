@@ -2,61 +2,59 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bioy;
-import bmtd;
-import bnno;
-import bnnp;
+import bgve;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.model.PublishEventTag;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class QzoneMoodPlugin$1
+class QzoneMoodPlugin$1
   implements Runnable
 {
-  public QzoneMoodPlugin$1(bnno parambnno, ArrayList paramArrayList1, String paramString1, int paramInt, Activity paramActivity, String paramString2, ArrayList paramArrayList2, PublishEventTag paramPublishEventTag) {}
+  QzoneMoodPlugin$1(QzoneMoodPlugin paramQzoneMoodPlugin, ArrayList paramArrayList1, String paramString1, int paramInt, Activity paramActivity, String paramString2, ArrayList paramArrayList2, PublishEventTag paramPublishEventTag) {}
   
   public void run()
   {
     Object localObject2;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((this.val$finalAtFriendList != null) && (!this.val$finalAtFriendList.isEmpty()))
     {
-      if (bnno.a().isEmpty()) {
-        bnno.a(this.this$0);
+      if (QzoneMoodPlugin.access$000().isEmpty()) {
+        QzoneMoodPlugin.access$100(this.this$0);
       }
-      localObject1 = bnno.a().iterator();
+      localObject1 = QzoneMoodPlugin.access$000().iterator();
       do
       {
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject2 = (bnnp)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((bnnp)localObject2).jdField_a_of_type_JavaLangString == null) || (((bnnp)localObject2).jdField_a_of_type_JavaUtilHashMap == null) || (!((bnnp)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)));
+        localObject2 = (QzoneMoodPlugin.FriendNickNames)((Iterator)localObject1).next();
+      } while ((localObject2 == null) || (((QzoneMoodPlugin.FriendNickNames)localObject2).mainUin == null) || (((QzoneMoodPlugin.FriendNickNames)localObject2).nickNamesMap == null) || (!((QzoneMoodPlugin.FriendNickNames)localObject2).mainUin.equalsIgnoreCase(this.val$loginUin)));
     }
-    for (Object localObject1 = ((bnnp)localObject2).jdField_a_of_type_JavaUtilHashMap;; localObject1 = null)
+    for (Object localObject1 = ((QzoneMoodPlugin.FriendNickNames)localObject2).nickNamesMap;; localObject1 = null)
     {
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject2 = this.val$finalAtFriendList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject2).next();
-          String str = (String)((HashMap)localObject1).get(localResultRecord.jdField_a_of_type_JavaLangString);
+          String str = (String)((HashMap)localObject1).get(localResultRecord.uin);
           if (!TextUtils.isEmpty(str)) {
-            localResultRecord.jdField_b_of_type_JavaLangString = str;
+            localResultRecord.name = str;
           }
         }
       }
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.val$eventSource == 1)
       {
-        bmtd.b(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
+        QZoneHelper.forwardToWriteEventShuoShuo(this.val$activity, this.this$0.parentPlugin.mRuntime.a().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
         return;
       }
-      bmtd.a(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
+      QZoneHelper.forwardToWriteMood(this.val$activity, this.this$0.parentPlugin.mRuntime.a().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
       return;
     }
   }

@@ -1,14 +1,34 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
-class agpz
+public class agpz
 {
-  int jdField_a_of_type_Int;
-  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public String a;
+  SoftReference<View> a;
+  SoftReference<ViewGroup> b;
   
-  agpz(agpy paramagpy) {}
+  public agpz(String paramString, View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
+  }
 }
 
 

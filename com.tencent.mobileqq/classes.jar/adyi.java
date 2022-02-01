@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class adyi
   implements DialogInterface.OnClickListener
 {
-  public adyi(BaseChatPie paramBaseChatPie) {}
+  public adyi(QQIdentiferActivity paramQQIdentiferActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

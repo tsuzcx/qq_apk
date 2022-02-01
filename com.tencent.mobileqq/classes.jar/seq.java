@@ -1,19 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 class seq
-  implements sga
+  extends PhoneStateListener
 {
-  seq(sel paramsel) {}
+  seq(seo paramseo) {}
   
-  public void onClick(View paramView)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
-    if (localBaseArticleInfo == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a(true);
       return;
     }
-    this.a.b(localBaseArticleInfo);
-    pms.a(paramView);
+    this.a.a(true);
   }
 }
 

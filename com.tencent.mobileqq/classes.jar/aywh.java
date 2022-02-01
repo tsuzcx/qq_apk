@@ -1,68 +1,38 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.GZIPInputStream;
+import android.os.Handler;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public class aywh
+class aywh
+  extends arht
 {
-  private static void a(InputStream paramInputStream)
+  aywh(aywc paramaywc) {}
+  
+  protected void a(boolean paramBoolean, Card paramCard)
   {
-    if (paramInputStream != null) {}
-    try
+    if (QLog.isColorLevel()) {
+      if (paramCard == null) {
+        break label124;
+      }
+    }
+    label124:
+    for (paramCard = paramCard.declaration;; paramCard = null)
     {
-      paramInputStream.close();
+      QLog.d("ProfileExtendFriendComponent", 2, String.format("onGetExtendFriendInfo success=%s declaration=%s", new Object[] { Boolean.valueOf(paramBoolean), paramCard }));
+      if (aywc.a(this.a) != null) {
+        aywc.a(this.a).removeCallbacks(aywc.a(this.a));
+      }
+      if (aywc.a(this.a) != null)
+      {
+        aywc.a(this.a).dismiss();
+        aywc.a(this.a, null);
+      }
+      if (!aywc.d(this.a))
+      {
+        aywc.b(this.a, true);
+        aywc.b(this.a);
+      }
       return;
     }
-    catch (IOException paramInputStream) {}
-  }
-  
-  public static void a(InputStream paramInputStream, OutputStream paramOutputStream)
-  {
-    try
-    {
-      paramInputStream = new GZIPInputStream(paramInputStream);
-      try
-      {
-        byte[] arrayOfByte = new byte[1024];
-        for (;;)
-        {
-          int i = paramInputStream.read(arrayOfByte, 0, 1024);
-          if (i == -1) {
-            break;
-          }
-          paramOutputStream.write(arrayOfByte, 0, i);
-        }
-        a(paramOutputStream);
-      }
-      finally
-      {
-        paramOutputStream = paramInputStream;
-        paramInputStream = localObject;
-      }
-    }
-    finally
-    {
-      for (;;)
-      {
-        paramOutputStream = null;
-      }
-    }
-    throw paramInputStream;
-    a(paramInputStream);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    a(paramArrayOfByte, localByteArrayOutputStream);
-    byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-    localByteArrayOutputStream.flush();
-    localByteArrayOutputStream.close();
-    paramArrayOfByte.close();
-    return arrayOfByte;
   }
 }
 

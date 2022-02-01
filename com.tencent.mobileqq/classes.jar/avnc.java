@@ -1,143 +1,113 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.GameArkView;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class avnc
 {
-  public static avmq a(MessageRecord paramMessageRecord, Activity paramActivity)
+  private static avnc jdField_a_of_type_Avnc;
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  private avnc()
   {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
-    {
-      if ((paramMessageRecord instanceof MessageForArkApp)) {
-        return new GameArkView(paramActivity, null);
-      }
-      if (!(paramMessageRecord instanceof MessageForStructing)) {}
+    if (NetConnInfoCenter.socketConnState == 4) {
+      this.jdField_a_of_type_Int = 2;
     }
-    for (;;)
-    {
-      int n;
-      int i1;
-      try
-      {
-        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
-        if (paramMessageRecord != null) {
-          break label268;
-        }
-        return null;
-      }
-      catch (Throwable paramMessageRecord)
-      {
-        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
-        return null;
-      }
-      if (n < paramMessageRecord.size())
-      {
-        if (!(paramMessageRecord.get(n) instanceof bdom)) {
-          break label290;
-        }
-        ArrayList localArrayList = ((bdom)paramMessageRecord.get(n)).a;
-        k = i;
-        i = j;
-        i1 = 0;
-        j = k;
-        k = j;
-        m = i;
-        if (i1 >= localArrayList.size()) {
-          break label296;
-        }
-        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
-        {
-          k = 1;
-          if ((k != 0) && (j != 0))
-          {
-            paramMessageRecord = new ImgHeaderView(paramActivity);
-            return paramMessageRecord;
-          }
-        }
-        else
-        {
-          k = i;
-          if (!(localArrayList.get(i1) instanceof bdqo)) {
-            continue;
-          }
-          j = 1;
-          k = i;
-          continue;
-        }
-      }
-      else
-      {
-        if (paramMessageRecord.size() != 2) {
-          continue;
-        }
-        paramMessageRecord = new TextHeaderView(paramActivity);
-        return paramMessageRecord;
-        if ((paramMessageRecord instanceof MessageForPubAccount)) {
-          return new ImgHeaderView(paramActivity);
-        }
-        return new MoreMsgHeaderView(paramActivity);
-        QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
-        return null;
-        label268:
-        n = 0;
-        i = 0;
-        j = 0;
-        continue;
-      }
-      i1 += 1;
-      int i = k;
-      continue;
-      label290:
-      int m = j;
-      int k = i;
-      label296:
-      n += 1;
-      int j = m;
-      i = k;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadingStateManager", 2, "LoadingStateManager init loadingstate = " + this.jdField_a_of_type_Int);
     }
   }
   
-  public static avmq a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
+  public static avnc a()
   {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
-    {
-      if (paramQQGameMsgInfo == null) {}
-      try
-      {
-        return new MoreMsgHeaderView(paramActivity);
-      }
-      catch (Throwable paramQQGameMsgInfo)
-      {
-        QLog.d("QQGamePubHeaderFactory", 4, "decode header(web) faile:" + paramQQGameMsgInfo.getMessage());
-        return null;
-      }
-      if (paramQQGameMsgInfo.msgType == 1)
-      {
-        paramQQGameMsgInfo = new GameArkView(paramActivity, null);
-        return paramQQGameMsgInfo;
-      }
-      if (paramQQGameMsgInfo.msgType == 2) {
-        return new ImgHeaderView(paramActivity);
-      }
-      if (paramQQGameMsgInfo.msgType == 3) {
-        return new TextHeaderView(paramActivity);
-      }
-      paramQQGameMsgInfo = new MoreMsgHeaderView(paramActivity);
-      return paramQQGameMsgInfo;
+    if (jdField_a_of_type_Avnc == null) {
+      jdField_a_of_type_Avnc = new avnc();
     }
-    QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
-    return null;
+    return jdField_a_of_type_Avnc;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_Avnc = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getAttribute("_tag_socket") == null)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork mShowIllegalNetworkBar=" + this.jdField_a_of_type_Boolean);
+            QLog.d("LoadingStateManager", 2, "changeConversationLoadingState mShowErrorNetworkBar=" + this.b);
+          }
+        } while ((!this.jdField_a_of_type_Boolean) && (!this.b));
+        if (!this.b) {
+          break;
+        }
+        paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
+      } while (paramFromServiceMsg == null);
+      paramFromServiceMsg.obtainMessage(10002, null).sendToTarget();
+      return;
+      if (!c()) {
+        a(0);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork");
+      }
+      paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
+    } while (paramFromServiceMsg == null);
+    paramFromServiceMsg.obtainMessage(1134012, null).sendToTarget();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 3;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 4;
   }
 }
 

@@ -99,7 +99,7 @@ public class BrowserBaseScene
   public AnimationView createAnimationView()
   {
     AnimationView localAnimationView = new AnimationView(this.mContext, null);
-    localAnimationView.setId(2131362694);
+    localAnimationView.setId(2131362699);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
@@ -111,7 +111,7 @@ public class BrowserBaseScene
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558752, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558760, null);
   }
   
   protected AbstractProgressView createProgressBar()
@@ -244,9 +244,9 @@ public class BrowserBaseScene
     }
     for (;;)
     {
-      this.rootView = this.mRoot.findViewById(2131376925);
-      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376405));
-      this.bgView = this.mRoot.findViewById(2131363243);
+      this.rootView = this.mRoot.findViewById(2131376679);
+      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376172));
+      this.bgView = this.mRoot.findViewById(2131363274);
       this.progressView = createProgressBar();
       if (this.progressView != null) {
         this.progressView.init(this.mContext, this);
@@ -268,7 +268,7 @@ public class BrowserBaseScene
       this.recyclerView.setMainBrowserPresenter(this.mainBrowserPresenter);
       this.recyclerView.setLinearLayoutManager(this.linearLayoutManager);
       this.recyclerView.setPageSnapHelper(this.linearSnapHelper);
-      this.mRoot.setVisibility(4);
+      this.mRoot.setVisibility(0);
       return;
       paramViewGroup.addView(this.mRoot, new ViewGroup.LayoutParams(-1, -1));
     }
@@ -349,10 +349,7 @@ public class BrowserBaseScene
   
   public void onStart() {}
   
-  public void onStop()
-  {
-    this.mRoot.setVisibility(4);
-  }
+  public void onStop() {}
   
   public void onWindowFocusChanged()
   {

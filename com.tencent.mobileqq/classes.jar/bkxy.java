@@ -1,45 +1,69 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.os.Process;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import com.tencent.tmdownloader.TMAssistantDownloadSettingClient;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.1;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.2;
+import java.io.File;
+import java.util.HashMap;
 
-class bkxy
-  extends BroadcastReceiver
+public class bkxy
 {
-  bkxy(bkxx parambkxx, AsyncResult paramAsyncResult) {}
+  public static final String a;
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new bkxz(this);
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
+  private TMAssistantDownloadSettingClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String jdField_b_of_type_JavaLangString;
+  private HashMap<String, bkya> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
-    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
-    QLog.d("MiniAppProxyImpl", 2, "scanResult: " + str + "----scan_type: " + paramIntent);
-    try
+    jdField_a_of_type_JavaLangString = bkxy.class.getName();
+  }
+  
+  public bkxy(Context paramContext)
+  {
+    TMAssistantDownloadManager localTMAssistantDownloadManager = TMAssistantDownloadManager.getInstance(paramContext.getApplicationContext());
+    this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_JavaLangString + Process.myPid() + "_" + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = localTMAssistantDownloadManager.getDownloadSDKClient(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKSettingClient();
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.unRegisterDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+    TMAssistantDownloadManager.getInstance(paramContext.getApplicationContext()).releaseDownloadSDKClient(this.jdField_b_of_type_JavaLangString);
+  }
+  
+  public void a(String paramString)
+  {
+    ThreadManager.post(new TroopHWFileDownloadManager.2(this, paramString), 5, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2, bkya parambkya)
+  {
+    String str = paramString2.substring(paramString2.lastIndexOf("/") + 1);
+    File localFile = new File(paramString2);
+    if (localFile.exists())
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("result", str);
-      localJSONObject2.put("scanType", paramIntent);
-      localJSONObject2.put("rawData", bjty.a(str));
-      localJSONObject2.put("charSet", "utf-8");
-      localJSONObject1.put("detail", localJSONObject2);
-      localJSONObject1.put("result", str);
-      localJSONObject1.put("scanType", paramIntent);
-      localJSONObject1.put("rawData", bjty.a(str));
-      localJSONObject1.put("charSet", "utf-8");
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject1);
-      paramContext.unregisterReceiver(bkxx.a(this.jdField_a_of_type_Bkxx));
-      bkxx.a(this.jdField_a_of_type_Bkxx, null);
+      if (parambkya != null)
+      {
+        parambkya.a(paramString1, localFile.length(), localFile.length());
+        parambkya.a(paramString1, 3, 0, null, paramString2);
+      }
       return;
     }
-    catch (Exception paramContext)
+    if (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString1))
     {
-      for (;;)
-      {
-        QLog.e("MiniAppProxyImpl", 1, "scan result error." + paramContext);
-      }
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramString1, parambkya);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
     }
+    ThreadManager.post(new TroopHWFileDownloadManager.1(this, paramString1, str), 5, null, true);
   }
 }
 

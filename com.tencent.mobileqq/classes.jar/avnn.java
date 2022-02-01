@@ -1,38 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class avnn
-  extends Handler
+class avnn
+  implements DialogInterface.OnClickListener
 {
-  public avnn(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  avnn(avnl paramavnl, BaseChatPie paramBaseChatPie, short paramShort) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
-      return;
-    case 100: 
-      QQGameFeedWebFragment.a(this.a).setVisibility(8);
-      return;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.finish(1);
     }
-    int i = paramMessage.arg1;
-    try
+    for (;;)
     {
-      QQGameFeedWebFragment.a(this.a, i);
+      paramDialogInterface.dismiss();
       return;
-    }
-    catch (Throwable paramMessage)
-    {
-      paramMessage.printStackTrace();
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_Avnl.a(this.jdField_a_of_type_Short, true, true);
+        bcef.b(avnl.a(this.jdField_a_of_type_Avnl), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Avnl.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Avnl.a(this.jdField_a_of_type_Short), "", "", "", "");
+      }
     }
   }
 }

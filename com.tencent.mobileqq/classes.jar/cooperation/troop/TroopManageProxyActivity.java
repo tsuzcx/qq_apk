@@ -6,9 +6,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bdll;
-import bmgk;
-import bmgt;
+import bcef;
+import bkkq;
+import bkkz;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class TroopManageProxyActivity
@@ -16,29 +16,30 @@ public class TroopManageProxyActivity
 {
   public static void a(String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    bmgt localbmgt = new bmgt(1);
-    localbmgt.jdField_b_of_type_JavaLangString = paramString1;
-    localbmgt.d = paramString2;
-    localbmgt.jdField_a_of_type_JavaLangString = paramString4;
-    localbmgt.e = paramString3;
-    localbmgt.jdField_a_of_type_JavaLangClass = paramClass;
-    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbmgt.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    bkkz localbkkz = new bkkz(1);
+    localbkkz.jdField_b_of_type_JavaLangString = paramString1;
+    localbkkz.d = paramString2;
+    localbkkz.jdField_a_of_type_JavaLangString = paramString4;
+    localbkkz.e = paramString3;
+    localbkkz.jdField_a_of_type_JavaLangClass = paramClass;
+    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbkkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbmgt.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
-    localbmgt.jdField_b_of_type_Int = paramInt;
-    localbmgt.c = 10000;
-    localbmgt.f = null;
-    bmgk.a(paramActivity, localbmgt);
-    bdll.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
+    localbkkz.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
+    localbkkz.jdField_b_of_type_Int = paramInt;
+    localbkkz.c = 10000;
+    localbkkz.f = null;
+    bkkq.a(paramActivity, localbkkz);
+    bcef.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

@@ -1,30 +1,18 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-
-class bocl
-  extends Handler
+public abstract interface bocl
 {
-  public bocl(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3000: 
-      boch.c((Activity)paramMessage.obj, paramMessage.arg1);
-      return;
-    }
-    boch.a(null);
-    boch.a(SystemClock.uptimeMillis());
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong);
+  
+  public abstract void b();
 }
 
 

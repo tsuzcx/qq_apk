@@ -1,114 +1,76 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 
 public class bnpo
-  extends WebViewPlugin
-  implements binj
 {
-  private BroadcastReceiver a = new bnpp(this);
+  public int a;
+  protected Context a;
+  public Handler a;
+  public LruCache<String, yri> a;
+  public int b;
   
-  public void a()
+  protected Bitmap a(Bitmap paramBitmap)
   {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("QZoneCardPreDownload");
-    localIntentFilter.addAction("action_facade_qzone2js");
-    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
-  }
-  
-  public void b()
-  {
-    BaseApplication.getContext().unregisterReceiver(this.a);
-  }
-  
-  public String[] getMultiNameSpace()
-  {
-    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 2L) && (paramString.equals(bnpl.a))) {
-      bnpl.a(this.mRuntime, null);
-    }
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
-    }
-    if (bnmg.a(paramString3))
+    xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
+    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    int i = paramBitmap.getWidth();
+    float f1 = f2;
+    if (i > 0)
     {
-      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
-      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
+      f1 = f2;
+      if (i < this.jdField_a_of_type_Int * f2) {
+        f1 = i / this.jdField_a_of_type_Int;
+      }
     }
-    if (paramString2.equals("qzcardstorre"))
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
+    this.b = ((int)(f1 * this.b));
+    i = this.jdField_a_of_type_Int;
+    xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
+    return bfvo.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      if (paramString3.equals("closecardpreview")) {
-        return true;
-      }
-      if (paramString3.equals("setcardfinish")) {
-        bnpd.a(this, this.mRuntime, paramVarArgs);
-      }
-      if (paramString3.equals("downloadcard"))
+      xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
+      return null;
+    }
+    xvv.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
+    try
+    {
+      paramString = BitmapFactory.decodeFile(paramString);
+      if (paramString == null)
       {
-        bnpd.a(this.mRuntime, paramVarArgs);
-        return true;
+        xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
+        return null;
       }
     }
-    else
+    catch (OutOfMemoryError paramString)
     {
-      if (!paramString2.equals("QzAvatar")) {
-        break label208;
+      for (;;)
+      {
+        xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
+        paramString = null;
       }
-      if (!paramString3.equals("downloadAvatar")) {
-        break label162;
+      Bitmap localBitmap = a(paramString);
+      if (localBitmap == null)
+      {
+        xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
+        return null;
       }
-      bnpj.b(this.mRuntime, paramVarArgs);
+      if ((paramString != null) && (!paramString.isRecycled())) {
+        paramString.recycle();
+      }
+      xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
+      return localBitmap;
     }
-    label162:
-    label208:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return false;
-          if (paramString3.equals("setAvatar")) {
-            bnpj.a(this.mRuntime, paramVarArgs);
-          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
-            bnpj.c(this.mRuntime, new String[0]);
-          }
-        }
-      } while (!paramString2.equals("QzFloat"));
-      if (paramString3.equals("downloadFloat"))
-      {
-        bnpl.a(this.mRuntime, paramVarArgs);
-        return true;
-      }
-    } while (!paramString3.equals("setFloat"));
-    bnpl.b(this.mRuntime, paramVarArgs);
-    return true;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    a();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    b();
   }
 }
 

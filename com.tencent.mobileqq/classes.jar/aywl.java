@@ -1,8 +1,22 @@
-public abstract interface aywl
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class aywl
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt, String paramString);
+  aywl(aywk paramaywk) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      aywk.a(this.a, paramMessage);
+    }
+  }
 }
 
 

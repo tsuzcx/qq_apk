@@ -7,12 +7,12 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import lbj;
-import lhh;
+import lba;
+import lhb;
 
 public class MagicfaceViewForAV
   extends SurfaceView
-  implements SurfaceHolder.Callback, lhh
+  implements SurfaceHolder.Callback, lhb
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
@@ -32,7 +32,7 @@ public class MagicfaceViewForAV
     DisplayMetrics localDisplayMetrics = getContext().getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-    lbj.c("MagicfaceViewForAV", "init() density: " + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_Float);
+    lba.f("MagicfaceViewForAV", "init() density: " + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_Float);
   }
   
   /* Error */
@@ -163,7 +163,7 @@ public class MagicfaceViewForAV
     //   253: astore 13
     //   255: aload 14
     //   257: astore 12
-    //   259: invokestatic 160	com/tencent/mobileqq/utils/AudioHelper:f	()Z
+    //   259: invokestatic 159	com/tencent/mobileqq/utils/AudioHelper:f	()Z
     //   262: ifeq +97 -> 359
     //   265: aload 14
     //   267: astore 13
@@ -174,36 +174,36 @@ public class MagicfaceViewForAV
     //   276: new 65	java/lang/StringBuilder
     //   279: dup
     //   280: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   283: ldc 162
+    //   283: ldc 161
     //   285: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   288: iload 9
     //   290: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   293: ldc 164
+    //   293: ldc 163
     //   295: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   298: iload 10
     //   300: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   303: ldc 166
+    //   303: ldc 165
     //   305: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   308: iload_3
-    //   309: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   312: ldc 171
+    //   309: invokevirtual 168	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   312: ldc 170
     //   314: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: iload 4
-    //   319: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   322: ldc 173
+    //   319: invokevirtual 168	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   322: ldc 172
     //   324: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   327: aload 7
-    //   329: invokevirtual 174	android/graphics/Rect:toString	()Ljava/lang/String;
+    //   329: invokevirtual 173	android/graphics/Rect:toString	()Ljava/lang/String;
     //   332: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: ldc 176
+    //   335: ldc 175
     //   337: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: aload 16
-    //   342: invokevirtual 174	android/graphics/Rect:toString	()Ljava/lang/String;
+    //   342: invokevirtual 173	android/graphics/Rect:toString	()Ljava/lang/String;
     //   345: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   348: ldc 178
+    //   348: ldc 177
     //   350: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   353: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokestatic 184	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: invokestatic 183	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   359: aload_2
     //   360: ifnull +22 -> 382
     //   363: aload 14
@@ -215,7 +215,7 @@ public class MagicfaceViewForAV
     //   374: aconst_null
     //   375: aload 16
     //   377: aload 15
-    //   379: invokevirtual 188	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   379: invokevirtual 187	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
     //   382: aload 14
     //   384: astore 13
     //   386: aload 14
@@ -225,16 +225,16 @@ public class MagicfaceViewForAV
     //   393: aconst_null
     //   394: aload 16
     //   396: aload 15
-    //   398: invokevirtual 188	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   398: invokevirtual 187	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
     //   401: aload 14
     //   403: ifnull +21 -> 424
     //   406: aload_0
-    //   407: getfield 190	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Boolean	Z
+    //   407: getfield 189	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Boolean	Z
     //   410: ifeq +14 -> 424
     //   413: aload_0
     //   414: getfield 27	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   417: aload 14
-    //   419: invokeinterface 194 2 0
+    //   419: invokeinterface 193 2 0
     //   424: return
     //   425: iload_3
     //   426: ifeq +165 -> 591
@@ -257,12 +257,12 @@ public class MagicfaceViewForAV
     //   462: aload 14
     //   464: astore 12
     //   466: aload 16
-    //   468: invokevirtual 197	android/graphics/Rect:width	()I
+    //   468: invokevirtual 196	android/graphics/Rect:width	()I
     //   471: aload_1
-    //   472: invokevirtual 200	android/graphics/Bitmap:getHeight	()I
+    //   472: invokevirtual 199	android/graphics/Bitmap:getHeight	()I
     //   475: imul
     //   476: aload_1
-    //   477: invokevirtual 201	android/graphics/Bitmap:getWidth	()I
+    //   477: invokevirtual 200	android/graphics/Bitmap:getWidth	()I
     //   480: idiv
     //   481: istore 11
     //   483: aload 14
@@ -292,30 +292,30 @@ public class MagicfaceViewForAV
     //   532: astore_1
     //   533: aload 13
     //   535: astore 12
-    //   537: invokestatic 204	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   537: invokestatic 203	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   540: ifeq +16 -> 556
     //   543: aload 13
     //   545: astore 12
     //   547: ldc 63
     //   549: iconst_2
-    //   550: ldc 206
+    //   550: ldc 205
     //   552: aload_1
-    //   553: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   553: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   556: aload 13
     //   558: ifnull -134 -> 424
     //   561: aload_0
-    //   562: getfield 190	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Boolean	Z
+    //   562: getfield 189	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Boolean	Z
     //   565: ifeq -141 -> 424
     //   568: aload_0
     //   569: getfield 27	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   572: aload 13
-    //   574: invokeinterface 194 2 0
+    //   574: invokeinterface 193 2 0
     //   579: return
     //   580: astore_1
     //   581: ldc 63
     //   583: aload_1
-    //   584: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   587: invokestatic 216	lbj:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   584: invokevirtual 212	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   587: invokestatic 215	lba:h	(Ljava/lang/String;Ljava/lang/String;)V
     //   590: return
     //   591: iload 4
     //   593: ifeq +132 -> 725
@@ -338,12 +338,12 @@ public class MagicfaceViewForAV
     //   629: aload 14
     //   631: astore 12
     //   633: aload 16
-    //   635: invokevirtual 219	android/graphics/Rect:height	()I
+    //   635: invokevirtual 218	android/graphics/Rect:height	()I
     //   638: aload_1
-    //   639: invokevirtual 201	android/graphics/Bitmap:getWidth	()I
+    //   639: invokevirtual 200	android/graphics/Bitmap:getWidth	()I
     //   642: imul
     //   643: aload_1
-    //   644: invokevirtual 200	android/graphics/Bitmap:getHeight	()I
+    //   644: invokevirtual 199	android/graphics/Bitmap:getHeight	()I
     //   647: idiv
     //   648: istore 11
     //   650: aload 14
@@ -374,12 +374,12 @@ public class MagicfaceViewForAV
     //   700: aload 12
     //   702: ifnull +21 -> 723
     //   705: aload_0
-    //   706: getfield 190	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Boolean	Z
+    //   706: getfield 189	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Boolean	Z
     //   709: ifeq +14 -> 723
     //   712: aload_0
     //   713: getfield 27	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   716: aload 12
-    //   718: invokeinterface 194 2 0
+    //   718: invokeinterface 193 2 0
     //   723: aload_1
     //   724: athrow
     //   725: iload 5
@@ -396,7 +396,7 @@ public class MagicfaceViewForAV
     //   751: astore 12
     //   753: aload 16
     //   755: aload 7
-    //   757: invokevirtual 223	android/graphics/Rect:set	(Landroid/graphics/Rect;)V
+    //   757: invokevirtual 222	android/graphics/Rect:set	(Landroid/graphics/Rect;)V
     //   760: fconst_1
     //   761: fstore 8
     //   763: aload 14
@@ -404,7 +404,7 @@ public class MagicfaceViewForAV
     //   767: aload 14
     //   769: astore 12
     //   771: aload 14
-    //   773: invokevirtual 224	android/graphics/Canvas:getWidth	()I
+    //   773: invokevirtual 223	android/graphics/Canvas:getWidth	()I
     //   776: istore 11
     //   778: aload 14
     //   780: astore 13
@@ -440,7 +440,7 @@ public class MagicfaceViewForAV
     //   835: astore 13
     //   837: aload 14
     //   839: astore 12
-    //   841: invokestatic 160	com/tencent/mobileqq/utils/AudioHelper:f	()Z
+    //   841: invokestatic 159	com/tencent/mobileqq/utils/AudioHelper:f	()Z
     //   844: ifeq +67 -> 911
     //   847: aload 14
     //   849: astore 13
@@ -451,24 +451,24 @@ public class MagicfaceViewForAV
     //   858: new 65	java/lang/StringBuilder
     //   861: dup
     //   862: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   865: ldc 226
+    //   865: ldc 225
     //   867: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   870: fload 8
     //   872: invokevirtual 81	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   875: ldc 228
+    //   875: ldc 227
     //   877: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   880: aload_0
     //   881: getfield 56	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Float	F
     //   884: invokevirtual 81	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   887: ldc 176
+    //   887: ldc 175
     //   889: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   892: aload 16
-    //   894: invokevirtual 174	android/graphics/Rect:toString	()Ljava/lang/String;
+    //   894: invokevirtual 173	android/graphics/Rect:toString	()Ljava/lang/String;
     //   897: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   900: ldc 178
+    //   900: ldc 177
     //   902: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   905: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   908: invokestatic 184	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   908: invokestatic 183	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   911: aload 14
     //   913: astore 13
     //   915: aload 14
@@ -521,14 +521,14 @@ public class MagicfaceViewForAV
     //   1006: astore_1
     //   1007: ldc 63
     //   1009: aload_1
-    //   1010: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1013: invokestatic 216	lbj:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1010: invokevirtual 212	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1013: invokestatic 215	lba:h	(Ljava/lang/String;Ljava/lang/String;)V
     //   1016: return
     //   1017: astore_2
     //   1018: ldc 63
     //   1020: aload_2
-    //   1021: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1024: invokestatic 216	lbj:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1021: invokevirtual 212	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1024: invokestatic 215	lba:h	(Ljava/lang/String;Ljava/lang/String;)V
     //   1027: goto -304 -> 723
     // Local variable table:
     //   start	length	slot	name	signature

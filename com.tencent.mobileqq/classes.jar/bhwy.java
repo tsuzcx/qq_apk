@@ -1,20 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.open.appcommon.js.AppInterface.2;
 
 public class bhwy
-  extends RecyclerView.ViewHolder
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bhwy(AppInterface.2 param2) {}
   
-  public bhwy(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364712));
-    }
+    this.a.this$0.tipDialog = null;
   }
 }
 

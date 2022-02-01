@@ -1,15 +1,18 @@
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vfc
-  implements QQPermissionCallback
+public class vfc
+  implements View.OnClickListener
 {
-  vfc(vfa paramvfa) {}
+  public vfc(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    vfa.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

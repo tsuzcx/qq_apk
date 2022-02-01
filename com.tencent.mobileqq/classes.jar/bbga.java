@@ -1,25 +1,16 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import java.util.Comparator;
 
-public class bbga
-  implements GLGestureListener
+class bbga
+  implements Comparator<String>
 {
-  public GameplayEngine a;
+  bbga(bbfz parambbfz) {}
   
-  public int onGetPriority()
+  public int a(String paramString1, String paramString2)
   {
-    return 1040;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    paramMotionEvent = new bdct(paramMotionEvent);
-    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
-    return false;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
+    }
+    return paramString2.length() - paramString1.length();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
 import android.content.Intent;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class BindVerifyActivity$3
@@ -11,19 +11,19 @@ class BindVerifyActivity$3
   
   public void run()
   {
-    this.this$0.app.a(new BindVerifyActivity.3.1(this));
+    this.this$0.app.execute(new BindVerifyActivity.3.1(this));
     Intent localIntent = new Intent();
     localIntent.putExtra("bind_mobile", this.this$0.a());
     localIntent.putExtra("check_permission_result", "permission_granted");
     this.this$0.setResult(-1, localIntent);
     this.this$0.finish();
     if (BindVerifyActivity.a(this.this$0) == 15) {
-      bdll.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
+      bcef.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
     }
     while (BindVerifyActivity.a(this.this$0) != 17) {
       return;
     }
-    bdll.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
+    bcef.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
   }
 }
 

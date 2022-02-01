@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-final class bbxh
-  implements View.OnClickListener
+public class bbxh
 {
-  public void onClick(View paramView)
-  {
-    bbxg.a(paramView.getContext(), (String)paramView.getTag());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public static boolean a = true;
 }
 
 

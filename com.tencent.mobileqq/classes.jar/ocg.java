@@ -1,8 +1,18 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
 
-public abstract interface ocg
+class ocg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ArrayList<oci> paramArrayList, String paramString, boolean paramBoolean);
+  ocg(ocd paramocd, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Ocd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ocd.a(paramDialogInterface, true, this.b);
+  }
 }
 
 

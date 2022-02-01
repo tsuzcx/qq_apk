@@ -1,48 +1,18 @@
-import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-class yav
-  implements yau
+public class yav
+  implements wxe
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference<yau> jdField_a_of_type_JavaLangRefWeakReference;
+  public yav(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public yav(@NonNull yau paramyau)
+  public void a_(wwz paramwwz)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramyau);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyau);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull yas paramyas)
-  {
-    yau localyau = (yau)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localyau != null) {
-      localyau.a(paramyas);
-    }
-  }
-  
-  public void b(@NonNull yas paramyas)
-  {
-    yau localyau = (yau)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localyau != null) {
-      localyau.b(paramyas);
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof yav)) && (((yav)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    xvv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 

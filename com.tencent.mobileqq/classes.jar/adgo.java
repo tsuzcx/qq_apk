@@ -1,47 +1,33 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xe9.SubMsgType0xe9.MsgBody;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.util.ArrayList;
 
 public class adgo
-  implements adci
+  extends PagerAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public adgo(FontSettingActivity paramFontSettingActivity) {}
+  
+  public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush Audio Trans 0x210_0xe9");
-    }
-    try
-    {
-      SubMsgType0xe9.MsgBody localMsgBody = new SubMsgType0xe9.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.a().a(localMsgBody);
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = localMsgBody.bytes_business.get().toByteArray();
-        QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 =" + paramQQAppInterface.length);
-        QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 businessBytes = " + paramQQAppInterface.length);
-      }
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      do
-      {
-        paramQQAppInterface.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 push exception = " + paramQQAppInterface.getMessage());
-    }
+    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public int getCount()
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    return this.a.a.size();
+  }
+  
+  public Object instantiateItem(View paramView, int paramInt)
+  {
+    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
+    return this.a.a.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

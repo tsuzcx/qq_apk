@@ -1,20 +1,9 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-
-public class xta
-  extends DataSetObserver
+class xta
+  implements bjog
 {
-  private xta(XViewPager paramXViewPager) {}
+  xta(xss paramxss) {}
   
-  public void onChanged()
-  {
-    this.a.b();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.b();
-  }
+  public void onDismiss() {}
 }
 
 

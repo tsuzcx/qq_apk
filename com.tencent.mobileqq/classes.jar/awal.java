@@ -1,8 +1,17 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
-public abstract interface awal
+public class awal
+  implements avzi
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public awal(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    }
+  }
 }
 
 

@@ -1,144 +1,58 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
+import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.File;
 
 public class aqxh
-  implements aqxy
+  extends aqxl
 {
-  public aqxh(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public void a()
+  public aqxh(QQAppInterface paramQQAppInterface)
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    this.a.jdField_a_of_type_Blir.dismiss();
+    super("qq.android.appleemoji", paramQQAppInterface);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView == null) {
+    return 10001;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return AppleEmojiData.class;
+  }
+  
+  public String a()
+  {
+    return "AppleMojiHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
+    }
+    File localFile = new File(paramString);
+    if (!localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
       return;
     }
-    switch (paramInt1)
-    {
-    }
-    label809:
-    label812:
-    for (;;)
-    {
-      LocationSelectActivity.a(this.a, LocationSelectActivity.a(this.a), LocationSelectActivity.a(this.a));
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
-      this.a.jdField_a_of_type_ArrayOfInt[0] = paramInt2;
-      this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).get(paramInt2));
-      ArrayList localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0].getDataList();
-      if (localArrayList1.size() > 0)
-      {
-        this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = localArrayList1;
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)localArrayList1.get(0));
-        this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
-        if (localArrayList1.size() > 0)
-        {
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-        }
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Int > 1)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.a.jdField_a_of_type_ArrayOfInt[1]);
-          if (this.a.jdField_a_of_type_Int == 3)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
-          }
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
-        break;
-        if (this.a.jdField_a_of_type_Int == 3)
-        {
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          continue;
-          if (this.a.jdField_a_of_type_Int > 1)
-          {
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new AddressData.NO_LIMIT_ADDRESS(2);
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = null;
-            this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-            if (this.a.jdField_a_of_type_Int == 3)
-            {
-              this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-              this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-              this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-            }
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ArrayOfInt[1] = paramInt2;
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
-      try
-      {
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).get(paramInt2));
-        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
-        if (localArrayList1.size() > 0)
-        {
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          if (this.a.jdField_a_of_type_Int > 2)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new BaseAddress("不限", "0", 2);
-          continue;
-          if (this.a.jdField_a_of_type_Int > 2)
-          {
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-            this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          }
-        }
-      }
-      ArrayList localArrayList2;
-      if (Collections.emptyList().equals(this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]))
-      {
-        if (!QLog.isColorLevel()) {
-          break label809;
-        }
-        QLog.d("LocationSelectActivity", 2, "columnListArray at 2 is empty");
-        localArrayList2 = null;
-      }
-      for (;;)
-      {
-        if ((localArrayList2 == null) || (paramInt2 >= localArrayList2.size()) || (paramInt2 < 0)) {
-          break label812;
-        }
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList2.get(paramInt2));
-        this.a.jdField_a_of_type_ArrayOfInt[2] = paramInt2;
-        break;
-        localArrayList2 = (ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2];
-        continue;
-        localArrayList2 = null;
-      }
-    }
+    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

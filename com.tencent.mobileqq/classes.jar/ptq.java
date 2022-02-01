@@ -1,41 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class ptq
+class ptq
+  implements Comparator<AdvertisementInfo>
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  ptq(pto parampto) {}
+  
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    String str;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      str = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", str);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      puo.a(paramBaseArticleInfo, localJSONObject1, true);
-      tqa.b(paramBaseArticleInfo, localJSONObject1);
-      puo.b(paramBaseArticleInfo, localJSONObject1);
-      puo.e(paramBaseArticleInfo, localJSONObject1);
-      puo.l(paramBaseArticleInfo, localJSONObject1);
-      puo.g(paramBaseArticleInfo, localJSONObject1);
-      puo.Z(paramBaseArticleInfo, localJSONObject1);
-      if (!nzq.a(paramBaseArticleInfo)) {
-        break label125;
-      }
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
-    }
-    for (;;)
-    {
-      localJSONObject1.put("id_small_cell_container", new JSONObject());
-      puo.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      str = null;
-      break;
-      label125:
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
-    }
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

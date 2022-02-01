@@ -1,56 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aguf
-  implements agvc
+  implements agut
 {
-  protected aguh a;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  protected boolean a;
-  
-  public aguf(BaseChatPie paramBaseChatPie)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
-  }
-  
-  private void a(XEditTextEx paramXEditTextEx)
-  {
-    this.jdField_a_of_type_Boolean = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694428), "qqsetting_enter_sendmsg_key", false);
-    if (this.jdField_a_of_type_Boolean) {
-      paramXEditTextEx.setImeOptions(4);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Aguh == null) {
-        this.jdField_a_of_type_Aguh = new aguh(this, null);
-      }
-      paramXEditTextEx.setOnEditorActionListener(this.jdField_a_of_type_Aguh);
-      paramXEditTextEx.setOnKeyListener(this.jdField_a_of_type_Aguh);
-      return;
-      paramXEditTextEx.setImeOptions(0);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 20: 
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 20, 8 };
+    paramagap.a((MessageForGrayTips)paramMessageRecord, paramagcc);
   }
 }
 

@@ -1,15 +1,64 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public abstract interface baei
-  extends baej
+public class baei
 {
-  public abstract baeh a(int paramInt);
+  protected int a;
+  protected PublishVideoEntry a;
+  protected int b;
+  protected int c;
+  protected int d = -1;
+  protected int e = -1;
   
-  public abstract void a(baeh parambaeh);
+  public baei(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
+  }
   
-  public abstract void a(BaseActivity paramBaseActivity);
+  private int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 7: 
+      return 5;
+    case 8: 
+      return 6;
+    case 9: 
+      return 7;
+    }
+    return 4;
+  }
   
-  public abstract void b(baeh parambaeh);
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    }
+    return 3;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = b(paramInt);
+    this.c = a(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
 }
 
 

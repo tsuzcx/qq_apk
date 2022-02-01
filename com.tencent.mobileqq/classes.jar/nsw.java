@@ -1,23 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class nsw
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  nsw(nsr paramnsr) {}
+  nsw(nst paramnst) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
-      this.a.a();
-    }
+    nst.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

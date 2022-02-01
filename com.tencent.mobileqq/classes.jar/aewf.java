@@ -1,22 +1,18 @@
-import android.view.View;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aewf
+class aewf
+  implements BusinessObserver
 {
-  public int a;
-  public View a;
-  public arsh a;
-  public bbav a;
-  public BusinessInfoCheckUpdate.AppInfo a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public boolean d;
+  aewf(aewe paramaewe) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
+      QLog.d("ReminderDataManagerNew", 2, "acs msg succ");
+    }
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import nws;
-import svr;
+import nyd;
+import szr;
 
 class QQAppInterface$19
   implements Runnable
@@ -10,13 +10,13 @@ class QQAppInterface$19
   
   public void run()
   {
-    nws localnws = (nws)this.this$0.getManager(238);
-    if (localnws != null) {
-      localnws.a(1);
+    nyd localnyd = (nyd)this.this$0.getManager(238);
+    if (localnyd != null) {
+      localnyd.a(1);
     }
-    this.this$0.F();
-    QQAppInterface.b(this.this$0);
-    svr.b();
+    this.this$0.setTalkbackSwitch();
+    QQAppInterface.access$3700(this.this$0);
+    szr.b();
   }
 }
 

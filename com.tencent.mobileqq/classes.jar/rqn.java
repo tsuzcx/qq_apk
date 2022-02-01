@@ -1,14 +1,11 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
-
 class rqn
-  implements tch
+  implements rqd<rgo>
 {
-  rqn(rqm paramrqm, Bundle paramBundle) {}
+  rqn(rqj paramrqj) {}
   
-  public void a()
+  public boolean a(rgo paramrgo)
   {
-    ozs.a(rqm.a(this.jdField_a_of_type_Rqm), rqm.a(this.jdField_a_of_type_Rqm).a, this.jdField_a_of_type_AndroidOsBundle);
+    return paramrgo.b <= sjk.b();
   }
 }
 

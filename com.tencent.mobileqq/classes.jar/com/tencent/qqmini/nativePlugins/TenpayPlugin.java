@@ -1,17 +1,17 @@
 package com.tencent.qqmini.nativePlugins;
 
-import alig;
+import akfz;
+import amtj;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import anzj;
-import bhsr;
-import bmrz;
+import bkwg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
@@ -71,13 +71,13 @@ public class TenpayPlugin
       if (QLog.isColorLevel()) {
         QLog.d("TenpayPlugin", 2, "grapH5CommonHb params: " + paramJSONObject);
       }
-      paramJSONObject = alig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject);
+      paramJSONObject = akfz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject);
       if (QLog.isColorLevel()) {
         QLog.d("TenpayPlugin", 2, "grapH5CommonHb extraData: " + paramJSONObject);
       }
       if (paramJSONObject != null)
       {
-        alig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
+        akfz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
         return;
       }
       a(paramRequestEvent, "-1001", "params error");
@@ -127,7 +127,7 @@ public class TenpayPlugin
       if (bool) {
         try
         {
-          alig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localJSONObject, "redgiftH5CommonDetail", this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
+          akfz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localJSONObject, "redgiftH5CommonDetail", this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
         }
         catch (Throwable localThrowable)
         {
@@ -144,11 +144,11 @@ public class TenpayPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin");
-    if ((!bhsr.a(str2)) && (str2.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) && (!bhsr.a(str1)))
+    if ((!StringUtil.isEmpty(str2)) && (str2.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) && (!StringUtil.isEmpty(str1)))
     {
-      Object localObject = bmrz.a().b(str1);
+      Object localObject = bkwg.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (bhsr.a((String)localObject)) {
+      if (StringUtil.isEmpty((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
       }
       if (QLog.isColorLevel()) {
@@ -179,23 +179,33 @@ public class TenpayPlugin
   public void openTenpayView(RequestEvent paramRequestEvent)
   {
     JSONObject localJSONObject = a(paramRequestEvent);
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer = new TenpayPlugin.TenpayRecevicer(this, paramRequestEvent, new Handler(Looper.getMainLooper()));
-    QLog.e("TenpayPlugin", 1, "param: " + localJSONObject.toString());
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("json", localJSONObject.getString("data"));
-      localBundle.putString("callbackSn", "0");
-      localBundle.putInt("payparmas_paytype", 1);
-      if (!PayBridgeActivity.a(this.mMiniAppContext.getAttachedActivity(), 5, localBundle, this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer)) {
-        paramRequestEvent.fail(anzj.a(2131713648));
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("TenpayPlugin", 2, "param: " + localJSONObject);
     }
-    catch (JSONException localJSONException)
+    if (localJSONObject == null) {
+      paramRequestEvent.fail(amtj.a(2131713879));
+    }
+    for (;;)
     {
-      localJSONException.printStackTrace();
-      paramRequestEvent.fail(anzj.a(2131713647));
+      return;
+      this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer = new TenpayPlugin.TenpayRecevicer(this, paramRequestEvent, new Handler(Looper.getMainLooper()));
+      try
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putString("json", localJSONObject.getString("data"));
+        localBundle.putString("callbackSn", "0");
+        localBundle.putInt("payparmas_paytype", 1);
+        if (!PayBridgeActivity.a(this.mMiniAppContext.getAttachedActivity(), 5, localBundle, this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer))
+        {
+          paramRequestEvent.fail(amtj.a(2131713880));
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        paramRequestEvent.fail(amtj.a(2131713879));
+      }
     }
   }
   
@@ -203,7 +213,9 @@ public class TenpayPlugin
   public void qWalletBridge(RequestEvent paramRequestEvent)
   {
     JSONObject localJSONObject = a(paramRequestEvent);
-    QLog.e("TenpayPlugin", 1, "param: " + localJSONObject.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("TenpayPlugin", 2, "param: " + localJSONObject);
+    }
     BaseActivity localBaseActivity = (BaseActivity)this.mMiniAppContext.getAttachedActivity();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = localBaseActivity.getAppInterface();
     this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver = new TenpayPlugin.QWalletPayJsPluginResultReceiver(paramRequestEvent, new Handler(Looper.getMainLooper()), this.jdField_a_of_type_ComTencentCommonAppAppInterface, new WeakReference(localBaseActivity));

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import amcb;
+import akyc;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -9,13 +9,13 @@ import com.tencent.widget.BubblePopupWindow;
 public class CommonMenuWrapper$1
   implements Runnable
 {
-  public CommonMenuWrapper$1(amcb paramamcb, Activity paramActivity, View paramView, int paramInt1, int paramInt2) {}
+  public CommonMenuWrapper$1(akyc paramakyc, Activity paramActivity, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidAppActivity != null) {
       if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        amcb.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
+        akyc.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
       }
     }
     Context localContext;
@@ -24,7 +24,7 @@ public class CommonMenuWrapper$1
       return;
       localContext = this.jdField_a_of_type_AndroidViewView.getContext();
     } while ((!(localContext instanceof Activity)) || (((Activity)localContext).isFinishing()));
-    amcb.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
+    akyc.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
   }
 }
 

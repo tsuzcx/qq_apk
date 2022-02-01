@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import anea;
-import aned;
-import annv;
-import bhmi;
+import alyu;
+import alyx;
+import amip;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class CmGameRscDownloader$2
   implements Runnable
 {
-  public CmGameRscDownloader$2(anea paramanea) {}
+  public CmGameRscDownloader$2(alyu paramalyu) {}
   
   public void run()
   {
-    String str = annv.s + anea.a(this.this$0).jdField_a_of_type_JavaLangString + ".patch";
-    bhmi.a(anea.a(this.this$0).jdField_a_of_type_ArrayOfByte, str);
-    anea.a(this.this$0);
+    String str = amip.s + alyu.a(this.this$0).jdField_a_of_type_JavaLangString + ".patch";
+    FileUtils.writeFile(alyu.a(this.this$0).jdField_a_of_type_ArrayOfByte, str);
+    alyu.a(this.this$0);
   }
 }
 

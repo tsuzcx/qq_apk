@@ -3,6 +3,7 @@ package com.tencent.mobileqq.triton.utils;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
+import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.mobileqq.triton.engine.TTEngine;
 import com.tencent.mobileqq.triton.filesystem.GameDataFileSystem;
@@ -29,6 +30,7 @@ public class CanvasRecorder
   public String canvasToTempFilePathSync(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, boolean paramBoolean)
   {
     if (paramArrayOfByte != null) {}
+    Object localObject;
     for (;;)
     {
       try
@@ -48,7 +50,7 @@ public class CanvasRecorder
         continue;
       }
       if (paramArrayOfByte == null) {
-        break label291;
+        break label317;
       }
       if (!paramBoolean) {
         break label171;
@@ -72,24 +74,37 @@ public class CanvasRecorder
     label169:
     return null;
     label171:
-    Object localObject = this.mTritonEngine.getEngineContext().getDataFileSystem().newTempFile(null);
-    try
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = "png";
+    }
+    for (;;)
     {
-      if ("jpg".equalsIgnoreCase(paramString)) {}
-      for (paramString = Bitmap.CompressFormat.JPEG; paramArrayOfByte.compress(paramString, paramInt5, new FileOutputStream(((TemporaryFile)localObject).getFile())); paramString = Bitmap.CompressFormat.PNG)
+      localObject = this.mTritonEngine.getEngineContext().getDataFileSystem().newTempFile(null, (String)localObject);
+      try
       {
-        Logger.d("CanvasRecorder", "canvasToTempFilePathSync: save to file " + ((TemporaryFile)localObject).getFile());
-        return ((TemporaryFile)localObject).getPathInGame();
+        if ("jpg".equalsIgnoreCase(paramString)) {}
+        for (paramString = Bitmap.CompressFormat.JPEG;; paramString = Bitmap.CompressFormat.PNG)
+        {
+          if (!paramArrayOfByte.compress(paramString, paramInt5, new FileOutputStream(((TemporaryFile)localObject).getFile()))) {
+            break label297;
+          }
+          Logger.d("CanvasRecorder", "canvasToTempFilePathSync: save to file " + ((TemporaryFile)localObject).getFile());
+          paramArrayOfByte = ((TemporaryFile)localObject).getPathInGame();
+          return paramArrayOfByte;
+          localObject = paramString.toLowerCase();
+          break;
+        }
+        label297:
+        Logger.e("CanvasRecorder", "canvasToTempFilePathSync: save to file fail");
+        return null;
       }
-      Logger.e("CanvasRecorder", "canvasToTempFilePathSync: save to file fail");
-      return null;
+      catch (FileNotFoundException paramArrayOfByte)
+      {
+        Logger.e("CanvasRecorder", "canvasToTempFilePathSync: ", paramArrayOfByte);
+        return null;
+      }
     }
-    catch (FileNotFoundException paramArrayOfByte)
-    {
-      Logger.e("CanvasRecorder", "canvasToTempFilePathSync: ", paramArrayOfByte);
-      return null;
-    }
-    label291:
+    label317:
     return null;
   }
 }

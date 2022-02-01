@@ -1,26 +1,18 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class rto
-  extends sbh
+  implements DialogInterface.OnDismissListener
 {
-  rto(rsx paramrsx) {}
+  rto(rtl paramrtl) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    rsx.a(this.a).b(rsx.b(this.a));
-    if ((paramVideoInfo.m != null) && (paramVideoInfo.m.contains("kandianshare.html5.qq.com")))
-    {
-      this.a.a.b(paramVideoInfo.m);
-      return;
+    if (rtl.a(this.a) != null) {
+      rtl.a(this.a).a(rtl.a(this.a), rtl.b(this.a), false, false);
     }
-    this.a.a.b(paramString + "&sourcefrom=6");
-  }
-  
-  public int c()
-  {
-    return 7;
+    rtl.a(this.a, true);
+    rtl.b(this.a, false);
   }
 }
 

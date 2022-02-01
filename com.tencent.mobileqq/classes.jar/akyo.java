@@ -1,28 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class akyo
-  implements MediaPlayer.OnPreparedListener
+public abstract interface akyo
 {
-  public akyo(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
+  public abstract int a();
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
-    }
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
-    bhkm.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
-    }
-    paramMediaPlayer.start();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
-  }
+  public abstract void a();
+  
+  public abstract void a(@Nullable akym paramakym);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
 }
 
 

@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
-import biwa;
+import bhcc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.ClickableToastView;
@@ -26,29 +26,29 @@ import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
-import ocd;
+import odq;
 import org.jetbrains.annotations.Nullable;
-import ozs;
-import paa;
-import prl;
-import prw;
-import rab;
-import rgf;
-import rip;
-import riq;
-import ris;
-import riw;
+import pay;
+import pbg;
+import pxf;
+import pxp;
+import rha;
+import rnf;
+import rpp;
+import rpq;
+import rps;
+import rpw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment;", "Landroid/support/v4/app/Fragment;", "()V", "finish", "", "handleVideoAddToTopicResult", "errorCode", "", "activity", "Landroid/support/v4/app/FragmentActivity;", "topicId", "rowKey", "", "errorMsg", "needShowServerErrorMsg", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class SelectTopicFragment
   extends ReportV4Fragment
 {
-  public static final rip a;
+  public static final rpp a;
   private HashMap a;
   
   static
   {
-    jdField_a_of_type_Rip = new rip(null);
+    jdField_a_of_type_Rpp = new rpp(null);
   }
   
   private final void a(int paramInt1, FragmentActivity paramFragmentActivity, int paramInt2, String paramString1, String paramString2)
@@ -61,20 +61,20 @@ public final class SelectTopicFragment
       if ((paramString2 != null) && (!paramString2.isFinishing()))
       {
         paramString2 = (Activity)paramString2;
-        localCharSequence = (CharSequence)paramFragmentActivity.getResources().getString(2131717342);
-        biwa localbiwa = new biwa();
-        localbiwa.jdField_a_of_type_JavaLangString = paramFragmentActivity.getResources().getString(2131717343);
-        localbiwa.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)new riq(paramFragmentActivity, paramInt2));
-        ClickableToastView.a(paramString2, 2, localCharSequence, localbiwa).a();
+        localCharSequence = (CharSequence)paramFragmentActivity.getResources().getString(2131717574);
+        bhcc localbhcc = new bhcc();
+        localbhcc.jdField_a_of_type_JavaLangString = paramFragmentActivity.getResources().getString(2131717575);
+        localbhcc.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)new rpq(paramFragmentActivity, paramInt2));
+        ClickableToastView.a(paramString2, 2, localCharSequence, localbhcc).a();
       }
-      paramFragmentActivity = ozs.a();
+      paramFragmentActivity = pay.a();
       if (paramFragmentActivity != null)
       {
-        paramFragmentActivity = new paa().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
-        if (rab.h()) {}
+        paramFragmentActivity = new pbg().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
+        if (rha.h()) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
-          ocd.a("0X800ADD1", paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt1)).a());
+          odq.a("0X800ADD1", paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt1)).a());
           return;
         }
       }
@@ -93,12 +93,12 @@ public final class SelectTopicFragment
         }
         label219:
         QQToast.a((Context)paramFragmentActivity, (CharSequence)paramString2, 0).a();
-        paramFragmentActivity = ozs.a();
+        paramFragmentActivity = pay.a();
         if (paramFragmentActivity == null) {
           break label339;
         }
-        paramFragmentActivity = new paa().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
-        if (!rab.h()) {
+        paramFragmentActivity = new pbg().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
+        if (!rha.h()) {
           break label334;
         }
       }
@@ -107,11 +107,11 @@ public final class SelectTopicFragment
     label334:
     for (paramInt2 = j;; paramInt2 = 0)
     {
-      ocd.a("0X800ADD2", paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt2)).a("reason_flag", Integer.valueOf(paramInt1)).a());
+      odq.a("0X800ADD2", paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt2)).a("reason_flag", Integer.valueOf(paramInt1)).a());
       return;
       i = 0;
       break;
-      paramString2 = paramFragmentActivity.getResources().getString(2131717341);
+      paramString2 = paramFragmentActivity.getResources().getString(2131717573);
       break label219;
     }
     label339:
@@ -136,7 +136,7 @@ public final class SelectTopicFragment
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
       }
       localObject = (ViewGroup)localObject;
-      View localView = ((ViewGroup)localObject).findViewById(2131376175);
+      View localView = ((ViewGroup)localObject).findViewById(2131375939);
       if (localView != null) {
         ((ViewGroup)localObject).removeView(localView);
       }
@@ -179,11 +179,11 @@ public final class SelectTopicFragment
       localObject = getActivity();
       if (localObject != null)
       {
-        SelectTopicView localSelectTopicView = new SelectTopicView((FragmentActivity)localObject, new prw((prl)new rgf()));
-        riw localriw = new riw((Activity)localObject, (View)localSelectTopicView, new RelativeLayout.LayoutParams(-1, -2));
-        localSelectTopicView.setSelectCallback((Function1)new SelectTopicFragment.onCreate..inlined.let.lambda.1(localriw, (FragmentActivity)localObject, this, i, paramBundle));
-        localriw.setOnDismissListener((DialogInterface.OnDismissListener)new ris(this, i, paramBundle));
-        localriw.show();
+        SelectTopicView localSelectTopicView = new SelectTopicView((FragmentActivity)localObject, new pxp((pxf)new rnf()));
+        rpw localrpw = new rpw((Activity)localObject, (View)localSelectTopicView, new RelativeLayout.LayoutParams(-1, -2));
+        localSelectTopicView.setSelectCallback((Function1)new SelectTopicFragment.onCreate..inlined.let.lambda.1(localrpw, (FragmentActivity)localObject, this, i, paramBundle));
+        localrpw.setOnDismissListener((DialogInterface.OnDismissListener)new rps(this, i, paramBundle));
+        localrpw.show();
       }
       return;
       paramBundle = "";

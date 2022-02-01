@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.Comparator;
 
-class bfso
-  implements DialogInterface.OnClickListener
+final class bfso
+  implements Comparator
 {
-  bfso(bfsf parambfsf, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
     }
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfso
  * JD-Core Version:    0.7.0.1
  */

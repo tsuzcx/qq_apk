@@ -1,18 +1,26 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
 class akrb
-  implements blij
+  implements aeyl
 {
   akrb(akra paramakra) {}
   
-  public void b(View paramView)
+  public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof akrc))) {
-      ((akrc)paramView).a.setImageDrawable(null);
+    if (akra.a(this.a))
+    {
+      akra.a(this.a, false);
+      akra.a(this.a);
     }
   }
+  
+  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

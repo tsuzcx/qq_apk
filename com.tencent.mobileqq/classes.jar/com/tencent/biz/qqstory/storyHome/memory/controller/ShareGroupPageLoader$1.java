@@ -3,34 +3,34 @@ package com.tencent.biz.qqstory.storyHome.memory.controller;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import wjj;
-import wsu;
-import wth;
-import ykc;
-import ykd;
-import yuk;
+import vli;
+import vuk;
+import vux;
+import xln;
+import xlo;
+import xvv;
 
 public class ShareGroupPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((wsu)wth.a(19)).b(this.this$0.a);
-    ykd localykd = new ykd(new ErrorMessage(), ykc.a(this.this$0));
-    localykd.b = true;
-    localykd.jdField_a_of_type_Boolean = true;
-    localykd.c = true;
-    localykd.jdField_a_of_type_JavaUtilList = ((List)???);
-    localykd.jdField_a_of_type_Int = ((List)???).size();
+    ??? = ((vuk)vux.a(19)).b(this.this$0.a);
+    xlo localxlo = new xlo(new ErrorMessage(), xln.a(this.this$0));
+    localxlo.b = true;
+    localxlo.jdField_a_of_type_Boolean = true;
+    localxlo.c = true;
+    localxlo.jdField_a_of_type_JavaUtilList = ((List)???);
+    localxlo.jdField_a_of_type_Int = ((List)???).size();
     synchronized (this.this$0)
     {
       if (!this.this$0.b)
       {
-        wjj.a().dispatch(localykd);
-        yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localykd);
+        vli.a().dispatch(localxlo);
+        xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localxlo);
         return;
       }
-      yuk.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
+      xvv.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
     }
   }
 }

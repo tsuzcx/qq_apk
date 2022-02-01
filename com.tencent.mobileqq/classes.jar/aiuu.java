@@ -1,121 +1,116 @@
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextPaint;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class aiuu
-  implements aiwf
+  extends WebViewPlugin
 {
-  int jdField_a_of_type_Int = -1;
-  public aiwh a;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String b = "";
-  String c = "";
+  public BroadcastReceiver a;
+  private String a;
+  private String b;
   
-  public aiuu(QQAppInterface paramQQAppInterface, aiwh paramaiwh, Activity paramActivity)
+  public aiuu()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aiwh = paramaiwh;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aiuv(this);
+    this.mPluginNameSpace = "faceUnblockCamera";
   }
   
-  public int a()
+  private void a(Activity paramActivity, String paramString)
   {
-    return 35;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558648, null);
-    localView.setOnClickListener(new aiuv(this, localView));
-    TextView localTextView = (TextView)localView.findViewById(2131362506);
-    paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
-    int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
-    int i;
-    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels)
+    if (babd.a())
     {
-      i = paramVarArgs.heightPixels;
-      i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
-      if (this.c.length() > i) {
-        this.c = (this.c.substring(0, i) + "...");
-      }
-      if ((this.jdField_a_of_type_Int < 100) || (this.jdField_a_of_type_Int > 300)) {
-        break label216;
-      }
-    }
-    label216:
-    for (paramVarArgs = anzj.a(2131701082);; paramVarArgs = anzj.a(2131701083))
-    {
-      this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
-      localTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return localView;
-      i = paramVarArgs.widthPixels;
-      break;
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-            }
-            if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
-          return;
-          paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
-          if (paramVarArgs != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
-        return;
-        this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
-        this.b = paramVarArgs.getString("comicId");
-        this.c = paramVarArgs.getString("comicName");
-        this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
-        if (!TextUtils.isEmpty(this.c)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("edit_video_type", 10025);
+      localBundle.putInt("entrance_type", 132);
+      localBundle.putBoolean("enable_local_video", false);
+      localBundle.putLong("capture_max_duration", 5000L);
+      localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
+      localBundle.putString("key_face_unlock_code", paramString);
+      paramString = new Intent();
+      paramString.setAction("from_webtool_launchshortvideo");
+      paramString.setClass(paramActivity, JumpActivity.class);
+      paramString.putExtras(localBundle);
+      paramActivity.startActivity(paramString);
       return;
-      this.jdField_a_of_type_Aiwh.a(this, new Object[0]);
-    } while (!QLog.isColorLevel());
-    QLog.d("ComicTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + this.c);
+    }
+    QLog.d("FaceUnblockCameraJsApiPlugin", 1, "openQIMCameraCaptureActivity failed: not support media codec");
+    this.b = ShortVideoUtils.getLocalShortVideoPath();
+    paramActivity = new Intent("android.media.action.VIDEO_CAPTURE");
+    paramActivity.putExtra("output", Uri.fromFile(new File(this.b)));
+    paramActivity.putExtra("android.intent.extra.videoQuality", 1);
+    startActivityForResult(paramActivity, (byte)0);
   }
   
-  public int[] a()
+  private void a(String paramString)
   {
-    return new int[0];
+    if (!TextUtils.isEmpty(paramString))
+    {
+      ThreadManager.excute(new FaceUnblockCameraJsApiPlugin.2(this, paramString), 64, null, true);
+      return;
+    }
+    QLog.d("FaceUnblockCameraJsApiPlugin", 1, "onActivityResult failed: media url is null");
   }
   
-  public int b()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return 13;
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceUnblockCameraJsApiPlugin", 2, "Call FaceUnblockCameraJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
+    }
+    if ("faceUnblockCamera".equals(paramString2))
+    {
+      if ("startPTVActivity".equals(paramString3))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceUnblockCameraJsApiPlugin", 2, "Call startPTVActivity, args:" + paramVarArgs);
+        }
+        this.jdField_a_of_type_JavaLangString = paramString1.split("#")[1];
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          a(this.mRuntime.a(), paramVarArgs[0]);
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if ((paramByte == 0) && (paramInt == -1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FaceUnblockCameraJsApiPlugin", 2, "onActivityResult: RESULT_OK, doParseData");
+      }
+      a(this.b);
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.FaceUnblockCameraJsApiPlugin");
+    this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 

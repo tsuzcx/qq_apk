@@ -12,7 +12,7 @@
     },
     "attributes": {
         "setBackgroundColorString:": "#4D000000",
-        "setCornerRadiusString:": "3"
+        "setCornerRadiusString:": "4"
     },
     "default_visible": "YES",
     "subviews": [
@@ -44,7 +44,7 @@
                             "1"
                         ],
                         "setCornerRadiusArray:type:": [
-                            ["3", "0", "0", "3"],
+                            ["4", "1", "1", "4"],
                             "absolutely"
                         ]
                     }

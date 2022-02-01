@@ -1,54 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-class auhm
-  implements aufa
+public class auhm
+  extends BaseAdapter
 {
-  auhm(auha paramauha) {}
+  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public List<HotPicTagInfo> a;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(augl paramaugl)
+  public auhm(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    paramaugl = ((aufd)paramaugl).a();
-    if (paramaugl == null) {}
+    this.jdField_a_of_type_JavaUtilList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
+    boolean bool;
+    this.jdField_a_of_type_Boolean = bool;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
     Object localObject;
-    do
+    if (paramView == null)
     {
-      do
+      localObject = new auho(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
+      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558619, null);
+      ((auho)localObject).a = ((TextView)paramView.findViewById(2131368183));
+      paramView.setTag(localObject);
+    }
+    for (;;)
+    {
+      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
+      localObject = ((auho)localObject).a;
+      ((TextView)localObject).setText(str);
+      ((TextView)localObject).setTextSize(2, HotPicTab.b());
+      ((TextView)localObject).setTextColor(HotPicTab.c());
+      ((TextView)localObject).setPadding(0, 0, 0, 0);
+      ((TextView)localObject).setFocusable(true);
+      ((TextView)localObject).setGravity(17);
+      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
+      paramView.setContentDescription(str);
+      paramView.setFocusable(true);
+      paramView.setOnHoverListener(new auhn(this));
+      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
       {
-        return;
-      } while ((aunj.a(paramaugl.a()) != 0) || (TextUtils.isEmpty(paramaugl.a())) || (!TextUtils.isEmpty(paramaugl.g())));
-      FileManagerEntity localFileManagerEntity = paramaugl.a();
-      if (localFileManagerEntity == null)
-      {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
-        return;
+        bcef.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
+        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
       }
-      localObject = bgsk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
-      }
-      if (TextUtils.isEmpty(((bftf)localObject).c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
-        }
-        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
-        if (localFileManagerEntity.strTroopFileID == null)
-        {
-          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramaugl.a(), localFileManagerEntity.busId, 640);
-          return;
-        }
-        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
-      }
-    } while (this.a.jdField_a_of_type_Augo == null);
-    this.a.jdField_a_of_type_Augo.a(((bftf)localObject).e, ((bftf)localObject).c);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localObject = (auho)paramView.getTag();
+    }
   }
 }
 

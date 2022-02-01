@@ -1,194 +1,272 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.config.AppSetting;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteAioScript.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class amby
+  implements alrk
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.rgb(38, 87, 178);
-  private static final int d = Color.argb(64, 125, 113, 30);
-  private static final int e = Color.argb(64, 6, 59, 156);
-  private static final int f = Color.rgb(162, 116, 4);
-  private static final int g = Color.argb(64, 213, 185, 118);
-  private static final int h = Color.argb(102, 213, 185, 118);
-  public int a;
-  private final aggs a;
-  public QQAppInterface a;
+  protected int a;
+  protected ambd a;
+  protected ambw a;
+  public amca a;
+  protected String a;
+  protected boolean a;
+  protected String b;
   
-  public amby(aggs paramaggs, QQAppInterface paramQQAppInterface)
+  public amby(int paramInt, amca paramamca, ambw paramambw)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Aggs = paramaggs;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = ("cmshow_script_" + paramInt + ".js");
+    this.jdField_a_of_type_Amca = paramamca;
+    this.jdField_a_of_type_Ambw = paramambw;
+    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
   }
   
-  private amcj a(View paramView)
+  public amby(int paramInt, String paramString, amca paramamca, ambw paramambw)
   {
-    if (paramView == null) {}
-    do
-    {
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
+    this.jdField_a_of_type_Amca = paramamca;
+    this.jdField_a_of_type_Ambw = paramambw;
+    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
+  }
+  
+  public int a()
+  {
+    return 300;
+  }
+  
+  public alqu a()
+  {
+    if (this.jdField_a_of_type_Amca == null) {
       return null;
-      if ((paramView.getParent() instanceof amcj)) {
-        return (amcj)paramView.getParent();
-      }
-    } while (!(paramView instanceof amcj));
-    return (amcj)paramView;
+    }
+    return this.jdField_a_of_type_Amca.a();
   }
   
-  public void a(View paramView, amcb paramamcb)
+  public alrq a(long paramLong, String paramString1, String paramString2)
   {
-    amcj localamcj = a(paramView);
-    if (localamcj == null) {}
-    amcl localamcl;
-    ChatMessage localChatMessage;
+    return null;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(amip.av).append(this.b);
+    return localStringBuilder.toString();
+  }
+  
+  public void a() {}
+  
+  public void a(ambd paramambd)
+  {
+    this.jdField_a_of_type_Ambd = paramambd;
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, 0, false);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Amca == null)) {
+      QLog.w("CmShow_SpriteAioScript", 1, "[execScriptInRenderThread], script is null.");
+    }
+    alqu localalqu;
     do
     {
       return;
-      localamcl = localamcj.delegate();
-      localChatMessage = agej.a(paramView);
-    } while ((localamcl == null) || (!localamcl.b()) || (localamcj.hasSelected()) || (localChatMessage == null));
-    if (this.jdField_a_of_type_Int == 2) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
-      {
-        localamcl.c(f);
-        localamcl.b(g);
-      }
+      localalqu = this.jdField_a_of_type_Amca.a();
+    } while (localalqu == null);
+    localalqu.runRenderTask(new CmShowSpriteAioScript.1(this, paramString, localalqu, paramInt, paramBoolean));
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      QLog.w("CmShow_SpriteAioScript", 2, "[checkDressRsc], script is NOT ready.");
     }
-    for (;;)
-    {
-      localamcl.a(paramamcb);
-      localamcj.doSelecting(localChatMessage);
+    while ((TextUtils.isEmpty(paramString)) || (!"0".equals(paramString))) {
       return;
-      localamcl.c(f);
-      localamcl.b(h);
-      continue;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
-      {
-        localamcl.c(b);
-        localamcl.b(d);
-      }
-      else
-      {
-        localamcl.c(c);
-        localamcl.b(e);
-      }
-    }
-    paramView = paramView.getResources();
-    int j;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin)) {
-      j = paramView.getColorStateList(2131166967).getDefaultColor();
-    }
-    for (int i = paramView.getColorStateList(2131166969).getDefaultColor();; i = paramView.getColorStateList(2131166968).getDefaultColor())
-    {
-      localamcl.c(j);
-      localamcl.b(i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + j + ", component=" + i);
-      break;
-      j = paramView.getColorStateList(2131166966).getDefaultColor();
     }
   }
   
-  public boolean a(View paramView)
+  public boolean a()
   {
-    boolean bool2 = false;
-    ChatMessage localChatMessage = agej.a(paramView);
-    boolean bool1;
-    if (AppSetting.c)
+    if (this.jdField_a_of_type_Boolean)
     {
-      bool1 = false;
-      if (!bool1) {
-        break label173;
-      }
-      paramView = a(paramView);
-      if (paramView == null) {
-        break label154;
-      }
-      if (paramView.contentLength() <= 0) {
-        break label135;
-      }
-      bool1 = true;
+      QLog.i("CmShow_SpriteAioScript", 1, "script is already read, scriptName:" + this.b);
+      return true;
     }
-    label135:
-    label154:
-    label173:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          if ((localChatMessage instanceof MessageForText))
-          {
-            if ((!(localChatMessage instanceof MessageForWantGiftMsg)) && (!(localChatMessage instanceof MessageForFoldMsg)))
-            {
-              bool1 = true;
-              break;
-            }
-            bool1 = false;
-            break;
-          }
-          if ((localChatMessage instanceof MessageForMixedMsg))
-          {
-            bool1 = ((MessageForMixedMsg)localChatMessage).canSelectable();
-            break;
-          }
-          if ((localChatMessage instanceof MessageForReplyText))
-          {
-            bool1 = true;
-            break;
-          }
-          if ((localChatMessage instanceof MessageForLongMsg))
-          {
-            bool1 = ((MessageForLongMsg)localChatMessage).canSelectable();
-            break;
-          }
-          bool1 = false;
-          break;
-          bool1 = bool2;
-        } while (!ambu.a().c());
-        ambu.a().d();
-        return false;
-        bool1 = bool2;
-      } while (!ambu.a().c());
-      ambu.a().d();
-      return false;
-      bool1 = bool2;
-    } while (!ambu.a().c());
-    ambu.a().d();
+    this.jdField_a_of_type_Boolean = b();
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
     return false;
   }
   
-  public boolean a(View paramView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  protected boolean a(String paramString)
   {
-    paramView = a(paramView);
-    if (paramView == null) {}
-    do
+    boolean bool = true;
+    if (!new amku(paramString + ".sig", paramString).a(1))
     {
-      do
+      QLog.w("CmShow_SpriteAioScript", 1, "verify fails, path:" + paramString);
+      e();
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(alnr.e)))
       {
+        this.jdField_a_of_type_JavaLangString = alnr.e;
+        QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script 0 from cache");
+        return true;
+      }
+      String str = a();
+      if (TextUtils.isEmpty(str)) {
         return false;
-      } while ((!paramView.hasTouchSelectableArea((int)paramFloat1, (int)paramFloat2)) || (behh.a(paramView.content().toString(), 0, paramInt2, false).length() < paramInt2));
-      paramView = paramView.delegate();
-    } while ((paramView == null) || (!paramView.f()) || (paramView.a(paramFloat1, paramFloat2, paramInt1, paramInt2) == -1));
-    return true;
+      }
+      localFile = new File(str);
+      if (!localFile.exists())
+      {
+        QLog.w("CmShow_SpriteAioScript", 1, "Fail to read script file. " + localFile.getAbsolutePath());
+        f();
+        if (TextUtils.isEmpty(amip.au)) {
+          amhk.a(this.jdField_a_of_type_Amca.a(), 300, 202, new Object[] { "Fail to read script file:", str });
+        } else {
+          amhk.a(this.jdField_a_of_type_Amca.a(), 300, 200, new Object[] { "Fail to read script file:", str });
+        }
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      File localFile;
+      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript],OOM:", localOutOfMemoryError);
+      amhk.a(this.jdField_a_of_type_Amca.a(), 300, 150, new Object[] { "loadScript:", localOutOfMemoryError });
+      return false;
+      if (!a(localOutOfMemoryError))
+      {
+        amhk.a(this.jdField_a_of_type_Amca.a(), 300, 201, new Object[] { "Fail to verify script file:", localOutOfMemoryError });
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangString = FileUtils.readFileToString(localFile);
+      QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script file, bid:" + this.jdField_a_of_type_Int);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript]:", localThrowable);
+      amhk.a(this.jdField_a_of_type_Amca.a(), 300, 30, new Object[] { "loadScript:", localThrowable });
+      return false;
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_SpriteAioScript", 2, new Object[] { "[loadScript], mIsLoaded:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        if (100 == this.jdField_a_of_type_Int)
+        {
+          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
+          a(this.jdField_a_of_type_JavaLangString, 5, false);
+          b();
+          return;
+        }
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
+          a(this.jdField_a_of_type_JavaLangString, 3, false);
+          continue;
+        }
+        localStringBuilder = new StringBuilder();
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("CmShow_SpriteAioScript", 1, localThrowable, new Object[0]);
+        return;
+      }
+      StringBuilder localStringBuilder;
+      localStringBuilder.append("(function(){").append(this.jdField_a_of_type_JavaLangString).append(";registerFunction(\"playAction_bid_").append(this.jdField_a_of_type_Int).append("\", playSpriteAction);").append("registerFunction(\"sendMsg_bid_").append(this.jdField_a_of_type_Int).append("\", sendSpriteMsg);").append("registerFunction(\"stopAction_bid_").append(this.jdField_a_of_type_Int).append("\", stopSpriteAction);").append("})();");
+      a(localStringBuilder.toString());
+    }
+  }
+  
+  public boolean c()
+  {
+    if (TextUtils.isEmpty(amip.au)) {}
+    while (new File(amip.av + "cm3d.js").exists()) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void d()
+  {
+    ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a()).addCmdHandler(this);
+  }
+  
+  public void e()
+  {
+    QLog.w("CmShow_SpriteAioScript", 1, "[onVerifyFailure], check base.zip");
+    QQAppInterface localQQAppInterface = ApolloUtil.a();
+    if (localQQAppInterface != null)
+    {
+      anwk.a(localQQAppInterface);
+      return;
+    }
+    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
+  }
+  
+  public void f()
+  {
+    QLog.w("CmShow_SpriteAioScript", 1, "[onScriptNotExists], redownload base.zip");
+    QQAppInterface localQQAppInterface = ApolloUtil.a();
+    if (localQQAppInterface != null)
+    {
+      anwk.a(localQQAppInterface);
+      return;
+    }
+    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
+  }
+  
+  public void g()
+  {
+    ApolloCmdChannel localApolloCmdChannel = ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a());
+    if (localApolloCmdChannel != null) {
+      localApolloCmdChannel.removeCmdHandler(this);
+    }
+    this.jdField_a_of_type_Ambd = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

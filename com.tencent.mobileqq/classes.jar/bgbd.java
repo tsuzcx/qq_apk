@@ -1,44 +1,20 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import java.util.Comparator;
 
-class bgbd
-  implements aqxy
+final class bgbd
+  implements Comparator<bgbb>
 {
-  bgbd(bgbc parambgbc) {}
-  
-  public void a()
+  public int a(bgbb parambgbb1, bgbb parambgbb2)
   {
-    if (bgbc.a(this.a) != null) {
-      bgbc.a(this.a).a(bgbc.b(this.a), bgbc.c(this.a), bgbc.a(this.a));
+    if (parambgbb1 == parambgbb2) {
+      return 0;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
+    if (parambgbb1 == null) {
+      return 1;
     }
-    for (;;)
-    {
-      if (bgbc.a(this.a) != null) {
-        bgbc.a(this.a).a(paramInt1, paramInt2);
-      }
-      if ((bgbc.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1)))
-      {
-        bgbc.a(this.a).a(2);
-        if (bgbc.a(this.a) >= bgbc.a(this.a).a(2)) {
-          bgbc.c(this.a, bgbc.a(this.a).a(2) - 1);
-        }
-      }
-      if (bgbc.b(this.a) != null) {
-        bgbc.b(this.a).a(paramInt1, paramInt2);
-      }
-      return;
-      bgbc.a(this.a, paramInt2);
-      continue;
-      bgbc.b(this.a, paramInt2);
-      continue;
-      bgbc.c(this.a, paramInt2);
+    if (parambgbb2 == null) {
+      return -1;
     }
+    return parambgbb2.c - parambgbb1.c;
   }
 }
 

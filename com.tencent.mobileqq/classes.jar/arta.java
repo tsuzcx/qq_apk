@@ -1,66 +1,26 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class arta
+public abstract interface arta
 {
-  public static int a(Context paramContext)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
+  public abstract QQAppInterface a();
   
-  public static int a(Context paramContext, String paramString)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
+  public abstract void a();
   
-  public static String a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
+  public abstract void a(artf paramartf);
   
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
-      {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramString) {}
-    }
-    return false;
-  }
+  public abstract boolean a(artf paramartf, int paramInt);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arta
  * JD-Core Version:    0.7.0.1
  */

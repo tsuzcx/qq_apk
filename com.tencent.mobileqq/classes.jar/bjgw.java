@@ -1,33 +1,85 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import okhttp3.MediaType;
+import okhttp3.WebSocket;
+import okio.ByteString;
 
+@ProxyService(proxy=WebSocketProxy.class)
 public class bjgw
-  implements Application.ActivityLifecycleCallbacks
+  extends WebSocketProxy
 {
-  public bjgw(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public ConcurrentHashMap<Integer, bjgx> a = new ConcurrentHashMap();
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramActivity == this.a.a)
+    bjgx localbjgx = (bjgx)this.a.get(Integer.valueOf(paramInt1));
+    if ((localbjgx != null) && (localbjgx.a != null)) {}
+    try
     {
-      ShareActionSheetV2.a(this.a);
-      ShareActionSheetV2.b(this.a);
+      localbjgx.a.close(paramInt2, paramString);
+      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localbjgx, paramInt1, paramInt2, paramString), 1000L);
+      this.a.remove(Integer.valueOf(paramInt1));
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
+      }
     }
   }
   
-  public void onActivityPaused(Activity paramActivity) {}
+  public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
+  {
+    paramString1 = new bjgx(this, paramInt1, paramString1, paramMap, paramInt2, paramWebSocketListener);
+    this.a.put(Integer.valueOf(paramInt1), paramString1);
+    return true;
+  }
   
-  public void onActivityResumed(Activity paramActivity) {}
+  public boolean send(int paramInt, String paramString)
+  {
+    bjgx localbjgx = (bjgx)this.a.get(Integer.valueOf(paramInt));
+    if ((localbjgx != null) && (localbjgx.a != null)) {
+      try
+      {
+        MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
+        localbjgx.a.send(paramString);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
+        return false;
+      }
+    }
+    return false;
+  }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  public boolean send(int paramInt, byte[] paramArrayOfByte)
+  {
+    bjgx localbjgx = (bjgx)this.a.get(Integer.valueOf(paramInt));
+    if ((localbjgx != null) && (localbjgx.a != null)) {
+      try
+      {
+        localbjgx.a.send(ByteString.of(paramArrayOfByte));
+        return true;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
+        return false;
+      }
+    }
+    return false;
+  }
 }
 
 

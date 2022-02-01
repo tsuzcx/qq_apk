@@ -1,202 +1,269 @@
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gamelogic.data.UserScore;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
-import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
-import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
-import trpc.qq_vgame.common.AvGameCommon.QuestionItemInfo;
-import trpc.qq_vgame.common.AvGameCommon.QuestionTipsInfo;
+import trpc.qq_vgame.common.AvGameCommon.GameStatusInfo;
+import trpc.qq_vgame.common.AvGameCommon.RoomInfo;
+import trpc.qq_vgame.game_ranking.AvGameRanking.GetRankingListRsp;
+import trpc.qq_vgame.game_ranking.AvGameRanking.UserScoreInfo;
 
-public abstract class mzo
-  extends mzm
-  implements myq
+public class mzo
 {
-  public ArrayList<Pair<Integer, String>> a;
-  List<mzo> a;
-  public mzd a;
-  protected int b;
-  public ArrayList<mzd> b;
-  public mzd b;
-  public int c;
+  static HashMap<Integer, Class<? extends nan>> a = new HashMap(5);
   
-  public mzo()
+  static
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Mzd = new mzd();
-    this.jdField_b_of_type_Mzd = new mzd();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    a.put(Integer.valueOf(1), nao.class);
+    a.put(Integer.valueOf(2), naq.class);
+    a.put(Integer.valueOf(3), nar.class);
+    a.put(Integer.valueOf(4), nas.class);
+    a.put(Integer.valueOf(5), nat.class);
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if ((paramInt >= 3) && (paramInt <= 102)) {
+      return 3;
+    }
+    if ((paramInt >= 103) && (paramInt <= 202)) {
+      return 2;
+    }
+    if ((paramInt >= 300) && (paramInt <= 399)) {
+      return 5;
+    }
+    if ((paramInt >= 400) && (paramInt <= 499)) {
+      return 4;
+    }
+    return 0;
   }
   
   @Nullable
-  public String a()
+  public static RoomInfo a(AvGameCommon.RoomInfo paramRoomInfo)
   {
-    return this.jdField_b_of_type_Mzd.jdField_a_of_type_JavaLangString;
+    RoomInfo localRoomInfo = null;
+    if (paramRoomInfo != null)
+    {
+      localRoomInfo = new RoomInfo();
+      localRoomInfo.parseFrom(paramRoomInfo);
+    }
+    return localRoomInfo;
   }
   
-  public List<mzo> a()
+  public static String a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "NT_ROOM_ENTER";
+    case 2: 
+      return "NT_ROOM_LEAVE";
+    case 3: 
+      return "NT_ROOM_DESTORY";
+    case 4: 
+      return "NT_ROOM_USER_CHANGE_STATUS";
+    case 101: 
+      return "NT_GAME_CHANGE";
+    case 102: 
+      return "NT_GAME_START";
+    case 103: 
+      return "NT_ANSWER_RIGHT";
+    case 104: 
+      return "NT_TOPIC_TIMEOUT";
+    case 105: 
+      return "NT_TOPIC_CHANGE";
+    case 106: 
+      return "NT_NEXT_ACTOR_TIPS";
+    case 107: 
+      return "NT_ACTOR_CHANGE";
+    case 108: 
+      return "NT_ACTOR_GIVEOUT_ANSWER";
+    case 201: 
+      return "NT_TRANSLATE_INFO";
+    }
+    return "NT_MATCH_STATUS";
   }
   
-  public myp a()
+  public static <F, S> String a(List<Pair<F, S>> paramList)
   {
-    mzo localmzo = a();
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Pair localPair = (Pair)paramList.next();
+      localStringBuilder.append("\n").append("[").append(localPair.first).append(",").append(localPair.second).append("]");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  @NotNull
+  public static List<UserScore> a(AvGameRanking.GetRankingListRsp paramGetRankingListRsp)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramGetRankingListRsp = paramGetRankingListRsp.ranking_list.get();
+    if ((paramGetRankingListRsp != null) && (paramGetRankingListRsp.size() > 0))
+    {
+      int i = 0;
+      while (i < paramGetRankingListRsp.size())
+      {
+        UserScore localUserScore = new UserScore();
+        localUserScore.parseFrom((AvGameRanking.UserScoreInfo)paramGetRankingListRsp.get(i));
+        localArrayList.add(localUserScore);
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  @Nullable
+  public static mzp a(AvGameCommon.GameStatusInfo paramGameStatusInfo)
+  {
+    if (paramGameStatusInfo == null) {
+      return null;
+    }
     try
     {
-      localmzo.a(this);
-      return localmzo;
+      nag localnag = new nag();
+      try
+      {
+        localnag.a(paramGameStatusInfo);
+        return localnag;
+      }
+      catch (Exception localException1)
+      {
+        paramGameStatusInfo = localnag;
+      }
     }
-    catch (Exception localException) {}
-    return localmzo;
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramGameStatusInfo = null;
+      }
+    }
+    QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getGame ex=", localException1.getMessage(), localException1 });
+    return paramGameStatusInfo;
   }
   
-  public mzd a(int paramInt)
+  public static mzq a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo, boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() > paramInt) {
-      return (mzd)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    if (paramGameQuestionInfo == null) {
+      paramGameQuestionInfo = null;
+    }
+    Object localObject;
+    do
+    {
+      return paramGameQuestionInfo;
+      int i = a(paramGameQuestionInfo.type.get());
+      localObject = (Class)a.get(Integer.valueOf(i));
+      if (localObject == null) {
+        return null;
+      }
+      localObject = (mzq)((Class)localObject).newInstance();
+      ((mzq)localObject).a(paramBoolean);
+      ((mzq)localObject).a(paramGameQuestionInfo);
+      paramGameQuestionInfo = (AvGameCommon.GameQuestionInfo)localObject;
+    } while (!QLog.isColorLevel());
+    QLog.i("avgame_logic.GameUtil", 2, String.format("parseTopic {\n%s\n}", new Object[] { localObject }));
+    return localObject;
+  }
+  
+  public static void a(String paramString1, String paramString2, String[] paramArrayOfString, MessageMicro... paramVarArgs)
+  {
+    new StringBuilder(1024);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  public static boolean a(nak paramnak)
+  {
+    if ((paramnak.a == 2) || (paramnak.a == 300) || (paramnak.a == 400)) {}
+    int i;
+    do
+    {
+      return false;
+      i = a(paramnak.a);
+    } while ((i != 3) && (i != 5) && (i != 4) && (i != 2));
+    return true;
+  }
+  
+  @Nullable
+  public static mzq b(AvGameCommon.GameQuestionInfo paramGameQuestionInfo, boolean paramBoolean)
+  {
+    try
+    {
+      paramGameQuestionInfo = a(paramGameQuestionInfo, paramBoolean);
+      return paramGameQuestionInfo;
+    }
+    catch (InstantiationException paramGameQuestionInfo)
+    {
+      QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getTopic ex=", paramGameQuestionInfo.getMessage(), paramGameQuestionInfo });
+      return null;
+    }
+    catch (IllegalAccessException paramGameQuestionInfo)
+    {
+      QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getTopic ex=", paramGameQuestionInfo.getMessage(), paramGameQuestionInfo });
+      return null;
+    }
+    catch (Exception paramGameQuestionInfo)
+    {
+      QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getTopic ex=", paramGameQuestionInfo.getMessage(), paramGameQuestionInfo });
     }
     return null;
   }
   
-  protected abstract mzo a();
-  
-  protected void a(mzo parammzo)
+  public static boolean b(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = parammzo.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_Int = parammzo.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Int = parammzo.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = parammzo.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parammzo.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammzo.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_Mzd.a(parammzo.jdField_a_of_type_Mzd);
-    this.jdField_b_of_type_Mzd.a(parammzo.jdField_b_of_type_Mzd);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(parammzo.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_b_of_type_JavaUtilArrayList.addAll(parammzo.jdField_b_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaUtilList.addAll(parammzo.jdField_a_of_type_JavaUtilList);
-    this.c = parammzo.c;
+    return (paramInt == 3) || (paramInt == 4);
   }
   
-  protected void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  public static boolean b(nak paramnak)
   {
-    Object localObject1 = (AvGameCommon.QuestionItemInfo)paramCommonQuestionInfo.item.get();
-    if (localObject1 != null)
-    {
-      this.jdField_a_of_type_Mzd.a(((AvGameCommon.QuestionItemInfo)localObject1).question_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_duration.get());
-      this.jdField_b_of_type_Mzd.a(((AvGameCommon.QuestionItemInfo)localObject1).answer_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_duration.get());
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_type.get();
-      this.jdField_a_of_type_ArrayOfJavaLangString[1] = ((AvGameCommon.QuestionItemInfo)localObject1).extra_reward.get();
-      this.jdField_a_of_type_ArrayOfJavaLangString[2] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_stroke_color.get();
-    }
-    localObject1 = paramCommonQuestionInfo.feedbacks.get();
-    Object localObject2;
-    if ((localObject1 != null) && (((List)localObject1).size() > 0))
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (AvGameCommon.QuestionFeedbackInfo)((Iterator)localObject1).next();
-        mzd localmzd = new mzd();
-        localmzd.a((AvGameCommon.QuestionFeedbackInfo)localObject2);
-        this.jdField_b_of_type_JavaUtilArrayList.add(localmzd);
-      }
-    }
-    localObject1 = paramCommonQuestionInfo.tips.get();
-    if ((localObject1 != null) && (((List)localObject1).size() > 0))
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (AvGameCommon.QuestionTipsInfo)((Iterator)localObject1).next();
-        localObject2 = new Pair(Integer.valueOf(((AvGameCommon.QuestionTipsInfo)localObject2).show_delay_ts.get()), ((AvGameCommon.QuestionTipsInfo)localObject2).tips.get());
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-      }
-    }
-    this.c = paramCommonQuestionInfo.size.get();
-  }
-  
-  public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
-  {
-    this.jdField_a_of_type_Int = paramGameQuestionInfo.id.get();
-    this.jdField_b_of_type_Int = Math.max(0, paramGameQuestionInfo.index.get() - 1);
-    if (paramGameQuestionInfo.questions.get() != null)
-    {
-      paramGameQuestionInfo = paramGameQuestionInfo.questions.get().iterator();
-      while (paramGameQuestionInfo.hasNext())
-      {
-        AvGameCommon.CommonQuestionInfo localCommonQuestionInfo = (AvGameCommon.CommonQuestionInfo)paramGameQuestionInfo.next();
-        mzo localmzo = a();
-        localmzo.a(localCommonQuestionInfo);
-        localmzo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-        localmzo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localmzo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilList.add(localmzo);
-      }
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      a((mzo)this.jdField_a_of_type_JavaUtilList.get(0));
-    }
-  }
-  
-  public boolean a(myp parammyp)
-  {
-    if (parammyp == null) {}
-    while ((!bhjx.a(b(), parammyp.b())) || (!bhjx.a(a(), parammyp.a()))) {
+    boolean bool = true;
+    if (paramnak == null) {
       return false;
     }
-    return true;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_Mzd.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Mzd == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Mzd.jdField_a_of_type_Int;
-  }
-  
-  public String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localStringBuilder.append("\n【题库】:");
-      localStringBuilder.append("topicsCount").append("=").append(this.jdField_a_of_type_JavaUtilList.size()).append("|");
-      localStringBuilder.append("【题目列表】").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|");
-    }
+    if ((a(paramnak)) && (paramnak.b == 1)) {}
     for (;;)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append("\n【题目】:");
-      localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
-      localStringBuilder.append("gameType").append("=").append(b()).append("|");
-      localStringBuilder.append("index").append("=").append(this.jdField_b_of_type_Int).append("|");
-      localStringBuilder.append("contentRes").append("=").append(this.jdField_a_of_type_Mzd).append("|");
-      localStringBuilder.append("answerRes").append("=").append(this.jdField_b_of_type_Mzd).append("|");
-      localStringBuilder.append("tips").append("=").append(myn.a(this.jdField_a_of_type_JavaUtilArrayList)).append("|");
-      localStringBuilder.append("feedBacks").append("=").append(Arrays.toString(this.jdField_b_of_type_JavaUtilArrayList.toArray())).append("|");
+      return bool;
+      bool = false;
     }
   }
   
-  public int g_()
+  public static boolean c(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    return paramInt == 3;
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt <= 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class qev
-  implements ViewFactory.FoundClickableViewListener
+public class qev
+  implements ViewBase.OnClickListener
 {
-  qev(qeu paramqeu, int paramInt, TemplateBean paramTemplateBean) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void onFound(ViewBase paramViewBase)
+  public qev(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
   {
-    if (qeu.a(this.jdField_a_of_type_Qeu) != null) {
-      paramViewBase.setOnClickListener(new qew(this));
-    }
-    do
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    odq.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    String str = "";
+    paramViewBase = str;
+    if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      return;
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      paramViewBase = str;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
       {
-      default: 
-        return;
-      case 1038: 
-        paramViewBase.setOnClickListener(new qey(this));
-        return;
-      case 1040: 
-        paramViewBase.setOnClickListener(new qex(this));
-        return;
-      case 1130: 
-        paramViewBase.setOnClickListener(new qez(this));
-        return;
+        paramViewBase = str;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
+        {
+          paramViewBase = str;
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
+          {
+            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
+            pay.d(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+          }
+        }
       }
-    } while ((this.jdField_a_of_type_Qeu.a == null) || (this.jdField_a_of_type_Qeu.a.a() == null));
-    paramViewBase.setOnClickListener(new pzl(this.jdField_a_of_type_Qeu.a, qeu.a(this.jdField_a_of_type_Qeu).getContext(), 1115, this.jdField_a_of_type_Qeu.a.e(), this.jdField_a_of_type_Int));
+    }
+    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
+    a();
   }
 }
 

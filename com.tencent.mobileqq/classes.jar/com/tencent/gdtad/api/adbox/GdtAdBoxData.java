@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.adbox;
 
-import acvb;
-import acvc;
+import abrk;
+import abrl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.io.Serializable;
@@ -36,10 +36,10 @@ public class GdtAdBoxData
     Object localObject1;
     try
     {
-      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
+      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
       if ((paramString == null) || (paramString.isEmpty()))
       {
-        acvc.d("GdtAdBoxData", "convertJson2GdtAds() posAdInfos.isEmpty");
+        abrl.d("GdtAdBoxData", "convertJson2GdtAds() posAdInfos.isEmpty");
         return;
       }
       if (this.ads != null) {
@@ -55,13 +55,13 @@ public class GdtAdBoxData
         if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
           break;
         }
-        acvc.d("GdtAdBoxData", "convertJson2GdtAds() adInfos.isEmpty");
+        abrl.d("GdtAdBoxData", "convertJson2GdtAds() adInfos.isEmpty");
       }
       localObject1 = ((List)localObject1).iterator();
     }
     catch (Exception paramString)
     {
-      acvc.d("GdtAdBoxData", "convertJson2GdtAds", paramString);
+      abrl.d("GdtAdBoxData", "convertJson2GdtAds", paramString);
       return;
     }
     while (((Iterator)localObject1).hasNext())
@@ -75,7 +75,7 @@ public class GdtAdBoxData
     }
     label202:
     if (this.ads != null) {
-      acvc.a("GdtAdBoxData", "convertJson2GdtAds() result = [" + Arrays.toString(this.ads.toArray()) + "]");
+      abrl.a("GdtAdBoxData", "convertJson2GdtAds() result = [" + Arrays.toString(this.ads.toArray()) + "]");
     }
   }
   

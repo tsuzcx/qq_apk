@@ -1,30 +1,11 @@
-import java.util.List;
+import java.text.SimpleDateFormat;
 
-public abstract class bcdi
-  implements bcfq
+final class bcdi
+  extends ThreadLocal<SimpleDateFormat>
 {
-  protected String a;
-  protected List<bcfr> a;
-  
-  public bcdi(List<bcfr> paramList, String paramString)
+  protected SimpleDateFormat a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public List<bcfr> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   }
 }
 

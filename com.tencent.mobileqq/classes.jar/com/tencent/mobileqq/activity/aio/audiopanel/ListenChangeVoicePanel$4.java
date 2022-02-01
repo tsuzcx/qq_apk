@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import anyw;
-import bamd;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import amsw;
+import azcd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
@@ -19,11 +19,11 @@ class ListenChangeVoicePanel$4
     if ((ListenChangeVoicePanel.a(this.this$0).get() == null) || (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    Object localObject = (anyw)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(51);
+    Object localObject = (amsw)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(51);
     int i;
-    if (!((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).r())
+    if (!((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).isExtensionInfo())
     {
-      localObject = ((anyw)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_Int, true);
+      localObject = ((amsw)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).sessionInfo.curFriendUin, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).sessionInfo.curType, true);
       if (localObject == null) {
         break label199;
       }
@@ -36,12 +36,12 @@ class ListenChangeVoicePanel$4
         ListenChangeVoicePanel.a(this.this$0, i);
         ListenChangeVoicePanel.a(this.this$0)[i] = 1;
       }
-      if (ListenChangeVoicePanel.jdField_a_of_type_Bamd != null) {
+      if (ListenChangeVoicePanel.jdField_a_of_type_Azcd != null) {
         break;
       }
-      ListenChangeVoicePanel.jdField_a_of_type_Bamd = new bamd();
+      ListenChangeVoicePanel.jdField_a_of_type_Azcd = new azcd();
       return;
-      localObject = ((anyw)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, true);
+      localObject = ((amsw)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).sessionInfo.curFriendUin, true);
       if (localObject != null) {
         i = ((ExtensionInfo)localObject).pttChangeVoiceType;
       } else {
@@ -53,7 +53,7 @@ class ListenChangeVoicePanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel.4
  * JD-Core Version:    0.7.0.1
  */

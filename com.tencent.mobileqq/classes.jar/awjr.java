@@ -1,18 +1,26 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 class awjr
-  implements EIPCResultCallback
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  awjr(awjq paramawjq) {}
+  awjr(awjn paramawjn) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (paramEIPCResult.code == 0)
+    synchronized (this.a.a)
     {
-      boolean bool = paramEIPCResult.data.getBoolean("receive_success");
-      this.a.a(0, bool, paramEIPCResult.data);
+      if (this.a.a.contains(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
+        }
+        this.a.a.remove(paramString);
+        awjn.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
+      }
+      return;
     }
   }
 }

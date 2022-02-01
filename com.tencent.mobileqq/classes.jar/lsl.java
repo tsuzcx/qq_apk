@@ -1,13 +1,26 @@
-import java.util.Collections;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
 
-class lsl
-  implements lsj
+public class lsl
+  implements DialogInterface.OnClickListener
 {
-  lsl(lsk paramlsk) {}
+  public lsl(RandomController paramRandomController) {}
   
-  public void a(lsh paramlsh, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Collections.sort(lsk.a(this.a), lsk.a(this.a));
+    if (RandomController.a(this.a) == 1) {
+      bcef.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.b();
+      RandomController.d(this.a, false);
+      return;
+      if (RandomController.a(this.a) == 2) {
+        bcef.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

@@ -1,38 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class aden
-  implements adci
+  implements AdapterView.OnItemClickListener
 {
-  private static void a(adan paramadan, MsgInfo paramMsgInfo, long paramLong, MsgType0x210 paramMsgType0x210)
-  {
-    long l1 = paramMsgInfo.lFromUin;
-    int i = paramMsgInfo.shMsgSeq;
-    long l2 = paramMsgInfo.lMsgUid;
-    int j = paramMsgInfo.shMsgType;
-    int k = (int)paramMsgType0x210.uSubMsgType;
-    if (((aold)paramadan.a().getManager(85)).a(paramMsgInfo.shMsgSeq)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "receive same message, seq = " + paramMsgInfo.shMsgSeq);
-      }
-    }
-    for (;;)
-    {
-      bcrw.a(paramadan.a().a(), l1, i, l2, j);
-      return;
-      if (bctc.a(paramadan.a(), paramMsgType0x210.vProtobuf, l1, paramLong, i, j, k)) {
-        paramadan.a("handleActivateFriendsPush", true, 1, true, false);
-      }
-    }
-  }
+  public aden(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    a(paramadan, paramMsgInfo, paramLong, paramMsgType0x210);
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

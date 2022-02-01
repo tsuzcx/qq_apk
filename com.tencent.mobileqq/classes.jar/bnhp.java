@@ -1,11 +1,6 @@
-final class bnhp
-  implements bnjy
-{
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    bnho.a(null);
-  }
-}
+public class bnhp
+  extends vko
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

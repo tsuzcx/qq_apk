@@ -1,187 +1,119 @@
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.minigame.utils.DpUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class zsv<T>
+public class zsv
+  extends BaseAdapter
 {
-  protected Context a;
-  private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  private zss jdField_a_of_type_Zss;
-  protected boolean a;
+  private List<zsw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<Integer, zsx> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public zsv(Context paramContext)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void T_() {}
-  
-  protected void V_() {}
-  
-  public abstract int a();
-  
-  protected int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public abstract View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup);
-  
-  protected SegmentList a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  }
-  
-  public abstract String a();
-  
-  public yqw a(int paramInt)
-  {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null)
-    {
-      znw.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-      return null;
-    }
     int i = 0;
-    if (i < localSegmentList.getChildCount())
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      yqw localyqw = (yqw)localSegmentList.getChildAt(i).getTag();
-      if (localyqw == null) {}
-      while ((!localyqw.a.equals(a())) || (localyqw.b != paramInt))
+      zsw localzsw = (zsw)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (i == paramInt) {}
+      for (boolean bool = true;; bool = false)
       {
+        localzsw.jdField_a_of_type_Boolean = bool;
         i += 1;
         break;
       }
-      return localyqw;
     }
+    notifyDataSetChanged();
+  }
+  
+  public void a(List<zsw> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
     return null;
   }
   
-  public abstract yqw a(int paramInt, ViewGroup paramViewGroup);
-  
-  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(zss paramzss, SegmentList paramSegmentList)
+  public long getItemId(int paramInt)
   {
-    this.jdField_a_of_type_Zss = paramzss;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList = paramSegmentList;
+    return 0L;
   }
   
-  public boolean a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return true;
-  }
-  
-  public boolean a(yqw paramyqw)
-  {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null) {
-      znw.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-    }
-    int i;
-    int j;
-    int k;
-    do
+    zsw localzsw = (zsw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject;
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
     {
-      do
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560610, paramViewGroup, false);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, DpUtil.dip2px(paramViewGroup.getContext(), 50.0F)));
+      localObject = new zsx();
+      ((zsx)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379646));
+      ((zsx)localObject).b = paramView.findViewById(2131380792);
+      if ((localzsw != null) && (Build.VERSION.SDK_INT >= 4)) {
+        paramView.setContentDescription(localzsw.jdField_a_of_type_JavaLangString);
+      }
+      ((zsx)localObject).jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+    }
+    label283:
+    label293:
+    label300:
+    for (;;)
+    {
+      if ((localzsw != null) && (localObject != null) && (paramView != null))
       {
-        return false;
-      } while (paramyqw == null);
-      i = localSegmentList.getFirstVisiblePosition();
-      j = localSegmentList.getLastVisiblePosition();
-      k = paramyqw.c;
-    } while ((k < i) || (k > j));
-    return true;
-  }
-  
-  public void a_(yqw paramyqw) {}
-  
-  protected boolean a_(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "";
-  }
-  
-  protected void b() {}
-  
-  public void b_(yqw paramyqw) {}
-  
-  protected void c() {}
-  
-  public void c(yqw paramyqw) {}
-  
-  public final void c(boolean paramBoolean)
-  {
-    
-    if (this.jdField_a_of_type_Zss != null)
-    {
-      this.jdField_a_of_type_Zss.a(a(), paramBoolean);
-      this.jdField_a_of_type_Zss.notifyDataSetChanged();
+        ((zsx)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localzsw.jdField_a_of_type_JavaLangString);
+        TextView localTextView = ((zsx)localObject).jdField_a_of_type_AndroidWidgetTextView;
+        if (!localzsw.jdField_a_of_type_Boolean) {
+          break label283;
+        }
+        i = Color.parseColor("#ffff5b84");
+        label194:
+        localTextView.setTextColor(i);
+        localObject = ((zsx)localObject).b;
+        if (!localzsw.jdField_a_of_type_Boolean) {
+          break label293;
+        }
+      }
+      for (int i = 0;; i = 8)
+      {
+        ((View)localObject).setVisibility(i);
+        paramView.setSelected(localzsw.jdField_a_of_type_Boolean);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localObject = (zsx)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if (localObject == null) {
+          break label300;
+        }
+        paramView = ((zsx)localObject).jdField_a_of_type_AndroidViewView;
+        break;
+        i = Color.parseColor("#ff878b99");
+        break label194;
+      }
     }
-    yoq.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return a();
-    }
-    return 0;
-  }
-  
-  protected void d() {}
-  
-  public void d(int paramInt)
-  {
-    paramInt = this.jdField_a_of_type_Zss.a(this, paramInt);
-    a().setSelection(paramInt);
-  }
-  
-  protected boolean d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.a(a());
-    return true;
-  }
-  
-  protected void e() {}
-  
-  public void e_(boolean paramBoolean)
-  {
-    if (paramBoolean != this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-    }
-  }
-  
-  protected int h_()
-  {
-    return 1;
-  }
-  
-  public void h_(int paramInt) {}
-  
-  public void k() {}
-  
-  protected void m()
-  {
-    if (this.jdField_a_of_type_Zss == null) {
-      return;
-    }
-    this.jdField_a_of_type_Zss.notifyDataSetChanged();
   }
 }
 

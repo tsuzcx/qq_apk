@@ -1,18 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class ajep
+public abstract interface ajep
 {
-  public int a;
-  public long a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public String c;
-  public TextView d;
+  public abstract String a();
+  
+  public abstract boolean a(String paramString);
 }
 
 

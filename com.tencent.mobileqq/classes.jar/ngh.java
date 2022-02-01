@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.ui.AVGameActivity;
-import com.tencent.avgame.ui.AVGameActivity.5;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class ngh
-  implements DialogInterface.OnClickListener
+class ngh
+  implements nbt
 {
-  public ngh(AVGameActivity.5 param5) {}
+  final WeakReference<ngg> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ngh(ngg paramngg)
   {
-    paramDialogInterface.dismiss();
-    this.a.this$0.finish();
+    this.a = new WeakReference(paramngg);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameServerIPCModule_GameRC", 2, "GameResultCallback onReslut, playId[" + paramString1 + "], fileType[" + paramInt + "], url[" + paramString2 + "]");
+    }
+    ngg localngg = (ngg)this.a.get();
+    if (localngg == null) {
+      return;
+    }
+    localngg.a(true, paramString1, paramInt, paramString2);
   }
 }
 

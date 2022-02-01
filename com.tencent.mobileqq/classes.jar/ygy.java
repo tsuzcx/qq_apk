@@ -1,38 +1,31 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-class ygy
-  implements asmr
+public abstract class ygy
 {
-  ygy(ygw paramygw) {}
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
   
-  public void a(asmu paramasmu)
+  public ygy(int paramInt1, String paramString, int paramInt2)
   {
-    if (((paramasmu instanceof assj)) && (ygw.a(this.a) != null)) {
-      ((assj)paramasmu).a(ygw.a(), ygw.a(this.a), ygw.a(this.a), null);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
   
-  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
+  @NonNull
+  public abstract Class<? extends ygz> a();
   
-  public boolean a(asmu paramasmu)
+  @NonNull
+  public abstract ygz a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
   {
     return false;
   }
-  
-  public void b()
-  {
-    if (ygw.a(this.a) != null) {
-      behh.a(ygw.a(this.a));
-    }
-  }
-  
-  public void b(asmu paramasmu) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

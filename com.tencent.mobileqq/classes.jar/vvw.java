@@ -1,70 +1,76 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.qqcircle.utils.QCircleBindPhoneNumberHelper.2;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
+import java.io.File;
+import java.util.Map;
 
-public class vvw
+class vvw
+  extends vwx
 {
-  private static boolean a;
-  
-  public static void a()
+  vvw(vvv paramvvv, vmd paramvmd)
   {
-    if (QzoneConfig.isQQCircleShowLebaEntrance()) {
-      ThreadManagerV2.executeOnSubThread(new QCircleBindPhoneNumberHelper.2());
-    }
+    super(paramvmd);
   }
   
-  public static void a(boolean paramBoolean)
+  protected vxa a(vwz... paramVarArgs)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      bcvd.b((QQAppInterface)localAppRuntime, new vvx(paramBoolean));
+    vxa localvxa = super.a(paramVarArgs);
+    paramVarArgs = paramVarArgs[0];
+    String str;
+    if (localvxa.jdField_a_of_type_Int == 0) {
+      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
     }
-  }
-  
-  public static boolean a()
-  {
-    int i;
-    if (QzoneConfig.getQQCircleUsePhoneSecurityAuth())
+    try
     {
-      uyk localuyk = uyk.a();
-      if (localuyk != null)
+      ypi.d(str);
+      label42:
+      int i = npo.a(paramVarArgs.b, str);
+      if (i == 0)
       {
-        i = localuyk.b();
-        if (i != 0) {
-          break label29;
+        if (vvv.a(str, false)) {
+          try
+          {
+            paramVarArgs = this.a.a(new File(str, "config.json"));
+            if (paramVarArgs != null)
+            {
+              xvv.d("FileDownloadTask", "parse config file success !");
+              this.a.a.put(str, paramVarArgs);
+              return localvxa;
+            }
+          }
+          catch (Exception paramVarArgs)
+          {
+            for (;;)
+            {
+              xvv.c("FileDownloadTask", "parse config failed", paramVarArgs);
+              paramVarArgs = null;
+            }
+            xvv.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
+            return new vxa(localvxa.jdField_a_of_type_Vwz, -1, "illegal config file");
+          }
         }
-        a(false);
+        xvv.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
+        return new vxa(localvxa.jdField_a_of_type_Vwz, -1, "illegal folder");
       }
+      xvv.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
+      return new vxa(localvxa.jdField_a_of_type_Vwz, i, "unzip failed");
     }
-    label29:
-    while (i == 1) {
-      return true;
+    catch (Exception localException)
+    {
+      break label42;
     }
-    return false;
   }
   
-  public static boolean a(Context paramContext, int paramInt)
+  protected void a(vxa arg1)
   {
-    if ((paramContext == null) || (a)) {
-      return false;
+    xvv.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
+    if (???.jdField_a_of_type_Int == 0) {
+      xvv.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Vwz.jdField_a_of_type_JavaLangString });
     }
-    if (paramContext.getResources() != null)
+    synchronized (this.a.b)
     {
-      String str1 = paramContext.getResources().getString(2131697178);
-      String str2 = paramContext.getResources().getString(2131697176);
-      vvy localvvy = new vvy(paramContext);
-      paramContext = bhlq.a(paramContext, 230, str1, str2, 2131697175, 2131697177, localvvy, localvvy);
-      paramContext.setCancelable(false);
-      a = true;
-      vtq.a("", 53, 1, paramInt);
-      paramContext.show();
+      vvv.a(this.a, null);
+      this.a.d();
+      return;
+      xvv.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Vwz.jdField_a_of_type_JavaLangString });
     }
-    return true;
   }
 }
 

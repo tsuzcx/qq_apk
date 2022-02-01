@@ -1,37 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.widget.ksong.KSongTextView;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import cooperation.qwallet.plugin.QwAdapter.IViewHolder;
+import android.app.Activity;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.microapp.ext.GameProxy;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.app.MiniAppStateManager;
+import com.tencent.qqmini.proxyimpl.NavigationProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
+import org.json.JSONObject;
 
+@ProxyService(proxy=NavigationProxy.class)
 public class bjex
-  implements QwAdapter.IViewHolder<awwo>
+  extends NavigationProxy
 {
-  public KSongTextView a;
-  
-  public bjex(KSongView paramKSongView) {}
-  
-  public void a(int paramInt, View paramView, awwo paramawwo)
+  private void a(MiniAppInfo paramMiniAppInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a();
-    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
-    if (TextUtils.isEmpty(paramawwo.a)) {}
-    for (paramView = "";; paramView = paramawwo.a)
-    {
-      localKSongTextView.setText(paramView);
-      return;
-    }
+    ThreadManagerV2.excute(new NavigationProxyImpl.1(this, paramMiniAppInfo), 32, null, true);
   }
   
-  public QwAdapter.IViewHolder clone()
+  public boolean launchByAppType(int paramInt1, Activity paramActivity, String paramString, int paramInt2, JSONObject paramJSONObject, ResultReceiver paramResultReceiver)
   {
-    return (QwAdapter.IViewHolder)super.clone();
+    return GameProxy.startGameByMiniApp(paramActivity, paramString, paramJSONObject);
   }
   
-  public View initView(int paramInt, View paramView)
+  public void onAfterLaunchByAppInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)paramView.findViewById(2131374781));
-    return paramView;
+    a(MiniAppInfo.createMiniAppInfo(paramJSONObject));
+  }
+  
+  public void onBeforeNavigateToMiniProgram()
+  {
+    MiniAppStateManager.getInstance().notifyChange("hideInput");
   }
 }
 

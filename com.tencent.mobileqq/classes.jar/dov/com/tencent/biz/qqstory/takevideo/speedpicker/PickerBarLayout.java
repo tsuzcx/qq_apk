@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bqwc;
-import bqwn;
-import bqwt;
-import bqwz;
-import bqxb;
+import bnqm;
+import bnqx;
+import bnrd;
+import bnrj;
+import bnrl;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.lang.ref.WeakReference;
@@ -21,15 +21,15 @@ import java.util.List;
 
 public class PickerBarLayout
   extends RelativeLayout
-  implements bqwn, bqwz
+  implements bnqx, bnrj
 {
   private float jdField_a_of_type_Float = 38.0F;
   private int jdField_a_of_type_Int = -1;
   private View jdField_a_of_type_AndroidViewView;
-  private bqwc jdField_a_of_type_Bqwc;
-  private bqwt jdField_a_of_type_Bqwt;
+  private bnqm jdField_a_of_type_Bnqm;
+  private bnrd jdField_a_of_type_Bnrd;
   private PickerBarLayout.CheckForLongPress jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress;
-  private WeakReference<bqxb> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bnrl> jdField_a_of_type_JavaLangRefWeakReference;
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 50.0F;
@@ -90,9 +90,9 @@ public class PickerBarLayout
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      bqxb localbqxb = (bqxb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbqxb != null) {
-        localbqxb.a(paramInt, (String)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBoolean1, paramBoolean2);
+      bnrl localbnrl = (bnrl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnrl != null) {
+        localbnrl.a(paramInt, (String)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBoolean1, paramBoolean2);
       }
     }
   }
@@ -117,8 +117,8 @@ public class PickerBarLayout
   
   private int b(float paramFloat)
   {
-    if (this.jdField_a_of_type_Bqwc != null) {
-      return this.jdField_a_of_type_Bqwc.a(paramFloat);
+    if (this.jdField_a_of_type_Bnqm != null) {
+      return this.jdField_a_of_type_Bnqm.a(paramFloat);
     }
     return -1;
   }
@@ -126,9 +126,9 @@ public class PickerBarLayout
   private void b()
   {
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Bqwt = new bqwt();
-    this.jdField_a_of_type_Bqwt.a(getContext(), 2130839609, 2130839608, 2130839610, this);
-    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Bqwt);
+    this.jdField_a_of_type_Bnrd = new bnrd();
+    this.jdField_a_of_type_Bnrd.a(getContext(), 2130839646, 2130839645, 2130839647, this);
+    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Bnrd);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Math.round(this.d), Math.round(this.e));
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, 0, Math.round(this.h), 0);
@@ -137,11 +137,11 @@ public class PickerBarLayout
   
   private void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    bqxb localbqxb;
+    bnrl localbnrl;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      localbqxb = (bqxb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbqxb != null)
+      localbnrl = (bnrl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnrl != null)
       {
         if (!paramBoolean1) {
           break label50;
@@ -149,29 +149,29 @@ public class PickerBarLayout
         if (!paramBoolean2) {
           break label41;
         }
-        localbqxb.a(paramInt);
+        localbnrl.a(paramInt);
       }
     }
     return;
     label41:
-    localbqxb.b(paramInt);
+    localbnrl.b(paramInt);
     return;
     label50:
     if (paramBoolean2)
     {
-      localbqxb.c(paramInt);
+      localbnrl.c(paramInt);
       return;
     }
-    localbqxb.d(paramInt);
+    localbnrl.d(paramInt);
   }
   
   private void c()
   {
     this.jdField_b_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Bqwc = new bqwc();
+    this.jdField_a_of_type_Bnqm = new bnqm();
     float f1 = a();
-    this.jdField_a_of_type_Bqwc.a(getContext(), this.jdField_a_of_type_JavaUtilList.size(), (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F + f1, (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F - f1, this);
-    this.jdField_b_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Bqwc);
+    this.jdField_a_of_type_Bnqm.a(getContext(), this.jdField_a_of_type_JavaUtilList.size(), (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F + f1, (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F - f1, this);
+    this.jdField_b_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Bnqm);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Math.round(this.jdField_b_of_type_Float), -1);
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, 0, Math.round(this.c), 0);
@@ -215,24 +215,24 @@ public class PickerBarLayout
   public void a()
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_Bqwc != null) {
-      this.jdField_a_of_type_Bqwc.stop();
+    if (this.jdField_a_of_type_Bnqm != null) {
+      this.jdField_a_of_type_Bnqm.stop();
     }
-    if (this.jdField_a_of_type_Bqwt != null) {
-      this.jdField_a_of_type_Bqwt.stop();
+    if (this.jdField_a_of_type_Bnrd != null) {
+      this.jdField_a_of_type_Bnrd.stop();
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_Bqwt != null)
+    if (this.jdField_a_of_type_Bnrd != null)
     {
-      this.jdField_a_of_type_Bqwt.a();
-      this.jdField_a_of_type_Bqwt = null;
+      this.jdField_a_of_type_Bnrd.a();
+      this.jdField_a_of_type_Bnrd = null;
     }
     this.jdField_b_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_Bqwc != null)
+    if (this.jdField_a_of_type_Bnqm != null)
     {
-      this.jdField_a_of_type_Bqwc.a();
-      this.jdField_a_of_type_Bqwc = null;
+      this.jdField_a_of_type_Bnqm.a();
+      this.jdField_a_of_type_Bnqm = null;
     }
     this.jdField_a_of_type_Int = -1;
   }
@@ -247,24 +247,24 @@ public class PickerBarLayout
     a(this.jdField_b_of_type_Int, true, false);
     int k;
     int m;
-    if ((this.jdField_a_of_type_Bqwt != null) && (this.jdField_a_of_type_Bqwc != null))
+    if ((this.jdField_a_of_type_Bnrd != null) && (this.jdField_a_of_type_Bnqm != null))
     {
-      k = this.jdField_a_of_type_Bqwt.a();
-      boolean bool1 = this.jdField_a_of_type_Bqwt.isRunning();
-      m = this.jdField_a_of_type_Bqwc.a();
-      boolean bool2 = this.jdField_a_of_type_Bqwc.isRunning();
+      k = this.jdField_a_of_type_Bnrd.a();
+      boolean bool1 = this.jdField_a_of_type_Bnrd.isRunning();
+      m = this.jdField_a_of_type_Bnqm.a();
+      boolean bool2 = this.jdField_a_of_type_Bnqm.isRunning();
       if (QLog.isColorLevel()) {
         QLog.d("PickerBarLayout", 2, "drawable state, markdrawble:" + k + " isrun:" + bool1 + "  groundrawable:" + m + " isrun:" + bool2);
       }
       if ((k != 1) || (m != 0)) {
         break label223;
       }
-      this.jdField_a_of_type_Bqwt.stop();
-      this.jdField_a_of_type_Bqwt.a(6);
-      this.jdField_a_of_type_Bqwt.start();
-      this.jdField_a_of_type_Bqwc.stop();
-      this.jdField_a_of_type_Bqwc.a(1);
-      this.jdField_a_of_type_Bqwc.start();
+      this.jdField_a_of_type_Bnrd.stop();
+      this.jdField_a_of_type_Bnrd.a(6);
+      this.jdField_a_of_type_Bnrd.start();
+      this.jdField_a_of_type_Bnqm.stop();
+      this.jdField_a_of_type_Bnqm.a(1);
+      this.jdField_a_of_type_Bnqm.start();
     }
     label223:
     do
@@ -272,33 +272,33 @@ public class PickerBarLayout
       return;
       if (k == 4)
       {
-        this.jdField_a_of_type_Bqwt.stop();
-        this.jdField_a_of_type_Bqwt.a(2);
-        this.jdField_a_of_type_Bqwt.start();
+        this.jdField_a_of_type_Bnrd.stop();
+        this.jdField_a_of_type_Bnrd.a(2);
+        this.jdField_a_of_type_Bnrd.start();
         return;
       }
       if (m == 3)
       {
-        this.jdField_a_of_type_Bqwc.stop();
-        this.jdField_a_of_type_Bqwc.a(1);
-        this.jdField_a_of_type_Bqwc.start();
+        this.jdField_a_of_type_Bnqm.stop();
+        this.jdField_a_of_type_Bnqm.a(1);
+        this.jdField_a_of_type_Bnqm.start();
         return;
       }
       if (k == 5)
       {
-        this.jdField_a_of_type_Bqwt.stop();
-        this.jdField_a_of_type_Bqwt.a(6);
-        this.jdField_a_of_type_Bqwt.start();
-        this.jdField_a_of_type_Bqwc.stop();
-        this.jdField_a_of_type_Bqwc.a(1);
-        this.jdField_a_of_type_Bqwc.start();
+        this.jdField_a_of_type_Bnrd.stop();
+        this.jdField_a_of_type_Bnrd.a(6);
+        this.jdField_a_of_type_Bnrd.start();
+        this.jdField_a_of_type_Bnqm.stop();
+        this.jdField_a_of_type_Bnqm.a(1);
+        this.jdField_a_of_type_Bnqm.start();
         return;
       }
       if (m == 4)
       {
-        this.jdField_a_of_type_Bqwc.stop();
-        this.jdField_a_of_type_Bqwc.a(1);
-        this.jdField_a_of_type_Bqwc.start();
+        this.jdField_a_of_type_Bnqm.stop();
+        this.jdField_a_of_type_Bnqm.a(1);
+        this.jdField_a_of_type_Bnqm.start();
         return;
       }
     } while (!QLog.isColorLevel());
@@ -312,27 +312,27 @@ public class PickerBarLayout
     {
       b(paramInt, true, true);
       return;
-      if ((paramInt != 4) && (this.jdField_a_of_type_Bqwt != null)) {
-        this.jdField_a_of_type_Bqwt.stop();
+      if ((paramInt != 4) && (this.jdField_a_of_type_Bnrd != null)) {
+        this.jdField_a_of_type_Bnrd.stop();
       }
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 != 4) || (this.jdField_a_of_type_Bqwc == null) || (paramInt3 == 0)) {}
+    if ((paramInt1 != 4) || (this.jdField_a_of_type_Bnqm == null) || (paramInt3 == 0)) {}
     RectF localRectF;
     do
     {
       return;
-      localRectF = this.jdField_a_of_type_Bqwc.a(this.j);
+      localRectF = this.jdField_a_of_type_Bnqm.a(this.j);
     } while (localRectF == null);
     c((localRectF.centerY() - this.j + this.i) * (paramInt2 + 1) / paramInt3 + (this.j - this.i));
   }
   
   public void a(int paramInt1, int paramInt2, RectF paramRectF)
   {
-    if ((this.jdField_a_of_type_Bqwc != null) && (paramRectF != null)) {
+    if ((this.jdField_a_of_type_Bnqm != null) && (paramRectF != null)) {
       c(paramRectF.centerY());
     }
   }
@@ -348,25 +348,25 @@ public class PickerBarLayout
   {
     this.jdField_b_of_type_Int = paramInt;
     setMarkText(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Bqwc != null) {
-      this.jdField_a_of_type_Bqwc.a(this.jdField_b_of_type_Int, true, paramBoolean);
+    if (this.jdField_a_of_type_Bnqm != null) {
+      this.jdField_a_of_type_Bnqm.a(this.jdField_b_of_type_Int, true, paramBoolean);
     }
     invalidate();
   }
   
-  public boolean a(EditVideoParams paramEditVideoParams, Context paramContext, bqxb parambqxb)
+  public boolean a(EditVideoParams paramEditVideoParams, Context paramContext, bnrl parambnrl)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambqxb);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnrl);
     a(paramContext);
     this.jdField_a_of_type_JavaUtilList.add("4x");
     this.jdField_a_of_type_JavaUtilList.add("2x");
     this.jdField_a_of_type_JavaUtilList.add("1x");
-    if (paramEditVideoParams.h())
+    if (paramEditVideoParams.f())
     {
       this.jdField_a_of_type_JavaUtilList.add("1/2");
       this.jdField_a_of_type_JavaUtilList.add("1/4");
     }
-    if (paramEditVideoParams.g()) {
+    if (paramEditVideoParams.e()) {
       this.jdField_a_of_type_JavaUtilList.add(PickerContainer.a);
     }
     c();
@@ -386,22 +386,22 @@ public class PickerBarLayout
     }
     a(this.jdField_b_of_type_Int, false, true);
     int m;
-    if ((this.jdField_a_of_type_Bqwt != null) && (this.jdField_a_of_type_Bqwc != null))
+    if ((this.jdField_a_of_type_Bnrd != null) && (this.jdField_a_of_type_Bnqm != null))
     {
-      this.jdField_a_of_type_Bqwc.a(this.jdField_b_of_type_Int, false, false);
-      k = this.jdField_a_of_type_Bqwt.a();
-      boolean bool1 = this.jdField_a_of_type_Bqwt.isRunning();
-      m = this.jdField_a_of_type_Bqwc.a();
-      boolean bool2 = this.jdField_a_of_type_Bqwc.isRunning();
+      this.jdField_a_of_type_Bnqm.a(this.jdField_b_of_type_Int, false, false);
+      k = this.jdField_a_of_type_Bnrd.a();
+      boolean bool1 = this.jdField_a_of_type_Bnrd.isRunning();
+      m = this.jdField_a_of_type_Bnqm.a();
+      boolean bool2 = this.jdField_a_of_type_Bnqm.isRunning();
       if (QLog.isColorLevel()) {
         QLog.d("PickerBarLayout", 2, "drawable state, markdrawble:" + k + " isrun:" + bool1 + "  groundrawable:" + m + " isrun:" + bool2);
       }
       if ((k != 3) || (m != 2)) {
         break label228;
       }
-      this.jdField_a_of_type_Bqwt.stop();
-      this.jdField_a_of_type_Bqwt.a(4);
-      this.jdField_a_of_type_Bqwt.start();
+      this.jdField_a_of_type_Bnrd.stop();
+      this.jdField_a_of_type_Bnrd.a(4);
+      this.jdField_a_of_type_Bnrd.start();
     }
     label228:
     do
@@ -409,16 +409,16 @@ public class PickerBarLayout
       return;
       if (m == 1)
       {
-        this.jdField_a_of_type_Bqwc.stop();
-        this.jdField_a_of_type_Bqwc.a(3);
-        this.jdField_a_of_type_Bqwc.start();
+        this.jdField_a_of_type_Bnqm.stop();
+        this.jdField_a_of_type_Bnqm.a(3);
+        this.jdField_a_of_type_Bnqm.start();
         return;
       }
       if (k == 2)
       {
-        this.jdField_a_of_type_Bqwt.stop();
-        this.jdField_a_of_type_Bqwt.a(4);
-        this.jdField_a_of_type_Bqwt.start();
+        this.jdField_a_of_type_Bnrd.stop();
+        this.jdField_a_of_type_Bnrd.a(4);
+        this.jdField_a_of_type_Bnrd.start();
         return;
       }
     } while (!QLog.isColorLevel());
@@ -432,15 +432,15 @@ public class PickerBarLayout
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
-      if (this.jdField_a_of_type_Bqwc.a(this.j) != null) {
+      if (this.jdField_a_of_type_Bnqm.a(this.j) != null) {
         c(this.j - this.i);
       }
-      if (this.jdField_a_of_type_Bqwt != null)
+      if (this.jdField_a_of_type_Bnrd != null)
       {
         setMarkText(this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_Bqwt.stop();
-        this.jdField_a_of_type_Bqwt.a(2);
-        this.jdField_a_of_type_Bqwt.start();
+        this.jdField_a_of_type_Bnrd.stop();
+        this.jdField_a_of_type_Bnrd.a(2);
+        this.jdField_a_of_type_Bnrd.start();
       }
     }
     for (;;)
@@ -449,9 +449,9 @@ public class PickerBarLayout
       return;
       if (paramInt == 3)
       {
-        if (this.jdField_a_of_type_Bqwc != null)
+        if (this.jdField_a_of_type_Bnqm != null)
         {
-          RectF localRectF = this.jdField_a_of_type_Bqwc.a();
+          RectF localRectF = this.jdField_a_of_type_Bnqm.a();
           if (localRectF != null) {
             c(localRectF.centerY());
           }
@@ -459,26 +459,26 @@ public class PickerBarLayout
         if (this.jdField_a_of_type_AndroidViewView != null) {
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
         }
-        if (this.jdField_a_of_type_Bqwt != null)
+        if (this.jdField_a_of_type_Bnrd != null)
         {
-          this.jdField_a_of_type_Bqwt.stop();
-          this.jdField_a_of_type_Bqwt.a(5);
-          this.jdField_a_of_type_Bqwt.start();
+          this.jdField_a_of_type_Bnrd.stop();
+          this.jdField_a_of_type_Bnrd.a(5);
+          this.jdField_a_of_type_Bnrd.start();
         }
       }
-      else if ((paramInt != 4) && (paramInt == 0) && (this.jdField_a_of_type_Bqwt != null))
+      else if ((paramInt != 4) && (paramInt == 0) && (this.jdField_a_of_type_Bnrd != null))
       {
-        this.jdField_a_of_type_Bqwt.stop();
-        this.jdField_a_of_type_Bqwt.a(1);
-        this.jdField_a_of_type_Bqwt.start();
+        this.jdField_a_of_type_Bnrd.stop();
+        this.jdField_a_of_type_Bnrd.a(1);
+        this.jdField_a_of_type_Bnrd.start();
       }
     }
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_Bqwt != null) {
-      this.jdField_a_of_type_Bqwt.stop();
+    if (this.jdField_a_of_type_Bnrd != null) {
+      this.jdField_a_of_type_Bnrd.stop();
     }
   }
   
@@ -496,11 +496,11 @@ public class PickerBarLayout
       return;
       if (paramInt == 4)
       {
-        if (this.jdField_a_of_type_Bqwc != null)
+        if (this.jdField_a_of_type_Bnqm != null)
         {
-          this.jdField_a_of_type_Bqwc.stop();
-          this.jdField_a_of_type_Bqwc.a(3);
-          this.jdField_a_of_type_Bqwc.start();
+          this.jdField_a_of_type_Bnqm.stop();
+          this.jdField_a_of_type_Bnqm.a(3);
+          this.jdField_a_of_type_Bnqm.start();
         }
       }
       else if (paramInt == 6) {
@@ -553,10 +553,10 @@ public class PickerBarLayout
             if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress != null) {
               removeCallbacks(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress);
             }
-            if (this.jdField_a_of_type_Bqwc == null) {
+            if (this.jdField_a_of_type_Bnqm == null) {
               break;
             }
-            paramMotionEvent = this.jdField_a_of_type_Bqwc.a(f1);
+            paramMotionEvent = this.jdField_a_of_type_Bnqm.a(f1);
             if (paramMotionEvent == null) {
               break;
             }
@@ -585,10 +585,10 @@ public class PickerBarLayout
   public void setMarkText(int paramInt)
   {
     if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilList.size())) {}
-    while (this.jdField_a_of_type_Bqwt == null) {
+    while (this.jdField_a_of_type_Bnrd == null) {
       return;
     }
-    this.jdField_a_of_type_Bqwt.a((String)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    this.jdField_a_of_type_Bnrd.a((String)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
 }
 

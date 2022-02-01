@@ -6,12 +6,14 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
 
-public class QZoneMsgManager$3
+class QZoneMsgManager$3
   implements Runnable
 {
+  QZoneMsgManager$3(QZoneMsgManager paramQZoneMsgManager, QQAppInterface paramQQAppInterface) {}
+  
   public void run()
   {
-    EntityManager localEntityManager = this.a.a().createEntityManager();
+    EntityManager localEntityManager = this.val$app.getEntityManagerFactory().createEntityManager();
     try
     {
       localEntityManager.drop(QZoneMsgEntityNew.class);

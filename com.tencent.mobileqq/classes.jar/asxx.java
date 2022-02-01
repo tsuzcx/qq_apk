@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import android.os.Bundle;
 
-public class asxx
-  implements atdp
+class asxx
+  implements asxy
 {
-  public asxx(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  asxx(asxw paramasxw) {}
   
-  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
+    }
   }
   
-  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
   {
-    atcb.a(ExtendFriendCampusFragment.a(this.a), false);
-    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
+    }
   }
 }
 

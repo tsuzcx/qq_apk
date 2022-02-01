@@ -1,35 +1,51 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.api.banner.GdtBannerAd;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 public class acpj
   implements View.OnClickListener
 {
-  public acpj(GdtBannerAd paramGdtBannerAd, acpm paramacpm) {}
+  public acpj(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void onClick(View paramView)
   {
-    acvc.b("GdtBannerAd", "getView().onClick");
-    if (!GdtBannerAd.access$200(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd)) {
-      acvc.d("GdtBannerAd", "getView().onClick !isValidClick()");
-    }
-    for (;;)
+    String str1 = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    int i = 0;
+    String str2;
+    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      GdtHandler.Params localParams = GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-      acpm localacpm = this.jdField_a_of_type_Acpm;
-      localParams.a = acpm.a.onClick(paramView);
-      if (GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
-        GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+      str2 = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
+      if (!"".equals(str2)) {}
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690023), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
       }
-      GdtHandler.a(GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
-      GdtBannerAd.access$400(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
+      for (;;)
+      {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
+        }
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+          bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        str1 = str1.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str2));
+        i += 1;
+        break;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(str1, null, "");
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import bdll;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class RecentItemPublicAccountChatMsgData$3
@@ -10,7 +10,7 @@ class RecentItemPublicAccountChatMsgData$3
   
   public void run()
   {
-    bdll.b(this.a, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
+    bcef.b(this.a, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
   }
 }
 

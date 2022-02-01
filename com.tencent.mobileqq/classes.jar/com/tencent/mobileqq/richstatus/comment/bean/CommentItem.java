@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.bean;
 
-import bbvl;
+import bapg;
 import java.io.Serializable;
 
 public class CommentItem
@@ -11,12 +11,12 @@ public class CommentItem
   public long id;
   public long targetId;
   public long timeStamp;
-  public bbvl toReplyUser;
-  public bbvl user;
+  public bapg toReplyUser;
+  public bapg user;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.bean.CommentItem
  * JD-Core Version:    0.7.0.1
  */

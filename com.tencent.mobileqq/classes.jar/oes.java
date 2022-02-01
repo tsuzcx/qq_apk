@@ -1,10 +1,19 @@
-import com.google.gson.reflect.TypeToken;
-import java.util.Set;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-class oes
-  extends TypeToken<Set<Long>>
+public final class oes
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  oes(oer paramoer) {}
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
+  {
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+  }
+  
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  {
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
+  }
 }
 
 

@@ -1,23 +1,33 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
-public class axbe
-  implements ValueAnimator.AnimatorUpdateListener
+class axbe
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public axbe(MedalGuideView paramMedalGuideView) {}
+  axbe(axax paramaxax) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onGlobalLayout()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    MedalGuideView.a(this.a, f);
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
+    if (i <= 0) {}
+    int j;
+    do
+    {
+      return;
+      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
+    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
+    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
+    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
   }
 }
 

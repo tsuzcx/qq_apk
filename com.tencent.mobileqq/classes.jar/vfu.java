@@ -1,246 +1,122 @@
-import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.requests.QCircleGetRankingListRequest;
-import com.tencent.biz.qqcircle.widgets.QCircleFuelTopView;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.subscribe.event.TagDescPublishEvent;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StRankingItem;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudRead.StGetRankingListRsp;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class vfu
-  extends vbk
-  implements aaam, View.OnClickListener
+  extends BaseAdapter
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QCircleFuelTopView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView;
-  private List<FeedCloudMeta.StRankingItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private TextView b;
+  public vfu(vfs paramvfs) {}
   
-  private void a()
+  public vgc a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    aaak.a().a(this);
-  }
-  
-  private void a(View paramView, FeedCloudMeta.StTagInfo paramStTagInfo)
-  {
-    paramView = ((ViewStub)paramView.findViewById(2131381256)).inflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369343));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370259));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380119));
-    this.b = ((TextView)paramView.findViewById(2131380120));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376860));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView = new QCircleFuelTopView(a());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView.setReportBean(a());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView.setParentPart(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
-  }
-  
-  private void a(FeedCloudMeta.StTagInfo paramStTagInfo)
-  {
-    paramStTagInfo = new QCircleGetRankingListRequest(paramStTagInfo.tagName.get());
-    VSNetworkHelper.a().a(paramStTagInfo, new vfv(this, paramStTagInfo));
-  }
-  
-  private void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetRankingListRsp paramStGetRankingListRsp)
-  {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramStGetRankingListRsp.items.get());
-      if (paramStGetRankingListRsp.items.size() >= 3)
-      {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView.a(paramStGetRankingListRsp);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      }
+    if (vfs.a != null) {
+      return (vgc)vfs.a.get(paramInt);
     }
-  }
-  
-  private void b()
-  {
-    vtr.a(89, 1, a(), b());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FeedCloudMeta.StRankingItem localStRankingItem = (FeedCloudMeta.StRankingItem)localIterator.next();
-      vtr.a(89, 8, a(), b(), localStRankingItem.user.id.get());
-      if (localStRankingItem.user.followState.get() != 1) {
-        vtr.a(89, 9, a(), b(), localStRankingItem.user.id.get());
-      }
-    }
-    g();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null) {
-      d();
-    }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.b, 0, vwt.a(20.0F));
-    e();
-  }
-  
-  private void c()
-  {
-    h();
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-    f();
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView, -1, -2);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755895);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 0.0F, 1.0F }).setDuration(250L).start();
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-    {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 1.0F, 0.0F }).setDuration(200L);
-      localObjectAnimator.addListener(new vfw(this));
-      localObjectAnimator.start();
-    }
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "rotation", new float[] { 0.0F, 180.0F }).setDuration(250L).start();
-    }
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
-    }
-  }
-  
-  public ReportExtraTypeInfo a()
-  {
-    return (ReportExtraTypeInfo)b("get_report_extra_type_info", "");
-  }
-  
-  public String a()
-  {
     return null;
   }
   
-  protected void a(View paramView)
+  public int getCount()
   {
-    super.a(paramView);
-    FeedCloudMeta.StTagInfo localStTagInfo = ((QCircleInitBean)a().getIntent().getSerializableExtra("key_bundle_common_init_bean")).getTagInfo();
-    if (localStTagInfo.has())
-    {
-      a(paramView, localStTagInfo);
-      a();
-      a(localStTagInfo);
+    if (vfs.a != null) {
+      return vfs.a.size();
     }
+    return 0;
   }
   
-  public boolean a()
+  public long getItemId(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject1;
+    Object localObject2;
+    int i;
+    if (paramView == null)
     {
-      c();
-      return true;
-    }
-    return super.a();
-  }
-  
-  protected String b()
-  {
-    return "fuellist";
-  }
-  
-  public ArrayList<Class> getEventClass()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(TagDescPublishEvent.class);
-    return localArrayList;
-  }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    super.onActivityDestroyed(paramActivity);
-    aaak.a().b(this);
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    QLog.d("QCircleTagHeaderPart", 1, "onClick , view id: " + i);
-    switch (i)
-    {
+      localView = LayoutInflater.from(vfs.a()).inflate(2131559597, paramViewGroup, false);
+      paramView = new vfv(this);
+      localObject1 = localView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = ((vfs.b() - AIOUtils.dp2px(110.0F, vfs.a().getResources())) / 3);
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of item is" + ((ViewGroup.LayoutParams)localObject1).height);
+      }
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131376101));
+      localObject2 = paramView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject2).width = ((vfs.c() - AIOUtils.dp2px(2.0F, vfs.a().getResources())) / 2);
+      ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of image is" + ((ViewGroup.LayoutParams)localObject2).height);
+      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376118));
+      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - AIOUtils.dp2px(40.0F, vfs.a().getResources()) > AIOUtils.dp2px(16.0F, vfs.a().getResources()))
+      {
+        i = 2;
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, " number is" + i);
+        }
+        if ((Build.MANUFACTURER.toLowerCase().contains("meizu")) && (Build.VERSION.SDK_INT <= 16))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "this is meizu");
+          }
+          localObject1 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject1).setMargins(12, 0, 12, 1);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
+        }
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(i);
+        localView.setTag(paramView);
+      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      vtr.a(88, 2, a(), b());
-      if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+      localObject1 = a(paramInt);
+      if (localObject1 != null)
       {
-        c();
-      }
-      else
-      {
-        b();
-        continue;
-        if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
-          c();
+        localObject2 = ((vgc)localObject1).a;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#000000"));
+        localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+        localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+        localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+        if ((localObject2 != null) && (((URLDrawable)localObject2).getStatus() == 2)) {
+          ((URLDrawable)localObject2).restartDownload();
+        }
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((vgc)localObject1).b);
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "recommendInfo position = " + paramInt + "; url =" + localObject2 + "; title = " + ((vgc)localObject1).b);
         }
       }
-    }
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((paramSimpleBaseEvent instanceof TagDescPublishEvent))
-    {
-      paramSimpleBaseEvent = (TagDescPublishEvent)paramSimpleBaseEvent;
-      if (!TextUtils.isEmpty(paramSimpleBaseEvent.mTagDesc)) {
-        this.b.setText(paramSimpleBaseEvent.mTagDesc);
-      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      i = 1;
+      break;
+      localObject1 = (vfv)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
     }
   }
 }

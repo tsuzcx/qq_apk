@@ -1,28 +1,53 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.support.annotation.NonNull;
 
-public class plf
-  implements TVK_SDKMgr.InstallListener
+class plf
+  implements Comparable<plf>
 {
-  public plf(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
   
-  public void onInstallProgress(float paramFloat)
+  private plf(ple parample)
   {
-    acvc.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
+    this.jdField_b_of_type_JavaLangString = "nil";
   }
   
-  public void onInstalledFailed(int paramInt)
+  public int a(plf paramplf)
   {
-    acvc.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
+    if (paramplf.jdField_a_of_type_Long > this.jdField_a_of_type_Long) {
+      return 1;
+    }
+    if (paramplf.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return -1;
   }
   
-  public void onInstalledSuccessed()
+  @NonNull
+  public String toString()
   {
-    acvc.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
-    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
-      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    int j = 1;
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_b_of_type_Long).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.c).append("_").append(String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_Float) })).append("_");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      localStringBuilder = localStringBuilder.append(i).append("_");
+      if (!this.jdField_b_of_type_Boolean) {
+        break label128;
+      }
+    }
+    label128:
+    for (int i = j;; i = 0)
+    {
+      return i + "_" + this.jdField_b_of_type_JavaLangString;
+      i = 0;
+      break;
     }
   }
 }

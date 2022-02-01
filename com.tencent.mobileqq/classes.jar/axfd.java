@@ -1,22 +1,9 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
+import java.util.List;
 
-public class axfd
-  extends biia
+public abstract interface axfd
 {
-  public axfd(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
-  {
-    super.a(paramLong, paramInt, paramBundle);
-    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
-    if (new File(paramBundle).exists()) {
-      aggu.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.c(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

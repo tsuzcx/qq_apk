@@ -1,507 +1,451 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.NearbyFlowerManager.1;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.GrayTipsInfo;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.ar.ArNativeSoManager.1;
+import com.tencent.mobileqq.ar.ArNativeSoManager.3;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList<Lcom.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;>;
+import mqq.os.MqqHandler;
 
 public class aocz
-  implements Manager
 {
-  public static int b;
-  public static int c;
-  public static final String e = anzj.a(2131706036);
-  public static final String f = anzj.a(2131706044);
-  public static final String g = anzj.a(2131706039);
-  public int a;
-  public Handler a;
-  public QQAppInterface a;
-  public String a;
-  public HashMap<String, Long> a;
-  Map<String, Long> a;
-  public String b;
-  Map<String, Long> b;
-  public String c;
-  public String d;
-  
-  static
-  {
-    jdField_c_of_type_Int = 60;
-  }
+  aojb jdField_a_of_type_Aojb;
+  private WeakReference<aojg> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aojg> b;
+  private WeakReference<aojg> c;
+  private WeakReference<aojg> d;
   
   public aocz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    a();
+    this.jdField_a_of_type_Aojb = new aojb(paramQQAppInterface);
   }
   
-  private SharedPreferences a()
+  private aojg a(String paramString)
   {
-    return BaseApplicationImpl.sApplication.getSharedPreferences("nearby_flower_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-  }
-  
-  public static final aocz a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    return (aocz)paramQQAppInterface.getManager(124);
-  }
-  
-  private GrayTipsInfo a(String paramString1, String paramString2, AbsStructMsg paramAbsStructMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyFlowerManager", 2, "shouldShowTip start");
-    }
-    int j = 0;
-    int i = 0;
-    Object localObject6 = null;
-    Object localObject1 = null;
-    Object localObject4 = null;
-    Object localObject3 = null;
-    Object localObject5 = null;
     Object localObject2 = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject1;
+    if (paramString.equalsIgnoreCase("arsdk2"))
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      }
-      long l = bcrg.a();
-      if (!bool) {
-        if (((Boolean)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(true))).booleanValue())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyFlowerManager", 2, "shouldShowTip first rec");
-          }
-          localObject1 = this.jdField_c_of_type_JavaLangString;
-          localObject4 = this.d;
-          localObject3 = localObject2;
-          if (Friends.isValidUin(paramString1)) {
-            localObject3 = String.format("https://imgcache.qq.com/club/client/flower/release/html/gift_mall.html?ADTAG=%s&_bid=2050&sourceType=%d&_handle=1&_wv=2147347&platId=1&qqVersion=%s", new Object[] { "aio.m.xiaohuitiao", Integer.valueOf(1), "8.4.5" });
-          }
-          axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(false));
-          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B6", "0X80060B6", 0, 0, "", "", "", "");
-          localObject2 = localObject4;
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        localObject4 = null;
-        if (i != 0)
-        {
-          localObject1 = a(bool, (String)localObject1, paramAbsStructMsg);
-          paramAbsStructMsg = new GrayTipsInfo();
-          paramAbsStructMsg.text = ((String)localObject1);
-          localObject4 = paramAbsStructMsg;
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            localObject4 = paramAbsStructMsg;
-            if (((String)localObject1).contains((CharSequence)localObject2))
-            {
-              i = ((String)localObject1).indexOf((String)localObject2);
-              localObject1 = new GrayTipsSpan(i, ((String)localObject2).length() + i, (String)localObject3);
-              localObject2 = new ArrayList();
-              ((ArrayList)localObject2).add(localObject1);
-              paramAbsStructMsg.spans = ((ArrayList)localObject2);
-              localObject4 = paramAbsStructMsg;
-            }
-          }
-        }
-        paramAbsStructMsg = this.jdField_a_of_type_JavaUtilHashMap;
-        if (bool) {}
-        for (;;)
-        {
-          paramAbsStructMsg.put(paramString2, Long.valueOf(l));
-          return localObject4;
-          localObject2 = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-          if ((localObject2 != null) && (l - ((Long)localObject2).longValue() <= jdField_c_of_type_Int)) {
-            break label590;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyFlowerManager", 2, "shouldShowTip rec >60s");
-          }
-          localObject1 = a(paramAbsStructMsg);
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label584;
-          }
-          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B8", "0X80060B8", 0, 0, "", "", "", "");
-          localObject2 = null;
-          i = 1;
-          break;
-          Long localLong = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-          if (localLong != null)
-          {
-            localObject1 = localObject6;
-            i = j;
-            localObject3 = localObject5;
-            localObject2 = localObject4;
-            if (l - localLong.longValue() <= jdField_c_of_type_Int) {
-              break;
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyFlowerManager", 2, "shouldShowTip send >60s");
-          }
-          localObject1 = this.jdField_a_of_type_JavaLangString;
-          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B5", "0X80060B5", 0, 0, "", "", "", "");
-          i = 1;
-          localObject3 = localObject5;
-          localObject2 = localObject4;
-          break;
-          paramString2 = paramString1;
-        }
-        label584:
-        localObject2 = null;
-        continue;
-        label590:
-        localObject2 = null;
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+        localObject1 = (aojg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       }
     }
-  }
-  
-  private String a(AbsStructMsg paramAbsStructMsg)
-  {
-    String str = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyFlowerManager", 2, "getFlowerFlorid");
-    }
-    Object localObject = str;
-    if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+    do
     {
-      paramAbsStructMsg = (StructMsgForGeneralShare)paramAbsStructMsg;
-      localObject = str;
-      if (paramAbsStructMsg.getItemCount() > 0)
-      {
-        paramAbsStructMsg = paramAbsStructMsg.getItemByIndex(0);
-        if (!(paramAbsStructMsg instanceof bdqx)) {
-          break label147;
-        }
-        paramAbsStructMsg = ((bdqx)paramAbsStructMsg).a.getString("cMean");
-      }
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty(paramAbsStructMsg)) && (this.jdField_b_of_type_JavaLangString.contains("XX朵YY")))
-      {
-        str = this.jdField_b_of_type_JavaLangString.replace("XX朵YY", paramAbsStructMsg);
-        localObject = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("NearbyFlowerManager", 2, "getFlowerFlorid,cMean:" + paramAbsStructMsg + " wording:" + str);
-          localObject = str;
-        }
-      }
-      label147:
+      aogb localaogb;
       do
       {
-        return localObject;
-        if (!(paramAbsStructMsg instanceof bdsk)) {
-          break label248;
-        }
-        paramAbsStructMsg = ((bdsk)paramAbsStructMsg).a.iterator();
         do
         {
-          if (!paramAbsStructMsg.hasNext()) {
-            break;
-          }
-          localObject = (bdol)paramAbsStructMsg.next();
-        } while (!(localObject instanceof StructMsgItemTitle));
-        paramAbsStructMsg = ((StructMsgItemTitle)localObject).b();
-        break;
-        localObject = str;
-      } while (!QLog.isColorLevel());
-      QLog.i("NearbyFlowerManager", 2, "getFlowerFlorid,cMean:" + paramAbsStructMsg + " wording:" + null);
-      return null;
-      label248:
-      paramAbsStructMsg = null;
+          do
+          {
+            do
+            {
+              return localObject1;
+              if (!paramString.equalsIgnoreCase("arcloud")) {
+                break;
+              }
+              localObject1 = localObject2;
+            } while (this.b == null);
+            return (aojg)this.b.get();
+            if (!paramString.equalsIgnoreCase("arfeature")) {
+              break;
+            }
+            localObject1 = localObject2;
+          } while (this.d == null);
+          return (aojg)this.d.get();
+          localaogb = aofz.a();
+          localObject1 = localObject2;
+        } while (localaogb == null);
+        localObject1 = localObject2;
+      } while (!paramString.equalsIgnoreCase(localaogb.a()));
+      localObject1 = localObject2;
+    } while (this.c == null);
+    return (aojg)this.c.get();
+  }
+  
+  private String a(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("arsdk2")) {
+      return aodh.a();
+    }
+    if (paramString.equalsIgnoreCase("arcloud")) {
+      return "v8.4.1.1";
+    }
+    if (paramString.equalsIgnoreCase("arfeature")) {
+      return "v8.0.0";
+    }
+    aogb localaogb = aofz.a();
+    if ((localaogb != null) && (paramString.equalsIgnoreCase(localaogb.a()))) {
+      return localaogb.b();
+    }
+    return "";
+  }
+  
+  private void a(ARCommonConfigInfo.NativeSoRes paramNativeSoRes, aojh paramaojh)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes. fileName = " + paramaojh.c + ", url = " + paramaojh.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aojb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aojb.a(paramaojh, new aodb(this, paramNativeSoRes));
+  }
+  
+  private void a(String paramString)
+  {
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      paramString.delete();
     }
   }
   
-  private String a(boolean paramBoolean, String paramString, AbsStructMsg paramAbsStructMsg)
+  private void a(String paramString, aojg paramaojg)
   {
-    String str = paramString;
-    if (paramString.contains("Ta"))
+    if (paramString.equalsIgnoreCase("arsdk2")) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaojg);
+    }
+    aogb localaogb;
+    do
     {
-      str = paramString;
-      if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+      return;
+      if (paramString.equalsIgnoreCase("arcloud"))
       {
-        paramAbsStructMsg = (StructMsgForGeneralShare)paramAbsStructMsg;
-        str = paramString;
-        if (paramAbsStructMsg.getItemCount() > 0)
+        this.b = new WeakReference(paramaojg);
+        return;
+      }
+      if (paramString.equalsIgnoreCase("arfeature"))
+      {
+        this.d = new WeakReference(paramaojg);
+        return;
+      }
+      localaogb = aofz.a();
+    } while ((localaogb == null) || (!paramString.equalsIgnoreCase(localaogb.a())));
+    this.c = new WeakReference(paramaojg);
+  }
+  
+  private boolean a(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("arsdk2")) {
+      return aodh.a();
+    }
+    if (paramString.equalsIgnoreCase("arcloud")) {
+      return aock.a();
+    }
+    if (paramString.equalsIgnoreCase("arfeature")) {
+      return aocw.a();
+    }
+    aogb localaogb = aofz.a();
+    if ((localaogb != null) && (paramString.equalsIgnoreCase(localaogb.a()))) {
+      return aofz.b(localaogb);
+    }
+    return true;
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    int i = 0;
+    QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. dir = " + paramString1 + ", excludeSubDirOrFile = " + paramString2);
+    paramString1 = new File(paramString1).listFiles();
+    if (paramString1 == null) {
+      return false;
+    }
+    boolean bool = false;
+    if (i < paramString1.length)
+    {
+      Object localObject = paramString1[i];
+      if (!localObject.getAbsolutePath().equalsIgnoreCase(paramString2)) {
+        if (localObject.isDirectory())
         {
-          bdol localbdol = paramAbsStructMsg.getItemByIndex(0);
-          str = paramString;
-          if ((localbdol instanceof bdqx))
+          bool = a(localObject.getAbsolutePath(), paramString2);
+          if (bool)
           {
-            if (!paramBoolean) {
-              break label118;
-            }
-            paramAbsStructMsg = "rSex";
-            paramAbsStructMsg = ((bdqx)localbdol).a.getString(paramAbsStructMsg);
-            str = paramString;
-            if (!TextUtils.isEmpty(paramAbsStructMsg)) {
-              if (Integer.valueOf(paramAbsStructMsg).intValue() != 2) {
-                break label125;
-              }
-            }
+            QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = " + localObject.getAbsolutePath());
+            bool = true;
           }
         }
       }
-    }
-    label118:
-    label125:
-    for (paramAbsStructMsg = anzj.a(2131706035);; paramAbsStructMsg = anzj.a(2131706045))
-    {
-      str = paramString.replace("Ta", paramAbsStructMsg);
-      return str;
-      paramAbsStructMsg = "sSex";
-      break;
-    }
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaLangString = ((String)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "senderGrayTip", e));
-    this.jdField_b_of_type_JavaLangString = ((String)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "receiverGrayTip", "Ta送了你XX朵YY，快和Ta说声谢谢吧。"));
-    this.jdField_c_of_type_JavaLangString = ((String)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", f));
-    this.d = ((String)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeHighLight", g));
-    jdField_b_of_type_Int = ((Integer)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(jdField_b_of_type_Int))).intValue();
-    this.jdField_a_of_type_Int = ((Integer)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(0))).intValue();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ThreadManager.postImmediately(new NearbyFlowerManager.1(paramQQAppInterface, paramString), null, true);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    bdll.b(null, "dc00899", "grp_lbs", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
-  }
-  
-  public MessageRecord a(String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyFlowerManager", 2, "insertFlowerTipMsg start");
-    }
-    paramString2 = a(paramString1, paramString2, paramAbsStructMsg);
-    if (paramString2 != null)
-    {
-      paramAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      long l = bcrg.a();
-      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)bcry.a(-2037);
-      localMessageForNewGrayTips.init(paramAbsStructMsg, paramString1, paramAbsStructMsg, paramString2.text, l, -2037, paramInt, l);
-      localMessageForNewGrayTips.isread = true;
-      localMessageForNewGrayTips.spans = paramString2.spans;
-      localMessageForNewGrayTips.updateMsgData();
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyFlowerManager", 2, "insertFlowerTipMsg has grayTip");
+      for (;;)
+      {
+        i += 1;
+        break;
+        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. delete dir or file = " + localObject.getAbsolutePath());
+        localObject.delete();
+        continue;
+        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. delete dir or file = " + localObject.getAbsolutePath());
+        localObject.delete();
+        continue;
+        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = " + localObject.getAbsolutePath());
+        bool = true;
       }
-      return localMessageForNewGrayTips;
     }
-    return null;
+    return bool;
   }
   
-  public String a(String paramString)
+  private void b(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString, aojg paramaojg)
   {
-    return paramString + "_key_time_joinhotchat";
-  }
-  
-  public void a(String paramString)
-  {
-    long l = bcrg.a();
-    a().edit().putLong(a(paramString), l);
-    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyFlowerManager", 2, "handleGetNewConfig:" + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
+    boolean bool = false;
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadArNativeSo. resName = " + paramString);
+    String str = a(paramString);
+    a(paramString, paramaojg);
+    Object localObject1 = new ARCommonConfigInfo.NativeSoRes();
+    int i = 0;
+    Object localObject2;
+    if (i < paramArrayList.size())
+    {
+      localObject2 = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
+      if ((((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject2).b.equalsIgnoreCase(str)))
+      {
+        paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject2;
+        i = 1;
+      }
     }
     for (;;)
     {
-      try
+      if ((i != 0) && (this.jdField_a_of_type_Aojb != null))
       {
-        JSONObject localJSONObject = new JSONObject(paramString2);
-        if (!localJSONObject.has("senderGrayTip")) {
-          break label447;
-        }
-        paramString2 = localJSONObject.getString("senderGrayTip");
-        if (!localJSONObject.has("receiverGrayTip")) {
-          break label469;
-        }
-        str1 = localJSONObject.getString("receiverGrayTip");
-        if (!localJSONObject.has("exchangeGrayTip")) {
-          break label476;
-        }
-        str2 = localJSONObject.getString("exchangeGrayTip");
-        if (!localJSONObject.has("exchangeHighLight")) {
-          break label483;
-        }
-        str3 = localJSONObject.getString("exchangeHighLight");
-        if (!localJSONObject.has("openFlag")) {
-          break label453;
-        }
-        i = localJSONObject.getInt("openFlag");
-        if (!localJSONObject.has("groupAnimationScore")) {
-          break label460;
-        }
-        j = localJSONObject.getInt("groupAnimationScore");
-        if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals(this.jdField_a_of_type_JavaLangString)))
+        localObject1 = aocy.a(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList.b, paramArrayList.d) + File.separator + paramArrayList.d + ".zip";
+        if (!b((String)localObject1, paramArrayList.d))
         {
-          this.jdField_a_of_type_JavaLangString = paramString2;
-          axws.a(paramString1, "sp_file_nearby_flower_tip", 0, "senderGrayTip", this.jdField_a_of_type_JavaLangString);
-        }
-        if ((!TextUtils.isEmpty(str1)) && (!paramString2.equals(this.jdField_b_of_type_JavaLangString)))
-        {
-          this.jdField_b_of_type_JavaLangString = str1;
-          axws.a(paramString1, "sp_file_nearby_flower_tip", 0, "receiverGrayTip", this.jdField_b_of_type_JavaLangString);
-        }
-        if ((!TextUtils.isEmpty(str2)) && (!paramString2.equals(this.jdField_c_of_type_JavaLangString)))
-        {
-          this.jdField_c_of_type_JavaLangString = str2;
-          axws.a(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", this.jdField_c_of_type_JavaLangString);
-        }
-        if ((!TextUtils.isEmpty(str3)) && (!paramString2.equals(this.d)))
-        {
-          this.d = str3;
-          axws.a(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeHighLight", this.d);
-        }
-        if (i != jdField_b_of_type_Int)
-        {
-          jdField_b_of_type_Int = i;
-          axws.a(paramString1, "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(jdField_b_of_type_Int));
-        }
-        if (j != this.jdField_a_of_type_Int)
-        {
-          this.jdField_a_of_type_Int = j;
-          axws.a(paramString1, "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(this.jdField_a_of_type_Int));
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("NearbyFlowerManager", 2, "handleGetNewConfig parse success");
-        return;
-      }
-      catch (JSONException paramString1) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("NearbyFlowerManager", 2, "handleGetNewConfig parse exception:" + paramString1);
-      paramString1.printStackTrace();
-      return;
-      label447:
-      paramString2 = "";
-      continue;
-      label453:
-      int i = jdField_b_of_type_Int;
-      continue;
-      label460:
-      int j = this.jdField_a_of_type_Int;
-      continue;
-      label469:
-      String str1 = "";
-      continue;
-      label476:
-      String str2 = "";
-      continue;
-      label483:
-      String str3 = "";
-    }
-  }
-  
-  public void a(List<HotChatInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyFlowerManager", 2, "onGetJoinedHotchats:" + paramList.size());
-    }
-    Object localObject1 = a();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-    try
-    {
-      localObject1 = ((SharedPreferences)localObject1).getAll();
-      if (localObject1 == null) {
-        return;
-      }
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
-    }
-    catch (Exception localException)
-    {
-      String str;
-      for (;;)
-      {
-        str = null;
-      }
-      HashSet localHashSet = new HashSet();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localHashSet.add(((HotChatInfo)paramList.next()).troopUin);
-      }
-      paramList = str.entrySet().iterator();
-      while (paramList.hasNext())
-      {
-        str = (String)((Map.Entry)paramList.next()).getKey();
-        if (!localHashSet.contains(str))
-        {
-          localEditor.remove(str);
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyFlowerManager", 2, "onGetJoinedHotchats.remove:" + str);
+          a((String)localObject1);
+          if ((!TextUtils.isEmpty(paramArrayList.c)) && (!TextUtils.isEmpty(paramArrayList.d)))
+          {
+            localObject2 = new aojh();
+            ((aojh)localObject2).jdField_a_of_type_Int = 5;
+            ((aojh)localObject2).jdField_a_of_type_JavaLangString = paramArrayList.c;
+            ((aojh)localObject2).b = paramArrayList.d;
+            ((aojh)localObject2).d = paramArrayList.jdField_a_of_type_JavaLangString;
+            ((aojh)localObject2).c = ((String)localObject1);
+            ((aojh)localObject2).jdField_a_of_type_Boolean = true;
+            this.jdField_a_of_type_Aojb.a((aojh)localObject2, new aoda(this, paramString, paramaojg));
           }
         }
       }
-      localEditor.commit();
+      label370:
+      while (paramaojg == null)
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              i += 1;
+              break;
+              QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = " + (String)localObject1);
+            } while (paramaojg == null);
+            paramaojg.a(false, null);
+            return;
+            if (a(paramString)) {
+              break label370;
+            }
+            i = a(paramString, (String)localObject1, paramArrayList.d);
+          } while (paramaojg == null);
+          if (i == 0) {
+            bool = true;
+          }
+          paramaojg.a(bool, null);
+          return;
+        } while (paramaojg == null);
+        paramaojg.a(true, null);
+        return;
+      }
+      paramaojg.a(false, null);
+      return;
+      i = 0;
+      paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject1;
     }
   }
   
-  public void b(String paramString)
+  private void b(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList1, ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList2, String paramString)
   {
-    a().edit().remove(a(paramString));
-    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(0L));
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. resName = " + paramString);
+    String str1 = a(paramString);
+    int i = 0;
+    if (i < paramArrayList2.size())
+    {
+      ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList2.get(i);
+      String str2;
+      if (localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
+        if (localNativeSoRes.b.equalsIgnoreCase(str1))
+        {
+          str2 = aocy.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
+          if (!b(str2, localNativeSoRes.d))
+          {
+            a(str2);
+            if ((!TextUtils.isEmpty(localNativeSoRes.c)) && (!TextUtils.isEmpty(localNativeSoRes.d)))
+            {
+              int j = 0;
+              while (j < paramArrayList1.size())
+              {
+                localObject = (ARCommonConfigInfo.NativeSoRes)paramArrayList1.get(j);
+                if ((((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject).b.equalsIgnoreCase(str1))) {
+                  a(aocy.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString), aocy.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString, ((ARCommonConfigInfo.NativeSoRes)localObject).b, ((ARCommonConfigInfo.NativeSoRes)localObject).d));
+                }
+                j += 1;
+              }
+              Object localObject = new aojh();
+              ((aojh)localObject).jdField_a_of_type_Int = 5;
+              ((aojh)localObject).jdField_a_of_type_JavaLangString = localNativeSoRes.c;
+              ((aojh)localObject).b = localNativeSoRes.d;
+              ((aojh)localObject).d = localNativeSoRes.jdField_a_of_type_JavaLangString;
+              ((aojh)localObject).c = str2;
+              ((aojh)localObject).jdField_a_of_type_Boolean = true;
+              a(localNativeSoRes, (aojh)localObject);
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = " + str2);
+        continue;
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soRes exists, not need to download. soZipFilename = " + str2);
+        if (a(paramString, str2, localNativeSoRes.d) == 0)
+        {
+          continue;
+          QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soResVersion is not need to download. soResName = " + localNativeSoRes.jdField_a_of_type_JavaLangString + ", soResVersionFromConfig = " + localNativeSoRes.b + ", soResVersionFromLocal = " + str1);
+          continue;
+          QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soResName is not need to download. soResName = " + localNativeSoRes.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
   
-  public void onDestroy()
+  private boolean b(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (new File(paramString1).exists())
+    {
+      if (!paramString2.equalsIgnoreCase(ayja.a(paramString1)))
+      {
+        QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+        return false;
+      }
+      return true;
+    }
+    QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. file is not exist. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+    return false;
+  }
+  
+  /* Error */
+  public int a(String paramString1, String paramString2, String paramString3)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ldc 29
+    //   5: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   8: ifeq +15 -> 23
+    //   11: aload_2
+    //   12: aload_3
+    //   13: invokestatic 271	aodh:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   16: istore 4
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: iload 4
+    //   22: ireturn
+    //   23: aload_1
+    //   24: ldc 47
+    //   26: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   29: ifeq +13 -> 42
+    //   32: aload_2
+    //   33: aload_3
+    //   34: invokestatic 272	aock:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   37: istore 4
+    //   39: goto -21 -> 18
+    //   42: aload_1
+    //   43: ldc 51
+    //   45: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   48: ifeq +13 -> 61
+    //   51: aload_2
+    //   52: aload_3
+    //   53: invokestatic 273	aocw:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   56: istore 4
+    //   58: goto -40 -> 18
+    //   61: invokestatic 58	aofz:a	()Laogb;
+    //   64: astore 5
+    //   66: aload 5
+    //   68: ifnull +29 -> 97
+    //   71: aload_1
+    //   72: aload 5
+    //   74: invokeinterface 63 1 0
+    //   79: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   82: ifeq +15 -> 97
+    //   85: aload 5
+    //   87: aload_2
+    //   88: aload_3
+    //   89: invokestatic 276	aofz:a	(Laogb;Ljava/lang/String;Ljava/lang/String;)I
+    //   92: istore 4
+    //   94: goto -76 -> 18
+    //   97: iconst_m1
+    //   98: istore 4
+    //   100: goto -82 -> 18
+    //   103: astore_1
+    //   104: aload_0
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	this	aocz
+    //   0	108	1	paramString1	String
+    //   0	108	2	paramString2	String
+    //   0	108	3	paramString3	String
+    //   16	83	4	i	int
+    //   64	22	5	localaogb	aogb
+    // Exception table:
+    //   from	to	target	type
+    //   2	18	103	finally
+    //   23	39	103	finally
+    //   42	58	103	finally
+    //   61	66	103	finally
+    //   71	94	103	finally
+  }
+  
+  public void a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString, aojg paramaojg)
+  {
+    ThreadManager.getSubThreadHandler().post(new ArNativeSoManager.1(this, paramArrayList, paramString, paramaojg));
+  }
+  
+  public void a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList1, ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList2, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new ArNativeSoManager.3(this, paramArrayList1, paramArrayList2, paramString));
+  }
+  
+  public boolean a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "isArNativeSoDownload. resName = " + paramString);
+    String str = a(paramString);
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramArrayList.size())
+      {
+        ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
+        if ((!localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) || (!localNativeSoRes.b.equalsIgnoreCase(str))) {
+          break label155;
+        }
+        paramArrayList = aocy.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
+        if (!b(paramArrayList, localNativeSoRes.d)) {
+          a(paramArrayList);
+        }
+      }
+      else
+      {
+        return false;
+      }
+      return a(paramString);
+      label155:
+      i += 1;
+    }
   }
 }
 

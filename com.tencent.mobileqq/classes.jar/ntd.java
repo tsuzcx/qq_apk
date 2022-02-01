@@ -1,30 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.qphone.base.util.QLog;
 
 class ntd
-  implements View.OnClickListener
+  implements nvw
 {
-  ntd(ntc paramntc, oag paramoag, String paramString) {}
+  ntd(nst paramnst) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    Intent localIntent = new Intent((Context)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
-    localIntent.putExtra("lat", this.jdField_a_of_type_Oag.g);
-    localIntent.putExtra("lon", this.jdField_a_of_type_Oag.f);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localIntent.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    {
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
+      {
+        if (!this.a.e) {
+          break label127;
+        }
+        if (paramInt <= f) {
+          break label119;
+        }
+        this.a.d(paramInt);
+      }
     }
-    ((BaseActivity)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(localIntent);
-    bdll.b(this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, "", "", "");
-    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.q - f)
+    {
+      this.a.d(paramInt);
+      return;
+    }
+    this.a.e();
   }
 }
 

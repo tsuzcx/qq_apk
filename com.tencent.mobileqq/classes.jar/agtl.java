@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class agtl
-  implements DialogInterface.OnClickListener
+public class agtl
+  implements afyo
 {
-  agtl(agtj paramagtj, ChatMessage paramChatMessage) {}
+  public agtl(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt)
   {
-    this.jdField_a_of_type_Agtj.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
+    }
   }
 }
 

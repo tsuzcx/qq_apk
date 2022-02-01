@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aoip;
+import anca;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,18 +11,18 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    aoip localaoip = (aoip)this.this$0.app.a(20);
-    if (localaoip != null) {}
+    anca localanca = (anca)this.this$0.app.getBusinessHandler(20);
+    if (localanca != null) {}
     try
     {
-      localaoip.b(Long.valueOf(this.this$0.c));
-      localaoip.a(Long.valueOf(this.this$0.c));
+      localanca.b(Long.valueOf(this.this$0.mGroupCode));
+      localanca.a(Long.valueOf(this.this$0.mGroupCode));
       return;
     }
     catch (NumberFormatException localNumberFormatException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e("SelectMemberActivity", 2, "NumberFormatException : mGroupCode = " + this.this$0.c);
+      QLog.e("SelectMemberActivity", 2, "NumberFormatException : mGroupCode = " + this.this$0.mGroupCode);
     }
   }
 }

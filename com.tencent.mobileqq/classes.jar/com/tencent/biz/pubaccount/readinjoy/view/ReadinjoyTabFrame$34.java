@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import rab;
-import rcr;
+import com.tencent.mobileqq.widget.QQToast;
+import rjn;
 
 class ReadinjoyTabFrame$34
   implements Runnable
@@ -11,17 +10,12 @@ class ReadinjoyTabFrame$34
   
   public void run()
   {
-    ReadinjoyTabFrame.h(this.this$0);
-    if ((rab.m()) && (ReadinjoyTabFrame.d_()))
-    {
-      rcr.a(this.this$0.a());
-      RIJUGCAddAccountFragment.b();
-    }
+    QQToast.a(this.this$0.a(), 2, rjn.d(), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.34
  * JD-Core Version:    0.7.0.1
  */

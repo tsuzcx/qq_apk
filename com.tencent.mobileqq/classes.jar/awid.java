@@ -1,98 +1,58 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.DataCardConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
 
-public class awid
-  implements aasd
+class awid
+  extends nmc
 {
-  public awid(UiApiPlugin paramUiApiPlugin, Map paramMap) {}
+  awid(awic paramawic, awhk paramawhk) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str = paramBundle.getString("action");
-    if ("onCommentSend".equals(str)) {}
-    Object localObject1;
-    do
-    {
-      Object localObject2;
-      Object localObject3;
-      try
-      {
-        str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
-        localObject1 = paramBundle.getString("commentId", "");
-        localObject2 = paramBundle.getString("rowKey", "");
-        localObject3 = paramBundle.getString("commentContent", "");
-        int i = paramBundle.getInt("firstLevelComment");
-        paramBundle = new JSONObject();
-        paramBundle.put("commentId", localObject1);
-        paramBundle.put("rowKey", localObject2);
-        paramBundle.put("commentContent", localObject3);
-        paramBundle.put("firstLevelComment", i + 1 + "");
-        paramBundle.put("result", "success");
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { paramBundle.toString() });
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      if ("onCommentLike".equals(str)) {
-        try
-        {
-          str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
-          localObject1 = paramBundle.getString("commentId", "");
-          localObject2 = paramBundle.getString("rowKey", "");
-          paramBundle = paramBundle.getString("likeStatus", "");
-          localObject3 = new JSONObject();
-          ((JSONObject)localObject3).put("commentId", localObject1);
-          ((JSONObject)localObject3).put("rowKey", localObject2);
-          ((JSONObject)localObject3).put("likeStatus", paramBundle);
-          ((JSONObject)localObject3).put("result", "success");
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject3).toString() });
-          return;
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      }
-      if ("onCommentDelete".equals(str)) {
-        try
-        {
-          str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
-          localObject1 = paramBundle.getString("commentId", "");
-          paramBundle = paramBundle.getString("rowKey", "");
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("commentId", localObject1);
-          ((JSONObject)localObject2).put("rowKey", paramBundle);
-          ((JSONObject)localObject2).put("result", "success");
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject2).toString() });
-          return;
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      }
-    } while (!"onPanelClose".equals(str));
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     try
     {
-      str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
-      paramBundle = paramBundle.getString("rowKey", "");
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("rowKey", paramBundle);
-      ((JSONObject)localObject1).put("result", "success");
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject1).toString() });
+      paramBundle = new cmd0x938.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (cmd0x938.ClientConfig)paramBundle.msg_client_config.get();
+      boolean bool1;
+      if (paramArrayOfByte.uint32_show_card.get() == 1)
+      {
+        bool1 = true;
+        if (paramArrayOfByte.uint32_show_list.get() != 1) {
+          break label208;
+        }
+      }
+      for (;;)
+      {
+        long l = paramArrayOfByte.uint64_next_time.get();
+        if (paramBundle.msg_datacard_config.has()) {
+          ((cmd0x938.DataCardConfig)paramBundle.msg_datacard_config.get()).uint32_entry_ability.get();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility onResult isShowCard=" + bool1 + "  isShowList=" + bool2 + "  expireTime=" + l);
+        }
+        paramArrayOfByte = new awhl(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
+        this.jdField_a_of_type_Awhk.a(paramArrayOfByte);
+        return;
+        bool1 = false;
+        break;
+        label208:
+        bool2 = false;
+      }
       return;
     }
-    catch (JSONException paramBundle)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramBundle.printStackTrace();
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

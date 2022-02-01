@@ -1,38 +1,77 @@
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import cooperation.readinjoy.content.ReadInJoyDataProvider;
 
-class bkwu
-  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StJudgeTimingRsp>
+public class bkwu
+  extends SQLiteOpenHelper
 {
-  bkwu(bkwo parambkwo, AsyncResult paramAsyncResult) {}
+  public String a;
   
-  public void a(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
+  public bkwu(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
+    super(paramContext, "readinjoy_main_" + paramString, null, 84);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  {
+    if ((paramString.equals("subscribe_msg_records")) || (paramString.equals("notify_msg_records"))) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "msgID" + " INTEGER UNIQUE NOT NULL, " + "subscribeID" + " TEXT NOT NULL, " + "msgURL" + " TEXT NOT NULL, " + "msgContent" + " TEXT NOT NULL, " + "msgTime" + " INTEGER NOT NULL, " + "bindUin" + " INTEGER NOT NULL);");
     }
-    try
-    {
-      localJSONObject.put("response", paramStJudgeTimingRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
+    while (!paramString.equals("feeds_msg_records")) {
       return;
     }
-    catch (Throwable paramStJudgeTimingRsp)
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "pushTime" + " INTEGER NOT NULL, " + "notifyType" + " INTEGER NOT NULL, " + "feedsOwner" + " INTEGER NOT NULL, " + "feedsID" + " INTEGER NOT NULL, " + "feedsSubject" + " TEXT DEFAULT '', " + "deleteUin" + " INTEGER NOT NULL, " + "publishFail" + " INTEGER NOT NULL, " + "likeUin" + " INTEGER NOT NULL, " + "commentUin" + " INTEGER NOT NULL, " + "commentID" + " VARCHAR(32) DEFAULT '', " + "replyUin" + " INTEGER NOT NULL, " + "replyID" + " VARCHAR(32) DEFAULT '', " + "commentInfo" + " TEXT DEFAULT '', " + "isDelete" + " INTEGER DEFAULT 0, " + "processSeq" + " INTEGER DEFAULT 0, " + "receiveTime" + " INTEGER NOT NULL);");
+  }
+  
+  private void b(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  {
+    if ("common_records".equalsIgnoreCase(paramString)) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "common_version" + " INTEGER NOT NULL, " + "common_key" + " TEXT DEFAULT '', " + "common_content" + " TEXT DEFAULT '');");
+    }
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    a(paramSQLiteDatabase, "subscribe_msg_records");
+    a(paramSQLiteDatabase, "notify_msg_records");
+    a(paramSQLiteDatabase, "feeds_msg_records");
+    b(paramSQLiteDatabase, "common_records");
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < 80)
     {
-      for (;;)
-      {
-        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStJudgeTimingRsp);
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("subscribe_msg_records"));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("notify_msg_records"));
+      a(paramSQLiteDatabase, "subscribe_msg_records");
+      a(paramSQLiteDatabase, "notify_msg_records");
+    }
+    if (paramInt1 < 81) {
+      a(paramSQLiteDatabase, "feeds_msg_records");
+    }
+    for (;;)
+    {
+      if (paramInt1 < 84) {
+        b(paramSQLiteDatabase, "common_records");
+      }
+      return;
+      if (paramInt1 < 82) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "isDelete", "INTEGER DEFAULT 0" }));
+      }
+      if (paramInt1 < 83) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "processSeq", "INTEGER DEFAULT 0" }));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkwu
  * JD-Core Version:    0.7.0.1
  */

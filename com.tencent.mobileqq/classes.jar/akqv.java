@@ -1,8 +1,26 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public abstract interface akqv
+public class akqv
+  implements DialogInterface.OnShowListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public akqv(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(8);
+    }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(8);
+    }
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, true);
+    }
+  }
 }
 
 

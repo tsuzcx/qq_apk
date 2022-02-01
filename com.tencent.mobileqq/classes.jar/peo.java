@@ -1,37 +1,52 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.mini.notify.MiniAppNotify.IMiniAppNotifyListener;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
-
 public class peo
-  implements MiniAppNotify.IMiniAppNotifyListener
 {
-  public peo(KandianMergeManager paramKandianMergeManager) {}
+  protected peq a;
+  protected per a;
+  protected pes a;
+  protected pet a;
   
-  public void onNotify(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
+  public peo a(peq parampeq)
   {
-    QLog.d("KandianMergeManager", 1, "appid: " + paramString1 + " scene: " + paramInt + " via: " + paramString2 + " event: " + paramString3 + " timestamp: " + paramLong);
-    paramString1 = Arrays.asList(Aladdin.getConfig(329).getString("scene", "").split("\\|"));
-    List localList = Arrays.asList(Aladdin.getConfig(329).getString("via", "").split("\\|"));
-    QLog.d("KandianMergeManager", 1, "miniapp config: " + paramString1 + " " + localList);
-    if ("onResume".equals(paramString3)) {
-      if ((paramString1 != null) && (paramString1.contains(paramInt + "")) && (localList != null) && (localList.contains(paramString2)))
-      {
-        paramInt = ozs.e();
-        i = ozs.d;
-        KandianMergeManager.a(this.a).a(KandianMergeManager.a(this.a), NetConnInfoCenter.getServerTimeMillis(), paramInt, i);
-      }
-    }
-    while ((!"onPause".equals(paramString3)) || (paramString1 == null) || (!paramString1.contains(paramInt + "")) || (localList == null) || (!localList.contains(paramString2)) || (KandianMergeManager.a(this.a).a() <= 0L))
-    {
-      int i;
-      return;
-    }
-    KandianMergeManager.a(this.a).a();
+    this.jdField_a_of_type_Peq = parampeq;
+    return this;
+  }
+  
+  public peo a(per paramper)
+  {
+    this.jdField_a_of_type_Per = paramper;
+    return this;
+  }
+  
+  public peo a(pes parampes)
+  {
+    this.jdField_a_of_type_Pes = parampes;
+    return this;
+  }
+  
+  public peo a(pet parampet)
+  {
+    this.jdField_a_of_type_Pet = parampet;
+    return this;
+  }
+  
+  public peq a()
+  {
+    return this.jdField_a_of_type_Peq;
+  }
+  
+  public per a()
+  {
+    return this.jdField_a_of_type_Per;
+  }
+  
+  public pes a()
+  {
+    return this.jdField_a_of_type_Pes;
+  }
+  
+  public pet a()
+  {
+    return this.jdField_a_of_type_Pet;
   }
 }
 

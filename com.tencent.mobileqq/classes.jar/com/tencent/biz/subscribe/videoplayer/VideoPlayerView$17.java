@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import abbe;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
@@ -9,7 +8,8 @@ import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusLi
 import com.tencent.superplayer.api.ISuperPlayer;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import vxr;
+import zaz;
+import zxp;
 
 class VideoPlayerView$17
   implements Runnable
@@ -18,8 +18,8 @@ class VideoPlayerView$17
   
   public void run()
   {
-    abbe.a("subscribe_account_video_play", abbe.a(abbe.a(0L, 0L, VideoPlayerView.a(this.this$0), 0L)));
-    abbe.a("subscribe_account_video_play_first_buffer", abbe.a(abbe.a(0L, System.currentTimeMillis() - VideoPlayerView.a(this.this$0), VideoPlayerView.a(this.this$0), 0L)));
+    zxp.a("subscribe_account_video_play", zxp.a(zxp.a(0L, 0L, VideoPlayerView.a(this.this$0), 0L)));
+    zxp.a("subscribe_account_video_play_first_buffer", zxp.a(zxp.a(0L, System.currentTimeMillis() - VideoPlayerView.a(this.this$0), VideoPlayerView.a(this.this$0), 0L)));
     VideoPlayerView.a(this.this$0, 10);
     VideoPlayerView.a(this.this$0, false);
     VideoPlayerView.h(this.this$0);
@@ -44,7 +44,7 @@ class VideoPlayerView$17
     }
     else
     {
-      if ((VideoPlayerView.a(this.this$0) != null) && (this.this$0.c()) && (this.this$0.a() != null))
+      if ((VideoPlayerView.a(this.this$0) != null) && (this.this$0.e()) && (this.this$0.a() != null))
       {
         if (!VideoPlayerView.f(this.this$0)) {
           VideoPlayerView.a(this.this$0).onOrientationChange(VideoPlayerView.c(this.this$0));
@@ -63,12 +63,12 @@ class VideoPlayerView$17
       if (this.this$0.a != null) {
         this.this$0.a.setText("/" + String.format("%02d:%02d", new Object[] { Integer.valueOf((int)l / 60), Integer.valueOf((int)l % 60) }));
       }
-      if (((!VideoPlayerView.g(this.this$0)) || (!NetworkUtils.isWifiConnected(this.this$0.getContext()))) && (!VideoPlayerView.m())) {
+      if (((!VideoPlayerView.g(this.this$0)) || (!NetworkUtils.isWifiConnected(this.this$0.getContext()))) && (!VideoPlayerView.j())) {
         break label499;
       }
       if (!VideoPlayerView.h(this.this$0))
       {
-        this.this$0.d();
+        this.this$0.e();
         VideoPlayerView.a(this.this$0, System.currentTimeMillis());
       }
     }

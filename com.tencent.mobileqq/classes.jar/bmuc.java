@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.QZoneShareData;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
-public final class bmuc
-  implements Parcelable.Creator<QZoneShareData>
+class bmuc
+  implements babi
 {
-  public QZoneShareData a(Parcel paramParcel)
-  {
-    return new QZoneShareData(paramParcel, null);
-  }
+  bmuc(bmua parambmua, boolean paramBoolean) {}
   
-  public QZoneShareData[] a(int paramInt)
+  public void onGetLocation()
   {
-    return new QZoneShareData[paramInt];
+    SosoInterface.startLocation(new bmud(this, "NewStoryTakeVideoActivity"));
   }
 }
 

@@ -1,27 +1,39 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
+import com.tencent.mobileqq.now.widget.RoundedRectImageView;
 
 public class axiq
-  extends axiy<MessageRecord>
+  extends axip
 {
-  public axiq(MessageRecord paramMessageRecord)
-  {
-    super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
-  }
+  public int a;
+  public View a;
+  public FrameLayout a;
+  public TextView a;
+  public FrameAnimationView a;
+  public CircleImageView a;
+  public RoundedRectImageView a;
+  public FrameLayout b;
+  public TextView b;
+  public TextView c;
   
-  protected int a()
+  public axiq(View paramView)
   {
-    return 0;
+    super(paramView);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView = ((RoundedRectImageView)paramView.findViewById(2131364227));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131362679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362682));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362680));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362684));
+    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131362683));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380987));
+    this.c = ((TextView)paramView.findViewById(2131376677));
+    paramView.setTag(this);
   }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    return null;
-  }
-  
-  public void a() {}
 }
 
 

@@ -1,12 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ysl
+public class ysl
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public ysl(InnerListView paramInnerListView, int paramInt) {}
   
-  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
-  
-  public abstract void b(String paramString1, String paramString2);
+  public void onClick(View paramView)
+  {
+    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
+      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

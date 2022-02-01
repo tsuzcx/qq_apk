@@ -1,38 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-public abstract class vbn
-  extends aacq
-  implements aabg<QCircleReportBean>
+public abstract class vbn<T>
+  extends bjwy<T>
 {
-  protected QCircleReportBean a;
+  public WSVerticalPageFragment a;
+  public T a;
+  public ula<T> a;
   
-  public vbn(Bundle paramBundle)
+  public vbn(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramBundle);
+    super(paramViewGroup, paramInt1);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    this.jdField_a_of_type_Ula = a(paramInt2);
   }
   
-  public QCircleReportBean a()
-  {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
-    }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
-  }
+  public abstract FrameLayout a();
   
-  protected abstract String a();
+  public abstract ula<T> a(int paramInt);
   
-  public void a(QCircleReportBean paramQCircleReportBean)
-  {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
-  }
+  public abstract void a(int paramInt);
   
-  protected String b()
+  public void a(T paramT)
   {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
-    }
-    return null;
+    super.a(paramT);
+    this.jdField_a_of_type_JavaLangObject = paramT;
   }
 }
 

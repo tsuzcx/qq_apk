@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acvp;
+import absa;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class GdtInterstitialFragment$2
@@ -11,7 +11,7 @@ class GdtInterstitialFragment$2
   public void run()
   {
     GdtInterstitialFragment.a(this.this$0).b = ArkAppCenter.d();
-    acvp.a(this.this$0.getActivity(), GdtInterstitialFragment.a(this.this$0), GdtInterstitialFragment.a(this.this$0), this.a, this.b);
+    absa.a(this.this$0.getActivity(), GdtInterstitialFragment.a(this.this$0), GdtInterstitialFragment.a(this.this$0), this.a, this.b);
   }
 }
 

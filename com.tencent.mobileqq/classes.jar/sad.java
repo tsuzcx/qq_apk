@@ -1,39 +1,26 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerHelper$Companion;", "", "()V", "TAG", "", "superPlayerFlag", "", "useSuperPlayer", "", "getUseSuperPlayer", "()Z", "selectPlayerFactory", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "selectPlayerSDKMgr", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "setSuperPlayerFlag", "", "isSuperPlayer", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sad
+class sad
+  implements smi
 {
-  @NotNull
-  public final rzv a()
-  {
-    if (((sad)this).a()) {
-      return (rzv)sah.a;
-    }
-    return (rzv)san.a;
-  }
+  sad(sab paramsab, VideoInfo paramVideoInfo) {}
   
-  @NotNull
-  public final saa a()
+  public void a()
   {
-    if (((sad)this).a()) {
-      return (saa)saj.a;
-    }
-    return (saa)sao.a;
-  }
-  
-  public final boolean a()
-  {
-    if (sac.a() == -1) {
-      sac.a(Aladdin.getConfig(307).getIntegerFromString("super_player_enable", 0));
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("PlayerHelper", 2, "useSuperPlayer: " + sac.a());
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
     }
-    return sac.a() == 1;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    }
+    PublicFragmentActivity.a(sab.a(this.jdField_a_of_type_Sab), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    sab.a(this.jdField_a_of_type_Sab).dismiss();
   }
 }
 

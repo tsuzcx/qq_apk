@@ -2,21 +2,21 @@ package dov.com.qq.im.ae.play;
 
 import com.tencent.ttpic.openapi.filter.SimpleGLThread;
 
-public final class FaceChangeUtils$4
+final class FaceChangeUtils$4
   implements Runnable
 {
-  public FaceChangeUtils$4(Runnable paramRunnable, SimpleGLThread paramSimpleGLThread) {}
+  FaceChangeUtils$4(Runnable paramRunnable, SimpleGLThread paramSimpleGLThread) {}
   
   public void run()
   {
     try
     {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.val$runnable.run();
       return;
     }
     finally
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSimpleGLThread.destroy();
+      this.val$glThread.destroy();
     }
   }
 }

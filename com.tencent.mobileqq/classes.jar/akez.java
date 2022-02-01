@@ -1,19 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class akez
-  implements View.OnClickListener
+class akez
+  implements bbzh
 {
-  public akez(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  akez(akey paramakey, akfa paramakfa) {}
   
-  public void onClick(View paramView)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 0)
+    {
+      akey.a(this.jdField_a_of_type_Akey, true);
+      if (this.jdField_a_of_type_Akfa != null) {
+        this.jdField_a_of_type_Akfa.a(true);
+      }
+    }
+    while (this.jdField_a_of_type_Akfa == null) {
+      return;
+    }
+    this.jdField_a_of_type_Akfa.a(false);
   }
 }
 

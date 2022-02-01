@@ -1,35 +1,54 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
 
 public class bfrk
-  extends bfrg
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  Bundle a = new Bundle();
+  
+  public Bundle a()
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 10;
-    try
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      if (paramJSONObject.length() > 0)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(0);
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("videourl");
-        localTroopFeedItem.title = paramJSONObject.getString("videointro");
-        localTroopFeedItem.picPath = paramJSONObject.getString("videoid");
-      }
-      return localTroopFeedItem;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
+    return this.a;
+  }
+  
+  public bfrk a(String paramString)
+  {
+    this.a.putString("text_evidence", paramString);
+    return this;
+  }
+  
+  public bfrk b(String paramString)
+  {
+    this.a.putString("img_evidence", paramString);
+    return this;
+  }
+  
+  public bfrk c(String paramString)
+  {
+    this.a.putString("url_evidence", paramString);
+    return this;
+  }
+  
+  public bfrk d(String paramString)
+  {
+    this.a.putString("video_evidence", paramString);
+    return this;
+  }
+  
+  public bfrk e(String paramString)
+  {
+    this.a.putString("file_evidence", paramString);
+    return this;
+  }
+  
+  public bfrk f(String paramString)
+  {
+    this.a.putString("audio_evidence", paramString);
+    return this;
+  }
+  
+  public bfrk g(String paramString)
+  {
+    this.a.putString("user_input_param", paramString);
+    return this;
   }
 }
 

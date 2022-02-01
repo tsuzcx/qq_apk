@@ -1,13 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class qau
-  implements ViewBase.IBuilder
+class qau
+  implements ViewBase.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qau(qat paramqat, Container paramContainer, pvc parampvc, int paramInt) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    return new qat(paramVafContext);
+    qat.a(this.jdField_a_of_type_Qat, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pvc.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 

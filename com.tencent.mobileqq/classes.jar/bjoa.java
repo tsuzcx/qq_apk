@@ -1,6 +1,25 @@
-public abstract interface bjoa
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+
+class bjoa
+  implements URLDrawable.DownloadListener
 {
-  public abstract void a(long paramLong);
+  bjoa(bjnw parambjnw) {}
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    QLog.i("ActionSheet", 1, "onFileDownloadFailed " + paramInt);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    QLog.i("ActionSheet", 1, "onFileDownloadStarted");
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.i("ActionSheet", 1, "onFileDownloadSucceed " + paramLong);
+  }
 }
 
 

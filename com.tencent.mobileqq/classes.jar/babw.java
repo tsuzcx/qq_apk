@@ -1,19 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-
-public class babw
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface babw
 {
-  public babw(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((Rect)paramValueAnimator.getAnimatedValue());
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
-  }
+  public abstract void a();
 }
 
 

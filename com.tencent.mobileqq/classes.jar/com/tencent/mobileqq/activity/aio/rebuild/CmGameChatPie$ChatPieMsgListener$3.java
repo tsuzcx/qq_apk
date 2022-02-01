@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihy;
-import aiik;
-import aiil;
+import ahek;
+import ahew;
+import ahex;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class CmGameChatPie$ChatPieMsgListener$3
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$3(aiik paramaiik, aihy paramaihy, String paramString) {}
+  public CmGameChatPie$ChatPieMsgListener$3(ahew paramahew, ahek paramahek, String paramString) {}
   
   public void run()
   {
-    aihy.a(this.jdField_a_of_type_Aihy, this.jdField_a_of_type_JavaLangString, null, 1);
-    if ((this.jdField_a_of_type_Aihy.a != null) && (this.jdField_a_of_type_Aihy.a() != null)) {
-      this.jdField_a_of_type_Aihy.a(this.jdField_a_of_type_Aihy.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aihy.a().c(), aihy.a(this.jdField_a_of_type_Aihy).jdField_a_of_type_JavaLangString, 1);
+    ahek.a(this.jdField_a_of_type_Ahek, this.jdField_a_of_type_JavaLangString, null, 1);
+    if ((this.jdField_a_of_type_Ahek.sessionInfo != null) && (this.jdField_a_of_type_Ahek.getApp() != null)) {
+      this.jdField_a_of_type_Ahek.a(this.jdField_a_of_type_Ahek.sessionInfo.curFriendUin, this.jdField_a_of_type_Ahek.getApp().getCurrentUin(), ahek.a(this.jdField_a_of_type_Ahek).jdField_a_of_type_JavaLangString, 1);
     }
   }
 }

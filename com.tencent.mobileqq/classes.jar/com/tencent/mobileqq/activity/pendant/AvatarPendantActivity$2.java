@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import akrn;
+import ajpl;
 import com.tencent.qphone.base.util.QLog;
 
 class AvatarPendantActivity$2
@@ -12,7 +12,7 @@ class AvatarPendantActivity$2
   {
     try
     {
-      akrn.a(this.this$0);
+      ajpl.a(this.this$0);
       return;
     }
     catch (Exception localException)

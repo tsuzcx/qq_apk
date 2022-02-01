@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/ag4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/au0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/lnr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-        <View android:id="@id/o0u" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/ml0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include layout="@layout/cpc" />
-    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/n_x" android:visibility="gone" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/gez" android:scaleType="fitCenter" />
-</FrameLayout>
+    <ImageView android:id="@id/muh" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:checked="false" android:src="@drawable/gq5" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nla" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="44.0dip" android:layout_toRightOf="@id/dq1" android:layout_centerVertical="true">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/dr7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bdy" android:maxLines="1" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/anm" android:ellipsize="end" android:id="@id/j64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    </LinearLayout>
+    <com.tencent.image.URLImageView android:id="@id/dq1" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+</RelativeLayout>

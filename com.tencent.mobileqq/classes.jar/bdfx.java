@@ -1,17 +1,31 @@
-import QC.UniSetRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bdfx
-  implements anui
+  implements View.OnClickListener
 {
-  bdfx(bdfv parambdfv, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3) {}
+  bdfx(bdfv parambdfv) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0)) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    switch (((bddb)paramView.getTag()).b)
     {
-      this.jdField_a_of_type_Bdfv.a(paramBoolean, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.c, true);
+    }
+    for (;;)
+    {
+      this.a.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.a.e();
+      continue;
+      this.a.f();
+      continue;
+      this.a.g();
+      continue;
+      this.a.h();
+      continue;
+      this.a.i();
     }
   }
 }

@@ -1,20 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
-public final class bnyl
-  implements Parcelable.Creator<WadlParams>
+public class bnyl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
+  public bnyl(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
   
-  public WadlParams[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new WadlParams[paramInt];
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

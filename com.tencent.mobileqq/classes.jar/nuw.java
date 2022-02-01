@@ -1,44 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
 import com.tencent.qphone.base.util.QLog;
 
-public class nuw
-  implements ocn<OACProfilePb.ProfileDataRsp>
+class nuw
+  extends anxq
 {
-  public nuw(AccountDetailActivity paramAccountDetailActivity) {}
+  nuw(nuv paramnuv) {}
   
-  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
+  public int a()
+  {
+    return 7;
+  }
+  
+  public void a(Object paramObject)
+  {
+    num.b(this.a.a, this.a.a.jdField_a_of_type_Int);
+    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.a.jdField_a_of_type_Int).apply();
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("AccountDetailGroupListContainer", 2, "New 0xc76 onGetRecvMsgState isSuccess = " + paramBoolean);
     }
-    paramBundle = this.a;
-    paramBundle.jdField_c_of_type_Int -= 1;
-    if (this.a.jdField_c_of_type_Int == 0) {
-      this.a.M();
-    }
-    if (!paramBoolean)
-    {
-      if (this.a.jdField_c_of_type_Boolean)
-      {
-        if (this.a.jdField_a_of_type_Nrk != null)
-        {
-          this.a.jdField_a_of_type_Nrk.b(false);
-          this.a.jdField_a_of_type_Nrk.notifyDataSetChanged();
-        }
-      }
-      else {
-        return;
-      }
-      this.a.d(2131694659);
-      return;
-    }
-    paramBundle = new AccountDetail(paramProfileDataRsp);
-    obj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, paramProfileDataRsp.menu_rsp);
-    this.a.a(paramBundle, true);
   }
+  
+  public void b(Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

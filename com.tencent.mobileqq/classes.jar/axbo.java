@@ -1,57 +1,42 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class axbo
-  extends Animation
+class axbo
+  extends TransProcessorHandler
 {
-  private final float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float b;
-  private final float c;
-  private final float d;
-  private final float e;
+  axbo(axax paramaxax) {}
   
-  public axbo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    paramTransformation = paramTransformation.getMatrix();
-    localCamera.save();
-    if (this.jdField_a_of_type_Boolean) {
-      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+        } while (localFileMsg.fileType != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
+        }
+      } while (axax.a(this.a) == null);
+      axax.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+      axax.d(this.a);
       return;
-      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    }
+    this.a.a.b();
+    this.a.a.b(amtj.a(2131706419));
   }
 }
 

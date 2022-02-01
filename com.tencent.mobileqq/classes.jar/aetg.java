@@ -1,26 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aetg
-  implements View.OnClickListener
+  extends axkt
 {
-  public aetg(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aetg(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    H5MagicPlayerActivity.a(this.a);
-    if ((this.a.d.equals(this.a.c)) && (this.a.a != null)) {
-      bdll.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bdll.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
-    }
+    this.a.e();
   }
 }
 

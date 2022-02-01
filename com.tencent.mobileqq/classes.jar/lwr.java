@@ -1,9 +1,19 @@
-import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-public abstract interface lwr
-  extends IInterface
+public final class lwr
+  implements Parcelable.Creator<LBSInfo>
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public LBSInfo a(Parcel paramParcel)
+  {
+    return new LBSInfo(paramParcel);
+  }
+  
+  public LBSInfo[] a(int paramInt)
+  {
+    return new LBSInfo[paramInt];
+  }
 }
 
 

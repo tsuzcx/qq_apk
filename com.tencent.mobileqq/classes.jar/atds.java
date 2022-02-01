@@ -1,10 +1,19 @@
-public abstract interface atds
+import android.os.Bundle;
+
+public class atds
 {
-  public abstract void a(String paramString, int paramInt);
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public String b;
+  
+  atds(atdm paramatdm) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atds
  * JD-Core Version:    0.7.0.1
  */

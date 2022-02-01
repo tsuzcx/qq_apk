@@ -4,11 +4,9 @@ import android.os.SystemClock;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
-import java.util.ArrayList;
-import java.util.List;
 
 class VideoDecoder$1
-  extends Thread
+  implements Runnable
 {
   VideoDecoder$1(VideoDecoder paramVideoDecoder) {}
   
@@ -19,7 +17,7 @@ class VideoDecoder$1
     {
       l2 = SystemClock.currentThreadTimeMillis();
       AssetExtractor localAssetExtractor = new AssetExtractor();
-      localAssetExtractor.setDataSource(VideoDecoder.access$000(this.this$0).getSourcePath());
+      localAssetExtractor.setDataSource(VideoDecoder.access$000(this.this$0));
       while (localAssetExtractor.getSampleTrackIndex() != -1) {
         localAssetExtractor.unselectTrack(localAssetExtractor.getSampleTrackIndex());
       }
@@ -27,24 +25,19 @@ class VideoDecoder$1
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
+      Logger.e(this.this$0.TAG, "createMirrorExtractor: ", localException);
       return;
     }
     if (VideoDecoder.access$100(this.this$0) == null) {}
-    ArrayList localArrayList;
     for (long l1 = 0L;; l1 = VideoDecoder.access$100(this.this$0).getStartUs())
     {
       localException.seekTo(l1, 0);
-      localArrayList = new ArrayList();
-      while (localException.getSampleTime() != -1L)
-      {
-        localArrayList.add(Long.valueOf(localException.getSampleTime()));
+      while (localException.getSampleTime() != -1L) {
         localException.advance();
       }
     }
-    VideoDecoder.access$200(this.this$0).addAll(localArrayList);
-    VideoDecoder.access$302(this.this$0, localException);
-    Logger.i(this.this$0.TAG, "Decoder: MirrorExtractor Init " + (SystemClock.currentThreadTimeMillis() - l2), new Object[0]);
+    VideoDecoder.access$202(this.this$0, localException);
+    Logger.d(this.this$0.TAG, "Decoder: MirrorExtractor Init " + (SystemClock.currentThreadTimeMillis() - l2));
   }
 }
 

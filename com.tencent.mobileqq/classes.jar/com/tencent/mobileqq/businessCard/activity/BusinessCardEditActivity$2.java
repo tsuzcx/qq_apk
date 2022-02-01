@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import agej;
 import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 class BusinessCardEditActivity$2
   implements Runnable
@@ -11,7 +11,7 @@ class BusinessCardEditActivity$2
   public void run()
   {
     this.a.requestFocusFromTouch();
-    agej.a(this.a);
+    AIOUtils.showKeyboard(this.a);
   }
 }
 

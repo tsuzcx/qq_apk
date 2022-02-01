@@ -1,41 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class aiua
-  extends aitn
+class aiua
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  aiua(aitt paramaitt, int paramInt, ArrayList paramArrayList) {}
   
-  public JSONObject a()
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    if (!aitt.a(this.jdField_a_of_type_Aitt))
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("uin", this.a);
-      localJSONObject2.put("touin", this.b);
-      localJSONObject2.put("appid", this.e);
-      localJSONObject2.put("scene", this.c);
-      localJSONObject2.put("expose_md5s", this.f);
-      localJSONObject2.put("expose_urls", this.g);
-      localJSONObject2.put("click_md5", this.h);
-      localJSONObject2.put("click_url", this.i);
-      localJSONObject2.put("aio_type", this.d);
-      localJSONObject2.put("mobile_type", this.j);
-      localJSONObject2.put("passthough", this.k);
-      localJSONObject1.put("dcId", this.l);
-      localJSONObject1.put("data", localJSONObject2);
-      return localJSONObject1;
+      if (this.jdField_a_of_type_Int != 1) {
+        break label48;
+      }
+      SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), aitt.a(this.jdField_a_of_type_Aitt), null);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ScenesRecReportData", 2, "convert error:" + localException);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label48:
+      Intent localIntent = new Intent();
+      localIntent.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
+      PublicFragmentActivity.a(aitt.a(this.jdField_a_of_type_Aitt), localIntent, SDKSetEmotionPreviewFragment.class);
     }
-    return localJSONObject1;
   }
 }
 

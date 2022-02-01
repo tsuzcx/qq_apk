@@ -1,23 +1,8 @@
-import android.net.Uri;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
 
-public class pen
-  implements ubp
+public abstract interface pen
 {
-  public pen(KandianMergeManager paramKandianMergeManager) {}
-  
-  public void a(Uri paramUri, String paramString, int paramInt)
-  {
-    paramUri = BaseActivity.sTopActivity;
-    if (paramUri != null) {}
-    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
-    {
-      bdll.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, zot.c(BaseApplicationImpl.getContext()));
-      return;
-    }
-  }
+  public abstract void onClick(View paramView);
 }
 
 

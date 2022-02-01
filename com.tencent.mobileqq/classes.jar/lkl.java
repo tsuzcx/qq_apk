@@ -1,44 +1,15 @@
-public class lkl
+class lkl
 {
-  public static String a;
-  private lkm jdField_a_of_type_Lkm = new lkm(this);
-  private lku jdField_a_of_type_Lku = new lku(this);
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public int a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lku != null) {
-      return this.jdField_a_of_type_Lku.a(paramArrayOfByte);
-    }
-    return -1;
-  }
-  
-  public lkn a()
-  {
-    lkn locallkn = null;
-    if (this.jdField_a_of_type_Lku != null) {
-      locallkn = this.jdField_a_of_type_Lku.a();
-    }
-    return locallkn;
-  }
-  
-  public void a(long paramLong, lkv paramlkv)
-  {
-    this.jdField_a_of_type_Lkm.a(paramLong, paramlkv);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_Lkm != null) {
-      arrayOfByte = this.jdField_a_of_type_Lkm.a();
-    }
-    return arrayOfByte;
-  }
+  lkl(lkh paramlkh) {}
 }
 
 

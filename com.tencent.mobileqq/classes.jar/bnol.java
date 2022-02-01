@@ -1,1070 +1,155 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QzoneHardwareRestriction;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.util.Log;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.util.Arrays;
 
-public class bnol
-  extends bnnn
+class bnol
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("qzone_detail_sp", 4);
+  private int jdField_a_of_type_Int;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+  private final float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+  private int jdField_b_of_type_Int = -12345;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private int jdField_c_of_type_Int;
+  private float[] jdField_c_of_type_ArrayOfFloat = new float[16];
+  private int d;
+  private int e;
+  private int f;
   
-  private void a(int paramInt)
+  public bnol()
   {
-    switch (paramInt)
-    {
-    default: 
-      paramInt = -1;
-    }
-    for (;;)
-    {
-      if (paramInt != -1) {
-        LpReportInfo_pf00064.allReport(593, 2, paramInt);
-      }
-      return;
-      paramInt = 8;
-      continue;
-      paramInt = 7;
-      continue;
-      paramInt = 9;
-    }
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat).position(0);
+    Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
   }
   
-  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  private int a(int paramInt, String paramString)
   {
-    boolean bool = true;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
+    int i = GLES20.glCreateShader(paramInt);
+    a("glCreateShader type=" + paramInt);
+    GLES20.glShaderSource(i, paramString);
+    GLES20.glCompileShader(i);
+    paramString = new int[1];
+    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    if (paramString[0] == 0)
+    {
+      Log.e("STextureRender", "Could not compile shader " + paramInt + ":");
+      Log.e("STextureRender", " " + GLES20.glGetShaderInfoLog(i));
+      GLES20.glDeleteShader(i);
+      return 0;
+    }
+    return i;
+  }
+  
+  private int a(String paramString1, String paramString2)
+  {
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
     do
     {
-      return;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k == 0) {
+      Log.e("STextureRender", "Could not create program");
+    }
+    GLES20.glAttachShader(k, i);
+    a("glAttachShader");
+    GLES20.glAttachShader(k, j);
+    a("glAttachShader");
+    GLES20.glLinkProgram(k);
+    paramString1 = new int[1];
+    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+    if (paramString1[0] != 1)
     {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-        if (i == 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        QZLog.w("QzoneSettingJsPlugin", 4, new Object[] { "handleSetInteractSoundMode: json error " + paramArrayOfString[0], paramWebViewPlugin });
-        continue;
-      }
-      QLog.i("QzoneSettingJsPlugin", 4, "handleSetInteractSoundMode: " + bool);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("qzone_sound_effect_enabled", bool).apply();
-      return;
-      bool = false;
+      Log.e("STextureRender", "Could not link program: ");
+      Log.e("STextureRender", GLES20.glGetProgramInfoLog(k));
+      GLES20.glDeleteProgram(k);
+      return 0;
+    }
+    return k;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt < 0) {
+      throw new RuntimeException("Unable to locate '" + paramString + "' in program");
     }
   }
   
-  public static boolean a()
+  public int a()
   {
-    if (!jdField_a_of_type_Boolean)
-    {
-      b = QzoneHardwareRestriction.meetHardwareRestriction(1, 1);
-      jdField_a_of_type_Boolean = true;
-    }
-    return b;
+    return this.jdField_b_of_type_Int;
   }
   
-  private boolean a(JsBridgeListener paramJsBridgeListener, WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  public void a()
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramJsBridgeListener = paramWebViewPlugin.mRuntime.a();
-    } while ((paramJsBridgeListener == null) || (paramJsBridgeListener.isFinishing()));
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramArrayOfString[0]);
-      int i = localJSONObject.optInt("iconID");
-      paramJsBridgeListener = localJSONObject.optString("title");
-      paramArrayOfString = localJSONObject.optString("callback");
-      boolean bool = localJSONObject.optBoolean("hidden");
-      localJSONObject.optBoolean("disable");
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a(paramWebViewPlugin.mRuntime.a());
-      if ((paramWebViewPlugin != null) && ((paramWebViewPlugin instanceof bitr))) {
-        ((bitr)paramWebViewPlugin).setRightButton(paramArrayOfString, paramJsBridgeListener, null, bool, i + 1000, 0, null, null);
-      }
+    this.jdField_a_of_type_Int = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new RuntimeException("failed creating program");
     }
-    catch (JSONException paramJsBridgeListener)
-    {
-      label133:
-      break label133;
-    }
-    return true;
+    this.e = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aPosition");
+    a(this.e, "aPosition");
+    this.f = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aTextureCoord");
+    a(this.f, "aTextureCoord");
+    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uMVPMatrix");
+    a(this.jdField_c_of_type_Int, "uMVPMatrix");
+    this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uSTMatrix");
+    a(this.d, "uSTMatrix");
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    this.jdField_b_of_type_Int = arrayOfInt[0];
+    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
+    a("glBindTexture mTextureID");
+    GLES20.glTexParameterf(36197, 10241, 9728.0F);
+    GLES20.glTexParameterf(36197, 10240, 9729.0F);
+    GLES20.glTexParameteri(36197, 10242, 33071);
+    GLES20.glTexParameteri(36197, 10243, 33071);
+    a("glTexParameter");
   }
   
-  private boolean a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  public void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("qzone_feed_custom_browser_deco_switch", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({enable:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---customBrowserInfoSwitch-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
+    a("onDrawFrame start");
+    Log.e("STextureRender", Arrays.toString(this.jdField_c_of_type_ArrayOfFloat));
+    Log.e("STextureRender", String.valueOf(paramBoolean));
+    GLES20.glClearColor(0.0F, 1.0F, 0.0F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    a("glUseProgram");
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    GLES20.glVertexAttribPointer(this.e, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer maPosition");
+    GLES20.glEnableVertexAttribArray(this.e);
+    a("glEnableVertexAttribArray maPositionHandle");
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
+    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer maTextureHandle");
+    GLES20.glEnableVertexAttribArray(this.f);
+    a("glEnableVertexAttribArray maTextureHandle");
+    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, this.jdField_b_of_type_ArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.d, 1, false, this.jdField_c_of_type_ArrayOfFloat, 0);
+    GLES20.glDrawArrays(5, 0, 4);
+    a("glDrawArrays");
+    GLES20.glBindTexture(36197, 0);
   }
   
-  private void b(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  public void a(String paramString)
   {
-    i = 1;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
+    int i = GLES20.glGetError();
+    if (i != 0)
     {
-      Object localObject;
-      do
-      {
-        return;
-        localObject = paramWebViewPlugin.mRuntime.a();
-      } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-      try
-      {
-        localObject = new JSONObject(paramArrayOfString[0]).getString("callback");
-        paramArrayOfString = (String[])localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          boolean bool;
-          QZLog.w("QzoneSettingJsPlugin", 4, new Object[] { "handleGetInteractSoundMode: json error " + paramArrayOfString[0], localJSONException });
-          paramArrayOfString = null;
-          continue;
-          i = 0;
-        }
-      }
-    } while (paramArrayOfString == null);
-    bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("qzone_sound_effect_enabled", false);
-    if (bool)
-    {
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "handleGetInteractSoundMode: " + bool);
-      return;
-    }
-  }
-  
-  private boolean b(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("enable");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        bool = true;
-        continue;
-      }
-      bngf.a().a().c(bool);
-      QLog.i("QzoneSettingJsPlugin", 4, "---notifyCustomBrowserChanged-:" + bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private void c(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    Activity localActivity;
-    do
-    {
-      return;
-      localActivity = paramWebViewPlugin.mRuntime.a();
-    } while ((localActivity == null) || (localActivity.isFinishing()));
-    try
-    {
-      int i = new JSONObject(paramArrayOfString[0]).getInt("value");
-      if (i != 0) {
-        bool = true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        long l;
-        QZLog.w("QzoneSettingJsPlugin", 4, new Object[] { "handleSetWaterMark: json error " + paramArrayOfString[0], localJSONException });
-        bool = true;
-      }
-    }
-    l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
-    QLog.i("QzoneSettingJsPlugin", 1, "handleSetWaterMark: " + bool + " uin:" + l);
-    LocalMultiProcConfig.putBool("Qzone_multi_setting", "WaterMark_" + l, bool);
-    LocalMultiProcConfig.putBool("QZ_setting", "WaterMark_" + l, bool);
-  }
-  
-  private boolean c(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("qzone_barrage_effect_enabled", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowCommentBubbleGet-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private void d(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      do
-      {
-        return;
-        localActivity = paramWebViewPlugin.mRuntime.a();
-      } while ((localActivity == null) || (localActivity.isFinishing()));
-      Activity localActivity = null;
-      try
-      {
-        String str = new JSONObject(paramArrayOfString[0]).getString("callback");
-        paramArrayOfString = str;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          long l;
-          QZLog.w("QzoneSettingJsPlugin", 4, new Object[] { "handleGetWaterMark: json error " + paramArrayOfString[0], localJSONException });
-          paramArrayOfString = localActivity;
-          continue;
-          boolean bool = LocalMultiProcConfig.getBool("QZ_setting", "WaterMark_" + l, false);
-        }
-      }
-    } while (paramArrayOfString == null);
-    l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
-    if (LocalMultiProcConfig.containKey("Qzone_multi_setting", "WaterMark_" + l))
-    {
-      bool = LocalMultiProcConfig.getBool("Qzone_multi_setting", "WaterMark_" + l, false);
-      QLog.i("QzoneSettingJsPlugin", 1, "use new key");
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 1, "handleGetWaterMark: " + bool + " uin:" + l);
-      return;
-    }
-  }
-  
-  private boolean d(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        bool = true;
-        continue;
-      }
-      bngf.a().a().b(bool);
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowCommentBubbleSetting-:" + bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean e(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    boolean bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    Activity localActivity;
-    do
-    {
-      return false;
-      localActivity = paramWebViewPlugin.mRuntime.a();
-    } while ((localActivity == null) || (localActivity.isFinishing()));
-    long l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        continue;
-      }
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowQzoneRemindfeedSetting-:" + bool);
-      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131717556) + l, bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean f(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    Activity localActivity;
-    do
-    {
-      return false;
-      localActivity = paramWebViewPlugin.mRuntime.a();
-    } while ((localActivity == null) || (localActivity.isFinishing()));
-    long l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
-    paramWebViewPlugin = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      paramWebViewPlugin = paramArrayOfString;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        boolean bool;
-        paramArrayOfString.printStackTrace();
-      }
-    }
-    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131717556) + l, true);
-    if (bool) {
-      i = 1;
-    }
-    paramWebViewPlugin = "window." + paramWebViewPlugin + "({new_value:" + i + "})";
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramWebViewPlugin);
-    QLog.i("QzoneSettingJsPlugin", 4, "---handleShowQzoneRemindfeedGet-:" + bool);
-    return true;
-  }
-  
-  private boolean g(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    try
-    {
-      int j = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-      i = j;
-      a(j);
-      i = j;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-      }
-    }
-    QLog.i("QzoneSettingJsPlugin", 4, "---handleVideoPlayModeSetting-:" + i);
-    LocalMultiProcConfig.putInt("QZ_setting", "Qzone_playMode", i);
-    paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.VideoPlaySetting"));
-    return true;
-  }
-  
-  private boolean h(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return false;
-    }
-    Object localObject = paramWebViewPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
-      return false;
-    }
-    localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      if (!LocalMultiProcConfig.getBool("QZ_setting", "Qzone_setVideoplay", true))
-      {
-        i = 2;
-        LocalMultiProcConfig.putBool("QZ_setting", "Qzone_setVideoplay", true);
-        paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-        QLog.i("QzoneSettingJsPlugin", 4, "---handleVideoPlayModeGet-:" + i);
-        return true;
-      }
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-        continue;
-        int i = LocalMultiProcConfig.getInt("QZ_setting", "Qzone_playMode", 0);
-      }
-    }
-  }
-  
-  @Deprecated
-  private boolean i(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramArrayOfString)
-      {
-        paramArrayOfString.printStackTrace();
-        bool = true;
-        continue;
-      }
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleGifPlayModeSetting-:" + bool);
-      LocalMultiProcConfig.putBool("QZ_setting", "Qzone_playMode", bool);
-      paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.GifPlaySetting"));
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean j(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("QZ_setting", "Qzone_playMode", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleGifPlayModeGet-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private boolean k(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    try
-    {
-      int j = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-      i = j;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-      }
-    }
-    paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.syncNoPhotoSetting"));
-    QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeSetting-:" + i);
-    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131717561), i);
-    return true;
-  }
-  
-  private boolean l(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return false;
-    }
-    Activity localActivity = paramWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return false;
-    }
-    String str = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131717561), 0);
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeGet-:" + i);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = str;
-      }
-    }
-  }
-  
-  private boolean m(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        bool = true;
-        continue;
-      }
-      bngf.a().a().a(bool);
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowFontSetting-:" + bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean n(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("qzone_font_enabled", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowFontGet-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private boolean o(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        bool = true;
-        continue;
-      }
-      bngf.a().a().d(bool);
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowSparkleFontSetting-:" + bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean p(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("qzone_super_font_enabled", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowSparkleFontGet-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private boolean q(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      if (a()) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({enable:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleIsSupportParticleEffect-:" + i);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private boolean r(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("qzone_passive_praise_enabled", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({isOpen:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handlePassivePraiseGet-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private boolean s(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        bool = true;
-        continue;
-      }
-      LocalMultiProcConfig.putBool("qzone_passive_praise_enabled", bool);
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleShowSparkleFontSetting-:" + bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean t(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(paramArrayOfString[0]).getInt("value");
-        if (i != 0) {
-          continue;
-        }
-      }
-      catch (JSONException paramWebViewPlugin)
-      {
-        paramWebViewPlugin.printStackTrace();
-        bool = true;
-        continue;
-      }
-      LocalMultiProcConfig.putBool("qzone_feed_skin_enable", bool);
-      bngf.a().a().a();
-      QLog.i("QzoneSettingJsPlugin", 4, "---handlefeedSkinEnable-:" + bool);
-      return true;
-      bool = true;
-    }
-  }
-  
-  private boolean u(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      localObject = paramWebViewPlugin.mRuntime.a();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    Object localObject = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      boolean bool = LocalMultiProcConfig.getBool("qzone_feed_skin_enable", true);
-      if (bool) {
-        i = 1;
-      }
-      paramWebViewPlugin.callJs("window." + paramArrayOfString + "({isOpen:" + i + "})");
-      QLog.i("QzoneSettingJsPlugin", 4, "---handleFeedSkinGet-:" + bool);
-      return true;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
-      {
-        paramArrayOfString.printStackTrace();
-        paramArrayOfString = (String[])localObject;
-      }
-    }
-  }
-  
-  private boolean v(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    bngf.a().a().a(paramArrayOfString[0]);
-    QLog.i("QzoneSettingJsPlugin", 4, "---handleUpdateCustomPraise-:" + paramArrayOfString[0]);
-    return true;
-  }
-  
-  private boolean w(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return false;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    bngf.a().a().b(paramArrayOfString[0]);
-    QLog.i("QzoneSettingJsPlugin", 4, "---handleUpdatePloymorphicPraise-:" + paramArrayOfString[0]);
-    return true;
-  }
-  
-  private boolean x(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    if ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing())) {
-      return false;
-    }
-    bngf.a().a().b();
-    QLog.i("QzoneSettingJsPlugin", 4, "---handleUpdateFontList-:");
-    return true;
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (paramString3.equalsIgnoreCase("setShowRemindfeed"))
-    {
-      e(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setVideoPlayMode"))
-    {
-      g(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setGifPlayMode"))
-    {
-      i(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setPictureMode"))
-    {
-      k(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setShowFont"))
-    {
-      m(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getPictureMode"))
-    {
-      l(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getShowRemindfeed"))
-    {
-      f(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getVideoPlayMode"))
-    {
-      h(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getGifPlayMode"))
-    {
-      j(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getShowFont"))
-    {
-      n(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setShowSparkleFont"))
-    {
-      o(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getShowSparkleFont"))
-    {
-      p(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setShowCommentBubble"))
-    {
-      d(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getShowCommentBubble"))
-    {
-      c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setPassivePraiseSwitch"))
-    {
-      s(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getPassivePraiseSwitch"))
-    {
-      r(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("isSupportParticleEffect"))
-    {
-      q(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("updateCustomPraise"))
-    {
-      v(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setRightButton"))
-    {
-      a(paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setFeedSkinSwitch"))
-    {
-      t(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getFeedSkinSwitch"))
-    {
-      u(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("updatePloymorphicPraise"))
-    {
-      w(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("updateFontList"))
-    {
-      x(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getCustomBrowseInfoSwitch"))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("enableCustomBrowseInfo"))
-    {
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setInteractSoundMode"))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getInteractSoundMode"))
-    {
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("getWaterMark"))
-    {
-      d(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("setWaterMark"))
-    {
-      c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
+      Log.e("STextureRender", paramString + ": glError " + i);
+      throw new RuntimeException(paramString + ": glError " + i);
     }
-    return false;
   }
 }
 

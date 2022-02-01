@@ -1,14 +1,16 @@
-class antm
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class antm
+  extends anri
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public antm(antk paramantk, int paramInt, String paramString1, String paramString2)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    paramQQAppInterface = new antl(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "qzone_publicaccount";
+    return paramQQAppInterface;
   }
 }
 

@@ -1,77 +1,83 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
-@Deprecated
 public class anll
 {
-  private static anll jdField_a_of_type_Anll;
-  public int a;
-  public String a;
-  public AtomicInteger a;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  private static List<anlm> jdField_a_of_type_JavaUtilList = new ArrayList(32);
+  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public anll()
+  public static void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static anll a()
-  {
-    try
+    synchronized (jdField_a_of_type_JavaUtilList)
     {
-      if (jdField_a_of_type_Anll == null) {
-        jdField_a_of_type_Anll = new anll();
-      }
-      anll localanll = jdField_a_of_type_Anll;
-      return localanll;
-    }
-    finally {}
-  }
-  
-  public anll a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
-    }
-    return this;
-  }
-  
-  public ReentrantLock a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[getLock].");
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
+      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionManager", 2, "create lock.");
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+        anlm localanlm = (anlm)localIterator.next();
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_FailCode", String.valueOf(localanlm.jdField_a_of_type_Int));
+        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+        localHashMap.put("msgType", String.valueOf(localanlm.b));
+        localHashMap.put("uinType", String.valueOf(localanlm.c));
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(localanlm.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localanlm.jdField_a_of_type_Long, 0L, localHashMap, "");
       }
-      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-      return localReentrantLock;
     }
-    finally {}
+    anlm.a(jdField_a_of_type_JavaUtilList);
+    jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void a()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[onDestroy]");
-      }
+    if (!paramQQAppInterface.getCurrentUin().endsWith("7")) {
       return;
     }
-    finally
+    paramQQAppInterface = new HashMap();
+    paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
+    paramQQAppInterface.put("uinType", String.valueOf(paramInt));
+    paramQQAppInterface.put("convUin", String.valueOf(paramString));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
+  }
+  
+  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
+  {
+    if (!paramQQAppInterface.getCurrentUin().endsWith("77")) {}
+    long l;
+    do
     {
-      localObject = finally;
-      throw localObject;
+      return;
+      l = NetConnInfoCenter.getServerTime() - ???.time;
+    } while ((l < 30L) || ((paramQQAppInterface.mLoginTime != 0L) && (???.time < paramQQAppInterface.mLoginTime)));
+    if (???.time < paramQQAppInterface.mRegisterPushTime) {}
+    for (int i = 1;; i = 2)
+    {
+      paramQQAppInterface = anlm.a(i, paramQQAppInterface.getCurrentUin(), l, ???.msgtype, ???.istroop);
+      synchronized (jdField_a_of_type_JavaUtilList)
+      {
+        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
+        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
+          a();
+        }
+        return;
+      }
+    }
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramString, true, paramLong, 0L, localHashMap, "");
     }
   }
 }

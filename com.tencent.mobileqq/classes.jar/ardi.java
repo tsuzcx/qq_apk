@@ -1,81 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "", "()V", "topBrowsers", "", "Lcom/tencent/mobileqq/browser/BrowserItem;", "blackListApps", "", "(Ljava/util/List;Ljava/util/List;)V", "getBlackListApps", "()Ljava/util/List;", "getTopBrowsers", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ardi
+class ardi
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  @NotNull
-  private final List<aqkg> a;
-  @NotNull
-  private final List<String> b;
+  ardi(arcu paramarcu, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public ardi()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this((List)new ArrayList(), null, 2, null);
-  }
-  
-  public ardi(@NotNull List<aqkg> paramList, @NotNull List<String> paramList1)
-  {
-    this.a = paramList;
-    this.b = paramList1;
-  }
-  
-  @NotNull
-  public final List<aqkg> a()
-  {
-    return this.a;
-  }
-  
-  @NotNull
-  public final List<String> b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    Bundle localBundle;
+    if (paramBundle != null) {
+      localBundle = new Bundle();
+    }
+    try
     {
-      if ((paramObject instanceof ardi))
-      {
-        paramObject = (ardi)paramObject;
-        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b))) {}
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
       }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    else {
-      return true;
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    List localList = this.a;
-    if (localList != null) {}
-    for (int i = localList.hashCode();; i = 0)
+    catch (Throwable paramBundle)
     {
-      localList = this.b;
-      if (localList != null) {
-        j = localList.hashCode();
-      }
-      return i * 31 + j;
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
     }
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "BrowserOpenBean(topBrowsers=" + this.a + ", blackListApps=" + this.b + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardi
  * JD-Core Version:    0.7.0.1
  */

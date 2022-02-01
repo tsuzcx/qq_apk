@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import cooperation.qzone.share.QZoneShareActivity;
+import java.io.File;
+import java.io.FileFilter;
 
-public class bnhi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bnhi
+  implements FileFilter
 {
-  public bnhi(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
+  bnhi(bnhh parambnhh) {}
   
-  public void onGlobalLayout()
+  public boolean accept(File paramFile)
   {
-    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
-      return;
-      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
-      }
-    }
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 

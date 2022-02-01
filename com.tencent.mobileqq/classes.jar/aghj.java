@@ -1,8 +1,29 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aghj
+abstract class aghj<T extends aezx>
 {
-  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  private T a;
+  
+  private aghj(agcw paramagcw) {}
+  
+  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    if (this.a == null) {
+      this.a = a(paramChatMessage, paramBaseAdapter);
+    }
+    if (a()) {
+      this.b.a(this.a, paramBaseAdapter);
+    }
+    return this.a;
+  }
 }
 
 

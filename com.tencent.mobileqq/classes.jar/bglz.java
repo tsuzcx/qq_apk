@@ -1,329 +1,586 @@
-import android.content.Intent;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.business.qvip.QVipBigTroopExpiredConfig;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.hardware.SensorManager;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.PathTraceService;
+import com.tencent.mobileqq.vashealth.TracePathData;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Map;
+import mqq.app.AppActivity;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bglz
-  extends bgkj
+  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public ahzx a;
-  private aocj jdField_a_of_type_Aocj;
-  private aojs jdField_a_of_type_Aojs;
-  private bgkh jdField_a_of_type_Bgkh;
-  private bgku jdField_a_of_type_Bgku;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private String jdField_a_of_type_JavaLangString;
+  public Activity a;
+  private LocationManager a;
+  public AppInterface a;
+  public boolean a;
   
-  public bglz(BaseChatPie paramBaseChatPie, bgkh parambgkh)
+  public bglz()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Bgkh = parambgkh;
-    this.jdField_a_of_type_Long = a();
-    g();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Long);
-    a(this.jdField_a_of_type_Bgku);
-    a(this.jdField_a_of_type_Aocj);
-    a(this.jdField_a_of_type_Aojs);
-    if (bduy.a()) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
+    this.mPluginNameSpace = "healthpathtrace";
   }
   
-  private long a()
+  public static boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {}
+    return (!TextUtils.isEmpty(paramString)) && (paramString.contains("__page=run"));
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    Object localObject = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
+    this.jdField_a_of_type_Boolean = a(paramString);
+    if (!this.jdField_a_of_type_Boolean) {
+      bool2 = false;
+    }
     do
     {
-      do
-      {
-        return 0L;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString == null));
-      try
-      {
-        long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        return l;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("AppShortcutBarProcessor", 2, "getTroopUinNoEmpty is Exception");
-    return 0L;
-  }
-  
-  private ArrayList<bgkm> a(ArrayList<bgkn> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+      return bool2;
+      ((PathTraceManager)localObject).a(this);
+    } while ((paramLong != 8589934597L) && (paramLong != 2L) && (paramLong != 32L));
+    if ((paramLong == 8589934597L) && (((PathTraceManager)localObject).b() == 0))
     {
-      bgkn localbgkn = (bgkn)paramArrayList.next();
-      if ((localbgkn != null) && ((localbgkn instanceof bgkm))) {
-        localArrayList.add(localbgkn);
-      }
+      ((PathTraceManager)localObject).b(0);
+      paramString = "pause";
+      bool1 = true;
     }
-    return localArrayList;
-  }
-  
-  private void a(anui paramanui)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramanui != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramanui);
-    }
-  }
-  
-  private void b(anui paramanui)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramanui != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramanui);
-    }
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_Bgku = new bgma(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aojs = new bgmb(this);
-    this.jdField_a_of_type_Aocj = new bgmc(this);
-  }
-  
-  private void h()
-  {
-    Object localObject = (bgks)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355);
-    if ((!"".equals(this.jdField_a_of_type_JavaLangString)) && (localObject != null))
-    {
-      long l = ((bgks)localObject).c(this.jdField_a_of_type_Long);
-      if (l > ((bgks)localObject).b(this.jdField_a_of_type_Long)) {
-        ((bgks)localObject).a(this.jdField_a_of_type_Long, l);
-      }
-      localObject = ((bgks)localObject).a(Long.valueOf(this.jdField_a_of_type_Long));
-      if (localObject != null)
-      {
-        localObject = ((bgkr)localObject).a().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((bgkn)((Iterator)localObject).next()).a(false);
-        }
-      }
-    }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {}
-    TroopInfo localTroopInfo;
-    bgko localbgko;
-    bgkq localbgkq;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarProcessor", 2, "getAIOShortcutBarInfoOnShow.");
-      }
-      localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString);
-      localbgko = (bgko)aran.a().a(590);
-      localbgkq = (bgkq)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(171);
-    } while ((localbgko == null) || (localTroopInfo == null) || ((!localbgko.a((int)localTroopInfo.dwGroupClassExt)) && (!localbgko.b((int)localTroopInfo.dwGroupClassExt))));
     for (;;)
     {
-      boolean bool;
-      try
+      bool2 = bool1;
+      if (TextUtils.isEmpty(paramString)) {
+        break;
+      }
+      QLog.i("PathTraceManager.Plugin", 1, "webview event type:" + paramLong + ", event name: " + paramString);
+      return bool1;
+      if ((paramLong == 2L) && (((PathTraceManager)localObject).b() == 0))
       {
-        localbgkr = ((bgks)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355)).a(Long.valueOf(this.jdField_a_of_type_Long));
-        if (localbgkr == null) {
-          break label356;
-        }
-        if (!bduy.a()) {
-          break label325;
-        }
-        i = 1;
-        if ((localbgkr.a() < System.currentTimeMillis()) || ((bduy.a()) && (this.jdField_a_of_type_Int != i)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AppShortcutBarProcessor", 2, "onShow. AIO TroopShortcutBar cache is out of date. Getting new list from server. ");
+        if (Build.VERSION.SDK_INT >= 23) {
+          if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
+            if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
+              ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+            }
           }
-          this.jdField_a_of_type_Int = i;
-          localbgkq.a(this.jdField_a_of_type_Long, (int)localTroopInfo.dwGroupClassExt);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("AppShortcutBarProcessor", 2, "onShow. updateAppShortcutPanel. ");
-        }
-        if (localTroopInfo.isAdmin()) {
-          break label386;
-        }
-        if (!localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          break label330;
-        }
-      }
-      catch (Exception localException)
-      {
-        bgkr localbgkr;
-        QLog.e("AppShortcutBarProcessor", 1, localException.getMessage());
-        return;
-      }
-      if (i == 0)
-      {
-        if (localbgko.jdField_a_of_type_Int == bgko.c)
+        for (;;)
         {
-          bool = true;
-          if (((i == 0) && (localbgkr.a() == 0)) || ((i != 0) && (localbgkr.b() == 0)))
+          paramString = "resume";
+          bool1 = true;
+          break;
+          ((PathTraceManager)localObject).a(0);
+          continue;
+          ((PathTraceManager)localObject).a(0);
+        }
+      }
+      if (paramLong == 32L)
+      {
+        paramString = Uri.parse(paramString);
+        label334:
+        float f2;
+        float f1;
+        if (paramString.getQuery() != null) {
+          if (paramString.getQueryParameter("runningState") != null)
           {
-            this.jdField_a_of_type_Bgkh.a(0, a(localbgkr.a()), bool);
-            return;
-            label325:
-            i = 0;
-            continue;
-            label330:
-            i = 0;
-            continue;
+            paramString = String.valueOf(paramMap.get("url")).replace("runningState=" + paramString.getQueryParameter("runningState"), "runningState=" + ((PathTraceManager)localObject).a());
+            localObject = BaseApplicationImpl.getApplication().getSharedPreferences(this.mRuntime.a().getCurrentAccountUin(), 0);
+            f2 = 0.0F;
+            f1 = 0.0F;
+            long l = ((SharedPreferences)localObject).getLong("search_lbs_timestamp", 0L);
+            if (System.currentTimeMillis() - l < 10800000L)
+            {
+              f2 = ((SharedPreferences)localObject).getFloat("search_lbs_logitude", 0.0F);
+              f1 = ((SharedPreferences)localObject).getFloat("search_lbs_latitude", 0.0F);
+            }
+            if (!paramString.contains("lati")) {
+              break label665;
+            }
+            paramString = paramString.replace("lati=" + Uri.parse(paramString).getQueryParameter("lati"), "lati=" + f1);
+            label469:
+            if (!paramString.contains("logi")) {
+              break label693;
+            }
+          }
+        }
+        label665:
+        label693:
+        for (paramString = paramString.replace("logi=" + Uri.parse(paramString).getQueryParameter("logi"), "logi=" + f2);; paramString = paramString + "&logi=" + f2)
+        {
+          paramMap.put("url", paramString);
+          if (QLog.isColorLevel()) {
+            QLog.d("PathTraceManager.Plugin", 2, "Intercep url:" + paramString);
+          }
+          bool1 = false;
+          paramString = "";
+          break;
+          paramString = String.valueOf(paramMap.get("url")) + "&runningState=" + ((PathTraceManager)localObject).a();
+          break label334;
+          paramString = String.valueOf(paramMap.get("url")) + "?runningState=" + ((PathTraceManager)localObject).a();
+          break label334;
+          paramString = paramString + "&lati=" + f1;
+          break label469;
+        }
+      }
+      paramString = "";
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((paramString1 == null) || (!"healthpathtrace".equals(paramString2)) || (paramString3 == null)) {
+      return false;
+    }
+    JSONObject localJSONObject;
+    try
+    {
+      localJSONObject = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      if (localJSONObject == null) {
+        break label2556;
+      }
+      paramJsBridgeListener = localJSONObject.getString("callback");
+      QLog.i("PathTraceManager.Plugin", 1, "handleJsRequest method: " + paramString3 + ", args: " + localJSONObject.toString());
+      paramString1 = paramVarArgs[0];
+      if (TextUtils.isEmpty(paramJsBridgeListener))
+      {
+        QLog.e("PathTraceManager.Plugin", 1, "need callback");
+        return true;
+      }
+      paramVarArgs = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
+      if ("PathTraceStatus".equals(paramString3))
+      {
+        paramString2 = new JSONObject();
+        paramString2.put("retCode", 1);
+        paramString2.put("runningState", paramVarArgs.a());
+        if (paramVarArgs.a() != 0)
+        {
+          paramString1 = paramVarArgs.a();
+          if (paramString1 != null) {
+            break label2553;
+          }
+          paramString1 = paramVarArgs.b();
+          label182:
+          if (paramString1 == null) {
+            break label217;
+          }
+          paramString2.put("type", paramString1.type);
+        }
+        for (;;)
+        {
+          super.callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
+          break;
+          label217:
+          QLog.i("PathTraceManager.Plugin", 1, "pathtrace type err");
+        }
+      }
+      if (!"PathTraceInit".equals(paramString3)) {
+        break label391;
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      QLog.i("PathTraceManager.Plugin", 1, "HandleJs Err:" + paramJsBridgeListener.toString());
+    }
+    paramString1 = new JSONObject();
+    if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps")) {
+      paramString1.put("retCode", -2);
+    }
+    for (;;)
+    {
+      callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+      break;
+      paramString1.put("retCode", 1);
+      if ((paramVarArgs != null) && (paramVarArgs.b() != null))
+      {
+        paramString1.put("retCode", -7);
+        paramString1.put("startTime", paramVarArgs.b().startTime);
+        paramString1.put("records", paramVarArgs.a(null).toString());
+      }
+    }
+    label391:
+    if ("PathTraceOriginLocation".equals(paramString3))
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.b() > 0))
+      {
+        paramString1 = new JSONObject();
+        paramString1.put("retCode", -4);
+        super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+      }
+      else
+      {
+        paramString1 = new JSONObject();
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+          {
+            if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
+            {
+              ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+              paramString1.put("retCode", -4);
+              super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+              if (paramVarArgs != null) {
+                paramVarArgs.a(0);
+              }
+            }
+          }
+          else
+          {
+            paramString1.put("retCode", 1);
+            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+            if (paramVarArgs != null) {
+              paramVarArgs.a(0);
+            }
           }
         }
         else
         {
-          bool = false;
-          continue;
+          paramString1.put("retCode", 1);
+          super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          if (paramVarArgs != null) {
+            paramVarArgs.a(0);
+          }
+        }
+      }
+    }
+    else if ("PathTraceStart".equals(paramString3))
+    {
+      paramString1 = new JSONObject();
+      if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps"))
+      {
+        paramString1.put("retCode", -2);
+        super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+        return false;
+      }
+      if (Build.VERSION.SDK_INT < 19)
+      {
+        paramString1.put("stepAuth", 1);
+        label706:
+        paramString2 = new Bundle();
+        paramString2.putString("cmd", "qq_sport_banner");
+        paramString2.putBoolean("showParameter", true);
+        ardu.a().b(paramString2);
+        if (Build.VERSION.SDK_INT < 23) {
+          break label882;
+        }
+        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+        {
+          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
+            break label2561;
+          }
+          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          paramString1.put("retCode", -2);
+          super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          break label2561;
         }
       }
       else
       {
-        bool = true;
-        continue;
+        if (((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor")).getDefaultSensor(19) != null) {
+          break label2563;
+        }
       }
-      this.jdField_a_of_type_Bgkh.a(0, null, bool);
-      return;
-      label356:
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarProcessor", 2, "onShow. AIO TroopShortcutBar cache is null. Getting list from server. ");
-      }
-      localbgkq.a(this.jdField_a_of_type_Long, (int)localException.dwGroupClassExt);
-      return;
-      label386:
-      int i = 1;
     }
-  }
-  
-  public void a()
-  {
-    h();
-    b(this.jdField_a_of_type_Aojs);
-    b(this.jdField_a_of_type_Aocj);
-    b(this.jdField_a_of_type_Bgku);
-    f();
-    e();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-    this.jdField_a_of_type_Bgkh = null;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (paramObject == null)) {}
-    String str;
-    long l;
-    TroopInfo localTroopInfo;
-    do
+    label2561:
+    label2563:
+    for (int i = 1;; i = 0)
     {
-      do
+      paramString1.put("stepAuth", i);
+      break label706;
+      paramVarArgs.a(localJSONObject);
+      super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+      break label2561;
+      label882:
+      paramVarArgs.a(localJSONObject);
+      super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+      break label2561;
+      if ("PathTracePause".equals(paramString3))
       {
-        return;
-      } while (!(paramObject instanceof bgkn));
-      h();
-      paramObject = (bgkn)paramObject;
-      str = paramObject.c();
-      l = paramObject.c();
-      localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString);
-      if (localTroopInfo != null) {
-        break;
+        paramString1 = new JSONObject();
+        paramVarArgs.c();
+        paramString1.put("retCode", 1);
+        super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("AppShortcutBarProcessor", 2, "OnClickListener. troopInfo is null.");
-    return;
-    if (l == 101847770L) {
-      bdll.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(paramObject.c()), this.jdField_a_of_type_JavaLangString, String.valueOf(localTroopInfo.dwGroupClassExt), "");
+      else
+      {
+        if ("PathTraceResume".equals(paramString3))
+        {
+          paramString1 = new JSONObject();
+          if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps"))
+          {
+            paramString1.put("retCode", -2);
+            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+            return false;
+          }
+          if (paramVarArgs.a() == null)
+          {
+            paramString1.put("retCode", -12);
+            paramString1.put("message", "invalid startTime");
+          }
+          for (;;)
+          {
+            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+            break;
+            paramString2 = new Bundle();
+            paramString2.putString("cmd", "qq_sport_banner");
+            paramString2.putBoolean("showParameter", true);
+            ardu.a().b(paramString2);
+            if (Build.VERSION.SDK_INT >= 23)
+            {
+              if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+              {
+                if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
+                {
+                  ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+                  paramString1.put("retCode", -2);
+                  super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+                }
+              }
+              else
+              {
+                paramVarArgs.d();
+                paramString1.put("retCode", 1);
+              }
+            }
+            else
+            {
+              paramVarArgs.d();
+              paramString1.put("retCode", 1);
+            }
+          }
+        }
+        if ("PathTraceEnd".equals(paramString3))
+        {
+          paramString3 = new JSONObject();
+          paramString2 = paramVarArgs.a();
+          paramString1 = paramString2;
+          if (paramString2 == null) {
+            paramString1 = paramVarArgs.b();
+          }
+          if (paramString1 == null)
+          {
+            paramString3.put("retCode", -8);
+            QLog.e("PathTraceManager.Plugin", 1, "PathTraceEnd Err");
+          }
+          for (;;)
+          {
+            paramString1 = new Bundle();
+            paramString1.putString("cmd", "qq_sport_banner");
+            paramString1.putBoolean("showParameter", false);
+            ardu.a().b(paramString1);
+            QLog.d("PathTraceManager.Plugin", 1, "end result data:" + paramString3.toString());
+            super.callJs(paramJsBridgeListener, new String[] { paramString3.toString() });
+            break;
+            long l1 = localJSONObject.optLong("totalTime", paramString1.totalTime);
+            long l2;
+            float f;
+            if (paramVarArgs.a(l1))
+            {
+              paramString3.put("retCode", 1);
+              paramString3.put("startTime", paramString1.startTime);
+              paramString2 = new JSONArray();
+              paramVarArgs = BaseApplicationImpl.getApplication().getSharedPreferences(String.valueOf(paramString1.startTime), 0);
+              l2 = paramVarArgs.getLong(String.valueOf(PathTraceManager.a), 0L);
+              f = paramVarArgs.getFloat(String.valueOf(PathTraceManager.jdField_b_of_type_Int), 0.0F);
+              if (l1 - l2 <= 0L) {
+                break label1747;
+              }
+              paramVarArgs.edit().putString(String.valueOf((int)(paramString1.distance / 1000.0D + 1.0D)), String.valueOf((int)((l1 - l2) / ((paramString1.distance - f) / Float.valueOf(1000.0F).floatValue()))) + ",0,0").commit();
+              QLog.d("PathTraceManager.Plugin", 1, ">0 toalTime:" + l1 + ",lastspeedtime:" + l2 + ",distance:" + paramString1.distance + ",lastdistance:" + f);
+            }
+            for (;;)
+            {
+              i = 1;
+              for (paramString1 = paramVarArgs.getString(String.valueOf(1), null); paramString1 != null; paramString1 = paramVarArgs.getString(String.valueOf(i), null))
+              {
+                paramString1 = paramString1.split(",");
+                localJSONObject = new JSONObject();
+                localJSONObject.put("km", String.valueOf(i));
+                localJSONObject.put("time", paramString1[0]);
+                localJSONObject.put("latitude", paramString1[1]);
+                localJSONObject.put("longitude", paramString1[2]);
+                paramString2.put(localJSONObject);
+                i += 1;
+              }
+              paramString3.put("retCode", -5);
+              break;
+              label1747:
+              if (paramString1.totalTime - l2 > 0L)
+              {
+                paramVarArgs.edit().putString(String.valueOf((int)(paramString1.distance / 1000.0D + 1.0D)), String.valueOf((int)((paramString1.totalTime - l2) / ((paramString1.distance - f) / Float.valueOf(1000.0F).floatValue()))) + ",0,0").commit();
+                QLog.d("PathTraceManager.Plugin", 1, "<0 toalTime:" + l1 + ",lastspeedtime:" + l2 + ",distance:" + paramString1.distance + ",lastdistance:" + f);
+              }
+              else
+              {
+                QLog.d("PathTraceManager.Plugin", 1, "<>0exception toalTime:" + l1 + ",lastspeedtime:" + l2 + ",distance:" + paramString1.distance + ",lastdistance:" + f);
+              }
+            }
+            paramString3.put("kmrecords", paramString2);
+          }
+        }
+        if ("PathTraceUpload".equals(paramString3))
+        {
+          paramString1 = new JSONObject();
+          if (!localJSONObject.has("startTime"))
+          {
+            paramString1.put("retCode", -12);
+            paramString1.put("message", "invalid startTime");
+            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          }
+          else
+          {
+            paramVarArgs.a(localJSONObject.optLong("startTime"), paramJsBridgeListener);
+          }
+        }
+        else if ("PathTraceBack".equals(paramString3))
+        {
+          paramString1 = new JSONObject();
+          paramString1.put("retCode", 1);
+          super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+        }
+        else
+        {
+          if ("PathTraceQueryOne".equals(paramString3))
+          {
+            paramString2 = new JSONObject();
+            if (!TextUtils.isEmpty(paramJsBridgeListener))
+            {
+              paramString1 = paramVarArgs.a(paramString1);
+              paramString2.put("retCode", 1);
+              paramString2.put("records", paramString1.toString());
+            }
+            for (;;)
+            {
+              super.callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
+              break;
+              paramString2.put("retCode", -8);
+            }
+          }
+          if ("PathTraceQuery".equals(paramString3))
+          {
+            super.callJs(paramJsBridgeListener, new String[] { paramVarArgs.a().toString() });
+          }
+          else if ("PathTraceDelete".equals(paramString3))
+          {
+            paramString1 = Long.valueOf(new JSONObject(paramString1).optLong("startTime"));
+            paramJsBridgeListener = paramString1;
+            if (paramString1.longValue() == 0L)
+            {
+              paramJsBridgeListener = paramString1;
+              if (paramVarArgs.b() != null) {
+                paramJsBridgeListener = Long.valueOf(paramVarArgs.b().startTime);
+              }
+            }
+            paramVarArgs.a(paramJsBridgeListener);
+          }
+          else
+          {
+            if ("PathTraceVoiceControl".equals(paramString3))
+            {
+              i = new JSONObject(paramString1).optInt("mute");
+              if (i == 1) {
+                paramVarArgs.d = true;
+              }
+              for (;;)
+              {
+                paramString1 = new JSONObject();
+                paramString1.put("retCode", 1);
+                super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+                break;
+                if (i == 0) {
+                  paramVarArgs.d = false;
+                }
+              }
+            }
+            if ("PathTraceIgnoreSpeed".equals(paramString3))
+            {
+              if (new JSONObject(paramString1).optInt("ignoreSpeed") == 1) {}
+              for (paramVarArgs.jdField_b_of_type_Boolean = true;; paramVarArgs.jdField_b_of_type_Boolean = false)
+              {
+                paramString1 = new JSONObject();
+                paramString1.put("retCode", 1);
+                super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+                break;
+              }
+            }
+            if ("PathTraceGpsAuth".equals(paramString3))
+            {
+              paramString1 = new JSONObject();
+              if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps")) {
+                paramString1.put("retCode", -2);
+              }
+              for (;;)
+              {
+                super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+                break;
+                paramString1.put("retCode", 1);
+              }
+              label2553:
+              break label182;
+              label2556:
+              paramJsBridgeListener = null;
+              break;
+            }
+          }
+        }
+      }
+      return false;
     }
-    if ((l == 1101236949L) && (armu.c().mIsEnable) && (localTroopInfo.mIsFreezed == 1) && ((localTroopInfo.isAdmin()) || (localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))) {
-      bdll.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(paramObject.c()), this.jdField_a_of_type_JavaLangString, String.valueOf(localTroopInfo.dwGroupClassExt), "");
-    }
-    int i = paramObject.b();
-    if (str.startsWith("local"))
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    this.jdField_a_of_type_AndroidLocationLocationManager = ((LocationManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("location"));
+    PathTraceManager localPathTraceManager = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
+    if (this.mRuntime.a() != null) {}
+    for (String str = this.mRuntime.a().mUrl;; str = null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt == null) {
-        break label375;
+      this.jdField_a_of_type_Boolean = a(str);
+      if (this.jdField_a_of_type_Boolean) {
+        localPathTraceManager.a(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt.b(true);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt instanceof agrz)) {
-        ((agrz)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agrt).c(3);
+      if (QLog.isColorLevel()) {
+        QLog.d("PathTraceManager.Plugin", 2, "OnCreate isRunningPage: " + this.jdField_a_of_type_Boolean);
       }
-    }
-    for (;;)
-    {
-      bdll.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(paramObject.c()), this.jdField_a_of_type_JavaLangString, String.valueOf(localTroopInfo.dwGroupClassExt), "");
-      bgqr.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, l, str, 0, i);
       return;
-      label375:
-      Intent localIntent = new Intent();
-      localIntent.putExtra("troop_uin", localTroopInfo.troopuin);
-      localIntent.putExtra("session_info", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      localIntent.putExtra("fling_action_key", 2);
-      localIntent.putExtra("fling_code_key", hashCode());
-      localIntent.putExtra("reportfrom", 3);
-      afez.a(xiz.a(), localIntent, PublicFragmentActivity.class, TroopAppShortcutFragment.class);
     }
   }
   
-  public void b()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {}
-  }
-  
-  public void b(Object paramObject) {}
-  
-  public void c()
-  {
-    i();
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_Ahzx == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null))
+    try
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364389);
-      this.jdField_a_of_type_Ahzx = new ahzx(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localRelativeLayout);
-      this.jdField_a_of_type_Ahzx.a(4);
-      this.jdField_a_of_type_Ahzx.c(75);
-      this.jdField_a_of_type_Ahzx.a();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Ahzx != null)
-    {
-      this.jdField_a_of_type_Ahzx.b();
-      this.jdField_a_of_type_Ahzx = null;
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Ahzx == null) {
+      PathTraceManager localPathTraceManager = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
+      if (this.mRuntime.a() != null) {
+        String str = this.mRuntime.a().mUrl;
+      }
+      if ((localPathTraceManager != null) && (localPathTraceManager.b() == 0) && (this.jdField_a_of_type_Boolean))
+      {
+        QLog.d("PathTraceManager.Plugin", 1, "here stop");
+        localPathTraceManager.b(-1);
+        PathTraceService.c();
+      }
+      QLog.d("PathTraceManager.Plugin", 1, "onDestroy isRunningPage: " + this.jdField_a_of_type_Boolean);
       return;
     }
-    this.jdField_a_of_type_Ahzx.d(4);
+    catch (Exception localException)
+    {
+      QLog.e("PathTraceManager.Plugin", 1, "onDestroy Err:", localException);
+    }
   }
 }
 

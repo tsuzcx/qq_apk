@@ -1,96 +1,24 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import java.util.ArrayList;
 
 public class beio
 {
-  private String a;
-  private String b;
-  private String c;
+  public int a;
+  public ImageView a;
+  public TextView a;
   
-  public beio a()
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    return a("999").a(localBaseApplication, "999_540", "999_540");
-  }
+  public beio(HomeworkGuideFragment paramHomeworkGuideFragment) {}
   
-  public beio a(Context paramContext, String paramString1, String paramString2)
+  public void a(int paramInt, View paramView)
   {
-    paramContext = a(paramContext);
-    this.b = (paramContext + paramString1 + ".zip");
-    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
-    return this;
-  }
-  
-  public beio a(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String a(Context paramContext)
-  {
-    paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
-    StringBuilder localStringBuilder = agej.a().append(paramContext);
-    if (!paramContext.endsWith(File.separator)) {
-      localStringBuilder.append(File.separator);
-    }
-    return this.a + File.separator;
-  }
-  
-  public boolean a()
-  {
-    return new File(this.b).exists();
-  }
-  
-  public beio b()
-  {
-    return a(BaseApplicationImpl.getContext(), "test", "test");
-  }
-  
-  public String b()
-  {
-    return ThemeUtil.getThemeConfigID(this.a);
-  }
-  
-  public String b(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    return paramContext + "3_" + b() + ".cfg";
-  }
-  
-  public boolean b()
-  {
-    return new File(this.c).exists();
-  }
-  
-  public beio c()
-  {
-    this.b = null;
-    this.c = null;
-    return this;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return this.b;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372596));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365419));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
   }
 }
 

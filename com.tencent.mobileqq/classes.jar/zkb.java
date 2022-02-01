@@ -1,30 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zkb
-  extends RecyclerView.ViewHolder
+class zkb
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RoundCornerImageView a;
-  public boolean a;
-  public RelativeLayout b;
-  public TextView b;
+  zkb(zka paramzka, zkl paramzkl, String paramString, bjnw parambjnw) {}
   
-  public zkb(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377799));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131377795));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363330));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377796));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377798));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377797));
+    this.jdField_a_of_type_Zkl.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bjnw.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

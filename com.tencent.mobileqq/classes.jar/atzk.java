@@ -1,28 +1,28 @@
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
 public class atzk
-  implements Cloneable
+  implements EIPCResultCallback
 {
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a = new byte[16];
-  public long b;
-  public short b;
-  public boolean b;
-  public long c = -1L;
+  public atzk(GameSessionView paramGameSessionView, Context paramContext, GameCenterSessionInfo paramGameCenterSessionInfo) {}
   
-  public atzk a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    if (paramEIPCResult.code == 0)
     {
-      atzk localatzk = (atzk)super.clone();
-      return localatzk;
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = paramEIPCResult.getString("key_get_msg_list_url");
+        QLog.i(GameSessionView.a, 1, "[onCallback] url:" + paramEIPCResult);
+        atyf.a(paramEIPCResult, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo);
+      }
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import Wallet.FocusMpIdRsp;
+import amtj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import anzj;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.widget.QQToast;
@@ -21,10 +21,10 @@ class DataJsPlugin$14
     if ((paramBundle == null) || (paramBundle.err_code != 0))
     {
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-      QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, anzj.a(2131701639), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131299011));
+      QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, amtj.a(2131701874), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131299076));
       return;
     }
-    QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, anzj.a(2131701643), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131299011));
+    QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, amtj.a(2131701878), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131299076));
     this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }

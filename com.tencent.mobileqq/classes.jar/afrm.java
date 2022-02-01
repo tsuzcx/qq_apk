@@ -1,32 +1,26 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.view.View;
+import java.util.List;
 
-public class afrm
-  implements blop
+class afrm
+  implements bjoe
 {
-  public afrm(TroopAssistantActivity paramTroopAssistantActivity) {}
+  afrm(afrl paramafrl, List paramList, bjnw parambjnw) {}
   
-  public void a(bloo parambloo)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = false;
-    switch (parambloo.a)
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      parambloo = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      parambloo.d = bool;
-      axan.a().b(this.a.app, this.a.d);
-      return;
     }
-    parambloo = new Intent(this.a, TroopAssisSettingActivity.class);
-    parambloo.setFlags(67108864);
-    this.a.startActivity(parambloo);
-    bdll.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      afrl.a(this.jdField_a_of_type_Afrl, this.jdField_a_of_type_JavaUtilList);
+      afnx.a(afrl.a(this.jdField_a_of_type_Afrl), this.jdField_a_of_type_JavaUtilList, 3);
+      continue;
+      this.jdField_a_of_type_Afrl.a(this.jdField_a_of_type_JavaUtilList, 0);
+      afnx.a(afrl.a(this.jdField_a_of_type_Afrl), this.jdField_a_of_type_JavaUtilList, 3);
+    }
   }
 }
 

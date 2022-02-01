@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.tmg_opensdk;
 
-import anlu;
-import anlv;
-import anmc;
+import amgo;
+import amgp;
+import amgw;
 
 public class AVEngineWalper$1$1
   implements Runnable
 {
-  public AVEngineWalper$1$1(anlv paramanlv) {}
+  public AVEngineWalper$1$1(amgp paramamgp) {}
   
   public void run()
   {
-    anmc.a(this.a.a.a).a(anlu.a(this.a.a));
+    amgw.a(this.a.a.a).a(amgo.a(this.a.a));
   }
 }
 

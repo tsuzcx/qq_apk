@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import wth;
-import wtt;
+import vux;
+import vvj;
 
 class QQStoryBaseActivity$1
   implements Runnable
@@ -10,7 +10,7 @@ class QQStoryBaseActivity$1
   
   public void run()
   {
-    ((wtt)wth.a(2)).c();
+    ((vvj)vux.a(2)).c();
   }
 }
 

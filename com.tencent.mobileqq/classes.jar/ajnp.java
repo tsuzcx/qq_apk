@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class ajnp
-  implements View.OnClickListener
+  extends aycd
 {
   ajnp(ajno paramajno) {}
   
-  public void onClick(View paramView)
+  protected void d(boolean paramBoolean)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    bguq.a(ajno.a(this.a), localRecommendTroopItem, this.a.a());
-    this.a.b(localRecommendTroopItem);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
+    }
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
+      return;
+    }
+    this.a.a.a.a(1, amtj.a(2131712963));
   }
 }
 

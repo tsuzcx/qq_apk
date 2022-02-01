@@ -1,22 +1,52 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.ArrayList;
 
 class afip
-  implements QQPermissionCallback
+  extends amrc
 {
-  afip(afio paramafio, QQSettingMe paramQQSettingMe) {}
+  afip(afim paramafim) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a, paramArrayOfString, paramArrayOfInt);
+    if ((this.a.sessionInfo.curFriendUin.equals(paramString)) && (this.a.sessionInfo.curType == 3000))
+    {
+      paramString = ((amrb)this.a.app.getManager(53)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        this.a.sessionInfo.curFriendNick = paramString.discussionName;
+        this.a.a(this.a.sessionInfo.curFriendNick, paramString.uin, this.a.mTitleText);
+      }
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.g();
+    if (this.a.sessionInfo.curFriendUin.equals(paramString)) {
+      this.a.finish();
+    }
+  }
+  
+  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(this.a.sessionInfo.curFriendUin);
+    if ((i != -1) && (paramBoolean))
+    {
+      if (((Boolean)paramObject.get(i + 1)).booleanValue()) {
+        this.a.instantUpdate(false, false);
+      }
+      if (this.a.sessionInfo.curType == 3000)
+      {
+        paramObject = ((amrb)this.a.app.getManager(53)).a(this.a.sessionInfo.curFriendUin);
+        if ((paramObject != null) && (paramObject.discussionName != null))
+        {
+          this.a.sessionInfo.curFriendNick = paramObject.discussionName;
+          this.a.a(this.a.sessionInfo.curFriendNick, paramObject.uin, this.a.mTitleText);
+        }
+      }
+    }
   }
 }
 

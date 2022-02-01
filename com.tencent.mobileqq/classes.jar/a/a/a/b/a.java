@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import android.util.Base64;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -75,68 +72,137 @@ public class a
     }
   }
   
+  /* Error */
   public void a(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        i = paramString.optInt("st");
-        l = paramString.optLong("ver");
-        str = paramString.optString("hs");
-        paramString = Base64.decode(paramString.optString("sd"), 0);
-        if (i == 0)
-        {
-          boolean bool = a(paramString, str);
-          if (!bool) {}
-        }
-      }
-      catch (JSONException paramString)
-      {
-        int i;
-        long l;
-        String str;
-        Object localObject1;
-        paramString.printStackTrace();
-        return;
-      }
-      try
-      {
-        localObject1 = new File(e);
-        if (((File)localObject1).exists()) {
-          ((File)localObject1).delete();
-        }
-        ((File)localObject1).createNewFile();
-        localObject1 = new FileOutputStream((File)localObject1);
-        try
-        {
-          ((FileOutputStream)localObject1).write(paramString);
-          ((FileOutputStream)localObject1).close();
-          i = 1;
-          if (i != 0) {
-            a(l, str);
-          }
-          return;
-        }
-        catch (Exception paramString) {}
-      }
-      catch (Exception paramString)
-      {
-        Object localObject2 = null;
-        continue;
-      }
-      try
-      {
-        ((FileOutputStream)localObject1).close();
-        paramString.printStackTrace();
-        i = 0;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: new 75	org/json/JSONObject
+    //   5: dup
+    //   6: aload_1
+    //   7: invokespecial 128	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   10: astore_1
+    //   11: aload_1
+    //   12: ldc 130
+    //   14: invokevirtual 134	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   17: istore_3
+    //   18: aload_1
+    //   19: ldc 136
+    //   21: invokevirtual 140	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   24: lstore 4
+    //   26: aload_1
+    //   27: ldc 142
+    //   29: invokevirtual 146	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: astore 8
+    //   34: aload_1
+    //   35: ldc 148
+    //   37: invokevirtual 146	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: iconst_0
+    //   41: invokestatic 154	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   44: astore_1
+    //   45: iload_3
+    //   46: ifne +132 -> 178
+    //   49: aload_0
+    //   50: aload_1
+    //   51: aload 8
+    //   53: invokevirtual 157	a/a/a/b/a:a	([BLjava/lang/String;)Z
+    //   56: istore 6
+    //   58: iload 6
+    //   60: ifeq +112 -> 172
+    //   63: new 37	java/io/File
+    //   66: dup
+    //   67: getstatic 60	a/a/a/b/a:e	Ljava/lang/String;
+    //   70: invokespecial 158	java/io/File:<init>	(Ljava/lang/String;)V
+    //   73: astore 7
+    //   75: aload 7
+    //   77: invokevirtual 161	java/io/File:exists	()Z
+    //   80: ifeq +9 -> 89
+    //   83: aload 7
+    //   85: invokevirtual 164	java/io/File:delete	()Z
+    //   88: pop
+    //   89: aload 7
+    //   91: invokevirtual 167	java/io/File:createNewFile	()Z
+    //   94: pop
+    //   95: new 169	java/io/FileOutputStream
+    //   98: dup
+    //   99: aload 7
+    //   101: invokespecial 172	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   104: astore 7
+    //   106: aload 7
+    //   108: aload_1
+    //   109: invokevirtual 176	java/io/FileOutputStream:write	([B)V
+    //   112: aload 7
+    //   114: invokevirtual 179	java/io/FileOutputStream:close	()V
+    //   117: iload_2
+    //   118: ifeq +48 -> 166
+    //   121: aload_0
+    //   122: lload 4
+    //   124: aload 8
+    //   126: invokevirtual 181	a/a/a/b/a:a	(JLjava/lang/String;)V
+    //   129: iconst_2
+    //   130: iconst_0
+    //   131: invokestatic 187	com/tencent/secprotocol/t/ReportLogHelper:report	(II)V
+    //   134: return
+    //   135: astore_1
+    //   136: aload 7
+    //   138: invokevirtual 179	java/io/FileOutputStream:close	()V
+    //   141: aload_1
+    //   142: invokevirtual 69	java/lang/Exception:printStackTrace	()V
+    //   145: iconst_0
+    //   146: istore_2
+    //   147: goto -30 -> 117
+    //   150: astore 7
+    //   152: aload 7
+    //   154: invokevirtual 188	java/io/IOException:printStackTrace	()V
+    //   157: goto -16 -> 141
+    //   160: astore_1
+    //   161: aload_1
+    //   162: invokevirtual 96	org/json/JSONException:printStackTrace	()V
+    //   165: return
+    //   166: iconst_2
+    //   167: iconst_2
+    //   168: invokestatic 187	com/tencent/secprotocol/t/ReportLogHelper:report	(II)V
+    //   171: return
+    //   172: iconst_2
+    //   173: iconst_3
+    //   174: invokestatic 187	com/tencent/secprotocol/t/ReportLogHelper:report	(II)V
+    //   177: return
+    //   178: iconst_2
+    //   179: iconst_1
+    //   180: invokestatic 187	com/tencent/secprotocol/t/ReportLogHelper:report	(II)V
+    //   183: return
+    //   184: astore_1
+    //   185: aconst_null
+    //   186: astore 7
+    //   188: goto -52 -> 136
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	191	0	this	a
+    //   0	191	1	paramString	String
+    //   1	146	2	i	int
+    //   17	29	3	j	int
+    //   24	99	4	l	long
+    //   56	3	6	bool	boolean
+    //   73	64	7	localObject1	Object
+    //   150	3	7	localIOException	java.io.IOException
+    //   186	1	7	localObject2	Object
+    //   32	93	8	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   106	117	135	java/lang/Exception
+    //   136	141	150	java/io/IOException
+    //   2	45	160	org/json/JSONException
+    //   49	58	160	org/json/JSONException
+    //   121	134	160	org/json/JSONException
+    //   136	141	160	org/json/JSONException
+    //   141	145	160	org/json/JSONException
+    //   152	157	160	org/json/JSONException
+    //   166	171	160	org/json/JSONException
+    //   172	177	160	org/json/JSONException
+    //   178	183	160	org/json/JSONException
+    //   63	89	184	java/lang/Exception
+    //   89	106	184	java/lang/Exception
   }
   
   public boolean a(byte[] paramArrayOfByte, String paramString)
@@ -198,21 +264,21 @@ public class a
     //   23: invokevirtual 161	java/io/File:exists	()Z
     //   26: ifeq +32 -> 58
     //   29: aload_1
-    //   30: invokevirtual 213	java/io/File:length	()J
+    //   30: invokevirtual 219	java/io/File:length	()J
     //   33: l2i
     //   34: newarray byte
     //   36: astore_2
-    //   37: new 215	java/io/FileInputStream
+    //   37: new 221	java/io/FileInputStream
     //   40: dup
     //   41: aload_1
-    //   42: invokespecial 216	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   42: invokespecial 222	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   45: astore_1
     //   46: aload_1
     //   47: aload_2
-    //   48: invokevirtual 220	java/io/FileInputStream:read	([B)I
+    //   48: invokevirtual 226	java/io/FileInputStream:read	([B)I
     //   51: pop
     //   52: aload_1
-    //   53: invokevirtual 221	java/io/FileInputStream:close	()V
+    //   53: invokevirtual 227	java/io/FileInputStream:close	()V
     //   56: aload_2
     //   57: areturn
     //   58: aconst_null
@@ -220,12 +286,12 @@ public class a
     //   60: aload_1
     //   61: ifnull -52 -> 9
     //   64: aload_1
-    //   65: invokevirtual 221	java/io/FileInputStream:close	()V
+    //   65: invokevirtual 227	java/io/FileInputStream:close	()V
     //   68: aconst_null
     //   69: areturn
     //   70: astore_1
     //   71: aload_1
-    //   72: invokevirtual 182	java/io/IOException:printStackTrace	()V
+    //   72: invokevirtual 188	java/io/IOException:printStackTrace	()V
     //   75: aconst_null
     //   76: areturn
     //   77: astore_2
@@ -240,7 +306,7 @@ public class a
     //   start	length	slot	name	signature
     //   0	91	0	this	a
     //   21	44	1	localObject1	Object
-    //   70	2	1	localIOException	IOException
+    //   70	2	1	localIOException	java.io.IOException
     //   79	1	1	localObject2	Object
     //   36	21	2	arrayOfByte	byte[]
     //   77	4	2	localException1	Exception

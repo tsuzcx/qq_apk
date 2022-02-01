@@ -1,16 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-final class azah
-  implements anwh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBaseHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileBaseSettingItem", "Lcom/tencent/mobileqq/widget/FormSimpleItem;", "getProfileBaseSettingItem", "()Lcom/tencent/mobileqq/widget/FormSimpleItem;", "setProfileBaseSettingItem", "(Lcom/tencent/mobileqq/widget/FormSimpleItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azah
+  extends RecyclerView.ViewHolder
 {
-  public void a(boolean paramBoolean)
+  @NotNull
+  private FormSimpleItem a;
+  
+  public azah(@NotNull View paramView)
   {
-    if (paramBoolean) {
-      azag.a();
+    super(paramView);
+    paramView = paramView.findViewById(2131368973);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSimpleItem");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
-    }
+    this.a = ((FormSimpleItem)paramView);
+  }
+  
+  @NotNull
+  public final FormSimpleItem a()
+  {
+    return this.a;
   }
 }
 

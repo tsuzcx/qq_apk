@@ -1,10 +1,11 @@
 package com.tencent.tav.decoder;
 
 import android.media.MediaCodec;
+import com.tencent.tav.decoder.logger.Logger;
 import java.util.ArrayList;
 
 class AudioDecoder$1
-  extends Thread
+  implements Runnable
 {
   AudioDecoder$1(AudioDecoder paramAudioDecoder) {}
   
@@ -14,32 +15,18 @@ class AudioDecoder$1
     try
     {
       AudioDecoder.access$100(this.this$0).stop();
-      try
-      {
-        AudioDecoder.access$100(this.this$0).release();
-        AudioDecoder.access$200().remove(AudioDecoder.access$100(this.this$0).toString());
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          localException2.printStackTrace();
-          AudioDecoder.access$102(this.this$0, null);
-        }
-      }
-      finally
-      {
-        AudioDecoder.access$102(this.this$0, null);
-      }
-      AudioDecoder.access$102(this.this$0, null);
+      MediaCodecManager.releaseCodec(AudioDecoder.access$100(this.this$0));
+      AudioDecoder.access$200().remove(AudioDecoder.access$100(this.this$0).toString());
       return;
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        localException1.printStackTrace();
-      }
+      Logger.e(AudioDecoder.access$300(this.this$0), "release: ", localException);
+      return;
+    }
+    finally
+    {
+      AudioDecoder.access$102(this.this$0, null);
     }
   }
 }

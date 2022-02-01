@@ -1,13 +1,17 @@
-public class zfc
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+
+class zfc
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  zfc(zfb paramzfb, COMM.StCommonExt paramStCommonExt) {}
+  
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  {
+    zfb.a(this.jdField_a_of_type_Zfb, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
+  }
 }
 
 

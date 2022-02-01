@@ -1,8 +1,19 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public abstract interface bfej
+final class bfej
+  extends bgod
 {
-  public abstract void a(int paramInt, String paramString, ArrayList<bfeg> paramArrayList);
+  bfej(WeakReference paramWeakReference, File paramFile, bcrz parambcrz) {}
+  
+  public void onDone(bgoe parambgoe)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambgoe.a);
+    }
+    bfei.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Bcrz);
+  }
 }
 
 

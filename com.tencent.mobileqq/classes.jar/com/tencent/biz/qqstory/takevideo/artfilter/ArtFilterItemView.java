@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import agej;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
@@ -15,10 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import zaa;
+import ybj;
 
 public class ArtFilterItemView
   extends RelativeLayout
@@ -38,11 +38,11 @@ public class ArtFilterItemView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131559578, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362979));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362981));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362982));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362980));
+    inflate(paramContext, 2131559580, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362993));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362995));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362996));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362994));
   }
   
   public void a()
@@ -134,14 +134,14 @@ public class ArtFilterItemView
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
     localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setAnimationListener(new zaa(this, paramEditVideoArtFilter));
+    localTranslateAnimation.setAnimationListener(new ybj(this, paramEditVideoArtFilter));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   
   public void b()
   {
     setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, agej.a(228.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, AIOUtils.dp2px(228.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F);
     localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);

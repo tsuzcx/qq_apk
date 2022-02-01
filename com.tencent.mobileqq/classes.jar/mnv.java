@@ -1,176 +1,165 @@
-import android.content.Context;
-import android.view.SurfaceHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.ui.funchat.magicface.MagicfaceViewForAV;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
 
 public class mnv
-  implements lgq<FaceItem>
 {
-  protected RelativeLayout a;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  FaceItem jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem;
-  protected MagicfaceViewForAV a;
-  WeakReference<ViewGroup> jdField_a_of_type_JavaLangRefWeakReference;
-  private lgx jdField_a_of_type_Lgx;
-  boolean jdField_a_of_type_Boolean;
-  
-  public mnv(VideoAppInterface paramVideoAppInterface, Context paramContext)
+  public static int a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Lgx == null) {
-      this.jdField_a_of_type_Lgx = ((lgx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3));
-    }
-  }
-  
-  private void a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean, FaceItem paramFaceItem, int paramInt)
-  {
-    if (paramFaceItem.isSameType("face")) {
-      b(paramViewGroup);
-    }
-    for (;;)
+    QLog.i("QavRecordUtils", 1, "parseMaxRecordTime " + paramString + ", def=" + paramInt);
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
     {
-      this.jdField_a_of_type_Lgx.a(paramLong, paramFaceItem, paramFaceItem.getId(), paramBoolean, this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV);
+      return paramInt;
+      i = paramString.lastIndexOf("#");
+    } while ((i < 0) || (i == paramString.length() - 1));
+    paramString = paramString.substring(i + 1);
+    try
+    {
+      i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (Throwable paramString) {}
+    return paramInt;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordUtils", 2, "convertMp3ToPcm path=" + paramString);
+    }
+    if (!mim.f())
+    {
+      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm system not support");
       return;
-      if ((paramFaceItem.isSameType("pendant")) || (paramFaceItem.isSameType("creativecop"))) {
-        a(paramViewGroup);
-      } else if (paramFaceItem.isSameType("voicesticker")) {
-        b(paramViewGroup);
-      }
     }
-  }
-  
-  private void b(ViewGroup paramViewGroup)
-  {
-    Object localObject = new StringBuilder().append("realyShowView : ");
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    for (boolean bool = true;; bool = false)
+    paramString = new File(paramString);
+    if (!paramString.exists())
     {
-      lbj.e("MagicfaceViewProxy", bool);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm, dir not exist");
+      return;
+    }
+    if (!paramString.isDirectory())
+    {
+      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm, dir not a directory");
+      return;
+    }
+    paramString = paramString.listFiles();
+    if ((paramString == null) || (paramString.length == 0))
+    {
+      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm files == null || files.length == 0");
+      return;
+    }
+    mnf localmnf = new mnf(48000, 16, 1);
+    localmnf.a(new mnw());
+    int i = 0;
+    if (i < paramString.length)
+    {
+      Object localObject = paramString[i];
+      String str;
+      if ((localObject.exists()) && (localObject.isFile()) && (localObject.getName().endsWith(".mp3")))
       {
-        localObject = View.inflate(BaseApplicationImpl.getContext(), 2131559732, null);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131370544));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131370542));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.setZOrderMediaOverlay(true);
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.getHolder().setFormat(-2);
-        localObject = paramViewGroup.findViewById(2131373658);
-        int i = -1;
-        if (localObject != null) {
-          i = paramViewGroup.indexOfChild((View)localObject);
+        str = localObject.getAbsolutePath().replace(".mp3", ".pcm");
+        File localFile = new File(str);
+        if ((localFile.exists()) && (localFile.length() > 0L)) {
+          QLog.i("QavRecordUtils", 1, "convertMp3ToPcm file exists, skip, " + localFile.getName());
         }
-        paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, i);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      return;
+      for (;;)
+      {
+        i += 1;
+        break;
+        long l1 = System.currentTimeMillis();
+        try
+        {
+          localmnf.a(localObject.getAbsolutePath(), str);
+          long l2 = System.currentTimeMillis();
+          QLog.i("QavRecordUtils", 1, "convertMp3ToPcm decode file=" + localObject.getName() + ", cost=" + (l2 - l1));
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e("QavRecordUtils", 1, "convertMp3ToPcm decode exception:" + localThrowable, localThrowable);
+            mnu.a(false, -7);
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QavRecordUtils", 2, "convertMp3ToPcm skip file=" + localObject.getName());
+        }
+      }
     }
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm DONE");
   }
   
-  public void a(long paramLong, ViewGroup paramViewGroup, mcy parammcy)
+  public static boolean a()
   {
     boolean bool2 = false;
-    Object localObject = new StringBuilder().append("showView, requestPlayMagicFace[").append(parammcy).append("], mRootView[");
-    if (paramViewGroup != null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    String str1 = Build.MANUFACTURER;
+    String str2 = Build.MODEL;
+    int i = Build.VERSION.SDK_INT;
+    boolean bool1 = bool2;
+    if ("Meizu".equalsIgnoreCase(str1))
     {
-      QLog.w("MagicfaceViewProxy", 1, bool1 + "], mItem[" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem + "], seq[" + paramLong + "]");
-      if (paramViewGroup != null) {
-        break;
-      }
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Lgx.a(paramLong, this);
-    localObject = (FaceItem)this.jdField_a_of_type_Lgx.a(parammcy.c);
-    bool1 = bool2;
-    if (localObject != null)
-    {
-      lih locallih = (lih)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5);
-      bool1 = locallih.a(3, "normal");
-      bool2 = locallih.a(3, "interact");
-      if ((bool1) && ((bool2) || (!((FaceItem)localObject).isInteract()))) {
-        break label253;
+      if (i != 22) {
+        break label89;
       }
       bool1 = true;
-      if (bool1) {
-        break label300;
-      }
-      if (!((FaceItem)localObject).isUsable()) {
-        break label259;
-      }
-      a(paramLong, paramViewGroup, parammcy.jdField_a_of_type_Boolean, (FaceItem)localObject, parammcy.jdField_a_of_type_Int);
     }
-    label259:
-    label300:
     for (;;)
     {
-      QLog.w("MagicfaceViewProxy", 1, "showView, dimmed[" + bool1 + "], item[" + localObject + "]");
-      return;
-      label253:
-      bool1 = false;
-      break;
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramViewGroup);
-      this.jdField_a_of_type_Boolean = parammcy.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem = ((FaceItem)localObject);
-      this.jdField_a_of_type_Lgx.a(parammcy.a(), (lgr)localObject);
-    }
-  }
-  
-  public void a(long paramLong, FaceItem paramFaceItem) {}
-  
-  public void a(long paramLong, FaceItem paramFaceItem, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (paramFaceItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem.getId().equalsIgnoreCase(paramFaceItem.getId())))
-    {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localViewGroup != null)
+      QLog.i("QavRecordUtils", 1, "isRubbishDeviceNotSupportPcm brand=" + str1 + ", model=" + str2 + ", api=" + i + ", result=" + bool1);
+      return bool1;
+      label89:
+      if ((i == 21) && ("M040".equalsIgnoreCase(str2)))
       {
-        QLog.w("MagicfaceViewProxy", 1, "onDownloadFinish, prepareShow, seq[" + paramLong + "], FaceItem[" + paramFaceItem + "]");
-        a(paramLong, localViewGroup, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem, 6);
+        bool1 = true;
+      }
+      else
+      {
+        bool1 = bool2;
+        if (i == 21)
+        {
+          bool1 = bool2;
+          if ("MX5".equalsIgnoreCase(str2)) {
+            bool1 = true;
+          }
+        }
       }
     }
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public static boolean a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("realyHideView : ");
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      lbj.c("MagicfaceViewProxy", bool);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4);
+      int j = ((SharedPreferences)localObject).getInt("pcm_" + paramString, 0);
+      ((SharedPreferences)localObject).edit().putInt("pcm_" + paramString, j + 1).commit();
+      localObject = mnr.a();
+      if (localObject == null) {}
+      for (int i = 1;; i = ((mnr)localObject).k)
       {
-        paramViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = null;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+        QLog.i("QavRecordUtils", 1, "canConvertPCM md5=" + paramString + ", count=" + j + ", limit=" + i);
+        if (j >= i) {
+          break;
+        }
+        return true;
       }
-      return;
+      return false;
     }
-  }
-  
-  public void a(ViewGroup paramViewGroup, String paramString, boolean paramBoolean)
-  {
-    if (paramViewGroup == null) {}
-    while (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) {
-      return;
+    catch (Throwable paramString)
+    {
+      QLog.e("QavRecordUtils", 1, "canConvertPCM Throwable=" + paramString, paramString);
     }
-    a();
-    this.jdField_a_of_type_Lgx.b(-1048L, this);
-    this.jdField_a_of_type_Lgx.a(0, paramString, paramBoolean);
-    a(paramViewGroup);
+    return false;
   }
-  
-  public void a(FaceItem paramFaceItem, int paramInt) {}
 }
 
 

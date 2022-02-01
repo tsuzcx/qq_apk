@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class awkt
-  implements View.OnClickListener
+  implements awqt
 {
-  awkt(awkr paramawkr, awkq paramawkq, awkv paramawkv) {}
+  awkt(awkr paramawkr) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    awkr.a(this.jdField_a_of_type_Awkr).b(awkr.a(this.jdField_a_of_type_Awkr), this.jdField_a_of_type_Awkr, this.jdField_a_of_type_Awkq, this.jdField_a_of_type_Awkv);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
   }
 }
 

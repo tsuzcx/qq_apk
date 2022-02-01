@@ -1,15 +1,40 @@
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.os.Debug;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.IOException;
 
 public class bjml
-  implements Comparator<Friend>
 {
-  public bjml(FriendChooser paramFriendChooser) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public static void a(String paramString)
   {
-    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
+    if (jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (localObject[i].equals(paramString))
+        {
+          localObject = AppConstants.SDCARD_IMG_SAVE + "dump_";
+          try
+          {
+            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
+            jdField_a_of_type_Boolean = true;
+            return;
+          }
+          catch (IOException paramString)
+          {
+            return;
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

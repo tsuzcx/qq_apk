@@ -1,7 +1,6 @@
 package cooperation.qzone.report;
 
-import bdgb;
-import bngm;
+import bbyp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -10,27 +9,27 @@ import cooperation.qzone.LocalMultiProcConfig;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
-public class QzoneOnlineTimeCollectRptService$1
+class QzoneOnlineTimeCollectRptService$1
   implements Runnable
 {
-  public QzoneOnlineTimeCollectRptService$1(bngm parambngm) {}
+  QzoneOnlineTimeCollectRptService$1(QzoneOnlineTimeCollectRptService paramQzoneOnlineTimeCollectRptService) {}
   
   public void run()
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bngm.a(this.this$0));
-    if (!bngm.a(this.this$0)) {}
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + QzoneOnlineTimeCollectRptService.access$000(this.this$0));
+    if (!QzoneOnlineTimeCollectRptService.access$000(this.this$0)) {}
     try
     {
-      this.this$0.a = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      bngm.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
-      this.this$0.b();
-      if (!bdgb.c())
+      this.this$0.mUin = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      QzoneOnlineTimeCollectRptService.access$102(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
+      this.this$0.beginRecord();
+      if (!bbyp.c())
       {
-        bngm.a(this.this$0);
-        bngm.a(this.this$0, true);
+        QzoneOnlineTimeCollectRptService.access$200(this.this$0);
+        QzoneOnlineTimeCollectRptService.access$002(this.this$0, true);
         LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", true);
-        if (bngm.a(this.this$0) != 0) {
-          ThreadManager.getSubThreadHandler().post(bngm.a(this.this$0));
+        if (QzoneOnlineTimeCollectRptService.access$100(this.this$0) != 0) {
+          ThreadManager.getSubThreadHandler().post(QzoneOnlineTimeCollectRptService.access$300(this.this$0));
         }
         return;
       }

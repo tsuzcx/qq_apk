@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
-public class bfht
-  implements DialogInterface.OnClickListener
+public abstract interface bfht
 {
-  public bfht(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public abstract void c();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

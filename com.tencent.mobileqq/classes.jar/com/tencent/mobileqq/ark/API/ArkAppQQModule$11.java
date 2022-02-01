@@ -2,25 +2,25 @@ package com.tencent.mobileqq.ark.API;
 
 import android.app.Activity;
 import android.content.Intent;
-import apvx;
-import apwn;
-import aqbx;
-import auxu;
+import aopk;
+import aoqa;
+import atky;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 
 public class ArkAppQQModule$11
   implements Runnable
 {
-  public ArkAppQQModule$11(apwn paramapwn, String paramString1, String paramString2, String paramString3) {}
+  public ArkAppQQModule$11(aoqa paramaoqa, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Activity localActivity = apvx.a();
+    Activity localActivity = aopk.a();
     if (localActivity != null)
     {
-      Intent localIntent = ArkFullScreenAppActivity.a(localActivity, this.a, this.this$0.a, this.b, this.c, aqbx.a());
+      Intent localIntent = ArkFullScreenAppActivity.a(localActivity, this.a, this.this$0.a, this.b, this.c, ArkAppCenterUtil.getDensity());
       if (localIntent != null) {
-        auxu.a(localActivity, localIntent);
+        atky.a(localActivity, localIntent);
       }
     }
   }

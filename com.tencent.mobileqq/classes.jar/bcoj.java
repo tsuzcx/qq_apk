@@ -1,56 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import java.util.Iterator;
+import kotlin.Metadata;
 
-public class bcoj
-  extends bcog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class bcoj
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public SquareImageView a;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public URLImageView b;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
+  bcoj(bcof parambcof, int paramInt1, int paramInt2) {}
   
-  public bcoj(ViewGroup paramViewGroup, int paramInt)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365172));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368212));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378435));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372666));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131377760));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368416));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369619));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365792));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365804));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376107));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131381587));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131381589));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364821));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364854));
+    paramDialogInterface = ((Iterable)bcof.a(this.jdField_a_of_type_Bcof)).iterator();
+    while (paramDialogInterface.hasNext()) {
+      ((bcog)paramDialogInterface.next()).c(this.jdField_a_of_type_Int, this.b);
+    }
   }
 }
 

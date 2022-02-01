@@ -1,56 +1,14 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
 
-public class wxo
-  extends wrl<wvn, wro<wvn>>
+class wxo
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
-  private int a;
+  wxo(wxj paramwxj, wxh paramwxh) {}
   
-  public wxo(Context paramContext)
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a(int paramInt)
-  {
-    wvn localwvn = (wvn)a(paramInt);
-    if (localwvn != null) {
-      return localwvn.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    List localList = a();
-    int i = 0;
-    while (i < localList.size())
-    {
-      if (TextUtils.equals(((wvn)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
-        return b() + i;
-      }
-      i += 1;
-    }
-    return b();
-  }
-  
-  public void a(wro<wvn> paramwro)
-  {
-    super.onViewDetachedFromWindow(paramwro);
-    paramwro.a();
-  }
-  
-  public wro b(ViewGroup paramViewGroup, int paramInt)
-  {
-    return wzb.a(paramViewGroup, paramInt);
-  }
-  
-  public void b(wro paramwro, int paramInt)
-  {
-    paramwro.a((wvn)a(paramInt));
+    this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wxj, paramInt1, paramInt2);
   }
 }
 

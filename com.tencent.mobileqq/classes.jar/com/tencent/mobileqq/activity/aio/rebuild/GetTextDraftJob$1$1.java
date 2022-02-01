@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class GetTextDraftJob$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class GetTextDraftJob$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob$1.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setTextDraft(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob$1.a);
   }
 }
 

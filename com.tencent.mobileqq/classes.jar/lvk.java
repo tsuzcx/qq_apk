@@ -1,46 +1,19 @@
-public class lvk
-  extends lur
+import com.tencent.qphone.base.util.QLog;
+
+final class lvk
+  extends mry
 {
-  public boolean a;
-  
-  public void a(long paramLong)
+  lvk(String paramString1, String paramString2, String paramString3)
   {
-    long l = paramLong - this.jdField_a_of_type_Long;
-    a((float)(paramLong - this.jdField_a_of_type_Long) / 50.0F);
-    int j = 0;
-    int i;
-    if (l < 500L) {
-      i = (int)(l * 255L / 500L);
-    }
-    for (;;)
-    {
-      a(i);
-      return;
-      if (((l >= 500L) && (l <= 5397L)) || (!this.jdField_a_of_type_Boolean))
-      {
-        i = 255;
-      }
-      else
-      {
-        i = j;
-        if (l > 5397L)
-        {
-          i = j;
-          if (l < 5564L)
-          {
-            i = j;
-            if (this.jdField_a_of_type_Boolean) {
-              i = (int)((l - 5564L) * 255L / -167L);
-            }
-          }
-        }
-      }
-    }
+    super(paramString1, paramString2, paramString3);
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void a(String paramString)
   {
-    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
+    lvj.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
+    }
   }
 }
 

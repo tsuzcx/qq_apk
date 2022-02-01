@@ -1,49 +1,60 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.app.MobileQQ;
 
 public class ldx
-  implements beuq
 {
-  public void onResp(bevm parambevm)
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  ldy jdField_a_of_type_Ldy;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  static
   {
-    boolean bool = false;
-    String str1 = (String)parambevm.jdField_a_of_type_Bevl.a();
-    if (parambevm.jdField_a_of_type_Int == 0) {
-      bool = true;
-    }
-    try
+    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
+  }
+  
+  public ldx(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Ldy = new ldy(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (DeviceCapabilityExamination.a != null)
-      {
-        DeviceCapabilityExamination.a.a(str1, bool);
-        if (DeviceCapabilityExamination.a.a()) {
-          DeviceCapabilityExamination.a = null;
-        }
-      }
-      if (!bool)
-      {
-        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + parambevm.jdField_a_of_type_Int + "]");
-        return;
-      }
-    }
-    finally {}
-    try
-    {
-      String str2 = DeviceCapabilityExamination.b(str1);
-      bhmi.a(parambevm.jdField_a_of_type_Bevl.c, str2, false);
-      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-      parambevm = new File(DeviceCapabilityExamination.a(str1));
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + parambevm.exists() + "]");
-      return;
-    }
-    catch (Exception parambevm)
-    {
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Ldy);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
+    }
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
+    localIntentFilter.addAction("tencent.video.q2v.SwitchToMultiAudo");
+    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
+    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
+    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
+    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
+    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
+    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Ldy, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
 }
 
 

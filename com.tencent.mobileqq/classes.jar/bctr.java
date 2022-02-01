@@ -1,12 +1,48 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import javax.net.ssl.SSLSocket;
 
-public abstract interface bctr
+class bctr
+  extends bctq
 {
-  public abstract void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler);
+  private bctr(bcto parambcto, SSLSocket paramSSLSocket)
+  {
+    super(parambcto, paramSSLSocket);
+  }
+  
+  public void setEnabledProtocols(String[] paramArrayOfString)
+  {
+    String[] arrayOfString = paramArrayOfString;
+    if (paramArrayOfString != null)
+    {
+      arrayOfString = paramArrayOfString;
+      if (paramArrayOfString.length == 1)
+      {
+        arrayOfString = paramArrayOfString;
+        if ("SSLv3".equals(paramArrayOfString[0]))
+        {
+          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
+          if (paramArrayOfString.size() <= 1) {
+            break label101;
+          }
+          paramArrayOfString.remove("SSLv3");
+          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
+        }
+      }
+    }
+    for (;;)
+    {
+      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
+      if (arrayOfString != null) {
+        super.setEnabledProtocols(arrayOfString);
+      }
+      return;
+      label101:
+      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
+    }
+  }
 }
 
 

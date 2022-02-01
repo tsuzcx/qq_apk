@@ -1,46 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.HashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
 
 public class rvl
-  implements DownloadListener
+  extends RecyclerView.ViewHolder
 {
-  private HashMap<String, rvm> a = new HashMap();
+  public final int a;
+  public VideoFeedsAlphaMaskView a;
+  public int b;
+  public int c;
   
-  public void a(String paramString, rvm paramrvm)
+  public rvl(View paramView, int paramInt)
   {
-    this.a.remove(paramString);
-    this.a.put(paramString, paramrvm);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364914));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a(ruw paramruw, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().postDelayed(new VideoFeedsUGDownloadListener.2(this, paramString2), 1000L);
+    int i = 1;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getVisibility() != 0)) {
+      return;
+    }
+    if (paramLinearLayoutManager.getOrientation() == 1)
+    {
+      if (i == 0) {
+        break label118;
+      }
+      i = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
+    }
+    for (float f1 = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i / 2)) / i;; f1 = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2)) / i)
+    {
+      float f2 = Math.round(f1 * 100.0F) / 100.0F;
+      f1 = f2;
+      if (f2 > 1.0F) {
+        f1 = 1.0F;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(f1);
+      return;
+      i = 0;
+      break;
+      label118:
+      i = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
+    }
   }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.getUIHandler().post(new VideoFeedsUGDownloadListener.1(this, paramDownloadInfo));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

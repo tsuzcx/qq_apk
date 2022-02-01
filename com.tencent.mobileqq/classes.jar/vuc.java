@@ -1,21 +1,26 @@
-import com.tencent.qqlive.module.videoreport.PageParams;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class vuc
+  extends vko
 {
-  private Map<String, Object> a = new HashMap();
+  public long a;
+  public final String a;
+  public final boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public PageParams a()
+  public vuc(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
   {
-    this.a.put("dt_appkey", "00000QG6YX3X0LZH");
-    return new PageParams(this.a);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public vuc a(String paramString)
+  public String toString()
   {
-    this.a.put("page_subclass", paramString);
-    return this;
+    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

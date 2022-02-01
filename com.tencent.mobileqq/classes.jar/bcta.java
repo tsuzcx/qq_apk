@@ -1,171 +1,318 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import localpb.richMsg.RichMsg.PicRec;
-import localpb.richMsg.RichMsg.PttRec;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.NotOnlineFile;
-import tencent.im.msg.im_msg_body.RichText;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
+import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class bcta
-  implements bcsi
 {
-  private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, int paramInt1, msg_comm.Msg paramMsg, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong2, boolean paramBoolean4, int paramInt2)
+  private static long A = x;
+  private static long B = A + (z - y);
+  private static long C = 2601000000L;
+  private static long D = 2652000000L;
+  private static long E = 336000000L;
+  private static long F = 387000000L;
+  private static long G = 510000000L;
+  private static long H = 2010000000L;
+  private static long I = B;
+  private static long J = I + (H - G);
+  private static long a = 202000000L;
+  private static long b = 213000000L;
+  private static long c;
+  private static long d = c + (b - a);
+  private static long e = 480000000L;
+  private static long f = 489000000L;
+  private static long g = d;
+  private static long h = g + (f - e);
+  private static long i = 2100000000L;
+  private static long j = 2147000000L;
+  private static long k = h;
+  private static long l = k + (j - i);
+  private static long m = 2010000000L;
+  private static long n = 2100000000L;
+  private static long o = l;
+  private static long p = o + (n - m);
+  private static long q = 2147000000L;
+  private static long r = 2200000000L;
+  private static long s = p;
+  private static long t = s + (r - q);
+  private static long u = 4100000000L;
+  private static long v = 4200000000L;
+  private static long w = t;
+  private static long x = w + (v - u);
+  private static long y = 3800000000L;
+  private static long z = 4000000000L;
+  
+  public static int a(int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder("<---decodeC2CMsgPkg_OfflineFile : ");
-    localStringBuilder.append(" c2cCmd:").append(paramInt1).append(";friendUin:").append(paramLong1).append(";isReaded:").append(paramBoolean1).append(";isPullRoam:").append(paramBoolean2).append(";isSelfSender:").append(paramBoolean3).append(";\n");
-    long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-    long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("OfflineFileDecoder", 2, "<---decodeC2CMsgPkg_OfflineFile return null:hasBody:" + paramMsg.msg_body.has() + "hasRichT:" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has());
+    if (paramInt1 == 1) {}
+    switch (paramInt2)
+    {
+    default: 
+      return paramInt1;
+    case 1: 
+      return 2;
+    case 2: 
+      return 3;
+    case 3: 
+      return 7;
+    }
+    return 8;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i1;
+    if (paramInt2 == 11)
+    {
+      i1 = paramInt1;
+      if (paramInt1 == 1) {
+        switch (paramInt3)
+        {
+        default: 
+          i1 = 2;
+        }
       }
     }
-    label1086:
-    for (;;)
+    do
     {
-      return;
-      Object localObject1 = (im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get();
-      Object localObject2 = (im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject1).not_online_file.get();
-      if (!((im_msg_body.RichText)localObject1).not_online_file.has())
+      do
       {
-        localStringBuilder.append("hasNotOnlineFile:").append(((im_msg_body.RichText)localObject1).not_online_file.has()).append(";hasUUID:").append(((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.has());
-        if (QLog.isColorLevel()) {
-          QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
+        return i1;
+        return 2;
+        if (paramInt2 != 12) {
+          break;
         }
+        i1 = paramInt1;
+      } while (paramInt1 != 1);
+      switch (paramInt3)
+      {
+      default: 
+        return 3;
       }
-      else if ((paramInt1 == 169) || (paramInt1 == 243))
+      return 3;
+      if (paramInt2 == 13) {
+        return 3;
+      }
+      if (paramInt2 == 14) {
+        return 4;
+      }
+      i1 = paramInt1;
+    } while (paramInt2 != 16);
+    return 2;
+  }
+  
+  public static String a(long paramLong)
+  {
+    long l2 = 0L;
+    int i2 = -1;
+    int i1 = i2;
+    long l1 = l2;
+    if (paramLong >= c)
+    {
+      i1 = i2;
+      l1 = l2;
+      if (paramLong < d)
       {
-        if (!paramBoolean4)
+        l1 = paramLong - c + a;
+        i1 = 0;
+      }
+    }
+    i2 = i1;
+    l2 = l1;
+    if (paramLong >= g)
+    {
+      i2 = i1;
+      l2 = l1;
+      if (paramLong < h)
+      {
+        l2 = paramLong - g + e;
+        i2 = 0;
+      }
+    }
+    i1 = i2;
+    l1 = l2;
+    if (paramLong >= k)
+    {
+      i1 = i2;
+      l1 = l2;
+      if (paramLong < l)
+      {
+        l1 = paramLong - k + i;
+        i1 = 0;
+      }
+    }
+    i2 = i1;
+    l2 = l1;
+    if (paramLong >= o)
+    {
+      i2 = i1;
+      l2 = l1;
+      if (paramLong < p)
+      {
+        l2 = paramLong - o + m;
+        i2 = 0;
+      }
+    }
+    i1 = i2;
+    l1 = l2;
+    if (paramLong >= s)
+    {
+      i1 = i2;
+      l1 = l2;
+      if (paramLong < t)
+      {
+        l1 = paramLong - s + q;
+        i1 = 0;
+      }
+    }
+    i2 = i1;
+    l2 = l1;
+    if (paramLong >= w)
+    {
+      i2 = i1;
+      l2 = l1;
+      if (paramLong < x)
+      {
+        l2 = paramLong - w + u;
+        i2 = 0;
+      }
+    }
+    i1 = i2;
+    l1 = l2;
+    if (paramLong >= A)
+    {
+      i1 = i2;
+      l1 = l2;
+      if (paramLong < B)
+      {
+        if ((paramLong >= E) && (paramLong < F))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("OfflineFileDecoder", 2, "<FileAssistant>offlineFile come: c2cCmd[" + paramInt1 + "]");
-          }
-          paramMessageHandler.app.a().a(paramMessageHandler, paramList, paramMsg, (im_msg_body.NotOnlineFile)localObject2, String.valueOf(paramLong1), paramBoolean1, paramBoolean2, paramLong2, paramInt2, null);
+          l1 = E;
+          l1 = C;
         }
+        l1 = paramLong - A + y;
+        i1 = 0;
+      }
+    }
+    i2 = i1;
+    l2 = l1;
+    if (paramLong >= I)
+    {
+      i2 = i1;
+      l2 = l1;
+      if (paramLong < J)
+      {
+        l2 = paramLong - I + G;
+        i2 = 0;
+      }
+    }
+    if (i2 == 0) {
+      return String.valueOf(l2);
+    }
+    return null;
+  }
+  
+  public static void a(structmsg.StructMsg paramStructMsg, int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramStructMsg != null) {
+      switch (paramStructMsg.msg_type.get())
+      {
+      }
+    }
+    List localList;
+    do
+    {
+      do
+      {
+        return;
+        localList = paramStructMsg.msg.actions.get();
+      } while ((localList == null) || (localList.size() <= paramInt1));
+      str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
+      paramStructMsg.msg.msg_decided.set(str);
+      paramStructMsg.msg.msg_detail.set(paramString);
+      paramInt1 = a(paramStructMsg.msg.sub_type.get(), ((structmsg.SystemMsgAction)localList.get(paramInt1)).action_info.type.get());
+      paramStructMsg.msg.sub_type.set(paramInt1);
+      paramStructMsg.msg.actions.clear();
+      return;
+      localList = paramStructMsg.msg.actions.get();
+    } while ((localList == null) || (localList.size() <= paramInt1) || (!a(paramStructMsg.msg.sub_type.get(), paramStructMsg.msg.group_msg_type.get())));
+    String str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
+    paramStructMsg.msg.msg_decided.set(str);
+    paramStructMsg.msg.msg_detail.set(paramString);
+    paramInt1 = a(paramStructMsg.msg.sub_type.get(), ((structmsg.SystemMsgAction)localList.get(paramInt1)).action_info.type.get(), paramStructMsg.msg.group_msg_type.get());
+    paramStructMsg.msg.sub_type.set(paramInt1);
+    paramStructMsg.msg.actions.clear();
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 12) || (paramInt == 13);
+  }
+  
+  private static boolean a(int paramInt1, int paramInt2)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt1 == 3) {
+      if (paramInt2 != 10)
+      {
+        bool1 = bool2;
+        if (paramInt2 != 11) {}
       }
       else
       {
-        paramMsg = null;
-        String str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8() + l1;
-        localObject1 = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8();
-        localStringBuilder.append("     NotOnLineFile info : serverPath:").append((String)localObject1).append(";fileKey :").append(str).append(";");
-        if (!paramMessageHandler.a().a(str))
+        bool1 = false;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(structmsg.StructMsg paramStructMsg, int paramInt, String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramStructMsg != null)
+    {
+      bool1 = bool2;
+      if (paramInt != 0)
+      {
+        bool1 = bool2;
+        if (paramInt != 3)
         {
-          str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.get().toStringUtf8();
-          localStringBuilder.append("strFileName:").append(str).append(";");
-          paramLong1 = ((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.get();
-          if ((paramInt1 == 241) || (bcsa.a(str, paramInt1)))
+          if (paramStructMsg.msg_type.get() != 1) {
+            break label125;
+          }
+          if ((paramStructMsg.msg.sub_type.get() != 9) && (paramStructMsg.msg.sub_type.get() != 10))
           {
-            paramMessageHandler = new RichMsg.PicRec();
-            paramMessageHandler.localPath.set((String)localObject1);
-            paramMessageHandler.size.set(paramLong1);
-            paramMessageHandler.type.set(1);
-            paramMessageHandler.isRead.set(false);
-            paramMessageHandler.uuid.set((String)localObject1);
-            paramMessageHandler.serverStorageSource.set("ftn");
-            paramMessageHandler.version.set(5);
-            paramMessageHandler.isReport.set(0);
-            paramMsg = (MessageForPic)bcry.a(-2000);
-            paramMsg.msgtype = -2000;
-            paramMsg.msgData = paramMessageHandler.toByteArray();
-            paramMsg.parse();
-            paramList.add(paramMsg);
-            paramMsg = null;
-            localStringBuilder.append("protocolStr:").append(paramMsg).append(";");
+            bool1 = bool2;
+            if (paramStructMsg.msg.sub_type.get() != 1) {}
           }
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label1086;
-          }
-          QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
-          return;
-          if ((paramInt1 != 242) && (!bcsa.b(str, paramInt1))) {
-            break;
-          }
-          if (!str.equals(""))
+          else
           {
-            if (!str.contains("_")) {}
-            for (paramMsg = str.substring(0, str.length() - 4);; paramMsg = str.substring(str.lastIndexOf("_") + 1, str.length() - 4))
-            {
-              paramMsg = l2 + paramMsg;
-              localStringBuilder.append("c2cCmd:0xf2;key:").append(paramMsg).append(";");
-              if (paramBoolean4) {
-                break label872;
-              }
-              if (!bdoc.e(paramMsg)) {
-                break;
-              }
-              localStringBuilder.append("DuplicateKey:").append(paramMsg).append(";");
-              if (QLog.isColorLevel()) {
-                QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
-              }
-              bdoc.d(paramMsg);
-              return;
-            }
-            bdoc.c(paramMsg);
+            paramStructMsg.msg.msg_decided.set(paramString2);
+            paramStructMsg.msg.msg_detail.set(paramString1);
+            paramStructMsg.msg.actions.clear();
+            bool1 = true;
           }
-          for (;;)
-          {
-            label872:
-            paramMsg = beyo.a((String)localObject1, paramLong1, 2, false, (String)localObject1, null, "ftn");
-            localObject2 = new RichMsg.PttRec();
-            ((RichMsg.PttRec)localObject2).localPath.set((String)localObject1);
-            ((RichMsg.PttRec)localObject2).size.set(paramLong1);
-            ((RichMsg.PttRec)localObject2).type.set(2);
-            ((RichMsg.PttRec)localObject2).uuid.set((String)localObject1);
-            ((RichMsg.PttRec)localObject2).isRead.set(false);
-            ((RichMsg.PttRec)localObject2).serverStorageSource.set("ftn");
-            ((RichMsg.PttRec)localObject2).isReport.set(0);
-            ((RichMsg.PttRec)localObject2).version.set(5);
-            paramLong1 = System.currentTimeMillis() / 1000L;
-            ((RichMsg.PttRec)localObject2).msgRecTime.set(paramLong1);
-            ((RichMsg.PttRec)localObject2).msgTime.set(l1);
-            localObject1 = (MessageForPtt)bcry.a(-2002);
-            ((MessageForPtt)localObject1).msgtype = -2002;
-            ((MessageForPtt)localObject1).msgData = ((RichMsg.PttRec)localObject2).toByteArray();
-            ((MessageForPtt)localObject1).parse();
-            paramList.add(localObject1);
-            bewa.a(paramMessageHandler.app, 1, false, 4);
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.d("OfflineFileDecoder", 2, "offline ptt no filename");
-            }
-          }
-          localStringBuilder.append("rcv a repeated offline file push msg");
         }
       }
     }
-  }
-  
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
-  {
-    long l1 = paramMsg.msg_head.from_uin.get();
-    int i = paramMsg.msg_head.c2c_cmd.get();
-    long l2 = parambcre.e;
-    boolean bool2 = parambcre.jdField_a_of_type_Boolean;
-    boolean bool3 = parambcre.b;
-    if (l1 == parambcre.jdField_a_of_type_Long) {}
-    for (boolean bool1 = true;; bool1 = false)
+    label125:
+    do
     {
-      a(paramMessageHandler, paramList, i, paramMsg, l2, bool2, bool3, bool1, parambcre.jdField_d_of_type_Long, parambcre.jdField_d_of_type_Boolean, parambcre.jdField_a_of_type_Int);
-      return;
-    }
+      return bool1;
+      bool1 = bool2;
+    } while (paramStructMsg.msg_type.get() != 2);
+    paramStructMsg.msg.sub_type.set(5);
+    paramStructMsg.msg.msg_decided.set(paramString2);
+    paramStructMsg.msg.msg_detail.set(paramString1);
+    paramStructMsg.msg.actions.clear();
+    return true;
   }
 }
 

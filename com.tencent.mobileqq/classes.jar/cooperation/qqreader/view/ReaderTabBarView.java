@@ -16,22 +16,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhgr;
-import bhlo;
-import bhlp;
-import bjdq;
-import bmpk;
-import bmqe;
-import bmqf;
-import bmqu;
-import bmqw;
-import bmqz;
-import bmra;
-import bmrb;
-import bmrd;
-import bmre;
-import bmrf;
-import bmrg;
+import bhjm;
+import bktr;
+import bkul;
+import bkum;
+import bkvb;
+import bkvd;
+import bkvg;
+import bkvh;
+import bkvi;
+import bkvk;
+import bkvl;
+import bkvm;
+import bkvn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -39,6 +36,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.redtouch.RedAppInfo;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil.NetInfo;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import cooperation.qqreader.ui.ReaderHomePageActivity;
@@ -53,13 +53,13 @@ public class ReaderTabBarView
   private int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#e5e5e5"));
-  private SparseArray<bmrd> jdField_a_of_type_AndroidUtilSparseArray;
+  private SparseArray<bkvk> jdField_a_of_type_AndroidUtilSparseArray;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
-  public bjdq a;
-  private bmqf jdField_a_of_type_Bmqf;
+  public bhjm a;
+  private bkum jdField_a_of_type_Bkum;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<Integer, bmrf> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<Integer, bkvm> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
   private int[] jdField_a_of_type_ArrayOfInt;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -87,7 +87,7 @@ public class ReaderTabBarView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, bhgr.a(paramContext, 54.0F));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, DisplayUtil.dip2px(paramContext, 54.0F));
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -127,14 +127,14 @@ public class ReaderTabBarView
   
   private void a(int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean)
   {
-    Object localObject = (bmrd)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    if ((localObject == null) || (((bmrd)localObject).jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt1)))) {
+    Object localObject = (bkvk)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    if ((localObject == null) || (((bkvk)localObject).jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt1)))) {
       return;
     }
-    localObject = (RedTouchUI)new RedTouchUI(this.jdField_a_of_type_AndroidContentContext, ((bmrd)localObject).jdField_a_of_type_AndroidViewView).a(5).a();
-    ((RedTouchUI)localObject).setRedpointImgResID(2130850400);
-    ((RedTouchUI)localObject).setTextOrNumImgRedID(2130850404);
-    paramString = new bmrf(this, paramInt2, paramString, paramBoolean, paramInt3, (RedTouchUI)localObject);
+    localObject = (RedTouchUI)new RedTouchUI(this.jdField_a_of_type_AndroidContentContext, ((bkvk)localObject).jdField_a_of_type_AndroidViewView).a(5).a();
+    ((RedTouchUI)localObject).setRedpointImgResID(2130850321);
+    ((RedTouchUI)localObject).setTextOrNumImgRedID(2130850325);
+    paramString = new bkvm(this, paramInt2, paramString, paramBoolean, paramInt3, (RedTouchUI)localObject);
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), paramString);
   }
   
@@ -144,15 +144,15 @@ public class ReaderTabBarView
     int i = 0;
     while (i < j)
     {
-      bmrd localbmrd = (bmrd)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if (localbmrd != null)
+      bkvk localbkvk = (bkvk)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if (localbkvk != null)
       {
-        localbmrd.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbmrd.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        localbmrd.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.d);
-        if (paramInt2 == localbmrd.jdField_a_of_type_Int)
+        localbkvk.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbkvk.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localbkvk.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.d);
+        if (paramInt2 == localbkvk.jdField_a_of_type_Int)
         {
-          localbmrd.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbmrd.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-          localbmrd.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.e);
+          localbkvk.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbkvk.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+          localbkvk.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.e);
         }
       }
       i += 1;
@@ -160,7 +160,7 @@ public class ReaderTabBarView
     if (paramBoolean) {
       b(paramInt1, paramInt2);
     }
-    bmqw.e("ReaderTabBarView", "mSelectedTab =" + paramInt1 + ",tabIndex=" + paramInt2 + ",isHumanClick=" + paramBoolean);
+    bkvd.e("ReaderTabBarView", "mSelectedTab =" + paramInt1 + ",tabIndex=" + paramInt2 + ",isHumanClick=" + paramBoolean);
   }
   
   private void a(int paramInt1, String paramString, int paramInt2)
@@ -175,8 +175,8 @@ public class ReaderTabBarView
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_Bmqf != null) {
-      this.jdField_a_of_type_Bmqf.a(paramString);
+    if (this.jdField_a_of_type_Bkum != null) {
+      this.jdField_a_of_type_Bkum.a(paramString);
     }
   }
   
@@ -185,22 +185,22 @@ public class ReaderTabBarView
     if (paramMap == null) {
       return;
     }
-    if (this.jdField_a_of_type_Bmqf.a("769.100900")) {
+    if (this.jdField_a_of_type_Bkum.a("769.100900")) {
       setRedIconShow(1, true);
     }
-    if (this.jdField_a_of_type_Bmqf.a("769.100920")) {
+    if (this.jdField_a_of_type_Bkum.a("769.100920")) {
       setRedIconShow(0, true);
     }
-    if (this.jdField_a_of_type_Bmqf.a("769.100916")) {
+    if (this.jdField_a_of_type_Bkum.a("769.100916")) {
       setRedIconShow(3, true);
     }
-    if (this.jdField_a_of_type_Bmqf.a("769.100970")) {
+    if (this.jdField_a_of_type_Bkum.a("769.100970")) {
       setRedIconShow(2, true);
     }
-    if (this.jdField_a_of_type_Bmqf.a("769.100980")) {
+    if (this.jdField_a_of_type_Bkum.a("769.100980")) {
       setRedIconShow(6, true);
     }
-    if (this.jdField_a_of_type_Bmqf.a("769.100990")) {
+    if (this.jdField_a_of_type_Bkum.a("769.100990")) {
       setRedIconShow(4, true);
     }
     a(this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int]);
@@ -215,12 +215,12 @@ public class ReaderTabBarView
     localTabItemView.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     localTabItemView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramString);
     localTabItemView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    bmrg localbmrg = new bmrg(null);
-    localbmrg.jdField_a_of_type_AndroidWidgetTextView = localTabItemView.jdField_a_of_type_AndroidWidgetTextView;
-    localbmrg.jdField_a_of_type_AndroidWidgetImageView = localTabItemView.jdField_a_of_type_AndroidWidgetImageView;
-    localTabItemView.setTag(-3, localbmrg);
+    bkvn localbkvn = new bkvn(null);
+    localbkvn.jdField_a_of_type_AndroidWidgetTextView = localTabItemView.jdField_a_of_type_AndroidWidgetTextView;
+    localbkvn.jdField_a_of_type_AndroidWidgetImageView = localTabItemView.jdField_a_of_type_AndroidWidgetImageView;
+    localTabItemView.setTag(-3, localbkvn);
     localTabItemView.setBackgroundDrawable(null);
-    localTabItemView.setOnClickListener(new bmre(this, paramInt, this.jdField_a_of_type_JavaUtilList));
+    localTabItemView.setOnClickListener(new bkvl(this, paramInt, this.jdField_a_of_type_JavaUtilList));
     addView(localTabItemView, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
     if (AppSetting.c) {
       localTabItemView.setContentDescription(paramString);
@@ -236,8 +236,8 @@ public class ReaderTabBarView
   private void b(int paramInt)
   {
     a(paramInt);
-    bmra.a(this.jdField_a_of_type_AndroidContentContext, paramInt, false);
-    a(bmra.a(this.jdField_a_of_type_AndroidContentContext, paramInt), paramInt, a(paramInt), false, new Object[] { bmra.a(this.jdField_a_of_type_AndroidContentContext, paramInt) });
+    bkvh.a(this.jdField_a_of_type_AndroidContentContext, paramInt, false);
+    a(bkvh.a(this.jdField_a_of_type_AndroidContentContext, paramInt), paramInt, a(paramInt), false, new Object[] { bkvh.a(this.jdField_a_of_type_AndroidContentContext, paramInt) });
   }
   
   private void b(int paramInt1, int paramInt2)
@@ -250,28 +250,28 @@ public class ReaderTabBarView
     localBundle.putInt("EVENT_REPORT_TAB_SWITCH_KEY_CLICK_TAB_INDEX", paramInt2);
     localBundle.putStringArray("EVENT_REPORT_TAB_SWITCH_KEY_PAGE_IDS", this.jdField_a_of_type_ArrayOfJavaLangString);
     localBundle.putStringArray("EVENT_REPORT_TAB_SWITCH_KEY_MODULE_IDS", this.jdField_b_of_type_ArrayOfJavaLangString);
-    bmqe.a().a("EVENT_REPORT_TAB_SWITCH", localBundle);
+    bkul.a().a("EVENT_REPORT_TAB_SWITCH", localBundle);
   }
   
   private void b(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    bmrf localbmrf = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    if (localbmrf == null)
+    bkvm localbkvm = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localbkvm == null)
     {
       a(paramInt1, paramBoolean);
-      localbmrf = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+      localbkvm = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
     }
     for (;;)
     {
-      if (localbmrf != null) {
-        localbmrf.a(paramInt1, paramBoolean);
+      if (localbkvm != null) {
+        localbkvm.a(paramInt1, paramBoolean);
       }
       do
       {
         return;
-      } while (paramInt2 < localbmrf.jdField_b_of_type_Int);
-      localbmrf.jdField_b_of_type_Int = paramInt2;
-      localbmrf.jdField_a_of_type_Int = 1;
+      } while (paramInt2 < localbkvm.jdField_b_of_type_Int);
+      localbkvm.jdField_b_of_type_Int = paramInt2;
+      localbkvm.jdField_a_of_type_Int = 1;
     }
   }
   
@@ -280,10 +280,10 @@ public class ReaderTabBarView
     int i = 0;
     while (i <= 3)
     {
-      if (bmra.a(this.jdField_a_of_type_AndroidContentContext, i))
+      if (bkvh.a(this.jdField_a_of_type_AndroidContentContext, i))
       {
-        setTextMsg(i, bmra.a(this.jdField_a_of_type_AndroidContentContext, i), a(i) + 1, true);
-        bmqz.a(b(), a(), "69", "335", "", "2", "", "", "");
+        setTextMsg(i, bkvh.a(this.jdField_a_of_type_AndroidContentContext, i), a(i) + 1, true);
+        bkvg.a(b(), a(), "69", "335", "", "2", "", "", "");
       }
       i += 1;
     }
@@ -291,16 +291,16 @@ public class ReaderTabBarView
   
   public int a(int paramInt)
   {
-    bmrf localbmrf = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localbmrf == null) {
+    bkvm localbkvm = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localbkvm == null) {
       return 0;
     }
-    return localbmrf.jdField_b_of_type_Int;
+    return localbkvm.jdField_b_of_type_Int;
   }
   
   public String a()
   {
-    return bmrb.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    return bkvi.a((Activity)this.jdField_a_of_type_AndroidContentContext);
   }
   
   public void a()
@@ -330,68 +330,68 @@ public class ReaderTabBarView
     setUnReadMsg(paramInt2, Integer.parseInt((String)paramVarArgs[0]));
   }
   
-  public void a(Intent paramIntent, @NonNull List<WebViewTabBarData> paramList, bjdq parambjdq)
+  public void a(Intent paramIntent, @NonNull List<WebViewTabBarData> paramList, bhjm parambhjm)
   {
-    this.jdField_a_of_type_Bjdq = parambjdq;
-    parambjdq = null;
+    this.jdField_a_of_type_Bhjm = parambhjm;
+    parambhjm = null;
     if ((getContext() instanceof ReaderHomePageActivity)) {
-      parambjdq = ((ReaderHomePageActivity)getContext()).a();
+      parambhjm = ((ReaderHomePageActivity)getContext()).a();
     }
-    Object localObject = parambjdq;
-    if (parambjdq == null)
+    Object localObject = parambhjm;
+    if (parambhjm == null)
     {
-      bmqw.a("ReaderTabBarView", "[init] configDataHelper is null!");
-      localObject = new bmpk((Activity)getContext());
+      bkvd.a("ReaderTabBarView", "[init] configDataHelper is null!");
+      localObject = new bktr((Activity)getContext());
     }
-    this.jdField_a_of_type_ArrayOfInt = ((bmpk)localObject).a();
-    this.jdField_a_of_type_ArrayOfJavaLangString = ((bmpk)localObject).b();
-    this.jdField_b_of_type_ArrayOfJavaLangString = ((bmpk)localObject).c();
-    this.jdField_c_of_type_ArrayOfJavaLangString = ((bmpk)localObject).a();
-    int j = bmpk.jdField_a_of_type_Int;
-    this.d = bmpk.jdField_b_of_type_Int;
-    this.e = bmpk.jdField_c_of_type_Int;
+    this.jdField_a_of_type_ArrayOfInt = ((bktr)localObject).a();
+    this.jdField_a_of_type_ArrayOfJavaLangString = ((bktr)localObject).b();
+    this.jdField_b_of_type_ArrayOfJavaLangString = ((bktr)localObject).c();
+    this.jdField_c_of_type_ArrayOfJavaLangString = ((bktr)localObject).a();
+    int j = bktr.jdField_a_of_type_Int;
+    this.d = bktr.jdField_b_of_type_Int;
+    this.e = bktr.jdField_c_of_type_Int;
     if (paramIntent != null)
     {
       i = paramIntent.getIntExtra("key_tab_main_tab_pos", 0);
-      bmqw.d("ReaderTabBarView", " targetTabPos=" + i);
+      bkvd.d("ReaderTabBarView", " targetTabPos=" + i);
       paramIntent.removeExtra("key_tab_main_tab_pos");
-      j = paramIntent.getIntExtra("key_tab_color", bmpk.jdField_a_of_type_Int);
+      j = paramIntent.getIntExtra("key_tab_color", bktr.jdField_a_of_type_Int);
       paramIntent.removeExtra("key_tab_color");
-      this.d = paramIntent.getIntExtra("key_tab_name_color", bmpk.jdField_b_of_type_Int);
+      this.d = paramIntent.getIntExtra("key_tab_name_color", bktr.jdField_b_of_type_Int);
       paramIntent.removeExtra("key_tab_name_color");
-      this.e = paramIntent.getIntExtra("key_name_selected_color", bmpk.jdField_c_of_type_Int);
+      this.e = paramIntent.getIntExtra("key_name_selected_color", bktr.jdField_c_of_type_Int);
       paramIntent.removeExtra("key_tab_name_color");
       setBackgroundDrawable(new ColorDrawable(j));
       this.jdField_a_of_type_JavaUtilList = paramList;
       int m = paramList.size();
-      bmqw.e("ReaderTabBarView", "[init] dataList size = " + m);
+      bkvd.e("ReaderTabBarView", "[init] dataList size = " + m);
       j = 0;
       label277:
       if (j >= m) {
         break label495;
       }
-      paramIntent = new bmrd();
+      paramIntent = new bkvk();
       paramIntent.jdField_a_of_type_Int = this.jdField_c_of_type_Int;
       if (this.jdField_a_of_type_ArrayOfInt != null) {
         break label481;
       }
     }
     label481:
-    for (int k = bmpk.a(Integer.parseInt(((WebViewTabBarData)paramList.get(j)).tag));; k = this.jdField_a_of_type_ArrayOfInt[this.jdField_c_of_type_Int])
+    for (int k = bktr.a(Integer.parseInt(((WebViewTabBarData)paramList.get(j)).tag));; k = this.jdField_a_of_type_ArrayOfInt[this.jdField_c_of_type_Int])
     {
       paramIntent.jdField_b_of_type_Int = k;
       paramIntent.jdField_a_of_type_JavaLangString = ((WebViewTabBarData)paramList.get(j)).tabName;
-      parambjdq = a(((WebViewTabBarData)paramList.get(j)).tabName);
-      paramIntent.jdField_a_of_type_AndroidViewView = parambjdq[0];
-      paramIntent.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)parambjdq[1]);
-      paramIntent.jdField_a_of_type_AndroidWidgetTextView = ((TextView)parambjdq[2]);
-      paramIntent.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bmrb.a(((WebViewTabBarData)paramList.get(j)).tabIcon);
-      paramIntent.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bmrb.a(this.jdField_c_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
+      parambhjm = a(((WebViewTabBarData)paramList.get(j)).tabName);
+      paramIntent.jdField_a_of_type_AndroidViewView = parambhjm[0];
+      paramIntent.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)parambhjm[1]);
+      paramIntent.jdField_a_of_type_AndroidWidgetTextView = ((TextView)parambhjm[2]);
+      paramIntent.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bkvi.a(((WebViewTabBarData)paramList.get(j)).tabIcon);
+      paramIntent.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bkvi.a(this.jdField_c_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramIntent.jdField_b_of_type_Int, paramIntent);
       this.jdField_c_of_type_Int += 1;
       j += 1;
       break label277;
-      bmqw.a("ReaderTabBarView", "[init] intent is null!");
+      bkvd.a("ReaderTabBarView", "[init] intent is null!");
       i = 0;
       break;
     }
@@ -400,11 +400,11 @@ public class ReaderTabBarView
     a(this.g, this.f, true);
     this.jdField_a_of_type_Int = this.f;
     this.g = this.jdField_a_of_type_Int;
-    int i = bmqu.c(this.jdField_a_of_type_AndroidContentContext);
+    int i = bkvb.c(this.jdField_a_of_type_AndroidContentContext);
     if (i > 0)
     {
       a(0, i);
-      bmqz.a(b(), a(), "69", "335", "", "2", "", "", "");
+      bkvg.a(b(), a(), "69", "335", "", "2", "", "", "");
     }
     d();
   }
@@ -423,12 +423,12 @@ public class ReaderTabBarView
     if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
       return false;
     }
-    return ((bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).jdField_a_of_type_Boolean;
+    return ((bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).jdField_a_of_type_Boolean;
   }
   
   public String b()
   {
-    return bhlo.a(this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_JavaLangString;
+    return DeviceInfoUtil.getNetInfo(this.jdField_a_of_type_AndroidContentContext).networkType;
   }
   
   public void b()
@@ -516,8 +516,8 @@ public class ReaderTabBarView
     }
     if (this.jdField_a_of_type_Int != paramInt)
     {
-      if (this.jdField_a_of_type_Bjdq != null) {
-        this.jdField_a_of_type_Bjdq.onTabSelected(this.jdField_a_of_type_Int, paramInt);
+      if (this.jdField_a_of_type_Bhjm != null) {
+        this.jdField_a_of_type_Bhjm.onTabSelected(this.jdField_a_of_type_Int, paramInt);
       }
       a(this.jdField_a_of_type_Int, paramInt, paramBoolean);
       this.jdField_a_of_type_Int = paramInt;
@@ -526,11 +526,11 @@ public class ReaderTabBarView
   
   public void setTextMsg(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    bmrf localbmrf = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    if (localbmrf == null) {
+    bkvm localbkvm = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localbkvm == null) {
       a(paramInt1, paramString, paramInt2);
     }
-    for (paramString = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));; paramString = localbmrf)
+    for (paramString = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));; paramString = localbkvm)
     {
       if (paramString != null) {
         paramString.a(paramInt1, paramBoolean);
@@ -538,10 +538,10 @@ public class ReaderTabBarView
       do
       {
         return;
-      } while (paramInt2 < localbmrf.jdField_b_of_type_Int);
-      localbmrf.jdField_b_of_type_Int = paramInt2;
-      localbmrf.jdField_a_of_type_Int = 2;
-      localbmrf.jdField_a_of_type_JavaLangString = paramString;
+      } while (paramInt2 < localbkvm.jdField_b_of_type_Int);
+      localbkvm.jdField_b_of_type_Int = paramInt2;
+      localbkvm.jdField_a_of_type_Int = 2;
+      localbkvm.jdField_a_of_type_JavaLangString = paramString;
     }
   }
   
@@ -552,24 +552,24 @@ public class ReaderTabBarView
   
   public void setUnReadMsg(int paramInt1, int paramInt2, int paramInt3)
   {
-    bmrf localbmrf = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    if (localbmrf == null)
+    bkvm localbkvm = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localbkvm == null)
     {
       a(paramInt1, paramInt2);
-      localbmrf = (bmrf)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+      localbkvm = (bkvm)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
     }
     for (;;)
     {
-      if (localbmrf != null) {
-        localbmrf.a(paramInt1, true);
+      if (localbkvm != null) {
+        localbkvm.a(paramInt1, true);
       }
       do
       {
         return;
-      } while (paramInt3 < localbmrf.jdField_b_of_type_Int);
-      localbmrf.jdField_b_of_type_Int = paramInt3;
-      localbmrf.jdField_a_of_type_Int = 3;
-      localbmrf.jdField_a_of_type_JavaLangString = String.valueOf(paramInt2);
+      } while (paramInt3 < localbkvm.jdField_b_of_type_Int);
+      localbkvm.jdField_b_of_type_Int = paramInt3;
+      localbkvm.jdField_a_of_type_Int = 3;
+      localbkvm.jdField_a_of_type_JavaLangString = String.valueOf(paramInt2);
     }
   }
 }

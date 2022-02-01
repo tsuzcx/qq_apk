@@ -1,41 +1,30 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
+import android.view.View;
 
-class neh
-  implements Application.ActivityLifecycleCallbacks
+public abstract interface neh
 {
-  neh(neg paramneg) {}
+  public abstract void a();
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  public abstract void a(View paramView);
   
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    if (paramActivity == neg.a(this.a))
-    {
-      neg.c(this.a);
-      this.a.a();
-    }
-  }
+  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
   
-  public void onActivityPaused(Activity paramActivity)
-  {
-    if (paramActivity == neg.a(this.a)) {
-      neg.b(this.a);
-    }
-  }
+  public abstract void b();
   
-  public void onActivityResumed(Activity paramActivity) {}
+  public abstract void b(View paramView);
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  public abstract void c();
   
-  public void onActivityStarted(Activity paramActivity) {}
+  public abstract void c(View paramView);
   
-  public void onActivityStopped(Activity paramActivity) {}
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     neh
  * JD-Core Version:    0.7.0.1
  */

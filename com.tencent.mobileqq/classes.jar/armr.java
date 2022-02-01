@@ -1,12 +1,16 @@
-public class armr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class armr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a = "";
-  public String b = "";
+  armr(armn paramarmn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armr
  * JD-Core Version:    0.7.0.1
  */

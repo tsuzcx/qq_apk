@@ -1,133 +1,85 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-class pyd
-  extends ual
+public class pyd
+  extends BaseAdapter
 {
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArrayList<pyf> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  pyd(ArticleInfo paramArticleInfo, WeakReference<Activity> paramWeakReference)
+  public pyd(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramWeakReference;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangRefWeakReference = localObject;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  private void a(int paramInt, pyg parampyg)
   {
-    try
+    String str;
+    if (((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
+      str = ((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b;
+    }
+    for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        Object localObject1 = ((qyh)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.get(0)).c;
-        if (paramActionSheetItem.action == 13)
-        {
-          localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localObject1 != null)
-          {
-            localObject2 = pyw.a((Activity)localObject1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-            if (omu.a() == 1)
-            {
-              bool = true;
-              ((Intent)localObject2).putExtra("fast_biu_type", bool);
-              ((Activity)localObject1).startActivityForResult((Intent)localObject2, 55577);
-              ((Activity)localObject1).overridePendingTransition(0, 0);
-            }
-          }
-          else
-          {
-            return super.a(paramInt, paramActionSheetItem);
-          }
-        }
+      parampyg.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      return;
+      if (((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 1) {
+        str = ((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString;
+      } else {
+        str = "";
       }
     }
-    catch (NullPointerException localNullPointerException1)
+  }
+  
+  public void a(List<pyf> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if ((paramView != null) && (((pyg)paramView.getTag()).jdField_a_of_type_Int == ((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int))
     {
-      for (;;)
-      {
-        Object localObject2;
-        QLog.e("PgcShortContentProteusItem", 1, localNullPointerException1.toString());
-        String str1 = "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_big_v3.png";
-        continue;
-        boolean bool = false;
-        continue;
-        try
-        {
-          localObject2 = new JSONArray();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("name", "qq_friend");
-          localJSONObject.put("webHandle", 0);
-          ((JSONArray)localObject2).put(localJSONObject);
-          localJSONObject = new JSONObject();
-          localJSONObject.put("name", "qzone");
-          localJSONObject.put("webHandle", 0);
-          ((JSONArray)localObject2).put(localJSONObject);
-          localJSONObject = new JSONObject();
-          localJSONObject.put("name", "we_chat");
-          localJSONObject.put("webHandle", 0);
-          ((JSONArray)localObject2).put(localJSONObject);
-          localJSONObject = new JSONObject();
-          localJSONObject.put("name", "we_chat_circle");
-          localJSONObject.put("webHandle", 0);
-          ((JSONArray)localObject2).put(localJSONObject);
-          localJSONObject = new JSONObject();
-          localJSONObject.put("upline", localObject2);
-          localJSONObject.put("belowline", new JSONArray());
-          localJSONObject.put("shareCallBack", "");
-          localJSONObject.put("title", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("back", true);
-          localJSONObject.put("sourceName", anzj.a(2131701617));
-          localJSONObject.put("WXShareFromQQKandian", 1);
-          localJSONObject.put("src_iconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
-          localJSONObject.put("srcIconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
-          localJSONObject.put("src_action", "plugin");
-          localJSONObject.put("src_webActionUrl", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
-          localJSONObject.put("src_actionData", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
-          localJSONObject.put("desc", ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131717288));
-          localJSONObject.put("menu_title", anzj.a(2131712462));
-          localJSONObject.put("share_url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getShareUrl());
-          localJSONObject.put("keepShareUrl", 1);
-          localJSONObject.put("image_url", str1);
-          localJSONObject.put("weibo_title", anzj.a(2131711908));
-          localJSONObject.put("uin", "");
-          localJSONObject.put("puin", 0);
-          if (pxl.a(this.jdField_a_of_type_Pxl) == null) {
-            pxl.a(this.jdField_a_of_type_Pxl, new tfv());
-          }
-          str1 = null;
-          if (paramActionSheetItem.action == 72) {
-            str1 = paramActionSheetItem.uin;
-          }
-          pxl.a(this.jdField_a_of_type_Pxl).a(localJSONObject, paramInt, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), str1, paramActionSheetItem.uinType, paramActionSheetItem.label);
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-        catch (NullPointerException localNullPointerException2)
-        {
-          for (;;)
-          {
-            QLog.e("PgcShortContentProteusItem", 1, localNullPointerException2.toString());
-          }
-        }
-        return super.a(paramInt, paramActionSheetItem);
-        String str2 = "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_big_v3.png";
-      }
+      localpyg = (pyg)paramView.getTag();
+      localView = paramView;
+      a(paramInt, localpyg);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+    }
+    pyg localpyg = new pyg(this, null);
+    localpyg.jdField_a_of_type_Int = ((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
+    if (((pyf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560269, paramViewGroup, false);
+    }
+    for (localpyg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364561));; localpyg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368642)))
+    {
+      localView.setTag(localpyg);
+      break;
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560272, paramViewGroup, false);
     }
   }
 }

@@ -1,15 +1,13 @@
 package cooperation.qzone.widget;
 
-import bnqk;
-
-public class QzoneGuideBubbleHelper$1
+class QzoneGuideBubbleHelper$1
   implements Runnable
 {
-  public QzoneGuideBubbleHelper$1(bnqk parambnqk) {}
+  QzoneGuideBubbleHelper$1(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
   
   public void run()
   {
-    this.this$0.a();
+    this.this$0.dismissGuideBubble();
   }
 }
 

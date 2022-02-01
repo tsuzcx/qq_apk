@@ -14,7 +14,7 @@ class StickerController$1
   
   public TAVStickerEditView loadSticker(TAVStickerContext paramTAVStickerContext, TAVSticker paramTAVSticker)
   {
-    WsStickerEditView localWsStickerEditView = new WsStickerEditView(StickerController.access$000(this.this$0), paramTAVSticker, StickerController.access$100(this.this$0));
+    WsStickerEditView localWsStickerEditView = StickerViewFactory.createStickerEditView(StickerController.access$000(this.this$0), paramTAVSticker, StickerController.access$100(this.this$0));
     paramTAVSticker = TAVStickerExKt.getExtraStickerType(paramTAVSticker);
     localWsStickerEditView.setDrawMovieLimitRect(false);
     if ("sticker_lyric".equals(paramTAVSticker)) {

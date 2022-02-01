@@ -1,35 +1,35 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.device.qfind.BluetoothLeService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-class abud
-  implements ServiceConnection
+public class abud
+  extends BroadcastReceiver
 {
-  abud(abub paramabub) {}
+  private abud(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    abub.a(this.a, ((acak)paramIBinder).a());
-    if ((!abub.a(this.a).a()) && (QLog.isColorLevel())) {
-      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
-    }
-    if (!abub.a(this.a).isEmpty())
+    int i;
+    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
     {
-      this.a.a = ((acap)abub.a(this.a).get(0));
-      abub.a(this.a).remove(0);
-      abub.a(this.a).a(this.a.a.a, this.a.a.b);
+      i = paramIntent.getIntExtra("state", 0);
+      if (i != 1) {
+        break label43;
+      }
+      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET on");
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    abub.a(this.a, null);
+    label43:
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 0);
+      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
+    } while (!this.a.a);
+    GdtVideoCommonView.d(this.a);
   }
 }
 

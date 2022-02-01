@@ -7,6 +7,7 @@ public abstract interface NetContants$SharePref
   public static final String EXTRA_ENABLE_IPV6_VERSION = "_sso_list_version";
   public static final String KEY_ENABLE_IPV6 = "sso_list";
   public static final String KEY_SET_TEST_ENV = "sso_set_test_env";
+  public static final String SP_MSF_COMMON = "sp_msf_common";
 }
 
 

@@ -1,17 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import android.util.LruCache;
 
-public class bgvg
+public final class bgvg
+  extends LruCache<String, aclu>
 {
-  akps jdField_a_of_type_Akps;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
+  public bgvg(int paramInt)
+  {
+    super(paramInt);
+  }
   
-  protected bgvg(bgvf parambgvf) {}
+  protected void a(boolean paramBoolean, String paramString, aclu paramaclu1, aclu paramaclu2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramaclu1, paramaclu2);
+    paramaclu1.b();
+  }
 }
 
 

@@ -1,14 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface zkm
+public class zkm
 {
-  public abstract void a();
+  private static SharedPreferences a;
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(SlideItemInfo paramSlideItemInfo);
-  
-  public abstract void a(String paramString);
+  public static SharedPreferences a(Context paramContext)
+  {
+    if (a == null)
+    {
+      if (paramContext == null)
+      {
+        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
+        return null;
+      }
+      a = paramContext.getSharedPreferences("biz_subscribe", 0);
+    }
+    return a;
+  }
 }
 
 

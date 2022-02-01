@@ -1,65 +1,57 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
 
-public class amdv
-  extends aojs
+final class amdv
+  extends bgod
 {
-  public amdv(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  amdv(String paramString, File paramFile, ameb paramameb) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onDone(bgoe parambgoe)
   {
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getIntent().getStringExtra("group_uin");
-    Object localObject2 = new StringBuilder().append("onUpdateTroopGetMemberList, troopUin[").append(paramString).append("], ftroopUin[").append((String)localObject1).append("], troopMemberInfoList[");
-    if (paramList != null) {}
-    for (paramInt1 = paramList.size();; paramInt1 = -1)
-    {
-      QLog.w("FriendTeamListInnerFrameNew", 1, paramInt1 + "]");
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals(paramString))) {
-        break;
-      }
-      return;
+    super.onDone(parambgoe);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambgoe.a());
     }
-    paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localObject1 = new ArrayList();
-    localObject2 = (bgty)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(203);
-    bkgt localbkgt = (bkgt)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(165);
-    Object localObject3 = (anyw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (paramList != null)
+    if (3 == parambgoe.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    }
+    while (this.jdField_a_of_type_Ameb == null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      do
       {
-        localObject3 = (TroopMemberInfo)paramList.next();
-        if (localObject3 != null)
+        try
         {
-          if (QLog.isDevelopLevel()) {
-            QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, memberuin[" + ((TroopMemberInfo)localObject3).memberuin + "]");
+          npo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+          if (this.jdField_a_of_type_Ameb != null) {
+            this.jdField_a_of_type_Ameb.a(true, 0);
           }
-          if (!TextUtils.equals(((TroopMemberInfo)localObject3).memberuin, paramString)) {
-            if ((((bgty)localObject2).b(((TroopMemberInfo)localObject3).memberuin)) || (localbkgt.f(((TroopMemberInfo)localObject3).memberuin)))
-            {
-              if (QLog.isDevelopLevel()) {
-                QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, isRobotUin");
-              }
-            }
-            else {
-              ((ArrayList)localObject1).add(localObject3);
+          return;
+        }
+        catch (Exception parambgoe)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambgoe.getMessage());
             }
           }
         }
-      }
+        catch (OutOfMemoryError parambgoe)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambgoe.getMessage());
+            }
+          }
+        }
+      } while (this.jdField_a_of_type_Ameb == null);
+      this.jdField_a_of_type_Ameb.a(false, 0);
+      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b((ArrayList)localObject1);
-    FriendTeamListInnerFrame.a(this.a).a((ArrayList)localObject1);
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_Ameb.a(false, 0);
   }
 }
 

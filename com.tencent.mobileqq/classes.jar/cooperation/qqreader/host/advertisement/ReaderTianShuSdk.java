@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
-import bnwo;
-import bnwq;
+import blbu;
+import blbw;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +10,11 @@ public class ReaderTianShuSdk
   public static void requestAd(int paramInt1, int paramInt2, ReaderTianShuSdk.RequestListener paramRequestListener)
   {
     ArrayList localArrayList = new ArrayList();
-    bnwo localbnwo = new bnwo();
-    localbnwo.a = paramInt1;
-    localbnwo.b = paramInt2;
-    localArrayList.add(localbnwo);
-    bnwq.a().a(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
+    blbu localblbu = new blbu();
+    localblbu.a = paramInt1;
+    localblbu.b = paramInt2;
+    localArrayList.add(localblbu);
+    blbw.a().a(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
   }
 }
 

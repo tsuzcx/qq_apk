@@ -1,12 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class aozq
-  extends aozj
+class aozq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aozq(aozm paramaozm, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return super.a(paramQQAppInterface, paramContext, paramString, paramaoxk);
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Aozm.a * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Aozm.e);
+    this.b.setAlpha(f);
   }
 }
 

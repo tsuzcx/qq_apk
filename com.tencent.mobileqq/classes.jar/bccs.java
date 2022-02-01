@@ -1,31 +1,80 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
+import com.tencent.mobileqq.startup.step.LoadDex;
+import com.tencent.mobileqq.startup.step.OldApplication;
+import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.mobileqq.startup.step.StartService;
+import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Update;
 
 public class bccs
-  implements sjy
+  implements bcct
 {
-  public bccs(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  private static bcct a;
   
-  public void a(String paramString)
+  public static void a()
   {
-    if (!TextUtils.isEmpty(paramString))
+    a = (bcct)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+  }
+  
+  public static Step b(int paramInt, bcad parambcad, int[] paramArrayOfInt)
+  {
+    Object localObject;
+    switch (paramInt)
     {
-      FragmentActivity localFragmentActivity = this.a.getActivity();
-      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
-      {
-        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
-        if (this.a.a != null) {
-          bcni.a("sub_result", "clk_hot", new String[] { paramString, bcni.a(this.a.a) });
-        }
+    case 5: 
+    case 6: 
+    case 7: 
+    case 11: 
+    case 12: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    default: 
+      if (a != null) {
+        localObject = a.a(paramInt, parambcad, paramArrayOfInt);
       }
+      break;
     }
+    for (;;)
+    {
+      ((Step)localObject).mId = paramInt;
+      ((Step)localObject).mDirector = parambcad;
+      if (paramInt == 0) {
+        Step.access$002((Step)localObject, paramArrayOfInt);
+      }
+      return localObject;
+      localObject = new LoadDex();
+      continue;
+      localObject = new InitMemoryCache();
+      continue;
+      localObject = new OldApplication();
+      continue;
+      localObject = new SetSplash();
+      continue;
+      localObject = new CheckPermission();
+      continue;
+      localObject = new Update();
+      continue;
+      localObject = new StartService();
+      continue;
+      localObject = new Step();
+    }
+  }
+  
+  public Step a(int paramInt, bcad parambcad, int[] paramArrayOfInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bccs
  * JD-Core Version:    0.7.0.1
  */

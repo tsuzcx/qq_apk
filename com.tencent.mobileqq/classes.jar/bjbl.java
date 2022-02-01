@@ -1,479 +1,181 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Region.Op;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.SystemClock;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import com.enrique.stackblur.StackBlurManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.widget.QQBlur.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl.1;
 
-@TargetApi(19)
 public class bjbl
+  implements MiniAppCmdInterface
 {
-  public static int a;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private float jdField_a_of_type_Float = 8.0F;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private volatile Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#DAFAFAFC"));
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private bjbm jdField_a_of_type_Bjbm;
-  private bjbn jdField_a_of_type_Bjbn;
-  private String jdField_a_of_type_JavaLangString;
-  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float = 1.0F;
-  private int jdField_b_of_type_Int = 6;
-  private long jdField_b_of_type_Long;
-  private volatile View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float = 1.0F;
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int = 2;
-  private long jdField_d_of_type_Long;
-  private float jdField_e_of_type_Float;
-  private long jdField_e_of_type_Long;
-  private long f;
-  private long g;
-  private long h;
+  public bjbl(AdProxyImpl.1 param1) {}
   
-  static
+  /* Error */
+  public void onCmdListener(boolean paramBoolean, org.json.JSONObject paramJSONObject)
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_AndroidOsHandlerThread = ThreadManagerV2.newFreeHandlerThread("QQBlur", -8);
-    jdField_a_of_type_AndroidOsHandlerThread.start();
-  }
-  
-  private static int a(float paramFloat1, float paramFloat2)
-  {
-    return (int)Math.ceil(paramFloat1 / paramFloat2);
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (paramInt % 16 == 0) {
-      return paramInt;
-    }
-    return paramInt - paramInt % 16 + 16;
-  }
-  
-  private CharSequence a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "StackBlur.Java";
-    case 1: 
-      return "StackBlur.Native";
-    case 2: 
-      return "StackBlur.RS";
-    }
-    return "GaussBlur.RS";
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlur", 2, "onPolicyChange() called with: from = [" + paramInt1 + "], to = [" + paramInt2 + "]");
-    }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-  }
-  
-  private void a(View paramView, int paramInt)
-  {
-    SystemClock.uptimeMillis();
-    try
-    {
-      if (jdField_a_of_type_JavaLangReflectField == null)
-      {
-        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mViewFlags");
-        jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-      }
-      int i = jdField_a_of_type_JavaLangReflectField.getInt(paramView);
-      jdField_a_of_type_JavaLangReflectField.setInt(paramView, i & 0xFFFFFFF3 | paramInt & 0xC);
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        QLog.e("QQBlur", 1, "setViewInvisible: ", paramView);
-      }
-    }
-    SystemClock.uptimeMillis();
-    if (this.h >= 100000L) {
-      this.h = 0L;
-    }
-    this.h += 1L;
-    if (this.h % 2000L == 0L) {}
-  }
-  
-  private void a(View paramView, List<View> paramList)
-  {
-    if (paramView == null) {
-      break label4;
-    }
-    for (;;)
-    {
-      label4:
-      return;
-      if (paramView.getVisibility() == 0)
-      {
-        paramList.add(paramView);
-        a(paramView, 4);
-        if (!(paramView instanceof ViewGroup)) {
-          break;
-        }
-        paramView = (ViewGroup)paramView;
-        int j = paramView.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          a(paramView.getChildAt(i), paramList);
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private void a(StackBlurManager paramStackBlurManager)
-  {
-    paramStackBlurManager = new QQBlur.1(this, paramStackBlurManager);
-    this.jdField_a_of_type_AndroidOsHandler.post(paramStackBlurManager);
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    int i = a(paramInt1, this.jdField_a_of_type_Float);
-    int j = a(paramInt2, this.jdField_a_of_type_Float);
-    int k = a(i);
-    int m = a(j);
-    if (k > this.jdField_b_of_type_AndroidViewView.getResources().getDisplayMetrics().widthPixels) {
-      QLog.e("QQBlur", 1, "prepareBlurBitmapCore: roundScaledWidth = " + k + ", viewWidth = " + paramInt1 + ", scaleFactor = " + this.jdField_a_of_type_Float);
-    }
-    for (;;)
-    {
-      return true;
-      if (m > this.jdField_b_of_type_AndroidViewView.getResources().getDisplayMetrics().heightPixels)
-      {
-        QLog.e("QQBlur", 1, "prepareBlurBitmapCore: roundScaledHeight = " + m + ", viewHeight = " + paramInt2 + ", scaleFactor = " + this.jdField_a_of_type_Float);
-        return true;
-      }
-      this.jdField_c_of_type_Float = (j / m);
-      this.jdField_b_of_type_Float = (i / k);
-      float f1 = this.jdField_a_of_type_Float * this.jdField_b_of_type_Float;
-      float f2 = this.jdField_a_of_type_Float * this.jdField_c_of_type_Float;
-      try
-      {
-        Bitmap localBitmap = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-        if (localBitmap == null) {
-          continue;
-        }
-        this.jdField_e_of_type_Long = localBitmap.getWidth();
-        this.f = localBitmap.getHeight();
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          this.g = localBitmap.getAllocationByteCount();
-          localBitmap.eraseColor(this.jdField_c_of_type_Int);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(localBitmap);
-          Object localObject2 = new int[2];
-          this.jdField_b_of_type_AndroidViewView.getLocationInWindow((int[])localObject2);
-          Object localObject3 = new int[2];
-          this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject3);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-          this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-(localObject2[0] - localObject3[0]) / f1, -(localObject2[1] - localObject3[1]) / f2);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.scale(1.0F / f1, 1.0F / f2);
-          localObject2 = new StackBlurManager(localBitmap);
-          ((StackBlurManager)localObject2).setDbg(false);
-          ((StackBlurManager)localObject2).setExecutorThreads(((StackBlurManager)localObject2).getExecutorThreads());
-          localObject3 = new Bundle();
-          if (this.jdField_a_of_type_Bjbn != null) {
-            this.jdField_a_of_type_Bjbn.a((Bundle)localObject3);
-          }
-          this.jdField_c_of_type_Boolean = true;
-          if ((Build.VERSION.SDK_INT <= 27) || (this.jdField_b_of_type_AndroidViewView.getContext().getApplicationInfo().targetSdkVersion <= 27)) {
-            break label546;
-          }
-          this.jdField_a_of_type_AndroidViewView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.restore();
-          g();
-          this.jdField_c_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Bjbn != null) {
-            this.jdField_a_of_type_Bjbn.b((Bundle)localObject3);
-          }
-          a((StackBlurManager)localObject2);
-          return false;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("QQBlur", 1, "prepareBlurBitmapCore: ", localThrowable);
-          Object localObject1 = null;
-          continue;
-          this.g = localObject1.getByteCount();
-          continue;
-          label546:
-          Rect localRect = this.jdField_a_of_type_AndroidGraphicsCanvas.getClipBounds();
-          localRect.inset(-localObject1.getWidth(), -localObject1.getHeight());
-          if (this.jdField_a_of_type_AndroidGraphicsCanvas.clipRect(localRect, Region.Op.REPLACE)) {
-            this.jdField_a_of_type_AndroidViewView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-          } else {
-            QLog.e("QQBlur", 1, "prepareBlurBitmapCore: canvas clip rect empty. Cannot draw!!!");
-          }
-        }
-      }
-    }
-  }
-  
-  private void e()
-  {
-    long l1 = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_AndroidViewView == null)) {
-      QLog.e("QQBlur", 1, "prepareBlurBitmap: mBgView = " + this.jdField_a_of_type_AndroidViewView + " mBlurView = " + this.jdField_b_of_type_AndroidViewView);
-    }
-    int i;
-    int j;
-    do
-    {
-      return;
-      i = this.jdField_b_of_type_AndroidViewView.getWidth();
-      j = this.jdField_b_of_type_AndroidViewView.getHeight();
-      if ((i <= 0) || (j <= 0))
-      {
-        QLog.e("QQBlur", 1, "prepareBlurBitmap: viewWidth = " + i + " viewHeight = " + j);
-        return;
-      }
-    } while (a(i, j));
-    long l2 = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Long += 1L;
-    this.jdField_b_of_type_Long = (l2 - l1 + this.jdField_b_of_type_Long);
-  }
-  
-  private void f()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView == null)) {}
-  }
-  
-  private void g()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      View localView = (View)localIterator.next();
-      if (localView != null) {
-        a(localView, 0);
-      }
-    }
-  }
-  
-  public bjbl a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlur", 2, "onCreate() called");
-    }
-    if (this.jdField_b_of_type_Boolean) {}
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_b_of_type_AndroidViewView.getContext();
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_b_of_type_Boolean = true;
-    f();
-    return this;
-  }
-  
-  public bjbl a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    return this;
-  }
-  
-  public bjbl a(bjbn parambjbn)
-  {
-    this.jdField_a_of_type_Bjbn = parambjbn;
-    return this;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("方案=").append(a(jdField_a_of_type_Int)).append(",");
-    localStringBuilder.append("缩放倍数=").append(this.jdField_a_of_type_Float).append(",");
-    localStringBuilder.append("模糊半径=").append(this.jdField_b_of_type_Int).append(",");
-    localStringBuilder.append("尺寸=" + this.jdField_e_of_type_Long + "x" + this.f).append(",");
-    localStringBuilder.append("空间=" + this.g / 1000L + "KB").append(",");
-    localStringBuilder.append("并发数=" + this.jdField_d_of_type_Int).append(",");
-    localStringBuilder.append("主线程采样=[" + String.format("%.2f", new Object[] { Float.valueOf((float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long) }) + "]ms").append(",");
-    localStringBuilder.append("后台线程处理=[" + String.format("%.2f", new Object[] { Float.valueOf((float)this.jdField_d_of_type_Long / (float)this.jdField_c_of_type_Long) }) + "]ms");
-    return localStringBuilder.toString();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.i("QQBlur." + this.jdField_a_of_type_JavaLangString, 2, a());
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public void a(View paramView, Canvas paramCanvas)
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap != null)
-    {
-      paramCanvas.save();
-      paramCanvas.scale(paramView.getWidth() * 1.0F / localBitmap.getWidth(), paramView.getHeight() * 1.0F / localBitmap.getHeight());
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, localBitmap.getWidth(), localBitmap.getHeight());
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_Float, this.jdField_e_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
-      paramCanvas.restore();
-      return;
-    }
-    QLog.e("QQBlur", 1, "onDrawBlur: blured bitmap is null " + Integer.toHexString(System.identityHashCode(paramView)));
-  }
-  
-  public void a(bjbm parambjbm)
-  {
-    this.jdField_a_of_type_Bjbm = parambjbm;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public bjbl b(View paramView)
-  {
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    return this;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Bjbm != null) {
-      bool = this.jdField_a_of_type_Bjbm.a();
-    }
-    for (;;)
-    {
-      View localView = this.jdField_b_of_type_AndroidViewView;
-      if ((!this.jdField_a_of_type_Boolean) && (bool) && (localView != null) && (localView.isShown()))
-      {
-        e();
-        localView.invalidate();
-      }
-      return true;
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        bool = this.jdField_a_of_type_AndroidViewView.isDirty();
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlur", 2, "onDestroy() called");
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      this.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_b_of_type_AndroidViewView = null;
-      this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
-      this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-      this.jdField_a_of_type_AndroidGraphicsPaint = null;
-      this.jdField_a_of_type_Bjbn = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a(this.jdField_a_of_type_AndroidViewView.getRootView(), this.jdField_a_of_type_JavaUtilList);
+    // Byte code:
+    //   0: iload_1
+    //   1: ifeq +7 -> 8
+    //   4: aload_2
+    //   5: ifnonnull +28 -> 33
+    //   8: aload_0
+    //   9: getfield 12	bjbl:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
+    //   12: getfield 27	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   15: ifnull +17 -> 32
+    //   18: aload_0
+    //   19: getfield 12	bjbl:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
+    //   22: getfield 27	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   25: iconst_0
+    //   26: aload_2
+    //   27: invokeinterface 31 3 0
+    //   32: return
+    //   33: new 33	org/json/JSONObject
+    //   36: dup
+    //   37: invokespecial 34	org/json/JSONObject:<init>	()V
+    //   40: astore 4
+    //   42: aload_2
+    //   43: ldc 36
+    //   45: invokevirtual 40	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   48: checkcast 42	NS_MINI_AD/MiniAppAd$StGetAdRsp
+    //   51: astore 5
+    //   53: aload_2
+    //   54: ldc 44
+    //   56: invokevirtual 48	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   59: istore_3
+    //   60: aload_2
+    //   61: ldc 50
+    //   63: invokevirtual 54	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   66: astore_2
+    //   67: aload 5
+    //   69: getfield 58	NS_MINI_AD/MiniAppAd$StGetAdRsp:strAdsJson	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   72: invokevirtual 63	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   75: astore 6
+    //   77: ldc 65
+    //   79: iconst_1
+    //   80: new 67	java/lang/StringBuilder
+    //   83: dup
+    //   84: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   87: ldc 70
+    //   89: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: iload_3
+    //   93: invokevirtual 77	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   96: ldc 79
+    //   98: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: aload_2
+    //   102: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: ldc 81
+    //   107: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: aload 6
+    //   112: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: invokestatic 90	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   121: aload 4
+    //   123: ldc 44
+    //   125: iload_3
+    //   126: invokevirtual 94	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   129: pop
+    //   130: aload 4
+    //   132: ldc 50
+    //   134: aload_2
+    //   135: invokevirtual 97	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   138: pop
+    //   139: aload 4
+    //   141: ldc 36
+    //   143: aload 6
+    //   145: invokevirtual 97	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   148: pop
+    //   149: aload 4
+    //   151: ldc 99
+    //   153: aload 5
+    //   155: getfield 102	NS_MINI_AD/MiniAppAd$StGetAdRsp:strAdTemplateJson	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   158: invokevirtual 63	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   161: invokevirtual 97	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   164: pop
+    //   165: aload_0
+    //   166: getfield 12	bjbl:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
+    //   169: getfield 27	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   172: ifnull +18 -> 190
+    //   175: aload_0
+    //   176: getfield 12	bjbl:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
+    //   179: getfield 27	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   182: iload_1
+    //   183: aload 4
+    //   185: invokeinterface 31 3 0
+    //   190: iload_3
+    //   191: ifne -159 -> 32
+    //   194: aload 6
+    //   196: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   199: istore_1
+    //   200: iload_1
+    //   201: ifne -169 -> 32
+    //   204: aload 5
+    //   206: getfield 112	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   209: ifnull -177 -> 32
+    //   212: aload 5
+    //   214: getfield 112	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   217: invokevirtual 118	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   220: ifle -188 -> 32
+    //   223: aload 5
+    //   225: getfield 122	NS_MINI_AD/MiniAppAd$StGetAdRsp:iPreLoadLevel	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   228: invokevirtual 127	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   231: ldc2_w 128
+    //   234: lcmp
+    //   235: ifne -203 -> 32
+    //   238: iconst_0
+    //   239: istore_3
+    //   240: iload_3
+    //   241: aload 5
+    //   243: getfield 112	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   246: invokevirtual 118	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   249: if_icmpge -217 -> 32
+    //   252: aload 5
+    //   254: getfield 112	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   257: iload_3
+    //   258: invokevirtual 132	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   261: checkcast 134	NS_MINI_INTERFACE/INTERFACE$StApiAppInfo
+    //   264: invokestatic 140	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:from	(LNS_MINI_INTERFACE/INTERFACE$StApiAppInfo;)Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
+    //   267: invokestatic 145	bjeo:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   270: invokestatic 151	com/tencent/mobileqq/minigame/gpkg/GpkgManager:preloadGpkgByConfig	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;)V
+    //   273: iload_3
+    //   274: iconst_1
+    //   275: iadd
+    //   276: istore_3
+    //   277: goto -37 -> 240
+    //   280: astore_2
+    //   281: ldc 65
+    //   283: iconst_1
+    //   284: ldc 153
+    //   286: aload_2
+    //   287: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   290: return
+    //   291: astore_2
+    //   292: aload_2
+    //   293: invokevirtual 160	org/json/JSONException:printStackTrace	()V
+    //   296: aload_0
+    //   297: getfield 12	bjbl:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
+    //   300: getfield 27	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   303: ifnull -271 -> 32
+    //   306: aload_0
+    //   307: getfield 12	bjbl:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
+    //   310: getfield 27	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   313: iconst_0
+    //   314: aconst_null
+    //   315: invokeinterface 31 3 0
+    //   320: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	321	0	this	bjbl
+    //   0	321	1	paramBoolean	boolean
+    //   0	321	2	paramJSONObject	org.json.JSONObject
+    //   59	218	3	i	int
+    //   40	144	4	localJSONObject	org.json.JSONObject
+    //   51	202	5	localStGetAdRsp	NS_MINI_AD.MiniAppAd.StGetAdRsp
+    //   75	120	6	str	java.lang.String
+    // Exception table:
+    //   from	to	target	type
+    //   204	238	280	java/lang/Throwable
+    //   240	273	280	java/lang/Throwable
+    //   42	190	291	org/json/JSONException
+    //   194	200	291	org/json/JSONException
+    //   204	238	291	org/json/JSONException
+    //   240	273	291	org/json/JSONException
+    //   281	290	291	org/json/JSONException
   }
 }
 

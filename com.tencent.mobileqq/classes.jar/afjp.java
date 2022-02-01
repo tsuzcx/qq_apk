@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class afjp
-  implements DialogInterface.OnClickListener
+  extends amsu
 {
-  public afjp(RegisterActivity paramRegisterActivity) {}
+  public afjp(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    paramDialogInterface.dismiss();
+    int i;
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.tag;
+      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
+      if (paramMap == null)
+      {
+        i = 0;
+        QLog.d(str, 2, i);
+      }
+    }
+    else
+    {
+      if ((paramMap != null) && (paramMap.size() != 0)) {
+        break label83;
+      }
+    }
+    label83:
+    while (!this.a.mActivity.isResume())
+    {
+      return;
+      i = paramMap.size();
+      break;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.app.getApp(), 2, this.a.mActivity.getString(2131719244), 0).b(this.a.mActivity.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.app.getApp(), 1, this.a.mActivity.getString(2131719243), 0).b(this.a.mActivity.getTitleBarHeight());
   }
 }
 

@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import android.view.View;
+import java.util.List;
 
 class bcxl
-  implements SDKInitListener
+  implements bjoe
 {
-  bcxl(bcxk parambcxk) {}
+  bcxl(bcxi parambcxi, List paramList, bcyo parambcyo, bjnw parambjnw) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    bcxk.a(this.a);
-    BaseShortVideoOprerator.a(this.a.a.a, bcxk.a(this.a));
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (bcyp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (bcxi.a(this.jdField_a_of_type_Bcxi) != null) {
+        bcxi.a(this.jdField_a_of_type_Bcxi).a(paramView.b(), this.jdField_a_of_type_Bcyo);
+      }
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bjnw.cancel();
   }
 }
 

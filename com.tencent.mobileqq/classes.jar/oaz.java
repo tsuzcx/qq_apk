@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class oaz
-  implements DialogInterface.OnClickListener
+class oaz
+  implements smi
 {
-  public oaz(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
+  oaz(oaw paramoaw, AdvertisementInfo paramAdvertisementInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onComplain");
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 1);
+    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    PublicFragmentActivity.a(oaw.a(this.jdField_a_of_type_Oaw), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    oaw.a(this.jdField_a_of_type_Oaw).dismiss();
   }
 }
 

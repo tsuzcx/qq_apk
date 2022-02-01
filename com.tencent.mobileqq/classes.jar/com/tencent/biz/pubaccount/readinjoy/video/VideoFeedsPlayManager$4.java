@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
-import rwf;
+import sdj;
 
 class VideoFeedsPlayManager$4
   implements Runnable
@@ -10,18 +10,19 @@ class VideoFeedsPlayManager$4
   
   public void run()
   {
-    if (VideoFeedsPlayManager.a(this.this$0) != null)
+    sdj localsdj = VideoFeedsPlayManager.a(this.this$0);
+    if (localsdj != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsPlayManager.preplay", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
       }
-      VideoFeedsPlayManager.a(this.this$0).d();
-      if ((!VideoFeedsPlayManager.b(this.this$0)) && (VideoFeedsPlayManager.a(this.this$0) != null))
+      localsdj.d();
+      if (!VideoFeedsPlayManager.b(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VideoFeedsPlayManager.preplay", 2, "activity become onPause after videoPlayer.start()， so we need to pause it");
         }
-        VideoFeedsPlayManager.a(this.this$0).f();
+        localsdj.f();
       }
     }
   }

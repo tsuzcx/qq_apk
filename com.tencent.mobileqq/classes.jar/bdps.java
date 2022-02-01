@@ -1,37 +1,37 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.TroopPhotoController;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class bdps
-  extends Animation
+  implements AdapterView.OnItemSelectedListener
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public bdps(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public bdps(ViewGroup paramViewGroup)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-    if (paramFloat == 1.0F)
+    if (paramView == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      paramTransformation.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+      return;
+      this.a.jdField_a_of_type_Int = paramInt;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopPhotoController != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopPhotoController.onItemSelect(paramInt);
+      }
+      if (!this.a.c) {
+        bcef.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
+      }
+      while (TroopAvatarWallEditActivity.a(this.a) != null)
+      {
+        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
+        return;
+        bcef.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
+      }
     }
   }
   
-  public boolean willChangeBounds()
-  {
-    return true;
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

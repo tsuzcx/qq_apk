@@ -1,8 +1,33 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-public abstract interface blok
+class blok
+  implements Animator.AnimatorListener
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  blok(bloe parambloe) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
+    }
+    if (bloe.a(this.a) != null)
+    {
+      bloe.a(this.a).setAlpha(1.0F);
+      bloe.a(this.a).setVisibility(4);
+      bloe.a(this.a).b().postValue(Boolean.valueOf(false));
+    }
+    bloe.d(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

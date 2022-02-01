@@ -1,127 +1,177 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Handler.Callback;
+import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.Surface;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aoaq
   implements Handler.Callback
 {
-  int jdField_a_of_type_Int = 0;
-  bhyb jdField_a_of_type_Bhyb;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<aoan> b;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private aoar jdField_a_of_type_Aoar;
+  private VideoEncoderCore jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
   
-  public aoaq(aoan paramaoan, QQAppInterface paramQQAppInterface, bhyb parambhyb)
+  private void b()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramaoan);
-    this.jdField_a_of_type_Bhyb = parambhyb;
+    QLog.d("VideoEncoder", 2, "handleStopRecording");
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = null;
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      }
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_AndroidOsHandler = null;
+      }
+      if (this.jdField_a_of_type_Aoar != null)
+      {
+        this.jdField_a_of_type_Aoar.c();
+        this.jdField_a_of_type_Aoar = null;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("VideoEncoder", 1, "handleStopRecording stop encoder fail.", localException);
+        if (this.jdField_a_of_type_Aoar != null) {
+          this.jdField_a_of_type_Aoar.a(2);
+        }
+      }
+    }
+  }
+  
+  private void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramLong);
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        QLog.e("VideoEncoder", 1, "handleVideoFrameAvailable encode video fail.", localException);
+      } while (this.jdField_a_of_type_Aoar == null);
+      this.jdField_a_of_type_Aoar.a(4);
+    }
+  }
+  
+  private void b(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramArrayOfByte, paramLong);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      do
+      {
+        QLog.e("VideoEncoder", 1, "handleAudioFrameAvailable encode audio fail.", paramArrayOfByte);
+      } while (this.jdField_a_of_type_Aoar == null);
+      this.jdField_a_of_type_Aoar.a(3);
+    }
+  }
+  
+  public Surface a()
+  {
+    Surface localSurface = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {
+      localSurface = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+    }
+    return localSurface;
   }
   
   public void a()
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    aoan localaoan = (aoan)this.b.get();
-    if ((localObject == null) || (localaoan == null) || (localaoan.c.get())) {
-      QLog.d(aoan.b(), 1, "preCreatePersonalFontImg return!");
+    QLog.d("VideoEncoder", 2, "stopRecording");
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
     }
-    while (localaoan.b().getBoolean("font_precreate_finish", false)) {
-      return;
-    }
-    QLog.d(aoan.b(), 1, "preCreatePersonalFontImg start!");
-    int i = localaoan.b().getInt("font_precreate_index", 0);
-    localObject = localaoan.a.obtainMessage();
-    ((Message)localObject).what = i;
-    localaoan.a.sendMessage((Message)localObject);
   }
   
-  void a(int paramInt)
+  public void a(long paramLong)
   {
-    Object localObject2 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    aoan localaoan = (aoan)this.b.get();
-    if ((localObject2 == null) || (localaoan == null)) {}
-    Object localObject1;
-    do
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
+      QLog.d("VideoEncoder", 2, String.format("videoFrameAvailable timestampNanos=%s", new Object[] { Long.valueOf(paramLong) }));
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, Long.valueOf(paramLong)).sendToTarget();
+    }
+  }
+  
+  public void a(bafx parambafx, aoar paramaoar)
+  {
+    QLog.d("VideoEncoder", 2, "startRecording");
+    this.jdField_a_of_type_Aoar = paramaoar;
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("EncodeThread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = new VideoEncoderCore();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(parambafx, paramaoar);
+      if (this.jdField_a_of_type_Aoar != null) {
+        this.jdField_a_of_type_Aoar.a();
+      }
       return;
-      str = this.jdField_a_of_type_Bhyb.a();
-      if (paramInt >= str.length())
+    }
+    catch (Exception parambafx)
+    {
+      for (;;)
       {
-        localObject1 = new File(aoan.a(4)).listFiles();
-        localObject2 = localaoan.b().edit();
-        if ((localObject1 != null) && (localObject1.length >= str.length())) {
-          ((SharedPreferences.Editor)localObject2).putBoolean("font_precreate_finish", true);
-        }
-        for (;;)
-        {
-          paramInt = localaoan.b().getInt("font_precreate_count", 0);
-          ((SharedPreferences.Editor)localObject2).putInt("font_precreate_count", paramInt + 1);
-          ((SharedPreferences.Editor)localObject2).commit();
-          QLog.d(aoan.b(), 1, "preCreatePersonalFontImg create count = " + paramInt);
-          return;
-          ((SharedPreferences.Editor)localObject2).putInt("font_precreate_index", 0);
+        QLog.e("VideoEncoder", 1, "startRecording start encoder fail.", parambafx);
+        if (this.jdField_a_of_type_Aoar != null) {
+          this.jdField_a_of_type_Aoar.a(1);
         }
       }
-      localObject1 = "0";
-      if (localaoan.a()) {
-        localObject1 = "1";
-      }
-    } while ((localaoan.e.get()) || (Thread.currentThread().isInterrupted()));
-    String str = str.substring(paramInt, paramInt + 1);
-    if (new File(aoan.a("", str, 4, 0, 0)).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(aoan.b(), 2, "preCreatePersonalFontImg exists : " + str + " address = " + aoan.a("", str, 4, 0, 0));
-      }
-      localaoan.b().edit().putInt("font_precreate_index", paramInt + 1).commit();
-      localObject1 = localaoan.a.obtainMessage();
-      ((Message)localObject1).what = (paramInt + 1);
-      localaoan.a.sendMessageDelayed((Message)localObject1, 500L);
-      return;
     }
-    long l1 = System.currentTimeMillis();
-    Bitmap localBitmap = localaoan.a(str, true);
-    long l2;
-    if (localBitmap != null)
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      this.jdField_a_of_type_Int = 0;
-      l2 = System.currentTimeMillis();
-      localaoan.b().edit().putInt("font_precreate_index", paramInt + 1).commit();
-      if (paramInt % 100 == 0) {
-        bdll.b((QQAppInterface)localObject2, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "1", String.valueOf(l2 - l1), str);
-      }
-      if (!localBitmap.isRecycled()) {
-        localBitmap.recycle();
-      }
+      QLog.d("VideoEncoder", 2, String.format("audioFrameAvailable timestampNanos=%s", new Object[] { Long.valueOf(paramLong) }));
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, new Object[] { paramArrayOfByte, Long.valueOf(paramLong) }).sendToTarget();
     }
-    do
-    {
-      localObject1 = localaoan.a.obtainMessage();
-      ((Message)localObject1).what = (paramInt + 1);
-      localaoan.a.sendMessageDelayed((Message)localObject1, 5000L);
-      return;
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(aoan.b(), 2, "preCreatePersonalFontImg " + str + "fail");
-      }
-      if (paramInt % 100 == 0) {
-        bdll.b((QQAppInterface)localObject2, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "0", String.valueOf(l2 - l1), str);
-      }
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int < this.jdField_a_of_type_Bhyb.b);
-    QLog.e(aoan.b(), 1, "preCreatePersonalFontImg fail count = " + this.jdField_a_of_type_Int + " max failcount = " + this.jdField_a_of_type_Bhyb.b);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    a(paramMessage.what);
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 2: 
+      b();
+      return true;
+    case 3: 
+      paramMessage = (Object[])paramMessage.obj;
+      b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
+      return true;
+    }
+    b(((Long)paramMessage.obj).longValue());
     return true;
   }
 }

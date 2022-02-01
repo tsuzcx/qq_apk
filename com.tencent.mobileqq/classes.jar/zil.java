@@ -1,58 +1,17 @@
-import android.graphics.Bitmap;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class zil
+  implements zas<Object>
 {
-  private static boolean[] a;
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public zil(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack) {}
   
-  static
+  public void a(Object... paramVarArgs)
   {
-    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
-  }
-  
-  public zil(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static void a(int[] paramArrayOfInt)
-  {
-    int i = 0;
-    while (i < 5) {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
-      {
-        jdField_a_of_type_ArrayOfBoolean[i] = false;
-        i += 1;
-      }
-      else
-      {
-        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
-        int k = arrayOfBoolean[i];
-        if (paramArrayOfInt[i] > 0) {}
-        for (int j = 1;; j = 0)
-        {
-          arrayOfBoolean[i] = (j | k);
-          break;
-        }
-      }
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(null, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > 4)) {
-      return true;
-    }
-    return jdField_a_of_type_ArrayOfBoolean[paramInt];
   }
 }
 

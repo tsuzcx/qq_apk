@@ -1,16 +1,25 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ztw
-  implements View.OnTouchListener
+public class ztw
+  implements View.OnClickListener
 {
-  ztw(ztv paramztv) {}
+  public ztw(TroopGiftPanel paramTroopGiftPanel, ztg paramztg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ztv.a(this.a);
-    return true;
+    if (this.jdField_a_of_type_Ztg.jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Ztg.c);
+    }
+    for (;;)
+    {
+      bcef.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Ztg.jdField_a_of_type_JavaLangString);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Ztg.c);
+    }
   }
 }
 

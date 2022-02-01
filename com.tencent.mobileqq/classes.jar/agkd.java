@@ -1,8 +1,9 @@
 class agkd
 {
-  public int a;
-  public String a;
-  public String b = "";
+  int jdField_a_of_type_Int = -1;
+  agkf[] jdField_a_of_type_ArrayOfAgkf;
+  
+  agkd(agkc paramagkc) {}
 }
 
 

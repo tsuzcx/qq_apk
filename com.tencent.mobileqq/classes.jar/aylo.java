@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
 
-class aylo
-  implements DialogInterface.OnClickListener
+public final class aylo
+  implements Parcelable.Creator<PersonalityLabelPhoto>
 {
-  aylo(aykx paramaykx) {}
+  public PersonalityLabelPhoto a(Parcel paramParcel)
+  {
+    return new PersonalityLabelPhoto(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public PersonalityLabelPhoto[] a(int paramInt)
+  {
+    return new PersonalityLabelPhoto[paramInt];
+  }
 }
 
 

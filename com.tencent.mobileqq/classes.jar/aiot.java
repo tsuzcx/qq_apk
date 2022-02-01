@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
-
-class aiot
-  implements oft
+public class aiot
 {
-  aiot(ainh paramainh, CharSequence paramCharSequence, int paramInt) {}
+  public int c;
+  public int d;
+  public String f;
   
-  public void a(List<ChatMessage> paramList)
+  public aiot() {}
+  
+  public aiot(int paramInt1, int paramInt2, String paramString)
   {
-    ainh.b(this.jdField_a_of_type_Ainh, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.f = paramString;
   }
 }
 

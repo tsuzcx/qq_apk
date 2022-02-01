@@ -1,43 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arkb
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
+  public arkb(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public static arkb a(String paramString)
+  public void onClick(View paramView)
   {
-    if (paramString == null) {}
-    do
+    if (this.a.a != null)
     {
-      return null;
-      try
-      {
-        arkb localarkb = new arkb();
-        paramString = new JSONObject(paramString);
-        localarkb.a = paramString.optInt("switch", 0);
-        localarkb.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localarkb.a);
-        return localarkb;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+      this.a.a.a();
+      aroq.a().b(3);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkb
  * JD-Core Version:    0.7.0.1
  */

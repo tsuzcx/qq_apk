@@ -1,131 +1,84 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-public final class szz
+public class szz
+  extends szv
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  public TabLayoutCompat a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private Object jdField_a_of_type_JavaLangObject;
-  public taa a;
-  private CharSequence b;
+  public szz(Context paramContext)
+  {
+    super(paramContext);
+  }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298826);
   }
   
-  @Nullable
-  public Drawable a()
+  public View a(ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  @Nullable
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  @NonNull
-  public szz a(int paramInt)
-  {
-    return a(LayoutInflater.from(this.jdField_a_of_type_Taa.getContext()).inflate(paramInt, this.jdField_a_of_type_Taa, false));
-  }
-  
-  @NonNull
-  public szz a(@Nullable View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    c();
-    return this;
-  }
-  
-  @NonNull
-  public szz a(@Nullable CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    c();
-    return this;
-  }
-  
-  @NonNull
-  public szz a(@Nullable Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    return this;
+    if (this.jdField_a_of_type_Zvb == null) {
+      this.jdField_a_of_type_Zvb = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559654, paramViewGroup, false));
+    }
+    return (View)this.jdField_a_of_type_Zvb;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    if (this.jdField_a_of_type_Zvb == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e(this);
+    this.jdField_a_of_type_Zvb.a(0L);
+    this.jdField_a_of_type_Zvb.ag_();
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    super.a(paramInt, paramBoolean);
+    if (this.jdField_a_of_type_Zvb == null) {
+      return;
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Zvb.b(0L);
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Taa != null) {
-      this.jdField_a_of_type_Taa.b();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Zvb.ag_();
+      return;
     }
+    this.jdField_a_of_type_Zvb.c(0L);
   }
   
-  public void d()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
-    this.jdField_a_of_type_Taa = null;
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_JavaLangCharSequence = null;
-    this.b = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = null;
+    if (this.jdField_a_of_type_Zvb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Zvb.a(0L);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Zvb == null) {
+      return;
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      this.jdField_a_of_type_Zvb.a(0, paramString);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Zvb.a(0);
+      return;
+    }
+    this.jdField_a_of_type_Zvb.a(2);
   }
 }
 

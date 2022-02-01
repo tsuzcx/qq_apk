@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import agej;
 import android.content.Context;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.ViewCompat;
@@ -9,13 +8,14 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScrollLinearLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int = agej.a(80.0F, getResources());
+  private int jdField_a_of_type_Int = AIOUtils.dp2px(80.0F, getResources());
   private View jdField_a_of_type_AndroidViewView;
   private OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
   private View b;
@@ -49,7 +49,7 @@ public class ScrollLinearLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.b = findViewById(2131366584);
+    this.b = findViewById(2131366611);
     this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(getContext());
   }
   

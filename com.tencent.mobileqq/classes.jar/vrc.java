@@ -1,68 +1,42 @@
-import com.tencent.TMG.utils.QLog;
-import java.lang.ref.SoftReference;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class vrc
+public final class vrc
+  extends MSFServlet
 {
-  public static final String a;
-  private static volatile vrc jdField_a_of_type_Vrc;
-  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  static
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    jdField_a_of_type_JavaLangString = vrc.class.getSimpleName();
-  }
-  
-  public static vrc a()
-  {
-    if (jdField_a_of_type_Vrc == null) {}
-    try
+    if (paramIntent == null) {
+      return;
+    }
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
     {
-      if (jdField_a_of_type_Vrc == null) {
-        jdField_a_of_type_Vrc = new vrc();
-      }
-      return jdField_a_of_type_Vrc;
+      paramIntent = bgau.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    for (;;)
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
     }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (a(paramString))
-    {
-      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "mTagFollowMap getValue tagId null");
-        return false;
-      }
-      return paramString.booleanValue();
-    }
-    return false;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bgau.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 

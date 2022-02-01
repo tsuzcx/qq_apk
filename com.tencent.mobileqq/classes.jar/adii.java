@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class adii
-  extends adic
+  extends amwl
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public adii(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  protected void onUpdateTroopList()
   {
-    new bcrt().d(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (15 == paramElem.common_elem.uint32_service_type.get());
+    this.a.a();
   }
 }
 

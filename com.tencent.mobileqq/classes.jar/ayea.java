@@ -1,30 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-
-final class ayea
-  implements bjig
+public class ayea
 {
-  ayea(String paramString, ayeg paramayeg) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Ayeg != null) {
-        this.jdField_a_of_type_Ayeg.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Ayeg == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ayeg.a(false);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
 }
 
 

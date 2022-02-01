@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.TroopManager;
-
-public final class aojg
-  implements DialogInterface.OnClickListener
+public abstract interface aojg
 {
-  public aojg(TroopManager paramTroopManager, String paramString) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, aojh paramaojh);
+  
+  public abstract void b();
 }
 
 

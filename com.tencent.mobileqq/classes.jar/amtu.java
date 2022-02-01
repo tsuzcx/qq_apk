@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.data.ApolloActionPush;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface amtu
+final class amtu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
+  amtu(QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    bcef.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
+  }
 }
 
 

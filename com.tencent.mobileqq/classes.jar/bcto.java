@@ -1,49 +1,68 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x7c.submsgtype0x7c.MsgBody;
+import java.net.InetAddress;
+import java.net.Socket;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 public class bcto
-  implements bctr
+  extends SSLSocketFactory
 {
-  public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  private final SSLSocketFactory a;
+  
+  public bcto()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SecSpyFileDecoder", 4, "OnLinePushMessageProcessor receive 0x7c push message, seq = " + paramInt1 + "submsgtype:" + paramInt2);
-    }
-    submsgtype0x7c.MsgBody localMsgBody = new submsgtype0x7c.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      long l = localMsgBody.uint64_uin.get();
-      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(l))) {
-        ((bcpr)paramQQAppInterface.getManager(94)).a(localMsgBody, 3);
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SecSpyFileDecoder", 2, "parse 0x7c push msg error", paramQQAppInterface);
-    }
+    this.a = HttpsURLConnection.getDefaultSSLSocketFactory();
   }
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  public bcto(SSLSocketFactory paramSSLSocketFactory)
   {
-    int i = paramMsg.msg_head.msg_seq.get();
-    int j = paramMsg.msg_head.msg_type.get();
-    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    a(i, j, paramMessageHandler.app, paramMsgType0x210);
+    this.a = paramSSLSocketFactory;
+  }
+  
+  private Socket a(Socket paramSocket)
+  {
+    if ((paramSocket instanceof SSLSocket))
+    {
+      paramSocket = new bctr(this, (SSLSocket)paramSocket, null);
+      ((bctr)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
+      return paramSocket;
+    }
+    return paramSocket;
+  }
+  
+  public Socket createSocket(String paramString, int paramInt)
+  {
+    return a(this.a.createSocket(paramString, paramInt));
+  }
+  
+  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
+  {
+    return a(this.a.createSocket(paramString, paramInt1, paramInetAddress, paramInt2));
+  }
+  
+  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
+  {
+    return a(this.a.createSocket(paramInetAddress, paramInt));
+  }
+  
+  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
+  {
+    return a(this.a.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2));
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return a(this.a.createSocket(paramSocket, paramString, paramInt, paramBoolean));
+  }
+  
+  public String[] getDefaultCipherSuites()
+  {
+    return this.a.getDefaultCipherSuites();
+  }
+  
+  public String[] getSupportedCipherSuites()
+  {
+    return this.a.getSupportedCipherSuites();
   }
 }
 

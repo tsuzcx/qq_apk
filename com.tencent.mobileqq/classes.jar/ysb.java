@@ -1,16 +1,27 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface ysb
+public class ysb
+  extends SimpleJob
 {
-  public abstract void a(String paramString, CommentEntry paramCommentEntry);
+  public ysb(SegmentList paramSegmentList, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
+    }
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
+  }
 }
 
 

@@ -1,83 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.HeightAdaptableListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class advh
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public advh(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public advh(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    int j = 1;
-    int k = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildCount();
-    int i = 0;
-    Object localObject;
-    if (i < k)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildAt(i);
-      if ((localObject instanceof FormSwitchItem))
-      {
-        localObject = (FormSwitchItem)localObject;
-        if (paramCompoundButton != ((FormSwitchItem)localObject).a()) {}
-      }
-    }
-    for (;;)
-    {
-      if ((localObject == null) || (!(((FormSwitchItem)localObject).getTag() instanceof ajwh))) {}
-      ajwh localajwh;
-      boolean bool;
-      label109:
-      do
-      {
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-        i += 1;
-        break;
-        localajwh = (ajwh)((FormSwitchItem)localObject).getTag();
-        if (paramBoolean) {
-          break label267;
-        }
-        bool = true;
-        localajwh.e = bool;
-        if (this.a.jdField_a_of_type_Ajwm != null) {
-          this.a.jdField_a_of_type_Ajwm.a(localajwh, localajwh.e);
-        }
-        localObject = this.a.app;
-        k = localajwh.a;
-        i = j;
-        if (localajwh.e) {
-          i = 2;
-        }
-        bdll.b((QQAppInterface)localObject, "dc00898", "", "", "0X80097A0", "0X80097A0", k, 0, String.valueOf(i), "", "", "");
-      } while (localajwh.a != 3);
-      QQAppInterface localQQAppInterface = this.a.app;
-      if (paramBoolean)
-      {
-        localObject = "0X8009C0A";
-        label227:
-        if (!paramBoolean) {
-          break label280;
-        }
-      }
-      label267:
-      label280:
-      for (String str = "0X8009C0A";; str = "0X8009C0B")
-      {
-        bdll.b(localQQAppInterface, "dc00898", "", "", (String)localObject, str, localajwh.a, 0, "", "", "", "");
-        break;
-        bool = false;
-        break label109;
-        localObject = "0X8009C0B";
-        break label227;
-      }
-      localObject = null;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

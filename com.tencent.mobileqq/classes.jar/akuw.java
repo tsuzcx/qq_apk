@@ -1,18 +1,6 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-
-public class akuw
-  extends aktf
+public abstract interface akuw
 {
-  protected akuw(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
-  
-  public void initData(Intent paramIntent)
-  {
-    super.initData(paramIntent);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

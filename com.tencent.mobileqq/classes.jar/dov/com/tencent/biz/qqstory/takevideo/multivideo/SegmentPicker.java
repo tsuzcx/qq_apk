@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bqte;
-import bqtf;
+import bnom;
+import bnon;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SegmentPicker
   extends RelativeLayout
-  implements bqtf
+  implements bnon
 {
   private SegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView;
-  private WeakReference<bqte> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bnom> jdField_a_of_type_JavaLangRefWeakReference;
   
   public SegmentPicker(Context paramContext)
   {
@@ -35,70 +35,36 @@ public class SegmentPicker
     addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView, paramContext);
   }
   
-  public List<Pair<Long, Long>> a()
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
-      return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView = null;
-    }
-  }
-  
   public void a(long paramLong)
   {
-    bqte localbqte = null;
+    bnom localbnom = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbqte = (bqte)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbnom = (bnom)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbqte != null) {
-      localbqte.a(paramLong);
+    if (localbnom != null) {
+      localbnom.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bqte localbqte = null;
+    bnom localbnom = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbqte = (bqte)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbnom = (bnom)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbqte != null) {
-      localbqte.a(paramList);
+    if (localbnom != null) {
+      localbnom.a(paramList);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a(paramBoolean);
-    }
-  }
-  
-  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bqte parambqte, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambqte);
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean1, this, paramBoolean2);
-    }
-    return true;
   }
   
   public void b(long paramLong)
   {
-    bqte localbqte = null;
+    bnom localbnom = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbqte = (bqte)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbnom = (bnom)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbqte != null) {
-      localbqte.b(paramLong);
+    if (localbnom != null) {
+      localbnom.b(paramLong);
     }
   }
   

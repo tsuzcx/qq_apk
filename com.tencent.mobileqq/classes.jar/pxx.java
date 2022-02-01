@@ -1,11 +1,32 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 class pxx
-  implements plu
+  implements zop
 {
-  pxx(pxl parampxl) {}
+  pxx(pxw parampxw, String paramString) {}
   
-  public boolean a()
+  public void callback(Bundle paramBundle)
   {
-    return false;
+    paramBundle = paramBundle.getString("ALD_CONFIG_RESULT", "");
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("value", paramBundle);
+      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadInJoyWebviewPlugin", 2, "Error in value:" + paramBundle);
+        }
+      }
+    }
   }
 }
 

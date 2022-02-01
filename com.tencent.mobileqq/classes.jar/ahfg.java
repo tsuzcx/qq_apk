@@ -1,18 +1,17 @@
-import android.view.View;
-
 class ahfg
-  implements aunx
+  implements bcan
 {
-  ahfg(ahed paramahed) {}
+  ahfg(ahff paramahff) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = bhlq.a(this.a.a, 230);
-    paramView.setTitle(2131691364);
-    paramView.setMessage(2131691365);
-    paramView.setNegativeButton(2131690580, new ahfh(this, paramView));
-    paramView.setPositiveButton(2131694098, new ahfi(this));
-    paramView.show();
+    ahff.a(this.a);
+    this.a.finish();
+  }
+  
+  public void b()
+  {
+    this.a.finish();
   }
 }
 

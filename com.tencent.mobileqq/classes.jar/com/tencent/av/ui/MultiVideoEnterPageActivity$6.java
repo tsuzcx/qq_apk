@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
-import bhnv;
 import com.tencent.av.VideoController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 class MultiVideoEnterPageActivity$6
   implements Runnable
@@ -10,10 +10,10 @@ class MultiVideoEnterPageActivity$6
   
   public void run()
   {
-    if ((bhnv.a(this.this$0) == 0) && (!this.this$0.jdField_a_of_type_Boolean))
+    if ((NetworkUtil.getSystemNetwork(this.this$0) == 0) && (!this.this$0.jdField_a_of_type_Boolean))
     {
       this.this$0.finish();
-      MultiVideoEnterPageActivity.a(this.this$0, 0, 2130772140);
+      MultiVideoEnterPageActivity.a(this.this$0, 0, 2130772148);
       if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
         this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.this$0.c, this.this$0.jdField_a_of_type_Long, 22, 0);
       }

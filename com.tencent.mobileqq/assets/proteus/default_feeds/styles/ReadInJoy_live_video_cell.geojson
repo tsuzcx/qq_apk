@@ -23,7 +23,8 @@
             "setRemoteInfo:": "$jump_report_info"
         },
         "subviews": [
-            {   
+            {
+
                 "$includeComponet": "componet/RIJ_feeds_social_header.geojson"
             },
             {
@@ -65,6 +66,7 @@
                 "align_parent_center_horizontal": "YES",
                 "event_type": "cmd_url_click_card_report",
                 "attributes": {
+                    "setCornerRadiusString:":"6",
                     "setAttatchInfo:": "$video_jump_url"
                 },
                 "data_attributes": {
@@ -86,6 +88,7 @@
                         },
                         "default_visible": "YES",
                         "attributes": {
+                            "setCornerRadiusString:":"6",
                             "setBackgroundColorString:": "#e5e5e5"
                         }
                     },
@@ -99,6 +102,7 @@
                             "type": "match_parent"
                         },
                         "attributes": {
+                            "setCornerRadiusString:":"6",
                             "setImageWithURLString:lineup:": [
                                 "$article_large_imge_url",
                                 "1"
@@ -116,6 +120,7 @@
                         },
                         "default_visible": "YES",
                         "attributes": {
+                            "setCornerRadiusString:":"6",
                             "setGradientWithStartAlpha:endAlpha:color:direction:": [
                                 "0.3",
                                 "0.3",
@@ -215,6 +220,74 @@
                                 "$includeComponet": "componet/live_info_video_common_cell.geojson"
                             }
                         ]
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_left_mask",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_left_mask",
+                        "default_visible": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_bottom_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_right_mask",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_right_mask",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_bottom_round_corner"
+                        }
                     }
                 ]
             },
@@ -225,5 +298,6 @@
                 "$includeComponet": "componet/separator.geojson"
             }
         ]
-    }
+    },
+    "min_version" :"8.4.1"
 }

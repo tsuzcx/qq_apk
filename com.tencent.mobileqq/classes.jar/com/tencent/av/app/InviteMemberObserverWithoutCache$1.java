@@ -1,15 +1,15 @@
 package com.tencent.av.app;
 
-import leu;
+import leo;
 
 public class InviteMemberObserverWithoutCache$1
   implements Runnable
 {
-  public InviteMemberObserverWithoutCache$1(leu paramleu, Object paramObject) {}
+  public InviteMemberObserverWithoutCache$1(leo paramleo, Object paramObject) {}
   
   public void run()
   {
-    leu.a(this.this$0, this.a);
+    leo.a(this.this$0, this.a);
   }
 }
 

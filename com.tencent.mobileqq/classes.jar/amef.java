@@ -1,52 +1,96 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class amef
-  implements Comparator<ResultRecord>
+class amef
+  implements alqv
 {
-  public int a(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
+  private WeakReference<amec> a;
+  
+  public amef(amec paramamec)
   {
-    int j = -1;
-    long l1;
-    long l2;
-    label17:
-    int i;
-    if (paramResultRecord1 == null)
-    {
-      l1 = 0L;
-      if (paramResultRecord2 != null) {
-        break label38;
-      }
-      l2 = 0L;
-      if (l1 != l2) {
-        break label47;
-      }
-      i = 0;
+    this.a = new WeakReference(paramamec);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onCompleteRender, roleName=", paramString });
     }
-    label38:
-    label47:
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      if (this.a != null)
+      {
+        amec localamec = (amec)this.a.get();
+        ApolloWebAvatarParam localApolloWebAvatarParam;
+        if (localamec != null)
+        {
+          localApolloWebAvatarParam = amec.a(localamec);
+          if ((localApolloWebAvatarParam != null) && (paramString.equals(localApolloWebAvatarParam.apolloId)) && (localamec.b != null))
+          {
+            amec.b(localamec);
+            amec.a(localamec).removeMessages(24);
+            localamec.b.stopLoopDelayed(1000L);
+            if (!TextUtils.isEmpty(amec.a(localamec)))
+            {
+              if (!amec.a(localamec)) {
+                break label173;
+              }
+              if ((amec.a(localamec) == 1) && (localamec.a != null)) {
+                localamec.a.b();
+              }
+            }
+          }
+        }
+        while ((localamec != null) && (localamec.b != null))
+        {
+          return;
+          label173:
+          if (amec.a(localamec) == 1)
+          {
+            if (localamec.a != null) {
+              localamec.a.a(true);
+            }
+          }
+          else {
+            localamec.b.getRenderImpl().a(1, localApolloWebAvatarParam.apolloId, "Bubble");
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onStartRender, roleName=", paramString });
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    amec localamec;
+    ApolloWebAvatarParam localApolloWebAvatarParam;
     do
     {
       do
       {
-        return i;
-        l1 = paramResultRecord1.a;
-        break;
-        l2 = paramResultRecord2.a;
-        break label17;
-        i = j;
-      } while (l1 == 0L);
-      if (l2 == 0L) {
-        return 1;
-      }
-      i = j;
-    } while (l1 < l2);
-    return 1;
+        do
+        {
+          return;
+        } while (this.a == null);
+        localamec = (amec)this.a.get();
+      } while (localamec == null);
+      localApolloWebAvatarParam = amec.a(localamec);
+    } while ((localApolloWebAvatarParam == null) || (!paramString.equals(localApolloWebAvatarParam.apolloId)));
+    amec.a(localamec);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amef
  * JD-Core Version:    0.7.0.1
  */

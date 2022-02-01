@@ -10,9 +10,9 @@
       "value": "375"
     },
     "subviews": [
-                 {
-                 "$includeComponet": "componet/label.geojson"
-                 },
+        {
+            "$includeComponet": "componet/label.geojson"
+        },
       {
         "$includeComponet": "componet/social_header.geojson"
       },
@@ -29,7 +29,7 @@
         "view_type": "ReadInJoyBiuCommentView",
         "view_id": "id_biu_comment",
         "margin_left": "12",
-        "margin_bottom": "10",
+        "margin_bottom": "8",
         "height": {
           "type": "wrap_content"
         },
@@ -38,7 +38,6 @@
           "value": "351"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setArticleModel:": "-1",
           "setPreAccountUin:": "$feeds_pre_account_uin"
         }
@@ -75,7 +74,6 @@
               "value": "375"
             },
             "attributes": {
-              "setFrameString:": "-1",
               "setArticleModel:": "-1",
               "setBackgroundColorString:": "#08000000"
             }
@@ -89,6 +87,8 @@
             "padding_left": "12",
             "padding_right": "12",
             "margin_bottom": "10",
+            "padding_left":"12",
+            "padding_right":"12",
             "height": {
               "type": "wrap_content"
             },
@@ -97,11 +97,9 @@
               "value": "375"
             },
             "attributes": {
-              "setArticleModel:": "-1"
+              "setArticleModel:": "-1",
+              "setCornerUrls:": ["http://pub.idqqimg.com/pc/misc/files/20190731/a028a8dc813242798fea97e6d5e97bd7.png", "http://pub.idqqimg.com/pc/misc/files/20190731/2d50072506b64296a134f2e67e7b3908.png", "http://pub.idqqimg.com/pc/misc/files/20190731/8faadc88c8bd42d19777de82572656df.png", "http://pub.idqqimg.com/pc/misc/files/20190731/900ec8daa82e480382ccc52bd3f0ee0e.png"]
             }
-          },
-          {
-              "$includeComponet": "componet/ad_biu_small_image_pgc.geojson"
           },
           {
             "$includeComponet": "componet/capsule.geojson"
@@ -153,7 +151,21 @@
         "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
       },
       {
-        "$includeComponet": "componet/separator.geojson"
+          "view_type": "container",
+          "default_visible": "YES",
+          "margin_top": "-10",
+          "height": {
+              "type": "wrap_content"
+          },
+          "width": {
+              "type": "relative",
+              "value": "375"
+          },
+          "subviews": [
+              {
+                  "$includeComponet": "componet/separator_normal_bottom.geojson"
+              }
+          ]
       }
     ]
   }

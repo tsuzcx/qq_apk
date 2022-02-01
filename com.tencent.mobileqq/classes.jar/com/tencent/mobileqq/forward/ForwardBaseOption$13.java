@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.forward;
 
 import android.os.Bundle;
-import auxu;
-import bhpc;
+import atky;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ForwardBaseOption$13
   implements Runnable
 {
-  public ForwardBaseOption$13(auxu paramauxu, String paramString, bhpc parambhpc) {}
+  public ForwardBaseOption$13(atky paramatky, String paramString, QQCustomDialog paramQQCustomDialog) {}
   
   public void run()
   {
     Object localObject1;
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
-      localObject2 = auxu.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      localObject2 = atky.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       localObject1 = localObject2;
       if (localObject2 != null) {
         break label83;
       }
-      this.this$0.a(this.jdField_a_of_type_Bhpc);
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
       if (QLog.isColorLevel()) {
         QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView getNormalDrawable null");
       }
@@ -29,7 +29,7 @@ public class ForwardBaseOption$13
     do
     {
       return;
-      localObject2 = auxu.a(this.this$0);
+      localObject2 = atky.a(this.this$0);
       localObject1 = localObject2;
       if (localObject2 != null) {
         break;
@@ -40,11 +40,11 @@ public class ForwardBaseOption$13
     label83:
     this.this$0.a(localObject1, this.this$0.jdField_a_of_type_Boolean);
     Object localObject2 = (ArrayList)this.this$0.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
-    auxu localauxu = this.this$0;
+    atky localatky = this.this$0;
     if (localObject2 != null) {}
     for (int i = ((ArrayList)localObject2).size();; i = 0)
     {
-      localauxu.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
+      localatky.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
       return;
     }
   }

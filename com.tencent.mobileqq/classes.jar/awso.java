@@ -1,32 +1,15 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class awso
-  implements View.OnClickListener
+public class awso
+  implements DialogInterface.OnClickListener
 {
-  awso(awsk paramawsk, Activity paramActivity) {}
+  public awso(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Awsk.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
-      }
-      awsk.a(this.jdField_a_of_type_Awsk).setClickable(false);
-      awsk.a(this.jdField_a_of_type_Awsk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840550));
-      awsk.a(this.jdField_a_of_type_Awsk).a(true);
-      bdll.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,21 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public class aqsl
-  implements aqsi
+class aqsl
+  implements DialogInterface.OnCancelListener
 {
-  public void launch(Context paramContext, ColorNote paramColorNote)
+  aqsl(aqsk paramaqsk) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    String str = paramColorNote.getSubType();
-    Object localObject = str.split("-");
-    if (localObject.length > 0) {
-      str = localObject[0];
+    if (aqsk.a(this.a).equals("checked corrupt"))
+    {
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
+      QLog.d(aqsk.a(), 1, "dialog cancel");
     }
-    if (localObject.length > 1) {
-      localObject = localObject[1];
-    }
-    paramColorNote = paramColorNote.getReserve();
-    bmkq.a(paramContext, "", Long.parseLong(str), paramColorNote);
+    this.a.a();
   }
 }
 

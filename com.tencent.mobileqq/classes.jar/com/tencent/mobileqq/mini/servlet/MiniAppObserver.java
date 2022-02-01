@@ -25,6 +25,7 @@ public class MiniAppObserver
   public static final int MINI_APP_DEL_ITEM = 1006;
   public static final int MINI_APP_DEL_PHONE_NUMBER = 1074;
   public static final int MINI_APP_DO_LIKE = 1009;
+  public static final int MINI_APP_GENERAL_CODE = 9000;
   public static final int MINI_APP_GET_APPINFO_BY_ID = 1024;
   public static final int MINI_APP_GET_APPINFO_BY_ID_FOR_SDK = 1055;
   public static final int MINI_APP_GET_APPINFO_BY_LINK = 1003;
@@ -88,6 +89,9 @@ public class MiniAppObserver
   
   public static String getCmdByObserverId(int paramInt)
   {
+    if (9000 == paramInt) {
+      return "MINI_APP_GENERAL_CODE";
+    }
     if (1000 == paramInt) {
       return "MINI_APP_GET_LOGIN_CODE";
     }
@@ -313,7 +317,13 @@ public class MiniAppObserver
     {
       return;
       i = paramBundle.getInt("key_index", -1);
-      String str = paramBundle.getString("key_appid");
+      Object localObject = paramBundle.getString("key_appid");
+      if (paramInt == 9000)
+      {
+        localObject = paramBundle.getByteArray("key_response_data");
+        onGetGeneralCmdFin(i, paramBundle.getLong("retCode"), (byte[])localObject, paramBundle.getString("errMsg"));
+        return;
+      }
       if (paramInt == 1000)
       {
         onGetLoginCodeFin(i, paramBoolean, paramBundle.getString("code"));
@@ -321,7 +331,7 @@ public class MiniAppObserver
       }
       if (paramInt == 1001)
       {
-        onGetProfileFin(i, str, paramBoolean, paramBundle.getString("nick"), paramBundle.getString("avatar"), paramBundle.getInt("gender"), paramBundle.getString("country"), paramBundle.getString("province"), paramBundle.getString("city"), paramBundle.getString("language"), paramBundle.getString("rawData", ""), paramBundle.getString("signature", ""), paramBundle.getString("encryptedData", ""), paramBundle.getString("iv", ""));
+        onGetProfileFin(i, (String)localObject, paramBoolean, paramBundle.getString("nick"), paramBundle.getString("avatar"), paramBundle.getInt("gender"), paramBundle.getString("country"), paramBundle.getString("province"), paramBundle.getString("city"), paramBundle.getString("language"), paramBundle.getString("rawData", ""), paramBundle.getString("signature", ""), paramBundle.getString("encryptedData", ""), paramBundle.getString("iv", ""));
         return;
       }
       if (paramInt == 1002)
@@ -744,6 +754,8 @@ public class MiniAppObserver
   protected void onGetFormId(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetFriendCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onGetGeneralCmdFin(int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString) {}
   
   protected void onGetGroupCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   

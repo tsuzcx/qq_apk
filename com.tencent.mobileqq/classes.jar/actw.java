@@ -1,33 +1,81 @@
-import android.support.v4.app.FragmentActivity;
+import QQService.DeviceItemDes;
+import QQService.SvcDevLoginInfo;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class actw
-  implements View.OnClickListener
+public class actw
+  implements bjoe
 {
-  actw(actv paramactv) {}
+  public actw(AuthDevActivity paramAuthDevActivity, String paramString1, long paramLong, String paramString2, int paramInt, boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool;
-    if (this.a.a() != null)
+    switch (paramInt)
     {
-      bool = this.a.a().load(this.a.getActivity());
-      if (!bool) {
-        break label66;
-      }
     }
-    label66:
-    for (String str = "loading ad data";; str = "load ad data error")
+    for (;;)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
+      {
+        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
+        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
+        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
+      }
       return;
-      bool = false;
-      break;
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, AuthDevRenameActivity.class);
+      paramView.putExtra(AuthDevRenameActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra(AuthDevRenameActivity.c, this.jdField_a_of_type_Long);
+      paramView.putExtra(AuthDevRenameActivity.d, AppSetting.a());
+      paramView.putExtra(AuthDevRenameActivity.e, NetConnInfoCenter.GUID);
+      paramView.putExtra(AuthDevRenameActivity.f, this.jdField_b_of_type_JavaLangString);
+      paramView.putExtra(AuthDevRenameActivity.g, ((SvcDevLoginInfo)AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).get(this.jdField_a_of_type_Int)).strDeviceTypeInfo);
+      paramView.putExtra(AuthDevRenameActivity.h, ((SvcDevLoginInfo)AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).get(this.jdField_a_of_type_Int)).stDeviceItemDes.vecItemDes);
+      paramView.putExtra(AuthDevRenameActivity.i, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.startActivity(paramView);
+      continue;
+      if (AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity)) {
+        for (;;)
+        {
+          try
+          {
+            if (!this.jdField_a_of_type_Boolean) {
+              break label352;
+            }
+            paramView = "0X800AC56";
+            bcef.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
+            AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.c, this.jdField_a_of_type_Long);
+          }
+          catch (Throwable paramView)
+          {
+            QLog.e("Q.devlock.AuthDevActivity", 1, new Object[] { "showDelDevActionSheet error : ", paramView.getMessage() });
+          }
+          break;
+          label352:
+          paramView = "0X800AC58";
+        }
+      }
+      if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131692035), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
+      }
+      else
+      {
+        QLog.d("Q.devlock.AuthDevActivity", 1, "OnClick.begin to del recent dev");
+        if (arhf.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
+          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+        } else {
+          QLog.d("Q.devlock.AuthDevActivity", 1, "OnClick del recent dev fail");
+        }
+      }
     }
   }
 }

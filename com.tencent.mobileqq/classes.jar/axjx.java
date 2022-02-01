@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-class axjx
-  implements DialogInterface.OnClickListener
+public abstract interface axjx
 {
-  axjx(axjo paramaxjo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (bnzk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, axjo.a(this.a), axjo.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      axjo.a(this.a).a(false, null, false);
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

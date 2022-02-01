@@ -1,31 +1,8 @@
-import android.text.TextUtils;
-
-public class bcmr
+public abstract interface bcmr
 {
-  public int a;
-  public String a;
+  public abstract void a();
   
-  public bcmr(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString.equals(paramString);
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(long paramLong);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import alhe;
+import akex;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForScribble;
@@ -11,7 +11,7 @@ public class ScribbleBaseOperator$1
 {
   public void run()
   {
-    this.this$0.a.a().a(this.a, this.this$0.a.getCurrentAccountUin());
+    this.this$0.a.getMessageFacade().addMessage(this.a, this.this$0.a.getCurrentAccountUin());
     this.this$0.a(this.a, this.a.localFildPath, null);
     QLog.i("SCRIBBLEMSG", 2, "!!!addMessage uniseq:" + this.a.uniseq);
   }

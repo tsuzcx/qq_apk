@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
-import alhr;
-import alhs;
+import akfk;
+import akfl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class VACDReportMgr$6
   implements Runnable
 {
-  public VACDReportMgr$6(alhs paramalhs, List paramList) {}
+  public VACDReportMgr$6(akfl paramakfl, List paramList) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class VACDReportMgr$6
     if (QLog.isColorLevel()) {
       QLog.d("VACDReport", 2, "handleReponse, headers= " + this.a);
     }
-    synchronized (alhs.a())
+    synchronized (akfl.a())
     {
       ArrayList localArrayList = new ArrayList(8);
       Iterator localIterator = this.a.iterator();
@@ -38,14 +38,14 @@ public class VACDReportMgr$6
           if (localReportHeader.result == 0)
           {
             localArrayList.add(Long.valueOf(localReportHeader.seqno));
-            alhs.a(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
+            akfl.a(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
           }
-          alhs.b(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
+          akfl.b(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
         }
       }
     }
     if (!localList.isEmpty()) {
-      alhs.a(this.this$0).a(localList);
+      akfl.a(this.this$0).a(localList);
     }
   }
 }

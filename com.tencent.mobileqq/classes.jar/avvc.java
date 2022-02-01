@@ -1,242 +1,55 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 import java.util.Calendar;
 
 public class avvc
-  extends ProtocolDownloader.Adapter
+  implements apri
 {
-  public static final String a = antf.ba + "hotvideo/preview/";
+  private avvc(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public static Drawable a(Context paramContext, HotVideoData paramHotVideoData)
+  public int a()
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (Build.VERSION.SDK_INT < 17) {
-      localObject1 = new ColorDrawable(Color.parseColor("#7f000000"));
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return localObject1;
-                localObject1 = localObject2;
-              } while (paramHotVideoData == null);
-              localObject1 = localObject2;
-            } while (paramHotVideoData.url == null);
-            localObject1 = localObject2;
-          } while (paramHotVideoData.md5 == null);
-          localObject1 = localObject2;
-        } while (paramContext == null);
-        localObject1 = localObject2;
-      } while (!a(paramHotVideoData.md5).exists());
-      localObject1 = Utils.Crc64String(paramHotVideoData.md5);
-      localObject1 = a + (String)localObject1;
-      try
-      {
-        localObject1 = BitmapFactory.decodeFile((String)localObject1);
-        paramHotVideoData = (HotVideoData)localObject1;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          localOutOfMemoryError.printStackTrace();
-          QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, "decodeFile hotVideo thum Bitmap OOM. hotVideo name is " + paramHotVideoData.name);
-          paramHotVideoData = null;
-        }
-      }
-      localObject1 = localObject2;
-    } while (paramHotVideoData == null);
-    paramHotVideoData = avve.a(paramHotVideoData, 10.0F, paramContext);
-    return new BitmapDrawable(paramContext.getResources(), paramHotVideoData);
+    return 3;
   }
   
-  public static File a(String paramString)
+  public int a(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      paramString = Utils.Crc64String(paramString);
-      paramString = new File(a + paramString);
-      return paramString;
+    default: 
+      return 0;
+    case 0: 
+      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
+    case 1: 
+      return 12;
     }
-    catch (Exception paramString)
+    Calendar localCalendar = Calendar.getInstance();
+    if (MsgBackupDateFragment.b(this.a) == 1)
     {
-      paramString.printStackTrace();
+      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
+      localCalendar.set(5, 1);
     }
-    return null;
-  }
-  
-  public static String a(HotVideoData paramHotVideoData)
-  {
-    if (paramHotVideoData == null) {
-      return null;
-    }
-    return a + paramHotVideoData.md5 + ".jpg";
-  }
-  
-  public static URL a(HotVideoData paramHotVideoData)
-  {
-    paramHotVideoData = a(paramHotVideoData);
-    try
+    for (;;)
     {
-      paramHotVideoData = new URL("hot_video_preview", "", paramHotVideoData);
-      return paramHotVideoData;
-    }
-    catch (MalformedURLException paramHotVideoData)
-    {
-      paramHotVideoData.printStackTrace();
-    }
-    return null;
-  }
-  
-  private void a(File paramFile, HotVideoData paramHotVideoData, URLDrawableHandler paramURLDrawableHandler)
-  {
-    File localFile = paramFile;
-    if (paramFile == null) {
-      localFile = a(paramHotVideoData.md5);
-    }
-    paramFile = new File(a);
-    if (!paramFile.exists()) {
-      paramFile.mkdir();
-    }
-    SystemClock.uptimeMillis();
-    paramFile = new bihu(paramHotVideoData.url.replaceFirst("https", "http"), localFile);
-    paramFile.n = true;
-    paramFile.b = 2;
-    int i = bihw.a(paramFile, null, null);
-    if (i == 0)
-    {
-      paramFile = azul.a(localFile.getAbsolutePath());
-      if (!paramHotVideoData.md5.equalsIgnoreCase(paramFile))
-      {
-        localFile.delete();
-        a("onFileDownloadFailed .md5.equalsIgnoreCase is false videoData.md5 is :" + paramHotVideoData.md5 + " fileMD5 is " + paramFile, paramHotVideoData);
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadFailed(paramHotVideoData.picIndex);
-        }
-        paramHotVideoData.onFileDownloadFailed(paramHotVideoData.picIndex);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, "onFileDownloadSucceed download:" + paramHotVideoData.picIndex + localFile.getAbsolutePath());
-      }
-      if (paramURLDrawableHandler != null) {
-        paramURLDrawableHandler.onFileDownloadSucceed(paramHotVideoData.picIndex);
-      }
-      paramHotVideoData.onFileDownloadSucceed(paramHotVideoData.picIndex);
-      a("DownloadFile: onFileDownloadSucceed End", paramHotVideoData);
-      return;
-    }
-    if (paramURLDrawableHandler != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, "onFileDownloadFailed:" + paramHotVideoData.picIndex + " " + i);
-      }
-      paramURLDrawableHandler.onFileDownloadFailed(paramHotVideoData.picIndex);
-    }
-    paramHotVideoData.onFileDownloadFailed(paramHotVideoData.picIndex);
-    a("DownloadFile: onFileDownloadFailed End", paramHotVideoData);
-  }
-  
-  private static void a(String paramString, HotVideoData paramHotVideoData)
-  {
-    if (QLog.isColorLevel())
-    {
-      Object localObject = Calendar.getInstance();
-      localObject = "" + " Time is :" + ((Calendar)localObject).get(11) + ":" + ((Calendar)localObject).get(12) + ":" + ((Calendar)localObject).get(13) + ":" + ((Calendar)localObject).get(14);
-      localObject = (String)localObject + " " + paramString;
-      paramString = (String)localObject;
-      if (paramHotVideoData != null)
-      {
-        paramString = (String)localObject + " PicIndex is " + paramHotVideoData.picIndex;
-        paramString = paramString + " Name is " + paramHotVideoData.name;
-      }
-      QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, paramString);
+      return localCalendar.getActualMaximum(5);
+      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
+      localCalendar.set(5, 1);
     }
   }
   
-  public static boolean a(HotVideoData paramHotVideoData)
+  public String a(int paramInt1, int paramInt2)
   {
-    if ((paramHotVideoData == null) || (paramHotVideoData.md5 == null)) {}
-    do
+    switch (paramInt1)
     {
-      return false;
-      paramHotVideoData = a(paramHotVideoData.md5);
-    } while ((paramHotVideoData == null) || (!paramHotVideoData.exists()));
-    return true;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = (HotVideoData)paramDownloadParams.mExtraInfo;
-    paramURLDrawableHandler = azul.a(paramFile.getAbsolutePath());
-    if (paramDownloadParams.md5.equalsIgnoreCase(paramURLDrawableHandler)) {
-      try
-      {
-        paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-        return paramFile;
-      }
-      catch (OutOfMemoryError paramFile)
-      {
-        paramFile.printStackTrace();
-        QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, "Override decodeFile hotVideo thum Bitmap OOM. HotVideo name is " + paramDownloadParams.name);
-        return null;
-      }
+    default: 
+      return "";
+    case 0: 
+      return MsgBackupDateFragment.d(this.a) + paramInt2 + amtj.a(2131706044);
+    case 1: 
+      return paramInt2 + 1 + amtj.a(2131706027);
     }
-    return null;
-  }
-  
-  @TargetApi(9)
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = (HotVideoData)paramDownloadParams.mExtraInfo;
-    paramDownloadParams.onFileDownloadStarted();
-    File localFile = a(paramDownloadParams.md5);
-    if (localFile.exists())
-    {
-      paramDownloadParams.onFileDownloadSucceed(paramDownloadParams.picIndex);
-      if (paramURLDrawableHandler != null) {
-        paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
-      }
-      return localFile;
-    }
-    if ((bhjx.a()) && (bhjx.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bhjx.b());
-    }
-    if (paramDownloadParams.url.isEmpty())
-    {
-      paramDownloadParams.GetPreviewURLAsync((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0, "0", new avvd(this, paramDownloadParams, localFile, paramURLDrawableHandler));
-      return localFile;
-    }
-    a(localFile, paramDownloadParams, paramURLDrawableHandler);
-    return localFile;
+    return paramInt2 + 1 + amtj.a(2131706043);
   }
 }
 

@@ -1,14 +1,8 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public class ahyj
-  implements ahyf
+public abstract interface ahyj
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.b(paramagjk, paramahfq, paramString);
-  }
+  public abstract void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bays> paramList);
 }
 
 

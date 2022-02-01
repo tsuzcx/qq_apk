@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 class xwt
-  implements DialogInterface.OnDismissListener
+  implements yhr<Boolean, yhx>
 {
-  xwt(xwr paramxwr, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xwt(xws paramxws) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public Void a(Boolean paramBoolean, yhx paramyhx)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if (paramBoolean.booleanValue())
+    {
+      xvv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramyhx.b.size(), paramyhx.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
     }
-    xwr.a(this.jdField_a_of_type_Xwr).a = xwr.a(this.jdField_a_of_type_Xwr).a();
+    for (;;)
+    {
+      return null;
+      xvv.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramyhx.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, amtj.a(2131702777) + paramyhx.jdField_a_of_type_Int, 1);
+    }
   }
 }
 

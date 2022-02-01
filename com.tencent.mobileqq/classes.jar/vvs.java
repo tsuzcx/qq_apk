@@ -1,6 +1,20 @@
-public abstract interface vvs
+public class vvs
 {
-  public abstract void a();
+  @ypm(a="id")
+  public int a;
+  @ypm(a="name")
+  public String a;
+  @ypm(a="items")
+  public vvu[] a;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
+    if (this.jdField_a_of_type_ArrayOfVvu != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfVvu.length;; i = 0) {
+      return i + '}';
+    }
+  }
 }
 
 

@@ -2,11 +2,11 @@ package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
 import android.os.Build.VERSION;
-import blff;
+import bjlj;
 import com.tencent.qphone.base.util.QLog;
 
 class TraeAudioManager$bluetoothHeadsetSwitchThread
-  extends TraeAudioManager.switchThread
+  extends TraeAudioManager.SwitchThread
 {
   TraeAudioManager$bluetoothHeadsetSwitchThread(TraeAudioManager paramTraeAudioManager, long paramLong)
   {
@@ -77,7 +77,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
       if ((k == 0) && (this.jdField_a_of_type_Boolean == true))
       {
         TraeAudioManager.a(this.this$0, 6);
-        c();
+        d();
         QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread _startBluetoothSco");
         m = 1;
         i = 0;
@@ -97,13 +97,13 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 localStringBuilder.append("i:");
                 localStringBuilder.append(n);
                 localStringBuilder.append(" sco:");
-                if (!this.this$0.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()) {
+                if (!TraeAudioManager.a(this.this$0).isBluetoothScoOn()) {
                   break label437;
                 }
                 str = "Y";
                 localStringBuilder.append(str);
                 localStringBuilder.append(" :");
-                localStringBuilder.append(this.this$0.jdField_a_of_type_Blff.a());
+                localStringBuilder.append(this.this$0.a.a());
                 localStringBuilder.append("\n");
                 QLog.w(this.jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
               }
@@ -111,7 +111,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 break label444;
               }
               QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread bluetoothState ==  Bluetooth_State.SCO_CONNECTED 1");
-              e();
+              c();
             }
           }
           do
@@ -123,7 +123,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 if ((QLog.isColorLevel()) && (k == 0)) {
                   QLog.e(this.jdField_a_of_type_JavaLangString, 2, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
                 }
-                this.this$0.jdField_a_of_type_Blff.a(a(), false);
+                this.this$0.a.a(a(), false);
                 a(10);
                 this.this$0.a(this.jdField_a_of_type_Long);
               }
@@ -136,7 +136,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 if (TraeAudioManager.a(this.this$0) == 7)
                 {
                   QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread bluetoothState ==  Bluetooth_State.SCO_CONNECTED 2");
-                  e();
+                  c();
                 }
               }
               catch (InterruptedException localInterruptedException2)
@@ -149,16 +149,16 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
               }
             }
           } while (i != 0);
-          if (m == 1)
+          if (m != 0)
           {
-            d();
+            e();
             try
             {
               Thread.sleep(1000L);
               if (i != 0) {
                 break label371;
               }
-              c();
+              d();
               QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread retry start sco");
               j = n;
             }
@@ -178,31 +178,31 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
   
   public void b()
   {
-    if (this.this$0.jdField_a_of_type_AndroidMediaAudioManager == null) {
+    if (TraeAudioManager.a(this.this$0) == null) {
       return;
     }
-    d();
+    e();
   }
   
-  void c()
+  void d()
   {
     try
     {
-      this.this$0.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(true);
+      TraeAudioManager.a(this.this$0).setBluetoothScoOn(true);
       if (Build.VERSION.SDK_INT > 8) {
-        this.this$0.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
+        TraeAudioManager.a(this.this$0).startBluetoothSco();
       }
       return;
     }
     catch (Exception localException) {}
   }
   
-  void d()
+  void e()
   {
     if (Build.VERSION.SDK_INT > 8) {
-      this.this$0.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
+      TraeAudioManager.a(this.this$0).stopBluetoothSco();
     }
-    this.this$0.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
+    TraeAudioManager.a(this.this$0).setBluetoothScoOn(false);
   }
 }
 

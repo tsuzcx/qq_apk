@@ -1,15 +1,16 @@
 package com.tencent.qqmini.miniapp.task;
 
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.core.ReportConst;
+import com.tencent.qqmini.sdk.report.MiniReportManager;
 
-final class ServiceCreateTask$3
-  extends MiniCmdCallback.Stub
+class ServiceCreateTask$3
+  implements Runnable
 {
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  ServiceCreateTask$3(ServiceCreateTask paramServiceCreateTask, int paramInt, String paramString) {}
+  
+  public void run()
   {
-    QMLog.d("ServiceCreateTask", "update v8rt so succeed.");
+    MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), this.val$id, "0", this.val$type, null, null, null);
   }
 }
 

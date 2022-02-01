@@ -1,41 +1,29 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+
 public class bhmp
+  implements MediaPlayer.OnPreparedListener
 {
-  public static int a = 40000;
-  public static int b = 30000;
-  public static int c = 20000;
-  public static int d = 20000;
-  public static int e = 15000;
-  public static int f = 10000;
-  public static int g;
+  public bhmp(VideoTextureView paramVideoTextureView) {}
   
-  public static int a(int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    switch (paramInt)
+    if (VideoTextureView.a(this.a) != null)
     {
-    case 2: 
-    default: 
-      return a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return c;
+      VideoTextureView.a(this.a).start();
+      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
     }
-    return b;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
+    if (VideoTextureView.a() != null)
     {
-    case 2: 
-    default: 
-      return d + g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return f + g;
+      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+      VideoTextureView.a().onVideoProgressUpdate(0);
+      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
     }
-    return e + g;
+    if (VideoTextureView.a(this.a) != null) {
+      VideoTextureView.a(this.a).post(this.a.a);
+    }
   }
 }
 

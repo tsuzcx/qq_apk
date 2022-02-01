@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.delegate;
 
 import android.view.View;
-import tdl;
+import thu;
 
 public class ViolaUiDelegate$2
   implements Runnable
 {
-  public ViolaUiDelegate$2(tdl paramtdl) {}
+  public ViolaUiDelegate$2(thu paramthu) {}
   
   public void run()
   {
-    if (tdl.a(this.this$0) != null)
+    if (thu.a(this.this$0) != null)
     {
-      tdl.a(this.this$0).setVisibility(0);
-      tdl.a(this.this$0, false);
+      thu.a(this.this$0).setVisibility(0);
+      thu.a(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate.2
  * JD-Core Version:    0.7.0.1
  */

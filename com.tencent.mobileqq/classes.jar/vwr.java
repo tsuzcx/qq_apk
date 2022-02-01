@@ -1,14 +1,39 @@
-public class vwr
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+
+class vwr
+  extends SosoInterface.OnLocationListener
 {
-  public static String a(int paramInt)
+  vwr(vwq paramvwq, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    int i = paramInt / 1000 / 60;
-    paramInt = paramInt / 1000 % 60;
-    if (i < 10) {}
-    for (String str = "0" + i; paramInt < 10; str = String.valueOf(i)) {
-      return String.format("%s:0%s", new Object[] { str, Integer.valueOf(paramInt) });
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    xvv.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = vwp.a(paramSosoLbsInfo.mLocation);
+      xvv.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
-    return String.format("%s:%s", new Object[] { str, Integer.valueOf(paramInt) });
+    for (;;)
+    {
+      if (!vwq.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
+      return;
+      bool = false;
+      break;
+      label114:
+      xvv.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 

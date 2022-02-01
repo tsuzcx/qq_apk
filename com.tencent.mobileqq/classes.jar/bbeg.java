@@ -1,19 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class bbeg
+final class bbeg
+  implements Comparator<bayp>
 {
-  public static int a(String paramString1, String paramString2)
+  public int a(bayp parambayp1, bayp parambayp2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, "##" + paramString2);
+    int j = Long.signum(parambayp2.b() - parambayp1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(parambayp2.a() - parambayp1.a());
     }
-    return 0;
-  }
-  
-  public static int b(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 2, "##" + paramString2);
-    return 0;
+    j = i;
+    if (i == 0) {
+      j = bbee.a(parambayp1, parambayp2);
+    }
+    return j;
   }
 }
 

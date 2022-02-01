@@ -1,60 +1,20 @@
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.tools.MD5;
-import org.json.JSONObject;
+import mqq.app.QQPermissionCallback;
 
-public class aoaj
+class aoaj
+  implements QQPermissionCallback
 {
-  String a;
-  String b;
-  String c;
+  aoaj(aoai paramaoai) {}
   
-  public static aoaj a(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      paramString = null;
-    }
-    for (;;)
-    {
-      return paramString;
-      try
-      {
-        aoaj localaoaj = new aoaj();
-        paramString = new JSONObject(paramString);
-        localaoaj.a = paramString.getString("url");
-        if (localaoaj.a != null)
-        {
-          localaoaj.a = localaoaj.a.trim();
-          localaoaj.c = MD5.toMD5(localaoaj.a);
-        }
-        localaoaj.b = paramString.getString("md5");
-        if (localaoaj.b != null) {
-          localaoaj.b = localaoaj.b.trim();
-        }
-        paramString = localaoaj;
-        if (QLog.isDevelopLevel())
-        {
-          axxb.a("HotchatSCMng", "parse ConfigData", new Object[] { localaoaj });
-          return localaoaj;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return null;
+    bfur.a(aoai.a(this.a), paramArrayOfString, paramArrayOfInt);
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
   }
   
-  public String toString()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[url:").append(this.a).append(",").append("md5:").append(this.b).append("]");
-    return localStringBuilder.toString();
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
   }
 }
 

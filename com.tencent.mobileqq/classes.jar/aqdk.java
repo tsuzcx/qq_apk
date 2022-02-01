@@ -1,35 +1,96 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqdk
-  implements View.OnClickListener
+public class aqdk
+  extends aptq<aqdj>
 {
-  aqdk(aqdj paramaqdj) {}
-  
-  public void onClick(View paramView)
+  public static aqdj a()
   {
-    if ((aqdj.a(this.a) == 0) && (!TextUtils.isEmpty(aqdj.a(this.a))))
+    return (aqdj)apub.a().a(635);
+  }
+  
+  @NonNull
+  public aqdj a(int paramInt)
+  {
+    return new aqdj();
+  }
+  
+  @Nullable
+  public aqdj a(aptx[] paramArrayOfaptx)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
+    aqdj localaqdj2 = null;
+    aqdj localaqdj1;
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
     {
-      aqdj.a(this.a).put(aqdj.b(this.a), Integer.valueOf(1));
-      WebViewFragment localWebViewFragment = this.a.mRuntime.a();
-      if (localWebViewFragment != null) {
-        localWebViewFragment.webView.loadUrl(aqdj.a(this.a));
+      localaqdj2 = aqdj.a(paramArrayOfaptx[0].a);
+      localaqdj1 = localaqdj2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+        localaqdj1 = localaqdj2;
       }
-      aqdj.a(this.a, null);
     }
-    aqdj.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      paramArrayOfaptx = localaqdj1;
+      if (localaqdj1 == null) {
+        paramArrayOfaptx = new aqdj();
+      }
+      return paramArrayOfaptx;
+      localaqdj1 = localaqdj2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
+        localaqdj1 = localaqdj2;
+      }
+    }
+  }
+  
+  public void a(aqdj paramaqdj)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onUpdate]");
+  }
+  
+  public Class<aqdj> clazz()
+  {
+    return aqdj.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 635;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdk
  * JD-Core Version:    0.7.0.1
  */

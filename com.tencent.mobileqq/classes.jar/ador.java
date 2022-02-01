@@ -1,58 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
-class ador
-  implements BusinessObserver
+public class ador
+  implements ViewSwitcher.ViewFactory
 {
-  ador(adom paramadom, String paramString) {}
+  public ador(Leba paramLeba) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public View makeView()
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (QLog.isColorLevel()) {
-      QLog.d(adom.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
-    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
-    }
-    paramInt = paramBundle.getInt("code");
-    if (paramBoolean)
-    {
-      localObject = new SdkAuthorize.AuthorizeResponse();
-      try
-      {
-        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-        paramInt = paramBundle.ret.get();
-        localObject = paramBundle.msg.get();
-        if (paramInt != 0)
-        {
-          adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, paramInt, (String)localObject);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(adom.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
-        }
-        adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, -2, "parse do auth result error");
-        return;
-      }
-      localObject = new adol();
-      ((adol)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
-      ((adol)localObject).b = paramBundle.access_token.get().toUpperCase();
-      paramBundle = paramBundle.callbackURL.get();
-      if (QLog.isColorLevel()) {}
-      adom.b(this.jdField_a_of_type_Adom, paramBundle);
-      this.jdField_a_of_type_Adom.jdField_a_of_type_Adoi.a((adol)localObject);
-      adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, ((adol)localObject).a());
-      return;
-    }
-    adqf.a(this.jdField_a_of_type_Adom.jdField_a_of_type_Admy, paramInt, "do auth error");
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

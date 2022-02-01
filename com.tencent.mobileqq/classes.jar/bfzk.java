@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
-public class bfzk
+public abstract interface bfzk
 {
-  public String a;
-  public ArrayList<Object> a;
+  public abstract void a(int paramInt);
 }
 
 

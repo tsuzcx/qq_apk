@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import agej;
+import amtj;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -31,44 +31,44 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bdll;
+import bcef;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 import com.tencent.av.ui.virtual.QavVirtualMenuView;
 import com.tencent.av.widget.shimmer.ShimmerTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lff;
-import mda;
-import meu;
-import mhe;
-import mhh;
-import mim;
-import min;
-import mio;
-import mip;
-import miq;
-import mir;
-import mis;
-import mit;
-import miu;
-import miw;
-import mix;
-import miy;
-import miz;
+import lez;
+import mcj;
+import med;
+import mgn;
+import mgq;
+import mhv;
+import mhw;
+import mhx;
+import mhy;
+import mhz;
+import mia;
+import mib;
+import mic;
+import mid;
+import mif;
+import mig;
+import mih;
+import mii;
+import mqm;
+import mqn;
+import mqo;
 import mqq.app.BaseActivity;
-import mrd;
-import mre;
-import mrf;
-import mrz;
-import mtl;
-import mtt;
-import mtw;
-import mtx;
-import mur;
-import mvd;
+import mri;
+import msu;
+import mtc;
+import mtf;
+import mtg;
+import mua;
+import mum;
 
 public class QavPanel
   extends RelativeLayout
@@ -93,15 +93,15 @@ public class QavPanel
   public QavPanelSoundWaveView a;
   ShimmerTextView jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
   final String jdField_a_of_type_JavaLangString = "QavPanel_" + AudioHelper.b();
-  private miu jdField_a_of_type_Miu = new miu(this, Looper.getMainLooper());
-  miw jdField_a_of_type_Miw = null;
-  private miy jdField_a_of_type_Miy;
-  public miz a;
-  mrf jdField_a_of_type_Mrf = null;
-  private mtw jdField_a_of_type_Mtw;
-  private mtx jdField_a_of_type_Mtx;
+  private mid jdField_a_of_type_Mid = new mid(this, Looper.getMainLooper());
+  mif jdField_a_of_type_Mif = null;
+  private mih jdField_a_of_type_Mih;
+  public mii a;
+  mqo jdField_a_of_type_Mqo = null;
+  private mtf jdField_a_of_type_Mtf;
+  private mtg jdField_a_of_type_Mtg;
   boolean jdField_a_of_type_Boolean = false;
-  mhe[] jdField_a_of_type_ArrayOfMhe = new mhe[5];
+  mgn[] jdField_a_of_type_ArrayOfMgn = new mgn[5];
   int jdField_b_of_type_Int = -1;
   private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
@@ -145,7 +145,7 @@ public class QavPanel
   
   static
   {
-    jdField_i_of_type_Int = 2131378399;
+    jdField_i_of_type_Int = 2131378166;
   }
   
   public QavPanel(Context paramContext)
@@ -210,32 +210,32 @@ public class QavPanel
     if (paramImageButton == null) {
       return;
     }
-    paramImageButton.setImageDrawable(mrz.b(paramImageButton.getResources(), paramInt));
+    paramImageButton.setImageDrawable(mri.b(paramImageButton.getResources(), paramInt));
     paramImageButton.setAdjustViewBounds(true);
   }
   
   private void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373340);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373330));
-    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373331));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373314));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373316));
-    this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373322));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373256);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373246));
+    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373247));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373230));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373232));
+    this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373238));
     Drawable localDrawable;
     if (this.jdField_j_of_type_AndroidWidgetButton != null)
     {
-      localDrawable = getResources().getDrawable(2130841987);
+      localDrawable = getResources().getDrawable(2130842029);
       if (localDrawable != null)
       {
         localDrawable.setBounds(0, 0, paramInt, paramInt);
         this.jdField_j_of_type_AndroidWidgetButton.setCompoundDrawables(null, localDrawable, null, null);
       }
     }
-    this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373335));
+    this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373251));
     if (this.jdField_k_of_type_AndroidWidgetButton != null)
     {
-      localDrawable = getResources().getDrawable(2130842006);
+      localDrawable = getResources().getDrawable(2130842048);
       if (localDrawable != null)
       {
         localDrawable.setBounds(0, 0, paramInt, paramInt);
@@ -243,10 +243,10 @@ public class QavPanel
       }
     }
     m();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373339));
-    this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373338));
-    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373336));
-    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373328));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373255));
+    this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373254));
+    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373252));
+    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373244));
     if (paramBoolean2) {}
     for (paramInt = 2;; paramInt = 1)
     {
@@ -258,10 +258,10 @@ public class QavPanel
     }
   }
   
-  private mhe c()
+  private mgn c()
   {
     if (this.jdField_b_of_type_Int != -1) {
-      return this.jdField_a_of_type_ArrayOfMhe[this.jdField_b_of_type_Int];
+      return this.jdField_a_of_type_ArrayOfMgn[this.jdField_b_of_type_Int];
     }
     return null;
   }
@@ -277,48 +277,48 @@ public class QavPanel
   
   private static boolean c(int paramInt)
   {
-    return (paramInt == 2130842012) || (paramInt == 2130842022) || (paramInt == 2130842023);
+    return (paramInt == 2130842054) || (paramInt == 2130842064) || (paramInt == 2130842065);
   }
   
   private boolean d()
   {
-    return this.jdField_a_of_type_Int == 2131559749;
+    return this.jdField_a_of_type_Int == 2131559751;
   }
   
   private void e(int paramInt)
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373340);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363092));
-    this.jdField_d_of_type_AndroidViewView = ((ViewGroup)getParent()).findViewById(2131373333);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373256);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363109));
+    this.jdField_d_of_type_AndroidViewView = ((ViewGroup)getParent()).findViewById(2131373249);
     n();
     o();
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373495));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373411));
     this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.setVisibility(0);
   }
   
   private void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373330));
-    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373331));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373340);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373246));
+    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373247));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373256);
     m();
-    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373336));
+    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373252));
     l();
-    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373328));
+    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373244));
   }
   
   private boolean e()
   {
-    return (this.jdField_a_of_type_Miy != null) && (this.jdField_a_of_type_Miy.b());
+    return (this.jdField_a_of_type_Mih != null) && (this.jdField_a_of_type_Mih.b());
   }
   
   private void f(int paramInt)
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373340);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373493));
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373494));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373343));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373491);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373256);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373409));
+    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373410));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373259));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373407);
     n();
     o();
     b();
@@ -327,35 +327,35 @@ public class QavPanel
   
   private void f(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373330));
-    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373331));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373340);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373246));
+    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373247));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373256);
     m();
-    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373336));
+    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373252));
     l();
-    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373328));
+    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373244));
   }
   
   private void g(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363092));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373493));
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373494));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373343));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373491);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363109));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373409));
+    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373410));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373259));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373407);
     b();
-    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373496));
+    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373412));
     c();
   }
   
   private void h(int paramInt)
   {
     i(paramInt);
-    setBtnTopDrawable(this.jdField_i_of_type_AndroidWidgetButton, 2130842022);
-    setBtnTopDrawable(this.jdField_d_of_type_AndroidViewView, 2130841976);
-    setBtnTopDrawable(this.jdField_e_of_type_AndroidViewView, 2130841978);
-    setBtnTopDrawable(this.jdField_b_of_type_AndroidWidgetImageButton, 2130841996);
-    setBtnTopDrawable(this.jdField_c_of_type_AndroidWidgetImageButton, 2130842267);
+    setBtnTopDrawable(this.jdField_i_of_type_AndroidWidgetButton, 2130842064);
+    setBtnTopDrawable(this.jdField_d_of_type_AndroidViewView, 2130842018);
+    setBtnTopDrawable(this.jdField_e_of_type_AndroidViewView, 2130842020);
+    setBtnTopDrawable(this.jdField_b_of_type_AndroidWidgetImageButton, 2130842038);
+    setBtnTopDrawable(this.jdField_c_of_type_AndroidWidgetImageButton, 2130842309);
   }
   
   private void i(int paramInt)
@@ -365,10 +365,10 @@ public class QavPanel
       return;
     }
     boolean bool1;
-    if ((paramInt == 2131559755) || (paramInt == 2131559754))
+    if ((paramInt == 2131559757) || (paramInt == 2131559756))
     {
       bool1 = true;
-      if (mtl.d()) {
+      if (msu.d()) {
         break label106;
       }
       bool1 = bool2;
@@ -379,9 +379,9 @@ public class QavPanel
       this.jdField_d_of_type_Boolean = bool1;
       if (!this.jdField_d_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_h_of_type_AndroidWidgetButton.getResources().getDrawable(2130842013));
-        setBtnTopDrawableWithForeGround(this.jdField_h_of_type_AndroidWidgetButton, 2130842012, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable);
-        this.jdField_h_of_type_AndroidWidgetButton.setOnTouchListener(new min(this));
+        this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_h_of_type_AndroidWidgetButton.getResources().getDrawable(2130842055));
+        setBtnTopDrawableWithForeGround(this.jdField_h_of_type_AndroidWidgetButton, 2130842054, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable);
+        this.jdField_h_of_type_AndroidWidgetButton.setOnTouchListener(new mhw(this));
         return;
         bool1 = false;
         break;
@@ -394,13 +394,13 @@ public class QavPanel
   private void l()
   {
     View localView = this.jdField_a_of_type_AndroidViewView;
-    this.jdField_f_of_type_AndroidViewView = localView.findViewById(2131373427);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373657));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373426));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373428));
-    this.jdField_a_of_type_Mtw = new mtw((Activity)localView.getContext());
+    this.jdField_f_of_type_AndroidViewView = localView.findViewById(2131373343);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373573));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373342));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373344));
+    this.jdField_a_of_type_Mtf = new mtf((Activity)localView.getContext());
     if (this.jdField_d_of_type_AndroidWidgetImageView != null) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Mtw.a());
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Mtf.a());
     }
     if (this.jdField_f_of_type_AndroidViewView != null) {
       this.jdField_f_of_type_AndroidViewView.setVisibility(8);
@@ -410,29 +410,29 @@ public class QavPanel
   private void m()
   {
     ViewGroup localViewGroup = (ViewGroup)getParent();
-    this.jdField_d_of_type_AndroidViewView = localViewGroup.findViewById(2131373333);
+    this.jdField_d_of_type_AndroidViewView = localViewGroup.findViewById(2131373249);
     if ((this.jdField_d_of_type_AndroidViewView == null) && (AudioHelper.e())) {
       throw new IllegalArgumentException("没找到VIEW_ENUM.HIDE");
     }
-    this.jdField_e_of_type_AndroidViewView = localViewGroup.findViewById(2131373638);
-    this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)localViewGroup.findViewById(2131373636));
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)localViewGroup.findViewById(2131373642));
+    this.jdField_e_of_type_AndroidViewView = localViewGroup.findViewById(2131373554);
+    this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)localViewGroup.findViewById(2131373552));
+    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)localViewGroup.findViewById(2131373558));
     getRootView();
   }
   
   private void n()
   {
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363104));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363121));
     if (this.jdField_b_of_type_AndroidWidgetButton != null) {
-      AudioHelper.a(getResources(), this.jdField_b_of_type_AndroidWidgetButton, 2130841935, 2131165943, 2131165943);
+      AudioHelper.a(getResources(), this.jdField_b_of_type_AndroidWidgetButton, 2130841977, 2131165961, 2131165961);
     }
   }
   
   private void o()
   {
-    this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363103));
+    this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363120));
     if (this.jdField_e_of_type_AndroidWidgetButton != null) {
-      AudioHelper.a(getResources(), this.jdField_e_of_type_AndroidWidgetButton, 2130841961, 2131165943, 2131165943);
+      AudioHelper.a(getResources(), this.jdField_e_of_type_AndroidWidgetButton, 2130842003, 2131165961, 2131165961);
     }
   }
   
@@ -449,12 +449,12 @@ public class QavPanel
   
   private void q()
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373330));
-    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373331));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373340);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131373246));
+    this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373247));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373256);
     m();
-    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373336));
-    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373328));
+    this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373252));
+    this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373244));
     a(false);
   }
   
@@ -463,7 +463,7 @@ public class QavPanel
     this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView = new QavPanelSoundWaveView(getContext());
     this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.a(true);
     this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.setVisibility(8);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131297808));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131297863));
     this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.setLayoutParams(localLayoutParams);
   }
   
@@ -471,22 +471,22 @@ public class QavPanel
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setSize(agej.a(64.0F, getResources()), agej.a(64.0F, getResources()));
+    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setSize(AIOUtils.dp2px(64.0F, getResources()), AIOUtils.dp2px(64.0F, getResources()));
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(1291845632);
-    this.jdField_a_of_type_Mtx = new mtx(agej.a(64.0F, getResources()), agej.a(64.0F, getResources()));
-    this.jdField_a_of_type_Mtx.a(0, BitmapFactory.decodeResource(getResources(), 2130842014));
-    this.jdField_a_of_type_Mtx.a(0, BitmapFactory.decodeResource(getResources(), 2130842015));
-    this.jdField_a_of_type_Mtx.a(1, BitmapFactory.decodeResource(getResources(), 2130842016));
-    this.jdField_a_of_type_Mtx.a(2, BitmapFactory.decodeResource(getResources(), 2130842016));
-    this.jdField_a_of_type_Mtx.a(2, BitmapFactory.decodeResource(getResources(), 2130842018));
-    this.jdField_a_of_type_Mtx.a(3, BitmapFactory.decodeResource(getResources(), 2130842019));
-    this.jdField_a_of_type_Mtx.a(0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable, this.jdField_a_of_type_Mtx });
+    this.jdField_a_of_type_Mtg = new mtg(AIOUtils.dp2px(64.0F, getResources()), AIOUtils.dp2px(64.0F, getResources()));
+    this.jdField_a_of_type_Mtg.a(0, BitmapFactory.decodeResource(getResources(), 2130842056));
+    this.jdField_a_of_type_Mtg.a(0, BitmapFactory.decodeResource(getResources(), 2130842057));
+    this.jdField_a_of_type_Mtg.a(1, BitmapFactory.decodeResource(getResources(), 2130842058));
+    this.jdField_a_of_type_Mtg.a(2, BitmapFactory.decodeResource(getResources(), 2130842058));
+    this.jdField_a_of_type_Mtg.a(2, BitmapFactory.decodeResource(getResources(), 2130842060));
+    this.jdField_a_of_type_Mtg.a(3, BitmapFactory.decodeResource(getResources(), 2130842061));
+    this.jdField_a_of_type_Mtg.a(0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable, this.jdField_a_of_type_Mtg });
     this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
     this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_Mtx.getIntrinsicWidth(), this.jdField_a_of_type_Mtx.getIntrinsicHeight());
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_Mtg.getIntrinsicWidth(), this.jdField_a_of_type_Mtg.getIntrinsicHeight());
     this.jdField_h_of_type_AndroidWidgetButton.setCompoundDrawables(null, this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable, null, null);
-    this.jdField_h_of_type_AndroidWidgetButton.setOnTouchListener(new mio(this));
+    this.jdField_h_of_type_AndroidWidgetButton.setOnTouchListener(new mhx(this));
   }
   
   public static void setBtnTopDrawable(View paramView, int paramInt)
@@ -506,7 +506,7 @@ public class QavPanel
       return;
     }
     if (c(paramInt)) {}
-    for (Drawable localDrawable = mrz.a(paramTextView.getResources(), paramInt, false);; localDrawable = mrz.a(paramTextView.getResources(), paramInt))
+    for (Drawable localDrawable = mri.a(paramTextView.getResources(), paramInt, false);; localDrawable = mri.a(paramTextView.getResources(), paramInt))
     {
       paramTextView.setCompoundDrawables(null, localDrawable, null, null);
       return;
@@ -518,7 +518,7 @@ public class QavPanel
     if (paramTextView == null) {
       return;
     }
-    paramTextView.setCompoundDrawables(null, mrz.a(paramTextView.getResources(), paramInt, paramDrawable, false), null, null);
+    paramTextView.setCompoundDrawables(null, mri.a(paramTextView.getResources(), paramInt, paramDrawable, false), null, null);
   }
   
   private void t()
@@ -529,27 +529,27 @@ public class QavPanel
     do
     {
       return;
-      if (!this.jdField_a_of_type_Miy.a())
+      if (!this.jdField_a_of_type_Mih.a())
       {
         QLog.d(this.jdField_a_of_type_JavaLangString, 1, "tryPerformLongClick cannot checkBlockMuteStatus");
         return;
       }
     } while (a() != 1);
-    lff locallff = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    lez locallez = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
     if (d())
     {
-      locallff.a("tryPerformLongClick", false);
-      locallff.b("tryPerformLongClick", 3);
+      locallez.a("tryPerformLongClick", false);
+      locallez.b("tryPerformLongClick", 3);
       a("tryPerformLongClick", 1, 3, true);
     }
     for (;;)
     {
-      bdll.b(null, "dc00898", "", "", "0X800ADE2", "0X800ADE2", locallff.jdField_d_of_type_Int, 0, "", "", "", "");
-      this.jdField_a_of_type_Miu.sendEmptyMessageDelayed(261, 4000L);
+      bcef.b(null, "dc00898", "", "", "0X800ADE2", "0X800ADE2", locallez.jdField_d_of_type_Int, 0, "", "", "", "");
+      this.jdField_a_of_type_Mid.sendEmptyMessageDelayed(261, 4000L);
       return;
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a("tryPerformLongClick", this.jdField_a_of_type_Miy.a(), true, true, 3);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a("tryPerformLongClick", this.jdField_a_of_type_Mih.a(), true, true, 3);
       a("tryPerformLongClick", 1, 3, false);
-      this.jdField_a_of_type_Miy.a(true, true);
+      this.jdField_a_of_type_Mih.a(true, true);
     }
   }
   
@@ -562,20 +562,20 @@ public class QavPanel
     }
     if (d())
     {
-      lff locallff = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      locallff.a("tryPlayBtnMuteAnimation", true);
-      locallff.b("tryPlayBtnMuteAnimation", 2);
+      lez locallez = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+      locallez.a("tryPlayBtnMuteAnimation", true);
+      locallez.b("tryPlayBtnMuteAnimation", 2);
       a("tryPlayBtnMuteAnimation start", 1, 2, false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Miy.a();
+      this.jdField_a_of_type_Mih.a();
       if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
       {
         this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 3000 });
         this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(3000L);
-        this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new miq(this));
-        this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mir(this, new int[] { 250, 2750, 3000 }));
+        this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new mhz(this));
+        this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mia(this, new int[] { 250, 2750, 3000 }));
       }
       if (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning()) {
         this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
@@ -583,9 +583,9 @@ public class QavPanel
       this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
       this.jdField_f_of_type_Boolean = true;
       return;
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().h("tryPlayBtnMuteAnimation onAnimationEnd", 2);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().g("tryPlayBtnMuteAnimation onAnimationEnd", 2);
       a("tryPlayBtnMuteAnimation", 1, 2, false);
-      this.jdField_a_of_type_Miy.a(false, false);
+      this.jdField_a_of_type_Mih.a(false, false);
     }
   }
   
@@ -598,9 +598,9 @@ public class QavPanel
   
   public int a()
   {
-    lff locallff = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    if (this.jdField_a_of_type_Int == 2131559749) {
-      return locallff.a();
+    lez locallez = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    if (this.jdField_a_of_type_Int == 2131559751) {
+      return locallez.a();
     }
     return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().f();
   }
@@ -608,7 +608,7 @@ public class QavPanel
   public int a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewClickable, id" + meu.a(paramInt));
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewClickable, id" + med.a(paramInt));
     }
     View localView = b(paramInt);
     if (localView != null) {
@@ -629,8 +629,8 @@ public class QavPanel
     if (paramInt == 99) {
       m = this.jdField_b_of_type_Int;
     }
-    if (this.jdField_a_of_type_ArrayOfMhe[m] != null) {
-      return this.jdField_a_of_type_ArrayOfMhe[m].a();
+    if (this.jdField_a_of_type_ArrayOfMgn[m] != null) {
+      return this.jdField_a_of_type_ArrayOfMgn[m].a();
     }
     return null;
   }
@@ -640,23 +640,23 @@ public class QavPanel
     return this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView;
   }
   
-  mhe a()
+  mgn a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373315);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373231);
     if (localRelativeLayout != null)
     {
       if (AudioHelper.a(0) == 1) {
         localRelativeLayout.setBackgroundColor(2142236398);
       }
-      return new mhe(localRelativeLayout, 0, null);
+      return new mgn(localRelativeLayout, 0, null);
     }
     return null;
   }
   
-  mhe a(int paramInt, mhh parammhh)
+  mgn a(int paramInt, mgq parammgq)
   {
     Object localObject = getContext();
-    if ((this.jdField_a_of_type_Mrf == null) || (!(localObject instanceof AVActivity))) {
+    if ((this.jdField_a_of_type_Mqo == null) || (!(localObject instanceof AVActivity))) {
       return null;
     }
     switch (paramInt)
@@ -669,10 +669,10 @@ public class QavPanel
       ((QavMenuBaseView)localObject).setVisibility(8);
       ((QavMenuBaseView)localObject).setGravity(80);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout)findViewById(2131373313)).addView((View)localObject, localLayoutParams);
+      ((RelativeLayout)findViewById(2131373229)).addView((View)localObject, localLayoutParams);
       ((QavMenuBaseView)localObject).a(this);
       ((QavMenuBaseView)localObject).f();
-      return new mhe((RelativeLayout)localObject, paramInt, parammhh);
+      return new mgn((RelativeLayout)localObject, paramInt, parammgq);
       localObject = new QavVirtualMenuView((Context)localObject);
       continue;
       localObject = new QavBeautyMenuPanel((Context)localObject);
@@ -683,12 +683,12 @@ public class QavPanel
     }
   }
   
-  public mrd a(int paramInt)
+  public mqm a(int paramInt)
   {
-    if (this.jdField_a_of_type_Mrf == null) {
+    if (this.jdField_a_of_type_Mqo == null) {
       return null;
     }
-    return this.jdField_a_of_type_Mrf.a(paramInt);
+    return this.jdField_a_of_type_Mqo.a(paramInt);
   }
   
   void a() {}
@@ -724,13 +724,13 @@ public class QavPanel
       return;
     }
     p();
-    int m = getResources().getDimensionPixelSize(2131297835);
+    int m = getResources().getDimensionPixelSize(2131297890);
     this.jdField_a_of_type_Int = paramInt;
     r();
     a(this.jdField_a_of_type_Int);
     switch (this.jdField_a_of_type_Int)
     {
-    case 2131559753: 
+    case 2131559755: 
     default: 
       label92:
       if (this.jdField_a_of_type_AndroidViewView != null)
@@ -739,18 +739,18 @@ public class QavPanel
         a(-1020L, 0, false);
       }
       k();
-      Object localObject = (RelativeLayout)findViewById(2131381275);
+      Object localObject = (RelativeLayout)findViewById(2131380993);
       if (localObject != null)
       {
         ((RelativeLayout)localObject).addView(this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView);
         ((RelativeLayout)localObject).bringChildToFront(this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView);
       }
       d();
-      this.jdField_a_of_type_Miw = new miw(this);
+      this.jdField_a_of_type_Mif = new mif(this);
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
-      getContext().registerReceiver(this.jdField_a_of_type_Miw, (IntentFilter)localObject);
+      getContext().registerReceiver(this.jdField_a_of_type_Mif, (IntentFilter)localObject);
       this.jdField_a_of_type_Boolean = true;
       setBtnOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       h();
@@ -795,10 +795,10 @@ public class QavPanel
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Miw != null)
+    if (this.jdField_a_of_type_Mif != null)
     {
-      getContext().unregisterReceiver(this.jdField_a_of_type_Miw);
-      this.jdField_a_of_type_Miw = null;
+      getContext().unregisterReceiver(this.jdField_a_of_type_Mif);
+      this.jdField_a_of_type_Mif = null;
     }
     this.jdField_j_of_type_Int = 0;
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
@@ -808,12 +808,12 @@ public class QavPanel
     }
     this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
     int m = 0;
-    while (m < this.jdField_a_of_type_ArrayOfMhe.length)
+    while (m < this.jdField_a_of_type_ArrayOfMgn.length)
     {
-      if ((this.jdField_a_of_type_ArrayOfMhe[m] != null) && ((this.jdField_a_of_type_ArrayOfMhe[m].jdField_a_of_type_AndroidWidgetRelativeLayout instanceof QavMenuBaseView))) {
-        ((QavMenuBaseView)this.jdField_a_of_type_ArrayOfMhe[m].jdField_a_of_type_AndroidWidgetRelativeLayout).b(paramLong);
+      if ((this.jdField_a_of_type_ArrayOfMgn[m] != null) && ((this.jdField_a_of_type_ArrayOfMgn[m].jdField_a_of_type_AndroidWidgetRelativeLayout instanceof QavMenuBaseView))) {
+        ((QavMenuBaseView)this.jdField_a_of_type_ArrayOfMgn[m].jdField_a_of_type_AndroidWidgetRelativeLayout).b(paramLong);
       }
-      this.jdField_a_of_type_ArrayOfMhe[m] = null;
+      this.jdField_a_of_type_ArrayOfMgn[m] = null;
       m += 1;
     }
     if (this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView != null) {
@@ -842,26 +842,26 @@ public class QavPanel
     if (!(getContext() instanceof AVActivity)) {
       return;
     }
-    mhe localmhe = c();
+    mgn localmgn = c();
     label137:
     int i1;
     label154:
     int m;
     boolean bool1;
-    if (localmhe != null)
+    if (localmgn != null)
     {
-      if (localmhe.jdField_a_of_type_Int == paramInt)
+      if (localmgn.jdField_a_of_type_Int == paramInt)
       {
         QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showMenu direct, menuType[" + paramInt + "], needAnimation[" + paramBoolean + "], seq[" + paramLong + "]");
-        localmhe.a(paramLong, paramBoolean, 3);
+        localmgn.a(paramLong, paramBoolean, 3);
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(123), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
         return;
       }
       d(paramInt);
-      if (this.jdField_a_of_type_ArrayOfMhe[paramInt] == null) {
+      if (this.jdField_a_of_type_ArrayOfMgn[paramInt] == null) {
         break label361;
       }
-      if (localmhe != null) {
+      if (localmgn != null) {
         break label363;
       }
       i1 = -1;
@@ -886,7 +886,7 @@ public class QavPanel
         if ((i1 != this.jdField_b_of_type_Int) && (i1 == 0))
         {
           a("showMenu", 0);
-          this.jdField_a_of_type_Miu.removeMessages(257);
+          this.jdField_a_of_type_Mid.removeMessages(257);
         }
         localObject = new QavPanel.7(this, paramInt, paramLong, paramBoolean, n);
         if (getVisibility() == 0) {
@@ -896,10 +896,10 @@ public class QavPanel
       label477:
       for (paramBoolean = false;; paramBoolean = bool1)
       {
-        if (localmhe != null) {
-          localmhe.a(paramLong, paramBoolean, m, new mis(this, (Runnable)localObject));
+        if (localmgn != null) {
+          localmgn.a(paramLong, paramBoolean, m, new mib(this, (Runnable)localObject));
         }
-        if ((localmhe != null) && (paramBoolean)) {
+        if ((localmgn != null) && (paramBoolean)) {
           break;
         }
         ((Runnable)localObject).run();
@@ -909,7 +909,7 @@ public class QavPanel
         label361:
         break;
         label363:
-        i1 = localmhe.a();
+        i1 = localmgn.a();
         break label154;
         label373:
         if (i1 == 1)
@@ -1020,22 +1020,22 @@ public class QavPanel
     default: 
       bool1 = false;
     case 0: 
-      while ((this.jdField_a_of_type_Miy != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramBoolean) && (d()))
+      while ((this.jdField_a_of_type_Mih != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramBoolean) && (d()))
       {
-        this.jdField_a_of_type_Miy.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().g, bool1);
+        this.jdField_a_of_type_Mih.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().g, bool1);
         return;
         if (paramInt1 == 2) {
           v();
         }
         a("doSpeakerStatusChange KEEP_SPEAKING_STATUS", 2);
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(1291845632);
-        this.jdField_a_of_type_Mtx.setAlpha(255);
-        this.jdField_a_of_type_Mtx.a(0);
+        this.jdField_a_of_type_Mtg.setAlpha(255);
+        this.jdField_a_of_type_Mtg.a(0);
         bool1 = bool2;
-        if (!mvd.a(true))
+        if (!mum.a(true))
         {
-          this.jdField_a_of_type_Miu.removeMessages(259);
-          this.jdField_a_of_type_Miu.sendEmptyMessageAtTime(259, 300L);
+          this.jdField_a_of_type_Mid.removeMessages(259);
+          this.jdField_a_of_type_Mid.sendEmptyMessageAtTime(259, 300L);
           bool1 = bool2;
         }
       }
@@ -1050,20 +1050,20 @@ public class QavPanel
     for (;;)
     {
       a("doSpeakerStatusChange KEEP_SPEAKING_STATUS", 2);
-      this.jdField_a_of_type_Mtx.setAlpha(255);
+      this.jdField_a_of_type_Mtg.setAlpha(255);
       this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setAlpha(255);
       this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-1);
-      this.jdField_a_of_type_Mtx.a(1);
-      a(2131373336, getResources().getString(2131692584));
+      this.jdField_a_of_type_Mtg.a(1);
+      a(2131373252, getResources().getString(2131692632));
       if ((!this.jdField_f_of_type_Boolean) && (e()))
       {
-        this.jdField_a_of_type_Miu.removeMessages(257);
-        this.jdField_a_of_type_Miu.sendEmptyMessageDelayed(257, 5300L);
+        this.jdField_a_of_type_Mid.removeMessages(257);
+        this.jdField_a_of_type_Mid.sendEmptyMessageDelayed(257, 5300L);
       }
-      if (!mvd.a(false))
+      if (!mum.a(false))
       {
-        this.jdField_a_of_type_Miu.removeMessages(258);
-        this.jdField_a_of_type_Miu.sendEmptyMessageDelayed(258, 300L);
+        this.jdField_a_of_type_Mid.removeMessages(258);
+        this.jdField_a_of_type_Mid.sendEmptyMessageDelayed(258, 300L);
         break;
         if (paramInt1 == 2)
         {
@@ -1078,11 +1078,11 @@ public class QavPanel
         continue;
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setAlpha(255);
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-1);
-        this.jdField_a_of_type_Mtx.a(2);
+        this.jdField_a_of_type_Mtg.a(2);
         bool1 = false;
         break;
-        this.jdField_a_of_type_Mtx.setAlpha(127);
-        this.jdField_a_of_type_Mtx.a(3);
+        this.jdField_a_of_type_Mtg.setAlpha(127);
+        this.jdField_a_of_type_Mtg.a(3);
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setAlpha(127);
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-1);
         i();
@@ -1096,23 +1096,23 @@ public class QavPanel
     }
   }
   
-  public void a(miy parammiy)
+  public void a(mih parammih)
   {
-    this.jdField_a_of_type_Miy = parammiy;
+    this.jdField_a_of_type_Mih = parammih;
   }
   
-  public void a(mtt parammtt)
+  public void a(mtc parammtc)
   {
     if (this.jdField_f_of_type_AndroidWidgetButton != null)
     {
-      parammtt.a(this.jdField_f_of_type_AndroidWidgetButton);
-      parammtt.b();
+      parammtc.a(this.jdField_f_of_type_AndroidWidgetButton);
+      parammtc.b();
     }
     while (this.jdField_a_of_type_AndroidWidgetImageButton == null) {
       return;
     }
-    parammtt.a(this.jdField_a_of_type_AndroidWidgetImageButton);
-    parammtt.b();
+    parammtc.a(this.jdField_a_of_type_AndroidWidgetImageButton);
+    parammtc.b();
   }
   
   public void a(boolean paramBoolean)
@@ -1156,8 +1156,8 @@ public class QavPanel
       }
       if (this.jdField_d_of_type_Boolean)
       {
-        this.jdField_a_of_type_Mtw.a(0);
-        this.jdField_a_of_type_Mtx.b(0);
+        this.jdField_a_of_type_Mtf.a(0);
+        this.jdField_a_of_type_Mtg.b(0);
       }
       return;
     }
@@ -1172,7 +1172,7 @@ public class QavPanel
   public boolean a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkView, id" + meu.a(paramInt));
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkView, id" + med.a(paramInt));
     }
     return b(paramInt) == null;
   }
@@ -1180,7 +1180,7 @@ public class QavPanel
   public boolean a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewBackground, id" + meu.a(paramInt1) + ", selected[" + paramInt2 + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewBackground, id" + med.a(paramInt1) + ", selected[" + paramInt2 + "]");
     }
     View localView = b(paramInt1);
     if (localView != null)
@@ -1194,7 +1194,7 @@ public class QavPanel
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewMargin, id" + meu.a(paramInt1) + ", direction[" + paramInt2 + "], margin[" + paramInt3 + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewMargin, id" + med.a(paramInt1) + ", direction[" + paramInt2 + "], margin[" + paramInt3 + "]");
     }
     if (paramInt3 < 0) {
       return false;
@@ -1232,12 +1232,12 @@ public class QavPanel
   public boolean a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewAccText, id" + meu.a(paramInt) + ", text[" + paramString + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewAccText, id" + med.a(paramInt) + ", text[" + paramString + "]");
     }
     View localView = b(paramInt);
     if (localView != null)
     {
-      mvd.a(localView, paramString);
+      mum.a(localView, paramString);
       return true;
     }
     return false;
@@ -1246,12 +1246,12 @@ public class QavPanel
   public boolean a(int paramInt1, String paramString, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewAccText, id" + meu.a(paramInt1) + ", text[" + paramString + "], audioType[" + paramInt2 + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewAccText, id" + med.a(paramInt1) + ", text[" + paramString + "], audioType[" + paramInt2 + "]");
     }
     View localView = b(paramInt1);
     if (localView != null)
     {
-      mvd.a(localView, paramString, paramInt2);
+      mum.a(localView, paramString, paramInt2);
       return true;
     }
     return false;
@@ -1260,7 +1260,7 @@ public class QavPanel
   public boolean a(int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewSelected, id" + meu.a(paramInt) + ", selected[" + paramBoolean + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewSelected, id" + med.a(paramInt) + ", selected[" + paramBoolean + "]");
     }
     View localView = b(paramInt);
     if (localView != null)
@@ -1271,20 +1271,20 @@ public class QavPanel
     return false;
   }
   
-  public boolean a(mix parammix)
+  public boolean a(mig parammig)
   {
-    if (this.jdField_a_of_type_Miz == null) {
+    if (this.jdField_a_of_type_Mii == null) {
       return false;
     }
-    this.jdField_a_of_type_Miz.a(parammix);
+    this.jdField_a_of_type_Mii.a(parammig);
     return true;
   }
   
-  public boolean a(mur parammur)
+  public boolean a(mua parammua)
   {
-    if ((parammur != null) && (this.jdField_i_of_type_AndroidWidgetButton != null))
+    if ((parammua != null) && (this.jdField_i_of_type_AndroidWidgetButton != null))
     {
-      parammur.b(this.jdField_i_of_type_AndroidWidgetButton);
+      parammua.b(this.jdField_i_of_type_AndroidWidgetButton);
       return true;
     }
     return false;
@@ -1296,84 +1296,84 @@ public class QavPanel
     switch (paramInt)
     {
     default: 
-      String str = anzj.a(2131707816) + paramInt + "]，Name[" + meu.a(paramInt) + "]，Name[" + AudioHelper.a(this, paramInt);
+      String str = amtj.a(2131708048) + paramInt + "]，Name[" + med.a(paramInt) + "]，Name[" + AudioHelper.a(this, paramInt);
       QLog.d(this.jdField_a_of_type_JavaLangString, 1, str);
       if (AudioHelper.e()) {
         throw new IllegalArgumentException(str);
       }
-    case 2131373336: 
+    case 2131373252: 
       localButton = this.jdField_h_of_type_AndroidWidgetButton;
       return localButton;
-    case 2131364381: 
+    case 2131364399: 
       return this.jdField_a_of_type_AndroidWidgetTextView;
-    case 2131363092: 
+    case 2131363109: 
       return this.jdField_a_of_type_AndroidWidgetButton;
-    case 2131373495: 
+    case 2131373411: 
       return this.jdField_c_of_type_AndroidWidgetButton;
-    case 2131373496: 
+    case 2131373412: 
       return this.jdField_d_of_type_AndroidWidgetButton;
-    case 2131363104: 
+    case 2131363121: 
       return this.jdField_b_of_type_AndroidWidgetButton;
-    case 2131373322: 
+    case 2131373238: 
       return this.jdField_j_of_type_AndroidWidgetButton;
-    case 2131373328: 
+    case 2131373244: 
       return this.jdField_i_of_type_AndroidWidgetButton;
-    case 2131373330: 
+    case 2131373246: 
       return this.jdField_a_of_type_AndroidWidgetImageButton;
-    case 2131373331: 
+    case 2131373247: 
       return this.jdField_f_of_type_AndroidWidgetButton;
-    case 2131373333: 
+    case 2131373249: 
       return this.jdField_d_of_type_AndroidViewView;
-    case 2131373491: 
+    case 2131373407: 
       return this.jdField_c_of_type_AndroidViewView;
-    case 2131363103: 
+    case 2131363120: 
       return this.jdField_e_of_type_AndroidWidgetButton;
-    case 2131373335: 
+    case 2131373251: 
       return this.jdField_k_of_type_AndroidWidgetButton;
-    case 2131373492: 
+    case 2131373408: 
       return this.jdField_a_of_type_AndroidWidgetImageView;
-    case 2131373339: 
+    case 2131373255: 
       return this.jdField_a_of_type_AndroidWidgetFrameLayout;
-    case 2131373338: 
+    case 2131373254: 
       return this.jdField_g_of_type_AndroidWidgetButton;
-    case 2131373638: 
+    case 2131373554: 
       return this.jdField_e_of_type_AndroidViewView;
-    case 2131373642: 
+    case 2131373558: 
       return this.jdField_b_of_type_AndroidWidgetImageButton;
     }
     return this.jdField_c_of_type_AndroidWidgetImageButton;
   }
   
-  mhe b()
+  mgn b()
   {
-    mhe localmhe = a(1, new mda(null));
-    if ((localmhe != null) && ((localmhe.jdField_a_of_type_AndroidWidgetRelativeLayout instanceof QavOperationMenuView)))
+    mgn localmgn = a(1, new mcj(null));
+    if ((localmgn != null) && ((localmgn.jdField_a_of_type_AndroidWidgetRelativeLayout instanceof QavOperationMenuView)))
     {
-      QavOperationMenuView localQavOperationMenuView = (QavOperationMenuView)localmhe.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      localQavOperationMenuView.setViewController(this.jdField_a_of_type_Mrf);
-      localQavOperationMenuView.setQavMenuActionListener(new mit(this));
+      QavOperationMenuView localQavOperationMenuView = (QavOperationMenuView)localmgn.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      localQavOperationMenuView.setViewController(this.jdField_a_of_type_Mqo);
+      localQavOperationMenuView.setQavMenuActionListener(new mic(this));
     }
-    return localmhe;
+    return localmgn;
   }
   
   void b()
   {
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373495));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373411));
     if (this.jdField_c_of_type_AndroidWidgetButton != null) {
-      AudioHelper.a(getResources(), this.jdField_c_of_type_AndroidWidgetButton, 2130842144, 2131165943, 2131165943);
+      AudioHelper.a(getResources(), this.jdField_c_of_type_AndroidWidgetButton, 2130842186, 2131165961, 2131165961);
     }
   }
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Mrf == null) {
+    if (this.jdField_a_of_type_Mqo == null) {
       return;
     }
-    mrf localmrf = this.jdField_a_of_type_Mrf;
+    mqo localmqo = this.jdField_a_of_type_Mqo;
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localmrf.a(bool);
+      localmqo.a(bool);
       return;
     }
   }
@@ -1395,33 +1395,31 @@ public class QavPanel
         if (!paramBoolean) {
           break label239;
         }
-        this.jdField_a_of_type_Mtx.setAlpha(255);
+        this.jdField_a_of_type_Mtg.setAlpha(255);
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setAlpha(255);
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-1);
-        this.jdField_a_of_type_Mtx.a(1);
-        a(2131373336, getResources().getString(2131692584));
-        if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Miu != null) && (e()))
+        this.jdField_a_of_type_Mtg.a(1);
+        a(2131373252, getResources().getString(2131692632));
+        if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Mid != null) && (e()))
         {
-          this.jdField_a_of_type_Miu.removeMessages(257);
-          this.jdField_a_of_type_Miu.sendEmptyMessageDelayed(257, 5300L);
+          this.jdField_a_of_type_Mid.removeMessages(257);
+          this.jdField_a_of_type_Mid.sendEmptyMessageDelayed(257, 5300L);
         }
-        if (mvd.a(false)) {
+        if (mum.a(false)) {
           break;
         }
-        this.jdField_a_of_type_Miu.removeMessages(258);
-        this.jdField_a_of_type_Miu.sendEmptyMessageDelayed(258, 300L);
+        this.jdField_a_of_type_Mid.removeMessages(258);
+        this.jdField_a_of_type_Mid.sendEmptyMessageDelayed(258, 300L);
         return;
       }
-      this.jdField_a_of_type_Mtx.setAlpha(255);
+      this.jdField_a_of_type_Mtg.setAlpha(255);
       this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setAlpha(255);
       this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(1291845632);
-      this.jdField_a_of_type_Mtx.a(0);
-      if (this.jdField_a_of_type_Miu != null) {
-        this.jdField_a_of_type_Miu.removeMessages(257);
-      }
-    } while (mvd.a(true));
-    this.jdField_a_of_type_Miu.removeMessages(259);
-    this.jdField_a_of_type_Miu.sendEmptyMessageDelayed(259, 300L);
+      this.jdField_a_of_type_Mtg.a(0);
+      this.jdField_a_of_type_Mid.removeMessages(257);
+    } while (mum.a(true));
+    this.jdField_a_of_type_Mid.removeMessages(259);
+    this.jdField_a_of_type_Mid.sendEmptyMessageDelayed(259, 300L);
   }
   
   public void b(boolean paramBoolean, int paramInt)
@@ -1439,12 +1437,12 @@ public class QavPanel
   {
     if (d())
     {
-      locallff = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      if ((!this.jdField_d_of_type_Boolean) || (locallff.a() == 3) || (this.jdField_e_of_type_Boolean)) {}
+      locallez = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+      if ((!this.jdField_d_of_type_Boolean) || (locallez.a() == 3) || (this.jdField_e_of_type_Boolean)) {}
     }
     while ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().f() != 3) && (!this.jdField_e_of_type_Boolean))
     {
-      lff locallff;
+      lez locallez;
       return true;
       return false;
     }
@@ -1464,7 +1462,7 @@ public class QavPanel
   public boolean b(int paramInt1, int paramInt2, int paramInt3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewRule, id" + meu.a(paramInt1) + ", verb[" + paramInt2 + "], anchor[" + paramInt3 + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewRule, id" + med.a(paramInt1) + ", verb[" + paramInt2 + "], anchor[" + paramInt3 + "]");
     }
     View localView = b(paramInt1);
     if (localView != null) {
@@ -1486,7 +1484,7 @@ public class QavPanel
   public boolean b(int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewClickable, id" + meu.a(paramInt));
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewClickable, id" + med.a(paramInt));
     }
     View localView = b(paramInt);
     if (localView != null)
@@ -1499,17 +1497,17 @@ public class QavPanel
   
   void c()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373492));
-    this.jdField_a_of_type_Miz = new miz(getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView, this.jdField_c_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373408));
+    this.jdField_a_of_type_Mii = new mii(getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView, this.jdField_c_of_type_AndroidWidgetImageView);
     if (c())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131719169));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131719455));
       this.jdField_a_of_type_AndroidWidgetImageView.setFocusable(true);
       this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new mim(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new mhv(this));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_Miz);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_Mii);
   }
   
   public void c(int paramInt)
@@ -1541,10 +1539,10 @@ public class QavPanel
   void d()
   {
     Object localObject = getResources().getDisplayMetrics();
-    int n = getResources().getDimensionPixelSize(2131297808);
-    int i1 = getResources().getDimensionPixelSize(2131297805);
+    int n = getResources().getDimensionPixelSize(2131297863);
+    int i1 = getResources().getDimensionPixelSize(2131297860);
     int m = 0;
-    if (this.jdField_a_of_type_Int == 2131559749) {
+    if (this.jdField_a_of_type_Int == 2131559751) {
       m = ((DisplayMetrics)localObject).widthPixels * 880 / 750;
     }
     if (QLog.isColorLevel()) {
@@ -1560,25 +1558,25 @@ public class QavPanel
   
   void d(int paramInt)
   {
-    mhe localmhe = null;
-    if (this.jdField_a_of_type_ArrayOfMhe[paramInt] != null) {
+    mgn localmgn = null;
+    if (this.jdField_a_of_type_ArrayOfMgn[paramInt] != null) {
       return;
     }
     if (paramInt == 1) {
-      localmhe = b();
+      localmgn = b();
     }
     for (;;)
     {
-      this.jdField_a_of_type_ArrayOfMhe[paramInt] = localmhe;
+      this.jdField_a_of_type_ArrayOfMgn[paramInt] = localmgn;
       return;
       if (paramInt == 0) {
-        localmhe = a();
+        localmgn = a();
       } else if (paramInt == 2) {
-        localmhe = a(2, new mda(null));
+        localmgn = a(2, new mcj(null));
       } else if (paramInt == 3) {
-        localmhe = a(3, new mda("0X800A567"));
+        localmgn = a(3, new mcj("0X800A567"));
       } else if (paramInt == 4) {
-        localmhe = a(4, new mda(null));
+        localmgn = a(4, new mcj(null));
       }
     }
   }
@@ -1621,19 +1619,19 @@ public class QavPanel
   
   public void g()
   {
-    mhe localmhe = this.jdField_a_of_type_ArrayOfMhe[1];
-    if (localmhe == null) {}
-    while ((!localmhe.jdField_a_of_type_Boolean) || (!(localmhe.jdField_a_of_type_AndroidWidgetRelativeLayout instanceof QavOperationMenuView))) {
+    mgn localmgn = this.jdField_a_of_type_ArrayOfMgn[1];
+    if (localmgn == null) {}
+    while ((!localmgn.jdField_a_of_type_Boolean) || (!(localmgn.jdField_a_of_type_AndroidWidgetRelativeLayout instanceof QavOperationMenuView))) {
       return;
     }
-    ((QavOperationMenuView)localmhe.jdField_a_of_type_AndroidWidgetRelativeLayout).f();
+    ((QavOperationMenuView)localmgn.jdField_a_of_type_AndroidWidgetRelativeLayout).f();
   }
   
   void h()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364399));
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166027));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166045));
     }
   }
   
@@ -1669,10 +1667,10 @@ public class QavPanel
   
   void k()
   {
-    if (this.jdField_a_of_type_Mrf != null) {
+    if (this.jdField_a_of_type_Mqo != null) {
       return;
     }
-    this.jdField_a_of_type_Mrf = mre.a(getResources(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mqo = mqn.a(getResources(), this.jdField_a_of_type_Int);
   }
   
   public void setAcceptDrawableTop(Drawable paramDrawable)
@@ -1704,7 +1702,7 @@ public class QavPanel
       if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
       {
         this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mip(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mhy(this));
       }
       int n;
       ValueAnimator localValueAnimator;
@@ -1768,18 +1766,18 @@ public class QavPanel
   
   public void setNoVideoAndShareBtnMode()
   {
-    if (this.jdField_a_of_type_Mrf != null)
+    if (this.jdField_a_of_type_Mqo != null)
     {
-      this.jdField_a_of_type_Mrf.a(2131694728);
-      this.jdField_a_of_type_Mrf.a(2131694732);
-      this.jdField_a_of_type_Mrf.a(2131694734);
+      this.jdField_a_of_type_Mqo.a(2131694866);
+      this.jdField_a_of_type_Mqo.a(2131694870);
+      this.jdField_a_of_type_Mqo.a(2131694872);
     }
   }
   
   public void setViewEnable(int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewEnable, id" + meu.a(paramInt) + ", enable[" + paramBoolean + "]");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setViewEnable, id" + med.a(paramInt) + ", enable[" + paramBoolean + "]");
     }
     View localView = b(paramInt);
     if (localView != null) {
@@ -1795,7 +1793,7 @@ public class QavPanel
     if (QLog.isColorLevel())
     {
       str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder().append("setViewVisibility, id").append(meu.a(paramInt1)).append("], view[");
+      localStringBuilder = new StringBuilder().append("setViewVisibility, id").append(med.a(paramInt1)).append("], view[");
       if (localView == null) {
         break label97;
       }

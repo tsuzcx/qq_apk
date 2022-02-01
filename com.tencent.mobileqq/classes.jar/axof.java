@@ -1,13 +1,6 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-
 public abstract interface axof
 {
-  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(axoe paramaxoe);
 }
 
 

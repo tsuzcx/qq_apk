@@ -1,305 +1,72 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.together.writetogether.data.CursorManager.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class benu
+  extends JobSegment<bent, bent>
 {
-  private benv jdField_a_of_type_Benv;
-  private beog jdField_a_of_type_Beog;
-  private List<beog> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
   
-  public benu(beog parambeog, List<beog> paramList)
+  public benu(int paramInt)
   {
-    this.jdField_a_of_type_Beog = parambeog;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  @NotNull
-  private List<beog> a(int paramInt, List<beog> paramList)
+  protected void a(JobContext paramJobContext, bent parambent)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      beog localbeog = (beog)paramList.get(i);
-      if (localbeog != null)
-      {
-        if (paramInt != localbeog.jdField_c_of_type_Int) {
-          break label70;
-        }
-        localbeog.jdField_a_of_type_Boolean = true;
-        localArrayList.add(localbeog);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label70:
-        if (localbeog.jdField_c_of_type_Boolean) {
-          localbeog.jdField_a_of_type_Boolean = false;
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void a(beog parambeog)
-  {
-    if (!parambeog.jdField_c_of_type_Boolean)
-    {
-      parambeog.jdField_a_of_type_Boolean = true;
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new CursorManager.1(this, parambeog), 2000L);
-    }
-  }
-  
-  private void a(List<beog> paramList)
-  {
-    if (QLog.isColorLevel())
-    {
-      int i = 0;
-      while (i < paramList.size())
-      {
-        QLog.d("CursorManager", 2, "[updateMyEditInfo] info: " + ((beog)paramList.get(i)).toString());
-        i += 1;
-      }
-    }
-  }
-  
-  private void a(List<beog> paramList1, List<beog> paramList2, int paramInt)
-  {
-    String str = "等" + paramInt + "人";
-    int i = 0;
-    beog localbeog;
-    while (i < paramInt)
-    {
-      localbeog = (beog)paramList2.get(i);
-      if (localbeog != null) {
-        localbeog.jdField_a_of_type_Boolean = false;
-      }
-      i += 1;
-    }
-    paramList2 = (beog)paramList2.get(paramInt - 1);
-    if (paramList2 != null)
-    {
-      localbeog = new beog(paramList2);
-      localbeog.jdField_b_of_type_Boolean = true;
-      localbeog.jdField_a_of_type_Boolean = true;
-      paramList2.jdField_b_of_type_JavaLangString += str;
-      paramList1.add(localbeog);
-    }
-  }
-  
-  private void b(beog parambeog)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambeog);
-    if (i != -1) {
-      Collections.swap(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilList.size() - 1, i);
-    }
-  }
-  
-  private void b(List<beog> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      beog localbeog = (beog)paramList.get(i);
-      if ((localbeog != null) && (localbeog.jdField_b_of_type_Boolean)) {
-        localArrayList.add(localbeog);
-      }
-      i += 1;
-    }
-    paramList.removeAll(localArrayList);
-  }
-  
-  public beog a()
-  {
-    return this.jdField_a_of_type_Beog;
-  }
-  
-  protected beog a(String paramString)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject = new beog();
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-    int i = 0;
-    label32:
-    if (i < localArrayList.size())
-    {
-      localObject = (beog)localArrayList.get(i);
-      if ((localObject == null) || (!paramString.equals(((beog)localObject).jdField_a_of_type_JavaLangString))) {}
-    }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      localObject = paramString;
-      if (paramString != null) {
-        break;
-      }
-      return new beog();
-      i += 1;
-      break label32;
-    }
-  }
-  
-  public Pair<Integer, Integer> a()
-  {
-    return new Pair(Integer.valueOf(this.jdField_a_of_type_Beog.jdField_c_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Beog.d));
-  }
-  
-  public List<beog> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Beog.jdField_c_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Beog.d = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    a(paramInt1, paramInt2);
-    List localList1 = a();
-    b(localList1);
-    List localList2 = a(paramInt1, localList1);
-    a(localList1);
-    int i = localList2.size();
-    if (i > 1) {
-      a(localList1, localList2, i);
-    }
-    a(localList1);
-    if (this.jdField_a_of_type_Benv != null)
-    {
-      this.jdField_a_of_type_Benv.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Benv.a(paramInt1, paramInt2);
-      }
-    }
-  }
-  
-  public void a(benv parambenv)
-  {
-    this.jdField_a_of_type_Benv = parambenv;
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (TextUtils.isEmpty(paramString.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CursorManager", 2, "[removeEditInfo] editInfo not exists");
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    a(a().jdField_c_of_type_Int, a().d, false);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    beog localbeog = a(paramString);
-    if (TextUtils.isEmpty(localbeog.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("CursorManager", 2, "[updateUserCursorSelection] uin: " + paramString + " not in EditInfo");
-      }
-      return;
-    }
-    a(localbeog);
-    localbeog.jdField_c_of_type_Int = paramInt1;
-    localbeog.d = paramInt2;
-    localbeog.jdField_a_of_type_Float = -1.0F;
-    b(localbeog);
     if (QLog.isColorLevel()) {
-      QLog.d("CursorManager", 2, "[updateUserCursorSelection] update cursor uin: " + paramString + ", start: " + paramInt1 + ", end: " + paramInt2);
+      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(parambent.g) });
     }
-    a(a().jdField_c_of_type_Int, a().d, false);
-  }
-  
-  public void a(String paramString, beog parambeog)
-  {
-    if (!TextUtils.isEmpty(a(paramString).jdField_a_of_type_JavaLangString))
+    bent.b();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CursorManager", 2, "[addUserEditInfo] editInfo exists");
+      String str = TroopHWJsPlugin.a(-1, parambent.a, this.jdField_a_of_type_Int, null);
+      if (FileUtil.fileExistsAndNotEmpty(str)) {}
+      for (parambent.c = str;; parambent.c = parambent.a)
+      {
+        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment. in path=", parambent.a, ", out path=", parambent.c });
+        if (isCanceled()) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(parambent.g) });
+        }
+        notifyResult(parambent);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("CompressImageSegment", 2, "CompressImageSegment failed.");
+        }
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(parambeog);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    List localList = a();
-    int i = 0;
-    int j;
-    int k;
-    if (i < localList.size())
+    catch (Exception paramJobContext)
     {
-      beog localbeog = (beog)localList.get(i);
-      j = localbeog.jdField_c_of_type_Int;
-      k = localbeog.d;
-      Object localObject = null;
-      for (;;)
+      QLog.e("CompressImageSegment", 1, "CompressImageSegment Exception: ", paramJobContext);
+      notifyError(new Error("101"));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
+      URLDrawable.clearMemoryCache();
+      System.gc();
+      if (!this.jdField_a_of_type_Boolean)
       {
-        try
-        {
-          if (paramString1.equals(localbeog.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          bool = true;
-          int[] arrayOfInt = beks.a(paramString2, j, k, bool);
-          localObject = arrayOfInt;
-        }
-        catch (Throwable localThrowable)
-        {
-          boolean bool;
-          QLog.e("CursorManager", 1, "[updateOtherSelectionByPushChangeset] cs: " + paramString2 + ", oldStart: " + j + ", oldEnd, " + k);
-          continue;
-        }
-        if ((localObject != null) && (localObject.length == 2))
-        {
-          localbeog.jdField_c_of_type_Int = localObject[0];
-          localbeog.d = localObject[1];
-        }
-        i += 1;
-        break;
-        bool = false;
+        this.jdField_a_of_type_Boolean = true;
+        a(paramJobContext, parambent);
+        return;
       }
+      notifyError(new Error("-1"));
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void onCancel()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = beks.a(paramString, a().jdField_c_of_type_Int, a().d, true);
-    int i = paramString[0];
-    int j = paramString[1];
-    a(i, j, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("CursorManager", 2, "[updateMySelectionByPushChangeset] after range follow, curStart: " + i + ", curEnd: " + j);
-    }
+    notifyError(new Error("c_1000"));
   }
 }
 

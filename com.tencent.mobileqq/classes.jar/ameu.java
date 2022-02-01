@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ameu
-  implements DialogInterface.OnClickListener
+public abstract interface ameu
 {
-  ameu(ames paramames) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

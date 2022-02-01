@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import anvu;
+import amqd;
 
 public class DataLineHandler$13
   implements Runnable
 {
-  public DataLineHandler$13(anvu paramanvu, long paramLong1, long paramLong2, long paramLong3) {}
+  public DataLineHandler$13(amqd paramamqd, long paramLong1, long paramLong2, long paramLong3) {}
   
   public void run()
   {
-    anvu.a(this.this$0, this.a, this.b, this.c);
+    amqd.a(this.this$0, this.a, this.b, this.c);
   }
 }
 

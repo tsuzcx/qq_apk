@@ -1,26 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
-final class bgrj
-  implements DialogInterface.OnClickListener
+public abstract interface bgrj
 {
-  bgrj(long paramLong) {}
+  public abstract void onError();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      TroopFileTransferManager.i();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
-  }
+  public abstract void onPlayEnd();
+  
+  public abstract void onPlayStop();
+  
+  public abstract void onSlicePlayed(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

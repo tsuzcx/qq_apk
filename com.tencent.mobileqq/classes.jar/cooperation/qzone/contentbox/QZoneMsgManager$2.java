@@ -1,16 +1,15 @@
 package cooperation.qzone.contentbox;
 
-import bmyi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
 
-public class QZoneMsgManager$2
+class QZoneMsgManager$2
   implements Runnable
 {
-  public QZoneMsgManager$2(bmyi parambmyi, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
+  QZoneMsgManager$2(QZoneMsgManager paramQZoneMsgManager, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
   
   public void run()
   {
@@ -22,7 +21,7 @@ public class QZoneMsgManager$2
     {
       try
       {
-        localQQAppInterface = this.this$0.a();
+        localQQAppInterface = this.this$0.getApp();
         if (localQQAppInterface != null) {
           continue;
         }
@@ -50,17 +49,17 @@ public class QZoneMsgManager$2
       return;
       localObject2 = localObject4;
       localObject1 = localEntityManager;
-      this.a.writeArkNewsToBuffer();
+      this.val$entity.writeArkNewsToBuffer();
       localObject2 = localObject4;
       localObject1 = localEntityManager;
-      localEntityManager = localQQAppInterface.a().createEntityManager();
+      localEntityManager = localQQAppInterface.getEntityManagerFactory().createEntityManager();
       localObject2 = localEntityManager;
       localObject1 = localEntityManager;
-      if (this.a.getStatus() == 1000)
+      if (this.val$entity.getStatus() == 1000)
       {
         localObject2 = localEntityManager;
         localObject1 = localEntityManager;
-        localEntityManager.persist(this.a);
+        localEntityManager.persist(this.val$entity);
         if (localEntityManager != null) {
           localEntityManager.close();
         }
@@ -69,7 +68,7 @@ public class QZoneMsgManager$2
       {
         localObject2 = localEntityManager;
         localObject1 = localEntityManager;
-        localEntityManager.update(this.a);
+        localEntityManager.update(this.val$entity);
       }
     }
   }

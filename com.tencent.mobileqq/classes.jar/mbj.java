@@ -1,25 +1,17 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.10.1;
-import com.tencent.av.ui.AVActivity.10.2;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
 public class mbj
-  extends biko
+  extends BroadcastReceiver
 {
-  public mbj(AVActivity paramAVActivity) {}
+  public mbj(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.10.2(this));
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
     }
   }
 }

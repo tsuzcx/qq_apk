@@ -1,43 +1,43 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bevm;
-import bhmi;
-import bozr;
-import bpam;
-import bpbn;
-import bpgd;
+import bmbc;
+import bmbx;
+import bmcx;
+import bmht;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
 public class AEEditorCommonEditFragment$8$1$1
   implements Runnable
 {
-  public AEEditorCommonEditFragment$8$1$1(bpgd parambpgd, bevm parambevm) {}
+  public AEEditorCommonEditFragment$8$1$1(bmht parambmht, NetResp paramNetResp) {}
   
   public void run()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Bevm != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp != null)
     {
-      localObject = bozr.a();
-      if (this.jdField_a_of_type_Bevm.a == 0) {
+      localObject = bmbc.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult == 0) {
         bool = true;
       }
-      ((bozr)localObject).a(bool, 2, "AEEditorFilterAIAnimation", "", this.jdField_a_of_type_Bevm.b, this.jdField_a_of_type_Bevm.g);
+      ((bmbc)localObject).a(bool, 2, "AEEditorFilterAIAnimation", "", this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrCode, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.reqCost);
     }
-    Object localObject = bpbn.e;
+    Object localObject = bmcx.e;
     File localFile = new File((String)localObject);
     if (localFile.exists()) {
       try
       {
-        if (!"b9f8fc550f1535b445b564bfbe0d82c5".equalsIgnoreCase(bhmi.c((String)localObject)))
+        if (!"b9f8fc550f1535b445b564bfbe0d82c5".equalsIgnoreCase(FileUtils.calcMd5((String)localObject)))
         {
           localFile.delete();
-          bpam.d(AEEditorCommonEditFragment.d(), "ae editor lottie download md5 check failed.");
+          bmbx.d(AEEditorCommonEditFragment.c(), "ae editor lottie download md5 check failed.");
           return;
         }
-        bhmi.a((String)localObject, bpbn.d, false);
-        bhmi.a(bpbn.d + File.separator + ".nomedia");
+        FileUtils.uncompressZip((String)localObject, bmcx.d, false);
+        FileUtils.createFile(bmcx.d + File.separator + ".nomedia");
         return;
       }
       catch (IOException localIOException)

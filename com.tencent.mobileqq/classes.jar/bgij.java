@@ -1,38 +1,16 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import java.io.File;
+import kotlin.jvm.functions.Function0;
 
-public class bgij
-  extends bghr
+class bgij
+  implements Function0<Drawable>
 {
-  public bgij(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 6;
-  }
+  bgij(bgih parambgih, File paramFile, Looper paramLooper, boolean paramBoolean) {}
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public Drawable a()
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696759), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_homework", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString)
-  {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_homework", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    return this.jdField_a_of_type_Bgih.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
   }
 }
 

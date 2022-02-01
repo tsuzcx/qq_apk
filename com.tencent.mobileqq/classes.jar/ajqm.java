@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class ajqm
-  implements View.OnClickListener
+class ajqm
+  extends axkw
 {
-  public ajqm(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView, structmsg.SystemMsg paramSystemMsg) {}
+  ajqm(ajqk paramajqk) {}
   
-  public void onClick(View paramView)
+  protected void onGetQZoneAlbumListNum(boolean paramBoolean, Bundle paramBundle)
   {
-    azyo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.a, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
+    {
+      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
+      ((ajrc)this.a.mOtherCommonData).jdField_a_of_type_Long = l;
+      paramBundle = this.a.a();
+      if (paramBundle != null)
+      {
+        paramBundle.a(((ajrc)this.a.mOtherCommonData).jdField_a_of_type_Long);
+        paramBundle.postData();
+      }
+    }
+    ((ajrc)this.a.mOtherCommonData).jdField_a_of_type_Boolean = false;
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
   }
 }
 

@@ -1,47 +1,84 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class avcb
-  extends noa
+class avcb
+  extends auzh
 {
-  public avcb(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  avcb(avca paramavca) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  protected void a(int paramInt, String paramString)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
-    do
-    {
+    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_Avci.jdField_a_of_type_Int), this.a.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
+    if ((!this.a.b) || (this.a.jdField_a_of_type_Avci.jdField_a_of_type_Int != paramInt) || (!this.a.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
       return;
-      this.a.z();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
+    if ((paramString == null) || (this.a.jdField_a_of_type_Avci.b == 3))
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693369, 0).a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_Avci.c != 2)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693371, 0).a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_Avci.b == 4)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693373, 0).a();
+      return;
+    }
+    MusicInfo localMusicInfo = paramString.a();
+    ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_Avci.jdField_a_of_type_Boolean, null);
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    avca.a(this.a, paramInt, paramString1, paramString2);
+  }
+  
+  protected void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    this.a.a(paramInt, paramString, paramBoolean);
+  }
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession)
+  {
+    this.a.a(paramListenTogetherSession);
+  }
+  
+  protected void a(String paramString, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramString, paramInt1, paramInt2);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3)
+  {
+    if ((paramInt1 == this.a.jdField_a_of_type_Avci.jdField_a_of_type_Int) && (paramString1.equals(this.a.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString)) && (!paramBoolean))
+    {
+      paramString1 = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693375);
       }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.h))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
-          }
-          this.a.N();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
-      }
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
-    this.a.m();
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString1, 0).a();
+    }
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    this.a.a(paramInt, paramString);
+  }
+  
+  protected void h(int paramInt, String paramString)
+  {
+    this.a.b(paramInt, paramString);
   }
 }
 

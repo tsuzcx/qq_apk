@@ -1,26 +1,8 @@
-public class bdhf
+public abstract interface bdhf
 {
-  public araj[] a = new araj[0];
+  public abstract void a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
-    if (this.a != null)
-    {
-      araj[] arrayOfaraj = this.a;
-      int j = arrayOfaraj.length;
-      int i = 0;
-      while (i < j)
-      {
-        araj localaraj = arrayOfaraj[i];
-        if (localaraj != null) {
-          localStringBuilder.append("confItem ").append(localaraj.jdField_a_of_type_Int).append(":").append(localaraj.jdField_a_of_type_JavaLangString).append("\n");
-        }
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.open.wadl;
 
 import android.text.TextUtils;
-import bkad;
+import bifn;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 
@@ -18,7 +18,7 @@ class WadlJsBridge$1
       if ((localWebView != null) && (!TextUtils.isEmpty(this.a)))
       {
         if (QLog.isColorLevel()) {
-          bkad.c("WadlJsBridge", "##@WadlJavaScript:" + this.a);
+          bifn.c("WadlJsBridge", "##@WadlJavaScript:" + this.a);
         }
         localWebView.loadUrl(this.a);
       }
@@ -26,7 +26,7 @@ class WadlJsBridge$1
     }
     catch (Exception localException)
     {
-      bkad.a("WadlJsBridge", "webview loadUrl jsCallBack()>>> ", localException);
+      bifn.a("WadlJsBridge", "webview loadUrl jsCallBack()>>> ", localException);
     }
   }
 }

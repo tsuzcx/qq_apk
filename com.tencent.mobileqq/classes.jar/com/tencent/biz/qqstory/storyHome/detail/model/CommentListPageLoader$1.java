@@ -2,35 +2,35 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
-import wse;
-import wth;
-import yfc;
-import yff;
-import ylv;
-import yuk;
+import vtu;
+import vux;
+import xgn;
+import xgq;
+import xng;
+import xvv;
 
 public class CommentListPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((wse)wth.a(17)).a(yfc.a(this.this$0).jdField_a_of_type_JavaLangString, yfc.a(this.this$0).a());
-    yff localyff = new yff(new ErrorMessage(), yfc.a(this.this$0).jdField_a_of_type_JavaLangString, yfc.a(this.this$0).jdField_a_of_type_Int);
-    localyff.d = false;
-    localyff.jdField_b_of_type_Boolean = true;
-    localyff.jdField_a_of_type_JavaUtilList = ((List)???);
-    localyff.jdField_b_of_type_Int = -1;
-    localyff.jdField_a_of_type_Boolean = true;
-    localyff.jdField_a_of_type_Int = yfc.a(this.this$0).jdField_b_of_type_Int;
+    ??? = ((vtu)vux.a(17)).a(xgn.a(this.this$0).jdField_a_of_type_JavaLangString, xgn.a(this.this$0).a());
+    xgq localxgq = new xgq(new ErrorMessage(), xgn.a(this.this$0).jdField_a_of_type_JavaLangString, xgn.a(this.this$0).jdField_a_of_type_Int);
+    localxgq.d = false;
+    localxgq.jdField_b_of_type_Boolean = true;
+    localxgq.jdField_a_of_type_JavaUtilList = ((List)???);
+    localxgq.jdField_b_of_type_Int = -1;
+    localxgq.jdField_a_of_type_Boolean = true;
+    localxgq.jdField_a_of_type_Int = xgn.a(this.this$0).jdField_b_of_type_Int;
     synchronized (this.this$0)
     {
       if (!this.this$0.jdField_b_of_type_Boolean)
       {
-        yfc.a(this.this$0, localyff);
-        yuk.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localyff);
+        xgn.a(this.this$0, localxgq);
+        xvv.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localxgq);
         return;
       }
-      yuk.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      xvv.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
     }
   }
 }

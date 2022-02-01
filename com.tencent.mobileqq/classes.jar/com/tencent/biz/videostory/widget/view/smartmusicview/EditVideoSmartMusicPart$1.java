@@ -1,32 +1,32 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
-import abcu;
-import abcv;
-import beum;
-import beuo;
-import bevn;
-import bhnv;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import zzf;
+import zzg;
 
 public class EditVideoSmartMusicPart$1
   implements Runnable
 {
-  public EditVideoSmartMusicPart$1(abcu paramabcu) {}
+  public EditVideoSmartMusicPart$1(zzf paramzzf) {}
   
   public void run()
   {
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_Beuq = new abcv(this);
-    localbeum.jdField_a_of_type_JavaLangString = abcu.a(this.this$0);
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.c = abcu.a(this.this$0).getPath();
-    localbeum.b = bhnv.a(bevn.a().a());
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = new zzg(this);
+    localHttpNetReq.mReqUrl = zzf.a(this.this$0);
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = zzf.a(this.this$0).getPath();
+    localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     QQStoryContext.a();
-    QQStoryContext.a().getNetEngine(0).a(localbeum);
-    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + abcu.a(this.this$0));
+    QQStoryContext.a().getNetEngine(0).sendReq(localHttpNetReq);
+    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + zzf.a(this.this$0));
   }
 }
 

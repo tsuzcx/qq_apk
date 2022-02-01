@@ -1,54 +1,41 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.2;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class agxw
-  extends Drawable
+  extends ahat
 {
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  agxw(agxv paramagxv) {}
   
-  public agxw(int paramInt1, int paramInt2, float paramFloat)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt2);
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.4(this));
   }
   
-  public void draw(Canvas paramCanvas)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
-    if ((i > 0) && (j > 0))
-    {
-      paramCanvas.save();
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restore();
-    }
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
   }
   
-  public int getOpacity()
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    return -3;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
   }
   
-  public void setAlpha(int paramInt)
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.3(this, paramArrayOfAIORichMediaData, paramInt));
   }
 }
 

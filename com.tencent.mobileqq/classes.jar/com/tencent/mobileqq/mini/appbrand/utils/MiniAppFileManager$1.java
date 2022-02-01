@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,7 +14,7 @@ class MiniAppFileManager$1
     String str = MiniAppFileManager.access$000(this.this$0, 2);
     try
     {
-      MiniAppFileManager.access$100(this.this$0).set(bhmi.b(str));
+      MiniAppFileManager.access$100(this.this$0).set(FileUtils.getFileOrFolderSize(str));
       label23:
       MiniAppFileManager.access$200(this.this$0).countDown();
       return;

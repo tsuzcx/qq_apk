@@ -1,72 +1,71 @@
 package com.tencent.mobileqq.vas;
 
-import ahnt;
-import amrx;
+import agkg;
+import almr;
+import amrg;
+import amuo;
 import android.content.Context;
 import android.text.TextUtils;
-import antf;
-import anwx;
-import aoan;
-import asde;
-import asdv;
-import aslq;
-import assp;
-import auvx;
-import avrd;
-import avrf;
-import avrl;
-import axfj;
-import azxs;
-import azze;
-import azzf;
-import azzg;
-import azzw;
-import bftx;
-import bfui;
-import bgth;
-import bhkt;
-import bhmi;
-import bhto;
-import bhwl;
-import bhwz;
-import bhyk;
-import bhzg;
-import bhzi;
-import bhzq;
-import biaa;
-import bias;
-import bibq;
-import bici;
-import biho;
-import biim;
-import biio;
-import bile;
-import bind;
-import bmbq;
-import bmbw;
+import aqxc;
+import aqxt;
+import arfm;
+import atif;
+import auef;
+import aueh;
+import auen;
+import avsq;
+import aymh;
+import aynt;
+import aynu;
+import aynv;
+import ayol;
+import bedi;
+import bedt;
+import bfcv;
+import bfua;
+import bgae;
+import bgcw;
+import bgdk;
+import bgev;
+import bgfr;
+import bgga;
+import bggk;
+import bghc;
+import bgia;
+import bgit;
+import bgny;
+import bgox;
+import bgoz;
+import bgrn;
+import bkfn;
+import bkft;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gc;
-import go;
+import gb;
+import gm;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 import mqq.app.MobileQQ;
-import niz;
+import nko;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class VasQuickUpdateManager$DefaultUpdateCallback
-  extends bici
+  extends bgit
 {
   public VasQuickUpdateManager$DefaultUpdateCallback(VasQuickUpdateManager paramVasQuickUpdateManager) {}
   
@@ -77,7 +76,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("font.diycard.android."))
     {
       paramString = paramString.substring("font.diycard.android.".length(), paramString.length());
-      paramString = azzf.a + paramString;
+      paramString = aynu.a + paramString;
       bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: font diy card path = " + paramString + " result = " + bool);
@@ -87,7 +86,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("font.hifont.android."))
     {
       paramString = paramString.substring("font.hifont.android.".length(), paramString.length());
-      paramString = avrd.b + paramString;
+      paramString = auef.b + paramString;
       bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: font hiboom path = " + paramString + " result = " + bool);
@@ -97,7 +96,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("font.hiFontQQ.json."))
     {
       paramString = paramString.substring("font.hiFontQQ.json.".length(), paramString.length());
-      paramString = avrd.c + paramString;
+      paramString = auef.c + paramString;
       bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: font hiboom config path = " + paramString + " result = " + bool);
@@ -106,7 +105,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramString.startsWith("font.hiFontQQ.tags"))
     {
-      bool = VasQuickUpdateEngine.safeDeleteFile(new File(avrd.d));
+      bool = VasQuickUpdateEngine.safeDeleteFile(new File(auef.d));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: font hiboom tag result = " + bool);
       }
@@ -115,7 +114,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("font.main.android."))
     {
       paramString = paramString.substring("font.main.android.".length(), paramString.length());
-      paramString = gc.a + File.separatorChar + paramString + File.separatorChar + paramString + ".ttf";
+      paramString = gb.a + File.separatorChar + paramString + File.separatorChar + paramString + ".ttf";
       bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: font font path = " + paramString + " result = " + bool);
@@ -125,7 +124,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("font.fzfont.android."))
     {
       paramString = paramString.substring("font.fzfont.android.".length(), paramString.length());
-      paramString = gc.b + paramString + File.separatorChar + paramString + ".ttf";
+      paramString = gb.b + paramString + File.separatorChar + paramString + ".ttf";
       bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: font font fz path = " + paramString + " result = " + bool);
@@ -134,13 +133,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramString.equals("magicFontConfig.json"))
     {
-      bool = VasQuickUpdateEngine.safeDeleteFile(new File(gc.g));
+      bool = VasQuickUpdateEngine.safeDeleteFile(new File(gb.g));
       if (QLog.isColorLevel()) {
-        QLog.d("VasQuickUpdateManager", 2, "deleteFiles: fontEffect json path = " + gc.g + " result = " + bool);
+        QLog.d("VasQuickUpdateManager", 2, "deleteFiles: fontEffect json path = " + gb.g + " result = " + bool);
       }
       return Boolean.valueOf(bool);
     }
-    return null;
+    return Boolean.valueOf(false);
   }
   
   @Nullable
@@ -155,20 +154,20 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       return Boolean.valueOf(bool);
     }
-    return null;
+    return Boolean.valueOf(false);
   }
   
   @Nullable
   private Boolean deleteMatriel(String paramString)
   {
     if (paramString.equals("libColorFont_818")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bhto.a() + "libFounderColorFont_818.so")));
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bgae.a() + "libFounderColorFont_818.so")));
     }
     if (paramString.equals("kcsdk_4_4_7_3661")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(biim.a().a(this.this$0.app.getApp()))));
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bgox.a().a(this.this$0.app.getApp()))));
     }
-    if (paramString.equals("GLDrawableV845")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(bibq.a(this.this$0.app.getApp())));
+    if (paramString.equals("GLDrawableV848")) {
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(bgia.a(this.this$0.app.getApp())));
     }
     if (paramString.equals("libFlatBuffersParser"))
     {
@@ -176,31 +175,31 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       return Boolean.valueOf(true);
     }
     if (paramString.equals("libVipFont_808")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bhto.a() + "libvipfont808.so")));
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bgae.a() + "libvipfont808.so")));
     }
     if (paramString.startsWith("bqmall.android.h5magic."))
     {
-      aslq.a(paramString);
+      arfm.a(paramString);
       return Boolean.valueOf(true);
     }
     if (paramString.equals("libqgplayer_841")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bmbw.a() + "libqgplayer_841.so")));
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bkft.a() + "libqgplayer_841.so")));
     }
     if (paramString.equals("libAPNG_845")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bhto.a() + "libAPNG_release_845.so")));
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(bgae.a() + "libAPNG_release_845.so")));
     }
     if (paramString.equals("defaultFont_775")) {
-      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(go.a())));
+      return Boolean.valueOf(VasQuickUpdateEngine.safeDeleteFile(new File(gm.a())));
     }
     if (paramString.equals("enterEffectVipIcons"))
     {
-      paramString = bftx.a();
+      paramString = bedi.a();
       if (!TextUtils.isEmpty(paramString)) {
         VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       }
       return Boolean.valueOf(true);
     }
-    return null;
+    return Boolean.valueOf(false);
   }
   
   @Nullable
@@ -208,7 +207,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if ("cardWZ.zip".equals(paramString))
     {
-      paramString = azze.a(this.this$0.app.getApp());
+      paramString = aynt.a(this.this$0.app.getApp());
       boolean bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: profile card path = " + paramString + " result = " + bool);
@@ -217,11 +216,11 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramString.startsWith("card."))
     {
-      azxs localazxs = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Azxs;
+      aymh localaymh = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Aymh;
       int i = Integer.parseInt(paramString.substring("card.".length(), paramString.length()));
-      return Boolean.valueOf(localazxs.b(this.this$0.app.getApp(), i));
+      return Boolean.valueOf(localaymh.b(this.this$0.app.getApp(), i));
     }
-    return null;
+    return Boolean.valueOf(false);
   }
   
   @Nullable
@@ -230,13 +229,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("signature.sticker."))
     {
       paramString = paramString.substring("signature.sticker.".length(), paramString.length());
-      boolean bool = VasQuickUpdateEngine.safeDeleteFile(new File(antf.ca + paramString));
+      boolean bool = VasQuickUpdateEngine.safeDeleteFile(new File(AppConstants.SDCARD_SIGNATURE_STICKER_DIR + paramString));
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: signature sticker path = " + paramString + " result = " + bool);
       }
       return Boolean.valueOf(bool);
     }
-    return null;
+    return Boolean.valueOf(false);
   }
   
   private void fontProgress(long paramLong1, String paramString, long paramLong2, long paramLong3)
@@ -247,7 +246,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         break label63;
       }
       i = Integer.parseInt(paramString.substring("font.main.android.".length(), paramString.length()));
-      ((gc)this.this$0.app.getManager(42)).a(i, (float)paramLong2 / (float)paramLong3);
+      ((gb)this.this$0.app.getManager(42)).a(i, (float)paramLong2 / (float)paramLong3);
     }
     label63:
     do
@@ -259,7 +258,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString = paramString.substring("font.hifont.android.".length(), paramString.length());
     } while ((TextUtils.isEmpty(paramString)) || (!TextUtils.isDigitsOnly(paramString)));
     int i = Integer.parseInt(paramString);
-    ((avrl)this.this$0.app.getManager(219)).a(i, (int)(100L * paramLong2 / paramLong3));
+    ((auen)this.this$0.app.getManager(219)).a(i, (int)(100L * paramLong2 / paramLong3));
   }
   
   @NotNull
@@ -292,7 +291,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
             QLog.d("VasQuickUpdateManager", 2, "getItemInfo signature id = " + paramString);
           }
           str1 = "config.json";
-          str2 = antf.bZ + File.separator + paramString + File.separator;
+          str2 = AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT + File.separator + paramString + File.separator;
         }
       }
     }
@@ -347,15 +346,15 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private boolean getBidColorScreenInfo(String paramString, VasQuickUpdateEngine.TagItemInfo paramTagItemInfo)
   {
-    auvx localauvx = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Auvx;
+    atif localatif = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Atif;
     if (paramString.startsWith("colorScreen.android."))
     {
-      int i = localauvx.a(paramString);
+      int i = localatif.a(paramString);
       if (i > 0)
       {
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = false;
-        paramTagItemInfo.strSavePath = (localauvx.a(i).getAbsolutePath() + File.separator + "config.zip");
+        paramTagItemInfo.strSavePath = (localatif.a(i).getAbsolutePath() + File.separator + "config.zip");
         return true;
       }
     }
@@ -369,13 +368,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.equals("vipComic_nav_config.json"))
     {
       paramTagItemInfo.bSaveInDir = false;
-      paramTagItemInfo.strSavePath = bmbq.b().getAbsolutePath();
+      paramTagItemInfo.strSavePath = bkfn.b().getAbsolutePath();
     }
     while (!paramString.equals("vipComic_nav_tabIcon.zip")) {
       return paramTagItemInfo;
     }
     paramTagItemInfo.bSaveInDir = true;
-    paramTagItemInfo.strSavePath = bmbq.c().getAbsolutePath();
+    paramTagItemInfo.strSavePath = bkfn.c().getAbsolutePath();
     return paramTagItemInfo;
   }
   
@@ -421,7 +420,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     {
       paramTagItemInfo.bPreConfig = false;
       paramTagItemInfo.bSaveInDir = true;
-      paramTagItemInfo.strSavePath = (azzf.a + paramString.substring("font.diycard.android.".length(), paramString.length()));
+      paramTagItemInfo.strSavePath = (aynu.a + paramString.substring("font.diycard.android.".length(), paramString.length()));
     }
     do
     {
@@ -430,41 +429,41 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       {
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = true;
-        paramTagItemInfo.strSavePath = (avrd.b + paramString.substring("font.hifont.android.".length(), paramString.length()));
+        paramTagItemInfo.strSavePath = (auef.b + paramString.substring("font.hifont.android.".length(), paramString.length()));
         return paramTagItemInfo;
       }
       if (paramString.startsWith("font.hiFontQQ.json."))
       {
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = true;
-        paramTagItemInfo.strSavePath = (avrd.c + paramString.substring("font.hiFontQQ.json.".length(), paramString.length()));
+        paramTagItemInfo.strSavePath = (auef.c + paramString.substring("font.hiFontQQ.json.".length(), paramString.length()));
         return paramTagItemInfo;
       }
       if (paramString.startsWith("font.hiFontQQ.tags"))
       {
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = true;
-        paramTagItemInfo.strSavePath = avrd.d;
+        paramTagItemInfo.strSavePath = auef.d;
         return paramTagItemInfo;
       }
       if (paramString.startsWith("font.main.android."))
       {
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = true;
-        paramTagItemInfo.strSavePath = (gc.a + File.separator + paramString.substring("font.main.android.".length(), paramString.length()));
+        paramTagItemInfo.strSavePath = (gb.a + File.separator + paramString.substring("font.main.android.".length(), paramString.length()));
         return paramTagItemInfo;
       }
       if (paramString.startsWith("font.fzfont.android."))
       {
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = true;
-        paramTagItemInfo.strSavePath = (gc.b + paramString.substring("font.fzfont.android.".length(), paramString.length()));
+        paramTagItemInfo.strSavePath = (gb.b + paramString.substring("font.fzfont.android.".length(), paramString.length()));
         return paramTagItemInfo;
       }
     } while (!paramString.equals("magicFontConfig.json"));
     paramTagItemInfo.bPreConfig = false;
     paramTagItemInfo.bSaveInDir = false;
-    paramTagItemInfo.strSavePath = gc.g;
+    paramTagItemInfo.strSavePath = gb.g;
     return paramTagItemInfo;
   }
   
@@ -486,32 +485,32 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       if (paramString.equals("kcsdk_4_4_7_3661"))
       {
-        paramTagItemInfo.strSavePath = biim.a().b(this.this$0.app.getApp());
+        paramTagItemInfo.strSavePath = bgox.a().b(this.this$0.app.getApp());
         return paramTagItemInfo;
       }
-      if (paramString.equals("GLDrawableV845"))
+      if (paramString.equals("GLDrawableV848"))
       {
-        paramTagItemInfo.strSavePath = bibq.a(this.this$0.app.getApp());
+        paramTagItemInfo.strSavePath = bgia.a(this.this$0.app.getApp());
         return paramTagItemInfo;
       }
       if (paramString.equals("libColorFont_818"))
       {
-        paramTagItemInfo.strSavePath = (gc.a + File.separator + "libColorFont.zip");
+        paramTagItemInfo.strSavePath = (gb.a + File.separator + "libColorFont.zip");
         return paramTagItemInfo;
       }
       if (paramString.equals("libVipFont_808"))
       {
-        paramTagItemInfo.strSavePath = (gc.a + File.separator + "libVipFont.zip");
+        paramTagItemInfo.strSavePath = (gb.a + File.separator + "libVipFont.zip");
         return paramTagItemInfo;
       }
       if (paramString.startsWith("bqmall.android.h5magic."))
       {
-        paramTagItemInfo.strSavePath = aslq.b(paramString);
+        paramTagItemInfo.strSavePath = arfm.b(paramString);
         return paramTagItemInfo;
       }
       if (paramString.equals("libqgplayer_841"))
       {
-        paramTagItemInfo.strSavePath = (bmbw.a() + "libQGamePlayer.zip");
+        paramTagItemInfo.strSavePath = (bkft.a() + "libQGamePlayer.zip");
         return paramTagItemInfo;
       }
       if (paramString.equals("libAPNG_845"))
@@ -521,11 +520,11 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       if (paramString.equals("defaultFont_775"))
       {
-        paramTagItemInfo.strSavePath = (gc.a + File.separator + "default.zip");
+        paramTagItemInfo.strSavePath = (gb.a + File.separator + "default.zip");
         return paramTagItemInfo;
       }
     } while (!paramString.equals("enterEffectVipIcons"));
-    paramString = bftx.a();
+    paramString = bedi.a();
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("VasQuickUpdateManager", 1, "SCID_ENTER_EFFECT_VIP_ICONS getItemInfo null zipPath");
@@ -541,14 +540,14 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     {
       paramTagItemInfo.bPreConfig = false;
       paramTagItemInfo.bSaveInDir = true;
-      paramTagItemInfo.strSavePath = bhkt.b(paramString.replace("faceAddon.stickerFont.android.", ""));
+      paramTagItemInfo.strSavePath = bfua.b(paramString.replace("faceAddon.stickerFont.android.", ""));
       return true;
     }
     if (paramString.startsWith("faceAddon.sticker."))
     {
       paramTagItemInfo.bPreConfig = false;
       paramTagItemInfo.bSaveInDir = false;
-      paramTagItemInfo.strSavePath = (antf.bT + "sticker_info/" + paramString.replace("faceAddon.sticker.", ""));
+      paramTagItemInfo.strSavePath = (AppConstants.SDCARD_PENDANT_ROOT + "sticker_info/" + paramString.replace("faceAddon.sticker.", ""));
       return true;
     }
     if ((paramString.startsWith("pendant.")) && (paramString.length() > "pendant.".length()))
@@ -560,7 +559,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         String str = paramString.substring(0, i);
         paramString.substring(i, paramString.length());
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(antf.bT).append(str).append(File.separator);
+        localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT).append(str).append(File.separator);
         paramTagItemInfo.bPreConfig = false;
         paramTagItemInfo.bSaveInDir = true;
         if (paramString.endsWith(".xydata.js"))
@@ -586,19 +585,19 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     paramTagItemInfo.bPreConfig = false;
     paramTagItemInfo.bSaveInDir = true;
     if (paramString.startsWith("poke.item.effect.")) {
-      paramTagItemInfo.strSavePath = (ahnt.e + paramString.substring("poke.item.effect.".length(), paramString.length()));
+      paramTagItemInfo.strSavePath = (agkg.e + paramString.substring("poke.item.effect.".length(), paramString.length()));
     }
     do
     {
       return paramTagItemInfo;
       if (paramString.startsWith("poke.item.res."))
       {
-        paramTagItemInfo.strSavePath = (ahnt.e + paramString.substring("poke.item.res.".length(), paramString.length()));
+        paramTagItemInfo.strSavePath = (agkg.e + paramString.substring("poke.item.res.".length(), paramString.length()));
         return paramTagItemInfo;
       }
     } while (!"poke.effectList".equals(paramString));
     paramTagItemInfo.bSaveInDir = false;
-    paramTagItemInfo.strSavePath = ahnt.f;
+    paramTagItemInfo.strSavePath = agkg.f;
     return paramTagItemInfo;
   }
   
@@ -626,7 +625,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     {
       paramTagItemInfo.bPreConfig = false;
       paramTagItemInfo.bSaveInDir = true;
-      paramTagItemInfo.strSavePath = azze.a(this.this$0.app.getApp());
+      paramTagItemInfo.strSavePath = aynt.a(this.this$0.app.getApp());
       bool = true;
     }
     while (!paramString.startsWith("card.")) {
@@ -635,8 +634,8 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     paramTagItemInfo.bPreConfig = false;
     paramTagItemInfo.bSaveInDir = false;
     int i = Integer.parseInt(paramString.substring("card.".length(), paramString.length()));
-    paramString = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Azxs;
-    paramTagItemInfo.strSavePath = azxs.b(this.this$0.app.getApp(), i);
+    paramString = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Aymh;
+    paramTagItemInfo.strSavePath = aymh.b(this.this$0.app.getApp(), i);
     return true;
   }
   
@@ -664,7 +663,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if ("iRedPacket_v3.font.zip".equals(paramString))
     {
       paramTagItemInfo.bSaveInDir = true;
-      paramTagItemInfo.strSavePath = aoan.a(3);
+      paramTagItemInfo.strSavePath = amuo.a(3);
     }
     do
     {
@@ -672,16 +671,16 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if ("iRedPacket_v3.specialChar.zip".equals(paramString))
       {
         paramTagItemInfo.bSaveInDir = true;
-        paramTagItemInfo.strSavePath = aoan.a(2);
+        paramTagItemInfo.strSavePath = amuo.a(2);
         return paramTagItemInfo;
       }
     } while ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("luckyMoney.item.")));
     paramTagItemInfo.bSaveInDir = true;
-    String str = aoan.a(paramString);
+    String str = amuo.a(paramString);
     if (TextUtils.isEmpty(str)) {
       QLog.d("VasQuickUpdateManager", 2, "getItemInfo bid = " + paramLong + " scid = " + paramString + " pid = " + str);
     }
-    paramTagItemInfo.strSavePath = (aoan.a(1) + str);
+    paramTagItemInfo.strSavePath = (amuo.a(1) + str);
     return paramTagItemInfo;
   }
   
@@ -692,7 +691,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     {
       paramTagItemInfo.bPreConfig = false;
       paramTagItemInfo.bSaveInDir = false;
-      paramTagItemInfo.strSavePath = (antf.ca + paramString.substring("signature.sticker.".length(), paramString.length()));
+      paramTagItemInfo.strSavePath = (AppConstants.SDCARD_SIGNATURE_STICKER_DIR + paramString.substring("signature.sticker.".length(), paramString.length()));
       bool = true;
     }
     return bool;
@@ -705,8 +704,8 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("groupeffect_item_"))
     {
       paramTagItemInfo.bSaveInDir = false;
-      int i = bftx.a(paramString);
-      paramTagItemInfo.strSavePath = (bftx.a + i + File.separator + i + ".zip");
+      int i = bedi.a(paramString);
+      paramTagItemInfo.strSavePath = (bedi.a + i + File.separator + i + ".zip");
       bool = true;
     }
     return bool;
@@ -731,9 +730,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @Nullable
   private Boolean isColorScreenExist(String paramString)
   {
-    auvx localauvx = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Auvx;
+    atif localatif = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Atif;
     if (paramString.startsWith("colorScreen.android.")) {
-      return Boolean.valueOf(localauvx.a(paramString));
+      return Boolean.valueOf(localatif.a(paramString));
     }
     return null;
   }
@@ -742,10 +741,10 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   private Boolean isComicExist(String paramString)
   {
     if (paramString.equals("vipComic_nav_config.json")) {
-      return Boolean.valueOf(bmbq.a());
+      return Boolean.valueOf(bkfn.a());
     }
     if (paramString.equals("vipComic_nav_tabIcon.zip")) {
-      return Boolean.valueOf(bmbq.b());
+      return Boolean.valueOf(bkfn.b());
     }
     return null;
   }
@@ -753,7 +752,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @Nullable
   private Boolean isFaceExist(String paramString)
   {
-    VasFaceManager localVasFaceManager = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager;
+    VasFaceManager localVasFaceManager = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager;
     if (paramString.startsWith("face.")) {
       return Boolean.valueOf(localVasFaceManager.a(paramString));
     }
@@ -779,7 +778,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("font.diycard.android."))
     {
       paramString = paramString.substring("font.diycard.android.".length(), paramString.length());
-      str = azzf.a + paramString;
+      str = aynu.a + paramString;
       localObject2 = new File(str);
       paramString = (String)localObject1;
       if (((File)localObject2).exists()) {
@@ -814,7 +813,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if (paramString.startsWith("font.hifont.android."))
       {
         paramString = paramString.substring("font.hifont.android.".length(), paramString.length());
-        str = avrd.b + paramString;
+        str = auef.b + paramString;
         localObject1 = new File(str);
         paramString = (String)localObject2;
         if (((File)localObject1).exists()) {
@@ -840,7 +839,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if (paramString.startsWith("font.hiFontQQ.json."))
       {
         paramString = paramString.substring("font.hiFontQQ.json.".length(), paramString.length());
-        localObject2 = avrd.c + paramString;
+        localObject2 = auef.c + paramString;
         localObject1 = new File((String)localObject2);
         paramString = str;
         if (((File)localObject1).exists()) {
@@ -864,7 +863,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       if (paramString.startsWith("font.hiFontQQ.tags"))
       {
-        localObject1 = new File(avrd.d);
+        localObject1 = new File(auef.d);
         paramString = localObject3;
         if (((File)localObject1).exists()) {
           paramString = ((File)localObject1).list();
@@ -877,7 +876,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if (paramString.startsWith("font.main.android."))
       {
         paramString = paramString.substring("font.main.android.".length(), paramString.length());
-        paramString = gc.a + File.separatorChar + paramString + File.separatorChar + paramString + ".ttf";
+        paramString = gb.a + File.separatorChar + paramString + File.separatorChar + paramString + ".ttf";
         localObject1 = new File(paramString);
         QLog.d("VasQuickUpdateManager", 2, "isFileExists font path = " + paramString + " result = " + ((File)localObject1).exists());
         return Boolean.valueOf(((File)localObject1).exists());
@@ -885,7 +884,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if (paramString.startsWith("font.fzfont.android."))
       {
         paramString = paramString.substring("font.fzfont.android.".length(), paramString.length());
-        paramString = gc.b + paramString + File.separatorChar + paramString + ".ttf";
+        paramString = gb.b + paramString + File.separatorChar + paramString + ".ttf";
         localObject1 = new File(paramString);
         QLog.d("VasQuickUpdateManager", 2, "isFileExists font path = " + paramString + " result = " + ((File)localObject1).exists());
         return Boolean.valueOf(((File)localObject1).exists());
@@ -893,8 +892,8 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       localObject1 = localObject4;
     } while (!paramString.equals("magicFontConfig.json"));
     label535:
-    paramString = new File(gc.g);
-    QLog.d("VasQuickUpdateManager", 2, "isFileExists fontEffectJson path = " + gc.g + " result = " + paramString.exists());
+    paramString = new File(gb.g);
+    QLog.d("VasQuickUpdateManager", 2, "isFileExists fontEffectJson path = " + gb.g + " result = " + paramString.exists());
     return Boolean.valueOf(paramString.exists());
   }
   
@@ -903,35 +902,35 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     boolean bool = true;
     if (paramString.startsWith("libColorFont_818")) {
-      return Boolean.valueOf(new File(bhto.a() + "libFounderColorFont_818.so").exists());
+      return Boolean.valueOf(new File(bgae.a() + "libFounderColorFont_818.so").exists());
     }
     if (paramString.startsWith("libFlatBuffersParser")) {
       return Boolean.valueOf(new File(FlatBuffersParser.a() + "libFlatBuffersParser.zip").exists());
     }
     if (paramString.equals("kcsdk_4_4_7_3661")) {
-      return Boolean.valueOf(new File(biim.a().a(this.this$0.app.getApp())).exists());
+      return Boolean.valueOf(new File(bgox.a().a(this.this$0.app.getApp())).exists());
     }
-    if (paramString.equals("GLDrawableV845")) {
-      return Boolean.valueOf(bibq.a(this.this$0.app.getApp()));
+    if (paramString.equals("GLDrawableV848")) {
+      return Boolean.valueOf(bgia.a(this.this$0.app.getApp()));
     }
     if (paramString.equals("emojiStickerGuideZip_v2")) {
       return Boolean.valueOf(new File(EmojiStickerManager.a() + "emojiStickerGuideZip_v2.zip").exists());
     }
     if (paramString.equals("libVipFont_808")) {
-      return Boolean.valueOf(new File(bhto.a() + "libvipfont808.so").exists());
+      return Boolean.valueOf(new File(bgae.a() + "libvipfont808.so").exists());
     }
     if (paramString.startsWith("bqmall.android.h5magic.")) {
-      return Boolean.valueOf(new File(aslq.b(paramString)).exists());
+      return Boolean.valueOf(new File(arfm.b(paramString)).exists());
     }
     if (paramString.equals("libqgplayer_841")) {
-      return Boolean.valueOf(new File(bmbw.a() + "libqgplayer_841.so").exists());
+      return Boolean.valueOf(new File(bkft.a() + "libqgplayer_841.so").exists());
     }
     if (paramString.equals("libAPNG_845")) {
-      return Boolean.valueOf(bhzi.a().a());
+      return Boolean.valueOf(VasApngIPCModule.getInstance().isSoExists());
     }
     if (paramString.equals("defaultFont_775"))
     {
-      paramString = new File(bhto.a() + go.a);
+      paramString = new File(bgae.a() + gm.a);
       if ((paramString.exists()) && (paramString.isDirectory())) {}
       for (;;)
       {
@@ -941,7 +940,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramString.equals("enterEffectVipIcons"))
     {
-      paramString = bftx.a();
+      paramString = bedi.a();
       if (TextUtils.isEmpty(paramString))
       {
         QLog.e("VasQuickUpdateManager", 1, "SCID_ENTER_EFFECT_VIP_ICONS: get null zipPath");
@@ -957,10 +956,10 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     boolean bool = true;
     if (paramString.startsWith("faceAddon.stickerFont.android.")) {
-      return Boolean.valueOf(bhkt.a(paramString.replace("faceAddon.stickerFont.android.", "")));
+      return Boolean.valueOf(bfua.a(paramString.replace("faceAddon.stickerFont.android.", "")));
     }
     if (paramString.startsWith("faceAddon.sticker.")) {
-      return Boolean.valueOf(bhkt.b(paramString));
+      return Boolean.valueOf(bfua.b(paramString));
     }
     if ((paramString.startsWith("pendant.")) && (paramString.length() > "pendant.".length()))
     {
@@ -971,7 +970,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       Object localObject = paramString.substring(0, i);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(antf.bT).append((String)localObject).append(File.separator);
+      localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT).append((String)localObject).append(File.separator);
       if (paramString.endsWith(".xydata.js")) {
         localStringBuilder.append("config.json");
       }
@@ -1043,7 +1042,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
           }
           i = -1;
           continue;
-          bool1 = ahnt.a("effect.gif", i);
+          bool1 = agkg.a("effect.gif", i);
         }
       }
     }
@@ -1068,12 +1067,12 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
           }
           i = -1;
           continue;
-          bool1 = ahnt.a("bubble", i);
+          bool1 = agkg.a("bubble", i);
         }
       }
     }
     if ("poke.effectList".equals(paramString)) {
-      return Boolean.valueOf(new File(ahnt.f).exists());
+      return Boolean.valueOf(new File(agkg.f).exists());
     }
     return null;
   }
@@ -1082,13 +1081,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   private Boolean isProfileCardExist(String paramString)
   {
     if ("cardWZ.zip".equals(paramString)) {
-      return Boolean.valueOf(azze.a(this.this$0.app.getApp(), paramString));
+      return Boolean.valueOf(aynt.a(this.this$0.app.getApp(), paramString));
     }
     if (paramString.startsWith("card."))
     {
       int i = Integer.parseInt(paramString.substring("card.".length(), paramString.length()));
-      paramString = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Azxs;
-      return Boolean.valueOf(azxs.a(this.this$0.app.getApp(), i));
+      paramString = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Aymh;
+      return Boolean.valueOf(aymh.a(this.this$0.app.getApp(), i));
     }
     return null;
   }
@@ -1113,22 +1112,22 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         return bool2;
         if ("iRedPacket_v3.font.zip".equals(paramString))
         {
-          paramString = aoan.a(null, null, 8, 0, 0);
+          paramString = amuo.a(null, null, 8, 0, 0);
           break;
         }
         if ("iRedPacket_v3.specialChar.zip".equals(paramString))
         {
-          paramString = aoan.a(null, null, 25, 0, 0);
+          paramString = amuo.a(null, null, 25, 0, 0);
           break;
         }
         if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("luckyMoney.item."))) {
           break label295;
         }
-        paramString = aoan.a(paramString);
+        paramString = amuo.a(paramString);
         if (TextUtils.isEmpty(paramString)) {
           break label295;
         }
-        paramString = aoan.a(paramString, null, 24, 0, 0);
+        paramString = amuo.a(paramString, null, 24, 0, 0);
         if (TextUtils.isEmpty(paramString))
         {
           paramString = localObject2;
@@ -1164,7 +1163,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("signature.sticker."))
     {
       paramString = paramString.substring("signature.sticker.".length(), paramString.length());
-      return Boolean.valueOf(new File(antf.ca + paramString).exists());
+      return Boolean.valueOf(new File(AppConstants.SDCARD_SIGNATURE_STICKER_DIR + paramString).exists());
     }
     return null;
   }
@@ -1172,9 +1171,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @Nullable
   private Boolean isTroopEnterEffectExist(String paramString)
   {
-    int i = bftx.a(paramString);
+    int i = bedi.a(paramString);
     if (i > 0) {
-      return Boolean.valueOf(bgth.a(new File(bftx.a + i)));
+      return Boolean.valueOf(bfcv.a(new File(bedi.a + i)));
     }
     return null;
   }
@@ -1193,9 +1192,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private void onColorScreenCompleted(String paramString, int paramInt)
   {
-    auvx localauvx = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Auvx;
+    atif localatif = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Atif;
     if (paramString.startsWith("colorScreen.android.")) {
-      localauvx.a(paramString, paramInt);
+      localatif.a(paramString, paramInt);
     }
   }
   
@@ -1206,24 +1205,24 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if (!paramString.equals("vipComic_nav_config.json")) {
         break label18;
       }
-      bmbq.a();
+      bkfn.a();
     }
     label18:
     while (!paramString.equals("vipComic_nav_tabIcon.zip")) {
       return;
     }
-    bmbq.b();
+    bkfn.b();
   }
   
   private void onDefaultCardCompleted(String paramString, int paramInt)
   {
     if (paramString.startsWith("profileitem."))
     {
-      azxs localazxs = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Azxs;
+      aymh localaymh = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Aymh;
       int i = Integer.parseInt(paramString.substring("profileitem.".length()));
-      localazxs.a.remove(Integer.valueOf(i));
+      localaymh.a.remove(Integer.valueOf(i));
       if (paramInt == 0) {
-        localazxs.a(i, false);
+        localaymh.a(i, false);
       }
     }
     else
@@ -1235,7 +1234,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private void onFaceCompleted(String paramString, int paramInt)
   {
-    VasFaceManager localVasFaceManager = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager;
+    VasFaceManager localVasFaceManager = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager;
     if (paramString.startsWith("face.")) {
       localVasFaceManager.a(paramString, paramInt);
     }
@@ -1258,7 +1257,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         if (TextUtils.isDigitsOnly(paramString1))
         {
           paramInt = Integer.parseInt(paramString1);
-          avrd.a().a(paramInt, 1, avrl.b).a(false);
+          auef.a().a(paramInt, 1, auen.b).a(false);
         }
       }
     }
@@ -1279,13 +1278,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
           } while (!TextUtils.isDigitsOnly(paramString1));
           i = Integer.parseInt(paramString1);
           if (paramInt == 0) {
-            avrd.a().a(i, 0, avrl.a).a(false);
+            auef.a().a(i, 0, auen.a).a(false);
           }
           for (;;)
           {
-            ((avrl)this.this$0.app.getManager(219)).b(i, paramInt);
+            ((auen)this.this$0.app.getManager(219)).b(i, paramInt);
             return;
-            avrd.a().a(i, 0, avrl.a).a();
+            auef.a().a(i, 0, auen.a).a();
           }
           if (!paramString1.startsWith("font.hiFontQQ.json.")) {
             break;
@@ -1295,31 +1294,31 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         i = Integer.parseInt(paramString1);
         if (paramInt == 0)
         {
-          ((avrl)this.this$0.app.getManager(219)).a(i, false, true, true);
+          ((auen)this.this$0.app.getManager(219)).a(i, false, true, true);
           return;
         }
-        VasWebviewUtil.reportCommercialDrainage(this.this$0.app.c(), "HighFont", "DownCoverFail", "", 1, 0, 0, "", paramString1, "");
+        VasWebviewUtil.reportCommercialDrainage(this.this$0.app.getCurrentUin(), "HighFont", "DownCoverFail", "", 1, 0, 0, "", paramString1, "");
         return;
         if (!paramString1.startsWith("font.hiFontQQ.tags")) {
           break;
         }
       } while (paramInt != 0);
-      ((avrl)this.this$0.app.getManager(219)).a();
+      ((auen)this.this$0.app.getManager(219)).a();
       return;
       if (paramString1.startsWith("font.main.android."))
       {
         i = Integer.parseInt(paramString1.substring("font.main.android.".length(), paramString1.length()));
-        ((gc)this.this$0.app.getManager(42)).a(i, paramInt, paramString2);
+        ((gb)this.this$0.app.getManager(42)).a(i, paramInt, paramString2);
         return;
       }
       if (paramString1.startsWith("font.fzfont.android."))
       {
         i = Integer.parseInt(paramString1.substring("font.fzfont.android.".length(), paramString1.length()));
-        ((gc)this.this$0.app.getManager(42)).a(i, paramInt, paramString2);
+        ((gb)this.this$0.app.getManager(42)).a(i, paramInt, paramString2);
         return;
       }
     } while (!paramString1.equals("magicFontConfig.json"));
-    ((gc)this.this$0.app.getManager(42)).a(new File(gc.g));
+    ((gb)this.this$0.app.getManager(42)).a(new File(gb.g));
   }
   
   private void onJsonCompleted(String paramString, int paramInt)
@@ -1341,13 +1340,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
             if (!paramString.equals("keywordList_2.json")) {
               break;
             }
-            paramString = (axfj)this.this$0.app.getManager(14);
+            paramString = (avsq)this.this$0.app.getManager(14);
           } while (paramString == null);
           paramString.d();
           return;
           if (paramString.startsWith("signature.item."))
           {
-            bhto.a(this.this$0.app);
+            bgae.a(this.this$0.app);
             return;
           }
           if ("vipData_individuation_url.android.json".equals(paramString))
@@ -1362,13 +1361,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
             for (boolean bool = true;; bool = false)
             {
               QLog.d("VasQuickUpdateManager", 2, bool);
-              bhyk.a(this.this$0.app);
+              bgev.a(this.this$0.app);
               return;
             }
           }
           if ("changeVoice_json".equals(paramString))
           {
-            ((bile)this.this$0.app.getManager(176)).a(null, null);
+            ((bgrn)this.this$0.app.getManager(176)).a(null, null);
             return;
           }
           if (!"blessVoiceList.json".equals(paramString)) {
@@ -1379,52 +1378,52 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         return;
         if ("vip_personal_card.json".equals(paramString))
         {
-          bias.a().a(this.this$0.app, true);
-          bhwl.b(this.this$0.app);
-          biho.a().a(this.this$0.app);
+          bghc.a().a(this.this$0.app, true);
+          bgcw.b(this.this$0.app);
+          bgny.a().a(this.this$0.app);
           return;
         }
         if ("monitorAppid".equals(paramString))
         {
-          ((biaa)this.this$0.app.a(103)).a(this.this$0.app, true);
+          ((bggk)this.this$0.app.getBusinessHandler(103)).a(this.this$0.app, true);
           return;
         }
         if ("praise.config.json".equals(paramString))
         {
-          azzw.a(this.this$0.app);
+          ayol.a(this.this$0.app);
           return;
         }
         if ("card.diyFontConfig.json".equals(paramString))
         {
-          azzg.a(this.this$0.app);
+          aynv.a(this.this$0.app);
           return;
         }
         if ("vipData_app_webviewNavStyle.json".equals(paramString))
         {
-          bind.a().a(this.this$0.app);
+          WebViewTitleStyleHelper.getsInstance().parseJson(this.this$0.app);
           return;
         }
         if ("VASBiz_FuncDev_webview.json".equals(paramString))
         {
-          niz.a().j();
-          niz.a().e();
-          niz.a().c();
+          nko.a().j();
+          nko.a().e();
+          nko.a().c();
           return;
         }
         if (!"watch_focus.json".equals(paramString)) {
           break;
         }
-        paramString = (anwx)this.this$0.app.a(12);
+        paramString = (amrg)this.this$0.app.getBusinessHandler(12);
       } while (paramString == null);
       paramString.c();
       return;
       if ("groupeffect_config.json".equals(paramString))
       {
-        ((bfui)this.this$0.app.getManager(231)).a(false);
+        ((bedt)this.this$0.app.getManager(231)).a(false);
         return;
       }
     } while (!"emoji.systemEmojiWhiteList.json".equals(paramString));
-    assp.a(this.this$0.app, true);
+    SystemEmoticonInfo.parseWhiteList(this.this$0.app, true);
   }
   
   private boolean onMaterialCompleted(String paramString, int paramInt)
@@ -1453,7 +1452,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       if (!paramString.equals("libColorFont_818")) {
         break label126;
       }
-      ((gc)this.this$0.app.getManager(42)).a(4, paramInt);
+      ((gb)this.this$0.app.getManager(42)).a(4, paramInt);
     }
     for (;;)
     {
@@ -1469,36 +1468,36 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       label126:
       if (paramString.equals("libVipFont_808"))
       {
-        ((gc)this.this$0.app.getManager(42)).a(1, paramInt);
+        ((gb)this.this$0.app.getManager(42)).a(1, paramInt);
       }
       else if (paramString.startsWith("bqmall.android.h5magic."))
       {
-        ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Aslq.a(paramString, paramInt);
+        ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Arfm.a(paramString, paramInt);
       }
       else if (paramString.equals("libqgplayer_841"))
       {
-        bmbw.a(this.this$0.app, paramInt);
+        bkft.a(this.this$0.app, paramInt);
       }
       else if (paramString.equals("kcsdk_4_4_7_3661"))
       {
-        biim.a().a(this.this$0.app.getApp(), paramInt);
+        bgox.a().a(this.this$0.app.getApp(), paramInt);
       }
-      else if (paramString.equals("GLDrawableV845"))
+      else if (paramString.equals("GLDrawableV848"))
       {
-        bibq.a(this.this$0.app.getApp(), paramInt);
+        bgia.a(this.this$0.app.getApp(), paramInt);
       }
       else if (paramString.equals("libAPNG_845"))
       {
-        bhzi.a().a(paramInt);
+        VasApngIPCModule.getInstance().onDownloadCompleted(paramInt);
       }
       else if (paramString.equals("defaultFont_775"))
       {
-        go.a(this.this$0.app, paramInt);
+        gm.a(this.this$0.app, paramInt);
       }
       else if ((paramString.equals("enterEffectVipIcons")) && (paramInt == 0))
       {
-        paramString = bftx.a();
-        localObject = bftx.b();
+        paramString = bedi.a();
+        localObject = bedi.b();
         if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)))
         {
           QLog.e("VasQuickUpdateManager", 1, "SCID_ENTER_EFFECT_VIP_ICONS onComplete null path: " + paramString + "," + (String)localObject);
@@ -1506,7 +1505,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         }
         try
         {
-          bhmi.a(paramString, (String)localObject, false);
+          FileUtils.uncompressZip(paramString, (String)localObject, false);
         }
         catch (IOException paramString)
         {
@@ -1520,10 +1519,10 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if ("poke.effectList".equals(paramString))
     {
-      paramString = (asde)this.this$0.app.getManager(77);
+      paramString = (aqxc)this.this$0.app.getManager(77);
       if (paramString != null)
       {
-        paramString = (asdv)paramString.a("qq.android.poke.res_0625");
+        paramString = (aqxt)paramString.a("qq.android.poke.res_0625");
         if (paramString != null) {
           paramString.f();
         }
@@ -1534,30 +1533,30 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   private void onProfileCardCompleted(String paramString1, String paramString2, int paramInt)
   {
     if ("cardWZ.zip".equals(paramString1)) {
-      azze.a(this.this$0.app, paramString1, paramString2, paramInt);
+      aynt.a(this.this$0.app, paramString1, paramString2, paramInt);
     }
     while (!paramString1.startsWith("card.")) {
       return;
     }
-    ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Azxs.a(this.this$0.app, paramString1, paramString2, paramInt);
+    ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Aymh.a(this.this$0.app, paramString1, paramString2, paramInt);
   }
   
   private void onTroopEnterEffectCompleted(String paramString, int paramInt)
   {
     if (paramInt == 0)
     {
-      paramInt = bftx.a(paramString);
+      paramInt = bedi.a(paramString);
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect", 2, "download Res onCompleted success id = " + paramInt);
       }
       if (paramInt > 0) {
-        paramString = bftx.a(paramInt);
+        paramString = bedi.a(paramInt);
       }
     }
     try
     {
       if (new File(paramString).exists()) {
-        bhmi.a(paramString, bftx.a, false);
+        FileUtils.uncompressZip(paramString, bedi.a, false);
       }
       return;
     }
@@ -1571,7 +1570,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if (paramString.startsWith("faceAddon.stickerFont.android.")) {
       if (paramInt == 0) {
-        amrx.a().b(paramString);
+        almr.a().b(paramString);
       }
     }
     long l;
@@ -1589,7 +1588,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
               break;
             }
           } while (paramInt != 0);
-          amrx.a().a(paramString);
+          almr.a().a(paramString);
           return;
         } while ((!paramString.startsWith("pendant.")) || (paramString.length() <= "pendant.".length()));
         paramString = paramString.substring("pendant.".length(), paramString.length());
@@ -1615,7 +1614,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if ((paramInt == 0) && ("sonicTemplateUpdate.json".equals(paramString)))
     {
-      paramString = (bhzg)this.this$0.app.getManager(192);
+      paramString = (bgfr)this.this$0.app.getManager(192);
       if (paramString != null) {
         paramString.a();
       }
@@ -1635,7 +1634,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         return false;
       }
       int i = Integer.parseInt(paramQQAppInterface);
-      if (!((gc)this.this$0.app.getManager(42)).a(i)) {}
+      if (!((gb)this.this$0.app.getManager(42)).a(i)) {}
       for (boolean bool = true;; bool = false) {
         return bool;
       }
@@ -1671,7 +1670,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       else if (paramLong == 22L)
       {
-        paramQQAppInterface = ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Auvx;
+        paramQQAppInterface = ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Atif;
         if (paramString.startsWith("colorScreen.android.")) {
           paramQQAppInterface.a(paramString);
         }
@@ -1685,8 +1684,8 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       }
       else if (paramLong == 25L)
       {
-        int i = bftx.a(paramString);
-        paramQQAppInterface = bftx.a + i;
+        int i = bedi.a(paramString);
+        paramQQAppInterface = bedi.a + i;
         bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramQQAppInterface));
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: ENTER_EFFECT path = " + paramQQAppInterface + " result = " + bool);
       }
@@ -1699,14 +1698,14 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       else if (paramLong == 27L)
       {
         paramQQAppInterface = paramString.substring("groupnickitem.".length(), paramString.length());
-        paramQQAppInterface = bhwz.a + paramQQAppInterface;
+        paramQQAppInterface = bgdk.a + paramQQAppInterface;
         bool = VasQuickUpdateEngine.safeDeleteFile(new File(paramQQAppInterface));
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: COLOR_NICK path = " + paramQQAppInterface + " result = " + bool);
       }
       else if (paramLong == 33L)
       {
         paramQQAppInterface = paramString.substring("profileitem.".length());
-        bool = VasQuickUpdateEngine.safeDeleteFile(new File(azxs.a(paramQQAppInterface)));
+        bool = VasQuickUpdateEngine.safeDeleteFile(new File(aymh.a(paramQQAppInterface)));
         QLog.d("VasQuickUpdateManager", 2, "deleteFiles: Default Card Config id=" + paramQQAppInterface + " ret=" + bool);
       }
       else
@@ -1785,11 +1784,11 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     fontProgress(paramLong1, paramString1, paramLong2, paramLong3);
     if ((paramLong1 == 1004L) && (paramString1.startsWith("bqmall.android.h5magic."))) {
-      ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Aslq.a(paramString1, paramLong2, paramLong3);
+      ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Arfm.a(paramString1, paramLong2, paramLong3);
     }
     if (paramLong1 == 15L) {
       if (paramString1.startsWith("card.")) {
-        ((bhzq)this.this$0.app.getManager(235)).jdField_a_of_type_Azxs.a(Integer.parseInt(paramString1.substring("card.".length(), paramString1.length())), (int)(100L * paramLong2 / paramLong3));
+        ((bgga)this.this$0.app.getManager(235)).jdField_a_of_type_Aymh.a(Integer.parseInt(paramString1.substring("card.".length(), paramString1.length())), (int)(100L * paramLong2 / paramLong3));
       }
     }
     for (;;)
@@ -1904,7 +1903,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
             paramString = paramString.substring("groupnickitem.".length(), paramString.length());
             paramQQAppInterface.bSaveInDir = true;
             paramQQAppInterface.bPreConfig = false;
-            paramQQAppInterface.strSavePath = (bhwz.a + paramString);
+            paramQQAppInterface.strSavePath = (bgdk.a + paramString);
             return paramQQAppInterface;
           }
           if (paramLong == 33L)
@@ -1912,7 +1911,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
             paramString = paramString.substring("profileitem.".length());
             paramQQAppInterface.bSaveInDir = false;
             paramQQAppInterface.bPreConfig = false;
-            paramQQAppInterface.strSavePath = azxs.a(paramString);
+            paramQQAppInterface.strSavePath = aymh.a(paramString);
             return paramQQAppInterface;
           }
         }
@@ -2001,10 +2000,10 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
               return ((ChatBackgroundManager)this.this$0.app.getManager(63)).a(paramQQAppInterface);
             }
             if (paramLong == 27L) {
-              return new File(bhwz.a(paramString.substring("groupnickitem.".length(), paramString.length()))).exists();
+              return new File(bgdk.a(paramString.substring("groupnickitem.".length(), paramString.length()))).exists();
             }
             if (paramLong == 33L) {
-              return new File(azxs.a(paramString.substring("profileitem.".length()))).exists();
+              return new File(aymh.a(paramString.substring("profileitem.".length()))).exists();
             }
           }
         }

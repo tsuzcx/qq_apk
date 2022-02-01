@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atsi;
-import attf;
-import atzn;
-import aunj;
+import ases;
+import asfp;
+import aslx;
+import aszt;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,30 +15,30 @@ import java.util.Set;
 public class QFileMsgForwardManager$2
   implements Runnable
 {
-  public QFileMsgForwardManager$2(atsi paramatsi, String paramString) {}
+  public QFileMsgForwardManager$2(ases paramases, String paramString) {}
   
   public void run()
   {
-    if (atsi.a(this.this$0).containsKey(this.a)) {}
-    for (attf localattf = (attf)atsi.a(this.this$0).remove(this.a);; localattf = null)
+    if (ases.a(this.this$0).containsKey(this.a)) {}
+    for (asfp localasfp = (asfp)ases.a(this.this$0).remove(this.a);; localasfp = null)
     {
-      if (localattf == null) {
+      if (localasfp == null) {
         return;
       }
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      Iterator localIterator = localattf.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      Iterator localIterator = localasfp.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ArrayList localArrayList3 = (ArrayList)localattf.jdField_a_of_type_JavaUtilHashMap.get(str);
+        ArrayList localArrayList3 = (ArrayList)localasfp.jdField_a_of_type_JavaUtilHashMap.get(str);
         int i = 0;
         label109:
         MessageRecord localMessageRecord;
         if (i < localArrayList3.size())
         {
           localMessageRecord = (MessageRecord)localArrayList3.get(i);
-          if (aunj.a(localMessageRecord)) {
+          if (aszt.a(localMessageRecord)) {
             break label144;
           }
         }
@@ -50,7 +50,7 @@ public class QFileMsgForwardManager$2
           label144:
           if (String.valueOf(2).equalsIgnoreCase(localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileStatus")))
           {
-            localattf.jdField_a_of_type_Atzn.a(str, localArrayList3, localMessageRecord, i);
+            localasfp.jdField_a_of_type_Aslx.a(str, localArrayList3, localMessageRecord, i);
             localArrayList2.add(localMessageRecord);
           }
           else
@@ -59,25 +59,25 @@ public class QFileMsgForwardManager$2
           }
         }
       }
-      if (localattf.d.size() > 0)
+      if (localasfp.d.size() > 0)
       {
         if (QLog.isColorLevel()) {
           QLog.i("FileMultiMsgManager<FileAssistant>", 1, "removeForwardRequest : remove upload request forwardSeq = [" + this.a + "] resultCode[1]");
         }
-        localattf.jdField_a_of_type_Atzn.a(1, localArrayList1, localArrayList2);
+        localasfp.jdField_a_of_type_Aslx.a(1, localArrayList1, localArrayList2);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("FileMultiMsgManager<FileAssistant>", 1, "removeForwardRequest : remove upload request forwardSeq = [" + this.a + "] resultCode[0]");
       }
-      localattf.jdField_a_of_type_Atzn.a(0, localArrayList1, localArrayList2);
+      localasfp.jdField_a_of_type_Aslx.a(0, localArrayList1, localArrayList2);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aycs;
+import awqa;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comments
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comments> CREATOR = new aycs();
+  public static final Parcelable.Creator<Comments> CREATOR = new awqa();
   public long a;
   public List<Comments.Comment> a;
   public boolean a;

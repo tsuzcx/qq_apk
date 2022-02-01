@@ -1,19 +1,8 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnErrorListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener;
-
-class bkzi
-  implements IMediaPlayer.OnErrorListener
+public abstract interface bkzi
 {
-  bkzi(bkzb parambkzb, ReliableVideoPlayer.OnErrorListener paramOnErrorListener) {}
+  public abstract void a(String paramString);
   
-  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener != null) {
-      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bkzb, paramInt1, paramInt2);
-    }
-    return false;
-  }
+  public abstract void b(String paramString);
 }
 
 

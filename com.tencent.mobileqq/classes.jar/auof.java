@@ -1,9 +1,8 @@
-public class auof
+public abstract interface auof
 {
-  public int a;
-  public Object a;
-  public boolean a;
-  public int b;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
 }
 
 

@@ -1,116 +1,197 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.SSOAccountObserver;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
-public class bjnd
-  extends SSOAccountObserver
+public abstract class bjnd
 {
-  public bjnd(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public static int a(Map<String, String> paramMap, String paramString, int paramInt)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "ssoLoginObserver onFailed");
-    OpenAuthorityFragment.a(this.a, true);
-    String str = paramBundle.getString("error");
-    paramInt1 = paramBundle.getInt("code");
     try
     {
-      bjvn.a().a("agent_login", OpenAuthorityFragment.b(this.a), 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
-      bjvq.a().a(1, "LOGIN_GETTICKT", paramString, OpenAuthorityFragment.a(this.a), null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt1, 1, str);
-      bjqh.a().a(paramString, "", OpenAuthorityFragment.a(this.a), "1", "1", "" + paramInt1, false);
-      bjqh.a().a(paramString, "", OpenAuthorityFragment.a(this.a), "1", "6", "" + paramInt1, false);
-      avcw.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, OpenAuthorityFragment.c(this.a), null, false);
-      avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "rec | cmd: g_t_n_p | uin : *" + bjqq.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
-      if ((paramInt2 == -1000) || (paramInt2 == 154))
+      int i = Integer.parseInt((String)paramMap.get(paramString));
+      return i;
+    }
+    catch (Exception paramMap) {}
+    return paramInt;
+  }
+  
+  public static String a(String paramString)
+  {
+    try
+    {
+      paramString = URLEncoder.encode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramString1);
+    int j = 0;
+    int i = -1;
+    int k;
+    if (j < localStringBuilder.length())
+    {
+      if (localStringBuilder.charAt(j) != '?')
       {
-        OpenAuthorityFragment.a(this.a, SystemClock.elapsedRealtime());
-        QLog.d("SSOAccountObserver", 1, "<TimeStamp> login cost : " + (OpenAuthorityFragment.a(this.a) - OpenAuthorityFragment.b(this.a)));
-        if ((paramInt1 == 1002) && (OpenAuthorityFragment.a(this.a) < 2))
-        {
-          OpenAuthorityFragment.b(this.a);
-          this.a.e();
-          return;
+        k = i;
+        if (localStringBuilder.charAt(j) != '&') {}
+      }
+      else
+      {
+        if (!paramString2.equals(localStringBuilder.substring(j + 1, j + 1 + paramString2.length()))) {
+          break label86;
+        }
+        k = j + 1;
+      }
+      label86:
+      do
+      {
+        j += 1;
+        i = k;
+        break;
+        k = i;
+      } while (i <= 0);
+      j += 1;
+    }
+    for (;;)
+    {
+      if (i < 0) {
+        return paramString1;
+      }
+      int m = j;
+      k = i;
+      if (j < 0)
+      {
+        k = i - 1;
+        m = localStringBuilder.length();
+      }
+      return localStringBuilder.substring(0, k) + localStringBuilder.substring(m, localStringBuilder.length());
+      j = -1;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    char c = '?';
+    int i = paramString1.indexOf('?');
+    int j = paramString1.indexOf('#');
+    if (i == -1) {}
+    for (;;)
+    {
+      paramString2 = c + a(paramString2) + '=' + a(paramString3);
+      if (j != -1) {
+        break;
+      }
+      return paramString1 + paramString2;
+      c = '&';
+    }
+    return paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
+  }
+  
+  public static Map<String, String> a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString != null)
+    {
+      int i = paramString.indexOf("?");
+      localObject1 = localObject2;
+      if (-1 != i) {
+        localObject1 = b(paramString.substring(i + 1));
+      }
+    }
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
+      paramString = new HashMap();
+    }
+    return paramString;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((paramString == null) || (paramString.equals(""))) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        paramString = new URI(paramString);
+        if ((paramString.getHost() != null) && ((paramString.getScheme().equalsIgnoreCase("http")) || (paramString.getScheme().equalsIgnoreCase("https")))) {
+          return true;
         }
       }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
+      catch (URISyntaxException paramString)
       {
-        QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "report login error : ", paramBundle);
+        paramString.printStackTrace();
       }
-      this.a.a(3003, this.a.getResources().getString(2131694160));
-      paramString = this.a.a.obtainMessage();
-      paramString.what = 6;
-      paramString.arg1 = 3003;
-      paramString.obj = this.a.getResources().getString(2131694160);
-      this.a.a.sendMessage(paramString);
-      return;
     }
-    this.a.c(paramString);
+    return false;
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public static String b(String paramString)
   {
-    long l = System.currentTimeMillis();
-    boolean bool = paramBundle.getBoolean("fake_callback");
-    if ((!bool) && (paramInt == 4096)) {
-      bjwg.a(paramString, l);
-    }
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "ssoLoginObserver onGetTicketNoPasswd fakeCb=", Boolean.valueOf(bool) });
-    int i;
-    Object localObject;
-    if (!bool)
-    {
-      i = paramBundle.getInt("code");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("report_type", "103");
-      ((Bundle)localObject).putString("act_type", "10");
-      ((Bundle)localObject).putString("stringext_1", "GetTicketNoPassword");
-      ((Bundle)localObject).putString("intext_2", "" + i);
-      ((Bundle)localObject).putString("intext_5", "" + (l - OpenAuthorityFragment.a(this.a).a));
-      bjqh.a().a((Bundle)localObject, OpenAuthorityFragment.a(this.a), paramString, false);
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "onGetTicketNoPasswd | uin : *" + bjqq.a(paramString) + " | ret : success | code: " + i + " | cost" + (OpenAuthorityFragment.a(this.a) - OpenAuthorityFragment.b(this.a)));
-    }
     try
     {
-      bjvn.a().a("agent_login", OpenAuthorityFragment.b(this.a), OpenAuthorityFragment.b(this.a).length(), paramArrayOfByte.length, 0, Long.parseLong(paramString), "1000069", null);
-      bjvq.a().a(0, "LOGIN_GETTICKT", paramString, OpenAuthorityFragment.a(this.a), null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-      bjqh.a().a(paramString, "", OpenAuthorityFragment.a(this.a), "1", "1", "0", false);
-      OpenAuthorityFragment.a(this.a, false);
-      OpenAuthorityFragment.a(this.a, 0);
-      localObject = null;
-      if (paramInt == 4096) {
-        localObject = new String(paramArrayOfByte);
-      }
-      this.a.a(paramString, (String)localObject, paramBundle);
-      OpenAuthorityFragment.a(this.a, SystemClock.elapsedRealtime());
-      return;
+      paramString = URLDecoder.decode(paramString, "UTF-8");
+      return paramString;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "report login error : ", localException);
-      }
+      throw new IllegalArgumentException(paramString);
     }
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public static String b(String paramString1, String paramString2, String paramString3)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "ssoLoginObserver onUserCancel");
-    paramInt = paramBundle.getInt("code");
-    OpenAuthorityFragment.a(this.a, 0);
-    OpenAuthorityFragment.a(this.a, SystemClock.elapsedRealtime());
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "<TimeStamp> login cost : " + (OpenAuthorityFragment.a(this.a) - OpenAuthorityFragment.b(this.a)));
-    avcw.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, OpenAuthorityFragment.c(this.a), null, false);
-    avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "rec | cmd: g_t_n_p | uin : *" + bjqq.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
+    char c = '?';
+    int i = paramString1.indexOf('?');
+    int j = paramString1.indexOf('#');
+    if (i == -1) {}
+    for (;;)
+    {
+      paramString2 = c + paramString2 + '=' + paramString3;
+      if (j != -1) {
+        break;
+      }
+      return paramString1 + paramString2;
+      c = '&';
+    }
+    return paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
+  }
+  
+  public static Map<String, String> b(String paramString)
+  {
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    for (;;)
+    {
+      try
+      {
+        paramString = paramString.split("&");
+        int j = paramString.length;
+        if (i < j)
+        {
+          String[] arrayOfString = paramString[i].split("=");
+          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
+            break label72;
+          }
+          localHashMap.put(arrayOfString[0], URLDecoder.decode(arrayOfString[1]));
+        }
+      }
+      catch (Exception paramString) {}
+      return localHashMap;
+      label72:
+      i += 1;
+    }
   }
 }
 

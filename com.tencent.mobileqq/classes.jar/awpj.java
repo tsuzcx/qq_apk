@@ -1,12 +1,23 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awpj
+class awpj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  awpj(awpi paramawpi) {}
   
-  public abstract void a(LocationRoom.Venue paramVenue);
-  
-  public abstract void a(String paramString);
+  public void onClick(View paramView)
+  {
+    this.a.a.jdField_a_of_type_Awpy.a();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

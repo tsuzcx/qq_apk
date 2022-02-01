@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/mis" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:id="@id/m_0" android:layout_width="fill_parent" android:layout_height="24.0dip" android:contentDescription="@string/wfp" />
-        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mbx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="@string/wfp" android:contentDescription="@string/wfp" />
-        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="312.0dip" android:layout_height="350.0dip" android:layout_marginTop="22.5dip">
-            <android.support.v7.widget.RecyclerView android:id="@id/lrz" android:scrollbars="none" android:clipToPadding="false" android:layout_width="312.0dip" android:layout_height="350.0dip" />
-            <View android:layout_gravity="bottom" android:background="@drawable/bjv" android:layout_width="fill_parent" android:layout_height="30.0dip" />
-        </FrameLayout>
-        <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lva" android:background="@drawable/bjp" android:focusable="false" android:duplicateParentState="false" android:layout_width="296.0dip" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/nj9" android:layout_width="250.0dip" android:layout_height="250.0dip" />
+        <View android:layout_width="fill_parent" android:layout_height="15.0dip" />
     </LinearLayout>
-</FrameLayout>
+    <View android:id="@id/msb" android:background="@drawable/bkg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
+    <com.tencent.avgame.gameroom.stage.CountDownClockView android:id="@id/mm1" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/n12" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="20.5dip" android:layout_toRightOf="@id/mm1" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/mzw" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/noo" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/mzw">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/nop" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/n1i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nqx" android:paddingLeft="3.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/wgz" android:layout_weight="0.27" />
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nqv" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:layout_weight="0.73" />
+    </LinearLayout>
+</merge>

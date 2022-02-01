@@ -1,22 +1,22 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
-import abac;
-import abbd;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import azpw;
-import bomp;
-import bomy;
-import bpam;
+import ayde;
+import blqw;
+import blrf;
+import bmbx;
+import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
+import zxo;
 
 public class VideoStoryCapturePart$9$1
   implements Runnable
 {
-  public VideoStoryCapturePart$9$1(bomy parambomy, Bitmap paramBitmap) {}
+  public VideoStoryCapturePart$9$1(blrf paramblrf, Bitmap paramBitmap) {}
   
   public void run()
   {
@@ -27,21 +27,21 @@ public class VideoStoryCapturePart$9$1
       }
       if ((this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() <= 0) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() <= 0))
       {
-        bpam.d("VideoStoryCapturePart", "error bitmap width height.");
+        bmbx.d("VideoStoryCapturePart", "error bitmap width height.");
         return;
       }
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      localObject = abbd.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      long l = ((Long)abac.a().a("SmartCutPicQuality_And", Long.valueOf(80L))).longValue();
+      localObject = zxo.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      long l = ((Long)VSConfigManager.getInstance().getValue("SmartCutPicQuality_And", Long.valueOf(80L))).longValue();
       ((Bitmap)localObject).compress(Bitmap.CompressFormat.JPEG, (int)l, localByteArrayOutputStream);
       localObject = localByteArrayOutputStream.toByteArray();
-      bomp.a(this.jdField_a_of_type_Bomy.a, bomp.a(this.jdField_a_of_type_Bomy.a) + localObject.length);
-      if (bomp.a(this.jdField_a_of_type_Bomy.a) > bomp.b(this.jdField_a_of_type_Bomy.a))
+      blqw.a(this.jdField_a_of_type_Blrf.a, blqw.a(this.jdField_a_of_type_Blrf.a) + localObject.length);
+      if (blqw.a(this.jdField_a_of_type_Blrf.a) > blqw.b(this.jdField_a_of_type_Blrf.a))
       {
-        bomp.a(this.jdField_a_of_type_Bomy.a, bomp.a(this.jdField_a_of_type_Bomy.a) - localObject.length);
-        azpw.a("Q.videostory", "Q.videostory.capture", "onCapture", "size to larger");
+        blqw.a(this.jdField_a_of_type_Blrf.a, blqw.a(this.jdField_a_of_type_Blrf.a) - localObject.length);
+        ayde.a("Q.videostory", "Q.videostory.capture", "onExtract", "size to larger");
         localByteArrayOutputStream.close();
-        bomp.a(this.jdField_a_of_type_Bomy.a).setCaptureRequest(null);
+        blqw.a(this.jdField_a_of_type_Blrf.a).setCaptureRequest(null);
         return;
       }
     }
@@ -51,7 +51,7 @@ public class VideoStoryCapturePart$9$1
       return;
     }
     Object localObject = new FrameVideoHelper.FrameBuffer((byte[])localObject);
-    this.jdField_a_of_type_Bomy.a.a.add(localObject);
+    this.jdField_a_of_type_Blrf.a.a.add(localObject);
     localException.close();
   }
 }

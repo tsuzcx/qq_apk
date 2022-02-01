@@ -1,24 +1,74 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
+import android.text.TextUtils;
+import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginInfo;
+import com.tencent.component.network.downloader.DownloadReport;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import java.io.File;
 
-public class vhr
-  extends Handler
+class vhr
+  implements Downloader.DownloadListener
 {
-  public vhr(CellTextView paramCellTextView, Looper paramLooper)
+  vhr(vho paramvho, QCirclePluginInfo paramQCirclePluginInfo, String paramString) {}
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    super(paramLooper);
+    QLog.e("QCirclePluginManager", 1, "onDownloadFailed qcirle-pluginmanager.jpg ");
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_download").setRetCode(2001L).setPluginVersion(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String arg1, DownloadResult paramDownloadResult)
   {
-    this.a.b = true;
-    this.a.a(6, paramMessage.arg1, paramMessage.arg2, 0);
-    paramMessage = this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell;
-    this.a.a();
-    this.a.jdField_a_of_type_Vip.g();
-    this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell = paramMessage;
+    QLog.e("QCirclePluginManager", 1, "onDownloadSucceed qcirle-pluginmanager.jpg ");
+    ??? = new File(this.jdField_a_of_type_JavaLangString);
+    if ((???.exists()) && (???.length() == this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.managerFilelength))
+    {
+      this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginManagerPath = this.jdField_a_of_type_JavaLangString;
+      String str2 = "";
+      String str3 = "";
+      String str1 = str3;
+      ??? = str2;
+      if (paramDownloadResult != null)
+      {
+        str1 = str3;
+        ??? = str2;
+        if (paramDownloadResult.getReport() != null)
+        {
+          ??? = String.valueOf(paramDownloadResult.getReport().fileSize);
+          str1 = String.valueOf(paramDownloadResult.getReport().downloadTime);
+        }
+      }
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_download").setRetCode(2000L).setPluginVersion(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version).setExt1(???).setExt2(str1));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath)) {
+        this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.isReady = true;
+      }
+      synchronized (vho.a())
+      {
+        while (this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.isReady)
+        {
+          vho.a(this.jdField_a_of_type_Vho).delete(QCirclePluginInfo.class.getSimpleName(), null, null);
+          this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.setStatus(1000);
+          vho.a(this.jdField_a_of_type_Vho).persistOrReplace(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo);
+          return;
+          ??? = (QCirclePluginInfo)vho.a(this.jdField_a_of_type_Vho).find(QCirclePluginInfo.class, this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version + "");
+          if ((??? != null) && (???.pluginZipPath != null))
+          {
+            this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath = ???.pluginZipPath;
+            this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.isReady = true;
+          }
+        }
+        vho.a(this.jdField_a_of_type_Vho).delete(QCirclePluginInfo.class.getSimpleName(), "version=?", new String[] { this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version + "" });
+      }
+    }
+    QLog.e("QCirclePluginManager", 1, "file.exists " + ???.exists() + "file.length()= " + ???.length() + " managefilerlength= " + this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.managerFilelength);
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_download").setRetCode(2002L).setPluginVersion(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version));
   }
 }
 

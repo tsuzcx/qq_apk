@@ -1,6 +1,16 @@
-public abstract interface blkc
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
+class blkc
+  implements Observer<Boolean>
 {
-  public abstract void a();
+  blkc(bljy parambljy) {}
+  
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    bmbx.b(this.a.a, "getCapturingLiveData--isCapturing=" + paramBoolean);
+    bluy.a = paramBoolean.booleanValue();
+  }
 }
 
 

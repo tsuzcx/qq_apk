@@ -1,9 +1,33 @@
-import com.tencent.common.app.AppInterface;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface anuh
+public class anuh
+  extends anri
 {
-  public abstract List<String> a(AppInterface paramAppInterface);
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  {
+    paramQQAppInterface = new anug(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "groupopenapp";
+    paramQQAppInterface.c = "openapp";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {}
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramContext = paramContext[1].split("&");
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 

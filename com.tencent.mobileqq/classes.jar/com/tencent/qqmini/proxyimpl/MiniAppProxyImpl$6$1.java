@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkyh;
+import bjee;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -8,16 +8,16 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 public class MiniAppProxyImpl$6$1
   implements Runnable
 {
-  public MiniAppProxyImpl$6$1(bkyh parambkyh) {}
+  public MiniAppProxyImpl$6$1(bjee parambjee) {}
   
   public void run()
   {
     if (this.a.a.topType == 1)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2131717995, 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 2131718236, 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), 2131717996, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 2131718237, 0).a();
   }
 }
 

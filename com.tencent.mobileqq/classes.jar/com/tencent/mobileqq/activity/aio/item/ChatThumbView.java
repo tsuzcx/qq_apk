@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aggk;
+import aeze;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -16,7 +16,7 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class ChatThumbView
   extends URLImageView
-  implements aggk
+  implements aeze
 {
   public boolean a;
   public boolean b = true;

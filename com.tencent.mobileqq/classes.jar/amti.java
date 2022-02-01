@@ -1,37 +1,74 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.qphone.base.util.QLog;
 
-class amti
-  extends BroadcastReceiver
+public class amti
 {
-  amti(amsx paramamsx) {}
+  public static final String[] a;
+  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
+  public int a;
+  public GuardManager a;
+  protected long c;
+  protected long d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    if (paramIntent == null) {
-      QLog.e("ApolloManager", 1, "[onReceive] intent null");
-    }
-    do
-    {
-      return;
-      paramContext = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
-      }
-    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
-    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
-    ((VasExtensionHandler)this.a.a.a(71)).a(null, paramContext, -1003, 0);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
   }
+  
+  public void a()
+  {
+    this.c += 1L;
+    this.d += 1L;
+  }
+  
+  public final void a(int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      a();
+      return;
+    case 0: 
+      b();
+      return;
+    case 3: 
+      a((String)paramObject);
+      return;
+    case 4: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+      return;
+    }
+    c((String)paramObject);
+  }
+  
+  protected void a(String paramString) {}
+  
+  protected void b() {}
+  
+  protected void b(String paramString)
+  {
+    this.d = 0L;
+    this.c = 0L;
+  }
+  
+  protected void c(String paramString) {}
+  
+  protected void d(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amti
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anqo;
-import anqx;
+import amli;
+import amlr;
 import com.tencent.mobileqq.data.ApolloGameData;
 
 public class ApolloGameViewBinder$ISessionHandler$1
   implements Runnable
 {
-  public ApolloGameViewBinder$ISessionHandler$1(anqx paramanqx, anqo paramanqo, ApolloGameData paramApolloGameData) {}
+  public ApolloGameViewBinder$ISessionHandler$1(amlr paramamlr, amli paramamli, ApolloGameData paramApolloGameData) {}
   
   public void run()
   {
-    anqo.a(this.jdField_a_of_type_Anqo, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData);
+    amli.a(this.jdField_a_of_type_Amli, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData);
   }
 }
 

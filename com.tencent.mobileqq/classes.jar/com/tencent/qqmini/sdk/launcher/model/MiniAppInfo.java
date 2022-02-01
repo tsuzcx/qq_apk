@@ -25,6 +25,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -307,7 +309,7 @@ public class MiniAppInfo
       return null;
     }
     MiniAppInfo localMiniAppInfo;
-    label573:
+    label587:
     for (;;)
     {
       try
@@ -357,10 +359,12 @@ public class MiniAppInfo
           }
           localMiniAppInfo.enableLoadingAd = bool;
           if (!localJSONObject.has("pkgType")) {
-            break label573;
+            break label587;
           }
-          if (localJSONObject.optInt("pkgType") == 1) {
+          if (localJSONObject.optInt("pkgType") == 1)
+          {
             localMiniAppInfo.engineType = 1;
+            localMiniAppInfo.miniGamePluginInfo = parseMiniGamePluginInfo(localJSONObject.optJSONObject("pluginInfo"));
           }
         }
         else
@@ -432,6 +436,173 @@ public class MiniAppInfo
     for (boolean bool1 = true;; bool1 = false) {
       return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get());
     }
+  }
+  
+  public static INTERFACE.StApiRightController getApiRight(JSONObject paramJSONObject)
+  {
+    int j = 0;
+    INTERFACE.StApiRightController localStApiRightController = new INTERFACE.StApiRightController();
+    paramJSONObject = paramJSONObject.optJSONObject("apiRight");
+    if (paramJSONObject != null)
+    {
+      ArrayList localArrayList;
+      Object localObject;
+      int i;
+      if (paramJSONObject.optJSONArray("whiteLst") != null)
+      {
+        localArrayList = new ArrayList();
+        localObject = paramJSONObject.optJSONArray("whiteLst");
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(((JSONArray)localObject).optString(i));
+          i += 1;
+        }
+        localStApiRightController.whiteLst.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONArray("blackLst") != null)
+      {
+        localArrayList = new ArrayList();
+        localObject = paramJSONObject.optJSONArray("blackLst");
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(((JSONArray)localObject).optString(i));
+          i += 1;
+        }
+        localStApiRightController.whiteLst.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONArray("secondApiRights") != null)
+      {
+        localArrayList = new ArrayList();
+        paramJSONObject = paramJSONObject.optJSONArray("secondApiRights");
+        i = j;
+        while (i < paramJSONObject.length())
+        {
+          localObject = paramJSONObject.optJSONObject(i);
+          if (localObject != null)
+          {
+            INTERFACE.StApiRightItem localStApiRightItem = new INTERFACE.StApiRightItem();
+            localStApiRightItem.apiName.set(((JSONObject)localObject).optString("apiName"));
+            localStApiRightItem.right.set(((JSONObject)localObject).optInt("right"));
+            localStApiRightItem.secondName.set(((JSONObject)localObject).optString("secondName"));
+            localArrayList.add(localStApiRightItem);
+          }
+          i += 1;
+        }
+        localStApiRightController.secondApiRights.set(localArrayList);
+      }
+    }
+    return localStApiRightController;
+  }
+  
+  public static INTERFACE.StMDebugInfo getDebugPb(JSONObject paramJSONObject)
+  {
+    INTERFACE.StMDebugInfo localStMDebugInfo = new INTERFACE.StMDebugInfo();
+    paramJSONObject = paramJSONObject.optJSONObject("mDebug");
+    if (paramJSONObject != null)
+    {
+      localStMDebugInfo.wsUrl.set(paramJSONObject.optString("wsUrl"));
+      localStMDebugInfo.roomId.set(paramJSONObject.optString("roomId"));
+    }
+    return localStMDebugInfo;
+  }
+  
+  public static INTERFACE.StDomainConfig getDomain(JSONObject paramJSONObject)
+  {
+    int j = 0;
+    INTERFACE.StDomainConfig localStDomainConfig = new INTERFACE.StDomainConfig();
+    if (paramJSONObject.optJSONObject("domain") != null)
+    {
+      ArrayList localArrayList;
+      JSONArray localJSONArray;
+      int i;
+      if (paramJSONObject.optJSONObject("domain").optJSONArray("requestDomain") != null)
+      {
+        localArrayList = new ArrayList();
+        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("requestDomain");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(localJSONArray.optString(i));
+          i += 1;
+        }
+        localStDomainConfig.requestDomain.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONObject("domain").optJSONArray("socketDomain") != null)
+      {
+        localArrayList = new ArrayList();
+        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("socketDomain");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(localJSONArray.optString(i));
+          i += 1;
+        }
+        localStDomainConfig.socketDomain.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONObject("domain").optJSONArray("uploadFileDomain") != null)
+      {
+        localArrayList = new ArrayList();
+        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("uploadFileDomain");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(localJSONArray.optString(i));
+          i += 1;
+        }
+        localStDomainConfig.uploadFileDomain.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONObject("domain").optJSONArray("downloadFileDomain") != null)
+      {
+        localArrayList = new ArrayList();
+        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("downloadFileDomain");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(localJSONArray.optString(i));
+          i += 1;
+        }
+        localStDomainConfig.downloadFileDomain.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONObject("domain").optJSONArray("businessDomain") != null)
+      {
+        localArrayList = new ArrayList();
+        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("businessDomain");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(localJSONArray.optString(i));
+          i += 1;
+        }
+        localStDomainConfig.businessDomain.set(localArrayList);
+      }
+      if (paramJSONObject.optJSONObject("domain").optJSONArray("udpIpList") != null)
+      {
+        localArrayList = new ArrayList();
+        paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("udpIpList");
+        i = j;
+        while (i < paramJSONObject.length())
+        {
+          localArrayList.add(paramJSONObject.optString(i));
+          i += 1;
+        }
+        localStDomainConfig.udpIpList.set(localArrayList);
+      }
+    }
+    return localStDomainConfig;
+  }
+  
+  public static INTERFACE.StFirstPage getFirstPb(JSONObject paramJSONObject)
+  {
+    INTERFACE.StFirstPage localStFirstPage = new INTERFACE.StFirstPage();
+    paramJSONObject = paramJSONObject.optJSONObject("first");
+    if (paramJSONObject != null)
+    {
+      localStFirstPage.pagePath.set(paramJSONObject.optString("pagePath"));
+      localStFirstPage.subPkgName.set(paramJSONObject.optString("subPkgName"));
+    }
+    return localStFirstPage;
   }
   
   private static String getRecommendIconUrl(INTERFACE.StApiAppInfo paramStApiAppInfo)
@@ -564,6 +735,31 @@ public class MiniAppInfo
       QMLog.e("MiniAppInfo", " getReportDataString error.", localException2);
       return paramMap;
     }
+  }
+  
+  public static ArrayList<INTERFACE.StSubPkgInfo> getSubPkgsPb(JSONObject paramJSONObject)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramJSONObject = paramJSONObject.optJSONArray("subPkgs");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+    {
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        if (localJSONObject != null)
+        {
+          INTERFACE.StSubPkgInfo localStSubPkgInfo = new INTERFACE.StSubPkgInfo();
+          localStSubPkgInfo.subPkgName.set(localJSONObject.optString("subPkgName"));
+          localStSubPkgInfo.dowLoadUrl.set(localJSONObject.optString("dowLoadUrl"));
+          localStSubPkgInfo.independent.set(localJSONObject.optInt("independent"));
+          localStSubPkgInfo.file_size.set(localJSONObject.optInt("file_size"));
+          localArrayList.add(localStSubPkgInfo);
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
   }
   
   private static boolean getSupportBlueBar(INTERFACE.StApiAppInfo paramStApiAppInfo)
@@ -862,6 +1058,16 @@ public class MiniAppInfo
     }
   }
   
+  private static MiniGamePluginInfo parseMiniGamePluginInfo(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      QMLog.i("MiniAppInfo", "No MiniGamePluginInfo");
+      return null;
+    }
+    return new MiniGamePluginInfo(paramJSONObject.optString("pluginName"), paramJSONObject.optString("pluginId"), paramJSONObject.optString("version"), paramJSONObject.optString("url"), paramJSONObject.optInt("fileSize"));
+  }
+  
   private static List<SubPkgInfo> parseSubpkgs(JSONObject paramJSONObject)
   {
     ArrayList localArrayList = new ArrayList();
@@ -882,6 +1088,80 @@ public class MiniAppInfo
       }
     }
     return localArrayList;
+  }
+  
+  public static INTERFACE.StApiAppInfo pbFromJSON(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      localObject = null;
+    }
+    INTERFACE.StApiAppInfo localStApiAppInfo;
+    do
+    {
+      do
+      {
+        return localObject;
+        localStApiAppInfo = new INTERFACE.StApiAppInfo();
+        localStApiAppInfo.appId.set(paramJSONObject.optString("appId"));
+        localStApiAppInfo.appName.set(paramJSONObject.optString("appName"));
+        localStApiAppInfo.icon.set(paramJSONObject.optString("icon"));
+        localStApiAppInfo.donwLoadUrl.set(paramJSONObject.optString("donwLoadUrl"));
+        localStApiAppInfo.version.set(paramJSONObject.optString("version"));
+        localStApiAppInfo.desc.set(paramJSONObject.optString("desc"));
+        localStApiAppInfo.type.set(paramJSONObject.optInt("type"));
+        localStApiAppInfo.baselibMiniVersion.set(paramJSONObject.optString("baselibMiniVersion"));
+        localStApiAppInfo.subPkgs.set(getSubPkgsPb(paramJSONObject));
+        localStApiAppInfo.first.set(getFirstPb(paramJSONObject));
+        localStApiAppInfo.domain.set(getDomain(paramJSONObject));
+        localStApiAppInfo.appType.set(paramJSONObject.optInt("appType"));
+        localStApiAppInfo.mDebug.set(getDebugPb(paramJSONObject));
+        localStApiAppInfo.versionId.set(paramJSONObject.optString("versionId"));
+        localStApiAppInfo.apiRight.set(getApiRight(paramJSONObject));
+        if (paramJSONObject.optJSONObject("mainExt") != null)
+        {
+          localObject = new INTERFACE.StMainPageExtInfo();
+          ((INTERFACE.StMainPageExtInfo)localObject).file_size.set(paramJSONObject.optJSONObject("mainExt").optInt("file_size"));
+          localStApiAppInfo.mainExt.set((MessageMicro)localObject);
+        }
+        if (paramJSONObject.optJSONObject("devInfo") != null)
+        {
+          localObject = new INTERFACE.StDeveloperInfo();
+          ((INTERFACE.StDeveloperInfo)localObject).name.set(paramJSONObject.optJSONObject("devInfo").optString("name"));
+          localStApiAppInfo.devInfo.set((MessageMicro)localObject);
+        }
+        if (paramJSONObject.optJSONObject("basicInfo") != null)
+        {
+          localObject = paramJSONObject.optJSONObject("basicInfo");
+          if (localObject != null)
+          {
+            INTERFACE.StAppBasicInfo localStAppBasicInfo = new INTERFACE.StAppBasicInfo();
+            localStAppBasicInfo.usrFileSizeLimit.set(((JSONObject)localObject).optInt("usrFileSizeLimit"));
+            localStAppBasicInfo.versionUpdateTime.set(((JSONObject)localObject).optInt("versionUpdateTime"));
+            localStAppBasicInfo.noNeedRealRecommend.set(((JSONObject)localObject).optInt("noNeedRealRecommend"));
+            localStAppBasicInfo.splashScreenAd.set(((JSONObject)localObject).optInt("splashScreenAd"));
+            if (((JSONObject)localObject).has("pkgType")) {
+              localStAppBasicInfo.pkgType.set(((JSONObject)localObject).optInt("pkgType"));
+            }
+            localStApiAppInfo.basicInfo.set(localStAppBasicInfo);
+          }
+        }
+        localObject = localStApiAppInfo;
+      } while (paramJSONObject.optJSONObject("appMode") == null);
+      paramJSONObject = paramJSONObject.optJSONObject("appMode");
+      localObject = localStApiAppInfo;
+    } while (paramJSONObject == null);
+    Object localObject = new INTERFACE.StAppMode();
+    ((INTERFACE.StAppMode)localObject).interMode.set(paramJSONObject.optBoolean("interMode"));
+    ((INTERFACE.StAppMode)localObject).authoritySilent.set(paramJSONObject.optBoolean("authoritySilent"));
+    ((INTERFACE.StAppMode)localObject).keepOffPullList.set(paramJSONObject.optBoolean("keepOffPullList"));
+    ((INTERFACE.StAppMode)localObject).closeTopRightCapsule.set(paramJSONObject.optBoolean("closeTopRightCapsule"));
+    ((INTERFACE.StAppMode)localObject).openNativeApi.set(paramJSONObject.optBoolean("openNativeApi"));
+    ((INTERFACE.StAppMode)localObject).hideAppSearch.set(paramJSONObject.optBoolean("hideAppSearch"));
+    ((INTERFACE.StAppMode)localObject).isAppStore.set(paramJSONObject.optBoolean("isAppStore"));
+    ((INTERFACE.StAppMode)localObject).isWangKa.set(paramJSONObject.optBoolean("isWangKa"));
+    ((INTERFACE.StAppMode)localObject).interLoading.set(paramJSONObject.optBoolean("interLoading"));
+    localStApiAppInfo.appMode.set((MessageMicro)localObject);
+    return localStApiAppInfo;
   }
   
   public static void saveMiniAppByIdEntity(String paramString, INTERFACE.StApiAppInfo paramStApiAppInfo) {}
@@ -1068,7 +1348,7 @@ public class MiniAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

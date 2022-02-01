@@ -1,19 +1,93 @@
 import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.statistics.GdtReporter;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class actf
-  implements acvm
+public class actf
+  implements View.OnClickListener
 {
-  actf(acsz paramacsz) {}
+  public actf(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void reportImpression(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = paramView.getTag(2131381107);
-    if ((paramView != null) && ((paramView instanceof GdtAd)))
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    for (;;)
     {
-      paramView = (GdtAd)paramView;
-      GdtReporter.doCgiReport(new acrv().a(paramView.getUrlForImpression()));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      View localView1 = AssociatedAccountManageActivity.a(this.a, paramView);
+      View localView2 = AssociatedAccountManageActivity.b(this.a, paramView);
+      Object localObject;
+      if (AssociatedAccountManageActivity.a(this.a) == null)
+      {
+        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        AssociatedAccountManageActivity.a(this.a).b();
+        if (localView2 != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.a(this.a) * 12.0F + AssociatedAccountManageActivity.b(this.a) * 75.0F));
+          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).showIgnoreVisible();
+        }
+        if (AppSetting.c) {
+          paramView.setContentDescription(this.a.getString(2131690748));
+        }
+      }
+      else if (AssociatedAccountManageActivity.a(this.a) == paramView)
+      {
+        AssociatedAccountManageActivity.a(this.a).a();
+        if (localView2 != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.c(this.a) * 12.0F));
+          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
+        }
+        AssociatedAccountManageActivity.a(this.a, null);
+        if (AppSetting.c) {
+          paramView.setContentDescription(this.a.getString(2131719368));
+        }
+      }
+      else
+      {
+        AssociatedAccountManageActivity.a(this.a).a();
+        localObject = AssociatedAccountManageActivity.b(this.a, AssociatedAccountManageActivity.a(this.a));
+        if (localObject != null)
+        {
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+          localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.d(this.a) * 12.0F));
+          ((View)localObject).setLayoutParams(localLayoutParams);
+        }
+        ((RotateSwitchImageView)paramView).b();
+        if (localView2 != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.e(this.a) * 12.0F + AssociatedAccountManageActivity.f(this.a) * 75.0F));
+          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        if (AppSetting.c)
+        {
+          paramView.setContentDescription(this.a.getString(2131690748));
+          AssociatedAccountManageActivity.a(this.a).setContentDescription(this.a.getString(2131719368));
+        }
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).showIgnoreVisible();
+        }
+        localView1 = AssociatedAccountManageActivity.a(this.a, AssociatedAccountManageActivity.a(this.a));
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
+        }
+        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+      }
     }
   }
 }

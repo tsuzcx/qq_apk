@@ -1,31 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import qqcircle.QQCircleFeedBase.StImageBusiData;
-import qqcircle.QQCircleFeedBase.StSimulateData;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wds
-  implements View.OnClickListener
+  extends vqm
 {
-  public wds(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter, QQCircleFeedBase.StImageBusiData paramStImageBusiData) {}
+  public List<wdt> a;
   
-  public void onClick(View paramView)
+  public wds(ErrorMessage paramErrorMessage)
   {
-    QQCircleFeedBase.StSimulateData localStSimulateData = new QQCircleFeedBase.StSimulateData();
-    localStSimulateData.material_id.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get());
-    localStSimulateData.simulate_name.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.simulate_name.get());
-    localStSimulateData.simulate_schema.set(brdx.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get(), ""));
-    QCirclePolymerizationBean localQCirclePolymerizationBean = new QCirclePolymerizationBean();
-    localQCirclePolymerizationBean.setSimulateData(localStSimulateData);
-    localQCirclePolymerizationBean.setPolymerizationType(20);
-    localQCirclePolymerizationBean.setExt1From(1);
-    uyx.a(paramView.getContext(), localQCirclePolymerizationBean);
-    vtn.a(86, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.b());
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public wds(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
+  {
+    super(paramRspBatchFeedLike.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
+    while (paramRspBatchFeedLike.hasNext())
+    {
+      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
+      wdt localwdt = new wdt();
+      localwdt.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localwdt.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localwdt.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localwdt.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
+        localLikeEntry.feedId = localwdt.jdField_a_of_type_JavaLangString;
+        localwdt.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localwdt);
+    }
   }
 }
 

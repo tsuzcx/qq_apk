@@ -1,45 +1,104 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import okio.ByteString;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.ReqBody;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.RspBody;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.TopicListReq;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.TopicListRsp;
+import tencent.kandian.ugc.topic_info.TopicInfo;
 
-final class rnf
-  implements biin
+public class rnf
+  extends pxj<ColumnInfo, ByteString>
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)pay.a();
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  
+  private void a(pxo<ColumnInfo, ByteString> parampxo, byte[] paramArrayOfByte, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(rne.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
-    }
-    if (paramBoolean1)
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
     {
-      rne.a(paramInt);
+      int i;
       try
       {
-        JSONObject localJSONObject = rne.a();
-        if (localJSONObject != null) {}
-        try
+        Object localObject = new oidb_0xe31.RspBody();
+        ((oidb_0xe31.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((oidb_0xe31.RspBody)localObject).topic_list_req_rsp.has()) || (((oidb_0xe31.RspBody)localObject).topic_list_req_rsp.topics.size() == 0))
         {
-          rne.a().put("simCardType", rne.a());
-          if (QLog.isColorLevel()) {
-            QLog.d(rne.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
-          }
+          QLog.e("RIJUGC.MyColumnModel", 1, "handleSuccessResult no column data!");
           return;
         }
-        catch (JSONException localJSONException)
+        paramArrayOfByte = ((oidb_0xe31.RspBody)localObject).topic_list_req_rsp;
+        localObject = paramArrayOfByte.topics.get();
+        i = 0;
+        if (i < ((List)localObject).size())
         {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.e(rne.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
-            }
+          ColumnInfo localColumnInfo = new ColumnInfo((topic_info.TopicInfo)((List)localObject).get(i));
+          if (a(localColumnInfo)) {
+            localArrayList.add(localColumnInfo);
           }
         }
+        else
+        {
+          QLog.i("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork success, topicList.num = " + localArrayList.size());
+          this.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+          parampxo.a(true, paramArrayOfByte.is_end.get(), paramArrayOfByte.total.get(), localArrayList, ByteString.encodeUtf8(paramArrayOfByte.cookie.get().toStringUtf8()), paramInt, "");
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork failed.");
+        }
+        parampxo.a(false, true, 0, new ArrayList(), null, paramInt, "");
         return;
       }
-      finally {}
+      i += 1;
     }
   }
+  
+  private boolean a(ColumnInfo paramColumnInfo)
+  {
+    return !paramColumnInfo.coverUrl.isEmpty();
+  }
+  
+  public void a(List<ColumnInfo> paramList) {}
+  
+  public void a(ByteString paramByteString, pxo<ColumnInfo, ByteString> parampxo)
+  {
+    QLog.i("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork start request cookie = " + paramByteString);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.i("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork return since mIsRequesting is true start = " + paramByteString);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    oidb_0xe31.TopicListReq localTopicListReq = new oidb_0xe31.TopicListReq();
+    localTopicListReq.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    if (paramByteString != null) {
+      localTopicListReq.cookie.set(ByteStringMicro.copyFrom(paramByteString.toByteArray()));
+    }
+    localTopicListReq.num.set(10);
+    if (this.b != 0) {
+      localTopicListReq.top_topic_id.set(this.b);
+    }
+    paramByteString = new oidb_0xe31.ReqBody();
+    paramByteString.topic_list_req_req.set(localTopicListReq);
+    nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new rng(this, parampxo), paramByteString.toByteArray(), "OidbSvc.0xe31", 3633, 3);
+  }
+  
+  public void a(pxn<ColumnInfo> parampxn) {}
 }
 
 

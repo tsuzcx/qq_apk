@@ -1,89 +1,78 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONObject;
 
 public class apxg
-  implements apxf
+  extends aptq<apxf>
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  @NonNull
+  public apxf a(int paramInt)
   {
-    if (paramLong != 0L) {
-      return false;
-    }
-    paramString2 = BaseActivity.sTopActivity;
-    if (paramString2 == null) {
-      return false;
-    }
-    if (paramString1.startsWith("open/")) {
-      try
-      {
-        int j = Integer.parseInt(paramString1.substring("open/".length(), paramString1.indexOf("?")));
-        paramJSONObject = (String)blhn.a(paramString1).get("url");
-        int i = j;
-        if (j != 1007)
-        {
-          i = j;
-          if (j != 1008)
-          {
-            i = j;
-            if (j != 1014)
-            {
-              i = j;
-              if (j != 1036)
-              {
-                i = j;
-                if (j != 2061)
-                {
-                  i = j;
-                  if (j != 2072)
-                  {
-                    i = j;
-                    if (j != 2075)
-                    {
-                      i = j;
-                      if (j != 2085)
-                      {
-                        i = j;
-                        if (j != 2105)
-                        {
-                          i = j;
-                          if (j != 4012)
-                          {
-                            i = j;
-                            if (j != 2114)
-                            {
-                              i = j;
-                              if (j != 2112) {
-                                i = 2059;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        MiniAppLauncher.startMiniApp(paramString2, paramJSONObject, i, apxc.a(), null);
-        return true;
+    return new apxf();
+  }
+  
+  @Nullable
+  public apxf a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    {
+      apxf localapxf = apxf.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
       }
-      catch (Exception paramString2)
-      {
-        QLog.e("ArkApp", 1, "parse miniapp scheme failed:" + paramString1, paramString2);
-        return false;
-      }
+      return localapxf;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public void a(apxf paramapxf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramapxf.toString());
+    }
+  }
+  
+  public Class<apxf> clazz()
+  {
+    return apxf.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 528;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxg
  * JD-Core Version:    0.7.0.1
  */

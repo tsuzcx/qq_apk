@@ -1,35 +1,10 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-
-class apff
-  implements SoundPool.OnLoadCompleteListener
+public abstract interface apff
 {
-  apff(apfb paramapfb) {}
+  public abstract void onEventComplite();
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 != 0) {}
-    try
-    {
-      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
-      return;
-    }
-    catch (Exception paramSoundPool)
-    {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
-    }
-    apfb.a(this.a).add(Integer.valueOf(paramInt1));
-    if (apfb.b(this.a).contains(Integer.valueOf(paramInt1)))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
-    }
-  }
+  public abstract void onOverScrollTargetValue();
+  
+  public abstract boolean shouldRecordPositionY();
 }
 
 

@@ -1,81 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajhe
-  extends Handler
+class ajhe
+  implements View.OnClickListener
 {
-  public WeakReference<TroopView> a;
+  ajhe(ajhb paramajhb) {}
   
-  public ajhe(TroopView paramTroopView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramTroopView);
-  }
-  
-  public void a()
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
-      return;
-      if (TroopView.a(localTroopView) != null) {
-        TroopView.a(localTroopView).setRefreshing(false);
-      }
-    } while (TroopView.a(localTroopView) == null);
-    TroopView.a(localTroopView).setRefresh(false);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131693965);
-      return;
-    case 4: 
-      TroopView.a(localTroopView, true);
-      return;
-    case 5: 
-      TroopView.a(localTroopView, false);
-      return;
-    case 13: 
-      TroopView.a(localTroopView, 1, 2131693965);
-      a();
-      return;
-    case 14: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label178;
-        }
-        TroopView.d(localTroopView);
-        if (TroopView.a(localTroopView) == null) {
-          break;
-        }
-        TroopView.a(localTroopView).a(0);
-        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
-        return;
-      }
-      label178:
-      a();
-      TroopView.a(localTroopView, 1, 2131718362);
-      return;
-    }
-    a();
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

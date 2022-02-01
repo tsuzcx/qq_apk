@@ -1,31 +1,50 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class aejb
-  extends AccountObserver
+  extends Handler
 {
-  public aejb(Conversation paramConversation) {}
-  
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public aejb(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
-      }
-      this.a.a.a("AccountObserver.onOnlineStatusChanged");
-    }
+    super(paramLooper);
   }
   
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
+    switch (paramMessage.what)
+    {
+    default: 
+    case 100: 
+    case 16: 
+    case 18: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(bhcn.a());
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Gb.a(this.a.e));
+          return;
+        } while (!(paramMessage.obj instanceof Drawable));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+        return;
+      } while (!(paramMessage.obj instanceof Bitmap));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
+      return;
     }
-    this.a.a.a("AccountObserver.onOnlineStatusPush");
+    this.a.a();
   }
 }
 

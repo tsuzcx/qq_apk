@@ -1,9 +1,17 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import java.util.List;
 
-abstract interface bnok
+public abstract interface bnok
 {
-  public abstract void a(JSONObject paramJSONObject, Bundle paramBundle);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
+  
+  public abstract void a(List<Long> paramList);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

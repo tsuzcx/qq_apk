@@ -1,32 +1,91 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommonBottomData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class str
-  extends aoki
+  extends stg
+  implements View.OnClickListener
 {
-  str(stp paramstp) {}
+  private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363646);
+  private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363661);
+  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364872);
   
-  public void handleSearchDiscoveryError(int paramInt1, String paramString, int paramInt2)
+  public str(stp paramstp, View paramView, BaseData paramBaseData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    super(paramView, paramBaseData);
+    this.d.setOnClickListener(this);
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    int i = 0;
+    paramBaseData1 = (CommonBottomData)paramBaseData2;
+    if ((paramBaseData1.r == 14) && (paramBaseData1.b))
+    {
+      this.d.setVisibility(0);
+      if (!paramBaseData1.a) {
+        break label148;
+      }
+      this.c.setVisibility(0);
+      if (paramBaseData2.r != 14) {
+        break label123;
+      }
+      this.c.getLayoutParams().height = DisplayUtil.dip2px(this.c.getContext(), 6.0F);
+      label78:
+      paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+      if (paramBaseData2.r != 14) {
+        break label160;
+      }
+    }
+    for (;;)
+    {
+      paramBaseData1.rightMargin = i;
+      paramBaseData1.leftMargin = i;
+      return;
+      this.d.setVisibility(8);
+      break;
+      label123:
+      this.c.getLayoutParams().height = DisplayUtil.dip2px(this.c.getContext(), 10.0F);
+      break label78;
+      label148:
+      this.c.setVisibility(8);
+      break label78;
+      label160:
+      i = DisplayUtil.dip2px(this.b.getContext(), 12.0F);
     }
   }
   
-  public void handleSearchDiscoveryResult(List<bcgy> paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    ArticleInfo localArticleInfo;
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.r == 14)
+    {
+      localObject = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
+      if ((localObject != null) && ((localObject instanceof FastWebActivity))) {
+        ((FastWebActivity)localObject).a();
+      }
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
+      i = (int)localArticleInfo.mChannelID;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
+        break label95;
+      }
     }
-    if (paramInt != 6) {}
-    while (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() != 0)) || (paramList == null) || (paramList.size() <= 0) || (!(paramList.get(0) instanceof HotWordSearchEntryDataModel))) {
+    label95:
+    for (Object localObject = "2";; localObject = "1")
+    {
+      swy.a(localArticleInfo, "0X800900A", pay.a(localArticleInfo, i, (String)localObject));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
-    stp.jdField_a_of_type_Int = 0;
-    this.a.f();
   }
 }
 

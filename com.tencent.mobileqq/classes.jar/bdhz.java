@@ -1,48 +1,38 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class bdhz
-  extends URLDrawableParams
 {
-  private ProtocolDownloader a;
+  private bdjh<CreatingState> jdField_a_of_type_Bdjh;
+  private bdjx jdField_a_of_type_Bdjx;
   
-  public bdhz(MobileQQ paramMobileQQ)
+  public bdhz(bdjx parambdjx)
   {
-    super(paramMobileQQ);
+    this.jdField_a_of_type_Bdjx = parambdjx;
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  public CreatingState a()
   {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new beuf();
-    }
-    return this.a;
+    return (CreatingState)this.jdField_a_of_type_Bdjh.a();
   }
   
-  public String doGetLocalFilePath(String paramString)
+  public void a()
   {
-    return null;
+    this.jdField_a_of_type_Bdjh = new bdjh(CreatingState.TEMPLATE_NO, "CreatingStateMachineController");
+    this.jdField_a_of_type_Bdjh.a(new bdia(this, CreatingState.TEMPLATE_FIRST_USE, Collections.singletonList(CreatingState.TEMPLATE_NO)));
+    this.jdField_a_of_type_Bdjh.a(new bdib(this, CreatingState.TEMPLATE_SHOW_ENTRANCE, Arrays.asList(new CreatingState[] { CreatingState.TEMPLATE_NO, CreatingState.TEMPLATE_FIRST_USE, CreatingState.TEMPLATE_SHOW_LAYER })));
+    this.jdField_a_of_type_Bdjh.a(new bdic(this, CreatingState.TEMPLATE_SHOW_LAYER, Arrays.asList(new CreatingState[] { CreatingState.TEMPLATE_NO, CreatingState.TEMPLATE_FIRST_USE, CreatingState.TEMPLATE_SHOW_ENTRANCE })));
   }
   
-  public ApngSoLoader getApngSoLoader()
+  public void a(CreatingState paramCreatingState)
   {
-    return bhzi.a();
+    this.jdField_a_of_type_Bdjh.a(paramCreatingState);
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  public CreatingState b()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847845);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847845);
+    return (CreatingState)this.jdField_a_of_type_Bdjh.b();
   }
 }
 

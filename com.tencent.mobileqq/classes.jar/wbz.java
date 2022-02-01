@@ -1,21 +1,62 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Iterator;
+import java.util.List;
 
 public class wbz
-  implements Animation.AnimationListener
+  extends vqr<wca>
 {
-  public wbz(QCircleRocketView paramQCircleRocketView, View paramView) {}
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    jdField_a_of_type_JavaLangString = vpl.a("StoryGroupSvc.convert_group_id");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
+    try
+    {
+      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
+      return new wca(localRspConvertGroupId);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
+    localReqConvertGroupId.convert_from.set(this.c);
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
+        localGroupId.group_uin.set(Long.valueOf(str).longValue());
+        localReqConvertGroupId.group_req_list.add(localGroupId);
+      }
+    }
+    return localReqConvertGroupId.toByteArray();
+  }
 }
 
 

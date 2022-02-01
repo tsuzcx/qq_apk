@@ -1,27 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xrv
-  extends xrz<StoryVideoItem>
+class xrv
+  implements DialogInterface.OnClickListener
 {
-  public xrv(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  xrv(xru paramxru) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yuk.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    this.a.a.a(false, true, 12, null);
+    xwa.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
-import quk;
-import qul;
+import rbi;
+import rbj;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
@@ -9,14 +9,14 @@ import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 public class ReadInjoySkinAndRefreshFacade$2$1
   implements Runnable
 {
-  public ReadInjoySkinAndRefreshFacade$2$1(qul paramqul, oidb_0x5bd.GuideInfo paramGuideInfo1, int paramInt, oidb_0x5bd.RefreshInfo paramRefreshInfo, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo2) {}
+  public ReadInjoySkinAndRefreshFacade$2$1(rbj paramrbj, oidb_0x5bd.GuideInfo paramGuideInfo1, int paramInt, oidb_0x5bd.RefreshInfo paramRefreshInfo, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo2) {}
   
   public void run()
   {
     int i = (int)(System.currentTimeMillis() / 1000L);
-    quk.a(this.jdField_a_of_type_Qul.a, i, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$GuideInfo, this.jdField_a_of_type_Int);
-    RefreshData localRefreshData = quk.a(this.jdField_a_of_type_Qul.a, i, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$RefreshInfo, this.jdField_a_of_type_Int);
-    quk.a(this.jdField_a_of_type_Qul.a, i, localRefreshData, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$SkinInfo, this.b, this.jdField_a_of_type_Int);
+    rbi.a(this.jdField_a_of_type_Rbj.a, i, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$GuideInfo, this.jdField_a_of_type_Int);
+    RefreshData localRefreshData = rbi.a(this.jdField_a_of_type_Rbj.a, i, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$RefreshInfo, this.jdField_a_of_type_Int);
+    rbi.a(this.jdField_a_of_type_Rbj.a, i, localRefreshData, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$SkinInfo, this.b, this.jdField_a_of_type_Int);
   }
 }
 

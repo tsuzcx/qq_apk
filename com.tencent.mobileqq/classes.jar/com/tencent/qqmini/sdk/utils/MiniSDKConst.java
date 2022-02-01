@@ -18,7 +18,7 @@ public class MiniSDKConst
   public static final int Audit = 2;
   public static final int AuditPass = 6;
   public static final int AuditReject = 7;
-  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.18.0.00132";
+  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.19.0.00043";
   public static final int Deleted = 5;
   public static final int Develop = 0;
   public static final String ENG_LOG_TAG = "[MiniEng]";
@@ -31,7 +31,7 @@ public class MiniSDKConst
   public static final String KEY_BASELIB_MIN_UPDATE_TIME = "baselib_min_update_time";
   public static final String MINI_FILE_LOG_PATH = "/Tencent/mini/files/";
   public static final String MINI_SDK_PATCH_VERSION = "0";
-  public static final String MINI_SDK_VERSION = "1.7.0";
+  public static final String MINI_SDK_VERSION = "1.8.0";
   public static final String MINI_TAG = "[mini] ";
   public static final int MULTI_ENTER_ROOM_RESULT_DEVICE_TAKE_UP = -2;
   public static final int MULTI_ENTER_ROOM_RESULT_DUPLICATE_CALL = -3;

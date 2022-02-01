@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.media.MediaPlayer;
-import bdyw;
+import bcsn;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoSprite$CompletionListener$1
   implements Runnable
 {
-  public VideoSprite$CompletionListener$1(bdyw parambdyw, VideoSprite paramVideoSprite) {}
+  public VideoSprite$CompletionListener$1(bcsn parambcsn, VideoSprite paramVideoSprite) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class VideoSprite$CompletionListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1
  * JD-Core Version:    0.7.0.1
  */

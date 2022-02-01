@@ -1,24 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import java.util.Comparator;
 
 public class albu
-  extends Handler
+  implements Comparator<TroopMemberInfo>
 {
-  public albu(ThemeHbFragment paramThemeHbFragment) {}
+  private albu(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
     }
-    do
-    {
-      return;
-    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
-    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+    return 0;
   }
 }
 

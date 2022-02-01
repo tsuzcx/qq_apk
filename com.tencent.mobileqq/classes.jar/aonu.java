@@ -1,8 +1,13 @@
-public abstract interface aonu
+public class aonu
 {
-  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3);
+  public int a;
+  public String a;
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public aonu(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

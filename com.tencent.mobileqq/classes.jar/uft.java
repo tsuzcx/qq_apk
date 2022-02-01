@@ -1,42 +1,15 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
 class uft
-  implements AbsListView.OnScrollListener
+  implements zop
 {
-  boolean jdField_a_of_type_Boolean = false;
+  uft(ufd paramufd) {}
   
-  uft(ufr paramufr) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void callback(Bundle paramBundle)
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    if (this.a.a != null) {
+      this.a.k();
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!ufr.a(this.jdField_a_of_type_Ufr)) && (!ufr.b(this.jdField_a_of_type_Ufr)))
-    {
-      uqf.c("comment", "onScrollStateChanged scrollState:" + paramInt);
-      ufr.a(this.jdField_a_of_type_Ufr, this.jdField_a_of_type_Ufr.a().a(ufr.a(this.jdField_a_of_type_Ufr)));
-      if (ufr.b(this.jdField_a_of_type_Ufr) != null)
-      {
-        this.jdField_a_of_type_Ufr.a().a(ufr.a(this.jdField_a_of_type_Ufr), true);
-        ufr.a(this.jdField_a_of_type_Ufr, true);
-      }
-    }
-    else
-    {
-      return;
-    }
-    uqf.c("comment", "mCommentAttachInfo is null");
   }
 }
 

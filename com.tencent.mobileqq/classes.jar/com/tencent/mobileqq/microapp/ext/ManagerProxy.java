@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import alao;
+import ajyg;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
 import mqq.app.AppRuntime;
@@ -18,9 +18,9 @@ public class ManagerProxy
     return (PreloadManager)paramAppRuntime.getManager(151);
   }
   
-  public static alao getQWalletConfigManager(AppRuntime paramAppRuntime)
+  public static ajyg getQWalletConfigManager(AppRuntime paramAppRuntime)
   {
-    return (alao)paramAppRuntime.getManager(245);
+    return (ajyg)paramAppRuntime.getManager(245);
   }
   
   public static TicketManager getTicketManager(AppRuntime paramAppRuntime)

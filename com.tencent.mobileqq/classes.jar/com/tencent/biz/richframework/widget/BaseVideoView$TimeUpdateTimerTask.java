@@ -19,7 +19,7 @@ class BaseVideoView$TimeUpdateTimerTask
     {
       BaseVideoView localBaseVideoView = (BaseVideoView)this.a.get();
       if (localBaseVideoView != null) {
-        localBaseVideoView.m();
+        localBaseVideoView.k();
       }
     }
   }

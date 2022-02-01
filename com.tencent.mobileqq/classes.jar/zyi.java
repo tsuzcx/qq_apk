@@ -1,18 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-
-public final class zyi
-  implements Parcelable.Creator<ScannerParams>
+class zyi
 {
-  public ScannerParams a(Parcel paramParcel)
-  {
-    return new ScannerParams(paramParcel);
-  }
+  public long a;
   
-  public ScannerParams[] a(int paramInt)
+  public zyi(long paramLong)
   {
-    return new ScannerParams[paramInt];
+    this.a = paramLong;
   }
 }
 

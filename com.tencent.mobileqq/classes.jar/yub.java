@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class yub
-  implements View.OnClickListener
+public class yub
 {
-  yub(yty paramyty) {}
-  
-  public void onClick(View paramView)
-  {
-    if (yty.a(this.a) != null) {
-      yty.a(this.a).h();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public float a;
+  public boolean a;
+  public float b;
 }
 
 

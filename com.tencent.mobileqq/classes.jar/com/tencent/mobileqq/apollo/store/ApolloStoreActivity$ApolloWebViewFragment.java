@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
+import amec;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -12,9 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anji;
-import binq;
-import blha;
+import bgtw;
+import bjmp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -30,15 +30,15 @@ public class ApolloStoreActivity$ApolloWebViewFragment
 {
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this);
   private long b;
   
   public int doCreateLoopStep_InitUIFrame(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_InitUIFrame(paramBundle);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setClickable(false);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.mSwiftTitleUI.titleContainer.setClickable(false);
+    this.mSwiftTitleUI.titleContainer.setOnTouchListener(null);
+    this.mSwiftTitleUI.leftView.setVisibility(8);
     if (getActivity() != null) {
       ImmersiveUtils.a(getActivity().getWindow(), true);
     }
@@ -64,7 +64,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView) && ((getActivity() instanceof ApolloStoreActivity))) {
+    if ((paramView == this.mSwiftTitleUI.leftView) && ((getActivity() instanceof ApolloStoreActivity))) {
       ((ApolloStoreActivity)getActivity()).a();
     }
     for (;;)

@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bjxg
-  implements DialogInterface.OnDismissListener
+public abstract interface bjxg
 {
-  bjxg(bjxd parambjxd) {}
+  public abstract boolean a(boolean paramBoolean);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-    this.a.c = false;
-    this.a.c = false;
-  }
+  public abstract void c();
 }
 
 

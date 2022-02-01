@@ -1,39 +1,15 @@
-import com.tencent.open.model.AppInfo;
-import java.util.List;
+import android.os.IInterface;
 
-public class bjza
-  implements anui
+public abstract interface bjza
+  extends IInterface
 {
-  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
+  public abstract String a();
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (paramBoolean)
-      {
-        a(paramBoolean, (List)paramObject, null);
-        return;
-      }
-      a(paramBoolean, null, (String)paramObject);
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(paramBoolean, (List)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjza
  * JD-Core Version:    0.7.0.1
  */

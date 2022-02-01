@@ -1,21 +1,21 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bdek;
-import bhnv;
-import brhn;
+import bbxj;
+import boba;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QIMPtvTemplateManager$3
   implements Runnable
 {
-  public QIMPtvTemplateManager$3(brhn parambrhn) {}
+  public QIMPtvTemplateManager$3(boba paramboba) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = bdek.a();
-    boolean bool2 = bhnv.d(BaseApplication.getContext());
+    boolean bool1 = bbxj.a();
+    boolean bool2 = NetworkUtil.isNetSupport(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }

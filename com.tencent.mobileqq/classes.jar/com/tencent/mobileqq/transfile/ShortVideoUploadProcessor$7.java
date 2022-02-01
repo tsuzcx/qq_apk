@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import bdmc;
-import bexk;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-public class ShortVideoUploadProcessor$7
+class ShortVideoUploadProcessor$7
   implements Runnable
 {
-  public ShortVideoUploadProcessor$7(bexk parambexk, String paramString) {}
+  ShortVideoUploadProcessor$7(ShortVideoUploadProcessor paramShortVideoUploadProcessor, String paramString) {}
   
   public void run()
   {
     long l1 = SystemClock.uptimeMillis();
-    File localFile = new File(this.a);
-    Object localObject = ShortVideoUtils.e(localFile);
+    File localFile = new File(this.val$filePath);
+    Object localObject = ShortVideoUtils.getMp4VideoMoovInfo(localFile);
     if (localObject == null) {
       return;
     }
@@ -31,7 +30,7 @@ public class ShortVideoUploadProcessor$7
     ((HashMap)localObject).put("param_videoLen", localFile.length() + "");
     DecimalFormat localDecimalFormat = new DecimalFormat("##.000");
     ((HashMap)localObject).put("param_moovPosition", localDecimalFormat.format(l2 * 1.0D / localFile.length()) + "");
-    bdmc.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
   }
 }
 

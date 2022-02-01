@@ -1,39 +1,81 @@
-import android.animation.ObjectAnimator;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
+import mqq.app.AppRuntime;
+import mqq.app.AppRuntime.Status;
+import mqq.app.Foreground;
 
 public class axwm
 {
-  public int a;
-  protected Drawable a;
-  public Handler a;
-  protected ImageView a;
-  public ArrayList<String> a;
-  protected int b;
+  private AppRuntime a;
   
-  public void a(String paramString)
+  public axwm(AppRuntime paramAppRuntime)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_reddot_face";
-    paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-    paramString.setTag(bhez.a(this.b, this.b));
-    paramString.setDecodeHandler(bhez.a);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)
+    this.a = paramAppRuntime;
+  }
+  
+  private boolean a(AppRuntime paramAppRuntime)
+  {
+    int j = b();
+    int i;
+    if (Foreground.sCountResume > 0)
     {
-      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.1F });
-      ((ObjectAnimator)localObject).addListener(new axwn(this, paramString));
-      ((ObjectAnimator)localObject).setDuration(1500L).start();
-      return;
+      i = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate countResume:" + Foreground.sCountResume + " curHour: " + j + " begin: " + axwj.D + " end: " + axwj.E);
+      }
+      if (axwj.E <= axwj.D) {
+        break label165;
+      }
+      if ((j < axwj.D) || (j >= axwj.E)) {
+        break label237;
+      }
+      paramAppRuntime = paramAppRuntime.getOnlineStatus();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate closeZone curHour: " + j + " status: " + paramAppRuntime);
+      }
+      if ((paramAppRuntime != AppRuntime.Status.online) || (i == 0)) {
+        break label163;
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    label163:
+    label165:
+    do
+    {
+      return true;
+      i = 0;
+      break;
+      return false;
+      if ((j <= axwj.D) && (j >= axwj.E)) {
+        break label237;
+      }
+      paramAppRuntime = paramAppRuntime.getOnlineStatus();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate openZone curHour: " + j + " status: " + paramAppRuntime);
+      }
+    } while ((paramAppRuntime == AppRuntime.Status.online) && (i != 0));
+    return false;
+    label237:
+    return false;
+  }
+  
+  public int a()
+  {
+    if (a(this.a)) {}
+    for (int i = 41032;; i = 40001)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] getStatus return status: " + i);
+      }
+      return i;
+    }
+  }
+  
+  int b()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    return localCalendar.get(11);
   }
 }
 

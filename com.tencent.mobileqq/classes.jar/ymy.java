@@ -1,23 +1,19 @@
-import android.support.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class ymy
-  implements wvd
+public class ymy
+  implements ymz
 {
-  ymy(ymx paramymx, wva paramwva) {}
-  
-  public void a(boolean paramBoolean, @Nullable wuz paramwuz)
+  public void a(@NonNull ArrayList<yna> paramArrayList, @NonNull Context paramContext)
   {
-    yuk.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramwuz });
-    this.jdField_a_of_type_Wva.b(this);
-    if (this.jdField_a_of_type_Ymx.a.get())
+    int i = 0;
+    while (i < yna.a.length)
     {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
-      return;
+      paramArrayList.add(new yna(paramContext.getResources().getDrawable(yna.b[i]), 0, yna.a[i]));
+      i += 1;
     }
-    ymx.a(this.jdField_a_of_type_Ymx).a = paramwuz;
-    ymx.a(this.jdField_a_of_type_Ymx).a(null, 0);
-    ((yme)wth.a(11)).a = paramwuz;
   }
 }
 

@@ -1,29 +1,42 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.2;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class agmj
-  extends View
+class agmj
+  extends aexg
 {
-  agmj(agmi paramagmi, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String b;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_c_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  View jdField_d_of_type_AndroidViewView;
+  ImageView jdField_d_of_type_AndroidWidgetImageView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_d_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  View jdField_e_of_type_AndroidViewView;
+  TextView jdField_e_of_type_AndroidWidgetTextView;
+  View jdField_f_of_type_AndroidViewView;
+  TextView jdField_f_of_type_AndroidWidgetTextView;
+  View jdField_g_of_type_AndroidViewView;
+  TextView jdField_g_of_type_AndroidWidgetTextView;
+  View jdField_h_of_type_AndroidViewView;
+  TextView jdField_h_of_type_AndroidWidgetTextView;
+  View jdField_i_of_type_AndroidViewView;
+  TextView jdField_i_of_type_AndroidWidgetTextView;
+  TextView j;
+  TextView k;
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
-    }
-    return true;
-  }
+  agmj(agmf paramagmf) {}
 }
 
 

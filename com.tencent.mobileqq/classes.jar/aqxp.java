@@ -1,124 +1,143 @@
-import SummaryCard.CondFitUser;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Build;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.JpegSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.pic.JpegCompressor;
+import com.tencent.mobileqq.pic.JpegSoLoad;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqxp
-  extends BaseAdapter
+  extends aqxl
 {
-  private aqxp(SearchResultActivity paramSearchResultActivity) {}
+  long a = 0L;
+  QQAppInterface b = null;
+  boolean d = true;
   
-  public int getCount()
+  public aqxp(QQAppInterface paramQQAppInterface)
   {
-    int j = this.a.jdField_a_of_type_JavaUtilList.size();
-    if (this.a.b != 0) {}
-    for (int i = 1;; i = 0) {
-      return i + j;
+    super(e(), paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
+  
+  public static String e()
+  {
+    if ("armeabi-v7a".equalsIgnoreCase(Build.CPU_ABI)) {
+      return "qq.android.pic.jpeg.so_v7_820";
     }
+    return "qq.android.pic.jpeg.so_v5_820";
   }
   
-  public Object getItem(int paramInt)
+  public int a()
   {
-    return null;
+    return 10043;
   }
   
-  public long getItemId(int paramInt)
+  public Class<? extends XmlData> a()
   {
-    return paramInt;
+    return JpegSoData.class;
   }
   
-  public int getItemViewType(int paramInt)
+  public String a()
   {
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size()) {
-      return 0;
+    return "qjpegDownloadSoDuration";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof JpegSoData))) {
+      QLog.d("QJpegSoDownloadHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
     }
-    return 1;
+    super.a(paramXmlData);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(String paramString)
   {
-    View localView;
-    if (getItemViewType(paramInt) == 0)
-    {
-      localView = paramView;
-      if (paramView == null)
-      {
-        localView = this.a.getLayoutInflater().inflate(2131561126, null);
-        localView.setOnClickListener(this.a);
-        paramView = new aqxq();
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367925));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371826));
-        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377716));
-        paramView.jdField_b_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131367467));
-        paramView.c = ((InterestLabelTextView)localView.findViewById(2131381545));
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131364259));
-        paramView.d = ((InterestLabelTextView)localView.findViewById(2131370349));
-        localView.setTag(paramView);
-      }
-      paramView = (aqxq)localView.getTag();
-      CondFitUser localCondFitUser = (CondFitUser)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView = this.a.a(paramView, localCondFitUser);
-      if (SearchResultActivity.jdField_a_of_type_Boolean) {
-        localView.setContentDescription(paramView);
-      }
-      paramView = localView;
-    }
+    String str2 = JpegSoLoad.getJpegSolibPath(BaseApplicationImpl.getContext());
+    String str1 = str2 + JpegSoLoad.getLibActualName("jpegc_above820");
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localView = paramView;
-      if (paramView == null)
+      try
       {
-        localView = this.a.getLayoutInflater().inflate(2131559485, null);
-        localView.setOnClickListener(this.a);
-        paramView = new aqxr();
-        localView.setTag(paramView);
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131376445));
-        localView.findViewById(2131370293).setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371433));
-      }
-      if (this.a.b == 1)
-      {
-        this.a.b = 2;
-        SearchResultActivity.d(this.a);
-      }
-      paramView = (aqxr)localView.getTag();
-      if (this.a.b == 3)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131712534));
-        paramView = localView;
-      }
-      else if (this.a.b == 2)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131712525));
-        paramView = localView;
-      }
-      else
-      {
-        if (this.a.b == 4)
-        {
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131712524));
+        if (QLog.isColorLevel()) {
+          QLog.d("QJpegSoDownloadHandler", 2, "download success: " + paramString + " ,so path:" + str1);
         }
-        paramView = localView;
+        FileUtils.uncompressZip(paramString, str2, false);
+        str2 = barq.a(str1);
+        Object localObject2 = a();
+        if (!(localObject2 instanceof JpegSoData)) {
+          break label335;
+        }
+        localObject2 = (JpegSoData)localObject2;
+        if (QLog.isColorLevel()) {
+          QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess, soMD5:" + str2 + " soData.SO_MD5:" + ((JpegSoData)localObject2).SO_MD5);
+        }
+        if (!str2.equalsIgnoreCase(((JpegSoData)localObject2).SO_MD5)) {
+          break label335;
+        }
+        JpegCompressor.jpegcompressLoadSo();
+        bool = true;
+        if (!bool)
+        {
+          FileUtils.deleteFile(str1);
+          FileUtils.deleteFile(paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess,suc:" + bool);
+        }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("QJpegSoDownloadHandler", 2, localException, new Object[0]);
+        FileUtils.deleteFile(str1);
+        FileUtils.deleteFile(paramString);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess,suc:" + false);
+        continue;
+      }
+      finally
+      {
+        FileUtils.deleteFile(str1);
+        FileUtils.deleteFile(paramString);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess,suc:" + false);
+      }
+      super.a(paramString);
+      return;
+      label335:
+      boolean bool = false;
     }
   }
   
-  public int getViewTypeCount()
+  public void a(boolean paramBoolean)
   {
-    return 2;
+    if (a().loadState == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QJpegSoDownloadHandler", 2, "is in downloading");
+      }
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

@@ -1,138 +1,321 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import com.tencent.mobileqq.data.MessageForFunnyFace;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForLimitChatConfirm;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import java.util.List;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class amwi
-  extends aoaa
+class amwi
 {
-  public amwi(HotChatCenterFragment paramHotChatCenterFragment) {}
+  private int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(-1000), Integer.valueOf(-1049), Integer.valueOf(-2056), Integer.valueOf(-2000), Integer.valueOf(-2002), Integer.valueOf(-2007), Integer.valueOf(-2058), Integer.valueOf(-2039), Integer.valueOf(-2011), Integer.valueOf(-2051), Integer.valueOf(-7002), Integer.valueOf(-2010), Integer.valueOf(-2020), Integer.valueOf(-2022), Integer.valueOf(-2071), Integer.valueOf(-5008), Integer.valueOf(-5013), Integer.valueOf(-5014), Integer.valueOf(-5012), Integer.valueOf(-5018), Integer.valueOf(-1051), Integer.valueOf(-1052), Integer.valueOf(-1035), Integer.valueOf(-2057), Integer.valueOf(-7001), Integer.valueOf(-5016), Integer.valueOf(-5017), Integer.valueOf(-7005) }));
+  private im_msg_body.RichText jdField_a_of_type_TencentImMsgIm_msg_body$RichText;
   
-  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
+  public amwi(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, im_msg_body.RichText paramRichText, int paramInt)
   {
-    super.a(paramString1, paramString2, paramBoolean, paramString3, paramString4, paramBoolean1);
-    QLog.e("HotchatActivity", 1, String.format("join hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = paramRichText;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  private void A()
   {
-    super.a(paramString1, paramBoolean, paramString2);
-    if (HotChatCenterFragment.a(this.a) != null) {
-      HotChatCenterFragment.a(this.a).sendEmptyMessage(1);
-    }
-    QLog.e("HotchatActivity", 1, String.format("Exit hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2 }));
-  }
-  
-  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
-  {
-    if (!paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2058)
     {
-      QLog.e("HotchatActivity", 1, String.format("[onQuickJoinHotChat] failed code:%s result:%s", new Object[] { paramString, Integer.valueOf(paramInt) }));
-      paramHotChatInfo = Message.obtain();
-      paramHotChatInfo.what = 3;
-      paramHotChatInfo.obj = anzj.a(2131704442);
-      if (HotChatCenterFragment.a(this.a) != null) {
-        HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
+      if (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMarketFace)) {
+        break label52;
       }
-      return;
-      break label181;
-      break label181;
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForMarketFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_Int = ((MessageForMarketFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
     }
-    label181:
-    label488:
+    label52:
     do
     {
-      do
-      {
-        Iterator localIterator;
-        do
-        {
-          do
-          {
-            paramWifiPOIInfo = paramString;
-            if (TextUtils.isEmpty(paramString))
-            {
-              paramWifiPOIInfo = paramString;
-              if (paramHotChatInfo != null) {
-                paramWifiPOIInfo = paramHotChatInfo.name;
-              }
-            }
-            if (paramWifiPOIInfo != null) {
-              break;
-            }
-            paramHotChatInfo = Message.obtain();
-            paramHotChatInfo.obj = anzj.a(2131704440);
-            paramHotChatInfo.what = 3;
-          } while (HotChatCenterFragment.a(this.a) == null);
-          HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
-          return;
-          if ((this.a.a == null) || (this.a.a.size() <= 0)) {
-            break;
-          }
-          localIterator = this.a.a.entrySet().iterator();
-        } while (!localIterator.hasNext());
-        Object localObject = (Map.Entry)localIterator.next();
-        if (localObject == null) {
-          break;
-        }
-        paramString = (String)((Map.Entry)localObject).getValue();
-        localObject = (String)((Map.Entry)localObject).getKey();
-        if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(paramWifiPOIInfo))) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("HotchatActivity", 2, "onQuickJoinHotChat, hotcode:" + paramWifiPOIInfo);
-        }
-        paramWifiPOIInfo = Message.obtain();
-        if ((paramHotChatInfo == null) || ((paramInt != 1) && (paramInt != 2))) {
-          break label488;
-        }
-        paramWifiPOIInfo.what = 2;
-        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name, Integer.valueOf(paramHotChatInfo.apolloGameId) };
-        if (paramHotChatInfo.apolloGameId > 0) {
-          VipUtils.a(null, "cmshow", "Apollo", "join_reliao", 1, 0, new String[] { String.valueOf(paramHotChatInfo.apolloGameId) });
-        }
-        if (HotChatCenterFragment.a(this.a).get() != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("HotchatActivity", 2, String.format("[onQuickJoinHotChat] remove uin:%s code:%s", new Object[] { localObject, paramString }));
-          }
-          ((anzm)HotChatCenterFragment.a(this.a).get()).b((String)localObject);
-        }
-        this.a.a.remove(localObject);
-      } while (HotChatCenterFragment.a(this.a) == null);
-      HotChatCenterFragment.a(this.a).sendMessage(paramWifiPOIInfo);
-      HotChatCenterFragment.a(this.a).sendEmptyMessage(1);
       return;
-      QLog.e("HotchatActivity", 1, "[onQuickJoinHotChat] join failed");
-      paramHotChatInfo = Message.obtain();
-      paramHotChatInfo.obj = anzj.a(2131704441);
-      paramHotChatInfo.what = 3;
-    } while (HotChatCenterFragment.a(this.a) == null);
-    HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
-    return;
-    QLog.e("HotchatActivity", 1, "[onQuickJoinHotChat] not click at all");
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForText))
+      {
+        this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        this.jdField_a_of_type_Int = ((MessageForText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
+        return;
+      }
+    } while (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic));
+    this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Int = ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
   }
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3)
+  private static im_msg_body.RichText a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    super.a(paramBoolean, paramString1, paramInt, paramString2, paramString3);
-    QLog.e("HotchatActivity", 1, String.format("Kicked out  hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
+    Object localObject = null;
+    Iterator localIterator = paramQQAppInterface.getMessageFacade().getRegistry().d().iterator();
+    while (localIterator.hasNext())
+    {
+      im_msg_body.RichText localRichText = ((abyd)localIterator.next()).a(paramMessageRecord, paramQQAppInterface);
+      localObject = localRichText;
+      if (localRichText != null) {
+        localObject = localRichText;
+      }
+    }
+    return localObject;
   }
   
-  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3)
+  private void a()
   {
-    super.b(paramBoolean, paramString1, paramInt, paramString2, paramString3);
-    QLog.e("HotchatActivity", 1, String.format("Kicked out hotchat by admin  uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype))) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -7005) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.b((MessageForLimitChatConfirm)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5017) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.b((MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, false);
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5016) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.c((MessageForArkBabyqReply)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, false);
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -7001) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.g((MessageForScribble)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2057) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForTroopStory)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -1035) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForMixedMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void h()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -1052) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = new im_msg_body.RichText();
+    }
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -1051) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForLongTextMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+    }
+  }
+  
+  private void j()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5018) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.f((MessageForPokeEmo)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void k()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5012) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.e((MessageForPoke)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void l()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5014) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.d((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void m()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5013) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.c((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void n()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -5008) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, false);
+    }
+  }
+  
+  private void o()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2071) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForLightVideo)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void p()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2022) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForShortVideo)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void q()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2020) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForShakeWindow)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void r()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2010) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForFunnyFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void s()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2011) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2051) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -7002)) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void t()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2039) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForApollo)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void u()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2007)
+    {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForMarketFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_Int = ((MessageForMarketFace)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
+    }
+  }
+  
+  private void v()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2002)
+    {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForPtt)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_Int = ((MessageForPtt)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
+    }
+  }
+  
+  private void w()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2000)
+    {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_Int = ((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
+    }
+  }
+  
+  private void x()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -2056) {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+  }
+  
+  private void y()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -1049)
+    {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_Int = ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
+    }
+  }
+  
+  private void z()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype == -1000)
+    {
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText = bblf.a((MessageForText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_Int = ((MessageForText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgVia;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public amwi a()
+  {
+    z();
+    y();
+    x();
+    w();
+    v();
+    u();
+    A();
+    t();
+    s();
+    r();
+    q();
+    p();
+    o();
+    n();
+    m();
+    l();
+    k();
+    j();
+    i();
+    h();
+    g();
+    f();
+    e();
+    d();
+    c();
+    b();
+    a();
+    return this;
+  }
+  
+  public im_msg_body.RichText a()
+  {
+    return this.jdField_a_of_type_TencentImMsgIm_msg_body$RichText;
   }
 }
 

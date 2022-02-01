@@ -1,221 +1,307 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class bete
+  implements beta
 {
-  static String[] a;
-  static String[] b;
-  private static String[] d;
-  public static String w = "defaultTag";
-  public static String y = "richfile";
-  public String A;
-  public int a;
-  public long a;
-  public berp a;
-  public betf a;
-  public betg a;
-  public File a;
-  public InputStream a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public betf b;
-  public betg b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public betf c;
-  public String c;
-  public String[] c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public long f;
-  public String f;
-  public int g;
-  public long g;
-  public String g;
-  public int h = -1;
-  public long h;
-  public String h;
-  public int i;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s = "";
-  public String t = "";
-  public String u;
-  public String v = "";
-  public String x = w;
-  public String z = "";
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  betb jdField_a_of_type_Betb;
+  boolean jdField_a_of_type_Boolean;
   
-  static
+  public bete(betb parambetb)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "up", "down", "down" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "file", "pic", "ptt", "video", "map", "thumbpic", "emo", "multimsg" };
-    jdField_d_of_type_ArrayOfJavaLangString = new String[] { "LogEventSignalSigFinish", "LogEventSignalUrlFinish", "LogEventRetry", "LogEventFlowUp", "LogEventFlowDown" };
+    this.jdField_a_of_type_Betb = parambetb;
+    a();
   }
   
-  public bete()
+  public static ajac a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Betf = new betf();
-    this.jdField_b_of_type_Betf = new betf();
-    this.jdField_c_of_type_Betf = new betf();
-    this.jdField_a_of_type_Betg = new betg();
-    this.jdField_b_of_type_Betg = new betg();
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
+    ajac localajac = new ajac();
+    localajac.jdField_a_of_type_JavaLangString = "0";
+    localajac.b = amtj.a(2131710343);
+    localajac.j = amtj.a(2131710346);
+    localajac.g = amtj.a(2131710344);
+    localajac.l = ChnToSpell.a(localajac.j, 1);
+    localajac.k = ChnToSpell.a(localajac.j, 2);
+    return localajac;
   }
   
-  public bete(String paramString1, String paramString2, int paramInt)
+  public static ArrayList<ajac> a(String paramString, List<ajac> paramList, QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Betf = new betf();
-    this.jdField_b_of_type_Betf = new betf();
-    this.jdField_c_of_type_Betf = new betf();
-    this.jdField_a_of_type_Betg = new betg();
-    this.jdField_b_of_type_Betg = new betg();
-    try
+    paramQQAppInterface = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.jdField_g_of_type_Long = System.currentTimeMillis();
-      this.p = paramString1;
-      this.jdField_a_of_type_Int = paramInt;
-      if (paramString2 == null) {
-        return;
-      }
-      if (paramInt == 0)
+      ajac localajac = (ajac)paramList.next();
+      if ((best.a(localajac.j, paramString)) || (best.a(localajac.k, paramString)) || (best.a(localajac.l, paramString)))
       {
-        this.jdField_c_of_type_JavaLangString = paramString2;
-        this.jdField_a_of_type_JavaIoFile = new File(this.jdField_c_of_type_JavaLangString);
-        if (this.jdField_a_of_type_JavaIoFile.exists())
+        localajac.v = localajac.j;
+        localajac.w = localajac.l;
+        localajac.x = localajac.k;
+        paramQQAppInterface.add(localajac);
+      }
+      else if ((best.a(localajac.m, paramString)) || (best.a(localajac.n, paramString)) || (best.a(localajac.o, paramString)))
+      {
+        localajac.v = localajac.m;
+        localajac.w = localajac.o;
+        localajac.x = localajac.n;
+        paramQQAppInterface.add(localajac);
+      }
+      else if ((best.a(localajac.g, paramString)) || (best.a(localajac.h, paramString)) || (best.a(localajac.i, paramString)))
+      {
+        localajac.v = localajac.g;
+        localajac.w = localajac.i;
+        localajac.x = localajac.h;
+        paramQQAppInterface.add(localajac);
+      }
+      else
+      {
+        String str1;
+        String str2;
+        String str3;
+        if (best.a(localajac.jdField_a_of_type_JavaLangString, paramString))
         {
-          this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaIoFile.length();
-          paramInt = paramString2.lastIndexOf(".");
-          if ((paramInt >= 0) && (paramInt < paramString2.length())) {
-            this.jdField_b_of_type_JavaLangString = paramString2.substring(paramInt).toLowerCase();
+          str1 = best.c(localajac);
+          str2 = best.d(localajac);
+          str3 = best.e(localajac);
+          localajac.v = str1;
+          localajac.w = str3;
+          localajac.x = str2;
+          paramQQAppInterface.add(localajac);
+        }
+        else if (a(localajac, paramString, paramTroopInfo))
+        {
+          str1 = best.c(localajac);
+          str2 = best.d(localajac);
+          str3 = best.e(localajac);
+          localajac.v = str1;
+          localajac.w = str3;
+          localajac.x = str2;
+          paramQQAppInterface.add(localajac);
+        }
+        else if (b(localajac, paramString, paramTroopInfo))
+        {
+          str1 = best.c(localajac);
+          str2 = best.d(localajac);
+          str3 = best.e(localajac);
+          localajac.v = str1;
+          localajac.w = str3;
+          localajac.x = str2;
+          paramQQAppInterface.add(localajac);
+        }
+        else if (c(localajac, paramString, paramTroopInfo))
+        {
+          str1 = best.c(localajac);
+          str2 = best.d(localajac);
+          str3 = best.e(localajac);
+          localajac.v = str1;
+          localajac.w = str3;
+          localajac.x = str2;
+          paramQQAppInterface.add(localajac);
+        }
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static List<ajac> a(QQAppInterface paramQQAppInterface, List<ajac> paramList, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return paramList;
+    }
+    paramQQAppInterface = (bfdm)paramQQAppInterface.getManager(203);
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ajac localajac = (ajac)paramList.next();
+      if (!paramQQAppInterface.b(localajac.jdField_a_of_type_JavaLangString)) {
+        localArrayList.add(localajac);
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static boolean a(ajac paramajac, String paramString, TroopInfo paramTroopInfo)
+  {
+    boolean bool2 = false;
+    ajac localajac = new ajac();
+    boolean bool1 = bool2;
+    if (paramTroopInfo != null)
+    {
+      bool1 = bool2;
+      if (paramajac != null)
+      {
+        bool1 = bool2;
+        if (paramTroopInfo.isTroopOwner(paramajac.jdField_a_of_type_JavaLangString))
+        {
+          localajac.b = amtj.a(2131710345);
+          localajac.j = amtj.a(2131710341);
+          localajac.l = ChnToSpell.a(localajac.j, 1);
+          localajac.k = ChnToSpell.a(localajac.j, 2);
+          if ((!best.a(localajac.j, paramString)) && (!best.a(localajac.k, paramString)))
+          {
+            bool1 = bool2;
+            if (!best.a(localajac.l, paramString)) {}
+          }
+          else
+          {
+            bool1 = true;
           }
         }
-        a(paramString2);
-        return;
       }
     }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-      return;
-    }
-    this.jdField_g_of_type_JavaLangString = paramString2;
+    return bool1;
   }
   
-  public static String a()
+  public static boolean a(String paramString, ajac paramajac)
   {
-    try
+    if ("all".equalsIgnoreCase(paramString)) {}
+    String str1;
+    String str2;
+    do
     {
-      Thread.sleep(10L);
-      long l1 = System.currentTimeMillis();
-      String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(l1));
-      return str;
-    }
-    catch (InterruptedException localInterruptedException)
+      return true;
+      str1 = best.c(paramajac);
+      str2 = best.d(paramajac);
+      paramajac = best.e(paramajac);
+    } while ((best.a(str1, paramString)) || (best.a(str2, paramString)) || (best.a(paramajac, paramString)));
+    return false;
+  }
+  
+  private static boolean b(ajac paramajac, String paramString, TroopInfo paramTroopInfo)
+  {
+    boolean bool2 = false;
+    ajac localajac = new ajac();
+    boolean bool1 = bool2;
+    if (paramTroopInfo != null)
     {
-      for (;;)
+      bool1 = bool2;
+      if (paramajac != null)
       {
-        localInterruptedException.printStackTrace();
+        bool1 = bool2;
+        if (paramTroopInfo.isTroopAdmin(paramajac.jdField_a_of_type_JavaLangString))
+        {
+          localajac.b = amtj.a(2131710337);
+          localajac.j = amtj.a(2131710340);
+          localajac.l = ChnToSpell.a(localajac.j, 1);
+          localajac.k = ChnToSpell.a(localajac.j, 2);
+          if ((!best.a(localajac.j, paramString)) && (!best.a(localajac.k, paramString)))
+          {
+            bool1 = bool2;
+            if (!best.a(localajac.l, paramString)) {}
+          }
+          else
+          {
+            bool1 = true;
+          }
+        }
       }
     }
-    finally {}
+    return bool1;
   }
   
-  private void a(String paramString)
+  private static boolean c(ajac paramajac, String paramString, TroopInfo paramTroopInfo)
   {
-    this.jdField_a_of_type_JavaIoInputStream = new FileInputStream(paramString);
-  }
-  
-  public void a()
-  {
-    try
+    boolean bool2 = false;
+    paramTroopInfo = new ajac();
+    boolean bool1 = bool2;
+    if (paramajac != null)
     {
-      if (this.jdField_a_of_type_JavaIoInputStream != null) {
-        this.jdField_a_of_type_JavaIoInputStream.close();
+      bool1 = bool2;
+      if (paramajac.jdField_a_of_type_Boolean)
+      {
+        paramTroopInfo.b = amtj.a(2131710338);
+        paramTroopInfo.j = amtj.a(2131710342);
+        paramTroopInfo.l = ChnToSpell.a(paramTroopInfo.j, 1);
+        paramTroopInfo.k = ChnToSpell.a(paramTroopInfo.j, 2);
+        if ((!best.a(paramTroopInfo.j, paramString)) && (!best.a(paramTroopInfo.k, paramString)))
+        {
+          bool1 = bool2;
+          if (!best.a(paramTroopInfo.l, paramString)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
       }
-      label14:
-      this.jdField_a_of_type_JavaIoInputStream = null;
-      return;
     }
-    catch (IOException localIOException)
+    return bool1;
+  }
+  
+  void a()
+  {
+    Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842478);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Betb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = QQAppInterface.getRoundFaceBitmap(localBitmap);
+  }
+  
+  public void a(View paramView)
+  {
+    boolean bool = false;
+    if ((paramView instanceof TextView))
     {
-      break label14;
+      paramView = (TextView)paramView;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.setText(2131693996);
+        if (this.jdField_a_of_type_Betb.jdField_a_of_type_Besq != null) {
+          this.jdField_a_of_type_Betb.jdField_a_of_type_Besq.a();
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
+        }
+        this.jdField_a_of_type_Boolean = bool;
+      }
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    betg localbetg;
-    switch (paramInt1)
+    else
     {
-    default: 
-      return;
-    case 2: 
-      localbetg = this.jdField_a_of_type_Betg;
-      localbetg.jdField_b_of_type_Int += 1;
-      return;
-    case 4: 
-      localbetg = this.jdField_a_of_type_Betg;
-      localbetg.e += paramInt2;
-      return;
-    case 3: 
-      localbetg = this.jdField_a_of_type_Betg;
-      localbetg.d += paramInt2;
       return;
     }
-    this.jdField_a_of_type_Betg.c = true;
+    paramView.setText(2131692310);
+    if (this.jdField_a_of_type_Betb.b) {
+      this.jdField_a_of_type_Betb.notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      bcef.b(this.jdField_a_of_type_Betb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A48F", "0X800A48F", 0, 0, "", "", "", "");
+      break;
+      this.jdField_a_of_type_Betb.jdField_a_of_type_Besq.a(this.jdField_a_of_type_Betb.jdField_a_of_type_JavaLangString, true);
+    }
   }
   
-  public void a(long paramLong)
+  void a(ImageView paramImageView)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    if (paramImageView != null) {
+      paramImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Betb.jdField_a_of_type_JavaUtilLinkedHashMap.size() >= 20;
+  }
+  
+  void b()
+  {
+    QQToast.a(BaseApplicationImpl.context, 0, amtj.a(2131710339), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bete
  * JD-Core Version:    0.7.0.1
  */

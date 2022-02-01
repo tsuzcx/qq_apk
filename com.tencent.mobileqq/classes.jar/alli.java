@@ -1,31 +1,17 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class alli
-  implements View.OnClickListener
 {
-  alli(aljw paramaljw) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(aljw.a(this.a), GuideBindPhoneActivity.class);
-    localIntent.putExtra("fromKeyForContactBind", 4);
-    aljw.a(this.a).startActivity(localIntent);
-    aljw.a(this.a).getSharedPreferences("contact_bind_info" + aljw.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
-    this.a.a(16, 0);
-    aljw.a(this.a).removeMessages(11);
-    bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
-    bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  alli(allb paramallb) {}
 }
 
 

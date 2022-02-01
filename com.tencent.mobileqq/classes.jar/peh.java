@@ -1,56 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.widget.ListView;
 
 public class peh
-  implements pql
+  implements sly
 {
-  public peh(KandianDailyManager paramKandianDailyManager) {}
+  ped a;
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  peh(ped paramped1, ped paramped2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    if (localQQAppInterface == null) {}
-    QQMessageFacade localQQMessageFacade;
-    MessageForStructing localMessageForStructing;
-    String str1;
-    String str2;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localQQMessageFacade = localQQAppInterface.a();
-          localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(antf.aR, 1008);
-        } while (localMessageForStructing == null);
-        if (!localMessageForStructing.mIsParsed) {
-          localMessageForStructing.parse();
-        }
-      } while (localMessageForStructing.structingMsg == null);
-      str1 = localMessageForStructing.getExtInfoFromExtStr("puin");
-      str2 = localMessageForStructing.structingMsg.mMsgBrief;
-    } while ((!localMessageForStructing.isread) || (TextUtils.isEmpty(str2)) || (!str2.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(str1, paramString)));
-    localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
-    localMessageForStructing.createMessageUniseq();
-    localMessageForStructing.doPrewrite();
-    localQQMessageFacade.a(localMessageForStructing.frienduin, localMessageForStructing.istroop, localMessageForStructing.uniseq, localMessageForStructing.msgData);
-    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
-    if (paramReadInJoyUserInfo != null) {
-      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+    this.a = paramped2;
+  }
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  {
+    if (!this.b.a().c()) {
+      return;
     }
-    QLog.d("KandianDailyManager", 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageForStructing);
+    this.b.a().e(false);
+    this.b.a().a().a(paramReadInJoyBaseListView);
+    this.b.a().a().a(this.b.a().a().a().getLastVisiblePosition() + 1, this.b.a().a().a(), this.a);
   }
 }
 

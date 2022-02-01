@@ -1,20 +1,23 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
+
 public class ppt
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
-  public boolean a;
+  public ppt(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.b(this.a).setAnimation(null);
   }
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

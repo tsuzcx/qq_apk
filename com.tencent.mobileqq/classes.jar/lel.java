@@ -1,35 +1,39 @@
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.av.VideoController;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class lel
-  extends BroadcastReceiver
+public class lel
 {
-  lel(lek paramlek) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lel(VideoAppInterface paramVideoAppInterface)
   {
-    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lem(this);
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-      paramIntent = paramIntent.getExtras().getString("verify");
-      if ((lek.a(this.a, paramIntent, paramContext)) && (lek.a(this.a, paramContext)))
-      {
-        paramContext = lek.a(this.a).a();
-        if ((paramContext == null) || (paramContext.a().f()))
-        {
-          if (paramContext != null) {
-            paramContext.B();
-          }
-          QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
-          Process.killProcess(Process.myPid());
-        }
-      }
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

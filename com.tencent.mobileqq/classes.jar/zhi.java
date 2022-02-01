@@ -1,25 +1,98 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 
-public class zhi
-  implements zhh
+class zhi
+  implements EmoticonCallback
 {
-  public zhi(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  zhi(zhf paramzhf) {}
   
-  public void a()
+  public void delete()
   {
-    this.a.a.c(true);
+    if (this.a.a.getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  public void a(zhr paramzhr)
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
   {
-    this.a.b(paramzhr);
+    return true;
   }
   
-  public void b()
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
   {
-    this.a.a();
+    int i;
+    int j;
+    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    {
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
+    }
+    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
+    int k;
+    int m;
+    do
+    {
+      this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
+      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      k = localSystemAndEmojiEmoticonInfo.emotionType;
+      m = localSystemAndEmojiEmoticonInfo.code;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    if (k == 1) {}
+    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
+    {
+      this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
+      this.a.a.requestFocus();
+      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        break;
+      }
+      localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      return;
+    }
   }
+  
+  public void setting() {}
 }
 
 

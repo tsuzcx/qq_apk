@@ -1,38 +1,56 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class qrv
-  implements qrt
+public class qrv
+  extends qpk
 {
-  private IBinder a;
-  
-  qrv(IBinder paramIBinder)
+  public qrv(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    this.a = paramIBinder;
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  public qrz a()
+  public qpk a()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      qrz localqrz = qsa.a(localParcel2.readStrongBinder());
-      return localqrz;
+    this.jdField_a_of_type_Boolean = true;
+    return g();
+  }
+  
+  public qpk d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    finally
+    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Qpj;
+    Pair localPair;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pwe)))
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      localPair = pai.a(((pwe)this.jdField_a_of_type_JavaLangObject).f(), ((pwe)this.jdField_a_of_type_JavaLangObject).e());
+      if (!pay.s(((pwe)this.jdField_a_of_type_JavaLangObject).a())) {
+        break label105;
+      }
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
+    }
+    for (;;)
+    {
+      a(localComponentContentVerticalSmallVideo);
+      return this;
+      label105:
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
     }
   }
   
-  public IBinder asBinder()
+  public qpk e()
   {
-    return this.a;
+    return null;
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

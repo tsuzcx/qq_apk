@@ -15,8 +15,8 @@ class ActionLivenessState$3$2
   {
     YtLogger.d(ActionLivenessState.access$200(), "获取到最优图. width:" + paramInt1 + " height: " + paramInt2 + " bytes size: " + paramArrayOfByte.length);
     paramArrayOfByte = new YuvImage(paramArrayOfByte, 17, paramInt1, paramInt2, null);
-    ActionLivenessState.access$1300(this.this$1.this$0).put("best_frame", paramArrayOfByte);
-    ActionLivenessState.access$1402(this.this$1.this$0, YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE);
+    ActionLivenessState.access$1400(this.this$1.this$0).put("best_frame", paramArrayOfByte);
+    ActionLivenessState.access$1502(this.this$1.this$0, YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE);
   }
 }
 

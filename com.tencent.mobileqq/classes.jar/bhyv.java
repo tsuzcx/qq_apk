@@ -1,6 +1,17 @@
-public abstract interface bhyv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+
+class bhyv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  bhyv(bhys parambhys, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bhys.a(this.jdField_a_of_type_Bhys, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+  }
 }
 
 

@@ -1,27 +1,15 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
-class aucp
-  implements ShareActionSheet.OnItemClickListener
+public class aucp
+  implements DialogInterface.OnClickListener
 {
-  aucp(aucn paramaucn) {}
+  public aucp(JefsClass.8 param8) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramActionSheetItem == null) {}
-    do
-    {
-      return;
-      aucn.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (aucn.a(this.a) == null);
-    aucn.a(this.a).a(paramActionSheetItem);
+    paramDialogInterface.dismiss();
   }
 }
 

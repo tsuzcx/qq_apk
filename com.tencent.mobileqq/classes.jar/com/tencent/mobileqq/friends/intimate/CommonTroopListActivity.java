@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.friends.intimate;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import avgt;
-import avgu;
-import bdll;
+import attz;
+import atua;
+import bcef;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
@@ -24,40 +25,40 @@ public class CommonTroopListActivity
 {
   private int jdField_a_of_type_Int = -1;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avgt(this);
-  private avgu jdField_a_of_type_Avgu;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new attz(this);
+  private atua jdField_a_of_type_Atua;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private ArrayList<IntimateInfo.CommonTroopInfo> jdField_a_of_type_JavaUtilArrayList;
   
-  public static void a(Activity paramActivity, ArrayList<IntimateInfo.CommonTroopInfo> paramArrayList, int paramInt)
+  public static void a(Context paramContext, ArrayList<IntimateInfo.CommonTroopInfo> paramArrayList, int paramInt)
   {
     Intent localIntent = new Intent();
     localIntent.putParcelableArrayListExtra("common_troop_list", paramArrayList);
     localIntent.putExtra("report_friend_type", paramInt);
-    PublicFragmentActivity.a(paramActivity, localIntent, CommonTroopListActivity.class);
+    PublicFragmentActivity.a(paramContext, localIntent, CommonTroopListActivity.class);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364905));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364932));
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
     {
-      setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131693076));
+      setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131693138));
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("report_friend_type", -1);
       this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getParcelableArrayListExtra("common_troop_list");
-      this.jdField_a_of_type_Avgu = new avgu(this, null);
-      this.jdField_a_of_type_Avgu.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Avgu);
+      this.jdField_a_of_type_Atua = new atua(this, null);
+      this.jdField_a_of_type_Atua.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Atua);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
     }
-    bdll.b(null, "dc00898", "", "", "0X8009F53", "0X8009F53", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", "0X8009F53", "0X8009F53", this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public int getContentLayoutId()
   {
-    return 2131559270;
+    return 2131559276;
   }
   
   public void onAttach(Activity paramActivity)
